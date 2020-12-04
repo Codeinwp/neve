@@ -30,12 +30,12 @@ class SingleSizingInput extends Component {
 						)
 					}
 				/>
-				{ this.props.type && (
+				{ this.props.label && (
 					<label
 						className="label"
 						htmlFor={ this.props.type + '-input' }
 					>
-						{ this.props.type }
+						{ this.props.label }
 					</label>
 				) }
 			</div>
@@ -45,6 +45,7 @@ class SingleSizingInput extends Component {
 
 SingleSizingInput.propTypes = {
 	type: PropTypes.string,
+	label: PropTypes.string,
 	value: PropTypes.oneOfType( [ PropTypes.string, PropTypes.number ] ),
 	min: PropTypes.number,
 	max: PropTypes.number,

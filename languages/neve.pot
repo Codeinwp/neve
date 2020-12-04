@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-12-03T13:54:41+00:00\n"
+"POT-Creation-Date: 2020-12-04T13:52:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -41,229 +41,229 @@ msgid "Options"
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:198
+#: dashboard/inc/Main.php:202
 msgid "%s Options"
 msgstr ""
 
 #. translators: %s - Theme name
 #. translators: %s - theme name
-#: dashboard/inc/Main.php:200
+#: dashboard/inc/Main.php:204
 #: inc/core/admin.php:261
 msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
 msgstr ""
 
 #. translators: %s - "Public roadmap"
-#: dashboard/inc/Main.php:202
+#: dashboard/inc/Main.php:206
 msgid "Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our %s."
 msgstr ""
 
 #. translators: %s - "Public roadmap"
-#: dashboard/inc/Main.php:202
+#: dashboard/inc/Main.php:206
 msgid "public roadmap"
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:204
+#: dashboard/inc/Main.php:208
 msgid "With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else."
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:206
+#: dashboard/inc/Main.php:210
 msgid "In order to be able to import any starter sites for %s you would need to have the Cloud Templates & Patterns Collection plugin active."
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:208
+#: dashboard/inc/Main.php:212
 msgid "In order to be able to import any starter sites for %s you would need to have the Cloud Templates & Patterns Collection plugin updated to the latest version."
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:210
+#: dashboard/inc/Main.php:214
 msgid "We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products."
 msgstr ""
 
 #. translators: %s - Theme name
 #. translators: %s - theme name
-#: dashboard/inc/Main.php:212
+#: dashboard/inc/Main.php:216
 #: inc/core/admin.php:269
 msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
 msgstr ""
 
 #. translators: %s - "Neve Pro Addon"
-#: dashboard/inc/Main.php:214
+#: dashboard/inc/Main.php:218
 msgid "%s license"
 msgstr ""
 
 #. translators: %s - "Neve Pro Addon"
-#: dashboard/inc/Main.php:216
+#: dashboard/inc/Main.php:220
 msgid "Please update %s to the latest version and then refresh this page to have access to the options."
 msgstr ""
 
 #. translators: store name (Themeisle)
-#: dashboard/inc/Main.php:220
+#: dashboard/inc/Main.php:224
 msgid "Enter your license from %1$s purchase history in order to get plugin updates"
 msgstr ""
 
 #. translators: s - theme name (Neve).
-#: dashboard/inc/Main.php:260
+#: dashboard/inc/Main.php:264
 msgid "New theme update for %1$s! Please update to %2$s."
 msgstr ""
 
-#: dashboard/inc/Main.php:265
-#: dashboard/inc/Main.php:286
+#: dashboard/inc/Main.php:269
+#: dashboard/inc/Main.php:290
 msgid "Update Now"
 msgstr ""
 
 #. translators: s - Pro plugin name (Neve Pro)
-#: dashboard/inc/Main.php:277
+#: dashboard/inc/Main.php:281
 msgid "New plugin update for %1$s! Please update to %2$s."
 msgstr ""
 
 #. translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro)
-#: dashboard/inc/Main.php:295
+#: dashboard/inc/Main.php:299
 msgid "We recommend that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility."
 msgstr ""
 
-#: dashboard/inc/Main.php:310
+#: dashboard/inc/Main.php:314
 msgid "Upload Logo"
 msgstr ""
 
-#: dashboard/inc/Main.php:314
+#: dashboard/inc/Main.php:318
 msgid "Set Colors"
 msgstr ""
 
-#: dashboard/inc/Main.php:318
+#: dashboard/inc/Main.php:322
 msgid "Customize Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:322
+#: dashboard/inc/Main.php:326
 msgid "Layout Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:326
+#: dashboard/inc/Main.php:330
 msgid "Header Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:330
+#: dashboard/inc/Main.php:334
 msgid "Blog Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:334
+#: dashboard/inc/Main.php:338
 msgid "Footer Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:338
+#: dashboard/inc/Main.php:342
 #: inc/customizer/options/layout_sidebar.php:43
 msgid "Content / Sidebar"
 msgstr ""
 
-#: dashboard/inc/Main.php:357
+#: dashboard/inc/Main.php:361
 msgid "Header/Footer builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:358
+#: dashboard/inc/Main.php:362
 msgid "Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO."
 msgstr ""
 
-#: dashboard/inc/Main.php:363
+#: dashboard/inc/Main.php:367
 msgid "Page Builder Compatibility"
 msgstr ""
 
-#: dashboard/inc/Main.php:364
+#: dashboard/inc/Main.php:368
 msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders."
 msgstr ""
 
-#: dashboard/inc/Main.php:369
+#: dashboard/inc/Main.php:373
 #: inc/customizer/options/upsells.php:90
 msgid "Header Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:370
+#: dashboard/inc/Main.php:374
 msgid "Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:375
+#: dashboard/inc/Main.php:379
 msgid "Page Header Builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:376
+#: dashboard/inc/Main.php:380
 msgid "The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder."
 msgstr ""
 
-#: dashboard/inc/Main.php:381
+#: dashboard/inc/Main.php:385
 #: inc/customizer/options/upsells.php:93
 msgid "Custom Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:382
+#: dashboard/inc/Main.php:386
 msgid "Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme."
 msgstr ""
 
-#: dashboard/inc/Main.php:387
+#: dashboard/inc/Main.php:391
 #: inc/customizer/options/upsells.php:91
 msgid "Blog Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:388
+#: dashboard/inc/Main.php:392
 msgid "Give a huge boost to your entire blogging experience with features specially designed for increased user experience."
 msgstr ""
 
-#: dashboard/inc/Main.php:388
+#: dashboard/inc/Main.php:392
 msgid "Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:393
+#: dashboard/inc/Main.php:397
 #: inc/customizer/options/upsells.php:96
 msgid "Elementor Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:394
+#: dashboard/inc/Main.php:398
 #: inc/customizer/options/upsells.php:101
 msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
 msgstr ""
 
-#: dashboard/inc/Main.php:399
+#: dashboard/inc/Main.php:403
 #: inc/customizer/options/upsells.php:92
 msgid "WooCommerce Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:400
+#: dashboard/inc/Main.php:404
 msgid "Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration."
 msgstr ""
 
-#: dashboard/inc/Main.php:400
+#: dashboard/inc/Main.php:404
 msgid "Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:405
+#: dashboard/inc/Main.php:409
 msgid "LifterLMS Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:406
+#: dashboard/inc/Main.php:410
 msgid "Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations."
 msgstr ""
 
-#: dashboard/inc/Main.php:411
+#: dashboard/inc/Main.php:415
 msgid "Typekit(Adobe) Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:412
+#: dashboard/inc/Main.php:416
 msgid "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options."
 msgstr ""
 
-#: dashboard/inc/Main.php:417
+#: dashboard/inc/Main.php:421
 msgid "White Label"
 msgstr ""
 
-#: dashboard/inc/Main.php:418
+#: dashboard/inc/Main.php:422
 msgid "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own."
 msgstr ""
 
-#: dashboard/inc/Main.php:423
+#: dashboard/inc/Main.php:427
 msgid "Scroll To Top"
 msgstr ""
 
-#: dashboard/inc/Main.php:424
+#: dashboard/inc/Main.php:428
 msgid "Simple but effective module to help you navigate back to the top of the really long pages."
 msgstr ""
 
@@ -446,6 +446,10 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:153
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:98
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:120
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:84
 msgid "Left"
 msgstr ""
 
@@ -455,6 +459,10 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:155
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:88
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:110
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:74
 msgid "Right"
 msgstr ""
 
@@ -481,6 +489,10 @@ msgid "Typography"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:868
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:83
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:105
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:69
 msgid "Top"
 msgstr ""
 
@@ -489,6 +501,10 @@ msgid "Middle"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:876
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:93
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:115
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:79
 msgid "Bottom"
 msgstr ""
 
@@ -507,8 +523,8 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:116
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:218
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:228
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:226
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:236
 msgid "Text"
 msgstr ""
 
@@ -724,14 +740,14 @@ msgstr ""
 #: header-footer-grid/Core/Components/Search.php:194
 #: header-footer-grid/Core/Components/SearchResponsive.php:358
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:162
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:170
 msgid "Border Width"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:251
 #: header-footer-grid/Core/Components/SearchResponsive.php:415
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:120
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:128
 msgid "Border Radius"
 msgstr ""
 
@@ -743,8 +759,8 @@ msgstr ""
 #: header-footer-grid/Core/Components/Search.php:306
 #: header-footer-grid/Core/Components/SearchResponsive.php:470
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:219
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:229
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:227
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:237
 msgid "Text and Border"
 msgstr ""
 
@@ -972,7 +988,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Settings/Manager.php:185
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:329
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:337
 msgid "Style"
 msgstr ""
 
@@ -2238,12 +2254,12 @@ msgid "Link Values"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:72
+#: inc/customizer/controls/react/src/common/Sizing.js:73
 msgid "Reset all Values"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:73
+#: inc/customizer/controls/react/src/common/Sizing.js:74
 msgid "Reset Value"
 msgstr ""
 
@@ -2323,8 +2339,8 @@ msgid "Plain"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:215
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:225
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:223
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:233
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:61
 msgid "Background"
 msgstr ""
@@ -2410,23 +2426,28 @@ msgid "Style 6"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:213
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:221
 msgid "Normal"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:223
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:231
 msgid "Hover"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:298
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:306
 msgid "Filled"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:303
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:311
 msgid "Outline"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:45
+msgid "Search Header Presets…"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
