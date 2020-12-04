@@ -36,12 +36,12 @@
 				margin: 0 auto;
 			}
 
-			&.success svg {
-				fill: $success;
+			&.success {
+				color: $success;
 			}
 
-			&.error svg {
-				fill: $error;
+			&.error {
+				color: $error;
 			}
 		}
 
@@ -164,7 +164,7 @@
 		.tooltip-content {
 			z-index: 1000;
 			position: absolute;
-			left: 0;
+			left: 20px;
 			bottom: 10px;
 			padding-bottom: 20px;
 			.tooltip-inner {
