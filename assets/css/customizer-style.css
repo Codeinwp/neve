@@ -374,14 +374,20 @@
 	transition: .15s color ease-in-out, .15s background-color ease-in-out, .15s border-color ease-in-out;
 	font-size: 14px;
 	border-right: none;
-	padding: 10px 30px 11px 14px;
-	line-height: 1.55;
+	padding-left: 14px;
+	height: 42px;
 	position: relative;
+	display: flex;
+	align-items: center;
 	margin: 0 -12px;
+	font-weight: 600;
+	letter-spacing: .5px;
 }
 
 .customize-control.accordion .neve-customizer-heading {
 	cursor: pointer;
+	text-transform: uppercase;
+	font-size: 13px;
 }
 .customize-control.accordion .neve-customizer-heading:hover {
 	color: #0073aa;
@@ -390,13 +396,17 @@
 }
 
 .accordion-expand-button {
-	position: absolute;
+	margin-left: auto;
 	z-index: 10;
 	top: 0;
 	right: 0;
-	padding: 10px;
+	width: 42px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
 	font-family: "Dashicons";
-
+	border-left: 1px solid #DDDDDD;
 }
 
 .accordion-expand-button:after {
@@ -412,6 +422,7 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-decoration: none;
+	color: #A0A5AA;
 }
 
 .customize-control-customizer-heading.expanded .accordion-expand-button:after {

@@ -323,7 +323,7 @@ html {
 }
 
 body {
-  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, var(--nv-fallback-ff);
   color: var(--nv-text-color);
   line-height: 1.68421;
   overflow-x: hidden;
@@ -339,7 +339,7 @@ h5,
 h6 {
   text-transform: none;
   letter-spacing: 0;
-  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, var(--nv-fallback-ff);
   line-height: 1.68421;
   margin-bottom: 0.8rem;
   font-weight: 600;
@@ -1613,7 +1613,7 @@ body .layout-grid > .article-content-col, .layout-grid {
 
 .nv-post-navigation .previous .nav-direction,
 .nv-post-navigation .next .nav-direction {
-  color: #676767;
+  color: var(--nv-text-color);
   display: flex;
   flex-direction: column;
   font-size: 0.8em;

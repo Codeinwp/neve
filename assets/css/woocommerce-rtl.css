@@ -347,13 +347,17 @@
   padding: 2px 0;
 }
 
-.woocommerce ul.products li.product a.woocommerce-loop-product__link {
+.woocommerce ul.products li.product a {
   color: var(--nv-text-color);
 }
 
-.woocommerce ul.products li.product a.woocommerce-loop-product__link:hover h2 {
+.woocommerce ul.products li.product a:hover h2 {
   color: var(--nv-text-color);
   text-decoration: underline;
+}
+
+.woocommerce ul.products li.product mark {
+  color: var(--nv-text-color);
 }
 
 .woocommerce.single .nv-woo-filters {
@@ -449,7 +453,7 @@
 }
 
 .woocommerce-review-link {
-  color: #676767;
+  color: var(--nv-text-color);
   font-size: .85em;
 }
 
@@ -491,12 +495,16 @@
 
 .woocommerce .reset_variations {
   display: block;
-  color: #676767;
 }
 
 .variations select {
+  color: var(--nv-text-color);
   width: 100%;
   height: auto;
+}
+
+.variations select option {
+  background-color: var(--nv-site-bg);
 }
 
 .woocommerce div.product .woocommerce-tabs ul.tabs li {
@@ -636,7 +644,7 @@ section.exclusive .dots-nav {
 
 section.exclusive .dots-nav .dot {
   background: none;
-  border: 1px solid #B7B7B7;
+  border: 1px solid #b7b7b7;
   margin: 5px;
   width: 8px;
   height: 8px;
@@ -1333,7 +1341,7 @@ ul[id^="nv-primary-navigation"] a.button {
   margin-bottom: 0;
   font-size: 1em;
   padding: 9px 12px;
-  background-color: #f7f7f7;
+  background-color: var(--nv-light-bg);
 }
 
 .cross-sells ul.products {

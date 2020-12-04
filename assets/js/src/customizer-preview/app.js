@@ -653,6 +653,15 @@ window.addEventListener( 'load', function () {
 			document.querySelector( 'head' ).appendChild( newNode );
 		}
 	} );
+	wp.customize( 'background_image', function ( value ) {
+		value.bind( function ( newval ) {
+			if ( ! newval ) {
+				document
+					.querySelector( 'body' )
+					.classList.remove( 'custom-background' );
+			}
+		} );
+	} );
 } );
 
 ( function ( $ ) {
