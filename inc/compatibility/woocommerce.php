@@ -79,8 +79,7 @@ class Woocommerce {
 			.woocommerce #review_form #respond input#submit,
 			.woocommerce .price_slider_amount button.button,
 			.woocommerce .button.button-secondary.more-details,
-			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button,
-			.woocommerce a.nv-quick-view-product.top',
+			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button',
 		'hover'   => '
 			,#comments input[type=submit]:hover,
 			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover,
@@ -91,8 +90,7 @@ class Woocommerce {
 			.woocommerce #review_form #respond input#submit:hover,
 			.woocommerce .price_slider_amount button.button:hover,
 			.woocommerce .button.button-secondary.more-details:hover,
-			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button:hover,
-			.woocommerce a.nv-quick-view-product.top:hover',
+			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button:hover',
 	);
 	/**
 	 * Sidebar manager.
@@ -501,7 +499,7 @@ class Woocommerce {
 	 * @return string
 	 */
 	public function add_secondary_btns_padding( $selectors ) {
-		return ( $selectors . $this->secondary_buttons_selectors['default'] );
+		return ( $selectors . $this->secondary_buttons_selectors['default'] . ',.woocommerce a.nv-quick-view-product.top' );
 	}
 
 	/**
