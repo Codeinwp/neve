@@ -1,3 +1,11 @@
+#### [Version 2.9.0](https://github.com/Codeinwp/neve/compare/v2.8.4...v2.9.0) (2020-11-24)
+
+- [Feat] Globally linked Color Palettes
+- [Feat] Compatibility with Template Cloud and single page templates import
+- [Feat] Adds compatibility for more Checkout styles
+- [Fix] Compatibility with the Visualizer plugin
+- New Gutenberg Starter Sites
+
 ##### [Version 2.8.4](https://github.com/Codeinwp/neve/compare/v2.8.3...v2.8.4) (2020-11-02)
 
 - [Fix] Warning jQuery .load() function is deprecated
