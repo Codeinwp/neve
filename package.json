@@ -43,7 +43,7 @@
 		"babel-loader": "^8.2.2",
 		"compare-versions": "^3.6.0",
 		"conventional-changelog-simple-preset": "^1.0.14",
-		"core-js": "^3.8.0",
+		"core-js": "^3.8.1",
 		"cross-env": "^7.0.3",
 		"cypress": "6.0.0",
 		"cypress-file-upload": "^4.1.1",
