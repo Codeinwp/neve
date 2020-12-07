@@ -9,6 +9,13 @@ const PaletteSelector = ( { values, save } ) => {
 	const [ isOpenModal, setIsOpenModal ] = useState( false );
 	const [ willDelete, setWillDelete ] = useState( '' );
 
+	const PREVIEW_COLORS = [
+		'nv-primary-accent',
+		'nv-dark-bg',
+		'nv-light-bg',
+		'nv-site-bg',
+	];
+
 	const deletePalette = () => {
 		const nextValues = { ...values };
 		if ( activePalette === willDelete ) {
@@ -110,15 +117,17 @@ const PaletteSelector = ( { values, save } ) => {
 							} }
 							key={ name.toLowerCase() }
 						>
-							{ Object.values( colors )
-								.splice( 0, 4 )
-								.map( ( color, index ) => (
+							{ PREVIEW_COLORS.map( ( color, index ) => {
+								return (
 									<div
 										className="color"
 										key={ index }
-										style={ { backgroundColor: color } }
+										style={ {
+											backgroundColor: colors[ color ],
+										} }
 									/>
-								) ) }
+								);
+							} ) }
 							<span className="title">{ name }</span>
 						</button>
 					</div>
