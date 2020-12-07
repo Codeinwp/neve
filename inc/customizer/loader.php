@@ -103,6 +103,10 @@ class Loader {
 		);
 		wp_enqueue_script( 'react-controls' );
 
+		if ( function_exists( 'wp_set_script_translations' ) ) {
+			wp_set_script_translations( 'react-controls', 'neve' );
+		}
+
 		wp_register_style( 'react-controls', $bundle_path . 'style-controls.css', [ 'wp-components' ], $dependencies['version'] );
 		wp_style_add_data( 'react-controls', 'rtl', 'replace' );
 		wp_enqueue_style( 'react-controls' );

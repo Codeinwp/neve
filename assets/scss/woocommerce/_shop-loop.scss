@@ -36,7 +36,7 @@
 
 //<editor-fold desc="Product title link">
 .woocommerce ul.products li.product {
-	a {
+	a:not(.nv-quick-view-product) {
 		color: var(--nv-text-color);
 
 		&:hover h2 {

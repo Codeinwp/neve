@@ -1330,6 +1330,8 @@ function neve_get_global_colors_default( $migrated = false ) {
 	$old_text_color       = get_theme_mod( 'neve_text_color', '#393939' );
 	$old_bg_color         = '#' . get_theme_mod( 'background_color', 'ffffff' );
 
+	add_filter( 'theme_mod_background_color', '__return_empty_string' );
+
 	return [
 		'activePalette' => 'base',
 		'palettes'      => [

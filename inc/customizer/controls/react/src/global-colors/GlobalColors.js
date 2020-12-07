@@ -59,11 +59,6 @@ const GlobalColors = ( { control } ) => {
 				save={ updateValues }
 				defaults={ defaultValues }
 			/>
-			<p>
-				<a href="https://docs.themeisle.com/article/1314-global-colors-in-neve">
-					{ __( 'How the color system works', 'neve' ) }
-				</a>
-			</p>
 		</div>
 	);
 };
