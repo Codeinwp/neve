@@ -80,36 +80,44 @@ class ButtonAppearanceComponent extends Component {
 		const radiusOptions = [
 			{
 				type: 'top',
+				label: __( 'Top', 'neve' ),
 				value: this.state.borderRadius.top,
 			},
 			{
 				type: 'right',
+				label: __( 'Right', 'neve' ),
 				value: this.state.borderRadius.right,
 			},
 			{
 				type: 'bottom',
+				label: __( 'Bottom', 'neve' ),
 				value: this.state.borderRadius.bottom,
 			},
 			{
 				type: 'left',
+				label: __( 'Left', 'neve' ),
 				value: this.state.borderRadius.left,
 			},
 		];
 		const widthOptions = [
 			{
 				type: 'top',
+				label: __( 'Top', 'neve' ),
 				value: this.state.borderWidth.top,
 			},
 			{
 				type: 'right',
+				label: __( 'Right', 'neve' ),
 				value: this.state.borderWidth.right,
 			},
 			{
 				type: 'bottom',
+				label: __( 'Bottom', 'neve' ),
 				value: this.state.borderWidth.bottom,
 			},
 			{
 				type: 'left',
+				label: __( 'Left', 'neve' ),
 				value: this.state.borderWidth.left,
 			},
 		];

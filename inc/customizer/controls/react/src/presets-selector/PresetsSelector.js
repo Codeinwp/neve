@@ -42,7 +42,7 @@ class PresetsSelector extends Component {
 				<div className="search">
 					<input
 						type="search"
-						placeholder={ __( 'Search Header Presets…' ) }
+						placeholder={ __( 'Search Header Presets…', 'neve' ) }
 						onChange={ ( e ) => {
 							this.setState( { search: e.target.value } );
 						} }
