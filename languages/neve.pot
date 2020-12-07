@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.8.4\n"
+"Project-Id-Version: Neve 2.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-12-04T13:52:13+00:00\n"
+"POT-Creation-Date: 2020-12-07T09:24:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -1224,7 +1224,7 @@ msgstr ""
 msgid "Oops! Something went wrong."
 msgstr ""
 
-#: inc/compatibility/woocommerce.php:356
+#: inc/compatibility/woocommerce.php:346
 msgid "Filter"
 msgstr ""
 
@@ -1336,6 +1336,10 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/GlobalColorsPicker.js:28
 msgid "Global Colors"
+msgstr ""
+
+#: inc/customizer/options/colors_background.php:99
+msgid "How the color system works"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:80
@@ -2486,30 +2490,30 @@ msgid "Toggle Visibility"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:58
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:65
 msgid "Remove Palette"
 msgstr ""
 
 #. translators: %s - name of palette that will be deleted.
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:70
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:77
 msgid "Are you sure you want to delete the %s palette?"
 msgstr ""
 
 #. translators: %s - name of palette that will be deleted.
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:78
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:85
 msgid "If this is the currently active palette, the current palette will be switched to the Base one."
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:89
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:96
 msgid "Delete"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/PaletteForm.js:89
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:98
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:105
 msgid "Cancel"
 msgstr ""
 
@@ -2536,9 +2540,4 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/PaletteForm.js:98
 msgid "Add"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/GlobalColors.js:64
-msgid "How the color system works"
 msgstr ""
