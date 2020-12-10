@@ -122,7 +122,9 @@ function handleSearch() {
 			e.preventDefault();
 			e.stopPropagation();
 			toggleClass( searchItem, 'active' );
-			searchItem.querySelector( '.search-field' ).focus();
+			setTimeout( () => {
+				searchItem.querySelector( '.search-field' ).focus();
+			}, 50 );
 			if ( ! isMobile() ) {
 				createNavOverlay( searchItem, 'active' );
 			}
