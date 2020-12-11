@@ -16,15 +16,22 @@
 	height: auto;
 	box-shadow: none !important;
 	padding: 3px 4px !important;
+	min-width: unset !important;
 
-	svg {
+	svg, .dashicon {
 	  fill: $icon-fill !important;
 	  height: 15px;
 	  width: 16px;
+	  font-size: 15px;
 	}
 
-	&.active-device svg {
-	  fill: $accent-color !important;
+	&.active-device {
+	  svg {
+		fill: $accent-color !important;
+	  }
+	  .dashicon {
+		color: $accent-color !important;
+	  }
 	}
   }
 }
