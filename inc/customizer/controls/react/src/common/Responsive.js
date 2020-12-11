@@ -1,10 +1,8 @@
 import { Button, Tooltip, ButtonGroup } from '@wordpress/components';
-import { useState, useEffect } from '@wordpress/element';
-import { useSelect, useDispatch } from '@wordpress/data';
+import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 const ResponsiveControl = ( {
 	onChange,
@@ -13,13 +11,16 @@ const ResponsiveControl = ( {
 	hideResponsive,
 	children,
 } ) => {
-	const [ view, setView ] = useState( 'desktop' );
-
 	const changeViewType = ( device ) => {
-		setView( device );
 		wp.customize.previewedDevice( device );
 		onChange( device );
 	};
+
+	useEffect( () => {
+		document.addEventListener( 'neveChangedRepsonsivePreview', ( e ) => {
+			changeViewType( e.detail );
+		} );
+	}, [] );
 
 	const dispatchViewChange = ( device ) => {
 		const event = new CustomEvent( 'neveChangedRepsonsivePreview', {
@@ -54,23 +55,14 @@ const ResponsiveControl = ( {
 		deviceMap[ key ] = devices[ key ];
 	} );
 
-	useEffect( () => {
-		document.addEventListener( 'neveChangedRepsonsivePreview', ( e ) => {
-			changeViewType( e.detail );
-		} );
-	}, [] );
-
-	const DeviceButton = ( { device } ) => {
+	const renderDeviceButton = ( device, index ) => {
 		const { tooltip, icon } = deviceMap[ device ];
-		const classes = classnames( device, {
-			'active-device': device === view,
-		} );
 
 		return (
-			<Tooltip text={ tooltip }>
+			<Tooltip text={ tooltip } key={ index }>
 				<Button
 					icon={ icon }
-					className={ classes }
+					className={ device }
 					onClick={ () => {
 						dispatchViewChange( device );
 					} }
@@ -90,13 +82,8 @@ const ResponsiveControl = ( {
 				{ ! hideResponsive && (
 					<div className="floating-controls">
 						<ButtonGroup>
-							{ Object.keys( deviceMap ).map(
-								( device, index ) => (
-									<DeviceButton
-										key={ index }
-										device={ device }
-									/>
-								)
+							{ Object.keys( deviceMap ).map( ( device, index ) =>
+								renderDeviceButton( device, index )
 							) }
 						</ButtonGroup>
 					</div>
