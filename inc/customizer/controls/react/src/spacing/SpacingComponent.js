@@ -7,6 +7,7 @@ import { mergeDeep } from '../common/common';
 
 import { Component } from '@wordpress/element';
 import { Button } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 import { mapValues } from 'lodash';
 
 class SpacingComponent extends Component {
@@ -65,18 +66,22 @@ class SpacingComponent extends Component {
 		const options = [
 			{
 				type: 'top',
+				label: __('Top', 'neve'),
 				value: this.state.value[ this.state.currentDevice ].top,
 			},
 			{
 				type: 'right',
+				label: __('Right', 'neve'),
 				value: this.state.value[ this.state.currentDevice ].right,
 			},
 			{
 				type: 'bottom',
+				label: __('Bottom', 'neve'),
 				value: this.state.value[ this.state.currentDevice ].bottom,
 			},
 			{
 				type: 'left',
+				label: __('Left', 'neve'),
 				value: this.state.value[ this.state.currentDevice ].left,
 			},
 		];

@@ -4,7 +4,7 @@
 
 .editor-styles-wrapper h1.wp-block, .editor-styles-wrapper h1, .editor-styles-wrapper h2.wp-block, .editor-styles-wrapper h2, .editor-styles-wrapper h3.wp-block, .editor-styles-wrapper h3, .editor-styles-wrapper h4.wp-block, .editor-styles-wrapper h4, .editor-styles-wrapper h5.wp-block, .editor-styles-wrapper h5, .editor-styles-wrapper h6.wp-block, .editor-styles-wrapper h6 {
   text-transform: none;
-  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, var(--nv-fallback-ff);
   line-height: 1.68421;
   margin-bottom: 0.8rem;
   letter-spacing: normal;
@@ -39,7 +39,7 @@
 .editor-styles-wrapper .wp-block {
   font-size: 16px;
   font-weight: normal;
-  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, var(--nv-fallback-ff);
   color: var(--nv-text-color);
   line-height: 1.68421;
   text-transform: none;
@@ -51,7 +51,7 @@
 }
 
 .editor-styles-wrapper .wp-block .editor-post-title__block .editor-post-title__input {
-  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, var(--nv-fallback-ff);
   font-size: 1.5em;
   color: var(--nv-text-color);
   line-height: 1.3em;

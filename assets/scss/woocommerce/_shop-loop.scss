@@ -1,6 +1,7 @@
 .orderby {
 	color: var(--nv-text-color);
 	opacity: .8;
+
 	option {
 		background: var(--nv-site-bg);
 	}
@@ -34,12 +35,18 @@
 }
 
 //<editor-fold desc="Product title link">
-.woocommerce ul.products li.product a.woocommerce-loop-product__link {
-	color: var(--nv-text-color);
-
-	&:hover h2 {
+.woocommerce ul.products li.product {
+	a:not(.nv-quick-view-product) {
 		color: var(--nv-text-color);
-		text-decoration: underline;
+
+		&:hover h2 {
+			color: var(--nv-text-color);
+			text-decoration: underline;
+		}
+	}
+
+	mark {
+		color: var(--nv-text-color);
 	}
 }
 

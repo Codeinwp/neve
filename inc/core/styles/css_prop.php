@@ -170,7 +170,7 @@ class Css_Prop {
 				}
 				Font_Manager::add_google_font( $value );
 
-				return sprintf( ' %s: %s; ', $css_prop, $value );
+				return sprintf( ' %s: %s, var(--nv-fallback-ff); ', $css_prop, $value );
 
 				break;
 			case Config::CSS_PROP_TEXT_TRANSFORM:

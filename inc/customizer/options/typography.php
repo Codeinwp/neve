@@ -197,6 +197,35 @@ class Typography extends Base_Customizer {
 				'\Neve\Customizer\Controls\React\Typography'
 			)
 		);
+
+		/**
+		 * Fallback Font Family.
+		 */
+		$this->add_control(
+			new Control(
+				'neve_fallback_font_family',
+				[
+					'transport'         => $this->selective_refresh,
+					'sanitize_callback' => 'sanitize_text_field',
+					'default'           => 'Arial, Helvetica, sans-serif',
+				],
+				[
+					'label'       => esc_html__( 'Fallback Font', 'neve' ),
+					'section'     => 'neve_typography_general',
+					'priority'    => 12,
+					'type'        => 'neve_font_family_control',
+					'input_attrs' => [
+						'system' => true,
+						'link'   => [
+							'string' => __( 'Learn more about fallback fonts', 'neve' ),
+							'url'    => esc_url( 'https://docs.themeisle.com/article/1319-fallback-fonts' ),
+						],
+					],
+				],
+				'\Neve\Customizer\Controls\React\Font_Family'
+			)
+		);
+
 	}
 
 	/**
