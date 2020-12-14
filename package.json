@@ -144,6 +144,6 @@
 		"prop-types": "^15.7.2",
 		"react-sortable-hoc": "^1.11.0",
 		"react-visibility-sensor": "^5.1.1",
-		"tiny-slider": "^2.9.2"
+		"tiny-slider": "^2.9.3"
 	}
 }
