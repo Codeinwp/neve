@@ -125,7 +125,9 @@ Cypress.Commands.add( 'updatePost', updatePost );
 
 Cypress.Commands.add( 'getCustomizerControl', ( slug ) => {
 	cy.window().then( ( win ) => {
-		win.wp.customize.control( slug ).focus();
+		win.wp.customize.bind( 'ready', () => {
+			win.wp.customize.control( slug ).focus();
+		} );
 	} );
 	return cy.get( '#customize-control-' + slug );
 } );

@@ -123,13 +123,15 @@ describe( 'Global Colors', () => {
 		cy.get( '.reset-palette' ).should( 'not.be', 'disabled' ).click();
 
 		cy.window().then( ( win ) => {
-			const controlValue = win.wp.customize
-				.control( 'neve_global_colors' )
-				.setting.get();
-			const nonBlack = Object.values(
-				controlValue.palettes.base.colors
-			).filter( ( item ) => item !== '#000000' );
-			expect( nonBlack ).to.have.length( 9 );
+			win.wp.customize.bind( 'ready', () => {
+				const controlValue = win.wp.customize
+					.control( 'neve_global_colors' )
+					.setting.get();
+				const nonBlack = Object.values(
+					controlValue.palettes.base.colors
+				).filter( ( item ) => item !== '#000000' );
+				expect( nonBlack ).to.have.length( 9 );
+			} );
 		} );
 	} );
 } );

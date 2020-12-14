@@ -30,7 +30,9 @@ describe( 'Single Post Check', () => {
 	const AFTER = () => {
 		cy.login( 'wp-admin/customize.php' );
 		cy.window().then( ( win ) => {
-			win.wp.customize.control( CONTROL ).setting.set( DEFAULT );
+			win.wp.customize.bind( 'ready', () => {
+				win.wp.customize.control( CONTROL ).setting.set( DEFAULT );
+			} );
 		} );
 		aliasRestRoutes();
 		saveCustomizer();
@@ -42,7 +44,9 @@ describe( 'Single Post Check', () => {
 	it( 'All elements hidden', function () {
 		cy.login( 'wp-admin/customize.php' );
 		cy.window().then( ( win ) => {
-			win.wp.customize.control( CONTROL ).setting.set( '[]' );
+			win.wp.customize.bind( 'ready', () => {
+				win.wp.customize.control( CONTROL ).setting.set( '[]' );
+			} );
 		} );
 		aliasRestRoutes();
 		saveCustomizer();
@@ -68,7 +72,9 @@ describe( 'Single Post Check', () => {
 	it( 'All elements enabled and reordered', () => {
 		cy.login( 'wp-admin/customize.php' );
 		cy.window().then( ( win ) => {
-			win.wp.customize.control( CONTROL ).setting.set( REORDERED );
+			win.wp.customize.bind( 'ready', () => {
+				win.wp.customize.control( CONTROL ).setting.set( REORDERED );
+			} );
 		} );
 		aliasRestRoutes();
 		saveCustomizer();
