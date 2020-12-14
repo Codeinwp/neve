@@ -71,7 +71,7 @@
 		"semantic-release": "^17.1.1",
 		"size-limit": "^4.9.1",
 		"url-slug": "^2.3.2",
-		"webpack": "^5.10.0",
+		"webpack": "^5.10.1",
 		"webpack-cli": "^4.2.0"
 	},
 	"scripts": {
