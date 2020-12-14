@@ -316,3 +316,29 @@ function changeNumberInputValue( input, value ) {
 		.clear( { force: true } )
 		.type( '{leftarrow}' + value + '{rightarrow}{backspace}' );
 }
+
+Cypress.Commands.add( 'setCustomizeSettings', ( to ) => {
+	cy.login( '/wp-admin/customize.php' );
+	cy.window()
+		.then( ( win ) => {
+			win.wp.customize.bind( 'ready', () => {
+				Object.keys( to ).map( ( mod ) => {
+					win.wp.customize.control( mod ).setting.set( to[ mod ] );
+				} );
+			} );
+		} )
+		.then( () => {
+			cy.wait( 500 );
+			cy.server()
+				.route(
+					'POST',
+					Cypress.config().baseUrl + '/wp-admin/admin-ajax.php'
+				)
+				.as( 'save' );
+			cy.get( '#save' ).click();
+			cy.wait( '@save' ).then( ( r ) => {
+				expect( r.response.body.success ).to.be.true;
+				expect( r.status ).to.equal( 200 );
+			} );
+		} );
+} );

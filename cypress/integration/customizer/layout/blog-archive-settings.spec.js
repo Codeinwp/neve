@@ -1,29 +1,28 @@
+const AFTER = () => {
+	cy.setCustomizeSettings( {
+		neve_blog_list_alternative_layout: false,
+		neve_enable_masonry: false,
+		neve_grid_layout: '{"desktop":1,"tablet":1,"mobile":1}',
+		neve_blog_archive_layout: 'grid',
+		neve_post_excerpt_length: 25,
+		neve_post_thumbnail_box_shadow: 0,
+		neve_post_content_ordering: '["thumbnail","title-meta", "excerpt"]',
+		neve_pagination_type: 'number',
+		neve_author_avatar: false,
+	} );
+};
+
 describe( 'Blog/Archive 1 / Default Layout', () => {
 	const BEFORE = () => {
 		cy.insertPost( 'Blog test post', 'Blog test post.', 'post', true );
 		cy.login( '/wp-admin/customize.php' );
-		cy.window().then( ( win ) => {
-			win.wp.customize.bind( 'ready', () => {
-				win.wp.customize
-					.control( 'neve_blog_archive_layout' )
-					.setting.set( 'default' );
-				win.wp.customize
-					.control( 'neve_post_excerpt_length' )
-					.setting.set( 15 );
-				win.wp.customize
-					.control( 'neve_post_thumbnail_box_shadow' )
-					.setting.set( 4 );
-				win.wp.customize
-					.control( 'neve_post_content_ordering' )
-					.setting.set( '["thumbnail","excerpt","title-meta"]' );
-				win.wp.customize
-					.control( 'neve_post_meta_ordering' )
-					.setting.set( '["date", "author", "category"]' );
-				win.wp.customize
-					.control( 'neve_pagination_type' )
-					.setting.set( 'number' );
-				SAVE_CUSTOMIZER();
-			} );
+		cy.setCustomizeSettings( {
+			neve_blog_archive_layout: 'default',
+			neve_post_excerpt_length: 15,
+			neve_post_thumbnail_box_shadow: 4,
+			neve_post_content_ordering: '["thumbnail","excerpt","title-meta"]',
+			neve_post_meta_ordering: '["date", "author", "category"]',
+			neve_pagination_type: 'number',
 		} );
 	};
 
@@ -116,60 +115,34 @@ describe( 'Blog/Archive 1 / Default Layout', () => {
 	} );
 
 	it( 'Alternative layout', () => {
-		cy.login( '/wp-admin/customize.php' );
-		cy.window().then( ( win ) => {
-			win.wp.customize.bind( 'ready', () => {
-				win.wp.customize
-					.control( 'neve_blog_list_alternative_layout' )
-					.setting.set( true );
-				SAVE_CUSTOMIZER();
+		cy.setCustomizeSettings( { neve_blog_list_alternative_layout: true } );
 
-				cy.visit( '/' );
-				let count = 0;
-				cy.get( 'article' ).each( ( el ) => {
-					cy.get( el ).should( 'have.class', 'layout-alternative' );
-					if ( count % 2 === 0 ) {
-						cy.get( el )
-							.find( '.content' )
-							.should(
-								'have.css',
-								'flex-direction',
-								'row-reverse'
-							);
-					} else {
-						cy.get( el )
-							.find( '.content' )
-							.should( 'have.css', 'flex-direction', 'row' );
-					}
-					count++;
-				} );
-			} );
+		cy.visit( '/' );
+		let count = 0;
+		cy.get( 'article' ).each( ( el ) => {
+			cy.get( el ).should( 'have.class', 'layout-alternative' );
+			if ( count % 2 === 0 ) {
+				cy.get( el )
+					.find( '.content' )
+					.should( 'have.css', 'flex-direction', 'row-reverse' );
+			} else {
+				cy.get( el )
+					.find( '.content' )
+					.should( 'have.css', 'flex-direction', 'row' );
+			}
+			count++;
 		} );
 	} );
 } );
 
 describe( 'Blog/Archive 2 / Grid Layout', () => {
 	const BEFORE = () => {
-		cy.login( '/wp-admin/customize.php' );
-		cy.window().then( ( win ) => {
-			win.wp.customize.bind( 'ready', () => {
-				win.wp.customize
-					.control( 'neve_blog_archive_layout' )
-					.setting.set( 'grid' );
-				win.wp.customize
-					.control( 'neve_grid_layout' )
-					.setting.set( '{"desktop":3,"tablet":2,"mobile":1}' );
-				win.wp.customize
-					.control( 'neve_pagination_type' )
-					.setting.set( 'infinite' );
-				win.wp.customize
-					.control( 'neve_enable_masonry' )
-					.setting.set( true );
-				win.wp.customize
-					.control( 'neve_author_avatar' )
-					.setting.set( true );
-				SAVE_CUSTOMIZER();
-			} );
+		cy.setCustomizeSettings( {
+			neve_blog_archive_layout: 'grid',
+			neve_grid_layout: '{"desktop":3,"tablet":2,"mobile":1}',
+			neve_pagination_type: 'infinite',
+			neve_enable_masonry: true,
+			neve_author_avatar: true,
 		} );
 	};
 
@@ -213,23 +186,11 @@ describe( 'Blog/Archive 2 / Grid Layout', () => {
 
 describe( 'Blog/Archive 3 / Covers Layout', () => {
 	const BEFORE = () => {
-		cy.login( '/wp-admin/customize.php' );
-		cy.window().then( ( win ) => {
-			win.wp.customize.bind( 'ready', () => {
-				win.wp.customize
-					.control( 'neve_blog_archive_layout' )
-					.setting.set( 'covers' );
-				win.wp.customize
-					.control( 'neve_post_thumbnail_box_shadow' )
-					.setting.set( 4 );
-				win.wp.customize
-					.control( 'neve_post_content_ordering' )
-					.setting.set( '["thumbnail","title-meta"]' );
-				win.wp.customize
-					.control( 'neve_blog_covers_text_color' )
-					.setting.set( '#bada55' );
-				SAVE_CUSTOMIZER();
-			} );
+		cy.setCustomizeSettings( {
+			neve_blog_archive_layout: 'covers',
+			neve_post_thumbnail_box_shadow: 4,
+			neve_post_content_ordering: '["thumbnail","title-meta"]',
+			neve_blog_covers_text_color: '#bada55',
 		} );
 	};
 
@@ -278,51 +239,3 @@ describe( 'Blog/Archive 3 / Covers Layout', () => {
 		} );
 	} );
 } );
-
-const AFTER = () => {
-	cy.login( '/wp-admin/customize.php' );
-	cy.window().then( ( win ) => {
-		win.wp.customize.bind( 'ready', () => {
-			win.wp.customize
-				.control( 'neve_blog_list_alternative_layout' )
-				.setting.set( false );
-			win.wp.customize
-				.control( 'neve_enable_masonry' )
-				.setting.set( false );
-			win.wp.customize
-				.control( 'neve_grid_layout' )
-				.setting.set( '{"desktop":1,"tablet":1,"mobile":1}' );
-			win.wp.customize
-				.control( 'neve_blog_archive_layout' )
-				.setting.set( 'grid' );
-			win.wp.customize
-				.control( 'neve_post_excerpt_length' )
-				.setting.set( 25 );
-			win.wp.customize
-				.control( 'neve_post_thumbnail_box_shadow' )
-				.setting.set( 0 );
-			win.wp.customize
-				.control( 'neve_post_content_ordering' )
-				.setting.set( '["thumbnail","title-meta", "excerpt"]' );
-			win.wp.customize
-				.control( 'neve_pagination_type' )
-				.setting.set( 'number' );
-			win.wp.customize
-				.control( 'neve_author_avatar' )
-				.setting.set( false );
-			SAVE_CUSTOMIZER();
-		} );
-	} );
-};
-
-const SAVE_CUSTOMIZER = () => {
-	const HOME = Cypress.config().baseUrl;
-	cy.server()
-		.route( 'POST', HOME + '/wp-admin/admin-ajax.php' )
-		.as( 'customizerSave' );
-	cy.get( '#save' ).click( { force: true } );
-	cy.wait( '@customizerSave' ).then( ( req ) => {
-		expect( req.response.body.success ).to.be.true;
-		expect( req.status ).to.equal( 200 );
-	} );
-};
