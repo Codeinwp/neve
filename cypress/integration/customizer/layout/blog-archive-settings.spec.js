@@ -123,23 +123,27 @@ describe( 'Blog/Archive 1 / Default Layout', () => {
 					.control( 'neve_blog_list_alternative_layout' )
 					.setting.set( true );
 				SAVE_CUSTOMIZER();
-			} );
-		} );
 
-		cy.visit( '/' );
-		let count = 0;
-		cy.get( 'article' ).each( ( el ) => {
-			cy.get( el ).should( 'have.class', 'layout-alternative' );
-			if ( count % 2 === 0 ) {
-				cy.get( el )
-					.find( '.content' )
-					.should( 'have.css', 'flex-direction', 'row-reverse' );
-			} else {
-				cy.get( el )
-					.find( '.content' )
-					.should( 'have.css', 'flex-direction', 'row' );
-			}
-			count++;
+				cy.visit( '/' );
+				let count = 0;
+				cy.get( 'article' ).each( ( el ) => {
+					cy.get( el ).should( 'have.class', 'layout-alternative' );
+					if ( count % 2 === 0 ) {
+						cy.get( el )
+							.find( '.content' )
+							.should(
+								'have.css',
+								'flex-direction',
+								'row-reverse'
+							);
+					} else {
+						cy.get( el )
+							.find( '.content' )
+							.should( 'have.css', 'flex-direction', 'row' );
+					}
+					count++;
+				} );
+			} );
 		} );
 	} );
 } );

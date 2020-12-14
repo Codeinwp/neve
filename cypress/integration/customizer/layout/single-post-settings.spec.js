@@ -8,22 +8,10 @@ describe( 'Single Post Check', () => {
 		cy.login();
 		cy.visit( '/markup-image-alignment/' );
 		cy.get( '#wp-admin-bar-edit' ).click();
-
 		cy.clearWelcome();
-		cy.get( '.components-panel__body' ).each( ( el ) => {
-			cy.get( el )
-				.invoke( 'attr', 'class' )
-				.then( ( className ) => {
-					if ( ! className.includes( 'is-opened' ) ) {
-						cy.get( el ).click();
-					}
-				} );
-		} );
-		cy.get( '.components-checkbox-control__label' )
-			.contains( 'Allow comments' )
-			.parent()
-			.find( '.components-checkbox-control__input' )
-			.click();
+		cy.wait( 1000 );
+		cy.get( '.components-panel__body' ).contains( 'Discussion' ).click();
+		cy.get( 'label' ).contains( 'Allow comments' ).click();
 		cy.get( 'button' ).contains( 'Update' ).click();
 	};
 
@@ -32,10 +20,10 @@ describe( 'Single Post Check', () => {
 		cy.window().then( ( win ) => {
 			win.wp.customize.bind( 'ready', () => {
 				win.wp.customize.control( CONTROL ).setting.set( DEFAULT );
+				aliasRestRoutes();
+				saveCustomizer();
 			} );
 		} );
-		aliasRestRoutes();
-		saveCustomizer();
 	};
 
 	before( () => BEFORE() );
@@ -46,26 +34,26 @@ describe( 'Single Post Check', () => {
 		cy.window().then( ( win ) => {
 			win.wp.customize.bind( 'ready', () => {
 				win.wp.customize.control( CONTROL ).setting.set( '[]' );
+				aliasRestRoutes();
+				saveCustomizer();
+
+				const HIDDEN = [
+					'.entry-header',
+					'.nv-thumb-wrap',
+					'.entry-content',
+					'.nv-tags-list',
+					'.comments-area',
+					'.nv-post-navigation',
+				];
+
+				cy.visit( '/markup-image-alignment/' );
+				HIDDEN.forEach( ( className ) => {
+					cy.get( '.nv-single-post-wrap' ).should(
+						'not.have.descendants',
+						className
+					);
+				} );
 			} );
-		} );
-		aliasRestRoutes();
-		saveCustomizer();
-
-		const HIDDEN = [
-			'.entry-header',
-			'.nv-thumb-wrap',
-			'.entry-content',
-			'.nv-tags-list',
-			'.comments-area',
-			'.nv-post-navigation',
-		];
-
-		cy.visit( '/markup-image-alignment/' );
-		HIDDEN.forEach( ( className ) => {
-			cy.get( '.nv-single-post-wrap' ).should(
-				'not.have.descendants',
-				className
-			);
 		} );
 	} );
 
@@ -74,27 +62,27 @@ describe( 'Single Post Check', () => {
 		cy.window().then( ( win ) => {
 			win.wp.customize.bind( 'ready', () => {
 				win.wp.customize.control( CONTROL ).setting.set( REORDERED );
-			} );
-		} );
-		aliasRestRoutes();
-		saveCustomizer();
+				aliasRestRoutes();
+				saveCustomizer();
 
-		const ORDER = [
-			'nv-post-navigation',
-			'nv-tags-list',
-			'nv-content-wrap',
-			'comments-area',
-			'entry-header',
-			'nv-thumb-wrap',
-		];
+				const ORDER = [
+					'nv-post-navigation',
+					'nv-tags-list',
+					'nv-content-wrap',
+					'comments-area',
+					'entry-header',
+					'nv-thumb-wrap',
+				];
 
-		cy.visit( '/markup-image-alignment/' );
-		ORDER.forEach( ( className ) => {
-			cy.get( '.nv-single-post-wrap' )
-				.find( '> *' )
-				.each( ( el, index ) => {
-					cy.get( el ).should( 'have.class', ORDER[ index ] );
+				cy.visit( '/markup-image-alignment/' );
+				ORDER.forEach( ( className ) => {
+					cy.get( '.nv-single-post-wrap' )
+						.find( '> *' )
+						.each( ( el, index ) => {
+							cy.get( el ).should( 'have.class', ORDER[ index ] );
+						} );
 				} );
+			} );
 		} );
 	} );
 } );
