@@ -33,7 +33,6 @@ $devicemap : 'tablet', 'mobile', 'desktop';
   .preview-#{$device} {
 	.neve-responsive-control-bar {
 	  button.#{$device} {
-		pointer-events: none;
 		.dashicon {
 		  color: lighten($accent-color, 20);
 		}
