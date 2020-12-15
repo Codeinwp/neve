@@ -346,5 +346,5 @@ Cypress.Commands.add('waitCustomizerReady', (to) => {
 					win.appReady = true;
 			});
 		});
-	cy.window().should('have.property', 'appReady', true)
+	cy.window({timeout: 15000}).should('have.property', 'appReady', true)
 });
