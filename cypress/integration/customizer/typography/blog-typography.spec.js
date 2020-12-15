@@ -18,7 +18,7 @@ const setup = {
 
 describe( 'Blog Typography', function () {
 	it( 'Sets up blog typography in customizer', function () {
-		cy.goToCustomzier();
+		cy.goToCustomizier();
 		cy.window().then( ( win ) => {
 				win.wp.customize
 					.control( 'neve_archive_typography_post_title' )
