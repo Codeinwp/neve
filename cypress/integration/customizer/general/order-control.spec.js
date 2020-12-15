@@ -2,8 +2,7 @@ describe('Ordering Control', function () {
 	let VALUE = null
 	const CONTROL_ID = '#customize-control-neve_post_content_ordering'
 	const BEFORE_EACH = () => {
-		cy.login('/wp-admin/customize.php');
-		cy.waitCustomizerReady();
+		cy.goToCustomizer();
 		cy.window().then(win => {
 			win.wp.customize.control('neve_post_content_ordering').focus()
 			VALUE = JSON.parse(win.wp.customize.control('neve_post_content_ordering').setting())
@@ -14,8 +13,7 @@ describe('Ordering Control', function () {
 	}
 
 	const BEFORE = () => {
-		cy.login('/wp-admin/customize.php')
-		cy.waitCustomizerReady();
+		cy.goToCustomizer();
 		cy.window().then(win => {
 
 			const defaultValue = JSON.stringify(["thumbnail", "title-meta", "excerpt"]);

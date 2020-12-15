@@ -15,7 +15,8 @@ const AFTER = () => {
 describe( 'Blog/Archive 1 / Default Layout', () => {
 	const BEFORE = () => {
 		cy.insertPost( 'Blog test post', 'Blog test post.', 'post', true );
-		cy.login( '/wp-admin/customize.php' );
+
+		cy.goToCustomizer();
 		cy.setCustomizeSettings( {
 			neve_blog_archive_layout: 'default',
 			neve_post_excerpt_length: 15,

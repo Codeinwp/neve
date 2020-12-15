@@ -29,7 +29,8 @@ describe( 'Container Settings', function() {
 	} );
 
 	it( 'Setup customizer container width.', function() {
-		cy.login( '/wp-admin/customize.php' );
+
+		cy.goToCustomizer();
 		aliasRestRoutes();
 		cy.get( '#accordion-panel-neve_layout' ).click();
 		cy.get( '#accordion-section-neve_container' ).click();
@@ -69,7 +70,8 @@ describe( 'Container Settings', function() {
 	} );
 
 	it( 'Setup customizer container style.', function() {
-		cy.login( '/wp-admin/customize.php' );
+
+		cy.goToCustomizer();
 		aliasRestRoutes();
 		cy.get( '#accordion-panel-neve_layout' ).click();
 		cy.get( '#accordion-section-neve_container' ).click();
@@ -97,7 +99,8 @@ describe( 'Container Settings', function() {
 
 
 	it( 'Go back to defaults.', function() {
-		cy.login( '/wp-admin/customize.php' );
+
+		cy.goToCustomizer();
 		aliasRestRoutes();
 		cy.get( '#accordion-panel-neve_layout' ).click();
 		cy.get( '#accordion-section-neve_container' ).click();

@@ -124,7 +124,6 @@ Cypress.Commands.add(
 Cypress.Commands.add( 'updatePost', updatePost );
 
 Cypress.Commands.add( 'getCustomizerControl', ( slug ) => {
-	cy.waitCustomizerReady();
 	cy.window().then( ( win ) => {
 			win.wp.customize.control( slug ).focus();
 	} );
@@ -317,8 +316,7 @@ function changeNumberInputValue( input, value ) {
 }
 
 Cypress.Commands.add('setCustomizeSettings', (to) => {
-	cy.login('/wp-admin/customize.php');
-	cy.waitCustomizerReady();
+	cy.goToCustomizer();
 	cy.window()
 		.then((win) => {
 			Object.keys(to).map((mod) => {
@@ -339,7 +337,9 @@ Cypress.Commands.add('setCustomizeSettings', (to) => {
 	});
 });
 
-Cypress.Commands.add('waitCustomizerReady', (to) => {
+Cypress.Commands.add('goToCustomizer', (to) => {
+
+	cy.login('/wp-admin/customize.php')
 	cy.window()
 		.then((win) => {
 			win.wp.customize.bind('ready', () => {
