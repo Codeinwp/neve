@@ -1,9 +1,11 @@
 describe( 'Search Icon Component', function () {
+	const defaultHFG =
+		'{"desktop":{"top":[],"main":{"logo":{"id":"logo","width":4,"x":0,"settings":{"align":"left"}},"primary-menu":{"id":"primary-menu","settings":{"align":"right"},"width":8,"x":4}},"bottom":[]},"mobile":{"top":[],"main":{"logo":{"id":"logo","width":8,"x":0},"nav-icon":{"id":"nav-icon","width":4,"x":8}},"bottom":[],"sidebar":{"primary-menu":{"id":"primary-menu","width":8,"x":0}}}}';
 	const withSearch =
 		'{"desktop":{"top":[{"x":0,"y":1,"width":1,"height":1,"id":"header_search_responsive"}],"main":[{"x":0,"y":1,"width":4,"height":1,"id":"logo"},{"x":4,"y":1,"width":8,"height":1,"id":"primary-menu"}],"bottom":[]},"mobile":{"top":[],"main":[{"x":0,"y":1,"width":8,"height":1,"id":"logo"},{"x":8,"y":1,"width":4,"height":1,"id":"nav-icon"}],"bottom":[],"sidebar":[{"x":0,"y":1,"width":8,"height":1,"id":"primary-menu"}]}}';
 
 	const AFTER = () => {
-		cy.setCustomizeSettings( { hfg_header_layout: false } );
+		cy.setCustomizeSettings( { hfg_header_layout: defaultHFG } );
 	};
 	const BEFORE = () => {
 		cy.setCustomizeSettings( { hfg_header_layout: withSearch } );
