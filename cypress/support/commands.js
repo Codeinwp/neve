@@ -321,7 +321,7 @@ Cypress.Commands.add('setCustomizeSettings', (to) => {
 	cy.window()
 		.then((win) => {
 			Object.keys(to).map((mod) => {
-				win.wp.customize.control(mod).setting.set(to[mod].toString());
+				win.wp.customize.control(mod).setting.set(to[mod]);
 			});
 		});
 	cy.wait(500);
