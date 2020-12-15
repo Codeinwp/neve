@@ -19,6 +19,17 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 2.9.2](https://github.com/Codeinwp/neve/compare/v2.9.1...v2.9.2) (2020-12-15)
+
+- [Fix] Customizer tabs not opening in Windows browsers
+- [Fix] Syntax error causing errors
+- [Fix] Search input not focused when opened from the Search Icon component
+- [Fix] Individual page settings not applying to the Shop page
+- [Fix] Composer requiring PHP greater than 7.1.0
+
+
+
+
 ##### [Version 2.9.1](https://github.com/Codeinwp/neve/compare/v2.9.0...v2.9.1) (2020-12-07)
 
 - [Feat] New Fallback Font option
