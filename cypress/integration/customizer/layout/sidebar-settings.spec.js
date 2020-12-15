@@ -1,7 +1,8 @@
 describe( 'Sidebar/Content Settings', function() {
 
 	it( 'Setup customizer site wide Sidebar settings.', function() {
-		cy.login( '/wp-admin/customize.php' );
+
+		cy.goToCustomizer();
 		aliasRestRoutes();
 		cy.get( '#accordion-panel-neve_layout' ).click();
 		cy.get( '#accordion-section-neve_sidebar' ).click();
@@ -52,7 +53,8 @@ describe( 'Sidebar/Content Settings', function() {
 	} );
 
 	it( 'Setup customizer site wide Sidebar settings.', function() {
-		cy.login( '/wp-admin/customize.php' );
+
+		cy.goToCustomizer();
 		aliasRestRoutes();
 		cy.get( '#accordion-panel-neve_layout' ).click();
 		cy.get( '#accordion-section-neve_sidebar' ).click();
@@ -131,7 +133,8 @@ describe( 'Sidebar/Content Settings', function() {
 	} );
 
 	it( 'Go back to defaults.', function() {
-		cy.login( '/wp-admin/customize.php' );
+
+		cy.goToCustomizer();
 		aliasRestRoutes();
 		cy.get( '#customize-control-neve_advanced_layout_options label' ).click({force: true});
 		cy.get( '#save' ).click();
