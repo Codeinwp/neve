@@ -7,7 +7,8 @@ function aliasRestRoutes() {
 
 describe( 'AMP Check', function() {
 	it( 'Sets up serach icon on menu top row', function() {
-		cy.login( '/wp-admin/customize.php' );
+
+		cy.goToCustomizer();
 		aliasRestRoutes();
 
 		cy.get( '#accordion-panel-hfg_header' ).should( 'be.visible' ).

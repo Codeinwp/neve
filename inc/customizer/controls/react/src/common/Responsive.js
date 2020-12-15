@@ -1,120 +1,102 @@
+import { Button, Tooltip, ButtonGroup } from '@wordpress/components';
+import { useEffect } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+
 import PropTypes from 'prop-types';
 
-import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
-import { Button, Dashicon, Tooltip, ButtonGroup } from '@wordpress/components';
+const ResponsiveControl = ( {
+	onChange,
+	excluded,
+	controlLabel,
+	hideResponsive,
+	children,
+} ) => {
+	const changeViewType = ( device ) => {
+		wp.customize.previewedDevice( device );
+		onChange( device );
+	};
 
-class ResponsiveControl extends Component {
-	constructor( props ) {
-		super( props );
-		this.state = {
-			view: 'desktop',
-		};
-		this.linkResponsiveButtons();
-	}
-
-	render() {
-		const { view } = this.state;
-		const devices = {
-			desktop: {
-				tooltip: __( 'Desktop', 'neve' ),
-				icon: 'desktop',
-			},
-			tablet: {
-				tooltip: __( 'Tablet', 'neve' ),
-				icon: 'tablet',
-			},
-			mobile: {
-				tooltip: __( 'Mobile', 'neve' ),
-				icon: 'smartphone',
-			},
-		};
-		const { excluded } = this.props;
-		const deviceMap = {};
-		Object.keys( devices ).map( ( key ) => {
-			if ( excluded ) {
-				if ( excluded.includes( key ) ) {
-					return false;
-				}
-			}
-			deviceMap[ key ] = devices[ key ];
+	useEffect( () => {
+		document.addEventListener( 'neveChangedRepsonsivePreview', ( e ) => {
+			changeViewType( e.detail );
 		} );
+	}, [] );
 
-		const { controlLabel, hideResponsive } = this.props;
+	const dispatchViewChange = ( device ) => {
+		const event = new CustomEvent( 'neveChangedRepsonsivePreview', {
+			detail: device,
+		} );
+		document.dispatchEvent( event );
+	};
+
+	const devices = {
+		desktop: {
+			tooltip: __( 'Desktop', 'neve' ),
+			icon: 'desktop',
+		},
+		tablet: {
+			tooltip: __( 'Tablet', 'neve' ),
+			icon: 'tablet',
+		},
+		mobile: {
+			tooltip: __( 'Mobile', 'neve' ),
+			icon: 'smartphone',
+		},
+	};
+
+	const deviceMap = {};
+
+	Object.keys( devices ).map( ( key ) => {
+		if ( excluded ) {
+			if ( excluded.includes( key ) ) {
+				return false;
+			}
+		}
+		deviceMap[ key ] = devices[ key ];
+	} );
+
+	const renderDeviceButton = ( device, index ) => {
+		const { tooltip, icon } = deviceMap[ device ];
 
 		return (
-			<Fragment>
-				<div className="neve-responsive-control-bar">
-					{ controlLabel && (
-						<span className="customize-control-title">
-							{ controlLabel }
-						</span>
-					) }
-					{ ! hideResponsive && (
-						<div className="floating-controls">
-							<ButtonGroup>
-								{ Object.keys( deviceMap ).map(
-									( device, index ) => {
-										const { tooltip, icon } = deviceMap[
-											device
-										];
-										return (
-											<Tooltip
-												text={ tooltip }
-												key={ index }
-											>
-												<Button
-													className={
-														( device === view
-															? 'active-device '
-															: '' ) + device
-													}
-													onClick={ () => {
-														const event = new CustomEvent(
-															'neveChangedRepsonsivePreview',
-															{
-																detail: device,
-															}
-														);
-														document.dispatchEvent(
-															event
-														);
-													} }
-												>
-													<Dashicon icon={ icon } />
-												</Button>
-											</Tooltip>
-										);
-									}
-								) }
-							</ButtonGroup>
-						</div>
-					) }
-				</div>
-				{ this.props.children && (
-					<div className="neve-responsive-controls-content">
-						{ this.props.children }
+			<Tooltip text={ tooltip } key={ index }>
+				<Button
+					icon={ icon }
+					className={ device }
+					onClick={ () => {
+						dispatchViewChange( device );
+					} }
+				/>
+			</Tooltip>
+		);
+	};
+
+	return (
+		<>
+			<div className="neve-responsive-control-bar">
+				{ controlLabel && (
+					<span className="customize-control-title">
+						{ controlLabel }
+					</span>
+				) }
+				{ ! hideResponsive && (
+					<div className="floating-controls">
+						<ButtonGroup>
+							{ Object.keys( deviceMap ).map( ( device, index ) =>
+								renderDeviceButton( device, index )
+							) }
+						</ButtonGroup>
 					</div>
 				) }
-			</Fragment>
-		);
-	}
-
-	changeViewType( device ) {
-		this.setState( { view: device } );
-		wp.customize.previewedDevice( device );
-		this.props.onChange( device );
-	}
-
-	linkResponsiveButtons() {
-		const self = this;
-		document.addEventListener( 'neveChangedRepsonsivePreview', function (
-			e
-		) {
-			self.changeViewType( e.detail );
-		} );
-	}
-}
+			</div>
+			{ children && (
+				<div className="neve-responsive-controls-content">
+					{ children }
+				</div>
+			) }
+		</>
+	);
+};
 
 ResponsiveControl.propTypes = {
 	onChange: PropTypes.func,

@@ -8,44 +8,22 @@ describe( 'Single Post Check', () => {
 		cy.login();
 		cy.visit( '/markup-image-alignment/' );
 		cy.get( '#wp-admin-bar-edit' ).click();
-
 		cy.clearWelcome();
-		cy.get( '.components-panel__body' ).each( ( el ) => {
-			cy.get( el )
-				.invoke( 'attr', 'class' )
-				.then( ( className ) => {
-					if ( ! className.includes( 'is-opened' ) ) {
-						cy.get( el ).click();
-					}
-				} );
-		} );
-		cy.get( '.components-checkbox-control__label' )
-			.contains( 'Allow comments' )
-			.parent()
-			.find( '.components-checkbox-control__input' )
-			.click();
+		cy.wait( 1000 );
+		cy.get( '.components-panel__body' ).contains( 'Discussion' ).click();
+		cy.get( 'label' ).contains( 'Allow comments' ).click();
 		cy.get( 'button' ).contains( 'Update' ).click();
 	};
 
 	const AFTER = () => {
-		cy.login( 'wp-admin/customize.php' );
-		cy.window().then( ( win ) => {
-			win.wp.customize.control( CONTROL ).setting.set( DEFAULT );
-		} );
-		aliasRestRoutes();
-		saveCustomizer();
+		cy.setCustomizeSettings( { [ CONTROL ]: DEFAULT } );
 	};
 
 	before( () => BEFORE() );
 	after( () => AFTER() );
 
 	it( 'All elements hidden', function () {
-		cy.login( 'wp-admin/customize.php' );
-		cy.window().then( ( win ) => {
-			win.wp.customize.control( CONTROL ).setting.set( '[]' );
-		} );
-		aliasRestRoutes();
-		saveCustomizer();
+		cy.setCustomizeSettings( { [ CONTROL ]: '[]' } );
 
 		const HIDDEN = [
 			'.entry-header',
@@ -66,12 +44,7 @@ describe( 'Single Post Check', () => {
 	} );
 
 	it( 'All elements enabled and reordered', () => {
-		cy.login( 'wp-admin/customize.php' );
-		cy.window().then( ( win ) => {
-			win.wp.customize.control( CONTROL ).setting.set( REORDERED );
-		} );
-		aliasRestRoutes();
-		saveCustomizer();
+		cy.setCustomizeSettings( { [ CONTROL ]: REORDERED } );
 
 		const ORDER = [
 			'nv-post-navigation',
@@ -92,23 +65,3 @@ describe( 'Single Post Check', () => {
 		} );
 	} );
 } );
-
-/**
- * Alias Rest Routes
- */
-function aliasRestRoutes() {
-	const home = Cypress.config().baseUrl;
-	cy.server()
-		.route( 'POST', home + '/wp-admin/admin-ajax.php' )
-		.as( 'customizerSave' );
-}
-
-/**
- * Publish customizer changes.
- */
-function saveCustomizer() {
-	cy.get( '#save' ).click( { force: true } );
-	cy.wait( '@customizerSave' ).then( ( req ) => {
-		expect( req.status ).to.equal( 200 );
-	} );
-}

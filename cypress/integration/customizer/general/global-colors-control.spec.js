@@ -1,7 +1,7 @@
 describe( 'Global Colors', () => {
 	before( () => {
-		cy.login();
-		cy.visit( '/wp-admin/customize.php' );
+
+		cy.goToCustomizer();
 		cy.getCustomizerControl( 'neve_global_colors' );
 		cy.get( '.neve-global-colors-wrap' ).as( 'wrap' );
 	} );
@@ -77,7 +77,6 @@ describe( 'Global Colors', () => {
 					.and( 'eq', 'rgb(0, 0, 0)' );
 			}
 		);
-
 		cy.wait( 100 )
 			.window()
 			.then( ( win ) => {
@@ -121,15 +120,14 @@ describe( 'Global Colors', () => {
 
 	it( 'Palette Reset', () => {
 		cy.get( '.reset-palette' ).should( 'not.be', 'disabled' ).click();
-
 		cy.window().then( ( win ) => {
-			const controlValue = win.wp.customize
-				.control( 'neve_global_colors' )
-				.setting.get();
-			const nonBlack = Object.values(
-				controlValue.palettes.base.colors
-			).filter( ( item ) => item !== '#000000' );
-			expect( nonBlack ).to.have.length( 9 );
+				const controlValue = win.wp.customize
+					.control( 'neve_global_colors' )
+					.setting.get();
+				const nonBlack = Object.values(
+					controlValue.palettes.base.colors
+				).filter( ( item ) => item !== '#000000' );
+				expect( nonBlack ).to.have.length( 9 );
 		} );
 	} );
 } );
