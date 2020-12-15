@@ -124,10 +124,9 @@ Cypress.Commands.add(
 Cypress.Commands.add( 'updatePost', updatePost );
 
 Cypress.Commands.add( 'getCustomizerControl', ( slug ) => {
+	cy.waitCustomizerReady();
 	cy.window().then( ( win ) => {
-		win.wp.customize.bind( 'ready', () => {
 			win.wp.customize.control( slug ).focus();
-		} );
 	} );
 	return cy.get( '#customize-control-' + slug );
 } );
@@ -317,19 +316,15 @@ function changeNumberInputValue( input, value ) {
 		.type( '{leftarrow}' + value + '{rightarrow}{backspace}' );
 }
 
-Cypress.Commands.add( 'setCustomizeSettings', ( to ) => {
+Cypress.Commands.add('setCustomizeSettings', (to) => {
 	cy.login('/wp-admin/customize.php');
+	cy.waitCustomizerReady();
 	cy.window()
 		.then((win) => {
-
-			win.wp.customize.bind('ready', () => {
-				Object.keys(to).map((mod) => {
-					win.appReady = true;
-					win.wp.customize.control(mod).setting.set(to[mod].toString());
-				});
+			Object.keys(to).map((mod) => {
+				win.wp.customize.control(mod).setting.set(to[mod].toString());
 			});
 		});
-	cy.window().should('have.property', 'appReady', true)
 	cy.wait(500);
 	cy.server()
 		.route(
@@ -342,4 +337,14 @@ Cypress.Commands.add( 'setCustomizeSettings', ( to ) => {
 		expect(r.response.body.success).to.be.true;
 		expect(r.status).to.equal(200);
 	});
-} );
+});
+
+Cypress.Commands.add('waitCustomizerReady', (to) => {
+	cy.window()
+		.then((win) => {
+			win.wp.customize.bind('ready', () => {
+					win.appReady = true;
+			});
+		});
+	cy.window().should('have.property', 'appReady', true)
+});

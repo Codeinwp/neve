@@ -77,7 +77,7 @@ describe( 'Global Colors', () => {
 					.and( 'eq', 'rgb(0, 0, 0)' );
 			}
 		);
-
+		cy.waitCustomizerReady();
 		cy.wait( 100 )
 			.window()
 			.then( ( win ) => {
@@ -120,10 +120,9 @@ describe( 'Global Colors', () => {
 	} );
 
 	it( 'Palette Reset', () => {
+		cy.waitCustomizerReady();
 		cy.get( '.reset-palette' ).should( 'not.be', 'disabled' ).click();
-
 		cy.window().then( ( win ) => {
-			win.wp.customize.bind( 'ready', () => {
 				const controlValue = win.wp.customize
 					.control( 'neve_global_colors' )
 					.setting.get();
@@ -131,7 +130,6 @@ describe( 'Global Colors', () => {
 					controlValue.palettes.base.colors
 				).filter( ( item ) => item !== '#000000' );
 				expect( nonBlack ).to.have.length( 9 );
-			} );
 		} );
 	} );
 } );

@@ -20,8 +20,8 @@ describe( 'Blog Typography', function () {
 	it( 'Sets up blog typography in customizer', function () {
 		cy.login();
 		cy.visit( '/wp-admin/customize.php' );
+		cy.waitCustomizerReady();
 		cy.window().then( ( win ) => {
-			win.wp.customize.bind( 'ready', () => {
 				win.wp.customize
 					.control( 'neve_archive_typography_post_title' )
 					.setting.set( setup );
@@ -40,7 +40,6 @@ describe( 'Blog Typography', function () {
 				win.wp.customize
 					.control( 'neve_single_post_typography_comments_title' )
 					.setting.set( setup );
-			} );
 		} );
 		aliasRestRoutes();
 		cy.get( '#save' ).click();
