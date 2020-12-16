@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.9.0\n"
+"Project-Id-Version: Neve 2.9.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-12-07T09:24:20+00:00\n"
+"POT-Creation-Date: 2020-12-16T08:49:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -157,113 +157,113 @@ msgstr ""
 msgid "Content / Sidebar"
 msgstr ""
 
-#: dashboard/inc/Main.php:361
+#: dashboard/inc/Main.php:375
 msgid "Header/Footer builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:362
+#: dashboard/inc/Main.php:376
 msgid "Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO."
 msgstr ""
 
-#: dashboard/inc/Main.php:367
+#: dashboard/inc/Main.php:381
 msgid "Page Builder Compatibility"
 msgstr ""
 
-#: dashboard/inc/Main.php:368
+#: dashboard/inc/Main.php:382
 msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders."
 msgstr ""
 
-#: dashboard/inc/Main.php:373
+#: dashboard/inc/Main.php:387
 #: inc/customizer/options/upsells.php:90
 msgid "Header Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:374
+#: dashboard/inc/Main.php:388
 msgid "Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:379
+#: dashboard/inc/Main.php:393
 msgid "Page Header Builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:380
+#: dashboard/inc/Main.php:394
 msgid "The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder."
 msgstr ""
 
-#: dashboard/inc/Main.php:385
+#: dashboard/inc/Main.php:399
 #: inc/customizer/options/upsells.php:93
 msgid "Custom Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:386
+#: dashboard/inc/Main.php:400
 msgid "Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme."
 msgstr ""
 
-#: dashboard/inc/Main.php:391
+#: dashboard/inc/Main.php:405
 #: inc/customizer/options/upsells.php:91
 msgid "Blog Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:392
+#: dashboard/inc/Main.php:406
 msgid "Give a huge boost to your entire blogging experience with features specially designed for increased user experience."
 msgstr ""
 
-#: dashboard/inc/Main.php:392
+#: dashboard/inc/Main.php:406
 msgid "Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:397
+#: dashboard/inc/Main.php:411
 #: inc/customizer/options/upsells.php:96
 msgid "Elementor Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:398
+#: dashboard/inc/Main.php:412
 #: inc/customizer/options/upsells.php:101
 msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
 msgstr ""
 
-#: dashboard/inc/Main.php:403
+#: dashboard/inc/Main.php:417
 #: inc/customizer/options/upsells.php:92
 msgid "WooCommerce Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:404
+#: dashboard/inc/Main.php:418
 msgid "Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration."
 msgstr ""
 
-#: dashboard/inc/Main.php:404
+#: dashboard/inc/Main.php:418
 msgid "Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:409
+#: dashboard/inc/Main.php:423
 msgid "LifterLMS Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:410
+#: dashboard/inc/Main.php:424
 msgid "Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations."
 msgstr ""
 
-#: dashboard/inc/Main.php:415
+#: dashboard/inc/Main.php:429
 msgid "Typekit(Adobe) Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:416
+#: dashboard/inc/Main.php:430
 msgid "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options."
 msgstr ""
 
-#: dashboard/inc/Main.php:421
+#: dashboard/inc/Main.php:435
 msgid "White Label"
 msgstr ""
 
-#: dashboard/inc/Main.php:422
+#: dashboard/inc/Main.php:436
 msgid "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own."
 msgstr ""
 
-#: dashboard/inc/Main.php:427
+#: dashboard/inc/Main.php:441
 msgid "Scroll To Top"
 msgstr ""
 
-#: dashboard/inc/Main.php:428
+#: dashboard/inc/Main.php:442
 msgid "Simple but effective module to help you navigate back to the top of the really long pages."
 msgstr ""
 
@@ -2177,17 +2177,17 @@ msgid "Insert Dynamic Tag"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Responsive.js:20
+#: inc/customizer/controls/react/src/common/Responsive.js:34
 msgid "Desktop"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Responsive.js:24
+#: inc/customizer/controls/react/src/common/Responsive.js:38
 msgid "Tablet"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Responsive.js:28
+#: inc/customizer/controls/react/src/common/Responsive.js:42
 msgid "Mobile"
 msgstr ""
 

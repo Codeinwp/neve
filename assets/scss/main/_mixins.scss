@@ -102,7 +102,8 @@
 		position: absolute;
 		left: 30px;
 		width: 60px;
-		top: 15px;
+		top: 50%;
+		transform: translateY(-50%);
 		margin-left: 0;
 	  }
 
