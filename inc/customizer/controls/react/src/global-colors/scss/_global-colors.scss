@@ -6,6 +6,7 @@
 .color-array-wrap {
 	background: #fff;
 	margin-top: 15px;
+  	margin: 0 -15px;
 	padding: 20px 15px 12px;
 	.neve-color-component {
 		margin-bottom: 14px;
@@ -40,5 +41,7 @@
 #customize-control-background_image {
 	background-color: #fff;
 	padding: 15px;
+  	margin: 0 -15px;
+  	width: calc(100% + 30px);
 	box-sizing: border-box;
 }

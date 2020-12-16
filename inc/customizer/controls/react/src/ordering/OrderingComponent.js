@@ -81,7 +81,7 @@ const OrderingComponent = ( { control } ) => {
 	};
 
 	return (
-		<>
+		<div className="neve-white-background-control">
 			{ label && (
 				<label className="customize-control-title">{ label }</label>
 			) }
@@ -116,7 +116,7 @@ const OrderingComponent = ( { control } ) => {
 					/>
 				) ) }
 			</List>
-		</>
+		</div>
 	);
 };
 
