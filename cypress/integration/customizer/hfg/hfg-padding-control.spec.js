@@ -21,7 +21,8 @@ function aliasRestRoutes() {
 
 function setupCustomizer() {
 	// Login to wp and redirect to customizer.
-	cy.visit( '/wp-admin/customize.php' );
+
+	cy.goToCustomizer();
 
 	// Open customizer panel.
 	cy.get( '#accordion-panel-hfg_header' ).should( 'be.visible' ).click();

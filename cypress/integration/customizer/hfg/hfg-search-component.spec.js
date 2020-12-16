@@ -1,90 +1,85 @@
-describe('Search Icon Component', function () {
-  const HFGSection = 'hfg_header'
-  const searchSection = 'header_search_responsive'
+describe( 'Search Icon Component', function () {
+	const defaultHFG =
+		'{"desktop":{"top":[],"main":{"logo":{"id":"logo","width":4,"x":0,"settings":{"align":"left"}},"primary-menu":{"id":"primary-menu","settings":{"align":"right"},"width":8,"x":4}},"bottom":[]},"mobile":{"top":[],"main":{"logo":{"id":"logo","width":8,"x":0},"nav-icon":{"id":"nav-icon","width":4,"x":8}},"bottom":[],"sidebar":{"primary-menu":{"id":"primary-menu","width":8,"x":0}}}}';
+	const withSearch =
+		'{"desktop":{"top":[{"x":0,"y":1,"width":1,"height":1,"id":"header_search_responsive"}],"main":[{"x":0,"y":1,"width":4,"height":1,"id":"logo"},{"x":4,"y":1,"width":8,"height":1,"id":"primary-menu"}],"bottom":[]},"mobile":{"top":[],"main":[{"x":0,"y":1,"width":8,"height":1,"id":"logo"},{"x":8,"y":1,"width":4,"height":1,"id":"nav-icon"}],"bottom":[],"sidebar":[{"x":0,"y":1,"width":8,"height":1,"id":"primary-menu"}]}}';
 
-  it('Adds Icon and sets up field settings', () => {
-	cy.login('/wp-admin/customize.php')
-	cy.window().then((win) => {
-	  win.wp.customize.panel(HFGSection).focus()
-	})
-	cy.server().route('POST', Cypress.config().baseUrl + '/wp-admin/admin-ajax.php').as('save')
-	cy.get('.hfg--builder-show .hfg--panel-desktop .hfg--row-top .row--grid > div:first-child > button').click()
-	cy.get('.hfg--widgets-desktop .grid-stack-item[title="Search Icon"]').click()
-	cy.get('#save').click()
-	cy.wait('@save').then(r => {
-	  expect(r.response.body.success).to.be.true
-	  expect(r.status).to.equal(200)
-	})
-  })
+	const AFTER = () => {
+		cy.setCustomizeSettings( { hfg_header_layout: defaultHFG } );
+	};
+	const BEFORE = () => {
+		cy.setCustomizeSettings( { hfg_header_layout: withSearch } );
+	};
 
-  it('Canvas Search Works on Front End', () => {
-	cy.visit('/')
-	cy.get('.builder-item--header_search_responsive .menu-item-nav-search').as('searchIcon')
-	cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible')
-	cy.get('@searchIcon').should('have.class', 'canvas')
-	cy.get('@searchIcon').find('> .nv-search').click()
-	cy.get('@searchIcon').should('have.class', 'active')
-	cy.get('@searchIcon').find('.nv-nav-search').should('be.visible')
-	cy.get('@searchIcon').find('.close-responsive-search').click()
-	cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible')
-  })
+	before( () => BEFORE() );
+	after( () => AFTER() );
 
-  it('Set search to minimal', () => {
-	cy.login('/wp-admin/customize.php')
-	cy.server().route('POST', Cypress.config().baseUrl + '/wp-admin/admin-ajax.php').as('save')
+	it( 'Canvas Search Works on Front End', () => {
+		cy.visit( '/' );
+		cy.get(
+			'.builder-item--header_search_responsive .menu-item-nav-search'
+		).as( 'searchIcon' );
+		cy.get( '@searchIcon' )
+			.find( '.nv-nav-search' )
+			.should( 'not.be.visible' );
+		cy.get( '@searchIcon' ).should( 'have.class', 'canvas' );
+		cy.get( '@searchIcon' ).find( '> .nv-search' ).click();
+		cy.get( '@searchIcon' ).should( 'have.class', 'active' );
+		cy.get( '@searchIcon' ).find( '.nv-nav-search' ).should( 'be.visible' );
+		cy.get( '@searchIcon' ).find( '.close-responsive-search' ).click();
+		cy.get( '@searchIcon' )
+			.find( '.nv-nav-search' )
+			.should( 'not.be.visible' );
+	} );
 
-	cy.window().then((win) => {
-	  win.wp.customize.section(searchSection).focus()
-	  win.wp.customize.control('header_search_responsive_open_type').setting.set('minimal')
-	})
+	it( 'Set search to minimal', () => {
+		cy.setCustomizeSettings( {
+			header_search_responsive_open_type: 'minimal',
+		} );
+	} );
 
-	cy.get('#save').click()
-	cy.wait('@save').then(r => {
-	  expect(r.response.body.success).to.be.true
-	  expect(r.status).to.equal(200)
-	})
-  })
+	it( 'Minimal Search Works on Front End', () => {
+		cy.visit( '/' );
+		cy.get(
+			'.builder-item--header_search_responsive .menu-item-nav-search'
+		).as( 'searchIcon' );
+		cy.get( '@searchIcon' )
+			.find( '.nv-nav-search' )
+			.should( 'not.be.visible' );
+		cy.get( '@searchIcon' ).should( 'have.class', 'minimal' );
+		cy.get( '@searchIcon' ).find( '> .nv-search' ).click();
+		cy.get( '@searchIcon' ).should( 'have.class', 'active' );
+		cy.get( '@searchIcon' ).find( '.nv-nav-search' ).should( 'be.visible' );
+		cy.get( '.nav-clickaway-overlay' ).should( 'exist' ).click();
+		cy.get( '@searchIcon' )
+			.find( '.nv-nav-search' )
+			.should( 'not.be.visible' );
+		cy.get( '.nav-clickaway-overlay' ).should( 'not.exist' );
+	} );
 
-  it('Minimal Search Works on Front End', () => {
-	cy.visit('/')
-	cy.get('.builder-item--header_search_responsive .menu-item-nav-search').as('searchIcon')
-	cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible')
-	cy.get('@searchIcon').should('have.class', 'minimal')
-	cy.get('@searchIcon').find('> .nv-search').click()
-	cy.get('@searchIcon').should('have.class', 'active')
-	cy.get('@searchIcon').find('.nv-nav-search').should('be.visible')
-	cy.get('.nav-clickaway-overlay').should('exist').click()
-	cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible')
-	cy.get('.nav-clickaway-overlay').should('not.exist')
-  })
+	it( 'Set search to floating', () => {
+		cy.setCustomizeSettings( {
+			header_search_responsive_open_type: 'floating',
+		} );
+	} );
 
-  it('Set search to floating', () => {
-	cy.login('/wp-admin/customize.php')
-	cy.server().route('POST', Cypress.config().baseUrl + '/wp-admin/admin-ajax.php').as('save')
-
-	cy.window().then((win) => {
-	  win.wp.customize.section(searchSection).focus()
-	  win.wp.customize.control('header_search_responsive_open_type').setting.set('floating')
-	})
-
-	cy.get('#save').click()
-	cy.wait('@save').then(r => {
-	  expect(r.response.body.success).to.be.true
-	  expect(r.status).to.equal(200)
-	})
-  })
-
-  it('Floating Search Works on Front End', () => {
-	cy.visit('/')
-	cy.get('.builder-item--header_search_responsive .menu-item-nav-search').as('searchIcon')
-	cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible')
-	cy.get('@searchIcon').should('have.class', 'floating')
-	cy.get('@searchIcon').find('> .nv-search').click()
-	cy.get('@searchIcon').should('have.class', 'active')
-	cy.get('@searchIcon').find('.nv-nav-search').should('be.visible')
-	cy.get('.nav-clickaway-overlay').should('exist')
-	cy.get('@searchIcon').find('.close-responsive-search').click()
-	cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible')
-	cy.get('.nav-clickaway-overlay').should('not.exist')
-  })
-})
+	it( 'Floating Search Works on Front End', () => {
+		cy.visit( '/' );
+		cy.get(
+			'.builder-item--header_search_responsive .menu-item-nav-search'
+		).as( 'searchIcon' );
+		cy.get( '@searchIcon' )
+			.find( '.nv-nav-search' )
+			.should( 'not.be.visible' );
+		cy.get( '@searchIcon' ).should( 'have.class', 'floating' );
+		cy.get( '@searchIcon' ).find( '> .nv-search' ).click();
+		cy.get( '@searchIcon' ).should( 'have.class', 'active' );
+		cy.get( '@searchIcon' ).find( '.nv-nav-search' ).should( 'be.visible' );
+		cy.get( '.nav-clickaway-overlay' ).should( 'exist' );
+		cy.get( '@searchIcon' ).find( '.close-responsive-search' ).click();
+		cy.get( '@searchIcon' )
+			.find( '.nv-nav-search' )
+			.should( 'not.be.visible' );
+		cy.get( '.nav-clickaway-overlay' ).should( 'not.exist' );
+	} );
+} );

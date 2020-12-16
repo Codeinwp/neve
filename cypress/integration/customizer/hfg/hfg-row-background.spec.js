@@ -1,6 +1,7 @@
 describe( 'Header Row Background Control', function() {
 	it( 'Setup Customizer Control', function() {
-		cy.login( '/wp-admin/customize.php' );
+
+		cy.goToCustomizer();
 
 		// Open customizer panel.
 		cy.get( '#accordion-panel-hfg_header' ).should( 'be.visible' ).click();

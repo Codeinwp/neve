@@ -5,8 +5,7 @@ describe( 'Color Control', function () {
 	const home = Cypress.config().baseUrl;
 
 	before( () => {
-		cy.login();
-		cy.visit( '/wp-admin/customize.php' );
+		cy.goToCustomizer();
 	} );
 
 	it( 'Test Color Control - Customizer', function () {
