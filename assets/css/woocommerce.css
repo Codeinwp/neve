@@ -1156,7 +1156,7 @@ section.exclusive .tns-visually-hidden {
   color: var(--nv-text-color);
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item {
+.widget_shopping_cart .cart_list li.mini_cart_item {
   padding: 20px 0;
   border-bottom: 1px solid var(--nv-light-bg);
   display: grid;
@@ -1167,15 +1167,15 @@ section.exclusive .tns-visually-hidden {
   margin: 0;
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item:last-child {
+.widget_shopping_cart .cart_list li.mini_cart_item:last-child {
   border: none;
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item > *:not(.remove) {
+.widget_shopping_cart .cart_list li.mini_cart_item > *:not(.remove) {
   padding-left: 60px;
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item img {
+.widget_shopping_cart .cart_list li.mini_cart_item img {
   position: absolute;
   left: 30px;
   width: 60px;
@@ -1184,7 +1184,7 @@ section.exclusive .tns-visually-hidden {
   margin-left: 0;
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item > a {
+.widget_shopping_cart .cart_list li.mini_cart_item > a {
   padding: 0;
   grid-column: span 11;
   grid-row-start: 1;
@@ -1194,15 +1194,15 @@ section.exclusive .tns-visually-hidden {
   font-weight: normal;
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item > a:hover {
+.widget_shopping_cart .cart_list li.mini_cart_item > a:hover {
   text-decoration: underline;
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item > a:not(.remove) {
+.widget_shopping_cart .cart_list li.mini_cart_item > a:not(.remove) {
   margin-left: 20px;
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item a.remove {
+.widget_shopping_cart .cart_list li.mini_cart_item a.remove {
   grid-column: 1;
   padding: 0;
   top: 50%;
@@ -1210,11 +1210,11 @@ section.exclusive .tns-visually-hidden {
   text-align: center;
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item a.remove:hover {
+.widget_shopping_cart .cart_list li.mini_cart_item a.remove:hover {
   text-decoration: none;
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item span.quantity {
+.widget_shopping_cart .cart_list li.mini_cart_item span.quantity {
   grid-row-start: 2;
   grid-column-start: span 11;
   grid-column-end: -1;
@@ -1222,7 +1222,7 @@ section.exclusive .tns-visually-hidden {
   margin-left: 20px;
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item dl.variation {
+.widget_shopping_cart .cart_list li.mini_cart_item dl.variation {
   border: none;
   grid-row-start: 3;
   grid-column-start: 2;
@@ -1231,7 +1231,7 @@ section.exclusive .tns-visually-hidden {
   text-align: right;
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item dl.variation dt::before {
+.widget_shopping_cart .cart_list li.mini_cart_item dl.variation dt::before {
   width: 100%;
   content: "\A";
   white-space: pre-wrap;
@@ -1239,11 +1239,11 @@ section.exclusive .tns-visually-hidden {
   height: 0;
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item dl.variation dt {
+.widget_shopping_cart .cart_list li.mini_cart_item dl.variation dt {
   margin-left: auto;
 }
 
-.woocommerce .widget_shopping_cart li.mini_cart_item dl.variation dt, .woocommerce .widget_shopping_cart li.mini_cart_item dl.variation dd {
+.widget_shopping_cart .cart_list li.mini_cart_item dl.variation dt, .widget_shopping_cart .cart_list li.mini_cart_item dl.variation dd {
   line-height: 1.2em;
   margin-bottom: 3px;
 }
@@ -1678,6 +1678,18 @@ body.woocommerce-account .woocommerce-form-login .form-row:not(.woocommerce-form
   }
   .nv-nav-cart .widget_shopping_cart_content .woocommerce-mini-cart__buttons {
     padding: 0 20px 20px;
+  }
+  li.menu-item-nav-cart .widget_shopping_cart .cart_list li.mini_cart_item > a:not(.remove), li.menu-item-nav-cart .widget_shopping_cart .cart_list li.mini_cart_item span.quantity {
+    grid-column-start: 2;
+    grid-column-end: -1;
+    margin: 0;
+    padding: 0;
+    opacity: 1;
+  }
+  li.menu-item-nav-cart .widget_shopping_cart .cart_list li.mini_cart_item img {
+    right: 0;
+    left: auto;
+    top: 100%;
   }
   .nv-sidebar-toggle {
     display: none;

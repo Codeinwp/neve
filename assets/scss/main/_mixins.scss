@@ -77,10 +77,7 @@
 @mixin cart-widget() {
   .widget_shopping_cart {
 	color: var(--nv-text-color);
-  }
-
-  .woocommerce .widget_shopping_cart {
-	li.mini_cart_item {
+	.cart_list li.mini_cart_item {
 	  padding: $spacing-sm 0;
 	  border-bottom: $muted-border;
 	  display: grid;
