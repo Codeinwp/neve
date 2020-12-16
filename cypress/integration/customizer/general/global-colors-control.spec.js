@@ -1,6 +1,5 @@
 describe( 'Global Colors', () => {
 	before( () => {
-
 		cy.goToCustomizer();
 		cy.getCustomizerControl( 'neve_global_colors' );
 		cy.get( '.neve-global-colors-wrap' ).as( 'wrap' );
@@ -64,9 +63,13 @@ describe( 'Global Colors', () => {
 	it( 'Changes Colors', () => {
 		cy.get( '.color-array-wrap .neve-color-component' ).each(
 			( control ) => {
-				cy.get( control ).find( 'button.is-secondary' ).click();
+				cy.get( control )
+					.find( 'button.is-secondary' )
+					.click( { force: true } );
 				cy.get( control ).find( 'input' ).clear().type( '#000000' );
-				cy.get( control ).find( '.customize-control-title' ).click();
+				cy.get( control )
+					.find( '.customize-control-title' )
+					.click( { force: true } );
 			}
 		);
 
@@ -121,13 +124,13 @@ describe( 'Global Colors', () => {
 	it( 'Palette Reset', () => {
 		cy.get( '.reset-palette' ).should( 'not.be', 'disabled' ).click();
 		cy.window().then( ( win ) => {
-				const controlValue = win.wp.customize
-					.control( 'neve_global_colors' )
-					.setting.get();
-				const nonBlack = Object.values(
-					controlValue.palettes.base.colors
-				).filter( ( item ) => item !== '#000000' );
-				expect( nonBlack ).to.have.length( 9 );
+			const controlValue = win.wp.customize
+				.control( 'neve_global_colors' )
+				.setting.get();
+			const nonBlack = Object.values(
+				controlValue.palettes.base.colors
+			).filter( ( item ) => item !== '#000000' );
+			expect( nonBlack ).to.have.length( 9 );
 		} );
 	} );
 } );
