@@ -1,23 +1,15 @@
 /* jshint esversion: 6 */
 /* global NeveReactCustomize */
 import PropTypes from 'prop-types';
-
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 
-class DynamicFieldInserter extends Component {
-	constructor( props ) {
-		super( props );
-		this.getOptions = this.getOptions.bind( this );
-	}
-
-	getOptions() {
-		const { onSelect, allowedOptionsTypes } = this.props;
-		const allOptions = NeveReactCustomize.dynamicTags.options;
-
+const DynamicFieldInserter = ( { onSelect, allowedOptionsTypes } ) => {
+	const getOptions = () => {
 		const options = [];
-		allOptions.forEach( ( optionGroup, index ) => {
+		const allOptions = NeveReactCustomize?.dynamicTags?.options || [];
+
+		allOptions.forEach( ( optionGroup, groupIndex ) => {
 			const children = [];
 			Object.keys( optionGroup.controls ).forEach( ( slug, index ) => {
 				if (
@@ -29,6 +21,7 @@ class DynamicFieldInserter extends Component {
 				}
 				children.push(
 					<MenuItem
+						key={ index }
 						onClick={ () => {
 							onSelect( slug, optionGroup.controls[ slug ].type );
 						} }
@@ -39,23 +32,23 @@ class DynamicFieldInserter extends Component {
 			} );
 
 			options.push(
-				<MenuGroup label={ optionGroup.label }>{ children }</MenuGroup>
+				<MenuGroup key={ groupIndex } label={ optionGroup.label }>
+					{ children }
+				</MenuGroup>
 			);
 		} );
 		return options;
-	}
+	};
 
-	render() {
-		return (
-			<DropdownMenu
-				icon="image-filter"
-				label={ __( 'Insert Dynamic Tag', 'neve' ) }
-			>
-				{ () => <Fragment>{ this.getOptions() }</Fragment> }
-			</DropdownMenu>
-		);
-	}
-}
+	return (
+		<DropdownMenu
+			icon="image-filter"
+			label={ __( 'Insert Dynamic Tag', 'neve' ) }
+		>
+			{ getOptions }
+		</DropdownMenu>
+	);
+};
 
 DynamicFieldInserter.propTypes = {
 	allowedOptionsTypes: PropTypes.array.isRequired,

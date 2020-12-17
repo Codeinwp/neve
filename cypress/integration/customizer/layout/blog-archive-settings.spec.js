@@ -27,8 +27,7 @@ describe( 'Blog/Archive 1 / Default Layout', () => {
 		} );
 	};
 
-	before( () => BEFORE() );
-	after( () => AFTER() );
+	it( 'Setup', () => BEFORE() );
 
 	it( 'Tests Default Layout (List)', () => {
 		cy.visit( '/' );
@@ -134,6 +133,8 @@ describe( 'Blog/Archive 1 / Default Layout', () => {
 			count++;
 		} );
 	} );
+
+	it( 'TearDown', () => AFTER() );
 } );
 
 describe( 'Blog/Archive 2 / Grid Layout', () => {
@@ -147,8 +148,7 @@ describe( 'Blog/Archive 2 / Grid Layout', () => {
 		} );
 	};
 
-	before( () => BEFORE() );
-	after( () => AFTER() );
+	it( 'Setup', () => BEFORE() );
 
 	it( 'Grid layout', () => {
 		cy.visit( '/' );
@@ -183,6 +183,8 @@ describe( 'Blog/Archive 2 / Grid Layout', () => {
 				.should( 'have.descendants', '.photo' );
 		} );
 	} );
+
+	it( 'TearDown', () => AFTER() );
 } );
 
 describe( 'Blog/Archive 3 / Covers Layout', () => {
@@ -195,8 +197,7 @@ describe( 'Blog/Archive 3 / Covers Layout', () => {
 		} );
 	};
 
-	before( () => BEFORE() );
-	after( () => AFTER() );
+	it( 'Setup', () => BEFORE() );
 
 	it( 'Covers layout', () => {
 		cy.visit( '/' );
@@ -239,4 +240,6 @@ describe( 'Blog/Archive 3 / Covers Layout', () => {
 				.should( 'have.css', 'color', 'rgb(186, 218, 85)' );
 		} );
 	} );
+
+	it( 'TearDown', () => AFTER() );
 } );
