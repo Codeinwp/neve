@@ -191,6 +191,7 @@ class Header extends Base_View {
 			ob_end_clean();
 			$cart .= $cart_widget;
 		}
+
 		$cart .= '</' . esc_attr( $tag ) . '>';
 
 		return $cart;

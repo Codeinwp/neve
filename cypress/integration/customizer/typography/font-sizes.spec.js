@@ -68,8 +68,7 @@ describe( 'Typography Control', () => {
 		} );
 	};
 
-	before( () => BEFORE() );
-	after( () => AFTER() );
+	it( 'Setup', () => BEFORE() );
 
 	it( 'Test Typography on Front End', () => {
 		cy.visit( '/markup-html-tags-and-formatting/' );
@@ -165,4 +164,6 @@ describe( 'Typography Control', () => {
 			.should( 'have.css', 'letter-spacing' )
 			.and( 'match', new RegExp( SETUP.letterSpacing.desktop, 'g' ) );
 	} );
+
+	it( 'TearDown', () => AFTER() );
 } );
