@@ -693,10 +693,10 @@ section.exclusive .tns-visually-hidden {
 .woocommerce-checkout h3 {
   font-size: 1em;
   line-height: 1.5em;
-  border-bottom: 1px solid var(--nv-light-bg);
   padding: 9px 12px;
   margin-bottom: 0;
-  background-color: #f7f7f7;
+  background-color: transparent;
+  border: none;
 }
 
 .woocommerce-checkout form.woocommerce-checkout {
@@ -903,7 +903,7 @@ section.exclusive .tns-visually-hidden {
 .woocommerce-checkout #payment {
   border-radius: 0;
   border: 1px solid var(--nv-light-bg);
-  background: #ffffff;
+  background: initial;
   font-size: .85em;
   margin-bottom: 40px;
 }
@@ -957,7 +957,7 @@ section.exclusive .tns-visually-hidden {
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order .woocommerce-checkout-review-order-table thead {
-  background-color: #f7f7f7;
+  background-color: inherit;
 }
 
 .woocommerce-checkout .woocommerce-checkout-review-order .woocommerce-checkout-review-order-table thead tr th {
@@ -1721,7 +1721,7 @@ body.woocommerce-account .woocommerce-form-login .form-row:not(.woocommerce-form
   .woocommerce .cart_totals table.shop_table tbody th, .woocommerce .cart_totals table.shop_table tbody td {
     vertical-align: top;
     border-bottom: 0;
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid var(--nv-light-bg);
   }
   .woocommerce .cart_totals table.shop_table tbody #shipping_method {
     margin-top: 0;

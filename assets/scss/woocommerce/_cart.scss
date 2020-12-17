@@ -232,7 +232,7 @@
     th, td {
       vertical-align: top;
       border-bottom: 0;
-      border-top: 1px solid #f0f0f0;
+      border-top: $muted-border;
     }
 
     #shipping_method {
