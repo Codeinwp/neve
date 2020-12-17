@@ -1,3 +1,8 @@
+##### [Version 2.9.3](https://github.com/Codeinwp/neve/compare/v2.9.2...v2.9.3) (2020-12-17)
+
+- [Fix] Cart menu component layout on mobile devices
+- [Fix] Dynamic tags list not inserted for header/footer builder components
+
 ##### [Version 2.9.2](https://github.com/Codeinwp/neve/compare/v2.9.1...v2.9.2) (2020-12-15)
 
 - [Fix] Customizer tabs not opening in Windows browsers
