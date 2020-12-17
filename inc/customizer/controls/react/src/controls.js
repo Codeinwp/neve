@@ -76,8 +76,11 @@ const initBlogPageFocus = () => {
 
 domReady( () => {
 	initDeviceSwitchers();
-	initDynamicFields();
 	initBlogPageFocus();
+} );
+
+wp.customize.bind( 'ready', () => {
+	initDynamicFields();
 } );
 
 window.HFG = {
