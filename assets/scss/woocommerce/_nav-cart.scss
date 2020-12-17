@@ -27,6 +27,7 @@
 .header-menu-sidebar li.menu-item-nav-cart {
   opacity: 0;
   visibility: hidden;
+  display: none;
 }
 //</editor-fold>
 
@@ -90,6 +91,22 @@
 	  .woocommerce-mini-cart__buttons {
 		padding: 0 $spacing-sm $spacing-sm;
 	  }
+	}
+  }
+
+  li.menu-item-nav-cart .widget_shopping_cart .cart_list li.mini_cart_item {
+	> a:not(.remove), span.quantity {
+	  grid-column-start: 2;
+	  grid-column-end: -1;
+	  margin: 0;
+	  padding: 0;
+	  opacity: 1;
+	}
+
+	img{
+	  right: 0;
+	  left: auto;
+	  top: 100%;
 	}
   }
   //</editor-fold>
