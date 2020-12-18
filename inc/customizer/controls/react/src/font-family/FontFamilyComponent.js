@@ -15,7 +15,7 @@ const TypefaceComponent = ( { control } ) => {
 	const controlParams = control.params.input_attrs
 		? {
 				...defaultParams,
-				...JSON.parse( control.params.input_attrs ),
+				...control.params.input_attrs,
 		  }
 		: defaultParams;
 

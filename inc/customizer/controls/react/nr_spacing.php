@@ -53,9 +53,9 @@ class Nr_Spacing extends \WP_Customize_Control {
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['min']     = $this->min;
-		$this->json['max']     = $this->max;
-		$this->json['units']   = $this->units;
+		$this->json['min']        = $this->min;
+		$this->json['max']        = $this->max;
+		$this->json['units']      = $this->units;
 		$this->json['defaultVal'] = $this->default;
 	}
 }

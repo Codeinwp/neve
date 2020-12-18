@@ -30,6 +30,6 @@ class Font_Family extends \WP_Customize_Control {
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['input_attrs'] = is_array( $this->input_attrs ) ? wp_json_encode( $this->input_attrs ) : $this->input_attrs;
+		$this->json['input_attrs'] = $this->input_attrs;
 	}
 }

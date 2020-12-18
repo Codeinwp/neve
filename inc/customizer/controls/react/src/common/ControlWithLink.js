@@ -1,7 +1,6 @@
 /* global NeveProReactCustomize */
-import { maybeParseJson } from './common';
 
-const ControlWithLink = ( { control, children } ) => {
+const ControlWithLink = ( { link, children } ) => {
 	if ( typeof NeveProReactCustomize !== 'undefined' ) {
 		const { whiteLabel } = NeveProReactCustomize;
 
@@ -9,9 +8,6 @@ const ControlWithLink = ( { control, children } ) => {
 			return children;
 		}
 	}
-
-	const attrs = maybeParseJson( control.params.input_attrs );
-	const link = attrs.link || null;
 
 	return (
 		<>
