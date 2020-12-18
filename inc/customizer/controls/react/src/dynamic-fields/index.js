@@ -8,13 +8,13 @@ import { render } from '@wordpress/element';
  *
  * @return {boolean}|{void}
  */
-export const init = function () {
-	if ( ! NeveReactCustomize.dynamicTags ) {
+export const init = () => {
+	const controls = NeveReactCustomize?.dynamicTags?.controls || false;
+	if ( ! controls ) {
 		return false;
 	}
-	const controls = NeveReactCustomize.dynamicTags.controls;
 	NeveReactCustomize.fieldSelection = {};
-	Object.keys( controls ).forEach( function ( controlId, index ) {
+	Object.keys( controls ).forEach( ( controlId, index ) => {
 		const control = wp.customize.control( controlId );
 		if ( typeof control === 'undefined' ) {
 			return false;
