@@ -7,6 +7,7 @@
 
 namespace Neve\Customizer\Options;
 
+use HFG\Traits\Core;
 use Neve\Core\Settings\Config;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
@@ -18,6 +19,7 @@ use Neve\Customizer\Types\Section;
  * @package Neve\Customizer\Options
  */
 class Form_Fields extends Base_Customizer {
+	use Core;
 
 	/**
 	 * Customizer section slug.
@@ -50,10 +52,13 @@ class Form_Fields extends Base_Customizer {
 					'priority' => 45,
 					'title'    => esc_html__( 'Form Fields', 'neve' ),
 				]
-			) 
+			)
 		);
 	}
 
+	/**
+	 * Form fields controls.
+	 */
 	private function add_form_fields_controls() {
 		$this->add_control(
 			new Control(
@@ -70,7 +75,7 @@ class Form_Fields extends Base_Customizer {
 					'controls_to_wrap' => 6,
 				],
 				'Neve\Customizer\Controls\Heading'
-			) 
+			)
 		);
 
 		$this->add_control(
@@ -80,10 +85,10 @@ class Form_Fields extends Base_Customizer {
 					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
 					'transport'         => $this->selective_refresh,
 					'default'           => [
-						'top'    => '',
-						'right'  => '',
-						'left'   => '',
-						'bottom' => '',
+						'top'    => '7',
+						'right'  => '12',
+						'left'   => '7',
+						'bottom' => '12',
 						'unit'   => 'px',
 					],
 				],
@@ -93,70 +98,68 @@ class Form_Fields extends Base_Customizer {
 					'priority'              => 15,
 					'units'                 => [ 'px', 'em' ],
 					'default'               => [
-						'top'    => '',
-						'right'  => '',
-						'left'   => '',
-						'bottom' => '',
+						'top'    => '7',
+						'right'  => '12',
+						'bottom' => '7',
+						'left'   => '12',
 						'unit'   => 'px',
 					],
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'responsive'  => false,
 						'directional' => true,
-					// 'template'    =>
-					// 'body  {
-					// padding-top: {{value.top}};
-					// padding-right: {{value.right}};
-					// padding-bottom: {{value.bottom}};
-					// padding-left: {{value.left}};
-					// }',
+						'template'    =>
+							'body form input:not([type="checkbox"]):not([type="submit"]),
+							 body form textarea,
+							 body form select,
+							 body form select option,
+							 body .woocommerce-checkout .select2-container--default .select2-selection--single,
+							 body .woocommerce form .form-row input.input-text,
+							 body .woocommerce form .form-row textarea,
+							 body #add_payment_method table.cart td.actions .coupon .input-text,
+							 body .woocommerce-cart table.cart td.actions .coupon .input-text,
+							 body .woocommerce-checkout table.cart td.actions .coupon .input-text {
+								 padding-top: {{value.top}};
+								 padding-right: {{value.right}};
+								 padding-bottom: {{value.bottom}};
+								 padding-left: {{value.left}};
+					        }
+					        body form.search-form input[type="search"], form.woocommerce-product-search input[type="search"] {
+					             padding-right: calc({{value.right}} + 33px);
+					        }',
 					],
 				],
 				'\Neve\Customizer\Controls\React\Nr_Spacing'
-			) 
+			)
 		);
+
 
 		$this->add_control(
 			new Control(
-				'neve_form_fields_margin',
+				'neve_form_fields_spacing',
 				[
-					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
+					'sanitize_callback' => 'absint',
 					'transport'         => $this->selective_refresh,
-					'default'           => [
-						'top'    => '',
-						'right'  => '',
-						'left'   => '',
-						'bottom' => '',
-						'unit'   => 'px',
-					],
+					'default'           => 10,
 				],
 				[
-					'label'                 => esc_html__( 'Field Margin', 'neve' ),
+					'label'                 => esc_html__( 'Field Spacing', 'neve' ),
 					'section'               => $this->section_id,
-					'priority'              => 16,
-					'units'                 => [ 'px', 'em' ],
-					'default'               => [
-						'top'    => '',
-						'right'  => '',
-						'left'   => '',
-						'bottom' => '',
-						'unit'   => 'px',
+					'type'                  => 'neve_range_control',
+					'input_attrs'           => [
+						'min'        => 50,
+						'max'        => 100,
+						'defaultVal' => 10,
+						'units'      => [ 'px', 'em' ],
 					],
+					'priority'              => 16,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
-						'responsive'  => false,
-						'directional' => true,
-					// 'template'    =>
-					// 'body  {
-					// padding-top: {{value.top}};
-					// padding-right: {{value.right}};
-					// padding-bottom: {{value.bottom}};
-					// padding-left: {{value.left}};
-					// }',
+						'template' => 'form:not(.search-form):not(.woocommerce-product-search):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:not([type="checkbox"]):not([type="submit"]), form textarea, form select, .woocommerce-page .select2-container--default .select2-selection--single {margin-bottom: {{value}}px;}',
 					],
 				],
-				'\Neve\Customizer\Controls\React\Nr_Spacing'
-			) 
+				'Neve\Customizer\Controls\React\Range'
+			)
 		);
 
 		$this->add_control(
@@ -164,21 +167,34 @@ class Form_Fields extends Base_Customizer {
 				'neve_form_fields_background_color',
 				[
 					'sanitize_callback' => 'neve_sanitize_colors',
-					'default'           => '#ffffff',
+					'default'           => 'var(--nv-site-bg)',
 					'transport'         => $this->selective_refresh,
 				],
 				[
 					'label'                 => esc_html__( 'Field Background Color', 'neve' ),
 					'section'               => $this->section_id,
 					'priority'              => 17,
-					'default'               => '#ffffff',
+					'default'               => 'var(--nv-site-bg)',
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
-						'template' => 'body {background-color: {{value}};}',
+						'template' => '
+							 body form input:not([type="checkbox"]):not([type="submit"]),
+							 body form textarea,
+							 body form select,
+							 body form select option,
+							 body .woocommerce-checkout .select2-container--default .select2-selection--single,
+							 body .woocommerce form .form-row input.input-text,
+							 body .woocommerce form .form-row textarea,
+							 body #add_payment_method table.cart td.actions .coupon .input-text,
+							 body .woocommerce-cart table.cart td.actions .coupon .input-text,
+							 body .woocommerce-checkout table.cart td.actions .coupon .input-text {
+							    background-color: {{value}};
+						    }',
+
 					],
 				],
 				'Neve\Customizer\Controls\React\Color'
-			) 
+			)
 		);
 
 		$this->add_control(
@@ -188,10 +204,10 @@ class Form_Fields extends Base_Customizer {
 					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
 					'transport'         => $this->selective_refresh,
 					'default'           => [
-						'top'    => '',
-						'right'  => '',
-						'left'   => '',
-						'bottom' => '',
+						'top'    => '1',
+						'right'  => '1',
+						'left'   => '1',
+						'bottom' => '1',
 						'unit'   => 'px',
 					],
 				],
@@ -201,27 +217,37 @@ class Form_Fields extends Base_Customizer {
 					'priority'              => 18,
 					'units'                 => [ 'px', 'em' ],
 					'default'               => [
-						'top'    => '',
-						'right'  => '',
-						'left'   => '',
-						'bottom' => '',
+						'top'    => '1',
+						'right'  => '1',
+						'left'   => '1',
+						'bottom' => '1',
 						'unit'   => 'px',
 					],
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'responsive'  => false,
 						'directional' => true,
-					// 'template'    =>
-					// 'body  {
-					// padding-top: {{value.top}};
-					// padding-right: {{value.right}};
-					// padding-bottom: {{value.bottom}};
-					// padding-left: {{value.left}};
-					// }',
+						'template'    =>
+							'
+							 body form input:not([type="checkbox"]):not([type="submit"]),
+							 body form textarea,
+							 body form select,
+							 body form select option,
+							 body .woocommerce-checkout .select2-container--default .select2-selection--single,
+							 body .woocommerce form .form-row input.input-text,
+							 body .woocommerce form .form-row textarea,
+							 body #add_payment_method table.cart td.actions .coupon .input-text,
+							 body .woocommerce-cart table.cart td.actions .coupon .input-text,
+							 body .woocommerce-checkout table.cart td.actions .coupon .input-text {
+                                border-top-width: {{value.top}};
+							    border-right-width: {{value.right}};
+						        border-bottom-width: {{value.bottom}};
+						        border-left-width: {{value.left}};
+					         }',
 					],
 				],
 				'\Neve\Customizer\Controls\React\Nr_Spacing'
-			) 
+			)
 		);
 
 		$this->add_control(
@@ -244,27 +270,36 @@ class Form_Fields extends Base_Customizer {
 					'priority'              => 19,
 					'units'                 => [ 'px', 'em' ],
 					'default'               => [
-						'top'    => '',
-						'right'  => '',
-						'left'   => '',
-						'bottom' => '',
+						'top'    => '3',
+						'right'  => '3',
+						'left'   => '3',
+						'bottom' => '3',
 						'unit'   => 'px',
 					],
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'responsive'  => false,
 						'directional' => true,
-					// 'template'    =>
-					// 'body  {
-					// padding-top: {{value.top}};
-					// padding-right: {{value.right}};
-					// padding-bottom: {{value.bottom}};
-					// padding-left: {{value.left}};
-					// }',
+						'template'    => '
+							body form input:not([type="checkbox"]):not([type="submit"]),
+							body form textarea,
+							body form select,
+							body form select option,
+							body .woocommerce-checkout .select2-container--default .select2-selection--single,
+							body .woocommerce form .form-row input.input-text,
+							body .woocommerce form .form-row textarea,
+							body #add_payment_method table.cart td.actions .coupon .input-text,
+							body .woocommerce-cart table.cart td.actions .coupon .input-text,
+							body .woocommerce-checkout table.cart td.actions .coupon .input-text {
+								border-top-right-radius: {{value.top}};
+								border-bottom-right-radius: {{value.right}};
+								border-bottom-left-radius: {{value.bottom}};
+								border-top-left-radius: {{value.left}};
+							}',
 					],
 				],
 				'\Neve\Customizer\Controls\React\Nr_Spacing'
-			) 
+			)
 		);
 
 
@@ -283,15 +318,29 @@ class Form_Fields extends Base_Customizer {
 					'default'               => '#dddddd',
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
-						'template' => 'body {background-color: {{value}};}',
+						'template' => '
+							body form input:not([type="checkbox"]):not([type="submit"]),
+							body form textarea,
+							body form select,
+							body form select option,
+							body .woocommerce-checkout .select2-container--default .select2-selection--single,
+							body .woocommerce form .form-row input.input-text,
+							body .woocommerce form .form-row textarea,
+							body #add_payment_method table.cart td.actions .coupon .input-text,
+							body .woocommerce-cart table.cart td.actions .coupon .input-text,
+							body .woocommerce-checkout table.cart td.actions .coupon .input-text {
+								border-color: {{value}};
+							}',
 					],
 				],
 				'Neve\Customizer\Controls\React\Color'
-			) 
+			)
 		);
-
 	}
 
+	/**
+	 * Form inputs controls.
+	 */
 	private function add_input_text_controls() {
 		$this->add_control(
 			new Control(
@@ -309,7 +358,7 @@ class Form_Fields extends Base_Customizer {
 					'controls_to_wrap' => 1,
 				],
 				'Neve\Customizer\Controls\Heading'
-			) 
+			)
 		);
 
 		$this->add_control(
@@ -347,13 +396,28 @@ class Form_Fields extends Base_Customizer {
 						),
 					),
 					'type'                  => 'neve_typeface_control',
-					'live_refresh_selector' => 'body',
+					'refresh_on_reset'      => true,
+					'live_refresh_selector' => '
+						body form input:not([type="checkbox"]):not([type="submit"]),
+						body form textarea,
+						body form select,
+						body form select option,
+						body .woocommerce-checkout .select2-container--default .select2-selection--single,
+						body .woocommerce form .form-row input.input-text,
+						body .woocommerce form .form-row textarea,
+						body #add_payment_method table.cart td.actions .coupon .input-text,
+						body .woocommerce-cart table.cart td.actions .coupon .input-text,
+						body .woocommerce-checkout table.cart td.actions .coupon .input-text
+					',
 				],
 				'\Neve\Customizer\Controls\React\Typography'
-			) 
+			)
 		);
 	}
 
+	/**
+	 * Form labels controls.
+	 */
 	private function add_form_labels_controls() {
 		$this->add_control(
 			new Control(
@@ -371,7 +435,7 @@ class Form_Fields extends Base_Customizer {
 					'controls_to_wrap' => 2,
 				],
 				'Neve\Customizer\Controls\Heading'
-			) 
+			)
 		);
 
 		$this->add_control(
@@ -380,18 +444,22 @@ class Form_Fields extends Base_Customizer {
 				[
 					'sanitize_callback' => 'absint',
 					'transport'         => $this->selective_refresh,
-					'default'           => 70,
+					'default'           => 10,
 				],
 				[
-					'label'       => esc_html__( 'Label Spacing', 'neve' ),
-					'section'     => $this->section_id,
-					'type'        => 'neve_range_control',
-					'input_attrs' => [
+					'label'                 => esc_html__( 'Label Spacing', 'neve' ),
+					'section'               => $this->section_id,
+					'type'                  => 'neve_range_control',
+					'input_attrs'           => [
 						'min'        => 50,
 						'max'        => 100,
-						'defaultVal' => 70,
+						'defaultVal' => 10,
 					],
-					'priority'    => 51,
+					'priority'              => 51,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'template' => 'body form label, body .woocommerce form .form-row label {margin-bottom: {{value}}px;}',
+					],
 				],
 				'Neve\Customizer\Controls\React\Range'
 			)
@@ -432,13 +500,17 @@ class Form_Fields extends Base_Customizer {
 						),
 					),
 					'type'                  => 'neve_typeface_control',
-					'live_refresh_selector' => 'body',
+					'refresh_on_reset'      => true,
+					'live_refresh_selector' => 'body form label, body .woocommerce form .form-row label',
 				],
 				'\Neve\Customizer\Controls\React\Typography'
-			) 
+			)
 		);
 	}
 
+	/**
+	 * Form button controls.
+	 */
 	private function add_button_controls() {
 		$this->add_control(
 			new Control(
@@ -465,7 +537,6 @@ class Form_Fields extends Base_Customizer {
 				[
 					'sanitize_callback' => [ $this, 'sanitize_button_type' ],
 					'default'           => 'primary',
-					'transport'         => $this->selective_refresh,
 				],
 				[
 					'label'    => __( 'Button Style', 'neve' ),
@@ -478,12 +549,12 @@ class Form_Fields extends Base_Customizer {
 					],
 					'default'  => 'primary',
 					'link'     => [
-						'url'    => esc_url( 'https://docs.themeisle.com/article/1314-global-colors-in-neve' ),
-						'string' => esc_html__( 'How the color system works', 'neve' ),
+						'focus'  => [ 'section', 'neve_buttons_section' ],
+						'string' => esc_html__( 'Customize the default button styles', 'neve' ),
 					],
 				],
 				'Neve\Customizer\Controls\React\Inline_Select'
-			) 
+			)
 		);
 	}
 

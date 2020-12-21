@@ -410,8 +410,77 @@ class Woocommerce {
 			1
 		);
 
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_FORM_INPUTS_NO_SPACING,
+			array(
+				$this,
+				'add_checkout_fields',
+			),
+			10,
+			1
+		);
+
+
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_FORM_INPUTS_LABELS,
+			array(
+				$this,
+				'add_checkout_labels',
+			),
+			10,
+			1
+		);
+
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_FORM_SEARCH_INPUTS,
+			array(
+				$this,
+				'add_woo_search_input',
+			),
+			10,
+			1
+		);
 		add_filter( 'neve_body_font_family_selectors', array( $this, 'add_font_families' ) );
 		add_filter( 'neve_headings_typeface_selectors', array( $this, 'add_typeface_selectors' ) );
+	}
+
+	/**
+	 * Add checkout labels to style.
+	 *
+	 * @param string $selectors css selectors for labels.
+	 *
+	 * @return string
+	 */
+	public function add_checkout_labels( $selectors ) {
+		return ( $selectors . ', .woocommerce form .form-row label' );
+	}
+
+	/**
+	 * Add checkout fields to style.
+	 *
+	 * @param string $selectors css selectors for checkout fields.
+	 *
+	 * @return string
+	 */
+	public function add_checkout_fields( $selectors ) {
+		return ( $selectors . ',
+		.woocommerce-page .select2-container--default .select2-selection--single,
+		.woocommerce-page .woocommerce form .form-row input.input-text,
+		.woocommerce-page .woocommerce form .form-row textarea,
+		#add_payment_method table.cart td.actions .coupon .input-text,
+		.woocommerce-cart table.cart td.actions .coupon .input-text,
+		.woocommerce-checkout table.cart td.actions .coupon .input-text' );
+	}
+
+	/**
+	 * Add product search input selector.
+	 *
+	 * @param string $selectors css selectors for labels.
+	 *
+	 * @return string
+	 */
+	public function add_woo_search_input( $selectors ) {
+		return ( $selectors . ', form.woocommerce-product-search input[type="search"]' );
 	}
 
 	/**

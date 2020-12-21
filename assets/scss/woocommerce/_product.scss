@@ -285,9 +285,9 @@
 	.single_add_to_cart_button {
 		flex-grow: 0;
 	}
-	.variations select {
-		width: 75%;
-	}
+	//.variations select {
+	//	width: 75%;
+	//}
 	.woocommerce {
 		#review_form .comment-reply-title, .woocommerce-Tabs-panel h2 {
 			font-size: $h4-font-size;
@@ -311,9 +311,9 @@
 			}
 		}
 	}
-	.variations select {
-		height: 35px;
-	}
+	//.variations select {
+	//	height: 35px;
+	//}
 }
 
 .woocommerce ul.products.exclusive-products li.product,

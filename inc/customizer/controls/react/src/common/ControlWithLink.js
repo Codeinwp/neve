@@ -9,12 +9,28 @@ const ControlWithLink = ( { link, children } ) => {
 		}
 	}
 
+	const handleFocus = () => {
+		wp.customize[ link.focus[ 0 ] ]( link.focus[ 1 ] ).focus();
+	};
+
+	const Link = () => {
+		if ( link.focus ) {
+			return (
+				<a href="#" onClick={ handleFocus }>
+					{ link.string }
+				</a>
+			);
+		}
+
+		return <a href={ link.url }>{ link.string }</a>;
+	};
+
 	return (
 		<>
 			{ children }
 			{ link && (
 				<p className="neve-customizer-link">
-					<a href={ link.url }>{ link.string }</a>
+					<Link />
 				</p>
 			) }
 		</>

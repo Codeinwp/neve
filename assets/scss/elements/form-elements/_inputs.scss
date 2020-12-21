@@ -15,14 +15,16 @@ input[type="color"],
 textarea {
   display: inline-block;
   font-size: 14px;
+  transition: all 0.3s ease;
   padding: 7px 12px;
-  color: #333;
   border: 1px solid #dddddd;
   border-radius: 3px;
-  transition: all 0.3s ease;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  outline: none;
+  color: var(--nv-text-color);
+  background-color: var(--nv-site-bg);
 }
 
 input[type="color"],
@@ -50,7 +52,6 @@ select {
 
 label {
   display: inline-block;
-  margin-bottom: $spacing-xs;
 }
 
 fieldset {

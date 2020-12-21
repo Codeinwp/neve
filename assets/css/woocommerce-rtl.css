@@ -755,7 +755,6 @@ section.exclusive .tns-visually-hidden {
 
 .woocommerce-checkout #neve-checkout-coupon .woocommerce-form-login .form-row, .woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row {
   padding: 0;
-  margin-bottom: 20px;
 }
 
 .woocommerce-checkout #neve-checkout-coupon .woocommerce-form-login .lost_password, .woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .lost_password {
@@ -837,7 +836,7 @@ section.exclusive .tns-visually-hidden {
 .woocommerce-checkout .woocommerce-additional-fields .form-row,
 .woocommerce-checkout .woocommerce-account-fields .form-row {
   padding: 0;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 .woocommerce-checkout .woocommerce-billing-fields__field-wrapper textarea,
@@ -1007,6 +1006,24 @@ section.exclusive .tns-visually-hidden {
 .woocommerce-billing-fields__field-wrapper noscript button {
   display: block !important;
   margin: 10px auto 10px 0 !important;
+}
+
+.woocommerce-page .select2-container--default .select2-selection--single {
+  height: auto;
+}
+
+.woocommerce-page .select2-container--default .select2-selection--single,
+.woocommerce-page .select2-results__options {
+  background-color: var(--nv-site-bg);
+}
+
+.woocommerce-page .select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: var(--nv-text-color);
+  line-height: inherit;
+}
+
+.woocommerce-page .select2-container--default .select2-results__option--highlighted[aria-selected], .woocommerce-page .select2-container--default .select2-results__option--highlighted[data-selected] {
+  color: var(--nv-text-color);
 }
 
 .woocommerce ul.products li.product .added_to_cart {
@@ -1620,9 +1637,6 @@ body.woocommerce-account .woocommerce-form-login .form-row:not(.woocommerce-form
   .single_add_to_cart_button {
     flex-grow: 0;
   }
-  .variations select {
-    width: 75%;
-  }
   .woocommerce #review_form .comment-reply-title, .woocommerce .woocommerce-Tabs-panel h2 {
     font-size: 1.25em;
   }
@@ -1728,9 +1742,6 @@ body.woocommerce-account .woocommerce-form-login .form-row:not(.woocommerce-form
   }
   .woocommerce.single .entry-summary > form.cart .wc-forward {
     flex-basis: auto;
-  }
-  .variations select {
-    height: 35px;
   }
   .woocommerce-ordering {
     margin-right: 0;

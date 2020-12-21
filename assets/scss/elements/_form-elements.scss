@@ -38,12 +38,10 @@
     z-index: 3;
     cursor: pointer;
     pointer-events: none;
-    color: $muted-white-med;
     display: flex;
     align-items: center;
     justify-content: center;
     line-height: 0;
-
 	.nv-icon svg {
 	  fill: $muted-white-med;
 	}
@@ -51,7 +49,9 @@
 
   input[type="search"] {
     width: 100%;
-    padding: 8px 45px 7px 12px;
+	display: block;
+	border-style: solid;
+	z-index: 1;
   }
 
   button[type="submit"], input[type="submit"] {
@@ -61,15 +61,15 @@
     position: absolute;
     color: transparent;
     background: 0 0;
-    z-index: 2;
 	min-width: 45px;
     width: 45px;
     border: 0;
     padding: 8px 12px 7px;
     border-radius: 0;
+	z-index: 2;
 
     &:hover {
-      background-color: #eee;
+      background-color: var(--nv-light-bg);
     }
   }
 }

@@ -28,13 +28,14 @@ class Frontend extends Generator {
 				],
 			],
 		];
+		$this->setup_form_buttons();
 		$this->setup_legacy_gutenberg_palette();
 		$this->setup_layout_subscribers();
 		$this->setup_buttons();
 		$this->setup_typography();
 		$this->setup_blog_typography();
 		$this->setup_blog_colors();
-
+		$this->setup_form_fields_style();
 	}
 
 	/**
@@ -93,6 +94,7 @@ class Frontend extends Generator {
 					if ( ! array_key_exists( absint( $value ), $map ) ) {
 						return '';
 					}
+
 					return sprintf( '%s:%s;', $css_prop, $map[ $value ] );
 				},
 			],
@@ -276,7 +278,10 @@ class Frontend extends Generator {
 		$this->_subscribers [] = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_SECONDARY_STYLE . '.background',
+				Config::CSS_PROP_BACKGROUND_COLOR => [
+					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.background',
+					Dynamic_Selector::META_DEFAULT => 'rgba(0,0,0,0)',
+				],
 				Config::CSS_PROP_COLOR            => [
 					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.text',
 					Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
@@ -607,5 +612,169 @@ class Frontend extends Generator {
 			],
 		];
 
+	}
+
+	/**
+	 * Adds form field styles
+	 */
+	private function setup_form_fields_style() {
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_NO_SPACING ] = [
+			Config::CSS_PROP_MARGIN_BOTTOM => Config::MODS_FORM_FIELDS_SPACING,
+		];
+
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS ] = [
+			Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_FORM_FIELDS_BACKGROUND_COLOR,
+			Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_FORM_FIELDS_BORDER_WIDTH,
+			Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_FORM_FIELDS_BORDER_RADIUS,
+			Config::CSS_PROP_BORDER_COLOR     => Config::MODS_FORM_FIELDS_BORDER_COLOR,
+			Config::CSS_PROP_PADDING          => Config::MODS_FORM_FIELDS_PADDING,
+			Config::CSS_PROP_FONT_SIZE        => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontSize',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+			],
+			Config::CSS_PROP_LINE_HEIGHT      => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.lineHeight',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => '',
+			],
+			Config::CSS_PROP_LETTER_SPACING   => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.letterSpacing',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+			],
+			Config::CSS_PROP_FONT_WEIGHT      => [
+				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontWeight',
+			],
+			Config::CSS_PROP_TEXT_TRANSFORM   => [
+				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_TYPEFACE . '.textTransform',
+			],
+		];
+
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_LABELS ] = [
+			Config::CSS_PROP_MARGIN_BOTTOM  => [
+				Dynamic_Selector::META_KEY    => Config::MODS_FORM_FIELDS_LABELS_SPACING,
+				Dynamic_Selector::META_SUFFIX => 'px',
+			],
+			Config::CSS_PROP_FONT_SIZE      => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontSize',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+			],
+			Config::CSS_PROP_LINE_HEIGHT    => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.lineHeight',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => '',
+			],
+			Config::CSS_PROP_LETTER_SPACING => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.letterSpacing',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+			],
+			Config::CSS_PROP_FONT_WEIGHT    => [
+				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontWeight',
+			],
+			Config::CSS_PROP_TEXT_TRANSFORM => [
+				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.textTransform',
+			],
+		];
+
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_SEARCH_INPUTS ] = [
+			Config::CSS_PROP_PADDING_RIGHT => [
+				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_PADDING . '.right',
+				Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) {
+					$value = absint( $value ) + 33;
+
+					return sprintf( '%s:%s;', $css_prop, $value . 'px' );
+				},
+				Dynamic_Selector::META_DEFAULT => 12,
+			],
+		];
+	}
+
+	/**
+	 * Setup Form Buttons Type
+	 */
+	private function setup_form_buttons() {
+		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
+
+		if ( $form_buttons_type === 'primary' ) {
+			add_filter(
+				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
+				array(
+					$this,
+					'add_form_buttons',
+				),
+				10,
+				1
+			);
+			add_filter(
+				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_PADDING,
+				array(
+					$this,
+					'add_form_buttons',
+				),
+				10,
+				1
+			);
+			add_filter(
+				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
+				array(
+					$this,
+					'add_form_buttons_hover',
+				),
+				10,
+				1
+			);
+
+			return;
+		}
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
+			array(
+				$this,
+				'add_form_buttons',
+			),
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_PADDING,
+			array(
+				$this,
+				'add_form_buttons',
+			),
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
+			array(
+				$this,
+				'add_form_buttons_hover',
+			),
+			10,
+			1
+		);
+	}
+
+	/**
+	 * Add form buttons selectors to the Buttons selector.
+	 *
+	 * @param string $selector the CSS selector received from the filter.
+	 *
+	 * @return string
+	 */
+	public function add_form_buttons( $selector ) {
+		return ( $selector . ', form input[type="submit"], form button[type="submit"], #comments input[type="submit"]' );
+	}
+
+	/**
+	 * Add form buttons hover selectors to the Buttons selector.
+	 *
+	 * @param string $selector the CSS selector received from the filter.
+	 *
+	 * @return string
+	 */
+	public function add_form_buttons_hover( $selector ) {
+		return ( $selector . ', form input[type="submit"]:hover, form button[type="submit"]:hover, #comments input[type="submit"]:hover' );
 	}
 }
