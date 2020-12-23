@@ -1273,7 +1273,7 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   left: 0;
   bottom: 0;
   position: absolute;
-  color: transparent;
+  color: transparent !important;
   background: 100% 0;
   min-width: 45px;
   width: 45px;
