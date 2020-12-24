@@ -10,6 +10,7 @@
 
 namespace Neve\Core;
 
+use Neve\Compatibility\Starter_Content;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 
@@ -19,6 +20,7 @@ use Neve\Core\Settings\Mods;
  * @package Neve\Core
  */
 class Front_End {
+
 
 
 	/**
@@ -56,7 +58,7 @@ class Front_End {
 		add_theme_support( 'lifterlms-sidebars' );
 		add_theme_support( 'lifterlms' );
 		add_theme_support( 'service_worker', true );
-		add_theme_support( 'starter-content', self::generate_starter_content() );
+		add_theme_support( 'starter-content', ( new Starter_Content() )->get() );
 		add_filter( 'script_loader_tag', array( $this, 'filter_script_loader_tag' ), 10, 2 );
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
@@ -136,102 +138,6 @@ class Front_End {
 		}
 
 		return array_values( $gutenberg_color_palette );
-	}
-
-	/**
-	 * Generate starter content.
-	 *
-	 * @return array Starter content definition.
-	 */
-	public static function generate_starter_content() {
-
-		$nav_items = [
-			'home'         => [
-				'type'      => 'post_type',
-				'object'    => 'page',
-				'object_id' => '{{home}}',
-			],
-			'page_about'   => [
-				'type'      => 'post_type',
-				'object'    => 'page',
-				'object_id' => '{{about}}',
-			],
-			'page_blog'    => [
-				'type'      => 'post_type',
-				'object'    => 'page',
-				'object_id' => '{{blog}}',
-			],
-			'page_news'    => [
-				'type'      => 'post_type',
-				'object'    => 'page',
-				'object_id' => '{{news}}',
-			],
-			'page_contact' => [
-				'type'      => 'post_type',
-				'object'    => 'page',
-				'object_id' => '{{contact}}',
-			]
-		];
-
-		return [
-			'nav_menus'  =>
-				[
-					'primary' => [
-						'items' => $nav_items,
-					]
-				],
-			'options'    => [
-				'page_on_front' => '{{home}}',
-				'show_on_front' => 'page',
-				'blogname'=>'Agency'
-			],
-			'theme_mods' => [
-				'custom_logo'                             => '{{featured-image-logo}}',
-				'logo_max_width'                          => '{ "mobile": "22", "tablet": "22", "desktop": "22" }'
-			],
-			'attachments' => array(
-				'featured-image-logo' => array(
-					'post_title' => 'Featured Logo',
-					'post_content' => 'Attachment Description',
-					'post_excerpt' => 'Attachment Caption',
-					'file' => 'assets/img/logo-agency.png',
-				),
-			),
-			'posts'      => [
-				'home'    => [
-					'post_type'    => 'page',
-					'post_title'   => _x( 'Home', 'Theme starter content' ),
-					'post_content' => sprintf(
-						"<!-- wp:paragraph -->\n<p>%s</p>\n<!-- /wp:paragraph -->",
-						_x( 'Welcome to your site! This is your homepage, which is what most visitors will see when they come to your site for the first time.', 'Theme starter content' )
-					),
-				],
-				'about'   => [
-					'post_type'    => 'page',
-					'post_title'   => _x( 'About', 'Theme starter content' ),
-					'post_content' => sprintf(
-						"<!-- wp:paragraph -->\n<p>%s</p>\n<!-- /wp:paragraph -->",
-						_x( 'You might be an artist who would like to introduce yourself and your work here or maybe you&rsquo;re a business with a mission to describe.', 'Theme starter content' )
-					),
-				],
-				'contact' => [
-					'post_type'    => 'page',
-					'post_title'   => _x( 'Contact', 'Theme starter content' ),
-					'post_content' => sprintf(
-						"<!-- wp:paragraph -->\n<p>%s</p>\n<!-- /wp:paragraph -->",
-						_x( 'This is a page with some basic contact information, such as an address and phone number. You might also try a plugin to add a contact form.', 'Theme starter content' )
-					),
-				],
-				'blog'    => [
-					'post_type'  => 'page',
-					'post_title' => _x( 'Blog', 'Theme starter content' ),
-				],
-				'news'    => [
-					'post_type'  => 'page',
-					'post_title' => _x( 'News', 'Theme starter content' ),
-				],
-			]
-		];
 	}
 
 	/**
@@ -316,7 +222,7 @@ class Front_End {
 	 *
 	 * @param string $markup embed markup.
 	 * @param string $url embed url.
-	 * @param array $attr embed attributes [width/height].
+	 * @param array  $attr embed attributes [width/height].
 	 *
 	 * @return string
 	 */
