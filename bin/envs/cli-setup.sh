@@ -12,6 +12,7 @@ init_environment(){
 	chmod 0777 -R /var/www/html/wp-content/
 	echo "Installing Neve theme from $NEVE_LOCATION"
 	wp --allow-root theme install --activate $NEVE_LOCATION
+	wp --allow-root option update fresh_site 0
 }
 
 
