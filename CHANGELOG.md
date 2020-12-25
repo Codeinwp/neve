@@ -1,3 +1,7 @@
+##### [Version 2.9.4](https://github.com/Codeinwp/neve/compare/v2.9.3...v2.9.4) (2020-12-25)
+
+- [Feat] Starter content support
+
 ##### [Version 2.9.3](https://github.com/Codeinwp/neve/compare/v2.9.2...v2.9.3) (2020-12-17)
 
 - [Fix] Cart menu component layout on mobile devices
