@@ -13,11 +13,20 @@ namespace Neve\Compatibility;
  * @package Neve\Compatibility
  */
 class Starter_Content {
+	const HOME_SLUG  = 'home';
+	const BLOG_SLUG  = 'blog';
+	const ABOUT_SLUG = 'about';
+
 
 	/**
 	 * Run the hooks and filters.
 	 */
 	public function __construct() {
+		$is_fresh_site = get_option( 'fresh_site' );
+		if ( ! $is_fresh_site ) {
+			return;
+		}
+
 		add_action(
 			'wp_insert_post',
 			[
@@ -27,7 +36,45 @@ class Starter_Content {
 			3,
 			99
 		); // starter content does not provide means of adding post meta so we need to tweak it.
+
+		if ( ! is_customize_preview() ) {
+			return;
+		}
+		add_filter(
+			'default_post_metadata',
+			[ $this, 'starter_meta' ],
+			99,
+			3
+		);
+
 	}
+
+	/**
+	 * Load default starter meta.
+	 *
+	 * @param mixed  $value Value.
+	 * @param int    $post_id Post id.
+	 * @param string $meta_key Meta key.
+	 *
+	 * @return string Meta value.
+	 */
+	public function starter_meta( $value, $post_id, $meta_key ) {
+		if ( get_post_type( $post_id ) !== 'page' ) {
+			return $value;
+		}
+		if ( $meta_key === 'neve_meta_disable_title' ) {
+			return 'on';
+		}
+		if ( $meta_key === 'neve_meta_enable_content_width' ) {
+			return 'on';
+		}
+		if ( $meta_key === 'neve_meta_content_width' ) {
+			return '100';
+		}
+
+		return $value;
+	}
+
 
 	/**
 	 * Register listener to insert post.
@@ -62,17 +109,17 @@ class Starter_Content {
 			'home'       => [
 				'type'      => 'post_type',
 				'object'    => 'page',
-				'object_id' => '{{home}}',
+				'object_id' => '{{' . self::HOME_SLUG . '}}',
 			],
 			'page_about' => [
 				'type'      => 'post_type',
 				'object'    => 'page',
-				'object_id' => '{{about}}',
+				'object_id' => '{{' . self::ABOUT_SLUG . '}}',
 			],
 			'page_blog'  => [
 				'type'      => 'post_type',
 				'object'    => 'page',
-				'object_id' => '{{blog}}',
+				'object_id' => '{{' . self::BLOG_SLUG . '}}',
 			],
 		];
 
@@ -84,8 +131,8 @@ class Starter_Content {
 					],
 				],
 			'options'     => [
-				'page_on_front'  => '{{home}}',
-				'page_for_posts' => '{{blog}}',
+				'page_on_front'  => '{{' . self::HOME_SLUG . '}}',
+				'page_for_posts' => '{{' . self::BLOG_SLUG . '}}',
 				'show_on_front'  => 'page',
 				'blogname'       => 'Agency',
 			],
@@ -99,9 +146,10 @@ class Starter_Content {
 				),
 			),
 			'posts'       => [
-				'home'  => require __DIR__ . '/starter-content/home.php',
-				'about' => require __DIR__ . '/starter-content/about.php',
-				'blog'  => [
+				self::HOME_SLUG  => require __DIR__ . '/starter-content/home.php',
+				self::ABOUT_SLUG => require __DIR__ . '/starter-content/about.php',
+				self::BLOG_SLUG  => [
+					'post_name'  => self::BLOG_SLUG,
 					'post_type'  => 'page',
 					'post_title' => _x( 'Blog', 'Theme starter content' ),
 				],
