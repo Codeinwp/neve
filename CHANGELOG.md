@@ -1,3 +1,7 @@
+##### [Version 2.9.5](https://github.com/Codeinwp/neve/compare/v2.9.4...v2.9.5) (2020-12-28)
+
+- [Feat] Update starter content
+
 ##### [Version 2.9.4](https://github.com/Codeinwp/neve/compare/v2.9.3...v2.9.4) (2020-12-25)
 
 - [Feat] Starter content support
