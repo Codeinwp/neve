@@ -618,7 +618,7 @@ class Frontend extends Generator {
 	 * Adds form field styles
 	 */
 	private function setup_form_fields_style() {
-		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_NO_SPACING ] = [
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING ] = [
 			Config::CSS_PROP_MARGIN_BOTTOM => Config::MODS_FORM_FIELDS_SPACING,
 		];
 
@@ -627,7 +627,10 @@ class Frontend extends Generator {
 			Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_FORM_FIELDS_BORDER_WIDTH,
 			Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_FORM_FIELDS_BORDER_RADIUS,
 			Config::CSS_PROP_BORDER_COLOR     => Config::MODS_FORM_FIELDS_BORDER_COLOR,
-			Config::CSS_PROP_PADDING          => Config::MODS_FORM_FIELDS_PADDING,
+			Config::CSS_PROP_PADDING          => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING,
+				Dynamic_Selector::META_IS_RESPONSIVE => false,
+			],
 			Config::CSS_PROP_FONT_SIZE        => [
 				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontSize',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
@@ -652,8 +655,9 @@ class Frontend extends Generator {
 
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_LABELS ] = [
 			Config::CSS_PROP_MARGIN_BOTTOM  => [
-				Dynamic_Selector::META_KEY    => Config::MODS_FORM_FIELDS_LABELS_SPACING,
-				Dynamic_Selector::META_SUFFIX => 'px',
+				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_LABELS_SPACING,
+				Dynamic_Selector::META_SUFFIX  => 'px',
+				Dynamic_Selector::META_DEFAULT => 10,
 			],
 			Config::CSS_PROP_FONT_SIZE      => [
 				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontSize',

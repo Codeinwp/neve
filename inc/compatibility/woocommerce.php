@@ -411,10 +411,20 @@ class Woocommerce {
 		);
 
 		add_filter(
-			'neve_selectors_' . Config::CSS_SELECTOR_FORM_INPUTS_NO_SPACING,
+			'neve_selectors_' . Config::CSS_SELECTOR_FORM_INPUTS,
 			array(
 				$this,
-				'add_checkout_fields',
+				'add_inputs_selectors',
+			),
+			10,
+			1
+		);
+
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING,
+			array(
+				$this,
+				'add_inputs_spacing_selectors',
 			),
 			10,
 			1
@@ -425,7 +435,7 @@ class Woocommerce {
 			'neve_selectors_' . Config::CSS_SELECTOR_FORM_INPUTS_LABELS,
 			array(
 				$this,
-				'add_checkout_labels',
+				'add_labels_selectors',
 			),
 			10,
 			1
@@ -435,11 +445,12 @@ class Woocommerce {
 			'neve_selectors_' . Config::CSS_SELECTOR_FORM_SEARCH_INPUTS,
 			array(
 				$this,
-				'add_woo_search_input',
+				'add_search_inputs_selector',
 			),
 			10,
 			1
 		);
+
 		add_filter( 'neve_body_font_family_selectors', array( $this, 'add_font_families' ) );
 		add_filter( 'neve_headings_typeface_selectors', array( $this, 'add_typeface_selectors' ) );
 	}
@@ -451,25 +462,35 @@ class Woocommerce {
 	 *
 	 * @return string
 	 */
-	public function add_checkout_labels( $selectors ) {
-		return ( $selectors . ', .woocommerce form .form-row label' );
+	public function add_inputs_selectors( $selectors ) {
+		return $selectors . ',
+		.woocommerce-cart table.cart td.actions .coupon .input-text,
+		.woocommerce-page .select2-container--default .select2-selection--single,
+		.woocommerce-page .woocommerce form .form-row input.input-text,
+		.woocommerce-page .woocommerce form .form-row textarea';
 	}
 
 	/**
-	 * Add checkout fields to style.
+	 * Add additional inputs spacing.
 	 *
-	 * @param string $selectors css selectors for checkout fields.
+	 * @param string $selectors css selectors for inputs that need spacing.
 	 *
 	 * @return string
 	 */
-	public function add_checkout_fields( $selectors ) {
-		return ( $selectors . ',
-		.woocommerce-page .select2-container--default .select2-selection--single,
-		.woocommerce-page .woocommerce form .form-row input.input-text,
-		.woocommerce-page .woocommerce form .form-row textarea,
-		#add_payment_method table.cart td.actions .coupon .input-text,
-		.woocommerce-cart table.cart td.actions .coupon .input-text,
-		.woocommerce-checkout table.cart td.actions .coupon .input-text' );
+	public function add_inputs_spacing_selectors( $selectors ) {
+		return $selectors . ', .woocommerce-page .select2';
+	}
+
+
+	/**
+	 * Add checkout labels to style.
+	 *
+	 * @param string $selectors css selectors for labels.
+	 *
+	 * @return string
+	 */
+	public function add_labels_selectors( $selectors ) {
+		return ( $selectors . ', .woocommerce form .form-row label' );
 	}
 
 	/**
@@ -479,7 +500,7 @@ class Woocommerce {
 	 *
 	 * @return string
 	 */
-	public function add_woo_search_input( $selectors ) {
+	public function add_search_inputs_selector( $selectors ) {
 		return ( $selectors . ', form.woocommerce-product-search input[type="search"]' );
 	}
 

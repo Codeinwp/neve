@@ -77,7 +77,6 @@ class Config {
 	const MODS_FORM_FIELDS_LABELS_SPACING   = 'neve_label_spacing';
 	const MODS_FORM_FIELDS_TYPEFACE         = 'neve_input_typeface';
 	const MODS_FORM_FIELDS_LABELS_TYPEFACE  = 'neve_label_typeface';
-	const MODS_FORM_FIELDS_BUTTON_TYPE      = 'neve_form_button_type';
 
 	const CSS_PROP_BORDER_COLOR               = 'border-color';
 	const CSS_PROP_BACKGROUND_COLOR           = 'background-color';
@@ -138,11 +137,11 @@ class Config {
 	const CSS_SELECTOR_SINGLE_POST_META          = 'single_post_entry_meta_list';
 	const CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE = 'single_post_comment_title';
 
-	const CSS_SELECTOR_FORM_INPUTS_NO_SPACING = 'form_inputs_no_search';
-	const CSS_SELECTOR_FORM_INPUTS            = 'form_inputs';
-	const CSS_SELECTOR_FORM_INPUTS_LABELS     = 'form_labels';
-	const CSS_SELECTOR_FORM_BUTTON            = 'form_buttons';
-	const CSS_SELECTOR_FORM_SEARCH_INPUTS     = 'search_form_inputs';
+	const CSS_SELECTOR_FORM_INPUTS_WITH_SPACING = 'form_inputs_no_search';
+	const CSS_SELECTOR_FORM_INPUTS              = 'form_inputs';
+	const CSS_SELECTOR_FORM_INPUTS_LABELS       = 'form_labels';
+	const CSS_SELECTOR_FORM_BUTTON              = 'form_buttons';
+	const CSS_SELECTOR_FORM_SEARCH_INPUTS       = 'search_form_inputs';
 
 	const CONTENT_DEFAULT_PADDING = 30;
 	/**
@@ -177,8 +176,8 @@ class Config {
 		self::CSS_SELECTOR_SINGLE_POST_TITLE         => '.single h1.entry-title',
 		self::CSS_SELECTOR_SINGLE_POST_META          => '.single .nv-meta-list li',
 		self::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE => '.single .comment-reply-title',
-		self::CSS_SELECTOR_FORM_INPUTS_NO_SPACING    => 'form:not(.search-form):not(.woocommerce-product-search):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:not([type="checkbox"]):not([type="submit"]), form textarea, form select, form select option',
-		self::CSS_SELECTOR_FORM_INPUTS               => 'form input:not([type="checkbox"]):not([type="submit"]), .woocommerce-page .select2-container--default .select2-selection--single, form textarea, form select, form select option',
+		self::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING  => 'form:not(.search-form):not(.woocommerce-product-search):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]):not(#coupon_code), form textarea, form select',
+		self::CSS_SELECTOR_FORM_INPUTS               => 'form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]), form textarea, form select, form select option',
 		self::CSS_SELECTOR_FORM_INPUTS_LABELS        => 'form label',
 		self::CSS_SELECTOR_FORM_BUTTON               => 'form input[type="submit"]',
 		self::CSS_SELECTOR_FORM_SEARCH_INPUTS        => 'form.search-form input[type="search"]',

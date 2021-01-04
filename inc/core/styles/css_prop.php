@@ -94,6 +94,11 @@ class Css_Prop {
 						$css_prop,
 						absint( $value ), $suffix );
 				}
+
+				if ( ! isset( $meta['is_responsive'] ) || $meta['is_responsive'] === false ) {
+					$suffix = isset( $value['unit'] ) ? $value['unit'] : 'px';
+				}
+
 				if ( $suffix === 'responsive_unit' ) {
 					$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
 					$suffix    = 'px';

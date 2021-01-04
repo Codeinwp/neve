@@ -86,9 +86,9 @@ class Form_Fields extends Base_Customizer {
 					'transport'         => $this->selective_refresh,
 					'default'           => [
 						'top'    => '7',
+						'bottom' => '7',
+						'left'   => '12',
 						'right'  => '12',
-						'left'   => '7',
-						'bottom' => '12',
 						'unit'   => 'px',
 					],
 				],
@@ -109,22 +109,22 @@ class Form_Fields extends Base_Customizer {
 						'responsive'  => false,
 						'directional' => true,
 						'template'    =>
-							'body form input:not([type="checkbox"]):not([type="submit"]),
-							 body form textarea,
-							 body form select,
-							 body form select option,
-							 body .woocommerce-checkout .select2-container--default .select2-selection--single,
-							 body .woocommerce form .form-row input.input-text,
-							 body .woocommerce form .form-row textarea,
-							 body #add_payment_method table.cart td.actions .coupon .input-text,
-							 body .woocommerce-cart table.cart td.actions .coupon .input-text,
-							 body .woocommerce-checkout table.cart td.actions .coupon .input-text {
+							'
+							body form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]),
+							body form textarea,
+							body form select,
+							body form select option,
+							.woocommerce-cart table.cart td.actions .coupon .input-text,
+							.woocommerce-page .select2-container--default .select2-selection--single,
+							.woocommerce-page .woocommerce form .form-row input.input-text,
+							.woocommerce-page .woocommerce form .form-row textarea {
 								 padding-top: {{value.top}};
 								 padding-right: {{value.right}};
 								 padding-bottom: {{value.bottom}};
 								 padding-left: {{value.left}};
 					        }
-					        body form.search-form input[type="search"], form.woocommerce-product-search input[type="search"] {
+					        form.search-form input[type="search"],
+					        form.woocommerce-product-search input[type="search"] {
 					             padding-right: calc({{value.right}} + 33px);
 					        }',
 					],
@@ -155,7 +155,13 @@ class Form_Fields extends Base_Customizer {
 					'priority'              => 16,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
-						'template' => 'form:not(.search-form):not(.woocommerce-product-search):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:not([type="checkbox"]):not([type="submit"]), form textarea, form select, .woocommerce-page .select2-container--default .select2-selection--single {margin-bottom: {{value}}px;}',
+						'template' => '
+						 form:not(.search-form):not(.woocommerce-product-search):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]):not(#coupon_code),
+						 form textarea,
+						 form select,
+						 .woocommerce-page .select2 {
+						    margin-bottom: {{value}}px;
+					     }',
 					],
 				],
 				'Neve\Customizer\Controls\React\Range'
@@ -178,16 +184,14 @@ class Form_Fields extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
-							 body form input:not([type="checkbox"]):not([type="submit"]),
-							 body form textarea,
-							 body form select,
-							 body form select option,
-							 body .woocommerce-checkout .select2-container--default .select2-selection--single,
-							 body .woocommerce form .form-row input.input-text,
-							 body .woocommerce form .form-row textarea,
-							 body #add_payment_method table.cart td.actions .coupon .input-text,
-							 body .woocommerce-cart table.cart td.actions .coupon .input-text,
-							 body .woocommerce-checkout table.cart td.actions .coupon .input-text {
+							body form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]),
+							body form textarea,
+							body form select,
+							body form select option,
+							.woocommerce-cart table.cart td.actions .coupon .input-text,
+							.woocommerce-page .select2-container--default .select2-selection--single,
+							.woocommerce-page .woocommerce form .form-row input.input-text,
+							.woocommerce-page .woocommerce form .form-row textarea {
 							    background-color: {{value}};
 						    }',
 
@@ -227,18 +231,15 @@ class Form_Fields extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'responsive'  => false,
 						'directional' => true,
-						'template'    =>
-							'
-							 body form input:not([type="checkbox"]):not([type="submit"]),
-							 body form textarea,
-							 body form select,
-							 body form select option,
-							 body .woocommerce-checkout .select2-container--default .select2-selection--single,
-							 body .woocommerce form .form-row input.input-text,
-							 body .woocommerce form .form-row textarea,
-							 body #add_payment_method table.cart td.actions .coupon .input-text,
-							 body .woocommerce-cart table.cart td.actions .coupon .input-text,
-							 body .woocommerce-checkout table.cart td.actions .coupon .input-text {
+						'template'    => '
+							body form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]),
+							body form textarea,
+							body form select,
+							body form select option,
+							.woocommerce-cart table.cart td.actions .coupon .input-text,
+							.woocommerce-page .select2-container--default .select2-selection--single,
+							.woocommerce-page .woocommerce form .form-row input.input-text,
+							.woocommerce-page .woocommerce form .form-row textarea {
                                 border-top-width: {{value.top}};
 							    border-right-width: {{value.right}};
 						        border-bottom-width: {{value.bottom}};
@@ -281,16 +282,14 @@ class Form_Fields extends Base_Customizer {
 						'responsive'  => false,
 						'directional' => true,
 						'template'    => '
-							body form input:not([type="checkbox"]):not([type="submit"]),
+							body form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]),
 							body form textarea,
 							body form select,
 							body form select option,
-							body .woocommerce-checkout .select2-container--default .select2-selection--single,
-							body .woocommerce form .form-row input.input-text,
-							body .woocommerce form .form-row textarea,
-							body #add_payment_method table.cart td.actions .coupon .input-text,
-							body .woocommerce-cart table.cart td.actions .coupon .input-text,
-							body .woocommerce-checkout table.cart td.actions .coupon .input-text {
+							.woocommerce-cart table.cart td.actions .coupon .input-text,
+							.woocommerce-page .select2-container--default .select2-selection--single,
+							.woocommerce-page .woocommerce form .form-row input.input-text,
+							.woocommerce-page .woocommerce form .form-row textarea {
 								border-top-right-radius: {{value.top}};
 								border-bottom-right-radius: {{value.right}};
 								border-bottom-left-radius: {{value.bottom}};
@@ -319,16 +318,14 @@ class Form_Fields extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
-							body form input:not([type="checkbox"]):not([type="submit"]),
+							body form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]),
 							body form textarea,
 							body form select,
 							body form select option,
-							body .woocommerce-checkout .select2-container--default .select2-selection--single,
-							body .woocommerce form .form-row input.input-text,
-							body .woocommerce form .form-row textarea,
-							body #add_payment_method table.cart td.actions .coupon .input-text,
-							body .woocommerce-cart table.cart td.actions .coupon .input-text,
-							body .woocommerce-checkout table.cart td.actions .coupon .input-text {
+							.woocommerce-cart table.cart td.actions .coupon .input-text,
+							.woocommerce-page .select2-container--default .select2-selection--single,
+							.woocommerce-page .woocommerce form .form-row input.input-text,
+							.woocommerce-page .woocommerce form .form-row textarea {
 								border-color: {{value}};
 							}',
 					],
@@ -398,16 +395,14 @@ class Form_Fields extends Base_Customizer {
 					'type'                  => 'neve_typeface_control',
 					'refresh_on_reset'      => true,
 					'live_refresh_selector' => '
-						body form input:not([type="checkbox"]):not([type="submit"]),
-						body form textarea,
-						body form select,
-						body form select option,
-						body .woocommerce-checkout .select2-container--default .select2-selection--single,
-						body .woocommerce form .form-row input.input-text,
-						body .woocommerce form .form-row textarea,
-						body #add_payment_method table.cart td.actions .coupon .input-text,
-						body .woocommerce-cart table.cart td.actions .coupon .input-text,
-						body .woocommerce-checkout table.cart td.actions .coupon .input-text
+						form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]),
+						form textarea,
+						form select,
+						form select option,
+						.woocommerce-cart table.cart td.actions .coupon .input-text,
+						.woocommerce-page .select2-container--default .select2-selection--single,
+						.woocommerce-page .woocommerce form .form-row input.input-text,
+						.woocommerce-page .woocommerce form .form-row textarea
 					',
 				],
 				'\Neve\Customizer\Controls\React\Typography'
@@ -458,7 +453,7 @@ class Form_Fields extends Base_Customizer {
 					'priority'              => 51,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
-						'template' => 'body form label, body .woocommerce form .form-row label {margin-bottom: {{value}}px;}',
+						'template' => 'form label, .woocommerce form .form-row label {margin-bottom: {{value}}px;}',
 					],
 				],
 				'Neve\Customizer\Controls\React\Range'
@@ -501,7 +496,7 @@ class Form_Fields extends Base_Customizer {
 					),
 					'type'                  => 'neve_typeface_control',
 					'refresh_on_reset'      => true,
-					'live_refresh_selector' => 'body form label, body .woocommerce form .form-row label',
+					'live_refresh_selector' => 'form label, .woocommerce form .form-row label {margin-bottom: {{value}}px;}',
 				],
 				'\Neve\Customizer\Controls\React\Typography'
 			)
