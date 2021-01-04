@@ -16,10 +16,8 @@
   h3 {
 	font-size: 1em;
 	line-height: 1.5em;
-	border-bottom: $muted-border;
 	padding: 9px 12px;
 	margin-bottom: 0;
-	background-color: #f7f7f7;
   }
 
   form.woocommerce-checkout {
@@ -190,7 +188,6 @@
 	h3 {
 	  width: 100%;
 	  border: $muted-border;
-	  background: #fff;
 
 	  label {
 		cursor: pointer;
@@ -220,8 +217,8 @@
   #payment {
 	border-radius: 0;
 	border: $muted-border;
-	background: #ffffff;
 	font-size: .85em;
+	background: 0;
 	margin-bottom: $spacing;
 
 	ul.payment_methods {
@@ -273,8 +270,6 @@
 	}
 
 	thead {
-	  background-color: #f7f7f7;
-
 	  tr th {
 		border-bottom: $muted-border;
 	  }
