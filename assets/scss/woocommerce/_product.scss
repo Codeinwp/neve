@@ -248,8 +248,9 @@
 		.comment-form-rating {
 			display: flex;
 			flex-direction: row;
+		 	align-items: center;
 
-			label {
+		  	label {
 				margin-right: $spacing-xs;
 			}
 		}

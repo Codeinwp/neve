@@ -344,7 +344,7 @@
 
 .nv-woo-filters .nv-sidebar-toggle + .woocommerce-ordering select {
   max-width: 155px;
-  padding: 2px 0;
+  margin-bottom: 0;
 }
 
 .woocommerce ul.products li.product a:not(.nv-quick-view-product) {
@@ -594,6 +594,7 @@
 .woocommerce #review_form .comment-form .comment-form-rating {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .woocommerce #review_form .comment-form .comment-form-rating label {

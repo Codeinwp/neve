@@ -108,7 +108,7 @@
 .comment-form {
   display: grid;
   grid-column-gap: $spacing-sm;
-  grid-row-gap: $spacing-sm;
+  grid-row-gap: $spacing-xs;
 
   > p:not(.comment-notes) {
     margin-bottom: 0;

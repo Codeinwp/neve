@@ -619,7 +619,10 @@ class Frontend extends Generator {
 	 */
 	private function setup_form_fields_style() {
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING ] = [
-			Config::CSS_PROP_MARGIN_BOTTOM => Config::MODS_FORM_FIELDS_SPACING,
+			Config::CSS_PROP_MARGIN_BOTTOM => [
+				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_SPACING,
+				Dynamic_Selector::META_DEFAULT => 10,
+			],
 		];
 
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS ] = [
@@ -683,13 +686,14 @@ class Frontend extends Generator {
 
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_SEARCH_INPUTS ] = [
 			Config::CSS_PROP_PADDING_RIGHT => [
-				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_PADDING . '.right',
-				Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) {
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING . '.right',
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
 					$value = absint( $value ) + 33;
 
-					return sprintf( '%s:%s;', $css_prop, $value . 'px' );
+					return sprintf( '%s:%s !important;', $css_prop, $value . 'px' );
 				},
-				Dynamic_Selector::META_DEFAULT => 12,
+				Dynamic_Selector::META_DEFAULT       => 12,
+				Dynamic_Selector::META_IS_RESPONSIVE => false,
 			],
 		];
 	}

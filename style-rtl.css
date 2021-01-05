@@ -1191,7 +1191,7 @@ input, textarea, select, button {
 }
 
 select {
-  height: 35px;
+  min-height: 35px;
 }
 
 label {
@@ -1780,7 +1780,7 @@ body .layout-grid > .article-content-col, .layout-grid {
 .comment-form {
   display: grid;
   grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-row-gap: 10px;
 }
 
 .comment-form > p:not(.comment-notes) {
