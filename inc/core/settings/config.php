@@ -176,10 +176,10 @@ class Config {
 		self::CSS_SELECTOR_SINGLE_POST_TITLE         => '.single h1.entry-title',
 		self::CSS_SELECTOR_SINGLE_POST_META          => '.single .nv-meta-list li',
 		self::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE => '.single .comment-reply-title',
-		self::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING  => 'form:not(.search-form):not(.woocommerce-product-search):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]):not(#coupon_code), form textarea, form select',
-		self::CSS_SELECTOR_FORM_INPUTS               => 'form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]), form textarea, form select, form select option',
-		self::CSS_SELECTOR_FORM_INPUTS_LABELS        => 'form label',
+		self::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING  => 'form:not(.search-form):not(.woocommerce-product-search):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code), form textarea, form select',
+		self::CSS_SELECTOR_FORM_INPUTS               => 'form input:read-write, form textarea, form select, form select option',
+		self::CSS_SELECTOR_FORM_INPUTS_LABELS        => 'form label, .wpforms-container .wpforms-field-label',
 		self::CSS_SELECTOR_FORM_BUTTON               => 'form input[type="submit"]',
-		self::CSS_SELECTOR_FORM_SEARCH_INPUTS        => 'form.search-form input[type="search"]',
+		self::CSS_SELECTOR_FORM_SEARCH_INPUTS        => 'form.search-form input:read-write',
 	];
 }

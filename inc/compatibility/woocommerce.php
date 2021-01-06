@@ -77,7 +77,6 @@ class Woocommerce {
 			.woocommerce .button.button-secondary.more-details,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button',
 		'hover'   => '
-			,#comments input[type=submit]:hover,
 			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button:hover,
 			.woocommerce button.button:not(.single_add_to_cart_button):hover,
@@ -150,7 +149,7 @@ class Woocommerce {
 		$this->edit_woocommerce_header();
 		$this->move_checkout_coupon();
 		$this->add_inline_selectors();
-		$this->setup_form_buttons();
+		add_action('wp', [$this,'setup_form_buttons']);
 	}
 
 	/**
@@ -747,7 +746,7 @@ class Woocommerce {
 	/**
 	 * Setup Form Buttons Type
 	 */
-	private function setup_form_buttons() {
+	public function setup_form_buttons() {
 		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
 		if ( $form_buttons_type === 'primary' ) {
 			add_filter(

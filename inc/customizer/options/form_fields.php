@@ -110,7 +110,7 @@ class Form_Fields extends Base_Customizer {
 						'directional' => true,
 						'template'    =>
 							'
-							body form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]),
+							body form input:read-write,
 							body form textarea,
 							body form select,
 							body form select option,
@@ -156,7 +156,7 @@ class Form_Fields extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
-						 form:not(.search-form):not(.woocommerce-product-search):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]):not(#coupon_code),
+						 form:not(.search-form):not(.woocommerce-product-search):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code),
 						 form textarea,
 						 form select,
 						 .woocommerce-page .select2 {
@@ -184,7 +184,7 @@ class Form_Fields extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
-							body form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]),
+							body form input:read-write,
 							body form textarea,
 							body form select,
 							body form select option,
@@ -232,7 +232,7 @@ class Form_Fields extends Base_Customizer {
 						'responsive'  => false,
 						'directional' => true,
 						'template'    => '
-							body form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]),
+							body form input:read-write,
 							body form textarea,
 							body form select,
 							body form select option,
@@ -282,7 +282,7 @@ class Form_Fields extends Base_Customizer {
 						'responsive'  => false,
 						'directional' => true,
 						'template'    => '
-							body form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]),
+							body form input:read-write,
 							body form textarea,
 							body form select,
 							body form select option,
@@ -318,7 +318,7 @@ class Form_Fields extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
-							body form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]),
+							body form input:read-write,
 							body form textarea,
 							body form select,
 							body form select option,
@@ -395,7 +395,7 @@ class Form_Fields extends Base_Customizer {
 					'type'                  => 'neve_typeface_control',
 					'refresh_on_reset'      => true,
 					'live_refresh_selector' => '
-						form input:not([type="checkbox"]):not([type="submit"]):not([type="radio"]),
+						form input:read-write,
 						form textarea,
 						form select,
 						form select option,
@@ -453,7 +453,8 @@ class Form_Fields extends Base_Customizer {
 					'priority'              => 51,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
-						'template' => 'form label, .woocommerce form .form-row label {margin-bottom: {{value}}px;}',
+						'responsive' => false,
+						'template' => 'body form label, body .wpforms-container .wpforms-field-label, .woocommerce form .form-row label {margin-bottom: {{value}}px;}',
 					],
 				],
 				'Neve\Customizer\Controls\React\Range'
@@ -496,7 +497,7 @@ class Form_Fields extends Base_Customizer {
 					),
 					'type'                  => 'neve_typeface_control',
 					'refresh_on_reset'      => true,
-					'live_refresh_selector' => 'form label, .woocommerce form .form-row label {margin-bottom: {{value}}px;}',
+					'live_refresh_selector' => 'form label, body .wpforms-container .wpforms-field-label, .woocommerce form .form-row label',
 				],
 				'\Neve\Customizer\Controls\React\Typography'
 			)
