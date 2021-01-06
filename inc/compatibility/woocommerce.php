@@ -149,7 +149,7 @@ class Woocommerce {
 		$this->edit_woocommerce_header();
 		$this->move_checkout_coupon();
 		$this->add_inline_selectors();
-		add_action('wp', [$this,'setup_form_buttons']);
+		add_action( 'wp', [ $this, 'setup_form_buttons' ] );
 	}
 
 	/**

@@ -454,7 +454,7 @@ class Form_Fields extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'responsive' => false,
-						'template' => 'body form label, body .wpforms-container .wpforms-field-label, .woocommerce form .form-row label {margin-bottom: {{value}}px;}',
+						'template'   => 'body form label, body .wpforms-container .wpforms-field-label, .woocommerce form .form-row label {margin-bottom: {{value}}px;}',
 					],
 				],
 				'Neve\Customizer\Controls\React\Range'
