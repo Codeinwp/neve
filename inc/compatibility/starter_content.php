@@ -147,7 +147,7 @@ class Starter_Content {
 				'page_on_front'  => '{{' . self::HOME_SLUG . '}}',
 				'page_for_posts' => '{{' . self::BLOG_SLUG . '}}',
 				'show_on_front'  => 'page',
-				'blogname'       => 'Agency',
+				'blogname'       => 'Web Agency Demo 1',
 			],
 			'theme_mods'  => require __DIR__ . '/starter-content/theme-mods.php',
 			'attachments' => array(

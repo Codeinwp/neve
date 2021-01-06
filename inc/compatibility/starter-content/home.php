@@ -26,8 +26,8 @@ return [
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-secondary"} -->
-<div class="wp-block-button is-style-secondary"><a class="wp-block-button__link" href="#">HIRE US</a></div>
-<!-- /wp:button --></div>
+<div class="wp-block-button is-style-secondary">
+<a class="wp-block-button__link" href="https://demosites.io/" target="_blank" rel="noreferrer noopener">See all demos</a></div> <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
 <!-- wp:spacer {"height":80} -->
