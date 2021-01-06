@@ -144,10 +144,10 @@ return [
 <div class="wp-block-cover alignfull has-nv-dark-bg-background-color has-background-dim" style="min-height:300px"><div class="wp-block-cover__inner-container"><!-- wp:spacer {"height":80} -->
 <div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
-
 <!-- wp:image {"align":"center","width":80,"height":80,"linkDestination":"none","className":"is-style-rounded"} -->
-<div class="wp-block-image is-style-rounded"><figure class="aligncenter "><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/team-03.jpg" alt=""  width="80" height="80"/></figure></div>
+<div class="wp-block-image is-style-rounded"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/team-03.jpg" alt="" width="80" height="80"/></figure></div>
 <!-- /wp:image -->
+
 
 <!-- wp:paragraph {"align":"center","textColor":"nv-text-dark-bg"} -->
 <p class="has-text-align-center has-nv-text-dark-bg-color has-text-color">“What is the point of being alive if you don’t at least <br>try to do something remarkable?”</p>

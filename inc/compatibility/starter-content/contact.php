@@ -29,7 +29,7 @@ return [
 <!-- /wp:spacer -->
 
 <!-- wp:image {"align":"center","width":48,"height":48,"className":"icon-style is-style-rounded"} -->
-<div class="wp-block-image icon-style is-style-rounded"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-05.svg" alt="" width="48" height="48"/></figure></div>
+<div class="wp-block-image icon-style is-style-rounded"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-05.svg" alt="" width="48" height="48"/></figure></div>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
@@ -49,10 +49,10 @@ return [
 <div class="wp-block-column"><!-- wp:spacer {"height":24} -->
 <div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
-
-<!-- wp:image {"align":"center","width":48,"height":48, "className":"icon-style is-style-rounded"} -->
-<div class="wp-block-image icon-style is-style-rounded"><figure class="aligncenter "><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-06.svg" alt="" width="48" height="48"/></figure></div>
+<!-- wp:image {"align":"center","width":48,"height":48,"className":"icon-style is-style-rounded"} -->
+<div class="wp-block-image icon-style is-style-rounded"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-06.svg" alt="" width="48" height="48"/></figure></div>
 <!-- /wp:image -->
+
 
 <!-- wp:heading {"level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">Email</h3>
@@ -71,10 +71,10 @@ return [
 <div class="wp-block-column"><!-- wp:spacer {"height":24} -->
 <div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
-
-<!-- wp:image {"align":"center","width":48,"height":48, "className":"icon-style is-style-rounded"} -->
-<div class="wp-block-image icon-style is-style-rounded"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-04.svg" alt="" width="48" height="48"/></figure></div>
+<!-- wp:image {"align":"center","width":48,"height":48,"className":"icon-style is-style-rounded"} -->
+<div class="wp-block-image icon-style is-style-rounded"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-04.svg" alt="" width="48" height="48"/></figure></div>
 <!-- /wp:image -->
+
 
 <!-- wp:heading {"level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">Offices</h3>
