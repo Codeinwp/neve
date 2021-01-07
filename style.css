@@ -574,7 +574,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .has-neve-link-color-color {
-  color: var(--nv-primary-accent);
+  color: var(--nv-primary-accent) !important;
 }
 
 .has-neve-link-color-background-color {
@@ -582,7 +582,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .has-neve-link-hover-color-color {
-  color: var(--nv-secondary-accent);
+  color: var(--nv-secondary-accent) !important;
 }
 
 .has-neve-link-hover-color-background-color {
@@ -590,7 +590,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .has-neve-text-color-color {
-  color: var(--nv-text-color);
+  color: var(--nv-text-color) !important;
 }
 
 .has-neve-text-color-background-color {
@@ -598,7 +598,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .has-nv-site-bg-color {
-  color: var(--nv-site-bg);
+  color: var(--nv-site-bg) !important;
 }
 
 .has-nv-site-bg-background-color {
@@ -606,7 +606,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .has-nv-light-bg-color {
-  color: var(--nv-light-bg);
+  color: var(--nv-light-bg) !important;
 }
 
 .has-nv-light-bg-background-color {
@@ -614,7 +614,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .has-nv-dark-bg-color {
-  color: var(--nv-dark-bg);
+  color: var(--nv-dark-bg) !important;
 }
 
 .has-nv-dark-bg-background-color {
@@ -622,7 +622,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .has-nv-text-dark-bg-color {
-  color: var(--nv-text-dark-bg);
+  color: var(--nv-text-dark-bg) !important;
 }
 
 .has-nv-text-dark-bg-background-color {
@@ -630,7 +630,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .has-nv-c-1-color {
-  color: var(--nv-c-1);
+  color: var(--nv-c-1) !important;
 }
 
 .has-nv-c-1-background-color {
@@ -638,7 +638,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .has-nv-c-2-color {
-  color: var(--nv-c-2);
+  color: var(--nv-c-2) !important;
 }
 
 .has-nv-c-2-background-color {
