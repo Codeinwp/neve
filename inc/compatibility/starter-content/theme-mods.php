@@ -11,7 +11,7 @@ return array(
 			'type'            => 'fill',
 			'background'      => '',
 			'backgroundHover' => '',
-			'text'            => '',
+			'text'            => 'var(--nv-text-color)',
 			'textHover'       => '',
 			'borderRadius'    =>
 				array(
@@ -569,7 +569,7 @@ return array(
 			'tablet'  => 'left',
 			'mobile'  => 'left',
 		),
-	'hfg_header_layout'                           => '{"desktop":{"top":[],"main":[{"x":0,"y":1,"width":4,"height":1,"id":"logo"},{"x":8,"y":1,"width":3,"height":1,"id":"primary-menu"},{"x":7,"y":1,"width":1,"height":1,"id":"button_base"},{"x":11,"y":1,"width":1,"height":1,"id":"header_search_responsive"}],"bottom":[]},"mobile":{"top":[],"main":[{"x":0,"y":1,"width":8,"height":1,"id":"logo"},{"x":8,"y":1,"width":4,"height":1,"id":"nav-icon"}],"bottom":[],"sidebar":[{"x":0,"y":1,"width":1,"height":1,"id":"header_search"},{"x":1,"y":1,"width":8,"height":1,"id":"primary-menu"},{"x":9,"y":1,"width":1,"height":1,"id":"button_base"}]}}',
+	'hfg_header_layout'                           => '{"desktop":{"top":[],"main":[{"x":0,"y":1,"width":3,"height":1,"id":"logo"},{"x":3,"y":1,"width":6,"height":1,"id":"primary-menu"},{"x":9,"y":1,"width":1,"height":1,"id":"header_search_responsive"},{"x":10,"y":1,"width":2,"height":1,"id":"button_base"}],"bottom":[]},"mobile":{"top":[],"main":[{"x":0,"y":1,"width":8,"height":1,"id":"logo"},{"x":8,"y":1,"width":4,"height":1,"id":"nav-icon"}],"bottom":[],"sidebar":[{"x":0,"y":1,"width":1,"height":1,"id":"header_search"},{"x":1,"y":1,"width":8,"height":1,"id":"primary-menu"},{"x":9,"y":1,"width":1,"height":1,"id":"button_base"}]}}',
 	'button_base_component_padding'               =>
 		array(
 			'mobile'       =>
@@ -625,7 +625,7 @@ return array(
 			'tablet-unit'  => 'px',
 			'desktop-unit' => 'px',
 		),
-	'button_base_text_setting'                    => 'Subscribe',
+	'button_base_text_setting'                    => 'Contact Now',
 	'primary-menu_component_align'                =>
 		array(
 			'mobile'  => 'center',
@@ -634,7 +634,7 @@ return array(
 		),
 	'button_base_component_align'                 =>
 		array(
-			'desktop' => 'left',
+			'desktop' => 'right',
 			'tablet'  => 'left',
 			'mobile'  => 'center',
 		),
@@ -730,4 +730,33 @@ return array(
 			'desktop-unit' => 'px',
 		),
 	'hfg_footer_layout'                           => '{"desktop":{"top":[],"bottom":[{"x":0,"y":1,"width":12,"height":1,"id":"footer_copyright"}]}}',
+	'primary-menu_component_padding'              =>
+		array(
+			'mobile'       =>
+				array(
+					'top'    => 0,
+					'right'  => 0,
+					'bottom' => 0,
+					'left'   => 0,
+				),
+			'tablet'       =>
+				array(
+					'top'    => 0,
+					'right'  => 0,
+					'bottom' => 0,
+					'left'   => 0,
+				),
+			'desktop'      =>
+				array(
+					'top'    => 0,
+					'right'  => '0',
+					'bottom' => 0,
+					'left'   => '0',
+				),
+			'mobile-unit'  => 'px',
+			'tablet-unit'  => 'px',
+			'desktop-unit' => 'px',
+		),
+	'button_base_link_setting'                    => '/?pagename=contact',
+
 );
