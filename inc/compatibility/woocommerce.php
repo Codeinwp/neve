@@ -716,7 +716,8 @@ class Woocommerce {
 	public function add_buttons_selectors( $selector ) {
 		return $selector . ',.woocommerce #review_form #respond input#submit,
 		.woocommerce-cart .woocommerce .wc-proceed-to-checkout > a.button.checkout-button,
-		.woocommerce-checkout #payment .place-order button#place_order';
+		.woocommerce-checkout #payment .place-order button#place_order,
+		.woocommerce-account.woocommerce-edit-account .woocommerce .woocommerce-MyAccount-content p > button[type="submit"][name="save_account_details"].woocommerce-Button.button';
 	}
 
 	/**
@@ -740,7 +741,8 @@ class Woocommerce {
 	public function add_buttons_hover_selectors( $selector ) {
 		return $selector . ',.woocommerce #review_form #respond input#submit:hover,
 		 .woocommerce a.button.checkout-button:hover,
-		 .woocommerce button#place_order:hover';
+		 .woocommerce button#place_order:hover,
+		 .woocommerce-account.woocommerce-edit-account .woocommerce .woocommerce-MyAccount-content p > button[type="submit"][name="save_account_details"].woocommerce-Button.button:hover';
 	}
 
 	/**
