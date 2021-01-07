@@ -322,7 +322,7 @@ class Frontend extends Generator {
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR =>  [
+				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.backgroundHover',
 					Dynamic_Selector::META_DEFAULT => 'rgba(0,0,0,0)',
 				],
@@ -653,9 +653,6 @@ class Frontend extends Generator {
 			],
 			Config::CSS_PROP_FONT_WEIGHT      => [
 				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontWeight',
-			],
-			Config::CSS_PROP_TEXT_TRANSFORM   => [
-				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_TYPEFACE . '.textTransform',
 			],
 		];
 

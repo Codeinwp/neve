@@ -220,6 +220,9 @@ class TypefaceComponent extends Component {
 	}
 
 	renderTextTransform() {
+		if ( this.controlParams.disable_transform ) {
+			return;
+		}
 		return (
 			<InlineSelect
 				label={ __( 'Transform', 'neve' ) }

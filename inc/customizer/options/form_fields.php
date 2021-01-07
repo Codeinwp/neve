@@ -368,6 +368,7 @@ class Form_Fields extends Base_Customizer {
 					'priority'              => 31,
 					'section'               => $this->section_id,
 					'input_attrs'           => array(
+						'disable_transform'      => true,
 						'default_is_empty'       => true,
 						'size_units'             => [ 'px', 'em' ],
 						'weight_default'         => 'none',
