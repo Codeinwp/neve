@@ -1191,6 +1191,11 @@ input, textarea, select, button {
   box-sizing: border-box;
 }
 
+::placeholder {
+  color: inherit;
+  opacity: .5;
+}
+
 select {
   min-height: 35px;
 }

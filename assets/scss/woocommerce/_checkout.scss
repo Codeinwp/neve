@@ -387,13 +387,13 @@
   }
 
   .select2-container--default .select2-selection--single .select2-selection__rendered {
-	padding: 7px 12px;
-	color: var(--nv-text-color);
+	padding: 0;
+	color: inherit;
 	line-height: inherit;
   }
 
   .select2-container--default .select2-results__option--highlighted[aria-selected], .select2-container--default .select2-results__option--highlighted[data-selected] {
-	color: var(--nv-text-color);
+	color: inherit;
   }
 
   .select2-container--default .select2-selection--single .select2-selection__arrow {

@@ -1,4 +1,4 @@
-# Copyright (C) 2020 ThemeIsle
+# Copyright (C) 2021 ThemeIsle
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-12-23T21:28:18+00:00\n"
+"POT-Creation-Date: 2021-01-08T12:38:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -487,12 +487,12 @@ msgstr ""
 msgid "Margin"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:787
+#: header-footer-grid/Core/Components/Abstract_Component.php:784
 #: inc/customizer/options/main.php:57
 msgid "Typography"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:868
+#: header-footer-grid/Core/Components/Abstract_Component.php:865
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:83
@@ -502,11 +502,11 @@ msgstr ""
 msgid "Top"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:872
+#: header-footer-grid/Core/Components/Abstract_Component.php:869
 msgid "Middle"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:876
+#: header-footer-grid/Core/Components/Abstract_Component.php:873
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:93
@@ -516,13 +516,13 @@ msgstr ""
 msgid "Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:889
+#: header-footer-grid/Core/Components/Abstract_Component.php:886
 msgid "Vertical Alignment"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:77
 #: header-footer-grid/Core/Components/Button.php:115
-#: inc/customizer/options/form_fields.php:522
+#: inc/customizer/options/form_fields.php:564
 msgid "Button"
 msgstr ""
 
@@ -553,6 +553,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:142
 #: header-footer-grid/Core/Components/SearchResponsive.php:184
+#: inc/customizer/options/form_fields.php:379
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:43
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:91
@@ -742,13 +743,13 @@ msgstr ""
 #: header-footer-grid/Core/Components/Search.php:120
 #: header-footer-grid/Core/Components/SearchResponsive.php:284
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:260
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:263
 msgid "Font Size"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:194
 #: header-footer-grid/Core/Components/SearchResponsive.php:358
-#: inc/customizer/options/form_fields.php:215
+#: inc/customizer/options/form_fields.php:223
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:170
 msgid "Border Width"
@@ -756,7 +757,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:251
 #: header-footer-grid/Core/Components/SearchResponsive.php:415
-#: inc/customizer/options/form_fields.php:268
+#: inc/customizer/options/form_fields.php:275
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:128
 msgid "Border Radius"
@@ -811,12 +812,12 @@ msgid "Select Menu"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:267
+#: header-footer-grid/Core/Customizer.php:270
 msgid "You are customizing the %s Header"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:267
+#: header-footer-grid/Core/Customizer.php:270
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:175
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:62
@@ -825,23 +826,23 @@ msgid "Default"
 msgstr ""
 
 #. translators: %s is the type of builder
-#: header-footer-grid/Core/Customizer.php:275
+#: header-footer-grid/Core/Customizer.php:278
 msgid "%s Builder:"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:278
+#: header-footer-grid/Core/Customizer.php:281
 msgid "Click on any empty space to add components, or existing components to adjust settings."
 msgstr ""
 
-#: header-footer-grid/Core/Customizer.php:287
+#: header-footer-grid/Core/Customizer.php:290
 #: header-footer-grid/templates/components/component-cart-icon.php:26
 #: inc/views/header.php:130
 #: inc/views/layouts/layout_sidebar.php:144
 msgid "Close"
 msgstr ""
 
-#: header-footer-grid/Core/Customizer.php:329
+#: header-footer-grid/Core/Customizer.php:332
 msgid "Search Components"
 msgstr ""
 
@@ -1235,7 +1236,7 @@ msgstr ""
 msgid "Oops! Something went wrong."
 msgstr ""
 
-#: inc/compatibility/woocommerce.php:346
+#: inc/compatibility/woocommerce.php:341
 msgid "Filter"
 msgstr ""
 
@@ -1319,13 +1320,13 @@ msgid "Buttons"
 msgstr ""
 
 #: inc/customizer/options/buttons.php:59
-#: inc/customizer/options/form_fields.php:547
+#: inc/customizer/options/form_fields.php:589
 #: assets/js/src/gutenberg.js:14
 msgid "Primary"
 msgstr ""
 
 #: inc/customizer/options/buttons.php:62
-#: inc/customizer/options/form_fields.php:548
+#: inc/customizer/options/form_fields.php:590
 msgid "Secondary"
 msgstr ""
 
@@ -1364,35 +1365,35 @@ msgstr ""
 msgid "Field Padding"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:146
+#: inc/customizer/options/form_fields.php:148
 msgid "Field Spacing"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:174
+#: inc/customizer/options/form_fields.php:182
 msgid "Field Background Color"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:315
+#: inc/customizer/options/form_fields.php:321
 msgid "Border Color"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:352
+#: inc/customizer/options/form_fields.php:358
 msgid "Input Text"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:429
+#: inc/customizer/options/form_fields.php:470
 msgid "Form Labels"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:450
+#: inc/customizer/options/form_fields.php:491
 msgid "Label Spacing"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:542
+#: inc/customizer/options/form_fields.php:584
 msgid "Button Style"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:553
+#: inc/customizer/options/form_fields.php:595
 msgid "Customize the default button styles"
 msgstr ""
 
@@ -1618,7 +1619,7 @@ msgstr ""
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:151
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:197
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:228
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:231
 msgid "None"
 msgstr ""
 
@@ -2326,32 +2327,32 @@ msgid "Weight"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:225
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:228
 msgid "Transform"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:231
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:234
 msgid "Capitalize"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:235
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:238
 msgid "Lowercase"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:239
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:242
 msgid "Uppercase"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:307
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:310
 msgid "Line Height"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:358
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:361
 msgid "Letter Spacing"
 msgstr ""
 

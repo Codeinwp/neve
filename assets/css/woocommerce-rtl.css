@@ -1010,13 +1010,13 @@ section.exclusive .tns-visually-hidden {
 }
 
 .woocommerce-page .select2-container--default .select2-selection--single .select2-selection__rendered {
-  padding: 7px 12px;
-  color: var(--nv-text-color);
+  padding: 0;
+  color: inherit;
   line-height: inherit;
 }
 
 .woocommerce-page .select2-container--default .select2-results__option--highlighted[aria-selected], .woocommerce-page .select2-container--default .select2-results__option--highlighted[data-selected] {
-  color: var(--nv-text-color);
+  color: inherit;
 }
 
 .woocommerce-page .select2-container--default .select2-selection--single .select2-selection__arrow {
@@ -1552,11 +1552,6 @@ body.woocommerce-account .woocommerce-form-login .form-row:not(.woocommerce-form
   display: flex;
   align-items: center;
   margin-top: 20px;
-}
-
-body.woocommerce-account .show-password-input {
-  top: 50% !important;
-  transform: translateY(-50%);
 }
 
 .nv-content-wrap .woocommerce-MyAccount-navigation {

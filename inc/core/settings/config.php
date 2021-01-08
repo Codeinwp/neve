@@ -76,6 +76,7 @@ class Config {
 	const MODS_FORM_FIELDS_BORDER_COLOR     = 'neve_form_fields_border_color';
 	const MODS_FORM_FIELDS_LABELS_SPACING   = 'neve_label_spacing';
 	const MODS_FORM_FIELDS_TYPEFACE         = 'neve_input_typeface';
+	const MODS_FORM_FIELDS_COLOR            = 'neve_input_text_color';
 	const MODS_FORM_FIELDS_LABELS_TYPEFACE  = 'neve_label_typeface';
 
 	const CSS_PROP_BORDER_COLOR               = 'border-color';
@@ -176,8 +177,8 @@ class Config {
 		self::CSS_SELECTOR_SINGLE_POST_TITLE         => '.single h1.entry-title',
 		self::CSS_SELECTOR_SINGLE_POST_META          => '.single .nv-meta-list li',
 		self::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE => '.single .comment-reply-title',
-		self::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING  => 'form:not(.search-form):not(.woocommerce-product-search):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code), form textarea, form select',
-		self::CSS_SELECTOR_FORM_INPUTS               => 'form input:read-write, form textarea, form select, form select option',
+		self::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING  => 'form:not([role="search"]):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code), form textarea, form select',
+		self::CSS_SELECTOR_FORM_INPUTS               => 'form input:read-write, form textarea, form select, form select option, form.wp-block-search input.wp-block-search__input',
 		self::CSS_SELECTOR_FORM_INPUTS_LABELS        => 'form label, .wpforms-container .wpforms-field-label',
 		self::CSS_SELECTOR_FORM_BUTTON               => 'form input[type="submit"]',
 		self::CSS_SELECTOR_FORM_SEARCH_INPUTS        => 'form.search-form input:read-write',

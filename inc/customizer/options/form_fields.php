@@ -114,10 +114,12 @@ class Form_Fields extends Base_Customizer {
 							body form textarea,
 							body form select,
 							body form select option,
+							body form.wp-block-search input.wp-block-search__input,
 							.woocommerce-cart table.cart td.actions .coupon .input-text,
 							.woocommerce-page .select2-container--default .select2-selection--single,
 							.woocommerce-page .woocommerce form .form-row input.input-text,
-							.woocommerce-page .woocommerce form .form-row textarea {
+							.woocommerce-page .woocommerce form .form-row textarea,
+							.wc-block-product-search form input.wc-block-product-search__field {
 								 padding-top: {{value.top}};
 								 padding-right: {{value.right}};
 								 padding-bottom: {{value.bottom}};
@@ -156,7 +158,7 @@ class Form_Fields extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
-						 form:not(.search-form):not(.woocommerce-product-search):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code),
+						 form:not([role="search"]):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code),
 						 form textarea,
 						 form select,
 						 .woocommerce-page .select2 {
@@ -188,10 +190,12 @@ class Form_Fields extends Base_Customizer {
 							body form textarea,
 							body form select,
 							body form select option,
+							body form.wp-block-search input.wp-block-search__input,
 							.woocommerce-cart table.cart td.actions .coupon .input-text,
 							.woocommerce-page .select2-container--default .select2-selection--single,
 							.woocommerce-page .woocommerce form .form-row input.input-text,
-							.woocommerce-page .woocommerce form .form-row textarea {
+							.woocommerce-page .woocommerce form .form-row textarea,
+							.wc-block-product-search form input.wc-block-product-search__field {
 							    background-color: {{value}};
 						    }',
 
@@ -236,10 +240,12 @@ class Form_Fields extends Base_Customizer {
 							body form textarea,
 							body form select,
 							body form select option,
+							body form.wp-block-search input.wp-block-search__input,
 							.woocommerce-cart table.cart td.actions .coupon .input-text,
 							.woocommerce-page .select2-container--default .select2-selection--single,
 							.woocommerce-page .woocommerce form .form-row input.input-text,
-							.woocommerce-page .woocommerce form .form-row textarea {
+							.woocommerce-page .woocommerce form .form-row textarea,
+							.wc-block-product-search form input.wc-block-product-search__field {
                                 border-top-width: {{value.top}};
 							    border-right-width: {{value.right}};
 						        border-bottom-width: {{value.bottom}};
@@ -286,10 +292,12 @@ class Form_Fields extends Base_Customizer {
 							body form textarea,
 							body form select,
 							body form select option,
+							body form.wp-block-search input.wp-block-search__input,
 							.woocommerce-cart table.cart td.actions .coupon .input-text,
 							.woocommerce-page .select2-container--default .select2-selection--single,
 							.woocommerce-page .woocommerce form .form-row input.input-text,
-							.woocommerce-page .woocommerce form .form-row textarea {
+							.woocommerce-page .woocommerce form .form-row textarea,
+							.wc-block-product-search form input.wc-block-product-search__field {
 								border-top-right-radius: {{value.top}};
 								border-bottom-right-radius: {{value.right}};
 								border-bottom-left-radius: {{value.bottom}};
@@ -300,7 +308,6 @@ class Form_Fields extends Base_Customizer {
 				'\Neve\Customizer\Controls\React\Nr_Spacing'
 			)
 		);
-
 
 		$this->add_control(
 			new Control(
@@ -322,10 +329,12 @@ class Form_Fields extends Base_Customizer {
 							body form textarea,
 							body form select,
 							body form select option,
+							body form.wp-block-search input.wp-block-search__input,
 							.woocommerce-cart table.cart td.actions .coupon .input-text,
 							.woocommerce-page .select2-container--default .select2-selection--single,
 							.woocommerce-page .woocommerce form .form-row input.input-text,
-							.woocommerce-page .woocommerce form .form-row textarea {
+							.woocommerce-page .woocommerce form .form-row textarea,
+							.wc-block-product-search form input.wc-block-product-search__field {
 								border-color: {{value}};
 							}',
 					],
@@ -352,9 +361,43 @@ class Form_Fields extends Base_Customizer {
 					'class'            => 'form-input-accordion',
 					'accordion'        => true,
 					'expanded'         => false,
-					'controls_to_wrap' => 1,
+					'controls_to_wrap' => 2,
 				],
 				'Neve\Customizer\Controls\Heading'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_input_text_color',
+				[
+					'sanitize_callback' => 'neve_sanitize_colors',
+					'default'           => 'var(--nv-text-color)',
+					'transport'         => $this->selective_refresh,
+				],
+				[
+					'label'                 => esc_html__( 'Color', 'neve' ),
+					'section'               => $this->section_id,
+					'priority'              => 31,
+					'default'               => 'var(--nv-text-color)',
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'template' => '
+							body form input:read-write,
+							body form textarea,
+							body form select,
+							body form select option,
+							body form.wp-block-search input.wp-block-search__input,
+							.woocommerce-cart table.cart td.actions .coupon .input-text,
+							.woocommerce-page .select2-container--default .select2-selection--single,
+							.woocommerce-page .woocommerce form .form-row input.input-text,
+							.woocommerce-page .woocommerce form .form-row textarea,
+							.wc-block-product-search form input.wc-block-product-search__field {
+								color: {{value}};
+							}',
+					],
+				],
+				'Neve\Customizer\Controls\React\Color'
 			)
 		);
 
@@ -365,7 +408,7 @@ class Form_Fields extends Base_Customizer {
 					'transport' => $this->selective_refresh,
 				],
 				[
-					'priority'              => 31,
+					'priority'              => 32,
 					'section'               => $this->section_id,
 					'input_attrs'           => array(
 						'disable_transform'      => true,
@@ -400,10 +443,12 @@ class Form_Fields extends Base_Customizer {
 						form textarea,
 						form select,
 						form select option,
+						form.wp-block-search input.wp-block-search__input,
 						.woocommerce-cart table.cart td.actions .coupon .input-text,
 						.woocommerce-page .select2-container--default .select2-selection--single,
 						.woocommerce-page .woocommerce form .form-row input.input-text,
-						.woocommerce-page .woocommerce form .form-row textarea
+						.woocommerce-page .woocommerce form .form-row textarea,
+						.wc-block-product-search form input.wc-block-product-search__field
 					',
 				],
 				'\Neve\Customizer\Controls\React\Typography'
@@ -418,9 +463,9 @@ class Form_Fields extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_form_labels_heading',
-				array(
+				[
 					'sanitize_callback' => 'sanitize_text_field',
-				),
+				],
 				[
 					'label'            => esc_html__( 'Form Labels', 'neve' ),
 					'section'          => $this->section_id,
