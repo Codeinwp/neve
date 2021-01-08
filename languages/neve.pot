@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.9.2\n"
+"Project-Id-Version: Neve 2.9.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-08T12:38:11+00:00\n"
+"POT-Creation-Date: 2021-01-08T20:25:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -585,22 +585,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:502
+#: inc/core/front_end.php:507
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:499
+#: inc/core/front_end.php:504
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:501
+#: inc/core/front_end.php:506
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:500
+#: inc/core/front_end.php:505
 msgid "Footer Two"
 msgstr ""
 
@@ -651,7 +651,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Nav.php:43
 #: header-footer-grid/Core/Components/Nav.php:221
 #: header-footer-grid/templates/components/component-nav.php:26
-#: inc/core/front_end.php:69
+#: inc/core/front_end.php:71
 msgid "Primary Menu"
 msgstr ""
 
@@ -713,7 +713,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/NavFooter.php:41
 #: header-footer-grid/Core/Components/NavFooter.php:138
 #: header-footer-grid/templates/components/component-nav-footer.php:23
-#: inc/core/front_end.php:70
+#: inc/core/front_end.php:72
 msgid "Footer Menu"
 msgstr ""
 
@@ -803,7 +803,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/SecondNav.php:41
 #: header-footer-grid/Core/Components/SecondNav.php:136
 #: header-footer-grid/templates/components/component-nav-secondary.php:23
-#: inc/core/front_end.php:71
+#: inc/core/front_end.php:73
 msgid "Secondary Menu"
 msgstr ""
 
@@ -1050,7 +1050,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:492
+#: inc/core/front_end.php:497
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:141
 msgid "Sidebar"
 msgstr ""
@@ -1271,43 +1271,43 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: inc/core/front_end.php:172
+#: inc/core/front_end.php:93
 msgid "Neve - Primary Accent"
 msgstr ""
 
-#: inc/core/front_end.php:176
+#: inc/core/front_end.php:97
 msgid "Neve - Secondary Accent"
 msgstr ""
 
-#: inc/core/front_end.php:180
+#: inc/core/front_end.php:101
 msgid "Neve - Site Background"
 msgstr ""
 
-#: inc/core/front_end.php:184
+#: inc/core/front_end.php:105
 msgid "Neve - Light Background"
 msgstr ""
 
-#: inc/core/front_end.php:188
+#: inc/core/front_end.php:109
 msgid "Neve - Dark Background"
 msgstr ""
 
-#: inc/core/front_end.php:192
+#: inc/core/front_end.php:113
 msgid "Neve - Text Color"
 msgstr ""
 
-#: inc/core/front_end.php:196
+#: inc/core/front_end.php:117
 msgid "Neve - Text Dark Background"
 msgstr ""
 
-#: inc/core/front_end.php:200
+#: inc/core/front_end.php:121
 msgid "Neve - Extra Color 1"
 msgstr ""
 
-#: inc/core/front_end.php:204
+#: inc/core/front_end.php:125
 msgid "Neve - Extra Color 2"
 msgstr ""
 
-#: inc/core/front_end.php:493
+#: inc/core/front_end.php:498
 msgid "Shop Sidebar"
 msgstr ""
 

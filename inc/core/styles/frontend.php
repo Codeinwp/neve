@@ -633,7 +633,10 @@ class Frontend extends Generator {
 			Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_FORM_FIELDS_BORDER_WIDTH,
 			Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_FORM_FIELDS_BORDER_RADIUS,
 			Config::CSS_PROP_BORDER_COLOR     => Config::MODS_FORM_FIELDS_BORDER_COLOR,
-			Config::CSS_PROP_COLOR            => Config::MODS_FORM_FIELDS_COLOR,
+			Config::CSS_PROP_COLOR            => [
+				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
+			],
 			Config::CSS_PROP_PADDING          => [
 				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => false,

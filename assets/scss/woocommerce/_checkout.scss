@@ -379,6 +379,8 @@
 .woocommerce-page {
   .select2-container--default .select2-selection--single {
 	height: auto;
+	border-color: #dddddd;
+	padding: 7px 12px;
   }
 
   .select2-container--default .select2-selection--single,
@@ -401,7 +403,7 @@
   }
 
   form .form-row .select2-container {
-	line-height: normal;
+	line-height: 1;
   }
 }
 

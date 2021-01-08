@@ -314,12 +314,7 @@
 }
 
 .orderby {
-  color: var(--nv-text-color);
   opacity: .8;
-}
-
-.orderby option {
-  background: var(--nv-site-bg);
 }
 
 .nv-woo-filters .nv-sidebar-toggle {
@@ -498,7 +493,6 @@
 }
 
 .variations select {
-  color: var(--nv-text-color);
   width: 100%;
   height: auto;
 }
@@ -1002,6 +996,8 @@ section.exclusive .tns-visually-hidden {
 
 .woocommerce-page .select2-container--default .select2-selection--single {
   height: auto;
+  border-color: #dddddd;
+  padding: 7px 12px;
 }
 
 .woocommerce-page .select2-container--default .select2-selection--single,
@@ -1024,7 +1020,7 @@ section.exclusive .tns-visually-hidden {
 }
 
 .woocommerce-page form .form-row .select2-container {
-  line-height: normal;
+  line-height: 1;
 }
 
 .woocommerce ul.products li.product .added_to_cart {
