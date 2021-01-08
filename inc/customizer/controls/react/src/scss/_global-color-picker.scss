@@ -1,56 +1,109 @@
 .nv-custom-palette-wrap {
-	.header {
-		display: flex;
-		align-items: center;
-		margin-bottom: 10px;
+  .header {
+	display: flex;
+	align-items: center;
+	padding: 5px 0 20px;
 
-		button {
-			margin-left: auto;
-		}
+	button {
+	  margin-left: auto;
+	  text-decoration: none;
 	}
-}
+  }
 
-.nv-custom-palette-inner {
-	.row {
-		display: flex;
-		&:not(:last-child) {
-			margin-bottom: 15px;
-		}
+  ul {
+	li {
+	  padding: 2px 0;
 	}
-	.nv-custom-palette-color {
-		height: 32px;
-		width: 32px;
-		border-radius: 50%;
-		border: 1px solid #ccc;
-		&:not(:last-child) {
-			margin-right: 10px;
-		}
+	a {
+	  display: flex;
+	  align-items: center;
+	  text-decoration: none;
+	  color: #555D66;
+	  font-weight: 500;
+	  font-size: 14px;
 
-		&.active {
-			box-shadow: 0 0 0 2px $wp-blue;
-			border-color: $wp-blue;
-		}
+	  span {
+		margin-left: 7px;
+	  }
 	}
-}
+  }
 
-.global-color-picker {
+  .nv-custom-palette-color {
+	height: 30px;
+	width: 30px;
+	display: block;
+	border-radius: 50%;
 	border: 1px solid #ccc;
-	//display: flex;
-	//align-items: center;
-	//justify-content: center;
-	.dashicon {
-		width: auto !important;
-		font-size: 16px !important;
-		line-height: normal;
-		display: flex;
-		align-items: center;
-		margin-right: 0 !important;
-	}
-	svg {
-		margin-right: 0 !important;
-	}
+	margin: 2px;
 
 	&.active {
-		color: $wp-blue;
+	  margin: 0;
+	  border: 3px solid #8FD7EE;
 	}
+  }
+}
+
+.globa-color-popover {
+  border-radius: 100px !important;
+}
+
+.neve-color-component.allows-global {
+  .components-popover__content {
+	border: none;
+	border-radius: 5px !important;
+  }
+}
+
+//.nv-custom-palette-wrap {
+//	.header {
+//		display: flex;
+//		align-items: center;
+//		margin-bottom: 10px;
+//
+//		button {
+//			margin-left: auto;
+//		}
+//	}
+//}
+//
+//.nv-custom-palette-inner {
+//	.row {
+//		display: flex;
+//		&:not(:last-child) {
+//			margin-bottom: 15px;
+//		}
+//	}
+//	.nv-custom-palette-color {
+//		height: 32px;
+//		width: 32px;
+//		border-radius: 50%;
+//		border: 1px solid #ccc;
+//		&:not(:last-child) {
+//			margin-right: 10px;
+//		}
+//
+//		&.active {
+//			box-shadow: 0 0 0 2px $wp-blue;
+//			border-color: $wp-blue;
+//		}
+//	}
+//}
+//
+.global-color-picker {
+  .dashicon {
+	width: auto !important;
+	font-size: 16px !important;
+	line-height: normal;
+	display: flex;
+	align-items: center;
+	margin-right: 0 !important;
+  }
+
+  svg {
+	margin-right: 0 !important;
+  }
+
+  &.active {
+	color: $wp-blue;
+  }
 }
