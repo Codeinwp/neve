@@ -72,8 +72,8 @@ class Customizer {
 		}
 
 		if ( is_admin() || is_customize_preview() ) {
-			add_action( 'customize_register', array( $this, 'register' ), PHP_INT_MAX );
-			add_action( 'customize_preview_init', array( $this, 'preview_js' ), PHP_INT_MAX );
+			add_action( 'customize_register', array( $this, 'register' ) );
+			add_action( 'customize_preview_init', array( $this, 'preview_js' ) );
 		}
 
 		add_filter( 'body_class', array( $this, 'hfg_body_classes' ) );

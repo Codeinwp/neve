@@ -10,6 +10,7 @@
 
 namespace Neve\Core;
 
+use Neve\Compatibility\Starter_Content;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 
@@ -19,6 +20,7 @@ use Neve\Core\Settings\Mods;
  * @package Neve\Core
  */
 class Front_End {
+
 
 
 	/**
@@ -56,7 +58,7 @@ class Front_End {
 		add_theme_support( 'lifterlms-sidebars' );
 		add_theme_support( 'lifterlms' );
 		add_theme_support( 'service_worker', true );
-
+		add_theme_support( 'starter-content', ( new Starter_Content() )->get() );
 		add_filter( 'script_loader_tag', array( $this, 'filter_script_loader_tag' ), 10, 2 );
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
@@ -76,87 +78,6 @@ class Front_End {
 		add_image_size( 'neve-blog', 930, 620, true );
 		add_filter( 'wp_nav_menu_args', array( $this, 'nav_walker' ), 1001 );
 		$this->add_woo_support();
-	}
-
-	/**
-	 * Adds async/defer attributes to enqueued / registered scripts.
-	 *
-	 * If #12009 lands in WordPress, this function can no-op since it would be handled in core.
-	 *
-	 * @link https://core.trac.wordpress.org/ticket/12009
-	 *
-	 * @param string $tag The script tag.
-	 * @param string $handle The script handle.
-	 * @return string Script HTML string.
-	 */
-	public function filter_script_loader_tag( $tag, $handle ) {
-		foreach ( array( 'async', 'defer' ) as $attr ) {
-			if ( ! wp_scripts()->get_data( $handle, $attr ) ) {
-				continue;
-			}
-			// Prevent adding attribute when already added in #12009.
-			if ( ! preg_match( ":\s$attr(=|>|\s):", $tag ) ) {
-				$tag = preg_replace( ':(?=></script>):', " $attr", $tag, 1 );
-			}
-			// Only allow async or defer, not both.
-			break;
-		}
-		return $tag;
-	}
-
-	/**
-	 * Wrap embeds.
-	 *
-	 * @param string $markup embed markup.
-	 * @param string $url embed url.
-	 * @param array  $attr embed attributes [width/height].
-	 *
-	 * @return string
-	 */
-	public function wrap_oembeds( $markup, $url, $attr ) {
-		$sources = [
-			'youtube.com',
-			'youtu.be',
-			'cloudup.com',
-			'dailymotion.com',
-			'collegehumor.com',
-			'ted.com',
-			'vimeo.com',
-		];
-		foreach ( $sources as $source ) {
-			if ( strpos( $url, $source ) !== false ) {
-				return '<div class="nv-iframe-embed">' . $markup . '</div>';
-			}
-		}
-
-		return $markup;
-	}
-
-	/**
-	 * Wrap Jetpack embeds.
-	 * Fixes the compose module aspect ratio issue.
-	 *
-	 * @param string $markup embed markup.
-	 *
-	 * @return string
-	 */
-	public function wrap_jetpack_oembeds( $markup ) {
-		return '<div class="nv-iframe-embed">' . $markup . '</div>';
-	}
-
-	/**
-	 * Tweak menu walker to support selective refresh.
-	 *
-	 * @param array $args List of arguments for navigation.
-	 *
-	 * @return mixed
-	 */
-	public function nav_walker( $args ) {
-		if ( isset( $args['walker'] ) && is_string( $args['walker'] ) && class_exists( $args['walker'] ) ) {
-			$args['walker'] = new $args['walker']();
-		}
-
-		return $args;
 	}
 
 	/**
@@ -220,9 +141,142 @@ class Front_End {
 	}
 
 	/**
+	 * Add AMP support
+	 */
+	private function add_amp_support() {
+		if ( ! defined( 'AMP__VERSION' ) ) {
+			return;
+		}
+		if ( version_compare( AMP__VERSION, '1.0.0', '<' ) ) {
+			return;
+		}
+		add_theme_support(
+			'amp',
+			apply_filters(
+				'neve_filter_amp_support',
+				array(
+					'paired' => true,
+				)
+			)
+		);
+	}
+
+	/**
+	 * Add WooCommerce support
+	 */
+	private function add_woo_support() {
+		if ( ! class_exists( 'WooCommerce', false ) ) {
+			return;
+		}
+
+		$woocommerce_settings = apply_filters(
+			'neves_woocommerce_args',
+			array(
+				'product_grid' => array(
+					'default_columns' => 3,
+					'default_rows'    => 4,
+					'min_columns'     => 1,
+					'max_columns'     => 6,
+					'min_rows'        => 1,
+				),
+			)
+		);
+
+		add_theme_support( 'woocommerce', $woocommerce_settings );
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
+
+	}
+
+	/**
+	 * Adds async/defer attributes to enqueued / registered scripts.
+	 *
+	 * If #12009 lands in WordPress, this function can no-op since it would be handled in core.
+	 *
+	 * @link https://core.trac.wordpress.org/ticket/12009
+	 *
+	 * @param string $tag The script tag.
+	 * @param string $handle The script handle.
+	 *
+	 * @return string Script HTML string.
+	 */
+	public function filter_script_loader_tag( $tag, $handle ) {
+		foreach ( array( 'async', 'defer' ) as $attr ) {
+			if ( ! wp_scripts()->get_data( $handle, $attr ) ) {
+				continue;
+			}
+			// Prevent adding attribute when already added in #12009.
+			if ( ! preg_match( ":\s$attr(=|>|\s):", $tag ) ) {
+				$tag = preg_replace( ':(?=></script>):', " $attr", $tag, 1 );
+			}
+			// Only allow async or defer, not both.
+			break;
+		}
+
+		return $tag;
+	}
+
+	/**
+	 * Wrap embeds.
+	 *
+	 * @param string $markup embed markup.
+	 * @param string $url embed url.
+	 * @param array  $attr embed attributes [width/height].
+	 *
+	 * @return string
+	 */
+	public function wrap_oembeds( $markup, $url, $attr ) {
+		$sources = [
+			'youtube.com',
+			'youtu.be',
+			'cloudup.com',
+			'dailymotion.com',
+			'collegehumor.com',
+			'ted.com',
+			'vimeo.com',
+		];
+		foreach ( $sources as $source ) {
+			if ( strpos( $url, $source ) !== false ) {
+				return '<div class="nv-iframe-embed">' . $markup . '</div>';
+			}
+		}
+
+		return $markup;
+	}
+
+	/**
+	 * Wrap Jetpack embeds.
+	 * Fixes the compose module aspect ratio issue.
+	 *
+	 * @param string $markup embed markup.
+	 *
+	 * @return string
+	 */
+	public function wrap_jetpack_oembeds( $markup ) {
+		return '<div class="nv-iframe-embed">' . $markup . '</div>';
+	}
+
+	/**
+	 * Tweak menu walker to support selective refresh.
+	 *
+	 * @param array $args List of arguments for navigation.
+	 *
+	 * @return mixed
+	 */
+	public function nav_walker( $args ) {
+		if ( isset( $args['walker'] ) && is_string( $args['walker'] ) && class_exists( $args['walker'] ) ) {
+			$args['walker'] = new $args['walker']();
+		}
+
+		return $args;
+	}
+
+	/**
 	 * Add new Gutenberg templates on Otter plugin.
 	 *
 	 * @param array $templates_list the templates list array.
+	 *
 	 * @return array
 	 */
 	public function add_gutenberg_templates( $templates_list ) {
@@ -368,55 +422,6 @@ class Front_End {
 		);
 
 		return array_merge( $templates, $templates_list );
-	}
-
-	/**
-	 * Add AMP support
-	 */
-	private function add_amp_support() {
-		if ( ! defined( 'AMP__VERSION' ) ) {
-			return;
-		}
-		if ( version_compare( AMP__VERSION, '1.0.0', '<' ) ) {
-			return;
-		}
-		add_theme_support(
-			'amp',
-			apply_filters(
-				'neve_filter_amp_support',
-				array(
-					'paired' => true,
-				)
-			)
-		);
-	}
-
-	/**
-	 * Add WooCommerce support
-	 */
-	private function add_woo_support() {
-		if ( ! class_exists( 'WooCommerce', false ) ) {
-			return;
-		}
-
-		$woocommerce_settings = apply_filters(
-			'neves_woocommerce_args',
-			array(
-				'product_grid' => array(
-					'default_columns' => 3,
-					'default_rows'    => 4,
-					'min_columns'     => 1,
-					'max_columns'     => 6,
-					'min_rows'        => 1,
-				),
-			)
-		);
-
-		add_theme_support( 'woocommerce', $woocommerce_settings );
-		add_theme_support( 'wc-product-gallery-zoom' );
-		add_theme_support( 'wc-product-gallery-lightbox' );
-		add_theme_support( 'wc-product-gallery-slider' );
-
 	}
 
 	/**
