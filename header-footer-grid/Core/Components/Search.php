@@ -44,7 +44,7 @@ class Search extends Abstract_Component {
 		$this->set_property( 'component_slug', 'hfg-search-form' );
 		$this->set_property( 'width', 2 );
 		$this->set_property( 'icon', 'code-standards' );
-		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() );
+		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() . ' > .search-field form' );
 	}
 
 	/**
@@ -315,7 +315,7 @@ class Search extends Abstract_Component {
 						body ' . $this->default_selector . ' input[type=search] {
 							border-color: {{value}};
 						}
-						body ' . $this->default_selector . ' .search-form .nv-search-icon-wrap .nv-icon svg {
+						body ' . $this->default_selector . ' .nv-search-icon-wrap .nv-icon svg {
 							fill: {{value}};
 						}',
 				],

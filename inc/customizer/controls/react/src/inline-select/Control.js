@@ -1,14 +1,13 @@
 /* jshint esversion: 6 */
-
-import FontFamilyComponent from './FontFamilyComponent';
+import InlineSelectComponent from './InlineSelectComponent';
 import ControlWithLink from '../common/ControlWithLink';
 import { render } from '@wordpress/element';
 
-export const FontFamilyControl = wp.customize.Control.extend( {
+export const InlineSelectControl = wp.customize.Control.extend( {
 	renderContent: function renderContent() {
 		render(
-			<ControlWithLink link={ this.params.input_attrs.link }>
-				<FontFamilyComponent control={ this } />
+			<ControlWithLink link={ this.params.link }>
+				<InlineSelectComponent control={ this } />
 			</ControlWithLink>,
 			this.container[ 0 ]
 		);
