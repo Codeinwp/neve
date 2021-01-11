@@ -2737,10 +2737,10 @@
   resolved "https://registry.yarnpkg.com/@wordpress/prettier-config/-/prettier-config-0.4.0.tgz#bc8ab5c234c74a5c3bbb424cbbc3010b2be1be44"
   integrity sha512-7c4VeugkCwDkaHSD7ffxoP0VC5c///gCTEAT032OhI5Rik2dPxE3EkNAB2NhotGE8M4dMAg4g5Wj2OWZIn8TFw==
 
-"@wordpress/scripts@^12.6.0":
-  version "12.6.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/scripts/-/scripts-12.6.0.tgz#3c59499ab323e9af26fcfa8d672f06627feef336"
-  integrity sha512-CjbDMJo/bMXpx+GWASbCYEuTlkST1nz7M1lVIFBpEzSi26AE720I3r2AprQMy1/e1H/NTRRsO0af27J18qr48A==
+"@wordpress/scripts@^12.6.1":
+  version "12.6.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/scripts/-/scripts-12.6.1.tgz#0a708aa49b1f4c5dbaf3687028f61d5d9eb11c10"
+  integrity sha512-pDLtACFrP5gUA414qrE49dUrR7yMy40+//1e/5Nx821lnmDb7GAGWGo1gX4lJ2gbfSjePwmRoZe6Mph87vSnLQ==
   dependencies:
     "@svgr/webpack" "^5.2.0"
     "@wordpress/babel-preset-default" "^4.20.0"
