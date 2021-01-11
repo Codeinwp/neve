@@ -85,7 +85,7 @@ class Elementor extends Page_Builder_Base {
 		$response = new \WP_REST_Response(
 			[
 				'id'    => esc_attr( $rest_id ),
-				'title' => 'Neve - ' . esc_html( $rest_to_slugs[ $rest_id ] ),
+				'title' => $this->get_global_color_prefix() . esc_html( $rest_to_slugs[ $rest_id ] ),
 				'value' => neve_sanitize_colors( $colors[ $rest_to_slugs[ $rest_id ] ] ),
 			]
 		);
@@ -126,7 +126,7 @@ class Elementor extends Page_Builder_Base {
 			$no_hyphens                    = str_replace( '-', '', $slug );
 			$data['colors'][ $no_hyphens ] = [
 				'id'    => esc_attr( $no_hyphens ),
-				'title' => 'Neve - ' . esc_html( $label_map[ $slug ] ),
+				'title' => $this->get_global_color_prefix() . esc_html( $label_map[ $slug ] ),
 				'value' => neve_sanitize_colors( $color_value ),
 			];
 		}
@@ -280,5 +280,14 @@ class Elementor extends Page_Builder_Base {
 		$palette    = $palettes[ $active ];
 
 		return $palette['colors'];
+	}
+
+	/**
+	 * Get the global colors prefix.
+	 *
+	 * @return string
+	 */
+	private function get_global_color_prefix() {
+		return ( apply_filters( 'ti_wl_theme_is_localized', false ) ? __( 'Theme', 'neve' ) : 'Neve' ) . ' - ';
 	}
 }
