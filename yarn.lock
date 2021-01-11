@@ -16098,10 +16098,10 @@ url-parse-lax@^1.0.0:
   dependencies:
     prepend-http "^1.0.1"
 
-url-slug@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/url-slug/-/url-slug-3.0.0.tgz#8f992b313bca98ad4624beda8a599937f1199c2a"
-  integrity sha512-tAOW+TmMmsLIL3rBMt3udrS0B1PbA47zf/yYshEE7JUOTcG7qxW5JNVqE/1YzBvvCZMXFfOMbRrhZEisiHdRkQ==
+url-slug@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/url-slug/-/url-slug-3.0.1.tgz#f66638bbfa4acefb122a91cd22ffb1aa8703483f"
+  integrity sha512-8zxCgV7G0biwS3CoDSTwLatF75W4ZWyIsoLbgLkSTo2ygpDjsD8/f33zB9Leh/raXe1/yo2tW7mJD0n7kxMAFA==
 
 url@^0.11.0:
   version "0.11.0"
