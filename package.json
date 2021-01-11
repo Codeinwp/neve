@@ -39,7 +39,7 @@
 		"@size-limit/preset-app": "^4.9.1",
 		"@size-limit/webpack": "^4.9.1",
 		"@wordpress/eslint-plugin": "@7.4.0",
-		"@wordpress/scripts": "^12.6.0",
+		"@wordpress/scripts": "^12.6.1",
 		"babel-loader": "^8.2.2",
 		"compare-versions": "^3.6.0",
 		"conventional-changelog-simple-preset": "^1.0.14",
