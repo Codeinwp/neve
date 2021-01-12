@@ -63,6 +63,8 @@ class Css_Prop {
 			case Config::CSS_PROP_FLEX_BASIS:
 			case Config::CSS_PROP_MARGIN_LEFT:
 			case Config::CSS_PROP_MARGIN_RIGHT:
+			case Config::CSS_PROP_MARGIN_TOP:
+			case Config::CSS_PROP_MARGIN_BOTTOM:
 			case Config::CSS_PROP_PADDING_LEFT:
 			case Config::CSS_PROP_PADDING_RIGHT:
 			case Config::CSS_PROP_HEIGHT:
@@ -92,9 +94,19 @@ class Css_Prop {
 						$css_prop,
 						absint( $value ), $suffix );
 				}
+
+				if ( ! isset( $meta['is_responsive'] ) || $meta['is_responsive'] === false ) {
+					$suffix = isset( $value['unit'] ) ? $value['unit'] : 'px';
+				}
+
 				if ( $suffix === 'responsive_unit' ) {
-					$all_value = Mods::get( $meta[ 'key' ], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
-					$suffix = isset( $all_value[ $device . '-unit' ] ) ? $all_value[ $device . '-unit' ] : 'px';
+					$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
+					$suffix    = 'px';
+					if ( isset( $all_value[ $device . '-unit' ] ) ) {
+						$suffix = $all_value[ $device . '-unit' ];
+					} elseif ( isset( $all_value['unit'] ) ) {
+						$suffix = $all_value['unit'];
+					}
 				}
 				$non_empty_values = array_filter( $value, 'strlen' );
 				if ( count( $non_empty_values ) === 4 ) {
@@ -122,6 +134,11 @@ class Css_Prop {
 						'left'   => 'border-bottom-left-radius',
 					],
 				];
+
+				if( isset( $non_empty_values['unit'] ) ) {
+					unset ($non_empty_values['unit']);
+				}
+
 				foreach ( $non_empty_values as $position => $position_value ) {
 					$rule .= sprintf( "%s:%s%s;",
 						sprintf( (is_array( $patterns[ $css_prop ] ) ? $patterns[ $css_prop ][ $position ] : $patterns[ $css_prop ]), $position ),

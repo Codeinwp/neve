@@ -62,6 +62,7 @@ class Loader {
 				'Customizer\Options\Typography',
 				'Customizer\Options\Colors_Background',
 				'Customizer\Options\Buttons',
+				'Customizer\Options\Form_Fields',
 				'Customizer\Options\Rtl',
 				'Customizer\Options\Upsells',
 			)

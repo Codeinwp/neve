@@ -1,0 +1,23 @@
+.select-inline {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+
+  > .customize-control-title {
+	margin: 0;
+	max-width: 35%;
+  }
+
+  > * {
+	flex-grow: 1;
+  }
+
+  select {
+	border-radius: 0;
+	border-color: $input-borders;
+  }
+
+  .components-base-control__field {
+	margin: 0;
+  }
+}
