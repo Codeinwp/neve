@@ -8,16 +8,16 @@ return [
 	'post_type'    => 'page',
 	'post_title'   => _x( 'Home', 'Theme starter content' ),
 	'post_content' => '<!-- wp:cover {"url":"' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/hero.jpg","dimRatio":0,"focalPoint":{"x":"0.50","y":"0.64"},"minHeight":700,"align":"full"} -->
-<div class="wp-block-cover alignfull" style="background-image:url(' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/hero.jpg);background-position:50% 64%;min-height:700px"><div class="wp-block-cover__inner-container"><!-- wp:spacer {"height":80} -->
+<div class="wp-block-cover alignfull" style="background-image:url(' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/hero.jpg);min-height:700px;background-position:50% 64%"><div class="wp-block-cover__inner-container"><!-- wp:spacer {"height":80} -->
 <div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:heading {"align":"center","level":1,"style":{"color":{"text":"#121212"}}} -->
+<!-- wp:heading {"textAlign":"center","level":1,"style":{"color":{"text":"#121212"}}} -->
 <h1 class="has-text-align-center has-text-color" style="color:#121212">Create and grow your <br>unique website today</h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":17},"color":{"text":"#121212"}}} -->
-<p class="has-text-align-center has-text-color" style="font-size:17px;color:#121212">Programmatically work but low hanging fruit so new economy cross-pollination. Quick sync new <br>economy onward and upward.</p>
+<p class="has-text-align-center has-text-color" style="color:#121212;font-size:17px">Programmatically work but low hanging fruit so new economy cross-pollination. Quick sync new <br>economy onward and upward.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"align":"center"} -->
@@ -26,8 +26,8 @@ return [
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-secondary"} -->
-<div class="wp-block-button is-style-secondary"><a class="wp-block-button__link" href="#">HIRE US</a></div>
-<!-- /wp:button --></div>
+<div class="wp-block-button is-style-secondary">
+<a class="wp-block-button__link" href="https://demosites.io/" target="_blank" rel="noreferrer noopener">See all demos</a></div> <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
 <!-- wp:spacer {"height":80} -->
@@ -47,9 +47,10 @@ return [
 <div class="wp-block-columns"><!-- wp:column -->
 <div class="wp-block-column">
 
-<!-- wp:image {"align":"center","width":64,"height":64,"className":"icon-style is-style-rounded"} -->
-<div class="wp-block-image icon-style is-style-rounded"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-03.svg" alt="" width="64" height="64"/></figure></div>
+<!-- wp:image {"align":"center","width":48,"height":48,"className":"icon-style is-style-default"} -->
+<div class="wp-block-image icon-style is-style-default"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-03.svg" alt="" width="48" height="48"/></figure></div>
 <!-- /wp:image -->
+
 <!-- wp:heading {"level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">Fixed Price Projects</h3>
 <!-- /wp:heading -->
@@ -64,9 +65,8 @@ return [
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column">
-<!-- wp:image {"align":"center","width":64,"height":64,"className":"icon-style is-style-rounded"} -->
-<div class="wp-block-image icon-style is-style-rounded"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-02.svg" alt="" width="64" height="64"/></figure></div>
+<div class="wp-block-column"><!-- wp:image {"align":"center","width":48,"height":48,"className":"icon-style is-style-default"} -->
+<div class="wp-block-image icon-style is-style-default"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-02.svg" alt="" width="48" height="48"/></figure></div>
 <!-- /wp:image -->
 
 <!-- wp:heading {"level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
@@ -83,11 +83,9 @@ return [
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column">
-<!-- wp:image {"align":"center","width":64,"height":64,"className":"icon-style is-style-rounded"} -->
-<div class="wp-block-image icon-style is-style-rounded"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-01.svg" alt="" width="64" height="64"/></figure></div>
+<div class="wp-block-column"><!-- wp:image {"align":"center","width":48,"height":48,"className":"icon-style is-style-rounded"} -->
+<div class="wp-block-image icon-style is-style-rounded"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-01.svg" alt="" width="48" height="48"/></figure></div>
 <!-- /wp:image -->
-
 
 <!-- wp:heading {"level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">Fast work turnaround</h3>
@@ -120,12 +118,12 @@ return [
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"center","width":50} -->
+<!-- wp:column {"verticalAlignment":"center","width":"50%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:spacer {"height":20} -->
 <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:heading {"align":"left","textColor":"neve-text-color"} -->
+<!-- wp:heading {"textAlign":"left","textColor":"neve-text-color"} -->
 <h2 class="has-text-align-left has-neve-text-color-color has-text-color">Web Design</h2>
 <!-- /wp:heading -->
 
@@ -154,8 +152,8 @@ return [
 <!-- /wp:spacer -->
 
 <!-- wp:columns {"verticalAlignment":"center"} -->
-<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":50} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:heading {"align":"left","textColor":"neve-text-color"} -->
+<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"50%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:heading {"textAlign":"left","textColor":"neve-text-color"} -->
 <h2 class="has-text-align-left has-neve-text-color-color has-text-color">Branding</h2>
 <!-- /wp:heading -->
 
@@ -200,12 +198,12 @@ return [
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"center","width":50} -->
+<!-- wp:column {"verticalAlignment":"center","width":"50%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:spacer {"height":40} -->
 <div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:heading {"align":"left","textColor":"nv-text-dark-bg"} -->
+<!-- wp:heading {"textAlign":"left","textColor":"nv-text-dark-bg"} -->
 <h2 class="has-text-align-left has-nv-text-dark-bg-color has-text-color">We are driven by values</h2>
 <!-- /wp:heading -->
 
@@ -344,7 +342,7 @@ return [
 <div style="height:140px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:heading {"align":"center","textColor":"nv-text-dark-bg"} -->
+<!-- wp:heading {"textAlign":"center","textColor":"nv-text-dark-bg"} -->
 <h2 class="has-text-align-center has-nv-text-dark-bg-color has-text-color">Let’s work together on your <br>next web project</h2>
 <!-- /wp:heading -->
 

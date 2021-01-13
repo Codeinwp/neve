@@ -1,0 +1,19 @@
+$excluded: ':not(.customize-control-customizer-heading)';
+
+
+#sub-accordion-section-neve_form_fields_section {
+  #customize-control-neve_form_fields_padding,
+  #customize-control-neve_form_fields_spacing,
+  #customize-control-neve_form_fields_background_color,
+  #customize-control-neve_form_fields_border_width,
+  #customize-control-neve_form_fields_border_radius,
+  #customize-control-neve_input_text_color,
+  #customize-control-neve_label_spacing {
+	margin-bottom: 0;
+  }
+  .neve-customizer-link {
+	margin: 0 -15px;
+	padding: 0 10px 10px;
+	background: #fff;
+  }
+}

@@ -5,7 +5,7 @@ import { render } from '@wordpress/element';
 export const GlobalColorsControl = wp.customize.Control.extend( {
 	renderContent: function renderContent() {
 		render(
-			<ControlWithLink control={ this }>
+			<ControlWithLink link={ this.params.input_attrs.link }>
 				<GlobalColors control={ this } />
 			</ControlWithLink>,
 			this.container[ 0 ]

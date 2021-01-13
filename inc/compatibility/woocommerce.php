@@ -27,10 +27,9 @@ class Woocommerce {
 	private $primary_buttons_selectors = array(
 		'default' => '
 			,.woocommerce *:not(.woocommerce-mini-cart__buttons) > a.button,
-			.woocommerce *:not(.woocommerce-mini-cart__buttons) > .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):not([name="apply_coupon"]):not(.more-details),
+			.woocommerce *:not(.woocommerce-mini-cart__buttons) > .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):not([name="apply_coupon"]):not(.more-details):not(.checkout-button),
 			.woocommerce a.button.alt,
 			.woocommerce a.button.button-primary,
-			.woocommerce a.button.checkout-button,
 			.woocommerce button.button:disabled,
 			.woocommerce button.button:disabled[disabled],
 			.woocommerce a.button.add_to_cart,
@@ -46,10 +45,9 @@ class Woocommerce {
 			.button.woocommerce-form-login__submit',
 		'hover'   => '
 			,.woocommerce *:not(.woocommerce-mini-cart__buttons) > a.button:hover,
-			.woocommerce *:not(.woocommerce-mini-cart__buttons) > .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):not([name="apply_coupon"]):not(.more-details):hover,
+			.woocommerce *:not(.woocommerce-mini-cart__buttons) > .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):not([name="apply_coupon"]):not(.more-details):not(.checkout-button):hover,
 			.woocommerce a.button.alt:hover,
 			.woocommerce a.button.button-primary:hover,
-			.woocommerce a.button.checkout-button:hover,
 			.woocommerce button.button:disabled:hover,
 			.woocommerce button.button:disabled[disabled]:hover,
 			.woocommerce a.button.add_to_cart:hover,
@@ -59,7 +57,6 @@ class Woocommerce {
 			.woocommerce button.button.alt.single_add_to_cart_button.disabled:hover,
 			.woocommerce button.button.alt.single_add_to_cart_button:hover,
 			.woocommerce .actions > button[type=submit]:hover,
-			.woocommerce button#place_order:hover,
 			.woocommerce .return-to-shop > .button:hover,
 			.button.woocommerce-form-login__submit:hover',
 	);
@@ -76,18 +73,15 @@ class Woocommerce {
 			.woocommerce button.button:not(.single_add_to_cart_button),
 			.woocommerce a.added_to_cart,
 			.woocommerce .checkout_coupon button.button,
-			.woocommerce #review_form #respond input#submit,
 			.woocommerce .price_slider_amount button.button,
 			.woocommerce .button.button-secondary.more-details,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button',
 		'hover'   => '
-			,#comments input[type=submit]:hover,
 			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button:hover,
 			.woocommerce button.button:not(.single_add_to_cart_button):hover,
 			.woocommerce a.added_to_cart:hover,
 			.woocommerce .checkout_coupon button.button:hover,
-			.woocommerce #review_form #respond input#submit:hover,
 			.woocommerce .price_slider_amount button.button:hover,
 			.woocommerce .button.button-secondary.more-details:hover,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button:hover',
@@ -155,6 +149,7 @@ class Woocommerce {
 		$this->edit_woocommerce_header();
 		$this->move_checkout_coupon();
 		$this->add_inline_selectors();
+		add_action( 'wp', [ $this, 'setup_form_buttons' ] );
 	}
 
 	/**
@@ -410,8 +405,99 @@ class Woocommerce {
 			1
 		);
 
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_FORM_INPUTS,
+			array(
+				$this,
+				'add_inputs_selectors',
+			),
+			10,
+			1
+		);
+
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING,
+			array(
+				$this,
+				'add_inputs_spacing_selectors',
+			),
+			10,
+			1
+		);
+
+
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_FORM_INPUTS_LABELS,
+			array(
+				$this,
+				'add_labels_selectors',
+			),
+			10,
+			1
+		);
+
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_FORM_SEARCH_INPUTS,
+			array(
+				$this,
+				'add_search_inputs_selector',
+			),
+			10,
+			1
+		);
+
 		add_filter( 'neve_body_font_family_selectors', array( $this, 'add_font_families' ) );
 		add_filter( 'neve_headings_typeface_selectors', array( $this, 'add_typeface_selectors' ) );
+	}
+
+	/**
+	 * Add checkout labels to style.
+	 *
+	 * @param string $selectors css selectors for labels.
+	 *
+	 * @return string
+	 */
+	public function add_inputs_selectors( $selectors ) {
+		return $selectors . ',
+		.woocommerce-cart table.cart td.actions .coupon .input-text,
+		.woocommerce-page .select2-container--default .select2-selection--single,
+		.woocommerce-page .woocommerce form .form-row input.input-text,
+		.woocommerce-page .woocommerce form .form-row textarea,
+		.wc-block-product-search form input.wc-block-product-search__field';
+	}
+
+	/**
+	 * Add additional inputs spacing.
+	 *
+	 * @param string $selectors css selectors for inputs that need spacing.
+	 *
+	 * @return string
+	 */
+	public function add_inputs_spacing_selectors( $selectors ) {
+		return $selectors . ', .woocommerce-page .select2';
+	}
+
+
+	/**
+	 * Add checkout labels to style.
+	 *
+	 * @param string $selectors css selectors for labels.
+	 *
+	 * @return string
+	 */
+	public function add_labels_selectors( $selectors ) {
+		return ( $selectors . ', .woocommerce form .form-row label' );
+	}
+
+	/**
+	 * Add product search input selector.
+	 *
+	 * @param string $selectors css selectors for labels.
+	 *
+	 * @return string
+	 */
+	public function add_search_inputs_selector( $selectors ) {
+		return ( $selectors . ', form.woocommerce-product-search input[type="search"]' );
 	}
 
 	/**
@@ -449,7 +535,6 @@ class Woocommerce {
 			.woocommerce a.button.loading,
 			.woocommerce a.button.alt,
 			.woocommerce a.button.button-primary,
-			.woocommerce a.button.checkout-button,
 			.woocommerce button.button:disabled,
 			.woocommerce button.button:disabled[disabled],
 			.woocommerce a.button.add_to_cart,
@@ -620,5 +705,93 @@ class Woocommerce {
 
 
 		return $fragments;
+	}
+
+	/**
+	 * Add form buttons selectors.
+	 *
+	 * @param string $selector css selector.
+	 *
+	 * @return string
+	 */
+	public function add_buttons_selectors( $selector ) {
+		return $selector . ',.woocommerce #review_form #respond input#submit,
+		.woocommerce-cart .woocommerce .wc-proceed-to-checkout > a.button.checkout-button,
+		.woocommerce-checkout #payment .place-order button#place_order,
+		.woocommerce-account.woocommerce-edit-account .woocommerce .woocommerce-MyAccount-content p > button[type="submit"][name="save_account_details"].woocommerce-Button.button,
+		.wc-block-product-search .wc-block-product-search__button:not(:disabled):not([aria-disabled=true])';
+	}
+
+	/**
+	 * Add form buttons padding selectors.
+	 *
+	 * @param string $selector css selector.
+	 *
+	 * @return string
+	 */
+	public function add_buttons_padding_selectors( $selector ) {
+		return $selector . ',.woocommerce #review_form #respond input#submit';
+	}
+
+	/**
+	 * Add form buttons hover selectors.
+	 *
+	 * @param string $selector css selector.
+	 *
+	 * @return string
+	 */
+	public function add_buttons_hover_selectors( $selector ) {
+		return $selector . ',.woocommerce #review_form #respond input#submit:hover,
+		 .woocommerce a.button.checkout-button:hover,
+		 .woocommerce button#place_order:hover,
+		 .woocommerce-account.woocommerce-edit-account .woocommerce .woocommerce-MyAccount-content p > button[type="submit"][name="save_account_details"].woocommerce-Button.button:hover,
+		 .wc-block-product-search .wc-block-product-search__button:not(:disabled):not([aria-disabled=true]):hover';
+	}
+
+	/**
+	 * Setup Form Buttons Type
+	 */
+	public function setup_form_buttons() {
+		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
+		if ( $form_buttons_type === 'primary' ) {
+			add_filter(
+				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
+				array( $this, 'add_buttons_selectors' ),
+				10,
+				1
+			);
+			add_filter(
+				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_PADDING,
+				array( $this, 'add_buttons_padding_selectors' ),
+				10,
+				1
+			);
+			add_filter(
+				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
+				array( $this, 'add_buttons_hover_selectors' ),
+				10,
+				1
+			);
+
+			return;
+		}
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
+			array( $this, 'add_buttons_selectors' ),
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_PADDING,
+			array( $this, 'add_buttons_padding_selectors' ),
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
+			array( $this, 'add_buttons_hover_selectors' ),
+			10,
+			1
+		);
 	}
 }

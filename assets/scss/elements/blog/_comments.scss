@@ -108,14 +108,13 @@
 .comment-form {
   display: grid;
   grid-column-gap: $spacing-sm;
-  grid-row-gap: $spacing-sm;
+  grid-row-gap: $spacing-xs;
 
   > p:not(.comment-notes) {
     margin-bottom: 0;
   }
 
   label {
-    margin-bottom: $spacing-xs;
     display: inline-block;
   }
 

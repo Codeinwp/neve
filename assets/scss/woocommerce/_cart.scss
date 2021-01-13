@@ -51,6 +51,7 @@
 //<editor-fold desc="Coupon code">
 .woocommerce table.cart td.actions .input-text#coupon_code {
   width: 150px;
+  margin-bottom: 0;
 }
 
 .woocommerce-cart table.cart td.actions .coupon {
@@ -232,11 +233,15 @@
     th, td {
       vertical-align: top;
       border-bottom: 0;
-      border-top: 1px solid #f0f0f0;
+      border-top: $muted-border;
     }
 
     #shipping_method {
       margin-top: 0;
     }
   }
+}
+
+.woocommerce .quantity .qty {
+  box-sizing: content-box;
 }

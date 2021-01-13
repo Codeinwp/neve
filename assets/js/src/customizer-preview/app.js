@@ -57,7 +57,15 @@ function addStyle( settingType, id, newValue, args ) {
 				style += `@media (${ map[ device ] }) {${ deviceStyle }}`;
 			}
 		} else {
-			//meep - no directional unresponsive style
+			const directions = [ 'top', 'right', 'bottom', 'left' ];
+			style = args.template;
+			_.each( directions, function ( dir ) {
+				const directionRegex = new RegExp( `{{value.${ dir }}}`, 'g' );
+				style = style.replace(
+					directionRegex,
+					newValue[ dir ] + newValue.unit
+				);
+			} );
 		}
 		addCss( id, style );
 		return false;

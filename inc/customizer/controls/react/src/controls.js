@@ -20,6 +20,8 @@ import { RadioImageControl } from './radio-image/Control';
 import { OrderingControl } from './ordering/Control';
 import { UiControl } from './ui/Control';
 import { GlobalColorsControl } from './global-colors/Control';
+import { NRSpacingControl } from './non-responsive-spacing/Control';
+import { InlineSelectControl } from './inline-select/Control';
 
 import './style.scss';
 
@@ -43,6 +45,8 @@ controlConstructor.neve_radio_image_control = RadioImageControl;
 controlConstructor.neve_ordering_control = OrderingControl;
 controlConstructor.neve_ui_control = UiControl;
 controlConstructor.neve_global_colors = GlobalColorsControl;
+controlConstructor.neve_non_responsive_spacing = NRSpacingControl;
+controlConstructor.neve_inline_select = InlineSelectControl;
 
 const initDeviceSwitchers = () => {
 	const deviceButtons = document.querySelector(

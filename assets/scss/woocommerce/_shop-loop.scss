@@ -1,10 +1,6 @@
 .orderby {
-	color: var(--nv-text-color);
+	//color: var(--nv-text-color);
 	opacity: .8;
-
-	option {
-		background: var(--nv-site-bg);
-	}
 }
 
 .nv-woo-filters .nv-sidebar-toggle {
@@ -29,7 +25,7 @@
 	.nv-sidebar-toggle + .woocommerce-ordering {
 		select {
 			max-width: 155px;
-			padding: 2px 0;
+			margin-bottom: 0;
 		}
 	}
 }

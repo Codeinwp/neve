@@ -68,6 +68,17 @@ class Config {
 	const MODS_TYPEFACE_SINGLE_POST_META          = 'neve_single_post_typography_post_meta';
 	const MODS_TYPEFACE_SINGLE_POST_COMMENT_TITLE = 'neve_single_post_typography_comments_title';
 
+	const MODS_FORM_FIELDS_PADDING          = 'neve_form_fields_padding';
+	const MODS_FORM_FIELDS_SPACING          = 'neve_form_fields_spacing';
+	const MODS_FORM_FIELDS_BACKGROUND_COLOR = 'neve_form_fields_background_color';
+	const MODS_FORM_FIELDS_BORDER_WIDTH     = 'neve_form_fields_border_width';
+	const MODS_FORM_FIELDS_BORDER_RADIUS    = 'neve_form_fields_border_radius';
+	const MODS_FORM_FIELDS_BORDER_COLOR     = 'neve_form_fields_border_color';
+	const MODS_FORM_FIELDS_LABELS_SPACING   = 'neve_label_spacing';
+	const MODS_FORM_FIELDS_TYPEFACE         = 'neve_input_typeface';
+	const MODS_FORM_FIELDS_COLOR            = 'neve_input_text_color';
+	const MODS_FORM_FIELDS_LABELS_TYPEFACE  = 'neve_label_typeface';
+
 	const CSS_PROP_BORDER_COLOR               = 'border-color';
 	const CSS_PROP_BACKGROUND_COLOR           = 'background-color';
 	const CSS_PROP_COLOR                      = 'color';
@@ -86,6 +97,8 @@ class Config {
 	const CSS_PROP_MARGIN                     = 'margin';
 	const CSS_PROP_MARGIN_LEFT                = 'margin-left';
 	const CSS_PROP_MARGIN_RIGHT               = 'margin-right';
+	const CSS_PROP_MARGIN_TOP                 = 'margin-top';
+	const CSS_PROP_MARGIN_BOTTOM              = 'margin-bottom';
 	const CSS_PROP_RIGHT                      = 'right';
 	const CSS_PROP_LEFT                       = 'left';
 	const CSS_PROP_WIDTH                      = 'width';
@@ -125,6 +138,12 @@ class Config {
 	const CSS_SELECTOR_SINGLE_POST_META          = 'single_post_entry_meta_list';
 	const CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE = 'single_post_comment_title';
 
+	const CSS_SELECTOR_FORM_INPUTS_WITH_SPACING = 'form_inputs_no_search';
+	const CSS_SELECTOR_FORM_INPUTS              = 'form_inputs';
+	const CSS_SELECTOR_FORM_INPUTS_LABELS       = 'form_labels';
+	const CSS_SELECTOR_FORM_BUTTON              = 'form_buttons';
+	const CSS_SELECTOR_FORM_SEARCH_INPUTS       = 'search_form_inputs';
+
 	const CONTENT_DEFAULT_PADDING = 30;
 	/**
 	 * Holds tag->css selector mapper.
@@ -140,7 +159,7 @@ class Config {
 		self::CSS_SELECTOR_TYPEFACE_H6               => 'h6',
 		self::CSS_SELECTOR_TYPEFACE_GENERAL          => 'body, .site-title',
 		self::CSS_SELECTOR_BTN_PRIMARY_PADDING       => '.button.button-primary, .wp-block-button.is-style-primary .wp-block-button__link,  .wc-block-grid .wp-block-button .wp-block-button__link',
-		self::CSS_SELECTOR_BTN_SECONDARY_PADDING     => '.button.button-secondary, #comments input[type="submit"],   .wp-block-button.is-style-secondary .wp-block-button__link',
+		self::CSS_SELECTOR_BTN_SECONDARY_PADDING     => '.button.button-secondary, .wp-block-button.is-style-secondary .wp-block-button__link',
 		self::CSS_SELECTOR_BTN_PRIMARY_NORMAL        => '.button.button-primary,
 				button, input[type=button],
 				.btn, input[type="submit"],
@@ -150,13 +169,18 @@ class Config {
 		self::CSS_SELECTOR_BTN_PRIMARY_HOVER         => '.button.button-primary:hover,
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a:hover,
 				.menu li.button.button-primary > a:hover, .wp-block-button.is-style-primary .wp-block-button__link:hover,  .wc-block-grid .wp-block-button .wp-block-button__link:hover',
-		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL      => '.button.button-secondary, #comments input[type="submit"], #comments input[type=submit], .cart-off-canvas .button.nv-close-cart-sidebar,  .wp-block-button.is-style-secondary .wp-block-button__link',
-		self::CSS_SELECTOR_BTN_SECONDARY_HOVER       => '.button.button-secondary:hover, #comments input[type="submit"]:hover, .cart-off-canvas .button.nv-close-cart-sidebar:hover,  .wp-block-button.is-style-secondary .wp-block-button__link:hover',
+		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL      => '.button.button-secondary, .cart-off-canvas .button.nv-close-cart-sidebar,  .wp-block-button.is-style-secondary .wp-block-button__link',
+		self::CSS_SELECTOR_BTN_SECONDARY_HOVER       => '.button.button-secondary:hover, .cart-off-canvas .button.nv-close-cart-sidebar:hover,  .wp-block-button.is-style-secondary .wp-block-button__link:hover',
 		self::CSS_SELECTOR_ARCHIVE_POST_TITLE        => '.blog .blog-entry-title, .archive .blog-entry-title',
 		self::CSS_SELECTOR_ARCHIVE_POST_EXCERPT      => '.blog .entry-summary, .archive .entry-summary, .blog .post-pages-links',
 		self::CSS_SELECTOR_ARCHIVE_POST_META         => '.blog .nv-meta-list li, .archive .nv-meta-list li',
 		self::CSS_SELECTOR_SINGLE_POST_TITLE         => '.single h1.entry-title',
 		self::CSS_SELECTOR_SINGLE_POST_META          => '.single .nv-meta-list li',
 		self::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE => '.single .comment-reply-title',
+		self::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING  => 'form:not([role="search"]):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code), form textarea, form select',
+		self::CSS_SELECTOR_FORM_INPUTS               => 'form input:read-write, form textarea, form select, form select option, form.wp-block-search input.wp-block-search__input',
+		self::CSS_SELECTOR_FORM_INPUTS_LABELS        => 'form label, .wpforms-container .wpforms-field-label',
+		self::CSS_SELECTOR_FORM_BUTTON               => 'form input[type="submit"]',
+		self::CSS_SELECTOR_FORM_SEARCH_INPUTS        => 'form.search-form input:read-write',
 	];
 }

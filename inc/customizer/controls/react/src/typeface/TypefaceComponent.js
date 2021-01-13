@@ -2,11 +2,9 @@
 
 import PropTypes from 'prop-types';
 import NumberControl from '../common/NumberControl.js';
-
+import InlineSelect from '../common/InlineSelect';
 import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
-
-import { SelectControl } from '@wordpress/components';
 
 class TypefaceComponent extends Component {
 	constructor( props ) {
@@ -192,68 +190,63 @@ class TypefaceComponent extends Component {
 
 	renderFontWeight() {
 		return (
-			<div className="select-inline font-weight">
-				<span className="customize-control-title">
-					{ __( 'Weight', 'neve' ) }
-				</span>
-				<SelectControl
-					value={ this.state.fontWeight }
-					options={ [
-						{ value: 'none', label: __( 'None', 'neve' ) },
-						{ value: 100, label: '100' },
-						{ value: 200, label: '200' },
-						{ value: 300, label: '300' },
-						{ value: 400, label: '400' },
-						{ value: 500, label: '500' },
-						{ value: 600, label: '600' },
-						{ value: 700, label: '700' },
-						{ value: 800, label: '800' },
-						{ value: 900, label: '900' },
-					] }
-					onChange={ ( fontWeight ) => {
-						this.setState( { fontWeight } );
-						this.updateValues( { fontWeight } );
-						if (
-							fontWeight === 'none' &&
-							this.props.control.params.refresh_on_reset
-						) {
-							wp.customize.previewer.refresh();
-						}
-					} }
-				/>
-			</div>
+			<InlineSelect
+				label={ __( 'Weight', 'neve' ) }
+				value={ this.state.fontWeight }
+				options={ [
+					{ value: 'none', label: __( 'None', 'neve' ) },
+					{ value: 100, label: '100' },
+					{ value: 200, label: '200' },
+					{ value: 300, label: '300' },
+					{ value: 400, label: '400' },
+					{ value: 500, label: '500' },
+					{ value: 600, label: '600' },
+					{ value: 700, label: '700' },
+					{ value: 800, label: '800' },
+					{ value: 900, label: '900' },
+				] }
+				onChange={ ( fontWeight ) => {
+					this.setState( { fontWeight } );
+					this.updateValues( { fontWeight } );
+					if (
+						fontWeight === 'none' &&
+						this.props.control.params.refresh_on_reset
+					) {
+						wp.customize.previewer.refresh();
+					}
+				} }
+			/>
 		);
 	}
 
 	renderTextTransform() {
+		if ( this.controlParams.disable_transform ) {
+			return;
+		}
 		return (
-			<div className="select-inline text-transform">
-				<span className="customize-control-title">
-					{ __( 'Transform', 'neve' ) }
-				</span>
-				<SelectControl
-					value={ this.state.textTransform }
-					options={ [
-						{ value: 'none', label: __( 'None', 'neve' ) },
-						{
-							value: 'capitalize',
-							label: __( 'Capitalize', 'neve' ),
-						},
-						{
-							value: 'lowercase',
-							label: __( 'Lowercase', 'neve' ),
-						},
-						{
-							value: 'uppercase',
-							label: __( 'Uppercase', 'neve' ),
-						},
-					] }
-					onChange={ ( textTransform ) => {
-						this.setState( { textTransform } );
-						this.updateValues( { textTransform } );
-					} }
-				/>
-			</div>
+			<InlineSelect
+				label={ __( 'Transform', 'neve' ) }
+				value={ this.state.textTransform }
+				options={ [
+					{ value: 'none', label: __( 'None', 'neve' ) },
+					{
+						value: 'capitalize',
+						label: __( 'Capitalize', 'neve' ),
+					},
+					{
+						value: 'lowercase',
+						label: __( 'Lowercase', 'neve' ),
+					},
+					{
+						value: 'uppercase',
+						label: __( 'Uppercase', 'neve' ),
+					},
+				] }
+				onChange={ ( textTransform ) => {
+					this.setState( { textTransform } );
+					this.updateValues( { textTransform } );
+				} }
+			/>
 		);
 	}
 

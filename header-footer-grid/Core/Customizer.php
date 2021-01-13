@@ -241,6 +241,9 @@ class Customizer {
 		foreach ( $this->builders as $builder ) {
 			$builder->customize_register( $wp_customize );
 		}
+
+		$wp_customize->register_section_type( '\HFG\Core\Customizer\Instructions_Section' );
+		$wp_customize->register_control_type( '\HFG\Core\Customizer\Instructions_Control' );
 	}
 
 	/**
