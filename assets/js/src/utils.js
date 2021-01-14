@@ -136,7 +136,7 @@ export const isInView = ( element, callback, intersectionRatio = 0.5 ) => {
 			return;
 		}
 		callback();
-		setTimeout( () => {
+		const check = setInterval( () => {
 			// Is element still in view-port?
 			const bounding = element.getBoundingClientRect();
 			const { top, left, right, bottom } = bounding;
@@ -148,6 +148,8 @@ export const isInView = ( element, callback, intersectionRatio = 0.5 ) => {
 				bottom <= innerHeight
 			) {
 				callback();
+			} else {
+				clearInterval( check );
 			}
 		}, 750 );
 	} );
