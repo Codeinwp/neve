@@ -1,5 +1,4 @@
 /* jshint esversion: 6 */
-
 import PropTypes from 'prop-types';
 import ColorControl from '../common/ColorControl.js';
 

@@ -1,4 +1,5 @@
 import { Dropdown, Button, Icon } from '@wordpress/components';
+import { globe } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 import CustomPalette from './CustomPalette';
 import classnames from 'classnames';
@@ -18,7 +19,7 @@ const GlobalColorsPicker = ( { onChange, activeColor, isGlobal } ) => {
 					role="button"
 					className={ buttonClasses }
 				>
-					<Icon size={ 16 } icon="admin-site-alt3" />
+					<Icon size={ 20 } icon={ globe } />
 				</Button>
 			) }
 			renderContent={ () => (

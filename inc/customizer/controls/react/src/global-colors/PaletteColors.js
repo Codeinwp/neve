@@ -2,82 +2,83 @@ import Accordion from './Accordion';
 import { Button } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { rotateLeft } from '@wordpress/icons';
 import { debounce } from 'lodash';
 import ColorControl from '../common/ColorControl';
 import { globalPaletteColors } from '../common/common';
 
-const PaletteColors = ( { values, defaults, save } ) => {
+const PaletteColors = ({ values, defaults, save }) => {
 	const { palettes, activePalette } = values;
-	const palette = palettes[ activePalette ];
+	const palette = palettes[activePalette];
 	const { colors, allowDeletion } = palette;
 
-	const defaultColors = defaults.palettes[ activePalette ]
+	const defaultColors = defaults.palettes[activePalette]
 		? {
-				...defaults.palettes[ activePalette ].colors,
+				...defaults.palettes[activePalette].colors,
 		  }
 		: {};
 
-	const updateColorInPalette = ( colorSlug, val ) => {
+	const updateColorInPalette = (colorSlug, val) => {
 		const nextValues = { ...values };
-		nextValues.palettes[ activePalette ].colors[ colorSlug ] = val;
-		save( nextValues );
+		nextValues.palettes[activePalette].colors[colorSlug] = val;
+		save(nextValues);
 	};
 
 	const resetPalette = () => {
 		const nextValues = { ...values };
-		nextValues.palettes[ activePalette ].colors = defaultColors;
-		save( nextValues );
+		nextValues.palettes[activePalette].colors = defaultColors;
+		save(nextValues);
 	};
 
 	const paletteHasDefaultColors =
-		Object.keys( defaultColors ).filter( ( colorKey ) => {
-			return defaultColors[ colorKey ] !== colors[ colorKey ];
-		} ).length < 1;
+		Object.keys(defaultColors).filter((colorKey) => {
+			return defaultColors[colorKey] !== colors[colorKey];
+		}).length < 1;
 
 	return (
 		<Accordion>
 			<div className="color-array-wrap">
-				{ globalPaletteColors.map( ( group, index ) => {
+				{globalPaletteColors.map((group, index) => {
 					return (
-						<Fragment key={ index }>
-							{ index > 0 && <hr /> }
-							{ Object.keys( group ).map( ( slug ) => {
+						<Fragment key={index}>
+							{index > 0 && <hr />}
+							{Object.keys(group).map((slug) => {
 								return (
 									<ColorControl
 										disableGlobal
-										key={ slug }
-										label={ group[ slug ] }
-										selectedColor={ colors[ slug ] }
+										key={slug}
+										label={group[slug]}
+										selectedColor={colors[slug]}
 										defaultValue={
-											defaults.palettes[ activePalette ]
+											defaults.palettes[activePalette]
 												? defaults.palettes[
 														activePalette
-												  ].colors[ slug ]
+												  ].colors[slug]
 												: '#FFFFFF'
 										}
-										onChange={ debounce( ( value ) => {
-											updateColorInPalette( slug, value );
-										}, 100 ) }
+										onChange={debounce((value) => {
+											updateColorInPalette(slug, value);
+										}, 100)}
 									/>
 								);
-							} ) }
+							})}
 						</Fragment>
 					);
-				} ) }
-				{ ! allowDeletion && (
+				})}
+				{!allowDeletion && (
 					<>
 						<hr />
 						<Button
 							isLink
 							className="reset-palette"
-							onClick={ resetPalette }
-							disabled={ paletteHasDefaultColors }
-							icon="image-rotate"
+							onClick={resetPalette}
+							disabled={paletteHasDefaultColors}
+							icon={rotateLeft}
 						>
-							{ __( 'Reset all to default', 'neve' ) }
+							{__('Reset all to default', 'neve')}
 						</Button>
 					</>
-				) }
+				)}
 			</div>
 		</Accordion>
 	);

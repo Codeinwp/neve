@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-13T15:38:46+00:00\n"
+"POT-Creation-Date: 2021-01-14T17:14:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -1326,7 +1326,7 @@ msgstr ""
 
 #: inc/customizer/options/colors_background.php:91
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/GlobalColorsPicker.js:28
+#: inc/customizer/controls/react/src/common/GlobalColorsPicker.js:29
 msgid "Global Colors"
 msgstr ""
 
@@ -2522,40 +2522,40 @@ msgid "Toggle Visibility"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:65
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:67
 msgid "Remove Palette"
 msgstr ""
 
 #. translators: %s - name of palette that will be deleted.
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:77
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:79
 msgid "Are you sure you want to delete the %s palette?"
 msgstr ""
 
 #. translators: %s - name of palette that will be deleted.
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:85
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:87
 msgid "If this is the currently active palette, the current palette will be switched to the Base one."
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:96
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:98
 msgid "Delete"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/PaletteForm.js:89
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:105
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:107
 msgid "Cancel"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/Accordion.js:18
+#: inc/customizer/controls/react/src/global-colors/Accordion.js:19
 msgid "Palette Colors"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:77
+#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:78
 msgid "Reset all to default"
 msgstr ""
 
