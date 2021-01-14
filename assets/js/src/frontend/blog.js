@@ -4,7 +4,7 @@ import { httpGetAsync, isInView, neveEach } from '../utils';
 
 let masonryContainer = null,
 	page = 2,
-	postWrapSelector = '.nv-index-posts .posts-wrapper'
+	postWrapSelector = '.nv-index-posts .posts-wrapper';
 
 /**
  * Initialize blog JS.
@@ -20,14 +20,14 @@ export const initBlog = () => {
 /**
  * Handles masonry
  *
- * @returns {boolean}
+ * @return {boolean}
  */
 const masonry = () => {
-  	const { masonry, masonryColumns, blogLayout } = NeveProperties
+	const { masonry, masonryColumns, blogLayout } = NeveProperties;
 
-  if (masonry !== 'enabled' || masonryColumns < 2) {
-	return false
-  }
+	if ( masonry !== 'enabled' || masonryColumns < 2 ) {
+		return false;
+	}
 	masonryContainer = document.querySelector( postWrapSelector );
 
 	if ( masonryContainer === null ) {
@@ -36,9 +36,9 @@ const masonry = () => {
 
 	imagesLoaded( masonryContainer, () => {
 		window.nvMasonry = new Masonry( masonryContainer, {
-			itemSelector: `article.layout-${blogLayout}`,
-			columnWidth: `article.layout-${blogLayout}`,
-			percentPosition: true
+			itemSelector: `article.layout-${ blogLayout }`,
+			columnWidth: `article.layout-${ blogLayout }`,
+			percentPosition: true,
 		} );
 	} );
 };
@@ -46,7 +46,7 @@ const masonry = () => {
 /**
  * Infinite scroll
  *
- * @returns {boolean}
+ * @return {boolean}
  */
 const infiniteScroll = () => {
 	if ( NeveProperties.infiniteScroll !== 'enabled' ) {
@@ -57,24 +57,24 @@ const infiniteScroll = () => {
 		return false;
 	}
 
-	isInView( document.querySelector( '.infinite-scroll-trigger' ),
-			() => {
-				if ( parent.wp.customize ) {
-					parent.wp.customize.requestChangesetUpdate().then( () => {
-						requestMorePosts();
-					} );
-					return false;
-				}
+	isInView( document.querySelector( '.infinite-scroll-trigger' ), () => {
+		if ( parent.wp.customize ) {
+			parent.wp.customize.requestChangesetUpdate().then( () => {
 				requestMorePosts();
 			} );
+			return false;
+		}
+		requestMorePosts();
+	} );
 };
 
 /**
  * Request more posts
- * @returns {boolean}
+ *
+ * @return {boolean}
  */
 const requestMorePosts = () => {
-	let trigger = document.querySelector( '.infinite-scroll-trigger' );
+	const trigger = document.querySelector( '.infinite-scroll-trigger' );
 	if ( trigger === null ) {
 		return false;
 	}
@@ -85,35 +85,39 @@ const requestMorePosts = () => {
 		return false;
 	}
 
-	let blog = document.querySelector( postWrapSelector );
-	let requestUrl = maybeParseUrlForCustomizer(
-			NeveProperties.infiniteScrollEndpoint + page );
+	const blog = document.querySelector( postWrapSelector );
+	const requestUrl = maybeParseUrlForCustomizer(
+		NeveProperties.infiniteScrollEndpoint + page
+	);
 	page++;
 
-	httpGetAsync(requestUrl, (response) => {
-		if( NeveProperties.masonry !== 'enabled' ) {
+	httpGetAsync(
+		requestUrl,
+		( response ) => {
 			blog.innerHTML += JSON.parse( response );
-		} else {
-			const tmp = document.createElement('div');
-			tmp.innerHTML = JSON.parse(response);
-			neveEach(tmp.children, (el) => {
-				masonryContainer.append(el);
-			 	window.nvMasonry.appended(el);
-			});
-		}
-	}, NeveProperties.infiniteScrollQuery);
+			if ( NeveProperties.masonry !== 'enabled' ) {
+				return false;
+			}
+			window.nvMasonry.reloadItems();
+			window.nvMasonry.layout();
+		},
+		NeveProperties.infiniteScrollQuery
+	);
 };
 
 /**
  * Parse in the customizer context.
+ *
  * @param url
- * @returns {*}
+ * @return {*}
  */
-const maybeParseUrlForCustomizer =  (url) => {
+const maybeParseUrlForCustomizer = ( url ) => {
 	//Add change-set uuid.
 	if ( typeof wp.customize === 'undefined' ) return url;
-	url += '?customize_changeset_uuid=' + wp.customize.settings.changeset.uuid +
-			'&customize_autosaved=on';
+	url +=
+		'?customize_changeset_uuid=' +
+		wp.customize.settings.changeset.uuid +
+		'&customize_autosaved=on';
 
 	//Add preview nonce.
 	if ( typeof _wpCustomizeSettings === 'undefined' ) return url;
@@ -121,4 +125,3 @@ const maybeParseUrlForCustomizer =  (url) => {
 
 	return url;
 };
-
