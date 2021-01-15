@@ -1,0 +1,143 @@
+export const GLOBAL_COLORS_DEFAULT = {
+	activePalette: 'base',
+	palettes: {
+		base: {
+			name: 'Base',
+			allowDeletion: false,
+			colors: {
+				'nv-primary-accent': '#0366d6',
+				'nv-secondary-accent': '#0e509a',
+				'nv-site-bg': '#ffffff',
+				'nv-light-bg': '#ededed',
+				'nv-dark-bg': '#14171c',
+				'nv-text-color': '#393939',
+				'nv-text-dark-bg': '#ffffff',
+				'nv-c-1': '#77b978',
+				'nv-c-2': '#f37262',
+			},
+		},
+		darkMode: {
+			name: 'Dark Mode',
+			allowDeletion: false,
+			colors: {
+				'nv-primary-accent': '#26bcdb',
+				'nv-secondary-accent': '#1f90a6',
+				'nv-site-bg': '#121212',
+				'nv-light-bg': '#1a1a1a',
+				'nv-dark-bg': '#1a1a1a',
+				'nv-text-color': '#ffffff',
+				'nv-text-dark-bg': 'rgba(255, 255, 255, 0.81)',
+				'nv-c-1': '#77b978',
+				'nv-c-2': '#f37262',
+			},
+		},
+	},
+};
+export const GLOBAL_COLORS_FILLED = {
+	activePalette: 'palette6',
+	palettes: {
+		base: {
+			name: 'Base',
+			allowDeletion: false,
+			colors: {
+				'nv-primary-accent': '#0366d6',
+				'nv-secondary-accent': '#0e509a',
+				'nv-site-bg': '#ffffff',
+				'nv-light-bg': '#ededed',
+				'nv-dark-bg': '#14171c',
+				'nv-text-color': '#393939',
+				'nv-text-dark-bg': '#ffffff',
+				'nv-c-1': '#77b978',
+				'nv-c-2': '#f37262',
+			},
+		},
+		darkMode: {
+			name: 'Dark Mode',
+			allowDeletion: false,
+			colors: {
+				'nv-primary-accent': '#8bff05',
+				'nv-secondary-accent': '#1fa848',
+				'nv-site-bg': '#121212',
+				'nv-light-bg': '#1a1a1a',
+				'nv-dark-bg': '#1a1a1a',
+				'nv-text-color': '#ffffff',
+				'nv-text-dark-bg': 'rgba(255,255,255,0.81)',
+				'nv-c-1': '#77b978',
+				'nv-c-2': '#f37262',
+			},
+		},
+		palette3: {
+			name: 'Palette 3',
+			allowDeletion: true,
+			colors: {
+				'nv-primary-accent': '#ffbf00',
+				'nv-secondary-accent': '#a87d1f',
+				'nv-site-bg': '#121212',
+				'nv-light-bg': '#1a1a1a',
+				'nv-dark-bg': '#1a1a1a',
+				'nv-text-color': '#ffffff',
+				'nv-text-dark-bg': 'rgba(255,255,255,0.81)',
+				'nv-c-1': '#77b978',
+				'nv-c-2': '#f37262',
+			},
+		},
+		palette4: {
+			name: 'Palette 4',
+			allowDeletion: true,
+			colors: {
+				'nv-primary-accent': '#d84303',
+				'nv-secondary-accent': '#0e509a',
+				'nv-site-bg': '#ffffff',
+				'nv-light-bg': '#ededed',
+				'nv-dark-bg': '#14171c',
+				'nv-text-color': '#393939',
+				'nv-text-dark-bg': '#ffffff',
+				'nv-c-1': '#77b978',
+				'nv-c-2': '#f37262',
+			},
+		},
+		palette5: {
+			name: 'Palette 5',
+			allowDeletion: true,
+			colors: {
+				'nv-primary-accent': '#9305ff',
+				'nv-secondary-accent': '#1fa848',
+				'nv-site-bg': '#121212',
+				'nv-light-bg': '#1a1a1a',
+				'nv-dark-bg': '#1a1a1a',
+				'nv-text-color': '#ffffff',
+				'nv-text-dark-bg': 'rgba(255,255,255,0.81)',
+				'nv-c-1': '#77b978',
+				'nv-c-2': '#f37262',
+			},
+		},
+		palette6: {
+			name: 'Palette 6',
+			allowDeletion: true,
+			colors: {
+				'nv-primary-accent': '#d8034f',
+				'nv-secondary-accent': '#0e509a',
+				'nv-site-bg': '#ffffff',
+				'nv-light-bg': '#ededed',
+				'nv-dark-bg': '#14171c',
+				'nv-text-color': '#393939',
+				'nv-text-dark-bg': '#ffffff',
+				'nv-c-1': '#77b978',
+				'nv-c-2': '#f37262',
+			},
+		},
+	},
+};
+export const MULTISELECT_DEFAULT = ['page', 'post'];
+export const MULTISELECT_FULL = [
+	'attachment',
+	'neve_custom_layouts',
+	'page',
+	'post',
+];
+export const MULTISELECT_CHOICES = {
+	attachment: 'Media',
+	neve_custom_layouts: 'Custom Layouts',
+	page: 'Pages',
+	post: 'Posts',
+};

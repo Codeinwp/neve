@@ -1,5 +1,4 @@
 import { useState } from '@wordpress/element';
-import React from 'react';
 import ColorControl from '../inc/customizer/controls/react/src/common/ColorControl';
 import {
 	CustomizerDecorator,
@@ -7,7 +6,7 @@ import {
 } from './components/decorators';
 
 export default {
-	title: 'Customizer/Color Control',
+	title: 'Customizer/Color',
 	component: ColorControl,
 	args: {
 		label: 'Control Label',
@@ -21,25 +20,22 @@ export default {
 	decorators: [WhiteBackgroundDecorator, CustomizerDecorator],
 };
 
-const ColorControlWithState = ({ ...props }) => {
+const Template = (args) => {
 	const [color, setColor] = useState('#f00');
-	return (
-		<ColorControl {...props} selectedColor={color} onChange={setColor} />
-	);
-};
 
-const Template = (args) => <ColorControlWithState {...args} />;
+	return <ColorControl {...args} selectedColor={color} onChange={setColor} />;
+};
 
 export const Default = Template.bind({});
 
 export const NoGlobal = Template.bind({});
-NoGlobal.storyName = 'Without global colors';
+NoGlobal.storyName = 'No global colors';
 NoGlobal.args = {
 	disableGlobal: true,
 };
 
 export const WithDefault = Template.bind({});
-WithDefault.storyName = 'With default value for clear';
+WithDefault.storyName = 'Default value for clear';
 WithDefault.args = {
 	defaultValue: '#000000',
 };

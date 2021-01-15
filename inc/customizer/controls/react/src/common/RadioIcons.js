@@ -5,43 +5,43 @@ import SVG from './svg';
 
 import { Button } from '@wordpress/components';
 
-const RadioIcons = ( { options, onChange, value, showLabels } ) => {
+const RadioIcons = ({ options, onChange, value, showLabels }) => {
 	const getButtons = () => {
-		return Object.keys( options ).map( ( type, index ) => {
-			if ( options[ type ].icon === 'text' ) {
+		return Object.keys(options).map((type, index) => {
+			if (options[type].icon === 'text') {
 				return (
 					<Button
-						key={ index }
-						className={ classnames( [
+						key={index}
+						className={classnames([
 							{ active: value === type },
 							'is-text',
-						] ) }
-						onClick={ () => {
-							onChange( type );
-						} }
+						])}
+						onClick={() => {
+							onChange(type);
+						}}
 					>
-						{ options[ type ].tooltip }
+						{options[type].tooltip}
 					</Button>
 				);
 			}
-			const icon = SVG[ options[ type ].icon ] || options[ type ].icon;
+			const icon = SVG[options[type].icon] || options[type].icon;
 			return (
-				<span key={ index }>
+				<span key={index}>
 					<Button
-						aria-label={ options[ type ].tooltip }
-						className={ classnames( { active: value === type } ) }
-						icon={ icon }
-						onClick={ () => {
-							onChange( type );
-						} }
+						aria-label={options[type].tooltip}
+						className={classnames({ active: value === type })}
+						icon={icon}
+						onClick={() => {
+							onChange(type);
+						}}
 					/>
-					{ showLabels && <label>{ options[ type ].tooltip }</label> }
+					{showLabels && <label>{options[type].tooltip}</label>}
 				</span>
 			);
-		} );
+		});
 	};
 
-	return <div className="neve-radio-icons">{ getButtons() }</div>;
+	return <div className="neve-radio-icons">{getButtons()}</div>;
 };
 
 RadioIcons.propTypes = {

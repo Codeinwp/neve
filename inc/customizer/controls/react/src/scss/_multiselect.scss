@@ -42,8 +42,11 @@
 	}
 
 	.title {
-	  height: 100%;
-	  margin-right: 3px;
+	  margin-right: 5px;
+	}
+
+	svg {
+	  fill: currentColor;
 	}
   }
 }

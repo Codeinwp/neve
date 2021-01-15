@@ -5,3 +5,10 @@ export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
 }
 
+window.wp = {
+	customize: {
+		previewedDevice: (device) => {
+		}
+	}
+}
+

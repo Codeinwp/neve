@@ -1,4 +1,4 @@
-import Accordion from './Accordion';
+import Accordion from '../common/Accordion';
 import { Button } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';

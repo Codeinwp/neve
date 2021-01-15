@@ -4,33 +4,33 @@ import { __ } from '@wordpress/i18n';
 import CustomPalette from './CustomPalette';
 import classnames from 'classnames';
 
-const GlobalColorsPicker = ( { onChange, activeColor, isGlobal } ) => {
-	const buttonClasses = classnames( [
+const GlobalColorsPicker = ({ onChange, activeColor, isGlobal }) => {
+	const buttonClasses = classnames([
 		'global-color-picker',
 		{ active: isGlobal },
-	] );
+	]);
 
 	return (
 		<Dropdown
-			renderToggle={ ( { isOpen, onToggle } ) => (
+			renderToggle={({ isOpen, onToggle }) => (
 				<Button
-					onClick={ onToggle }
-					aria-expanded={ isOpen }
+					onClick={onToggle}
+					aria-expanded={isOpen}
 					role="button"
-					className={ buttonClasses }
+					className={buttonClasses}
 				>
-					<Icon size={ 20 } icon={ globe } />
+					<Icon size={20} icon={globe} />
 				</Button>
-			) }
-			renderContent={ () => (
+			)}
+			renderContent={() => (
 				<>
 					<CustomPalette
-						onChange={ onChange }
-						title={ __( 'Global Colors', 'neve' ) }
-						activeColor={ activeColor }
+						onChange={onChange}
+						title={__('Global Colors', 'neve')}
+						activeColor={activeColor}
 					/>
 				</>
-			) }
+			)}
 		/>
 	);
 };
