@@ -12,8 +12,8 @@ const ResponsiveControl = ( {
 	children,
 } ) => {
 	const changeViewType = ( device ) => {
-		wp.customize.previewedDevice( device );
 		onChange( device );
+		wp.customize.previewedDevice( device );
 	};
 
 	useEffect( () => {

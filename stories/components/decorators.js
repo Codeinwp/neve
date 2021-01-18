@@ -1,7 +1,7 @@
 import './customizerDecorator.scss';
 
 export const CustomizerDecorator = (Story) => (
-	<div className="mock-customize">
+	<div className="mock-customize preview-desktop">
 		<div className="sidebar">{Story()}</div>
 		<div className="preview">{}</div>
 	</div>
