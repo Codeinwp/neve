@@ -4,10 +4,6 @@ import classnames from 'classnames';
 import { globalPaletteColors } from '../common/common';
 
 const CustomPalette = ( { title, onChange, activeColor } ) => {
-	const handleChange = ( color ) => {
-		onChange( color );
-	};
-
 	const focusGlobalColors = () => {
 		wp.customize.control( 'neve_global_colors' ).focus();
 	};
@@ -25,7 +21,7 @@ const CustomPalette = ( { title, onChange, activeColor } ) => {
 			<div className="nv-custom-palette-inner">
 				{ globalPaletteColors.map( ( group, index ) => {
 					return (
-						<div className="row" key={ index }>
+						<ul key={ index }>
 							{ Object.keys( group ).map( ( slug ) => {
 								const style = {
 									backgroundColor: `var(--${ slug })`,
@@ -39,18 +35,24 @@ const CustomPalette = ( { title, onChange, activeColor } ) => {
 								] );
 
 								return (
-									<Button
-										title={ group[ slug ] }
-										key={ slug }
-										style={ style }
-										className={ buttonClasses }
-										onClick={ () => {
-											handleChange( `var(--${ slug })` );
-										} }
-									/>
+									<li title={ group[ slug ] } key={ slug }>
+										<a
+											href="#"
+											onClick={ ( e ) => {
+												e.preventDefault();
+												onChange( `var(--${ slug })` );
+											} }
+										>
+											<span
+												style={ style }
+												className={ buttonClasses }
+											/>
+											<span>{ group[ slug ] }</span>
+										</a>
+									</li>
 								);
 							} ) }
-						</div>
+						</ul>
 					);
 				} ) }
 			</div>

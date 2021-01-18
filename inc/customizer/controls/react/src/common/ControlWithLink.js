@@ -1,7 +1,6 @@
 /* global NeveProReactCustomize */
-import { maybeParseJson } from './common';
 
-const ControlWithLink = ( { control, children } ) => {
+const ControlWithLink = ( { link, children } ) => {
 	if ( typeof NeveProReactCustomize !== 'undefined' ) {
 		const { whiteLabel } = NeveProReactCustomize;
 
@@ -10,15 +9,28 @@ const ControlWithLink = ( { control, children } ) => {
 		}
 	}
 
-	const attrs = maybeParseJson( control.params.input_attrs );
-	const link = attrs.link || null;
+	const handleFocus = () => {
+		wp.customize[ link.focus[ 0 ] ]( link.focus[ 1 ] ).focus();
+	};
+
+	const Link = () => {
+		if ( link.focus ) {
+			return (
+				<a href="#" onClick={ handleFocus }>
+					{ link.string }
+				</a>
+			);
+		}
+
+		return <a href={ link.url }>{ link.string }</a>;
+	};
 
 	return (
 		<>
 			{ children }
 			{ link && (
 				<p className="neve-customizer-link">
-					<a href={ link.url }>{ link.string }</a>
+					<Link />
 				</p>
 			) }
 		</>
