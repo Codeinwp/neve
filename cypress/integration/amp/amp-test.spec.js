@@ -5,8 +5,8 @@ function aliasRestRoutes() {
 			as( 'customizerSave' );
 }
 
-describe( 'AMP Check', function() {
-	it( 'Sets up serach icon on menu top row', function() {
+describe( 'AMP Check', function () {
+	it( 'Sets up search icon on menu top row', function() {
 
 		cy.goToCustomizer();
 		aliasRestRoutes();
