@@ -32,13 +32,19 @@ export default {
 	decorators: [WhiteBackgroundDecorator, CustomizerDecorator],
 };
 
-const RadioIconsWithState = ({ ...args }) => {
+const Template = (args) => {
 	const [value, setValue] = useState(Object.keys(args.options)[0]);
 
-	return <RadioIcons value={value} {...args} onChange={setValue} />;
+	return (
+		<>
+			<RadioIcons value={value} {...args} onChange={setValue} />
+			<hr />
+			<br />
+			<strong>Value:</strong>
+			<pre>{value}</pre>
+		</>
+	);
 };
-
-const Template = (args) => <RadioIconsWithState {...args} />;
 
 export const Text = Template.bind({});
 export const IncludedIcons = Template.bind({});

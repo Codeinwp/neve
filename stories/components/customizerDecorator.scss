@@ -25,6 +25,38 @@ li, dd {
   margin-bottom: 6px;
 }
 
+input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week] {
+  padding: 0 8px;
+  line-height: 2;
+  min-height: 30px;
+}
+
+.dashicons, .dashicons-before:before {
+  font-family: dashicons;
+  display: inline-block;
+  line-height: 1;
+  font-weight: 400;
+  font-style: normal;
+  speak: never;
+  text-decoration: inherit;
+  text-transform: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  vertical-align: top;
+  text-align: center;
+  transition: color .1s ease-in;
+}
+button, input, select, textarea {
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 .customize-control-title {
   display: block;
   font-size: 14px;
@@ -45,4 +77,10 @@ li, dd {
   padding: 50px 15px;
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
+}
+
+pre {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
 }

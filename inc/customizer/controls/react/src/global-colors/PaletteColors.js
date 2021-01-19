@@ -36,7 +36,7 @@ const PaletteColors = ({ values, defaults, save }) => {
 		}).length < 1;
 
 	return (
-		<Accordion>
+		<Accordion label={__('Palette Colors', 'neve')}>
 			<div className="color-array-wrap">
 				{globalPaletteColors.map((group, index) => {
 					return (

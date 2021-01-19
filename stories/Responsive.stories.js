@@ -21,17 +21,13 @@ export default {
 const Template = (args) => {
 	const [currentDevice, setCurrentDevice] = useState(args.defaultValue);
 
-	const updateDevice = (d) => {
-		console.log(d);
-		setCurrentDevice(d);
-	};
-
 	return (
 		<ResponsiveControl {...args} onChange={setCurrentDevice}>
 			<>
 				<hr />
+				<strong>Value:</strong>
 				<pre>
-					<h4>Value: {currentDevice}</h4>
+					<span className="value">{currentDevice}</span>
 				</pre>
 			</>
 		</ResponsiveControl>

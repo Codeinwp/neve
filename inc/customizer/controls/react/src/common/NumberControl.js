@@ -4,51 +4,27 @@ import classnames from 'classnames';
 import ResponsiveControl from '../common/Responsive.js';
 
 import { Button } from '@wordpress/components';
-import { Component } from '@wordpress/element';
 
-class NumberControl extends Component {
-	render() {
-		const { label, units, value, className, hasResponsive } = this.props;
-		return (
-			<div className={className + ' neve-number-control-wrap'}>
-				<div className="neve-control-header">
-					{label && (
-						<span className="customize-control-title">{label}</span>
-					)}
-					{hasResponsive && (
-						<ResponsiveControl
-							onChange={(currentDevice) =>
-								this.props.onChangedDevice(currentDevice)
-							}
-						/>
-					)}
-					{units && (
-						<div className="neve-units">{this.getButtons()}</div>
-					)}
-				</div>
-				<SizingControl
-					noLinking
-					noRange
-					options={[{ value }]}
-					onChange={(type, value) => {
-						this.props.onChange(value);
-					}}
-					max={this.props.max || 100}
-					min={this.props.min || 0}
-					step={this.props.step || 1}
-					defaults={this.props.default}
-					onReset={() => {
-						this.props.onReset();
-					}}
-				/>
-			</div>
-		);
-	}
-
-	getButtons() {
-		const self = this;
-		const { units } = this.props;
-		if (!units) return '';
+const NumberControl = (props) => {
+	const {
+		label,
+		units,
+		value,
+		className,
+		hasResponsive,
+		onUnitChange,
+		onChangedDevice,
+		onChange,
+		activeUnit,
+		onReset,
+		max = 100,
+		min = 0,
+		step = 1,
+	} = props;
+	const UnitButtons = () => {
+		if (!units) {
+			return '';
+		}
 		if (units.length === 1) {
 			return (
 				<Button className="alone active" isSmall disabled>
@@ -57,24 +33,54 @@ class NumberControl extends Component {
 			);
 		}
 		return units.map((unit, index) => {
-			const buttonClass = classnames({
-				active: self.props.activeUnit === unit,
-			});
 			return (
 				<Button
 					key={index}
 					isSmall
 					onClick={() => {
-						self.props.onUnitChange(unit);
+						onUnitChange(unit);
 					}}
-					className={buttonClass}
+					className={classnames({
+						active: activeUnit === unit,
+					})}
 				>
 					{unit}
 				</Button>
 			);
 		});
-	}
-}
+	};
+
+	return (
+		<div className={className + ' neve-number-control-wrap'}>
+			<div className="neve-control-header">
+				{label && (
+					<span className="customize-control-title">{label}</span>
+				)}
+				{hasResponsive && (
+					<ResponsiveControl onChange={onChangedDevice} />
+				)}
+				{units && (
+					<div className="neve-units">
+						<UnitButtons />
+					</div>
+				)}
+			</div>
+			<SizingControl
+				noLinking
+				noRange
+				options={[{ value }]}
+				onChange={(type, newVal) => {
+					onChange(newVal);
+				}}
+				max={max}
+				min={min}
+				step={step}
+				defaults={props.default}
+				onReset={onReset}
+			/>
+		</div>
+	);
+};
 
 NumberControl.propTypes = {
 	label: PropTypes.string,

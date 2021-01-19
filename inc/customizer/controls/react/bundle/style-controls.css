@@ -480,6 +480,8 @@
     display: block;
     font-weight: 600;
     color: #555d66; }
+  .neve-responsive-sizing.single-input input {
+    width: 100%; }
 
 .neve-typeface-control .font-family-selector-toggle {
   width: 100%;
