@@ -1224,7 +1224,7 @@ section.exclusive .tns-visually-hidden {
 }
 
 .widget_shopping_cart .cart_list li.mini_cart_item span.quantity {
-  grid-row-start: 2;
+  grid-row-start: 4;
   grid-column-start: span 11;
   grid-column-end: -1;
   text-align: right;
@@ -1232,11 +1232,11 @@ section.exclusive .tns-visually-hidden {
 }
 
 .widget_shopping_cart .cart_list li.mini_cart_item dl.variation {
+  margin-right: 20px;
   border: none;
   grid-row-start: 3;
   grid-column-start: 2;
   grid-column-end: span 9;
-  padding: 0;
   text-align: left;
 }
 
