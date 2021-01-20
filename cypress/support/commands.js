@@ -408,3 +408,22 @@ Cypress.Commands.add('openNeveSidebar', () => {
 		});
 	})
 })
+
+Cypress.Commands.add('activateClassicEditorPlugin', () => {
+	cy.login('/wp-admin/plugins.php');
+	cy.get('#activate-classic-editor').contains('Activate').click();
+	cy.get('#deactivate-classic-editor').should('exist');
+})
+
+Cypress.Commands.add('deactivateClassicEditorPlugin', () => {
+	cy.login('/wp-admin/plugins.php');
+	cy.get('#deactivate-classic-editor').contains('Deactivate').click();
+	cy.get('#activate-classic-editor').should('exist');
+})
+
+Cypress.Commands.add('matchContentWidth', (defaultWidth) => {
+	cy.get('.single-page-container .alignfull [class*="__inner-container"] > *, .single-page-container .alignwide [class*="__inner-container"] > *').invoke("width").should('be.eq', defaultWidth - 30); //we substract the padding.
+	cy.get('.single-page-container .nv-content-wrap').invoke("width").should('be.eq', defaultWidth - 30); //we substract the padding.
+	cy.get('#wp-admin-bar-edit a').click();
+	cy.get('.wp-block').should('have.css', 'max-width', defaultWidth + 'px');
+})
