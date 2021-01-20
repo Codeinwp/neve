@@ -37,9 +37,9 @@ export const init = () => {
 				end: e.target.selectionEnd,
 			};
 		});
-
 		render(
 			<DynamicFieldInserter
+				options={NeveReactCustomize?.dynamicTags?.options || []}
 				allowedOptionsTypes={controls[controlId]}
 				onSelect={(magicTag, group) =>
 					addToField(magicTag, control, group)

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-15T17:09:21+00:00\n"
+"POT-Creation-Date: 2021-01-20T11:13:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -451,7 +451,7 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:98
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:120
-#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:52
+#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:56
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:84
 msgid "Left"
 msgstr ""
@@ -466,7 +466,7 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:88
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:110
-#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:50
+#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:54
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:74
 msgid "Right"
 msgstr ""
@@ -498,7 +498,7 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:83
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:105
-#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:49
+#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:53
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:69
 msgid "Top"
 msgstr ""
@@ -512,7 +512,7 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:93
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:115
-#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:51
+#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:55
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:79
 msgid "Bottom"
 msgstr ""
@@ -680,7 +680,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:177
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:126
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:122
 msgid "Search"
 msgstr ""
 
@@ -821,8 +821,8 @@ msgstr ""
 #: header-footer-grid/Core/Customizer.php:270
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:175
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:62
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:180
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:58
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:176
 msgid "Default"
 msgstr ""
 
@@ -2135,8 +2135,8 @@ msgstr ""
 
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:149
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:61
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:179
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:57
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:175
 msgid "Inherit"
 msgstr ""
 
@@ -2205,6 +2205,7 @@ msgid "Neve Options"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/dynamic-fields/dynamic-field-inserter.js:48
 msgid "Insert Dynamic Tag"
 msgstr ""
 
@@ -2280,22 +2281,22 @@ msgid "Overlay Opacity"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:25
+#: inc/customizer/controls/react/src/common/Sizing.js:50
 msgid "Unlink Values"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:26
+#: inc/customizer/controls/react/src/common/Sizing.js:51
 msgid "Link Values"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:73
+#: inc/customizer/controls/react/src/common/Sizing.js:87
 msgid "Reset all Values"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:74
+#: inc/customizer/controls/react/src/common/Sizing.js:88
 msgid "Reset Value"
 msgstr ""
 
@@ -2335,17 +2336,17 @@ msgid "Letter Spacing"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:167
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:163
 msgid "Font Family"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:151
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:147
 msgid "No results."
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:198
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:194
 msgid "Loading…"
 msgstr ""
 
@@ -2550,7 +2551,7 @@ msgid "Cancel"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/common/Accordion.js:19
+#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:39
 msgid "Palette Colors"
 msgstr ""
 
