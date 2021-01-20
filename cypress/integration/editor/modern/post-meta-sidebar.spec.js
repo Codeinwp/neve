@@ -32,23 +32,23 @@ describe('Single post meta sidebar', function () {
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
-		openNeveSidebar();
+		cy.openNeveSidebar();
 
-		let sidebarControl = getControl('neve_meta_sidebar');
+		let sidebarControl = cy.getControl('neve_meta_sidebar');
 		sidebarControl.find('.components-radio-control__input[value="full-width"]').parent().click();
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.nv-sidebar-wrap').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
 
-		sidebarControl = getControl('neve_meta_sidebar');
+		sidebarControl = cy.getControl('neve_meta_sidebar');
 		sidebarControl.find('.components-radio-control__input[value="left"]').parent().click();
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-left');
 		cy.get('#wp-admin-bar-edit a').click();
 
-		sidebarControl = getControl('neve_meta_sidebar');
+		sidebarControl = cy.getControl('neve_meta_sidebar');
 		sidebarControl.find('.components-radio-control__input[value="right"]').parent().click();
 		cy.updatePost();
 		cy.visit(postSetup.url);
@@ -60,16 +60,16 @@ describe('Single post meta sidebar', function () {
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
-		openNeveSidebar();
+		cy.openNeveSidebar();
 
-		let sidebarControl = getControl('neve_meta_container');
+		let sidebarControl = cy.getControl('neve_meta_container');
 		sidebarControl.find('.components-button').contains('Contained').click();
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.single-post-container').should('have.class', 'container').and('be.visible');
 		cy.get('#wp-admin-bar-edit a').click();
 
-		sidebarControl = getControl('neve_meta_container');
+		sidebarControl = cy.getControl('neve_meta_container');
 		sidebarControl.find('.components-button').contains('Full Width').click();
 		cy.updatePost();
 		cy.visit(postSetup.url);
@@ -81,10 +81,10 @@ describe('Single post meta sidebar', function () {
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
-		openNeveSidebar();
+		cy.openNeveSidebar();
 
-		const enableContentWidth = cy.get('.components-toggle-control__label').contains('Custom Content Width (%)');
-		activateCheckbox(enableContentWidth);
+		// const enableContentWidth = cy.get('.components-toggle-control__label').contains('Custom Content Width (%)');
+		cy.activateCheckbox('.components-toggle-control__label', 'Custom Content Width (%');
 
 		cy.get('.neve_meta_content_width').find('input[type=number]').type('{selectall}').type(60);
 		cy.updatePost();
@@ -98,7 +98,7 @@ describe('Single post meta sidebar', function () {
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
-		openNeveSidebar();
+		cy.openNeveSidebar();
 
 		cy.get('.neve_meta_title_alignment .nv-align-center').click();
 		cy.updatePost();
@@ -124,10 +124,9 @@ describe('Single post meta sidebar', function () {
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
-		openNeveSidebar();
+		cy.openNeveSidebar();
 
-		const enableContentWidth = cy.get('.components-toggle-control__label').contains('Author Avatar');
-		activateCheckbox(enableContentWidth);
+		cy.activateCheckbox('.components-toggle-control__label', 'Author Avatar');
 		cy.updatePost();
 
 		cy.visit(postSetup.url);
@@ -139,19 +138,19 @@ describe('Single post meta sidebar', function () {
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
-		openNeveSidebar();
+		cy.openNeveSidebar();
 
-		cy.get('.ti-sortable-item-label').each(function (el, index ) {
-			const shouldContain = [ 'Post Title', 'Post Meta', 'Featured Image', 'Content', 'Tags', 'Comments', 'Post Navigation']
-			expect( el).to.contain(shouldContain[index]);
-			if ( index === 6 ){
+		cy.get('.ti-sortable-item-label').each(function (el, index) {
+			const shouldContain = ['Post Title', 'Post Meta', 'Featured Image', 'Content', 'Tags', 'Comments', 'Post Navigation']
+			expect(el).to.contain(shouldContain[index]);
+			if (index === 6) {
 				cy.get(el).parent().should('have.class', 'hidden');
 			} else {
 				cy.get(el).parent().should('not.have.class', 'hidden');
 			}
 		})
 
-		toggleElements(false);
+		cy.toggleElements(false);
 		cy.get('.components-toggle-control__label').contains('Author Avatar').should('not.exist');
 		cy.updatePost();
 		cy.visit(postSetup.url);
@@ -165,7 +164,7 @@ describe('Single post meta sidebar', function () {
 		cy.get('.nv-post-navigation').should('not.exist');
 
 		cy.get('#wp-admin-bar-edit a').click();
-		toggleElements(true);
+		cy.toggleElements(true);
 		cy.get('.components-toggle-control__label').contains('Author Avatar').should('exist');
 		cy.updatePost();
 		cy.visit(postSetup.url);
@@ -180,52 +179,17 @@ describe('Single post meta sidebar', function () {
 		cy.visit(postSetup.url);
 
 		cy.get('#wp-admin-bar-edit a').click();
-		const headerToggle = cy.get('.components-toggle-control__label').contains('Disable Header');
-		activateCheckbox(headerToggle);
+		// const headerToggle = cy.get('.components-toggle-control__label').contains('Disable Header');
+		cy.activateCheckbox('.components-toggle-control__label', 'Disable Header');
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.hfg_header').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
 
 		const footerToggle = cy.get('.components-toggle-control__label').contains('Disable Footer');
-		activateCheckbox(footerToggle);
+		cy.activateCheckbox('.components-toggle-control__label', 'Disable Footer');
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('footer.site-footer').should('not.exist');
 	});
-
 })
-
-function toggleElements($show) {
-	const icon = $show ? 'dashicons-hidden' : 'dashicons-visibility';
-	cy.get('.ti-sortable-item-area .ti-sortable-item-toggle').each(function (el) {
-		cy.get(el).find('.dashicon').then(($icon) => {
-			if ($icon.hasClass(icon)) {
-				cy.get($icon).click();
-			}
-		})
-	})
-};
-
-function getControl($control) {
-	return cy.get('label.components-base-control__label[for="' + $control + '"]').parent();
-}
-
-function activateCheckbox($checkbox) {
-	$checkbox.prev().then(($checkbox) => {
-		if (!$checkbox.hasClass('is-checked')) {
-			cy.get($checkbox).click();
-		}
-	})
-}
-
-function openNeveSidebar() {
-	cy.get('button.components-button[aria-label="Neve Options"]').then(($btn) => {
-		cy.get($btn).invoke('attr', 'aria-expanded').then((value) => {
-			if (value === true) {
-				return true;
-			}
-			cy.get('button.components-button[aria-label="Neve Options"]').click();
-		});
-	})
-}

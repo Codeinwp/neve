@@ -8,7 +8,9 @@ Cypress.Cookies.defaults({
 Cypress.Commands.add('login', (nextRoute = null) => {
 	//console.log(cy.getCookies());
 
-	const cookies = cy.getCookies({log: true}).then(function (cookies) {
+	const cookies = cy.getCookies({
+		log: true
+	}).then(function (cookies) {
 		let isLoggedIn = false;
 		cookies.forEach(function (value) {
 			if (value.name.includes('wordpress_')) {
@@ -39,11 +41,11 @@ Cypress.Commands.add('navigate', (nextRoute = '/') => {
 Cypress.Commands.add('clearWelcome', () => {
 	cy.window().then((win) => {
 		win.wp &&
-		win.wp.data &&
-		win.wp.data
+			win.wp.data &&
+			win.wp.data
 			.select('core/edit-post')
 			.isFeatureActive('welcomeGuide') &&
-		win.wp.data
+			win.wp.data
 			.dispatch('core/edit-post')
 			.toggleFeature('welcomeGuide');
 	});
@@ -116,7 +118,9 @@ Cypress.Commands.add(
 		cy.get('.editor-post-title__input').type(title);
 		cy.get(
 			' textarea.block-editor-default-block-appender__content'
-		).click({force: true});
+		).click({
+			force: true
+		});
 		cy.get('.block-editor-rich-text__editable').type(content);
 		cy.get('.editor-post-publish-panel__toggle').click();
 		updatePost();
@@ -158,11 +162,15 @@ function addFeaturedImage() {
 	cy.get('.media-frame')
 		.find('.media-menu-item')
 		.contains('Media Library')
-		.click({force: true});
+		.click({
+			force: true
+		});
 
 	cy.get('.attachments-browser .attachments > li.attachment')
 		.first()
-		.click({force: true});
+		.click({
+			force: true
+		});
 	cy.wait(2500);
 	cy.get('.media-button-select').click();
 }
@@ -266,7 +274,9 @@ Cypress.Commands.add(
 			cy.maskAndClip(maskElement, clipElement);
 		}
 		cy.window().then((cyWindow) =>
-			scrollToBottom({remoteWindow: cyWindow})
+			scrollToBottom({
+				remoteWindow: cyWindow
+			})
 		);
 		cy.wait(5000);
 		cy.percySnapshot(screenShotName);
@@ -312,7 +322,9 @@ Cypress.Commands.add(
 
 function changeNumberInputValue(input, value) {
 	cy.get(input)
-		.clear({force: true})
+		.clear({
+			force: true
+		})
 		.type('{leftarrow}' + value + '{rightarrow}{backspace}');
 }
 
@@ -348,15 +360,51 @@ Cypress.Commands.add('goToCustomizer', (to) => {
 				win.appReady = true;
 			});
 		}).then(() => {
-		// If we bind to the ready event too late, we can check the body class 'ready'.
-		cy.get('body').then(($body) => {
-			if ($body.hasClass('ready')) {
-				cy.window()
-					.then((win) => {
-						win.appReady = true;
-					});
-			}
+			// If we bind to the ready event too late, we can check the body class 'ready'.
+			cy.get('body').then(($body) => {
+				if ($body.hasClass('ready')) {
+					cy.window()
+						.then((win) => {
+							win.appReady = true;
+						});
+				}
+			});
 		});
-	});
-	cy.window({timeout: 15000}).should('have.property', 'appReady', true)
+	cy.window({
+		timeout: 15000
+	}).should('have.property', 'appReady', true)
 });
+
+Cypress.Commands.add('toggleElements', (show) => {
+	const icon = show ? 'dashicons-hidden' : 'dashicons-visibility';
+	cy.get('.ti-sortable-item-area .ti-sortable-item-toggle').each(function (el) {
+		cy.get(el).find('.dashicon').then(($icon) => {
+			if ($icon.hasClass(icon)) {
+				cy.get($icon).click();
+			}
+		})
+	})
+})
+
+Cypress.Commands.add('getControl', (control) => {
+	cy.get('label.components-base-control__label[for="' + control + '"]').parent();
+})
+
+Cypress.Commands.add('activateCheckbox', (checkboxSelector, checkboxText) => {
+	cy.get(checkboxSelector).contains(checkboxText).prev().then((checkbox) => {
+		if (!checkbox.hasClass('is-checked')) {
+			cy.get(checkbox).click();
+		}
+	})
+})
+
+Cypress.Commands.add('openNeveSidebar', () => {
+	cy.get('button.components-button[aria-label="Neve Options"]').then(($btn) => {
+		cy.get($btn).invoke('attr', 'aria-expanded').then((value) => {
+			if (value === true) {
+				return true;
+			}
+			cy.get('button.components-button[aria-label="Neve Options"]').click();
+		});
+	})
+})
