@@ -53,7 +53,7 @@ const PresetsSelector = ({ presets, onSelect }) => {
 };
 
 PresetsSelector.propTypes = {
-	presets: PropTypes.object.isRequired,
+	presets: PropTypes.array.isRequired,
 	onSelect: PropTypes.func.isRequired,
 };
 

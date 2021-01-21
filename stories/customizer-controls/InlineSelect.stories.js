@@ -1,13 +1,13 @@
 import React from 'react';
 import { useState } from '@wordpress/element';
-import InlineSelect from '../inc/customizer/controls/react/src/common/InlineSelect';
+import InlineSelect from '../../inc/customizer/controls/react/src/common/InlineSelect';
 import {
 	CustomizerDecorator,
 	WhiteBackgroundDecorator,
-} from './components/decorators';
+} from '../components/decorators';
 
 export default {
-	title: 'Customizer/Inline Select',
+	title: 'Customizer/Controls/Inline Select',
 	component: InlineSelect,
 	args: {
 		label: 'Control Label',

@@ -1,9 +1,9 @@
 import { useState } from '@wordpress/element';
-import RadioIcons from '../inc/customizer/controls/react/src/common/RadioIcons';
+import RadioIcons from '../../inc/customizer/controls/react/src/common/RadioIcons';
 import {
 	CustomizerDecorator,
 	WhiteBackgroundDecorator,
-} from './components/decorators';
+} from '../components/decorators';
 import {
 	chevronDown,
 	chevronUp,
@@ -12,9 +12,10 @@ import {
 } from '@wordpress/icons';
 
 export default {
-	title: 'Customizer/Radio Icons',
+	title: 'Customizer/Controls/Radio Icons',
 	component: RadioIcons,
 	args: {
+		largeButtons: false,
 		label: 'Control Label',
 		options: {
 			one: { icon: 'text', tooltip: 'One' },
@@ -72,6 +73,12 @@ export const IncludedIconsWithLabels = Template.bind({});
 IncludedIconsWithLabels.args = {
 	...IncludedIcons.args,
 	showLabels: true,
+};
+
+export const LargeIcons = Template.bind({});
+LargeIcons.args = {
+	...IncludedIcons.args,
+	largeButtons: true,
 };
 
 export const Markup = Template.bind({});

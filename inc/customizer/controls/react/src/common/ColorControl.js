@@ -22,7 +22,7 @@ const ColorControl = ({
 		onChange(value.hex);
 	};
 
-	const isGlobal = selectedColor.indexOf('var') > -1;
+	const isGlobal = selectedColor && selectedColor.indexOf('var') > -1;
 
 	const handleClear = () => {
 		onChange(defaultValue || '');
@@ -92,7 +92,7 @@ ColorControl.defaultProps = {
 ColorControl.propTypes = {
 	label: PropTypes.string,
 	onChange: PropTypes.func.isRequired,
-	selectedColor: PropTypes.string.isRequired,
+	selectedColor: PropTypes.string,
 	defaultValue: PropTypes.string,
 	disableGlobal: PropTypes.bool,
 };

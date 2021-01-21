@@ -1,14 +1,14 @@
 import { useState } from '@wordpress/element';
-import MultiSelect from '../inc/customizer/controls/react/src/multiselect/MultiSelect';
+import MultiSelect from '../../inc/customizer/controls/react/src/multiselect/MultiSelect';
 import {
 	MULTISELECT_DEFAULT,
 	MULTISELECT_CHOICES,
 	MULTISELECT_FULL,
-} from './utils/values';
-import { CustomizerDecorator } from './components/decorators';
+} from '../utils/values';
+import { CustomizerDecorator } from '../components/decorators';
 
 export default {
-	title: 'Customizer/Multiselect',
+	title: 'Customizer/Controls/Multiselect',
 	component: MultiSelect,
 	args: {
 		label: 'Control Label',
@@ -27,12 +27,18 @@ const MultiSelectWithState = ({ ...args }) => {
 	const [items, setItems] = useState(args.default);
 
 	return (
-		<MultiSelect
-			{...args}
-			currentValue={items}
-			choices={args.choices}
-			onChange={setItems}
-		/>
+		<>
+			<MultiSelect
+				{...args}
+				currentValue={items}
+				choices={args.choices}
+				onChange={setItems}
+			/>
+			<br />
+			<hr />
+			<strong>Value:</strong>
+			<pre>{JSON.stringify(items, null, ' ')}</pre>
+		</>
 	);
 };
 

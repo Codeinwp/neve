@@ -1,12 +1,12 @@
 import { useState } from '@wordpress/element';
-import ColorControl from '../inc/customizer/controls/react/src/common/ColorControl';
+import ColorControl from '../../inc/customizer/controls/react/src/common/ColorControl';
 import {
 	CustomizerDecorator,
 	WhiteBackgroundDecorator,
-} from './components/decorators';
+} from '../components/decorators';
 
 export default {
-	title: 'Customizer/Color',
+	title: 'Customizer/Controls/Color',
 	component: ColorControl,
 	args: {
 		label: 'Control Label',
@@ -23,7 +23,15 @@ export default {
 const Template = (args) => {
 	const [color, setColor] = useState('#f00');
 
-	return <ColorControl {...args} selectedColor={color} onChange={setColor} />;
+	return (
+		<>
+			<ColorControl {...args} selectedColor={color} onChange={setColor} />
+			<br />
+			<hr />
+			<strong>Value:</strong>
+			<pre>{color}</pre>
+		</>
+	);
 };
 
 export const Default = Template.bind({});

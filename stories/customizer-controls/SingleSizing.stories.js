@@ -1,12 +1,12 @@
-import SingleSizingInput from '../inc/customizer/controls/react/src/common/SingleSizingInput';
+import SingleSizingInput from '../../inc/customizer/controls/react/src/common/SingleSizingInput';
 import {
 	WhiteBackgroundDecorator,
 	CustomizerDecorator,
-} from './components/decorators';
+} from '../components/decorators';
 import { useState } from '@wordpress/element';
 
 export default {
-	title: 'Customizer/Single Sizing Input',
+	title: 'Customizer/Controls/Single Sizing Input',
 	component: SingleSizingInput,
 	args: {
 		max: 100,

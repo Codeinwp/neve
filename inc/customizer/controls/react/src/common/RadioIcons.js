@@ -5,8 +5,14 @@ import SVG from './svg';
 
 import { Button } from '@wordpress/components';
 
-const RadioIcons = ({ options, onChange, value, showLabels }) => {
-	const getButtons = () => {
+const RadioIcons = ({
+	options,
+	onChange,
+	value,
+	showLabels,
+	largeButtons = false,
+}) => {
+	const Buttons = () => {
 		return Object.keys(options).map((type, index) => {
 			if (options[type].icon === 'text') {
 				return (
@@ -41,7 +47,16 @@ const RadioIcons = ({ options, onChange, value, showLabels }) => {
 		});
 	};
 
-	return <div className="neve-radio-icons">{getButtons()}</div>;
+	const wrapClasses = classnames([
+		'neve-radio-icons',
+		{ 'large-buttons': largeButtons },
+	]);
+
+	return (
+		<div className={wrapClasses}>
+			<Buttons />
+		</div>
+	);
 };
 
 RadioIcons.propTypes = {

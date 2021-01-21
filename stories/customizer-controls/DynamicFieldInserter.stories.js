@@ -1,13 +1,13 @@
-import DynamicFieldInserter from '../inc/customizer/controls/react/src/dynamic-fields/dynamic-field-inserter';
+import DynamicFieldInserter from '../../inc/customizer/controls/react/src/dynamic-fields/dynamic-field-inserter';
 import {
 	WhiteBackgroundDecorator,
 	CustomizerDecorator,
-} from './components/decorators';
+} from '../components/decorators';
 import { useState } from '@wordpress/element';
-import { DYNAMIC_FIELDS_OPTIONS } from './utils/values';
+import { DYNAMIC_FIELDS_OPTIONS } from '../utils/values';
 
 export default {
-	title: 'Customizer/Dynamic Fields Inserter',
+	title: 'Customizer/Controls/Dynamic Fields Inserter',
 	component: DynamicFieldInserter,
 	args: {
 		allowedOptionsTypes: ['string', 'url', 'custom_cart', 'custom_url'],

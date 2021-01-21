@@ -1,13 +1,13 @@
-import FontFamilySelector from '../inc/customizer/controls/react/src/font-family/FontFamilySelector';
+import FontFamilySelector from '../../inc/customizer/controls/react/src/font-family/FontFamilySelector';
 import {
 	WhiteBackgroundDecorator,
 	CustomizerDecorator,
-} from './components/decorators';
+} from '../components/decorators';
 import { useState } from '@wordpress/element';
-import { FONTS } from './utils/values';
+import { FONTS } from '../utils/values';
 
 export default {
-	title: 'Customizer/Font Family Selector',
+	title: 'Customizer/Controls/Font Family Selector',
 	component: FontFamilySelector,
 	args: {
 		systemFonts: false,

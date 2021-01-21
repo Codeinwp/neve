@@ -30,6 +30,7 @@ input[type=date], input[type=datetime-local], input[type=datetime], input[type=e
   padding: 0 8px;
   line-height: 2;
   min-height: 30px;
+  width: 100%;
 }
 
 .dashicons, .dashicons-before:before {
@@ -72,12 +73,15 @@ button, input, select, textarea {
 }
 
 .sidebar {
-  min-width: 300px;
-  max-width: 600px;
+  width: 300px;
   background-color: #eeeeee;
-  padding: 50px 15px;
+  padding: 15px 15px 0;
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
+}
+
+img {
+  max-width: 100%;
 }
 
 pre {

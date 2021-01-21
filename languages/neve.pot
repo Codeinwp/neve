@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-20T11:13:21+00:00\n"
+"POT-Creation-Date: 2021-01-21T20:53:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -449,8 +449,7 @@ msgstr ""
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:153
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:98
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:120
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:124
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:56
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:84
 msgid "Left"
@@ -464,8 +463,7 @@ msgstr ""
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:155
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:88
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:110
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:122
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:54
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:74
 msgid "Right"
@@ -496,8 +494,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Abstract_Component.php:865
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:83
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:105
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:121
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:53
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:69
 msgid "Top"
@@ -510,8 +507,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Abstract_Component.php:873
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:93
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:115
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:123
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:55
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:79
 msgid "Bottom"
@@ -533,8 +529,8 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:116
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:226
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:236
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:60
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:70
 msgid "Text"
 msgstr ""
 
@@ -556,8 +552,8 @@ msgstr ""
 #: header-footer-grid/Core/Components/SearchResponsive.php:184
 #: inc/customizer/options/form_fields.php:379
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:43
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:91
+#: inc/customizer/controls/react/src/background/Background.js:20
+#: inc/customizer/controls/react/src/background/Background.js:70
 msgid "Color"
 msgstr ""
 
@@ -752,7 +748,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/SearchResponsive.php:358
 #: inc/customizer/options/form_fields.php:223
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:170
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:178
 msgid "Border Width"
 msgstr ""
 
@@ -760,7 +756,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/SearchResponsive.php:415
 #: inc/customizer/options/form_fields.php:275
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:128
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:146
 msgid "Border Radius"
 msgstr ""
 
@@ -772,8 +768,8 @@ msgstr ""
 #: header-footer-grid/Core/Components/Search.php:306
 #: header-footer-grid/Core/Components/SearchResponsive.php:470
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:227
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:237
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:61
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:71
 msgid "Text and Border"
 msgstr ""
 
@@ -1001,7 +997,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Settings/Manager.php:185
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:337
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:223
 msgid "Style"
 msgstr ""
 
@@ -2230,53 +2226,53 @@ msgid "Clear"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:44
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:118
+#: inc/customizer/controls/react/src/background/Background.js:21
+#: inc/customizer/controls/react/src/background/Background.js:95
 msgid "Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:104
+#: inc/customizer/controls/react/src/background/Background.js:83
 msgid "Use Featured Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:158
+#: inc/customizer/controls/react/src/background/Background.js:132
 msgid "Remove Fallback Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:162
+#: inc/customizer/controls/react/src/background/Background.js:133
 msgid "Remove Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:117
+#: inc/customizer/controls/react/src/background/Background.js:94
 msgid "Fallback Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:122
+#: inc/customizer/controls/react/src/background/Background.js:99
 msgid "Select from the Media Library or upload a new image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:139
+#: inc/customizer/controls/react/src/background/Background.js:113
 msgid "Add Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:184
+#: inc/customizer/controls/react/src/background/Background.js:151
 msgid "Fixed Background"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:197
+#: inc/customizer/controls/react/src/background/Background.js:164
 msgid "Overlay Color"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:207
+#: inc/customizer/controls/react/src/background/Background.js:173
 msgid "Overlay Opacity"
 msgstr ""
 
@@ -2376,8 +2372,8 @@ msgid "Plain"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:223
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:233
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:57
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:67
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:61
 msgid "Background"
 msgstr ""
@@ -2463,32 +2459,32 @@ msgid "Style 6"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:221
-msgid "Normal"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:231
-msgid "Hover"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:306
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:31
 msgid "Filled"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:311
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:36
 msgid "Outline"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:45
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:55
+msgid "Normal"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:65
+msgid "Hover"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:27
 msgid "Search Header Presets…"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:70
+#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:49
 msgid "No header presets found"
 msgstr ""
 
@@ -2513,12 +2509,12 @@ msgid "All items are already selected."
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:21
+#: inc/customizer/controls/react/src/ordering/Ordering.js:18
 msgid "Drag to Reorder"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:35
+#: inc/customizer/controls/react/src/ordering/Ordering.js:47
 msgid "Toggle Visibility"
 msgstr ""
 

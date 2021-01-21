@@ -1,12 +1,12 @@
 import { useState } from '@wordpress/element';
-import ResponsiveControl from '../inc/customizer/controls/react/src/common/Responsive';
+import ResponsiveControl from '../../inc/customizer/controls/react/src/common/Responsive';
 import {
 	CustomizerDecorator,
 	WhiteBackgroundDecorator,
-} from './components/decorators';
+} from '../components/decorators';
 
 export default {
-	title: 'Customizer/Responsive',
+	title: 'Customizer/Controls/Responsive',
 	component: ResponsiveControl,
 	args: {
 		excluded: [],

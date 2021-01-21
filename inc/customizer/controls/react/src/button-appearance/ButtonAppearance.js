@@ -129,12 +129,12 @@ const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 
 		Object.keys(directions).map((direction) => {
 			widthOptions.push({
-				type: [direction],
+				type: direction,
 				label: direction[direction],
 				value: borderWidth[direction] || '',
 			});
 			radiusOptions.push({
-				type: [direction],
+				type: direction,
 				label: direction[direction],
 				value: borderRadius[direction] || '',
 			});
@@ -231,7 +231,7 @@ const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 };
 
 const valuePropTypeTemplate = PropTypes.shape({
-	type: PropTypes.oneOf(['outline', 'fill']),
+	type: PropTypes.oneOf(['outline', 'fill', '']),
 	background: PropTypes.string,
 	backgroundHover: PropTypes.string,
 	text: PropTypes.string,

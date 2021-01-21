@@ -1,8 +1,8 @@
-import Accordion from '../inc/customizer/controls/react/src/common/Accordion';
-import { CustomizerDecorator } from './components/decorators';
+import Accordion from '../../inc/customizer/controls/react/src/common/Accordion';
+import { CustomizerDecorator } from '../components/decorators';
 
 export default {
-	title: 'Customizer/Accordion',
+	title: 'Customizer/Controls/Accordion',
 	component: Accordion,
 	args: {
 		label: 'Accordion Label',

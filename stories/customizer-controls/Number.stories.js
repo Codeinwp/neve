@@ -1,12 +1,12 @@
-import NumberControl from '../inc/customizer/controls/react/src/common/NumberControl';
+import NumberControl from '../../inc/customizer/controls/react/src/common/NumberControl';
 import {
 	WhiteBackgroundDecorator,
 	CustomizerDecorator,
-} from './components/decorators';
+} from '../components/decorators';
 import { useState } from '@wordpress/element';
 
 export default {
-	title: 'Customizer/Number',
+	title: 'Customizer/Controls/Number',
 	component: NumberControl,
 	args: {
 		units: ['px', 'em', '%'],
@@ -66,7 +66,7 @@ const Template = (args) => {
 			<strong>Device:</strong>
 			<pre>{device}</pre>
 			<strong>Value:</strong>
-			<pre>{JSON.stringify(currentValue, null, '\t')}</pre>
+			<pre>{JSON.stringify(currentValue, null, ' ')}</pre>
 		</>
 	);
 };
