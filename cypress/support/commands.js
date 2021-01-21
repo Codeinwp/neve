@@ -361,7 +361,9 @@ Cypress.Commands.add('aliasRestRoutes', () => {
 	cy.server()
 		.route('POST', '/wp-admin/admin-ajax.php')
 		.as('customizerSave');
-=======
+});
+
+/**
  * Toggle elements on or off
  * @param show
  * @example cy.toggleElements(false)
