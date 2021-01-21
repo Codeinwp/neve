@@ -51,7 +51,7 @@ Cypress.Commands.add('clearWelcome', () => {
 	});
 });
 Cypress.Commands.add('insertCoverBlock', () => {
-	importCodeContent(
+	let text =
 		'<!-- wp:cover {"overlayColor":"neve-button-color","align":"full"} -->\n' +
 		'<div class="wp-block-cover alignfull has-neve-button-color-background-color has-background-dim"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->\n' +
 		'<p class="has-text-align-center has-large-font-size">test</p>\n' +
@@ -68,13 +68,7 @@ Cypress.Commands.add('insertCoverBlock', () => {
 		'<div class="wp-block-cover has-neve-button-color-background-color has-background-dim"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->\n' +
 		'<p class="has-text-align-center has-large-font-size">test</p>\n' +
 		'<!-- /wp:paragraph --></div></div>\n' +
-		'<!-- /wp:cover -->'
-	);
-	cy.wait(1000);
-	updatePost();
-});
-
-function importCodeContent(text) {
+		'<!-- /wp:cover -->';
 	cy.get('.edit-post-more-menu')
 		.click()
 		.get('.components-dropdown-menu__menu button')
@@ -87,9 +81,15 @@ function importCodeContent(text) {
 	cy.get('.edit-post-text-editor__toolbar button')
 		.contains(/Exit Code Editor/i)
 		.click();
-}
 
-Cypress.Commands.add('editCurrentPost', editCurrentPost);
+	cy.updatePost();
+});
+
+Cypress.Commands.add('editCurrentPost', () => {
+	cy.get('#wp-admin-bar-edit a').click();
+	cy.clearWelcome();
+});
+
 Cypress.Commands.add(
 	'insertPost',
 	(
@@ -107,14 +107,32 @@ Cypress.Commands.add(
 		cy.login(loginRoute);
 		cy.clearWelcome();
 		if (featured) {
-			addFeaturedImage();
+			cy.wait(500);
+			cy.get('button').contains('Featured image').click();
+			cy.get('.editor-post-featured-image__toggle').click();
+			cy.get('.media-frame')
+				.find('.media-menu-item')
+				.contains('Media Library')
+				.click({
+					force: true
+				});
+
+			cy.get('.attachments-browser .attachments > li.attachment')
+				.first()
+				.click({
+					force: true
+				});
+			cy.get('.media-button-select').click();
 		}
 
 		if (tags) {
-			addTags();
+			cy.get('.components-panel__body-toggle').contains('Tags').click();
+			cy.get('.components-form-token-field__label')
+				.contains('Add New Tag')
+				.parent()
+				.find('input')
+				.type('test-tag,');
 		}
-
-		cy.wait(1000);
 		cy.get('.editor-post-title__input').type(title);
 		cy.get(
 			' textarea.block-editor-default-block-appender__content'
@@ -123,10 +141,13 @@ Cypress.Commands.add(
 		});
 		cy.get('.block-editor-rich-text__editable').type(content);
 		cy.get('.editor-post-publish-panel__toggle').click();
-		updatePost();
+		cy.updatePost();
 	}
 );
-Cypress.Commands.add('updatePost', updatePost);
+Cypress.Commands.add('updatePost', () => {
+	cy.get('.editor-post-publish-button').click();
+	cy.wait(500);
+});
 
 Cypress.Commands.add('getCustomizerControl', (slug) => {
 	cy.window().then((win) => {
@@ -141,56 +162,20 @@ Cypress.Commands.add('getCustomizerControlValue', (slug) => {
 		.then((win) => win.wp.customize.control(slug).setting.get());
 });
 
-Cypress.Commands.add('setTypographyControl', (controlSelector, values) => {
-	setTypographyControl(controlSelector, values);
-});
-
-function updatePost() {
-	cy.get('.editor-post-publish-button').click();
-	cy.wait(1000);
-}
-
-function editCurrentPost() {
-	cy.get('#wp-admin-bar-edit a').click();
-	cy.clearWelcome();
-}
-
-function addFeaturedImage() {
-	cy.wait(500);
-	cy.get('button').contains('Featured image').click();
-	cy.get('.editor-post-featured-image__toggle').click();
-	cy.get('.media-frame')
-		.find('.media-menu-item')
-		.contains('Media Library')
-		.click({
-			force: true
-		});
-
-	cy.get('.attachments-browser .attachments > li.attachment')
-		.first()
-		.click({
-			force: true
-		});
-	cy.wait(2500);
-	cy.get('.media-button-select').click();
-}
-
-function addTags() {
-	cy.get('.components-panel__body-toggle').contains('Tags').click();
-	cy.get('.components-form-token-field__label')
-		.contains('Add New Tag')
-		.parent()
-		.find('input')
-		.type('test-tag,');
-}
-
 /**
  * Set single typography control.
  *
  * @param controlSelector
  * @param values
  */
-function setTypographyControl(controlSelector, values) {
+Cypress.Commands.add('setTypographyControl', (controlSelector, values) => {
+	const changeNumberInputValue = (input, value) => {
+		cy.get(input)
+			.clear({
+				force: true
+			})
+			.type('{leftarrow}' + value + '{rightarrow}{backspace}');
+	}
 	cy.get(controlSelector).as('control');
 
 	cy.get('@control')
@@ -257,7 +242,7 @@ function setTypographyControl(controlSelector, values) {
 				});
 		});
 	});
-}
+});
 
 /**
  * Capture and compare the fullpage snapshots.
@@ -319,14 +304,6 @@ Cypress.Commands.add(
 		});
 	}
 );
-
-function changeNumberInputValue(input, value) {
-	cy.get(input)
-		.clear({
-			force: true
-		})
-		.type('{leftarrow}' + value + '{rightarrow}{backspace}');
-}
 
 Cypress.Commands.add('setCustomizeSettings', (to) => {
 	cy.goToCustomizer();
