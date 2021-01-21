@@ -51,7 +51,7 @@ Cypress.Commands.add('clearWelcome', () => {
 	});
 });
 Cypress.Commands.add('insertCoverBlock', () => {
-	importCodeContent(
+	let text =
 		'<!-- wp:cover {"overlayColor":"neve-button-color","align":"full"} -->\n' +
 		'<div class="wp-block-cover alignfull has-neve-button-color-background-color has-background-dim"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->\n' +
 		'<p class="has-text-align-center has-large-font-size">test</p>\n' +
@@ -68,13 +68,7 @@ Cypress.Commands.add('insertCoverBlock', () => {
 		'<div class="wp-block-cover has-neve-button-color-background-color has-background-dim"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->\n' +
 		'<p class="has-text-align-center has-large-font-size">test</p>\n' +
 		'<!-- /wp:paragraph --></div></div>\n' +
-		'<!-- /wp:cover -->'
-	);
-	cy.wait(1000);
-	updatePost();
-});
-
-function importCodeContent(text) {
+		'<!-- /wp:cover -->';
 	cy.get('.edit-post-more-menu')
 		.click()
 		.get('.components-dropdown-menu__menu button')
@@ -87,9 +81,15 @@ function importCodeContent(text) {
 	cy.get('.edit-post-text-editor__toolbar button')
 		.contains(/Exit Code Editor/i)
 		.click();
-}
 
-Cypress.Commands.add('editCurrentPost', editCurrentPost);
+	cy.updatePost();
+});
+
+Cypress.Commands.add('editCurrentPost', () => {
+	cy.get('#wp-admin-bar-edit a').click();
+	cy.clearWelcome();
+});
+
 Cypress.Commands.add(
 	'insertPost',
 	(
@@ -107,14 +107,32 @@ Cypress.Commands.add(
 		cy.login(loginRoute);
 		cy.clearWelcome();
 		if (featured) {
-			addFeaturedImage();
+			cy.wait(500);
+			cy.get('button').contains('Featured image').click();
+			cy.get('.editor-post-featured-image__toggle').click();
+			cy.get('.media-frame')
+				.find('.media-menu-item')
+				.contains('Media Library')
+				.click({
+					force: true
+				});
+
+			cy.get('.attachments-browser .attachments > li.attachment')
+				.first()
+				.click({
+					force: true
+				});
+			cy.get('.media-button-select').click();
 		}
 
 		if (tags) {
-			addTags();
+			cy.get('.components-panel__body-toggle').contains('Tags').click();
+			cy.get('.components-form-token-field__label')
+				.contains('Add New Tag')
+				.parent()
+				.find('input')
+				.type('test-tag,');
 		}
-
-		cy.wait(1000);
 		cy.get('.editor-post-title__input').type(title);
 		cy.get(
 			' textarea.block-editor-default-block-appender__content'
@@ -123,10 +141,13 @@ Cypress.Commands.add(
 		});
 		cy.get('.block-editor-rich-text__editable').type(content);
 		cy.get('.editor-post-publish-panel__toggle').click();
-		updatePost();
+		cy.updatePost();
 	}
 );
-Cypress.Commands.add('updatePost', updatePost);
+Cypress.Commands.add('updatePost', () => {
+	cy.get('.editor-post-publish-button').click();
+	cy.wait(500);
+});
 
 Cypress.Commands.add('getCustomizerControl', (slug) => {
 	cy.window().then((win) => {
@@ -141,56 +162,20 @@ Cypress.Commands.add('getCustomizerControlValue', (slug) => {
 		.then((win) => win.wp.customize.control(slug).setting.get());
 });
 
-Cypress.Commands.add('setTypographyControl', (controlSelector, values) => {
-	setTypographyControl(controlSelector, values);
-});
-
-function updatePost() {
-	cy.get('.editor-post-publish-button').click();
-	cy.wait(1000);
-}
-
-function editCurrentPost() {
-	cy.get('#wp-admin-bar-edit a').click();
-	cy.clearWelcome();
-}
-
-function addFeaturedImage() {
-	cy.wait(500);
-	cy.get('button').contains('Featured image').click();
-	cy.get('.editor-post-featured-image__toggle').click();
-	cy.get('.media-frame')
-		.find('.media-menu-item')
-		.contains('Media Library')
-		.click({
-			force: true
-		});
-
-	cy.get('.attachments-browser .attachments > li.attachment')
-		.first()
-		.click({
-			force: true
-		});
-	cy.wait(2500);
-	cy.get('.media-button-select').click();
-}
-
-function addTags() {
-	cy.get('.components-panel__body-toggle').contains('Tags').click();
-	cy.get('.components-form-token-field__label')
-		.contains('Add New Tag')
-		.parent()
-		.find('input')
-		.type('test-tag,');
-}
-
 /**
  * Set single typography control.
  *
  * @param controlSelector
  * @param values
  */
-function setTypographyControl(controlSelector, values) {
+Cypress.Commands.add('setTypographyControl', (controlSelector, values) => {
+	const changeNumberInputValue = (input, value) => {
+		cy.get(input)
+			.clear({
+				force: true
+			})
+			.type('{leftarrow}' + value + '{rightarrow}{backspace}');
+	}
 	cy.get(controlSelector).as('control');
 
 	cy.get('@control')
@@ -257,7 +242,7 @@ function setTypographyControl(controlSelector, values) {
 				});
 		});
 	});
-}
+});
 
 /**
  * Capture and compare the fullpage snapshots.
@@ -320,14 +305,6 @@ Cypress.Commands.add(
 	}
 );
 
-function changeNumberInputValue(input, value) {
-	cy.get(input)
-		.clear({
-			force: true
-		})
-		.type('{leftarrow}' + value + '{rightarrow}{backspace}');
-}
-
 Cypress.Commands.add('setCustomizeSettings', (to) => {
 	cy.goToCustomizer();
 	cy.window()
@@ -384,4 +361,82 @@ Cypress.Commands.add('aliasRestRoutes', () => {
 	cy.server()
 		.route('POST', '/wp-admin/admin-ajax.php')
 		.as('customizerSave');
+=======
+ * Toggle elements on or off
+ * @param show
+ * @example cy.toggleElements(false)
+ */
+Cypress.Commands.add('toggleElements', (show) => {
+	const icon = show ? 'dashicons-hidden' : 'dashicons-visibility';
+	cy.get('.ti-sortable-item-area .ti-sortable-item-toggle').each(function (el) {
+		cy.get(el).find('.dashicon').then(($icon) => {
+			if ($icon.hasClass(icon)) {
+				cy.get($icon).click();
+			}
+		})
+	})
+})
+
+/**
+ * Selector for a control
+ * @param control
+ * @example cy.getControl('neve_sidebar')
+ */
+Cypress.Commands.add('getControl', (control) => {
+	cy.get('label.components-base-control__label[for="' + control + '"]').parent();
+})
+
+Cypress.Commands.add('activateCheckbox', (checkboxSelector, checkboxText) => {
+	cy.get(checkboxSelector).contains(checkboxText).prev().then((checkbox) => {
+		if (!checkbox.hasClass('is-checked')) {
+			cy.get(checkbox).click();
+		}
+	})
+})
+
+/**
+ * Opens sidebar on Neve Options
+ * @example cy.openNeveSidebar()
+ */
+Cypress.Commands.add('openNeveSidebar', () => {
+	cy.get('button.components-button[aria-label="Neve Options"]').then(($btn) => {
+		cy.get($btn).invoke('attr', 'aria-expanded').then((value) => {
+			if (value === true) {
+				return true;
+			}
+			cy.get('button.components-button[aria-label="Neve Options"]').click();
+		});
+	})
+})
+
+/**
+ * Activates Classic editor plugin
+ * @example cy.activateClassicEditorPlugin()
+ */
+Cypress.Commands.add('activateClassicEditorPlugin', () => {
+	cy.login('/wp-admin/plugins.php');
+	cy.get('#activate-classic-editor').contains('Activate').click();
+	cy.get('#deactivate-classic-editor').should('exist');
+})
+
+/**
+ * Deactivates Classic editor plugin
+ * @example cy.deactivateClassicEditorPlugin()
+ */
+Cypress.Commands.add('deactivateClassicEditorPlugin', () => {
+	cy.login('/wp-admin/plugins.php');
+	cy.get('#deactivate-classic-editor').contains('Deactivate').click();
+	cy.get('#activate-classic-editor').should('exist');
+})
+
+/**
+ * Matches content width
+ * @param defaultWidth
+ * @example cy.matchContentWidth(2250)
+ */
+Cypress.Commands.add('matchContentWidth', (defaultWidth) => {
+	cy.get('.single-page-container .alignfull [class*="__inner-container"] > *, .single-page-container .alignwide [class*="__inner-container"] > *').invoke("width").should('be.eq', defaultWidth - 30); //we substract the padding.
+	cy.get('.single-page-container .nv-content-wrap').invoke("width").should('be.eq', defaultWidth - 30); //we substract the padding.
+	cy.get('#wp-admin-bar-edit a').click();
+	cy.get('.wp-block').should('have.css', 'max-width', defaultWidth + 'px');
 })
