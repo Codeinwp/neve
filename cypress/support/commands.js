@@ -375,6 +375,11 @@ Cypress.Commands.add('goToCustomizer', (to) => {
 	}).should('have.property', 'appReady', true)
 });
 
+/**
+ * Toggle elements on or off
+ * @param show
+ * @example cy.toggleElements(false)
+ */
 Cypress.Commands.add('toggleElements', (show) => {
 	const icon = show ? 'dashicons-hidden' : 'dashicons-visibility';
 	cy.get('.ti-sortable-item-area .ti-sortable-item-toggle').each(function (el) {
@@ -386,6 +391,11 @@ Cypress.Commands.add('toggleElements', (show) => {
 	})
 })
 
+/**
+ * Selector for a control
+ * @param control
+ * @example cy.getControl('neve_sidebar')
+ */
 Cypress.Commands.add('getControl', (control) => {
 	cy.get('label.components-base-control__label[for="' + control + '"]').parent();
 })
@@ -398,6 +408,10 @@ Cypress.Commands.add('activateCheckbox', (checkboxSelector, checkboxText) => {
 	})
 })
 
+/**
+ * Opens sidebar on Neve Options
+ * @example cy.openNeveSidebar()
+ */
 Cypress.Commands.add('openNeveSidebar', () => {
 	cy.get('button.components-button[aria-label="Neve Options"]').then(($btn) => {
 		cy.get($btn).invoke('attr', 'aria-expanded').then((value) => {
@@ -409,18 +423,31 @@ Cypress.Commands.add('openNeveSidebar', () => {
 	})
 })
 
+/**
+ * Activates Classic editor plugin
+ * @example cy.activateClassicEditorPlugin()
+ */
 Cypress.Commands.add('activateClassicEditorPlugin', () => {
 	cy.login('/wp-admin/plugins.php');
 	cy.get('#activate-classic-editor').contains('Activate').click();
 	cy.get('#deactivate-classic-editor').should('exist');
 })
 
+/**
+ * Deactivates Classic editor plugin
+ * @example cy.deactivateClassicEditorPlugin()
+ */
 Cypress.Commands.add('deactivateClassicEditorPlugin', () => {
 	cy.login('/wp-admin/plugins.php');
 	cy.get('#deactivate-classic-editor').contains('Deactivate').click();
 	cy.get('#activate-classic-editor').should('exist');
 })
 
+/**
+ * Matches content width
+ * @param defaultWidth
+ * @example cy.matchContentWidth(2250)
+ */
 Cypress.Commands.add('matchContentWidth', (defaultWidth) => {
 	cy.get('.single-page-container .alignfull [class*="__inner-container"] > *, .single-page-container .alignwide [class*="__inner-container"] > *').invoke("width").should('be.eq', defaultWidth - 30); //we substract the padding.
 	cy.get('.single-page-container .nv-content-wrap').invoke("width").should('be.eq', defaultWidth - 30); //we substract the padding.
