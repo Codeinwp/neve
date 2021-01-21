@@ -34,22 +34,19 @@ describe('Single post meta sidebar', function () {
 
 		cy.openNeveSidebar();
 
-		let sidebarControl = cy.getControl('neve_meta_sidebar');
-		sidebarControl.find('.components-radio-control__input[value="full-width"]').parent().click();
+		cy.getControl('neve_meta_sidebar').find('.components-radio-control__input[value="full-width"]').parent().click();
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.nv-sidebar-wrap').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
 
-		sidebarControl = cy.getControl('neve_meta_sidebar');
-		sidebarControl.find('.components-radio-control__input[value="left"]').parent().click();
+		cy.getControl('neve_meta_sidebar').find('.components-radio-control__input[value="left"]').parent().click();
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-left');
 		cy.get('#wp-admin-bar-edit a').click();
 
-		sidebarControl = cy.getControl('neve_meta_sidebar');
-		sidebarControl.find('.components-radio-control__input[value="right"]').parent().click();
+		cy.getControl('neve_meta_sidebar').find('.components-radio-control__input[value="right"]').parent().click();
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-right');
@@ -62,15 +59,13 @@ describe('Single post meta sidebar', function () {
 
 		cy.openNeveSidebar();
 
-		let sidebarControl = cy.getControl('neve_meta_container');
-		sidebarControl.find('.components-button').contains('Contained').click();
+		cy.getControl('neve_meta_container').find('.components-button').contains('Contained').click();
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.single-post-container').should('have.class', 'container').and('be.visible');
 		cy.get('#wp-admin-bar-edit a').click();
 
-		sidebarControl = cy.getControl('neve_meta_container');
-		sidebarControl.find('.components-button').contains('Full Width').click();
+		cy.getControl('neve_meta_container').find('.components-button').contains('Full Width').click();
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.single-post-container').should('not.have.class', 'container').and('be.visible');
@@ -186,7 +181,6 @@ describe('Single post meta sidebar', function () {
 		cy.get('.hfg_header').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
 
-		const footerToggle = cy.get('.components-toggle-control__label').contains('Disable Footer');
 		cy.activateCheckbox('.components-toggle-control__label', 'Disable Footer');
 		cy.updatePost();
 		cy.visit(postSetup.url);
