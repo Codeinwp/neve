@@ -98,8 +98,7 @@
 		"release": "npx semantic-release",
 		"dist": "bash ./bin/dist.sh"
 	},
-	"size-limit": [
-		{
+	"size-limit": [{
 			"gzip": false,
 			"running": false,
 			"limit": "6 KB",
@@ -141,6 +140,7 @@
 		"array-move": "^3.0.1",
 		"classnames": "^2.2.6",
 		"fuse.js": "^6.4.1",
+		"prettier": "^2.2.1",
 		"prop-types": "^15.7.2",
 		"react-sortable-hoc": "^1.11.0",
 		"react-visibility-sensor": "^5.1.1",
