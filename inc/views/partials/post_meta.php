@@ -144,11 +144,13 @@ class Post_Meta extends Base_View {
 	/**
 	 * Get the author meta.
 	 *
-	 * @return string
+	 * @return string | false
 	 */
 	public static function neve_get_author_meta() {
 		global $post;
-
+		if ( ! isset( $post ) ) {
+			return false;
+		}
 		$author_id      = $post->post_author;
 		$user_nicename  = get_the_author_meta( 'user_nicename', $author_id );
 		$display_name   = get_the_author_meta( 'display_name', $author_id );
