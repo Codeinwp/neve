@@ -21,10 +21,10 @@ const Template = (args) => {
 				onChange={setActive}
 				{...args}
 			/>
-			<br />
-			<hr />
-			<strong>Value:</strong>
-			<pre>{activeColor}</pre>
+			<div className="value-previewer">
+				<strong>Value:</strong>
+				<pre>{activeColor}</pre>
+			</div>
 		</>
 	);
 };

@@ -84,21 +84,6 @@ const ResponsiveRangeComponent = ({ control }) => {
 		});
 	};
 
-	const controlHeader = () => {
-		return (
-			<div className="neve-control-header">
-				{label && (
-					<span className="customize-control-title">{label}</span>
-				)}
-				<ResponsiveControl
-					onChange={(device) => setCurrentDevice(device)}
-					hideResponsive={hideResponsive || false}
-				/>
-				<div className="neve-units">{unitButtons()}</div>
-			</div>
-		);
-	};
-
 	const updateValues = (newValue) => {
 		const nextValue = { ...value };
 		nextValue[currentDevice] = newValue;
@@ -111,7 +96,16 @@ const ResponsiveRangeComponent = ({ control }) => {
 
 	return (
 		<div className="neve-white-background-control neve-range-control">
-			{controlHeader()}
+			<div className="neve-control-header">
+				{label && (
+					<span className="customize-control-title">{label}</span>
+				)}
+				<ResponsiveControl
+					onChange={(device) => setCurrentDevice(device)}
+					hideResponsive={hideResponsive || false}
+				/>
+				<div className="neve-units">{unitButtons()}</div>
+			</div>
 			<div className="range-wrap">
 				<RangeControl
 					resetFallbackValue={defaultVal[currentDevice]}

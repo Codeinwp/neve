@@ -22,10 +22,10 @@ const Template = (args) => {
 				onSelect={setThePreset}
 				presets={PRESETS}
 			/>
-			<br />
-			<hr />
-			<strong>Last Clicked:</strong>
-			<pre>{JSON.stringify(thePreset, null, ' ')}</pre>
+			<div className="value-previewer">
+				<strong>Last Clicked:</strong>
+				<pre>{JSON.stringify(thePreset, null, ' ')}</pre>
+			</div>
 		</>
 	);
 };

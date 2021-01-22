@@ -14,10 +14,6 @@ export default {
 		min: 0,
 		max: 100,
 	},
-	argTypes: {
-		onChange: { table: { disable: true } },
-		value: { table: { disable: true } },
-	},
 	decorators: [WhiteBackgroundDecorator, CustomizerDecorator],
 };
 
@@ -31,10 +27,10 @@ const Template = (args) => {
 				defaultVal={args.defaultVal}
 				value={value}
 			/>
-			<br />
-			<hr />
-			<strong>Value:</strong>
-			<pre>{value}</pre>
+			<div className="value-previewer">
+				<strong>Value:</strong>
+				<pre>{value}</pre>
+			</div>
 		</>
 	);
 };

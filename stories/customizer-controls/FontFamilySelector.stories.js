@@ -13,11 +13,6 @@ export default {
 		systemFonts: false,
 		inheritDefault: false,
 	},
-	argTypes: {
-		onFontChoice: { table: { disable: true } },
-		maybeGetTypekit: { table: { disable: true } },
-		selected: { table: { disable: true } },
-	},
 	decorators: [WhiteBackgroundDecorator, CustomizerDecorator],
 };
 
@@ -39,9 +34,10 @@ const Template = (args) => {
 					return font;
 				}}
 			/>
-			<hr />
-			<strong>Value:</strong>
-			<pre>{value}</pre>
+			<div className="value-previewer">
+				<strong>Value:</strong>
+				<pre>{value}</pre>
+			</div>
 		</>
 	);
 };

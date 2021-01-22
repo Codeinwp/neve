@@ -146,7 +146,7 @@ Ordering.propTypes = {
 	onUpdate: PropTypes.func.isRequired,
 	components: PropTypes.object.isRequired,
 	label: PropTypes.string.isRequired,
-	value: PropTypes.object.isRequired,
+	value: PropTypes.array.isRequired,
 	allowsToggle: PropTypes.bool,
 };
 

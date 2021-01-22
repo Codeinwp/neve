@@ -88,4 +88,31 @@ pre {
   background-color: #333;
   color: #fff;
   padding: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow: auto;
+}
+
+.value-previewer {
+  width: auto;
+  min-width: 350px;
+  background: #fff;
+  max-height: 90vh;
+  overflow: auto;
+  border: 1px solid #eee;
+  box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
+  padding: 15px 20px;
+  position: fixed;
+  left: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  top: 50%;
+  transform: translateY(-50%);
+
+  hr {
+	border-top: 1px solid #ccc;
+	width: 100%;
+	margin: 0 0 20px;
+  }
 }

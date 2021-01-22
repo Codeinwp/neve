@@ -22,10 +22,10 @@ const Template = (args) => {
 				onClick={setVal}
 				value={val}
 			/>
-			<br />
-			<hr />
-			<strong>Value:</strong>
-			<pre>{val}</pre>
+			<div className="value-previewer">
+				<strong>Value:</strong>
+				<pre>{val}</pre>
+			</div>
 		</>
 	);
 };

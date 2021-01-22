@@ -118,6 +118,7 @@ const Background = ({ onChange, value, label }) => {
 						) : (
 							<>
 								<Button
+									disabled={!wp.media}
 									className="remove-image"
 									isDestructive
 									isLink

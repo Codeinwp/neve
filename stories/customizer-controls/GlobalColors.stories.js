@@ -10,9 +10,6 @@ export default {
 		currentValue: GLOBAL_COLORS_DEFAULT,
 		label: 'Control Label',
 	},
-	argTypes: {
-		currentValue: { table: { disable: true } },
-	},
 	decorators: [CustomizerDecorator],
 };
 
@@ -29,18 +26,22 @@ const Template = (args) => {
 				defaultValues={{ ...GLOBAL_COLORS_DEFAULT }}
 				label={args.label}
 			/>
-			<br />
-			<hr />
-			<strong>Current Palette:</strong>
-			<pre>{value.activePalette}</pre>
-			<strong>Current Palette Values:</strong>
-			<pre>
-				{JSON.stringify(
-					value.palettes[value.activePalette].colors,
-					null,
-					' '
-				)}
-			</pre>
+			<div className="value-previewer">
+				<strong>Current Palette:</strong>
+				<pre>{value.activePalette}</pre>
+				<hr />
+				<strong>All Palettes:</strong>
+				<pre>{JSON.stringify(Object.keys(value.palettes))}</pre>
+				<hr />
+				<strong>Current Palette Values:</strong>
+				<pre>
+					{JSON.stringify(
+						value.palettes[value.activePalette].colors,
+						null,
+						' '
+					)}
+				</pre>
+			</div>
 		</>
 	);
 };

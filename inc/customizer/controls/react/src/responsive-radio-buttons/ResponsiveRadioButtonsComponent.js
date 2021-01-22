@@ -52,7 +52,7 @@ const ResponsiveRadioButtonsComponent = ({ control }) => {
 				{label && (
 					<span className="customize-control-title">{label}</span>
 				)}
-				<ResponsiveControl onChange={(device) => setDevice(device)} />
+				<ResponsiveControl onChange={setDevice} />
 			</div>
 			<RadioIcons
 				value={value[device]}

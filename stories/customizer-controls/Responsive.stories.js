@@ -12,9 +12,6 @@ export default {
 		excluded: [],
 		defaultValue: 'desktop',
 	},
-	argTypes: {
-		onChange: { table: { disable: true } },
-	},
 	decorators: [WhiteBackgroundDecorator, CustomizerDecorator],
 };
 
@@ -22,15 +19,20 @@ const Template = (args) => {
 	const [currentDevice, setCurrentDevice] = useState(args.defaultValue);
 
 	return (
-		<ResponsiveControl {...args} onChange={setCurrentDevice}>
-			<>
-				<hr />
+		<>
+			<ResponsiveControl {...args} onChange={setCurrentDevice}>
+				<>
+					<br />
+					CHILDREN COMPONENTS
+				</>
+			</ResponsiveControl>
+			<div className="value-previewer">
 				<strong>Value:</strong>
 				<pre>
 					<span className="value">{currentDevice}</span>
 				</pre>
-			</>
-		</ResponsiveControl>
+			</div>
+		</>
 	);
 };
 

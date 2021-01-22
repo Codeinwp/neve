@@ -61,12 +61,12 @@ const Template = (args) => {
 				activeUnit={currentValue[`${device}Unit`]}
 			/>
 
-			<hr />
-			<br />
-			<strong>Device:</strong>
-			<pre>{device}</pre>
-			<strong>Value:</strong>
-			<pre>{JSON.stringify(currentValue, null, ' ')}</pre>
+			<div className="value-previewer">
+				<strong>Device:</strong>
+				<pre>{device}</pre>
+				<strong>Value:</strong>
+				<pre>{JSON.stringify(currentValue, null, ' ')}</pre>
+			</div>
 		</>
 	);
 };

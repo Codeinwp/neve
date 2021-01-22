@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-21T20:53:31+00:00\n"
+"POT-Creation-Date: 2021-01-22T12:53:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -451,7 +451,7 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:124
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:56
-#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:84
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:147
 msgid "Left"
 msgstr ""
 
@@ -465,7 +465,7 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:122
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:54
-#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:74
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:137
 msgid "Right"
 msgstr ""
 
@@ -496,7 +496,7 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:121
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:53
-#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:69
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:132
 msgid "Top"
 msgstr ""
 
@@ -509,7 +509,7 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:123
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:55
-#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:79
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:142
 msgid "Bottom"
 msgstr ""
 
@@ -2237,12 +2237,12 @@ msgid "Use Featured Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/Background.js:132
+#: inc/customizer/controls/react/src/background/Background.js:133
 msgid "Remove Fallback Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/Background.js:133
+#: inc/customizer/controls/react/src/background/Background.js:134
 msgid "Remove Image"
 msgstr ""
 
@@ -2262,17 +2262,17 @@ msgid "Add Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/Background.js:151
+#: inc/customizer/controls/react/src/background/Background.js:152
 msgid "Fixed Background"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/Background.js:164
+#: inc/customizer/controls/react/src/background/Background.js:165
 msgid "Overlay Color"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/Background.js:173
+#: inc/customizer/controls/react/src/background/Background.js:174
 msgid "Overlay Opacity"
 msgstr ""
 

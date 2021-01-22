@@ -56,8 +56,7 @@ const PresetsSelectorComponent = ({ control }) => {
 };
 
 PresetsSelectorComponent.propTypes = {
-	onSelect: PropTypes.func.isRequired,
-	presets: PropTypes.object.isRequired,
+	control: PropTypes.object.isRequired,
 };
 
 export default PresetsSelectorComponent;

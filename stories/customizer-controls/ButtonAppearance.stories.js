@@ -32,10 +32,10 @@ const Template = (args) => {
 	return (
 		<>
 			<ButtonAppearance value={value} {...args} onChange={updateValue} />
-			<br />
-			<hr />
-			<strong>Value:</strong>
-			<pre>{JSON.stringify(value, null, ' ')}</pre>
+			<div className="value-previewer">
+				<strong>Value:</strong>
+				<pre>{JSON.stringify(value, null, ' ')}</pre>
+			</div>
 		</>
 	);
 };

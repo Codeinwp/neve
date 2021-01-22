@@ -23,10 +23,10 @@ const ToggleWithState = ({ ...args }) => {
 				checked={checked}
 				{...args}
 			/>
-			<br />
-			<hr />
-			<strong>Checked:</strong>
-			<pre>{JSON.stringify(checked)}</pre>
+			<div className="value-previewer">
+				<strong>Checked:</strong>
+				<pre>{JSON.stringify(checked)}</pre>
+			</div>
 		</>
 	);
 };

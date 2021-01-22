@@ -25,11 +25,6 @@ export default {
 		},
 		showLabels: false,
 	},
-	argTypes: {
-		onChange: { table: { disable: true } },
-		value: { table: { disable: true } },
-		options: { control: 'object' },
-	},
 	decorators: [WhiteBackgroundDecorator, CustomizerDecorator],
 };
 
@@ -39,10 +34,10 @@ const Template = (args) => {
 	return (
 		<>
 			<RadioIcons value={value} {...args} onChange={setValue} />
-			<hr />
-			<br />
-			<strong>Value:</strong>
-			<pre>{value}</pre>
+			<div className="value-previewer">
+				<strong>Value:</strong>
+				<pre>{value}</pre>
+			</div>
 		</>
 	);
 };
@@ -81,8 +76,8 @@ LargeIcons.args = {
 	largeButtons: true,
 };
 
-export const Markup = Template.bind({});
-Markup.args = {
+export const EditorIcons = Template.bind({});
+EditorIcons.args = {
 	options: {
 		Down: { icon: chevronDown, tooltip: 'Down' },
 		Up: { icon: chevronUp, tooltip: 'Up' },
@@ -91,14 +86,8 @@ Markup.args = {
 	},
 };
 
-Markup.argTypes = {
-	options: { table: { disable: true } },
-};
-
-export const WithLabels = Markup.bind({});
+export const WithLabels = EditorIcons.bind({});
 WithLabels.args = {
-	...Markup.args,
+	...EditorIcons.args,
 	showLabels: true,
 };
-
-WithLabels.argTypes = Markup.argTypes;

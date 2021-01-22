@@ -12,11 +12,6 @@ export default {
 		label: 'Control Label',
 		defaultValue: '',
 	},
-	argTypes: {
-		defaultValue: { control: 'color' },
-		onChange: { table: { disable: true } },
-		selectedColor: { table: { disable: true } },
-	},
 	decorators: [WhiteBackgroundDecorator, CustomizerDecorator],
 };
 
@@ -26,10 +21,10 @@ const Template = (args) => {
 	return (
 		<>
 			<ColorControl {...args} selectedColor={color} onChange={setColor} />
-			<br />
-			<hr />
-			<strong>Value:</strong>
-			<pre>{color}</pre>
+			<div className="value-previewer">
+				<strong>Value:</strong>
+				<pre>{color}</pre>
+			</div>
 		</>
 	);
 };

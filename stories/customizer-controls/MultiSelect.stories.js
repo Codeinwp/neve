@@ -15,11 +15,6 @@ export default {
 		choices: MULTISELECT_CHOICES,
 		default: MULTISELECT_DEFAULT,
 	},
-	argTypes: {
-		choices: { table: { disable: true } },
-		onChange: { table: { disable: true } },
-		currentValue: { table: { disable: true } },
-	},
 	decorators: [CustomizerDecorator],
 };
 
@@ -34,10 +29,10 @@ const MultiSelectWithState = ({ ...args }) => {
 				choices={args.choices}
 				onChange={setItems}
 			/>
-			<br />
-			<hr />
-			<strong>Value:</strong>
-			<pre>{JSON.stringify(items, null, ' ')}</pre>
+			<div className="value-previewer">
+				<strong>Value:</strong>
+				<pre>{JSON.stringify(items, null, ' ')}</pre>
+			</div>
 		</>
 	);
 };

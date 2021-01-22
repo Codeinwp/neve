@@ -19,11 +19,6 @@ export default {
 		components: ORDERING_COMPONENTS,
 		allowsToggle: true,
 	},
-	argTypes: {
-		onUpdate: { table: { disable: true } },
-		value: { table: { disable: true } },
-		customizeValue: { table: { disable: true } },
-	},
 	decorators: [WhiteBackgroundDecorator, CustomizerDecorator],
 };
 
@@ -32,10 +27,10 @@ const Template = (args) => {
 	return (
 		<>
 			<Ordering {...args} value={value} onUpdate={setValue} />
-			<br />
-			<hr />
-			<strong>Value:</strong>
-			<pre>{JSON.stringify(value, null, ' ')}</pre>
+			<div className="value-previewer">
+				<strong>Value:</strong>
+				<pre>{JSON.stringify(value, null, ' ')}</pre>
+			</div>
 		</>
 	);
 };
