@@ -15,3 +15,4 @@ registerPlugin( 'meta-sidebar', {
 	icon: <Icon icon={ icon } />,
 	render: Sidebar
 } );
+
