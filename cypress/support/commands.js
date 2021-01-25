@@ -459,3 +459,87 @@ Cypress.Commands.add('dropElAfter', (selector, moveFrom, moveTo) => {
 		cy.document().trigger('mouseup');
 	});
 });
+
+/**
+ * Click on align center button into customizer
+ * @example cy.alignCenter()
+ */
+Cypress.Commands.add('alignCenter', () => {
+	cy.get(
+		'#customize-control-logo_component_align button[aria-label="Center"]',
+	).click();
+
+	cy.get('#save').should('be.visible').click();
+});
+
+/**
+ * Check if it is aligned to the center into customizer
+ * @example cy.CheckAlignCenter()
+ */
+Cypress.Commands.add('checkAlignCenter', () => {
+	cy.visit('/');
+
+	cy.get('.desktop-center')
+		.should('be.visible')
+		.and('have.class', 'mobile-left')
+		.and('have.class', 'tablet-left')
+		.find('.site-logo')
+		.should('be.visible');
+});
+
+/**
+ * Click on align right button into customizer
+ * @example cy.alignRight()
+ */
+Cypress.Commands.add('alignRight', () => {
+	cy.get(
+		'#customize-control-logo_component_align button[aria-label="Right"]',
+	).click();
+
+	cy.get('#save').should('be.visible').click();
+});
+
+/**
+ * Check if it is aligned to the right into customizer
+ * @example cy.checkAlignRight()
+ */
+Cypress.Commands.add('checkAlignRight', () => {
+	cy.visit('/');
+
+	cy.get('.desktop-right')
+		.should('be.visible')
+		.and('have.class', 'mobile-left')
+		.and('have.class', 'tablet-left')
+		.find('.site-logo')
+		.should('be.visible');
+});
+
+/**
+ * Check the margin set by customizer on front-end
+ * @example cy.checkMarginFrontEnd()
+ */
+Cypress.Commands.add('checkMarginFrontEnd', () => {
+	cy.visit('/');
+
+	cy.get('.builder-item--primary-menu').should('be.visible');
+	cy.get('.builder-item--primary-menu').should('have.css', 'margin-top', '3px');
+	cy.get('.builder-item--primary-menu').should(
+		'have.css',
+		'margin-bottom',
+		'-1px',
+	);
+});
+
+/**
+ * Check the padding set by customizer on front-end
+ * @example cy.checkPaddingFrontEnd()
+ */
+Cypress.Commands.add('checkPaddingFrontEnd', () => {
+	cy.visit('/');
+
+	cy.get('.site-logo').should('be.visible');
+	cy.get('.site-logo').should('have.css', 'padding-top').and('contain', '11px');
+	cy.get('.site-logo')
+		.should('have.css', 'padding-bottom')
+		.and('contain', '9px');
+});
