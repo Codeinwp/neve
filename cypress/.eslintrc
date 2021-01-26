@@ -11,7 +11,7 @@
 		"jest/valid-expect-in-promise": "off",
 		"jest/valid-expect": "off",
 		"jest/no-standalone-expect": "off",
-		// temporaly disable no unnecessary wait rule
+		// temporary disable no unnecessary wait rule
 		"cypress/no-unnecessary-waiting": "off"
 	}
 }

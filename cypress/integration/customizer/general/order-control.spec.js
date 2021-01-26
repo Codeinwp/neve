@@ -6,9 +6,11 @@ describe('Ordering Control', () => {
 		cy.window().then((win) => {
 			win.wp.customize.control('neve_post_content_ordering').focus();
 			value = JSON.parse(
-				win.wp.customize.control('neve_post_content_ordering').setting(),
+				win.wp.customize.control('neve_post_content_ordering').setting()
 			);
-			cy.get('#customize-control-neve_blog_ordering_content_heading').click();
+			cy.get(
+				'#customize-control-neve_blog_ordering_content_heading'
+			).click();
 		});
 
 		cy.get('#customize-control-neve_post_content_ordering').as('control');
@@ -45,11 +47,11 @@ describe('Ordering Control', () => {
 		cy.dropElAfter(
 			'#customize-control-neve_post_content_ordering .items-list .neve-sortable-item .handle',
 			0,
-			1,
+			1
 		);
 		cy.window().then((win) => {
-			let newValue = JSON.parse(
-				win.wp.customize.control('neve_post_content_ordering').setting(),
+			const newValue = JSON.parse(
+				win.wp.customize.control('neve_post_content_ordering').setting()
 			);
 			const tmp = value[0];
 			value[0] = value[1];
@@ -64,8 +66,8 @@ describe('Ordering Control', () => {
 		cy.get('@control').find('.toggle').first().click();
 		cy.get('@control').find('.neve-sortable-item.disabled').should('exist');
 		cy.window().then((win) => {
-			let newValue = JSON.parse(
-				win.wp.customize.control('neve_post_content_ordering').setting(),
+			const newValue = JSON.parse(
+				win.wp.customize.control('neve_post_content_ordering').setting()
 			);
 			value.shift();
 			expect(value).to.deep.eq(newValue);

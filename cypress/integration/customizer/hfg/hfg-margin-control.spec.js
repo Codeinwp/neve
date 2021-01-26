@@ -8,7 +8,7 @@ describe('Header Builder Margin Control', () => {
 
 		// Check if Primary Menu component is visible and click it.
 		cy.get(
-			'.hfg--builder-show .hfg--panel-desktop .hfg--row-main .grid-stack-item[title="Primary Menu"]',
+			'.hfg--builder-show .hfg--panel-desktop .hfg--row-main .grid-stack-item[title="Primary Menu"]'
 		)
 			.should('be.visible')
 			.click();
@@ -25,40 +25,40 @@ describe('Header Builder Margin Control', () => {
 
 		// Check if linked values
 		cy.get(
-			'#customize-control-primary-menu_component_margin .top-input',
+			'#customize-control-primary-menu_component_margin .top-input'
 		).should('have.value', '2');
 		cy.get(
-			'#customize-control-primary-menu_component_margin .bottom-input',
+			'#customize-control-primary-menu_component_margin .bottom-input'
 		).should('have.value', '2');
 		cy.get(
-			'#customize-control-primary-menu_component_margin .left-input',
+			'#customize-control-primary-menu_component_margin .left-input'
 		).should('have.value', '2');
 		cy.get(
-			'#customize-control-primary-menu_component_margin .right-input',
+			'#customize-control-primary-menu_component_margin .right-input'
 		).should('have.value', '2');
 
 		// Click on Reset button
 		cy.get(
-			'#customize-control-primary-menu_component_margin button.reset',
+			'#customize-control-primary-menu_component_margin button.reset'
 		).click();
 
 		// Check if Reset button works
 		cy.get(
-			'#customize-control-primary-menu_component_margin .top-input',
+			'#customize-control-primary-menu_component_margin .top-input'
 		).should('have.value', '0');
 		cy.get(
-			'#customize-control-primary-menu_component_margin .bottom-input',
+			'#customize-control-primary-menu_component_margin .bottom-input'
 		).should('have.value', '0');
 		cy.get(
-			'#customize-control-primary-menu_component_margin .left-input',
+			'#customize-control-primary-menu_component_margin .left-input'
 		).should('have.value', '0');
 		cy.get(
-			'#customize-control-primary-menu_component_margin .right-input',
+			'#customize-control-primary-menu_component_margin .right-input'
 		).should('have.value', '0');
 
 		// Unlink values
 		cy.get(
-			'#customize-control-primary-menu_component_margin button.link',
+			'#customize-control-primary-menu_component_margin button.link'
 		).click();
 
 		// Increase Top Margin value

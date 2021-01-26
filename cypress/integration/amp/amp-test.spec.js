@@ -9,8 +9,8 @@ describe('AMP Check', function () {
 			'.hfg--builder-show .hfg--panel-desktop .hfg--row-top .row--grid > div:last-child'
 		).trigger('mouseover');
 		cy.get(
-				'.hfg--builder-show .hfg--panel-desktop .hfg--row-top .row--grid > div:last-child .add-button--grid'
-			)
+			'.hfg--builder-show .hfg--panel-desktop .hfg--row-top .row--grid > div:last-child .add-button--grid'
+		)
 			.should('be.visible')
 			.click();
 
@@ -33,8 +33,8 @@ describe('AMP Check', function () {
 	it('Checks the search box from the menu', function () {
 		cy.visit('/?amp');
 		cy.get(
-				'.header--row.header-top[data-show-on=desktop] .builder-item--header_search_responsive .nv-search-icon-component .menu-item-nav-search'
-			)
+			'.header--row.header-top[data-show-on=desktop] .builder-item--header_search_responsive .nv-search-icon-component .menu-item-nav-search'
+		)
 			.as('navSearchButton')
 			.should('be.visible')
 			.click();

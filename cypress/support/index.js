@@ -1,3 +1,3 @@
 Cypress.Cookies.defaults({
-	preserve: /wordpress_.*/
-})
+	preserve: /wordpress_.*/,
+});

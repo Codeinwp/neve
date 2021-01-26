@@ -13,9 +13,9 @@ describe('Search Icon Component', () => {
 	});
 	it('Canvas Search Works on Front End', () => {
 		cy.visit('/');
-		cy.get('.builder-item--header_search_responsive .menu-item-nav-search').as(
-			'searchIcon',
-		);
+		cy.get(
+			'.builder-item--header_search_responsive .menu-item-nav-search'
+		).as('searchIcon');
 		cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible');
 		cy.get('@searchIcon').should('have.class', 'canvas');
 		cy.get('@searchIcon').find('> .nv-search').click();
@@ -33,9 +33,9 @@ describe('Search Icon Component', () => {
 
 	it('Minimal Search Works on Front End', () => {
 		cy.visit('/');
-		cy.get('.builder-item--header_search_responsive .menu-item-nav-search').as(
-			'searchIcon',
-		);
+		cy.get(
+			'.builder-item--header_search_responsive .menu-item-nav-search'
+		).as('searchIcon');
 		cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible');
 		cy.get('@searchIcon').should('have.class', 'minimal');
 		cy.get('@searchIcon').find('> .nv-search').click();
@@ -54,9 +54,9 @@ describe('Search Icon Component', () => {
 
 	it('Floating Search Works on Front End', () => {
 		cy.visit('/');
-		cy.get('.builder-item--header_search_responsive .menu-item-nav-search').as(
-			'searchIcon',
-		);
+		cy.get(
+			'.builder-item--header_search_responsive .menu-item-nav-search'
+		).as('searchIcon');
 		cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible');
 		cy.get('@searchIcon').should('have.class', 'floating');
 		cy.get('@searchIcon').find('> .nv-search').click();

@@ -9,7 +9,7 @@ describe('Header Builder Alignment Control', () => {
 
 		// Check if Logo and Site title component is visible and click it.
 		cy.get(
-			'.hfg--builder-show .hfg--panel-desktop .hfg--row-main .grid-stack-item[title="Logo & Site Identity"]',
+			'.hfg--builder-show .hfg--panel-desktop .hfg--row-main .grid-stack-item[title="Logo & Site Identity"]'
 		)
 			.should('be.visible')
 			.click();
@@ -23,7 +23,7 @@ describe('Header Builder Alignment Control', () => {
 	it('Sets up alignment for the Primary Menu to Center', () => {
 		cy.alignCenter();
 		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
+			expect(req.response.body.success).toBe(true);
 			expect(req.status).to.equal(200);
 			cy.checkAlignCenter();
 		});
@@ -32,9 +32,9 @@ describe('Header Builder Alignment Control', () => {
 	it('Sets up alignment for the Primary Menu to Right', () => {
 		cy.alignRight();
 		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
+			expect(req.response.body.success).toBe(true);
 			expect(req.status).to.equal(200);
-			checkAlignRight();
+			cy.checkAlignRight();
 		});
 	});
 });

@@ -7,25 +7,29 @@ describe('Header Row Background Control', () => {
 
 		// Hover main HFG row in builder.
 		cy.get(
-			'.hfg--cb-body > .hfg--panel-desktop > .hfg--cp-rows > .hfg--row-main',
+			'.hfg--cb-body > .hfg--panel-desktop > .hfg--cp-rows > .hfg--row-main'
 		)
 			.should('be.visible')
 			.trigger('mouseover');
 
 		// Check if settings button is visible and click it.
 		cy.get(
-			'.hfg--cb-body > .hfg--panel-desktop > .hfg--cp-rows > .hfg--row-main > .hfg--cb-row-settings',
+			'.hfg--cb-body > .hfg--panel-desktop > .hfg--cp-rows > .hfg--row-main > .hfg--cb-row-settings'
 		)
 			.should('be.visible')
 			.click();
 
 		// Switch to style tab.
-		cy.get('#customize-control-hfg_header_layout_main_tabs [data-tab="style"]')
+		cy.get(
+			'#customize-control-hfg_header_layout_main_tabs [data-tab="style"]'
+		)
 			.should('be.visible')
 			.click();
 
 		// Alias control.
-		cy.get('#customize-control-hfg_header_layout_main_background').as('bgCtrl');
+		cy.get('#customize-control-hfg_header_layout_main_background').as(
+			'bgCtrl'
+		);
 
 		cy.get('@bgCtrl').should('be.visible');
 		cy.get('@bgCtrl').children().should('have.length', 3);
@@ -42,8 +46,13 @@ describe('Header Row Background Control', () => {
 			.contains('Media Library')
 			.click();
 
-		cy.get('.attachments-browser .attachments > li.attachment').first().click();
-		cy.get('.media-toolbar-primary').find('button').contains('Select').click();
+		cy.get('.attachments-browser .attachments > li.attachment')
+			.first()
+			.click();
+		cy.get('.media-toolbar-primary')
+			.find('button')
+			.contains('Select')
+			.click();
 		cy.get('@bgCtrl').find('.components-form-toggle__input').click({
 			multiple: true,
 		});
@@ -57,7 +66,9 @@ describe('Header Row Background Control', () => {
 
 	it('Background image control on front end.', function () {
 		cy.visit('/');
-		cy.get('.header-main[data-show-on="desktop"] .header--row-inner').as('row');
+		cy.get('.header-main[data-show-on="desktop"] .header--row-inner').as(
+			'row'
+		);
 
 		cy.get('@row').should('be.visible');
 		cy.get('@row')

@@ -44,12 +44,16 @@ Cypress.Commands.add('clearWelcome', () => {
 	cy.window().then((win) => {
 		win.wp &&
 			win.wp.data &&
-			win.wp.data.select('core/edit-post').isFeatureActive('welcomeGuide') &&
-			win.wp.data.dispatch('core/edit-post').toggleFeature('welcomeGuide');
+			win.wp.data
+				.select('core/edit-post')
+				.isFeatureActive('welcomeGuide') &&
+			win.wp.data
+				.dispatch('core/edit-post')
+				.toggleFeature('welcomeGuide');
 	});
 });
 Cypress.Commands.add('insertCoverBlock', () => {
-	let text =
+	const text =
 		'<!-- wp:cover {"overlayColor":"neve-button-color","align":"full"} -->\n' +
 		'<div class="wp-block-cover alignfull has-neve-button-color-background-color has-background-dim"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->\n' +
 		'<p class="has-text-align-center has-large-font-size">test</p>\n' +
@@ -95,7 +99,7 @@ Cypress.Commands.add(
 		content = 'Content',
 		type = 'post',
 		featured = false,
-		tags = false,
+		tags = false
 	) => {
 		let loginRoute = '/wp-admin/post-new.php';
 		if (type !== 'post') {
@@ -138,7 +142,7 @@ Cypress.Commands.add(
 		cy.get('.block-editor-rich-text__editable').type(content);
 		cy.get('.editor-post-publish-panel__toggle').click();
 		cy.updatePost();
-	},
+	}
 );
 Cypress.Commands.add('updatePost', () => {
 	cy.get('.editor-post-publish-button').click();
@@ -210,9 +214,15 @@ Cypress.Commands.add('setTypographyControl', (controlSelector, values) => {
 					// Make sure value is default.
 					cy.get('@' + control).should('have.value', value);
 					// Change the value.
-					changeNumberInputValue('@' + control, values[control][device]);
+					changeNumberInputValue(
+						'@' + control,
+						values[control][device]
+					);
 					// Value was changed?
-					cy.get('@' + control).should('have.value', values[control][device]);
+					cy.get('@' + control).should(
+						'have.value',
+						values[control][device]
+					);
 					// Reset to old value.
 					cy.get('@' + control)
 						.closest('.neve-responsive-sizing')
@@ -221,7 +231,10 @@ Cypress.Commands.add('setTypographyControl', (controlSelector, values) => {
 					// Make sure value has been reset.
 					cy.get('@' + control).should('have.value', value);
 					// Change the value.
-					changeNumberInputValue('@' + control, values[control][device]);
+					changeNumberInputValue(
+						'@' + control,
+						values[control][device]
+					);
 				});
 		});
 	});
@@ -244,11 +257,11 @@ Cypress.Commands.add(
 		cy.window().then((cyWindow) =>
 			scrollToBottom({
 				remoteWindow: cyWindow,
-			}),
+			})
 		);
 		cy.wait(5000);
 		cy.percySnapshot(screenShotName);
-	},
+	}
 );
 /**
  * Capture and compare the fullpage snapshots.
@@ -265,7 +278,7 @@ Cypress.Commands.add(
 				cy.get(maskSelectors).invoke(
 					'css',
 					'background',
-					'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACWBAMAAACWdajhAAAAG1BMVEUAAAD///+fn59fX18fHx/f398/Pz9/f3+/v78mHjoVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC00lEQVR4nO2WTW/TQBCGN7Hj9Nip68THWmo5x1Ir5ei0CnDstoA4OghEjg0Czlil8LeZmV3HCUlQIa64vI9UrT3exs+OZz+MAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHkeHHJvxP98bOnxCK2j9FRuv2xGH1tbX7Yj/L60sNiagE2Pe2eSzi8ub9fn49am2lzZ5Jn2Dh5ui1goe6O1I+nWTExOe0U0p0bFN7lvRmiaF/vW5/pNyTeuAQzmJNXPHfSui2GtFlmOp9Mt4TDnfDDn6QXp+20tLOdRMScYWSfmCXq1pZWlxKXM1T0ZRxW/t0vcw81rT5DzM2bVDcVQGdGvmfBPa2+JK/fbWYicxC1nJZMNVrYiuJUHuUY8KM0skg05rMZAsXnO/E2MmnG1jjznjpQyiFa1p4r7hnfz8qlafuHZy34r6QsvQaVluQr7uiIk8MPkRu3M72TGZHqlVX3HlxJKFYhn3Whqa+DbkzFTHTmWJavFDeSBj+u2X99IyUrNuoOtaGtLWJ1Yy1CwQ4ccz1eJL2+wYzz/ZlrQmMuDOplbHay2/N61qXbiYdlpuZIHdtqH9m5Zma4tWb6nlO65ma0r08/1Sy6uGltKvrdZWTwupKXmtqVLbnrRCNWhqixcPX/LiO3AdeAVpreTdTOzqtDtyWlzBM3KTk2diV9qIV8nFcGUmHkvMa2WyVM1SN7ZZO1pu3XKL1EDjNm7WKyvtQGbqSJenntcS9YNaayL5rGI/LffT8mVar/JZWr7kS3kNL/i6unM715bOo4o3mj69iSqvVaXllWU31epTXMw5nQf0I+SpULSgVe+J3XqP03Im+RQSWpDR7VJ3uox3vqbkKbaxz/rC/XMoE/FCymFvrZUTRDryH/dL4k4OY3tfnyD0XBA8pCOvJWeGIk+9Ft/JcUI6ngZ77dUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ6KX6rsak4Q9c5cAAAAAElFTkSuQmCC) #000 no-repeat center center',
+					'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACWBAMAAACWdajhAAAAG1BMVEUAAAD///+fn59fX18fHx/f398/Pz9/f3+/v78mHjoVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC00lEQVR4nO2WTW/TQBCGN7Hj9Nip68THWmo5x1Ir5ei0CnDstoA4OghEjg0Czlil8LeZmV3HCUlQIa64vI9UrT3exs+OZz+MAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHkeHHJvxP98bOnxCK2j9FRuv2xGH1tbX7Yj/L60sNiagE2Pe2eSzi8ub9fn49am2lzZ5Jn2Dh5ui1goe6O1I+nWTExOe0U0p0bFN7lvRmiaF/vW5/pNyTeuAQzmJNXPHfSui2GtFlmOp9Mt4TDnfDDn6QXp+20tLOdRMScYWSfmCXq1pZWlxKXM1T0ZRxW/t0vcw81rT5DzM2bVDcVQGdGvmfBPa2+JK/fbWYicxC1nJZMNVrYiuJUHuUY8KM0skg05rMZAsXnO/E2MmnG1jjznjpQyiFa1p4r7hnfz8qlafuHZy34r6QsvQaVluQr7uiIk8MPkRu3M72TGZHqlVX3HlxJKFYhn3Whqa+DbkzFTHTmWJavFDeSBj+u2X99IyUrNuoOtaGtLWJ1Yy1CwQ4ccz1eJL2+wYzz/ZlrQmMuDOplbHay2/N61qXbiYdlpuZIHdtqH9m5Zma4tWb6nlO65ma0r08/1Sy6uGltKvrdZWTwupKXmtqVLbnrRCNWhqixcPX/LiO3AdeAVpreTdTOzqtDtyWlzBM3KTk2diV9qIV8nFcGUmHkvMa2WyVM1SN7ZZO1pu3XKL1EDjNm7WKyvtQGbqSJenntcS9YNaayL5rGI/LffT8mVar/JZWr7kS3kNL/i6unM715bOo4o3mj69iSqvVaXllWU31epTXMw5nQf0I+SpULSgVe+J3XqP03Im+RQSWpDR7VJ3uox3vqbkKbaxz/rC/XMoE/FCymFvrZUTRDryH/dL4k4OY3tfnyD0XBA8pCOvJWeGIk+9Ft/JcUI6ngZ77dUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ6KX6rsak4Q9c5cAAAAAElFTkSuQmCC) #000 no-repeat center center'
 				);
 				cy.get(maskSelectors).invoke('css', 'color', 'transparent');
 				if ($body.find(maskSelectors).find('*').length > 0) {
@@ -285,7 +298,7 @@ Cypress.Commands.add(
 				cy.get(hideElements).invoke('css', 'visibility', 'hidden');
 			}
 		});
-	},
+	}
 );
 
 Cypress.Commands.add('setCustomizeSettings', (to) => {
@@ -306,7 +319,7 @@ Cypress.Commands.add('setCustomizeSettings', (to) => {
 	});
 });
 
-Cypress.Commands.add('goToCustomizer', (to) => {
+Cypress.Commands.add('goToCustomizer', () => {
 	cy.login('/wp-admin/customize.php');
 	cy.window()
 		.then((win) => {
@@ -341,12 +354,15 @@ Cypress.Commands.add('aliasRestRoutes', () => {
 
 /**
  * Toggle elements on or off
+ *
  * @param show
  * @example cy.toggleElements(false)
  */
 Cypress.Commands.add('toggleElements', (show) => {
 	const icon = show ? 'dashicons-hidden' : 'dashicons-visibility';
-	cy.get('.ti-sortable-item-area .ti-sortable-item-toggle').each(function (el) {
+	cy.get('.ti-sortable-item-area .ti-sortable-item-toggle').each(function (
+		el
+	) {
 		cy.get(el)
 			.find('.dashicon')
 			.then(($icon) => {
@@ -359,12 +375,13 @@ Cypress.Commands.add('toggleElements', (show) => {
 
 /**
  * Selector for a control
+ *
  * @param control
  * @example cy.getControl('neve_sidebar')
  */
 Cypress.Commands.add('getControl', (control) => {
 	cy.get(
-		'label.components-base-control__label[for="' + control + '"]',
+		'label.components-base-control__label[for="' + control + '"]'
 	).parent();
 });
 
@@ -381,23 +398,29 @@ Cypress.Commands.add('activateCheckbox', (checkboxSelector, checkboxText) => {
 
 /**
  * Opens sidebar on Neve Options
+ *
  * @example cy.openNeveSidebar()
  */
 Cypress.Commands.add('openNeveSidebar', () => {
-	cy.get('button.components-button[aria-label="Neve Options"]').then(($btn) => {
-		cy.get($btn)
-			.invoke('attr', 'aria-expanded')
-			.then((value) => {
-				if (value === true) {
-					return true;
-				}
-				cy.get('button.components-button[aria-label="Neve Options"]').click();
-			});
-	});
+	cy.get('button.components-button[aria-label="Neve Options"]').then(
+		($btn) => {
+			cy.get($btn)
+				.invoke('attr', 'aria-expanded')
+				.then((value) => {
+					if (value === true) {
+						return true;
+					}
+					cy.get(
+						'button.components-button[aria-label="Neve Options"]'
+					).click();
+				});
+		}
+	);
 });
 
 /**
  * Activates Classic editor plugin
+ *
  * @example cy.activateClassicEditorPlugin()
  */
 Cypress.Commands.add('activateClassicEditorPlugin', () => {
@@ -408,6 +431,7 @@ Cypress.Commands.add('activateClassicEditorPlugin', () => {
 
 /**
  * Deactivates Classic editor plugin
+ *
  * @example cy.deactivateClassicEditorPlugin()
  */
 Cypress.Commands.add('deactivateClassicEditorPlugin', () => {
@@ -418,12 +442,13 @@ Cypress.Commands.add('deactivateClassicEditorPlugin', () => {
 
 /**
  * Matches content width
+ *
  * @param defaultWidth
  * @example cy.matchContentWidth(2250)
  */
 Cypress.Commands.add('matchContentWidth', (defaultWidth) => {
 	cy.get(
-		'.single-page-container .alignfull [class*="__inner-container"] > *, .single-page-container .alignwide [class*="__inner-container"] > *',
+		'.single-page-container .alignfull [class*="__inner-container"] > *, .single-page-container .alignwide [class*="__inner-container"] > *'
 	)
 		.invoke('width')
 		.should('be.eq', defaultWidth - 30); //we substract the padding.
@@ -436,6 +461,7 @@ Cypress.Commands.add('matchContentWidth', (defaultWidth) => {
 
 /**
  * Drag and drop an element after another.
+ *
  * @param selector
  * @param moveFrom
  * @param moveTo
@@ -462,11 +488,12 @@ Cypress.Commands.add('dropElAfter', (selector, moveFrom, moveTo) => {
 
 /**
  * Click on align center button into customizer
+ *
  * @example cy.alignCenter()
  */
 Cypress.Commands.add('alignCenter', () => {
 	cy.get(
-		'#customize-control-logo_component_align button[aria-label="Center"]',
+		'#customize-control-logo_component_align button[aria-label="Center"]'
 	).click();
 
 	cy.get('#save').should('be.visible').click();
@@ -474,6 +501,7 @@ Cypress.Commands.add('alignCenter', () => {
 
 /**
  * Check if it is aligned to the center into customizer
+ *
  * @example cy.CheckAlignCenter()
  */
 Cypress.Commands.add('checkAlignCenter', () => {
@@ -489,11 +517,12 @@ Cypress.Commands.add('checkAlignCenter', () => {
 
 /**
  * Click on align right button into customizer
+ *
  * @example cy.alignRight()
  */
 Cypress.Commands.add('alignRight', () => {
 	cy.get(
-		'#customize-control-logo_component_align button[aria-label="Right"]',
+		'#customize-control-logo_component_align button[aria-label="Right"]'
 	).click();
 
 	cy.get('#save').should('be.visible').click();
@@ -501,6 +530,7 @@ Cypress.Commands.add('alignRight', () => {
 
 /**
  * Check if it is aligned to the right into customizer
+ *
  * @example cy.checkAlignRight()
  */
 Cypress.Commands.add('checkAlignRight', () => {
@@ -516,29 +546,37 @@ Cypress.Commands.add('checkAlignRight', () => {
 
 /**
  * Check the margin set by customizer on front-end
+ *
  * @example cy.checkMarginFrontEnd()
  */
 Cypress.Commands.add('checkMarginFrontEnd', () => {
 	cy.visit('/');
 
 	cy.get('.builder-item--primary-menu').should('be.visible');
-	cy.get('.builder-item--primary-menu').should('have.css', 'margin-top', '3px');
+	cy.get('.builder-item--primary-menu').should(
+		'have.css',
+		'margin-top',
+		'3px'
+	);
 	cy.get('.builder-item--primary-menu').should(
 		'have.css',
 		'margin-bottom',
-		'-1px',
+		'-1px'
 	);
 });
 
 /**
  * Check the padding set by customizer on front-end
+ *
  * @example cy.checkPaddingFrontEnd()
  */
 Cypress.Commands.add('checkPaddingFrontEnd', () => {
 	cy.visit('/');
 
 	cy.get('.site-logo').should('be.visible');
-	cy.get('.site-logo').should('have.css', 'padding-top').and('contain', '11px');
+	cy.get('.site-logo')
+		.should('have.css', 'padding-top')
+		.and('contain', '11px');
 	cy.get('.site-logo')
 		.should('have.css', 'padding-bottom')
 		.and('contain', '9px');
