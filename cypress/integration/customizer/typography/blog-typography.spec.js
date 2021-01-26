@@ -5,7 +5,7 @@ const setup = {
 		suffix: {
 			mobile: 'px',
 			tablet: 'px',
-			desktop: 'px'
+			desktop: 'px',
 		},
 		mobile: '10',
 		tablet: '11',
@@ -15,7 +15,7 @@ const setup = {
 		suffix: {
 			mobile: 'em',
 			tablet: 'em',
-			desktop: 'em'
+			desktop: 'em',
 		},
 		mobile: '4',
 		tablet: '3',
@@ -24,12 +24,42 @@ const setup = {
 	letterSpacing: {
 		mobile: '3',
 		tablet: '2',
-		desktop: '1'
+		desktop: '1',
 	},
 };
 
-describe('Blog Typography', function () {
-	it('Sets up blog typography in customizer', function () {
+const settings = [
+	{
+		pageToVisit: '/',
+		titleSelector: '.blog-entry-title',
+		metaSelector: '.blog .nv-meta-list li',
+		excerptSelector: '.entry-summary',
+	},
+	{
+		pageToVisit: '/template-comments/',
+		titleSelector: '.nv-title-meta-wrap .entry-title',
+		metaSelector: '.single .nv-meta-list li',
+		commentsSelector: '.single .comment-reply-title',
+	},
+];
+
+const deviceMap = {
+	desktop: {
+		height: 1080,
+		width: 1920,
+	},
+	tablet: {
+		height: 1024,
+		width: 768,
+	},
+	mobile: {
+		height: 667,
+		width: 375,
+	},
+};
+
+describe('Blog Typography', () => {
+	before('Sets up blog typography in customizer', () => {
 		cy.goToCustomizer();
 		cy.window().then((win) => {
 			win.wp.customize
@@ -60,134 +90,97 @@ describe('Blog Typography', function () {
 		});
 	});
 
-	it('Test blog typography on frontend', function () {
-		const settings = [{
-				pageToVisit: '/',
-				titleSelector: '.blog-entry-title',
-				metaSelector: '.blog .nv-meta-list li',
-				excerptSelector: '.entry-summary',
-			},
-			{
-				pageToVisit: '/template-comments/',
-				titleSelector: '.nv-title-meta-wrap .entry-title',
-				metaSelector: '.single .nv-meta-list li',
-				commentsSelector: '.single .comment-reply-title',
-			},
-		];
-
-		const deviceMap = {
-			desktop: {
-				height: 1080,
-				width: 1920,
-			},
-			tablet: {
-				height: 1024,
-				width: 768,
-			},
-			mobile: {
-				height: 667,
-				width: 375,
-			},
-		};
-
+	it('Test blog typography for transform and weight on frontend', () => {
 		for (const i in settings) {
 			const currentSettings = settings[i];
 
 			cy.visit(currentSettings.pageToVisit);
-			cy.get(currentSettings.titleSelector).each(function (elem) {
-				testTransformAndWeight(elem);
+			cy.get(currentSettings.titleSelector).each((elem) => {
+				cy.testTransformAndWeight(
+					elem,
+					setup.textTransform,
+					setup.fontWeight
+				);
 			});
-			cy.get(currentSettings.metaSelector).each(function (elem) {
-				testTransformAndWeight(elem);
+			cy.get(currentSettings.metaSelector).each((elem) => {
+				cy.testTransformAndWeight(
+					elem,
+					setup.textTransform,
+					setup.fontWeight
+				);
 			});
 			if (currentSettings && currentSettings.excerptSelector) {
-				cy.get(currentSettings.excerptSelector).each(function (
-					elem
-				) {
-					testTransformAndWeight(elem);
+				cy.get(currentSettings.excerptSelector).each((elem) => {
+					cy.testTransformAndWeight(
+						elem,
+						setup.textTransform,
+						setup.fontWeight
+					);
 				});
 			}
 			if (currentSettings && currentSettings.commentsSelector) {
-				cy.get(currentSettings.commentsSelector).each(function (
-					elem
-				) {
-					testTransformAndWeight(elem);
+				cy.get(currentSettings.commentsSelector).each((elem) => {
+					cy.testTransformAndWeight(
+						elem,
+						setup.textTransform,
+						setup.fontWeight
+					);
 				});
 			}
+		}
+	});
 
+	it('Test blog typography for size, line height, and spacing on frontend', () => {
+		for (const i in settings) {
+			const currentSettings = settings[i];
+
+			cy.visit(currentSettings.pageToVisit);
+
+			// eslint-disable-next-line array-callback-return
 			Object.keys(deviceMap).map((device) => {
 				// Change viewport.
-				cy.viewport(
-					deviceMap[device].width,
-					deviceMap[device].height
-				);
+				cy.viewport(deviceMap[device].width, deviceMap[device].height);
 
-				cy.get(currentSettings.titleSelector).each(function (
-					elem
-				) {
-					testSizeLheightSpacing(elem, device);
+				cy.get(currentSettings.titleSelector).each((elem) => {
+					cy.testSizeLineHeightSpacing(
+						elem,
+						setup.fontSize[device],
+						setup.lineHeight[device],
+						setup.letterSpacing[device]
+					);
 				});
 
-				cy.get(currentSettings.metaSelector).each(function (elem) {
-					testSizeLheightSpacing(elem, device);
+				cy.get(currentSettings.metaSelector).each((elem) => {
+					cy.testSizeLineHeightSpacing(
+						elem,
+						setup.fontSize[device],
+						setup.lineHeight[device],
+						setup.letterSpacing[device]
+					);
 				});
 
 				if (currentSettings && currentSettings.excerptSelector) {
-					cy.get(currentSettings.excerptSelector).each(function (
-						elem
-					) {
-						testSizeLheightSpacing(elem, device);
+					cy.get(currentSettings.excerptSelector).each((elem) => {
+						cy.testSizeLineHeightSpacing(
+							elem,
+							setup.fontSize[device],
+							setup.lineHeight[device],
+							setup.letterSpacing[device]
+						);
 					});
 				}
 
 				if (currentSettings && currentSettings.commentsSelector) {
-					cy.get(currentSettings.commentsSelector).each(function (
-						elem
-					) {
-						testSizeLheightSpacing(elem, device);
+					cy.get(currentSettings.commentsSelector).each((elem) => {
+						cy.testSizeLineHeightSpacing(
+							elem,
+							setup.fontSize[device],
+							setup.lineHeight[device],
+							setup.letterSpacing[device]
+						);
 					});
 				}
 			});
 		}
 	});
 });
-
-/**
- * Test text transform and font weight
- *
- * @param elem
- */
-function testTransformAndWeight(elem) {
-	// Test text transform.
-	cy.get(elem)
-		.should('have.css', 'text-transform')
-		.and('match', new RegExp(setup.textTransform.toLowerCase(), 'g'));
-
-	// Test font weight
-	cy.get(elem)
-		.should('have.css', 'font-weight')
-		.and('match', new RegExp(setup.fontWeight, 'g'));
-}
-
-/**
- * Test font size, line height and letter spacing
- *
- * @param elem
- * @param device
- */
-function testSizeLheightSpacing(elem, device) {
-	// Test font size.
-	cy.get(elem)
-		.should('have.css', 'font-size')
-		.and('match', new RegExp(setup.fontSize[device] + 'px', 'g'));
-
-	// Test line height.
-	cy.get(elem)
-		.should('have.css', 'line-height')
-		.and('match', new RegExp(setup.lineHeight[device], 'g'));
-
-	// Test letter spacing.
-	cy.get(elem)
-		.should('have.css', 'letter-spacing')
-		.and('match', new RegExp(setup.letterSpacing[device], 'g'));
-}

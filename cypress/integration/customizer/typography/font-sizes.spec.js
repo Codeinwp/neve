@@ -1,4 +1,4 @@
-const SETUP = {
+const setup = {
 	fontSize: {
 		suffix: {
 			mobile: 'px',
@@ -27,61 +27,24 @@ const SETUP = {
 	fontWeight: 500,
 	textTransform: 'lowercase',
 };
-const DEFAULT = {
-	fontSize: {
-		suffix: {
-			mobile: 'px',
-			tablet: 'px',
-			desktop: 'px',
-		},
-		mobile: 15,
-		tablet: 16,
-		desktop: 16,
-	},
-	lineHeight: {
-		mobile: 1.6,
-		tablet: 1.6,
-		desktop: 1.6,
-		suffix: {
-			mobile: 'em',
-			tablet: 'em',
-			desktop: 'em',
-		},
-	},
-	letterSpacing: {
-		mobile: 0,
-		tablet: 0,
-		desktop: 0,
-	},
-	fontWeight: '400',
-	textTransform: 'none',
-};
 
-describe( 'Typography Control', () => {
-	const BEFORE = () => {
-		cy.setCustomizeSettings( { neve_typeface_general: SETUP } );
-	};
+describe('Typography Control', () => {
+	before('Setup', () =>
+		cy.setCustomizeSettings({ neve_typeface_general: setup })
+	);
 
-	const AFTER = () => {
-		cy.setCustomizeSettings( {
-			neve_typeface_general: DEFAULT,
-		} );
-	};
-
-	it( 'Setup', () => BEFORE() );
-
-	it( 'Test Typography on Front End', () => {
-		cy.visit( '/markup-html-tags-and-formatting/' );
+	it('Test Typography on Front End', () => {
+		cy.visit('/markup-html-tags-and-formatting/');
 
 		// Test text transform.
-		cy.get( 'body' )
-			.should( 'have.css', 'text-transform' )
-			.and( 'eq', 'lowercase' );
+		cy.get('body')
+			.should('have.css', 'text-transform')
+			.and('eq', 'lowercase');
 
 		// Test font weight.
-		cy.get( 'body' )
-			.should( 'have.css', 'font-weight' )
-			.and( 'match', new RegExp( SETUP.fontWeight, 'g' ) );
+		cy.get('body')
+			.should('have.css', 'font-weight')
+			.and('match', new RegExp(setup.fontWeight, 'g'));
 
 		const deviceMap = {
 			desktop: {
@@ -98,72 +61,57 @@ describe( 'Typography Control', () => {
 			},
 		};
 
-		Object.keys( deviceMap ).map( ( device ) => {
+		// eslint-disable-next-line array-callback-return
+		Object.keys(deviceMap).map((device) => {
 			// Change viewport.
-			cy.viewport(
-				deviceMap[ device ].width,
-				deviceMap[ device ].height
-			);
+			cy.viewport(deviceMap[device].width, deviceMap[device].height);
 
 			// Test font size.
-			cy.get( 'body' )
-				.should( 'have.css', 'font-size' )
-				.and(
-					'match',
-					new RegExp( SETUP.fontSize[ device ] + 'px', 'g' )
-				);
+			cy.get('body')
+				.should('have.css', 'font-size')
+				.and('match', new RegExp(setup.fontSize[device] + 'px', 'g'));
 
 			// Test line height.
-			cy.get( 'body' )
-				.should( 'have.css', 'line-height' )
-				.and( 'match', new RegExp( SETUP.lineHeight[ device ], 'g' ) );
+			cy.get('body')
+				.should('have.css', 'line-height')
+				.and('match', new RegExp(setup.lineHeight[device], 'g'));
 
 			// Test letter spacing.
-			cy.get( 'body' )
-				.should( 'have.css', 'letter-spacing' )
-				.and(
-					'match',
-					new RegExp( SETUP.letterSpacing[ device ], 'g' )
-				);
-		} );
-	} );
+			cy.get('body')
+				.should('have.css', 'letter-spacing')
+				.and('match', new RegExp(setup.letterSpacing[device], 'g'));
+		});
+	});
 
-	it( 'Test Typography inside the Editor', () => {
-		cy.visit( '/markup-html-tags-and-formatting/' );
-		cy.get( '#wp-admin-bar-edit > a' ).click();
+	it('Test Typography inside the Editor', () => {
+		cy.visit('/markup-html-tags-and-formatting/');
+		cy.get('#wp-admin-bar-edit > a').click();
 
 		cy.clearWelcome();
-		cy.get( '.editor-styles-wrapper .wp-block p' )
-			.first()
-			.as( 'editorBody' );
+		cy.get('.editor-styles-wrapper .wp-block p').first().as('editorBody');
 		// Test text transform.
-		cy.get( '@editorBody' )
-			.should( 'have.css', 'text-transform' )
-			.and(
-				'match',
-				new RegExp( SETUP.textTransform.toLowerCase(), 'g' )
-			);
+		cy.get('@editorBody')
+			.should('have.css', 'text-transform')
+			.and('match', new RegExp(setup.textTransform.toLowerCase(), 'g'));
 
 		// Test font weight.
-		cy.get( '@editorBody' )
-			.should( 'have.css', 'font-weight' )
-			.and( 'match', new RegExp( SETUP.fontWeight, 'g' ) );
+		cy.get('@editorBody')
+			.should('have.css', 'font-weight')
+			.and('match', new RegExp(setup.fontWeight, 'g'));
 
 		// Test font size.
-		cy.get( '@editorBody' )
-			.should( 'have.css', 'font-size' )
-			.and( 'match', new RegExp( SETUP.fontSize.desktop + 'px', 'g' ) );
+		cy.get('@editorBody')
+			.should('have.css', 'font-size')
+			.and('match', new RegExp(setup.fontSize.desktop + 'px', 'g'));
 
 		// Test line height.
-		cy.get( '@editorBody' )
-			.should( 'have.css', 'line-height' )
-			.and( 'match', new RegExp( SETUP.lineHeight.desktop, 'g' ) );
+		cy.get('@editorBody')
+			.should('have.css', 'line-height')
+			.and('match', new RegExp(setup.lineHeight.desktop, 'g'));
 
 		// Test letter spacing.
-		cy.get( '@editorBody' )
-			.should( 'have.css', 'letter-spacing' )
-			.and( 'match', new RegExp( SETUP.letterSpacing.desktop, 'g' ) );
-	} );
-
-	it( 'TearDown', () => AFTER() );
-} );
+		cy.get('@editorBody')
+			.should('have.css', 'letter-spacing')
+			.and('match', new RegExp(setup.letterSpacing.desktop, 'g'));
+	});
+});

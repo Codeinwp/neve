@@ -581,3 +581,54 @@ Cypress.Commands.add('checkPaddingFrontEnd', () => {
 		.should('have.css', 'padding-bottom')
 		.and('contain', '9px');
 });
+
+/**
+ * Test text transform and font weight
+ *
+ * @param elem
+ * @param transformMatcher
+ * @param weightMatcher
+ */
+Cypress.Commands.add(
+	'testTransformAndWeight',
+	(elem, transformMatcher, weightMatcher) => {
+		// Test text transform.
+		cy.get(elem)
+			.should('have.css', 'text-transform')
+			.and('match', new RegExp(transformMatcher, 'g'));
+
+		// Test font weight
+		cy.get(elem)
+			.should('have.css', 'font-weight')
+			.and('match', new RegExp(weightMatcher, 'g'));
+	}
+);
+
+/**
+ * Test font size, line height and letter spacing
+ *
+ * @param elem
+ * @param device
+ * @param fontSizeMatcher
+ * @param lineHeightMatcher
+ * @param letterSpacingMatcher
+ */
+Cypress.Commands.add(
+	'testSizeLineHeightSpacing',
+	(elem, fontSizeMatcher, lineHeightMatcher, letterSpacingMatcher) => {
+		// Test font size.
+		cy.get(elem)
+			.should('have.css', 'font-size')
+			.and('match', new RegExp(fontSizeMatcher + 'px', 'g'));
+
+		// Test line height.
+		cy.get(elem)
+			.should('have.css', 'line-height')
+			.and('match', new RegExp(lineHeightMatcher, 'g'));
+
+		// Test letter spacing.
+		cy.get(elem)
+			.should('have.css', 'letter-spacing')
+			.and('match', new RegExp(letterSpacingMatcher, 'g'));
+	}
+);
