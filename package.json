@@ -118,7 +118,7 @@
     "release": "npx semantic-release",
     "dist": "bash ./bin/dist.sh",
     "storybook": "start-storybook -p 6006",
-	"ci-storybook": "start-storybook -p 6006 -s public --ci",
+	"ci-storybook": "start-storybook -p 6006 --ci",
 	"build-storybook": "build-storybook"
   },
   "size-limit": [
