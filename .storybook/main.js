@@ -7,5 +7,6 @@ module.exports = {
 		"@storybook/addon-links",
 		"@storybook/addon-essentials",
 		"@storybook/preset-scss",
-]
+		'@storybook/addon-a11y',
+	]
 }

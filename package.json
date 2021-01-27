@@ -39,6 +39,7 @@
     "@semantic-release/git": "^9.0.0",
     "@size-limit/preset-app": "^4.5.6",
     "@size-limit/webpack": "^4.5.6",
+    "@storybook/addon-a11y": "^6.1.15",
     "@storybook/addon-actions": "^6.1.14",
     "@storybook/addon-essentials": "^6.1.14",
     "@storybook/addon-links": "^6.1.14",
@@ -60,6 +61,7 @@
     "css-loader": "^5.0.1",
     "cypress": "5.1.0",
     "cypress-file-upload": "^4.0.7",
+    "cypress-storybook": "^0.5.0",
     "eslint-plugin-prettier": "^3.3.1",
     "grunt": "^1.2.1",
     "grunt-cli": "^1.3.2",
@@ -109,12 +111,15 @@
     "size": "size-limit",
     "pre-commit": "npm-run-all phpcs build size",
     "cypress:open": "cypress open",
+    "cypress:storybook:open": "cypress open --config-file cypress.storybook.json",
     "cypress:run": "cypress run",
-    "visual:test": "percy exec -- cypress run --config baseUrl=https://qa-neve.themeisle.com,video=false --spec 'cypress/integration/visual-regression/**/*.spec.js' --headless",
+	"cypress:storybook:run": "cypress run --config-file cypress.storybook.json",
+	"visual:test": "percy exec -- cypress run --config baseUrl=https://qa-neve.themeisle.com,video=false --spec 'cypress/integration/visual-regression/**/*.spec.js' --headless",
     "release": "npx semantic-release",
     "dist": "bash ./bin/dist.sh",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+	"ci-storybook": "start-storybook -p 6006 -s public --ci",
+	"build-storybook": "build-storybook"
   },
   "size-limit": [
     {

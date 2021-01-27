@@ -52,48 +52,48 @@ const initDeviceSwitchers = () => {
 	const deviceButtons = document.querySelector(
 		'#customize-footer-actions .devices, .hfg--cb-devices-switcher a.switch-to'
 	);
-	deviceButtons.addEventListener( 'click', function ( e ) {
-		const event = new CustomEvent( 'neveChangedRepsonsivePreview', {
+	deviceButtons.addEventListener('click', function (e) {
+		const event = new CustomEvent('neveChangedRepsonsivePreview', {
 			detail: e.target.dataset.device,
-		} );
-		document.dispatchEvent( event );
-	} );
+		});
+		document.dispatchEvent(event);
+	});
 };
 
 const initBlogPageFocus = () => {
-	wp.customize.section( 'neve_blog_archive_layout', ( section ) => {
-		section.expanded.bind( ( isExpanded ) => {
-			const front = wp.customize.control( 'show_on_front' ).setting();
+	wp.customize.section('neve_blog_archive_layout', (section) => {
+		section.expanded.bind((isExpanded) => {
+			const front = wp.customize.control('show_on_front').setting();
 			let pageId = '';
-			if ( front === 'page' ) {
-				pageId = wp.customize.control( 'page_for_posts' ).setting();
+			if (front === 'page') {
+				pageId = wp.customize.control('page_for_posts').setting();
 			}
 
-			if ( isExpanded ) {
+			if (isExpanded) {
 				wp.customize.previewer.previewUrl.set(
-					pageId ? `/?page_id=${ pageId }` : '/'
+					pageId ? `/?page_id=${pageId}` : '/'
 				);
 			}
-		} );
-	} );
+		});
+	});
 };
 
-domReady( () => {
+domReady(() => {
 	initDeviceSwitchers();
 	initBlogPageFocus();
-} );
+});
 
-wp.customize.bind( 'ready', () => {
+wp.customize.bind('ready', () => {
 	initDynamicFields();
-} );
+});
 
 window.HFG = {
 	getSettings: () => {
 		const usedSettings = {};
-		NeveReactCustomize.headerControls.map( ( item ) => {
-			if ( ! wp.customize.control( item ) ) return false;
-			usedSettings[ item ] = wp.customize.control( item ).setting.get();
-		} );
-		return JSON.stringify( usedSettings );
+		NeveReactCustomize.headerControls.map((item) => {
+			if (!wp.customize.control(item)) return false;
+			usedSettings[item] = wp.customize.control(item).setting.get();
+		});
+		return JSON.stringify(usedSettings);
 	},
 };

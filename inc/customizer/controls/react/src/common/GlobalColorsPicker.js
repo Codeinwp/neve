@@ -16,6 +16,7 @@ const GlobalColorsPicker = ({ onChange, activeColor, isGlobal }) => {
 				<Button
 					onClick={onToggle}
 					aria-expanded={isOpen}
+					aria-label={__('Global Colors', 'neve')}
 					role="button"
 					className={buttonClasses}
 				>

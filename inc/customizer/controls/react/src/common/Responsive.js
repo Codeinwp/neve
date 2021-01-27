@@ -61,6 +61,7 @@ const ResponsiveControl = ({
 		return (
 			<Tooltip text={tooltip} key={index}>
 				<Button
+					aria-label={tooltip}
 					icon={icon}
 					className={device}
 					onClick={() => {

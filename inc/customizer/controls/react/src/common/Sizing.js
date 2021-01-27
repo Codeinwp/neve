@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import SingleSizingInput from '../common/SingleSizingInput.js';
 import classnames from 'classnames';
-
+import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { mapValues } from 'lodash';
 import { Button, Tooltip } from '@wordpress/components';
 
 const SizingControl = ({
@@ -14,9 +15,45 @@ const SizingControl = ({
 	max,
 	min,
 	step,
-	linked,
-	onLinked,
+	value,
 }) => {
+	const shouldValueBeLinked = () => {
+		if (typeof value !== 'object') {
+			return false;
+		}
+		if (noLinking) {
+			return false;
+		}
+		const keys = Object.keys(value);
+		const values = keys.map((k) => value[k]);
+		// eslint-disable-next-line eqeqeq
+		return values.every((v) => v == values[0]);
+	};
+
+	const [linked, setLinked] = useState(shouldValueBeLinked());
+
+	const toggleLinked = () => {
+		setLinked(!linked);
+	};
+
+	const updateValue = (type, numericValue) => {
+		// If the value is singular, or we have no type for it.
+		if (typeof type === 'undefined' || typeof value !== 'object') {
+			onChange(numericValue);
+			return false;
+		}
+
+		let nextValue = { ...value };
+
+		if (linked) {
+			nextValue = mapValues(nextValue, () => numericValue);
+		} else {
+			nextValue = { ...nextValue, [type]: numericValue };
+		}
+
+		onChange(nextValue);
+	};
+
 	const wrapClasses = classnames([
 		'neve-responsive-sizing',
 		{ 'single-input': options.length === 1 },
@@ -52,9 +89,10 @@ const SizingControl = ({
 				}
 			>
 				<Button
+					aria-label={__('Link values', 'neve')}
 					key="link-icon"
 					icon={linked ? 'admin-links' : 'editor-unlink'}
-					onClick={onLinked}
+					onClick={toggleLinked}
 					className={classnames([{ active: linked }, 'link'])}
 				/>
 			</Tooltip>
@@ -68,7 +106,7 @@ const SizingControl = ({
 				return (
 					<SingleSizingInput
 						key={n}
-						onChange={(type, value) => onChange(type, value)}
+						onChange={(type, value) => updateValue(type, value)}
 						value={i.value}
 						className={i.type ? i.type + '-input' : ''}
 						type={i.type}
@@ -107,9 +145,7 @@ SizingControl.propTypes = {
 		PropTypes.number,
 		PropTypes.object,
 	]),
-	onLinked: PropTypes.func,
 	onChange: PropTypes.func.isRequired,
-	linked: PropTypes.bool,
 	onReset: PropTypes.func,
 	noLinking: PropTypes.bool,
 	min: PropTypes.number,

@@ -14,7 +14,9 @@ export default {
 const Template = (args) => {
 	return (
 		<Accordion {...args}>
-			<h4>Accordion content</h4>
+			<div className="accordion-content">
+				<h4>Accordion content</h4>
+			</div>
 		</Accordion>
 	);
 };

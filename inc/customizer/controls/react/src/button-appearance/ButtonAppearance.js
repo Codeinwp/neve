@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
 import { __ } from '@wordpress/i18n';
-import { useState } from '@wordpress/element';
-import { mapValues } from 'lodash';
 import SizingControl from '../common/Sizing';
 import { Panel, PanelBody, PanelRow } from '@wordpress/components';
 import ColorControl from '../common/ColorControl';
@@ -9,20 +7,6 @@ import RadioIcons from '../common/RadioIcons';
 
 const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 	const { type, borderRadius, borderWidth } = value;
-
-	const isLinked = (object) => {
-		if (!object || typeof object === 'undefined') {
-			return false;
-		}
-		return Object.values(object).every(
-			(v) => v == Object.values(object)[0]
-		);
-	};
-
-	const [radiusLinked, setRadiusLinked] = useState(
-		isLinked(value.borderRadius)
-	);
-	const [widthLinked, setWidthLinked] = useState(isLinked(value.borderWidth));
 
 	const TypeControl = () => {
 		const types = {
@@ -151,21 +135,8 @@ const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 					step={1}
 					options={radiusOptions}
 					defaults={defaultVals.borderRadius}
-					linked={radiusLinked}
-					onLinked={() => setRadiusLinked(!radiusLinked)}
-					onChange={(optionType, numericValue) => {
-						let newVal;
-						if (radiusLinked) {
-							newVal = mapValues(
-								borderRadius,
-								() => numericValue
-							);
-						} else {
-							newVal = {
-								...borderRadius,
-								[optionType]: numericValue,
-							};
-						}
+					value={borderRadius}
+					onChange={(newVal) => {
 						onChange('borderRadius', newVal);
 					}}
 					onReset={() => {
@@ -183,23 +154,8 @@ const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 							step={1}
 							options={widthOptions}
 							defaults={defaultVals.borderWidth}
-							linked={widthLinked}
-							onLinked={() => {
-								setWidthLinked(!widthLinked);
-							}}
-							onChange={(optionType, numericValue) => {
-								let newVal;
-								if (widthLinked) {
-									newVal = mapValues(
-										borderWidth,
-										() => numericValue
-									);
-								} else {
-									newVal = {
-										...borderWidth,
-										[optionType]: numericValue,
-									};
-								}
+							value={borderWidth}
+							onChange={(newVal) => {
 								onChange('borderWidth', newVal);
 							}}
 							onReset={() => {

@@ -20,21 +20,11 @@ const NRSpacingComponent = ({ control }) => {
 	};
 
 	const { min, max, units, label, defaultVal } = controlParams;
-	const [isLinked, setLinked] = useState(false);
 	const [value, setValue] = useState({
 		...defaultVal,
 		...setting.get(),
 	});
 	const { top, right, bottom, left, unit } = value;
-
-	// Checks if values are linked on rerender.
-	useEffect(() => {
-		const values = [top, right, bottom, left];
-		const equal = values.every((value) => value == values[0]);
-		if (equal) {
-			setLinked(true);
-		}
-	}, [value]);
 
 	// Used for outside value changes.
 	useEffect(() => {
@@ -44,8 +34,7 @@ const NRSpacingComponent = ({ control }) => {
 
 			const nextVal = e.detail.value || defaultVal;
 
-			setValue(nextVal);
-			setting.set(nextVal);
+			handleUpdate(nextVal);
 		});
 	}, []);
 
@@ -56,26 +45,17 @@ const NRSpacingComponent = ({ control }) => {
 		{ type: 'left', label: __('Left', 'neve'), value: left },
 	];
 
-	const handleLink = () => setLinked(!isLinked);
-
 	const handleReset = () => {
-		setValue(defaultVal);
-		setting.set(defaultVal);
+		handleUpdate(defaultVal);
 	};
 
-	const handleUpdate = (optionType, numericValue) => {
-		const nextValue = { ...value };
-		if (isLinked) {
-			nextValue.top = numericValue;
-			nextValue.bottom = numericValue;
-			nextValue.left = numericValue;
-			nextValue.right = numericValue;
-		} else {
-			nextValue[optionType] = numericValue;
-		}
-
+	const handleUpdate = (nextValue) => {
 		setValue(nextValue);
 		setting.set(nextValue);
+	};
+
+	const updateNumericValue = (val) => {
+		handleUpdate({ ...val, unit });
 	};
 
 	const handleUnitChange = (unitType) => {
@@ -89,8 +69,7 @@ const NRSpacingComponent = ({ control }) => {
 			nextValue.left = parseInt(value.left);
 		}
 
-		setValue(nextValue);
-		setting.set(nextValue);
+		handleUpdate(nextValue);
 	};
 
 	const Units = () => {
@@ -140,9 +119,8 @@ const NRSpacingComponent = ({ control }) => {
 				step={unit === 'em' ? 0.1 : 1}
 				options={options}
 				defaults={defaultVal}
-				linked={isLinked}
-				onLinked={handleLink}
-				onChange={handleUpdate}
+				onChange={updateNumericValue}
+				value={value}
 				onReset={handleReset}
 			/>
 		</div>

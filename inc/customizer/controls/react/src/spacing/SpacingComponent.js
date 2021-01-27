@@ -44,24 +44,20 @@ const SpacingComponent = ({ control }) => {
 	const dbVal = control.setting.get();
 	const initialVal = mergeDeep(defaultValue, dbVal);
 
-	const shouldValueBeLinked = () => {
-		const { top, right, bottom, left } = value;
-		const values = [top, right, bottom, left];
-
-		// eslint-disable-next-line eqeqeq
-		return values.every((arrVal) => arrVal == values[0]);
-	};
-
 	const [value, setValue] = useState(initialVal);
-	const [linked, setLinked] = useState(shouldValueBeLinked());
 	const [currentDevice, setCurrentDevice] = useState('desktop');
+
+	const updateValueForCurrentDevice = (valueForDevice) => {
+		const nextValue = { ...value };
+		nextValue[currentDevice] = valueForDevice;
+		updateControlValue(nextValue);
+	};
 
 	const updateControlValue = (nextVal) => {
 		setValue(nextVal);
 		control.setting.set(nextVal);
 	};
 
-	/*
 	useEffect(() => {
 		document.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) return false;
@@ -70,23 +66,6 @@ const SpacingComponent = ({ control }) => {
 			updateControlValue(e.detail.value || defaultValue);
 		});
 	}, []);
-*/
-
-	const updateNumericValue = (optionType, numericValue) => {
-		const nextValue = { ...value };
-		if (linked) {
-			nextValue[currentDevice] = mapValues(
-				nextValue[currentDevice],
-				() => numericValue
-			);
-		} else {
-			nextValue[currentDevice] = {
-				...nextValue[currentDevice],
-				[optionType]: numericValue,
-			};
-		}
-		updateControlValue(nextValue);
-	};
 
 	const getButtons = () => {
 		const { units } = controlParams;
@@ -165,7 +144,6 @@ const SpacingComponent = ({ control }) => {
 					hideResponsive={hideResponsiveButtons}
 					onChange={(nextDevice) => {
 						setCurrentDevice(nextDevice);
-						setLinked(shouldValueBeLinked());
 					}}
 				/>
 				<div className="neve-units">{getButtons()}</div>
@@ -176,11 +154,8 @@ const SpacingComponent = ({ control }) => {
 				step={value[currentDevice + '-unit'] === 'em' ? 0.1 : 1}
 				options={options}
 				defaults={defaultValue[currentDevice]}
-				linked={linked}
-				onLinked={() => {
-					setLinked(!linked);
-				}}
-				onChange={updateNumericValue}
+				value={value[currentDevice]}
+				onChange={updateValueForCurrentDevice}
 				onReset={() => {
 					updateControlValue(defaultValue);
 				}}

@@ -156,7 +156,64 @@ export const ORDERING_COMPONENTS = {
 	tags: 'Tags',
 	comments: 'Comments',
 };
-
+export const TYPEFACE_DEFAULT = {
+	fontSize: {
+		suffix: {
+			mobile: 'px',
+			tablet: 'px',
+			desktop: 'px',
+		},
+		mobile: 10,
+		tablet: 20,
+		desktop: 30,
+	},
+	lineHeight: {
+		suffix: {
+			mobile: 'em',
+			tablet: 'em',
+			desktop: 'em',
+		},
+		mobile: 1,
+		tablet: 1.3,
+		desktop: 1.6,
+	},
+	letterSpacing: {
+		mobile: 0.5,
+		tablet: 0.6,
+		desktop: 0.8,
+	},
+	fontWeight: 'none',
+	textTransform: 'none',
+};
+export const TYPEFACE_EMPTY = {
+	fontSize: {
+		suffix: {
+			mobile: 'px',
+			tablet: 'px',
+			desktop: 'px',
+		},
+		mobile: '',
+		tablet: '',
+		desktop: '',
+	},
+	lineHeight: {
+		suffix: {
+			mobile: 'em',
+			tablet: 'em',
+			desktop: 'em',
+		},
+		mobile: '',
+		tablet: '',
+		desktop: '',
+	},
+	letterSpacing: {
+		mobile: '',
+		tablet: '',
+		desktop: '',
+	},
+	fontWeight: 'none',
+	textTransform: 'none',
+};
 import presetOne from '../assets/img/ButtonItem.jpg';
 import presetTwo from '../assets/img/Classic.jpg';
 import presetThree from '../assets/img/SearchField.jpg';

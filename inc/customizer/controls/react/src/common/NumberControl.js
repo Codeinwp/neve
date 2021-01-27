@@ -67,16 +67,14 @@ const NumberControl = (props) => {
 			</div>
 			<SizingControl
 				noLinking
-				noRange
 				options={[{ value }]}
-				onChange={(type, newVal) => {
-					onChange(newVal);
-				}}
+				onChange={onChange}
 				max={max}
 				min={min}
 				step={step}
 				defaults={props.default}
 				onReset={onReset}
+				value={value}
 			/>
 		</div>
 	);

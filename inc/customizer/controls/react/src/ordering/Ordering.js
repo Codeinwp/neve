@@ -17,6 +17,7 @@ const List = SortableContainer(({ children }) => (
 const Handle = SortableHandle(() => (
 	<Tooltip text={__('Drag to Reorder', 'neve')}>
 		<button
+			aria-label={__('Drag to Reorder', 'neve')}
 			className="handle"
 			onClick={(e) => {
 				e.preventDefault();
@@ -46,6 +47,7 @@ const Item = ({
 			{allowsToggle && (
 				<Tooltip text={__('Toggle Visibility', 'neve')}>
 					<button
+						aria-label={__('Toggle Visibility', 'neve')}
 						className="toggle"
 						onClick={(e) => {
 							e.preventDefault();

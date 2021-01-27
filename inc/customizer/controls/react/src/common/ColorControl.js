@@ -53,6 +53,7 @@ const ColorControl = ({
 							isSecondary
 							onClick={onToggle}
 							aria-expanded={isOpen}
+							aria-label={__('Color', 'neve')}
 						>
 							<span
 								className="color"

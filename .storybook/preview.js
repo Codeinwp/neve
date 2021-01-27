@@ -1,4 +1,5 @@
 import './style.css'
+import 'cypress-storybook/react';
 import '@wordpress/components/build-style/style.css'
 import '@icon/dashicons/dashicons.css'
 import {FONTS} from '../stories/utils/values'
@@ -17,6 +18,11 @@ window.wp = {
 			}
 			wrap.classList.remove('preview-desktop', 'preview-mobile', 'preview-tablet')
 			wrap.classList.add(`preview-${device}`);
+		},
+		previewer : {
+			refresh : () => {
+				console.log('REFRESH');
+			}
 		}
 	}
 }
