@@ -4,6 +4,7 @@ describe('Header Builder Alignment Control', () => {
 
 		cy.goToCustomizer();
 
+		cy.aliasRestRoutes();
 		// Open customizer panel.
 		cy.get('#accordion-panel-hfg_header').should('be.visible').click();
 
@@ -18,23 +19,22 @@ describe('Header Builder Alignment Control', () => {
 		cy.get('#customize-control-logo_tabs [data-tab="layout"]')
 			.should('be.visible')
 			.click();
-		cy.aliasRestRoutes();
 	});
 	it('Sets up alignment for the Primary Menu to Center', () => {
 		cy.alignCenter();
 		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).toBe(true);
+			expect(req.response.body.success).to.be.true;
 			expect(req.status).to.equal(200);
-			cy.checkAlignCenter();
 		});
+		cy.checkAlignCenter();
 	});
 
 	it('Sets up alignment for the Primary Menu to Right', () => {
 		cy.alignRight();
 		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).toBe(true);
+			expect(req.response.body.success).to.be.true;
 			expect(req.status).to.equal(200);
-			cy.checkAlignRight();
 		});
+		cy.checkAlignRight();
 	});
 });
