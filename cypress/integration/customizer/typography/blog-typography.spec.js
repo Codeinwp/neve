@@ -28,21 +28,20 @@ const setup = {
 	},
 };
 
-const settings = [
-	{
-		pageToVisit: '/',
-		titleSelector: '.blog-entry-title',
-		metaSelector: '.blog .nv-meta-list li',
-		excerptSelector: '.entry-summary',
-	},
-	{
-		pageToVisit: '/template-comments/',
-		titleSelector: '.nv-title-meta-wrap .entry-title',
-		metaSelector: '.single .nv-meta-list li',
-		commentsSelector: '.single .comment-reply-title',
-	},
-];
+const homeSettings = {
+	pageToVisit: '/',
+	titleSelector: '.blog-entry-title',
+	metaSelector: '.blog .nv-meta-list li',
+	excerptSelector: '.entry-summary',
+};
 
+const commentSettings = {
+	pageToVisit: '/template-comments/',
+	titleSelector: '.nv-title-meta-wrap .entry-title',
+	metaSelector: '.single .nv-meta-list li',
+	commentsSelector: '.single .comment-reply-title',
+};
+// .single .comment-reply-title
 const deviceMap = {
 	desktop: {
 		height: 1080,
@@ -90,97 +89,175 @@ describe('Blog Typography', () => {
 		});
 	});
 
-	it('Test blog typography for transform and weight on frontend', () => {
-		for (const i in settings) {
-			const currentSettings = settings[i];
-
-			cy.visit(currentSettings.pageToVisit);
-			cy.get(currentSettings.titleSelector).each((elem) => {
+	it('Test blog typography for transform and weight on frontend on home page', () => {
+		cy.visit(homeSettings.pageToVisit);
+		cy.get(homeSettings.titleSelector).each((elem) => {
+			cy.testTransformAndWeight(
+				elem,
+				setup.textTransform,
+				setup.fontWeight
+			);
+		});
+		cy.get(homeSettings.metaSelector).each((elem) => {
+			cy.testTransformAndWeight(
+				elem,
+				setup.textTransform,
+				setup.fontWeight
+			);
+		});
+		if (homeSettings && homeSettings.excerptSelector) {
+			cy.get(homeSettings.excerptSelector).each((elem) => {
 				cy.testTransformAndWeight(
 					elem,
 					setup.textTransform,
 					setup.fontWeight
 				);
 			});
-			cy.get(currentSettings.metaSelector).each((elem) => {
+		}
+		if (homeSettings && homeSettings.commentsSelector) {
+			cy.get(homeSettings.commentsSelector).each((elem) => {
 				cy.testTransformAndWeight(
 					elem,
 					setup.textTransform,
 					setup.fontWeight
 				);
 			});
-			if (currentSettings && currentSettings.excerptSelector) {
-				cy.get(currentSettings.excerptSelector).each((elem) => {
-					cy.testTransformAndWeight(
-						elem,
-						setup.textTransform,
-						setup.fontWeight
-					);
-				});
-			}
-			if (currentSettings && currentSettings.commentsSelector) {
-				cy.get(currentSettings.commentsSelector).each((elem) => {
-					cy.testTransformAndWeight(
-						elem,
-						setup.textTransform,
-						setup.fontWeight
-					);
-				});
-			}
 		}
 	});
 
-	it('Test blog typography for size, line height, and spacing on frontend', () => {
-		for (const i in settings) {
-			const currentSettings = settings[i];
-
-			cy.visit(currentSettings.pageToVisit);
-
-			// eslint-disable-next-line array-callback-return
-			Object.keys(deviceMap).map((device) => {
-				// Change viewport.
-				cy.viewport(deviceMap[device].width, deviceMap[device].height);
-
-				cy.get(currentSettings.titleSelector).each((elem) => {
-					cy.testSizeLineHeightSpacing(
-						elem,
-						setup.fontSize[device],
-						setup.lineHeight[device],
-						setup.letterSpacing[device]
-					);
-				});
-
-				cy.get(currentSettings.metaSelector).each((elem) => {
-					cy.testSizeLineHeightSpacing(
-						elem,
-						setup.fontSize[device],
-						setup.lineHeight[device],
-						setup.letterSpacing[device]
-					);
-				});
-
-				if (currentSettings && currentSettings.excerptSelector) {
-					cy.get(currentSettings.excerptSelector).each((elem) => {
-						cy.testSizeLineHeightSpacing(
-							elem,
-							setup.fontSize[device],
-							setup.lineHeight[device],
-							setup.letterSpacing[device]
-						);
-					});
-				}
-
-				if (currentSettings && currentSettings.commentsSelector) {
-					cy.get(currentSettings.commentsSelector).each((elem) => {
-						cy.testSizeLineHeightSpacing(
-							elem,
-							setup.fontSize[device],
-							setup.lineHeight[device],
-							setup.letterSpacing[device]
-						);
-					});
-				}
+	it('Test blog typography for transform and weight on frontend on comment templates', () => {
+		cy.visit(commentSettings.pageToVisit);
+		cy.get(commentSettings.titleSelector).each((elem) => {
+			cy.testTransformAndWeight(
+				elem,
+				setup.textTransform,
+				setup.fontWeight
+			);
+		});
+		cy.get(commentSettings.metaSelector).each((elem) => {
+			cy.testTransformAndWeight(
+				elem,
+				setup.textTransform,
+				setup.fontWeight
+			);
+		});
+		if (commentSettings && commentSettings.excerptSelector) {
+			cy.get(commentSettings.excerptSelector).each((elem) => {
+				cy.testTransformAndWeight(
+					elem,
+					setup.textTransform,
+					setup.fontWeight
+				);
 			});
 		}
+		if (commentSettings && commentSettings.commentsSelector) {
+			cy.get(commentSettings.commentsSelector).each((elem) => {
+				cy.testTransformAndWeight(
+					elem,
+					setup.textTransform,
+					setup.fontWeight
+				);
+			});
+		}
+	});
+
+	it('Test blog typography for size, line height, and spacing on frontend on home page', () => {
+		cy.visit(homeSettings.pageToVisit);
+
+		// eslint-disable-next-line array-callback-return
+		Object.keys(deviceMap).map((device) => {
+			// Change viewport.
+			cy.viewport(deviceMap[device].width, deviceMap[device].height);
+
+			cy.get(homeSettings.titleSelector).each((elem) => {
+				cy.testSizeLineHeightSpacing(
+					elem,
+					setup.fontSize[device],
+					setup.lineHeight[device],
+					setup.letterSpacing[device]
+				);
+			});
+
+			cy.get(homeSettings.metaSelector).each((elem) => {
+				cy.testSizeLineHeightSpacing(
+					elem,
+					setup.fontSize[device],
+					setup.lineHeight[device],
+					setup.letterSpacing[device]
+				);
+			});
+
+			if (homeSettings && homeSettings.excerptSelector) {
+				cy.get(homeSettings.excerptSelector).each((elem) => {
+					cy.testSizeLineHeightSpacing(
+						elem,
+						setup.fontSize[device],
+						setup.lineHeight[device],
+						setup.letterSpacing[device]
+					);
+				});
+			}
+
+			if (homeSettings && homeSettings.commentsSelector) {
+				cy.get(homeSettings.commentsSelector).each((elem) => {
+					cy.testSizeLineHeightSpacing(
+						elem,
+						setup.fontSize[device],
+						setup.lineHeight[device],
+						setup.letterSpacing[device]
+					);
+				});
+			}
+		});
+	});
+
+	it('Test blog typography for size, line height, and spacing on frontend on template comments', () => {
+		cy.visit(commentSettings.pageToVisit);
+
+		// eslint-disable-next-line array-callback-return
+		Object.keys(deviceMap).map((device) => {
+			// Change viewport.
+			cy.viewport(deviceMap[device].width, deviceMap[device].height);
+
+			cy.get(commentSettings.titleSelector).each((elem) => {
+				cy.testSizeLineHeightSpacing(
+					elem,
+					setup.fontSize[device],
+					setup.lineHeight[device],
+					setup.letterSpacing[device]
+				);
+			});
+
+			cy.get(commentSettings.metaSelector).each((elem) => {
+				cy.testSizeLineHeightSpacing(
+					elem,
+					setup.fontSize[device],
+					setup.lineHeight[device],
+					setup.letterSpacing[device]
+				);
+			});
+
+			if (commentSettings && commentSettings.excerptSelector) {
+				cy.get(commentSettings.excerptSelector).each((elem) => {
+					cy.testSizeLineHeightSpacing(
+						elem,
+						setup.fontSize[device],
+						setup.lineHeight[device],
+						setup.letterSpacing[device]
+					);
+				});
+			}
+
+			if (commentSettings && commentSettings.commentsSelector) {
+				cy.get(commentSettings.commentsSelector).each((elem) => {
+					cy.testSizeLineHeightSpacing(
+						elem,
+						setup.fontSize[device],
+						setup.lineHeight[device],
+						setup.letterSpacing[device]
+					);
+				});
+			}
+		});
 	});
 });
