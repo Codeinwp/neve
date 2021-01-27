@@ -1,5 +1,5 @@
-describe('AMP Check', function () {
-	it('Sets up search icon on menu top row', function () {
+describe('AMP Check', () => {
+	it('Sets up search icon on menu top row', () => {
 		cy.goToCustomizer();
 		cy.aliasRestRoutes();
 
@@ -30,7 +30,7 @@ describe('AMP Check', function () {
 		});
 	});
 
-	it('Checks the search box from the menu', function () {
+	it('Checks the search box from the menu', () => {
 		cy.visit('/?amp');
 		cy.get(
 			'.header--row.header-top[data-show-on=desktop] .builder-item--header_search_responsive .nv-search-icon-component .menu-item-nav-search'
@@ -65,7 +65,7 @@ describe('AMP Check', function () {
 			.should('have.text', 'Search Results for: Hello');
 	});
 
-	it('Checks the sidebar menu on mobile', function () {
+	it('Checks the sidebar menu on mobile', () => {
 		cy.visit('/?amp');
 		cy.viewport('iphone-x');
 
@@ -88,7 +88,7 @@ describe('AMP Check', function () {
 		cy.get('@navSidebar').should('not.be.visible');
 	});
 
-	it('Checks the sidebar sub-menu', function () {
+	it('Checks the sidebar sub-menu', () => {
 		cy.visit('/?amp');
 		cy.viewport('iphone-x');
 
