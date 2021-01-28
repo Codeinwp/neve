@@ -1,9 +1,10 @@
 name: E2E tests on StoryBook 🚀
 
 on:
-  push:
-    branches:
-      - ci/storybook
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+    branches-ignore:
+      - 'update_dependencies'
 
 jobs:
   e2e-storybook:
