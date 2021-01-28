@@ -1,4 +1,4 @@
-name: Build and run E2E tests on StoryBook 🚀
+name: E2E tests on StoryBook 🚀
 
 on:
   push:

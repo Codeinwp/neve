@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.9.5\n"
+"Project-Id-Version: Neve 2.10.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-27T17:24:19+00:00\n"
+"POT-Creation-Date: 2021-01-28T12:00:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -1570,7 +1570,7 @@ msgid "Content"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:70
-#: inc/views/partials/post_meta.php:235
+#: inc/views/partials/post_meta.php:237
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:318
 msgid "Tags"
 msgstr ""
@@ -1727,65 +1727,65 @@ msgstr ""
 msgid "Search Results for: %s"
 msgstr ""
 
-#: inc/views/partials/comments.php:57
+#: inc/views/partials/comments.php:63
 msgid "Comments are closed."
 msgstr ""
 
-#: inc/views/partials/comments.php:74
+#: inc/views/partials/comments.php:81
 msgid "Comments Navigation"
 msgstr ""
 
-#: inc/views/partials/comments.php:79
+#: inc/views/partials/comments.php:86
 msgid "Previous"
 msgstr ""
 
-#: inc/views/partials/comments.php:82
+#: inc/views/partials/comments.php:89
 msgid "Next"
 msgstr ""
 
-#: inc/views/partials/comments.php:105
+#: inc/views/partials/comments.php:112
 msgid "Pingback:"
 msgstr ""
 
-#: inc/views/partials/comments.php:107
-#: inc/views/partials/comments.php:138
+#: inc/views/partials/comments.php:114
+#: inc/views/partials/comments.php:145
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/CustomPalette.js:18
 msgid "Edit"
 msgstr ""
 
 #. translators: 1: date, 2: time
-#: inc/views/partials/comments.php:129
+#: inc/views/partials/comments.php:136
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: inc/views/partials/comments.php:144
+#: inc/views/partials/comments.php:151
 msgid "Reply"
 msgstr ""
 
-#: inc/views/partials/comments.php:157
+#: inc/views/partials/comments.php:164
 msgid "Comment awaiting moderation."
 msgstr ""
 
 #. translators: number of comments
-#: inc/views/partials/comments.php:178
+#: inc/views/partials/comments.php:185
 msgctxt "comments title"
 msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/views/partials/post_meta.php:172
+#: inc/views/partials/post_meta.php:174
 msgid "by"
 msgstr ""
 
 #. translators: %s: Author's display name.
-#: inc/views/partials/post_meta.php:179
+#: inc/views/partials/post_meta.php:181
 msgid "Posts by %s"
 msgstr ""
 
 #. translators: %s: number of comments
-#: inc/views/partials/post_meta.php:221
+#: inc/views/partials/post_meta.php:223
 msgid "%s Comment"
 msgid_plural "%s Comments"
 msgstr[0] ""
