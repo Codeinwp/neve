@@ -355,6 +355,27 @@
   color: var(--nv-text-color);
 }
 
+.img-wrap {
+  position: relative;
+}
+
+.img-wrap .out-of-stock-badge {
+  color: var(--nv-text-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  left: 0;
+  background: #fff;
+  padding: 20px 0;
+  background: var(--nv-light-bg);
+  text-align: center;
+  opacity: .9;
+  z-index: 1;
+}
+
 .woocommerce.single .nv-woo-filters {
   display: none;
 }
