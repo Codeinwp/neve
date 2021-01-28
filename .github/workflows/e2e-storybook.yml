@@ -6,7 +6,7 @@ on:
       - ci/storybook
 
 jobs:
-  build-storybook:
+  e2e-storybook:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -16,18 +16,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           yarn install --frozen-lockfile
-          yarn run ci-storybook
+          yarn storybook &
       - name: E2E Tests 🚀
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
-        uses: cypress-io/github-action@v2
-        with:
-          config-file: cypress-storybook.json
-          env: host=localhost,port=6006
-          browser: chrome
-          headless: true
-          parallel: true
-          group: e2e-${{ matrix.specs }}
-          record: true
-          spec: cypress/integration/storybook/**/*,
+        run: |
+          yarn run cypress:storybook:run --key=${{ secrets.CYPRESS_RECORD_KEY }}
