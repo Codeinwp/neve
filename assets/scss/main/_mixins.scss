@@ -132,7 +132,7 @@
 	  }
 
 	  span.quantity {
-		grid-row-start: 2;
+		grid-row-start: 4;
 		grid-column-start: span 11;
 		grid-column-end: -1;
 		text-align: left;
@@ -140,11 +140,11 @@
 	  }
 
 	  dl.variation {
+		margin-left: $spacing-sm;
 		border: none;
 		grid-row-start: 3;
 		grid-column-start: 2;
 		grid-column-end: span 9;
-		padding: 0;
 		text-align: right;
 
 		dt::before {

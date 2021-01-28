@@ -19,6 +19,15 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+#### [Version 2.10.0](https://github.com/Codeinwp/neve/compare/v2.9.5...v2.10.0) (2021-01-18)
+
+- [Feat] Form fields styling controls
+- [Feat] Redesign global colors list
+- [Fix] Infinite scroll on the Blog page with masonry enabled
+
+
+
+
 ##### [Version 2.9.5](https://github.com/Codeinwp/neve/compare/v2.9.4...v2.9.5) (2020-12-28)
 
 - [Feat] Update starter content
