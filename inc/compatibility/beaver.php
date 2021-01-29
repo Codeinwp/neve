@@ -25,6 +25,7 @@ class Beaver extends Page_Builder_Base {
 		}
 
 		add_action( 'wp', array( $this, 'add_theme_builder_hooks' ) );
+		add_filter( 'fl_theme_builder_part_hooks', array( $this, 'register_part_hooks' ) );
 	}
 
 	/**
@@ -77,5 +78,69 @@ class Beaver extends Page_Builder_Base {
 			add_action( 'neve_do_footer', 'FLThemeBuilderLayoutRenderer::render_footer' );
 		}
 
+	}
+
+	/**
+	 * Register part hooks for Beaver Themer.
+	 *
+	 * @return array
+	 */
+	public function register_part_hooks() {
+		return array(
+			array(
+				'label' => __( 'Header', 'neve' ),
+				'hooks' => array(
+					'neve_before_header_wrapper_hook' => __( 'Before header wrapper', 'neve' ),
+					'neve_before_header_hook'         => __( 'Before header', 'neve' ),
+					'neve_after_header_hook'          => __( 'After header', 'neve' ),
+					'neve_after_header_wrapper_hook'  => __( 'After header wrapper', 'neve' ),
+				),
+			),
+			array(
+				'label' => __( 'Footer', 'neve' ),
+				'hooks' => array(
+					'neve_before_footer_hook' => __( 'Before footer', 'neve' ),
+					'neve_after_footer_hook'  => __( 'After footer', 'neve' ),
+				),
+			),
+			array(
+				'label' => __( 'Single Page', 'neve' ),
+				'hooks' => array(
+					'neve_before_page_header'   => __( 'Before page header', 'neve' ),
+					'neve_before_content'       => __( 'Before content', 'neve' ),
+					'neve_after_content'        => __( 'After content', 'neve' ),
+					'neve_before_page_comments' => __( 'Before comments', 'neve' ),
+				),
+			),
+			array(
+				'label' => __( 'Single Post', 'neve' ),
+				'hooks' => array(
+					'neve_before_post_content' => __( 'Before content', 'neve' ),
+					'neve_after_post_content'  => __( 'After content', 'neve' ),
+				),
+			),
+			array(
+				'label' => __( 'Cart Popup', 'neve' ),
+				'hooks' => array(
+					'neve_before_cart_popup'          => __( 'Before cart popup', 'neve' ),
+					'neve_after_cart_popup'           => __( 'After cart popup', 'neve' ),
+					'neve_cart_icon_after_cart_total' => __( 'After cart total', 'neve' ),
+				),
+			),
+			array(
+				'label' => __( 'Blog', 'neve' ),
+				'hooks' => array(
+					'neve_before_posts_loop' => __( 'Before posts loop', 'neve' ),
+					'neve_after_posts_loop'  => __( 'After posts loop', 'neve' ),
+				),
+			),
+			array(
+				'label' => __( 'Sideber', 'neve' ),
+				'hooks' => array(
+					'neve_before_sidebar_content' => __( 'Before sidebar content', 'neve' ),
+					'neve_after_sidebar_content'  => __( 'After sidebar content', 'neve' ),
+				),
+			),
+		);
 	}
 }
