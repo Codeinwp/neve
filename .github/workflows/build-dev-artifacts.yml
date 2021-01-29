@@ -107,6 +107,10 @@ jobs:
           - machines: 1
             specs: "dashboard"
             envs: "default"
+          ## Starter-sites specs needs one machine
+          - machines: 1
+            specs: "starter-sites"
+            envs: "starter-sites"
           ## 2 machines for classic editor tests
           - machines: 1
             specs: "editor/classic"

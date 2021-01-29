@@ -1,4 +1,4 @@
-describe('Starter site import', () => {
+describe('Starter sites import', () => {
 	before(() => {
 		cy.login('/wp-admin/themes.php?page=tiob-starter-sites');
 	});
