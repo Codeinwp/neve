@@ -5,7 +5,6 @@ import { render } from '@wordpress/element';
 
 export const RangeControl = wp.customize.Control.extend({
 	renderContent: function renderContent() {
-		const control = this;
-		render(<RangeComponent control={control} />, control.container[0]);
+		render(<RangeComponent control={this} />, this.container[0]);
 	},
 });

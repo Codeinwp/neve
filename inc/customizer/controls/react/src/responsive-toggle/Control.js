@@ -5,10 +5,6 @@ import { render } from '@wordpress/element';
 
 export const ResponsiveToggleControl = wp.customize.Control.extend({
 	renderContent: function renderContent() {
-		const control = this;
-		render(
-			<ResponsiveToggleComponent control={control} />,
-			control.container[0]
-		);
+		render(<ResponsiveToggleComponent control={this} />, this.container[0]);
 	},
 });

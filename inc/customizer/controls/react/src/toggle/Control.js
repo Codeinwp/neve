@@ -5,7 +5,6 @@ import { render } from '@wordpress/element';
 
 export const ToggleControl = wp.customize.Control.extend({
 	renderContent: function renderContent() {
-		const control = this;
-		render(<ToggleComponent control={control} />, control.container[0]);
+		render(<ToggleComponent control={this} />, this.container[0]);
 	},
 });

@@ -4,7 +4,6 @@ const { render } = wp.element;
 
 export const UiControl = wp.customize.Control.extend({
 	renderContent: function renderContent() {
-		const control = this;
-		render(<UiComponent control={control} />, control.container[0]);
+		render(<UiComponent control={this} />, this.container[0]);
 	},
 });
