@@ -346,7 +346,7 @@ Cypress.Commands.add('goToCustomizer', () => {
 /**
  * Alias POST route to /wp-admin/admin-ajax.php as customizerSave
  *
- * @example cy.aliasRestRoute()
+ * @example cy.aliasRestRoutes()
  */
 Cypress.Commands.add('aliasRestRoutes', () => {
 	cy.server().route('POST', '/wp-admin/admin-ajax.php').as('customizerSave');
