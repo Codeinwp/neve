@@ -1,4 +1,4 @@
-.editor-styles-wrapper > * {
+.editor-styles-wrapper, .editor-styles-wrapper > * {
   background-color: var(--nv-site-bg);
 }
 
