@@ -1101,10 +1101,20 @@ abstract class Abstract_Builder implements Builder {
 			if ( $render_groups['is_first'] ) {
 				$classes[] = 'hfg-item-first';
 			}
-			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
+			$classes[] = 'col-' . $width;
 
 			foreach ( $align as $device_slug => $align_slug ) {
-				$classes[] = $device_slug . '-' . $align_slug;
+				// Make sure we don't apply device-specific classes if the rows aren't visible on respective device.
+				if ( $device === $device_slug || ( in_array(
+					$device_slug,
+					[
+						'tablet',
+						'mobile',
+					],
+					true 
+				) && $device === 'mobile' ) ) {
+					$classes[] = $device_slug . '-' . $align_slug;
+				}
 			}
 
 			if ( $vertical_align ) {
