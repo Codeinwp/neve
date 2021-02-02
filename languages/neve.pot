@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-28T15:23:42+00:00\n"
+"POT-Creation-Date: 2021-02-01T09:54:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -1822,7 +1822,7 @@ msgstr ""
 msgid "next"
 msgstr ""
 
-#: inc/views/product_layout.php:62
+#: inc/views/product_layout.php:61
 msgid "Out of stock"
 msgstr ""
 
