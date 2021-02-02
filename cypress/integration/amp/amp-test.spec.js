@@ -1,5 +1,5 @@
 describe('AMP Check', () => {
-	it('Sets up search icon on menu top row', () => {
+	before('Sets up search icon on menu top row', () => {
 		cy.goToCustomizer();
 		cy.aliasRestRoutes();
 
