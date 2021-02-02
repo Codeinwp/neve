@@ -1,57 +1,83 @@
-
-  //<editor-fold desc="Verse">
-  .wp-block-verse {
-    font-style: italic;
-    border: unset;
-  }
-
-  //</editor-fold>
-
-	//<editor-fold desc="Separator">
-	.wp-block-separator {
-		margin: $spacing - 20px auto $spacing;
-		background-color: #8f98a1;
-		border: none;
-		height: 2px;
-		&.is-style-wide {
-			height: 1px;
-		}
-		&.is-style-dots {
-			height: auto;
-		}
-	}
-
-  //</editor-fold>
-
-  //<editor-fold desc="Button">
-  .wp-block-button {
-    .wp-block-button__link {
-      @include button();
-    }
-
-    &.is-style-outline,
-	&.is-style-secondary{
-      .wp-block-button__link {
-        @include button-secondary();
-      }
-    }
-  }
-
-
-
-
- .editor-writing-flow {
-  .wp-block-pullquote {
-    blockquote {
-      margin: 1em auto;
-      > .editor-rich-text p {
-      margin: 0 0 $spacing-sm 0;
-      font-size: 2em;
-    }
-
-    .wp-block-pullquote__citation {
-      padding-top: $spacing-sm;
-      font-size: .85em;
-    }
-  }}
+//<editor-fold desc="Verse">
+.wp-block-verse {
+  font-style: italic;
+  border: unset;
 }
+
+//</editor-fold>
+
+//<editor-fold desc="Separator">
+.wp-block-separator {
+  margin: $spacing - 20px auto $spacing;
+  background-color: #8f98a1;
+  border: none;
+  height: 2px;
+
+  &.is-style-wide {
+	height: 1px;
+  }
+
+  &.is-style-dots {
+	height: auto;
+  }
+}
+
+//</editor-fold>
+
+//<editor-fold desc="Button">
+.wp-block-button {
+  .wp-block-button__link {
+	@include button();
+  }
+
+  &.is-style-outline,
+  &.is-style-secondary {
+	.wp-block-button__link {
+	  @include button-secondary();
+	}
+  }
+}
+
+
+.editor-writing-flow {
+  .wp-block-pullquote {
+	blockquote {
+	  margin: 1em auto;
+
+	  > .editor-rich-text p {
+		margin: 0 0 $spacing-sm 0;
+		font-size: 2em;
+	  }
+
+	  .wp-block-pullquote__citation {
+		padding-top: $spacing-sm;
+		font-size: .85em;
+	  }
+	}
+  }
+}
+
+.wp-block code {
+  background-color: #d0effb;
+  border-radius: 5px;
+  border: $muted-border;
+  padding: 0 3px;
+  color: #333;
+}
+
+.wp-block-code {
+  padding: $spacing-sm;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 5px;
+  border: $muted-border;
+  white-space: pre-wrap;
+  font-size: .9em;
+  line-height: 2em;
+
+  code {
+	background: transparent;
+	border: none;
+	color: #333;
+  }
+}
+

@@ -561,10 +561,6 @@ blockquote.wp-block-quote.is-style-large cite {
   border: unset;
 }
 
-.wp-block-code code {
-  background-color: inherit;
-}
-
 .wp-block-button a {
   text-decoration: none !important;
 }
@@ -1891,11 +1887,12 @@ table td, table th {
   border-bottom: 1px solid var(--nv-light-bg);
 }
 
-p code {
+code {
   background: #d0effb;
   border-radius: 5px;
   border: 1px solid var(--nv-light-bg);
   padding: 0 3px;
+  color: #333;
 }
 
 pre {
@@ -1908,6 +1905,11 @@ pre {
   white-space: pre-wrap;
   font-size: .9em;
   line-height: 2em;
+}
+
+pre code {
+  border: 0;
+  background: transparent;
 }
 
 .nv-content-wrap:after, .excerpt-wrap:after {
