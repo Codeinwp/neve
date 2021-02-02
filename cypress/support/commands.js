@@ -44,12 +44,8 @@ Cypress.Commands.add('clearWelcome', () => {
 	cy.window().then((win) => {
 		win.wp &&
 			win.wp.data &&
-			win.wp.data
-				.select('core/edit-post')
-				.isFeatureActive('welcomeGuide') &&
-			win.wp.data
-				.dispatch('core/edit-post')
-				.toggleFeature('welcomeGuide');
+			win.wp.data.select('core/edit-post').isFeatureActive('welcomeGuide') &&
+			win.wp.data.dispatch('core/edit-post').toggleFeature('welcomeGuide');
 	});
 });
 Cypress.Commands.add('insertCoverBlock', () => {
@@ -76,10 +72,7 @@ Cypress.Commands.add('insertCoverBlock', () => {
 		.get('.components-dropdown-menu__menu button')
 		.contains('Code editor')
 		.click();
-	cy.get('textarea.editor-post-text-editor')
-		.focus()
-		.invoke('val', text)
-		.type('{enter}');
+	cy.get('textarea.editor-post-text-editor').focus().invoke('val', text).type('{enter}');
 	cy.get('.edit-post-text-editor__toolbar button')
 		.contains(/Exit Code Editor/i)
 		.click();
@@ -94,13 +87,7 @@ Cypress.Commands.add('editCurrentPost', () => {
 
 Cypress.Commands.add(
 	'insertPost',
-	(
-		title = 'Test',
-		content = 'Content',
-		type = 'post',
-		featured = false,
-		tags = false
-	) => {
+	(title = 'Test', content = 'Content', type = 'post', featured = false, tags = false) => {
 		let loginRoute = '/wp-admin/post-new.php';
 		if (type !== 'post') {
 			loginRoute += '?post_type=' + type;
@@ -112,18 +99,13 @@ Cypress.Commands.add(
 			cy.wait(500);
 			cy.get('button').contains('Featured image').click();
 			cy.get('.editor-post-featured-image__toggle').click();
-			cy.get('.media-frame')
-				.find('.media-menu-item')
-				.contains('Media Library')
-				.click({
-					force: true,
-				});
+			cy.get('.media-frame').find('.media-menu-item').contains('Media Library').click({
+				force: true,
+			});
 
-			cy.get('.attachments-browser .attachments > li.attachment')
-				.first()
-				.click({
-					force: true,
-				});
+			cy.get('.attachments-browser .attachments > li.attachment').first().click({
+				force: true,
+			});
 			cy.get('.media-button-select').click();
 		}
 
@@ -142,7 +124,7 @@ Cypress.Commands.add(
 		cy.get('.block-editor-rich-text__editable').type(content);
 		cy.get('.editor-post-publish-panel__toggle').click();
 		cy.updatePost();
-	}
+	},
 );
 Cypress.Commands.add('updatePost', () => {
 	cy.get('.editor-post-publish-button').click();
@@ -157,9 +139,7 @@ Cypress.Commands.add('getCustomizerControl', (slug) => {
 });
 
 Cypress.Commands.add('getCustomizerControlValue', (slug) => {
-	return cy
-		.window()
-		.then((win) => win.wp.customize.control(slug).setting.get());
+	return cy.window().then((win) => win.wp.customize.control(slug).setting.get());
 });
 
 /**
@@ -214,15 +194,9 @@ Cypress.Commands.add('setTypographyControl', (controlSelector, values) => {
 					// Make sure value is default.
 					cy.get('@' + control).should('have.value', value);
 					// Change the value.
-					changeNumberInputValue(
-						'@' + control,
-						values[control][device]
-					);
+					changeNumberInputValue('@' + control, values[control][device]);
 					// Value was changed?
-					cy.get('@' + control).should(
-						'have.value',
-						values[control][device]
-					);
+					cy.get('@' + control).should('have.value', values[control][device]);
 					// Reset to old value.
 					cy.get('@' + control)
 						.closest('.neve-responsive-sizing')
@@ -231,10 +205,7 @@ Cypress.Commands.add('setTypographyControl', (controlSelector, values) => {
 					// Make sure value has been reset.
 					cy.get('@' + control).should('have.value', value);
 					// Change the value.
-					changeNumberInputValue(
-						'@' + control,
-						values[control][device]
-					);
+					changeNumberInputValue('@' + control, values[control][device]);
 				});
 		});
 	});
@@ -244,62 +215,50 @@ Cypress.Commands.add('setTypographyControl', (controlSelector, values) => {
  * Capture and compare the fullpage snapshots.
  *
  */
-Cypress.Commands.add(
-	'captureDocument',
-	(generalMaskAndClip = true, screenShotName = false) => {
-		if (generalMaskAndClip) {
-			const maskElement =
-				'.elementor-element-31b9e15, .pikaday__display--pikaday, .elementor-widget-video, label[for="vscf_captcha"],.elementor-widget-google_maps,.pikaday__display,.elementor-video-iframe';
-			const clipElement =
-				'.widget_top_rated_products, .wpcf7-quiz-label, .eaw-typed-text,.product .related.products,.captcha_img,.elementor-element-38f7ff1e,.elementor-widget-container[style*="will-change"], .particles-js-canvas-el,.product_list_widget li + li, .exclusive.products';
-			cy.maskAndClip(maskElement, clipElement);
-		}
-		cy.window().then((cyWindow) =>
-			scrollToBottom({
-				remoteWindow: cyWindow,
-			})
-		);
-		cy.wait(5000);
-		cy.percySnapshot(screenShotName);
+Cypress.Commands.add('captureDocument', (generalMaskAndClip = true, screenShotName = false) => {
+	if (generalMaskAndClip) {
+		const maskElement =
+			'.elementor-element-31b9e15, .pikaday__display--pikaday, .elementor-widget-video, label[for="vscf_captcha"],.elementor-widget-google_maps,.pikaday__display,.elementor-video-iframe';
+		const clipElement =
+			'.widget_top_rated_products, .wpcf7-quiz-label, .eaw-typed-text,.product .related.products,.captcha_img,.elementor-element-38f7ff1e,.elementor-widget-container[style*="will-change"], .particles-js-canvas-el,.product_list_widget li + li, .exclusive.products';
+		cy.maskAndClip(maskElement, clipElement);
 	}
-);
+	cy.window().then((cyWindow) =>
+		scrollToBottom({
+			remoteWindow: cyWindow,
+		}),
+	);
+	cy.wait(5000);
+	cy.percySnapshot(screenShotName);
+});
 /**
  * Capture and compare the fullpage snapshots.
  *
  * @param {string} path The path to store the snapshot.
  */
-Cypress.Commands.add(
-	'maskAndClip',
-	(maskSelectors, clipSelectors, hideElements) => {
-		cy.get('body').then(($body) => {
-			// synchronously query from body
-			// to find which element was created
-			if ($body.find(maskSelectors).length) {
-				cy.get(maskSelectors).invoke(
-					'css',
-					'background',
-					'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACWBAMAAACWdajhAAAAG1BMVEUAAAD///+fn59fX18fHx/f398/Pz9/f3+/v78mHjoVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC00lEQVR4nO2WTW/TQBCGN7Hj9Nip68THWmo5x1Ir5ei0CnDstoA4OghEjg0Czlil8LeZmV3HCUlQIa64vI9UrT3exs+OZz+MAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHkeHHJvxP98bOnxCK2j9FRuv2xGH1tbX7Yj/L60sNiagE2Pe2eSzi8ub9fn49am2lzZ5Jn2Dh5ui1goe6O1I+nWTExOe0U0p0bFN7lvRmiaF/vW5/pNyTeuAQzmJNXPHfSui2GtFlmOp9Mt4TDnfDDn6QXp+20tLOdRMScYWSfmCXq1pZWlxKXM1T0ZRxW/t0vcw81rT5DzM2bVDcVQGdGvmfBPa2+JK/fbWYicxC1nJZMNVrYiuJUHuUY8KM0skg05rMZAsXnO/E2MmnG1jjznjpQyiFa1p4r7hnfz8qlafuHZy34r6QsvQaVluQr7uiIk8MPkRu3M72TGZHqlVX3HlxJKFYhn3Whqa+DbkzFTHTmWJavFDeSBj+u2X99IyUrNuoOtaGtLWJ1Yy1CwQ4ccz1eJL2+wYzz/ZlrQmMuDOplbHay2/N61qXbiYdlpuZIHdtqH9m5Zma4tWb6nlO65ma0r08/1Sy6uGltKvrdZWTwupKXmtqVLbnrRCNWhqixcPX/LiO3AdeAVpreTdTOzqtDtyWlzBM3KTk2diV9qIV8nFcGUmHkvMa2WyVM1SN7ZZO1pu3XKL1EDjNm7WKyvtQGbqSJenntcS9YNaayL5rGI/LffT8mVar/JZWr7kS3kNL/i6unM715bOo4o3mj69iSqvVaXllWU31epTXMw5nQf0I+SpULSgVe+J3XqP03Im+RQSWpDR7VJ3uox3vqbkKbaxz/rC/XMoE/FCymFvrZUTRDryH/dL4k4OY3tfnyD0XBA8pCOvJWeGIk+9Ft/JcUI6ngZ77dUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ6KX6rsak4Q9c5cAAAAAElFTkSuQmCC) #000 no-repeat center center'
-				);
-				cy.get(maskSelectors).invoke('css', 'color', 'transparent');
-				if ($body.find(maskSelectors).find('*').length > 0) {
-					cy.get(maskSelectors)
-						.children()
-						.invoke('css', 'visibility', 'hidden');
-				}
+Cypress.Commands.add('maskAndClip', (maskSelectors, clipSelectors, hideElements) => {
+	cy.get('body').then(($body) => {
+		// synchronously query from body
+		// to find which element was created
+		if ($body.find(maskSelectors).length) {
+			cy.get(maskSelectors).invoke(
+				'css',
+				'background',
+				'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACWBAMAAACWdajhAAAAG1BMVEUAAAD///+fn59fX18fHx/f398/Pz9/f3+/v78mHjoVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC00lEQVR4nO2WTW/TQBCGN7Hj9Nip68THWmo5x1Ir5ei0CnDstoA4OghEjg0Czlil8LeZmV3HCUlQIa64vI9UrT3exs+OZz+MAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHkeHHJvxP98bOnxCK2j9FRuv2xGH1tbX7Yj/L60sNiagE2Pe2eSzi8ub9fn49am2lzZ5Jn2Dh5ui1goe6O1I+nWTExOe0U0p0bFN7lvRmiaF/vW5/pNyTeuAQzmJNXPHfSui2GtFlmOp9Mt4TDnfDDn6QXp+20tLOdRMScYWSfmCXq1pZWlxKXM1T0ZRxW/t0vcw81rT5DzM2bVDcVQGdGvmfBPa2+JK/fbWYicxC1nJZMNVrYiuJUHuUY8KM0skg05rMZAsXnO/E2MmnG1jjznjpQyiFa1p4r7hnfz8qlafuHZy34r6QsvQaVluQr7uiIk8MPkRu3M72TGZHqlVX3HlxJKFYhn3Whqa+DbkzFTHTmWJavFDeSBj+u2X99IyUrNuoOtaGtLWJ1Yy1CwQ4ccz1eJL2+wYzz/ZlrQmMuDOplbHay2/N61qXbiYdlpuZIHdtqH9m5Zma4tWb6nlO65ma0r08/1Sy6uGltKvrdZWTwupKXmtqVLbnrRCNWhqixcPX/LiO3AdeAVpreTdTOzqtDtyWlzBM3KTk2diV9qIV8nFcGUmHkvMa2WyVM1SN7ZZO1pu3XKL1EDjNm7WKyvtQGbqSJenntcS9YNaayL5rGI/LffT8mVar/JZWr7kS3kNL/i6unM715bOo4o3mj69iSqvVaXllWU31epTXMw5nQf0I+SpULSgVe+J3XqP03Im+RQSWpDR7VJ3uox3vqbkKbaxz/rC/XMoE/FCymFvrZUTRDryH/dL4k4OY3tfnyD0XBA8pCOvJWeGIk+9Ft/JcUI6ngZ77dUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ6KX6rsak4Q9c5cAAAAAElFTkSuQmCC) #000 no-repeat center center',
+			);
+			cy.get(maskSelectors).invoke('css', 'color', 'transparent');
+			if ($body.find(maskSelectors).find('*').length > 0) {
+				cy.get(maskSelectors).children().invoke('css', 'visibility', 'hidden');
 			}
-			if ($body.find(clipSelectors).length) {
-				cy.get(clipSelectors).invoke('css', 'display', 'none');
-			}
-			if (
-				hideElements &&
-				hideElements.length > 0 &&
-				$body.find(hideElements).length
-			) {
-				cy.get(hideElements).invoke('css', 'visibility', 'hidden');
-			}
-		});
-	}
-);
+		}
+		if ($body.find(clipSelectors).length) {
+			cy.get(clipSelectors).invoke('css', 'display', 'none');
+		}
+		if (hideElements && hideElements.length > 0 && $body.find(hideElements).length) {
+			cy.get(hideElements).invoke('css', 'visibility', 'hidden');
+		}
+	});
+});
 
 Cypress.Commands.add('setCustomizeSettings', (to) => {
 	cy.goToCustomizer();
@@ -360,9 +319,7 @@ Cypress.Commands.add('aliasRestRoutes', () => {
  */
 Cypress.Commands.add('toggleElements', (show) => {
 	const icon = show ? 'dashicons-hidden' : 'dashicons-visibility';
-	cy.get('.ti-sortable-item-area .ti-sortable-item-toggle').each(function (
-		el
-	) {
+	cy.get('.ti-sortable-item-area .ti-sortable-item-toggle').each(function (el) {
 		cy.get(el)
 			.find('.dashicon')
 			.then(($icon) => {
@@ -380,9 +337,7 @@ Cypress.Commands.add('toggleElements', (show) => {
  * @example cy.getControl('neve_sidebar')
  */
 Cypress.Commands.add('getControl', (control) => {
-	cy.get(
-		'label.components-base-control__label[for="' + control + '"]'
-	).parent();
+	cy.get('label.components-base-control__label[for="' + control + '"]').parent();
 });
 
 Cypress.Commands.add('activateCheckbox', (checkboxSelector, checkboxText) => {
@@ -402,20 +357,16 @@ Cypress.Commands.add('activateCheckbox', (checkboxSelector, checkboxText) => {
  * @example cy.openNeveSidebar()
  */
 Cypress.Commands.add('openNeveSidebar', () => {
-	cy.get('button.components-button[aria-label="Neve Options"]').then(
-		($btn) => {
-			cy.get($btn)
-				.invoke('attr', 'aria-expanded')
-				.then((value) => {
-					if (value === true) {
-						return true;
-					}
-					cy.get(
-						'button.components-button[aria-label="Neve Options"]'
-					).click();
-				});
-		}
-	);
+	cy.get('button.components-button[aria-label="Neve Options"]').then(($btn) => {
+		cy.get($btn)
+			.invoke('attr', 'aria-expanded')
+			.then((value) => {
+				if (value === true) {
+					return true;
+				}
+				cy.get('button.components-button[aria-label="Neve Options"]').click();
+			});
+	});
 });
 
 /**
@@ -448,7 +399,7 @@ Cypress.Commands.add('deactivateClassicEditorPlugin', () => {
  */
 Cypress.Commands.add('matchContentWidth', (defaultWidth) => {
 	cy.get(
-		'.single-page-container .alignfull [class*="__inner-container"] > *, .single-page-container .alignwide [class*="__inner-container"] > *'
+		'.single-page-container .alignfull [class*="__inner-container"] > *, .single-page-container .alignwide [class*="__inner-container"] > *',
 	)
 		.invoke('width')
 		.should('be.eq', defaultWidth - 30); //we substract the padding.
@@ -492,9 +443,7 @@ Cypress.Commands.add('dropElAfter', (selector, moveFrom, moveTo) => {
  * @example cy.alignCenter()
  */
 Cypress.Commands.add('alignCenter', () => {
-	cy.get(
-		'#customize-control-logo_component_align button[aria-label="Center"]'
-	).click();
+	cy.get('#customize-control-logo_component_align button[aria-label="Center"]').click();
 
 	cy.get('#save').should('be.visible').click();
 });
@@ -521,9 +470,7 @@ Cypress.Commands.add('checkAlignCenter', () => {
  * @example cy.alignRight()
  */
 Cypress.Commands.add('alignRight', () => {
-	cy.get(
-		'#customize-control-logo_component_align button[aria-label="Right"]'
-	).click();
+	cy.get('#customize-control-logo_component_align button[aria-label="Right"]').click();
 
 	cy.get('#save').should('be.visible').click();
 });
@@ -538,8 +485,8 @@ Cypress.Commands.add('checkAlignRight', () => {
 
 	cy.get('.desktop-right')
 		.should('be.visible')
-		.and('have.class', 'mobile-left')
-		.and('have.class', 'tablet-left')
+		.and('not.have.class', 'mobile-left')
+		.and('not.have.class', 'tablet-left')
 		.find('.site-logo')
 		.should('be.visible');
 });
@@ -553,16 +500,8 @@ Cypress.Commands.add('checkMarginFrontEnd', () => {
 	cy.visit('/');
 
 	cy.get('.builder-item--primary-menu').should('be.visible');
-	cy.get('.builder-item--primary-menu').should(
-		'have.css',
-		'margin-top',
-		'3px'
-	);
-	cy.get('.builder-item--primary-menu').should(
-		'have.css',
-		'margin-bottom',
-		'-1px'
-	);
+	cy.get('.builder-item--primary-menu').should('have.css', 'margin-top', '3px');
+	cy.get('.builder-item--primary-menu').should('have.css', 'margin-bottom', '-1px');
 });
 
 /**
@@ -574,12 +513,8 @@ Cypress.Commands.add('checkPaddingFrontEnd', () => {
 	cy.visit('/');
 
 	cy.get('.site-logo').should('be.visible');
-	cy.get('.site-logo')
-		.should('have.css', 'padding-top')
-		.and('contain', '11px');
-	cy.get('.site-logo')
-		.should('have.css', 'padding-bottom')
-		.and('contain', '9px');
+	cy.get('.site-logo').should('have.css', 'padding-top').and('contain', '11px');
+	cy.get('.site-logo').should('have.css', 'padding-bottom').and('contain', '9px');
 });
 
 /**
@@ -589,20 +524,13 @@ Cypress.Commands.add('checkPaddingFrontEnd', () => {
  * @param transformMatcher
  * @param weightMatcher
  */
-Cypress.Commands.add(
-	'testTransformAndWeight',
-	(elem, transformMatcher, weightMatcher) => {
-		// Test text transform.
-		cy.get(elem)
-			.should('have.css', 'text-transform')
-			.and('match', new RegExp(transformMatcher, 'g'));
+Cypress.Commands.add('testTransformAndWeight', (elem, transformMatcher, weightMatcher) => {
+	// Test text transform.
+	cy.get(elem).should('have.css', 'text-transform').and('match', new RegExp(transformMatcher, 'g'));
 
-		// Test font weight
-		cy.get(elem)
-			.should('have.css', 'font-weight')
-			.and('match', new RegExp(weightMatcher, 'g'));
-	}
-);
+	// Test font weight
+	cy.get(elem).should('have.css', 'font-weight').and('match', new RegExp(weightMatcher, 'g'));
+});
 
 /**
  * Test font size, line height and letter spacing
@@ -622,13 +550,11 @@ Cypress.Commands.add(
 			.and('match', new RegExp(fontSizeMatcher + 'px', 'g'));
 
 		// Test line height.
-		cy.get(elem)
-			.should('have.css', 'line-height')
-			.and('match', new RegExp(lineHeightMatcher, 'g'));
+		cy.get(elem).should('have.css', 'line-height').and('match', new RegExp(lineHeightMatcher, 'g'));
 
 		// Test letter spacing.
 		cy.get(elem)
 			.should('have.css', 'letter-spacing')
 			.and('match', new RegExp(letterSpacingMatcher, 'g'));
-	}
+	},
 );
