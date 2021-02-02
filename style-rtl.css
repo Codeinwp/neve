@@ -950,6 +950,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .menu-item-nav-search .close-responsive-search svg {
+  fill: var(--nv-text-color);
   min-width: 25px;
   min-height: 25px;
 }
@@ -1010,7 +1011,6 @@ blockquote.wp-block-quote.is-style-large cite {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
 }
 
 .menu-item-nav-search.canvas .nv-nav-search .close-container {
@@ -1052,11 +1052,11 @@ blockquote.wp-block-quote.is-style-large cite {
   position: absolute;
   left: 0;
   width: auto;
-  background: #fff;
   padding: 10px 20px;
   border-top: 1px solid var(--nv-light-bg);
   cursor: default;
   z-index: 100;
+  background-color: var(--nv-site-bg);
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
