@@ -28,6 +28,7 @@
 		border: none !important;
 
 		svg {
+		  	fill: var(--nv-text-color);
 			min-width: 25px;
 			min-height: 25px;
 		}
@@ -93,7 +94,6 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: #fff;
 
 		.close-container {
 			position: absolute;
@@ -137,12 +137,13 @@
 	position: absolute;
 	right: 0;
 	width: auto;
-	background: #fff;
 	padding: $spacing-xs $spacing-sm;
 	border-top: $muted-border;
 	cursor: default;
 	z-index: 100;
-	@include soft-box-shadow();
+	background-color: var(--nv-site-bg);
+
+  @include soft-box-shadow();
 
 	.menu-item-nav-search.active & {
 		opacity: 1;
