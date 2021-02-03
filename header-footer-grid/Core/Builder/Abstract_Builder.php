@@ -1104,15 +1104,11 @@ abstract class Abstract_Builder implements Builder {
 			$classes[] = 'col-' . $width;
 
 			foreach ( $align as $device_slug => $align_slug ) {
+				$builder_id          = $this->get_id();
+				$alignment_is_mobile = in_array( $device_slug, [ 'tablet', 'mobile' ], true );
 				// Make sure we don't apply device-specific classes if the rows aren't visible on respective device.
-				if ( $device === $device_slug || ( in_array(
-					$device_slug,
-					[
-						'tablet',
-						'mobile',
-					],
-					true 
-				) && $device === 'mobile' ) ) {
+				// Footer has same rows on all devices.
+				if ( $builder_id === 'footer' || ( $device === $device_slug || ( $alignment_is_mobile && $device === 'mobile' ) ) ) {
 					$classes[] = $device_slug . '-' . $align_slug;
 				}
 			}
