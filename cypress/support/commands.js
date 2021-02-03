@@ -456,8 +456,8 @@ Cypress.Commands.add('checkAlignCenter', () => {
 
 	cy.get('.desktop-center')
 		.should('be.visible')
-		.and('have.class', 'mobile-left')
-		.and('have.class', 'tablet-left')
+		.and('not.have.class', 'mobile-left')
+		.and('not.have.class', 'tablet-left')
 		.find('.site-logo')
 		.should('be.visible');
 });
