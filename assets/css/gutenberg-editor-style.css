@@ -320,6 +320,30 @@
   font-size: .85em;
 }
 
+.editor-styles-wrapper .wp-block code {
+  background-color: #d0effb;
+  border-radius: 5px;
+  border: 1px solid var(--nv-light-bg);
+  padding: 0 3px;
+  color: #333;
+}
+
+.editor-styles-wrapper .wp-block-code {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 5px;
+  border: 1px solid var(--nv-light-bg);
+  white-space: pre-wrap;
+  font-size: .9em;
+  line-height: 2em;
+}
+
+.editor-styles-wrapper .wp-block-code code {
+  background: transparent;
+  border: none;
+  color: #333;
+}
+
 @media (min-width: 769px) {
   .editor-styles-wrapper .wp-block {
     font-size: 16px;
