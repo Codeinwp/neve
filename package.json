@@ -45,7 +45,7 @@
 		"conventional-changelog-simple-preset": "^1.0.14",
 		"core-js": "^3.6.5",
 		"cross-env": "^7.0.2",
-		"cypress": "5.1.0",
+		"cypress": "6.4.0",
 		"cypress-file-upload": "^4.0.7",
 		"eslint": "^7.18.0",
 		"eslint-config-prettier": "^7.2.0",

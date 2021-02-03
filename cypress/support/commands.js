@@ -309,13 +309,11 @@ Cypress.Commands.add('setCustomizeSettings', (to) => {
 		});
 	});
 	cy.wait(500);
-	cy.server()
-		.route('POST', Cypress.config().baseUrl + '/wp-admin/admin-ajax.php')
-		.as('save');
+	cy.intercept('POST', '/wp-admin/admin-ajax.php').as('save');
 	cy.get('#save').click();
-	cy.wait('@save').then((r) => {
-		expect(r.response.body.success).to.be.true;
-		expect(r.status).to.equal(200);
+	cy.wait('@save').then((interception) => {
+		expect(interception.response.body.success).to.be.true;
+		expect(interception.response.statusCode).to.equal(200);
 	});
 });
 
@@ -349,7 +347,7 @@ Cypress.Commands.add('goToCustomizer', () => {
  * @example cy.aliasRestRoutes()
  */
 Cypress.Commands.add('aliasRestRoutes', () => {
-	cy.server().route('POST', '/wp-admin/admin-ajax.php').as('customizerSave');
+	cy.intercept('POST', '/wp-admin/admin-ajax.php').as('customizerSave');
 });
 
 /**
