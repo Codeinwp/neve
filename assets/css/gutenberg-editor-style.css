@@ -2,9 +2,13 @@
   background-color: var(--nv-site-bg);
 }
 
-.editor-styles-wrapper .editor-post-title__input::placeholder {
+.editor-styles-wrapper .editor-post-title__input::placeholder, .editor-styles-wrapper .block-list-appender textarea::placeholder {
   color: var(--nv-text-color);
   opacity: .5;
+}
+
+.editor-styles-wrapper .block-list-appender textarea {
+  color: var(--nv-text-color);
 }
 
 .editor-styles-wrapper h1.wp-block, .editor-styles-wrapper h1, .editor-styles-wrapper h2.wp-block, .editor-styles-wrapper h2, .editor-styles-wrapper h3.wp-block, .editor-styles-wrapper h3, .editor-styles-wrapper h4.wp-block, .editor-styles-wrapper h4, .editor-styles-wrapper h5.wp-block, .editor-styles-wrapper h5, .editor-styles-wrapper h6.wp-block, .editor-styles-wrapper h6 {
