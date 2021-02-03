@@ -65,7 +65,7 @@ class Layout_Sidebar extends Base_Customizer {
 					'choices'         => $this->sidebar_layout_choices( 'neve_default_sidebar_layout' ),
 					'active_callback' => array( $this, 'sidewide_options_active_callback' ),
 				),
-				'Neve\Customizer\Controls\Radio_Image'
+				'\Neve\Customizer\Controls\React\Radio_Image'
 			)
 		);
 
@@ -228,7 +228,7 @@ class Layout_Sidebar extends Base_Customizer {
 						'choices'         => $this->sidebar_layout_choices( $control_id ),
 						'active_callback' => array( $this, 'advanced_options_active_callback' ),
 					),
-					'Neve\Customizer\Controls\Radio_Image'
+					'\Neve\Customizer\Controls\React\Radio_Image'
 				)
 			);
 			$priority += 30;
