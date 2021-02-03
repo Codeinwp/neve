@@ -12,17 +12,16 @@ describe('General UI', () => {
 	beforeEach(() => {
 		cy.login();
 		cy.visit('/wp-admin/themes.php?page=neve-welcome');
-		cy.server().route('GET', '/wp-json/wp/v2/settings/').as('getSettings');
-		cy.server()
-			.route('POST', '/wp-json/wp/v2/settings/')
-			.as('saveSettings');
+		cy.intercept('GET', '/wp-json/wp/v2/settings/').as('getSettings');
+		cy.intercept('POST', '/wp-json/wp/v2/settings/').as('saveSettings');
 	});
 
 	it('Placeholder Loading', () => {
 		cy.get('.mock-dash').should('exist.and.be.visible');
-		cy.wait('@getSettings').then((req) => {
-			cy.get('.mock-dash').should('not.exist.and.be.visible');
-			expect(req.status).to.equal(200);
+		cy.reload();
+		cy.wait('@getSettings').then((interception) => {
+			cy.get('.mock-dash').should('not.exist');
+			expect(interception.response.statusCode).to.equal(200);
 		});
 	});
 
@@ -30,9 +29,9 @@ describe('General UI', () => {
 		cy.get('.sidebar-section input').as('loggerToggle');
 		cy.get('@loggerToggle').should('not.be.checked');
 		cy.get('@loggerToggle').check();
-		cy.wait('@saveSettings').then((req) => {
-			expect(req.status).to.equal(200);
-			expect(req.response.body.neve_logger_flag).to.equal('yes');
+		cy.wait('@saveSettings').then((interception) => {
+			expect(interception.response.statusCode).to.equal(200);
+			expect(interception.response.body.neve_logger_flag).to.equal('yes');
 		});
 
 		cy.reload();

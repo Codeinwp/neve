@@ -88,9 +88,9 @@ describe('Header Builder Padding Control', () => {
 	});
 
 	it('Sets up Padding for the Logo Component', () => {
-		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
-			expect(req.status).to.equal(200);
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
 			cy.checkPaddingFrontEnd();
 		});
 	});

@@ -1,5 +1,5 @@
 describe('AMP Check', () => {
-	it('Sets up search icon on menu top row', () => {
+	before('Sets up search icon on menu top row', () => {
 		cy.goToCustomizer();
 		cy.aliasRestRoutes();
 
@@ -20,9 +20,9 @@ describe('AMP Check', () => {
 		).click();
 
 		cy.get('#save').should('be.visible').click();
-		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
-			expect(req.status).to.equal(200);
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
 		});
 		cy.visit('/wp-admin');
 		cy.get('#wp-admin-bar-logout > a').click({
