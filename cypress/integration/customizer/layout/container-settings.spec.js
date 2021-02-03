@@ -51,9 +51,9 @@ describe('Container Settings', () => {
 		});
 
 		cy.get('#save').click();
-		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
-			expect(req.status).to.equal(200);
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
 		});
 	});
 
@@ -86,9 +86,9 @@ describe('Container Settings', () => {
 			'full-width'
 		);
 		cy.get('#save').click();
-		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
-			expect(req.status).to.equal(200);
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
 		});
 	});
 
@@ -131,9 +131,9 @@ describe('Container Settings', () => {
 				.click();
 		});
 		cy.get('#save').click();
-		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
-			expect(req.status).to.equal(200);
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
 		});
 	});
 });

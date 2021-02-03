@@ -22,18 +22,18 @@ describe('Header Builder Alignment Control', () => {
 	});
 	it('Sets up alignment for the Primary Menu to Center', () => {
 		cy.alignCenter();
-		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
-			expect(req.status).to.equal(200);
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
 		});
 		cy.checkAlignCenter();
 	});
 
 	it('Sets up alignment for the Primary Menu to Right', () => {
 		cy.alignRight();
-		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
-			expect(req.status).to.equal(200);
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
 		});
 		cy.checkAlignRight();
 	});

@@ -11,9 +11,9 @@ describe('Sidebar/Content Settings', () => {
 			.type('{selectall}')
 			.type(50);
 		cy.get('#save').click();
-		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
-			expect(req.status).to.equal(200);
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
 		});
 	});
 
@@ -24,9 +24,9 @@ describe('Sidebar/Content Settings', () => {
 			force: true,
 		});
 		cy.get('#save').click();
-		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
-			expect(req.status).to.equal(200);
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
 		});
 		cy.reload();
 		cy.get('#accordion-panel-neve_layout').click();
@@ -36,9 +36,9 @@ describe('Sidebar/Content Settings', () => {
 			.contains('Reset')
 			.click();
 		cy.get('#save').click();
-		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
-			expect(req.status).to.equal(200);
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
 		});
 	});
 	it('Sidebar site wide on front end.', () => {
@@ -90,9 +90,9 @@ describe('Sidebar/Content Settings', () => {
 		cy.get('#accordion-section-neve_sidebar').click();
 		cy.get('#customize-control-neve_advanced_layout_options input').click();
 		cy.get('#save').click();
-		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
-			expect(req.status).to.equal(200);
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
 		});
 		cy.reload();
 		cy.get('#accordion-panel-neve_layout').click();
@@ -126,9 +126,9 @@ describe('Sidebar/Content Settings', () => {
 			.type(50);
 
 		cy.get('#save').click();
-		cy.wait('@customizerSave').then((req) => {
-			expect(req.response.body.success).to.be.true;
-			expect(req.status).to.equal(200);
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
 		});
 	});
 
