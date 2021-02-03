@@ -20,7 +20,7 @@ const RadioImageComponent = ({ control }) => {
 			const buttonClass = classnames([{ active: choice === value }]);
 			return (
 				<div className="option" key={index}>
-					<label>
+					<label data-option={choice}>
 						<button
 							className={buttonClass}
 							onClick={(e) => {
