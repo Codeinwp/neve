@@ -2,7 +2,7 @@ name: Build and Deploy StoryBook 🚀
 on:
   push:
     branches:
-      - ci/storybook
+      - development
 
 jobs:
   build-and-deploy:
