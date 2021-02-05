@@ -37,7 +37,7 @@ class Comments extends Base_View {
 		if ( have_comments() ) { ?>
 			<div class="nv-comments-title-wrap">
 				<h2 class="comments-title">
-					<?php echo esc_html( $this->get_comments_title() ); ?>
+					<?php echo wp_kses_post( $this->get_comments_title() ); ?>
 				</h2>
 			</div>
 
