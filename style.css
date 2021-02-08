@@ -561,10 +561,6 @@ blockquote.wp-block-quote.is-style-large cite {
   border: unset;
 }
 
-.wp-block-code code {
-  background-color: inherit;
-}
-
 .wp-block-button a {
   text-decoration: none !important;
 }
@@ -955,6 +951,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .menu-item-nav-search .close-responsive-search svg {
+  fill: var(--nv-text-color);
   min-width: 25px;
   min-height: 25px;
 }
@@ -1015,7 +1012,6 @@ blockquote.wp-block-quote.is-style-large cite {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
 }
 
 .menu-item-nav-search.canvas .nv-nav-search .close-container {
@@ -1057,11 +1053,11 @@ blockquote.wp-block-quote.is-style-large cite {
   position: absolute;
   right: 0;
   width: auto;
-  background: #fff;
   padding: 10px 20px;
   border-top: 1px solid var(--nv-light-bg);
   cursor: default;
   z-index: 100;
+  background-color: var(--nv-site-bg);
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1891,11 +1887,12 @@ table td, table th {
   border-bottom: 1px solid var(--nv-light-bg);
 }
 
-p code {
+code {
   background: #d0effb;
   border-radius: 5px;
   border: 1px solid var(--nv-light-bg);
   padding: 0 3px;
+  color: #333;
 }
 
 pre {
@@ -1908,6 +1905,11 @@ pre {
   white-space: pre-wrap;
   font-size: .9em;
   line-height: 2em;
+}
+
+pre code {
+  border: 0;
+  background: transparent;
 }
 
 .nv-content-wrap:after, .excerpt-wrap:after {
