@@ -116,19 +116,21 @@ class Config {
 	const CSS_PROP_CUSTOM_BTN_TYPE           = 'btn-type';
 	const CSS_PROP_CUSTOM_FONT_WEIGHT_FAMILY = 'btn-type';
 
-	const CSS_SELECTOR_BTN_PRIMARY_NORMAL    = 'buttons_primary_normal';
-	const CSS_SELECTOR_BTN_PRIMARY_HOVER     = 'buttons_primary_hover';
-	const CSS_SELECTOR_BTN_SECONDARY_NORMAL  = 'buttons_secondary_normal';
-	const CSS_SELECTOR_BTN_SECONDARY_HOVER   = 'buttons_secondary_hover';
-	const CSS_SELECTOR_BTN_PRIMARY_PADDING   = 'buttons_primary_padding';
-	const CSS_SELECTOR_BTN_SECONDARY_PADDING = 'buttons_secondary_padding';
-	const CSS_SELECTOR_TYPEFACE_GENERAL      = 'typeface_general';
-	const CSS_SELECTOR_TYPEFACE_H1           = 'typeface_h1';
-	const CSS_SELECTOR_TYPEFACE_H2           = 'typeface_h2';
-	const CSS_SELECTOR_TYPEFACE_H3           = 'typeface_h3';
-	const CSS_SELECTOR_TYPEFACE_H4           = 'typeface_h4';
-	const CSS_SELECTOR_TYPEFACE_H5           = 'typeface_h5';
-	const CSS_SELECTOR_TYPEFACE_H6           = 'typeface_h6';
+	const CSS_SELECTOR_BTN_PRIMARY_NORMAL          = 'buttons_primary_normal';
+	const CSS_SELECTOR_BTN_PRIMARY_HOVER           = 'buttons_primary_hover';
+	const CSS_SELECTOR_BTN_SECONDARY_NORMAL        = 'buttons_secondary_normal';
+	const CSS_SELECTOR_BTN_SECONDARY_HOVER         = 'buttons_secondary_hover';
+	const CSS_SELECTOR_BTN_SECONDARY_DEFAULT       = 'buttons_secondary_default';
+	const CSS_SELECTOR_BTN_SECONDARY_DEFAULT_HOVER = 'buttons_secondary_default_hover';
+	const CSS_SELECTOR_BTN_PRIMARY_PADDING         = 'buttons_primary_padding';
+	const CSS_SELECTOR_BTN_SECONDARY_PADDING       = 'buttons_secondary_padding';
+	const CSS_SELECTOR_TYPEFACE_GENERAL            = 'typeface_general';
+	const CSS_SELECTOR_TYPEFACE_H1                 = 'typeface_h1';
+	const CSS_SELECTOR_TYPEFACE_H2                 = 'typeface_h2';
+	const CSS_SELECTOR_TYPEFACE_H3                 = 'typeface_h3';
+	const CSS_SELECTOR_TYPEFACE_H4                 = 'typeface_h4';
+	const CSS_SELECTOR_TYPEFACE_H5                 = 'typeface_h5';
+	const CSS_SELECTOR_TYPEFACE_H6                 = 'typeface_h6';
 
 	const CSS_SELECTOR_ARCHIVE_POST_TITLE   = 'archive_entry_title';
 	const CSS_SELECTOR_ARCHIVE_POST_EXCERPT = 'archive_entry_summary';
@@ -151,36 +153,38 @@ class Config {
 	 * @var array Mapper.
 	 */
 	public static $css_selectors_map = [
-		self::CSS_SELECTOR_TYPEFACE_H1               => 'h1, .single h1.entry-title',
-		self::CSS_SELECTOR_TYPEFACE_H2               => 'h2',
-		self::CSS_SELECTOR_TYPEFACE_H3               => 'h3, .woocommerce-checkout h3',
-		self::CSS_SELECTOR_TYPEFACE_H4               => 'h4',
-		self::CSS_SELECTOR_TYPEFACE_H5               => 'h5',
-		self::CSS_SELECTOR_TYPEFACE_H6               => 'h6',
-		self::CSS_SELECTOR_TYPEFACE_GENERAL          => 'body, .site-title',
-		self::CSS_SELECTOR_BTN_PRIMARY_PADDING       => '.button.button-primary, .wp-block-button.is-style-primary .wp-block-button__link,  .wc-block-grid .wp-block-button .wp-block-button__link',
-		self::CSS_SELECTOR_BTN_SECONDARY_PADDING     => '.button.button-secondary, .wp-block-button.is-style-secondary .wp-block-button__link',
-		self::CSS_SELECTOR_BTN_PRIMARY_NORMAL        => '.button.button-primary,
+		self::CSS_SELECTOR_TYPEFACE_H1                 => 'h1, .single h1.entry-title',
+		self::CSS_SELECTOR_TYPEFACE_H2                 => 'h2',
+		self::CSS_SELECTOR_TYPEFACE_H3                 => 'h3, .woocommerce-checkout h3',
+		self::CSS_SELECTOR_TYPEFACE_H4                 => 'h4',
+		self::CSS_SELECTOR_TYPEFACE_H5                 => 'h5',
+		self::CSS_SELECTOR_TYPEFACE_H6                 => 'h6',
+		self::CSS_SELECTOR_TYPEFACE_GENERAL            => 'body, .site-title',
+		self::CSS_SELECTOR_BTN_PRIMARY_PADDING         => '.button.button-primary, .wp-block-button.is-style-primary .wp-block-button__link,  .wc-block-grid .wp-block-button .wp-block-button__link',
+		self::CSS_SELECTOR_BTN_SECONDARY_PADDING       => '.button.button-secondary:not(.secondary-default), .wp-block-button.is-style-secondary .wp-block-button__link',
+		self::CSS_SELECTOR_BTN_PRIMARY_NORMAL          => '.button.button-primary,
 				button, input[type=button],
 				.btn, input[type="submit"],
 				/* Buttons in navigation */
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a,
 				.menu li.button.button-primary > a,  .wp-block-button.is-style-primary .wp-block-button__link,  .wc-block-grid .wp-block-button .wp-block-button__link',
-		self::CSS_SELECTOR_BTN_PRIMARY_HOVER         => '.button.button-primary:hover,
+		self::CSS_SELECTOR_BTN_PRIMARY_HOVER           => '.button.button-primary:hover,
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a:hover,
 				.menu li.button.button-primary > a:hover, .wp-block-button.is-style-primary .wp-block-button__link:hover,  .wc-block-grid .wp-block-button .wp-block-button__link:hover',
-		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL      => '.button.button-secondary, .cart-off-canvas .button.nv-close-cart-sidebar,  .wp-block-button.is-style-secondary .wp-block-button__link',
-		self::CSS_SELECTOR_BTN_SECONDARY_HOVER       => '.button.button-secondary:hover, .cart-off-canvas .button.nv-close-cart-sidebar:hover,  .wp-block-button.is-style-secondary .wp-block-button__link:hover',
-		self::CSS_SELECTOR_ARCHIVE_POST_TITLE        => '.blog .blog-entry-title, .archive .blog-entry-title',
-		self::CSS_SELECTOR_ARCHIVE_POST_EXCERPT      => '.blog .entry-summary, .archive .entry-summary, .blog .post-pages-links',
-		self::CSS_SELECTOR_ARCHIVE_POST_META         => '.blog .nv-meta-list li, .archive .nv-meta-list li',
-		self::CSS_SELECTOR_SINGLE_POST_TITLE         => '.single h1.entry-title',
-		self::CSS_SELECTOR_SINGLE_POST_META          => '.single .nv-meta-list li',
-		self::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE => '.single .comment-reply-title',
-		self::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING  => 'form:not([role="search"]):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code), form textarea, form select',
-		self::CSS_SELECTOR_FORM_INPUTS               => 'form input:read-write, form textarea, form select, form select option, form.wp-block-search input.wp-block-search__input',
-		self::CSS_SELECTOR_FORM_INPUTS_LABELS        => 'form label, .wpforms-container .wpforms-field-label',
-		self::CSS_SELECTOR_FORM_BUTTON               => 'form input[type="submit"]',
-		self::CSS_SELECTOR_FORM_SEARCH_INPUTS        => 'form.search-form input:read-write',
+		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL        => '.button.button-secondary:not(.secondary-default),  .wp-block-button.is-style-secondary .wp-block-button__link',
+		self::CSS_SELECTOR_BTN_SECONDARY_HOVER         => '.button.button-secondary:not(.secondary-default):hover,  .wp-block-button.is-style-secondary .wp-block-button__link:hover',
+		self::CSS_SELECTOR_BTN_SECONDARY_DEFAULT       => '.button.button-secondary.secondary-default',
+		self::CSS_SELECTOR_BTN_SECONDARY_DEFAULT_HOVER => '.button.button-secondary.secondary-default:hover',
+		self::CSS_SELECTOR_ARCHIVE_POST_TITLE          => '.blog .blog-entry-title, .archive .blog-entry-title',
+		self::CSS_SELECTOR_ARCHIVE_POST_EXCERPT        => '.blog .entry-summary, .archive .entry-summary, .blog .post-pages-links',
+		self::CSS_SELECTOR_ARCHIVE_POST_META           => '.blog .nv-meta-list li, .archive .nv-meta-list li',
+		self::CSS_SELECTOR_SINGLE_POST_TITLE           => '.single h1.entry-title',
+		self::CSS_SELECTOR_SINGLE_POST_META            => '.single .nv-meta-list li',
+		self::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE   => '.single .comment-reply-title',
+		self::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING    => 'form:not([role="search"]):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code), form textarea, form select',
+		self::CSS_SELECTOR_FORM_INPUTS                 => 'form input:read-write, form textarea, form select, form select option, form.wp-block-search input.wp-block-search__input',
+		self::CSS_SELECTOR_FORM_INPUTS_LABELS          => 'form label, .wpforms-container .wpforms-field-label',
+		self::CSS_SELECTOR_FORM_BUTTON                 => 'form input[type="submit"]',
+		self::CSS_SELECTOR_FORM_SEARCH_INPUTS          => 'form.search-form input:read-write',
 	];
 }

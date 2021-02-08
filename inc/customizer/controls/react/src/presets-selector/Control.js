@@ -1,9 +1,9 @@
 /* jshint esversion: 6 */
 
-import PresetsSelector from './PresetsSelector';
+import PresetsSelectorComponent from './PresetsSelectorComponent';
 import { render } from '@wordpress/element';
-export const PresetsSelectorControl = wp.customize.Control.extend( {
+export const PresetsSelectorControl = wp.customize.Control.extend({
 	renderContent: function renderContent() {
-		render( <PresetsSelector control={ this } />, this.container[ 0 ] );
+		render(<PresetsSelectorComponent control={this} />, this.container[0]);
 	},
-} );
+});

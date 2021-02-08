@@ -4,7 +4,7 @@ describe("Sidebar/Content Settings", () => {
     cy.aliasRestRoutes();
     cy.get("#accordion-panel-neve_layout").click();
     cy.get("#accordion-section-neve_sidebar").click();
-    cy.get('label[for="neve_default_sidebar_layout-left"]').click();
+    cy.get('#customize-control-neve_default_sidebar_layout label[data-option="left"]').click();
     cy.get("#customize-control-neve_sitewide_content_width input[type=number]")
       .type("{selectall}")
       .type(50);
@@ -29,7 +29,7 @@ describe("Sidebar/Content Settings", () => {
     cy.reload();
     cy.get("#accordion-panel-neve_layout").click();
     cy.get("#accordion-section-neve_sidebar").click();
-    cy.get('label[for="neve_default_sidebar_layout-right"]').click();
+    cy.get('#customize-control-neve_default_sidebar_layout label[data-option="right"]').click();
     cy.get("#customize-control-neve_sitewide_content_width button")
       .contains("Reset")
       .click();
@@ -90,21 +90,21 @@ describe("Sidebar/Content Settings", () => {
         multiple: true,
       });
 
-    cy.get('[for="neve_blog_archive_sidebar_layout-left"]').click();
+    cy.get('#customize-control-neve_blog_archive_sidebar_layout [data-option="left"]').click();
     cy.get(
       "#customize-control-neve_blog_archive_content_width input[type=number]"
     )
       .type("{selectall}")
       .type(50);
 
-    cy.get('[for="neve_single_post_sidebar_layout-left"]').click();
+    cy.get('#customize-control-neve_single_post_sidebar_layout [data-option="left"]').click();
     cy.get(
       "#customize-control-neve_single_post_content_width input[type=number]"
     )
       .type("{selectall}")
       .type(50);
 
-    cy.get('[for="neve_other_pages_sidebar_layout-left"]').click();
+    cy.get('#customize-control-neve_other_pages_sidebar_layout [data-option="left"]').click();
     cy.get(
       "#customize-control-neve_other_pages_content_width input[type=number]"
     )

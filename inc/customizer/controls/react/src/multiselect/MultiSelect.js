@@ -1,88 +1,76 @@
-import PropTypes from 'prop-types';
-
-import { Tooltip, Dashicon } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { plusCircleFilled, cancelCircleFilled } from '@wordpress/icons';
+import { Tooltip, Icon } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-const MultiSelect = ( { control } ) => {
-	const { choices } = control.params;
-	const [ value, setValue ] = useState( control.setting.get() );
+import PropTypes from 'prop-types';
 
-	const addable = Object.keys( choices )
-		.filter( ( choice ) => ! value.includes( choice ) )
-		.map( ( slug ) => {
-			return (
-				<Tooltip key={ slug } text={ __( 'Add item', 'neve' ) }>
-					<button
-						type="button"
-						className="token"
-						onClick={ () => {
-							const newVal = [ ...value, slug ];
-							setValue( newVal );
-							control.setting.set( newVal );
-						} }
-					>
-						<span className="title">{ choices[ slug ] }</span>
-						<Dashicon icon="plus-alt" />
-					</button>
-				</Tooltip>
-			);
-		} );
-	const values = value
-		.filter( ( slug ) => choices[ slug ] )
-		.map( ( slug ) => {
-			return (
-				<Tooltip key={ slug } text={ __( 'Remove Item', 'neve' ) }>
-					<button
-						className="token"
-						type="button"
-						onClick={ () => {
-							const newVal = [ ...value ].filter(
-								( v ) => v !== slug
-							);
-							setValue( newVal );
-							control.setting.set( newVal );
-						} }
-					>
-						<span className="title">{ choices[ slug ] }</span>
-						<Dashicon icon="dismiss" />
-					</button>
-				</Tooltip>
-			);
-		} );
+const MultiSelect = ({ choices, onChange, currentValue, label }) => {
+	const Pill = ({ slug, isRemove = false }) => {
+		const buttonIcon = isRemove ? cancelCircleFilled : plusCircleFilled;
+		return (
+			<Tooltip
+				key={slug}
+				text={
+					isRemove
+						? __('Remove Item', 'neve')
+						: __('Add item', 'neve')
+				}
+			>
+				<button
+					type="button"
+					className="token"
+					onClick={() => {
+						const newVal = isRemove
+							? [...currentValue].filter((v) => v !== slug)
+							: [...currentValue, slug];
+						onChange(newVal);
+					}}
+				>
+					<span className="title">{choices[slug]}</span>
+					<Icon icon={buttonIcon} size={18} />
+				</button>
+			</Tooltip>
+		);
+	};
+
+	const addable = Object.keys(choices)
+		.filter((choice) => !currentValue.includes(choice))
+		.map((slug, i) => <Pill key={i} slug={slug} />);
+
+	const values = currentValue
+		.filter((slug) => choices[slug])
+		.map((slug, i) => <Pill key={i} slug={slug} isRemove={true} />);
 
 	return (
 		<div className="neve-white-background-control neve-multiselect">
-			<span className="customize-control-title">
-				{ control.params.label }
-			</span>
+			<span className="customize-control-title">{label}</span>
 			<div className="selected-options">
-				{ values.length ? (
+				{values.length ? (
 					values
 				) : (
 					<span className="placeholder">
-						{ __(
-							'Add items by clicking the ones below.',
-							'neve'
-						) }
+						{__('Add items by clicking the ones below.', 'neve')}
 					</span>
-				) }
+				)}
 			</div>
 			<div className="available-options">
-				{ addable.length > 0 ? (
+				{addable.length > 0 ? (
 					addable
 				) : (
 					<span className="placeholder">
-						{ __( 'All items are already selected.', 'neve' ) }
+						{__('All items are already selected.', 'neve')}
 					</span>
-				) }
+				)}
 			</div>
 		</div>
 	);
 };
 
 MultiSelect.propTypes = {
-	control: PropTypes.object.isRequired,
+	choices: PropTypes.object.isRequired,
+	onChange: PropTypes.func.isRequired,
+	currentValue: PropTypes.array.isRequired,
+	label: PropTypes.string,
 };
 
 export default MultiSelect;

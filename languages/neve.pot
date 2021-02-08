@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-02-08T15:07:59+00:00\n"
+"POT-Creation-Date: 2021-02-08T15:24:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -287,7 +287,6 @@ msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:303
 #: header-footer-grid/Core/Settings/Manager.php:181
-#: inc/customizer/options/layout_blog.php:117
 #: inc/customizer/options/main.php:53
 msgid "Layout"
 msgstr ""
@@ -296,6 +295,7 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:309
 #: inc/admin/metabox/main.php:39
 #: inc/customizer/options/layout_container.php:134
+#: inc/customizer/options/layout_sidebar.php:125
 #: inc/admin/metabox/build/index.js:3691
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:189
 msgid "Full Width"
@@ -324,7 +324,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Logo.php:205
 #: inc/compatibility/elementor.php:116
 #: inc/core/front_end.php:115
-#: inc/customizer/options/layout_blog.php:184
+#: inc/customizer/options/layout_blog.php:183
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:77
 msgid "Text Color"
@@ -449,14 +449,14 @@ msgid "Mobile menu content"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
+#: inc/customizer/options/layout_sidebar.php:129
 #: inc/admin/metabox/build/index.js:3656
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:153
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:98
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:120
-#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:52
-#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:84
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:108
+#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:45
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:126
 msgid "Left"
 msgstr ""
 
@@ -465,14 +465,14 @@ msgid "Center"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
+#: inc/customizer/options/layout_sidebar.php:133
 #: inc/admin/metabox/build/index.js:3663
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:155
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:88
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:110
-#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:50
-#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:74
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:106
+#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:43
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:116
 msgid "Right"
 msgstr ""
 
@@ -501,10 +501,9 @@ msgstr ""
 #: header-footer-grid/Core/Components/Abstract_Component.php:865
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:83
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:105
-#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:49
-#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:69
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:105
+#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:42
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:111
 msgid "Top"
 msgstr ""
 
@@ -515,10 +514,9 @@ msgstr ""
 #: header-footer-grid/Core/Components/Abstract_Component.php:873
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:93
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:115
-#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:51
-#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:79
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:107
+#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:44
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:121
 msgid "Bottom"
 msgstr ""
 
@@ -538,8 +536,8 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:116
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:226
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:236
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:44
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:54
 msgid "Text"
 msgstr ""
 
@@ -561,8 +559,9 @@ msgstr ""
 #: header-footer-grid/Core/Components/SearchResponsive.php:184
 #: inc/customizer/options/form_fields.php:379
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:43
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:91
+#: inc/customizer/controls/react/src/background/Background.js:20
+#: inc/customizer/controls/react/src/background/Background.js:70
+#: inc/customizer/controls/react/src/common/ColorControl.js:56
 msgid "Color"
 msgstr ""
 
@@ -685,7 +684,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:177
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:126
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:122
 msgid "Search"
 msgstr ""
 
@@ -749,7 +748,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Search.php:120
 #: header-footer-grid/Core/Components/SearchResponsive.php:284
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:263
+#: inc/customizer/controls/react/src/typeface/Typeface.js:145
 msgid "Font Size"
 msgstr ""
 
@@ -757,7 +756,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/SearchResponsive.php:358
 #: inc/customizer/options/form_fields.php:223
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:170
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:149
 msgid "Border Width"
 msgstr ""
 
@@ -765,7 +764,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/SearchResponsive.php:415
 #: inc/customizer/options/form_fields.php:275
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:128
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:130
 msgid "Border Radius"
 msgstr ""
 
@@ -777,8 +776,8 @@ msgstr ""
 #: header-footer-grid/Core/Components/Search.php:306
 #: header-footer-grid/Core/Components/SearchResponsive.php:470
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:227
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:237
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:45
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:55
 msgid "Text and Border"
 msgstr ""
 
@@ -827,8 +826,8 @@ msgstr ""
 #: inc/admin/metabox/build/index.js:3679
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:175
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:62
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:180
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:58
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:176
 msgid "Default"
 msgstr ""
 
@@ -911,7 +910,7 @@ msgid "Archive URL"
 msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:543
-#: inc/customizer/options/layout_blog.php:391
+#: inc/customizer/options/layout_blog.php:390
 #: inc/views/partials/post_meta.php:129
 msgid "Author"
 msgstr ""
@@ -1007,7 +1006,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Settings/Manager.php:185
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:337
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:179
 msgid "Style"
 msgstr ""
 
@@ -1337,7 +1336,8 @@ msgstr ""
 
 #: inc/customizer/options/colors_background.php:91
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/GlobalColorsPicker.js:28
+#: inc/customizer/controls/react/src/common/GlobalColorsPicker.js:19
+#: inc/customizer/controls/react/src/common/GlobalColorsPicker.js:30
 msgid "Global Colors"
 msgstr ""
 
@@ -1387,7 +1387,7 @@ msgid "Customize the default button styles"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:80
-#: inc/customizer/options/layout_sidebar.php:152
+#: inc/customizer/options/layout_sidebar.php:163
 msgid "Blog / Archive"
 msgstr ""
 
@@ -1395,95 +1395,90 @@ msgstr ""
 msgid "Blog Layout"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:117
-#: inc/customizer/options/typography.php:115
-msgid "Blog"
-msgstr ""
-
-#: inc/customizer/options/layout_blog.php:122
+#: inc/customizer/options/layout_blog.php:121
 msgid "List"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:126
+#: inc/customizer/options/layout_blog.php:125
 msgid "Covers"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:130
+#: inc/customizer/options/layout_blog.php:129
 msgid "Grid"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:153
+#: inc/customizer/options/layout_blog.php:152
 msgid "Columns"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:214
+#: inc/customizer/options/layout_blog.php:213
 msgid "Alternating layout"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:233
+#: inc/customizer/options/layout_blog.php:232
 msgid "Enable Masonry"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:251
+#: inc/customizer/options/layout_blog.php:250
 msgid "Ordering and Content"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:271
+#: inc/customizer/options/layout_blog.php:270
 msgid "Post Pagination"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:276
+#: inc/customizer/options/layout_blog.php:275
 msgid "Number"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:277
+#: inc/customizer/options/layout_blog.php:276
 msgid "Infinite Scroll"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:290
+#: inc/customizer/options/layout_blog.php:289
 #: inc/customizer/options/layout_single_post.php:68
 msgid "Thumbnail"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:291
+#: inc/customizer/options/layout_blog.php:290
 #: inc/customizer/options/layout_single_post.php:67
 msgid "Title & Meta"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:292
+#: inc/customizer/options/layout_blog.php:291
 msgid "Excerpt"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:303
+#: inc/customizer/options/layout_blog.php:302
 msgid "Post Content Order"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:320
+#: inc/customizer/options/layout_blog.php:319
 msgid "Excerpt Length"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:343
+#: inc/customizer/options/layout_blog.php:342
 msgid "Thumbnail Shadow"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:370
+#: inc/customizer/options/layout_blog.php:369
 #: inc/admin/metabox/build/index.js:3789
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:315
 msgid "Post Meta"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:392
+#: inc/customizer/options/layout_blog.php:391
 #: inc/customizer/options/layout_single_product.php:107
 #: inc/views/partials/post_meta.php:130
 msgid "Category"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:393
+#: inc/customizer/options/layout_blog.php:392
 #: inc/views/partials/post_meta.php:131
 msgid "Date"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:394
+#: inc/customizer/options/layout_blog.php:393
 #: inc/customizer/options/layout_single_post.php:72
 #: inc/views/partials/post_meta.php:132
 #: inc/admin/metabox/build/index.js:3793
@@ -1491,19 +1486,19 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:406
+#: inc/customizer/options/layout_blog.php:405
 msgid "Meta Order"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:424
+#: inc/customizer/options/layout_blog.php:423
 msgid "Show Author Avatar"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:586
+#: inc/customizer/options/layout_blog.php:585
 msgid "Customize Typography for the Archive page"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:588
+#: inc/customizer/options/layout_blog.php:587
 msgid "here"
 msgstr ""
 
@@ -1543,39 +1538,39 @@ msgstr ""
 msgid "Enable Advanced Options"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:153
+#: inc/customizer/options/layout_sidebar.php:164
 #: inc/customizer/options/layout_single_post.php:42
 #: inc/customizer/options/typography.php:335
 msgid "Single Post"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:160
+#: inc/customizer/options/layout_sidebar.php:171
 msgid "Shop / Archive"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:161
+#: inc/customizer/options/layout_sidebar.php:172
 #: inc/customizer/options/layout_single_product.php:52
 msgid "Single Product"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:165
+#: inc/customizer/options/layout_sidebar.php:176
 msgid "Others"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:224
+#: inc/customizer/options/layout_sidebar.php:235
 msgid "Sidebar Layout"
 msgstr ""
 
 #. translators: %s is edit page link
-#: inc/customizer/options/layout_sidebar.php:282
+#: inc/customizer/options/layout_sidebar.php:293
 msgid "Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to \"Inherit\"."
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:286
+#: inc/customizer/options/layout_sidebar.php:297
 msgid "edit"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:323
+#: inc/customizer/options/layout_sidebar.php:334
 msgid "Content Width (%)"
 msgstr ""
 
@@ -1612,8 +1607,8 @@ msgstr ""
 #: inc/admin/metabox/build/index.js:3649
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:151
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:197
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:231
+#: inc/customizer/controls/react/src/typeface/Typeface.js:82
+#: inc/customizer/controls/react/src/typeface/Typeface.js:115
 msgid "None"
 msgstr ""
 
@@ -1623,6 +1618,10 @@ msgstr ""
 
 #: inc/customizer/options/typography.php:111
 msgid "Headings"
+msgstr ""
+
+#: inc/customizer/options/typography.php:115
+msgid "Blog"
 msgstr ""
 
 #: inc/customizer/options/typography.php:150
@@ -2152,8 +2151,8 @@ msgstr ""
 #: inc/admin/metabox/build/index.js:3642
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:149
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:61
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:179
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:57
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:175
 msgid "Inherit"
 msgstr ""
 
@@ -2245,6 +2244,7 @@ msgid "Toggle"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/dynamic-fields/dynamic-field-inserter.js:48
 msgid "Insert Dynamic Tag"
 msgstr ""
 
@@ -2264,128 +2264,133 @@ msgid "Mobile"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/ColorControl.js:80
+#: inc/customizer/controls/react/src/common/ColorControl.js:79
 msgid "Clear"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:44
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:118
+#: inc/customizer/controls/react/src/background/Background.js:21
+#: inc/customizer/controls/react/src/background/Background.js:95
 msgid "Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:104
+#: inc/customizer/controls/react/src/background/Background.js:83
 msgid "Use Featured Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:158
+#: inc/customizer/controls/react/src/background/Background.js:133
 msgid "Remove Fallback Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:162
+#: inc/customizer/controls/react/src/background/Background.js:134
 msgid "Remove Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:117
+#: inc/customizer/controls/react/src/background/Background.js:94
 msgid "Fallback Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:122
+#: inc/customizer/controls/react/src/background/Background.js:99
 msgid "Select from the Media Library or upload a new image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:139
+#: inc/customizer/controls/react/src/background/Background.js:113
 msgid "Add Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:184
+#: inc/customizer/controls/react/src/background/Background.js:152
 msgid "Fixed Background"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:197
+#: inc/customizer/controls/react/src/background/Background.js:165
 msgid "Overlay Color"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:207
+#: inc/customizer/controls/react/src/background/Background.js:174
 msgid "Overlay Opacity"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:25
+#: inc/customizer/controls/react/src/common/Sizing.js:87
 msgid "Unlink Values"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:26
+#: inc/customizer/controls/react/src/common/Sizing.js:88
 msgid "Link Values"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:73
+#: inc/customizer/controls/react/src/common/Sizing.js:92
+msgid "Link values"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Sizing.js:125
 msgid "Reset all Values"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:74
+#: inc/customizer/controls/react/src/common/Sizing.js:126
 msgid "Reset Value"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:194
-msgid "Weight"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:228
+#: inc/customizer/controls/react/src/typeface/Typeface.js:79
 msgid "Transform"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:234
+#: inc/customizer/controls/react/src/typeface/Typeface.js:85
 msgid "Capitalize"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:238
+#: inc/customizer/controls/react/src/typeface/Typeface.js:89
 msgid "Lowercase"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:242
+#: inc/customizer/controls/react/src/typeface/Typeface.js:93
 msgid "Uppercase"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:310
+#: inc/customizer/controls/react/src/typeface/Typeface.js:112
+msgid "Weight"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/Typeface.js:185
 msgid "Line Height"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:361
+#: inc/customizer/controls/react/src/typeface/Typeface.js:227
 msgid "Letter Spacing"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:167
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:163
 msgid "Font Family"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:151
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:147
 msgid "No results."
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:198
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:194
 msgid "Loading…"
 msgstr ""
 
@@ -2415,8 +2420,8 @@ msgid "Plain"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:223
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:233
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:41
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:51
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:61
 msgid "Background"
 msgstr ""
@@ -2502,114 +2507,116 @@ msgid "Style 6"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:221
-msgid "Normal"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:231
-msgid "Hover"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:306
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:15
 msgid "Filled"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:311
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:20
 msgid "Outline"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:45
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:39
+msgid "Normal"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:49
+msgid "Hover"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:27
 msgid "Search Header Presets…"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:70
+#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:49
 msgid "No header presets found"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/multiselect/MultiSelect.js:15
-msgid "Add item"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:35
 msgid "Remove Item"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:64
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:16
+msgid "Add item"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:52
 msgid "Add items by clicking the ones below."
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:76
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:61
 msgid "All items are already selected."
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:21
+#: inc/customizer/controls/react/src/ordering/Ordering.js:18
+#: inc/customizer/controls/react/src/ordering/Ordering.js:20
 msgid "Drag to Reorder"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:35
+#: inc/customizer/controls/react/src/ordering/Ordering.js:48
+#: inc/customizer/controls/react/src/ordering/Ordering.js:50
 msgid "Toggle Visibility"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:65
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:67
 msgid "Remove Palette"
 msgstr ""
 
 #. translators: %s - name of palette that will be deleted.
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:77
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:79
 msgid "Are you sure you want to delete the %s palette?"
 msgstr ""
 
 #. translators: %s - name of palette that will be deleted.
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:85
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:87
 msgid "If this is the currently active palette, the current palette will be switched to the Base one."
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:96
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:98
 msgid "Delete"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:89
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:105
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:91
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:107
 msgid "Cancel"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/Accordion.js:18
+#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:39
 msgid "Palette Colors"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:77
+#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:78
 msgid "Reset all to default"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:61
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:63
 msgid "Palette Title"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:67
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:69
 msgid "Extend from:"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:98
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:101
 msgid "Add"
 msgstr ""

@@ -3,11 +3,12 @@
 .neve-radio-image {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
-
+	flex-wrap: wrap;
 	.option {
 		text-align: center;
-		padding: 0 5px;
+		padding: 3px;
+	  	box-sizing: border-box;
+	  	width:33.33%;
 	}
 
 	label {

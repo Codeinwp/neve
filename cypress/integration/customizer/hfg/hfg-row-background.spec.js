@@ -25,7 +25,7 @@ describe("Header Row Background Control", () => {
       .click();
 
     // Alias control.
-    cy.get("#customize-control-hfg_header_layout_main_background").as("bgCtrl");
+    cy.get("#customize-control-hfg_header_layout_main_background .neve-background-control").as("bgCtrl");
 
     cy.get("@bgCtrl").should("be.visible");
     cy.get("@bgCtrl").children().should("have.length", 3);
@@ -55,7 +55,7 @@ describe("Header Row Background Control", () => {
     });
   });
 
-  it("Background image control on front end.", function () {
+  it("Background image control on front end.", () => {
     cy.visit("/");
     cy.get('.header-main[data-show-on="desktop"] .header--row-inner').as("row");
 
