@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-02-08T13:45:09+00:00\n"
+"POT-Creation-Date: 2021-02-08T15:24:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -339,36 +339,36 @@ msgstr ""
 msgid "Section Content"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1279
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1286
 #: header-footer-grid/Core/Components/SearchResponsive.php:113
 msgid "Open Behaviour"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1284
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1291
 msgid "Slide from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1285
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1292
 msgid "Slide from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1286
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1293
 msgid "Pull from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1287
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1294
 msgid "Pull from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1288
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1295
 msgid "Full Canvas"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1289
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1296
 msgid "Slide Down"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1304
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1311
 msgid "Sidebar Width"
 msgstr ""
 
