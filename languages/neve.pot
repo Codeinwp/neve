@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-29T09:36:26+00:00\n"
+"POT-Creation-Date: 2021-02-08T11:01:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -36,6 +36,7 @@ msgstr ""
 
 #: dashboard/inc/Main.php:128
 #: dashboard/inc/Main.php:129
+#: inc/admin/metabox/build/index.js:3962
 #: inc/admin/metabox/src/components/Sidebar.js:55
 msgid "Options"
 msgstr ""
@@ -295,6 +296,7 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:309
 #: inc/admin/metabox/main.php:39
 #: inc/customizer/options/layout_container.php:134
+#: inc/admin/metabox/build/index.js:3691
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:189
 msgid "Full Width"
 msgstr ""
@@ -303,6 +305,7 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:310
 #: inc/admin/metabox/main.php:38
 #: inc/customizer/options/layout_container.php:133
+#: inc/admin/metabox/build/index.js:3685
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:182
 msgid "Contained"
 msgstr ""
@@ -320,7 +323,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
 #: inc/compatibility/elementor.php:116
-#: inc/core/front_end.php:114
+#: inc/core/front_end.php:115
 #: inc/customizer/options/layout_blog.php:184
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:77
@@ -446,6 +449,7 @@ msgid "Mobile menu content"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
+#: inc/admin/metabox/build/index.js:3656
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:153
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/bundle/controls.js:2
@@ -460,6 +464,7 @@ msgid "Center"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
+#: inc/admin/metabox/build/index.js:3663
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:155
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/bundle/controls.js:2
@@ -583,22 +588,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:508
+#: inc/core/front_end.php:509
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:505
+#: inc/core/front_end.php:506
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:507
+#: inc/core/front_end.php:508
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:506
+#: inc/core/front_end.php:507
 msgid "Footer Two"
 msgstr ""
 
@@ -649,7 +654,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Nav.php:43
 #: header-footer-grid/Core/Components/Nav.php:221
 #: header-footer-grid/templates/components/component-nav.php:26
-#: inc/core/front_end.php:71
+#: inc/core/front_end.php:72
 msgid "Primary Menu"
 msgstr ""
 
@@ -711,7 +716,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/NavFooter.php:41
 #: header-footer-grid/Core/Components/NavFooter.php:138
 #: header-footer-grid/templates/components/component-nav-footer.php:23
-#: inc/core/front_end.php:72
+#: inc/core/front_end.php:73
 msgid "Footer Menu"
 msgstr ""
 
@@ -801,7 +806,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/SecondNav.php:41
 #: header-footer-grid/Core/Components/SecondNav.php:136
 #: header-footer-grid/templates/components/component-nav-secondary.php:23
-#: inc/core/front_end.php:73
+#: inc/core/front_end.php:74
 msgid "Secondary Menu"
 msgstr ""
 
@@ -816,6 +821,7 @@ msgstr ""
 
 #. translators: %s is the header name
 #: header-footer-grid/Core/Customizer.php:270
+#: inc/admin/metabox/build/index.js:3679
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:175
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:58
@@ -1031,6 +1037,7 @@ msgstr ""
 
 #: inc/admin/metabox/main.php:41
 #: inc/customizer/options/layout_container.php:43
+#: inc/admin/metabox/build/index.js:3670
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:165
 msgid "Container"
 msgstr ""
@@ -1048,7 +1055,8 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:498
+#: inc/core/front_end.php:499
+#: inc/admin/metabox/build/index.js:3633
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:141
 msgid "Sidebar"
 msgstr ""
@@ -1058,11 +1066,13 @@ msgid "Components"
 msgstr ""
 
 #: inc/admin/metabox/main.php:71
+#: inc/admin/metabox/build/index.js:3823
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:353
 msgid "Disable Header"
 msgstr ""
 
 #: inc/admin/metabox/main.php:76
+#: inc/admin/metabox/build/index.js:3841
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:379
 msgid "Disable Title"
 msgstr ""
@@ -1072,6 +1082,7 @@ msgid "Disable Featured Image"
 msgstr ""
 
 #: inc/admin/metabox/main.php:88
+#: inc/admin/metabox/build/index.js:3832
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:365
 msgid "Disable Footer"
 msgstr ""
@@ -1175,63 +1186,63 @@ msgid "Two columns with text"
 msgstr ""
 
 #: inc/compatibility/elementor.php:111
-#: inc/core/front_end.php:94
+#: inc/core/front_end.php:95
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:72
 msgid "Primary Accent"
 msgstr ""
 
 #: inc/compatibility/elementor.php:112
-#: inc/core/front_end.php:98
+#: inc/core/front_end.php:99
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:73
 msgid "Secondary Accent"
 msgstr ""
 
 #: inc/compatibility/elementor.php:113
-#: inc/core/front_end.php:102
+#: inc/core/front_end.php:103
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:74
 msgid "Site Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:114
-#: inc/core/front_end.php:106
+#: inc/core/front_end.php:107
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:75
 msgid "Light Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:115
-#: inc/core/front_end.php:110
+#: inc/core/front_end.php:111
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:76
 msgid "Dark Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:117
-#: inc/core/front_end.php:118
+#: inc/core/front_end.php:119
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:78
 msgid "Text Dark Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:118
-#: inc/core/front_end.php:122
+#: inc/core/front_end.php:123
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:79
 msgid "Extra Color 1"
 msgstr ""
 
 #: inc/compatibility/elementor.php:119
-#: inc/core/front_end.php:126
+#: inc/core/front_end.php:127
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:80
 msgid "Extra Color 2"
 msgstr ""
 
 #: inc/compatibility/elementor.php:291
-#: inc/core/front_end.php:89
+#: inc/core/front_end.php:90
 msgid "Theme"
 msgstr ""
 
@@ -1282,7 +1293,7 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: inc/core/front_end.php:499
+#: inc/core/front_end.php:500
 msgid "Shop Sidebar"
 msgstr ""
 
@@ -1454,6 +1465,7 @@ msgid "Thumbnail Shadow"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:370
+#: inc/admin/metabox/build/index.js:3789
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:315
 msgid "Post Meta"
 msgstr ""
@@ -1472,6 +1484,7 @@ msgstr ""
 #: inc/customizer/options/layout_blog.php:394
 #: inc/customizer/options/layout_single_post.php:72
 #: inc/views/partials/post_meta.php:132
+#: inc/admin/metabox/build/index.js:3793
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:319
 msgid "Comments"
 msgstr ""
@@ -1565,12 +1578,14 @@ msgid "Content Width (%)"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:69
+#: inc/admin/metabox/build/index.js:3791
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:317
 msgid "Content"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:70
 #: inc/views/partials/post_meta.php:237
+#: inc/admin/metabox/build/index.js:3792
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:318
 msgid "Tags"
 msgstr ""
@@ -1592,6 +1607,7 @@ msgid "Title"
 msgstr ""
 
 #: inc/customizer/options/layout_single_product.php:124
+#: inc/admin/metabox/build/index.js:3649
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:151
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/typeface/Typeface.js:82
@@ -1802,6 +1818,10 @@ msgstr ""
 
 #: inc/views/pluggable/pagination.php:163
 msgid "next"
+msgstr ""
+
+#: inc/views/product_layout.php:61
+msgid "Out of stock"
 msgstr ""
 
 #: inc/views/template_parts.php:251
@@ -2122,15 +2142,12 @@ msgstr ""
 msgid "Could not Update Option. Please try again."
 msgstr ""
 
-#: inc/admin/metabox/src/components/controls/SortableItems.js:26
-#: inc/admin/metabox/src/components/controls/SortableItems.js:96
-msgid "Toggle"
-msgstr ""
-
+#: inc/admin/metabox/build/index.js:3629
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:136
 msgid "Page Layout"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3642
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:149
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:57
@@ -2138,68 +2155,91 @@ msgstr ""
 msgid "Inherit"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3695
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:197
 msgid "Custom Content Width (%)"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3731
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:238
 msgid "Page Title"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3734
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:242
 msgid "Title alignment"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3765
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:282
 msgid "Author Avatar"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3774
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:297
 msgid "Reading Time"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3788
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:314
 msgid "Post Title"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3790
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:316
 msgid "Featured Image"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3794
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:320
 msgid "Post Navigation"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3800
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:326
 msgid "Author Biography"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3801
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:327
 msgid "Related Posts"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3802
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:328
 msgid "Sharing Icons"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3810
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:336
 msgid "Elements"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3854
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:397
 msgid "Reset all options to default"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3863
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:406
 msgid "Return to customizer settings"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3927
 #: inc/admin/metabox/src/components/Sidebar.js:16
 msgid "Open Neve meta sidebar"
 msgstr ""
 
+#: inc/admin/metabox/build/index.js:3959
 #: inc/admin/metabox/src/components/Sidebar.js:53
 msgid "Neve Options"
+msgstr ""
+
+#: inc/admin/metabox/build/index.js:4042
+#: inc/admin/metabox/build/index.js:4110
+#: inc/admin/metabox/src/components/controls/SortableItems.js:26
+#: inc/admin/metabox/src/components/controls/SortableItems.js:96
+msgid "Toggle"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1

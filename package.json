@@ -1,7 +1,7 @@
 {
   "name": "neve",
   "nicename": "Neve",
-	"version": "2.10.0",
+  "version": "2.10.0",
   "description": "Neve theme by ThemeIsle",
   "category": "themes",
   "repository": {
@@ -59,8 +59,8 @@
     "conventional-changelog-simple-preset": "^1.0.14",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
-    	"css-loader": "^5.0.1",
-	  	"cypress": "6.4.0",
+	"css-loader": "^5.0.1",
+	"cypress": "6.4.0",
     "cypress-file-upload": "^4.0.7",
 	"cypress-storybook": "^0.5.0",
 	"eslint": "^7.18.0",
