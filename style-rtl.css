@@ -805,7 +805,11 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .caret {
   margin-right: 5px;
-  font-size: .65em;
+}
+
+.caret svg {
+  width: 1em !important;
+  height: 1em !important;
 }
 
 .nv-nav-wrap {
