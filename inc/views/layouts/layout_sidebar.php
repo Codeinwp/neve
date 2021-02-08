@@ -144,7 +144,7 @@ class Layout_Sidebar extends Base_View {
 		$label        = apply_filters( 'neve_filter_sidebar_close_button_text', __( 'Close', 'neve' ), $slug );
 		$button_attrs = apply_filters( 'neve_filter_sidebar_close_button_data_attrs', '', $slug );
 
-		return '<div class="sidebar-header"><span class="nv-sidebar-toggle in-sidebar button button-secondary" ' . $button_attrs . '>' . esc_html( $label ) . '</span></div>';
+		return '<div class="sidebar-header"><span class="nv-sidebar-toggle in-sidebar button button-secondary secondary-default" ' . $button_attrs . '>' . esc_html( $label ) . '</span></div>';
 	}
 
 	/**

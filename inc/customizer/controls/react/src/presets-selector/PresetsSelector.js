@@ -1,22 +1,12 @@
 /* jshint esversion: 6 */
-
 import PropTypes from 'prop-types';
-import { maybeParseJson } from '../common/common';
 
-import { Component } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import { Tooltip } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-class PresetsSelector extends Component {
-	constructor( props ) {
-		super( props );
-
-		this.state = {
-			search: '',
-		};
-
-		this.replaceSettings = this.replaceSettings.bind( this );
-	}
+const PresetsSelector = ({ presets, onSelect }) => {
+	const [search, setSearch] = useState('');
 
 	/**
 	 * You can get the value in the console with this command:
@@ -25,107 +15,46 @@ class PresetsSelector extends Component {
 	 *
 	 * @return {*}
 	 */
-	getPresets() {
-		const { presets } = this.props.control.params;
+	const filteredPresets = presets.filter((preset) =>
+		preset.label.toLowerCase().includes(search.toLowerCase())
+	);
 
-		return presets.filter( ( preset ) => {
-			return preset.label
-				.toLowerCase()
-				.includes( this.state.search.toLowerCase() );
-		} );
-	}
-
-	render() {
-		const presets = this.getPresets();
-		return (
-			<div className="neve-preset-selector">
-				<div className="search">
-					<input
-						type="search"
-						placeholder={ __( 'Search Header Presets…', 'neve' ) }
-						onChange={ ( e ) => {
-							this.setState( { search: e.target.value } );
-						} }
-					/>
-				</div>
-				{ presets.length > 0 ? (
-					presets.map( ( preset, index ) => {
-						return (
-							<Tooltip key={ index } text={ preset.label }>
-								<button
-									onClick={ ( e ) => {
-										e.preventDefault();
-										this.replaceSettings( preset.setup );
-									} }
-								>
-									<img
-										src={ preset.image }
-										alt={ preset.label }
-									/>
-								</button>
-							</Tooltip>
-						);
-					} )
-				) : (
-					<p>{ __( 'No header presets found', 'neve' ) }</p>
-				) }
+	return (
+		<div className="neve-preset-selector">
+			<div className="search">
+				<input
+					type="search"
+					placeholder={__('Search Header Presets…', 'neve')}
+					onChange={(e) => {
+						setSearch(e.target.value);
+					}}
+				/>
 			</div>
-		);
-	}
-
-	replaceSettings( setup ) {
-		setup = maybeParseJson( setup );
-		if ( typeof NeveProReactCustomize === 'undefined' ) {
-			Object.keys( setup ).map( ( themeMod ) => {
-				if ( themeMod === 'hfg_header_layout' ) {
-					wp.customize
-						.control( themeMod )
-						.setting.set( setup[ themeMod ] );
-					document.dispatchEvent(
-						new CustomEvent( 'neve-changed-builder-value', {
-							detail: {
-								value: maybeParseJson( setup[ themeMod ] ),
-								id: 'header',
-							},
-						} )
+			{filteredPresets.length > 0 ? (
+				filteredPresets.map((preset, index) => {
+					return (
+						<Tooltip key={index} text={preset.label}>
+							<button
+								onClick={(e) => {
+									e.preventDefault();
+									onSelect(preset.setup);
+								}}
+							>
+								<img src={preset.image} alt={preset.label} />
+							</button>
+						</Tooltip>
 					);
-					return false;
-				}
-				if ( ! wp.customize.control( themeMod ) ) return false;
-				if (
-					[ 'text', 'textarea', 'select' ].includes(
-						wp.customize.control( themeMod ).params.type
-					)
-				) {
-					wp.customize
-						.control( themeMod )
-						.setting.set( setup[ themeMod ] );
-					return false;
-				}
-
-				document.dispatchEvent(
-					new CustomEvent( 'neve-changed-customizer-value', {
-						detail: {
-							value: setup[ themeMod ] || '',
-							id: themeMod,
-						},
-					} )
-				);
-			} );
-			return false;
-		}
-		document.dispatchEvent(
-			new CustomEvent( 'neve-preset-changed', {
-				detail: {
-					themeMods: setup,
-				},
-			} )
-		);
-	}
-}
+				})
+			) : (
+				<p>{__('No header presets found', 'neve')}</p>
+			)}
+		</div>
+	);
+};
 
 PresetsSelector.propTypes = {
-	control: PropTypes.object.isRequired,
+	presets: PropTypes.array.isRequired,
+	onSelect: PropTypes.func.isRequired,
 };
 
 export default PresetsSelector;

@@ -114,7 +114,6 @@ class Layout_Blog extends Base_Customizer {
 					'sanitize_callback' => [ $this, 'sanitize_blog_layout' ],
 				],
 				[
-					'label'    => esc_html__( 'Blog', 'neve' ) . ' ' . esc_html__( 'Layout', 'neve' ),
 					'section'  => 'neve_blog_archive_layout',
 					'priority' => 11,
 					'choices'  => [

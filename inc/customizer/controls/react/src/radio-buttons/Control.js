@@ -3,12 +3,8 @@
 import RadioButtonsComponent from './RadioButtonsComponent.js';
 import { render } from '@wordpress/element';
 
-export const RadioButtonsControl = wp.customize.Control.extend( {
+export const RadioButtonsControl = wp.customize.Control.extend({
 	renderContent: function renderContent() {
-		const control = this;
-		render(
-			<RadioButtonsComponent control={ control } />,
-			control.container[ 0 ]
-		);
+		render(<RadioButtonsComponent control={this} />, this.container[0]);
 	},
-} );
+});

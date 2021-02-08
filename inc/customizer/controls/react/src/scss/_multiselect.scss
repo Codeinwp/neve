@@ -8,7 +8,7 @@
 	flex-wrap: wrap;
 	.placeholder {
 	  user-select: none;
-	  color: #777;
+	  color: #555;
 	  margin-bottom: 5px;
 	}
 	.token {
@@ -42,8 +42,11 @@
 	}
 
 	.title {
-	  height: 100%;
-	  margin-right: 3px;
+	  margin-right: 5px;
+	}
+
+	svg {
+	  fill: currentColor;
 	}
   }
 }

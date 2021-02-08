@@ -3,12 +3,8 @@
 import RadioImageComponent from './RadioImageComponent.js';
 import { render } from '@wordpress/element';
 
-export const RadioImageControl = wp.customize.Control.extend( {
+export const RadioImageControl = wp.customize.Control.extend({
 	renderContent: function renderContent() {
-		const control = this;
-		render(
-			<RadioImageComponent control={ control } />,
-			control.container[ 0 ]
-		);
+		render(<RadioImageComponent control={this} />, this.container[0]);
 	},
-} );
+});
