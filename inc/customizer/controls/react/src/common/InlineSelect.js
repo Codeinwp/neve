@@ -1,15 +1,14 @@
 import { SelectControl } from '@wordpress/components';
 
-const InlineSelect = ( { value, onChange, options, label } ) => {
+const InlineSelect = ({ value, onChange, options, label }) => {
 	return (
 		<div className="select-inline font-weight">
-			{ label && (
-				<span className="customize-control-title">{ label }</span>
-			) }
+			{label && <span className="customize-control-title">{label}</span>}
 			<SelectControl
-				value={ value }
-				onChange={ onChange }
-				options={ options }
+				aria-label={label}
+				value={value}
+				onChange={onChange}
+				options={options}
 			/>
 		</div>
 	);

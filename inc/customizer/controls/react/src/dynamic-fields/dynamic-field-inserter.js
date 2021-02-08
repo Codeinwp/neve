@@ -1,51 +1,53 @@
 /* jshint esversion: 6 */
-/* global NeveReactCustomize */
 import PropTypes from 'prop-types';
 import { __ } from '@wordpress/i18n';
 import { DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 
-const DynamicFieldInserter = ( { onSelect, allowedOptionsTypes } ) => {
+const DynamicFieldInserter = ({
+	options = [],
+	onSelect,
+	allowedOptionsTypes,
+}) => {
 	const getOptions = () => {
-		const options = [];
-		const allOptions = NeveReactCustomize?.dynamicTags?.options || [];
+		const optionGroups = [];
 
-		allOptions.forEach( ( optionGroup, groupIndex ) => {
+		options.forEach((optionGroup, groupIndex) => {
 			const children = [];
-			Object.keys( optionGroup.controls ).forEach( ( slug, index ) => {
+			Object.keys(optionGroup.controls).forEach((slug, index) => {
 				if (
-					! allowedOptionsTypes.includes(
-						optionGroup.controls[ slug ].type
+					!allowedOptionsTypes.includes(
+						optionGroup.controls[slug].type
 					)
 				) {
 					return false;
 				}
 				children.push(
 					<MenuItem
-						key={ index }
-						onClick={ () => {
-							onSelect( slug, optionGroup.controls[ slug ].type );
-						} }
+						key={index}
+						onClick={() => {
+							onSelect(slug, optionGroup.controls[slug].type);
+						}}
 					>
-						{ optionGroup.controls[ slug ].label }
+						{optionGroup.controls[slug].label}
 					</MenuItem>
 				);
-			} );
+			});
 
-			options.push(
-				<MenuGroup key={ groupIndex } label={ optionGroup.label }>
-					{ children }
+			optionGroups.push(
+				<MenuGroup key={groupIndex} label={optionGroup.label}>
+					{children}
 				</MenuGroup>
 			);
-		} );
-		return options;
+		});
+		return optionGroups;
 	};
 
 	return (
 		<DropdownMenu
 			icon="image-filter"
-			label={ __( 'Insert Dynamic Tag', 'neve' ) }
+			label={__('Insert Dynamic Tag', 'neve')}
 		>
-			{ getOptions }
+			{getOptions}
 		</DropdownMenu>
 	);
 };

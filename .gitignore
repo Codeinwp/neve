@@ -10,3 +10,4 @@ visual-regression/*
 **/.DS_Store
 cypress/videos/*
 header-footer-grid/assets/css/style*
+storybook-static

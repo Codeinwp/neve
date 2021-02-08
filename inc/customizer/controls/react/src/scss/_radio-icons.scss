@@ -1,59 +1,60 @@
 .neve-radio-icons {
   display: flex;
   padding: 3px;
-	span {
-		display: flex;
-		flex-direction: column;
-		flex: 1;
-	}
 
-	label {
-		text-align: center;
-		font-weight: 800;
-		font-size: 9px;
-		line-height: 18px;
-		text-transform: uppercase;
-		color: #555d66;
-		margin-top: 7px;
+  span {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+  }
+
+  label {
+	text-align: center;
+	font-weight: 800;
+	font-size: 9px;
+	line-height: 18px;
+	text-transform: uppercase;
+	color: #555d66;
+	margin-top: 7px;
+  }
+
+  > span {
+	&:not(:first-child) {
+	  margin-left: -1px;
 	}
-	> span {
-		&:not(:first-child) {
-			margin-left: -1px;
-		}
-	}
+  }
+
   button {
-    align-items: center;
-    justify-content: center !important;
-    flex: 1;
-    padding: 3px;
-    height: 28px;
-		border: 1px solid $input-borders;
-		border-radius: 0;
+	align-items: center;
+	justify-content: center !important;
+	flex: 1;
+	padding: 3px;
+	height: 28px;
+	border: 1px solid $input-borders;
+	border-radius: 0;
 
 
-    svg {
-      width: 20px;
-      margin-right: 0 !important;
-    }
+	svg {
+	  width: 20px;
+	  margin-right: 0 !important;
+	}
 
-    &.active {
-      &, &:hover {
-        background-color: $accent-color !important;
-        border-color: $accent-color !important;
-        color: #fff !important;
-        box-shadow: none !important;
-      }
-    }
+	&.active {
+	  &, &:hover {
+		background-color: $accent-color !important;
+		border-color: $accent-color !important;
+		color: #fff !important;
+		box-shadow: none !important;
+	  }
+	}
   }
 }
 
-.large-buttons {
-  .neve-radio-icons button {
-    height: 45px !important;
+.neve-radio-icons.large-buttons button {
+  height: 45px !important;
 
-    svg {
-      width: 40px;
-      height: 30px;
-    }
+  svg {
+	width: 40px;
+	height: 30px;
   }
 }
