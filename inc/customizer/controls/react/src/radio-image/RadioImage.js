@@ -1,15 +1,17 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-const RadioImage = ({ choices, onClick, value }) => {
+const RadioImage = ({ choices, onClick, value, label }) => {
 	return (
-		<div className="neve-radio-image">
+		<>
+			{label && <label className="customize-control-title">{label}</label>}
+			<div className="neve-radio-image">
 			{Object.keys(choices).map((choice, index) => {
-				const { name, image } = choices[choice];
+				const { name, image, url } = choices[choice];
 				const buttonClass = classnames([{ active: choice === value }]);
 				return (
 					<div className="option" key={index}>
-						<label>
+						<label data-option={choice}>
 							<button
 								className={buttonClass}
 								onClick={(e) => {
@@ -18,7 +20,7 @@ const RadioImage = ({ choices, onClick, value }) => {
 								}}
 							>
 								<img
-									src={image}
+									src={image || url }
 									alt={name || `Option ${choice}`}
 								/>
 							</button>
@@ -28,6 +30,7 @@ const RadioImage = ({ choices, onClick, value }) => {
 				);
 			})}
 		</div>
+		</>
 	);
 };
 
