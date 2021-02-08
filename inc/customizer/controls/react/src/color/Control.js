@@ -3,12 +3,8 @@
 import ColorComponent from './ColorComponent';
 import { render } from '@wordpress/element';
 
-export const ColorControl = wp.customize.Control.extend( {
+export const ColorControl = wp.customize.Control.extend({
 	renderContent: function renderContent() {
-		const control = this;
-		render(
-			<ColorComponent control={ control } />,
-			control.container[ 0 ]
-		);
+		render(<ColorComponent control={this} />, this.container[0]);
 	},
-} );
+});

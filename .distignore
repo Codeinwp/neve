@@ -69,3 +69,5 @@ dashboard/webpack.config.js
 visual-regressions
 yarn.lock
 .ds_store
+.storybook
+stories
