@@ -486,7 +486,7 @@ Cypress.Commands.add("alignCenter", () => {
 Cypress.Commands.add("checkAlignCenter", () => {
   cy.visit("/");
 
-  cy.get(".desktop-center")
+  cy.get(".desktop-center.hfg-item-first")
     .should("be.visible")
     .and("not.have.class", "mobile-left")
     .and("not.have.class", "tablet-left")
@@ -515,7 +515,7 @@ Cypress.Commands.add("alignRight", () => {
 Cypress.Commands.add("checkAlignRight", () => {
   cy.visit("/");
 
-  cy.get(".desktop-right")
+  cy.get(".desktop-right.hfg-item-first")
     .should("be.visible")
     .and("not.have.class", "mobile-left")
     .and("not.have.class", "tablet-left")

@@ -20,7 +20,7 @@ describe("Header Builder Alignment Control", () => {
       .should("be.visible")
       .click();
   });
-  it("Sets up alignment for the Primary Menu to Center", () => {
+  it("Sets up alignment for the Logo to Center", () => {
     cy.alignCenter();
     cy.wait("@customizerSave").then((interception) => {
       expect(interception.response.body.success).to.be.true;
@@ -29,7 +29,7 @@ describe("Header Builder Alignment Control", () => {
     cy.checkAlignCenter();
   });
 
-  it("Sets up alignment for the Primary Menu to Right", () => {
+  it("Sets up alignment for the Logo to Right", () => {
     cy.alignRight();
     cy.wait("@customizerSave").then((interception) => {
       expect(interception.response.body.success).to.be.true;
