@@ -58,10 +58,13 @@ h6 {
 	text-transform: none;
 	letter-spacing: normal;
 
+  	&.components-placeholder {
+	  color: initial;
+	}
+
 	strong {
 		font-weight: bold;
 	}
-
 
 	//</editor-fold>
 
