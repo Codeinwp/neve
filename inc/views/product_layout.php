@@ -25,6 +25,45 @@ class Product_Layout extends Base_View {
 		add_filter( 'body_class', array( $this, 'body_classes' ) );
 		add_action( 'woocommerce_before_shop_loop_item', array( $this, 'card_content_wrapper' ), 1 );
 		add_action( 'woocommerce_after_shop_loop_item', array( $this, 'wrapper_close_div' ), 100 );
+
+		// Wrap product image in a div and add another div for buttons on image option
+		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'product_image_wrap' ), 8 );
+		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'out_of_stock_badge' ), 9 );
+		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'wrapper_close_div' ), 11 );
+
+	}
+
+	/**
+	 * Product image wrapper.
+	 */
+	public function product_image_wrap() {
+		$product_classes = apply_filters( 'neve_wrapper_class', '' );
+		echo '<div class="nv-product-image ' . esc_attr( $product_classes ) . '">';
+		echo '<div class="img-wrap">';
+	}
+
+	/**
+	 * Closing tag
+	 */
+	public function wrapper_close_div() {
+		echo '</div>';
+	}
+	/**
+	 * Add out of stock label.
+	 *
+	 * @return bool
+	 */
+	public function out_of_stock_badge() {
+		global $product;
+		if ( $product->is_in_stock() ) {
+			return false;
+		}
+		$out_of_stock_label = apply_filters( 'nv_out_of_stock_text', __( 'Out of stock', 'neve' ) );
+
+		echo '<div class="out-of-stock-badge">';
+		echo wp_kses_post( $out_of_stock_label );
+		echo '</div>';
+		return true;
 	}
 
 	/**
@@ -44,13 +83,6 @@ class Product_Layout extends Base_View {
 		}
 
 		echo wp_kses_post( '<div ' . $attributes . '>' );
-	}
-
-	/**
-	 * Closing tag
-	 */
-	public function wrapper_close_div() {
-		echo '</div>';
 	}
 
 	/**

@@ -1,0 +1,28 @@
+{
+	"extends": [
+		"plugin:cypress/recommended",
+		"plugin:chai-friendly/recommended",
+		"plugin:prettier/recommended"
+	],
+	"env": {
+		"cypress/globals": true,
+		"jest": false,
+		"mocha": true,
+		"node": true
+	},
+	"rules": {
+		"jest/expect-expect": "off",
+		"jest/valid-expect-in-promise": "off",
+		"jest/valid-expect": "off",
+		"jest/no-standalone-expect": "off",
+		// temporary disable no unnecessary wait rule
+		"cypress/no-unnecessary-waiting": "off",
+		"prettier/prettier": [
+			"error",
+			{},
+			{
+				"usePrettierrc": false
+			}
+		]
+	}
+}

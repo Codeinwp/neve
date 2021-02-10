@@ -276,7 +276,7 @@ class Frontend extends Generator {
 			],
 		];
 		$this->_subscribers [] = [
-			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
+			Dynamic_Selector::KEY_SELECTOR => Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL ] . ', ' . Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_SECONDARY_DEFAULT ],
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.background',
@@ -320,7 +320,7 @@ class Frontend extends Generator {
 			],
 		];
 		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
+			Dynamic_Selector::KEY_SELECTOR => Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_SECONDARY_HOVER ] . ', ' . Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_SECONDARY_DEFAULT_HOVER ],
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.backgroundHover',

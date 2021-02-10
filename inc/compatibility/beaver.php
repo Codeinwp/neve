@@ -25,6 +25,7 @@ class Beaver extends Page_Builder_Base {
 		}
 
 		add_action( 'wp', array( $this, 'add_theme_builder_hooks' ) );
+		add_filter( 'fl_theme_builder_part_hooks', array( $this, 'register_part_hooks' ) );
 	}
 
 	/**
@@ -77,5 +78,48 @@ class Beaver extends Page_Builder_Base {
 			add_action( 'neve_do_footer', 'FLThemeBuilderLayoutRenderer::render_footer' );
 		}
 
+	}
+
+	/**
+	 * Beautify hook names.
+	 *
+	 * @param string $hook Hook name.
+	 *
+	 * @return string
+	 */
+	private function beautify_hook( $hook ) {
+		$hook_label = str_replace( '_', ' ', $hook );
+		$hook_label = str_replace( 'neve', ' ', $hook_label );
+		$hook_label = str_replace( 'woocommerce', ' ', $hook_label );
+		$hook_label = ucwords( $hook_label );
+		return $hook_label;
+	}
+
+	/**
+	 * Mapping function to move from neve_hooks format to the format required by Beaver Builder.
+	 *
+	 * @param string $location Current location, the key of neve_hooks array.
+	 * @param array  $hooks Hooks from that location.
+	 *
+	 * @return array
+	 */
+	private function hook_to_part( $location, $hooks ) {
+		$part = array(
+			'label' => ucfirst( $location ),
+		);
+		foreach ( $hooks as $hook ) {
+			$part['hooks'][ $hook ] = $this->beautify_hook( $hook );
+		}
+		return $part;
+	}
+
+	/**
+	 * Register part hooks for Beaver Themer.
+	 *
+	 * @return array
+	 */
+	public function register_part_hooks() {
+		$hooks = neve_hooks();
+		return array_map( array( $this, 'hook_to_part' ), array_keys( $hooks ), $hooks );
 	}
 }

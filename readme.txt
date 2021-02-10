@@ -15,7 +15,7 @@ Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect f
 
 == Copyright ==
 Neve WordPress theme, Copyright 2018 Themeisle
-Neve is distributed under the terms of the GNU GPLv2 or later 
+Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 

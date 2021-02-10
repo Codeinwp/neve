@@ -1,5 +1,14 @@
-.editor-styles-wrapper > * {
+.editor-styles-wrapper, .editor-styles-wrapper > * {
   background-color: var(--nv-site-bg);
+}
+
+.editor-styles-wrapper .editor-post-title__input::placeholder, .editor-styles-wrapper .block-list-appender textarea::placeholder {
+  color: var(--nv-text-color);
+  opacity: .5;
+}
+
+.editor-styles-wrapper .block-list-appender textarea {
+  color: var(--nv-text-color);
 }
 
 .editor-styles-wrapper h1.wp-block, .editor-styles-wrapper h1, .editor-styles-wrapper h2.wp-block, .editor-styles-wrapper h2, .editor-styles-wrapper h3.wp-block, .editor-styles-wrapper h3, .editor-styles-wrapper h4.wp-block, .editor-styles-wrapper h4, .editor-styles-wrapper h5.wp-block, .editor-styles-wrapper h5, .editor-styles-wrapper h6.wp-block, .editor-styles-wrapper h6 {
@@ -44,6 +53,10 @@
   line-height: 1.68421;
   text-transform: none;
   letter-spacing: normal;
+}
+
+.editor-styles-wrapper .wp-block.components-placeholder {
+  color: initial;
 }
 
 .editor-styles-wrapper .wp-block strong {
@@ -309,6 +322,30 @@
 .editor-styles-wrapper .editor-writing-flow .wp-block-pullquote blockquote .wp-block-pullquote__citation {
   padding-top: 20px;
   font-size: .85em;
+}
+
+.editor-styles-wrapper .wp-block code {
+  background-color: #d0effb;
+  border-radius: 5px;
+  border: 1px solid var(--nv-light-bg);
+  padding: 0 3px;
+  color: #333;
+}
+
+.editor-styles-wrapper .wp-block-code {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 5px;
+  border: 1px solid var(--nv-light-bg);
+  white-space: pre-wrap;
+  font-size: .9em;
+  line-height: 2em;
+}
+
+.editor-styles-wrapper .wp-block-code code {
+  background: transparent;
+  border: none;
+  color: #333;
 }
 
 @media (min-width: 769px) {

@@ -3,12 +3,8 @@
 import ResponsiveRangeComponent from './ResponsiveRangeComponent.js';
 import { render } from '@wordpress/element';
 
-export const ResponsiveRangeControl = wp.customize.Control.extend( {
+export const ResponsiveRangeControl = wp.customize.Control.extend({
 	renderContent: function renderContent() {
-		const control = this;
-		render(
-			<ResponsiveRangeComponent control={ control } />,
-			control.container[ 0 ]
-		);
+		render(<ResponsiveRangeComponent control={this} />, this.container[0]);
 	},
-} );
+});

@@ -7,7 +7,7 @@ Author URI:     https://themeisle.com
 Tested up to:   5.6
 Requires PHP:   5.4.0
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.9.5
+Version:        2.10.0
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -561,10 +561,6 @@ blockquote.wp-block-quote.is-style-large cite {
   border: unset;
 }
 
-.wp-block-code code {
-  background-color: inherit;
-}
-
 .wp-block-button a {
   text-decoration: none !important;
 }
@@ -809,7 +805,11 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .caret {
   margin-right: 5px;
-  font-size: .65em;
+}
+
+.caret svg {
+  width: 1em !important;
+  height: 1em !important;
 }
 
 .nv-nav-wrap {
@@ -954,6 +954,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .menu-item-nav-search .close-responsive-search svg {
+  fill: var(--nv-text-color);
   min-width: 25px;
   min-height: 25px;
 }
@@ -1014,7 +1015,6 @@ blockquote.wp-block-quote.is-style-large cite {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
 }
 
 .menu-item-nav-search.canvas .nv-nav-search .close-container {
@@ -1056,11 +1056,11 @@ blockquote.wp-block-quote.is-style-large cite {
   position: absolute;
   left: 0;
   width: auto;
-  background: #fff;
   padding: 10px 20px;
   border-top: 1px solid var(--nv-light-bg);
   cursor: default;
   z-index: 100;
+  background-color: var(--nv-site-bg);
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1890,11 +1890,12 @@ table td, table th {
   border-bottom: 1px solid var(--nv-light-bg);
 }
 
-p code {
+code {
   background: #d0effb;
   border-radius: 5px;
   border: 1px solid var(--nv-light-bg);
   padding: 0 3px;
+  color: #333;
 }
 
 pre {
@@ -1907,6 +1908,11 @@ pre {
   white-space: pre-wrap;
   font-size: .9em;
   line-height: 2em;
+}
+
+pre code {
+  border: 0;
+  background: transparent;
 }
 
 .nv-content-wrap:after, .excerpt-wrap:after {
