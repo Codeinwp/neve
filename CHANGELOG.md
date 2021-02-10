@@ -1,3 +1,17 @@
+##### [Version 2.10.1](https://github.com/Codeinwp/neve/compare/v2.10.0...v2.10.1) (2021-02-10)
+
+- [Feat] Compatibility with Beaver Themer parts location
+- [Feat] Out of stock badge
+- [Fix] Variable products in the Header Builder Cart component
+- [Fix] {meta_author} magic tag throwing notice on 404 page
+- [Fix] Code tag style inconsistencies
+- [Fix] Header search component background now inherits site background
+- [Fix] Editor background-color
+- [Fix] Close button style for off-canvas cart
+- [Fix] Appearance of global colors selector in customizer when Gutenberg plugin is installed
+- [Fix] Allow HTML markup inside the comments heading
+- [Fix] Remove some redundant classes from the Header / Footer
+
 #### [Version 2.10.0](https://github.com/Codeinwp/neve/compare/v2.9.5...v2.10.0) (2021-01-18)
 
 - [Feat] Form fields styling controls
