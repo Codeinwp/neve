@@ -13,6 +13,7 @@ plugins:
   - - "@semantic-release/exec"
     - prepareCmd: grunt version::${nextRelease.version} && grunt wp_readme_to_markdown
   - - "@semantic-release/git"
+    - message: "chore(release): ${nextRelease.version} \n\n${nextRelease.notes}"
     - assets:
         - CHANGELOG.md
         - readme.md
