@@ -473,6 +473,10 @@
   font-size: .85em;
 }
 
+.woocommerce-notices-wrapper {
+  width: 100%;
+}
+
 .woocommerce ul.products li.product .price,
 .woocommerce div.product span.price,
 .woocommerce div.product p.price {
@@ -1754,6 +1758,9 @@ body.woocommerce-account .woocommerce-form-login .form-row:not(.woocommerce-form
   }
   .woocommerce .cart_totals table.shop_table tbody #shipping_method {
     margin-top: 0;
+  }
+  body.single-product .neve-main > .container > .row {
+    flex-wrap: wrap;
   }
   .woocommerce.single .entry-summary > form.cart .wc-forward {
     flex-basis: auto;
