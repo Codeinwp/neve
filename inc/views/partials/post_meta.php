@@ -212,12 +212,18 @@ class Post_Meta extends Base_View {
 	 * @return string
 	 */
 	public static function get_comments() {
+		if ( ! get_post() ) {
+			return false;
+		}
 		if ( ! comments_open() ) {
-			return '';
+			return false;
 		}
 		$comments_number = get_comments_number();
 		if ( $comments_number < 1 ) {
-			return '';
+			return false;
+		}
+		if ( ! is_front_page() && is_home() ) {
+			return false;
 		}
 		/* translators: %s: number of comments */
 		$comments = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'neve' ), $comments_number );
