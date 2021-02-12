@@ -37,7 +37,6 @@
 
 .neve-global-color-palette-inner {
 	background-color: #fff;
-	display: flex;
 	height: 100%;
 	width: 100%;
 	padding: 0;
@@ -76,8 +75,8 @@
 	}
 
 	.color {
-		display: flex;
-		width: 100%;
+		display: inline-block;
+		width: 25%;
 		height: 100%;
 	}
 }
