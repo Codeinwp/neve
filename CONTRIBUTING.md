@@ -14,6 +14,8 @@ How to release a new version:
 The release notes will inherit the body of the commit message which triggered the release. For more details check the [simple-preset](https://github.com/Codeinwp/conventional-changelog-simple-preset) that we use.
 
 ## Running Cypress tests with Docker
+**Please read our [Cypress Guideline](https://github.com/Codeinwp/cypress-guideline) before writing Cypress tests.**
+
 To run the Docker environment, you need to have Docker installed; you can install it [here](https://www.docker.com/products/docker-desktop)
 
 To set it up for the first time, please run this command into the root folder: `bash bin/envs/init.sh`
