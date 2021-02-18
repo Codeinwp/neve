@@ -99,6 +99,10 @@
 	font-size: .85em;
 }
 
+.woocommerce-notices-wrapper{
+  width: 100%;
+}
+
 //<editor-fold desc="Prices">
 .woocommerce {
 	ul.products li.product .price,
@@ -301,6 +305,10 @@
 }
 
 @mixin product--laptop() {
+	body.single-product .neve-main > .container > .row {
+	  flex-wrap: wrap;
+	}
+
 	.woocommerce.single {
 		.entry-summary > form.cart {
 			.wc-forward {
