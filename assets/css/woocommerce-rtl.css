@@ -997,10 +997,6 @@ section.exclusive .tns-visually-hidden {
   text-transform: none;
 }
 
-.woocommerce-checkout #order_review {
-  word-break: break-word;
-}
-
 .place-order noscript {
   padding: 10px 0;
 }
