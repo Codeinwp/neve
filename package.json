@@ -42,7 +42,7 @@
 		"@wordpress/scripts": "^13.0.3",
 		"babel-loader": "^8.2.2",
 		"compare-versions": "^3.6.0",
-		"conventional-changelog-simple-preset": "^1.0.14",
+		"conventional-changelog-simple-preset": "^1.0.15",
 		"core-js": "^3.9.0",
 		"cross-env": "^7.0.3",
 		"cypress": "6.5.0",
