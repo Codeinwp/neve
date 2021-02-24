@@ -813,19 +813,6 @@ section.exclusive .tns-visually-hidden {
   padding: 10px 12px;
 }
 
-.woocommerce-checkout #shipping_address_1_field,
-.woocommerce-checkout #shipping_address_2_field,
-.woocommerce-checkout #billing_address_1_field,
-.woocommerce-checkout #billing_address_2_field {
-  width: 47%;
-  display: inline-block;
-}
-
-.woocommerce-checkout #shipping_address_2_field,
-.woocommerce-checkout #billing_address_2_field {
-  margin-left: 6%;
-}
-
 .woocommerce-checkout .form-row.create-account {
   padding: 0 18px 12px 18px;
 }
