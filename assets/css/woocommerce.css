@@ -813,19 +813,6 @@ section.exclusive .tns-visually-hidden {
   padding: 10px 12px;
 }
 
-.woocommerce-checkout #shipping_address_1_field,
-.woocommerce-checkout #shipping_address_2_field,
-.woocommerce-checkout #billing_address_1_field,
-.woocommerce-checkout #billing_address_2_field {
-  width: 47%;
-  display: inline-block;
-}
-
-.woocommerce-checkout #shipping_address_2_field,
-.woocommerce-checkout #billing_address_2_field {
-  margin-left: 6%;
-}
-
 .woocommerce-checkout .form-row.create-account {
   padding: 0 18px 12px 18px;
 }
@@ -997,10 +984,6 @@ section.exclusive .tns-visually-hidden {
   letter-spacing: 0;
   font-weight: 400;
   text-transform: none;
-}
-
-.woocommerce-checkout #order_review {
-  word-break: break-word;
 }
 
 .place-order noscript {
@@ -1433,6 +1416,14 @@ section.exclusive .tns-visually-hidden {
 
 .woocommerce .cart_totals table.shop_table .shipping-calculator-form {
   text-align: left;
+}
+
+.woocommerce .cart_totals table.shop_table .order-total {
+  font-size: 1.18em;
+}
+
+.woocommerce .cart_totals table.shop_table .order-total th {
+  font-weight: bold;
 }
 
 .woocommerce .cart_totals .wc-proceed-to-checkout {
