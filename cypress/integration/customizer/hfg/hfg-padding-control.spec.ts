@@ -65,7 +65,20 @@ describe('Header Builder Padding Control', () => {
 		cy.wait('@customizerSave').then((interception) => {
 			expect(interception.response.body.success).to.be.true;
 			expect(interception.response.statusCode).to.equal(200);
-			cy.checkPaddingFrontEnd();
+			checkPaddingFrontEnd();
 		});
 	});
 });
+
+/**
+ * Check the padding set by customizer on front-end
+ *
+ * @example checkPaddingFrontEnd()
+ */
+const checkPaddingFrontEnd = () => {
+	cy.visit('/');
+
+	cy.get('.site-logo').should('be.visible');
+	cy.get('.site-logo').should('have.css', 'padding-top').and('contain', '11px');
+	cy.get('.site-logo').should('have.css', 'padding-bottom').and('contain', '9px');
+};

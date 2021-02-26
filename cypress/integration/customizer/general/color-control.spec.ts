@@ -35,7 +35,7 @@ describe('Color Control', () => {
 			.should('have.css', 'background-color')
 			.and('eq', rgbColor);
 		// Check the actual value of the control set through the API.
-		cy.getCustomizerControlValue(controlSlug).should('eq', color);
+		getCustomizerControlValue(controlSlug).should('eq', color);
 		// Save the customizer.
 		cy.aliasRestRoutes();
 		cy.get('#save').click();
@@ -50,3 +50,14 @@ describe('Color Control', () => {
 		cy.get('.header-main-inner').should('have.css', 'color').and('eq', rgbColor);
 	});
 });
+
+/**
+ * Gets the value from a customizer Control
+ *
+ * @param slug
+ * @example cy.getCustomizerControlValue('neve_global')
+ */
+
+const getCustomizerControlValue = (slug: string) => {
+	return cy.window().then((win) => win.wp.customize.control(slug).setting.get());
+};

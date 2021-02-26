@@ -76,7 +76,20 @@ describe('Header Builder Margin Control', () => {
 		cy.wait('@customizerSave').then((interception) => {
 			expect(interception.response.body.success).to.be.true;
 			expect(interception.response.statusCode).to.equal(200);
-			cy.checkMarginFrontEnd();
+			checkMarginFrontEnd();
 		});
 	});
 });
+
+/**
+ * Check the margin set by customizer on front-end
+ *
+ * @example checkMarginFrontEnd()
+ */
+const checkMarginFrontEnd = () => {
+	cy.visit('/');
+
+	cy.get('.builder-item--primary-menu').should('be.visible');
+	cy.get('.builder-item--primary-menu').should('have.css', 'margin-top', '3px');
+	cy.get('.builder-item--primary-menu').should('have.css', 'margin-bottom', '-1px');
+};
