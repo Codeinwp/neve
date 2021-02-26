@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "downlevelIteration": true,
+    "lib": [
+      "es5",
+      "dom"
+    ],
+    "types": [
+      "cypress",
+      "node"
+    ]
+  },
+  "include": [
+    "cypress/**/**/*.ts",
+    "cypress/**/**/**/*.ts",
+    "cypress/support/index.js",
+    "cypress/**/*.ts"
+  ]
+}
