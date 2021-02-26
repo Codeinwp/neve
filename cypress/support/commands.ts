@@ -1,45 +1,43 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable chai-friendly/no-unused-expressions */
 import 'cypress-file-upload';
 import '@percy/cypress';
+import { scrollToBottom } from 'scroll-to-bottomjs';
 
-const scrollToBottom = require('scroll-to-bottomjs');
+// const scrollToBottom = require('scroll-to-bottomjs');
 Cypress.Cookies.defaults({
 	preserve: /wordpress_.*/,
 });
+
 Cypress.Commands.add('login', (nextRoute = null) => {
-	//console.log(cy.getCookies());
-
-	const cookies = cy
-		.getCookies({
-			log: true,
-		})
-		.then(function (cookies) {
-			let isLoggedIn = false;
-			cookies.forEach(function (value) {
-				if (value.name.includes('wordpress_')) {
-					isLoggedIn = true;
-				}
-			});
-
-			if (isLoggedIn) {
-				if (nextRoute !== null) {
-					cy.visit(nextRoute);
-				}
-				return;
+	cy.getCookies({
+		log: true,
+	}).then((cookies) => {
+		let isLoggedIn = false;
+		cookies.forEach(function (value) {
+			if (value.name.includes('wordpress_')) {
+				isLoggedIn = true;
 			}
-			cy.visit('/wp-admin');
-			cy.wait(500);
-			cy.get('#user_login').type(Cypress.config().user);
-			cy.get('#user_pass').type(Cypress.config().password);
-			cy.get('#wp-submit').click();
-			if (nextRoute === null) {
-				return;
-			}
-			cy.visit(nextRoute);
 		});
+
+		if (isLoggedIn) {
+			if (nextRoute !== null) {
+				cy.visit(nextRoute);
+			}
+			return;
+		}
+		cy.visit('/wp-admin');
+		cy.wait(500);
+		cy.get('#user_login').type(Cypress.env('user'));
+		cy.get('#user_pass').type(Cypress.env('password'));
+		cy.get('#wp-submit').click();
+		if (nextRoute === null) {
+			return;
+		}
+		cy.visit(nextRoute);
+	});
 });
-Cypress.Commands.add('navigate', (nextRoute = '/') => {
-	cy.visit(nextRoute);
-});
+
 Cypress.Commands.add('clearWelcome', () => {
 	cy.window().then((win) => {
 		win.wp &&
@@ -48,6 +46,7 @@ Cypress.Commands.add('clearWelcome', () => {
 			win.wp.data.dispatch('core/edit-post').toggleFeature('welcomeGuide');
 	});
 });
+
 Cypress.Commands.add('insertCoverBlock', () => {
 	const text =
 		'<!-- wp:cover {"overlayColor":"neve-button-color","align":"full"} -->\n' +
@@ -78,11 +77,6 @@ Cypress.Commands.add('insertCoverBlock', () => {
 		.click();
 
 	cy.updatePost();
-});
-
-Cypress.Commands.add('editCurrentPost', () => {
-	cy.get('#wp-admin-bar-edit a').click();
-	cy.clearWelcome();
 });
 
 Cypress.Commands.add(
@@ -126,6 +120,7 @@ Cypress.Commands.add(
 		cy.updatePost();
 	},
 );
+
 Cypress.Commands.add('updatePost', () => {
 	cy.get('.editor-post-publish-button').click();
 	cy.wait(500);
@@ -138,83 +133,6 @@ Cypress.Commands.add('getCustomizerControl', (slug) => {
 	return cy.get('#customize-control-' + slug);
 });
 
-Cypress.Commands.add('getCustomizerControlValue', (slug) => {
-	return cy.window().then((win) => win.wp.customize.control(slug).setting.get());
-});
-
-/**
- * Set single typography control.
- *
- * @param controlSelector
- * @param values
- */
-Cypress.Commands.add('setTypographyControl', (controlSelector, values) => {
-	const changeNumberInputValue = (input, value) => {
-		cy.get(input)
-			.clear({
-				force: true,
-			})
-			.type('{leftarrow}' + value + '{rightarrow}{backspace}');
-	};
-	cy.get(controlSelector).as('control');
-
-	cy.get('@control')
-		.should('be.visible')
-		.and('contain', 'Transform')
-		.and('contain', 'Weight')
-		.and('contain', 'Font Size')
-		.and('contain', 'Line Height')
-		.and('contain', 'Letter Spacing');
-
-	// Change text transform.
-	cy.get('@control').find('.text-transform select').select(values.transform);
-
-	// Change font weight.
-	cy.get('@control').find('.font-weight select').select(values.weight);
-
-	const devices = ['desktop', 'tablet', 'mobile'],
-		controls = ['fontSize', 'lineHeight', 'letterSpacing'];
-
-	devices.map((device) => {
-		cy.get('@control')
-			.find('button.' + device)
-			.first()
-			.click();
-		// Change font size.
-		cy.get('@control').find('.font-size input').as('fontSize');
-
-		cy.get('@control').find('.line-height input').as('lineHeight');
-
-		cy.get('@control').find('.letter-spacing input').as('letterSpacing');
-
-		controls.map((control) => {
-			cy.get('@' + control)
-				.invoke('val')
-				.then((value) => {
-					// Make sure value is default.
-					cy.get('@' + control).should('have.value', value);
-					// Change the value.
-					changeNumberInputValue('@' + control, values[control][device]);
-					// Value was changed?
-					cy.get('@' + control).should('have.value', values[control][device]);
-					// Reset to old value.
-					cy.get('@' + control)
-						.closest('.neve-responsive-sizing')
-						.find('button')
-						.click();
-					// Make sure value has been reset.
-					cy.get('@' + control).should('have.value', value);
-					// Change the value.
-					changeNumberInputValue('@' + control, values[control][device]);
-				});
-		});
-	});
-});
-
-/**
- * Capture and compare the fullpage snapshots.
- *
- */
 Cypress.Commands.add('captureDocument', (generalMaskAndClip = true, screenShotName = false) => {
 	if (generalMaskAndClip) {
 		const maskElement =
@@ -231,11 +149,7 @@ Cypress.Commands.add('captureDocument', (generalMaskAndClip = true, screenShotNa
 	cy.wait(5000);
 	cy.percySnapshot(screenShotName);
 });
-/**
- * Capture and compare the fullpage snapshots.
- *
- * @param {string} path The path to store the snapshot.
- */
+
 Cypress.Commands.add('maskAndClip', (maskSelectors, clipSelectors, hideElements) => {
 	cy.get('body').then(($body) => {
 		// synchronously query from body
@@ -300,21 +214,10 @@ Cypress.Commands.add('goToCustomizer', () => {
 	}).should('have.property', 'appReady', true);
 });
 
-/**
- * Alias POST route to /wp-admin/admin-ajax.php as customizerSave
- *
- * @example cy.aliasRestRoutes()
- */
 Cypress.Commands.add('aliasRestRoutes', () => {
 	cy.intercept('POST', '/wp-admin/admin-ajax.php').as('customizerSave');
 });
 
-/**
- * Toggle elements on or off
- *
- * @param show
- * @example cy.toggleElements(false)
- */
 Cypress.Commands.add('toggleElements', (show) => {
 	const icon = show ? 'dashicons-hidden' : 'dashicons-visibility';
 	cy.get('.ti-sortable-item-area .ti-sortable-item-toggle').each(function (el) {
@@ -328,12 +231,6 @@ Cypress.Commands.add('toggleElements', (show) => {
 	});
 });
 
-/**
- * Selector for a control
- *
- * @param control
- * @example cy.getControl('neve_sidebar')
- */
 Cypress.Commands.add('getControl', (control) => {
 	cy.get('label.components-base-control__label[for="' + control + '"]').parent();
 });
@@ -349,17 +246,12 @@ Cypress.Commands.add('activateCheckbox', (checkboxSelector, checkboxText) => {
 		});
 });
 
-/**
- * Opens sidebar on Neve Options
- *
- * @example cy.openNeveSidebar()
- */
 Cypress.Commands.add('openNeveSidebar', () => {
 	cy.get('button.components-button[aria-label="Neve Options"]').then(($btn) => {
 		cy.get($btn)
 			.invoke('attr', 'aria-expanded')
 			.then((value) => {
-				if (value === true) {
+				if (value) {
 					return true;
 				}
 				cy.get('button.components-button[aria-label="Neve Options"]').click();
@@ -367,192 +259,14 @@ Cypress.Commands.add('openNeveSidebar', () => {
 	});
 });
 
-/**
- * Activates Classic editor plugin
- *
- * @example cy.activateClassicEditorPlugin()
- */
 Cypress.Commands.add('activateClassicEditorPlugin', () => {
 	cy.login('/wp-admin/plugins.php');
 	cy.get('#activate-classic-editor').contains('Activate').click();
 	cy.get('#deactivate-classic-editor').should('exist');
 });
 
-/**
- * Deactivates Classic editor plugin
- *
- * @example cy.deactivateClassicEditorPlugin()
- */
 Cypress.Commands.add('deactivateClassicEditorPlugin', () => {
 	cy.login('/wp-admin/plugins.php');
 	cy.get('#deactivate-classic-editor').contains('Deactivate').click();
 	cy.get('#activate-classic-editor').should('exist');
 });
-
-/**
- * Matches content width
- *
- * @param defaultWidth
- * @example cy.matchContentWidth(2250)
- */
-Cypress.Commands.add('matchContentWidth', (defaultWidth) => {
-	cy.get(
-		'.single-page-container .alignfull [class*="__inner-container"] > *, .single-page-container .alignwide [class*="__inner-container"] > *',
-	)
-		.invoke('width')
-		.should('be.eq', defaultWidth - 30); //we substract the padding.
-	cy.get('.single-page-container .nv-content-wrap')
-		.invoke('width')
-		.should('be.eq', defaultWidth - 30); //we substract the padding.
-	cy.get('#wp-admin-bar-edit a').click();
-	cy.get('.wp-block').should('have.css', 'max-width', defaultWidth + 'px');
-});
-
-/**
- * Drag and drop an element after another.
- *
- * @param selector
- * @param moveFrom
- * @param moveTo
- * @example cy.dropElAfter('control', 0, 1)
- */
-Cypress.Commands.add('dropElAfter', (selector, moveFrom, moveTo) => {
-	cy.get(selector).then((el) => {
-		const drag = el[moveFrom].getBoundingClientRect();
-		const drop = el[moveTo].getBoundingClientRect();
-		cy.get(el[moveFrom]).trigger('mousedown', {
-			which: 1,
-			pageX: drag.x,
-			pageY: drag.y,
-		});
-		cy.document().trigger('mousemove', {
-			which: 1,
-			pageX: drop.x,
-			pageY: drop.y + 35,
-		});
-		cy.wait(200);
-		cy.document().trigger('mouseup');
-	});
-});
-
-/**
- * Click on align center button into customizer
- *
- * @example cy.alignCenter()
- */
-Cypress.Commands.add('alignCenter', () => {
-	cy.get('#customize-control-logo_component_align button[aria-label="Center"]').click();
-
-	cy.get('#save').should('be.visible').click();
-});
-
-/**
- * Check if it is aligned to the center into customizer
- *
- * @example cy.CheckAlignCenter()
- */
-Cypress.Commands.add('checkAlignCenter', () => {
-	cy.visit('/');
-
-	cy.get('.header-main .desktop-center.hfg-item-first')
-		.should('be.visible')
-		.and('not.have.class', 'mobile-left')
-		.and('not.have.class', 'tablet-left')
-		.find('.site-logo')
-		.should('be.visible');
-});
-
-/**
- * Click on align right button into customizer
- *
- * @example cy.alignRight()
- */
-Cypress.Commands.add('alignRight', () => {
-	cy.get('#customize-control-logo_component_align button[aria-label="Right"]').click();
-
-	cy.get('#save').should('be.visible').click();
-});
-
-/**
- * Check if it is aligned to the right into customizer
- *
- * @example cy.checkAlignRight()
- */
-Cypress.Commands.add('checkAlignRight', () => {
-	cy.visit('/');
-
-	cy.get('.header-main .desktop-right.hfg-item-first')
-		.should('be.visible')
-		.and('not.have.class', 'mobile-left')
-		.and('not.have.class', 'tablet-left')
-		.find('.site-logo')
-		.should('be.visible');
-});
-
-/**
- * Check the margin set by customizer on front-end
- *
- * @example cy.checkMarginFrontEnd()
- */
-Cypress.Commands.add('checkMarginFrontEnd', () => {
-	cy.visit('/');
-
-	cy.get('.builder-item--primary-menu').should('be.visible');
-	cy.get('.builder-item--primary-menu').should('have.css', 'margin-top', '3px');
-	cy.get('.builder-item--primary-menu').should('have.css', 'margin-bottom', '-1px');
-});
-
-/**
- * Check the padding set by customizer on front-end
- *
- * @example cy.checkPaddingFrontEnd()
- */
-Cypress.Commands.add('checkPaddingFrontEnd', () => {
-	cy.visit('/');
-
-	cy.get('.site-logo').should('be.visible');
-	cy.get('.site-logo').should('have.css', 'padding-top').and('contain', '11px');
-	cy.get('.site-logo').should('have.css', 'padding-bottom').and('contain', '9px');
-});
-
-/**
- * Test text transform and font weight
- *
- * @param elem
- * @param transformMatcher
- * @param weightMatcher
- */
-Cypress.Commands.add('testTransformAndWeight', (elem, transformMatcher, weightMatcher) => {
-	// Test text transform.
-	cy.get(elem).should('have.css', 'text-transform').and('match', new RegExp(transformMatcher, 'g'));
-
-	// Test font weight
-	cy.get(elem).should('have.css', 'font-weight').and('match', new RegExp(weightMatcher, 'g'));
-});
-
-/**
- * Test font size, line height and letter spacing
- *
- * @param elem
- * @param device
- * @param fontSizeMatcher
- * @param lineHeightMatcher
- * @param letterSpacingMatcher
- */
-Cypress.Commands.add(
-	'testSizeLineHeightSpacing',
-	(elem, fontSizeMatcher, lineHeightMatcher, letterSpacingMatcher) => {
-		// Test font size.
-		cy.get(elem)
-			.should('have.css', 'font-size')
-			.and('match', new RegExp(fontSizeMatcher + 'px', 'g'));
-
-		// Test line height.
-		cy.get(elem).should('have.css', 'line-height').and('match', new RegExp(lineHeightMatcher, 'g'));
-
-		// Test letter spacing.
-		cy.get(elem)
-			.should('have.css', 'letter-spacing')
-			.and('match', new RegExp(letterSpacingMatcher, 'g'));
-	},
-);
