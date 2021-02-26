@@ -35,7 +35,7 @@ describe('Page meta box settings', () => {
 		cy.clearWelcome();
 		cy.insertCoverBlock();
 		cy.visit(pageSetup.url);
-		cy.matchContentWidth(defaultWidth);
+		matchContentWidth(defaultWidth);
 	});
 
 	it('Activates Classic Editor', () => {
@@ -84,3 +84,22 @@ describe('Page meta box settings', () => {
 		cy.deactivateClassicEditorPlugin();
 	});
 });
+
+/**
+ * Matches content width
+ *
+ * @param defaultWidth
+ * @example matchContentWidth(2250)
+ */
+const matchContentWidth = (defaultWidth: number) => {
+	cy.get(
+		'.single-page-container .alignfull [class*="__inner-container"] > *, .single-page-container .alignwide [class*="__inner-container"] > *',
+	)
+		.invoke('width')
+		.should('be.eq', defaultWidth - 30); //we substract the padding.
+	cy.get('.single-page-container .nv-content-wrap')
+		.invoke('width')
+		.should('be.eq', defaultWidth - 30); //we substract the padding.
+	cy.get('#wp-admin-bar-edit a').click();
+	cy.get('.wp-block').should('have.css', 'max-width', defaultWidth + 'px');
+};
