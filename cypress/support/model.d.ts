@@ -161,7 +161,7 @@ declare namespace Cypress {
 		 * @example
 		 *  cy.openNeveSidebar()
 		 */
-		openNeveSidebar(): void;
+		openNeveSidebar(): Chainable<unknown>;
 
 		/**
 		 * Activates Classic editor plugin

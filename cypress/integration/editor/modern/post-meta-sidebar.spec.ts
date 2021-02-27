@@ -97,7 +97,7 @@ describe('Single post meta sidebar', () => {
 		// const enableContentWidth = cy.get('.components-toggle-control__label').contains('Custom Content Width (%)');
 		cy.activateCheckbox('.components-toggle-control__label', 'Custom Content Width (%');
 
-		cy.get('.neve_meta_content_width').find('input[type=number]').type('{selectall}').type(60);
+		cy.get('.neve_meta_content_width').find('input[type=number]').type('{selectall}').type('60');
 		cy.updatePost();
 		cy.visit(postSetup.url);
 

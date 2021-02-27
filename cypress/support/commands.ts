@@ -9,7 +9,7 @@ Cypress.Cookies.defaults({
 	preserve: /wordpress_.*/,
 });
 
-Cypress.Commands.add('login', (nextRoute = null) => {
+Cypress.Commands.add('login', (nextRoute: string = null) => {
 	cy.getCookies({
 		log: true,
 	}).then((cookies) => {
@@ -126,7 +126,7 @@ Cypress.Commands.add('updatePost', () => {
 	cy.wait(500);
 });
 
-Cypress.Commands.add('getCustomizerControl', (slug) => {
+Cypress.Commands.add('getCustomizerControl', (slug: string) => {
 	cy.window().then((win) => {
 		win.wp.customize.control(slug).focus();
 	});
@@ -150,31 +150,34 @@ Cypress.Commands.add('captureDocument', (generalMaskAndClip = true, screenShotNa
 	cy.percySnapshot(screenShotName);
 });
 
-Cypress.Commands.add('maskAndClip', (maskSelectors, clipSelectors, hideElements) => {
-	cy.get('body').then(($body) => {
-		// synchronously query from body
-		// to find which element was created
-		if ($body.find(maskSelectors).length) {
-			cy.get(maskSelectors).invoke(
-				'css',
-				'background',
-				'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACWBAMAAACWdajhAAAAG1BMVEUAAAD///+fn59fX18fHx/f398/Pz9/f3+/v78mHjoVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC00lEQVR4nO2WTW/TQBCGN7Hj9Nip68THWmo5x1Ir5ei0CnDstoA4OghEjg0Czlil8LeZmV3HCUlQIa64vI9UrT3exs+OZz+MAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHkeHHJvxP98bOnxCK2j9FRuv2xGH1tbX7Yj/L60sNiagE2Pe2eSzi8ub9fn49am2lzZ5Jn2Dh5ui1goe6O1I+nWTExOe0U0p0bFN7lvRmiaF/vW5/pNyTeuAQzmJNXPHfSui2GtFlmOp9Mt4TDnfDDn6QXp+20tLOdRMScYWSfmCXq1pZWlxKXM1T0ZRxW/t0vcw81rT5DzM2bVDcVQGdGvmfBPa2+JK/fbWYicxC1nJZMNVrYiuJUHuUY8KM0skg05rMZAsXnO/E2MmnG1jjznjpQyiFa1p4r7hnfz8qlafuHZy34r6QsvQaVluQr7uiIk8MPkRu3M72TGZHqlVX3HlxJKFYhn3Whqa+DbkzFTHTmWJavFDeSBj+u2X99IyUrNuoOtaGtLWJ1Yy1CwQ4ccz1eJL2+wYzz/ZlrQmMuDOplbHay2/N61qXbiYdlpuZIHdtqH9m5Zma4tWb6nlO65ma0r08/1Sy6uGltKvrdZWTwupKXmtqVLbnrRCNWhqixcPX/LiO3AdeAVpreTdTOzqtDtyWlzBM3KTk2diV9qIV8nFcGUmHkvMa2WyVM1SN7ZZO1pu3XKL1EDjNm7WKyvtQGbqSJenntcS9YNaayL5rGI/LffT8mVar/JZWr7kS3kNL/i6unM715bOo4o3mj69iSqvVaXllWU31epTXMw5nQf0I+SpULSgVe+J3XqP03Im+RQSWpDR7VJ3uox3vqbkKbaxz/rC/XMoE/FCymFvrZUTRDryH/dL4k4OY3tfnyD0XBA8pCOvJWeGIk+9Ft/JcUI6ngZ77dUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ6KX6rsak4Q9c5cAAAAAElFTkSuQmCC) #000 no-repeat center center',
-			);
-			cy.get(maskSelectors).invoke('css', 'color', 'transparent');
-			if ($body.find(maskSelectors).find('*').length > 0) {
-				cy.get(maskSelectors).children().invoke('css', 'visibility', 'hidden');
+Cypress.Commands.add(
+	'maskAndClip',
+	(maskSelectors: string, clipSelectors: string, hideElements?: string) => {
+		cy.get('body').then(($body) => {
+			// synchronously query from body
+			// to find which element was created
+			if ($body.find(maskSelectors).length) {
+				cy.get(maskSelectors).invoke(
+					'css',
+					'background',
+					'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACWBAMAAACWdajhAAAAG1BMVEUAAAD///+fn59fX18fHx/f398/Pz9/f3+/v78mHjoVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC00lEQVR4nO2WTW/TQBCGN7Hj9Nip68THWmo5x1Ir5ei0CnDstoA4OghEjg0Czlil8LeZmV3HCUlQIa64vI9UrT3exs+OZz+MAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHkeHHJvxP98bOnxCK2j9FRuv2xGH1tbX7Yj/L60sNiagE2Pe2eSzi8ub9fn49am2lzZ5Jn2Dh5ui1goe6O1I+nWTExOe0U0p0bFN7lvRmiaF/vW5/pNyTeuAQzmJNXPHfSui2GtFlmOp9Mt4TDnfDDn6QXp+20tLOdRMScYWSfmCXq1pZWlxKXM1T0ZRxW/t0vcw81rT5DzM2bVDcVQGdGvmfBPa2+JK/fbWYicxC1nJZMNVrYiuJUHuUY8KM0skg05rMZAsXnO/E2MmnG1jjznjpQyiFa1p4r7hnfz8qlafuHZy34r6QsvQaVluQr7uiIk8MPkRu3M72TGZHqlVX3HlxJKFYhn3Whqa+DbkzFTHTmWJavFDeSBj+u2X99IyUrNuoOtaGtLWJ1Yy1CwQ4ccz1eJL2+wYzz/ZlrQmMuDOplbHay2/N61qXbiYdlpuZIHdtqH9m5Zma4tWb6nlO65ma0r08/1Sy6uGltKvrdZWTwupKXmtqVLbnrRCNWhqixcPX/LiO3AdeAVpreTdTOzqtDtyWlzBM3KTk2diV9qIV8nFcGUmHkvMa2WyVM1SN7ZZO1pu3XKL1EDjNm7WKyvtQGbqSJenntcS9YNaayL5rGI/LffT8mVar/JZWr7kS3kNL/i6unM715bOo4o3mj69iSqvVaXllWU31epTXMw5nQf0I+SpULSgVe+J3XqP03Im+RQSWpDR7VJ3uox3vqbkKbaxz/rC/XMoE/FCymFvrZUTRDryH/dL4k4OY3tfnyD0XBA8pCOvJWeGIk+9Ft/JcUI6ngZ77dUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ6KX6rsak4Q9c5cAAAAAElFTkSuQmCC) #000 no-repeat center center',
+				);
+				cy.get(maskSelectors).invoke('css', 'color', 'transparent');
+				if ($body.find(maskSelectors).find('*').length > 0) {
+					cy.get(maskSelectors).children().invoke('css', 'visibility', 'hidden');
+				}
 			}
-		}
-		if ($body.find(clipSelectors).length) {
-			cy.get(clipSelectors).invoke('css', 'display', 'none');
-		}
-		if (hideElements && hideElements.length > 0 && $body.find(hideElements).length) {
-			cy.get(hideElements).invoke('css', 'visibility', 'hidden');
-		}
-	});
-});
+			if ($body.find(clipSelectors).length) {
+				cy.get(clipSelectors).invoke('css', 'display', 'none');
+			}
+			if (hideElements && hideElements.length > 0 && $body.find(hideElements).length) {
+				cy.get(hideElements).invoke('css', 'visibility', 'hidden');
+			}
+		});
+	},
+);
 
-Cypress.Commands.add('setCustomizeSettings', (to) => {
+Cypress.Commands.add('setCustomizeSettings', (to: unknown) => {
 	cy.goToCustomizer();
 	cy.window().then((win) => {
 		Object.keys(to).map((mod) => {
@@ -218,7 +221,7 @@ Cypress.Commands.add('aliasRestRoutes', () => {
 	cy.intercept('POST', '/wp-admin/admin-ajax.php').as('customizerSave');
 });
 
-Cypress.Commands.add('toggleElements', (show) => {
+Cypress.Commands.add('toggleElements', (show: boolean) => {
 	const icon = show ? 'dashicons-hidden' : 'dashicons-visibility';
 	cy.get('.ti-sortable-item-area .ti-sortable-item-toggle').each(function (el) {
 		cy.get(el)
@@ -231,11 +234,11 @@ Cypress.Commands.add('toggleElements', (show) => {
 	});
 });
 
-Cypress.Commands.add('getControl', (control) => {
-	cy.get('label.components-base-control__label[for="' + control + '"]').parent();
+Cypress.Commands.add('getControl', (control: string) => {
+	return cy.get(`label[for=${control}]`).parent();
 });
 
-Cypress.Commands.add('activateCheckbox', (checkboxSelector, checkboxText) => {
+Cypress.Commands.add('activateCheckbox', (checkboxSelector: string, checkboxText: string) => {
 	cy.get(checkboxSelector)
 		.contains(checkboxText)
 		.prev()
@@ -247,16 +250,7 @@ Cypress.Commands.add('activateCheckbox', (checkboxSelector, checkboxText) => {
 });
 
 Cypress.Commands.add('openNeveSidebar', () => {
-	cy.get('button.components-button[aria-label="Neve Options"]').then(($btn) => {
-		cy.get($btn)
-			.invoke('attr', 'aria-expanded')
-			.then((value) => {
-				if (value) {
-					return true;
-				}
-				cy.get('button.components-button[aria-label="Neve Options"]').click();
-			});
-	});
+	cy.get('button.components-button[aria-label="Neve Options"]').click();
 });
 
 Cypress.Commands.add('activateClassicEditorPlugin', () => {

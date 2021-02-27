@@ -2,7 +2,7 @@ describe('Single page sidebar', () => {
 	const pageSetup = {
 		title: 'Test Page',
 		content: 'The Page Content',
-		url: null,
+		url: '/',
 	};
 
 	it('Create new page named "' + pageSetup.title + '".', () => {
@@ -12,7 +12,7 @@ describe('Single page sidebar', () => {
 			.contains(pageSetup.title)
 			.should('have.attr', 'href')
 			.then((href) => {
-				pageSetup.url = href;
+				pageSetup.url = href.toString();
 			});
 	});
 
@@ -21,9 +21,9 @@ describe('Single page sidebar', () => {
 		cy.get('.nv-sidebar-wrap').should('not.exist');
 		cy.get('.single-page-container').should('not.have.class', 'container-fluid').and('be.visible');
 		cy.get('.nv-single-page-wrap').should('have.css', 'max-width').and('eq', '100%');
-		cy.get('.nv-page-title').should('exist').and('contain', pageSetup.title);
-		cy.get('.hfg_header').should('exist');
-		cy.get('footer.site-footer').should('exist');
+		cy.get('.nv-page-title').should('contain', pageSetup.title);
+		cy.get('.hfg_header');
+		cy.get('footer.site-footer');
 		cy.get('.nv-content-wrap').should('contain', pageSetup.content);
 	});
 
