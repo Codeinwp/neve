@@ -21,7 +21,6 @@ $display_order = component_setting( Logo::DISPLAY, 'default' );
 $main_logo     = get_theme_mod( 'custom_logo' );
 
 $custom_logo_id = $_id === 'logo' ? $main_logo : component_setting( Logo::CUSTOM_LOGO, $main_logo );
-$logo_image     = get_media( $custom_logo_id, 'full' );
 
 $wrapper_tag = 'p';
 if ( get_option( 'show_on_front' ) === 'posts' && is_home() ) {
@@ -50,13 +49,14 @@ if ( $is_not_link ) {
 	$end_tag   = '</a>';
 }
 
-$alt_attribute = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
+do_action( 'hfg_before_wp_get_attachment_image', $custom_logo_id );
+$image = wp_get_attachment_image( $custom_logo_id, apply_filters( 'hfg_logo_image_size', 'full' ) );
+do_action( 'hfg_after_wp_get_attachment_image', $custom_logo_id, $image );
 ?>
 <div class="site-logo">
 	<?php
 	echo ( $start_tag ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	if ( $logo_image ) {
-		$image = '<img src="' . esc_url( $logo_image ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
+	if ( $image ) {
 		switch ( $display_order ) {
 			case 'default':
 				echo ( $image ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
