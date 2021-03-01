@@ -122,6 +122,7 @@ class Core_Loader {
 				'Compatibility\Lifter',
 				'Compatibility\Patterns',
 				'Compatibility\PWA',
+				'Compatibility\Web_Stories',
 
 				'Admin\Metabox\Manager',
 			)

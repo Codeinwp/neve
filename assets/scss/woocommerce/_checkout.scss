@@ -120,19 +120,6 @@
 	}
   }
 
-  #shipping_address_1_field,
-  #shipping_address_2_field,
-  #billing_address_1_field,
-  #billing_address_2_field {
-	width: 47%;
-	display: inline-block;
-  }
-
-  #shipping_address_2_field,
-  #billing_address_2_field {
-	margin-left: 6%;
-  }
-
   .form-row.create-account {
 	padding: 0 18px 12px 18px;
   }
@@ -305,10 +292,6 @@
 	letter-spacing: 0;
 	font-weight: 400;
 	text-transform: none;
-  }
-
-  #order_review {
-	word-break: break-word;
   }
 }
 

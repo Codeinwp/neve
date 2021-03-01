@@ -17,11 +17,14 @@
 		"jest/no-standalone-expect": "off",
 		// temporary disable no unnecessary wait rule
 		"cypress/no-unnecessary-waiting": "off",
+		"@wordpress/no-global-event-listener": "off",
+		"@wordpress/no-global-active-element": "off",
+		"@wordpress/no-global-get-selection": "off",
 		"prettier/prettier": [
 			"error",
 			{},
 			{
-				"usePrettierrc": false
+				"usePrettierrc": true
 			}
 		]
 	}
