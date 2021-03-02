@@ -1,18 +1,18 @@
 {
   "projectId": "d8fiqf",
   "pluginsFile": "cypress/plugins/index.js",
-  "supportFile": "cypress/support/commands.js",
+  "supportFile": "cypress/support/commands.ts",
   "baseUrl": "http://localhost:8080",
   "viewportWidth": 1366,
   "viewportHeight": 768,
-  "user": "admin",
   "retries": 1,
   "screenshotsFolder": "visual-regression/screenshots",
   "videoUploadOnPasses": false,
   "numTestsKeptInMemory": 0,
-  "password": "admin",
   "experimentalStudio": true,
   "env": {
+  "user": "admin",
+  "password": "admin",
 	"ssSites": [
 	  "https://staging.demosites.io/onboarding/",
 	  "https://staging.demosites.io/web-agency/",

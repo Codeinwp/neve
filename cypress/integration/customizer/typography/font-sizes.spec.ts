@@ -24,7 +24,7 @@ const setup = {
 		tablet: '2',
 		desktop: '1',
 	},
-	fontWeight: 500,
+	fontWeight: '500',
 	textTransform: 'lowercase',
 };
 
