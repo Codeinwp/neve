@@ -1,4 +1,5 @@
 /* global neveDash */
+/*eslint camelcase: ["error", {allow: ["required_actions"]}]*/
 import Accordion from './Accordion';
 import InputForm from './Options/InputForm';
 import Select from './Options/Select';
@@ -12,14 +13,14 @@ import { Fragment, useState } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 
-const ModuleCard = ( {
+const ModuleCard = ({
 	slug,
 	setToast,
 	changeModuleStatus,
 	getModuleStatus,
 	tier,
-} ) => {
-	const [ loading, setLoading ] = useState( false );
+}) => {
+	const [loading, setLoading] = useState(false);
 	const {
 		nicename,
 		description,
@@ -29,94 +30,99 @@ const ModuleCard = ( {
 		documentation,
 		// eslint-disable-next-line camelcase
 		required_actions,
-	} = neveDash.modules[ slug ];
+	} = neveDash.modules[slug];
 	const { upgradeLinks } = neveDash;
 
 	const renderOptionsAccordions = () => {
-		return options.map( ( group, index ) => {
-			const { label, options } = group;
+		return options.map((group, index) => {
+			const { label, options: optionGroup } = group;
 			return (
-				<Accordion key={ index } title={ label }>
+				<Accordion key={index} title={label}>
 					<div>
-						{ Object.keys( options ).map( ( optionSlug, index ) => {
-							const { label, type, placeholder, choices } = options[
-								optionSlug
-							];
-							return (
-								<Fragment key={ index }>
-									{ 'text' === type && (
-										<InputForm
-											label={ label }
-											slug={ optionSlug }
-											placeholder={ placeholder }
-										/>
-									) }
-									{ 'toggle' === type && (
-										<Toggle
-											label={ label }
-											slug={ optionSlug }
-										/>
-									) }
-									{ 'select' === type && (
-										<Select
-											label={ label }
-											slug={ optionSlug }
-											choices={ choices }
-										/>
-									) }
-								</Fragment>
-							);
-						} ) }
+						{Object.keys(optionGroup).map(
+							(optionSlug, indexGroup) => {
+								const {
+									label: labelGroup,
+									type,
+									placeholder,
+									choices,
+								} = optionGroup[optionSlug];
+								return (
+									<Fragment key={indexGroup}>
+										{'text' === type && (
+											<InputForm
+												label={labelGroup}
+												slug={optionSlug}
+												placeholder={placeholder}
+											/>
+										)}
+										{'toggle' === type && (
+											<Toggle
+												label={labelGroup}
+												slug={optionSlug}
+											/>
+										)}
+										{'select' === type && (
+											<Select
+												label={labelGroup}
+												slug={optionSlug}
+												choices={choices}
+											/>
+										)}
+									</Fragment>
+								);
+							}
+						)}
 					</div>
 				</Accordion>
 			);
-		} );
+		});
 	};
 
 	return (
-		<div className={ classnames( [ 'card', 'module-card', slug ] ) }>
+		<div className={classnames(['card', 'module-card', slug])}>
 			<div className="card-header">
-				<h3 className="title">{ nicename }</h3>
+				<h3 className="title">{nicename}</h3>
 				<div className="toggle-wrap">
-					{ tier < availabilityLevel ? (
+					{tier < availabilityLevel ? (
 						<Button
 							isPrimary
-							href={ upgradeLinks[ availabilityLevel ] }
+							href={upgradeLinks[availabilityLevel]}
 						>
-							{ __( 'Upgrade', 'neve' ) }
+							{__('Upgrade', 'neve')}
 						</Button>
 					) : (
 						<Fragment>
-							{ required_actions && (
+							{required_actions && (
 								<span
 									className="required"
-									dangerouslySetInnerHTML={ {
+									dangerouslySetInnerHTML={{
 										__html: required_actions,
-									} }
+									}}
 								/>
-							) }
-							{ loading && (
+							)}
+							{loading && (
 								<Dashicon
-									size={ 18 }
+									size={18}
 									icon="update"
 									className="is-loading"
 								/>
-							) }
-							{ ! required_actions && (
+							)}
+							{!required_actions && (
 								<ToggleControl
-									checked={ getModuleStatus( slug ) || false }
-									onChange={ ( value ) => {
-										setLoading( true );
-										changeOption( slug, value, true ).then(
-											( r ) => {
-												if ( r.success ) {
+									checked={getModuleStatus(slug) || false}
+									onChange={(value) => {
+										setLoading(true);
+										changeOption(slug, value, true).then(
+											(r) => {
+												if (r.success) {
 													changeModuleStatus(
 														slug,
 														value
 													);
-													setLoading( false );
+													setLoading(false);
 													setToast(
-														( value
+														(value
 															? __(
 																	'Module Activated',
 																	'neve'
@@ -124,12 +130,12 @@ const ModuleCard = ( {
 															: __(
 																	'Module Deactivated.',
 																	'neve'
-															  ) ) +
-															` (${ nicename })`
+															  )) +
+															` (${nicename})`
 													);
 													return false;
 												}
-												setLoading( false );
+												setLoading(false);
 												setToast(
 													__(
 														'Could not activate module. Please try again.',
@@ -138,57 +144,57 @@ const ModuleCard = ( {
 												);
 											}
 										);
-									} }
+									}}
 								/>
-							) }
+							)}
 						</Fragment>
-					) }
+					)}
 				</div>
 			</div>
 			<div className="card-content">
 				<p className="card-description">
-					{ description + ' ' }
-					{ documentation.url && (
-						<a href={ documentation.url }>
-							{ __( 'Learn More', 'neve' ) }
+					{description + ' '}
+					{documentation.url && (
+						<a href={documentation.url}>
+							{__('Learn More', 'neve')}
 						</a>
-					) }
+					)}
 				</p>
-				{ links && getModuleStatus( slug ) && (
+				{links && getModuleStatus(slug) && (
 					<div className="actions">
-						{ links.map( ( link, index ) => (
-							<Button key={ index } isSecondary href={ link.url }>
-								{ link.label }
+						{links.map((link, index) => (
+							<Button key={index} isSecondary href={link.url}>
+								{link.label}
 							</Button>
-						) ) }
+						))}
 					</div>
-				) }
-				{ 0 < options.length &&
-					true === getModuleStatus( slug ) &&
+				)}
+				{0 < options.length &&
+					true === getModuleStatus(slug) &&
 					-1 < tier && (
 						<div className="module-options">
-							{ renderOptionsAccordions() }
+							{renderOptionsAccordions()}
 						</div>
-					) }
+					)}
 			</div>
 		</div>
 	);
 };
 
 export default compose(
-	withSelect( ( select ) => {
-		const { getModuleStatus, getLicenseTier } = select( 'neve-dashboard' );
+	withSelect((select) => {
+		const { getModuleStatus, getLicenseTier } = select('neve-dashboard');
 		return {
-			getModuleStatus: ( slug ) => getModuleStatus( slug ),
+			getModuleStatus: (slug) => getModuleStatus(slug),
 			tier: getLicenseTier(),
 		};
-	} ),
-	withDispatch( ( dispatch ) => {
-		const { changeModuleStatus, setToast } = dispatch( 'neve-dashboard' );
+	}),
+	withDispatch((dispatch) => {
+		const { changeModuleStatus, setToast } = dispatch('neve-dashboard');
 		return {
-			changeModuleStatus: ( slug, value ) =>
-				changeModuleStatus( slug, value ),
-			setToast: ( message ) => setToast( message ),
+			changeModuleStatus: (slug, value) =>
+				changeModuleStatus(slug, value),
+			setToast: (message) => setToast(message),
 		};
-	} )
-)( ModuleCard );
+	})
+)(ModuleCard);

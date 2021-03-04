@@ -4,7 +4,7 @@ import FeatureRow from '../FeatureRow';
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 
-const Pro = ( props ) => {
+const Pro = () => {
 	const { featureData } = neveDash;
 	return (
 		<div className="col">
@@ -15,21 +15,21 @@ const Pro = ( props ) => {
 						<th className="indicator">Neve</th>
 						<th className="indicator">Neve Pro</th>
 					</tr>
-					{ featureData.map( ( item, index ) => (
-						<FeatureRow key={ index } item={ item } />
-					) ) }
+					{featureData.map((item, index) => (
+						<FeatureRow key={index} item={item} />
+					))}
 				</tbody>
 			</table>
 
 			<div className="card upsell">
 				<p>
-					{ __(
+					{__(
 						'Get access to all Pro features and power-up your website',
 						'neve'
-					) }
+					)}
 				</p>
-				<Button href={ neveDash.upgradeURL } isPrimary>
-					{ __( 'Get Neve Pro Now', 'neve' ) }
+				<Button href={neveDash.upgradeURL} isPrimary>
+					{__('Get Neve Pro Now', 'neve')}
 				</Button>
 			</div>
 		</div>

@@ -26,6 +26,8 @@ jobs:
       # WORKAROUND FOR SIZE-LIMIT JOB NUMBER
       - name: Run package check
         run: yarn run lint:package-json
+      - name: Run dashboard check
+        run: yarn run lint:dash
       - name: Run size check
         env:
           CI_JOB_NUMBER: 1
