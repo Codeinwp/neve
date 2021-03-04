@@ -26,12 +26,12 @@ trait Core {
 	 * @return string
 	 */
 	public function get_assets_suffix() {
-		$suffix = '.min';
-		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			$suffix = '';
-		}
+		// $suffix = '.min';
+		// if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+		// $suffix = '';
+		// }
 
-		return $suffix;
+		return '';
 	}
 
 
