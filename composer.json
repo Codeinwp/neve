@@ -27,14 +27,15 @@
 	]
   },
   "scripts": {
-	"format": "phpcbf --standard=phpcs.xml --report-summary --report-source -s  --runtime-set testVersion 5.4- ",
-	"phpcs": "phpcs --standard=phpcs.xml -s --runtime-set testVersion 5.5-",
+	"format": "phpcbf --standard=phpcs.xml --report-summary --report-source -s",
+	"phpcs": "phpcs --standard=phpcs.xml -s",
 	"lint": "composer run-script phpcs",
+	"check-standards": "phpcs -i",
 	"post-install-cmd": [
-	  "yarn run bump-vendor || true"
+	  "[ ! -z \"$GITHUB_ACTIONS\" ] && yarn run bump-vendor || true"
 	],
 	"post-update-cmd": [
-	  "yarn run bump-vendor || true"
+	  "[ ! -z \"$GITHUB_ACTIONS\" ] && yarn run bump-vendor || true"
 	]
   },
   "minimum-stability": "dev",
@@ -51,6 +52,7 @@
   "require-dev": {
 	"wptrt/wpthemereview": "*",
 	"automattic/vipwpcs": "^2.0",
-	"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0"
+	"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+	"sirbrillig/phpcs-variable-analysis": "^2.10"
   }
 }
