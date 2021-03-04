@@ -130,7 +130,7 @@ class Main {
 	 * @access  public
 	 */
 	public function admin_utils_scripts() {
-		$layout_data   = Main::get_instance()->get_builder( 'footer' )->get_layout_data();
+		$layout_data   = self::get_instance()->get_builder( 'footer' )->get_layout_data();
 		$footer_top    = ( isset( $layout_data['desktop']['top'] ) ) ? $layout_data['desktop']['top'] : array();
 		$footer_bottom = ( isset( $layout_data['desktop']['bottom'] ) ) ? $layout_data['desktop']['bottom'] : array();
 

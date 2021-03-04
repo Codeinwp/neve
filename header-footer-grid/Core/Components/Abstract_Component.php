@@ -766,10 +766,10 @@ abstract class Abstract_Component implements Component {
 		$priority       = 2000;
 
 		if ( $this->has_typeface_control ) {
-			$accordion_wrap += 1;
+			$accordion_wrap ++;
 		}
 		if ( $this->has_font_family_control ) {
-			$accordion_wrap += 1;
+			$accordion_wrap ++;
 		}
 
 		SettingsManager::get_instance()->add(

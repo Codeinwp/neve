@@ -161,7 +161,7 @@ final class Manager {
 	 *
 	 * @return bool
 	 */
-	private  function is_gutenberg_active() {
+	private function is_gutenberg_active() {
 		global $current_screen;
 		if ( method_exists( $current_screen, 'is_block_editor' ) ) {
 			return $current_screen->is_block_editor();
@@ -356,7 +356,9 @@ final class Manager {
 		wp_enqueue_script(
 			'neve-meta-sidebar',
 			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.js',
-			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-keyboard-shortcuts', 'wp-i18n' )
+			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-keyboard-shortcuts', 'wp-i18n' ),
+			NEVE_VERSION,
+			false
 		);
 
 		if ( function_exists( 'wp_set_script_translations' ) ) {
@@ -396,7 +398,8 @@ final class Manager {
 		wp_enqueue_style(
 			'neve-meta-sidebar-css', // Handle.
 			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/editor.css',
-			array( 'wp-edit-blocks' )
+			array( 'wp-edit-blocks' ),
+			NEVE_VERSION
 		);
 	}
 

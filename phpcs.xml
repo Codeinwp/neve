@@ -35,6 +35,9 @@
     </rule>
 
     <rule ref="WordPress-Docs" />
+    <rule ref="WordPress-Extra">
+        <exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>
+	</rule>
 	<rule ref="PHPCompatibilityWP"/>
 
 

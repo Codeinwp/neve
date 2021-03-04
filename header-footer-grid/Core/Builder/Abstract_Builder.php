@@ -820,7 +820,7 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::KEY_SELECTOR => $selector . ' .nav-ul .sub-menu',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
 						Dynamic_Selector::META_DEFAULT => $default_color,
 					],
 				],
@@ -829,7 +829,7 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::KEY_SELECTOR => $selector,
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
 						Dynamic_Selector::META_DEFAULT => $default_color,
 					],
 				],
@@ -842,10 +842,10 @@ abstract class Abstract_Builder implements Builder {
 					Dynamic_Selector::KEY_SELECTOR => $selector . ' .nav-ul .sub-menu li,' . $selector . ' .nav-ul .sub-menu',
 					Dynamic_Selector::KEY_RULES    => [
 						Config::CSS_PROP_BACKGROUND_COLOR => [
-							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
+							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
 						],
 						Config::CSS_PROP_BORDER_COLOR     => [
-							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
+							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
 						],
 					],
 				];

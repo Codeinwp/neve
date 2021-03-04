@@ -21,7 +21,7 @@ class Font_Manager extends Base_View {
 	 *
 	 * @var array
 	 */
-	static $font_families = array();
+	public static $font_families = array();
 
 	/**
 	 * Add a google font.
@@ -29,7 +29,7 @@ class Font_Manager extends Base_View {
 	 * @param string $font_family font family.
 	 * @param string $font_weight font weight.
 	 */
-	final static function add_google_font( $font_family, $font_weight = '400' ) {
+	final public static function add_google_font( $font_family, $font_weight = '400' ) {
 		if ( empty( $font_family ) ) {
 			return;
 		}
@@ -118,6 +118,6 @@ class Font_Manager extends Base_View {
 		$url = add_query_arg( $query_args, $base_url );
 
 		// Enqueue style
-		wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), false );
+		wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
 	}
 }
