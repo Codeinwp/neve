@@ -4014,6 +4014,26 @@
     react-resize-aware "^3.1.0"
     use-memo-one "^1.1.1"
 
+"@wordpress/compose@^3.24.5":
+  version "3.24.5"
+  resolved "https://registry.yarnpkg.com/@wordpress/compose/-/compose-3.24.5.tgz#054b2dae1eeca14be39e4a23376095d71e637c17"
+  integrity sha512-mzYh9WVV6dC/XrNEExzo9782B1qkgeKrWZuT5IZYQs/a/0DS229AYepa4kynYfOu5qpXbvAp+6WGNIVSm8pw0g==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@wordpress/deprecated" "^2.11.1"
+    "@wordpress/dom" "^2.16.2"
+    "@wordpress/element" "^2.19.1"
+    "@wordpress/is-shallow-equal" "^3.0.1"
+    "@wordpress/keycodes" "^2.18.3"
+    "@wordpress/priority-queue" "^1.10.1"
+    clipboard "^2.0.1"
+    lodash "^4.17.19"
+    memize "^1.1.0"
+    mousetrap "^1.6.5"
+    react-merge-refs "^1.0.0"
+    react-resize-aware "^3.1.0"
+    use-memo-one "^1.1.1"
+
 "@wordpress/data@^4.26.6":
   version "4.26.6"
   resolved "https://registry.yarnpkg.com/@wordpress/data/-/data-4.26.6.tgz#223e9f7d14e2050b56d14afe682aa653531130c0"
@@ -4021,6 +4041,26 @@
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@wordpress/compose" "^3.24.3"
+    "@wordpress/deprecated" "^2.11.1"
+    "@wordpress/element" "^2.19.1"
+    "@wordpress/is-shallow-equal" "^3.0.1"
+    "@wordpress/priority-queue" "^1.10.1"
+    "@wordpress/redux-routine" "^3.13.1"
+    equivalent-key-map "^0.2.2"
+    is-promise "^4.0.0"
+    lodash "^4.17.19"
+    memize "^1.1.0"
+    redux "^4.0.0"
+    turbo-combine-reducers "^1.0.2"
+    use-memo-one "^1.1.1"
+
+"@wordpress/data@^4.26.8":
+  version "4.26.8"
+  resolved "https://registry.yarnpkg.com/@wordpress/data/-/data-4.26.8.tgz#a9c7fb3485748bc5e094d87efca5cc9ef1ab4597"
+  integrity sha512-j3VXpcwUv3KCtNVYLHbmBUfgLcfYG31e8v7X04ydaEjwxNcuE9FBHbM4sgMuxiPlxrwawSC4EIVA+DUbfHA/2w==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@wordpress/compose" "^3.24.5"
     "@wordpress/deprecated" "^2.11.1"
     "@wordpress/element" "^2.19.1"
     "@wordpress/is-shallow-equal" "^3.0.1"
@@ -13307,7 +13347,7 @@ lodash@^4.0.0, lodash@^4.0.1, lodash@^4.1.1, lodash@^4.14.2, lodash@^4.17.10, lo
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
-lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20:
+lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==

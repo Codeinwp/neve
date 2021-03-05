@@ -74,17 +74,13 @@
 		],
 		"dashboard/src/*.js": [
 			"yarn run format:dash",
-			"yarn run lint:dash"
+			"yarn run lint:dash",
+			"yarn run build:dash"
 		],
 		"inc/customizer/controls/react/src/*.js": [
 			"yarn run format:customizer",
 			"yarn run lint:customizer",
 			"yarn run build:customizer"
-		],
-		"dashboard/src/*.js": [
-			"yarn run format:dash",
-			"yarn run lint:dash",
-			"yarn run build:dash"
 		]
 	},
 	"dependencies": {
@@ -123,9 +119,13 @@
 		"@typescript-eslint/eslint-plugin": "^4.15.2",
 		"@typescript-eslint/parser": "^4.15.2",
 		"@wordpress/components": "^12.0.1",
+		"@wordpress/compose": "^3.24.5",
+		"@wordpress/data": "^4.26.8",
+		"@wordpress/dom-ready": "^2.12.1",
 		"@wordpress/element": "^2.19.0",
 		"@wordpress/eslint-plugin": "^8.0.2",
 		"@wordpress/i18n": "^3.17.0",
+		"@wordpress/icons": "^2.9.1",
 		"@wordpress/media-utils": "^1.19.2",
 		"@wordpress/scripts": "^13.0.3",
 		"babel-loader": "^8.1.0",
@@ -157,6 +157,7 @@
 		"husky": "^4.2.5",
 		"lint-staged": "^10.5.4",
 		"load-project-config": "~0.2.1",
+		"lodash": "^4.17.21",
 		"node-sass": "^4.14.1",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^2.2.1",
