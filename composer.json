@@ -27,10 +27,11 @@
 	]
   },
   "scripts": {
-	"format": "phpcbf --standard=phpcs.xml --report-summary --report-source -s",
-	"phpcs": "phpcs --standard=phpcs.xml -s",
+	"format": "phpcbf --standard=phpcs.xml --report-summary --report-source -s  --runtime-set testVersion 5.5- ",
+	"format-fix-exit": "\"vendor/bin/phpcbf-fix-exit-0\" --standard=phpcs.xml --report-summary --report-source -s  --runtime-set testVersion 5.5- ",
+	"phpcs": "phpcs --standard=phpcs.xml -s  --runtime-set testVersion 5.5-",
 	"lint": "composer run-script phpcs",
-	"check-standards": "phpcs -i",
+	"phpcs-i": "phpcs -i",
 	"post-install-cmd": [
 	  "[ ! -z \"$GITHUB_ACTIONS\" ] && yarn run bump-vendor || true"
 	],
@@ -50,9 +51,6 @@
 	"installer-disable": "true"
   },
   "require-dev": {
-	"wptrt/wpthemereview": "*",
-	"automattic/vipwpcs": "^2.0",
-	"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-	"sirbrillig/phpcs-variable-analysis": "^2.10"
+    "codeinwp/phpcs-ruleset": "dev-main"
   }
 }

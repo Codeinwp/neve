@@ -41,7 +41,7 @@ add_filter( 'themeisle_onboarding_phprequired_text', 'neve_get_php_notice_text' 
 function neve_get_php_notice_text() {
 	$message = sprintf(
 	/* translators: %s message to upgrade PHP to the latest version */
-		__( "Hey, we've noticed that you're running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by %s. Neve's minimal requirement is PHP 5.4.0.", 'neve' ),
+		__( "Hey, we've noticed that you're running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by %s. Neve's minimal requirement is PHP 5.5.0.", 'neve' ),
 		sprintf(
 		/* translators: %s message to upgrade PHP to the latest version */
 			'<a href="https://wordpress.org/support/upgrade-php/">%s</a>',
@@ -59,7 +59,7 @@ function neve_php_support() {
 	printf( '<div class="error"><p>%1$s</p></div>', neve_get_php_notice_text() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
-if ( version_compare( PHP_VERSION, '5.3.29' ) <= 0 ) {
+if ( version_compare( PHP_VERSION, '5.5' ) < 0 ) {
 	/**
 	 * Add notice for PHP upgrade.
 	 */
