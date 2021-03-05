@@ -41,7 +41,11 @@ const RadioIcons = ({
 							onChange(type);
 						}}
 					/>
-					{showLabels && <label>{options[type].tooltip}</label>}
+					{showLabels && (
+						/* TODO: Add proper label id for this */
+						/* eslint-disable-next-line jsx-a11y/label-has-for */
+						<label>{options[type].tooltip}</label>
+					)}
 				</span>
 			);
 		});

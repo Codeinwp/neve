@@ -35,6 +35,7 @@ const Background = ({ onChange, value, label }) => {
 					{labels[type]}
 				</Button>
 			);
+			return type;
 		});
 
 		return buttons;

@@ -5,6 +5,7 @@ const FontPreviewLink = ({ fontFace, onClick, label }) => {
 
 	return (
 		<a
+			href="#font-list"
 			onClick={(e) => {
 				e.stopPropagation();
 				onClick();

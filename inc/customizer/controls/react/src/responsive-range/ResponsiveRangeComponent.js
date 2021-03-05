@@ -22,7 +22,7 @@ const ResponsiveRangeComponent = ({ control }) => {
 		if (value !== responsiveConverted) {
 			setValue(responsiveConverted);
 		}
-		document.addEventListener('neve-changed-customizer-value', (e) => {
+		global.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) return false;
 			if (e.detail.id !== control.id) return false;
 			// Make sure we translate int values to responsive values.
@@ -58,7 +58,7 @@ const ResponsiveRangeComponent = ({ control }) => {
 
 		return units.map((unit, index) => {
 			const buttonClass = classnames({
-				active: value[self.state.currentDevice + '-unit'] === unit,
+				active: value[currentDevice + '-unit'] === unit,
 			});
 			return (
 				<Button
@@ -71,7 +71,10 @@ const ResponsiveRangeComponent = ({ control }) => {
 						if (unit !== 'em') {
 							nextValue[currentDevice] = mapValues(
 								nextValue[currentDevice],
-								(value) => (value ? parseInt(value) : value)
+								(valueToSet) =>
+									valueToSet
+										? parseInt(valueToSet)
+										: valueToSet
 							);
 						}
 						setValue(nextValue);

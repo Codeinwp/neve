@@ -28,6 +28,10 @@ jobs:
         run: yarn run lint:package-json
       - name: Run dashboard check
         run: yarn run lint:dash
+      - name: Run customizer check
+        run: yarn run lint:customizer
+      - name: Run cypress check
+        run: yarn run lint:cypress
       - name: Run size check
         env:
           CI_JOB_NUMBER: 1

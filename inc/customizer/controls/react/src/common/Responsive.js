@@ -1,3 +1,4 @@
+/* global CustomEvent */
 import { Button, Tooltip, ButtonGroup } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -17,7 +18,7 @@ const ResponsiveControl = ({
 	};
 
 	useEffect(() => {
-		document.addEventListener('neveChangedRepsonsivePreview', (e) => {
+		global.addEventListener('neveChangedRepsonsivePreview', (e) => {
 			changeViewType(e.detail);
 		});
 	}, []);
@@ -53,6 +54,7 @@ const ResponsiveControl = ({
 			}
 		}
 		deviceMap[key] = devices[key];
+		return key;
 	});
 
 	const renderDeviceButton = (device, index) => {

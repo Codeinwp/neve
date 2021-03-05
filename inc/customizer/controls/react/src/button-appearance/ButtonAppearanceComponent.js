@@ -1,4 +1,5 @@
-/* jshint esversion: 6 */
+/*eslint camelcase: ["error", {allow: ["no_hover"]}]*/
+
 import PropTypes from 'prop-types';
 import ButtonAppearance from './ButtonAppearance';
 import { useState, useEffect } from '@wordpress/element';
@@ -61,7 +62,7 @@ const ButtonAppearanceComponent = ({ control }) => {
 	const { label, no_hover } = control.params;
 
 	useEffect(() => {
-		document.addEventListener('neve-changed-customizer-value', (e) => {
+		global.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) return false;
 			if (e.detail.id !== control.id) return false;
 			// Migrate border-radius and border-width
