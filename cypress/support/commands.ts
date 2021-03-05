@@ -9,6 +9,20 @@ Cypress.Cookies.defaults({
 	preserve: /wordpress_.*/,
 });
 
+Cypress.Commands.add('loginWithRequest', (nextRoute = '/wp-admin') => {
+	cy.request({
+		method: 'POST',
+		url: '/wp-login.php',
+		form: true,
+		body: {
+			log: Cypress.env('user'),
+			pwd: Cypress.env('password'),
+			'wp-submit': 'Log In',
+			redirect_to: 'http://localhost:8080' + nextRoute,
+		},
+	});
+});
+
 Cypress.Commands.add('login', (nextRoute: string = null) => {
 	cy.getCookies({
 		log: true,
@@ -177,20 +191,21 @@ Cypress.Commands.add(
 	},
 );
 
-Cypress.Commands.add('setCustomizeSettings', (to: unknown) => {
-	cy.goToCustomizer();
-	cy.window().then((win) => {
-		Object.keys(to).map((mod) => {
-			win.wp.customize.control(mod).setting.set(to[mod]);
-		});
-	});
-	cy.wait(500);
-	cy.intercept('POST', '/wp-admin/admin-ajax.php').as('save');
-	cy.get('#save').click();
-	cy.wait('@save').then((interception) => {
-		expect(interception.response.body.success).to.be.true;
-		expect(interception.response.statusCode).to.equal(200);
-	});
+Cypress.Commands.add('setCustomizeSettings', (to) => {
+	cy.request('POST', '/wp-json/wpthememods/v1/settings', to);
+	// cy.goToCustomizer();
+	// cy.window().then((win) => {
+	// 	Object.keys(to).map((mod) => {
+	// 		win.wp.customize.control(mod).setting.set(to[mod]);
+	// 	});
+	// });
+	// cy.wait(500);
+	// cy.intercept('POST', '/wp-admin/admin-ajax.php').as('save');
+	// cy.get('#save').click();
+	// cy.wait('@save').then((interception) => {
+	// 	expect(interception.response.body.success).to.be.true;
+	// 	expect(interception.response.statusCode).to.equal(200);
+	// });
 });
 
 Cypress.Commands.add('goToCustomizer', () => {
