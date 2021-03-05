@@ -11,3 +11,4 @@ visual-regression/*
 cypress/videos/*
 header-footer-grid/assets/css/style*
 storybook-static
+yarn-error.log
