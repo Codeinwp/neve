@@ -60,7 +60,6 @@ describe('Blog/Archive 1 / Default Layout', () => {
 				.invoke('text')
 				.then((val) => {
 					const res = val.split(' ');
-					cy.log(res);
 					expect(res.length).to.be.at.most(21);
 				});
 			count--;

@@ -7,7 +7,7 @@ describe('Sidebar/Content Settings', () => {
 		cy.get('#customize-control-neve_default_sidebar_layout label[data-option="left"]').click();
 		cy.get('#customize-control-neve_sitewide_content_width input[type=number]')
 			.type('{selectall}')
-			.type(50);
+			.type('50');
 		cy.get('#save').click();
 		cy.wait('@customizerSave').then((interception) => {
 			expect(interception.response.body.success).to.be.true;
@@ -85,17 +85,17 @@ describe('Sidebar/Content Settings', () => {
 		cy.get('#customize-control-neve_blog_archive_sidebar_layout [data-option="left"]').click();
 		cy.get('#customize-control-neve_blog_archive_content_width input[type=number]')
 			.type('{selectall}')
-			.type(50);
+			.type('50');
 
 		cy.get('#customize-control-neve_single_post_sidebar_layout [data-option="left"]').click();
 		cy.get('#customize-control-neve_single_post_content_width input[type=number]')
 			.type('{selectall}')
-			.type(50);
+			.type('50');
 
 		cy.get('#customize-control-neve_other_pages_sidebar_layout [data-option="left"]').click();
 		cy.get('#customize-control-neve_other_pages_content_width input[type=number]')
 			.type('{selectall}')
-			.type(50);
+			.type('50');
 
 		cy.get('#save').click();
 		cy.wait('@customizerSave').then((interception) => {
