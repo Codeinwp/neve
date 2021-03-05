@@ -23,7 +23,6 @@ jobs:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           CYPRESS_INSTALL_BINARY: 0
         run: yarn install --frozen-lockfile
-      # WORKAROUND FOR SIZE-LIMIT JOB NUMBER
       - name: Run package check
         run: yarn run lint:package-json
       - name: Run dashboard check
@@ -33,6 +32,7 @@ jobs:
       - name: Run cypress check
         run: yarn run lint:cypress
       - name: Run size check
+        # WORKAROUND FOR SIZE-LIMIT JOB NUMBER
         env:
           CI_JOB_NUMBER: 1
         run: yarn run size
