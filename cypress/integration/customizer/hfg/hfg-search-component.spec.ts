@@ -1,5 +1,5 @@
 describe('Search Icon Component', function () {
-	before(function() {
+	before(function () {
 		cy.fixture('customizer/hfg/search-component-setup').then((searchSetup) => {
 			cy.setCustomizeSettings(searchSetup);
 		});
