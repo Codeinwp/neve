@@ -1,11 +1,11 @@
-describe('Page meta box settings', () => {
+describe('Page meta box settings', function () {
 	const pageSetup = {
 		title: 'Test Page',
 		content: 'The Page Content',
 		url: null,
 	};
 
-	it('Create new page named "' + pageSetup.title + '".', () => {
+	before('Create new page named "' + pageSetup.title + '".', function () {
 		cy.insertPost(pageSetup.title, pageSetup.content, 'page');
 
 		cy.get('.post-publish-panel__postpublish-header a')
@@ -16,7 +16,7 @@ describe('Page meta box settings', () => {
 			});
 	});
 
-	it('Default page should not have sidebar and use 100% width.', () => {
+	it('Default page should not have sidebar and use 100% width.', function () {
 		cy.visit(pageSetup.url);
 		cy.get('.nv-sidebar-wrap').should('not.exist');
 		cy.get('.single-page-container').should('not.have.class', 'container-fluid').and('be.visible');
@@ -27,7 +27,7 @@ describe('Page meta box settings', () => {
 		cy.get('.nv-content-wrap').should('contain', pageSetup.content);
 	});
 
-	it('Content default width should be preserved', () => {
+	it('Content default width should be preserved', function () {
 		const defaultWidth = 1170;
 		cy.get('.single-page-container').should('have.css', 'max-width', defaultWidth + 'px');
 		cy.get('#wp-admin-bar-edit a').click();
@@ -38,12 +38,12 @@ describe('Page meta box settings', () => {
 		matchContentWidth(defaultWidth);
 	});
 
-	it('Activates Classic Editor', () => {
+	it('Activates Classic Editor', function () {
 		cy.activateClassicEditorPlugin();
 	});
 
-	it('Edit meta box content width "' + pageSetup.title + '".', () => {
-		cy.login(pageSetup.url);
+	it('Edit meta box content width "' + pageSetup.title + '".', function () {
+		cy.loginWithRequest(pageSetup.url);
 
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.get('#neve_meta_content_width-range').invoke('val', 70).trigger('change');
@@ -55,8 +55,8 @@ describe('Page meta box settings', () => {
 			.should('be.eq', 0.7 * 1170 - 30); //we substract the padding.
 	});
 
-	it('Edit meta box settings "' + pageSetup.title + '".', () => {
-		cy.login(pageSetup.url);
+	it('Edit meta box settings "' + pageSetup.title + '".', function () {
+		cy.loginWithRequest(pageSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.get('label[for="neve_meta_container_full-width"]').click();
 		cy.get('label[for="neve_meta_sidebar_left"]').click();
@@ -68,7 +68,7 @@ describe('Page meta box settings', () => {
 		cy.get('#publish').contains('Update').click();
 	});
 
-	it('Edited meta box settings on front end.', () => {
+	it('Edited meta box settings on front end.', function () {
 		cy.visit(pageSetup.url);
 		cy.reload();
 		cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left').and('be.visible');
@@ -80,7 +80,7 @@ describe('Page meta box settings', () => {
 		cy.get('.nv-content-wrap').should('not.contain', pageSetup.content);
 	});
 
-	it('Deactivate Classic Editor', () => {
+	it('Deactivate Classic Editor', function () {
 		cy.deactivateClassicEditorPlugin();
 	});
 });
