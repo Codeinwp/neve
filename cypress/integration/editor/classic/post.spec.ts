@@ -1,10 +1,10 @@
-describe('Posts meta box default settings', () => {
+describe('Posts meta box default settings', function () {
 	const postSetup = {
 		title: 'Test Post',
 		content: 'The Post Content',
 		url: null,
 	};
-	it('Create new post named "' + postSetup.title + '".', () => {
+	before('Create new post named "' + postSetup.title + '".', function () {
 		cy.insertPost(postSetup.title, postSetup.content, 'post', true);
 		cy.get('.post-publish-panel__postpublish-header a')
 			.contains(postSetup.title)
@@ -13,7 +13,7 @@ describe('Posts meta box default settings', () => {
 				postSetup.url = href;
 			});
 	});
-	it('Default meta box settings on front end.', () => {
+	it('Default meta box settings on front end.', function () {
 		cy.visit(postSetup.url);
 
 		cy.get('.nv-sidebar-wrap').should('have.class', 'nv-right').and('be.visible');
@@ -32,12 +32,12 @@ describe('Posts meta box default settings', () => {
 		cy.get('.nv-content-wrap').should('contain', postSetup.content);
 	});
 
-	it('Activates Classic Editor', () => {
+	it('Activates Classic Editor', function () {
 		cy.activateClassicEditorPlugin();
 	});
 
-	it('Edit meta box settings "' + postSetup.title + '".', () => {
-		cy.login(postSetup.url);
+	it('Edit meta box settings "' + postSetup.title + '".', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 
 		cy.get('label[for="neve_meta_container_full-width"]').click();
@@ -52,7 +52,7 @@ describe('Posts meta box default settings', () => {
 		cy.get('#publish').contains('Update').click();
 	});
 
-	it('Edited meta box settings on front end.', () => {
+	it('Edited meta box settings on front end.', function () {
 		cy.visit(postSetup.url);
 		cy.reload();
 		cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left').and('be.visible');
@@ -65,7 +65,7 @@ describe('Posts meta box default settings', () => {
 		cy.get('.nv-content-wrap').should('contain', postSetup.content);
 	});
 
-	it('Deactivates Classic Editor', () => {
+	it('Deactivates Classic Editor', function () {
 		cy.deactivateClassicEditorPlugin();
 	});
 });

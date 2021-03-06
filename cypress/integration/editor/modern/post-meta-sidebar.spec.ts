@@ -1,11 +1,11 @@
-describe('Single post meta sidebar', () => {
+describe('Single post meta sidebar', function () {
 	const postSetup = {
 		title: 'Test Post',
 		content: 'The Post Content',
 		url: null,
 	};
 
-	it('Create new post named "' + postSetup.title + '".', () => {
+	it('Create new post named "' + postSetup.title + '".', function () {
 		cy.insertPost(postSetup.title, postSetup.content, 'post', true, true);
 		cy.get('.post-publish-panel__postpublish-header a')
 			.contains(postSetup.title)
@@ -15,7 +15,7 @@ describe('Single post meta sidebar', () => {
 			});
 	});
 
-	it('Default meta box settings on front end.', () => {
+	it('Default meta box settings on front end.', function () {
 		cy.visit(postSetup.url);
 
 		cy.get('.nv-sidebar-wrap').should('have.class', 'nv-right').and('be.visible');
@@ -34,8 +34,8 @@ describe('Single post meta sidebar', () => {
 		cy.get('.nv-content-wrap').should('contain', postSetup.content);
 	});
 
-	it('Check sidebar layout', () => {
-		cy.login(postSetup.url);
+	it('Check sidebar layout', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
@@ -68,8 +68,8 @@ describe('Single post meta sidebar', () => {
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-right');
 	});
 
-	it('Check container layout', () => {
-		cy.login(postSetup.url);
+	it('Check container layout', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
@@ -87,8 +87,8 @@ describe('Single post meta sidebar', () => {
 		cy.get('.single-post-container').should('not.have.class', 'container').and('be.visible');
 	});
 
-	it('Check container width', () => {
-		cy.login(postSetup.url);
+	it('Check container width', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
@@ -104,8 +104,8 @@ describe('Single post meta sidebar', () => {
 		cy.get('.nv-single-post-wrap').should('have.css', 'max-width').and('eq', '60%');
 	});
 
-	it('Check title alignment', () => {
-		cy.login(postSetup.url);
+	it('Check title alignment', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
@@ -139,8 +139,8 @@ describe('Single post meta sidebar', () => {
 		cy.get('#wp-admin-bar-edit a').click();
 	});
 
-	it('Check author avatar', () => {
-		cy.login(postSetup.url);
+	it('Check author avatar', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
@@ -153,8 +153,8 @@ describe('Single post meta sidebar', () => {
 		cy.get('.nv-meta-list .author .photo').should('exist');
 	});
 
-	it('Check post elements', () => {
-		cy.login(postSetup.url);
+	it('Check post elements', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
