@@ -1,11 +1,43 @@
-describe('Sidebar/Content Settings', function () {
-	before('Setup customizer site wide Sidebar settings.', function () {
-		cy.fixture('customizer/layout/sidebar-settings').then((sidebarSetup) => {
-			cy.setCustomizeSettings(sidebarSetup);
+describe('Sidebar/Content Settings', () => {
+	before('Setup customizer site wide Sidebar settings.', () => {
+		cy.goToCustomizer();
+		cy.aliasRestRoutes();
+		cy.get('#accordion-panel-neve_layout').click();
+		cy.get('#accordion-section-neve_sidebar').click();
+		cy.get('#customize-control-neve_default_sidebar_layout label[data-option="left"]').click();
+		cy.get('#customize-control-neve_sitewide_content_width input[type=number]')
+			.type('{selectall}')
+			.type(50);
+		cy.get('#save').click();
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
 		});
 	});
 
-	it('Sidebar site wide on front end.', function () {
+	after('Go back to defaults.', () => {
+		cy.goToCustomizer();
+		cy.aliasRestRoutes();
+		cy.get('#customize-control-neve_advanced_layout_options label').click({
+			force: true,
+		});
+		cy.get('#save').click();
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
+		});
+		cy.reload();
+		cy.get('#accordion-panel-neve_layout').click();
+		cy.get('#accordion-section-neve_sidebar').click();
+		cy.get('#customize-control-neve_default_sidebar_layout label[data-option="right"]').click();
+		cy.get('#customize-control-neve_sitewide_content_width button').contains('Reset').click();
+		cy.get('#save').click();
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
+		});
+	});
+	it('Sidebar site wide on front end.', () => {
 		//Index
 		cy.visit('/');
 		cy.get('.nv-sidebar-wrap').should('have.css', 'max-width').and('eq', '50%');
@@ -31,7 +63,7 @@ describe('Sidebar/Content Settings', function () {
 		cy.get('.nv-single-post-wrap').should('have.css', 'max-width').and('eq', '50%');
 	});
 
-	it('Setup customizer site wide Sidebar settings.', function () {
+	it('Setup customizer site wide Sidebar settings.', () => {
 		cy.goToCustomizer();
 		cy.aliasRestRoutes();
 		cy.get('#accordion-panel-neve_layout').click();
@@ -53,17 +85,17 @@ describe('Sidebar/Content Settings', function () {
 		cy.get('#customize-control-neve_blog_archive_sidebar_layout [data-option="left"]').click();
 		cy.get('#customize-control-neve_blog_archive_content_width input[type=number]')
 			.type('{selectall}')
-			.type('50');
+			.type(50);
 
 		cy.get('#customize-control-neve_single_post_sidebar_layout [data-option="left"]').click();
 		cy.get('#customize-control-neve_single_post_content_width input[type=number]')
 			.type('{selectall}')
-			.type('50');
+			.type(50);
 
 		cy.get('#customize-control-neve_other_pages_sidebar_layout [data-option="left"]').click();
 		cy.get('#customize-control-neve_other_pages_content_width input[type=number]')
 			.type('{selectall}')
-			.type('50');
+			.type(50);
 
 		cy.get('#save').click();
 		cy.wait('@customizerSave').then((interception) => {
@@ -72,7 +104,7 @@ describe('Sidebar/Content Settings', function () {
 		});
 	});
 
-	it('Sidebar advanced on front end.', function () {
+	it('Sidebar advanced on front end.', () => {
 		//Index
 		cy.visit('/');
 		cy.get('.nv-sidebar-wrap').should('have.css', 'max-width').and('eq', '50%');

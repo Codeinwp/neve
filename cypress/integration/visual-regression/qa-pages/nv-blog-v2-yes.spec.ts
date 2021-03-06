@@ -1,4 +1,4 @@
-describe('Visual Regression Testing - https://qa-neve.themeisle.com/nv/?blog_v2=yes', function () {
+describe('Visual Regression Testing - https://qa-neve.themeisle.com/nv/?blog_v2=yes', () => {
 	const url = 'https://qa-neve.themeisle.com/nv/?blog_v2=yes';
 	it('Should not add any visual change', function () {
 		cy.visit(url);

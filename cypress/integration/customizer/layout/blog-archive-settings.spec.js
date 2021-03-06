@@ -1,11 +1,18 @@
-describe('Blog/Archive 1 / Default Layout', function () {
-	before('Setup', function () {
+describe('Blog/Archive 1 / Default Layout', () => {
+	before('Setup', () => {
 		cy.insertPost('Blog test post', 'Blog test post.', 'post', true);
-		cy.fixture('customizer/layout/blog-archive-setting-setup').then((archiveSetup) => {
-			cy.setCustomizeSettings(archiveSetup.archive1);
+
+		cy.goToCustomizer();
+		cy.setCustomizeSettings({
+			neve_blog_archive_layout: 'default',
+			neve_post_excerpt_length: 15,
+			neve_post_thumbnail_box_shadow: 4,
+			neve_post_content_ordering: '["thumbnail","excerpt","title-meta"]',
+			neve_post_meta_ordering: '["date", "author", "category"]',
+			neve_pagination_type: 'number',
 		});
 	});
-	it('Tests Default Layout (List)', function () {
+	it('Tests Default Layout (List)', () => {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			// Layout classes and styles.
@@ -14,7 +21,7 @@ describe('Blog/Archive 1 / Default Layout', function () {
 		});
 	});
 
-	it('Post Content Order', function () {
+	it('Post Content Order', () => {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).find('.excerpt-wrap:first-child').should('exist').and('be.visible');
@@ -24,7 +31,7 @@ describe('Blog/Archive 1 / Default Layout', function () {
 		});
 	});
 
-	it('Meta Order', function () {
+	it('Meta Order', () => {
 		cy.visit('/');
 
 		cy.get('article').each((el) => {
@@ -34,14 +41,14 @@ describe('Blog/Archive 1 / Default Layout', function () {
 		});
 	});
 
-	it('No Author Avatar', function () {
+	it('No Author Avatar', () => {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).find('.author .photo').should('not.exist');
 		});
 	});
 
-	it('Excerpt length', function () {
+	it('Excerpt length', () => {
 		cy.visit('/');
 		let count = 5;
 		cy.get('article').each((el) => {
@@ -53,13 +60,14 @@ describe('Blog/Archive 1 / Default Layout', function () {
 				.invoke('text')
 				.then((val) => {
 					const res = val.split(' ');
+					cy.log(res);
 					expect(res.length).to.be.at.most(21);
 				});
 			count--;
 		});
 	});
 
-	it('Thumbnail Shadow', function () {
+	it('Thumbnail Shadow', () => {
 		cy.visit('/');
 		cy.get('.nv-post-thumbnail-wrap img').each((el) => {
 			cy.get(el).should(
@@ -70,16 +78,13 @@ describe('Blog/Archive 1 / Default Layout', function () {
 		});
 	});
 
-	it('Pagination Number', function () {
+	it('Pagination Number', () => {
 		cy.visit('/');
 		cy.get('.page-numbers').should('exist');
 	});
 
-	it('Alternative layout', function () {
-		cy.fixture('customizer/layout/blog-archive-setting-setup').then((archiveSetup) => {
-			archiveSetup.archive1.neve_blog_list_alternative_layout = true;
-			cy.setCustomizeSettings(archiveSetup.archive1);
-		});
+	it('Alternative layout', () => {
+		cy.setCustomizeSettings({ neve_blog_list_alternative_layout: true });
 
 		cy.visit('/');
 		let count = 0;
@@ -95,15 +100,18 @@ describe('Blog/Archive 1 / Default Layout', function () {
 	});
 });
 
-describe('Blog/Archive 2 / Grid Layout', function () {
-	before('Setup', function () {
-		cy.fixture('customizer/layout/blog-archive-setting-setup').then((archiveSetup) => {
-			cy.setCustomizeSettings(archiveSetup.archive2);
+describe('Blog/Archive 2 / Grid Layout', () => {
+	before('Setup', () => {
+		cy.setCustomizeSettings({
+			neve_blog_archive_layout: 'grid',
+			neve_grid_layout: '{"desktop":3,"tablet":2,"mobile":1}',
+			neve_pagination_type: 'infinite',
+			neve_enable_masonry: true,
+			neve_author_avatar: true,
 		});
-		cy.loginWithRequest();
 	});
 
-	it('Grid layout', function () {
+	it('Grid layout', () => {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el)
@@ -114,13 +122,13 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 		});
 	});
 
-	it('Pagination Infinite', function () {
+	it('Pagination Infinite', () => {
 		cy.visit('/');
 		cy.get('.page-numbers').should('not.exist');
 		cy.get('.nv-loader').should('exist');
 	});
 
-	it('Masonry', function () {
+	it('Masonry', () => {
 		cy.get('article').each((el) => {
 			cy.get(el).should('have.css', 'position', 'absolute');
 			cy.get(el).should('have.css', 'left');
@@ -128,7 +136,7 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 		});
 	});
 
-	it('Author Avatar', function () {
+	it('Author Avatar', () => {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).find('.author').should('have.descendants', '.photo');
@@ -136,15 +144,17 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 	});
 });
 
-describe('Blog/Archive 3 / Covers Layout', function () {
-	before('Setup', function () {
-		cy.fixture('customizer/layout/blog-archive-setting-setup').then((archiveSetup) => {
-			cy.setCustomizeSettings(archiveSetup.archive3);
+describe('Blog/Archive 3 / Covers Layout', () => {
+	before('Setup', () => {
+		cy.setCustomizeSettings({
+			neve_blog_archive_layout: 'covers',
+			neve_post_thumbnail_box_shadow: 4,
+			neve_post_content_ordering: '["thumbnail","title-meta"]',
+			neve_blog_covers_text_color: '#bada55',
 		});
-		cy.loginWithRequest();
 	});
 
-	it('Covers layout', function () {
+	it('Covers layout', () => {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).should('have.class', 'layout-covers');
@@ -156,7 +166,7 @@ describe('Blog/Archive 3 / Covers Layout', function () {
 		});
 	});
 
-	it('Thumbnail Box Shadow', function () {
+	it('Thumbnail Box Shadow', () => {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el)
@@ -169,7 +179,7 @@ describe('Blog/Archive 3 / Covers Layout', function () {
 		});
 	});
 
-	it('Post Content Order', function () {
+	it('Post Content Order', () => {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).find('.entry-title:first-child').should('exist');
@@ -177,7 +187,7 @@ describe('Blog/Archive 3 / Covers Layout', function () {
 		});
 	});
 
-	it('Text Color', function () {
+	it('Text Color', () => {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).find('.inner').should('have.css', 'color', 'rgb(186, 218, 85)');

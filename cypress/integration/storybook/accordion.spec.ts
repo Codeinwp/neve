@@ -1,9 +1,9 @@
-describe('Accordion', function () {
-	before(function () {
+describe('Accordion', () => {
+	before(() => {
 		cy.visitStorybook();
 	});
 
-	it('Initially Opened', function () {
+	it('Initially Opened', () => {
 		cy.loadStory('Customizer/Controls/Accordion', 'Initially Opened');
 
 		cy.get('.nv-accordion').should('have.class', 'expanded');
@@ -14,7 +14,7 @@ describe('Accordion', function () {
 		cy.get('.accordion-content').should('not.exist');
 	});
 
-	it('Initially Closed', function () {
+	it('Initially Closed', () => {
 		cy.loadStory('Customizer/Controls/Accordion', 'Initially Closed');
 
 		cy.get('.nv-accordion').should('not.have.class', 'expanded');
@@ -25,7 +25,7 @@ describe('Accordion', function () {
 		cy.get('.accordion-content').should('exist');
 	});
 
-	it('Label Works', function () {
+	it('Label Works', () => {
 		cy.loadStory('Customizer/Controls/Accordion', 'Initially Closed');
 
 		cy.changeArg('label', 'New Accordion Label');

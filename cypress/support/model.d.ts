@@ -21,20 +21,11 @@ declare namespace Cypress {
 		): Chainable<JQuery<HTMLElementTagNameMap[K]>>;
 
 		/**
-		 * Login through request
-		 *
-		 * @param nextRoute - the url you want to visit after logging in
-		 * @example
-		 *   cy.loginWithRequest('/shop')
-		 */
-		loginWithRequest(nextRout?: string): void;
-
-		/**
 		 * Login through UI once and verify if the user is already logged in
 		 *
 		 * @param nextRoute - the url you want to visit after logging in
 		 * @example
-		 *   cy.login('/shop')
+		 *   cy.login(/shop)
 		 */
 		login(nextRoute?: string): void;
 

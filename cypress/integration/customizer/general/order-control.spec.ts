@@ -1,7 +1,7 @@
-describe('Ordering Control', function () {
+describe('Ordering Control', () => {
 	let value = null;
 
-	beforeEach(function () {
+	beforeEach(() => {
 		cy.goToCustomizer();
 		cy.window().then((win) => {
 			win.wp.customize.control('neve_post_content_ordering').focus();
@@ -12,7 +12,7 @@ describe('Ordering Control', function () {
 		cy.get('#customize-control-neve_post_content_ordering').as('control');
 	});
 
-	before(function () {
+	before(() => {
 		cy.goToCustomizer();
 		cy.window().then((win) => {
 			const defaultValue = JSON.stringify(['thumbnail', 'title-meta', 'excerpt']);
@@ -30,7 +30,7 @@ describe('Ordering Control', function () {
 		});
 	});
 
-	it('Test Ordering', function () {
+	it('Test Ordering', () => {
 		cy.get('@control').find('.handle').should('have.length', 3);
 		dropElAfter(
 			'#customize-control-neve_post_content_ordering .items-list .neve-sortable-item .handle',
@@ -47,7 +47,7 @@ describe('Ordering Control', function () {
 		});
 	});
 
-	it('Test Hiding', function () {
+	it('Test Hiding', () => {
 		cy.get('@control').find('.toggle').should('have.length', 3);
 		cy.get('@control').find('.toggle').first().click();
 		cy.get('@control').find('.neve-sortable-item.disabled').should('exist');
