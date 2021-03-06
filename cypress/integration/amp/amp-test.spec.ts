@@ -1,36 +1,11 @@
-describe('AMP Check', () => {
-	before('Sets up search icon on menu top row', () => {
-		cy.goToCustomizer();
-		cy.aliasRestRoutes();
-
-		cy.get('#accordion-panel-hfg_header').should('be.visible').click();
-
-		cy.get(
-			'.hfg--builder-show .hfg--panel-desktop .hfg--row-top .row--grid > div:last-child',
-		).trigger('mouseover');
-		cy.get(
-			'.hfg--builder-show .hfg--panel-desktop .hfg--row-top .row--grid > div:last-child .add-button--grid',
-		)
-			.should('be.visible')
-			.click();
-
-		cy.get('.widgets-panel--visible').should('exist');
-		cy.get(
-			'.widgets-panel--visible .hfg--widgets-desktop  .grid-stack-item.for-s-header_search_responsive',
-		).click();
-
-		cy.get('#save').should('be.visible').click();
-		cy.wait('@customizerSave').then((interception) => {
-			expect(interception.response.body.success).to.be.true;
-			expect(interception.response.statusCode).to.equal(200);
-		});
-		cy.visit('/wp-admin');
-		cy.get('#wp-admin-bar-logout > a').click({
-			force: true,
+describe('AMP Check', function () {
+	before('Sets up search icon on menu top row', function () {
+		cy.fixture('amp/amp-setup').then((ampSetupJSON) => {
+			cy.setCustomizeSettings(ampSetupJSON);
 		});
 	});
 
-	it('Checks the search box from the menu', () => {
+	it('Checks the search box from the menu', function () {
 		cy.visit('/?amp');
 		cy.get(
 			'.header--row.header-top[data-show-on=desktop] .builder-item--header_search_responsive .nv-search-icon-component .menu-item-nav-search',
@@ -60,7 +35,7 @@ describe('AMP Check', () => {
 		cy.get('.nv-page-title').find('h1').should('have.text', 'Search Results for: Hello');
 	});
 
-	it('Checks the sidebar menu on mobile', () => {
+	it('Checks the sidebar menu on mobile', function () {
 		cy.visit('/?amp');
 		cy.viewport('iphone-x');
 
@@ -78,7 +53,7 @@ describe('AMP Check', () => {
 		cy.get('@navSidebar').should('not.be.visible');
 	});
 
-	it('Checks the sidebar sub-menu', () => {
+	it('Checks the sidebar sub-menu', function () {
 		cy.visit('/?amp');
 		cy.viewport('iphone-x');
 
