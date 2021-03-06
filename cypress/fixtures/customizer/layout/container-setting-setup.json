@@ -1,0 +1,8 @@
+{
+	"width": { "neve_container_width": "{\"mobile\":680,\"tablet\":960,\"desktop\":1200}" },
+	"style": {
+		"neve_default_container_style": "full-width",
+		"neve_blog_archive_container_style": "full-width",
+		"neve_single_post_container_style": "full-width"
+	}
+}

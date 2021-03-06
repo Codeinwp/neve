@@ -1,43 +1,11 @@
-describe('Sidebar/Content Settings', () => {
-	before('Setup customizer site wide Sidebar settings.', () => {
-		cy.goToCustomizer();
-		cy.aliasRestRoutes();
-		cy.get('#accordion-panel-neve_layout').click();
-		cy.get('#accordion-section-neve_sidebar').click();
-		cy.get('#customize-control-neve_default_sidebar_layout label[data-option="left"]').click();
-		cy.get('#customize-control-neve_sitewide_content_width input[type=number]')
-			.type('{selectall}')
-			.type('50');
-		cy.get('#save').click();
-		cy.wait('@customizerSave').then((interception) => {
-			expect(interception.response.body.success).to.be.true;
-			expect(interception.response.statusCode).to.equal(200);
+describe('Sidebar/Content Settings', function () {
+	before('Setup customizer site wide Sidebar settings.', function () {
+		cy.fixture('customizer/layout/sidebar-settings').then((sidebarSetup) => {
+			cy.setCustomizeSettings(sidebarSetup);
 		});
 	});
 
-	after('Go back to defaults.', () => {
-		cy.goToCustomizer();
-		cy.aliasRestRoutes();
-		cy.get('#customize-control-neve_advanced_layout_options label').click({
-			force: true,
-		});
-		cy.get('#save').click();
-		cy.wait('@customizerSave').then((interception) => {
-			expect(interception.response.body.success).to.be.true;
-			expect(interception.response.statusCode).to.equal(200);
-		});
-		cy.reload();
-		cy.get('#accordion-panel-neve_layout').click();
-		cy.get('#accordion-section-neve_sidebar').click();
-		cy.get('#customize-control-neve_default_sidebar_layout label[data-option="right"]').click();
-		cy.get('#customize-control-neve_sitewide_content_width button').contains('Reset').click();
-		cy.get('#save').click();
-		cy.wait('@customizerSave').then((interception) => {
-			expect(interception.response.body.success).to.be.true;
-			expect(interception.response.statusCode).to.equal(200);
-		});
-	});
-	it('Sidebar site wide on front end.', () => {
+	it('Sidebar site wide on front end.', function () {
 		//Index
 		cy.visit('/');
 		cy.get('.nv-sidebar-wrap').should('have.css', 'max-width').and('eq', '50%');
@@ -63,7 +31,7 @@ describe('Sidebar/Content Settings', () => {
 		cy.get('.nv-single-post-wrap').should('have.css', 'max-width').and('eq', '50%');
 	});
 
-	it('Setup customizer site wide Sidebar settings.', () => {
+	it('Setup customizer site wide Sidebar settings.', function () {
 		cy.goToCustomizer();
 		cy.aliasRestRoutes();
 		cy.get('#accordion-panel-neve_layout').click();
@@ -104,7 +72,7 @@ describe('Sidebar/Content Settings', () => {
 		});
 	});
 
-	it('Sidebar advanced on front end.', () => {
+	it('Sidebar advanced on front end.', function () {
 		//Index
 		cy.visit('/');
 		cy.get('.nv-sidebar-wrap').should('have.css', 'max-width').and('eq', '50%');

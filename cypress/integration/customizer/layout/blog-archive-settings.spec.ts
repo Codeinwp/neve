@@ -1,18 +1,11 @@
-describe('Blog/Archive 1 / Default Layout', () => {
-	before('Setup', () => {
+describe('Blog/Archive 1 / Default Layout', function () {
+	before('Setup', function () {
 		cy.insertPost('Blog test post', 'Blog test post.', 'post', true);
-
-		cy.goToCustomizer();
-		cy.setCustomizeSettings({
-			neve_blog_archive_layout: 'default',
-			neve_post_excerpt_length: 15,
-			neve_post_thumbnail_box_shadow: 4,
-			neve_post_content_ordering: '["thumbnail","excerpt","title-meta"]',
-			neve_post_meta_ordering: '["date", "author", "category"]',
-			neve_pagination_type: 'number',
+		cy.fixture('customizer/layout/blog-archive-setting-setup').then((archiveSetup) => {
+			cy.setCustomizeSettings(archiveSetup.archive1);
 		});
 	});
-	it('Tests Default Layout (List)', () => {
+	it('Tests Default Layout (List)', function () {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			// Layout classes and styles.
@@ -21,7 +14,7 @@ describe('Blog/Archive 1 / Default Layout', () => {
 		});
 	});
 
-	it('Post Content Order', () => {
+	it('Post Content Order', function () {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).find('.excerpt-wrap:first-child').should('exist').and('be.visible');
@@ -31,7 +24,7 @@ describe('Blog/Archive 1 / Default Layout', () => {
 		});
 	});
 
-	it('Meta Order', () => {
+	it('Meta Order', function () {
 		cy.visit('/');
 
 		cy.get('article').each((el) => {
@@ -41,14 +34,14 @@ describe('Blog/Archive 1 / Default Layout', () => {
 		});
 	});
 
-	it('No Author Avatar', () => {
+	it('No Author Avatar', function () {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).find('.author .photo').should('not.exist');
 		});
 	});
 
-	it('Excerpt length', () => {
+	it('Excerpt length', function () {
 		cy.visit('/');
 		let count = 5;
 		cy.get('article').each((el) => {
@@ -66,7 +59,7 @@ describe('Blog/Archive 1 / Default Layout', () => {
 		});
 	});
 
-	it('Thumbnail Shadow', () => {
+	it('Thumbnail Shadow', function () {
 		cy.visit('/');
 		cy.get('.nv-post-thumbnail-wrap img').each((el) => {
 			cy.get(el).should(
@@ -77,13 +70,16 @@ describe('Blog/Archive 1 / Default Layout', () => {
 		});
 	});
 
-	it('Pagination Number', () => {
+	it('Pagination Number', function () {
 		cy.visit('/');
 		cy.get('.page-numbers').should('exist');
 	});
 
-	it('Alternative layout', () => {
-		cy.setCustomizeSettings({ neve_blog_list_alternative_layout: true });
+	it('Alternative layout', function () {
+		cy.fixture('customizer/layout/blog-archive-setting-setup').then((archiveSetup) => {
+			archiveSetup.archive1.neve_blog_list_alternative_layout = true;
+			cy.setCustomizeSettings(archiveSetup.archive1);
+		});
 
 		cy.visit('/');
 		let count = 0;
@@ -99,18 +95,15 @@ describe('Blog/Archive 1 / Default Layout', () => {
 	});
 });
 
-describe('Blog/Archive 2 / Grid Layout', () => {
-	before('Setup', () => {
-		cy.setCustomizeSettings({
-			neve_blog_archive_layout: 'grid',
-			neve_grid_layout: '{"desktop":3,"tablet":2,"mobile":1}',
-			neve_pagination_type: 'infinite',
-			neve_enable_masonry: true,
-			neve_author_avatar: true,
+describe('Blog/Archive 2 / Grid Layout', function () {
+	before('Setup', function () {
+		cy.fixture('customizer/layout/blog-archive-setting-setup').then((archiveSetup) => {
+			cy.setCustomizeSettings(archiveSetup.archive2);
 		});
+		cy.loginWithRequest();
 	});
 
-	it('Grid layout', () => {
+	it('Grid layout', function () {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el)
@@ -121,13 +114,13 @@ describe('Blog/Archive 2 / Grid Layout', () => {
 		});
 	});
 
-	it('Pagination Infinite', () => {
+	it('Pagination Infinite', function () {
 		cy.visit('/');
 		cy.get('.page-numbers').should('not.exist');
 		cy.get('.nv-loader').should('exist');
 	});
 
-	it('Masonry', () => {
+	it('Masonry', function () {
 		cy.get('article').each((el) => {
 			cy.get(el).should('have.css', 'position', 'absolute');
 			cy.get(el).should('have.css', 'left');
@@ -135,7 +128,7 @@ describe('Blog/Archive 2 / Grid Layout', () => {
 		});
 	});
 
-	it('Author Avatar', () => {
+	it('Author Avatar', function () {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).find('.author').should('have.descendants', '.photo');
@@ -143,17 +136,15 @@ describe('Blog/Archive 2 / Grid Layout', () => {
 	});
 });
 
-describe('Blog/Archive 3 / Covers Layout', () => {
-	before('Setup', () => {
-		cy.setCustomizeSettings({
-			neve_blog_archive_layout: 'covers',
-			neve_post_thumbnail_box_shadow: 4,
-			neve_post_content_ordering: '["thumbnail","title-meta"]',
-			neve_blog_covers_text_color: '#bada55',
+describe('Blog/Archive 3 / Covers Layout', function () {
+	before('Setup', function () {
+		cy.fixture('customizer/layout/blog-archive-setting-setup').then((archiveSetup) => {
+			cy.setCustomizeSettings(archiveSetup.archive3);
 		});
+		cy.loginWithRequest();
 	});
 
-	it('Covers layout', () => {
+	it('Covers layout', function () {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).should('have.class', 'layout-covers');
@@ -165,7 +156,7 @@ describe('Blog/Archive 3 / Covers Layout', () => {
 		});
 	});
 
-	it('Thumbnail Box Shadow', () => {
+	it('Thumbnail Box Shadow', function () {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el)
@@ -178,7 +169,7 @@ describe('Blog/Archive 3 / Covers Layout', () => {
 		});
 	});
 
-	it('Post Content Order', () => {
+	it('Post Content Order', function () {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).find('.entry-title:first-child').should('exist');
@@ -186,7 +177,7 @@ describe('Blog/Archive 3 / Covers Layout', () => {
 		});
 	});
 
-	it('Text Color', () => {
+	it('Text Color', function () {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).find('.inner').should('have.css', 'color', 'rgb(186, 218, 85)');
