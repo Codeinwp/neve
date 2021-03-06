@@ -204,23 +204,11 @@ Cypress.Commands.add(
 
 Cypress.Commands.add('setCustomizeSettings', (to) => {
 	cy.request('POST', '/wp-json/wpthememods/v1/settings', to);
-	// cy.goToCustomizer();
-	// cy.window().then((win) => {
-	// 	Object.keys(to).map((mod) => {
-	// 		win.wp.customize.control(mod).setting.set(to[mod]);
-	// 	});
-	// });
-	// cy.wait(500);
-	// cy.intercept('POST', '/wp-admin/admin-ajax.php').as('save');
-	// cy.get('#save').click();
-	// cy.wait('@save').then((interception) => {
-	// 	expect(interception.response.body.success).to.be.true;
-	// 	expect(interception.response.statusCode).to.equal(200);
-	// });
 });
 
 Cypress.Commands.add('goToCustomizer', () => {
 	cy.loginWithRequest('/wp-admin/customize.php');
+	cy.visit('/wp-admin/customize.php');
 	cy.window()
 		.then((win) => {
 			//If the customizer is not ready, bind the flag to ready event.
