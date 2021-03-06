@@ -28,10 +28,15 @@ const setup = {
 	textTransform: 'lowercase',
 };
 
-describe('Typography Control', () => {
-	before('Setup', () => cy.setCustomizeSettings({ neve_typeface_general: setup }));
+describe('Typography Control', function () {
+	before('Setup', function () {
+		cy.loginWithRequest();
+		cy.fixture('customizer/typography/font-size').then((fontSetup) => {
+			cy.setCustomizeSettings(fontSetup);
+		});
+	});
 
-	it('Test Typography on Front End', () => {
+	it('Test Typography on Front End', function () {
 		cy.visit('/markup-html-tags-and-formatting/');
 
 		// Test text transform.
@@ -79,7 +84,7 @@ describe('Typography Control', () => {
 		});
 	});
 
-	it('Test Typography inside the Editor', () => {
+	it('Test Typography inside the Editor', function () {
 		cy.visit('/markup-html-tags-and-formatting/');
 		cy.get('#wp-admin-bar-edit > a').click();
 
