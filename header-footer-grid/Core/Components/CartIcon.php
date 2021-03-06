@@ -273,7 +273,7 @@ class CartIcon extends Abstract_Component {
 	 *
 	 * @return bool
 	 */
-	static function should_load_pro_features() {
+	public static function should_load_pro_features() {
 		if ( ! class_exists( '\Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon' ) ) {
 			return false;
 		}

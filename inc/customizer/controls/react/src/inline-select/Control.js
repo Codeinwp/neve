@@ -3,13 +3,13 @@ import InlineSelectComponent from './InlineSelectComponent';
 import ControlWithLink from '../common/ControlWithLink';
 import { render } from '@wordpress/element';
 
-export const InlineSelectControl = wp.customize.Control.extend( {
+export const InlineSelectControl = wp.customize.Control.extend({
 	renderContent: function renderContent() {
 		render(
-			<ControlWithLink link={ this.params.link }>
-				<InlineSelectComponent control={ this } />
+			<ControlWithLink link={this.params.link}>
+				<InlineSelectComponent control={this} />
 			</ControlWithLink>,
-			this.container[ 0 ]
+			this.container[0]
 		);
 	},
-} );
+});

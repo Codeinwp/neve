@@ -28,12 +28,12 @@ if ( is_active_sidebar( $_id ) ) {
 					'<p>%s</p>',
 					sprintf(
 						/* translators: %s - customizer link */
-						esc_html( 'Replace this widget content by going to %s and add widgets into this widget area.', 'neve' ),
+						__( 'Replace this widget content by going to %s and add widgets into this widget area.', 'neve' ), //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						sprintf(
 							/* translators: %1$s - link %2$s - name %3$s - label */
 							'<a href="%1$s"><strong>%2$s  %3$s</strong></a>',
 							esc_url( admin_url( 'customize.php?autofocus[section]=sidebar-widgets-footer-' . $_id ) ),
-							esc_html( 'Appearance &rarr; Customize &rarr; Footer &rarr;', 'neve' ),
+							__( 'Appearance &rarr; Customize &rarr; Footer &rarr;', 'neve' ), //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 							esc_attr( current_component()->get_property( 'label' ) )
 						)
 					)

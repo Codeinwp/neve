@@ -37,7 +37,7 @@ const CustomPalette = ({ title, onChange, activeColor }) => {
 								return (
 									<li title={group[slug]} key={slug}>
 										<a
-											href="#"
+											href="#global-select"
 											onClick={(e) => {
 												e.preventDefault();
 												onChange(`var(--${slug})`);

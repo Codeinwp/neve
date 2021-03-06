@@ -1,3 +1,5 @@
+/* global neveDash */
+/* eslint  jsx-a11y/heading-has-content: 0 */
 const Loading = () => {
 	return (
 		<div className="mock-dash">
@@ -6,37 +8,39 @@ const Loading = () => {
 					<div className="top">
 						<h1 className="heading loading" />
 						<span className="version loading">v2.6.2</span>
-						{ ! neveDash.whiteLabel && (
+						{!neveDash.whiteLabel && (
 							<div className="loading logo" />
-						) }
+						)}
 					</div>
 					<nav className="navigation">
-						{ Array.from( Array( 6 ) ).map( ( item, index ) => {
+						{Array.from(Array(6)).map((item, index) => {
 							return (
-								<li key={ index }>
-									<a className="loading" />
+								<li key={index}>
+									<a // eslint-disable-line  jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid
+										className="loading"
+									/>
 								</li>
 							);
-						} ) }
+						})}
 					</nav>
 				</div>
 			</header>
 			<div className="container content">
 				<div className="main">
-					{ neveDash.notifications && (
+					{neveDash.notifications && (
 						<div className="notifications">
-							{ Object.keys( neveDash.notifications ).map(
-								( notification, index ) => {
+							{Object.keys(neveDash.notifications).map(
+								(notification, index) => {
 									return (
 										<div
-											key={ index }
+											key={index}
 											className="notification loading placeholder"
 										/>
 									);
 								}
-							) }
+							)}
 						</div>
-					) }
+					)}
 					<div className="tab-content columns start">
 						<div className="card">
 							<div className="card-header">
@@ -48,7 +52,7 @@ const Loading = () => {
 								<p className="loading card-description" />
 								<p className="loading card-description" />
 								<button
-									style={ { marginTop: 'auto' } }
+									style={{ marginTop: 'auto' }}
 									type="button"
 									className="loading components-button is-button is-default is-primary"
 								/>
@@ -98,7 +102,7 @@ const Loading = () => {
 					</div>
 				</div>
 				<div className="sidebar-wrap">
-					{ ! neveDash.whiteLabel && (
+					{!neveDash.whiteLabel && (
 						<aside className="sidebar card">
 							<div className="sidebar-section">
 								<h4 className="loading" />
@@ -122,7 +126,7 @@ const Loading = () => {
 								<span className="loading link" />
 							</div>
 						</aside>
-					) }
+					)}
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,3 @@
-/* global wp */
 import PropTypes from 'prop-types';
 
 const { Modal } = wp.components;
@@ -7,7 +6,7 @@ const NeveModal = ({ children, opened, trigger, openAttr, title }) => {
 	const [open, setOpen] = useState(false);
 	useEffect(() => {
 		if (!openAttr) return false;
-		window.addEventListener('DOMContentLoaded', () => {
+		global.addEventListener('DOMContentLoaded', () => {
 			const outsideTrigger = document.querySelectorAll(
 				`[data-open-nv-modal=${openAttr}]`
 			);

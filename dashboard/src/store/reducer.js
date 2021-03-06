@@ -11,12 +11,12 @@ const initialState = {
 };
 
 const hash = getTabHash();
-if ( null !== hash ) {
+if (null !== hash) {
 	initialState.currentTab = hash;
 }
 
-const reducer = ( state = initialState, action ) => {
-	switch ( action.type ) {
+const reducer = (state = initialState, action) => {
+	switch (action.type) {
 		case 'SET_TAB':
 			const { tab } = action.payload;
 			return {
@@ -32,7 +32,7 @@ const reducer = ( state = initialState, action ) => {
 		case 'SET_PLUGIN_STATE':
 			const { pluginSlug, pluginState } = action.payload;
 			const nextPlugins = { ...state.plugins };
-			nextPlugins[ pluginSlug ].cta = pluginState;
+			nextPlugins[pluginSlug].cta = pluginState;
 			return {
 				...state,
 				plugins: nextPlugins,
@@ -43,7 +43,7 @@ const reducer = ( state = initialState, action ) => {
 				...state,
 				settings: {
 					...state.settings,
-					[ moduleSlug ]: value,
+					[moduleSlug]: value,
 				},
 			};
 		case 'CHANGE_MODULE_OPTION':
@@ -52,7 +52,7 @@ const reducer = ( state = initialState, action ) => {
 				...state,
 				settings: {
 					...state.settings,
-					[ optionStatus ]: optionValue,
+					[optionStatus]: optionValue,
 				},
 			};
 		case 'UPDATE_LICENSE':

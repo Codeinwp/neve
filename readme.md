@@ -19,6 +19,20 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 2.10.2](https://github.com/Codeinwp/neve/compare/v2.10.1...v2.10.2) (2021-03-01)
+
+- [Feat] Add compatibility with Google Web Stories
+- [Fix] meta_comments and current_post_meta magic tags
+- [Fix] add to cart notice when product template is made with Elementor
+- [Fix] changelog parsing in the Neve Options dashboard page
+- [Fix] global colors palette selector not showing swatches in safari
+- [Fix] visual hierarchy for the Cart Totals
+- [Fix] subtotal prices squished on checkout pages for products with large titles
+- [Fix] street address textbox was too narrow in Woocommerce
+
+
+
+
 ##### [Version 2.10.1](https://github.com/Codeinwp/neve/compare/v2.10.0...v2.10.1) (2021-02-10)
 
 - [Feat] Compatibility with Beaver Themer parts location

@@ -35,14 +35,14 @@ class Magic_Tags {
 	 *
 	 * @var string
 	 */
-	static private $magic_tag_regex;
+	private static $magic_tag_regex;
 
 	/**
 	 * Holds the instance of the class.
 	 *
 	 * @var Magic_Tags
 	 */
-	static private $_instance;
+	private static $_instance;
 
 	/**
 	 * Returns the instance of the class.

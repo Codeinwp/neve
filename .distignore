@@ -71,3 +71,8 @@ yarn.lock
 .ds_store
 .storybook
 stories
+cypress.storybook.json
+tsconfig.json
+inc/admin/metabox/src
+inc/customizer/controls/react/src
+assets/js/src

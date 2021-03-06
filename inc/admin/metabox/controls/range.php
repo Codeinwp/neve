@@ -48,7 +48,7 @@ class Range extends Control_Base {
 		$markup .= '<p class="' . esc_attr( $class ) . '" ' . esc_attr( $dependency ) . ' >';
 		$markup .= '<input type="range"
 		value="' . esc_attr( $value ) . '"
-		id="' . esc_attr( $this->id ) . '-range' . '"
+		id="' . esc_attr( $this->id ) . '-range"
 		class="nv-range"
 		name="' . esc_attr( $this->id ) . '"
 		min="' . esc_attr( $this->settings['min'] ) . '"

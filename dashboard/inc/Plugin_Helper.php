@@ -40,24 +40,18 @@ class Plugin_Helper {
 		switch ( $slug ) {
 			case 'mailin':
 				return $slug . '/sendinblue.php';
-				break;
 			case 'wpforms-lite':
 				return $slug . '/wpforms.php';
-				break;
 			case 'intergeo-maps':
 			case 'visualizer':
 			case 'translatepress-multilingual':
 				return $slug . '/index.php';
-				break;
 			case 'beaver-builder-lite-version':
 				return $slug . '/fl-builder.php';
-				break;
 			case 'adblock-notify-by-bweb':
 				return $slug . '/adblock-notify.php';
-				break;
 			case 'feedzy-rss-feeds':
 				return $slug . '/feedzy-rss-feed.php';
-				break;
 			default:
 				return $slug . '/' . $slug . '.php';
 		}
@@ -71,7 +65,7 @@ class Plugin_Helper {
 	 * @return object
 	 */
 	public function get_plugin_details( $slug ) {
-		include_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
+		include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
 
 		return plugins_api(
 			'plugin_information',

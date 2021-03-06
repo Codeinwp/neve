@@ -4,7 +4,7 @@ Tags: blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-l
 Requires at least: 4.0
 Tested up to: 5.5
 Stable tag: 1.0.23
-Requires PHP: 5.4.0
+Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,20 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+
+##### [Version 2.10.2](https://github.com/Codeinwp/neve/compare/v2.10.1...v2.10.2) (2021-03-01)
+
+- [Feat] Add compatibility with Google Web Stories
+- [Fix] meta_comments and current_post_meta magic tags
+- [Fix] add to cart notice when product template is made with Elementor
+- [Fix] changelog parsing in the Neve Options dashboard page
+- [Fix] global colors palette selector not showing swatches in safari
+- [Fix] visual hierarchy for the Cart Totals
+- [Fix] subtotal prices squished on checkout pages for products with large titles
+- [Fix] street address textbox was too narrow in Woocommerce
+
+
+
 
 ##### [Version 2.10.1](https://github.com/Codeinwp/neve/compare/v2.10.0...v2.10.1) (2021-02-10)
 

@@ -1,3 +1,4 @@
+/* global CustomEvent */
 import PropTypes from 'prop-types';
 
 import PresetsSelector from './PresetsSelector';
@@ -40,6 +41,7 @@ const PresetsSelectorComponent = ({ control }) => {
 						},
 					})
 				);
+				return false;
 			});
 			return false;
 		}

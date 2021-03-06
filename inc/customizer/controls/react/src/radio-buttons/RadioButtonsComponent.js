@@ -1,9 +1,8 @@
-/* jshint esversion: 6 */
+/*eslint camelcase: ["error", {allow: ["is_for","large_buttons","user_icon_style1","user_icon_style2","user_icon_style3","user_icon_style4","user_icon_style5",,"user_icon_style6","user_avatar"]}]*/
 
 import PropTypes from 'prop-types';
 import RadioIcons from '../common/RadioIcons';
 import SVG from '../common/svg.js';
-import classnames from 'classnames';
 
 import { __ } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
@@ -12,7 +11,7 @@ const RadioButtonsComponent = ({ control }) => {
 	const [value, setValue] = useState(control.setting.get());
 
 	useEffect(() => {
-		document.addEventListener('neve-changed-customizer-value', (e) => {
+		global.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) return false;
 			if (e.detail.id !== control.id) return false;
 			updateValue(e.detail.value);

@@ -122,6 +122,7 @@ const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 				label: direction[direction],
 				value: borderRadius[direction] || '',
 			});
+			return direction;
 		});
 
 		return (
