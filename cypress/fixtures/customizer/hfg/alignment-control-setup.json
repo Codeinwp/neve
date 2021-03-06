@@ -1,0 +1,16 @@
+{
+	"center": {
+		"logo_component_align": {
+			"mobile": "left",
+			"tablet": "left",
+			"desktop": "center"
+		}
+	},
+	"right": {
+		"logo_component_align": {
+			"mobile": "left",
+			"tablet": "left",
+			"desktop": "right"
+		}
+	}
+}
