@@ -1,4 +1,4 @@
-describe('Blog Typography', function () {
+describe('Blog Typography', () => {
 	const setupValues = {
 		textTransform: 'lowercase',
 		fontWeight: '100',
@@ -58,14 +58,28 @@ describe('Blog Typography', function () {
 		},
 	};
 
-	before('Sets up blog typography in customizer', function () {
-		cy.loginWithRequest();
-		cy.fixture('customizer/typography/blog-typography').then((typoSetup) => {
-			cy.setCustomizeSettings(typoSetup);
+	before('Sets up blog typography in customizer', () => {
+		cy.goToCustomizer();
+		cy.window().then((win) => {
+			win.wp.customize.control('neve_archive_typography_post_title').setting.set(setupValues);
+			win.wp.customize.control('neve_archive_typography_post_excerpt').setting.set(setupValues);
+			win.wp.customize.control('neve_archive_typography_post_meta').setting.set(setupValues);
+			win.wp.customize.control('neve_single_post_typography_post_title').setting.set(setupValues);
+			win.wp.customize.control('neve_single_post_typography_post_meta').setting.set(setupValues);
+			win.wp.customize
+				.control('neve_single_post_typography_comments_title')
+				.setting.set(setupValues);
+		});
+		cy.aliasRestRoutes();
+		cy.get('#save').click();
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
+			cy.wait(2000);
 		});
 	});
 
-	it('Test blog typography for transform and weight on frontend on home page', function () {
+	it('Test blog typography for transform and weight on frontend on home page', () => {
 		cy.visit(homeSettings.pageToVisit);
 		cy.get(homeSettings.titleSelector).each((elem) => {
 			testTransformAndWeight(elem, setupValues.textTransform, setupValues.fontWeight);
@@ -78,7 +92,7 @@ describe('Blog Typography', function () {
 		});
 	});
 
-	it('Test blog typography for transform and weight on frontend on comment templates', function () {
+	it('Test blog typography for transform and weight on frontend on comment templates', () => {
 		cy.visit(commentSettings.pageToVisit);
 		cy.get(commentSettings.titleSelector).each((elem) => {
 			testTransformAndWeight(elem, setupValues.textTransform, setupValues.fontWeight);
@@ -91,7 +105,7 @@ describe('Blog Typography', function () {
 		});
 	});
 
-	it('Test blog typography for size, line height, and spacing on frontend on home page', function () {
+	it('Test blog typography for size, line height, and spacing on frontend on home page', () => {
 		cy.visit(homeSettings.pageToVisit);
 
 		// eslint-disable-next-line array-callback-return
@@ -128,7 +142,7 @@ describe('Blog Typography', function () {
 		});
 	});
 
-	it('Test blog typography for size, line height, and spacing on frontend on template comments', function () {
+	it('Test blog typography for size, line height, and spacing on frontend on template comments', () => {
 		cy.visit(commentSettings.pageToVisit);
 
 		// eslint-disable-next-line array-callback-return

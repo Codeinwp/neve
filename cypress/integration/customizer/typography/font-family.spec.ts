@@ -3,15 +3,15 @@ const fonts = {
 	headings: 'Allerta Stencil',
 };
 
-describe('Font Family', function () {
-	before(function () {
-		cy.loginWithRequest();
-		cy.fixture('customizer/typography/font-family').then((fontSetup) => {
-			cy.setCustomizeSettings(fontSetup);
+describe('Font Family', () => {
+	before(() => {
+		cy.setCustomizeSettings({
+			neve_body_font_family: fonts.general,
+			neve_headings_font_family: fonts.headings,
 		});
 	});
 
-	it('Font Family on Front End', function () {
+	it('Font Family on Front End', () => {
 		cy.visit('/markup-html-tags-and-formatting/');
 
 		cy.get('body').should('have.css', 'font-family').and('match', new RegExp(fonts.general, 'g'));
@@ -21,7 +21,7 @@ describe('Font Family', function () {
 			.and('match', new RegExp(fonts.headings, 'g'));
 	});
 
-	it('Test Font Family inside the Editor', function () {
+	it('Test Font Family inside the Editor', () => {
 		cy.visit('/markup-html-tags-and-formatting/');
 		cy.get('#wp-admin-bar-edit > a').click();
 		cy.clearWelcome();

@@ -1,10 +1,10 @@
-describe('Posts meta box default settings', function () {
+describe('Posts meta box default settings', () => {
 	const postSetup = {
 		title: 'Test Post',
 		content: 'The Post Content',
 		url: null,
 	};
-	before('Create new post named "' + postSetup.title + '".', function () {
+	it('Create new post named "' + postSetup.title + '".', () => {
 		cy.insertPost(postSetup.title, postSetup.content, 'post', true);
 		cy.get('.post-publish-panel__postpublish-header a')
 			.contains(postSetup.title)
@@ -13,7 +13,7 @@ describe('Posts meta box default settings', function () {
 				postSetup.url = href;
 			});
 	});
-	it('Default meta box settings on front end.', function () {
+	it('Default meta box settings on front end.', () => {
 		cy.visit(postSetup.url);
 
 		cy.get('.nv-sidebar-wrap').should('have.class', 'nv-right').and('be.visible');
@@ -32,12 +32,12 @@ describe('Posts meta box default settings', function () {
 		cy.get('.nv-content-wrap').should('contain', postSetup.content);
 	});
 
-	it('Activates Classic Editor', function () {
+	it('Activates Classic Editor', () => {
 		cy.activateClassicEditorPlugin();
 	});
 
-	it('Edit meta box settings "' + postSetup.title + '".', function () {
-		cy.loginWithRequest(postSetup.url);
+	it('Edit meta box settings "' + postSetup.title + '".', () => {
+		cy.login(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 
 		cy.get('label[for="neve_meta_container_full-width"]').click();
@@ -52,7 +52,7 @@ describe('Posts meta box default settings', function () {
 		cy.get('#publish').contains('Update').click();
 	});
 
-	it('Edited meta box settings on front end.', function () {
+	it('Edited meta box settings on front end.', () => {
 		cy.visit(postSetup.url);
 		cy.reload();
 		cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left').and('be.visible');
@@ -65,7 +65,7 @@ describe('Posts meta box default settings', function () {
 		cy.get('.nv-content-wrap').should('contain', postSetup.content);
 	});
 
-	it('Deactivates Classic Editor', function () {
+	it('Deactivates Classic Editor', () => {
 		cy.deactivateClassicEditorPlugin();
 	});
 });

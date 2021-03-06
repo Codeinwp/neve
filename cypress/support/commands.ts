@@ -4,34 +4,9 @@ import 'cypress-file-upload';
 import '@percy/cypress';
 import { scrollToBottom } from 'scroll-to-bottomjs';
 
+// const scrollToBottom = require('scroll-to-bottomjs');
 Cypress.Cookies.defaults({
 	preserve: /wordpress_.*/,
-});
-
-Cypress.Commands.add('loginWithRequest', (nextRoute = '/wp-admin') => {
-	let isLoggedIn = false;
-	cy.getCookies({ log: true }).then((cookies) => {
-		cookies.forEach((value) => {
-			if (value.name.includes('wordpress_logged_in_')) {
-				isLoggedIn = true;
-			}
-		});
-		if (isLoggedIn) {
-			cy.visit(nextRoute);
-		} else {
-			cy.request({
-				method: 'POST',
-				url: '/wp-login.php',
-				form: true,
-				body: {
-					log: Cypress.env('user'),
-					pwd: Cypress.env('password'),
-					'wp-submit': 'Log In',
-					redirect_to: 'http://localhost:8080' + nextRoute,
-				},
-			});
-		}
-	});
 });
 
 Cypress.Commands.add('login', (nextRoute: string = null) => {
@@ -39,7 +14,7 @@ Cypress.Commands.add('login', (nextRoute: string = null) => {
 		log: true,
 	}).then((cookies) => {
 		let isLoggedIn = false;
-		cookies.forEach((value) => {
+		cookies.forEach(function (value) {
 			if (value.name.includes('wordpress_')) {
 				isLoggedIn = true;
 			}
@@ -112,7 +87,7 @@ Cypress.Commands.add(
 			loginRoute += '?post_type=' + type;
 		}
 
-		cy.loginWithRequest(loginRoute);
+		cy.login(loginRoute);
 		cy.clearWelcome();
 		if (featured) {
 			cy.wait(500);
@@ -202,13 +177,24 @@ Cypress.Commands.add(
 	},
 );
 
-Cypress.Commands.add('setCustomizeSettings', (to) => {
-	cy.request('POST', '/wp-json/wpthememods/v1/settings', to);
+Cypress.Commands.add('setCustomizeSettings', (to: unknown) => {
+	cy.goToCustomizer();
+	cy.window().then((win) => {
+		Object.keys(to).map((mod) => {
+			win.wp.customize.control(mod).setting.set(to[mod]);
+		});
+	});
+	cy.wait(500);
+	cy.intercept('POST', '/wp-admin/admin-ajax.php').as('save');
+	cy.get('#save').click();
+	cy.wait('@save').then((interception) => {
+		expect(interception.response.body.success).to.be.true;
+		expect(interception.response.statusCode).to.equal(200);
+	});
 });
 
 Cypress.Commands.add('goToCustomizer', () => {
-	cy.loginWithRequest('/wp-admin/customize.php');
-	cy.visit('/wp-admin/customize.php');
+	cy.login('/wp-admin/customize.php');
 	cy.window()
 		.then((win) => {
 			//If the customizer is not ready, bind the flag to ready event.
@@ -268,13 +254,13 @@ Cypress.Commands.add('openNeveSidebar', () => {
 });
 
 Cypress.Commands.add('activateClassicEditorPlugin', () => {
-	cy.loginWithRequest('/wp-admin/plugins.php');
+	cy.login('/wp-admin/plugins.php');
 	cy.get('#activate-classic-editor').contains('Activate').click();
 	cy.get('#deactivate-classic-editor').should('exist');
 });
 
 Cypress.Commands.add('deactivateClassicEditorPlugin', () => {
-	cy.loginWithRequest('/wp-admin/plugins.php');
+	cy.login('/wp-admin/plugins.php');
 	cy.get('#deactivate-classic-editor').contains('Deactivate').click();
 	cy.get('#activate-classic-editor').should('exist');
 });

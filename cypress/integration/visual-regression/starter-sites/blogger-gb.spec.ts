@@ -1,6 +1,6 @@
-describe('Starter Sites VR - https://staging.demosites.io/blogger-gb/', function () {
+describe('Starter Sites VR - https://staging.demosites.io/blogger-gb/', () => {
 	const pages = [];
-	it('Check frontpage', function () {
+	it('Check frontpage', () => {
 		const frontpage = 'https://staging.demosites.io/blogger-gb/';
 		cy.visit(frontpage);
 		cy.captureDocument();
@@ -18,7 +18,7 @@ describe('Starter Sites VR - https://staging.demosites.io/blogger-gb/', function
 			});
 		});
 	});
-	it('Check additional pages', function () {
+	it('Check additional pages', () => {
 		pages.forEach((page) => {
 			cy.visit(page);
 			cy.captureDocument(true, 'Check additional - ' + page);
