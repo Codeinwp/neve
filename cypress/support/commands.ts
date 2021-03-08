@@ -16,9 +16,7 @@ Cypress.Commands.add('loginWithRequest', (nextRoute = '/wp-admin') => {
 				isLoggedIn = true;
 			}
 		});
-		if (isLoggedIn) {
-			cy.visit(nextRoute);
-		} else {
+		if (!isLoggedIn) {
 			cy.request({
 				method: 'POST',
 				url: '/wp-login.php',
@@ -27,10 +25,11 @@ Cypress.Commands.add('loginWithRequest', (nextRoute = '/wp-admin') => {
 					log: Cypress.env('user'),
 					pwd: Cypress.env('password'),
 					'wp-submit': 'Log In',
-					redirect_to: 'http://localhost:8080' + nextRoute,
+					redirect_to: 'http://localhost:8080/wp-admin',
 				},
 			});
 		}
+		cy.visit(nextRoute);
 	});
 });
 
