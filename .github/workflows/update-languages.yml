@@ -5,7 +5,7 @@ on:
     branches:
       - development
 jobs:
-  create_tag:
+  update_language:
     runs-on: ubuntu-latest
     if: "! contains(github.event.head_commit.message, '[skip lang]')"
     steps:
@@ -18,7 +18,7 @@ jobs:
         run: |
           git config --global user.email "$PIRATE_BOT_EMAIL"
           git config --global user.name "pirate-bot"
-          yarn run makepot
+          yarn run build:makepot
           git add languages/neve.pot
           git status
           git commit -m "Update language files [skip ci]"
