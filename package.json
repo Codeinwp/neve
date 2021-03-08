@@ -176,7 +176,7 @@
 		"format:customizer": "wp-scripts format-js inc/customizer/controls/react/src/",
 		"build:customizer": "wp-scripts build inc/customizer/controls/react/src/controls.js --output-path=inc/customizer/controls/react/bundle",
 		"watch:customizer": "wp-scripts start inc/customizer/controls/react/src/controls.js --output-path=inc/customizer/controls/react/bundle",
-		"build:makepot": "docker run --user root --rm --volume  \"$(pwd):/var/www/html/neve\" wordpress:cli bash -c 'php -d memory_limit=1024M \"$(which wp)\" i18n make-pot ./neve/ ./neve/languages/neve.pot --allow-root --exclude=dist,build '",
+		"build:makepot": "docker run --user root --rm --volume  \"$(pwd):/var/www/html/neve\" wordpress:cli bash -c 'php -d memory_limit=1024M \"$(which wp)\" i18n make-pot ./neve/ ./neve/languages/neve.pot --headers={\\\"Last-Translator\\\":\\\"friends@themeisle.com\\\"\\,\\\"Report-Msgid-Bugs-To\\\":\\\"https://github.com/Codeinwp/neve/issues\\\"\\,\\\"POT-Creation-Date\\\":\\\"\\\"} --allow-root --exclude=dist,build '",
 		"watch:rollup": "./node_modules/.bin/rollup -c --watch",
 		"watch:grunt": "grunt watch",
 		"dev": "npm-run-all --parallel watch:*",
