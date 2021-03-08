@@ -18,7 +18,7 @@ jobs:
           yarn run build:makepot
           git add languages/neve.pot
           git status
-          git commit -m "Update language files [skip ci]"
+          git commit -m "Update language files [skip lang]"
           git reset --hard
           git pull --rebase
           git push origin development --quiet
