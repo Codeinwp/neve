@@ -64,25 +64,6 @@
 			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
 		}
 	},
-	"lint-staged": {
-		"*.php": [
-			"composer run format-fix-exit ",
-			"composer run lint"
-		],
-		"package.json": [
-			"yarn run lint:package-json"
-		],
-		"dashboard/src/*.js": [
-			"yarn run format:dash",
-			"yarn run lint:dash",
-			"yarn run build:dash"
-		],
-		"inc/customizer/controls/react/src/*.js": [
-			"yarn run format:customizer",
-			"yarn run lint:customizer",
-			"yarn run build:customizer"
-		]
-	},
 	"dependencies": {
 		"array-move": "^3.0.1",
 		"classnames": "^2.2.6",
@@ -182,7 +163,9 @@
 		"git:add": "git add *.css assets/**/*.css assets/**/*.js",
 		"build:grunt": "grunt build",
 		"bump-vendor": "grunt version:packageVersion",
-		"build:rollup": "./node_modules/.bin/rollup -c",
+		"build:rollup": "rollup -c ./rollup.config.js",
+		"lint:global": "wp-scripts lint-js ./assets/js/src/",
+		"format:global": "wp-scripts format-js ./assets/js/src/",
 		"lint:pkg-json": "wp-scripts lint-pkg-json",
 		"watch:dash": "wp-scripts start dashboard/src/dashboard.js --output-path=dashboard/build",
 		"build:dash": "wp-scripts build dashboard/src/dashboard.js --output-path=dashboard/build",

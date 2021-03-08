@@ -31,6 +31,8 @@ jobs:
         run: yarn run lint:customizer
       - name: Run cypress check
         run: yarn run lint:cypress
+      - name: Run global JS check
+        run: yarn run lint:global
       - name: Run size check
         # WORKAROUND FOR SIZE-LIMIT JOB NUMBER
         env:
