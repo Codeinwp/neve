@@ -10,9 +10,6 @@ jobs:
     if: "! contains(github.event.head_commit.message, '[skip lang]')"
     steps:
       - uses: actions/checkout@master
-        with:
-          persist-credentials: false
-
       - name: Update language file
         id: update-lang
         run: |
