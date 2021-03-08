@@ -24,7 +24,7 @@ jobs:
           git commit -m "Update language files [skip ci]"
           git reset --hard
           git pull --rebase
-          git push origin master --quiet
+          git push origin development --quiet
         env:
           PIRATE_BOT_EMAIL: ${{ secrets.PIRATE_BOT_EMAIL }}
   empty-job:
