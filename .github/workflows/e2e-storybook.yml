@@ -17,6 +17,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           yarn install --frozen-lockfile
+          yarn run build
           yarn storybook &
       - name: E2E Tests 🚀
         run: |
