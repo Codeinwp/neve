@@ -257,7 +257,7 @@ class Admin {
 		$notice_sites_list = sprintf(
 			'<div><h3><span class="dashicons dashicons-images-alt2"></span> %1$s</h3><p>%2$s</p></div><div> <p>%3$s</p><p>%4$s</p> </div>',
 			__( 'Sites Library', 'neve' ),
-			// translators: %s - theme name
+			// translators: %s - Theme name
 				sprintf( esc_html__( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), $name ),
 			$ob_btn,
 			$options_page_btn
@@ -265,7 +265,7 @@ class Admin {
 		$notice_documentation = sprintf(
 			'<div><h3><span class="dashicons dashicons-format-aside"></span> %1$s</h3><p>%2$s</p><a href="%3$s">%4$s</a></div><div> <p>%5$s</p></div>',
 			__( 'Documentation', 'neve' ),
-			// translators: %s - theme name
+			// translators: %s - Theme name
 				sprintf( esc_html__( 'Need more details? Please check our full documentation for detailed information on how to use %s.', 'neve' ), $name ),
 			'https://docs.themeisle.com/article/946-neve-doc',
 			esc_html__( 'Read full documentation', 'neve' ),

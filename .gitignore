@@ -12,3 +12,8 @@ cypress/videos/*
 header-footer-grid/assets/css/style*
 storybook-static
 yarn-error.log
+assets/js/build/*
+assets/css/*
+style-main*
+dashboard/build/*
+inc/customizer/controls/react/bundle/*

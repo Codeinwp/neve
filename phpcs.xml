@@ -15,6 +15,14 @@
 	<exclude-pattern>*.asset.php</exclude-pattern>
 
     <rule ref="Themeisle"/>
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="neve"/>
+				<element value="default"/>
+			</property>
+		</properties>
+	</rule>
     <rule ref="WPThemeReview" >
 		<exclude name="WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound"></exclude>
 		<exclude name="WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_pattern"></exclude>
