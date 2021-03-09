@@ -55,7 +55,7 @@
 			"running": false,
 			"webpack": false,
 			"limit": "46.5 KB",
-			"path": "style.min.css"
+			"path": "style-main.min.css"
 		}
 	],
 	"husky": {
