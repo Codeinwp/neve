@@ -47,7 +47,7 @@ if ( version_compare( PHP_VERSION, '5.5' ) < 0 ) {
  * @var array Files to check for existance.
  */
 
-$_files_to_check = [
+$_files_to_check = defined( 'NEVE_IGNORE_SOURCE_CHECK' ) ? [] : [
 	NEVE_MAIN_DIR . 'vendor/autoload.php',
 	NEVE_MAIN_DIR . 'style-main.css',
 	NEVE_MAIN_DIR . 'assets/js/build/modern/frontend.js',
