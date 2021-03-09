@@ -159,7 +159,7 @@
 	},
 	"scripts": {
 	  	"build": "npm-run-all build:*",
-	  	"build:makepot": "docker run --user root --rm --volume  \"$(pwd):/var/www/html/neve\" wordpress:cli bash -c 'php -d memory_limit=1024M \"$(which wp)\" i18n make-pot ./neve/ ./neve/languages/neve.pot --headers={\\\"Last-Translator\\\":\\\"friends@themeisle.com\\\"\\,\\\"Report-Msgid-Bugs-To\\\":\\\"https://github.com/Codeinwp/neve/issues\\\"\\,\\\"POT-Creation-Date\\\":\\\"\\\"} --allow-root --exclude=dist,build '",
+	  	"build:makepot": "docker run --user root --rm --volume  \"$(pwd):/var/www/html/neve\" wordpress:cli bash -c 'php -d memory_limit=1024M \"$(which wp)\" i18n make-pot ./neve/ ./neve/languages/neve.pot --headers={\\\"Last-Translator\\\":\\\"friends@themeisle.com\\\"\\,\\\"Report-Msgid-Bugs-To\\\":\\\"https://github.com/Codeinwp/neve/issues\\\"\\,\\\"POT-Creation-Date\\\":\\\"\\\"} --allow-root --exclude=dist,build,bundle '",
 	  	"build:customizer": "wp-scripts build inc/customizer/controls/react/src/controls.js --output-path=inc/customizer/controls/react/bundle",
 	  	"build:dash": "wp-scripts build dashboard/src/dashboard.js --output-path=dashboard/build",
 	  	"build:rollup": "rollup -c ./rollup.config.js",
