@@ -32,7 +32,6 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install Dependencies
         env:
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           CYPRESS_INSTALL_BINARY: 0
         run: yarn install --frozen-lockfile
       - name: Build source
