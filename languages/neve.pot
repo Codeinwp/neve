@@ -277,7 +277,7 @@ msgid "upgrading PHP to the latest version"
 msgstr ""
 
 #. translators: %s: commands to run the theme
-#: functions.php:64
+#: functions.php:63
 msgid "You appear to be running the Neve theme from source code. Please finish installation by running %s."
 msgstr ""
 
