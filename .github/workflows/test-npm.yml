@@ -8,6 +8,8 @@ on:
 jobs:
   npm:
     runs-on: ubuntu-latest
+    env:
+      CYPRESS_INSTALL_BINARY: 0
     strategy:
       matrix:
         node-version: [12.x]
