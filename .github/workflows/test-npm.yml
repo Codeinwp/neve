@@ -23,6 +23,8 @@ jobs:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           CYPRESS_INSTALL_BINARY: 0
         run: yarn install --frozen-lockfile
+      - name: Build source
+        run: yarn run build
       - name: Run package check
         run: yarn run lint:package-json
       - name: Run dashboard check

@@ -268,12 +268,17 @@ msgid "Simple but effective module to help you navigate back to the top of the r
 msgstr ""
 
 #. translators: %s message to upgrade PHP to the latest version
-#: functions.php:44
-msgid "Hey, we've noticed that you're running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by %s. Neve's minimal requirement is PHP 5.5.0."
+#: functions.php:34
+msgid "Hey, we've noticed that you're running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by %1$s. Neve's minimal requirement is PHP%2$s."
 msgstr ""
 
-#: functions.php:48
+#: functions.php:38
 msgid "upgrading PHP to the latest version"
+msgstr ""
+
+#. translators: %s: commands to run the theme
+#: functions.php:64
+msgid "You appear to be running the Neve theme from source code. Please finish installation by running %s."
 msgstr ""
 
 #: globals/utilities.php:1339
@@ -1250,6 +1255,36 @@ msgstr ""
 
 #: inc/compatibility/pwa.php:63
 msgid "Oops! Something went wrong."
+msgstr ""
+
+#: inc/compatibility/starter-content/about.php:10
+msgctxt "Theme starter content"
+msgid "About"
+msgstr ""
+
+#: inc/compatibility/starter-content/contact.php:11
+msgctxt "Theme starter content"
+msgid "Contact"
+msgstr ""
+
+#: inc/compatibility/starter-content/home.php:9
+msgctxt "Theme starter content"
+msgid "Home"
+msgstr ""
+
+#: inc/compatibility/starter-content/portofolio.php:10
+msgctxt "Theme starter content"
+msgid "Portofolio"
+msgstr ""
+
+#: inc/compatibility/starter-content/project-details.php:10
+msgctxt "Theme starter content"
+msgid "Project Details"
+msgstr ""
+
+#: inc/compatibility/starter_content.php:170
+msgctxt "Theme starter content"
+msgid "Blog"
 msgstr ""
 
 #: inc/compatibility/woocommerce.php:341

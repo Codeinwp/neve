@@ -71,6 +71,10 @@ jobs:
               ${{ runner.os }}-composer-
         - name: Install composer
           run: composer install --prefer-dist --no-progress --no-suggest --no-dev
+        - name: Install npm deps
+          run: yarn install --frozen-lockfile
+        - name: Run build
+          run: yarn run build
         - name: Run phpunit
           run: phpunit
 
