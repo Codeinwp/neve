@@ -24,6 +24,7 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           composer install --no-dev --prefer-dist --no-progress --no-suggest
+          yarn run build
           yarn run release
         env:
           CI: true

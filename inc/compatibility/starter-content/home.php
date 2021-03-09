@@ -6,7 +6,7 @@
  */
 return [
 	'post_type'    => 'page',
-	'post_title'   => _x( 'Home', 'Theme starter content' ),
+	'post_title'   => _x( 'Home', 'Theme starter content', 'neve' ),
 	'post_content' => '<!-- wp:cover {"url":"' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/hero.jpg","dimRatio":0,"focalPoint":{"x":"0.50","y":"0.64"},"minHeight":700,"align":"full"} -->
 <div class="wp-block-cover alignfull" style="background-image:url(' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/hero.jpg);min-height:700px;background-position:50% 64%"><div class="wp-block-cover__inner-container"><!-- wp:spacer {"height":80} -->
 <div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>

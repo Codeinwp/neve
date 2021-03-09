@@ -39,7 +39,7 @@ module.exports = {
 		cwd: './',
 		dest: './',
 		ext,
-		src: [ 'style.css' ],
+		src: [ 'style-main.css' ],
 	},
 	woocommerce: {
 		options,

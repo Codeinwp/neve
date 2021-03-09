@@ -29,6 +29,10 @@ jobs:
             ${{ runner.os }}-composer-
       - name: Install composer deps
         run: composer install --no-dev --prefer-dist --no-progress --no-suggest
+      - name: Install yarn deps
+        run: yarn install --frozen-lockfile
+      - name: Build files
+        run: yarn run build
       - name: Create zip
         run: yarn run dist
       - name: Retrieve branch name
