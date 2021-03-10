@@ -1,6 +1,5 @@
 describe('AMP Check', function () {
 	before('Sets up search icon on menu top row', function () {
-		cy.loginWithRequest();
 		cy.fixture('amp/amp-setup').then((ampSetupJSON) => {
 			cy.setCustomizeSettings(ampSetupJSON);
 		});
