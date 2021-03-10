@@ -9,10 +9,9 @@ describe('AMP Check', function () {
 		cy.visit('/?amp');
 		cy.get(
 			'.header--row.header-top[data-show-on=desktop] .builder-item--header_search_responsive .nv-search-icon-component .menu-item-nav-search',
-		)
-			.as('navSearchButton')
-			.click();
+		).as('navSearchButton');
 
+		cy.get('a.nv-icon > svg').click();
 		cy.get('@navSearchButton').should('have.class', 'active');
 
 		cy.get('@navSearchButton').find('> .nv-nav-search').as('navSearchForm').should('be.visible');
