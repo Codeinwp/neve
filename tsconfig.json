@@ -15,6 +15,7 @@
     "cypress/**/**/*.ts",
     "cypress/**/**/**/*.ts",
     "cypress/support/index.js",
-    "cypress/**/*.ts"
+    "cypress/**/*.ts",
+    "cypress/plugins/index.js"
   ]
 }
