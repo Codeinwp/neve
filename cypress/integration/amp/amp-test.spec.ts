@@ -12,7 +12,6 @@ describe('AMP Check', function () {
 			'.header--row.header-top[data-show-on=desktop] .builder-item--header_search_responsive .nv-search-icon-component .menu-item-nav-search',
 		)
 			.as('navSearchButton')
-			.should('be.visible')
 			.click();
 
 		cy.get('@navSearchButton').should('have.class', 'active');
