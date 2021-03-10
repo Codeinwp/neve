@@ -1,7 +1,32 @@
 describe('AMP Check', function () {
 	before('Sets up search icon on menu top row', function () {
-		cy.fixture('amp/amp-setup').then((ampSetupJSON) => {
-			cy.setCustomizeSettings(ampSetupJSON);
+		cy.goToCustomizer();
+		cy.aliasRestRoutes();
+
+		cy.get('#accordion-panel-hfg_header').should('be.visible').click();
+
+		cy.get(
+			'.hfg--builder-show .hfg--panel-desktop .hfg--row-top .row--grid > div:last-child',
+		).trigger('mouseover');
+		cy.get(
+			'.hfg--builder-show .hfg--panel-desktop .hfg--row-top .row--grid > div:last-child .add-button--grid',
+		)
+			.should('be.visible')
+			.click();
+
+		cy.get('.widgets-panel--visible').should('exist');
+		cy.get(
+			'.widgets-panel--visible .hfg--widgets-desktop  .grid-stack-item.for-s-header_search_responsive',
+		).click();
+
+		cy.get('#save').should('be.visible').click();
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
+		});
+		cy.visit('/wp-admin');
+		cy.get('#wp-admin-bar-logout > a').click({
+			force: true,
 		});
 	});
 
