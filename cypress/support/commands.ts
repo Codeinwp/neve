@@ -4,10 +4,6 @@ import 'cypress-file-upload';
 import '@percy/cypress';
 import { scrollToBottom } from 'scroll-to-bottomjs';
 
-Cypress.Cookies.defaults({
-	preserve: /wordpress_.*/,
-});
-
 Cypress.Commands.add('loginWithRequest', (nextRoute = '/wp-admin') => {
 	let isLoggedIn = false;
 	cy.getCookies({ log: true }).then((cookies) => {

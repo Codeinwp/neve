@@ -1,7 +1,7 @@
 {
   "projectId": "d8fiqf",
   "pluginsFile": "cypress/plugins/index.js",
-  "supportFile": "cypress/support/commands.ts",
+  "supportFile": "cypress/support/index.ts",
   "baseUrl": "http://localhost:8080",
   "viewportWidth": 1366,
   "viewportHeight": 768,

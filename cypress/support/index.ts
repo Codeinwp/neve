@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import 'cypress-storybook/cypress';
+import './commands';
 
 Cypress.Cookies.defaults({
 	preserve: /wordpress_.*/,

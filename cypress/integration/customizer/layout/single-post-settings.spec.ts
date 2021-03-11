@@ -50,6 +50,7 @@ describe('Single Post Check', function () {
 
 			cy.visit('/markup-image-alignment/');
 			// eslint-disable-next-line no-unused-vars
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			ORDER.forEach((className) => {
 				cy.get('.nv-single-post-wrap')
 					.find('> *')

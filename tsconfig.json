@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "cypress",
     "target": "es5",
     "downlevelIteration": true,
     "lib": [
@@ -14,7 +15,7 @@
   "include": [
     "cypress/**/**/*.ts",
     "cypress/**/**/**/*.ts",
-    "cypress/support/index.js",
+    "cypress/support/index.ts",
     "cypress/**/*.ts",
     "cypress/plugins/index.js"
   ]
