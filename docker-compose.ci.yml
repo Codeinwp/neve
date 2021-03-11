@@ -9,6 +9,8 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
+    ports:
+      - 3306:3306
   cli:
     privileged: true
     image: wordpress:cli
