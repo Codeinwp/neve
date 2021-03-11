@@ -41,16 +41,13 @@ describe('Single page sidebar', function () {
 		cy.getControl('neve_meta_sidebar')
 			.find('.components-radio-control__input[value="full-width"]')
 			.parent()
-			.click({ force: true });
+			.click();
 		cy.updatePost();
 		cy.visit(pageSetup.url);
 		cy.get('.nv-sidebar-wrap').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.getControl('neve_meta_sidebar')
-			.find('.components-radio-control__input[value="left"]')
-			.parent()
-			.click({ force: true });
+		cy.get('.option-label').contains('Left').click();
 		cy.updatePost();
 		cy.visit(pageSetup.url);
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-left');
@@ -59,7 +56,7 @@ describe('Single page sidebar', function () {
 		cy.getControl('neve_meta_sidebar')
 			.find('.components-radio-control__input[value="right"]')
 			.parent()
-			.click({ force: true });
+			.click();
 		cy.updatePost();
 		cy.visit(pageSetup.url);
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-right');

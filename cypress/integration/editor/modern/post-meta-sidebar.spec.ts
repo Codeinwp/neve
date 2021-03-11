@@ -47,6 +47,7 @@ describe('Single post meta sidebar', function () {
 		cy.getControl('neve_meta_sidebar')
 			.find('.components-radio-control__input[value="full-width"]')
 			.parent()
+			.scrollIntoView()
 			.click();
 		cy.updatePost();
 		cy.visit(postSetup.url);
@@ -78,7 +79,11 @@ describe('Single post meta sidebar', function () {
 
 		cy.openNeveSidebar();
 
-		cy.getControl('neve_meta_container').find('.components-button').contains('Contained').click();
+		cy.getControl('neve_meta_container')
+			.find('.components-button')
+			.contains('Contained')
+			.scrollIntoView()
+			.click();
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.single-post-container').should('have.class', 'container').and('be.visible');
@@ -99,7 +104,12 @@ describe('Single post meta sidebar', function () {
 
 		cy.activateCheckbox('.components-toggle-control__label', 'Custom Content Width (%');
 
-		cy.get('.neve_meta_content_width').find('input[type=number]').type('{selectall}').type('60');
+		cy.get('.neve_meta_content_width')
+			.find('input[type=number]')
+			.scrollIntoView()
+			.type('{selectall}')
+			.type('60');
+
 		cy.updatePost();
 		cy.visit(postSetup.url);
 
@@ -113,7 +123,7 @@ describe('Single post meta sidebar', function () {
 
 		cy.openNeveSidebar();
 
-		cy.get('.neve_meta_title_alignment .nv-align-center').click();
+		cy.get('.neve_meta_title_alignment .nv-align-center').scrollIntoView().click();
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('h1.entry-title')
