@@ -124,7 +124,7 @@ Cypress.Commands.add(
 		}
 
 		if (tags) {
-			cy.get('.components-panel__body-toggle').contains('Tags').click();
+			cy.get('.components-panel__body-toggle').contains('Tags').click({ force: true });
 			cy.get('.components-form-token-field__label')
 				.contains('Add New Tag')
 				.parent()
