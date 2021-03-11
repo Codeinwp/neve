@@ -94,7 +94,6 @@ describe('Single post meta sidebar', function () {
 
 		cy.openNeveSidebar();
 
-		// const enableContentWidth = cy.get('.components-toggle-control__label').contains('Custom Content Width (%)');
 		cy.activateCheckbox('.components-toggle-control__label', 'Custom Content Width (%');
 
 		cy.get('.neve_meta_content_width').find('input[type=number]').type('{selectall}').type('60');
@@ -156,7 +155,6 @@ describe('Single post meta sidebar', function () {
 	it('Check post elements', function () {
 		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
-		cy.clearWelcome();
 
 		cy.openNeveSidebar();
 
