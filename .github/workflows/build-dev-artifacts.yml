@@ -99,6 +99,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        fail-fast: false
         include:
           ## Amp specs needs just one machine
           - machines: 1
