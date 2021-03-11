@@ -97,7 +97,6 @@ jobs:
     name: E2E for ${{ matrix.specs }} on ${{ matrix.envs }}
     needs: dev-zip
     strategy:
-      fail-fast: false
       matrix:
         fail-fast: false
         include:
