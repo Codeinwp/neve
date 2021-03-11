@@ -41,7 +41,8 @@ describe('Single page sidebar', function () {
 		cy.getControl('neve_meta_sidebar')
 			.find('.components-radio-control__input[value="full-width"]')
 			.parent()
-			.click();
+			.scrollIntoView()
+			.click({ force: true });
 		cy.updatePost();
 		cy.visit(pageSetup.url);
 		cy.get('.nv-sidebar-wrap').should('not.exist');

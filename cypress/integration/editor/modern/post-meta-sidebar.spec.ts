@@ -48,7 +48,7 @@ describe('Single post meta sidebar', function () {
 			.find('.components-radio-control__input[value="full-width"]')
 			.parent()
 			.scrollIntoView()
-			.click();
+			.click({ force: true });
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.nv-sidebar-wrap').should('not.exist');
@@ -83,7 +83,7 @@ describe('Single post meta sidebar', function () {
 			.find('.components-button')
 			.contains('Contained')
 			.scrollIntoView()
-			.click();
+			.click({ force: true });
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.single-post-container').should('have.class', 'container').and('be.visible');
@@ -107,8 +107,8 @@ describe('Single post meta sidebar', function () {
 		cy.get('.neve_meta_content_width')
 			.find('input[type=number]')
 			.scrollIntoView()
-			.type('{selectall}')
-			.type('60');
+			.type('{selectall}', { force: true })
+			.type('60', { force: true });
 
 		cy.updatePost();
 		cy.visit(postSetup.url);
@@ -123,7 +123,7 @@ describe('Single post meta sidebar', function () {
 
 		cy.openNeveSidebar();
 
-		cy.get('.neve_meta_title_alignment .nv-align-center').scrollIntoView().click();
+		cy.get('.neve_meta_title_alignment .nv-align-center').scrollIntoView().click({ force: true });
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('h1.entry-title')
