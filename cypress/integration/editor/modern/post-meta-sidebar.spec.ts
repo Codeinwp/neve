@@ -5,7 +5,7 @@ describe('Single post meta sidebar', function () {
 		url: null,
 	};
 
-	it('Create new post named "' + postSetup.title + '".', function () {
+	before('Create new post named "' + postSetup.title + '".', function () {
 		cy.insertPost(postSetup.title, postSetup.content, 'post', true, true);
 		cy.get('.post-publish-panel__postpublish-header a')
 			.contains(postSetup.title)
