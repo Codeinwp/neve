@@ -129,7 +129,7 @@ Cypress.Commands.add(
 				.contains('Add New Tag')
 				.parent()
 				.find('input')
-				.type('test-tag,');
+				.type('test-tag,', { force: true });
 		}
 		cy.get('.editor-post-title__input').type(title);
 		cy.get(' textarea.block-editor-default-block-appender__content').click({

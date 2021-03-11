@@ -47,8 +47,7 @@ describe('Single page sidebar', function () {
 		cy.getControl('neve_meta_sidebar')
 			.find('.components-radio-control__input[value="left"]')
 			.parent()
-			.scrollIntoView()
-			.click();
+			.click({ force: true });
 		cy.updatePost();
 		cy.visit(pageSetup.url);
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-left');
@@ -57,7 +56,7 @@ describe('Single page sidebar', function () {
 		cy.getControl('neve_meta_sidebar')
 			.find('.components-radio-control__input[value="right"]')
 			.parent()
-			.click();
+			.click({ force: true });
 		cy.updatePost();
 		cy.visit(pageSetup.url);
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-right');
