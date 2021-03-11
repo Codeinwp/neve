@@ -15,6 +15,9 @@ describe('Single post meta sidebar', function () {
 			});
 	});
 
+	beforeEach(function () {
+		cy.clearWelcome();
+	});
 	it('Default meta box settings on front end.', function () {
 		cy.visit(postSetup.url);
 
@@ -154,6 +157,7 @@ describe('Single post meta sidebar', function () {
 
 	it('Check post elements', function () {
 		cy.loginWithRequest(postSetup.url);
+		cy.reload();
 		cy.get('#wp-admin-bar-edit a').click();
 
 		cy.openNeveSidebar();
