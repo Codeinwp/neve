@@ -98,7 +98,6 @@ jobs:
     needs: dev-zip
     strategy:
       matrix:
-        fail-fast: false
         include:
           ## Amp specs needs just one machine
           - machines: 1
