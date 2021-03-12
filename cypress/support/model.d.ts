@@ -118,7 +118,7 @@ declare namespace Cypress {
 		 * @example
 		 *  cy.setCustomizeSettings({ hfg_header_layout: withSearch })
 		 */
-		setCustomizeSettings(to: unknown);
+		setCustomizeSettings(to: unknown): Chainable;
 
 		/**
 		 * Navigates to the customizer UI
