@@ -18,7 +18,7 @@
   "license": "GPL-2.0+",
   "devDependencies": {
     "@babel/core": "^7.13.8",
-    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-env": "^7.13.10",
     "core-js": "^3.9.1",
     "cssnano": "^4.1.10",
     "eslint": "^7.21.0",
