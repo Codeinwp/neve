@@ -7,7 +7,7 @@
 
 return [
 	'post_type'    => 'page',
-	'post_title'   => _x( 'Portofolio', 'Theme starter content' ),
+	'post_title'   => _x( 'Portofolio', 'Theme starter content', 'neve' ),
 	'post_content' => '<!-- wp:cover {"overlayColor":"nv-site-bg","minHeight":300,"align":"full"} -->
 <div class="wp-block-cover alignfull has-nv-site-bg-background-color has-background-dim" style="min-height:300px"><div class="wp-block-cover__inner-container"><!-- wp:group -->
 <div class="wp-block-group"><div class="wp-block-group__inner-container"><!-- wp:heading {"level":1,"className":"has-text-align-left","textColor":"neve-text-color"} -->

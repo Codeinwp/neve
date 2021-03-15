@@ -23,11 +23,11 @@ services:
       - mysql
       - wordpress
     environment:
-      WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: wordpress
-      WORDPRESS_DB_ROOT_PASSWORD: wordpress
-      WORDPRESS_DEBUG: 1
+      - WORDPRESS_DB_NAME=wordpress
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_ROOT_PASSWORD=wordpress
+      - WORDPRESS_DEBUG=1
   wordpress:
     privileged: true
     ports:

@@ -3,21 +3,21 @@ import { initBlog } from './blog.js';
 import { initNavigation, repositionDropdowns } from './navigation.js';
 import { HFG } from './hgf.js';
 
-function run () {
-  window.HFG = new HFG();
-  initBlog();
-  initNavigation();
+function run() {
+	window.HFG = new HFG();
+	initBlog();
+	initNavigation();
 }
 
-function onResizeDebouncedRun () {
-  repositionDropdowns();
+function onResizeDebouncedRun() {
+	repositionDropdowns();
 }
 
 /**
  * Run JS on load.
  */
 window.addEventListener('load', () => {
-  run();
+	run();
 });
 
 /**
@@ -25,6 +25,6 @@ window.addEventListener('load', () => {
  */
 let neveResizeTimeout;
 window.addEventListener('resize', () => {
-  clearTimeout(neveResizeTimeout);
-  neveResizeTimeout = setTimeout(onResizeDebouncedRun, 500);
+	clearTimeout(neveResizeTimeout);
+	neveResizeTimeout = setTimeout(onResizeDebouncedRun, 500);
 });
