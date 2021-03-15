@@ -191,7 +191,7 @@ jobs:
         with:
           env: host=localhost,port=8080
           browser: chrome
-          install: ${{ steps.yarn-and-build-cache.outputs.cache-hit }}
+          install: ${{ ! steps.yarn-and-build-cache.outputs.cache-hit }}
           headless: true
           parallel: true
           group: e2e-${{ matrix.specs }}
