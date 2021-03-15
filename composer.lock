@@ -8,24 +8,20 @@
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.2.18",
+            "version": "3.2.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "8ea22767fb6b2c453b678b3626c38db3b7c79fe5"
+                "reference": "abb31e2382fd8c40bcc18d7c9f3501d14bf48e87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/8ea22767fb6b2c453b678b3626c38db3b7c79fe5",
-                "reference": "8ea22767fb6b2c453b678b3626c38db3b7c79fe5",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/abb31e2382fd8c40bcc18d7c9f3501d14bf48e87",
+                "reference": "abb31e2382fd8c40bcc18d7c9f3501d14bf48e87",
                 "shasum": ""
             },
             "require-dev": {
-                "automattic/vipwpcs": "^1.0.0",
-                "dealerdirect/phpcodesniffer-composer-installer": "0.7.0",
-                "phpcompatibility/php-compatibility": "^9",
-                "squizlabs/php_codesniffer": "^3.3",
-                "wp-coding-standards/wpcs": "^1"
+                "codeinwp/phpcs-ruleset": "dev-main"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -44,7 +40,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2021-03-04T14:13:50+00:00"
+            "time": "2021-03-12T08:54:44+00:00"
         }
     ],
     "packages-dev": [
