@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 // const {
 // 	addMatchImageSnapshotPlugin,
 // } = require('cypress-image-snapshot/plugin');

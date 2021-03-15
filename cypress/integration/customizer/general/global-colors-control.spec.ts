@@ -1,11 +1,11 @@
-describe('Global Colors', () => {
-	before(() => {
+describe('Global Colors', function () {
+	before(function () {
 		cy.goToCustomizer();
 		cy.getCustomizerControl('neve_global_colors');
 		cy.get('.neve-global-colors-wrap').as('wrap');
 	});
 
-	it('Palette Selector', () => {
+	it('Palette Selector', function () {
 		cy.get('.neve-global-color-palette-inner.active').should('contain', 'Base');
 
 		cy.get('.neve-global-color-palette-inner').contains('Dark Mode').click();
@@ -13,7 +13,7 @@ describe('Global Colors', () => {
 		cy.get('.neve-global-color-palette-inner.active').should('contain', 'Dark Mode');
 	});
 
-	it('Palette Add', () => {
+	it('Palette Add', function () {
 		cy.get('.add-palette-form').as('form');
 		cy.get('@form').find('button').click();
 		cy.get('@form').find('input').type('Base');
@@ -27,7 +27,7 @@ describe('Global Colors', () => {
 		cy.get('.neve-global-color-palette-inner.active').should('contain', 'Test Palette');
 	});
 
-	it('Palette Delete', () => {
+	it('Palette Delete', function () {
 		cy.get('.neve-global-color-palette-inner.active')
 			.siblings('.delete-palette')
 			.click({ force: true });
@@ -41,7 +41,7 @@ describe('Global Colors', () => {
 		cy.get('.neve-global-color-palette-inner.active').should('contain', 'Base');
 	});
 
-	it('Changes Colors', () => {
+	it('Changes Colors', function () {
 		cy.get('.color-array-wrap .neve-color-component').each((control) => {
 			cy.get(control).find('button.is-secondary').click({ force: true });
 			cy.get(control).find('input').clear().type('#000000');
@@ -62,7 +62,7 @@ describe('Global Colors', () => {
 			});
 	});
 
-	it('Palette Selector in Color Component', () => {
+	it('Palette Selector in Color Component', function () {
 		cy.getCustomizerControl('neve_button_appearance').as('buttonControl');
 
 		cy.get('@buttonControl').find('.global-color-picker').first().click();
@@ -77,7 +77,7 @@ describe('Global Colors', () => {
 		cy.get('.nv-custom-palette-wrap button').contains('Edit').click();
 	});
 
-	it('Palette Reset', () => {
+	it('Palette Reset', function () {
 		cy.get('.reset-palette').should('not.be', 'disabled').click();
 		cy.window().then((win) => {
 			const controlValue = win.wp.customize.control('neve_global_colors').setting.get();

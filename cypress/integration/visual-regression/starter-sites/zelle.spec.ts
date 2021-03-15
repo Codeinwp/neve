@@ -1,6 +1,6 @@
-describe('Starter Sites VR - https://staging.demosites.io/zelle/', () => {
+describe('Starter Sites VR - https://staging.demosites.io/zelle/', function () {
 	const pages = [];
-	it('Check frontpage', () => {
+	it('Check frontpage', function () {
 		const frontpage = 'https://staging.demosites.io/zelle/';
 		cy.visit(frontpage);
 		cy.captureDocument();
@@ -18,7 +18,7 @@ describe('Starter Sites VR - https://staging.demosites.io/zelle/', () => {
 			});
 		});
 	});
-	it('Check additional pages', () => {
+	it('Check additional pages', function () {
 		pages.forEach((page) => {
 			cy.visit(page);
 			cy.captureDocument(true, 'Check additional - ' + page);

@@ -1,11 +1,11 @@
-describe('Single post meta sidebar', () => {
+describe('Single post meta sidebar', function () {
 	const postSetup = {
 		title: 'Test Post',
 		content: 'The Post Content',
 		url: null,
 	};
 
-	it('Create new post named "' + postSetup.title + '".', () => {
+	before('Create new post named "' + postSetup.title + '".', function () {
 		cy.insertPost(postSetup.title, postSetup.content, 'post', true, true);
 		cy.get('.post-publish-panel__postpublish-header a')
 			.contains(postSetup.title)
@@ -15,7 +15,10 @@ describe('Single post meta sidebar', () => {
 			});
 	});
 
-	it('Default meta box settings on front end.', () => {
+	beforeEach(function () {
+		cy.clearWelcome();
+	});
+	it('Default meta box settings on front end.', function () {
 		cy.visit(postSetup.url);
 
 		cy.get('.nv-sidebar-wrap').should('have.class', 'nv-right').and('be.visible');
@@ -34,8 +37,8 @@ describe('Single post meta sidebar', () => {
 		cy.get('.nv-content-wrap').should('contain', postSetup.content);
 	});
 
-	it('Check sidebar layout', () => {
-		cy.login(postSetup.url);
+	it('Check sidebar layout', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
@@ -44,7 +47,8 @@ describe('Single post meta sidebar', () => {
 		cy.getControl('neve_meta_sidebar')
 			.find('.components-radio-control__input[value="full-width"]')
 			.parent()
-			.click();
+			.scrollIntoView()
+			.click({ force: true });
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.nv-sidebar-wrap').should('not.exist');
@@ -68,14 +72,18 @@ describe('Single post meta sidebar', () => {
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-right');
 	});
 
-	it('Check container layout', () => {
-		cy.login(postSetup.url);
+	it('Check container layout', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
 		cy.openNeveSidebar();
 
-		cy.getControl('neve_meta_container').find('.components-button').contains('Contained').click();
+		cy.getControl('neve_meta_container')
+			.find('.components-button')
+			.contains('Contained')
+			.scrollIntoView()
+			.click({ force: true });
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.single-post-container').should('have.class', 'container').and('be.visible');
@@ -87,31 +95,35 @@ describe('Single post meta sidebar', () => {
 		cy.get('.single-post-container').should('not.have.class', 'container').and('be.visible');
 	});
 
-	it('Check container width', () => {
-		cy.login(postSetup.url);
+	it('Check container width', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
 		cy.openNeveSidebar();
 
-		// const enableContentWidth = cy.get('.components-toggle-control__label').contains('Custom Content Width (%)');
 		cy.activateCheckbox('.components-toggle-control__label', 'Custom Content Width (%');
 
-		cy.get('.neve_meta_content_width').find('input[type=number]').type('{selectall}').type('60');
+		cy.get('.neve_meta_content_width')
+			.find('input[type=number]')
+			.scrollIntoView()
+			.type('{selectall}', { force: true })
+			.type('60', { force: true });
+
 		cy.updatePost();
 		cy.visit(postSetup.url);
 
 		cy.get('.nv-single-post-wrap').should('have.css', 'max-width').and('eq', '60%');
 	});
 
-	it('Check title alignment', () => {
-		cy.login(postSetup.url);
+	it('Check title alignment', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
 		cy.openNeveSidebar();
 
-		cy.get('.neve_meta_title_alignment .nv-align-center').click();
+		cy.get('.neve_meta_title_alignment .nv-align-center').scrollIntoView().click({ force: true });
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('h1.entry-title')
@@ -139,8 +151,8 @@ describe('Single post meta sidebar', () => {
 		cy.get('#wp-admin-bar-edit a').click();
 	});
 
-	it('Check author avatar', () => {
-		cy.login(postSetup.url);
+	it('Check author avatar', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
@@ -153,10 +165,10 @@ describe('Single post meta sidebar', () => {
 		cy.get('.nv-meta-list .author .photo').should('exist');
 	});
 
-	it('Check post elements', () => {
-		cy.login(postSetup.url);
+	it('Check post elements', function () {
+		cy.loginWithRequest(postSetup.url);
+		cy.reload();
 		cy.get('#wp-admin-bar-edit a').click();
-		cy.clearWelcome();
 
 		cy.openNeveSidebar();
 
