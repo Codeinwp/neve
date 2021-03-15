@@ -2270,11 +2270,11 @@ msgstr ""
 msgid "Loading…"
 msgstr ""
 
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:39
+#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:42
 msgid "Palette Colors"
 msgstr ""
 
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:78
+#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:81
 msgid "Reset all to default"
 msgstr ""
 
