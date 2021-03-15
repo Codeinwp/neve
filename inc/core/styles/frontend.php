@@ -658,6 +658,7 @@ class Frontend extends Generator {
 			Config::CSS_PROP_FONT_WEIGHT      => [
 				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontWeight',
 			],
+			Config::CSS_PROP_FONT_FAMILY      => Config::MODS_FONT_GENERAL,
 		];
 
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_LABELS ] = [
@@ -699,6 +700,7 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_DEFAULT       => 12,
 				Dynamic_Selector::META_IS_RESPONSIVE => false,
 			],
+			Config::CSS_PROP_FONT_FAMILY   => Config::MODS_FONT_GENERAL,
 		];
 	}
 
