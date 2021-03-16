@@ -1,0 +1,27 @@
+@import "vars";
+
+.hfg-builder {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-left: 330px;
+  padding: 20px;
+  background-color: $wp-light-grey;
+
+  .row {
+	width: 100%;
+	background: #fff;
+	height: 45px !important;
+	margin: 55px;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  background: red;
+  color: #fff;
+}
