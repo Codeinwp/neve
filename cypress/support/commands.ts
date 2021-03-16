@@ -285,7 +285,7 @@ Cypress.Commands.add('getJWT', () => {
 	});
 });
 
-Cypress.Commands.add('updatePostByRequest', (postId: string, body) => {
+Cypress.Commands.add('updatePageByRequest', (postId: string, body) => {
 	cy.request({
 		method: 'POST',
 		url: '/wp-json/wp/v2/pages/' + postId,

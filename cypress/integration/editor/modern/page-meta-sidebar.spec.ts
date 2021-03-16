@@ -46,7 +46,7 @@ describe('Single page sidebar', function () {
 		const pageId = window.localStorage.getItem('pageId');
 		cy.clearWelcome();
 
-		cy.updatePostByRequest(pageId, {
+		cy.updatePageByRequest(pageId, {
 			meta: {
 				neve_meta_sidebar: 'full-width',
 			},
@@ -55,13 +55,13 @@ describe('Single page sidebar', function () {
 		cy.get('.nv-sidebar-wrap').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.updatePostByRequest(pageId, {
+		cy.updatePageByRequest(pageId, {
 			meta: {
 				neve_meta_sidebar: 'left',
 			},
 		});
 
-		cy.updatePostByRequest(pageId, {
+		cy.updatePageByRequest(pageId, {
 			meta: {
 				neve_meta_sidebar: 'right',
 			},

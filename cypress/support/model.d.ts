@@ -201,8 +201,8 @@ declare namespace Cypress {
 		 *
 		 * @param postId
 		 * @param body
-		 * @example cy.updatePostByRequest('12', { size: '20px' })
+		 * @example cy.updatePageByRequest('12', { size: '20px' })
 		 */
-		updatePostByRequest(postId: string, body): Chainable;
+		updatePagetByRequest(postId: string, body): Chainable;
 	}
 }
