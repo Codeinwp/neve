@@ -1,5 +1,4 @@
-/* jshint esversion: 6 */
-
+/*eslint camelcase: ["error", {allow: ["text_transform","weight_default","refresh_on_reset","letter_spacing_default","line_height_units","disable_transform","size_default","size_units","line_height_default"]}]*/
 import PropTypes from 'prop-types';
 import { useState } from '@wordpress/element';
 

@@ -68,7 +68,7 @@ const SizingControl = ({
 			options.filter(
 				// eslint-disable-next-line eqeqeq
 				(option) => {
-					return option.value != defaults[option.type];
+					return option.value !== defaults[option.type];
 				}
 			).length > 0
 		);
@@ -106,7 +106,9 @@ const SizingControl = ({
 				return (
 					<SingleSizingInput
 						key={n}
-						onChange={(type, value) => updateValue(type, value)}
+						onChange={(type, valueSize) =>
+							updateValue(type, valueSize)
+						}
 						value={i.value}
 						className={i.type ? i.type + '-input' : ''}
 						type={i.type}

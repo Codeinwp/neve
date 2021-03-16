@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 // const {
 // 	addMatchImageSnapshotPlugin,
 // } = require('cypress-image-snapshot/plugin');
@@ -13,6 +14,8 @@ module.exports = (on) => {
 		}
 	});
 };
+
+// eslint-disable-next-line  @typescript-eslint/no-var-requires
 const percyHealthCheck = require('@percy/cypress/task');
 
 module.exports = (on) => {

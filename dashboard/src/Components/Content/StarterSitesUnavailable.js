@@ -6,25 +6,23 @@ import { useState } from '@wordpress/element';
 import { Button } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
 
-const StarterSitesUnavailable = ( { templatesPluginData } ) => {
+const StarterSitesUnavailable = ({ templatesPluginData }) => {
 	const { assets, tpcPath, tpcAdminURL, isOnboarding } = neveDash;
-	const tpcRedirect = tpcAdminURL + ( isOnboarding ? '&onboarding=yes' : '' );
-	const [ installing, setInstalling ] = useState( false );
-	const [ activating, setActivating ] = useState( false );
-	const [ updating, setUpdating ] = useState( false );
-	const [ error, setError ] = useState( false );
-	const [ currentState, setCurrentState ] = useState(
-		templatesPluginData.cta
-	);
+	const tpcRedirect = tpcAdminURL + (isOnboarding ? '&onboarding=yes' : '');
+	const [installing, setInstalling] = useState(false);
+	const [activating, setActivating] = useState(false);
+	const [updating, setUpdating] = useState(false);
+	const [error, setError] = useState(false);
+	const [currentState, setCurrentState] = useState(templatesPluginData.cta);
 	const installPlugin = () => {
-		setInstalling( true );
-		wp.updates.ajax( 'install-plugin', {
+		setInstalling(true);
+		wp.updates.ajax('install-plugin', {
 			slug: 'templates-patterns-collection',
-			success: ( r ) => {
+			success: () => {
 				activatePlugin();
 			},
-			error: ( e ) => {
-				if ( 'folder_exists' === e.errorCode ) {
+			error: (e) => {
+				if ('folder_exists' === e.errorCode) {
 					activatePlugin();
 				} else {
 					setError(
@@ -36,97 +34,92 @@ const StarterSitesUnavailable = ( { templatesPluginData } ) => {
 					);
 				}
 			},
-		} );
+		});
 	};
 
 	const activatePlugin = () => {
-		setInstalling( false );
-		setActivating( true );
-		setCurrentState( 'activate' );
+		setInstalling(false);
+		setActivating(true);
+		setCurrentState('activate');
 		const activationURL = templatesPluginData.activate;
 
-		get( activationURL, true ).then( ( r ) => {
-			if ( r.ok ) {
+		get(activationURL, true).then((r) => {
+			if (r.ok) {
 				window.location.href = tpcRedirect;
 			} else {
-				setError( __( 'Could not activate plugin.' ) );
+				setError(__('Could not activate plugin.'));
 			}
-		} );
+		});
 	};
 
 	const updatePlugin = () => {
-		setUpdating( true );
-		wp.updates.ajax( 'update-plugin', {
+		setUpdating(true);
+		wp.updates.ajax('update-plugin', {
 			slug: 'templates-patterns-collection',
-			plugin: untrailingSlashIt( tpcPath ),
-			success: ( r ) => {
+			plugin: untrailingSlashIt(tpcPath),
+			success: () => {
 				window.location.href = tpcRedirect;
 			},
-			error: ( e ) => {
+			error: (e) => {
 				setError(
 					e.errorMessage
 						? e.errorMessage
-						: __(
-								'Something went wrong while updating the plugin.'
-						  )
+						: __('Something went wrong while updating the plugin.')
 				);
 			},
-		} );
+		});
 	};
 
 	const renderNoticeContent = () => {
 		const buttonMap = {
 			install: (
 				<Button
-					disabled={ installing }
-					isPrimary={ ! installing }
-					isSecondary={ installing }
-					className={ installing && 'is-loading' }
-					icon={ installing && 'update' }
-					onClick={ installPlugin }
+					disabled={installing}
+					isPrimary={!installing}
+					isSecondary={installing}
+					className={installing && 'is-loading'}
+					icon={installing && 'update'}
+					onClick={installPlugin}
 				>
-					{ installing
-						? __( 'Installing' ) + '...'
-						: __( 'Install and Activate' ) }
+					{installing
+						? __('Installing') + '...'
+						: __('Install and Activate')}
 				</Button>
 			),
 			activate: (
 				<Button
-					disabled={ activating }
-					isPrimary={ ! activating }
-					isSecondary={ activating }
-					className={ activating && 'is-loading' }
-					icon={ activating && 'update' }
-					onClick={ activatePlugin }
+					disabled={activating}
+					isPrimary={!activating}
+					isSecondary={activating}
+					className={activating && 'is-loading'}
+					icon={activating && 'update'}
+					onClick={activatePlugin}
 				>
-					{ activating
-						? __( 'Activating' ) + '...'
-						: __( 'Activate' ) }
+					{activating ? __('Activating') + '...' : __('Activate')}
 				</Button>
 			),
 			deactivate: (
 				<Button
-					disabled={ updating }
-					isPrimary={ ! updating }
-					isSecondary={ updating }
-					className={ updating && 'is-loading' }
-					icon={ updating && 'update' }
-					onClick={ updatePlugin }
+					disabled={updating}
+					isPrimary={!updating}
+					isSecondary={updating}
+					className={updating && 'is-loading'}
+					icon={updating && 'update'}
+					onClick={updatePlugin}
 				>
-					{ updating ? __( 'Updating' ) + '...' : __( 'Update' ) }
+					{updating ? __('Updating') + '...' : __('Update')}
 				</Button>
 			),
 		};
 		return (
 			<>
 				<h1>
-					{ 'deactivate' === currentState
+					{'deactivate' === currentState
 						? neveDash.strings.starterSitesUnavailableUpdate
-						: neveDash.strings.starterSitesUnavailableActive
-					}
+						: neveDash.strings.starterSitesUnavailableActive}
 				</h1>
 				<br />
-				{ buttonMap[ currentState ] }
+				{buttonMap[currentState]}
 			</>
 		);
 	};
@@ -135,22 +128,22 @@ const StarterSitesUnavailable = ( { templatesPluginData } ) => {
 		<div className="unavailable-starter-sites">
 			<div
 				className="ss-background"
-				style={ { backgroundImage: `url(${ assets }/starter.jpg)` } }
+				style={{ backgroundImage: `url(${assets}/starter.jpg)` }}
 			/>
 			<div className="content-wrap">
-				{ ! error ? (
+				{!error ? (
 					renderNoticeContent()
 				) : (
-					<h1 className="error">{ error }</h1>
-				) }
+					<h1 className="error">{error}</h1>
+				)}
 			</div>
 		</div>
 	);
 };
 
-export default withSelect( ( select ) => {
-	const { getPlugins } = select( 'neve-dashboard' );
+export default withSelect((select) => {
+	const { getPlugins } = select('neve-dashboard');
 	return {
-		templatesPluginData: getPlugins()[ 'templates-patterns-collection' ],
+		templatesPluginData: getPlugins()['templates-patterns-collection'],
 	};
-} )( StarterSitesUnavailable );
+})(StarterSitesUnavailable);

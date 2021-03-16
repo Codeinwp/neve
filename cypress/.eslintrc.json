@@ -2,8 +2,11 @@
 	"extends": [
 		"plugin:cypress/recommended",
 		"plugin:chai-friendly/recommended",
-		"plugin:prettier/recommended"
+		"plugin:prettier/recommended",
+		"prettier/@typescript-eslint",
+		"plugin:@typescript-eslint/recommended"
 	],
+	"parser": "@typescript-eslint/parser",
 	"env": {
 		"cypress/globals": true,
 		"jest": false,
@@ -11,6 +14,8 @@
 		"node": true
 	},
 	"rules": {
+		"jsdoc/valid-types": "off",
+		"jsdoc/require-param-type": "off",
 		"jest/expect-expect": "off",
 		"jest/valid-expect-in-promise": "off",
 		"jest/valid-expect": "off",
@@ -27,5 +32,12 @@
 				"usePrettierrc": true
 			}
 		]
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
 	}
 }

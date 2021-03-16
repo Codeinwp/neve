@@ -184,7 +184,6 @@ abstract class Control_Base {
 				}
 
 				return sanitize_text_field( $value );
-				break;
 			case 'checkbox':
 				$allowed_values = array( 'on', 'off' );
 				if ( ! in_array( $value, $allowed_values, true ) ) {
@@ -192,13 +191,10 @@ abstract class Control_Base {
 				}
 
 				return sanitize_text_field( $value );
-				break;
 			case 'range':
 				return absint( $value );
-				break;
 			case 'input':
 				return sanitize_text_field( $value );
-				break;
 			case 'separator':
 			default:
 				break;

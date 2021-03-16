@@ -1,4 +1,4 @@
-/* global NeveReactCustomize */
+/* global NeveReactCustomize, Event */
 
 import DynamicFieldInserter from './dynamic-field-inserter.js';
 import { render } from '@wordpress/element';
@@ -14,7 +14,7 @@ export const init = () => {
 		return false;
 	}
 	NeveReactCustomize.fieldSelection = {};
-	Object.keys(controls).forEach((controlId, index) => {
+	Object.keys(controls).forEach((controlId) => {
 		const control = wp.customize.control(controlId);
 		if (typeof control === 'undefined') {
 			return false;
@@ -53,9 +53,9 @@ export const init = () => {
 /**
  * Add dynamic tag to input field.
  *
- * @param magicTag
- * @param control
- * @param optionType
+ * @param {string} magicTag
+ * @param {Object} control
+ * @param {string} optionType
  */
 const addToField = function (magicTag, control, optionType) {
 	let tag;

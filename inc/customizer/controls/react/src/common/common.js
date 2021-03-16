@@ -15,8 +15,8 @@ export const maybeParseJson = (input) => {
 /**
  * Simple object check.
  *
- * @param item
- * @return {boolean}
+ * @param {Object} item
+ * @return {boolean} Is object?
  */
 export const isObject = (item) => {
 	return item && typeof item === 'object' && !Array.isArray(item);
@@ -28,14 +28,14 @@ export const isObject = (item) => {
  * @param {...any} objects
  */
 export const mergeDeep = (...objects) => {
-	const isObject = (obj) => obj && typeof obj === 'object';
+	const isObjectValue = (obj) => obj && typeof obj === 'object';
 	return objects.reduce((prev, obj) => {
 		Object.keys(obj).forEach((key) => {
 			const pVal = prev[key];
 			const oVal = obj[key];
 			if (Array.isArray(pVal) && Array.isArray(oVal)) {
 				prev[key] = pVal.concat(...oVal);
-			} else if (isObject(pVal) && isObject(oVal)) {
+			} else if (isObjectValue(pVal) && isObjectValue(oVal)) {
 				prev[key] = mergeDeep(pVal, oVal);
 			} else {
 				prev[key] = oVal;

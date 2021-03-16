@@ -12,7 +12,14 @@ const RadioImageComponent = ({ control }) => {
 		control.setting.set(newVal);
 	};
 
-	return <RadioImage label={label} choices={choices} onClick={updateValue} value={value} />;
+	return (
+		<RadioImage
+			label={label}
+			choices={choices}
+			onClick={updateValue}
+			value={value}
+		/>
+	);
 };
 
 RadioImageComponent.propTypes = {

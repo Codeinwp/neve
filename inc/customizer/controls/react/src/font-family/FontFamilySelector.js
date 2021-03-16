@@ -30,6 +30,7 @@ const FontFamilySelector = ({
 			result[key] = fonts[key].filter((value) => {
 				return value.toLowerCase().includes(search.toLowerCase());
 			});
+			return key;
 		});
 
 		return result;
@@ -94,7 +95,9 @@ const FontFamilySelector = ({
 						</li>
 					);
 				}
+				return font;
 			});
+			return key;
 		});
 
 		if (loadUntil < options.length) {
@@ -127,6 +130,7 @@ const FontFamilySelector = ({
 								}}
 							/>
 							<a
+								href="#close-font"
 								className="close-font-selector"
 								onClick={(e) => {
 									e.preventDefault();

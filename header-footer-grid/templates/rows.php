@@ -10,6 +10,7 @@
  */
 
 namespace HFG;
+
 ?>
 <script type="text/html" id="tmpl-hfg--cb-panel">
 	<div class="hfg--cp-rows">

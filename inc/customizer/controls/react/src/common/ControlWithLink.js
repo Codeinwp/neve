@@ -16,7 +16,7 @@ const ControlWithLink = ({ link, children }) => {
 	const Link = () => {
 		if (link.focus) {
 			return (
-				<a href="#" onClick={handleFocus}>
+				<a href="#link-select" onClick={handleFocus}>
 					{link.string}
 				</a>
 			);

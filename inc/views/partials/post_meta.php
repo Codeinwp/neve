@@ -109,7 +109,7 @@ class Post_Meta extends Base_View {
 				default:
 					break;
 			}
-			$index += 1;
+			$index ++;
 		}
 		$markup .= $as_list === true ? '</ul>' : '</span>';
 		echo ( $markup ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

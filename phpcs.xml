@@ -5,6 +5,7 @@
     <file>.</file>
 
     <exclude-pattern>node_modules/*</exclude-pattern>
+    <exclude-pattern>dist/*</exclude-pattern>
     <exclude-pattern>vendor/*</exclude-pattern>
     <exclude-pattern>tests/*</exclude-pattern>
     <exclude-pattern>*.min.js</exclude-pattern>
@@ -12,41 +13,26 @@
     <exclude-pattern>*.js</exclude-pattern>
     <exclude-pattern>*.css</exclude-pattern>
 	<exclude-pattern>*.asset.php</exclude-pattern>
-	<arg name="extensions" value="php"/>
-    <arg value="sp"/>
 
-    <rule ref="WordPress-VIP-Go">
-        <exclude name="WordPress.Security.NonceVerification.Recommended"/>
-        <exclude name="WordPress.WP.TimezoneChange.DeprecatedSniff"/>
-        <exclude name="WordPressVIPMinimum.Security.Mustache.OutputNotation"/>
-    </rule>
-	<rule ref="WPThemeReview.Templates.ReservedFileNamePrefix.ReservedTemplatePrefixFound">
-		<exclude-pattern>header.php</exclude-pattern>
-	</rule>
-    <rule ref="WordPress-Core">
-
-        <exclude name="Squiz.Commenting.FileComment.SpacingAfterComment"/>
-        <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found"/>
-        <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
-        <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
-        <exclude name="Squiz.Commenting.InlineComment.NotCapital"/>
-        <exclude name="WordPress.PHP.YodaConditions.NotYoda"/>
-        <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
-        <exclude name="Squiz.PHP.CommentedOutCode.Found"/>
-        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
-    </rule>
-
-    <rule ref="WordPress-Docs">
-    </rule>
-
-    <rule ref="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing">
-        <severity>0</severity>
-    </rule>
-	<rule ref="WordPress.Security.EscapeOutput">
+    <rule ref="Themeisle"/>
+	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="customAutoEscapedFunctions" type="array">
-				<element value="$_"/>
+			<property name="text_domain" type="array">
+				<element value="neve"/>
+				<element value="default"/>
 			</property>
 		</properties>
 	</rule>
+    <rule ref="WPThemeReview" >
+		<exclude name="WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound"></exclude>
+		<exclude name="WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_pattern"></exclude>
+
+	</rule>
+	<rule ref="WPThemeReview.Templates.ReservedFileNamePrefix.ReservedTemplatePrefixFound">
+		<exclude-pattern>views/page-header.php</exclude-pattern>
+	</rule>
+	<arg name="extensions" value="php"/>
+	<arg value="sp"/>
+	<arg name="basepath" value="./" />
+	<arg name="parallel" value="20"/>
 </ruleset>

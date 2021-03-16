@@ -65,7 +65,8 @@ const ColorControl = ({
 				}}
 				renderContent={() => (
 					<>
-						<a href="#" />
+						{/* eslint-disable-next-line  jsx-a11y/anchor-has-content */}
+						<a href="#color-picker" />
 						<ColorPicker
 							color={selectedColor}
 							onChangeComplete={handleChange}

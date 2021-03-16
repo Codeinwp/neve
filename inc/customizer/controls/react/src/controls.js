@@ -1,4 +1,4 @@
-/* jshint esversion: 6 */
+/* global CustomEvent,NeveReactCustomize */
 import domReady from '@wordpress/dom-ready';
 
 import { init as initDynamicFields } from './dynamic-fields/index';
@@ -93,6 +93,7 @@ window.HFG = {
 		NeveReactCustomize.headerControls.map((item) => {
 			if (!wp.customize.control(item)) return false;
 			usedSettings[item] = wp.customize.control(item).setting.get();
+			return item;
 		});
 		return JSON.stringify(usedSettings);
 	},

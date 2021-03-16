@@ -5,119 +5,120 @@ import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { Button, Dashicon } from '@wordpress/components';
 
-const Notification = ( { data, slug } ) => {
-	const [ hidden, setHidden ] = useState( false );
+const Notification = ({ data, slug }) => {
+	// eslint-disable-next-line no-unused-vars
+	const [hidden, setHidden] = useState(false);
 	const { text, cta, type, update } = data;
-	const [ inProgress, setInProgress ] = useState( false );
-	const [ done, setDone ] = useState( false );
-	const [ errorMessage, setErrorMessage ] = useState( null );
-	const classes = classnames( [
+	const [inProgress, setInProgress] = useState(false);
+	const [done, setDone] = useState(false);
+	const [errorMessage, setErrorMessage] = useState(null);
+	const classes = classnames([
 		'notification',
 		slug,
-		type && ! done ? type : '',
+		type && !done ? type : '',
 		{
 			'success hidden': 'done' === done,
 			error: 'error' === done,
 		},
-	] );
+	]);
 
 	const updateEntity = () => {
-		if ( ! update.type ) {
+		if (!update.type) {
 			return false;
 		}
 
 		const executeAction = () => {
-			return new Promise( ( resolve ) => {
-				if ( 'theme' === update.type ) {
-					if ( ! update.slug ) {
+			return new Promise((resolve) => {
+				if ('theme' === update.type) {
+					if (!update.slug) {
 						return false;
 					}
-					wp.updates.ajax( 'update-theme', {
+					wp.updates.ajax('update-theme', {
 						slug: update.slug,
-						success: ( r ) => {
-							resolve( { success: true } );
+						success: () => {
+							resolve({ success: true });
 						},
-						error: ( err ) => {
-							setErrorMessage( err.errorMessage );
-							resolve( { success: false } );
+						error: (err) => {
+							setErrorMessage(err.errorMessage);
+							resolve({ success: false });
 						},
-					} );
+					});
 				}
 
-				if ( 'plugin' === update.type ) {
-					if ( ! update.slug || ! update.path ) {
+				if ('plugin' === update.type) {
+					if (!update.slug || !update.path) {
 						return false;
 					}
-					wp.updates.ajax( 'update-plugin', {
+					wp.updates.ajax('update-plugin', {
 						slug: update.slug,
 						plugin: update.path,
-						success: ( r ) => {
-							resolve( { success: true } );
+						success: () => {
+							resolve({ success: true });
 						},
-						error: ( err ) => {
-							setErrorMessage( err.errorMessage );
-							resolve( { success: false } );
+						error: (err) => {
+							setErrorMessage(err.errorMessage);
+							resolve({ success: false });
 						},
-					} );
+					});
 				}
-			} );
+			});
 		};
 
-		setInProgress( true );
-		executeAction().then( ( r ) => {
-			if ( ! r.success ) {
-				setDone( 'error' );
-				setInProgress( false );
+		setInProgress(true);
+		executeAction().then((r) => {
+			if (!r.success) {
+				setDone('error');
+				setInProgress(false);
 				return false;
 			}
-			setDone( 'done' );
-			setInProgress( false );
-			setHidden( true );
+			setDone('done');
+			setInProgress(false);
+			setHidden(true);
 
-			delete neveDash.notifications[ update.slug ];
-		} );
+			delete neveDash.notifications[update.slug];
+		});
 	};
 
 	return (
-		<div className={ classes }>
-			{ ! done && <p>{ text }</p> }
-			{ 'done' === done && (
+		<div className={classes}>
+			{!done && <p>{text}</p>}
+			{'done' === done && (
 				<p>
 					<Dashicon icon="yes" />
-					{ __( 'Done!', 'neve' ) }
+					{__('Done!', 'neve')}
 				</p>
-			) }
-			{ 'error' === done && (
+			)}
+			{'error' === done && (
 				<p>
 					<Dashicon icon="no" />
-					{ errorMessage ||
+					{errorMessage ||
 						__(
 							'An error occured. Please reload the page and try again.',
 							'neve'
-						) }
+						)}
 				</p>
-			) }
-			{ cta && ! done && (
+			)}
+			{cta && !done && (
 				<Button
 					isSecondary
-					disabled={ inProgress }
-					className={ classnames( { 'is-loading': inProgress } ) }
-					onClick={ () => {
-						if ( update ) {
+					disabled={inProgress}
+					className={classnames({ 'is-loading': inProgress })}
+					onClick={() => {
+						if (update) {
 							updateEntity();
 						}
-					} }
+					}}
 				>
-					{ inProgress ? (
+					{inProgress ? (
 						<span>
-							<Dashicon icon="update" />{ ' ' }
-							{ __( 'In Progress', 'neve' ) + '...' }{ ' ' }
+							<Dashicon icon="update" />{' '}
+							{__('In Progress', 'neve') + '...'}{' '}
 						</span>
 					) : (
 						cta
-					) }
+					)}
 				</Button>
-			) }
+			)}
 		</div>
 	);
 };

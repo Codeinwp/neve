@@ -1,16 +1,15 @@
-/* jshint esversion: 6 */
-/* global NeveProperties */
-import { httpGetAsync, isInView, neveEach } from '../utils';
+/* global NeveProperties,_wpCustomizeSettings,parent,Masonry,imagesLoaded */
+import { httpGetAsync, isInView } from '../utils';
 
 let masonryContainer = null,
-	page = 2,
-	postWrapSelector = '.nv-index-posts .posts-wrapper';
+	page = 2;
+const postWrapSelector = '.nv-index-posts .posts-wrapper';
 
 /**
  * Initialize blog JS.
  */
 export const initBlog = () => {
-	if ( document.querySelector( '.blog.nv-index-posts' ) === null ) {
+	if (document.querySelector('.blog.nv-index-posts') === null) {
 		return false;
 	}
 	masonry();
@@ -19,73 +18,67 @@ export const initBlog = () => {
 
 /**
  * Handles masonry
- *
- * @return {boolean}
  */
 const masonry = () => {
-	const { masonry, masonryColumns, blogLayout } = NeveProperties;
+	const { masonryStatus, masonryColumns, blogLayout } = NeveProperties;
 
-	if ( masonry !== 'enabled' || masonryColumns < 2 ) {
-		return false;
+	if (masonryStatus !== 'enabled' || masonryColumns < 2) {
+		return;
 	}
-	masonryContainer = document.querySelector( postWrapSelector );
+	masonryContainer = document.querySelector(postWrapSelector);
 
-	if ( masonryContainer === null ) {
-		return false;
+	if (masonryContainer === null) {
+		return;
 	}
 
-	imagesLoaded( masonryContainer, () => {
-		window.nvMasonry = new Masonry( masonryContainer, {
-			itemSelector: `article.layout-${ blogLayout }`,
-			columnWidth: `article.layout-${ blogLayout }`,
+	imagesLoaded(masonryContainer, () => {
+		window.nvMasonry = new Masonry(masonryContainer, {
+			itemSelector: `article.layout-${blogLayout}`,
+			columnWidth: `article.layout-${blogLayout}`,
 			percentPosition: true,
-		} );
-	} );
+		});
+	});
 };
 
 /**
- * Infinite scroll
- *
- * @return {boolean}
+ * Infinite scroll.
  */
 const infiniteScroll = () => {
-	if ( NeveProperties.infiniteScroll !== 'enabled' ) {
-		return false;
+	if (NeveProperties.infiniteScroll !== 'enabled') {
+		return;
 	}
 
-	if ( document.querySelector( postWrapSelector ) === null ) {
-		return false;
+	if (document.querySelector(postWrapSelector) === null) {
+		return;
 	}
 
-	isInView( document.querySelector( '.infinite-scroll-trigger' ), () => {
-		if ( parent.wp.customize ) {
-			parent.wp.customize.requestChangesetUpdate().then( () => {
+	isInView(document.querySelector('.infinite-scroll-trigger'), () => {
+		if (parent.wp.customize) {
+			parent.wp.customize.requestChangesetUpdate().then(() => {
 				requestMorePosts();
-			} );
+			});
 			return false;
 		}
 		requestMorePosts();
-	} );
+	});
 };
 
 /**
  * Request more posts
- *
- * @return {boolean}
  */
 const requestMorePosts = () => {
-	const trigger = document.querySelector( '.infinite-scroll-trigger' );
-	if ( trigger === null ) {
-		return false;
+	const trigger = document.querySelector('.infinite-scroll-trigger');
+	if (trigger === null) {
+		return;
 	}
-	document.querySelector( '.nv-loader' ).style.display = 'block';
-	if ( page > NeveProperties.infiniteScrollMaxPages ) {
-		trigger.parentNode.removeChild( trigger );
-		document.querySelector( '.nv-loader' ).style.display = 'none';
-		return false;
+	document.querySelector('.nv-loader').style.display = 'block';
+	if (page > NeveProperties.infiniteScrollMaxPages) {
+		trigger.parentNode.removeChild(trigger);
+		document.querySelector('.nv-loader').style.display = 'none';
+		return;
 	}
 
-	const blog = document.querySelector( postWrapSelector );
+	const blog = document.querySelector(postWrapSelector);
 	const requestUrl = maybeParseUrlForCustomizer(
 		NeveProperties.infiniteScrollEndpoint + page
 	);
@@ -93,9 +86,9 @@ const requestMorePosts = () => {
 
 	httpGetAsync(
 		requestUrl,
-		( response ) => {
-			blog.innerHTML += JSON.parse( response );
-			if ( NeveProperties.masonry !== 'enabled' ) {
+		(response) => {
+			blog.innerHTML += JSON.parse(response);
+			if (NeveProperties.masonry !== 'enabled') {
 				return false;
 			}
 			window.nvMasonry.reloadItems();
@@ -108,19 +101,19 @@ const requestMorePosts = () => {
 /**
  * Parse in the customizer context.
  *
- * @param url
- * @return {*}
+ * @param {string} url
+ * @return {*} Sanitized URL.
  */
-const maybeParseUrlForCustomizer = ( url ) => {
+const maybeParseUrlForCustomizer = (url) => {
 	//Add change-set uuid.
-	if ( typeof wp.customize === 'undefined' ) return url;
+	if (typeof wp.customize === 'undefined') return url;
 	url +=
 		'?customize_changeset_uuid=' +
 		wp.customize.settings.changeset.uuid +
 		'&customize_autosaved=on';
 
 	//Add preview nonce.
-	if ( typeof _wpCustomizeSettings === 'undefined' ) return url;
+	if (typeof _wpCustomizeSettings === 'undefined') return url;
 	url += '&customize_preview_nonce=' + _wpCustomizeSettings.nonce.preview;
 
 	return url;
