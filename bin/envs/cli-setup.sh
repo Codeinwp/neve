@@ -15,6 +15,8 @@ init_environment(){
 	wp --allow-root option update fresh_site 0
   echo "Installing Theme API Plugin"
   wp --allow-root plugin install https://github.com/Codeinwp/wp-thememods-api/archive/main.zip --force --activate
+  echo "Installing JWT Auth Plugin"
+  wp --allow-root plugin install api-bearer-auth --force --activate
 }
 
 
