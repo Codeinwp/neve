@@ -2,6 +2,7 @@
 /* eslint-disable chai-friendly/no-unused-expressions */
 import 'cypress-file-upload';
 import '@percy/cypress';
+import 'cypress-localstorage-commands';
 import { scrollToBottom } from 'scroll-to-bottomjs';
 
 Cypress.Commands.add('loginWithRequest', (nextRoute = '/wp-admin') => {
