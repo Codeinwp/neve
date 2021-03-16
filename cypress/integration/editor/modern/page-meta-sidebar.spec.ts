@@ -6,8 +6,6 @@ describe('Single page sidebar', function () {
 	};
 
 	before('Create new page named "' + pageSetup.title + '".', function () {
-		cy.getJWT();
-
 		cy.insertPost(pageSetup.title, pageSetup.content, 'page');
 
 		cy.get('.post-publish-panel__postpublish-header a')
@@ -18,6 +16,7 @@ describe('Single page sidebar', function () {
 			})
 			.then(() => {
 				window.localStorage.setItem('pageId', Cypress.$('#post_ID').val().toString());
+				cy.getJWT();
 			});
 		cy.saveLocalStorage();
 	});
