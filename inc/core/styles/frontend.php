@@ -265,7 +265,7 @@ class Frontend extends Generator {
 			],
 		];
 
-		$this->_subscribers[]  = [
+		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
@@ -275,9 +275,9 @@ class Frontend extends Generator {
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
 			],
 		];
-		$this->_subscribers [] = [
-			Dynamic_Selector::KEY_SELECTOR => Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL ] . ', ' . Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_SECONDARY_DEFAULT ],
-			Dynamic_Selector::KEY_RULES    => [
+
+		$secondary_rules = [
+			Dynamic_Selector::KEY_RULES   => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.background',
 					Dynamic_Selector::META_DEFAULT => 'rgba(0,0,0,0)',
@@ -290,10 +290,13 @@ class Frontend extends Generator {
 				Config::CSS_PROP_CUSTOM_BTN_TYPE  => Config::MODS_BUTTON_SECONDARY_STYLE . '.type',
 				Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_BUTTON_SECONDARY_STYLE . '.borderWidth',
 			],
-			Dynamic_Selector::KEY_CONTEXT  => [
+			Dynamic_Selector::KEY_CONTEXT => [
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
 			],
 		];
+
+		$this->_subscribers [] = array_merge( [ Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL ], $secondary_rules );
+		$this->_subscribers [] = array_merge( [ Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_DEFAULT ], $secondary_rules );
 
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
@@ -319,9 +322,9 @@ class Frontend extends Generator {
 				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.textTransform',
 			],
 		];
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_SECONDARY_HOVER ] . ', ' . Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_SECONDARY_DEFAULT_HOVER ],
-			Dynamic_Selector::KEY_RULES    => [
+
+		$secondary_rules_hover = [
+			Dynamic_Selector::KEY_RULES   => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.backgroundHover',
 					Dynamic_Selector::META_DEFAULT => 'rgba(0,0,0,0)',
@@ -331,11 +334,13 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
 				],
 			],
-			Dynamic_Selector::KEY_CONTEXT  => [
+			Dynamic_Selector::KEY_CONTEXT => [
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
 			],
 		];
 
+		$this->_subscribers[] = array_merge( $secondary_rules_hover, [ Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_HOVER ] );
+		$this->_subscribers[] = array_merge( $secondary_rules_hover, [ Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_DEFAULT_HOVER ] );
 
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_PADDING,
