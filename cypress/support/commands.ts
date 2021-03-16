@@ -274,3 +274,24 @@ Cypress.Commands.add('deactivateClassicEditorPlugin', () => {
 	cy.get('#deactivate-classic-editor').contains('Deactivate').click();
 	cy.get('#activate-classic-editor').should('exist');
 });
+
+Cypress.Commands.add('getJWT', () => {
+	cy.request('POST', '/wp-json/api-bearer-auth/v1/login', {
+		username: 'admin',
+		password: 'admin',
+	}).then((response) => {
+		expect(response.body.access_token).to.exist;
+		window.localStorage.setItem('jwt', response.body.access_token);
+	});
+});
+
+Cypress.Commands.add('updatePostByRequest', (postId: string, body) => {
+	cy.request({
+		method: 'POST',
+		url: '/wp-json/wp/v2/pages/' + postId,
+		auth: {
+			bearer: window.localStorage.getItem('jwt'),
+		},
+		body,
+	});
+});

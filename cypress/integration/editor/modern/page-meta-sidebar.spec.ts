@@ -6,6 +6,8 @@ describe('Single page sidebar', function () {
 	};
 
 	before('Create new page named "' + pageSetup.title + '".', function () {
+		cy.getJWT();
+
 		cy.insertPost(pageSetup.title, pageSetup.content, 'page');
 
 		cy.get('.post-publish-panel__postpublish-header a')
@@ -13,13 +15,21 @@ describe('Single page sidebar', function () {
 			.should('have.attr', 'href')
 			.then((href) => {
 				pageSetup.url = href.toString();
+			})
+			.then(() => {
+				window.localStorage.setItem('pageId', Cypress.$('#post_ID').val().toString());
 			});
+		cy.saveLocalStorage();
 	});
 
 	beforeEach(function () {
-		cy.clearWelcome();
+		cy.restoreLocalStorage();
 	});
 
+	afterEach(function () {
+		cy.removeLocalStorage('WP_DATA_USER_1');
+		cy.saveLocalStorage();
+	});
 	it('Default page should not have sidebar and use 100% width.', function () {
 		cy.visit(pageSetup.url);
 		cy.get('.nv-sidebar-wrap').should('not.exist');
@@ -33,33 +43,31 @@ describe('Single page sidebar', function () {
 
 	it('Check sidebar layout', function () {
 		cy.loginWithRequest(pageSetup.url);
-		cy.get('#wp-admin-bar-edit a').click();
+		const pageId = window.localStorage.getItem('pageId');
 		cy.clearWelcome();
 
-		cy.openNeveSidebar();
-
-		cy.getControl('neve_meta_sidebar')
-			.find('.components-radio-control__input[value="full-width"]')
-			.parent()
-			.scrollIntoView()
-			.click({ force: true });
-		cy.updatePost();
+		cy.updatePostByRequest(pageId, {
+			meta: {
+				neve_meta_sidebar: 'full-width',
+			},
+		});
 		cy.visit(pageSetup.url);
 		cy.get('.nv-sidebar-wrap').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.get('.option-label').contains('Left').click();
-		cy.updatePost();
-		cy.visit(pageSetup.url);
-		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-left');
-		cy.get('#wp-admin-bar-edit a').click();
+		cy.updatePostByRequest(pageId, {
+			meta: {
+				neve_meta_sidebar: 'left',
+			},
+		});
 
-		cy.getControl('neve_meta_sidebar')
-			.find('.components-radio-control__input[value="right"]')
-			.parent()
-			.click();
-		cy.updatePost();
-		cy.visit(pageSetup.url);
+		cy.updatePostByRequest(pageId, {
+			meta: {
+				neve_meta_sidebar: 'right',
+			},
+		}).then(() => {
+			cy.visit(pageSetup.url);
+		});
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-right');
 	});
 

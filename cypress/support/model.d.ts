@@ -187,5 +187,22 @@ declare namespace Cypress {
 		 *  cy.deactivateClassicEditorPlugin()
 		 */
 		deactivateClassicEditorPlugin(): void;
+
+		/**
+		 * Get a JWT token to send request to Wordpress REST API
+		 *
+		 * @example cy.getJWT()
+		 */
+		getJWT(): void;
+
+		/**
+		 * Updates a post or page by request to WP Rest API.
+		 * Needs a valid JWT set on local storage.
+		 *
+		 * @param postId
+		 * @param body
+		 * @example cy.updatePostByRequest('12', { size: '20px' })
+		 */
+		updatePostByRequest(postId: string, body): Chainable;
 	}
 }
