@@ -13,17 +13,18 @@ const ResponsiveControl = ({
 	children,
 }) => {
 	const changeViewType = (device) => {
-		onChange(device);
 		wp.customize.previewedDevice(device);
 	};
 
 	useEffect(() => {
-		global.addEventListener('neveChangedRepsonsivePreview', (e) => {
-			changeViewType(e.detail);
+		// eslint-disable-next-line @wordpress/no-global-event-listener
+		document.addEventListener('neveChangedRepsonsivePreview', (e) => {
+			onChange(e.detail);
 		});
 	}, []);
 
 	const dispatchViewChange = (device) => {
+		changeViewType(device);
 		const event = new CustomEvent('neveChangedRepsonsivePreview', {
 			detail: device,
 		});
