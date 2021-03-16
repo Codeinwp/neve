@@ -203,6 +203,6 @@ declare namespace Cypress {
 		 * @param body
 		 * @example cy.updatePageByRequest('12', { size: '20px' })
 		 */
-		updatePagetByRequest(postId: string, body): Chainable;
+		updatePageByRequest(postId: string, body): Chainable;
 	}
 }
