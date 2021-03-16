@@ -1,3 +1,7 @@
+##### [Version 2.10.4](https://github.com/Codeinwp/neve/compare/v2.10.3...v2.10.4) (2021-03-16)
+
+- [Fix] customizer responsive switches not working
+
 ##### [Version 2.10.3](https://github.com/Codeinwp/neve/compare/v2.10.2...v2.10.3) (2021-03-16)
 
 - [Fix] utilize wp_get_attachment_image for responsive logo image in header
