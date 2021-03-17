@@ -122,7 +122,7 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 		cy.get('.nv-loader').should('exist');
 	});
 
-	it.only('Masonry', function () {
+	it('Masonry', function () {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).should('have.css', 'position', 'absolute');
