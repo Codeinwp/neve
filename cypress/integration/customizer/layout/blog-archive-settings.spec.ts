@@ -96,7 +96,7 @@ describe('Blog/Archive 1 / Default Layout', function () {
 });
 
 describe('Blog/Archive 2 / Grid Layout', function () {
-	before('Setup', function () {
+	beforeEach('Setup', function () {
 		cy.fixture('customizer/layout/blog-archive-setting-setup').then((archiveSetup) => {
 			cy.setCustomizeSettings(archiveSetup.archive2).then((response) => {
 				expect(response.status).to.be.equal(200);
@@ -127,8 +127,7 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 
 		cy.get('#accordion-panel-neve_layout > .accordion-section-title').click();
 		cy.get('#accordion-section-neve_blog_archive_layout > .accordion-section-title').click();
-		cy.get('#inspector-toggle-control-6').should('be.checked');
-		cy.get('#inspector-toggle-control-6').uncheck();
+		cy.get('#inspector-toggle-control-6').should('not.be.checked');
 		cy.get('#inspector-toggle-control-6').check();
 		cy.get('#save').click();
 		cy.wait('@customizerSave').then((interception) => {

@@ -12,7 +12,7 @@
 		"neve_blog_archive_layout": "grid",
 		"neve_grid_layout": "{\"desktop\":3,\"tablet\":2,\"mobile\":4}",
 		"neve_pagination_type": "infinite",
-		"neve_enable_masonry": true,
+
 		"neve_author_avatar": true
 	},
 	"archive3": {
