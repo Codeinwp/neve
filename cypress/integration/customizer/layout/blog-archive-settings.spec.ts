@@ -121,16 +121,6 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 		cy.get('.nv-loader').should('exist');
 	});
 
-	it('Masonry', function () {
-		cy.visit('/');
-		cy.wait(15000);
-		cy.get('article').each((el) => {
-			cy.get(el).should('have.css', 'position', 'absolute');
-			cy.get(el).should('have.css', 'left');
-			cy.get(el).should('have.css', 'top');
-		});
-	});
-
 	it('Author Avatar', function () {
 		cy.visit('/');
 		cy.get('article').each((el) => {
@@ -184,6 +174,15 @@ describe('Blog/Archive 3 / Covers Layout', function () {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).find('.inner').should('have.css', 'color', 'rgb(186, 218, 85)');
+		});
+	});
+
+	it('Masonry', function () {
+		cy.visit('/');
+		cy.get('article').each((el) => {
+			cy.get(el).should('have.css', 'position', 'absolute');
+			cy.get(el).should('have.css', 'left');
+			cy.get(el).should('have.css', 'top');
 		});
 	});
 });
