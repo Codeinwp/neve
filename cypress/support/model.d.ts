@@ -200,9 +200,10 @@ declare namespace Cypress {
 		 * Needs a valid JWT set on local storage.
 		 *
 		 * @param postId
+		 * @param type
 		 * @param body
-		 * @example cy.updatePageByRequest('12', { size: '20px' })
+		 * @example cy.updatePageOrPostByRequest('12', { size: '20px' })
 		 */
-		updatePageByRequest(postId: string, body): Chainable;
+		updatePageOrPostByRequest(postId: string, type: string, body): Chainable;
 	}
 }

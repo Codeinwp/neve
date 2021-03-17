@@ -111,7 +111,7 @@ Cypress.Commands.add(
 		cy.loginWithRequest(loginRoute);
 		cy.clearWelcome();
 		if (featured) {
-			cy.wait(500);
+			cy.wait(1000);
 			cy.get('button').contains('Featured image').click();
 			cy.get('.editor-post-featured-image__toggle').click();
 			cy.get('.media-frame').find('.media-menu-item').contains('Media Library').click({
@@ -285,10 +285,10 @@ Cypress.Commands.add('getJWT', () => {
 	});
 });
 
-Cypress.Commands.add('updatePageByRequest', (postId: string, body) => {
+Cypress.Commands.add('updatePageOrPostByRequest', (postId: string, type: string, body) => {
 	cy.request({
 		method: 'POST',
-		url: '/wp-json/wp/v2/pages/' + postId,
+		url: '/wp-json/wp/v2/' + type + '/' + postId,
 		auth: {
 			bearer: window.localStorage.getItem('jwt'),
 		},
