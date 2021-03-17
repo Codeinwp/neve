@@ -178,6 +178,9 @@ describe('Blog/Archive 3 / Covers Layout', function () {
 	});
 
 	it('Masonry', function () {
+		cy.request('wp-json/wpthememods/v1/settings').then((response) => {
+			expect(response.body).to.contains(`"neve_enable_masonry":true`);
+		});
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).should('have.css', 'position', 'absolute');
