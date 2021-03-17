@@ -103,6 +103,7 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 			});
 		});
 		cy.insertPost('Blog test post', 'Blog test post.', 'post', true);
+		cy.wait(10000);
 	});
 
 	it('Grid layout', function () {
