@@ -2,7 +2,7 @@ describe('Single post meta sidebar', function () {
 	const postSetup = {
 		title: 'Test Post',
 		content: 'The Post Content',
-		url: null,
+		url: '/',
 	};
 
 	before('Create new post named "' + postSetup.title + '".', function () {
@@ -11,12 +11,21 @@ describe('Single post meta sidebar', function () {
 			.contains(postSetup.title)
 			.should('have.attr', 'href')
 			.then((href) => {
-				postSetup.url = href;
+				postSetup.url = href.toString();
+			})
+			.then(() => {
+				window.localStorage.setItem('postId', Cypress.$('#post_ID').val().toString());
+				cy.getJWT();
 			});
+		cy.saveLocalStorage();
 	});
 
 	beforeEach(function () {
-		cy.clearWelcome();
+		cy.restoreLocalStorage();
+	});
+
+	afterEach(function () {
+		cy.saveLocalStorage();
 	});
 	it('Default meta box settings on front end.', function () {
 		cy.visit(postSetup.url);
@@ -39,58 +48,44 @@ describe('Single post meta sidebar', function () {
 
 	it('Check sidebar layout', function () {
 		cy.loginWithRequest(postSetup.url);
-		cy.get('#wp-admin-bar-edit a').click();
+		const postId = window.localStorage.getItem('postId');
 		cy.clearWelcome();
 
-		cy.openNeveSidebar();
-
-		cy.getControl('neve_meta_sidebar')
-			.find('.components-radio-control__input[value="full-width"]')
-			.parent()
-			.scrollIntoView()
-			.click({ force: true });
-		cy.updatePost();
+		cy.updatePageOrPostByRequest(postId, 'posts', {
+			meta: {
+				neve_meta_sidebar: 'full-width',
+			},
+		});
 		cy.visit(postSetup.url);
 		cy.get('.nv-sidebar-wrap').should('not.exist');
-		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.getControl('neve_meta_sidebar')
-			.find('.components-radio-control__input[value="left"]')
-			.parent()
-			.click();
-		cy.updatePost();
+		cy.updatePageOrPostByRequest(postId, 'posts', {
+			meta: {
+				neve_meta_sidebar: 'left',
+			},
+		});
 		cy.visit(postSetup.url);
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-left');
-		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.getControl('neve_meta_sidebar')
-			.find('.components-radio-control__input[value="right"]')
-			.parent()
-			.click();
-		cy.updatePost();
+		cy.updatePageOrPostByRequest(postId, 'posts', {
+			meta: {
+				neve_meta_sidebar: 'right',
+			},
+		});
 		cy.visit(postSetup.url);
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-right');
 	});
 
 	it('Check container layout', function () {
 		cy.loginWithRequest(postSetup.url);
-		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
-		cy.openNeveSidebar();
+		cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'posts', {
+			meta: {
+				neve_meta_container: 'full-width',
+			},
+		});
 
-		cy.getControl('neve_meta_container')
-			.find('.components-button')
-			.contains('Contained')
-			.scrollIntoView()
-			.click({ force: true });
-		cy.updatePost();
-		cy.visit(postSetup.url);
-		cy.get('.single-post-container').should('have.class', 'container').and('be.visible');
-		cy.get('#wp-admin-bar-edit a').click();
-
-		cy.getControl('neve_meta_container').find('.components-button').contains('Full Width').click();
-		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.single-post-container').should('not.have.class', 'container').and('be.visible');
 	});
@@ -118,31 +113,36 @@ describe('Single post meta sidebar', function () {
 
 	it('Check title alignment', function () {
 		cy.loginWithRequest(postSetup.url);
-		cy.get('#wp-admin-bar-edit a').click();
+		const postId = window.localStorage.getItem('postId');
 		cy.clearWelcome();
 
-		cy.openNeveSidebar();
-
-		cy.get('.neve_meta_title_alignment .nv-align-center').scrollIntoView().click({ force: true });
-		cy.updatePost();
+		cy.updatePageOrPostByRequest(postId, 'posts', {
+			meta: {
+				neve_meta_title_alignment: 'center',
+			},
+		});
 		cy.visit(postSetup.url);
 		cy.get('h1.entry-title')
 			.should('have.class', 'has-text-align-center')
 			.and('have.css', 'text-align')
 			.and('eq', 'center');
-		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.get('.neve_meta_title_alignment .nv-align-right').click();
-		cy.updatePost();
+		cy.updatePageOrPostByRequest(postId, 'posts', {
+			meta: {
+				neve_meta_title_alignment: 'right',
+			},
+		});
 		cy.visit(postSetup.url);
 		cy.get('h1.entry-title')
 			.should('have.class', 'has-text-align-right')
 			.and('have.css', 'text-align')
 			.and('eq', 'right');
-		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.get('.neve_meta_title_alignment .nv-align-left').click();
-		cy.updatePost();
+		cy.updatePageOrPostByRequest(postId, 'posts', {
+			meta: {
+				neve_meta_title_alignment: 'left',
+			},
+		});
 		cy.visit(postSetup.url);
 		cy.get('h1.entry-title')
 			.should('have.class', 'has-text-align-left')
@@ -153,10 +153,10 @@ describe('Single post meta sidebar', function () {
 
 	it('Check author avatar', function () {
 		cy.loginWithRequest(postSetup.url);
-		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
+		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.openNeveSidebar();
+		cy.get('.interface-complementary-area-header');
 
 		cy.activateCheckbox('.components-toggle-control__label', 'Author Avatar');
 		cy.updatePost();
@@ -170,7 +170,7 @@ describe('Single post meta sidebar', function () {
 		cy.reload();
 		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.openNeveSidebar();
+		cy.get('.interface-complementary-area-header');
 
 		cy.get('.ti-sortable-item-label').each((el, index) => {
 			const shouldContain = [
