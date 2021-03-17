@@ -97,7 +97,7 @@ describe('Blog/Archive 1 / Default Layout', function () {
 
 describe('Blog/Archive 2 / Grid Layout', function () {
 	before('Setup', function () {
-		cy.loginWithRequest();
+		cy.insertPost('Blog test post', 'Blog test post.', 'post', true);
 		cy.fixture('customizer/layout/blog-archive-setting-setup').then((archiveSetup) => {
 			cy.setCustomizeSettings(archiveSetup.archive2).then((response) => {
 				expect(response.status).to.be.equal(200);
