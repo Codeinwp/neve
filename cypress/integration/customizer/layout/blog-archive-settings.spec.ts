@@ -102,8 +102,6 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 				expect(response.status).to.be.equal(200);
 			});
 		});
-		cy.insertPost('Blog test post', 'Blog test post.', 'post', true);
-		cy.wait(10000);
 	});
 
 	it('Grid layout', function () {
@@ -125,8 +123,6 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 
 	it('Masonry', function () {
 		cy.visit('/');
-		cy.wait(10000);
-		cy.reload();
 		cy.get('article').each((el) => {
 			cy.get(el).should('have.css', 'position', 'absolute');
 			cy.get(el).should('have.css', 'left');
