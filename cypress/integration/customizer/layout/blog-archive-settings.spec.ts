@@ -111,7 +111,7 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 				.should('have.class', 'layout-grid')
 				.and('have.class', 'col-md-4')
 				.and('have.class', 'col-sm-6')
-				.and('have.class', 'col-12');
+				.and('have.class', 'col-3');
 		});
 	});
 
@@ -122,6 +122,7 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 	});
 
 	it('Masonry', function () {
+		// cy.goToCustomizer();
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).should('have.css', 'position', 'absolute');
