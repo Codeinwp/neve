@@ -123,10 +123,18 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 
 	it('Masonry', function () {
 		cy.goToCustomizer();
+		cy.aliasRestRoutes();
 
 		cy.get('#accordion-panel-neve_layout > .accordion-section-title').click();
 		cy.get('#accordion-section-neve_blog_archive_layout > .accordion-section-title').click();
 		cy.get('#inspector-toggle-control-6').should('be.checked');
+		cy.get('#inspector-toggle-control-6').uncheck();
+		cy.get('#inspector-toggle-control-6').check();
+		cy.get('#save').click();
+		cy.wait('@customizerSave').then((interception) => {
+			expect(interception.response.body.success).to.be.true;
+			expect(interception.response.statusCode).to.equal(200);
+		});
 
 		cy.visit('/');
 		cy.get('article').each((el) => {
