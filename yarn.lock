@@ -7025,6 +7025,11 @@ cypress-file-upload@^4.0.7:
   dependencies:
     mime "^2.4.4"
 
+cypress-localstorage-commands@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/cypress-localstorage-commands/-/cypress-localstorage-commands-1.4.1.tgz#3df86b88b98919332af7720be2d10314bdb1222d"
+  integrity sha512-rO8/hWu04o9w+gv8l70ew8QWBy3bGUiablQQzm4l3bWkGBVa4+kWXTuokrq6AZdO1/xv4rs4OBjN7sKDRl1JhQ==
+
 cypress-storybook@^0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/cypress-storybook/-/cypress-storybook-0.5.1.tgz#e71b14ecfbe16a70b9f003c8294143ef466db78f"

@@ -88,7 +88,7 @@ const requestMorePosts = () => {
 		requestUrl,
 		(response) => {
 			blog.innerHTML += JSON.parse(response);
-			if (NeveProperties.masonry !== 'enabled') {
+			if (NeveProperties.masonryStatus !== 'enabled') {
 				return false;
 			}
 			window.nvMasonry.reloadItems();
