@@ -25,7 +25,8 @@ if [ -f $WP_CACHED_ENV ] && [ $SKIP_CACHE == "no" ]; then
     wp --allow-root db import  $WP_CACHED_ENV
     init_environment
 		wp --allow-root cache flush
-		wp --allow-root transient delete-all
+		wp --allow-root transient delete --all
+		wp --allow-root transient delete --all --network
     exit 0;
 fi
 
