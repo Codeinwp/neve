@@ -420,13 +420,13 @@ class Manager {
 	 */
 	public function get_default( $id, $subkey = null ) {
 		return isset( self::$settings[ $id ]['default'] )
-				? ( $subkey === null
+			? ( $subkey === null
 				? self::$settings[ $id ]['default']
 				: ( isset( self::$settings[ $id ]['default'][ $subkey ] )
 					? self::$settings[ $id ]['default'][ $subkey ]
 					: null
 				) )
-				: null;
+			: null;
 	}
 
 	/**

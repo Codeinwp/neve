@@ -239,15 +239,16 @@ abstract class Abstract_Builder implements Builder {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => $this->control_id,
-				'group'             => $this->control_id,
-				'noformat'          => true,
-				'transport'         => 'post' . $this->get_id(),
-				'sanitize_callback' => [ $this, 'sanitize_json' ],
-				'default'           => '',
-				'label'             => '',
-				'type'              => 'text',
-				'section'           => $this->section,
+				'id'                                   => $this->control_id,
+				'group'                                => $this->control_id,
+				'noformat'                             => true,
+				'transport'                            => 'post' . $this->get_id(),
+				'sanitize_callback'                    => [ $this, 'sanitize_json' ],
+				'default'                              => '',
+				'label'                                => '',
+				// 'type'              => 'neve_hfg_builder_control',
+												'type' => 'text',
+				'section'                              => $this->section,
 			]
 		);
 		do_action( 'hfg_row_settings', $this->get_id(), $this->control_id );

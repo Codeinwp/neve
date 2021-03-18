@@ -1,0 +1,38 @@
+@import "vars";
+
+.over .item-placeholder {
+  background: red;
+}
+
+.builder-item {
+  box-sizing: border-box;
+  margin-right: 4px;
+
+  &:last-child {
+	margin-right: 0;
+  }
+
+  .builder-item-inner {
+	background: #F4F4F4;
+	height: 48px;
+	border: $wp-grey-border;
+	border-radius: 3px;
+	display: flex;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
+  }
+
+  .actions {
+	display: flex;
+	margin-left: auto;
+	height: 100%;
+  }
+
+  button {
+	background: 0;
+	height: 100%;
+	width: auto;
+	border: none;
+  }
+}

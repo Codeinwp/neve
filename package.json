@@ -68,13 +68,16 @@
 		"array-move": "^3.0.1",
 		"classnames": "^2.2.6",
 		"fuse.js": "^6.4.1",
+		"gridstack": "^2.2.0",
 		"prop-types": "^15.7.2",
 		"react-beautiful-dnd": "^13.0.0",
 		"react-grid-layout": "^1.2.2",
 		"react-rnd": "^10.2.4",
 		"react-sortable-hoc": "^1.11.0",
 		"react-sortable-pane": "^1.1.0",
+		"react-sortablejs": "^6.0.0",
 		"react-visibility-sensor": "^5.1.1",
+		"sortablejs": "^1.13.0",
 		"tiny-slider": "^2.9.2"
 	},
 	"devDependencies": {

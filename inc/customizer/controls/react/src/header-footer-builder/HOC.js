@@ -1,5 +1,4 @@
 import RGL, { WidthProvider } from 'react-grid-layout';
-
 const ReactGridLayout = WidthProvider(RGL);
 import { useState } from '@wordpress/element';
 
