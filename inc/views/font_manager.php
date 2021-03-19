@@ -125,7 +125,7 @@ class Font_Manager extends Base_View {
 			require_once $vendor_file;
 			wp_add_inline_style(
 				'neve-style',
-				wptt_get_webfont_styles( 'http:' . $url )
+				wptt_get_webfont_styles( 'https:' . $url )
 			);
 		} else {
 			wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
