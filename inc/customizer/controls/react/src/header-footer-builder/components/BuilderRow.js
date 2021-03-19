@@ -1,23 +1,22 @@
 import { __ } from '@wordpress/i18n';
-import { useContext } from '@wordpress/element';
 import { Button } from '@wordpress/components';
 import { cog } from '@wordpress/icons';
-import { Droppable } from 'react-beautiful-dnd';
+
 import classnames from 'classnames';
 
-import BuilderItem from './BuilderItem';
+import RowSlot from './RowSlot';
 
-import { BuilderContext } from '../BuilderContext';
-
-const BuilderRow = ({ index, rowId }) => {
-	const { draggableItems, setDraggableItems } = useContext(BuilderContext);
-
+const BuilderRow = ({ rowId, rowItems }) => {
 	const focusRowSettings = () => {
+		//@todo: implement this.
 		console.log('Row Settings');
 	};
 
+	const slots = ['left', 'centerLeft', 'center', 'centerRight', 'right'];
+	const rowClasses = classnames('row', `row-${rowId}`);
+
 	return (
-		<div key={index} className="row">
+		<div className={rowClasses}>
 			<Button
 				icon={cog}
 				iconSize={20}
@@ -26,34 +25,29 @@ const BuilderRow = ({ index, rowId }) => {
 				label={__('Row Settings', 'neve')}
 			/>
 			<div className="row-inner">
-				<Droppable droppableId={rowId} direction="horizontal">
-					{(provided, snapshot) => {
-						const { isDraggingOver } = snapshot;
-						const rowClasses = classnames(
-							'row-content',
-							'droppable',
-							{ over: isDraggingOver }
-						);
+				<div className="row-content">
+					{slots.map((slotId, slotIndex) => {
+						const centerEmpty =
+							!rowItems.center || rowItems.center.length < 1;
+						const isCenterSideSlot = [
+							'centerLeft',
+							'centerRight',
+						].includes(slotId);
+
+						if (isCenterSideSlot && centerEmpty) {
+							return null;
+						}
+
+						console.log(rowItems.center);
 						return (
-							<div className={rowClasses} ref={provided.innerRef}>
-								{draggableItems[rowId].map(
-									(itemData, itemIndex) => (
-										<BuilderItem
-											index={itemIndex}
-											key={itemIndex}
-											{...itemData}
-										/>
-									)
-								)}
-								{provided.placeholder && (
-									<span className="item-placeholder">
-										{provided.placeholder}
-									</span>
-								)}
-							</div>
+							<RowSlot
+								id={slotId}
+								key={slotId}
+								slotItems={rowItems[slotId]}
+							/>
 						);
-					}}
-				</Droppable>
+					})}
+				</div>
 			</div>
 		</div>
 	);

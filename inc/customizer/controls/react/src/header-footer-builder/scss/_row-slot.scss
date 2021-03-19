@@ -1,0 +1,11 @@
+@import "vars";
+
+.droppable {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  border-right: $wp-grey-border;
+  &.over {
+	background: #0b78fb;
+  }
+}

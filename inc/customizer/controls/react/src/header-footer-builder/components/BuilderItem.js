@@ -1,10 +1,18 @@
+/* global HFG_Layout_Builder */
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
+import { useContext } from '@wordpress/element';
 import { closeSmall, cog, handle } from '@wordpress/icons';
 
 import { Draggable } from 'react-beautiful-dnd';
 
-const BuilderItem = ({ id, title, index }) => {
+import { BuilderContext } from '../BuilderContext';
+
+const BuilderItem = ({ id, index }) => {
+	const { currentBuilder } = useContext(BuilderContext);
+	const componentData = HFG_Layout_Builder[currentBuilder].items[id];
+	const { name } = componentData;
+
 	const openComponentPanel = () => {
 		console.log(`Focus Panel:`, id);
 	};
@@ -15,12 +23,12 @@ const BuilderItem = ({ id, title, index }) => {
 
 	return (
 		<Draggable key={id} draggableId={id} index={index}>
-			{(draggableProvided, snapshot) => (
+			{(provided) => (
 				<div
 					id={id}
 					className="draggable builder-item"
-					ref={draggableProvided.innerRef}
-					{...draggableProvided.draggableProps}
+					ref={provided.innerRef}
+					{...provided.draggableProps}
 				>
 					<div className="builder-item-inner">
 						<Button
@@ -28,9 +36,9 @@ const BuilderItem = ({ id, title, index }) => {
 							iconSize={16}
 							className="drag-handle"
 							label={__('Drag to move component', 'neve')}
-							{...draggableProvided.dragHandleProps}
+							{...provided.dragHandleProps}
 						/>
-						<span>{title}</span>
+						<span>{name}</span>
 						<div className="actions">
 							<Button
 								icon={cog}

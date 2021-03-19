@@ -3,11 +3,12 @@ import 'cypress-storybook/react';
 import '@wordpress/components/build-style/style.css'
 import '@icon/dashicons/dashicons.css'
 import {FONTS} from '../stories/utils/values'
+import {BuildersData} from "./dummy-data";
 
 export const parameters = {
 	actions: {argTypesRegex: "^on[A-Z].*"},
 }
-
+window.HFG_Layout_Builder = BuildersData;
 window.wp = {
 	customize: {
 		previewedDevice: (device) => {
