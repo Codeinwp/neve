@@ -118,10 +118,10 @@ class Font_Manager extends Base_View {
 		$url = add_query_arg( $query_args, $base_url );
 
 		// Enqueue style
-		$should_enque_locally = apply_filters( 'neve_load_remote_fonts_locally', false );
-		$is_admin_context     = is_admin() || is_customize_preview();
-		$vendor_file          = trailingslashit( get_template_directory() ) . 'vendor/wptt/webfont-loader/wptt-webfont-loader.php';
-		if ( $should_enque_locally && ! $is_admin_context && is_readable( $vendor_file ) ) {
+		$should_enqueue_locally = apply_filters( 'neve_load_remote_fonts_locally', false );
+		$is_admin_context       = is_admin() || is_customize_preview();
+		$vendor_file            = trailingslashit( get_template_directory() ) . 'vendor/wptt/webfont-loader/wptt-webfont-loader.php';
+		if ( $should_enqueue_locally && ! $is_admin_context && is_readable( $vendor_file ) ) {
 			require_once $vendor_file;
 			wp_add_inline_style(
 				'neve-style',
