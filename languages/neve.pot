@@ -287,14 +287,14 @@ msgstr ""
 msgid "Dark Mode"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:303
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:304
 #: header-footer-grid/Core/Settings/Manager.php:181
 #: inc/customizer/options/main.php:53
 msgid "Layout"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:308
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:309
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:310
 #: inc/admin/metabox/main.php:39
 #: inc/customizer/options/layout_container.php:134
 #: inc/customizer/options/layout_sidebar.php:125
@@ -302,23 +302,23 @@ msgstr ""
 msgid "Full Width"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:308
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:310
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:309
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:311
 #: inc/admin/metabox/main.php:38
 #: inc/customizer/options/layout_container.php:133
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:182
 msgid "Contained"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:325
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:326
 msgid "Row height"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:361
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:362
 msgid "Row Background"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:385
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:386
 #: header-footer-grid/Core/Components/Copyright.php:84
 #: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
@@ -329,45 +329,45 @@ msgstr ""
 msgid "Text Color"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:491
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:492
 #: header-footer-grid/Core/Builder/Header.php:38
 msgid "Header"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:574
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:575
 msgid "Section Content"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1289
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1290
 #: header-footer-grid/Core/Components/SearchResponsive.php:113
 msgid "Open Behaviour"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1294
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1295
 msgid "Slide from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1295
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1296
 msgid "Slide from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1296
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1297
 msgid "Pull from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1297
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1298
 msgid "Pull from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1298
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1299
 msgid "Full Canvas"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1299
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1300
 msgid "Slide Down"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1314
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1315
 msgid "Sidebar Width"
 msgstr ""
 
@@ -799,12 +799,12 @@ msgid "Select Menu"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:270
+#: header-footer-grid/Core/Customizer.php:273
 msgid "You are customizing the %s Header"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:270
+#: header-footer-grid/Core/Customizer.php:273
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:175
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:180
@@ -812,23 +812,23 @@ msgid "Default"
 msgstr ""
 
 #. translators: %s is the type of builder
-#: header-footer-grid/Core/Customizer.php:278
+#: header-footer-grid/Core/Customizer.php:281
 msgid "%s Builder:"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:281
+#: header-footer-grid/Core/Customizer.php:284
 msgid "Click on any empty space to add components, or existing components to adjust settings."
 msgstr ""
 
-#: header-footer-grid/Core/Customizer.php:290
+#: header-footer-grid/Core/Customizer.php:294
 #: header-footer-grid/templates/components/component-cart-icon.php:26
 #: inc/views/header.php:130
 #: inc/views/layouts/layout_sidebar.php:144
 msgid "Close"
 msgstr ""
 
-#: header-footer-grid/Core/Customizer.php:332
+#: header-footer-grid/Core/Customizer.php:336
 msgid "Search Components"
 msgstr ""
 

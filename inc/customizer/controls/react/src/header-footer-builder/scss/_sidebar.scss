@@ -1,0 +1,16 @@
+.hfg-components .components {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 10px;
+
+  .sidebar-builder-item {
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	padding: 5px 10px 5px 0;
+	border: 1px solid #E2E4E7;
+	border-radius: 5px;
+	box-sizing: border-box;
+  }
+}

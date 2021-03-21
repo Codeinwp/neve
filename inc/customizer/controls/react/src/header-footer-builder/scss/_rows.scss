@@ -22,12 +22,12 @@
 .row-inner {
   width: 100%;
   border-radius: 0 3px 3px 0;
-  height: 60px;
+  height: 50px;
   position: relative;
   background: #fff;
   box-sizing: border-box;
   border: $wp-grey-border;
-  padding: 4px;
+  padding: 4px 2px;
 }
 
 .row-content {
@@ -41,18 +41,33 @@
   border: $wp-grey-border;
   border-right: none;
   display: flex;
-  height: 60px;
+  height: 50px;
   color: #555D66;
-  padding: 0 3px;
-  min-width: 30px;
+  padding: 0 3px !important;
+  width: 25px;
+  min-width: unset !important;
 }
 
 .row.row-sidebar {
   margin-right: 10px;
   height: 100%;
+
   .row-inner {
-	width: 250px;
+	padding: 4px;
+  }
+
+  .builder-item {
+	//width: 100%;
+  }
+
+  .row-inner {
+	width: 220px;
 	height: 100%;
+
+	.droppable {;
+	  width: 100%;
+	  overflow: auto;
+	}
   }
 
   .row-settings {

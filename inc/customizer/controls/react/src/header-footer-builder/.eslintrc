@@ -1,0 +1,24 @@
+{
+  "root": true,
+  "extends": [
+	"plugin:@wordpress/eslint-plugin/recommended",
+	"plugin:@typescript-eslint/recommended",
+	"plugin:import/typescript"
+  ],
+  "ignorePatterns": [
+	"**/vendor/**"
+  ],
+  "settings": {
+	"import/parsers": {
+	  "@typescript-eslint/parser": [
+		".ts",
+		".tsx"
+	  ]
+	},
+	"import/resolver": {
+	  "typescript": {
+		"alwaysTryTypes": true
+	  }
+	}
+  }
+}

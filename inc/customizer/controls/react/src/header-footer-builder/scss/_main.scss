@@ -14,3 +14,10 @@
   padding: 20px;
   background-color: $wp-light-grey;
 }
+
+
+.collapsed .hfg-builder {
+  margin-left: 0;
+}
+
+@import "sidebar";

@@ -8,11 +8,7 @@ interface Props {
 }
 
 const HFGBuilder: React.FC<Props> = ({ control }) => {
-	return (
-		<div className="hfg-builder">
-			<Custom />
-		</div>
-	);
+	return <Custom />;
 };
 
 export default HFGBuilder;

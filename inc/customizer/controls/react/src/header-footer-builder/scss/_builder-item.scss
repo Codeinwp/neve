@@ -1,27 +1,30 @@
 @import "vars";
 
+.item-placeholder {
+}
 .over .item-placeholder {
-  background: red;
+  background-color: rebeccapurple;
 }
 
 .builder-item {
   box-sizing: border-box;
-  margin-right: 4px;
+  margin: 0 2px;
   transition: .3s ease;
-
-  &:last-child {
-	margin-right: 0;
-  }
 
   .builder-item-inner {
 	background: #F4F4F4;
-	height: 48px;
+	height: 38px;
 	border: $wp-grey-border;
 	border-radius: 3px;
 	display: flex;
 	flex-grow: 1;
 	align-items: center;
 	justify-content: center;
+	padding: 0 0 0 10px;
+
+	&.dragging {
+	  padding: 0;
+	}
   }
 
   .actions {
@@ -35,6 +38,9 @@
 	height: 100%;
 	width: auto;
 	border: none;
+	min-width: unset;
+	width: 25px;
+	padding: 0 !important;
   }
 }
 

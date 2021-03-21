@@ -9,15 +9,10 @@ interface Props {
 	id: SlotTypes;
 	rowId: RowTypes;
 	slotItems: BuilderItemInterface[];
-	isSidebar: boolean;
+	isSidebar?: boolean;
 }
 
-const RowSlot: React.FC<Partial<Props>> = ({
-	rowId,
-	id,
-	slotItems,
-	isSidebar,
-}) => {
+const RowSlot: React.FC<Props> = ({ rowId, id, slotItems, isSidebar }) => {
 	const renderItems = () => {
 		if (!slotItems) {
 			return null;
@@ -25,7 +20,13 @@ const RowSlot: React.FC<Partial<Props>> = ({
 
 		return slotItems.map((itemData, itemIndex) => {
 			return (
-				<BuilderItem index={itemIndex} key={itemIndex} {...itemData} />
+				<BuilderItem
+					slotId={id}
+					rowId={rowId}
+					index={itemIndex}
+					key={itemIndex}
+					{...itemData}
+				/>
 			);
 		});
 	};
@@ -42,11 +43,9 @@ const RowSlot: React.FC<Partial<Props>> = ({
 				});
 				return (
 					<div className={innerRowClasses} ref={provided.innerRef}>
-						{provided.placeholder}
-						{/*{provided.placeholder && (
-							<span className="item-placeholder">
-							</span>
-						)}*/}
+						<span className="item-placeholder">
+							{provided.placeholder}
+						</span>
 						{renderItems()}
 					</div>
 				);

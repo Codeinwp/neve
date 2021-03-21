@@ -1,34 +1,18 @@
-import { __ } from '@wordpress/i18n';
+import { useContext } from '@wordpress/element';
 import { Button } from '@wordpress/components';
 import { cog } from '@wordpress/icons';
+import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 import React from 'react';
 import RowSlot from './RowSlot';
-import { BuilderItemInterface, RowTypes } from '../../@types/utils';
-import { useContext } from '@wordpress/element';
-
-import { BuilderContext } from '../BuilderContext';
+import { BuilderRowInterface, RowTypes } from '../../@types/utils';
 
 interface Props {
 	rowId: RowTypes;
-	rowItems: { [key: string]: BuilderItemInterface[] };
+	rowItems: BuilderRowInterface;
 }
 
 const BuilderRow: React.FC<Props> = ({ rowId, rowItems }) => {
-	const { currentDevice } = useContext(BuilderContext);
-
-	if (currentDevice !== 'mobile' && rowId === 'sidebar') {
-		return null;
-	}
-
-	const focusRowSettings = () => {
-		//@todo: implement this.
-	};
-
-	const slots = ['left', 'centerLeft', 'center', 'centerRight', 'right'];
-
-	const rowClasses = classnames('row', `row-${rowId}`);
-
 	const hasCenterItems = () => {
 		if (!rowItems) {
 			return false;
@@ -41,44 +25,38 @@ const BuilderRow: React.FC<Props> = ({ rowId, rowItems }) => {
 		return rowItems.center.length >= 1;
 	};
 
-	const Slots: React.FC = () => {
-		if (rowId === 'sidebar') {
-			return (
-				<div className="row-content">
+	const focusRowSettings = () => {
+		//@todo: implement this.
+	};
+
+	const slots = ['left', 'centerLeft', 'center', 'centerRight', 'right'];
+
+	const Slots: React.FC = () => (
+		<div className="row-content">
+			{slots.map((slotId, slotIndex) => {
+				const isCenterSideSlot = ['centerLeft', 'centerRight'].includes(
+					slotId
+				);
+
+				if (isCenterSideSlot && !hasCenterItems()) {
+					return null;
+				}
+				return (
 					<RowSlot
 						rowId={rowId}
-						id={'sidebar'}
-						key={'sidebar'}
-						slotItems={(rowItems && rowItems.sidebar) || []}
-						isSidebar={true}
+						id={slotId}
+						key={slotId}
+						slotItems={(rowItems && rowItems[slotId]) || []}
 					/>
-				</div>
-			);
-		}
+				);
+			})}
+		</div>
+	);
 
-		return (
-			<div className="row-content">
-				{slots.map((slotId, slotIndex) => {
-					const isCenterSideSlot = [
-						'centerLeft',
-						'centerRight',
-					].includes(slotId);
-
-					if (isCenterSideSlot && !hasCenterItems()) {
-						return null;
-					}
-					return (
-						<RowSlot
-							rowId={rowId}
-							id={slotId}
-							key={slotId}
-							slotItems={(rowItems && rowItems[slotId]) || []}
-						/>
-					);
-				})}
-			</div>
-		);
-	};
+	const rowClasses = classnames('row', `row-${rowId}`, {
+		'with-center-items': hasCenterItems(),
+		'no-center-items': !hasCenterItems(),
+	});
 
 	return (
 		<div className={rowClasses}>

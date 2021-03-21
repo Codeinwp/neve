@@ -1,23 +1,4 @@
 {
-  "extends": [
-	"plugin:@wordpress/eslint-plugin/recommended",
-	"plugin:@typescript-eslint/recommended",
-	"plugin:import/typescript"
-  ],
-  "ignorePatterns": [
-	"**/vendor/**"
-  ],
-  "settings": {
-	"import/resolver": {
-	  "node": {
-		"extensions": [
-		  ".js",
-		  ".jsx",
-		  ".ts",
-		  ".tsx",
-		  "d.ts"
-		]
-	  }
-	}
-  }
+  "extends": [ "plugin:@wordpress/eslint-plugin/recommended" ],
+  "ignorePatterns": ["**/vendor/**"]
 }

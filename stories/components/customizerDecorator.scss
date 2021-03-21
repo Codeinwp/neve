@@ -17,6 +17,7 @@ hr {
 ul {
   list-style: none;
 }
+
 ul, ol {
   padding: 0 !important;
   margin: 0;
@@ -52,6 +53,7 @@ input[type=date], input[type=datetime-local], input[type=datetime], input[type=e
   text-align: center;
   transition: color .1s ease-in;
 }
+
 button, input, select, textarea {
   box-sizing: border-box;
   font-family: inherit;
@@ -70,6 +72,7 @@ button, input, select, textarea {
 .mock-customize {
   display: flex;
   min-height: 100%;
+  position: relative;
 }
 
 .customizer-sidebar {
@@ -78,6 +81,33 @@ button, input, select, textarea {
   padding: 15px 15px 0;
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
+  position: relative;
+
+  &.collapsed {
+	left: -332px;
+
+	.collapse-sidebar {
+	  left: calc(100% + 12px);
+
+	  svg {
+		transform: rotate(180deg);
+	  }
+	}
+  }
+
+  .collapse-sidebar {
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+	border-radius: 100%;
+	background-color: #0b78fb;
+	color: #fff;
+	padding: 3px !important;
+	width: 20px;
+	height: 20px;
+	min-width: unset;
+  }
+
 }
 
 img {
@@ -116,3 +146,4 @@ pre {
 	margin: 0 0 20px;
   }
 }
+

@@ -1,33 +1,53 @@
 @import "vars";
 
 .droppable {
-  display: flex;
-  flex-grow: 1;
+  display: inline-flex;
   height: 100%;
   border-right: $wp-grey-border;
+  flex-grow: 1;
   width: 20%;
+  white-space: nowrap;
 
   &:last-child {
 	border: 0;
   }
 
   &.over {
-	background: #0b78fb;
+	background: rgba(102, 51, 153, 0.1);
   }
 
   &.center {
-	width: auto;
 	justify-content: center;
-	//flex-shrink: 1;
-	//flex-grow: 0;
+	display: inline-flex;
+	flex-grow: 1;
   }
 
-  &.centerLeft, &.right{
+  &.centerLeft, &.right {
 	justify-content: flex-end;
-  }
-
-  &.centerRight {
-
   }
 }
 
+.no-center-items {
+  .center {
+	//min-width: 0;
+	flex-grow: 0;
+	//width: 0;
+	transition: .3s ease;
+  }
+}
+
+.centerRight, .centerLeft {
+  //max-width: 0;
+}
+
+.is-dragging {
+  .no-center-items {
+	.center, .centerRight, .centerLeft {
+	  min-width: 100px;
+	}
+  }
+
+  .centerRight, .centerLeft {
+	max-width: 100px;
+  }
+}
