@@ -54,7 +54,7 @@ export const NewHeader = {
 				{ x: 8, y: 1, width: 4, height: 1, id: 'nav-icon' },
 			],
 		},
-		bottom: [],
+		bottom: {},
 		sidebar: [{ x: 0, y: 1, width: 8, height: 1, id: 'primary-menu' }],
 	},
 };

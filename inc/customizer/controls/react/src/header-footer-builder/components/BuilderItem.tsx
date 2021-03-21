@@ -1,16 +1,19 @@
-/* global HFG_Layout_Builder */
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 import { useContext } from '@wordpress/element';
 import { closeSmall, cog, handle } from '@wordpress/icons';
-
 import { Draggable } from 'react-beautiful-dnd';
-
 import { BuilderContext } from '../BuilderContext';
+import React from 'react';
 
-const BuilderItem = ({ id, index }) => {
+interface Props {
+	id: string;
+	index: number;
+}
+
+const BuilderItem: React.FC<Props> = ({ id, index }) => {
 	const { currentBuilder } = useContext(BuilderContext);
-	const componentData = HFG_Layout_Builder[currentBuilder].items[id];
+	const componentData = window.HFG_Layout_Builder[currentBuilder].items[id];
 	const { name } = componentData;
 
 	const openComponentPanel = () => {
@@ -23,7 +26,7 @@ const BuilderItem = ({ id, index }) => {
 
 	return (
 		<Draggable key={id} draggableId={id} index={index}>
-			{(provided) => (
+			{(provided, snapshot) => (
 				<div
 					id={id}
 					className="draggable builder-item"

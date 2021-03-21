@@ -1,5 +1,17 @@
 @import "vars";
 
+.rows-wrapper {
+  display: flex;
+}
+
+.horizontal-rows {
+  flex-grow: 1;
+
+  .row:last-child {
+	margin-bottom: 0;
+  }
+}
+
 .row {
   width: 100%;
   border-radius: 3px;
@@ -33,5 +45,21 @@
   color: #555D66;
   padding: 0 3px;
   min-width: 30px;
-  z-index: 10;
+}
+
+.row.row-sidebar {
+  margin-right: 10px;
+  height: 100%;
+  .row-inner {
+	width: 250px;
+	height: 100%;
+  }
+
+  .row-settings {
+	height: 100%;
+  }
+
+  .droppable.sidebar {
+	flex-direction: column;
+  }
 }

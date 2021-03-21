@@ -5,7 +5,29 @@
   flex-grow: 1;
   height: 100%;
   border-right: $wp-grey-border;
+  width: 20%;
+
+  &:last-child {
+	border: 0;
+  }
+
   &.over {
 	background: #0b78fb;
   }
+
+  &.center {
+	width: auto;
+	justify-content: center;
+	//flex-shrink: 1;
+	//flex-grow: 0;
+  }
+
+  &.centerLeft, &.right{
+	justify-content: flex-end;
+  }
+
+  &.centerRight {
+
+  }
 }
+

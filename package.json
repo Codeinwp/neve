@@ -65,6 +65,7 @@
 		}
 	},
 	"dependencies": {
+		"@types/react-beautiful-dnd": "^13.0.0",
 		"array-move": "^3.0.1",
 		"classnames": "^2.2.6",
 		"fuse.js": "^6.4.1",
@@ -103,6 +104,7 @@
 		"@storybook/preset-scss": "^1.0.3",
 		"@storybook/react": "^6.1.14",
 		"@storybook/theming": "^6.1.14",
+		"@types/classnames": "^2.2.11",
 		"@types/node": "^14.14.31",
 		"@typescript-eslint/eslint-plugin": "^4.15.2",
 		"@typescript-eslint/parser": "^4.15.2",
@@ -149,6 +151,8 @@
 		"node-sass": "^4.14.1",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^2.2.1",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
 		"replace-in-file": "^6.1.0",
 		"rollup": "^1.32.0",
 		"rollup-plugin-babel": "^4.4.0",

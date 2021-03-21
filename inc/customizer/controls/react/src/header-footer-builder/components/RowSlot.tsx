@@ -1,8 +1,23 @@
 import { Droppable } from 'react-beautiful-dnd';
 import classnames from 'classnames';
 import BuilderItem from './BuilderItem';
+import React from 'react';
 
-const RowSlot = ({ id, slotItems, rowId }) => {
+import { BuilderItemInterface, RowTypes, SlotTypes } from '../../@types/utils';
+
+interface Props {
+	id: SlotTypes;
+	rowId: RowTypes;
+	slotItems: BuilderItemInterface[];
+	isSidebar: boolean;
+}
+
+const RowSlot: React.FC<Partial<Props>> = ({
+	rowId,
+	id,
+	slotItems,
+	isSidebar,
+}) => {
 	const renderItems = () => {
 		if (!slotItems) {
 			return null;
@@ -16,7 +31,10 @@ const RowSlot = ({ id, slotItems, rowId }) => {
 	};
 
 	return (
-		<Droppable droppableId={id} direction="horizontal">
+		<Droppable
+			droppableId={`${rowId}|${id}`}
+			direction={isSidebar ? 'vertical' : 'horizontal'}
+		>
 			{(provided, snapshot) => {
 				const { isDraggingOver } = snapshot;
 				const innerRowClasses = classnames('droppable', id, {
@@ -24,17 +42,21 @@ const RowSlot = ({ id, slotItems, rowId }) => {
 				});
 				return (
 					<div className={innerRowClasses} ref={provided.innerRef}>
-						{renderItems()}
-						{provided.placeholder && (
+						{provided.placeholder}
+						{/*{provided.placeholder && (
 							<span className="item-placeholder">
-								{provided.placeholder}
 							</span>
-						)}
+						)}*/}
+						{renderItems()}
 					</div>
 				);
 			}}
 		</Droppable>
 	);
+};
+
+RowSlot.defaultProps = {
+	isSidebar: false,
 };
 
 export default RowSlot;

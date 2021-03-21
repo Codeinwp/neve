@@ -1,4 +1,4 @@
-import HFGBuilder from '../../inc/customizer/controls/react/src/header-footer-builder/HFGBuilder';
+import HFGBuilder from '../../inc/customizer/controls/react/src/header-footer-builder/HFGBuilder.tsx';
 import { CustomizerDecorator } from '../components/decorators';
 
 export default {
