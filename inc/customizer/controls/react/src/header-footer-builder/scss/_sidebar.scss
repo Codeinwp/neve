@@ -13,4 +13,9 @@
 	border-radius: 5px;
 	box-sizing: border-box;
   }
+
+  .builder-item-inner {
+	display: flex;
+	align-items: center;
+  }
 }

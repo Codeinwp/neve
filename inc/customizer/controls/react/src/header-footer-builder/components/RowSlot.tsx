@@ -40,6 +40,7 @@ const RowSlot: React.FC<Props> = ({ rowId, id, slotItems, isSidebar }) => {
 				const { isDraggingOver } = snapshot;
 				const innerRowClasses = classnames('droppable', id, {
 					over: isDraggingOver,
+					empty: slotItems.length < 1,
 				});
 				return (
 					<div className={innerRowClasses} ref={provided.innerRef}>
@@ -52,10 +53,6 @@ const RowSlot: React.FC<Props> = ({ rowId, id, slotItems, isSidebar }) => {
 			}}
 		</Droppable>
 	);
-};
-
-RowSlot.defaultProps = {
-	isSidebar: false,
 };
 
 export default RowSlot;

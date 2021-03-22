@@ -1,21 +1,32 @@
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 import { useContext } from '@wordpress/element';
-import { closeSmall, cog } from '@wordpress/icons';
-import { Draggable, DraggableStateSnapshot } from 'react-beautiful-dnd';
+import { closeSmall, cog, menu } from '@wordpress/icons';
+import {
+	Draggable,
+	DraggableStateSnapshot,
+	DraggingStyle,
+} from 'react-beautiful-dnd';
 import { BuilderContext } from '../BuilderContext';
 import React from 'react';
 import classnames from 'classnames';
-import { RowTypes, SlotTypes } from '../../@types/utils';
+import { RowTypes, SlotTypes, StringObjectKeys } from '../../@types/utils';
 
 interface Props {
 	id: string;
 	index: number;
 	slotId: SlotTypes;
 	rowId: RowTypes;
+	inSidebar?: boolean;
 }
 
-const BuilderItem: React.FC<Props> = ({ rowId, slotId, id, index }) => {
+const BuilderItem: React.FC<Props> = ({
+	rowId,
+	slotId,
+	id,
+	index,
+	inSidebar,
+}) => {
 	const {
 		currentBuilder,
 		draggableItems,
@@ -31,20 +42,23 @@ const BuilderItem: React.FC<Props> = ({ rowId, slotId, id, index }) => {
 
 	const removeComponent = () => {
 		const nextItems = { ...draggableItems[currentDevice] };
-		nextItems[rowId][slotId].splice(index, 1);
+		if (rowId === 'sidebar') {
+			nextItems[rowId].splice(index, 1);
+		} else {
+			nextItems[rowId][slotId].splice(index, 1);
+		}
 		setDraggableItems({ ...draggableItems, currentDevice: nextItems });
 	};
 
 	const getStyle = (
-		style: Record<string, string | number>,
+		style: DraggingStyle,
 		snapshot: DraggableStateSnapshot
-	): Record<string, string | number> => {
+	): DraggingStyle | StringObjectKeys => {
 		if (!snapshot.isDropAnimating) {
 			return style;
 		}
 		return {
 			...style,
-			// cannot be 0, but make it super tiny
 			transitionDuration: `0.001s`,
 		};
 	};
@@ -53,15 +67,19 @@ const BuilderItem: React.FC<Props> = ({ rowId, slotId, id, index }) => {
 		<Draggable key={id} draggableId={id} index={index}>
 			{(provided, snapshot) => {
 				const { isDragging } = snapshot;
-
+				const itemClasses = classnames('draggable', {
+					'builder-item': !inSidebar,
+					'sidebar-builder-item': inSidebar,
+				});
 				return (
 					<div
 						id={id}
-						className="draggable builder-item"
+						className={itemClasses}
 						ref={provided.innerRef}
 						{...provided.draggableProps}
 						{...provided.dragHandleProps}
 						style={getStyle(
+							// @ts-ignore
 							provided.draggableProps.style,
 							snapshot
 						)}
@@ -71,8 +89,16 @@ const BuilderItem: React.FC<Props> = ({ rowId, slotId, id, index }) => {
 								dragging: isDragging,
 							})}
 						>
+							{inSidebar && (
+								<Button
+									icon={menu}
+									iconSize={16}
+									label={__('Drag to builder', 'neve')}
+									{...provided.dragHandleProps}
+								/>
+							)}
 							<span>{name}</span>
-							{!isDragging && (
+							{!isDragging && !inSidebar && (
 								<div className="actions">
 									<Button
 										icon={cog}

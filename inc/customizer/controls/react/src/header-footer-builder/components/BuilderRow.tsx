@@ -1,4 +1,3 @@
-import { useContext } from '@wordpress/element';
 import { Button } from '@wordpress/components';
 import { cog } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
@@ -29,14 +28,12 @@ const BuilderRow: React.FC<Props> = ({ rowId, rowItems }) => {
 		//@todo: implement this.
 	};
 
-	const slots = ['left', 'centerLeft', 'center', 'centerRight', 'right'];
+	const slots = ['left', 'c-left', 'center', 'c-right', 'right'];
 
 	const Slots: React.FC = () => (
 		<div className="row-content">
 			{slots.map((slotId, slotIndex) => {
-				const isCenterSideSlot = ['centerLeft', 'centerRight'].includes(
-					slotId
-				);
+				const isCenterSideSlot = ['c-left', 'c-right'].includes(slotId);
 
 				if (isCenterSideSlot && !hasCenterItems()) {
 					return null;

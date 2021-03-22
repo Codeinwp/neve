@@ -1,12 +1,12 @@
 @import "vars";
 
 .droppable {
-  display: inline-flex;
+  display: flex;
   height: 100%;
-  border-right: $wp-grey-border;
+  border-right: $droppable-border;
   flex-grow: 1;
-  width: 20%;
-  white-space: nowrap;
+  width: 100%;
+  position: relative;
 
   &:last-child {
 	border: 0;
@@ -17,37 +17,18 @@
   }
 
   &.center {
+	width: auto;
 	justify-content: center;
-	display: inline-flex;
-	flex-grow: 1;
-  }
-
-  &.centerLeft, &.right {
-	justify-content: flex-end;
-  }
-}
-
-.no-center-items {
-  .center {
-	//min-width: 0;
-	flex-grow: 0;
-	//width: 0;
+	padding: 0;
 	transition: .3s ease;
-  }
-}
 
-.centerRight, .centerLeft {
-  //max-width: 0;
-}
+	&.over {
 
-.is-dragging {
-  .no-center-items {
-	.center, .centerRight, .centerLeft {
-	  min-width: 100px;
+	  padding: 0 30px;
 	}
   }
 
-  .centerRight, .centerLeft {
-	max-width: 100px;
+  &.c-left, &.right {
+	justify-content: flex-end;
   }
 }

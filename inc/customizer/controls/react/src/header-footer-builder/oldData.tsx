@@ -27,9 +27,9 @@ export const NewHeader = {
 		top: {},
 		main: {
 			left: [{ x: 0, y: 1, width: 4, height: 1, id: 'logo' }],
-			centerLeft: [],
+			'c-left': [],
 			center: [{ x: 4, y: 1, width: 8, height: 1, id: 'primary-menu' }],
-			centerRight: [],
+			'c-right': [],
 			right: [],
 		},
 		bottom: {},

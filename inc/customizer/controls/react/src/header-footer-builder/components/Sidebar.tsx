@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
+import { useContext, memo } from '@wordpress/element';
 
-import { useContext, useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-
 import { BuilderContext } from '../BuilderContext';
-import SidebarBuilderItem from './SidebarBuilderItem';
 import { Droppable } from 'react-beautiful-dnd';
 import { BuilderContentInterface } from '../../@types/utils';
+import BuilderItem from './BuilderItem';
 
 interface Props {
 	items: BuilderContentInterface;
@@ -15,8 +14,6 @@ interface Props {
 
 const Sidebar: React.FC<Props> = ({ items, usedItems }) => {
 	const { currentBuilder, currentDevice } = useContext(BuilderContext);
-
-	console.log(usedItems);
 
 	const builderItems = Object.keys(
 		window.HFG_Layout_Builder[currentBuilder].items
@@ -36,10 +33,13 @@ const Sidebar: React.FC<Props> = ({ items, usedItems }) => {
 					return (
 						<div className="components" ref={provided.innerRef}>
 							{builderItems.map((itemID, index) => (
-								<SidebarBuilderItem
+								<BuilderItem
 									key={index}
 									index={index}
 									id={itemID}
+									inSidebar={true}
+									rowId={'components-sidebar'}
+									slotId={'components-sidebar'}
 								/>
 							))}
 							{provided.placeholder}
@@ -51,4 +51,21 @@ const Sidebar: React.FC<Props> = ({ items, usedItems }) => {
 	);
 };
 
-export default Sidebar;
+const shouldRerender = (
+	prev: Readonly<PropsWithChildren<Props>>,
+	next: Readonly<PropsWithChildren<Props>>
+) => {
+	const nextItems = next.usedItems.sort();
+	const prevItems = prev.usedItems.sort();
+
+	// Component re-renders if the items are different.
+	nextItems.forEach((item, index) => {
+		if (item !== prevItems[index]) {
+			return true;
+		}
+	});
+
+	// Component doesn't re-render if the items are equal.
+	return false;
+};
+export default memo(Sidebar, shouldRerender);

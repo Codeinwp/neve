@@ -1,19 +1,21 @@
-import { useState, useEffect, useMemo } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import { BuilderContext } from './BuilderContext';
 import { BuilderContentInterface } from '../@types/utils';
 import { NewHeader } from './oldData';
-import Builder from './components/Builder';
-import Sidebar from './components/Sidebar';
-import BuilderResponsiveSwitcher from './components/BuilderResponsiveSwitcher';
+
 import React from 'react';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import arrayMove from 'array-move';
-import classnames from 'classnames';
+
+import Builder from './components/Builder';
+import Sidebar from './components/Sidebar';
+import BuilderResponsiveSwitcher from './components/BuilderResponsiveSwitcher';
 import { getUsedItemsFromItems } from './common/utils';
+import classnames from 'classnames';
 
 const Custom: React.FC = () => {
 	const [currentBuilder, setCurrentBuilder] = useState<string>('header');
-	const [currentDevice, setCurrentDevice] = useState<string>('mobile');
+	const [currentDevice, updateCurrentDevice] = useState<string>('mobile');
 	const [
 		draggableItems,
 		updateDraggableItems,
@@ -28,8 +30,13 @@ const Custom: React.FC = () => {
 		updateDraggableItems(items);
 		setUsedItems(getUsedItemsFromItems(items, currentDevice));
 	};
+	const setCurrentDevice = (device: string) => {
+		updateCurrentDevice(device);
+		setUsedItems(getUsedItemsFromItems(draggableItems, device));
+	};
 
 	const onDragEnd = (result: DropResult) => {
+		setDragging(false);
 		const { source, destination, draggableId } = result;
 
 		if (!destination) {
@@ -86,7 +93,7 @@ const Custom: React.FC = () => {
 		setDraggableItems({ ...draggableItems, currentDevice: nextItems });
 	};
 
-	const wrapClasses = 'test'; // classnames({ 'is-dragging': dragging });
+	const wrapClasses = classnames({ 'is-dragging': dragging });
 
 	return (
 		<div className={wrapClasses}>
