@@ -5,10 +5,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  margin-left: 330px;
+  margin-left: 300px;
   padding: 20px;
   background-color: $wp-light-grey;
-
+  @media screen and (min-width: 1667px) {
+	margin-left: 18%;
+  }
   @import 'rows';
   @import 'builder-item';
   @import "responsive-switches";

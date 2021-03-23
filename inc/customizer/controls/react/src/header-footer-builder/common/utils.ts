@@ -71,3 +71,17 @@ export const fillSlots = (
 
 	return fullValue;
 };
+
+export const maybeParseJson: (
+	value: string | Record<string, unknown> | []
+) => Record<string, unknown> = (input) => {
+	if (typeof input !== 'string') {
+		return input;
+	}
+	try {
+		JSON.parse(input);
+	} catch (error) {
+		return input;
+	}
+	return JSON.parse(input);
+};

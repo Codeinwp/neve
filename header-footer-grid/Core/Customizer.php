@@ -77,7 +77,7 @@ class Customizer {
 		}
 
 		add_filter( 'body_class', array( $this, 'hfg_body_classes' ) );
-		add_filter( 'neve_react_controls_localization', array( $this, 'add_dynamic_tags_options' ) );
+		add_filter( 'neve_react_controls_localization', array( $this, 'add_builders_and_dynamic_tags' ) );
 	}
 
 	/**
@@ -85,9 +85,10 @@ class Customizer {
 	 *
 	 * @param array $array the localized array.
 	 *
-	 * @return mixed
+	 * @return array
 	 */
-	public function add_dynamic_tags_options( $array ) {
+	public function add_builders_and_dynamic_tags( $array ) {
+		$array['HFG'] = $this->get_builders_data();
 		$array['dynamicTags']['options'] = Magic_Tags::get_instance()->get_options();
 
 		return $array;

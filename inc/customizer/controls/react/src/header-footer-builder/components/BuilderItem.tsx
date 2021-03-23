@@ -9,7 +9,8 @@ interface Props {
 }
 
 const BuilderItem: React.FC<Props> = ({ componentId, builder }) => {
-	const itemDetails = window.HFG_Layout_Builder[builder].items[componentId];
+	const itemDetails =
+		window.NeveReactCustomize.HFG[builder].items[componentId];
 
 	const removeItem = () => {};
 	const focusItemSection = () => {};

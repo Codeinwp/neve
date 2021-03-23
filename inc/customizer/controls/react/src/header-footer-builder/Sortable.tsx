@@ -24,7 +24,7 @@ const Sortable: React.FC<Props> = (props) => {
 		dragging,
 		onDragStart,
 	} = props;
-	const { rows } = window.HFG_Layout_Builder[builder];
+	const { rows } = window.NeveReactCustomize.HFG[builder];
 	const items = value[device];
 
 	return (
@@ -60,7 +60,7 @@ const Sortable: React.FC<Props> = (props) => {
 									rowId={rowId}
 									device={device}
 									builder={builder}
-									items={items[rowId]}
+									items={items[rowId] || []}
 									updateLayout={onUpdate}
 									onDragStart={onDragStart}
 									dragging={dragging}

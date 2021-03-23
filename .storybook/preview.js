@@ -8,7 +8,8 @@ import {BuildersData} from "./dummy-data";
 export const parameters = {
 	actions: {argTypesRegex: "^on[A-Z].*"},
 }
-window.HFG_Layout_Builder = BuildersData;
+window.NeveReactCustomize = {}
+window.NeveReactCustomize.HFG = BuildersData
 window.wp = {
 	customize: {
 		previewedDevice: (device) => {

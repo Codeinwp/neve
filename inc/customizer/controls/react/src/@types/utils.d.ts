@@ -83,7 +83,9 @@ type LayoutUpdate = (
 declare global {
 	interface Window {
 		// eslint-disable-next-line camelcase
-		HFG_Layout_Builder: HFGLayoutBuilder;
+		NeveReactCustomize: {
+			HFG: HFGLayoutBuilder;
+		}
 		wp: StringObjectKeys
 	}
 }

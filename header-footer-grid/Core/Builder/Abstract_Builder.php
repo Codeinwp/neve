@@ -33,12 +33,12 @@ use WP_Customize_Manager;
 abstract class Abstract_Builder implements Builder {
 	use Core;
 
-	const LAYOUT_SETTING     = 'layout';
-	const HEIGHT_SETTING     = 'height';
-	const SKIN_SETTING       = 'skin';
-	const TEXT_COLOR         = 'new_text_color';
+	const LAYOUT_SETTING = 'layout';
+	const HEIGHT_SETTING = 'height';
+	const SKIN_SETTING = 'skin';
+	const TEXT_COLOR = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
-	const WIDTH              = 'width';
+	const WIDTH = 'width';
 	/**
 	 * Layout config data.
 	 *
@@ -239,18 +239,22 @@ abstract class Abstract_Builder implements Builder {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                                   => $this->control_id,
-				'group'                                => $this->control_id,
-				'noformat'                             => true,
-				'transport'                            => 'post' . $this->get_id(),
-				'sanitize_callback'                    => [ $this, 'sanitize_json' ],
-				'default'                              => '',
-				'label'                                => '',
-				// 'type'              => 'neve_hfg_builder_control',
-												'type' => 'text',
-				'section'                              => $this->section,
+				'id'                => $this->control_id,
+				'group'             => $this->control_id,
+				'tab'               => SettingsManager::TAB_STYLE,
+				'noformat'          => true,
+				'transport'         => 'post' . $this->get_id(),
+				'sanitize_callback' => [ $this, 'sanitize_json' ],
+				'default'           => '',
+				'label'             => '',
+				'type'              => '\Neve\Customizer\Controls\React\Builder',
+				'options'           => [
+					'builder_type' => $this->get_id()
+				],
+				'section'           => $this->section,
 			]
 		);
+
 		do_action( 'hfg_row_settings', $this->get_id(), $this->control_id );
 
 	}
@@ -271,13 +275,13 @@ abstract class Abstract_Builder implements Builder {
 
 		$row_setting_id = $this->control_id . '_' . $row_id;
 		$row_class      = '.' . join(
-			'-',
-			array(
-				$this->get_id(),
-				$row_id,
-				'inner',
-			)
-		);
+				'-',
+				array(
+					$this->get_id(),
+					$row_id,
+					'inner',
+				)
+			);
 		if ( $row_id === 'sidebar' ) {
 			$row_class = '.header-menu-sidebar';
 		}
@@ -521,7 +525,7 @@ abstract class Abstract_Builder implements Builder {
 					$wp_customize,
 					$this->section . '_quick_links',
 					array(
-						'priority' => -100,
+						'priority' => - 100,
 						'panel'    => $this->panel,
 						'type'     => 'hfg_instructions',
 						'options'  => $this->instructions_array,
@@ -739,7 +743,7 @@ abstract class Abstract_Builder implements Builder {
 	 * Method to generate css array for each row.
 	 *
 	 * @param string $row_index The row index.
-	 * @param array  $css_array The css array.
+	 * @param array $css_array The css array.
 	 *
 	 * @return array
 	 * @since   1.0.0
@@ -918,7 +922,7 @@ abstract class Abstract_Builder implements Builder {
 	 * Render device markup.
 	 *
 	 * @param string $device_name Device id.
-	 * @param array  $device_details Device meta.
+	 * @param array $device_details Device meta.
 	 */
 	public function render_device( $device_name, $device_details ) {
 		foreach ( $device_details as $index => $row ) {
@@ -934,7 +938,7 @@ abstract class Abstract_Builder implements Builder {
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
-	 * @param null|array  $row Row details.
+	 * @param null|array $row Row details.
 	 */
 	public function render_components( $device = null, $row = null ) {
 
@@ -955,7 +959,7 @@ abstract class Abstract_Builder implements Builder {
 					return 0;
 				}
 
-				return $item1['x'] < $item2['x'] ? -1 : 1;
+				return $item1['x'] < $item2['x'] ? - 1 : 1;
 			}
 		);
 
@@ -985,8 +989,13 @@ abstract class Abstract_Builder implements Builder {
 
 			// Make sure we migrate old alignment values.
 			if ( is_string( $align ) || ! is_array( $align ) ) {
-				$is_menu_component = strpos( $component_location['id'], 'primary-menu' ) > -1 || strpos( $component_location['id'], 'secondary-menu' );
-				$tmp_align         = ( is_string( $align ) && in_array( $align, [ 'left', 'right', 'center', 'justify' ] ) ) ? $align : 'left';
+				$is_menu_component = strpos( $component_location['id'], 'primary-menu' ) > - 1 || strpos( $component_location['id'], 'secondary-menu' );
+				$tmp_align         = ( is_string( $align ) && in_array( $align, [
+						'left',
+						'right',
+						'center',
+						'justify'
+					] ) ) ? $align : 'left';
 				$align             = [
 					'desktop' => $tmp_align,
 					'tablet'  => $is_menu_component ? 'left' : $tmp_align,
@@ -1025,15 +1034,15 @@ abstract class Abstract_Builder implements Builder {
 
 			// If there is a gap between components, build new group.
 			if ( $last_item !== null && ! $is_near_prev ) {
-				$render_index++;
+				$render_index ++;
 			}
 			// If there are two neighbours and none of them have auto_width, build new group.
 			if ( $is_near_prev && ! $last_item['is_auto_width'] && ! $is_auto_width ) {
-				$render_index++;
+				$render_index ++;
 			}
 			// If there are neighbours prev and next, always group with the next on.
 			if ( $is_near_prev && $is_near_next && ! $last_item['is_auto_width'] && $is_auto_width && ! isset( $render_buffer[ $render_index ] ) ) {
-				$render_index++;
+				$render_index ++;
 			}
 
 			// Use alignment only of non-auto width element.
@@ -1073,7 +1082,7 @@ abstract class Abstract_Builder implements Builder {
 					'is_last'        => false,
 				];
 			}
-			if ( strpos( $component_location['id'], 'primary-menu' ) > -1 ) {
+			if ( strpos( $component_location['id'], 'primary-menu' ) > - 1 ) {
 				$render_buffer[ $render_index ]['has_primary_nav'] = true;
 			}
 			$render_buffer[ $render_index ]['is_last']      = $is_last;
@@ -1236,7 +1245,8 @@ abstract class Abstract_Builder implements Builder {
 				if ( $a['name'] === $b['name'] ) {
 					return 0;
 				}
-				return $a['name'] > $b['name'] ? 1 : -1;
+
+				return $a['name'] > $b['name'] ? 1 : - 1;
 			}
 		);
 
@@ -1247,6 +1257,7 @@ abstract class Abstract_Builder implements Builder {
 	 * Get the default row colors based on the old settings.
 	 *
 	 * @param string $row_id the row id.
+	 *
 	 * @return array
 	 */
 	private function get_default_row_colors( $row_id ) {
@@ -1270,6 +1281,7 @@ abstract class Abstract_Builder implements Builder {
 			$background = $bg_color_map['background'][ $old_skin ];
 			$text       = $bg_color_map['text'][ $old_skin ];
 		}
+
 		return [
 			'background' => $background,
 			'text'       => $text,
@@ -1320,7 +1332,12 @@ abstract class Abstract_Builder implements Builder {
 				'default'               => '{ "mobile": "350", "tablet": "350", "desktop": "350" }',
 				'options'               => [
 					'active_callback' => function () {
-						return in_array( get_theme_mod( $this->control_id . '_sidebar_' . self::LAYOUT_SETTING, 'slide_left' ), [ 'slide_left', 'slide_right', 'pull_left', 'pull_right' ], true );
+						return in_array( get_theme_mod( $this->control_id . '_sidebar_' . self::LAYOUT_SETTING, 'slide_left' ), [
+							'slide_left',
+							'slide_right',
+							'pull_left',
+							'pull_right'
+						], true );
 					},
 					'input_attrs'     => [
 						'min'        => 1,
@@ -1350,6 +1367,7 @@ abstract class Abstract_Builder implements Builder {
 	 * Adds sidebar styles.
 	 *
 	 * @param array $css_array array of styles.
+	 *
 	 * @return array
 	 */
 	private function add_sidebar_styles( $css_array ) {
@@ -1361,8 +1379,8 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::KEY_SELECTOR => '.header-menu-sidebar',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_WIDTH => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
-						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
+						Dynamic_Selector::META_KEY           => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_DEFAULT       => $default_sidebar_width,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 				],
@@ -1373,8 +1391,8 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::KEY_SELECTOR => '.is-menu-sidebar > .wrapper',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_LEFT => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
-						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
+						Dynamic_Selector::META_KEY           => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_DEFAULT       => $default_sidebar_width,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 				],
@@ -1385,13 +1403,14 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::KEY_SELECTOR => '.menu_sidebar_pull_right.is-menu-sidebar > .wrapper',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_RIGHT => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
-						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
+						Dynamic_Selector::META_KEY           => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_DEFAULT       => $default_sidebar_width,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 				],
 			];
 		}
+
 		return $css_array;
 	}
 }

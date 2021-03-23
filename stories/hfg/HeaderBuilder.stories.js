@@ -61,7 +61,7 @@ const Template = (args) => {
 			set: setValue,
 		},
 		params: {
-			type: 'header',
+			builderType: 'header',
 		},
 	};
 

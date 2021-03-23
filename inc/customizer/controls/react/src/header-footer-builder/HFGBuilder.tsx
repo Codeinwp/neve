@@ -8,7 +8,7 @@ import {
 	LayoutUpdate,
 	StringObjectKeys,
 } from '../@types/utils';
-import { arraysAreIdentical, fillSlots } from './common/utils';
+import { arraysAreIdentical, fillSlots, maybeParseJson } from './common/utils';
 
 interface Props {
 	control: WPCustomizeControl;
@@ -19,11 +19,13 @@ const HFGBuilder: React.FC<Props> = ({ control }) => {
 	const [device, setDevice] = useState<string>('desktop');
 	const [dragging, setDragging] = useState<boolean>(false);
 
-	const builder = params.type;
+	const builder = params.builderType;
 
 	// Make sure we have all slots filled.
-	const dbValue = fillSlots(setting.get());
+	const dbValue = fillSlots(maybeParseJson(setting.get()));
 	const [value, setValue] = useState(dbValue);
+
+	console.log(value);
 
 	const updateLayout: LayoutUpdate = (row, zone, items) => {
 		setDragging(false);

@@ -16,7 +16,7 @@ const ResponsiveSwitches: React.FC<Props> = ({
 	setDevice,
 	builder,
 }) => {
-	const { devices } = window.HFG_Layout_Builder[builder];
+	const { devices } = window.NeveReactCustomize.HFG[builder];
 
 	const buttons = [
 		{ title: __('Desktop', 'neve'), icon: 'desktop', slug: 'desktop' },
