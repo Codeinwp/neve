@@ -1,11 +1,6 @@
 @import "vars";
-.hfg-builder {
 
-  //@import "columns-indicator";
-  @import "rows";
-  @import "row-slot";
-  @import "builder-item";
-
+.neve-builder {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -13,12 +8,13 @@
   margin-left: 330px;
   padding: 20px;
   background-color: $wp-light-grey;
+
+  @import 'rows';
+  @import 'builder-item';
+  @import "responsive-switches";
 }
 
 
-.collapsed .hfg-builder {
+.collapsed .neve-builder {
   margin-left: 0;
 }
-
-@import "sidebar";
-@import "interactions";

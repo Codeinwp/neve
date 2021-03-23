@@ -5,9 +5,9 @@ interface StringObjectKeys {
 export type RowTypes = 'top' | 'main' | 'bottom' | 'sidebar' | string;
 export type SlotTypes =
 	| 'left'
-	| 'centerLeft'
+	| 'c-left'
 	| 'center'
-	| 'centerRight'
+	| 'c-right'
 	| 'right'
 	| string;
 
@@ -21,16 +21,16 @@ export interface BuilderItemInterface extends StringObjectKeys {
 	y?: number;
 }
 export interface BuilderRowInterface extends StringObjectKeys {
-	left?: BuilderItemInterface[];
-	centerLeft?: BuilderItemInterface[];
-	center?: BuilderItemInterface[];
-	centerRight?: BuilderItemInterface[];
-	right?: BuilderItemInterface[];
+	left: BuilderItemInterface[];
+	"c-left": BuilderItemInterface[];
+	center: BuilderItemInterface[];
+	"c-right": BuilderItemInterface[];
+	right: BuilderItemInterface[];
 }
 export interface BuilderRowsInterface extends StringObjectKeys {
-	top?: BuilderRowInterface;
-	main?: BuilderRowInterface;
-	bottom?: BuilderRowInterface;
+	top: BuilderRowInterface;
+	main: BuilderRowInterface;
+	bottom: BuilderRowInterface;
 	sidebar?: BuilderItemInterface[];
 }
 export interface BuilderContentInterface extends StringObjectKeys {
@@ -73,9 +73,17 @@ interface HFGLayoutBuilder extends StringObjectKeys {
 	[key: string]: HFGLayoutBuilderProps;
 }
 
+
+type LayoutUpdate = (
+	rowId: string,
+	slotId: string,
+	nextItems: BuilderItemInterface[]
+) => void
+
 declare global {
 	interface Window {
 		// eslint-disable-next-line camelcase
 		HFG_Layout_Builder: HFGLayoutBuilder;
+		wp: StringObjectKeys
 	}
 }

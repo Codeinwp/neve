@@ -1,0 +1,28 @@
+@import "vars";
+
+.responsive-switches {
+  margin-bottom: 15px;
+  border-bottom: $wp-grey-border;
+  display: inline-flex;
+  width: auto;
+
+  .device-switcher {
+	border-bottom: 2px solid transparent;
+	border-radius: 0;
+	font-weight: 700;
+	color: $item-text-color;
+	padding: 10px 20px;
+
+	.dashicons {
+	  color: $item-icons-color;
+	}
+
+	&.active {
+	  border-bottom-color: $wp-blue;
+
+	  .dashicons {
+		color: $wp-blue;
+	  }
+	}
+  }
+}

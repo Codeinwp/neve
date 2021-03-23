@@ -1,60 +1,45 @@
 @import "vars";
 
-.item-placeholder {
-  position: relative;
-  transition: .3s ease;
-}
-
-.empty.over .item-placeholder {
-  background-color: rebeccapurple;
-}
-
-.over:not(.empty) .item-placeholder {
-  width: 0;
-}
-
 .builder-item {
-  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: $wp-grey-border;
+  min-width: 90px;
+  white-space: nowrap;
+  cursor: grab;
   margin: 0 2px;
-  transition: .3s ease;
+  border-radius: 3px;
+  box-sizing: border-box;
+  height: $rows-height - 7;
+  color: $item-text-color;
 
-  .builder-item-inner {
-	background: #F4F4F4;
-	height: 38px;
-	border: $wp-grey-border;
-	border-radius: 3px;
-	display: flex;
-	flex-grow: 1;
-	align-items: center;
-	justify-content: center;
-	padding: 0 0 0 10px;
-
-	span {
-	  white-space: nowrap;
-	}
-
-	&.dragging {
-	  padding: 0;
-	}
+  svg {
+	fill: $item-icons-color;
   }
 
   .actions {
-	display: flex;
 	margin-left: auto;
-	height: 100%;
   }
 
-  button {
-	background: 0;
-	height: 100%;
-	width: auto;
-	border: none;
-	min-width: unset;
-	width: 25px;
-	padding: 0 !important;
+  &.sortable-ghost {
+	border: $droppable-border
   }
 }
 
-.row-sidebar .builder-item {
-  margin: 0 0 5px !important;
+.droppable.sidebar {
+  padding: 4px;
+  width: 100%;
+  box-sizing: border-box;
+
+  .builder-item {
+	min-width: unset;
+	max-width: 100%;
+	width: 100%;
+	margin: 0 0 4px;
+
+	&:last-child {
+	  margin-bottom: 0;
+	}
+  }
 }

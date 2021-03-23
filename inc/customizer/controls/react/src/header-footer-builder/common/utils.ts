@@ -1,5 +1,7 @@
 import { BuilderContentInterface } from '../../@types/utils';
 
+export const slotKeys = ['left', 'c-left', 'center', 'c-right', 'right'];
+
 export const getUsedItemsFromItems = (
 	items: BuilderContentInterface,
 	currentDevice: string
@@ -25,4 +27,47 @@ export const getUsedItemsFromItems = (
 		}
 	});
 	return nextItems;
+};
+
+export const arraysAreIdentical = (
+	array1: Array<unknown>,
+	array2: Array<unknown>
+): boolean => {
+	if (array1 === array2) {
+		return true;
+	}
+	if (!Array.isArray(array1) || !Array.isArray(array2)) {
+		return false;
+	}
+	if (array1 === null || array2 === null) {
+		return false;
+	}
+	if (array1.length !== array2.length) {
+		return false;
+	}
+
+	return JSON.stringify(array1) === JSON.stringify(array2);
+};
+
+export const fillSlots = (
+	fullValue: BuilderContentInterface
+): BuilderContentInterface => {
+	Object.keys(fullValue).forEach((device) => {
+		Object.keys(fullValue[device]).forEach((row) => {
+			if (row === 'sidebar') {
+				if (!Array.isArray(fullValue[device][row])) {
+					fullValue[device][row] = [];
+				}
+
+				return false;
+			}
+			slotKeys.forEach((slot) => {
+				if (!Array.isArray(fullValue[device][row][slot])) {
+					fullValue[device][row][slot] = [];
+				}
+			});
+		});
+	});
+
+	return fullValue;
 };
