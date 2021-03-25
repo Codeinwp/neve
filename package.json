@@ -117,7 +117,6 @@
 		"cross-env": "^7.0.2",
 		"css-loader": "^5.0.1",
 		"eslint": "^7.20.0",
-		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-chai-friendly": "^0.6.0",
 		"eslint-plugin-cypress": "^2.11.2",
 		"grunt": "^1.2.1",
