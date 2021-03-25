@@ -188,11 +188,10 @@ jobs:
       - name: Install ${{ matrix.envs }} env for ${{ matrix.specs }} specs
         run: bash ./bin/envs/init.sh ${{ matrix.envs }} latest no "$ZIP_URL"
       - name: Run ${{ matrix.specs }} Cypress tests
-        working-directory: ./e2e-tests
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
-      - uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v2
         with:
           env: host=localhost,port=8080
           browser: chrome
