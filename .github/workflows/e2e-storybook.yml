@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize, ready_for_review]
     branches-ignore:
-      - 'update_dependencies'
+      - "update_dependencies"
 
 jobs:
   e2e-storybook:
@@ -26,7 +26,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install and Build 🔧
         run: |
-          yarn install --frozen-lockfile
+          yarn install 
           yarn run build
           yarn storybook &
       - name: E2E Tests 🚀

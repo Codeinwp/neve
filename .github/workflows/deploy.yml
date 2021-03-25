@@ -27,7 +27,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Build & create dist/artifact
         run: |
-          yarn install --frozen-lockfile
+          yarn install 
           composer install --no-dev --prefer-dist --no-progress --no-suggest
           yarn run build
           yarn run dist
