@@ -3,7 +3,7 @@ name: NPM Tests
 on:
   push:
     branches-ignore:
-      - 'master'
+      - "master"
 
 jobs:
   npm:
@@ -33,7 +33,7 @@ jobs:
       - name: Install Dependencies
         env:
           CYPRESS_INSTALL_BINARY: 0
-        run: yarn install --frozen-lockfile
+        run: yarn install
       - name: Build source
         run: yarn run build
       - name: Run package check
