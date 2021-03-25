@@ -196,4 +196,4 @@ jobs:
           parallel: true
           group: e2e-${{ matrix.specs }}
           record: true
-          spec: cypress/integration/${{ matrix.specs }}/**/*,
+          spec: e2e-tests/cypress/integration/${{ matrix.specs }}/**/*,
