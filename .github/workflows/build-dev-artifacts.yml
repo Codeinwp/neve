@@ -193,6 +193,7 @@ jobs:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
         uses: cypress-io/github-action@v2
         with:
+          path: ./e2e-tests
           env: host=localhost,port=8080
           browser: chrome
           install: ${{ ! steps.yarn-and-build-cache.outputs.cache-hit }}
