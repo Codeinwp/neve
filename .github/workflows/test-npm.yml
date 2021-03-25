@@ -34,6 +34,9 @@ jobs:
         env:
           CYPRESS_INSTALL_BINARY: 0
         run: yarn install
+      - name: Install Cypress Dependencies
+        working-directory: ./e2e-tests
+        run: yarn install
       - name: Build source
         run: yarn run build
       - name: Run package check
