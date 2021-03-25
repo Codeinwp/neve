@@ -1,22 +1,16 @@
 {
-  "compilerOptions": {
-    "baseUrl": "cypress",
-    "target": "es5",
-    "downlevelIteration": true,
-    "lib": [
-      "es5",
-      "dom"
-    ],
-    "types": [
-      "cypress",
-      "node"
-    ]
-  },
-  "include": [
-    "cypress/**/**/*.ts",
-    "cypress/**/**/**/*.ts",
-    "cypress/support/index.ts",
-    "cypress/**/*.ts",
-    "cypress/plugins/index.js"
-  ]
+	"compilerOptions": {
+		"baseUrl": "./",
+		"target": "es5",
+		"downlevelIteration": true,
+		"lib": ["es5", "dom"],
+		"types": ["cypress", "node", "cypress-storybook/cypress"]
+	},
+	"include": [
+		"cypress/**/**/*.ts",
+		"cypress/**/**/**/*.ts",
+		"cypress/support/index.ts",
+		"cypress/**/*.ts",
+		"cypress/plugins/index.js"
+	]
 }
