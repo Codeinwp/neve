@@ -202,4 +202,3 @@ jobs:
           group: e2e-${{ matrix.specs }}
           record: true
           spec: cypress/integration/${{ matrix.specs }}/**/*,
-          project: "./e2e-tests"
