@@ -28,5 +28,12 @@
 		"eslint-plugin-cypress": "^2.11.2",
 		"eslint-plugin-prettier": "^3.3.1",
 		"typescript": "^4.2.3"
-	}
+	},
+  "scripts": {
+    "cypress:open": "cypress open",
+		"cypress:storybook:open": "cypress open --config-file e2e-tests/cypress.storybook.json",
+		"cypress:run": "cypress run",
+		"cypress:storybook:run": "wait-on http://localhost:6006 && cypress run --config-file e2e-tests/cypress.storybook.json --record",
+		"visual:test": "percy exec -- cypress run --config baseUrl=https://qa-neve.themeisle.com,video=false --spec 'cypress/integration/visual-regression/**/*.spec.js' --headless"
+  }
 }
