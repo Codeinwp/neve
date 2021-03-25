@@ -24,12 +24,14 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+      - name: Build Cypress
+        working-directory: ./e2e-tests
+        run: yarn install
       - name: Install and Build 🔧
         run: |
           yarn install 
           yarn run build
           yarn storybook &
-          cd e2e-tests && yarn install
       - name: E2E Tests 🚀
         working-directory: ./e2e-tests
         run: |
