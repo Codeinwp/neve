@@ -32,14 +32,15 @@
 		"@wordpress/scripts": "^14.0.1",
 		"eslint": "^7.22.0",
 		"prettier": "^2.2.1",
+		"scroll-to-bottomjs": "^1.1.0",
 		"wait-on": "^5.3.0"
 	},
 	"scripts": {
 		"lint:cypress": "wp-scripts lint-js cypress",
 		"cypress:open": "cypress open",
-		"cypress:storybook:open": "cypress open --config-file e2e-tests/cypress.storybook.json",
+		"cypress:storybook:open": "cypress open --config-file cypress.storybook.json",
 		"cypress:run": "cypress run",
-		"cypress:storybook:run": "wait-on http://localhost:6006 && cypress run --config-file e2e-tests/cypress.storybook.json --record",
+		"cypress:storybook:run": "wait-on http://localhost:6006 && cypress run --config-file cypress.storybook.json --record",
 		"visual:test": "percy exec -- cypress run --config baseUrl=https://qa-neve.themeisle.com,video=false --spec 'cypress/integration/visual-regression/**/*.spec.js' --headless"
 	}
 }
