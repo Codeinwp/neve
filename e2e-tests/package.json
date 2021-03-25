@@ -4,7 +4,7 @@
 	"description": "Cypress e2e-tests for Neve",
 	"author": "ThemeIsle <friends@themeisle.com>",
 	"license": "GPL-2.0-or-later",
-  "keywords": [
+	"keywords": [
 		"wordpress-theme"
 	],
 	"homepage": "https://github.com/Codeinwp/neve",
@@ -29,11 +29,12 @@
 		"eslint-plugin-prettier": "^3.3.1",
 		"typescript": "^4.2.3"
 	},
-  "scripts": {
-    "cypress:open": "cypress open",
+	"scripts": {
+		"lint:cypress": "wp-scripts lint-js cypress",
+		"cypress:open": "cypress open",
 		"cypress:storybook:open": "cypress open --config-file e2e-tests/cypress.storybook.json",
 		"cypress:run": "cypress run",
 		"cypress:storybook:run": "wait-on http://localhost:6006 && cypress run --config-file e2e-tests/cypress.storybook.json --record",
 		"visual:test": "percy exec -- cypress run --config baseUrl=https://qa-neve.themeisle.com,video=false --spec 'cypress/integration/visual-regression/**/*.spec.js' --headless"
-  }
+	}
 }

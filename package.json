@@ -169,7 +169,6 @@
 		"lint:dash": "wp-scripts lint-js dashboard/src",
 		"format:dash": "wp-scripts format-js dashboard/src",
 		"lint:customizer": "wp-scripts lint-js inc/customizer/controls/react/src/",
-		"lint:cypress": "wp-scripts lint-js cypress",
 		"format:customizer": "wp-scripts format-js inc/customizer/controls/react/src/",
 		"watch:customizer": "wp-scripts start inc/customizer/controls/react/src/controls.js --output-path=inc/customizer/controls/react/bundle",
 		"watch:rollup": "./node_modules/.bin/rollup -c --watch",

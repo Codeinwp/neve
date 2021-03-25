@@ -30,5 +30,6 @@ jobs:
           yarn run build
           yarn storybook &
       - name: E2E Tests 🚀
+        working-directory: ./e2e-tests
         run: |
-          cd e2e-tests && yarn run cypress:storybook:run --key=${{ secrets.CYPRESS_RECORD_KEY }}
+          yarn run cypress:storybook:run --key=${{ secrets.CYPRESS_RECORD_KEY }}
