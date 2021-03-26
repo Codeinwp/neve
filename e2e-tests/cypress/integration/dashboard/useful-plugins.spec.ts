@@ -2,7 +2,7 @@ describe('Useful Plugins Tab - Install Optimole', function () {
 	beforeEach(function () {
 		cy.loginWithRequest();
 		cy.visit('/wp-admin/themes.php?page=neve-welcome#plugins');
-		cy.intercept('POST', '/wp-admin/admin-ajax.php').as('adminAjax');
+		cy.aliasRestRoutes();
 		cy.get('.tab-content.plugins').as('pluginsTab');
 	});
 
@@ -10,14 +10,12 @@ describe('Useful Plugins Tab - Install Optimole', function () {
 		cy.get('@pluginsTab').find('.plugin.card').should('have.length.greaterThan', 4);
 		cy.get('@pluginsTab')
 			.find('.plugin.optimole-wp button')
-			.then((btn) => {
-				if (btn.text().includes('Install')) {
-					btn.trigger('click');
-					cy.wait('@adminAjax').then((interception) => {
-						expect(interception.response.statusCode).to.equal(200);
-						expect(interception.response.body.success).to.equal(true);
-					});
-				}
+			.click()
+			.then(() => {
+				cy.wait('@customizerSave').then((interception) => {
+					expect(interception.response.statusCode).to.equal(200);
+					expect(interception.response.body.success).to.equal(true);
+				});
 			});
 	});
 
