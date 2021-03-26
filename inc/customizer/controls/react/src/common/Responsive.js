@@ -18,7 +18,7 @@ const ResponsiveControl = ({
 	};
 
 	useEffect(() => {
-		global.addEventListener('neveChangedRepsonsivePreview', (e) => {
+		document.addEventListener('neveChangedRepsonsivePreview', (e) => {
 			changeViewType(e.detail);
 		});
 	}, []);

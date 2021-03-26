@@ -1,8 +1,8 @@
 import React from 'react';
 import {
+	BuilderActions,
 	BuilderItemInterface,
 	BuilderRowInterface,
-	LayoutUpdate,
 	RowTypes,
 } from '../../@types/utils';
 import { Button } from '@wordpress/components';
@@ -13,12 +13,11 @@ import classnames from 'classnames';
 
 interface Props {
 	items: BuilderRowInterface & BuilderItemInterface[];
-	updateLayout: LayoutUpdate;
 	rowId: RowTypes;
 	builder: string;
 	device: string;
-	onDragStart: () => void;
 	dragging: boolean;
+	actions: BuilderActions;
 }
 
 const Row: React.FC<Props> = (props) => {
@@ -36,7 +35,7 @@ const Row: React.FC<Props> = (props) => {
 					icon={cog}
 					iconSize={18}
 					className="row-settings"
-					labe={__('Row Setting', 'neve')}
+					label={__('Row Setting', 'neve')}
 					onClick={() => focusRowSection(rowId)}
 				/>
 				<div className="row-inner">
@@ -67,13 +66,17 @@ const Row: React.FC<Props> = (props) => {
 								{...props}
 								key={index}
 								slotId={slotId}
-								items={items[slotId]}
+								items={items[slotId] || []}
 							/>
 						);
 					})}
 				</div>
 				<div className={centerWrapClass}>
-					<Slot {...props} slotId={'center'} items={items.center} />
+					<Slot
+						{...props}
+						slotId={'center'}
+						items={items.center || []}
+					/>
 				</div>
 				<div className="slots-wrap slots-right-wrap">
 					{['c-right', 'right'].map((slotId, index) => {
@@ -82,7 +85,7 @@ const Row: React.FC<Props> = (props) => {
 								{...props}
 								key={index}
 								slotId={slotId}
-								items={items[slotId]}
+								items={items[slotId] || []}
 							/>
 						);
 					})}

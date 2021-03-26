@@ -257,110 +257,12 @@ class Customizer {
 	 * @access  public
 	 */
 	public function template() {
-		require_once Config::get_path() . '/templates/rows.php';
-		?>
-		<script type="text/html" id="tmpl-hfg--builder-panel">
-			<div class="hfg--customize-builder">
-				<div class="hfg--cb-inner">
-					<div class="hfg--cb-header">
-						<div class="hfg--cb-devices-switcher">
-						</div>
-						<# if(data.id === 'hfg_header_layout') { #>
-						<div class="hfg--cb-notice conditional-header hidden">
-							<i class="dashicons dashicons-info"></i>
-							<p>
-								<?php
-								/* translators: %s is the header name */
-								echo wp_kses_post( sprintf( __( 'You are customizing the %s Header', 'neve' ), ' <a>' . __( 'Default', 'neve' ) . '</a> ' ) );
-								?>
-							</p>
-						</div>
-						<# } #>
-						<div class="hfg--cb-notice welcome-notice {{data.id}} hidden">
-							<p>
-								<?php /* translators: %s is the type of builder */ ?>
-								<span><?php echo sprintf( esc_html__( '%s Builder:', 'neve' ), '{{data.title}}' ); ?></span>
-								<?php
-								/* translators: %s is the header name */
-								echo esc_html__( 'Click on any empty space to add components, or existing components to adjust settings.', 'neve' );
-								?>
-								<a href="#" data-open-nv-modal="hfg-instructional"><i
-											class="dashicons dashicons-info"></i></a>
-							</p>
-						</div>
-						<div class="hfg--cb-actions">
-							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
-							<a class="button button-secondary hfg--panel-close" href="#">
-								<span class="close-text"><i class="dashicons dashicons-arrow-down-alt2"
-															style="margin-top: 4px;"></i> <?php esc_html_e( 'Close', 'neve' ); ?></span>
-								<span class="panel-name-text">
-									<i class="dashicons dashicons-arrow-up-alt2" style="margin-top: 4px;"></i>
-									{{ data.title }}
-								</span>
-							</a>
-						</div>
-					</div>
-					<div class="hfg--cb-body"></div>
-				</div>
-			</div>
-		</script>
-
-		<script type="text/html" id="tmpl-hfg--cb-item">
-			<div class="grid-stack-item item-from-list for-s-{{ data.section }} order-{{data.elementOrder}}"
-				 title="{{ data.name }}"
-				 data-id="{{ data.id }}"
-				 data-slug="{{ data.componentSlug }}"
-				 data-section="{{ data.section }}"
-				 data-control="{{ data.control }}"
-				 data-gs-x="{{ data.x }}"
-				 data-gs-y="{{ data.y }}"
-				 data-gs-width="{{ data.width }}"
-				 data-df-width="{{ data.width }}"
-				 data-gs-height="1"
-			>
-				<div class="item-tooltip" data-section="{{ data.section }}">{{ data.name }}</div>
-				<div class="grid-stack-item-content">
-					<div class="hfg--sidebar-visible icon"><i class="dashicons dashicons-{{data.icon}}"></i></div>
-					<span class="hfg--cb-item-name" data-section="{{ data.section }}">{{ data.name }}</span>
-					<span class="hfg--cb-item-remove hfg-cb-icon"></span>
-					<span class="hfg--cb-item-setting hfg-cb-icon" data-section="{{ data.section }}"></span>
-				</div>
-			</div>
-		</script>
-
-		<script type="text/html" id="tmpl-hfg--widgets-sidebar">
-			<div class="hfg--widgets-panel" data-id="{{ data.id }}">
-				<div class="hfg-widgets-panel-header">
-					<div class="hfg-component-search">
-						<i class="dashicons dashicons-search"></i>
-						<input class="component-search" type="search"
-							   placeholder="<?php esc_attr_e( 'Search Components', 'neve' ); ?>..."/>
-					</div>
-					<button class="close button button-link">
-						<i class="dashicons dashicons-no"></i>
-					</button>
-				</div>
-				<div class="hfg-widgets-panel-inner"></div>
-			</div>
-		</script>
-
-		<script type="text/html" id="tmpl-hfg--widgets-preview">
-			<div class="hfg--component-preview" data-for-component="{{ data.id }}">
-				<div class="header">
-					<div class="title-wrap">
-						<div class="icon"><i class="dashicons dashicons-{{data.icon}}"></i></div>
-						<span class="name" data-section="{{ data.section }}">{{ data.name }}</span>
-					</div>
-					<# if(data.description) { #>
-					<div class="description">{{data.description}}</div>
-					<# } #>
-				</div>
-				<# if(data.previewImage) {#>
-				<img src="{{data.previewImage}}" alt="{{data.name}}">
-				<# } #>
-			</div>
-		</script>
-
-		<?php
+		foreach ($this->builders as $builder) {
+			$builder_data = $builder->get_builder();
+			error_log( var_export ( $builder_data, true ) );
+			?>
+			<div class="neve-builder-portal-wrap" id="<?php echo esc_attr($builder_data['control_id']) ?>-app"></div>
+			<?php
+		}
 	}
 }

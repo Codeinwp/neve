@@ -1,14 +1,14 @@
 import { BuilderContentInterface } from '../../@types/utils';
+import { isArray } from 'util';
 
 export const slotKeys = ['left', 'c-left', 'center', 'c-right', 'right'];
 
 export const getUsedItemsFromItems = (
-	items: BuilderContentInterface,
-	currentDevice: string
+	items: BuilderContentInterface
 ): string[] => {
 	const nextItems: string[] = [];
 	// Get the items currently inside the builder and save them in an array.
-	Object.values(items[currentDevice]).forEach((value) => {
+	Object.values(items).forEach((value) => {
 		if (Array.isArray(value) && value.length) {
 			value.forEach((item) => {
 				if (!item.id) {
@@ -52,24 +52,77 @@ export const arraysAreIdentical = (
 export const fillSlots = (
 	fullValue: BuilderContentInterface
 ): BuilderContentInterface => {
-	Object.keys(fullValue).forEach((device) => {
-		Object.keys(fullValue[device]).forEach((row) => {
+	const a = { ...fullValue };
+	console.clear();
+	console.log(a);
+	Object.keys(a).forEach((device) => {
+		console.group(device);
+		Object.keys(a[device]).forEach((row) => {
+			console.log(row, a[device][row]);
 			if (row === 'sidebar') {
-				if (!Array.isArray(fullValue[device][row])) {
-					fullValue[device][row] = [];
+				if (!Array.isArray(a[device][row])) {
+					a[device][row] = [];
+
+					console.error('Sidebar is not array.');
 				}
 
-				return false;
+				return;
 			}
+
+			let temp: Record<string, unknown>[] = [];
+
+			if (typeof a[device][row] === 'object' && a[device][row] !== null) {
+				temp = a[device][row];
+				a[device][row] = {};
+				console.log('Temp is now', temp);
+			}
+
 			slotKeys.forEach((slot) => {
-				if (!Array.isArray(fullValue[device][row][slot])) {
-					fullValue[device][row][slot] = [];
+				if (!a[device][row][slot]) {
+					a[device][row][slot] = [];
+
+					if (slot === 'left') {
+						a[device][row][slot] = temp;
+					}
 				}
+
+				console.log(
+					`[${device}]-[${row}]-[${slot}]`,
+					a[device][row][slot]
+				);
 			});
+			// console.groupEnd();
+
+			// 		/*
+			//
+			// 		if (
+			// 			JSON.stringify(Object.keys(fullValue[device][row]).sort()) !==
+			// 			JSON.stringify(slotKeys.sort())
+			// 		) {
+			// 			console.log('diff for:', { device, row });
+			// 			temp = Object.values(fullValue[device][row]);
+			// 			console.log(temp);
+			// 			console.log('---------------');
+			// 		}
+			//
+			// 		slotKeys.forEach((slot) => {
+			// 			if (!Array.isArray(fullValue[device][row][slot])) {
+			// 				fullValue[device][row][slot] = [];
+			// 			}
+			// 			if (temp.length > 0) {
+			// 				fullValue[device][row][slot] = [
+			// 					...fullValue[device][row][slot],
+			// 					...temp,
+			// 				];
+			//
+			// 				temp = [];
+			// 			}
+			// 		});*/
 		});
+		console.groupEnd();
 	});
 
-	return fullValue;
+	return a;
 };
 
 export const maybeParseJson: (

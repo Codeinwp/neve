@@ -23,7 +23,8 @@
   }
 
   &.sortable-ghost {
-	border: $droppable-border
+	border: $droppable-border;
+	padding-right: 10px;
   }
 }
 
@@ -37,6 +38,12 @@
 	max-width: 100%;
 	width: 100%;
 	margin: 0 0 4px;
+
+	.name {
+	  max-width: 90%;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	}
 
 	&:last-child {
 	  margin-bottom: 0;

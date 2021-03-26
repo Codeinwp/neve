@@ -1,39 +1,30 @@
 import React from 'react';
-import { BuilderContentInterface, LayoutUpdate } from '../@types/utils';
+import { BuilderActions, BuilderContentInterface } from '../../@types/utils';
 
-import Row from './components/Row';
-import ResponsiveSwitches from './components/ResponsiveSwitches';
+import Row from './Row';
+import ResponsiveSwitches from './ResponsiveSwitches';
 
 interface Props {
 	value: BuilderContentInterface;
-	onUpdate: LayoutUpdate;
-	setDevice: (val: string) => void;
-	onDragStart: () => void;
 	device: string;
 	builder: string;
 	dragging: boolean;
+	actions: BuilderActions;
+	hidden: boolean;
 }
 
-const Sortable: React.FC<Props> = (props) => {
-	const {
-		value,
-		onUpdate,
-		device,
-		builder,
-		setDevice,
-		dragging,
-		onDragStart,
-	} = props;
+const Builder: React.FC<Props> = (props) => {
+	const { value, device, builder, dragging, actions, hidden } = props;
 	const { rows } = window.NeveReactCustomize.HFG[builder];
-	const items = value[device];
+	const items = { ...value[device] };
 
 	return (
 		<div>
-			<div className="neve-builder">
+			<div className={`neve-builder${hidden ? ' hide' : ''}`}>
 				<ResponsiveSwitches
 					builder={builder}
 					device={device}
-					setDevice={setDevice}
+					actions={actions}
 				/>
 				<div className="rows-wrapper">
 					{rows.sidebar && device !== 'desktop' && (
@@ -43,9 +34,8 @@ const Sortable: React.FC<Props> = (props) => {
 								device={device}
 								builder={builder}
 								items={items.sidebar}
-								updateLayout={onUpdate}
-								onDragStart={onDragStart}
 								dragging={dragging}
+								actions={actions}
 							/>
 						</div>
 					)}
@@ -61,9 +51,8 @@ const Sortable: React.FC<Props> = (props) => {
 									device={device}
 									builder={builder}
 									items={items[rowId] || []}
-									updateLayout={onUpdate}
-									onDragStart={onDragStart}
 									dragging={dragging}
+									actions={actions}
 								/>
 							);
 						})}
@@ -74,4 +63,4 @@ const Sortable: React.FC<Props> = (props) => {
 	);
 };
 
-export default Sortable;
+export default Builder;

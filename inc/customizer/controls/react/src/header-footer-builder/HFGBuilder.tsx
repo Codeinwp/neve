@@ -1,34 +1,61 @@
-/* jshint esversion: 6 */
 import React from 'react';
-import Sortable from './Sortable';
-import { useState } from '@wordpress/element';
-import { WPCustomizeControl } from '../@types/customizer-control';
+import { useEffect, useState, createPortal } from '@wordpress/element';
 import {
+	BuilderActions,
+	BuilderContentInterface,
 	BuilderItemInterface,
 	LayoutUpdate,
+	RemoveItem,
 	StringObjectKeys,
 } from '../@types/utils';
-import { arraysAreIdentical, fillSlots, maybeParseJson } from './common/utils';
+
+// import { Portal } from '@wordpress/components';
+import { arraysAreIdentical, getUsedItemsFromItems } from './common/utils';
+import SidebarContent from './components/SidebarContent';
+import Builder from './components/Builder';
+import { ItemInterface } from 'react-sortablejs';
 
 interface Props {
-	control: WPCustomizeControl;
+	onChange: (nextValue: BuilderContentInterface) => void;
+	value: BuilderContentInterface;
+	currentBuilder: string;
+	portalMount: HTMLElement;
+	hidden: boolean;
 }
 
-const HFGBuilder: React.FC<Props> = ({ control }) => {
-	const { setting, params } = control;
+const HFGBuilder: React.FC<Props> = ({
+	hidden,
+	currentBuilder,
+	onChange,
+	value,
+	portalMount,
+}) => {
 	const [device, setDevice] = useState<string>('desktop');
 	const [dragging, setDragging] = useState<boolean>(false);
 
-	const builder = params.builderType;
+	const getSidebarItems = () => {
+		const usedItems = getUsedItemsFromItems(value[device]);
+		const allItems = window.NeveReactCustomize.HFG[currentBuilder].items;
+		return Object.keys(allItems)
+			.filter((key) => !usedItems.includes(key))
+			.map((itemId) => {
+				return { id: itemId };
+			});
+	};
 
-	// Make sure we have all slots filled.
-	const dbValue = fillSlots(maybeParseJson(setting.get()));
-	const [value, setValue] = useState(dbValue);
+	const [sidebarItems, setSidebarItems] = useState<ItemInterface[]>(
+		getSidebarItems()
+	);
 
-	console.log(value);
-
-	const updateLayout: LayoutUpdate = (row, zone, items) => {
+	const onDragStart = () => {
+		setDragging(true);
+	};
+	const onDragEnd = () => {
 		setDragging(false);
+	};
+
+	const updateLayout: LayoutUpdate = (row, slot, items) => {
+		onDragEnd();
 
 		if (row === 'sidebar') {
 			updateSidebar(items);
@@ -36,7 +63,7 @@ const HFGBuilder: React.FC<Props> = ({ control }) => {
 			return false;
 		}
 
-		if (arraysAreIdentical(items, value[device][row][zone])) {
+		if (arraysAreIdentical(items, value[device][row][slot])) {
 			return false;
 		}
 
@@ -50,7 +77,7 @@ const HFGBuilder: React.FC<Props> = ({ control }) => {
 			});
 		}
 
-		if (zone === 'center') {
+		if (slot === 'center' && items.length === 0) {
 			const sideSlots = ['c-left', 'c-right'];
 			sideSlots.forEach((sideSlot) => {
 				if (!Array.isArray(update[sideSlot])) {
@@ -69,15 +96,14 @@ const HFGBuilder: React.FC<Props> = ({ control }) => {
 			});
 		}
 
-		update[zone] = updateItems;
-		nextItems[row][zone] = updateItems;
+		update[slot] = updateItems;
+		nextItems[row][slot] = updateItems;
 
 		const finalValue = { ...value, [device]: nextItems };
 
 		// console.log('Updating State Because of:', { row, zone });
 
-		setValue(finalValue);
-		setting.set(finalValue);
+		onChange(finalValue);
 	};
 
 	const updateSidebar = (items: BuilderItemInterface[]) => {
@@ -99,24 +125,106 @@ const HFGBuilder: React.FC<Props> = ({ control }) => {
 
 		// console.log('Updating State Because of: ', 'sidebar');
 
-		setValue(finalValue);
-		setting.set(finalValue);
+		onChange(finalValue);
 	};
 
-	const onDragStart = () => {
-		setDragging(true);
+	const removeItem: RemoveItem = (row, slot, indexToRemove) => {
+		const nextItems = { ...value[device] };
+		if (row === 'sidebar') {
+			nextItems[row].splice(indexToRemove, 1);
+			const finalValue = { ...value, [device]: nextItems };
+			onChange(finalValue);
+			return false;
+		}
+
+		nextItems[row][slot].splice(indexToRemove, 1);
+
+		if (slot === 'center' && nextItems[row][slot].length === 0) {
+			const sideSlots = ['c-left', 'c-right'];
+			sideSlots.forEach((sideSlot) => {
+				if (!Array.isArray(nextItems[row][sideSlot])) {
+					return false;
+				}
+				if (nextItems[row][sideSlot].length < 1) {
+					return false;
+				}
+
+				const nextSlot = sideSlot === 'c-left' ? 'left' : 'right';
+
+				nextItems[row][sideSlot].forEach(
+					(itemToMove: StringObjectKeys) => {
+						nextItems[row][nextSlot].push(itemToMove);
+					}
+				);
+				nextItems[row][sideSlot] = [];
+			});
+		}
+		const finalValue = { ...value, [device]: nextItems };
+		onChange(finalValue);
+	};
+
+	const actions: BuilderActions = {
+		updateLayout,
+		onDragStart,
+		onDragEnd,
+		removeItem,
+		setDevice,
+		setSidebarItems,
+	};
+
+	/*
+	 * Bind the device switchers to the device state.
+	 */
+	useEffect(() => {
+		bindDeviceSwitching();
+	}, []);
+
+	/*
+	 * Make sure we update the sidebar.
+	 */
+	useEffect(() => {
+		setSidebarItems(getSidebarItems());
+	}, [device, value[device]]);
+
+	const bindDeviceSwitching = () => {
+		window.wp.customize.bind('ready', () => {
+			window.wp.customize.previewedDevice.bind((newDevice: string) => {
+				// No tablet context existent on builders.
+				if (newDevice === 'tablet') {
+					newDevice = 'mobile';
+				}
+
+				// If we don't have a value, don't switch context.
+				if (!value[newDevice]) {
+					return false;
+				}
+
+				setDevice(newDevice);
+			});
+		});
 	};
 
 	return (
-		<Sortable
-			value={value}
-			device={device}
-			builder={builder}
-			onUpdate={updateLayout}
-			setDevice={setDevice}
-			onDragStart={onDragStart}
-			dragging={dragging}
-		/>
+		<div>
+			<div className={`neve-hfg-builder`}>
+				<SidebarContent
+					items={sidebarItems}
+					builder={currentBuilder}
+					actions={actions}
+				/>
+			</div>
+			{createPortal(
+				<Builder
+					hidden={hidden}
+					value={value}
+					device={device}
+					builder={currentBuilder}
+					dragging={dragging}
+					actions={actions}
+				/>,
+				portalMount
+			)}
+		</div>
 	);
 };
 

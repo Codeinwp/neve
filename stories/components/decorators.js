@@ -9,20 +9,28 @@ export const CustomizerDecorator = (Story) => {
 	const sidebarClasses = classNames('customizer-sidebar', {
 		collapsed: isCollapsed,
 	});
+
+	const toggleCollapsed = () => {
+		collapse(!isCollapsed);
+		document.querySelector('body').classList.toggle('collapsed');
+	};
+
 	return (
-		<div className="mock-customize preview-desktop">
-			<div className={sidebarClasses}>
-				{Story()}
-				<Button
-					className="collapse-sidebar"
-					icon={chevronLeft}
-					iconSize={16}
-					onClick={() => collapse(!isCollapsed)}
-					label={isCollapsed ? 'Show Sidebar' : 'Hide Sidebar'}
-				/>
+		<>
+			<div className="mock-customize preview-desktop">
+				<div className={sidebarClasses}>
+					{Story()}
+					<Button
+						className="collapse-sidebar"
+						icon={chevronLeft}
+						iconSize={16}
+						onClick={toggleCollapsed}
+						label={isCollapsed ? 'Show Sidebar' : 'Hide Sidebar'}
+					/>
+				</div>
+				<div className="preview">{}</div>
 			</div>
-			<div className="preview">{}</div>
-		</div>
+		</>
 	);
 };
 

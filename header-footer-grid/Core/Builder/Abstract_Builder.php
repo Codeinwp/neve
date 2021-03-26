@@ -205,7 +205,6 @@ abstract class Abstract_Builder implements Builder {
 		$this->init();
 
 		add_action( 'hfg_' . $this->get_id() . '_render', [ $this, 'load_template' ] );
-
 		$this->define_builder_settings();
 
 		foreach ( $this->get_rows() as $row_id => $row_name ) {
@@ -241,7 +240,7 @@ abstract class Abstract_Builder implements Builder {
 			[
 				'id'                => $this->control_id,
 				'group'             => $this->control_id,
-				'tab'               => SettingsManager::TAB_STYLE,
+				'tab'               => false,
 				'noformat'          => true,
 				'transport'         => 'post' . $this->get_id(),
 				'sanitize_callback' => [ $this, 'sanitize_json' ],
@@ -691,12 +690,16 @@ abstract class Abstract_Builder implements Builder {
 	public function is_component_active( $component_id ) {
 		if ( empty( $this->active_components ) ) {
 			$components = [];
+
 			foreach ( $this->get_layout_data() as $devices ) {
 				foreach ( $devices as $row ) {
-					if ( empty( $row ) ) {
-						continue;
+					foreach ($row as $slot => $values ){
+						 if( empty($slot) ) {
+						 	continue;
+						 }
+
+//						$components = array_merge( $components, array_combine( wp_list_pluck( $slot, 'id' ), array_fill( 0, count( $slot ), true ) ) );
 					}
-					$components = array_merge( $components, array_combine( wp_list_pluck( $row, 'id' ), array_fill( 0, count( $row ), true ) ) );
 
 				}
 			}
@@ -941,7 +944,8 @@ abstract class Abstract_Builder implements Builder {
 	 * @param null|array $row Row details.
 	 */
 	public function render_components( $device = null, $row = null ) {
-
+		echo '<h1>This is the row...</h1>';
+		return;
 		$row_index = 0;
 		if ( $device === null && $row === null ) {
 			$device    = self::$current_device;

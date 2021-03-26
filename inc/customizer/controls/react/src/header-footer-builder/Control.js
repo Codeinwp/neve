@@ -1,11 +1,29 @@
 /* jshint esversion: 6 */
 
-import HFGBuilder from './HFGBuilder';
+import HFGBuilderComponent from './HFGBuilderComponent';
 import { render } from '@wordpress/element';
 import React from 'react';
 
 export const HFGBuilderControl = wp.customize.Control.extend({
 	renderContent() {
-		render(<HFGBuilder control={this} />, this.container[0]);
+		const customizePreview = document.getElementById('customize-preview');
+		const where = document.querySelector(
+			`#accordion-section-${this.params.section}`
+		);
+
+		const builderPortalMount = document.createElement('div');
+		builderPortalMount.classList.add(
+			'neve-builder-portal-wrap',
+			'neve-hfg-builder'
+		);
+		customizePreview.appendChild(builderPortalMount);
+
+		render(
+			<HFGBuilderComponent
+				control={this}
+				portalMount={builderPortalMount}
+			/>,
+			where
+		);
 	},
 });

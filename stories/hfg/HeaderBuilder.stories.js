@@ -1,13 +1,12 @@
 import HFGBuilder from '../../inc/customizer/controls/react/src/header-footer-builder/HFGBuilder.tsx';
 import { CustomizerDecorator } from '../components/decorators';
-import { useState } from '@wordpress/element';
+import { useRef, useState } from '@wordpress/element';
 
 export default {
 	title: 'Customizer/HFG/Header Builder',
 	component: HFGBuilder,
 	args: {
-		label: 'Accordion Label',
-		initiallyExpanded: true,
+		initiallyHidden: false,
 	},
 	decorators: [CustomizerDecorator],
 };
@@ -16,9 +15,9 @@ const NewHeader = {
 	desktop: {
 		top: {},
 		main: {
-			left: [{ x: 0, y: 1, width: 4, height: 1, id: 'logo' }],
+			left: [{ id: 'logo' }],
 			'c-left': [],
-			center: [{ x: 4, y: 1, width: 8, height: 1, id: 'primary-menu' }],
+			center: [{ id: 'primary-menu' }],
 			'c-right': [],
 			right: [],
 		},
@@ -27,45 +26,36 @@ const NewHeader = {
 	mobile: {
 		top: {
 			left: [
-				{ x: 0, y: 1, width: 2, height: 1, id: 'button_base' },
-				{
-					x: 8,
-					y: 1,
-					width: 1,
-					height: 1,
-					id: 'header_search_responsive',
-				},
-				{ x: 9, y: 1, width: 3, height: 1, id: 'custom_html' },
+				{ id: 'button_base' },
+				{ id: 'header_search_responsive' },
+				{ id: 'custom_html' },
 			],
 		},
 		main: {
-			center: [
-				{ x: 0, y: 1, width: 8, height: 1, id: 'logo' },
-				{ x: 8, y: 1, width: 4, height: 1, id: 'nav-icon' },
-			],
+			center: [{ id: 'logo' }, { id: 'nav-icon' }],
 		},
 		bottom: {},
-		sidebar: [
-			{ x: 0, y: 1, width: 8, height: 1, id: 'primary-menu' },
-			{ x: 0, y: 1, width: 8, height: 1, id: 'header_search_responsive' },
-		],
+		sidebar: [{ id: 'primary-menu' }],
 	},
 };
 
 const Template = (args) => {
 	const [value, setValue] = useState(NewHeader);
+	const portalMount = document.querySelector('.neve-builder-portal-wrap');
 
-	const control = {
-		setting: {
-			get: () => value,
-			set: setValue,
-		},
-		params: {
-			builderType: 'header',
-		},
-	};
-
-	return <HFGBuilder control={control} />;
+	return (
+		<HFGBuilder
+			hidden={args.initiallyHidden}
+			onChange={setValue}
+			value={value}
+			currentBuilder={'header'}
+			portalMount={portalMount}
+		/>
+	);
 };
 
-export const Default = Template.bind({});
+export const InitiallyOpen = Template.bind({});
+export const InitiallyClosed = Template.bind({});
+InitiallyClosed.args = {
+	initiallyHidden: true,
+};

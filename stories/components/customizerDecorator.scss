@@ -82,12 +82,25 @@ button, input, select, textarea {
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
   position: relative;
+  box-sizing: border-box;
+  transition: all .18s ease;
+  @media screen and (min-width: 1667px) {
+	width: 18%;
+
+	&.collapsed {
+	  left: -18%;
+
+	  .collapse-sidebar {
+		left: calc(100% + 23px) !important;
+	  }
+	}
+  }
 
   &.collapsed {
 	left: -332px;
 
 	.collapse-sidebar {
-	  left: calc(100% + 12px);
+	  left: calc(100% + 45px);
 
 	  svg {
 		transform: rotate(180deg);
@@ -106,6 +119,7 @@ button, input, select, textarea {
 	width: 20px;
 	height: 20px;
 	min-width: unset;
+	z-index: 100;
   }
 
 }

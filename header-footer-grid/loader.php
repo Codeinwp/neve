@@ -7,12 +7,12 @@
 $header_components = array(
 	'HFG\Core\Components\Logo',
 	'HFG\Core\Components\MenuIcon',
-// 'HFG\Core\Components\Nav',
-// 'HFG\Core\Components\Button',
-// 'HFG\Core\Components\CustomHtml',
-// 'HFG\Core\Components\Search',
-// 'HFG\Core\Components\SearchResponsive',
-// 'HFG\Core\Components\SecondNav',
+	'HFG\Core\Components\Nav',
+	'HFG\Core\Components\Button',
+	'HFG\Core\Components\CustomHtml',
+	'HFG\Core\Components\Search',
+	'HFG\Core\Components\SearchResponsive',
+	'HFG\Core\Components\SecondNav',
 );
 if ( class_exists( 'WooCommerce', false ) ) {
 	$header_components[] = 'HFG\Core\Components\CartIcon';

@@ -1,3 +1,5 @@
+import {ItemInterface} from "react-sortablejs";
+
 interface StringObjectKeys {
 	[key: string]: any;
 }
@@ -20,6 +22,7 @@ export interface BuilderItemInterface extends StringObjectKeys {
 	x?: number;
 	y?: number;
 }
+
 export interface BuilderRowInterface extends StringObjectKeys {
 	left: BuilderItemInterface[];
 	"c-left": BuilderItemInterface[];
@@ -27,12 +30,14 @@ export interface BuilderRowInterface extends StringObjectKeys {
 	"c-right": BuilderItemInterface[];
 	right: BuilderItemInterface[];
 }
+
 export interface BuilderRowsInterface extends StringObjectKeys {
 	top: BuilderRowInterface;
 	main: BuilderRowInterface;
 	bottom: BuilderRowInterface;
 	sidebar?: BuilderItemInterface[];
 }
+
 export interface BuilderContentInterface extends StringObjectKeys {
 	desktop?: BuilderRowsInterface;
 	mobile?: BuilderRowsInterface;
@@ -49,10 +54,12 @@ interface HFGLayoutBuilderComponentProps extends StringObjectKeys {
 	section: string;
 	width: number;
 }
+
 interface HFGLayoutBuilderRowProps extends StringObjectKeys {
 	description: string;
 	title: string;
 }
+
 interface HFGLayoutBuilderProps extends StringObjectKeys {
 	// eslint-disable-next-line camelcase
 	control_id: string;
@@ -73,12 +80,27 @@ interface HFGLayoutBuilder extends StringObjectKeys {
 	[key: string]: HFGLayoutBuilderProps;
 }
 
-
 type LayoutUpdate = (
 	rowId: string,
 	slotId: string,
 	nextItems: BuilderItemInterface[]
 ) => void
+
+type RemoveItem = (
+	rowId: string,
+	slotId: string,
+	itemIndex: number
+) => void;
+
+
+interface BuilderActions {
+	updateLayout: LayoutUpdate;
+	onDragStart: () => void;
+	onDragEnd: () => void;
+	removeItem: RemoveItem;
+	setDevice: (value: string) => void;
+	setSidebarItems: (value: ItemInterface[]) => void;
+}
 
 declare global {
 	interface Window {

@@ -100,3 +100,20 @@ window.HFG = {
 		return JSON.stringify(usedSettings);
 	},
 };
+
+// const HFGData = NeveReactCustomize.HFG;
+// const builders = Object.keys(HFGData);
+
+window.wp.customize.bind('ready', () => {
+	// window.wp.customize.state('expandedSection').bind((x) => {
+	// 	console.log(x);
+	// });
+	//
+	// window.wp.customize.state('paneVisible').bind((x) => {
+	// 	if (x.id === 'hfg_header') {
+	// 		window.wp.customize.section('hfg_header_layout_section').focus();
+	// 		return false;
+	// 	}
+	// 	console.log('PaneVisible', x);
+	// });
+});

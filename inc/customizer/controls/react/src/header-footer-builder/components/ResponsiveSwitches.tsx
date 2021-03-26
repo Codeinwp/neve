@@ -4,20 +4,18 @@ import classnames from 'classnames';
 import { Button } from '@wordpress/components';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { BuilderActions } from '../../@types/utils';
 
 interface Props {
 	builder: string;
 	device: string;
-	setDevice: (nextDevice: string) => void;
+	actions: BuilderActions;
 }
 
-const ResponsiveSwitches: React.FC<Props> = ({
-	device,
-	setDevice,
-	builder,
-}) => {
-	const { devices } = window.NeveReactCustomize.HFG[builder];
+const ResponsiveSwitches: React.FC<Props> = ({ device, actions, builder }) => {
+	const { setDevice } = actions;
 
+	const { devices } = window.NeveReactCustomize.HFG[builder];
 	const buttons = [
 		{ title: __('Desktop', 'neve'), icon: 'desktop', slug: 'desktop' },
 		{ title: __('Mobile', 'neve'), icon: 'smartphone', slug: 'mobile' },
@@ -27,6 +25,8 @@ const ResponsiveSwitches: React.FC<Props> = ({
 		if (device === nextDevice) {
 			return false;
 		}
+		window.wp.customize.previewedDevice(nextDevice);
+
 		setDevice(nextDevice);
 	};
 

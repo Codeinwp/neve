@@ -1,0 +1,21 @@
+@import "vars";
+
+.sidebar-items {
+  padding: 15px;
+  .droppable {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 10px 5px;
+
+	.builder-item {
+	  margin: 0;
+	  padding-right: 10px;
+
+	  span {
+		max-width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	  }
+	}
+  }
+}

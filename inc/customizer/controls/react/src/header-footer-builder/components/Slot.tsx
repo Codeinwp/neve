@@ -1,5 +1,5 @@
 import React from 'react';
-import { BuilderItemInterface, LayoutUpdate } from '../../@types/utils';
+import { BuilderActions, BuilderItemInterface } from '../../@types/utils';
 import { ReactSortable } from 'react-sortablejs';
 import BuilderItem from './BuilderItem';
 
@@ -8,13 +8,13 @@ interface Props {
 	rowId: string;
 	builder: string;
 	items: BuilderItemInterface[];
-	updateLayout: LayoutUpdate;
-	onDragStart: () => void;
 	dragging: boolean;
+	actions: BuilderActions;
 }
 
 const Slot: React.FC<Props> = (props) => {
-	const { items, slotId, rowId, builder, updateLayout, onDragStart } = props;
+	const { items, slotId, rowId, builder, actions } = props;
+	const { updateLayout, onDragStart } = actions;
 
 	return (
 		<ReactSortable
@@ -24,20 +24,26 @@ const Slot: React.FC<Props> = (props) => {
 			group={builder}
 			list={items}
 			setList={(newState) => {
+				// console.log('newState', newState);
 				const nextState = newState.map((item) => {
 					const { x, y, id, width, height } = item;
-					return { x, y, width, height, id };
+					return { id };
 				});
 				updateLayout(rowId, slotId, nextState);
 			}}
 		>
-			{items.length > 0 &&
+			{items &&
+				items.length > 0 &&
 				items.map((item, index) => {
 					return (
 						<BuilderItem
-							key={index}
+							slot={slotId}
+							row={rowId}
+							key={`${item.id}-${index}`}
+							index={index}
 							builder={builder}
 							componentId={item.id}
+							actions={actions}
 						/>
 					);
 				})}
