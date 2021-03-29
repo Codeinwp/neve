@@ -115,21 +115,21 @@ class Pagination extends Base_View {
 			return;
 		}
 
-		if ( ! $this->has_infinite_scroll() ) {
-			if ( is_paged() ) {
-				do_action( 'neve_before_pagination' );
-			}
-			echo wp_kses_post(
-				paginate_links(
-					array(
-						'type' => 'list',
-					)
-				)
-			);
-
-			return;
+		if ( ! $this->has_infinite_scroll() && is_paged() ) {
+			do_action( 'neve_before_pagination' );
 		}
-		echo wp_kses_post( '<div class="load-more-posts"><span class="nv-loader" style="display: none;"></span><span class="infinite-scroll-trigger"></span></div>' );
+
+		echo wp_kses_post(
+			paginate_links(
+				array(
+					'type' => 'list',
+				)
+			)
+		);
+
+		if ( $this->has_infinite_scroll() ) {
+			echo wp_kses_post( '<div class="load-more-posts"><span class="nv-loader" style="display: none;"></span><span class="infinite-scroll-trigger"></span></div>' );
+		}
 	}
 
 	/**
