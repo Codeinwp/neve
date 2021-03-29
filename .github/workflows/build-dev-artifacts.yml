@@ -43,10 +43,10 @@ jobs:
       - name: Install composer deps
         run: composer install --no-dev --prefer-dist --no-progress --no-suggest
       - name: Install yarn deps
-        run: yarn install
+        run: yarn install --frozen-lockfile
       - name: Install Cypress yarn
         working-directory: ./e2e-tests
-        run: yarn install
+        run: yarn install --frozen-lockfile
       - name: Build files
         run: yarn run build
       - name: Create zip
