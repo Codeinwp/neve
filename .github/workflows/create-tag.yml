@@ -32,7 +32,7 @@ jobs:
       - name: Release new version
         id: release
         run: |
-          yarn install 
+          yarn install --frozen-lockfile
           composer install --no-dev --prefer-dist --no-progress --no-suggest
           yarn run build
           yarn run release

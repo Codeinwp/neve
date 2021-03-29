@@ -24,7 +24,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install and Build 🔧
         run: |
-          yarn install 
+          yarn install --frozen-lockfile
           yarn run build
           yarn run build-storybook
           cp ./.storybook/readme.md ./storybook-static/readme.md

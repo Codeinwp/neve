@@ -71,7 +71,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install deps
         run: |
-          yarn install 
+          yarn install --frozen-lockfile
           yarn run build
       - name: Run Visual Diff
         env:
