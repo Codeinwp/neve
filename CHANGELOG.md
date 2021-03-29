@@ -1,3 +1,14 @@
+##### [Version 2.10.4](https://github.com/Codeinwp/neve/compare/v2.10.3...v2.10.4) (2021-03-16)
+
+- [Fix] customizer responsive switches not working
+
+##### [Version 2.10.3](https://github.com/Codeinwp/neve/compare/v2.10.2...v2.10.3) (2021-03-16)
+
+- [Fix] utilize wp_get_attachment_image for responsive logo image in header
+- [Fix] add compatibility with PHP 8
+- [Fix] apply font-family for inputs
+- [Fix] button styles not applying to form buttons properly
+
 ##### [Version 2.10.2](https://github.com/Codeinwp/neve/compare/v2.10.1...v2.10.2) (2021-03-01)
 
 - [Feat] Add compatibility with Google Web Stories

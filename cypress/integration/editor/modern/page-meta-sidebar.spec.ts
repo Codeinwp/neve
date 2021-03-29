@@ -1,11 +1,11 @@
-describe('Single page sidebar', () => {
+describe('Single page sidebar', function () {
 	const pageSetup = {
 		title: 'Test Page',
 		content: 'The Page Content',
 		url: '/',
 	};
 
-	it('Create new page named "' + pageSetup.title + '".', () => {
+	before('Create new page named "' + pageSetup.title + '".', function () {
 		cy.insertPost(pageSetup.title, pageSetup.content, 'page');
 
 		cy.get('.post-publish-panel__postpublish-header a')
@@ -13,10 +13,23 @@ describe('Single page sidebar', () => {
 			.should('have.attr', 'href')
 			.then((href) => {
 				pageSetup.url = href.toString();
+			})
+			.then(() => {
+				window.localStorage.setItem('pageId', Cypress.$('#post_ID').val().toString());
+				cy.getJWT();
 			});
+		cy.saveLocalStorage();
 	});
 
-	it('Default page should not have sidebar and use 100% width.', () => {
+	beforeEach(function () {
+		cy.restoreLocalStorage();
+	});
+
+	afterEach(function () {
+		cy.removeLocalStorage('WP_DATA_USER_1');
+		cy.saveLocalStorage();
+	});
+	it('Default page should not have sidebar and use 100% width.', function () {
 		cy.visit(pageSetup.url);
 		cy.get('.nv-sidebar-wrap').should('not.exist');
 		cy.get('.single-page-container').should('not.have.class', 'container-fluid').and('be.visible');
@@ -27,42 +40,38 @@ describe('Single page sidebar', () => {
 		cy.get('.nv-content-wrap').should('contain', pageSetup.content);
 	});
 
-	it('Check sidebar layout', () => {
-		cy.login(pageSetup.url);
-		cy.get('#wp-admin-bar-edit a').click();
+	it('Check sidebar layout', function () {
+		cy.loginWithRequest(pageSetup.url);
+		const pageId = window.localStorage.getItem('pageId');
 		cy.clearWelcome();
 
-		cy.openNeveSidebar();
-
-		cy.getControl('neve_meta_sidebar')
-			.find('.components-radio-control__input[value="full-width"]')
-			.parent()
-			.click();
-		cy.updatePost();
+		cy.updatePageOrPostByRequest(pageId, 'pages', {
+			meta: {
+				neve_meta_sidebar: 'full-width',
+			},
+		});
 		cy.visit(pageSetup.url);
 		cy.get('.nv-sidebar-wrap').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.getControl('neve_meta_sidebar')
-			.find('.components-radio-control__input[value="left"]')
-			.parent()
-			.click();
-		cy.updatePost();
-		cy.visit(pageSetup.url);
-		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-left');
-		cy.get('#wp-admin-bar-edit a').click();
+		cy.updatePageOrPostByRequest(pageId, 'pages', {
+			meta: {
+				neve_meta_sidebar: 'left',
+			},
+		});
 
-		cy.getControl('neve_meta_sidebar')
-			.find('.components-radio-control__input[value="right"]')
-			.parent()
-			.click();
-		cy.updatePost();
-		cy.visit(pageSetup.url);
+		cy.updatePageOrPostByRequest(pageId, 'pages', {
+			meta: {
+				neve_meta_sidebar: 'right',
+			},
+		}).then(() => {
+			cy.visit(pageSetup.url);
+		});
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-right');
 	});
 
-	it('Check container layout', () => {
-		cy.login(pageSetup.url);
+	it('Check container layout', function () {
+		cy.loginWithRequest(pageSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
@@ -80,8 +89,8 @@ describe('Single page sidebar', () => {
 		cy.get('.single-page-container').should('not.have.class', 'container').and('be.visible');
 	});
 
-	it('Check container width', () => {
-		cy.login(pageSetup.url);
+	it('Check container width', function () {
+		cy.loginWithRequest(pageSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
@@ -96,8 +105,8 @@ describe('Single page sidebar', () => {
 		cy.get('.nv-single-page-wrap').should('have.css', 'max-width').and('eq', '60%');
 	});
 
-	it('Check title alignment', () => {
-		cy.login(pageSetup.url);
+	it('Check title alignment', function () {
+		cy.loginWithRequest(pageSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
@@ -131,8 +140,8 @@ describe('Single page sidebar', () => {
 		cy.get('#wp-admin-bar-edit a').click();
 	});
 
-	it('Check author avatar not to exist for page', () => {
-		cy.login(pageSetup.url);
+	it('Check author avatar not to exist for page', function () {
+		cy.loginWithRequest(pageSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
@@ -141,8 +150,8 @@ describe('Single page sidebar', () => {
 		cy.get('.components-toggle-control__label').contains('Author Avatar').should('not.exist');
 	});
 
-	it('Check post elements', () => {
-		cy.login(pageSetup.url);
+	it('Check post elements', function () {
+		cy.loginWithRequest(pageSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 

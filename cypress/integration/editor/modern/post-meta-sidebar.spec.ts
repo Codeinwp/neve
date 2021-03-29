@@ -1,21 +1,33 @@
-describe('Single post meta sidebar', () => {
+describe('Single post meta sidebar', function () {
 	const postSetup = {
 		title: 'Test Post',
 		content: 'The Post Content',
-		url: null,
+		url: '/',
 	};
 
-	it('Create new post named "' + postSetup.title + '".', () => {
+	before('Create new post named "' + postSetup.title + '".', function () {
 		cy.insertPost(postSetup.title, postSetup.content, 'post', true, true);
 		cy.get('.post-publish-panel__postpublish-header a')
 			.contains(postSetup.title)
 			.should('have.attr', 'href')
 			.then((href) => {
-				postSetup.url = href;
+				postSetup.url = href.toString();
+			})
+			.then(() => {
+				window.localStorage.setItem('postId', Cypress.$('#post_ID').val().toString());
+				cy.getJWT();
 			});
+		cy.saveLocalStorage();
 	});
 
-	it('Default meta box settings on front end.', () => {
+	beforeEach(function () {
+		cy.restoreLocalStorage();
+	});
+
+	afterEach(function () {
+		cy.saveLocalStorage();
+	});
+	it('Default meta box settings on front end.', function () {
 		cy.visit(postSetup.url);
 
 		cy.get('.nv-sidebar-wrap').should('have.class', 'nv-right').and('be.visible');
@@ -34,103 +46,103 @@ describe('Single post meta sidebar', () => {
 		cy.get('.nv-content-wrap').should('contain', postSetup.content);
 	});
 
-	it('Check sidebar layout', () => {
-		cy.login(postSetup.url);
-		cy.get('#wp-admin-bar-edit a').click();
+	it('Check sidebar layout', function () {
+		cy.loginWithRequest(postSetup.url);
+		const postId = window.localStorage.getItem('postId');
 		cy.clearWelcome();
 
-		cy.openNeveSidebar();
-
-		cy.getControl('neve_meta_sidebar')
-			.find('.components-radio-control__input[value="full-width"]')
-			.parent()
-			.click();
-		cy.updatePost();
+		cy.updatePageOrPostByRequest(postId, 'posts', {
+			meta: {
+				neve_meta_sidebar: 'full-width',
+			},
+		});
 		cy.visit(postSetup.url);
 		cy.get('.nv-sidebar-wrap').should('not.exist');
-		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.getControl('neve_meta_sidebar')
-			.find('.components-radio-control__input[value="left"]')
-			.parent()
-			.click();
-		cy.updatePost();
+		cy.updatePageOrPostByRequest(postId, 'posts', {
+			meta: {
+				neve_meta_sidebar: 'left',
+			},
+		});
 		cy.visit(postSetup.url);
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-left');
-		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.getControl('neve_meta_sidebar')
-			.find('.components-radio-control__input[value="right"]')
-			.parent()
-			.click();
-		cy.updatePost();
+		cy.updatePageOrPostByRequest(postId, 'posts', {
+			meta: {
+				neve_meta_sidebar: 'right',
+			},
+		});
 		cy.visit(postSetup.url);
 		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-right');
 	});
 
-	it('Check container layout', () => {
-		cy.login(postSetup.url);
-		cy.get('#wp-admin-bar-edit a').click();
+	it('Check container layout', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.clearWelcome();
 
-		cy.openNeveSidebar();
+		cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'posts', {
+			meta: {
+				neve_meta_container: 'full-width',
+			},
+		});
 
-		cy.getControl('neve_meta_container').find('.components-button').contains('Contained').click();
-		cy.updatePost();
-		cy.visit(postSetup.url);
-		cy.get('.single-post-container').should('have.class', 'container').and('be.visible');
-		cy.get('#wp-admin-bar-edit a').click();
-
-		cy.getControl('neve_meta_container').find('.components-button').contains('Full Width').click();
-		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.single-post-container').should('not.have.class', 'container').and('be.visible');
 	});
 
-	it('Check container width', () => {
-		cy.login(postSetup.url);
+	it('Check container width', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
 		cy.openNeveSidebar();
 
-		// const enableContentWidth = cy.get('.components-toggle-control__label').contains('Custom Content Width (%)');
 		cy.activateCheckbox('.components-toggle-control__label', 'Custom Content Width (%');
 
-		cy.get('.neve_meta_content_width').find('input[type=number]').type('{selectall}').type('60');
+		cy.get('.neve_meta_content_width')
+			.find('input[type=number]')
+			.scrollIntoView()
+			.type('{selectall}', { force: true })
+			.type('60', { force: true });
+
 		cy.updatePost();
 		cy.visit(postSetup.url);
 
 		cy.get('.nv-single-post-wrap').should('have.css', 'max-width').and('eq', '60%');
 	});
 
-	it('Check title alignment', () => {
-		cy.login(postSetup.url);
-		cy.get('#wp-admin-bar-edit a').click();
+	it('Check title alignment', function () {
+		cy.loginWithRequest(postSetup.url);
+		const postId = window.localStorage.getItem('postId');
 		cy.clearWelcome();
 
-		cy.openNeveSidebar();
-
-		cy.get('.neve_meta_title_alignment .nv-align-center').click();
-		cy.updatePost();
+		cy.updatePageOrPostByRequest(postId, 'posts', {
+			meta: {
+				neve_meta_title_alignment: 'center',
+			},
+		});
 		cy.visit(postSetup.url);
 		cy.get('h1.entry-title')
 			.should('have.class', 'has-text-align-center')
 			.and('have.css', 'text-align')
 			.and('eq', 'center');
-		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.get('.neve_meta_title_alignment .nv-align-right').click();
-		cy.updatePost();
+		cy.updatePageOrPostByRequest(postId, 'posts', {
+			meta: {
+				neve_meta_title_alignment: 'right',
+			},
+		});
 		cy.visit(postSetup.url);
 		cy.get('h1.entry-title')
 			.should('have.class', 'has-text-align-right')
 			.and('have.css', 'text-align')
 			.and('eq', 'right');
-		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.get('.neve_meta_title_alignment .nv-align-left').click();
-		cy.updatePost();
+		cy.updatePageOrPostByRequest(postId, 'posts', {
+			meta: {
+				neve_meta_title_alignment: 'left',
+			},
+		});
 		cy.visit(postSetup.url);
 		cy.get('h1.entry-title')
 			.should('have.class', 'has-text-align-left')
@@ -139,12 +151,12 @@ describe('Single post meta sidebar', () => {
 		cy.get('#wp-admin-bar-edit a').click();
 	});
 
-	it('Check author avatar', () => {
-		cy.login(postSetup.url);
-		cy.get('#wp-admin-bar-edit a').click();
+	it('Check author avatar', function () {
+		cy.loginWithRequest(postSetup.url);
 		cy.clearWelcome();
+		cy.get('#wp-admin-bar-edit a').click();
 
-		cy.openNeveSidebar();
+		cy.get('.interface-complementary-area-header');
 
 		cy.activateCheckbox('.components-toggle-control__label', 'Author Avatar');
 		cy.updatePost();
@@ -153,12 +165,12 @@ describe('Single post meta sidebar', () => {
 		cy.get('.nv-meta-list .author .photo').should('exist');
 	});
 
-	it('Check post elements', () => {
-		cy.login(postSetup.url);
+	it('Check post elements', function () {
+		cy.loginWithRequest(postSetup.url);
+		cy.reload();
 		cy.get('#wp-admin-bar-edit a').click();
-		cy.clearWelcome();
 
-		cy.openNeveSidebar();
+		cy.get('.interface-complementary-area-header');
 
 		cy.get('.ti-sortable-item-label').each((el, index) => {
 			const shouldContain = [
