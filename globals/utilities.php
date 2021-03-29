@@ -38,7 +38,6 @@ function neve_hooks() {
 			'neve_head_start_after',
 			'neve_head_end_before',
 			'neve_body_start_after',
-
 			'neve_before_header_hook',
 			'neve_before_header_wrapper_hook',
 			'neve_after_header_hook',
@@ -47,7 +46,6 @@ function neve_hooks() {
 		'footer'     => array(
 			'neve_before_footer_hook',
 			'neve_after_footer_hook',
-
 			'neve_body_end_before',
 		),
 		'shop'       => array(
@@ -74,6 +72,8 @@ function neve_hooks() {
 		'blog'       => array(
 			'neve_before_posts_loop',
 			'neve_after_posts_loop',
+			'neve_loop_entry_before',
+			'neve_loop_entry_after',
 			'neve_middle_posts_loop',
 		),
 		'pagination' => array(

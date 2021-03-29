@@ -106,7 +106,7 @@ class Pagination extends Base_View {
 	/**
 	 * Render the pagination.
 	 *
-	 * @param string $context not yet used might come in handy later.
+	 * @param string $context Pagination location context.
 	 */
 	public function render_pagination( $context ) {
 		if ( $context === 'single' ) {
