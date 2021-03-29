@@ -18,13 +18,18 @@ do_action( 'neve_before_primary_end' );
 if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'footer' ) === true ) {
 	neve_before_footer_trigger();
 	do_action( 'neve_do_footer' );
-	neve_after_footer_trigger();
+	do_action( 'neve_after_footer_hook' );
 }
 ?>
 
 </div><!--/.wrapper-->
 <?php wp_footer(); ?>
-
+<?php
+/**
+ * Executes actions before the body tag is closed.
+ */
+do_action( 'neve_body_end_before' );
+?>
 </body>
 
 </html>

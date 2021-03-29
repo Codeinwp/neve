@@ -10,9 +10,23 @@
 
 $header_classes = apply_filters( 'nv_header_classes', 'header' );
 ?><!DOCTYPE html>
+<?php
+
+/**
+ * Fires before the page is rendered.
+ */
+do_action( 'neve_html_start_before' );
+
+?>
 <html <?php language_attributes(); ?>>
 
 <head>
+	<?php
+	/**
+	 * Executes actions after the head tag is opened.
+	 */
+	do_action( 'neve_head_start_after' );
+	?>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
@@ -20,9 +34,21 @@ $header_classes = apply_filters( 'nv_header_classes', 'header' );
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
 	<?php wp_head(); ?>
+	<?php
+	/**
+	 * Executes actions before the head tag is closed.
+	 */
+	do_action( 'neve_head_end_before' );
+	?>
 </head>
 
 <body  <?php body_class(); ?> <?php neve_body_attrs(); ?> >
+<?php
+/**
+ * Executes actions after the body tag is opened.
+ */
+do_action( 'neve_body_start_after' );
+?>
 <?php wp_body_open(); ?>
 <div class="wrapper">
 	<?php neve_before_header_wrapper_trigger(); ?>

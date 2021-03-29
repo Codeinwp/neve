@@ -34,6 +34,11 @@ function neve_hooks() {
 
 	$hooks = array(
 		'header'     => array(
+			'neve_html_start_before',
+			'neve_head_start_after',
+			'neve_head_end_before',
+			'neve_body_start_after',
+
 			'neve_before_header_hook',
 			'neve_before_header_wrapper_hook',
 			'neve_after_header_hook',
@@ -42,6 +47,8 @@ function neve_hooks() {
 		'footer'     => array(
 			'neve_before_footer_hook',
 			'neve_after_footer_hook',
+
+			'neve_body_end_before',
 		),
 		'shop'       => array(
 			'neve_before_cart_popup',
