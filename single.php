@@ -17,7 +17,13 @@ get_header();
 			<article id="post-<?php echo esc_attr( get_the_ID() ); ?>"
 					class="<?php echo esc_attr( join( ' ', get_post_class( 'nv-single-post-wrap col' ) ) ); ?>">
 				<?php
+				/**
+				 * 	Executes actions before the post content.
+				 *
+				 * @since 2.3.8
+				 */
 				do_action( 'neve_before_post_content' );
+
 				if ( have_posts() ) {
 					while ( have_posts() ) {
 						the_post();
@@ -26,6 +32,12 @@ get_header();
 				} else {
 					get_template_part( 'template-parts/content', 'none' );
 				}
+
+				/**
+				 * 	Executes actions after the post content.
+				 *
+				 * @since 2.3.8
+				 */
 				do_action( 'neve_after_post_content' );
 				?>
 			</article>

@@ -117,6 +117,11 @@ class Pagination extends Base_View {
 
 		if ( ! $this->has_infinite_scroll() ) {
 			if ( is_paged() ) {
+				/**
+				 * Executes actions before pagination.
+				 *
+				 * @since 2.3.8
+				 */
 				do_action( 'neve_before_pagination' );
 			}
 			echo wp_kses_post(

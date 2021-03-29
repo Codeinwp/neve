@@ -48,14 +48,9 @@ function neve_hooks() {
 			'neve_after_footer_hook',
 			'neve_body_end_before',
 		),
-		'shop'       => array(
-			'neve_before_cart_popup',
-			'neve_after_cart_popup',
-		),
 		'post'       => array(
 			'neve_before_post_content',
 			'neve_after_post_content',
-			'neve_before_loop',
 		),
 		'page'       => array(
 			'neve_before_page_header',
@@ -70,6 +65,7 @@ function neve_hooks() {
 			'neve_after_sidebar_content',
 		),
 		'blog'       => array(
+			'neve_before_loop',
 			'neve_before_posts_loop',
 			'neve_after_posts_loop',
 			'neve_loop_entry_before',
@@ -82,7 +78,15 @@ function neve_hooks() {
 	);
 
 	if ( class_exists( 'WooCommerce' ) ) {
-		$hooks['product']  = array(
+		$hooks['shop']  = array(
+			'neve_before_cart_popup',
+			'neve_after_cart_popup',
+			'woocommerce_before_shop_loop',
+			'woocommerce_after_shop_loop',
+			'woocommerce_before_shop_loop_item',
+			'woocommerce_after_shop_loop_item'
+		);
+		$hooks['product'] = array(
 			'woocommerce_before_single_product',
 			'woocommerce_before_single_product_summary',
 			'woocommerce_single_product_summary',
