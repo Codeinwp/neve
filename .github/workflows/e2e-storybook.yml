@@ -24,11 +24,15 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+      - name: Build Cypress
+        working-directory: ./e2e-tests
+        run: yarn install
       - name: Install and Build 🔧
         run: |
           yarn install --frozen-lockfile
           yarn run build
           yarn storybook &
       - name: E2E Tests 🚀
+        working-directory: ./e2e-tests
         run: |
           yarn run cypress:storybook:run --key=${{ secrets.CYPRESS_RECORD_KEY }}
