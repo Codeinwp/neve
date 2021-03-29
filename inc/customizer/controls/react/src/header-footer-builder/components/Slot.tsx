@@ -24,7 +24,6 @@ const Slot: React.FC<Props> = (props) => {
 			group={builder}
 			list={items}
 			setList={(newState) => {
-				// console.log('newState', newState);
 				const nextState = newState.map((item) => {
 					const { x, y, id, width, height } = item;
 					return { id };

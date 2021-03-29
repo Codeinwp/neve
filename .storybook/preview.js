@@ -12,7 +12,8 @@ window.NeveReactCustomize = {}
 window.NeveReactCustomize.HFG = BuildersData
 window.wp = {
 	customize: {
-		bind: () => {		},
+		bind: () => {
+		},
 		previewedDevice: (device) => {
 			const wrap = document.querySelector('.mock-customize');
 
@@ -22,16 +23,28 @@ window.wp = {
 			wrap.classList.remove('preview-desktop', 'preview-mobile', 'preview-tablet')
 			wrap.classList.add(`preview-${device}`);
 		},
-		section : (slug) => ({
+		section: (slug) => ({
 			focus: () => console.log(`Focusing Section ${slug}.`),
-			expanded: ( value ) => console.log(`Set Expanded for ${slug} to ${value}`),
+			expanded: (value) => console.log(`Set Expanded for ${slug} to ${value}.`),
 			params: {
 				title: `Title: ${slug}`,
 			}
 		}),
-		previewer : {
-			refresh : () => {
-				console.log('REFRESH');
+		state: (slug) => ({
+			get: () => {
+				return 'title_tagline'
+			},
+			bind: () => {}
+		}),
+		previewer: {
+			bind: (e) => {
+				console.log( 'Event Bound:', e );
+			},
+			send: (e) => {
+				console.log(e)
+			},
+			refresh: () => {
+				console.log('REFRESH PREVIEW');
 			}
 		}
 	}

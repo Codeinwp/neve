@@ -185,6 +185,8 @@
 		"phpcs": "composer run-script phpcs",
 		"git:add": "git add *.css assets/**/*.css assets/**/*.js",
 		"bump-vendor": "grunt version:packageVersion",
+		"lint": "npm-run-all lint:*",
+		"format": "npm-run-all format:*",
 		"lint:global": "wp-scripts lint-js ./assets/js/src/",
 		"format:global": "wp-scripts format-js ./assets/js/src/",
 		"lint:pkg-json": "wp-scripts lint-pkg-json",

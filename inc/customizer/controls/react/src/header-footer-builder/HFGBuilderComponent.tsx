@@ -22,14 +22,9 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 	const [isHidden, setHidden] = useState<boolean>(true);
 
 	const onChange = (nextValue: BuilderContentInterface) => {
-		setValue(nextValue);
-
-		const current = JSON.stringify(value);
 		const next = JSON.stringify(nextValue);
 
-		if (current === next) {
-			return false;
-		}
+		setValue(nextValue);
 		control.setting.set(next);
 	};
 
@@ -44,6 +39,28 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 				setHidden(true);
 			});
 	}, []);
+
+	useEffect(() => {
+		const builderNode: HTMLElement | null = portalMount.querySelector(
+			'.neve-builder'
+		);
+		if (builderNode === null) {
+			return;
+		}
+		const height = builderNode.offsetHeight;
+
+		const preview: HTMLElement | null = document.querySelector(
+			'#customize-preview'
+		);
+		if (preview === null) {
+			return;
+		}
+		if (isHidden) {
+			preview.style.maxHeight = '';
+			return;
+		}
+		preview.style.maxHeight = `calc(100vh - ${height}px)`;
+	}, [isHidden]);
 
 	return (
 		<HFGBuilder

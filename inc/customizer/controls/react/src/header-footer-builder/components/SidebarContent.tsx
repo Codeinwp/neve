@@ -2,30 +2,35 @@ import React from 'react';
 import { ItemInterface, ReactSortable } from 'react-sortablejs';
 import { Button } from '@wordpress/components';
 import { menu } from '@wordpress/icons';
-import { __ } from '@wordpress/i18n';
 
 import { BuilderActions } from '../../@types/utils';
+import { __ } from '@wordpress/i18n';
 
 interface Props {
 	items: ItemInterface[];
 	builder: string;
 	actions: BuilderActions;
+	dragging: boolean;
 }
 
 const SidebarContent: React.FC<Props> = (props) => {
-	const { items, builder, actions } = props;
+	const { items, builder, actions, dragging } = props;
 	const { onDragStart, onDragEnd, setSidebarItems } = actions;
 	const allItems = window.NeveReactCustomize.HFG[builder].items;
 
 	return (
 		<div className="neve-builder-sidebar-content">
-			<div className="sidebar-items">
-				{items && items.length > 0 && (
+			<span className="customize-control-title">
+				{__('Available Components', 'neve')}
+			</span>
+			{items && items.length > 0 && (
+				<div className="sidebar-items">
 					<ReactSortable
 						onEnd={onDragEnd}
 						animation={0}
 						group={builder}
 						className={`droppable`}
+						disabled={dragging}
 						onStart={onDragStart}
 						list={items}
 						setList={(next) => {
@@ -49,8 +54,18 @@ const SidebarContent: React.FC<Props> = (props) => {
 							);
 						})}
 					</ReactSortable>
-				)}
-			</div>
+				</div>
+			)}
+			{!items.length && (
+				<div className="no-components">
+					<span>
+						{__(
+							'All available components are used inside the builder',
+							'neve'
+						)}
+					</span>
+				</div>
+			)}
 		</div>
 	);
 };

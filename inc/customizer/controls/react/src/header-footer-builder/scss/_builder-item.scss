@@ -14,6 +14,15 @@
   height: $rows-height - 7;
   color: $item-text-color;
 
+  &.active {
+	background-color: $wp-blue;
+	color: #fff;
+
+	svg {
+	  fill: #fff;
+	}
+  }
+
   svg {
 	fill: $item-icons-color;
   }

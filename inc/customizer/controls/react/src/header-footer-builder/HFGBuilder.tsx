@@ -9,7 +9,6 @@ import {
 	StringObjectKeys,
 } from '../@types/utils';
 
-// import { Portal } from '@wordpress/components';
 import { arraysAreIdentical, getUsedItemsFromItems } from './common/utils';
 import SidebarContent from './components/SidebarContent';
 import Builder from './components/Builder';
@@ -90,7 +89,11 @@ const HFGBuilder: React.FC<Props> = ({
 				const nextSlot = sideSlot === 'c-left' ? 'left' : 'right';
 
 				update[sideSlot].forEach((itemToMove: StringObjectKeys) => {
-					nextItems[row][nextSlot].push(itemToMove);
+					if (nextSlot === 'left') {
+						nextItems[row][nextSlot].push(itemToMove);
+					} else {
+						nextItems[row][nextSlot].unshift(itemToMove);
+					}
 				});
 				nextItems[row][sideSlot] = [];
 			});
@@ -100,8 +103,6 @@ const HFGBuilder: React.FC<Props> = ({
 		nextItems[row][slot] = updateItems;
 
 		const finalValue = { ...value, [device]: nextItems };
-
-		// console.log('Updating State Because of:', { row, zone });
 
 		onChange(finalValue);
 	};
@@ -122,8 +123,6 @@ const HFGBuilder: React.FC<Props> = ({
 
 		nextItems.sidebar = updateItems;
 		const finalValue = { ...value, [device]: nextItems };
-
-		// console.log('Updating State Because of: ', 'sidebar');
 
 		onChange(finalValue);
 	};
@@ -153,7 +152,11 @@ const HFGBuilder: React.FC<Props> = ({
 
 				nextItems[row][sideSlot].forEach(
 					(itemToMove: StringObjectKeys) => {
-						nextItems[row][nextSlot].push(itemToMove);
+						if (nextSlot === 'left') {
+							nextItems[row][nextSlot].push(itemToMove);
+						} else {
+							nextItems[row][nextSlot].unshift(itemToMove);
+						}
 					}
 				);
 				nextItems[row][sideSlot] = [];
@@ -211,6 +214,7 @@ const HFGBuilder: React.FC<Props> = ({
 					items={sidebarItems}
 					builder={currentBuilder}
 					actions={actions}
+					dragging={dragging}
 				/>
 			</div>
 			{createPortal(

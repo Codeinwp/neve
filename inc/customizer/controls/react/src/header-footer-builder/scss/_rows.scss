@@ -9,10 +9,6 @@
 	.row {
 	  height: 100%;
 	}
-
-	.row-settings {
-	  height: 100%;
-	}
   }
 
   .horizontal-rows {
@@ -86,6 +82,27 @@
   }
 }
 
+.sidebar-actions {
+  .row-settings {
+	height: 100%;
+	border-radius: 0;
+
+	&:not(:first-child) {
+	  border-top: $wp-grey-border;
+	}
+  }
+
+  .dashicon {
+	font-size: 15px;
+	margin: 0 !important;
+  }
+}
+
+.has-items .sidebar-actions {
+  .row-settings {
+	height: 50%;
+  }
+}
 
 .slots-wrap {
   display: flex;

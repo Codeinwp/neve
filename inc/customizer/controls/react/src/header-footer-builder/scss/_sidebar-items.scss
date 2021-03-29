@@ -1,7 +1,19 @@
 @import "vars";
 
-.sidebar-items {
+.neve-builder-sidebar-content {
   padding: 15px;
+
+  .no-components {
+	border: $droppable-border;
+	color: $item-text-color;
+	margin-top: 10px;
+	padding: 15px;
+  }
+}
+
+.sidebar-items {
+  margin-top: 10px;
+
   .droppable {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);

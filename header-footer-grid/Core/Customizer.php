@@ -68,7 +68,6 @@ class Customizer {
 
 		if ( is_admin() ) {
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'scripts' ) );
-			add_action( 'customize_controls_print_footer_scripts', array( $this, 'template' ) );
 		}
 
 		if ( is_admin() || is_customize_preview() ) {
@@ -248,21 +247,5 @@ class Customizer {
 
 		$wp_customize->register_section_type( '\HFG\Core\Customizer\Instructions_Section' );
 		$wp_customize->register_control_type( '\HFG\Core\Customizer\Instructions_Control' );
-	}
-
-	/**
-	 * The Customizer templates.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 */
-	public function template() {
-		foreach ($this->builders as $builder) {
-			$builder_data = $builder->get_builder();
-			error_log( var_export ( $builder_data, true ) );
-			?>
-			<div class="neve-builder-portal-wrap" id="<?php echo esc_attr($builder_data['control_id']) ?>-app"></div>
-			<?php
-		}
 	}
 }
