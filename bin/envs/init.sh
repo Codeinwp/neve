@@ -24,7 +24,10 @@ while docker-compose -f $DOCKER_FILE run --rm -u root cli wp --allow-root db che
     sleep 1
 done
 
-
+#Give permission to install plugins
+docker-compose -f $DOCKER_FILE wordpress exec chown -R www-data:www-data /var/www
+docker-compose -f $DOCKER_FILE wordpress exec find /var/www/ -type d -exec chmod 0755 {} \;
+docker-compose -f $DOCKER_FILE wordpress exec find /var/www/ -type f -exec chmod 644 {} \;
 
 # Run setup
 echo "Setting up environment $WP_ENV"
