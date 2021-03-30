@@ -87,7 +87,7 @@ get_header();
 						 * - neve_loop_attachment_before
 						 * - neve_loop_acme_product_before
 						 *
-						 * @since 2.10.5
+						 * @since 2.11
 						 */
 						do_action( 'neve_loop_' . $current_post_type . '_before' );
 					}
@@ -106,7 +106,7 @@ get_header();
 							 * - neve_loop_attachment_entry_before
 							 * - neve_loop_acme_product_entry_before
 							 *
-							 * @since 2.10.5
+							 * @since 2.11
 							 */
 							do_action( 'neve_loop_' . $current_post_type . '_entry_before' );
 						}
@@ -114,7 +114,7 @@ get_header();
 						/**
 						 * Executes actions before rendering the post content.
 						 *
-						 * @since 2.10.5
+						 * @since 2.11
 						 */
 						do_action( 'neve_loop_entry_before' );
 
@@ -137,7 +137,7 @@ get_header();
 						/**
 						 * Executes actions after rendering the post content.
 						 *
-						 * @since 2.10.5
+						 * @since 2.11
 						 */
 						do_action( 'neve_loop_entry_after' );
 
@@ -152,7 +152,7 @@ get_header();
 							 * - neve_loop_attachment_entry_after
 							 * - neve_loop_acme_product_entry_after
 							 *
-							 * @since 2.10.5
+							 * @since 2.11
 							 */
 							do_action( 'neve_loop_' . $current_post_type . '_entry_after' );
 						}
@@ -190,7 +190,7 @@ get_header();
 					 * - neve_loop_attachment_after
 					 * - neve_loop_acme_product_after
 					 *
-					 * @since 2.10.5
+					 * @since 2.11
 					 */
 					do_action( 'neve_loop_' . $current_post_type . '_after' );
 				}

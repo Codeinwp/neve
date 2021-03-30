@@ -32,7 +32,7 @@ do_action( 'neve_html_start_before' );
 	/**
 	 * Executes actions after the head tag is opened.
 	 *
-	 * @since 2.10.5
+	 * @since 2.11
 	 */
 	do_action( 'neve_head_start_after' );
 	?>
@@ -49,7 +49,7 @@ do_action( 'neve_html_start_before' );
 	/**
 	 * Executes actions before the head tag is closed.
 	 *
-	 * @since 2.10.5
+	 * @since 2.11
 	 */
 	do_action( 'neve_head_end_before' );
 	?>
@@ -60,7 +60,7 @@ do_action( 'neve_html_start_before' );
 /**
  * Executes actions after the body tag is opened.
  *
- * @since 2.10.5
+ * @since 2.11
  */
 do_action( 'neve_body_start_after' );
 ?>
@@ -117,7 +117,7 @@ do_action( 'neve_body_start_after' );
 	 *
 	 * @since 1.0.4
 	 */
-	do_action( 'neve_before_primary' ); 
+	do_action( 'neve_before_primary' );
 	?>
 
 	<main id="content" class="neve-main" role="main">
