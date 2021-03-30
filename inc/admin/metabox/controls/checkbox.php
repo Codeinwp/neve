@@ -32,7 +32,7 @@ class Checkbox extends Control_Base {
 		$markup .= '<p>';
 		$markup .= '<div class="checkbox-toggle-wrap">';
 		$markup .= '<label for="' . esc_attr( $this->id ) . '">';
-		$markup .= '<input type="checkbox" id="' . esc_attr( $this->id ) . '" name="' . esc_attr( $this->id ) . '" ' . '';
+		$markup .= '<input type="checkbox" id="' . esc_attr( $this->id ) . '" name="' . esc_attr( $this->id ) . '" ';
 		if ( $value === 'on' ) {
 			$markup .= ' checked="checked" ';
 		}

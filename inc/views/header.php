@@ -20,7 +20,7 @@ class Header extends Base_View {
 	 *
 	 * @var int
 	 */
-	static $primary_nav_instance_no = 1;
+	public static $primary_nav_instance_no = 1;
 	/**
 	 * Add hooks for the front end.
 	 */
@@ -134,7 +134,7 @@ class Header extends Base_View {
 		$search .= '</div>';
 		$search .= '</' . esc_attr( $tag ) . '>';
 
-		self::$primary_nav_instance_no += 1;
+		self::$primary_nav_instance_no ++;
 
 		return $search;
 	}
@@ -191,6 +191,7 @@ class Header extends Base_View {
 			ob_end_clean();
 			$cart .= $cart_widget;
 		}
+
 		$cart .= '</' . esc_attr( $tag ) . '>';
 
 		return $cart;

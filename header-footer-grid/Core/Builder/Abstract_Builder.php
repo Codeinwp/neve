@@ -820,7 +820,7 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::KEY_SELECTOR => $selector . ' .nav-ul .sub-menu',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
 						Dynamic_Selector::META_DEFAULT => $default_color,
 					],
 				],
@@ -829,7 +829,7 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::KEY_SELECTOR => $selector,
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
 						Dynamic_Selector::META_DEFAULT => $default_color,
 					],
 				],
@@ -842,10 +842,10 @@ abstract class Abstract_Builder implements Builder {
 					Dynamic_Selector::KEY_SELECTOR => $selector . ' .nav-ul .sub-menu li,' . $selector . ' .nav-ul .sub-menu',
 					Dynamic_Selector::KEY_RULES    => [
 						Config::CSS_PROP_BACKGROUND_COLOR => [
-							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
+							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
 						],
 						Config::CSS_PROP_BORDER_COLOR     => [
-							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
+							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
 						],
 					],
 				];
@@ -1101,10 +1101,17 @@ abstract class Abstract_Builder implements Builder {
 			if ( $render_groups['is_first'] ) {
 				$classes[] = 'hfg-item-first';
 			}
-			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
+			$classes[] = 'col-' . $width;
 
 			foreach ( $align as $device_slug => $align_slug ) {
-				$classes[] = $device_slug . '-' . $align_slug;
+				$builder_id          = $this->get_id();
+				$alignment_is_mobile = in_array( $device_slug, [ 'tablet', 'mobile' ], true );
+				$is_header_sidebar   = $builder_id === 'header' && $row_index === 'sidebar';
+				// Make sure we don't apply device-specific classes if the rows aren't visible on respective device.
+				// Footer has same rows on all devices.
+				if ( $builder_id === 'footer' || $is_header_sidebar || ( $device === $device_slug || ( $alignment_is_mobile && $device === 'mobile' ) ) ) {
+					$classes[] = $device_slug . '-' . $align_slug;
+				}
 			}
 
 			if ( $vertical_align ) {
@@ -1225,7 +1232,10 @@ abstract class Abstract_Builder implements Builder {
 		uasort(
 			$components_settings,
 			function ( $a, $b ) {
-				return $a['name'] > $b['name'];
+				if ( $a['name'] === $b['name'] ) {
+					return 0;
+				}
+				return $a['name'] > $b['name'] ? 1 : -1;
 			}
 		);
 

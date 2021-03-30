@@ -419,8 +419,7 @@ class Manager {
 	 * @return mixed|null
 	 */
 	public function get_default( $id, $subkey = null ) {
-		return
-			isset( self::$settings[ $id ]['default'] )
+		return isset( self::$settings[ $id ]['default'] )
 				? ( $subkey === null
 				? self::$settings[ $id ]['default']
 				: ( isset( self::$settings[ $id ]['default'][ $subkey ] )

@@ -106,7 +106,10 @@
 
 .caret {
 	margin-left: 5px;
-	font-size: .65em;
+  svg {
+	width: 1em !important;
+	height: 1em !important;
+  }
 }
 
 .nv-nav-wrap {

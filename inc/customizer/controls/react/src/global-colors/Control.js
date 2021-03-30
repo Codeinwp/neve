@@ -1,14 +1,14 @@
-import GlobalColors from './GlobalColors';
+import GlobalColorsComponent from './GlobalColorsComponent';
 import ControlWithLink from '../common/ControlWithLink';
 import { render } from '@wordpress/element';
 
-export const GlobalColorsControl = wp.customize.Control.extend( {
+export const GlobalColorsControl = wp.customize.Control.extend({
 	renderContent: function renderContent() {
 		render(
-			<ControlWithLink control={ this }>
-				<GlobalColors control={ this } />
+			<ControlWithLink link={this.params.input_attrs.link}>
+				<GlobalColorsComponent control={this} />
 			</ControlWithLink>,
-			this.container[ 0 ]
+			this.container[0]
 		);
 	},
-} );
+});

@@ -12,6 +12,11 @@ init_environment(){
 	chmod 0777 -R /var/www/html/wp-content/
 	echo "Installing Neve theme from $NEVE_LOCATION"
 	wp --allow-root theme install --activate $NEVE_LOCATION
+	wp --allow-root option update fresh_site 0
+  echo "Installing Theme API Plugin"
+  wp --allow-root plugin install https://github.com/Codeinwp/wp-thememods-api/archive/main.zip --force --activate
+  echo "Installing JWT Auth Plugin"
+  wp --allow-root plugin install api-bearer-auth --force --activate
 }
 
 
@@ -20,7 +25,8 @@ if [ -f $WP_CACHED_ENV ] && [ $SKIP_CACHE == "no" ]; then
     wp --allow-root db import  $WP_CACHED_ENV
     init_environment
 		wp --allow-root cache flush
-		wp --allow-root transient delete-all
+		wp --allow-root transient delete --all
+		wp --allow-root transient delete --all --network
     exit 0;
 fi
 

@@ -1,61 +1,56 @@
 /* jshint esversion: 6 */
-/* global NeveReactCustomize */
 import PropTypes from 'prop-types';
-
 import { __ } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { DropdownMenu, MenuGroup, MenuItem } from '@wordpress/components';
 
-class DynamicFieldInserter extends Component {
-	constructor( props ) {
-		super( props );
-		this.getOptions = this.getOptions.bind( this );
-	}
+const DynamicFieldInserter = ({
+	options = [],
+	onSelect,
+	allowedOptionsTypes,
+}) => {
+	const getOptions = () => {
+		const optionGroups = [];
 
-	getOptions() {
-		const { onSelect, allowedOptionsTypes } = this.props;
-		const allOptions = NeveReactCustomize.dynamicTags.options;
-
-		const options = [];
-		allOptions.forEach( ( optionGroup, index ) => {
+		options.forEach((optionGroup, groupIndex) => {
 			const children = [];
-			Object.keys( optionGroup.controls ).forEach( ( slug, index ) => {
+			Object.keys(optionGroup.controls).forEach((slug, index) => {
 				if (
-					! allowedOptionsTypes.includes(
-						optionGroup.controls[ slug ].type
+					!allowedOptionsTypes.includes(
+						optionGroup.controls[slug].type
 					)
 				) {
 					return false;
 				}
 				children.push(
 					<MenuItem
-						onClick={ () => {
-							onSelect( slug, optionGroup.controls[ slug ].type );
-						} }
+						key={index}
+						onClick={() => {
+							onSelect(slug, optionGroup.controls[slug].type);
+						}}
 					>
-						{ optionGroup.controls[ slug ].label }
+						{optionGroup.controls[slug].label}
 					</MenuItem>
 				);
-			} );
+			});
 
-			options.push(
-				<MenuGroup label={ optionGroup.label }>{ children }</MenuGroup>
+			optionGroups.push(
+				<MenuGroup key={groupIndex} label={optionGroup.label}>
+					{children}
+				</MenuGroup>
 			);
-		} );
-		return options;
-	}
+		});
+		return optionGroups;
+	};
 
-	render() {
-		return (
-			<DropdownMenu
-				icon="image-filter"
-				label={ __( 'Insert Dynamic Tag', 'neve' ) }
-			>
-				{ () => <Fragment>{ this.getOptions() }</Fragment> }
-			</DropdownMenu>
-		);
-	}
-}
+	return (
+		<DropdownMenu
+			icon="image-filter"
+			label={__('Insert Dynamic Tag', 'neve')}
+		>
+			{getOptions}
+		</DropdownMenu>
+	);
+};
 
 DynamicFieldInserter.propTypes = {
 	allowedOptionsTypes: PropTypes.array.isRequired,

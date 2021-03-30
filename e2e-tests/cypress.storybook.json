@@ -1,0 +1,8 @@
+{
+  "projectId": "d8fiqf",
+  "baseUrl": "http://localhost:6006",
+  "retries": 1,
+  "videoUploadOnPasses": false,
+  "numTestsKeptInMemory": 0,
+  "integrationFolder": "cypress/integration/storybook"
+}

@@ -4,84 +4,84 @@ import { ColorPicker, Button, Dropdown } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
-const ColorControl = ( {
+const ColorControl = ({
 	label,
 	selectedColor,
 	onChange,
 	defaultValue,
 	disableGlobal,
-} ) => {
+}) => {
 	let toggle = null;
 
-	const handleChange = ( value ) => {
+	const handleChange = (value) => {
 		const { r, g, b, a } = value.rgb;
-		if ( a < 1 ) {
-			onChange( `rgba(${ r }, ${ g }, ${ b }, ${ a })` );
+		if (a < 1) {
+			onChange(`rgba(${r}, ${g}, ${b}, ${a})`);
 			return false;
 		}
-		onChange( value.hex );
+		onChange(value.hex);
 	};
 
-	const isGlobal = selectedColor.indexOf( 'var' ) > -1;
+	const isGlobal = selectedColor && selectedColor.indexOf('var') > -1;
 
 	const handleClear = () => {
-		onChange( defaultValue || '' );
+		onChange(defaultValue || '');
 		toggle();
 	};
 
-	const wrapClasses = classnames( [
+	const wrapClasses = classnames([
 		'neve-control-header',
 		'neve-color-component',
-		{ 'allows-global': ! disableGlobal },
-	] );
+		{ 'allows-global': !disableGlobal },
+	]);
 
 	return (
-		<div className={ wrapClasses }>
-			{ label && (
-				<span className="customize-control-title">{ label }</span>
-			) }
-			{ ! disableGlobal && (
+		<div className={wrapClasses}>
+			{label && <span className="customize-control-title">{label}</span>}
+			{!disableGlobal && (
 				<GlobalColorsPicker
-					isGlobal={ isGlobal }
-					activeColor={ selectedColor }
-					onChange={ onChange }
+					isGlobal={isGlobal}
+					activeColor={selectedColor}
+					onChange={onChange}
 				/>
-			) }
+			)}
 			<Dropdown
-				renderToggle={ ( { isOpen, onToggle } ) => {
+				renderToggle={({ isOpen, onToggle }) => {
 					toggle = onToggle;
 					return (
 						<Button
 							isSecondary
-							onClick={ onToggle }
-							aria-expanded={ isOpen }
+							onClick={onToggle}
+							aria-expanded={isOpen}
+							aria-label={__('Color', 'neve')}
 						>
 							<span
 								className="color"
-								style={ { backgroundColor: selectedColor } }
+								style={{ backgroundColor: selectedColor }}
 							/>
 							<span className="gradient" />
 						</Button>
 					);
-				} }
-				renderContent={ () => (
+				}}
+				renderContent={() => (
 					<>
-						<a href="#" />
+						{/* eslint-disable-next-line  jsx-a11y/anchor-has-content */}
+						<a href="#color-picker" />
 						<ColorPicker
-							color={ selectedColor }
-							onChangeComplete={ handleChange }
+							color={selectedColor}
+							onChangeComplete={handleChange}
 						/>
-						{ selectedColor && (
+						{selectedColor && (
 							<Button
 								className="clear"
 								isPrimary
-								onClick={ handleClear }
+								onClick={handleClear}
 							>
-								{ __( 'Clear', 'neve' ) }
+								{__('Clear', 'neve')}
 							</Button>
-						) }
+						)}
 					</>
-				) }
+				)}
 			/>
 		</div>
 	);
@@ -94,7 +94,7 @@ ColorControl.defaultProps = {
 ColorControl.propTypes = {
 	label: PropTypes.string,
 	onChange: PropTypes.func.isRequired,
-	selectedColor: PropTypes.string.isRequired,
+	selectedColor: PropTypes.string,
 	defaultValue: PropTypes.string,
 	disableGlobal: PropTypes.bool,
 };

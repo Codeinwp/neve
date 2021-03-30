@@ -607,9 +607,6 @@ abstract class Abstract_Component implements Component {
 			)
 		);
 
-		$wp_customize->register_section_type( '\HFG\Core\Customizer\Instructions_Section' );
-		$wp_customize->register_control_type( '\HFG\Core\Customizer\Instructions_Control' );
-
 		Settings\Manager::get_instance()->load( $this->get_id(), $wp_customize );
 
 		$wp_customize->selective_refresh->add_partial(
@@ -769,10 +766,10 @@ abstract class Abstract_Component implements Component {
 		$priority       = 2000;
 
 		if ( $this->has_typeface_control ) {
-			$accordion_wrap += 1;
+			$accordion_wrap ++;
 		}
 		if ( $this->has_font_family_control ) {
-			$accordion_wrap += 1;
+			$accordion_wrap ++;
 		}
 
 		SettingsManager::get_instance()->add(

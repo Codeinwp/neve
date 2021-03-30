@@ -1,8 +1,8 @@
-/* jshint esversion: 6 */
+/* global IntersectionObserver,NodeList,XMLHttpRequest */
 /**
  * Check if we're on mobile resolution.
  *
- * @returns {boolean}
+ * @return {boolean} Mobile status.
  */
 export const isMobile = () => {
 	return window.innerWidth <= 960;
@@ -11,8 +11,8 @@ export const isMobile = () => {
 /**
  * Foreach wrapper.
  *
- * @param iterable
- * @param callback
+ * @param {Object} iterable
+ * @param {callback} callback
  */
 export const neveEach = function (iterable, callback) {
 	for (let i = 0; i < iterable.length; i++) {
@@ -22,24 +22,21 @@ export const neveEach = function (iterable, callback) {
 /**
  * Http get request.
  *
- * @param theUrl
- * @param callback
- * @param params
+ * @param {string} theUrl
+ * @param {callback} callback
+ * @param {Object} params
  */
 export const httpGetAsync = (theUrl, callback, params) => {
-	let xmlHttp = new XMLHttpRequest();
+	const xmlHttp = new XMLHttpRequest();
 	xmlHttp.onload = () => {
 		if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
 			callback(xmlHttp.response);
 	};
-	xmlHttp.onerror = (error) => {
-		console.error(error);
-	};
+	xmlHttp.onerror = () => {};
 	xmlHttp.open('POST', theUrl, true);
 	xmlHttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 	xmlHttp.send(params);
 };
-
 
 /**
  * Check if user is viewing on the best browser ever.
@@ -50,12 +47,12 @@ export const isIe = () => {
 
 /**
  * Unhash url.
- * @param url
- * @returns {string}
+ *
+ * @param {string} url
+ * @return {string} Formated URL.
  */
 export const unhashUrl = (url) => {
-
-	let parts = url.split('#');
+	const parts = url.split('#');
 	if (parts.length > 1) {
 		return parts[0];
 	}
@@ -65,14 +62,15 @@ export const unhashUrl = (url) => {
 /**
  * Add event handler to elements.
  *
- * @param element
- * @param event
- * @param callBack
+ * @param {NodeList} element
+ * @param {string} event
+ * @param {callback} callBack
  */
 export const addEvent = (element, event, callBack) => {
-	let array = ((element instanceof NodeList) ? element : [element]);
+	const array = element instanceof NodeList ? element : [element];
 
 	for (let i = 0; i < array.length; i++) {
+		//eslint-disable-next-line no-unused-expressions
 		array[i] && array[i].addEventListener(event, callBack);
 	}
 };
@@ -82,8 +80,8 @@ export const addEvent = (element, event, callBack) => {
  *
  * Toggle don't allow multiple classes on update, so this needs to be only on single ones.
  *
- * @param element
- * @param className Singular class name.
+ * @param {NodeList} element
+ * @param {string} className Singular class name.
  */
 export const toggleClass = (element, className) => {
 	batchProcess(element, className, 'toggle');
@@ -92,8 +90,8 @@ export const toggleClass = (element, className) => {
 /**
  * Add class to element.
  *
- * @param element
- * @param className
+ * @param {NodeList} element
+ * @param {string} className
  */
 export const addClass = (element, className) => {
 	batchProcess(element, className, 'add');
@@ -102,33 +100,52 @@ export const addClass = (element, className) => {
 /**
  * Remove class name from element.
  *
- * @param element
- * @param className
+ * @param {NodeList} element
+ * @param {string} className
  */
 export const removeClass = (element, className) => {
 	batchProcess(element, className, 'remove');
 };
 
 export const batchProcess = (element, classNames, method) => {
-	let classes = classNames.split(' ');
+	const classes = classNames.split(' ');
 
-	let array = ((element instanceof NodeList) ? element : [element]);
+	const array = element instanceof NodeList ? element : [element];
 	for (let i = 0; i < array.length; i++) {
-		array[i] && array[i].classList[method].apply(array[i].classList, classes);
+		//eslint-disable-next-line  no-unused-expressions
+		array[i] &&
+			array[i].classList[method].apply(array[i].classList, classes);
 	}
 };
 /**
  * Check if element is in view.
- * @param element
- * @param callback
- * @param intersectionRatio
+ *
+ * @param {Object} element
+ * @param {callback} callback
+ * @param {number} intersectionRatio
  */
 export const isInView = (element, callback, intersectionRatio = 0.5) => {
-	let intersectionObserver = new IntersectionObserver(entries => {
+	const intersectionObserver = new IntersectionObserver((entries) => {
 		if (entries[0].intersectionRatio <= intersectionRatio) {
 			return;
 		}
 		callback();
+		const check = setInterval(() => {
+			// Is element still in view-port?
+			const bounding = element.getBoundingClientRect();
+			const { top, left, right, bottom } = bounding;
+			const { innerWidth, innerHeight } = window;
+			if (
+				top >= 0 &&
+				left >= 0 &&
+				right <= innerWidth &&
+				bottom <= innerHeight
+			) {
+				callback();
+			} else {
+				clearInterval(check);
+			}
+		}, 750);
 	});
 	intersectionObserver.observe(element);
 };

@@ -23,7 +23,7 @@ $off_canvas_closing_button = '';
 $mini_cart_classes         = array( 'nv-nav-cart', 'widget' );
 if ( $cart_style === 'off-canvas' ) {
 	$mini_cart_classes         = array( 'cart-off-canvas', 'col-sm-12', 'col-sm-12' );
-	$off_canvas_closing_button = '<div class="cart-off-canvas-button-wrapper"><span class="nv-close-cart-sidebar button button-secondary">' . __( 'Close', 'neve' ) . '</span></div>';
+	$off_canvas_closing_button = '<div class="cart-off-canvas-button-wrapper"><span class="nv-close-cart-sidebar button button-secondary secondary-default">' . __( 'Close', 'neve' ) . '</span></div>';
 }
 if ( (bool) $expand_enabled === false ) {
 	$mini_cart_classes[] = 'expand-disable';
@@ -56,29 +56,27 @@ if ( (bool) $expand_enabled === false ) {
 		</a>
 		<?php if ( $cart_style !== 'link' && ! is_cart() && ! is_checkout() ) { ?>
 		<div class="<?php echo esc_attr( implode( ' ', $mini_cart_classes ) ); ?>">
-			<div class="widget woocommerce widget_shopping_cart">
-				<?php
-				do_action( 'neve_before_cart_popup' );
-				echo wp_kses_post( $off_canvas_closing_button );
-				the_widget(
-					'WC_Widget_Cart',
-					array(
-						'title'         => ' ',
-						'hide_if_empty' => true,
-					),
-					array(
-						'before_title' => '',
-						'after_title'  => '',
-					)
-				);
-				if ( ! empty( $custom_html ) ) {
-					echo '<div class="after-cart-html">';
-					echo wp_kses( balanceTags( apply_filters( 'neve_post_content', $custom_html ), true ), $allowed_post_tags );
-					echo '</div>';
-				}
-				do_action( 'neve_after_cart_popup' );
-				?>
-			</div>
+			<?php
+			do_action( 'neve_before_cart_popup' );
+			echo wp_kses_post( $off_canvas_closing_button );
+			the_widget(
+				'WC_Widget_Cart',
+				array(
+					'title'         => ' ',
+					'hide_if_empty' => true,
+				),
+				array(
+					'before_title' => '',
+					'after_title'  => '',
+				)
+			);
+			if ( ! empty( $custom_html ) ) {
+				echo '<div class="after-cart-html">';
+				echo wp_kses( balanceTags( apply_filters( 'neve_post_content', $custom_html ), true ), $allowed_post_tags );
+				echo '</div>';
+			}
+			do_action( 'neve_after_cart_popup' );
+			?>
 		</div>
 		<?php } ?>
 	</div>

@@ -1,10 +1,6 @@
 .orderby {
-	color: var(--nv-text-color);
+	//color: var(--nv-text-color);
 	opacity: .8;
-
-	option {
-		background: var(--nv-site-bg);
-	}
 }
 
 .nv-woo-filters .nv-sidebar-toggle {
@@ -29,7 +25,7 @@
 	.nv-sidebar-toggle + .woocommerce-ordering {
 		select {
 			max-width: 155px;
-			padding: 2px 0;
+			margin-bottom: 0;
 		}
 	}
 }
@@ -51,6 +47,26 @@
 }
 
 //</editor-fold>
+
+.img-wrap {
+  position: relative;
+  .out-of-stock-badge {
+	color: var(--nv-text-color);
+	font-weight: bold;
+	text-transform: uppercase;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
+	right: 0;
+	background: #fff;
+	padding: 20px 0;
+	background: var(--nv-light-bg);
+	text-align: center;
+	opacity: .9;
+	z-index: 1;
+  }
+}
 
 @mixin shop-loop--laptop() {
 	.woocommerce-ordering {

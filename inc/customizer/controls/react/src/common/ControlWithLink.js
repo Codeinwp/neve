@@ -1,26 +1,38 @@
 /* global NeveProReactCustomize */
-import { maybeParseJson } from './common';
 
-const ControlWithLink = ( { control, children } ) => {
-	if ( typeof NeveProReactCustomize !== 'undefined' ) {
+const ControlWithLink = ({ link, children }) => {
+	if (typeof NeveProReactCustomize !== 'undefined') {
 		const { whiteLabel } = NeveProReactCustomize;
 
-		if ( whiteLabel ) {
+		if (whiteLabel) {
 			return children;
 		}
 	}
 
-	const attrs = maybeParseJson( control.params.input_attrs );
-	const link = attrs.link || null;
+	const handleFocus = () => {
+		wp.customize[link.focus[0]](link.focus[1]).focus();
+	};
+
+	const Link = () => {
+		if (link.focus) {
+			return (
+				<a href="#link-select" onClick={handleFocus}>
+					{link.string}
+				</a>
+			);
+		}
+
+		return <a href={link.url}>{link.string}</a>;
+	};
 
 	return (
 		<>
-			{ children }
-			{ link && (
+			{children}
+			{link && (
 				<p className="neve-customizer-link">
-					<a href={ link.url }>{ link.string }</a>
+					<Link />
 				</p>
-			) }
+			)}
 		</>
 	);
 };

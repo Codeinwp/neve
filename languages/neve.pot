@@ -1,15 +1,15 @@
-# Copyright (C) 2020 ThemeIsle
+# Copyright (C) 2021 ThemeIsle
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.9.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Project-Id-Version: Neve 2.10.4\n"
+"Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
+"Last-Translator: friends@themeisle.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-12-07T09:24:20+00:00\n"
+"POT-Creation-Date: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -46,7 +46,6 @@ msgid "%s Options"
 msgstr ""
 
 #. translators: %s - Theme name
-#. translators: %s - theme name
 #: dashboard/inc/Main.php:204
 #: inc/core/admin.php:261
 msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
@@ -83,7 +82,6 @@ msgid "We want to make sure you have the best experience using %1$s, and that is
 msgstr ""
 
 #. translators: %s - Theme name
-#. translators: %s - theme name
 #: dashboard/inc/Main.php:216
 #: inc/core/admin.php:269
 msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
@@ -157,123 +155,128 @@ msgstr ""
 msgid "Content / Sidebar"
 msgstr ""
 
-#: dashboard/inc/Main.php:361
+#: dashboard/inc/Main.php:375
 msgid "Header/Footer builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:362
+#: dashboard/inc/Main.php:376
 msgid "Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO."
 msgstr ""
 
-#: dashboard/inc/Main.php:367
+#: dashboard/inc/Main.php:381
 msgid "Page Builder Compatibility"
 msgstr ""
 
-#: dashboard/inc/Main.php:368
+#: dashboard/inc/Main.php:382
 msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders."
 msgstr ""
 
-#: dashboard/inc/Main.php:373
+#: dashboard/inc/Main.php:387
 #: inc/customizer/options/upsells.php:90
 msgid "Header Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:374
+#: dashboard/inc/Main.php:388
 msgid "Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:379
+#: dashboard/inc/Main.php:393
 msgid "Page Header Builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:380
+#: dashboard/inc/Main.php:394
 msgid "The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder."
 msgstr ""
 
-#: dashboard/inc/Main.php:385
+#: dashboard/inc/Main.php:399
 #: inc/customizer/options/upsells.php:93
 msgid "Custom Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:386
+#: dashboard/inc/Main.php:400
 msgid "Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme."
 msgstr ""
 
-#: dashboard/inc/Main.php:391
+#: dashboard/inc/Main.php:405
 #: inc/customizer/options/upsells.php:91
 msgid "Blog Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:392
+#: dashboard/inc/Main.php:406
 msgid "Give a huge boost to your entire blogging experience with features specially designed for increased user experience."
 msgstr ""
 
-#: dashboard/inc/Main.php:392
+#: dashboard/inc/Main.php:406
 msgid "Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:397
+#: dashboard/inc/Main.php:411
 #: inc/customizer/options/upsells.php:96
 msgid "Elementor Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:398
+#: dashboard/inc/Main.php:412
 #: inc/customizer/options/upsells.php:101
 msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
 msgstr ""
 
-#: dashboard/inc/Main.php:403
+#: dashboard/inc/Main.php:417
 #: inc/customizer/options/upsells.php:92
 msgid "WooCommerce Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:404
+#: dashboard/inc/Main.php:418
 msgid "Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration."
 msgstr ""
 
-#: dashboard/inc/Main.php:404
+#: dashboard/inc/Main.php:418
 msgid "Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:409
+#: dashboard/inc/Main.php:423
 msgid "LifterLMS Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:410
+#: dashboard/inc/Main.php:424
 msgid "Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations."
 msgstr ""
 
-#: dashboard/inc/Main.php:415
+#: dashboard/inc/Main.php:429
 msgid "Typekit(Adobe) Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:416
+#: dashboard/inc/Main.php:430
 msgid "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options."
 msgstr ""
 
-#: dashboard/inc/Main.php:421
+#: dashboard/inc/Main.php:435
 msgid "White Label"
 msgstr ""
 
-#: dashboard/inc/Main.php:422
+#: dashboard/inc/Main.php:436
 msgid "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own."
 msgstr ""
 
-#: dashboard/inc/Main.php:427
+#: dashboard/inc/Main.php:441
 msgid "Scroll To Top"
 msgstr ""
 
-#: dashboard/inc/Main.php:428
+#: dashboard/inc/Main.php:442
 msgid "Simple but effective module to help you navigate back to the top of the really long pages."
 msgstr ""
 
 #. translators: %s message to upgrade PHP to the latest version
-#: functions.php:44
-msgid "Hey, we've noticed that you're running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by %s. Neve's minimal requirement is PHP 5.4.0."
+#: functions.php:34
+msgid "Hey, we've noticed that you're running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by %1$s. Neve's minimal requirement is PHP%2$s."
 msgstr ""
 
-#: functions.php:48
+#: functions.php:38
 msgid "upgrading PHP to the latest version"
+msgstr ""
+
+#. translators: %s: commands to run the theme
+#: functions.php:63
+msgid "You appear to be running the Neve theme from source code. Please finish installation by running %s."
 msgstr ""
 
 #: globals/utilities.php:1339
@@ -286,7 +289,6 @@ msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:303
 #: header-footer-grid/Core/Settings/Manager.php:181
-#: inc/customizer/options/layout_blog.php:117
 #: inc/customizer/options/main.php:53
 msgid "Layout"
 msgstr ""
@@ -295,6 +297,7 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:309
 #: inc/admin/metabox/main.php:39
 #: inc/customizer/options/layout_container.php:134
+#: inc/customizer/options/layout_sidebar.php:125
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:189
 msgid "Full Width"
 msgstr ""
@@ -320,8 +323,8 @@ msgstr ""
 #: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
 #: inc/compatibility/elementor.php:116
-#: inc/customizer/options/layout_blog.php:184
-#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/core/front_end.php:115
+#: inc/customizer/options/layout_blog.php:183
 #: inc/customizer/controls/react/src/common/common.js:77
 msgid "Text Color"
 msgstr ""
@@ -335,36 +338,36 @@ msgstr ""
 msgid "Section Content"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1279
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1289
 #: header-footer-grid/Core/Components/SearchResponsive.php:113
 msgid "Open Behaviour"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1284
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1294
 msgid "Slide from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1285
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1295
 msgid "Slide from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1286
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1296
 msgid "Pull from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1287
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1297
 msgid "Pull from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1288
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1298
 msgid "Full Canvas"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1289
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1299
 msgid "Slide Down"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1304
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1314
 msgid "Sidebar Width"
 msgstr ""
 
@@ -440,16 +443,16 @@ msgid "Header Bottom"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Header.php:183
-#: header-footer-grid/templates/rows.php:73
+#: header-footer-grid/templates/rows.php:74
 msgid "Mobile menu content"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
+#: inc/customizer/options/layout_sidebar.php:129
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:153
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:98
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:120
-#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:84
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:108
+#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:45
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:126
 msgid "Left"
 msgstr ""
 
@@ -458,11 +461,11 @@ msgid "Center"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
+#: inc/customizer/options/layout_sidebar.php:133
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:155
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:88
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:110
-#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:74
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:106
+#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:43
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:116
 msgid "Right"
 msgstr ""
 
@@ -483,37 +486,36 @@ msgstr ""
 msgid "Margin"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:787
+#: header-footer-grid/Core/Components/Abstract_Component.php:784
 #: inc/customizer/options/main.php:57
 msgid "Typography"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:868
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:83
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:105
-#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:69
+#: header-footer-grid/Core/Components/Abstract_Component.php:865
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:105
+#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:42
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:111
 msgid "Top"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:872
+#: header-footer-grid/Core/Components/Abstract_Component.php:869
 msgid "Middle"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:876
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:93
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:115
-#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:79
+#: header-footer-grid/Core/Components/Abstract_Component.php:873
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:107
+#: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:44
+#: inc/customizer/controls/react/src/spacing/SpacingComponent.js:121
 msgid "Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:889
+#: header-footer-grid/Core/Components/Abstract_Component.php:886
 msgid "Vertical Alignment"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:77
 #: header-footer-grid/Core/Components/Button.php:115
+#: inc/customizer/options/form_fields.php:564
 msgid "Button"
 msgstr ""
 
@@ -522,9 +524,8 @@ msgid "Link"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:116
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:226
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:236
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:44
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:54
 msgid "Text"
 msgstr ""
 
@@ -544,9 +545,10 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:142
 #: header-footer-grid/Core/Components/SearchResponsive.php:184
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:43
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:91
+#: inc/customizer/options/form_fields.php:379
+#: inc/customizer/controls/react/src/background/Background.js:20
+#: inc/customizer/controls/react/src/background/Background.js:71
+#: inc/customizer/controls/react/src/common/ColorControl.js:56
 msgid "Color"
 msgstr ""
 
@@ -575,22 +577,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:502
+#: inc/core/front_end.php:509
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:499
+#: inc/core/front_end.php:506
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:501
+#: inc/core/front_end.php:508
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:500
+#: inc/core/front_end.php:507
 msgid "Footer Two"
 msgstr ""
 
@@ -641,7 +643,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Nav.php:43
 #: header-footer-grid/Core/Components/Nav.php:221
 #: header-footer-grid/templates/components/component-nav.php:26
-#: inc/core/front_end.php:69
+#: inc/core/front_end.php:72
 msgid "Primary Menu"
 msgstr ""
 
@@ -668,8 +670,7 @@ msgid "Items Hover Color"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:177
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:126
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:125
 msgid "Search"
 msgstr ""
 
@@ -703,7 +704,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/NavFooter.php:41
 #: header-footer-grid/Core/Components/NavFooter.php:138
 #: header-footer-grid/templates/components/component-nav-footer.php:23
-#: inc/core/front_end.php:70
+#: inc/core/front_end.php:73
 msgid "Footer Menu"
 msgstr ""
 
@@ -732,22 +733,21 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:120
 #: header-footer-grid/Core/Components/SearchResponsive.php:284
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:270
+#: inc/customizer/controls/react/src/typeface/Typeface.js:145
 msgid "Font Size"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:194
 #: header-footer-grid/Core/Components/SearchResponsive.php:358
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:170
+#: inc/customizer/options/form_fields.php:223
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:150
 msgid "Border Width"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:251
 #: header-footer-grid/Core/Components/SearchResponsive.php:415
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:128
+#: inc/customizer/options/form_fields.php:275
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:131
 msgid "Border Radius"
 msgstr ""
 
@@ -758,9 +758,8 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:306
 #: header-footer-grid/Core/Components/SearchResponsive.php:470
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:227
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:237
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:45
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:55
 msgid "Text and Border"
 msgstr ""
 
@@ -791,7 +790,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/SecondNav.php:41
 #: header-footer-grid/Core/Components/SecondNav.php:136
 #: header-footer-grid/templates/components/component-nav-secondary.php:23
-#: inc/core/front_end.php:71
+#: inc/core/front_end.php:74
 msgid "Secondary Menu"
 msgstr ""
 
@@ -800,42 +799,41 @@ msgid "Select Menu"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:267
+#: header-footer-grid/Core/Customizer.php:270
 msgid "You are customizing the %s Header"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:267
+#: header-footer-grid/Core/Customizer.php:270
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:175
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:62
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:180
 msgid "Default"
 msgstr ""
 
 #. translators: %s is the type of builder
-#: header-footer-grid/Core/Customizer.php:275
+#: header-footer-grid/Core/Customizer.php:278
 msgid "%s Builder:"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:278
+#: header-footer-grid/Core/Customizer.php:281
 msgid "Click on any empty space to add components, or existing components to adjust settings."
 msgstr ""
 
-#: header-footer-grid/Core/Customizer.php:287
+#: header-footer-grid/Core/Customizer.php:290
 #: header-footer-grid/templates/components/component-cart-icon.php:26
 #: inc/views/header.php:130
 #: inc/views/layouts/layout_sidebar.php:144
 msgid "Close"
 msgstr ""
 
-#: header-footer-grid/Core/Customizer.php:329
+#: header-footer-grid/Core/Customizer.php:332
 msgid "Search Components"
 msgstr ""
 
-#: header-footer-grid/Core/Customizer/Instructions_Control.php:87
-#: header-footer-grid/Core/Customizer/Instructions_Section.php:85
+#: header-footer-grid/Core/Customizer/Instructions_Control.php:77
+#: header-footer-grid/Core/Customizer/Instructions_Section.php:75
 msgid "Quick Links"
 msgstr ""
 
@@ -892,7 +890,7 @@ msgid "Archive URL"
 msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:543
-#: inc/customizer/options/layout_blog.php:391
+#: inc/customizer/options/layout_blog.php:390
 #: inc/views/partials/post_meta.php:129
 msgid "Author"
 msgstr ""
@@ -987,9 +985,17 @@ msgid "General"
 msgstr ""
 
 #: header-footer-grid/Core/Settings/Manager.php:185
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:337
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:180
 msgid "Style"
+msgstr ""
+
+#. translators: %s - customizer link
+#: header-footer-grid/templates/components/component-footer-sidebar.php:31
+msgid "Replace this widget content by going to %s and add widgets into this widget area."
+msgstr ""
+
+#: header-footer-grid/templates/components/component-footer-sidebar.php:36
+msgid "Appearance &rarr; Customize &rarr; Footer &rarr;"
 msgstr ""
 
 #: header-footer-grid/templates/components/component-menu-icon.php:26
@@ -1002,11 +1008,11 @@ msgstr ""
 msgid "Toggle Navigation"
 msgstr ""
 
-#: header-footer-grid/templates/rows.php:76
+#: header-footer-grid/templates/rows.php:77
 msgid "Show"
 msgstr ""
 
-#: header-footer-grid/templates/rows.php:77
+#: header-footer-grid/templates/rows.php:78
 msgid "Hide"
 msgstr ""
 
@@ -1038,7 +1044,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:492
+#: inc/core/front_end.php:499
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:141
 msgid "Sidebar"
 msgstr ""
@@ -1093,30 +1099,28 @@ msgstr ""
 msgid "or"
 msgstr ""
 
-#: inc/admin/plugin_install/main.php:109
+#: inc/admin/plugin_install/main.php:104
 msgid "Install and activate"
 msgstr ""
 
-#: inc/admin/plugin_install/main.php:113
-#: inc/admin/plugin_install/main.php:133
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:98
-#: dashboard/src/Components/PluginCard.js:21
+#: inc/admin/plugin_install/main.php:108
+#: inc/admin/plugin_install/main.php:128
+#: dashboard/src/Components/LicenseCard.js:57
+#: dashboard/src/Components/PluginCard.js:20
 msgid "Activate"
 msgstr ""
 
-#: inc/admin/plugin_install/main.php:128
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:97
-#: dashboard/src/Components/PluginCard.js:25
+#: inc/admin/plugin_install/main.php:123
+#: dashboard/src/Components/LicenseCard.js:55
+#: dashboard/src/Components/PluginCard.js:24
 msgid "Deactivate"
 msgstr ""
 
-#: inc/admin/plugin_install/main.php:133
+#: inc/admin/plugin_install/main.php:128
 msgid "Jetpack Portfolio"
 msgstr ""
 
-#: inc/admin/plugin_install/main.php:176
+#: inc/admin/plugin_install/main.php:171
 msgid "Activating "
 msgstr ""
 
@@ -1165,51 +1169,56 @@ msgid "Two columns with text"
 msgstr ""
 
 #: inc/compatibility/elementor.php:111
-#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/core/front_end.php:95
 #: inc/customizer/controls/react/src/common/common.js:72
 msgid "Primary Accent"
 msgstr ""
 
 #: inc/compatibility/elementor.php:112
-#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/core/front_end.php:99
 #: inc/customizer/controls/react/src/common/common.js:73
 msgid "Secondary Accent"
 msgstr ""
 
 #: inc/compatibility/elementor.php:113
-#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/core/front_end.php:103
 #: inc/customizer/controls/react/src/common/common.js:74
 msgid "Site Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:114
-#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/core/front_end.php:107
 #: inc/customizer/controls/react/src/common/common.js:75
 msgid "Light Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:115
-#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/core/front_end.php:111
 #: inc/customizer/controls/react/src/common/common.js:76
 msgid "Dark Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:117
-#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/core/front_end.php:119
 #: inc/customizer/controls/react/src/common/common.js:78
 msgid "Text Dark Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:118
-#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/core/front_end.php:123
 #: inc/customizer/controls/react/src/common/common.js:79
 msgid "Extra Color 1"
 msgstr ""
 
 #: inc/compatibility/elementor.php:119
-#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/core/front_end.php:127
 #: inc/customizer/controls/react/src/common/common.js:80
 msgid "Extra Color 2"
+msgstr ""
+
+#: inc/compatibility/elementor.php:291
+#: inc/core/front_end.php:90
+msgid "Theme"
 msgstr ""
 
 #: inc/compatibility/lifter.php:314
@@ -1224,7 +1233,37 @@ msgstr ""
 msgid "Oops! Something went wrong."
 msgstr ""
 
-#: inc/compatibility/woocommerce.php:346
+#: inc/compatibility/starter-content/about.php:10
+msgctxt "Theme starter content"
+msgid "About"
+msgstr ""
+
+#: inc/compatibility/starter-content/contact.php:11
+msgctxt "Theme starter content"
+msgid "Contact"
+msgstr ""
+
+#: inc/compatibility/starter-content/home.php:9
+msgctxt "Theme starter content"
+msgid "Home"
+msgstr ""
+
+#: inc/compatibility/starter-content/portofolio.php:10
+msgctxt "Theme starter content"
+msgid "Portofolio"
+msgstr ""
+
+#: inc/compatibility/starter-content/project-details.php:10
+msgctxt "Theme starter content"
+msgid "Project Details"
+msgstr ""
+
+#: inc/compatibility/starter_content.php:170
+msgctxt "Theme starter content"
+msgid "Blog"
+msgstr ""
+
+#: inc/compatibility/woocommerce.php:341
 msgid "Filter"
 msgstr ""
 
@@ -1254,48 +1293,11 @@ msgid "Sites Library"
 msgstr ""
 
 #: inc/core/admin.php:267
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:43
 msgid "Documentation"
 msgstr ""
 
-#: inc/core/front_end.php:172
-msgid "Neve - Primary Accent"
-msgstr ""
-
-#: inc/core/front_end.php:176
-msgid "Neve - Secondary Accent"
-msgstr ""
-
-#: inc/core/front_end.php:180
-msgid "Neve - Site Background"
-msgstr ""
-
-#: inc/core/front_end.php:184
-msgid "Neve - Light Background"
-msgstr ""
-
-#: inc/core/front_end.php:188
-msgid "Neve - Dark Background"
-msgstr ""
-
-#: inc/core/front_end.php:192
-msgid "Neve - Text Color"
-msgstr ""
-
-#: inc/core/front_end.php:196
-msgid "Neve - Text Dark Background"
-msgstr ""
-
-#: inc/core/front_end.php:200
-msgid "Neve - Extra Color 1"
-msgstr ""
-
-#: inc/core/front_end.php:204
-msgid "Neve - Extra Color 2"
-msgstr ""
-
-#: inc/core/front_end.php:493
+#: inc/core/front_end.php:500
 msgid "Shop Sidebar"
 msgstr ""
 
@@ -1308,11 +1310,13 @@ msgid "Buttons"
 msgstr ""
 
 #: inc/customizer/options/buttons.php:59
-#: assets/js/src/gutenberg.js:14
+#: inc/customizer/options/form_fields.php:589
+#: assets/js/src/gutenberg.js:13
 msgid "Primary"
 msgstr ""
 
 #: inc/customizer/options/buttons.php:62
+#: inc/customizer/options/form_fields.php:590
 msgid "Secondary"
 msgstr ""
 
@@ -1333,8 +1337,8 @@ msgid "Colors & Background"
 msgstr ""
 
 #: inc/customizer/options/colors_background.php:91
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/GlobalColorsPicker.js:28
+#: inc/customizer/controls/react/src/common/GlobalColorsPicker.js:19
+#: inc/customizer/controls/react/src/common/GlobalColorsPicker.js:30
 msgid "Global Colors"
 msgstr ""
 
@@ -1342,8 +1346,49 @@ msgstr ""
 msgid "How the color system works"
 msgstr ""
 
+#: inc/customizer/options/form_fields.php:53
+#: inc/customizer/options/form_fields.php:70
+msgid "Form Fields"
+msgstr ""
+
+#: inc/customizer/options/form_fields.php:96
+msgid "Field Padding"
+msgstr ""
+
+#: inc/customizer/options/form_fields.php:148
+msgid "Field Spacing"
+msgstr ""
+
+#: inc/customizer/options/form_fields.php:182
+msgid "Field Background Color"
+msgstr ""
+
+#: inc/customizer/options/form_fields.php:321
+msgid "Border Color"
+msgstr ""
+
+#: inc/customizer/options/form_fields.php:358
+msgid "Input Text"
+msgstr ""
+
+#: inc/customizer/options/form_fields.php:470
+msgid "Form Labels"
+msgstr ""
+
+#: inc/customizer/options/form_fields.php:491
+msgid "Label Spacing"
+msgstr ""
+
+#: inc/customizer/options/form_fields.php:584
+msgid "Button Style"
+msgstr ""
+
+#: inc/customizer/options/form_fields.php:595
+msgid "Customize the default button styles"
+msgstr ""
+
 #: inc/customizer/options/layout_blog.php:80
-#: inc/customizer/options/layout_sidebar.php:152
+#: inc/customizer/options/layout_sidebar.php:163
 msgid "Blog / Archive"
 msgstr ""
 
@@ -1351,113 +1396,108 @@ msgstr ""
 msgid "Blog Layout"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:117
-#: inc/customizer/options/typography.php:115
-msgid "Blog"
-msgstr ""
-
-#: inc/customizer/options/layout_blog.php:122
+#: inc/customizer/options/layout_blog.php:121
 msgid "List"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:126
+#: inc/customizer/options/layout_blog.php:125
 msgid "Covers"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:130
+#: inc/customizer/options/layout_blog.php:129
 msgid "Grid"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:153
+#: inc/customizer/options/layout_blog.php:152
 msgid "Columns"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:214
+#: inc/customizer/options/layout_blog.php:213
 msgid "Alternating layout"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:233
+#: inc/customizer/options/layout_blog.php:232
 msgid "Enable Masonry"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:251
+#: inc/customizer/options/layout_blog.php:250
 msgid "Ordering and Content"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:271
+#: inc/customizer/options/layout_blog.php:270
 msgid "Post Pagination"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:276
+#: inc/customizer/options/layout_blog.php:275
 msgid "Number"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:277
+#: inc/customizer/options/layout_blog.php:276
 msgid "Infinite Scroll"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:290
+#: inc/customizer/options/layout_blog.php:289
 #: inc/customizer/options/layout_single_post.php:68
 msgid "Thumbnail"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:291
+#: inc/customizer/options/layout_blog.php:290
 #: inc/customizer/options/layout_single_post.php:67
 msgid "Title & Meta"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:292
+#: inc/customizer/options/layout_blog.php:291
 msgid "Excerpt"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:303
+#: inc/customizer/options/layout_blog.php:302
 msgid "Post Content Order"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:320
+#: inc/customizer/options/layout_blog.php:319
 msgid "Excerpt Length"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:343
+#: inc/customizer/options/layout_blog.php:342
 msgid "Thumbnail Shadow"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:370
+#: inc/customizer/options/layout_blog.php:369
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:315
 msgid "Post Meta"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:392
+#: inc/customizer/options/layout_blog.php:391
 #: inc/customizer/options/layout_single_product.php:107
 #: inc/views/partials/post_meta.php:130
 msgid "Category"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:393
+#: inc/customizer/options/layout_blog.php:392
 #: inc/views/partials/post_meta.php:131
 msgid "Date"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:394
+#: inc/customizer/options/layout_blog.php:393
 #: inc/customizer/options/layout_single_post.php:72
 #: inc/views/partials/post_meta.php:132
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:319
 msgid "Comments"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:406
+#: inc/customizer/options/layout_blog.php:405
 msgid "Meta Order"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:424
+#: inc/customizer/options/layout_blog.php:423
 msgid "Show Author Avatar"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:586
+#: inc/customizer/options/layout_blog.php:585
 msgid "Customize Typography for the Archive page"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:588
+#: inc/customizer/options/layout_blog.php:587
 msgid "here"
 msgstr ""
 
@@ -1497,39 +1537,39 @@ msgstr ""
 msgid "Enable Advanced Options"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:153
+#: inc/customizer/options/layout_sidebar.php:164
 #: inc/customizer/options/layout_single_post.php:42
 #: inc/customizer/options/typography.php:335
 msgid "Single Post"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:160
+#: inc/customizer/options/layout_sidebar.php:171
 msgid "Shop / Archive"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:161
+#: inc/customizer/options/layout_sidebar.php:172
 #: inc/customizer/options/layout_single_product.php:52
 msgid "Single Product"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:165
+#: inc/customizer/options/layout_sidebar.php:176
 msgid "Others"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:224
+#: inc/customizer/options/layout_sidebar.php:235
 msgid "Sidebar Layout"
 msgstr ""
 
 #. translators: %s is edit page link
-#: inc/customizer/options/layout_sidebar.php:282
+#: inc/customizer/options/layout_sidebar.php:293
 msgid "Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to \"Inherit\"."
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:286
+#: inc/customizer/options/layout_sidebar.php:297
 msgid "edit"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:323
+#: inc/customizer/options/layout_sidebar.php:334
 msgid "Content Width (%)"
 msgstr ""
 
@@ -1539,7 +1579,7 @@ msgid "Content"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:70
-#: inc/views/partials/post_meta.php:235
+#: inc/views/partials/post_meta.php:243
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:318
 msgid "Tags"
 msgstr ""
@@ -1562,9 +1602,8 @@ msgstr ""
 
 #: inc/customizer/options/layout_single_product.php:124
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:151
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:202
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:237
+#: inc/customizer/controls/react/src/typeface/Typeface.js:82
+#: inc/customizer/controls/react/src/typeface/Typeface.js:115
 msgid "None"
 msgstr ""
 
@@ -1574,6 +1613,10 @@ msgstr ""
 
 #: inc/customizer/options/typography.php:111
 msgid "Headings"
+msgstr ""
+
+#: inc/customizer/options/typography.php:115
+msgid "Blog"
 msgstr ""
 
 #: inc/customizer/options/typography.php:150
@@ -1646,11 +1689,10 @@ msgstr ""
 #: inc/customizer/options/upsells.php:132
 #: inc/customizer/options/upsells.php:137
 #: inc/customizer/options/upsells.php:142
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:37
 #: dashboard/src/Components/Content/Help.js:73
 #: dashboard/src/Components/Content/Help.js:101
-#: dashboard/src/Components/ModuleCard.js:153
+#: dashboard/src/Components/ModuleCard.js:159
 msgid "Learn More"
 msgstr ""
 
@@ -1696,65 +1738,64 @@ msgstr ""
 msgid "Search Results for: %s"
 msgstr ""
 
-#: inc/views/partials/comments.php:57
+#: inc/views/partials/comments.php:63
 msgid "Comments are closed."
 msgstr ""
 
-#: inc/views/partials/comments.php:74
+#: inc/views/partials/comments.php:81
 msgid "Comments Navigation"
 msgstr ""
 
-#: inc/views/partials/comments.php:79
+#: inc/views/partials/comments.php:86
 msgid "Previous"
 msgstr ""
 
-#: inc/views/partials/comments.php:82
+#: inc/views/partials/comments.php:89
 msgid "Next"
 msgstr ""
 
-#: inc/views/partials/comments.php:105
+#: inc/views/partials/comments.php:112
 msgid "Pingback:"
 msgstr ""
 
-#: inc/views/partials/comments.php:107
-#: inc/views/partials/comments.php:138
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/CustomPalette.js:22
+#: inc/views/partials/comments.php:114
+#: inc/views/partials/comments.php:145
+#: inc/customizer/controls/react/src/common/CustomPalette.js:18
 msgid "Edit"
 msgstr ""
 
 #. translators: 1: date, 2: time
-#: inc/views/partials/comments.php:129
+#: inc/views/partials/comments.php:136
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: inc/views/partials/comments.php:144
+#: inc/views/partials/comments.php:151
 msgid "Reply"
 msgstr ""
 
-#: inc/views/partials/comments.php:157
+#: inc/views/partials/comments.php:164
 msgid "Comment awaiting moderation."
 msgstr ""
 
 #. translators: number of comments
-#: inc/views/partials/comments.php:178
+#: inc/views/partials/comments.php:185
 msgctxt "comments title"
 msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/views/partials/post_meta.php:172
+#: inc/views/partials/post_meta.php:174
 msgid "by"
 msgstr ""
 
 #. translators: %s: Author's display name.
-#: inc/views/partials/post_meta.php:179
+#: inc/views/partials/post_meta.php:181
 msgid "Posts by %s"
 msgstr ""
 
 #. translators: %s: number of comments
-#: inc/views/partials/post_meta.php:221
+#: inc/views/partials/post_meta.php:229
 msgid "%s Comment"
 msgid_plural "%s Comments"
 msgstr[0] ""
@@ -1773,6 +1814,10 @@ msgstr ""
 msgid "next"
 msgstr ""
 
+#: inc/views/product_layout.php:61
+msgid "Out of stock"
+msgstr ""
+
 #: inc/views/template_parts.php:251
 msgid "Read More"
 msgstr ""
@@ -1781,314 +1826,254 @@ msgstr ""
 msgid "Page Builder Full Width (Neve)"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/utils/rest.js:68
-msgid "Typekit Project ID is invalid"
+#: dashboard/src/Components/Content/Changelog.js:16
+msgid "Show changelog for"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:55
-#: dashboard/src/utils/common.js:39
-msgid "Starter Sites"
+#: dashboard/src/Components/Content/Changelog.js:55
+msgid "Features"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:65
-#: dashboard/src/Components/Content/Start.js:69
-msgid "Go to Starter Sites"
+#: dashboard/src/Components/Content/Changelog.js:74
+msgid "Bug Fixes"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:78
-msgid "Customizer quick links"
+#: dashboard/src/Components/Content/Changelog.js:93
+msgid "Tweaks"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:86
-msgid "Getting Started? Check help and docs"
+#: dashboard/src/Components/Content/FreePro.js:26
+msgid "Get access to all Pro features and power-up your website"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:90
-msgid "Need more details? Please check our full documentation for detailed information on how to use Neve."
+#: dashboard/src/Components/Content/FreePro.js:32
+msgid "Get Neve Pro Now"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Help.js:47
-#: dashboard/src/Components/Content/Start.js:96
-msgid "Go to docs"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:105
-msgid "Feedback"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:106
-msgid "Share your feedback for Neve and get the chance to win the pro version."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:115
-msgid "Leave Feedback"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Options/InputForm.js:52
-msgid "Save"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:86
-msgid "Upgrade"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:120
-msgid "Module Activated"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:124
-msgid "Module Deactivated."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:134
-msgid "Could not activate module. Please try again."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/PluginCard.js:17
-msgid "Install"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/PluginCard.js:18
-msgid "Installing"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:100
-#: dashboard/src/Components/PluginCard.js:22
-msgid "Activating"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:101
-#: dashboard/src/Components/PluginCard.js:26
-msgid "Deactivating"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:24
 msgid "Build a landing page with a drag-and-drop content builder"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:28
 msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:47
+#: dashboard/src/Components/Content/Start.js:93
+msgid "Go to docs"
+msgstr ""
+
 #: dashboard/src/Components/Content/Help.js:55
-#: dashboard/src/Components/Sidebar.js:31
+#: dashboard/src/Components/Sidebar.js:29
 msgid "Join our Facebook Group"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:63
 msgid "Create a child theme"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:64
 msgid "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below."
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:80
 #: dashboard/src/Components/Content/Help.js:84
 msgid "Contact Support"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:91
 msgid "Speed up your site"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:92
 msgid "If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues."
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:108
 #: dashboard/src/utils/common.js:55
 msgid "Changelog"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:109
 msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:115
 msgid "View Changelog"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Changelog.js:16
-msgid "Show changelog for"
+#: dashboard/src/Components/Content/Start.js:55
+#: dashboard/src/utils/common.js:39
+msgid "Starter Sites"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Changelog.js:58
-msgid "Features"
+#: dashboard/src/Components/Content/Start.js:65
+#: dashboard/src/Components/Content/Start.js:69
+msgid "Go to Starter Sites"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Changelog.js:77
-msgid "Bug Fixes"
+#: dashboard/src/Components/Content/Start.js:78
+msgid "Customizer quick links"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Changelog.js:96
-msgid "Tweaks"
+#: dashboard/src/Components/Content/Start.js:86
+msgid "Getting Started? Check help and docs"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Start.js:87
+msgid "Need more details? Please check our full documentation for detailed information on how to use Neve."
+msgstr ""
+
+#: dashboard/src/Components/Content/Start.js:102
+msgid "Feedback"
+msgstr ""
+
+#: dashboard/src/Components/Content/Start.js:103
+msgid "Share your feedback for Neve and get the chance to win the pro version."
+msgstr ""
+
+#: dashboard/src/Components/Content/Start.js:112
+msgid "Leave Feedback"
+msgstr ""
+
 #: dashboard/src/Components/FeatureRow.js:44
 msgid "More details <a>here</a>."
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/FreePro.js:26
-msgid "Get access to all Pro features and power-up your website"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/FreePro.js:32
-msgid "Get Neve Pro Now"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/utils/common.js:35
-msgid "Welcome"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/utils/common.js:43
-msgid "Free vs Pro"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/utils/common.js:47
-msgid "Plugins"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/utils/common.js:51
-msgid "Help"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Header.js:25
 msgid "Neve Theme Logo"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Notification.js:87
-msgid "Done!"
+#: dashboard/src/Components/LicenseCard.js:61
+#: dashboard/src/Components/PluginCard.js:21
+msgid "Activating"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Notification.js:94
-msgid "An error occured. Please reload the page and try again."
+#: dashboard/src/Components/LicenseCard.js:62
+#: dashboard/src/Components/PluginCard.js:25
+msgid "Deactivating"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Notification.js:114
-msgid "In Progress"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:87
+#: dashboard/src/Components/LicenseCard.js:98
 msgid "Enter License Key"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:130
+#: dashboard/src/Components/LicenseCard.js:133
 msgid "Valid"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:131
-#: dashboard/src/Components/LicenseCard.js:139
+#: dashboard/src/Components/LicenseCard.js:134
+#: dashboard/src/Components/LicenseCard.js:142
 msgid "Expired"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:138
+#: dashboard/src/Components/LicenseCard.js:141
 msgid "Expires"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Sidebar.js:22
+#: dashboard/src/Components/ModuleCard.js:92
+msgid "Upgrade"
+msgstr ""
+
+#: dashboard/src/Components/ModuleCard.js:126
+msgid "Module Activated"
+msgstr ""
+
+#: dashboard/src/Components/ModuleCard.js:130
+msgid "Module Deactivated."
+msgstr ""
+
+#: dashboard/src/Components/ModuleCard.js:140
+msgid "Could not activate module. Please try again."
+msgstr ""
+
+#: dashboard/src/Components/Notification.js:88
+msgid "Done!"
+msgstr ""
+
+#: dashboard/src/Components/Notification.js:95
+msgid "An error occured. Please reload the page and try again."
+msgstr ""
+
+#: dashboard/src/Components/Notification.js:115
+msgid "In Progress"
+msgstr ""
+
+#: dashboard/src/Components/Options/InputForm.js:52
+msgid "Save"
+msgstr ""
+
+#: dashboard/src/Components/PluginCard.js:16
+msgid "Install"
+msgstr ""
+
+#: dashboard/src/Components/PluginCard.js:17
+msgid "Installing"
+msgstr ""
+
+#: dashboard/src/Components/Sidebar.js:20
 msgid "Neve Community"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Sidebar.js:36
+#: dashboard/src/Components/Sidebar.js:34
 msgid "Leave us a review"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Sidebar.js:38
+#: dashboard/src/Components/Sidebar.js:36
 msgid "Are you are enjoying Neve? We would love to hear your feedback."
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Sidebar.js:44
+#: dashboard/src/Components/Sidebar.js:42
 msgid "Submit a review"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Sidebar.js:49
+#: dashboard/src/Components/Sidebar.js:47
 msgid "Contributing"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Sidebar.js:51
+#: dashboard/src/Components/Sidebar.js:49
 msgid "Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected."
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Sidebar.js:57
+#: dashboard/src/Components/Sidebar.js:55
 msgid "What do we track?"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Sidebar.js:62
+#: dashboard/src/Components/Sidebar.js:60
 msgid "Allow Anonymous Tracking"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Sidebar.js:73
+#: dashboard/src/Components/Sidebar.js:71
 msgid "Could not update option. Please try again."
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Sidebar.js:82
-#: dashboard/src/Components/Snackbar.js:27
+#: dashboard/src/Components/Sidebar.js:80
+#: dashboard/src/Components/Snackbar.js:17
 msgid "Option Updated"
 msgstr ""
 
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Snackbar.js:23
+#: dashboard/src/Components/Snackbar.js:19
 msgid "Could not Update Option. Please try again."
+msgstr ""
+
+#: dashboard/src/utils/common.js:35
+msgid "Welcome"
+msgstr ""
+
+#: dashboard/src/utils/common.js:43
+msgid "Free vs Pro"
+msgstr ""
+
+#: dashboard/src/utils/common.js:47
+msgid "Plugins"
+msgstr ""
+
+#: dashboard/src/utils/common.js:51
+msgid "Help"
+msgstr ""
+
+#: dashboard/src/utils/rest.js:70
+msgid "Typekit Project ID is invalid"
 msgstr ""
 
 #: inc/admin/metabox/src/components/controls/SortableItems.js:26
@@ -2101,8 +2086,7 @@ msgid "Page Layout"
 msgstr ""
 
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:149
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:61
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:58
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:179
 msgid "Inherit"
 msgstr ""
@@ -2171,373 +2155,305 @@ msgstr ""
 msgid "Neve Options"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/dynamic-fields/dynamic-field-inserter.js:52
-msgid "Insert Dynamic Tag"
+#: inc/customizer/controls/react/src/background/Background.js:21
+#: inc/customizer/controls/react/src/background/Background.js:96
+msgid "Image"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Responsive.js:20
-msgid "Desktop"
+#: inc/customizer/controls/react/src/background/Background.js:84
+msgid "Use Featured Image"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Responsive.js:24
-msgid "Tablet"
+#: inc/customizer/controls/react/src/background/Background.js:95
+msgid "Fallback Image"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Responsive.js:28
-msgid "Mobile"
+#: inc/customizer/controls/react/src/background/Background.js:100
+msgid "Select from the Media Library or upload a new image"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/Background.js:114
+msgid "Add Image"
+msgstr ""
+
+#: inc/customizer/controls/react/src/background/Background.js:134
+msgid "Remove Fallback Image"
+msgstr ""
+
+#: inc/customizer/controls/react/src/background/Background.js:135
+msgid "Remove Image"
+msgstr ""
+
+#: inc/customizer/controls/react/src/background/Background.js:153
+msgid "Fixed Background"
+msgstr ""
+
+#: inc/customizer/controls/react/src/background/Background.js:166
+msgid "Overlay Color"
+msgstr ""
+
+#: inc/customizer/controls/react/src/background/Background.js:175
+msgid "Overlay Opacity"
+msgstr ""
+
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:15
+msgid "Filled"
+msgstr ""
+
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:20
+msgid "Outline"
+msgstr ""
+
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:39
+msgid "Normal"
+msgstr ""
+
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:41
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:51
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:60
+msgid "Background"
+msgstr ""
+
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:49
+msgid "Hover"
+msgstr ""
+
 #: inc/customizer/controls/react/src/common/ColorControl.js:80
 msgid "Clear"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:44
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:118
-msgid "Image"
+#: inc/customizer/controls/react/src/common/Responsive.js:36
+msgid "Desktop"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:104
-msgid "Use Featured Image"
+#: inc/customizer/controls/react/src/common/Responsive.js:40
+msgid "Tablet"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:158
-msgid "Remove Fallback Image"
+#: inc/customizer/controls/react/src/common/Responsive.js:44
+msgid "Mobile"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:162
-msgid "Remove Image"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:117
-msgid "Fallback Image"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:122
-msgid "Select from the Media Library or upload a new image"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:139
-msgid "Add Image"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:184
-msgid "Fixed Background"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:197
-msgid "Overlay Color"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:207
-msgid "Overlay Opacity"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:25
+#: inc/customizer/controls/react/src/common/Sizing.js:87
 msgid "Unlink Values"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:26
+#: inc/customizer/controls/react/src/common/Sizing.js:88
 msgid "Link Values"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:73
+#: inc/customizer/controls/react/src/common/Sizing.js:92
+msgid "Link values"
+msgstr ""
+
+#: inc/customizer/controls/react/src/common/Sizing.js:127
 msgid "Reset all Values"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/Sizing.js:74
+#: inc/customizer/controls/react/src/common/Sizing.js:128
 msgid "Reset Value"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:197
-msgid "Weight"
+#: inc/customizer/controls/react/src/dynamic-fields/dynamic-field-inserter.js:48
+msgid "Insert Dynamic Tag"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:232
-msgid "Transform"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:240
-msgid "Capitalize"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:244
-msgid "Lowercase"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:248
-msgid "Uppercase"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:317
-msgid "Line Height"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:368
-msgid "Letter Spacing"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:167
-msgid "Font Family"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:151
 msgid "No results."
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:167
+msgid "Font Family"
+msgstr ""
+
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:198
 msgid "Loading…"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:38
-msgid "Logo Only"
+#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:39
+msgid "Palette Colors"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:42
-msgid "Logo - Title & Tagline"
+#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:78
+msgid "Reset all to default"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:46
-msgid "Title & Tagline - Logo"
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:63
+msgid "Palette Title"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:50
-msgid "Logo on Top"
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:69
+msgid "Extend from:"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:57
-msgid "Plain"
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:91
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:107
+msgid "Cancel"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:223
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:233
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:61
-msgid "Background"
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:101
+msgid "Add"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:65
-msgid "Bottom Border"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:69
-msgid "Top Border"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:76
-msgid "Icon Style 2"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:80
-msgid "Icon Style 1"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:84
-msgid "Icon Style 3"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:88
-msgid "Icon Style 4"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:92
-msgid "Icon Style 5"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:96
-msgid "Icon Style 6"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:100
-msgid "WordPress Avatar"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:104
-msgid "No Icon"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:111
-msgid "Style 1"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:115
-msgid "Style 2"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:119
-msgid "Style 3"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:123
-msgid "Style 4"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:127
-msgid "Style 5"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:131
-msgid "Style 6"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:221
-msgid "Normal"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:231
-msgid "Hover"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:306
-msgid "Filled"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:311
-msgid "Outline"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:45
-msgid "Search Header Presets…"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:70
-msgid "No header presets found"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:15
-msgid "Add item"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:35
-msgid "Remove Item"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:64
-msgid "Add items by clicking the ones below."
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:76
-msgid "All items are already selected."
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:21
-msgid "Drag to Reorder"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:35
-msgid "Toggle Visibility"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:65
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:67
 msgid "Remove Palette"
 msgstr ""
 
 #. translators: %s - name of palette that will be deleted.
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:77
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:79
 msgid "Are you sure you want to delete the %s palette?"
 msgstr ""
 
-#. translators: %s - name of palette that will be deleted.
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:85
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:87
 msgid "If this is the currently active palette, the current palette will be switched to the Base one."
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:96
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:98
 msgid "Delete"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:89
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:105
-msgid "Cancel"
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:15
+msgid "Remove Item"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/Accordion.js:18
-msgid "Palette Colors"
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:16
+msgid "Add item"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:77
-msgid "Reset all to default"
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:52
+msgid "Add items by clicking the ones below."
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:61
-msgid "Palette Title"
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:61
+msgid "All items are already selected."
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:67
-msgid "Extend from:"
+#: inc/customizer/controls/react/src/ordering/Ordering.js:18
+#: inc/customizer/controls/react/src/ordering/Ordering.js:20
+msgid "Drag to Reorder"
 msgstr ""
 
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:98
-msgid "Add"
+#: inc/customizer/controls/react/src/ordering/Ordering.js:48
+#: inc/customizer/controls/react/src/ordering/Ordering.js:50
+msgid "Toggle Visibility"
+msgstr ""
+
+#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:27
+msgid "Search Header Presets…"
+msgstr ""
+
+#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:49
+msgid "No header presets found"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:37
+msgid "Logo Only"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:41
+msgid "Logo - Title & Tagline"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:45
+msgid "Title & Tagline - Logo"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:49
+msgid "Logo on Top"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:56
+msgid "Plain"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:64
+msgid "Bottom Border"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:68
+msgid "Top Border"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:75
+msgid "Icon Style 2"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:79
+msgid "Icon Style 1"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:83
+msgid "Icon Style 3"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:87
+msgid "Icon Style 4"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:91
+msgid "Icon Style 5"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:95
+msgid "Icon Style 6"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:99
+msgid "WordPress Avatar"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:103
+msgid "No Icon"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:110
+msgid "Style 1"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:114
+msgid "Style 2"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:118
+msgid "Style 3"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:122
+msgid "Style 4"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:126
+msgid "Style 5"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:130
+msgid "Style 6"
+msgstr ""
+
+#: inc/customizer/controls/react/src/typeface/Typeface.js:79
+msgid "Transform"
+msgstr ""
+
+#: inc/customizer/controls/react/src/typeface/Typeface.js:85
+msgid "Capitalize"
+msgstr ""
+
+#: inc/customizer/controls/react/src/typeface/Typeface.js:89
+msgid "Lowercase"
+msgstr ""
+
+#: inc/customizer/controls/react/src/typeface/Typeface.js:93
+msgid "Uppercase"
+msgstr ""
+
+#: inc/customizer/controls/react/src/typeface/Typeface.js:112
+msgid "Weight"
+msgstr ""
+
+#: inc/customizer/controls/react/src/typeface/Typeface.js:185
+msgid "Line Height"
+msgstr ""
+
+#: inc/customizer/controls/react/src/typeface/Typeface.js:227
+msgid "Letter Spacing"
 msgstr ""

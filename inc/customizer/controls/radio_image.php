@@ -126,7 +126,7 @@ class Radio_Image extends \WP_Customize_Control {
 		$json['choices'] = $this->choices;
 		$json['width']   = 100;
 		if ( ! empty( $this->choices ) ) {
-			$json['width'] = number_format( 100 / sizeof( $this->choices ), 2 );
+			$json['width'] = number_format( 100 / count( $this->choices ), 2 );
 		}
 		$json['id']          = $this->id;
 		$json['link']        = $this->get_link();

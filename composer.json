@@ -27,14 +27,16 @@
 	]
   },
   "scripts": {
-	"format": "phpcbf --standard=phpcs.xml --report-summary --report-source -s  --runtime-set testVersion 5.4- ",
-	"phpcs": "phpcs --standard=phpcs.xml -s --runtime-set testVersion 5.5-",
+	"format": "phpcbf --standard=phpcs.xml --report-summary --report-source -s  --runtime-set testVersion 5.5- ",
+	"format-fix-exit": "\"vendor/bin/phpcbf-fix-exit-0\" --standard=phpcs.xml --report-summary --report-source -s  --runtime-set testVersion 5.5- ",
+	"phpcs": "phpcs --standard=phpcs.xml -s  --runtime-set testVersion 5.5-",
 	"lint": "composer run-script phpcs",
+	"phpcs-i": "phpcs -i",
 	"post-install-cmd": [
-	  "yarn run bump-vendor || true"
+	  "[ ! -z \"$GITHUB_ACTIONS\" ] && yarn run bump-vendor || true"
 	],
 	"post-update-cmd": [
-	  "yarn run bump-vendor || true"
+	  "[ ! -z \"$GITHUB_ACTIONS\" ] && yarn run bump-vendor || true"
 	]
   },
   "minimum-stability": "dev",
@@ -49,8 +51,6 @@
 	"installer-disable": "true"
   },
   "require-dev": {
-	"wptrt/wpthemereview": "*",
-	"automattic/vipwpcs": "^2.0",
-	"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0"
+    "codeinwp/phpcs-ruleset": "dev-main"
   }
 }

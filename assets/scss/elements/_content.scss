@@ -64,11 +64,12 @@ table {
   }
 }
 
-p code {
+code {
   background: #d0effb;
   border-radius: 5px;
   border: $muted-border;
   padding: 0 3px;
+  color: #333;
 }
 
 pre {
@@ -81,6 +82,11 @@ pre {
   white-space: pre-wrap;
   font-size: .9em;
   line-height: 2em;
+
+  code {
+	border: 0;
+	background: transparent;
+  }
 }
 
 .nv-content-wrap, .excerpt-wrap {

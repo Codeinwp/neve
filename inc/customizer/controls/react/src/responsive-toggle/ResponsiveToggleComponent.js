@@ -6,40 +6,40 @@ import ResponsiveControl from '../common/Responsive';
 import { ToggleControl } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
 
-const ResponsiveToggleComponent = ( { control } ) => {
-	useEffect( () => {
-		document.addEventListener( 'neve-changed-customizer-value', ( e ) => {
-			if ( ! e.detail ) {
+const ResponsiveToggleComponent = ({ control }) => {
+	useEffect(() => {
+		global.addEventListener('neve-changed-customizer-value', (e) => {
+			if (!e.detail) {
 				return false;
 			}
-			if ( e.detail.id !== control.id ) {
+			if (e.detail.id !== control.id) {
 				return false;
 			}
-			setValue( e.detail.value );
-		} );
-	}, [] );
+			setValue(e.detail.value);
+		});
+	}, []);
 
-	const [ value, setValue ] = useState( control.setting.get() );
-	const [ device, setDevice ] = useState( 'desktop' );
+	const [value, setValue] = useState(control.setting.get());
+	const [device, setDevice] = useState('desktop');
 
 	return (
 		<div className="neve-white-background-control flex-contents">
 			<ToggleControl
 				className="neve-toggle-control"
-				checked={ value[ device ] }
-				label={ control.params.label }
-				onChange={ ( newValue ) => {
+				checked={value[device]}
+				label={control.params.label}
+				onChange={(newValue) => {
 					const nextValue = { ...value };
-					nextValue[ device ] = newValue;
-					setValue( nextValue );
-					control.setting.set( nextValue );
-				} }
+					nextValue[device] = newValue;
+					setValue(nextValue);
+					control.setting.set(nextValue);
+				}}
 			/>
 			<ResponsiveControl
-				excluded={ control.params.excluded || [] }
-				onChange={ ( device ) => {
-					setDevice( device );
-				} }
+				excluded={control.params.excluded || []}
+				onChange={(nextDevice) => {
+					setDevice(nextDevice);
+				}}
 			/>
 		</div>
 	);

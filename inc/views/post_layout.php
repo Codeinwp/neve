@@ -133,8 +133,13 @@ class Post_Layout extends Base_View {
 	 * Render the post meta.
 	 *
 	 * @param bool $is_list Flag to render meta as a list or as a text.
+	 *
+	 * @return bool
 	 */
 	public static function render_post_meta( $is_list = true ) {
+		if ( ! get_post() ) {
+			return false;
+		}
 		$default_meta_order = wp_json_encode(
 			array(
 				'author',
@@ -147,6 +152,7 @@ class Post_Layout extends Base_View {
 		$meta_order = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
 		$meta_order = apply_filters( 'neve_post_meta_ordering_filter', $meta_order );
 		do_action( 'neve_post_meta_single', $meta_order, $is_list );
+		return true;
 	}
 
 	/**

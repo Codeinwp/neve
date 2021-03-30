@@ -10,6 +10,7 @@
 
 namespace Neve\Core;
 
+use Neve\Compatibility\Starter_Content;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 
@@ -19,6 +20,7 @@ use Neve\Core\Settings\Mods;
  * @package Neve\Core
  */
 class Front_End {
+
 
 
 	/**
@@ -52,11 +54,12 @@ class Front_End {
 		add_theme_support( 'editor-color-palette', $this->get_gutenberg_color_palette() );
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
+		add_theme_support( 'fl-theme-builder-parts' );
 		add_theme_support( 'header-footer-elementor' );
 		add_theme_support( 'lifterlms-sidebars' );
 		add_theme_support( 'lifterlms' );
 		add_theme_support( 'service_worker', true );
-
+		add_theme_support( 'starter-content', ( new Starter_Content() )->get() );
 		add_filter( 'script_loader_tag', array( $this, 'filter_script_loader_tag' ), 10, 2 );
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
@@ -79,6 +82,116 @@ class Front_End {
 	}
 
 	/**
+	 * Gutenberg Block Color Palettes.
+	 *
+	 * Get the color palette in Gutenberg from Customizer colors.
+	 */
+	private function get_gutenberg_color_palette() {
+		$prefix                  = ( apply_filters( 'ti_wl_theme_is_localized', false ) ? __( 'Theme', 'neve' ) : 'Neve' ) . ' - ';
+		$gutenberg_color_palette = array();
+		$from_global_colors      = [
+			'neve-link-color'       => array(
+				'val'   => 'var(--nv-primary-accent)',
+				'label' => $prefix . __( 'Primary Accent', 'neve' ),
+			),
+			'neve-link-hover-color' => array(
+				'val'   => 'var(--nv-secondary-accent)',
+				'label' => $prefix . __( 'Secondary Accent', 'neve' ),
+			),
+			'nv-site-bg'            => array(
+				'val'   => 'var(--nv-site-bg)',
+				'label' => $prefix . __( 'Site Background', 'neve' ),
+			),
+			'nv-light-bg'           => array(
+				'val'   => 'var(--nv-light-bg)',
+				'label' => $prefix . __( 'Light Background', 'neve' ),
+			),
+			'nv-dark-bg'            => array(
+				'val'   => 'var(--nv-dark-bg)',
+				'label' => $prefix . __( 'Dark Background', 'neve' ),
+			),
+			'neve-text-color'       => array(
+				'val'   => 'var(--nv-text-color)',
+				'label' => $prefix . __( 'Text Color', 'neve' ),
+			),
+			'nv-text-dark-bg'       => array(
+				'val'   => 'var(--nv-text-dark-bg)',
+				'label' => $prefix . __( 'Text Dark Background', 'neve' ),
+			),
+			'nv-c-1'                => array(
+				'val'   => 'var(--nv-c-1)',
+				'label' => $prefix . __( 'Extra Color 1', 'neve' ),
+			),
+			'nv-c-2'                => array(
+				'val'   => 'var(--nv-c-2)',
+				'label' => $prefix . __( 'Extra Color 2', 'neve' ),
+			),
+		];
+
+		foreach ( $from_global_colors as $slug => $args ) {
+			array_push(
+				$gutenberg_color_palette,
+				array(
+					'name'  => esc_html( $args['label'] ),
+					'slug'  => esc_html( $slug ),
+					'color' => neve_sanitize_colors( $args['val'] ),
+				)
+			);
+		}
+
+		return array_values( $gutenberg_color_palette );
+	}
+
+	/**
+	 * Add AMP support
+	 */
+	private function add_amp_support() {
+		if ( ! defined( 'AMP__VERSION' ) ) {
+			return;
+		}
+		if ( version_compare( AMP__VERSION, '1.0.0', '<' ) ) {
+			return;
+		}
+		add_theme_support(
+			'amp',
+			apply_filters(
+				'neve_filter_amp_support',
+				array(
+					'paired' => true,
+				)
+			)
+		);
+	}
+
+	/**
+	 * Add WooCommerce support
+	 */
+	private function add_woo_support() {
+		if ( ! class_exists( 'WooCommerce', false ) ) {
+			return;
+		}
+
+		$woocommerce_settings = apply_filters(
+			'neves_woocommerce_args',
+			array(
+				'product_grid' => array(
+					'default_columns' => 3,
+					'default_rows'    => 4,
+					'min_columns'     => 1,
+					'max_columns'     => 6,
+					'min_rows'        => 1,
+				),
+			)
+		);
+
+		add_theme_support( 'woocommerce', $woocommerce_settings );
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
+
+	}
+
+	/**
 	 * Adds async/defer attributes to enqueued / registered scripts.
 	 *
 	 * If #12009 lands in WordPress, this function can no-op since it would be handled in core.
@@ -87,6 +200,7 @@ class Front_End {
 	 *
 	 * @param string $tag The script tag.
 	 * @param string $handle The script handle.
+	 *
 	 * @return string Script HTML string.
 	 */
 	public function filter_script_loader_tag( $tag, $handle ) {
@@ -101,6 +215,7 @@ class Front_End {
 			// Only allow async or defer, not both.
 			break;
 		}
+
 		return $tag;
 	}
 
@@ -160,69 +275,10 @@ class Front_End {
 	}
 
 	/**
-	 * Gutenberg Block Color Palettes.
-	 *
-	 * Get the color palette in Gutenberg from Customizer colors.
-	 */
-	private function get_gutenberg_color_palette() {
-		$gutenberg_color_palette = array();
-		$from_global_colors      = [
-			'neve-link-color'       => array(
-				'val'   => 'var(--nv-primary-accent)',
-				'label' => __( 'Neve - Primary Accent', 'neve' ),
-			),
-			'neve-link-hover-color' => array(
-				'val'   => 'var(--nv-secondary-accent)',
-				'label' => __( 'Neve - Secondary Accent', 'neve' ),
-			),
-			'nv-site-bg'            => array(
-				'val'   => 'var(--nv-site-bg)',
-				'label' => __( 'Neve - Site Background', 'neve' ),
-			),
-			'nv-light-bg'           => array(
-				'val'   => 'var(--nv-light-bg)',
-				'label' => __( 'Neve - Light Background', 'neve' ),
-			),
-			'nv-dark-bg'            => array(
-				'val'   => 'var(--nv-dark-bg)',
-				'label' => __( 'Neve - Dark Background', 'neve' ),
-			),
-			'neve-text-color'       => array(
-				'val'   => 'var(--nv-text-color)',
-				'label' => __( 'Neve - Text Color', 'neve' ),
-			),
-			'nv-text-dark-bg'       => array(
-				'val'   => 'var(--nv-text-dark-bg)',
-				'label' => __( 'Neve - Text Dark Background', 'neve' ),
-			),
-			'nv-c-1'                => array(
-				'val'   => 'var(--nv-c-1)',
-				'label' => __( 'Neve - Extra Color 1', 'neve' ),
-			),
-			'nv-c-2'                => array(
-				'val'   => 'var(--nv-c-2)',
-				'label' => __( 'Neve - Extra Color 2', 'neve' ),
-			),
-		];
-
-		foreach ( $from_global_colors as $slug => $args ) {
-			array_push(
-				$gutenberg_color_palette,
-				array(
-					'name'  => esc_html( $args['label'] ),
-					'slug'  => esc_html( $slug ),
-					'color' => neve_sanitize_colors( $args['val'] ),
-				)
-			);
-		}
-
-		return array_values( $gutenberg_color_palette );
-	}
-
-	/**
 	 * Add new Gutenberg templates on Otter plugin.
 	 *
 	 * @param array $templates_list the templates list array.
+	 *
 	 * @return array
 	 */
 	public function add_gutenberg_templates( $templates_list ) {
@@ -371,55 +427,6 @@ class Front_End {
 	}
 
 	/**
-	 * Add AMP support
-	 */
-	private function add_amp_support() {
-		if ( ! defined( 'AMP__VERSION' ) ) {
-			return;
-		}
-		if ( version_compare( AMP__VERSION, '1.0.0', '<' ) ) {
-			return;
-		}
-		add_theme_support(
-			'amp',
-			apply_filters(
-				'neve_filter_amp_support',
-				array(
-					'paired' => true,
-				)
-			)
-		);
-	}
-
-	/**
-	 * Add WooCommerce support
-	 */
-	private function add_woo_support() {
-		if ( ! class_exists( 'WooCommerce', false ) ) {
-			return;
-		}
-
-		$woocommerce_settings = apply_filters(
-			'neves_woocommerce_args',
-			array(
-				'product_grid' => array(
-					'default_columns' => 3,
-					'default_rows'    => 4,
-					'min_columns'     => 1,
-					'max_columns'     => 6,
-					'min_rows'        => 1,
-				),
-			)
-		);
-
-		add_theme_support( 'woocommerce', $woocommerce_settings );
-		add_theme_support( 'wc-product-gallery-zoom' );
-		add_theme_support( 'wc-product-gallery-lightbox' );
-		add_theme_support( 'wc-product-gallery-slider' );
-
-	}
-
-	/**
 	 * Enqueue scripts and styles.
 	 */
 	public function enqueue_scripts() {
@@ -438,7 +445,7 @@ class Front_End {
 			wp_enqueue_style( 'neve-woocommerce' );
 		}
 
-		wp_register_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		wp_register_style( 'neve-style', get_template_directory_uri() . '/style-main' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 		wp_style_add_data( 'neve-style', 'rtl', 'replace' );
 		wp_style_add_data( 'neve-style', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-style' );

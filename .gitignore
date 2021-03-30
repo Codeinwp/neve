@@ -8,5 +8,12 @@ visual-regression/*
 **/*.js.map
 **/*.css.map
 **/.DS_Store
-cypress/videos/*
+e2e-tests/cypress/videos/*
 header-footer-grid/assets/css/style*
+storybook-static
+yarn-error.log
+assets/js/build/*
+assets/css/*
+style-main*
+dashboard/build/*
+inc/customizer/controls/react/bundle/*

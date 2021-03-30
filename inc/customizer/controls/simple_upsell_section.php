@@ -43,16 +43,6 @@ class Simple_Upsell_Section extends \WP_Customize_Section {
 	public $text = '';
 
 	/**
-	 * Instructions_Control constructor.
-	 *
-	 * @param WP_Customize_Manager $manager customize manager.
-	 * @param string               $id control ID.
-	 * @param array                $args control args.
-	 */
-	public function __construct( $manager, $id, $args = array() ) {
-		parent::__construct( $manager, $id, $args );
-	}
-	/**
 	 * Gather the parameters passed to client JavaScript via JSON.
 	 *
 	 * @return array The array to be exported to the client as JSON.

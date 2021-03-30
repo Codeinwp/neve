@@ -1,7 +1,17 @@
 .editor-styles-wrapper {
-	> * {
+	&, > * {
 		background-color: var(--nv-site-bg);
 	}
+
+  .editor-post-title__input, .block-list-appender textarea {
+	&::placeholder {
+	  color: var(--nv-text-color);
+	  opacity: .5;
+	}
+  }
+  .block-list-appender textarea {
+	color: var(--nv-text-color);
+  }
   @import "main/variables";
   @import "main/mixins";
   @import "gutenberg-editor/typography";

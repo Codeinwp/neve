@@ -75,13 +75,10 @@ class Mods {
 		switch ( $key ) {
 			case Config::MODS_CONTAINER_WIDTH:
 				return '{ "mobile": 748, "tablet": 992, "desktop": 1170 }';
-				break;
 			case Config::MODS_BUTTON_PRIMARY_STYLE:
 				return neve_get_button_appearance_default();
-				break;
 			case Config::MODS_BUTTON_SECONDARY_STYLE:
 				return neve_get_button_appearance_default( 'secondary_button' );
-				break;
 			case Config::MODS_TYPEFACE_GENERAL:
 				$defaults  = self::get_typography_defaults(
 					[
@@ -91,13 +88,12 @@ class Mods {
 						'text_transform' => 'neve_body_text_transform',
 					]
 				);
-				$font_size = Mods::to_json( 'neve_body_font_size' );
+				$font_size = self::to_json( 'neve_body_font_size' );
 				if ( ! empty( $font_size ) ) {
 					$defaults['fontSize'] = $font_size;
 				}
 
 				return $defaults;
-				break;
 			case Config::MODS_TYPEFACE_H1:
 			case Config::MODS_TYPEFACE_H2:
 			case Config::MODS_TYPEFACE_H3:
@@ -139,17 +135,16 @@ class Mods {
 					],
 				];
 
-				$font_size = Mods::to_json( $legacy_map[ $key ]['font_size'] );
+				$font_size = self::to_json( $legacy_map[ $key ]['font_size'] );
 				if ( ! empty( $font_size ) ) {
 					$defaults['fontSize'] = $font_size;
 				}
-				$line_height = Mods::to_json( $legacy_map[ $key ]['line_height'] );
+				$line_height = self::to_json( $legacy_map[ $key ]['line_height'] );
 				if ( ! empty( $line_height ) ) {
 					$defaults['lineHeight'] = $line_height;
 				}
 
 				return $defaults;
-				break;
 		}
 
 		return false;
@@ -164,10 +159,10 @@ class Mods {
 	 */
 	private static function get_typography_defaults( $args ) {
 
-		$line_height    = Mods::to_json( $args['line_height'] );
-		$letter_spacing = Mods::get( $args['letter_spacing'] );
-		$font_weight    = Mods::get( $args['font_weight'] );
-		$text_transform = Mods::get( $args['text_transform'] );
+		$line_height    = self::to_json( $args['line_height'] );
+		$letter_spacing = self::get( $args['letter_spacing'] );
+		$font_weight    = self::get( $args['font_weight'] );
+		$text_transform = self::get( $args['text_transform'] );
 		$defaults       = [];
 		if ( ! empty( $line_height ) ) {
 			$defaults['lineHeight'] = $line_height;

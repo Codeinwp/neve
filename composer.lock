@@ -4,28 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0959393cd4f757e375f64f1a5e94306f",
+    "content-hash": "0f7bfc6f4536c282eb93fd6ff2a088c3",
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.2.18",
+            "version": "3.2.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "8ea22767fb6b2c453b678b3626c38db3b7c79fe5"
+                "reference": "abb31e2382fd8c40bcc18d7c9f3501d14bf48e87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/8ea22767fb6b2c453b678b3626c38db3b7c79fe5",
-                "reference": "8ea22767fb6b2c453b678b3626c38db3b7c79fe5",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/abb31e2382fd8c40bcc18d7c9f3501d14bf48e87",
+                "reference": "abb31e2382fd8c40bcc18d7c9f3501d14bf48e87",
                 "shasum": ""
             },
             "require-dev": {
-                "automattic/vipwpcs": "^1.0.0",
-                "dealerdirect/phpcodesniffer-composer-installer": "0.7.0",
-                "phpcompatibility/php-compatibility": "^9",
-                "squizlabs/php_codesniffer": "^3.3",
-                "wp-coding-standards/wpcs": "^1"
+                "codeinwp/phpcs-ruleset": "dev-main"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -44,7 +40,11 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2021-03-04T14:13:50+00:00"
+            "support": {
+                "issues": "https://github.com/Codeinwp/themeisle-sdk/issues",
+                "source": "https://github.com/Codeinwp/themeisle-sdk/tree/v3.2.19"
+            },
+            "time": "2021-03-12T08:54:44+00:00"
         }
     ],
     "packages-dev": [
@@ -93,7 +93,48 @@
                 "standards",
                 "wordpress"
             ],
+            "support": {
+                "issues": "https://github.com/Automattic/VIP-Coding-Standards/issues",
+                "source": "https://github.com/Automattic/VIP-Coding-Standards",
+                "wiki": "https://github.com/Automattic/VIP-Coding-Standards/wiki"
+            },
             "time": "2020-09-07T10:45:45+00:00"
+        },
+        {
+            "name": "codeinwp/phpcs-ruleset",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Codeinwp/phpcs-ruleset.git",
+                "reference": "e250f9e0221b0bd39122f761de00bc3cfb19fd1f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Codeinwp/phpcs-ruleset/zipball/e250f9e0221b0bd39122f761de00bc3cfb19fd1f",
+                "reference": "e250f9e0221b0bd39122f761de00bc3cfb19fd1f",
+                "shasum": ""
+            },
+            "require": {
+                "automattic/vipwpcs": "^2.0",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "sirbrillig/phpcs-variable-analysis": "^2.10",
+                "wptrt/wpthemereview": "*"
+            },
+            "default-branch": true,
+            "bin": [
+                "bin/phpcbf-fix-exit-0"
+            ],
+            "type": "phpcodesniffer-standard",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "PHPCS coding standards for Themeisle products.",
+            "support": {
+                "issues": "https://github.com/Codeinwp/phpcs-ruleset/issues",
+                "source": "https://github.com/Codeinwp/phpcs-ruleset/tree/main"
+            },
+            "time": "2021-03-05T12:12:04+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -159,6 +200,10 @@
                 "stylecheck",
                 "tests"
             ],
+            "support": {
+                "issues": "https://github.com/dealerdirect/phpcodesniffer-composer-installer/issues",
+                "source": "https://github.com/dealerdirect/phpcodesniffer-composer-installer"
+            },
             "time": "2020-12-07T18:04:37+00:00"
         },
         {
@@ -217,6 +262,10 @@
                 "phpcs",
                 "standards"
             ],
+            "support": {
+                "issues": "https://github.com/PHPCompatibility/PHPCompatibility/issues",
+                "source": "https://github.com/PHPCompatibility/PHPCompatibility"
+            },
             "time": "2019-12-27T09:44:58+00:00"
         },
         {
@@ -269,6 +318,10 @@
                 "polyfill",
                 "standards"
             ],
+            "support": {
+                "issues": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie/issues",
+                "source": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie"
+            },
             "time": "2021-02-15T10:24:51+00:00"
         },
         {
@@ -319,6 +372,10 @@
                 "standards",
                 "wordpress"
             ],
+            "support": {
+                "issues": "https://github.com/PHPCompatibility/PHPCompatibilityWP/issues",
+                "source": "https://github.com/PHPCompatibility/PHPCompatibilityWP"
+            },
             "time": "2021-02-15T12:58:46+00:00"
         },
         {
@@ -367,55 +424,12 @@
                 }
             ],
             "description": "A PHPCS sniff to detect problems with variables.",
+            "support": {
+                "issues": "https://github.com/sirbrillig/phpcs-variable-analysis/issues",
+                "source": "https://github.com/sirbrillig/phpcs-variable-analysis",
+                "wiki": "https://github.com/sirbrillig/phpcs-variable-analysis/wiki"
+            },
             "time": "2021-01-08T16:31:05+00:00"
-        },
-        {
-            "name": "sirbrillig/phpcs-variable-analysis",
-            "version": "v2.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sirbrillig/phpcs-variable-analysis.git",
-                "reference": "ff54d4ec7f2bd152d526fdabfeff639aa9b8be01"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sirbrillig/phpcs-variable-analysis/zipball/ff54d4ec7f2bd152d526fdabfeff639aa9b8be01",
-                "reference": "ff54d4ec7f2bd152d526fdabfeff639aa9b8be01",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "squizlabs/php_codesniffer": "^3.1"
-            },
-            "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4 || ^0.5 || ^0.6",
-                "limedeck/phpunit-detailed-printer": "^3.1 || ^4.0 || ^5.0",
-                "phpstan/phpstan": "^0.11.8",
-                "phpunit/phpunit": "^5.0 || ^6.5 || ^7.0 || ^8.0",
-                "sirbrillig/phpcs-import-detection": "^1.1"
-            },
-            "type": "phpcodesniffer-standard",
-            "autoload": {
-                "psr-4": {
-                    "VariableAnalysis\\": "VariableAnalysis/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sam Graham",
-                    "email": "php-codesniffer-variableanalysis@illusori.co.uk"
-                },
-                {
-                    "name": "Payton Swick",
-                    "email": "payton@foolord.com"
-                }
-            ],
-            "description": "A PHPCS sniff to detect problems with variables.",
-            "time": "2020-10-07T23:32:29+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -466,6 +480,11 @@
                 "phpcs",
                 "standards"
             ],
+            "support": {
+                "issues": "https://github.com/squizlabs/PHP_CodeSniffer/issues",
+                "source": "https://github.com/squizlabs/PHP_CodeSniffer",
+                "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
+            },
             "time": "2020-10-23T02:01:07+00:00"
         },
         {
@@ -512,6 +531,11 @@
                 "standards",
                 "wordpress"
             ],
+            "support": {
+                "issues": "https://github.com/WordPress/WordPress-Coding-Standards/issues",
+                "source": "https://github.com/WordPress/WordPress-Coding-Standards",
+                "wiki": "https://github.com/WordPress/WordPress-Coding-Standards/wiki"
+            },
             "time": "2020-05-13T23:57:56+00:00"
         },
         {
@@ -582,12 +606,18 @@
                 "themes",
                 "wordpress"
             ],
+            "support": {
+                "issues": "https://github.com/WPTRT/WPThemeReview/issues",
+                "source": "https://github.com/WPTRT/WPThemeReview"
+            },
             "time": "2019-11-17T20:05:55+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "codeinwp/phpcs-ruleset": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
@@ -595,5 +625,5 @@
     "platform-overrides": {
         "php": "5.6"
     },
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

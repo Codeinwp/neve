@@ -1,66 +1,66 @@
 //<editor-fold desc="Gutenberg alignments">
 
 .alignfull {
-	width: 100vw;
-	max-width: 100vw;
-	margin-left: calc(50% - 50vw);
-	padding: 0 15px;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 0 15px;
 }
 
 .alignwide {
-	width: 70vw;
-	max-width: 70vw;
-	margin-left: calc(50% - 35vw);
+  width: 70vw;
+  max-width: 70vw;
+  margin-left: calc(50% - 35vw);
 }
 
 body {
-	&.nv-sidebar-left,
-	&.nv-sidebar-right {
-		.alignfull, .alignwide {
-			max-width: 100%;
-			margin-left: auto;
-		}
+  &.nv-sidebar-left,
+  &.nv-sidebar-right {
+	.alignfull, .alignwide {
+	  max-width: 100%;
+	  margin-left: auto;
 	}
+  }
 }
 
 //</editor-fold>
 
 //<editor-fold desc="Front End Font Sizes">
 .has-neve-body-font-size {
-	font-size: $h1-mobile-font-size;
+  font-size: $h1-mobile-font-size;
 }
 
 .has-neve-h-1-font-size {
-	font-size: $h2-mobile-font-size;
+  font-size: $h2-mobile-font-size;
 }
 
 .has-neve-h-2-font-size {
-	font-size: $h3-mobile-font-size;
+  font-size: $h3-mobile-font-size;
 }
 
 .has-neve-h-3-font-size {
-	font-size: $h4-mobile-font-size;
+  font-size: $h4-mobile-font-size;
 }
 
 .has-neve-h-4-font-size {
-	font-size: $h5-mobile-font-size;
+  font-size: $h5-mobile-font-size;
 }
 
 .has-neve-h-5-font-size {
-	font-size: $h6-mobile-font-size;
+  font-size: $h6-mobile-font-size;
 }
 
 //</editor-fold>
 
 //<editor-fold desc="Blockquote">
 blockquote.wp-block-quote.is-style-large {
-	p {
-		font-size: $h2-font-size;
-	}
+  p {
+	font-size: $h2-font-size;
+  }
 
-	cite {
-		font-size: .95em;
-	}
+  cite {
+	font-size: .95em;
+  }
 }
 
 //</editor-fold>
@@ -68,36 +68,36 @@ blockquote.wp-block-quote.is-style-large {
 //<editor-fold desc="Pullquote">
 .wp-block-pullquote {
 
-	blockquote {
-		margin: 1em auto;
+  blockquote {
+	margin: 1em auto;
 
-		p {
-			font-size: 2em;
-			margin-bottom: $spacing-sm;
-		}
-
-		&::before,
-		&::after {
-			display: none;
-		}
-
-		cite {
-			font-size: .85em;
-		}
+	p {
+	  font-size: 2em;
+	  margin-bottom: $spacing-sm;
 	}
 
-	&.is-style-solid-color blockquote p {
-		font-size: 2em;
+	&::before,
+	&::after {
+	  display: none;
 	}
 
-	&:not(.is-style-solid-color) {
-		border-top: 4px solid;
-		border-bottom: 4px solid;
-
-		blockquote cite {
-			text-transform: uppercase;
-		}
+	cite {
+	  font-size: .85em;
 	}
+  }
+
+  &.is-style-solid-color blockquote p {
+	font-size: 2em;
+  }
+
+  &:not(.is-style-solid-color) {
+	border-top: 4px solid;
+	border-bottom: 4px solid;
+
+	blockquote cite {
+	  text-transform: uppercase;
+	}
+  }
 
 }
 
@@ -105,94 +105,87 @@ blockquote.wp-block-quote.is-style-large {
 
 //<editor-fold desc="Tables">
 .wp-block-table {
-	width: 100%;
+  width: 100%;
 }
 
 //</editor-fold>
 
 //<editor-fold desc="Separator">
 .wp-block-separator {
-	display: block;
-	margin: $spacing auto;
-	width: 100px;
-	border: none;
-	background-color: #8f98a1;
-	height: 2px;
+  display: block;
+  margin: $spacing auto;
+  width: 100px;
+  border: none;
+  background-color: #8f98a1;
+  height: 2px;
 
-	&.is-style-wide {
-		height: 1px;
-	}
+  &.is-style-wide {
+	height: 1px;
+  }
 
-	&.is-style-dots {
-		height: auto;
-	}
+  &.is-style-dots {
+	height: auto;
+  }
 
-	&.is-style-dots, &.is-style-wide {
-		width: 100%;
-	}
+  &.is-style-dots, &.is-style-wide {
+	width: 100%;
+  }
 }
 
 //</editor-fold>
 
 //<editor-fold desc="Verse">
 .wp-block-verse {
-	background-color: inherit;
-	font-family: inherit;
-	font-size: inherit;
-	font-style: italic;
-	border: unset;
+  background-color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: italic;
+  border: unset;
 }
 
 //</editor-fold>
 
-//<editor-fold desc="Code">
-.wp-block-code {
-	code {
-		background-color: inherit;
-	}
-}
-
 .wp-block-button {
-	a {
-		@extend %nv-button;
-		text-decoration: none !important;
-	}
+  a {
+	@extend %nv-button;
+	text-decoration: none !important;
+  }
 
-	&.is-style-outline,
-	&.is-style-secondary {
-		.wp-block-button__link {
-			@extend %nv-button-secondary;
-		}
+  &.is-style-outline,
+  &.is-style-secondary {
+	.wp-block-button__link {
+	  @extend %nv-button-secondary;
 	}
+  }
 }
 
 .nv-content-wrap ul.blocks-gallery-grid {
-	padding: 0;
+  padding: 0;
 }
 
 
 @mixin gutenberg--tablet() {
-	.has-neve-body-font-size {
-		font-size: $html-font-size;
-	}
-	.has-neve-h-1-font-size {
-		font-size: $h1-font-size;
-	}
-	.has-neve-h-2-font-size {
-		font-size: $h2-font-size;
-	}
-	.has-neve-h-3-font-size {
-		font-size: $h3-font-size;
-	}
-	.has-neve-h-4-font-size {
-		font-size: $h4-font-size;
-	}
-	.has-neve-h-5-font-size {
-		font-size: $h5-font-size;
-	}
-	.has-neve-h-6-font-size {
-		font-size: $h6-font-size;
-	}
+  .has-neve-body-font-size {
+	font-size: $html-font-size;
+  }
+  .has-neve-h-1-font-size {
+	font-size: $h1-font-size;
+  }
+  .has-neve-h-2-font-size {
+	font-size: $h2-font-size;
+  }
+  .has-neve-h-3-font-size {
+	font-size: $h3-font-size;
+  }
+  .has-neve-h-4-font-size {
+	font-size: $h4-font-size;
+  }
+  .has-neve-h-5-font-size {
+	font-size: $h5-font-size;
+  }
+  .has-neve-h-6-font-size {
+	font-size: $h6-font-size;
+  }
 }
 
 @import "global_colors";

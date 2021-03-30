@@ -8,6 +8,8 @@ on:
 jobs:
   npm:
     runs-on: ubuntu-latest
+    env:
+      CYPRESS_INSTALL_BINARY: 0
     strategy:
       matrix:
         node-version: [12.x]
@@ -18,12 +20,40 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
       - name: Install Dependencies
         env:
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           CYPRESS_INSTALL_BINARY: 0
         run: yarn install --frozen-lockfile
-      # WORKAROUND FOR SIZE-LIMIT JOB NUMBER
-      - env:
+      - name: Install Cypress Dependencies
+        working-directory: ./e2e-tests
+        run: yarn install --frozen-lockfile
+      - name: Build source
+        run: yarn run build
+      - name: Run package check
+        run: yarn run lint:package-json
+      - name: Run dashboard check
+        run: yarn run lint:dash
+      - name: Run customizer check
+        run: yarn run lint:customizer
+      - name: Run cypress check
+        working-directory: ./e2e-tests
+        run: yarn run lint:cypress
+      - name: Run global JS check
+        run: yarn run lint:global
+      - name: Run size check
+        # WORKAROUND FOR SIZE-LIMIT JOB NUMBER
+        env:
           CI_JOB_NUMBER: 1
         run: yarn run size
+      - name: Check translations
+        run: git diff --exit-code languages/neve.pot

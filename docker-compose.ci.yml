@@ -2,6 +2,7 @@ version: '3.3'
 
 services:
   mysql:
+    platform: linux/x86_64
     image: mysql:5.7
     restart: always
     environment:
@@ -21,6 +22,12 @@ services:
     depends_on:
       - mysql
       - wordpress
+    environment:
+      - WORDPRESS_DB_NAME=wordpress
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_ROOT_PASSWORD=wordpress
+      - WORDPRESS_DEBUG=1
   wordpress:
     privileged: true
     ports:
@@ -35,10 +42,10 @@ services:
       - ~/.wp-content:/var/www/html/wp-content
     restart: always
     environment:
-      - WORDPRESS_DB_NAME=wordpress
-      - WORDPRESS_DB_USER=root
-      - WORDPRESS_DB_PASSWORD=wordpress
-      - WORDPRESS_DB_ROOT_PASSWORD=wordpress
-      - WORDPRESS_DEBUG=1
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_ROOT_PASSWORD: wordpress
+      WORDPRESS_DEBUG: 1
 volumes:
   wpcore:

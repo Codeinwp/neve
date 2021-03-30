@@ -1,4 +1,4 @@
-/* jshint esversion: 6 */
+/* global CustomEvent,NeveReactCustomize */
 import domReady from '@wordpress/dom-ready';
 
 import { init as initDynamicFields } from './dynamic-fields/index';
@@ -20,6 +20,8 @@ import { RadioImageControl } from './radio-image/Control';
 import { OrderingControl } from './ordering/Control';
 import { UiControl } from './ui/Control';
 import { GlobalColorsControl } from './global-colors/Control';
+import { NRSpacingControl } from './non-responsive-spacing/Control';
+import { InlineSelectControl } from './inline-select/Control';
 
 import './style.scss';
 
@@ -43,50 +45,56 @@ controlConstructor.neve_radio_image_control = RadioImageControl;
 controlConstructor.neve_ordering_control = OrderingControl;
 controlConstructor.neve_ui_control = UiControl;
 controlConstructor.neve_global_colors = GlobalColorsControl;
+controlConstructor.neve_non_responsive_spacing = NRSpacingControl;
+controlConstructor.neve_inline_select = InlineSelectControl;
 
 const initDeviceSwitchers = () => {
 	const deviceButtons = document.querySelector(
 		'#customize-footer-actions .devices, .hfg--cb-devices-switcher a.switch-to'
 	);
-	deviceButtons.addEventListener( 'click', function ( e ) {
-		const event = new CustomEvent( 'neveChangedRepsonsivePreview', {
+	deviceButtons.addEventListener('click', function (e) {
+		const event = new CustomEvent('neveChangedRepsonsivePreview', {
 			detail: e.target.dataset.device,
-		} );
-		document.dispatchEvent( event );
-	} );
+		});
+		document.dispatchEvent(event);
+	});
 };
 
 const initBlogPageFocus = () => {
-	wp.customize.section( 'neve_blog_archive_layout', ( section ) => {
-		section.expanded.bind( ( isExpanded ) => {
-			const front = wp.customize.control( 'show_on_front' ).setting();
+	wp.customize.section('neve_blog_archive_layout', (section) => {
+		section.expanded.bind((isExpanded) => {
+			const front = wp.customize.control('show_on_front').setting();
 			let pageId = '';
-			if ( front === 'page' ) {
-				pageId = wp.customize.control( 'page_for_posts' ).setting();
+			if (front === 'page') {
+				pageId = wp.customize.control('page_for_posts').setting();
 			}
 
-			if ( isExpanded ) {
+			if (isExpanded) {
 				wp.customize.previewer.previewUrl.set(
-					pageId ? `/?page_id=${ pageId }` : '/'
+					pageId ? `/?page_id=${pageId}` : '/'
 				);
 			}
-		} );
-	} );
+		});
+	});
 };
 
-domReady( () => {
+domReady(() => {
 	initDeviceSwitchers();
-	initDynamicFields();
 	initBlogPageFocus();
-} );
+});
+
+wp.customize.bind('ready', () => {
+	initDynamicFields();
+});
 
 window.HFG = {
 	getSettings: () => {
 		const usedSettings = {};
-		NeveReactCustomize.headerControls.map( ( item ) => {
-			if ( ! wp.customize.control( item ) ) return false;
-			usedSettings[ item ] = wp.customize.control( item ).setting.get();
-		} );
-		return JSON.stringify( usedSettings );
+		NeveReactCustomize.headerControls.map((item) => {
+			if (!wp.customize.control(item)) return false;
+			usedSettings[item] = wp.customize.control(item).setting.get();
+			return item;
+		});
+		return JSON.stringify(usedSettings);
 	},
 };

@@ -45,21 +45,16 @@ class Main {
 		switch ( $slug ) {
 			case 'mailin':
 				return $slug . '/sendinblue.php';
-				break;
 			case 'wpforms-lite':
 				return $slug . '/wpforms.php';
-				break;
 			case 'intergeo-maps':
 			case 'visualizer':
 			case 'translatepress-multilingual':
 				return $slug . '/index.php';
-				break;
 			case 'beaver-builder-lite-version':
 				return $slug . '/fl-builder.php';
-				break;
 			case 'adblock-notify-by-bweb':
 				return $slug . '/adblock-notify.php';
-				break;
 			default:
 				return $slug . '/' . $slug . '.php';
 		}

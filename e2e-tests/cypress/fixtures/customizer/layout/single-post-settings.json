@@ -1,0 +1,6 @@
+{
+	"hidden": { "neve_layout_single_post_elements_order": "[]" },
+	"enabled": {
+		"neve_layout_single_post_elements_order": "[\"post-navigation\",\"tags\",\"content\",\"comments\",\"title-meta\",\"thumbnail\"]"
+	}
+}

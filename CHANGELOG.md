@@ -1,3 +1,74 @@
+##### [Version 2.10.4](https://github.com/Codeinwp/neve/compare/v2.10.3...v2.10.4) (2021-03-16)
+
+- [Fix] customizer responsive switches not working
+
+##### [Version 2.10.3](https://github.com/Codeinwp/neve/compare/v2.10.2...v2.10.3) (2021-03-16)
+
+- [Fix] utilize wp_get_attachment_image for responsive logo image in header
+- [Fix] add compatibility with PHP 8
+- [Fix] apply font-family for inputs
+- [Fix] button styles not applying to form buttons properly
+
+##### [Version 2.10.2](https://github.com/Codeinwp/neve/compare/v2.10.1...v2.10.2) (2021-03-01)
+
+- [Feat] Add compatibility with Google Web Stories
+- [Fix] meta_comments and current_post_meta magic tags
+- [Fix] add to cart notice when product template is made with Elementor
+- [Fix] changelog parsing in the Neve Options dashboard page
+- [Fix] global colors palette selector not showing swatches in safari
+- [Fix] visual hierarchy for the Cart Totals
+- [Fix] subtotal prices squished on checkout pages for products with large titles
+- [Fix] street address textbox was too narrow in Woocommerce
+
+##### [Version 2.10.1](https://github.com/Codeinwp/neve/compare/v2.10.0...v2.10.1) (2021-02-10)
+
+- [Feat] Compatibility with Beaver Themer parts location
+- [Feat] Out of stock badge
+- [Fix] Variable products in the Header Builder Cart component
+- [Fix] {meta_author} magic tag throwing notice on 404 page
+- [Fix] Code tag style inconsistencies
+- [Fix] Header search component background now inherits site background
+- [Fix] Editor background-color
+- [Fix] Close button style for off-canvas cart
+- [Fix] Appearance of global colors selector in customizer when Gutenberg plugin is installed
+- [Fix] Allow HTML markup inside the comments heading
+- [Fix] Remove some redundant classes from the Header / Footer
+
+#### [Version 2.10.0](https://github.com/Codeinwp/neve/compare/v2.9.5...v2.10.0) (2021-01-18)
+
+- [Feat] Form fields styling controls
+- [Feat] Redesign global colors list
+- [Fix] Infinite scroll on the Blog page with masonry enabled
+
+##### [Version 2.9.5](https://github.com/Codeinwp/neve/compare/v2.9.4...v2.9.5) (2020-12-28)
+
+- [Feat] Update starter content
+
+##### [Version 2.9.4](https://github.com/Codeinwp/neve/compare/v2.9.3...v2.9.4) (2020-12-25)
+
+- [Feat] Starter content support
+
+##### [Version 2.9.3](https://github.com/Codeinwp/neve/compare/v2.9.2...v2.9.3) (2020-12-17)
+
+- [Fix] Cart menu component layout on mobile devices
+- [Fix] Dynamic tags list not inserted for header/footer builder components
+
+##### [Version 2.9.2](https://github.com/Codeinwp/neve/compare/v2.9.1...v2.9.2) (2020-12-15)
+
+- [Fix] Customizer tabs not opening in Windows browsers
+- [Fix] Syntax error causing errors
+- [Fix] Search input not focused when opened from the Search Icon component
+- [Fix] Individual page settings not applying to the Shop page
+- [Fix] Composer requiring PHP greater than 7.1.0
+
+##### [Version 2.9.1](https://github.com/Codeinwp/neve/compare/v2.9.0...v2.9.1) (2020-12-07)
+
+- [Feat] New Fallback Font option
+- [Fix] Compatibility with WP 5.6
+- [Fix] WooCommerce products variations dropdown color
+- [Fix] Cart Icon component layout revision
+- [Fix] Not translatable strings in the Options page
+
 #### [Version 2.9.0](https://github.com/Codeinwp/neve/compare/v2.8.4...v2.9.0) (2020-11-24)
 
 - [Feat] Globally linked Color Palettes

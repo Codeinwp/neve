@@ -77,10 +77,7 @@
 @mixin cart-widget() {
   .widget_shopping_cart {
 	color: var(--nv-text-color);
-  }
-
-  .woocommerce .widget_shopping_cart {
-	li.mini_cart_item {
+	.cart_list li.mini_cart_item {
 	  padding: $spacing-sm 0;
 	  border-bottom: $muted-border;
 	  display: grid;
@@ -102,7 +99,8 @@
 		position: absolute;
 		left: 30px;
 		width: 60px;
-		top: 15px;
+		top: 50%;
+		transform: translateY(-50%);
 		margin-left: 0;
 	  }
 
@@ -134,7 +132,7 @@
 	  }
 
 	  span.quantity {
-		grid-row-start: 2;
+		grid-row-start: 4;
 		grid-column-start: span 11;
 		grid-column-end: -1;
 		text-align: left;
@@ -142,11 +140,11 @@
 	  }
 
 	  dl.variation {
+		margin-left: $spacing-sm;
 		border: none;
 		grid-row-start: 3;
 		grid-column-start: 2;
 		grid-column-end: span 9;
-		padding: 0;
 		text-align: right;
 
 		dt::before {

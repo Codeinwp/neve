@@ -9,6 +9,7 @@
  */
 
 namespace HFG\Core\Settings;
+
 /**
  * Class Defaults
  *
