@@ -2,8 +2,16 @@ import cypress = require('cypress');
 
 describe('Useful Plugins Tab - Install Templates Patterns Collection', function () {
 	before(function () {
+		cy.aliasRestRoutes();
 		cy.loginWithRequest('/wp-admin/themes.php?page=neve-welcome#plugins');
-		cy.get('.optimole-wp > .card-footer > .components-button');
+		cy.get('.optimole-wp > .card-footer > .components-button')
+			.should('contain', 'Install')
+			.click()
+			.then(() => {
+				cy.wait('@customizerSave').then(() => {
+					cy.reload();
+				});
+			});
 	});
 	beforeEach(function () {
 		cy.loginWithRequest('/wp-admin/themes.php?page=neve-welcome#plugins');
