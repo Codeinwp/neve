@@ -6,13 +6,11 @@ import { render } from '@wordpress/element';
 
 export const FontFamilyControl = wp.customize.Control.extend( {
 	renderContent: function renderContent() {
-		const control = this;
-
 		render(
-			<ControlWithLink control={ control }>
-				<FontFamilyComponent control={ control } />
+			<ControlWithLink control={ this }>
+				<FontFamilyComponent control={ this } />
 			</ControlWithLink>,
-			control.container[ 0 ]
+			this.container[ 0 ]
 		);
 	},
 } );

@@ -356,8 +356,12 @@ final class Manager {
 		wp_enqueue_script(
 			'neve-meta-sidebar',
 			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.js',
-			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-keyboard-shortcuts' )
+			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-keyboard-shortcuts', 'wp-i18n' )
 		);
+
+		if ( function_exists( 'wp_set_script_translations' ) ) {
+			wp_set_script_translations( 'neve-meta-sidebar', 'neve' );
+		}
 
 		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
 		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );

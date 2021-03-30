@@ -1,166 +1,96 @@
+//<editor-fold desc="Cart icon in menu">
 .cart-icon-wrapper {
   display: flex;
   align-items: flex-end;
-}
 
-.menu-item-nav-cart {
-  &:last-child{
-    .nv-nav-cart{
-      right: 0;
-    }
-  }
-  .nv-nav-cart{
-    right: 20px;
-  }
   .nv-cart {
-    display: flex;
-  }
-
-  a {
-    position: relative;
+	display: flex;
   }
 
   .cart-count {
-    background: #fff;
-    border: $muted-border;
-    font-size: 0.55em;
-    padding: 3px;
-    border-radius: 3px;
-    color: #333;
-    line-height: 1;
-    display: inline-block;
-    bottom: -5px;
-    position: relative;
+	background: #fff;
+	border: $muted-border;
+	font-size: 0.55em;
+	padding: 3px;
+	border-radius: 3px;
+	color: #333;
+	line-height: 1;
+	display: inline-block;
+	bottom: -5px;
+	position: relative;
   }
 }
+//</editor-fold>
 
-.woocommerce-mini-cart-item > a:after {
-  content: none !important;
+//<editor-fold desc="Hide menu cart icon and minicart on mobile">
+.nv-nav-cart,
+.header-menu-sidebar li.menu-item-nav-cart {
+  opacity: 0;
+  visibility: hidden;
 }
+//</editor-fold>
 
-ul[id^="nv-primary-navigation"] a.button {
-  padding: 8px 12px;
-}
-
-.menu-item-nav-cart.responsive-nav-cart {
+//<editor-fold desc="Menu mini cart positioning">
+.menu-item-nav-cart {
   position: relative;
-  > a {
-    display: flex;
-    color: $git-black;
+  &:last-child .nv-nav-cart {
+	  right: 0;
+  }
+
+  .nv-nav-cart{
+    right: 20px;
   }
 }
+//</editor-fold>
 
-.nv-nav-cart, .header-menu-sidebar li.menu-item-nav-cart {
-  display: none;
-}
+@include cart-widget();
 
 @mixin nav-cart--laptop() {
-  .nv-nav-cart {
-    .widget_shopping_cart_content {
-      overflow: hidden;
-    }
-
-    .woocommerce-mini-cart {
-      overflow: auto;
-      max-height: 350px;
-      width: 400px;
-    }
-
-    .woocommerce-mini-cart__total {
-      @include soft-box-shadow('true');
-    }
-  }
-
+  //<editor-fold desc="Show menu cart icon and mini cart on desktop">
   .menu-item-nav-cart:hover .nv-nav-cart,
   .menu-item-nav-cart > a:focus + .nv-nav-cart,
   .nv-nav-cart:focus-within {
-    opacity: 1;
-    visibility: visible;
+	opacity: 1;
+	visibility: visible;
+	display: block;
   }
+  //</editor-fold>
+
+  //<editor-fold desc="Mini cart style">
   .nv-nav-cart {
-    display: block;
-    @include soft-box-shadow();
-    opacity: 0;
-    visibility: hidden;
-    cursor: default;
-    border-top: $muted-border;
-    transition: $transition_med;
-    position: absolute;
-    z-index: 100;
-    right: 0;
-    width: 350px;
-    background: var(--nv-site-bg);
-    @include cart-widget();
+	cursor: default;
+	border-top: $muted-border;
+	transition: $transition_med;
+	position: absolute;
+	z-index: 100;
+	width: 350px;
+	background: var(--nv-site-bg);
+	@include soft-box-shadow();
+
+	.widget_shopping_cart_content {
+	  overflow: hidden;
+	  .woocommerce-mini-cart {
+		overflow: auto;
+		max-height: 350px;
+	  }
+	  .total {
+		padding: $spacing-sm;
+	  }
+	  .woocommerce-mini-cart__empty-message {
+		text-align: center;
+		margin-bottom: 0;
+		padding: 10px 0;
+	  }
+	  li.mini_cart_item {
+		padding: $spacing-sm;
+		img{
+		  left: 50px;
+		}
+	  }
+	  .woocommerce-mini-cart__buttons {
+		padding: 0 $spacing-sm $spacing-sm;
+	  }
+	}
   }
-  ul[id^="nv-primary-navigation"] .widget_shopping_cart li.mini_cart_item,
-  .menu-item-nav-cart .nv-nav-cart .widget_shopping_cart .cart_list li.mini_cart_item {
-    padding: $spacing-xs;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    align-items: baseline;
-    font-size: .85em;
-    position: relative;
-    width: 350px;
-    margin: 0;
-
-    > *:not(.remove) {
-      padding-right: 60px;
-    }
-
-    > a {
-      padding: 0;
-      grid-column: span 10;
-      grid-row-start: 1;
-      grid-column-end: -1;
-      color: $body-color;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    a.remove {
-      grid-column: 1;
-      width: 20px;
-      height: 20px;
-      padding: 0;
-      position: static;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-
-    span.quantity {
-      grid-row-start: 2;
-      grid-column-start: span 10;
-      grid-column-end: -1;
-    }
-
-    dl.variation {
-      border: none;
-      grid-row-start: 3;
-      grid-column-start: 2;
-      grid-column-end: span 9;
-      padding: 0;
-      text-align: right;
-
-      dt::before {
-        width: 100%;
-        content: "\A";
-        white-space: pre-wrap;
-        display: block;
-        height: 0;
-      }
-
-      dt {
-        margin-left: auto;
-      }
-
-      dt, dd {
-        line-height: 1.2em;
-        margin-bottom: 3px;
-      }
-    }
-  }
+  //</editor-fold>
 }

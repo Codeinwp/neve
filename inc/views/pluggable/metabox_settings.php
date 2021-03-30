@@ -56,7 +56,12 @@ class Metabox_Settings {
 	 * @return bool
 	 */
 	private function has_settings() {
-		if ( ! is_single() && ! is_page() && ! $this->is_blog_static() ) {
+		if (
+			! is_single() &&
+			! is_page() &&
+			! $this->is_blog_static() &&
+			( class_exists( 'WooCommerce', false ) && ! is_shop() )
+		) {
 			return false;
 		}
 
@@ -335,7 +340,12 @@ class Metabox_Settings {
 	public function filter_container_class( $class ) {
 
 		// Don't filter on blog.
-		if ( ! is_single() && ! is_page() && ! $this->is_blog_static() ) {
+		if (
+			! is_single() &&
+			! is_page() &&
+			! $this->is_blog_static()
+			&& ( class_exists( 'WooCommerce', false ) && ! is_shop() )
+		) {
 			return $class;
 		}
 

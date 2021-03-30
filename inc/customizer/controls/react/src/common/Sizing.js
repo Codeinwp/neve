@@ -58,6 +58,7 @@ class SizingControl extends Component {
 							value={ i.value }
 							className={ i.type ? i.type + '-input' : '' }
 							type={ i.type }
+							label={i.label || null}
 							max={ this.props.max }
 							min={ this.props.min }
 							step={ this.props.step }
