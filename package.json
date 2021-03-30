@@ -59,8 +59,7 @@
 		}
 	],
 	"simple-git-hooks": {
-		"pre-commit": "lint-staged",
-		"commit-msg": "commitlint -e"
+		"pre-commit": "npx lint-staged"
 	},
 	"dependencies": {
 		"array-move": "^3.0.1",
@@ -75,8 +74,6 @@
 	"devDependencies": {
 		"@babel/core": "^7.10.5",
 		"@babel/preset-env": "^7.11.0",
-		"@commitlint/cli": "^9.1.2",
-		"@commitlint/config-conventional": "^9.1.2",
 		"@icon/dashicons": "^0.9.0-alpha.3",
 		"@rollup/plugin-commonjs": "^11.1.0",
 		"@rollup/plugin-multi-entry": "^4.0.0",
@@ -118,6 +115,7 @@
 		"eslint": "^7.20.0",
 		"eslint-plugin-chai-friendly": "^0.6.0",
 		"eslint-plugin-cypress": "^2.11.2",
+		"git-commit-msg-linter": "^3.1.0",
 		"grunt": "^1.2.1",
 		"grunt-cli": "^1.3.2",
 		"grunt-contrib-concat": "^1.0.1",
