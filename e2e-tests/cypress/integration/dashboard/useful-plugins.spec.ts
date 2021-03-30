@@ -1,5 +1,3 @@
-import cypress = require('cypress');
-
 describe('Useful Plugins Tab - Install Templates Patterns Collection', function () {
 	before(function () {
 		cy.aliasRestRoutes();
