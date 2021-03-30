@@ -1,4 +1,10 @@
+import cypress = require('cypress');
+
 describe('Useful Plugins Tab - Install Templates Patterns Collection', function () {
+	before(function () {
+		cy.loginWithRequest('/wp-admin/themes.php?page=neve-welcome#plugins');
+		cy.get('.optimole-wp > .card-footer > .components-button');
+	});
 	beforeEach(function () {
 		cy.loginWithRequest('/wp-admin/themes.php?page=neve-welcome#plugins');
 		cy.aliasRestRoutes();
