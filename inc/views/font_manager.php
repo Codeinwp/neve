@@ -122,6 +122,8 @@ class Font_Manager extends Base_View {
 		/**
 		 * Filters whether the Google Fonts should be hosted locally.
 		 *
+		 * @param bool $load_locally Whether the Google Fonts should be hosted locally. Default value is false.
+		 *
 		 * @since 2.11
 		 */
 		$should_enqueue_locally = apply_filters( 'neve_load_remote_fonts_locally', false );
