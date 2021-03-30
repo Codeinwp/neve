@@ -58,11 +58,8 @@
 			"path": "style-main.min.css"
 		}
 	],
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged",
-			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-		}
+	"simple-git-hooks": {
+		"pre-commit": "npx lint-staged"
 	},
 	"dependencies": {
 		"array-move": "^3.0.1",
@@ -77,8 +74,6 @@
 	"devDependencies": {
 		"@babel/core": "^7.10.5",
 		"@babel/preset-env": "^7.11.0",
-		"@commitlint/cli": "^9.1.2",
-		"@commitlint/config-conventional": "^9.1.2",
 		"@icon/dashicons": "^0.9.0-alpha.3",
 		"@rollup/plugin-commonjs": "^11.1.0",
 		"@rollup/plugin-multi-entry": "^4.0.0",
@@ -120,6 +115,7 @@
 		"eslint": "^7.20.0",
 		"eslint-plugin-chai-friendly": "^0.6.0",
 		"eslint-plugin-cypress": "^2.11.2",
+		"git-commit-msg-linter": "^3.1.0",
 		"grunt": "^1.2.1",
 		"grunt-cli": "^1.3.2",
 		"grunt-contrib-concat": "^1.0.1",
@@ -131,7 +127,6 @@
 		"grunt-version": "^2.0.0",
 		"grunt-wp-i18n": "^1.0.3",
 		"grunt-wp-readme-to-markdown": "^2.0.1",
-		"husky": "^4.2.5",
 		"lint-staged": "^10.5.4",
 		"load-project-config": "~0.2.1",
 		"lodash": "^4.17.21",
@@ -145,6 +140,7 @@
 		"rollup-plugin-uglify": "^6.0.4",
 		"sass-loader": "^10.1.1",
 		"semantic-release": "^17.1.1",
+		"simple-git-hooks": "^2.2.0",
 		"size-limit": "^4.5.6",
 		"style-loader": "^2.0.0",
 		"url-slug": "^2.3.2",
