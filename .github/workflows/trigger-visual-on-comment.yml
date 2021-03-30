@@ -14,10 +14,10 @@ jobs:
       - uses: khan/pull-request-comment-trigger@master
         id: check
         with:
-          trigger: '@pirate-bot test:visual'
+          trigger: "@pirate-bot test:visual"
           reaction: eyes
         env:
-          GITHUB_TOKEN: '${{ secrets.BOT_TOKEN }}'
+          GITHUB_TOKEN: "${{ secrets.BOT_TOKEN }}"
       - name: Find Pull Request
         uses: juliangruber/find-pull-request-action@v1
         id: find-pull-request
@@ -38,11 +38,11 @@ jobs:
         run: echo "$GITHUB_OUTPUT_STEP"
   run-visual:
     needs: trigger_visual
-#    Check if :
-#    * the author of the comment is part of Org
-#    * the comment should trigger the action
-#    * the comment is on the right pr
-#
+    #    Check if :
+    #    * the author of the comment is part of Org
+    #    * the comment should trigger the action
+    #    * the comment is on the right pr
+    #
     if: "contains('COLLABORATOR,CONTRIBUTOR,MEMBER,OWNER', github.event.comment.author_association) && needs.trigger_visual.outputs.triggered == 'true' && contains(github.event.comment.html_url,join(needs.trigger_visual.outputs.pr_number,'#'))"
     env:
       CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -79,6 +79,6 @@ jobs:
           PERCY_BRANCH: development
           PERCY_COMMIT: ${{ needs.trigger_visual.outputs.commit_sha }}
           PERCY_PULL_REQUEST: ${{ needs.trigger_visual.outputs.pr_number }}
-          PERCY_PARALLEL_NONCE: '${{ github.run_id }}-${{ needs.trigger_visual.outputs.commit_sha }}'
+          PERCY_PARALLEL_NONCE: "${{ github.run_id }}-${{ needs.trigger_visual.outputs.commit_sha }}"
         run: |
-          yarn run visual:test --  --browser chrome --record --parallel --group visual-diff
+          cd e2e-tests && yarn run visual:test --  --browser chrome --record --parallel --group visual-diff
