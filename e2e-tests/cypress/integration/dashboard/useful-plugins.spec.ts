@@ -1,8 +1,8 @@
-describe('Useful Plugins Tab - Install Templates Patterns Collection', function () {
+describe('Useful Plugins Tab - Install Optimole Plugin', function () {
 	before(function () {
 		cy.aliasRestRoutes();
 		cy.loginWithRequest('/wp-admin/themes.php?page=neve-welcome#plugins');
-		cy.get('.optimole-wp > .card-footer > .components-button')
+		cy.get('.templates-patterns-collection > .card-footer > .components-button')
 			.should('contain', 'Install')
 			.click()
 			.then(() => {
@@ -14,7 +14,7 @@ describe('Useful Plugins Tab - Install Templates Patterns Collection', function 
 	beforeEach(function () {
 		cy.loginWithRequest('/wp-admin/themes.php?page=neve-welcome#plugins');
 		cy.aliasRestRoutes();
-		cy.get('.templates-patterns-collection > .card-footer > .components-button').as('cloudButton');
+		cy.get('.optimole-wp > .card-footer > .components-button').as('cloudButton');
 		cy.get('.tab-content.plugins').as('pluginsTab');
 	});
 
