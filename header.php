@@ -117,7 +117,8 @@ do_action( 'neve_body_start_after' );
 	 *
 	 * @since 1.0.4
 	 */
-	do_action( 'neve_before_primary' ); ?>
+	do_action( 'neve_before_primary' ); 
+	?>
 
 	<main id="content" class="neve-main" role="main">
 

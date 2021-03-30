@@ -78,15 +78,15 @@ function neve_hooks() {
 	);
 
 	if ( class_exists( 'WooCommerce' ) ) {
-		$hooks['shop']  = array(
+		$hooks['shop']     = array(
 			'neve_before_cart_popup',
 			'neve_after_cart_popup',
 			'woocommerce_before_shop_loop',
 			'woocommerce_after_shop_loop',
 			'woocommerce_before_shop_loop_item',
-			'woocommerce_after_shop_loop_item'
+			'woocommerce_after_shop_loop_item',
 		);
-		$hooks['product'] = array(
+		$hooks['product']  = array(
 			'woocommerce_before_single_product',
 			'woocommerce_before_single_product_summary',
 			'woocommerce_single_product_summary',

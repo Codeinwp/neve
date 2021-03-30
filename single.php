@@ -18,7 +18,7 @@ get_header();
 					class="<?php echo esc_attr( join( ' ', get_post_class( 'nv-single-post-wrap col' ) ) ); ?>">
 				<?php
 				/**
-				 * 	Executes actions before the post content.
+				 *  Executes actions before the post content.
 				 *
 				 * @since 2.3.8
 				 */
@@ -34,7 +34,7 @@ get_header();
 				}
 
 				/**
-				 * 	Executes actions after the post content.
+				 *  Executes actions after the post content.
 				 *
 				 * @since 2.3.8
 				 */

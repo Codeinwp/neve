@@ -279,11 +279,11 @@ msgstr ""
 msgid "You appear to be running the Neve theme from source code. Please finish installation by running %s."
 msgstr ""
 
-#: globals/utilities.php:1339
+#: globals/utilities.php:1350
 msgid "Base"
 msgstr ""
 
-#: globals/utilities.php:1354
+#: globals/utilities.php:1365
 msgid "Dark Mode"
 msgstr ""
 
@@ -1016,7 +1016,7 @@ msgstr ""
 msgid "Hide"
 msgstr ""
 
-#: header.php:31
+#: header.php:80
 msgid "Skip to content"
 msgstr ""
 
@@ -1801,16 +1801,16 @@ msgid_plural "%s Comments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/views/pluggable/pagination.php:141
+#: inc/views/pluggable/pagination.php:146
 #: inc/views/template_parts.php:309
 msgid "Pages:"
 msgstr ""
 
-#: inc/views/pluggable/pagination.php:158
+#: inc/views/pluggable/pagination.php:163
 msgid "previous"
 msgstr ""
 
-#: inc/views/pluggable/pagination.php:163
+#: inc/views/pluggable/pagination.php:168
 msgid "next"
 msgstr ""
 
