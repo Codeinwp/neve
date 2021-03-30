@@ -11,7 +11,7 @@ grunt
 phpcs.xml
 node_modules
 logs
-cypress
+e2e-tests
 cypress.json
 .eslintignore
 .eslintrc.js
