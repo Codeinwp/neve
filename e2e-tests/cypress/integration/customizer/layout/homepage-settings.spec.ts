@@ -12,6 +12,8 @@ describe('Homepage-settings', function () {
 		
 		cy.get('#_customize-input-page_on_front').select('Sample Page')
 		cy.get('#save').click({force:true});
+		cy.visit('/');
+		cy.get('h1').should('contain.text','Sample Page');
 
 	});
 
