@@ -120,7 +120,9 @@ class Font_Manager extends Base_View {
 		// Enqueue style
 
 		/**
-		 * Filters whether the Google Fonts should be hosted locally.
+		 * Filters whether the remote fonts should be hosted locally.
+		 *
+		 * This filter applies for both Google Fonts and Typekit Fonts if the Typekit module is used.
 		 *
 		 * @param bool $load_locally Whether the Google Fonts should be hosted locally. Default value is false.
 		 *
