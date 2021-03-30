@@ -3,7 +3,7 @@
 		"plugin:cypress/recommended",
 		"plugin:chai-friendly/recommended",
 		"plugin:prettier/recommended",
-		"prettier/@typescript-eslint",
+		"prettier",
 		"plugin:@typescript-eslint/recommended"
 	],
 	"parser": "@typescript-eslint/parser",

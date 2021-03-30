@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize, ready_for_review]
     branches-ignore:
-      - 'update_dependencies'
+      - "update_dependencies"
 jobs:
   dev-zip:
     name: Build ZIP and upload to s3
@@ -43,6 +43,9 @@ jobs:
       - name: Install composer deps
         run: composer install --no-dev --prefer-dist --no-progress --no-suggest
       - name: Install yarn deps
+        run: yarn install --frozen-lockfile
+      - name: Install Cypress yarn
+        working-directory: ./e2e-tests
         run: yarn install --frozen-lockfile
       - name: Build files
         run: yarn run build
@@ -178,6 +181,7 @@ jobs:
           path: |
             ~/.cache/Cypress
             node_modules
+            ./e2e-tests/node_modules
           key: ${{ runner.os }}-node_modules-build-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node_modules-build-
@@ -189,6 +193,7 @@ jobs:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
         uses: cypress-io/github-action@v2
         with:
+          working-directory: ./e2e-tests
           env: host=localhost,port=8080
           browser: chrome
           install: ${{ ! steps.yarn-and-build-cache.outputs.cache-hit }}
