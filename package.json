@@ -76,7 +76,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.10.5",
-		"@babel/preset-env": "^7.11.0",
+		"@babel/preset-env": "^7.13.12",
 		"@commitlint/cli": "^9.1.2",
 		"@commitlint/config-conventional": "^9.1.2",
 		"@icon/dashicons": "^0.9.0-alpha.3",
