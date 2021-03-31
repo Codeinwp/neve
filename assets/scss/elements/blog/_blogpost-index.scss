@@ -69,6 +69,10 @@
   box-sizing: content-box;
 }
 
+.nv-infinite .nv-index-posts .page-numbers {
+	display: none;
+}
+
 .nv-index-posts .page-numbers {
   @include horizontal-list($spacing-xs);
   justify-content: center;

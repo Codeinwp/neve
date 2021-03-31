@@ -26,6 +26,17 @@ class Pagination extends Base_View {
 		add_filter( 'neve_filter_main_script_localization', array( $this, 'filter_localization' ) );
 		add_action( 'neve_do_pagination', array( $this, 'render_pagination' ) );
 		add_action( 'neve_post_navigation', array( $this, 'render_post_navigation' ) );
+
+		if ( $this->has_infinite_scroll() ) {
+			add_action(
+				'body_class',
+				function ( $classes ) {
+					$classes[] = 'nv-infinite';
+
+					return $classes;
+				}
+			);
+		}
 	}
 
 	/**
@@ -123,9 +134,7 @@ class Pagination extends Base_View {
 		$links = str_replace( '<a class="prev', '<a rel="prev" class="prev', $links );
 		$links = str_replace( '<a class="next', '<a rel="next" class="next', $links );
 
-		echo $this->has_infinite_scroll() ? '<div style="display:none">' : '';
 		echo wp_kses_post( $links );
-		echo $this->has_infinite_scroll() ? '</div>' : '';
 
 		if ( $this->has_infinite_scroll() ) {
 			echo wp_kses_post( '<div class="load-more-posts"><span class="nv-loader" style="display: none;"></span><span class="infinite-scroll-trigger"></span></div>' );
