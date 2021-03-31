@@ -1,21 +1,9 @@
 /* global NeveProperties,_wpCustomizeSettings,parent,Masonry,imagesLoaded */
 import { httpGetAsync, isInView } from '../utils';
 
-const getLinkParam = ($param) => {
-	const parts = window.location.search.substr(1).split('&');
-	const $_GET = {};
-	for (let i = 0; i < parts.length; i++) {
-		const temp = parts[i].split('=');
-		$_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
-	}
-
-	return $_GET[$param] ? $_GET[$param] : false;
-};
-
-let masonryContainer = null;
+let masonryContainer = null,
+	page = 2;
 const postWrapSelector = '.nv-index-posts .posts-wrapper';
-const currentUrlPage = getLinkParam('paged');
-let page = currentUrlPage ? parseInt(currentUrlPage) + 1 : 2;
 
 /**
  * Initialize blog JS.
@@ -64,8 +52,6 @@ const infiniteScroll = () => {
 		return;
 	}
 
-	manageLinkChange();
-
 	isInView(document.querySelector('.infinite-scroll-trigger'), () => {
 		if (parent.wp.customize) {
 			parent.wp.customize.requestChangesetUpdate().then(() => {
@@ -75,52 +61,6 @@ const infiniteScroll = () => {
 		}
 		requestMorePosts();
 	});
-};
-
-const isScrolledIntoView = (el) => {
-	const rect = el.getBoundingClientRect();
-	const elemTop = rect.top;
-	const elemBottom = rect.bottom;
-	return elemTop >= 0 && elemBottom <= window.innerHeight;
-};
-
-const manageLinkChange = () => {
-	const UrlPage = getLinkParam('paged');
-	let currentPage = UrlPage ? UrlPage : '1';
-
-	window.addEventListener(
-		'scroll',
-		debounce(() => {
-			const posts = document.querySelectorAll('.posts-wrapper .post');
-			if (posts === null) {
-				return false;
-			}
-
-			for (const post of posts) {
-				if (isScrolledIntoView(post)) {
-					currentPage = post.getAttribute('data-page');
-				}
-			}
-
-			const url = new URL(window.location.href);
-			url.searchParams.set('paged', currentPage);
-			window.history.replaceState(null, null, url);
-		}, 250)
-	);
-};
-
-const debounce = (func, wait) => {
-	let timeout;
-	return function () {
-		const context = this,
-			args = arguments;
-		const later = function () {
-			timeout = null;
-			func.apply(context, args);
-		};
-		clearTimeout(timeout);
-		timeout = setTimeout(later, wait);
-	};
 };
 
 /**
@@ -148,7 +88,7 @@ const requestMorePosts = () => {
 		requestUrl,
 		(response) => {
 			blog.innerHTML += JSON.parse(response);
-			if (NeveProperties.masonryStatus !== 'enabled') {
+			if (NeveProperties.masonry !== 'enabled') {
 				return false;
 			}
 			window.nvMasonry.reloadItems();
