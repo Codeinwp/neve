@@ -31,6 +31,6 @@ docker-compose -f $DOCKER_FILE run  --rm -u root cli bash -c "/var/www/html/bin/
 
 #Give permission to install plugins
 echo "Giving permissions"
-docker-compose -f $DOCKER_FILE exec wordpress chown -R www-data:www-data /var/www
-docker-compose -f $DOCKER_FILE exec wordpress find /var/www/ -type d -exec chmod 0755 {} \;
-docker-compose -f $DOCKER_FILE exec wordpress find /var/www/ -type f -exec chmod 644 {} \;
+docker-compose -f $DOCKER_FILE exec -T wordpress chown -R www-data:www-data /var/www
+docker-compose -f $DOCKER_FILE exec -T wordpress find /var/www/ -type d -exec chmod 0755 {} \;
+docker-compose -f $DOCKER_FILE exec -T wordpress find /var/www/ -type f -exec chmod 644 {} \;
