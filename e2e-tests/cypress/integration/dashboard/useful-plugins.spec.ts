@@ -25,6 +25,7 @@ describe('Useful Plugins Tab - Install Optimole Plugin', function () {
 			.click()
 			.then(() => {
 				cy.wait('@customizerSave').then((interception) => {
+					cy.log(interception.response.body);
 					expect(interception.response.statusCode).to.equal(200);
 					expect(interception.response.body.success).to.equal(true);
 				});
