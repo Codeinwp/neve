@@ -47,5 +47,7 @@ services:
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_ROOT_PASSWORD: wordpress
       WORDPRESS_DEBUG: 1
+    command: bash -c "chmod 0777 -R /var/www/html/bin/
+
 volumes:
   wpcore:
