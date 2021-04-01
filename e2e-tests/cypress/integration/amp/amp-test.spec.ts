@@ -10,16 +10,14 @@ describe('AMP Check', function () {
 		).trigger('mouseover');
 		cy.get(
 			'.hfg--builder-show .hfg--panel-desktop .hfg--row-top .row--grid > div:last-child .add-button--grid',
-		)
-			.should('be.visible')
-			.click();
+		).click({ force: true });
 
-		cy.get('.widgets-panel--visible').should('exist');
+		cy.get('.widgets-panel--visible');
 		cy.get(
 			'.widgets-panel--visible .hfg--widgets-desktop  .grid-stack-item.for-s-header_search_responsive',
 		).click();
 
-		cy.get('#save').should('be.visible').click();
+		cy.get('#save').click({ force: true });
 		cy.wait('@customizerSave').then((interception) => {
 			expect(interception.response.body.success).to.be.true;
 			expect(interception.response.statusCode).to.equal(200);
