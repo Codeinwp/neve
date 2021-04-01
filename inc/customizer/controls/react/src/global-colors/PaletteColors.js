@@ -20,6 +20,9 @@ const PaletteColors = ({ values, defaults, save }) => {
 
 	const updateColorInPalette = (colorSlug, val) => {
 		const nextValues = { ...values };
+		if (nextValues.palettes[activePalette].colors[colorSlug] === val) {
+			return false;
+		}
 		nextValues.palettes[activePalette].colors[colorSlug] = val;
 		save(nextValues);
 	};
