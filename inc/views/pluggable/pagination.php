@@ -120,8 +120,14 @@ class Pagination extends Base_View {
 		}
 
 		$links = paginate_links( array( 'type' => 'list' ) );
-		$links = str_replace( '<a class="prev', '<a rel="prev" class="prev', $links );
-		$links = str_replace( '<a class="next', '<a rel="next" class="next', $links );
+		$links = str_replace(
+			array( '<a class="prev', '<a class="next' ),
+			array(
+				'<a rel="prev" class="prev',
+				'<a rel="next" class="next',
+			),
+			$links
+		);
 
 		echo $this->has_infinite_scroll() ? '<div style="display: none;">' : '';
 		echo wp_kses_post( $links );
