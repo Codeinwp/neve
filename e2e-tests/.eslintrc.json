@@ -1,0 +1,43 @@
+{
+	"extends": [
+		"plugin:cypress/recommended",
+		"plugin:chai-friendly/recommended",
+		"plugin:prettier/recommended",
+		"prettier",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"env": {
+		"cypress/globals": true,
+		"jest": false,
+		"mocha": true,
+		"node": true
+	},
+	"rules": {
+		"jsdoc/valid-types": "off",
+		"jsdoc/require-param-type": "off",
+		"jest/expect-expect": "off",
+		"jest/valid-expect-in-promise": "off",
+		"jest/valid-expect": "off",
+		"jest/no-standalone-expect": "off",
+		// temporary disable no unnecessary wait rule
+		"cypress/no-unnecessary-waiting": "off",
+		"@wordpress/no-global-event-listener": "off",
+		"@wordpress/no-global-active-element": "off",
+		"@wordpress/no-global-get-selection": "off",
+		"prettier/prettier": [
+			"error",
+			{},
+			{
+				"usePrettierrc": true
+			}
+		]
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
+	}
+}

@@ -13,7 +13,10 @@ init_environment(){
 	echo "Installing Neve theme from $NEVE_LOCATION"
 	wp --allow-root theme install --activate $NEVE_LOCATION
 	wp --allow-root option update fresh_site 0
-	wp --allow-root plugin install https://github.com/Codeinwp/wp-thememods-api/archive/main.zip --activate
+  echo "Installing Theme API Plugin"
+  wp --allow-root plugin install https://github.com/Codeinwp/wp-thememods-api/archive/main.zip --force --activate
+  echo "Installing JWT Auth Plugin"
+  wp --allow-root plugin install api-bearer-auth --force --activate
 }
 
 

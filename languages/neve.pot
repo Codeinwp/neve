@@ -2,7 +2,7 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.10.2\n"
+"Project-Id-Version: Neve 2.10.4\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
 "Last-Translator: friends@themeisle.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr ""
 
 #. translators: %s - Theme name
 #: dashboard/inc/Main.php:204
-#: inc/core/admin.php:261
+#: inc/core/admin.php:263
 msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
 msgstr ""
 
@@ -83,7 +83,7 @@ msgstr ""
 
 #. translators: %s - Theme name
 #: dashboard/inc/Main.php:216
-#: inc/core/admin.php:269
+#: inc/core/admin.php:271
 msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
 msgstr ""
 
@@ -384,7 +384,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:47
 #: header-footer-grid/Core/Builder/Header.php:51
-#: inc/core/admin.php:271
+#: inc/core/admin.php:273
 msgid "Read full documentation"
 msgstr ""
 
@@ -1267,32 +1267,32 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: inc/core/admin.php:225
+#: inc/core/admin.php:227
 msgid "Congratulations!"
 msgstr ""
 
 #. translators: %s - theme name
-#: inc/core/admin.php:228
+#: inc/core/admin.php:230
 msgid "%s is now installed and ready to use. We've assembled some links to get you started."
 msgstr ""
 
-#: inc/core/admin.php:237
+#: inc/core/admin.php:239
 msgid "Try one of our ready to use Starter Sites"
 msgstr ""
 
-#: inc/core/admin.php:242
+#: inc/core/admin.php:244
 msgid "Return to your dashboard"
 msgstr ""
 
-#: inc/core/admin.php:248
+#: inc/core/admin.php:250
 msgid "or go to the theme settings"
 msgstr ""
 
-#: inc/core/admin.php:259
+#: inc/core/admin.php:261
 msgid "Sites Library"
 msgstr ""
 
-#: inc/core/admin.php:267
+#: inc/core/admin.php:269
 #: dashboard/src/Components/Content/Help.js:43
 msgid "Documentation"
 msgstr ""
@@ -2222,15 +2222,15 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Responsive.js:35
+#: inc/customizer/controls/react/src/common/Responsive.js:36
 msgid "Desktop"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Responsive.js:39
+#: inc/customizer/controls/react/src/common/Responsive.js:40
 msgid "Tablet"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Responsive.js:43
+#: inc/customizer/controls/react/src/common/Responsive.js:44
 msgid "Mobile"
 msgstr ""
 
