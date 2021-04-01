@@ -1801,16 +1801,16 @@ msgid_plural "%s Comments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/views/pluggable/pagination.php:139
+#: inc/views/pluggable/pagination.php:149
 #: inc/views/template_parts.php:309
 msgid "Pages:"
 msgstr ""
 
-#: inc/views/pluggable/pagination.php:156
+#: inc/views/pluggable/pagination.php:166
 msgid "previous"
 msgstr ""
 
-#: inc/views/pluggable/pagination.php:161
+#: inc/views/pluggable/pagination.php:171
 msgid "next"
 msgstr ""
 
