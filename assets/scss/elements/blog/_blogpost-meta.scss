@@ -27,6 +27,15 @@
 		display: none;
 	}
 
+  	.posted-on.updated-time:not(.not-updated) {
+	  .updated {
+		display: inline;
+	  }
+	  .published {
+		display: none;
+	  }
+	}
+
 	.meta.author {
 		.photo {
 			width: $spacing-sm;

@@ -371,7 +371,7 @@ class Layout_Blog extends Base_Customizer {
 					'priority'         => 70,
 					'class'            => 'blog-layout-post-meta-accordion',
 					'accordion'        => true,
-					'controls_to_wrap' => 2,
+					'controls_to_wrap' => 3,
 					'expanded'         => false,
 				),
 				'Neve\Customizer\Controls\Heading'
@@ -424,6 +424,22 @@ class Layout_Blog extends Base_Customizer {
 					'section'  => 'neve_blog_archive_layout',
 					'type'     => 'neve_toggle_control',
 					'priority' => 80,
+				)
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_show_last_updated_date',
+				array(
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => false,
+				),
+				array(
+					'label'    => esc_html__( 'Use last updated date instead of the published one', 'neve' ),
+					'section'  => 'neve_blog_archive_layout',
+					'type'     => 'neve_toggle_control',
+					'priority' => 85,
 				)
 			)
 		);
