@@ -29,3 +29,6 @@ echo "Setting up environment $WP_ENV"
 
 docker-compose -f $DOCKER_FILE run  --rm -u root cli bash -c "/var/www/html/bin/envs/cli-setup.sh $ZIP_URL $WP_VERSION $WP_ENV $SKIP_CACHE"
 
+# Give permission to plugins folder
+echo "Giving permissions"
+docker-compose -f $DOCKER_FILE exec wordpress chmod -R a+rwx /var/www/html/wp-content/plugins/
