@@ -180,6 +180,9 @@ class Pagination extends Base_View {
 		if ( ! $this->has_infinite_scroll() ) {
 			return  $classes;
 		}
+		if ( ! is_home() && ! is_archive() ) {
+			return $classes;
+		}
 		$classes[] = 'nv-infinite';
 
 		return $classes;
