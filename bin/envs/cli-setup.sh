@@ -10,9 +10,6 @@ init_environment(){
 	wp --allow-root core update-db
 	rm -rf  /var/www/html/wp-content/themes/*
 	chmod 0777 -R /var/www/html/wp-content/
-  chown -R www-data:www-data /var/www/html/wp-content/plugins
-  find / /var/www/html/wp-content/plugins -type d -exec chmod 0755 {} \;
-  find  /var/www/html/wp-content/plugins -type f -exec chmod 644 {} \;
 	echo "Installing Neve theme from $NEVE_LOCATION"
 	wp --allow-root theme install --activate $NEVE_LOCATION
 	wp --allow-root option update fresh_site 0
