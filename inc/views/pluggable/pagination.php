@@ -26,16 +26,7 @@ class Pagination extends Base_View {
 		add_filter( 'neve_filter_main_script_localization', array( $this, 'filter_localization' ) );
 		add_action( 'neve_do_pagination', array( $this, 'render_pagination' ) );
 		add_action( 'neve_post_navigation', array( $this, 'render_post_navigation' ) );
-		if ( $this->has_infinite_scroll() ) {
-			add_action(
-				'body_class',
-				function ( $classes ) {
-					$classes[] = 'nv-infinite';
-
-					return $classes;
-				}
-			);
-		}
+		add_action( 'body_class', array( $this, 'add_infinite_scroll_body_class' ) );
 	}
 
 	/**
@@ -176,6 +167,22 @@ class Pagination extends Base_View {
 		previous_post_link( $prev_format, $prev_link );
 		next_post_link( $next_format, $next_link );
 		echo '</div>';
+	}
+
+	/**
+	 * Add infinite scroll body class.
+	 *
+	 * @param array $classes Body classes.
+	 *
+	 * @return array
+	 */
+	public function add_infinite_scroll_body_class( $classes ) {
+		if ( ! $this->has_infinite_scroll() ) {
+			return  $classes;
+		}
+		$classes[] = 'nv-infinite';
+
+		return $classes;
 	}
 
 	/**
