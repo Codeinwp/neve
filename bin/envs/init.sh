@@ -31,4 +31,4 @@ docker-compose -f $DOCKER_FILE run  --rm -u root cli bash -c "/var/www/html/bin/
 
 # Give permission to plugins folder
 echo "Giving permissions"
-docker-compose -f $DOCKER_FILE exec wordpress chmod -R a+rwx /var/www/html/wp-content/plugins/
+docker-compose -f $DOCKER_FILE exec -T wordpress chmod -R a+rwx /var/www/html/wp-content/plugins/
