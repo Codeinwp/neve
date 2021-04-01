@@ -40,4 +40,17 @@ class Typography extends \WP_Customize_Control {
 		$this->json['input_attrs']      = is_array( $this->input_attrs ) ? wp_json_encode( $this->input_attrs ) : $this->input_attrs;
 		$this->json['refresh_on_reset'] = $this->refresh_on_reset;
 	}
+
+	/**
+	 * Render the custom attributes for the control's input element.
+	 */
+	public function input_attrs() {
+		foreach ( $this->input_attrs as $attr => $value ) {
+			if ( is_array( $value ) && ! empty( $value ) ) {
+				echo esc_html( $attr ) . '="' . wp_json_encode( $value ) . '" ';
+			} else {
+				echo esc_html( $attr ) . '="' . esc_attr( $value ) . '" ';
+			}
+		}
+	}
 }

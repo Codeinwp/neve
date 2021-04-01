@@ -33,4 +33,17 @@ class Range extends \WP_Customize_Control {
 		parent::to_json();
 		$this->json['input_attrs'] = $this->input_attrs;
 	}
+
+	/**
+	 * Render the custom attributes for the control's input element.
+	 */
+	public function input_attrs() {
+		foreach ( $this->input_attrs as $attr => $value ) {
+			if ( is_array( $value ) && ! empty( $value ) ) {
+				echo esc_html( $attr ) . '="' . esc_attr( wp_json_encode( $value ) ) . '" ';
+			} else {
+				echo esc_html( $attr ) . '="' . esc_attr( $value ) . '" ';
+			}
+		}
+	}
 }
