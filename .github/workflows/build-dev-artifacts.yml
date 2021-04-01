@@ -132,6 +132,10 @@ jobs:
           - machines: 1
             specs: "starter-sites"
             envs: "starter-sites"
+          ## Useful-plugins specs needs on machine
+          - machines: 1
+            specs: "useful-plugins"
+            envs: "useful-plugins"
           ## 2 machines for classic editor tests
           - machines: 1
             specs: "editor/classic"
