@@ -891,7 +891,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:543
 #: inc/customizer/options/layout_blog.php:390
-#: inc/views/partials/post_meta.php:139
+#: inc/views/partials/post_meta.php:141
 msgid "Author"
 msgstr ""
 
@@ -1469,18 +1469,18 @@ msgstr ""
 
 #: inc/customizer/options/layout_blog.php:391
 #: inc/customizer/options/layout_single_product.php:107
-#: inc/views/partials/post_meta.php:140
+#: inc/views/partials/post_meta.php:142
 msgid "Category"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:392
-#: inc/views/partials/post_meta.php:141
+#: inc/views/partials/post_meta.php:143
 msgid "Date"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:393
 #: inc/customizer/options/layout_single_post.php:72
-#: inc/views/partials/post_meta.php:142
+#: inc/views/partials/post_meta.php:144
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:319
 msgid "Comments"
 msgstr ""
@@ -1583,7 +1583,7 @@ msgid "Content"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:70
-#: inc/views/partials/post_meta.php:275
+#: inc/views/partials/post_meta.php:277
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:318
 msgid "Tags"
 msgstr ""
@@ -1789,17 +1789,17 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/views/partials/post_meta.php:184
+#: inc/views/partials/post_meta.php:186
 msgid "by"
 msgstr ""
 
 #. translators: %s: Author's display name.
-#: inc/views/partials/post_meta.php:191
+#: inc/views/partials/post_meta.php:193
 msgid "Posts by %s"
 msgstr ""
 
 #. translators: %s: number of comments
-#: inc/views/partials/post_meta.php:261
+#: inc/views/partials/post_meta.php:263
 msgid "%s Comment"
 msgid_plural "%s Comments"
 msgstr[0] ""

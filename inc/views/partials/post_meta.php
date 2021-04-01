@@ -78,10 +78,10 @@ class Post_Meta extends Base_View {
 						'posted-on',
 					);
 
-					$created = get_the_time( 'U' );
+					$created  = get_the_time( 'U' );
 					$modified = get_the_modified_time( 'U' );
 					if ( get_theme_mod( 'neve_show_last_updated_date', false ) && $created !== $modified ) {
-						$date_meta_classes[] = 'updated-time';
+						$date_meta_classes[] = 'last-up';
 					}
 
 					$markup .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . '">';
