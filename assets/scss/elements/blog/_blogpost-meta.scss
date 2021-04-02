@@ -23,17 +23,8 @@
 		}
 	}
 
-	.posted-on .updated {
+	.posted-on:not(.nv-show-updated) .updated {
 		display: none;
-	}
-
-  	.posted-on.last-up {
-	  .updated {
-		display: inline;
-	  }
-	  .published {
-		display: none;
-	  }
 	}
 
 	.meta.author {
