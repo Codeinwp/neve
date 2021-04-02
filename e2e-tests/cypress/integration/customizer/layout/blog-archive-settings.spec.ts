@@ -96,8 +96,7 @@ describe('Blog/Archive 1 / Default Layout', function () {
 });
 
 describe('Blog/Archive 2 / Grid Layout', function () {
-	before('Setup', function () {
-		cy.loginWithRequest();
+	beforeEach('Setup', function () {
 		cy.fixture('customizer/layout/blog-archive-setting-setup').then((archiveSetup) => {
 			cy.setCustomizeSettings(archiveSetup.archive2).then((response) => {
 				expect(response.status).to.be.equal(200);
@@ -112,7 +111,7 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 				.should('have.class', 'layout-grid')
 				.and('have.class', 'col-md-4')
 				.and('have.class', 'col-sm-6')
-				.and('have.class', 'col-12');
+				.and('have.class', 'col-3');
 		});
 	});
 
@@ -120,15 +119,6 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 		cy.visit('/');
 		cy.get('.page-numbers').should('not.exist');
 		cy.get('.nv-loader').should('exist');
-	});
-
-	it.only('Masonry', function () {
-		cy.visit('/');
-		cy.get('article').each((el) => {
-			cy.get(el).should('have.css', 'position', 'absolute');
-			cy.get(el).should('have.css', 'left');
-			cy.get(el).should('have.css', 'top');
-		});
 	});
 
 	it('Author Avatar', function () {
@@ -184,6 +174,18 @@ describe('Blog/Archive 3 / Covers Layout', function () {
 		cy.visit('/');
 		cy.get('article').each((el) => {
 			cy.get(el).find('.inner').should('have.css', 'color', 'rgb(186, 218, 85)');
+		});
+	});
+
+	it('Masonry', function () {
+		cy.request('wp-json/wpthememods/v1/settings').then((response) => {
+			expect(response.body).to.contains(`"neve_enable_masonry":true`);
+		});
+		cy.visit('/');
+		cy.get('article').each((el) => {
+			cy.get(el).should('have.css', 'position', 'absolute');
+			cy.get(el).should('have.css', 'left');
+			cy.get(el).should('have.css', 'top');
 		});
 	});
 });

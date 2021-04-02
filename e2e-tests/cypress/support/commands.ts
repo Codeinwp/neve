@@ -2,6 +2,7 @@
 /* eslint-disable chai-friendly/no-unused-expressions */
 import 'cypress-file-upload';
 import '@percy/cypress';
+import 'cypress-localstorage-commands';
 import { scrollToBottom } from 'scroll-to-bottomjs';
 
 Cypress.Commands.add('loginWithRequest', (nextRoute = '/wp-admin') => {
@@ -110,7 +111,7 @@ Cypress.Commands.add(
 		cy.loginWithRequest(loginRoute);
 		cy.clearWelcome();
 		if (featured) {
-			cy.wait(500);
+			cy.wait(1000);
 			cy.get('button').contains('Featured image').click();
 			cy.get('.editor-post-featured-image__toggle').click();
 			cy.get('.media-frame').find('.media-menu-item').contains('Media Library').click({
@@ -272,4 +273,25 @@ Cypress.Commands.add('deactivateClassicEditorPlugin', () => {
 	cy.loginWithRequest('/wp-admin/plugins.php');
 	cy.get('#deactivate-classic-editor').contains('Deactivate').click();
 	cy.get('#activate-classic-editor').should('exist');
+});
+
+Cypress.Commands.add('getJWT', () => {
+	cy.request('POST', '/wp-json/api-bearer-auth/v1/login', {
+		username: 'admin',
+		password: 'admin',
+	}).then((response) => {
+		expect(response.body.access_token).to.exist;
+		window.localStorage.setItem('jwt', response.body.access_token);
+	});
+});
+
+Cypress.Commands.add('updatePageOrPostByRequest', (postId: string, type: string, body) => {
+	cy.request({
+		method: 'POST',
+		url: '/wp-json/wp/v2/' + type + '/' + postId,
+		auth: {
+			bearer: window.localStorage.getItem('jwt'),
+		},
+		body,
+	});
 });
