@@ -9,6 +9,7 @@
 namespace Neve\Compatibility;
 
 use HFG\Core\Components\CartIcon;
+use HFG\Core\Magic_Tags;
 use Neve\Core\Settings\Config;
 use Neve\Views\Layouts\Layout_Sidebar;
 
@@ -696,13 +697,10 @@ class Woocommerce {
 		$fragments['.cart-count'] = '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 
 		$cart_label = get_theme_mod( 'header_cart_icon_' . CartIcon::CART_LABEL );
-		if ( strpos( $cart_label, '{cart_total}' ) !== false ) {
-			$fragments['.nv-cart-icon-total-plain'] = '<span class="nv-cart-icon-total-plain">' . WC()->cart->cart_contents_total . '</span>';
+		if ( ! empty( $cart_label ) ) {
+			$cart_label                    = Magic_Tags::get_instance()->do_magic_tags( $cart_label );
+			$fragments['.cart-icon-label'] = '<span class="cart-icon-label">' . $cart_label . '</span>';
 		}
-		if ( strpos( $cart_label, '{cart_total_currency_symbol}' ) !== false ) {
-			$fragments['.nv-cart-icon-total-currency'] = '<span class="nv-cart-icon-total-currency">' . WC()->cart->get_cart_total() . '</span>';
-		}
-
 
 		return $fragments;
 	}
