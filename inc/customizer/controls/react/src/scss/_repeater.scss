@@ -1,0 +1,54 @@
+.nv-repeater--item {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+
+  .nv-repeater--header {
+	display: flex;
+	align-items: center;
+	width: 100%;
+
+	.nv-repeater--toggle {
+	  width: 10%;
+	  padding: 10px 5px;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  border-right: 1px solid #ccc;
+	  cursor: pointer;
+	}
+
+	.nv-repeater--item-title {
+	  width: 85%;
+	  font-weight: 600;
+	  display: flex;
+	  padding: 10px 5px 10px 10px;
+	  position: relative;
+	  align-items: center;
+	  justify-content: space-between;
+	  cursor: pointer;
+
+	  .nv-repeater--title-text {
+		max-width: 185px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	  }
+
+	  .dashicons {
+		font-family: Dashicons;
+		display: inline-block;
+		line-height: 1;
+		font-weight: 400;
+		font-style: normal;
+		text-decoration: inherit;
+		width: 20px;
+		height: 20px;
+		font-size: 20px;
+		vertical-align: top;
+		text-align: center;
+		transition: color .1s ease-in;
+	  }
+	}
+  }
+}
