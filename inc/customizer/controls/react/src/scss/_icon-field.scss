@@ -1,0 +1,57 @@
+@import './vars';
+
+.form {
+  display: flex;
+  position: relative;
+
+  .nv--icon-selector {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-right: 0;
+	border-color: $icon-picker-border;
+	position: absolute;
+	bottom: 0;
+	top: 0;
+	right: 25px;
+	left: 0;
+	background-color: transparent;
+  }
+
+  .button {
+	height: auto;
+	box-shadow: none;
+	display: flex;
+	align-items: center;
+	border: none;
+	outline: none;
+	cursor: pointer;
+  }
+
+  input[type=text] {
+	border-right: 0;
+	padding-left: 50px;
+	border-color: $icon-picker-border;
+	cursor: pointer;
+	outline: none;
+  }
+
+  .nv--remove-icon {
+	border: 1px solid $button-color;
+	background-color: $remove-icon-background;
+	border-radius: 0 3px 3px 0;
+	width: 25px;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+
+	.dashicons-no {
+	  font-size: 16px;
+	  line-height: 20px;
+	  display: inline-block;
+	  font-weight: 400;
+	  font-style: normal;
+	  width: 100%;
+	}
+  }
+}
