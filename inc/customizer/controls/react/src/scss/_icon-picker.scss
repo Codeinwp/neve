@@ -1,0 +1,61 @@
+@import './vars';
+
+.nv--icons-container {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  border-top: none;
+  padding-top: 3px;
+  margin-top: -3px;
+  list-style-type: none;
+
+  .nv--icons-search {
+	padding: 5px;
+	width: 100%;
+	position: relative;
+	border-bottom: 1px solid #ccc;
+	//box-shadow: 0 2px 5px rgb(0 0 0/10%);
+
+	svg {
+	  position: absolute;
+	  left: 10px;
+	  bottom: 10px;
+	  top: 10px;
+	  fill: #ccc;
+	}
+
+	input[type=text] {
+	  box-shadow: 0 0 0 transparent;
+	  border-radius: 4px;
+	  border: 1px solid $text-field-border;
+	  padding-left: 25px;
+
+	  &:focus {
+		border: 2px solid $button-color;
+		outline: none;
+	  }
+	}
+  }
+
+  a {
+	width: 20%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	margin: 0;
+	background-color: transparent;
+	padding: 10px 0;
+
+	&:hover {
+	  background-color: $hover;
+	  fill: #fff;
+	  transition: background-color .05s ease-in-out;
+
+	  svg {
+		width: 25px;
+		height: 25px;
+	  }
+	}
+  }
+}
