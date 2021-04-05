@@ -1814,7 +1814,7 @@ msgstr ""
 msgid "next"
 msgstr ""
 
-#: inc/views/product_layout.php:61
+#: inc/views/product_layout.php:67
 msgid "Out of stock"
 msgstr ""
 
