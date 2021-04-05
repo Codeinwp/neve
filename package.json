@@ -115,7 +115,7 @@
 		"conventional-changelog-simple-preset": "^1.0.15",
 		"core-js": "^3.6.5",
 		"cross-env": "^7.0.2",
-		"css-loader": "^5.0.1",
+		"css-loader": "^5.2.0",
 		"cypress-storybook": "^0.5.1",
 		"eslint": "^7.20.0",
 		"eslint-plugin-chai-friendly": "^0.6.0",
