@@ -22,7 +22,7 @@
 
 .neve-meta-button-group {
   .components-button-group {
-    .components-button.is-primary {
+    .components-button.is-primary:not(.import) {
       z-index: inherit;
     }
   }
