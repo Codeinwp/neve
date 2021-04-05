@@ -4,7 +4,8 @@ import { isArray } from 'util';
 export const slotKeys = ['left', 'c-left', 'center', 'c-right', 'right'];
 
 export const getUsedItemsFromItems = (
-	items: BuilderContentInterface
+	items: BuilderContentInterface,
+	withColumns: boolean
 ): string[] => {
 	const nextItems: string[] = [];
 	// Get the items currently inside the builder and save them in an array.

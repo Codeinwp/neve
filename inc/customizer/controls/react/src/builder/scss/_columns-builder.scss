@@ -1,0 +1,27 @@
+.neve-builder.columns-builder {
+  .row {
+	.slots-wrap {
+	  width: 100%;
+
+	  .droppable {
+		justify-content: center;
+
+		&.hide {
+		  display: none;
+		}
+
+		&:first-child {
+		  justify-content: flex-start;
+		}
+
+		&.last:not(.single) {
+		  justify-content: flex-end;
+		}
+
+		&.single {
+		  justify-content: center;
+		}
+	  }
+	}
+  }
+}

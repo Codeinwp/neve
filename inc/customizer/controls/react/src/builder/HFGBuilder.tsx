@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useState, createPortal } from '@wordpress/element';
+import { createPortal, useEffect, useState } from '@wordpress/element';
 import {
 	BuilderActions,
 	BuilderContentInterface,
@@ -15,6 +15,7 @@ import Builder from './components/Builder';
 import { ItemInterface } from 'react-sortablejs';
 
 interface Props {
+	hasColumns: boolean;
 	onChange: (nextValue: BuilderContentInterface) => void;
 	value: BuilderContentInterface;
 	currentBuilder: string;
@@ -23,6 +24,7 @@ interface Props {
 }
 
 const HFGBuilder: React.FC<Props> = ({
+	hasColumns,
 	hidden,
 	currentBuilder,
 	onChange,
@@ -31,14 +33,16 @@ const HFGBuilder: React.FC<Props> = ({
 }) => {
 	const [device, setDevice] = useState<string>('desktop');
 	const [dragging, setDragging] = useState<boolean>(false);
-
 	const getSidebarItems = () => {
-		const usedItems = getUsedItemsFromItems(value[device]);
+		const usedItems = getUsedItemsFromItems(value[device], hasColumns);
 		const allItems = window.NeveReactCustomize.HFG[currentBuilder].items;
 		return Object.keys(allItems)
 			.filter((key) => !usedItems.includes(key))
 			.map((itemId) => {
 				return { id: itemId };
+			})
+			.sort((a, b) => {
+				return a.id < b.id ? -1 : 1;
 			});
 	};
 
@@ -76,7 +80,7 @@ const HFGBuilder: React.FC<Props> = ({
 			});
 		}
 
-		if (slot === 'center' && items.length === 0) {
+		if (slot === 'center' && items.length === 0 && !hasColumns) {
 			const sideSlots = ['c-left', 'c-right'];
 			sideSlots.forEach((sideSlot) => {
 				if (!Array.isArray(update[sideSlot])) {
@@ -219,6 +223,7 @@ const HFGBuilder: React.FC<Props> = ({
 			</div>
 			{createPortal(
 				<Builder
+					hasColumns={hasColumns}
 					hidden={hidden}
 					value={value}
 					device={device}

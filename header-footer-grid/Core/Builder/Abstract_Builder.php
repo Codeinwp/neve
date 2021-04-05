@@ -34,6 +34,8 @@ abstract class Abstract_Builder implements Builder {
 	use Core;
 
 	const LAYOUT_SETTING = 'layout';
+	const COLUMNS_NUMBER = 'columns_number';
+	const COLUMNS_LAYOUT = 'columns_layout';
 	const HEIGHT_SETTING = 'height';
 	const SKIN_SETTING = 'skin';
 	const TEXT_COLOR = 'new_text_color';
@@ -192,6 +194,13 @@ abstract class Abstract_Builder implements Builder {
 	protected $instructions_array = array();
 
 	/**
+	 * Does this layout have columns?
+	 *
+	 * @var boolean
+	 */
+	protected $columns_layout = false;
+
+	/**
 	 * Abstract_Builder constructor.
 	 *
 	 * @since   1.0.0
@@ -248,7 +257,8 @@ abstract class Abstract_Builder implements Builder {
 				'label'             => '',
 				'type'              => '\Neve\Customizer\Controls\React\Builder',
 				'options'           => [
-					'builder_type' => $this->get_id()
+					'builder_type'   => $this->get_id(),
+					'columns_layout' => $this->columns_layout,
 				],
 				'section'           => $this->section,
 			]
@@ -320,6 +330,7 @@ abstract class Abstract_Builder implements Builder {
 					'default'            => 'layout-full-contained',
 				]
 			);
+
 			SettingsManager::get_instance()->add(
 				[
 					'id'                    => self::HEIGHT_SETTING,
@@ -353,6 +364,10 @@ abstract class Abstract_Builder implements Builder {
 					'conditional_header'    => $this->get_id() === 'header',
 				]
 			);
+		}
+
+		if ( $this->columns_layout ) {
+			$this->add_columns_layout_controls( $row_setting_id );
 		}
 
 		$default_colors = $this->get_default_row_colors( $row_id );
@@ -693,10 +708,10 @@ abstract class Abstract_Builder implements Builder {
 
 			foreach ( $this->get_layout_data() as $devices ) {
 				foreach ( $devices as $row ) {
-					foreach ($row as $slot => $values ){
-						 if( empty($slot) ) {
-						 	continue;
-						 }
+					foreach ( $row as $slot => $values ) {
+						if ( empty( $slot ) ) {
+							continue;
+						}
 
 //						$components = array_merge( $components, array_combine( wp_list_pluck( $slot, 'id' ), array_fill( 0, count( $slot ), true ) ) );
 					}
@@ -945,6 +960,7 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	public function render_components( $device = null, $row = null ) {
 		echo '<h1>This is the row...</h1>';
+
 		return;
 		$row_index = 0;
 		if ( $device === null && $row === null ) {
@@ -1365,6 +1381,74 @@ abstract class Abstract_Builder implements Builder {
 				'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
 			]
 		);
+	}
+
+	/**
+	 * Adds Column Layout Controls.
+	 *
+	 * @param string $row_setting_id row id.
+	 */
+	private function add_columns_layout_controls( $row_setting_id ) {
+		$choices = [];
+
+		for ( $i = 1; $i <= 5; $i ++ ) {
+			$choices[ $i ] = [ 'tooltip' => $i, 'icon' => 'text' ];
+		}
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::COLUMNS_NUMBER,
+				'group'             => $row_setting_id,
+				'tab'               => SettingsManager::TAB_LAYOUT,
+				'label'             => __( 'Number of Columns', 'neve' ),
+				'type'              => '\Neve\Customizer\Controls\React\Radio_Buttons',
+				'section'           => $row_setting_id,
+				'options'           => [
+					'choices' => $choices,
+				],
+				'transport'         => 'postMessage',
+				'sanitize_callback' => 'absint',
+				'default'           => '3',
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::COLUMNS_LAYOUT,
+				'group'             => $row_setting_id,
+				'tab'               => SettingsManager::TAB_LAYOUT,
+				'label'             => __( 'Columns Layout', 'neve' ),
+				'type'              => '\Neve\Customizer\Controls\React\Builder_Columns',
+				'section'           => $row_setting_id,
+				'transport'         => 'postMessage',
+				'sanitize_callback' => [ $this, 'sanitize_columns' ],
+				'default'           => 'equal',
+			]
+		);
+	}
+
+	/**
+	 * Sanitize builder columns
+	 *
+	 * @param string $value control value.
+	 *
+	 * @return string
+	 */
+	public function sanitize_columns( $value ) {
+		$allowed = [
+			'equal',
+			'right-third',
+			'left-third',
+			'left-half',
+			'right-half',
+			'center-half',
+			'center-two-thirds'
+		];
+		if ( ! in_array( $value, $allowed ) ) {
+			return 'equal';
+		}
+
+		return $value;
 	}
 
 	/**

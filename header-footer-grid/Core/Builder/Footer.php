@@ -32,6 +32,7 @@ class Footer extends Abstract_Builder {
 	 */
 	public function init() {
 		$this->set_property( 'title', __( 'Footer', 'neve' ) );
+		$this->set_property( 'columns_layout', true );
 		$this->set_property(
 			'description',
 			apply_filters(

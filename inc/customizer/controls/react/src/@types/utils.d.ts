@@ -1,17 +1,12 @@
-import {ItemInterface} from "react-sortablejs";
+import { ItemInterface } from 'react-sortablejs';
 
 interface StringObjectKeys {
 	[key: string]: any;
 }
 
 export type RowTypes = 'top' | 'main' | 'bottom' | 'sidebar' | string;
-export type SlotTypes =
-	| 'left'
-	| 'c-left'
-	| 'center'
-	| 'c-right'
-	| 'right'
-	| string;
+export type SlotTypes = string &
+	('left' | 'c-left' | 'center' | 'c-right' | 'right');
 
 export type DeviceTypes = 'desktop' | 'mobile';
 
@@ -25,9 +20,9 @@ export interface BuilderItemInterface extends StringObjectKeys {
 
 export interface BuilderRowInterface extends StringObjectKeys {
 	left: BuilderItemInterface[];
-	"c-left": BuilderItemInterface[];
+	'c-left': BuilderItemInterface[];
 	center: BuilderItemInterface[];
-	"c-right": BuilderItemInterface[];
+	'c-right': BuilderItemInterface[];
 	right: BuilderItemInterface[];
 }
 
@@ -84,14 +79,9 @@ type LayoutUpdate = (
 	rowId: string,
 	slotId: string,
 	nextItems: BuilderItemInterface[]
-) => void
-
-type RemoveItem = (
-	rowId: string,
-	slotId: string,
-	itemIndex: number
 ) => void;
 
+type RemoveItem = (rowId: string, slotId: string, itemIndex: number) => void;
 
 interface BuilderActions {
 	updateLayout: LayoutUpdate;
@@ -107,7 +97,7 @@ declare global {
 		// eslint-disable-next-line camelcase
 		NeveReactCustomize: {
 			HFG: HFGLayoutBuilder;
-		}
-		wp: StringObjectKeys
+		};
+		wp: StringObjectKeys;
 	}
 }

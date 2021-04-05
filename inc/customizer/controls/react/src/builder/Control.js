@@ -1,10 +1,9 @@
 /* jshint esversion: 6 */
-
 import HFGBuilderComponent from './HFGBuilderComponent';
 import { render } from '@wordpress/element';
 import React from 'react';
 
-export const HFGBuilderControl = wp.customize.Control.extend({
+export const BuilderControl = wp.customize.Control.extend({
 	renderContent() {
 		const customizePreview = document.getElementById('customize-preview');
 		const where = document.querySelector(

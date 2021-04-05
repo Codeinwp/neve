@@ -18,10 +18,9 @@ const RadioIcons = ({
 				return (
 					<Button
 						key={index}
-						className={classnames([
-							{ active: value === type },
-							'is-text',
-						])}
+						className={classnames('is-text', {
+							active: value?.toString() === type,
+						})}
 						onClick={() => {
 							onChange(type);
 						}}
@@ -35,7 +34,9 @@ const RadioIcons = ({
 				<span key={index}>
 					<Button
 						aria-label={options[type].tooltip}
-						className={classnames({ active: value === type })}
+						className={classnames({
+							active: value?.toString() === type,
+						})}
 						icon={icon}
 						onClick={() => {
 							onChange(type);
@@ -66,7 +67,7 @@ const RadioIcons = ({
 RadioIcons.propTypes = {
 	options: PropTypes.object.isRequired,
 	onChange: PropTypes.func.isRequired,
-	value: PropTypes.string,
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	showLabels: PropTypes.bool,
 };
 

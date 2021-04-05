@@ -1,12 +1,13 @@
-import HFGBuilder from '../../inc/customizer/controls/react/src/header-footer-builder/HFGBuilder.tsx';
+import HFGBuilder from '../../inc/customizer/controls/react/src/builder/HFGBuilder.tsx';
 import { CustomizerDecorator } from '../components/decorators';
-import { useRef, useState } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 
 export default {
 	title: 'Customizer/HFG/Header Builder',
 	component: HFGBuilder,
 	args: {
 		initiallyHidden: false,
+		hasColumns: null,
 	},
 	decorators: [CustomizerDecorator],
 };
@@ -44,17 +45,20 @@ const Template = (args) => {
 	const portalMount = document.querySelector('.neve-builder-portal-wrap');
 
 	return (
-		<HFGBuilder
-			hidden={args.initiallyHidden}
-			onChange={setValue}
-			value={value}
-			currentBuilder={'header'}
-			portalMount={portalMount}
-		/>
+		<>
+			<HFGBuilder
+				hidden={args.initiallyHidden}
+				onChange={setValue}
+				value={value}
+				currentBuilder={'header'}
+				portalMount={portalMount}
+				{...args}
+			/>
+		</>
 	);
 };
 
-export const InitiallyOpen = Template.bind({});
+export const Default = Template.bind({});
 export const InitiallyClosed = Template.bind({});
 InitiallyClosed.args = {
 	initiallyHidden: true,

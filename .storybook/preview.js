@@ -5,14 +5,13 @@ import '@icon/dashicons/dashicons.css'
 import {FONTS} from '../stories/utils/values'
 import {BuildersData} from "./dummy-data";
 
-export const parameters = {
-	actions: {argTypesRegex: "^on[A-Z].*"},
-}
 window.NeveReactCustomize = {}
 window.NeveReactCustomize.HFG = BuildersData
-window.wp = {
+
+const wpObject = {
 	customize: {
-		bind: () => {
+		bind: (event, callback) => {
+			callback();
 		},
 		previewedDevice: (device) => {
 			const wrap = document.querySelector('.mock-customize');
@@ -34,11 +33,12 @@ window.wp = {
 			get: () => {
 				return 'title_tagline'
 			},
-			bind: () => {}
+			bind: () => {
+			}
 		}),
 		previewer: {
 			bind: (e) => {
-				console.log( 'Event Bound:', e );
+				console.log('Event Bound:', e);
 			},
 			send: (e) => {
 				console.log(e)
@@ -46,9 +46,28 @@ window.wp = {
 			refresh: () => {
 				console.log('REFRESH PREVIEW');
 			}
+		},
+		control: (slug, callback) => {
+			if (callback) {
+				callback(window.wp.customize.control(slug))
+			}
+
+			if (slug.indexOf('_columns_number') > -1) {
+				return {
+					setting: {
+						value: 3,
+						get: () => window.wp.customize.control(slug).setting.value,
+						set: (value) => {
+						},
+						bind: (value) => window.wp.customize.control(slug).setting.value
+					}
+				}
+			}
 		}
 	}
-}
+};
+
+window.wp = wpObject;
 
 const head = document.querySelector('#nv-google-fonts');
 const families = FONTS.Google.join('|');

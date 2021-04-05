@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@wordpress/components';
+import { Button, Icon } from '@wordpress/components';
 import { closeSmall, cog, menu } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 import {
@@ -15,7 +15,7 @@ interface Props {
 	componentId: string;
 	builder: string;
 	actions: BuilderActions;
-	slot: SlotTypes;
+	slot: SlotTypes | string;
 	row: RowTypes;
 	index: number;
 }
@@ -80,7 +80,7 @@ const BuilderItem: React.FC<Props> = (props) => {
 
 	return (
 		<div className={itemClasses}>
-			<Button icon={menu} iconSize={15} />
+			<Icon className="handle" icon={menu} size={15} />
 			<span className="name">{name}</span>
 			<div className="actions">
 				<Button

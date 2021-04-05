@@ -1,6 +1,6 @@
 import React from 'react';
 import { ItemInterface, ReactSortable } from 'react-sortablejs';
-import { Button } from '@wordpress/components';
+import { Button, Icon } from '@wordpress/components';
 import { menu } from '@wordpress/icons';
 
 import { BuilderActions } from '../../@types/utils';
@@ -34,21 +34,26 @@ const SidebarContent: React.FC<Props> = (props) => {
 						onStart={onDragStart}
 						list={items}
 						setList={(next) => {
-							const nextItems = next.map((i) => {
-								return { id: i.id };
-							});
+							const nextItems = next
+								.map((i) => {
+									return { id: i.id };
+								})
+								.sort((a, b) => {
+									return a.id < b.id ? -1 : 1;
+								});
+
 							setSidebarItems(nextItems);
 						}}
 					>
 						{items.map((item, index) => {
 							const { name } = allItems[item.id];
-
 							return (
-								<div
-									className="builder-item"
-									key={`${item.id}-${index}`}
-								>
-									<Button icon={menu} iconSize={18} />
+								<div className="builder-item" key={index}>
+									<Icon
+										className="handle"
+										icon={menu}
+										size={15}
+									/>
 									<span>{name}</span>
 								</div>
 							);

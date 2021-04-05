@@ -2,6 +2,7 @@ import React from 'react';
 import { BuilderActions, BuilderItemInterface } from '../../@types/utils';
 import { ReactSortable } from 'react-sortablejs';
 import BuilderItem from './BuilderItem';
+import classnames from 'classnames';
 
 interface Props {
 	slotId: string;
@@ -10,16 +11,17 @@ interface Props {
 	items: BuilderItemInterface[];
 	dragging: boolean;
 	actions: BuilderActions;
+	className?: string;
 }
 
 const Slot: React.FC<Props> = (props) => {
-	const { items, slotId, rowId, builder, actions } = props;
+	const { items, slotId, rowId, builder, actions, className } = props;
 	const { updateLayout, onDragStart } = actions;
-
+	const slotClasses = classnames('droppable', slotId, className);
 	return (
 		<ReactSortable
 			animation={60}
-			className={`droppable ${slotId}`}
+			className={slotClasses}
 			onStart={onDragStart}
 			group={builder}
 			list={items}
@@ -38,7 +40,7 @@ const Slot: React.FC<Props> = (props) => {
 						<BuilderItem
 							slot={slotId}
 							row={rowId}
-							key={`${item.id}-${index}`}
+							key={index}
 							index={index}
 							builder={builder}
 							componentId={item.id}

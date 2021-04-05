@@ -18,7 +18,7 @@ class Builder extends \WP_Customize_Control {
 	 *
 	 * @var string
 	 */
-	public $type = 'neve_hfg_builder_control';
+	public $type = 'neve_builder_control';
 
 	/**
 	 * Builder Type
@@ -26,6 +26,12 @@ class Builder extends \WP_Customize_Control {
 	 * @var string
 	 */
 	public $builder_type = null;
+	/**
+	 * Columns Layout
+	 *
+	 * @var boolean
+	 */
+	public $columns_layout = false;
 
 	/**
 	 * Gather the parameters passed to client JavaScript via JSON.
@@ -35,6 +41,7 @@ class Builder extends \WP_Customize_Control {
 	public function json() {
 		$json                = parent::json();
 		$json['builderType'] = $this->builder_type;
+		$json['columnsLayout'] = $this->columns_layout;
 
 		return $json;
 	}
