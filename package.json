@@ -107,7 +107,7 @@
 		"@wordpress/eslint-plugin": "^8.0.2",
 		"@wordpress/i18n": "^3.17.0",
 		"@wordpress/icons": "^2.9.1",
-		"@wordpress/media-utils": "^1.19.2",
+		"@wordpress/media-utils": "^1.20.0",
 		"@wordpress/scripts": "^13.0.3",
 		"babel-loader": "^8.1.0",
 		"babel-plugin-react-require": "^3.1.3",
