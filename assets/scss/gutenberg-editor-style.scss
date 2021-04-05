@@ -20,8 +20,10 @@
   @import "gutenberg-editor/media-queries";
 }
 
-.interface-complementary-area {
-  .components-panel__header {
-    z-index: 9999;
+.neve-meta-button-group {
+  .components-button-group {
+    .components-button.is-primary {
+      z-index: inherit;
+    }
   }
 }
