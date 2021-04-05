@@ -105,7 +105,7 @@
 		"@wordpress/dom-ready": "^2.12.1",
 		"@wordpress/element": "^2.19.0",
 		"@wordpress/eslint-plugin": "^8.0.2",
-		"@wordpress/i18n": "^3.17.0",
+		"@wordpress/i18n": "^3.19.0",
 		"@wordpress/icons": "^2.9.1",
 		"@wordpress/media-utils": "^1.19.2",
 		"@wordpress/scripts": "^13.0.3",
