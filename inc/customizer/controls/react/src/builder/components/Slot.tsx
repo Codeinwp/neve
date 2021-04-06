@@ -3,6 +3,7 @@ import { BuilderActions, BuilderItemInterface } from '../../@types/utils';
 import { ReactSortable } from 'react-sortablejs';
 import BuilderItem from './BuilderItem';
 import classnames from 'classnames';
+import { useEffect } from '@wordpress/element';
 
 interface Props {
 	slotId: string;
@@ -18,6 +19,13 @@ const Slot: React.FC<Props> = (props) => {
 	const { items, slotId, rowId, builder, actions, className } = props;
 	const { updateLayout, onDragStart } = actions;
 	const slotClasses = classnames('droppable', slotId, className);
+
+	// useEffect(() => {
+	// 	return () => {
+	// 		updateLayout(rowId, slotId, []);
+	// 	};
+	// });
+
 	return (
 		<ReactSortable
 			animation={60}

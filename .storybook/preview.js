@@ -52,13 +52,22 @@ const wpObject = {
 				callback(window.wp.customize.control(slug))
 			}
 
+			if (slug.indexOf('_columns_layout') > -1) {
+				return {
+					setting: {
+						value: 'left-third',
+						get: () => window.wp.customize.control(slug).setting.value,
+						set: (value) => {},
+						bind: (value) => window.wp.customize.control(slug).setting.value
+					}
+				}
+			}
 			if (slug.indexOf('_columns_number') > -1) {
 				return {
 					setting: {
-						value: 3,
+						value: 2,
 						get: () => window.wp.customize.control(slug).setting.value,
-						set: (value) => {
-						},
+						set: (value) => {},
 						bind: (value) => window.wp.customize.control(slug).setting.value
 					}
 				}

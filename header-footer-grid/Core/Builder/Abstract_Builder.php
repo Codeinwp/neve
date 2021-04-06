@@ -1421,6 +1421,9 @@ abstract class Abstract_Builder implements Builder {
 				'type'              => '\Neve\Customizer\Controls\React\Builder_Columns',
 				'section'           => $row_setting_id,
 				'transport'         => 'postMessage',
+				'options'           => [
+					'columns_control' => $row_setting_id . '_' . self::COLUMNS_NUMBER,
+				],
 				'sanitize_callback' => [ $this, 'sanitize_columns' ],
 				'default'           => 'equal',
 			]

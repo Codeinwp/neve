@@ -4,8 +4,12 @@
 	  width: 100%;
 
 	  .droppable {
+		box-sizing: border-box;
 		justify-content: center;
-
+		//flex: 1 1;
+		//width: unset;
+		//flex-basis: auto;
+		//flex-grow: 0;
 		&.hide {
 		  display: none;
 		}
@@ -14,12 +18,54 @@
 		  justify-content: flex-start;
 		}
 
+		&.last {
+		  border: none;
+		}
+
 		&.last:not(.single) {
 		  justify-content: flex-end;
 		}
 
 		&.single {
 		  justify-content: center;
+		}
+	  }
+
+	  &.col-2 {
+		&.right-third .droppable.left {
+		  flex-grow: 2;
+		}
+
+		&.left-third .droppable.c-left {
+		  flex-grow: 2;
+		}
+	  }
+
+	  &.col-3 {
+		&.right-half .droppable.center {
+		  flex-grow: 2;
+		}
+
+		&.left-half .droppable.left {
+		  flex-grow: 2;
+		}
+
+		&.center-half .droppable.c-left {
+		  flex-grow: 2;
+		}
+
+		&.center-two-thirds .droppable.c-left {
+		  flex-grow: 3;
+		}
+	  }
+
+	  &.col-4 {
+		&.left-half .droppable.left {
+		  flex-grow: 2;
+		}
+
+		&.right-half .droppable.c-right {
+		  flex-grow: 2;
 		}
 	  }
 	}

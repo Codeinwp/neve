@@ -15,6 +15,10 @@ import classnames from 'classnames';
 import Slot from './Slot';
 import { WPCustomizeControl } from '../../@types/customizer-control';
 
+interface ColumnMapping {
+	[key: number]: Record<string, string>;
+}
+
 interface Props {
 	items: BuilderRowInterface & BuilderItemInterface[];
 	rowId: RowTypes;
@@ -32,8 +36,10 @@ const Row: React.FC<Props> = (props) => {
 
 	const section = `hfg_${builder}_layout_${rowId}`;
 	const columnsSetting = `${section}_columns_number`;
+	const columnsLayoutSetting = `${section}_columns_layout`;
 
-	const [columns, setColumns] = useState(0);
+	const [columns, setColumns] = useState<number>(0);
+	const [colLayout, setColLayout] = useState('equal');
 	const [currentRow, setCurrentRow] = useState(false);
 	const [sidebarVisible, setSidebarVisible] = useState(false);
 
@@ -48,6 +54,16 @@ const Row: React.FC<Props> = (props) => {
 	 * Check if the section is active when sections are expanded.
 	 */
 	useEffect(() => {
+		bindRowSettingsButton();
+
+		if (!hasColumns) {
+			return;
+		}
+
+		bindColumnsSync();
+	}, []);
+
+	const bindRowSettingsButton = () => {
 		window.wp.customize
 			.state('expandedSection')
 			.bind((expandedSection: StringObjectKeys) => {
@@ -60,45 +76,46 @@ const Row: React.FC<Props> = (props) => {
 					setCurrentRow(true);
 				}
 			});
+	};
 
-		if (!hasColumns) {
-			return;
-		}
-
+	const bindColumnsSync = () => {
 		window.wp.customize.bind('ready', () => {
 			const colNumber = window.wp.customize
 				.control(columnsSetting)
 				.setting.get();
 			setColumns(parseInt(colNumber));
+			setColLayout(
+				window.wp.customize.control(columnsLayoutSetting).setting.get()
+			);
 		});
 
-		const initialUpdate = (control: WPCustomizeControl) => {
-			setColumns(parseInt(control.setting.get()));
-		};
-
-		const syncUpdate = (nextValue: string) => {
+		const syncColNumber = (nextValue: string) => {
 			const colNumber = parseInt(nextValue);
-			console.log('Upcoming Columns:', colNumber);
-
 			slots.forEach((slot, index) => {
 				if (index + 1 > colNumber) {
 					updateLayout(rowId, slot, []);
 				}
 			});
-
 			setColumns(colNumber);
 		};
 
 		window.wp.customize.control(
 			columnsSetting,
 			(control: WPCustomizeControl) => {
-				initialUpdate(control);
 				control.setting.bind((nextValue: string) => {
-					syncUpdate(nextValue);
+					syncColNumber(nextValue);
 				});
 			}
 		);
-	}, []);
+		window.wp.customize.control(
+			columnsLayoutSetting,
+			(control: WPCustomizeControl) => {
+				control.setting.bind((nextValue: string) => {
+					setColLayout(nextValue);
+				});
+			}
+		);
+	};
 
 	// Toggle button when sidebar is toggled from preview.
 	useEffect(() => {
@@ -209,7 +226,9 @@ const Row: React.FC<Props> = (props) => {
 					</>
 				)}
 				{hasColumns && (
-					<div className="slots-wrap column-slots-wrap">
+					<div
+						className={`slots-wrap column-slots-wrap col-${columns} ${colLayout}`}
+					>
 						{slots.map((slotId, index) => {
 							const slotClasses = classnames({
 								hide: index >= columns,
