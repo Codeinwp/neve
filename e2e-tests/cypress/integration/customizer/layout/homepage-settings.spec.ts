@@ -13,13 +13,13 @@ describe('Homepage-settings', function () {
 		cy.get('h1').should('contain.text', 'Sample Page');
 	});
 
-	it('Sets up a page to be the posts page', function () {
+	it.only('Sets up a page to be the posts page', function () {
 		cy.get('#_customize-input-page_for_posts').select('Blog');
 
 		cy.get('#save').click({ force: true });
 
 		cy.visit('/Blog');
 
-		cy.get('container archive-container');
+		cy.get('.nv-index-posts');
 	});
 });
