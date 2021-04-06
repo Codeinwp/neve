@@ -84,7 +84,7 @@ function neve_hooks() {
 			'woocommerce_before_shop_loop',
 			'woocommerce_after_shop_loop',
 			'woocommerce_before_shop_loop_item',
-			'woocommerce_after_shop_loop_item',
+			'nv_shop_item_content_after',
 		);
 		$hooks['product']  = array(
 			'woocommerce_before_single_product',
