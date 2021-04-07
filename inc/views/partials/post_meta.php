@@ -72,7 +72,21 @@ class Post_Meta extends Base_View {
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'date':
-					$markup .= '<' . $tag . ' class="meta date posted-on">';
+					$date_meta_classes = array(
+						'meta',
+						'date',
+						'posted-on',
+					);
+
+					$created           = get_the_time( 'U' );
+					$modified          = get_the_modified_time( 'U' );
+					$has_updated_time  = $created !== $modified;
+					$show_updated_time = get_theme_mod( 'neve_show_last_updated_date', false );
+					if ( $show_updated_time && $has_updated_time ) {
+						$date_meta_classes[] = 'nv-show-updated';
+					}
+
+					$markup .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . '">';
 					$markup .= self::get_time_tags();
 					$markup .= '</' . $tag . '>';
 					break;
@@ -195,17 +209,55 @@ class Post_Meta extends Base_View {
 	 * @return string
 	 */
 	public static function get_time_tags() {
-		$created  = get_the_time( 'U' );
-		$format   = get_option( 'date_format' );
-		$modified = get_the_modified_time( 'U' );
-		$time     = '<time class="entry-date published" datetime="' . esc_attr( date_i18n( 'c', $created ) ) . '" content="' . esc_attr( date_i18n( 'Y-m-d', $created ) ) . '">' . esc_html( date_i18n( $format, $created ) ) . '</time>';
-		if ( $created === $modified ) {
+		$created           = get_the_time( 'U' );
+		$modified          = get_the_modified_time( 'U' );
+		$has_updated_time  = $created !== $modified;
+		$show_updated_time = get_theme_mod( 'neve_show_last_updated_date', false );
+		$format            = get_option( 'date_format' );
+
+		$prefixes = array(
+			'published' => '',
+			'updated'   => '',
+		);
+
+		/**
+		 * Filters the prefix of the published date and the updated date of a post.
+		 *
+		 * @param array $prefixes {
+		 *     Prefix location and value.
+		 *
+		 *     @type string $published The prefix for the published date.
+		 *     @type string $updated The prefix for the updated date.
+		 * }
+		 *
+		 * @since 2.11
+		 */
+		$prefixes = apply_filters( 'neve_meta_date_prefix', $prefixes );
+
+		$updated_time_markup = '<time class="updated" datetime="' . esc_attr( date_i18n( 'c', $modified ) ) . '">';
+		if ( array_key_exists( 'updated', $prefixes ) && ! empty( $prefixes['updated'] ) ) {
+			$updated_time_markup .= wp_kses_post( $prefixes['updated'] );
+		}
+		$updated_time_markup .= esc_html( date_i18n( $format, $modified ) ) . '</time>';
+
+		if ( $show_updated_time && $has_updated_time ) {
+			return $updated_time_markup;
+		}
+
+		$time = '<time class="entry-date published" datetime="' . esc_attr( date_i18n( 'c', $created ) ) . '" content="' . esc_attr( date_i18n( 'Y-m-d', $created ) ) . '">';
+		if ( array_key_exists( 'published', $prefixes ) && ! empty( $prefixes['published'] ) ) {
+			$time .= wp_kses_post( $prefixes['published'] );
+		}
+		$time .= esc_html( date_i18n( $format, $created ) ) . '</time>';
+
+		if ( ! $has_updated_time ) {
 			return $time;
 		}
-		$time .= '<time class="updated" datetime="' . esc_attr( date_i18n( 'c', $modified ) ) . '">' . esc_html( date_i18n( $format, $modified ) ) . '</time>';
+		$time .= $updated_time_markup;
 
 		return $time;
 	}
+
 	/**
 	 * Get the comments with a link.
 	 *
