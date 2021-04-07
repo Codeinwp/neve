@@ -78,7 +78,7 @@ class Woocommerce {
 			.woocommerce .button.button-secondary.more-details,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button',
 		'hover'   => '
-			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover,
+			,.woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button:hover,
 			.woocommerce button.button:not(.single_add_to_cart_button):hover,
 			.woocommerce a.added_to_cart:hover,
