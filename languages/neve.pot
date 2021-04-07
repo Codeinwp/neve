@@ -1539,7 +1539,7 @@ msgstr ""
 
 #: inc/customizer/options/layout_sidebar.php:164
 #: inc/customizer/options/layout_single_post.php:42
-#: inc/customizer/options/typography.php:335
+#: inc/customizer/options/typography.php:338
 msgid "Single Post"
 msgstr ""
 
@@ -1631,25 +1631,25 @@ msgstr ""
 msgid "Learn more about fallback fonts"
 msgstr ""
 
-#: inc/customizer/options/typography.php:318
-#: inc/customizer/options/typography.php:334
+#: inc/customizer/options/typography.php:321
+#: inc/customizer/options/typography.php:337
 msgid "Post title"
 msgstr ""
 
-#: inc/customizer/options/typography.php:319
+#: inc/customizer/options/typography.php:322
 msgid "Blog Archive"
 msgstr ""
 
-#: inc/customizer/options/typography.php:324
+#: inc/customizer/options/typography.php:327
 msgid "Post excerpt"
 msgstr ""
 
-#: inc/customizer/options/typography.php:329
-#: inc/customizer/options/typography.php:340
+#: inc/customizer/options/typography.php:332
+#: inc/customizer/options/typography.php:343
 msgid "Post meta"
 msgstr ""
 
-#: inc/customizer/options/typography.php:345
+#: inc/customizer/options/typography.php:348
 msgid "Comments reply title"
 msgstr ""
 
