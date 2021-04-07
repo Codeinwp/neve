@@ -1539,7 +1539,7 @@ msgstr ""
 
 #: inc/customizer/options/layout_sidebar.php:164
 #: inc/customizer/options/layout_single_post.php:42
-#: inc/customizer/options/typography.php:335
+#: inc/customizer/options/typography.php:336
 msgid "Single Post"
 msgstr ""
 
@@ -1631,25 +1631,25 @@ msgstr ""
 msgid "Learn more about fallback fonts"
 msgstr ""
 
-#: inc/customizer/options/typography.php:318
-#: inc/customizer/options/typography.php:334
+#: inc/customizer/options/typography.php:319
+#: inc/customizer/options/typography.php:335
 msgid "Post title"
 msgstr ""
 
-#: inc/customizer/options/typography.php:319
+#: inc/customizer/options/typography.php:320
 msgid "Blog Archive"
 msgstr ""
 
-#: inc/customizer/options/typography.php:324
+#: inc/customizer/options/typography.php:325
 msgid "Post excerpt"
 msgstr ""
 
-#: inc/customizer/options/typography.php:329
-#: inc/customizer/options/typography.php:340
+#: inc/customizer/options/typography.php:330
+#: inc/customizer/options/typography.php:341
 msgid "Post meta"
 msgstr ""
 
-#: inc/customizer/options/typography.php:345
+#: inc/customizer/options/typography.php:346
 msgid "Comments reply title"
 msgstr ""
 
@@ -2220,6 +2220,10 @@ msgstr ""
 
 #: inc/customizer/controls/react/src/common/ColorControl.js:80
 msgid "Clear"
+msgstr ""
+
+#: inc/customizer/controls/react/src/common/ControlWithLink.js:37
+msgid "(opens in a new tab)"
 msgstr ""
 
 #: inc/customizer/controls/react/src/common/Responsive.js:36
