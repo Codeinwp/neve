@@ -4,6 +4,7 @@ import Card from '../Card';
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { Button, Icon } from '@wordpress/components';
+import { ExternalLinkIcon } from '../../../../inc/admin/metabox/src/helpers/icons.js'
 
 const Help = (props) => {
 	const { setTab } = props;
@@ -33,7 +34,10 @@ const Help = (props) => {
 					<Button
 						isLink
 						href="http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder"
+						target="_blank"
 					>
+						<span className="screen-reader-text">{ __( '(opens in a new tab)', 'neve') }</span>
+						<ExternalLinkIcon margin="right"/>
 						{__('Learn More', 'neve')}
 					</Button>
 				</Card>
@@ -43,14 +47,18 @@ const Help = (props) => {
 				title={__('Documentation', 'neve')}
 				description={docsCardDescription}
 			>
-				<Button isLink href={docsURL}>
+				<Button isLink href={docsURL} target="_blank">
+					<span className="screen-reader-text">{ __( '(opens in a new tab)', 'neve') }</span>
+					<ExternalLinkIcon margin="right"/>
 					{__('Go to docs', 'neve')}
 				</Button>
 				{!whiteLabel && (
 					<a
 						className="facebook-badge"
 						href="https://www.facebook.com/groups/648646435537266/"
+						target="_blank"
 					>
+						<span className="screen-reader-text">{ __( '(opens in a new tab)', 'neve') }</span>
 						<Icon icon="facebook-alt" />
 						<span>{__('Join our Facebook Group', 'neve')}</span>
 					</a>
@@ -69,7 +77,10 @@ const Help = (props) => {
 					<Button
 						isLink
 						href="http://docs.themeisle.com/article/14-how-to-create-a-child-theme"
+						target="_blank"
 					>
+						<span className="screen-reader-text">{ __( '(opens in a new tab)', 'neve') }</span>
+						<ExternalLinkIcon margin="right"/>
 						{__('Learn More', 'neve')}
 					</Button>
 				</Card>
@@ -80,7 +91,8 @@ const Help = (props) => {
 				title={__('Contact Support', 'neve')}
 				description={supportCardDescription}
 			>
-				<Button isPrimary href={supportURL}>
+				<Button isPrimary href={supportURL} target="_blank">
+					<span className="screen-reader-text">{ __( '(opens in a new tab)', 'neve') }</span>
 					{__('Contact Support', 'neve')}
 				</Button>
 			</Card>
@@ -97,7 +109,10 @@ const Help = (props) => {
 					<Button
 						isLink
 						href="http://docs.themeisle.com/article/63-speed-up-your-wordpress-site"
+						target="_blank"
 					>
+						<span className="screen-reader-text">{ __( '(opens in a new tab)', 'neve') }</span>
+						<ExternalLinkIcon margin="right"/>
 						{__('Learn More', 'neve')}
 					</Button>
 				</Card>
