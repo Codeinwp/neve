@@ -34,6 +34,10 @@ function neve_hooks() {
 
 	$hooks = array(
 		'header'     => array(
+			'neve_html_start_before',
+			'neve_head_start_after',
+			'neve_head_end_before',
+			'neve_body_start_after',
 			'neve_before_header_hook',
 			'neve_before_header_wrapper_hook',
 			'neve_after_header_hook',
@@ -42,15 +46,11 @@ function neve_hooks() {
 		'footer'     => array(
 			'neve_before_footer_hook',
 			'neve_after_footer_hook',
-		),
-		'shop'       => array(
-			'neve_before_cart_popup',
-			'neve_after_cart_popup',
+			'neve_body_end_before',
 		),
 		'post'       => array(
 			'neve_before_post_content',
 			'neve_after_post_content',
-			'neve_before_loop',
 		),
 		'page'       => array(
 			'neve_before_page_header',
@@ -65,8 +65,11 @@ function neve_hooks() {
 			'neve_after_sidebar_content',
 		),
 		'blog'       => array(
+			'neve_before_loop',
 			'neve_before_posts_loop',
 			'neve_after_posts_loop',
+			'neve_loop_entry_before',
+			'neve_loop_entry_after',
 			'neve_middle_posts_loop',
 		),
 		'pagination' => array(
@@ -75,6 +78,14 @@ function neve_hooks() {
 	);
 
 	if ( class_exists( 'WooCommerce' ) ) {
+		$hooks['shop']     = array(
+			'neve_before_cart_popup',
+			'neve_after_cart_popup',
+			'woocommerce_before_shop_loop',
+			'woocommerce_after_shop_loop',
+			'woocommerce_before_shop_loop_item',
+			'nv_shop_item_content_after',
+		);
 		$hooks['product']  = array(
 			'woocommerce_before_single_product',
 			'woocommerce_before_single_product_summary',

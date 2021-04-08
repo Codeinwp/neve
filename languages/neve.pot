@@ -279,11 +279,11 @@ msgstr ""
 msgid "You appear to be running the Neve theme from source code. Please finish installation by running %s."
 msgstr ""
 
-#: globals/utilities.php:1339
+#: globals/utilities.php:1350
 msgid "Base"
 msgstr ""
 
-#: globals/utilities.php:1354
+#: globals/utilities.php:1365
 msgid "Dark Mode"
 msgstr ""
 
@@ -907,7 +907,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:543
 #: inc/customizer/options/layout_blog.php:390
-#: inc/views/partials/post_meta.php:129
+#: inc/views/partials/post_meta.php:143
 msgid "Author"
 msgstr ""
 
@@ -1032,7 +1032,7 @@ msgstr ""
 msgid "Hide"
 msgstr ""
 
-#: header.php:31
+#: header.php:80
 msgid "Skip to content"
 msgstr ""
 
@@ -1485,18 +1485,18 @@ msgstr ""
 
 #: inc/customizer/options/layout_blog.php:391
 #: inc/customizer/options/layout_single_product.php:107
-#: inc/views/partials/post_meta.php:130
+#: inc/views/partials/post_meta.php:144
 msgid "Category"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:392
-#: inc/views/partials/post_meta.php:131
+#: inc/views/partials/post_meta.php:145
 msgid "Date"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:393
 #: inc/customizer/options/layout_single_post.php:72
-#: inc/views/partials/post_meta.php:132
+#: inc/views/partials/post_meta.php:146
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:319
 msgid "Comments"
 msgstr ""
@@ -1509,11 +1509,15 @@ msgstr ""
 msgid "Show Author Avatar"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:585
+#: inc/customizer/options/layout_blog.php:439
+msgid "Use last updated date instead of the published one"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:601
 msgid "Customize Typography for the Archive page"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:587
+#: inc/customizer/options/layout_blog.php:603
 msgid "here"
 msgstr ""
 
@@ -1595,7 +1599,7 @@ msgid "Content"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:70
-#: inc/views/partials/post_meta.php:243
+#: inc/views/partials/post_meta.php:295
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:318
 msgid "Tags"
 msgstr ""
@@ -1801,36 +1805,36 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/views/partials/post_meta.php:174
+#: inc/views/partials/post_meta.php:188
 msgid "by"
 msgstr ""
 
 #. translators: %s: Author's display name.
-#: inc/views/partials/post_meta.php:181
+#: inc/views/partials/post_meta.php:195
 msgid "Posts by %s"
 msgstr ""
 
 #. translators: %s: number of comments
-#: inc/views/partials/post_meta.php:229
+#: inc/views/partials/post_meta.php:281
 msgid "%s Comment"
 msgid_plural "%s Comments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/views/pluggable/pagination.php:141
+#: inc/views/pluggable/pagination.php:146
 #: inc/views/template_parts.php:309
 msgid "Pages:"
 msgstr ""
 
-#: inc/views/pluggable/pagination.php:158
+#: inc/views/pluggable/pagination.php:163
 msgid "previous"
 msgstr ""
 
-#: inc/views/pluggable/pagination.php:163
+#: inc/views/pluggable/pagination.php:168
 msgid "next"
 msgstr ""
 
-#: inc/views/product_layout.php:61
+#: inc/views/product_layout.php:67
 msgid "Out of stock"
 msgstr ""
 

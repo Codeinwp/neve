@@ -106,7 +106,7 @@ class Pagination extends Base_View {
 	/**
 	 * Render the pagination.
 	 *
-	 * @param string $context not yet used might come in handy later.
+	 * @param string $context Pagination location context.
 	 */
 	public function render_pagination( $context ) {
 		if ( $context === 'single' ) {
@@ -117,6 +117,11 @@ class Pagination extends Base_View {
 
 		if ( ! $this->has_infinite_scroll() ) {
 			if ( is_paged() ) {
+				/**
+				 * Executes actions before pagination.
+				 *
+				 * @since 2.3.8
+				 */
 				do_action( 'neve_before_pagination' );
 			}
 			echo wp_kses_post(
