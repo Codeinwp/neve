@@ -394,7 +394,7 @@ msgstr ""
 #: dashboard/src/Components/Sidebar.js:36
 #: dashboard/src/Components/Sidebar.js:58
 #: dashboard/src/Components/Sidebar.js:80
-#: inc/customizer/controls/react/src/common/ControlWithLink.js:39
+#: inc/customizer/controls/react/src/common/ControlWithLink.js:40
 msgid "(opens in a new tab)"
 msgstr ""
 
@@ -1956,7 +1956,7 @@ msgstr ""
 msgid "Leave Feedback"
 msgstr ""
 
-#: dashboard/src/Components/FeatureRow.js:48
+#: dashboard/src/Components/FeatureRow.js:45
 msgid "More details <a><span>(opens in a new tab)</span>here<svg_icon/></a>."
 msgstr ""
 

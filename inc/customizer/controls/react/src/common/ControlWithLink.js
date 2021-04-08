@@ -1,8 +1,8 @@
 /* global NeveProReactCustomize */
 
 import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components'
-import {externalLinkIcon} from '../../../../../admin/metabox/src/helpers/icons'
+import { Icon } from '@wordpress/components';
+import { externalLinkIcon } from '../../../../../admin/metabox/src/helpers/icons';
 
 const ControlWithLink = ({ link, children }) => {
 	if (typeof NeveProReactCustomize !== 'undefined') {
@@ -26,19 +26,27 @@ const ControlWithLink = ({ link, children }) => {
 			);
 		}
 
-		let linkProps = {};
-		if ( link.new_tab ) {
+		const linkProps = {};
+		if (link.new_tab) {
 			linkProps.target = '_blank';
-			linkProps.rel    = 'noopener';
+			linkProps.rel = 'noopener';
 		}
 
-		return <a
-			href={link.url}
-			{...linkProps}
-		>
-			{link.new_tab ? <><span className="screen-reader-text">{ __( '(opens in a new tab)', 'neve') }</span><Icon icon={externalLinkIcon}/></> : ''}
-			{link.string}
-		</a>;
+		return (
+			<a href={link.url} {...linkProps}>
+				{link.new_tab ? (
+					<>
+						<span className="screen-reader-text">
+							{__('(opens in a new tab)', 'neve')}
+						</span>
+						<Icon icon={externalLinkIcon} />
+					</>
+				) : (
+					''
+				)}
+				{link.string}
+			</a>
+		);
 	};
 
 	return (
