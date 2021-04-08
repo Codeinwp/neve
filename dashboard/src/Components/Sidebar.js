@@ -3,10 +3,11 @@ import { changeOption } from '../utils/rest';
 import LicenseCard from './LicenseCard';
 
 import { __ } from '@wordpress/i18n';
-import { ToggleControl } from '@wordpress/components';
+import { Button, ToggleControl, Icon } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
+import { externalLinkIcon } from '../../../inc/admin/metabox/src/helpers/icons.js';
 
 const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 	const [tracking, setTracking] = useState('yes' === loggerValue);
@@ -25,9 +26,18 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 										.sidebarCommunityDescription,
 							}}
 						/>
-						<a href="https://www.facebook.com/groups/648646435537266/">
+						<Button
+							isLink
+							href="https://www.facebook.com/groups/648646435537266/"
+							target="_blank"
+							rel="noopener"
+						>
+							<span className="screen-reader-text">
+								{__('(opens in a new tab)', 'neve')}
+							</span>
+							<Icon icon={externalLinkIcon} />
 							{__('Join our Facebook Group', 'neve')}
-						</a>
+						</Button>
 					</div>
 					<hr />
 					<div className="sidebar-section">
@@ -38,9 +48,18 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 								'neve'
 							)}
 						</p>
-						<a href="https://wordpress.org/support/theme/neve/reviews/#new-post">
+						<Button
+							isLink
+							href="https://wordpress.org/support/theme/neve/reviews/#new-post"
+							target="_blank"
+							rel="noopener"
+						>
+							<span className="screen-reader-text">
+								{__('(opens in a new tab)', 'neve')}
+							</span>
+							<Icon icon={externalLinkIcon} />
 							{__('Submit a review', 'neve')}
-						</a>
+						</Button>
 					</div>
 					<hr />
 					<div className="sidebar-section">
@@ -51,9 +70,20 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 								'neve'
 							)}
 							&nbsp;
-							<a href="https://docs.themeisle.com/article/1122-neve-usage-tracking">
+							<Button
+								isLink
+								href="https://docs.themeisle.com/article/1122-neve-usage-tracking"
+								target="_blank"
+								rel="noopener"
+							>
+								<span className="screen-reader-text">
+									{__('(opens in a new tab)', 'neve')}
+								</span>
 								{__('What do we track?', 'neve')}
-							</a>
+								<Icon
+									icon={externalLinkIcon({ margin: 'left' })}
+								/>
+							</Button>
 						</p>
 						<ToggleControl
 							checked={tracking}

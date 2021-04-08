@@ -64,7 +64,7 @@
 				margin: 0;
 			}
 
-			span {
+			span:not(.screen-reader-text) {
 				display: flex;
 				align-items: center;
 				line-height: 1;
@@ -150,7 +150,7 @@
 			.large {
 				font-size: 15px;
 
-				span {
+				span:not(.screen-reader-text) {
 					padding: 0 20px;
 					position: relative;
 				}

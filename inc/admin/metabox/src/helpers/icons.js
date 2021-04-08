@@ -41,7 +41,7 @@ export const alignLeftIcon = () => {
 	);
 };
 
-export const ExternalLinkIcon = ({margin}) => {
+export const externalLinkIcon = ({margin = 'right'}) => {
 	const style = margin === 'right' ? { marginRight: '5px' } : { marginLeft: '5px' };
 	return (
 		<SVG xmlns="http://www.w3.org/2000/svg" focusable="false" role="img" viewBox="0 0 512 512" width="12" height="12" style={style}>

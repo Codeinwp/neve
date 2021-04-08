@@ -372,7 +372,7 @@ msgid "Sidebar Width"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:34
-#: header-footer-grid/Core/Builder/Footer.php:74
+#: header-footer-grid/Core/Builder/Footer.php:75
 msgid "Footer"
 msgstr ""
 
@@ -385,64 +385,80 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Footer.php:47
 #: header-footer-grid/Core/Builder/Header.php:51
 #: inc/core/admin.php:273
+#: dashboard/src/Components/Content/Help.js:41
+#: dashboard/src/Components/Content/Help.js:55
+#: dashboard/src/Components/Content/Help.js:69
+#: dashboard/src/Components/Content/Help.js:93
+#: dashboard/src/Components/Content/Help.js:113
+#: dashboard/src/Components/Content/Help.js:135
+#: dashboard/src/Components/Sidebar.js:36
+#: dashboard/src/Components/Sidebar.js:58
+#: dashboard/src/Components/Sidebar.js:80
+#: inc/customizer/controls/react/src/common/ControlWithLink.js:39
+msgid "(opens in a new tab)"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Footer.php:48
+#: header-footer-grid/Core/Builder/Header.php:52
+#: inc/core/admin.php:274
 msgid "Read full documentation"
 msgstr ""
 
 #. translators: 1: builder, 2: builder symbol
-#: header-footer-grid/Core/Builder/Footer.php:57
+#: header-footer-grid/Core/Builder/Footer.php:58
 msgid "Welcome to the %1$s builder! Click the %2$s button to add a new component or follow the Quick Links."
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Footer.php:63
+#: header-footer-grid/Core/Builder/Footer.php:64
 msgid "Change Copyright"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Footer.php:67
+#: header-footer-grid/Core/Builder/Footer.php:68
 msgid "Change Footer Color"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Footer.php:120
+#: header-footer-grid/Core/Builder/Footer.php:121
 msgid "Footer Top"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Footer.php:124
+#: header-footer-grid/Core/Builder/Footer.php:125
 msgid "Footer Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:59
+#: header-footer-grid/Core/Builder/Header.php:60
 msgid "Build your own header or choose from preset options."
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:62
+#: header-footer-grid/Core/Builder/Header.php:63
 msgid "Change Logo"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:66
+#: header-footer-grid/Core/Builder/Header.php:67
 msgid "Change Header Color"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:70
+#: header-footer-grid/Core/Builder/Header.php:71
 msgid "Change Menu"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:91
-#: header-footer-grid/Core/Builder/Header.php:101
+#: header-footer-grid/Core/Builder/Header.php:92
+#: header-footer-grid/Core/Builder/Header.php:102
 msgid "Header Presets"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:171
+#: header-footer-grid/Core/Builder/Header.php:172
 msgid "Header Top"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:175
+#: header-footer-grid/Core/Builder/Header.php:176
 msgid "Header Main"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:179
+#: header-footer-grid/Core/Builder/Header.php:180
 msgid "Header Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:183
+#: header-footer-grid/Core/Builder/Header.php:184
 #: header-footer-grid/templates/rows.php:74
 msgid "Mobile menu content"
 msgstr ""
@@ -1293,7 +1309,7 @@ msgid "Sites Library"
 msgstr ""
 
 #: inc/core/admin.php:269
-#: dashboard/src/Components/Content/Help.js:47
+#: dashboard/src/Components/Content/Help.js:50
 msgid "Documentation"
 msgstr ""
 
@@ -1689,9 +1705,9 @@ msgstr ""
 #: inc/customizer/options/upsells.php:132
 #: inc/customizer/options/upsells.php:137
 #: inc/customizer/options/upsells.php:142
-#: dashboard/src/Components/Content/Help.js:41
-#: dashboard/src/Components/Content/Help.js:84
-#: dashboard/src/Components/Content/Help.js:116
+#: dashboard/src/Components/Content/Help.js:44
+#: dashboard/src/Components/Content/Help.js:96
+#: dashboard/src/Components/Content/Help.js:138
 #: dashboard/src/Components/ModuleCard.js:159
 msgid "Learn More"
 msgstr ""
@@ -1858,58 +1874,47 @@ msgstr ""
 msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:39
-#: dashboard/src/Components/Content/Help.js:51
-#: dashboard/src/Components/Content/Help.js:61
-#: dashboard/src/Components/Content/Help.js:82
-#: dashboard/src/Components/Content/Help.js:95
-#: dashboard/src/Components/Content/Help.js:114
-#: dashboard/src/Components/FeatureRow.js:52
-#: inc/customizer/controls/react/src/common/ControlWithLink.js:37
-msgid "(opens in a new tab)"
-msgstr ""
-
-#: dashboard/src/Components/Content/Help.js:53
+#: dashboard/src/Components/Content/Help.js:58
 #: dashboard/src/Components/Content/Start.js:93
 msgid "Go to docs"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:63
-#: dashboard/src/Components/Sidebar.js:29
+#: dashboard/src/Components/Content/Help.js:72
+#: dashboard/src/Components/Sidebar.js:39
 msgid "Join our Facebook Group"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:71
+#: dashboard/src/Components/Content/Help.js:80
 msgid "Create a child theme"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:72
+#: dashboard/src/Components/Content/Help.js:81
 msgid "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:91
-#: dashboard/src/Components/Content/Help.js:96
+#: dashboard/src/Components/Content/Help.js:103
+#: dashboard/src/Components/Content/Help.js:115
 msgid "Contact Support"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:103
+#: dashboard/src/Components/Content/Help.js:122
 msgid "Speed up your site"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:104
+#: dashboard/src/Components/Content/Help.js:123
 msgid "If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:123
+#: dashboard/src/Components/Content/Help.js:145
 #: dashboard/src/utils/common.js:55
 msgid "Changelog"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:124
+#: dashboard/src/Components/Content/Help.js:146
 msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:130
+#: dashboard/src/Components/Content/Help.js:152
 msgid "View Changelog"
 msgstr ""
 
@@ -1947,8 +1952,8 @@ msgstr ""
 msgid "Leave Feedback"
 msgstr ""
 
-#: dashboard/src/Components/FeatureRow.js:46
-msgid "More details <a><span></span>here<svg_icon/></a>."
+#: dashboard/src/Components/FeatureRow.js:48
+msgid "More details <a><span>(opens in a new tab)</span>here<svg_icon/></a>."
 msgstr ""
 
 #: dashboard/src/Components/Header.js:25
@@ -2022,43 +2027,43 @@ msgstr ""
 msgid "Installing"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:20
+#: dashboard/src/Components/Sidebar.js:21
 msgid "Neve Community"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:34
+#: dashboard/src/Components/Sidebar.js:44
 msgid "Leave us a review"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:36
+#: dashboard/src/Components/Sidebar.js:46
 msgid "Are you are enjoying Neve? We would love to hear your feedback."
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:42
+#: dashboard/src/Components/Sidebar.js:61
 msgid "Submit a review"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:47
+#: dashboard/src/Components/Sidebar.js:66
 msgid "Contributing"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:49
+#: dashboard/src/Components/Sidebar.js:68
 msgid "Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected."
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:55
+#: dashboard/src/Components/Sidebar.js:82
 msgid "What do we track?"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:60
+#: dashboard/src/Components/Sidebar.js:90
 msgid "Allow Anonymous Tracking"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:71
+#: dashboard/src/Components/Sidebar.js:101
 msgid "Could not update option. Please try again."
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:80
+#: dashboard/src/Components/Sidebar.js:110
 #: dashboard/src/Components/Snackbar.js:17
 msgid "Option Updated"
 msgstr ""
