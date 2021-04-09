@@ -50,7 +50,12 @@ const Help = (props) => {
 				title={__('Documentation', 'neve')}
 				description={docsCardDescription}
 			>
-				<Button isLink href={docsURL} target="_blank" rel="noopener noreferrer">
+				<Button
+					isLink
+					href={docsURL}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<span className="screen-reader-text">
 						{__('(opens in a new tab)', 'neve')}
 					</span>

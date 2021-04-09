@@ -386,11 +386,11 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Header.php:51
 #: inc/core/admin.php:273
 #: dashboard/src/Components/Content/Help.js:41
-#: dashboard/src/Components/Content/Help.js:55
-#: dashboard/src/Components/Content/Help.js:69
-#: dashboard/src/Components/Content/Help.js:93
-#: dashboard/src/Components/Content/Help.js:113
-#: dashboard/src/Components/Content/Help.js:135
+#: dashboard/src/Components/Content/Help.js:60
+#: dashboard/src/Components/Content/Help.js:74
+#: dashboard/src/Components/Content/Help.js:98
+#: dashboard/src/Components/Content/Help.js:118
+#: dashboard/src/Components/Content/Help.js:140
 #: dashboard/src/Components/Sidebar.js:36
 #: dashboard/src/Components/Sidebar.js:58
 #: dashboard/src/Components/Sidebar.js:80
@@ -1710,8 +1710,8 @@ msgstr ""
 #: inc/customizer/options/upsells.php:137
 #: inc/customizer/options/upsells.php:142
 #: dashboard/src/Components/Content/Help.js:44
-#: dashboard/src/Components/Content/Help.js:96
-#: dashboard/src/Components/Content/Help.js:138
+#: dashboard/src/Components/Content/Help.js:101
+#: dashboard/src/Components/Content/Help.js:143
 #: dashboard/src/Components/ModuleCard.js:159
 msgid "Learn More"
 msgstr ""
@@ -1878,47 +1878,47 @@ msgstr ""
 msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:58
+#: dashboard/src/Components/Content/Help.js:63
 #: dashboard/src/Components/Content/Start.js:93
 msgid "Go to docs"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:72
+#: dashboard/src/Components/Content/Help.js:77
 #: dashboard/src/Components/Sidebar.js:39
 msgid "Join our Facebook Group"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:80
+#: dashboard/src/Components/Content/Help.js:85
 msgid "Create a child theme"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:81
+#: dashboard/src/Components/Content/Help.js:86
 msgid "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:103
-#: dashboard/src/Components/Content/Help.js:115
+#: dashboard/src/Components/Content/Help.js:108
+#: dashboard/src/Components/Content/Help.js:120
 msgid "Contact Support"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:122
+#: dashboard/src/Components/Content/Help.js:127
 msgid "Speed up your site"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:123
+#: dashboard/src/Components/Content/Help.js:128
 msgid "If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:145
+#: dashboard/src/Components/Content/Help.js:150
 #: dashboard/src/utils/common.js:55
 msgid "Changelog"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:146
+#: dashboard/src/Components/Content/Help.js:151
 msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:152
+#: dashboard/src/Components/Content/Help.js:157
 msgid "View Changelog"
 msgstr ""
 
