@@ -35,7 +35,7 @@ const Help = (props) => {
 						isLink
 						href="http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder"
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 					>
 						<span className="screen-reader-text">
 							{__('(opens in a new tab)', 'neve')}
@@ -50,7 +50,7 @@ const Help = (props) => {
 				title={__('Documentation', 'neve')}
 				description={docsCardDescription}
 			>
-				<Button isLink href={docsURL} target="_blank" rel="noopener">
+				<Button isLink href={docsURL} target="_blank" rel="noopener noreferrer">
 					<span className="screen-reader-text">
 						{__('(opens in a new tab)', 'neve')}
 					</span>
@@ -63,7 +63,7 @@ const Help = (props) => {
 						className="facebook-badge"
 						href="https://www.facebook.com/groups/648646435537266/"
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 					>
 						<span className="screen-reader-text">
 							{__('(opens in a new tab)', 'neve')}
@@ -87,7 +87,7 @@ const Help = (props) => {
 						isLink
 						href="http://docs.themeisle.com/article/14-how-to-create-a-child-theme"
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 					>
 						<span className="screen-reader-text">
 							{__('(opens in a new tab)', 'neve')}
@@ -107,7 +107,7 @@ const Help = (props) => {
 					isPrimary
 					href={supportURL}
 					target="_blank"
-					rel="noopener"
+					rel="noopener noreferrer"
 				>
 					<span className="screen-reader-text">
 						{__('(opens in a new tab)', 'neve')}
@@ -129,7 +129,7 @@ const Help = (props) => {
 						isLink
 						href="http://docs.themeisle.com/article/63-speed-up-your-wordpress-site"
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 					>
 						<span className="screen-reader-text">
 							{__('(opens in a new tab)', 'neve')}

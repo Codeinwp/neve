@@ -29,7 +29,7 @@ const ControlWithLink = ({ link, children }) => {
 		const linkProps = {};
 		if (link.new_tab) {
 			linkProps.target = '_blank';
-			linkProps.rel = 'noopener';
+			linkProps.rel = 'noopener noreferrer';
 		}
 
 		return (

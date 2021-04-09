@@ -30,7 +30,7 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 							isLink
 							href="https://www.facebook.com/groups/648646435537266/"
 							target="_blank"
-							rel="noopener"
+							rel="noopener noreferrer"
 						>
 							<span className="screen-reader-text">
 								{__('(opens in a new tab)', 'neve')}
@@ -52,7 +52,7 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 							isLink
 							href="https://wordpress.org/support/theme/neve/reviews/#new-post"
 							target="_blank"
-							rel="noopener"
+							rel="noopener noreferrer"
 						>
 							<span className="screen-reader-text">
 								{__('(opens in a new tab)', 'neve')}
@@ -74,7 +74,7 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 								isLink
 								href="https://docs.themeisle.com/article/1122-neve-usage-tracking"
 								target="_blank"
-								rel="noopener"
+								rel="noopener noreferrer"
 							>
 								<span className="screen-reader-text">
 									{__('(opens in a new tab)', 'neve')}
