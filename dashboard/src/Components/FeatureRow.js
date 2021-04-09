@@ -1,8 +1,7 @@
-import { Dashicon, Icon } from '@wordpress/components';
+import { Dashicon, ExternalLink } from '@wordpress/components';
 import { useState, createInterpolateElement } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
-import { externalLinkIcon } from '../../../inc/admin/metabox/src/helpers/icons.js';
 
 const FeatureRow = ({ item }) => {
 	const { title, description, inLite, docsLink } = item;
@@ -43,31 +42,16 @@ const FeatureRow = ({ item }) => {
 										{docsLink &&
 											createInterpolateElement(
 												__(
-													'More details <a><span>(opens in a new tab)</span>here<svg_icon/></a>.',
+													'More details <external_link>here</external_link>.',
 													'neve'
 												),
 												{
-													span: (
-														<span className="screen-reader-text" />
-													),
-													a: (
-														<a
+													external_link: (
+														<ExternalLink
 															href={docsLink}
-															target="_blank"
-															rel="noopener noreferrer"
 														>
 															#dumptext
-														</a>
-													),
-													svg_icon: (
-														<Icon
-															icon={externalLinkIcon(
-																{
-																	margin:
-																		'left',
-																}
-															)}
-														/>
+														</ExternalLink>
 													),
 												}
 											)}

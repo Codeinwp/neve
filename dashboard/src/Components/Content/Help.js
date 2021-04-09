@@ -3,8 +3,7 @@ import Card from '../Card';
 
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
-import { Button, Icon } from '@wordpress/components';
-import { externalLinkIcon } from '../../../../inc/admin/metabox/src/helpers/icons.js';
+import { Button, Icon, ExternalLink } from '@wordpress/components';
 
 const Help = (props) => {
 	const { setTab } = props;
@@ -31,18 +30,9 @@ const Help = (props) => {
 						'neve'
 					)}
 				>
-					<Button
-						isLink
-						href="http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<span className="screen-reader-text">
-							{__('(opens in a new tab)', 'neve')}
-						</span>
-						<Icon icon={externalLinkIcon} />
+					<ExternalLink href="http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder">
 						{__('Learn More', 'neve')}
-					</Button>
+					</ExternalLink>
 				</Card>
 			)}
 			<Card
@@ -51,40 +41,22 @@ const Help = (props) => {
 				description={docsCardDescription}
 			>
 				{!whiteLabel && (
-					<Button
-						isLink
-						href={codexURL}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<span className="screen-reader-text">
-							{__('(opens in a new tab)', 'neve')}
-						</span>
-						<Icon icon={externalLinkIcon} />
+					<ExternalLink href={codexURL}>
 						{__('Go to Neve Codex', 'neve')}
-					</Button>
+					</ExternalLink>
 				)}
-				<Button
-					isLink
-					href={docsURL}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<span className="screen-reader-text">
-						{__('(opens in a new tab)', 'neve')}
-					</span>
-					<Icon icon={externalLinkIcon} />
+				<ExternalLink href={docsURL}>
 					{__('Go to docs', 'neve')}
-				</Button>
+				</ExternalLink>
 				{!whiteLabel && (
 					<Button
 						isLink
 						className="facebook-badge"
 						href="https://www.facebook.com/groups/648646435537266/"
 						target="_blank"
-						rel="noopener noreferrer"
+						rel="external noreferrer noopener"
 					>
-						<span className="screen-reader-text">
+						<span className="components-visually-hidden">
 							{__('(opens in a new tab)', 'neve')}
 						</span>
 						<Icon icon="facebook-alt" />
@@ -102,18 +74,9 @@ const Help = (props) => {
 						'neve'
 					)}
 				>
-					<Button
-						isLink
-						href="http://docs.themeisle.com/article/14-how-to-create-a-child-theme"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<span className="screen-reader-text">
-							{__('(opens in a new tab)', 'neve')}
-						</span>
-						<Icon icon={externalLinkIcon} />
+					<ExternalLink href="http://docs.themeisle.com/article/14-how-to-create-a-child-theme">
 						{__('Learn More', 'neve')}
-					</Button>
+					</ExternalLink>
 				</Card>
 			)}
 
@@ -126,9 +89,9 @@ const Help = (props) => {
 					isPrimary
 					href={supportURL}
 					target="_blank"
-					rel="noopener noreferrer"
+					rel="external noreferrer noopener"
 				>
-					<span className="screen-reader-text">
+					<span className="components-visually-hidden">
 						{__('(opens in a new tab)', 'neve')}
 					</span>
 					{__('Contact Support', 'neve')}
@@ -144,18 +107,9 @@ const Help = (props) => {
 						'neve'
 					)}
 				>
-					<Button
-						isLink
-						href="http://docs.themeisle.com/article/63-speed-up-your-wordpress-site"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<span className="screen-reader-text">
-							{__('(opens in a new tab)', 'neve')}
-						</span>
-						<Icon icon={externalLinkIcon} />
+					<ExternalLink href="http://docs.themeisle.com/article/63-speed-up-your-wordpress-site">
 						{__('Learn More', 'neve')}
-					</Button>
+					</ExternalLink>
 				</Card>
 			)}
 			{!whiteLabel && (
@@ -166,6 +120,7 @@ const Help = (props) => {
 						'Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented.',
 						'neve'
 					)}
+					ßßßßß
 				>
 					<Button isLink onClick={() => setTab('changelog')}>
 						{__('View Changelog', 'neve')}

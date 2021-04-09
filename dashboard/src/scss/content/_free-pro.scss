@@ -64,7 +64,7 @@
 				margin: 0;
 			}
 
-			span:not(.screen-reader-text) {
+			span:not(.components-visually-hidden) {
 				display: flex;
 				align-items: center;
 				line-height: 1;
@@ -150,7 +150,7 @@
 			.large {
 				font-size: 15px;
 
-				span:not(.screen-reader-text) {
+				span:not(.components-visually-hidden) {
 					padding: 0 20px;
 					position: relative;
 				}

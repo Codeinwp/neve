@@ -385,17 +385,8 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Footer.php:47
 #: header-footer-grid/Core/Builder/Header.php:51
 #: inc/core/admin.php:273
-#: dashboard/src/Components/Content/Help.js:41
-#: dashboard/src/Components/Content/Help.js:61
-#: dashboard/src/Components/Content/Help.js:74
-#: dashboard/src/Components/Content/Help.js:88
-#: dashboard/src/Components/Content/Help.js:112
-#: dashboard/src/Components/Content/Help.js:132
-#: dashboard/src/Components/Content/Help.js:154
-#: dashboard/src/Components/Sidebar.js:36
-#: dashboard/src/Components/Sidebar.js:58
-#: dashboard/src/Components/Sidebar.js:80
-#: inc/customizer/controls/react/src/common/ControlWithLink.js:40
+#: dashboard/src/Components/Content/Help.js:60
+#: dashboard/src/Components/Content/Help.js:95
 msgid "(opens in a new tab)"
 msgstr ""
 
@@ -1310,7 +1301,7 @@ msgid "Sites Library"
 msgstr ""
 
 #: inc/core/admin.php:269
-#: dashboard/src/Components/Content/Help.js:50
+#: dashboard/src/Components/Content/Help.js:40
 msgid "Documentation"
 msgstr ""
 
@@ -1710,9 +1701,9 @@ msgstr ""
 #: inc/customizer/options/upsells.php:132
 #: inc/customizer/options/upsells.php:137
 #: inc/customizer/options/upsells.php:142
-#: dashboard/src/Components/Content/Help.js:44
-#: dashboard/src/Components/Content/Help.js:115
-#: dashboard/src/Components/Content/Help.js:157
+#: dashboard/src/Components/Content/Help.js:34
+#: dashboard/src/Components/Content/Help.js:78
+#: dashboard/src/Components/Content/Help.js:111
 #: dashboard/src/Components/ModuleCard.js:159
 msgid "Learn More"
 msgstr ""
@@ -1871,59 +1862,59 @@ msgstr ""
 msgid "Get Neve Pro Now"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:25
+#: dashboard/src/Components/Content/Help.js:24
 msgid "Build a landing page with a drag-and-drop content builder"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:29
+#: dashboard/src/Components/Content/Help.js:28
 msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:64
+#: dashboard/src/Components/Content/Help.js:45
 msgid "Go to Neve Codex"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:77
+#: dashboard/src/Components/Content/Help.js:49
 #: dashboard/src/Components/Content/Start.js:93
 msgid "Go to docs"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:91
-#: dashboard/src/Components/Sidebar.js:39
+#: dashboard/src/Components/Content/Help.js:63
+#: dashboard/src/Components/Sidebar.js:28
 msgid "Join our Facebook Group"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:99
+#: dashboard/src/Components/Content/Help.js:71
 msgid "Create a child theme"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:100
+#: dashboard/src/Components/Content/Help.js:72
 msgid "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:122
-#: dashboard/src/Components/Content/Help.js:134
+#: dashboard/src/Components/Content/Help.js:85
+#: dashboard/src/Components/Content/Help.js:97
 msgid "Contact Support"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:141
+#: dashboard/src/Components/Content/Help.js:104
 msgid "Speed up your site"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:142
+#: dashboard/src/Components/Content/Help.js:105
 msgid "If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:164
+#: dashboard/src/Components/Content/Help.js:118
 #: dashboard/src/utils/common.js:55
 msgid "Changelog"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:165
+#: dashboard/src/Components/Content/Help.js:119
 msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:171
+#: dashboard/src/Components/Content/Help.js:126
 msgid "View Changelog"
 msgstr ""
 
@@ -1961,8 +1952,8 @@ msgstr ""
 msgid "Leave Feedback"
 msgstr ""
 
-#: dashboard/src/Components/FeatureRow.js:45
-msgid "More details <a><span>(opens in a new tab)</span>here<svg_icon/></a>."
+#: dashboard/src/Components/FeatureRow.js:44
+msgid "More details <external_link>here</external_link>."
 msgstr ""
 
 #: dashboard/src/Components/Header.js:25
@@ -2036,43 +2027,43 @@ msgstr ""
 msgid "Installing"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:21
+#: dashboard/src/Components/Sidebar.js:19
 msgid "Neve Community"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:44
+#: dashboard/src/Components/Sidebar.js:33
 msgid "Leave us a review"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:46
+#: dashboard/src/Components/Sidebar.js:35
 msgid "Are you are enjoying Neve? We would love to hear your feedback."
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:61
+#: dashboard/src/Components/Sidebar.js:41
 msgid "Submit a review"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:66
+#: dashboard/src/Components/Sidebar.js:46
 msgid "Contributing"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:68
+#: dashboard/src/Components/Sidebar.js:48
 msgid "Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected."
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:82
+#: dashboard/src/Components/Sidebar.js:54
 msgid "What do we track?"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:90
+#: dashboard/src/Components/Sidebar.js:59
 msgid "Allow Anonymous Tracking"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:101
+#: dashboard/src/Components/Sidebar.js:70
 msgid "Could not update option. Please try again."
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:110
+#: dashboard/src/Components/Sidebar.js:79
 #: dashboard/src/Components/Snackbar.js:17
 msgid "Option Updated"
 msgstr ""
