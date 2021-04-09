@@ -84,6 +84,11 @@ class Font_Manager extends Base_View {
 		// Make sure 400 font weight is always included.
 		$weights = array_unique( array_merge( $weights, [ '400' ] ) );
 
+		// In customizer, all font weights should be active for the preview.
+		if ( is_customize_preview() ) {
+			$weights = [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ];
+		}
+
 		// Sanitize font name.
 		$url_string = trim( $font );
 

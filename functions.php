@@ -90,6 +90,15 @@ if ( $_neve_bootstrap_errors->has_errors() ) {
 	return;
 }
 
+if ( ! function_exists( 'wp_body_open' ) ) {
+	/**
+	 * Body open hook.
+	 */
+	function wp_body_open() {
+		do_action( 'wp_body_open' );
+	}
+}
+
 /**
  * Themeisle SDK filter.
  *
@@ -107,7 +116,6 @@ add_filter( 'themeisle_sdk_products', 'neve_filter_sdk' );
 
 require_once 'globals/migrations.php';
 require_once 'globals/utilities.php';
-require_once 'globals/hooks.php';
 require_once 'globals/sanitize-functions.php';
 require_once get_template_directory() . '/start.php';
 

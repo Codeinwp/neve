@@ -56,9 +56,17 @@ if ( (bool) $expand_enabled === false ) {
 		</a>
 		<?php if ( $cart_style !== 'link' && ! is_cart() && ! is_checkout() ) { ?>
 		<div class="<?php echo esc_attr( implode( ' ', $mini_cart_classes ) ); ?>">
+
 			<?php
+			/**
+			 * Executes actions before the cart popup content.
+			 *
+			 * @since 2.9.3
+			 */
 			do_action( 'neve_before_cart_popup' );
+
 			echo wp_kses_post( $off_canvas_closing_button );
+
 			the_widget(
 				'WC_Widget_Cart',
 				array(
@@ -70,11 +78,18 @@ if ( (bool) $expand_enabled === false ) {
 					'after_title'  => '',
 				)
 			);
+
 			if ( ! empty( $custom_html ) ) {
 				echo '<div class="after-cart-html">';
 				echo wp_kses( balanceTags( apply_filters( 'neve_post_content', $custom_html ), true ), $allowed_post_tags );
 				echo '</div>';
 			}
+
+			/**
+			 * Executes actions after the cart popup content.
+			 *
+			 * @since 2.9.3
+			 */
 			do_action( 'neve_after_cart_popup' );
 			?>
 		</div>

@@ -132,6 +132,10 @@ jobs:
           - machines: 1
             specs: "starter-sites"
             envs: "starter-sites"
+          ## Useful-plugins specs needs on machine
+          - machines: 1
+            specs: "useful-plugins"
+            envs: "useful-plugins"
           ## 2 machines for classic editor tests
           - machines: 1
             specs: "editor/classic"
@@ -170,11 +174,6 @@ jobs:
       ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/cache@v1
-        name: Restore WP environment cache
-        with:
-          path: ~/.wp-content
-          key: ${{ runner.os }}-wpcore-${{ hashFiles('bin/envs/**/*.sh') }}-${{ matrix.envs }}
       - uses: actions/cache@v2
         id: yarn-and-build-cache
         with:

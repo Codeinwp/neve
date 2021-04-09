@@ -68,6 +68,8 @@ class Admin {
 		add_action( 'after_switch_theme', [ $this, 'get_previous_theme' ] );
 
 		add_filter( 'all_plugins', array( $this, 'change_plugin_names' ) );
+
+		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
 	}
 
 	/**
@@ -460,5 +462,25 @@ class Admin {
 			$plugins['otter-blocks/otter-blocks.php']['Name'] = 'Gutenberg Blocks and Template Library by Neve theme';
 		}
 		return $plugins;
+	}
+
+	/**
+	 * Import neve options when switching to a child theme.
+	 */
+	public function migrate_options() {
+		$old_theme = strtolower( get_option( 'theme_switched' ) );
+		if ( 'neve' !== $old_theme ) {
+			return;
+		}
+
+		/* import Neve options */
+		$neve_mods = get_option( 'theme_mods_neve' );
+
+		if ( ! empty( $neve_mods ) ) {
+
+			foreach ( $neve_mods as $neve_mod_k => $neve_mod_v ) {
+				set_theme_mod( $neve_mod_k, $neve_mod_v );
+			}
+		}
 	}
 }
