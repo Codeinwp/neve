@@ -9,7 +9,7 @@ import { externalLinkIcon } from '../../../../inc/admin/metabox/src/helpers/icon
 const Help = (props) => {
 	const { setTab } = props;
 
-	let { docsURL, supportURL, whiteLabel, assets } = neveDash;
+	let { docsURL, codexURL, supportURL, whiteLabel, assets } = neveDash;
 	const { supportCardDescription, docsCardDescription } = neveDash.strings;
 
 	if (whiteLabel && whiteLabel.agencyURL) {
@@ -50,6 +50,20 @@ const Help = (props) => {
 				title={__('Documentation', 'neve')}
 				description={docsCardDescription}
 			>
+				{!whiteLabel && (
+					<Button
+						isLink
+						href={codexURL}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<span className="screen-reader-text">
+							{__('(opens in a new tab)', 'neve')}
+						</span>
+						<Icon icon={externalLinkIcon} />
+						{__('Go to Neve Codex', 'neve')}
+					</Button>
+				)}
 				<Button
 					isLink
 					href={docsURL}
