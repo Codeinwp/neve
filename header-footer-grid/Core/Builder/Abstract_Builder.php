@@ -245,6 +245,8 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	public function define_builder_settings() {
 
+		$is_new_builder = neve_is_new_builder();
+
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => $this->control_id,
@@ -255,7 +257,7 @@ abstract class Abstract_Builder implements Builder {
 				'sanitize_callback' => [ $this, 'sanitize_json' ],
 				'default'           => '',
 				'label'             => '',
-				'type'              => '\Neve\Customizer\Controls\React\Builder',
+				'type'              => $is_new_builder ? '\Neve\Customizer\Controls\React\Builder' : 'text',
 				'options'           => [
 					'builder_type'   => $this->get_id(),
 					'columns_layout' => $this->columns_layout,
@@ -366,7 +368,7 @@ abstract class Abstract_Builder implements Builder {
 			);
 		}
 
-		if ( $this->columns_layout ) {
+		if ( $this->columns_layout && neve_is_new_builder() ) {
 			$this->add_columns_layout_controls( $row_setting_id );
 		}
 
@@ -673,6 +675,10 @@ abstract class Abstract_Builder implements Builder {
 		if ( ! empty( $this->layout_data ) ) {
 			return $this->layout_data;
 		}
+		$mod_value = json_decode( SettingsManager::get_instance()->get( 'hfg_' . $this->get_id() . '_layout' ), true );
+
+		error_log( var_export( $mod_value, true ) );
+
 		$this->layout_data = wp_parse_args( json_decode( SettingsManager::get_instance()->get( 'hfg_' . $this->get_id() . '_layout' ), true ), array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
 
 		return $this->layout_data;
@@ -707,15 +713,23 @@ abstract class Abstract_Builder implements Builder {
 			$components = [];
 
 			foreach ( $this->get_layout_data() as $devices ) {
-				foreach ( $devices as $row ) {
-					foreach ( $row as $slot => $values ) {
-						if ( empty( $slot ) ) {
+				foreach ( $devices as $row_index => $row ) {
+					if ( neve_is_new_builder() ) {
+						if( $row_index === 'sidebar' ) {
+							$components = array_merge( $components, array_combine( wp_list_pluck( $row, 'id' ), array_fill( 0, count( $row ), true ) ) );
 							continue;
 						}
+						foreach ( $row as $slot ) {
+							if ( empty( $slot ) || ! is_array( $slot ) ) {
+								continue;
+							}
 
-//						$components = array_merge( $components, array_combine( wp_list_pluck( $slot, 'id' ), array_fill( 0, count( $slot ), true ) ) );
+							$components = array_merge( $components, array_combine( wp_list_pluck( $slot, 'id' ), array_fill( 0, count( $slot ), true ) ) );
+						}
+						continue;
 					}
-
+					// Legacy
+					$components = array_merge( $components, array_combine( wp_list_pluck( $row, 'id' ), array_fill( 0, count( $row ), true ) ) );
 				}
 			}
 			$this->active_components = $components;
@@ -953,15 +967,115 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 * Get the component alignment.
+	 *
+	 * @param $id
+	 * @param false $vertical
+	 *
+	 * @return array
+	 */
+	private function get_component_alignment( $id, $vertical = false ) {
+		if ( $vertical ) {
+			return SettingsManager::get_instance()->get( $id . '_' . Abstract_Component::VERTICAL_ALIGN_ID, null );
+		}
+
+		$alignment = SettingsManager::get_instance()->get( $id . '_' . Abstract_Component::ALIGNMENT_ID, null );
+
+		// Make sure we migrate old alignment values.
+		if ( ! is_string( $alignment ) && is_array( $alignment ) ) {
+			return $alignment;
+		}
+		$is_menu_component = strpos( $id, 'primary-menu' ) > - 1 || strpos( $id, 'secondary-menu' );
+		$tmp_align         = ( is_string( $alignment ) && in_array( $alignment, [
+				'left',
+				'right',
+				'center',
+				'justify'
+			] ) ) ? $alignment : 'left';
+
+		return [
+			'desktop' => $tmp_align,
+			'tablet'  => $is_menu_component ? 'left' : $tmp_align,
+			'mobile'  => $is_menu_component ? 'left' : $tmp_align,
+		];
+	}
+
+	/**
+	 * Render the builder components.
+	 *
+	 * @param string $device the device [desktop|mobile].
+	 * @param string $row the row id.
+	 */
+	public function new_render_components( $device, $row ) {
+		$row_index = 0;
+		if ( $device === null && $row === null ) {
+			$device    = self::$current_device;
+			$row_index = self::$current_row;
+		}
+
+		$data = $this->get_layout_data()[ $device ][ $row_index ];
+
+		if ( $row_index === 'sidebar' ) {
+			$data = [ 'sidebar' => $data ];
+		}
+
+		foreach ( $data as $slot => $components ) {
+			$builder_id = $this->get_id();
+			if ( empty( $components ) && $builder_id !== 'footer' ) {
+				continue;
+			}
+			$slot_classes = [ 'hfg-slot', $slot ];
+
+			echo sprintf( '<div class="%s">', join( ' ', $slot_classes ) );
+
+			foreach ( $components as $component ) {
+				if ( ! isset( $this->builder_components[ $component['id'] ] ) ) {
+					continue;
+				}
+				$align          = $this->get_component_alignment( $component['id'] );
+				$vertical_align = $this->get_component_alignment( $component['id'], true );
+				$classes        = [ 'builder-item' ];
+
+				if ( strpos( $component['id'], 'primary-menu' ) > - 1 ) {
+					$classes[] = 'has-nav';
+				}
+
+				foreach ( $align as $device_slug => $align_slug ) {
+					$alignment_is_mobile = in_array( $device_slug, [ 'tablet', 'mobile' ], true );
+					$is_header_sidebar   = $builder_id === 'header' && $row_index === 'sidebar';
+					// Make sure we don't apply device-specific classes if the rows aren't visible on respective device.
+					// Footer has same rows on all devices.
+					if ( $builder_id === 'footer' || $is_header_sidebar || ( $device === $device_slug || ( $alignment_is_mobile && $device === 'mobile' ) ) ) {
+						$classes[] = $device_slug . '-' . $align_slug;
+					}
+				}
+				if ( $vertical_align ) {
+					$classes[] = 'hfg-item-v-' . $vertical_align;
+				}
+
+				echo sprintf( '<div class="%s">', esc_attr( join( ' ', $classes ) ) );
+				$component_instance      = $this->builder_components[ $component['id'] ];
+				self::$current_component = $component['id'];
+				$component_instance->render();
+				echo '</div>';
+			}
+			echo '</div>';
+		}
+	}
+
+	/**
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
 	 * @param null|array $row Row details.
 	 */
 	public function render_components( $device = null, $row = null ) {
-		echo '<h1>This is the row...</h1>';
+		if ( neve_is_new_builder() ) {
+			$this->new_render_components( $device, $row );
 
-		return;
+			return;
+		}
+
 		$row_index = 0;
 		if ( $device === null && $row === null ) {
 			$device    = self::$current_device;
@@ -1004,24 +1118,8 @@ abstract class Abstract_Builder implements Builder {
 			$component      = $this->builder_components[ $component_location['id'] ];
 			$x              = intval( $component_location['x'] );
 			$width          = intval( $component_location['width'] );
-			$align          = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::ALIGNMENT_ID, null );
-			$vertical_align = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::VERTICAL_ALIGN_ID, null );
-
-			// Make sure we migrate old alignment values.
-			if ( is_string( $align ) || ! is_array( $align ) ) {
-				$is_menu_component = strpos( $component_location['id'], 'primary-menu' ) > - 1 || strpos( $component_location['id'], 'secondary-menu' );
-				$tmp_align         = ( is_string( $align ) && in_array( $align, [
-						'left',
-						'right',
-						'center',
-						'justify'
-					] ) ) ? $align : 'left';
-				$align             = [
-					'desktop' => $tmp_align,
-					'tablet'  => $is_menu_component ? 'left' : $tmp_align,
-					'mobile'  => $is_menu_component ? 'left' : $tmp_align,
-				];
-			}
+			$align          = $this->get_component_alignment( $component_location['id'] );
+			$vertical_align = $this->get_component_alignment( $component_location['id'], true );
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
@@ -1352,12 +1450,16 @@ abstract class Abstract_Builder implements Builder {
 				'default'               => '{ "mobile": "350", "tablet": "350", "desktop": "350" }',
 				'options'               => [
 					'active_callback' => function () {
-						return in_array( get_theme_mod( $this->control_id . '_sidebar_' . self::LAYOUT_SETTING, 'slide_left' ), [
-							'slide_left',
-							'slide_right',
-							'pull_left',
-							'pull_right'
-						], true );
+						return in_array(
+							get_theme_mod( $this->control_id . '_sidebar_' . self::LAYOUT_SETTING, 'slide_left' ),
+							[
+								'slide_left',
+								'slide_right',
+								'pull_left',
+								'pull_right',
+							],
+							true
+						);
 					},
 					'input_attrs'     => [
 						'min'        => 1,
@@ -1392,7 +1494,10 @@ abstract class Abstract_Builder implements Builder {
 		$choices = [];
 
 		for ( $i = 1; $i <= 5; $i ++ ) {
-			$choices[ $i ] = [ 'tooltip' => $i, 'icon' => 'text' ];
+			$choices[ $i ] = [
+				'tooltip' => $i,
+				'icon'    => 'text',
+			];
 		}
 
 		SettingsManager::get_instance()->add(
@@ -1445,7 +1550,7 @@ abstract class Abstract_Builder implements Builder {
 			'left-half',
 			'right-half',
 			'center-half',
-			'center-two-thirds'
+			'center-two-thirds',
 		];
 		if ( ! in_array( $value, $allowed ) ) {
 			return 'equal';

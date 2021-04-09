@@ -1,0 +1,63 @@
+.site-header {
+  position: relative;
+
+  .hfg-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.builder-item {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+$desktop: map-get($gl-devices-list, desktop);
+@media #{$desktop}{
+  .builder-item {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+}
+
+//<editor-fold desc="Row Layout">
+.hfg-slot {
+  display: flex;
+  align-items: center;
+
+  &.right {
+	justify-content: flex-end;
+  }
+}
+
+$builder_types: page_header header footer;
+@each $type in $builder_types {
+  .#{$type}--row {
+	.row {
+	  display: grid;
+	  grid-template-columns: auto auto;
+	}
+
+    &.layout-fullwidth {
+      .container {
+        max-width: 100% !important;
+      }
+    }
+
+    &.layout-contained {
+      max-width: $container_width;
+      margin: 0 auto;
+    }
+  }
+}
+
+//</editor-fold>
+
+//<editor-fold desc="Row Styles">
+.hfg_header.site-header {
+  -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+}
+//</editor-fold>

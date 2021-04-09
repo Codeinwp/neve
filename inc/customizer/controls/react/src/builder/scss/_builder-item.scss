@@ -13,6 +13,7 @@
   box-sizing: border-box;
   height: $rows-height - 7;
   color: $item-text-color;
+  z-index: 1;
 
   &.active {
 	background-color: $wp-blue;
@@ -24,7 +25,8 @@
   }
 
   .handle {
-	padding: 0 7px;
+	width: 15px;
+	padding: 0 2px 0 5px;
   }
 
   svg {
@@ -41,7 +43,7 @@
   }
 }
 
-.droppable.sidebar {
+.droppable-wrap.sidebar {
   padding: 4px;
   width: 100%;
   box-sizing: border-box;

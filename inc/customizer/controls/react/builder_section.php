@@ -29,9 +29,9 @@ class Builder_Section extends \WP_Customize_Section {
 	 * @var array
 	 */
 	public $default_options = [
-			'setting'      => '',
-			'builder_type' => '',
-//		'quickLinks'  => [],
+		'setting'      => '',
+		'builder_type' => '',
+	// 'quickLinks'  => [],
 	];
 
 	/**

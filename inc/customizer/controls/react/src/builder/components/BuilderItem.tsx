@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Icon } from '@wordpress/components';
-import { closeSmall, cog, menu } from '@wordpress/icons';
+import { closeSmall, cog, dragHandle } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 import {
 	BuilderActions,
@@ -80,7 +80,7 @@ const BuilderItem: React.FC<Props> = (props) => {
 
 	return (
 		<div className={itemClasses}>
-			<Icon className="handle" icon={menu} size={15} />
+			<Icon className="handle" icon={dragHandle} size={15} />
 			<span className="name">{name}</span>
 			<div className="actions">
 				<Button

@@ -129,8 +129,8 @@ function neve_hooks() {
  * The changes here might not be visible on front end due to woocommerce cart-fragments.js
  * In that case deactivate and reactivate WooCommerce.
  *
- * @param bool   $echo should be echoed.
- * @param int    $size icon size.
+ * @param bool $echo should be echoed.
+ * @param int $size icon size.
  * @param string $cart_icon Cart icon.
  *
  * @return string|null
@@ -153,7 +153,7 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '' ) {
  *
  * @param bool $is_link should be wrapped in A tag.
  * @param bool $echo should be echoed.
- * @param int  $size icon size.
+ * @param int $size icon size.
  * @param bool $amp_ready Should we add the AMP binding.
  *
  * @return string
@@ -179,7 +179,7 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
  *  Escape HTML strings containing SVG.
  *
  * @param string $input the input string.
- * @param array  $additional_args additional allowed.
+ * @param array $additional_args additional allowed.
  *
  * @return string
  */
@@ -1321,6 +1321,7 @@ function neve_get_headings_selectors() {
  * Get Global Colors Default
  *
  * @param bool $migrated get with migrated colors.
+ *
  * @return array
  */
 function neve_get_global_colors_default( $migrated = false ) {
@@ -1367,4 +1368,16 @@ function neve_get_global_colors_default( $migrated = false ) {
 			],
 		],
 	];
+}
+
+/**
+ * Checks that we are using the new builder.
+ *
+ * @return bool
+ *
+ * @since 3.0
+ */
+function neve_is_new_builder() {
+	//Todo: Implement this.
+	return true;
 }

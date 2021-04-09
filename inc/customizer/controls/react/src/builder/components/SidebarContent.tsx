@@ -1,7 +1,7 @@
 import React from 'react';
 import { ItemInterface, ReactSortable } from 'react-sortablejs';
-import { Button, Icon } from '@wordpress/components';
-import { menu } from '@wordpress/icons';
+import { Icon } from '@wordpress/components';
+import { dragHandle } from '@wordpress/icons';
 
 import { BuilderActions } from '../../@types/utils';
 import { __ } from '@wordpress/i18n';
@@ -24,7 +24,7 @@ const SidebarContent: React.FC<Props> = (props) => {
 				{__('Available Components', 'neve')}
 			</span>
 			{items && items.length > 0 && (
-				<div className="sidebar-items">
+				<div className="sidebar-items droppable-wrap">
 					<ReactSortable
 						onEnd={onDragEnd}
 						animation={0}
@@ -51,7 +51,7 @@ const SidebarContent: React.FC<Props> = (props) => {
 								<div className="builder-item" key={index}>
 									<Icon
 										className="handle"
-										icon={menu}
+										icon={dragHandle}
 										size={15}
 									/>
 									<span>{name}</span>

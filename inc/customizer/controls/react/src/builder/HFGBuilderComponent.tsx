@@ -5,6 +5,7 @@ import { WPCustomizeControl } from '../@types/customizer-control';
 import { BuilderContentInterface } from '../@types/utils';
 import { maybeParseJson } from './common/utils';
 import HFGBuilder from './HFGBuilder';
+
 interface Props {
 	control: WPCustomizeControl;
 	portalMount: HTMLElement;
@@ -23,6 +24,11 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 
 	const onChange = (nextValue: BuilderContentInterface) => {
 		const next = JSON.stringify(nextValue);
+		const prev = setting.get();
+
+		if (next === prev) {
+			return;
+		}
 
 		setValue(nextValue);
 		control.setting.set(next);
@@ -60,7 +66,7 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 			return;
 		}
 		preview.style.maxHeight = `calc(100vh - ${height}px)`;
-	}, [isHidden]);
+	}, [isHidden, value]);
 
 	return (
 		<HFGBuilder

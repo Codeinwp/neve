@@ -3,68 +3,66 @@
 	.slots-wrap {
 	  width: 100%;
 
-	  .droppable {
+	  .droppable-wrap {
 		box-sizing: border-box;
-		justify-content: center;
-		//flex: 1 1;
-		//width: unset;
-		//flex-basis: auto;
-		//flex-grow: 0;
+
 		&.hide {
 		  display: none;
 		}
 
-		&:first-child {
-		  justify-content: flex-start;
-		}
-
-		&.last {
+		&.last .droppable {
 		  border: none;
 		}
 
-		&.last:not(.single) {
-		  justify-content: flex-end;
-		}
-
-		&.single {
+		.droppable {
 		  justify-content: center;
+		  flex-direction: column;
+		  height: 100%;
+		  box-sizing: border-box;
+		  align-items: center;
+		  padding: 2px 4px;
+
+		  .builder-item {
+			margin: 2px 2px;
+			width: 100%;
+		  }
 		}
 	  }
 
 	  &.col-2 {
-		&.right-third .droppable.left {
+		&.right-third .droppable-wrap.left {
 		  flex-grow: 2;
 		}
 
-		&.left-third .droppable.c-left {
+		&.left-third .droppable-wrap.c-left {
 		  flex-grow: 2;
 		}
 	  }
 
 	  &.col-3 {
-		&.right-half .droppable.center {
+		&.right-half .droppable-wrap.center {
 		  flex-grow: 2;
 		}
 
-		&.left-half .droppable.left {
+		&.left-half .droppable-wrap.left {
 		  flex-grow: 2;
 		}
 
-		&.center-half .droppable.c-left {
+		&.center-half .droppable-wrap.c-left {
 		  flex-grow: 2;
 		}
 
-		&.center-two-thirds .droppable.c-left {
+		&.center-two-thirds .droppable-wrap.c-left {
 		  flex-grow: 3;
 		}
 	  }
 
 	  &.col-4 {
-		&.left-half .droppable.left {
+		&.left-half .droppable-wrap.left {
 		  flex-grow: 2;
 		}
 
-		&.right-half .droppable.c-right {
+		&.right-half .droppable-wrap.c-right {
 		  flex-grow: 2;
 		}
 	  }

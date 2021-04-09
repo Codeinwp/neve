@@ -23,6 +23,10 @@
 	  margin: 0;
 	  padding-right: 10px;
 
+	  svg {
+		flex-shrink: 0;
+	  }
+
 	  span {
 		max-width: 100%;
 		overflow: hidden;

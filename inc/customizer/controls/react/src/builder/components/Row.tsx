@@ -14,10 +14,7 @@ import classnames from 'classnames';
 
 import Slot from './Slot';
 import { WPCustomizeControl } from '../../@types/customizer-control';
-
-interface ColumnMapping {
-	[key: number]: Record<string, string>;
-}
+import { ItemInterface } from 'react-sortablejs';
 
 interface Props {
 	items: BuilderRowInterface & BuilderItemInterface[];
@@ -27,6 +24,7 @@ interface Props {
 	dragging: boolean;
 	hasColumns: boolean;
 	actions: BuilderActions;
+	sidebarItems: ItemInterface[];
 }
 
 const Row: React.FC<Props> = (props) => {

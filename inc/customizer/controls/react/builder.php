@@ -39,8 +39,8 @@ class Builder extends \WP_Customize_Control {
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
-		$json                = parent::json();
-		$json['builderType'] = $this->builder_type;
+		$json                  = parent::json();
+		$json['builderType']   = $this->builder_type;
 		$json['columnsLayout'] = $this->columns_layout;
 
 		return $json;

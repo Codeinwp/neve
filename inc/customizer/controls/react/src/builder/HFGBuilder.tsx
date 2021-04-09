@@ -230,6 +230,7 @@ const HFGBuilder: React.FC<Props> = ({
 					builder={currentBuilder}
 					dragging={dragging}
 					actions={actions}
+					sidebarItems={sidebarItems}
 				/>,
 				portalMount
 			)}

@@ -66,8 +66,9 @@ class Customizer {
 			}
 		}
 
-		if ( is_admin() ) {
+		if( ! neve_is_new_builder() ) {
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'scripts' ) );
+			add_action( 'customize_controls_print_footer_scripts', array( $this, 'template' ) );
 		}
 
 		if ( is_admin() || is_customize_preview() ) {
@@ -87,7 +88,7 @@ class Customizer {
 	 * @return array
 	 */
 	public function add_builders_and_dynamic_tags( $array ) {
-		$array['HFG'] = $this->get_builders_data();
+		$array['HFG']                    = $this->get_builders_data();
 		$array['dynamicTags']['options'] = Magic_Tags::get_instance()->get_options();
 
 		return $array;
@@ -121,9 +122,6 @@ class Customizer {
 	 * @access  public
 	 */
 	public function scripts() {
-		// @todo abaicus remove?
-		return false;
-
 		$suffix = $this->get_assets_suffix();
 		wp_enqueue_style(
 			'hfg-customizer-control',
@@ -247,5 +245,119 @@ class Customizer {
 
 		$wp_customize->register_section_type( '\HFG\Core\Customizer\Instructions_Section' );
 		$wp_customize->register_control_type( '\HFG\Core\Customizer\Instructions_Control' );
+	}
+
+
+	/**
+	 * The Customizer templates.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function template() {
+		require_once Config::get_path() . '/templates/rows.php';
+		?>
+		<script type="text/html" id="tmpl-hfg--builder-panel">
+			<div class="hfg--customize-builder">
+				<div class="hfg--cb-inner">
+					<div class="hfg--cb-header">
+						<div class="hfg--cb-devices-switcher">
+						</div>
+						<# if(data.id === 'hfg_header_layout') { #>
+						<div class="hfg--cb-notice conditional-header hidden">
+							<i class="dashicons dashicons-info"></i>
+							<p>
+								<?php
+								/* translators: %s is the header name */
+								echo wp_kses_post( sprintf( __( 'You are customizing the %s Header', 'neve' ), ' <a>' . __( 'Default', 'neve' ) . '</a> ' ) );
+								?>
+							</p>
+						</div>
+						<# } #>
+						<div class="hfg--cb-notice welcome-notice {{data.id}} hidden">
+							<p>
+								<?php /* translators: %s is the type of builder */ ?>
+								<span><?php echo sprintf( esc_html__( '%s Builder:', 'neve' ), '{{data.title}}' ); ?></span>
+								<?php
+								/* translators: %s is the header name */
+								echo esc_html__( 'Click on any empty space to add components, or existing components to adjust settings.', 'neve' );
+								?>
+								<a href="#" data-open-nv-modal="hfg-instructional"><i class="dashicons dashicons-info"></i></a>
+							</p>
+						</div>
+						<div class="hfg--cb-actions">
+							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
+							<a class="button button-secondary hfg--panel-close" href="#">
+								<span class="close-text"><i class="dashicons dashicons-arrow-down-alt2"
+								                            style="margin-top: 4px;"></i> <?php esc_html_e( 'Close', 'neve' ); ?></span>
+								<span class="panel-name-text">
+									<i class="dashicons dashicons-arrow-up-alt2" style="margin-top: 4px;"></i>
+									{{ data.title }}
+								</span>
+							</a>
+						</div>
+					</div>
+					<div class="hfg--cb-body"></div>
+				</div>
+			</div>
+		</script>
+
+		<script type="text/html" id="tmpl-hfg--cb-item">
+			<div class="grid-stack-item item-from-list for-s-{{ data.section }} order-{{data.elementOrder}}"
+			     title="{{ data.name }}"
+			     data-id="{{ data.id }}"
+			     data-slug="{{ data.componentSlug }}"
+			     data-section="{{ data.section }}"
+			     data-control="{{ data.control }}"
+			     data-gs-x="{{ data.x }}"
+			     data-gs-y="{{ data.y }}"
+			     data-gs-width="{{ data.width }}"
+			     data-df-width="{{ data.width }}"
+			     data-gs-height="1"
+			>
+				<div class="item-tooltip" data-section="{{ data.section }}">{{ data.name }}</div>
+				<div class="grid-stack-item-content">
+					<div class="hfg--sidebar-visible icon"><i class="dashicons dashicons-{{data.icon}}"></i></div>
+					<span class="hfg--cb-item-name" data-section="{{ data.section }}">{{ data.name }}</span>
+					<span class="hfg--cb-item-remove hfg-cb-icon"></span>
+					<span class="hfg--cb-item-setting hfg-cb-icon" data-section="{{ data.section }}"></span>
+				</div>
+			</div>
+		</script>
+
+		<script type="text/html" id="tmpl-hfg--widgets-sidebar">
+			<div class="hfg--widgets-panel" data-id="{{ data.id }}">
+				<div class="hfg-widgets-panel-header">
+					<div class="hfg-component-search">
+						<i class="dashicons dashicons-search"></i>
+						<input class="component-search" type="search"
+						       placeholder="<?php esc_attr_e( 'Search Components', 'neve' ); ?>..."/>
+					</div>
+					<button class="close button button-link">
+						<i class="dashicons dashicons-no"></i>
+					</button>
+				</div>
+				<div class="hfg-widgets-panel-inner"></div>
+			</div>
+		</script>
+
+		<script type="text/html" id="tmpl-hfg--widgets-preview">
+			<div class="hfg--component-preview" data-for-component="{{ data.id }}">
+				<div class="header">
+					<div class="title-wrap">
+						<div class="icon"><i class="dashicons dashicons-{{data.icon}}"></i></div>
+						<span class="name" data-section="{{ data.section }}">{{ data.name }}</span>
+					</div>
+					<# if(data.description) { #>
+					<div class="description">{{data.description}}</div>
+					<# } #>
+				</div>
+				<# if(data.previewImage) {#>
+				<img src="{{data.previewImage}}" alt="{{data.name}}">
+				<# } #>
+			</div>
+		</script>
+
+		<?php
 	}
 }

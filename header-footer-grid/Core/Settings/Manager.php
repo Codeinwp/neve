@@ -189,11 +189,15 @@ class Manager {
 			'controls' => $this->get_tabs_group( $group ),
 		);
 
-		if ( in_array( $section, [
-			'hfg_header_layout_section',
-			'hfg_footer_layout_section',
-			'hfg_page_header_layout_section'
-		], true ) ) {
+		if ( in_array(
+			$section,
+			[
+				'hfg_header_layout_section',
+				'hfg_footer_layout_section',
+				'hfg_page_header_layout_section',
+			],
+			true 
+		) ) {
 			return $customize_manager;
 		}
 
