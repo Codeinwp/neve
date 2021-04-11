@@ -156,8 +156,11 @@ function handleMiniCartPosition() {
 		return;
 	}
 	neveEach(elem, (item) => {
-		const bounding = item.getBoundingClientRect();
-		if (bounding.left < 0) {
+		const bounding = document
+			.querySelectorAll('.menu-item-nav-cart')[0]
+			.getBoundingClientRect();
+
+		if (bounding.left < 450) {
 			item.style.left = 0;
 		}
 	});
