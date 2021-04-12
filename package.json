@@ -106,7 +106,7 @@
 		"@wordpress/element": "^2.20.1",
 		"@wordpress/eslint-plugin": "^8.0.2",
 		"@wordpress/i18n": "^3.17.0",
-		"@wordpress/icons": "^2.10.0",
+		"@wordpress/icons": "^2.10.1",
 		"@wordpress/media-utils": "^1.20.0",
 		"@wordpress/scripts": "^14.1.0",
 		"babel-loader": "^8.1.0",
