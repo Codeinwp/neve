@@ -20,7 +20,7 @@
     "@babel/core": "^7.13.15",
     "@babel/preset-env": "^7.11.0",
     "core-js": "^3.10.0",
-    "cssnano": "^4.1.10",
+    "cssnano": "^5.0.0",
     "eslint": "^7.24.0",
     "eslint-config-standard": "^14.1.1",
     "node-sass": "^5.0.0",
