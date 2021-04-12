@@ -35,9 +35,8 @@ jobs:
           yarn install --frozen-lockfile
           composer install --no-dev --prefer-dist --no-progress --no-suggest
           yarn run build
-          yarn run release
+          export CI=true && yarn run release
         env:
-          CI: true
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
           GIT_AUTHOR_NAME: themeisle[bot]
           GIT_AUTHOR_EMAIL: ${{ secrets.BOT_EMAIL }}
