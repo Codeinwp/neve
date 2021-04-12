@@ -18924,11 +18924,6 @@ unicode-property-aliases-ecmascript@^1.0.4:
   resolved "https://registry.yarnpkg.com/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-1.1.0.tgz#dd57a99f6207bedff4628abefb94c50db941c8f4"
   integrity sha512-PqSoPh/pWetQ2phoj5RLiaqIk4kCNwoV3CI+LfGmWLKI3rE3kl1h59XpX2BjgDrmbxD9ARtQobPGU1SguCYuQg==
 
-unidecode@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/unidecode/-/unidecode-0.1.8.tgz#efbb301538bc45246a9ac8c559d72f015305053e"
-  integrity sha1-77swFTi8RSRqmsjFWdcvAVMFBT4=
-
 unified@9.2.0:
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/unified/-/unified-9.2.0.tgz#67a62c627c40589edebbf60f53edfd4d822027f8"
@@ -19210,12 +19205,10 @@ url-parse-lax@^1.0.0:
   dependencies:
     prepend-http "^1.0.1"
 
-url-slug@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/url-slug/-/url-slug-2.3.2.tgz#eab21da0e227deba10610c7b01ec4af20babea21"
-  integrity sha512-M3aqTb+ur72tp9Sx4P4Teye0uBjk0fFDgZm1mFdnhiFRra1ScQF9xupChhUBxdffxAb2ZXSl5Jnfc/4A8nUmBA==
-  dependencies:
-    unidecode "^0.1.8"
+url-slug@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/url-slug/-/url-slug-3.0.1.tgz#f66638bbfa4acefb122a91cd22ffb1aa8703483f"
+  integrity sha512-8zxCgV7G0biwS3CoDSTwLatF75W4ZWyIsoLbgLkSTo2ygpDjsD8/f33zB9Leh/raXe1/yo2tW7mJD0n7kxMAFA==
 
 url@^0.11.0:
   version "0.11.0"
