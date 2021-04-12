@@ -19,6 +19,24 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+#### [Version 2.11.0](https://github.com/Codeinwp/neve/compare/v2.10.4...v2.11.0) (2021-04-12)
+
+- [Fix] Masonry on the blog
+- [Fix] Sync theme mods on child themes
+- [Fix] Load proper weights for fonts in the customizer
+- [Fix] Global colors switching back when the color-picker is opened and input is focused
+- [Fix] Header cart icon not updating the total amount when adding a new product
+- [Fix] Hide the empty comment tag if comments are not enabled
+- [Fix] Hover color for secondary buttons when WooCommerce is active
+- [Fix] Headings not inheriting body font when set as default
+- [Fix] Active buttons from the editor sidebar overlapping the panel heading  
+- [Feat] Allow hosting Google Fonts locally
+- Show last updated date on posts
+- New developer hooks
+
+
+
+
 ##### [Version 2.10.4](https://github.com/Codeinwp/neve/compare/v2.10.3...v2.10.4) (2021-03-16)
 
 - [Fix] customizer responsive switches not working
