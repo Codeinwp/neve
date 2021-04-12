@@ -57,6 +57,9 @@ h6 {
 	text-transform: none;
 	letter-spacing: normal;
 
+  	&.wp-block-group.has-background {
+	  padding: 0;
+	}
 	&:not(.wp-block-group.has-text-color){
 	  .wp-block{
 		color: var(--nv-text-color);
