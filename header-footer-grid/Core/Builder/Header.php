@@ -180,7 +180,7 @@ class Header extends Abstract_Builder {
 				'description' => $this->get_property( 'description' ),
 			),
 			'sidebar' => array(
-				'title'       => esc_html__( 'Mobile menu content', 'neve' ),
+				'title'       => esc_html__( 'Mobile Sidebar', 'neve' ),
 				'description' => $this->get_property( 'description' ),
 			),
 		];

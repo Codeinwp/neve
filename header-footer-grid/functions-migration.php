@@ -345,7 +345,7 @@ function neve_hfg_legacy_footer_settings() {
 		'footer-three-widgets',
 		'footer-four-widgets',
 	);
-	for ( $i = 0; $i < $sidebars; $i++ ) {
+	for ( $i = 0; $i < $sidebars; $i ++ ) {
 		$builder['desktop']['top'][ $sidebars_names[ $i ] ] = [
 			'id'    => $sidebars_names[ $i ],
 			'width' => 12 / $sidebars,
@@ -381,15 +381,44 @@ function neve_hfg_legacy_footer_settings() {
 }
 
 
-
 add_filter(
 	'hfg_settings_schema',
 	function ( $old_schema ) {
 		$is_new_builder = neve_is_new_builder();
-		$header     = $is_new_builder ? neve_hfg_header_settings() : neve_hfg_legacy_header_settings();
-		$footer     = $is_new_builder ? neve_hfg_footer_settings() : neve_hfg_legacy_footer_settings();
-		$components =  array_merge( $header['components'], $footer['components'] );
-		$defaults   = [];
+		$header         = $is_new_builder ? neve_hfg_header_settings() : neve_hfg_legacy_header_settings();
+		$footer         = $is_new_builder ? neve_hfg_footer_settings() : neve_hfg_legacy_footer_settings();
+
+		$empty_row   = [
+			'left'    => [],
+			'c-left'  => [],
+			'center'  => [],
+			'c-right' => [],
+			'right'   => [],
+		];
+		$page_header = $is_new_builder ?
+			[
+				'desktop' => [
+					'top'    => $empty_row,
+					'bottom' => $empty_row,
+				],
+				'mobile'  => [
+					'top'    => $empty_row,
+					'bottom' => $empty_row,
+				],
+			]
+			:
+			[
+				'desktop' => [
+					'top'    => [],
+					'bottom' => [],
+				],
+				'mobile'  => [
+					'top'    => [],
+					'bottom' => [],
+				],
+			];
+		$components  = array_merge( $header['components'], $footer['components'] );
+		$defaults    = [];
 		foreach ( $components as $id => $settings ) {
 			foreach ( $settings as $setting_id => $value ) {
 				$defaults[ $id . '_' . $setting_id ] = $value;
@@ -398,13 +427,15 @@ add_filter(
 
 		return array_merge(
 			[
-				'hfg_header_layout' => wp_json_encode( $header['builder'] ),
-				'hfg_footer_layout' => wp_json_encode( $footer['builder'] ),
+				'hfg_header_layout'      => wp_json_encode( $header['builder'] ),
+				'hfg_footer_layout'      => wp_json_encode( $footer['builder'] ),
+				'hfg_page_header_layout' => wp_json_encode( $page_header ),
 			],
 			$defaults
 		);
 
-	}
+	},
+	101
 );
 
 

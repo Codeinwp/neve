@@ -33,14 +33,14 @@ use WP_Customize_Manager;
 abstract class Abstract_Builder implements Builder {
 	use Core;
 
-	const LAYOUT_SETTING = 'layout';
-	const COLUMNS_NUMBER = 'columns_number';
-	const COLUMNS_LAYOUT = 'columns_layout';
-	const HEIGHT_SETTING = 'height';
-	const SKIN_SETTING = 'skin';
-	const TEXT_COLOR = 'new_text_color';
+	const LAYOUT_SETTING     = 'layout';
+	const COLUMNS_NUMBER     = 'columns_number';
+	const COLUMNS_LAYOUT     = 'columns_layout';
+	const HEIGHT_SETTING     = 'height';
+	const SKIN_SETTING       = 'skin';
+	const TEXT_COLOR         = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
-	const WIDTH = 'width';
+	const WIDTH              = 'width';
 	/**
 	 * Layout config data.
 	 *
@@ -219,6 +219,10 @@ abstract class Abstract_Builder implements Builder {
 		foreach ( $this->get_rows() as $row_id => $row_name ) {
 			$this->define_row_settings( $row_id );
 		}
+
+		add_filter( 'hfg_header_row_classes', [ $this, 'add_header_row_utility_classes' ], 10, 2 );
+		add_filter( 'hfg_page_header_row_classes', [ $this, 'add_header_row_utility_classes' ], 10, 2 );
+		add_filter( 'hfg_footer_row_classes', [ $this, 'add_footer_row_utility_classes' ], 10, 2 );
 	}
 
 	/**
@@ -286,13 +290,13 @@ abstract class Abstract_Builder implements Builder {
 
 		$row_setting_id = $this->control_id . '_' . $row_id;
 		$row_class      = '.' . join(
-				'-',
-				array(
-					$this->get_id(),
-					$row_id,
-					'inner',
-				)
-			);
+			'-',
+			array(
+				$this->get_id(),
+				$row_id,
+				'inner',
+			)
+		);
 		if ( $row_id === 'sidebar' ) {
 			$row_class = '.header-menu-sidebar';
 		}
@@ -677,9 +681,7 @@ abstract class Abstract_Builder implements Builder {
 		}
 		$mod_value = json_decode( SettingsManager::get_instance()->get( 'hfg_' . $this->get_id() . '_layout' ), true );
 
-		error_log( var_export( $mod_value, true ) );
-
-		$this->layout_data = wp_parse_args( json_decode( SettingsManager::get_instance()->get( 'hfg_' . $this->get_id() . '_layout' ), true ), array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
+		$this->layout_data = wp_parse_args( $mod_value, array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
 
 		return $this->layout_data;
 	}
@@ -715,7 +717,7 @@ abstract class Abstract_Builder implements Builder {
 			foreach ( $this->get_layout_data() as $devices ) {
 				foreach ( $devices as $row_index => $row ) {
 					if ( neve_is_new_builder() ) {
-						if( $row_index === 'sidebar' ) {
+						if ( $row_index === 'sidebar' ) {
 							$components = array_merge( $components, array_combine( wp_list_pluck( $row, 'id' ), array_fill( 0, count( $row ), true ) ) );
 							continue;
 						}
@@ -775,7 +777,7 @@ abstract class Abstract_Builder implements Builder {
 	 * Method to generate css array for each row.
 	 *
 	 * @param string $row_index The row index.
-	 * @param array $css_array The css array.
+	 * @param array  $css_array The css array.
 	 *
 	 * @return array
 	 * @since   1.0.0
@@ -954,11 +956,20 @@ abstract class Abstract_Builder implements Builder {
 	 * Render device markup.
 	 *
 	 * @param string $device_name Device id.
-	 * @param array $device_details Device meta.
+	 * @param array  $device_details Device meta.
 	 */
 	public function render_device( $device_name, $device_details ) {
 		foreach ( $device_details as $index => $row ) {
-			if ( empty( $row ) ) {
+			if ( neve_is_new_builder() ) {
+				$used = [];
+				foreach ( $row as $components ) {
+					$used = array_merge( $used, $components );
+				}
+
+				if ( empty( $used ) ) {
+					continue;
+				}
+			} elseif ( empty( $row ) ) {
 				continue;
 			}
 			self::$current_row = $index;
@@ -986,18 +997,85 @@ abstract class Abstract_Builder implements Builder {
 			return $alignment;
 		}
 		$is_menu_component = strpos( $id, 'primary-menu' ) > - 1 || strpos( $id, 'secondary-menu' );
-		$tmp_align         = ( is_string( $alignment ) && in_array( $alignment, [
+		$tmp_align         = ( is_string( $alignment ) && in_array(
+			$alignment,
+			[
 				'left',
 				'right',
 				'center',
-				'justify'
-			] ) ) ? $alignment : 'left';
+				'justify',
+			] 
+		) ) ? $alignment : 'left';
 
 		return [
 			'desktop' => $tmp_align,
 			'tablet'  => $is_menu_component ? 'left' : $tmp_align,
 			'mobile'  => $is_menu_component ? 'left' : $tmp_align,
 		];
+	}
+
+	private function row_has_slot( $slot ) {
+		$current_row = $this->get_current_row_index();
+		$layout_data = $this->get_layout_data();
+		$device      = $this->get_current_device();
+
+		if ( ! isset( $layout_data[ $device ] ) ) {
+			return false;
+		}
+
+		if ( ! isset( $layout_data[ $device ][ $current_row ] ) ) {
+			return false;
+		}
+
+		$row_data = $layout_data[ $device ][ $current_row ];
+
+		if ( ! isset( $row_data[ $slot ] ) || empty( $row_data[ $slot ] ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Add row utility classes.
+	 *
+	 * @param $classes
+	 * @param $row_index
+	 *
+	 * @return mixed
+	 */
+	public function add_header_row_utility_classes( $classes, $row_index ) {
+		if ( $this->get_id() !== self::$current_builder ) {
+			return $classes;
+		}
+
+		if ( $this->row_has_slot( 'center' ) ) {
+			$classes[] = 'has-center';
+		}
+
+		return $classes;
+	}
+	/**
+	 * Add row utility classes.
+	 *
+	 * @param $classes
+	 * @param $row_index
+	 *
+	 * @return mixed
+	 */
+	public function add_footer_row_utility_classes( $classes, $row_index ) {
+		if ( $this->get_id() !== self::$current_builder ) {
+			return $classes;
+		}
+
+		$mods_prefix = 'hfg_footer_layout_' . $row_index . '_';
+		$columns     = SettingsManager::get_instance()->get( $mods_prefix . self::COLUMNS_NUMBER, 3 );
+		$layout      = SettingsManager::get_instance()->get( $mods_prefix . self::COLUMNS_LAYOUT, 'equal' );
+
+		$classes[] = 'columns-' . $columns;
+		$classes[] = $layout;
+
+		return $classes;
 	}
 
 	/**
@@ -1015,20 +1093,26 @@ abstract class Abstract_Builder implements Builder {
 
 		$data = $this->get_layout_data()[ $device ][ $row_index ];
 
+		// Remap sidebar data so we can use it as a slot.
 		if ( $row_index === 'sidebar' ) {
 			$data = [ 'sidebar' => $data ];
 		}
 
+		$render_buffer = [
+			'left'    => [],
+			'c-left'  => [],
+			'center'  => [],
+			'c-right' => [],
+			'right'   => [],
+		];
+
 		foreach ( $data as $slot => $components ) {
-			$builder_id = $this->get_id();
-			if ( empty( $components ) && $builder_id !== 'footer' ) {
+			$builder_id   = $this->get_id();
+			$is_side_slot = in_array( $slot, [ 'right', 'left' ], true );
+			if ( ! ( $this->row_has_slot( 'center' ) && $is_side_slot ) && empty( $components ) && $builder_id !== 'footer' ) {
 				continue;
 			}
-			$slot_classes = [ 'hfg-slot', $slot ];
-
-			echo sprintf( '<div class="%s">', join( ' ', $slot_classes ) );
-
-			foreach ( $components as $component ) {
+			foreach ( $components as $component_index => $component ) {
 				if ( ! isset( $this->builder_components[ $component['id'] ] ) ) {
 					continue;
 				}
@@ -1053,21 +1137,66 @@ abstract class Abstract_Builder implements Builder {
 					$classes[] = 'hfg-item-v-' . $vertical_align;
 				}
 
-				echo sprintf( '<div class="%s">', esc_attr( join( ' ', $classes ) ) );
-				$component_instance      = $this->builder_components[ $component['id'] ];
-				self::$current_component = $component['id'];
+				if ( ! $this->columns_layout ) {
+					if ( $slot === 'c-left' && $component_index === 0 ) {
+						$classes[] = 'hfg-end';
+					}
+					if ( $slot === 'c-right' && $component_index === sizeof( $components ) - 1 ) {
+						$classes[] = 'hfg-start';
+					}
+				}
+
+				$new_component = [
+					'id'      => $component['id'],
+					'classes' => $classes,
+				];
+
+				if ( ! $this->columns_layout ) {
+					switch ( $slot ) {
+						case 'c-right':
+							$render_buffer['right'][] = $new_component;
+							break;
+						case 'c-left':
+							$render_buffer['left'][] = $new_component;
+							break;
+						default:
+							$render_buffer[ $slot ][] = $new_component;
+					}
+					unset( $render_buffer['c-left'] );
+					unset( $render_buffer['c-right'] );
+				} else {
+					$render_buffer[ $slot ][] = $new_component;
+				}
+			}
+		}
+
+		foreach ( $render_buffer as $slot => $components ) {
+			if ( $slot === 'center' && empty( $components ) ) {
+				continue;
+			}
+			$slot_classes = [ 'hfg-slot', $slot ];
+			if ( $row_index !== 'sidebar' ) {
+				echo sprintf( '<div class="%s">', join( ' ', $slot_classes ) );
+			}
+			foreach ( $components as $component_data ) {
+				echo sprintf( '<div class="%s">', esc_attr( join( ' ', $component_data['classes'] ) ) );
+				$component_instance      = $this->builder_components[ $component_data['id'] ];
+				self::$current_component = $component_data['id'];
 				$component_instance->render();
 				echo '</div>';
 			}
-			echo '</div>';
+			if ( $row_index !== 'sidebar' ) {
+				echo '</div>';
+			}
 		}
+
 	}
 
 	/**
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
-	 * @param null|array $row Row details.
+	 * @param null|array  $row Row details.
 	 */
 	public function render_components( $device = null, $row = null ) {
 		if ( neve_is_new_builder() ) {
@@ -1511,7 +1640,7 @@ abstract class Abstract_Builder implements Builder {
 				'options'           => [
 					'choices' => $choices,
 				],
-				'transport'         => 'postMessage',
+				'transport'         => 'post' . $row_setting_id,
 				'sanitize_callback' => 'absint',
 				'default'           => '3',
 			]
@@ -1525,10 +1654,10 @@ abstract class Abstract_Builder implements Builder {
 				'label'             => __( 'Columns Layout', 'neve' ),
 				'type'              => '\Neve\Customizer\Controls\React\Builder_Columns',
 				'section'           => $row_setting_id,
-				'transport'         => 'postMessage',
 				'options'           => [
 					'columns_control' => $row_setting_id . '_' . self::COLUMNS_NUMBER,
 				],
+				'transport'         => 'post' . $row_setting_id,
 				'sanitize_callback' => [ $this, 'sanitize_columns' ],
 				'default'           => 'equal',
 			]
@@ -1575,8 +1704,8 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::KEY_SELECTOR => '.header-menu-sidebar',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_WIDTH => [
-						Dynamic_Selector::META_KEY           => $this->control_id . '_sidebar_' . self::WIDTH,
-						Dynamic_Selector::META_DEFAULT       => $default_sidebar_width,
+						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 				],
@@ -1587,8 +1716,8 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::KEY_SELECTOR => '.is-menu-sidebar > .wrapper',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_LEFT => [
-						Dynamic_Selector::META_KEY           => $this->control_id . '_sidebar_' . self::WIDTH,
-						Dynamic_Selector::META_DEFAULT       => $default_sidebar_width,
+						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 				],
@@ -1599,8 +1728,8 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::KEY_SELECTOR => '.menu_sidebar_pull_right.is-menu-sidebar > .wrapper',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_RIGHT => [
-						Dynamic_Selector::META_KEY           => $this->control_id . '_sidebar_' . self::WIDTH,
-						Dynamic_Selector::META_DEFAULT       => $default_sidebar_width,
+						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 				],

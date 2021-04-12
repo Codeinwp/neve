@@ -11,6 +11,18 @@
 .builder-item {
   margin-top: 4px;
   margin-bottom: 4px;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  &.hfg-end {
+	margin-left: auto;
+  }
+
+  &.hfg-start {
+	margin-right: auto;
+  }
 }
 
 $desktop: map-get($gl-devices-list, desktop);
@@ -29,16 +41,16 @@ $desktop: map-get($gl-devices-list, desktop);
   &.right {
 	justify-content: flex-end;
   }
+
+  &.center {
+	justify-content: center;
+  }
 }
+
 
 $builder_types: page_header header footer;
 @each $type in $builder_types {
   .#{$type}--row {
-	.row {
-	  display: grid;
-	  grid-template-columns: auto auto;
-	}
-
     &.layout-fullwidth {
       .container {
         max-width: 100% !important;
@@ -49,6 +61,24 @@ $builder_types: page_header header footer;
       max-width: $container_width;
       margin: 0 auto;
     }
+  }
+}
+
+// Page Header and Header specific alignments.
+.header--row, .page_header--row {
+  .row {
+	display: grid;
+	grid-template-columns: auto auto;
+  }
+}
+
+.has-center .row--wrapper {
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.footer--row {
+  .columns-1 {
+	display: grid;
   }
 }
 
