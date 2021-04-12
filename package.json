@@ -59,7 +59,7 @@
 		}
 	],
 	"simple-git-hooks": {
-		"pre-commit": "[[ -z $CI ]] && npx lint-staged"
+		"pre-commit": "npx lint-staged"
 	},
 	"dependencies": {
 		"array-move": "^3.0.1",
