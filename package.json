@@ -147,7 +147,7 @@
 		"semantic-release": "^17.1.1",
 		"size-limit": "^4.5.6",
 		"style-loader": "^2.0.0",
-		"url-slug": "^2.3.2",
+		"url-slug": "^3.0.1",
 		"webpack": "^4.44.0",
 		"webpack-cli": "^3.3.12"
 	},
