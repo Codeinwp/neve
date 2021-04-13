@@ -44,6 +44,7 @@
   "prefer-stable": true,
   "config": {
 	"optimize-autoloader": true,
+	"platform-check": false,
 	"platform": {
 	  "php": "5.6"
 	}
