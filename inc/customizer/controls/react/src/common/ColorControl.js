@@ -1,11 +1,8 @@
 import PropTypes from 'prop-types';
 import GlobalColorsPicker from '../common/GlobalColorsPicker';
-// we can add back ColorPicker here when issue https://github.com/WordPress/gutenberg/issues/30798 is resolved
-import { Button, Dropdown } from '@wordpress/components';
+import { ColorPicker, Button, Dropdown } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
-
-import ColorPickerFix from './ColorPickerDebug';
 
 const ColorControl = ({
 	label,
@@ -70,7 +67,7 @@ const ColorControl = ({
 					<>
 						{/* eslint-disable-next-line  jsx-a11y/anchor-has-content */}
 						<a href="#color-picker" />
-						<ColorPickerFix
+						<ColorPicker
 							color={selectedColor}
 							onChangeComplete={handleChange}
 						/>
