@@ -548,7 +548,7 @@ msgstr ""
 #: inc/customizer/options/form_fields.php:379
 #: inc/customizer/controls/react/src/background/Background.js:20
 #: inc/customizer/controls/react/src/background/Background.js:71
-#: inc/customizer/controls/react/src/common/ColorControl.js:56
+#: inc/customizer/controls/react/src/common/ColorControl.js:59
 msgid "Color"
 msgstr ""
 
@@ -2222,7 +2222,7 @@ msgstr ""
 msgid "Hover"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/ColorControl.js:80
+#: inc/customizer/controls/react/src/common/ColorControl.js:83
 msgid "Clear"
 msgstr ""
 
