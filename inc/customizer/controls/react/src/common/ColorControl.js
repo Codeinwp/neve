@@ -5,7 +5,7 @@ import { Button, Dropdown } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
-import ColorPickerFix from './ColorPickerDebug';
+import ColorPickerFix from './ColorPickerFix';
 
 const ColorControl = ({
 	label,
