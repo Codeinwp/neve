@@ -7,21 +7,27 @@
 
 /* Header ( Navigation ) area */
 /**
- * Hook just before the header ( navigation ) area
+ * Hook just before the header ( navigation ) area.
+ *
+ * @deprecated 2.11 Use do_action( 'neve_before_header_hook' ) instead.
  */
 function neve_before_header_trigger() {
 	do_action( 'neve_before_header_hook' );
 }
 
 /**
- * Hook at the beginning of header ( navigation ) area
+ * Hook at the beginning of header ( navigation ) area.
+ *
+ * @deprecated 2.11 Use do_action( 'neve_before_header_wrapper_hook' ) instead.
  */
 function neve_before_header_wrapper_trigger() {
 	do_action( 'neve_before_header_wrapper_hook' );
 }
 
 /**
- * Hook just after the header ( navigation ) area
+ * Hook just after the header ( navigation ) area.
+ *
+ * @deprecated 2.11 Use do_action( 'neve_after_header_hook' ) instead.
  */
 function neve_after_header_trigger() {
 	do_action( 'neve_after_header_hook' );
@@ -29,6 +35,8 @@ function neve_after_header_trigger() {
 
 /**
  * Hook just after the header content ( navigation ) area
+ *
+ * @deprecated 2.11 Use do_action( 'neve_after_header_wrapper_hook' ) instead.
  */
 function neve_after_header_wrapper_trigger() {
 	do_action( 'neve_after_header_wrapper_hook' );
@@ -36,6 +44,8 @@ function neve_after_header_wrapper_trigger() {
 
 /**
  * Hook just before the footer area
+ *
+ * @deprecated 2.11 Use do_action( 'neve_before_footer_hook' ) instead.
  */
 function neve_before_footer_trigger() {
 	do_action( 'neve_before_footer_hook' );
@@ -45,6 +55,8 @@ function neve_before_footer_trigger() {
  * Hook just after the footer area
  *
  * HTML context: after `footer`
+ *
+ * @deprecated 2.11 Use do_action( 'neve_after_footer_hook' ) instead.
  */
 function neve_after_footer_trigger() {
 	do_action( 'neve_after_footer_hook' );
