@@ -105,6 +105,12 @@ class Template_Parts extends Base_View {
 		if ( ! has_post_thumbnail() ) {
 			return '';
 		}
+
+		global $wp_query;
+
+		$image_class = ! property_exists( $wp_query, 'nv_should_load_lazy' ) ? 'skip-lazy' : '';
+		$wp_query->nv_should_load_lazy = false;
+
 		$markup = '<div class="nv-post-thumbnail-wrap">';
 
 		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark" title="' . the_title_attribute(
@@ -112,9 +118,11 @@ class Template_Parts extends Base_View {
 				'echo' => false,
 			)
 		) . '">';
+
 		$markup .= get_the_post_thumbnail(
 			get_the_ID(),
-			'neve-blog'
+			'neve-blog',
+			array( 'class' => $image_class )
 		);
 		$markup .= '</a>';
 		$markup .= '</div>';

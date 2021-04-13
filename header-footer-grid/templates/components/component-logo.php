@@ -50,7 +50,7 @@ if ( $is_not_link ) {
 }
 
 do_action( 'hfg_before_wp_get_attachment_image', $custom_logo_id );
-$image = wp_get_attachment_image( $custom_logo_id, apply_filters( 'hfg_logo_image_size', 'full' ) );
+$image = wp_get_attachment_image( $custom_logo_id, apply_filters( 'hfg_logo_image_size', 'full' ), false, array( 'class' => 'skip-lazy' ) );
 do_action( 'hfg_after_wp_get_attachment_image', $custom_logo_id, $image );
 ?>
 <div class="site-logo">
