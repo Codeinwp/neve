@@ -151,19 +151,16 @@ function handleSearch() {
  * Handle the mini cart position in nav.
  */
 function handleMiniCartPosition() {
-	const elem = document.querySelectorAll('.header--row .nv-nav-cart');
-	if (elem.length === 0) {
+	const item = document.querySelector('.header--row .menu-item-nav-cart');
+	if (item.length === 0) {
 		return;
 	}
-	neveEach(elem, (item) => {
-		const bounding = document
-			.querySelectorAll('.menu-item-nav-cart')[0]
-			.getBoundingClientRect();
 
-		if (bounding.left < 450) {
-			item.style.left = 0;
-		}
-	});
+	const bounding = item.getBoundingClientRect();
+
+	if (bounding.left < 350) {
+		item.querySelector('.nv-nav-cart').style.left = 0;
+	}
 }
 
 window.addEventListener('resize', handleMiniCartPosition);
