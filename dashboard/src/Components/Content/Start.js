@@ -4,10 +4,11 @@ import { tabs } from '../../utils/common';
 
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
-import { Button } from '@wordpress/components';
+import { Button, ExternalLink } from '@wordpress/components';
+import { withSelect } from '@wordpress/data';
 
 const Start = (props) => {
-	const { setTab } = props;
+	const { setTab, tier } = props;
 	const {
 		showFeedbackNotice,
 		pro,
@@ -81,18 +82,42 @@ const Start = (props) => {
 			</Card>
 
 			{!whiteLabel && (
-				<Card
-					icon={neveDash.assets + 'page.svg'}
-					title={__('Getting Started? Check help and docs', 'neve')}
-					description={__(
-						'Need more details? Please check our full documentation for detailed information on how to use Neve.',
-						'neve'
-					)}
-				>
-					<Button isLink onClick={() => setTab('help')}>
-						{__('Go to docs', 'neve')}
-					</Button>
-				</Card>
+				<>
+					<Card
+						icon={neveDash.assets + 'page.svg'}
+						title={__(
+							'Getting Started? Check help and docs',
+							'neve'
+						)}
+						description={__(
+							'Need more details? Please check our full documentation for detailed information on how to use Neve.',
+							'neve'
+						)}
+					>
+						<Button isLink onClick={() => setTab('help')}>
+							{__('Go to docs', 'neve')}
+						</Button>
+					</Card>
+					<Card
+						icon={neveDash.assets + 'template-cloud.svg'}
+						title="Templates Cloud"
+						description={__(
+							'Import professional page templates or sections with one click and have a website running in seconds.',
+							'neve'
+						)}
+					>
+						{tier !== 3 && (
+							<ExternalLink href="https://themeisle.com/themes/neve/#pricing">
+								{__('Discover Templates Cloud', 'neve')}
+							</ExternalLink>
+						)}
+						{tier === 3 && (
+							<ExternalLink href="https://docs.themeisle.com/article/1091-starter-sites-available-for-import#my-library">
+								{__('Learn how to use Templates Cloud', 'neve')}
+							</ExternalLink>
+						)}
+					</Card>
+				</>
 			)}
 			{showFeedbackNotice && !pro && (
 				<Card
@@ -117,4 +142,9 @@ const Start = (props) => {
 	);
 };
 
-export default Start;
+export default withSelect((select) => {
+	const { getLicenseTier } = select('neve-dashboard');
+	return {
+		tier: getLicenseTier(),
+	};
+})(Start);
