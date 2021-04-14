@@ -2,15 +2,10 @@ import React from 'react';
 import classnames from 'classnames';
 
 import { Button } from '@wordpress/components';
-import { memo } from '@wordpress/element';
+import { useContext } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { BuilderActions, DeviceTypes } from '../../@types/utils';
-
-interface Props {
-	builder: string;
-	device: DeviceTypes;
-	actions: BuilderActions;
-}
+import { DeviceTypes } from '../../@types/utils';
+import BuilderContext from '../BuilderContext';
 
 type ButtonProps = {
 	title: string;
@@ -18,17 +13,20 @@ type ButtonProps = {
 	slug: DeviceTypes;
 };
 
-type Buttons = ButtonProps[];
+type Props = {
+	device: DeviceTypes;
+};
 
-const ResponsiveSwitches: React.FC<Props> = ({ device, actions, builder }) => {
+const ResponsiveSwitches: React.FC<Props> = ({ device }) => {
+	const { actions, builder } = useContext(BuilderContext);
 	const { setDevice } = actions;
 	const buttons: ButtonProps[] = [
 		{ title: __('Desktop', 'neve'), icon: 'desktop', slug: 'desktop' },
 		{ title: __('Mobile', 'neve'), icon: 'smartphone', slug: 'mobile' },
 	];
 	const { devices } = window.NeveReactCustomize.HFG[builder];
-	const shownButtons = buttons.filter((i) =>
-		Object.keys(devices).includes(i.slug)
+	const shownButtons = buttons.filter(({ slug }) =>
+		Object.keys(devices).includes(slug)
 	);
 
 	const switchDevice = (nextDevice: DeviceTypes) => {
@@ -62,4 +60,4 @@ const ResponsiveSwitches: React.FC<Props> = ({ device, actions, builder }) => {
 	);
 };
 
-export default memo(ResponsiveSwitches);
+export default ResponsiveSwitches;

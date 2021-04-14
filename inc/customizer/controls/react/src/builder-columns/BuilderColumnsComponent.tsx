@@ -4,9 +4,9 @@ import { useEffect, useState } from '@wordpress/element';
 import { WPCustomizeControl } from '../@types/customizer-control';
 import BuilderColumns from './BuilderColumns';
 
-interface Props {
+type Props = {
 	control: WPCustomizeControl;
-}
+};
 
 const BuilderColumnsComponent: React.FC<Props> = ({ control }) => {
 	const { setting, params } = control;

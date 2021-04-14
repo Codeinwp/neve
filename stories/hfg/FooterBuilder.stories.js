@@ -35,7 +35,7 @@ const FooterTemplate = (args) => {
 				hidden={args.initiallyHidden}
 				onChange={setValue}
 				value={value}
-				currentBuilder={'footer'}
+				builder={'footer'}
 				portalMount={portalMount}
 				{...args}
 			/>

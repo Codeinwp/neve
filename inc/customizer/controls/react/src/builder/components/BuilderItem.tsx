@@ -2,39 +2,28 @@ import React from 'react';
 import { Button, Icon } from '@wordpress/components';
 import { closeSmall, cog, dragHandle } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
-import {
-	BuilderActions,
-	RowTypes,
-	SlotTypes,
-	StringObjectKeys,
-} from '../../@types/utils';
-import { useEffect, useState } from '@wordpress/element';
+import { RowTypes, SlotTypes } from '../../@types/utils';
+import { useContext } from '@wordpress/element';
 import classnames from 'classnames';
+import BuilderContext from '../BuilderContext';
 
-interface Props {
-	componentId: string;
-	builder: string;
-	actions: BuilderActions;
-	slot: SlotTypes;
+type Props = {
 	row: RowTypes;
+	slot: SlotTypes;
 	index: number;
+	componentId: string;
 	currentSection: string;
-}
+};
 
 const BuilderItem: React.FC<Props> = (props) => {
-	const {
-		componentId,
-		builder,
-		actions,
-		slot,
-		row,
-		index,
-		currentSection,
-	} = props;
+	const { componentId, currentSection, slot, row, index } = props;
+	const { actions, builder } = useContext(BuilderContext);
+
 	const itemDetails =
 		window.NeveReactCustomize.HFG[builder].items[componentId];
 	const { name, section } = itemDetails;
 	const { removeItem } = actions;
+
 	const isActive = currentSection === section;
 	const itemSection = window.wp.customize.section(section);
 

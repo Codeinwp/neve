@@ -6,10 +6,10 @@ import { BuilderContentInterface } from '../@types/utils';
 import { maybeParseJson } from './common/utils';
 import HFGBuilder from './HFGBuilder';
 
-interface Props {
+type Props = {
 	control: WPCustomizeControl;
 	portalMount: HTMLElement;
-}
+};
 
 const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 	const { setting, params } = control;
@@ -73,7 +73,7 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 		<HFGBuilder
 			hasColumns={hasColumns}
 			hidden={isHidden}
-			currentBuilder={builder}
+			builder={builder}
 			value={value}
 			onChange={onChange}
 			portalMount={portalMount}

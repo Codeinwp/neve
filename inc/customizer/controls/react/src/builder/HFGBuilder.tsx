@@ -3,7 +3,7 @@ import { createPortal, useEffect, useState } from '@wordpress/element';
 import {
 	BuilderActions,
 	BuilderContentInterface,
-	BuilderItemInterface,
+	BuilderItemType,
 	DeviceTypes,
 	LayoutUpdate,
 	RemoveItem,
@@ -14,22 +14,23 @@ import { arraysAreIdentical, getUsedItemsFromItems } from './common/utils';
 import SidebarContent from './components/SidebarContent';
 import Builder from './components/Builder';
 import { ItemInterface } from 'react-sortablejs';
+import BuilderContext from './BuilderContext';
 
-interface Props {
+type Props = {
 	hasColumns: boolean;
 	onChange: (nextValue: BuilderContentInterface) => void;
 	value: BuilderContentInterface;
-	currentBuilder: string;
+	builder: string;
 	portalMount: HTMLElement;
 	hidden: boolean;
-}
+};
 
 const HFGBuilder: React.FC<Props> = ({
 	hasColumns,
-	hidden,
-	currentBuilder,
+	builder,
 	onChange,
 	value,
+	hidden,
 	portalMount,
 }) => {
 	const [device, setDevice] = useState<DeviceTypes>('desktop');
@@ -38,7 +39,7 @@ const HFGBuilder: React.FC<Props> = ({
 
 	const getSidebarItems = () => {
 		const usedItems = getUsedItemsFromItems(value[device]);
-		const allItems = window.NeveReactCustomize.HFG[currentBuilder].items;
+		const allItems = window.NeveReactCustomize.HFG[builder].items;
 		return Object.keys(allItems)
 			.filter((key) => !usedItems.includes(key))
 			.map((itemId) => {
@@ -114,7 +115,7 @@ const HFGBuilder: React.FC<Props> = ({
 		onChange(finalValue);
 	};
 
-	const updateSidebar = (items: BuilderItemInterface[]) => {
+	const updateSidebar = (items: BuilderItemType[]) => {
 		if (arraysAreIdentical(items, value[device].sidebar)) {
 			return false;
 		}
@@ -173,15 +174,6 @@ const HFGBuilder: React.FC<Props> = ({
 		onChange(finalValue);
 	};
 
-	const actions: BuilderActions = {
-		updateLayout,
-		onDragStart,
-		onDragEnd,
-		removeItem,
-		setDevice,
-		setSidebarItems,
-	};
-
 	/*
 	 * Bind the device switchers to the device state.
 	 */
@@ -217,7 +209,12 @@ const HFGBuilder: React.FC<Props> = ({
 			window.wp.customize
 				.state('expandedSection')
 				.bind((expandedSection: StringObjectKeys) => {
-					if (!expandedSection || expandedSection.id) {
+					if (!expandedSection) {
+						setCurrentSection('');
+						return;
+					}
+
+					if (!expandedSection.id) {
 						setCurrentSection('');
 						return;
 					}
@@ -229,31 +226,37 @@ const HFGBuilder: React.FC<Props> = ({
 		});
 	};
 
+	const actions: BuilderActions = {
+		updateLayout,
+		onDragStart,
+		onDragEnd,
+		removeItem,
+		setDevice,
+		setSidebarItems,
+	};
+
 	return (
-		<div>
-			<div className={`neve-hfg-builder`}>
-				<SidebarContent
-					items={sidebarItems}
-					builder={currentBuilder}
-					actions={actions}
-					dragging={dragging}
-				/>
+		<BuilderContext.Provider
+			value={{
+				actions,
+				sidebarItems,
+				dragging,
+				currentSection,
+				builder,
+				hasColumns,
+				device,
+			}}
+		>
+			<div>
+				<div className={`neve-hfg-builder`}>
+					<SidebarContent />
+				</div>
+				{createPortal(
+					<Builder hidden={hidden} value={value} />,
+					portalMount
+				)}
 			</div>
-			{createPortal(
-				<Builder
-					hasColumns={hasColumns}
-					hidden={hidden}
-					value={value}
-					device={device}
-					builder={currentBuilder}
-					dragging={dragging}
-					actions={actions}
-					sidebarItems={sidebarItems}
-					currentSection={currentSection}
-				/>,
-				portalMount
-			)}
-		</div>
+		</BuilderContext.Provider>
 	);
 };
 

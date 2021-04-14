@@ -1,45 +1,30 @@
 import React, { ChangeEvent } from 'react';
-import {
-	BuilderActions,
-	BuilderItemInterface,
-	DeviceTypes,
-	RowTypes,
-	SlotTypes,
-} from '../../@types/utils';
-import { ItemInterface, ReactSortable } from 'react-sortablejs';
+import { BuilderItemType, RowTypes, SlotTypes } from '../../@types/utils';
+import { ReactSortable } from 'react-sortablejs';
 import BuilderItem from './BuilderItem';
 import classnames from 'classnames';
 import { Button, Popover, Icon } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { useContext, useState } from '@wordpress/element';
 import { close, plus, search } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
+import BuilderContext from '../BuilderContext';
 
-interface Props {
-	slotId: SlotTypes;
+type Props = {
 	rowId: RowTypes;
-	builder: string;
-	items: BuilderItemInterface[];
-	dragging: boolean;
-	actions: BuilderActions;
+	slotId: SlotTypes;
+	items: BuilderItemType[];
 	className?: string;
-	sidebarItems: ItemInterface[];
-	device: DeviceTypes;
-	currentSection: string;
-	[x: string]: any;
-}
+};
 
-const Slot: React.FC<Props> = (props) => {
+const Slot: React.FC<Props> = ({ items, slotId, rowId, className }) => {
 	const {
-		items,
-		slotId,
-		rowId,
+		currentSection,
 		builder,
 		actions,
-		className,
 		dragging,
 		sidebarItems,
-		currentSection,
-	} = props;
+	} = useContext(BuilderContext);
+
 	const { updateLayout, onDragStart } = actions;
 	const [popupOpen, setPopupOpen] = useState<boolean>(false);
 	const [searchQuery, setSearchQuery] = useState<string>('');
@@ -68,7 +53,7 @@ const Slot: React.FC<Props> = (props) => {
 				onStart={onDragStart}
 				group={builder}
 				list={items}
-				setList={(newState) => {
+				setList={(newState, whatstate, ceplm) => {
 					const nextState = newState.map((item) => {
 						const { x, y, id, width, height } = item;
 						return { id };
@@ -81,13 +66,11 @@ const Slot: React.FC<Props> = (props) => {
 					items.map((item, index) => {
 						return (
 							<BuilderItem
-								slot={slotId}
-								row={rowId}
 								key={index}
+								row={rowId}
+								slot={slotId}
 								index={index}
-								builder={builder}
 								componentId={item.id}
-								actions={actions}
 								currentSection={currentSection}
 							/>
 						);
@@ -105,6 +88,7 @@ const Slot: React.FC<Props> = (props) => {
 			)}
 			{popupOpen && (
 				<Popover
+					position="top center"
 					noArrow={false}
 					className="items-popover"
 					onFocusOutside={() => {

@@ -7,7 +7,6 @@ export default {
 	component: HFGBuilder,
 	args: {
 		initiallyHidden: false,
-		hasColumns: null,
 	},
 	decorators: [CustomizerDecorator],
 };
@@ -50,7 +49,7 @@ const Template = (args) => {
 				hidden={args.initiallyHidden}
 				onChange={setValue}
 				value={value}
-				currentBuilder={'header'}
+				builder={'header'}
 				portalMount={portalMount}
 				{...args}
 			/>

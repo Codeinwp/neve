@@ -1,40 +1,18 @@
 import React from 'react';
-import {
-	BuilderActions,
-	BuilderContentInterface,
-	DeviceTypes,
-	RowTypes,
-} from '../../@types/utils';
-
+import { BuilderContentInterface, RowTypes } from '../../@types/utils';
 import Row from './Row';
 import ResponsiveSwitches from './ResponsiveSwitches';
 import classnames from 'classnames';
-import { ItemInterface } from 'react-sortablejs';
+import { useContext } from '@wordpress/element';
+import BuilderContext from '../BuilderContext';
 
-interface Props {
+type Props = {
 	value: BuilderContentInterface;
-	device: DeviceTypes;
-	builder: string;
-	dragging: boolean;
-	actions: BuilderActions;
 	hidden: boolean;
-	hasColumns: boolean;
-	sidebarItems: ItemInterface[];
-	currentSection: string;
-}
+};
 
-const Builder: React.FC<Props> = (props) => {
-	const {
-		value,
-		device,
-		builder,
-		dragging,
-		actions,
-		hidden,
-		hasColumns,
-		sidebarItems,
-		currentSection,
-	} = props;
+const Builder: React.FC<Props> = ({ value, hidden }) => {
+	const { device, builder, hasColumns } = useContext(BuilderContext);
 	const { rows } = window.NeveReactCustomize.HFG[builder];
 	const items = { ...value[device] };
 
@@ -45,25 +23,11 @@ const Builder: React.FC<Props> = (props) => {
 
 	return (
 		<div className={builderClasses}>
-			<ResponsiveSwitches
-				builder={builder}
-				device={device}
-				actions={actions}
-			/>
+			<ResponsiveSwitches device={device} />
 			<div className="rows-wrapper">
 				{rows.sidebar && device !== 'desktop' && (
 					<div className="vertical-rows">
-						<Row
-							hasColumns={false}
-							rowId="sidebar"
-							device={device}
-							builder={builder}
-							items={items.sidebar}
-							dragging={dragging}
-							actions={actions}
-							sidebarItems={sidebarItems}
-							currentSection={currentSection}
-						/>
+						<Row rowId="sidebar" items={items.sidebar} />
 					</div>
 				)}
 				<div className="horizontal-rows">
@@ -74,16 +38,9 @@ const Builder: React.FC<Props> = (props) => {
 
 						return (
 							<Row
-								hasColumns={hasColumns}
 								key={rowIndex}
 								rowId={rowId as RowTypes}
-								device={device}
-								builder={builder}
 								items={items[rowId] || []}
-								dragging={dragging}
-								actions={actions}
-								sidebarItems={sidebarItems}
-								currentSection={currentSection}
 							/>
 						);
 					})}

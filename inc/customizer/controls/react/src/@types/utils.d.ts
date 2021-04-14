@@ -14,29 +14,29 @@ export type SlotTypes =
 	| 'right'
 	| 'sidebar';
 
-export type DeviceTypes = 'desktop' | 'mobile' | 'tablet';
+export type DeviceTypes = string & (keyof BuilderContentInterface | 'tablet');
 
-export interface BuilderItemInterface extends StringObjectKeys {
+export type BuilderItemType = {
 	height?: number;
 	id: string;
 	width?: number;
 	x?: number;
 	y?: number;
-}
+};
 
 export interface BuilderRowInterface extends StringObjectKeys {
-	left: BuilderItemInterface[];
-	'c-left': BuilderItemInterface[];
-	center: BuilderItemInterface[];
-	'c-right': BuilderItemInterface[];
-	right: BuilderItemInterface[];
+	left: BuilderItemType[];
+	'c-left': BuilderItemType[];
+	center: BuilderItemType[];
+	'c-right': BuilderItemType[];
+	right: BuilderItemType[];
 }
 
 export interface BuilderRowsInterface extends StringObjectKeys {
 	top: BuilderRowInterface;
 	main: BuilderRowInterface;
 	bottom: BuilderRowInterface;
-	sidebar?: BuilderItemInterface[];
+	sidebar?: BuilderItemType[];
 }
 
 export interface BuilderContentInterface extends StringObjectKeys {
@@ -44,7 +44,7 @@ export interface BuilderContentInterface extends StringObjectKeys {
 	mobile?: BuilderRowsInterface;
 }
 
-interface HFGLayoutBuilderComponentProps extends StringObjectKeys {
+type HFGLayoutBuilderComponentProps = {
 	componentSlug: string;
 	description: string | null;
 	elementOrder: number;
@@ -54,14 +54,14 @@ interface HFGLayoutBuilderComponentProps extends StringObjectKeys {
 	previewImage: string | null;
 	section: string;
 	width: number;
-}
+};
 
-interface HFGLayoutBuilderRowProps extends StringObjectKeys {
+type HFGLayoutBuilderRowProps = {
 	description: string;
 	title: string;
-}
+};
 
-interface HFGLayoutBuilderProps extends StringObjectKeys {
+type HFGLayoutBuilderProps = {
 	// eslint-disable-next-line camelcase
 	control_id: string;
 	devices: { desktop: 'Desktop'; mobile?: 'Mobile' };
@@ -75,28 +75,28 @@ interface HFGLayoutBuilderProps extends StringObjectKeys {
 	};
 	section: string;
 	title: string;
-}
+};
 
-interface HFGLayoutBuilder extends StringObjectKeys {
+type HFGLayoutBuilder = {
 	[key: string]: HFGLayoutBuilderProps;
-}
+};
 
 type LayoutUpdate = (
 	rowId: string,
 	slotId: string,
-	nextItems: BuilderItemInterface[]
+	nextItems: BuilderItemType[]
 ) => void;
 
 type RemoveItem = (rowId: string, slotId: string, itemIndex: number) => void;
 
-interface BuilderActions {
+type BuilderActions = {
 	updateLayout: LayoutUpdate;
 	onDragStart: () => void;
 	onDragEnd: () => void;
 	removeItem: RemoveItem;
 	setDevice: Dispatch<SetStateAction<DeviceTypes>>;
 	setSidebarItems: (value: ItemInterface[]) => void;
-}
+};
 
 declare global {
 	interface Window {

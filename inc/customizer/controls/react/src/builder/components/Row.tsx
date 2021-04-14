@@ -1,9 +1,7 @@
 import React from 'react';
 import {
-	BuilderActions,
-	BuilderItemInterface,
+	BuilderItemType,
 	BuilderRowInterface,
-	DeviceTypes,
 	RowTypes,
 	SlotTypes,
 	StringObjectKeys,
@@ -11,28 +9,22 @@ import {
 import { Button } from '@wordpress/components';
 import { cog } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
-import { useEffect, useState } from '@wordpress/element';
+import { useContext, useEffect, useState } from '@wordpress/element';
 import classnames from 'classnames';
 
 import Slot from './Slot';
 import { WPCustomizeControl } from '../../@types/customizer-control';
-import { ItemInterface } from 'react-sortablejs';
+import BuilderContext from '../BuilderContext';
 
 type Props = {
-	items: BuilderRowInterface & BuilderItemInterface[];
+	items: BuilderRowInterface & BuilderItemType[];
 	rowId: RowTypes;
-	builder: string;
-	device: DeviceTypes;
-	dragging: boolean;
-	hasColumns: boolean;
-	actions: BuilderActions;
-	sidebarItems: ItemInterface[];
-	currentSection: string;
-	[x: string]: unknown;
 };
 
-const Row: React.FC<Props> = (props) => {
-	const { actions, items, rowId, dragging, builder, hasColumns } = props;
+const Row: React.FC<Props> = ({ items, rowId }) => {
+	const { actions, dragging, builder, hasColumns } = useContext(
+		BuilderContext
+	);
 	const { updateLayout } = actions;
 	const slots: SlotTypes[] = ['left', 'c-left', 'center', 'c-right', 'right'];
 
@@ -170,7 +162,7 @@ const Row: React.FC<Props> = (props) => {
 				</div>
 
 				<div className="row-inner">
-					<Slot slotId={rowId} {...props} />
+					<Slot slotId={rowId} rowId={rowId} items={items} />
 				</div>
 			</div>
 		);
@@ -198,8 +190,8 @@ const Row: React.FC<Props> = (props) => {
 							{['left', 'c-left'].map((slotId, index) => {
 								return (
 									<Slot
-										{...props}
 										key={index}
+										rowId={rowId}
 										slotId={slotId as SlotTypes}
 										items={items[slotId] || []}
 									/>
@@ -208,7 +200,7 @@ const Row: React.FC<Props> = (props) => {
 						</div>
 						<div className={centerWrapClass}>
 							<Slot
-								{...props}
+								rowId={rowId}
 								slotId={'center'}
 								items={items.center || []}
 							/>
@@ -217,8 +209,8 @@ const Row: React.FC<Props> = (props) => {
 							{['c-right', 'right'].map((slotId, index) => {
 								return (
 									<Slot
-										{...props}
 										key={index}
+										rowId={rowId}
 										slotId={slotId as SlotTypes}
 										items={items[slotId] || []}
 									/>
@@ -239,11 +231,11 @@ const Row: React.FC<Props> = (props) => {
 							});
 							return (
 								<Slot
-									{...props}
-									className={slotClasses}
 									key={index}
+									rowId={rowId}
 									slotId={slotId}
 									items={items[slotId] || []}
+									className={slotClasses}
 								/>
 							);
 						})}

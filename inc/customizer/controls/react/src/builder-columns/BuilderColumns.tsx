@@ -3,13 +3,13 @@ import React from 'react';
 // @ts-ignore
 import RadioImage from '../radio-image/RadioImage';
 
-interface Props {
+type Props = {
 	label: string;
 	value: string;
 	onChange: (val: string) => void;
 	columns: number;
 	choices: Record<number, Record<string, string>>;
-}
+};
 
 const BuilderColumns: React.FC<Props> = (props) => {
 	const { label, value, onChange, columns, choices } = props;

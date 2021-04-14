@@ -1,20 +1,17 @@
 import React from 'react';
-import { ItemInterface, ReactSortable } from 'react-sortablejs';
+import { ReactSortable } from 'react-sortablejs';
 import { Icon } from '@wordpress/components';
 import { dragHandle } from '@wordpress/icons';
 
-import { BuilderActions } from '../../@types/utils';
 import { __ } from '@wordpress/i18n';
+import { useContext } from '@wordpress/element';
+import BuilderContext from '../BuilderContext';
 
-interface Props {
-	items: ItemInterface[];
-	builder: string;
-	actions: BuilderActions;
-	dragging: boolean;
-}
+const SidebarContent: React.FC = () => {
+	const { sidebarItems: items, builder, actions, dragging } = useContext(
+		BuilderContext
+	);
 
-const SidebarContent: React.FC<Props> = (props) => {
-	const { items, builder, actions, dragging } = props;
 	const { onDragStart, onDragEnd, setSidebarItems } = actions;
 	const allItems = window.NeveReactCustomize.HFG[builder].items;
 

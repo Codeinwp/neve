@@ -1,6 +1,7 @@
 .items-popover {
   box-shadow: 0 3px 30px rgba(25, 30, 35, .1);
   border-radius: 4px;
+  z-index: 100000;
 
   .popover-header {
 	display: flex;
