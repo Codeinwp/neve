@@ -1,11 +1,9 @@
-import { BuilderContentInterface } from '../../@types/utils';
-import { isArray } from 'util';
+import { BuilderRowsInterface } from '../../@types/utils';
 
 export const slotKeys = ['left', 'c-left', 'center', 'c-right', 'right'];
 
 export const getUsedItemsFromItems = (
-	items: BuilderContentInterface,
-	withColumns: boolean
+	items: BuilderRowsInterface
 ): string[] => {
 	const nextItems: string[] = [];
 	// Get the items currently inside the builder and save them in an array.
@@ -51,8 +49,8 @@ export const arraysAreIdentical = (
 };
 
 export const maybeParseJson: (
-	value: string | Record<string, unknown> | []
-) => Record<string, unknown> = (input) => {
+	value: unknown
+) => Record<string, unknown> | [] | unknown = (input) => {
 	if (typeof input !== 'string') {
 		return input;
 	}

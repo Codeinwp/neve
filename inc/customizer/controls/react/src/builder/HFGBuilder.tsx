@@ -4,6 +4,7 @@ import {
 	BuilderActions,
 	BuilderContentInterface,
 	BuilderItemInterface,
+	DeviceTypes,
 	LayoutUpdate,
 	RemoveItem,
 	StringObjectKeys,
@@ -31,10 +32,12 @@ const HFGBuilder: React.FC<Props> = ({
 	value,
 	portalMount,
 }) => {
-	const [device, setDevice] = useState<string>('desktop');
+	const [device, setDevice] = useState<DeviceTypes>('desktop');
 	const [dragging, setDragging] = useState<boolean>(false);
+	const [currentSection, setCurrentSection] = useState<string>('');
+
 	const getSidebarItems = () => {
-		const usedItems = getUsedItemsFromItems(value[device], hasColumns);
+		const usedItems = getUsedItemsFromItems(value[device]);
 		const allItems = window.NeveReactCustomize.HFG[currentBuilder].items;
 		return Object.keys(allItems)
 			.filter((key) => !usedItems.includes(key))
@@ -195,19 +198,34 @@ const HFGBuilder: React.FC<Props> = ({
 
 	const bindDeviceSwitching = () => {
 		window.wp.customize.bind('ready', () => {
-			window.wp.customize.previewedDevice.bind((newDevice: string) => {
-				// No tablet context existent on builders.
-				if (newDevice === 'tablet') {
-					newDevice = 'mobile';
-				}
+			window.wp.customize.previewedDevice.bind(
+				(newDevice: DeviceTypes) => {
+					// No tablet context existent on builders.
+					if (newDevice === 'tablet') {
+						newDevice = 'mobile';
+					}
 
-				// If we don't have a value, don't switch context.
-				if (!value[newDevice]) {
-					return false;
-				}
+					// If we don't have a value, don't switch context.
+					if (!value[newDevice]) {
+						return false;
+					}
 
-				setDevice(newDevice);
-			});
+					setDevice(newDevice);
+				}
+			);
+
+			window.wp.customize
+				.state('expandedSection')
+				.bind((expandedSection: StringObjectKeys) => {
+					if (!expandedSection || expandedSection.id) {
+						setCurrentSection('');
+						return;
+					}
+
+					if (expandedSection.id) {
+						setCurrentSection(expandedSection.id);
+					}
+				});
 		});
 	};
 
@@ -231,6 +249,7 @@ const HFGBuilder: React.FC<Props> = ({
 					dragging={dragging}
 					actions={actions}
 					sidebarItems={sidebarItems}
+					currentSection={currentSection}
 				/>,
 				portalMount
 			)}

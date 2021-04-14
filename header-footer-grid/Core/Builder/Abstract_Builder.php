@@ -1004,7 +1004,7 @@ abstract class Abstract_Builder implements Builder {
 				'right',
 				'center',
 				'justify',
-			] 
+			]
 		) ) ? $alignment : 'left';
 
 		return [
@@ -1166,6 +1166,11 @@ abstract class Abstract_Builder implements Builder {
 					unset( $render_buffer['c-right'] );
 				} else {
 					$render_buffer[ $slot ][] = $new_component;
+
+					//Drop the unused columns.
+					$columns     = SettingsManager::get_instance()->get( 'hfg_footer_layout_' . $row_index . '_' . self::COLUMNS_NUMBER, 3 );
+
+					array_splice($render_buffer, absint($columns));
 				}
 			}
 		}

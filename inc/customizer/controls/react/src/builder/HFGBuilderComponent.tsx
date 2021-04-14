@@ -18,6 +18,7 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 	const hasColumns: boolean = params.columnsLayout;
 
 	const [value, setValue] = useState<BuilderContentInterface>(
+		// @ts-ignore
 		maybeParseJson(setting.get())
 	);
 	const [isHidden, setHidden] = useState<boolean>(true);

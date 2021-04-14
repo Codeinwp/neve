@@ -3,7 +3,9 @@ import {
 	BuilderActions,
 	BuilderItemInterface,
 	BuilderRowInterface,
+	DeviceTypes,
 	RowTypes,
+	SlotTypes,
 	StringObjectKeys,
 } from '../../@types/utils';
 import { Button } from '@wordpress/components';
@@ -16,21 +18,23 @@ import Slot from './Slot';
 import { WPCustomizeControl } from '../../@types/customizer-control';
 import { ItemInterface } from 'react-sortablejs';
 
-interface Props {
+type Props = {
 	items: BuilderRowInterface & BuilderItemInterface[];
 	rowId: RowTypes;
 	builder: string;
-	device: string;
+	device: DeviceTypes;
 	dragging: boolean;
 	hasColumns: boolean;
 	actions: BuilderActions;
 	sidebarItems: ItemInterface[];
-}
+	currentSection: string;
+	[x: string]: unknown;
+};
 
 const Row: React.FC<Props> = (props) => {
 	const { actions, items, rowId, dragging, builder, hasColumns } = props;
 	const { updateLayout } = actions;
-	const slots = ['left', 'c-left', 'center', 'c-right', 'right'];
+	const slots: SlotTypes[] = ['left', 'c-left', 'center', 'c-right', 'right'];
 
 	const section = `hfg_${builder}_layout_${rowId}`;
 	const columnsSetting = `${section}_columns_number`;
@@ -196,7 +200,7 @@ const Row: React.FC<Props> = (props) => {
 									<Slot
 										{...props}
 										key={index}
-										slotId={slotId}
+										slotId={slotId as SlotTypes}
 										items={items[slotId] || []}
 									/>
 								);
@@ -215,7 +219,7 @@ const Row: React.FC<Props> = (props) => {
 									<Slot
 										{...props}
 										key={index}
-										slotId={slotId}
+										slotId={slotId as SlotTypes}
 										items={items[slotId] || []}
 									/>
 								);

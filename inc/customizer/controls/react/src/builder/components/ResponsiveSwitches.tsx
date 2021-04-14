@@ -4,24 +4,34 @@ import classnames from 'classnames';
 import { Button } from '@wordpress/components';
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { BuilderActions } from '../../@types/utils';
+import { BuilderActions, DeviceTypes } from '../../@types/utils';
 
 interface Props {
 	builder: string;
-	device: string;
+	device: DeviceTypes;
 	actions: BuilderActions;
 }
 
+type ButtonProps = {
+	title: string;
+	icon: string;
+	slug: DeviceTypes;
+};
+
+type Buttons = ButtonProps[];
+
 const ResponsiveSwitches: React.FC<Props> = ({ device, actions, builder }) => {
 	const { setDevice } = actions;
-
-	const { devices } = window.NeveReactCustomize.HFG[builder];
-	const buttons = [
+	const buttons: ButtonProps[] = [
 		{ title: __('Desktop', 'neve'), icon: 'desktop', slug: 'desktop' },
 		{ title: __('Mobile', 'neve'), icon: 'smartphone', slug: 'mobile' },
-	].filter((i) => Object.keys(devices).includes(i.slug));
+	];
+	const { devices } = window.NeveReactCustomize.HFG[builder];
+	const shownButtons = buttons.filter((i) =>
+		Object.keys(devices).includes(i.slug)
+	);
 
-	const switchDevice = (nextDevice: string) => {
+	const switchDevice = (nextDevice: DeviceTypes) => {
 		if (device === nextDevice) {
 			return false;
 		}
@@ -32,7 +42,7 @@ const ResponsiveSwitches: React.FC<Props> = ({ device, actions, builder }) => {
 
 	return (
 		<div className="responsive-switches">
-			{buttons.map((button, index) => {
+			{shownButtons.map((button, index) => {
 				const { title, icon, slug } = button;
 				const buttonClasses = classnames('device-switcher', {
 					active: slug === device,

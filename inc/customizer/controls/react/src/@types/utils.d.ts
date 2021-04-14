@@ -1,14 +1,20 @@
 import { ItemInterface } from 'react-sortablejs';
+import { Dispatch, SetStateAction } from 'react';
 
 interface StringObjectKeys {
 	[key: string]: any;
 }
 
-export type RowTypes = 'top' | 'main' | 'bottom' | 'sidebar' | string;
-export type SlotTypes = string &
-	('left' | 'c-left' | 'center' | 'c-right' | 'right');
+export type RowTypes = 'top' | 'main' | 'bottom' | 'sidebar';
+export type SlotTypes =
+	| 'left'
+	| 'c-left'
+	| 'center'
+	| 'c-right'
+	| 'right'
+	| 'sidebar';
 
-export type DeviceTypes = 'desktop' | 'mobile';
+export type DeviceTypes = 'desktop' | 'mobile' | 'tablet';
 
 export interface BuilderItemInterface extends StringObjectKeys {
 	height?: number;
@@ -34,7 +40,7 @@ export interface BuilderRowsInterface extends StringObjectKeys {
 }
 
 export interface BuilderContentInterface extends StringObjectKeys {
-	desktop?: BuilderRowsInterface;
+	desktop: BuilderRowsInterface;
 	mobile?: BuilderRowsInterface;
 }
 
@@ -88,7 +94,7 @@ interface BuilderActions {
 	onDragStart: () => void;
 	onDragEnd: () => void;
 	removeItem: RemoveItem;
-	setDevice: (value: string) => void;
+	setDevice: Dispatch<SetStateAction<DeviceTypes>>;
 	setSidebarItems: (value: ItemInterface[]) => void;
 }
 

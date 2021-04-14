@@ -1,5 +1,10 @@
 import React from 'react';
-import { BuilderActions, BuilderContentInterface } from '../../@types/utils';
+import {
+	BuilderActions,
+	BuilderContentInterface,
+	DeviceTypes,
+	RowTypes,
+} from '../../@types/utils';
 
 import Row from './Row';
 import ResponsiveSwitches from './ResponsiveSwitches';
@@ -8,13 +13,14 @@ import { ItemInterface } from 'react-sortablejs';
 
 interface Props {
 	value: BuilderContentInterface;
-	device: string;
+	device: DeviceTypes;
 	builder: string;
 	dragging: boolean;
 	actions: BuilderActions;
 	hidden: boolean;
 	hasColumns: boolean;
 	sidebarItems: ItemInterface[];
+	currentSection: string;
 }
 
 const Builder: React.FC<Props> = (props) => {
@@ -27,6 +33,7 @@ const Builder: React.FC<Props> = (props) => {
 		hidden,
 		hasColumns,
 		sidebarItems,
+		currentSection,
 	} = props;
 	const { rows } = window.NeveReactCustomize.HFG[builder];
 	const items = { ...value[device] };
@@ -55,6 +62,7 @@ const Builder: React.FC<Props> = (props) => {
 							dragging={dragging}
 							actions={actions}
 							sidebarItems={sidebarItems}
+							currentSection={currentSection}
 						/>
 					</div>
 				)}
@@ -68,13 +76,14 @@ const Builder: React.FC<Props> = (props) => {
 							<Row
 								hasColumns={hasColumns}
 								key={rowIndex}
-								rowId={rowId}
+								rowId={rowId as RowTypes}
 								device={device}
 								builder={builder}
 								items={items[rowId] || []}
 								dragging={dragging}
 								actions={actions}
 								sidebarItems={sidebarItems}
+								currentSection={currentSection}
 							/>
 						);
 					})}

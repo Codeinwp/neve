@@ -15,55 +15,28 @@ interface Props {
 	componentId: string;
 	builder: string;
 	actions: BuilderActions;
-	slot: SlotTypes | string;
+	slot: SlotTypes;
 	row: RowTypes;
 	index: number;
+	currentSection: string;
 }
 
 const BuilderItem: React.FC<Props> = (props) => {
-	const { componentId, builder, actions, slot, row, index } = props;
+	const {
+		componentId,
+		builder,
+		actions,
+		slot,
+		row,
+		index,
+		currentSection,
+	} = props;
 	const itemDetails =
 		window.NeveReactCustomize.HFG[builder].items[componentId];
 	const { name, section } = itemDetails;
 	const { removeItem } = actions;
-	const [isActive, setActive] = useState(false);
-
+	const isActive = currentSection === section;
 	const itemSection = window.wp.customize.section(section);
-
-	/**
-	 * Check if the section is active when sections are expanded.
-	 */
-	useEffect(() => {
-		window.wp.customize
-			.state('expandedSection')
-			.bind((expandedSection: StringObjectKeys) => {
-				if (!expandedSection || expandedSection.id !== section) {
-					setActive(false);
-					return false;
-				}
-
-				if (expandedSection.id === section) {
-					setActive(true);
-				}
-			});
-	}, []);
-
-	/**
-	 * Check if the section is active on move.
-	 */
-	useEffect(() => {
-		const expandedSection = window.wp.customize
-			.state('expandedSection')
-			.get();
-
-		if (!expandedSection || !expandedSection.id) {
-			return;
-		}
-
-		if (expandedSection.id === section) {
-			setActive(true);
-		}
-	}, [slot]);
 
 	const focusItemSection = () => {
 		itemSection.focus();
@@ -88,12 +61,14 @@ const BuilderItem: React.FC<Props> = (props) => {
 					iconSize={iconSize}
 					onClick={focusItemSection}
 					label={__('Item Settings', 'neve')}
+					showTooltip={false}
 				/>
 				<Button
 					iconSize={iconSize}
 					icon={closeSmall}
 					onClick={remove}
 					label={__('Remove Item', 'neve')}
+					showTooltip={false}
 				/>
 			</div>
 		</div>

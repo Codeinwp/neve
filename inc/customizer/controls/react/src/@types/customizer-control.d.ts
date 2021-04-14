@@ -1,7 +1,7 @@
-import { HFGLayoutBuilder, StringObjectKeys } from './utils';
+import { StringObjectKeys } from './utils';
 interface WPCustomizeControlSetting {
-	set: (value: HFGLayoutBuilder | StringObjectKeys | string | []) => void;
-	get: () => HFGLayoutBuilder & StringObjectKeys & string & number & [];
+	set: (value: any) => void;
+	get: () => any;
 	// eslint-disable-next-line no-undef
 	bind: (value: unknown) => void;
 }

@@ -1,5 +1,11 @@
-import React, { ChangeEvent, ReactText } from 'react';
-import { BuilderActions, BuilderItemInterface } from '../../@types/utils';
+import React, { ChangeEvent } from 'react';
+import {
+	BuilderActions,
+	BuilderItemInterface,
+	DeviceTypes,
+	RowTypes,
+	SlotTypes,
+} from '../../@types/utils';
 import { ItemInterface, ReactSortable } from 'react-sortablejs';
 import BuilderItem from './BuilderItem';
 import classnames from 'classnames';
@@ -9,15 +15,17 @@ import { close, plus, search } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
 interface Props {
-	slotId: string;
-	rowId: string;
+	slotId: SlotTypes;
+	rowId: RowTypes;
 	builder: string;
 	items: BuilderItemInterface[];
 	dragging: boolean;
 	actions: BuilderActions;
 	className?: string;
 	sidebarItems: ItemInterface[];
-	device: string;
+	device: DeviceTypes;
+	currentSection: string;
+	[x: string]: any;
 }
 
 const Slot: React.FC<Props> = (props) => {
@@ -30,6 +38,7 @@ const Slot: React.FC<Props> = (props) => {
 		className,
 		dragging,
 		sidebarItems,
+		currentSection,
 	} = props;
 	const { updateLayout, onDragStart } = actions;
 	const [popupOpen, setPopupOpen] = useState<boolean>(false);
@@ -79,6 +88,7 @@ const Slot: React.FC<Props> = (props) => {
 								builder={builder}
 								componentId={item.id}
 								actions={actions}
+								currentSection={currentSection}
 							/>
 						);
 					})}
