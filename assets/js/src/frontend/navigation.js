@@ -152,17 +152,16 @@ function handleSearch() {
  */
 function handleMiniCartPosition() {
 	const item = document.querySelector('.header--row .menu-item-nav-cart');
-	if (!item) {
+	if (item === null) {
 		return;
 	}
 
 	const miniCart = item.querySelector('.nv-nav-cart');
 
-	if (miniCart === null) {
-		return;
+	if (miniCart !== null) {
+		miniCart.style.left =
+			item.getBoundingClientRect().left < 350 ? 0 : null;
 	}
-
-	miniCart.style.left = item.getBoundingClientRect().left < 350 ? 0 : null;
 }
 
 window.addEventListener('resize', handleMiniCartPosition);
