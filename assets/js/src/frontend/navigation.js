@@ -158,7 +158,7 @@ function handleMiniCartPosition() {
 
 	const miniCart = item.querySelector('.nv-nav-cart');
 
-	if (miniCart !== null) {
+	if (miniCart === null) {
 		return;
 	}
 
