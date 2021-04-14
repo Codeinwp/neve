@@ -152,15 +152,17 @@ function handleSearch() {
  */
 function handleMiniCartPosition() {
 	const item = document.querySelector('.header--row .menu-item-nav-cart');
-	if (item.length === 0) {
+	if (!item) {
 		return;
 	}
 
-	const bounding = item.getBoundingClientRect();
+	const miniCart = item.querySelector('.nv-nav-cart');
 
-	if (bounding.left < 350) {
-		item.querySelector('.nv-nav-cart').style.left = 0;
+	if (miniCart !== null) {
+		return;
 	}
+
+	miniCart.style.left = item.getBoundingClientRect().left < 350 ? 0 : null;
 }
 
 window.addEventListener('resize', handleMiniCartPosition);
