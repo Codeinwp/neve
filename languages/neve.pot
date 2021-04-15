@@ -1830,14 +1830,6 @@ msgstr ""
 msgid "Page Builder Full Width (Neve)"
 msgstr ""
 
-#: dashboard/src/Components/App.js:36
-msgid "Great news! Now you can export your own custom designs to the cloud and then reuse them on other sites."
-msgstr ""
-
-#: dashboard/src/Components/App.js:41
-msgid "Open Templates Cloud"
-msgstr ""
-
 #: dashboard/src/Components/Content/Changelog.js:16
 msgid "Show changelog for"
 msgstr ""
@@ -1871,7 +1863,7 @@ msgid "In the documentation below you will find an easy way to build a great loo
 msgstr ""
 
 #: dashboard/src/Components/Content/Help.js:47
-#: dashboard/src/Components/Content/Start.js:95
+#: dashboard/src/Components/Content/Start.js:98
 msgid "Go to docs"
 msgstr ""
 
@@ -1932,31 +1924,31 @@ msgstr ""
 msgid "Getting Started? Check help and docs"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:89
+#: dashboard/src/Components/Content/Start.js:92
 msgid "Need more details? Please check our full documentation for detailed information on how to use Neve."
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:101
+#: dashboard/src/Components/Content/Start.js:104
 msgid "Import professional page templates or sections with one click and have a website running in seconds."
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:108
+#: dashboard/src/Components/Content/Start.js:111
 msgid "Discover Templates Cloud"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:113
+#: dashboard/src/Components/Content/Start.js:116
 msgid "Learn how to use Templates Cloud"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:125
+#: dashboard/src/Components/Content/Start.js:127
 msgid "Feedback"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:126
+#: dashboard/src/Components/Content/Start.js:128
 msgid "Share your feedback for Neve and get the chance to win the pro version."
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:135
+#: dashboard/src/Components/Content/Start.js:137
 msgid "Leave Feedback"
 msgstr ""
 
@@ -2011,15 +2003,15 @@ msgstr ""
 msgid "Could not activate module. Please try again."
 msgstr ""
 
-#: dashboard/src/Components/Notification.js:88
+#: dashboard/src/Components/Notification.js:89
 msgid "Done!"
 msgstr ""
 
-#: dashboard/src/Components/Notification.js:95
+#: dashboard/src/Components/Notification.js:96
 msgid "An error occured. Please reload the page and try again."
 msgstr ""
 
-#: dashboard/src/Components/Notification.js:115
+#: dashboard/src/Components/Notification.js:116
 msgid "In Progress"
 msgstr ""
 
