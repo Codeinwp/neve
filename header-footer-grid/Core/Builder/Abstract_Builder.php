@@ -13,16 +13,14 @@ namespace HFG\Core\Builder;
 
 use HFG\Core\Components\Abstract_Component;
 use HFG\Core\Css_Generator;
-use HFG\Core\Customizer\Instructions_Section;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Traits\Core;
 use Neve\Core\Settings\Config;
-use Neve\Core\Styles\Css_Prop;
 use Neve\Core\Styles\Dynamic_Selector;
-use Neve_Pro\Modules\Blog_Pro\Dynamic_Style;
+use Neve\Customizer\Controls\React\Instructions_Section;
 use WP_Customize_Manager;
 
 /**
@@ -66,6 +64,13 @@ abstract class Abstract_Builder implements Builder {
 	 * @var null|string Row id.
 	 */
 	public static $current_row = null;
+
+	/**
+	 * Internal pointer for current slot id.
+	 *
+	 * @var null|string Slot id.
+	 */
+	public static $current_slot = null;
 
 	/**
 	 * Internal pointer for current component id.
@@ -648,6 +653,15 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 * Return current slot in the loop.
+	 *
+	 * @return null|string Current slot.
+	 */
+	public function get_current_slot_index() {
+		return self::$current_slot;
+	}
+
+	/**
 	 * Render markup for builder.
 	 */
 	public function render() {
@@ -980,8 +994,8 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Get the component alignment.
 	 *
-	 * @param $id
-	 * @param false $vertical
+	 * @param string $id component id.
+	 * @param false  $vertical should get vertical alignment.
 	 *
 	 * @return array
 	 */
@@ -1014,6 +1028,13 @@ abstract class Abstract_Builder implements Builder {
 		];
 	}
 
+	/**
+	 * Checks if a row has items inside a slot.
+	 *
+	 * @param string $slot slot to check in row.
+	 *
+	 * @return bool
+	 */
 	private function row_has_slot( $slot ) {
 		$current_row = $this->get_current_row_index();
 		$layout_data = $this->get_layout_data();
@@ -1039,8 +1060,8 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Add row utility classes.
 	 *
-	 * @param $classes
-	 * @param $row_index
+	 * @param string $classes footer classes.
+	 * @param string $row_index row index.
 	 *
 	 * @return mixed
 	 */
@@ -1058,8 +1079,8 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Add row utility classes.
 	 *
-	 * @param $classes
-	 * @param $row_index
+	 * @param string $classes footer classes.
+	 * @param string $row_index row index.
 	 *
 	 * @return mixed
 	 */
@@ -1133,22 +1154,20 @@ abstract class Abstract_Builder implements Builder {
 						$classes[] = $device_slug . '-' . $align_slug;
 					}
 				}
-				if ( $vertical_align ) {
-					$classes[] = 'hfg-item-v-' . $vertical_align;
-				}
 
 				if ( ! $this->columns_layout ) {
 					if ( $slot === 'c-left' && $component_index === 0 ) {
 						$classes[] = 'hfg-end';
 					}
-					if ( $slot === 'c-right' && $component_index === sizeof( $components ) - 1 ) {
+					if ( $slot === 'c-right' && $component_index === count( $components ) - 1 ) {
 						$classes[] = 'hfg-start';
 					}
 				}
 
 				$new_component = [
-					'id'      => $component['id'],
-					'classes' => $classes,
+					'id'             => $component['id'],
+					'classes'        => $classes,
+					'vertical-align' => 'hfg-item-v-' . $vertical_align,
 				];
 
 				if ( ! $this->columns_layout ) {
@@ -1167,10 +1186,10 @@ abstract class Abstract_Builder implements Builder {
 				} else {
 					$render_buffer[ $slot ][] = $new_component;
 
-					//Drop the unused columns.
-					$columns     = SettingsManager::get_instance()->get( 'hfg_footer_layout_' . $row_index . '_' . self::COLUMNS_NUMBER, 3 );
+					// Drop the unused columns.
+					$columns = SettingsManager::get_instance()->get( 'hfg_footer_layout_' . $row_index . '_' . self::COLUMNS_NUMBER, 3 );
 
-					array_splice($render_buffer, absint($columns));
+					array_splice( $render_buffer, absint( $columns ) );
 				}
 			}
 		}
@@ -1179,13 +1198,28 @@ abstract class Abstract_Builder implements Builder {
 			if ( $slot === 'center' && empty( $components ) ) {
 				continue;
 			}
+
 			$slot_classes = [ 'hfg-slot', $slot ];
-			if ( $row_index !== 'sidebar' ) {
-				echo sprintf( '<div class="%s">', join( ' ', $slot_classes ) );
+
+			if ( count( $components ) === 1 ) {
+				$slot_classes[] = 'single';
+				if ( isset( $components[0]['vertical-align'] ) ) {
+					$slot_classes[] = $components[0]['vertical-align'];
+				}
 			}
+
+			if ( $row_index !== 'sidebar' ) {
+				echo sprintf( '<div class="%s">', esc_attr( join( ' ', $slot_classes ) ) );
+			}
+
+			self::$current_slot = $slot;
+
 			foreach ( $components as $component_data ) {
+				$component_instance = $this->builder_components[ $component_data['id'] ];
+				if ( $component_instance->is_auto_width ) {
+					$component_data['classes'][] = 'no-padding';
+				}
 				echo sprintf( '<div class="%s">', esc_attr( join( ' ', $component_data['classes'] ) ) );
-				$component_instance      = $this->builder_components[ $component_data['id'] ];
 				self::$current_component = $component_data['id'];
 				$component_instance->render();
 				echo '</div>';
@@ -1194,7 +1228,6 @@ abstract class Abstract_Builder implements Builder {
 				echo '</div>';
 			}
 		}
-
 	}
 
 	/**

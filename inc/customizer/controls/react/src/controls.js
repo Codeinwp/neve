@@ -1,5 +1,5 @@
 /* global CustomEvent,NeveReactCustomize */
-import domReady from '@wordpress/dom-ready';
+import { render } from '@wordpress/element';
 
 import { init as initDynamicFields } from './dynamic-fields/index';
 import { ToggleControl } from './toggle/Control';
@@ -24,8 +24,10 @@ import { NRSpacingControl } from './non-responsive-spacing/Control';
 import { InlineSelectControl } from './inline-select/Control';
 import { BuilderControl } from './builder/Control';
 import { BuilderColumns } from './builder-columns/Control';
+import { InstructionsControl } from './builder-instructions/Control';
 
 import './style.scss';
+import Instructions from './builder-instructions/Instructions';
 
 const { controlConstructor } = wp.customize;
 
@@ -51,18 +53,7 @@ controlConstructor.neve_non_responsive_spacing = NRSpacingControl;
 controlConstructor.neve_inline_select = InlineSelectControl;
 controlConstructor.neve_builder_control = BuilderControl;
 controlConstructor.neve_builder_columns = BuilderColumns;
-
-const initDeviceSwitchers = () => {
-	const deviceButtons = document.querySelector(
-		'#customize-footer-actions .devices, .hfg--cb-devices-switcher a.switch-to'
-	);
-	deviceButtons.addEventListener('click', function (e) {
-		const event = new CustomEvent('neveChangedRepsonsivePreview', {
-			detail: e.target.dataset.device,
-		});
-		document.dispatchEvent(event);
-	});
-};
+controlConstructor.hfg_instructions = InstructionsControl;
 
 const initBlogPageFocus = () => {
 	wp.customize.section('neve_blog_archive_layout', (section) => {
@@ -82,13 +73,27 @@ const initBlogPageFocus = () => {
 	});
 };
 
-domReady(() => {
-	initDeviceSwitchers();
-	initBlogPageFocus();
-});
+const initQuickLinksSections = () => {
+	const quickLinks = document.querySelectorAll(
+		'.control-section.neve-quick-links'
+	);
+
+	quickLinks.forEach((node) => {
+		const slug = node.getAttribute('data-slug');
+		const section = wp.customize.section(slug);
+
+		if (!section) {
+			return;
+		}
+
+		render(<Instructions control={section} />, section.container[0]);
+	});
+};
 
 wp.customize.bind('ready', () => {
 	initDynamicFields();
+	initQuickLinksSections();
+	initBlogPageFocus();
 });
 
 window.HFG = {

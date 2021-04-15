@@ -1987,10 +1987,6 @@ let hfgPanels = {};
             e.preventDefault()
             let device = $( this ).data( 'device' )
             that.switchToDevice( device )
-            let event = new CustomEvent( 'neveChangedRepsonsivePreview', {
-              'detail': device
-            } )
-            document.dispatchEvent( event )
           }
         )
 

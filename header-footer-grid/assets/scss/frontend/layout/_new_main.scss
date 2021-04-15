@@ -1,6 +1,9 @@
 .site-header {
   position: relative;
-
+  .header--row-inner {
+	align-items: center;
+	display: flex;
+  }
   .hfg-container {
 	display: flex;
 	flex-direction: column;
@@ -22,6 +25,10 @@
 
   &.hfg-start {
 	margin-right: auto;
+  }
+
+  &.no-padding {
+	padding: 0;
   }
 }
 
@@ -81,6 +88,7 @@ $builder_types: page_header header footer;
 	display: flex;
 	flex-direction: column;
   }
+
   .row {
 	display: grid;
   }
@@ -97,7 +105,7 @@ $builder_types: page_header header footer;
 
   &.columns-2 {
 	&.equal .row {
-	  grid-template-columns: repeat(2,1fr);
+	  grid-template-columns: repeat(2, 1fr);
 	}
 
 	&.right-third .row {
@@ -111,7 +119,7 @@ $builder_types: page_header header footer;
 
   &.columns-3 {
 	&.equal .row {
-	  grid-template-columns: repeat(3,1fr);
+	  grid-template-columns: repeat(3, 1fr);
 	}
 
 	&.left-half .row {
@@ -121,9 +129,36 @@ $builder_types: page_header header footer;
 	&.right-half .row {
 	  grid-template-columns: 1fr 1fr 2fr;
 	}
+
+	&.center-half .row {
+	  grid-template-columns: 1fr 2fr 1fr;
+	}
+
+	&.center-two-thirds .row {
+	  grid-template-columns: 1fr 3fr 1fr;
+	}
+  }
+
+  &.columns-4 {
+	&.equal .row {
+	  grid-template-columns: repeat(4, 1fr);
+	}
+
+	&.left-half .row {
+	  grid-template-columns: 3fr 1fr 1fr 1fr;
+	}
+
+	&.right-half .row {
+	  grid-template-columns: 1fr 1fr 1fr 3fr;
+	}
+  }
+
+  &.columns-5 {
+	&.equal .row {
+	  grid-template-columns: repeat(5, 1fr);
+	}
   }
 }
-
 //</editor-fold>
 
 //<editor-fold desc="Row Styles">

@@ -243,8 +243,7 @@ class Customizer {
 			$builder->customize_register( $wp_customize );
 		}
 
-		$wp_customize->register_section_type( '\HFG\Core\Customizer\Instructions_Section' );
-		$wp_customize->register_control_type( '\HFG\Core\Customizer\Instructions_Control' );
+		$wp_customize->register_section_type( '\Neve\Customizer\Controls\React\Instructions_Section' );
 	}
 
 
@@ -304,16 +303,16 @@ class Customizer {
 
 		<script type="text/html" id="tmpl-hfg--cb-item">
 			<div class="grid-stack-item item-from-list for-s-{{ data.section }} order-{{data.elementOrder}}"
-				 title="{{ data.name }}"
-				 data-id="{{ data.id }}"
-				 data-slug="{{ data.componentSlug }}"
-				 data-section="{{ data.section }}"
-				 data-control="{{ data.control }}"
-				 data-gs-x="{{ data.x }}"
-				 data-gs-y="{{ data.y }}"
-				 data-gs-width="{{ data.width }}"
-				 data-df-width="{{ data.width }}"
-				 data-gs-height="1"
+				title="{{ data.name }}"
+				data-id="{{ data.id }}"
+				data-slug="{{ data.componentSlug }}"
+				data-section="{{ data.section }}"
+				data-control="{{ data.control }}"
+				data-gs-x="{{ data.x }}"
+				data-gs-y="{{ data.y }}"
+				data-gs-width="{{ data.width }}"
+				data-df-width="{{ data.width }}"
+				data-gs-height="1"
 			>
 				<div class="item-tooltip" data-section="{{ data.section }}">{{ data.name }}</div>
 				<div class="grid-stack-item-content">
@@ -331,7 +330,7 @@ class Customizer {
 					<div class="hfg-component-search">
 						<i class="dashicons dashicons-search"></i>
 						<input class="component-search" type="search"
-							   placeholder="<?php esc_attr_e( 'Search Components', 'neve' ); ?>..."/>
+								placeholder="<?php esc_attr_e( 'Search Components', 'neve' ); ?>..."/>
 					</div>
 					<button class="close button button-link">
 						<i class="dashicons dashicons-no"></i>

@@ -107,7 +107,7 @@ abstract class Abstract_Component implements Component {
 	 * @access protected
 	 * @var bool $is_auto_width
 	 */
-	protected $is_auto_width = false;
+	public $is_auto_width = false;
 	/**
 	 * The section icon.
 	 *
@@ -455,10 +455,13 @@ abstract class Abstract_Component implements Component {
 	 */
 	public function define_settings() {
 		$this->add_settings();
-		$padding_selector = '.builder-item--' . $this->get_id() . ' > :not(.customize-partial-edit-shortcut):not(.item--preview-name):first-of-type';
+
+		$padding_selector = '.builder-item--' . $this->get_id();
+
 		if ( $this->default_selector !== null ) {
 			$padding_selector = $this->default_selector;
 		}
+
 		$margin_selector = '.builder-item--' . $this->get_id();
 		$align_choices   = [
 			'left'   => [

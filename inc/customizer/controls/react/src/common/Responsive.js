@@ -5,29 +5,27 @@ import { __ } from '@wordpress/i18n';
 
 import PropTypes from 'prop-types';
 
-const ResponsiveControl = ({
-	onChange,
-	excluded,
-	controlLabel,
-	hideResponsive,
-	children,
-}) => {
-	const changeViewType = (device) => {
-		onChange(device);
-		wp.customize.previewedDevice(device);
-	};
+const ResponsiveControl = (props) => {
+	const {
+		onChange,
+		excluded,
+		controlLabel,
+		hideResponsive,
+		children,
+	} = props;
+
 
 	useEffect(() => {
-		document.addEventListener('neveChangedRepsonsivePreview', (e) => {
-			changeViewType(e.detail);
+		window.wp.customize.bind('ready', () => {
+			window.wp.customize.previewedDevice.bind((newDevice) => {
+				onChange(newDevice);
+			});
 		});
 	}, []);
 
 	const dispatchViewChange = (device) => {
-		const event = new CustomEvent('neveChangedRepsonsivePreview', {
-			detail: device,
-		});
-		document.dispatchEvent(event);
+		onChange(device);
+		wp.customize.previewedDevice(device);
 	};
 
 	const devices = {

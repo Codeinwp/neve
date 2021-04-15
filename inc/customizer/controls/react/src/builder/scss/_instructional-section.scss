@@ -1,6 +1,14 @@
-.hfg-instructions-section {
+.control-section-hfg_instructions {
   display: list-item !important;
+}
+
+.customize-control .quick-links-inner {
+  padding: 0 !important;
+}
+
+.quick-links-inner {
   padding: 0 15px;
+
   video {
 	border-radius: 5px;
 	border: 1px solid #ccc;
@@ -11,7 +19,7 @@
 	font-size: 14px;
 	font-weight: 500;
 
-	a {
+	button {
 	  text-decoration: none;
 	}
   }

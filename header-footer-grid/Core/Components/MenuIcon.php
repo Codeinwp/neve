@@ -118,7 +118,7 @@ class MenuIcon extends Abstract_Component {
 				'transport'         => 'postMessage',
 				'tab'               => SettingsManager::TAB_GENERAL,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'type'              => '\HFG\Core\Customizer\Instructions_Control',
+				'type'              => '\Neve\Customizer\Controls\React\Instructions_Control',
 				'section'           => $this->section,
 				'options'           => [
 					'options' => array(

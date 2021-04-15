@@ -272,8 +272,11 @@ window.addEventListener('load', function () {
 								args.selector
 							);
 							_.each(itemInner, function (item) {
-								removeClass(item.parentNode, classes);
-								addClass(item.parentNode, newClass);
+								removeClass(
+									item.parentNode.parentNode,
+									classes
+								);
+								addClass(item.parentNode.parentNode, newClass);
 							});
 							break;
 						case '\\Neve\\Customizer\\Controls\\Radio_Image':

@@ -38,9 +38,9 @@
 	  margin-left: 0;
 	}
 
-	svg {
+	svg, .dashicon {
 	  width: 20px;
-	  margin-right: 0 !important;
+	  margin: 0 auto !important;
 	}
 
 	&.active {

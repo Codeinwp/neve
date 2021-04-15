@@ -21,6 +21,11 @@ const BuilderItem: React.FC<Props> = (props) => {
 
 	const itemDetails =
 		window.NeveReactCustomize.HFG[builder].items[componentId];
+
+	if (!itemDetails) {
+		return null;
+	}
+
 	const { name, section } = itemDetails;
 	const { removeItem } = actions;
 

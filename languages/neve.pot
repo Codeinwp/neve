@@ -279,22 +279,22 @@ msgstr ""
 msgid "You appear to be running the Neve theme from source code. Please finish installation by running %s."
 msgstr ""
 
-#: globals/utilities.php:1339
+#: globals/utilities.php:1340
 msgid "Base"
 msgstr ""
 
-#: globals/utilities.php:1354
+#: globals/utilities.php:1355
 msgid "Dark Mode"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:317
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:328
 #: header-footer-grid/Core/Settings/Manager.php:181
 #: inc/customizer/options/main.php:53
 msgid "Layout"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:322
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:323
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:333
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:334
 #: inc/admin/metabox/main.php:39
 #: inc/customizer/options/layout_container.php:134
 #: inc/customizer/options/layout_sidebar.php:125
@@ -302,23 +302,23 @@ msgstr ""
 msgid "Full Width"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:322
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:324
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:333
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:335
 #: inc/admin/metabox/main.php:38
 #: inc/customizer/options/layout_container.php:133
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:182
 msgid "Contained"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:340
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:351
 msgid "Row height"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:380
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:391
 msgid "Row Background"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:404
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:415
 #: header-footer-grid/Core/Components/Copyright.php:84
 #: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
@@ -329,53 +329,53 @@ msgstr ""
 msgid "Text Color"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:510
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:521
 #: header-footer-grid/Core/Builder/Header.php:38
 msgid "Header"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:593
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:604
 msgid "Section Content"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1322
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1580
 #: header-footer-grid/Core/Components/SearchResponsive.php:113
 msgid "Open Behaviour"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1327
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1585
 msgid "Slide from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1328
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1586
 msgid "Slide from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1329
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1587
 msgid "Pull from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1330
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1588
 msgid "Pull from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1331
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1589
 msgid "Full Canvas"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1332
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1590
 msgid "Slide Down"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1347
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1605
 msgid "Sidebar Width"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1403
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1668
 msgid "Number of Columns"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1420
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1685
 msgid "Columns Layout"
 msgstr ""
 
@@ -451,11 +451,10 @@ msgid "Header Bottom"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Header.php:183
-#: header-footer-grid/templates/rows.php:74
-msgid "Mobile menu content"
+msgid "Mobile Sidebar"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:465
+#: header-footer-grid/Core/Components/Abstract_Component.php:469
 #: inc/customizer/options/layout_sidebar.php:129
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:153
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:108
@@ -464,11 +463,11 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:469
+#: header-footer-grid/Core/Components/Abstract_Component.php:473
 msgid "Center"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:473
+#: header-footer-grid/Core/Components/Abstract_Component.php:477
 #: inc/customizer/options/layout_sidebar.php:133
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:155
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:106
@@ -477,47 +476,47 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:479
+#: header-footer-grid/Core/Components/Abstract_Component.php:483
 msgid "Justify"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:497
+#: header-footer-grid/Core/Components/Abstract_Component.php:501
 msgid "Alignment"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:533
+#: header-footer-grid/Core/Components/Abstract_Component.php:537
 #: inc/customizer/options/buttons.php:135
 msgid "Padding"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:558
+#: header-footer-grid/Core/Components/Abstract_Component.php:562
 msgid "Margin"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:784
+#: header-footer-grid/Core/Components/Abstract_Component.php:788
 #: inc/customizer/options/main.php:57
 msgid "Typography"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:865
+#: header-footer-grid/Core/Components/Abstract_Component.php:869
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:105
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:42
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:111
 msgid "Top"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:869
+#: header-footer-grid/Core/Components/Abstract_Component.php:873
 msgid "Middle"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:873
+#: header-footer-grid/Core/Components/Abstract_Component.php:877
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:107
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:44
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:121
 msgid "Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:886
+#: header-footer-grid/Core/Components/Abstract_Component.php:890
 msgid "Vertical Alignment"
 msgstr ""
 
@@ -806,9 +805,38 @@ msgstr ""
 msgid "Select Menu"
 msgstr ""
 
-#: header-footer-grid/Core/Customizer/Instructions_Control.php:77
-#: header-footer-grid/Core/Customizer/Instructions_Section.php:75
-msgid "Quick Links"
+#. translators: %s is the header name
+#: header-footer-grid/Core/Customizer.php:271
+msgid "You are customizing the %s Header"
+msgstr ""
+
+#. translators: %s is the header name
+#: header-footer-grid/Core/Customizer.php:271
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:175
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:180
+msgid "Default"
+msgstr ""
+
+#. translators: %s is the type of builder
+#: header-footer-grid/Core/Customizer.php:279
+msgid "%s Builder:"
+msgstr ""
+
+#. translators: %s is the header name
+#: header-footer-grid/Core/Customizer.php:282
+msgid "Click on any empty space to add components, or existing components to adjust settings."
+msgstr ""
+
+#: header-footer-grid/Core/Customizer.php:291
+#: header-footer-grid/templates/components/component-cart-icon.php:26
+#: inc/views/header.php:130
+#: inc/views/layouts/layout_sidebar.php:144
+msgid "Close"
+msgstr ""
+
+#: header-footer-grid/Core/Customizer.php:333
+msgid "Search Components"
 msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:489
@@ -963,12 +991,6 @@ msgstr ""
 msgid "Style"
 msgstr ""
 
-#: header-footer-grid/templates/components/component-cart-icon.php:26
-#: inc/views/header.php:130
-#: inc/views/layouts/layout_sidebar.php:144
-msgid "Close"
-msgstr ""
-
 #. translators: %s - customizer link
 #: header-footer-grid/templates/components/component-footer-sidebar.php:31
 msgid "Replace this widget content by going to %s and add widgets into this widget area."
@@ -986,6 +1008,10 @@ msgstr ""
 #: header-footer-grid/templates/components/component-menu-icon.php:39
 #: header-footer-grid/templates/row-wrapper-mobile.php:38
 msgid "Toggle Navigation"
+msgstr ""
+
+#: header-footer-grid/templates/rows.php:74
+msgid "Mobile menu content"
 msgstr ""
 
 #: header-footer-grid/templates/rows.php:77
@@ -2071,12 +2097,6 @@ msgstr ""
 msgid "Inherit"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:175
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:180
-msgid "Default"
-msgstr ""
-
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:197
 msgid "Custom Content Width (%)"
 msgstr ""
@@ -2208,15 +2228,15 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Responsive.js:35
+#: inc/customizer/controls/react/src/common/Responsive.js:44
 msgid "Desktop"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Responsive.js:39
+#: inc/customizer/controls/react/src/common/Responsive.js:48
 msgid "Tablet"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Responsive.js:43
+#: inc/customizer/controls/react/src/common/Responsive.js:52
 msgid "Mobile"
 msgstr ""
 
