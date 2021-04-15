@@ -1806,7 +1806,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: inc/views/pluggable/pagination.php:146
-#: inc/views/template_parts.php:309
+#: inc/views/template_parts.php:322
 msgid "Pages:"
 msgstr ""
 
@@ -1822,7 +1822,7 @@ msgstr ""
 msgid "Out of stock"
 msgstr ""
 
-#: inc/views/template_parts.php:251
+#: inc/views/template_parts.php:264
 msgid "Read More"
 msgstr ""
 
