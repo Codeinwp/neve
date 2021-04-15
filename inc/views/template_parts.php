@@ -108,8 +108,13 @@ class Template_Parts extends Base_View {
 
 		global $wp_query;
 
-		$image_class = ! property_exists( $wp_query, 'nv_should_load_lazy' ) ? 'skip-lazy' : '';
-		$wp_query->nv_should_load_lazy = false;
+		/** This filter is documented in header-footer-grid/templates/components/component-logo.php */
+		$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', ture );
+		$image_class          = '';
+		if ( $should_add_skip_lazy && ! property_exists( $wp_query, 'nv_should_load_lazy' ) ) {
+			$image_class                   = 'skip-lazy';
+			$wp_query->nv_should_load_lazy = false;
+		}
 
 		$markup = '<div class="nv-post-thumbnail-wrap">';
 

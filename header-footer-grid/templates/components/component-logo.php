@@ -50,7 +50,22 @@ if ( $is_not_link ) {
 }
 
 do_action( 'hfg_before_wp_get_attachment_image', $custom_logo_id );
-$image = wp_get_attachment_image( $custom_logo_id, apply_filters( 'hfg_logo_image_size', 'full' ), false, array( 'class' => 'skip-lazy' ) );
+
+$logo_settings = array();
+
+/**
+ * Filters whether the skip lazy class should be added.
+ *
+ * @param bool $enable_skip_lazy Whether the skip lazy class should be added. Default value is true.
+ *
+ * @since 2.11
+ */
+$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', ture );
+if ( $should_add_skip_lazy ) {
+	$logo_settings['class'] = 'skip-lazy';
+}
+
+$image = wp_get_attachment_image( $custom_logo_id, apply_filters( 'hfg_logo_image_size', 'full' ), false, $logo_settings );
 do_action( 'hfg_after_wp_get_attachment_image', $custom_logo_id, $image );
 ?>
 <div class="site-logo">
