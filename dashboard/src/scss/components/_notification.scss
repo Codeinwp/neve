@@ -24,7 +24,7 @@
   &.info {
     background-color: $info;
     border-color: darken($info, 10%);
-	button {
+	.components-button {
 	  &:hover{
 		background-color: #ffffff;
 		color: $info;
@@ -35,7 +35,7 @@
   &.error {
     background-color: $error;
     border-color: darken($error, 10%);
-	button {
+	.components-button {
 	  &:hover{
 		background-color: #fff;
 		color: $error;
@@ -47,7 +47,7 @@
     background-color: $warning;
     border-color: darken($warning, 10%);
 	color: #363636;
-	button {
+	.components-button {
 	  color: #363636;
 	  border-color: #363636;
 	  &:hover{
@@ -61,7 +61,7 @@
   &.success {
     background-color: $success;
     border-color: darken($success, 10%);
-	button {
+	.components-button {
 	  &:hover{
 		background-color: #fff;
 		color: $success;
@@ -132,7 +132,7 @@
     margin-top: 0;
   }
   .notification {
-    button {
+	.components-button {
         padding: 10px 15px;
       }
       p {
