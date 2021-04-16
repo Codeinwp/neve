@@ -377,7 +377,7 @@ msgstr ""
 #: inc/core/admin.php:273
 #: inc/customizer/controls/simple_upsell.php:64
 #: inc/customizer/options/upsells.php:46
-#: dashboard/src/Components/Content/FreePro.js:33
+#: dashboard/src/Components/Content/FreePro.js:39
 #: dashboard/src/Components/Content/Help.js:60
 #: dashboard/src/Components/Content/Help.js:95
 msgid "(opens in a new tab)"
@@ -1855,7 +1855,7 @@ msgstr ""
 msgid "Get access to all Pro features and power-up your website"
 msgstr ""
 
-#: dashboard/src/Components/Content/FreePro.js:32
+#: dashboard/src/Components/Content/FreePro.js:37
 msgid "Get Neve Pro Now"
 msgstr ""
 
@@ -1877,7 +1877,7 @@ msgid "Go to docs"
 msgstr ""
 
 #: dashboard/src/Components/Content/Help.js:63
-#: dashboard/src/Components/Sidebar.js:39
+#: dashboard/src/Components/Sidebar.js:36
 msgid "Join our Facebook Group"
 msgstr ""
 
@@ -2028,43 +2028,43 @@ msgstr ""
 msgid "Neve Community"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:23
+#: dashboard/src/Components/Sidebar.js:22
 msgid "Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our <external_link>public roadmap</external_link>."
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:44
+#: dashboard/src/Components/Sidebar.js:41
 msgid "Leave us a review"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:46
+#: dashboard/src/Components/Sidebar.js:43
 msgid "Are you are enjoying Neve? We would love to hear your feedback."
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:52
+#: dashboard/src/Components/Sidebar.js:49
 msgid "Submit a review"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:57
+#: dashboard/src/Components/Sidebar.js:54
 msgid "Contributing"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:59
+#: dashboard/src/Components/Sidebar.js:56
 msgid "Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected."
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:65
+#: dashboard/src/Components/Sidebar.js:62
 msgid "What do we track?"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:70
+#: dashboard/src/Components/Sidebar.js:67
 msgid "Allow Anonymous Tracking"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:81
+#: dashboard/src/Components/Sidebar.js:78
 msgid "Could not update option. Please try again."
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:90
+#: dashboard/src/Components/Sidebar.js:87
 #: dashboard/src/Components/Snackbar.js:17
 msgid "Option Updated"
 msgstr ""
