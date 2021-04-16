@@ -92,6 +92,12 @@ msgstr ""
 msgid "Enter your license from %1$s purchase history in order to get plugin updates"
 msgstr ""
 
+#. translators: store name (Themeisle)
+#: dashboard/inc/Main.php:224
+#: inc/customizer/options/upsells.php:106
+msgid "(opens in new tab)"
+msgstr ""
+
 #. translators: s - theme name (Neve).
 #: dashboard/inc/Main.php:263
 msgid "New theme update for %1$s! Please update to %2$s."
@@ -1682,10 +1688,6 @@ msgstr ""
 
 #: inc/customizer/options/upsells.php:101
 msgid "Easily create custom headers and footers as well as adding your own custom code or content in any of the hooks locations."
-msgstr ""
-
-#: inc/customizer/options/upsells.php:106
-msgid "(opens in new tab)"
 msgstr ""
 
 #: inc/customizer/options/upsells.php:114
