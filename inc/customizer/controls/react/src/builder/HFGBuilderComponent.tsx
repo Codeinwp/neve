@@ -2,7 +2,7 @@
 import React from 'react';
 import { useEffect, useState } from '@wordpress/element';
 import { WPCustomizeControl } from '../@types/customizer-control';
-import { BuilderContentInterface } from '../@types/utils';
+import { BuilderChangeEvent, BuilderContentInterface } from '../@types/utils';
 import { maybeParseJson } from './common/utils';
 import HFGBuilder from './HFGBuilder';
 
@@ -45,6 +45,21 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 				}
 				setHidden(true);
 			});
+
+		document.addEventListener(
+			'neve-changed-builder-value',
+			(e: BuilderChangeEvent) => {
+				const { detail } = e;
+				if (!detail) return false;
+				const { id, value: builderValue } = detail;
+
+				if (!id || `hfg_${id}_layout` !== control.id) return false;
+				onChange(
+					maybeParseJson(builderValue) as BuilderContentInterface
+				);
+				return false;
+			}
+		);
 	}, []);
 
 	useEffect(() => {

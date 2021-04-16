@@ -196,7 +196,7 @@ class Manager {
 				'hfg_footer_layout_section',
 				'hfg_page_header_layout_section',
 			],
-			true 
+			true
 		) ) {
 			return $customize_manager;
 		}
@@ -381,8 +381,8 @@ class Manager {
 		if ( isset( $arguments['conditional_header'] ) && $arguments['conditional_header'] === true ) {
 			add_filter(
 				'neve_react_controls_localization',
-				function ( $array ) use ( $id ) {
-					$array['headerControls'][] = $id;
+				function ( $array ) use ( $id, $default ) {
+					$array['headerControls'][$id] = $default;
 
 					return $array;
 				}

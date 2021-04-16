@@ -1,4 +1,3 @@
-/* global CustomEvent */
 import { Button, Tooltip, ButtonGroup } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -13,7 +12,6 @@ const ResponsiveControl = (props) => {
 		hideResponsive,
 		children,
 	} = props;
-
 
 	useEffect(() => {
 		window.wp.customize.bind('ready', () => {

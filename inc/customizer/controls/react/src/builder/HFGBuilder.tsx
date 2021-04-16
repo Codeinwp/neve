@@ -10,7 +10,11 @@ import {
 	StringObjectKeys,
 } from '../@types/utils';
 
-import { arraysAreIdentical, getUsedItemsFromItems } from './common/utils';
+import {
+	arraysAreIdentical,
+	getUsedItemsFromItems,
+	ROW_SCHEMA,
+} from './common/utils';
 import SidebarContent from './components/SidebarContent';
 import Builder from './components/Builder';
 import { ItemInterface } from 'react-sortablejs';
@@ -70,11 +74,17 @@ const HFGBuilder: React.FC<Props> = ({
 			return false;
 		}
 
-		if (arraysAreIdentical(items, value[device][row][slot])) {
+		const nextItems = { ...value[device] };
+
+		// Make sure row exists and has slots.
+		if (!nextItems[row]) {
+			nextItems[row] = ROW_SCHEMA;
+		}
+
+		if (arraysAreIdentical(items, nextItems[row][slot])) {
 			return false;
 		}
 
-		const nextItems = { ...value[device] };
 		const update = nextItems[row];
 		const updateItems: Array<StringObjectKeys> = [];
 

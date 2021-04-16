@@ -1,4 +1,4 @@
-import { BuilderRowsInterface } from '../../@types/utils';
+import { BuilderRowInterface, BuilderRowsInterface } from '../../@types/utils';
 
 export const slotKeys = ['left', 'c-left', 'center', 'c-right', 'right'];
 
@@ -50,7 +50,7 @@ export const arraysAreIdentical = (
 
 export const maybeParseJson: (
 	value: unknown
-) => Record<string, unknown> | [] | unknown = (input) => {
+) => Record<string, unknown> | [] | string = (input) => {
 	if (typeof input !== 'string') {
 		return input;
 	}
@@ -60,4 +60,12 @@ export const maybeParseJson: (
 		return input;
 	}
 	return JSON.parse(input);
+};
+
+export const ROW_SCHEMA: BuilderRowInterface = {
+	left: [],
+	'c-left': [],
+	center: [],
+	'c-right': [],
+	right: [],
 };

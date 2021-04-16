@@ -271,6 +271,7 @@ abstract class Abstract_Builder implements Builder {
 					'builder_type'   => $this->get_id(),
 					'columns_layout' => $this->columns_layout,
 				],
+				'conditional_header'=> $this->get_id() === 'header',
 				'section'           => $this->section,
 			]
 		);
@@ -366,7 +367,6 @@ abstract class Abstract_Builder implements Builder {
 								'desktop' => 0,
 							],
 							'units'          => [ 'px' ],
-							'hideResponsive' => true,
 						],
 					],
 					'transport'             => 'postMessage',
@@ -973,7 +973,13 @@ abstract class Abstract_Builder implements Builder {
 	 * @param array  $device_details Device meta.
 	 */
 	public function render_device( $device_name, $device_details ) {
-		foreach ( $device_details as $index => $row ) {
+		// Make sure we hold the defined order.
+		$default_order = array_keys($this->get_rows());
+		foreach ( $default_order as $row_index ) {
+			if( ! isset( $device_details[$row_index] ) ) {
+				continue;
+			}
+			$row = $device_details[$row_index];
 			if ( neve_is_new_builder() ) {
 				$used = [];
 				foreach ( $row as $components ) {
@@ -986,8 +992,8 @@ abstract class Abstract_Builder implements Builder {
 			} elseif ( empty( $row ) ) {
 				continue;
 			}
-			self::$current_row = $index;
-			$this->render_row( $device_name, $index, $row );
+			self::$current_row = $row_index;
+			$this->render_row( $device_name, $row_index, $row );
 		}
 	}
 
@@ -1112,6 +1118,7 @@ abstract class Abstract_Builder implements Builder {
 			$row_index = self::$current_row;
 		}
 
+		$builder_id   = $this->get_id();
 		$data = $this->get_layout_data()[ $device ][ $row_index ];
 
 		// Remap sidebar data so we can use it as a slot.
@@ -1128,7 +1135,6 @@ abstract class Abstract_Builder implements Builder {
 		];
 
 		foreach ( $data as $slot => $components ) {
-			$builder_id   = $this->get_id();
 			$is_side_slot = in_array( $slot, [ 'right', 'left' ], true );
 			if ( ! ( $this->row_has_slot( 'center' ) && $is_side_slot ) && empty( $components ) && $builder_id !== 'footer' ) {
 				continue;
@@ -1169,7 +1175,8 @@ abstract class Abstract_Builder implements Builder {
 					'classes'        => $classes,
 					'vertical-align' => 'hfg-item-v-' . $vertical_align,
 				];
-
+				// Move center-side-slot components inside the side slots.
+				// Otherwise we just assign them to the expected slot.
 				if ( ! $this->columns_layout ) {
 					switch ( $slot ) {
 						case 'c-right':
@@ -1216,7 +1223,7 @@ abstract class Abstract_Builder implements Builder {
 
 			foreach ( $components as $component_data ) {
 				$component_instance = $this->builder_components[ $component_data['id'] ];
-				if ( $component_instance->is_auto_width ) {
+				if ( $component_instance->get_property('is_auto_width') ) {
 					$component_data['classes'][] = 'no-padding';
 				}
 				echo sprintf( '<div class="%s">', esc_attr( join( ' ', $component_data['classes'] ) ) );

@@ -90,7 +90,7 @@ const initQuickLinksSections = () => {
 	});
 };
 
-wp.customize.bind('ready', () => {
+window.wp.customize.bind('ready', () => {
 	initDynamicFields();
 	initQuickLinksSections();
 	initBlogPageFocus();
@@ -99,10 +99,26 @@ wp.customize.bind('ready', () => {
 window.HFG = {
 	getSettings: () => {
 		const usedSettings = {};
-		NeveReactCustomize.headerControls.map((item) => {
-			if (!wp.customize.control(item)) return false;
-			usedSettings[item] = wp.customize.control(item).setting.get();
-			return item;
+		const { headerControls } = window.NeveReactCustomize;
+		Object.keys(headerControls).forEach((modKey) => {
+			const control = window.wp.customize.control(modKey);
+			// If the control isn't there don't do anything.
+			if (!control) {
+				return;
+			}
+
+			// If the value is default don't do anything.
+			const value = control.setting();
+
+			// Compare stringified versions as this can contain arrays and objects.
+			if (
+				JSON.stringify(value) === JSON.stringify(headerControls[modKey])
+			) {
+				return;
+			}
+
+			// Save key/value pair.
+			usedSettings[modKey] = value;
 		});
 		return JSON.stringify(usedSettings);
 	},

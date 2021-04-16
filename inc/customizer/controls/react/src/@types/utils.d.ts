@@ -100,10 +100,14 @@ type BuilderActions = {
 
 declare global {
 	interface Window {
-		// eslint-disable-next-line camelcase
+		wp: StringObjectKeys;
 		NeveReactCustomize: {
 			HFG: HFGLayoutBuilder;
 		};
-		wp: StringObjectKeys;
+		NeveProReactCustomize: unknown;
 	}
+}
+
+interface BuilderChangeEvent extends Event {
+	detail?: { id: string; value: string | BuilderContentInterface };
 }

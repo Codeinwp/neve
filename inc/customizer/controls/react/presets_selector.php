@@ -1,6 +1,6 @@
 <?php
 /**
- * Radio Buttons Control. Handles data passing from args to JS.
+ * Presets selector control. Handles data passing from args to JS.
  *
  * @package Neve\Customizer\Controls\React
  */
@@ -22,11 +22,18 @@ class Presets_Selector extends \WP_Customize_Control {
 	public $type = 'neve_presets_selector';
 
 	/**
-	 * Additional arguments passed to JS.
+	 * Presets for the control.
 	 *
 	 * @var array
 	 */
 	public $presets = [];
+
+	/**
+	 * Builder Setting Slug.
+	 *
+	 * @var string | null
+	 */
+	public $builder = null;
 
 	/**
 	 * Send to JS.
@@ -34,5 +41,6 @@ class Presets_Selector extends \WP_Customize_Control {
 	public function to_json() {
 		parent::to_json();
 		$this->json['presets'] = $this->presets;
+		$this->json['builder'] = $this->builder;
 	}
 }

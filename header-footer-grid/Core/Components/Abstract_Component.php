@@ -107,7 +107,7 @@ abstract class Abstract_Component implements Component {
 	 * @access protected
 	 * @var bool $is_auto_width
 	 */
-	public $is_auto_width = false;
+	protected $is_auto_width = false;
 	/**
 	 * The section icon.
 	 *

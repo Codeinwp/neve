@@ -338,44 +338,44 @@ msgstr ""
 msgid "Section Content"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1580
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1587
 #: header-footer-grid/Core/Components/SearchResponsive.php:113
 msgid "Open Behaviour"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1585
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1592
 msgid "Slide from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1586
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1593
 msgid "Slide from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1587
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1594
 msgid "Pull from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1588
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1595
 msgid "Pull from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1589
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1596
 msgid "Full Canvas"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1590
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1597
 msgid "Slide Down"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1605
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1612
 msgid "Sidebar Width"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1668
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1675
 msgid "Number of Columns"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1685
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1692
 msgid "Columns Layout"
 msgstr ""
 
@@ -454,7 +454,7 @@ msgstr ""
 msgid "Mobile Sidebar"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:469
+#: header-footer-grid/Core/Components/Abstract_Component.php:468
 #: inc/customizer/options/layout_sidebar.php:129
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:153
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:108
@@ -463,11 +463,11 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:473
+#: header-footer-grid/Core/Components/Abstract_Component.php:472
 msgid "Center"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:477
+#: header-footer-grid/Core/Components/Abstract_Component.php:476
 #: inc/customizer/options/layout_sidebar.php:133
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:155
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:106
@@ -476,47 +476,47 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:483
+#: header-footer-grid/Core/Components/Abstract_Component.php:482
 msgid "Justify"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:501
+#: header-footer-grid/Core/Components/Abstract_Component.php:500
 msgid "Alignment"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:537
+#: header-footer-grid/Core/Components/Abstract_Component.php:536
 #: inc/customizer/options/buttons.php:135
 msgid "Padding"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:562
+#: header-footer-grid/Core/Components/Abstract_Component.php:561
 msgid "Margin"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:788
+#: header-footer-grid/Core/Components/Abstract_Component.php:787
 #: inc/customizer/options/main.php:57
 msgid "Typography"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:869
+#: header-footer-grid/Core/Components/Abstract_Component.php:868
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:105
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:42
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:111
 msgid "Top"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:873
+#: header-footer-grid/Core/Components/Abstract_Component.php:872
 msgid "Middle"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:877
+#: header-footer-grid/Core/Components/Abstract_Component.php:876
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:107
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:44
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:121
 msgid "Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:890
+#: header-footer-grid/Core/Components/Abstract_Component.php:889
 msgid "Vertical Alignment"
 msgstr ""
 
@@ -2228,15 +2228,15 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Responsive.js:44
+#: inc/customizer/controls/react/src/common/Responsive.js:32
 msgid "Desktop"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Responsive.js:48
+#: inc/customizer/controls/react/src/common/Responsive.js:36
 msgid "Tablet"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Responsive.js:52
+#: inc/customizer/controls/react/src/common/Responsive.js:40
 msgid "Mobile"
 msgstr ""
 

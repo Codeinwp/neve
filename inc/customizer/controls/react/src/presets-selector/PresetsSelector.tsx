@@ -1,13 +1,18 @@
 /* jshint esversion: 6 */
-import PropTypes from 'prop-types';
-
 import { useState } from '@wordpress/element';
 import { Tooltip } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import React from 'react';
 
-const PresetsSelector = ({ presets, onSelect }) => {
+type Preset = { image: string; label: string; setup: string };
+
+type Props = {
+	presets: Preset[];
+	onSelect: (data: string) => void;
+};
+
+const PresetsSelector: React.FC<Props> = ({ presets, onSelect }) => {
 	const [search, setSearch] = useState('');
-
 	/**
 	 * You can get the value in the console with this command:
 	 *
@@ -15,7 +20,7 @@ const PresetsSelector = ({ presets, onSelect }) => {
 	 *
 	 * @return {*}
 	 */
-	const filteredPresets = presets.filter((preset) =>
+	const filtered = presets.filter((preset) =>
 		preset.label.toLowerCase().includes(search.toLowerCase())
 	);
 
@@ -30,17 +35,18 @@ const PresetsSelector = ({ presets, onSelect }) => {
 					}}
 				/>
 			</div>
-			{filteredPresets.length > 0 ? (
-				filteredPresets.map((preset, index) => {
+			{filtered.length > 0 ? (
+				filtered.map((preset, index) => {
+					const { image, label, setup } = preset;
 					return (
-						<Tooltip key={index} text={preset.label}>
+						<Tooltip key={index} text={label}>
 							<button
 								onClick={(e) => {
 									e.preventDefault();
-									onSelect(preset.setup);
+									onSelect(setup);
 								}}
 							>
-								<img src={preset.image} alt={preset.label} />
+								<img src={image} alt={label} />
 							</button>
 						</Tooltip>
 					);
@@ -50,11 +56,6 @@ const PresetsSelector = ({ presets, onSelect }) => {
 			)}
 		</div>
 	);
-};
-
-PresetsSelector.propTypes = {
-	presets: PropTypes.array.isRequired,
-	onSelect: PropTypes.func.isRequired,
 };
 
 export default PresetsSelector;

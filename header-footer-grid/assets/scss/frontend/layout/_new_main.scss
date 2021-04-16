@@ -26,10 +26,6 @@
   &.hfg-start {
 	margin-right: auto;
   }
-
-  &.no-padding {
-	padding: 0;
-  }
 }
 
 $desktop: map-get($gl-devices-list, desktop);
@@ -96,66 +92,65 @@ $builder_types: page_header header footer;
   .builder-item {
 	width: 100%;
   }
+}
 
-  &.columns-1 {
-	.hfg-slot {
-	  width: 100%;
-	}
-  }
 
-  &.columns-2 {
-	&.equal .row {
-	  grid-template-columns: repeat(2, 1fr);
-	}
+@media (min-width: $laptop) {
+  .footer--row {
+	&.columns-2 {
+	  &.equal .row {
+		grid-template-columns: repeat(2, 1fr);
+	  }
 
-	&.right-third .row {
-	  grid-template-columns: 2fr 1fr;
-	}
+	  &.right-third .row {
+		grid-template-columns: 2fr 1fr;
+	  }
 
-	&.left-third .row {
-	  grid-template-columns: 1fr 2fr;
-	}
-  }
-
-  &.columns-3 {
-	&.equal .row {
-	  grid-template-columns: repeat(3, 1fr);
+	  &.left-third .row {
+		grid-template-columns: 1fr 2fr;
+	  }
 	}
 
-	&.left-half .row {
-	  grid-template-columns: 2fr 1fr 1fr;
+	&.columns-3 {
+	  &.equal .row {
+		grid-template-columns: repeat(3, 1fr);
+	  }
+
+	  &.left-half .row {
+		grid-template-columns: 2fr 1fr 1fr;
+	  }
+
+	  &.right-half .row {
+		grid-template-columns: 1fr 1fr 2fr;
+	  }
+
+	  &.center-half .row {
+		grid-template-columns: 1fr 2fr 1fr;
+	  }
+
+	  &.center-two-thirds .row {
+		grid-template-columns: 1fr 3fr 1fr;
+	  }
 	}
 
-	&.right-half .row {
-	  grid-template-columns: 1fr 1fr 2fr;
+	&.columns-4 {
+	  &.equal .row {
+		grid-template-columns: repeat(4, 1fr);
+	  }
+
+	  &.left-half .row {
+		grid-template-columns: 3fr 1fr 1fr 1fr;
+	  }
+
+	  &.right-half .row {
+		grid-template-columns: 1fr 1fr 1fr 3fr;
+	  }
 	}
 
-	&.center-half .row {
-	  grid-template-columns: 1fr 2fr 1fr;
-	}
-
-	&.center-two-thirds .row {
-	  grid-template-columns: 1fr 3fr 1fr;
-	}
-  }
-
-  &.columns-4 {
-	&.equal .row {
-	  grid-template-columns: repeat(4, 1fr);
-	}
-
-	&.left-half .row {
-	  grid-template-columns: 3fr 1fr 1fr 1fr;
-	}
-
-	&.right-half .row {
-	  grid-template-columns: 1fr 1fr 1fr 3fr;
-	}
-  }
-
-  &.columns-5 {
-	&.equal .row {
-	  grid-template-columns: repeat(5, 1fr);
+	&.columns-5 {
+	  &.equal .row {
+		grid-template-columns: repeat(5, 1fr);
+	  }
 	}
   }
 }

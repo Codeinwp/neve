@@ -108,6 +108,7 @@ function neve_hfg_footer_settings() {
 	$builder = [
 		'desktop' => [
 			'top'    => $empty_row,
+			'main'   => $empty_row,
 			'bottom' => $empty_row,
 		],
 	];

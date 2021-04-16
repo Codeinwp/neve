@@ -115,10 +115,13 @@ class Footer extends Abstract_Builder {
 	 * @access  protected
 	 */
 	protected function get_rows() {
-
 		return [
 			'top'    => array(
 				'title'       => __( 'Footer Top', 'neve' ),
+				'description' => $this->get_property( 'description' ),
+			),
+			'main'    => array(
+				'title'       => __( 'Footer Main', 'neve' ),
 				'description' => $this->get_property( 'description' ),
 			),
 			'bottom' => array(
