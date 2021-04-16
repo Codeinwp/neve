@@ -203,8 +203,6 @@ class Main {
 				'header'                        => sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
 				'starterSitesCardDescription'   => sprintf( __( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), wp_kses_post( $theme_name ) ),
-				/* translators: %s - "Public roadmap" */
-				'sidebarCommunityDescription'   => sprintf( __( 'Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our %s.', 'neve' ), wp_kses_post( '<a href="https://neve.nolt.io">' . __( 'public roadmap', 'neve' ) . '</a>' ) ),
 				/* translators: %s - Theme name */
 				'starterSitesTabDescription'    => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */

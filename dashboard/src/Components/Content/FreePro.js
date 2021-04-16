@@ -28,8 +28,16 @@ const Pro = () => {
 						'neve'
 					)}
 				</p>
-				<Button href={neveDash.upgradeURL} isPrimary>
+				<Button
+					target="_blank"
+					rel="external noreferrer noopener"
+					href={neveDash.upgradeURL}
+					isPrimary
+				>
 					{__('Get Neve Pro Now', 'neve')}
+					<span className="components-visually-hidden">
+						{__('(opens in a new tab)', 'neve')}
+					</span>
 				</Button>
 			</div>
 		</div>
