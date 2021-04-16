@@ -68,7 +68,7 @@ class Post_Layout extends Base_View {
 
 
 		/** This filter is documented in header-footer-grid/templates/components/component-logo.php */
-		$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', ture );
+		$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', true );
 		$skip_lazy_class      = '';
 		if ( $should_add_skip_lazy ) {
 			$thumbnail_index = array_search( 'thumbnail', $content_order );

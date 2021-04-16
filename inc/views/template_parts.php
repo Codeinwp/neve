@@ -109,7 +109,7 @@ class Template_Parts extends Base_View {
 		global $wp_query;
 
 		/** This filter is documented in header-footer-grid/templates/components/component-logo.php */
-		$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', ture );
+		$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', true );
 		$image_class          = '';
 		if ( $should_add_skip_lazy && ! property_exists( $wp_query, 'nv_should_load_lazy' ) ) {
 			$image_class                   = 'skip-lazy';

@@ -60,7 +60,7 @@ $logo_settings = array();
  *
  * @since 2.11
  */
-$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', ture );
+$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', true );
 if ( $should_add_skip_lazy ) {
 	$logo_settings['class'] = 'skip-lazy';
 }
