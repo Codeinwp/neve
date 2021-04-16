@@ -1703,7 +1703,7 @@ msgstr ""
 #: dashboard/src/Components/Content/Help.js:34
 #: dashboard/src/Components/Content/Help.js:78
 #: dashboard/src/Components/Content/Help.js:111
-#: dashboard/src/Components/ModuleCard.js:159
+#: dashboard/src/Components/ModuleCard.js:164
 msgid "Learn More"
 msgstr ""
 
@@ -1986,19 +1986,19 @@ msgstr ""
 msgid "Expires"
 msgstr ""
 
-#: dashboard/src/Components/ModuleCard.js:92
+#: dashboard/src/Components/ModuleCard.js:97
 msgid "Upgrade"
 msgstr ""
 
-#: dashboard/src/Components/ModuleCard.js:126
+#: dashboard/src/Components/ModuleCard.js:131
 msgid "Module Activated"
 msgstr ""
 
-#: dashboard/src/Components/ModuleCard.js:130
+#: dashboard/src/Components/ModuleCard.js:135
 msgid "Module Deactivated."
 msgstr ""
 
-#: dashboard/src/Components/ModuleCard.js:140
+#: dashboard/src/Components/ModuleCard.js:145
 msgid "Could not activate module. Please try again."
 msgstr ""
 
