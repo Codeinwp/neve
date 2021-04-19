@@ -1,14 +1,14 @@
-const IconColor = ({ title }) => {
+import ColorControl from '../common/ColorControl';
+
+const IconColor = ({ label }) => {
 	return (
 		<div className="nv-repeater--field">
-			<label>{title}</label>
-			<div className="nv--color-picker">
-				<div className="wp-picker-container">
-					<button type="button" className="button wp-color-result">
-						<span>Select Color</span>
-					</button>
-				</div>
-			</div>
+			<ColorControl
+				defaultValue=""
+				label={label}
+				onChange={function noRefCheck() {}}
+				selectedColor="#f00"
+			/>
 		</div>
 	);
 };

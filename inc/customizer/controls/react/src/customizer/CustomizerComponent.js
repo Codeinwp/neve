@@ -3,6 +3,7 @@ import Customizer from './Customizer';
 import { maybeParseJson } from '../common/common';
 
 const CustomizerComponent = ({ control }) => {
+	// eslint-disable-next-line no-unused-vars
 	const [value, setValue] = useState(maybeParseJson(control.setting.get()));
 	/* const [data, setData] = useState([
 		{

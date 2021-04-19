@@ -2,6 +2,7 @@ import { useState } from '@wordpress/element';
 import Repeater from '../repeater/Repeater';
 
 const Customizer = () => {
+	// eslint-disable-next-line no-unused-vars
 	const [data, setData] = useState([
 		{
 			title: 'Facebook',
@@ -39,6 +40,7 @@ const Customizer = () => {
 
 	return data.map((item) => {
 		return (
+			// eslint-disable-next-line react/jsx-key
 			<div className="nv-repeater--wrap">
 				<div className="nv-repeater--item">
 					<Repeater title={item.title} />
