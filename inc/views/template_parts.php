@@ -106,14 +106,14 @@ class Template_Parts extends Base_View {
 			return '';
 		}
 
-		global $wp_query;
+		global $neve_thumbnail_skip_lazy_added;
 
 		/** This filter is documented in header-footer-grid/templates/components/component-logo.php */
 		$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', true );
 		$image_class          = '';
-		if ( $should_add_skip_lazy && ! property_exists( $wp_query, 'nv_should_load_lazy' ) ) {
-			$image_class                   = 'skip-lazy';
-			$wp_query->nv_should_load_lazy = false;
+		if ( $should_add_skip_lazy && $neve_thumbnail_skip_lazy_added !== true ) {
+			$image_class                    = 'skip-lazy';
+			$neve_thumbnail_skip_lazy_added = true;
 		}
 
 		$markup = '<div class="nv-post-thumbnail-wrap">';
