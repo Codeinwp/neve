@@ -1,4 +1,6 @@
 {
+    "custom_css_post_id": -1,
+    "nav_menu_locations": [],
     "neve_button_appearance": {
         "borderRadius": {
             "top": "0",
@@ -42,5 +44,50 @@
             "desktop": "15"
         }
     },
-    "hfg_header_layout": "{\"desktop\":{\"top\":[{\"x\":0,\"y\":1,\"width\":2,\"height\":1,\"id\":\"button_base\"}],\"main\":[{\"x\":0,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":4,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}"
+    "hfg_header_layout": "{\"desktop\":{\"top\":[{\"x\":0,\"y\":1,\"width\":2,\"height\":1,\"id\":\"button_base\"}],\"main\":[{\"x\":0,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":4,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}",
+    "neve_migrated_hfg_colors": true,
+    "neve_secondary_button_appearance": {
+        "borderRadius": {
+            "top": "10",
+            "right": "10",
+            "bottom": "10",
+            "left": "10"
+        },
+        "borderWidth": {
+            "top": 1,
+            "right": 1,
+            "bottom": 1,
+            "left": 1
+        },
+        "type": "outline",
+        "background": "#b30707",
+        "backgroundHover": "",
+        "text": "#ffffff",
+        "textHover": "var(--nv-text-color)"
+    },
+    "neve_secondary_button_typeface": {
+        "textTransform": "uppercase",
+        "flag": true,
+        "lineHeight": {
+            "suffix": {
+                "mobile": "em",
+                "tablet": "em",
+                "desktop": "em"
+            },
+            "mobile": 1.6,
+            "tablet": 1.6,
+            "desktop": 1.6
+        },
+        "fontSize": {
+            "suffix": {
+                "mobile": "px",
+                "tablet": "px",
+                "desktop": "px"
+            },
+            "mobile": "",
+            "tablet": "",
+            "desktop": "20"
+        }
+    },
+    "neve_form_button_type": "secondary"
 }
