@@ -21,6 +21,13 @@ describe('Buttons', function () {
 	});
 });
 
+/**
+ * Checks if the front end primary button has the same value that was set on customizer
+ *
+ * @param selector - the name of the button
+ * @example checksButton('Cart')
+ */
+
 const checksButton = (selector: string) => {
 	cy.get('.button')
 		.contains(selector)
