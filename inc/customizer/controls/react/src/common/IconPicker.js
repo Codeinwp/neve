@@ -22,6 +22,7 @@ const IconPicker = ({ selectIcon, isOpen }) => {
 	const getIcons = () => {
 		return filtered.map((icon) => {
 			return (
+				// eslint-disable-next-line jsx-a11y/anchor-is-valid
 				<a
 					//
 					href="javascript: return false;"
