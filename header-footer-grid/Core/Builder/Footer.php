@@ -120,7 +120,7 @@ class Footer extends Abstract_Builder {
 				'title'       => __( 'Footer Top', 'neve' ),
 				'description' => $this->get_property( 'description' ),
 			),
-			'main'    => array(
+			'main'   => array(
 				'title'       => __( 'Footer Main', 'neve' ),
 				'description' => $this->get_property( 'description' ),
 			),

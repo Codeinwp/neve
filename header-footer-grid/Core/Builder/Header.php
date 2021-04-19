@@ -110,7 +110,7 @@ class Header extends Abstract_Builder {
 					'transport' => 'postMessage',
 					'priority'  => 30,
 					'presets'   => $this->get_header_presets(),
-					'builder'   => $this->control_id
+					'builder'   => $this->control_id,
 				]
 			)
 		);
@@ -144,7 +144,7 @@ class Header extends Abstract_Builder {
 	 *
 	 * @param string $device_id The device id.
 	 * @param string $row_id The row id.
-	 * @param array $row_details Row data.
+	 * @param array  $row_details Row data.
 	 */
 	public function render_row( $device_id, $row_id, $row_details ) {
 

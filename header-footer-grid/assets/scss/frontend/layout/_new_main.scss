@@ -19,6 +19,10 @@
   padding-right: 15px;
   padding-left: 15px;
 
+  &.no-padding {
+	padding: 0;
+  }
+
   &.hfg-end {
 	margin-left: auto;
   }

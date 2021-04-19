@@ -382,7 +382,7 @@ class Manager {
 			add_filter(
 				'neve_react_controls_localization',
 				function ( $array ) use ( $id, $default ) {
-					$array['headerControls'][$id] = $default;
+					$array['headerControls'][ $id ] = $default;
 
 					return $array;
 				}

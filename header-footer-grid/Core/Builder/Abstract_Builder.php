@@ -258,21 +258,21 @@ abstract class Abstract_Builder implements Builder {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => $this->control_id,
-				'group'             => $this->control_id,
-				'tab'               => false,
-				'noformat'          => true,
-				'transport'         => 'post' . $this->get_id(),
-				'sanitize_callback' => [ $this, 'sanitize_json' ],
-				'default'           => '',
-				'label'             => '',
-				'type'              => $is_new_builder ? '\Neve\Customizer\Controls\React\Builder' : 'text',
-				'options'           => [
+				'id'                 => $this->control_id,
+				'group'              => $this->control_id,
+				'tab'                => false,
+				'noformat'           => true,
+				'transport'          => 'post' . $this->get_id(),
+				'sanitize_callback'  => [ $this, 'sanitize_json' ],
+				'default'            => '',
+				'label'              => '',
+				'type'               => $is_new_builder ? '\Neve\Customizer\Controls\React\Builder' : 'text',
+				'options'            => [
 					'builder_type'   => $this->get_id(),
 					'columns_layout' => $this->columns_layout,
 				],
-				'conditional_header'=> $this->get_id() === 'header',
-				'section'           => $this->section,
+				'conditional_header' => $this->get_id() === 'header',
+				'section'            => $this->section,
 			]
 		);
 
@@ -358,15 +358,15 @@ abstract class Abstract_Builder implements Builder {
 					),
 					'options'               => [
 						'input_attrs' => [
-							'step'           => 1,
-							'min'            => 0,
-							'max'            => 700,
-							'defaultVal'     => [
+							'step'       => 1,
+							'min'        => 0,
+							'max'        => 700,
+							'defaultVal' => [
 								'mobile'  => 0,
 								'tablet'  => 0,
 								'desktop' => 0,
 							],
-							'units'          => [ 'px' ],
+							'units'      => [ 'px' ],
 						],
 					],
 					'transport'             => 'postMessage',
@@ -974,12 +974,12 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	public function render_device( $device_name, $device_details ) {
 		// Make sure we hold the defined order.
-		$default_order = array_keys($this->get_rows());
+		$default_order = array_keys( $this->get_rows() );
 		foreach ( $default_order as $row_index ) {
-			if( ! isset( $device_details[$row_index] ) ) {
+			if ( ! isset( $device_details[ $row_index ] ) ) {
 				continue;
 			}
-			$row = $device_details[$row_index];
+			$row = $device_details[ $row_index ];
 			if ( neve_is_new_builder() ) {
 				$used = [];
 				foreach ( $row as $components ) {
@@ -1118,8 +1118,8 @@ abstract class Abstract_Builder implements Builder {
 			$row_index = self::$current_row;
 		}
 
-		$builder_id   = $this->get_id();
-		$data = $this->get_layout_data()[ $device ][ $row_index ];
+		$builder_id = $this->get_id();
+		$data       = $this->get_layout_data()[ $device ][ $row_index ];
 
 		// Remap sidebar data so we can use it as a slot.
 		if ( $row_index === 'sidebar' ) {
@@ -1134,15 +1134,30 @@ abstract class Abstract_Builder implements Builder {
 			'right'   => [],
 		];
 
-		foreach ( $data as $slot => $components ) {
+		foreach ( $data as $slot => $slot_data ) {
 			$is_side_slot = in_array( $slot, [ 'right', 'left' ], true );
-			if ( ! ( $this->row_has_slot( 'center' ) && $is_side_slot ) && empty( $components ) && $builder_id !== 'footer' ) {
+			if ( ! ( $this->row_has_slot( 'center' ) && $is_side_slot ) && empty( $slot_data ) && $builder_id !== 'footer' ) {
 				continue;
 			}
-			foreach ( $components as $component_index => $component ) {
+
+			$render_index           = 0;
+			$was_previous_mergeable = false;
+
+			foreach ( $slot_data as $component_index => $component ) {
 				if ( ! isset( $this->builder_components[ $component['id'] ] ) ) {
 					continue;
 				}
+
+
+				/** @var Abstract_Component $component_instance */
+				$component_instance = $this->builder_components[ $component['id'] ];
+				$is_mergeable       = $component_instance->get_property( 'is_auto_width' );
+
+
+				if ( ! $is_mergeable && ! $was_previous_mergeable ) {
+					$render_index++;
+				}
+
 				$align          = $this->get_component_alignment( $component['id'] );
 				$vertical_align = $this->get_component_alignment( $component['id'], true );
 				$classes        = [ 'builder-item' ];
@@ -1165,53 +1180,58 @@ abstract class Abstract_Builder implements Builder {
 					if ( $slot === 'c-left' && $component_index === 0 ) {
 						$classes[] = 'hfg-end';
 					}
-					if ( $slot === 'c-right' && $component_index === count( $components ) - 1 ) {
+					if ( $slot === 'c-right' && $component_index === count( $slot_data ) - 1 ) {
 						$classes[] = 'hfg-start';
 					}
 				}
 
-				$new_component = [
-					'id'             => $component['id'],
-					'classes'        => $classes,
-					'vertical-align' => 'hfg-item-v-' . $vertical_align,
-				];
-				// Move center-side-slot components inside the side slots.
-				// Otherwise we just assign them to the expected slot.
-				if ( ! $this->columns_layout ) {
-					switch ( $slot ) {
-						case 'c-right':
-							$render_buffer['right'][] = $new_component;
-							break;
-						case 'c-left':
-							$render_buffer['left'][] = $new_component;
-							break;
-						default:
-							$render_buffer[ $slot ][] = $new_component;
+				// If we don't have anything at render index, make sure we do.
+				if ( ! isset( $render_buffer[ $slot ][ $render_index ] ) ) {
+					$render_buffer[ $slot ][ $render_index ] = [
+						'classes'    => $classes,
+						'components' => [],
+					];
+					if ( $builder_id === 'footer' && ! empty( $vertical_align ) ) {
+						$render_buffer[ $slot ][ $render_index ]['vertical-align'] = 'hfg-item-v-' . $vertical_align;
 					}
-					unset( $render_buffer['c-left'] );
-					unset( $render_buffer['c-right'] );
-				} else {
-					$render_buffer[ $slot ][] = $new_component;
+				}
 
-					// Drop the unused columns.
-					$columns = SettingsManager::get_instance()->get( 'hfg_footer_layout_' . $row_index . '_' . self::COLUMNS_NUMBER, 3 );
+				$render_buffer[ $slot ][ $render_index ]['components'][] = $component_instance;
 
-					array_splice( $render_buffer, absint( $columns ) );
+				if ( $is_mergeable ) {
+					$was_previous_mergeable = true;
 				}
 			}
 		}
 
-		foreach ( $render_buffer as $slot => $components ) {
-			if ( $slot === 'center' && empty( $components ) ) {
+		if ( ! $this->columns_layout ) {
+			// Move center-side-slot components inside the side slots.
+			if ( isset( $render_buffer['c-right'] ) ) {
+				$render_buffer['right'] = array_merge( $render_buffer['c-right'], $render_buffer['right'] );
+			}
+			if ( isset( $render_buffer['c-left'] ) ) {
+				$render_buffer['left'] = array_merge( $render_buffer['left'], $render_buffer['c-left'] );
+			}
+			unset( $render_buffer['c-left'] );
+			unset( $render_buffer['c-right'] );
+		} else {
+			// Drop the unused columns for columned layout.
+			$columns = SettingsManager::get_instance()->get( 'hfg_footer_layout_' . $row_index . '_' . self::COLUMNS_NUMBER, 3 );
+			array_splice( $render_buffer, absint( $columns ) );
+		}
+
+		foreach ( $render_buffer as $slot => $slot_data ) {
+			// TODO: Fix this for footer columns as it may affect it.
+			if ( $slot === 'center' && empty( $slot_data ) && ! $this->columns_layout ) {
 				continue;
 			}
 
 			$slot_classes = [ 'hfg-slot', $slot ];
 
-			if ( count( $components ) === 1 ) {
+			if ( isset( $slot_data['components'] ) && count( $slot_data['components'] ) === 1 ) {
 				$slot_classes[] = 'single';
-				if ( isset( $components[0]['vertical-align'] ) ) {
-					$slot_classes[] = $components[0]['vertical-align'];
+				if ( isset( $slot_data['components'][0]['vertical-align'] ) ) {
+					$slot_classes[] = $slot_data['components'][0]['vertical-align'];
 				}
 			}
 
@@ -1221,16 +1241,21 @@ abstract class Abstract_Builder implements Builder {
 
 			self::$current_slot = $slot;
 
-			foreach ( $components as $component_data ) {
-				$component_instance = $this->builder_components[ $component_data['id'] ];
-				if ( $component_instance->get_property('is_auto_width') ) {
-					$component_data['classes'][] = 'no-padding';
+			foreach ( $slot_data as $component_group ) {
+				if ( isset( $component_group['components'] ) ) {
+					if ( count( $component_group['components'] ) > 1 ) {
+						$component_group['classes'][] = 'hfg-is-group';
+					}
+
+					echo sprintf( '<div class="%s">', esc_attr( join( ' ', $component_group['classes'] ) ) );
+					foreach ( $component_group['components'] as $component ) {
+						self::$current_component = $component->get_property( 'id' );
+						$component->render();
+					}
+					echo '</div>';
 				}
-				echo sprintf( '<div class="%s">', esc_attr( join( ' ', $component_data['classes'] ) ) );
-				self::$current_component = $component_data['id'];
-				$component_instance->render();
-				echo '</div>';
 			}
+
 			if ( $row_index !== 'sidebar' ) {
 				echo '</div>';
 			}
