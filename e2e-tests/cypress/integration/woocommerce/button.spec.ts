@@ -9,6 +9,16 @@ describe('Buttons', function () {
 		checksButton('Button');
 		checksButton('Add to cart');
 	});
+
+	it('Checks the secondary button', function () {
+		cy.visit('/hello-world');
+		cy.get('#submit')
+			.should('have.css', 'color', 'rgb(255, 255, 255)')
+			.and('have.css', 'background-color', 'rgb(179, 7, 7)')
+			.and('have.css', 'border-radius', '10px')
+			.and('have.css', 'text-transform', 'uppercase')
+			.and('have.css', 'font-size', '20px');
+	});
 });
 
 const checksButton = (selector: string) => {
