@@ -1,3 +1,4 @@
+wp --allow-root rewrite structure /%postname%/
 wp --allow-root plugin is-installed wordpress-importer && wp --allow-root plugin update wordpress-importer ||  wp --allow-root plugin install wordpress-importer
 ##Setup core content.
 wp --allow-root plugin activate wordpress-importer
