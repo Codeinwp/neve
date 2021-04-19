@@ -1,5 +1,3 @@
-import { Icon } from '@wordpress/components';
-import { closeSmall } from '@wordpress/icons';
 import { useState } from '@wordpress/element';
 import IconPicker from '../common/IconPicker';
 import * as icons from '../common/icons';
@@ -25,7 +23,7 @@ const IconField = ({ label = 'Icon' }) => {
 
 	return (
 		<div className="nv-repeater--field">
-			<label>{label}</label>
+			<label id="icon-field">{label}</label>
 			<div className="nv--icon-field-wrap">
 				<div className="form">
 					<button
