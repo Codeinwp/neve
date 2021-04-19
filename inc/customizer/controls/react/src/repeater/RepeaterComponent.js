@@ -7,7 +7,7 @@ const RepeaterComponent = ({ control }) => {
 
 	return (
 		<div className="nv-repeater--items-wrap">
-			<Repeater title={title} />
+			<Regit peater title={title} />
 		</div>
 	);
 };

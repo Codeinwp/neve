@@ -1,12 +1,14 @@
+@import 'vars';
+
 .nv-repeater--item {
-  background-color: #fff;
-  border: 1px solid #ccc;
   margin-bottom: 15px;
 
   .nv-repeater--header {
 	display: flex;
 	align-items: center;
 	width: 100%;
+	background-color: #fff;
+	border: 1px solid #ccc;
 
 	.nv-repeater--toggle {
 	  width: 10%;
@@ -14,7 +16,7 @@
 	  display: flex;
 	  align-items: center;
 	  justify-content: center;
-	  border-right: 1px solid #ccc;
+	  //border-right: 1px solid #ccc;
 	  cursor: pointer;
 	}
 

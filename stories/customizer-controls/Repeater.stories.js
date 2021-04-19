@@ -1,5 +1,8 @@
 import Repeater from '../../inc/customizer/controls/react/src/repeater/Repeater';
-import { CustomizerDecorator } from '../components/decorators';
+import {
+	CustomizerDecorator,
+	WhiteBackgroundDecorator,
+} from '../components/decorators';
 
 export default {
 	title: 'Customizer/Controls/Repeater',
@@ -7,7 +10,7 @@ export default {
 	args: {
 		label: 'sdg',
 	},
-	decorators: [CustomizerDecorator],
+	decorators: [WhiteBackgroundDecorator, CustomizerDecorator],
 };
 
 const RepeaterStories = () => {
