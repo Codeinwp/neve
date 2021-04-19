@@ -111,7 +111,7 @@ class Template_Parts extends Base_View {
 		/** This filter is documented in header-footer-grid/templates/components/component-logo.php */
 		$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', true );
 		$image_class          = '';
-		if ( $should_add_skip_lazy && $neve_thumbnail_skip_lazy_added !== true ) {
+		if ( $should_add_skip_lazy && ! isset( $neve_thumbnail_skip_lazy_added ) ) {
 			$image_class                    = 'skip-lazy';
 			$neve_thumbnail_skip_lazy_added = true;
 		}

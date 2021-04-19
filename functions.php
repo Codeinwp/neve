@@ -17,16 +17,6 @@ if ( ! defined( 'NEVE_DEBUG' ) ) {
 	define( 'NEVE_DEBUG', false );
 }
 define( 'NEVE_NEW_DYNAMIC_STYLE', true );
-
-/**
- * Flag to decide if the 'skip-lazy' class should be added in post loop.
- *
- * @var bool $neve_thumbnail_skip_lazy_added
- */
-global $neve_thumbnail_skip_lazy_added;
-
-$neve_thumbnail_skip_lazy_added = false;
-
 /**
  * Buffer which holds errors during theme inititalization.
  *
