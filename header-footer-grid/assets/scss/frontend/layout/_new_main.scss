@@ -1,13 +1,9 @@
 .site-header {
   position: relative;
+
   .header--row-inner {
 	align-items: center;
 	display: flex;
-  }
-  .hfg-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
   }
 }
 
@@ -18,10 +14,6 @@
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-
-  &.no-padding {
-	padding: 0;
-  }
 
   &.hfg-end {
 	margin-left: auto;
@@ -56,6 +48,7 @@ $desktop: map-get($gl-devices-list, desktop);
 
 
 $builder_types: page_header header footer;
+//data-show-on
 @each $type in $builder_types {
   .#{$type}--row {
 	&.layout-fullwidth {
@@ -97,7 +90,6 @@ $builder_types: page_header header footer;
 	width: 100%;
   }
 }
-
 
 @media (min-width: $laptop) {
   .footer--row {
@@ -158,6 +150,7 @@ $builder_types: page_header header footer;
 	}
   }
 }
+
 //</editor-fold>
 
 //<editor-fold desc="Row Styles">

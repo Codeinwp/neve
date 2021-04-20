@@ -1,16 +1,27 @@
+import React, { ReactComponentElement } from 'react';
 import PropTypes from 'prop-types';
 
-const { Modal } = wp.components;
-const { useState, useEffect } = wp.element;
-const NeveModal = ({ children, opened, trigger, openAttr, title }) => {
+import { Modal } from '@wordpress/components';
+import { useState, useEffect } from '@wordpress/element';
+
+type Props = {
+	children: ReactComponentElement<any>;
+	openAttr: string;
+	title?: string;
+};
+
+const NeveModal: React.FC<Props> = ({ children, openAttr, title }) => {
 	const [open, setOpen] = useState(false);
+
 	useEffect(() => {
-		if (!openAttr) return false;
-		document.addEventListener('DOMContentLoaded', () => {
+		window.wp.customize.bind('ready', () => {
+			if (!openAttr) return false;
 			const outsideTrigger = document.querySelectorAll(
 				`[data-open-nv-modal=${openAttr}]`
 			);
-			if (!outsideTrigger) return false;
+
+			if (outsideTrigger.length < 1) return false;
+
 			outsideTrigger.forEach((item) => {
 				item.addEventListener('click', (e) => {
 					e.preventDefault();
@@ -24,16 +35,15 @@ const NeveModal = ({ children, opened, trigger, openAttr, title }) => {
 		setOpen(false);
 	};
 
-	if (!open && !opened) {
+	if (!open) {
 		return null;
 	}
 
 	return (
 		<>
-			{trigger}
 			<Modal
 				className="neve-ui-modal-wrap"
-				title={title}
+				title={title || ''}
 				onRequestClose={dismiss}
 				shouldCloseOnClickOutside
 				isDismissible
@@ -46,9 +56,7 @@ const NeveModal = ({ children, opened, trigger, openAttr, title }) => {
 
 NeveModal.propTypes = {
 	children: PropTypes.element.isRequired,
-	opened: PropTypes.bool,
-	trigger: PropTypes.element,
-	openAttr: PropTypes.string,
+	openAttr: PropTypes.string.isRequired,
 	title: PropTypes.string,
 };
 

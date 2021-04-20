@@ -1,8 +1,9 @@
-/* global NeveReactCustomize */
-import Modal from '../common/Modal.js';
+import React from 'react';
+import Modal from '../common/Modal';
 
-const UiComponent = () => {
-	const { instructionalVid } = NeveReactCustomize;
+const UiComponent: React.FC = () => {
+	const { instructionalVid } = window.NeveReactCustomize;
+
 	return (
 		<div className="neve-ui-wrap">
 			<Modal openAttr="hfg-instructional">

@@ -103,6 +103,7 @@ declare global {
 		wp: StringObjectKeys;
 		NeveReactCustomize: {
 			HFG: HFGLayoutBuilder;
+			instructionalVid: string;
 		};
 		NeveProReactCustomize: unknown;
 	}
