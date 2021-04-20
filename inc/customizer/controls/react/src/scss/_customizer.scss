@@ -1,0 +1,44 @@
+@import 'vars';
+
+.nv-repeater--wrap {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.nv-repeater--footer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 13px 0;
+
+  .nv-repeater--reorder {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	text-decoration: underline;
+	cursor: pointer;
+	color: $button-color;
+	padding: 5px 8px;
+	margin: 0 5px;
+	transition: border .5s ease-in-out;
+
+	&:focus {
+	  border: 1px solid $button-color;
+	  border-radius: 3px;
+	}
+  }
+
+  .nv-repeater--add-new {
+	background-color: transparent;
+	color: $button-color;
+	border: 1px solid $button-color;
+	outline: none;
+	cursor: pointer;
+	font-size: 13px;
+	min-height: 30px;
+	margin: 0;
+	padding: 0 10px;
+	border-radius: 3px;
+	box-sizing: border-box;
+  }
+}

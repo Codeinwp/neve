@@ -1,8 +1,8 @@
 import { useState } from '@wordpress/element';
-import IconPicker from '../common/IconPicker';
+import IconPicker from './IconPicker';
 import * as icons from '../common/icons';
 
-const IconField = ({ label = 'Icon' }) => {
+const IconField = ({ label = 'Icon', chosenIcon }) => {
 	const [isOpen, open] = useState(false);
 	const [icon, setIcon] = useState(icons.facebook.icon);
 	const [field, setField] = useState(icons.facebook.id);
@@ -22,7 +22,7 @@ const IconField = ({ label = 'Icon' }) => {
 	};
 
 	return (
-		<div className="nv-repeater--field">
+		<>
 			<label id="icon-field">{label}</label>
 			<div className="nv--icon-field-wrap">
 				<div className="form">
@@ -52,7 +52,7 @@ const IconField = ({ label = 'Icon' }) => {
 
 				<IconPicker selectIcon={selectIcon} isOpen={isOpen} />
 			</div>
-		</div>
+		</>
 	);
 };
 

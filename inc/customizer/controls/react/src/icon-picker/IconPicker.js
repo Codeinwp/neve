@@ -1,4 +1,4 @@
-import * as icons from './icons';
+import * as icons from '../common/icons';
 import { useState, useEffect } from '@wordpress/element';
 
 const IconPicker = ({ selectIcon, isOpen }) => {
@@ -41,9 +41,6 @@ const IconPicker = ({ selectIcon, isOpen }) => {
 		});
 		filterIcons(filteredIcons);
 	};
-
-	// console.log('socialIcons: ', socialIcons);
-	// console.log('items: ', items);
 
 	return (
 		isOpen && (

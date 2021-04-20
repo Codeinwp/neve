@@ -38,15 +38,14 @@ const CustomizerComponent = ({ control }) => {
 			icon_color: '#fff',
 			background_color: '#e1306c',
 		},
-	]);
-	*/
+	]); */
 
 	const { title } = control.params;
 
 	return (
 		<div className="nv-repeater--wrap">
 			<Customizer
-				title={title} /* data = {value}, but it's undefined */
+				title={title} /* data = {data}, but it's undefined */
 			/>
 		</div>
 	);
