@@ -30,6 +30,7 @@ const Slot: React.FC<Props> = ({ items, slotId, rowId, className }) => {
 	const [searchQuery, setSearchQuery] = useState<string>('');
 	const slotClasses = classnames('droppable-wrap', slotId, className, {
 		'has-popover': popupOpen,
+		overflowed: items.length >= 3 && rowId !== 'sidebar',
 	});
 
 	const addItemToSlot = (itemId: string) => {

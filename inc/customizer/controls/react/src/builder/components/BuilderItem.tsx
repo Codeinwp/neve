@@ -53,6 +53,7 @@ const BuilderItem: React.FC<Props> = (props) => {
 				<Button
 					icon={cog}
 					iconSize={iconSize}
+					className="settings"
 					onClick={focusItemSection}
 					label={__('Item Settings', 'neve')}
 					showTooltip={false}
@@ -60,6 +61,7 @@ const BuilderItem: React.FC<Props> = (props) => {
 				<Button
 					iconSize={iconSize}
 					icon={closeSmall}
+					className="remove"
 					onClick={remove}
 					label={__('Remove Item', 'neve')}
 					showTooltip={false}

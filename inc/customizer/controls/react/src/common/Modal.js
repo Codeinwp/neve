@@ -6,7 +6,7 @@ const NeveModal = ({ children, opened, trigger, openAttr, title }) => {
 	const [open, setOpen] = useState(false);
 	useEffect(() => {
 		if (!openAttr) return false;
-		global.addEventListener('DOMContentLoaded', () => {
+		document.addEventListener('DOMContentLoaded', () => {
 			const outsideTrigger = document.querySelectorAll(
 				`[data-open-nv-modal=${openAttr}]`
 			);

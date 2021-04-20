@@ -22,7 +22,7 @@ const ResponsiveRangeComponent = ({ control }) => {
 		if (value !== responsiveConverted) {
 			setValue(responsiveConverted);
 		}
-		global.addEventListener('neve-changed-customizer-value', (e) => {
+		document.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) return false;
 			if (e.detail.id !== control.id) return false;
 			// Make sure we translate int values to responsive values.

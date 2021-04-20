@@ -1154,7 +1154,7 @@ abstract class Abstract_Builder implements Builder {
 				$is_mergeable       = $component_instance->get_property( 'is_auto_width' );
 
 
-				if ( ! $is_mergeable && ! $was_previous_mergeable ) {
+				if ( ! $is_mergeable && ! $was_previous_mergeable || $row_index === 'sidebar' ) {
 					$render_index++;
 				}
 

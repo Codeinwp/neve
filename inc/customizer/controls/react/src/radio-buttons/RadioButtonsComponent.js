@@ -11,7 +11,7 @@ const RadioButtonsComponent = ({ control }) => {
 	const [value, setValue] = useState(control.setting.get());
 
 	useEffect(() => {
-		global.addEventListener('neve-changed-customizer-value', (e) => {
+		document.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) return false;
 			if (e.detail.id !== control.id) return false;
 			updateValue(e.detail.value);
