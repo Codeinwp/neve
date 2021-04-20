@@ -157,7 +157,6 @@ class Beaver extends Page_Builder_Base {
 		}
 
 		$palette_colors = array_values( $palette['colors'] );
-		$palette_colors = array_unique( $palette_colors );
 
 		foreach ( $palette_colors as $color ) {
 			if ( ! array_search( $color, $colors, true ) ) {
@@ -165,6 +164,6 @@ class Beaver extends Page_Builder_Base {
 			}
 		}
 
-		return $colors;
+		return array_unique( $colors );
 	}
 }
