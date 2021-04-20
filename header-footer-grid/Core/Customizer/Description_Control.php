@@ -32,7 +32,7 @@ class Description_Control extends \WP_Customize_Control {
 	 * @var array
 	 */
 	public $default_options = [
-		'title' => '',
+		'title'            => '',
 		'html_description' => '',
 	];
 

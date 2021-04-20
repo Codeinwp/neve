@@ -131,6 +131,25 @@ const RadioButtonsComponent = ({ control }) => {
 						icon: SVG.cartIconStyle6,
 					},
 				};
+			case 'palette_switch':
+				return {
+					contrast: {
+						tooltip: __('Contrast', 'neve'),
+						icon: SVG.paletteIconStyle1,
+					},
+					night: {
+						tooltip: __('Night', 'neve'),
+						icon: SVG.paletteIconStyle2,
+					},
+					toggle: {
+						tooltip: __('Toggle', 'neve'),
+						icon: SVG.paletteIconStyle3,
+					},
+					accessibility: {
+						tooltip: __('Accessibility', 'neve'),
+						icon: SVG.paletteIconStyle4,
+					},
+				};
 		}
 	};
 	const { label, large_buttons, showLabels } = control.params;
