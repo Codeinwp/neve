@@ -515,7 +515,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:77
 #: header-footer-grid/Core/Components/Button.php:115
-#: inc/customizer/options/form_fields.php:564
+#: inc/customizer/options/form_fields.php:571
 msgid "Button"
 msgstr ""
 
@@ -545,7 +545,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:142
 #: header-footer-grid/Core/Components/SearchResponsive.php:184
-#: inc/customizer/options/form_fields.php:379
+#: inc/customizer/options/form_fields.php:384
 #: inc/customizer/controls/react/src/background/Background.js:20
 #: inc/customizer/controls/react/src/background/Background.js:71
 #: inc/customizer/controls/react/src/common/ColorControl.js:56
@@ -739,14 +739,14 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:194
 #: header-footer-grid/Core/Components/SearchResponsive.php:358
-#: inc/customizer/options/form_fields.php:223
+#: inc/customizer/options/form_fields.php:225
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:150
 msgid "Border Width"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:251
 #: header-footer-grid/Core/Components/SearchResponsive.php:415
-#: inc/customizer/options/form_fields.php:275
+#: inc/customizer/options/form_fields.php:278
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:131
 msgid "Border Radius"
 msgstr ""
@@ -1310,13 +1310,13 @@ msgid "Buttons"
 msgstr ""
 
 #: inc/customizer/options/buttons.php:59
-#: inc/customizer/options/form_fields.php:589
+#: inc/customizer/options/form_fields.php:596
 #: assets/js/src/gutenberg.js:13
 msgid "Primary"
 msgstr ""
 
 #: inc/customizer/options/buttons.php:62
-#: inc/customizer/options/form_fields.php:590
+#: inc/customizer/options/form_fields.php:597
 msgid "Secondary"
 msgstr ""
 
@@ -1355,35 +1355,35 @@ msgstr ""
 msgid "Field Padding"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:148
+#: inc/customizer/options/form_fields.php:149
 msgid "Field Spacing"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:182
+#: inc/customizer/options/form_fields.php:183
 msgid "Field Background Color"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:321
+#: inc/customizer/options/form_fields.php:325
 msgid "Border Color"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:358
+#: inc/customizer/options/form_fields.php:363
 msgid "Input Text"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:470
+#: inc/customizer/options/form_fields.php:477
 msgid "Form Labels"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:491
+#: inc/customizer/options/form_fields.php:498
 msgid "Label Spacing"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:584
+#: inc/customizer/options/form_fields.php:591
 msgid "Button Style"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:595
+#: inc/customizer/options/form_fields.php:602
 msgid "Customize the default button styles"
 msgstr ""
 
