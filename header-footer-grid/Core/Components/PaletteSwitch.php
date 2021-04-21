@@ -149,10 +149,10 @@ class PaletteSwitch extends Abstract_Component {
 		}
 
 		$css .= '
-		[data-theme="light"] {
+		[data-neve-theme="light"] {
 			' . $light_css . '
 		}
-		[data-theme="dark"] {
+		[data-neve-theme="dark"] {
 			' . $dark_css . '
 		}
 		';

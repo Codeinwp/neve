@@ -8,8 +8,6 @@
 
 "use strict"; // prevent global namespace pollution
 
-console.log( 'The Palette Switch is loaded.' );
-
 const attributeDataName = "data-neve-theme";
 const localStorageName = "neve_user_theme";
 

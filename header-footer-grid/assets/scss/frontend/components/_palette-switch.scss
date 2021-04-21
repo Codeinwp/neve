@@ -7,6 +7,9 @@
 	letter-spacing: 0;
 	span {
 	  display: inline-flex;
+	  &.icon {
+		vertical-align: middle;
+	  }
 	  &.label {
 		display: inline-flex;
 		font-size: small;
