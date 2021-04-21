@@ -16,12 +16,10 @@ $svg_icon  = PaletteSwitch::get_icon( $icon_type );
 $label     = component_setting( PaletteSwitch::PLACEHOLDER_ID );
 ?>
 <div class="toggle-palette">
-	<a class="toggle" href="<?php echo '#'; ?>" class="palette-icon-wrapper">
-		<span class="icon" style="display: inline-block;">
-			<?php echo wp_kses( $svg_icon, PaletteSwitch::get_kses_extended_ruleset() ); ?>
-		</span>
+	<a href="<?php echo '#'; ?>" class="toggle palette-icon-wrapper">
+		<span class="icon"><?php	echo $svg_icon; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 		<?php if ( $label !== '' ) { ?>
-			<span><?php echo esc_attr( $label ); ?></span>
+			<span class="label"><?php echo esc_attr( $label ); ?></span>
 		<?php } ?>
 	</a>
 </div>
