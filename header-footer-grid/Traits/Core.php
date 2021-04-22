@@ -113,6 +113,26 @@ trait Core {
 	}
 
 	/**
+	 * Sanitize responsive array.
+	 *
+	 * @param array $input Input.
+	 *
+	 * @return array
+	 */
+	public function sanitize_responsive_array( $input ) {
+		$default = array(
+			'mobile'  => 0,
+			'tablet'  => 0,
+			'desktop' => 0,
+		);
+		if ( is_array( $input ) && count( array_intersect( array_keys( $default ), array_keys( $input ) ) ) > 0 ) {
+			return $input;
+		}
+
+		return $default;
+	}
+
+	/**
 	 * Sanitize regular json.
 	 *
 	 * @param string $input Input.

@@ -25,11 +25,20 @@ const ControlWithLink = ({ link, children }) => {
 		return <a href={link.url}>{link.string}</a>;
 	};
 
+	const Description = () => {
+		if (link.description) {
+			return link.description + ' ';
+		}
+		return '';
+	};
+
 	return (
 		<>
 			{children}
+			{link && link.description && <hr />}
 			{link && (
 				<p className="neve-customizer-link">
+					<Description />
 					<Link />
 				</p>
 			)}

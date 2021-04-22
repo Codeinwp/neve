@@ -29,7 +29,6 @@ class PaletteSwitch extends Abstract_Component {
 	const TOGGLE_ICON_ID    = 'toggle_icon';
 	const PLACEHOLDER_ID    = 'placeholder';
 	const AUTO_ADJUST       = 'auto_adjust_color';
-	const DESCRIPTION_ID    = 'description_info';
 	const SIZE_ID           = 'icon_size';
 	const DEFAULT_ICON_SIZE = 16;
 
@@ -111,7 +110,7 @@ class PaletteSwitch extends Abstract_Component {
 	public function toggle_css( $css ) {
 		$css .= ' ';
 
-		$auto_adjust = get_theme_mod( $this->get_id() . '_' . self::AUTO_ADJUST, 1 );
+		$auto_adjust = get_theme_mod( $this->get_id() . '_' . self::AUTO_ADJUST, [ 'desktop' => 1 ] )['desktop'];
 
 		$customizer       = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
 		$defined_palettes = $customizer['palettes'];
@@ -301,30 +300,21 @@ class PaletteSwitch extends Abstract_Component {
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_GENERAL,
 				'transport'          => 'refresh',
-				'sanitize_callback'  => 'absint',
-				'default'            => 1,
+				'sanitize_callback'  => array( $this, 'sanitize_responsive_array' ),
 				'label'              => __( 'Automatically adjust color scheme', 'neve' ),
-				'type'               => 'neve_toggle_control',
+				'default'            => [ 'desktop' => 1 ],
+				'options'            => [
+					'excluded_devices' => [ 'tablet', 'mobile' ],
+					'hide_responsive'  => true,
+					'link'             => [
+						'description' => __( 'Adjust default color scheme based on the user device preferences.', 'neve' ),
+						'string'      => __( 'Learn More.', 'neve' ),
+						'url'         => esc_url( 'https://docs.themeisle.com/article/1319-fallback-fonts' ),
+					],
+				],
+				'type'               => 'Neve\Customizer\Controls\React\Responsive_Toggle',
 				'section'            => $this->section,
 				'conditional_header' => true,
-			]
-		);
-
-		SettingsManager::get_instance()->add(
-			[
-				'id'                => self::DESCRIPTION_ID,
-				'group'             => $this->get_id(),
-				'transport'         => 'postMessage',
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'type'              => '\HFG\Core\Customizer\Description_Control',
-				'section'           => $this->section,
-				'options'           => [
-					'options' => array(
-						/* translators: %s: Link to Learn More page. */
-						'html_description' => sprintf( __( 'Adjust default color scheme based on the user device preferences. %1$sLearn More%2$s.', 'neve' ), '<a href="">', '</a>' ),
-					),
-				],
 			]
 		);
 	}
