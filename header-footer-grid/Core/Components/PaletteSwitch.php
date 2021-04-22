@@ -110,7 +110,8 @@ class PaletteSwitch extends Abstract_Component {
 	public function toggle_css( $css ) {
 		$css .= ' ';
 
-		$auto_adjust = get_theme_mod( $this->get_id() . '_' . self::AUTO_ADJUST, [ 'desktop' => 1 ] )['desktop'];
+		// $auto_adjust = get_theme_mod( $this->get_id() . '_' . self::AUTO_ADJUST, [ 'desktop' => 1 ] )['desktop'];
+		$auto_adjust = get_theme_mod( $this->get_id() . '_' . self::AUTO_ADJUST, 1 );
 
 		$customizer       = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
 		$defined_palettes = $customizer['palettes'];
@@ -300,19 +301,12 @@ class PaletteSwitch extends Abstract_Component {
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_GENERAL,
 				'transport'          => 'refresh',
-				'sanitize_callback'  => array( $this, 'sanitize_responsive_array' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => 1,
 				'label'              => __( 'Automatically adjust color scheme', 'neve' ),
-				'default'            => [ 'desktop' => 1 ],
-				'options'            => [
-					'excluded_devices' => [ 'tablet', 'mobile' ],
-					'hide_responsive'  => true,
-					'link'             => [
-						'description' => __( 'Adjust default color scheme based on the user device preferences.', 'neve' ),
-						'string'      => __( 'Learn More.', 'neve' ),
-						'url'         => esc_url( 'https://docs.themeisle.com/article/1319-fallback-fonts' ),
-					],
-				],
-				'type'               => 'Neve\Customizer\Controls\React\Responsive_Toggle',
+				/* translators: %s: Link to Learn More page. TODO: add link */
+				'description'        => sprintf( __( 'Adjust default color scheme based on the user device preferences. %1$sLearn More%2$s.', 'neve' ), '<a href="">', '</a>' ),
+				'type'               => 'neve_toggle_control',
 				'section'            => $this->section,
 				'conditional_header' => true,
 			]
