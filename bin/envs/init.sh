@@ -7,9 +7,10 @@ ZIP_URL=${4}
 
 if [ ! -n "$ZIP_URL" ]
 then
+	yarn install --frozen-lockfile
 	# Install dependencies.
 	composer install --no-dev
-	yarn install --frozen-lockfile
+	yarn run build
 	yarn run dist
 	ZIP_URL="/tmp/repo/neve/artifact/neve.zip"
 fi

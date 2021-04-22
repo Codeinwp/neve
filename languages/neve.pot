@@ -2,7 +2,7 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.10.4\n"
+"Project-Id-Version: Neve\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
 "Last-Translator: friends@themeisle.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
