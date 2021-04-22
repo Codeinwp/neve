@@ -2,9 +2,9 @@
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
 **Tags:** blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar  
 **Requires at least:** 4.0  
-**Tested up to:** 5.5  
-**Stable tag:** 1.0.23  
-**Requires PHP:** 5.4.0  
+**Tested up to:** 5.7  
+**Stable tag:** trunk  
+**Requires PHP:** 5.5.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -18,6 +18,48 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+
+##### [Version 2.11.1](https://github.com/Codeinwp/neve/compare/v2.11.0...v2.11.1) (2021-04-13)
+
+- [Fix] Fatal error caused by the removal of some global functions
+
+
+
+
+#### [Version 2.11.0](https://github.com/Codeinwp/neve/compare/v2.10.4...v2.11.0) (2021-04-12)
+
+- [Fix] Masonry on the blog
+- [Fix] Sync theme mods on child themes
+- [Fix] Load proper weights for fonts in the customizer
+- [Fix] Global colors switching back when the color-picker is opened and input is focused
+- [Fix] Header cart icon not updating the total amount when adding a new product
+- [Fix] Hide the empty comment tag if comments are not enabled
+- [Fix] Hover color for secondary buttons when WooCommerce is active
+- [Fix] Headings not inheriting body font when set as default
+- [Fix] Active buttons from the editor sidebar overlapping the panel heading  
+- [Feat] Allow hosting Google Fonts locally
+- Show last updated date on posts
+- New developer hooks
+
+
+
+
+##### [Version 2.10.4](https://github.com/Codeinwp/neve/compare/v2.10.3...v2.10.4) (2021-03-16)
+
+- [Fix] customizer responsive switches not working
+
+
+
+
+##### [Version 2.10.3](https://github.com/Codeinwp/neve/compare/v2.10.2...v2.10.3) (2021-03-16)
+
+- [Fix] utilize wp_get_attachment_image for responsive logo image in header
+- [Fix] add compatibility with PHP 8
+- [Fix] apply font-family for inputs
+- [Fix] button styles not applying to form buttons properly
+
+
+
 
 ##### [Version 2.10.2](https://github.com/Codeinwp/neve/compare/v2.10.1...v2.10.2) (2021-03-01)
 

@@ -84,6 +84,11 @@ class Font_Manager extends Base_View {
 		// Make sure 400 font weight is always included.
 		$weights = array_unique( array_merge( $weights, [ '400' ] ) );
 
+		// In customizer, all font weights should be active for the preview.
+		if ( is_customize_preview() ) {
+			$weights = [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ];
+		}
+
 		// Sanitize font name.
 		$url_string = trim( $font );
 
@@ -118,6 +123,27 @@ class Font_Manager extends Base_View {
 		$url = add_query_arg( $query_args, $base_url );
 
 		// Enqueue style
-		wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
+
+		/**
+		 * Filters whether the remote fonts should be hosted locally.
+		 *
+		 * This filter applies for both Google Fonts and Typekit Fonts if the Typekit module is used.
+		 *
+		 * @param bool $load_locally Whether the Google Fonts should be hosted locally. Default value is false.
+		 *
+		 * @since 2.11
+		 */
+		$should_enqueue_locally = apply_filters( 'neve_load_remote_fonts_locally', false );
+		$is_admin_context       = is_admin() || is_customize_preview();
+		$vendor_file            = trailingslashit( get_template_directory() ) . 'vendor/wptt/webfont-loader/wptt-webfont-loader.php';
+		if ( (bool) $should_enqueue_locally && ! $is_admin_context && is_readable( $vendor_file ) ) {
+			require_once $vendor_file;
+			wp_add_inline_style(
+				'neve-style',
+				wptt_get_webfont_styles( 'https:' . $url )
+			);
+		} else {
+			wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
+		}
 	}
 }

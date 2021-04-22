@@ -7,9 +7,10 @@ ZIP_URL=${4}
 
 if [ ! -n "$ZIP_URL" ]
 then
+	yarn install --frozen-lockfile
 	# Install dependencies.
 	composer install --no-dev
-	yarn install --frozen-lockfile
+	yarn run build
 	yarn run dist
 	ZIP_URL="/tmp/repo/neve/artifact/neve.zip"
 fi
@@ -24,10 +25,7 @@ while docker-compose -f $DOCKER_FILE run --rm -u root cli wp --allow-root db che
     sleep 1
 done
 
-
-
 # Run setup
 echo "Setting up environment $WP_ENV"
 
 docker-compose -f $DOCKER_FILE run  --rm -u root cli bash -c "/var/www/html/bin/envs/cli-setup.sh $ZIP_URL $WP_VERSION $WP_ENV $SKIP_CACHE"
-

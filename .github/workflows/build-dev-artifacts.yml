@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize, ready_for_review]
     branches-ignore:
-      - 'update_dependencies'
+      - "update_dependencies"
 jobs:
   dev-zip:
     name: Build ZIP and upload to s3
@@ -43,6 +43,9 @@ jobs:
       - name: Install composer deps
         run: composer install --no-dev --prefer-dist --no-progress --no-suggest
       - name: Install yarn deps
+        run: yarn install --frozen-lockfile
+      - name: Install Cypress yarn
+        working-directory: ./e2e-tests
         run: yarn install --frozen-lockfile
       - name: Build files
         run: yarn run build
@@ -129,6 +132,10 @@ jobs:
           - machines: 1
             specs: "starter-sites"
             envs: "starter-sites"
+          ## Useful-plugins specs needs on machine
+          - machines: 1
+            specs: "useful-plugins"
+            envs: "useful-plugins"
           ## 2 machines for classic editor tests
           - machines: 1
             specs: "editor/classic"
@@ -162,22 +169,22 @@ jobs:
           - machines: 6
             specs: "customizer"
             envs: "sample-data"
+          ## 1 machine for woocommerce tests
+          - machines: 1
+            specs: "woocommerce"
+            envs: "woo-sample"
     runs-on: ubuntu-latest
     env:
       ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/cache@v1
-        name: Restore WP environment cache
-        with:
-          path: ~/.wp-content
-          key: ${{ runner.os }}-wpcore-${{ hashFiles('bin/envs/**/*.sh') }}-${{ matrix.envs }}
       - uses: actions/cache@v2
         id: yarn-and-build-cache
         with:
           path: |
             ~/.cache/Cypress
             node_modules
+            ./e2e-tests/node_modules
           key: ${{ runner.os }}-node_modules-build-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node_modules-build-
@@ -189,6 +196,7 @@ jobs:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
         uses: cypress-io/github-action@v2
         with:
+          working-directory: ./e2e-tests
           env: host=localhost,port=8080
           browser: chrome
           install: ${{ ! steps.yarn-and-build-cache.outputs.cache-hit }}

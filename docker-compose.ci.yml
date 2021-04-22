@@ -17,7 +17,6 @@ services:
     volumes:
       - wpcore:/var/www/html
       - ./bin:/var/www/html/bin
-      - ~/.wp-content:/var/www/html/wp-content
       - ./:/tmp/repo/neve
     depends_on:
       - mysql
@@ -39,7 +38,6 @@ services:
       - wpcore:/var/www/html
       - ./bin:/var/www/html/bin
       - ./:/tmp/repo/neve
-      - ~/.wp-content:/var/www/html/wp-content
     restart: always
     environment:
       WORDPRESS_DB_NAME: wordpress

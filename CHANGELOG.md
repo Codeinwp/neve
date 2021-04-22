@@ -1,3 +1,33 @@
+##### [Version 2.11.1](https://github.com/Codeinwp/neve/compare/v2.11.0...v2.11.1) (2021-04-13)
+
+- [Fix] Fatal error caused by the removal of some global functions
+
+#### [Version 2.11.0](https://github.com/Codeinwp/neve/compare/v2.10.4...v2.11.0) (2021-04-12)
+
+- [Fix] Masonry on the blog
+- [Fix] Sync theme mods on child themes
+- [Fix] Load proper weights for fonts in the customizer
+- [Fix] Global colors switching back when the color-picker is opened and input is focused
+- [Fix] Header cart icon not updating the total amount when adding a new product
+- [Fix] Hide the empty comment tag if comments are not enabled
+- [Fix] Hover color for secondary buttons when WooCommerce is active
+- [Fix] Headings not inheriting body font when set as default
+- [Fix] Active buttons from the editor sidebar overlapping the panel heading  
+- [Feat] Allow hosting Google Fonts locally
+- Show last updated date on posts
+- New developer hooks
+
+##### [Version 2.10.4](https://github.com/Codeinwp/neve/compare/v2.10.3...v2.10.4) (2021-03-16)
+
+- [Fix] customizer responsive switches not working
+
+##### [Version 2.10.3](https://github.com/Codeinwp/neve/compare/v2.10.2...v2.10.3) (2021-03-16)
+
+- [Fix] utilize wp_get_attachment_image for responsive logo image in header
+- [Fix] add compatibility with PHP 8
+- [Fix] apply font-family for inputs
+- [Fix] button styles not applying to form buttons properly
+
 ##### [Version 2.10.2](https://github.com/Codeinwp/neve/compare/v2.10.1...v2.10.2) (2021-03-01)
 
 - [Feat] Add compatibility with Google Web Stories

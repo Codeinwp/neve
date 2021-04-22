@@ -23,7 +23,7 @@
 		}
 	}
 
-	.posted-on .updated {
+	.posted-on:not(.nv-show-updated) .updated {
 		display: none;
 	}
 

@@ -19,3 +19,11 @@
   @import "gutenberg-editor/layout";
   @import "gutenberg-editor/media-queries";
 }
+
+.neve-meta-button-group {
+  .components-button-group {
+    .components-button.is-primary:not(.import) {
+      z-index: inherit;
+    }
+  }
+}
