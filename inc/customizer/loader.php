@@ -145,6 +145,7 @@ class Loader {
 				'neve_customize_preview_localization',
 				array(
 					'currentFeaturedImage' => '',
+					'newBuilder'           => neve_is_new_builder(),
 				)
 			)
 		);

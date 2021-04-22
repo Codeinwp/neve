@@ -418,13 +418,25 @@ add_filter(
 					'bottom' => [],
 				],
 			];
-		$components  = array_merge( $header['components'], $footer['components'] );
-		$defaults    = [];
+
+		$components = array_merge( $header['components'], $footer['components'] );
+		$defaults   = [];
 		foreach ( $components as $id => $settings ) {
 			foreach ( $settings as $setting_id => $value ) {
 				$defaults[ $id . '_' . $setting_id ] = $value;
 			}
 		}
+
+		if ( $is_new_builder ) {
+			return array_merge(
+				[
+					'hfg_header_layout_v2'      => wp_json_encode( $header['builder'] ),
+					'hfg_footer_layout_v2'      => wp_json_encode( $footer['builder'] ),
+					'hfg_page_header_layout_v2' => wp_json_encode( $page_header ),
+				],
+				$defaults
+			);
+		};
 
 		return array_merge(
 			[

@@ -112,6 +112,7 @@ class Config {
 	const CSS_PROP_TEXT_TRANSFORM             = 'text-transform';
 	const CSS_PROP_FONT_FAMILY                = 'font-family';
 	const CSS_PROP_BOX_SHADOW                 = 'box-shadow';
+	const CSS_PROP_GRID_TEMPLATE_COLS         = 'grid-template-columns';
 
 	const CSS_PROP_CUSTOM_BTN_TYPE           = 'btn-type';
 	const CSS_PROP_CUSTOM_FONT_WEIGHT_FAMILY = 'btn-type';

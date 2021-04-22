@@ -263,7 +263,6 @@ window.addEventListener('load', function () {
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Radio_Buttons':
 							if (!args.additional) return false;
-
 							const classes =
 								'hfg-item-v-top hfg-item-v-middle hfg-item-v-bottom';
 							const newClass = 'hfg-item-v-' + newValue;
@@ -272,11 +271,11 @@ window.addEventListener('load', function () {
 								args.selector
 							);
 							_.each(itemInner, function (item) {
-								removeClass(
-									item.parentNode.parentNode,
-									classes
-								);
-								addClass(item.parentNode.parentNode, newClass);
+								const node = neveCustomizePreview.newBuilder
+									? item.parentNode.parentNode
+									: item.parentNode;
+								removeClass(node, classes);
+								addClass(node, newClass);
 							});
 							break;
 						case '\\Neve\\Customizer\\Controls\\Radio_Image':

@@ -94,6 +94,14 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	protected $control_id;
 	/**
+	 * Holds the layout control id.
+	 *
+	 * @since   3.0.0
+	 * @access  protected
+	 * @var string $layout_control_id
+	 */
+	protected $layout_control_id;
+	/**
 	 * Holds the panel id.
 	 *
 	 * @since   1.0.0
@@ -212,8 +220,8 @@ abstract class Abstract_Builder implements Builder {
 	 * @access  public
 	 */
 	public function __construct() {
-
 		$this->set_property( 'control_id', 'hfg_' . $this->get_id() . '_layout' );
+		$this->set_property( 'layout_control_id', $this->control_id . ( neve_is_new_builder() ? '_v2' : '' ) );
 		$this->set_property( 'panel', 'hfg_' . $this->get_id() );
 		$this->set_property( 'section', $this->control_id . '_section' );
 		$this->init();
@@ -227,7 +235,6 @@ abstract class Abstract_Builder implements Builder {
 
 		add_filter( 'hfg_header_row_classes', [ $this, 'add_header_row_utility_classes' ], 10, 2 );
 		add_filter( 'hfg_page_header_row_classes', [ $this, 'add_header_row_utility_classes' ], 10, 2 );
-		add_filter( 'hfg_footer_row_classes', [ $this, 'add_footer_row_utility_classes' ], 10, 2 );
 	}
 
 	/**
@@ -253,12 +260,11 @@ abstract class Abstract_Builder implements Builder {
 	 * Define builder settings.
 	 */
 	public function define_builder_settings() {
-
 		$is_new_builder = neve_is_new_builder();
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                 => $this->control_id,
+				'id'                 => $this->layout_control_id,
 				'group'              => $this->control_id,
 				'tab'                => false,
 				'noformat'           => true,
@@ -693,7 +699,7 @@ abstract class Abstract_Builder implements Builder {
 		if ( ! empty( $this->layout_data ) ) {
 			return $this->layout_data;
 		}
-		$mod_value = json_decode( SettingsManager::get_instance()->get( 'hfg_' . $this->get_id() . '_layout' ), true );
+		$mod_value = json_decode( SettingsManager::get_instance()->get( $this->layout_control_id ), true );
 
 		$this->layout_data = wp_parse_args( $mod_value, array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
 
@@ -963,6 +969,10 @@ abstract class Abstract_Builder implements Builder {
 			$css_array = $this->add_sidebar_styles( $css_array );
 		}
 
+		if ( neve_is_new_builder() ) {
+			$css_array = $this->add_new_builder_styles( $css_array, $row_index );
+		}
+
 		return $css_array;
 	}
 
@@ -1082,28 +1092,6 @@ abstract class Abstract_Builder implements Builder {
 
 		return $classes;
 	}
-	/**
-	 * Add row utility classes.
-	 *
-	 * @param string $classes footer classes.
-	 * @param string $row_index row index.
-	 *
-	 * @return mixed
-	 */
-	public function add_footer_row_utility_classes( $classes, $row_index ) {
-		if ( $this->get_id() !== self::$current_builder ) {
-			return $classes;
-		}
-
-		$mods_prefix = 'hfg_footer_layout_' . $row_index . '_';
-		$columns     = SettingsManager::get_instance()->get( $mods_prefix . self::COLUMNS_NUMBER, 3 );
-		$layout      = SettingsManager::get_instance()->get( $mods_prefix . self::COLUMNS_LAYOUT, 'equal' );
-
-		$classes[] = 'columns-' . $columns;
-		$classes[] = $layout;
-
-		return $classes;
-	}
 
 	/**
 	 * Render the builder components.
@@ -1149,13 +1137,17 @@ abstract class Abstract_Builder implements Builder {
 				}
 
 
-				/** @var Abstract_Component $component_instance */
+				/**
+				 * An instance of Abstract_Component
+				 *
+				 * @var Abstract_Component $component_instance
+				 */
 				$component_instance = $this->builder_components[ $component['id'] ];
 				$is_mergeable       = $component_instance->get_property( 'is_auto_width' );
 
 
 				if ( ! $is_mergeable && ! $was_previous_mergeable || $row_index === 'sidebar' ) {
-					$render_index++;
+					$render_index ++;
 				}
 
 				$align          = $this->get_component_alignment( $component['id'] );
@@ -1221,7 +1213,6 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		foreach ( $render_buffer as $slot => $slot_data ) {
-			// TODO: Fix this for footer columns as it may affect it.
 			if ( $slot === 'center' && empty( $slot_data ) && ! $this->columns_layout ) {
 				continue;
 			}
@@ -1805,6 +1796,67 @@ abstract class Abstract_Builder implements Builder {
 				],
 			];
 		}
+
+		return $css_array;
+	}
+
+	/**
+	 * Adds the new builder row styles.
+	 *
+	 * @param array $css_array array of styles.
+	 *
+	 * @return array
+	 */
+	private function add_new_builder_styles( $css_array, $row ) {
+		if ( ! $this->columns_layout ) {
+			return $css_array;
+		}
+
+		$builder = $this->get_id();
+
+		$mods_prefix = 'hfg_' . $builder . '_layout_' . $row . '_';
+		$columns     = SettingsManager::get_instance()->get( $mods_prefix . self::COLUMNS_NUMBER, 3 );
+		$layout      = SettingsManager::get_instance()->get( $mods_prefix . self::COLUMNS_LAYOUT, 'equal' );
+
+		$styles_map = [
+			1 => [
+				'equal' => '1fr',
+			],
+			2 => [
+				'equal'       => '1fr 1fr',
+				'right-third' => '2fr 1fr',
+				'left-third'  => '1fr 2fr',
+			],
+			3 => [
+				'equal'             => '1fr 1fr 1fr',
+				'left-half'         => '2fr 1fr 1fr',
+				'right-half'        => '1fr 1fr 2fr',
+				'center-half'       => '1fr 2fr 1fr',
+				'center-two-thirds' => '1fr 3fr 1fr',
+			],
+			4 => [
+				'equal'      => 'repeat(4, 1fr)',
+				'left-half'  => '3fr 1fr 1fr 1fr',
+				'right-half' => '1fr 1fr 1fr 3fr',
+			],
+			5 => [
+				'equal' => 'repeat(5, 1fr)',
+			],
+		];
+
+		$layout      = $styles_map[ $columns ][ $layout ];
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.' . $builder . '-' . $row . '-inner .row',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_GRID_TEMPLATE_COLS => [
+					Dynamic_Selector::META_KEY     => $mods_prefix . self::COLUMNS_LAYOUT,
+					Dynamic_Selector::META_DEFAULT => 'auto',
+					Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $layout ) {
+						return sprintf( '%s:%s;', $css_prop, $layout );
+					},
+				],
+			],
+		];
 
 		return $css_array;
 	}

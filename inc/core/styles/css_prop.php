@@ -192,6 +192,7 @@ class Css_Prop {
 				break;
 			case Config::CSS_PROP_TEXT_TRANSFORM:
 			case Config::CSS_PROP_BOX_SHADOW:
+			case Config::CSS_PROP_GRID_TEMPLATE_COLS:
 				return sprintf( ' %s: %s; ', $css_prop, $value );
 				break;
 		}

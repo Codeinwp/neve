@@ -115,13 +115,26 @@ class Footer extends Abstract_Builder {
 	 * @access  protected
 	 */
 	protected function get_rows() {
+		if ( neve_is_new_builder() ) {
+			return [
+				'top'    => array(
+					'title'       => __( 'Footer Top', 'neve' ),
+					'description' => $this->get_property( 'description' ),
+				),
+				'main'   => array(
+					'title'       => __( 'Footer Main', 'neve' ),
+					'description' => $this->get_property( 'description' ),
+				),
+				'bottom' => array(
+					'title'       => __( 'Footer Bottom', 'neve' ),
+					'description' => $this->get_property( 'description' ),
+				),
+			];
+		}
+
 		return [
 			'top'    => array(
 				'title'       => __( 'Footer Top', 'neve' ),
-				'description' => $this->get_property( 'description' ),
-			),
-			'main'   => array(
-				'title'       => __( 'Footer Main', 'neve' ),
 				'description' => $this->get_property( 'description' ),
 			),
 			'bottom' => array(

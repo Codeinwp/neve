@@ -156,7 +156,11 @@ const HFGBuilder: React.FC<Props> = ({
 
 		nextItems[row][slot].splice(indexToRemove, 1);
 
-		if (slot === 'center' && nextItems[row][slot].length === 0) {
+		if (
+			slot === 'center' &&
+			nextItems[row][slot].length === 0 &&
+			!hasColumns
+		) {
 			const sideSlots = ['c-left', 'c-right'];
 			sideSlots.forEach((sideSlot) => {
 				if (!Array.isArray(nextItems[row][sideSlot])) {
