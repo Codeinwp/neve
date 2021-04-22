@@ -110,7 +110,6 @@ class PaletteSwitch extends Abstract_Component {
 	public function toggle_css( $css ) {
 		$css .= ' ';
 
-		// $auto_adjust = get_theme_mod( $this->get_id() . '_' . self::AUTO_ADJUST, [ 'desktop' => 1 ] )['desktop'];
 		$auto_adjust = get_theme_mod( $this->get_id() . '_' . self::AUTO_ADJUST, 1 );
 
 		$customizer       = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
