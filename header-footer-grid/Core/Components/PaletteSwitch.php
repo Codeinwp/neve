@@ -13,6 +13,7 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use Neve\Core\Dynamic_Css;
 use Neve\Core\Settings\Config;
 use Neve\Core\Styles\Dynamic_Selector;
 
@@ -85,19 +86,7 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return string
 	 */
 	public function toggle_script() {
-		$script = '';
-		global $wp_filesystem;
-		require_once ABSPATH . 'wp-admin/includes/file.php';
-		WP_Filesystem();
-		$file            = NEVE_MAIN_DIR . 'header-footer-grid/assets/js/components/palette_switch.js';
-		$is_file_present = $wp_filesystem->exists( $file );
-		if ( $is_file_present ) {
-			$contents = $wp_filesystem->get_contents( $file );
-			if ( $contents ) {
-				$script = $contents;
-			}
-		}
-		return $script;
+		return '"use strict";const attributeDataName="data-neve-theme",localStorageName="neve_user_theme";function detectColorScheme(){let e="light";if(localStorage.getItem(localStorageName))"dark"===localStorage.getItem(localStorageName)&&(e="dark");else{if(!window.matchMedia)return!1;window.matchMedia("(prefers-color-scheme: dark)").matches&&(e="dark")}"dark"===e&&document.documentElement.setAttribute(attributeDataName,"dark")}detectColorScheme();const toggleSwitch=document.querySelector(".toggle-palette a.palette-icon-wrapper");function switchTheme(e){if(e.preventDefault(),"dark"===document.documentElement.getAttribute(attributeDataName))return localStorage.setItem(localStorageName,"light"),void document.documentElement.setAttribute(attributeDataName,"light");localStorage.setItem(localStorageName,"dark"),document.documentElement.setAttribute(attributeDataName,"dark")}toggleSwitch.addEventListener("click",switchTheme,!1);';
 	}
 
 	/**
@@ -108,23 +97,31 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return string
 	 */
 	public function toggle_css( $css ) {
-		$css .= ' ';
+		$css          .= ' ';
+		$default_light = 'base';
+		$default_dark  = 'darkMode';
 
 		$auto_adjust = get_theme_mod( $this->get_id() . '_' . self::AUTO_ADJUST, 1 );
 
 		$customizer       = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
 		$defined_palettes = $customizer['palettes'];
-		$active_light     = get_theme_mod( $this->get_id() . '_' . self::LIGHT_PALETTE_ID, 'base' );
-		$active_dark      = get_theme_mod( $this->get_id() . '_' . self::DARK_PALETTE_ID, 'darkMode' );
+		$active_light     = get_theme_mod( $this->get_id() . '_' . self::LIGHT_PALETTE_ID, $default_light );
+		$active_dark      = get_theme_mod( $this->get_id() . '_' . self::DARK_PALETTE_ID, $default_dark );
 
-		$palette_light = $defined_palettes[ $active_light ];
-		$light_css     = '';
+		$palette_light = $defined_palettes[ $default_light ];
+		if ( isset( $defined_palettes[ $active_light ] ) ) {
+			$palette_light = $defined_palettes[ $active_light ];
+		}
+		$light_css = '';
 		foreach ( $palette_light['colors'] as $slug => $color ) {
 			$light_css .= '--' . $slug . ':' . $color . ';';
 		}
 
-		$palette_dark = $defined_palettes[ $active_dark ];
-		$dark_css     = '';
+		$palette_dark = $defined_palettes[ $default_dark ];
+		if ( isset( $defined_palettes[ $active_dark ] ) ) {
+			$palette_dark = $defined_palettes[ $active_dark ];
+		}
+		$dark_css = '';
 		foreach ( $palette_dark['colors'] as $slug => $color ) {
 			$dark_css .= '--' . $slug . ':' . $color . ';';
 		}
@@ -147,7 +144,7 @@ class PaletteSwitch extends Abstract_Component {
 			';
 		}
 
-		$css .= '
+		return $css . '
 		[data-neve-theme="light"] {
 			' . $light_css . '
 		}
@@ -155,8 +152,6 @@ class PaletteSwitch extends Abstract_Component {
 			' . $dark_css . '
 		}
 		';
-
-		return $css;
 	}
 
 	/**
@@ -322,6 +317,34 @@ class PaletteSwitch extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
+		$css = '.toggle-palette a {
+			text-decoration: none;
+		  }
+		  .toggle-palette a span {
+			display: inline-flex;
+		  }
+		  .toggle-palette a span.icon {
+			vertical-align: middle;
+		  }
+		  .toggle-palette a span.label {
+			display: inline-flex;
+			font-size: small;
+			vertical-align: middle;
+			color: var(--nv-primary-accent);
+		  }
+		  .toggle-palette a svg {
+			color: var(--nv-primary-accent);
+		  }
+		  .toggle-palette a:hover {
+			text-decoration: none;
+		  }
+		  .toggle-palette a:hover svg {
+			color: var(--nv-secondary-accent);
+		  }
+		  .toggle-palette a:focus {
+			text-decoration: underline;
+		  }';
+		wp_add_inline_style( 'neve-style', Dynamic_Css::minify_css( $css ) );
 
 		$selector = '.builder-item--' . $this->get_id() . ' .toggle-palette a.toggle span.icon';
 

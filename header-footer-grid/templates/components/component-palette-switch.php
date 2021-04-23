@@ -19,7 +19,7 @@ $label     = component_setting( PaletteSwitch::PLACEHOLDER_ID );
 	<a href="<?php echo '#'; ?>" class="toggle palette-icon-wrapper">
 		<span class="icon"><?php	echo $svg_icon; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 		<?php if ( $label !== '' ) { ?>
-			<span class="label"><?php echo esc_attr( $label ); ?></span>
+			<span class="label builder-item--primary-menu"><?php echo esc_attr( $label ); ?></span>
 		<?php } ?>
 	</a>
 </div>
