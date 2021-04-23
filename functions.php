@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '2.10.4' );
+define( 'NEVE_VERSION', '2.11.1' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 define( 'NEVE_MAIN_DIR', get_template_directory() . '/' );
@@ -90,15 +90,6 @@ if ( $_neve_bootstrap_errors->has_errors() ) {
 	return;
 }
 
-if ( ! function_exists( 'wp_body_open' ) ) {
-	/**
-	 * Body open hook.
-	 */
-	function wp_body_open() {
-		do_action( 'wp_body_open' );
-	}
-}
-
 /**
  * Themeisle SDK filter.
  *
@@ -116,6 +107,7 @@ add_filter( 'themeisle_sdk_products', 'neve_filter_sdk' );
 
 require_once 'globals/migrations.php';
 require_once 'globals/utilities.php';
+require_once 'globals/hooks.php';
 require_once 'globals/sanitize-functions.php';
 require_once get_template_directory() . '/start.php';
 

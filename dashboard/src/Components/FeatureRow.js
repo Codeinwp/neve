@@ -1,4 +1,4 @@
-import { Dashicon } from '@wordpress/components';
+import { Dashicon, ExternalLink } from '@wordpress/components';
 import { useState, createInterpolateElement } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
@@ -42,14 +42,16 @@ const FeatureRow = ({ item }) => {
 										{docsLink &&
 											createInterpolateElement(
 												__(
-													'More details <a>here</a>.',
+													'More details <external_link>here</external_link>.',
 													'neve'
 												),
 												{
-													a: (
-														<a href={docsLink}>
+													external_link: (
+														<ExternalLink
+															href={docsLink}
+														>
 															#dumptext
-														</a>
+														</ExternalLink>
 													),
 												}
 											)}
