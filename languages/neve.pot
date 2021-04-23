@@ -1869,6 +1869,14 @@ msgstr ""
 msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
+#: dashboard/src/Components/Content/Help.js:45
+msgid "Go to Neve Codex"
+msgstr ""
+
+#: dashboard/src/Components/Content/Help.js:49
+#: dashboard/src/Components/Content/Start.js:98
+msgid "Go to docs"
+msgstr ""
 
 #: dashboard/src/Components/Content/Help.js:63
 #: dashboard/src/Components/Sidebar.js:36
