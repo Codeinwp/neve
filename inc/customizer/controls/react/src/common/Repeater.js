@@ -1,21 +1,27 @@
 import {Icon} from '@wordpress/components';
 import classnames from 'classnames';
-import {useState} from '@wordpress/element';
+import {useState, useEffect} from '@wordpress/element';
 import IconField from "../icon-picker/IconField";
 import IconColor from "../icon-color/IconColor";
 
-const Repeater = ({title, icon}) => {
-	const [isVisible, setVisibility] = useState(true);
+const Repeater = ({value, fields, fieldsValue}) => {
+	const [isVisible, setVisibility] = useState();
 	const [isToggle, toggle] = useState(false);
-	const [inputValue, setInputValue] = useState(title);
-	const [linkValue, setLinkValue] = useState("#");
+	const [inputValue, setInputValue] = useState("");
+	const [linkValue, setLinkValue] = useState("");
+
+	useEffect(() => {
+		if (value.visibility === "yes") {
+			setVisibility(true);
+		}
+	}, []);
 
 	const visibilityHandler = () => {
 		setVisibility(!isVisible);
 	};
 
 	const toggleHandler = () => {
-		toggle(!isToggle)
+		toggle(!isToggle);
 	};
 
 	const changeInputValue = (e) => {
@@ -39,7 +45,10 @@ const Repeater = ({title, icon}) => {
 					/>
 				</span>
 
-				<div className="nv-repeater--item-title">
+				<div
+					className="nv-repeater--item-title"
+					onClick={() => toggleHandler()}
+				>
 					<span className="nv-repeater--title-text">{inputValue}</span>
 					<span
 						onClick={() => toggleHandler()}
@@ -52,40 +61,44 @@ const Repeater = ({title, icon}) => {
 				</div>
 			</div>
 
-			{
-				isToggle && (
-					<div className="nv-repeater-item--content">
-						<div className="nv-repeater--field">
-							<label>Title</label>
-							<input
-								type="text"
-								className="nv-repeater-text-field"
-								value={inputValue}
-								onChange={(e) => changeInputValue(e)}/>
+			{isToggle && (
+				fieldsValue.map(val => {
+					console.log(val)
+					return (
+						<div className="nv-repeater-item--content">
+							<div className="nv-repeater--field">
+								<label>{fields[val].label}</label>
+								<input
+									type={fields[val].type}
+									className="nv-repeater-text-field"
+									value={value[val]} // --> state
+									onChange={(e) => changeInputValue(e)}/>
+							</div>
+							<div className="nv-repeater--field">
+								{/*<IconField selectedIcon={selectedIcon} label={fields[val].label} type={fields[val].type}/>*/}
+							</div>
+							<div className="nv-repeater--field">
+								<label>{fields[val].label}</label>
+								<input
+									type={fields[val].type}
+									className="nv-repeater-text-field"
+									value={value[val]} // --> state
+									onChange={(e) => addLink(e)}
+								/>
+							</div>
+							<div className="nv-repeater--field">
+								<IconColor label={fields[val].label}/>
+							</div>
+							<div className="nv-repeater--field">
+								<IconColor label={fields[val].label}/>
+							</div>
 						</div>
-						<div className="nv-repeater--field">
-							<IconField/>
-						</div>
-						<div className="nv-repeater--field">
-							<label>Link</label>
-							<input
-								type="text"
-								className="nv-repeater-text-field"
-								value={linkValue}
-								onChange={(e) => addLink(e)}
-							/>
-						</div>
-						<div className="nv-repeater--field">
-							<IconColor label={"Icon Color"}/>
-						</div>
-						<div className="nv-repeater--field">
-							<IconColor label={"Background Color"}/>
-						</div>
-					</div>
-				)
-			}
+					)
+				})
+			)}
 		</div>
-	);
-};
+	)
+}
+;
 
 export default Repeater;
