@@ -217,8 +217,9 @@ class Typography extends Base_Customizer {
 					'input_attrs' => [
 						'system' => true,
 						'link'   => [
-							'string' => __( 'Learn more about fallback fonts', 'neve' ),
-							'url'    => esc_url( 'https://docs.themeisle.com/article/1319-fallback-fonts' ),
+							'string'  => __( 'Learn more about fallback fonts', 'neve' ),
+							'url'     => esc_url( 'https://docs.themeisle.com/article/1319-fallback-fonts' ),
+							'new_tab' => true,
 						],
 					],
 				],
@@ -247,6 +248,9 @@ class Typography extends Base_Customizer {
 					'priority'              => 10,
 					'type'                  => 'neve_font_family_control',
 					'live_refresh_selector' => apply_filters( 'neve_headings_font_family_selectors', 'h1:not(.site-title), .single h1.entry-title, h2, h3, .woocommerce-checkout h3, h4, h5, h6' ),
+					'input_attrs'           => [
+						'default_is_inherit' => true,
+					],
 				),
 				'\Neve\Customizer\Controls\React\Font_Family'
 			)
