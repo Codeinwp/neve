@@ -43,7 +43,7 @@ const PaletteColors = ({ values, defaults, save }) => {
 			<div className="color-array-wrap">
 				{globalPaletteColors.map((group, index) => {
 					return (
-						<Fragment key={index}>
+						<Fragment key={activePalette + '_' + index}>
 							{index > 0 && <hr />}
 							{Object.keys(group).map((slug) => {
 								return (

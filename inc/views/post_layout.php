@@ -66,6 +66,18 @@ class Post_Layout extends Base_View {
 
 		$content_order = apply_filters( 'neve_layout_single_post_elements_order', $content_order );
 
+
+		/** This filter is documented in header-footer-grid/templates/components/component-logo.php */
+		$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', true );
+		$skip_lazy_class      = '';
+		if ( $should_add_skip_lazy ) {
+			$thumbnail_index = array_search( 'thumbnail', $content_order );
+			$content_index   = array_search( 'content', $content_order );
+			if ( $thumbnail_index < $content_index ) {
+				$skip_lazy_class = 'skip-lazy';
+			}
+		}
+
 		if ( empty( $content_order ) ) {
 			return;
 		}
@@ -80,7 +92,8 @@ class Post_Layout extends Base_View {
 					echo '<div class="nv-thumb-wrap">';
 					echo get_the_post_thumbnail(
 						null,
-						'neve-blog'
+						'neve-blog',
+						array( 'class' => $skip_lazy_class )
 					);
 					echo '</div>';
 					break;
