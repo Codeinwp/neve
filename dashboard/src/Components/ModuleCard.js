@@ -7,7 +7,12 @@ import Toggle from './Options/Toggle';
 import { changeOption } from '../utils/rest';
 import classnames from 'classnames';
 
-import { Button, ToggleControl, Dashicon } from '@wordpress/components';
+import {
+	Button,
+	ToggleControl,
+	Dashicon,
+	ExternalLink,
+} from '@wordpress/components';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { Fragment, useState } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
@@ -155,9 +160,9 @@ const ModuleCard = ({
 				<p className="card-description">
 					{description + ' '}
 					{documentation.url && (
-						<a href={documentation.url}>
+						<ExternalLink href={documentation.url}>
 							{__('Learn More', 'neve')}
-						</a>
+						</ExternalLink>
 					)}
 				</p>
 				{links && getModuleStatus(slug) && (

@@ -48,10 +48,11 @@ class Simple_Upsell_Section extends \WP_Customize_Section {
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
-		$json                = parent::json();
-		$json['button_text'] = $this->button_text;
-		$json['link']        = $this->link;
-		$json['text']        = $this->text;
+		$json                  = parent::json();
+		$json['button_text']   = $this->button_text;
+		$json['link']          = $this->link;
+		$json['text']          = $this->text;
+		$json['screen_reader'] = $this->screen_reader;
 
 		return $json;
 	}
@@ -67,8 +68,9 @@ class Simple_Upsell_Section extends \WP_Customize_Section {
 					<p>{{data.text}}</p>
 				<# } #>
 				<# if( data.link && data.button_text ) { #>
-					<a href="{{data.link}}" class='button button-secondary'>
+					<a rel="external noreferrer noopener" target="_blank" href="{{data.link}}" class='button button-secondary'>
 						{{data.button_text}}
+						<span class="components-visually-hidden">{{data.screen_reader}}</span>
 					</a>
 				<# } #>
 			</div>
