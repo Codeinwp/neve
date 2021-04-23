@@ -646,6 +646,11 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => false,
 			],
+			Config::CSS_PROP_TEXT_TRANSFORM   => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.textTransform',
+				Dynamic_Selector::META_IS_RESPONSIVE => false,
+				Dynamic_Selector::META_SUFFIX        => '',
+			],
 			Config::CSS_PROP_FONT_SIZE        => [
 				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontSize',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
