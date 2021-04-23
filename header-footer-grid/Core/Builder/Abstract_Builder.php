@@ -1190,6 +1190,9 @@ abstract class Abstract_Builder implements Builder {
 
 				$render_buffer[ $slot ][ $render_index ]['components'][] = $component_instance;
 
+				// Make sure array index starts at 0.
+				$render_buffer[ $slot ] = array_values( $render_buffer[ $slot ] );
+
 				if ( $is_mergeable ) {
 					$was_previous_mergeable = true;
 				}
@@ -1219,10 +1222,10 @@ abstract class Abstract_Builder implements Builder {
 
 			$slot_classes = [ 'hfg-slot', $slot ];
 
-			if ( isset( $slot_data['components'] ) && count( $slot_data['components'] ) === 1 ) {
+			if ( count( $slot_data ) === 1 ) {
 				$slot_classes[] = 'single';
-				if ( isset( $slot_data['components'][0]['vertical-align'] ) ) {
-					$slot_classes[] = $slot_data['components'][0]['vertical-align'];
+				if ( isset( $slot_data[0]['vertical-align'] ) ) {
+					$slot_classes[] = $slot_data[0]['vertical-align'];
 				}
 			}
 
