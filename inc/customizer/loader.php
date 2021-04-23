@@ -89,6 +89,7 @@ class Loader {
 			apply_filters(
 				'neve_react_controls_localization',
 				array(
+					'nonce'            => wp_create_nonce( 'wp_rest' ),
 					'headerControls'   => [],
 					'instructionalVid' => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
 					'dynamicTags'      => array(

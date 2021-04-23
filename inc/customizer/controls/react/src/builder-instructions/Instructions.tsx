@@ -2,13 +2,14 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 import { WPCustomizeControl } from '../@types/customizer-control';
+import { HFGMigrationNotice } from './HFGMigrationNotice';
 
 type Props = {
 	control: WPCustomizeControl;
 };
 
 const Instructions: React.FC<Props> = ({ control }) => {
-	const { params } = control;
+	const { params, id } = control;
 	const { options } = params;
 	const { description, quickLinks } = options;
 
@@ -49,6 +50,9 @@ const Instructions: React.FC<Props> = ({ control }) => {
 							);
 						})}
 					</ul>
+					{id === 'hfg_header_layout_section_quick_links' && (
+						<HFGMigrationNotice />
+					)}
 				</div>
 			)}
 		</div>

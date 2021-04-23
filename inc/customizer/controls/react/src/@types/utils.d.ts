@@ -104,8 +104,9 @@ declare global {
 		NeveReactCustomize: {
 			HFG: HFGLayoutBuilder;
 			instructionalVid: string;
+			nonce: string;
 		};
-		NeveProReactCustomize: unknown;
+		NeveProReactCustomize: undefined | StringObjectKeys;
 	}
 }
 

@@ -1390,6 +1390,6 @@ function neve_get_global_colors_default( $migrated = false ) {
  */
 function neve_is_new_builder() {
 	// Todo: Implement this.
-	// return false;
+//	 return false;
 	return true;
 }

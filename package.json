@@ -100,6 +100,7 @@
 		"@types/wordpress__components": "^9.8.6",
 		"@typescript-eslint/eslint-plugin": "^4.19.0",
 		"@typescript-eslint/parser": "^4.19.0",
+		"@wordpress/api-fetch": "^3.23.1",
 		"@wordpress/components": "^12.0.1",
 		"@wordpress/compose": "^3.24.5",
 		"@wordpress/data": "^4.26.8",
