@@ -1869,14 +1869,6 @@ msgstr ""
 msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:45
-msgid "Go to Neve Codex"
-msgstr ""
-
-#: dashboard/src/Components/Content/Help.js:49
-#: dashboard/src/Components/Content/Start.js:93
-msgid "Go to docs"
-msgstr ""
 
 #: dashboard/src/Components/Content/Help.js:63
 #: dashboard/src/Components/Sidebar.js:36
@@ -1917,37 +1909,49 @@ msgstr ""
 msgid "View Changelog"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:55
+#: dashboard/src/Components/Content/Start.js:56
 #: dashboard/src/utils/common.js:39
 msgid "Starter Sites"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:65
-#: dashboard/src/Components/Content/Start.js:69
+#: dashboard/src/Components/Content/Start.js:66
+#: dashboard/src/Components/Content/Start.js:70
 msgid "Go to Starter Sites"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:78
+#: dashboard/src/Components/Content/Start.js:79
 msgid "Customizer quick links"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:86
+#: dashboard/src/Components/Content/Start.js:88
 msgid "Getting Started? Check help and docs"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:87
+#: dashboard/src/Components/Content/Start.js:92
 msgid "Need more details? Please check our full documentation for detailed information on how to use Neve."
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:102
+#: dashboard/src/Components/Content/Start.js:104
+msgid "Import professional page templates or sections with one click and have a website running in seconds."
+msgstr ""
+
+#: dashboard/src/Components/Content/Start.js:111
+msgid "Discover Templates Cloud"
+msgstr ""
+
+#: dashboard/src/Components/Content/Start.js:116
+msgid "Learn how to use Templates Cloud"
+msgstr ""
+
+#: dashboard/src/Components/Content/Start.js:127
 msgid "Feedback"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:103
+#: dashboard/src/Components/Content/Start.js:128
 msgid "Share your feedback for Neve and get the chance to win the pro version."
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:112
+#: dashboard/src/Components/Content/Start.js:137
 msgid "Leave Feedback"
 msgstr ""
 
@@ -2002,15 +2006,15 @@ msgstr ""
 msgid "Could not activate module. Please try again."
 msgstr ""
 
-#: dashboard/src/Components/Notification.js:88
+#: dashboard/src/Components/Notification.js:89
 msgid "Done!"
 msgstr ""
 
-#: dashboard/src/Components/Notification.js:95
+#: dashboard/src/Components/Notification.js:96
 msgid "An error occured. Please reload the page and try again."
 msgstr ""
 
-#: dashboard/src/Components/Notification.js:115
+#: dashboard/src/Components/Notification.js:116
 msgid "In Progress"
 msgstr ""
 
