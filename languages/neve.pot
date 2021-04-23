@@ -1811,9 +1811,9 @@ msgid "%s Comment"
 msgid_plural "%s Comments"
 msgstr[0] ""
 msgstr[1] ""
- 
+
 #: inc/views/pluggable/pagination.php:152
-#: inc/views/template_parts.php:309 
+#: inc/views/template_parts.php:322
 msgid "Pages:"
 msgstr ""
 
