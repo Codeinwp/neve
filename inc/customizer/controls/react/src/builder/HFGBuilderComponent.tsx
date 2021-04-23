@@ -79,9 +79,11 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 		}
 		if (isHidden) {
 			preview.style.maxHeight = '';
+			preview.style.marginTop = '';
 			return;
 		}
 		preview.style.maxHeight = `calc(100vh - ${height}px)`;
+		preview.style.marginTop = '0';
 	}, [isHidden, value]);
 
 	return (
