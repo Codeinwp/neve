@@ -119,6 +119,7 @@ class Form_Fields extends Base_Customizer {
 							.woocommerce-page .select2-container--default .select2-selection--single,
 							.woocommerce-page .woocommerce form .form-row input.input-text,
 							.woocommerce-page .woocommerce form .form-row textarea,
+							.widget select,
 							.wc-block-product-search form input.wc-block-product-search__field {
 								 padding-top: {{value.top}};
 								 padding-right: {{value.right}};
@@ -195,6 +196,7 @@ class Form_Fields extends Base_Customizer {
 							.woocommerce-page .select2-container--default .select2-selection--single,
 							.woocommerce-page .woocommerce form .form-row input.input-text,
 							.woocommerce-page .woocommerce form .form-row textarea,
+							.widget select,
 							.wc-block-product-search form input.wc-block-product-search__field {
 							    background-color: {{value}};
 						    }',
@@ -245,6 +247,7 @@ class Form_Fields extends Base_Customizer {
 							.woocommerce-page .select2-container--default .select2-selection--single,
 							.woocommerce-page .woocommerce form .form-row input.input-text,
 							.woocommerce-page .woocommerce form .form-row textarea,
+							.widget select,
 							.wc-block-product-search form input.wc-block-product-search__field {
                                 border-top-width: {{value.top}};
 							    border-right-width: {{value.right}};
@@ -297,6 +300,7 @@ class Form_Fields extends Base_Customizer {
 							.woocommerce-page .select2-container--default .select2-selection--single,
 							.woocommerce-page .woocommerce form .form-row input.input-text,
 							.woocommerce-page .woocommerce form .form-row textarea,
+							.widget select,
 							.wc-block-product-search form input.wc-block-product-search__field {
 								border-top-right-radius: {{value.top}};
 								border-bottom-right-radius: {{value.right}};
@@ -334,6 +338,7 @@ class Form_Fields extends Base_Customizer {
 							.woocommerce-page .select2-container--default .select2-selection--single,
 							.woocommerce-page .woocommerce form .form-row input.input-text,
 							.woocommerce-page .woocommerce form .form-row textarea,
+							.widget select,
 							.wc-block-product-search form input.wc-block-product-search__field {
 								border-color: {{value}};
 							}',
@@ -392,6 +397,7 @@ class Form_Fields extends Base_Customizer {
 							.woocommerce-page .select2-container--default .select2-selection--single,
 							.woocommerce-page .woocommerce form .form-row input.input-text,
 							.woocommerce-page .woocommerce form .form-row textarea,
+							.widget select,
 							.wc-block-product-search form input.wc-block-product-search__field {
 								color: {{value}};
 							}',
@@ -448,6 +454,7 @@ class Form_Fields extends Base_Customizer {
 						.woocommerce-page .select2-container--default .select2-selection--single,
 						.woocommerce-page .woocommerce form .form-row input.input-text,
 						.woocommerce-page .woocommerce form .form-row textarea,
+						.widget select,
 						.wc-block-product-search form input.wc-block-product-search__field
 					',
 				],

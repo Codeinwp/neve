@@ -1,14 +1,14 @@
 /* global neveDash */
 import classnames from 'classnames';
 
-import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { useState } from '@wordpress/element';
 import { Button, Dashicon } from '@wordpress/components';
 
 const Notification = ({ data, slug }) => {
 	// eslint-disable-next-line no-unused-vars
 	const [hidden, setHidden] = useState(false);
-	const { text, cta, type, update } = data;
+	const { text, cta, type, update, url } = data;
 	const [inProgress, setInProgress] = useState(false);
 	const [done, setDone] = useState(false);
 	const [errorMessage, setErrorMessage] = useState(null);
@@ -79,48 +79,69 @@ const Notification = ({ data, slug }) => {
 		});
 	};
 
-	return (
-		<div className={classes}>
-			{!done && <p>{text}</p>}
-			{'done' === done && (
-				<p>
-					<Dashicon icon="yes" />
-					{__('Done!', 'neve')}
-				</p>
-			)}
-			{'error' === done && (
-				<p>
-					<Dashicon icon="no" />
-					{errorMessage ||
-						__(
-							'An error occured. Please reload the page and try again.',
-							'neve'
+	const UpdateNotification = () => {
+		return (
+			<div className={classes}>
+				{!done && <p>{text}</p>}
+				{'done' === done && (
+					<p>
+						<Dashicon icon="yes" />
+						{__('Done!', 'neve')}
+					</p>
+				)}
+				{'error' === done && (
+					<p>
+						<Dashicon icon="no" />
+						{errorMessage ||
+							__(
+								'An error occured. Please reload the page and try again.',
+								'neve'
+							)}
+					</p>
+				)}
+				{cta && !done && (
+					<Button
+						isSecondary
+						disabled={inProgress}
+						className={classnames({ 'is-loading': inProgress })}
+						onClick={() => {
+							if (update) {
+								updateEntity();
+							}
+						}}
+					>
+						{inProgress ? (
+							<span>
+								<Dashicon icon="update" />{' '}
+								{__('In Progress', 'neve') + '...'}{' '}
+							</span>
+						) : (
+							cta
 						)}
-				</p>
-			)}
-			{cta && !done && (
-				<Button
-					isSecondary
-					disabled={inProgress}
-					className={classnames({ 'is-loading': inProgress })}
-					onClick={() => {
-						if (update) {
-							updateEntity();
-						}
-					}}
-				>
-					{inProgress ? (
-						<span>
-							<Dashicon icon="update" />{' '}
-							{__('In Progress', 'neve') + '...'}{' '}
-						</span>
-					) : (
-						cta
-					)}
-				</Button>
-			)}
-		</div>
-	);
+					</Button>
+				)}
+			</div>
+		);
+	};
+
+	const LinkNotification = () => {
+		return (
+			<div className={classes}>
+				<p>{text}</p>
+				{url && cta && (
+					<Button isSecondary href={url}>
+						{cta}
+					</Button>
+				)}
+			</div>
+		);
+	};
+
+	if (update) {
+		return <UpdateNotification />;
+	}
+
+	return <LinkNotification />;
 };
 
 export default Notification;

@@ -4,10 +4,13 @@ wp.customize.bind( 'ready', function () {
 		const markup =
 			'<div class="nv-upsell"><div class="nv-upsell-content">' +
 			upsellConfig.text +
-			'</div><a target="_blank" href="' +
+			'</div><a rel="external noreferrer noopener" target="_blank" href="' +
 			upsellConfig.button_url +
 			'" class="button button-primary">' +
 			upsellConfig.button_text +
+			'<span class="components-visually-hidden">' +
+			upsellConfig.screen_reader +
+			'</span>' +
 			'</a></div>';
 		const elChild = document.createElement( 'li' );
 		elChild.innerHTML = markup;
