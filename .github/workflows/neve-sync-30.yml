@@ -1,16 +1,17 @@
-name: Mirror branch
-
+name: Sync 30 branch
 on:
   push:
-    branches: [ development ]
-
+    branches:
+      - 'development'
 jobs:
-  mirror-to-new30:
+  sync-branch:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Merge branch and sync
-        run: |
-          git checkout new/3-0
-          git merge -m "Merge development into new/3-0" development
-          git push origin new/3-0
+      - name: Merge development -> new/3-0
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          from_branch: development
+          target_branch: new/3-0
+          github_token: ${{ secrets.BOT_TOKEN }}
