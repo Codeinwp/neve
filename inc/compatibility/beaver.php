@@ -164,6 +164,6 @@ class Beaver extends Page_Builder_Base {
 			}
 		}
 
-		return array_unique( $colors );
+		return array_values( array_unique( $colors ) );
 	}
 }
