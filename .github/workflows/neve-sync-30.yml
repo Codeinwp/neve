@@ -5,7 +5,7 @@ on:
     branches: [ development ]
 
 jobs:
-  mirror-to-master:
+  mirror-to-new30:
     runs-on: ubuntu-latest
     steps:
       - uses: zofrex/mirror-branch@v1
