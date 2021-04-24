@@ -8,7 +8,9 @@ jobs:
   mirror-to-new30:
     runs-on: ubuntu-latest
     steps:
-      - uses: zofrex/mirror-branch@v1
-        with:
-          target-branch: new/3-0
-          force: false
+      - uses: actions/checkout@master
+      - name: Merge branch and sync
+        run: |
+          git checkout new/3-0
+          git merge -m "Merge development into new/3-0" development
+          git push origin new/3-0
