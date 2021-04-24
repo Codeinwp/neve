@@ -1,0 +1,18 @@
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - 'development'
+      - 'new/**'
+jobs:
+  pr_announcer:
+    runs-on: ubuntu-latest
+    name: Sample job
+    steps:
+      - name: Checking merged commit
+        uses: Codeinwp/action-pr-merged-announcer@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          destination_repo: "Codeinwp/docs"
+          issue_labels: "neve"
