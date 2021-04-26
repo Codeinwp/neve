@@ -313,7 +313,7 @@ class PaletteSwitch extends Abstract_Component {
 				'sanitize_callback'  => 'absint',
 				'default'            => 1,
 				'label'              => __( 'Automatically adjust color scheme', 'neve' ),
-				/* translators: %s: Link to Learn More page. TODO: add link */
+				/* translators: %s: Link to Learn More page. TODO: add link  */
 				'description'        => sprintf( __( 'Adjust default color scheme based on the user device preferences. %1$sLearn More%2$s.', 'neve' ), '<a href="">', '</a>' ),
 				'type'               => 'neve_toggle_control',
 				'section'            => $this->section,
