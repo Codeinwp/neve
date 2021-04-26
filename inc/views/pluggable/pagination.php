@@ -115,26 +115,32 @@ class Pagination extends Base_View {
 			return;
 		}
 
-		if ( ! $this->has_infinite_scroll() ) {
-			if ( is_paged() ) {
-				/**
-				 * Executes actions before pagination.
-				 *
-				 * @since 2.3.8
-				 */
-				do_action( 'neve_before_pagination' );
-			}
-			echo wp_kses_post(
-				paginate_links(
-					array(
-						'type' => 'list',
-					)
-				)
-			);
-
-			return;
+		if ( ! $this->has_infinite_scroll() && is_paged() ) {
+			/**
+			 * Executes actions before pagination.
+			 *
+			 * @since 2.3.8
+			 */
+			do_action( 'neve_before_pagination' );
 		}
-		echo wp_kses_post( '<div class="load-more-posts"><span class="nv-loader" style="display: none;"></span><span class="infinite-scroll-trigger"></span></div>' );
+
+		$links = paginate_links( array( 'type' => 'list' ) );
+		$links = str_replace(
+			array( '<a class="prev', '<a class="next' ),
+			array(
+				'<a rel="prev" class="prev',
+				'<a rel="next" class="next',
+			),
+			$links
+		);
+
+		echo $this->has_infinite_scroll() ? '<div style="display: none;">' : '';
+		echo wp_kses_post( $links );
+		echo $this->has_infinite_scroll() ? '</div>' : '';
+
+		if ( $this->has_infinite_scroll() ) {
+			echo wp_kses_post( '<div class="load-more-posts"><span class="nv-loader" style="display: none;"></span><span class="infinite-scroll-trigger"></span></div>' );
+		}
 	}
 
 	/**
