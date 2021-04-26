@@ -56,8 +56,8 @@ class Header extends Abstract_Builder {
 		$this->set_property(
 			'instructions_array',
 			array(
-				'description' => __( 'Build your own header or choose from preset options.', 'neve' ),
-				'quickLinks'  => array(
+				'description'     => __( 'Build your own header or choose from preset options.', 'neve' ),
+				'quickLinks'      => array(
 					'custom_logo'                       => array(
 						'label' => esc_html__( 'Change Logo', 'neve' ),
 						'icon'  => 'dashicons-editor-customchar',
@@ -71,6 +71,8 @@ class Header extends Abstract_Builder {
 						'icon'  => 'dashicons-menu',
 					),
 				),
+				'builderMigrated' => get_theme_mod( 'neve_migrated_builders' ),
+				'hadOldBuilder'   => ! empty( get_theme_mod( 'hfg_header_layout' ) ) || ! empty( get_theme_mod( 'hfg_footer_data' ) ),
 			)
 		);
 	}

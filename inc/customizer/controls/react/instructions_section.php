@@ -24,15 +24,18 @@ class Instructions_Section extends \WP_Customize_Section {
 	 * @var string
 	 */
 	public $type = 'hfg_instructions';
+
 	/**
 	 * Default options schema.
 	 *
 	 * @var array
 	 */
 	public $default_options = [
-		'description' => '',
-		'image'       => '',
-		'quickLinks'  => [],
+		'description'     => '',
+		'image'           => '',
+		'quickLinks'      => [],
+		'hadOldBuilder'   => false,
+		'alreadyMigrated' => false,
 	];
 
 	/**
@@ -42,13 +45,11 @@ class Instructions_Section extends \WP_Customize_Section {
 	 */
 	public $options = [];
 
-
 	/**
 	 * Gather the parameters passed to client JavaScript via JSON.
 	 *
-	 * @since 4.1.0
-	 *
 	 * @return array The array to be exported to the client as JSON.
+	 * @since 4.1.0
 	 */
 	public function json() {
 		$json            = parent::json();

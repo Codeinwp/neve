@@ -71,9 +71,7 @@ class Admin {
 
 		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
 
-		if( ! neve_is_new_builder() ) {
-			add_action( 'rest_api_init', [$this, 'register_rest_routes'] );
-		}
+		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
 	}
 
 	/**
@@ -81,31 +79,42 @@ class Admin {
 	 */
 	public function register_rest_routes() {
 		register_rest_route(
-				'nv/migration',
-				'/new_header_builder',
-				array(
-						'methods'             => \WP_REST_Server::READABLE,
-						'callback'            => [ $this, 'migrate_builders_data' ],
-						'permission_callback' => function () {
-							return current_user_can( 'manage_options' );
-						},
-				)
+			'nv/migration',
+			'/new_header_builder',
+			array(
+				'methods'             => \WP_REST_Server::READABLE,
+				'callback'            => [ $this, 'migrate_builders_data' ],
+				'permission_callback' => function () {
+					return current_user_can( 'manage_options' );
+				},
+			)
 		);
 	}
 
 	/**
 	 * Migration routine request.
 	 *
-	 * @param \WP_REST_Request $request the recieved request.
+	 * @param \WP_REST_Request $request the received request.
 	 *
 	 * @return \WP_REST_Response
 	 */
-	public function migrate_builders_data(\WP_REST_Request $request) {
-		print_r($request);
+	public function migrate_builders_data( \WP_REST_Request $request ) {
+		$is_rollback = $request->get_header( 'rollback' );
+
+		if ( $is_rollback === 'yes' ) {
+			set_theme_mod( 'neve_migrated_builders', false );
+
+			return new \WP_REST_Response( [ 'success' => true ], 200 );
+		}
+
 		$migrator = new Builder_Migrator();
 		$response = $migrator->run();
 
-		return new \WP_REST_Response(['success' => $response], 200);
+		if ( $response === true ) {
+			set_theme_mod( 'neve_migrated_builders', true );
+		}
+
+		return new \WP_REST_Response( [ 'success' => $response ], 200 );
 	}
 
 	/**

@@ -1389,7 +1389,5 @@ function neve_get_global_colors_default( $migrated = false ) {
  * @since 3.0
  */
 function neve_is_new_builder() {
-	// Todo: Implement this.
-//	 return false;
-	return true;
+	return get_theme_mod( 'neve_migrated_builders' );
 }

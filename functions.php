@@ -113,9 +113,3 @@ require_once get_template_directory() . '/start.php';
 
 
 require_once get_template_directory() . '/header-footer-grid/loader.php';
-
-
-$migrator = new \Neve\Core\Builder_Migrator();
-$migrator->run();
-
-//die();

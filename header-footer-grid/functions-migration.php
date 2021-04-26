@@ -114,10 +114,14 @@ function neve_hfg_footer_settings() {
 	];
 
 	$components                                        = [];
-	$builder['desktop']['bottom']['center'][]          = [
+	$builder['desktop']['bottom']['c-left'][]          = [
 		'id' => 'footer_copyright',
 	];
-	$components['footer_copyright']['component_align'] = 'center';
+	$components['footer_copyright']['component_align'] = [
+		'mobile'  => 'center',
+		'tablet'  => 'center',
+		'desktop' => 'center',
+	];
 
 	return [
 		'builder'    => $builder,
@@ -152,7 +156,6 @@ function neve_hfg_header_settings() {
 		],
 	];
 
-	$components                            = [];
 	$builder['desktop']['main']['left'][]  = [
 		'id'       => 'logo',
 		'settings' => [
@@ -175,13 +178,9 @@ function neve_hfg_header_settings() {
 		'id' => 'primary-menu',
 	];
 
-	$components['nav-icon']['component_align']     = 'right';
-	$components['primary-menu']['component_align'] = 'right';
-	$components['logo']['component_align']         = 'left';
-
 	return [
 		'builder'    => $builder,
-		'components' => $components,
+		'components' => [],
 	];
 }
 

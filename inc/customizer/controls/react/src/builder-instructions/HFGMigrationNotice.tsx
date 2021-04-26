@@ -1,15 +1,24 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
-import { rotateRight, starFilled } from '@wordpress/icons';
+import { rotateRight, starFilled, undo } from '@wordpress/icons';
 import { Button } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
+import { StringObjectKeys } from '../@types/utils';
 
 interface MigrationResponse {
 	success: boolean;
 }
 
-export const HFGMigrationNotice: React.FC = () => {
+type Props = {
+	alreadyMigrated: boolean;
+	hadOldBuilder: boolean;
+};
+
+export const HFGMigrationNotice: React.FC<Props> = ({
+	alreadyMigrated,
+	hadOldBuilder,
+}) => {
 	const [error, setError] = useState(false);
 	const [isCustomizerSaved, setCustomizerSaved] = useState(true);
 
@@ -27,6 +36,10 @@ export const HFGMigrationNotice: React.FC = () => {
 		if (whiteLabel) {
 			return null;
 		}
+	}
+
+	if (alreadyMigrated && !hadOldBuilder) {
+		return null;
 	}
 
 	const { nonce } = window.NeveReactCustomize;
@@ -48,7 +61,7 @@ export const HFGMigrationNotice: React.FC = () => {
 		return url.href;
 	};
 
-	const runMigration = () => {
+	const runMigration = (rollback = false) => {
 		window.wp.customize.notifications.add(
 			new window.wp.customize.OverlayNotification(
 				'neve_migrating_builders',
@@ -60,10 +73,15 @@ export const HFGMigrationNotice: React.FC = () => {
 			)
 		);
 
+		const headers: StringObjectKeys = { 'X-WP-Nonce': nonce };
+		if (rollback) {
+			headers.rollback = 'yes';
+		}
+
 		apiFetch({
 			path: '/nv/migration/new_header_builder',
-			headers: { 'X-WP-Nonce': nonce },
 			method: 'GET',
+			headers,
 		}).then((response: unknown) => {
 			if (!(response as MigrationResponse).success) {
 				window.wp.customize.notifications.remove(
@@ -72,6 +90,7 @@ export const HFGMigrationNotice: React.FC = () => {
 				setError(true);
 				return false;
 			}
+			reloadPage();
 		});
 	};
 
@@ -83,6 +102,49 @@ export const HFGMigrationNotice: React.FC = () => {
 		}
 		window.location.href = url;
 	};
+
+	const renderErrors = () => {
+		return (
+			<>
+				{!isCustomizerSaved && !error && (
+					<p>
+						{__(
+							'You must save the current customizer values before running the migration.',
+							'neve'
+						)}
+					</p>
+				)}
+
+				{error && (
+					<p>
+						{__(
+							'Something went wrong. Please reload the page and try again.',
+							'neve'
+						)}
+					</p>
+				)}
+			</>
+		);
+	};
+
+	if (alreadyMigrated) {
+		return (
+			<>
+				<hr />
+				<p>{__('Want to roll back to the old builder?', 'neve')}</p>
+				<Button
+					disabled={!isCustomizerSaved && !error}
+					isSecondary={!error}
+					isDestructive={error}
+					icon={undo}
+					onClick={error ? reloadPage : () => runMigration(true)}
+				>
+					{error ? __('Reload', 'neve') : __('Roll Back', 'neve')}
+				</Button>
+				{renderErrors()}
+			</>
+		);
+	}
 
 	return (
 		<>
@@ -103,30 +165,13 @@ export const HFGMigrationNotice: React.FC = () => {
 				isSecondary={!error}
 				isDestructive={error}
 				icon={error ? rotateRight : starFilled}
-				onClick={error ? reloadPage : runMigration}
+				onClick={error ? reloadPage : () => runMigration()}
 			>
 				{error
 					? __('Reload', 'neve')
 					: __('Migrate Builders Data', 'neve')}
 			</Button>
-
-			{!isCustomizerSaved && !error && (
-				<p>
-					{__(
-						'You must save the current customizer values before running the migration.',
-						'neve'
-					)}
-				</p>
-			)}
-
-			{error && (
-				<p>
-					{__(
-						'Something went wrong. Please reload the page and try again.',
-						'neve'
-					)}
-				</p>
-			)}
+			{renderErrors()}
 		</>
 	);
 };

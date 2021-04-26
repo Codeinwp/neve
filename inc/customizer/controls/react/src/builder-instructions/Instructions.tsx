@@ -11,7 +11,7 @@ type Props = {
 const Instructions: React.FC<Props> = ({ control }) => {
 	const { params, id } = control;
 	const { options } = params;
-	const { description, quickLinks } = options;
+	const { description, quickLinks, builderMigrated, hadOldBuilder } = options;
 
 	const linkKeys = Object.keys(quickLinks);
 
@@ -51,7 +51,10 @@ const Instructions: React.FC<Props> = ({ control }) => {
 						})}
 					</ul>
 					{id === 'hfg_header_layout_section_quick_links' && (
-						<HFGMigrationNotice />
+						<HFGMigrationNotice
+							hadOldBuilder={hadOldBuilder}
+							alreadyMigrated={builderMigrated}
+						/>
 					)}
 				</div>
 			)}
