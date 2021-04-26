@@ -15,6 +15,7 @@ use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Core\Dynamic_Css;
 use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
 
 /**
@@ -123,7 +124,7 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return string
 	 */
 	public function toggle_script() {
-		return '"use strict";const attributeDataName="data-neve-theme",localStorageName="neve_user_theme";function detectColorScheme(){let e="light";if(localStorage.getItem(localStorageName))"dark"===localStorage.getItem(localStorageName)&&(e="dark");else{if(!window.matchMedia)return!1;window.matchMedia("(prefers-color-scheme: dark)").matches&&(e="dark")}"dark"===e&&document.documentElement.setAttribute(attributeDataName,"dark")}detectColorScheme();const toggleSwitch=document.querySelector(".toggle-palette a.palette-icon-wrapper");function switchTheme(e){if(e.preventDefault(),"dark"===document.documentElement.getAttribute(attributeDataName))return localStorage.setItem(localStorageName,"light"),void document.documentElement.setAttribute(attributeDataName,"light");localStorage.setItem(localStorageName,"dark"),document.documentElement.setAttribute(attributeDataName,"dark")}toggleSwitch.addEventListener("click",switchTheme,!1);';
+		return '"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let r="light";if(localStorage.getItem(t))"dark"===localStorage.getItem(t)&&(r="dark");else{if(!window.matchMedia)return!1;window.matchMedia("(prefers-color-scheme: dark)").matches&&(r="dark")}"dark"===r&&document.documentElement.setAttribute(e,"dark")}r();const a=document.querySelector(".toggle-palette a.palette-icon-wrapper");function n(r){if(r.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}a.addEventListener("click",n,!1);';
 	}
 
 	/**
@@ -138,12 +139,12 @@ class PaletteSwitch extends Abstract_Component {
 		$default_light = 'base';
 		$default_dark  = 'darkMode';
 
-		$auto_adjust = get_theme_mod( $this->get_id() . '_' . self::AUTO_ADJUST, 1 );
+		$auto_adjust = Mods::get( $this->get_id() . '_' . self::AUTO_ADJUST, 1 );
 
-		$customizer       = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
+		$customizer       = Mods::get( 'neve_global_colors', neve_get_global_colors_default( true ) );
 		$defined_palettes = $customizer['palettes'];
-		$active_light     = get_theme_mod( $this->get_id() . '_' . self::LIGHT_PALETTE_ID, $default_light );
-		$active_dark      = get_theme_mod( $this->get_id() . '_' . self::DARK_PALETTE_ID, $default_dark );
+		$active_light     = Mods::get( $this->get_id() . '_' . self::LIGHT_PALETTE_ID, $default_light );
+		$active_dark      = Mods::get( $this->get_id() . '_' . self::DARK_PALETTE_ID, $default_dark );
 
 		$palette_light = $defined_palettes[ $default_light ];
 		if ( isset( $defined_palettes[ $active_light ] ) ) {
@@ -198,7 +199,7 @@ class PaletteSwitch extends Abstract_Component {
 	 */
 	public function add_settings() {
 
-		$customizer            = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
+		$customizer            = Mods::get( 'neve_global_colors', neve_get_global_colors_default( true ) );
 		$defined_palettes      = $customizer['palettes'];
 		$light_palette_default = $customizer['activePalette'];
 		$dark_palette_default  = isset( $customizer['palettes']['darkMode'] ) ? 'darkMode' : array_keys( $customizer['palettes'] )[1];
