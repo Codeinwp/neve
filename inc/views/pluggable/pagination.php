@@ -34,7 +34,7 @@ class Pagination extends Base_View {
 	public function register_endpoints() {
 		register_rest_route(
 			'nv/v1/posts',
-			'/page/(?P<page_number>\d+)/',
+			'/page/(?P<page_number>\d+)(?:/(?P<lang>[a-zA-Z0-9-]+))?',
 			array(
 				'methods'             => \WP_REST_Server::CREATABLE,
 				'callback'            => array( $this, 'get_posts' ),
@@ -66,6 +66,11 @@ class Pagination extends Base_View {
 
 		$output = '';
 
+		global $sitepress;
+		if ( ! empty( $request['lang'] ) && gettype( $sitepress ) === 'object' && method_exists( $sitepress, 'switch_lang' ) ) {
+			$sitepress->switch_lang( $request['lang'] );
+		}
+
 		$query = new \WP_Query( $args );
 		if ( $query->have_posts() ) {
 			ob_start();
@@ -95,10 +100,15 @@ class Pagination extends Base_View {
 		global $wp_query;
 		$max_pages = $wp_query->max_num_pages;
 
-		$data['infiniteScroll']         = 'enabled';
-		$data['infiniteScrollMaxPages'] = $max_pages;
-		$data['infiniteScrollEndpoint'] = rest_url( 'nv/v1/posts/page/' );
-		$data['infiniteScrollQuery']    = wp_json_encode( $wp_query->query );
+		$data['infScroll'] = 'enabled';
+		$data['maxPages']  = $max_pages;
+		$data['endpoint']  = rest_url( 'nv/v1/posts/page/' );
+		$data['query']     = wp_json_encode( $wp_query->query );
+
+		$current_lang = apply_filters( 'wpml_current_language', null );
+		if ( ! empty( $current_lang ) ) {
+			$data['lang'] = $current_lang;
+		}
 
 		return $data;
 	}
