@@ -546,7 +546,7 @@ msgid "Cart Icon"
 msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:116
-#: header-footer-grid/Core/Components/PaletteSwitch.php:249
+#: header-footer-grid/Core/Components/PaletteSwitch.php:286
 #: header-footer-grid/Core/Components/SearchResponsive.php:154
 msgid "Icon Size"
 msgstr ""
@@ -720,35 +720,35 @@ msgstr ""
 msgid "Palette Switch"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:181
-#: header-footer-grid/Core/Components/PaletteSwitch.php:182
+#: header-footer-grid/Core/Components/PaletteSwitch.php:218
+#: header-footer-grid/Core/Components/PaletteSwitch.php:219
 msgid "Light Palette"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:202
-#: header-footer-grid/Core/Components/PaletteSwitch.php:203
+#: header-footer-grid/Core/Components/PaletteSwitch.php:239
+#: header-footer-grid/Core/Components/PaletteSwitch.php:240
 msgid "Dark Palette"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:223
-#: header-footer-grid/Core/Components/PaletteSwitch.php:224
+#: header-footer-grid/Core/Components/PaletteSwitch.php:260
+#: header-footer-grid/Core/Components/PaletteSwitch.php:261
 msgid "Select icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:280
+#: header-footer-grid/Core/Components/PaletteSwitch.php:317
 msgid "Label"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:283
+#: header-footer-grid/Core/Components/PaletteSwitch.php:320
 msgid "Leave blank for no label ..."
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:300
+#: header-footer-grid/Core/Components/PaletteSwitch.php:337
 msgid "Automatically adjust color scheme"
 msgstr ""
 
 #. translators: %s: Link to Learn More page. TODO: add link
-#: header-footer-grid/Core/Components/PaletteSwitch.php:302
+#: header-footer-grid/Core/Components/PaletteSwitch.php:339
 msgid "Adjust default color scheme based on the user device preferences. %1$sLearn More%2$s."
 msgstr ""
 
