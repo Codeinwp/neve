@@ -64,10 +64,10 @@ const CustomizerTemplate = () => {
 		background_color: {
 			type: 'color',
 			label: 'Background Color',
-		}
-	}
+		},
+	};
 
-	return <Customizer value={value} setValue={setValue} fields={fields} />
-}
+	return <Customizer value={value} setValue={setValue} fields={fields} />;
+};
 
 export const Default = CustomizerTemplate.bind({});
