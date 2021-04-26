@@ -22,7 +22,6 @@ import { UiControl } from './ui/Control';
 import { GlobalColorsControl } from './global-colors/Control';
 import { NRSpacingControl } from './non-responsive-spacing/Control';
 import { InlineSelectControl } from './inline-select/Control';
-import { CustomizerControl } from './customizer/Control';
 
 import './style.scss';
 
@@ -48,7 +47,6 @@ controlConstructor.neve_ui_control = UiControl;
 controlConstructor.neve_global_colors = GlobalColorsControl;
 controlConstructor.neve_non_responsive_spacing = NRSpacingControl;
 controlConstructor.neve_inline_select = InlineSelectControl;
-controlConstructor.neve_customizer = CustomizerControl;
 
 const initDeviceSwitchers = () => {
 	const deviceButtons = document.querySelector(
