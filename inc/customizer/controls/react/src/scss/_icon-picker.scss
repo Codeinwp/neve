@@ -1,6 +1,6 @@
 @import './vars';
 
-.nv--icons-container {
+.icons-container {
   display: flex;
   flex-wrap: wrap;
   border: 1px solid #ccc;
@@ -9,7 +9,7 @@
   margin-top: -3px;
   list-style-type: none;
 
-  .nv--icons-search {
+  .icons-search {
 	padding: 5px;
 	width: 100%;
 	position: relative;
@@ -37,7 +37,7 @@
 	}
   }
 
-  a {
+  span {
 	width: 20%;
 	display: flex;
 	align-items: center;

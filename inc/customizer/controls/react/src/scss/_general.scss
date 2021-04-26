@@ -75,12 +75,12 @@ input {
   font-weight: inherit;
 }
 
-a {
-  color: $button-color;
-  transition-property: border, background, color;
-  transition-duration: .05s;
-  transition-timing-function: ease-in-out;
-}
+//a {
+//  color: $button-color;
+//  transition-property: border, background, color;
+//  transition-duration: .05s;
+//  transition-timing-function: ease-in-out;
+//}
 
 @-moz-keyframes neve-spin {
   100% {
