@@ -34,7 +34,7 @@ class Pagination extends Base_View {
 	public function register_endpoints() {
 		register_rest_route(
 			'nv/v1/posts',
-			'/page/(?P<page_number>\d+)(?:/(?P<lang>[a-zA-Z0-9-]+))?',
+			'/page/(?P<page_number>\d+)(?:/(?P<lang>[a-zA-Z0-9-_]+))?',
 			array(
 				'methods'             => \WP_REST_Server::CREATABLE,
 				'callback'            => array( $this, 'get_posts' ),
@@ -65,15 +65,19 @@ class Pagination extends Base_View {
 		$args['post_status']         = 'publish';
 
 		if ( ! empty( $request['lang'] ) ) {
-			$args['lang'] = $request['lang'];
+			if ( defined( 'POLYLANG_VERSION' ) ) {
+				$args['lang'] = $request['lang'];
+			}
+
+			if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+				global $sitepress;
+				if ( gettype( $sitepress ) === 'object' && method_exists( $sitepress, 'switch_lang' ) ) {
+					$sitepress->switch_lang( $request['lang'] );
+				}
+			}
 		}
 
 		$output = '';
-
-		global $sitepress;
-		if ( ! empty( $request['lang'] ) && gettype( $sitepress ) === 'object' && method_exists( $sitepress, 'switch_lang' ) ) {
-			$sitepress->switch_lang( $request['lang'] );
-		}
 
 		$query = new \WP_Query( $args );
 		if ( $query->have_posts() ) {
