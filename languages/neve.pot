@@ -546,7 +546,7 @@ msgid "Cart Icon"
 msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:116
-#: header-footer-grid/Core/Components/PaletteSwitch.php:287
+#: header-footer-grid/Core/Components/PaletteSwitch.php:264
 #: header-footer-grid/Core/Components/SearchResponsive.php:154
 msgid "Icon Size"
 msgstr ""
@@ -716,39 +716,34 @@ msgstr ""
 msgid "Footer Menu"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:67
+#: header-footer-grid/Core/Components/PaletteSwitch.php:66
 msgid "Palette Switch"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:219
-#: header-footer-grid/Core/Components/PaletteSwitch.php:220
-msgid "Light Palette"
-msgstr ""
-
-#: header-footer-grid/Core/Components/PaletteSwitch.php:240
-#: header-footer-grid/Core/Components/PaletteSwitch.php:241
+#: header-footer-grid/Core/Components/PaletteSwitch.php:217
+#: header-footer-grid/Core/Components/PaletteSwitch.php:218
 msgid "Dark Palette"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:261
-#: header-footer-grid/Core/Components/PaletteSwitch.php:262
+#: header-footer-grid/Core/Components/PaletteSwitch.php:238
+#: header-footer-grid/Core/Components/PaletteSwitch.php:239
 msgid "Select icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:318
+#: header-footer-grid/Core/Components/PaletteSwitch.php:295
 msgid "Label"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:321
+#: header-footer-grid/Core/Components/PaletteSwitch.php:298
 msgid "Leave blank for no label ..."
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:338
+#: header-footer-grid/Core/Components/PaletteSwitch.php:315
 msgid "Automatically adjust color scheme"
 msgstr ""
 
 #. translators: %s: Link to Learn More page. TODO: add link
-#: header-footer-grid/Core/Components/PaletteSwitch.php:340
+#: header-footer-grid/Core/Components/PaletteSwitch.php:317
 msgid "Adjust default color scheme based on the user device preferences. %1$sLearn More%2$s."
 msgstr ""
 
