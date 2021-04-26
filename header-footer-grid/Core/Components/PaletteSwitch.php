@@ -77,6 +77,34 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return void
 	 */
 	public function load_scripts() {
+		$css = '.toggle-palette a {
+			text-decoration: none;
+		  }
+		  .toggle-palette a span {
+			display: inline-flex;
+		  }
+		  .toggle-palette a span.icon {
+			vertical-align: middle;
+		  }
+		  .toggle-palette a span.label {
+			display: inline-flex;
+			font-size: small;
+			vertical-align: middle;
+			color: var(--nv-primary-accent);
+		  }
+		  .toggle-palette a svg {
+			color: var(--nv-primary-accent);
+		  }
+		  .toggle-palette a:hover {
+			text-decoration: none;
+		  }
+		  .toggle-palette a:hover svg {
+			color: var(--nv-secondary-accent);
+		  }
+		  .toggle-palette a:focus {
+			text-decoration: underline;
+		  }';
+		wp_add_inline_style( 'neve-style', Dynamic_Css::minify_css( $css ) );
 		wp_add_inline_script( 'neve-script', $this->toggle_script() );
 	}
 
@@ -317,35 +345,6 @@ class PaletteSwitch extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		$css = '.toggle-palette a {
-			text-decoration: none;
-		  }
-		  .toggle-palette a span {
-			display: inline-flex;
-		  }
-		  .toggle-palette a span.icon {
-			vertical-align: middle;
-		  }
-		  .toggle-palette a span.label {
-			display: inline-flex;
-			font-size: small;
-			vertical-align: middle;
-			color: var(--nv-primary-accent);
-		  }
-		  .toggle-palette a svg {
-			color: var(--nv-primary-accent);
-		  }
-		  .toggle-palette a:hover {
-			text-decoration: none;
-		  }
-		  .toggle-palette a:hover svg {
-			color: var(--nv-secondary-accent);
-		  }
-		  .toggle-palette a:focus {
-			text-decoration: underline;
-		  }';
-		wp_add_inline_style( 'neve-style', Dynamic_Css::minify_css( $css ) );
-
 		$selector = '.builder-item--' . $this->get_id() . ' .toggle-palette a.toggle span.icon';
 
 		$css_array[] = [
