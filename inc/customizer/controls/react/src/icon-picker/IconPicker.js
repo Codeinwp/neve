@@ -1,4 +1,4 @@
-import * as icons from '../common/icons';
+import { icons } from '../common/icons';
 import { useState, useEffect } from '@wordpress/element';
 
 const IconPicker = ({ selectIcon, isOpen }) => {
@@ -23,14 +23,12 @@ const IconPicker = ({ selectIcon, isOpen }) => {
 		return filtered.map((icon) => {
 			return (
 				// eslint-disable-next-line jsx-a11y/anchor-is-valid
-				<a
-					//
-					href="javascript: return false;"
+				<span
 					key={icon.id}
 					onClick={() => selectIcon(icon.icon, icon.id)}
 				>
 					{icon.icon}
-				</a>
+				</span>
 			);
 		});
 	};
@@ -44,8 +42,8 @@ const IconPicker = ({ selectIcon, isOpen }) => {
 
 	return (
 		isOpen && (
-			<div className="nv--icons-container">
-				<div className="nv--icons-search">
+			<div className="icons-container">
+				<div className="icons-search">
 					<svg
 						width="15"
 						height="15"

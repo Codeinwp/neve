@@ -1,6 +1,6 @@
 import { SVG, Path } from '@wordpress/primitives';
 
-export const behanceSquare = {
+const behanceSquare = {
 	id: 'behance-square',
 	icon: (
 		<SVG
@@ -14,7 +14,7 @@ export const behanceSquare = {
 	),
 };
 
-export const behance = {
+const behance = {
 	id: 'behance',
 	icon: (
 		<SVG
@@ -28,7 +28,7 @@ export const behance = {
 	),
 };
 
-export const deviantart = {
+const deviantart = {
 	id: 'deviantart',
 	icon: (
 		<SVG
@@ -42,7 +42,7 @@ export const deviantart = {
 	),
 };
 
-export const comments = {
+const comments = {
 	id: 'comments',
 	icon: (
 		<SVG
@@ -56,7 +56,7 @@ export const comments = {
 	),
 };
 
-export const digg = {
+const digg = {
 	id: 'digg',
 	icon: (
 		<SVG
@@ -70,7 +70,7 @@ export const digg = {
 	),
 };
 
-export const dribbble = {
+const dribbble = {
 	id: 'dribbble',
 	icon: (
 		<SVG
@@ -84,7 +84,7 @@ export const dribbble = {
 	),
 };
 
-export const envelopeO = {
+const envelopeO = {
 	id: 'envelope-o',
 	icon: (
 		<SVG
@@ -98,7 +98,7 @@ export const envelopeO = {
 	),
 };
 
-export const envelope = {
+const envelope = {
 	id: 'envelope',
 	icon: (
 		<SVG
@@ -112,7 +112,7 @@ export const envelope = {
 	),
 };
 
-export const envelopeSquare = {
+const envelopeSquare = {
 	id: 'envelope-square',
 	icon: (
 		<SVG
@@ -126,7 +126,7 @@ export const envelopeSquare = {
 	),
 };
 
-export const facebookOfficial = {
+const facebookOfficial = {
 	id: 'facebook-official',
 	icon: (
 		<SVG
@@ -140,7 +140,7 @@ export const facebookOfficial = {
 	),
 };
 
-export const facebookSquare = {
+const facebookSquare = {
 	id: 'facebook-square',
 	icon: (
 		<SVG
@@ -154,7 +154,7 @@ export const facebookSquare = {
 	),
 };
 
-export const facebook = {
+const facebook = {
 	id: 'facebook',
 	icon: (
 		<SVG
@@ -168,7 +168,7 @@ export const facebook = {
 	),
 };
 
-export const flickr = {
+const flickr = {
 	id: 'flickr',
 	icon: (
 		<SVG
@@ -182,7 +182,7 @@ export const flickr = {
 	),
 };
 
-export const foursquare = {
+const foursquare = {
 	id: 'foursquare',
 	icon: (
 		<SVG
@@ -196,7 +196,7 @@ export const foursquare = {
 	),
 };
 
-export const githubAlt = {
+const githubAlt = {
 	id: 'github-alt',
 	icon: (
 		<SVG
@@ -210,7 +210,7 @@ export const githubAlt = {
 	),
 };
 
-export const github = {
+const github = {
 	id: 'github',
 	icon: (
 		<SVG
@@ -224,7 +224,7 @@ export const github = {
 	),
 };
 
-export const gitlab = {
+const gitlab = {
 	id: 'gitlab',
 	icon: (
 		<SVG
@@ -238,7 +238,7 @@ export const gitlab = {
 	),
 };
 
-export const imdb = {
+const imdb = {
 	id: 'imdb',
 	icon: (
 		<SVG
@@ -252,7 +252,7 @@ export const imdb = {
 	),
 };
 
-export const instagram = {
+const instagram = {
 	id: 'instagram',
 	icon: (
 		<SVG
@@ -266,7 +266,7 @@ export const instagram = {
 	),
 };
 
-export const link = {
+const link = {
 	id: 'link',
 	icon: (
 		<SVG
@@ -280,7 +280,7 @@ export const link = {
 	),
 };
 
-export const linkedinSquare = {
+const linkedinSquare = {
 	id: 'linkedin-square',
 	icon: (
 		<SVG
@@ -294,7 +294,7 @@ export const linkedinSquare = {
 	),
 };
 
-export const linkedin = {
+const linkedin = {
 	id: 'linkedin',
 	icon: (
 		<SVG
@@ -308,7 +308,7 @@ export const linkedin = {
 	),
 };
 
-export const mapMarker = {
+const mapMarker = {
 	id: 'map-marker',
 	icon: (
 		<SVG
@@ -322,7 +322,7 @@ export const mapMarker = {
 	),
 };
 
-export const map = {
+const map = {
 	id: 'map',
 	icon: (
 		<SVG width="20" height="20" viewBox="0 0 576 512">
@@ -331,7 +331,7 @@ export const map = {
 	),
 };
 
-export const mapPin = {
+const mapPin = {
 	id: 'map-pin',
 	icon: (
 		<SVG
@@ -345,7 +345,7 @@ export const mapPin = {
 	),
 };
 
-export const mapSigns = {
+const mapSigns = {
 	id: 'map-signs',
 	icon: (
 		<SVG
@@ -359,7 +359,7 @@ export const mapSigns = {
 	),
 };
 
-export const mobile = {
+const mobile = {
 	id: 'mobile',
 	icon: (
 		<SVG
@@ -373,7 +373,7 @@ export const mobile = {
 	),
 };
 
-export const paypal = {
+const paypal = {
 	id: 'paypal',
 	icon: (
 		<SVG
@@ -387,7 +387,7 @@ export const paypal = {
 	),
 };
 
-export const phoneSquare = {
+const phoneSquare = {
 	id: 'phone-square',
 	icon: (
 		<SVG
@@ -401,7 +401,7 @@ export const phoneSquare = {
 	),
 };
 
-export const phone = {
+const phone = {
 	id: 'phone',
 	icon: (
 		<SVG
@@ -415,7 +415,7 @@ export const phone = {
 	),
 };
 
-export const pinterestP = {
+const pinterestP = {
 	id: 'pinterest-p',
 	icon: (
 		<SVG
@@ -429,7 +429,7 @@ export const pinterestP = {
 	),
 };
 
-export const pinterestSquare = {
+const pinterestSquare = {
 	id: 'pinterest-square',
 	icon: (
 		<SVG
@@ -443,7 +443,7 @@ export const pinterestSquare = {
 	),
 };
 
-export const pinterest = {
+const pinterest = {
 	id: 'pinterest',
 	icon: (
 		<SVG
@@ -457,7 +457,7 @@ export const pinterest = {
 	),
 };
 
-export const podcast = {
+const podcast = {
 	id: 'podcast',
 	icon: (
 		<SVG
@@ -471,7 +471,7 @@ export const podcast = {
 	),
 };
 
-export const redditSquare = {
+const redditSquare = {
 	id: 'reddit-square',
 	icon: (
 		<SVG
@@ -484,7 +484,7 @@ export const redditSquare = {
 		</SVG>
 	),
 };
-export const reddit = {
+const reddit = {
 	id: 'reddit',
 	icon: (
 		<SVG
@@ -498,7 +498,7 @@ export const reddit = {
 	),
 };
 
-export const rssSquare = {
+const rssSquare = {
 	id: 'rss-square',
 	icon: (
 		<SVG
@@ -512,7 +512,7 @@ export const rssSquare = {
 	),
 };
 
-export const rss = {
+const rss = {
 	id: 'rss',
 	icon: (
 		<SVG
@@ -526,7 +526,7 @@ export const rss = {
 	),
 };
 
-export const search = {
+const search = {
 	id: 'search',
 	icon: (
 		<SVG
@@ -540,7 +540,7 @@ export const search = {
 	),
 };
 
-export const shareAltSquare = {
+const shareAltSquare = {
 	id: 'share-alt-square',
 	icon: (
 		<SVG
@@ -554,7 +554,7 @@ export const shareAltSquare = {
 	),
 };
 
-export const shareAlt = {
+const shareAlt = {
 	id: 'share-alt',
 	icon: (
 		<SVG
@@ -568,7 +568,7 @@ export const shareAlt = {
 	),
 };
 
-export const skype = {
+const skype = {
 	id: 'skype',
 	icon: (
 		<SVG
@@ -582,7 +582,7 @@ export const skype = {
 	),
 };
 
-export const slack = {
+const slack = {
 	id: 'slack',
 	icon: (
 		<SVG
@@ -596,7 +596,7 @@ export const slack = {
 	),
 };
 
-export const slideshare = {
+const slideshare = {
 	id: 'slideshare',
 	icon: (
 		<SVG
@@ -610,7 +610,7 @@ export const slideshare = {
 	),
 };
 
-export const snapchatGhost = {
+const snapchatGhost = {
 	id: 'snapchat-ghost',
 	icon: (
 		<SVG
@@ -624,7 +624,7 @@ export const snapchatGhost = {
 	),
 };
 
-export const snapchatSquare = {
+const snapchatSquare = {
 	id: 'snapchat-square',
 	icon: (
 		<SVG
@@ -638,7 +638,7 @@ export const snapchatSquare = {
 	),
 };
 
-export const snapchat = {
+const snapchat = {
 	id: 'snapchat',
 	icon: (
 		<SVG
@@ -652,7 +652,7 @@ export const snapchat = {
 	),
 };
 
-export const soundcloud = {
+const soundcloud = {
 	id: 'soundcloud',
 	icon: (
 		<SVG
@@ -666,7 +666,7 @@ export const soundcloud = {
 	),
 };
 
-export const spotify = {
+const spotify = {
 	id: 'spotify',
 	icon: (
 		<SVG
@@ -680,7 +680,7 @@ export const spotify = {
 	),
 };
 
-export const stackoverflow = {
+const stackoverflow = {
 	id: 'stackoverflow',
 	icon: (
 		<SVG
@@ -694,7 +694,7 @@ export const stackoverflow = {
 	),
 };
 
-export const steamSquare = {
+const steamSquare = {
 	id: 'steam-square',
 	icon: (
 		<SVG
@@ -707,7 +707,7 @@ export const steamSquare = {
 		</SVG>
 	),
 };
-export const steam = {
+const steam = {
 	id: 'steam',
 	icon: (
 		<SVG
@@ -721,7 +721,7 @@ export const steam = {
 	),
 };
 
-export const telegram = {
+const telegram = {
 	id: 'telegram',
 	icon: (
 		<SVG
@@ -735,7 +735,7 @@ export const telegram = {
 	),
 };
 
-export const trello = {
+const trello = {
 	id: 'trello',
 	icon: (
 		<SVG
@@ -749,7 +749,7 @@ export const trello = {
 	),
 };
 
-export const tripadvisor = {
+const tripadvisor = {
 	id: 'tripadvisor',
 	icon: (
 		<SVG
@@ -763,7 +763,7 @@ export const tripadvisor = {
 	),
 };
 
-export const tumblrSquare = {
+const tumblrSquare = {
 	id: 'tumblr-square',
 	icon: (
 		<SVG
@@ -777,8 +777,8 @@ export const tumblrSquare = {
 	),
 };
 
-export const tumblr = {
-	id: 'trumblr',
+const tumblr = {
+	id: 'tumblr',
 	icon: (
 		<SVG
 			width="20"
@@ -791,7 +791,7 @@ export const tumblr = {
 	),
 };
 
-export const twitch = {
+const twitch = {
 	id: 'twitch',
 	icon: (
 		<SVG
@@ -805,7 +805,7 @@ export const twitch = {
 	),
 };
 
-export const twitterSquare = {
+const twitterSquare = {
 	id: 'twitter-square',
 	icon: (
 		<SVG
@@ -819,7 +819,7 @@ export const twitterSquare = {
 	),
 };
 
-export const twitter = {
+const twitter = {
 	id: 'twitter',
 	icon: (
 		<SVG
@@ -833,7 +833,7 @@ export const twitter = {
 	),
 };
 
-export const vimeoSquare = {
+const vimeoSquare = {
 	id: 'vimeo-square',
 	icon: (
 		<SVG
@@ -847,7 +847,7 @@ export const vimeoSquare = {
 	),
 };
 
-export const vimeo = {
+const vimeo = {
 	id: 'vimeo',
 	icon: (
 		<SVG
@@ -861,7 +861,7 @@ export const vimeo = {
 	),
 };
 
-export const vk = {
+const vk = {
 	id: 'vk',
 	icon: (
 		<SVG
@@ -875,7 +875,7 @@ export const vk = {
 	),
 };
 
-export const wechat = {
+const wechat = {
 	id: 'wechat',
 	icon: (
 		<SVG
@@ -889,7 +889,7 @@ export const wechat = {
 	),
 };
 
-export const weibo = {
+const weibo = {
 	id: 'weibo',
 	icon: (
 		<SVG
@@ -903,7 +903,7 @@ export const weibo = {
 	),
 };
 
-export const whatsapp = {
+const whatsapp = {
 	id: 'whatsapp',
 	icon: (
 		<SVG
@@ -917,7 +917,7 @@ export const whatsapp = {
 	),
 };
 
-export const yelp = {
+const yelp = {
 	id: 'yelp',
 	icon: (
 		<SVG
@@ -931,7 +931,7 @@ export const yelp = {
 	),
 };
 
-export const youtubePlay = {
+const youtubePlay = {
 	id: 'youtube-play',
 	icon: (
 		<SVG
@@ -945,7 +945,7 @@ export const youtubePlay = {
 	),
 };
 
-export const youtubeSquare = {
+const youtubeSquare = {
 	id: 'youtube-square',
 	icon: (
 		<SVG
@@ -959,7 +959,7 @@ export const youtubeSquare = {
 	),
 };
 
-export const youtube = {
+const youtube = {
 	id: 'youtube',
 	icon: (
 		<SVG
@@ -973,7 +973,7 @@ export const youtube = {
 	),
 };
 
-export const userIconStyle1 = {
+const userIconStyle1 = {
 	id: 'user_icon_style1',
 	icon: (
 		<SVG
@@ -987,7 +987,7 @@ export const userIconStyle1 = {
 	),
 };
 
-export const userIconStyle2 = {
+const userIconStyle2 = {
 	id: 'user_icon_style2',
 	icon: (
 		<SVG
@@ -1001,7 +1001,7 @@ export const userIconStyle2 = {
 	),
 };
 
-export const userIconStyle3 = {
+const userIconStyle3 = {
 	id: 'user_icon_style3',
 	icon: (
 		<SVG
@@ -1015,7 +1015,7 @@ export const userIconStyle3 = {
 	),
 };
 
-export const userIconStyle4 = {
+const userIconStyle4 = {
 	id: 'user_icon_style4',
 	icon: (
 		<SVG
@@ -1029,7 +1029,7 @@ export const userIconStyle4 = {
 	),
 };
 
-export const userIconStyle5 = {
+const userIconStyle5 = {
 	id: 'user_icon_style5',
 	icon: (
 		<SVG
@@ -1043,7 +1043,7 @@ export const userIconStyle5 = {
 	),
 };
 
-export const userIconStyle6 = {
+const userIconStyle6 = {
 	id: 'user_icon_style6',
 	icon: (
 		<SVG
@@ -1057,7 +1057,7 @@ export const userIconStyle6 = {
 	),
 };
 
-export const cartIconStyle1 = {
+const cartIconStyle1 = {
 	id: 'cart-icon-style1',
 	icon: (
 		<SVG
@@ -1071,7 +1071,7 @@ export const cartIconStyle1 = {
 	),
 };
 
-export const cartIconStyle2 = {
+const cartIconStyle2 = {
 	id: 'cart-icon-style2',
 	icon: (
 		<SVG
@@ -1085,7 +1085,7 @@ export const cartIconStyle2 = {
 	),
 };
 
-export const cartIconStyle3 = {
+const cartIconStyle3 = {
 	id: 'cart-icon-style3',
 	icon: (
 		<SVG
@@ -1099,7 +1099,7 @@ export const cartIconStyle3 = {
 	),
 };
 
-export const cartIconStyle4 = {
+const cartIconStyle4 = {
 	id: 'cart-icon-style4',
 	icon: (
 		<SVG
@@ -1113,7 +1113,7 @@ export const cartIconStyle4 = {
 	),
 };
 
-export const cartIconStyle5 = {
+const cartIconStyle5 = {
 	id: 'cart-icon-style5',
 	icon: (
 		<SVG
@@ -1127,7 +1127,7 @@ export const cartIconStyle5 = {
 	),
 };
 
-export const cartIconStyle6 = {
+const cartIconStyle6 = {
 	id: 'cart-icon-style6',
 	icon: (
 		<SVG
@@ -1139,4 +1139,89 @@ export const cartIconStyle6 = {
 			<Path d="M602 118.6L537.1 15C531.3 5.7 521 0 510 0H106C95 0 84.7 5.7 78.9 15L14 118.6c-33.5 53.5-3.8 127.9 58.8 136.4 4.5.6 9.1.9 13.7.9 29.6 0 55.8-13 73.8-33.1 18 20.1 44.3 33.1 73.8 33.1 29.6 0 55.8-13 73.8-33.1 18 20.1 44.3 33.1 73.8 33.1 29.6 0 55.8-13 73.8-33.1 18.1 20.1 44.3 33.1 73.8 33.1 4.7 0 9.2-.3 13.7-.9 62.8-8.4 92.6-82.8 59-136.4zM529.5 288c-10 0-19.9-1.5-29.5-3.8V384H116v-99.8c-9.6 2.2-19.5 3.8-29.5 3.8-6 0-12.1-.4-18-1.2-5.6-.8-11.1-2.1-16.4-3.6V480c0 17.7 14.3 32 32 32h448c17.7 0 32-14.3 32-32V283.2c-5.4 1.6-10.8 2.9-16.4 3.6-6.1.8-12.1 1.2-18.2 1.2z" />
 		</SVG>
 	),
+};
+
+export const icons = {
+	'behance-square': behanceSquare,
+	behance,
+	deviantart,
+	comments,
+	digg,
+	dribbble,
+	'envelope-o': envelopeO,
+	envelope,
+	'envelope-square': envelopeSquare,
+	'facebook-official': facebookOfficial,
+	'facebook-square': facebookSquare,
+	facebook,
+	flickr,
+	foursquare,
+	'github-alt': githubAlt,
+	github,
+	gitlab,
+	imdb,
+	instagram,
+	link,
+	'linkedin-square': linkedinSquare,
+	linkedin,
+	'map-marker': mapMarker,
+	map,
+	'map-pin': mapPin,
+	'map-signs': mapSigns,
+	mobile,
+	paypal,
+	'phone-square': phoneSquare,
+	phone,
+	'pinterest-p': pinterestP,
+	'pinterest-square': pinterestSquare,
+	pinterest,
+	podcast,
+	'reddit-square': redditSquare,
+	reddit,
+	'rss-square': rssSquare,
+	rss,
+	search,
+	'share-alt-square': shareAltSquare,
+	'share-alt': shareAlt,
+	skype,
+	slack,
+	slideshare,
+	'snapchat-ghost': snapchatGhost,
+	'snapchat-square': snapchatSquare,
+	snapchat,
+	soundcloud,
+	spotify,
+	stackoverflow,
+	'steam-square': steamSquare,
+	steam,
+	telegram,
+	trello,
+	tripadvisor,
+	'tumblr-square': tumblrSquare,
+	tumblr,
+	twitch,
+	'twitter-square': twitterSquare,
+	twitter,
+	'vimeo-square': vimeoSquare,
+	vimeo,
+	vk,
+	wechat,
+	weibo,
+	whatsapp,
+	yelp,
+	'youtube-play': youtubePlay,
+	'youtube-square': youtubeSquare,
+	youtube,
+	user_icon_style1: userIconStyle1,
+	user_icon_style2: userIconStyle2,
+	user_icon_style3: userIconStyle3,
+	user_icon_style4: userIconStyle4,
+	user_icon_style5: userIconStyle5,
+	user_icon_style6: userIconStyle6,
+	'cart-icon-style1': cartIconStyle1,
+	'cart-icon-style2': cartIconStyle2,
+	'cart-icon-style3': cartIconStyle3,
+	'cart-icon-style4': cartIconStyle4,
+	'cart-icon-style5': cartIconStyle5,
+	'cart-icon-style6': cartIconStyle6,
 };

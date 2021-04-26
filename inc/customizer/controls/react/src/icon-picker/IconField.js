@@ -1,11 +1,11 @@
 import { useState } from '@wordpress/element';
 import IconPicker from './IconPicker';
-import * as icons from '../common/icons';
+import { icons } from '../common/icons';
 
-const IconField = ({ label = 'Icon', chosenIcon }) => {
+const IconField = ({ label, selectedIcon }) => {
 	const [isOpen, open] = useState(false);
-	const [icon, setIcon] = useState(icons.facebook.icon);
-	const [field, setField] = useState(icons.facebook.id);
+	const [icon, setIcon] = useState(icons[`${selectedIcon}`].icon);
+	const [field, setField] = useState(icons[`${selectedIcon}`].id);
 
 	const openPicker = () => {
 		open(!isOpen);
@@ -23,7 +23,7 @@ const IconField = ({ label = 'Icon', chosenIcon }) => {
 
 	return (
 		<>
-			<label id="icon-field">{label}</label>
+			<label className="customize-control-title">{label}</label>
 			<div className="nv--icon-field-wrap">
 				<div className="form">
 					<button
@@ -40,12 +40,10 @@ const IconField = ({ label = 'Icon', chosenIcon }) => {
 						onClick={openPicker}
 					/>
 					<a
-						//
 						href="javascript: return false;"
 						className="button nv--remove-icon"
 						onClick={closeIconsContainer}
 					>
-						{/*<Icon icon={closeSmall} />*/}
 						<span className="dashicons dashicons-no" />
 					</a>
 				</div>
