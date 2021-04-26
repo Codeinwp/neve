@@ -71,7 +71,23 @@ class Admin {
 
 		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
 
+		add_action( 'after_switch_theme', array( $this, 'switch_to_new_builder' ) );
 		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
+	}
+
+	/**
+	 * Switch to the new builder if this is a fresh site or there is nothing set up for the old header/footer.
+	 */
+	public function switch_to_new_builder() {
+		$fresh = get_option( 'fresh_site' );
+		if ( $fresh ) {
+			set_theme_mod( 'neve_migrated_builders', true );
+		}
+		$header = get_theme_mod( 'hfg_header_layout' );
+		$footer = get_theme_mod( 'hfg_footer_layout' );
+		if ( ! $header && ! $footer ) {
+			set_theme_mod( 'neve_migrated_builders', true );
+		}
 	}
 
 	/**
