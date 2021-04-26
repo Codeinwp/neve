@@ -77,6 +77,16 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return void
 	 */
 	public function load_scripts() {
+		wp_add_inline_style( 'neve-style', $this->toggle_css() );
+		wp_add_inline_script( 'neve-script', $this->toggle_script() );
+	}
+
+	/**
+	 * Get CSS to use as inline script
+	 *
+	 * @return string
+	 */
+	public function toogle_style() {
 		$css = '.toggle-palette a {
 			text-decoration: none;
 		  }
@@ -104,8 +114,7 @@ class PaletteSwitch extends Abstract_Component {
 		  .toggle-palette a:focus {
 			text-decoration: underline;
 		  }';
-		wp_add_inline_style( 'neve-style', Dynamic_Css::minify_css( $css ) );
-		wp_add_inline_script( 'neve-script', $this->toggle_script() );
+		return Dynamic_Css::minify_css( $css );
 	}
 
 	/**
