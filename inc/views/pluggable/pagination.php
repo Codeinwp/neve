@@ -64,6 +64,10 @@ class Pagination extends Base_View {
 		$args['ignore_sticky_posts'] = 1;
 		$args['post_status']         = 'publish';
 
+		if ( ! empty( $request['lang'] ) ) {
+			$args['lang'] = $request['lang'];
+		}
+
 		$output = '';
 
 		global $sitepress;
@@ -104,7 +108,9 @@ class Pagination extends Base_View {
 		$data['maxPages']  = $max_pages;
 		$data['endpoint']  = rest_url( 'nv/v1/posts/page/' );
 		$data['query']     = wp_json_encode( $wp_query->query );
+		$data['lang']      = get_locale();
 
+		// WPML language parameter
 		$current_lang = apply_filters( 'wpml_current_language', null );
 		if ( ! empty( $current_lang ) ) {
 			$data['lang'] = $current_lang;
