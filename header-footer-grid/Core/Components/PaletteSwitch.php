@@ -77,7 +77,7 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return void
 	 */
 	public function load_scripts() {
-		wp_add_inline_style( 'neve-style', $this->toggle_css() );
+		wp_add_inline_style( 'neve-style', $this->toogle_style() );
 		wp_add_inline_script( 'neve-script', $this->toggle_script() );
 	}
 
