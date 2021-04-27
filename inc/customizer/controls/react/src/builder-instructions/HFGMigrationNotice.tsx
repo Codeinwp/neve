@@ -38,7 +38,7 @@ export const HFGMigrationNotice: React.FC<Props> = ({
 		}
 	}
 
-	if (alreadyMigrated && !hadOldBuilder) {
+	if (!hadOldBuilder) {
 		return null;
 	}
 

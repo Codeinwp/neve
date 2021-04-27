@@ -58,8 +58,8 @@ class Builder_Migrator {
 	/**
 	 * Migrate row for columned builder.
 	 *
-	 * @param array $next_row empty row array.
 	 * @param array $old_row old row values.
+	 * @param array $next_row empty row array.
 	 *
 	 * @return array
 	 */
@@ -239,6 +239,15 @@ class Builder_Migrator {
 					continue;
 				}
 
+				// If item is at the end slot it right.
+				// Accounts for previous but where items were extending the whole row when last.
+				if ( $item['x'] + $item['width'] === 12 || $index === count( $old_items ) - 1 ) {
+					$next_row['right'][] = $item_value;
+					$previous_item       = $item;
+					$previous_slot       = 'right';
+					continue;
+				}
+
 				// Move to center slot if there is a gap and previous slotted was left.
 				if ( $previous_slot === 'left' ) {
 					$next_row['center'][] = $item_value;
@@ -303,8 +312,6 @@ class Builder_Migrator {
 	/**
 	 * Migrate single builder value.
 	 *
-	 * @param string $builder builder slug.
-	 *
 	 * @return bool
 	 */
 	private function migrate_single_builder() {
@@ -316,11 +323,26 @@ class Builder_Migrator {
 
 		$old_value = json_decode( $old_value, true );
 
+		$new_value = $this->get_new_builder_value_from_old( $old_value );
+
+		set_theme_mod( $this->get_new_builder_mod_slug( self::$current_builder ), wp_json_encode( $new_value ) );
+
+		return true;
+	}
+
+	/**
+	 * Migrate old builder value to new format.
+	 *
+	 * @param array $old_value old builder value.
+	 *
+	 * @return array|boolean
+	 */
+	private function get_new_builder_value_from_old( $old_value ) {
 		if ( ! is_array( $old_value ) ) {
 			return false;
 		}
 
-		$empty_rows = array_fill_keys( $this->row_slots, [] );
+		$empty_row = array_fill_keys( $this->row_slots, [] );
 
 		$new_value = [];
 
@@ -329,7 +351,7 @@ class Builder_Migrator {
 			self::$current_device = $device;
 
 			// Setup the builders for each device.
-			$new_value[ $device ] = array_fill_keys( $this->builders[ self::$current_builder ], $empty_rows );
+			$new_value[ $device ] = array_fill_keys( $this->builders[ self::$current_builder ], $empty_row );
 
 			// Sidebar is available only on mobile. We should remove it on other devices.
 			if ( $device !== 'mobile' && isset( $new_value[ $device ]['sidebar'] ) ) {
@@ -357,9 +379,7 @@ class Builder_Migrator {
 
 		self::$current_device = null;
 
-		set_theme_mod( $this->get_new_builder_mod_slug( self::$current_builder ), wp_json_encode( $new_value ) );
-
-		return true;
+		return $new_value;
 	}
 
 	/**
@@ -404,7 +424,54 @@ class Builder_Migrator {
 		}
 		self::$current_builder = null;
 
+		$success = $this->migrate_conditional_headers();
+
+		if ( ! $success ) {
+			return false;
+		}
+
 		// Migration success.
+		return true;
+	}
+
+	/**
+	 * Migrate conditional headers
+	 *
+	 * @return boolean
+	 */
+	private function migrate_conditional_headers() {
+		if ( ! class_exists( '\Neve_Pro\Admin\Custom_Layouts_Cpt' ) ) {
+			return true;
+		}
+
+		if ( ! method_exists( '\Neve_Pro\Admin\Custom_Layouts_Cpt', 'get_conditional_headers' ) ) {
+			return true;
+		}
+
+		$headers = \Neve_Pro\Admin\Custom_Layouts_Cpt::get_conditional_headers();
+
+		self::$current_builder = 'header';
+
+		foreach ( $headers as $cpt_id => $header ) {
+			$decoded = json_decode( $header, true );
+
+			if ( ! is_array( $decoded ) || empty( $decoded ) ) {
+				continue;
+			}
+			if ( ! isset( $decoded['hfg_header_layout'] ) ) {
+				continue;
+			}
+
+
+			$migrated_value          = $this->get_new_builder_value_from_old( $decoded['hfg_header_layout'] );
+			$new_mod_key             = $this->get_new_builder_mod_slug( 'header' );
+			$decoded[ $new_mod_key ] = $migrated_value;
+
+			update_post_meta( $cpt_id, 'theme-mods', wp_json_encode( $decoded ) );
+		}
+
+		self::$current_builder = null;
+
 		return true;
 	}
 }

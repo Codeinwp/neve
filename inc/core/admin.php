@@ -10,6 +10,8 @@
 
 namespace Neve\Core;
 
+use Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers;
+
 /**
  * Class Admin
  *
@@ -71,23 +73,54 @@ class Admin {
 
 		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
 
-		add_action( 'after_switch_theme', array( $this, 'switch_to_new_builder' ) );
+		add_action( 'after_switch_theme', [ $this, 'switch_to_new_builder' ] );
 		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
+		add_filter( 'neve_pro_react_controls_localization', [ $this, 'adapt_conditional_headers' ] );
+		if ( class_exists( '\Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers' ) ) {
+			\Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers::$theme_mods_keys[] = 'hfg_header_layout_v2';
+		}
+
 	}
 
 	/**
 	 * Switch to the new builder if this is a fresh site or there is nothing set up for the old header/footer.
+	 *
+	 * @since 3.0.0
 	 */
 	public function switch_to_new_builder() {
 		$fresh = get_option( 'fresh_site' );
 		if ( $fresh ) {
 			set_theme_mod( 'neve_migrated_builders', true );
+			return;
 		}
 		$header = get_theme_mod( 'hfg_header_layout' );
 		$footer = get_theme_mod( 'hfg_footer_layout' );
 		if ( ! $header && ! $footer ) {
 			set_theme_mod( 'neve_migrated_builders', true );
 		}
+	}
+
+	/**
+	 * Filter localization data to adapt to the new builder.
+	 *
+	 * @param array $array localization array.
+	 *
+	 * @return array
+	 */
+	public function adapt_conditional_headers( $array ) {
+		if ( ! neve_is_new_builder() ) {
+			return $array;
+		}
+
+		if ( isset( $array['headerControls'] ) ) {
+			$array['headerControls'][] = 'hfg_header_layout_v2';
+		}
+
+
+
+		$array['currentValues'] = [ 'hfg_header_layout_v2' => json_decode( get_theme_mod( 'hfg_header_layout_v2', wp_json_encode( neve_hfg_header_settings() ) ), true ) ];
+
+		return $array;
 	}
 
 	/**

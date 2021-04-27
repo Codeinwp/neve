@@ -736,11 +736,7 @@ abstract class Abstract_Builder implements Builder {
 
 			foreach ( $this->get_layout_data() as $devices ) {
 				foreach ( $devices as $row_index => $row ) {
-					if ( neve_is_new_builder() ) {
-						if ( $row_index === 'sidebar' ) {
-							$components = array_merge( $components, array_combine( wp_list_pluck( $row, 'id' ), array_fill( 0, count( $row ), true ) ) );
-							continue;
-						}
+					if ( neve_is_new_builder() && $row_index !== 'sidebar' ) {
 						foreach ( $row as $slot ) {
 							if ( empty( $slot ) || ! is_array( $slot ) ) {
 								continue;
@@ -1023,9 +1019,10 @@ abstract class Abstract_Builder implements Builder {
 		$alignment = SettingsManager::get_instance()->get( $id . '_' . Abstract_Component::ALIGNMENT_ID, null );
 
 		// Make sure we migrate old alignment values.
-		if ( ! is_string( $alignment ) && is_array( $alignment ) ) {
+		if ( is_array( $alignment ) ) {
 			return $alignment;
 		}
+
 		$is_menu_component = strpos( $id, 'primary-menu' ) > - 1 || strpos( $id, 'secondary-menu' );
 		$tmp_align         = ( is_string( $alignment ) && in_array(
 			$alignment,
@@ -1132,10 +1129,13 @@ abstract class Abstract_Builder implements Builder {
 			$was_previous_mergeable = false;
 
 			foreach ( $slot_data as $component_index => $component ) {
-				if ( ! isset( $this->builder_components[ $component['id'] ] ) ) {
+				if ( ! isset( $component['id'] ) ) {
 					continue;
 				}
 
+				if ( ! isset( $this->builder_components[ $component['id'] ] ) ) {
+					continue;
+				}
 
 				/**
 				 * An instance of Abstract_Component
@@ -1145,12 +1145,16 @@ abstract class Abstract_Builder implements Builder {
 				$component_instance = $this->builder_components[ $component['id'] ];
 				$is_mergeable       = $component_instance->get_property( 'is_auto_width' );
 
-
-				if ( ! $is_mergeable && ! $was_previous_mergeable || $row_index === 'sidebar' ) {
+				if ( ! $is_mergeable && ! $was_previous_mergeable ) {
 					$render_index ++;
 				}
 
-				$align          = $this->get_component_alignment( $component['id'] );
+				if ( $row_index === 'sidebar' ) {
+					$render_index++;
+				}
+
+				$align = $this->get_component_alignment( $component['id'] );
+
 				$vertical_align = $this->get_component_alignment( $component['id'], true );
 				$classes        = [ 'builder-item' ];
 
@@ -1187,16 +1191,17 @@ abstract class Abstract_Builder implements Builder {
 						$render_buffer[ $slot ][ $render_index ]['vertical-align'] = 'hfg-item-v-' . $vertical_align;
 					}
 				}
-
-				$render_buffer[ $slot ][ $render_index ]['components'][] = $component_instance;
-
-				// Make sure array index starts at 0.
-				$render_buffer[ $slot ] = array_values( $render_buffer[ $slot ] );
+				$render_buffer[ $slot ][ $render_index ]['components'][] = $component['id'];
 
 				if ( $is_mergeable ) {
 					$was_previous_mergeable = true;
+					continue;
 				}
+				$was_previous_mergeable = false;
 			}
+
+			// Make sure array index starts at 0.
+			$render_buffer[ $slot ] = array_values( $render_buffer[ $slot ] );
 		}
 
 		if ( ! $this->columns_layout ) {
@@ -1240,11 +1245,11 @@ abstract class Abstract_Builder implements Builder {
 					if ( count( $component_group['components'] ) > 1 ) {
 						$component_group['classes'][] = 'hfg-is-group';
 					}
-
 					echo sprintf( '<div class="%s">', esc_attr( join( ' ', $component_group['classes'] ) ) );
 					foreach ( $component_group['components'] as $component ) {
-						self::$current_component = $component->get_property( 'id' );
-						$component->render();
+						self::$current_component = $component;
+						$instance                = $this->builder_components[ $component ];
+						$instance->render();
 					}
 					echo '</div>';
 				}

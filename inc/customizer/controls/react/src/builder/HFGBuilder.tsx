@@ -42,8 +42,11 @@ const HFGBuilder: React.FC<Props> = ({
 	const [currentSection, setCurrentSection] = useState<string>('');
 
 	const getSidebarItems = () => {
-		const usedItems = getUsedItemsFromItems(value[device]);
 		const allItems = window.NeveReactCustomize.HFG[builder].items;
+		const usedItems =
+			value && value[device]
+				? getUsedItemsFromItems(value[device])
+				: Object.keys(allItems);
 		return Object.keys(allItems)
 			.filter((key) => !usedItems.includes(key))
 			.map((itemId) => {

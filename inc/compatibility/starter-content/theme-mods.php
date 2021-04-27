@@ -569,7 +569,7 @@ return array(
 			'tablet'  => 'left',
 			'mobile'  => 'left',
 		),
-	'hfg_header_layout'                           => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"primary-menu"},{"id":"header_search_responsive"},{"id":"button_base"}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]}},"mobile":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo","width":8,"x":0}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"nav-icon","width":4,"x":8}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"sidebar":[{"id":"header_search"},{"id":"primary-menu"},{"id":"button_base"}]}}',
+	'hfg_header_layout_v2'                        => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"primary-menu"},{"id":"header_search_responsive"},{"id":"button_base"}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]}},"mobile":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo","width":8,"x":0}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"nav-icon","width":4,"x":8}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"sidebar":[{"id":"header_search"},{"id":"primary-menu"},{"id":"button_base"}]}}',
 	'button_base_component_padding'               =>
 		array(
 			'mobile'       =>
@@ -729,7 +729,7 @@ return array(
 			'tablet-unit'  => 'px',
 			'desktop-unit' => 'px',
 		),
-	'hfg_footer_layout'                           => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[],"c-left":[{"id":"footer_copyright"}],"center":[],"c-right":[],"right":[]}}}',
+	'hfg_footer_layout_v2'                        => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[],"c-left":[{"id":"footer_copyright"}],"center":[],"c-right":[],"right":[]}}}',
 	'primary-menu_component_padding'              =>
 		array(
 			'mobile'       =>
