@@ -44,7 +44,7 @@ const masonry = () => {
  * Infinite scroll.
  */
 const infiniteScroll = () => {
-	if (NeveProperties.infiniteScroll !== 'enabled') {
+	if (NeveProperties.infScroll !== 'enabled') {
 		return;
 	}
 
@@ -72,16 +72,16 @@ const requestMorePosts = () => {
 		return;
 	}
 	document.querySelector('.nv-loader').style.display = 'block';
-	if (page > NeveProperties.infiniteScrollMaxPages) {
+	if (page > NeveProperties.maxPages) {
 		trigger.parentNode.removeChild(trigger);
 		document.querySelector('.nv-loader').style.display = 'none';
 		return;
 	}
-
 	const blog = document.querySelector(postWrapSelector);
-	const requestUrl = maybeParseUrlForCustomizer(
-		NeveProperties.infiniteScrollEndpoint + page
-	);
+	const lang = NeveProperties.lang;
+	const baseUrl = NeveProperties.endpoint + page;
+	const url = lang ? baseUrl + '/' + lang : baseUrl;
+	const requestUrl = maybeParseUrlForCustomizer(url);
 	page++;
 
 	httpGetAsync(
@@ -94,7 +94,7 @@ const requestMorePosts = () => {
 			window.nvMasonry.reloadItems();
 			window.nvMasonry.layout();
 		},
-		NeveProperties.infiniteScrollQuery
+		NeveProperties.query
 	);
 };
 
