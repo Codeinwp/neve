@@ -7,12 +7,12 @@ on:
 jobs:
   pr_announcer:
     runs-on: ubuntu-latest
-    name: Sample job
+    name: Announce pr
     steps:
       - name: Checking merged commit
         uses: Codeinwp/action-pr-merged-announcer@main
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
         with:
           destination_repo: "Codeinwp/docs"
           issue_labels: "neve"
