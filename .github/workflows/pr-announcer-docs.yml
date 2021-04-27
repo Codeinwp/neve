@@ -10,7 +10,7 @@ jobs:
     name: Sample job
     steps:
       - name: Checking merged commit
-        uses: Codeinwp/action-pr-merged-announcer@master
+        uses: Codeinwp/action-pr-merged-announcer@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
