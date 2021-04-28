@@ -27,6 +27,7 @@ class PaletteSwitch extends Abstract_Component {
 
 	const COMPONENT_ID      = 'header_palette_switch';
 	const DARK_PALETTE_ID   = 'dark_palette';
+	const LIGHT_PALETTE_ID  = 'light_palette_description';
 	const TOGGLE_ICON_ID    = 'toggle_icon';
 	const PLACEHOLDER_ID    = 'placeholder';
 	const AUTO_ADJUST       = 'auto_adjust_color';
@@ -126,7 +127,7 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return string
 	 */
 	public function toggle_script() {
-		return '"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let r="light";if(localStorage.getItem(t))"dark"===localStorage.getItem(t)&&(r="dark");else{if(!window.matchMedia)return!1;}"dark"===r&&document.documentElement.setAttribute(e,"dark")}r();const a=document.querySelectorAll(".toggle-palette a.palette-icon-wrapper");function n(r){console.log("event triggered");if(r.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}for(var i=0;i<a.length;i++){a[i].addEventListener("touchstart",n,!1);a[i].addEventListener("click",n,!1);}';
+		return '"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let r="light";if(localStorage.getItem(t))"dark"===localStorage.getItem(t)&&(r="dark");else{if(!window.matchMedia)return!1;}"dark"===r&&document.documentElement.setAttribute(e,"dark")}r();const a=document.querySelectorAll(".toggle-palette a.palette-icon-wrapper");function n(r){if(r.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}for(var i=0;i<a.length;i++){a[i].addEventListener("touchstart",n,!1);a[i].addEventListener("click",n,!1);}';
 	}
 
 	/**
@@ -209,6 +210,21 @@ class PaletteSwitch extends Abstract_Component {
 		foreach ( $defined_palettes as $key => $palette_data ) {
 			$available_palettes[ $key ] = $palette_data['name'];
 		}
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'          => self::LIGHT_PALETTE_ID,
+				'group'       => $this->get_id(),
+				'tab'         => SettingsManager::TAB_GENERAL,
+				'transport'   => 'postMessage',
+				'section'     => $this->section,
+				'label'       => __( 'Light Palette', 'neve' ),
+				/* translators: %s: Link to Edit global color customizer. */
+				'description' => sprintf( __( 'The base palette is used for light mode. %1$sEdit color palettes%2$s.', 'neve' ), '<br/><a href="' . admin_url( '/customize.php?autofocus[section]=neve_colors_background_section' ) . '">', '</a>' ),
+				'type'        => 'hidden',
+				'default'     => '',
+			]
+		);
 
 		SettingsManager::get_instance()->add(
 			[
