@@ -546,7 +546,7 @@ msgid "Cart Icon"
 msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:116
-#: header-footer-grid/Core/Components/PaletteSwitch.php:290
+#: header-footer-grid/Core/Components/PaletteSwitch.php:293
 #: header-footer-grid/Core/Components/SearchResponsive.php:154
 msgid "Icon Size"
 msgstr ""
@@ -720,39 +720,39 @@ msgstr ""
 msgid "Palette Switch"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:228
+#: header-footer-grid/Core/Components/PaletteSwitch.php:231
 msgid "Light Palette"
 msgstr ""
 
 #. translators: %s: Link to Edit global color customizer.
-#: header-footer-grid/Core/Components/PaletteSwitch.php:230
+#: header-footer-grid/Core/Components/PaletteSwitch.php:233
 msgid "The base palette is used for light mode. %1$sEdit color palettes%2$s."
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:243
-#: header-footer-grid/Core/Components/PaletteSwitch.php:244
+#: header-footer-grid/Core/Components/PaletteSwitch.php:246
+#: header-footer-grid/Core/Components/PaletteSwitch.php:247
 msgid "Dark Palette"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:264
-#: header-footer-grid/Core/Components/PaletteSwitch.php:265
+#: header-footer-grid/Core/Components/PaletteSwitch.php:267
+#: header-footer-grid/Core/Components/PaletteSwitch.php:268
 msgid "Select icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:321
+#: header-footer-grid/Core/Components/PaletteSwitch.php:324
 msgid "Label"
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:324
+#: header-footer-grid/Core/Components/PaletteSwitch.php:327
 msgid "Leave blank for no label ..."
 msgstr ""
 
-#: header-footer-grid/Core/Components/PaletteSwitch.php:341
+#: header-footer-grid/Core/Components/PaletteSwitch.php:344
 msgid "Automatically adjust color scheme"
 msgstr ""
 
 #. translators: %s: Link to Learn More page. TODO: add link
-#: header-footer-grid/Core/Components/PaletteSwitch.php:343
+#: header-footer-grid/Core/Components/PaletteSwitch.php:346
 msgid "Adjust default color scheme based on the user device preferences. %1$sLearn More%2$s."
 msgstr ""
 
