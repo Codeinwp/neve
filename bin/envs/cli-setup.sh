@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+set -e
 NEVE_LOCATION=$1
 WP_VERSION=$2
 WP_ENV=$3

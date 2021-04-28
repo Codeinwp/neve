@@ -1,0 +1,16 @@
+name: Auto Cancel
+
+on:
+  push:
+    branches-ignore:
+      - master
+jobs:
+  cancel:
+    name: 'Cancel Previous Runs'
+    if: github.event.pull_request.head.repo.fork == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: styfle/cancel-workflow-action@0.8.0
+        with:
+          workflow_id: build-dev-artifacts.yml
+          access_token: ${{ secrets.BOT_TOKEN }}

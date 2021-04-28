@@ -68,6 +68,14 @@ class Upsell_Control extends \WP_Customize_Control {
 	public $pro_label = '';
 
 	/**
+	 * Screen reader text.
+	 *
+	 * @since 2.11.2
+	 * @var   string
+	 */
+	public $screen_reader = '';
+
+	/**
 	 * Boolean to check if the pro label is displayed or not.
 	 *
 	 * @since 2.3.10
@@ -101,6 +109,7 @@ class Upsell_Control extends \WP_Customize_Control {
 		$json['explained_features'] = $this->explained_features;
 		$json['show_pro_label']     = $this->show_pro_label;
 		$json['pro_label']          = $this->pro_label;
+		$json['screen_reader']      = $this->screen_reader;
 		return $json;
 	}
 
@@ -126,8 +135,10 @@ class Upsell_Control extends \WP_Customize_Control {
 			<# } #>
 
 			<# if ( data.button_text && data.button_url ) { #>
-			<a target="_blank" href="{{ data.button_url }}" class="button button-primary" target="_blank">{{
-				data.button_text }}</a>
+			<a rel="external noreferrer noopener" target="_blank" href="{{ data.button_url }}" class="button button-primary">{{
+				data.button_text }}
+				<span class="components-visually-hidden">{{ data.screen_reader }}</span>
+			</a>
 			<# } #>
 
 			<# if ( data.explained_features.length > 0 ) { #>

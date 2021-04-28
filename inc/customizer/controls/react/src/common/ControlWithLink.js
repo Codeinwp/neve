@@ -1,4 +1,5 @@
 /* global NeveProReactCustomize */
+import { ExternalLink } from '@wordpress/components';
 
 const ControlWithLink = ({ link, children }) => {
 	if (typeof NeveProReactCustomize !== 'undefined') {
@@ -20,6 +21,10 @@ const ControlWithLink = ({ link, children }) => {
 					{link.string}
 				</a>
 			);
+		}
+
+		if (link.new_tab) {
+			return <ExternalLink href={link.url}>{link.string}</ExternalLink>;
 		}
 
 		return <a href={link.url}>{link.string}</a>;

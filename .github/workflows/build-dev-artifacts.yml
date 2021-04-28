@@ -169,6 +169,10 @@ jobs:
           - machines: 6
             specs: "customizer"
             envs: "sample-data"
+          ## 1 machine for woocommerce tests
+          - machines: 1
+            specs: "woocommerce"
+            envs: "woo-sample"
     runs-on: ubuntu-latest
     env:
       ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
@@ -189,6 +193,8 @@ jobs:
       - name: Run ${{ matrix.specs }} Cypress tests
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
         uses: cypress-io/github-action@v2
         with:
