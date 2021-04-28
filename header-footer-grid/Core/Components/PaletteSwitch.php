@@ -87,7 +87,7 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return string
 	 */
 	public function toogle_style() {
-		$css = '.toggle-palette a {
+		$css = '.toggle-palette a, .toggle-palette a:focus {
 			text-decoration: none;
 		  }
 		  .toggle-palette a span {
@@ -95,6 +95,9 @@ class PaletteSwitch extends Abstract_Component {
 		  }
 		  .toggle-palette a span.icon {
 			vertical-align: middle;
+		  }
+		  .toggle-palette a:hover span.icon {
+		    text-decoration: none;
 		  }
 		  .toggle-palette a span.label {
 			display: inline-flex;
@@ -111,7 +114,7 @@ class PaletteSwitch extends Abstract_Component {
 		  .toggle-palette a:hover svg {
 			color: var(--nv-secondary-accent);
 		  }
-		  .toggle-palette a:focus {
+		  .toggle-palette a:focus span.label {
 			text-decoration: underline;
 		  }';
 		return Dynamic_Css::minify_css( $css );
@@ -123,7 +126,7 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return string
 	 */
 	public function toggle_script() {
-		return '"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let r="light";if(localStorage.getItem(t))"dark"===localStorage.getItem(t)&&(r="dark");else{if(!window.matchMedia)return!1;}"dark"===r&&document.documentElement.setAttribute(e,"dark")}r();const a=document.querySelector(".toggle-palette a.palette-icon-wrapper");function n(r){if(r.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}a.addEventListener("click",n,!1);';
+		return '"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let r="light";if(localStorage.getItem(t))"dark"===localStorage.getItem(t)&&(r="dark");else{if(!window.matchMedia)return!1;}"dark"===r&&document.documentElement.setAttribute(e,"dark")}r();const a=document.querySelectorAll(".toggle-palette a.palette-icon-wrapper");function n(r){console.log("event triggered");if(r.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}for(var i=0;i<a.length;i++){a[i].addEventListener("touchstart",n,!1);a[i].addEventListener("click",n,!1);}';
 	}
 
 	/**
