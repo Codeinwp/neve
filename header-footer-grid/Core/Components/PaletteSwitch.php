@@ -70,6 +70,16 @@ class PaletteSwitch extends Abstract_Component {
 
 		add_filter( 'neve_after_css_root', [ $this, 'toggle_css' ], 10, 1 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'load_scripts' ] );
+
+		add_filter(
+			'language_attributes',
+			function ( $output ) {
+				if ( neve_is_amp() ) {
+					return $output . " [class]=\"isDark ? 'neve-dark-theme' : 'neve-light-theme'\" class=\"neve-dark-theme\" ";
+				}
+				return $output;
+			} 
+		);
 	}
 
 	/**
@@ -186,10 +196,10 @@ class PaletteSwitch extends Abstract_Component {
 		}
 
 		return $css . '
-		[data-neve-theme="light"] {
+		[data-neve-theme="light"], html.neve-light-theme {
 			' . $light_css . '
 		}
-		[data-neve-theme="dark"] {
+		[data-neve-theme="dark"], html.neve-dark-theme ~ * {
 			' . $dark_css . '
 		}
 		';
