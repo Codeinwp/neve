@@ -1,0 +1,108 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  target-branch: update_dependencies
+  ignore:
+  - dependency-name: "@wordpress/compose"
+    versions:
+    - 3.25.1
+  - dependency-name: "@storybook/theming"
+    versions:
+    - 6.2.7
+  - dependency-name: "@wordpress/element"
+    versions:
+    - 2.20.0
+  - dependency-name: "@storybook/addons"
+    versions:
+    - 6.2.2
+  - dependency-name: "@wordpress/i18n"
+    versions:
+    - 3.19.0
+  - dependency-name: core-js
+    versions:
+    - 3.10.0
+  - dependency-name: webpack-cli
+    versions:
+    - 4.6.0
+  - dependency-name: webpack
+    versions:
+    - 5.25.1
+    - 5.27.1
+    - 5.28.0
+    - 5.28.0
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.13.10
+    - 7.13.13
+    - 7.13.14
+  - dependency-name: husky
+    versions:
+    - 5.2.0
+    - 6.0.0
+  - dependency-name: "@babel/preset-env"
+    versions:
+    - 7.13.10
+    - 7.13.12
+  - dependency-name: grunt-cli
+    versions:
+    - 1.4.1
+  - dependency-name: react-sortable-hoc
+    versions:
+    - 2.0.0
+  - dependency-name: "@wordpress/eslint-plugin"
+    versions:
+    - 9.0.1
+  - dependency-name: "@wordpress/scripts"
+    versions:
+    - 14.0.1
+  - dependency-name: y18n
+    versions:
+    - 3.2.2
+  - dependency-name: cypress
+    versions:
+    - 6.8.0
+  - dependency-name: cypress-file-upload
+    versions:
+    - 5.0.3
+- package-ecosystem: composer
+  directory: "/"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  target-branch: update_dependencies
+  allow:
+  - dependency-type: direct
+  - dependency-type: indirect
+  ignore:
+  - dependency-name: sirbrillig/phpcs-variable-analysis
+    versions:
+    - 2.11.0
+  - dependency-name: codeinwp/themeisle-sdk
+    versions:
+    - 3.2.19
+- package-ecosystem: npm
+  directory: "/header-footer-grid"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  target-branch: update_dependencies
+  ignore:
+  - dependency-name: eslint
+    versions:
+    - 7.22.0
+    - 7.23.0
+  - dependency-name: "@babel/preset-env"
+    versions:
+    - 7.13.10
+    - 7.13.12
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.13.10
+    - 7.13.13
+  - dependency-name: postcss
+    versions:
+    - 8.2.8
