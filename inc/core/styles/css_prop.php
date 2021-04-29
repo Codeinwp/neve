@@ -72,10 +72,25 @@ class Css_Prop {
 			case Config::CSS_PROP_LEFT:
 			case Config::CSS_PROP_RIGHT:
 				$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'px';
-				if ( $suffix === 'responsive_suffix' ) {
-					$all_value = Mods::get( $meta[ 'key' ], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
 
+				$all_value = Mods::get( $meta[ 'key' ], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
+				if ( is_string( $all_value ) ) {
+					$decode = json_decode( $all_value, true );
+					if ( ! empty( $decode ) ) {
+						$all_value = $decode;
+					}
+				}
+
+				if ( $suffix === 'responsive_suffix' ) {
 					$suffix = isset( $all_value[ 'suffix' ] ) ? $all_value[ 'suffix' ][ $device ] : (isset( $all_value[ 'suffix' ] ) ? $all_value[ 'suffix' ] : 'px');;
+				}
+				if ( $suffix === 'responsive_unit' ) {
+					$suffix    = 'px';
+					if ( isset( $all_value[ $device . '-unit' ] ) ) {
+						$suffix = $all_value[ $device . '-unit' ];
+					} elseif ( isset( $all_value['unit'] ) ) {
+						$suffix = $all_value['unit'];
+					}
 				}
 
 				return sprintf( "%s: %s%s;",

@@ -8,12 +8,18 @@
 
 namespace Neve\Views;
 
+use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
+use Neve\Core\Styles\Dynamic_Selector;
+
 /**
  * Class Post_Layout
  *
  * @package Neve\Views
  */
 class Post_Layout extends Base_View {
+
+	const POST_IMAGE_HEIGHT = 'neve_post_image_height';
 
 	/**
 	 * Function that is run after instantiation.
@@ -22,6 +28,8 @@ class Post_Layout extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_do_single_post', array( $this, 'render_post' ) );
+		add_filter( 'neve_style_subscribers', array( $this, 'add_subscribers' ) );
+
 	}
 
 	/**
@@ -175,7 +183,9 @@ class Post_Layout extends Base_View {
 	 * @return void
 	 */
 	private function render_entry_header( $render_meta = true ) {
-		echo '<div class="entry-header">';
+		$alignment_default = is_rtl() ? 'right' : 'left';
+		$header_alignment  = get_theme_mod( 'neve_post_title_alignment', 'left' );
+		echo '<div class="entry-header has-text-align-' . esc_attr( $header_alignment ) . '">';
 		echo '<div class="nv-title-meta-wrap">';
 		do_action( 'neve_before_post_title' );
 		$alignment = apply_filters( 'neve_post_title_alignment', '' );
@@ -185,6 +195,25 @@ class Post_Layout extends Base_View {
 		}
 		echo '</div>';
 		echo '</div>';
+	}
 
+	/**
+	 * Add dynamic style subscribers.
+	 *
+	 * @param array $subscribers Css subscribers.
+	 *
+	 * @return array|mixed
+	 */
+	public function add_subscribers( $subscribers = [] ) {
+
+		$subscribers['.nv-thumb-wrap img'] = [
+			Config::CSS_PROP_HEIGHT => [
+				Dynamic_Selector::META_KEY           => self::POST_IMAGE_HEIGHT,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+			],
+		];
+
+		return $subscribers;
 	}
 }

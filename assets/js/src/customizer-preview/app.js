@@ -76,17 +76,21 @@ function addStyle(settingType, id, newValue, args) {
 		const template = args.template;
 		const value = JSON.parse(newValue);
 		for (const device in map) {
-			const suffix = value[device + '-unit'] || '';
+			let suffixDefault = '';
+			if (args.suffix) {
+				suffixDefault = args.suffix[device];
+			}
+			const suffix = value[device + '-unit'] || suffixDefault;
 			if (value[device] === 0 || value[device] === '0') {
 				style += `@media (${map[device]}) {${template.replace(
 					regex,
-					'0'
-				)}${suffix}}`;
+					'0' + suffix
+				)}}`;
 			} else {
 				style += `@media (${map[device]}) {${template.replace(
 					regex,
-					value[device] || 'inherit'
-				)}${suffix}}`;
+					value[device] + suffix || 'inherit'
+				)}}`;
 			}
 		}
 	} else if (newValue === 0 || newValue === '0') {

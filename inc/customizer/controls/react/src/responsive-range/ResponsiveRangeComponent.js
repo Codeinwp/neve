@@ -7,7 +7,6 @@ import { maybeParseJson, getIntValAsResponsive } from '../common/common';
 
 import { RangeControl, Button } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
-import { mapValues } from 'lodash';
 
 const ResponsiveRangeComponent = ({ control }) => {
 	const parsedValue = maybeParseJson(control.setting.get());
@@ -69,16 +68,12 @@ const ResponsiveRangeComponent = ({ control }) => {
 						const nextValue = { ...value };
 						nextValue[currentDevice + '-unit'] = unit;
 						if (unit !== 'em') {
-							nextValue[currentDevice] = mapValues(
-								nextValue[currentDevice],
-								(valueToSet) =>
-									valueToSet
-										? parseInt(valueToSet)
-										: valueToSet
+							nextValue[currentDevice] = parseInt(
+								nextValue[currentDevice]
 							);
 						}
 						setValue(nextValue);
-						control.setting.set(nextValue);
+						control.setting.set(JSON.stringify(nextValue));
 					}}
 				>
 					{unit}
