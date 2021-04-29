@@ -88,15 +88,11 @@ class Admin {
 	 * @since 3.0.0
 	 */
 	public function switch_to_new_builder() {
-		$fresh = get_option( 'fresh_site' );
-		if ( $fresh ) {
-			set_theme_mod( 'neve_migrated_builders', true );
-			return;
-		}
 		$header = get_theme_mod( 'hfg_header_layout' );
 		$footer = get_theme_mod( 'hfg_footer_layout' );
-		if ( ! $header && ! $footer ) {
-			set_theme_mod( 'neve_migrated_builders', true );
+
+		if ( ! empty( $header ) || ! empty( $footer ) ) {
+			set_theme_mod( 'neve_migrated_builders', false );
 		}
 	}
 
@@ -115,8 +111,6 @@ class Admin {
 		if ( isset( $array['headerControls'] ) ) {
 			$array['headerControls'][] = 'hfg_header_layout_v2';
 		}
-
-
 
 		$array['currentValues'] = [ 'hfg_header_layout_v2' => json_decode( get_theme_mod( 'hfg_header_layout_v2', wp_json_encode( neve_hfg_header_settings() ) ), true ) ];
 
