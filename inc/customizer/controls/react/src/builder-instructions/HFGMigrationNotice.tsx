@@ -1,7 +1,12 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
-import { rotateRight, starFilled, undo } from '@wordpress/icons';
+import {
+	cancelCircleFilled,
+	rotateRight,
+	starFilled,
+	undo,
+} from '@wordpress/icons';
 import { Button } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
 import { StringObjectKeys } from '../@types/utils';
@@ -61,12 +66,15 @@ export const HFGMigrationNotice: React.FC<Props> = ({
 		return url.href;
 	};
 
-	const runMigration = (rollback = false) => {
+	const runMigration = (rollback = false, dismiss = false) => {
 		window.wp.customize.notifications.add(
 			new window.wp.customize.OverlayNotification(
 				'neve_migrating_builders',
 				{
-					message: __('Migrating builder data', 'neve') + '...',
+					message:
+						(dismiss
+							? __('Removing old data', 'neve')
+							: __('Migrating builder data', 'neve')) + '...',
 					type: 'success',
 					loading: true,
 				}
@@ -76,6 +84,10 @@ export const HFGMigrationNotice: React.FC<Props> = ({
 		const headers: StringObjectKeys = { 'X-WP-Nonce': nonce };
 		if (rollback) {
 			headers.rollback = 'yes';
+		}
+
+		if (dismiss) {
+			headers.dismiss = 'yes';
 		}
 
 		apiFetch({
@@ -127,12 +139,13 @@ export const HFGMigrationNotice: React.FC<Props> = ({
 		);
 	};
 
-	if (alreadyMigrated) {
+	if (alreadyMigrated && hadOldBuilder) {
 		return (
 			<>
 				<hr />
 				<p>{__('Want to roll back to the old builder?', 'neve')}</p>
 				<Button
+					style={{ marginRight: 10 }}
 					disabled={!isCustomizerSaved && !error}
 					isSecondary={!error}
 					isDestructive={error}
@@ -140,6 +153,17 @@ export const HFGMigrationNotice: React.FC<Props> = ({
 					onClick={error ? reloadPage : () => runMigration(true)}
 				>
 					{error ? __('Reload', 'neve') : __('Roll Back', 'neve')}
+				</Button>
+				<Button
+					isDestructive
+					isSecondary
+					disabled={!isCustomizerSaved}
+					icon={cancelCircleFilled}
+					onClick={() => {
+						runMigration(false, true);
+					}}
+				>
+					{__('Dismiss', 'neve')}
 				</Button>
 				{renderErrors()}
 			</>

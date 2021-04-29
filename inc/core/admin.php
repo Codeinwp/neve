@@ -88,12 +88,26 @@ class Admin {
 	 * @since 3.0.0
 	 */
 	public function switch_to_new_builder() {
+		$fresh = get_option( 'fresh_site' );
+
+		// If we have a fresh site. Make sure we're going to use the new builder.
+		if ( $fresh === true ) {
+			set_theme_mod( 'neve_migrated_builders', true );
+
+			return;
+		}
+
+		// If we do have previously set options for header or footer, use the old builder.
 		$header = get_theme_mod( 'hfg_header_layout' );
 		$footer = get_theme_mod( 'hfg_footer_layout' );
 
 		if ( ! empty( $header ) || ! empty( $footer ) ) {
 			set_theme_mod( 'neve_migrated_builders', false );
+			return;
 		}
+
+		// If we don't have any data, use the new builder.
+		set_theme_mod( 'neve_migrated_builders', true );
 	}
 
 	/**
@@ -143,6 +157,14 @@ class Admin {
 	 */
 	public function migrate_builders_data( \WP_REST_Request $request ) {
 		$is_rollback = $request->get_header( 'rollback' );
+		$is_dismiss  = $request->get_header( 'dismiss' );
+
+		if ( $is_dismiss === 'yes' ) {
+			remove_theme_mod( 'hfg_header_layout' );
+			remove_theme_mod( 'hfg_footer_layout' );
+
+			return new \WP_REST_Response( [ 'success' => true ], 200 );
+		}
 
 		if ( $is_rollback === 'yes' ) {
 			set_theme_mod( 'neve_migrated_builders', false );

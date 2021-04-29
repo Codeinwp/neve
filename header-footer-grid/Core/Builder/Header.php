@@ -53,6 +53,8 @@ class Header extends Abstract_Builder {
 				)
 			)
 		);
+		$migrated_hfg = get_theme_mod( 'neve_migrated_builders', true );
+
 		$this->set_property(
 			'instructions_array',
 			array(
@@ -71,8 +73,8 @@ class Header extends Abstract_Builder {
 						'icon'  => 'dashicons-menu',
 					),
 				),
-				'builderMigrated' => get_theme_mod( 'neve_migrated_builders' ),
-				'hadOldBuilder'   => get_theme_mod( 'hfg_header_layout' ) !== false || get_theme_mod( 'hfg_footer_layout' ) !== false,
+				'builderMigrated' => $migrated_hfg,
+				'hadOldBuilder'   => ( get_theme_mod( 'hfg_header_layout' ) !== false || get_theme_mod( 'hfg_footer_layout' ) ) !== false,
 			)
 		);
 	}

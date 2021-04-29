@@ -47,7 +47,7 @@ msgstr ""
 
 #. translators: %s - Theme name
 #: dashboard/inc/Main.php:204
-#: inc/core/admin.php:357
+#: inc/core/admin.php:373
 msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
 msgstr ""
 
@@ -83,7 +83,7 @@ msgstr ""
 
 #. translators: %s - Theme name
 #: dashboard/inc/Main.php:216
-#: inc/core/admin.php:365
+#: inc/core/admin.php:381
 msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
 msgstr ""
 
@@ -392,7 +392,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:48
 #: header-footer-grid/Core/Builder/Header.php:51
-#: inc/core/admin.php:367
+#: inc/core/admin.php:383
 msgid "Read full documentation"
 msgstr ""
 
@@ -423,40 +423,40 @@ msgstr ""
 msgid "Footer Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:59
+#: header-footer-grid/Core/Builder/Header.php:61
 msgid "Build your own header or choose from preset options."
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:62
+#: header-footer-grid/Core/Builder/Header.php:64
 msgid "Change Logo"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:66
+#: header-footer-grid/Core/Builder/Header.php:68
 msgid "Change Header Color"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:70
+#: header-footer-grid/Core/Builder/Header.php:72
 msgid "Change Menu"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:102
-#: header-footer-grid/Core/Builder/Header.php:112
+#: header-footer-grid/Core/Builder/Header.php:104
+#: header-footer-grid/Core/Builder/Header.php:114
 msgid "Header Presets"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:183
+#: header-footer-grid/Core/Builder/Header.php:185
 msgid "Header Top"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:187
+#: header-footer-grid/Core/Builder/Header.php:189
 msgid "Header Main"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:191
+#: header-footer-grid/Core/Builder/Header.php:193
 msgid "Header Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:195
+#: header-footer-grid/Core/Builder/Header.php:197
 msgid "Mobile Sidebar"
 msgstr ""
 
@@ -1279,32 +1279,32 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: inc/core/admin.php:321
+#: inc/core/admin.php:337
 msgid "Congratulations!"
 msgstr ""
 
 #. translators: %s - theme name
-#: inc/core/admin.php:324
+#: inc/core/admin.php:340
 msgid "%s is now installed and ready to use. We've assembled some links to get you started."
 msgstr ""
 
-#: inc/core/admin.php:333
+#: inc/core/admin.php:349
 msgid "Try one of our ready to use Starter Sites"
 msgstr ""
 
-#: inc/core/admin.php:338
+#: inc/core/admin.php:354
 msgid "Return to your dashboard"
 msgstr ""
 
-#: inc/core/admin.php:344
+#: inc/core/admin.php:360
 msgid "or go to the theme settings"
 msgstr ""
 
-#: inc/core/admin.php:355
+#: inc/core/admin.php:371
 msgid "Sites Library"
 msgstr ""
 
-#: inc/core/admin.php:363
+#: inc/core/admin.php:379
 #: dashboard/src/Components/Content/Help.js:43
 msgid "Documentation"
 msgstr ""
