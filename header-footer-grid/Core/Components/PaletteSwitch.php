@@ -78,7 +78,7 @@ class PaletteSwitch extends Abstract_Component {
 					return $output . " [class]=\"isDark ? 'neve-dark-theme' : 'neve-light-theme'\" class=\"neve-dark-theme\" ";
 				}
 				return $output;
-			} 
+			}
 		);
 	}
 
@@ -88,7 +88,7 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return void
 	 */
 	public function load_scripts() {
-		wp_add_inline_style( 'neve-style', $this->toogle_style() );
+		wp_add_inline_style( 'neve-style', $this->toggle_style() );
 		wp_add_inline_script( 'neve-script', $this->toggle_script() );
 	}
 
@@ -97,7 +97,7 @@ class PaletteSwitch extends Abstract_Component {
 	 *
 	 * @return string
 	 */
-	public function toogle_style() {
+	public function toggle_style() {
 		$css = '.toggle-palette a, .toggle-palette a:focus {
 			text-decoration: none;
 		  }
@@ -366,12 +366,12 @@ class PaletteSwitch extends Abstract_Component {
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $selector,
 			Dynamic_Selector::KEY_RULES    => [
-				\Neve\Core\Settings\Config::CSS_PROP_WIDTH => [
+				Config::CSS_PROP_WIDTH  => [
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SIZE_ID,
 					Dynamic_Selector::META_DEFAULT       => '{ "mobile": "' . self::DEFAULT_ICON_SIZE . '", "tablet": "' . self::DEFAULT_ICON_SIZE . '", "desktop": "' . self::DEFAULT_ICON_SIZE . '" }',
 				],
-				\Neve\Core\Settings\Config::CSS_PROP_HEIGHT => [
+				Config::CSS_PROP_HEIGHT => [
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SIZE_ID,
 					Dynamic_Selector::META_DEFAULT       => '{ "mobile": "' . self::DEFAULT_ICON_SIZE . '", "tablet": "' . self::DEFAULT_ICON_SIZE . '", "desktop": "' . self::DEFAULT_ICON_SIZE . '" }',
@@ -406,7 +406,7 @@ class PaletteSwitch extends Abstract_Component {
 	/**
 	 * Render the component
 	 *
-	 * @return mixed
+	 * @return void
 	 */
 	public function render_component() {
 		Main::get_instance()->load( 'components/component-palette-switch' );
