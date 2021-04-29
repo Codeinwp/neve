@@ -20,15 +20,16 @@ return [
 <p class="has-text-align-center has-text-color" style="color:#121212;font-size:17px">Programmatically work but low hanging fruit so new economy cross-pollination. Quick sync new <br>economy onward and upward.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:buttons {"align":"center"} -->
-<div class="wp-block-buttons aligncenter"><!-- wp:button {"className":"is-style-primary"} -->
+<!-- wp:buttons {"contentJustification":"center"} -->
+<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-primary"} -->
 <div class="wp-block-button is-style-primary"><a class="wp-block-button__link" href="#">LEARN MORE</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-secondary"} -->
-<div class="wp-block-button is-style-secondary">
-<a class="wp-block-button__link" href="https://demosites.io/" target="_blank" rel="noreferrer noopener">See all demos</a></div> <!-- /wp:button --></div>
+<div class="wp-block-button is-style-secondary"><a class="wp-block-button__link" href="https://demosites.io/" target="_blank" rel="noreferrer noopener">See all demos</a></div>
+<!-- /wp:button --></div>
 <!-- /wp:buttons -->
+
 
 <!-- wp:spacer {"height":80} -->
 <div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>
