@@ -67,6 +67,7 @@ const CustomizerTemplate = () => {
 		},
 	};
 
+	console.log('value in stories', value);
 	return <Customizer value={value} setValue={setValue} fields={fields} />;
 };
 

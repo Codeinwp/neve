@@ -1,22 +1,59 @@
-import { Button, Icon } from '@wordpress/components';
+import { Button, Icon, Tooltip } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { chevronDown, chevronUp } from '@wordpress/icons';
-import { useState } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import TextInput from '../common/TextInput';
 import IconColor from '../icon-color/IconColor';
 import IconField from '../icon-picker/IconField';
+import { SortableHandle } from 'react-sortable-hoc';
 
-const Repeater = ({ value, fields, onUpdate, itemIndex }) => {
+const Repeater = ({
+	value,
+	fields,
+	key,
+	onUpdate,
+	index,
+	changeVisibility,
+}) => {
 	const { visibility, title } = value;
 	const [expanded, setExpanded] = useState(false);
 	const [updatedTitle, updateTitle] = useState(title);
+	const [isVisible, setVisibility] = useState(visibility === 'yes');
 
-	const isVisible = visibility === 'yes';
+	useEffect(() => updateTitle(title), [title]);
 
-	const toggleExpanded = () => setExpanded(!expanded);
-	const toggleVisibility = () => {};
+	useEffect(() => {
+		if (!isVisible) {
+			changeVisibility({ ...value, visibility: 'no' });
+		} else {
+			changeVisibility({ ...value, visibility: 'yes' });
+		}
+	}, [isVisible]);
+
+	console.log('isVisible', isVisible);
+	const toggleExpanded = (e) => {
+		e.preventDefault();
+		setExpanded(!expanded);
+	};
+
+	const toggleVisibility = () => {
+		setVisibility(!isVisible);
+	};
+
+	const Handle = SortableHandle(() => (
+		<Tooltip text={__('Drag to Reorder', 'neve')}>
+			<button
+				aria-label={__('Drag to Reorder', 'neve')}
+				className="reorder-button"
+				onClick={(e) => e.preventDefault()}
+			>
+				<Icon icon="menu" />
+			</button>
+		</Tooltip>
+	));
+
 	return (
-		<div className="nv-item">
+		<div className="nv-item" key={key}>
 			<div className="nv-header">
 				<Button
 					icon={isVisible ? 'visibility' : 'hidden'}
@@ -24,14 +61,19 @@ const Repeater = ({ value, fields, onUpdate, itemIndex }) => {
 					// --> className="visibility-btn" <-- //
 				/>
 
-				<Button className="nv-title" onClick={toggleExpanded}>
+				<Button
+					className="nv-title"
+					onClick={toggleExpanded}
+					disabled={!isVisible}
+				>
 					<span className="nv-text">
 						{updatedTitle ?? __('Item', 'neve')}
 					</span>
-					<Icon
-						icon={expanded ? chevronUp : chevronDown}
-						className="expanded-icon"
-					/>
+					<Handle />
+					{/*<Icon*/}
+					{/*	icon={expanded ? chevronUp : chevronDown}*/}
+					{/*	className="expanded-icon"*/}
+					{/*/>*/}
 				</Button>
 			</div>
 
@@ -52,6 +94,7 @@ const Repeater = ({ value, fields, onUpdate, itemIndex }) => {
 										val={value[fieldId]}
 										title={updatedTitle}
 										updateTitle={updateTitle}
+										disabled={isVisible}
 									/>
 								</div>
 							);
