@@ -4474,14 +4474,14 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@wordpress/eslint-plugin@^9.0.2":
-  version "9.0.2"
-  resolved "https://registry.yarnpkg.com/@wordpress/eslint-plugin/-/eslint-plugin-9.0.2.tgz#85b207051e7e2d18ec1c1f13cd19adff327fcbf1"
-  integrity sha512-XmD2jpxmFoAFJgxaMuKs2zT1fGsZQGWLFgc7zENOw7EFKwDNP4o8YqsU6IbkSfX0QTSqB+D91Tq1B6HBq9FCxA==
+"@wordpress/eslint-plugin@^9.0.2", "@wordpress/eslint-plugin@^9.0.4":
+  version "9.0.4"
+  resolved "https://registry.yarnpkg.com/@wordpress/eslint-plugin/-/eslint-plugin-9.0.4.tgz#4a71c7f9731bbaa56d819b1900cc7e4a03213dea"
+  integrity sha512-tNK08dH/60MYbvRenq4lt8QPtol+JQFqyETEEjD7GWKvUve5Q90qsrjB2mwvD+/frMuQjnfUvOcW/kC8VD9E3g==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.15.0"
     "@typescript-eslint/parser" "^4.15.0"
-    "@wordpress/prettier-config" "^1.0.2"
+    "@wordpress/prettier-config" "^1.0.3"
     babel-eslint "^10.1.0"
     cosmiconfig "^7.0.0"
     eslint-config-prettier "^7.1.0"
@@ -4604,10 +4604,10 @@
   dependencies:
     postcss "^7.0.32"
 
-"@wordpress/prettier-config@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@wordpress/prettier-config/-/prettier-config-1.0.2.tgz#36c98bd4c7b97a61d008d765be2025c9e77359c2"
-  integrity sha512-puyOhbJuMjUeo2EcHmmh88mk0BFAUMTXWKyzJ0y3hlPXaPnjXdir/trj2hrI9FvWTnygLWU98qxhQUfhbIhPdw==
+"@wordpress/prettier-config@^1.0.2", "@wordpress/prettier-config@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@wordpress/prettier-config/-/prettier-config-1.0.3.tgz#e5a59346e006a85b800dbf2ae5fc68d6fb6020a3"
+  integrity sha512-BWiped4eH3EWZ4FckDTFWrDKmb2Xi5zGef9fm9f1vg+MiloNvEItVczoXHY3BK4nF9m171xsGx22WZSi7dVopA==
 
 "@wordpress/primitives@^1.11.1", "@wordpress/primitives@^1.12.1":
   version "1.12.1"
