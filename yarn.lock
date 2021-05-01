@@ -4221,12 +4221,12 @@
     "@babel/runtime" "^7.13.10"
     "@wordpress/hooks" "^2.12.1"
 
-"@wordpress/dom-ready@^2.12.1", "@wordpress/dom-ready@^2.13.0":
-  version "2.13.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/dom-ready/-/dom-ready-2.13.0.tgz#782a43887516a9a27847fb4fa3a8e01d2711a5a2"
-  integrity sha512-AodwaKzsNBLCOsdHJedo0hS7yPQPJhvREM60Wjw984GVgwKFx73yBsE8g9tchtmkPA/cTHR6ZJc+QHAMTJbANg==
+"@wordpress/dom-ready@^2.12.1", "@wordpress/dom-ready@^2.13.2":
+  version "2.13.2"
+  resolved "https://registry.yarnpkg.com/@wordpress/dom-ready/-/dom-ready-2.13.2.tgz#c3960a669791f28e12e0a88c100b33c4deb16e82"
+  integrity sha512-COH7n2uZfBq4FtluSbl37N3nCEcdMXzV42ETCWKUcumiP1Zd3qnkfQKcsxTaHWY8aVt/358RvJ7ghWe3xAd+fg==
   dependencies:
-    "@babel/runtime" "^7.12.5"
+    "@babel/runtime" "^7.13.10"
 
 "@wordpress/dom@^2.16.2":
   version "2.17.0"
