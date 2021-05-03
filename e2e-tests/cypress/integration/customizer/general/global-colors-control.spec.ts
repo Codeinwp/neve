@@ -13,7 +13,7 @@ describe('Global Colors', function () {
 		cy.get('.neve-global-color-palette-inner.active').should('contain', 'Dark Mode');
 	});
 
-	it('Palette Add', function () {
+	it('Palette Add and Delete', function () {
 		cy.get('.add-palette-form').as('form');
 		cy.get('@form').find('button').click();
 		cy.get('@form').find('input').type('Base');
@@ -25,9 +25,7 @@ describe('Global Colors', function () {
 		cy.get('@form').find('button').contains('Add').click();
 
 		cy.get('.neve-global-color-palette-inner.active').should('contain', 'Test Palette');
-	});
 
-	it('Palette Delete', function () {
 		cy.get('.neve-global-color-palette-inner.active')
 			.siblings('.delete-palette')
 			.click({ force: true });
