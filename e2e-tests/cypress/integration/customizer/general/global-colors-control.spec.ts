@@ -1,5 +1,5 @@
 describe('Global Colors', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.goToCustomizer();
 		cy.getCustomizerControl('neve_global_colors');
 		cy.get('.neve-global-colors-wrap').as('wrap');
@@ -40,17 +40,19 @@ describe('Global Colors', function () {
 	});
 
 	it('Changes Colors', function () {
+		cy.wait(500);
 		cy.get('button.is-secondary');
 		cy.get('.color-array-wrap .neve-color-component').each((control) => {
 			cy.get(control).find('button.is-secondary').click({ force: true });
 			cy.get(control).find('input').clear().type('#000000');
-			cy.get(control).find('.customize-control-title').click({ force: true });
+			cy.get(control).find('.customize-control-title').click();
 		});
 
 		cy.get('.neve-global-color-palette-inner.active .color').each((color) => {
 			cy.get(color).should('have.css', 'background-color').and('eq', 'rgb(0, 0, 0)');
 		});
 		cy.get('#save').click({ force: true });
+		cy.wait(500);
 		cy.request('/wp-json/wpthememods/v1/settings').then((themeOptions) => {
 			expect(themeOptions.body).to.contains(
 				`{"base":{"name":"Base","allowDeletion":false,"colors":{"nv-primary-accent":"#000000","nv-secondary-accent":"#000000","nv-site-bg":"#000000","nv-light-bg":"#000000","nv-dark-bg":"#000000","nv-text-color":"#000000","nv-text-dark-bg":"#000000","nv-c-1":"#000000","nv-c-2":"#000000"}`,
