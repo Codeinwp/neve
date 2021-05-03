@@ -62,9 +62,8 @@ describe('Global Colors', function () {
 
 	it('Palette Selector in Color Component', function () {
 		cy.getCustomizerControl('neve_button_appearance').as('buttonControl');
-
+		cy.wait(100);
 		cy.get('@buttonControl').find('.global-color-picker').first().click();
-
 		cy.get('.nv-custom-palette-wrap').should('be.visible');
 		cy.get('.nv-custom-palette-wrap .nv-custom-palette-color').should('have.length', 9);
 
