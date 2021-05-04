@@ -67,14 +67,21 @@ export const HFGMigrationNotice: React.FC<Props> = ({
 	};
 
 	const runMigration = (rollback = false, dismiss = false) => {
+		let message = __('Migrating builder data', 'neve');
+
+		if (rollback) {
+			message = __('Rolling back builder', 'neve');
+		}
+
+		if (dismiss) {
+			message = __('Removing old data', 'neve');
+		}
+
 		window.wp.customize.notifications.add(
 			new window.wp.customize.OverlayNotification(
 				'neve_migrating_builders',
 				{
-					message:
-						(dismiss
-							? __('Removing old data', 'neve')
-							: __('Migrating builder data', 'neve')) + '...',
+					message: message + '...',
 					type: 'success',
 					loading: true,
 				}

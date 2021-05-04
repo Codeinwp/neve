@@ -1,7 +1,6 @@
 @import "vars";
 
 .responsive-switches {
-  margin-bottom: 15px;
   display: inline-flex;
   width: auto;
 
@@ -25,5 +24,25 @@
 		color: $wp-blue;
 	  }
 	}
+  }
+}
+
+.builder-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.builder-instructions {
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+
+  p {
+	margin: 0;
+  }
+
+  strong {
+	margin-right: 5px;
   }
 }
