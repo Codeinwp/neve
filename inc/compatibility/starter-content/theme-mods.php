@@ -701,34 +701,6 @@ return array(
 	'header_search_responsive_field_text_color'   => 'var(--nv-primary-accent)',
 	'footer_copyright_color'                      => 'var(--nv-primary-accent)',
 	'footer_copyright_component_vertical_align'   => 'middle',
-	'hfg_footer_layout_bottom_height'             => '{"mobile":0,"tablet":0,"desktop":50}',
-	'footer_copyright_component_margin'           =>
-		array(
-			'mobile'       =>
-				array(
-					'top'    => 0,
-					'right'  => 0,
-					'bottom' => 0,
-					'left'   => 0,
-				),
-			'tablet'       =>
-				array(
-					'top'    => 0,
-					'right'  => 0,
-					'bottom' => 0,
-					'left'   => 0,
-				),
-			'desktop'      =>
-				array(
-					'top'    => '-10',
-					'right'  => '0',
-					'bottom' => '20',
-					'left'   => '0',
-				),
-			'mobile-unit'  => 'px',
-			'tablet-unit'  => 'px',
-			'desktop-unit' => 'px',
-		),
 	'hfg_footer_layout_v2'                        => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[],"c-left":[{"id":"footer_copyright"}],"center":[],"c-right":[],"right":[]}}}',
 	'primary-menu_component_padding'              =>
 		array(

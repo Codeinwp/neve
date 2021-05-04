@@ -1,9 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 
+import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 import { useContext } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
 import { DeviceTypes } from '../../@types/utils';
 import BuilderContext from '../BuilderContext';
 

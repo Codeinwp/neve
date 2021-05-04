@@ -7,8 +7,9 @@
 	left: 0;
 	right: 0;
 	margin-left: 300px;
-	padding: 20px;
+	padding: 10px 20px 20px;
 	background-color: $wp-light-grey;
+	border-top: $wp-grey-border;
 	transition: all .18s;
 
 	&.hide {
@@ -34,7 +35,7 @@
 
 
 .neve-builder-portal-wrap {
-  z-index: 1000;
+  z-index: 9;
   position: relative;
 }
 

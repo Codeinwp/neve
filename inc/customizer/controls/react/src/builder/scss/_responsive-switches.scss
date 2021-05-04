@@ -2,25 +2,26 @@
 
 .responsive-switches {
   margin-bottom: 15px;
-  border-bottom: $wp-grey-border;
   display: inline-flex;
   width: auto;
 
   .device-switcher {
-	border-bottom: 2px solid transparent;
+	border-bottom: 2px solid $wp-grey;
 	border-radius: 0;
-	font-weight: 700;
+	font-weight: 600;
 	color: $item-text-color;
-	padding: 10px 20px;
+	padding: 5px 15px;
+	opacity: .85;
 
 	.dashicons {
 	  color: $item-icons-color;
 	}
 
 	&.active {
+	  opacity: 1;
 	  border-bottom-color: $wp-blue;
 
-	  .dashicons {
+	  &.dashicons {
 		color: $wp-blue;
 	  }
 	}
