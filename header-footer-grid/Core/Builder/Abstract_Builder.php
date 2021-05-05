@@ -1172,15 +1172,6 @@ abstract class Abstract_Builder implements Builder {
 					}
 				}
 
-				if ( ! $this->columns_layout ) {
-					if ( $slot === 'c-left' && $component_index === 0 ) {
-						$classes[] = 'hfg-end';
-					}
-					if ( $slot === 'c-right' && $component_index === count( $slot_data ) - 1 ) {
-						$classes[] = 'hfg-start';
-					}
-				}
-
 				// If we don't have anything at render index, make sure we do.
 				if ( ! isset( $render_buffer[ $slot ][ $render_index ] ) ) {
 					$render_buffer[ $slot ][ $render_index ] = [
@@ -1205,12 +1196,26 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		if ( ! $this->columns_layout ) {
+			if ( $slot === 'c-left' && $component_index === 0 ) {
+				$classes[] = 'hfg-end';
+			}
+			if ( $slot === 'c-right' && $component_index === count( $slot_data ) - 1 ) {
+				$classes[] = 'hfg-start';
+			}
+		}
+
+		if ( ! $this->columns_layout ) {
 			// Move center-side-slot components inside the side slots.
 			if ( isset( $render_buffer['c-right'] ) ) {
+				$length = count( $render_buffer['c-right'] ) - 1;
+				if ( $length >= 0 ) {
+					$render_buffer['c-right'][ $length ]['classes'][] = 'hfg-start';
+				}
 				$render_buffer['right'] = array_merge( $render_buffer['c-right'], $render_buffer['right'] );
 			}
 			if ( isset( $render_buffer['c-left'] ) ) {
-				$render_buffer['left'] = array_merge( $render_buffer['left'], $render_buffer['c-left'] );
+				$render_buffer['c-left'][0]['classes'][] = 'hfg-end';
+				$render_buffer['left']                   = array_merge( $render_buffer['left'], $render_buffer['c-left'] );
 			}
 			unset( $render_buffer['c-left'] );
 			unset( $render_buffer['c-right'] );
@@ -1240,19 +1245,20 @@ abstract class Abstract_Builder implements Builder {
 
 			self::$current_slot = $slot;
 
-			foreach ( $slot_data as $component_group ) {
-				if ( isset( $component_group['components'] ) ) {
-					if ( count( $component_group['components'] ) > 1 ) {
-						$component_group['classes'][] = 'hfg-is-group';
-					}
-					echo sprintf( '<div class="%s">', esc_attr( join( ' ', $component_group['classes'] ) ) );
-					foreach ( $component_group['components'] as $component ) {
-						self::$current_component = $component;
-						$instance                = $this->builder_components[ $component ];
-						$instance->render();
-					}
-					echo '</div>';
+			foreach ( $slot_data as $group_index => $component_group ) {
+				if ( ! isset( $component_group['components'] ) ) {
+					continue;
 				}
+				if ( count( $component_group['components'] ) > 1 ) {
+					$component_group['classes'][] = 'hfg-is-group';
+				}
+				echo sprintf( '<div class="%s">', esc_attr( join( ' ', $component_group['classes'] ) ) );
+				foreach ( $component_group['components'] as $component ) {
+					self::$current_component = $component;
+					$instance                = $this->builder_components[ $component ];
+					$instance->render();
+				}
+				echo '</div>';
 			}
 
 			if ( $row_index !== 'sidebar' ) {
