@@ -73,13 +73,12 @@ class Admin {
 
 		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
 
-		add_action( 'after_switch_theme', [ $this, 'switch_to_new_builder' ] );
+		add_action( 'init', [ $this, 'switch_to_new_builder' ] );
 		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
 		add_filter( 'neve_pro_react_controls_localization', [ $this, 'adapt_conditional_headers' ] );
 		if ( class_exists( '\Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers' ) ) {
 			\Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers::$theme_mods_keys[] = 'hfg_header_layout_v2';
 		}
-
 	}
 
 	/**
@@ -88,6 +87,14 @@ class Admin {
 	 * @since 3.0.0
 	 */
 	public function switch_to_new_builder() {
+		$flag = 'neve_ran_builder_migration';
+		if( get_theme_mod( $flag ) ) {
+			return;
+		}
+
+		// Flag this as a routine that already ran.
+		set_theme_mod($flag, true);
+
 		$fresh = get_option( 'fresh_site' );
 
 		// If we have a fresh site. Make sure we're going to use the new builder.
