@@ -120,7 +120,7 @@ class Layout_Single_Post extends Base_Customizer {
 
 		$this->add_control(
 			new Control(
-				'neve_post_image_height',
+				'neve_post_image_height7',
 				[
 					'sanitize_callback' => 'neve_sanitize_range_value',
 					'transport'         => $this->selective_refresh,
@@ -137,6 +137,11 @@ class Layout_Single_Post extends Base_Customizer {
 							'mobile'  => 748,
 							'tablet'  => 992,
 							'desktop' => 1170,
+							'suffix'  => array(
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							),
 						],
 					],
 					'priority'              => 20,

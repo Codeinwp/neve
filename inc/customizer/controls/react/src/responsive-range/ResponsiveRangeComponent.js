@@ -56,9 +56,14 @@ const ResponsiveRangeComponent = ({ control }) => {
 		}
 
 		return units.map((unit, index) => {
+			const suffixValue =
+				value.suffix && value.suffix[currentDevice]
+					? value.suffix[currentDevice]
+					: defaultVal.suffix[currentDevice];
 			const buttonClass = classnames({
-				active: value[currentDevice + '-unit'] === unit,
+				active: suffixValue === unit,
 			});
+
 			return (
 				<Button
 					key={index}
@@ -66,7 +71,8 @@ const ResponsiveRangeComponent = ({ control }) => {
 					className={buttonClass}
 					onClick={() => {
 						const nextValue = { ...value };
-						nextValue[currentDevice + '-unit'] = unit;
+						nextValue.suffix = { ...nextValue.suffix };
+						nextValue.suffix[currentDevice] = unit;
 						if (unit !== 'em') {
 							nextValue[currentDevice] = parseInt(
 								nextValue[currentDevice]
@@ -90,7 +96,8 @@ const ResponsiveRangeComponent = ({ control }) => {
 	};
 
 	let displayValue = parseInt(value[currentDevice]);
-	displayValue = displayValue === 0 ? 0 : displayValue || '';
+	displayValue =
+		displayValue === 0 ? 0 : displayValue || defaultVal.currentDevice;
 
 	return (
 		<div className="neve-white-background-control neve-range-control">

@@ -80,7 +80,16 @@ function addStyle(settingType, id, newValue, args) {
 			if (args.suffix) {
 				suffixDefault = args.suffix[device];
 			}
-			const suffix = value[device + '-unit'] || suffixDefault;
+
+			let suffix = suffixDefault;
+			if (value[device + '-unit']) {
+				suffix = value[device + '-unit'];
+			}
+
+			if (value.suffix && value.suffix[device]) {
+				suffix = value.suffix[device];
+			}
+
 			if (value[device] === 0 || value[device] === '0') {
 				style += `@media (${map[device]}) {${template.replace(
 					regex,

@@ -19,7 +19,7 @@ use Neve\Core\Styles\Dynamic_Selector;
  */
 class Post_Layout extends Base_View {
 
-	const POST_IMAGE_HEIGHT = 'neve_post_image_height';
+	const POST_IMAGE_HEIGHT = 'neve_post_image_height7';
 
 	/**
 	 * Function that is run after instantiation.
@@ -210,7 +210,8 @@ class Post_Layout extends Base_View {
 			Config::CSS_PROP_HEIGHT => [
 				Dynamic_Selector::META_KEY           => self::POST_IMAGE_HEIGHT,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+				Dynamic_Selector::META_AS_JSON       => true,
 			],
 		];
 
