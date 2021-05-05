@@ -88,12 +88,12 @@ class Admin {
 	 */
 	public function switch_to_new_builder() {
 		$flag = 'neve_ran_builder_migration';
-		if( get_theme_mod( $flag ) ) {
+		if ( get_theme_mod( $flag ) ) {
 			return;
 		}
 
 		// Flag this as a routine that already ran.
-		set_theme_mod($flag, true);
+		set_theme_mod( $flag, true );
 
 		$fresh = get_option( 'fresh_site' );
 

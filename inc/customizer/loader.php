@@ -89,17 +89,19 @@ class Loader {
 			apply_filters(
 				'neve_react_controls_localization',
 				array(
-					'nonce'            => wp_create_nonce( 'wp_rest' ),
-					'headerControls'   => [],
-					'instructionalVid' => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
-					'dynamicTags'      => array(
+					'nonce'                         => wp_create_nonce( 'wp_rest' ),
+					'headerControls'                => [],
+					'instructionalVid'              => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
+					'dynamicTags'                   => array(
 						'controls' => array(),
 						'options'  => array(),
 					),
-					'fonts'            => array(
+					'fonts'                         => array(
 						'System' => neve_get_standard_fonts(),
 						'Google' => neve_get_google_fonts(),
 					),
+					'hideConditionalHeaderSelector' => defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.5.2', '<=' ) && neve_is_new_builder(),
+					'dashUpdatesMessage'            => sprintf( 'Please %s to the latest version of Neve Pro to manage the conditional headers.', '<a href="' . esc_url( admin_url( 'update-core.php' ) ) . '">' . __( 'update', 'neve' ) . '</a>' ),
 				)
 			)
 		);

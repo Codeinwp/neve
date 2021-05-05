@@ -468,6 +468,7 @@ class Builder_Migrator {
 			$decoded[ $new_mod_key ] = $migrated_value;
 
 			update_post_meta( $cpt_id, 'theme-mods', wp_json_encode( $decoded ) );
+			delete_transient( 'custom_layouts_post_map_v2' );
 		}
 
 		self::$current_builder = null;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { createInterpolateElement } from '@wordpress/element';
+import { createInterpolateElement, useEffect } from '@wordpress/element';
 import { Button } from '@wordpress/components';
 import { __, sprintf } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
@@ -18,12 +18,47 @@ const BuilderHeaderNotification: React.FC<Props> = ({
 		window.wp.customize.control('neve_header_conditional_selector').focus();
 	};
 
+	const {
+		hideConditionalHeaderSelector: incompatiblePro,
+	} = window.NeveReactCustomize;
+
 	let currentEditedHeader = null;
 
 	const { currentHeaderLayout, headerLayouts } = useSelect((select) => ({
 		currentHeaderLayout: select('neve-store')?.getCurrentLayout(),
 		headerLayouts: select('neve-store')?.getHeaderLayouts(),
 	}));
+
+	// Disable conditional headers on old versions of the plugin.
+	useEffect(() => {
+		if (!incompatiblePro || builder !== 'header') {
+			return;
+		}
+
+		const control = window.wp.customize.control(
+			'neve_header_conditional_selector'
+		);
+
+		if (!control) {
+			return;
+		}
+
+		const { dashUpdatesMessage } = window.NeveReactCustomize;
+
+		control.deactivate();
+		window.wp.customize.control('neve_global_header').deactivate();
+
+		const sectionToNotify = control.params.section;
+		window.wp.customize.section(sectionToNotify).notifications.add(
+			new window.wp.customize.Notification(
+				'neve-incompatible-conditional',
+				{
+					type: 'warning',
+					message: dashUpdatesMessage,
+				}
+			)
+		);
+	});
 
 	if (
 		builder === 'header' &&

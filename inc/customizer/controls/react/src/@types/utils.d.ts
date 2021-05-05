@@ -105,6 +105,8 @@ declare global {
 			HFG: HFGLayoutBuilder;
 			instructionalVid: string;
 			nonce: string;
+			hideConditionalHeaderSelector: boolean;
+			dashUpdatesMessage: string;
 		};
 		NeveProReactCustomize: undefined | StringObjectKeys;
 	}
