@@ -1,54 +1,41 @@
 import React from 'react';
-import {
-	createInterpolateElement,
-	useEffect,
-	useState,
-} from '@wordpress/element';
-import { __, sprintf } from '@wordpress/i18n';
+import { createInterpolateElement } from '@wordpress/element';
 import { Button } from '@wordpress/components';
-import { info } from '@wordpress/icons';
-import { WPCustomizeControl } from '../../@types/customizer-control';
+import { __, sprintf } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
+import { info } from '@wordpress/icons';
 
 type Props = {
+	builderName: string;
 	builder: string;
 };
 
-const BuilderHeaderNotification: React.FC<Props> = ({ builder }) => {
-	const [conditionalHeader, setConditionalHeader] = useState('');
-
+const BuilderHeaderNotification: React.FC<Props> = ({
+	builder,
+	builderName,
+}) => {
 	const focusConditionalSelector = () => {
 		window.wp.customize.control('neve_header_conditional_selector').focus();
 	};
 
+	let currentEditedHeader = null;
+
 	const { currentHeaderLayout, headerLayouts } = useSelect((select) => ({
-		currentHeaderLayout: select('neve-store').getCurrentLayout(),
-		headerLayouts: select('neve-store').getHeaderLayouts(),
+		currentHeaderLayout: select('neve-store')?.getCurrentLayout(),
+		headerLayouts: select('neve-store')?.getHeaderLayouts(),
 	}));
 
-	console.log(currentHeaderLayout);
-	console.log(headerLayouts);
-
-	useEffect(() => {
-		if (!currentHeaderLayout) {
-			return;
-		}
-
-		if (builder !== 'header') return;
-
-		window.wp.customize.control(
-			'neve_header_conditional_selector',
-			(control: WPCustomizeControl) => {
-				control.setting.bind((nextValue: string) => {
-					setConditionalHeader(nextValue);
-				});
-			}
-		);
-	}, []);
+	if (
+		builder === 'header' &&
+		currentHeaderLayout &&
+		currentHeaderLayout !== 'default'
+	) {
+		currentEditedHeader = headerLayouts[currentHeaderLayout];
+	}
 
 	return (
 		<span className="builder-instructions">
-			{conditionalHeader && (
+			{currentEditedHeader && (
 				<p>
 					{createInterpolateElement(
 						sprintf(
@@ -57,7 +44,7 @@ const BuilderHeaderNotification: React.FC<Props> = ({ builder }) => {
 								'You are customizing the <Button>%1$s</Button> Header',
 								'neve'
 							),
-							conditionalHeader
+							currentEditedHeader
 						),
 						{
 							Button: (
@@ -72,13 +59,13 @@ const BuilderHeaderNotification: React.FC<Props> = ({ builder }) => {
 					)}
 				</p>
 			)}
-			{!conditionalHeader && (
+			{!currentEditedHeader && (
 				<p>
 					<strong>
 						{sprintf(
 							/* translators: %1$s builder name (ie: Header) */
 							__('%1$s Builder', 'neve'),
-							builder
+							builderName
 						) + ':'}
 					</strong>
 					{__(
