@@ -132,7 +132,7 @@ class PaletteSwitch extends Abstract_Component {
 	}
 
 	/**
-	 * Get JS contents from file to use as inline script
+	 * Get JS contents from file to use as inline script.
 	 *
 	 * @return string
 	 */
