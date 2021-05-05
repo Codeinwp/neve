@@ -34,7 +34,7 @@ class Pagination extends Base_View {
 	public function register_endpoints() {
 		register_rest_route(
 			'nv/v1/posts',
-			'/page/(?P<page_number>\d+)/',
+			'/page/(?P<page_number>\d+)(?:/(?P<lang>[a-zA-Z0-9-_]+))?',
 			array(
 				'methods'             => \WP_REST_Server::CREATABLE,
 				'callback'            => array( $this, 'get_posts' ),
@@ -63,6 +63,19 @@ class Pagination extends Base_View {
 		$args['paged']               = $request['page_number'];
 		$args['ignore_sticky_posts'] = 1;
 		$args['post_status']         = 'publish';
+
+		if ( ! empty( $request['lang'] ) ) {
+			if ( defined( 'POLYLANG_VERSION' ) ) {
+				$args['lang'] = $request['lang'];
+			}
+
+			if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+				global $sitepress;
+				if ( gettype( $sitepress ) === 'object' && method_exists( $sitepress, 'switch_lang' ) ) {
+					$sitepress->switch_lang( $request['lang'] );
+				}
+			}
+		}
 
 		$output = '';
 
@@ -95,10 +108,17 @@ class Pagination extends Base_View {
 		global $wp_query;
 		$max_pages = $wp_query->max_num_pages;
 
-		$data['infiniteScroll']         = 'enabled';
-		$data['infiniteScrollMaxPages'] = $max_pages;
-		$data['infiniteScrollEndpoint'] = rest_url( 'nv/v1/posts/page/' );
-		$data['infiniteScrollQuery']    = wp_json_encode( $wp_query->query );
+		$data['infScroll'] = 'enabled';
+		$data['maxPages']  = $max_pages;
+		$data['endpoint']  = rest_url( 'nv/v1/posts/page/' );
+		$data['query']     = wp_json_encode( $wp_query->query );
+		$data['lang']      = get_locale();
+
+		// WPML language parameter
+		$current_lang = apply_filters( 'wpml_current_language', null );
+		if ( ! empty( $current_lang ) ) {
+			$data['lang'] = $current_lang;
+		}
 
 		return $data;
 	}
@@ -115,26 +135,32 @@ class Pagination extends Base_View {
 			return;
 		}
 
-		if ( ! $this->has_infinite_scroll() ) {
-			if ( is_paged() ) {
-				/**
-				 * Executes actions before pagination.
-				 *
-				 * @since 2.3.8
-				 */
-				do_action( 'neve_before_pagination' );
-			}
-			echo wp_kses_post(
-				paginate_links(
-					array(
-						'type' => 'list',
-					)
-				)
-			);
-
-			return;
+		if ( ! $this->has_infinite_scroll() && is_paged() ) {
+			/**
+			 * Executes actions before pagination.
+			 *
+			 * @since 2.3.8
+			 */
+			do_action( 'neve_before_pagination' );
 		}
-		echo wp_kses_post( '<div class="load-more-posts"><span class="nv-loader" style="display: none;"></span><span class="infinite-scroll-trigger"></span></div>' );
+
+		$links = paginate_links( array( 'type' => 'list' ) );
+		$links = str_replace(
+			array( '<a class="prev', '<a class="next' ),
+			array(
+				'<a rel="prev" class="prev',
+				'<a rel="next" class="next',
+			),
+			$links
+		);
+
+		echo $this->has_infinite_scroll() ? '<div style="display: none;">' : '';
+		echo wp_kses_post( $links );
+		echo $this->has_infinite_scroll() ? '</div>' : '';
+
+		if ( $this->has_infinite_scroll() ) {
+			echo wp_kses_post( '<div class="load-more-posts"><span class="nv-loader" style="display: none;"></span><span class="infinite-scroll-trigger"></span></div>' );
+		}
 	}
 
 	/**

@@ -193,6 +193,8 @@ jobs:
       - name: Run ${{ matrix.specs }} Cypress tests
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
         uses: cypress-io/github-action@v2
         with:

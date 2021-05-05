@@ -117,7 +117,7 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 
 	it('Pagination Infinite', function () {
 		cy.visit('/');
-		cy.get('.page-numbers').should('not.exist');
+		cy.get('.page-numbers').should('not.be.visible');
 		cy.get('.nv-loader').should('exist');
 	});
 

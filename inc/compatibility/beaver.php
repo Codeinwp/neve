@@ -20,12 +20,14 @@ class Beaver extends Page_Builder_Base {
 	 * Init function.
 	 */
 	public function init() {
-		if ( ! defined( 'FL_THEME_BUILDER_VERSION' ) ) {
-			return;
+		if ( defined( 'FL_BUILDER_VERSION' ) ) {
+			add_filter( 'fl_builder_color_presets', array( $this, 'global_color_presets' ) );
 		}
 
-		add_action( 'wp', array( $this, 'add_theme_builder_hooks' ) );
-		add_filter( 'fl_theme_builder_part_hooks', array( $this, 'register_part_hooks' ) );
+		if ( defined( 'FL_THEME_BUILDER_VERSION' ) ) {
+			add_action( 'wp', array( $this, 'add_theme_builder_hooks' ) );
+			add_filter( 'fl_theme_builder_part_hooks', array( $this, 'register_part_hooks' ) );
+		}
 	}
 
 	/**
@@ -121,5 +123,47 @@ class Beaver extends Page_Builder_Base {
 	public function register_part_hooks() {
 		$hooks = neve_hooks();
 		return array_map( array( $this, 'hook_to_part' ), array_keys( $hooks ), $hooks );
+	}
+
+	/**
+	 * Adds global colors from neve to Beaver Builder color presets.
+	 *
+	 * @param array $colors Color presets.
+	 *
+	 * @return array
+	 */
+	public function global_color_presets( $colors ) {
+
+		$global_colors = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
+
+		if ( empty( $global_colors ) ) {
+			return $colors;
+		}
+
+		if ( ! isset( $global_colors['activePalette'] ) ) {
+			return $colors;
+		}
+
+		$active = $global_colors['activePalette'];
+
+		if ( ! isset( $global_colors['palettes'][ $active ] ) ) {
+			return $colors;
+		}
+
+		$palette = $global_colors['palettes'][ $active ];
+
+		if ( ! isset( $palette['colors'] ) ) {
+			return $colors;
+		}
+
+		$palette_colors = array_values( $palette['colors'] );
+
+		foreach ( $palette_colors as $color ) {
+			if ( ! array_search( $color, $colors, true ) ) {
+				$colors[] = str_replace( '#', '', $color );
+			}
+		}
+
+		return array_values( array_unique( $colors ) );
 	}
 }

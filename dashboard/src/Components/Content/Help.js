@@ -3,12 +3,12 @@ import Card from '../Card';
 
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
-import { Button, Icon } from '@wordpress/components';
+import { Button, Icon, ExternalLink } from '@wordpress/components';
 
 const Help = (props) => {
 	const { setTab } = props;
 
-	let { docsURL, supportURL, whiteLabel, assets } = neveDash;
+	let { docsURL, codexURL, supportURL, whiteLabel, assets } = neveDash;
 	const { supportCardDescription, docsCardDescription } = neveDash.strings;
 
 	if (whiteLabel && whiteLabel.agencyURL) {
@@ -30,12 +30,9 @@ const Help = (props) => {
 						'neve'
 					)}
 				>
-					<Button
-						isLink
-						href="http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder"
-					>
+					<ExternalLink href="http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder">
 						{__('Learn More', 'neve')}
-					</Button>
+					</ExternalLink>
 				</Card>
 			)}
 			<Card
@@ -43,17 +40,28 @@ const Help = (props) => {
 				title={__('Documentation', 'neve')}
 				description={docsCardDescription}
 			>
-				<Button isLink href={docsURL}>
-					{__('Go to docs', 'neve')}
-				</Button>
 				{!whiteLabel && (
-					<a
+					<ExternalLink href={codexURL}>
+						{__('Go to Neve Codex', 'neve')}
+					</ExternalLink>
+				)}
+				<ExternalLink href={docsURL}>
+					{__('Go to docs', 'neve')}
+				</ExternalLink>
+				{!whiteLabel && (
+					<Button
+						isLink
 						className="facebook-badge"
 						href="https://www.facebook.com/groups/648646435537266/"
+						target="_blank"
+						rel="external noreferrer noopener"
 					>
+						<span className="components-visually-hidden">
+							{__('(opens in a new tab)', 'neve')}
+						</span>
 						<Icon icon="facebook-alt" />
 						<span>{__('Join our Facebook Group', 'neve')}</span>
-					</a>
+					</Button>
 				)}
 			</Card>
 
@@ -66,12 +74,9 @@ const Help = (props) => {
 						'neve'
 					)}
 				>
-					<Button
-						isLink
-						href="http://docs.themeisle.com/article/14-how-to-create-a-child-theme"
-					>
+					<ExternalLink href="http://docs.themeisle.com/article/14-how-to-create-a-child-theme">
 						{__('Learn More', 'neve')}
-					</Button>
+					</ExternalLink>
 				</Card>
 			)}
 
@@ -80,7 +85,15 @@ const Help = (props) => {
 				title={__('Contact Support', 'neve')}
 				description={supportCardDescription}
 			>
-				<Button isPrimary href={supportURL}>
+				<Button
+					isPrimary
+					href={supportURL}
+					target="_blank"
+					rel="external noreferrer noopener"
+				>
+					<span className="components-visually-hidden">
+						{__('(opens in a new tab)', 'neve')}
+					</span>
 					{__('Contact Support', 'neve')}
 				</Button>
 			</Card>
@@ -94,12 +107,9 @@ const Help = (props) => {
 						'neve'
 					)}
 				>
-					<Button
-						isLink
-						href="http://docs.themeisle.com/article/63-speed-up-your-wordpress-site"
-					>
+					<ExternalLink href="http://docs.themeisle.com/article/63-speed-up-your-wordpress-site">
 						{__('Learn More', 'neve')}
-					</Button>
+					</ExternalLink>
 				</Card>
 			)}
 			{!whiteLabel && (
@@ -110,6 +120,7 @@ const Help = (props) => {
 						'Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented.',
 						'neve'
 					)}
+					ßßßßß
 				>
 					<Button isLink onClick={() => setTab('changelog')}>
 						{__('View Changelog', 'neve')}

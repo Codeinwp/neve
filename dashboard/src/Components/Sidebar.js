@@ -1,10 +1,9 @@
 /* global neveDash */
 import { changeOption } from '../utils/rest';
 import LicenseCard from './LicenseCard';
-
 import { __ } from '@wordpress/i18n';
-import { ToggleControl } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { ToggleControl, ExternalLink } from '@wordpress/components';
+import { createInterpolateElement, useState } from '@wordpress/element';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 
@@ -18,16 +17,24 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 				<aside className="sidebar card">
 					<div className="sidebar-section">
 						<h4>{__('Neve Community', 'neve')}</h4>
-						<p
-							dangerouslySetInnerHTML={{
-								__html:
-									neveDash.strings
-										.sidebarCommunityDescription,
-							}}
-						/>
-						<a href="https://www.facebook.com/groups/648646435537266/">
+						<p>
+							{createInterpolateElement(
+								__(
+									'Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our <external_link>public roadmap</external_link>.',
+									'neve'
+								),
+								{
+									external_link: (
+										<ExternalLink href="https://neve.nolt.io">
+											#dumptext
+										</ExternalLink>
+									),
+								}
+							)}
+						</p>
+						<ExternalLink href="https://www.facebook.com/groups/648646435537266/">
 							{__('Join our Facebook Group', 'neve')}
-						</a>
+						</ExternalLink>
 					</div>
 					<hr />
 					<div className="sidebar-section">
@@ -38,9 +45,9 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 								'neve'
 							)}
 						</p>
-						<a href="https://wordpress.org/support/theme/neve/reviews/#new-post">
+						<ExternalLink href="https://wordpress.org/support/theme/neve/reviews/#new-post">
 							{__('Submit a review', 'neve')}
-						</a>
+						</ExternalLink>
 					</div>
 					<hr />
 					<div className="sidebar-section">
@@ -51,9 +58,9 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 								'neve'
 							)}
 							&nbsp;
-							<a href="https://docs.themeisle.com/article/1122-neve-usage-tracking">
+							<ExternalLink href="https://docs.themeisle.com/article/1122-neve-usage-tracking">
 								{__('What do we track?', 'neve')}
-							</a>
+							</ExternalLink>
 						</p>
 						<ToggleControl
 							checked={tracking}
