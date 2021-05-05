@@ -52,10 +52,15 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 				const { detail } = e;
 				if (!detail) return false;
 				const { id, value: builderValue } = detail;
+				let actualValue = builderValue;
+
+				if (!actualValue) {
+					actualValue = { ...value };
+				}
 
 				if (!id || `hfg_${id}_layout_v2` !== control.id) return false;
 				onChange(
-					maybeParseJson(builderValue) as BuilderContentInterface
+					maybeParseJson(actualValue) as BuilderContentInterface
 				);
 				return false;
 			}
