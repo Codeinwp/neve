@@ -19,7 +19,7 @@ use Neve\Core\Styles\Dynamic_Selector;
  */
 class Post_Layout extends Base_View {
 
-	const POST_IMAGE_HEIGHT = 'neve_post_image_height7';
+	const POST_COVER_HEIGHT = 'neve_post_cover_height';
 
 	/**
 	 * Function that is run after instantiation.
@@ -28,6 +28,7 @@ class Post_Layout extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_do_single_post', array( $this, 'render_post' ) );
+		add_action( 'neve_after_header_wrapper_hook', array( $this, 'render_cover_header' ) );
 		add_filter( 'neve_style_subscribers', array( $this, 'add_subscribers' ) );
 
 	}
@@ -91,12 +92,19 @@ class Post_Layout extends Base_View {
 		}
 
 		$content_order_length = count( $content_order );
+		$header_layout        = get_theme_mod( 'neve_post_header_layout', 'normal' );
 		foreach ( $content_order as $index => $item ) {
 			switch ( $item ) {
 				case 'title-meta':
+					if ( $header_layout !== 'normal' ) {
+						break;
+					}
 					$this->render_entry_header();
 					break;
 				case 'thumbnail':
+					if ( $header_layout !== 'normal' ) {
+						break;
+					}
 					echo '<div class="nv-thumb-wrap">';
 					echo get_the_post_thumbnail(
 						null,
@@ -184,7 +192,7 @@ class Post_Layout extends Base_View {
 	 */
 	private function render_entry_header( $render_meta = true ) {
 		$alignment_default = is_rtl() ? 'right' : 'left';
-		$header_alignment  = get_theme_mod( 'neve_post_title_alignment', 'left' );
+		$header_alignment  = get_theme_mod( 'neve_post_title_alignment', $alignment_default );
 		echo '<div class="entry-header has-text-align-' . esc_attr( $header_alignment ) . '">';
 		echo '<div class="nv-title-meta-wrap">';
 		do_action( 'neve_before_post_title' );
@@ -198,6 +206,129 @@ class Post_Layout extends Base_View {
 	}
 
 	/**
+	 * Render the cover layout on single post.
+	 */
+	public function render_cover_header() {
+		if ( ! is_singular( 'post' ) ) {
+			return false;
+		}
+
+		$header_layout = get_theme_mod( 'neve_post_header_layout', 'normal' );
+		if ( $header_layout !== 'cover' ) {
+			return false;
+		}
+
+		$vertical_alignment_classes = $this->get_alignment_classes(
+			'neve_post_title_alignment',
+			[
+				'desktop' => 'left',
+				'tablet'  => 'left',
+				'mobile'  => 'left',
+			]
+		);
+
+		$horizontal_alignment_classes = $this->get_alignment_classes(
+			'neve_post_title_position',
+			[
+				'desktop' => 'middle',
+				'tablet'  => 'middle',
+				'mobile'  => 'middle',
+			]
+		);
+
+		$cover_style = $this->get_cover_style();
+
+		echo '<div class="cover-header ' . esc_attr( $vertical_alignment_classes ) . '" style="' . esc_attr( $cover_style ) . '">';
+		echo '<div class="container single-post-container ' . esc_attr( $horizontal_alignment_classes ) . '">';
+		echo '<div class="nv-title-meta-wrap">';
+		do_action( 'neve_before_post_title' );
+		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
+	}
+
+	/**
+	 * Get alignment classes for the title on the cover layout.
+	 *
+	 * @param string $theme_mod Theme mod id.
+	 * @param string $default   The default value for the control.
+	 *
+	 * @return string
+	 */
+	private function get_alignment_classes( $theme_mod, $default = null ) {
+		$classes = array();
+
+		$title_alignment = get_theme_mod( $theme_mod, $default );
+		if ( empty( $title_alignment ) ) {
+			return '';
+		}
+
+		foreach ( $title_alignment as $device_slug => $align_slug ) {
+			$classes[] = $device_slug . '-' . $align_slug;
+		}
+
+		return implode( ' ', $classes );
+	}
+
+	/**
+	 * Get the background style for the cover layout.
+	 *
+	 * @return string
+	 */
+	private function get_cover_style() {
+		$cover_style = array();
+
+		$post_thumbnail = get_the_post_thumbnail_url();
+		if ( ! empty( $post_thumbnail ) ) {
+			$cover_style['background-image']    = 'url("' . esc_url( $post_thumbnail ) . '")';
+			$cover_style['background-size']     = 'cover';
+			$cover_style['background-repeat']   = 'no-repeat';
+			$cover_style['background-position'] = 'center';
+		}
+
+		return $this->get_inline_style( $cover_style );
+	}
+
+	/**
+	 * Get the alignment of cover title.
+	 */
+	private function get_cover_title_alignment() {
+		$alignment_style = array( 'display' => 'flex' );
+		$position_map    = array(
+			'left'   => 'flex-start',
+			'center' => 'center',
+			'right'  => 'flex-end',
+		);
+
+		$title_alignment = get_theme_mod( 'neve_post_title_alignment', is_rtl() ? 'right' : 'left' );
+		if ( ! empty( $title_alignment ) ) {
+			$alignment_style['justify-content'] = $position_map[ $title_alignment ];
+		}
+
+		return $this->get_inline_style( $alignment_style );
+	}
+
+	/**
+	 * Convert from array to inline style.
+	 *
+	 * @param array $array Css properties in array.
+	 *
+	 * @return string
+	 */
+	private function get_inline_style( $array ) {
+		return implode(
+			'; ',
+			array_map(
+				function ( $v, $k ) {
+					return sprintf( '%s:%s', $k, $v ); },
+				$array,
+				array_keys( $array )
+			)
+		);
+	}
+
+	/**
 	 * Add dynamic style subscribers.
 	 *
 	 * @param array $subscribers Css subscribers.
@@ -206,12 +337,13 @@ class Post_Layout extends Base_View {
 	 */
 	public function add_subscribers( $subscribers = [] ) {
 
-		$subscribers['.nv-thumb-wrap img'] = [
-			Config::CSS_PROP_HEIGHT => [
-				Dynamic_Selector::META_KEY           => self::POST_IMAGE_HEIGHT,
+		$subscribers['body.single-post .cover-header'] = [
+			Config::CSS_PROP_MIN_HEIGHT => [
+				Dynamic_Selector::META_KEY           => self::POST_COVER_HEIGHT,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
 				Dynamic_Selector::META_AS_JSON       => true,
+				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "300", "tablet": "300", "desktop": "300" }',
 			],
 		];
 

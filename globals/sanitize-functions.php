@@ -206,3 +206,32 @@ function neve_sanitize_typography_control( $value ) {
 
 	return $value;
 }
+
+
+/**
+ * Sanitize alignment.
+ *
+ * @param array $input alignment responsive array.
+ *
+ * @return array
+ */
+function sanitize_alignment( $input ) {
+	$default = [
+		'mobile'  => 'left',
+		'tablet'  => 'left',
+		'desktop' => 'left',
+	];
+	$allowed = [ 'left', 'center', 'right', 'justify' ];
+
+	if ( ! is_array( $input ) ) {
+		return $default;
+	}
+
+	foreach ( $input as $device => $alignment ) {
+		if ( ! in_array( $alignment, $allowed ) ) {
+			$input[ $device ] = 'left';
+		}
+	}
+
+	return $input;
+}

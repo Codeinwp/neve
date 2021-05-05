@@ -97,8 +97,8 @@ class Layout_Single_Post extends Base_Customizer {
 			new Control(
 				'neve_post_header_layout',
 				array(
-					// 'sanitize_callback' => array( $this, 'sanitize_header_layout' ),
-																			'default' => 'normal',
+					'sanitize_callback' => array( $this, 'sanitize_header_layout' ),
+					'default'           => 'normal',
 				),
 				array(
 					'section'  => $this->section,
@@ -120,23 +120,24 @@ class Layout_Single_Post extends Base_Customizer {
 
 		$this->add_control(
 			new Control(
-				'neve_post_image_height7',
+				'neve_post_cover_height',
 				[
 					'sanitize_callback' => 'neve_sanitize_range_value',
 					'transport'         => $this->selective_refresh,
+					'default'           => '{ "mobile": "300", "tablet": "300", "desktop": "300" }',
 				],
 				[
-					'label'                 => esc_html__( 'Image height', 'neve' ),
+					'label'                 => esc_html__( 'Cover height', 'neve' ),
 					'section'               => $this->section,
 					'type'                  => 'neve_responsive_range_control',
 					'input_attrs'           => [
-						'min'        => 200,
-						'max'        => 2000,
+						'min'        => 50,
+						'max'        => 700,
 						'units'      => [ 'px', 'vh' ],
 						'defaultVal' => [
-							'mobile'  => 748,
-							'tablet'  => 992,
-							'desktop' => 1170,
+							'mobile'  => 300,
+							'tablet'  => 300,
+							'desktop' => 300,
 							'suffix'  => array(
 								'mobile'  => 'px',
 								'tablet'  => 'px',
@@ -148,16 +149,17 @@ class Layout_Single_Post extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'responsive' => true,
-						'prop'       => 'height',
+						'prop'       => 'min-height',
 						'suffix'     => [
 							'mobile'  => 'px',
 							'desktop' => 'px',
 							'tablet'  => 'px',
 						],
-						'template'   => '.nv-thumb-wrap img{
-							height: {{value}};
+						'template'   => 'body.single-post .cover-header{
+							min-height: {{value}};
 						}',
 					],
+					'active_callback'       => array( $this, 'is_cover_layout' ),
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)
@@ -167,14 +169,19 @@ class Layout_Single_Post extends Base_Customizer {
 			new Control(
 				'neve_post_title_alignment',
 				array(
-					'sanitize_callback' => array( $this, 'sanitize_title_alignment' ),
-					'default'           => is_rtl() ? 'right' : 'left',
+					'sanitize_callback' => 'sanitize_alignment',
+					'transport'         => $this->selective_refresh,
+					'default'           => [
+						'desktop' => 'left',
+						'tablet'  => 'left',
+						'mobile'  => 'left',
+					],
 				),
 				array(
-					'label'       => esc_html__( 'Title Alignment', 'neve' ),
-					'section'     => 'neve_single_post_layout',
-					'priority'    => 25,
-					'choices'     => array(
+					'label'                 => esc_html__( 'Title Alignment', 'neve' ),
+					'section'               => 'neve_single_post_layout',
+					'priority'              => 25,
+					'choices'               => array(
 						'left'   => array(
 							'tooltip' => esc_html__( 'Left', 'neve' ),
 							'icon'    => 'editor-alignleft',
@@ -188,9 +195,74 @@ class Layout_Single_Post extends Base_Customizer {
 							'icon'    => 'editor-alignright',
 						),
 					),
-					'show_labels' => true,
+					'show_labels'           => true,
+					'live_refresh_selector' => '.cover-header .container',
+					'live_refresh_css_prop' => [
+						'remove_classes' => [
+							'mobile-left',
+							'mobile-right',
+							'mobile-center',
+							'tablet-left',
+							'tablet-right',
+							'tablet-center',
+							'desktop-left',
+							'desktop-right',
+							'desktop-center',
+						],
+					],
 				),
-				'\Neve\Customizer\Controls\React\Radio_Buttons'
+				'\Neve\Customizer\Controls\React\Responsive_Radio_Buttons'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_title_position',
+				array(
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
+					'transport'         => $this->selective_refresh,
+					'default'           => [
+						'desktop' => 'middle',
+						'tablet'  => 'middle',
+						'mobile'  => 'middle',
+					],
+				),
+				array(
+					'label'                 => esc_html__( 'Title Position', 'neve' ),
+					'section'               => 'neve_single_post_layout',
+					'priority'              => 30,
+					'choices'               => array(
+						'top'    => array(
+							'tooltip' => esc_html__( 'Top', 'neve' ),
+							'icon'    => 'arrow-up',
+						),
+						'middle' => array(
+							'tooltip' => esc_html__( 'Middle', 'neve' ),
+							'icon'    => 'sort',
+						),
+						'bottom' => array(
+							'tooltip' => esc_html__( 'Bottom', 'neve' ),
+							'icon'    => 'arrow-down',
+						),
+					),
+					'live_refresh_selector' => '.cover-header .nv-title-meta-wrap',
+					'live_refresh_css_prop' => [
+						'remove_classes' => [
+							'mobile-top',
+							'mobile-middle',
+							'mobile-bottom',
+							'tablet-top',
+							'tablet-middle',
+							'tablet-bottom',
+							'desktop-top',
+							'desktop-middle',
+							'desktop-bottom',
+						],
+					],
+					'show_labels'           => true,
+					'active_callback'       => array( $this, 'is_cover_layout' ),
+				),
+				'\Neve\Customizer\Controls\React\Responsive_Radio_Buttons'
 			)
 		);
 	}
@@ -272,16 +344,25 @@ class Layout_Single_Post extends Base_Customizer {
 	}
 
 	/**
-	 * Sanitize the alignment of the title.
+	 * Fuction used for active_callback control property.
+	 *
+	 * @return bool
+	 */
+	public function is_cover_layout() {
+		return get_theme_mod( 'neve_post_header_layout' ) === 'cover';
+	}
+
+	/**
+	 * Sanitize the header layout control.
 	 *
 	 * @param string $input Control input.
 	 *
 	 * @return string
 	 */
-	public function sanitize_title_alignment( $input ) {
-		$alignment_options = array( 'left', 'center', 'right' );
-		if ( ! in_array( $input, $alignment_options, true ) ) {
-			return is_rtl() ? 'right' : 'left';
+	public function sanitize_header_layout( $input ) {
+		$header_layout_options = array( 'normal', 'cover' );
+		if ( ! in_array( $input, $header_layout_options, true ) ) {
+			return 'normal';
 		}
 		return $input;
 	}

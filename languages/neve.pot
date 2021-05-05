@@ -456,7 +456,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
 #: inc/customizer/options/layout_sidebar.php:129
-#: inc/customizer/options/layout_single_post.php:179
+#: inc/customizer/options/layout_single_post.php:186
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:153
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:108
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:45
@@ -465,13 +465,13 @@ msgid "Left"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:469
-#: inc/customizer/options/layout_single_post.php:183
+#: inc/customizer/options/layout_single_post.php:190
 msgid "Center"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
 #: inc/customizer/options/layout_sidebar.php:133
-#: inc/customizer/options/layout_single_post.php:187
+#: inc/customizer/options/layout_single_post.php:194
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:155
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:106
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:43
@@ -502,6 +502,7 @@ msgid "Typography"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:865
+#: inc/customizer/options/layout_single_post.php:236
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:105
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:42
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:111
@@ -509,10 +510,12 @@ msgid "Top"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:869
+#: inc/customizer/options/layout_single_post.php:240
 msgid "Middle"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:873
+#: inc/customizer/options/layout_single_post.php:244
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:107
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:44
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:121
@@ -1447,12 +1450,12 @@ msgid "Infinite Scroll"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:289
-#: inc/customizer/options/layout_single_post.php:217
+#: inc/customizer/options/layout_single_post.php:289
 msgid "Thumbnail"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:290
-#: inc/customizer/options/layout_single_post.php:216
+#: inc/customizer/options/layout_single_post.php:288
 msgid "Title & Meta"
 msgstr ""
 
@@ -1489,7 +1492,7 @@ msgid "Date"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:393
-#: inc/customizer/options/layout_single_post.php:221
+#: inc/customizer/options/layout_single_post.php:293
 #: inc/views/partials/post_meta.php:146
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:319
 msgid "Comments"
@@ -1600,30 +1603,34 @@ msgstr ""
 msgid "Cover"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:129
-msgid "Image height"
+#: inc/customizer/options/layout_single_post.php:130
+msgid "Cover height"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:174
+#: inc/customizer/options/layout_single_post.php:181
 msgid "Title Alignment"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:218
+#: inc/customizer/options/layout_single_post.php:231
+msgid "Title Position"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:290
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:317
 msgid "Content"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:219
+#: inc/customizer/options/layout_single_post.php:291
 #: inc/views/partials/post_meta.php:295
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:318
 msgid "Tags"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:220
+#: inc/customizer/options/layout_single_post.php:292
 msgid "Post navigation"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:233
+#: inc/customizer/options/layout_single_post.php:305
 msgid "Elements Order"
 msgstr ""
 
