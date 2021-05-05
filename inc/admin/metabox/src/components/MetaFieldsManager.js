@@ -19,7 +19,32 @@ class MetaFieldsManager extends Component {
 			return obj;
 		};
 
-		this.defaultState = {
+		this.defaultSortables = JSON.stringify(
+			[
+				'title',
+				'meta',
+				'thumbnail',
+				'content',
+				'tags',
+				'comments',
+				'post-navigation'
+			]
+		);
+
+		this.updateValues = this.updateValues.bind( this );
+		this.updateBlockWidth = this.updateBlockWidth.bind( this );
+	}
+
+	componentDidUpdate(prevProps, prevState, snapShot) {
+		this.updateBlockWidth();
+	}
+
+	updateValues(id, value) {
+		this.props.setMetaValue( id, value );
+	}
+
+	resetAll() {
+		const state = {
 			'neve_meta_sidebar': 'default',
 			'neve_meta_container': 'default',
 			'neve_meta_enable_content_width': 'off',
@@ -42,33 +67,7 @@ class MetaFieldsManager extends Component {
 			'neve_meta_disable_footer': 'off',
 			'neve_meta_disable_title': 'off'
 		};
-		const result = { ...omitEmpty(this.defaultState), ...omitEmpty(metaData) };
 
-		// Do not use any keys that are not in the sidebar for meta.
-		for ( let k in result ) {
-			if ( ! Object.keys(this.defaultState).includes(k) ) {
-				delete (result[k]);
-			}
-		}
-
-		this.state = { ...result };
-		this.updateValues = this.updateValues.bind( this );
-		this.updateBlockWidth = this.updateBlockWidth.bind( this );
-	}
-
-	componentDidUpdate(prevProps, prevState, snapShot) {
-		this.updateBlockWidth();
-	}
-
-	updateValues(id, value) {
-		let state = this.state;
-		state[id] = value;
-		this.setState( state );
-		this.props.setMetaValue( id, value );
-	}
-
-	resetAll() {
-		const state = this.state;
 		const allMeta = {...this.props.allMeta};
 		const emptiedMeta = {};
 
@@ -92,18 +91,16 @@ class MetaFieldsManager extends Component {
 			...allMeta,
 			...emptiedMeta
 		} );
-
-		this.setState( this.defaultState );
 	}
 
 	updateBlockWidth() {
-		const isCustomContentWidth = this.state['neve_meta_enable_content_width'];
-		let containerType = this.state['neve_meta_container'];
+		const isCustomContentWidth = this.props.metaValue('neve_meta_enable_content_width');
+		let containerType = this.props.metaValue('neve_meta_container');
 		if ( 'default' === containerType ) {
 			containerType = metaSidebar.actions['neve_meta_content_width'].container;
 		}
 
-		const contentWidth = this.state['neve_meta_content_width'];
+		const contentWidth = this.props.metaValue('neve_meta_content_width');
 		let contentWidthDefault = metaSidebar.actions['neve_meta_content_width'].content;
 		let blockWidthDefault = contentWidthDefault + '%';
 		let blocKWidth = contentWidth + '%';
@@ -142,7 +139,7 @@ class MetaFieldsManager extends Component {
 						className="neve-meta-control neve-meta-radio-image neve_meta_sidebar"
 					>
 						<RadioControl
-							selected={this.state['neve_meta_sidebar']}
+							selected={ this.props.metaValue('neve_meta_sidebar') || 'default' }
 							options={
 								[
 									{label: <><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABXCAYAAAC9UeOHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAN6SURBVHgB7ZrfThpREMZn1SgUWiwkFi6gtol3mnjhi/QJmj5C36SP1gsvTGir0Rb/Baop20UL3fJtugaH3QXKzlLj90s2G5Rlc37MmTNnFqfreW/9weCDiLMujxjHkSPx/TdO13UPfV82hUDKxyXKuMf6kpB7UIiCQhQUoqAQBYUoKERBIQoKUVCIgkIUFKKgEAWFKChEQSEKClFQiIJCFBSioBAFhSgoREEhCgpRUIiCQhQrsgAGg4F0Om3peZ54wwOvwerqqiwvL8uzUkmKxafB66zJVEi325Xzs9PgHMXt7W1wvr6+Ds7lclleVGuZinF+dF1fjEEEQMTl5aX8C9VqNRBjDX4jYi4E3/rR4ZdgasxDsViUzVevgyllBYSYJlVExudPzbllAEwzfFaYb6wwFdL69vUuL6QBxGLqWWImBKtIp9OZ6Zq1tTVZWUnO88hDcUk5DcyEnJ+dyazs7OzI9vb2xPdZRonJsovoSJoqiIJCoTD2dyy3GxsbsrW1Jc1mM/Z6RAgOJNq0MRHyPWGq1Ot1aTQakgSkXFxc3NUjUUD6gxESt6ogR0BGu92W09PxsK/ValKpVOTk5CRRBnCN8kjqQkZLcU34jUJG1IARGZBxfHwsk8CUxH3SrktSF5JUJ4QluOu6kf8fzRvIMyjdIe7m5ib2XmkLyXS3iwFggP1+f+J7MVAk19JwoxdHmjVOSKabOyRKHCHhShMVMblcLjjHRQewKONTj5Bpd6aQgZoDURAFkivo9Xoy771mIfUICXsaSbkklBFWpXt7e2PvwYqEaIqLkHw+bxIhJlMGDZ6kWmQ0hyCnRMmDiKTVJjcUYoGJkHK5kigEg93f35fd3d0gSg4ODmRWqkb9ERMhqDdwJG3CkEixzE7azEXxfLgcW3XRzJbdaTpcyBGtVktmpWrYPTMTggixaPtZ91hNCzP0QlFtpgVk4DMtMa9U642XqURKFjJAJpUqBoIwR2Nn1nIb10GqxVY/ikweQ4yCtuI0YgpDAaXSejDlLDvto2TyGCIO7+9TO8/7eVeYYeD5/JMgGhbx1G6hQv5HzJ/LPEQoREEhCgpRUIiCQhQUoqAQBYUoKERBIQoKUVCIgkIUFKKgEAWFKChEQSEKClFQiIJCFBSioBAFhSgoREEhCgi5EhLg+3K15P/23/viHMkjBzL6v/x3fwDAqWHdPm8hRQAAAABJRU5ErkJggg=="/>
@@ -167,22 +164,22 @@ class MetaFieldsManager extends Component {
 						className="neve-meta-control neve-meta-button-group neve_meta_container">
 						<ButtonGroup>
 							<Button
-								isPrimary={ 'default' === this.state['neve_meta_container'] }
-								isSecondary={ 'default' !== this.state['neve_meta_container'] }
+								isPrimary={ 'default' === ( this.props.metaValue('neve_meta_container') || 'default' ) }
+								isSecondary={ 'default' !== ( this.props.metaValue('neve_meta_container') || 'default' ) }
 								onClick={ () => {
 									this.updateValues( 'neve_meta_container', 'default' );
 								} }
 							> { __( 'Default', 'neve' ) } </Button>
 							<Button
-								isPrimary={ 'contained' === this.state['neve_meta_container'] }
-								isSecondary={ 'contained' !== this.state['neve_meta_container'] }
+								isPrimary={ 'contained' === this.props.metaValue('neve_meta_container') }
+								isSecondary={ 'contained' !== this.props.metaValue('neve_meta_container') }
 								onClick={ () => {
 									this.updateValues( 'neve_meta_container', 'contained' );
 								} }
 							> { __( 'Contained', 'neve' ) } </Button>
 							<Button
-								isPrimary={ 'full-width' === this.state['neve_meta_container'] }
-								isSecondary={ 'full-width' !== this.state['neve_meta_container'] }
+								isPrimary={ 'full-width' === this.props.metaValue('neve_meta_container') }
+								isSecondary={ 'full-width' !== this.props.metaValue('neve_meta_container') }
 								onClick={ () => {
 									this.updateValues( 'neve_meta_container', 'full-width' );
 								} }
@@ -195,21 +192,21 @@ class MetaFieldsManager extends Component {
 						className="neve-meta-control neve-meta-checkbox neve_meta_enable_content_width" >
 						<ToggleControl
 							label={ __( 'Custom Content Width (%)', 'neve' ) }
-							checked={ ( 'on' === this.state['neve_meta_enable_content_width'] ) }
+							checked={ ( 'on' === this.props.metaValue('neve_meta_enable_content_width') ) }
 							onChange={ (value) => {
 								this.updateValues( 'neve_meta_enable_content_width', ( value ? 'on' : 'off' ) );
-								this.updateValues( 'neve_meta_content_width', this.state['neve_meta_content_width'] );
+								this.updateValues( 'neve_meta_content_width', ( this.props.metaValue('neve_meta_content_width') || 70 ) );
 							} }
 						/>
 					</BaseControl>
 
 					{
-						'on' === this.state.neve_meta_enable_content_width ?
+						'on' === this.props.metaValue('neve_meta_enable_content_width') ?
 							<BaseControl
 								id="neve_meta_content_width"
 								className="neve-meta-control neve-meta-range neve_meta_content_width" >
 								<RangeControl
-									value={ this.state['neve_meta_content_width'] }
+									value={ this.props.metaValue('neve_meta_content_width') }
 									onChange={ (value) => {
 										this.updateValues( 'neve_meta_content_width', value );
 									} }
@@ -230,7 +227,7 @@ class MetaFieldsManager extends Component {
 		if ( 'elementor_header_footer' === template ) {
 			return false;
 		}
-		const showMetaElements = JSON.parse( this.state.neve_post_elements_order ).includes('meta');
+		const showMetaElements = JSON.parse( this.props.metaValue('neve_post_elements_order') || this.defaultSortables ).includes('meta');
 		const postType = wp.data.select('core/editor').getCurrentPostType();
 		return (
 			<div className="nv-option-category">
@@ -246,8 +243,8 @@ class MetaFieldsManager extends Component {
 							<Button
 								icon={alignLeftIcon}
 								className="nv-align-left"
-								isPrimary={ 'left' === this.state['neve_meta_title_alignment'] }
-								isSecondary={ 'left' !== this.state['neve_meta_title_alignment'] }
+								isPrimary={ 'left' === ( this.props.metaValue('neve_meta_title_alignment') || 'left' ) }
+								isSecondary={ 'left' !== ( this.props.metaValue('neve_meta_title_alignment') || 'left') }
 								onClick={ () => {
 									this.updateValues( 'neve_meta_title_alignment', 'left' );
 								} }
@@ -255,8 +252,8 @@ class MetaFieldsManager extends Component {
 							<Button
 								icon={alignCenterIcon}
 								className="nv-align-center"
-								isPrimary={ 'center' === this.state['neve_meta_title_alignment'] }
-								isSecondary={ 'center' !== this.state['neve_meta_title_alignment'] }
+								isPrimary={ 'center' === this.props.metaValue('neve_meta_title_alignment') }
+								isSecondary={ 'center' !== this.props.metaValue('neve_meta_title_alignment') }
 								onClick={ () => {
 									this.updateValues( 'neve_meta_title_alignment', 'center' );
 								} }
@@ -264,8 +261,8 @@ class MetaFieldsManager extends Component {
 							<Button
 								icon={alignRightIcon}
 								className="nv-align-right"
-								isPrimary={ 'right' === this.state['neve_meta_title_alignment'] }
-								isSecondary={ 'right' !== this.state['neve_meta_title_alignment'] }
+								isPrimary={ 'right' === this.props.metaValue('neve_meta_title_alignment') }
+								isSecondary={ 'right' !== this.props.metaValue('neve_meta_title_alignment') }
 								onClick={ () => {
 									this.updateValues( 'neve_meta_title_alignment', 'right' );
 								} }
@@ -280,7 +277,7 @@ class MetaFieldsManager extends Component {
 								className="neve-meta-control neve-meta-checkbox neve_meta_author_avatar" >
 								<ToggleControl
 									label={ __( 'Author Avatar', 'neve' ) }
-									checked={ ( 'on' === this.state['neve_meta_author_avatar'] ) }
+									checked={ ( 'on' === this.props.metaValue('neve_meta_author_avatar') ) }
 									onChange={ (value) => {
 										this.updateValues( 'neve_meta_author_avatar', ( value ? 'on' : 'off' ) );
 									} }
@@ -295,7 +292,7 @@ class MetaFieldsManager extends Component {
 								className="neve-meta-control neve-meta-checkbox neve_meta_reading_time" >
 								<ToggleControl
 									label={ __( 'Reading Time', 'neve' ) }
-									checked={ ( 'on' === this.state['neve_meta_reading_time'] ) }
+									checked={ ( 'on' === this.props.metaValue('neve_meta_reading_time') ) }
 									onChange={ (value) => {
 										this.updateValues( 'neve_meta_reading_time', ( value ? 'on' : 'off' ) );
 									} }
