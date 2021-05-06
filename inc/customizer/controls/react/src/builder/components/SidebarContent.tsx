@@ -31,7 +31,7 @@ const SidebarContent: React.FC = () => {
 						onStart={onDragStart}
 						list={items}
 						setList={(next) => {
-							const nextItems = next
+							const nextItems = [...next]
 								.map((i) => {
 									return { id: i.id };
 								})

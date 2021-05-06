@@ -1,6 +1,4 @@
 const config = require('@wordpress/scripts/config/webpack.config');
-const path = require('path');
-
 module.exports = {
 	...config,
 	module: {
@@ -14,7 +12,6 @@ module.exports = {
 			...config.module.rules,
 		],
 	},
-
 	resolve: {
 		...config.resolve,
 		extensions: ['.js', '.tsx', '.ts', 'js', 'jsx'],

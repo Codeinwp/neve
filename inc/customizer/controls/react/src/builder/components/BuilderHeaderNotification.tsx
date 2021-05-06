@@ -1,6 +1,10 @@
 import React from 'react';
-import { createInterpolateElement, useEffect } from '@wordpress/element';
-import { Button } from '@wordpress/components';
+import {
+	createInterpolateElement,
+	useEffect,
+	useState,
+} from '@wordpress/element';
+import { Button, Modal } from '@wordpress/components';
 import { __, sprintf } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
 import { info } from '@wordpress/icons';
@@ -14,11 +18,19 @@ const BuilderHeaderNotification: React.FC<Props> = ({
 	builder,
 	builderName,
 }) => {
+	const [modalVisible, setModalVisible] = useState(false);
+
+	const toggleModal = () => {
+		setModalVisible(!modalVisible);
+	};
+
 	const focusConditionalSelector = () => {
 		window.wp.customize.control('neve_header_conditional_selector').focus();
 	};
 
 	const {
+		dashUpdatesMessage,
+		instructionalVid,
 		hideConditionalHeaderSelector: incompatiblePro,
 	} = window.NeveReactCustomize;
 
@@ -42,8 +54,6 @@ const BuilderHeaderNotification: React.FC<Props> = ({
 		if (!control) {
 			return;
 		}
-
-		const { dashUpdatesMessage } = window.NeveReactCustomize;
 
 		control.deactivate();
 		window.wp.customize.control('neve_global_header').deactivate();
@@ -114,8 +124,27 @@ const BuilderHeaderNotification: React.FC<Props> = ({
 				isLink
 				icon={info}
 				iconSize={20}
-				data-open-nv-modal="hfg-instructional"
+				onClick={toggleModal}
 			/>
+			{modalVisible && (
+				<Modal
+					title={''}
+					className="neve-ui-modal-wrap"
+					onRequestClose={toggleModal}
+					shouldCloseOnClickOutside
+					isDismissible
+				>
+					<video
+						style={{ margin: '0 auto', display: 'block' }}
+						autoPlay
+						muted
+						loop
+						playsInline
+					>
+						<source src={instructionalVid} type="video/mp4" />
+					</video>
+				</Modal>
+			)}
 		</span>
 	);
 };

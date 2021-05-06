@@ -28,6 +28,9 @@ export const HFGMigrationNotice: React.FC<Props> = ({
 	const [isCustomizerSaved, setCustomizerSaved] = useState(true);
 
 	useEffect(() => {
+		if (alreadyMigrated && !hadOldBuilder) {
+			return;
+		}
 		window.wp.customize.bind('ready', () => {
 			window.wp.customize.state('saved').bind((status: boolean) => {
 				setCustomizerSaved(status);

@@ -67,30 +67,6 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 		);
 	}, []);
 
-	useEffect(() => {
-		const builderNode: HTMLElement | null = portalMount.querySelector(
-			'.neve-builder'
-		);
-		if (builderNode === null) {
-			return;
-		}
-		const height = builderNode.offsetHeight;
-
-		const preview: HTMLElement | null = document.querySelector(
-			'#customize-preview'
-		);
-		if (preview === null) {
-			return;
-		}
-		if (isHidden) {
-			preview.style.maxHeight = '';
-			preview.style.marginTop = '';
-			return;
-		}
-		preview.style.maxHeight = `calc(100vh - ${height}px)`;
-		preview.style.marginTop = '0';
-	}, [isHidden, value]);
-
 	return (
 		<HFGBuilder
 			hasColumns={hasColumns}

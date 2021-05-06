@@ -73,24 +73,24 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 	};
 
 	const bindColumnsSync = () => {
-		window.wp.customize.bind('ready', () => {
-			const colNumber = window.wp.customize
-				.control(columnsSetting)
-				.setting.get();
-			setColumns(parseInt(colNumber));
-			setColLayout(
-				window.wp.customize.control(columnsLayoutSetting).setting.get()
-			);
-		});
+		// window.wp.customize.bind('ready', () => {
+		const colNumber = window.wp.customize
+			.control(columnsSetting)
+			.setting.get();
+		setColumns(parseInt(colNumber));
+		setColLayout(
+			window.wp.customize.control(columnsLayoutSetting).setting.get()
+		);
+		// });
 
 		const syncColNumber = (nextValue: string) => {
-			const colNumber = parseInt(nextValue);
+			const parsedColNumber = parseInt(nextValue);
 			slots.forEach((slot, index) => {
-				if (index + 1 > colNumber) {
+				if (index + 1 > parsedColNumber) {
 					updateLayout(rowId, slot, []);
 				}
 			});
-			setColumns(colNumber);
+			setColumns(parsedColNumber);
 		};
 
 		window.wp.customize.control(

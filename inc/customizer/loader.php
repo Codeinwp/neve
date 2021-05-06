@@ -102,6 +102,7 @@ class Loader {
 					),
 					'hideConditionalHeaderSelector' => defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.5.2', '<=' ) && neve_is_new_builder(),
 					'dashUpdatesMessage'            => sprintf( 'Please %s to the latest version of Neve Pro to manage the conditional headers.', '<a href="' . esc_url( admin_url( 'update-core.php' ) ) . '">' . __( 'update', 'neve' ) . '</a>' ),
+					'bundlePath'                    => get_template_directory_uri() . '/inc/customizer/controls/react/bundle/',
 				)
 			)
 		);

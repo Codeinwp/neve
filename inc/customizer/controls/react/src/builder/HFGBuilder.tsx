@@ -1,5 +1,13 @@
 import React from 'react';
-import { createPortal, useEffect, useState } from '@wordpress/element';
+import {
+	createPortal,
+	lazy,
+	Suspense,
+	useEffect,
+	useState,
+} from '@wordpress/element';
+import { Spinner } from '@wordpress/components';
+
 import {
 	BuilderActions,
 	BuilderContentInterface,
@@ -15,10 +23,19 @@ import {
 	getUsedItemsFromItems,
 	ROW_SCHEMA,
 } from './common/utils';
-import SidebarContent from './components/SidebarContent';
-import Builder from './components/Builder';
 import { ItemInterface } from 'react-sortablejs';
 import BuilderContext from './BuilderContext';
+
+const Builder = lazy(
+	() => import(/* webpackChunkName: "builder" */ './components/Builder')
+);
+
+const BuilderSidebar = lazy(
+	() =>
+		import(
+			/* webpackChunkName: "builder-sidebar" */ './components/SidebarContent'
+		)
+);
 
 type Props = {
 	hasColumns: boolean;
@@ -236,9 +253,7 @@ const HFGBuilder: React.FC<Props> = ({
 						return;
 					}
 
-					if (expandedSection.id) {
-						setCurrentSection(expandedSection.id);
-					}
+					setCurrentSection(expandedSection.id);
 				});
 		});
 	};
@@ -265,13 +280,23 @@ const HFGBuilder: React.FC<Props> = ({
 			}}
 		>
 			<div>
-				<div className={`neve-hfg-builder`}>
-					<SidebarContent />
-				</div>
-				{createPortal(
-					<Builder hidden={hidden} value={value} />,
-					portalMount
-				)}
+				<Suspense fallback={<Spinner />}>
+					{!hidden && (
+						<>
+							<div className={`neve-hfg-builder`}>
+								<BuilderSidebar />
+							</div>
+							{createPortal(
+								<Builder
+									hidden={hidden}
+									value={value}
+									portalMount={portalMount}
+								/>,
+								portalMount
+							)}
+						</>
+					)}
+				</Suspense>
 			</div>
 		</BuilderContext.Provider>
 	);

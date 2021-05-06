@@ -285,7 +285,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:335
 #: header-footer-grid/Core/Settings/Manager.php:181
-#: inc/customizer/options/main.php:53
+#: inc/customizer/options/main.php:52
 msgid "Layout"
 msgstr ""
 
@@ -507,7 +507,7 @@ msgid "Margin"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:787
-#: inc/customizer/options/main.php:57
+#: inc/customizer/options/main.php:56
 msgid "Typography"
 msgstr ""
 
