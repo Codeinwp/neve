@@ -89,8 +89,6 @@ $desktop: map-get($gl-devices-list, desktop);
 
 //<editor-fold desc="Row Styles">
 .hfg_header.site-header {
-  -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
 }
 
