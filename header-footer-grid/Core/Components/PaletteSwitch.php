@@ -148,6 +148,19 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return string
 	 */
 	public function toggle_css( $css ) {
+		$is_component_active = false;
+		$builders            = Main::get_instance()->get_builders();
+		foreach ( $builders as $builder ) {
+			if ( $builder->is_component_active( $this->get_id() ) ) {
+				$is_component_active = true;
+				break;
+			}
+		}
+
+		if ( ! $is_component_active ) {
+			return '';
+		}
+
 		$css          .= ' ';
 		$default_light = 'base';
 		$default_dark  = 'darkMode';
