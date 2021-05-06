@@ -10,8 +10,6 @@
 
 namespace Neve\Core;
 
-use Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers;
-
 /**
  * Class Admin
  *

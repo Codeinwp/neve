@@ -1324,6 +1324,10 @@ msgstr ""
 msgid "PRO"
 msgstr ""
 
+#: inc/customizer/loader.php:104
+msgid "update"
+msgstr ""
+
 #: inc/customizer/options/buttons.php:43
 msgid "Buttons"
 msgstr ""
