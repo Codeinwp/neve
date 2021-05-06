@@ -1,4 +1,3 @@
-/* global CustomEvent,NeveReactCustomize */
 import { render } from '@wordpress/element';
 
 import { init as initDynamicFields } from './dynamic-fields/index';
@@ -27,7 +26,7 @@ import { BuilderColumns } from './builder-columns/Control';
 import { InstructionsControl } from './builder-instructions/Control';
 
 import './style.scss';
-import Instructions from './builder-instructions/Instructions';
+import Instructions from './builder-instructions/Instructions.tsx';
 
 const { controlConstructor } = wp.customize;
 

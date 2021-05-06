@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 import { render } from '@wordpress/element';
-import Instructions from './Instructions';
+import Instructions from './Instructions.tsx';
 
 export const InstructionsControl = wp.customize.Control.extend({
 	renderContent() {

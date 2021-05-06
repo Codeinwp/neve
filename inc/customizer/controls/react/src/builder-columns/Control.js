@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-import BuilderColumnsComponent from './BuilderColumnsComponent';
+import BuilderColumnsComponent from './BuilderColumnsComponent.tsx';
 import { render } from '@wordpress/element';
 import React from 'react';
 

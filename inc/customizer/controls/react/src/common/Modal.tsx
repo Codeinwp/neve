@@ -5,6 +5,7 @@ import { Modal } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
 
 type Props = {
+	/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 	children: ReactComponentElement<any>;
 	openAttr: string;
 	title?: string;

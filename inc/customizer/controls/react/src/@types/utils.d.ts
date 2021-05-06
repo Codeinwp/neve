@@ -2,6 +2,7 @@ import { ItemInterface } from 'react-sortablejs';
 import { Dispatch, SetStateAction } from 'react';
 
 interface StringObjectKeys {
+	/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 	[key: string]: any;
 }
 

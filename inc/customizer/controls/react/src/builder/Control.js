@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-import HFGBuilderComponent from './HFGBuilderComponent';
+import HFGBuilderComponent from './HFGBuilderComponent.tsx';
 import { render } from '@wordpress/element';
 import React from 'react';
 

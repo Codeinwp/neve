@@ -54,9 +54,9 @@ const Slot: React.FC<Props> = ({ items, slotId, rowId, className }) => {
 				onStart={onDragStart}
 				group={builder}
 				list={items}
-				setList={(newState, whatstate, ceplm) => {
+				setList={(newState) => {
 					const nextState = newState.map((item) => {
-						const { x, y, id, width, height } = item;
+						const { id } = item;
 						return { id };
 					});
 					updateLayout(rowId, slotId, nextState);
