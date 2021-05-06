@@ -2269,15 +2269,15 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Responsive.js:31
+#: inc/customizer/controls/react/src/common/Responsive.js:45
 msgid "Desktop"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Responsive.js:35
+#: inc/customizer/controls/react/src/common/Responsive.js:49
 msgid "Tablet"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Responsive.js:39
+#: inc/customizer/controls/react/src/common/Responsive.js:53
 msgid "Mobile"
 msgstr ""
 

@@ -16,13 +16,27 @@ const ResponsiveControl = (props) => {
 	useEffect(() => {
 		window.wp.customize.bind('ready', () => {
 			window.wp.customize.previewedDevice.bind((newDevice) => {
-				onChange(newDevice);
+				onChange(checkExcludedTablet(newDevice));
 			});
 		});
 	}, []);
 
+	const checkExcludedTablet = (device) => {
+		if (!excluded) {
+			return device;
+		}
+
+		if (!excluded.includes(device)) {
+			return device;
+		}
+
+		if (device === 'tablet') {
+			return 'mobile';
+		}
+	};
+
 	const dispatchViewChange = (device) => {
-		onChange(device);
+		onChange(checkExcludedTablet(device));
 		wp.customize.previewedDevice(device);
 	};
 

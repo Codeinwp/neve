@@ -122,7 +122,7 @@
   display: flex;
   width: 50%;
 
-  &:last-child .droppable-wrap:last-child {
+  &:last-child .droppable-wrap:last-child .droppable {
 	border: 0;
   }
 
