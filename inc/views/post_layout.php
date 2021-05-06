@@ -11,6 +11,7 @@ namespace Neve\Views;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
+use Neve\Customizer\Options\Layout_Single_Post;
 
 /**
  * Class Post_Layout
@@ -19,7 +20,8 @@ use Neve\Core\Styles\Dynamic_Selector;
  */
 class Post_Layout extends Base_View {
 
-	const POST_COVER_HEIGHT = 'neve_post_cover_height';
+	const POST_COVER_HEIGHT  = 'neve_post_cover_height';
+	const POST_COVER_PADDING = 'neve_post_cover_padding';
 
 	/**
 	 * Function that is run after instantiation.
@@ -30,7 +32,7 @@ class Post_Layout extends Base_View {
 		add_action( 'neve_do_single_post', array( $this, 'render_post' ) );
 		add_action( 'neve_after_header_wrapper_hook', array( $this, 'render_cover_header' ) );
 		add_filter( 'neve_style_subscribers', array( $this, 'add_subscribers' ) );
-
+		add_filter( 'neve_post_title_alignment', array( $this, 'align_post_title' ) );
 	}
 
 	/**
@@ -191,13 +193,12 @@ class Post_Layout extends Base_View {
 	 * @return void
 	 */
 	private function render_entry_header( $render_meta = true ) {
-		$alignment_default = is_rtl() ? 'right' : 'left';
-		$header_alignment  = get_theme_mod( 'neve_post_title_alignment', $alignment_default );
-		echo '<div class="entry-header has-text-align-' . esc_attr( $header_alignment ) . '">';
-		echo '<div class="nv-title-meta-wrap">';
-		do_action( 'neve_before_post_title' );
 		$alignment = apply_filters( 'neve_post_title_alignment', '' );
-		echo '<h1 class="title entry-title ' . esc_attr( $alignment ) . '">' . wp_kses_post( get_the_title() ) . '</h1>';
+
+		echo '<div class="entry-header">';
+		echo '<div class="nv-title-meta-wrap ' . esc_attr( $alignment ) . '">';
+		do_action( 'neve_before_post_title' );
+		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 		if ( $render_meta ) {
 			self::render_post_meta();
 		}
@@ -218,34 +219,31 @@ class Post_Layout extends Base_View {
 			return false;
 		}
 
-		$vertical_alignment_classes = $this->get_alignment_classes(
-			'neve_post_title_alignment',
-			[
-				'desktop' => 'left',
-				'tablet'  => 'left',
-				'mobile'  => 'left',
-			]
-		);
-
-		$horizontal_alignment_classes = $this->get_alignment_classes(
-			'neve_post_title_position',
-			[
-				'desktop' => 'middle',
-				'tablet'  => 'middle',
-				'mobile'  => 'middle',
-			]
-		);
-
+		$alignment   = apply_filters( 'neve_post_title_alignment', '' );
+		$position    = $this->get_alignment_classes( 'neve_post_title_position', Layout_Single_Post::post_title_position_default() );
 		$cover_style = $this->get_cover_style();
 
-		echo '<div class="cover-header ' . esc_attr( $vertical_alignment_classes ) . '" style="' . esc_attr( $cover_style ) . '">';
-		echo '<div class="container single-post-container ' . esc_attr( $horizontal_alignment_classes ) . '">';
+		echo '<div class="cover-header ' . esc_attr( $alignment ) . '" style="' . esc_attr( $cover_style ) . '">';
+		echo '<div class="container single-post-container ' . esc_attr( $position ) . '">';
 		echo '<div class="nv-title-meta-wrap">';
 		do_action( 'neve_before_post_title' );
 		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 		echo '</div>';
 		echo '</div>';
 		echo '</div>';
+	}
+
+	/**
+	 * Filter that handles the post title alignment.
+	 *
+	 * @return string
+	 */
+	public function align_post_title( $classes ) {
+		$title_alignment_classes = $this->get_alignment_classes( 'neve_post_title_alignment', Layout_Single_Post::post_title_alignment_default() );
+		if ( empty( $title_alignment_classes ) ) {
+			return $classes;
+		}
+		return $classes . ' ' . $title_alignment_classes;
 	}
 
 	/**
@@ -291,25 +289,6 @@ class Post_Layout extends Base_View {
 	}
 
 	/**
-	 * Get the alignment of cover title.
-	 */
-	private function get_cover_title_alignment() {
-		$alignment_style = array( 'display' => 'flex' );
-		$position_map    = array(
-			'left'   => 'flex-start',
-			'center' => 'center',
-			'right'  => 'flex-end',
-		);
-
-		$title_alignment = get_theme_mod( 'neve_post_title_alignment', is_rtl() ? 'right' : 'left' );
-		if ( ! empty( $title_alignment ) ) {
-			$alignment_style['justify-content'] = $position_map[ $title_alignment ];
-		}
-
-		return $this->get_inline_style( $alignment_style );
-	}
-
-	/**
 	 * Convert from array to inline style.
 	 *
 	 * @param array $array Css properties in array.
@@ -337,6 +316,7 @@ class Post_Layout extends Base_View {
 	 */
 	public function add_subscribers( $subscribers = [] ) {
 
+		$cover_padding_default                         = Layout_Single_Post::cover_padding_default();
 		$subscribers['body.single-post .cover-header'] = [
 			Config::CSS_PROP_MIN_HEIGHT => [
 				Dynamic_Selector::META_KEY           => self::POST_COVER_HEIGHT,
@@ -344,6 +324,12 @@ class Post_Layout extends Base_View {
 				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
 				Dynamic_Selector::META_AS_JSON       => true,
 				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "300", "tablet": "300", "desktop": "300" }',
+			],
+			Config::CSS_PROP_PADDING    => [
+				Dynamic_Selector::META_KEY           => self::POST_COVER_PADDING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+				Dynamic_Selector::META_DEFAULT       => $cover_padding_default,
 			],
 		];
 

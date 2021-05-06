@@ -22,7 +22,7 @@
   }
 }
 
-.single-post .cover-header {
+.cover-header {
   margin-bottom: $spacing-sm;
   display: flex;
 }
@@ -144,7 +144,4 @@
   .desktop-bottom {
 	align-self: flex-end;
   }
-}
-
-@mixin single-post--laptop() {
 }

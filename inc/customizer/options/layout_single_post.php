@@ -10,6 +10,7 @@
 
 namespace Neve\Customizer\Options;
 
+use HFG\Traits\Core;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
@@ -20,6 +21,7 @@ use Neve\Customizer\Types\Section;
  * @package Neve\Customizer\Options
  */
 class Layout_Single_Post extends Base_Customizer {
+	use Core;
 
 	/**
 	 * Customizer section id.
@@ -64,7 +66,7 @@ class Layout_Single_Post extends Base_Customizer {
 			'header_layout' => array(
 				'title'            => esc_html__( 'Header Layout', 'neve' ),
 				'priority'         => 10,
-				'controls_to_wrap' => 3,
+				'controls_to_wrap' => 7,
 			),
 		);
 
@@ -96,14 +98,14 @@ class Layout_Single_Post extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_post_header_layout',
-				array(
-					'sanitize_callback' => array( $this, 'sanitize_header_layout' ),
+				[
+					'sanitize_callback' => [ $this, 'sanitize_header_layout' ],
 					'default'           => 'normal',
-				),
-				array(
+				],
+				[
 					'section'  => $this->section,
 					'priority' => 15,
-					'choices'  => array(
+					'choices'  => [
 						'normal' => [
 							'name'  => esc_html__( 'Normal', 'neve' ),
 							'image' => 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODUiIGhlaWdodD0iMTE4IiB2aWV3Qm94PSIwIDAgODUgMTE4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHJlY3QgeD0iMi4yNSIgeT0iMi40NjM4NyIgd2lkdGg9IjgwIiBoZWlnaHQ9IjExMyIgZmlsbD0id2hpdGUiLz4KICAgIDxyZWN0IHg9IjE3LjI1IiB5PSIxNC42MDQ1IiB3aWR0aD0iNTAiIGhlaWdodD0iMzQuNTUzNyIgZmlsbD0iIzc4QjZGRiIgZmlsbC1vcGFjaXR5PSIwLjQiLz4KICAgIDxsaW5lIHgxPSIxNy4yNSIgeTE9IjYyLjY5MjQiIHgyPSI2Ny4wNzkyIiB5Mj0iNjIuNjkyNCIgc3Ryb2tlPSIjQzRDNEM0IiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxsaW5lIHgxPSIxNy4yNSIgeTE9IjY3Ljc2OTUiIHgyPSIyNS4yNSIgeTI9IjY3Ljc2OTUiIHN0cm9rZT0iI0M0QzRDNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8bGluZSB4MT0iMTcuMjUiIHkxPSI1Ny40OTcxIiB4Mj0iNTEuMDA1MyIgeTI9IjU3LjQ5NzEiIHN0cm9rZT0iI0M0QzRDNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8bGluZSB4MT0iMTcuMjUiIHkxPSI4Ny4zODA5IiB4Mj0iNjcuMDc5MiIgeTI9Ijg3LjM4MDkiIHN0cm9rZT0iI0M0QzRDNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8bGluZSB4MT0iMTcuMjUiIHkxPSI5Mi41NzYyIiB4Mj0iNjcuMDc5MiIgeTI9IjkyLjU3NjIiIHN0cm9rZT0iI0M0QzRDNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8bGluZSB4MT0iMTcuMjUiIHkxPSI5OC4wNjE1IiB4Mj0iNjcuMDc5MiIgeTI9Ijk4LjA2MTUiIHN0cm9rZT0iI0M0QzRDNCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPgo=',
@@ -112,8 +114,8 @@ class Layout_Single_Post extends Base_Customizer {
 							'name'  => esc_html__( 'Cover', 'neve' ),
 							'image' => 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODYiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgODYgMTIwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHJlY3QgeD0iMyIgeT0iMy40NjM4NyIgd2lkdGg9IjgwIiBoZWlnaHQ9IjExMyIgZmlsbD0id2hpdGUiLz4KICAgIDxyZWN0IHg9IjMiIHk9IjMuNDYzODciIHdpZHRoPSI4MCIgaGVpZ2h0PSI1MS4zNjM2IiBmaWxsPSIjNzhCNkZGIiBmaWxsLW9wYWNpdHk9IjAuNCIvPgogICAgPGxpbmUgeDE9IjE5IiB5MT0iNjcuNDI4NyIgeDI9IjY4LjgyOTIiIHkyPSI2Ny40Mjg3IiBzdHJva2U9IiNDNEM0QzQiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPGxpbmUgeDE9IjE5IiB5MT0iODMuNzExOSIgeDI9IjY4LjgyOTIiIHkyPSI4My43MTE5IiBzdHJva2U9IiNDNEM0QzQiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPGxpbmUgeDE9IjE5IiB5MT0iNzIuNjI0IiB4Mj0iNjguODI5MiIgeTI9IjcyLjYyNCIgc3Ryb2tlPSIjQzRDNEM0IiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxsaW5lIHgxPSIxOSIgeTE9Ijg4LjkwNzIiIHgyPSI2OC44MjkyIiB5Mj0iODguOTA3MiIgc3Ryb2tlPSIjQzRDNEM0IiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxsaW5lIHgxPSIxOSIgeTE9Ijc4LjEwODQiIHgyPSI2OC44MjkyIiB5Mj0iNzguMTA4NCIgc3Ryb2tlPSIjQzRDNEM0IiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxsaW5lIHgxPSIxOSIgeTE9Ijk0LjM5MjYiIHgyPSI2OC44MjkyIiB5Mj0iOTQuMzkyNiIgc3Ryb2tlPSIjQzRDNEM0IiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxsaW5lIHgxPSIxOSIgeTE9IjgzLjcxMTkiIHgyPSI0OCIgeTI9IjgzLjcxMTkiIHN0cm9rZT0iI0M0QzRDNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8bGluZSB4MT0iMTkiIHkxPSI5OS45OTYxIiB4Mj0iNDgiIHkyPSI5OS45OTYxIiBzdHJva2U9IiNDNEM0QzQiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPGxpbmUgeDE9IjE5IiB5MT0iNDQuNDg5MyIgeDI9IjUyLjc1NTMiIHkyPSI0NC40ODkzIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxsaW5lIHgxPSIxOSIgeTE9IjM4Ljg4NTciIHgyPSI2OSIgeTI9IjM4Ljg4NTciIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPHJlY3QgeD0iMS41IiB5PSIxLjk2Mzg3IiB3aWR0aD0iODMiIGhlaWdodD0iMTE2IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiLz4KPC9zdmc+Cg==',
 						],
-					),
-				),
+					],
+				],
 				'\Neve\Customizer\Controls\React\Radio_Image'
 			)
 		);
@@ -159,7 +161,7 @@ class Layout_Single_Post extends Base_Customizer {
 							min-height: {{value}};
 						}',
 					],
-					'active_callback'       => array( $this, 'is_cover_layout' ),
+					'active_callback'       => [ $this, 'is_cover_layout' ],
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)
@@ -167,36 +169,66 @@ class Layout_Single_Post extends Base_Customizer {
 
 		$this->add_control(
 			new Control(
+				'neve_post_cover_padding',
+				[
+					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
+					'transport'         => $this->selective_refresh,
+					'default'           => self::cover_padding_default(),
+				],
+				[
+					'label'                 => esc_html__( 'Cover padding', 'neve' ),
+					'section'               => $this->section,
+					'input_attrs'           => [
+						'units' => [ 'em', 'px' ],
+					],
+
+					'priority'              => 25,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => array(
+						'responsive'  => true,
+						'directional' => true,
+						'template'    =>
+							'.cover-header {
+							padding-top: {{value.top}};
+							padding-right: {{value.right}};
+							padding-bottom: {{value.bottom}};
+							padding-left: {{value.left}};
+						}',
+					),
+					'active_callback'       => [ $this, 'is_cover_layout' ],
+				],
+				'\Neve\Customizer\Controls\React\Spacing'
+			)
+		);
+
+		$this->add_control(
+			new Control(
 				'neve_post_title_alignment',
-				array(
+				[
 					'sanitize_callback' => 'sanitize_alignment',
 					'transport'         => $this->selective_refresh,
-					'default'           => [
-						'desktop' => 'left',
-						'tablet'  => 'left',
-						'mobile'  => 'left',
-					],
-				),
-				array(
+					'default'           => self::post_title_alignment_default(),
+				],
+				[
 					'label'                 => esc_html__( 'Title Alignment', 'neve' ),
 					'section'               => 'neve_single_post_layout',
-					'priority'              => 25,
-					'choices'               => array(
-						'left'   => array(
+					'priority'              => 30,
+					'choices'               => [
+						'left'   => [
 							'tooltip' => esc_html__( 'Left', 'neve' ),
 							'icon'    => 'editor-alignleft',
-						),
-						'center' => array(
+						],
+						'center' => [
 							'tooltip' => esc_html__( 'Center', 'neve' ),
 							'icon'    => 'editor-aligncenter',
-						),
-						'right'  => array(
+						],
+						'right'  => [
 							'tooltip' => esc_html__( 'Right', 'neve' ),
 							'icon'    => 'editor-alignright',
-						),
-					),
+						],
+					],
 					'show_labels'           => true,
-					'live_refresh_selector' => '.cover-header .container',
+					'live_refresh_selector' => '.cover-header .container, .entry-header .entry-title',
 					'live_refresh_css_prop' => [
 						'remove_classes' => [
 							'mobile-left',
@@ -210,7 +242,7 @@ class Layout_Single_Post extends Base_Customizer {
 							'desktop-center',
 						],
 					],
-				),
+				],
 				'\Neve\Customizer\Controls\React\Responsive_Radio_Buttons'
 			)
 		);
@@ -218,33 +250,29 @@ class Layout_Single_Post extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_post_title_position',
-				array(
-					'sanitize_callback' => 'wp_filter_nohtml_kses',
+				[
+					'sanitize_callback' => 'sanitize_position',
 					'transport'         => $this->selective_refresh,
-					'default'           => [
-						'desktop' => 'middle',
-						'tablet'  => 'middle',
-						'mobile'  => 'middle',
-					],
-				),
-				array(
+					'default'           => self::post_title_position_default(),
+				],
+				[
 					'label'                 => esc_html__( 'Title Position', 'neve' ),
 					'section'               => 'neve_single_post_layout',
-					'priority'              => 30,
-					'choices'               => array(
-						'top'    => array(
+					'priority'              => 35,
+					'choices'               => [
+						'top'    => [
 							'tooltip' => esc_html__( 'Top', 'neve' ),
 							'icon'    => 'arrow-up',
-						),
-						'middle' => array(
+						],
+						'middle' => [
 							'tooltip' => esc_html__( 'Middle', 'neve' ),
 							'icon'    => 'sort',
-						),
-						'bottom' => array(
+						],
+						'bottom' => [
 							'tooltip' => esc_html__( 'Bottom', 'neve' ),
 							'icon'    => 'arrow-down',
-						),
-					),
+						],
+					],
 					'live_refresh_selector' => '.cover-header .nv-title-meta-wrap',
 					'live_refresh_css_prop' => [
 						'remove_classes' => [
@@ -260,8 +288,8 @@ class Layout_Single_Post extends Base_Customizer {
 						],
 					],
 					'show_labels'           => true,
-					'active_callback'       => array( $this, 'is_cover_layout' ),
-				),
+					'active_callback'       => [ $this, 'is_cover_layout' ],
+				],
 				'\Neve\Customizer\Controls\React\Responsive_Radio_Buttons'
 			)
 		);
@@ -365,5 +393,63 @@ class Layout_Single_Post extends Base_Customizer {
 			return 'normal';
 		}
 		return $input;
+	}
+
+	/**
+	 * Get default values for cover padding.
+	 *
+	 * @return array
+	 */
+	public static function cover_padding_default() {
+		return [
+			'mobile'       => [
+				'top'    => 20,
+				'right'  => 20,
+				'bottom' => 20,
+				'left'   => 20,
+			],
+			'tablet'       => [
+				'top'    => 40,
+				'right'  => 40,
+				'bottom' => 40,
+				'left'   => 40,
+			],
+			'desktop'      => [
+				'top'    => 40,
+				'right'  => 40,
+				'bottom' => 40,
+				'left'   => 40,
+			],
+			'mobile-unit'  => 'px',
+			'tablet-unit'  => 'px',
+			'desktop-unit' => 'px',
+		];
+	}
+
+	/**
+	 * Get the default value for title alignment.
+	 *
+	 * @return array
+	 */
+	public static function post_title_alignment_default() {
+		$default_position = is_rtl() ? 'right' : 'left';
+		return [
+			'mobile'  => $default_position,
+			'tablet'  => $default_position,
+			'desktop' => $default_position,
+		];
+	}
+
+	/**
+	 * Get the default value for title vertical position.
+	 *
+	 * @return array
+	 */
+	public static function post_title_position_default() {
+		return [
+			'mobile'  => 'middle',
+			'tablet'  => 'middle',
+			'desktop' => 'middle',
+		];
 	}
 }

@@ -456,7 +456,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
 #: inc/customizer/options/layout_sidebar.php:129
-#: inc/customizer/options/layout_single_post.php:186
+#: inc/customizer/options/layout_single_post.php:182
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:153
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:108
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:45
@@ -465,13 +465,13 @@ msgid "Left"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:469
-#: inc/customizer/options/layout_single_post.php:190
+#: inc/customizer/options/layout_single_post.php:186
 msgid "Center"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
 #: inc/customizer/options/layout_sidebar.php:133
-#: inc/customizer/options/layout_single_post.php:194
+#: inc/customizer/options/layout_single_post.php:190
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:155
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:106
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:43
@@ -502,7 +502,7 @@ msgid "Typography"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:865
-#: inc/customizer/options/layout_single_post.php:236
+#: inc/customizer/options/layout_single_post.php:228
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:105
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:42
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:111
@@ -510,12 +510,12 @@ msgid "Top"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:869
-#: inc/customizer/options/layout_single_post.php:240
+#: inc/customizer/options/layout_single_post.php:232
 msgid "Middle"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:873
-#: inc/customizer/options/layout_single_post.php:244
+#: inc/customizer/options/layout_single_post.php:236
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:107
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:44
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:121
@@ -1450,12 +1450,12 @@ msgid "Infinite Scroll"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:289
-#: inc/customizer/options/layout_single_post.php:289
+#: inc/customizer/options/layout_single_post.php:281
 msgid "Thumbnail"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:290
-#: inc/customizer/options/layout_single_post.php:288
+#: inc/customizer/options/layout_single_post.php:280
 msgid "Title & Meta"
 msgstr ""
 
@@ -1492,7 +1492,7 @@ msgid "Date"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:393
-#: inc/customizer/options/layout_single_post.php:293
+#: inc/customizer/options/layout_single_post.php:285
 #: inc/views/partials/post_meta.php:146
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:319
 msgid "Comments"
@@ -1607,30 +1607,30 @@ msgstr ""
 msgid "Cover height"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:181
+#: inc/customizer/options/layout_single_post.php:177
 msgid "Title Alignment"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:231
+#: inc/customizer/options/layout_single_post.php:223
 msgid "Title Position"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:290
+#: inc/customizer/options/layout_single_post.php:282
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:317
 msgid "Content"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:291
+#: inc/customizer/options/layout_single_post.php:283
 #: inc/views/partials/post_meta.php:295
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:318
 msgid "Tags"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:292
+#: inc/customizer/options/layout_single_post.php:284
 msgid "Post navigation"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:305
+#: inc/customizer/options/layout_single_post.php:297
 msgid "Elements Order"
 msgstr ""
 

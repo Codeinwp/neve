@@ -207,7 +207,6 @@ function neve_sanitize_typography_control( $value ) {
 	return $value;
 }
 
-
 /**
  * Sanitize alignment.
  *
@@ -230,6 +229,34 @@ function sanitize_alignment( $input ) {
 	foreach ( $input as $device => $alignment ) {
 		if ( ! in_array( $alignment, $allowed ) ) {
 			$input[ $device ] = 'left';
+		}
+	}
+
+	return $input;
+}
+
+/**
+ * Sanitize position.
+ *
+ * @param array $input alignment responsive array.
+ *
+ * @return array
+ */
+function sanitize_position( $input ) {
+	$default = [
+		'mobile'  => 'middle',
+		'tablet'  => 'middle',
+		'desktop' => 'middle',
+	];
+	$allowed = [ 'top', 'middle', 'bottom' ];
+
+	if ( ! is_array( $input ) ) {
+		return $default;
+	}
+
+	foreach ( $input as $device => $alignment ) {
+		if ( ! in_array( $alignment, $allowed ) ) {
+			$input[ $device ] = 'middle';
 		}
 	}
 
