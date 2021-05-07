@@ -179,7 +179,9 @@ class Css_Prop {
 					Font_Manager::add_google_font( $font, strval( $value ) );
 				}
 
-				return sprintf( ' %s: %s;', $css_prop, intval( $value ) );
+				$value = ( $value > 0 ) ? intval( $value ) : 'normal';
+
+				return sprintf( ' %s: %s;', $css_prop, $value );
 				break;
 			case Config::CSS_PROP_FONT_FAMILY:
 				if ( $value === 'default' ) {
