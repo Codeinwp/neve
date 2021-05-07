@@ -88,8 +88,10 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return void
 	 */
 	public function load_scripts() {
-		wp_add_inline_style( 'neve-style', $this->toggle_style() );
-		wp_add_inline_script( 'neve-script', $this->toggle_script() );
+		if ( $this->is_component_active() || is_customize_preview() ) {
+			wp_add_inline_style( 'neve-style', $this->toggle_style() );
+			wp_add_inline_script( 'neve-script', $this->toggle_script() );
+		}
 	}
 
 	/**
@@ -137,7 +139,22 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return string
 	 */
 	public function toggle_script() {
-		return '"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let r="light";if(localStorage.getItem(t))"dark"===localStorage.getItem(t)&&(r="dark");else{if(!window.matchMedia)return!1;}"dark"===r&&document.documentElement.setAttribute(e,"dark")}r();const a=document.querySelectorAll(".toggle-palette a.palette-icon-wrapper");function n(r){if(r.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}for(var i=0;i<a.length;i++){a[i].addEventListener("touchstart",n,!1);a[i].addEventListener("click",n,!1);}';
+		return '"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let n="light";if(localStorage.getItem(t))"dark"===localStorage.getItem(t)&&(n="dark");else if(!window.matchMedia)return!1;"dark"===n&&document.documentElement.setAttribute(e,"dark")}r();const a=document.getElementById("neve_body");function n(n){if(n.srcElement&&n.srcElement.parentElement.matches("a.palette-icon-wrapper")){if(n.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}}a.addEventListener("touchstart",n,!1),a.addEventListener("click",n,!1);';
+	}
+
+	/**
+	 * Method to check that the component is active.
+	 *
+	 * @return bool
+	 */
+	private function is_component_active() {
+		$builders = Main::get_instance()->get_builders();
+		foreach ( $builders as $builder ) {
+			if ( $builder->is_component_active( $this->get_id() ) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -148,16 +165,7 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return string
 	 */
 	public function toggle_css( $css ) {
-		$is_component_active = false;
-		$builders            = Main::get_instance()->get_builders();
-		foreach ( $builders as $builder ) {
-			if ( $builder->is_component_active( $this->get_id() ) ) {
-				$is_component_active = true;
-				break;
-			}
-		}
-
-		if ( ! $is_component_active ) {
+		if ( ! $this->is_component_active() && ! is_customize_preview() ) {
 			return '';
 		}
 
