@@ -157,7 +157,7 @@ class Layout_Single_Post extends Base_Customizer {
 							'desktop' => 'px',
 							'tablet'  => 'px',
 						],
-						'template'   => 'body.single-post .cover-header{
+						'template'   => 'body.single-post .nv-post-cover{
 							min-height: {{value}};
 						}',
 					],
@@ -188,7 +188,7 @@ class Layout_Single_Post extends Base_Customizer {
 						'responsive'  => true,
 						'directional' => true,
 						'template'    =>
-							'.cover-header {
+							'.nv-post-cover .container {
 							padding-top: {{value.top}};
 							padding-right: {{value.right}};
 							padding-bottom: {{value.bottom}};
@@ -228,7 +228,7 @@ class Layout_Single_Post extends Base_Customizer {
 						],
 					],
 					'show_labels'           => true,
-					'live_refresh_selector' => '.cover-header .container, .entry-header .entry-title',
+					'live_refresh_selector' => '.nv-post-cover .container, .entry-header .entry-title',
 					'live_refresh_css_prop' => [
 						'remove_classes' => [
 							'mobile-left',
@@ -273,7 +273,7 @@ class Layout_Single_Post extends Base_Customizer {
 							'icon'    => 'arrow-down',
 						],
 					],
-					'live_refresh_selector' => '.cover-header .nv-title-meta-wrap',
+					'live_refresh_selector' => '.nv-post-cover .nv-title-meta-wrap',
 					'live_refresh_css_prop' => [
 						'remove_classes' => [
 							'mobile-top',
@@ -291,6 +291,56 @@ class Layout_Single_Post extends Base_Customizer {
 					'active_callback'       => [ $this, 'is_cover_layout' ],
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Radio_Buttons'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_cover_background_color',
+				[
+					'sanitize_callback' => 'neve_sanitize_colors',
+					'default'           => 'var(--nv-dark-bg)',
+					'transport'         => $this->selective_refresh,
+				],
+				[
+					'label'                 => esc_html__( 'Overlay color', 'neve' ),
+					'section'               => $this->section,
+					'priority'              => 40,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'template' => '
+							.nv-post-cover {
+							    background-color: {{value}};
+						    }',
+
+					],
+				],
+				'Neve\Customizer\Controls\React\Color'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_cover_text_color',
+				[
+					'sanitize_callback' => 'neve_sanitize_colors',
+					'default'           => 'var(--nv-text-dark-bg)',
+					'transport'         => $this->selective_refresh,
+				],
+				[
+					'label'                 => esc_html__( 'Text color', 'neve' ),
+					'section'               => $this->section,
+					'priority'              => 45,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'template' => '
+							.nv-post-cover {
+							   color: {{value}};
+						    }',
+
+					],
+				],
+				'Neve\Customizer\Controls\React\Color'
 			)
 		);
 	}
@@ -404,21 +454,21 @@ class Layout_Single_Post extends Base_Customizer {
 		return [
 			'mobile'       => [
 				'top'    => 20,
-				'right'  => 20,
+				'right'  => 0,
 				'bottom' => 20,
-				'left'   => 20,
+				'left'   => 0,
 			],
 			'tablet'       => [
 				'top'    => 40,
-				'right'  => 40,
+				'right'  => 0,
 				'bottom' => 40,
-				'left'   => 40,
+				'left'   => 0,
 			],
 			'desktop'      => [
-				'top'    => 40,
-				'right'  => 40,
-				'bottom' => 40,
-				'left'   => 40,
+				'top'    => 60,
+				'right'  => 0,
+				'bottom' => 60,
+				'left'   => 0,
 			],
 			'mobile-unit'  => 'px',
 			'tablet-unit'  => 'px',

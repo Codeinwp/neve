@@ -22,11 +22,6 @@
   }
 }
 
-.cover-header {
-  margin-bottom: $spacing-sm;
-  display: flex;
-}
-
 .single-post-container .title {
   margin-bottom: 0;
 }
@@ -104,6 +99,11 @@
 		color: var(--nv-primary-accent);
     border: 1px solid var(--nv-primary-accent);
   }
+}
+
+.nv-post-cover {
+  margin-bottom: $spacing-sm;
+  display: flex;
 }
 
 .mobile-top {

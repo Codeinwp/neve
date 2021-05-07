@@ -20,8 +20,10 @@ use Neve\Customizer\Options\Layout_Single_Post;
  */
 class Post_Layout extends Base_View {
 
-	const POST_COVER_HEIGHT  = 'neve_post_cover_height';
-	const POST_COVER_PADDING = 'neve_post_cover_padding';
+	const POST_COVER_HEIGHT           = 'neve_post_cover_height';
+	const POST_COVER_PADDING          = 'neve_post_cover_padding';
+	const POST_COVER_BACKGROUND_COLOR = 'neve_post_cover_background_color';
+	const POST_COVER_TEXT_COLOR       = 'neve_post_cover_text_color';
 
 	/**
 	 * Function that is run after instantiation.
@@ -223,7 +225,7 @@ class Post_Layout extends Base_View {
 		$position    = $this->get_alignment_classes( 'neve_post_title_position', Layout_Single_Post::post_title_position_default() );
 		$cover_style = $this->get_cover_style();
 
-		echo '<div class="cover-header ' . esc_attr( $alignment ) . '" style="' . esc_attr( $cover_style ) . '">';
+		echo '<div class="nv-post-cover ' . esc_attr( $alignment ) . '" style="' . esc_attr( $cover_style ) . '">';
 		echo '<div class="container single-post-container ' . esc_attr( $position ) . '">';
 		echo '<div class="nv-title-meta-wrap">';
 		do_action( 'neve_before_post_title' );
@@ -317,7 +319,7 @@ class Post_Layout extends Base_View {
 	public function add_subscribers( $subscribers = [] ) {
 
 		$cover_padding_default                         = Layout_Single_Post::cover_padding_default();
-		$subscribers['body.single-post .cover-header'] = [
+		$subscribers['body.single-post .nv-post-cover'] = [
 			Config::CSS_PROP_MIN_HEIGHT => [
 				Dynamic_Selector::META_KEY           => self::POST_COVER_HEIGHT,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
@@ -325,6 +327,17 @@ class Post_Layout extends Base_View {
 				Dynamic_Selector::META_AS_JSON       => true,
 				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "300", "tablet": "300", "desktop": "300" }',
 			],
+			Config::CSS_PROP_BACKGROUND_COLOR => [
+				Dynamic_Selector::META_KEY     => self::POST_COVER_BACKGROUND_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
+			],
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY     => self::POST_COVER_TEXT_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
+			]
+		];
+
+		$subscribers['body.single-post .nv-post-cover .container'] = [
 			Config::CSS_PROP_PADDING    => [
 				Dynamic_Selector::META_KEY           => self::POST_COVER_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
