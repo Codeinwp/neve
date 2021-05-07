@@ -73,7 +73,6 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 	};
 
 	const bindColumnsSync = () => {
-		// window.wp.customize.bind('ready', () => {
 		const colNumber = window.wp.customize
 			.control(columnsSetting)
 			.setting.get();
@@ -81,7 +80,6 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 		setColLayout(
 			window.wp.customize.control(columnsLayoutSetting).setting.get()
 		);
-		// });
 
 		const syncColNumber = (nextValue: string) => {
 			const parsedColNumber = parseInt(nextValue);
@@ -111,11 +109,11 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 		);
 	};
 
-	// Toggle button when sidebar is toggled from preview.
 	useEffect(() => {
 		if (rowId !== 'sidebar') {
 			return;
 		}
+		// Toggle sidebar button when sidebar is toggled from preview.
 		window.wp.customize.previewer.bind(
 			'neve-toggle-navbar',
 			(e: { status: boolean }) => {
@@ -123,6 +121,11 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 				setSidebarVisible(status);
 			}
 		);
+
+		// Toggle theme sidebar if it was previously opened on customizer refresh.
+		window.wp.customize.previewer.bind('ready', () => {
+			setSidebarVisible(false);
+		});
 	}, []);
 
 	// Toggle sidebar in preview.
