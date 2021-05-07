@@ -27,6 +27,7 @@
 .header-menu-sidebar li.menu-item-nav-cart {
   opacity: 0;
   visibility: hidden;
+  display: none;
 }
 //</editor-fold>
 
@@ -46,13 +47,18 @@
 @include cart-widget();
 
 @mixin nav-cart--laptop() {
+
+  .nv-nav-cart,
+  .header-menu-sidebar li.menu-item-nav-cart {
+	display: block;
+  }
+
   //<editor-fold desc="Show menu cart icon and mini cart on desktop">
   .menu-item-nav-cart:hover .nv-nav-cart,
   .menu-item-nav-cart > a:focus + .nv-nav-cart,
   .nv-nav-cart:focus-within {
 	opacity: 1;
 	visibility: visible;
-	display: block;
   }
   //</editor-fold>
 
