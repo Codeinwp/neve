@@ -42,11 +42,19 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 		const height = builderNode.offsetHeight;
 		preview.style.maxHeight = `calc(100vh - ${height}px)`;
 		preview.style.marginTop = '0';
+
 		if (builder === 'footer') {
 			setTimeout(() => {
 				window.wp.customize.previewer.send('scroll', 100000000);
 			}, 150);
+
+			return;
 		}
+
+		// Scroll to top if we're using another builder (header, page-header)
+		setTimeout(() => {
+			window.wp.customize.previewer.send('scroll', 0);
+		}, 150);
 	};
 
 	// Offset preview to make space for builder.
