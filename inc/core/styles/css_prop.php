@@ -179,7 +179,7 @@ class Css_Prop {
 					Font_Manager::add_google_font( $font, strval( $value ) );
 				}
 
-				$value = ( $value > 0 ) ? intval( $value ) : 'normal';
+				$value = ( intval($value) > 0 ) ? intval( $value ) : 'normal';
 
 				return sprintf( ' %s: %s;', $css_prop, $value );
 				break;
