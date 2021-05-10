@@ -18,26 +18,18 @@ const Repeater = ({
 	const { visibility, title } = value;
 	const [expanded, setExpanded] = useState(false);
 	const [updatedTitle, updateTitle] = useState(title);
-	const [isVisible, setVisibility] = useState(visibility === 'yes');
 
 	useEffect(() => updateTitle(title), [title]);
 
-	useEffect(() => {
-		if (!isVisible) {
-			changeVisibility({ ...value, visibility: 'no' });
-		} else {
-			changeVisibility({ ...value, visibility: 'yes' });
-		}
-	}, [isVisible]);
+	const isVisible = visibility === 'yes';
 
-	console.log('isVisible', isVisible);
 	const toggleExpanded = (e) => {
 		e.preventDefault();
 		setExpanded(!expanded);
 	};
 
-	const toggleVisibility = () => {
-		setVisibility(!isVisible);
+	const hiddenField = () => {
+		changeVisibility(index);
 	};
 
 	const Handle = SortableHandle(() => (
@@ -57,7 +49,7 @@ const Repeater = ({
 			<div className="nv-header">
 				<Button
 					icon={isVisible ? 'visibility' : 'hidden'}
-					onClick={toggleVisibility}
+					onClick={hiddenField}
 					// --> className="visibility-btn" <-- //
 				/>
 

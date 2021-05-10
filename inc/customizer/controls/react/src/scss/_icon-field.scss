@@ -3,11 +3,9 @@
 .form {
   display: flex;
   position: relative;
+  width: 100%;
 
   .nv--icon-selector {
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-	border-right: 0;
 	border-color: $icon-picker-border;
 	position: absolute;
 	bottom: 0;
@@ -19,12 +17,9 @@
 
   .button {
 	height: auto;
-	box-shadow: none;
 	display: flex;
 	align-items: center;
-	border: none;
-	outline: none;
-	cursor: pointer;
+	padding: 0 8px;
   }
 
   input[type=text] {

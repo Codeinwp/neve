@@ -1,4 +1,4 @@
-import ColorControl from '../common/ColorControl';
+import ColorControl from '../ColorControl';
 
 const IconColor = ({ label }) => {
 	return (

@@ -1,0 +1,16 @@
+@import 'vars';
+
+.field-content {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ccc;
+
+  .remove-field-section {
+	.remove-field {
+	  padding: 0;
+	  text-decoration: underline;
+	  color: $button-color;
+	}
+  }
+}
+
+
