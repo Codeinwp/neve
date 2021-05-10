@@ -12,39 +12,8 @@ class MetaFieldsManager extends Component {
 
 	constructor(props) {
 		super(props);
-		const metaData = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
 
-		let omitEmpty = obj => {
-			Object.keys(obj).filter(k => '' === obj[k] || 0 === obj[k] ).forEach(k => delete (obj[k]));
-			return obj;
-		};
-
-		this.defaultSortables = JSON.stringify(
-			[
-				'title',
-				'meta',
-				'thumbnail',
-				'content',
-				'tags',
-				'comments',
-				'post-navigation'
-			]
-		);
-
-		this.updateValues = this.updateValues.bind( this );
-		this.updateBlockWidth = this.updateBlockWidth.bind( this );
-	}
-
-	componentDidUpdate(prevProps, prevState, snapShot) {
-		this.updateBlockWidth();
-	}
-
-	updateValues(id, value) {
-		this.props.setMetaValue( id, value );
-	}
-
-	resetAll() {
-		const state = {
+		this.defaultState = {
 			'neve_meta_sidebar': 'default',
 			'neve_meta_container': 'default',
 			'neve_meta_enable_content_width': 'off',
@@ -68,10 +37,52 @@ class MetaFieldsManager extends Component {
 			'neve_meta_disable_title': 'off'
 		};
 
+		this.defaultSortables = JSON.stringify(
+			[
+				'title',
+				'meta',
+				'thumbnail',
+				'content',
+				'tags',
+				'comments',
+				'post-navigation'
+			]
+		);
+
+		this.updateValues = this.updateValues.bind( this );
+		this.resetAll = this.resetAll.bind( this );
+		this.updateBlockWidth = this.updateBlockWidth.bind( this );
+	}
+
+	componentDidUpdate() {
+		const metaData = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
+
+		let omitEmpty = obj => {
+			Object.keys(obj).filter(k => '' === obj[k] || 0 === obj[k] ).forEach(k => delete (obj[k]));
+			return obj;
+		};
+
+		const result = { ...omitEmpty(this.defaultState), ...omitEmpty( metaData ) };
+
+		// Do not use any keys that are not in the sidebar for meta.
+		for ( let k in result ) {
+			if ( ! Object.keys(this.defaultState).includes(k) ) {
+				delete (result[k]);
+			}
+		}
+
+		this.updateBlockWidth();
+	}
+
+	updateValues(id, value) {
+		this.props.setMetaValue( id, value );
+	}
+
+	resetAll() {
 		const allMeta = {...this.props.allMeta};
 		const emptiedMeta = {};
 
-		Object.keys( state ).map( ( control ) => {
+		Object.keys( this.defaultState ).map( ( control ) => {
 			let emptyValue = '';
 			if ( 'neve_meta_content_width' === control ) {
 				emptyValue = 0;
@@ -421,7 +432,7 @@ class MetaFieldsManager extends Component {
 
 export default compose([
 
-	withDispatch(( dispatch, props ) => {
+	withDispatch(( dispatch ) => {
 		return {
 			setMetaValue: ( id, value ) => {
 				dispatch('core/editor').editPost({meta: {[id]: value}});
@@ -431,7 +442,7 @@ export default compose([
 			}
 		};
 	}),
-	withSelect(( select, props ) => {
+	withSelect(( select ) => {
 		return {
 			metaValue: (id) => {
 				return select('core/editor').getEditedPostAttribute('meta')[id];
