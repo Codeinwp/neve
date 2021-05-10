@@ -3,20 +3,22 @@ import { __ } from '@wordpress/i18n';
 import { chevronDown, chevronUp } from '@wordpress/icons';
 import { useState, useEffect } from '@wordpress/element';
 import TextInput from '../common/TextInput';
-import IconColor from '../icon-color/IconColor';
-import IconField from '../icon-picker/IconField';
+import IconField from '../common/icon-picker/IconField';
 import { SortableHandle } from 'react-sortable-hoc';
+import ColorControl from '../common/ColorControl';
 
-const Repeater = ({
+const Item = ({
 	value,
 	fields,
 	key,
 	onUpdate,
+	updateValue,
 	index,
 	changeVisibility,
+	removeFields,
 }) => {
 	const { visibility, title } = value;
-	const [expanded, setExpanded] = useState(false);
+	const [isExpanded, expand] = useState(false);
 	const [updatedTitle, updateTitle] = useState(title);
 
 	useEffect(() => updateTitle(title), [title]);
@@ -25,7 +27,7 @@ const Repeater = ({
 
 	const toggleExpanded = (e) => {
 		e.preventDefault();
-		setExpanded(!expanded);
+		expand(!isExpanded);
 	};
 
 	const hiddenField = () => {
@@ -69,45 +71,66 @@ const Repeater = ({
 				</Button>
 			</div>
 
-			{expanded && (
-				<div className="nv-item--content">
+			{isExpanded && (
+				<div className="field-content">
 					{/* eslint-disable-next-line array-callback-return */}
 					{Object.keys(fields).map((fieldId) => {
 						const { type, label } = fields[fieldId];
 
+						let selectedIcon;
+						if (!value[fieldId]) {
+							selectedIcon = null;
+						} else {
+							selectedIcon = value[fieldId];
+						}
+
 						if (type === 'text') {
 							return (
-								<div>
-									<TextInput
-										label={
-											label === 'Fields' ? 'Title' : label
-										}
-										type={type}
-										val={value[fieldId]}
-										title={updatedTitle}
-										updateTitle={updateTitle}
-										disabled={isVisible}
-									/>
-								</div>
+								<TextInput
+									label={label === 'Fields' ? 'Title' : label}
+									type={type}
+									index={index}
+									val={value[fieldId]}
+									title={updatedTitle}
+									updateTitle={updateValue}
+									disabled={isVisible}
+								/>
 							);
 						}
 
 						if (type === 'color') {
-							return <IconColor label={label} />;
+							return (
+								<div className="field-repeat">
+									<ColorControl
+										defaultValue=""
+										label={label}
+										onChange={function noRefCheck() {}}
+										selectedColor="#f00"
+									/>
+								</div>
+							);
 						}
 
 						if (type === 'icon') {
 							return (
 								<IconField
 									label={label}
-									selectedIcon={value[fieldId]}
+									selectedIcon={selectedIcon}
 								/>
 							);
 						}
 					})}
+					<div className="remove-field-section">
+						<Button
+							className="remove-field"
+							onClick={removeFields(index)}
+						>
+							Remove
+						</Button>
+					</div>
 				</div>
 			)}
 		</div>
 	);
 };
-export default Repeater;
+export default Item;
