@@ -1940,7 +1940,7 @@ msgid "Need more details? Please check our full documentation for detailed infor
 msgstr ""
 
 #: dashboard/src/Components/Content/Start.js:104
-msgid "Import professional page templates or sections with one click and have a website running in seconds."
+msgid "Boost productivity and speed up your workflow by saving all your designs and share them automatically to all your sites in 1-click."
 msgstr ""
 
 #: dashboard/src/Components/Content/Start.js:111
