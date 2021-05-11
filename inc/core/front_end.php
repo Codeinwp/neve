@@ -445,7 +445,9 @@ class Front_End {
 			wp_enqueue_style( 'neve-woocommerce' );
 		}
 
-		wp_register_style( 'neve-style', get_template_directory_uri() . '/style-main' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		$style_path = neve_is_new_skin() ? '/style-main' : '/assets/css/style-legacy';
+
+		wp_register_style( 'neve-style', get_template_directory_uri() . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 		wp_style_add_data( 'neve-style', 'rtl', 'replace' );
 		wp_style_add_data( 'neve-style', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-style' );
