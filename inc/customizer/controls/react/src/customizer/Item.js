@@ -16,6 +16,7 @@ const Item = ({
 	index,
 	changeVisibility,
 	removeFields,
+	changeColor,
 }) => {
 	const { visibility, title } = value;
 	const [isExpanded, expand] = useState(false);
@@ -104,7 +105,7 @@ const Item = ({
 									<ColorControl
 										defaultValue=""
 										label={label}
-										onChange={function noRefCheck() {}}
+										onChange={changeColor}
 										selectedColor="#f00"
 									/>
 								</div>
@@ -123,7 +124,7 @@ const Item = ({
 					<div className="remove-field-section">
 						<Button
 							className="remove-field"
-							onClick={removeFields(index)}
+							onClick={() => removeFields(index)}
 						>
 							Remove
 						</Button>

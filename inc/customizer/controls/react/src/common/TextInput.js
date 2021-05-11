@@ -5,7 +5,7 @@ const TextInput = ({ label, type, val, updateTitle, index }) => {
 
 	const onChangeInput = (e) => {
 		setInputValue(e.target.value);
-		updateTitle(index, e.target.value);
+		updateTitle(index, e.target.value, type, label);
 	};
 
 	return (

@@ -18,6 +18,7 @@ const SortableItem = SortableElement(
 		setValue,
 		changeVisibility,
 		removeFields,
+		changeColor,
 	}) => {
 		// console.log("index", index); // undefined -- WHY??!
 		// Therefore, I decided to send another prop to keep the index value = idx
@@ -31,6 +32,7 @@ const SortableItem = SortableElement(
 				updateValue={updateValue}
 				changeVisibility={changeVisibility}
 				removeFields={removeFields}
+				changeColor={changeColor}
 			/>
 		);
 	}
@@ -42,7 +44,6 @@ const Customizer = ({ value, setValue, fields }) => {
 	};
 
 	const changeVisibility = (idx) => {
-		console.log(idx);
 		const nextValue = [...value];
 		if (nextValue[idx].visibility === 'yes') {
 			nextValue[idx].visibility = 'no';
@@ -53,14 +54,19 @@ const Customizer = ({ value, setValue, fields }) => {
 		setValue(nextValue);
 	};
 
-	const updateFieldValues = (idx, newVal) => {
+	const updateFieldValues = (idx, newVal, type, label) => {
 		const nextValue = [...value];
-		if (newVal === '' || !newVal) {
-			nextValue[idx].title = `Item ${idx + 1}`;
+		if (type === 'text' && label === 'Link') {
+			nextValue[idx].url = newVal;
 		} else {
-			nextValue[idx].title = newVal;
+			// eslint-disable-next-line no-lonely-if
+			if (newVal === '' || !newVal) {
+				nextValue[idx].title = `Item ${idx + 1}`;
+			} else {
+				nextValue[idx].title = newVal;
+			}
 		}
-		setValue(nextValue);
+		return setValue(nextValue);
 	};
 
 	const addMoreFields = () => {
@@ -77,12 +83,16 @@ const Customizer = ({ value, setValue, fields }) => {
 	};
 
 	const removeFields = (idx) => {
-		// const valueAfterRemoved = [...value];
-		// valueAfterRemoved.splice(
-		// 	valueAfterRemoved.indexOf(valueAfterRemoved[idx]),
-		// 	1
-		// );
-		// setValue(valueAfterRemoved);
+		const valueAfterRemoved = [...value];
+		const index = valueAfterRemoved.indexOf(valueAfterRemoved[idx]);
+		valueAfterRemoved.splice(index, 1);
+		setValue(valueAfterRemoved);
+	};
+
+	const changeColor = (value) => {
+		// const nextValue = [...value];
+		console.log(value);
+		return true;
 	};
 
 	return (
@@ -106,6 +116,7 @@ const Customizer = ({ value, setValue, fields }) => {
 							updateValue={updateFieldValues}
 							changeVisibility={changeVisibility}
 							removeFields={removeFields}
+							changeColor={changeColor}
 						/>
 					);
 				})}
