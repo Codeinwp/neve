@@ -1,0 +1,88 @@
+@import "./variables";
+
+html {
+  font-size: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--nv-site-bg);
+  color: var(--nv-text-color);
+  font-size: $html-font-size;
+  line-height: $line-height-base;
+  font-family: $default-font-family;
+  overflow-x: hidden;
+  direction: ltr;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: $line-height-base;
+  margin-bottom: $headings-margin-bottom;
+  font-weight: $headings-font-weight;
+}
+
+p {
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+a {
+  cursor: pointer;
+  color: var(--nv-primary-accent);
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+	color: var(--nv-secondary-accent);
+  }
+}
+
+ins {
+  text-decoration: none;
+}
+
+//h1 {
+//  font-size: $h1-mobile-font-size;
+//}
+//
+//h2 {
+//  font-size: $h2-mobile-font-size;
+//}
+//
+//h3 {
+//  font-size: $h3-mobile-font-size;
+//}
+//
+//h4 {
+//  font-size: $h4-mobile-font-size;
+//}
+//
+//h5 {
+//  font-size: $h5-mobile-font-size;
+//}
+//
+//h6 {
+//  font-size: $h6-mobile-font-size;
+//}
+
+@mixin typography--tablet() {
+  //h1 {
+  //  font-size: $h1-font-size;
+  //}
+  //h2 {
+  //  font-size: $h2-font-size;
+  //}
+  //h3 {
+  //  font-size: $h3-font-size;
+  //}
+  //h4 {
+  //  font-size: $h4-font-size;
+  //}
+  //h5 {
+  //  font-size: $h5-font-size;
+  //}
+  //h6 {
+  //  font-size: $h6-font-size;
+  //}
+}

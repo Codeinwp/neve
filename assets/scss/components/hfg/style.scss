@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+@import "frontend/mixins";
+@import "frontend/vars";
+@import "frontend/layout/mobile_sidebar";
+@import "frontend/layout/footer";
+@import "frontend/layout/new_main";
+
+
+// COMPONENTS
+@import "frontend/components/nav-menus";
+@import "frontend/components/nav-toggle";
+@import "frontend/components/search-field";
+@import "frontend/components/button";
+
+.hfg-grid {
+  display: flex;
+}
+// HIDING COLS FOR DEVICES
+@each $mq-key, $mq-value in $gl-devices-list {
+  @media #{$mq-value} {
+    .hide-on-#{$mq-key},
+    .hfg-grid .hide-on-#{$mq-key} { display: none; }
+  }
+}
+.component-wrap{
+  display: flex;
+  margin: 4px 0;
+}
+
+.builder-item--footer_copyright .component-wrap {
+  display: inline;
+}

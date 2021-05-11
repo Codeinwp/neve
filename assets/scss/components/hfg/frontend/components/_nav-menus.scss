@@ -1,0 +1,112 @@
+// Hover Styles
+.style-border-top, .style-border-bottom, .style-full-height {
+  ul:not(.max-mega-menu) > li:hover > a {
+	text-decoration: none;
+  }
+
+  ul > li.menu-item-nav-cart:hover, ul > li.menu-item-nav-search:hover {
+	a {
+	  opacity: .75;
+	}
+  }
+}
+
+.style-border-bottom {
+  a:after {
+	bottom: 0;
+  }
+
+  .sub-menu a:after {
+	bottom: 5px;
+  }
+
+  .header-menu-sidebar-inner & .sub-menu a:after {
+	bottom: 0;
+  }
+}
+
+.style-border-top {
+  a:after {
+	top: 0;
+  }
+
+  .sub-menu a:after {
+	top: 5px;
+  }
+
+  .header-menu-sidebar-inner & .sub-menu a:after {
+	top: 0;
+  }
+}
+
+.style-full-height {
+  .sub-menu a:after {
+	max-width: 100%;
+  }
+
+  a {
+	position: relative;
+	align-items: center;
+	z-index: 1;
+
+	&:after {
+	  top: 0;
+	  bottom: 0;
+	  left: 0;
+	  right: 0;
+	  height: auto !important;
+	  z-index: -1;
+	}
+  }
+}
+
+// Footer nav menu
+.nav-menu-footer {
+  a {
+	display: flex;
+	justify-content: center;
+	position: relative;
+  }
+}
+
+.header-menu-sidebar-inner #mega-menu-wrap-primary .mega-menu-toggle {
+  display: none;
+
+  + #mega-menu-primary {
+	display: block;
+  }
+}
+
+.mega-menu-primary .nav-menu-primary {
+  width: 100%;
+}
+
+.style-border-top, .style-border-bottom {
+  ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) {
+	&:hover > a:after {
+	  width: 100%;
+	}
+  }
+}
+
+.style-border-top, .style-border-bottom, .style-full-height {
+  ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) {
+	> a:after {
+	  position: absolute;
+	  content: "";
+	  display: block;
+	  margin: 0 auto;
+	  width: 0;
+	  height: 2px;
+	  transition: opacity .3s ease, width .3s ease;
+	  right: 0;
+	  left: 0;
+	  pointer-events: none;
+	}
+  }
+}
+
+// Items in sidebar should stretch full width.
+.header-menu-sidebar-inner li:hover > a:after {
+  width: 100% !important;
+}

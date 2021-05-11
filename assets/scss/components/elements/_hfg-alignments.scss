@@ -1,0 +1,86 @@
+.hfg-is-group {
+  display: flex;
+  align-items: center;
+}
+$component-alignments: (
+        'right' : flex-end,
+        'left' : flex-start,
+        'center': center,
+);
+
+//<editor-fold desc="Mobile Horizontal Alignments">
+@each $alignment, $flex-setting in $component-alignments {
+  .hfg-is-group.mobile-#{$alignment} {
+	justify-content: $flex-setting;
+  }
+  .mobile-#{$alignment} {
+	text-align: #{$alignment};
+
+	.nav-ul, .nv-nav-wrap, .component-wrap, .site-logo, .nv-search-icon-component, .builder-item--footer-menu {
+	  justify-content: $flex-setting;
+	}
+  }
+}
+
+.mobile-justify .button {
+  flex-grow: 1;
+}
+//</editor-fold>
+
+//<editor-fold desc="Tablet Horizontal Alignments">
+@mixin hfg-alignments--tablet-sm() {
+  @each $alignment, $flex-setting in $component-alignments {
+	//mobile-right desktop-left tablet-left
+	.hfg-is-group.tablet-#{$alignment} {
+	  justify-content: $flex-setting;
+	}
+	.tablet-#{$alignment} {
+	  text-align: #{$alignment};
+
+	  .nav-ul, .nv-nav-wrap, .component-wrap, .site-logo, .nv-search-icon-component, .builder-item--footer-menu {
+		justify-content: $flex-setting;
+	  }
+	}
+  }
+
+  .tablet-justify .button {
+	flex-grow: 1;
+  }
+}
+//</editor-fold>
+
+//<editor-fold desc="Laptop Horizontal Alignments">
+@mixin hfg-alignments--laptop() {
+  @each $alignment, $flex-setting in $component-alignments {
+	//mobile-right desktop-left tablet-left
+	.hfg-is-group.desktop-#{$alignment} {
+	  justify-content: $flex-setting;
+	}
+	.desktop-#{$alignment} {
+	  text-align: #{$alignment};
+
+	  .nav-ul, .nv-nav-wrap, .component-wrap, .site-logo, .nv-search-icon-component, .builder-item--footer-menu {
+		justify-content: $flex-setting;
+	  }
+	}
+  }
+
+  .desktop-justify .button {
+	flex-grow: 1;
+  }
+}
+//</editor-fold>
+
+//<editor-fold desc="Vertical Alignments">
+$component-v-alignments: (
+		'top' : flex-start,
+		'bottom': flex-end,
+		'middle': center,
+);
+
+@each $alignment, $align-self in $component-v-alignments  {
+  .hfg-item-v-#{$alignment} {
+	align-self: $align-self;
+  }
+}
+//</editor-fold>

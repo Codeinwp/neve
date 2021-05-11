@@ -1,0 +1,51 @@
+// Site Fonts
+$font_main:     -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+
+$container_width: 1200px; // 1200px; 75em
+
+// Colors
+$color_text:        #686868;
+$color_heading:     #2b2b2b;
+$color_primary:     #235787;
+$color_secondary:   #c3512f;
+$color_link:        #1e4b75;
+$color_link_hover:  #111111;
+$color_border:      #eaecee;
+$color_meta:        #6d6d6d;
+
+// Helper
+$submenu_width: 14em;
+
+/*Skin*/
+// - Dark mode
+$light_color: white(0.99);
+$light_color_link: white(0.79);
+$light_color_link_hover: white(0.99);
+$light_color_border: rgba(255,255,255,0.08);
+$light_bg: rgba(255,255,255,0.9);
+
+// - Light mode
+$dark_color: #404248;
+$dark_color_link: black(0.55);
+$dark_color_link_hover: black(0.8);
+$dark_color_border: rgba(0,0,0,0.08);
+$dark_bg: rgba(0,0,0,0.9);
+
+// Screen resolutions
+$screen_lg: 80em;   // max 1280px
+$screen_md: 64em;   // max 1024px
+$screen_sm: 48em;   // max 768px
+$screen_xs: 35.5em; // up to 568px
+
+$gl-devices-list: (
+        desktop: "(min-width: 960px)",
+        tablet: "(max-width: 959px)",
+        mobile: "(max-width: 576px)"
+) !default;
+
+// Header mobile sidebar
+$menu_sidebar_width: 360px;
+$menu_sidebar_active_z_index: 999900;
+$menu_sidebar_content_max_width: 48em;
+$menu_sidebar_content_gutter: 1.5em;
+$menu_sidebar_boxshadow: 0px 0px 10px 0px rgba(0,0,0,0.4);

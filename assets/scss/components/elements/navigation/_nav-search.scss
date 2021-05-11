@@ -1,0 +1,179 @@
+.nv-search-icon-component {
+	display: flex;
+}
+
+.hfg-item-last:not(.hfg-item-first) .menu-item-nav-search.minimal .nv-nav-search {
+	left: unset;
+	right: 0;
+}
+
+.nav-ul li.menu-item-nav-search {
+	display: flex;
+	align-items: center;
+}
+
+.menu-item-nav-search {
+	flex-grow: 0;
+
+	.search-form {
+		input[type=submit] {
+			&:hover {
+				background-color: transparent;
+			}
+		}
+	}
+
+	.close-responsive-search {
+		background-color: transparent !important;
+		border: none !important;
+
+		svg {
+		  	fill: var(--nv-text-color);
+			min-width: 25px;
+			min-height: 25px;
+		}
+	}
+
+	&.minimal {
+		position: relative;
+
+		.nv-nav-search {
+			right: auto;
+			left: 0;
+			top: 100%;
+		}
+	}
+
+	.header-menu-sidebar &.floating .nv-nav-search {
+		position: absolute;
+	}
+
+	&.floating {
+		.nv-nav-search {
+			position: fixed;
+			top: -100%;
+			left: 0;
+			display: flex;
+			align-items: center;
+		}
+
+		.nv-search-icon-wrap {
+			display: none;
+		}
+
+		.form-wrap {
+			flex-grow: 1;
+			margin-right: 20px;
+
+			form {
+				width: 100%;
+			}
+		}
+
+		.close-responsive-search {
+			display: flex;
+			align-items: center;
+		}
+
+		&.active {
+			.nv-nav-search {
+				top: 0;
+			}
+		}
+
+		.search-form input[type=search] {
+			width: 100%;
+		}
+	}
+
+	&.canvas .nv-nav-search {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.close-container {
+			position: absolute;
+			top: $spacing-lg;
+			text-align: right;
+		}
+
+		.search-submit {
+			display: block;
+		}
+
+		.form-wrap {
+			position: absolute;
+		}
+
+		form {
+			position: relative;
+
+			input[type="search"] {
+				width: 100%;
+			}
+		}
+	}
+
+}
+
+.menu-item-nav-search {
+	cursor: pointer;
+	outline: 0;
+}
+
+.menu-item-nav-search > a {
+	display: flex;
+	align-items: center;
+}
+
+.nv-nav-search {
+	visibility: hidden;
+	opacity: 0;
+	transition: $transition_med;
+	position: absolute;
+	right: 0;
+	width: auto;
+	padding: $spacing-xs $spacing-sm;
+	border-top: $muted-border;
+	cursor: default;
+	z-index: 100;
+	background-color: var(--nv-site-bg);
+
+  @include soft-box-shadow();
+
+	.menu-item-nav-search.active & {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	form {
+		display: block;
+
+		label {
+			display: inline;
+			margin: 0;
+
+			input {
+				width: 200px;
+				margin: 0;
+			}
+		}
+	}
+}
+
+.nav-clickaway-overlay {
+	position: fixed;
+	width: 100%;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index: 90;
+	height: 100vh;
+}
+
+@mixin nav-search--laptop() {
+}

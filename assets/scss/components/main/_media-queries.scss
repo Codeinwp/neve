@@ -1,0 +1,30 @@
+@media (min-width: #{$tablet-sm}) {
+  //@include grid-container--tablet-sm();
+  //@include grid--tablet-sm();
+  //@include hfg-alignments--tablet-sm();
+  //@include nav-menu--tablet-sm();
+}
+
+@media (min-width: #{$tablet}) {
+  //@include grid-container--tablet();
+  //@include grid--tablet();
+  //@include typography--tablet();
+  //@include gutenberg--tablet();
+  //@include comments--tablet();
+}
+
+@media (min-width: #{$laptop}) {
+  //@include grid-container--laptop();
+  //@include content--laptop();
+  //@include nav-menu--laptop();
+  //@include nav-search--laptop();
+  //@include blog-layout-default-alt--laptop();
+  //@include blogpost-index--laptop();
+  //@include page--laptop();
+  //@include sidebar--laptop();
+  @include hfg-alignments--laptop();
+}
+
+@media (min-width: #{$desktop}) {
+  //@include grid-container--desktop();
+}

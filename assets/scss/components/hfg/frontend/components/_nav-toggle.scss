@@ -1,0 +1,53 @@
+.nav-toggle-label {
+  margin-right: 5px;
+  line-height: 100%;
+}
+
+.icon-bar {
+  transition: all .1s ease;
+  position: relative;
+  display: block;
+  border-radius: 2px;
+  width: 15px;
+  height: 2px;
+
+  &:nth-child(2) {
+    margin: 3px 0;
+  }
+}
+
+.navbar-toggle-wrapper {
+  align-items: center;
+}
+
+.navbar-toggle {
+  border-radius: 3px;
+  background: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  border: 1px solid;
+
+  &:hover {
+    box-shadow: none;
+    transform: none;
+    background: transparent;
+  }
+}
+
+.is-menu-sidebar .navbar-toggle {
+  .icon-bar:nth-child(1) {
+    transform: rotate(45deg);
+    top: 5px;
+  }
+
+  .icon-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .icon-bar:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 5px;
+  }
+}

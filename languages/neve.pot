@@ -597,22 +597,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:509
+#: inc/core/front_end.php:511
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:506
+#: inc/core/front_end.php:508
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:508
+#: inc/core/front_end.php:510
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:507
+#: inc/core/front_end.php:509
 msgid "Footer Two"
 msgstr ""
 
@@ -1063,7 +1063,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:499
+#: inc/core/front_end.php:501
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:141
 msgid "Sidebar"
 msgstr ""
@@ -1316,7 +1316,7 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: inc/core/front_end.php:500
+#: inc/core/front_end.php:502
 msgid "Shop Sidebar"
 msgstr ""
 

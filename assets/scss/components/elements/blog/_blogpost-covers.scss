@@ -1,0 +1,48 @@
+$overlay: rgba(0, 0, 0, 0.75);
+.layout-covers {
+	display: flex;
+	.content,
+	.cover-post {
+		height: 100%;
+	}
+
+	.content {
+		border: none;
+		padding-bottom: 0;
+	}
+}
+
+.cover-post {
+	position: relative;
+	background-size: cover;
+	display: flex;
+	background-position: center;
+	overflow: hidden;
+
+	&:after {
+		background-color: $overlay;
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
+
+	.inner {
+		max-width: 100%;
+		min-height: 350px;
+		position: relative;
+		z-index: 10;
+		padding: 25px 25px 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		color: #fff;
+		flex-grow: 1;
+
+		a:not(.button), a:not(.button):hover, a:not(.button):focus, li {
+			color: #fff;
+		}
+	}
+}

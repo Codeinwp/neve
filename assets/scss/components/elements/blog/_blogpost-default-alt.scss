@@ -1,0 +1,60 @@
+.layout-default, .layout-alternative {
+	display: flex;
+	align-items: flex-end;
+
+	.nv-post-thumbnail-wrap {
+		margin-bottom: $spacing-xs;
+	}
+}
+
+@mixin blog-layout-default-alt--laptop() {
+	.layout-default, .layout-alternative {
+		.nv-post-thumbnail-wrap {
+			margin-bottom: 0;
+		}
+
+		.article-content-col .content {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	.layout-default .article-content-col .content {
+		flex-direction: row;
+	}
+
+	.layout-alternative .article-content-col .content {
+		flex-direction: row-reverse;
+	}
+
+	.non-grid-content {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		.button {
+			align-self: flex-start;
+		}
+	}
+
+	.nv-post-thumbnail-wrap ~ .default-layout-content {
+		padding-left: $spacing-sm;
+	}
+
+	.nv-post-thumbnail-wrap ~ .alternative-layout-content {
+		padding-right: $spacing-sm;
+	}
+
+	.layout-default, .layout-alternative {
+		.nv-post-thumbnail-wrap {
+			max-width: 40%;
+		}
+	}
+	.layout-alternative:nth-child(even) .content {
+		flex-direction: row;
+	}
+
+	.layout-alternative:nth-child(even) .nv-post-thumbnail-wrap ~ .alternative-layout-content {
+		padding: 0 0 0 $spacing-sm;
+	}
+}
