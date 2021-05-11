@@ -216,6 +216,8 @@ class Css_Prop {
 				break;
 			case Config::CSS_PROP_TEXT_TRANSFORM:
 			case Config::CSS_PROP_BOX_SHADOW:
+			case Config::CSS_PROP_MIX_BLEND_MODE:
+			case Config::CSS_PROP_OPACITY:
 				return sprintf( ' %s: %s; ', $css_prop, $value );
 				break;
 		}

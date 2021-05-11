@@ -39,7 +39,7 @@ class Layout_Single_Post extends Base_Customizer {
 		$this->section_single_post();
 		$this->add_sections_heading();
 		$this->header_layout();
-		$this->control_content_order();
+		// $this->control_content_order();
 	}
 
 	/**
@@ -66,7 +66,7 @@ class Layout_Single_Post extends Base_Customizer {
 			'header_layout' => array(
 				'title'            => esc_html__( 'Header Layout', 'neve' ),
 				'priority'         => 10,
-				'controls_to_wrap' => 7,
+				'controls_to_wrap' => 12,
 			),
 		);
 
@@ -188,7 +188,7 @@ class Layout_Single_Post extends Base_Customizer {
 						'responsive'  => true,
 						'directional' => true,
 						'template'    =>
-							'.nv-post-cover .container {
+							'body.single-post .nv-post-cover .nv-cover-container {
 							padding-top: {{value.top}};
 							padding-right: {{value.right}};
 							padding-bottom: {{value.bottom}};
@@ -228,7 +228,7 @@ class Layout_Single_Post extends Base_Customizer {
 						],
 					],
 					'show_labels'           => true,
-					'live_refresh_selector' => '.nv-post-cover .container, .entry-header .entry-title',
+					'live_refresh_selector' => 'body.single-post .nv-post-cover .nv-cover-container, .entry-header .entry-title',
 					'live_refresh_css_prop' => [
 						'remove_classes' => [
 							'mobile-left',
@@ -273,7 +273,7 @@ class Layout_Single_Post extends Base_Customizer {
 							'icon'    => 'arrow-down',
 						],
 					],
-					'live_refresh_selector' => '.nv-post-cover .nv-title-meta-wrap',
+					'live_refresh_selector' => 'body.single-post .nv-post-cover .nv-title-meta-wrap',
 					'live_refresh_css_prop' => [
 						'remove_classes' => [
 							'mobile-top',
@@ -309,7 +309,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
-							.nv-post-cover {
+							body.single-post .nv-post-cover .nv-overlay {
 							    background-color: {{value}};
 						    }',
 
@@ -334,8 +334,204 @@ class Layout_Single_Post extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
-							.nv-post-cover {
+							body.single-post .nv-post-cover,
+							body.single-post .nv-post-cover .nv-meta-list li,
+							body.single-post .nv-post-cover .nv-meta-list a{
 							   color: {{value}};
+						    }',
+
+					],
+				],
+				'Neve\Customizer\Controls\React\Color'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_cover_overlay_opacity',
+				[
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'transport'         => $this->selective_refresh,
+					'default'           => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+				],
+				[
+					'label'                 => esc_html__( 'Overlay opacity', 'neve' ),
+					'section'               => $this->section,
+					'type'                  => 'neve_responsive_range_control',
+					'input_attrs'           => [
+						'min'        => 0,
+						'max'        => 1,
+						'defaultVal' => [
+							'mobile'  => 0,
+							'tablet'  => 0,
+							'desktop' => 0,
+						],
+						'step'       => 0.1,
+					],
+					'priority'              => 50,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'responsive' => true,
+						'prop'       => 'opacity',
+						'template'   => 'body.single-post .nv-post-cover .nv-overlay {
+							opacity: {{value}};
+						}',
+					],
+					'active_callback'       => [ $this, 'is_cover_layout' ],
+				],
+				'\Neve\Customizer\Controls\React\Responsive_Range'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_cover_hide_thumbnail',
+				[
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => false,
+				],
+				[
+					'label'           => esc_html__( 'Hide featured image', 'neve' ),
+					'section'         => $this->section,
+					'type'            => 'neve_toggle_control',
+					'priority'        => 50,
+					'active_callback' => [ $this, 'is_cover_layout' ],
+				],
+				'Neve\Customizer\Controls\Checkbox'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_cover_blend_mode',
+				[
+					'default'           => 'overlay',
+					'sanitize_callback' => array( $this, 'sanitize_blend_mode' ),
+					'transport'         => $this->selective_refresh,
+				],
+				[
+					'label'                 => esc_html__( 'Blend mode', 'neve' ),
+					'section'               => $this->section,
+					'priority'              => 55,
+					'type'                  => 'select',
+					'choices'               => [
+						'normal'      => esc_html__( 'Normal', 'neve' ),
+						'multiply'    => esc_html__( 'Multiply', 'neve' ),
+						'screen'      => esc_html__( 'Screen', 'neve' ),
+						'overlay'     => esc_html__( 'Overlay', 'neve' ),
+						'darken'      => esc_html__( 'Darken', 'neve' ),
+						'lighten'     => esc_html__( 'Lighten', 'neve' ),
+						'color-dodge' => esc_html__( 'Color Dodge', 'neve' ),
+						'saturation'  => esc_html__( 'Saturation', 'neve' ),
+						'color'       => esc_html__( 'Color', 'neve' ),
+						'difference'  => esc_html__( 'Difference', 'neve' ),
+						'exclusion'   => esc_html__( 'Exclusion', 'neve' ),
+						'hue'         => esc_html__( 'Hue', 'neve' ),
+						'luminosity'  => esc_html__( 'Luminosity', 'neve' ),
+					],
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'template' => '
+							body.single-post .nv-post-cover .nv-overlay{
+							   mix-blend-mode: {{value}};
+						    }',
+
+					],
+					'active_callback'       => [ $this, 'is_cover_layout' ],
+				]
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_cover_container',
+				[
+					'default'           => 'contained',
+					'sanitize_callback' => array( $this, 'sanitize_container' ),
+				],
+				[
+					'label'           => esc_html__( 'Cover container', 'neve' ),
+					'section'         => $this->section,
+					'priority'        => 60,
+					'type'            => 'select',
+					'choices'         => [
+						'contained'  => esc_html__( 'Contained', 'neve' ),
+						'full-width' => esc_html__( 'Full width', 'neve' ),
+					],
+					'active_callback' => [ $this, 'is_cover_layout' ],
+				]
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_cover_boxed_title',
+				[
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => false,
+				],
+				[
+					'label'           => esc_html__( 'Boxed title', 'neve' ),
+					'section'         => $this->section,
+					'type'            => 'neve_toggle_control',
+					'priority'        => 65,
+					'active_callback' => [ $this, 'is_cover_layout' ],
+				],
+				'Neve\Customizer\Controls\Checkbox'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_cover_boxed_title_padding',
+				[
+					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
+					'transport'         => $this->selective_refresh,
+					'default'           => self::cover_padding_default(),
+				],
+				[
+					'label'                 => esc_html__( 'Section padding', 'neve' ),
+					'section'               => $this->section,
+					'input_attrs'           => [
+						'units' => [ 'em', 'px' ],
+					],
+
+					'priority'              => 70,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => array(
+						'responsive'  => true,
+						'directional' => true,
+						'template'    =>
+							'body.single-post .nv-post-cover .nv-title-meta-wrap.is-boxed {
+							padding-top: {{value.top}};
+							padding-right: {{value.right}};
+							padding-bottom: {{value.bottom}};
+							padding-left: {{value.left}};
+						}',
+					),
+					'active_callback'       => [ $this, 'is_boxed_title' ],
+				],
+				'\Neve\Customizer\Controls\React\Spacing'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_cover_boxed_title_background',
+				[
+					'sanitize_callback' => 'neve_sanitize_colors',
+					'default'           => 'var(--nv-dark-bg)',
+					'transport'         => $this->selective_refresh,
+				],
+				[
+					'label'                 => esc_html__( 'Section background', 'neve' ),
+					'section'               => $this->section,
+					'priority'              => 75,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'template' => '
+							.nv-title-meta-wrap.is-boxed {
+							   background-color: {{value}};
 						    }',
 
 					],
@@ -431,6 +627,18 @@ class Layout_Single_Post extends Base_Customizer {
 	}
 
 	/**
+	 *  Fuction used for active_callback control property for boxed title.
+	 *
+	 * @return bool
+	 */
+	public function is_boxed_title() {
+		if ( $this->is_cover_layout() ) {
+			return false;
+		}
+		return get_theme_mod( 'neve_post_cover_boxed_title', false );
+	}
+
+	/**
 	 * Sanitize the header layout control.
 	 *
 	 * @param string $input Control input.
@@ -441,6 +649,36 @@ class Layout_Single_Post extends Base_Customizer {
 		$header_layout_options = array( 'normal', 'cover' );
 		if ( ! in_array( $input, $header_layout_options, true ) ) {
 			return 'normal';
+		}
+		return $input;
+	}
+
+	/**
+	 * Sanitize blend mode option.
+	 *
+	 * @param string $input Control input.
+	 *
+	 * @return string
+	 */
+	public function sanitize_blend_mode( $input ) {
+		$blend_mode_options = [ 'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'saturation', 'color', 'difference', 'exclusion', 'hue', 'luminosity' ];
+		if ( ! in_array( $input, $blend_mode_options, true ) ) {
+			return 'normal';
+		}
+		return $input;
+	}
+
+	/**
+	 * Sanitize container option.
+	 *
+	 * @param string $input Control input.
+	 *
+	 * @return string
+	 */
+	public function sanitize_container( $input ) {
+		$container_options = [ 'full-width', 'contained' ];
+		if ( ! in_array( $input, $container_options, true ) ) {
+			return 'contained';
 		}
 		return $input;
 	}

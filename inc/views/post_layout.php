@@ -20,10 +20,14 @@ use Neve\Customizer\Options\Layout_Single_Post;
  */
 class Post_Layout extends Base_View {
 
-	const POST_COVER_HEIGHT           = 'neve_post_cover_height';
-	const POST_COVER_PADDING          = 'neve_post_cover_padding';
-	const POST_COVER_BACKGROUND_COLOR = 'neve_post_cover_background_color';
-	const POST_COVER_TEXT_COLOR       = 'neve_post_cover_text_color';
+	const POST_COVER_HEIGHT                 = 'neve_post_cover_height';
+	const POST_COVER_PADDING                = 'neve_post_cover_padding';
+	const POST_COVER_BACKGROUND_COLOR       = 'neve_post_cover_background_color';
+	const POST_COVER_OVERLAY_OPACITY        = 'neve_post_cover_overlay_opacity';
+	const POST_COVER_TEXT_COLOR             = 'neve_post_cover_text_color';
+	const POST_COVER_BLEND_MODE             = 'neve_post_cover_blend_mode';
+	const POST_COVER_BOXED_TITLE_PADDING    = 'neve_post_cover_boxed_title_padding';
+	const POST_COVER_BOXED_TITLE_BACKGROUND = 'neve_post_cover_boxed_title_background';
 
 	/**
 	 * Function that is run after instantiation.
@@ -225,11 +229,35 @@ class Post_Layout extends Base_View {
 		$position    = $this->get_alignment_classes( 'neve_post_title_position', Layout_Single_Post::post_title_position_default() );
 		$cover_style = $this->get_cover_style();
 
-		echo '<div class="nv-post-cover ' . esc_attr( $alignment ) . '" style="' . esc_attr( $cover_style ) . '">';
-		echo '<div class="container single-post-container ' . esc_attr( $position ) . '">';
-		echo '<div class="nv-title-meta-wrap">';
+		$container_classes = [
+			'nv-cover-container',
+			'single-post-container',
+			$position,
+		];
+		$container_mode    = get_theme_mod( 'neve_post_cover_container', 'contained' );
+		if ( $container_mode !== 'full-width' ) {
+			$container_classes[] = 'container';
+		}
+
+		$title_meta_wrap_classes = [
+			'nv-title-meta-wrap',
+		];
+		$title_mode              = get_theme_mod( 'neve_post_cover_boxed_title', true );
+		if ( $title_meta_wrap_classes ) {
+			$title_meta_wrap_classes[] = 'is-boxed';
+		}
+
+		echo '<div class="nv-post-cover ' . esc_attr( $alignment ) . '"';
+		if ( ! empty( $cover_style ) ) {
+			echo ' style="' . esc_attr( $cover_style ) . '"';
+		}
+		echo '>';
+		echo '<div class="nv-overlay"></div>';
+		echo '<div class="' . esc_attr( implode( ' ', $container_classes ) ) . '">';
+		echo '<div class="' . esc_attr( implode( ' ', $title_meta_wrap_classes ) ) . '">';
 		do_action( 'neve_before_post_title' );
 		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
+		self::render_post_meta();
 		echo '</div>';
 		echo '</div>';
 		echo '</div>';
@@ -277,7 +305,11 @@ class Post_Layout extends Base_View {
 	 * @return string
 	 */
 	private function get_cover_style() {
-		$cover_style = array();
+		$hide_thumbnail = get_theme_mod( 'neve_post_cover_hide_thumbnail', false );
+		if ( $hide_thumbnail ) {
+			return '';
+		}
+		$cover_style = [];
 
 		$post_thumbnail = get_the_post_thumbnail_url();
 		if ( ! empty( $post_thumbnail ) ) {
@@ -318,7 +350,7 @@ class Post_Layout extends Base_View {
 	 */
 	public function add_subscribers( $subscribers = [] ) {
 
-		$cover_padding_default                         = Layout_Single_Post::cover_padding_default();
+		$cover_padding_default                          = Layout_Single_Post::cover_padding_default();
 		$subscribers['body.single-post .nv-post-cover'] = [
 			Config::CSS_PROP_MIN_HEIGHT => [
 				Dynamic_Selector::META_KEY           => self::POST_COVER_HEIGHT,
@@ -327,18 +359,51 @@ class Post_Layout extends Base_View {
 				Dynamic_Selector::META_AS_JSON       => true,
 				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "300", "tablet": "300", "desktop": "300" }',
 			],
+			Config::CSS_PROP_COLOR      => [
+				Dynamic_Selector::META_KEY     => self::POST_COVER_TEXT_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
+			],
+		];
+
+		$subscribers['body.single-post .nv-post-cover .nv-overlay'] = [
 			Config::CSS_PROP_BACKGROUND_COLOR => [
 				Dynamic_Selector::META_KEY     => self::POST_COVER_BACKGROUND_COLOR,
 				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
 			],
+			Config::CSS_PROP_MIX_BLEND_MODE   => [
+				Dynamic_Selector::META_KEY     => self::POST_COVER_BLEND_MODE,
+				Dynamic_Selector::META_DEFAULT => 'overlay',
+			],
+			Config::CSS_PROP_OPACITY          => [
+				Dynamic_Selector::META_KEY           => self::POST_COVER_OVERLAY_OPACITY,
+				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+			],
+		];
+
+
+		$subscribers['body.single-post .nv-post-cover .nv-meta-list li, body.single-post .nv-post-cover .nv-meta-list a'] = [
 			Config::CSS_PROP_COLOR => [
 				Dynamic_Selector::META_KEY     => self::POST_COVER_TEXT_COLOR,
 				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
-			]
+			],
 		];
 
-		$subscribers['body.single-post .nv-post-cover .container'] = [
-			Config::CSS_PROP_PADDING    => [
+		$subscribers['.nv-title-meta-wrap.is-boxed'] = [
+			Config::CSS_PROP_PADDING          => [
+				Dynamic_Selector::META_KEY           => self::POST_COVER_BOXED_TITLE_PADDING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+				Dynamic_Selector::META_DEFAULT       => $cover_padding_default,
+			],
+			Config::CSS_PROP_BACKGROUND_COLOR => [
+				Dynamic_Selector::META_KEY     => self::POST_COVER_BOXED_TITLE_BACKGROUND,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
+			],
+		];
+
+		$subscribers['body.single-post .nv-post-cover .nv-cover-container'] = [
+			Config::CSS_PROP_PADDING => [
 				Dynamic_Selector::META_KEY           => self::POST_COVER_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',

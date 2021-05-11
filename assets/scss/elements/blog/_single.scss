@@ -104,6 +104,18 @@
 .nv-post-cover {
   margin-bottom: $spacing-sm;
   display: flex;
+  position: relative;
+  .nv-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+  }
+  .nv-cover-container {
+	z-index: 1;
+  }
+  .nv-title-meta-wrap {
+	display: inline-block;
+  }
 }
 
 .mobile-top {
