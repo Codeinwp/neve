@@ -1,3 +1,17 @@
+##### [Version 2.11.2](https://github.com/Codeinwp/neve/compare/v2.11.1...v2.11.2) (2021-04-28)
+
+- [Fix] Dropdowns (input select) in specific widgets do not respect global form styles
+- [Fix] Wrong text color inheritance in group blocks with color settings
+- [Fix] Cart icon opening behavior when positioned on the left side of header
+- [Fix] Improve accessibility for external links in the Neve page and customizer
+- [Fix] Color Picker Modal remains open even after switching Color Palettes
+- [Fix] Increase Templates Cloud visibility on Neve options page
+- [Fix] Infinite scroll loads posts of incorrect language
+- [Feat] Add global color as presets in beaver builder
+- [Feat] Ignore lazyload on above the fold images 
+- [Feat] implement next page links for infinite scroll
+- [Feat] Adds compatibility for meta association on template import/export for Neve Cloud
+
 ##### [Version 2.11.1](https://github.com/Codeinwp/neve/compare/v2.11.0...v2.11.1) (2021-04-13)
 
 - [Fix] Fatal error caused by the removal of some global functions
