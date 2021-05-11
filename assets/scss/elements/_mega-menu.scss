@@ -157,7 +157,7 @@
 @mixin mega-menu--laptop() {
 	.header--row .nv-nav-wrap .primary-menu-ul {
 		> .neve-mega-menu {
-			position: static;
+			position: relative;
 		}
 
 		.neve-mega-menu > .sub-menu {
