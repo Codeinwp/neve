@@ -53,6 +53,11 @@ input, textarea, select, button {
 
 select {
   min-height: 35px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding: 3px 48px 3px 10px;
+  background: no-repeat url('/wp-includes/images/down_arrow.gif') 95% 50%;
 }
 
 label {
