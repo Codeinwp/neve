@@ -53,17 +53,17 @@ h6 {
 	font-size: 16px;
 	font-weight: normal;
 	font-family: $default-font-family;
-	line-height: $line-height-base;
+  	color: var(--nv-text-color);
+  	line-height: $line-height-base;
 	text-transform: none;
 	letter-spacing: normal;
 
+	&.has-text-color .wp-block {
+	  color: inherit;
+	}
+
   	&.wp-block-group.has-background {
 	  padding: 0;
-	}
-	&:not(.wp-block-group.has-text-color){
-	  .wp-block{
-		color: var(--nv-text-color);
-	  }
 	}
 
   	&.components-placeholder {
