@@ -1,3 +1,4 @@
+import { useState } from '@wordpress/element';
 import Item from './Item';
 import { Button } from '@wordpress/components';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
@@ -19,6 +20,7 @@ const SortableItem = SortableElement(
 		changeVisibility,
 		removeFields,
 		changeColor,
+		getFieldData,
 	}) => {
 		// console.log("index", index); // undefined -- WHY??!
 		// Therefore, I decided to send another prop to keep the index value = idx
@@ -33,12 +35,16 @@ const SortableItem = SortableElement(
 				changeVisibility={changeVisibility}
 				removeFields={removeFields}
 				changeColor={changeColor}
+				fieldData={getFieldData}
 			/>
 		);
 	}
 );
 
 const Customizer = ({ value, setValue, fields }) => {
+	const [index, getIndex] = useState();
+	const [field, setField] = useState();
+
 	const handleSortEnd = ({ oldIndex, newIndex }) => {
 		setValue(arrayMove(value, oldIndex, newIndex));
 	};
@@ -84,15 +90,20 @@ const Customizer = ({ value, setValue, fields }) => {
 
 	const removeFields = (idx) => {
 		const valueAfterRemoved = [...value];
-		const index = valueAfterRemoved.indexOf(valueAfterRemoved[idx]);
-		valueAfterRemoved.splice(index, 1);
+		const i = valueAfterRemoved.indexOf(valueAfterRemoved[idx]);
+		valueAfterRemoved.splice(i, 1);
 		setValue(valueAfterRemoved);
 	};
 
-	const changeColor = (value) => {
-		// const nextValue = [...value];
-		console.log(value);
-		return true;
+	const getFieldData = (idx, fieldInfo) => {
+		getIndex(idx);
+		setField(fieldInfo);
+	};
+
+	const changeColor = (val) => {
+		const nextValue = [...value];
+		nextValue[index][field] = val;
+		setValue(nextValue);
 	};
 
 	return (
@@ -117,6 +128,7 @@ const Customizer = ({ value, setValue, fields }) => {
 							changeVisibility={changeVisibility}
 							removeFields={removeFields}
 							changeColor={changeColor}
+							getFieldData={getFieldData}
 						/>
 					);
 				})}
