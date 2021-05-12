@@ -161,7 +161,10 @@ class Frontend extends Generator {
 				'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
 			],
 			Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_TYPEFACE_GENERAL . '.textTransform',
-			Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_GENERAL,
+			Config::CSS_PROP_FONT_FAMILY    => [
+				Dynamic_Selector::META_KEY     => Config::MODS_FONT_GENERAL,
+				Dynamic_Selector::META_DEFAULT => neve_get_default( Config::MODS_FONT_GENERAL ),
+			],
 		];
 		foreach ( neve_get_headings_selectors() as $id => $heading_selector
 		) {

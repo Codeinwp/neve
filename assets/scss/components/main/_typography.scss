@@ -8,9 +8,9 @@ html {
 body {
   background-color: var(--nv-site-bg);
   color: var(--nv-text-color);
-  font-size: $html-font-size;
-  line-height: $line-height-base;
-  font-family: $default-font-family;
+  font-size: $body-size;
+  line-height: $line-height;
+  font-family: $font-family;
   overflow-x: hidden;
   direction: ltr;
 }
@@ -18,18 +18,17 @@ body {
 h1, h2, h3, h4, h5, h6 {
   text-transform: none;
   letter-spacing: 0;
-  line-height: $line-height-base;
-  margin-bottom: $headings-margin-bottom;
-  font-weight: $headings-font-weight;
+  margin-bottom: $h-margin-bottom;
+  font-weight: $h-font-weight;
 }
 
 p {
-  margin-bottom: $paragraph-margin-bottom;
+  margin-bottom: $p-margin-bottom;
 }
 
 a {
-  cursor: pointer;
   color: var(--nv-primary-accent);
+  cursor: pointer;
   text-decoration: none;
 
   &:hover,
@@ -42,47 +41,67 @@ ins {
   text-decoration: none;
 }
 
-//h1 {
-//  font-size: $h1-mobile-font-size;
-//}
-//
-//h2 {
-//  font-size: $h2-mobile-font-size;
-//}
-//
-//h3 {
-//  font-size: $h3-mobile-font-size;
-//}
-//
-//h4 {
-//  font-size: $h4-mobile-font-size;
-//}
-//
-//h5 {
-//  font-size: $h5-mobile-font-size;
-//}
-//
-//h6 {
-//  font-size: $h6-mobile-font-size;
-//}
+h1 {
+  font-size: $h1-mobile-size;
+}
+
+h2 {
+  font-size: $h2-mobile-size;
+}
+
+h3 {
+  font-size: $h3-mobile-size;
+}
+
+h4 {
+  font-size: $h4-mobile-size;
+}
+
+h5 {
+  font-size: $h5-mobile-size;
+}
+
+h6 {
+  font-size: $h6-mobile-size;
+}
 
 @mixin typography--tablet() {
-  //h1 {
-  //  font-size: $h1-font-size;
-  //}
-  //h2 {
-  //  font-size: $h2-font-size;
-  //}
-  //h3 {
-  //  font-size: $h3-font-size;
-  //}
-  //h4 {
-  //  font-size: $h4-font-size;
-  //}
-  //h5 {
-  //  font-size: $h5-font-size;
-  //}
-  //h6 {
-  //  font-size: $h6-font-size;
-  //}
+  h1 {
+    font-size: $h1-tablet-size;
+  }
+  h2 {
+    font-size: $h2-tablet-size;
+  }
+  h3 {
+    font-size: $h3-tablet-size;
+  }
+  h4 {
+    font-size: $h4-tablet-size;
+  }
+  h5 {
+    font-size: $h5-tablet-size;
+  }
+  h6 {
+    font-size: $h6-tablet-size;
+  }
+}
+@mixin typography--laptop() {
+  h1 {
+    font-size: $h1-size;
+  }
+  h2 {
+    font-size: $h2-size;
+  }
+  h3 {
+    font-size: $h3-size;
+  }
+  h4 {
+    font-size: $h4-size;
+  }
+  h5 {
+    font-size: $h5-size;
+  }
+  h6 {
+    font-size: $h6-size;
+  }
 }

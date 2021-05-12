@@ -9,17 +9,31 @@
 @import "components/main/a11y";
 @import "components/main/neve-icons";
 @import "components/main/gutenberg";
-//
+@import "components/main/global-colors";
 @import "components/elements/navigation";
 @import "components/elements/page";
-//@import "components/elements/form-elements";
-//@import "components/elements/blog";
-//@import "components/elements/content";
-//@import "components/elements/gallery";
-//@import "components/elements/sidebar";
-//@import "components/elements/breadcrumbs";
-//@import "components/elements/hfg-alignments";
-//@import "components/main/media-queries";
-//@import "components/compat/elementor";
-//
+@import "components/elements/form-elements";
+@import "components/elements/blog";
+@import "components/elements/content";
+@import "components/elements/gallery";
+@import "components/elements/sidebar";
+@import "components/elements/breadcrumbs";
+@import "components/elements/hfg-alignments";
+@import "components/main/media-queries";
+@import "components/compat/elementor";
+
 @import "./components/hfg/style";
+//
+//:root {
+//  --nv-body-bg: #ccc;
+//}
+//
+//@media (min-width: #{$laptop}) {
+//  :root {
+//	--nv-body-bg: red;
+//  };
+//}
+//
+//body {
+//  background: var(--nv-body-bg);
+//}

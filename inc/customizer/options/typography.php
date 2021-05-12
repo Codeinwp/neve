@@ -138,13 +138,13 @@ class Typography extends Base_Customizer {
 		/**
 		 * Body font family
 		 */
-
 		$this->add_control(
 			new Control(
 				'neve_body_font_family',
 				[
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
+					'default'           => neve_get_default( 'neve_body_font_family' ),
 				],
 				[
 					'label'                 => esc_html__( 'Body', 'neve' ),
