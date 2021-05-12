@@ -102,17 +102,17 @@ const Start = (props) => {
 						icon={neveDash.assets + 'template-cloud.svg'}
 						title="Templates Cloud"
 						description={__(
-							'Import professional page templates or sections with one click and have a website running in seconds.',
+							'Boost productivity and speed up your workflow by saving all your designs and share them automatically to all your sites in 1-click.',
 							'neve'
 						)}
 					>
 						{tier !== 3 && (
-							<ExternalLink href="https://themeisle.com/themes/neve/#pricing">
+							<ExternalLink href="https://docs.themeisle.com/article/1354-neve-template-cloud-library">
 								{__('Discover Templates Cloud', 'neve')}
 							</ExternalLink>
 						)}
 						{tier === 3 && (
-							<ExternalLink href="https://docs.themeisle.com/article/1091-starter-sites-available-for-import#my-library">
+							<ExternalLink href="https://docs.themeisle.com/article/1354-neve-template-cloud-library">
 								{__('Learn how to use Templates Cloud', 'neve')}
 							</ExternalLink>
 						)}
