@@ -26,14 +26,20 @@ describe('AMP Check', function () {
 
 	it.only('Checks the search box from the menu', function () {
 		cy.visit('/?amp');
-		cy.get('.header-top.hide-on-mobile > .header--row-inner > .container > .row > .right > .builder-item > .item--inner > .component-wrap > .widget > .search-form > .search-submit').as('navSearchButton');
+		cy.get(
+			'.header-top.hide-on-mobile > .header--row-inner > .container > .row > .right > .builder-item > .item--inner > .component-wrap > .widget > .search-form > .search-submit',
+		).as('navSearchButton');
 
-		cy.get('.header-top.hide-on-mobile > .header--row-inner > .container > .row > .right > .builder-item > .item--inner > .component-wrap > .widget > .search-form > label > .search-field').as('navSearchForm').should('be.visible');
+		cy.get(
+			'.header-top.hide-on-mobile > .header--row-inner > .container > .row > .right > .builder-item > .item--inner > .component-wrap > .widget > .search-form > label > .search-field',
+		)
+			.as('navSearchForm')
+			.should('be.visible');
 
 		cy.get('@navSearchForm').should('have.css', 'opacity', '1');
 
-		cy.get('@navSearchForm').click()
-	
+		cy.get('@navSearchForm').click();
+
 		cy.get('@navSearchForm').should('have.focus').type('Hello');
 		cy.get('@navSearchButton').click();
 		cy.url().should('include', '/?s=Hello');
