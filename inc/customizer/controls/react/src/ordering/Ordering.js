@@ -33,8 +33,8 @@ const Item = ({
 	slug,
 	onToggle,
 	className,
-	allowsToggle = true,
-	disabled = false,
+  allowsToggle = true,
+  disabled = false
 }) => {
 	return (
 		<div
@@ -70,7 +70,7 @@ Item.propTypes = {
 	slug: PropTypes.string.isRequired,
 	onToggle: PropTypes.func.isRequired,
 	className: PropTypes.string,
-	disabled: PropTypes.bool,
+	disabled: PropTypes.bool
 };
 
 const SortableItem = SortableElement(Item);
@@ -81,8 +81,9 @@ const Ordering = ({
 	label,
 	value,
 	allowsToggle = true,
+	orderHeaderElements,
 }) => {
-	console.log( value );
+
 	const disabled = Object.keys(components).filter(
 		(item) => !value.includes(item)
 	);
@@ -125,6 +126,7 @@ const Ordering = ({
 								slug={slug}
 								onToggle={handleToggle}
 								allowsToggle={allowsToggle}
+								orderHeaderElements={orderHeaderElements}
 							/>
 						)
 				)}
