@@ -37,6 +37,7 @@ const ResponsiveToggleComponent = ({ control }) => {
 			/>
 			<ResponsiveControl
 				excluded={control.params.excluded || []}
+				hideResponsive={control.params.hideResponsive || false}
 				onChange={(nextDevice) => {
 					setDevice(nextDevice);
 				}}

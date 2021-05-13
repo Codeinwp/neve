@@ -99,7 +99,10 @@ class Dynamic_Css {
 	public function add_customize_vars_tag() {
 		wp_register_style( 'nv-css-vars', false );
 		wp_enqueue_style( 'nv-css-vars' );
-		wp_add_inline_style( 'nv-css-vars', self::minify_css(':root{' . $this->get_css_vars() . '}' ) );
+
+		$css = ':root{' . $this->get_css_vars() . '}';
+		$css .= apply_filters( 'neve_after_css_root', $css );
+		wp_add_inline_style( 'nv-css-vars', self::minify_css($css ) );
 	}
 
 	/**
@@ -114,6 +117,8 @@ class Dynamic_Css {
 		$css .= $this->get_fallback_font();
 
 		$css .= '}';
+
+		$css .= apply_filters( 'neve_after_css_root', $css );
 
 		return self::minify_css($css);
 	}
