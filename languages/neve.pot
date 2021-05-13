@@ -546,6 +546,7 @@ msgid "Cart Icon"
 msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:116
+#: header-footer-grid/Core/Components/PaletteSwitch.php:315
 #: header-footer-grid/Core/Components/SearchResponsive.php:154
 msgid "Icon Size"
 msgstr ""
@@ -713,6 +714,46 @@ msgstr ""
 #: header-footer-grid/templates/components/component-nav-footer.php:23
 #: inc/core/front_end.php:73
 msgid "Footer Menu"
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:67
+msgid "Palette Switch"
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:253
+msgid "Light Palette"
+msgstr ""
+
+#. translators: %s: Link to Edit global color customizer.
+#: header-footer-grid/Core/Components/PaletteSwitch.php:255
+msgid "The base palette is used for light mode. %1$sEdit color palettes%2$s."
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:268
+#: header-footer-grid/Core/Components/PaletteSwitch.php:269
+msgid "Dark Palette"
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:289
+#: header-footer-grid/Core/Components/PaletteSwitch.php:290
+msgid "Select icon"
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:346
+msgid "Label"
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:349
+msgid "Leave blank for no label ..."
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:366
+msgid "Automatically adjust color scheme"
+msgstr ""
+
+#. translators: %s: Link to Learn More page. TODO: add link
+#: header-footer-grid/Core/Components/PaletteSwitch.php:368
+msgid "Adjust default color scheme based on the user device preferences. %1$sLearn More%2$s."
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:42
@@ -2109,6 +2150,7 @@ msgstr ""
 
 #: inc/admin/metabox/src/components/controls/SortableItems.js:26
 #: inc/admin/metabox/src/components/controls/SortableItems.js:96
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:145
 msgid "Toggle"
 msgstr ""
 
@@ -2459,6 +2501,18 @@ msgstr ""
 
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:130
 msgid "Style 6"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:137
+msgid "Contrast"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:141
+msgid "Night"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:149
+msgid "Accessibility"
 msgstr ""
 
 #: inc/customizer/controls/react/src/typeface/Typeface.js:79
