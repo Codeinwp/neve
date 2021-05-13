@@ -82,6 +82,7 @@ const Ordering = ({
 	value,
 	allowsToggle = true,
 }) => {
+	console.log( value );
 	const disabled = Object.keys(components).filter(
 		(item) => !value.includes(item)
 	);

@@ -51,38 +51,10 @@ class Post_Layout extends Base_View {
 			return;
 		}
 
-		$default_order = apply_filters(
-			'neve_single_post_elements_default_order',
-			array(
-				'title-meta',
-				'thumbnail',
-				'content',
-				'tags',
-				'comments',
-			)
-		);
-
-		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
-		if ( ! is_string( $content_order ) ) {
-			$content_order = wp_json_encode( $default_order );
+		$content_order = $this->get_content_order();
+		if ( empty( $content_order ) ) {
+			return;
 		}
-		$content_order = json_decode( $content_order, true );
-		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
-			$title_key = array_search( 'title-meta', $content_order, true );
-			if ( $title_key !== false ) {
-				unset( $content_order[ $title_key ] );
-			}
-		}
-
-		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'featured-image' ) !== true || ! has_post_thumbnail() ) {
-			$thumb_index = array_search( 'thumbnail', $content_order, true );
-			if ( $thumb_index !== false ) {
-				unset( $content_order[ $thumb_index ] );
-			}
-		}
-
-		$content_order = apply_filters( 'neve_layout_single_post_elements_order', $content_order );
-
 
 		/** This filter is documented in header-footer-grid/templates/components/component-logo.php */
 		$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', true );
@@ -93,10 +65,6 @@ class Post_Layout extends Base_View {
 			if ( $thumbnail_index < $content_index ) {
 				$skip_lazy_class = 'skip-lazy';
 			}
-		}
-
-		if ( empty( $content_order ) ) {
-			return;
 		}
 
 		$content_order_length = count( $content_order );
@@ -136,6 +104,9 @@ class Post_Layout extends Base_View {
 					do_action( 'neve_do_tags' );
 					break;
 				case 'title':
+					if ( $header_layout !== 'normal' ) {
+						break;
+					}
 					if ( $index !== $content_order_length - 1 && $content_order[ $index + 1 ] === 'meta' ) {
 						$this->render_entry_header();
 						break;
@@ -143,6 +114,9 @@ class Post_Layout extends Base_View {
 					$this->render_entry_header( false );
 					break;
 				case 'meta':
+					if ( $header_layout !== 'normal' ) {
+						break;
+					}
 					if ( $index !== 0 && $content_order[ $index - 1 ] === 'title' ) {
 						break;
 					}
@@ -242,8 +216,8 @@ class Post_Layout extends Base_View {
 		$title_meta_wrap_classes = [
 			'nv-title-meta-wrap',
 		];
-		$title_mode              = get_theme_mod( 'neve_post_cover_boxed_title', true );
-		if ( $title_meta_wrap_classes ) {
+		$title_mode              = get_theme_mod( 'neve_post_cover_boxed_title', false );
+		if ( $title_mode ) {
 			$title_meta_wrap_classes[] = 'is-boxed';
 		}
 
@@ -339,6 +313,45 @@ class Post_Layout extends Base_View {
 				array_keys( $array )
 			)
 		);
+	}
+
+	/**
+	 * Get elements order.
+	 *
+	 * @return array
+	 */
+	private function get_content_order() {
+		$default_order = apply_filters(
+			'neve_single_post_elements_default_order',
+			array(
+				'title-meta',
+				'thumbnail',
+				'content',
+				'tags',
+				'comments',
+			)
+		);
+
+		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
+		if ( ! is_string( $content_order ) ) {
+			$content_order = wp_json_encode( $default_order );
+		}
+		$content_order = json_decode( $content_order, true );
+		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
+			$title_key = array_search( 'title-meta', $content_order, true );
+			if ( $title_key !== false ) {
+				unset( $content_order[ $title_key ] );
+			}
+		}
+
+		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'featured-image' ) !== true || ! has_post_thumbnail() ) {
+			$thumb_index = array_search( 'thumbnail', $content_order, true );
+			if ( $thumb_index !== false ) {
+				unset( $content_order[ $thumb_index ] );
+			}
+		}
+
+		return apply_filters( 'neve_layout_single_post_elements_order', $content_order );
 	}
 
 	/**
