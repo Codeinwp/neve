@@ -751,7 +751,7 @@ msgstr ""
 msgid "Automatically adjust color scheme"
 msgstr ""
 
-#. translators: %s: Link to Learn More page. TODO: add link
+#. translators: %s: Link to Learn More page.
 #: header-footer-grid/Core/Components/PaletteSwitch.php:368
 msgid "Adjust default color scheme based on the user device preferences. %1$sLearn More%2$s."
 msgstr ""
