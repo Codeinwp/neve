@@ -33,6 +33,7 @@ a {
 
   &:hover,
   &:focus {
+	opacity: .9;
 	color: var(--nv-secondary-accent);
   }
 }

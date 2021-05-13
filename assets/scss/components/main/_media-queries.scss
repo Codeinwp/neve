@@ -20,7 +20,7 @@
   //@include nav-search--laptop();
   //@include blog-layout-default-alt--laptop();
   //@include blogpost-index--laptop();
-  //@include page--laptop();
+  @include page--laptop();
   @include typography--laptop();
   @include sidebar--laptop();
   @include hfg-alignments--laptop();

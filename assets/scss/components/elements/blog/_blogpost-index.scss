@@ -3,12 +3,6 @@
 
   a {
     color: var(--nv-text-color);
-
-    &:hover,
-    &:focus {
-      opacity: .9;
-      color: var(--nv-text-color);
-    }
   }
 }
 
@@ -64,9 +58,7 @@
 }
 
 .nv-index-posts .posts-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  box-sizing: content-box;
+  display: grid;
 }
 
 .nv-index-posts .page-numbers {
