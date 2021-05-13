@@ -99,3 +99,11 @@ $desktop: map-get($gl-devices-list, desktop);
 	grid-template-columns: 1fr;
   }
 }
+
+// Fixes for background, overlays and vertical alignments
+[class*=--row-inner] {
+  position: relative;
+  .container, .row {
+	height: 100%;
+  }
+}

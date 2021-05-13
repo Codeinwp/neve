@@ -232,7 +232,9 @@ window.addEventListener('load', function () {
 									.querySelector('.header-menu-sidebar')
 									.classList.contains('dropdown')
 							) {
-								style += 'position: absolute;';
+								style += neveCustomizePreview.newBuilder
+									? ''
+									: 'position: absolute;';
 							}
 							style +=
 								'top: 0; bottom: 0; width: 100%; content:"";';
