@@ -34,6 +34,9 @@ const Slot: React.FC<Props> = ({ items, slotId, rowId, className }) => {
 	});
 
 	const addItemToSlot = (itemId: string) => {
+		const itemSection =
+			window.NeveReactCustomize.HFG[builder].items[itemId].section;
+		window.wp.customize.section(itemSection).focus();
 		const nextItems = [...items];
 		nextItems.push({ id: itemId });
 		updateLayout(rowId, slotId, nextItems);
