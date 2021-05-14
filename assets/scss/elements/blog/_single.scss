@@ -114,7 +114,12 @@
 	z-index: 1;
   }
   .nv-title-meta-wrap {
-	display: inline-block;
+	display: inline-flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	&.reversed{
+	  flex-direction: column-reverse;
+	}
   }
 }
 

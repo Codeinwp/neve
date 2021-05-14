@@ -66,11 +66,11 @@ class Layout_Single_Post extends Base_Customizer {
 			'header_layout' => array(
 				'title'            => esc_html__( 'Header Layout', 'neve' ),
 				'priority'         => 1,
-				'controls_to_wrap' => 14,
+				'controls_to_wrap' => 16,
 			),
 			'page_elements' => array(
 				'title'            => esc_html__( 'Page elements', 'neve' ),
-				'priority'         => 16,
+				'priority'         => 17,
 				'controls_to_wrap' => 1,
 			),
 		);
@@ -131,20 +131,19 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'sanitize_callback' => 'neve_sanitize_range_value',
 					'transport'         => $this->selective_refresh,
-					'default'           => '{ "mobile": "300", "tablet": "300", "desktop": "300" }',
+					'default'           => '{ "mobile": 400, "tablet": 400, "desktop": 400 }',
 				],
 				[
 					'label'                 => esc_html__( 'Cover height', 'neve' ),
 					'section'               => $this->section,
 					'type'                  => 'neve_responsive_range_control',
 					'input_attrs'           => [
-						'min'        => 50,
 						'max'        => 700,
 						'units'      => [ 'px', 'vh' ],
 						'defaultVal' => [
-							'mobile'  => 300,
-							'tablet'  => 300,
-							'desktop' => 300,
+							'mobile'  => 400,
+							'tablet'  => 400,
+							'desktop' => 400,
 							'suffix'  => array(
 								'mobile'  => 'px',
 								'tablet'  => 'px',
@@ -301,6 +300,24 @@ class Layout_Single_Post extends Base_Customizer {
 
 		$this->add_control(
 			new Control(
+				'neve_post_cover_meta_before_title',
+				[
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => false,
+				],
+				[
+					'label'           => esc_html__( 'Display meta before title', 'neve' ),
+					'section'         => $this->section,
+					'type'            => 'neve_toggle_control',
+					'priority'        => 7,
+					'active_callback' => [ $this, 'is_cover_layout' ],
+				],
+				'Neve\Customizer\Controls\Checkbox'
+			)
+		);
+
+		$this->add_control(
+			new Control(
 				'neve_post_cover_background_color',
 				[
 					'sanitize_callback' => 'neve_sanitize_colors',
@@ -310,7 +327,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Overlay color', 'neve' ),
 					'section'               => $this->section,
-					'priority'              => 7,
+					'priority'              => 8,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
@@ -336,7 +353,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Text color', 'neve' ),
 					'section'               => $this->section,
-					'priority'              => 8,
+					'priority'              => 9,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
@@ -358,7 +375,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'sanitize_callback' => 'neve_sanitize_range_value',
 					'transport'         => $this->selective_refresh,
-					'default'           => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+					'default'           => '{ "mobile": 0.5, "tablet": 0.5, "desktop": 0.5 }',
 				],
 				[
 					'label'                 => esc_html__( 'Overlay opacity', 'neve' ),
@@ -374,7 +391,7 @@ class Layout_Single_Post extends Base_Customizer {
 						],
 						'step'       => 0.1,
 					],
-					'priority'              => 9,
+					'priority'              => 10,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'responsive' => true,
@@ -400,7 +417,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'label'           => esc_html__( 'Hide featured image', 'neve' ),
 					'section'         => $this->section,
 					'type'            => 'neve_toggle_control',
-					'priority'        => 10,
+					'priority'        => 11,
 					'active_callback' => [ $this, 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\Checkbox'
@@ -411,14 +428,14 @@ class Layout_Single_Post extends Base_Customizer {
 			new Control(
 				'neve_post_cover_blend_mode',
 				[
-					'default'           => 'overlay',
+					'default'           => 'normal',
 					'sanitize_callback' => array( $this, 'sanitize_blend_mode' ),
 					'transport'         => $this->selective_refresh,
 				],
 				[
 					'label'                 => esc_html__( 'Blend mode', 'neve' ),
 					'section'               => $this->section,
-					'priority'              => 11,
+					'priority'              => 12,
 					'type'                  => 'select',
 					'choices'               => [
 						'normal'      => esc_html__( 'Normal', 'neve' ),
@@ -458,7 +475,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'label'           => esc_html__( 'Cover container', 'neve' ),
 					'section'         => $this->section,
-					'priority'        => 12,
+					'priority'        => 13,
 					'type'            => 'select',
 					'choices'         => [
 						'contained'  => esc_html__( 'Contained', 'neve' ),
@@ -480,7 +497,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'label'           => esc_html__( 'Boxed title', 'neve' ),
 					'section'         => $this->section,
 					'type'            => 'neve_toggle_control',
-					'priority'        => 13,
+					'priority'        => 14,
 					'active_callback' => [ $this, 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\Checkbox'
@@ -502,7 +519,7 @@ class Layout_Single_Post extends Base_Customizer {
 						'units' => [ 'em', 'px' ],
 					],
 
-					'priority'              => 14,
+					'priority'              => 15,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => array(
 						'responsive'  => true,
@@ -532,7 +549,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Section background', 'neve' ),
 					'section'               => $this->section,
-					'priority'              => 15,
+					'priority'              => 16,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
@@ -552,28 +569,40 @@ class Layout_Single_Post extends Base_Customizer {
 	 * Add content order control.
 	 */
 	private function control_content_order() {
-		$order_default_components = apply_filters(
-			'neve_single_post_elements_default_order',
-			array(
-				'title-meta',
-				'thumbnail',
+
+		$default_components = array(
+			'title-meta',
+			'thumbnail',
+			'content',
+			'tags',
+			'comments',
+		);
+
+		$all_components = array(
+			'title-meta'      => __( 'Title & Meta', 'neve' ),
+			'thumbnail'       => __( 'Thumbnail', 'neve' ),
+			'content'         => __( 'Content', 'neve' ),
+			'tags'            => __( 'Tags', 'neve' ),
+			'post-navigation' => __( 'Post navigation', 'neve' ),
+			'comments'        => __( 'Comments', 'neve' ),
+		);
+
+		if ( $this->is_cover_layout() ) {
+			$default_components = array(
 				'content',
 				'tags',
 				'comments',
-			)
-		);
-
-		$components = apply_filters(
-			'neve_single_post_elements',
-			array(
-				'title-meta'      => __( 'Title & Meta', 'neve' ),
-				'thumbnail'       => __( 'Thumbnail', 'neve' ),
+			);
+			$all_components     = array(
 				'content'         => __( 'Content', 'neve' ),
 				'tags'            => __( 'Tags', 'neve' ),
 				'post-navigation' => __( 'Post navigation', 'neve' ),
 				'comments'        => __( 'Comments', 'neve' ),
-			)
-		);
+			);
+		}
+
+		$order_default_components = apply_filters( 'neve_single_post_elements_default_order', $default_components );
+		$components               = apply_filters( 'neve_single_post_elements', $all_components );
 
 		$this->add_control(
 			new Control(
@@ -698,22 +727,22 @@ class Layout_Single_Post extends Base_Customizer {
 	public static function cover_padding_default() {
 		return [
 			'mobile'       => [
-				'top'    => 20,
-				'right'  => 0,
-				'bottom' => 20,
-				'left'   => 0,
+				'top'    => 40,
+				'right'  => 15,
+				'bottom' => 40,
+				'left'   => 15,
 			],
 			'tablet'       => [
-				'top'    => 40,
-				'right'  => 0,
-				'bottom' => 40,
-				'left'   => 0,
+				'top'    => 60,
+				'right'  => 15,
+				'bottom' => 60,
+				'left'   => 15,
 			],
 			'desktop'      => [
 				'top'    => 60,
-				'right'  => 0,
+				'right'  => 15,
 				'bottom' => 60,
-				'left'   => 0,
+				'left'   => 15,
 			],
 			'mobile-unit'  => 'px',
 			'tablet-unit'  => 'px',
@@ -742,9 +771,9 @@ class Layout_Single_Post extends Base_Customizer {
 	 */
 	public static function post_title_position_default() {
 		return [
-			'mobile'  => 'middle',
-			'tablet'  => 'middle',
-			'desktop' => 'middle',
+			'mobile'  => 'bottom',
+			'tablet'  => 'bottom',
+			'desktop' => 'bottom',
 		];
 	}
 }

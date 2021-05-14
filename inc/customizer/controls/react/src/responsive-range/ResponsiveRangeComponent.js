@@ -95,7 +95,7 @@ const ResponsiveRangeComponent = ({ control }) => {
 		control.setting.set(JSON.stringify(nextValue));
 	};
 
-	let displayValue = parseInt(value[currentDevice]);
+	let displayValue = parseFloat(value[currentDevice]);
 	displayValue =
 		displayValue === 0 ? 0 : displayValue || defaultVal.currentDevice;
 

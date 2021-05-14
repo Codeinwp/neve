@@ -25,15 +25,15 @@ const OrderingComponent = ({ control }) => {
 			(customizeControl) => {
 				customizeControl.setting.bind((nextVal) => {
 					let newVal = maybeParseJson(control.setting.get());
-					const titleMetaIndex = newVal.indexOf( 'title-meta' );
-					const thumbnailIndex = newVal.indexOf( 'thumbnail' );
-
+					let titleMetaIndex, thumbnailIndex;
 					switch(nextVal) {
 						case 'cover':
+							titleMetaIndex = newVal.indexOf( 'title-meta' );
 							if ( titleMetaIndex !== -1 ){
 								newVal.splice( titleMetaIndex, 1 );
 							}
 
+							thumbnailIndex = newVal.indexOf( 'thumbnail' );
 							if ( thumbnailIndex !== -1 ){
 								newVal.splice( thumbnailIndex, 1 );
 							}
@@ -42,18 +42,23 @@ const OrderingComponent = ({ control }) => {
 							delete components['thumbnail'];
 							break;
 						case 'normal':
-							if ( thumbnailIndex === -1 ){
-								newVal = ['thumbnail'].concat(newVal);
-							}
-							if ( titleMetaIndex === -1 ){
-								newVal = ['title-meta'].concat(newVal);
-							}
 							if ( !components['title-meta'] ) {
 								components['title-meta'] = __( 'Title & Meta', 'neve' );
 							}
 							if ( !components['thumbnail'] ) {
 								components['thumbnail'] = __( 'Thumbnail', 'neve' );
 							}
+
+							thumbnailIndex = newVal.indexOf( 'thumbnail' );
+							if ( thumbnailIndex === -1 ){
+								newVal = ['thumbnail'].concat(newVal);
+							}
+
+							titleMetaIndex = newVal.indexOf( 'title-meta' );
+							if ( titleMetaIndex === -1 ){
+								newVal = ['title-meta'].concat(newVal);
+							}
+
 							break;
 					}
 

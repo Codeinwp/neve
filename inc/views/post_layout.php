@@ -220,6 +220,10 @@ class Post_Layout extends Base_View {
 		if ( $title_mode ) {
 			$title_meta_wrap_classes[] = 'is-boxed';
 		}
+		$meta_before = get_theme_mod( 'neve_post_cover_meta_before_title', false );
+		if ( $meta_before ) {
+			$title_meta_wrap_classes[] = 'reversed';
+		}
 
 		echo '<div class="nv-post-cover ' . esc_attr( $alignment ) . '"';
 		if ( ! empty( $cover_style ) ) {
@@ -385,11 +389,11 @@ class Post_Layout extends Base_View {
 			],
 			Config::CSS_PROP_MIX_BLEND_MODE   => [
 				Dynamic_Selector::META_KEY     => self::POST_COVER_BLEND_MODE,
-				Dynamic_Selector::META_DEFAULT => 'overlay',
+				Dynamic_Selector::META_DEFAULT => 'normal',
 			],
 			Config::CSS_PROP_OPACITY          => [
 				Dynamic_Selector::META_KEY           => self::POST_COVER_OVERLAY_OPACITY,
-				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 0.5, "tablet": 0.5, "desktop": 0.5 }',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 			],
 		];

@@ -302,7 +302,7 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:310
 #: inc/admin/metabox/main.php:38
 #: inc/customizer/options/layout_container.php:133
-#: inc/customizer/options/layout_single_post.php:458
+#: inc/customizer/options/layout_single_post.php:481
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:182
 msgid "Contained"
 msgstr ""
@@ -457,7 +457,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
 #: inc/customizer/options/layout_sidebar.php:129
-#: inc/customizer/options/layout_single_post.php:218
+#: inc/customizer/options/layout_single_post.php:222
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:153
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:108
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:45
@@ -466,13 +466,13 @@ msgid "Left"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:469
-#: inc/customizer/options/layout_single_post.php:222
+#: inc/customizer/options/layout_single_post.php:226
 msgid "Center"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
 #: inc/customizer/options/layout_sidebar.php:133
-#: inc/customizer/options/layout_single_post.php:226
+#: inc/customizer/options/layout_single_post.php:230
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:155
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:106
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:43
@@ -503,7 +503,7 @@ msgid "Typography"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:865
-#: inc/customizer/options/layout_single_post.php:264
+#: inc/customizer/options/layout_single_post.php:268
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:105
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:42
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:111
@@ -511,12 +511,12 @@ msgid "Top"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:869
-#: inc/customizer/options/layout_single_post.php:268
+#: inc/customizer/options/layout_single_post.php:272
 msgid "Middle"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:873
-#: inc/customizer/options/layout_single_post.php:272
+#: inc/customizer/options/layout_single_post.php:276
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:107
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:44
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:121
@@ -560,7 +560,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/CartIcon.php:142
 #: header-footer-grid/Core/Components/SearchResponsive.php:184
 #: inc/customizer/options/form_fields.php:384
-#: inc/customizer/options/layout_single_post.php:426
+#: inc/customizer/options/layout_single_post.php:449
 #: inc/customizer/controls/react/src/background/Background.js:20
 #: inc/customizer/controls/react/src/background/Background.js:71
 #: inc/customizer/controls/react/src/common/ColorControl.js:59
@@ -1452,12 +1452,14 @@ msgid "Infinite Scroll"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:289
-#: inc/customizer/options/layout_single_post.php:563
+#: inc/customizer/options/layout_single_post.php:583
+#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:49
 msgid "Thumbnail"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:290
-#: inc/customizer/options/layout_single_post.php:562
+#: inc/customizer/options/layout_single_post.php:582
+#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:46
 msgid "Title & Meta"
 msgstr ""
 
@@ -1494,7 +1496,8 @@ msgid "Date"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:393
-#: inc/customizer/options/layout_single_post.php:567
+#: inc/customizer/options/layout_single_post.php:587
+#: inc/customizer/options/layout_single_post.php:600
 #: inc/views/partials/post_meta.php:146
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:319
 msgid "Comments"
@@ -1596,132 +1599,143 @@ msgstr ""
 msgid "Header Layout"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:110
-#: inc/customizer/options/layout_single_post.php:418
+#: inc/customizer/options/layout_single_post.php:72
+msgid "Page elements"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:115
+#: inc/customizer/options/layout_single_post.php:441
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:39
 msgid "Normal"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:114
+#: inc/customizer/options/layout_single_post.php:119
 msgid "Cover"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:132
+#: inc/customizer/options/layout_single_post.php:137
 msgid "Cover height"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:179
+#: inc/customizer/options/layout_single_post.php:183
 msgid "Cover padding"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:213
+#: inc/customizer/options/layout_single_post.php:217
 msgid "Title Alignment"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:259
+#: inc/customizer/options/layout_single_post.php:263
 msgid "Title Position"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:306
+#: inc/customizer/options/layout_single_post.php:309
+msgid "Display meta before title"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:328
 msgid "Overlay color"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:331
+#: inc/customizer/options/layout_single_post.php:354
 msgid "Text color"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:358
+#: inc/customizer/options/layout_single_post.php:381
 msgid "Overlay opacity"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:394
+#: inc/customizer/options/layout_single_post.php:417
 msgid "Hide featured image"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:413
+#: inc/customizer/options/layout_single_post.php:436
 msgid "Blend mode"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:419
+#: inc/customizer/options/layout_single_post.php:442
 msgid "Multiply"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:420
+#: inc/customizer/options/layout_single_post.php:443
 msgid "Screen"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:421
+#: inc/customizer/options/layout_single_post.php:444
 msgid "Overlay"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:422
+#: inc/customizer/options/layout_single_post.php:445
 msgid "Darken"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:423
+#: inc/customizer/options/layout_single_post.php:446
 msgid "Lighten"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:424
+#: inc/customizer/options/layout_single_post.php:447
 msgid "Color Dodge"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:425
+#: inc/customizer/options/layout_single_post.php:448
 msgid "Saturation"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:427
+#: inc/customizer/options/layout_single_post.php:450
 msgid "Difference"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:428
+#: inc/customizer/options/layout_single_post.php:451
 msgid "Exclusion"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:429
+#: inc/customizer/options/layout_single_post.php:452
 msgid "Hue"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:430
+#: inc/customizer/options/layout_single_post.php:453
 msgid "Luminosity"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:453
+#: inc/customizer/options/layout_single_post.php:476
 msgid "Cover container"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:459
+#: inc/customizer/options/layout_single_post.php:482
 msgid "Full width"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:474
+#: inc/customizer/options/layout_single_post.php:497
 msgid "Boxed title"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:493
+#: inc/customizer/options/layout_single_post.php:516
 msgid "Section padding"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:527
+#: inc/customizer/options/layout_single_post.php:550
 msgid "Section background"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:564
+#: inc/customizer/options/layout_single_post.php:584
+#: inc/customizer/options/layout_single_post.php:597
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:317
 msgid "Content"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:565
+#: inc/customizer/options/layout_single_post.php:585
+#: inc/customizer/options/layout_single_post.php:598
 #: inc/views/partials/post_meta.php:295
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:318
 msgid "Tags"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:566
+#: inc/customizer/options/layout_single_post.php:586
+#: inc/customizer/options/layout_single_post.php:599
 msgid "Post navigation"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:579
+#: inc/customizer/options/layout_single_post.php:615
 msgid "Elements Order"
 msgstr ""
 
