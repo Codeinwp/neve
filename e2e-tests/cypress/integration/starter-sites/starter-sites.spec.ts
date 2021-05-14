@@ -1,6 +1,6 @@
 describe('Starter sites import', function () {
 	before(function () {
-		cy.loginWithRequest('/wp-admin/themes.php?page=tiob-starter-sites');
+		cy.login('/wp-admin/themes.php?page=tiob-starter-sites');
 	});
 	it('Successfully imports Web Agency starter site template', function () {
 		cy.get(':nth-child(1) > .top > .actions > .import').click();
