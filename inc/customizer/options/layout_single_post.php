@@ -165,7 +165,7 @@ class Layout_Single_Post extends Base_Customizer {
 							min-height: {{value}};
 						}',
 					],
-					'active_callback'       => [ $this, 'is_cover_layout' ],
+					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)
@@ -199,7 +199,7 @@ class Layout_Single_Post extends Base_Customizer {
 							padding-left: {{value.left}};
 						}',
 					),
-					'active_callback'       => [ $this, 'is_cover_layout' ],
+					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'\Neve\Customizer\Controls\React\Spacing'
 			)
@@ -292,7 +292,7 @@ class Layout_Single_Post extends Base_Customizer {
 						],
 					],
 					'show_labels'           => true,
-					'active_callback'       => [ $this, 'is_cover_layout' ],
+					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Radio_Buttons'
 			)
@@ -310,7 +310,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'section'         => $this->section,
 					'type'            => 'neve_toggle_control',
 					'priority'        => 7,
-					'active_callback' => [ $this, 'is_cover_layout' ],
+					'active_callback' => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\Checkbox'
 			)
@@ -336,7 +336,7 @@ class Layout_Single_Post extends Base_Customizer {
 						    }',
 
 					],
-					'active_callback'       => [ $this, 'is_cover_layout' ],
+					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\React\Color'
 			)
@@ -363,7 +363,7 @@ class Layout_Single_Post extends Base_Customizer {
 							   color: {{value}};
 						    }',
 					],
-					'active_callback'       => [ $this, 'is_cover_layout' ],
+					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\React\Color'
 			)
@@ -400,7 +400,7 @@ class Layout_Single_Post extends Base_Customizer {
 							opacity: {{value}};
 						}',
 					],
-					'active_callback'       => [ $this, 'is_cover_layout' ],
+					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)
@@ -418,7 +418,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'section'         => $this->section,
 					'type'            => 'neve_toggle_control',
 					'priority'        => 11,
-					'active_callback' => [ $this, 'is_cover_layout' ],
+					'active_callback' => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\Checkbox'
 			)
@@ -460,7 +460,7 @@ class Layout_Single_Post extends Base_Customizer {
 						    }',
 
 					],
-					'active_callback'       => [ $this, 'is_cover_layout' ],
+					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				]
 			)
 		);
@@ -481,7 +481,7 @@ class Layout_Single_Post extends Base_Customizer {
 						'contained'  => esc_html__( 'Contained', 'neve' ),
 						'full-width' => esc_html__( 'Full width', 'neve' ),
 					],
-					'active_callback' => [ $this, 'is_cover_layout' ],
+					'active_callback' => [ get_called_class(), 'is_cover_layout' ],
 				]
 			)
 		);
@@ -498,7 +498,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'section'         => $this->section,
 					'type'            => 'neve_toggle_control',
 					'priority'        => 14,
-					'active_callback' => [ $this, 'is_cover_layout' ],
+					'active_callback' => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\Checkbox'
 			)
@@ -570,14 +570,6 @@ class Layout_Single_Post extends Base_Customizer {
 	 */
 	private function control_content_order() {
 
-		$default_components = array(
-			'title-meta',
-			'thumbnail',
-			'content',
-			'tags',
-			'comments',
-		);
-
 		$all_components = array(
 			'title-meta'      => __( 'Title & Meta', 'neve' ),
 			'thumbnail'       => __( 'Thumbnail', 'neve' ),
@@ -587,13 +579,8 @@ class Layout_Single_Post extends Base_Customizer {
 			'comments'        => __( 'Comments', 'neve' ),
 		);
 
-		if ( $this->is_cover_layout() ) {
-			$default_components = array(
-				'content',
-				'tags',
-				'comments',
-			);
-			$all_components     = array(
+		if ( self::is_cover_layout() ) {
+			$all_components = array(
 				'content'         => __( 'Content', 'neve' ),
 				'tags'            => __( 'Tags', 'neve' ),
 				'post-navigation' => __( 'Post navigation', 'neve' ),
@@ -601,7 +588,7 @@ class Layout_Single_Post extends Base_Customizer {
 			);
 		}
 
-		$order_default_components = apply_filters( 'neve_single_post_elements_default_order', $default_components );
+		$order_default_components = self::ordering_default();
 		$components               = apply_filters( 'neve_single_post_elements', $all_components );
 
 		$this->add_control(
@@ -658,7 +645,7 @@ class Layout_Single_Post extends Base_Customizer {
 	 *
 	 * @return bool
 	 */
-	public function is_cover_layout() {
+	public static function is_cover_layout() {
 		return get_theme_mod( 'neve_post_header_layout' ) === 'cover';
 	}
 
@@ -668,7 +655,7 @@ class Layout_Single_Post extends Base_Customizer {
 	 * @return bool
 	 */
 	public function is_boxed_title() {
-		if ( ! $this->is_cover_layout() ) {
+		if ( ! self::is_cover_layout() ) {
 			return false;
 		}
 		return get_theme_mod( 'neve_post_cover_boxed_title', false );
@@ -775,5 +762,30 @@ class Layout_Single_Post extends Base_Customizer {
 			'tablet'  => 'bottom',
 			'desktop' => 'bottom',
 		];
+	}
+
+	/**
+	 * Get default values for ordering control
+	 *
+	 * @return array
+	 */
+	public static function ordering_default() {
+		$default_components = array(
+			'title-meta',
+			'thumbnail',
+			'content',
+			'tags',
+			'comments',
+		);
+
+		if ( get_theme_mod( 'neve_post_header_layout' ) === 'cover' ) {
+			$default_components = array(
+				'content',
+				'tags',
+				'comments',
+			);
+		}
+
+		return apply_filters( 'neve_single_post_elements_default_order', $default_components );
 	}
 }

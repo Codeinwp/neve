@@ -325,16 +325,7 @@ class Post_Layout extends Base_View {
 	 * @return array
 	 */
 	private function get_content_order() {
-		$default_order = apply_filters(
-			'neve_single_post_elements_default_order',
-			array(
-				'title-meta',
-				'thumbnail',
-				'content',
-				'tags',
-				'comments',
-			)
-		);
+		$default_order = Layout_Single_Post::ordering_default();
 
 		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
 		if ( ! is_string( $content_order ) ) {
