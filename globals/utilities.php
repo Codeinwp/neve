@@ -1402,21 +1402,3 @@ function neve_is_new_builder() {
 function neve_is_new_skin() {
 	return get_theme_mod( 'neve_new_skin', true );
 }
-
-/**
- * Gets default for theme mods.
- *
- * @param $theme_mod
- */
-function neve_get_default( $theme_mod ) {
-	$new      = neve_is_new_skin();
-	$defaults = [
-		'neve_body_font_family' => $new ? 'Inter' : '',
-	];
-
-	if ( ! isset( $defaults[ $theme_mod ] ) ) {
-		return false;
-	}
-
-	return $defaults[ $theme_mod ];
-}

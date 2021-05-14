@@ -51,7 +51,7 @@ class Generator {
 		}
 		/**
 		 * Neve try to build the CSS as mobile first.
-		 * Based on this fact, the general CSS is considere the mobile one.
+		 * Based on this fact, the general CSS is considered the mobile one.
 		 */
 		$dynamic_selectors = new Dynamic_Selector( $this->_subscribers, $this->context );
 		$all_css          .= $dynamic_selectors->for_mobile();

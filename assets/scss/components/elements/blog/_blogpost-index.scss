@@ -11,20 +11,13 @@
     display: inline-block;
   }
 
-  a {
-    transition: $transition_med;
-
-    &:hover {
-      opacity: .95;
-    }
-  }
-
   img {
     height: auto;
   }
 }
 
 .posts-wrapper > article {
+  padding: 0 15px;
   margin-bottom: 30px;
 }
 
@@ -59,6 +52,7 @@
 
 .nv-index-posts .posts-wrapper {
   display: grid;
+  grid-template-columns: var(--blogGridTemplateColumns);
 }
 
 .nv-index-posts .page-numbers {

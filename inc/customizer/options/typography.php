@@ -144,7 +144,6 @@ class Typography extends Base_Customizer {
 				[
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
-					'default'           => neve_get_default( 'neve_body_font_family' ),
 				],
 				[
 					'label'                 => esc_html__( 'Body', 'neve' ),
