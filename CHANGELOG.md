@@ -1,3 +1,8 @@
+##### [Version 2.11.4](https://github.com/Codeinwp/neve/compare/v2.11.3...v2.11.4) (2021-05-14)
+
+- [Fix] font weights not getting properly enqueued when some font families are set to inherit
+- [Fix] CSS error causing padding issues on some Gutenberg blocks
+
 ##### [Version 2.11.3](https://github.com/Codeinwp/neve/compare/v2.11.2...v2.11.3) (2021-05-12)
 
 - [Fix] Editor text color not working as expected
