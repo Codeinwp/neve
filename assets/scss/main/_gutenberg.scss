@@ -1,13 +1,13 @@
 //<editor-fold desc="Gutenberg alignments">
 
-#content .alignfull {
+.alignfull {
   width: 100vw;
   max-width: 100vw;
   margin-left: calc(50% - 50vw);
   padding: 0 15px;
 }
 
-#content .alignwide {
+.alignwide {
   width: 70vw;
   max-width: 70vw;
   margin-left: calc(50% - 35vw);
@@ -16,12 +16,10 @@
 body {
   &.nv-sidebar-left,
   &.nv-sidebar-right {
-	#content {
 	  .alignfull, .alignwide {
 		max-width: 100%;
 		margin-left: auto;
 	  }
-	}
   }
 }
 
