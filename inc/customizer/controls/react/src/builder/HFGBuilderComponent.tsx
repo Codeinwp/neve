@@ -35,7 +35,37 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 		control.setting.set(next);
 	};
 
-	useEffect(() => {
+	/**
+	 * Toggles builder visibility based on the migration notification.
+	 */
+	const bindOverlayNotificationHiding = () => {
+		window.wp.customize.notifications.bind(
+			'add',
+			(data: { code: string }) => {
+				if (data.code !== 'neve_migrating_builders') {
+					return false;
+				}
+
+				setHidden(true);
+			}
+		);
+
+		window.wp.customize.notifications.bind(
+			'removed',
+			(data: { code: string }) => {
+				if (data.code !== 'neve_migrating_builders') {
+					return false;
+				}
+
+				setHidden(false);
+			}
+		);
+	};
+
+	/**
+	 * Shows builder when its panel is expanded.
+	 */
+	const bindShowOnExpand = () => {
 		window.wp.customize
 			.state('expandedPanel')
 			.bind((panel: Record<string, unknown>) => {
@@ -45,6 +75,11 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 				}
 				setHidden(true);
 			});
+	};
+
+	useEffect(() => {
+		bindShowOnExpand();
+		bindOverlayNotificationHiding();
 
 		document.addEventListener(
 			'neve-changed-builder-value',
