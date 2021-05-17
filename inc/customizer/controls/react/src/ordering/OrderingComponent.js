@@ -15,8 +15,8 @@ const OrderingComponent = ({ control }) => {
 		control.setting.set(JSON.stringify(newVal));
 	};
 
-	useEffect( () => {
-		if ( control.id !== 'neve_layout_single_post_elements_order' ) {
+	useEffect(() => {
+		if (control.id !== 'neve_layout_single_post_elements_order') {
 			return;
 		}
 
@@ -26,43 +26,46 @@ const OrderingComponent = ({ control }) => {
 				customizeControl.setting.bind((nextVal) => {
 					let newVal = maybeParseJson(control.setting.get());
 					let titleMetaIndex, thumbnailIndex;
-					switch(nextVal) {
+					switch (nextVal) {
 						case 'cover':
-							titleMetaIndex = newVal.indexOf( 'title-meta' );
-							if ( titleMetaIndex !== -1 ){
-								newVal.splice( titleMetaIndex, 1 );
+							titleMetaIndex = newVal.indexOf('title-meta');
+							if (titleMetaIndex !== -1) {
+								newVal.splice(titleMetaIndex, 1);
 							}
 
-							thumbnailIndex = newVal.indexOf( 'thumbnail' );
-							if ( thumbnailIndex !== -1 ){
-								newVal.splice( thumbnailIndex, 1 );
+							thumbnailIndex = newVal.indexOf('thumbnail');
+							if (thumbnailIndex !== -1) {
+								newVal.splice(thumbnailIndex, 1);
 							}
 
 							delete components['title-meta'];
-							delete components['thumbnail'];
+							delete components.thumbnail;
 							break;
 						case 'normal':
-							if ( !components['title-meta'] ) {
-								components['title-meta'] = __( 'Title & Meta', 'neve' );
+							if (!components['title-meta']) {
+								components['title-meta'] = __(
+									'Title & Meta',
+									'neve'
+								);
 							}
-							if ( !components['thumbnail'] ) {
-								components['thumbnail'] = __( 'Thumbnail', 'neve' );
+							if (!components.thumbnail) {
+								components.thumbnail = __('Thumbnail', 'neve');
 							}
 
-							thumbnailIndex = newVal.indexOf( 'thumbnail' );
-							if ( thumbnailIndex === -1 ){
+							thumbnailIndex = newVal.indexOf('thumbnail');
+							if (thumbnailIndex === -1) {
 								newVal = ['thumbnail'].concat(newVal);
 							}
 
-							titleMetaIndex = newVal.indexOf( 'title-meta' );
-							if ( titleMetaIndex === -1 ){
+							titleMetaIndex = newVal.indexOf('title-meta');
+							if (titleMetaIndex === -1) {
 								newVal = ['title-meta'].concat(newVal);
 							}
 
 							break;
 					}
 
-					updateValue( newVal );
+					updateValue(newVal);
 				});
 			}
 		);

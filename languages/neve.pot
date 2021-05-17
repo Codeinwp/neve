@@ -1069,12 +1069,12 @@ msgid "Components"
 msgstr ""
 
 #: inc/admin/metabox/main.php:71
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:353
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:363
 msgid "Disable Header"
 msgstr ""
 
 #: inc/admin/metabox/main.php:76
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:379
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:389
 msgid "Disable Title"
 msgstr ""
 
@@ -1083,7 +1083,7 @@ msgid "Disable Featured Image"
 msgstr ""
 
 #: inc/admin/metabox/main.php:88
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:365
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:375
 msgid "Disable Footer"
 msgstr ""
 
@@ -1096,21 +1096,21 @@ msgid "Enable Individual Content Width"
 msgstr ""
 
 #. translators: %s - post type
-#: inc/admin/metabox/manager.php:128
-#: inc/admin/metabox/manager.php:145
+#: inc/admin/metabox/manager.php:130
+#: inc/admin/metabox/manager.php:147
 msgid "%s Settings"
 msgstr ""
 
-#: inc/admin/metabox/manager.php:184
+#: inc/admin/metabox/manager.php:186
 msgid "Page Settings are now accessible from the top bar"
 msgstr ""
 
 #. translators: %1$s - Keyboard shortcut.   %2&s - svg icon
-#: inc/admin/metabox/manager.php:187
+#: inc/admin/metabox/manager.php:189
 msgid "Click the %1$s icon in the top bar or use the keyboard shortcut ( %2$s ) to customise the layout settings for this page"
 msgstr ""
 
-#: inc/admin/metabox/manager.php:194
+#: inc/admin/metabox/manager.php:196
 msgid "or"
 msgstr ""
 
@@ -1452,13 +1452,13 @@ msgid "Infinite Scroll"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:289
-#: inc/customizer/options/layout_single_post.php:583
-#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:49
+#: inc/customizer/options/layout_single_post.php:575
+#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:52
 msgid "Thumbnail"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:290
-#: inc/customizer/options/layout_single_post.php:582
+#: inc/customizer/options/layout_single_post.php:574
 #: inc/customizer/controls/react/src/ordering/OrderingComponent.js:46
 msgid "Title & Meta"
 msgstr ""
@@ -1480,7 +1480,7 @@ msgid "Thumbnail Shadow"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:369
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:315
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:321
 msgid "Post Meta"
 msgstr ""
 
@@ -1496,10 +1496,11 @@ msgid "Date"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:393
+#: inc/customizer/options/layout_single_post.php:579
 #: inc/customizer/options/layout_single_post.php:587
-#: inc/customizer/options/layout_single_post.php:600
 #: inc/views/partials/post_meta.php:146
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:319
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:316
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:325
 msgid "Comments"
 msgstr ""
 
@@ -1717,25 +1718,27 @@ msgstr ""
 msgid "Section background"
 msgstr ""
 
+#: inc/customizer/options/layout_single_post.php:576
 #: inc/customizer/options/layout_single_post.php:584
-#: inc/customizer/options/layout_single_post.php:597
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:317
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:314
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:323
 msgid "Content"
 msgstr ""
 
+#: inc/customizer/options/layout_single_post.php:577
 #: inc/customizer/options/layout_single_post.php:585
-#: inc/customizer/options/layout_single_post.php:598
 #: inc/views/partials/post_meta.php:295
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:318
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:315
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:324
 msgid "Tags"
 msgstr ""
 
+#: inc/customizer/options/layout_single_post.php:578
 #: inc/customizer/options/layout_single_post.php:586
-#: inc/customizer/options/layout_single_post.php:599
 msgid "Post navigation"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:615
+#: inc/customizer/options/layout_single_post.php:602
 msgid "Elements Order"
 msgstr ""
 
@@ -2278,39 +2281,40 @@ msgstr ""
 msgid "Reading Time"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:314
-msgid "Post Title"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:316
-msgid "Featured Image"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:320
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:317
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:326
 msgid "Post Navigation"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:326
-msgid "Author Biography"
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:320
+msgid "Post Title"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:327
-msgid "Related Posts"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:328
-msgid "Sharing Icons"
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:322
+msgid "Featured Image"
 msgstr ""
 
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:336
+msgid "Author Biography"
+msgstr ""
+
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:337
+msgid "Related Posts"
+msgstr ""
+
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:338
+msgid "Sharing Icons"
+msgstr ""
+
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:346
 msgid "Elements"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:397
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:407
 msgid "Reset all options to default"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:406
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:416
 msgid "Return to customizer settings"
 msgstr ""
 
