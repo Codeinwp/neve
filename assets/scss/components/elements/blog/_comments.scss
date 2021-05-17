@@ -1,3 +1,5 @@
+@import "../../main/variables";
+
 #comments {
   border-top: $muted-border;
   margin-top: $spacing-xs;
@@ -42,7 +44,7 @@
 }
 
 .nv-comments-title-wrap {
-  margin: $spacing 0 $spacing-lg;
+  margin: $spacing-md 0 $spacing-lg;
 }
 
 .nv-comment-article {
@@ -90,7 +92,7 @@
   }
 
   .comment-respond {
-    margin: $spacing 0;
+    margin: $spacing-md 0;
   }
 
   .comment-reply-title {

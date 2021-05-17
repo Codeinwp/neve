@@ -1,3 +1,5 @@
+@import "../main/variables";
+
 .nv-iframe-embed {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
@@ -19,7 +21,7 @@ figcaption {
 }
 
 blockquote {
-  margin: $spacing 0;
+  margin: $spacing-md 0;
 
   p {
     font-size: 1.1em;
@@ -42,11 +44,11 @@ blockquote {
   }
 
   &:before {
-    margin: 0 auto $spacing;
+    margin: 0 auto $spacing-md;
   }
 
   &:after {
-    margin: $spacing auto 0;
+    margin: $spacing-md auto 0;
   }
 
   > * {

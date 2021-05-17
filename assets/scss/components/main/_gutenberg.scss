@@ -1,3 +1,5 @@
+@import "variables";
+
 /* Gutenberg alignments */
 .alignfull {
   width: 100vw;
@@ -22,27 +24,27 @@
 
 //<editor-fold desc="Front End Font Sizes">
 .has-neve-body-font-size {
-  font-size: $h1-mobile-font-size;
+  font-size: $h1-mobile-size;
 }
 
 .has-neve-h-1-font-size {
-  font-size: $h2-mobile-font-size;
+  font-size: $h2-mobile-size;
 }
 
 .has-neve-h-2-font-size {
-  font-size: $h3-mobile-font-size;
+  font-size: $h3-mobile-size;
 }
 
 .has-neve-h-3-font-size {
-  font-size: $h4-mobile-font-size;
+  font-size: $h4-mobile-size;
 }
 
 .has-neve-h-4-font-size {
-  font-size: $h5-mobile-font-size;
+  font-size: $h5-mobile-size;
 }
 
 .has-neve-h-5-font-size {
-  font-size: $h6-mobile-font-size;
+  font-size: $h6-mobile-size;
 }
 
 //</editor-fold>
@@ -50,7 +52,7 @@
 //<editor-fold desc="Blockquote">
 blockquote.wp-block-quote.is-style-large {
   p {
-	font-size: $h2-font-size;
+	font-size: $h2-size;
   }
 
   cite {
@@ -108,7 +110,7 @@ blockquote.wp-block-quote.is-style-large {
 //<editor-fold desc="Separator">
 .wp-block-separator {
   display: block;
-  margin: $spacing auto;
+  margin: $spacing-md auto;
   width: 100px;
   border: none;
   background-color: #8f98a1;
@@ -161,24 +163,24 @@ blockquote.wp-block-quote.is-style-large {
 
 @mixin gutenberg--tablet() {
   .has-neve-body-font-size {
-	font-size: $html-font-size;
+	font-size: $body-size;
   }
   .has-neve-h-1-font-size {
-	font-size: $h1-font-size;
+	font-size: $h1-size;
   }
   .has-neve-h-2-font-size {
-	font-size: $h2-font-size;
+	font-size: $h2-size;
   }
   .has-neve-h-3-font-size {
-	font-size: $h3-font-size;
+	font-size: $h3-size;
   }
   .has-neve-h-4-font-size {
-	font-size: $h4-font-size;
+	font-size: $h4-size;
   }
   .has-neve-h-5-font-size {
-	font-size: $h5-font-size;
+	font-size: $h5-size;
   }
   .has-neve-h-6-font-size {
-	font-size: $h6-font-size;
+	font-size: $h6-size;
   }
 }

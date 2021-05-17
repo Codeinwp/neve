@@ -25,35 +25,6 @@ class Template_Parts extends Base_View {
 		add_action( 'neve_blog_post_template_part_content', array( $this, 'render_post' ) );
 		add_filter( 'excerpt_more', array( $this, 'link_excerpt_more' ) );
 		add_filter( 'the_content_more_link', array( $this, 'link_excerpt_more' ) );
-
-		$this->setup_css_variables();
-	}
-
-	private function setup_css_variables() {
-		if( ! neve_is_new_skin() ) {
-			return false;
-		}
-		$columns    = get_theme_mod(
-			'neve_grid_layout',
-			wp_json_encode(
-				[
-					'desktop' => 1,
-					'tablet'  => 1,
-					'mobile'  => 1,
-				]
-			)
-		);
-		$columns    = json_decode( $columns, true );
-		foreach ( $columns as $device => $how_many ) {
-			if( $how_many < 1 ) {
-				$how_many = 1;
-			}
-			$columns[ $device ] = '';
-			for ( $i = 1; $i <= $how_many; $i ++ ) {
-				$columns[ $device ] .= '1fr ';
-			}
-		}
-		Css_Vars::instance()->add_variable( '--blogGridTemplateColumns', $columns );
 	}
 
 	/**

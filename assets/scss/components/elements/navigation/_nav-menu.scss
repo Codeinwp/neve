@@ -18,7 +18,6 @@
 }
 
 .nav-ul {
-	transition: $transition_med;
 	margin-bottom: 0;
 	display: flex;
 	flex-wrap: wrap;
@@ -290,7 +289,6 @@
 	.amp-caret-wrap {
 		display: none;
 	}
-
 	.header-menu-sidebar-inner {
 		.desktop-center {
 			.nav-ul {

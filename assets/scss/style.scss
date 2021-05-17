@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import "components/variables";
+@import "components/main/variables";
 @import "components/main/mixins";
 @import "components/main/extends";
 @import "components/main/reset";
@@ -23,17 +23,3 @@
 @import "components/compat/elementor";
 
 @import "./components/hfg/style";
-//
-//:root {
-//  --nv-body-bg: #ccc;
-//}
-//
-//@media (min-width: #{$laptop}) {
-//  :root {
-//	--nv-body-bg: red;
-//  };
-//}
-//
-//body {
-//  background: var(--nv-body-bg);
-//}

@@ -50,9 +50,10 @@
   display: block;
 }
 
-.nv-index-posts .posts-wrapper {
-  display: grid;
-  grid-template-columns: var(--blogGridTemplateColumns);
+.nv-index-posts {
+  .posts-wrapper {
+	display: flex;
+  }
 }
 
 .nv-index-posts .page-numbers {

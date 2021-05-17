@@ -35,6 +35,7 @@ class Frontend extends Generator {
 		$this->setup_typography();
 		$this->setup_blog_typography();
 		$this->setup_blog_colors();
+		$this->setup_blog_layout();
 		$this->setup_form_fields_style();
 	}
 
@@ -138,6 +139,30 @@ class Frontend extends Generator {
 	}
 
 	/**
+	 * Add css for blog typography.
+	 */
+	public function setup_blog_layout() {
+		if ( ! neve_is_new_skin() ) {
+			return false;
+		}
+
+		$this->_subscribers['.posts-wrapper article'] = [
+			Config::CSS_PROP_WIDTH => [
+				Dynamic_Selector::META_KEY           => 'neve_grid_layout',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => '{"desktop":1,"tablet":1,"mobile":1}',
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+					if ( $value < 1 ) {
+						$value = 1;
+					}
+					return sprintf( '%s:%s;', $css_prop, 100 / $value . '%' );
+				},
+			],
+		];
+
+	}
+
+	/**
 	 * Setup typography subscribers.
 	 */
 	public function setup_typography() {
@@ -162,7 +187,7 @@ class Frontend extends Generator {
 			],
 			Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_TYPEFACE_GENERAL . '.textTransform',
 			Config::CSS_PROP_FONT_FAMILY    => [
-				Dynamic_Selector::META_KEY     => Config::MODS_FONT_GENERAL,
+				Dynamic_Selector::META_KEY => Config::MODS_FONT_GENERAL,
 			],
 		];
 		foreach ( neve_get_headings_selectors() as $id => $heading_selector
@@ -183,9 +208,9 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_KEY           => $heading_mod . '.letterSpacing',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
-				Config::CSS_PROP_FONT_WEIGHT => [
-					Dynamic_Selector::META_KEY     => $heading_mod . '.fontWeight',
-					'font'                         => 'mods_' . Config::MODS_FONT_HEADINGS,
+				Config::CSS_PROP_FONT_WEIGHT    => [
+					Dynamic_Selector::META_KEY => $heading_mod . '.fontWeight',
+					'font'                     => 'mods_' . Config::MODS_FONT_HEADINGS,
 				],
 				Config::CSS_PROP_TEXT_TRANSFORM => $heading_mod . '.textTransform',
 				Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_HEADINGS,

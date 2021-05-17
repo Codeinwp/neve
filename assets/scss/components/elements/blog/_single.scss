@@ -1,3 +1,5 @@
+@import "../../main/variables";
+
 .page .nv-page-title-wrap {
   margin-top: 30px;
 }
@@ -66,7 +68,7 @@
 }
 
 .post-password-form {
-  margin-bottom: $spacing;
+  margin-bottom: $spacing-md;
   text-align: center;
   input[type=submit] {
     height: 39px;
@@ -93,7 +95,6 @@
   a {
     display: inline-block;
     padding: 2px $spacing-xs;
-    transition: $transition_med;
     border-radius: 3px;
 		margin: 0 $spacing-xs $spacing-xs 0;
 		color: var(--nv-primary-accent);
