@@ -1,3 +1,9 @@
+##### [Version 2.11.3](https://github.com/Codeinwp/neve/compare/v2.11.2...v2.11.3) (2021-05-12)
+
+- [Fix] Editor text color not working as expected
+- [Fix] Editor group block and columns block child blocks not inheriting text color
+- Restyle post date styling inside latest posts widget
+
 ##### [Version 2.11.2](https://github.com/Codeinwp/neve/compare/v2.11.1...v2.11.2) (2021-04-28)
 
 - [Fix] Dropdowns (input select) in specific widgets do not respect global form styles
