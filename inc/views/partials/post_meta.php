@@ -10,6 +10,8 @@
 
 namespace Neve\Views\Partials;
 
+use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 use Neve\Views\Base_View;
 
 /**
@@ -28,6 +30,9 @@ class Post_Meta extends Base_View {
 		add_action( 'neve_post_meta_archive', array( $this, 'render_meta_list' ) );
 		add_action( 'neve_post_meta_single', array( $this, 'render_meta_list' ), 10, 2 );
 		add_action( 'neve_do_tags', array( $this, 'render_tags_list' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'meta_custom_separator' ) );
+		add_filter( 'neve_gravatar_args', [ $this, 'add_dynamic_gravatar' ] );
+
 	}
 
 	/**
@@ -40,12 +45,43 @@ class Post_Meta extends Base_View {
 	public function should_display_author_avatar( $value ) {
 
 		$show_avatar = get_theme_mod( 'neve_author_avatar', false );
+		if ( is_singular( 'post' ) ) {
+			$show_avatar = get_theme_mod( 'neve_single_post_author_avatar', $show_avatar );
+		}
 
 		if ( $show_avatar === true ) {
 			return true;
 		}
 
 		return false;
+	}
+
+	/**
+	 * Add dynamic gravatar values.
+	 *
+	 * @param array $args_array Avatar args.
+	 *
+	 * @return mixed
+	 */
+	public function add_dynamic_gravatar( $args_array ) {
+
+		$meta_key = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
+		if ( is_singular( 'post' ) ) {
+			$meta_key = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
+		}
+
+		$avatar_size = Mods::to_json( $meta_key );
+
+		if ( ! isset( $args_array['size'] ) ) {
+			return $args_array;
+		}
+		if ( ! is_array( $avatar_size ) ) {
+			return $args_array;
+		}
+
+		$args_array['size'] = max( $avatar_size );
+
+		return $args_array;
 	}
 
 	/**
@@ -82,6 +118,9 @@ class Post_Meta extends Base_View {
 					$modified          = get_the_modified_time( 'U' );
 					$has_updated_time  = $created !== $modified;
 					$show_updated_time = get_theme_mod( 'neve_show_last_updated_date', false );
+					if ( is_singular( 'post' ) ) {
+						$show_updated_time = get_theme_mod( 'neve_single_post_show_last_updated_date', $show_updated_time );
+					}
 					if ( $show_updated_time && $has_updated_time ) {
 						$date_meta_classes[] = 'nv-show-updated';
 					}
@@ -213,7 +252,10 @@ class Post_Meta extends Base_View {
 		$modified          = get_the_modified_time( 'U' );
 		$has_updated_time  = $created !== $modified;
 		$show_updated_time = get_theme_mod( 'neve_show_last_updated_date', false );
-		$format            = get_option( 'date_format' );
+		if ( is_singular( 'post' ) ) {
+			$show_updated_time = get_theme_mod( 'neve_single_post_show_last_updated_date', $show_updated_time );
+		}
+		$format = get_option( 'date_format' );
 
 		$prefixes = array(
 			'published' => '',
@@ -301,4 +343,21 @@ class Post_Meta extends Base_View {
 		$html .= ' </div> ';
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
+
+	/**
+	 * Change metadata separator according to the customizer setting
+	 */
+	public function meta_custom_separator() {
+
+		$separator = get_theme_mod( 'neve_metadata_separator', esc_html( '/' ) );
+		if ( is_singular( 'post' ) ) {
+			$separator = get_theme_mod( 'neve_single_post_metadata_separator', $separator );
+		}
+
+		$custom_css  = '';
+		$custom_css .= '.nv-meta-list li:not(:last-child):after,.nv-meta-list span:not(:last-child):after { content:"' . esc_html( $separator ) . '" }';
+
+		wp_add_inline_style( 'neve-style', $custom_css );
+	}
+
 }

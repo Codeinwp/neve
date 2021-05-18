@@ -37,9 +37,10 @@ class Layout_Single_Post extends Base_Customizer {
 	 */
 	public function add_controls() {
 		$this->section_single_post();
-		$this->add_sections_heading();
+		$this->add_subsections();
 		$this->header_layout();
 		$this->control_content_order();
+		$this->post_meta();
 	}
 
 	/**
@@ -49,11 +50,11 @@ class Layout_Single_Post extends Base_Customizer {
 		$this->add_section(
 			new Section(
 				$this->section,
-				array(
+				[
 					'priority' => 40,
 					'title'    => esc_html__( 'Single Post', 'neve' ),
 					'panel'    => 'neve_layout',
-				)
+				]
 			)
 		);
 	}
@@ -61,35 +62,43 @@ class Layout_Single_Post extends Base_Customizer {
 	/**
 	 * Add sections headings.
 	 */
-	private function add_sections_heading() {
-		$headings = array(
-			'header_layout' => array(
+	private function add_subsections() {
+		$headings = [
+			'header_layout' => [
 				'title'            => esc_html__( 'Header Layout', 'neve' ),
 				'priority'         => 1,
 				'controls_to_wrap' => 16,
-			),
-			'page_elements' => array(
-				'title'            => esc_html__( 'Page elements', 'neve' ),
+			],
+			'page_elements' => [
+				'title'            => esc_html__( 'Page Elements', 'neve' ),
 				'priority'         => 17,
 				'controls_to_wrap' => 1,
-			),
-		);
+				'expanded'         => false,
+			],
+			'meta'          => [
+				'title'            => esc_html__( 'Post Meta', 'neve' ),
+				'priority'         => 19,
+				'controls_to_wrap' => 5,
+				'expanded'         => false,
+			],
+		];
 
 		foreach ( $headings as $heading_id => $heading_data ) {
 			$this->add_control(
 				new Control(
 					'neve_post_' . $heading_id . '_headeing',
-					array(
+					[
 						'sanitize_callback' => 'sanitize_text_field',
-					),
-					array(
+					],
+					[
 						'label'            => $heading_data['title'],
 						'section'          => $this->section,
 						'priority'         => $heading_data['priority'],
 						'class'            => $heading_id . '-accordion',
 						'accordion'        => true,
+						'expanded'         => array_key_exists( 'expanded', $heading_data ) ? $heading_data['expanded'] : true,
 						'controls_to_wrap' => $heading_data['controls_to_wrap'],
-					),
+					],
 					'Neve\Customizer\Controls\Heading'
 				)
 			);
@@ -97,7 +106,7 @@ class Layout_Single_Post extends Base_Customizer {
 	}
 
 	/**
-	 * Add header layout controls
+	 * Add header layout controls.
 	 */
 	private function header_layout() {
 		$this->add_control(
@@ -144,11 +153,11 @@ class Layout_Single_Post extends Base_Customizer {
 							'mobile'  => 400,
 							'tablet'  => 400,
 							'desktop' => 400,
-							'suffix'  => array(
+							'suffix'  => [
 								'mobile'  => 'px',
 								'tablet'  => 'px',
 								'desktop' => 'px',
-							),
+							],
 						],
 					],
 					'priority'              => 3,
@@ -188,7 +197,7 @@ class Layout_Single_Post extends Base_Customizer {
 
 					'priority'              => 4,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => array(
+					'live_refresh_css_prop' => [
 						'responsive'  => true,
 						'directional' => true,
 						'template'    =>
@@ -198,7 +207,7 @@ class Layout_Single_Post extends Base_Customizer {
 							padding-bottom: {{value.bottom}};
 							padding-left: {{value.left}};
 						}',
-					),
+					],
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'\Neve\Customizer\Controls\React\Spacing'
@@ -429,7 +438,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'neve_post_cover_blend_mode',
 				[
 					'default'           => 'normal',
-					'sanitize_callback' => array( $this, 'sanitize_blend_mode' ),
+					'sanitize_callback' => [ $this, 'sanitize_blend_mode' ],
 					'transport'         => $this->selective_refresh,
 				],
 				[
@@ -470,7 +479,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'neve_post_cover_container',
 				[
 					'default'           => 'contained',
-					'sanitize_callback' => array( $this, 'sanitize_container' ),
+					'sanitize_callback' => [ $this, 'sanitize_container' ],
 				],
 				[
 					'label'           => esc_html__( 'Cover container', 'neve' ),
@@ -521,7 +530,7 @@ class Layout_Single_Post extends Base_Customizer {
 
 					'priority'              => 15,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => array(
+					'live_refresh_css_prop' => [
 						'responsive'  => true,
 						'directional' => true,
 						'template'    =>
@@ -531,7 +540,7 @@ class Layout_Single_Post extends Base_Customizer {
 							padding-bottom: {{value.bottom}};
 							padding-left: {{value.left}};
 						}',
-					),
+					],
 					'active_callback'       => [ $this, 'is_boxed_title' ],
 				],
 				'\Neve\Customizer\Controls\React\Spacing'
@@ -570,22 +579,22 @@ class Layout_Single_Post extends Base_Customizer {
 	 */
 	private function control_content_order() {
 
-		$all_components = array(
+		$all_components = [
 			'title-meta'      => __( 'Title & Meta', 'neve' ),
 			'thumbnail'       => __( 'Thumbnail', 'neve' ),
 			'content'         => __( 'Content', 'neve' ),
 			'tags'            => __( 'Tags', 'neve' ),
 			'post-navigation' => __( 'Post navigation', 'neve' ),
 			'comments'        => __( 'Comments', 'neve' ),
-		);
+		];
 
 		if ( self::is_cover_layout() ) {
-			$all_components = array(
+			$all_components = [
 				'content'         => __( 'Content', 'neve' ),
 				'tags'            => __( 'Tags', 'neve' ),
 				'post-navigation' => __( 'Post navigation', 'neve' ),
 				'comments'        => __( 'Comments', 'neve' ),
-			);
+			];
 		}
 
 		$order_default_components = self::ordering_default();
@@ -594,17 +603,164 @@ class Layout_Single_Post extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_layout_single_post_elements_order',
-				array(
-					'sanitize_callback' => array( $this, 'sanitize_post_elements_ordering' ),
+				[
+					'sanitize_callback' => [ $this, 'sanitize_post_elements_ordering' ],
 					'default'           => wp_json_encode( $order_default_components ),
-				),
-				array(
+				],
+				[
 					'label'      => esc_html__( 'Elements Order', 'neve' ),
 					'section'    => 'neve_single_post_layout',
 					'components' => $components,
-					'priority'   => 17,
-				),
+					'priority'   => 18,
+				],
 				'Neve\Customizer\Controls\React\Ordering'
+			)
+		);
+	}
+
+	/**
+	 * Add post meta controls.
+	 */
+	private function post_meta() {
+
+		$order_default_components = get_theme_mod( 'neve_post_meta_ordering', wp_json_encode( [ 'author', 'date', 'comments' ] ) );
+		$components               = apply_filters(
+			'neve_meta_filter',
+			[
+				'author'   => __( 'Author', 'neve' ),
+				'category' => __( 'Category', 'neve' ),
+				'date'     => __( 'Date', 'neve' ),
+				'comments' => __( 'Comments', 'neve' ),
+			]
+		);
+		$this->add_control(
+			new Control(
+				'neve_single_post_meta_ordering',
+				[
+					'sanitize_callback' => 'sanitize_meta_ordering',
+					'default'           => $order_default_components,
+				],
+				[
+					'label'      => esc_html__( 'Meta Order', 'neve' ),
+					'section'    => $this->section,
+					'components' => $components,
+					'priority'   => 20,
+				],
+				'Neve\Customizer\Controls\React\Ordering'
+			)
+		);
+
+		$default_separator = get_theme_mod( 'neve_metadata_separator', esc_html( '/' ) );
+		$this->add_control(
+			new Control(
+				'neve_single_post_metadata_separator',
+				[
+					'sanitize_callback' => 'sanitize_text_field',
+					'default'           => $default_separator,
+				],
+				[
+					'priority'    => 21,
+					'section'     => $this->section,
+					'label'       => esc_html__( 'Separator', 'neve' ),
+					'description' => esc_html__( 'For special characters make sure to use Unicode. For example > can be displayed using \003E.', 'neve' ),
+					'type'        => 'text',
+				]
+			)
+		);
+
+		$author_avatar_default = get_theme_mod( 'neve_author_avatar', false );
+		$this->add_control(
+			new Control(
+				'neve_single_post_author_avatar',
+				[
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => $author_avatar_default,
+				],
+				[
+					'label'    => esc_html__( 'Show Author Avatar', 'neve' ),
+					'section'  => $this->section,
+					'type'     => 'neve_toggle_control',
+					'priority' => 22,
+				]
+			)
+		);
+
+		$avatar_size_default = get_theme_mod(
+			'neve_author_avatar_size',
+			wp_json_encode(
+				[
+					'desktop' => 20,
+					'tablet'  => 20,
+					'mobile'  => 20,
+				]
+			)
+		);
+		$this->add_control(
+			new Control(
+				'neve_single_post_avatar_size',
+				[
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'default'           => $avatar_size_default,
+				],
+				[
+					'label'           => esc_html__( 'Avatar Size', 'neve' ),
+					'section'         => $this->section,
+					'units'           => [ 'px' ],
+					'input_attr'      => [
+						'mobile'  => [
+							'min'          => 20,
+							'max'          => 50,
+							'default'      => 20,
+							'default_unit' => 'px',
+						],
+						'tablet'  => [
+							'min'          => 20,
+							'max'          => 50,
+							'default'      => 20,
+							'default_unit' => 'px',
+						],
+						'desktop' => [
+							'min'          => 20,
+							'max'          => 50,
+							'default'      => 20,
+							'default_unit' => 'px',
+						],
+					],
+					'input_attrs'     => [
+						'step'       => 1,
+						'min'        => 20,
+						'max'        => 50,
+						'defaultVal' => [
+							'mobile'  => 20,
+							'tablet'  => 20,
+							'desktop' => 20,
+						],
+						'units'      => [ 'px' ],
+					],
+					'priority'        => 23,
+					'active_callback' => function () {
+						return get_theme_mod( 'neve_single_post_author_avatar', false );
+					},
+					'responsive'      => true,
+				],
+				'Neve\Customizer\Controls\React\Responsive_Range'
+			)
+		);
+
+		$show_updated_time_default = get_theme_mod( 'neve_show_last_updated_date', false );
+		$this->add_control(
+			new Control(
+				'neve_single_post_show_last_updated_date',
+				[
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => $show_updated_time_default,
+				],
+				[
+					'label'    => esc_html__( 'Use last updated date instead of the published one', 'neve' ),
+					'section'  => $this->section,
+					'type'     => 'neve_toggle_control',
+					'priority' => 24,
+				]
 			)
 		);
 	}
@@ -613,7 +769,7 @@ class Layout_Single_Post extends Base_Customizer {
 	 * Sanitize content order control.
 	 */
 	public function sanitize_post_elements_ordering( $value ) {
-		$allowed = array(
+		$allowed = [
 			'thumbnail',
 			'title-meta',
 			'content',
@@ -623,7 +779,7 @@ class Layout_Single_Post extends Base_Customizer {
 			'author-biography',
 			'related-posts',
 			'sharing-icons',
-		);
+		];
 
 		if ( empty( $value ) ) {
 			return $allowed;
@@ -669,7 +825,7 @@ class Layout_Single_Post extends Base_Customizer {
 	 * @return string
 	 */
 	public function sanitize_header_layout( $input ) {
-		$header_layout_options = array( 'normal', 'cover' );
+		$header_layout_options = [ 'normal', 'cover' ];
 		if ( ! in_array( $input, $header_layout_options, true ) ) {
 			return 'normal';
 		}
@@ -770,20 +926,20 @@ class Layout_Single_Post extends Base_Customizer {
 	 * @return array
 	 */
 	public static function ordering_default() {
-		$default_components = array(
+		$default_components = [
 			'title-meta',
 			'thumbnail',
 			'content',
 			'tags',
 			'comments',
-		);
+		];
 
 		if ( get_theme_mod( 'neve_post_header_layout' ) === 'cover' ) {
-			$default_components = array(
+			$default_components = [
 				'content',
 				'tags',
 				'comments',
-			);
+			];
 		}
 
 		return apply_filters( 'neve_single_post_elements_default_order', $default_components );

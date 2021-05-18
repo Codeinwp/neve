@@ -79,6 +79,18 @@ class Config {
 	const MODS_FORM_FIELDS_COLOR            = 'neve_input_text_color';
 	const MODS_FORM_FIELDS_LABELS_TYPEFACE  = 'neve_label_typeface';
 
+	const MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE = 'neve_author_avatar_size';
+	const MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE  = 'neve_single_post_avatar_size';
+
+	const MODS_POST_COVER_HEIGHT                 = 'neve_post_cover_height';
+	const MODS_POST_COVER_PADDING                = 'neve_post_cover_padding';
+	const MODS_POST_COVER_BACKGROUND_COLOR       = 'neve_post_cover_background_color';
+	const MODS_POST_COVER_OVERLAY_OPACITY        = 'neve_post_cover_overlay_opacity';
+	const MODS_POST_COVER_TEXT_COLOR             = 'neve_post_cover_text_color';
+	const MODS_POST_COVER_BLEND_MODE             = 'neve_post_cover_blend_mode';
+	const MODS_POST_COVER_BOXED_TITLE_PADDING    = 'neve_post_cover_boxed_title_padding';
+	const MODS_POST_COVER_BOXED_TITLE_BACKGROUND = 'neve_post_cover_boxed_title_background';
+
 	const CSS_PROP_BORDER_COLOR               = 'border-color';
 	const CSS_PROP_BACKGROUND_COLOR           = 'background-color';
 	const CSS_PROP_COLOR                      = 'color';

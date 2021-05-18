@@ -20,25 +20,15 @@ use Neve\Customizer\Options\Layout_Single_Post;
  */
 class Post_Layout extends Base_View {
 
-	const POST_COVER_HEIGHT                 = 'neve_post_cover_height';
-	const POST_COVER_PADDING                = 'neve_post_cover_padding';
-	const POST_COVER_BACKGROUND_COLOR       = 'neve_post_cover_background_color';
-	const POST_COVER_OVERLAY_OPACITY        = 'neve_post_cover_overlay_opacity';
-	const POST_COVER_TEXT_COLOR             = 'neve_post_cover_text_color';
-	const POST_COVER_BLEND_MODE             = 'neve_post_cover_blend_mode';
-	const POST_COVER_BOXED_TITLE_PADDING    = 'neve_post_cover_boxed_title_padding';
-	const POST_COVER_BOXED_TITLE_BACKGROUND = 'neve_post_cover_boxed_title_background';
-
 	/**
 	 * Function that is run after instantiation.
 	 *
 	 * @return void
 	 */
 	public function init() {
-		add_action( 'neve_do_single_post', array( $this, 'render_post' ) );
-		add_action( 'neve_after_header_wrapper_hook', array( $this, 'render_cover_header' ) );
-		add_filter( 'neve_style_subscribers', array( $this, 'add_subscribers' ) );
-		add_filter( 'neve_post_title_alignment', array( $this, 'align_post_title' ) );
+		add_action( 'neve_do_single_post', [ $this, 'render_post' ] );
+		add_action( 'neve_after_header_wrapper_hook', [ $this, 'render_cover_header' ] );
+		add_filter( 'neve_post_title_alignment', [ $this, 'align_post_title' ] );
 	}
 
 	/**
@@ -151,17 +141,11 @@ class Post_Layout extends Base_View {
 		if ( ! get_post() ) {
 			return false;
 		}
-		$default_meta_order = wp_json_encode(
-			array(
-				'author',
-				'date',
-				'comments',
-			)
-		);
+		$default_meta_order = get_theme_mod( 'neve_post_meta_ordering', wp_json_encode( array( 'author', 'date', 'comments' ) ) );
+		$meta_order         = get_theme_mod( 'neve_single_post_meta_ordering', $default_meta_order );
+		$meta_order         = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
+		$meta_order         = apply_filters( 'neve_post_meta_ordering_filter', $meta_order );
 
-		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
-		$meta_order = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
-		$meta_order = apply_filters( 'neve_post_meta_ordering_filter', $meta_order );
 		do_action( 'neve_post_meta_single', $meta_order, $is_list );
 		return true;
 	}
@@ -255,26 +239,33 @@ class Post_Layout extends Base_View {
 	}
 
 	/**
-	 * Get alignment classes for the title on the cover layout.
+	 * Get elements order.
 	 *
-	 * @param string $theme_mod Theme mod id.
-	 * @param string $default   The default value for the control.
-	 *
-	 * @return string
+	 * @return array
 	 */
-	private function get_alignment_classes( $theme_mod, $default = null ) {
-		$classes = array();
+	private function get_content_order() {
+		$default_order = Layout_Single_Post::ordering_default();
 
-		$title_alignment = get_theme_mod( $theme_mod, $default );
-		if ( empty( $title_alignment ) ) {
-			return '';
+		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
+		if ( ! is_string( $content_order ) ) {
+			$content_order = wp_json_encode( $default_order );
+		}
+		$content_order = json_decode( $content_order, true );
+		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
+			$title_key = array_search( 'title-meta', $content_order, true );
+			if ( $title_key !== false ) {
+				unset( $content_order[ $title_key ] );
+			}
 		}
 
-		foreach ( $title_alignment as $device_slug => $align_slug ) {
-			$classes[] = $device_slug . '-' . $align_slug;
+		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'featured-image' ) !== true || ! has_post_thumbnail() ) {
+			$thumb_index = array_search( 'thumbnail', $content_order, true );
+			if ( $thumb_index !== false ) {
+				unset( $content_order[ $thumb_index ] );
+			}
 		}
 
-		return implode( ' ', $classes );
+		return apply_filters( 'neve_layout_single_post_elements_order', $content_order );
 	}
 
 	/**
@@ -320,105 +311,26 @@ class Post_Layout extends Base_View {
 	}
 
 	/**
-	 * Get elements order.
+	 * Get alignment classes for the title on the cover layout.
 	 *
-	 * @return array
+	 * @param string $theme_mod Theme mod id.
+	 * @param string $default   The default value for the control.
+	 *
+	 * @return string
 	 */
-	private function get_content_order() {
-		$default_order = Layout_Single_Post::ordering_default();
+	private function get_alignment_classes( $theme_mod, $default = null ) {
+		$classes = [];
 
-		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
-		if ( ! is_string( $content_order ) ) {
-			$content_order = wp_json_encode( $default_order );
-		}
-		$content_order = json_decode( $content_order, true );
-		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
-			$title_key = array_search( 'title-meta', $content_order, true );
-			if ( $title_key !== false ) {
-				unset( $content_order[ $title_key ] );
-			}
+		$title_alignment = get_theme_mod( $theme_mod, $default );
+		if ( empty( $title_alignment ) ) {
+			return '';
 		}
 
-		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'featured-image' ) !== true || ! has_post_thumbnail() ) {
-			$thumb_index = array_search( 'thumbnail', $content_order, true );
-			if ( $thumb_index !== false ) {
-				unset( $content_order[ $thumb_index ] );
-			}
+		foreach ( $title_alignment as $device_slug => $align_slug ) {
+			$classes[] = $device_slug . '-' . $align_slug;
 		}
 
-		return apply_filters( 'neve_layout_single_post_elements_order', $content_order );
+		return implode( ' ', $classes );
 	}
 
-	/**
-	 * Add dynamic style subscribers.
-	 *
-	 * @param array $subscribers Css subscribers.
-	 *
-	 * @return array|mixed
-	 */
-	public function add_subscribers( $subscribers = [] ) {
-
-		$cover_padding_default                          = Layout_Single_Post::cover_padding_default();
-		$subscribers['body.single-post .nv-post-cover'] = [
-			Config::CSS_PROP_MIN_HEIGHT => [
-				Dynamic_Selector::META_KEY           => self::POST_COVER_HEIGHT,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
-				Dynamic_Selector::META_AS_JSON       => true,
-				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "300", "tablet": "300", "desktop": "300" }',
-			],
-			Config::CSS_PROP_COLOR      => [
-				Dynamic_Selector::META_KEY     => self::POST_COVER_TEXT_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
-			],
-		];
-
-		$subscribers['body.single-post .nv-post-cover .nv-overlay'] = [
-			Config::CSS_PROP_BACKGROUND_COLOR => [
-				Dynamic_Selector::META_KEY     => self::POST_COVER_BACKGROUND_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
-			],
-			Config::CSS_PROP_MIX_BLEND_MODE   => [
-				Dynamic_Selector::META_KEY     => self::POST_COVER_BLEND_MODE,
-				Dynamic_Selector::META_DEFAULT => 'normal',
-			],
-			Config::CSS_PROP_OPACITY          => [
-				Dynamic_Selector::META_KEY           => self::POST_COVER_OVERLAY_OPACITY,
-				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 0.5, "tablet": 0.5, "desktop": 0.5 }',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-			],
-		];
-
-
-		$subscribers['body.single-post .nv-post-cover .nv-meta-list li, body.single-post .nv-post-cover .nv-meta-list a'] = [
-			Config::CSS_PROP_COLOR => [
-				Dynamic_Selector::META_KEY     => self::POST_COVER_TEXT_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
-			],
-		];
-
-		$subscribers['.nv-title-meta-wrap.is-boxed'] = [
-			Config::CSS_PROP_PADDING          => [
-				Dynamic_Selector::META_KEY           => self::POST_COVER_BOXED_TITLE_PADDING,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
-				Dynamic_Selector::META_DEFAULT       => $cover_padding_default,
-			],
-			Config::CSS_PROP_BACKGROUND_COLOR => [
-				Dynamic_Selector::META_KEY     => self::POST_COVER_BOXED_TITLE_BACKGROUND,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
-			],
-		];
-
-		$subscribers['body.single-post .nv-post-cover .nv-cover-container'] = [
-			Config::CSS_PROP_PADDING => [
-				Dynamic_Selector::META_KEY           => self::POST_COVER_PADDING,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
-				Dynamic_Selector::META_DEFAULT       => $cover_padding_default,
-			],
-		];
-
-		return $subscribers;
-	}
 }

@@ -262,3 +262,30 @@ function sanitize_position( $input ) {
 
 	return $input;
 }
+
+/**
+ * Sanitize meta order control.
+ */
+function sanitize_meta_ordering( $value ) {
+	$allowed = array(
+		'author',
+		'category',
+		'date',
+		'comments',
+		'reading',
+	);
+
+	if ( empty( $value ) ) {
+		return $allowed;
+	}
+
+	$decoded = json_decode( $value, true );
+
+	foreach ( $decoded as $val ) {
+		if ( ! in_array( $val, $allowed, true ) ) {
+			return $allowed;
+		}
+	}
+
+	return $value;
+}
