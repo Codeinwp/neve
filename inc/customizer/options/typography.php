@@ -10,6 +10,8 @@
 
 namespace Neve\Customizer\Options;
 
+use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
@@ -140,10 +142,11 @@ class Typography extends Base_Customizer {
 		 */
 		$this->add_control(
 			new Control(
-				'neve_body_font_family',
+				Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
 				[
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
+					'default'           => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 				],
 				[
 					'label'                 => esc_html__( 'Body', 'neve' ),
@@ -280,7 +283,7 @@ class Typography extends Base_Customizer {
 
 			$this->add_control(
 				new Control(
-					'neve_' . $heading_id . '_typeface_general',
+					Mods::get_alternative_mod( 'neve_' . $heading_id . '_typeface_general' ),
 					[
 						'transport' => $this->selective_refresh,
 						'default'   => $this->get_headings_typography_defaults( $heading_id ),
@@ -482,13 +485,15 @@ class Typography extends Base_Customizer {
 	}
 
 	/**
-	 * Get default value for headings typography.
+	 * Legacy default values for headings.
 	 *
-	 * @param string $heading_type the heading type [h1,h2,...h6].
+	 * @param $heading_type
+	 *
+	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
-	private function get_headings_typography_defaults( $heading_type ) {
+	private function get_legacy_headings_defaults( $heading_type ) {
 		$default_value = array(
 			'fontWeight'    => '600',
 			'textTransform' => 'none',
@@ -540,6 +545,34 @@ class Typography extends Base_Customizer {
 		$default_value['fontSize'] = ! empty( $old_font_size ) ? json_decode( $old_font_size, true ) : $this->headings_default_sizes[ $heading_type ];
 
 		return $default_value;
+	}
+
+		/**
+		 * Get default value for headings typography.
+		 *
+		 * @param string $heading_type the heading type [h1,h2,...h6].
+		 *
+		 * @return array
+		 */
+	private function get_headings_typography_defaults( $heading_type ) {
+		if ( ! neve_is_new_skin() ) {
+			return $this->get_legacy_headings_defaults( $heading_type );
+		}
+
+		return array(
+			'fontWeight'    => '700',
+			'textTransform' => 'none',
+			'letterSpacing' => array(
+				'mobile'  => 0,
+				'tablet'  => 0,
+				'desktop' => 0,
+			),
+			'lineHeight'    => array(
+				'mobile'  => 1.6,
+				'tablet'  => 1.6,
+				'desktop' => 1.6,
+			),
+		);
 	}
 }
 

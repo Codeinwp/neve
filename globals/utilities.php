@@ -1336,6 +1336,44 @@ function neve_get_headings_selectors() {
  * @return array
  */
 function neve_get_global_colors_default( $migrated = false ) {
+	if( neve_is_new_skin() ) {
+		return [
+			'activePalette' => 'base',
+			'palettes'      => [
+				'base'     => [
+					'name'          => __( 'Base', 'neve' ),
+					'allowDeletion' => false,
+					'colors'        => [
+						'nv-primary-accent'   => '#0073AA',
+						'nv-secondary-accent' => '#38A7DC',
+						'nv-site-bg'          => '#FFFFFF',
+						'nv-light-bg'         => '#F8F8F8',
+						'nv-dark-bg'          => '#000000',
+						'nv-text-color'       => '#000000',
+						'nv-text-dark-bg'     => '#FFFFFF',
+						'nv-c-1'              => '#36363E',
+						'nv-c-2'              => '#F37262',
+					],
+				],
+				'darkMode' => [
+					'name'          => __( 'Dark Mode', 'neve' ),
+					'allowDeletion' => false,
+					'colors'        => [
+						'nv-primary-accent'   => '#26BCDB',
+						'nv-secondary-accent' => '#1F90A6',
+						'nv-site-bg'          => '#121212',
+						'nv-light-bg'         => '#1A1A1A',
+						'nv-dark-bg'          => '#1A1A1A',
+						'nv-text-color'       => '#FFFFFF',
+						'nv-text-dark-bg'     => 'rgba(255,255,255,0.8)',
+						'nv-c-1'              => '#77B978',
+						'nv-c-2'              => '#F37262',
+					],
+				],
+			],
+		];
+
+	}
 
 	$old_link_color       = get_theme_mod( 'neve_link_color', '#0366d6' );
 	$old_link_hover_color = get_theme_mod( 'neve_link_hover_color', '#0e509a' );
@@ -1402,3 +1440,5 @@ function neve_is_new_builder() {
 function neve_is_new_skin() {
 	return get_theme_mod( 'neve_new_skin', true );
 }
+
+has_blocks();

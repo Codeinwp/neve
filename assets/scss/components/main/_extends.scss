@@ -1,11 +1,14 @@
 %nv-button {
   cursor: pointer;
+  font-weight: 700;
 }
 
 %nv-button-secondary {
-  cursor: pointer;
+  padding: var(--secondaryBtnPadding, 20px 40px);
+  border-radius: var(--secondaryBtnBorderRadius, 3px);
 }
 
 %nv-button-primary {
-  cursor: pointer;
+  padding: var(--primaryBtnPadding, 20px 40px);
+  border-radius: var(--primaryBtnBorderRadius, 3px);
 }

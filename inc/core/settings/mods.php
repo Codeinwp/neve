@@ -203,4 +203,33 @@ class Mods {
 		return json_decode( self::get( $key, $default ), $as_array );
 	}
 
+	/**
+	 * Get alternative key of theme mod based on skin mode.
+	 *
+	 * @param string $key theme mod key.
+	 *
+	 * @return string
+	 */
+	public static function get_alternative_mod( $key ) {
+		return neve_is_new_skin() ? $key . '_v2' : $key;
+	}
+	/**
+	 * Get alternative mod default.
+	 *
+	 * @param string $key theme mod key.
+	 *
+	 * @return string
+	 */
+	public static function get_alternative_mod_default( $key ) {
+		$new = neve_is_new_skin();
+		switch ( $key ) {
+			case Config::MODS_FONT_GENERAL:
+				return $new ? 'Inter' : false;
+			case 'headings_weight':
+				return $new ? '700' : '600';
+			default:
+				return false;
+		}
+	}
+
 }

@@ -10,6 +10,9 @@
 
 namespace Neve\Views;
 
+use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
+
 /**
  * Class Typography
  *
@@ -31,7 +34,9 @@ class Font_Manager extends Base_View {
 	 */
 	final public static function add_google_font( $font_family, $font_weight = '400' ) {
 		if ( empty( $font_family ) ) {
-			$body_font = get_theme_mod( 'neve_body_font_family' );
+			$body_mod     = Mods::get_alternative_mod( Config::MODS_FONT_GENERAL );
+			$body_default = Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL );
+			$body_font    = Mods::get( $body_mod, $body_default );
 			if ( empty( $body_font ) ) {
 				return;
 			}

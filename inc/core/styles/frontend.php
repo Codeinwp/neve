@@ -139,15 +139,24 @@ class Frontend extends Generator {
 	}
 
 	/**
-	 * Add css for blog typography.
+	 * Add css for blog layout.
+	 *
+	 * Removed grid in new skin CSS so this should handle the grid.
+	 *
+	 * @since 3.0.0
 	 */
 	public function setup_blog_layout() {
 		if ( ! neve_is_new_skin() ) {
 			return false;
 		}
 
-		$this->_subscribers['.posts-wrapper article'] = [
-			Config::CSS_PROP_WIDTH => [
+		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
+		if ( ! in_array( $blog_layout, [ 'grid', 'covers' ], true ) ) {
+			return false;
+		}
+
+		$this->_subscribers[':root'] = [
+			'--postWidth' => [
 				Dynamic_Selector::META_KEY           => 'neve_grid_layout',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => '{"desktop":1,"tablet":1,"mobile":1}',
@@ -183,16 +192,17 @@ class Frontend extends Generator {
 			],
 			Config::CSS_PROP_FONT_WEIGHT    => [
 				Dynamic_Selector::META_KEY => Config::MODS_TYPEFACE_GENERAL . '.fontWeight',
-				'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+				'font'                     => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
 			],
 			Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_TYPEFACE_GENERAL . '.textTransform',
 			Config::CSS_PROP_FONT_FAMILY    => [
-				Dynamic_Selector::META_KEY => Config::MODS_FONT_GENERAL,
+				Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+				Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 			],
 		];
 		foreach ( neve_get_headings_selectors() as $id => $heading_selector
 		) {
-			$heading_mod                             = sprintf( 'neve_%s_typeface_general', $id );
+			$heading_mod                             = Mods::get_alternative_mod( sprintf( 'neve_%s_typeface_general', $id ) );
 			$this->_subscribers[ $heading_selector ] = [
 				Config::CSS_PROP_FONT_SIZE      => [
 					Dynamic_Selector::META_KEY           => $heading_mod . '.fontSize',
@@ -209,8 +219,9 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
 				Config::CSS_PROP_FONT_WEIGHT    => [
-					Dynamic_Selector::META_KEY => $heading_mod . '.fontWeight',
-					'font'                     => 'mods_' . Config::MODS_FONT_HEADINGS,
+					Dynamic_Selector::META_KEY     => $heading_mod . '.fontWeight',
+					Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( 'headings_weight' ),
+					'font'                         => 'mods_' . Config::MODS_FONT_HEADINGS,
 				],
 				Config::CSS_PROP_TEXT_TRANSFORM => $heading_mod . '.textTransform',
 				Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_HEADINGS,
@@ -237,10 +248,13 @@ class Frontend extends Generator {
 				],
 				Config::CSS_PROP_FONT_WEIGHT    => [
 					Dynamic_Selector::META_KEY => Config::MODS_TYPEFACE_GENERAL . '.fontWeight',
-					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+					'font'                     => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
 				],
 				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_TYPEFACE_GENERAL . '.textTransform',
-				Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_GENERAL,
+				Config::CSS_PROP_FONT_FAMILY    => [
+					Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+					Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
+				],
 			];
 		}
 	}
@@ -286,7 +300,7 @@ class Frontend extends Generator {
 				],
 				Config::CSS_PROP_FONT_WEIGHT    => [
 					Dynamic_Selector::META_KEY => Config::MODS_BUTTON_TYPEFACE . '.fontWeight',
-					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+					'font'                     => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
 				],
 				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_BUTTON_TYPEFACE . '.textTransform',
 			],
@@ -344,7 +358,7 @@ class Frontend extends Generator {
 				],
 				Config::CSS_PROP_FONT_WEIGHT    => [
 					Dynamic_Selector::META_KEY => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontWeight',
-					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+					'font'                     => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
 				],
 				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.textTransform',
 			],
@@ -695,7 +709,10 @@ class Frontend extends Generator {
 			Config::CSS_PROP_FONT_WEIGHT      => [
 				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontWeight',
 			],
-			Config::CSS_PROP_FONT_FAMILY      => Config::MODS_FONT_GENERAL,
+			Config::CSS_PROP_FONT_FAMILY      => [
+				Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+				Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
+			],
 		];
 
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_LABELS ] = [
@@ -737,7 +754,10 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_DEFAULT       => 12,
 				Dynamic_Selector::META_IS_RESPONSIVE => false,
 			],
-			Config::CSS_PROP_FONT_FAMILY   => Config::MODS_FONT_GENERAL,
+			Config::CSS_PROP_FONT_FAMILY   => [
+				Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+				Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
+			],
 		];
 	}
 

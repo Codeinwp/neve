@@ -275,11 +275,13 @@ msgstr ""
 msgid "You appear to be running the Neve theme from source code. Please finish installation by running %s."
 msgstr ""
 
-#: globals/utilities.php:1351
+#: globals/utilities.php:1344
+#: globals/utilities.php:1389
 msgid "Base"
 msgstr ""
 
-#: globals/utilities.php:1366
+#: globals/utilities.php:1359
+#: globals/utilities.php:1404
 msgid "Dark Mode"
 msgstr ""
 
@@ -1036,7 +1038,7 @@ msgid "Checkout URL"
 msgstr ""
 
 #: header-footer-grid/Core/Settings/Manager.php:177
-#: inc/customizer/options/typography.php:107
+#: inc/customizer/options/typography.php:109
 msgid "General"
 msgstr ""
 
@@ -1607,7 +1609,7 @@ msgstr ""
 
 #: inc/customizer/options/layout_sidebar.php:164
 #: inc/customizer/options/layout_single_post.php:42
-#: inc/customizer/options/typography.php:339
+#: inc/customizer/options/typography.php:341
 msgid "Single Post"
 msgstr ""
 
@@ -1679,45 +1681,45 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: inc/customizer/options/typography.php:111
+#: inc/customizer/options/typography.php:113
 msgid "Headings"
 msgstr ""
 
-#: inc/customizer/options/typography.php:115
+#: inc/customizer/options/typography.php:117
 msgid "Blog"
 msgstr ""
 
-#: inc/customizer/options/typography.php:150
+#: inc/customizer/options/typography.php:152
 msgid "Body"
 msgstr ""
 
-#: inc/customizer/options/typography.php:213
+#: inc/customizer/options/typography.php:215
 msgid "Fallback Font"
 msgstr ""
 
-#: inc/customizer/options/typography.php:220
+#: inc/customizer/options/typography.php:222
 msgid "Learn more about fallback fonts"
 msgstr ""
 
-#: inc/customizer/options/typography.php:322
-#: inc/customizer/options/typography.php:338
+#: inc/customizer/options/typography.php:324
+#: inc/customizer/options/typography.php:340
 msgid "Post title"
 msgstr ""
 
-#: inc/customizer/options/typography.php:323
+#: inc/customizer/options/typography.php:325
 msgid "Blog Archive"
 msgstr ""
 
-#: inc/customizer/options/typography.php:328
+#: inc/customizer/options/typography.php:330
 msgid "Post excerpt"
 msgstr ""
 
-#: inc/customizer/options/typography.php:333
-#: inc/customizer/options/typography.php:344
+#: inc/customizer/options/typography.php:335
+#: inc/customizer/options/typography.php:346
 msgid "Post meta"
 msgstr ""
 
-#: inc/customizer/options/typography.php:349
+#: inc/customizer/options/typography.php:351
 msgid "Comments reply title"
 msgstr ""
 
@@ -1870,7 +1872,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: inc/views/pluggable/pagination.php:172
-#: inc/views/template_parts.php:322
+#: inc/views/template_parts.php:330
 msgid "Pages:"
 msgstr ""
 
@@ -1886,7 +1888,7 @@ msgstr ""
 msgid "Out of stock"
 msgstr ""
 
-#: inc/views/template_parts.php:264
+#: inc/views/template_parts.php:272
 msgid "Read More"
 msgstr ""
 
