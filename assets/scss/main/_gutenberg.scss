@@ -16,10 +16,10 @@
 body {
   &.nv-sidebar-left,
   &.nv-sidebar-right {
-	.alignfull, .alignwide {
-	  max-width: 100%;
-	  margin-left: auto;
-	}
+	  .alignfull, .alignwide {
+		max-width: 100%;
+		margin-left: auto;
+	  }
   }
 }
 
