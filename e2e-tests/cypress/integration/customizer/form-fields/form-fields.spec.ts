@@ -40,7 +40,14 @@ describe('Form fields', function () {
 	});
 	it('Checks up the button', function () {
 		cy.visit('/hello-world');
-		cy.get('#submit');
-		//todo - check if the button is primary
+		cy.get('#submit')
+			.should('have.css', 'background-color', 'rgb(3, 102, 214)')
+			.and('have.css', 'color', 'rgb(255, 255, 255)')
+			.and('have.css', 'border-radius', '3px')
+			.and('have.css', 'text-transform', 'uppercase')
+			.and('have.css', 'padding-top', '8px')
+			.and('have.css', 'padding-bottom', '8px')
+			.and('have.css', 'padding-right', '12px')
+			.and('have.css', 'padding-left', '12px');
 	});
 });
