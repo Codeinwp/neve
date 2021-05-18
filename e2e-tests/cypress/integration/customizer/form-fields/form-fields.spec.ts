@@ -1,5 +1,5 @@
 describe('Form fields', function () {
-	beforeEach('Sets up customizer', function () {
+	before('Sets up customizer', function () {
 		cy.fixture('customizer/form-fields/form-fields-setup').then((componentSetup) => {
 			cy.setCustomizeSettings(componentSetup);
 		});
