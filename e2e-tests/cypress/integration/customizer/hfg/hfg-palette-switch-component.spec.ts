@@ -7,8 +7,9 @@ describe('Palette Switch component', function () {
 
 	it('Changes the color palette by clicking', function () {
 		cy.visit('/');
-    cy.get('')
-		cy.get('body').should('have.css', 'background-color', 'rgb(255, 255, 255)');
+		cy.get('h2').should('have.css', 'color', 'rgb(57, 57, 57)');
+		cy.get('.icon > svg > path').click();
+		cy.get('h2').should('have.css', 'color', 'rgb(255, 255, 255)');
 	});
 
 	it('Removes collor palette from website', function () {});
