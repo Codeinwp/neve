@@ -22,10 +22,14 @@ type Props = {
 };
 
 const Row: React.FC<Props> = ({ items, rowId }) => {
-	const { actions, dragging, builder, hasColumns } = useContext(
-		BuilderContext
-	);
-	const { updateLayout } = actions;
+	const {
+		actions,
+		dragging,
+		builder,
+		hasColumns,
+		previewSidebar,
+	} = useContext(BuilderContext);
+	const { updateLayout, togglePreviewSidebar } = actions;
 	const slots: SlotTypes[] = ['left', 'c-left', 'center', 'c-right', 'right'];
 
 	const section = `hfg_${builder}_layout_${rowId}`;
@@ -35,7 +39,6 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 	const [columns, setColumns] = useState<number>(0);
 	const [colLayout, setColLayout] = useState('equal');
 	const [currentRow, setCurrentRow] = useState(false);
-	const [sidebarVisible, setSidebarVisible] = useState(false);
 
 	const focusRowSection = () => {
 		if (rowId === 'sidebar') {
@@ -118,13 +121,13 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 			'neve-toggle-navbar',
 			(e: { status: boolean }) => {
 				const { status } = e;
-				setSidebarVisible(status);
+				togglePreviewSidebar(status);
 			}
 		);
 
 		// Toggle theme sidebar if it was previously opened on customizer refresh.
 		window.wp.customize.previewer.bind('ready', () => {
-			setSidebarVisible(false);
+			togglePreviewSidebar(false);
 		});
 	}, []);
 
@@ -133,7 +136,7 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 		window.wp.customize.previewer.send(
 			status ? 'header_sidebar_open' : 'header_sidebar_close'
 		);
-		setSidebarVisible(status);
+		togglePreviewSidebar(status);
 	};
 
 	if (rowId === 'sidebar') {
@@ -154,11 +157,11 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 					{hasItems && (
 						<Button
 							onClick={() => {
-								toggleThemeSidebar(!sidebarVisible);
+								toggleThemeSidebar(!previewSidebar);
 							}}
-							icon={sidebarVisible ? 'hidden' : 'visibility'}
+							icon={previewSidebar ? 'hidden' : 'visibility'}
 							className="row-settings"
-							isPrimary={sidebarVisible}
+							isPrimary={previewSidebar}
 							label={__('Toggle Sidebar', 'neve')}
 						/>
 					)}

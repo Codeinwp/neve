@@ -56,6 +56,7 @@ const HFGBuilder: React.FC<Props> = ({
 }) => {
 	const [device, setDevice] = useState<DeviceTypes>('desktop');
 	const [dragging, setDragging] = useState<boolean>(false);
+	const [previewSidebar, togglePreviewSidebar] = useState<boolean>(false);
 	const [currentSection, setCurrentSection] = useState<string>('');
 
 	const getSidebarItems = () => {
@@ -265,6 +266,7 @@ const HFGBuilder: React.FC<Props> = ({
 		removeItem,
 		setDevice,
 		setSidebarItems,
+		togglePreviewSidebar,
 	};
 
 	return (
@@ -277,6 +279,7 @@ const HFGBuilder: React.FC<Props> = ({
 				builder,
 				hasColumns,
 				device,
+				previewSidebar,
 			}}
 		>
 			<div>

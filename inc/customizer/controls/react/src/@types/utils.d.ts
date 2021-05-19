@@ -97,6 +97,7 @@ type BuilderActions = {
 	removeItem: RemoveItem;
 	setDevice: Dispatch<SetStateAction<DeviceTypes>>;
 	setSidebarItems: (value: ItemInterface[]) => void;
+	togglePreviewSidebar: (value: boolean) => void;
 };
 
 declare global {
