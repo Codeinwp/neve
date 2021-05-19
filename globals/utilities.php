@@ -1336,7 +1336,7 @@ function neve_get_headings_selectors() {
  * @return array
  */
 function neve_get_global_colors_default( $migrated = false ) {
-	if( neve_is_new_skin() ) {
+	if ( neve_is_new_skin() ) {
 		return [
 			'activePalette' => 'base',
 			'palettes'      => [
@@ -1440,5 +1440,3 @@ function neve_is_new_builder() {
 function neve_is_new_skin() {
 	return get_theme_mod( 'neve_new_skin', true );
 }
-
-has_blocks();

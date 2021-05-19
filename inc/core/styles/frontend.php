@@ -28,6 +28,7 @@ class Frontend extends Generator {
 				],
 			],
 		];
+		$this->setup_blog_layout();
 		$this->setup_form_buttons();
 		$this->setup_legacy_gutenberg_palette();
 		$this->setup_layout_subscribers();
@@ -35,7 +36,6 @@ class Frontend extends Generator {
 		$this->setup_typography();
 		$this->setup_blog_typography();
 		$this->setup_blog_colors();
-		$this->setup_blog_layout();
 		$this->setup_form_fields_style();
 	}
 
@@ -164,6 +164,7 @@ class Frontend extends Generator {
 					if ( $value < 1 ) {
 						$value = 1;
 					}
+
 					return sprintf( '%s:%s;', $css_prop, 100 / $value . '%' );
 				},
 			],
@@ -172,9 +173,11 @@ class Frontend extends Generator {
 	}
 
 	/**
-	 * Setup typography subscribers.
+	 * Setups the legacy typography, used before 3.0.
+	 *
+	 * @since 3.0.0
 	 */
-	public function setup_typography() {
+	public function setup_legacy_typography() {
 		$this->_subscribers[ Config::CSS_SELECTOR_TYPEFACE_GENERAL ] = [
 			Config::CSS_PROP_FONT_SIZE      => [
 				Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.fontSize',
@@ -237,8 +240,8 @@ class Frontend extends Generator {
 			];
 		}
 
-
 		$extra_selectors_body = apply_filters( 'neve_body_font_family_selectors', '' );
+
 		if ( ! empty( $extra_selectors_body ) ) {
 			$extra_selectors_body                        = ltrim( $extra_selectors_body, ', ' );
 			$this->_subscribers[ $extra_selectors_body ] = [
@@ -255,6 +258,89 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
 					Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 				],
+			];
+		}
+	}
+
+	/**
+	 * Setup typography subscribers.
+	 */
+	public function setup_typography() {
+		if ( ! neve_is_new_skin() ) {
+			$this->setup_legacy_typography();
+
+			return;
+		}
+
+		$default = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_GENERAL );
+		$mod_key = Mods::get_alternative_mod( Config::MODS_TYPEFACE_GENERAL );
+
+		$this->_subscribers[':root']['--bodyFontSize']      = [
+			Dynamic_Selector::META_KEY           => $mod_key . '.fontSize',
+			Dynamic_Selector::META_DEFAULT       => $default['fontSize'],
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			Dynamic_Selector::META_SUFFIX        => 'px',
+		];
+		$this->_subscribers[':root']['--bodyLineHeight']    = [
+			Dynamic_Selector::META_KEY           => $mod_key . '.lineHeight',
+			Dynamic_Selector::META_DEFAULT       => $default['lineHeight'],
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			Dynamic_Selector::META_SUFFIX        => '',
+		];
+		$this->_subscribers[':root']['--bodyLetterSpacing'] = [
+			Dynamic_Selector::META_KEY           => $mod_key . '.letterSpacing',
+			Dynamic_Selector::META_DEFAULT       => $default['letterSpacing'],
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			Dynamic_Selector::META_SUFFIX        => '',
+		];
+		$this->_subscribers[':root']['--bodyTextTransform'] = [
+			Dynamic_Selector::META_KEY => $mod_key . '.textTransform',
+		];
+		$this->_subscribers[':root']['--bodyFontFamily']    = [
+			Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+			Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
+		];
+
+
+		$this->_subscribers[':root']['--headingsFontFamily']    = [
+			Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_HEADINGS ),
+			Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_HEADINGS ),
+		];
+
+		foreach ( neve_get_headings_selectors() as $id => $heading_selector ) {
+			$composed_key = sprintf( 'neve_%s_typeface_general', $id );
+			$mod_key      = Mods::get_alternative_mod( $composed_key );
+			$default      = Mods::get_alternative_mod_default( $composed_key );
+
+			$this->_subscribers[':root'][ sprintf( '--' . $id . 'FontSize' ) ]      = [
+				Dynamic_Selector::META_KEY           => $mod_key . '.fontSize',
+				Dynamic_Selector::META_DEFAULT       => $default['fontSize'],
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+
+			];
+			$this->_subscribers[':root'][ sprintf( '--' . $id . 'FontWeight' ) ]    = [
+				Dynamic_Selector::META_KEY     => $mod_key . '.fontWeight',
+				Dynamic_Selector::META_DEFAULT => $default['fontWeight'],
+				'font'                         => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_HEADINGS ),
+			];
+
+			$this->_subscribers[':root'][ sprintf( '--' . $id . 'LineHeight' ) ]    = [
+				Dynamic_Selector::META_KEY           => $mod_key . '.lineHeight',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => $default['lineHeight'],
+				Dynamic_Selector::META_SUFFIX        => '',
+			];
+
+			$this->_subscribers[':root'][ sprintf( '--' . $id . 'LetterSpacing' ) ] = [
+				Dynamic_Selector::META_KEY           => $mod_key . '.letterSpacing',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => $default['letterSpacing'],
+			];
+
+			$this->_subscribers[':root'][ sprintf( '--' . $id . 'TextTransform' ) ] = [
+				Dynamic_Selector::META_KEY     => $mod_key . '.textTransform',
+				Dynamic_Selector::META_DEFAULT => $default['textTransform'],
 			];
 		}
 	}
@@ -482,14 +568,14 @@ class Frontend extends Generator {
 		$is_advanced_on = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, false );
 		if ( ! $is_advanced_on ) {
 
-			$this->_subscribers['#content .container .col, #content .container-fluid .col']                             = [
+			$this->_subscribers['#content .container .col, #content .container-fluid .col']                                                               = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_SUFFIX      => '%',
 					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				],
 			];
-			$this->_subscribers['.alignfull > [class*="__inner-container"], .alignwide > [class*="__inner-container"]'] = [
+			$this->_subscribers['.alignfull > [class*="__inner-container"], .alignwide > [class*="__inner-container"]']                                   = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY           => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_DEFAULT       => 70,
@@ -516,7 +602,7 @@ class Frontend extends Generator {
 					},
 				],
 			];
-			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar'] = [
+			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar']                                                                        = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_FILTER      => 'minus_100',
@@ -652,7 +738,7 @@ class Frontend extends Generator {
 				},
 			],
 		];
-		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap'] = [
+		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap']                                                                         = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,

@@ -193,11 +193,33 @@ class Css_Prop {
 			case Config::CSS_PROP_TEXT_TRANSFORM:
 			case Config::CSS_PROP_BOX_SHADOW:
 			case Config::CSS_PROP_GRID_TEMPLATE_COLS:
-			default:
 				return sprintf( ' %s: %s; ', $css_prop, $value );
+				break;
+			default:
+				$suffix = self::get_suffix( $meta, $device );
+
+				return sprintf( ' %s: %s%s; ', $css_prop, $value, $suffix );
 				break;
 		}
 
 		return '';
+	}
+
+	/**
+	 * Get suffix for generic settings.
+	 *
+	 * @param array $meta    Meta array.
+	 * @param string $device Current device.
+	 *
+	 * @return string
+	 */
+	public static function get_suffix( $meta, $device ) {
+		$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : '';
+		if ( isset( $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) && $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) {
+			$all_value = Mods::get( $meta['key'] );
+			$suffix    = isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : $suffix );
+		}
+
+		return $suffix;
 	}
 }

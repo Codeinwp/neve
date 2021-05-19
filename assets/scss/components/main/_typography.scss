@@ -8,9 +8,10 @@ html {
 body {
   background-color: var(--nv-site-bg);
   color: var(--nv-text-color);
-  font-size: $body-size;
-  line-height: $line-height;
-  font-family: $font-family;
+  font-size: var(--bodyFontSize);
+  line-height: var(--bodyLineHeight);
+  letter-spacing: var(--bodyLetterSpacing);
+  font-family: var(--bodyFontFamily), var(--nv-fallback-ff);
   overflow-x: hidden;
   direction: ltr;
 }
@@ -20,6 +21,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0;
   margin-bottom: $h-margin-bottom;
   font-weight: $h-font-weight;
+  font-family: var(--headingsFontFamily), var(--nv-fallback-ff);
 }
 
 p {
@@ -43,66 +45,31 @@ ins {
 }
 
 h1 {
-  font-size: $h1-mobile-size;
+  font-size: var(--h1FontSize);
+  font-weight: var(--h1FontWeight);
 }
 
 h2 {
-  font-size: $h2-mobile-size;
+  font-size: var(--h2FontSize);
+  font-weight: var(--h2FontWeight);
 }
 
 h3 {
-  font-size: $h3-mobile-size;
+  font-size: var(--h3FontSize);
+  font-weight: var(--h3FontWeight);
 }
 
 h4 {
-  font-size: $h4-mobile-size;
+  font-size: var(--h4FontSize);
+  font-weight: var(--h4FontWeight);
 }
 
 h5 {
-  font-size: $h5-mobile-size;
+  font-size: var(--h5FontSize);
+  font-weight: var(--h5FontWeight);
 }
 
 h6 {
-  font-size: $h6-mobile-size;
-}
-
-@mixin typography--tablet() {
-  h1 {
-    font-size: $h1-tablet-size;
-  }
-  h2 {
-    font-size: $h2-tablet-size;
-  }
-  h3 {
-    font-size: $h3-tablet-size;
-  }
-  h4 {
-    font-size: $h4-tablet-size;
-  }
-  h5 {
-    font-size: $h5-tablet-size;
-  }
-  h6 {
-    font-size: $h6-tablet-size;
-  }
-}
-@mixin typography--laptop() {
-  h1 {
-    font-size: $h1-size;
-  }
-  h2 {
-    font-size: $h2-size;
-  }
-  h3 {
-    font-size: $h3-size;
-  }
-  h4 {
-    font-size: $h4-size;
-  }
-  h5 {
-    font-size: $h5-size;
-  }
-  h6 {
-    font-size: $h6-size;
-  }
+  font-size: var(--h6FontSize);
+  font-weight: var(--h6FontWeight);
 }

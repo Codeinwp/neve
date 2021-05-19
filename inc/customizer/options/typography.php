@@ -23,74 +23,6 @@ use Neve\Customizer\Types\Section;
  */
 class Typography extends Base_Customizer {
 	/**
-	 * Headings default font sizes.
-	 *
-	 * @var array
-	 */
-	private $headings_default_sizes = [
-		'h1' => [
-			'mobile'  => '1.5',
-			'tablet'  => '1.5',
-			'desktop' => '2',
-			'suffix'  => [
-				'mobile'  => 'em',
-				'tablet'  => 'em',
-				'desktop' => 'em',
-			],
-		],
-		'h2' => [
-			'mobile'  => '1.3',
-			'tablet'  => '1.3',
-			'desktop' => '1.75',
-			'suffix'  => [
-				'mobile'  => 'em',
-				'tablet'  => 'em',
-				'desktop' => 'em',
-			],
-		],
-		'h3' => [
-			'mobile'  => '1.1',
-			'tablet'  => '1.1',
-			'desktop' => '1.5',
-			'suffix'  => [
-				'mobile'  => 'em',
-				'tablet'  => 'em',
-				'desktop' => 'em',
-			],
-		],
-		'h4' => [
-			'mobile'  => '1',
-			'tablet'  => '1',
-			'desktop' => '1.25',
-			'suffix'  => [
-				'mobile'  => 'em',
-				'tablet'  => 'em',
-				'desktop' => 'em',
-			],
-		],
-		'h5' => [
-			'mobile'  => '0.75',
-			'tablet'  => '0.75',
-			'desktop' => '1',
-			'suffix'  => [
-				'mobile'  => 'em',
-				'tablet'  => 'em',
-				'desktop' => 'em',
-			],
-		],
-		'h6' => [
-			'mobile'  => '0.75',
-			'tablet'  => '0.75',
-			'desktop' => '1',
-			'suffix'  => [
-				'mobile'  => 'em',
-				'tablet'  => 'em',
-				'desktop' => 'em',
-			],
-		],
-	];
-
-	/**
 	 * Add controls
 	 */
 	public function add_controls() {
@@ -159,12 +91,13 @@ class Typography extends Base_Customizer {
 			)
 		);
 
+		$defaults = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_GENERAL );
 		$this->add_control(
 			new Control(
-				'neve_typeface_general',
+				Mods::get_alternative_mod( Config::MODS_TYPEFACE_GENERAL ),
 				[
 					'transport' => $this->selective_refresh,
-					'default'   => $this->get_body_typography_defaults(),
+					'default'   => $defaults,
 				],
 				[
 					'priority'              => 11,
@@ -172,26 +105,9 @@ class Typography extends Base_Customizer {
 					'input_attrs'           => array(
 						'size_units'             => [ 'px' ],
 						'weight_default'         => 400,
-						'size_default'           => array(
-							'suffix'  => array(
-								'mobile'  => 'px',
-								'tablet'  => 'px',
-								'desktop' => 'px',
-							),
-							'mobile'  => 15,
-							'tablet'  => 16,
-							'desktop' => 16,
-						),
-						'line_height_default'    => array(
-							'mobile'  => 1.6,
-							'tablet'  => 1.6,
-							'desktop' => 1.6,
-						),
-						'letter_spacing_default' => array(
-							'mobile'  => 0,
-							'tablet'  => 0,
-							'desktop' => 0,
-						),
+						'size_default'           => $defaults['fontSize'],
+						'line_height_default'    => $defaults['lineHeight'],
+						'letter_spacing_default' => $defaults['letterSpacing'],
 					),
 					'type'                  => 'neve_typeface_control',
 					'live_refresh_selector' => 'body, .site-title',
@@ -260,7 +176,7 @@ class Typography extends Base_Customizer {
 
 		$selectors = neve_get_headings_selectors();
 		$priority  = 20;
-		foreach ( $this->headings_default_sizes as $heading_id => $default_values ) {
+		foreach ( [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] as $heading_id ) {
 			$this->add_control(
 				new Control(
 					'neve_' . $heading_id . '_accordion_wrap',
@@ -281,30 +197,24 @@ class Typography extends Base_Customizer {
 				)
 			);
 
+			$mod_key        = 'neve_' . $heading_id . '_typeface_general';
+			$default_values = Mods::get_alternative_mod_default( $mod_key );
 			$this->add_control(
 				new Control(
-					Mods::get_alternative_mod( 'neve_' . $heading_id . '_typeface_general' ),
+					Mods::get_alternative_mod( $mod_key ),
 					[
 						'transport' => $this->selective_refresh,
-						'default'   => $this->get_headings_typography_defaults( $heading_id ),
+						'default'   => $default_values,
 					],
 					[
 						'priority'              => $priority += 1,
 						'section'               => 'neve_typography_headings',
 						'input_attrs'           => array(
 							'size_units'             => [ 'em', 'px' ],
-							'weight_default'         => 600,
-							'size_default'           => $this->headings_default_sizes[ $heading_id ],
-							'line_height_default'    => array(
-								'mobile'  => 1.6,
-								'tablet'  => 1.6,
-								'desktop' => 1.6,
-							),
-							'letter_spacing_default' => array(
-								'mobile'  => 0,
-								'tablet'  => 0,
-								'desktop' => 0,
-							),
+							'weight_default'         => $default_values['fontWeight'],
+							'size_default'           => $default_values['fontSize'],
+							'line_height_default'    => $default_values['lineHeight'],
+							'letter_spacing_default' => $default_values['letterSpacing'],
 						),
 						'type'                  => 'neve_typeface_control',
 						'live_refresh_selector' => $selectors[ $heading_id ],
@@ -424,128 +334,6 @@ class Typography extends Base_Customizer {
 		}
 	}
 
-	/**
-	 * Get the body typography defaults.
-	 *
-	 * @return array
-	 */
-	private function get_body_typography_defaults() {
-		$default = array(
-			'fontSize'      => array(
-				'suffix'  => array(
-					'mobile'  => 'px',
-					'tablet'  => 'px',
-					'desktop' => 'px',
-				),
-				'mobile'  => 15,
-				'tablet'  => 16,
-				'desktop' => 16,
-			),
-			'lineHeight'    => array(
-				'mobile'  => 1.6,
-				'tablet'  => 1.6,
-				'desktop' => 1.6,
-			),
-			'letterSpacing' => array(
-				'mobile'  => 0,
-				'tablet'  => 0,
-				'desktop' => 0,
-			),
-			'fontWeight'    => '400',
-			'textTransform' => 'none',
-		);
-
-		$font_size      = get_theme_mod( 'neve_body_font_size' );
-		$line_height    = get_theme_mod( 'neve_body_line_height' );
-		$spacing        = get_theme_mod( 'neve_body_letter_spacing' );
-		$text_transform = get_theme_mod( 'neve_body_text_transform' );
-		$font_weight    = get_theme_mod( 'neve_body_font_weight' );
-
-		if ( ! empty( $font_size ) ) {
-			$default['fontSize'] = array_merge( json_decode( $font_size, true ), $default['fontSize'] );
-		}
-		if ( ! empty( $line_height ) ) {
-			$default['lineHeight'] = json_decode( $line_height, true );
-		}
-		if ( ! empty( $spacing ) ) {
-			$default['letterSpacing'] = array(
-				'mobile'  => $spacing,
-				'tablet'  => $spacing,
-				'desktop' => $spacing,
-			);
-		}
-		if ( ! empty( $text_transform ) ) {
-			$default['textTransform'] = $text_transform;
-		}
-		if ( ! empty( $font_weight ) ) {
-			$default['fontWeight'] = $font_weight;
-		}
-
-		return $default;
-	}
-
-	/**
-	 * Legacy default values for headings.
-	 *
-	 * @param $heading_type
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-	private function get_legacy_headings_defaults( $heading_type ) {
-		$default_value = array(
-			'fontWeight'    => '600',
-			'textTransform' => 'none',
-			'letterSpacing' => array(
-				'mobile'  => 0,
-				'tablet'  => 0,
-				'desktop' => 0,
-			),
-			'lineHeight'    => array(
-				'mobile'  => 1.6,
-				'tablet'  => 1.6,
-				'desktop' => 1.6,
-			),
-			'fontSize'      => array(),
-		);
-
-		$old_weight     = get_theme_mod( 'neve_headings_font_weight' );
-		$text_transform = get_theme_mod( 'neve_headings_text_transform' );
-		$old_spacing    = get_theme_mod( 'neve_headings_letter_spacing' );
-
-		if ( ! empty( $old_weight ) ) {
-			$default_value['fontWeight'] = $old_weight;
-		}
-
-		if ( ! empty( $text_transform ) ) {
-			$default_value['textTransform'] = $text_transform;
-		}
-
-		if ( ! empty( $old_spacing ) ) {
-			$default_value['letterSpacing'] = array(
-				'mobile'  => $old_spacing,
-				'tablet'  => $old_spacing,
-				'desktop' => $old_spacing,
-			);
-		}
-
-		// V1 of control.
-		$old_line_height = get_theme_mod( 'neve_headings_line_height' );
-		// V2 of control.
-		$multiple_line_height = get_theme_mod( 'neve_' . $heading_type . '_line_height' );
-		// Decide between V2 vs. V1.
-		$default_line_height = $multiple_line_height ? $multiple_line_height : $old_line_height;
-		if ( ! empty( $default_line_height ) ) {
-			$default_value['lineHeight'] = json_decode( $default_line_height, true );
-		}
-
-		// Old font size dynamically picked from old theme mod, or from default sizes array above.
-		$old_font_size             = get_theme_mod( 'neve_' . $heading_type . '_font_size' );
-		$default_value['fontSize'] = ! empty( $old_font_size ) ? json_decode( $old_font_size, true ) : $this->headings_default_sizes[ $heading_type ];
-
-		return $default_value;
-	}
 
 		/**
 		 * Get default value for headings typography.
@@ -559,89 +347,29 @@ class Typography extends Base_Customizer {
 			return $this->get_legacy_headings_defaults( $heading_type );
 		}
 
-		$size_map = [
-			'h1' => [
-				'mobile'  => '32',
-				'tablet'  => '40',
-				'desktop' => '48',
-			],
-			'h2' => [
-				'mobile'  => '24',
-				'tablet'  => '32',
-				'desktop' => '40',
-			],
-			'h3' => [
-				'mobile'  => '20',
-				'tablet'  => '24',
-				'desktop' => '32',
-			],
-			'h4' => [
-				'mobile'  => '18',
-				'tablet'  => '20',
-				'desktop' => '24',
-			],
-			'h5' => [
-				'mobile'  => '16',
-				'tablet'  => '18',
-				'desktop' => '20',
-			],
-			'h6' => [
-				'mobile'  => '14',
-				'tablet'  => '16',
-				'desktop' => '16',
-			],
-		];
 
-		$height_map = [
-			'h1' => [
-				'mobile'  => '1.2',
-				'tablet'  => '1.2',
-				'desktop' => '1.1',
-			],
-			'h2' => [
-				'mobile'  => '1.3',
-				'tablet'  => '1.2',
-				'desktop' => '1.2',
-			],
-			'h3' => [
-				'mobile'  => '1.4',
-				'tablet'  => '1.4',
-				'desktop' => '1.4',
-			],
-			'h4' => [
-				'mobile'  => '1.6',
-				'tablet'  => '1.5',
-				'desktop' => '1.5',
-			],
-			'h5' => [
-				'mobile'  => '1.6',
-				'tablet'  => '1.6',
-				'desktop' => '1.6',
-			],
-			'h6' => [
-				'mobile'  => '1.6',
-				'tablet'  => '1.6',
-				'desktop' => '1.6',
-			],
-		];
 
-		$font_size = array_merge( $size_map[ $heading_type ],
+		$font_size = array_merge(
+			$size_map[ $heading_type ],
 			[
 				'suffix' => [
 					'mobile'  => 'px',
 					'tablet'  => 'px',
-					'desktop' => 'px'
-				]
-			] );
+					'desktop' => 'px',
+				],
+			]
+		);
 
-		$line_height = array_merge( $height_map[ $heading_type ],
+		$line_height = array_merge(
+			$height_map[ $heading_type ],
 			[
 				'suffix' => [
 					'mobile'  => 'em',
 					'tablet'  => 'em',
-					'desktop' => 'em'
-				]
-			] );
+					'desktop' => 'em',
+				],
+			]
+		);
 
 		return array(
 			'fontWeight'    => '700',

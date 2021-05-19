@@ -24,27 +24,27 @@
 
 //<editor-fold desc="Front End Font Sizes">
 .has-neve-body-font-size {
-  font-size: $h1-mobile-size;
+  font-size: var(--bodyFontSize);
 }
 
 .has-neve-h-1-font-size {
-  font-size: $h2-mobile-size;
+    font-size: var(--h1FontSize);
 }
 
 .has-neve-h-2-font-size {
-  font-size: $h3-mobile-size;
+    font-size: var(--h2FontSize);
 }
 
 .has-neve-h-3-font-size {
-  font-size: $h4-mobile-size;
+    font-size: var(--h3FontSize);
 }
 
 .has-neve-h-4-font-size {
-  font-size: $h5-mobile-size;
+    font-size: var(--h4FontSize);
 }
 
 .has-neve-h-5-font-size {
-  font-size: $h6-mobile-size;
+    font-size: var(--h5FontSize);
 }
 
 //</editor-fold>
@@ -160,27 +160,3 @@ blockquote.wp-block-quote.is-style-large {
   padding: 0;
 }
 
-
-@mixin gutenberg--tablet() {
-  .has-neve-body-font-size {
-	font-size: $body-size;
-  }
-  .has-neve-h-1-font-size {
-	font-size: $h1-size;
-  }
-  .has-neve-h-2-font-size {
-	font-size: $h2-size;
-  }
-  .has-neve-h-3-font-size {
-	font-size: $h3-size;
-  }
-  .has-neve-h-4-font-size {
-	font-size: $h4-size;
-  }
-  .has-neve-h-5-font-size {
-	font-size: $h5-size;
-  }
-  .has-neve-h-6-font-size {
-	font-size: $h6-size;
-  }
-}

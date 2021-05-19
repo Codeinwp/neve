@@ -8,8 +8,6 @@
 @media (min-width: #{$tablet}) {
   //@include grid-container--tablet();
   //@include grid--tablet();
-  @include typography--tablet();
-  @include gutenberg--tablet();
   @include comments--tablet();
 }
 
@@ -21,7 +19,6 @@
   @include blog-layout-default-alt--laptop();
   @include blogpost-index--laptop();
   @include page--laptop();
-  @include typography--laptop();
   @include sidebar--laptop();
   @include hfg-alignments--laptop();
 }
