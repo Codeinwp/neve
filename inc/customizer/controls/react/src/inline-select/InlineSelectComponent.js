@@ -22,28 +22,30 @@ const InlineSelectComponent = ({ control }) => {
 			const currentGlobalColors = window.wp.customize
 				.control(changesOn)
 				.setting.get().palettes;
-			setSettings(
-				Object.keys(currentGlobalColors).map((key) => {
-					return {
-						value: key,
-						label: currentGlobalColors[key].name,
-					};
-				})
-			);
+			const newSettings = Object.keys(currentGlobalColors).map((key) => {
+				return {
+					value: key,
+					label: currentGlobalColors[key].name,
+				};
+			});
+			setSettings(newSettings);
 		});
 
 		// Listen on value change and update select settings with current global colors
 		window.wp.customize.control(changesOn, (customizeControl) => {
-			customizeControl.setting.bind((nextValue) => {
+			customizeControl.setting.bind('changed', (nextValue) => {
 				const currentGlobalColors = nextValue.palettes;
-				setSettings(
-					Object.keys(currentGlobalColors).map((key) => {
+				const newSettings = Object.keys(currentGlobalColors).map(
+					(key) => {
 						return {
 							value: key,
 							label: currentGlobalColors[key].name,
 						};
-					})
+					}
 				);
+				if (JSON.stringify(settings) !== JSON.stringify(newSettings)) {
+					setSettings(newSettings);
+				}
 			});
 		});
 	}, [settings]);
