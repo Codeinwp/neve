@@ -115,7 +115,6 @@ class PaletteSwitch extends Abstract_Component {
 		  }
 		  .toggle-palette a span.label {
 			display: inline-flex;
-			font-size: small;
 			vertical-align: middle;
 			color: var(--nv-primary-accent);
 		  }
