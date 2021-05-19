@@ -77,9 +77,37 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 			});
 	};
 
+	/**
+	 * Hides builder when customizer is collapsed.
+	 */
+	const bindHideOnPaneCollapse = () => {
+		window.wp.customize.bind('ready', () => {
+			window.wp.customize
+				.state('paneVisible')
+				.bind((nextValue: boolean) => {
+					const currentPanel = window.wp.customize
+						.state('expandedPanel')
+						.get();
+					if (nextValue) {
+						if (
+							currentPanel.id &&
+							currentPanel.id === `hfg_${builder}` &&
+							isHidden
+						) {
+							setHidden(false);
+						}
+						return false;
+					}
+
+					setHidden(true);
+				});
+		});
+	};
+
 	useEffect(() => {
 		bindShowOnExpand();
 		bindOverlayNotificationHiding();
+		bindHideOnPaneCollapse();
 
 		document.addEventListener(
 			'neve-changed-builder-value',
