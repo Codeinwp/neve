@@ -550,7 +550,7 @@ class Typography extends Base_Customizer {
 		/**
 		 * Get default value for headings typography.
 		 *
-		 * @param string $heading_type the heading type [h1,h2,...h6].
+		 * @param string $heading_type the heading type [h1,h2...h6].
 		 *
 		 * @return array
 		 */
@@ -559,19 +559,100 @@ class Typography extends Base_Customizer {
 			return $this->get_legacy_headings_defaults( $heading_type );
 		}
 
+		$size_map = [
+			'h1' => [
+				'mobile'  => '32',
+				'tablet'  => '40',
+				'desktop' => '48',
+			],
+			'h2' => [
+				'mobile'  => '24',
+				'tablet'  => '32',
+				'desktop' => '40',
+			],
+			'h3' => [
+				'mobile'  => '20',
+				'tablet'  => '24',
+				'desktop' => '32',
+			],
+			'h4' => [
+				'mobile'  => '18',
+				'tablet'  => '20',
+				'desktop' => '24',
+			],
+			'h5' => [
+				'mobile'  => '16',
+				'tablet'  => '18',
+				'desktop' => '20',
+			],
+			'h6' => [
+				'mobile'  => '14',
+				'tablet'  => '16',
+				'desktop' => '16',
+			],
+		];
+
+		$height_map = [
+			'h1' => [
+				'mobile'  => '1.2',
+				'tablet'  => '1.2',
+				'desktop' => '1.1',
+			],
+			'h2' => [
+				'mobile'  => '1.3',
+				'tablet'  => '1.2',
+				'desktop' => '1.2',
+			],
+			'h3' => [
+				'mobile'  => '1.4',
+				'tablet'  => '1.4',
+				'desktop' => '1.4',
+			],
+			'h4' => [
+				'mobile'  => '1.6',
+				'tablet'  => '1.5',
+				'desktop' => '1.5',
+			],
+			'h5' => [
+				'mobile'  => '1.6',
+				'tablet'  => '1.6',
+				'desktop' => '1.6',
+			],
+			'h6' => [
+				'mobile'  => '1.6',
+				'tablet'  => '1.6',
+				'desktop' => '1.6',
+			],
+		];
+
+		$font_size = array_merge( $size_map[ $heading_type ],
+			[
+				'suffix' => [
+					'mobile'  => 'px',
+					'tablet'  => 'px',
+					'desktop' => 'px'
+				]
+			] );
+
+		$line_height = array_merge( $height_map[ $heading_type ],
+			[
+				'suffix' => [
+					'mobile'  => 'em',
+					'tablet'  => 'em',
+					'desktop' => 'em'
+				]
+			] );
+
 		return array(
 			'fontWeight'    => '700',
+			'fontSize'      => $font_size,
 			'textTransform' => 'none',
-			'letterSpacing' => array(
+			'letterSpacing' => [
 				'mobile'  => 0,
 				'tablet'  => 0,
 				'desktop' => 0,
-			),
-			'lineHeight'    => array(
-				'mobile'  => 1.6,
-				'tablet'  => 1.6,
-				'desktop' => 1.6,
-			),
+			],
+			'lineHeight'    => $line_height,
 		);
 	}
 }

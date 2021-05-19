@@ -1,7 +1,15 @@
 @import "../../main/variables";
 
 main > .container {
-  padding-top: $spacing-xxl
+  padding-top: $spacing-xl
+}
+
+.post .title, .page .title, .nv-page-title {
+  margin-bottom: $spacing-xl;
+}
+
+.post .nv-meta-list {
+  margin-bottom: $spacing-lg;
 }
 
 .nv-single-post-wrap {
@@ -12,10 +20,6 @@ main > .container {
   .nv-tags-list {
 	margin-bottom: $spacing-sm;
   }
-}
-
-.single-post-container .title {
-  margin-bottom: 0;
 }
 
 .attachment-neve-blog {
