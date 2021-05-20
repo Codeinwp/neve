@@ -45,10 +45,17 @@ const InlineSelectComponent = ({ control }) => {
 				);
 				if (JSON.stringify(settings) !== JSON.stringify(newSettings)) {
 					setSettings(newSettings);
+
+					const currentValue = newSettings.find(
+						(item) => item.value === value
+					);
+					if (currentValue === undefined) {
+						updateValue('darkMode');
+					}
 				}
 			});
 		});
-	}, [settings]);
+	}, [settings, value]);
 
 	const updateValue = (newValue) => {
 		setValue(newValue);
