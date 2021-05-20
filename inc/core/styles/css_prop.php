@@ -196,7 +196,7 @@ class Css_Prop {
 				return sprintf( ' %s: %s; ', $css_prop, $value );
 				break;
 			default:
-				$suffix = self::get_suffix( $meta, $device );
+				$suffix = self::get_suffix( $meta, $device, $value );
 
 				return sprintf( ' %s: %s%s; ', $css_prop, $value, $suffix );
 				break;
@@ -208,16 +208,24 @@ class Css_Prop {
 	/**
 	 * Get suffix for generic settings.
 	 *
-	 * @param array $meta    Meta array.
+	 * @param array $meta Meta array.
 	 * @param string $device Current device.
+	 * @param string $value Value.
 	 *
 	 * @return string
+	 *
+	 * @since 3.0.0
 	 */
-	public static function get_suffix( $meta, $device ) {
+	public static function get_suffix( $meta, $device, $value ) {
 		$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : '';
 		if ( isset( $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) && $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) {
 			$all_value = Mods::get( $meta['key'] );
 			$suffix    = isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : $suffix );
+		}
+
+		if ( isset ( $meta['font'] ) ) {
+			$font = strpos( $meta['font'], 'mods_' ) === 0 ? Mods::get( str_replace( 'mods_', '', $meta['font'] ) ) : $meta['font'];
+			Font_Manager::add_google_font( $font, strval( $value ) );
 		}
 
 		return $suffix;

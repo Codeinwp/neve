@@ -17,15 +17,12 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  text-transform: none;
-  letter-spacing: 0;
-  margin-bottom: $h-margin-bottom;
-  font-weight: $h-font-weight;
+  margin-bottom: $spacing-lg;
   font-family: var(--headingsFontFamily), var(--nv-fallback-ff);
 }
 
 p {
-  margin-bottom: $p-margin-bottom;
+  margin-bottom: $spacing-lg;
 }
 
 a {
@@ -47,29 +44,47 @@ ins {
 h1 {
   font-size: var(--h1FontSize);
   font-weight: var(--h1FontWeight);
+  line-height: var(--h1LineHeight);
+  letter-spacing: var(--h1LetterSpacing);
+  text-transform: var(--h1TextTransform);
 }
 
 h2 {
   font-size: var(--h2FontSize);
   font-weight: var(--h2FontWeight);
+  line-height: var(--h2LineHeight);
+  letter-spacing: var(--h2LetterSpacing);
+  text-transform: var(--h2TextTransform);
 }
 
 h3 {
   font-size: var(--h3FontSize);
   font-weight: var(--h3FontWeight);
+  line-height: var(--h3LineHeight);
+  letter-spacing: var(--h3LetterSpacing);
+  text-transform: var(--h3TextTransform);
 }
 
 h4 {
   font-size: var(--h4FontSize);
   font-weight: var(--h4FontWeight);
+  line-height: var(--h4LineHeight);
+  letter-spacing: var(--h4LetterSpacing);
+  text-transform: var(--h4TextTransform);
 }
 
 h5 {
   font-size: var(--h5FontSize);
   font-weight: var(--h5FontWeight);
+  line-height: var(--h5LineHeight);
+  letter-spacing: var(--h5LetterSpacing);
+  text-transform: var(--h5TextTransform);
 }
 
 h6 {
   font-size: var(--h6FontSize);
   font-weight: var(--h6FontWeight);
+  line-height: var(--h6LineHeight);
+  letter-spacing: var(--h6LetterSpacing);
+  text-transform: var(--h6TextTransform);
 }

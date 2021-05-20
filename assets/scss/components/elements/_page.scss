@@ -16,9 +16,3 @@ body > .wrapper:not(.et-fb-iframe-ancestor) {
 .archive-container {
   padding-top: $spacing-sm;
 }
-
-@mixin page--laptop() {
-  .archive-container {
-	padding-top: 30px;
-  }
-}

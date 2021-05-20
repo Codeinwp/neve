@@ -1,34 +1,8 @@
 $line-height: 1.68421 !default;
 $h-font-weight: 700;
-$h-margin-bottom: .8rem;
-$p-margin-bottom: 20px !default;
 
 // Font sizes.
 $body-size: 16px !default;
-
-// Desktop font sizes.
-$h1-size: 48px !default;
-$h2-size: 40px !default;
-$h3-size: 32px !default;
-$h4-size: 24px !default;
-$h5-size: 20px !default;
-$h6-size: 16px !default;
-
-// Tablet font sizes.
-$h1-tablet-size: 40px !default;
-$h2-tablet-size: 32px !default;
-$h3-tablet-size: 24px !default;
-$h4-tablet-size: 20px !default;
-$h5-tablet-size: 18px !default;
-$h6-tablet-size: 16px !default;
-
-// Mobile font sizes.
-$h1-mobile-size: 32px !default;
-$h2-mobile-size: 24px !default;
-$h3-mobile-size: 20px !default;
-$h4-mobile-size: 18px !default;
-$h5-mobile-size: 16px !default;
-$h6-mobile-size: 14px !default;
 
 // Spacing variables.
 $spacing-xxs: 8px;
@@ -40,12 +14,9 @@ $spacing-xl: 40px;
 $spacing-xxl: 80px;
 $spacing-aired: 60px;
 
-$link_color: #0366d6;
-$link_hover_color: #0366d6;
 $muted-white: #f0f0f0;
 $muted-white-med: #c9c9c9;
 $gray-color: #676767; //rgba(0,0,0,.54);
-$git-black: #24292e;
 
 $body-color: var(--nv-text-color);
 $success: var(--nv-c-1);

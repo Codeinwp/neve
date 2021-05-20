@@ -34,12 +34,15 @@ class Comments extends Base_View {
 			comment_form();
 		}
 
-		if ( have_comments() ) { ?>
+		if ( have_comments() ) {
+			$comment_title_tag = neve_is_new_skin() ? 'h4' : 'h2';
+			?>
 			<div class="nv-comments-title-wrap">
-				<h2 class="comments-title">
-					<?php echo wp_kses_post( $this->get_comments_title() ); ?>
-				</h2>
-			</div>
+			<?php
+			echo '<' . esc_html( $comment_title_tag ) . ' class="comments-title">';
+			echo wp_kses_post( $this->get_comments_title() );
+			echo '</' . esc_html( $comment_title_tag ) . '>'
+			?>
 
 			<ol class="nv-comments-list">
 				<?php
@@ -205,8 +208,10 @@ class Comments extends Base_View {
 	 * @return array
 	 */
 	public function leave_reply_title_tag( $args ) {
-		$args['title_reply_before'] = '<h3 id="reply-title" class="comment-reply-title">';
-		$args['title_reply_after']  = '</h3>';
+		$tag = neve_is_new_skin() ? 'h4' : 'h3';
+
+		$args['title_reply_before'] = '<' . $tag . ' id="reply-title" class="comment-reply-title">';
+		$args['title_reply_after']  = '</' . $tag . '>';
 
 		return $args;
 	}

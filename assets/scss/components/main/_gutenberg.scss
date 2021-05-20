@@ -52,7 +52,7 @@
 //<editor-fold desc="Blockquote">
 blockquote.wp-block-quote.is-style-large {
   p {
-	font-size: $h2-size;
+	font-size: var(--h2FontSize);
   }
 
   cite {

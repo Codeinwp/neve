@@ -1,37 +1,39 @@
 @import "../../main/variables";
 
 .nv-meta-list {
-	li, span {
-		display: inline;
+  margin-bottom: $spacing-md;
 
-		&:not(:last-child):after {
-			content: '/';
-			padding: 0 $spacing-xxs;
-		}
-	}
+  li, span {
+	display: inline;
 
-	li {
-		font-size: 0.9em;
+	&:not(:last-child):after {
+	  content: '/';
+	  padding: 0 $spacing-xxs;
 	}
+  }
 
-	.posted-on:not(.nv-show-updated) .updated {
-		display: none;
-	}
+  li {
+	font-size: 0.9em;
+  }
 
-	.meta.author {
-		.photo {
-			border-radius: 50%;
-			transform: translateY(30%);
-			margin-right: 3px;
-		}
+  .posted-on:not(.nv-show-updated) .updated {
+	display: none;
+  }
+
+  .meta.author {
+	.photo {
+	  border-radius: 50%;
+	  transform: translateY(30%);
+	  margin-right: 3px;
 	}
+  }
 }
 
 .nv-dynamic-author-meta {
-	.photo {
-		width: $spacing-sm;
-		height: $spacing-sm;
-		border-radius: 50%;
-		transform: translateY(30%);
-	}
+  .photo {
+	width: $spacing-sm;
+	height: $spacing-sm;
+	border-radius: 50%;
+	transform: translateY(30%);
+  }
 }

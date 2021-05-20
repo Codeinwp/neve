@@ -2,24 +2,16 @@
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
 }
 
 .w-100 {
   width: 100%;
 }
 
-@mixin grid-container--tablet-sm() {
-  .container {
-	max-width: 540px;
-  }
-}
-
 .container-fluid {
   width: 100%;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
 
   > div {
 	margin: 0 -15px;
@@ -29,11 +21,11 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin: 0 -15px;
 }
 
 .col {
   padding: 0 15px;
+  margin: 0 auto;
   flex-grow: 1;
 }

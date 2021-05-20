@@ -1,19 +1,7 @@
 @import "../main/variables";
 
-@mixin sidebar--laptop() {
-  .nv-single-post-wrap, .nv-single-page-wrap, .nv-index-posts {
-	margin-bottom: $spacing-md;
-  }
-
-  .nv-sidebar-wrap {
-	&.nv-right {
-	  padding-left: 45px;
-	}
-
-	&.nv-left {
-	  padding-right: 45px;
-	}
-  }
+.nv-single-post-wrap, .nv-single-page-wrap, .nv-index-posts {
+  margin-bottom: $spacing-aired;
 }
 
 .nv-sidebar-wrap {
@@ -68,4 +56,16 @@
 
 .widget_media_image img {
   width: 100%;
+}
+
+@mixin sidebar--laptop() {
+  .nv-sidebar-wrap {
+	&.nv-right {
+	  padding-left: 45px;
+	}
+
+	&.nv-left {
+	  padding-right: 45px;
+	}
+  }
 }

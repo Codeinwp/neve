@@ -1,5 +1,4 @@
 @media (min-width: #{$tablet-sm}) {
-  @include grid-container--tablet-sm();
   //@include grid--tablet-sm();
   @include hfg-alignments--tablet-sm();
   @include nav-menu--tablet-sm();
@@ -17,8 +16,6 @@
   @include nav-menu--laptop();
   @include nav-search--laptop();
   @include blog-layout-default-alt--laptop();
-  @include blogpost-index--laptop();
-  @include page--laptop();
   @include sidebar--laptop();
   @include hfg-alignments--laptop();
 }

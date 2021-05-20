@@ -4,21 +4,18 @@ main > .container {
   padding-top: $spacing-aired
 }
 
-.post .title, .page .title, .nv-page-title {
+.entry-header .title, .page .title, .nv-page-title {
   margin-bottom: $spacing-xl;
 }
 
-.post .nv-meta-list {
+.entry-header .nv-meta-list, .nv-thumb-wrap {
   margin-bottom: $spacing-aired;
 }
 
 .nv-single-post-wrap {
-  .entry-header,
-  .nv-thumb-wrap,
   .nv-content-wrap,
-  .nv-post-navigation,
   .nv-tags-list {
-	margin-bottom: $spacing-sm;
+	margin-bottom: $spacing-aired;
   }
 }
 

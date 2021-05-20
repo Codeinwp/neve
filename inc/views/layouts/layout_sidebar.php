@@ -67,6 +67,10 @@ class Layout_Sidebar extends Base_View {
 		$theme_mod     = $sidebar_setup['theme_mod'];
 		$theme_mod     = apply_filters( 'neve_sidebar_position', get_theme_mod( $theme_mod, 'right' ) );
 
+		$layout       = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
+		$posts_layout = neve_is_new_skin() ? ' nv-blog-' . $layout : '';
+
+		$classes[] = $posts_layout;
 		$classes[] = 'nv-sidebar-' . $theme_mod;
 
 		return $classes;

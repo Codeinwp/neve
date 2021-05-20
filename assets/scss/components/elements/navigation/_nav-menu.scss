@@ -1,21 +1,4 @@
 .nav-ul {
-  li {
-	&:last-child {
-	  margin: 0;
-	}
-
-	&:first-child {
-	  margin: 0;
-	}
-  }
-
-  > .menu-item-has-children > .sub-menu {
-	/*rtl:ignore*/
-	right: 0;
-  }
-}
-
-.nav-ul {
   margin-bottom: 0;
   display: flex;
   flex-wrap: wrap;
@@ -28,6 +11,14 @@
 	cursor: pointer;
 	display: block;
 	position: relative;
+
+	&:last-child {
+	  margin: 0;
+	}
+
+	&:first-child {
+	  margin: 0;
+	}
 
 	&:hover, &:focus {
 	  a {
@@ -87,6 +78,11 @@
 	}
   }
 
+  > .menu-item-has-children > .sub-menu {
+	/*rtl:ignore*/
+	right: 0;
+  }
+
   .menu-item-has-children {
 	&:hover > .sub-menu,
 	&:focus > .sub-menu,
@@ -102,16 +98,10 @@
   padding: 5px;
   display: flex;
   align-items: center;
-
-  svg {
-	fill: currentColor;
-  }
-}
-
-.caret {
   margin-left: 5px;
 
   svg {
+	fill: currentColor;
 	width: 1em !important;
 	height: 1em !important;
   }

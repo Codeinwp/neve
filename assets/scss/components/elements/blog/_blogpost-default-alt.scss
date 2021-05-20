@@ -1,60 +1,52 @@
-.layout-default, .layout-alternative {
-	display: flex;
-	align-items: flex-end;
+.nv-non-grid-article {
+  display: flex;
+  align-items: flex-end;
 
-	.nv-post-thumbnail-wrap {
-		margin-bottom: $spacing-xs;
+  .nv-post-thumbnail-wrap {
+	margin-bottom: $spacing-md;
+
+	a, img {
+	  display: block;
 	}
+  }
 }
 
 @mixin blog-layout-default-alt--laptop() {
-	.layout-default, .layout-alternative {
-		.nv-post-thumbnail-wrap {
-			margin-bottom: 0;
-		}
-
-		.article-content-col .content {
-			display: flex;
-			align-items: center;
-		}
+  .nv-non-grid-article {
+	.nv-post-thumbnail-wrap {
+	  margin-bottom: 0;
 	}
 
-	.layout-default .article-content-col .content {
-		flex-direction: row;
+	.content {
+	  display: flex;
+	  align-items: center;
 	}
+  }
 
-	.layout-alternative .article-content-col .content {
-		flex-direction: row-reverse;
-	}
+  .layout-default .content {
+	flex-direction: row;
+  }
 
-	.non-grid-content {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
+  .layout-alternative .content {
+	flex-direction: row-reverse;
+  }
 
-		.button {
-			align-self: flex-start;
-		}
-	}
+  .nv-post-thumbnail-wrap ~ .default-layout-content {
+	padding-left: $spacing-md;
+  }
 
-	.nv-post-thumbnail-wrap ~ .default-layout-content {
-		padding-left: $spacing-sm;
-	}
+  .nv-post-thumbnail-wrap ~ .alternative-layout-content {
+	padding-right: $spacing-md;
+  }
 
-	.nv-post-thumbnail-wrap ~ .alternative-layout-content {
-		padding-right: $spacing-sm;
-	}
+  .nv-non-grid-article .nv-post-thumbnail-wrap {
+	max-width: 40%;
+  }
+  .layout-alternative:nth-child(even) .content {
+	flex-direction: row;
+  }
 
-	.layout-default, .layout-alternative {
-		.nv-post-thumbnail-wrap {
-			max-width: 40%;
-		}
-	}
-	.layout-alternative:nth-child(even) .content {
-		flex-direction: row;
-	}
-
-	.layout-alternative:nth-child(even) .nv-post-thumbnail-wrap ~ .alternative-layout-content {
-		padding: 0 0 0 $spacing-sm;
-	}
+  .layout-alternative:nth-child(even) .nv-post-thumbnail-wrap ~ .alternative-layout-content {
+	padding: 0 0 0 $spacing-md;
+  }
 }
