@@ -44,6 +44,12 @@
 	mark {
 		color: var(--nv-text-color);
 	}
+
+	.nv-product-image {
+		img {
+			width: 100%;
+		}
+	}
 }
 
 //</editor-fold>
