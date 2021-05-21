@@ -23,6 +23,7 @@
   @include nav-search--laptop();
   @include blog-layout-default-alt--laptop();
   @include blogpost-index--laptop();
+  @include single-post--laptop();
   @include page--laptop();
   @include sidebar--laptop();
   @include blog-layout--laptop();

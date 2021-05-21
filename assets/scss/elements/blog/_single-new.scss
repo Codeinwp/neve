@@ -1,0 +1,61 @@
+.nv-post-cover {
+  margin-bottom: $spacing-sm;
+  display: flex;
+  position: relative;
+  .nv-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+  }
+  .nv-cover-container {
+	z-index: 1;
+  }
+  .nv-title-meta-wrap {
+	display: inline-flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	&.reversed{
+	  flex-direction: column-reverse;
+	}
+  }
+}
+
+.mobile-top {
+  align-self: flex-start;
+}
+
+.mobile-middle {
+  align-self: center;
+}
+
+.mobile-bottom {
+  align-self: flex-end;
+}
+
+@mixin cover-layout--tablet() {
+  .tablet-top {
+	align-self: flex-start;
+  }
+
+  .tablet-middle {
+	align-self: center;
+  }
+
+  .tablet-bottom {
+	align-self: flex-end;
+  }
+}
+
+@mixin cover-layout--laptop() {
+  .desktop-top {
+	align-self: flex-start;
+  }
+
+  .desktop-middle {
+	align-self: center;
+  }
+
+  .desktop-bottom {
+	align-self: flex-end;
+  }
+}
