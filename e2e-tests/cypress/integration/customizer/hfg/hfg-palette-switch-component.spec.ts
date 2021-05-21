@@ -12,11 +12,18 @@ describe('Palette Switch component', function () {
 		cy.get('h2').should('have.css', 'color', 'rgb(255, 255, 255)');
 	});
 
-	it('Removes collor palette from website', function () {});
+	it('Removes color palette from website', function () {});
 });
 
 describe('Palette Swich auto', function () {
-	before('Setup', function () {});
+	before('Setup', function () {
+		cy.fixture('customizer/hfg/hfg-palette-switch-component').then((setup) => {
+			setup.header_palette_switch_auto_adjust_color = 1;
+			cy.setCustomizeSettings(setup);
+		});
+	});
 
-	it('Automatically changes the color palette based on system config', function () {});
+	it('Automatically changes the color palette based on system config', function () {
+		cy.visit('/');
+	});
 });
