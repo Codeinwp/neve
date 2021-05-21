@@ -12,7 +12,11 @@ describe('Palette Switch component', function () {
 		cy.get('h2').should('have.css', 'color', 'rgb(255, 255, 255)');
 	});
 
-	it('Removes color palette from website', function () {});
+	it('Removes color palette from website', function () {
+		cy.setCustomizeSettings({});
+		cy.visit('/');
+		cy.get('.icon > svg > path').should('not.exist');
+	});
 });
 
 describe('Palette Swich auto', function () {
@@ -23,7 +27,15 @@ describe('Palette Swich auto', function () {
 		});
 	});
 
-	it('Automatically changes the color palette based on system config', function () {
+	it('Automatically changes the color palette when dark is default', function () {
+		cy.setLocalStorage('neve_user_theme', 'dark');
 		cy.visit('/');
+		cy.get('h2').should('have.css', 'color', 'rgb(255, 255, 255)');
+	});
+
+	it('Automatically changes the color palette when light is default', function () {
+		cy.setLocalStorage('neve_user_theme', 'light');
+		cy.visit('/');
+		cy.get('h2').should('have.css', 'color', 'rgb(57, 57, 57)');
 	});
 });
