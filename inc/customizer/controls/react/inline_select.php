@@ -42,6 +42,12 @@ class Inline_Select extends \WP_Customize_Control {
 	public $link;
 
 	/**
+	 * Allows listening to other components.
+	 *
+	 * @var string
+	 */
+	public $changes_on;
+	/**
 	 * Send to JS.
 	 */
 	public function to_json() {
@@ -49,5 +55,6 @@ class Inline_Select extends \WP_Customize_Control {
 		$this->json['options']    = $this->options;
 		$this->json['defaultVal'] = $this->default;
 		$this->json['link']       = $this->link;
+		$this->json['changesOn']  = $this->changes_on;
 	}
 }
