@@ -10,6 +10,7 @@ $header_components = array(
 	'HFG\Core\Components\Nav',
 	'HFG\Core\Components\Button',
 	'HFG\Core\Components\CustomHtml',
+	'HFG\Core\Components\PaletteSwitch',
 	'HFG\Core\Components\Search',
 	'HFG\Core\Components\SearchResponsive',
 	'HFG\Core\Components\SecondNav',

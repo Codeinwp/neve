@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: neve\n"
 
 #. Theme Name of the theme
@@ -294,7 +294,7 @@ msgstr ""
 #: inc/admin/metabox/main.php:39
 #: inc/customizer/options/layout_container.php:134
 #: inc/customizer/options/layout_sidebar.php:125
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:189
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:197
 msgid "Full Width"
 msgstr ""
 
@@ -302,7 +302,7 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:310
 #: inc/admin/metabox/main.php:38
 #: inc/customizer/options/layout_container.php:133
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:182
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:190
 msgid "Contained"
 msgstr ""
 
@@ -456,7 +456,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
 #: inc/customizer/options/layout_sidebar.php:129
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:153
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:161
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:108
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:45
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:126
@@ -469,7 +469,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
 #: inc/customizer/options/layout_sidebar.php:133
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:155
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:163
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:106
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:43
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:116
@@ -546,6 +546,7 @@ msgid "Cart Icon"
 msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:116
+#: header-footer-grid/Core/Components/PaletteSwitch.php:320
 #: header-footer-grid/Core/Components/SearchResponsive.php:154
 msgid "Icon Size"
 msgstr ""
@@ -715,6 +716,46 @@ msgstr ""
 msgid "Footer Menu"
 msgstr ""
 
+#: header-footer-grid/Core/Components/PaletteSwitch.php:67
+msgid "Palette Switch"
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:257
+msgid "Light Palette"
+msgstr ""
+
+#. translators: %s: Link to Edit global color customizer.
+#: header-footer-grid/Core/Components/PaletteSwitch.php:259
+msgid "The base palette is used for light mode. %1$sEdit color palettes%2$s."
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:272
+#: header-footer-grid/Core/Components/PaletteSwitch.php:273
+msgid "Dark Palette"
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:294
+#: header-footer-grid/Core/Components/PaletteSwitch.php:295
+msgid "Select icon"
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:351
+msgid "Label"
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:354
+msgid "Leave blank for no label ..."
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:371
+msgid "Automatically adjust color scheme"
+msgstr ""
+
+#. translators: %s: Link to Learn More page.
+#: header-footer-grid/Core/Components/PaletteSwitch.php:373
+msgid "Adjust default color scheme based on the user device preferences. %1$sLearn More%2$s."
+msgstr ""
+
 #: header-footer-grid/Core/Components/Search.php:42
 msgid "Search Form"
 msgstr ""
@@ -812,7 +853,7 @@ msgstr ""
 
 #. translators: %s is the header name
 #: header-footer-grid/Core/Customizer.php:270
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:175
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:183
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:180
 msgid "Default"
@@ -1034,7 +1075,7 @@ msgstr ""
 
 #: inc/admin/metabox/main.php:41
 #: inc/customizer/options/layout_container.php:43
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:165
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:173
 msgid "Container"
 msgstr ""
 
@@ -1052,7 +1093,7 @@ msgstr ""
 
 #: inc/admin/metabox/main.php:56
 #: inc/core/front_end.php:499
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:141
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:149
 msgid "Sidebar"
 msgstr ""
 
@@ -1061,12 +1102,12 @@ msgid "Components"
 msgstr ""
 
 #: inc/admin/metabox/main.php:71
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:353
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:361
 msgid "Disable Header"
 msgstr ""
 
 #: inc/admin/metabox/main.php:76
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:379
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:387
 msgid "Disable Title"
 msgstr ""
 
@@ -1075,7 +1116,7 @@ msgid "Disable Featured Image"
 msgstr ""
 
 #: inc/admin/metabox/main.php:88
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:365
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:373
 msgid "Disable Footer"
 msgstr ""
 
@@ -1470,7 +1511,7 @@ msgid "Thumbnail Shadow"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:369
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:315
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:323
 msgid "Post Meta"
 msgstr ""
 
@@ -1488,7 +1529,7 @@ msgstr ""
 #: inc/customizer/options/layout_blog.php:393
 #: inc/customizer/options/layout_single_post.php:72
 #: inc/views/partials/post_meta.php:146
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:319
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:327
 msgid "Comments"
 msgstr ""
 
@@ -1585,13 +1626,13 @@ msgid "Content Width (%)"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:69
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:317
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:325
 msgid "Content"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:70
 #: inc/views/partials/post_meta.php:295
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:318
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:326
 msgid "Tags"
 msgstr ""
 
@@ -1612,7 +1653,7 @@ msgid "Title"
 msgstr ""
 
 #: inc/customizer/options/layout_single_product.php:124
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:151
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:159
 #: inc/customizer/controls/react/src/typeface/Typeface.js:82
 #: inc/customizer/controls/react/src/typeface/Typeface.js:115
 msgid "None"
@@ -2109,72 +2150,73 @@ msgstr ""
 
 #: inc/admin/metabox/src/components/controls/SortableItems.js:26
 #: inc/admin/metabox/src/components/controls/SortableItems.js:96
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:145
 msgid "Toggle"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:136
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:144
 msgid "Page Layout"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:149
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:157
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:58
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:179
 msgid "Inherit"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:197
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:205
 msgid "Custom Content Width (%)"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:238
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:246
 msgid "Page Title"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:242
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:250
 msgid "Title alignment"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:282
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:290
 msgid "Author Avatar"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:297
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:305
 msgid "Reading Time"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:314
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:322
 msgid "Post Title"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:316
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:324
 msgid "Featured Image"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:320
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:328
 msgid "Post Navigation"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:326
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:334
 msgid "Author Biography"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:327
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:335
 msgid "Related Posts"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:328
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:336
 msgid "Sharing Icons"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:336
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:344
 msgid "Elements"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:397
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:405
 msgid "Reset all options to default"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:406
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:414
 msgid "Return to customizer settings"
 msgstr ""
 
@@ -2459,6 +2501,18 @@ msgstr ""
 
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:130
 msgid "Style 6"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:137
+msgid "Contrast"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:141
+msgid "Night"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:149
+msgid "Accessibility"
 msgstr ""
 
 #: inc/customizer/controls/react/src/typeface/Typeface.js:79
