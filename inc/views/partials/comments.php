@@ -34,23 +34,35 @@ class Comments extends Base_View {
 			comment_form();
 		}
 
-		if ( have_comments() ) { ?>
-			<div class="nv-comments-title-wrap">
-				<h2 class="comments-title">
-					<?php echo wp_kses_post( $this->get_comments_title() ); ?>
-				</h2>
-			</div>
+		if ( have_comments() ) {
 
-			<ol class="nv-comments-list">
-				<?php
-				wp_list_comments(
-					array(
-						'callback' => array( $this, 'comment_list_callback' ),
-						'style'    => 'ol',
-					)
-				);
-				?>
-			</ol>
+			$comments_wrap_classes = [ 'nv-comments-wrap' ];
+			$is_boxed              = get_theme_mod( 'neve_comments_boxed_layout', false );
+			if ( $is_boxed ) {
+				$comments_wrap_classes[] = 'is-boxed';
+			}
+
+			?>
+			<div class="<?php echo esc_attr( implode( ' ', $comments_wrap_classes ) ); ?>">
+
+				<div class="nv-comments-title-wrap">
+					<h2 class="comments-title">
+						<?php echo wp_kses_post( $this->get_comments_title() ); ?>
+					</h2>
+				</div>
+
+				<ol class="nv-comments-list">
+					<?php
+					wp_list_comments(
+						array(
+							'callback' => array( $this, 'comment_list_callback' ),
+							'style'    => 'ol',
+						)
+					);
+					?>
+				</ol>
+
+			</div>
 
 			<?php
 			$this->maybe_render_comments_navigation();
@@ -178,7 +190,11 @@ class Comments extends Base_View {
 	 * @return string
 	 */
 	private function get_comments_title() {
-		$comments_title =
+
+		$comments_number = number_format_i18n( get_comments_number() );
+		$title           = get_the_title();
+
+		$empty_comments_title =
 			sprintf(
 				esc_html(
 					/* translators: number of comments */
@@ -190,9 +206,17 @@ class Comments extends Base_View {
 						'neve'
 					)
 				),
-				number_format_i18n( get_comments_number() ),
-				get_the_title()
+				$comments_number,
+				$title
 			);
+
+		$comments_title = get_theme_mod( 'neve_post_comment_section_title' );
+		if ( empty( $comments_title ) ) {
+			return apply_filters( 'neve_filter_comments_title', $empty_comments_title );
+		}
+
+		$comments_title = str_replace( '{comments_number}', $comments_number, $comments_title );
+		$comments_title = str_replace( '{title}', $title, $comments_title );
 
 		return apply_filters( 'neve_filter_comments_title', $comments_title );
 	}
