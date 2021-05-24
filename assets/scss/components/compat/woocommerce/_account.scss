@@ -1,0 +1,117 @@
+@import "../../main/variables";
+
+body.woocommerce-account {
+  .nv-content-wrap > .woocommerce {
+    display: flex;
+    flex-direction: column;
+    padding-top: $spacing-sm;
+  }
+
+  .woocommerce-LostPassword {
+    font-size: .9em;
+    text-align: center;
+    margin: $spacing-xs 0 0 0;
+  }
+
+  .woocommerce-form-login {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+
+    .woocommerce-form-login__submit {
+      float: none;
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    .woocommerce-form-login__rememberme {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0;
+
+      input {
+        margin-right: 10px;
+      }
+    }
+
+    .form-row:not(.woocommerce-form-row--wide) {
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-sm;
+    }
+  }
+}
+
+.nv-content-wrap .woocommerce-MyAccount-navigation {
+  width: 100%;
+  float: none;
+  border-bottom: $muted-border;
+  margin-bottom: $spacing-sm;
+
+  > ul {
+    list-style-type: none;
+    padding: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  li {
+    margin: 0;
+    padding: 5px $spacing-xs;
+
+    &:not(.is-active) a {
+      color: $body-color;
+    }
+
+    a {
+      font-weight: 500;
+    }
+  }
+}
+
+.woocommerce-account .woocommerce-MyAccount-content {
+  width: 100%;
+  float: none;
+
+  .woocommerce-Addresses {
+    .woocommerce-Address {
+      padding: 0;
+    }
+  }
+
+  .woocommerce-Address-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: $spacing-xs;
+
+    h3 {
+      flex-grow: 1;
+      float: none;
+      margin-bottom: 0;
+    }
+
+    .edit {
+      float: none;
+    }
+  }
+
+  address {
+    font-style: normal;
+    font-size: .9em;
+  }
+}
+
+@mixin account--laptop() {
+  .nv-content-wrap .woocommerce-MyAccount-navigation {
+    > ul {
+      text-align: left;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 0;
+    }
+  }
+}
+

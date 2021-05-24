@@ -302,7 +302,7 @@ class Frontend extends Generator {
 		];
 
 
-		$this->_subscribers[':root']['--headingsFontFamily']    = [
+		$this->_subscribers[':root']['--headingsFontFamily'] = [
 			Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_HEADINGS ),
 			Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_HEADINGS ),
 		];
@@ -312,43 +312,40 @@ class Frontend extends Generator {
 			$mod_key      = Mods::get_alternative_mod( $composed_key );
 			$default      = Mods::get_alternative_mod_default( $composed_key );
 
-			$this->_subscribers[':root'][ sprintf( '--' . $id . 'FontSize' ) ]      = [
+			$this->_subscribers[':root'][ '--' . $id . 'FontSize' ] = [
 				Dynamic_Selector::META_KEY           => $mod_key . '.fontSize',
 				Dynamic_Selector::META_DEFAULT       => $default['fontSize'],
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
-
 			];
-			$this->_subscribers[':root'][ sprintf( '--' . $id . 'FontWeight' ) ]    = [
+
+			$this->_subscribers[':root'][ '--' . $id . 'FontWeight' ] = [
 				Dynamic_Selector::META_KEY     => $mod_key . '.fontWeight',
 				Dynamic_Selector::META_DEFAULT => $default['fontWeight'],
 				'font'                         => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_HEADINGS ),
 			];
 
-			$this->_subscribers[':root'][ sprintf( '--' . $id . 'LineHeight' ) ]    = [
+			$this->_subscribers[':root'][ '--' . $id . 'LineHeight' ] = [
 				Dynamic_Selector::META_KEY           => $mod_key . '.lineHeight',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $default['lineHeight'],
 				Dynamic_Selector::META_SUFFIX        => '',
 			];
 
-			$this->_subscribers[':root'][ sprintf( '--' . $id . 'LetterSpacing' ) ] = [
+			$this->_subscribers[':root'][ '--' . $id . 'LetterSpacing' ] = [
 				Dynamic_Selector::META_KEY           => $mod_key . '.letterSpacing',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $default['letterSpacing'],
 			];
 
-			$this->_subscribers[':root'][ sprintf( '--' . $id . 'TextTransform' ) ] = [
+			$this->_subscribers[':root'][ '--' . $id . 'TextTransform' ] = [
 				Dynamic_Selector::META_KEY     => $mod_key . '.textTransform',
 				Dynamic_Selector::META_DEFAULT => $default['textTransform'],
 			];
 		}
 	}
 
-	/**
-	 * Setup button subscribers.
-	 */
-	public function setup_buttons() {
+	private function setup_legacy_buttons() {
 		// Primary button config.
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
@@ -559,6 +556,110 @@ class Frontend extends Generator {
 	}
 
 	/**
+	 * Setup button subscribers.
+	 */
+	public function setup_buttons() {
+		if ( ! neve_is_new_skin() ) {
+			$this->setup_legacy_buttons();
+			return;
+		}
+
+		$mod_key_primary = Mods::get_alternative_mod( Config::MODS_BUTTON_PRIMARY_STYLE );
+		$default_primary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_STYLE );
+
+		$mod_key_secondary = Mods::get_alternative_mod( Config::MODS_BUTTON_SECONDARY_STYLE );
+		$default_secondary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_SECONDARY_STYLE );
+
+		// Background
+		$this->_subscribers[':root']['--primaryBtnBg']   = [
+			Dynamic_Selector::META_KEY     => $mod_key_primary . '.background',
+			Dynamic_Selector::META_DEFAULT => $default_primary['background'],
+		];
+		$this->_subscribers[':root']['--secondaryBtnBg'] = [
+			Dynamic_Selector::META_KEY     => $mod_key_secondary . '.background',
+			Dynamic_Selector::META_DEFAULT => $default_secondary['background'],
+		];
+
+		// Background Hover
+		$this->_subscribers[':root']['--primaryBtnHoverBg']   = [
+			Dynamic_Selector::META_KEY     => $mod_key_primary . '.backgroundHover',
+			Dynamic_Selector::META_DEFAULT => $default_primary['backgroundHover'],
+		];
+		$this->_subscribers[':root']['--secondaryBtnHoverBg'] = [
+			Dynamic_Selector::META_KEY     => $mod_key_secondary . '.backgroundHover',
+			Dynamic_Selector::META_DEFAULT => $default_secondary['backgroundHover'],
+		];
+
+		// Color
+		$this->_subscribers[':root']['--primaryBtnColor']   = [
+			Dynamic_Selector::META_KEY     => $mod_key_primary . '.text',
+			Dynamic_Selector::META_DEFAULT => $default_primary['text'],
+		];
+		$this->_subscribers[':root']['--secondaryBtnColor'] = [
+			Dynamic_Selector::META_KEY     => $mod_key_secondary . '.text',
+			Dynamic_Selector::META_DEFAULT => $default_secondary['text'],
+		];
+
+		// Color Hover
+		$this->_subscribers[':root']['--primaryBtnHoverColor']   = [
+			Dynamic_Selector::META_KEY     => $mod_key_primary . '.textHover',
+			Dynamic_Selector::META_DEFAULT => $default_primary['textHover'],
+		];
+		$this->_subscribers[':root']['--secondaryBtnHoverColor'] = [
+			Dynamic_Selector::META_KEY     => $mod_key_secondary . '.textHover',
+			Dynamic_Selector::META_DEFAULT => $default_secondary['textHover'],
+		];
+
+		// Border Radius
+		$this->_subscribers[':root']['--primaryBtnBorderRadius']   = [
+			Dynamic_Selector::META_KEY     => $mod_key_primary . '.borderRadius',
+			Dynamic_Selector::META_DEFAULT => $default_primary['borderRadius'],
+			Dynamic_Selector::META_SUFFIX  => 'px',
+			'directional-prop'             => Config::CSS_PROP_BORDER_RADIUS,
+		];
+		$this->_subscribers[':root']['--secondaryBtnBorderRadius'] = [
+			Dynamic_Selector::META_KEY     => $mod_key_secondary . '.borderRadius',
+			Dynamic_Selector::META_DEFAULT => $default_secondary['borderRadius'],
+			Dynamic_Selector::META_SUFFIX  => 'px',
+			'directional-prop'             => Config::CSS_PROP_BORDER_RADIUS,
+		];
+
+		// Border Width
+		$this->_subscribers[':root']['--primaryBtnBorderWidth'] = [
+			Dynamic_Selector::META_KEY     => $mod_key_primary . '.borderWidth',
+			Dynamic_Selector::META_DEFAULT => $default_primary['borderWidth'],
+			Dynamic_Selector::META_SUFFIX  => 'px',
+			'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
+		];
+		$this->_subscribers[':root']['--primaryBtnBorderWidth'] = [
+			Dynamic_Selector::META_KEY     => $mod_key_secondary . '.borderWidth',
+			Dynamic_Selector::META_DEFAULT => $default_secondary['borderWidth'],
+			Dynamic_Selector::META_SUFFIX  => 'px',
+			'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
+		];
+
+		$mod_key_primary = Mods::get_alternative_mod( Config::MODS_BUTTON_PRIMARY_PADDING );
+		$default_primary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_PADDING );
+
+		$mod_key_secondary = Mods::get_alternative_mod( Config::MODS_BUTTON_SECONDARY_PADDING );
+		$default_secondary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_SECONDARY_PADDING );
+
+		$this->_subscribers[':root']['--primaryBtnPadding'] = [
+			Dynamic_Selector::META_KEY           => $mod_key_primary,
+			Dynamic_Selector::META_DEFAULT       => $default_primary,
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			'directional-prop'                   => Config::CSS_PROP_PADDING,
+		];
+
+		$this->_subscribers[':root']['--secondaryBtnPadding'] = [
+			Dynamic_Selector::META_KEY           => $mod_key_secondary,
+			Dynamic_Selector::META_DEFAULT       => $default_secondary,
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			'directional-prop'                   => Config::CSS_PROP_PADDING,
+		];
+	}
+
+	/**
 	 * Setup settings subscribers for layout.
 	 *
 	 * TODO: Exclude sidebar CSS when there is not sidebar option selected.
@@ -568,14 +669,14 @@ class Frontend extends Generator {
 		$is_advanced_on = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, false );
 		if ( ! $is_advanced_on ) {
 
-			$this->_subscribers['#content .container .col, #content .container-fluid .col']                                                               = [
+			$this->_subscribers['#content .container .col, #content .container-fluid .col']                             = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_SUFFIX      => '%',
 					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				],
 			];
-			$this->_subscribers['.alignfull > [class*="__inner-container"], .alignwide > [class*="__inner-container"]']                                   = [
+			$this->_subscribers['.alignfull > [class*="__inner-container"], .alignwide > [class*="__inner-container"]'] = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY           => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_DEFAULT       => 70,
@@ -602,7 +703,7 @@ class Frontend extends Generator {
 					},
 				],
 			];
-			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar']                                                                        = [
+			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar'] = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_FILTER      => 'minus_100',
@@ -738,7 +839,7 @@ class Frontend extends Generator {
 				},
 			],
 		];
-		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap']                                                                         = [
+		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,

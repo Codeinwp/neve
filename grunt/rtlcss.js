@@ -57,6 +57,14 @@ module.exports = {
 		ext,
 		src: ['woocommerce.css'],
 	},
+	woocommerceLegacy: {
+		options,
+		expand: true,
+		cwd: './assets/css/',
+		dest: './assets/css/',
+		ext,
+		src: ['woocommerce-legacy.css'],
+	},
 	customizerStyle: {
 		options,
 		expand: true,

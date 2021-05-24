@@ -232,7 +232,7 @@ class Mods {
 				'desktop' => 0,
 			],
 		];
-		$headings_sufix = [
+		$headings_sufix         = [
 			'mobile'  => $new ? 'px' : 'em',
 			'tablet'  => $new ? 'px' : 'em',
 			'desktop' => $new ? 'px' : 'em',
@@ -241,7 +241,6 @@ class Mods {
 		switch ( $key ) {
 			case Config::MODS_FONT_GENERAL:
 				return $new ? 'Inter' : false;
-				break;
 			case Config::MODS_TYPEFACE_GENERAL:
 				return [
 					'fontSize'      => [
@@ -267,10 +266,6 @@ class Mods {
 					'fontWeight'    => '400',
 					'textTransform' => 'none',
 				];
-				break;
-			case 'headings_weight':
-				return $new ? '700' : '600';
-				break;
 			case Config::MODS_TYPEFACE_H1:
 				return array_merge(
 					$headings_generic_setup,
@@ -288,7 +283,6 @@ class Mods {
 						],
 					)
 				);
-				break;
 			case Config::MODS_TYPEFACE_H2:
 				return array_merge(
 					$headings_generic_setup,
@@ -306,7 +300,6 @@ class Mods {
 						],
 					)
 				);
-				break;
 			case Config::MODS_TYPEFACE_H3:
 				return array_merge(
 					$headings_generic_setup,
@@ -324,7 +317,6 @@ class Mods {
 						],
 					)
 				);
-				break;
 			case Config::MODS_TYPEFACE_H4:
 				return array_merge(
 					$headings_generic_setup,
@@ -342,7 +334,6 @@ class Mods {
 						],
 					)
 				);
-				break;
 			case Config::MODS_TYPEFACE_H5:
 				return array_merge(
 					$headings_generic_setup,
@@ -360,7 +351,6 @@ class Mods {
 						],
 					)
 				);
-				break;
 			case Config::MODS_TYPEFACE_H6:
 				return array_merge(
 					$headings_generic_setup,
@@ -378,7 +368,95 @@ class Mods {
 						],
 					)
 				);
-				break;
+			case Config::MODS_BUTTON_PRIMARY_STYLE:
+				if ( ! $new ) {
+					return neve_get_button_appearance_default( 'primary' );
+				}
+
+				return [
+					'type'            => 'fill',
+					'background'      => 'var(--nv-primary-accent)',
+					'backgroundHover' => 'var(--nv-primary-accent)',
+					'text'            => '#ffffff',
+					'textHover'       => '#ffffff',
+					'borderRadius'    => [
+						'top'    => 3,
+						'right'  => 3,
+						'bottom' => 3,
+						'left'   => 3,
+					],
+					'borderWidth'     => [
+						'top'    => 1,
+						'right'  => 1,
+						'bottom' => 1,
+						'left'   => 1,
+					],
+				];
+			case Config::MODS_BUTTON_SECONDARY_STYLE:
+				if ( ! $new ) {
+					return neve_get_button_appearance_default( 'secondary' );
+				}
+
+				return [
+					'type'            => 'outline',
+					'background'      => '',
+					'backgroundHover' => '',
+					'text'            => 'var(--nv-primary-accent)',
+					'textHover'       => 'var(--nv-primary-accent)',
+					'borderRadius'    => [
+						'top'    => 3,
+						'right'  => 3,
+						'bottom' => 3,
+						'left'   => 3,
+					],
+					'borderWidth'     => [
+						'top'    => 3,
+						'right'  => 3,
+						'bottom' => 3,
+						'left'   => 3,
+					],
+				];
+			case Config::MODS_BUTTON_SECONDARY_PADDING:
+				$device = $new ? [
+					'top'    => 7,
+					'right'  => 15,
+					'bottom' => 7,
+					'left'   => 15,
+				] : [
+					'top'    => 8,
+					'right'  => 12,
+					'bottom' => 8,
+					'left'   => 12,
+				];
+				return [
+					'desktop'      => $device,
+					'tablet'       => $device,
+					'mobile'       => $device,
+					'desktop-unit' => 'px',
+					'tablet-unit'  => 'px',
+					'mobile-unit'  => 'px',
+				];
+			case Config::MODS_BUTTON_PRIMARY_PADDING:
+				$device = $new ? [
+					'top'    => 10,
+					'right'  => 15,
+					'bottom' => 10,
+					'left'   => 15,
+				] : [
+					'top'    => 8,
+					'right'  => 12,
+					'bottom' => 8,
+					'left'   => 12,
+				];
+
+				return [
+					'desktop'      => $device,
+					'tablet'       => $device,
+					'mobile'       => $device,
+					'desktop-unit' => 'px',
+					'tablet-unit'  => 'px',
+					'mobile-unit'  => 'px',
+				];
 			default:
 				return false;
 		}

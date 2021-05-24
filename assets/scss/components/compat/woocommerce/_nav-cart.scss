@@ -1,0 +1,118 @@
+@import "../../main/variables";
+//<editor-fold desc="Cart icon in menu">
+.cart-icon-wrapper {
+  display: flex;
+  align-items: flex-end;
+
+  .nv-cart {
+	display: flex;
+  }
+
+  .cart-count {
+	background: #fff;
+	border: $muted-border;
+	font-size: 0.55em;
+	padding: 3px;
+	border-radius: 3px;
+	color: #333;
+	line-height: 1;
+	display: inline-block;
+	bottom: -5px;
+	position: relative;
+  }
+}
+//</editor-fold>
+
+//<editor-fold desc="Hide menu cart icon and minicart on mobile">
+.nv-nav-cart,
+.header-menu-sidebar li.menu-item-nav-cart {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+//</editor-fold>
+
+//<editor-fold desc="Menu mini cart positioning">
+.menu-item-nav-cart {
+  position: relative;
+  &:last-child .nv-nav-cart {
+	  right: 0;
+  }
+
+  .nv-nav-cart{
+    right: 20px;
+  }
+}
+//</editor-fold>
+
+@include cart-widget();
+
+@mixin nav-cart--laptop() {
+
+  .nv-nav-cart,
+  .header-menu-sidebar li.menu-item-nav-cart {
+	display: block;
+  }
+
+  //<editor-fold desc="Show menu cart icon and mini cart on desktop">
+  .menu-item-nav-cart:hover .nv-nav-cart,
+  .menu-item-nav-cart > a:focus + .nv-nav-cart,
+  .nv-nav-cart:focus-within {
+	opacity: 1;
+	visibility: visible;
+  }
+  //</editor-fold>
+
+  //<editor-fold desc="Mini cart style">
+  .nv-nav-cart {
+	cursor: default;
+	border-top: $muted-border;
+	position: absolute;
+	z-index: 100;
+	width: 350px;
+	background: var(--nv-site-bg);
+	@include soft-box-shadow();
+
+	.widget_shopping_cart_content {
+	  overflow: hidden;
+	  .woocommerce-mini-cart {
+		overflow: auto;
+		max-height: 350px;
+	  }
+	  .total {
+		padding: $spacing-sm;
+	  }
+	  .woocommerce-mini-cart__empty-message {
+		text-align: center;
+		margin-bottom: 0;
+		padding: 10px 0;
+	  }
+	  li.mini_cart_item {
+		padding: $spacing-sm;
+		img{
+		  left: 50px;
+		}
+	  }
+	  .woocommerce-mini-cart__buttons {
+		padding: 0 $spacing-sm $spacing-sm;
+	  }
+	}
+  }
+
+  li.menu-item-nav-cart .widget_shopping_cart .cart_list li.mini_cart_item {
+	> a:not(.remove), span.quantity {
+	  grid-column-start: 2;
+	  grid-column-end: -1;
+	  margin: 0;
+	  padding: 0;
+	  opacity: 1;
+	}
+
+	img{
+	  right: 0;
+	  left: auto;
+	  top: 100%;
+	}
+  }
+  //</editor-fold>
+}

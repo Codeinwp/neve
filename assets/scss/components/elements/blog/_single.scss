@@ -87,18 +87,14 @@ main > .container {
 }
 
 .nv-tags-list {
-  font-size: .85em;
-
-  span {
-	margin-right: $spacing-xs;
-  }
-
   a {
-	display: inline-block;
-	padding: 2px $spacing-xs;
-	border-radius: 3px;
-	margin: 0 $spacing-xs $spacing-xs 0;
-	color: var(--nv-primary-accent);
-	border: 1px solid var(--nv-primary-accent);
+	font-size: .75em;
+	margin-left: $spacing-xs;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #fff;
+	padding: 10px;
+	border-radius: 4px;
+	background: var(--nv-primary-accent);
   }
 }

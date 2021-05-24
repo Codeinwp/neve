@@ -1,14 +1,36 @@
 %nv-button {
   cursor: pointer;
   font-weight: 700;
-}
-
-%nv-button-secondary {
-  padding: var(--secondaryBtnPadding, 20px 40px);
-  border-radius: var(--secondaryBtnBorderRadius, 3px);
+  border-style: solid;
 }
 
 %nv-button-primary {
-  padding: var(--primaryBtnPadding, 20px 40px);
+  padding: var(--primaryBtnPadding, 10px 15px);
   border-radius: var(--primaryBtnBorderRadius, 3px);
+  background-color: var(--primaryBtnBg);
+  color: var(--primaryBtnColor);
+  border-width: var(--primaryBtnBorderWidth);
+  border-color: var(--primaryBtnColor);
+
+  &:hover {
+	background-color: var(--primaryBtnHoverBg);
+	color: var(--primaryBtnHoverColor);
+	border-color: var(--primaryBtnHoverColor);
+  }
+}
+
+%nv-button-secondary {
+  padding: var(--secondaryBtnPadding, 7px 15px);
+  border-radius: var(--secondaryBtnBorderRadius, 3px);
+  background-color: var(--secondaryBtnBg);
+  color: var(--secondaryBtnColor);
+  border-width: var(--primaryBtnBorderWidth);
+  border-color: var(--secondaryBtnColor);
+
+
+  &:hover {
+	background-color: var(--secondaryBtnHoverBg);
+	color: var(--secondaryBtnHoverColor);
+	border-color: var(--secondaryBtnHoverColor);
+  }
 }

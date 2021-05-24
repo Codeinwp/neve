@@ -1,0 +1,256 @@
+@import "../../main/variables";
+
+//<editor-fold desc="Title-less">
+.woocommerce-cart {
+  &.nv-without-title .neve-main {
+    padding-top: $spacing-md;
+  }
+}
+
+//</editor-fold>
+
+//<editor-fold desc="Remove button">
+.woocommerce a.remove {
+  color: $error !important;
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  line-height: 18px;
+	text-decoration: none !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+  &:hover {
+    background-color: $error !important;
+  }
+}
+
+//</editor-fold>
+
+//<editor-fold desc="Product thumbnail">
+.woocommerce #content table.cart .product-thumbnail,
+.woocommerce table.cart .product-thumbnail,
+.woocommerce-page #content table.cart .product-thumbnail,
+.woocommerce-page table.cart .product-thumbnail {
+  text-align: center !important;
+
+  &:before {
+    content: none;
+  }
+
+  a {
+    margin: 0 auto;
+  }
+
+  img {
+    width: 75px;
+  }
+}
+
+//</editor-fold>
+
+//<editor-fold desc="Coupon code">
+.woocommerce table.cart td.actions .input-text#coupon_code {
+  width: 150px;
+  margin-bottom: 0;
+}
+
+.woocommerce-cart table.cart td.actions .coupon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: $spacing-xs;
+  justify-content: space-between;
+
+  > .input-text {
+    float: none;
+    width: 100%;
+  }
+
+  > .input-text + .button {
+    float: none;
+    width: 100%;
+    @extend %nv-button-secondary;
+  }
+}
+
+//</editor-fold>
+
+.shipping-calculator-form p:not(:last-child) {
+  margin-bottom: $spacing-xs;
+}
+
+.woocommerce a.button.checkout-button.alt {
+  &, &:focus, &:active {
+    display: block;
+    margin: 0 20px;
+  }
+}
+
+//<editor-fold desc="Cart totals table">
+.woocommerce .cart_totals {
+  border: $muted-border;
+  margin-bottom: $spacing-md;
+
+  > h2 {
+    margin-bottom: 0;
+    font-size: 1em;
+    padding: 9px 12px;
+    background-color: var(--nv-light-bg);
+  }
+
+  table.shop_table {
+    margin-bottom: 0;
+    border: none;
+
+    tbody {
+      font-size: .85em;
+
+      th, td {
+        font-weight: 400;
+        vertical-align: top;
+        border-bottom: 0;
+        border-top: 1px solid #f0f0f0;
+      }
+    }
+
+    .shipping-calculator-form {
+      text-align: left;
+    }
+
+	.order-total{
+	  font-size: 1.18em;
+	  th{
+		font-weight: bold;
+	  }
+	}
+  }
+
+  .wc-proceed-to-checkout {
+    border-top: $muted-border;
+  }
+
+  .form-row {
+    padding: 5px 0;
+  }
+
+  ul#shipping_method {
+    text-align: left;
+
+    .shipping-method-description {
+      margin: 0 0 0 5px;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: $spacing-sm;
+
+      input {
+        margin: 0 5px 0 0 !important;
+      }
+
+      label {
+        margin: 0;
+      }
+    }
+  }
+}
+
+//</editor-fold>
+
+.cross-sells {
+  border: $muted-border;
+  margin-bottom: $spacing-md;
+
+  > h2 {
+    margin-bottom: 0;
+    font-size: 1em;
+    padding: 9px 12px;
+    background-color: var(--nv-light-bg);
+  }
+
+  ul.products {
+    padding: 12px 12px 0;
+    margin-bottom: 0;
+
+    .product {
+      margin-bottom: $spacing-xs !important;
+    }
+  }
+}
+
+.woocommerce table.shop_table.cart {
+  border-radius: 0;
+  border: $muted-border;
+
+  thead {
+    background-color: var(--nv-light-bg);
+  }
+
+  tr:not(:first-child) {
+    border-top: 1px solid #f0f0f0;
+  }
+
+  td {
+    border-top: 0;
+  }
+
+  td.actions {
+    border-bottom: 0;
+  }
+}
+
+.woocommerce td.product-name {
+	a {
+		margin-bottom: $spacing-xs;
+		display: block;
+	}
+	dl.variation {
+		font-size: .9em;
+		dt {
+			float: none;
+		}
+		dd {
+			margin-bottom: 5px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+@mixin cart--tablet() {
+}
+
+@mixin cart--laptop() {
+  .woocommerce table.shop_table.cart {
+    thead th {
+      border: 0;
+    }
+
+    tbody tr:first-child {
+      border-top: none;
+    }
+  }
+  .woocommerce-cart table.cart td.actions .coupon {
+    margin-bottom: 0;
+  }
+  .woocommerce .cart_totals table.shop_table tbody {
+    th, td {
+      vertical-align: top;
+      border-bottom: 0;
+      border-top: $muted-border;
+    }
+
+    #shipping_method {
+      margin-top: 0;
+    }
+  }
+}
+
+.woocommerce .quantity .qty {
+  box-sizing: content-box;
+}

@@ -11,6 +11,7 @@
 namespace Neve\Customizer\Options;
 
 use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
@@ -64,14 +65,18 @@ class Buttons extends Base_Customizer {
 					),
 					'controls' => array(
 						'button'           => array(
-							'neve_button_appearance' => array(),
-							'neve_button_padding'    => array(),
-							'neve_button_typeface'   => array(),
+							'neve_button_appearance'    => array(),
+							'neve_button_appearance_v2' => array(),
+							'neve_button_padding'       => array(),
+							'neve_button_padding_v2'    => array(),
+							'neve_button_typeface'      => array(),
 						),
 						'secondary_button' => array(
-							'neve_secondary_button_appearance' => array(),
-							'neve_secondary_button_padding'    => array(),
-							'neve_secondary_button_typeface'   => array(),
+							'neve_secondary_button_appearance'    => array(),
+							'neve_secondary_button_appearance_v2' => array(),
+							'neve_secondary_button_padding'       => array(),
+							'neve_secondary_button_padding_v2'    => array(),
+							'neve_secondary_button_typeface'      => array(),
 						),
 					),
 				),
@@ -85,10 +90,12 @@ class Buttons extends Base_Customizer {
 			'secondary_button' => apply_filters( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL, Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL ] ),
 		];
 		foreach ( $buttons as $button ) {
-			$defaults = neve_get_button_appearance_default( $button );
+			$mod_key  = Mods::get_alternative_mod( 'neve_' . $button . '_appearance' );
+			$defaults = Mods::get_alternative_mod_default( 'neve_' . $button . '_appearance' );
+
 			$this->add_control(
 				new Control(
-					'neve_' . $button . '_appearance',
+					$mod_key,
 					[
 						'sanitize_callback' => 'neve_sanitize_button_appearance',
 						'default'           => $defaults,
@@ -97,39 +104,19 @@ class Buttons extends Base_Customizer {
 						'defaultVals' => $defaults,
 						'label'       => __( 'Button Appearance', 'neve' ),
 						'section'     => $this->section_id,
+						'priority'    => 0,
 						'type'        => 'neve_button_appearance',
 					]
 				)
 			);
-			$default_padding_values = array(
-				'desktop'      => array(
-					'top'    => 8,
-					'right'  => 12,
-					'bottom' => 8,
-					'left'   => 12,
-				),
-				'tablet'       => array(
-					'top'    => 8,
-					'right'  => 12,
-					'bottom' => 8,
-					'left'   => 12,
-				),
-				'mobile'       => array(
-					'top'    => 8,
-					'right'  => 12,
-					'bottom' => 8,
-					'left'   => 12,
-				),
-				'desktop-unit' => 'px',
-				'tablet-unit'  => 'px',
-				'mobile-unit'  => 'px',
-			);
 
+			$mod_key  = Mods::get_alternative_mod( 'neve_' . $button . '_padding' );
+			$defaults = Mods::get_alternative_mod_default( 'neve_' . $button . '_padding' );
 			$this->add_control(
 				new Control(
-					'neve_' . $button . '_padding',
+					$mod_key,
 					array(
-						'default' => $default_padding_values,
+						'default' => $defaults,
 					),
 					array(
 						'label'             => __( 'Padding', 'neve' ),
@@ -138,30 +125,9 @@ class Buttons extends Base_Customizer {
 						'input_attrs'       => [
 							'units' => [ 'px' ],
 						],
-						'default'           => $default_padding_values,
+						'default'           => $defaults,
 					),
 					'\Neve\Customizer\Controls\React\Spacing'
-				)
-			);
-			$this->add_control(
-				new Control(
-					'neve_' . $button . '_border_radius',
-					array(
-						'sanitize_callback' => 'absint',
-						'default'           => 3,
-					),
-					array(
-						'label'      => esc_html__( 'Border radius', 'neve' ) . '(px)',
-						'section'    => $this->section_id,
-						'type'       => 'range-value',
-						'step'       => 1,
-						'input_attr' => array(
-							'min'     => 0,
-							'max'     => 50,
-							'default' => 3,
-						),
-					),
-					'Neve\Customizer\Controls\Range'
 				)
 			);
 

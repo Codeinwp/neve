@@ -1,0 +1,35 @@
+.woocommerce {
+  .widget_price_filter {
+    .price_slider_wrapper .ui-widget-content {
+      background-color: #ccc;
+    }
+    .ui-slider .ui-slider-handle {
+      background: var(--nv-primary-accent);
+      border: 1px solid #fff;
+      top: -5px;
+      &:hover {
+        transform: scale(1.25);
+      }
+    }
+    .ui-slider .ui-slider-range {
+      background-color: var(--nv-primary-accent);
+    }
+    .price_slider_amount {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .price_slider_wrapper .ui-widget-content {
+      height: 5px;
+    }
+    .price_slider_amount .button {
+      font-size: inherit;
+      line-height: 1;
+    }
+  }
+}
+
+.widget_product_search button[type="submit"] {
+  width: 100%;
+}

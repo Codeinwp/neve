@@ -1,0 +1,59 @@
+.nv-sidebar-wrap.shop-sidebar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  padding: $spacing-lg $spacing-sm $spacing-sm;
+  z-index: 1000;
+  overflow: scroll;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+  pointer-events: none;
+  max-width: 100%;
+  &.sidebar-open {
+    opacity: 1;
+    pointer-events: all;
+		margin-top:0;
+    background-color: var(--nv-site-bg);
+  }
+}
+
+.sidebar-header {
+  width: 100%;
+  margin-bottom: $spacing-sm;
+  &:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+.nv-sidebar-toggle.in-sidebar {
+  float: right;
+  margin-bottom: $spacing-sm;
+  background-color: transparent;
+}
+
+@mixin shop-sidebar--laptop() {
+  .nv-sidebar-toggle {
+    display: none;
+  }
+  .nv-sidebar-wrap.shop-sidebar {
+    margin-top: $spacing-sm;
+    padding: 0 $spacing-sm;
+    z-index: inherit;
+    position: relative;
+    opacity: 1;
+    pointer-events: all;
+    max-width: 30%;
+    overflow: visible;
+    &.sidebar-open {
+      background: transparent;
+    }
+    .sidebar-header {
+      display: none;
+    }
+  }
+}

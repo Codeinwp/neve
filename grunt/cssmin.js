@@ -43,6 +43,12 @@ module.exports = {
 			'assets/css/woocommerce-rtl.min.css': [
 				'assets/css/woocommerce-rtl.css',
 			],
+			'assets/css/woocommerce-legacy.min.css': [
+				'assets/css/woocommerce-legacy.css',
+			],
+			'assets/css/woocommerce-legacy-rtl.min.css': [
+				'assets/css/woocommerce-legacy-rtl.css',
+			],
 			'assets/css/lifter.min.css': ['assets/css/lifter.css'],
 			'assets/css/gutenberg-editor-style.min.css': [
 				'assets/css/gutenberg-editor-style.css',

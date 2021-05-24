@@ -196,6 +196,10 @@ class Css_Prop {
 				return sprintf( ' %s: %s; ', $css_prop, $value );
 				break;
 			default:
+				if( isset( $meta['directional-prop'] ) ) {
+					return self::transform_directional_prop( $meta, $device, $value, $css_prop, $meta['directional-prop']  );
+				}
+
 				$suffix = self::get_suffix( $meta, $device, $value );
 
 				return sprintf( ' %s: %s%s; ', $css_prop, $value, $suffix );
@@ -218,16 +222,47 @@ class Css_Prop {
 	 */
 	public static function get_suffix( $meta, $device, $value ) {
 		$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : '';
+
+
+		// If not responsive, most controls use 'unit' key inside value.
+		if ( ! isset( $meta['is_responsive'] ) || $meta['is_responsive'] === false ) {
+			$suffix = isset( $value['unit'] ) ? $value['unit'] : '';
+		}
+
+		// If responsive, try to find the suffix.
 		if ( isset( $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) && $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) {
 			$all_value = Mods::get( $meta['key'] );
 			$suffix    = isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : $suffix );
 		}
 
+		// Enqueue any google fonts we might be missing.
 		if ( isset ( $meta['font'] ) ) {
 			$font = strpos( $meta['font'], 'mods_' ) === 0 ? Mods::get( str_replace( 'mods_', '', $meta['font'] ) ) : $meta['font'];
 			Font_Manager::add_google_font( $font, strval( $value ) );
 		}
 
 		return $suffix;
+	}
+
+	public  static function transform_directional_prop ( $meta, $device, $value, $css_prop, $type ) {
+		$suffix = self::get_suffix($meta, $device, $value);
+		$suffix = $suffix ? $suffix : 'px';
+		$directions = ['top', 'right', 'bottom', 'left'];
+		$template = $css_prop . ':';
+
+		if( count( array_unique( $value ) ) === 1 ) {
+			$template .= $value['top'] . $suffix . ';';
+		}
+
+		foreach ( $directions as $direction ) {
+			if( ! isset( $value[$direction] ) ) {
+				$template .= '0 ';
+			}
+			$template .= $value[$direction] . $suffix  . ' ';
+		}
+
+		$template = trim($template)  . ';';
+
+		return $template;
 	}
 }

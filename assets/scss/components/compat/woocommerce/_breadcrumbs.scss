@@ -1,0 +1,35 @@
+.woocommerce .woocommerce-breadcrumb {
+  margin-bottom: 0;
+  font-size: 1em;
+	color: var(--nv-text-color);
+	opacity: .75;
+	a {
+		color: var(--nv-text-color);
+	}
+  .nv-breadcrumb-delimiter {
+    opacity: .5;
+    padding: 0 5px;
+  }
+}
+
+.woocommerce {
+  .nv-bc-count-wrap {
+    display: flex;
+    font-size: .85em;
+    margin-bottom: $spacing-sm;
+    justify-content: space-between;
+    .woocommerce-result-count {
+      float: none;
+      margin: 0;
+      text-align: right;
+    }
+  }
+}
+
+.nv-woo-title-breadcrumb {
+  display: flex;
+  flex-direction: column-reverse;
+  h1 {
+    margin: 0;
+  }
+}
