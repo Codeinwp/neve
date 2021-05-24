@@ -13,7 +13,7 @@ namespace HFG;
 use HFG\Core\Builder\Footer as FooterBuilder;
 
 ?>
-<footer class="site-footer" id="site-footer">
+<footer class="<?php echo esc_attr( apply_filters( 'neve_footer_wrap_classes', 'site-footer' ) ); ?>" id="site-footer">
 	<div class="<?php echo esc_attr( get_builder( FooterBuilder::BUILDER_NAME )->get_property( 'panel' ) ); ?>">
 		<?php
 		render_builder( FooterBuilder::BUILDER_NAME );
