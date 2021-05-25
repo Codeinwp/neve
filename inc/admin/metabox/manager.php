@@ -9,6 +9,7 @@ namespace Neve\Admin\Metabox;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Options\Layout_Single_Post;
 use Neve\Views\Post_Layout;
 
@@ -18,6 +19,7 @@ use Neve\Views\Post_Layout;
  * @package Neve\Admin\Metabox
  */
 final class Manager {
+	use Single_Post;
 
 	/**
 	 * Control instances.
@@ -412,7 +414,7 @@ final class Manager {
 	 * @return string
 	 */
 	private function get_post_elements_default_order() {
-		$default_order = Layout_Single_Post::ordering_default();
+		$default_order = $this->post_ordering();
 
 		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
 		if ( ! is_string( $content_order ) ) {

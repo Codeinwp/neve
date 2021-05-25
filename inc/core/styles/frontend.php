@@ -9,6 +9,7 @@ namespace Neve\Core\Styles;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Options\Layout_Single_Post;
 
 /**
@@ -17,6 +18,8 @@ use Neve\Customizer\Options\Layout_Single_Post;
  * @package Neve\Core\Styles
  */
 class Frontend extends Generator {
+	use Single_Post;
+
 	/**
 	 * Generator constructor.
 	 */
@@ -764,8 +767,8 @@ class Frontend extends Generator {
 	 */
 	private function setup_single_post_style() {
 
-		$cover_padding_default                                 = Layout_Single_Post::cover_padding_default();
-		$this->_subscribers['body.single-post .nv-post-cover'] = [
+		$cover_padding_default                = $this->padding_default( 'cover' );
+		$this->_subscribers['.nv-post-cover'] = [
 			Config::CSS_PROP_MIN_HEIGHT => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_HEIGHT,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
@@ -779,7 +782,7 @@ class Frontend extends Generator {
 			],
 		];
 
-		$this->_subscribers['body.single-post .nv-post-cover .nv-overlay'] = [
+		$this->_subscribers['.nv-post-cover .nv-overlay'] = [
 			Config::CSS_PROP_BACKGROUND_COLOR => [
 				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BACKGROUND_COLOR,
 				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
@@ -796,7 +799,7 @@ class Frontend extends Generator {
 		];
 
 
-		$this->_subscribers['body.single-post .nv-post-cover .nv-meta-list li, body.single-post .nv-post-cover .nv-meta-list a'] = [
+		$this->_subscribers['.nv-post-cover .nv-meta-list li, .nv-post-cover .nv-meta-list a'] = [
 			Config::CSS_PROP_COLOR => [
 				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_TEXT_COLOR,
 				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
@@ -808,7 +811,7 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_BOXED_TITLE_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
-				Dynamic_Selector::META_DEFAULT       => $cover_padding_default,
+				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
 			],
 			Config::CSS_PROP_BACKGROUND_COLOR => [
 				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
@@ -816,14 +819,59 @@ class Frontend extends Generator {
 			],
 		];
 
-		$this->_subscribers['body.single-post .nv-post-cover .nv-cover-container'] = [
+		$this->_subscribers['.nv-post-cover .nv-cover-container'] = [
 			Config::CSS_PROP_PADDING => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
-				Dynamic_Selector::META_DEFAULT       => $cover_padding_default,
+				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
 			],
 		];
+
+		$this->_subscribers['.nv-comments-wrap.is-boxed'] = [
+			Config::CSS_PROP_PADDING          => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_PADDING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
+			],
+			Config::CSS_PROP_BACKGROUND_COLOR => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_BACKGROUND_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
+			],
+		];
+
+		$this->_subscribers['.nv-comments-wrap.is-boxed, .nv-comments-wrap.is-boxed a'] = [
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_TEXT_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
+			],
+		];
+
+
+
+
+		$this->_subscribers['.comment-respond.is-boxed'] = [
+			Config::CSS_PROP_PADDING          => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_PADDING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
+			],
+			Config::CSS_PROP_BACKGROUND_COLOR => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_BACKGROUND_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
+			],
+		];
+
+		$this->_subscribers['.comment-respond.is-boxed, .comment-respond.is-boxed a'] = [
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_TEXT_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
+			],
+		];
+
+
 	}
 
 	/**
@@ -834,7 +882,7 @@ class Frontend extends Generator {
 	 * @return string
 	 */
 	public function add_form_buttons( $selector ) {
-		return ( $selector . ', form input[type="submit"], form button[type="submit"], #comments input[type="submit"]' );
+		return ( $selector . ', form input[type="submit"], form button[type="submit"]' );
 	}
 
 	/**
@@ -845,6 +893,6 @@ class Frontend extends Generator {
 	 * @return string
 	 */
 	public function add_form_buttons_hover( $selector ) {
-		return ( $selector . ', form input[type="submit"]:hover, form button[type="submit"]:hover, #comments input[type="submit"]:hover' );
+		return ( $selector . ', form input[type="submit"]:hover, form button[type="submit"]:hover' );
 	}
 }

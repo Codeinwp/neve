@@ -28,10 +28,11 @@ class Comments extends Base_View {
 	 * Render the comments form.
 	 */
 	public function render_comment_form() {
-		$display_form_first = apply_filters( 'neve_show_comment_form_first', false );
+		$display_form_first    = apply_filters( 'neve_show_comment_form_first', false );
+		$comment_form_settings = $this->get_sumbit_form_settings();
 
 		if ( $display_form_first ) {
-			comment_form();
+			comment_form( $comment_form_settings );
 		}
 
 		if ( have_comments() ) {
@@ -76,8 +77,37 @@ class Comments extends Base_View {
 			<?php
 		}
 		if ( ! $display_form_first ) {
-			comment_form();
+			comment_form( $comment_form_settings );
 		}
+	}
+
+	/**
+	 * Get forms settings.
+	 *
+	 * @return array
+	 */
+	private function get_sumbit_form_settings() {
+		$form_settings = [];
+
+		$form_title = get_theme_mod( 'neve_post_comment_form_title' );
+		if ( ! empty( $form_title ) ) {
+			$form_settings['title_reply'] = $form_title;
+		}
+
+		$submit_button_style           = get_theme_mod( 'neve_post_comment_form_button_style', 'primary' );
+		$form_settings['class_submit'] = 'button button-' . esc_attr( $submit_button_style );
+
+		$button_text = get_theme_mod( 'neve_post_comment_form_button_text' );
+		if ( ! empty( $button_text ) ) {
+			$form_settings['label_submit'] = $button_text;
+		}
+
+		$boxed_layout = get_theme_mod( 'neve_comments_form_boxed_layout', false );
+		if ( $boxed_layout ) {
+			$form_settings['class_container'] = 'comment-respond is-boxed';
+		}
+
+		return $form_settings;
 	}
 
 	/**

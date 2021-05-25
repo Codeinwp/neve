@@ -12,9 +12,9 @@ namespace Neve\Customizer\Options;
 
 use HFG\Traits\Core;
 use Neve\Customizer\Base_Customizer;
+use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
-use function Clue\StreamFilter\fun;
 
 /**
  * Class Layout_Single_Post
@@ -23,6 +23,7 @@ use function Clue\StreamFilter\fun;
  */
 class Layout_Single_Post extends Base_Customizer {
 	use Core;
+	use Single_Post;
 
 	/**
 	 * Customizer section id.
@@ -66,42 +67,47 @@ class Layout_Single_Post extends Base_Customizer {
 	 */
 	private function add_subsections() {
 		$headings = [
-			'header_layout' => [
+			'header_layout'    => [
 				'title'            => esc_html__( 'Header Layout', 'neve' ),
 				'priority'         => 5,
-				'controls_to_wrap' => 16,
+				'controls_to_wrap' => 15,
 			],
-			'page_elements' => [
+			'page_elements'    => [
 				'title'            => esc_html__( 'Page Elements', 'neve' ),
 				'priority'         => 85,
 				'controls_to_wrap' => 1,
 				'expanded'         => false,
 			],
-			'meta'          => [
+			'meta'             => [
 				'title'            => esc_html__( 'Post Meta', 'neve' ),
 				'priority'         => 95,
 				'controls_to_wrap' => 5,
 				'expanded'         => false,
 			],
-			'comments'      => [
+			'comments'         => [
 				'title'            => esc_html__( 'Comments', 'neve' ),
 				'priority'         => 125,
-				'controls_to_wrap' => 11,
+				'controls_to_wrap' => 14,
 				'expanded'         => false,
 			],
 			'comments_section' => [
-				'title'            => esc_html__( 'Comments Section', 'neve' ),
-				'priority'         => 135,
-				'controls_to_wrap' => 4,
-				'expanded'         => true,
-				'accordion'        => false,
-			]
+				'title'     => esc_html__( 'Comments Section', 'neve' ),
+				'priority'  => 135,
+				'expanded'  => true,
+				'accordion' => false,
+			],
+			'comments_form'    => [
+				'title'     => esc_html__( 'Submit Form Section', 'neve' ),
+				'priority'  => 165,
+				'expanded'  => true,
+				'accordion' => false,
+			],
 		];
 
 		foreach ( $headings as $heading_id => $heading_data ) {
 			$this->add_control(
 				new Control(
-					'neve_post_' . $heading_id . '_headeing',
+					'neve_post_' . $heading_id . '_heading',
 					[
 						'sanitize_callback' => 'sanitize_text_field',
 					],
@@ -112,7 +118,7 @@ class Layout_Single_Post extends Base_Customizer {
 						'class'            => $heading_id . '-accordion',
 						'expanded'         => array_key_exists( 'expanded', $heading_data ) ? $heading_data['expanded'] : true,
 						'accordion'        => array_key_exists( 'accordion', $heading_data ) ? $heading_data['accordion'] : true,
-						'controls_to_wrap' => $heading_data['controls_to_wrap'],
+						'controls_to_wrap' => array_key_exists( 'controls_to_wrap', $heading_data ) ? $heading_data['controls_to_wrap'] : 0,
 					],
 					'Neve\Customizer\Controls\Heading'
 				)
@@ -185,7 +191,7 @@ class Layout_Single_Post extends Base_Customizer {
 							'desktop' => 'px',
 							'tablet'  => 'px',
 						],
-						'template'   => 'body.single-post .nv-post-cover{
+						'template'   => '.nv-post-cover{
 							min-height: {{value}};
 						}',
 					],
@@ -201,7 +207,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
 					'transport'         => $this->selective_refresh,
-					'default'           => self::cover_padding_default(),
+					'default'           => $this->padding_default( 'cover' ),
 				],
 				[
 					'label'                 => esc_html__( 'Cover padding', 'neve' ),
@@ -216,7 +222,7 @@ class Layout_Single_Post extends Base_Customizer {
 						'responsive'  => true,
 						'directional' => true,
 						'template'    =>
-							'body.single-post .nv-post-cover .nv-cover-container {
+							'.nv-post-cover .nv-cover-container {
 							padding-top: {{value.top}};
 							padding-right: {{value.right}};
 							padding-bottom: {{value.bottom}};
@@ -235,7 +241,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'sanitize_callback' => 'sanitize_alignment',
 					'transport'         => $this->selective_refresh,
-					'default'           => self::post_title_alignment_default(),
+					'default'           => $this->post_title_alignment(),
 				],
 				[
 					'label'                 => esc_html__( 'Title Alignment', 'neve' ),
@@ -256,7 +262,7 @@ class Layout_Single_Post extends Base_Customizer {
 						],
 					],
 					'show_labels'           => true,
-					'live_refresh_selector' => 'body.single-post .nv-post-cover .nv-cover-container, .entry-header .entry-title',
+					'live_refresh_selector' => '.nv-post-cover .nv-cover-container, .entry-header .entry-title',
 					'live_refresh_css_prop' => [
 						'remove_classes' => [
 							'mobile-left',
@@ -281,7 +287,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'sanitize_callback' => 'sanitize_position',
 					'transport'         => $this->selective_refresh,
-					'default'           => self::post_title_position_default(),
+					'default'           => $this->post_title_position(),
 				],
 				[
 					'label'                 => esc_html__( 'Title Position', 'neve' ),
@@ -301,7 +307,7 @@ class Layout_Single_Post extends Base_Customizer {
 							'icon'    => 'arrow-down',
 						],
 					],
-					'live_refresh_selector' => 'body.single-post .nv-post-cover .nv-title-meta-wrap',
+					'live_refresh_selector' => '.nv-post-cover .nv-title-meta-wrap',
 					'live_refresh_css_prop' => [
 						'remove_classes' => [
 							'mobile-top',
@@ -355,7 +361,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
-							body.single-post .nv-post-cover .nv-overlay {
+							.nv-post-cover .nv-overlay {
 							    background-color: {{value}};
 						    }',
 
@@ -381,9 +387,9 @@ class Layout_Single_Post extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
-							body.single-post .nv-post-cover,
-							body.single-post .nv-post-cover .nv-meta-list li,
-							body.single-post .nv-post-cover .nv-meta-list a{
+							.nv-post-cover,
+							.nv-post-cover .nv-meta-list li,
+							.nv-post-cover .nv-meta-list a{
 							   color: {{value}};
 						    }',
 					],
@@ -420,7 +426,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'responsive' => true,
 						'prop'       => 'opacity',
-						'template'   => 'body.single-post .nv-post-cover .nv-overlay {
+						'template'   => '.nv-post-cover .nv-overlay {
 							opacity: {{value}};
 						}',
 					],
@@ -453,7 +459,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'neve_post_cover_blend_mode',
 				[
 					'default'           => 'normal',
-					'sanitize_callback' => [ $this, 'sanitize_blend_mode' ],
+					'sanitize_callback' => 'sanitize_blend_mode',
 					'transport'         => $this->selective_refresh,
 				],
 				[
@@ -479,7 +485,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
-							body.single-post .nv-post-cover .nv-overlay{
+							.nv-post-cover .nv-overlay{
 							   mix-blend-mode: {{value}};
 						    }',
 
@@ -494,7 +500,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'neve_post_cover_container',
 				[
 					'default'           => 'contained',
-					'sanitize_callback' => [ $this, 'sanitize_container' ],
+					'sanitize_callback' => 'sanitize_container_layout',
 				],
 				[
 					'label'           => esc_html__( 'Cover container', 'neve' ),
@@ -510,82 +516,19 @@ class Layout_Single_Post extends Base_Customizer {
 			)
 		);
 
-		$this->add_control(
-			new Control(
-				'neve_post_cover_boxed_title',
-				[
-					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => false,
-				],
-				[
-					'label'           => esc_html__( 'Boxed title', 'neve' ),
-					'section'         => $this->section,
-					'type'            => 'neve_toggle_control',
-					'priority'        => 70,
-					'active_callback' => [ get_called_class(), 'is_cover_layout' ],
-				],
-				'Neve\Customizer\Controls\Checkbox'
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_post_cover_boxed_title_padding',
-				[
-					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
-					'transport'         => $this->selective_refresh,
-					'default'           => self::cover_padding_default(),
-				],
-				[
-					'label'                 => esc_html__( 'Section padding', 'neve' ),
-					'section'               => $this->section,
-					'input_attrs'           => [
-						'units' => [ 'em', 'px' ],
-					],
-
-					'priority'              => 75,
-					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'responsive'  => true,
-						'directional' => true,
-						'template'    =>
-							'body.single-post .nv-post-cover .nv-title-meta-wrap.is-boxed {
-							padding-top: {{value.top}};
-							padding-right: {{value.right}};
-							padding-bottom: {{value.bottom}};
-							padding-left: {{value.left}};
-						}',
-					],
-					'active_callback'       => [ $this, 'is_boxed_title' ],
-				],
-				'\Neve\Customizer\Controls\React\Spacing'
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_post_cover_boxed_title_background',
-				[
-					'sanitize_callback' => 'neve_sanitize_colors',
-					'default'           => 'var(--nv-dark-bg)',
-					'transport'         => $this->selective_refresh,
-				],
-				[
-					'label'                 => esc_html__( 'Section background', 'neve' ),
-					'section'               => $this->section,
-					'priority'              => 80,
-					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'template' => '
-							.nv-title-meta-wrap.is-boxed {
-							   background-color: {{value}};
-						    }',
-
-					],
-					'active_callback'       => [ $this, 'is_boxed_title' ],
-				],
-				'Neve\Customizer\Controls\React\Color'
-			)
+		$this->add_boxed_layout_controls(
+			[
+				'id'                     => 'post_cover_title',
+				'priority'               => 70,
+				'has_text_color'         => false,
+				'padding_default'        => $this->padding_default( 'cover' ),
+				'background_default'     => 'var(--nv-dark-bg)',
+				'boxed_selector'         => '.nv-title-meta-wrap.is-boxed',
+				'toggle_active_callback' => function() {
+					get_theme_mod( 'neve_post_header_layout' ) === 'cover';
+				},
+				'active_callback'        => [ $this, 'is_boxed_title' ],
+			]
 		);
 	}
 
@@ -612,8 +555,16 @@ class Layout_Single_Post extends Base_Customizer {
 			];
 		}
 
-		$order_default_components = self::ordering_default();
-		$components               = apply_filters( 'neve_single_post_elements', $all_components );
+		$order_default_components = $this->post_ordering();
+
+		/**
+		 * Filters the elements on the single post page.
+		 *
+		 * @param array $all_components Single post page components.
+		 *
+		 * @since 2.11.4
+		 */
+		$components = apply_filters( 'neve_single_post_elements', $all_components );
 
 		$this->add_control(
 			new Control(
@@ -639,7 +590,15 @@ class Layout_Single_Post extends Base_Customizer {
 	private function post_meta() {
 
 		$order_default_components = get_theme_mod( 'neve_post_meta_ordering', wp_json_encode( [ 'author', 'date', 'comments' ] ) );
-		$components               = apply_filters(
+
+		/**
+		 * Filters the elements that appears in meta.
+		 *
+		 * @param array $elements Array of meta elements.
+		 *
+		 * @since 2.11.4
+		 */
+		$components = apply_filters(
 			'neve_meta_filter',
 			[
 				'author'   => __( 'Author', 'neve' ),
@@ -648,6 +607,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'comments' => __( 'Comments', 'neve' ),
 			]
 		);
+
 		$this->add_control(
 			new Control(
 				'neve_single_post_meta_ordering',
@@ -762,13 +722,13 @@ class Layout_Single_Post extends Base_Customizer {
 			)
 		);
 
-		$show_updated_time_default = get_theme_mod( 'neve_show_last_updated_date', false );
+		$last_updated_default = get_theme_mod( 'neve_show_last_updated_date', false );
 		$this->add_control(
 			new Control(
 				'neve_single_post_show_last_updated_date',
 				[
 					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => $show_updated_time_default,
+					'default'           => $last_updated_default,
 				],
 				[
 					'label'    => esc_html__( 'Use last updated date instead of the published one', 'neve' ),
@@ -788,37 +748,107 @@ class Layout_Single_Post extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_post_comment_section_title',
-				array(
+				[
 					'sanitize_callback' => 'sanitize_text_field',
-				),
-				array(
+				],
+				[
 					'label'       => esc_html__( 'Section title', 'neve' ),
 					'description' => esc_html__( 'The following magic tags are available for this field: {title} and {comments_number}. Leave this field empty for default behavior.', 'neve' ),
 					'priority'    => 140,
 					'section'     => $this->section,
 					'type'        => 'text',
-				)
+				]
 			)
 		);
 
-		$this->add_boxed_layout_controls( array(
-			'id'                      => 'comments',
-			'priority'                => 145,
-			'padding_css_selector'    => '',
-			'background_color_css_selector' => 'body.single-post .nv-comments-wrap.is-boxed',
-			'text_color_css_selector' => '',
-			'active_callback'         => function() {
-				return get_theme_mod( 'neve_comments_boxed_layout', false );
-			}
-		) );
+		$this->add_boxed_layout_controls(
+			[
+				'id'                        => 'comments',
+				'priority'                  => 145,
+				'padding_default'           => $this->padding_default(),
+				'background_default'        => 'var(--nv-dark-bg)',
+				'color_default'             => 'var(--nv-text-dark-bg)',
+				'boxed_selector'            => '.nv-comments-wrap.is-boxed',
+				'text_color_css_selector'   => '.nv-comments-wrap.is-boxed, .nv-comments-wrap.is-boxed a',
+				'border_color_css_selector' => '.nv-comments-wrap.is-boxed .nv-comment-article',
+				'active_callback'           => function() {
+					return get_theme_mod( 'neve_comments_boxed_layout', false );
+				},
+			]
+		);
 
+		$this->add_control(
+			new Control(
+				'neve_post_comment_form_title',
+				[
+					'sanitize_callback' => 'sanitize_text_field',
+				],
+				[
+					'label'    => esc_html__( 'Section title', 'neve' ),
+					'priority' => 170,
+					'section'  => $this->section,
+					'type'     => 'text',
+				]
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_comment_form_button_style',
+				[
+					'default'           => 'primary',
+					'sanitize_callback' => 'sanitize_button_type',
+				],
+				[
+					'label'    => esc_html__( 'Button style', 'neve' ),
+					'section'  => $this->section,
+					'priority' => 175,
+					'type'     => 'select',
+					'choices'  => [
+						'primary'   => esc_html__( 'Primary', 'neve' ),
+						'secondary' => esc_html__( 'Secondary', 'neve' ),
+					],
+				]
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_comment_form_button_text',
+				[
+					'sanitize_callback' => 'sanitize_text_field',
+				],
+				[
+					'label'    => esc_html__( 'Button text', 'neve' ),
+					'priority' => 180,
+					'section'  => $this->section,
+					'type'     => 'text',
+				]
+			)
+		);
+
+		$this->add_boxed_layout_controls(
+			[
+				'id'                      => 'comments_form',
+				'priority'                => 185,
+				'padding_default'         => $this->padding_default(),
+				'background_default'      => 'var(--nv-dark-bg)',
+				'color_default'           => 'var(--nv-text-dark-bg)',
+				'boxed_selector'          => '.comment-respond.is-boxed',
+				'text_color_css_selector' => '.comment-respond.is-boxed, .comment-respond.is-boxed a',
+				'active_callback'         => function() {
+					return get_theme_mod( 'neve_comments_form_boxed_layout', false );
+				},
+			]
+		);
 	}
 
 	/**
-	 * @param $settings
+	 * Function to add controls that form the boxed layout.
+	 *
+	 * @param array $settings Controls settings.
 	 */
 	private function add_boxed_layout_controls( $settings ) {
-
 		$this->add_control(
 			new Control(
 				'neve_' . $settings['id'] . '_boxed_layout',
@@ -831,6 +861,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'section'         => $this->section,
 					'type'            => 'neve_toggle_control',
 					'priority'        => $settings['priority'],
+					'active_callback' => array_key_exists( 'toggle_active_callback', $settings ) ? $settings['toggle_active_callback'] : '__return_true',
 				],
 				'Neve\Customizer\Controls\Checkbox'
 			)
@@ -842,7 +873,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
 					'transport'         => $this->selective_refresh,
-					'default'           => self::cover_padding_default(),
+					'default'           => array_key_exists( 'padding_default', $settings ) ? $settings['padding_default'] : false,
 				],
 				[
 					'label'                 => esc_html__( 'Section padding', 'neve' ),
@@ -857,14 +888,14 @@ class Layout_Single_Post extends Base_Customizer {
 						'responsive'  => true,
 						'directional' => true,
 						'template'    =>
-							$settings['padding_css_selector'] . '{
+							$settings['boxed_selector'] . '{
 							padding-top: {{value.top}};
 							padding-right: {{value.right}};
 							padding-bottom: {{value.bottom}};
 							padding-left: {{value.left}};
 						}',
 					],
-					'active_callback'       => $settings['active_callback'],
+					'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
 				],
 				'\Neve\Customizer\Controls\React\Spacing'
 			)
@@ -876,6 +907,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'sanitize_callback' => 'neve_sanitize_colors',
 					'transport'         => $this->selective_refresh,
+					'default'           => array_key_exists( 'background_default', $settings ) ? $settings['background_default'] : false,
 				],
 				[
 					'label'                 => esc_html__( 'Background color', 'neve' ),
@@ -884,42 +916,62 @@ class Layout_Single_Post extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' =>
-							$settings['background_color_css_selector'] . '{
+							$settings['boxed_selector'] . '{
 							   background-color: {{value}};
 						    }',
 
 					],
-					'active_callback'       => $settings['active_callback'],
+					'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
 				],
 				'Neve\Customizer\Controls\React\Color'
 			)
 		);
 
-		$this->add_control(
-			new Control(
-				'neve_' . $settings['id'] . '_boxed_text_color',
-				[
-					'sanitize_callback' => 'neve_sanitize_colors',
-					'transport'         => $this->selective_refresh,
-				],
-				[
-					'label'                 => esc_html__( 'Background color', 'neve' ),
-					'section'               => $this->section,
-					'priority'              => ( $settings['priority'] + 15 ),
-					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'template' =>
-							$settings['text_color_css_selector'] . '{
-							  color: {{value}};
-						    }',
+		$has_text_color = isset( $settings['has_text_color'] ) ? $settings['has_text_color'] : true;
 
+		if ( $has_text_color ) {
+			$template = $settings['text_color_css_selector'] . '{ color: {{value}}; }';
+			if ( array_key_exists( 'border_color_css_selector', $settings ) ) {
+				$template .= $settings['border_color_css_selector'] . '{ border-color: {{value}}; }';
+			}
+			$this->add_control(
+				new Control(
+					'neve_' . $settings['id'] . '_boxed_text_color',
+					[
+						'sanitize_callback' => 'neve_sanitize_colors',
+						'transport'         => $this->selective_refresh,
+						'default'           => array_key_exists( 'color_default', $settings ) ? $settings['color_default'] : false,
 					],
-					'active_callback'       => $settings['active_callback'],
-				],
-				'Neve\Customizer\Controls\React\Color'
-			)
-		);
+					[
+						'label'                 => esc_html__( 'Text color', 'neve' ),
+						'section'               => $this->section,
+						'priority'              => ( $settings['priority'] + 15 ),
+						'live_refresh_selector' => true,
+						'live_refresh_css_prop' => [
+							'template' => $template,
+						],
+						'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
+					],
+					'Neve\Customizer\Controls\React\Color'
+				)
+			);
+		}
 
+	}
+
+	/**
+	 * Sanitize the header layout control.
+	 *
+	 * @param string $input Control input.
+	 *
+	 * @return string
+	 */
+	public function sanitize_header_layout( $input ) {
+		$header_layout_options = [ 'normal', 'cover' ];
+		if ( ! in_array( $input, $header_layout_options, true ) ) {
+			return 'normal';
+		}
+		return $input;
 	}
 
 	/**
@@ -971,134 +1023,6 @@ class Layout_Single_Post extends Base_Customizer {
 		if ( ! self::is_cover_layout() ) {
 			return false;
 		}
-		return get_theme_mod( 'neve_post_cover_boxed_title', false );
-	}
-
-	/**
-	 * Sanitize the header layout control.
-	 *
-	 * @param string $input Control input.
-	 *
-	 * @return string
-	 */
-	public function sanitize_header_layout( $input ) {
-		$header_layout_options = [ 'normal', 'cover' ];
-		if ( ! in_array( $input, $header_layout_options, true ) ) {
-			return 'normal';
-		}
-		return $input;
-	}
-
-	/**
-	 * Sanitize blend mode option.
-	 *
-	 * @param string $input Control input.
-	 *
-	 * @return string
-	 */
-	public function sanitize_blend_mode( $input ) {
-		$blend_mode_options = [ 'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'saturation', 'color', 'difference', 'exclusion', 'hue', 'luminosity' ];
-		if ( ! in_array( $input, $blend_mode_options, true ) ) {
-			return 'normal';
-		}
-		return $input;
-	}
-
-	/**
-	 * Sanitize container option.
-	 *
-	 * @param string $input Control input.
-	 *
-	 * @return string
-	 */
-	public function sanitize_container( $input ) {
-		$container_options = [ 'full-width', 'contained' ];
-		if ( ! in_array( $input, $container_options, true ) ) {
-			return 'contained';
-		}
-		return $input;
-	}
-
-	/**
-	 * Get default values for cover padding.
-	 *
-	 * @return array
-	 */
-	public static function cover_padding_default() {
-		return [
-			'mobile'       => [
-				'top'    => 40,
-				'right'  => 15,
-				'bottom' => 40,
-				'left'   => 15,
-			],
-			'tablet'       => [
-				'top'    => 60,
-				'right'  => 15,
-				'bottom' => 60,
-				'left'   => 15,
-			],
-			'desktop'      => [
-				'top'    => 60,
-				'right'  => 15,
-				'bottom' => 60,
-				'left'   => 15,
-			],
-			'mobile-unit'  => 'px',
-			'tablet-unit'  => 'px',
-			'desktop-unit' => 'px',
-		];
-	}
-
-	/**
-	 * Get the default value for title alignment.
-	 *
-	 * @return array
-	 */
-	public static function post_title_alignment_default() {
-		$default_position = is_rtl() ? 'right' : 'left';
-		return [
-			'mobile'  => $default_position,
-			'tablet'  => $default_position,
-			'desktop' => $default_position,
-		];
-	}
-
-	/**
-	 * Get the default value for title vertical position.
-	 *
-	 * @return array
-	 */
-	public static function post_title_position_default() {
-		return [
-			'mobile'  => 'bottom',
-			'tablet'  => 'bottom',
-			'desktop' => 'bottom',
-		];
-	}
-
-	/**
-	 * Get default values for ordering control
-	 *
-	 * @return array
-	 */
-	public static function ordering_default() {
-		$default_components = [
-			'title-meta',
-			'thumbnail',
-			'content',
-			'tags',
-			'comments',
-		];
-
-		if ( get_theme_mod( 'neve_post_header_layout' ) === 'cover' ) {
-			$default_components = [
-				'content',
-				'tags',
-				'comments',
-			];
-		}
-
-		return apply_filters( 'neve_single_post_elements_default_order', $default_components );
+		return get_theme_mod( 'neve_post_cover_title_boxed_layout', false );
 	}
 }

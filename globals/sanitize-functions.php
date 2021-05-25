@@ -289,3 +289,49 @@ function sanitize_meta_ordering( $value ) {
 
 	return $value;
 }
+
+/**
+ * Sanitize blend mode option.
+ *
+ * @param string $input Control input.
+ *
+ * @return string
+ */
+function sanitize_blend_mode( $input ) {
+	$blend_mode_options = [ 'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'saturation', 'color', 'difference', 'exclusion', 'hue', 'luminosity' ];
+	if ( ! in_array( $input, $blend_mode_options, true ) ) {
+		return 'normal';
+	}
+	return $input;
+}
+
+/**
+ * Sanitize the container layout value
+ *
+ * @param string $value value from the control.
+ *
+ * @return bool
+ */
+function sanitize_container_layout( $value ) {
+	$allowed_values = array( 'contained', 'full-width' );
+	if ( ! in_array( $value, $allowed_values, true ) ) {
+		return 'contained';
+	}
+
+	return esc_html( $value );
+}
+
+/**
+ * Sanitize Button Type option.
+ *
+ * @param string $value the control value.
+ *
+ * @return string
+ */
+function sanitize_button_type( $value ) {
+	if ( ! in_array( $value, [ 'primary', 'secondary' ], true ) ) {
+		return 'primary';
+	}
+
+	return $value;
+}

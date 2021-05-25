@@ -584,7 +584,7 @@ class Form_Fields extends Base_Customizer {
 			new Control(
 				'neve_form_button_type',
 				[
-					'sanitize_callback' => [ $this, 'sanitize_button_type' ],
+					'sanitize_callback' => 'sanitize_button_type',
 					'default'           => 'primary',
 				],
 				[
@@ -605,20 +605,5 @@ class Form_Fields extends Base_Customizer {
 				'Neve\Customizer\Controls\React\Inline_Select'
 			)
 		);
-	}
-
-	/**
-	 * Sanitize Button Type option.
-	 *
-	 * @param string $value the control value.
-	 *
-	 * @return string
-	 */
-	public function sanitize_button_type( $value ) {
-		if ( ! in_array( $value, [ 'primary', 'secondary' ], true ) ) {
-			return 'primary';
-		}
-
-		return $value;
 	}
 }

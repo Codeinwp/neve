@@ -11,6 +11,7 @@ namespace Neve\Views;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
+use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Options\Layout_Single_Post;
 
 /**
@@ -19,6 +20,7 @@ use Neve\Customizer\Options\Layout_Single_Post;
  * @package Neve\Views
  */
 class Post_Layout extends Base_View {
+	use Single_Post;
 
 	/**
 	 * Function that is run after instantiation.
@@ -184,7 +186,7 @@ class Post_Layout extends Base_View {
 		}
 
 		$alignment   = apply_filters( 'neve_post_title_alignment', '' );
-		$position    = $this->get_alignment_classes( 'neve_post_title_position', Layout_Single_Post::post_title_position_default() );
+		$position    = $this->get_alignment_classes( 'neve_post_title_position', $this->post_title_position() );
 		$cover_style = $this->get_cover_style();
 
 		$container_classes = [
@@ -200,7 +202,7 @@ class Post_Layout extends Base_View {
 		$title_meta_wrap_classes = [
 			'nv-title-meta-wrap',
 		];
-		$title_mode              = get_theme_mod( 'neve_post_cover_boxed_title', false );
+		$title_mode              = get_theme_mod( 'neve_post_cover_title_boxed_layout', false );
 		if ( $title_mode ) {
 			$title_meta_wrap_classes[] = 'is-boxed';
 		}
@@ -231,7 +233,7 @@ class Post_Layout extends Base_View {
 	 * @return string
 	 */
 	public function align_post_title( $classes ) {
-		$title_alignment_classes = $this->get_alignment_classes( 'neve_post_title_alignment', Layout_Single_Post::post_title_alignment_default() );
+		$title_alignment_classes = $this->get_alignment_classes( 'neve_post_title_alignment', $this->post_title_alignment() );
 		if ( empty( $title_alignment_classes ) ) {
 			return $classes;
 		}
@@ -244,7 +246,7 @@ class Post_Layout extends Base_View {
 	 * @return array
 	 */
 	private function get_content_order() {
-		$default_order = Layout_Single_Post::ordering_default();
+		$default_order = $this->post_ordering();
 
 		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
 		if ( ! is_string( $content_order ) ) {

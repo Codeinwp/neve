@@ -88,8 +88,15 @@ class Config {
 	const MODS_POST_COVER_OVERLAY_OPACITY        = 'neve_post_cover_overlay_opacity';
 	const MODS_POST_COVER_TEXT_COLOR             = 'neve_post_cover_text_color';
 	const MODS_POST_COVER_BLEND_MODE             = 'neve_post_cover_blend_mode';
-	const MODS_POST_COVER_BOXED_TITLE_PADDING    = 'neve_post_cover_boxed_title_padding';
-	const MODS_POST_COVER_BOXED_TITLE_BACKGROUND = 'neve_post_cover_boxed_title_background';
+	const MODS_POST_COVER_BOXED_TITLE_PADDING    = 'neve_post_cover_title_boxed_padding';
+	const MODS_POST_COVER_BOXED_TITLE_BACKGROUND = 'neve_post_cover_title_boxed_background';
+
+	const MODS_POST_COMMENTS_PADDING               = 'neve_comments_boxed_padding';
+	const MODS_POST_COMMENTS_BACKGROUND_COLOR      = 'neve_comments_boxed_background_color';
+	const MODS_POST_COMMENTS_TEXT_COLOR            = 'neve_comments_boxed_text_color';
+	const MODS_POST_COMMENTS_FORM_PADDING          = 'neve_comments_form_boxed_padding';
+	const MODS_POST_COMMENTS_FORM_BACKGROUND_COLOR = 'neve_comments_form_boxed_background_color';
+	const MODS_POST_COMMENTS_FORM_TEXT_COLOR       = 'neve_comments_form_boxed_text_color';
 
 	const CSS_PROP_BORDER_COLOR               = 'border-color';
 	const CSS_PROP_BACKGROUND_COLOR           = 'background-color';
