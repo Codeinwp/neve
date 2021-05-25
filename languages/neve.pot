@@ -500,7 +500,7 @@ msgid "Alignment"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:536
-#: inc/customizer/options/buttons.php:135
+#: inc/customizer/options/buttons.php:122
 msgid "Padding"
 msgstr ""
 
@@ -600,22 +600,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:511
+#: inc/core/front_end.php:513
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:508
+#: inc/core/front_end.php:510
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:510
+#: inc/core/front_end.php:512
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:509
+#: inc/core/front_end.php:511
 msgid "Footer Two"
 msgstr ""
 
@@ -887,7 +887,7 @@ msgstr ""
 #: header-footer-grid/Core/Customizer.php:291
 #: header-footer-grid/templates/components/component-cart-icon.php:26
 #: inc/views/header.php:138
-#: inc/views/layouts/layout_sidebar.php:144
+#: inc/views/layouts/layout_sidebar.php:148
 msgid "Close"
 msgstr ""
 
@@ -1038,7 +1038,7 @@ msgid "Checkout URL"
 msgstr ""
 
 #: header-footer-grid/Core/Settings/Manager.php:177
-#: inc/customizer/options/typography.php:109
+#: inc/customizer/options/typography.php:41
 msgid "General"
 msgstr ""
 
@@ -1106,7 +1106,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:501
+#: inc/core/front_end.php:503
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:141
 msgid "Sidebar"
 msgstr ""
@@ -1359,7 +1359,7 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: inc/core/front_end.php:502
+#: inc/core/front_end.php:504
 msgid "Shop Sidebar"
 msgstr ""
 
@@ -1371,30 +1371,26 @@ msgstr ""
 msgid "update"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:43
+#: inc/customizer/options/buttons.php:44
 msgid "Buttons"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:59
+#: inc/customizer/options/buttons.php:60
 #: inc/customizer/options/form_fields.php:596
 #: assets/js/src/gutenberg.js:13
 msgid "Primary"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:62
+#: inc/customizer/options/buttons.php:63
 #: inc/customizer/options/form_fields.php:597
 msgid "Secondary"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:98
+#: inc/customizer/options/buttons.php:105
 msgid "Button Appearance"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:154
-msgid "Border radius"
-msgstr ""
-
-#: inc/customizer/options/buttons.php:175
+#: inc/customizer/options/buttons.php:141
 msgid "Button Text"
 msgstr ""
 
@@ -1609,7 +1605,7 @@ msgstr ""
 
 #: inc/customizer/options/layout_sidebar.php:164
 #: inc/customizer/options/layout_single_post.php:42
-#: inc/customizer/options/typography.php:341
+#: inc/customizer/options/typography.php:251
 msgid "Single Post"
 msgstr ""
 
@@ -1681,45 +1677,45 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: inc/customizer/options/typography.php:113
+#: inc/customizer/options/typography.php:45
 msgid "Headings"
 msgstr ""
 
-#: inc/customizer/options/typography.php:117
+#: inc/customizer/options/typography.php:49
 msgid "Blog"
 msgstr ""
 
-#: inc/customizer/options/typography.php:152
+#: inc/customizer/options/typography.php:84
 msgid "Body"
 msgstr ""
 
-#: inc/customizer/options/typography.php:215
+#: inc/customizer/options/typography.php:131
 msgid "Fallback Font"
 msgstr ""
 
-#: inc/customizer/options/typography.php:222
+#: inc/customizer/options/typography.php:138
 msgid "Learn more about fallback fonts"
 msgstr ""
 
-#: inc/customizer/options/typography.php:324
-#: inc/customizer/options/typography.php:340
+#: inc/customizer/options/typography.php:234
+#: inc/customizer/options/typography.php:250
 msgid "Post title"
 msgstr ""
 
-#: inc/customizer/options/typography.php:325
+#: inc/customizer/options/typography.php:235
 msgid "Blog Archive"
 msgstr ""
 
-#: inc/customizer/options/typography.php:330
+#: inc/customizer/options/typography.php:240
 msgid "Post excerpt"
 msgstr ""
 
-#: inc/customizer/options/typography.php:335
-#: inc/customizer/options/typography.php:346
+#: inc/customizer/options/typography.php:245
+#: inc/customizer/options/typography.php:256
 msgid "Post meta"
 msgstr ""
 
-#: inc/customizer/options/typography.php:351
+#: inc/customizer/options/typography.php:261
 msgid "Comments reply title"
 msgstr ""
 
@@ -1808,47 +1804,47 @@ msgstr ""
 msgid "Search Results for: %s"
 msgstr ""
 
-#: inc/views/partials/comments.php:63
+#: inc/views/partials/comments.php:69
 msgid "Comments are closed."
 msgstr ""
 
-#: inc/views/partials/comments.php:81
+#: inc/views/partials/comments.php:87
 msgid "Comments Navigation"
 msgstr ""
 
-#: inc/views/partials/comments.php:86
+#: inc/views/partials/comments.php:92
 msgid "Previous"
 msgstr ""
 
-#: inc/views/partials/comments.php:89
+#: inc/views/partials/comments.php:95
 msgid "Next"
 msgstr ""
 
-#: inc/views/partials/comments.php:112
+#: inc/views/partials/comments.php:118
 msgid "Pingback:"
 msgstr ""
 
-#: inc/views/partials/comments.php:114
-#: inc/views/partials/comments.php:145
+#: inc/views/partials/comments.php:120
+#: inc/views/partials/comments.php:201
 #: inc/customizer/controls/react/src/common/CustomPalette.js:18
 msgid "Edit"
 msgstr ""
 
 #. translators: 1: date, 2: time
-#: inc/views/partials/comments.php:136
+#: inc/views/partials/comments.php:156
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: inc/views/partials/comments.php:151
-msgid "Reply"
-msgstr ""
-
-#: inc/views/partials/comments.php:164
+#: inc/views/partials/comments.php:176
 msgid "Comment awaiting moderation."
 msgstr ""
 
+#: inc/views/partials/comments.php:207
+msgid "Reply"
+msgstr ""
+
 #. translators: number of comments
-#: inc/views/partials/comments.php:185
+#: inc/views/partials/comments.php:231
 msgctxt "comments title"
 msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
@@ -1872,7 +1868,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: inc/views/pluggable/pagination.php:172
-#: inc/views/template_parts.php:330
+#: inc/views/template_parts.php:331
 msgid "Pages:"
 msgstr ""
 

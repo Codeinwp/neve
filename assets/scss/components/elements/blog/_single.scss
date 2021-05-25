@@ -1,7 +1,8 @@
 @import "../../main/variables";
 
 main > .container {
-  padding-top: $spacing-aired
+  padding-top: $spacing-aired;
+  padding-bottom: $spacing-lg;
 }
 
 .entry-header .title, .page .title, .nv-page-title {
@@ -86,7 +87,7 @@ main > .container {
   }
 }
 
-.nv-tags-list {
+.nv-tags-list, .tagcloud {
   a {
 	font-size: .75em;
 	margin-left: $spacing-xs;
@@ -96,5 +97,16 @@ main > .container {
 	padding: 10px;
 	border-radius: 4px;
 	background: var(--nv-primary-accent);
+  }
+}
+
+.tagcloud {
+  display: flex;
+  flex-wrap: wrap;
+
+  a {
+	margin: 0 $spacing-xs $spacing-xs 0;
+	font-size: .75em !important;
+	color: #fff !important;
   }
 }

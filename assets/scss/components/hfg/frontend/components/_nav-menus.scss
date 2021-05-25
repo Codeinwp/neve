@@ -3,12 +3,6 @@
   ul:not(.max-mega-menu) > li:hover > a {
 	text-decoration: none;
   }
-
-  ul > li.menu-item-nav-cart:hover, ul > li.menu-item-nav-search:hover {
-	a {
-	  opacity: .75;
-	}
-  }
 }
 
 .style-border-bottom {
@@ -61,14 +55,6 @@
 }
 
 // Footer nav menu
-.nav-menu-footer {
-  a {
-	display: flex;
-	justify-content: center;
-	position: relative;
-  }
-}
-
 .header-menu-sidebar-inner #mega-menu-wrap-primary .mega-menu-toggle {
   display: none;
 
@@ -82,7 +68,7 @@
 }
 
 .style-border-top, .style-border-bottom {
-  ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) {
+  ul > li {
 	&:hover > a:after {
 	  width: 100%;
 	}
@@ -90,7 +76,7 @@
 }
 
 .style-border-top, .style-border-bottom, .style-full-height {
-  ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) {
+  ul > li {
 	> a:after {
 	  position: absolute;
 	  content: "";

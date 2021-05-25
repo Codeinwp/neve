@@ -1,3 +1,5 @@
+@import "../vars";
+
 .header-menu-sidebar {
   padding: 0;
   position: fixed;
@@ -7,13 +9,11 @@
   visibility: hidden;
   display: flex;
   transition: all .3s cubic-bezier(.79, .14, .15, .86);
-  box-shadow: $menu_sidebar_boxshadow;
-  width: $menu_sidebar_width;
   height: 100vh;
 }
 
 .header-menu-sidebar-bg {
-	position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   word-wrap: break-word;
@@ -23,7 +23,7 @@
 .header-menu-sidebar-inner {
   padding: 20px 0;
   overflow: auto;
-	height: 100%;
+  height: 100%;
 }
 
 .menu_sidebar_slide_left {
@@ -101,7 +101,7 @@
 .hiding-header-menu-sidebar {
   .header-menu-sidebar {
 	transition: all .3s cubic-bezier(.79, .14, .15, .86);
-	height: 100%;
+	//height: 100%;
   }
 
   &.menu_sidebar_slide_left {
@@ -139,8 +139,6 @@
 /* Showing Menu Sidebar animation. */
 .is-menu-sidebar {
   .header-menu-sidebar {
-	z-index: $menu_sidebar_active_z_index;
-	height: 100vh;
 	visibility: visible;
   }
 
@@ -193,45 +191,11 @@
   align-items: center;
 }
 
-.header-menu-sidebar .menu-item-nav-search.responsive-nav-search .nv-nav-search {
-  margin-left: 20px;
-  position: relative;
-  background-color: transparent;
-  border: 0;
-  display: flex;
-  box-shadow: none;
-  flex-direction: row-reverse;
-  width: 100%;
-  padding: 0;
-  line-height: 1;
-
-  .close-container {
-	position: static;
-	top: unset;
-	width: 35%;
-	padding: 0;
-  }
-
-  form input:not([type="submit"]) {
-	background-color: #fff;
-  }
-
-  input[type="submit"] {
-	line-height: 1;
-  }
-
-  .nv-icon {
-	line-height: 1;
-  }
-}
-
 /* Close Button */
 .header-menu-sidebar {
   .navbar-toggle-wrapper {
 	display: flex;
-	align-items: center;
 	justify-content: flex-end;
-	z-index: $menu_sidebar_active_z_index + 10;
 	padding: 8px 10px;
 
 	button.navbar-toggle {

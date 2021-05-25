@@ -58,7 +58,6 @@ $desktop: map-get($gl-devices-list, desktop);
   margin: 0 auto;
 }
 
-// Page Header and Header specific alignments.
 [data-row-id] {
   .row {
 	display: grid;
@@ -70,32 +69,6 @@ $desktop: map-get($gl-devices-list, desktop);
   grid-template-columns: 1fr auto 1fr;
 }
 
-.footer--row {
-  .hfg-slot {
-	display: flex;
-	flex-direction: column;
-  }
-
-  .row {
-	display: grid;
-  }
-
-  .builder-item {
-	width: 100%;
-  }
-}
-
-//</editor-fold>
-
-//<editor-fold desc="Row Styles">
 .hfg_header.site-header {
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
-}
-
-//</editor-fold>
-
-@media (max-width: 960px) {
-  footer .footer--row-inner .row {
-	grid-template-columns: 1fr;
-  }
 }
