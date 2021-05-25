@@ -276,12 +276,12 @@ msgid "You appear to be running the Neve theme from source code. Please finish i
 msgstr ""
 
 #: globals/utilities.php:1344
-#: globals/utilities.php:1389
+#: globals/utilities.php:1386
 msgid "Base"
 msgstr ""
 
 #: globals/utilities.php:1359
-#: globals/utilities.php:1404
+#: globals/utilities.php:1401
 msgid "Dark Mode"
 msgstr ""
 

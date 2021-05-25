@@ -237,7 +237,6 @@ class Mods {
 			'tablet'  => $new ? 'px' : 'em',
 			'desktop' => $new ? 'px' : 'em',
 		];
-
 		switch ( $key ) {
 			case Config::MODS_FONT_GENERAL:
 				return $new ? 'Inter' : false;
@@ -457,6 +456,7 @@ class Mods {
 					'tablet-unit'  => 'px',
 					'mobile-unit'  => 'px',
 				];
+
 			default:
 				return false;
 		}

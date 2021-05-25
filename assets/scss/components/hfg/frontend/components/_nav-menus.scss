@@ -1,10 +1,4 @@
 // Hover Styles
-.style-border-top, .style-border-bottom, .style-full-height {
-  ul:not(.max-mega-menu) > li:hover > a {
-	text-decoration: none;
-  }
-}
-
 .style-border-bottom {
   a:after {
 	bottom: 0;
@@ -52,19 +46,6 @@
 	  z-index: -1;
 	}
   }
-}
-
-// Footer nav menu
-.header-menu-sidebar-inner #mega-menu-wrap-primary .mega-menu-toggle {
-  display: none;
-
-  + #mega-menu-primary {
-	display: block;
-  }
-}
-
-.mega-menu-primary .nav-menu-primary {
-  width: 100%;
 }
 
 .style-border-top, .style-border-bottom {

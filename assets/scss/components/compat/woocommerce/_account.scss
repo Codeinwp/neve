@@ -8,7 +8,7 @@ body.woocommerce-account {
   }
 
   .woocommerce-LostPassword {
-    font-size: .9em;
+    font-size: $small-text;
     text-align: center;
     margin: $spacing-xs 0 0 0;
   }
@@ -100,7 +100,7 @@ body.woocommerce-account {
 
   address {
     font-style: normal;
-    font-size: .9em;
+    font-size: $small-text;
   }
 }
 

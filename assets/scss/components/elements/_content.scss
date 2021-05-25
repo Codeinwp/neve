@@ -16,7 +16,7 @@
 }
 
 figcaption {
-	font-size: .8em;
+	font-size: $small-text;
 	opacity: .75;
 }
 
@@ -82,7 +82,7 @@ pre {
   border: $muted-border;
   margin: $spacing-sm 0;
   white-space: pre-wrap;
-  font-size: .9em;
+  font-size: $small-text;
   line-height: 2em;
 
   code {
@@ -169,4 +169,13 @@ audio {
   .neve-main > .container > .row {
     flex-wrap: nowrap;
   }
+}
+
+
+.is-style-primary .wp-block-button__link {
+  @extend %nv-button-primary;
+}
+
+.is-style-secondary .wp-block-button__link {
+  @extend %nv-button-secondary;
 }

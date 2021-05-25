@@ -81,13 +81,13 @@
 	}
 
 	time {
-	  font-size: .9em;
+	  font-size: $small-text;
 	  opacity: .7;
 	}
   }
 
   .edit-reply {
-	font-size: .9em;
+	font-size: $small-text;
 	font-weight: 700;
 	text-transform: uppercase;
 	margin-left: auto;

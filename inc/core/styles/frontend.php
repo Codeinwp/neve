@@ -301,7 +301,6 @@ class Frontend extends Generator {
 			Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 		];
 
-
 		$this->_subscribers[':root']['--headingsFontFamily'] = [
 			Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_HEADINGS ),
 			Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_HEADINGS ),
@@ -625,17 +624,40 @@ class Frontend extends Generator {
 		];
 
 		// Border Width
-		$this->_subscribers[':root']['--primaryBtnBorderWidth'] = [
+		$this->_subscribers[':root']['--primaryBtnBorderWidth']   = [
 			Dynamic_Selector::META_KEY     => $mod_key_primary . '.borderWidth',
 			Dynamic_Selector::META_DEFAULT => $default_primary['borderWidth'],
 			Dynamic_Selector::META_SUFFIX  => 'px',
 			'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
 		];
-		$this->_subscribers[':root']['--primaryBtnBorderWidth'] = [
+		$this->_subscribers[':root']['--secondaryBtnBorderWidth'] = [
 			Dynamic_Selector::META_KEY     => $mod_key_secondary . '.borderWidth',
 			Dynamic_Selector::META_DEFAULT => $default_secondary['borderWidth'],
 			Dynamic_Selector::META_SUFFIX  => 'px',
 			'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
+		];
+
+		$this->_subscribers[':root']['--primaryBtnBorderWidth']   = [
+			Dynamic_Selector::META_KEY     => $mod_key_primary . '.type',
+			Dynamic_Selector::META_DEFAULT => $default_primary['type'],
+			Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) {
+				if ( $value !== 'outline' ) {
+					return sprintf( '%s:%s;', $css_prop, 0 );
+				}
+
+				return '';
+			},
+		];
+		$this->_subscribers[':root']['--secondaryBtnBorderWidth'] = [
+			Dynamic_Selector::META_KEY     => $mod_key_secondary . '.type',
+			Dynamic_Selector::META_DEFAULT => $default_secondary['type'],
+			Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) {
+				if ( $value !== 'outline' ) {
+					return sprintf( '%s:%s;', $css_prop, 0 );
+				}
+
+				return '';
+			},
 		];
 
 		$mod_key_primary = Mods::get_alternative_mod( Config::MODS_BUTTON_PRIMARY_PADDING );
@@ -644,18 +666,63 @@ class Frontend extends Generator {
 		$mod_key_secondary = Mods::get_alternative_mod( Config::MODS_BUTTON_SECONDARY_PADDING );
 		$default_secondary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_SECONDARY_PADDING );
 
-		$this->_subscribers[':root']['--primaryBtnPadding'] = [
+		$this->_subscribers[':root']['--primaryBtnPadding']   = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary,
 			Dynamic_Selector::META_DEFAULT       => $default_primary,
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
 			'directional-prop'                   => Config::CSS_PROP_PADDING,
 		];
-
 		$this->_subscribers[':root']['--secondaryBtnPadding'] = [
 			Dynamic_Selector::META_KEY           => $mod_key_secondary,
 			Dynamic_Selector::META_DEFAULT       => $default_secondary,
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
 			'directional-prop'                   => Config::CSS_PROP_PADDING,
+		];
+
+		$this->_subscribers[':root']['--primaryBtnFs']            = [
+			Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.fontSize',
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+		];
+		$this->_subscribers[':root']['--primaryBtnLineHeight']    = [
+			Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.lineHeight',
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+		];
+		$this->_subscribers[':root']['--primaryBtnLetterSpacing'] = [
+			Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.letterSpacing',
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			Dynamic_Selector::META_SUFFIX        => '',
+		];
+		$this->_subscribers[':root']['--primaryBtnTextTransform'] = [
+			Dynamic_Selector::META_KEY => Config::MODS_BUTTON_TYPEFACE . '.textTransform',
+		];
+
+		$this->_subscribers[':root']['--primaryBtnFontWeight'] = [
+			Dynamic_Selector::META_KEY => Config::MODS_BUTTON_TYPEFACE . '.fontWeight',
+		];
+
+		$this->_subscribers[':root']['--secondaryBtnFs']            = [
+			Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontSize',
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+		];
+		$this->_subscribers[':root']['--secondaryBtnLineHeight']    = [
+			Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.lineHeight',
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+		];
+		$this->_subscribers[':root']['--secondaryBtnLineHeight']    = [
+			Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.lineHeight',
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			Dynamic_Selector::META_SUFFIX        => '',
+		];
+		$this->_subscribers[':root']['--secondaryBtnLetterSpacing'] = [
+			Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.letterSpacing',
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			Dynamic_Selector::META_SUFFIX        => '',
+		];
+		$this->_subscribers[':root']['--secondaryBtnTextTransform'] = [
+			Dynamic_Selector::META_KEY => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.textTransform',
+		];
+		$this->_subscribers[':root']['--secondaryBtnFontWeight']    = [
+			Dynamic_Selector::META_KEY => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontWeight',
 		];
 	}
 

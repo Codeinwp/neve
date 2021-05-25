@@ -11,6 +11,11 @@
   color: var(--primaryBtnColor);
   border-width: var(--primaryBtnBorderWidth);
   border-color: var(--primaryBtnColor);
+  font-size: var(--primaryBtnFs, var(--bodyFontSize));
+  font-weight: var(--primaryBtnFontWeight, 700);
+  line-height: var(--primaryBtnLineHeight, var(--bodyLineHeight));
+  letter-spacing: var(--primaryBtnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--primaryBtnTextTransform, var(--bodyTextTransform));
 
   &:hover {
 	background-color: var(--primaryBtnHoverBg);
@@ -24,9 +29,13 @@
   border-radius: var(--secondaryBtnBorderRadius, 3px);
   background-color: var(--secondaryBtnBg);
   color: var(--secondaryBtnColor);
-  border-width: var(--primaryBtnBorderWidth);
+  border-width: var(--secondaryBtnBorderWidth);
   border-color: var(--secondaryBtnColor);
-
+  font-size: var(--secondaryBtnFs, var(--bodyFontSize));
+  font-weight: var(--secondaryBtnFontWeight, 700);
+  line-height: var(--secondaryBtnLineHeight, var(--bodyLineHeight));
+  letter-spacing: var(--secondaryBtnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--secondaryBtnTextTransform, var(--bodyTextTransform));
 
   &:hover {
 	background-color: var(--secondaryBtnHoverBg);

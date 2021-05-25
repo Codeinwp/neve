@@ -252,6 +252,14 @@ class Css_Prop {
 
 		if( count( array_unique( $value ) ) === 1 ) {
 			$template .= $value['top'] . $suffix . ';';
+
+			return $template;
+		}
+
+		if( count( array_unique( $value ) ) === 2 ) {
+			$template .= $value['top'] . $suffix . ' ' . $value['right'] . $suffix . ';';
+
+			return $template;
 		}
 
 		foreach ( $directions as $direction ) {
