@@ -68,14 +68,14 @@ class Changelog_Handler {
 				);
 				continue;
 			}
-			if ( preg_match( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?\b/', $changelog_line ) ) {
-				$changelog_line                        = preg_replace( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?\b/', '', $changelog_line );
+			if ( preg_match( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?(\b|(?=\[))/', $changelog_line ) ) {
+				$changelog_line                        = preg_replace( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?(\b|(?=\[))/', '', $changelog_line );
 				$releases[ $release_count ]['fixes'][] = $this->parse_md_and_clean( $changelog_line );
 				continue;
 			}
 
-			if ( preg_match( '/[*|-]?\s?(\[feat]|\[Feat]|feat|Feat)[:]?\s?\b/', $changelog_line ) ) {
-				$changelog_line                           = preg_replace( '/[*|-]?\s?(\[feat]|\[Feat]|feat|Feat)[:]?\s?\b/', '', $changelog_line );
+			if ( preg_match( '/[*|-]?\s?(\[feat]|\[Feat]|feat|Feat)[:]?\s?(\b|(?=\[))/', $changelog_line ) ) {
+				$changelog_line                           = preg_replace( '/[*|-]?\s?(\[feat]|\[Feat]|feat|Feat)[:]?\s?(\b|(?=\[))/', '', $changelog_line );
 				$releases[ $release_count ]['features'][] = $this->parse_md_and_clean( $changelog_line );
 				continue;
 			}
