@@ -2,10 +2,11 @@
 @import "components/main/mixins";
 @import "components/main/extends";
 @import "components/compat/woocommerce/generic";
+@import "components/compat/woocommerce/notices";
 @import "components/compat/woocommerce/shop-loop";
+@import "components/compat/woocommerce/buttons";
 @import "components/compat/woocommerce/product";
 @import "components/compat/woocommerce/checkout";
-@import "components/compat/woocommerce/buttons";
 @import "components/compat/woocommerce/sidebar";
 @import "components/compat/woocommerce/widgets";
 @import "components/compat/woocommerce/nav-cart";

@@ -1,35 +1,28 @@
+@import "../../main/variables";
+
 .woocommerce .woocommerce-breadcrumb {
-  margin-bottom: 0;
-  font-size: 1em;
-	color: var(--nv-text-color);
-	opacity: .75;
-	a {
-		color: var(--nv-text-color);
-	}
+  color: var(--nv-text-color);
+  font-size: 14px;
+
+  a {
+	color: var(--nv-secondary-accent);
+  }
+
   .nv-breadcrumb-delimiter {
-    opacity: .5;
-    padding: 0 5px;
+	padding: 0 $spacing-xxs;
   }
 }
 
 .woocommerce {
-  .nv-bc-count-wrap {
-    display: flex;
-    font-size: .85em;
-    margin-bottom: $spacing-sm;
-    justify-content: space-between;
-    .woocommerce-result-count {
-      float: none;
-      margin: 0;
-      text-align: right;
-    }
+  .woocommerce-result-count {
+	float: none;
+	margin: 0;
   }
 }
 
-.nv-woo-title-breadcrumb {
+.nv-bc-count-wrap {
+  margin-bottom: $spacing-lg;
   display: flex;
-  flex-direction: column-reverse;
-  h1 {
-    margin: 0;
-  }
+  font-size: 14px;
+  justify-content: space-between;
 }

@@ -1,66 +1,55 @@
-.orderby {
-	//color: var(--nv-text-color);
-	opacity: .8;
-}
+@import "../../main/variables";
 
 .nv-woo-filters .nv-sidebar-toggle {
-	color: var(--nv-text-color);
-}
-
-.nv-shop {
-	margin: $spacing-sm 0;
+  color: var(--nv-text-color);
 }
 
 .nv-woo-filters {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	margin: $spacing-xs 0 $spacing-sm;
-	justify-content: space-between;
+  display: flex;
+  align-items: center;
+  margin-bottom: $spacing-xl;
+  justify-content: space-between;
 
-	.woocommerce-ordering {
-		margin: 0;
-	}
+  .woocommerce-ordering {
+	margin: 0;
+  }
 
-	.nv-sidebar-toggle + .woocommerce-ordering {
-		select {
-			max-width: 155px;
-			margin-bottom: 0;
-		}
+  .nv-sidebar-toggle + .woocommerce-ordering {
+	select {
+	  max-width: 155px;
+	  margin-bottom: 0;
 	}
+  }
 }
 
 //<editor-fold desc="Product title link">
 .woocommerce ul.products li.product {
-	a:not(.nv-quick-view-product) {
-		color: var(--nv-text-color);
+  margin-bottom: $spacing-xl;
 
-		&:hover h2 {
-			color: var(--nv-text-color);
-			text-decoration: underline;
-		}
+  a.woocommerce-loop-product__link {
+	> h2, > h3 {
+	  padding-top: 0;
+	  color: var(--nv-text-color);
+	  font-size: var(--h4FontSize);
 	}
-
-	mark {
-		color: var(--nv-text-color);
-	}
+  }
 }
 
 //</editor-fold>
 
 .img-wrap {
   position: relative;
+
   .out-of-stock-badge {
 	color: var(--nv-text-color);
-	font-weight: bold;
+	font-weight: var(--h4FontWeight);
 	text-transform: uppercase;
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 	left: 0;
 	right: 0;
-	background: #fff;
-	padding: 20px 0;
+	padding: $spacing-sm 0;
 	background: var(--nv-light-bg);
 	text-align: center;
 	opacity: .9;
@@ -69,20 +58,12 @@
 }
 
 @mixin shop-loop--laptop() {
-	.woocommerce-ordering {
-		margin-left: 0;
-	}
-	.nv-woo-filters {
-		.nv-sidebar-toggle + .woocommerce-ordering {
-			margin: 0;
-		}
-	}
 }
 
 @mixin shop-loop--tablet-sm() {
-	.nv-woo-filters .nv-sidebar-toggle + .woocommerce-ordering {
-		select {
-			max-width: none;
-		}
+  .nv-woo-filters .nv-sidebar-toggle + .woocommerce-ordering {
+	select {
+	  max-width: unset;
 	}
+  }
 }

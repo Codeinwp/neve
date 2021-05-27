@@ -1325,7 +1325,7 @@ msgctxt "Theme starter content"
 msgid "Blog"
 msgstr ""
 
-#: inc/compatibility/woocommerce.php:342
+#: inc/compatibility/woocommerce.php:348
 msgid "Filter"
 msgstr ""
 
@@ -1390,7 +1390,7 @@ msgstr ""
 msgid "Button Appearance"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:141
+#: inc/customizer/options/buttons.php:143
 msgid "Button Text"
 msgstr ""
 

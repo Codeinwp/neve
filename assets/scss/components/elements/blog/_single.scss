@@ -89,7 +89,6 @@ main > .container {
 
 .nv-tags-list, .tagcloud {
   a {
-	font-size: .75em;
 	margin-left: $spacing-xs;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -98,6 +97,7 @@ main > .container {
 	border-radius: 4px;
 	background: var(--nv-primary-accent);
 	line-height: 1;
+	font-size: .75em !important;
   }
 }
 
@@ -107,7 +107,6 @@ main > .container {
 
   a {
 	margin: 0 $spacing-xs $spacing-xs 0;
-	font-size: .75em !important;
 	color: #fff !important;
   }
 }

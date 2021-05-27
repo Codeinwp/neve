@@ -1,170 +1,67 @@
-//<editor-fold desc="Repair WooCommerce Columns">
-.woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1,
-.woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2 {
-	max-width: inherit;
-}
-
-//</editor-fold>
-
+@import "../../main/variables";
 //<editor-fold desc="On Sale Badge">
 .woocommerce {
-	span.onsale {
-		background-color: $success;
-		border-radius: 0;
-		line-height: inherit;
-		min-height: auto;
-		left: 0;
-		top: 0;
-		font-weight: 500;
-	}
+  span.onsale {
+	background-color: $success;
+	border-radius: 0;
+	line-height: inherit;
+	min-height: auto;
+	left: 0;
+	top: 0;
+	font-weight: 500;
+  }
 
-	ul.products li.product .onsale {
-		top: 0;
-		left: 0;
-		right: auto;
-		margin: 0;
-	}
+  ul.products li.product .onsale {
+	top: 0;
+	left: 0;
+	right: auto;
+	margin: 0;
+  }
 }
 
 //</editor-fold>
 
 //<editor-fold desc="Pagination">
-.woocommerce nav.woocommerce-pagination ul li {
+.woocommerce nav.woocommerce-pagination ul {
+  display: flex;
+  border: none;
+  margin: 0;
+
+  li {
+	margin-right: $spacing-md;
+	border: none;
+
+	a, span {
+	  background: var(--nv-light-bg);
+	  border-radius: 3px;
+	  padding: 12px 15px;
+	  color: var(--nv-text-color);
+	}
+
 	a:focus,
 	a:hover,
 	span.current {
-		background: none;
-		color: var(--nv-text-color);
+	  background: var(--nv-dark-bg);
+	  color: var(--nv-text-dark-bg);
 	}
-}
-
-.woocommerce nav.woocommerce-pagination ul {
-	@include horizontal-list($spacing-xs);
-	border: none;
-	margin: 0;
-
-	li {
-		border: none;
-	}
+  }
 }
 
 //</editor-fold>
 
 //<editor-fold desc="Rating">
 .woocommerce {
-	.star-rating {
-		color: #ffb100;
-	}
+  .star-rating {
+	color: #ffb100;
+  }
 }
 
 //</editor-fold>
-
-//<editor-fold desc="WooCommerce Notices">
-.woocommerce-notices-wrapper > div {
-	display: flex;
-	align-items: center;
-	flex-direction: column-reverse;
-	justify-content: flex-end;
-	text-align: center;
-	padding: 15px;
-
-	&:before {
-		display: none;
-	}
-
-	.button {
-		margin-top: 10px;
-		width: 100%;
-		margin-left: auto;
-		align-self: center;
-		white-space: nowrap;
-	}
-}
-
-$notices: (
-				'error': $error,
-				'info': #f0f0f0,
-				'message': $success,
-);
-
-@each $noticeName, $color in $notices {
-	.woocommerce .woocommerce-#{$noticeName},
-	.woocommerce-page .woocommerce-#{$noticeName} {
-		background: $color;
-		border: none;
-		font-size: .85em;
-		@if ($noticeName != 'info') {
-			color: #fff;
-			&:before {
-				color: #fff;
-			}
-			> a {
-				color: #fff;
-				font-weight: 800;
-			}
-			> a.button.wc-forward {
-				padding: 8px 12px;
-			}
-			> a.button, > a.button:focus, > a.button:active, > a.button:hover {
-				background-color: #fff;
-				color: $color;
-				line-height: 1;
-			}
-		} @else {
-			> a {
-				color: $body-color;
-			}
-			&:before {
-				color: $body-color;
-			}
-			> a.button.wc-forward {
-				padding: 8px 12px;
-			}
-			> a.button, > a.button:focus, > a.button:active, > a.button:hover {
-				background-color: $body-color;
-				color: $color;
-				line-height: 1;
-			}
-		}
-
-	}
-}
-
-.woocommerce ul.woocommerce-error {
-	padding-left: 3.5em;
-
-	li {
-		margin: 0;
-	}
-}
-
-//</editor-fold>
-
-
-@mixin generic--tablet-sm() {
-	.woocommerce-notices-wrapper > div {
-		flex-direction: row-reverse;
-		text-align: left;
-		padding-left: 45px;
-
-		&:before {
-			display: flex;
-			top: 0;
-			align-items: center;
-			height: 100%;
-		}
-
-		.button {
-			margin-top: 0;
-			width: auto;
-
-		}
-	}
-}
 
 //<editor-fold [WooCommerce Blocks]>
 .nv-content-wrap ul.wc-block-grid__products {
-	list-style-type: none;
-	padding-left: 0;
+  list-style-type: none;
+  padding-left: 0;
 }
+
 //</editor-fold>

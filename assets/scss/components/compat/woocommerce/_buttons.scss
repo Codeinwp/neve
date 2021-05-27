@@ -1,98 +1,98 @@
 .woocommerce {
-	ul.products li.product {
-		.added_to_cart {
-			margin-top: 1em;
-		}
+  .added_to_cart {
+	margin-top: 1em;
+  }
 
-		.button.added {
-			display: none;
-		}
-	}
+  .button.added {
+	display: none;
+  }
 
-	#respond input#submit.alt,
-	a.button.alt,
-	button.button.alt,
-	input.button.alt,
-	button.button,
-	input.button,
-	.button,
-	a.button,
-	#respond input#submit {
-		@extend %nv-button;
-	}
+  #respond input#submit.alt,
+  a.button.alt,
+  button.button.alt,
+  input.button.alt,
+  button.button,
+  input.button,
+  .button,
+  a.button,
+  #respond input#submit {
+	@extend %nv-button;
+	@extend %nv-button-primary
+  }
 
-	a.button.button-primary {
-		@extend %nv-button-primary;
-	}
+  a.button.button-primary {
+	@extend %nv-button-primary;
+  }
 
-	a.button.alt,
-	button.button.alt,
-	a.button.checkout-button,
-	button.button:disabled,
-	button.button:disabled[disabled],
-	button.button.alt.single_add_to_cart_button.disabled,
-	button.button.alt.single_add_to_cart_button,
-	.actions > button[type=submit],
-	.checkout.wc-forward,
-	button#place_order,
-	a.add_to_cart_button,
-	a.product_type_grouped,
-	a.product_type_external,
-	a.product_type_variable,
-	.return-to-shop > .button,
-	.button.woocommerce-form-login__submit {
-		@extend %nv-button;
-		@extend %nv-button-primary;
-	}
+  a.button.alt,
+  button.button.alt,
+  a.button.checkout-button,
+  button.button:disabled,
+  button.button:disabled[disabled],
+  button.button.alt.single_add_to_cart_button.disabled,
+  button.button.alt.single_add_to_cart_button,
+  .actions > button[type=submit],
+  .checkout.wc-forward,
+  button#place_order,
+  a.add_to_cart_button,
+  a.product_type_grouped,
+  a.product_type_external,
+  a.product_type_variable,
+  .return-to-shop > .button,
+  .button.woocommerce-form-login__submit {
+	@extend %nv-button;
+	@extend %nv-button-primary;
+  }
 
-	.button.button-secondary.more-details,
-	.woocommerce .price_slider_amount button.button,
-	button.button,
-	a.added_to_cart,
-	.checkout_coupon button.button,
-	#review_form #respond input#submit {
-		@extend %nv-button;
-		@extend %nv-button-secondary;
-	}
+  .button.button-secondary.more-details,
+  .woocommerce .price_slider_amount button.button,
+  button.button,
+  a.added_to_cart,
+  .checkout_coupon button.button,
+  #review_form #respond input#submit {
+	@extend %nv-button;
+	@extend %nv-button-secondary;
+  }
 
-	ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
-	.woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout) {
-		@extend %nv-button;
-		@extend %nv-button-secondary;
-	}
+  ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
+  .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout) {
+	@extend %nv-button;
+	@extend %nv-button-secondary;
+  }
 }
 
 .woocommerce ul.products li.product .button {
-	white-space: normal;
+  white-space: normal;
 }
 
 
 //<editor-fold [AJAX add-to-cart loading]>
 .woocommerce {
-	#respond input#submit.loading, a.button.loading, button.button.loading, input.button.loading {
-		display: inline-flex;
-		align-items: center;
-		column-gap: 4px;
-	  	padding-right: inherit;
-		&::after {
-			position: initial;
-		}
+  #respond input#submit.loading, a.button.loading, button.button.loading, input.button.loading {
+	display: inline-flex;
+	align-items: center;
+	column-gap: 4px;
+	padding-right: inherit;
+
+	&::after {
+	  position: initial;
 	}
+  }
 }
 
 //</editor-fold>
 
 
 ul[id^="nv-primary-navigation"] .nv-nav-cart {
-	a.button.wc-forward:not(.checkout) {
-		@extend %nv-button;
-		@extend %nv-button-secondary;
-	}
+  a.button.wc-forward:not(.checkout) {
+	@extend %nv-button;
+	@extend %nv-button-secondary;
+  }
 
-	a.button.checkout.wc-forward {
-		@extend %nv-button;
-		@extend %nv-button-primary;
-	}
+  a.button.checkout.wc-forward {
+	@extend %nv-button;
+	@extend %nv-button-primary;
+  }
 }
 
 .wc-block-components-product-button .wp-block-button__link.add_to_cart_button {

@@ -12,6 +12,8 @@ body {
   line-height: var(--bodyLineHeight);
   letter-spacing: var(--bodyLetterSpacing);
   font-family: var(--bodyFontFamily), var(--nv-fallback-ff);
+  text-transform: var(--bodyTextTransform);
+  font-weight: var(--bodyFontWeight);
   overflow-x: hidden;
   direction: ltr;
 }

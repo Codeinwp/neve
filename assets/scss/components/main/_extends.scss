@@ -1,21 +1,42 @@
 %nv-button {
   cursor: pointer;
-  font-weight: 700;
   border-style: solid;
+  box-sizing: border-box;
+}
+
+%nv-button-primary-no-colors {
+  padding: var(--primaryBtnPadding, 10px 15px);
+  border-radius: var(--primaryBtnBorderRadius, 3px);
+  border-width: var(--primaryBtnBorderWidth, 0);
+  font-weight: var(--primaryBtnFontWeight, 700);
+  font-size: var(--primaryBtnFs, var(--bodyFontSize));
+  line-height: var(--primaryBtnLineHeight, 1.6);
+  letter-spacing: var(--primaryBtnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--primaryBtnTextTransform, none);
+}
+%nv-button-secondary-no-colors {
+  padding: var(--secondaryBtnPadding, 7px 15px);
+  border-radius: var(--secondaryBtnBorderRadius, 3px);
+  border-width: var(--secondaryBtnBorderWidth);
+  font-weight: var(--secondaryBtnFontWeight, 700);
+  font-size: var(--secondaryBtnFs, var(--bodyFontSize));
+  line-height: var(--secondaryBtnLineHeight, 1.6);
+  letter-spacing: var(--secondaryBtnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--secondaryBtnTextTransform, none);
 }
 
 %nv-button-primary {
-  padding: var(--primaryBtnPadding, 10px 15px);
-  border-radius: var(--primaryBtnBorderRadius, 3px);
   background-color: var(--primaryBtnBg);
   color: var(--primaryBtnColor);
-  border-width: var(--primaryBtnBorderWidth);
-  border-color: var(--primaryBtnColor);
-  font-size: var(--primaryBtnFs, var(--bodyFontSize));
+
+  padding: var(--primaryBtnPadding, 10px 15px);
+  border-radius: var(--primaryBtnBorderRadius, 3px);
+  border-width: var(--primaryBtnBorderWidth, 0);
   font-weight: var(--primaryBtnFontWeight, 700);
-  line-height: var(--primaryBtnLineHeight, var(--bodyLineHeight));
+  font-size: var(--primaryBtnFs, var(--bodyFontSize));
+  line-height: var(--primaryBtnLineHeight, 1.6);
   letter-spacing: var(--primaryBtnLetterSpacing, var(--bodyLetterSpacing));
-  text-transform: var(--primaryBtnTextTransform, var(--bodyTextTransform));
+  text-transform: var(--primaryBtnTextTransform, none);
 
   &:hover {
 	background-color: var(--primaryBtnHoverBg);
@@ -25,17 +46,17 @@
 }
 
 %nv-button-secondary {
-  padding: var(--secondaryBtnPadding, 7px 15px);
-  border-radius: var(--secondaryBtnBorderRadius, 3px);
   background-color: var(--secondaryBtnBg);
   color: var(--secondaryBtnColor);
+
+  padding: var(--secondaryBtnPadding, 7px 15px);
+  border-radius: var(--secondaryBtnBorderRadius, 3px);
   border-width: var(--secondaryBtnBorderWidth);
-  border-color: var(--secondaryBtnColor);
-  font-size: var(--secondaryBtnFs, var(--bodyFontSize));
   font-weight: var(--secondaryBtnFontWeight, 700);
-  line-height: var(--secondaryBtnLineHeight, var(--bodyLineHeight));
+  font-size: var(--secondaryBtnFs, var(--bodyFontSize));
+  line-height: var(--secondaryBtnLineHeight, 1.6);
   letter-spacing: var(--secondaryBtnLetterSpacing, var(--bodyLetterSpacing));
-  text-transform: var(--secondaryBtnTextTransform, var(--bodyTextTransform));
+  text-transform: var(--secondaryBtnTextTransform, none);
 
   &:hover {
 	background-color: var(--secondaryBtnHoverBg);

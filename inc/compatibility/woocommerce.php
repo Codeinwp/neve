@@ -218,6 +218,12 @@ class Woocommerce {
 	 * @return mixed
 	 */
 	public function change_breadcrumbs_delimiter( $default ) {
+		if ( neve_is_new_skin() ) {
+			$default['delimiter'] = '<span class="nv-breadcrumb-delimiter">\</span>';
+
+			return $default;
+		}
+
 		$default['delimiter'] = '<span class="nv-breadcrumb-delimiter">&raquo;</span>';
 
 		return $default;

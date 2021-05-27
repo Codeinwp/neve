@@ -131,6 +131,8 @@ class Buttons extends Base_Customizer {
 				)
 			);
 
+			$new_skin = neve_is_new_skin();
+
 			$this->add_control(
 				new Control(
 					'neve_' . $button . '_typeface',
@@ -149,19 +151,19 @@ class Buttons extends Base_Customizer {
 									'tablet'  => 'px',
 									'desktop' => 'px',
 								),
-								'mobile'  => 15,
-								'tablet'  => 16,
-								'desktop' => 16,
+								'mobile'  => $new_skin ? '' : 15,
+								'tablet'  => $new_skin ? '' : 16,
+								'desktop' => $new_skin ? '' : 16,
 							),
 							'line_height_default'    => array(
-								'mobile'  => 1.6,
-								'tablet'  => 1.6,
-								'desktop' => 1.6,
+								'mobile'  => $new_skin ? '' : 1.6,
+								'tablet'  => $new_skin ? '' : 1.6,
+								'desktop' => $new_skin ? '' : 1.6,
 							),
 							'letter_spacing_default' => array(
-								'mobile'  => 0,
-								'tablet'  => 0,
-								'desktop' => 0,
+								'mobile'  => $new_skin ? '' : 0,
+								'tablet'  => $new_skin ? '' : 0,
+								'desktop' => $new_skin ? '' : 0,
 							),
 						),
 						'type'                  => 'neve_typeface_control',

@@ -1,5 +1,5 @@
 @media (min-width: #{$tablet-sm}) {
-  @include generic--tablet-sm();
+  @include notices--tablet-sm();
   @include shop-loop--tablet-sm();
 }
 
@@ -9,11 +9,12 @@
 }
 
 @media (min-width: #{$laptop}) {
+  @include reviews--laptop();
+  @include shop-loop--laptop();
   @include nav-cart--laptop();
   @include shop-sidebar--laptop();
   @include cart--laptop();
   @include product--laptop();
-  @include shop-loop--laptop();
   @include checkout--laptop();
   @include account--laptop();
 }
