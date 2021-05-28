@@ -7,52 +7,52 @@
   height: 0;
 
   iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
   }
 }
 
 figcaption {
-	font-size: $small-text;
-	opacity: .75;
+  font-size: $small-text;
+  opacity: .75;
 }
 
 blockquote {
   margin: $spacing-md 0;
 
   p {
-    font-size: 1.1em;
+	font-size: 1.1em;
   }
 
   cite {
-    padding-top: $spacing-sm;
-    display: block;
-    color: $gray-color;
-    font-style: normal;
-    font-size: .95em;
+	padding-top: $spacing-sm;
+	display: block;
+	color: $gray-color;
+	font-style: normal;
+	font-size: .95em;
   }
 
   &:after, &:before {
-    height: 3px;
-    width: $spacing-lg;
-    background-color: $muted-white-med;
-    content: " ";
-    display: block;
+	height: 3px;
+	width: $spacing-lg;
+	background-color: $muted-white-med;
+	content: " ";
+	display: block;
   }
 
   &:before {
-    margin: 0 auto $spacing-md;
+	margin: 0 auto $spacing-md;
   }
 
   &:after {
-    margin: $spacing-md auto 0;
+	margin: $spacing-md auto 0;
   }
 
   > * {
-    margin-bottom: 0;
+	margin-bottom: 0;
   }
 }
 
@@ -61,8 +61,8 @@ table {
   margin: $spacing-sm 0;
 
   td, th {
-    padding: $spacing-xs;
-    border-bottom: $muted-border;
+	padding: $spacing-xs;
+	border-bottom: $muted-border;
   }
 }
 
@@ -77,7 +77,7 @@ code {
 pre {
   display: block;
   padding: $spacing-sm;
-  background: rgba(255,255,255,0.75);
+  background: rgba(255, 255, 255, 0.75);
   border-radius: 5px;
   border: $muted-border;
   margin: $spacing-sm 0;
@@ -93,30 +93,30 @@ pre {
 
 .nv-content-wrap, .excerpt-wrap {
   &:after {
-    content: "";
-    clear: both;
-    display: table;
+	content: "";
+	clear: both;
+	display: table;
   }
 
   ul {
-    list-style-type: circle;
+	list-style-type: circle;
   }
 
   > ul, > ol {
-    margin: $spacing-sm 0;
+	margin: $spacing-sm 0;
   }
 
   ul, ol {
-    padding-left: $spacing-sm;
+	padding-left: $spacing-sm;
 
-    li {
-      margin-top: $spacing-xs;
-    }
+	li {
+	  margin-top: $spacing-xs;
+	}
   }
 
   dt {
-    font-weight: 600;
-    display: block;
+	font-weight: 600;
+	display: block;
   }
 }
 
@@ -166,8 +166,11 @@ audio {
 }
 
 @mixin content--laptop() {
+  .neve-main > .container .col {
+	max-width: 70%;
+  }
   .neve-main > .container > .row {
-    flex-wrap: nowrap;
+	flex-wrap: nowrap;
   }
 }
 

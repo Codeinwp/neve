@@ -157,16 +157,10 @@ function neve_hfg_header_settings() {
 	];
 
 	$builder['desktop']['main']['left'][]  = [
-		'id'       => 'logo',
-		'settings' => [
-			'align' => 'left',
-		],
+		'id' => 'logo',
 	];
 	$builder['desktop']['main']['right'][] = [
-		'id'       => 'primary-menu',
-		'settings' => [
-			'align' => 'right',
-		],
+		'id' => 'primary-menu',
 	];
 	$builder['mobile']['main']['left'][]   = [
 		'id' => 'logo',

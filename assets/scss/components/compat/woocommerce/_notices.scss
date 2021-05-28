@@ -31,7 +31,7 @@ $notices: (
 	color: #fff;
 
 
-	> a, > a:hover {
+	> a.button, > a.button:hover {
 	  @extend %nv-button-secondary-no-colors;
 	  @extend %nv-button;
 	  background: transparent;

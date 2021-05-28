@@ -1,5 +1,7 @@
 @import "../../main/variables";
 @import "./single/reviews";
+@import "./single/exclusive-products";
+
 .woocommerce.single .nv-woo-filters {
   display: none;
 }
@@ -155,6 +157,10 @@
 //</editor-fold>
 
 //<editor-fold desc="Content Tabs">
+.woocommerce-tabs {
+  margin: $spacing-xl 0 $spacing-xl;
+}
+
 .woocommerce div.product .woocommerce-tabs ul.tabs li {
   background: transparent;
   border: 0;
@@ -177,7 +183,7 @@
 }
 
 .woocommerce #content div.product .woocommerce-tabs ul.tabs {
-  margin: $spacing-xl 0;
+  margin-bottom: $spacing-xl;
   padding: 0;
   border: 0;
 
@@ -196,6 +202,15 @@
   li {
 	padding: 5px;
   }
+}
+
+.woocommerce-product-gallery {
+  float: none !important;
+  display: inline-block;
+}
+.woocommerce-product-gallery {
+  float: none !important;
+  display: inline-block;
 }
 
 //</editor-fold>
@@ -225,57 +240,3 @@
   margin: 0;
   clear: none;
 }
-
-section.exclusive {
-  margin-bottom: $spacing-md;
-
-  .nv-card-content-wrapper {
-	position: relative;
-	width: 100%;
-  }
-
-  .dots-nav {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-
-	.dot {
-	  background: none;
-	  border: 1px solid #b7b7b7;
-	  margin: 5px;
-	  width: 8px;
-	  height: 8px;
-	  padding: 0;
-	  border-radius: 100%;
-
-	  &.tns-nav-active {
-		background: #404248;
-		border-color: #404248;
-	  }
-	}
-  }
-
-  .tns-outer {
-	/* rtl:begin:ignore */
-	direction: ltr;
-	/* rtl:end:ignore */
-	overflow: hidden;
-	position: relative;
-	padding: 5px 10px 0 10px;
-	left: -10px;
-	width: calc(100% + 20px);
-  }
-
-  .tns-ovh {
-	padding-right: 4px;
-	overflow: unset;
-	margin-bottom: $spacing-sm;
-  }
-
-  .tns-visually-hidden {
-	display: none;
-  }
-
-}
-

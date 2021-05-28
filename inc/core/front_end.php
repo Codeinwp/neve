@@ -439,7 +439,7 @@ class Front_End {
 	 */
 	private function add_styles() {
 		if ( class_exists( 'WooCommerce', false ) ) {
-			$style_path = neve_is_new_skin() ? '/css/woocommerce' : '/css/woocommerce-legacy';
+			$style_path = neve_is_new_skin() ? 'css/woocommerce' : 'css/woocommerce-legacy';
 
 			wp_register_style( 'neve-woocommerce', NEVE_ASSETS_URL . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 			wp_style_add_data( 'neve-woocommerce', 'rtl', 'replace' );
