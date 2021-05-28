@@ -106,7 +106,7 @@ class Changelog_Handler {
 		$string = preg_replace_callback(
 			'/\[(.*?)]\((.*?)\)/',
 			function ( $matches ) {
-				return '<a href="' . $matches[2] . '"><i class="dashicons dashicons-external"></i>' . $matches[1] . '</a>';
+				return '<a href="' . $matches[2] . '" target="_blank" rel="noopener"><i class="dashicons dashicons-external"></i>' . $matches[1] . '</a>';
 			},
 			htmlspecialchars( $string )
 		);
