@@ -12,7 +12,7 @@ namespace Neve\Customizer\Options;
 
 use HFG\Traits\Core;
 use Neve\Customizer\Base_Customizer;
-use Neve\Customizer\Defaults\Single_Post;
+use Neve\Customizer\Options\Defaults\Single_Post;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
 
@@ -89,18 +89,27 @@ class Layout_Single_Post extends Base_Customizer {
 				'priority'         => 125,
 				'controls_to_wrap' => 14,
 				'expanded'         => false,
+				'active_callback'  => function() {
+					return $this->element_is_enabled( 'comments' );
+				},
 			],
 			'comments_section' => [
-				'title'     => esc_html__( 'Comments Section', 'neve' ),
-				'priority'  => 135,
-				'expanded'  => true,
-				'accordion' => false,
+				'title'           => esc_html__( 'Comments Section', 'neve' ),
+				'priority'        => 135,
+				'expanded'        => true,
+				'accordion'       => false,
+				'active_callback' => function() {
+					return $this->element_is_enabled( 'comments' );
+				},
 			],
 			'comments_form'    => [
-				'title'     => esc_html__( 'Submit Form Section', 'neve' ),
-				'priority'  => 165,
-				'expanded'  => true,
-				'accordion' => false,
+				'title'           => esc_html__( 'Submit Form Section', 'neve' ),
+				'priority'        => 165,
+				'expanded'        => true,
+				'accordion'       => false,
+				'active_callback' => function() {
+					return $this->element_is_enabled( 'comments' );
+				},
 			],
 		];
 
@@ -119,6 +128,7 @@ class Layout_Single_Post extends Base_Customizer {
 						'expanded'         => array_key_exists( 'expanded', $heading_data ) ? $heading_data['expanded'] : true,
 						'accordion'        => array_key_exists( 'accordion', $heading_data ) ? $heading_data['accordion'] : true,
 						'controls_to_wrap' => array_key_exists( 'controls_to_wrap', $heading_data ) ? $heading_data['controls_to_wrap'] : 0,
+						'active_callback'  => array_key_exists( 'active_callback', $heading_data ) ? $heading_data['active_callback'] : '__return_true',
 					],
 					'Neve\Customizer\Controls\Heading'
 				)
@@ -134,7 +144,7 @@ class Layout_Single_Post extends Base_Customizer {
 			new Control(
 				'neve_post_header_layout',
 				[
-					'sanitize_callback' => [ $this, 'sanitize_header_layout' ],
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
 					'default'           => 'normal',
 				],
 				[
@@ -215,14 +225,14 @@ class Layout_Single_Post extends Base_Customizer {
 					'input_attrs'           => [
 						'units' => [ 'em', 'px' ],
 					],
-
+					'default'               => $this->padding_default( 'cover' ),
 					'priority'              => 20,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'responsive'  => true,
 						'directional' => true,
 						'template'    =>
-							'.nv-post-cover .nv-cover-container {
+							'.nv-post-cover {
 							padding-top: {{value.top}};
 							padding-right: {{value.right}};
 							padding-bottom: {{value.bottom}};
@@ -262,7 +272,7 @@ class Layout_Single_Post extends Base_Customizer {
 						],
 					],
 					'show_labels'           => true,
-					'live_refresh_selector' => '.nv-post-cover .nv-cover-container, .entry-header .entry-title',
+					'live_refresh_selector' => '.nv-post-cover .nv-title-meta-wrap,.entry-header .entry-title',
 					'live_refresh_css_prop' => [
 						'remove_classes' => [
 							'mobile-left',
@@ -307,7 +317,7 @@ class Layout_Single_Post extends Base_Customizer {
 							'icon'    => 'arrow-down',
 						],
 					],
-					'live_refresh_selector' => '.nv-post-cover .nv-title-meta-wrap',
+					'live_refresh_selector' => '.nv-title-meta-wrap .title',
 					'live_refresh_css_prop' => [
 						'remove_classes' => [
 							'mobile-top',
@@ -517,17 +527,21 @@ class Layout_Single_Post extends Base_Customizer {
 		);
 
 		$this->add_boxed_layout_controls(
+			'post_cover_title',
 			[
-				'id'                     => 'post_cover_title',
 				'priority'               => 70,
+				'section'                => $this->section,
 				'has_text_color'         => false,
 				'padding_default'        => $this->padding_default( 'cover' ),
 				'background_default'     => 'var(--nv-dark-bg)',
 				'boxed_selector'         => '.nv-title-meta-wrap.is-boxed',
 				'toggle_active_callback' => function() {
-					get_theme_mod( 'neve_post_header_layout' ) === 'cover';
+					return get_theme_mod( 'neve_post_header_layout' ) === 'cover';
 				},
-				'active_callback'        => [ $this, 'is_boxed_title' ],
+				'active_callback'        => function() {
+					return get_theme_mod( 'neve_post_header_layout' ) === 'cover' && get_theme_mod( 'neve_post_cover_title_boxed_layout', false );
+
+				},
 			]
 		);
 	}
@@ -752,27 +766,34 @@ class Layout_Single_Post extends Base_Customizer {
 					'sanitize_callback' => 'sanitize_text_field',
 				],
 				[
-					'label'       => esc_html__( 'Section title', 'neve' ),
-					'description' => esc_html__( 'The following magic tags are available for this field: {title} and {comments_number}. Leave this field empty for default behavior.', 'neve' ),
-					'priority'    => 140,
-					'section'     => $this->section,
-					'type'        => 'text',
+					'label'           => esc_html__( 'Section title', 'neve' ),
+					'description'     => esc_html__( 'The following magic tags are available for this field: {title} and {comments_number}. Leave this field empty for default behavior.', 'neve' ),
+					'priority'        => 140,
+					'section'         => $this->section,
+					'type'            => 'text',
+					'active_callback' => function() {
+						return $this->element_is_enabled( 'comments' );
+					},
 				]
 			)
 		);
 
 		$this->add_boxed_layout_controls(
+			'comments',
 			[
-				'id'                        => 'comments',
 				'priority'                  => 145,
+				'section'                   => $this->section,
 				'padding_default'           => $this->padding_default(),
 				'background_default'        => 'var(--nv-dark-bg)',
 				'color_default'             => 'var(--nv-text-dark-bg)',
 				'boxed_selector'            => '.nv-comments-wrap.is-boxed',
 				'text_color_css_selector'   => '.nv-comments-wrap.is-boxed, .nv-comments-wrap.is-boxed a',
 				'border_color_css_selector' => '.nv-comments-wrap.is-boxed .nv-comment-article',
+				'toggle_active_callback'    => function() {
+					return $this->element_is_enabled( 'comments' );
+				},
 				'active_callback'           => function() {
-					return get_theme_mod( 'neve_comments_boxed_layout', false );
+					return $this->element_is_enabled( 'comments' ) && get_theme_mod( 'neve_comments_boxed_layout', false );
 				},
 			]
 		);
@@ -784,10 +805,13 @@ class Layout_Single_Post extends Base_Customizer {
 					'sanitize_callback' => 'sanitize_text_field',
 				],
 				[
-					'label'    => esc_html__( 'Section title', 'neve' ),
-					'priority' => 170,
-					'section'  => $this->section,
-					'type'     => 'text',
+					'label'           => esc_html__( 'Section title', 'neve' ),
+					'priority'        => 170,
+					'section'         => $this->section,
+					'type'            => 'text',
+					'active_callback' => function() {
+						return $this->element_is_enabled( 'comments' );
+					},
 				]
 			)
 		);
@@ -800,14 +824,17 @@ class Layout_Single_Post extends Base_Customizer {
 					'sanitize_callback' => 'sanitize_button_type',
 				],
 				[
-					'label'    => esc_html__( 'Button style', 'neve' ),
-					'section'  => $this->section,
-					'priority' => 175,
-					'type'     => 'select',
-					'choices'  => [
+					'label'           => esc_html__( 'Button style', 'neve' ),
+					'section'         => $this->section,
+					'priority'        => 175,
+					'type'            => 'select',
+					'choices'         => [
 						'primary'   => esc_html__( 'Primary', 'neve' ),
 						'secondary' => esc_html__( 'Secondary', 'neve' ),
 					],
+					'active_callback' => function() {
+						return $this->element_is_enabled( 'comments' );
+					},
 				]
 			)
 		);
@@ -819,159 +846,63 @@ class Layout_Single_Post extends Base_Customizer {
 					'sanitize_callback' => 'sanitize_text_field',
 				],
 				[
-					'label'    => esc_html__( 'Button text', 'neve' ),
-					'priority' => 180,
-					'section'  => $this->section,
-					'type'     => 'text',
+					'label'           => esc_html__( 'Button text', 'neve' ),
+					'priority'        => 180,
+					'section'         => $this->section,
+					'type'            => 'text',
+					'active_callback' => function() {
+						return $this->element_is_enabled( 'comments' );
+					},
 				]
 			)
 		);
 
 		$this->add_boxed_layout_controls(
+			'comments_form',
 			[
-				'id'                      => 'comments_form',
 				'priority'                => 185,
+				'section'                 => $this->section,
 				'padding_default'         => $this->padding_default(),
 				'background_default'      => 'var(--nv-dark-bg)',
 				'color_default'           => 'var(--nv-text-dark-bg)',
 				'boxed_selector'          => '.comment-respond.is-boxed',
 				'text_color_css_selector' => '.comment-respond.is-boxed, .comment-respond.is-boxed a',
+				'toggle_active_callback'  => function() {
+					return $this->element_is_enabled( 'comments' );
+				},
 				'active_callback'         => function() {
-					return get_theme_mod( 'neve_comments_form_boxed_layout', false );
+					return $this->element_is_enabled( 'comments' ) && get_theme_mod( 'neve_comments_form_boxed_layout', false );
 				},
 			]
 		);
 	}
 
 	/**
-	 * Function to add controls that form the boxed layout.
+	 * Active callback for sharing controls.
 	 *
-	 * @param array $settings Controls settings.
+	 * @param string $element Post page element.
+	 *
+	 * @return bool
 	 */
-	private function add_boxed_layout_controls( $settings ) {
-		$this->add_control(
-			new Control(
-				'neve_' . $settings['id'] . '_boxed_layout',
-				[
-					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => false,
-				],
-				[
-					'label'           => esc_html__( 'Boxed layout', 'neve' ),
-					'section'         => $this->section,
-					'type'            => 'neve_toggle_control',
-					'priority'        => $settings['priority'],
-					'active_callback' => array_key_exists( 'toggle_active_callback', $settings ) ? $settings['toggle_active_callback'] : '__return_true',
-				],
-				'Neve\Customizer\Controls\Checkbox'
+	public function element_is_enabled( $element ) {
+		$default_order = apply_filters(
+			'neve_single_post_elements_default_order',
+			array(
+				'title-meta',
+				'thumbnail',
+				'content',
+				'tags',
+				'comments',
 			)
 		);
 
-		$this->add_control(
-			new Control(
-				'neve_' . $settings['id'] . '_boxed_padding',
-				[
-					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
-					'transport'         => $this->selective_refresh,
-					'default'           => array_key_exists( 'padding_default', $settings ) ? $settings['padding_default'] : false,
-				],
-				[
-					'label'                 => esc_html__( 'Section padding', 'neve' ),
-					'section'               => $this->section,
-					'input_attrs'           => [
-						'units' => [ 'em', 'px' ],
-					],
-
-					'priority'              => ( $settings['priority'] + 5 ),
-					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'responsive'  => true,
-						'directional' => true,
-						'template'    =>
-							$settings['boxed_selector'] . '{
-							padding-top: {{value.top}};
-							padding-right: {{value.right}};
-							padding-bottom: {{value.bottom}};
-							padding-left: {{value.left}};
-						}',
-					],
-					'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
-				],
-				'\Neve\Customizer\Controls\React\Spacing'
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_' . $settings['id'] . '_boxed_background_color',
-				[
-					'sanitize_callback' => 'neve_sanitize_colors',
-					'transport'         => $this->selective_refresh,
-					'default'           => array_key_exists( 'background_default', $settings ) ? $settings['background_default'] : false,
-				],
-				[
-					'label'                 => esc_html__( 'Background color', 'neve' ),
-					'section'               => $this->section,
-					'priority'              => ( $settings['priority'] + 10 ),
-					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'template' =>
-							$settings['boxed_selector'] . '{
-							   background-color: {{value}};
-						    }',
-
-					],
-					'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
-				],
-				'Neve\Customizer\Controls\React\Color'
-			)
-		);
-
-		$has_text_color = isset( $settings['has_text_color'] ) ? $settings['has_text_color'] : true;
-
-		if ( $has_text_color ) {
-			$template = $settings['text_color_css_selector'] . '{ color: {{value}}; }';
-			if ( array_key_exists( 'border_color_css_selector', $settings ) ) {
-				$template .= $settings['border_color_css_selector'] . '{ border-color: {{value}}; }';
-			}
-			$this->add_control(
-				new Control(
-					'neve_' . $settings['id'] . '_boxed_text_color',
-					[
-						'sanitize_callback' => 'neve_sanitize_colors',
-						'transport'         => $this->selective_refresh,
-						'default'           => array_key_exists( 'color_default', $settings ) ? $settings['color_default'] : false,
-					],
-					[
-						'label'                 => esc_html__( 'Text color', 'neve' ),
-						'section'               => $this->section,
-						'priority'              => ( $settings['priority'] + 15 ),
-						'live_refresh_selector' => true,
-						'live_refresh_css_prop' => [
-							'template' => $template,
-						],
-						'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
-					],
-					'Neve\Customizer\Controls\React\Color'
-				)
-			);
+		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
+		$content_order = json_decode( $content_order, true );
+		if ( ! in_array( $element, $content_order, true ) ) {
+			return false;
 		}
 
-	}
-
-	/**
-	 * Sanitize the header layout control.
-	 *
-	 * @param string $input Control input.
-	 *
-	 * @return string
-	 */
-	public function sanitize_header_layout( $input ) {
-		$header_layout_options = [ 'normal', 'cover' ];
-		if ( ! in_array( $input, $header_layout_options, true ) ) {
-			return 'normal';
-		}
-		return $input;
+		return true;
 	}
 
 	/**

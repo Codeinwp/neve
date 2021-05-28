@@ -11,7 +11,7 @@ namespace Neve\Views;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
-use Neve\Customizer\Defaults\Single_Post;
+use Neve\Customizer\Options\Defaults\Single_Post;
 use Neve\Customizer\Options\Layout_Single_Post;
 
 /**
@@ -185,19 +185,18 @@ class Post_Layout extends Base_View {
 			return false;
 		}
 
-		$alignment   = apply_filters( 'neve_post_title_alignment', '' );
-		$position    = $this->get_alignment_classes( 'neve_post_title_position', $this->post_title_position() );
-		$cover_style = $this->get_cover_style();
-
-		$container_classes = [
-			'nv-cover-container',
-			'single-post-container',
-			$position,
-		];
-		$container_mode    = get_theme_mod( 'neve_post_cover_container', 'contained' );
-		if ( $container_mode !== 'full-width' ) {
-			$container_classes[] = 'container';
+		$hide_thumbnail = get_theme_mod( 'neve_post_cover_hide_thumbnail', false );
+		$post_thumbnail = get_the_post_thumbnail_url();
+		$cover_style    = '';
+		$main_class     = [ 'nv-post-cover' ];
+		if ( $hide_thumbnail === false && ! empty( $post_thumbnail ) ) {
+			$main_class[] = 'has-image';
+			$cover_style  = 'style="background-image:url(' . esc_url( $post_thumbnail ) . ')"';
 		}
+
+		$container_class = [ 'container' ];
+
+		$container_mode = get_theme_mod( 'neve_post_cover_container', 'contained' );
 
 		$title_meta_wrap_classes = [
 			'nv-title-meta-wrap',
@@ -211,19 +210,27 @@ class Post_Layout extends Base_View {
 			$title_meta_wrap_classes[] = 'reversed';
 		}
 
-		echo '<div class="nv-post-cover ' . esc_attr( $alignment ) . '"';
-		if ( ! empty( $cover_style ) ) {
-			echo ' style="' . esc_attr( $cover_style ) . '"';
+		$position                  = $this->get_alignment_classes( 'neve_post_title_position', $this->post_title_position() );
+		$title_meta_wrap_classes[] = $position;
+
+		$alignment = apply_filters( 'neve_post_title_alignment', '' );
+		if ( $container_mode === 'contained' ) {
+			$container_class[] = $alignment;
+		} else {
+			$main_class[] = $alignment;
 		}
-		echo '>';
+
+		echo '<div class="' . esc_attr( implode( ' ', $main_class ) ) . '" ' . $cover_style . '>';
 		echo '<div class="nv-overlay"></div>';
-		echo '<div class="' . esc_attr( implode( ' ', $container_classes ) ) . '">';
+		echo $container_mode === 'contained' ? '<div class="' . esc_attr( implode( ' ', $container_class ) ) . '">' : '';
+
 		echo '<div class="' . esc_attr( implode( ' ', $title_meta_wrap_classes ) ) . '">';
 		do_action( 'neve_before_post_title' );
 		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 		self::render_post_meta();
 		echo '</div>';
-		echo '</div>';
+
+		echo $container_mode === 'contained' ? '</div>' : '';
 		echo '</div>';
 	}
 
@@ -268,29 +275,6 @@ class Post_Layout extends Base_View {
 		}
 
 		return apply_filters( 'neve_layout_single_post_elements_order', $content_order );
-	}
-
-	/**
-	 * Get the background style for the cover layout.
-	 *
-	 * @return string
-	 */
-	private function get_cover_style() {
-		$hide_thumbnail = get_theme_mod( 'neve_post_cover_hide_thumbnail', false );
-		if ( $hide_thumbnail ) {
-			return '';
-		}
-		$cover_style = [];
-
-		$post_thumbnail = get_the_post_thumbnail_url();
-		if ( ! empty( $post_thumbnail ) ) {
-			$cover_style['background-image']    = 'url("' . esc_url( $post_thumbnail ) . '")';
-			$cover_style['background-size']     = 'cover';
-			$cover_style['background-repeat']   = 'no-repeat';
-			$cover_style['background-position'] = 'center';
-		}
-
-		return $this->get_inline_style( $cover_style );
 	}
 
 	/**
