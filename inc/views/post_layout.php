@@ -220,7 +220,7 @@ class Post_Layout extends Base_View {
 			$main_class[] = $alignment;
 		}
 
-		echo '<div class="' . esc_attr( implode( ' ', $main_class ) ) . '" ' . $cover_style . '>';
+		echo '<div class="' . esc_attr( implode( ' ', $main_class ) ) . '" ' . $cover_style . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<div class="nv-overlay"></div>';
 		echo $container_mode === 'contained' ? '<div class="' . esc_attr( implode( ' ', $container_class ) ) . '">' : '';
 
