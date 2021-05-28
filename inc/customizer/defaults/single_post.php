@@ -5,7 +5,7 @@
  * @package Neve\Customizer\Defaults
  */
 
-namespace Neve\Customizer\Options\Defaults;
+namespace Neve\Customizer\Defaults;
 
 /**
  * Trait Single_Post_Defaults

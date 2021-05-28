@@ -11,7 +11,7 @@ namespace Neve\Views;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
-use Neve\Customizer\Options\Defaults\Single_Post;
+use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Options\Layout_Single_Post;
 
 /**

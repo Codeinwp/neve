@@ -9,7 +9,7 @@ namespace Neve\Admin\Metabox;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
-use Neve\Customizer\Options\Defaults\Single_Post;
+use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Options\Layout_Single_Post;
 use Neve\Views\Post_Layout;
 

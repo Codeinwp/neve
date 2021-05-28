@@ -12,7 +12,7 @@ namespace Neve\Customizer\Options;
 
 use HFG\Traits\Core;
 use Neve\Customizer\Base_Customizer;
-use Neve\Customizer\Options\Defaults\Single_Post;
+use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
 

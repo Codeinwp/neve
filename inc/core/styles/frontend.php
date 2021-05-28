@@ -9,7 +9,7 @@ namespace Neve\Core\Styles;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
-use Neve\Customizer\Options\Defaults\Single_Post;
+use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Options\Layout_Single_Post;
 
 /**
