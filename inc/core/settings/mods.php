@@ -456,7 +456,24 @@ class Mods {
 					'tablet-unit'  => 'px',
 					'mobile-unit'  => 'px',
 				];
-
+			case Config::MODS_FORM_FIELDS_SPACING:
+				return $new ? 40 : 10;
+			case Config::MODS_FORM_FIELDS_PADDING:
+				return [
+					'top'    => $new ? 15 : 7,
+					'bottom' => $new ? 15 : 7,
+					'left'   => 12,
+					'right'  => 12,
+					'unit'   => 'px',
+				];
+			case Config::MODS_FORM_FIELDS_BORDER_WIDTH:
+				return [
+					'top'    => $new ? 2 : 1,
+					'right'  => $new ? 2 : 1,
+					'left'   => $new ? 2 : 1,
+					'bottom' => $new ? 2 : 1,
+					'unit'   => 'px',
+				];
 			default:
 				return false;
 		}

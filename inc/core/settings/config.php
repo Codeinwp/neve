@@ -148,6 +148,8 @@ class Config {
 	const CSS_SELECTOR_FORM_SEARCH_INPUTS       = 'search_form_inputs';
 
 	const CONTENT_DEFAULT_PADDING = 30;
+	const DIRECTIONAL_KEYS        = [ 'top', 'right', 'bottom', 'left' ];
+
 	/**
 	 * Holds tag->css selector mapper.
 	 *

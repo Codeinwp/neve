@@ -29,7 +29,6 @@ class Frontend extends Generator {
 			],
 		];
 		$this->setup_blog_layout();
-		$this->setup_form_buttons();
 		$this->setup_legacy_gutenberg_palette();
 		$this->setup_layout_subscribers();
 		$this->setup_buttons();
@@ -728,14 +727,14 @@ class Frontend extends Generator {
 		$is_advanced_on = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, false );
 		if ( ! $is_advanced_on ) {
 
-			$this->_subscribers['#content .container .col, #content .container-fluid .col']                             = [
+			$this->_subscribers['#content .container .col, #content .container-fluid .col']                                                               = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_SUFFIX      => '%',
 					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				],
 			];
-			$this->_subscribers['.alignfull > [class*="__inner-container"], .alignwide > [class*="__inner-container"]'] = [
+			$this->_subscribers['.alignfull > [class*="__inner-container"], .alignwide > [class*="__inner-container"]']                                   = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY           => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_DEFAULT       => 70,
@@ -762,7 +761,7 @@ class Frontend extends Generator {
 					},
 				],
 			];
-			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar'] = [
+			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar']                                                                        = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_FILTER      => 'minus_100',
@@ -898,7 +897,7 @@ class Frontend extends Generator {
 				},
 			],
 		];
-		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap'] = [
+		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap']                                                                         = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
@@ -909,10 +908,7 @@ class Frontend extends Generator {
 
 	}
 
-	/**
-	 * Adds form field styles
-	 */
-	private function setup_form_fields_style() {
+	private function setup_legacy_form_fields_style() {
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING ] = [
 			Config::CSS_PROP_MARGIN_BOTTOM => [
 				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_SPACING,
@@ -1005,12 +1001,10 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 			],
 		];
-	}
 
-	/**
-	 * Setup Form Buttons Type
-	 */
-	private function setup_form_buttons() {
+		/**
+		 * Form buttons.
+		 */
 		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
 
 		if ( $form_buttons_type === 'primary' ) {
@@ -1071,6 +1065,169 @@ class Frontend extends Generator {
 			10,
 			1
 		);
+
+	}
+
+	/**
+	 * Adds form field styles
+	 */
+	private function setup_form_fields_style() {
+		if ( ! neve_is_new_skin() ) {
+			$this->setup_legacy_form_fields_style();
+
+			return;
+		}
+
+		// Form fields
+		$this->_subscribers[':root']['--formFieldSpacing'] = [
+			Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_SPACING ),
+			Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_SPACING ),
+			Dynamic_Selector::META_SUFFIX  => 'px',
+		];
+
+		$default = array_fill_keys( Config::DIRECTIONAL_KEYS, '2' );
+
+		$this->_subscribers[':root']['--formFieldBorderWidth'] = [
+			Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BORDER_WIDTH ),
+			Dynamic_Selector::META_SUFFIX  => 'px',
+			Dynamic_Selector::META_DEFAULT => $default,
+			'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
+		];
+
+		$default = array_fill_keys( Config::DIRECTIONAL_KEYS, '3' );
+
+		$this->_subscribers[':root']['--formFieldBorderRadius'] = [
+			Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BORDER_RADIUS ),
+			Dynamic_Selector::META_SUFFIX  => 'px',
+			Dynamic_Selector::META_DEFAULT => $default,
+			'directional-prop'             => Config::CSS_PROP_BORDER_RADIUS,
+		];
+		$this->_subscribers[':root']['--formFieldBgColor']      = [
+			Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BACKGROUND_COLOR ),
+			Dynamic_Selector::META_DEFAULT => 'var(--nv-site-bg)',
+		];
+		$this->_subscribers[':root']['--formFieldBorderColor']  = [
+			Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BORDER_COLOR ),
+			Dynamic_Selector::META_DEFAULT => '#dddddd',
+		];
+		$this->_subscribers[':root']['--formFieldColor']        = [
+			Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_COLOR ),
+			Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
+		];
+
+		$this->_subscribers[':root']['--formFieldPadding']       = [
+			Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_PADDING ),
+			Dynamic_Selector::META_DEFAULT       => Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_PADDING ),
+			Dynamic_Selector::META_SUFFIX        => 'px',
+			Dynamic_Selector::META_IS_RESPONSIVE => false,
+			'directional-prop'                   => Config::CSS_PROP_PADDING,
+		];
+		$this->_subscribers[':root']['--formFieldTextTransform'] = [
+			Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_TYPEFACE ) . '.textTransform',
+			Dynamic_Selector::META_IS_RESPONSIVE => false,
+		];
+		$this->_subscribers[':root']['--formFieldFontSize']      = [
+			Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_TYPEFACE ) . '.fontSize',
+			Dynamic_Selector::META_SUFFIX        => 'px',
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+		];
+		$this->_subscribers[':root']['--formFieldLineHeight']    = [
+			Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_TYPEFACE ) . '.lineHeight',
+			Dynamic_Selector::META_SUFFIX        => '',
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+		];
+		$this->_subscribers[':root']['--formFieldLetterSpacing'] = [
+			Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_TYPEFACE ) . '.letterSpacing',
+			Dynamic_Selector::META_SUFFIX        => 'px',
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+		];
+		$this->_subscribers[':root']['--formFieldFontWeight']    = [
+			Dynamic_Selector::META_KEY => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_TYPEFACE ) . '.fontWeight',
+		];
+
+
+		// Form labels
+		$this->_subscribers[':root']['--formLabelSpacing']       = [
+			Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_SPACING ),
+			Dynamic_Selector::META_DEFAULT => 10,
+			Dynamic_Selector::META_SUFFIX  => 'px',
+		];
+		$this->_subscribers[':root']['--formLabelFontSize']      = [
+			Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_TYPEFACE ) . '.fontSize',
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			Dynamic_Selector::META_SUFFIX        => 'px',
+		];
+		$this->_subscribers[':root']['--formLabelLineHeight']    = [
+			Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_TYPEFACE ) . '.lineHeight',
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			Dynamic_Selector::META_SUFFIX        => '',
+		];
+		$this->_subscribers[':root']['--formLabelLetterSpacing'] = [
+			Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_TYPEFACE ) . '.letterSpacing',
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+		];
+		$this->_subscribers[':root']['--formLabelFontWeight']    = [
+			Dynamic_Selector::META_KEY => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_TYPEFACE ) . '.fontWeight',
+		];
+		$this->_subscribers[':root']['--formLabelTextTransform'] = [
+			Dynamic_Selector::META_KEY => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_TYPEFACE ) . '.textTransform',
+		];
+
+		// Form button style. Override if needed.
+		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
+
+		if ( $form_buttons_type === 'primary' ) {
+			return;
+		}
+
+		$this->_subscribers['form input[type="submit"]']['--primaryBtnBg']               = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnBg, transparent)',
+		];
+		$this->_subscribers['form input[type="submit"]']['--primaryBtnColor']            = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnColor)',
+		];
+		$this->_subscribers['form input[type="submit"]']['--primaryBtnPadding']          = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnPadding)',
+		];
+		$this->_subscribers['form input[type="submit"]']['--primaryBtnBorderRadius']     = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnBorderRadius)',
+		];
+		$this->_subscribers['form input[type="submit"]']['--primaryBtnBorderWidth']      = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnBorderWidth)',
+		];
+		$this->_subscribers['form input[type="submit"]']['--primaryBtnFontWeight']       = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnFontWeight)',
+		];
+		$this->_subscribers['form input[type="submit"]']['--primaryBtnFs']               = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnFs)',
+		];
+		$this->_subscribers['form input[type="submit"]']['--primaryBtnLineHeight']       = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnLineHeight)',
+		];
+		$this->_subscribers['form input[type="submit"]']['--primaryBtnLetterSpacing']    = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnLetterSpacing)',
+		];
+		$this->_subscribers['form input[type="submit"]']['--primaryBtnTextTransform']    = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnTextTransform)',
+		];
+		$this->_subscribers['form input[type="submit"]:hover']['--primaryBtnHoverBg']    = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnHoverBg, transparent)',
+		];
+		$this->_subscribers['form input[type="submit"]:hover']['--primaryBtnHoverColor'] = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnHoverColor)',
+		];
 	}
 
 	/**

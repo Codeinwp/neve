@@ -1,7 +1,16 @@
+// Buttons
+
+@mixin nv-button-generic() {
+  cursor: pointer;
+  border-style: solid;
+  box-sizing: border-box;
+}
+
 %nv-button {
   cursor: pointer;
   border-style: solid;
   box-sizing: border-box;
+  border-color: currentColor;
 }
 
 %nv-button-primary-no-colors {
@@ -14,6 +23,7 @@
   letter-spacing: var(--primaryBtnLetterSpacing, var(--bodyLetterSpacing));
   text-transform: var(--primaryBtnTextTransform, none);
 }
+
 %nv-button-secondary-no-colors {
   padding: var(--secondaryBtnPadding, 7px 15px);
   border-radius: var(--secondaryBtnBorderRadius, 3px);
@@ -55,7 +65,7 @@
   font-weight: var(--secondaryBtnFontWeight, 700);
   font-size: var(--secondaryBtnFs, var(--bodyFontSize));
   line-height: var(--secondaryBtnLineHeight, 1.6);
-  letter-spacing: var(--secondaryBtnLetterSpacing, var(--bodyLetterSpacing));
+  letter-spacing: var(--secondaryBtnLetterSpacing);
   text-transform: var(--secondaryBtnTextTransform, none);
 
   &:hover {
@@ -63,4 +73,34 @@
 	color: var(--secondaryBtnHoverColor);
 	border-color: var(--secondaryBtnHoverColor);
   }
+}
+
+// Form Fields
+%nv-form-fields {
+  margin-bottom: var(--formFieldSpacing);
+  border: var(--formFieldBorderWidth) solid var(--formFieldBorderColor);
+  border-radius: var(--formFieldBorderRadius, 3px);
+  background: var(--formFieldBgColor);
+  color: var(--formFieldColor);
+  padding: var(--formFieldPadding);
+
+  text-transform: var(--formFieldTextTransform);
+  font-weight: var(--formFieldFontWeight);
+  font-family: var(--bodyFontFamily);
+  font-size: var(--formFieldFontSize);
+  letter-spacing: var(--formFieldLetterSpacing);
+  line-height: var(--formFieldLineHeight);
+}
+
+%nv-form-labels {
+  margin-bottom: var(--formLabelSpacing);
+  font-weight: var(--formLabelFontWeight, var(--bodyFontWeight));
+  text-transform: var(--formLabelTextTransform);
+  letter-spacing: var(--formLabelLetterSpacing);
+  line-height: var(--formLabelLineHeight);
+  font-size: var(--formLabelFontSize, var(--bodyFontSize));
+}
+
+%nv-reset-field-spacing {
+  --formFieldSpacing: 0;
 }

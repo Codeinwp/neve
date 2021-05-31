@@ -1,5 +1,9 @@
 @import "../../main/variables";
 
+.woocommerce .woocommerce-ordering select {
+  @extend %nv-reset-field-spacing
+}
+
 .nv-woo-filters .nv-sidebar-toggle {
   color: var(--nv-text-color);
 }

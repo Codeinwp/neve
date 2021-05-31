@@ -196,12 +196,21 @@ class Css_Prop {
 				return sprintf( ' %s: %s; ', $css_prop, $value );
 				break;
 			default:
+				if( isset( $meta['override'] ) ) {
+					return sprintf( '%s:%s;', $css_prop, $meta['override'] );
+				}
+
 				if( isset( $meta['directional-prop'] ) ) {
 					return self::transform_directional_prop( $meta, $device, $value, $css_prop, $meta['directional-prop']  );
 				}
 
-				$suffix = self::get_suffix( $meta, $device, $value );
+				$suffix = self::get_suffix( $meta, $device, $value, $css_prop );
 
+				if( $css_prop === '--formFieldBorderRadius' ) {
+					echo '<pre>';
+					print_r( $value );
+					echo '</pre>';
+				}
 				return sprintf( ' %s: %s%s; ', $css_prop, $value, $suffix );
 				break;
 		}
@@ -220,13 +229,12 @@ class Css_Prop {
 	 *
 	 * @since 3.0.0
 	 */
-	public static function get_suffix( $meta, $device, $value ) {
+	public static function get_suffix( $meta, $device, $value, $css_prop ) {
 		$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : '';
-
 
 		// If not responsive, most controls use 'unit' key inside value.
 		if ( ! isset( $meta['is_responsive'] ) || $meta['is_responsive'] === false ) {
-			$suffix = isset( $value['unit'] ) ? $value['unit'] : '';
+			$suffix = isset( $value['unit'] ) ? $value['unit'] : $suffix;
 		}
 
 		// If responsive, try to find the suffix.
@@ -245,24 +253,29 @@ class Css_Prop {
 	}
 
 	public  static function transform_directional_prop ( $meta, $device, $value, $css_prop, $type ) {
-		$suffix = self::get_suffix($meta, $device, $value);
-		$suffix = $suffix ? $suffix : 'px';
-		$directions = ['top', 'right', 'bottom', 'left'];
-		$template = $css_prop . ':';
 
-		if( count( array_unique( $value ) ) === 1 ) {
+		$suffix = self::get_suffix($meta, $device, $value, $css_prop);
+		$suffix = $suffix ? $suffix : 'px';
+		$template = '';
+
+		// Directional array without any other keys than the actual directions.
+		$filtered = array_filter( $value, function ( $key ) {
+			return in_array( $key, Config::DIRECTIONAL_KEYS, true );
+		}, ARRAY_FILTER_USE_KEY );
+
+		if( count( array_unique( $filtered ) ) === 1 ) {
 			$template .= $value['top'] . $suffix . ';';
 
-			return $template;
+			return $css_prop . ':' . $template . ';';
 		}
 
-		if( count( array_unique( $value ) ) === 2 ) {
+		if( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] ) {
 			$template .= $value['top'] . $suffix . ' ' . $value['right'] . $suffix . ';';
 
-			return $template;
+			return $css_prop . ':' . $template . ';';
 		}
 
-		foreach ( $directions as $direction ) {
+		foreach ( Config::DIRECTIONAL_KEYS as $direction ) {
 			if( ! isset( $value[$direction] ) ) {
 				$template .= '0 ';
 			}
@@ -271,6 +284,6 @@ class Css_Prop {
 
 		$template = trim($template)  . ';';
 
-		return $template;
+		return $css_prop . ':' . $template . ';';
 	}
 }

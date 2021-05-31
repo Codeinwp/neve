@@ -22,6 +22,7 @@ $notices: (
 		'error': $error,
 		'info': var(--nv-primary-accent),
 );
+
 @each $noticeName, $color in $notices {
   .woocommerce .woocommerce-#{$noticeName},
   .woocommerce-page .woocommerce-#{$noticeName} {
@@ -30,6 +31,9 @@ $notices: (
 	border: none;
 	color: #fff;
 
+	a, &:before {
+	  color: inherit;
+	}
 
 	> a.button, > a.button:hover {
 	  @extend %nv-button-secondary-no-colors;

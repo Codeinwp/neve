@@ -70,3 +70,12 @@ fieldset {
     width: 100%;
   }
 }
+
+
+form input:read-write, form textarea, form select, form select option, form.wp-block-search input.wp-block-search__input, .widget select {
+  @extend %nv-form-fields;
+}
+
+form label, .wpforms-container .wpforms-field-label {
+  @extend %nv-form-labels;
+}

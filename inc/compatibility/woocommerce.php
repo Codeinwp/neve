@@ -151,6 +151,13 @@ class Woocommerce {
 		$this->move_checkout_coupon();
 		$this->add_inline_selectors();
 		add_action( 'wp', [ $this, 'setup_form_buttons' ] );
+
+		if ( neve_is_new_skin() ) {
+			add_action( 'woocommerce_checkout_before_order_review_heading', function () {
+				echo '<div>';
+			} );
+			add_action( 'woocommerce_checkout_after_order_review', [ $this, 'close_div' ] );
+		}
 	}
 
 	/**
