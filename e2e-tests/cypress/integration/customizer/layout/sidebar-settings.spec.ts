@@ -1,5 +1,3 @@
-import { should } from 'chai';
-
 describe('Sidebar/Content Settings', function () {
 	it('Sidebar site wide on front end.', function () {
 		cy.fixture('customizer/layout/sidebar-settings').then((sidebarSetup) => {
