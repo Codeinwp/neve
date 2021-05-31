@@ -240,6 +240,9 @@ class Post_Layout extends Base_View {
 	 * @return string
 	 */
 	public function align_post_title( $classes ) {
+		if ( ! is_singular( 'post' ) ) {
+			return $classes;
+		}
 		$title_alignment_classes = $this->get_alignment_classes( 'neve_post_title_alignment', $this->post_title_alignment() );
 		if ( empty( $title_alignment_classes ) ) {
 			return $classes;

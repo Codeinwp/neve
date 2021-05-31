@@ -81,6 +81,7 @@ class Config {
 
 	const MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE = 'neve_author_avatar_size';
 	const MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE  = 'neve_single_post_avatar_size';
+	const MODS_SINGLE_POST_ELEMENTS_SPACING         = 'neve_single_post_elements_spacing';
 
 	const MODS_POST_COVER_HEIGHT                 = 'neve_post_cover_height';
 	const MODS_POST_COVER_PADDING                = 'neve_post_cover_padding';

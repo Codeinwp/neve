@@ -820,7 +820,15 @@ class Frontend extends Generator {
 			],
 			Config::CSS_PROP_BACKGROUND_COLOR => [
 				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+			],
+		];
+
+		$this->_subscribers['.nv-single-post-wrap > *:not(:last-child)'] = [
+			Config::CSS_PROP_MARGIN_BOTTOM => [
+				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_ELEMENTS_SPACING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
 			],
 		];
 
@@ -833,14 +841,14 @@ class Frontend extends Generator {
 			],
 			Config::CSS_PROP_BACKGROUND_COLOR => [
 				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_BACKGROUND_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
 			],
 		];
 
 		$this->_subscribers['.nv-comments-wrap.is-boxed, .nv-comments-wrap.is-boxed a'] = [
 			Config::CSS_PROP_COLOR => [
 				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_TEXT_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
 			],
 		];
 
@@ -853,14 +861,14 @@ class Frontend extends Generator {
 			],
 			Config::CSS_PROP_BACKGROUND_COLOR => [
 				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_FORM_BACKGROUND_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
 			],
 		];
 
 		$this->_subscribers['.comment-respond.is-boxed, .comment-respond.is-boxed a'] = [
 			Config::CSS_PROP_COLOR => [
 				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_FORM_TEXT_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
 			],
 		];
 	}

@@ -75,7 +75,7 @@ class Layout_Single_Post extends Base_Customizer {
 			'page_elements'    => [
 				'title'            => esc_html__( 'Page Elements', 'neve' ),
 				'priority'         => 85,
-				'controls_to_wrap' => 1,
+				'controls_to_wrap' => 2,
 				'expanded'         => false,
 			],
 			'meta'             => [
@@ -533,7 +533,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'section'                => $this->section,
 				'has_text_color'         => false,
 				'padding_default'        => $this->padding_default( 'cover' ),
-				'background_default'     => 'var(--nv-dark-bg)',
+				'background_default'     => 'var(--nv-light-bg)',
 				'boxed_selector'         => '.nv-title-meta-wrap.is-boxed',
 				'toggle_active_callback' => function() {
 					return get_theme_mod( 'neve_post_header_layout' ) === 'cover';
@@ -594,6 +594,51 @@ class Layout_Single_Post extends Base_Customizer {
 					'priority'   => 90,
 				],
 				'Neve\Customizer\Controls\React\Ordering'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_single_post_elements_spacing',
+				[
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'transport'         => $this->selective_refresh,
+				],
+				[
+					'label'                 => esc_html__( 'Spacing between elements', 'neve' ),
+					'section'               => $this->section,
+					'type'                  => 'neve_responsive_range_control',
+					'input_attrs'           => [
+						'max'        => 500,
+						'units'      => [ 'px' ],
+						'defaultVal' => [
+							'mobile'  => 20,
+							'tablet'  => 20,
+							'desktop' => 20,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
+						],
+					],
+					'priority'              => 91,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'responsive' => true,
+						'prop'       => 'min-height',
+						'suffix'     => [
+							'mobile'  => 'px',
+							'desktop' => 'px',
+							'tablet'  => 'px',
+						],
+						'template'   => '
+						.nv-single-post-wrap > *:not(:last-child){
+							margin-bottom: {{value}};
+						}',
+					],
+				],
+				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)
 		);
 	}
@@ -784,8 +829,8 @@ class Layout_Single_Post extends Base_Customizer {
 				'priority'                  => 145,
 				'section'                   => $this->section,
 				'padding_default'           => $this->padding_default(),
-				'background_default'        => 'var(--nv-dark-bg)',
-				'color_default'             => 'var(--nv-text-dark-bg)',
+				'background_default'        => 'var(--nv-light-bg)',
+				'color_default'             => 'var(--nv-text-color)',
 				'boxed_selector'            => '.nv-comments-wrap.is-boxed',
 				'text_color_css_selector'   => '.nv-comments-wrap.is-boxed, .nv-comments-wrap.is-boxed a',
 				'border_color_css_selector' => '.nv-comments-wrap.is-boxed .nv-comment-article',
@@ -863,8 +908,8 @@ class Layout_Single_Post extends Base_Customizer {
 				'priority'                => 185,
 				'section'                 => $this->section,
 				'padding_default'         => $this->padding_default(),
-				'background_default'      => 'var(--nv-dark-bg)',
-				'color_default'           => 'var(--nv-text-dark-bg)',
+				'background_default'      => 'var(--nv-light-bg)',
+				'color_default'           => 'var(--nv-text-color)',
 				'boxed_selector'          => '.comment-respond.is-boxed',
 				'text_color_css_selector' => '.comment-respond.is-boxed, .comment-respond.is-boxed a',
 				'toggle_active_callback'  => function() {
