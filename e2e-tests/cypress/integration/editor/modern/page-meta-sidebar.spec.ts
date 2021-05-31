@@ -58,6 +58,9 @@ describe('Single page sidebar', function () {
 			meta: {
 				neve_meta_sidebar: 'left',
 			},
+		}).then(() => {
+			cy.visit(pageSetup.url);
+			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
 		});
 
 		cy.updatePageOrPostByRequest(pageId, 'pages', {
@@ -66,8 +69,8 @@ describe('Single page sidebar', function () {
 			},
 		}).then(() => {
 			cy.visit(pageSetup.url);
+			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-right');
 		});
-		cy.get('.nv-sidebar-wrap').should('exist').and('have.class', 'nv-right');
 	});
 
 	it('Check container layout', function () {
