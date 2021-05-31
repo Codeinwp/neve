@@ -214,7 +214,7 @@ function neve_sanitize_typography_control( $value ) {
  *
  * @return array
  */
-function sanitize_alignment( $input ) {
+function neve_sanitize_alignment( $input ) {
 	$default = [
 		'mobile'  => 'left',
 		'tablet'  => 'left',

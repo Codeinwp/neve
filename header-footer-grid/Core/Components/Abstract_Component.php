@@ -488,7 +488,7 @@ abstract class Abstract_Component implements Component {
 					'group'                 => $this->get_id(),
 					'tab'                   => SettingsManager::TAB_LAYOUT,
 					'transport'             => $this->is_auto_width ? 'post' . $this->get_builder_id() : 'postMessage',
-					'sanitize_callback'     => 'sanitize_alignment',
+					'sanitize_callback'     => 'neve_sanitize_alignment',
 					'default'               => [
 						'desktop' => $this->default_align,
 						'tablet'  => $this->default_align,

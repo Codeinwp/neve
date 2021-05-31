@@ -249,7 +249,7 @@ class Layout_Single_Post extends Base_Customizer {
 			new Control(
 				'neve_post_title_alignment',
 				[
-					'sanitize_callback' => 'sanitize_alignment',
+					'sanitize_callback' => 'neve_sanitize_alignment',
 					'transport'         => $this->selective_refresh,
 					'default'           => $this->post_title_alignment(),
 				],
