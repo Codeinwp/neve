@@ -19,6 +19,24 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 2.11.5](https://github.com/Codeinwp/neve/compare/v2.11.4...v2.11.5) (2021-05-31)
+
+- [Fix] Header cart doesn't show a dropdown when adding a new product to the cart
+- [Fix] Replace current implementation to update meta with Data API
+- [Fix] Image width of archive products are not wide enough
+- [Fix] External links behavior on the changelog page
+
+
+
+
+##### [Version 2.11.4](https://github.com/Codeinwp/neve/compare/v2.11.3...v2.11.4) (2021-05-14)
+
+- [Fix] font weights not getting properly enqueued when some font families are set to inherit
+- [Fix] CSS error causing padding issues on some Gutenberg blocks
+
+
+
+
 ##### [Version 2.11.3](https://github.com/Codeinwp/neve/compare/v2.11.2...v2.11.3) (2021-05-12)
 
 - [Fix] Editor text color not working as expected
