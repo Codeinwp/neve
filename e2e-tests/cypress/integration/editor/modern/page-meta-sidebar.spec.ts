@@ -40,7 +40,7 @@ describe('Single page sidebar', function () {
 		cy.get('.nv-content-wrap').should('contain', pageSetup.content);
 	});
 
-	it.only('Check sidebar layout', function () {
+	it('Check sidebar layout', function () {
 		cy.loginWithRequest(pageSetup.url);
 		const pageId = window.localStorage.getItem('pageId');
 		cy.clearWelcome();
