@@ -18,17 +18,17 @@
 		}
 	}
 
-	.quantity {
-	  	margin-left: 2px!important;
-	  	margin-right: 2px!important;
-	  	input {
-		  padding-right: 4px !important;
-		  padding-left: 4px !important;
-		  box-sizing: border-box;
-		  line-height: normal;
-		}
-	}
+  .entry-summary .quantity {
+	margin-left: 2px !important;
+	margin-right: 2px !important;
+  }
 
+  .quantity input {
+	padding-right: 4px !important;
+	padding-left: 4px !important;
+	box-sizing: border-box;
+	line-height: normal;
+  }
 
   	.woocommerce-variation-add-to-cart,
 	.entry-summary > form.cart {
