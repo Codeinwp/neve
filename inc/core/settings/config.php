@@ -90,7 +90,7 @@ class Config {
 	const MODS_POST_COVER_TEXT_COLOR             = 'neve_post_cover_text_color';
 	const MODS_POST_COVER_BLEND_MODE             = 'neve_post_cover_blend_mode';
 	const MODS_POST_COVER_BOXED_TITLE_PADDING    = 'neve_post_cover_title_boxed_padding';
-	const MODS_POST_COVER_BOXED_TITLE_BACKGROUND = 'neve_post_cover_title_boxed_background';
+	const MODS_POST_COVER_BOXED_TITLE_BACKGROUND = 'neve_post_cover_title_boxed_background_color';
 
 	const MODS_POST_COMMENTS_PADDING               = 'neve_comments_boxed_padding';
 	const MODS_POST_COMMENTS_BACKGROUND_COLOR      = 'neve_comments_boxed_background_color';
