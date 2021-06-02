@@ -367,7 +367,7 @@ abstract class Base_Customizer {
 						'units' => [ 'em', 'px' ],
 					],
 					'default'               => array_key_exists( 'padding_default', $settings ) ? $settings['padding_default'] : false,
-					'priority'              => ( $settings['priority'] + 5 ),
+					'priority'              => $settings['priority'],
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'responsive'  => true,
@@ -397,7 +397,7 @@ abstract class Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Background color', 'neve' ),
 					'section'               => $settings['section'],
-					'priority'              => ( $settings['priority'] + 10 ),
+					'priority'              => $settings['priority'],
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' =>
@@ -430,7 +430,7 @@ abstract class Base_Customizer {
 					[
 						'label'                 => esc_html__( 'Text color', 'neve' ),
 						'section'               => $settings['section'],
-						'priority'              => ( $settings['priority'] + 15 ),
+						'priority'              => $settings['priority'],
 						'live_refresh_selector' => true,
 						'live_refresh_css_prop' => [
 							'template' => $template,

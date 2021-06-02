@@ -44,6 +44,8 @@ class Layout_Single_Post extends Base_Customizer {
 		$this->control_content_order();
 		$this->post_meta();
 		$this->comments();
+
+		add_action( 'customize_register', [ $this, 'adjust_headings' ], PHP_INT_MAX );
 	}
 
 	/**
@@ -74,28 +76,19 @@ class Layout_Single_Post extends Base_Customizer {
 			],
 			'page_elements'    => [
 				'title'            => esc_html__( 'Page Elements', 'neve' ),
-				'priority'         => 85,
+				'priority'         => 6,
 				'controls_to_wrap' => 2,
 				'expanded'         => false,
 			],
 			'meta'             => [
 				'title'            => esc_html__( 'Post Meta', 'neve' ),
-				'priority'         => 95,
+				'priority'         => 7,
 				'controls_to_wrap' => 5,
 				'expanded'         => false,
 			],
-			'comments'         => [
-				'title'            => esc_html__( 'Comments', 'neve' ),
-				'priority'         => 125,
-				'controls_to_wrap' => 14,
-				'expanded'         => false,
-				'active_callback'  => function() {
-					return $this->element_is_enabled( 'comments' );
-				},
-			],
 			'comments_section' => [
 				'title'           => esc_html__( 'Comments Section', 'neve' ),
-				'priority'        => 135,
+				'priority'        => 70,
 				'expanded'        => true,
 				'accordion'       => false,
 				'active_callback' => function() {
@@ -104,7 +97,7 @@ class Layout_Single_Post extends Base_Customizer {
 			],
 			'comments_form'    => [
 				'title'           => esc_html__( 'Submit Form Section', 'neve' ),
-				'priority'        => 165,
+				'priority'        => 71,
 				'expanded'        => true,
 				'accordion'       => false,
 				'active_callback' => function() {
@@ -149,7 +142,7 @@ class Layout_Single_Post extends Base_Customizer {
 				],
 				[
 					'section'  => $this->section,
-					'priority' => 10,
+					'priority' => 5,
 					'choices'  => [
 						'normal' => [
 							'name'  => esc_html__( 'Normal', 'neve' ),
@@ -191,7 +184,7 @@ class Layout_Single_Post extends Base_Customizer {
 							],
 						],
 					],
-					'priority'              => 15,
+					'priority'              => 5,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'responsive' => true,
@@ -226,7 +219,7 @@ class Layout_Single_Post extends Base_Customizer {
 						'units' => [ 'em', 'px' ],
 					],
 					'default'               => $this->padding_default( 'cover' ),
-					'priority'              => 20,
+					'priority'              => 5,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'responsive'  => true,
@@ -256,7 +249,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Title Alignment', 'neve' ),
 					'section'               => 'neve_single_post_layout',
-					'priority'              => 25,
+					'priority'              => 5,
 					'choices'               => [
 						'left'   => [
 							'tooltip' => esc_html__( 'Left', 'neve' ),
@@ -302,7 +295,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Title Position', 'neve' ),
 					'section'               => 'neve_single_post_layout',
-					'priority'              => 30,
+					'priority'              => 5,
 					'choices'               => [
 						'top'    => [
 							'tooltip' => esc_html__( 'Top', 'neve' ),
@@ -349,7 +342,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'label'           => esc_html__( 'Display meta before title', 'neve' ),
 					'section'         => $this->section,
 					'type'            => 'neve_toggle_control',
-					'priority'        => 35,
+					'priority'        => 5,
 					'active_callback' => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\Checkbox'
@@ -367,7 +360,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Overlay color', 'neve' ),
 					'section'               => $this->section,
-					'priority'              => 40,
+					'priority'              => 5,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
@@ -393,7 +386,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Text color', 'neve' ),
 					'section'               => $this->section,
-					'priority'              => 45,
+					'priority'              => 5,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' => '
@@ -431,7 +424,7 @@ class Layout_Single_Post extends Base_Customizer {
 						],
 						'step'       => 0.1,
 					],
-					'priority'              => 50,
+					'priority'              => 5,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'responsive' => true,
@@ -457,7 +450,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'label'           => esc_html__( 'Hide featured image', 'neve' ),
 					'section'         => $this->section,
 					'type'            => 'neve_toggle_control',
-					'priority'        => 55,
+					'priority'        => 5,
 					'active_callback' => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\Checkbox'
@@ -475,7 +468,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Blend mode', 'neve' ),
 					'section'               => $this->section,
-					'priority'              => 60,
+					'priority'              => 5,
 					'type'                  => 'select',
 					'choices'               => [
 						'normal'      => esc_html__( 'Normal', 'neve' ),
@@ -515,7 +508,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'label'           => esc_html__( 'Cover container', 'neve' ),
 					'section'         => $this->section,
-					'priority'        => 65,
+					'priority'        => 5,
 					'type'            => 'select',
 					'choices'         => [
 						'contained'  => esc_html__( 'Contained', 'neve' ),
@@ -529,7 +522,7 @@ class Layout_Single_Post extends Base_Customizer {
 		$this->add_boxed_layout_controls(
 			'post_cover_title',
 			[
-				'priority'               => 70,
+				'priority'               => 5,
 				'section'                => $this->section,
 				'has_text_color'         => false,
 				'padding_default'        => $this->padding_default( 'cover' ),
@@ -591,7 +584,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'label'      => esc_html__( 'Elements Order', 'neve' ),
 					'section'    => 'neve_single_post_layout',
 					'components' => $components,
-					'priority'   => 90,
+					'priority'   => 6,
 				],
 				'Neve\Customizer\Controls\React\Ordering'
 			)
@@ -622,7 +615,7 @@ class Layout_Single_Post extends Base_Customizer {
 							],
 						],
 					],
-					'priority'              => 91,
+					'priority'              => 6,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'responsive' => true,
@@ -678,7 +671,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'label'      => esc_html__( 'Meta Order', 'neve' ),
 					'section'    => $this->section,
 					'components' => $components,
-					'priority'   => 100,
+					'priority'   => 7,
 				],
 				'Neve\Customizer\Controls\React\Ordering'
 			)
@@ -693,7 +686,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'default'           => $default_separator,
 				],
 				[
-					'priority'    => 105,
+					'priority'    => 7,
 					'section'     => $this->section,
 					'label'       => esc_html__( 'Separator', 'neve' ),
 					'description' => esc_html__( 'For special characters make sure to use Unicode. For example > can be displayed using \003E.', 'neve' ),
@@ -714,7 +707,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'label'    => esc_html__( 'Show Author Avatar', 'neve' ),
 					'section'  => $this->section,
 					'type'     => 'neve_toggle_control',
-					'priority' => 110,
+					'priority' => 7,
 				]
 			)
 		);
@@ -771,7 +764,7 @@ class Layout_Single_Post extends Base_Customizer {
 						],
 						'units'      => [ 'px' ],
 					],
-					'priority'        => 115,
+					'priority'        => 7,
 					'active_callback' => function () {
 						return get_theme_mod( 'neve_single_post_author_avatar', false );
 					},
@@ -793,7 +786,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'label'    => esc_html__( 'Use last updated date instead of the published one', 'neve' ),
 					'section'  => $this->section,
 					'type'     => 'neve_toggle_control',
-					'priority' => 120,
+					'priority' => 7,
 				]
 			)
 		);
@@ -813,7 +806,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'label'           => esc_html__( 'Section title', 'neve' ),
 					'description'     => esc_html__( 'The following magic tags are available for this field: {title} and {comments_number}. Leave this field empty for default behavior.', 'neve' ),
-					'priority'        => 140,
+					'priority'        => 70,
 					'section'         => $this->section,
 					'type'            => 'text',
 					'active_callback' => function() {
@@ -826,7 +819,7 @@ class Layout_Single_Post extends Base_Customizer {
 		$this->add_boxed_layout_controls(
 			'comments',
 			[
-				'priority'                  => 145,
+				'priority'                  => 70,
 				'section'                   => $this->section,
 				'padding_default'           => $this->padding_default(),
 				'background_default'        => 'var(--nv-light-bg)',
@@ -851,7 +844,7 @@ class Layout_Single_Post extends Base_Customizer {
 				],
 				[
 					'label'           => esc_html__( 'Section title', 'neve' ),
-					'priority'        => 170,
+					'priority'        => 71,
 					'section'         => $this->section,
 					'type'            => 'text',
 					'active_callback' => function() {
@@ -871,7 +864,7 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'label'           => esc_html__( 'Button style', 'neve' ),
 					'section'         => $this->section,
-					'priority'        => 175,
+					'priority'        => 71,
 					'type'            => 'select',
 					'choices'         => [
 						'primary'   => esc_html__( 'Primary', 'neve' ),
@@ -892,7 +885,7 @@ class Layout_Single_Post extends Base_Customizer {
 				],
 				[
 					'label'           => esc_html__( 'Button text', 'neve' ),
-					'priority'        => 180,
+					'priority'        => 71,
 					'section'         => $this->section,
 					'type'            => 'text',
 					'active_callback' => function() {
@@ -905,7 +898,7 @@ class Layout_Single_Post extends Base_Customizer {
 		$this->add_boxed_layout_controls(
 			'comments_form',
 			[
-				'priority'                => 185,
+				'priority'                => 71,
 				'section'                 => $this->section,
 				'padding_default'         => $this->padding_default(),
 				'background_default'      => 'var(--nv-light-bg)',
@@ -920,6 +913,13 @@ class Layout_Single_Post extends Base_Customizer {
 				},
 			]
 		);
+	}
+
+	/**
+	 * Change heading controls properties.
+	 */
+	public function adjust_headings() {
+		$this->change_customizer_object( 'control', 'neve_comments_heading', 'controls_to_wrap', 15 );
 	}
 
 	/**
