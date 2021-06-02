@@ -35,8 +35,13 @@
   }
 }
 
-.nv-comments-wrap.is-boxed .nv-comments-list {
-  padding: 0;
+.nv-comments-wrap.is-boxed {
+  .nv-comments-title-wrap {
+	margin: 0;
+  }
+  .nv-comments-list {
+	padding: 0;
+  }
 }
 
 .mobile-top {

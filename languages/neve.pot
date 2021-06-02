@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: neve\n"
 
 #. Theme Name of the theme
@@ -906,7 +906,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:543
 #: inc/customizer/options/layout_blog.php:390
-#: inc/customizer/options/layout_single_post.php:618
+#: inc/customizer/options/layout_single_post.php:663
 #: inc/views/partials/post_meta.php:182
 msgid "Author"
 msgstr ""
@@ -1344,14 +1344,14 @@ msgstr ""
 
 #: inc/customizer/options/buttons.php:59
 #: inc/customizer/options/form_fields.php:596
-#: inc/customizer/options/layout_single_post.php:832
+#: inc/customizer/options/layout_single_post.php:877
 #: assets/js/src/gutenberg.js:13
 msgid "Primary"
 msgstr ""
 
 #: inc/customizer/options/buttons.php:62
 #: inc/customizer/options/form_fields.php:597
-#: inc/customizer/options/layout_single_post.php:833
+#: inc/customizer/options/layout_single_post.php:878
 msgid "Secondary"
 msgstr ""
 
@@ -1506,14 +1506,14 @@ msgid "Post Meta"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:391
-#: inc/customizer/options/layout_single_post.php:619
+#: inc/customizer/options/layout_single_post.php:664
 #: inc/customizer/options/layout_single_product.php:107
 #: inc/views/partials/post_meta.php:183
 msgid "Category"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:392
-#: inc/customizer/options/layout_single_post.php:620
+#: inc/customizer/options/layout_single_post.php:665
 #: inc/views/partials/post_meta.php:184
 msgid "Date"
 msgstr ""
@@ -1522,7 +1522,7 @@ msgstr ""
 #: inc/customizer/options/layout_single_post.php:88
 #: inc/customizer/options/layout_single_post.php:560
 #: inc/customizer/options/layout_single_post.php:568
-#: inc/customizer/options/layout_single_post.php:621
+#: inc/customizer/options/layout_single_post.php:666
 #: inc/views/partials/post_meta.php:185
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:324
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:333
@@ -1530,32 +1530,32 @@ msgid "Comments"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:405
-#: inc/customizer/options/layout_single_post.php:633
+#: inc/customizer/options/layout_single_post.php:678
 msgid "Meta Order"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:425
-#: inc/customizer/options/layout_single_post.php:653
+#: inc/customizer/options/layout_single_post.php:698
 msgid "Separator"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:426
-#: inc/customizer/options/layout_single_post.php:654
+#: inc/customizer/options/layout_single_post.php:699
 msgid "For special characters make sure to use Unicode. For example > can be displayed using \\003E."
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:440
-#: inc/customizer/options/layout_single_post.php:669
+#: inc/customizer/options/layout_single_post.php:714
 msgid "Show Author Avatar"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:462
-#: inc/customizer/options/layout_single_post.php:695
+#: inc/customizer/options/layout_single_post.php:740
 msgid "Avatar Size"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:516
-#: inc/customizer/options/layout_single_post.php:748
+#: inc/customizer/options/layout_single_post.php:793
 msgid "Use last updated date instead of the published one"
 msgstr ""
 
@@ -1777,20 +1777,24 @@ msgstr ""
 msgid "Elements Order"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:769
-#: inc/customizer/options/layout_single_post.php:808
+#: inc/customizer/options/layout_single_post.php:608
+msgid "Spacing between elements"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:814
+#: inc/customizer/options/layout_single_post.php:853
 msgid "Section title"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:770
+#: inc/customizer/options/layout_single_post.php:815
 msgid "The following magic tags are available for this field: {title} and {comments_number}. Leave this field empty for default behavior."
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:827
+#: inc/customizer/options/layout_single_post.php:872
 msgid "Button style"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:849
+#: inc/customizer/options/layout_single_post.php:894
 msgid "Button text"
 msgstr ""
 

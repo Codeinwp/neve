@@ -21,7 +21,7 @@ trait Single_Post {
 	 */
 	public function padding_default( $param = '' ) {
 
-		$m_t = $m_r = $m_b = $m_l = $t_t = $t_r = $t_b = $t_l = $d_t = $d_r = $d_b = $d_l = 15; //phpcs:ignore Squiz.PHP.DisallowMultipleAssignments.Found
+		$m_t = $m_r = $m_b = $m_l = $t_t = $t_r = $t_b = $t_l = $d_t = $d_r = $d_b = $d_l = 35; //phpcs:ignore Squiz.PHP.DisallowMultipleAssignments.Found
 
 		if ( $param === 'cover' ) {
 			$m_t = $m_b = 40; //phpcs:ignore Squiz.PHP.DisallowMultipleAssignments.Found
