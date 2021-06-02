@@ -28,23 +28,23 @@
 }
 
 .has-neve-h-1-font-size {
-    font-size: var(--h1FontSize);
+  font-size: var(--h1FontSize);
 }
 
 .has-neve-h-2-font-size {
-    font-size: var(--h2FontSize);
+  font-size: var(--h2FontSize);
 }
 
 .has-neve-h-3-font-size {
-    font-size: var(--h3FontSize);
+  font-size: var(--h3FontSize);
 }
 
 .has-neve-h-4-font-size {
-    font-size: var(--h4FontSize);
+  font-size: var(--h4FontSize);
 }
 
 .has-neve-h-5-font-size {
-    font-size: var(--h5FontSize);
+  font-size: var(--h5FontSize);
 }
 
 //</editor-fold>
@@ -152,6 +152,10 @@ blockquote.wp-block-quote.is-style-large {
   &.is-style-secondary {
 	.wp-block-button__link {
 	  @extend %nv-button-secondary;
+
+	  &:hover {
+		@extend %nv-button-secondary-hover;
+	  }
 	}
   }
 }

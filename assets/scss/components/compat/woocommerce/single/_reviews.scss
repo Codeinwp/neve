@@ -63,6 +63,6 @@
 @mixin reviews--laptop() {
   .woocommerce #reviews {
 	grid-template-columns: 1fr 1fr;
-	grid-column-gap: $spacing-xl;
+	grid-column-gap: $spacing-xxl;
   }
 }

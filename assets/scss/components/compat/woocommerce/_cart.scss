@@ -23,8 +23,11 @@
 
   + .button {
 	float: none;
-	width: 100%;
 	@extend %nv-button-secondary;
+
+	&:hover {
+	  @extend %nv-button-secondary-hover;
+	}
   }
 }
 
@@ -49,7 +52,7 @@
   }
 
   tr {
-	border-bottom: 2px solid var(--nv-text-color);
+	border-bottom: $base-border;
 	padding: $spacing-md 0;
 
 	&:last-child {
@@ -123,7 +126,7 @@
 	padding: 0;
 
 	th, td {
-	  padding: 15px $spacing-sm;
+	  padding: $spacing-sm;
 
 	  &:last-child {
 		text-align: right;
@@ -137,6 +140,8 @@
 
 	.product-remove {
 	  float: none;
+	  padding-right: 0;
+	  width: auto;
 	}
   }
 }
@@ -157,7 +162,7 @@
 	}
   }
   .woocommerce-cart table.cart td.actions .coupon {
-	margin-left: 75px;
+	margin-left: $spacing-aired;
 	margin-bottom: 0;
   }
 }
@@ -177,11 +182,15 @@
   td, th {
 	background: 0 !important;
 	padding: $spacing-md 15px !important;
-	border-bottom: 2px solid var(--nv-text-color);
+	border-bottom: $base-border;
   }
 
   td {
 	text-align: right;
+  }
+
+  .shipping-calculator-form {
+	text-align: left;
   }
 
   th {

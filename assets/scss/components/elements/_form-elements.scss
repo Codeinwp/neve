@@ -30,6 +30,7 @@
 	display: block;
 	border-style: solid;
 	z-index: 1;
+	--formFieldSpacing: 0;
   }
 
   button[type="submit"], input[type="submit"] {

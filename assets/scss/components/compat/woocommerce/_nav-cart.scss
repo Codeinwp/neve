@@ -1,5 +1,8 @@
 @import "../../main/variables";
-//<editor-fold desc="Cart icon in menu">
+
+$cart-width: 360px;
+
+//Cart icon in menu
 .cart-icon-wrapper {
   display: flex;
   align-items: flex-end;
@@ -9,110 +12,137 @@
   }
 
   .cart-count {
-	background: #fff;
-	border: $muted-border;
-	font-size: 0.55em;
+	background: var(--nv-light-bg);
+	color: var(--nv-text-color);
+	position: absolute;
+	font-size: .7em;
 	padding: 3px;
-	border-radius: 3px;
-	color: #333;
+	bottom: -7px;
+	right: -10px;
+	font-weight: 800;
 	line-height: 1;
-	display: inline-block;
-	bottom: -5px;
-	position: relative;
+	border-radius: 3px;
   }
 }
-//</editor-fold>
 
-//<editor-fold desc="Hide menu cart icon and minicart on mobile">
-.nv-nav-cart,
-.header-menu-sidebar li.menu-item-nav-cart {
-  opacity: 0;
-  visibility: hidden;
+// Hide minicart on mobile
+.nv-nav-cart {
   display: none;
 }
-//</editor-fold>
 
-//<editor-fold desc="Menu mini cart positioning">
+//Menu mini cart positioning
 .menu-item-nav-cart {
   position: relative;
-  &:last-child .nv-nav-cart {
-	  right: 0;
-  }
 
-  .nv-nav-cart{
-    right: 20px;
+  .nv-nav-cart {
+	right: 0;
   }
 }
-//</editor-fold>
 
-@include cart-widget();
+.nv-nav-cart {
+  background: var(--nv-site-bg);
+  color: var(--nv-text-color);
+  box-shadow: $soft-box-shadow;
+  position: absolute;
+  z-index: 100;
+  width: $cart-width;
+  text-align: left;
+
+  .widget {
+	// Overflow needed to hide scrollbar.
+	overflow: hidden;
+  }
+
+  .woocommerce-mini-cart {
+	// Margin needed to hide scrollbar.
+	margin-right: -40px !important;
+	overflow: auto;
+	max-height: 300px;
+  }
+
+  li {
+	// Padding needed to hide scrollbar.
+	padding: $spacing-md 40px + $spacing-sm $spacing-md $spacing-sm !important;
+
+	border-bottom: $base-border;
+	font-size: $small-text;
+
+	img {
+	  position: absolute;
+	  left: 35px;
+	  width: 60px !important;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  margin-left: $spacing-xs !important;
+	}
+
+	.remove {
+	  top: 50% !important;
+	  left: $spacing-sm !important;
+	  transform: translateY(-50%);
+	  opacity: .5;
+	}
+
+	.quantity {
+	  opacity: .5;
+	}
+
+	> *:not(.remove) {
+	  margin-left: 100px !important;
+	  font-weight: inherit !important;
+	}
+
+	dl {
+	  padding: 0 !important;
+	  border: 0 !important;
+
+	  > dd {
+		margin: 0 !important;
+	  }
+	}
+
+	> a {
+	  grid-column: span 11;
+	  grid-row-start: 1;
+	  grid-column-end: -1;
+	}
+  }
+
+  .widget_shopping_cart_content {
+	.total {
+	  border: 0;
+	  margin: 0;
+	  box-shadow: 0 -3px 9px -9px;
+	  padding: $spacing-sm $spacing-md;
+	}
+
+	strong {
+	  font-weight: inherit;
+	  margin-right: $spacing-xs;
+	}
+
+	.buttons {
+	  display: grid;
+	  grid-template-columns: 1fr 1fr;
+	  padding: 0 $spacing-md;
+	  grid-column-gap: $spacing-md;
+	  margin-bottom: $spacing-md;
+
+	  &:before {
+		content: none !important;
+	  }
+
+	  .button {
+		margin: 0;
+		text-align: center;
+	  }
+	}
+  }
+}
+
 
 @mixin nav-cart--laptop() {
-
-  .nv-nav-cart,
-  .header-menu-sidebar li.menu-item-nav-cart {
+  .menu-item-nav-cart:hover .nv-nav-cart {
 	display: block;
   }
-
-  //<editor-fold desc="Show menu cart icon and mini cart on desktop">
-  .menu-item-nav-cart:hover .nv-nav-cart,
-  .menu-item-nav-cart > a:focus + .nv-nav-cart,
-  .nv-nav-cart:focus-within {
-	opacity: 1;
-	visibility: visible;
-  }
-  //</editor-fold>
-
-  //<editor-fold desc="Mini cart style">
-  .nv-nav-cart {
-	cursor: default;
-	border-top: $muted-border;
-	position: absolute;
-	z-index: 100;
-	width: 350px;
-	background: var(--nv-site-bg);
-	@include soft-box-shadow();
-
-	.widget_shopping_cart_content {
-	  overflow: hidden;
-	  .woocommerce-mini-cart {
-		overflow: auto;
-		max-height: 350px;
-	  }
-	  .total {
-		padding: $spacing-sm;
-	  }
-	  .woocommerce-mini-cart__empty-message {
-		text-align: center;
-		margin-bottom: 0;
-		padding: 10px 0;
-	  }
-	  li.mini_cart_item {
-		padding: $spacing-sm;
-		img{
-		  left: 50px;
-		}
-	  }
-	  .woocommerce-mini-cart__buttons {
-		padding: 0 $spacing-sm $spacing-sm;
-	  }
-	}
-  }
-
-  li.menu-item-nav-cart .widget_shopping_cart .cart_list li.mini_cart_item {
-	> a:not(.remove), span.quantity {
-	  grid-column-start: 2;
-	  grid-column-end: -1;
-	  margin: 0;
-	  padding: 0;
-	  opacity: 1;
-	}
-
-	img{
-	  right: 0;
-	  left: auto;
-	  top: 100%;
-	}
-  }
-  //</editor-fold>
 }

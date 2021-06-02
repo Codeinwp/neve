@@ -1,117 +1,89 @@
 @import "../../main/variables";
 
+
 body.woocommerce-account {
   .nv-content-wrap > .woocommerce {
-    display: flex;
-    flex-direction: column;
-    padding-top: $spacing-sm;
+	display: flex;
+	flex-direction: column;
+  }
+
+  .woocommerce > h2 {
+	font-size: var(--h4FontSize);
+	margin-bottom: 0;
+  }
+
+  .form-row {
+	margin: 0;
+	padding: 0;
+  }
+
+  .woocommerce-form-login .form-row:nth-child(3) {
+	float: left;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+  }
+
+  .woocommerce-form__label-for-checkbox {
+	--formLabelSpacing: 0;
+  }
+
+  nav > ul {
+	list-style: none;
+	padding: 0;
+	margin-bottom: $spacing-xl;
   }
 
   .woocommerce-LostPassword {
-    font-size: $small-text;
-    text-align: center;
-    margin: $spacing-xs 0 0 0;
+	margin: 0;
+	float: right;
   }
 
-  .woocommerce-form-login {
-    max-width: 600px;
-    margin: 0 auto;
-    width: 100%;
+  .woocommerce-orders-table {
+	border: 0;
+	font-size: $small-text;
+	//--primaryBtnFs: $small-text;
+	--primaryBtnFs: .9em;
+	//--primaryBtnPadding: $spacing-xs $spacing-md;
+	--primaryBtnPadding: 8px 30px;
 
-    .woocommerce-form-login__submit {
-      float: none;
-      margin-left: auto;
-      margin-right: 0;
-    }
+	th, td {
+	  border: 0;
+	  padding: $spacing-md $spacing-sm;
 
-    .woocommerce-form-login__rememberme {
-      display: flex;
-      align-items: center;
-      margin-bottom: 0;
+	  &:last-child {
+		text-align: right;
+	  }
+	}
 
-      input {
-        margin-right: 10px;
-      }
-    }
-
-    .form-row:not(.woocommerce-form-row--wide) {
-      display: flex;
-      align-items: center;
-      margin-top: $spacing-sm;
-    }
+	th {
+	  border-bottom: $base-border;
+	  // TODO: go back to this to make sure it's ok.
+	  font-size: var(--h5FontSize);
+	}
   }
 }
 
-.nv-content-wrap .woocommerce-MyAccount-navigation {
-  width: 100%;
-  float: none;
-  border-bottom: $muted-border;
-  margin-bottom: $spacing-sm;
+@mixin account--tablet() {
+  body.woocommerce-account {
+	nav > ul {
+	  display: flex;
+	  width: 100%;
 
-  > ul {
-    list-style-type: none;
-    padding: 0 0 20px 0;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
 
-  li {
-    margin: 0;
-    padding: 5px $spacing-xs;
+	  li {
+		margin: 0 $spacing-md 0 0;
+	  }
+	}
 
-    &:not(.is-active) a {
-      color: $body-color;
-    }
+	.woocommerce-MyAccount-navigation {
+	  width: 100%;
+	}
 
-    a {
-      font-weight: 500;
-    }
-  }
-}
-
-.woocommerce-account .woocommerce-MyAccount-content {
-  width: 100%;
-  float: none;
-
-  .woocommerce-Addresses {
-    .woocommerce-Address {
-      padding: 0;
-    }
-  }
-
-  .woocommerce-Address-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: $spacing-xs;
-
-    h3 {
-      flex-grow: 1;
-      float: none;
-      margin-bottom: 0;
-    }
-
-    .edit {
-      float: none;
-    }
-  }
-
-  address {
-    font-style: normal;
-    font-size: $small-text;
-  }
-}
-
-@mixin account--laptop() {
-  .nv-content-wrap .woocommerce-MyAccount-navigation {
-    > ul {
-      text-align: left;
-      flex-direction: row;
-      flex-wrap: wrap;
-      padding: 0;
-    }
+	.woocommerce-MyAccount-content {
+	  width: 100%;
+	  float: none;
+	}
   }
 }
 

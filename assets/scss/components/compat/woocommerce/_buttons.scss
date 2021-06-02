@@ -1,3 +1,4 @@
+
 .woocommerce {
   .added_to_cart {
 	margin-top: 1em;
@@ -7,57 +8,19 @@
 	display: none;
   }
 
-  #respond input#submit.alt,
-  a.button.alt,
-  button.button.alt,
-  input.button.alt,
-  button.button,
-  input.button,
-  .button,
-  a.button,
-  #respond input#submit {
-	@extend %nv-button;
-	@extend %nv-button-primary
-  }
-
-  a.button.button-primary {
-	@extend %nv-button-primary;
-  }
-
-  a.button.alt,
-  button.button.alt,
-  a.button.checkout-button,
-  button.button:disabled,
-  button.button:disabled[disabled],
-  button.button.alt.single_add_to_cart_button.disabled,
-  button.button.alt.single_add_to_cart_button,
-  .actions > button[type=submit],
-  .checkout.wc-forward,
-  button#place_order,
-  a.add_to_cart_button,
-  a.product_type_grouped,
-  a.product_type_external,
-  a.product_type_variable,
-  .return-to-shop > .button,
-  .button.woocommerce-form-login__submit {
-	@extend %nv-button;
-	@extend %nv-button-primary;
-  }
-
   .button.button-secondary.more-details,
   .woocommerce .price_slider_amount button.button,
   button.button,
   a.added_to_cart,
   .checkout_coupon button.button,
-  #review_form #respond input#submit {
-	@extend %nv-button;
-	@extend %nv-button-secondary;
-  }
-
-  ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
+  #review_form #respond input#submit,
   .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout) {
 	@extend %nv-button;
 	@extend %nv-button-secondary;
+
+	&:hover {
+	  @extend %nv-button-secondary-hover;
+	}
   }
 }
 
@@ -82,20 +45,60 @@
 
 //</editor-fold>
 
-
-ul[id^="nv-primary-navigation"] .nv-nav-cart {
-  a.button.wc-forward:not(.checkout) {
-	@extend %nv-button;
-	@extend %nv-button-secondary;
-  }
-
-  a.button.checkout.wc-forward {
-	@extend %nv-button;
-	@extend %nv-button-primary;
-  }
-}
-
 .wc-block-components-product-button .wp-block-button__link.add_to_cart_button {
   @extend %nv-button;
   @extend %nv-button-primary;
+
+  &:hover {
+	@extend %nv-button-primary-hover;
+  }
+}
+
+
+.woocommerce #respond input#submit.disabled,
+.woocommerce #respond input#submit:disabled,
+.woocommerce #respond input#submit:disabled[disabled],
+.woocommerce a.button.disabled,
+.woocommerce a.button:disabled,
+.woocommerce a.button:disabled[disabled],
+.woocommerce button.button.disabled,
+.woocommerce button.button:disabled,
+.woocommerce button.button:disabled[disabled],
+.woocommerce input.button.disabled,
+.woocommerce input.button:disabled,
+.woocommerce input.button:disabled[disabled],
+#add_payment_method .wc-proceed-to-checkout a.checkout-button,
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+.woocommerce-checkout .wc-proceed-to-checkout a.checkout-button,
+.woocommerce #respond input#submit.alt,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt,
+.woocommerce a.button {
+  @extend %nv-button-primary;
+
+  &:hover {
+	@extend %nv-button-primary-hover;
+  }
+}
+
+
+// alt disabled buttons
+.woocommerce #respond input#submit.alt.disabled,
+.woocommerce #respond input#submit.alt:disabled,
+.woocommerce #respond input#submit.alt:disabled[disabled],
+.woocommerce a.button.alt.disabled,
+.woocommerce a.button.alt:disabled,
+.woocommerce a.button.alt:disabled[disabled],
+.woocommerce button.button.alt.disabled,
+.woocommerce button.button.alt:disabled,
+.woocommerce button.button.alt:disabled[disabled],
+.woocommerce input.button.alt.disabled,
+.woocommerce input.button.alt:disabled,
+.woocommerce input.button.alt:disabled[disabled] {
+  @extend %nv-button-primary;
+
+  &:hover {
+	@extend %nv-button-primary-hover;
+  }
 }

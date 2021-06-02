@@ -6,6 +6,7 @@
 @media (min-width: #{$tablet}) {
   @include cart--tablet();
   @include product--tablet();
+  @include account--tablet();
 }
 
 @media (min-width: #{$laptop}) {
@@ -16,7 +17,6 @@
   @include cart--laptop();
   @include product--laptop();
   @include checkout--laptop();
-  @include account--laptop();
 }
 
 @media (min-width: #{$desktop}) {

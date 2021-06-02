@@ -15,7 +15,7 @@
 
 #comments {
   li.comment {
-	border-bottom: 2px solid var(--nv-text-color);
+	border-bottom: $base-border;
 	padding-bottom: $spacing-xl;
 	margin-bottom: $spacing-xl;
   }
@@ -49,6 +49,7 @@
 	resize: none;
 	max-width: 100%;
 	width: 100%;
+	display: block;
   }
 
   .comment-reply-title {
@@ -61,6 +62,10 @@
 
   input[type=submit] {
 	@extend %nv-button-primary;
+
+	&:hover {
+	  @extend %nv-button-primary-hover;
+	}
   }
 }
 
@@ -110,10 +115,6 @@
 
   label {
 	display: inline-block;
-  }
-
-  .form-submit {
-	margin-top: $spacing-xs;
   }
 }
 

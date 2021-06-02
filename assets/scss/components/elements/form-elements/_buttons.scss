@@ -3,13 +3,21 @@
   @extend %nv-button;
 
   &.button-primary {
-    //noinspection SassScssResolvedByNameOnly
-    @extend %nv-button-primary;
+	//noinspection SassScssResolvedByNameOnly
+	@extend %nv-button-primary;
+
+	&:hover {
+	  @extend %nv-button-primary-hover;
+	}
   }
 
   &.button-secondary {
-    //noinspection SassScssResolvedByNameOnly
-    @extend %nv-button-secondary;
+	//noinspection SassScssResolvedByNameOnly
+	@extend %nv-button-secondary;
+
+	&:hover {
+	  @extend %nv-button-secondary-hover;
+	}
   }
 }
 
@@ -18,4 +26,8 @@ button, input[type=button], .btn, input[type="submit"] {
   @extend %nv-button;
   //noinspection SassScssResolvedByNameOnly
   @extend %nv-button-primary;
+
+  &:hover {
+	@extend %nv-button-primary-hover;
+  }
 }

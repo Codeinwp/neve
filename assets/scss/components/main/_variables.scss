@@ -25,9 +25,12 @@ $error: var(--nv-c-2);
 
 $muted-border: 1px solid var(--nv-light-bg);
 $muted-border-med: 1px solid #c9c9c9;
+$soft-box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+
+$base-border: 2px solid var(--nv-text-color);
 
 $tablet-sm: "576px";
 $tablet: "769px";
 $laptop: "960px";
-$desktop: "1200px"
+$desktop: "1200px";
 

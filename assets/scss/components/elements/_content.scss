@@ -58,12 +58,6 @@ blockquote {
 
 table {
   width: 100%;
-  margin: $spacing-sm 0;
-
-  td, th {
-	padding: $spacing-xs;
-	border-bottom: $muted-border;
-  }
 }
 
 code {
@@ -177,10 +171,18 @@ audio {
 
 .is-style-primary .wp-block-button__link {
   @extend %nv-button-primary;
+
+  &:hover {
+	@extend %nv-button-primary-hover;
+  }
 }
 
 .is-style-secondary .wp-block-button__link {
   @extend %nv-button-secondary;
+
+  &:hover {
+	@extend %nv-button-secondary-hover;
+  }
 }
 
 .is-style-default .wp-block-button__link {

@@ -13,28 +13,6 @@
   border-color: currentColor;
 }
 
-%nv-button-primary-no-colors {
-  padding: var(--primaryBtnPadding, 10px 15px);
-  border-radius: var(--primaryBtnBorderRadius, 3px);
-  border-width: var(--primaryBtnBorderWidth, 0);
-  font-weight: var(--primaryBtnFontWeight, 700);
-  font-size: var(--primaryBtnFs, var(--bodyFontSize));
-  line-height: var(--primaryBtnLineHeight, 1.6);
-  letter-spacing: var(--primaryBtnLetterSpacing, var(--bodyLetterSpacing));
-  text-transform: var(--primaryBtnTextTransform, none);
-}
-
-%nv-button-secondary-no-colors {
-  padding: var(--secondaryBtnPadding, 7px 15px);
-  border-radius: var(--secondaryBtnBorderRadius, 3px);
-  border-width: var(--secondaryBtnBorderWidth);
-  font-weight: var(--secondaryBtnFontWeight, 700);
-  font-size: var(--secondaryBtnFs, var(--bodyFontSize));
-  line-height: var(--secondaryBtnLineHeight, 1.6);
-  letter-spacing: var(--secondaryBtnLetterSpacing, var(--bodyLetterSpacing));
-  text-transform: var(--secondaryBtnTextTransform, none);
-}
-
 %nv-button-primary {
   background-color: var(--primaryBtnBg);
   color: var(--primaryBtnColor);
@@ -47,12 +25,23 @@
   line-height: var(--primaryBtnLineHeight, 1.6);
   letter-spacing: var(--primaryBtnLetterSpacing, var(--bodyLetterSpacing));
   text-transform: var(--primaryBtnTextTransform, none);
+}
 
-  &:hover {
-	background-color: var(--primaryBtnHoverBg);
-	color: var(--primaryBtnHoverColor);
-	border-color: var(--primaryBtnHoverColor);
-  }
+%nv-button-primary-hover {
+  background-color: var(--primaryBtnHoverBg);
+  color: var(--primaryBtnHoverColor);
+  border-color: var(--primaryBtnHoverColor);
+}
+
+%nv-button-primary-no-colors {
+  padding: var(--primaryBtnPadding, 10px 15px);
+  border-radius: var(--primaryBtnBorderRadius, 3px);
+  border-width: var(--primaryBtnBorderWidth, 0);
+  font-weight: var(--primaryBtnFontWeight, 700);
+  font-size: var(--primaryBtnFs, var(--bodyFontSize));
+  line-height: var(--primaryBtnLineHeight, 1.6);
+  letter-spacing: var(--primaryBtnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--primaryBtnTextTransform, none);
 }
 
 %nv-button-secondary {
@@ -67,12 +56,23 @@
   line-height: var(--secondaryBtnLineHeight, 1.6);
   letter-spacing: var(--secondaryBtnLetterSpacing);
   text-transform: var(--secondaryBtnTextTransform, none);
+}
 
-  &:hover {
-	background-color: var(--secondaryBtnHoverBg);
-	color: var(--secondaryBtnHoverColor);
-	border-color: var(--secondaryBtnHoverColor);
-  }
+%nv-button-secondary-hover {
+  background-color: var(--secondaryBtnHoverBg);
+  color: var(--secondaryBtnHoverColor);
+  border-color: var(--secondaryBtnHoverColor);
+}
+
+%nv-button-secondary-no-colors {
+  padding: var(--secondaryBtnPadding, 7px 15px);
+  border-radius: var(--secondaryBtnBorderRadius, 3px);
+  border-width: var(--secondaryBtnBorderWidth);
+  font-weight: var(--secondaryBtnFontWeight, 700);
+  font-size: var(--secondaryBtnFs, var(--bodyFontSize));
+  line-height: var(--secondaryBtnLineHeight, 1.6);
+  letter-spacing: var(--secondaryBtnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--secondaryBtnTextTransform, none);
 }
 
 // Form Fields
