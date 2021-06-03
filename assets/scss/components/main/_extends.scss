@@ -8,18 +8,19 @@
 
 %nv-button {
   cursor: pointer;
-  border-style: solid;
   box-sizing: border-box;
   border-color: currentColor;
 }
 
 %nv-button-primary {
+  cursor: pointer;
+  box-sizing: border-box;
   background-color: var(--primaryBtnBg);
   color: var(--primaryBtnColor);
-
+  border: var(--primaryBtnBorderWidth, 0) solid currentColor;
+  //border-width: var(--primaryBtnBorderWidth, 0);
   padding: var(--primaryBtnPadding, 10px 15px);
   border-radius: var(--primaryBtnBorderRadius, 3px);
-  border-width: var(--primaryBtnBorderWidth, 0);
   font-weight: var(--primaryBtnFontWeight, 700);
   font-size: var(--primaryBtnFs, var(--bodyFontSize));
   line-height: var(--primaryBtnLineHeight, 1.6);
@@ -34,9 +35,13 @@
 }
 
 %nv-button-primary-no-colors {
+  cursor: pointer;
+  box-sizing: border-box;
+
+  border: var(--primaryBtnBorderWidth, 0) solid currentColor;
+  //border-width: var(--primaryBtnBorderWidth, 0);
   padding: var(--primaryBtnPadding, 10px 15px);
   border-radius: var(--primaryBtnBorderRadius, 3px);
-  border-width: var(--primaryBtnBorderWidth, 0);
   font-weight: var(--primaryBtnFontWeight, 700);
   font-size: var(--primaryBtnFs, var(--bodyFontSize));
   line-height: var(--primaryBtnLineHeight, 1.6);
@@ -45,12 +50,16 @@
 }
 
 %nv-button-secondary {
+  cursor: pointer;
+  box-sizing: border-box;
+
   background-color: var(--secondaryBtnBg);
   color: var(--secondaryBtnColor);
 
+  border: var(--secondaryBtnBorderWidth, 3px) solid currentColor;
+  //border-width: var(--secondaryBtnBorderWidth);
   padding: var(--secondaryBtnPadding, 7px 15px);
   border-radius: var(--secondaryBtnBorderRadius, 3px);
-  border-width: var(--secondaryBtnBorderWidth);
   font-weight: var(--secondaryBtnFontWeight, 700);
   font-size: var(--secondaryBtnFs, var(--bodyFontSize));
   line-height: var(--secondaryBtnLineHeight, 1.6);
@@ -65,6 +74,7 @@
 }
 
 %nv-button-secondary-no-colors {
+  cursor: pointer;
   padding: var(--secondaryBtnPadding, 7px 15px);
   border-radius: var(--secondaryBtnBorderRadius, 3px);
   border-width: var(--secondaryBtnBorderWidth);

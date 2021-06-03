@@ -21,8 +21,6 @@ use Neve\Core\Settings\Mods;
  */
 class Front_End {
 
-
-
 	/**
 	 * Theme setup.
 	 */

@@ -239,7 +239,7 @@ class Mods {
 		];
 		switch ( $key ) {
 			case Config::MODS_FONT_GENERAL:
-				return $new ? 'Arial' : false;
+				return $new ? 'Arial, Helvetica, sans-serif' : false;
 			case Config::MODS_TYPEFACE_GENERAL:
 				return [
 					'fontSize'      => [

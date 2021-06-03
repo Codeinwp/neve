@@ -14,6 +14,7 @@ namespace HFG\Core\Components;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
 
 /**
@@ -137,19 +138,32 @@ class MenuIcon extends Abstract_Component {
 			]
 		);
 
+		$new_skin = neve_is_new_skin();
+		$mod_key  = Mods::get_alternative_mod( self::BUTTON_APPEARANCE );
+		$default  = $new_skin ? [
+			'type'         => 'outline',
+			'borderRadius' => [
+				'top'    => 0,
+				'left'   => 0,
+				'bottom' => 0,
+				'right'  => 0,
+			],
+		] : [ 'type' => 'outline' ];
+
 		SettingsManager::get_instance()->add(
 			[
-				'id'                    => self::BUTTON_APPEARANCE,
+				'id'                    => $mod_key,
 				'group'                 => $this->get_id(),
 				'transport'             => 'postMessage',
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'sanitize_callback'     => 'neve_sanitize_button_appearance',
-				'default'               => [ 'type' => 'outline' ],
+				'default'               => $default,
 				'label'                 => __( 'Appearance', 'neve' ),
 				'type'                  => '\Neve\Customizer\Controls\React\Button_Appearance',
 				'section'               => $this->section,
 				'options'               => [
-					'no_hover' => true,
+					'no_hover'     => true,
+					'default_vals' => $default,
 				],
 				'live_refresh_selector' => $this->default_selector,
 				'live_refresh_css_prop' => array(
@@ -173,7 +187,7 @@ class MenuIcon extends Abstract_Component {
 	 * @return array
 	 */
 	public function add_style( array $css_array = array() ) {
-		$id          = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
+		$id          = $this->get_id() . '_' . Mods::get_alternative_mod( self::BUTTON_APPEARANCE );
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ', ' . $this->close_button,
 			Dynamic_Selector::KEY_RULES    => [

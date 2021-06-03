@@ -32,6 +32,10 @@ body.woocommerce-account {
 	list-style: none;
 	padding: 0;
 	margin-bottom: $spacing-xl;
+
+	.is-active a {
+	  color: var(--nv-text-color)
+	}
   }
 
   .woocommerce-LostPassword {
@@ -39,27 +43,42 @@ body.woocommerce-account {
 	float: right;
   }
 
-  .woocommerce-orders-table {
-	border: 0;
-	font-size: $small-text;
+  h2 {
+	--h2FontSize: var(--h3FontSize);
+  }
+
+  table.my_account_orders {
+	font-size: var(--bodyFontSize);
+  }
+
+  table {
+	border: 0 !important;
 	//--primaryBtnFs: $small-text;
 	--primaryBtnFs: .9em;
 	//--primaryBtnPadding: $spacing-xs $spacing-md;
 	--primaryBtnPadding: 8px 30px;
 
+	td {
+	  border: 0 !important;
+	}
+
 	th, td {
-	  border: 0;
-	  padding: $spacing-md $spacing-sm;
+	  padding: $spacing-md $spacing-sm !important;
 
 	  &:last-child {
 		text-align: right;
 	  }
 	}
 
-	th {
+	thead th {
 	  border-bottom: $base-border;
-	  // TODO: go back to this to make sure it's ok.
-	  font-size: var(--h5FontSize);
+	  font-size: $text-lg
+	}
+
+	&.order_details {
+	  tfoot th, td {
+		border: 0;
+	  }
 	}
   }
 }

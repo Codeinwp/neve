@@ -1,0 +1,11 @@
+@import "../../main/variables";
+
+.wc-block-components-product-button .wp-block-button__link.add_to_cart_button,
+.wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link {
+  @extend %nv-button;
+  @extend %nv-button-primary;
+
+  &:hover {
+	@extend %nv-button-primary-hover;
+  }
+}

@@ -16,44 +16,8 @@
 }
 
 figcaption {
-  font-size: $small-text;
+  font-size: $text-sm;
   opacity: .75;
-}
-
-blockquote {
-  margin: $spacing-md 0;
-
-  p {
-	font-size: 1.1em;
-  }
-
-  cite {
-	padding-top: $spacing-sm;
-	display: block;
-	color: $gray-color;
-	font-style: normal;
-	font-size: .95em;
-  }
-
-  &:after, &:before {
-	height: 3px;
-	width: $spacing-lg;
-	background-color: $muted-white-med;
-	content: " ";
-	display: block;
-  }
-
-  &:before {
-	margin: 0 auto $spacing-md;
-  }
-
-  &:after {
-	margin: $spacing-md auto 0;
-  }
-
-  > * {
-	margin-bottom: 0;
-  }
 }
 
 table {
@@ -76,7 +40,7 @@ pre {
   border: $muted-border;
   margin: $spacing-sm 0;
   white-space: pre-wrap;
-  font-size: $small-text;
+  font-size: $text-sm;
   line-height: 2em;
 
   code {
@@ -114,14 +78,15 @@ pre {
   }
 }
 
+// === Content Floating Alignments === //
 .alignleft {
   float: left;
-  margin: 16px 16px 16px 0;
+  margin: $spacing-md $spacing-md $spacing-md 0;
 }
 
 .alignright {
   float: right;
-  margin: 16px 0 16px 16px;
+  margin: $spacing-md 0 $spacing-md $spacing-md;
 }
 
 .aligncenter {
@@ -166,25 +131,4 @@ audio {
   .neve-main > .container > .row {
 	flex-wrap: nowrap;
   }
-}
-
-
-.is-style-primary .wp-block-button__link {
-  @extend %nv-button-primary;
-
-  &:hover {
-	@extend %nv-button-primary-hover;
-  }
-}
-
-.is-style-secondary .wp-block-button__link {
-  @extend %nv-button-secondary;
-
-  &:hover {
-	@extend %nv-button-secondary-hover;
-  }
-}
-
-.is-style-default .wp-block-button__link {
-  @extend %nv-button-primary-no-colors;
 }

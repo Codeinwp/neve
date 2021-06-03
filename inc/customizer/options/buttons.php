@@ -70,6 +70,7 @@ class Buttons extends Base_Customizer {
 							'neve_button_padding'       => array(),
 							'neve_button_padding_v2'    => array(),
 							'neve_button_typeface'      => array(),
+							'neve_button_typeface_v2'   => array(),
 						),
 						'secondary_button' => array(
 							'neve_secondary_button_appearance'    => array(),
@@ -77,6 +78,7 @@ class Buttons extends Base_Customizer {
 							'neve_secondary_button_padding'       => array(),
 							'neve_secondary_button_padding_v2'    => array(),
 							'neve_secondary_button_typeface'      => array(),
+							'neve_secondary_button_typeface_v2'   => array(),
 						),
 					),
 				),
@@ -101,11 +103,11 @@ class Buttons extends Base_Customizer {
 						'default'           => $defaults,
 					],
 					[
-						'defaultVals' => $defaults,
-						'label'       => __( 'Button Appearance', 'neve' ),
-						'section'     => $this->section_id,
-						'priority'    => 0,
-						'type'        => 'neve_button_appearance',
+						'default_vals' => $defaults,
+						'label'        => __( 'Button Appearance', 'neve' ),
+						'section'      => $this->section_id,
+						'priority'     => 0,
+						'type'         => 'neve_button_appearance',
 					]
 				)
 			);
@@ -135,7 +137,7 @@ class Buttons extends Base_Customizer {
 
 			$this->add_control(
 				new Control(
-					'neve_' . $button . '_typeface',
+					Mods::get_alternative_mod( 'neve_' . $button . '_typeface' ),
 					[
 						'transport' => $this->selective_refresh,
 					],

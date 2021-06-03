@@ -58,10 +58,13 @@
 
 //</editor-fold>
 
-//<editor-fold [WooCommerce Blocks]>
+// === Woo blocks === //
 .nv-content-wrap ul.wc-block-grid__products {
   list-style-type: none;
   padding-left: 0;
 }
-
 //</editor-fold>
+
+.woocommerce .blockOverlay {
+  background-color: var(--nv-site-bg) !important;
+}

@@ -15,10 +15,10 @@ $cart-width: 360px;
 	background: var(--nv-light-bg);
 	color: var(--nv-text-color);
 	position: absolute;
-	font-size: .7em;
+	font-size: .6em;
 	padding: 3px;
 	bottom: -7px;
-	right: -10px;
+	right: -13px;
 	font-weight: 800;
 	line-height: 1;
 	border-radius: 3px;
@@ -65,7 +65,7 @@ $cart-width: 360px;
 	padding: $spacing-md 40px + $spacing-sm $spacing-md $spacing-sm !important;
 
 	border-bottom: $base-border;
-	font-size: $small-text;
+	font-size: $text-sm;
 
 	img {
 	  position: absolute;

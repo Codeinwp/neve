@@ -688,7 +688,8 @@ class Frontend extends Generator {
 			Dynamic_Selector::META_SUFFIX        => '',
 		];
 		$this->_subscribers[':root']['--primaryBtnTextTransform'] = [
-			Dynamic_Selector::META_KEY => $mod_key_primary . '.textTransform',
+			Dynamic_Selector::META_KEY           => $mod_key_primary . '.textTransform',
+			Dynamic_Selector::META_IS_RESPONSIVE => false,
 		];
 
 		$this->_subscribers[':root']['--primaryBtnFontWeight'] = [
@@ -727,14 +728,14 @@ class Frontend extends Generator {
 		$is_advanced_on = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, false );
 		if ( ! $is_advanced_on ) {
 
-			$this->_subscribers['#content .container .col, #content .container-fluid .col']                                                               = [
+			$this->_subscribers['#content .container .col, #content .container-fluid .col']                             = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_SUFFIX      => '%',
 					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				],
 			];
-			$this->_subscribers['.alignfull > [class*="__inner-container"], .alignwide > [class*="__inner-container"]']                                   = [
+			$this->_subscribers['.alignfull > [class*="__inner-container"], .alignwide > [class*="__inner-container"]'] = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY           => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_DEFAULT       => 70,
@@ -761,7 +762,7 @@ class Frontend extends Generator {
 					},
 				],
 			];
-			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar']                                                                        = [
+			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar'] = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_FILTER      => 'minus_100',
@@ -897,7 +898,7 @@ class Frontend extends Generator {
 				},
 			],
 		];
-		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap']                                                                         = [
+		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
@@ -908,6 +909,9 @@ class Frontend extends Generator {
 
 	}
 
+	/**
+	 * Setup legacy form field styles.
+	 */
 	private function setup_legacy_form_fields_style() {
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING ] = [
 			Config::CSS_PROP_MARGIN_BOTTOM => [
@@ -1085,7 +1089,7 @@ class Frontend extends Generator {
 			Dynamic_Selector::META_SUFFIX  => 'px',
 		];
 
-		$default = array_fill_keys( Config::DIRECTIONAL_KEYS, '2' );
+		$default = array_fill_keys( Config::$directional_keys, '2' );
 
 		$this->_subscribers[':root']['--formFieldBorderWidth'] = [
 			Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BORDER_WIDTH ),
@@ -1094,7 +1098,7 @@ class Frontend extends Generator {
 			'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
 		];
 
-		$default = array_fill_keys( Config::DIRECTIONAL_KEYS, '3' );
+		$default = array_fill_keys( Config::$directional_keys, '3' );
 
 		$this->_subscribers[':root']['--formFieldBorderRadius'] = [
 			Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BORDER_RADIUS ),
@@ -1180,54 +1184,54 @@ class Frontend extends Generator {
 			return;
 		}
 
-		$this->_subscribers['form input[type="submit"]']['--primaryBtnBg']               = [
-			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnBg, transparent)',
-		];
-		$this->_subscribers['form input[type="submit"]']['--primaryBtnColor']            = [
-			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnColor)',
-		];
-		$this->_subscribers['form input[type="submit"]']['--primaryBtnPadding']          = [
-			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnPadding)',
-		];
-		$this->_subscribers['form input[type="submit"]']['--primaryBtnBorderRadius']     = [
-			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnBorderRadius)',
-		];
-		$this->_subscribers['form input[type="submit"]']['--primaryBtnBorderWidth']      = [
-			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnBorderWidth)',
-		];
-		$this->_subscribers['form input[type="submit"]']['--primaryBtnFontWeight']       = [
-			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnFontWeight)',
-		];
-		$this->_subscribers['form input[type="submit"]']['--primaryBtnFs']               = [
-			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnFs)',
-		];
-		$this->_subscribers['form input[type="submit"]']['--primaryBtnLineHeight']       = [
-			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnLineHeight)',
-		];
-		$this->_subscribers['form input[type="submit"]']['--primaryBtnLetterSpacing']    = [
-			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnLetterSpacing)',
-		];
-		$this->_subscribers['form input[type="submit"]']['--primaryBtnTextTransform']    = [
-			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnTextTransform)',
-		];
-		$this->_subscribers['form input[type="submit"]:hover']['--primaryBtnHoverBg']    = [
-			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnHoverBg, transparent)',
-		];
-		$this->_subscribers['form input[type="submit"]:hover']['--primaryBtnHoverColor'] = [
-			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnHoverColor)',
-		];
+		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnBg']               = [
+		// 'key'      => 'neve_form_button_type',
+		// 'override' => 'var(--secondaryBtnBg, transparent)',
+		// ];
+		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnColor']            = [
+		// 'key'      => 'neve_form_button_type',
+		// 'override' => 'var(--secondaryBtnColor)',
+		// ];
+		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnPadding']          = [
+		// 'key'      => 'neve_form_button_type',
+		// 'override' => 'var(--secondaryBtnPadding, 7px 15px)',
+		// ];
+		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnBorderRadius']     = [
+		// 'key'      => 'neve_form_button_type',
+		// 'override' => 'var(--secondaryBtnBorderRadius, 3px)',
+		// ];
+		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnBorderWidth']      = [
+		// 'key'      => 'neve_form_button_type',
+		// 'override' => 'var(--secondaryBtnBorderWidth, 3px)',
+		// ];
+		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnFontWeight']       = [
+		// 'key'      => 'neve_form_button_type',
+		// 'override' => 'var(--secondaryBtnFontWeight, 700)',
+		// ];
+		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnFs']               = [
+		// 'key'      => 'neve_form_button_type',
+		// 'override' => 'var(--secondaryBtnFs, inherit)',
+		// ];
+		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnLineHeight']       = [
+		// 'key'      => 'neve_form_button_type',
+		// 'override' => 'var(--secondaryBtnLineHeight, inherit)',
+		// ];
+		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnLetterSpacing']    = [
+		// 'key'      => 'neve_form_button_type',
+		// 'override' => 'var(--secondaryBtnLetterSpacing, inherit)',
+		// ];
+		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnTextTransform']    = [
+		// 'key'      => 'neve_form_button_type',
+		// 'override' => 'var(--secondaryBtnTextTransform, none)',
+		// ];
+		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['--primaryBtnHoverBg']    = [
+		// 'key'      => 'neve_form_button_type',
+		// 'override' => 'var(--secondaryBtnHoverBg, transparent)',
+		// ];
+		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['--primaryBtnHoverColor'] = [
+		// 'key'      => 'neve_form_button_type',
+		// 'override' => 'var(--secondaryBtnHoverColor)',
+		// ];
 	}
 
 	/**

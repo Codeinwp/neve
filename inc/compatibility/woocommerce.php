@@ -153,9 +153,12 @@ class Woocommerce {
 		add_action( 'wp', [ $this, 'setup_form_buttons' ] );
 
 		if ( neve_is_new_skin() ) {
-			add_action( 'woocommerce_checkout_before_order_review_heading', function () {
-				echo '<div>';
-			} );
+			add_action(
+				'woocommerce_checkout_before_order_review_heading',
+				function () {
+					echo '<div>';
+				} 
+			);
 			add_action( 'woocommerce_checkout_after_order_review', [ $this, 'close_div' ] );
 		}
 	}
@@ -760,9 +763,11 @@ class Woocommerce {
 	}
 
 	/**
-	 * Setup Form Buttons Type
+	 * Setup legacy form buttons.
+	 *
+	 * @since 3.0.0
 	 */
-	public function setup_form_buttons() {
+	private function setup_legacy_form_buttons() {
 		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
 		if ( $form_buttons_type === 'primary' ) {
 			add_filter(
@@ -804,5 +809,29 @@ class Woocommerce {
 			10,
 			1
 		);
+	}
+
+	/**
+	 * Setup Form Buttons Type
+	 */
+	public function setup_form_buttons() {
+		if ( ! neve_is_new_skin() ) {
+			$this->setup_legacy_form_buttons();
+
+			return;
+		}
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_FORM_BUTTON,
+			array( $this, 'add_buttons_selectors' ),
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_FORM_BUTTON_HOVER,
+			array( $this, 'add_buttons_hover_selectors' ),
+			10,
+			1
+		);
+
 	}
 }

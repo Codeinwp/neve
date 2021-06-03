@@ -2,7 +2,9 @@ $line-height: 1.68421 !default;
 $h-font-weight: 700;
 
 // Font sizes.
-$small-text: .9em;
+$text-sm: .9em;
+$text-lg: 1.25em;
+$text-xl: 1.5em;
 
 // Spacing variables.
 $spacing-xxs: 8px;
@@ -28,6 +30,7 @@ $muted-border-med: 1px solid #c9c9c9;
 $soft-box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 
 $base-border: 2px solid var(--nv-text-color);
+$base-border-strong: 4px solid var(--nv-text-color);
 
 $tablet-sm: "576px";
 $tablet: "769px";

@@ -206,11 +206,6 @@ class Css_Prop {
 
 				$suffix = self::get_suffix( $meta, $device, $value, $css_prop );
 
-				if( $css_prop === '--formFieldBorderRadius' ) {
-					echo '<pre>';
-					print_r( $value );
-					echo '</pre>';
-				}
 				return sprintf( ' %s: %s%s; ', $css_prop, $value, $suffix );
 				break;
 		}
@@ -260,7 +255,7 @@ class Css_Prop {
 
 		// Directional array without any other keys than the actual directions.
 		$filtered = array_filter( $value, function ( $key ) {
-			return in_array( $key, Config::DIRECTIONAL_KEYS, true );
+			return in_array( $key, Config::$directional_keys, true );
 		}, ARRAY_FILTER_USE_KEY );
 
 		if( count( array_unique( $filtered ) ) === 1 ) {
@@ -275,7 +270,7 @@ class Css_Prop {
 			return $css_prop . ':' . $template . ';';
 		}
 
-		foreach ( Config::DIRECTIONAL_KEYS as $direction ) {
+		foreach ( Config::$directional_keys as $direction ) {
 			if( ! isset( $value[$direction] ) ) {
 				$template .= '0 ';
 			}

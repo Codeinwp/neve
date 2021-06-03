@@ -66,6 +66,7 @@
 
   td {
 	background: transparent !important;
+	font-size: var(--bodyFontSize);
 	padding: $spacing-xs 0;
 	border: 0;
 
@@ -91,23 +92,15 @@
   }
 
   thead th {
-	font-size: var(--h4FontSize);
+	font-size: $text-lg;
 	border: 0;
-  }
-
-  tr:last-child {
-
-	.button {
-	  --secondaryBtnPadding: 15px 40px;
-	  --primaryBtnPadding: 15px 40px;
-	}
   }
 }
 
 .product-name {
   .variation {
 	margin-top: $spacing-xs;
-	font-size: $small-text;
+	font-size: $text-sm;
 	opacity: .75;
 
 	dt {
@@ -143,6 +136,17 @@
 	  padding-right: 0;
 	  width: auto;
 	}
+
+	tr:last-child {
+	  .button {
+		--secondaryBtnPadding: 15px 40px;
+		--primaryBtnPadding: 18px 40px;
+	  }
+	}
+  }
+
+  .cart_totals {
+	width: 40% !important;
   }
 }
 
@@ -200,6 +204,14 @@
 
   table.shop_table {
 	border: 0;
+
+	th {
+	  font-size: $text-sm;
+	}
+  }
+
+  .order-total {
+	font-size: var(--bodyFontSize);
   }
 
   #shipping_method {

@@ -10,12 +10,9 @@
 
   .button.button-secondary.more-details,
   .woocommerce .price_slider_amount button.button,
-  button.button,
   a.added_to_cart,
   .checkout_coupon button.button,
-  #review_form #respond input#submit,
   .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout) {
-	@extend %nv-button;
 	@extend %nv-button-secondary;
 
 	&:hover {
@@ -31,7 +28,7 @@
 
 //<editor-fold [AJAX add-to-cart loading]>
 .woocommerce {
-  #respond input#submit.loading, a.button.loading, button.button.loading, input.button.loading {
+  a.button.loading, button.button.loading, input.button.loading {
 	display: inline-flex;
 	align-items: center;
 	column-gap: 4px;
@@ -44,23 +41,15 @@
 }
 
 //</editor-fold>
-
-.wc-block-components-product-button .wp-block-button__link.add_to_cart_button {
-  @extend %nv-button;
-  @extend %nv-button-primary;
-
-  &:hover {
-	@extend %nv-button-primary-hover;
-  }
-}
-
-
+#review_form #respond input#submit,
 .woocommerce #respond input#submit.disabled,
 .woocommerce #respond input#submit:disabled,
 .woocommerce #respond input#submit:disabled[disabled],
+.woocommerce a.button,
 .woocommerce a.button.disabled,
 .woocommerce a.button:disabled,
 .woocommerce a.button:disabled[disabled],
+.woocommerce button.button,
 .woocommerce button.button.disabled,
 .woocommerce button.button:disabled,
 .woocommerce button.button:disabled[disabled],

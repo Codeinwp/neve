@@ -71,12 +71,8 @@
 	  th, td {
 		border: 0;
 		font-weight: var(--bodyFontWeight);
-		font-size: $small-text;
+		font-size: $text-sm;
 	  }
-	}
-
-	tbody {
-	  font-size: $small-text;
 	}
 
 	tbody, thead, tfoot {
@@ -97,10 +93,15 @@
 	.product-total, tfoot td {
 	  text-align: right;
 	}
+
+	label {
+	  font-size: inherit;
+	}
   }
 
   #payment {
 	background: none;
+
 	div.payment_box {
 	  background: var(--nv-light-bg);
 	  color: var(--nv-text-color);
@@ -111,11 +112,12 @@
 	  }
 	}
   }
+
   .payment_methods {
 	border: 0 !important;
   }
 
-  button {
+  main button {
 	width: 100%;
   }
 }
@@ -136,6 +138,12 @@
 .woocommerce-page {
   .select2-container {
 	margin-bottom: var(--formFieldSpacing);
+
+	&.select2-container--open {
+	  outline: 0;
+	  box-shadow: 0 0 3px 0 var(--nv-secondary-accent);
+	  --formFieldBorderColor: var(--nv-secondary-accent);
+	}
   }
 
   .select2-container--default .select2-selection--single {
@@ -144,12 +152,16 @@
   }
 
   .select2-container--default .select2-selection--single,
-  .select2-results__options {
+  .select2-results__options,
+  .select2-search,
+  .select2-search__field {
+	color: var(--nv-text-color);
 	background-color: var(--nv-site-bg);
   }
 
   .select2-selection__rendered {
 	padding: 0 !important;
+	color: var(--nv-text-color) !important;
   }
 
   .select2-selection__arrow {
