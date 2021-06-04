@@ -1,5 +1,5 @@
 /* global NeveProperties,_wpCustomizeSettings,parent,Masonry,imagesLoaded */
-import { httpGetAsync, isInView } from '../utils';
+import { httpGetAsync, isInView, addEvent, neveEach } from '../utils';
 
 let masonryContainer = null,
 	page = 2;
@@ -50,6 +50,34 @@ const infiniteScroll = () => {
 
 	if (document.querySelector(postWrapSelector) === null) {
 		return;
+	}
+
+	if ('scrollRestoration' in window.history) {
+		const lsNamespace = 'neveInfiniteScrollPos';
+		const body = document.querySelector('body');
+		const getScrollPos = function () {
+			return document.documentElement.scrollTop;
+		};
+		const savedScrollPos = window.localStorage.getItem(lsNamespace);
+		window.history.scrollRestoration = 'manual';
+		const scrollInterval = setInterval(function () {
+			window.scrollTo({ top: savedScrollPos });
+			const currentScrollPos = getScrollPos();
+			if (currentScrollPos >= savedScrollPos) {
+				window.localStorage.removeItem(lsNamespace);
+				clearInterval(scrollInterval);
+			}
+		}, 15);
+		const onPostClick = function (event) {
+			const elements = document.querySelectorAll('a[rel="bookmark"]');
+			neveEach(elements, function (item) {
+				if (item === event.target) {
+					const currentScrollPos = getScrollPos();
+					window.localStorage.setItem(lsNamespace, currentScrollPos);
+				}
+			});
+		};
+		addEvent(body, 'click', onPostClick);
 	}
 
 	isInView(document.querySelector('.infinite-scroll-trigger'), () => {

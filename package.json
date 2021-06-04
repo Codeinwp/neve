@@ -29,7 +29,7 @@
 		{
 			"gzip": false,
 			"running": false,
-			"limit": "6 KB",
+			"limit": "6.6 KB",
 			"path": "assets/js/build/modern/frontend.js"
 		},
 		{
@@ -47,7 +47,7 @@
 		{
 			"gzip": false,
 			"running": false,
-			"limit": "6.5 KB",
+			"limit": "6.7 KB",
 			"path": "assets/js/build/all/frontend.js"
 		},
 		{
