@@ -19,6 +19,16 @@
 	resize: none;
   }
 
+  .addresses {
+	.woocommerce-column {
+	  margin-bottom: $spacing-xl;
+	}
+
+	h2 {
+	  font-size: var(--h4FontSize);
+	}
+  }
+
   .col2-set .col-1, .col2-set .col-2 {
 	width: 100%;
 	float: none;
@@ -27,6 +37,10 @@
   form.checkout {
 	display: grid;
 	grid-template-columns: 1fr;
+  }
+
+  .woocommerce-NoticeGroup {
+	grid-column: 1 / 3;
   }
 
   .checkout_coupon {

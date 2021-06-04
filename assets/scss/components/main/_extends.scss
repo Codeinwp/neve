@@ -15,17 +15,18 @@
 %nv-button-primary {
   cursor: pointer;
   box-sizing: border-box;
+
   background-color: var(--primaryBtnBg);
   color: var(--primaryBtnColor);
   border: var(--primaryBtnBorderWidth, 0) solid currentColor;
-  //border-width: var(--primaryBtnBorderWidth, 0);
-  padding: var(--primaryBtnPadding, 10px 15px);
   border-radius: var(--primaryBtnBorderRadius, 3px);
-  font-weight: var(--primaryBtnFontWeight, 700);
-  font-size: var(--primaryBtnFs, var(--bodyFontSize));
-  line-height: var(--primaryBtnLineHeight, 1.6);
-  letter-spacing: var(--primaryBtnLetterSpacing, var(--bodyLetterSpacing));
-  text-transform: var(--primaryBtnTextTransform, none);
+  padding: var(--primaryBtnPadding, 10px 15px);
+
+  font-weight: var(--btnFontWeight, 700);
+  font-size: var(--btnFs, var(--bodyFontSize));
+  line-height: var(--btnLineHeight, 1.6);
+  letter-spacing: var(--btnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--btnTextTransform, none);
 }
 
 %nv-button-primary-hover {
@@ -34,19 +35,31 @@
   border-color: var(--primaryBtnHoverColor);
 }
 
+%nv-button-primary-no-border {
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: var(--btnPadding, 10px 15px);
+  border-radius: var(--primaryBtnBorderRadius, 3px);
+  font-weight: var(--btnFontWeight, 700);
+  font-size: var(--btnFs, var(--bodyFontSize));
+  line-height: var(--btnLineHeight, 1.6);
+  letter-spacing: var(--btnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--btnTextTransform, none);
+}
+
 %nv-button-primary-no-colors {
   cursor: pointer;
   box-sizing: border-box;
 
   border: var(--primaryBtnBorderWidth, 0) solid currentColor;
-  //border-width: var(--primaryBtnBorderWidth, 0);
-  padding: var(--primaryBtnPadding, 10px 15px);
   border-radius: var(--primaryBtnBorderRadius, 3px);
-  font-weight: var(--primaryBtnFontWeight, 700);
-  font-size: var(--primaryBtnFs, var(--bodyFontSize));
-  line-height: var(--primaryBtnLineHeight, 1.6);
-  letter-spacing: var(--primaryBtnLetterSpacing, var(--bodyLetterSpacing));
-  text-transform: var(--primaryBtnTextTransform, none);
+  padding: var(--primaryBtnPadding, 10px 15px);
+
+  font-weight: var(--btnFontWeight, 700);
+  font-size: var(--btnFs, var(--bodyFontSize));
+  line-height: var(--btnLineHeight, 1.6);
+  letter-spacing: var(--btnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--btnTextTransform, none);
 }
 
 %nv-button-secondary {
@@ -55,16 +68,15 @@
 
   background-color: var(--secondaryBtnBg);
   color: var(--secondaryBtnColor);
-
-  border: var(--secondaryBtnBorderWidth, 3px) solid currentColor;
-  //border-width: var(--secondaryBtnBorderWidth);
-  padding: var(--secondaryBtnPadding, 7px 15px);
+  border: var(--secondaryBtnBorderWidth, 0) solid currentColor;
   border-radius: var(--secondaryBtnBorderRadius, 3px);
-  font-weight: var(--secondaryBtnFontWeight, 700);
-  font-size: var(--secondaryBtnFs, var(--bodyFontSize));
-  line-height: var(--secondaryBtnLineHeight, 1.6);
-  letter-spacing: var(--secondaryBtnLetterSpacing);
-  text-transform: var(--secondaryBtnTextTransform, none);
+  padding: var(--secondaryBtnPadding, 7px 12px);
+
+  font-weight: var(--btnFontWeight, 700);
+  font-size: var(--btnFs, var(--bodyFontSize));
+  line-height: var(--btnLineHeight, 1.6);
+  letter-spacing: var(--btnLetterSpacing);
+  text-transform: var(--btnTextTransform, none);
 }
 
 %nv-button-secondary-hover {
@@ -75,14 +87,15 @@
 
 %nv-button-secondary-no-colors {
   cursor: pointer;
-  padding: var(--secondaryBtnPadding, 7px 15px);
   border-radius: var(--secondaryBtnBorderRadius, 3px);
-  border-width: var(--secondaryBtnBorderWidth);
-  font-weight: var(--secondaryBtnFontWeight, 700);
-  font-size: var(--secondaryBtnFs, var(--bodyFontSize));
-  line-height: var(--secondaryBtnLineHeight, 1.6);
-  letter-spacing: var(--secondaryBtnLetterSpacing, var(--bodyLetterSpacing));
-  text-transform: var(--secondaryBtnTextTransform, none);
+  border: var(--secondaryBtnBorderWidth, 0) solid currentColor;
+  padding: var(--secondaryBtnPadding, 7px 12px);
+
+  font-weight: var(--btnFontWeight, 700);
+  font-size: var(--btnFs, var(--bodyFontSize));
+  line-height: var(--btnLineHeight, 1.6);
+  letter-spacing: var(--btnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--btnTextTransform, none);
 }
 
 // Form Fields

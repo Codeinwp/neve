@@ -631,10 +631,17 @@ class Frontend extends Generator {
 			'directional-prop'             => Config::CSS_PROP_BORDER_RADIUS,
 		];
 
-		// Border Width
+		$this->_subscribers[':root']['--secondaryBtnBorderRadius'] = [
+			Dynamic_Selector::META_KEY     => $mod_key_secondary . '.borderRadius',
+			Dynamic_Selector::META_DEFAULT => $default_secondary['borderRadius'],
+			Dynamic_Selector::META_SUFFIX  => 'px',
+			'directional-prop'             => Config::CSS_PROP_BORDER_RADIUS,
+		];
+
 		$primary_values   = get_theme_mod( $mod_key_primary, $default_primary );
 		$secondary_values = get_theme_mod( $mod_key_secondary, $default_secondary );
 
+		// Border Width
 		if ( isset( $primary_values['type'] ) && $primary_values['type'] === 'outline' ) {
 			$this->_subscribers[':root']['--primaryBtnBorderWidth'] = [
 				Dynamic_Selector::META_KEY     => $mod_key_primary . '.borderWidth',
@@ -655,66 +662,72 @@ class Frontend extends Generator {
 		$mod_key_primary = Mods::get_alternative_mod( Config::MODS_BUTTON_PRIMARY_PADDING );
 		$default_primary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_PADDING );
 
-		$mod_key_secondary = Mods::get_alternative_mod( Config::MODS_BUTTON_SECONDARY_PADDING );
-		$default_secondary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_SECONDARY_PADDING );
-
-		$this->_subscribers[':root']['--primaryBtnPadding']   = [
+		$this->_subscribers[':root']['--btnPadding'] = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary,
 			Dynamic_Selector::META_DEFAULT       => $default_primary,
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
-			'directional-prop'                   => Config::CSS_PROP_PADDING,
-		];
-		$this->_subscribers[':root']['--secondaryBtnPadding'] = [
-			Dynamic_Selector::META_KEY           => $mod_key_secondary,
-			Dynamic_Selector::META_DEFAULT       => $default_secondary,
-			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+				$mod_key_primary = Mods::get_alternative_mod( Config::MODS_BUTTON_PRIMARY_STYLE );
+				$default_primary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_STYLE );
+
+				$mod_key_secondary = Mods::get_alternative_mod( Config::MODS_BUTTON_SECONDARY_STYLE );
+				$default_secondary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_SECONDARY_STYLE );
+
+				$values   = [
+					'primary'   => get_theme_mod( $mod_key_primary, $default_primary ),
+					'secondary' => get_theme_mod( $mod_key_secondary, $default_secondary ),
+				];
+				$paddings = [
+					'primary'   => $value,
+					'secondary' => $value,
+				];
+
+				foreach ( $values as $btn_type => $appearance_values ) {
+					if ( ! isset( $appearance_values['type'] ) || $appearance_values['type'] !== 'outline' ) {
+						continue;
+					}
+
+					$border_width = $appearance_values['borderWidth'];
+
+					foreach ( $paddings[ $btn_type ] as $direction => $padding_value ) {
+						if ( ! isset( $border_width[ $direction ] ) || absint( $border_width[ $direction ] ) === 0 ) {
+							continue;
+						}
+
+						$paddings[ $btn_type ][ $direction ] = $padding_value - $border_width[ $direction ];
+					}
+				}
+				$final_value_default   = Css_Prop::transform_directional_prop( $meta, $device, $value, '--btnPadding', Config::CSS_PROP_PADDING );
+				$final_value_primary   = Css_Prop::transform_directional_prop( $meta, $device, $paddings['primary'], '--primaryBtnPadding', Config::CSS_PROP_PADDING );
+				$final_value_secondary = Css_Prop::transform_directional_prop( $meta, $device, $paddings['secondary'], '--secondaryBtnPadding', Config::CSS_PROP_PADDING );
+
+				return $final_value_default . $final_value_primary . $final_value_secondary;
+			},
 			'directional-prop'                   => Config::CSS_PROP_PADDING,
 		];
 
-		$mod_key_primary   = Mods::get_alternative_mod( Config::MODS_BUTTON_TYPEFACE );
-		$mod_key_secondary = Mods::get_alternative_mod( Config::MODS_SECONDARY_BUTTON_TYPEFACE );
+		$mod_key_primary = Mods::get_alternative_mod( Config::MODS_BUTTON_TYPEFACE );
 
-		$this->_subscribers[':root']['--primaryBtnFs']            = [
+		$this->_subscribers[':root']['--btnFs']            = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary . '.fontSize',
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
 		];
-		$this->_subscribers[':root']['--primaryBtnLineHeight']    = [
+		$this->_subscribers[':root']['--btnLineHeight']    = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary . '.lineHeight',
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
 		];
-		$this->_subscribers[':root']['--primaryBtnLetterSpacing'] = [
+		$this->_subscribers[':root']['--btnLetterSpacing'] = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary . '.letterSpacing',
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
 			Dynamic_Selector::META_SUFFIX        => '',
 		];
-		$this->_subscribers[':root']['--primaryBtnTextTransform'] = [
+		$this->_subscribers[':root']['--btnTextTransform'] = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary . '.textTransform',
 			Dynamic_Selector::META_IS_RESPONSIVE => false,
 		];
 
-		$this->_subscribers[':root']['--primaryBtnFontWeight'] = [
+		$this->_subscribers[':root']['--btnFontWeight'] = [
 			Dynamic_Selector::META_KEY => $mod_key_primary . '.fontWeight',
-		];
-
-		$this->_subscribers[':root']['--secondaryBtnFs']            = [
-			Dynamic_Selector::META_KEY           => $mod_key_secondary . '.fontSize',
-			Dynamic_Selector::META_IS_RESPONSIVE => true,
-		];
-		$this->_subscribers[':root']['--secondaryBtnLineHeight']    = [
-			Dynamic_Selector::META_KEY           => $mod_key_secondary . '.lineHeight',
-			Dynamic_Selector::META_IS_RESPONSIVE => true,
-			Dynamic_Selector::META_SUFFIX        => '',
-		];
-		$this->_subscribers[':root']['--secondaryBtnLetterSpacing'] = [
-			Dynamic_Selector::META_KEY           => $mod_key_secondary . '.letterSpacing',
-			Dynamic_Selector::META_IS_RESPONSIVE => true,
-			Dynamic_Selector::META_SUFFIX        => '',
-		];
-		$this->_subscribers[':root']['--secondaryBtnTextTransform'] = [
-			Dynamic_Selector::META_KEY => $mod_key_secondary . '.textTransform',
-		];
-		$this->_subscribers[':root']['--secondaryBtnFontWeight']    = [
-			Dynamic_Selector::META_KEY => $mod_key_secondary . '.fontWeight',
 		];
 	}
 
@@ -1184,54 +1197,51 @@ class Frontend extends Generator {
 			return;
 		}
 
-		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnBg']               = [
-		// 'key'      => 'neve_form_button_type',
-		// 'override' => 'var(--secondaryBtnBg, transparent)',
-		// ];
-		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnColor']            = [
-		// 'key'      => 'neve_form_button_type',
-		// 'override' => 'var(--secondaryBtnColor)',
-		// ];
-		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnPadding']          = [
-		// 'key'      => 'neve_form_button_type',
-		// 'override' => 'var(--secondaryBtnPadding, 7px 15px)',
-		// ];
-		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnBorderRadius']     = [
-		// 'key'      => 'neve_form_button_type',
-		// 'override' => 'var(--secondaryBtnBorderRadius, 3px)',
-		// ];
-		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnBorderWidth']      = [
-		// 'key'      => 'neve_form_button_type',
-		// 'override' => 'var(--secondaryBtnBorderWidth, 3px)',
-		// ];
-		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnFontWeight']       = [
-		// 'key'      => 'neve_form_button_type',
-		// 'override' => 'var(--secondaryBtnFontWeight, 700)',
-		// ];
-		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnFs']               = [
-		// 'key'      => 'neve_form_button_type',
-		// 'override' => 'var(--secondaryBtnFs, inherit)',
-		// ];
-		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnLineHeight']       = [
-		// 'key'      => 'neve_form_button_type',
-		// 'override' => 'var(--secondaryBtnLineHeight, inherit)',
-		// ];
-		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnLetterSpacing']    = [
-		// 'key'      => 'neve_form_button_type',
-		// 'override' => 'var(--secondaryBtnLetterSpacing, inherit)',
-		// ];
-		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['--primaryBtnTextTransform']    = [
-		// 'key'      => 'neve_form_button_type',
-		// 'override' => 'var(--secondaryBtnTextTransform, none)',
-		// ];
-		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['--primaryBtnHoverBg']    = [
-		// 'key'      => 'neve_form_button_type',
-		// 'override' => 'var(--secondaryBtnHoverBg, transparent)',
-		// ];
-		// $this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['--primaryBtnHoverColor'] = [
-		// 'key'      => 'neve_form_button_type',
-		// 'override' => 'var(--secondaryBtnHoverColor)',
-		// ];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['background-color']       = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnBg, transparent)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['color']                  = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnColor)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['padding']                = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnPadding, 7px 12px)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['border-radius']          = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnBorderRadius, 3px)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['background-color'] = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnHoverBg, transparent)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['color']            = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnHoverColor)',
+		];
+
+		$mod_key_secondary = Mods::get_alternative_mod( Config::MODS_BUTTON_SECONDARY_STYLE );
+		$default_secondary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_SECONDARY_STYLE );
+		$secondary_values  = get_theme_mod( $mod_key_secondary, $default_secondary );
+
+		if ( ! isset( $secondary_values['type'] ) || $secondary_values['type'] !== 'outline' ) {
+			return;
+		}
+
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['border-width']       = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnBorderWidth, 3px)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['border-color']       = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnHoverColor)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['border-color'] = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnHoverColor)',
+		];
 	}
 
 	/**

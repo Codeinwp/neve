@@ -43,6 +43,9 @@ class Css_Prop {
 			return '';
 		}
 
+		if ( isset( $meta['override'] ) ) {
+			return sprintf( '%s:%s;', $css_prop, $meta['override'] );
+		}
 
 		switch ( $css_prop ) {
 			case Config::CSS_PROP_BACKGROUND_COLOR:
@@ -196,10 +199,6 @@ class Css_Prop {
 				return sprintf( ' %s: %s; ', $css_prop, $value );
 				break;
 			default:
-				if( isset( $meta['override'] ) ) {
-					return sprintf( '%s:%s;', $css_prop, $meta['override'] );
-				}
-
 				if( isset( $meta['directional-prop'] ) ) {
 					return self::transform_directional_prop( $meta, $device, $value, $css_prop, $meta['directional-prop']  );
 				}
@@ -265,7 +264,7 @@ class Css_Prop {
 		}
 
 		if( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] ) {
-			$template .= $value['top'] . $suffix . ' ' . $value['right'] . $suffix . ';';
+			$template .= $value['top'] . $suffix . ' ' . $value['right'] . $suffix;
 
 			return $css_prop . ':' . $template . ';';
 		}

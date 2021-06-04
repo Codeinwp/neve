@@ -157,7 +157,7 @@ class Woocommerce {
 				'woocommerce_checkout_before_order_review_heading',
 				function () {
 					echo '<div>';
-				} 
+				}
 			);
 			add_action( 'woocommerce_checkout_after_order_review', [ $this, 'close_div' ] );
 		}
@@ -480,7 +480,7 @@ class Woocommerce {
 		.woocommerce-page .select2-container--default .select2-selection--single,
 		.woocommerce-page .woocommerce form .form-row input.input-text,
 		.woocommerce-page .woocommerce form .form-row textarea,
-		.wc-block-product-search form input.wc-block-product-search__field';
+		input.wc-block-product-search__field';
 	}
 
 	/**
@@ -822,16 +822,27 @@ class Woocommerce {
 		}
 		add_filter(
 			'neve_selectors_' . Config::CSS_SELECTOR_FORM_BUTTON,
-			array( $this, 'add_buttons_selectors' ),
+			function ( $selectors ) {
+				return $selectors . '
+				,#review_form #respond input#submit,
+				.woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+				.woocommerce-checkout #payment .place-order button#place_order,
+				.woocommerce-account .woocommerce [type="submit"]';
+			},
 			10,
 			1
 		);
 		add_filter(
 			'neve_selectors_' . Config::CSS_SELECTOR_FORM_BUTTON_HOVER,
-			array( $this, 'add_buttons_hover_selectors' ),
+			function ( $selectors ) {
+				return $selectors . '
+				,#review_form #respond input#submit:hover,
+				.woocommerce-cart .wc-proceed-to-checkout a.checkout-button:hover,
+				.woocommerce-checkout #payment .place-order button#place_order:hover,
+				.woocommerce-account .woocommerce [type="submit"]:hover';
+			},
 			10,
 			1
 		);
-
 	}
 }

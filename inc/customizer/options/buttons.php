@@ -46,6 +46,149 @@ class Buttons extends Base_Customizer {
 			)
 		);
 
+		if ( ! neve_is_new_skin() ) {
+			$this->add_legacy_controls();
+
+			return;
+		}
+
+		$buttons = [
+			'button'           => __( 'Primary Button', 'neve' ),
+			'secondary_button' => __( 'Secondary Button', 'neve' ),
+		];
+
+		foreach ( $buttons as $button => $heading_text ) {
+			$this->add_control(
+				new Control(
+					'neve_' . $button . '_appearance_heading',
+					[
+						'sanitize_callback' => 'sanitize_text_field',
+					],
+					[
+						'label'            => esc_html( $heading_text ),
+						'section'          => $this->section_id,
+						'class'            => 'buttons-' . $button . '-appearance-accordion',
+						'accordion'        => true,
+						'controls_to_wrap' => 1,
+						'expanded'         => $button === 'button',
+					],
+					'Neve\Customizer\Controls\Heading'
+				)
+			);
+
+			$mod_key  = Mods::get_alternative_mod( 'neve_' . $button . '_appearance' );
+			$defaults = Mods::get_alternative_mod_default( 'neve_' . $button . '_appearance' );
+
+			$this->add_control(
+				new Control(
+					$mod_key,
+					[
+						'sanitize_callback' => 'neve_sanitize_button_appearance',
+						'default'           => $defaults,
+					],
+					[
+						'default_vals' => $defaults,
+						'label'        => __( 'Button Appearance', 'neve' ),
+						'section'      => $this->section_id,
+					],
+					'\Neve\Customizer\Controls\React\Button_Appearance'
+				)
+			);
+		}
+
+		$this->add_control(
+			new Control(
+				'neve_buttons_generic_heading',
+				[
+					'sanitize_callback' => 'sanitize_text_field',
+				],
+				[
+					'label'            => esc_html__( 'General', 'neve' ),
+					'section'          => $this->section_id,
+					'class'            => 'buttons-general-accordion',
+					'accordion'        => true,
+					'expanded'         => false,
+					'controls_to_wrap' => 2,
+				],
+				'Neve\Customizer\Controls\Heading'
+			)
+		);
+
+		$mod_key  = Mods::get_alternative_mod( Config::MODS_BUTTON_PRIMARY_PADDING );
+		$defaults = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_PADDING );
+		$this->add_control(
+			new Control(
+				$mod_key,
+				array(
+					'default' => $defaults,
+				),
+				array(
+					'label'             => __( 'Padding', 'neve' ),
+					'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
+					'section'           => $this->section_id,
+					'input_attrs'       => [
+						'units' => [ 'px' ],
+					],
+					'default'           => $defaults,
+				),
+				'\Neve\Customizer\Controls\React\Spacing'
+			)
+		);
+
+		$live_refresh_selectors = [
+			'button'           => apply_filters( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL, Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL ] ),
+			'secondary_button' => apply_filters( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL, Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL ] ),
+			'default_button'   => '.wp-block-button .wp-block-button__link',
+		];
+
+		$live_refresh_selectors = join( ',', array_values( $live_refresh_selectors ) );
+
+		$this->add_control(
+			new Control(
+				Mods::get_alternative_mod( Config::MODS_BUTTON_TYPEFACE ),
+				[
+					'transport' => $this->selective_refresh,
+				],
+				[
+					'label'                 => esc_html__( 'Button Text', 'neve' ),
+					'section'               => $this->section_id,
+					'input_attrs'           => array(
+						'size_units'             => [ 'px' ],
+						'weight_default'         => 700,
+						'size_default'           => array(
+							'suffix'  => array(
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							),
+							'mobile'  => '',
+							'tablet'  => '',
+							'desktop' => '',
+						),
+						'line_height_default'    => array(
+							'mobile'  => '',
+							'tablet'  => '',
+							'desktop' => '',
+						),
+						'letter_spacing_default' => array(
+							'mobile'  => '',
+							'tablet'  => '',
+							'desktop' => '',
+						),
+					),
+					'type'                  => 'neve_typeface_control',
+					'live_refresh_selector' => $live_refresh_selectors,
+					'refresh_on_reset'      => true,
+				],
+				'\Neve\Customizer\Controls\React\Typography'
+			)
+		);
+	}
+
+	/**
+	 * Adds Legacy Controls
+	 */
+	private function add_legacy_controls() {
 		$this->add_control(
 			new Control(
 				'buttons_tabs',

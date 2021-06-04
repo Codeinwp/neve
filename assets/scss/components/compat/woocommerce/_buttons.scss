@@ -1,11 +1,15 @@
 
-.woocommerce {
+//.woocommerce {
   .added_to_cart {
-	margin-top: 1em;
+	display: inline-block;
+	width: auto;
+	margin-left: $spacing-xs;
   }
 
-  .button.added {
-	display: none;
+  .button {
+	&.added {
+	  display: none;
+	}
   }
 
   .button.button-secondary.more-details,
@@ -19,7 +23,7 @@
 	  @extend %nv-button-secondary-hover;
 	}
   }
-}
+//}
 
 .woocommerce ul.products li.product .button {
   white-space: normal;

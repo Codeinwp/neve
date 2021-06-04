@@ -321,7 +321,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
 #: inc/compatibility/elementor.php:116
-#: inc/core/front_end.php:115
+#: inc/core/front_end.php:113
 #: inc/customizer/options/layout_blog.php:183
 #: inc/customizer/controls/react/src/common/common.js:77
 msgid "Text Color"
@@ -472,7 +472,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Abstract_Component.php:468
 #: inc/customizer/options/layout_sidebar.php:129
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:153
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:108
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:112
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:45
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:126
 msgid "Left"
@@ -485,7 +485,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Abstract_Component.php:476
 #: inc/customizer/options/layout_sidebar.php:133
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:155
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:106
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:110
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:43
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:116
 msgid "Right"
@@ -500,7 +500,8 @@ msgid "Alignment"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:536
-#: inc/customizer/options/buttons.php:122
+#: inc/customizer/options/buttons.php:126
+#: inc/customizer/options/buttons.php:267
 msgid "Padding"
 msgstr ""
 
@@ -514,7 +515,7 @@ msgid "Typography"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:868
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:105
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:109
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:42
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:111
 msgid "Top"
@@ -525,7 +526,7 @@ msgid "Middle"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:876
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:107
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:111
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:44
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:121
 msgid "Bottom"
@@ -537,7 +538,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:77
 #: header-footer-grid/Core/Components/Button.php:115
-#: inc/customizer/options/form_fields.php:571
+#: inc/customizer/options/form_fields.php:559
 msgid "Button"
 msgstr ""
 
@@ -552,7 +553,7 @@ msgid "Text"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:131
-#: header-footer-grid/Core/Components/MenuIcon.php:148
+#: header-footer-grid/Core/Components/MenuIcon.php:161
 msgid "Appearance"
 msgstr ""
 
@@ -568,7 +569,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:142
 #: header-footer-grid/Core/Components/SearchResponsive.php:184
-#: inc/customizer/options/form_fields.php:384
+#: inc/customizer/options/form_fields.php:370
 #: inc/customizer/controls/react/src/background/Background.js:20
 #: inc/customizer/controls/react/src/background/Background.js:71
 #: inc/customizer/controls/react/src/common/ColorControl.js:59
@@ -600,22 +601,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:513
+#: inc/core/front_end.php:511
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:510
+#: inc/core/front_end.php:508
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:512
+#: inc/core/front_end.php:510
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:511
+#: inc/core/front_end.php:509
 msgid "Footer Two"
 msgstr ""
 
@@ -647,26 +648,26 @@ msgstr ""
 msgid "Disable Homepage Link"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:77
+#: header-footer-grid/Core/Components/MenuIcon.php:78
 msgid "Menu Icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:101
+#: header-footer-grid/Core/Components/MenuIcon.php:102
 msgid "Menu label"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:127
+#: header-footer-grid/Core/Components/MenuIcon.php:128
 msgid "Show Mobile Menu"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:131
+#: header-footer-grid/Core/Components/MenuIcon.php:132
 msgid "Mobile Menu Options"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:43
 #: header-footer-grid/Core/Components/Nav.php:221
 #: header-footer-grid/templates/components/component-nav.php:26
-#: inc/core/front_end.php:72
+#: inc/core/front_end.php:70
 msgid "Primary Menu"
 msgstr ""
 
@@ -727,7 +728,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/NavFooter.php:41
 #: header-footer-grid/Core/Components/NavFooter.php:138
 #: header-footer-grid/templates/components/component-nav-footer.php:23
-#: inc/core/front_end.php:73
+#: inc/core/front_end.php:71
 msgid "Footer Menu"
 msgstr ""
 
@@ -802,15 +803,15 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:194
 #: header-footer-grid/Core/Components/SearchResponsive.php:358
-#: inc/customizer/options/form_fields.php:225
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:150
+#: inc/customizer/options/form_fields.php:214
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:154
 msgid "Border Width"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:251
 #: header-footer-grid/Core/Components/SearchResponsive.php:415
-#: inc/customizer/options/form_fields.php:278
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:131
+#: inc/customizer/options/form_fields.php:262
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:135
 msgid "Border Radius"
 msgstr ""
 
@@ -853,7 +854,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/SecondNav.php:41
 #: header-footer-grid/Core/Components/SecondNav.php:136
 #: header-footer-grid/templates/components/component-nav-secondary.php:23
-#: inc/core/front_end.php:74
+#: inc/core/front_end.php:72
 msgid "Secondary Menu"
 msgstr ""
 
@@ -1038,12 +1039,13 @@ msgid "Checkout URL"
 msgstr ""
 
 #: header-footer-grid/Core/Settings/Manager.php:177
+#: inc/customizer/options/buttons.php:106
 #: inc/customizer/options/typography.php:41
 msgid "General"
 msgstr ""
 
 #: header-footer-grid/Core/Settings/Manager.php:185
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:180
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:184
 msgid "Style"
 msgstr ""
 
@@ -1106,7 +1108,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:503
+#: inc/core/front_end.php:501
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:141
 msgid "Sidebar"
 msgstr ""
@@ -1231,55 +1233,55 @@ msgid "Two columns with text"
 msgstr ""
 
 #: inc/compatibility/elementor.php:111
-#: inc/core/front_end.php:95
+#: inc/core/front_end.php:93
 #: inc/customizer/controls/react/src/common/common.js:72
 msgid "Primary Accent"
 msgstr ""
 
 #: inc/compatibility/elementor.php:112
-#: inc/core/front_end.php:99
+#: inc/core/front_end.php:97
 #: inc/customizer/controls/react/src/common/common.js:73
 msgid "Secondary Accent"
 msgstr ""
 
 #: inc/compatibility/elementor.php:113
-#: inc/core/front_end.php:103
+#: inc/core/front_end.php:101
 #: inc/customizer/controls/react/src/common/common.js:74
 msgid "Site Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:114
-#: inc/core/front_end.php:107
+#: inc/core/front_end.php:105
 #: inc/customizer/controls/react/src/common/common.js:75
 msgid "Light Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:115
-#: inc/core/front_end.php:111
+#: inc/core/front_end.php:109
 #: inc/customizer/controls/react/src/common/common.js:76
 msgid "Dark Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:117
-#: inc/core/front_end.php:119
+#: inc/core/front_end.php:117
 #: inc/customizer/controls/react/src/common/common.js:78
 msgid "Text Dark Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:118
-#: inc/core/front_end.php:123
+#: inc/core/front_end.php:121
 #: inc/customizer/controls/react/src/common/common.js:79
 msgid "Extra Color 1"
 msgstr ""
 
 #: inc/compatibility/elementor.php:119
-#: inc/core/front_end.php:127
+#: inc/core/front_end.php:125
 #: inc/customizer/controls/react/src/common/common.js:80
 msgid "Extra Color 2"
 msgstr ""
 
 #: inc/compatibility/elementor.php:291
-#: inc/core/front_end.php:90
+#: inc/core/front_end.php:88
 msgid "Theme"
 msgstr ""
 
@@ -1325,7 +1327,7 @@ msgctxt "Theme starter content"
 msgid "Blog"
 msgstr ""
 
-#: inc/compatibility/woocommerce.php:348
+#: inc/compatibility/woocommerce.php:358
 msgid "Filter"
 msgstr ""
 
@@ -1359,7 +1361,7 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: inc/core/front_end.php:504
+#: inc/core/front_end.php:502
 msgid "Shop Sidebar"
 msgstr ""
 
@@ -1375,23 +1377,33 @@ msgstr ""
 msgid "Buttons"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:60
-#: inc/customizer/options/form_fields.php:596
+#: inc/customizer/options/buttons.php:56
+msgid "Primary Button"
+msgstr ""
+
+#: inc/customizer/options/buttons.php:57
+msgid "Secondary Button"
+msgstr ""
+
+#: inc/customizer/options/buttons.php:91
+#: inc/customizer/options/buttons.php:250
+msgid "Button Appearance"
+msgstr ""
+
+#: inc/customizer/options/buttons.php:153
+#: inc/customizer/options/buttons.php:288
+msgid "Button Text"
+msgstr ""
+
+#: inc/customizer/options/buttons.php:203
+#: inc/customizer/options/form_fields.php:584
 #: assets/js/src/gutenberg.js:13
 msgid "Primary"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:63
-#: inc/customizer/options/form_fields.php:597
+#: inc/customizer/options/buttons.php:206
+#: inc/customizer/options/form_fields.php:585
 msgid "Secondary"
-msgstr ""
-
-#: inc/customizer/options/buttons.php:105
-msgid "Button Appearance"
-msgstr ""
-
-#: inc/customizer/options/buttons.php:143
-msgid "Button Text"
 msgstr ""
 
 #: inc/customizer/options/colors_background.php:43
@@ -1408,44 +1420,44 @@ msgstr ""
 msgid "How the color system works"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:53
-#: inc/customizer/options/form_fields.php:70
+#: inc/customizer/options/form_fields.php:54
+#: inc/customizer/options/form_fields.php:71
 msgid "Form Fields"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:96
+#: inc/customizer/options/form_fields.php:93
 msgid "Field Padding"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:149
+#: inc/customizer/options/form_fields.php:141
 msgid "Field Spacing"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:183
+#: inc/customizer/options/form_fields.php:176
 msgid "Field Background Color"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:325
+#: inc/customizer/options/form_fields.php:310
 msgid "Border Color"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:363
+#: inc/customizer/options/form_fields.php:348
 msgid "Input Text"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:477
+#: inc/customizer/options/form_fields.php:464
 msgid "Form Labels"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:498
+#: inc/customizer/options/form_fields.php:486
 msgid "Label Spacing"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:591
+#: inc/customizer/options/form_fields.php:579
 msgid "Button Style"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:602
+#: inc/customizer/options/form_fields.php:590
 msgid "Customize the default button styles"
 msgstr ""
 
@@ -1867,16 +1879,16 @@ msgid_plural "%s Comments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/views/pluggable/pagination.php:172
+#: inc/views/pluggable/pagination.php:177
 #: inc/views/template_parts.php:331
 msgid "Pages:"
 msgstr ""
 
-#: inc/views/pluggable/pagination.php:189
+#: inc/views/pluggable/pagination.php:194
 msgid "previous"
 msgstr ""
 
-#: inc/views/pluggable/pagination.php:194
+#: inc/views/pluggable/pagination.php:199
 msgid "next"
 msgstr ""
 
