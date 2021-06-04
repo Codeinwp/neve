@@ -290,4 +290,28 @@ class Elementor extends Page_Builder_Base {
 	private function get_global_color_prefix() {
 		return ( apply_filters( 'ti_wl_theme_is_localized', false ) ? __( 'Theme', 'neve' ) : 'Neve' ) . ' - ';
 	}
+	
+	/**
+	 * Check if there is an elementor template for shop.
+	 */
+	public function is_elementor_template( $location, $cond ) {
+		if ( ! did_action( 'elementor_pro/init' ) ) {
+			return false;
+		}
+		if ( ! class_exists( '\ElementorPro\Plugin', false ) ) {
+			return false;
+		}
+		
+		$conditions_manager = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'theme-builder' )->get_conditions_manager();
+		$documents          = $conditions_manager->get_documents_for_location( $location );
+		foreach ( $documents as $document ) {
+			$conditions = $conditions_manager->get_document_conditions( $document );
+			foreach ( $conditions as $condition ) {
+				if ( 'include' === $condition['type'] && $cond === $condition['name'] ) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }

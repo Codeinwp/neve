@@ -98,11 +98,36 @@ class Woocommerce {
 	 * Initialize the module.
 	 */
 	public function init() {
+		add_action( 'wp', array( $this, 'register_hooks' ), 11 );
+	}
+	
+	/**
+	 * Should module load?
+	 *
+	 * @return bool
+	 */
+	public function should_load() {
 		if ( ! class_exists( 'WooCommerce', false ) ) {
+			return false;
+		}
+
+		$is_shop_template    = ( new Elementor() )->is_elementor_template( 'archive', 'product_archive' );
+		$is_product_template = ( new Elementor() )->is_elementor_template( 'single', 'product' );
+
+		return ! ( $is_shop_template || $is_product_template );
+	}
+	
+	/**
+	 * Register hooks
+	 *
+	 * @return void
+	 */
+	public function register_hooks() {
+		if ( ! $this->should_load() ) {
 			return;
 		}
-		$this->sidebar_manager = new Layout_Sidebar();
 
+		$this->sidebar_manager = new Layout_Sidebar();
 
 		add_action( 'admin_init', array( $this, 'set_update_woo_width_flag' ), 9 );
 		add_action( 'admin_footer', array( $this, 'update_woo_width' ) );
