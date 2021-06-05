@@ -292,18 +292,36 @@ class Elementor extends Page_Builder_Base {
 	}
 	
 	/**
-	 * Check if there is an elementor template for shop.
+	 * Is the page has an elementor template
+	 *
+	 * @param  string $location that location of the template such as single, archive etc.
+	 * @param  string $cond Template showing condition it can be product_archive, product etc.
+	 * @param  int    $post_id Optional. The parameter uses to check if the specific page has an elementor template. If this parameter is not used, the method returns value of the current page.
+	 * @return bool
 	 */
-	public function is_elementor_template( $location, $cond ) {
+	public function is_elementor_template( $location, $cond, $post_id = 0 ) {
 		if ( ! did_action( 'elementor_pro/init' ) ) {
 			return false;
 		}
 		if ( ! class_exists( '\ElementorPro\Plugin', false ) ) {
 			return false;
 		}
-		
 		$conditions_manager = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'theme-builder' )->get_conditions_manager();
-		$documents          = $conditions_manager->get_documents_for_location( $location );
+
+		// to manipulate get_the_ID usage of get_documents_for_location method (to check if specific page has an elementor template)
+		if ( $post_id ) {
+			global $post;
+			$original_post_id = $post->ID;
+			$post->ID         = $post_id;
+		}
+
+		$documents = $conditions_manager->get_documents_for_location( $location );
+
+		// revert the post ID to original value
+		if ( $post_id ) {
+			$post->ID = $original_post_id;
+		}
+
 		foreach ( $documents as $document ) {
 			$conditions = $conditions_manager->get_document_conditions( $document );
 			foreach ( $conditions as $condition ) {
