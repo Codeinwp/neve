@@ -298,7 +298,7 @@ class Elementor extends Page_Builder_Base {
 	 * @param  string $cond Template showing condition it can be product_archive, product etc.
 	 * @return bool
 	 */
-	public function is_elementor_template( $location, $cond ) {
+	public static function is_elementor_template( $location, $cond ) {
 		if ( ! did_action( 'elementor_pro/init' ) ) {
 			return false;
 		}

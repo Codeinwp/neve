@@ -111,8 +111,8 @@ class Woocommerce {
 			return false;
 		}
 
-		$is_shop_template    = ( new Elementor() )->is_elementor_template( 'archive', 'product_archive' );
-		$is_product_template = ( new Elementor() )->is_elementor_template( 'single', 'product' );
+		$is_shop_template    = Elementor::is_elementor_template( 'archive', 'product_archive' );
+		$is_product_template = Elementor::is_elementor_template( 'single', 'product' );
 
 		return ! ( $is_shop_template || $is_product_template );
 	}
