@@ -327,6 +327,7 @@ class Elementor extends Page_Builder_Base {
 	 * @return array that contains post IDs.
 	 */
 	private function get_elementor_template_post_ids( $template_type ) {
+		// TODO: find an alternative way to check the site has Elementor template [it should be work on customizer side]
 		$args = array(
 			'fields'      => 'ids',
 			'post_type'   => 'elementor_library',
