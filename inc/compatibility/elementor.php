@@ -326,7 +326,7 @@ class Elementor extends Page_Builder_Base {
 	 * @param  string $template_type such as product-archive.
 	 * @return array that contains post IDs.
 	 */
-	private function get_elementor_template_post_ids( $template_type ) {
+	private static function get_elementor_template_post_ids( $template_type ) {
 		// TODO: find an alternative way to check the site has Elementor template, this method can be slow. [it should be work on customizer side]
 		$args = array(
 			'fields'      => 'ids',
@@ -352,8 +352,8 @@ class Elementor extends Page_Builder_Base {
 	 * @param  string $elementor_template_type that is template type such as page,product-archive,product,kit etc.
 	 * @return bool
 	 */
-	public function has_template( $elementor_template_type ) {
-		$template_ids = $this->get_elementor_template_post_ids( $elementor_template_type );
+	public static function has_template( $elementor_template_type ) {
+		$template_ids = self::get_elementor_template_post_ids( $elementor_template_type );
 
 		// check if there is a condition to show in products
 		foreach ( $template_ids as $template_id ) {
