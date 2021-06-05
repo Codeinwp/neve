@@ -99,6 +99,19 @@ class Woocommerce {
 	 */
 	public function init() {
 		add_action( 'wp', array( $this, 'register_hooks' ), 11 );
+		add_action( 'neve_react_controls_localization', array( $this, 'add_customizer_options' ) );
+	}
+	
+	/**
+	 * Add params to specify if the site has elementor templates.
+	 *
+	 * @param  array $options current options.
+	 * @return array
+	 */
+	public function add_customizer_options( $options ) {
+		$options['elementor']['hasElementorShopTemplate']    = Elementor::has_template( 'product-archive' );
+		$options['elementor']['hasElementorProductTemplate'] = (bool) Elementor::has_template( 'product' );
+		return $options;
 	}
 	
 	/**
