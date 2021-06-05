@@ -319,4 +319,51 @@ class Elementor extends Page_Builder_Base {
 		}
 		return false;
 	}
+	
+	/**
+	 * Get post IDs of elementor templates.
+	 *
+	 * @param  string $template_type such as product-archive.
+	 * @return array that contains post IDs.
+	 */
+	private function get_elementor_template_post_ids( $template_type ) {
+		$args = array(
+			'fields'      => 'ids',
+			'post_type'   => 'elementor_library',
+			'post_status' => 'publish',
+			// phpcs:disable
+			'meta_query'  => array(
+				array(
+					'key'   => '_elementor_template_type',
+					'value' => $template_type,
+				),
+			),
+			// phpcs:enable
+		);
+
+		// return template post ids.
+		return get_posts( $args );
+	}
+		
+	/**
+	 * Has Elementor template? The method checks if the site has specific Elementor template by template name.
+	 *
+	 * @param  string $elementor_template_type that is template type such as page,product-archive,product,kit etc.
+	 * @return bool
+	 */
+	public function has_template( $elementor_template_type ) {
+		$template_ids = $this->get_elementor_template_post_ids( $elementor_template_type );
+
+		// check if there is a condition to show in products
+		foreach ( $template_ids as $template_id ) {
+			$conditions = get_post_meta( $template_id, '_elementor_conditions', true );
+
+			// if have any condition (not specific condition such as category etc.)
+			if ( $conditions ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
 }
