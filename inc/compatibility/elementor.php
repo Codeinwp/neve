@@ -292,7 +292,7 @@ class Elementor extends Page_Builder_Base {
 	}
 	
 	/**
-	 * Is the page has an elementor template
+	 * Is the current page has an elementor template
 	 *
 	 * @param  string $location that location of the template such as single, archive etc.
 	 * @param  string $cond Template showing condition it can be product_archive, product etc.
