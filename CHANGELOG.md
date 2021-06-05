@@ -1,3 +1,7 @@
+##### [Version 2.11.6](https://github.com/Codeinwp/neve/compare/v2.11.5...v2.11.6) (2021-06-01)
+
+- [Fix] wishlist button on single product pages
+
 ##### [Version 2.11.5](https://github.com/Codeinwp/neve/compare/v2.11.4...v2.11.5) (2021-05-31)
 
 - [Fix] Header cart doesn't show a dropdown when adding a new product to the cart
