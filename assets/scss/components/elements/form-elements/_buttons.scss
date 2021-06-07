@@ -11,7 +11,7 @@
 	}
   }
 
-  &.button-secondary {
+  &.button-secondary, & {
 	//noinspection SassScssResolvedByNameOnly
 	@extend %nv-button-secondary;
 

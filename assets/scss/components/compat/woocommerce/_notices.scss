@@ -39,7 +39,10 @@ $notices: (
 	  @extend %nv-button-secondary-no-colors;
 	  @extend %nv-button;
 	  background: transparent;
-	  color: #fff;
+	  --secondaryBtnBorderWidth: 3px;
+	  --secondaryBtnColor: #fff;
+	  --secondaryBtnPadding: 10px 15px;
+	  --btnFs: $text-sm;
 	}
   }
 }

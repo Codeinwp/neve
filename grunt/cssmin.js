@@ -50,8 +50,14 @@ module.exports = {
 				'assets/css/woocommerce-legacy-rtl.css',
 			],
 			'assets/css/lifter.min.css': ['assets/css/lifter.css'],
+			'assets/css/lifter-legacy.min.css': [
+				'assets/css/lifter-legacy.css',
+			],
 			'assets/css/gutenberg-editor-style.min.css': [
 				'assets/css/gutenberg-editor-style.css',
+			],
+			'assets/css/gutenberg-editor-legacy-style.min.css': [
+				'assets/css/gutenberg-editor-legacy-style.css',
 			],
 		},
 	},

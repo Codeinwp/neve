@@ -197,7 +197,9 @@ class Metabox_Settings {
 		$style = sprintf(
 			'
 			/* Main column width */
-			.wp-block {
+			.wp-block,
+			.block-editor-block-list__layout > .wp-block-separator,
+			.block-editor-block-list__layout > .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
 			    max-width: %s;
 			}
 

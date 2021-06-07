@@ -21,8 +21,12 @@ module.exports = {
 				'assets/css/woocommerce-legacy.css':
 					'assets/scss/woocommerce-legacy.scss',
 				'assets/css/lifter.css': 'assets/scss/lifter.scss',
+				'assets/css/lifter-legacy.css':
+					'assets/scss/lifter-legacy.scss',
 				'assets/css/gutenberg-editor-style.css':
 					'assets/scss/gutenberg-editor-style.scss',
+				'assets/css/gutenberg-editor-legacy-style.css':
+					'assets/scss/gutenberg-editor-legacy-style.scss',
 			},
 		],
 	},

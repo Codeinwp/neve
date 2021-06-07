@@ -13,6 +13,7 @@
   #reviews {
 	display: grid;
 	grid-row-gap: $spacing-xl;
+	--formFieldSpacing: 10px;
 
 	form {
 	  p {

@@ -323,28 +323,26 @@ class SearchResponsive extends Abstract_Component {
 			]
 		);
 
+		$new_skin   = neve_is_new_skin();
+		$per_device = $new_skin ? [
+			'top'    => 2,
+			'right'  => 2,
+			'bottom' => 2,
+			'left'   => 2,
+		] : [
+			'top'    => 1,
+			'right'  => 1,
+			'bottom' => 1,
+			'left'   => 1,
+		];
+
 		$default_border_width = [
 			'desktop-unit' => 'px',
 			'tablet-unit'  => 'px',
 			'mobile-unit'  => 'px',
-			'desktop'      => [
-				'top'    => 1,
-				'right'  => 1,
-				'bottom' => 1,
-				'left'   => 1,
-			],
-			'tablet'       => [
-				'top'    => 1,
-				'right'  => 1,
-				'bottom' => 1,
-				'left'   => 1,
-			],
-			'mobile'       => [
-				'top'    => 1,
-				'right'  => 1,
-				'bottom' => 1,
-				'left'   => 1,
-			],
+			'desktop'      => $per_device,
+			'tablet'       => $per_device,
+			'mobile'       => $per_device,
 		];
 
 		SettingsManager::get_instance()->add(
@@ -568,6 +566,7 @@ class SearchResponsive extends Abstract_Component {
 						if ( ! empty( $fs ) ) {
 							$style = sprintf( 'padding-right:%spx;', $padding );
 						}
+
 						return $style;
 					},
 				],

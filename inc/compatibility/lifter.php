@@ -100,7 +100,9 @@ class Lifter {
 	 * Add inline selectors for LifterLMS.
 	 */
 	private function add_inline_selectors() {
-
+		if ( neve_is_new_skin() ) {
+			return;
+		}
 		add_filter(
 			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
 			array(
@@ -206,7 +208,6 @@ class Lifter {
 		return ( $selectors . $this->primary_buttons_selectors['hover'] );
 	}
 
-
 	/**
 	 * Add secondary btn selectors.
 	 *
@@ -219,7 +220,6 @@ class Lifter {
 
 	}
 
-
 	/**
 	 * Add secondary btn selectors.
 	 *
@@ -231,12 +231,13 @@ class Lifter {
 		return ( $selectors . $this->secondary_buttons_selectors['hover'] );
 	}
 
-
 	/**
 	 * Enqueue styles.
 	 */
 	public function load_styles() {
-		wp_enqueue_style( 'neve-lifter', NEVE_ASSETS_URL . 'css/lifter' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		$path = neve_is_new_skin() ? 'lifter' : 'lifter-legacy';
+
+		wp_enqueue_style( 'neve-lifter', NEVE_ASSETS_URL . 'css/' . $path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 	}
 
 	/**

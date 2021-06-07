@@ -1,4 +1,6 @@
 @import "variables";
+@import "./tables";
+@import "./separators";
 
 // === Headings font sizes === //
 .has-neve-body-font-size {
@@ -25,23 +27,7 @@
   font-size: var(--h5FontSize);
 }
 
-// === Separators === //
-.wp-block-separator {
-  color: inherit;
-  border-top: 2px solid;
 
-  &.is-style-wide {
-	border-width: 4px;
-  }
-
-  &.is-style-dots {
-	border-top: 4px dotted;
-
-	&:before {
-	  content: none;
-	}
-  }
-}
 
 // === Buttons === //
 .wp-block-button__link {
@@ -160,60 +146,11 @@ blockquote {
 }
 
 
-// === Tables === //
-.wp-block-table {
-  margin-top: $spacing-lg;
-  margin-bottom: $spacing-lg;
-
-  table {
-	width: 100%;
-
-
-	border-collapse: separate;
-	border-spacing: 0;
-	border-width: 1px 0 0 1px;
-	margin: 0 0 1.5em;
-	width: 100%;
-  }
-
-  figcaption {
-	margin: $spacing-sm auto;
-	text-align: center;
-  }
-
-  &.is-style-stripes {
-	border: 0;
-
-	tbody tr {
-	  &:nth-child(odd) {
-		background-color: var(--nv-light-bg);
-	  }
-	}
-  }
-}
-
-th, td {
-  padding: $spacing-md;
-}
-
-th {
-  padding-bottom: $spacing-xs;
-  font-size: $text-lg;
-}
-
-td {
-  font-size: $text-sm;
-  border-bottom: $base-border;
-}
-
-
 //<editor-fold desc="Verse">
 .wp-block-verse {
   background-color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  font-style: italic;
-  border: unset;
+  font-size: $text-lg;
+  border: 0;
 }
 
 //</editor-fold>

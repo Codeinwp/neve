@@ -1,5 +1,12 @@
 @import "../main/variables";
 
+dl {
+  margin: $spacing-md 0;
+  dd {
+	margin-left: $spacing-lg;
+  }
+}
+
 .nv-iframe-embed {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
@@ -20,10 +27,6 @@ figcaption {
   opacity: .75;
 }
 
-table {
-  width: 100%;
-}
-
 code {
   background: #d0effb;
   border-radius: 5px;
@@ -34,14 +37,12 @@ code {
 
 pre {
   display: block;
-  padding: $spacing-sm;
-  background: rgba(255, 255, 255, 0.75);
-  border-radius: 5px;
-  border: $muted-border;
-  margin: $spacing-sm 0;
+  padding: $spacing-lg;
+  background: var(--nv-light-bg);
+  margin: $spacing-md 0;
   white-space: pre-wrap;
   font-size: $text-sm;
-  line-height: 2em;
+  font-family: Courier, monospace;
 
   code {
 	border: 0;
@@ -57,18 +58,18 @@ pre {
   }
 
   ul {
-	list-style-type: circle;
+	list-style-type: initial;
   }
 
   > ul, > ol {
-	margin: $spacing-sm 0;
+	margin: $spacing-lg 0;
   }
 
   ul, ol {
-	padding-left: $spacing-sm;
+	padding-left: $spacing-md;
 
 	li {
-	  margin-top: $spacing-xs;
+	  margin-top: $spacing-xxs;
 	}
   }
 
@@ -111,10 +112,11 @@ pre {
 }
 
 hr {
-  border: 0;
+  color: inherit;
   height: 0;
-  border-top: $muted-border;
-  margin: $spacing-xs 0;
+  border: 0;
+  border-top: 2px solid;
+  margin: $spacing-xs 0 $spacing-md;
   display: inline-block;
   width: 100%;
 }

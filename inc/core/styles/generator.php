@@ -49,23 +49,28 @@ class Generator {
 		if ( $this->context === null ) {
 			$this->context = Dynamic_Selector::CONTEXT_FRONTEND;
 		}
+
 		/**
 		 * Neve try to build the CSS as mobile first.
 		 * Based on this fact, the general CSS is considered the mobile one.
 		 */
 		$dynamic_selectors = new Dynamic_Selector( $this->_subscribers, $this->context );
-		$all_css          .= $dynamic_selectors->for_mobile();
-		$tablet_css       .= $dynamic_selectors->for_tablet();
-		$desktop_css      .= $dynamic_selectors->for_desktop();
+
+		$all_css     .= $dynamic_selectors->for_mobile();
+		$tablet_css  .= $dynamic_selectors->for_tablet();
+		$desktop_css .= $dynamic_selectors->for_desktop();
 		if ( ! empty( $tablet_css ) ) {
 			$all_css .= sprintf( '@media(min-width: 576px){ %s }', $tablet_css );
 		}
 		if ( ! empty( $desktop_css ) ) {
 			$all_css .= sprintf( '@media(min-width: 960px){ %s }', $desktop_css );
 		}
+
 		if ( ! $echo ) {
 			return $all_css;
 		}
+
+
 		echo $all_css; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 

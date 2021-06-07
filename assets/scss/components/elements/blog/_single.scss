@@ -1,8 +1,23 @@
 @import "../../main/variables";
 
-main > .container {
-  padding-top: $spacing-aired;
-  padding-bottom: $spacing-lg;
+.nv-single-post-wrap {
+  .entry-header,
+  .nv-thumb-wrap,
+  .nv-content-wrap,
+  .nv-post-navigation,
+  .nv-tags-list {
+	&:first-child {
+	  padding-top: $spacing-aired;
+	}
+
+	&:last-child {
+	  padding-bottom: $spacing-lg;
+	}
+  }
+}
+
+.nv-page-title-wrap {
+  margin-top: $spacing-aired;
 }
 
 .entry-header .title, .page .title, .nv-page-title {

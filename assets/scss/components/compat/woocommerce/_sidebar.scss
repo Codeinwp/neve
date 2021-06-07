@@ -5,9 +5,9 @@
   top: 0;
   left: 0;
   bottom: 0;
-  padding: $spacing-lg $spacing-sm $spacing-sm;
   z-index: 1000;
-  overflow: scroll;
+  height: 100vh;
+  overflow: auto;
   transition: all 0.3s ease-out;
   background-color: var(--nv-site-bg);
   transform: translateX(-100%);

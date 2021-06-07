@@ -1,4 +1,9 @@
 @import "../../main/variables";
+
+main .nv-shop {
+  margin-top: $spacing-aired;
+}
+
 //<editor-fold desc="On Sale Badge">
 .woocommerce {
   span.onsale {

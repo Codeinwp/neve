@@ -5,7 +5,7 @@ import React from 'react';
 
 export const BuilderControl = wp.customize.Control.extend({
 	renderContent() {
-		const customizePreview = document.getElementById('customize-preview');
+		const customizePreview = document.getElementById('customize-controls');
 		const where = document.querySelector(
 			`#accordion-section-${this.params.section}`
 		);

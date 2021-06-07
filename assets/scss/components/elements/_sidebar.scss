@@ -5,7 +5,7 @@
 }
 
 .nv-sidebar-wrap {
-  padding: 0 15px;
+  padding: $spacing-aired 15px;
   margin-bottom: $spacing-md;
 }
 
@@ -57,8 +57,16 @@
   width: 100%;
 }
 
+.widget_calendar {
+  td, th {
+	padding: $spacing-xs;
+  }
+}
+
 @mixin sidebar--laptop() {
   .nv-sidebar-wrap {
+	max-width: 30%;
+
 	&.nv-right {
 	  padding-left: 45px;
 	}
