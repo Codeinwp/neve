@@ -110,7 +110,7 @@ class Woocommerce {
 	 */
 	public function add_customizer_options( $options ) {
 		$options['elementor']['hasElementorShopTemplate']    = Elementor::has_template( 'product-archive' );
-		$options['elementor']['hasElementorProductTemplate'] = (bool) Elementor::has_template( 'product' );
+		$options['elementor']['hasElementorProductTemplate'] = Elementor::has_template( 'product' );
 		return $options;
 	}
 	
