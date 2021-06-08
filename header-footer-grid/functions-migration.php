@@ -166,9 +166,11 @@ function neve_hfg_header_settings() {
 		'id' => 'primary-menu',
 	];
 
+	$components = [];
+
 	return [
 		'builder'    => $builder,
-		'components' => [],
+		'components' => $components,
 	];
 }
 

@@ -462,67 +462,7 @@ abstract class Abstract_Component implements Component {
 			$padding_selector = $this->default_selector;
 		}
 
-		$margin_selector = '.builder-item--' . $this->get_id();
-		$align_choices   = [
-			'left'   => [
-				'tooltip' => __( 'Left', 'neve' ),
-				'icon'    => 'editor-alignleft',
-			],
-			'center' => [
-				'tooltip' => __( 'Center', 'neve' ),
-				'icon'    => 'editor-aligncenter',
-			],
-			'right'  => [
-				'tooltip' => __( 'Right', 'neve' ),
-				'icon'    => 'editor-alignright',
-			],
-		];
-		if ( strpos( $this->get_id(), Button::COMPONENT_ID ) > -1 ) {
-			$align_choices['justify'] = [
-				'tooltip' => __( 'Justify', 'neve' ),
-				'icon'    => 'editor-justify',
-			];
-		}
-
-		if ( $this->get_id() !== Search::COMPONENT_ID ) {
-			SettingsManager::get_instance()->add(
-				[
-					'id'                    => self::ALIGNMENT_ID,
-					'group'                 => $this->get_id(),
-					'tab'                   => SettingsManager::TAB_LAYOUT,
-					'transport'             => $this->is_auto_width ? 'post' . $this->get_builder_id() : 'postMessage',
-					'sanitize_callback'     => [ $this, 'sanitize_alignment' ],
-					'default'               => [
-						'desktop' => $this->default_align,
-						'tablet'  => $this->default_align,
-						'mobile'  => $this->default_align,
-					],
-					'label'                 => __( 'Alignment', 'neve' ),
-					'type'                  => '\Neve\Customizer\Controls\React\Responsive_Radio_Buttons',
-					'live_refresh_selector' => $this->is_auto_width ? null : $margin_selector,
-					'live_refresh_css_prop' => [
-						'remove_classes' => [
-							'mobile-left',
-							'mobile-right',
-							'mobile-center',
-							'tablet-left',
-							'tablet-right',
-							'tablet-center',
-							'desktop-left',
-							'desktop-right',
-							'desktop-center',
-						],
-						'is_for'         => 'horizontal',
-					],
-					'options'               => [
-						'choices' => $align_choices,
-					],
-					'section'               => $this->section,
-					'conditional_header'    => $this->get_builder_id() === 'header',
-				]
-			);
-		}
-
+		$this->add_horizontal_alignment_control();
 		$this->add_vertical_alignment_control();
 
 		SettingsManager::get_instance()->add(
@@ -560,7 +500,7 @@ abstract class Abstract_Component implements Component {
 				'default'               => $this->default_margin_value,
 				'label'                 => __( 'Margin', 'neve' ),
 				'type'                  => '\Neve\Customizer\Controls\React\Spacing',
-				'live_refresh_selector' => $margin_selector,
+				'live_refresh_selector' => '.builder-item--' . $this->get_id(),
 				'live_refresh_css_prop' => array(
 					'prop' => 'margin',
 				),
@@ -914,6 +854,7 @@ abstract class Abstract_Component implements Component {
 				'desktop' => $default_int_val,
 			];
 		}
+
 		return [
 			'mobile'  => $old,
 			'tablet'  => $old,
@@ -947,5 +888,77 @@ abstract class Abstract_Component implements Component {
 		}
 
 		return $input;
+	}
+
+	/**
+	 * Add horizontal alignment to component.
+	 */
+	private function add_horizontal_alignment_control() {
+		if ( strpos( $this->get_id(), Search::COMPONENT_ID ) > - 1 ) {
+			return;
+		}
+
+		// New skin drops alignment for navigation
+		if ( neve_is_new_skin() && strpos( $this->get_id(), Nav::COMPONENT_ID ) > - 1 ) {
+			return;
+		}
+
+		$align_choices = [
+			'left'   => [
+				'tooltip' => __( 'Left', 'neve' ),
+				'icon'    => 'editor-alignleft',
+			],
+			'center' => [
+				'tooltip' => __( 'Center', 'neve' ),
+				'icon'    => 'editor-aligncenter',
+			],
+			'right'  => [
+				'tooltip' => __( 'Right', 'neve' ),
+				'icon'    => 'editor-alignright',
+			],
+		];
+		if ( strpos( $this->get_id(), Button::COMPONENT_ID ) > - 1 ) {
+			$align_choices['justify'] = [
+				'tooltip' => __( 'Justify', 'neve' ),
+				'icon'    => 'editor-justify',
+			];
+		}
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::ALIGNMENT_ID,
+				'group'                 => $this->get_id(),
+				'tab'                   => SettingsManager::TAB_LAYOUT,
+				'transport'             => $this->is_auto_width ? 'post' . $this->get_builder_id() : 'postMessage',
+				'sanitize_callback'     => [ $this, 'sanitize_alignment' ],
+				'default'               => [
+					'desktop' => $this->default_align,
+					'tablet'  => $this->default_align,
+					'mobile'  => $this->default_align,
+				],
+				'label'                 => __( 'Alignment', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Radio_Buttons',
+				'live_refresh_selector' => $this->is_auto_width ? null : '.builder-item--' . $this->get_id(),
+				'live_refresh_css_prop' => [
+					'remove_classes' => [
+						'mobile-left',
+						'mobile-right',
+						'mobile-center',
+						'tablet-left',
+						'tablet-right',
+						'tablet-center',
+						'desktop-left',
+						'desktop-right',
+						'desktop-center',
+					],
+					'is_for'         => 'horizontal',
+				],
+				'options'               => [
+					'choices' => $align_choices,
+				],
+				'section'               => $this->section,
+				'conditional_header'    => $this->get_builder_id() === 'header',
+			]
+		);
 	}
 }
