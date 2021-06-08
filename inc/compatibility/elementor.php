@@ -37,6 +37,7 @@ class Elementor extends Page_Builder_Base {
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_in_picker' ], 999, 3 );
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_front_end' ], 999, 3 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 100 );
+		add_action( 'wp_insert_post', array( $this, 'update_has_template_transient' ), 10, 2 );
 	}
 
 	/**
@@ -321,6 +322,24 @@ class Elementor extends Page_Builder_Base {
 	}
 	
 	/**
+	 * Update has_template transient value when a post updated or inserted.
+	 *
+	 * @param  int     $post_ID that post ID.
+	 * @param  WP_Post $post that WP_Post object.
+	 * @return void
+	 */
+	public function update_has_template_transient( $post_ID, $post ) {
+		if ( $post->post_type !== 'elementor_library' ) {
+			return;
+		}
+
+		$template_type = get_post_meta( $post_ID, '_elementor_template_type', true );
+
+		// forcefully update has_template
+		$this->has_template( $template_type, true );
+	}
+
+	/**
 	 * Check if the site has Elementor template as independent from current post ID.
 	 * The method was designed to use in customizer. ! Do not use it outside of the customizer.
 	 * The method works if only Elementor Pro is active.
@@ -348,27 +367,24 @@ class Elementor extends Page_Builder_Base {
 			'meta_key'               => '_elementor_template_type',
 			'meta_value'             => $elementor_template_type, //phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 			'no_found_rows'          => true,
-			'limit'                  => 1,
+			'posts_per_page'         => 1,
+			'fields'                 => 'ids',
 		];
 
-		$query_get_templates = new \WP_Query( $args );
+		$query = new \WP_Query( $args );
 
-		if ( $query_get_templates->have_posts() ) {
-			while ( $query_get_templates->have_posts() ) {
-				$query_get_templates->the_post();
-
-				$conditions = get_post_meta( get_the_ID(), '_elementor_conditions', true );
+		if ( $query->posts ) {
+			foreach ( $query->posts as $post_id ) {
+				$conditions = get_post_meta( $post_id, '_elementor_conditions', true );
 
 				// if have any condition (not specific condition such as category etc.)
 				if ( $conditions ) {
 					set_transient( $transient_key, 1, $transient_expiry_sec );
-					wp_reset_postdata();
 					return true;
 				}
 			}   
 		}
 
-		wp_reset_postdata();
 		set_transient( $transient_key, 0, $transient_expiry_sec );
 		return false;
 	}
