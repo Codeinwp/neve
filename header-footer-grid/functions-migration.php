@@ -113,19 +113,13 @@ function neve_hfg_footer_settings() {
 		],
 	];
 
-	$components                                        = [];
-	$builder['desktop']['bottom']['c-left'][]          = [
+	$builder['desktop']['bottom']['left'][] = [
 		'id' => 'footer_copyright',
-	];
-	$components['footer_copyright']['component_align'] = [
-		'mobile'  => 'center',
-		'tablet'  => 'center',
-		'desktop' => 'center',
 	];
 
 	return [
 		'builder'    => $builder,
-		'components' => $components,
+		'components' => [],
 	];
 }
 

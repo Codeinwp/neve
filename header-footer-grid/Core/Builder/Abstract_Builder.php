@@ -1594,6 +1594,22 @@ abstract class Abstract_Builder implements Builder {
 			],
 		];
 
+		$is_footer_bottom = $this->get_id() === 'footer' && $row_id === 'bottom';
+
+		// On the new skin, the bottom footer row should be dark by default.
+		if ( neve_is_new_skin() && $is_footer_bottom ) {
+			$bg_color_map = [
+				'background' => [
+					'dark-mode'  => 'var(--nv-site-bg)',
+					'light-mode' => 'var(--nv-dark-bg)',
+				],
+				'text'       => [
+					'dark-mode'  => 'var(--nv-text-color)',
+					'light-mode' => 'var(--nv-text-dark-bg)',
+				],
+			];
+		}
+
 		$row_setting_id = $this->control_id . '_' . $row_id;
 		$background     = $bg_color_map['background']['light-mode'];
 		$text           = $bg_color_map['text']['light-mode'];
