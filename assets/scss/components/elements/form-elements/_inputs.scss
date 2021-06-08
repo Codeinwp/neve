@@ -18,6 +18,7 @@ textarea {
   -moz-appearance: none;
   appearance: none;
   outline: none;
+  resize: vertical;
 }
 
 input:read-write, select, textarea, [tabindex="-1"] {
@@ -59,15 +60,16 @@ label {
 }
 
 fieldset {
-  border: 0;
-  margin: $spacing-sm 0;
+  padding: $spacing-lg - 10px $spacing-lg;
+  border: 1px solid var(--nv-light-bg);
 
   legend {
-	font-size: $text-sm;
-	margin-bottom: $spacing-xs;
+	font-weight: 700;
+	padding: 0 $spacing-sm;
+	margin-left: -$spacing-sm;
   }
 
-  input[type="text"], input[type="search"], input[type="password"], textarea {
+  input[type="text"], input[type="search"], input[type="password"], textarea, select {
 	width: 100%;
   }
 }

@@ -285,14 +285,14 @@ msgstr ""
 msgid "Dark Mode"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:335
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:336
 #: header-footer-grid/Core/Settings/Manager.php:181
 #: inc/customizer/options/main.php:52
 msgid "Layout"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:340
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:341
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:342
 #: inc/admin/metabox/main.php:39
 #: inc/customizer/options/layout_container.php:134
 #: inc/customizer/options/layout_sidebar.php:125
@@ -300,23 +300,23 @@ msgstr ""
 msgid "Full Width"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:340
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:342
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:341
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:343
 #: inc/admin/metabox/main.php:38
 #: inc/customizer/options/layout_container.php:133
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:182
 msgid "Contained"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:358
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:359
 msgid "Row height"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:397
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:398
 msgid "Row Background"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:421
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:422
 #: header-footer-grid/Core/Components/Copyright.php:84
 #: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
@@ -327,53 +327,53 @@ msgstr ""
 msgid "Text Color"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:527
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:528
 #: header-footer-grid/Core/Builder/Header.php:38
 msgid "Header"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:610
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:611
 msgid "Section Content"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1624
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1641
 #: header-footer-grid/Core/Components/SearchResponsive.php:113
 msgid "Open Behaviour"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1629
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1646
 msgid "Slide from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1630
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1647
 msgid "Slide from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1631
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1648
 msgid "Pull from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1632
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1649
 msgid "Pull from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1633
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1650
 msgid "Full Canvas"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1634
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1651
 msgid "Slide Down"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1649
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1666
 msgid "Sidebar Width"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1712
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1729
 msgid "Number of Columns"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1729
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1746
 msgid "Columns Layout"
 msgstr ""
 

@@ -12,8 +12,16 @@
 	display: none;
   }
 
-  .button {
+  > a.button {
+	white-space: normal;
 	margin-left: auto;
+	--btnFs: $text-sm;
+	--primaryBtnPadding: 10px 15px;
+	--primaryBtnBorderWidth: 3px;
+	--primaryBtnColor: #fff;
+	--primaryBtnHoverColor: #fff;
+	--primaryBtnHoverBg: transparent;
+	--primaryBtnBg: transparent;
   }
 }
 
@@ -33,16 +41,6 @@ $notices: (
 
 	a, &:before {
 	  color: inherit;
-	}
-
-	> a.button, > a.button:hover {
-	  @extend %nv-button-secondary-no-colors;
-	  @extend %nv-button;
-	  background: transparent;
-	  --secondaryBtnBorderWidth: 3px;
-	  --secondaryBtnColor: #fff;
-	  --secondaryBtnPadding: 10px 15px;
-	  --btnFs: $text-sm;
 	}
   }
 }
@@ -72,7 +70,6 @@ $notices: (
 	.button {
 	  margin-top: 0;
 	  width: auto;
-
 	}
   }
 }

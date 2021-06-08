@@ -2,8 +2,13 @@
 
 dl {
   margin: $spacing-md 0;
+
   dd {
-	margin-left: $spacing-lg;
+	padding-left: $spacing-lg;
+  }
+
+  dt {
+	font-weight: 600;
   }
 }
 
@@ -66,16 +71,7 @@ pre {
   }
 
   ul, ol {
-	padding-left: $spacing-md;
-
-	li {
-	  margin-top: $spacing-xxs;
-	}
-  }
-
-  dt {
-	font-weight: 600;
-	display: block;
+	padding-left: $spacing-lg;
   }
 }
 

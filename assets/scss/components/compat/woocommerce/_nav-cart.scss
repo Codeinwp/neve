@@ -136,7 +136,9 @@ $cart-width: 360px;
 	  .button {
 		--btnFs: var(--bodyFontSize);
 		margin: 0;
-		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	  }
 	}
   }
