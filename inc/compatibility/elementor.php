@@ -373,19 +373,13 @@ class Elementor extends Page_Builder_Base {
 
 		$query = new \WP_Query( $args );
 
-		if ( $query->posts ) {
-			foreach ( $query->posts as $post_id ) {
-				$conditions = get_post_meta( $post_id, '_elementor_conditions', true );
-
-				// if have any condition (not specific condition such as category etc.)
-				if ( $conditions ) {
-					set_transient( $transient_key, 1, $transient_expiry_sec );
-					return true;
-				}
-			}   
+		// if elementor template not found
+		if ( empty( $query->posts ) ) {
+			set_transient( $transient_key, 0, $transient_expiry_sec );
+			return false;
 		}
 
-		set_transient( $transient_key, 0, $transient_expiry_sec );
-		return false;
+		set_transient( $transient_key, 1, $transient_expiry_sec );
+		return true;
 	}
 }
