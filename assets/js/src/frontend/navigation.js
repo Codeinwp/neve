@@ -47,8 +47,6 @@ export const repositionDropdowns = () => {
 	neveEach(dropDowns, (dropDown) => {
 		dropDown.style.right = '';
 		dropDown.style.left = '';
-		// const bounding = dropDown.getBoundingClientRect(),
-		// 	rightDist = bounding.left;
 
 		let count = 0;
 		let add = 0;
@@ -78,22 +76,6 @@ export const repositionDropdowns = () => {
 			count++;
 			add++;
 		}
-
-		// if (rightDist < 0) {
-		// 	left = isRTL ? 'auto' : 0;
-		// 	right = isRTL ? '-100%' : 'auto';
-		// 	dropDown.style.right = right;
-		// 	dropDown.style.left = left;
-		// }
-		//
-		// if (rightDist + bounding.width >= windowWidth) {
-		// 	right = isRTL ? 0 : '100%';
-		// 	left = 'auto';
-		// 	dropDown.style.right = right;
-		// 	dropDown.style.left = left;
-		// }
-		// let newBounding = dropDown.getBoundingClientRect();
-		// console.log( newBounding );
 	});
 };
 
