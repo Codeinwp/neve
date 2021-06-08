@@ -321,50 +321,55 @@ class Elementor extends Page_Builder_Base {
 	}
 	
 	/**
-	 * Get post IDs of elementor templates.
-	 *
-	 * @param  string $template_type such as product-archive.
-	 * @return array that contains post IDs.
-	 */
-	private static function get_elementor_template_post_ids( $template_type ) {
-		// TODO: find an alternative way to check the site has Elementor template, this method can be slow. [it should be work on customizer side]
-		$args = array(
-			'fields'      => 'ids',
-			'post_type'   => 'elementor_library',
-			'post_status' => 'publish',
-			// phpcs:disable
-			'meta_query'  => array(
-				array(
-					'key'   => '_elementor_template_type',
-					'value' => $template_type,
-				),
-			),
-			// phpcs:enable
-		);
-
-		// return template post ids.
-		return get_posts( $args );
-	}
-		
-	/**
-	 * Has Elementor template? The method checks if the site has specific Elementor template by template name.
+	 * Check if the site has Elementor template as independent from current post ID.
+	 * The method was designed to use in customizer. ! Do not use it outside of the customizer.
+	 * The method works if only Elementor Pro is active.
 	 *
 	 * @param  string $elementor_template_type that is template type such as page,product-archive,product,kit etc.
 	 * @return bool
 	 */
-	public static function has_template( $elementor_template_type ) {
-		$template_ids = self::get_elementor_template_post_ids( $elementor_template_type );
-
-		// check if there is a condition to show in products
-		foreach ( $template_ids as $template_id ) {
-			$conditions = get_post_meta( $template_id, '_elementor_conditions', true );
-
-			// if have any condition (not specific condition such as category etc.)
-			if ( $conditions ) {
-				return true;
-			}
+	public static function has_template( $elementor_template_type, $force_refresh = false ) {
+		if ( ! class_exists( '\ElementorPro\Plugin', false ) ) {
+			return false;
 		}
 
+		$transient_key        = 'neve_elementor_has_template_' . $elementor_template_type;
+		$transient_expiry_sec = HOUR_IN_SECONDS;
+		$cached_value         = get_transient( $transient_key );
+
+		if ( $force_refresh !== true && $cached_value !== false ) {
+			return $cached_value;
+		}
+
+		$args = [
+			'post_type'              => 'elementor_library',
+			'post_status'            => 'publish',
+			'update_post_term_cache' => false,
+			'meta_key'               => '_elementor_template_type',
+			'meta_value'             => $elementor_template_type, //phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+			'no_found_rows'          => true,
+			'limit'                  => 1,
+		];
+
+		$query_get_templates = new \WP_Query( $args );
+
+		if ( $query_get_templates->have_posts() ) {
+			while ( $query_get_templates->have_posts() ) {
+				$query_get_templates->the_post();
+
+				$conditions = get_post_meta( get_the_ID(), '_elementor_conditions', true );
+
+				// if have any condition (not specific condition such as category etc.)
+				if ( $conditions ) {
+					set_transient( $transient_key, 1, $transient_expiry_sec );
+					wp_reset_postdata();
+					return true;
+				}
+			}   
+		}
+
+		wp_reset_postdata();
+		set_transient( $transient_key, 0, $transient_expiry_sec );
 		return false;
 	}
 }
