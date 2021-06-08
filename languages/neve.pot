@@ -318,7 +318,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Copyright.php:84
 #: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
-#: inc/compatibility/elementor.php:116
+#: inc/compatibility/elementor.php:117
 #: inc/core/front_end.php:115
 #: inc/customizer/options/layout_blog.php:183
 #: inc/customizer/controls/react/src/common/common.js:77
@@ -1175,55 +1175,55 @@ msgstr ""
 msgid "Two columns with text"
 msgstr ""
 
-#: inc/compatibility/elementor.php:111
+#: inc/compatibility/elementor.php:112
 #: inc/core/front_end.php:95
 #: inc/customizer/controls/react/src/common/common.js:72
 msgid "Primary Accent"
 msgstr ""
 
-#: inc/compatibility/elementor.php:112
+#: inc/compatibility/elementor.php:113
 #: inc/core/front_end.php:99
 #: inc/customizer/controls/react/src/common/common.js:73
 msgid "Secondary Accent"
 msgstr ""
 
-#: inc/compatibility/elementor.php:113
+#: inc/compatibility/elementor.php:114
 #: inc/core/front_end.php:103
 #: inc/customizer/controls/react/src/common/common.js:74
 msgid "Site Background"
 msgstr ""
 
-#: inc/compatibility/elementor.php:114
+#: inc/compatibility/elementor.php:115
 #: inc/core/front_end.php:107
 #: inc/customizer/controls/react/src/common/common.js:75
 msgid "Light Background"
 msgstr ""
 
-#: inc/compatibility/elementor.php:115
+#: inc/compatibility/elementor.php:116
 #: inc/core/front_end.php:111
 #: inc/customizer/controls/react/src/common/common.js:76
 msgid "Dark Background"
 msgstr ""
 
-#: inc/compatibility/elementor.php:117
+#: inc/compatibility/elementor.php:118
 #: inc/core/front_end.php:119
 #: inc/customizer/controls/react/src/common/common.js:78
 msgid "Text Dark Background"
 msgstr ""
 
-#: inc/compatibility/elementor.php:118
+#: inc/compatibility/elementor.php:119
 #: inc/core/front_end.php:123
 #: inc/customizer/controls/react/src/common/common.js:79
 msgid "Extra Color 1"
 msgstr ""
 
-#: inc/compatibility/elementor.php:119
+#: inc/compatibility/elementor.php:120
 #: inc/core/front_end.php:127
 #: inc/customizer/controls/react/src/common/common.js:80
 msgid "Extra Color 2"
 msgstr ""
 
-#: inc/compatibility/elementor.php:291
+#: inc/compatibility/elementor.php:292
 #: inc/core/front_end.php:90
 msgid "Theme"
 msgstr ""
