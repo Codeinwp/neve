@@ -1,10 +1,11 @@
 describe('Sidebar/Content Settings', function () {
 	it('Sidebar site wide on front end.', function () {
 		cy.fixture('customizer/layout/sidebar-settings').then((sidebarSetup) => {
-			cy.setCustomizeSettings(sidebarSetup.site_wide);
+			cy.setCustomizeSettings(sidebarSetup.site_wide).then(() => {
+				cy.visit('/');
+			});
 		});
 		//Index
-		cy.visit('/');
 		cy.get('.nv-sidebar-wrap').should('have.css', 'max-width', '50%');
 		cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
 		cy.get('.nv-index-posts').should('have.css', 'max-width', '50%');
@@ -30,10 +31,11 @@ describe('Sidebar/Content Settings', function () {
 
 	it('Sidebar advanced on front end.', function () {
 		cy.fixture('customizer/layout/sidebar-settings').then((sidebarSetup) => {
-			cy.setCustomizeSettings(sidebarSetup.advanced);
+			cy.setCustomizeSettings(sidebarSetup.advanced).then(() => {
+				cy.visit('/');
+			});
 		});
 		//Index
-		cy.visit('/');
 		cy.get('.nv-sidebar-wrap').should('have.css', 'max-width', '80%');
 		cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
 		cy.get('.nv-index-posts').should('have.css', 'max-width', '20%');
