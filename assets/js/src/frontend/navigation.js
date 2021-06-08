@@ -45,22 +45,55 @@ export const repositionDropdowns = () => {
 
 	const windowWidth = window.innerWidth;
 	neveEach(dropDowns, (dropDown) => {
-		const bounding = dropDown.getBoundingClientRect(),
-			rightDist = bounding.left;
+		dropDown.style.right = '';
+		dropDown.style.left = '';
+		// const bounding = dropDown.getBoundingClientRect(),
+		// 	rightDist = bounding.left;
 
-		if (rightDist < 0) {
-			left = isRTL ? 'auto' : 0;
-			right = isRTL ? '-100%' : 'auto';
-			dropDown.style.right = right;
-			dropDown.style.left = left;
+		let count = 0;
+		let add = 0;
+		let newBounding = dropDown.getBoundingClientRect();
+		while (newBounding.left < 0 || newBounding.right > windowWidth) {
+			if (count > 50) {
+				// if we can not determine a proper position by the middle of the viewport abort
+				break;
+			}
+
+			if (newBounding.left < 0) {
+				left = isRTL ? 'auto' : 'calc( 0% - ' + add + 'vw )';
+				right = isRTL ? 'calc( -100% + ' + add + 'vw )' : 'auto';
+				dropDown.style.right = right;
+				dropDown.style.left = left;
+			}
+			newBounding = dropDown.getBoundingClientRect();
+
+			if (newBounding.left + newBounding.width >= windowWidth) {
+				right = isRTL ? 0 : 'calc( 100% - ' + add + 'vw )';
+				left = 'auto';
+				dropDown.style.right = right;
+				dropDown.style.left = left;
+			}
+
+			newBounding = dropDown.getBoundingClientRect();
+			count++;
+			add++;
 		}
 
-		if (rightDist + bounding.width >= windowWidth) {
-			right = isRTL ? 0 : '100%';
-			left = 'auto';
-			dropDown.style.right = right;
-			dropDown.style.left = left;
-		}
+		// if (rightDist < 0) {
+		// 	left = isRTL ? 'auto' : 0;
+		// 	right = isRTL ? '-100%' : 'auto';
+		// 	dropDown.style.right = right;
+		// 	dropDown.style.left = left;
+		// }
+		//
+		// if (rightDist + bounding.width >= windowWidth) {
+		// 	right = isRTL ? 0 : '100%';
+		// 	left = 'auto';
+		// 	dropDown.style.right = right;
+		// 	dropDown.style.left = left;
+		// }
+		// let newBounding = dropDown.getBoundingClientRect();
+		// console.log( newBounding );
 	});
 };
 
