@@ -58,10 +58,36 @@ $desktop: map-get($gl-devices-list, desktop);
   margin: 0 auto;
 }
 
+[class*="row-inner"], .header-menu-sidebar-bg {
+  position: relative;
+  background: var(--bgImage, none) var(--bgPosition, center) no-repeat;
+  background-size: cover;
+  background-attachment: var(--bgAttachment);
+
+  &:before {
+	display: block;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	content: "";
+	background-color: var(--overlayColor);
+	opacity: var(--bgOverlayOpacity)
+  }
+}
+
 [data-row-id] {
+  background-color: var(--bgColor);
+  color: var(--color);
+
+  a {
+	color: var(--color);
+  }
+
   .row {
 	display: grid;
 	grid-template-columns: auto auto;
+	height: var(--height, auto);
   }
 }
 

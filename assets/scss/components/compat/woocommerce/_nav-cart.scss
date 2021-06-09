@@ -7,8 +7,17 @@ $cart-width: 360px;
   display: flex;
   align-items: flex-end;
 
+  &:hover {
+	color: var(--hoverColor, var(--color));
+  }
+
   .nv-cart {
 	display: flex;
+
+	svg {
+	  width: var(--iconSize);
+	  height: auto;
+	}
   }
 
   .cart-count {
@@ -49,6 +58,7 @@ $cart-width: 360px;
   text-align: left;
   --primaryBtnPadding: 10px 15px;
   --secondaryBtnPadding: 10px 15px;
+
   .widget {
 	// Overflow needed to hide scrollbar.
 	overflow: hidden;
@@ -103,6 +113,7 @@ $cart-width: 360px;
 	}
 
 	> a {
+	  color: var(--nv-text-color);
 	  grid-column: span 11;
 	  grid-row-start: 1;
 	  grid-column-end: -1;

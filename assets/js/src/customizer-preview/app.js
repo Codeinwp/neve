@@ -1,6 +1,7 @@
 /* global neveCustomizePreview, _,jQuery */
-import { initNavigation, repositionDropdowns } from '../frontend/navigation';
-import { removeClass, addClass } from '../utils.js';
+import {initNavigation, repositionDropdowns} from '../frontend/navigation';
+import {removeClass, addClass} from '../utils.js';
+import {replaceCSSVar, addCSS, addTemplateCSS} from './css-var-handler';
 
 function handleResponsiveRadioButtons(args, nextValue) {
 	if (!args.additional) return false;
@@ -20,91 +21,13 @@ function handleResponsiveRadioButtons(args, nextValue) {
 	});
 }
 
-function addCss(id, content = '') {
-	let style = document.querySelector('#' + id + '-css-style');
-	if (!style) {
-		style = document.createElement('style');
-		style.setAttribute('id', id + '-css-style');
-		style.setAttribute('type', 'text/css');
-		document.querySelector('head').appendChild(style);
-	}
-	style.innerHTML = content;
-}
-
-function addStyle(settingType, id, newValue, args) {
-	const map = {
-		mobile: 'max-width: 576px',
-		tablet: 'min-width: 576px',
-		desktop: 'min-width: 960px',
-	};
-
-	let style = '';
-	if (args.directional) {
-		if (args.responsive) {
-			for (const device in map) {
-				let deviceStyle = args.template;
-				const suffix = newValue[device + '-unit'];
-				_.each(newValue[device], function (value, direction) {
-					const directionRegex = new RegExp(
-						`{{value.${direction}}}`,
-						'g'
-					);
-					deviceStyle = deviceStyle.replace(
-						directionRegex,
-						value + suffix
-					);
-				});
-				style += `@media (${map[device]}) {${deviceStyle}}`;
-			}
-		} else {
-			const directions = ['top', 'right', 'bottom', 'left'];
-			style = args.template;
-			_.each(directions, function (dir) {
-				const directionRegex = new RegExp(`{{value.${dir}}}`, 'g');
-				style = style.replace(
-					directionRegex,
-					newValue[dir] + newValue.unit
-				);
-			});
-		}
-		addCss(id, style);
-		return false;
-	}
-
-	const regex = new RegExp('{{value}}', 'g');
-	if (args.responsive) {
-		const template = args.template;
-		const value = JSON.parse(newValue);
-		for (const device in map) {
-			const suffix = value[device + '-unit'] || '';
-			if (value[device] === 0 || value[device] === '0') {
-				style += `@media (${map[device]}) {${template.replace(
-					regex,
-					'0'
-				)}${suffix}}`;
-			} else {
-				style += `@media (${map[device]}) {${template.replace(
-					regex,
-					value[device] || 'inherit'
-				)}${suffix}}`;
-			}
-		}
-	} else if (newValue === 0 || newValue === '0') {
-		style += args.template.replace(regex, '0');
-	} else {
-		const value = newValue || args.fallback || 'inherit';
-		style += args.template.replace(regex, value.toString());
-	}
-	addCss(id, style);
-}
-
 /**
- * Run JS on load.
- */
+	* Run JS on load.
+	*/
 window.addEventListener('load', function () {
 	/**
-	 * Add action when Header Panel rendered by customizer.
-	 */
+		* Add action when Header Panel rendered by customizer.
+		*/
 	document.addEventListener('header_builder_panel_changed', function (e) {
 		if (e.detail.partial_id === 'hfg_header_layout_partial') {
 			window.HFG.init();
@@ -148,13 +71,29 @@ window.addEventListener('load', function () {
 		_.each(settings, function (args, settingId) {
 			wp.customize(settingId, function (setting) {
 				setting.bind(function (newValue) {
-					// Handles new template selective refresh.
+					if (
+						args.additional &&
+						args.additional.cssVar &&
+						args.additional.cssVarSelector
+					) {
+						replaceCSSVar(
+							settingId,
+							args.additional.cssVarSelector,
+							args.additional.cssVar,
+							newValue
+						);
+
+						return false;
+					}
 					if (args.additional && args.additional.template) {
-						addStyle(
+						// Handles new template selective refresh.
+						addTemplateCSS(
 							settingType,
 							settingId,
 							newValue,
-							args.additional
+							args.additional,
+							args.responsive || false,
+							args.directional || false
 						);
 						return false;
 					}
@@ -176,7 +115,7 @@ window.addEventListener('load', function () {
                   ${i.prop}: ${newValue} !important;
                 }`;
 							});
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case 'neve_background_control':
 							if (newValue.type === 'color') {
@@ -196,7 +135,7 @@ window.addEventListener('load', function () {
 								style += `${args.selector}:before{ content: none !important;}`;
 								style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu {background-color: ${color}!important;}`;
 								style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
-								addCss(settingId, style);
+								addCSS(settingId, style);
 								return false;
 							}
 							if (
@@ -258,7 +197,7 @@ window.addEventListener('load', function () {
 							style +=
 								args.selector +
 								'{ background-color: transparent !important; }';
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Responsive_Radio_Buttons':
 							handleResponsiveRadioButtons(args, newValue);
@@ -339,7 +278,7 @@ window.addEventListener('load', function () {
 									args.additional.prop +
 									':unset;}}';
 							}
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Spacing':
 							for (const device in deviceMap) {
@@ -389,7 +328,7 @@ window.addEventListener('load', function () {
 								}
 								style += '}}';
 							}
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Typography':
 							style += `html ${args.selector}{`;
@@ -437,14 +376,14 @@ window.addEventListener('load', function () {
 									style += `line-height:${
 										args.live_refresh_default.line_height[
 											device
-										]
+											]
 									}${
 										args.live_refresh_default.line_height
 											.suffix &&
 										args.live_refresh_default.line_height
 											.suffix[device]
 											? args.live_refresh_default
-													.line_height.suffix[device]
+												.line_height.suffix[device]
 											: ''
 									};`;
 								}
@@ -460,7 +399,7 @@ window.addEventListener('load', function () {
 								}
 								style += `}}`;
 							}
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Button_Appearance':
 							const bgColor = newValue.background || 'unset';
@@ -523,7 +462,7 @@ window.addEventListener('load', function () {
 										background-color: ${txtColor};
 										color: ${txtColor};
 									}`;
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case 'text':
 							const textContainer = document.querySelector(
@@ -555,14 +494,14 @@ window.addEventListener('load', function () {
 											width: ${newValue}px;
 											height: ${newValue}px;
 										}`;
-								addCss(settingId, style);
+								addCSS(settingId, style);
 								return false;
 							}
 
 							style += `html ${args.selector} {
 											${args.additional.type}: ${newValue}px;
 										}`;
-							addCss(settingId, style);
+							addCSS(settingId, style);
 
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Color':
@@ -571,7 +510,7 @@ window.addEventListener('load', function () {
 							style += `html ${args.selector} {
 										${args.additional.prop}: ${colorValue};
 									}`;
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Font_Family':
 							break;
@@ -580,8 +519,8 @@ window.addEventListener('load', function () {
 								'#nv-css-vars-inline-css'
 							);
 
-							const { palettes, activePalette } = newValue;
-							const { colors } = palettes[activePalette];
+							const {palettes, activePalette} = newValue;
+							const {colors} = palettes[activePalette];
 							let globalColorsCSS = ':root{';
 							Object.keys(colors).map((slug) => {
 								globalColorsCSS += `--${slug}:${colors[slug]};`;
@@ -617,12 +556,12 @@ window.addEventListener('load', function () {
 			})
 			.join(',');
 		if (data.value === false) {
-			addCss(
+			addCSS(
 				data.controlId,
 				selector + '{font-family: ' + defaultFontface + ';}'
 			);
 		} else {
-			addCss(
+			addCSS(
 				data.controlId,
 				selector + '{font-family: ' + data.value + ' ;}'
 			);
@@ -710,10 +649,10 @@ window.addEventListener('load', function () {
 			} else {
 				$('head').append(
 					'<style type="text/css" class="' +
-						settings.styleClass +
-						'">' +
-						result +
-						'</style>'
+					settings.styleClass +
+					'">' +
+					result +
+					'</style>'
 				);
 			}
 		},
@@ -803,7 +742,7 @@ jQuery.neveRangesPreview.init();
 							${args.content} { max-width: ${newval}% !important; }
 							${args.sidebar} { max-width: ${100 - newval}% !important; }
 						}`;
-						addCss(id + '-css', style);
+						addCSS(id + '-css', style);
 					});
 				});
 			});

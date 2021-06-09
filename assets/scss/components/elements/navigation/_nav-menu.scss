@@ -14,15 +14,15 @@
   display: flex;
   flex-wrap: wrap;
 
-  a {
+  li a {
 	display: flex;
 	align-items: center;
 	min-height: var(--height);
-	color: var(--color) !important;
+	color: var(--color);
   }
 
   a:hover {
-	color: var(--hoverColor) !important;
+	color: var(--hoverColor);
   }
 
   > li {
@@ -43,7 +43,7 @@
 	position: relative;
 
 	&.current-menu-item > a {
-	  color: var(--activeColor) !important;
+	  color: var(--activeColor);
 	}
 
 	&:hover > .sub-menu,
@@ -65,7 +65,7 @@
   }
 
   .sub-menu {
-	background-color: inherit;
+	background-color: var(--bgColor);
 	z-index: 100;
 	position: absolute;
 	top: 100%;
@@ -130,9 +130,10 @@
 	}
 
 	.sub-menu {
-	  left: unset;
-	  top: unset;
-	  right: unset;
+	  // Important because of the different open behaviours of the sidebar.
+	  left: unset !important;
+	  top: unset !important;
+	  right: unset !important;
 	  position: relative;
 	  max-width: 100%;
 	  box-shadow: none;
@@ -161,9 +162,9 @@
 	  }
 	}
   }
-
 }
 
+// === AMP === //
 .amp-desktop-caret-wrap {
   display: none;
 }
@@ -174,6 +175,29 @@
 	width: 1em
   }
 }
+
+.has-caret.amp {
+  display: flex;
+  align-items: center;
+
+  .caret-wrap {
+	margin-left: auto;
+  }
+}
+
+.sub-menu .has-caret.amp {
+  padding-right: $spacing-md;
+}
+
+.header-menu-sidebar {
+  .has-caret.amp {
+	padding-right: 0;
+  }
+  .amp.dropdown-open + .sub-menu {
+	  max-height: 1300px !important;
+	}
+}
+
 
 @mixin nav-menu--tablet-sm() {
 }

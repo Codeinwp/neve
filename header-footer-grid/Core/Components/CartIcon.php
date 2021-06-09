@@ -186,15 +186,13 @@ class CartIcon extends Abstract_Component {
 	}
 
 	/**
-	 * Method to add Component css styles.
+	 * Add legacy style.
 	 *
-	 * @param array $css_array An array containing css rules.
+	 * @param array $css_array css array.
 	 *
 	 * @return array
-	 * @since   1.0.0
-	 * @access  public
 	 */
-	public function add_style( array $css_array = array() ) {
+	private function add_legacy_style( $css_array ) {
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' span.nv-icon.nv-cart svg',
 			Dynamic_Selector::KEY_RULES    => [
@@ -253,6 +251,49 @@ class CartIcon extends Abstract_Component {
 					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::LABEL_SIZE_ID ),
 				],
 			],
+		];
+
+		return parent::add_style( $css_array );
+	}
+
+	/**
+	 * Method to add Component css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function add_style( array $css_array = array() ) {
+		if ( ! neve_is_new_skin() ) {
+			return $this->add_legacy_style( $css_array );
+		}
+
+		$rules = [
+			'--iconSize'   => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
+				Dynamic_Selector::META_SUFFIX  => 'px',
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SIZE_ID ),
+			],
+			'--color'      => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
+			],
+			'--hoverColor' => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
+			],
+			'--size'       => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::LABEL_SIZE_ID,
+				Dynamic_Selector::META_SUFFIX  => 'px',
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::LABEL_SIZE_ID ),
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_RULES    => $rules,
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector,
 		];
 
 		return parent::add_style( $css_array );

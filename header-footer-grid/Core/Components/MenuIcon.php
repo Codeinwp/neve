@@ -179,14 +179,15 @@ class MenuIcon extends Abstract_Component {
 		);
 	}
 
+
 	/**
-	 * Add CSS style for the component.
+	 * Add legacy style.
 	 *
-	 * @param array $css_array the css style array.
+	 * @param array $css_array css array.
 	 *
 	 * @return array
 	 */
-	public function add_style( array $css_array = array() ) {
+	private function add_legacy_style( $css_array ) {
 		$id          = $this->get_id() . '_' . Mods::get_alternative_mod( self::BUTTON_APPEARANCE );
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ', ' . $this->close_button,
@@ -206,6 +207,38 @@ class MenuIcon extends Abstract_Component {
 			],
 		];
 
+		return parent::add_style( $css_array );
+	}
+
+	/**
+	 * Add CSS style for the component.
+	 *
+	 * @param array $css_array the css style array.
+	 *
+	 * @return array
+	 */
+	public function add_style( array $css_array = array() ) {
+		if ( ! neve_is_new_skin() ) {
+			return $this->add_legacy_style( $css_array );
+		}
+
+		$id = $this->get_id() . '_' . Mods::get_alternative_mod( self::BUTTON_APPEARANCE );
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ',' . $this->close_button,
+			Dynamic_Selector::KEY_RULES    => [
+				'--bgColor'      => $id . '.background',
+				'--color'        => $id . '.text',
+				'--borderRadius' => [
+					Dynamic_Selector::META_KEY => $id . '.borderRadius',
+					'directional-prop'         => Config::CSS_PROP_BORDER_RADIUS,
+				],
+				'--borderWidth'  => [
+					Dynamic_Selector::META_KEY => $id . '.borderWidth',
+					'directional-prop'         => Config::CSS_PROP_BORDER_WIDTH,
+				],
+			],
+		];
 
 		return parent::add_style( $css_array );
 	}

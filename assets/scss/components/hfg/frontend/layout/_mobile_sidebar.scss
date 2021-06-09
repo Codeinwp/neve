@@ -13,6 +13,8 @@
 }
 
 .header-menu-sidebar-bg {
+  background-color: var(--bgColor);
+  color: var(--color);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -22,7 +24,7 @@
 
 .header-menu-sidebar-inner {
   padding: 20px 0;
-  overflow: auto;
+  overflow-x: hidden;
   height: 100%;
 }
 

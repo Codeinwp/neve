@@ -117,7 +117,9 @@ class Nav extends Abstract_Component {
 				'conditional_header'    => true,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
-					'template' =>
+					'cssVar'         => '--color',
+					'cssVarSelector' => '.builder-item--' . $this->get_id(),
+					'template'       =>
 						$selector . ' li:not(.current_page_item):not(.current-menu-item):not(.woocommerce-mini-cart-item) > a,' . $selector . ' li.neve-mm-heading span {
 						color: {{value}};
 					}',
@@ -138,7 +140,9 @@ class Nav extends Abstract_Component {
 				'conditional_header'    => true,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
-					'template' =>
+					'cssVar'         => '--activeColor',
+					'cssVarSelector' => '.builder-item--' . $this->get_id(),
+					'template'       =>
 						$selector . ' li.current_page_item > a,' . $selector . ' li.current-menu-item > a {
 						color: {{value}} !important;
 					}',
@@ -159,7 +163,9 @@ class Nav extends Abstract_Component {
 				'conditional_header'    => true,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
-					'template' =>
+					'cssVar'         => '--hoverColor',
+					'cssVarSelector' => '.builder-item--' . $this->get_id(),
+					'template'       =>
 						'.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .nav-ul li:not(.woocommerce-mini-cart-item):hover > a {
 							 color: {{value}} !important;
 						}' .
@@ -374,6 +380,7 @@ class Nav extends Abstract_Component {
 			'--height'      => [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ITEM_HEIGHT,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
 				Dynamic_Selector::META_DEFAULT       => $this->get_default_for_responsive_from_intval( self::ITEM_HEIGHT, 25 ),
 			],
 		];
