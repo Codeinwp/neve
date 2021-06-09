@@ -26,7 +26,7 @@ class Post_Meta extends Base_View {
 	 * @return void
 	 */
 	public function init() {
-		add_filter( 'neve_display_author_avatar', array( $this, 'should_display_author_avatar' ) );
+		add_filter( 'neve_display_author_avatar', array( $this, 'should_display_author_avatar' ), 15 );
 		add_action( 'neve_post_meta_archive', array( $this, 'render_meta_list' ) );
 		add_action( 'neve_post_meta_single', array( $this, 'render_meta_list' ), 10, 2 );
 		add_action( 'neve_do_tags', array( $this, 'render_tags_list' ) );
@@ -49,11 +49,7 @@ class Post_Meta extends Base_View {
 			$show_avatar = get_theme_mod( 'neve_single_post_author_avatar', $show_avatar );
 		}
 
-		if ( $show_avatar === true ) {
-			return true;
-		}
-
-		return false;
+		return $show_avatar;
 	}
 
 	/**
@@ -355,7 +351,7 @@ class Post_Meta extends Base_View {
 		}
 
 		$custom_css  = '';
-		$custom_css .= '.nv-meta-list li:not(:last-child):after,.nv-meta-list span:not(:last-child):after { content:"' . esc_html( $separator ) . '" }';
+		$custom_css .= '.nv-meta-list li.meta:not(:last-child):after { content:"' . esc_html( $separator ) . '" }';
 
 		wp_add_inline_style( 'neve-style', $custom_css );
 	}

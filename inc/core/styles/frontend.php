@@ -584,7 +584,7 @@ class Frontend extends Generator {
 		}
 
 		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.nv-meta-list .meta.author .photo',
+			Dynamic_Selector::KEY_SELECTOR => '.nv-meta-list .meta.author img.photo',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_HEIGHT => [
 					Dynamic_Selector::META_KEY           => $meta_key,
