@@ -275,6 +275,12 @@ msgstr ""
 msgid "You appear to be running the Neve theme from source code. Please finish installation by running %s."
 msgstr ""
 
+#: globals/utilities.php:178
+#: header-footer-grid/Core/Components/Nav.php:177
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:125
+msgid "Search"
+msgstr ""
+
 #: globals/utilities.php:1350
 msgid "Base"
 msgstr ""
@@ -674,11 +680,6 @@ msgstr ""
 #: header-footer-grid/Core/Components/NavFooter.php:108
 #: header-footer-grid/Core/Components/SecondNav.php:109
 msgid "Items Hover Color"
-msgstr ""
-
-#: header-footer-grid/Core/Components/Nav.php:177
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:125
-msgid "Search"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:182
