@@ -36,45 +36,33 @@ export const initNavigation = () => {
  */
 export const repositionDropdowns = () => {
 	const { isRTL } = NeveProperties;
-	let left, right;
 	const dropDowns = document.querySelectorAll(
-		'.sub-menu, .minimal .nv-nav-search'
+		'.neve-mega-menu > .sub-menu, .minimal .nv-nav-search'
 	);
 
 	if (dropDowns.length === 0) return;
 
 	const windowWidth = window.innerWidth;
 	neveEach(dropDowns, (dropDown) => {
-		dropDown.style.right = '';
-		dropDown.style.left = '';
+		const bounding = dropDown.getBoundingClientRect();
+		const parentBounding = dropDown.parentElement.getBoundingClientRect();
 
-		let count = 0;
-		let add = 0;
-		let newBounding = dropDown.getBoundingClientRect();
-		while (newBounding.left < 0 || newBounding.right > windowWidth) {
-			if (count > 50) {
-				// if we can not determine a proper position by the middle of the viewport abort
-				break;
-			}
+		if (bounding.left < 0) {
+			dropDown.style.left = isRTL ? '0' : '100%';
+			dropDown.style.right = 'auto';
+		}
+		if (parentBounding.left + bounding.width >= windowWidth) {
+			dropDown.style.left = 'auto';
+			dropDown.style.right = '-100%';
+		}
 
-			if (newBounding.left < 0) {
-				left = isRTL ? 'auto' : 'calc( 0% - ' + add + 'vw )';
-				right = isRTL ? 'calc( -100% + ' + add + 'vw )' : 'auto';
-				dropDown.style.right = right;
-				dropDown.style.left = left;
-			}
-			newBounding = dropDown.getBoundingClientRect();
-
-			if (newBounding.left + newBounding.width >= windowWidth) {
-				right = isRTL ? 0 : 'calc( 100% - ' + add + 'vw )';
-				left = 'auto';
-				dropDown.style.right = right;
-				dropDown.style.left = left;
-			}
-
-			newBounding = dropDown.getBoundingClientRect();
-			count++;
-			add++;
+		if (
+			parentBounding.left - bounding.width < 0 &&
+			parentBounding.left + bounding.width >= windowWidth
+		) {
+			dropDown.style.left = 'auto';
+			dropDown.style.right =
+				'calc( 100% - ' + bounding.width / 2 + 'px )';
 		}
 	});
 };

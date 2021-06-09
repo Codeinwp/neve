@@ -109,6 +109,7 @@ window.addEventListener('load', function () {
 		if (e.detail.partial_id === 'hfg_header_layout_partial') {
 			window.HFG.init();
 			window.HFG.initSearch();
+			repositionDropdowns();
 			return false;
 		}
 		if (e.detail.partial_id === 'primary-menu_partial') {
