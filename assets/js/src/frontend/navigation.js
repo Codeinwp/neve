@@ -46,14 +46,23 @@ export const repositionDropdowns = () => {
 	neveEach(dropDowns, (dropDown) => {
 		const bounding = dropDown.getBoundingClientRect();
 		const parentBounding = dropDown.parentElement.getBoundingClientRect();
+		dropDown.style.left = isRTL ? 'auto' : '0';
+		dropDown.style.right = isRTL ? '0' : 'auto';
+		const secondHalf = isRTL
+			? parentBounding.left < windowWidth / 2
+			: parentBounding.left > windowWidth / 2;
+		if (secondHalf) {
+			dropDown.style.left = isRTL ? '0' : 'auto';
+			dropDown.style.right = isRTL ? 'auto' : '0';
+		}
 
 		if (bounding.left < 0) {
-			dropDown.style.left = isRTL ? '0' : '100%';
+			dropDown.style.left = '0';
 			dropDown.style.right = 'auto';
 		}
 		if (parentBounding.left + bounding.width >= windowWidth) {
 			dropDown.style.left = 'auto';
-			dropDown.style.right = '-100%';
+			dropDown.style.right = '0';
 		}
 
 		if (
