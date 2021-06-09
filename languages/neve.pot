@@ -275,7 +275,7 @@ msgstr ""
 msgid "You appear to be running the Neve theme from source code. Please finish installation by running %s."
 msgstr ""
 
-#: globals/utilities.php:1341
+#: globals/utilities.php:1344
 #: inc/customizer/options/upsells.php:115
 #: inc/customizer/options/upsells.php:120
 #: inc/customizer/options/upsells.php:129
@@ -289,7 +289,7 @@ msgstr ""
 msgid "Learn More"
 msgstr ""
 
-#: globals/utilities.php:1344
+#: globals/utilities.php:1347
 #: header-footer-grid/Core/Builder/Footer.php:47
 #: header-footer-grid/Core/Builder/Header.php:51
 #: inc/core/admin.php:273
@@ -301,17 +301,17 @@ msgstr ""
 msgid "(opens in a new tab)"
 msgstr ""
 
-#: globals/utilities.php:1375
+#: globals/utilities.php:1382
 msgid "Base"
 msgstr ""
 
-#: globals/utilities.php:1390
+#: globals/utilities.php:1397
 msgid "Dark Mode"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:303
 #: header-footer-grid/Core/Settings/Manager.php:181
-#: inc/customizer/options/main.php:53
+#: inc/customizer/options/main.php:54
 msgid "Layout"
 msgstr ""
 
@@ -509,7 +509,7 @@ msgid "Margin"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:784
-#: inc/customizer/options/main.php:57
+#: inc/customizer/options/main.php:59
 msgid "Typography"
 msgstr ""
 
@@ -537,7 +537,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:77
 #: header-footer-grid/Core/Components/Button.php:115
-#: inc/customizer/options/form_fields.php:571
+#: inc/customizer/options/form_fields.php:573
 msgid "Button"
 msgstr ""
 
@@ -568,7 +568,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:142
 #: header-footer-grid/Core/Components/SearchResponsive.php:184
-#: inc/customizer/options/form_fields.php:384
+#: inc/customizer/options/form_fields.php:386
 #: inc/customizer/controls/react/src/background/Background.js:20
 #: inc/customizer/controls/react/src/background/Background.js:71
 #: inc/customizer/controls/react/src/common/ColorControl.js:59
@@ -802,14 +802,14 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:194
 #: header-footer-grid/Core/Components/SearchResponsive.php:358
-#: inc/customizer/options/form_fields.php:225
+#: inc/customizer/options/form_fields.php:227
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:150
 msgid "Border Width"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:251
 #: header-footer-grid/Core/Components/SearchResponsive.php:415
-#: inc/customizer/options/form_fields.php:278
+#: inc/customizer/options/form_fields.php:280
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:131
 msgid "Border Radius"
 msgstr ""
@@ -1373,13 +1373,13 @@ msgid "Buttons"
 msgstr ""
 
 #: inc/customizer/options/buttons.php:59
-#: inc/customizer/options/form_fields.php:596
+#: inc/customizer/options/form_fields.php:598
 #: assets/js/src/gutenberg.js:13
 msgid "Primary"
 msgstr ""
 
 #: inc/customizer/options/buttons.php:62
-#: inc/customizer/options/form_fields.php:597
+#: inc/customizer/options/form_fields.php:599
 msgid "Secondary"
 msgstr ""
 
@@ -1409,44 +1409,48 @@ msgstr ""
 msgid "How the color system works"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:53
-#: inc/customizer/options/form_fields.php:70
+#: inc/customizer/options/form_fields.php:54
+msgid "Customize the general design of the form elements across the site."
+msgstr ""
+
+#: inc/customizer/options/form_fields.php:55
+#: inc/customizer/options/form_fields.php:72
 msgid "Form Fields"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:96
+#: inc/customizer/options/form_fields.php:98
 msgid "Field Padding"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:149
+#: inc/customizer/options/form_fields.php:151
 msgid "Field Spacing"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:183
+#: inc/customizer/options/form_fields.php:185
 msgid "Field Background Color"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:325
+#: inc/customizer/options/form_fields.php:327
 msgid "Border Color"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:363
+#: inc/customizer/options/form_fields.php:365
 msgid "Input Text"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:477
+#: inc/customizer/options/form_fields.php:479
 msgid "Form Labels"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:498
+#: inc/customizer/options/form_fields.php:500
 msgid "Label Spacing"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:591
+#: inc/customizer/options/form_fields.php:593
 msgid "Button Style"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:602
+#: inc/customizer/options/form_fields.php:604
 msgid "Customize the default button styles"
 msgstr ""
 
@@ -1676,6 +1680,22 @@ msgstr ""
 
 #: inc/customizer/options/layout_single_product.php:125
 msgid "All"
+msgstr ""
+
+#: inc/customizer/options/main.php:85
+msgid "Change main font"
+msgstr ""
+
+#: inc/customizer/options/main.php:89
+msgid "Change headings font"
+msgstr ""
+
+#: inc/customizer/options/main.php:93
+msgid "Change H1 font size"
+msgstr ""
+
+#: inc/customizer/options/main.php:97
+msgid "Change archive font size"
 msgstr ""
 
 #: inc/customizer/options/typography.php:111

@@ -68,8 +68,8 @@ class Instructions_Section extends \WP_Customize_Section {
 
 			<# if( data.options.description ) { #>
 			<p>{{data.options.description}}</p>
-			<# } #>
 			<hr>
+			<# } #>
 			<# if( data.options.quickLinks ) { #>
 			<div class="quick-links-wrap">
 				<span class="customize-control-title"><?php esc_html_e( 'Quick Links', 'neve' ); ?></span>
