@@ -1334,9 +1334,9 @@ function neve_get_headings_selectors() {
  * This should be used only in admin context, i.e options page, customizer
  * and it will automatically be switched off if the whitelabel is on.
  *
- * @param string        $link Link url.
- * @param string string $text Link text.
- * @param bool false    $echo Echo the result.
+ * @param string $link Link url.
+ * @param string $text Link text.
+ * @param bool   $echo Echo the result.
  *
  * @return string Full anchor tag.
  */
