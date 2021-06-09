@@ -1329,9 +1329,34 @@ function neve_get_headings_selectors() {
 }
 
 /**
+ * Return ready to use external anchor tag.
+ *
+ * @param string        $link Link url.
+ * @param string string $text Link text.
+ * @param bool false    $echo Echo the result.
+ *
+ * @return string Full anchor tag.
+ */
+function neve_external_link( $link, $text = '', $echo = false ) {
+	$text   = empty( $text ) ? __( 'Learn More', 'neve' ) : $text;
+	$return = sprintf(
+		'<a target="_blank" rel="external noopener noreferrer" href="' . esc_url( $link ) . '"><span class="screen-reader-text">%s</span><svg xmlns="http://www.w3.org/2000/svg" focusable="false" role="img" viewBox="0 0 512 512" width="12" height="12" style="margin-right: 5px;"><path fill="currentColor" d="M432 320H400a16 16 0 0 0-16 16V448H64V128H208a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16H48A48 48 0 0 0 0 112V464a48 48 0 0 0 48 48H400a48 48 0 0 0 48-48V336A16 16 0 0 0 432 320ZM488 0h-128c-21.4 0-32 25.9-17 41l35.7 35.7L135 320.4a24 24 0 0 0 0 34L157.7 377a24 24 0 0 0 34 0L435.3 133.3 471 169c15 15 41 4.5 41-17V24A24 24 0 0 0 488 0Z"/></svg>%s</a>',
+		esc_html__( '(opens in a new tab)', 'neve' ),
+		esc_html( $text )
+	);
+	if ( ! $echo ) {
+		return $return;
+	}
+	echo $return; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, Already escaped.
+	return '';
+}
+
+add_filter( 'neve_external_link', 'neve_external_link', 10, 3 );
+/**
  * Get Global Colors Default
  *
  * @param bool $migrated get with migrated colors.
+ *
  * @return array
  */
 function neve_get_global_colors_default( $migrated = false ) {

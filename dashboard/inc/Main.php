@@ -39,11 +39,10 @@ class Main {
 	 */
 	private $useful_plugins = [
 		'optimole-wp',
+		'wp-cloudflare-page-cache',
 		'templates-patterns-collection',
 		'themeisle-companion',
-		'feedzy-rss-feeds',
 		'otter-blocks',
-		'elementor',
 		'weglot',
 		'visualizer',
 		'wpforms-lite',
