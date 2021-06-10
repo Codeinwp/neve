@@ -78,6 +78,7 @@ class PaletteSwitch extends Abstract_Component {
 				if ( neve_is_amp() ) {
 					return $output . " [class]=\"isDark ? 'neve-dark-theme' : 'neve-light-theme'\" class=\"neve-dark-theme\" ";
 				}
+
 				return $output;
 			}
 		);
@@ -131,6 +132,7 @@ class PaletteSwitch extends Abstract_Component {
 		  .toggle-palette a:focus span.label {
 			text-decoration: underline;
 		  }';
+
 		return Dynamic_Css::minify_css( $css );
 	}
 
@@ -155,6 +157,7 @@ class PaletteSwitch extends Abstract_Component {
 				return true;
 			}
 		}
+
 		return false;
 	}
 
@@ -422,6 +425,7 @@ class PaletteSwitch extends Abstract_Component {
 		if ( in_array( $icon, array_keys( $available_icons ), true ) ) {
 			return $available_icons[ $icon ];
 		}
+
 		return $available_icons['contrast'];
 	}
 

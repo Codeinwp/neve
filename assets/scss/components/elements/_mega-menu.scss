@@ -15,7 +15,7 @@
 		flex: 1;
 
 		.sub-menu {
-			border: none;
+			border: 0;
 			padding-left: 0;
 
 			.sub-menu {
@@ -210,7 +210,7 @@
 		.neve-mega-menu .neve-mm-col {
 			padding: 0 10px;
 			align-items: flex-start;
-			border: none;
+			border: 0;
 		}
 
 		.neve-mega-menu .neve-mm-col:not(:last-child) {
@@ -219,7 +219,7 @@
 
 		.neve-mega-menu .neve-mm-col > .sub-menu {
 			li:not(.neve-mm-divider) {
-				border: none;
+				border: 0;
 			}
 		}
 	}

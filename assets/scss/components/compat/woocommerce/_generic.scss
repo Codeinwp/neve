@@ -29,12 +29,12 @@ main .nv-shop {
 //<editor-fold desc="Pagination">
 .woocommerce nav.woocommerce-pagination ul {
   display: flex;
-  border: none;
+  border: 0;
   margin: 0;
 
   li {
 	margin-right: $spacing-md;
-	border: none;
+	border: 0;
 
 	a, span {
 	  background: var(--nv-light-bg);

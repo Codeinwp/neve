@@ -486,20 +486,15 @@ class SearchResponsive extends Abstract_Component {
 		);
 	}
 
+
 	/**
-	 * Method to add Component css styles.
+	 * Add legacy style.
 	 *
-	 * @param array $css_array An array containing css rules.
+	 * @param array $css_array css array.
 	 *
 	 * @return array
-	 * @since   1.0.0
-	 * @access  public
 	 */
-	public function add_style( array $css_array = array() ) {
-		if ( is_admin_bar_showing() ) {
-			wp_add_inline_style( 'neve-style', 'body.admin-bar .floating .nv-nav-search {margin-top: 32px;}' );
-		}
-
+	private function add_legacy_style( $css_array ) {
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' a.nv-search.nv-icon > svg',
 			Dynamic_Selector::KEY_RULES    => [
@@ -646,36 +641,104 @@ class SearchResponsive extends Abstract_Component {
 	}
 
 	/**
+	 * Method to add Component css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function add_style( array $css_array = array() ) {
+		if ( is_admin_bar_showing() ) {
+			wp_add_inline_style( 'neve-style', 'body.admin-bar .floating .nv-nav-search {margin-top: 32px;}' );
+		}
+
+		if ( ! neve_is_new_skin() ) {
+			return $this->add_legacy_style( $css_array );
+		}
+
+
+		$rules = [
+			'--iconSize'              => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SIZE_ID ),
+				Dynamic_Selector::META_SUFFIX  => 'px',
+			],
+			'--color'                 => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
+			],
+			'--hoverColor'            => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
+			],
+			'--formFieldFontSize'     => [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_FONT_SIZE,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_FONT_SIZE ),
+			],
+			'--formFieldBorderWidth'  => [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_BORDER_WIDTH,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BORDER_WIDTH ),
+				'directional-prop'                   => Config::CSS_PROP_BORDER_WIDTH,
+			],
+			'--formFieldBorderRadius' => [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_BORDER_RADIUS,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BORDER_RADIUS ),
+				'directional-prop'                   => Config::CSS_PROP_BORDER_RADIUS,
+			],
+			'--formFieldBgColor'      => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_BG,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BG ),
+			],
+			'--formFieldBorderColor'  => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_TEXT_COLOR,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_TEXT_COLOR ),
+			],
+			'--formFieldColor'        => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_TEXT_COLOR,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_TEXT_COLOR ),
+			],
+			'--height'                => [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_HEIGHT,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_HEIGHT ),
+				Dynamic_Selector::META_SUFFIX        => 'px',
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector,
+			Dynamic_Selector::KEY_RULES    => $rules,
+		];
+
+		return parent::add_style( $css_array );
+	}
+
+	/**
 	 * The render method for the component.
 	 *
 	 * @since   1.0.0
 	 * @access  public
 	 */
 	public function render_component() {
-		add_filter( 'get_search_form', [ $this, 'change_placeholder' ] );
+		add_filter( 'nv_search_placeholder', [ $this, 'change_placeholder' ] );
 		Main::get_instance()->load( 'components/component-search-responsive' );
-		remove_filter( 'get_search_form', [ $this, 'change_placeholder' ] );
+		remove_filter( 'nv_search_placeholder', [ $this, 'change_placeholder' ] );
 	}
 
 	/**
 	 * Change the form placeholder.
 	 *
-	 * @param string $form form markup.
+	 * @param string $placeholder placeholder string.
 	 *
 	 * @return string
 	 */
-	public function change_placeholder( $form ) {
-		$form        = '';
-		$placeholder = get_theme_mod( $this->id . '_placeholder', __( 'Search for...', 'neve' ) );
-
-		$form .= '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">';
-		$form .= '<label>';
-		$form .= '<span class="screen-reader-text">' . __( 'Search for...', 'neve' ) . '</span>';
-		$form .= '<input type="search" class="search-field" placeholder="' . esc_html( $placeholder ) . '" value="" name="s">';
-		$form .= '</label>';
-		$form .= '<input type="submit" class="search-submit" value="Search">';
-		$form .= '</form>';
-
-		return $form;
+	public function change_placeholder( $placeholder ) {
+		return get_theme_mod( $this->id . '_placeholder', __( 'Search for...', 'neve' ) );
 	}
 }

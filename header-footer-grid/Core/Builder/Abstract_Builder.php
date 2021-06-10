@@ -1011,13 +1011,10 @@ abstract class Abstract_Builder implements Builder {
 			Dynamic_Selector::META_DEFAULT => $default_colors['text'],
 		];
 
-		$default_color = 'var(--nv-site-bg)';
-		if ( isset( $this->default_colors[ $this->get_id() ][ $row_index ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_index ] ) ) {
-			$default_color = $this->default_colors[ $this->get_id() ][ $row_index ];
-		}
+		// If there is no default, use site background.
+		$default_color = isset( $default_colors['background'] ) ? $default_colors['background'] : 'var(--nv-site-bg)';
 
-		$default_color = isset( $defaults['background'] ) ? $defaults['background'] : $default_color;
-		$background    = get_theme_mod(
+		$background = get_theme_mod(
 			$this->control_id . '_' . $row_index . '_background',
 			[
 				'type'       => 'color',

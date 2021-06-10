@@ -60,7 +60,9 @@ $desktop: map-get($gl-devices-list, desktop);
 
 [class*="row-inner"], .header-menu-sidebar-bg {
   position: relative;
-  background: var(--bgImage, none) var(--bgPosition, center) no-repeat;
+  background-image: var(--bgImage, none);
+  background-position: var(--bgPosition, center);
+  background-repeat: no-repeat;
   background-size: cover;
   background-attachment: var(--bgAttachment);
 

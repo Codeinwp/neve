@@ -82,7 +82,7 @@ class NavFooter extends Abstract_Component {
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'neve_sanitize_colors',
-				'default'               => 'var(--nv-text-color)',
+				'default'               => neve_is_new_skin() ? '' : 'var(--nv-text-color)',
 				'label'                 => __( 'Items Color', 'neve' ),
 				'type'                  => 'neve_color_control',
 				'section'               => $this->section,
@@ -208,13 +208,13 @@ class NavFooter extends Abstract_Component {
 	}
 
 	/**
-	 * Add styles to the component.
+	 * Add legacy style.
 	 *
-	 * @param array $css_array rules array.
+	 * @param array $css_array css array.
 	 *
 	 * @return array
 	 */
-	public function add_style( array $css_array = array() ) {
+	private function add_legacy_style( $css_array ) {
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.nav-menu-footer #footer-menu > li > a',
 			Dynamic_Selector::KEY_RULES    => [
@@ -304,6 +304,48 @@ class NavFooter extends Abstract_Component {
 					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ITEM_HEIGHT ),
 				],
 			],
+		];
+
+		return parent::add_style( $css_array );
+	}
+
+	/**
+	 * Add styles to the component.
+	 *
+	 * @param array $css_array rules array.
+	 *
+	 * @return array
+	 */
+	public function add_style( array $css_array = array() ) {
+		if ( ! neve_is_new_skin() ) {
+			return $this->add_legacy_style( $css_array );
+		}
+
+		$rules = [
+			'--color'      => [
+				Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::COLOR_ID,
+			],
+			'--hoverColor' => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
+			],
+			'--spacing'    => [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
+			],
+			'--height'     => [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ITEM_HEIGHT,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ITEM_HEIGHT ),
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
+			Dynamic_Selector::KEY_RULES    => $rules,
 		];
 
 		return parent::add_style( $css_array );

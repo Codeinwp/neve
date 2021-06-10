@@ -36,7 +36,7 @@ $notices: (
   .woocommerce-page .woocommerce-#{$noticeName} {
 	border-radius: 3px;
 	background: $color;
-	border: none;
+	border: 0;
 	color: #fff;
 
 	a, &:before {

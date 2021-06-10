@@ -110,7 +110,7 @@ class Nav extends Abstract_Component {
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'neve_sanitize_colors',
-				'default'               => 'var(--nv-text-color)',
+				'default'               => neve_is_new_skin() ? '' : 'var(--nv-text-color)',
 				'label'                 => __( 'Items Color', 'neve' ),
 				'type'                  => 'neve_color_control',
 				'section'               => $this->section,
@@ -358,8 +358,7 @@ class Nav extends Abstract_Component {
 
 		$rules = [
 			'--color'       => [
-				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
-				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
+				Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::COLOR_ID,
 			],
 			'--hoverColor'  => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
@@ -372,9 +371,7 @@ class Nav extends Abstract_Component {
 			'--spacing'     => [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-					return sprintf( '%s:%s;', $css_prop, absint( $value ) . 'px' );
-				},
+				Dynamic_Selector::META_SUFFIX        => 'px',
 				Dynamic_Selector::META_DEFAULT       => $this->get_default_for_responsive_from_intval( self::SPACING, 20 ),
 			],
 			'--height'      => [

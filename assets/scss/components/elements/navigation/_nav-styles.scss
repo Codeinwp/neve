@@ -36,14 +36,21 @@
 .style-full-height {
   li a:hover {
 	color: var(--color);
+
+	&:after {
+	  width: calc(100% + var(--spacing));
+	}
   }
 
   a {
 	z-index: 1;
+
 	&:after {
 	  margin: 0 auto;
 	  top: 0;
 	  bottom: 0;
+	  left: calc(var(--spacing) / 2 * -1);
+	  right: calc(var(--spacing) / 2 * -1);
 	  height: 100%;
 	  z-index: -1;
 	}
