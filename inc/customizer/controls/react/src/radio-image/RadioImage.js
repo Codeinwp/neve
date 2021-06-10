@@ -1,22 +1,34 @@
-/* global NeveProReactCustomize */
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { ExternalLink } from '@wordpress/components';
 
 const RadioImage = ({ choices, onClick, value, label, documentation }) => {
-
 	const renderDocumentation = () => {
-		//if ( NeveProReactCustomize && NeveProReactCustomize.whiteLabel ) return;
-		if ( documentation && documentation.link )
-			return (
-				<ExternalLink
-					href={documentation.link}
-					style={{ float: 'right', marginTop: '5px' }}
-				>
-					{documentation.label}
-				</ExternalLink>
-			)
-	}
+		if (typeof window.NeveProReactCustomize !== 'undefined') {
+			const { whiteLabel } = window.NeveProReactCustomize;
+
+			if (whiteLabel) {
+				return null;
+			}
+		}
+
+		if (!documentation) {
+			return null;
+		}
+
+		if (documentation.link) {
+			return null;
+		}
+
+		return (
+			<ExternalLink
+				href={documentation.link}
+				style={{ float: 'right', marginTop: '5px' }}
+			>
+				{documentation.label}
+			</ExternalLink>
+		);
+	};
 
 	return (
 		<>
