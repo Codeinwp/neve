@@ -1,7 +1,9 @@
+/* global NeveProReactCustomize */
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import { ExternalLink } from '@wordpress/components';
 
-const RadioImage = ({ choices, onClick, value, label }) => {
+const RadioImage = ({ choices, onClick, value, label, documentation }) => {
 	return (
 		<>
 			{label && (
@@ -36,6 +38,17 @@ const RadioImage = ({ choices, onClick, value, label }) => {
 					);
 				})}
 			</div>
+
+			{!NeveProReactCustomize.whiteLabel &&
+				documentation &&
+				documentation.link && (
+					<ExternalLink
+						href={documentation.link}
+						style={{ float: 'right', marginTop: '5px' }}
+					>
+						{documentation.label}
+					</ExternalLink>
+				)}
 		</>
 	);
 };
