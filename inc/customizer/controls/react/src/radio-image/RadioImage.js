@@ -1,21 +1,22 @@
-/* global NeveProReactCustomize */
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { ExternalLink } from '@wordpress/components';
 
 const RadioImage = ({ choices, onClick, value, label, documentation }) => {
 	const renderDocumentation = () => {
-		const { whiteLabel } = NeveProReactCustomize;
+		if (typeof window.NeveProReactCustomize !== 'undefined') {
+			const { whiteLabel } = window.NeveProReactCustomize;
 
-		if (whiteLabel) {
+			if (whiteLabel) {
+				return null;
+			}
+		}
+
+		if (!documentation) {
 			return null;
 		}
 
-		if (documentation === undefined) {
-			return null;
-		}
-
-		if (!documentation.link) {
+		if (documentation.link) {
 			return null;
 		}
 
