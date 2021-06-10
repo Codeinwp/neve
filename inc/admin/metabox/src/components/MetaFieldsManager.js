@@ -317,8 +317,14 @@ class MetaFieldsManager extends Component {
 	}
 
 	renderElementsGroup() {
-		let settings = {
-			elements: {
+		const metaElements = metaSidebar.isCoverLayout ?
+			{
+				'content': __( 'Content', 'neve'),
+				'tags': __( 'Tags', 'neve'),
+				'comments': __('Comments', 'neve' ),
+				'post-navigation': __( 'Post Navigation', 'neve')
+			} :
+			{
 				'title': __( 'Post Title', 'neve' ),
 				'meta': __( 'Post Meta', 'neve'),
 				'thumbnail': __( 'Featured Image', 'neve'),
@@ -326,7 +332,11 @@ class MetaFieldsManager extends Component {
 				'tags': __( 'Tags', 'neve'),
 				'comments': __('Comments', 'neve' ),
 				'post-navigation': __( 'Post Navigation', 'neve')
-			},
+			};
+
+		console.log( metaElements );
+		let settings = {
+			elements: metaElements,
 			default: metaSidebar.elementsDefaultOrder
 		};
 

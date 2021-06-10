@@ -488,7 +488,7 @@ abstract class Abstract_Component implements Component {
 					'group'                 => $this->get_id(),
 					'tab'                   => SettingsManager::TAB_LAYOUT,
 					'transport'             => $this->is_auto_width ? 'post' . $this->get_builder_id() : 'postMessage',
-					'sanitize_callback'     => [ $this, 'sanitize_alignment' ],
+					'sanitize_callback'     => 'neve_sanitize_alignment',
 					'default'               => [
 						'desktop' => $this->default_align,
 						'tablet'  => $this->default_align,
@@ -916,33 +916,5 @@ abstract class Abstract_Component implements Component {
 			'tablet'  => $old,
 			'desktop' => $old,
 		];
-	}
-
-	/**
-	 * Sanitize alignment.
-	 *
-	 * @param array $input alignment responsive array.
-	 *
-	 * @return array
-	 */
-	public function sanitize_alignment( $input ) {
-		$default = [
-			'mobile'  => 'left',
-			'tablet'  => 'left',
-			'desktop' => 'left',
-		];
-		$allowed = [ 'left', 'center', 'right', 'justify' ];
-
-		if ( ! is_array( $input ) ) {
-			return $default;
-		}
-
-		foreach ( $input as $device => $alignment ) {
-			if ( ! in_array( $alignment, $allowed ) ) {
-				$input[ $device ] = 'left';
-			}
-		}
-
-		return $input;
 	}
 }

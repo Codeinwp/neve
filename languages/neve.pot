@@ -328,6 +328,7 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:310
 #: inc/admin/metabox/main.php:38
 #: inc/customizer/options/layout_container.php:133
+#: inc/customizer/options/layout_single_post.php:521
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:190
 msgid "Contained"
 msgstr ""
@@ -471,6 +472,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
 #: inc/customizer/options/layout_sidebar.php:129
+#: inc/customizer/options/layout_single_post.php:262
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:161
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:108
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:45
@@ -479,11 +481,13 @@ msgid "Left"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:469
+#: inc/customizer/options/layout_single_post.php:266
 msgid "Center"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
 #: inc/customizer/options/layout_sidebar.php:133
+#: inc/customizer/options/layout_single_post.php:270
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:163
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:106
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:43
@@ -514,6 +518,7 @@ msgid "Typography"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:865
+#: inc/customizer/options/layout_single_post.php:308
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:105
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:42
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:111
@@ -521,10 +526,12 @@ msgid "Top"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:869
+#: inc/customizer/options/layout_single_post.php:312
 msgid "Middle"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:873
+#: inc/customizer/options/layout_single_post.php:316
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:107
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:44
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:121
@@ -567,8 +574,10 @@ msgid "Icon Size"
 msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:142
-#: header-footer-grid/Core/Components/SearchResponsive.php:184
-#: inc/customizer/options/form_fields.php:386
+#: header-footer-grid/Core/Components/SearchResponsive.php:184 
+#: inc/customizer/options/form_fields.php:384
+#: inc/customizer/options/layout_single_post.php:489 
+#: inc/customizer/options/form_fields.php:386 
 #: inc/customizer/controls/react/src/background/Background.js:20
 #: inc/customizer/controls/react/src/background/Background.js:71
 #: inc/customizer/controls/react/src/common/ColorControl.js:59
@@ -954,7 +963,8 @@ msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:543
 #: inc/customizer/options/layout_blog.php:390
-#: inc/views/partials/post_meta.php:143
+#: inc/customizer/options/layout_single_post.php:663
+#: inc/views/partials/post_meta.php:182
 msgid "Author"
 msgstr ""
 
@@ -1117,12 +1127,12 @@ msgid "Components"
 msgstr ""
 
 #: inc/admin/metabox/main.php:71
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:361
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:371
 msgid "Disable Header"
 msgstr ""
 
 #: inc/admin/metabox/main.php:76
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:387
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:397
 msgid "Disable Title"
 msgstr ""
 
@@ -1131,7 +1141,7 @@ msgid "Disable Featured Image"
 msgstr ""
 
 #: inc/admin/metabox/main.php:88
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:373
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:383
 msgid "Disable Footer"
 msgstr ""
 
@@ -1144,21 +1154,21 @@ msgid "Enable Individual Content Width"
 msgstr ""
 
 #. translators: %s - post type
-#: inc/admin/metabox/manager.php:128
-#: inc/admin/metabox/manager.php:145
+#: inc/admin/metabox/manager.php:132
+#: inc/admin/metabox/manager.php:149
 msgid "%s Settings"
 msgstr ""
 
-#: inc/admin/metabox/manager.php:184
+#: inc/admin/metabox/manager.php:188
 msgid "Page Settings are now accessible from the top bar"
 msgstr ""
 
 #. translators: %1$s - Keyboard shortcut.   %2&s - svg icon
-#: inc/admin/metabox/manager.php:187
+#: inc/admin/metabox/manager.php:191
 msgid "Click the %1$s icon in the top bar or use the keyboard shortcut ( %2$s ) to customise the layout settings for this page"
 msgstr ""
 
-#: inc/admin/metabox/manager.php:194
+#: inc/admin/metabox/manager.php:198
 msgid "or"
 msgstr ""
 
@@ -1364,6 +1374,23 @@ msgstr ""
 msgid "Shop Sidebar"
 msgstr ""
 
+#: inc/customizer/base_customizer.php:345
+msgid "Boxed layout"
+msgstr ""
+
+#: inc/customizer/base_customizer.php:364
+msgid "Section padding"
+msgstr ""
+
+#: inc/customizer/base_customizer.php:398
+msgid "Background color"
+msgstr ""
+
+#: inc/customizer/base_customizer.php:431
+#: inc/customizer/options/layout_single_post.php:394
+msgid "Text color"
+msgstr ""
+
 #: inc/customizer/controls/upsell_control.php:96
 msgid "PRO"
 msgstr ""
@@ -1372,14 +1399,18 @@ msgstr ""
 msgid "Buttons"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:59
-#: inc/customizer/options/form_fields.php:598
+#: inc/customizer/options/buttons.php:59 
+#: inc/customizer/options/form_fields.php:596
+#: inc/customizer/options/layout_single_post.php:877 
+#: inc/customizer/options/form_fields.php:598 
 #: assets/js/src/gutenberg.js:13
 msgid "Primary"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:62
-#: inc/customizer/options/form_fields.php:599
+#: inc/customizer/options/buttons.php:62 
+#: inc/customizer/options/form_fields.php:597
+#: inc/customizer/options/layout_single_post.php:878 
+#: inc/customizer/options/form_fields.php:599 
 msgid "Secondary"
 msgstr ""
 
@@ -1504,12 +1535,14 @@ msgid "Infinite Scroll"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:289
-#: inc/customizer/options/layout_single_post.php:68
+#: inc/customizer/options/layout_single_post.php:556
+#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:52
 msgid "Thumbnail"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:290
-#: inc/customizer/options/layout_single_post.php:67
+#: inc/customizer/options/layout_single_post.php:555
+#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:46
 msgid "Title & Meta"
 msgstr ""
 
@@ -1530,45 +1563,70 @@ msgid "Thumbnail Shadow"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:369
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:323
+#: inc/customizer/options/layout_single_post.php:82
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:329
 msgid "Post Meta"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:391
+#: inc/customizer/options/layout_single_post.php:664
 #: inc/customizer/options/layout_single_product.php:107
-#: inc/views/partials/post_meta.php:144
+#: inc/views/partials/post_meta.php:183
 msgid "Category"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:392
-#: inc/views/partials/post_meta.php:145
+#: inc/customizer/options/layout_single_post.php:665
+#: inc/views/partials/post_meta.php:184
 msgid "Date"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:393
-#: inc/customizer/options/layout_single_post.php:72
-#: inc/views/partials/post_meta.php:146
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:327
+#: inc/customizer/options/layout_single_post.php:88
+#: inc/customizer/options/layout_single_post.php:560
+#: inc/customizer/options/layout_single_post.php:568
+#: inc/customizer/options/layout_single_post.php:666
+#: inc/views/partials/post_meta.php:185
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:324
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:333
 msgid "Comments"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:405
+#: inc/customizer/options/layout_single_post.php:678
 msgid "Meta Order"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:423
+#: inc/customizer/options/layout_blog.php:425
+#: inc/customizer/options/layout_single_post.php:698
+msgid "Separator"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:426
+#: inc/customizer/options/layout_single_post.php:699
+msgid "For special characters make sure to use Unicode. For example > can be displayed using \\003E."
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:440
+#: inc/customizer/options/layout_single_post.php:714
 msgid "Show Author Avatar"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:439
+#: inc/customizer/options/layout_blog.php:462
+#: inc/customizer/options/layout_single_post.php:740
+msgid "Avatar Size"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:516
+#: inc/customizer/options/layout_single_post.php:793
 msgid "Use last updated date instead of the published one"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:601
+#: inc/customizer/options/layout_blog.php:650
 msgid "Customize Typography for the Archive page"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:603
+#: inc/customizer/options/layout_blog.php:652
 msgid "here"
 msgstr ""
 
@@ -1609,7 +1667,7 @@ msgid "Enable Advanced Options"
 msgstr ""
 
 #: inc/customizer/options/layout_sidebar.php:164
-#: inc/customizer/options/layout_single_post.php:42
+#: inc/customizer/options/layout_single_post.php:58
 #: inc/customizer/options/typography.php:339
 msgid "Single Post"
 msgstr ""
@@ -1644,23 +1702,163 @@ msgstr ""
 msgid "Content Width (%)"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:69
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:325
+#: inc/customizer/options/layout_single_post.php:71
+msgid "Header Layout"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:76
+msgid "Page Elements"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:97
+msgid "Comments Section"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:106
+msgid "Submit Form Section"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:155
+#: inc/customizer/options/layout_single_post.php:481
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:39
+msgid "Normal"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:159
+msgid "Cover"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:177
+msgid "Cover height"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:223
+msgid "Cover padding"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:257
+msgid "Title Alignment"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:303
+msgid "Title Position"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:349
+msgid "Display meta before title"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:368
+msgid "Overlay color"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:421
+msgid "Overlay opacity"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:457
+msgid "Hide featured image"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:476
+msgid "Blend mode"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:482
+msgid "Multiply"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:483
+msgid "Screen"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:484
+msgid "Overlay"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:485
+msgid "Darken"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:486
+msgid "Lighten"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:487
+msgid "Color Dodge"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:488
+msgid "Saturation"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:490
+msgid "Difference"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:491
+msgid "Exclusion"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:492
+msgid "Hue"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:493
+msgid "Luminosity"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:516
+msgid "Cover container"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:522
+msgid "Full width"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:557
+#: inc/customizer/options/layout_single_post.php:565
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:322
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:331
 msgid "Content"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:70
-#: inc/views/partials/post_meta.php:295
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:326
+#: inc/customizer/options/layout_single_post.php:558
+#: inc/customizer/options/layout_single_post.php:566
+#: inc/views/partials/post_meta.php:337
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:323
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:332
 msgid "Tags"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:71
+#: inc/customizer/options/layout_single_post.php:559
+#: inc/customizer/options/layout_single_post.php:567
 msgid "Post navigation"
 msgstr ""
 
-#: inc/customizer/options/layout_single_post.php:84
+#: inc/customizer/options/layout_single_post.php:591
 msgid "Elements Order"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:608
+msgid "Spacing between elements"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:814
+#: inc/customizer/options/layout_single_post.php:853
+msgid "Section title"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:815
+msgid "The following magic tags are available for this field: {title} and {comments_number}. Leave this field empty for default behavior."
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:872
+msgid "Button style"
+msgstr ""
+
+#: inc/customizer/options/layout_single_post.php:894
+msgid "Button text"
 msgstr ""
 
 #: inc/customizer/options/layout_single_product.php:71
@@ -1812,64 +2010,64 @@ msgstr ""
 msgid "Search Results for: %s"
 msgstr ""
 
-#: inc/views/partials/comments.php:63
+#: inc/views/partials/comments.php:76
 msgid "Comments are closed."
 msgstr ""
 
-#: inc/views/partials/comments.php:81
+#: inc/views/partials/comments.php:123
 msgid "Comments Navigation"
 msgstr ""
 
-#: inc/views/partials/comments.php:86
+#: inc/views/partials/comments.php:128
 msgid "Previous"
 msgstr ""
 
-#: inc/views/partials/comments.php:89
+#: inc/views/partials/comments.php:131
 msgid "Next"
 msgstr ""
 
-#: inc/views/partials/comments.php:112
+#: inc/views/partials/comments.php:154
 msgid "Pingback:"
 msgstr ""
 
-#: inc/views/partials/comments.php:114
-#: inc/views/partials/comments.php:145
+#: inc/views/partials/comments.php:156
+#: inc/views/partials/comments.php:187
 #: inc/customizer/controls/react/src/common/CustomPalette.js:18
 msgid "Edit"
 msgstr ""
 
 #. translators: 1: date, 2: time
-#: inc/views/partials/comments.php:136
+#: inc/views/partials/comments.php:178
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: inc/views/partials/comments.php:151
+#: inc/views/partials/comments.php:193
 msgid "Reply"
 msgstr ""
 
-#: inc/views/partials/comments.php:164
+#: inc/views/partials/comments.php:206
 msgid "Comment awaiting moderation."
 msgstr ""
 
 #. translators: number of comments
-#: inc/views/partials/comments.php:185
+#: inc/views/partials/comments.php:231
 msgctxt "comments title"
 msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/views/partials/post_meta.php:188
+#: inc/views/partials/post_meta.php:227
 msgid "by"
 msgstr ""
 
 #. translators: %s: Author's display name.
-#: inc/views/partials/post_meta.php:195
+#: inc/views/partials/post_meta.php:234
 msgid "Posts by %s"
 msgstr ""
 
 #. translators: %s: number of comments
-#: inc/views/partials/post_meta.php:281
+#: inc/views/partials/post_meta.php:323
 msgid "%s Comment"
 msgid_plural "%s Comments"
 msgstr[0] ""
@@ -2206,39 +2404,40 @@ msgstr ""
 msgid "Reading Time"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:322
-msgid "Post Title"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:324
-msgid "Featured Image"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:328
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:325
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:334
 msgid "Post Navigation"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:334
-msgid "Author Biography"
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:328
+msgid "Post Title"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:335
-msgid "Related Posts"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:336
-msgid "Sharing Icons"
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:330
+msgid "Featured Image"
 msgstr ""
 
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:344
+msgid "Author Biography"
+msgstr ""
+
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:345
+msgid "Related Posts"
+msgstr ""
+
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:346
+msgid "Sharing Icons"
+msgstr ""
+
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:354
 msgid "Elements"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:405
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:415
 msgid "Reset all options to default"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:414
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:424
 msgid "Return to customizer settings"
 msgstr ""
 
@@ -2297,10 +2496,6 @@ msgstr ""
 
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:20
 msgid "Outline"
-msgstr ""
-
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:39
-msgid "Normal"
 msgstr ""
 
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:41

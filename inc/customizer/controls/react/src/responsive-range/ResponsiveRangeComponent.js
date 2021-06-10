@@ -7,7 +7,6 @@ import { maybeParseJson, getIntValAsResponsive } from '../common/common';
 
 import { RangeControl, Button } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
-import { mapValues } from 'lodash';
 
 const ResponsiveRangeComponent = ({ control }) => {
 	const parsedValue = maybeParseJson(control.setting.get());
@@ -57,9 +56,14 @@ const ResponsiveRangeComponent = ({ control }) => {
 		}
 
 		return units.map((unit, index) => {
+			const suffixValue =
+				value.suffix && value.suffix[currentDevice]
+					? value.suffix[currentDevice]
+					: defaultVal.suffix[currentDevice];
 			const buttonClass = classnames({
-				active: value[currentDevice + '-unit'] === unit,
+				active: suffixValue === unit,
 			});
+
 			return (
 				<Button
 					key={index}
@@ -67,18 +71,15 @@ const ResponsiveRangeComponent = ({ control }) => {
 					className={buttonClass}
 					onClick={() => {
 						const nextValue = { ...value };
-						nextValue[currentDevice + '-unit'] = unit;
+						nextValue.suffix = { ...nextValue.suffix };
+						nextValue.suffix[currentDevice] = unit;
 						if (unit !== 'em') {
-							nextValue[currentDevice] = mapValues(
-								nextValue[currentDevice],
-								(valueToSet) =>
-									valueToSet
-										? parseInt(valueToSet)
-										: valueToSet
+							nextValue[currentDevice] = parseInt(
+								nextValue[currentDevice]
 							);
 						}
 						setValue(nextValue);
-						control.setting.set(nextValue);
+						control.setting.set(JSON.stringify(nextValue));
 					}}
 				>
 					{unit}
@@ -94,8 +95,9 @@ const ResponsiveRangeComponent = ({ control }) => {
 		control.setting.set(JSON.stringify(nextValue));
 	};
 
-	let displayValue = parseInt(value[currentDevice]);
-	displayValue = displayValue === 0 ? 0 : displayValue || '';
+	let displayValue = parseFloat(value[currentDevice]);
+	displayValue =
+		displayValue === 0 ? 0 : displayValue || defaultVal.currentDevice;
 
 	return (
 		<div className="neve-white-background-control neve-range-control">
