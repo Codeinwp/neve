@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 const Ordering = lazy(() =>
 	import(/* webpackChunkName: "ordering" */ './Ordering')
 );
-import { useState, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 const OrderingComponent = ({ control }) => {

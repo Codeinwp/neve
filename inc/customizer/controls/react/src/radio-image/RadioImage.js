@@ -4,6 +4,20 @@ import PropTypes from 'prop-types';
 import { ExternalLink } from '@wordpress/components';
 
 const RadioImage = ({ choices, onClick, value, label, documentation }) => {
+
+	const renderDocumentation = () => {
+		//if ( NeveProReactCustomize && NeveProReactCustomize.whiteLabel ) return;
+		if ( documentation && documentation.link )
+			return (
+				<ExternalLink
+					href={documentation.link}
+					style={{ float: 'right', marginTop: '5px' }}
+				>
+					{documentation.label}
+				</ExternalLink>
+			)
+	}
+
 	return (
 		<>
 			{label && (
@@ -39,16 +53,7 @@ const RadioImage = ({ choices, onClick, value, label, documentation }) => {
 				})}
 			</div>
 
-			{!NeveProReactCustomize.whiteLabel &&
-				documentation &&
-				documentation.link && (
-					<ExternalLink
-						href={documentation.link}
-						style={{ float: 'right', marginTop: '5px' }}
-					>
-						{documentation.label}
-					</ExternalLink>
-				)}
+			{renderDocumentation()}
 		</>
 	);
 };
