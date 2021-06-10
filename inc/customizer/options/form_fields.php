@@ -586,7 +586,7 @@ class Form_Fields extends Base_Customizer {
 			new Control(
 				'neve_form_button_type',
 				[
-					'sanitize_callback' => 'sanitize_button_type',
+					'sanitize_callback' => 'neve_sanitize_button_type',
 					'default'           => 'primary',
 				],
 				[

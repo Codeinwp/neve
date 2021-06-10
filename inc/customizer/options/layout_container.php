@@ -120,7 +120,7 @@ class Layout_Container extends Base_Customizer {
 				new Control(
 					$control_id,
 					array(
-						'sanitize_callback' => 'sanitize_container_layout',
+						'sanitize_callback' => 'neve_sanitize_container_layout',
 						'transport'         => $this->selective_refresh,
 						'default'           => 'contained',
 					),
