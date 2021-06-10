@@ -26,10 +26,17 @@ class Radio_Image extends \WP_Customize_Control {
 	 */
 	public $choices = [];
 	/**
+	 * Additional arguments passed to JS.
+	 *
+	 * @var array
+	 */
+	public $documentation = [];
+	/**
 	 * Send to JS.
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['choices'] = $this->choices;
+		$this->json['choices']       = $this->choices;
+		$this->json['documentation'] = $this->documentation;
 	}
 }

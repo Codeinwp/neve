@@ -99,10 +99,6 @@
       float: right;
     }
   }
-
-  input[type=submit] {
-    @extend %nv-button-secondary;
-  }
 }
 
 .comment-form {

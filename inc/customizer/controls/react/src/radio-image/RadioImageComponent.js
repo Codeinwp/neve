@@ -5,7 +5,7 @@ import { useState } from '@wordpress/element';
 
 const RadioImageComponent = ({ control }) => {
 	const [value, setValue] = useState(control.setting.get());
-	const { choices, label } = control.params;
+	const { choices, label, documentation } = control.params;
 
 	const updateValue = (newVal) => {
 		setValue(newVal);
@@ -15,6 +15,7 @@ const RadioImageComponent = ({ control }) => {
 	return (
 		<RadioImage
 			label={label}
+			documentation={documentation}
 			choices={choices}
 			onClick={updateValue}
 			value={value}

@@ -81,6 +81,7 @@ const Ordering = ({
 	label,
 	value,
 	allowsToggle = true,
+	orderHeaderElements,
 }) => {
 	const disabled = Object.keys(components).filter(
 		(item) => !value.includes(item)
@@ -124,6 +125,7 @@ const Ordering = ({
 								slug={slug}
 								onToggle={handleToggle}
 								allowsToggle={allowsToggle}
+								orderHeaderElements={orderHeaderElements}
 							/>
 						)
 				)}
