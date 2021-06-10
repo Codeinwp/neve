@@ -140,7 +140,7 @@ class Product_Layout extends Base_View {
 			return;
 		}
 		$dots = 0;
-		echo '<section class="exclusive products">';
+		echo '<section class="' . esc_attr( apply_filters( 'neve_exclusive_products_class', 'exclusive products' ) ) . '">';
 		if ( ! empty( $title ) ) {
 			echo '<h2>' . wp_kses_post( $title ) . '</h2>';
 		}

@@ -34,230 +34,230 @@ msgstr ""
 msgid "https://themeisle.com"
 msgstr ""
 
+#: dashboard/inc/Main.php:127
 #: dashboard/inc/Main.php:128
-#: dashboard/inc/Main.php:129
 #: inc/admin/metabox/src/components/Sidebar.js:55
 msgid "Options"
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:203
+#: dashboard/inc/Main.php:202
 msgid "%s Options"
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:205
+#: dashboard/inc/Main.php:204
 #: inc/core/admin.php:263
 msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:207
+#: dashboard/inc/Main.php:206
 msgid "With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else."
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:209
+#: dashboard/inc/Main.php:208
 msgid "In order to be able to import any starter sites for %s you would need to have the Cloud Templates & Patterns Collection plugin active."
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:211
+#: dashboard/inc/Main.php:210
 msgid "In order to be able to import any starter sites for %s you would need to have the Cloud Templates & Patterns Collection plugin updated to the latest version."
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:213
+#: dashboard/inc/Main.php:212
 msgid "We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products."
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:215
+#: dashboard/inc/Main.php:214
 #: inc/core/admin.php:271
 msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
 msgstr ""
 
 #. translators: %s - "Neve Pro Addon"
-#: dashboard/inc/Main.php:217
+#: dashboard/inc/Main.php:216
 msgid "%s license"
 msgstr ""
 
 #. translators: %s - "Neve Pro Addon"
-#: dashboard/inc/Main.php:219
+#: dashboard/inc/Main.php:218
 msgid "Please update %s to the latest version and then refresh this page to have access to the options."
 msgstr ""
 
 #. translators: store name (Themeisle)
-#: dashboard/inc/Main.php:223
+#: dashboard/inc/Main.php:222
 msgid "Enter your license from %1$s purchase history in order to get plugin updates"
 msgstr ""
 
 #. translators: store name (Themeisle)
-#: dashboard/inc/Main.php:224
+#: dashboard/inc/Main.php:223
 #: inc/customizer/options/upsells.php:106
 msgid "(opens in new tab)"
 msgstr ""
 
 #. translators: s - theme name (Neve).
-#: dashboard/inc/Main.php:263
+#: dashboard/inc/Main.php:262
 msgid "New theme update for %1$s! Please update to %2$s."
 msgstr ""
 
-#: dashboard/inc/Main.php:268
-#: dashboard/inc/Main.php:289
+#: dashboard/inc/Main.php:267
+#: dashboard/inc/Main.php:288
 msgid "Update Now"
 msgstr ""
 
 #. translators: s - Pro plugin name (Neve Pro)
-#: dashboard/inc/Main.php:280
+#: dashboard/inc/Main.php:279
 msgid "New plugin update for %1$s! Please update to %2$s."
 msgstr ""
 
 #. translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro)
-#: dashboard/inc/Main.php:298
+#: dashboard/inc/Main.php:297
 msgid "We recommend that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility."
 msgstr ""
 
-#: dashboard/inc/Main.php:313
+#: dashboard/inc/Main.php:312
 msgid "Upload Logo"
 msgstr ""
 
-#: dashboard/inc/Main.php:317
+#: dashboard/inc/Main.php:316
 msgid "Set Colors"
 msgstr ""
 
-#: dashboard/inc/Main.php:321
+#: dashboard/inc/Main.php:320
 msgid "Customize Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:325
+#: dashboard/inc/Main.php:324
 msgid "Layout Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:329
+#: dashboard/inc/Main.php:328
 msgid "Header Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:333
+#: dashboard/inc/Main.php:332
 msgid "Blog Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:337
+#: dashboard/inc/Main.php:336
 msgid "Footer Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:341
+#: dashboard/inc/Main.php:340
 #: inc/customizer/options/layout_sidebar.php:43
 msgid "Content / Sidebar"
 msgstr ""
 
-#: dashboard/inc/Main.php:374
+#: dashboard/inc/Main.php:373
 msgid "Header/Footer builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:375
+#: dashboard/inc/Main.php:374
 msgid "Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO."
 msgstr ""
 
-#: dashboard/inc/Main.php:380
+#: dashboard/inc/Main.php:379
 msgid "Page Builder Compatibility"
 msgstr ""
 
-#: dashboard/inc/Main.php:381
+#: dashboard/inc/Main.php:380
 msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders."
 msgstr ""
 
-#: dashboard/inc/Main.php:386
+#: dashboard/inc/Main.php:385
 #: inc/customizer/options/upsells.php:91
 msgid "Header Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:387
+#: dashboard/inc/Main.php:386
 msgid "Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:392
+#: dashboard/inc/Main.php:391
 msgid "Page Header Builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:393
+#: dashboard/inc/Main.php:392
 msgid "The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder."
 msgstr ""
 
-#: dashboard/inc/Main.php:398
+#: dashboard/inc/Main.php:397
 #: inc/customizer/options/upsells.php:94
 msgid "Custom Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:399
+#: dashboard/inc/Main.php:398
 msgid "Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme."
 msgstr ""
 
-#: dashboard/inc/Main.php:404
+#: dashboard/inc/Main.php:403
 #: inc/customizer/options/upsells.php:92
 msgid "Blog Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:405
+#: dashboard/inc/Main.php:404
 msgid "Give a huge boost to your entire blogging experience with features specially designed for increased user experience."
 msgstr ""
 
-#: dashboard/inc/Main.php:405
+#: dashboard/inc/Main.php:404
 msgid "Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:410
+#: dashboard/inc/Main.php:409
 #: inc/customizer/options/upsells.php:97
 msgid "Elementor Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:411
+#: dashboard/inc/Main.php:410
 #: inc/customizer/options/upsells.php:102
 msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
 msgstr ""
 
-#: dashboard/inc/Main.php:416
+#: dashboard/inc/Main.php:415
 #: inc/customizer/options/upsells.php:93
 msgid "WooCommerce Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:417
+#: dashboard/inc/Main.php:416
 msgid "Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration."
 msgstr ""
 
-#: dashboard/inc/Main.php:417
+#: dashboard/inc/Main.php:416
 msgid "Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:422
+#: dashboard/inc/Main.php:421
 msgid "LifterLMS Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:423
+#: dashboard/inc/Main.php:422
 msgid "Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations."
 msgstr ""
 
-#: dashboard/inc/Main.php:428
+#: dashboard/inc/Main.php:427
 msgid "Typekit(Adobe) Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:429
+#: dashboard/inc/Main.php:428
 msgid "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options."
 msgstr ""
 
-#: dashboard/inc/Main.php:434
+#: dashboard/inc/Main.php:433
 msgid "White Label"
 msgstr ""
 
-#: dashboard/inc/Main.php:435
+#: dashboard/inc/Main.php:434
 msgid "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own."
 msgstr ""
 
-#: dashboard/inc/Main.php:440
+#: dashboard/inc/Main.php:439
 msgid "Scroll To Top"
 msgstr ""
 
-#: dashboard/inc/Main.php:441
+#: dashboard/inc/Main.php:440
 msgid "Simple but effective module to help you navigate back to the top of the really long pages."
 msgstr ""
 
@@ -275,17 +275,43 @@ msgstr ""
 msgid "You appear to be running the Neve theme from source code. Please finish installation by running %s."
 msgstr ""
 
-#: globals/utilities.php:1350
+#: globals/utilities.php:1344
+#: inc/customizer/options/upsells.php:115
+#: inc/customizer/options/upsells.php:120
+#: inc/customizer/options/upsells.php:129
+#: inc/customizer/options/upsells.php:134
+#: inc/customizer/options/upsells.php:139
+#: inc/customizer/options/upsells.php:144
+#: dashboard/src/Components/Content/Help.js:34
+#: dashboard/src/Components/Content/Help.js:78
+#: dashboard/src/Components/Content/Help.js:111
+#: dashboard/src/Components/ModuleCard.js:168
+msgid "Learn More"
+msgstr ""
+
+#: globals/utilities.php:1347
+#: header-footer-grid/Core/Builder/Footer.php:47
+#: header-footer-grid/Core/Builder/Header.php:51
+#: inc/core/admin.php:273
+#: inc/customizer/controls/simple_upsell.php:64
+#: inc/customizer/options/upsells.php:46
+#: dashboard/src/Components/Content/FreePro.js:39
+#: dashboard/src/Components/Content/Help.js:60
+#: dashboard/src/Components/Content/Help.js:95
+msgid "(opens in a new tab)"
+msgstr ""
+
+#: globals/utilities.php:1382
 msgid "Base"
 msgstr ""
 
-#: globals/utilities.php:1365
+#: globals/utilities.php:1397
 msgid "Dark Mode"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:303
 #: header-footer-grid/Core/Settings/Manager.php:181
-#: inc/customizer/options/main.php:53
+#: inc/customizer/options/main.php:54
 msgid "Layout"
 msgstr ""
 
@@ -377,17 +403,6 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Footer.php:41
 #: header-footer-grid/Core/Builder/Header.php:45
 msgid "Design your %1$s by dragging, dropping and resizing all the elements in real-time. %2$s."
-msgstr ""
-
-#: header-footer-grid/Core/Builder/Footer.php:47
-#: header-footer-grid/Core/Builder/Header.php:51
-#: inc/core/admin.php:273
-#: inc/customizer/controls/simple_upsell.php:64
-#: inc/customizer/options/upsells.php:46
-#: dashboard/src/Components/Content/FreePro.js:39
-#: dashboard/src/Components/Content/Help.js:60
-#: dashboard/src/Components/Content/Help.js:95
-msgid "(opens in a new tab)"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:48
@@ -498,7 +513,7 @@ msgid "Margin"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:784
-#: inc/customizer/options/main.php:57
+#: inc/customizer/options/main.php:59
 msgid "Typography"
 msgstr ""
 
@@ -529,7 +544,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:77
 #: header-footer-grid/Core/Components/Button.php:115
-#: inc/customizer/options/form_fields.php:571
+#: inc/customizer/options/form_fields.php:573
 msgid "Button"
 msgstr ""
 
@@ -553,14 +568,16 @@ msgid "Cart Icon"
 msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:116
+#: header-footer-grid/Core/Components/PaletteSwitch.php:320
 #: header-footer-grid/Core/Components/SearchResponsive.php:154
 msgid "Icon Size"
 msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:142
-#: header-footer-grid/Core/Components/SearchResponsive.php:184
+#: header-footer-grid/Core/Components/SearchResponsive.php:184 
 #: inc/customizer/options/form_fields.php:384
-#: inc/customizer/options/layout_single_post.php:489
+#: inc/customizer/options/layout_single_post.php:489 
+#: inc/customizer/options/form_fields.php:386 
 #: inc/customizer/controls/react/src/background/Background.js:20
 #: inc/customizer/controls/react/src/background/Background.js:71
 #: inc/customizer/controls/react/src/common/ColorControl.js:59
@@ -723,6 +740,46 @@ msgstr ""
 msgid "Footer Menu"
 msgstr ""
 
+#: header-footer-grid/Core/Components/PaletteSwitch.php:67
+msgid "Palette Switch"
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:257
+msgid "Light Palette"
+msgstr ""
+
+#. translators: %s: Link to Edit global color customizer.
+#: header-footer-grid/Core/Components/PaletteSwitch.php:259
+msgid "The base palette is used for light mode. %1$sEdit color palettes%2$s."
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:272
+#: header-footer-grid/Core/Components/PaletteSwitch.php:273
+msgid "Dark Palette"
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:294
+#: header-footer-grid/Core/Components/PaletteSwitch.php:295
+msgid "Select icon"
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:351
+msgid "Label"
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:354
+msgid "Leave blank for no label ..."
+msgstr ""
+
+#: header-footer-grid/Core/Components/PaletteSwitch.php:371
+msgid "Automatically adjust color scheme"
+msgstr ""
+
+#. translators: %s: Link to Learn More page.
+#: header-footer-grid/Core/Components/PaletteSwitch.php:373
+msgid "Adjust default color scheme based on the user device preferences. %1$sLearn More%2$s."
+msgstr ""
+
 #: header-footer-grid/Core/Components/Search.php:42
 msgid "Search Form"
 msgstr ""
@@ -754,14 +811,14 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:194
 #: header-footer-grid/Core/Components/SearchResponsive.php:358
-#: inc/customizer/options/form_fields.php:225
+#: inc/customizer/options/form_fields.php:227
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:150
 msgid "Border Width"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:251
 #: header-footer-grid/Core/Components/SearchResponsive.php:415
-#: inc/customizer/options/form_fields.php:278
+#: inc/customizer/options/form_fields.php:280
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:131
 msgid "Border Radius"
 msgstr ""
@@ -1342,16 +1399,18 @@ msgstr ""
 msgid "Buttons"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:59
+#: inc/customizer/options/buttons.php:59 
 #: inc/customizer/options/form_fields.php:596
-#: inc/customizer/options/layout_single_post.php:877
+#: inc/customizer/options/layout_single_post.php:877 
+#: inc/customizer/options/form_fields.php:598 
 #: assets/js/src/gutenberg.js:13
 msgid "Primary"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:62
+#: inc/customizer/options/buttons.php:62 
 #: inc/customizer/options/form_fields.php:597
-#: inc/customizer/options/layout_single_post.php:878
+#: inc/customizer/options/layout_single_post.php:878 
+#: inc/customizer/options/form_fields.php:599 
 msgid "Secondary"
 msgstr ""
 
@@ -1381,44 +1440,48 @@ msgstr ""
 msgid "How the color system works"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:53
-#: inc/customizer/options/form_fields.php:70
+#: inc/customizer/options/form_fields.php:54
+msgid "Customize the general design of the form elements across the site."
+msgstr ""
+
+#: inc/customizer/options/form_fields.php:55
+#: inc/customizer/options/form_fields.php:72
 msgid "Form Fields"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:96
+#: inc/customizer/options/form_fields.php:98
 msgid "Field Padding"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:149
+#: inc/customizer/options/form_fields.php:151
 msgid "Field Spacing"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:183
+#: inc/customizer/options/form_fields.php:185
 msgid "Field Background Color"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:325
+#: inc/customizer/options/form_fields.php:327
 msgid "Border Color"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:363
+#: inc/customizer/options/form_fields.php:365
 msgid "Input Text"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:477
+#: inc/customizer/options/form_fields.php:479
 msgid "Form Labels"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:498
+#: inc/customizer/options/form_fields.php:500
 msgid "Label Spacing"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:591
+#: inc/customizer/options/form_fields.php:593
 msgid "Button Style"
 msgstr ""
 
-#: inc/customizer/options/form_fields.php:602
+#: inc/customizer/options/form_fields.php:604
 msgid "Customize the default button styles"
 msgstr ""
 
@@ -1817,6 +1880,22 @@ msgstr ""
 msgid "All"
 msgstr ""
 
+#: inc/customizer/options/main.php:85
+msgid "Change main font"
+msgstr ""
+
+#: inc/customizer/options/main.php:89
+msgid "Change headings font"
+msgstr ""
+
+#: inc/customizer/options/main.php:93
+msgid "Change H1 font size"
+msgstr ""
+
+#: inc/customizer/options/main.php:97
+msgid "Change archive font size"
+msgstr ""
+
 #: inc/customizer/options/typography.php:111
 msgid "Headings"
 msgstr ""
@@ -1887,19 +1966,6 @@ msgstr ""
 
 #: inc/customizer/options/upsells.php:114
 msgid "More blog layout customization options available in PRO"
-msgstr ""
-
-#: inc/customizer/options/upsells.php:115
-#: inc/customizer/options/upsells.php:120
-#: inc/customizer/options/upsells.php:129
-#: inc/customizer/options/upsells.php:134
-#: inc/customizer/options/upsells.php:139
-#: inc/customizer/options/upsells.php:144
-#: dashboard/src/Components/Content/Help.js:34
-#: dashboard/src/Components/Content/Help.js:78
-#: dashboard/src/Components/Content/Help.js:111
-#: dashboard/src/Components/ModuleCard.js:164
-msgid "Learn More"
 msgstr ""
 
 #: inc/customizer/options/upsells.php:119
@@ -2193,19 +2259,19 @@ msgstr ""
 msgid "Expires"
 msgstr ""
 
-#: dashboard/src/Components/ModuleCard.js:97
+#: dashboard/src/Components/ModuleCard.js:101
 msgid "Upgrade"
 msgstr ""
 
-#: dashboard/src/Components/ModuleCard.js:131
+#: dashboard/src/Components/ModuleCard.js:135
 msgid "Module Activated"
 msgstr ""
 
-#: dashboard/src/Components/ModuleCard.js:135
+#: dashboard/src/Components/ModuleCard.js:139
 msgid "Module Deactivated."
 msgstr ""
 
-#: dashboard/src/Components/ModuleCard.js:145
+#: dashboard/src/Components/ModuleCard.js:149
 msgid "Could not activate module. Please try again."
 msgstr ""
 
@@ -2304,6 +2370,7 @@ msgstr ""
 
 #: inc/admin/metabox/src/components/controls/SortableItems.js:26
 #: inc/admin/metabox/src/components/controls/SortableItems.js:96
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:145
 msgid "Toggle"
 msgstr ""
 
@@ -2651,6 +2718,18 @@ msgstr ""
 
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:130
 msgid "Style 6"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:137
+msgid "Contrast"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:141
+msgid "Night"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:149
+msgid "Accessibility"
 msgstr ""
 
 #: inc/customizer/controls/react/src/typeface/Typeface.js:79

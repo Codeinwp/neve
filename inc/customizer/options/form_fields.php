@@ -49,8 +49,10 @@ class Form_Fields extends Base_Customizer {
 			new Section(
 				$this->section_id,
 				[
-					'priority' => 45,
-					'title'    => esc_html__( 'Form Fields', 'neve' ),
+					'priority'           => 45,
+					'description_hidden' => true,
+					'description'        => __( 'Customize the general design of the form elements across the site.', 'neve' ) . ' ' . neve_external_link( 'https://docs.themeisle.com/article/1341-neve-form-fields', 'Learn More' ),
+					'title'              => esc_html__( 'Form Fields', 'neve' ),
 				]
 			)
 		);
