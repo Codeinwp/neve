@@ -1371,8 +1371,11 @@ function neve_get_global_colors_default( $migrated = false ) {
 	$old_link_color       = get_theme_mod( 'neve_link_color', '#0366d6' );
 	$old_link_hover_color = get_theme_mod( 'neve_link_hover_color', '#0e509a' );
 	$old_text_color       = get_theme_mod( 'neve_text_color', '#393939' );
-	$old_bg_color         = '#' . get_theme_mod( 'background_color', 'ffffff' );
-
+	// We use a static var to avoid calling get_theme_mod multiple times due to the filter used to alter the value.
+	static $old_bg_color;
+	if ( ! isset( $old_bg_color ) ) {
+		$old_bg_color = '#' . get_theme_mod( 'background_color', 'ffffff' );
+	}
 	add_filter( 'theme_mod_background_color', '__return_empty_string' );
 
 	return [
