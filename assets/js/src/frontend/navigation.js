@@ -71,7 +71,7 @@ export const repositionDropdowns = () => {
 		) {
 			dropDown.style.left = 'auto';
 			dropDown.style.right =
-				'calc( 100% - ' + bounding.width / 2 + 'px )';
+				'calc( 100% - ' + ( windowWidth - parentBounding.right + ( parentBounding.width/2 ) ) + 'px )';
 		}
 	});
 };
