@@ -17,3 +17,4 @@ assets/css/*
 style-main*
 dashboard/build/*
 inc/customizer/controls/react/bundle/*
+languages/neve.pot
