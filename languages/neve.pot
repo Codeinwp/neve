@@ -683,7 +683,7 @@ msgid "Items Hover Color"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:182
-#: header-footer-grid/Core/Magic_Tags.php:598
+#: header-footer-grid/Core/Magic_Tags.php:610
 #: header-footer-grid/templates/components/component-cart-icon.php:50
 #: inc/views/header.php:165
 msgid "Cart"
@@ -845,145 +845,145 @@ msgstr ""
 msgid "Quick Links"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:489
+#: header-footer-grid/Core/Magic_Tags.php:501
 msgid "Single"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:492
+#: header-footer-grid/Core/Magic_Tags.php:504
 msgid "Current Single Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:496
+#: header-footer-grid/Core/Magic_Tags.php:508
 msgid "Current Single Excerpt"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:500
+#: header-footer-grid/Core/Magic_Tags.php:512
 msgid "Current Single URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:504
+#: header-footer-grid/Core/Magic_Tags.php:516
 msgid "Current Post Meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:508
+#: header-footer-grid/Core/Magic_Tags.php:520
 msgid "Author meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:512
+#: header-footer-grid/Core/Magic_Tags.php:524
 msgid "Date meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:516
+#: header-footer-grid/Core/Magic_Tags.php:528
 msgid "Category meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:520
+#: header-footer-grid/Core/Magic_Tags.php:532
 msgid "Comments meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:526
+#: header-footer-grid/Core/Magic_Tags.php:538
 msgid "Archive"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:529
+#: header-footer-grid/Core/Magic_Tags.php:541
 msgid "Archive Description"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:533
+#: header-footer-grid/Core/Magic_Tags.php:545
 msgid "Archive Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:537
+#: header-footer-grid/Core/Magic_Tags.php:549
 msgid "Archive URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:543
+#: header-footer-grid/Core/Magic_Tags.php:555
 #: inc/customizer/options/layout_blog.php:390
 #: inc/views/partials/post_meta.php:143
 msgid "Author"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:546
+#: header-footer-grid/Core/Magic_Tags.php:558
 msgid "Author Bio"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:550
+#: header-footer-grid/Core/Magic_Tags.php:562
 msgid "Author Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:554
+#: header-footer-grid/Core/Magic_Tags.php:566
 msgid "Author URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:560
+#: header-footer-grid/Core/Magic_Tags.php:572
 msgid "Current User"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:563
+#: header-footer-grid/Core/Magic_Tags.php:575
 msgid "User Nice Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:567
+#: header-footer-grid/Core/Magic_Tags.php:579
 msgid "Display Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:571
+#: header-footer-grid/Core/Magic_Tags.php:583
 msgid "User Email"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:577
+#: header-footer-grid/Core/Magic_Tags.php:589
 msgid "Global"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:580
+#: header-footer-grid/Core/Magic_Tags.php:592
 msgid "Site Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:584
+#: header-footer-grid/Core/Magic_Tags.php:596
 msgid "Site Tagline"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:588
+#: header-footer-grid/Core/Magic_Tags.php:600
 msgid "Home URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:592
+#: header-footer-grid/Core/Magic_Tags.php:604
 msgid "Current Year"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:601
+#: header-footer-grid/Core/Magic_Tags.php:613
 msgid "Total + Currency Symbol"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:605
+#: header-footer-grid/Core/Magic_Tags.php:617
 msgid "Total"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:609
+#: header-footer-grid/Core/Magic_Tags.php:621
 msgid "Currency Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:613
+#: header-footer-grid/Core/Magic_Tags.php:625
 msgid "Currency Symbol"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:622
+#: header-footer-grid/Core/Magic_Tags.php:634
 msgid "WooCommerce"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:625
+#: header-footer-grid/Core/Magic_Tags.php:637
 msgid "Product Price"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:629
+#: header-footer-grid/Core/Magic_Tags.php:641
 msgid "Product Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:633
+#: header-footer-grid/Core/Magic_Tags.php:645
 msgid "Cart URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:637
+#: header-footer-grid/Core/Magic_Tags.php:649
 msgid "Checkout URL"
 msgstr ""
 

@@ -139,6 +139,18 @@ class Magic_Tags {
 			];
 		}
 
+		if ( $tag === 'meta_author' ) {
+			$allowed_tags['span'] = [
+				'class' => [],
+			];
+
+			$allowed_tags['img'] = [
+				'class' => [],
+				'alt'   => [],
+				'src'   => [],
+			];
+		}
+
 		return wp_kses( call_user_func( [ $this, $tag ] ), $allowed_tags );
 	}
 
