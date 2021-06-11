@@ -93,7 +93,7 @@ const OrderingComponent = ({ control }) => {
 				});
 			}
 		);
-	});
+	}, []);
 
 	return (
 		<div className="neve-white-background-control">
