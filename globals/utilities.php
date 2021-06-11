@@ -1433,5 +1433,5 @@ function neve_is_new_builder() {
  * @since 3.0.0
  */
 function neve_can_use_conditional_header() {
-	return defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.5.2', '<=' ) && neve_is_new_builder();
+	return defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '3.0.0', '<' ) && neve_is_new_builder();
 }
