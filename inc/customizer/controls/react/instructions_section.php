@@ -6,6 +6,7 @@
  * @package Neve
  */
 namespace Neve\Customizer\Controls\React;
+
 /**
  * Customizer section.
  *
@@ -27,11 +28,11 @@ class Instructions_Section extends \WP_Customize_Section {
 	 * @var array
 	 */
 	public $default_options = [
-			'description'     => '',
-			'image'           => '',
-			'quickLinks'      => [],
-			'hadOldBuilder'   => false,
-			'builderMigrated' => false,
+		'description'     => '',
+		'image'           => '',
+		'quickLinks'      => [],
+		'hadOldBuilder'   => false,
+		'builderMigrated' => false,
 	];
 	/**
 	 * Options passed to control.

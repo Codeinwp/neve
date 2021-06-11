@@ -1422,3 +1422,13 @@ function neve_get_global_colors_default( $migrated = false ) {
 function neve_is_new_builder() {
 	return get_theme_mod( 'neve_migrated_builders', true );
 }
+
+/**
+ * Check that we can use conditional headers in PRO.
+ *
+ * @return bool
+ * @since 3.0.0
+ */
+function neve_can_use_conditional_header() {
+	return defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.5.2', '<=' ) && neve_is_new_builder();
+}

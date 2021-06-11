@@ -55,9 +55,6 @@ const BuilderHeaderNotification: React.FC<Props> = ({
 			return;
 		}
 
-		control.deactivate();
-		window.wp.customize.control('neve_global_header').deactivate();
-
 		const sectionToNotify = control.params.section;
 		window.wp.customize.section(sectionToNotify).notifications.add(
 			new window.wp.customize.Notification(
