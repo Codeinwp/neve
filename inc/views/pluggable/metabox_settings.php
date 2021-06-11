@@ -117,7 +117,7 @@ class Metabox_Settings {
 			! is_single() &&
 			! is_page() &&
 			! $this->is_blog_static() &&
-			( class_exists( 'WooCommerce', false ) && ! is_shop() )
+			$this->is_not_woo_shop()
 		) {
 			return false;
 		}
@@ -395,6 +395,18 @@ class Metabox_Settings {
 	}
 
 	/**
+	 * If WooCommerce does not exist or if ir exists and page is not shop
+	 * This also touches the following issues:
+	 * Codeinwp/neve-pro-addon/issues/999
+	 * Codeinwp/neve/issues/2790
+	 *
+	 * @return bool
+	 */
+	private function is_not_woo_shop() {
+		return ( ! class_exists( 'WooCommerce', false ) || ( class_exists( 'WooCommerce', false ) && ! is_shop() ) );
+	}
+
+	/**
 	 * Change sidebar position based on meta.
 	 *
 	 * @param string $position sidebar position coming from filter.
@@ -403,10 +415,11 @@ class Metabox_Settings {
 	 */
 	public function filter_sidebar_position( $position ) {
 		if (
-			! is_single()
-			&& ! is_page()
-			&& ( class_exists( 'WooCommerce', false ) && ! is_shop() )
-			&& ! $this->is_blog_static() ) {
+			! is_single() &&
+			! is_page() &&
+			! $this->is_blog_static() &&
+			$this->is_not_woo_shop()
+		) {
 			return $position;
 		}
 
@@ -437,8 +450,8 @@ class Metabox_Settings {
 		if (
 			! is_single() &&
 			! is_page() &&
-			! $this->is_blog_static()
-			&& ( class_exists( 'WooCommerce', false ) && ! is_shop() )
+			! $this->is_blog_static() &&
+			$this->is_not_woo_shop()
 		) {
 			return $class;
 		}

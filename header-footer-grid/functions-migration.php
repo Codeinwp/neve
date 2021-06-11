@@ -87,9 +87,24 @@ function neve_hfg_migrate_skin_to_bg_color() {
 	set_theme_mod( $flag, true );
 }
 
+
 add_action( 'init', 'neve_hfg_migrate_skin_to_bg_color' );
+/**
+ * Function to self heal theme mods option, in case of corrupted value.
+ */
+function neve_self_heal_mods() {
+	$all_mods = get_theme_mods();
+	if ( $all_mods === false ) {
+		return;
+	}
+	if ( is_array( $all_mods ) ) {
+		return;
+	}
+	$theme_slug = get_option( 'stylesheet' );
+	delete_option( "theme_mods_$theme_slug" );
+}
 
-
+add_action( 'init', 'neve_self_heal_mods', 1 );
 /**
  * Define migration logic for footer.
  *
@@ -110,7 +125,7 @@ function neve_hfg_footer_settings() {
 		'footer-three-widgets',
 		'footer-four-widgets',
 	);
-	for ( $i = 0; $i < $sidebars; $i++ ) {
+	for ( $i = 0; $i < $sidebars; $i ++ ) {
 		$builder['desktop']['top'][ $sidebars_names[ $i ] ] = [
 			'id'    => $sidebars_names[ $i ],
 			'width' => 12 / $sidebars,
