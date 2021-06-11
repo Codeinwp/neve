@@ -58,10 +58,11 @@ describe('Blog Typography', function () {
 		},
 	};
 
-	before('Sets up blog typography in customizer', function () {
-		cy.loginWithRequest();
+	beforeEach('Sets up blog typography in customizer', function () {
 		cy.fixture('customizer/typography/blog-typography').then((typoSetup) => {
-			cy.setCustomizeSettings(typoSetup);
+			cy.setCustomizeSettings(typoSetup).then(() => {
+				cy.loginWithRequest();
+			});
 		});
 	});
 
