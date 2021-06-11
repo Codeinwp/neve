@@ -7,6 +7,13 @@ describe('Single post meta sidebar', function () {
 
 	before('Create new post named "' + postSetup.title + '".', function () {
 		cy.insertPost(postSetup.title, postSetup.content, 'post', true, true);
+
+		cy.setCustomizeSettings({
+			neve_migrated_hfg_colors: true,
+			nav_menu_locations: [],
+			custom_css_post_id: -1,
+		});
+
 		cy.get('.post-publish-panel__postpublish-header a')
 			.contains(postSetup.title)
 			.should('have.attr', 'href')

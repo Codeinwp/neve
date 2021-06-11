@@ -242,7 +242,7 @@ function neve_sanitize_alignment( $input ) {
  *
  * @return array
  */
-function sanitize_position( $input ) {
+function neve_sanitize_position( $input ) {
 	$default = [
 		'mobile'  => 'middle',
 		'tablet'  => 'middle',
@@ -266,7 +266,7 @@ function sanitize_position( $input ) {
 /**
  * Sanitize meta order control.
  */
-function sanitize_meta_ordering( $value ) {
+function neve_sanitize_meta_ordering( $value ) {
 	$allowed = array(
 		'author',
 		'category',
@@ -297,7 +297,7 @@ function sanitize_meta_ordering( $value ) {
  *
  * @return string
  */
-function sanitize_blend_mode( $input ) {
+function neve_sanitize_blend_mode( $input ) {
 	$blend_mode_options = [ 'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'saturation', 'color', 'difference', 'exclusion', 'hue', 'luminosity' ];
 	if ( ! in_array( $input, $blend_mode_options, true ) ) {
 		return 'normal';
@@ -312,7 +312,7 @@ function sanitize_blend_mode( $input ) {
  *
  * @return bool
  */
-function sanitize_container_layout( $value ) {
+function neve_sanitize_container_layout( $value ) {
 	$allowed_values = array( 'contained', 'full-width' );
 	if ( ! in_array( $value, $allowed_values, true ) ) {
 		return 'contained';
@@ -328,7 +328,7 @@ function sanitize_container_layout( $value ) {
  *
  * @return string
  */
-function sanitize_button_type( $value ) {
+function neve_sanitize_button_type( $value ) {
 	if ( ! in_array( $value, [ 'primary', 'secondary' ], true ) ) {
 		return 'primary';
 	}

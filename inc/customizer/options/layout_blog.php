@@ -398,7 +398,7 @@ class Layout_Blog extends Base_Customizer {
 			new Control(
 				'neve_post_meta_ordering',
 				array(
-					'sanitize_callback' => 'sanitize_meta_ordering',
+					'sanitize_callback' => 'neve_sanitize_meta_ordering',
 					'default'           => wp_json_encode( $order_default_components ),
 				),
 				array(

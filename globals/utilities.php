@@ -175,7 +175,7 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 	if ( $amp_ready ) {
 		$amp_state = 'on="tap:AMP.setState({visible: !visible})" role="button" tabindex="0" ';
 	}
-	$start_tag = $is_link ? 'a href="#"' : 'div';
+	$start_tag = $is_link ? 'a aria-label="' . __( 'Search', 'neve' ) . '" href="#"' : 'div';
 	$end_tag   = $is_link ? 'a' : 'div';
 	$svg       = '<' . $start_tag . ' class="nv-icon nv-search" ' . $amp_state . '>
 				<svg width="' . $size . '" height="' . $size . '" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg>
@@ -1371,8 +1371,11 @@ function neve_get_global_colors_default( $migrated = false ) {
 	$old_link_color       = get_theme_mod( 'neve_link_color', '#0366d6' );
 	$old_link_hover_color = get_theme_mod( 'neve_link_hover_color', '#0e509a' );
 	$old_text_color       = get_theme_mod( 'neve_text_color', '#393939' );
-	$old_bg_color         = '#' . get_theme_mod( 'background_color', 'ffffff' );
-
+	// We use a static var to avoid calling get_theme_mod multiple times due to the filter used to alter the value.
+	static $old_bg_color;
+	if ( ! isset( $old_bg_color ) ) {
+		$old_bg_color = '#' . get_theme_mod( 'background_color', 'ffffff' );
+	}
 	add_filter( 'theme_mod_background_color', '__return_empty_string' );
 
 	return [

@@ -288,7 +288,7 @@ class Layout_Single_Post extends Base_Customizer {
 			new Control(
 				'neve_post_title_position',
 				[
-					'sanitize_callback' => 'sanitize_position',
+					'sanitize_callback' => 'neve_sanitize_position',
 					'transport'         => $this->selective_refresh,
 					'default'           => $this->post_title_position(),
 				],
@@ -462,7 +462,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'neve_post_cover_blend_mode',
 				[
 					'default'           => 'normal',
-					'sanitize_callback' => 'sanitize_blend_mode',
+					'sanitize_callback' => 'neve_sanitize_blend_mode',
 					'transport'         => $this->selective_refresh,
 				],
 				[
@@ -503,7 +503,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'neve_post_cover_container',
 				[
 					'default'           => 'contained',
-					'sanitize_callback' => 'sanitize_container_layout',
+					'sanitize_callback' => 'neve_sanitize_container_layout',
 				],
 				[
 					'label'           => esc_html__( 'Cover container', 'neve' ),
@@ -664,7 +664,7 @@ class Layout_Single_Post extends Base_Customizer {
 			new Control(
 				'neve_single_post_meta_ordering',
 				[
-					'sanitize_callback' => 'sanitize_meta_ordering',
+					'sanitize_callback' => 'neve_sanitize_meta_ordering',
 					'default'           => $order_default_components,
 				],
 				[
@@ -859,7 +859,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'neve_post_comment_form_button_style',
 				[
 					'default'           => 'primary',
-					'sanitize_callback' => 'sanitize_button_type',
+					'sanitize_callback' => 'neve_sanitize_button_type',
 				],
 				[
 					'label'           => esc_html__( 'Button style', 'neve' ),

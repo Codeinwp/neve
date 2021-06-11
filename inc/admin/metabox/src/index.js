@@ -1,5 +1,6 @@
 /* global metaSidebar */
 
+import './editor.scss';
 /**
  * Internal dependencies
  */
@@ -11,8 +12,7 @@ import { neveIcon } from './helpers/icons.js';
 
 const icon = metaSidebar.whiteLabeled ? 'hammer' : neveIcon;
 
-registerPlugin( 'meta-sidebar', {
-	icon: <Icon icon={ icon } />,
-	render: Sidebar
-} );
-
+registerPlugin('meta-sidebar', {
+	icon: <Icon icon={icon} />,
+	render: Sidebar,
+});
