@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { Path, Rect, SVG } = wp.components;
+import { Path, Rect, SVG } from '@wordpress/components';
 import classnames from 'classnames';
 
 export const neveIcon = ({ className }) => {

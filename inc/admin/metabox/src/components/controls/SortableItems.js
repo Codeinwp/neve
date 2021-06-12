@@ -5,10 +5,10 @@ import {
 } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 
-const { compose } = wp.compose;
-const { withDispatch, withSelect } = wp.data;
-const { Component } = wp.element;
-const { Button } = wp.components;
+import { compose } from '@wordpress/compose';
+import { withDispatch, withSelect } from '@wordpress/data';
+import { Component } from '@wordpress/element';
+import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 const DragHandle = sortableHandle(() => {
