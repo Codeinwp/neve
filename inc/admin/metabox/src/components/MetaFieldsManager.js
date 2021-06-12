@@ -18,7 +18,7 @@ const {
 	ToggleControl,
 	RangeControl,
 } = wp.components;
-const { __ } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
 class MetaFieldsManager extends Component {
 	constructor(props) {

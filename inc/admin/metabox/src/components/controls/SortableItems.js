@@ -9,7 +9,7 @@ const { compose } = wp.compose;
 const { withDispatch, withSelect } = wp.data;
 const { Component } = wp.element;
 const { Button } = wp.components;
-const { __ } = wp.i18n;
+import { __ } from '@wordpress/i18n';
 
 const DragHandle = sortableHandle(() => {
 	return (
