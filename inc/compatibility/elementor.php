@@ -37,6 +37,7 @@ class Elementor extends Page_Builder_Base {
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_in_picker' ], 999, 3 );
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_front_end' ], 999, 3 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 100 );
+		add_action( 'wp_insert_post', array( $this, 'update_has_template_transient' ), 10, 2 );
 	}
 
 	/**
@@ -289,5 +290,96 @@ class Elementor extends Page_Builder_Base {
 	 */
 	private function get_global_color_prefix() {
 		return ( apply_filters( 'ti_wl_theme_is_localized', false ) ? __( 'Theme', 'neve' ) : 'Neve' ) . ' - ';
+	}
+	
+	/**
+	 * Is the current page has an elementor template
+	 *
+	 * @param  string $location that location of the template such as single, archive etc.
+	 * @param  string $cond Template showing condition it can be product_archive, product etc.
+	 * @return bool
+	 */
+	public static function is_elementor_template( $location, $cond ) {
+		if ( ! did_action( 'elementor_pro/init' ) ) {
+			return false;
+		}
+		if ( ! class_exists( '\ElementorPro\Plugin', false ) ) {
+			return false;
+		}
+		$conditions_manager = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'theme-builder' )->get_conditions_manager();
+
+		$documents = $conditions_manager->get_documents_for_location( $location );
+
+		foreach ( $documents as $document ) {
+			$conditions = $conditions_manager->get_document_conditions( $document );
+			foreach ( $conditions as $condition ) {
+				if ( 'include' === $condition['type'] && $cond === $condition['name'] ) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Update has_template transient value when a post updated or inserted.
+	 *
+	 * @param  int     $post_ID that post ID.
+	 * @param  WP_Post $post that WP_Post object.
+	 * @return void
+	 */
+	public function update_has_template_transient( $post_ID, $post ) {
+		if ( $post->post_type !== 'elementor_library' ) {
+			return;
+		}
+
+		$template_type = get_post_meta( $post_ID, '_elementor_template_type', true );
+
+		// forcefully update has_template
+		$this->has_template( $template_type, true );
+	}
+
+	/**
+	 * Check if the site has Elementor template as independent from current post ID.
+	 * The method was designed to use in customizer. ! Do not use it outside of the customizer.
+	 * The method works if only Elementor Pro is active.
+	 *
+	 * @param  string $elementor_template_type that is template type such as page,product-archive,product,kit etc.
+	 * @return bool
+	 */
+	public static function has_template( $elementor_template_type, $force_refresh = false ) {
+		if ( ! class_exists( '\ElementorPro\Plugin', false ) ) {
+			return false;
+		}
+
+		$transient_key        = 'neve_elementor_has_template_' . $elementor_template_type;
+		$transient_expiry_sec = HOUR_IN_SECONDS;
+		$cached_value         = get_transient( $transient_key );
+
+		if ( $force_refresh !== true && $cached_value !== false ) {
+			return $cached_value;
+		}
+
+		$args = [
+			'post_type'              => 'elementor_library',
+			'post_status'            => 'publish',
+			'update_post_term_cache' => false,
+			'meta_key'               => '_elementor_template_type',
+			'meta_value'             => $elementor_template_type, //phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+			'no_found_rows'          => true,
+			'posts_per_page'         => 1,
+			'fields'                 => 'ids',
+		];
+
+		$query = new \WP_Query( $args );
+
+		// if elementor template not found
+		if ( empty( $query->posts ) ) {
+			set_transient( $transient_key, 0, $transient_expiry_sec );
+			return false;
+		}
+
+		set_transient( $transient_key, 1, $transient_expiry_sec );
+		return true;
 	}
 }

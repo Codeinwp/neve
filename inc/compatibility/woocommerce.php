@@ -98,11 +98,49 @@ class Woocommerce {
 	 * Initialize the module.
 	 */
 	public function init() {
+		add_action( 'wp', array( $this, 'register_hooks' ), 11 );
+		add_action( 'neve_react_controls_localization', array( $this, 'add_customizer_options' ) );
+	}
+	
+	/**
+	 * Add params to specify if the site has elementor templates.
+	 *
+	 * @param  array $options current options.
+	 * @return array
+	 */
+	public function add_customizer_options( $options ) {
+		$options['elementor']['hasElementorShopTemplate']    = Elementor::has_template( 'product-archive' );
+		$options['elementor']['hasElementorProductTemplate'] = Elementor::has_template( 'product' );
+		return $options;
+	}
+	
+	/**
+	 * Should module load?
+	 *
+	 * @return bool
+	 */
+	public function should_load() {
 		if ( ! class_exists( 'WooCommerce', false ) ) {
+			return false;
+		}
+
+		$is_shop_template    = Elementor::is_elementor_template( 'archive', 'product_archive' );
+		$is_product_template = Elementor::is_elementor_template( 'single', 'product' );
+
+		return ! ( $is_shop_template || $is_product_template );
+	}
+	
+	/**
+	 * Register hooks
+	 *
+	 * @return void
+	 */
+	public function register_hooks() {
+		if ( ! $this->should_load() ) {
 			return;
 		}
-		$this->sidebar_manager = new Layout_Sidebar();
 
+		$this->sidebar_manager = new Layout_Sidebar();
 
 		add_action( 'admin_init', array( $this, 'set_update_woo_width_flag' ), 9 );
 		add_action( 'admin_footer', array( $this, 'update_woo_width' ) );
