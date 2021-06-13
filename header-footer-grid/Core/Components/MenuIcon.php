@@ -166,14 +166,29 @@ class MenuIcon extends Abstract_Component {
 					'default_vals' => $default,
 				],
 				'live_refresh_selector' => $this->default_selector,
-				'live_refresh_css_prop' => array(
+				'live_refresh_css_prop' => [
+					'cssVar'             => [
+						'vars'     => [
+							'--bgColor'      => 'background',
+							'--color'        => 'text',
+							'--borderRadius' => [
+								'key'    => 'borderRadius',
+								'suffix' => 'px',
+							],
+							'--borderWidth'  => [
+								'key'    => 'borderWidth',
+								'suffix' => 'px',
+							],
+						],
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					'additional_buttons' => $this->get_class_const( 'COMPONENT_ID' ) !== 'header_menu_icon' ? [] : [
 						[
 							'button' => $this->close_button,
 							'text'   => '.icon-bar',
 						],
 					],
-				),
+				],
 				'conditional_header'    => true,
 			]
 		);
@@ -224,20 +239,29 @@ class MenuIcon extends Abstract_Component {
 
 		$id = $this->get_id() . '_' . Mods::get_alternative_mod( self::BUTTON_APPEARANCE );
 
+		$rules = [
+			'--bgColor'      => $id . '.background',
+			'--color'        => $id . '.text',
+			'--borderRadius' => [
+				Dynamic_Selector::META_KEY => $id . '.borderRadius',
+				'directional-prop'         => Config::CSS_PROP_BORDER_RADIUS,
+			],
+			'--borderWidth'  => [
+				Dynamic_Selector::META_KEY => $id . '.borderWidth',
+				'directional-prop'         => Config::CSS_PROP_BORDER_WIDTH,
+			],
+		];
+
+		$value = SettingsManager::get_instance()->get( $id );
+
+
+		if ( isset( $value['type'] ) && $value['type'] !== 'outline' ) {
+			$rules ['--borderWidth']['override'] = 0;
+		}
+
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ',' . $this->close_button,
-			Dynamic_Selector::KEY_RULES    => [
-				'--bgColor'      => $id . '.background',
-				'--color'        => $id . '.text',
-				'--borderRadius' => [
-					Dynamic_Selector::META_KEY => $id . '.borderRadius',
-					'directional-prop'         => Config::CSS_PROP_BORDER_RADIUS,
-				],
-				'--borderWidth'  => [
-					Dynamic_Selector::META_KEY => $id . '.borderWidth',
-					'directional-prop'         => Config::CSS_PROP_BORDER_WIDTH,
-				],
-			],
+			Dynamic_Selector::KEY_RULES    => $rules,
 		];
 
 		return parent::add_style( $css_array );

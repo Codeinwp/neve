@@ -89,6 +89,10 @@ class SecondNav extends Abstract_Component {
 				'conditional_header'    => $this->get_builder_id() === 'header',
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => '--color',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					[
 						'selector' => $this->default_typography_selector,
 						'prop'     => 'color',
@@ -112,6 +116,10 @@ class SecondNav extends Abstract_Component {
 				'conditional_header'    => $this->get_builder_id() === 'header',
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => '--hoverColor',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					[
 						'selector' => $this->default_typography_selector . ':after',
 						'prop'     => 'background-color',

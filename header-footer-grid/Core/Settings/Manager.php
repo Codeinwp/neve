@@ -121,7 +121,12 @@ class Manager {
 				continue;
 			}
 			$arguments = self::$settings[ $id ];
-			$transport = isset( $core_transports[ $arguments['transport'] ] ) ? $arguments['transport'] : $this->handle_transport( $arguments['transport'], $id );
+
+			if ( isset( $arguments['live_refresh_css_prop'] ) && isset( $arguments['live_refresh_css_prop']['cssVar'] ) ) {
+				$transport = 'postMessage';
+			} else {
+				$transport = isset( $core_transports[ $arguments['transport'] ] ) ? $arguments['transport'] : $this->handle_transport( $arguments['transport'], $id );
+			}
 
 			$customize_manager->add_setting(
 				$id,

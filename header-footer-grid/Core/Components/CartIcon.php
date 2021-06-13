@@ -123,10 +123,15 @@ class CartIcon extends Abstract_Component {
 					],
 				],
 				'live_refresh_selector' => $this->default_selector . ' span.nv-icon.nv-cart svg',
-				'live_refresh_css_prop' => array(
+				'live_refresh_css_prop' => [
+					'cssVar'  => [
+						'vars'     => '--iconSize',
+						'selector' => '.builder-item--' . $this->get_id(),
+						'suffix'   => 'px',
+					],
 					'type'    => 'svg-icon-size',
 					'default' => 15,
-				),
+				],
 				'section'               => $this->section,
 				'conditional_header'    => true,
 			]
@@ -144,6 +149,10 @@ class CartIcon extends Abstract_Component {
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => '--color',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					[
 						'selector' => $this->default_selector . ' svg',
 						'prop'     => 'fill',
@@ -170,6 +179,10 @@ class CartIcon extends Abstract_Component {
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => '--hoverColor',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					[
 						'selector' => $this->default_selector . ':hover svg',
 						'prop'     => 'fill',
@@ -283,11 +296,6 @@ class CartIcon extends Abstract_Component {
 			'--hoverColor' => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
-			],
-			'--size'       => [
-				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::LABEL_SIZE_ID,
-				Dynamic_Selector::META_SUFFIX  => 'px',
-				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::LABEL_SIZE_ID ),
 			],
 		];
 

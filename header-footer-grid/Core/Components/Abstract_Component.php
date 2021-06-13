@@ -575,15 +575,13 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
-	 * Method to add Component css styles.
+	 * Add legacy style.
 	 *
-	 * @param array $css_array An array containing css rules.
+	 * @param array $css_array the styles css array.
 	 *
 	 * @return array
-	 * @since   1.0.0
-	 * @access  public
 	 */
-	public function add_style( array $css_array = array() ) {
+	private function add_legacy_style( array $css_array ) {
 		if ( $this->has_font_family_control || $this->has_typeface_control ) {
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => $this->default_typography_selector,
@@ -685,6 +683,86 @@ abstract class Abstract_Component implements Component {
 			],
 		];
 
+		return $css_array;
+	}
+
+	/**
+	 * Method to add Component css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function add_style( array $css_array = array() ) {
+		if ( ! neve_is_new_skin() ) {
+			return $this->add_legacy_style( $css_array );
+		}
+
+		$rules = [
+			'--padding' => [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::PADDING_ID,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::PADDING_ID ),
+				'directional-prop'                   => Config::CSS_PROP_PADDING,
+			],
+			'--margin'  => [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::MARGIN_ID,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::MARGIN_ID ),
+				'directional-prop'                   => Config::CSS_PROP_MARGIN,
+			],
+		];
+
+		if ( $this->has_font_family_control || $this->has_typeface_control ) {
+			$rules = array_merge(
+				$rules,
+				[
+					'--fontFamily'    => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FONT_FAMILY_ID,
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FONT_FAMILY_ID ),
+					],
+					'--fontSize'      => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
+					],
+					'--lineHeight'    => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.lineHeight',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'lineHeight' ),
+					],
+					'--letterSpacing' => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.letterSpacing',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_SUFFIX => 'px',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'letterSpacing' ),
+					],
+					'--fontWeight'    => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontWeight',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontWeight' ),
+					],
+					'--textTransform' => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.textTransform',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'textTransform' ),
+					],
+					'--iconSize'      => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_SUFFIX  => 'responsive_suffix',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
+					],
+				]
+			);
+		}
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
+			Dynamic_Selector::KEY_RULES    => $rules,
+		];
 
 		return $css_array;
 	}

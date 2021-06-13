@@ -14,8 +14,8 @@ class Css_Prop {
 	 */
 	public static function minus_100( $css_prop, $value, $meta, $device ) {
 		return sprintf( "%s: %s%s;",
-			($css_prop),
-			(100 - $value),
+			( $css_prop ),
+			( 100 - $value ),
 			isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'px'
 		);
 	}
@@ -32,12 +32,12 @@ class Css_Prop {
 	 */
 	public static function transform( $css_prop, $value, $meta, $device ) {
 		//If we have a custom filter, let's call it.
-		if ( isset( $meta[ 'filter' ] ) ) {
-			if ( is_callable( $meta[ 'filter' ] ) ) {
-				return call_user_func_array( $meta[ 'filter' ], [ $css_prop, $value, $meta, $device ] );
+		if ( isset( $meta['filter'] ) ) {
+			if ( is_callable( $meta['filter'] ) ) {
+				return call_user_func_array( $meta['filter'], [ $css_prop, $value, $meta, $device ] );
 			}
-			if ( method_exists( __CLASS__, $meta[ 'filter' ] ) ) {
-				return call_user_func_array( [ __CLASS__, $meta[ 'filter' ] ], [ $css_prop, $value, $meta, $device ] );
+			if ( method_exists( __CLASS__, $meta['filter'] ) ) {
+				return call_user_func_array( [ __CLASS__, $meta['filter'] ], [ $css_prop, $value, $meta, $device ] );
 			}
 
 			return '';
@@ -52,14 +52,14 @@ class Css_Prop {
 			case Config::CSS_PROP_COLOR:
 			case Config::CSS_PROP_FILL_COLOR:
 			case Config::CSS_PROP_BORDER_COLOR:
-				$mode = (false === strpos( $value, 'rgba' )) ? 'hex' : 'rgba';
-				$is_var = (strpos( $value, 'var' ) !== false);
+				$mode   = ( false === strpos( $value, 'rgba' ) ) ? 'hex' : 'rgba';
+				$is_var = ( strpos( $value, 'var' ) !== false );
 
 				if ( $mode === 'hex' && ! $is_var ) {
 					$value = strpos( $value, "#" ) === 0 ? $value : '#' . $value;
 				}
 
-				return sprintf( "%s: %s%s;", ($css_prop), neve_sanitize_colors( $value ), isset( $meta[ 'important' ] ) && $meta[ 'important' ] ? '!important' : '' );
+				return sprintf( "%s: %s%s;", ( $css_prop ), neve_sanitize_colors( $value ), isset( $meta['important'] ) && $meta['important'] ? '!important' : '' );
 				break;
 			case Config::CSS_PROP_MAX_WIDTH:
 			case Config::CSS_PROP_WIDTH:
@@ -76,14 +76,14 @@ class Css_Prop {
 			case Config::CSS_PROP_RIGHT:
 				$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'px';
 				if ( $suffix === 'responsive_suffix' ) {
-					$all_value = Mods::get( $meta[ 'key' ], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
+					$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
 
-					$suffix = isset( $all_value[ 'suffix' ] ) ? $all_value[ 'suffix' ][ $device ] : (isset( $all_value[ 'suffix' ] ) ? $all_value[ 'suffix' ] : 'px');;
+					$suffix = isset( $all_value['suffix'] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : 'px' );;
 				}
 
 				return sprintf( "%s: %s%s;",
-					($css_prop),
-					($value),
+					( $css_prop ),
+					( $value ),
 					$suffix
 				);
 				break;
@@ -115,17 +115,17 @@ class Css_Prop {
 				if ( count( $non_empty_values ) === 4 ) {
 					return sprintf( "%s:%s%s %s%s %s%s %s%s;",
 						$css_prop,
-						(int) $value[ 'top' ],
+						(int) $value['top'],
 						$suffix,
-						(int) $value[ 'right' ],
+						(int) $value['right'],
 						$suffix,
-						(int) $value[ 'bottom' ],
+						(int) $value['bottom'],
 						$suffix,
-						(int) $value[ 'left' ],
+						(int) $value['left'],
 						$suffix
 					);
 				}
-				$rule = '';
+				$rule     = '';
 				$patterns = [
 					Config::CSS_PROP_MARGIN        => 'margin-%s',
 					Config::CSS_PROP_PADDING       => 'padding-%s',
@@ -138,13 +138,13 @@ class Css_Prop {
 					],
 				];
 
-				if( isset( $non_empty_values['unit'] ) ) {
-					unset ($non_empty_values['unit']);
+				if ( isset( $non_empty_values['unit'] ) ) {
+					unset ( $non_empty_values['unit'] );
 				}
 
 				foreach ( $non_empty_values as $position => $position_value ) {
 					$rule .= sprintf( "%s:%s%s;",
-						sprintf( (is_array( $patterns[ $css_prop ] ) ? $patterns[ $css_prop ][ $position ] : $patterns[ $css_prop ]), $position ),
+						sprintf( ( is_array( $patterns[ $css_prop ] ) ? $patterns[ $css_prop ][ $position ] : $patterns[ $css_prop ] ), $position ),
 						(int) $position_value,
 						$suffix
 					);
@@ -159,8 +159,8 @@ class Css_Prop {
 				$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'em';
 				// We consider the provided suffix as default, in case that we have a responsive setting with responsive suffix.
 				if ( isset( $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) && $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) {
-					$all_value = Mods::get( $meta[ 'key' ] );
-					$suffix = isset( $all_value[ 'suffix' ][ $device ] ) ? $all_value[ 'suffix' ][ $device ] : (isset( $all_value[ 'suffix' ] ) ? $all_value[ 'suffix' ] : $suffix);
+					$all_value = Mods::get( $meta['key'] );
+					$suffix    = isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : $suffix );
 				}
 
 				return sprintf( ' %s: %s%s; ', $css_prop, $value, $suffix );
@@ -177,8 +177,8 @@ class Css_Prop {
 				return "border:1px solid;";
 				break;
 			case Config::CSS_PROP_FONT_WEIGHT:
-				if ( isset( $meta[ 'font' ] ) ) {
-					$font = strpos( $meta[ 'font' ], 'mods_' ) === 0 ? Mods::get( str_replace( 'mods_', '', $meta[ 'font' ] ) ) : $meta[ 'font' ];
+				if ( isset( $meta['font'] ) ) {
+					$font = strpos( $meta['font'], 'mods_' ) === 0 ? Mods::get( str_replace( 'mods_', '', $meta['font'] ) ) : $meta['font'];
 					Font_Manager::add_google_font( $font, strval( $value ) );
 				}
 
@@ -199,8 +199,8 @@ class Css_Prop {
 				return sprintf( ' %s: %s; ', $css_prop, $value );
 				break;
 			default:
-				if( isset( $meta['directional-prop'] ) ) {
-					return self::transform_directional_prop( $meta, $device, $value, $css_prop, $meta['directional-prop']  );
+				if ( isset( $meta['directional-prop'] ) ) {
+					return self::transform_directional_prop( $meta, $device, $value, $css_prop, $meta['directional-prop'] );
 				}
 
 				$suffix = self::get_suffix( $meta, $device, $value, $css_prop );
@@ -237,6 +237,21 @@ class Css_Prop {
 			$suffix    = isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : $suffix );
 		}
 
+		if ( $suffix === 'responsive_unit' ) {
+			$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
+			$suffix    = 'px';
+			if ( isset( $all_value[ $device . '-unit' ] ) ) {
+				$suffix = $all_value[ $device . '-unit' ];
+			} elseif ( isset( $all_value['unit'] ) ) {
+				$suffix = $all_value['unit'];
+			}
+		}
+
+		if ( $suffix === 'responsive_suffix' ) {
+			$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
+			$suffix    = isset( $all_value['suffix'] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : 'px' );;
+		}
+
 		// Enqueue any google fonts we might be missing.
 		if ( isset ( $meta['font'] ) ) {
 			$font = strpos( $meta['font'], 'mods_' ) === 0 ? Mods::get( str_replace( 'mods_', '', $meta['font'] ) ) : $meta['font'];
@@ -246,10 +261,10 @@ class Css_Prop {
 		return $suffix;
 	}
 
-	public  static function transform_directional_prop ( $meta, $device, $value, $css_prop, $type ) {
+	public static function transform_directional_prop( $meta, $device, $value, $css_prop, $type ) {
 
-		$suffix = self::get_suffix($meta, $device, $value, $css_prop);
-		$suffix = $suffix ? $suffix : 'px';
+		$suffix   = self::get_suffix( $meta, $device, $value, $css_prop );
+		$suffix   = $suffix ? $suffix : 'px';
 		$template = '';
 
 		// Directional array without any other keys than the actual directions.
@@ -257,26 +272,32 @@ class Css_Prop {
 			return in_array( $key, Config::$directional_keys, true );
 		}, ARRAY_FILTER_USE_KEY );
 
-		if( count( array_unique( $filtered ) ) === 1 ) {
+		if ( count( array_unique( $filtered ) ) === 1 ) {
+			if( absint($value['top']) === 0 ) {
+				$suffix = '';
+			}
+
 			$template .= $value['top'] . $suffix . ';';
 
 			return $css_prop . ':' . $template . ';';
 		}
 
-		if( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] ) {
-			$template .= $value['top'] . $suffix . ' ' . $value['right'] . $suffix;
+		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] ) {
+			$top_suffix = absint($value['top']) === 0 ? '' : $suffix;
+			$right_suffix = absint( $value['right'] ) === 0 ? '' : $suffix;
+  			$template .= $value['top'] . $top_suffix . ' ' . $value['right'] . $right_suffix;
 
 			return $css_prop . ':' . $template . ';';
 		}
 
 		foreach ( Config::$directional_keys as $direction ) {
-			if( ! isset( $value[$direction] ) ) {
+			if ( ! isset( $value[ $direction ] ) || absint( $value[$direction] ) === 0 ) {
 				$template .= '0 ';
 			}
-			$template .= $value[$direction] . $suffix  . ' ';
+			$template .= $value[ $direction ] . $suffix . ' ';
 		}
 
-		$template = trim($template)  . ';';
+		$template = trim( $template ) . ';';
 
 		return $css_prop . ':' . $template . ';';
 	}

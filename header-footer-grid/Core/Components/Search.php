@@ -81,6 +81,12 @@ class Search extends Abstract_Component {
 				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'     => [
+						'responsive' => true,
+						'vars'       => '--height',
+						'suffix'     => 'px',
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'responsive' => true,
 					'template'   =>
 						'body ' . $this->default_selector . ' input[type=search] {
@@ -121,6 +127,12 @@ class Search extends Abstract_Component {
 				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'     => [
+						'responsive' => true,
+						'vars'       => '--formFieldFontSize',
+						'suffix'     => 'px',
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'responsive' => true,
 					'template'   =>
 						'body ' . $this->default_selector . ' input[type=search] {
@@ -201,6 +213,12 @@ class Search extends Abstract_Component {
 				],
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'      => [
+						'responsive' => true,
+						'vars'       => '--formFieldBorderWidth',
+						'suffix'     => 'px',
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'responsive'  => true,
 					'directional' => true,
 					'template'    =>
@@ -258,6 +276,12 @@ class Search extends Abstract_Component {
 				],
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'      => [
+						'responsive' => true,
+						'vars'       => '--formFieldBorderRadius',
+						'suffix'     => 'px',
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'responsive'  => true,
 					'directional' => true,
 					'template'    =>
@@ -284,6 +308,10 @@ class Search extends Abstract_Component {
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'   => [
+						'vars'     => '--formFieldBgColor',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					'template' =>
 						'body ' . $this->default_selector . ' input[type=search] {
 							background-color: {{value}} !important;
@@ -306,6 +334,13 @@ class Search extends Abstract_Component {
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'   => [
+						'vars'     => [
+							'--formFieldColor',
+							'--formFieldBorderColor',
+						],
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					'template' =>
 						'body ' . $this->default_selector . ' input[type=search], body ' . $this->default_selector . ' input::placeholder {
 							color: {{value}};

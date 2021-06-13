@@ -117,9 +117,11 @@ class Nav extends Abstract_Component {
 				'conditional_header'    => true,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
-					'cssVar'         => '--color',
-					'cssVarSelector' => '.builder-item--' . $this->get_id(),
-					'template'       =>
+					'cssVar'   => [
+						'vars'     => '--color',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
+					'template' =>
 						$selector . ' li:not(.current_page_item):not(.current-menu-item):not(.woocommerce-mini-cart-item) > a,' . $selector . ' li.neve-mm-heading span {
 						color: {{value}};
 					}',
@@ -140,9 +142,11 @@ class Nav extends Abstract_Component {
 				'conditional_header'    => true,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
-					'cssVar'         => '--activeColor',
-					'cssVarSelector' => '.builder-item--' . $this->get_id(),
-					'template'       =>
+					'cssVar'   => [
+						'vars'     => '--activeColor',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
+					'template' =>
 						$selector . ' li.current_page_item > a,' . $selector . ' li.current-menu-item > a {
 						color: {{value}} !important;
 					}',
@@ -163,9 +167,11 @@ class Nav extends Abstract_Component {
 				'conditional_header'    => true,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
-					'cssVar'         => '--hoverColor',
-					'cssVarSelector' => '.builder-item--' . $this->get_id(),
-					'template'       =>
+					'cssVar'   => [
+						'vars'     => '--hoverColor',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
+					'template' =>
 						'.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .nav-ul li:not(.woocommerce-mini-cart-item):hover > a {
 							 color: {{value}} !important;
 						}' .

@@ -36,7 +36,9 @@
 
   &.minimal {
 	position: relative;
-
+	.search-field {
+	  width: 200px;
+	}
 	.nv-nav-search {
 	  display: flex;
 	  align-items: center;

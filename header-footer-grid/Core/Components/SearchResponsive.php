@@ -162,6 +162,11 @@ class SearchResponsive extends Abstract_Component {
 				],
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'   => [
+						'vars'     => '--iconSize',
+						'suffix'   => 'px',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					'template' =>
 						'body ' . $this->default_selector . ' a.nv-search.nv-icon > svg {
 							width: {{value}}px;
@@ -186,6 +191,10 @@ class SearchResponsive extends Abstract_Component {
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'   => [
+						'vars'     => '--color',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					'template' =>
 						'body ' . $this->default_selector . ' a.nv-search.nv-icon > svg {
 							fill: {{value}};
@@ -207,6 +216,10 @@ class SearchResponsive extends Abstract_Component {
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'   => [
+						'vars'     => '--hoverColor',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					'template' =>
 						'body ' . $this->default_selector . ' a.nv-search.nv-icon:hover > svg {
 							fill: {{value}};
@@ -245,6 +258,12 @@ class SearchResponsive extends Abstract_Component {
 				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'     => [
+						'responsive' => true,
+						'vars'       => '--height',
+						'suffix'     => 'px',
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'responsive' => true,
 					'template'   =>
 						'body ' . $this->default_selector . ' .nv-nav-search .search-form input[type=search] {
@@ -285,6 +304,12 @@ class SearchResponsive extends Abstract_Component {
 				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'     => [
+						'responsive' => true,
+						'vars'       => '--formFieldFontSize',
+						'suffix'     => 'px',
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'responsive' => true,
 					'template'   =>
 						'body ' . $this->default_selector . ' .nv-nav-search .search-form input[type=search] {
@@ -365,6 +390,12 @@ class SearchResponsive extends Abstract_Component {
 				],
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'      => [
+						'responsive' => true,
+						'vars'       => '--formFieldBorderWidth',
+						'suffix'     => 'px',
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'responsive'  => true,
 					'directional' => true,
 					'template'    =>
@@ -422,6 +453,12 @@ class SearchResponsive extends Abstract_Component {
 				],
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'      => [
+						'responsive' => true,
+						'vars'       => '--formFieldBorderRadius',
+						'suffix'     => 'px',
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'responsive'  => true,
 					'directional' => true,
 					'template'    =>
@@ -448,6 +485,10 @@ class SearchResponsive extends Abstract_Component {
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'   => [
+						'vars'     => '--formFieldBgColor',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					'template' =>
 						'body ' . $this->default_selector . ' .nv-nav-search .search-form input[type=search] {
 							background-color: {{value}};
@@ -470,6 +511,13 @@ class SearchResponsive extends Abstract_Component {
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'   => [
+						'vars'     => [
+							'--formFieldColor',
+							'--formFieldBorderColor',
+						],
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					'template' =>
 						'body ' . $this->default_selector . ' .nv-nav-search .search-form input[type=search], body ' . $this->default_selector . ' input::placeholder {
 							color: {{value}};

@@ -1,16 +1,210 @@
 /* global _ */
-export const replaceCSSVar = (
-	id,
-	selector,
-	variable,
-	value,
-	responsive = false,
-	directional = false
-) => {
-	const content = `body ${selector} {${variable}: ${value};}`;
 
-	addCSS(id, content);
+const directions = ['top', 'right', 'bottom', 'left'];
+const devices = ['mobile', 'tablet', 'desktop'];
+const mediaQueries = {
+	mobile: false,
+	tablet: 'min-width: 576px',
+	desktop: 'min-width: 961px',
 };
+
+export class CSSVariablesHandler {
+	run(id, settingType, value, params) {
+		const {
+			selector,
+			vars,
+			responsive = false,
+			suffix = '',
+			reduce = false,
+			fallback = 'inherit',
+		} = params;
+
+		//Bail if no selectors or variables.
+		if (!selector || !vars) {
+			return false;
+		}
+
+		this.id = id;
+		this.settingType = settingType;
+		this.value = value;
+		this.vars = vars;
+		this.selector = `body ${selector}`;
+		this.suffix = suffix;
+		this.responsive = responsive;
+		this.reduce = reduce;
+		this.fallback = fallback;
+
+		const css = this.getStyle();
+
+		console.log(css);
+
+		addCSS(id, css);
+	}
+
+	getStyle() {
+		const { vars, responsive, reduce } = this;
+
+		//We have a simple (non-composed) responsive control.
+		if (responsive) {
+			return this.getResponsiveVarCSS();
+		}
+
+		if (Array.isArray(vars)) {
+			let style = '';
+			vars.forEach((variable) => {
+				this.vars = variable;
+				style += this.getStringVarCSS();
+			});
+
+			return style;
+		}
+
+		switch (typeof vars) {
+			case 'string':
+				return this.getStringVarCSS();
+			case 'object':
+				return this.getComposedVarCSS();
+			default:
+				break;
+		}
+	}
+
+	getResponsiveVarCSS() {
+		const { selector, vars, value, suffix, fallback } = this;
+		const parsedValue = this.maybeParseJson(value);
+
+		let style = '';
+		devices.forEach((device) => {
+			let useFallback = false;
+			if (!parsedValue[device]) {
+				useFallback = true;
+			}
+
+			let singularValue = parsedValue[device];
+			singularValue = useFallback
+				? fallback
+				: this.parseDirectionalValue(singularValue, suffix);
+
+			if (mediaQueries[device]) {
+				style += `@media(${mediaQueries[device]}) {`;
+			}
+			style += `${selector}{`;
+			style += `${vars}:${singularValue};`;
+			style += '}';
+			if (mediaQueries[device]) {
+				style += '}';
+			}
+		});
+
+		return style;
+	}
+
+	getStringVarCSS() {
+		const { selector, vars, value, suffix, fallback } = this;
+		if (typeof selector)
+			if (!value) {
+				return `${selector} {${vars}:${fallback};}`;
+			}
+		return `${selector} {${vars}:${value}${suffix};}`;
+	}
+
+	getComposedVarCSS() {
+		const { selector, vars, settingType, value, suffix, fallback } = this;
+
+		const isButton = this.isButtonSetting(settingType);
+
+		let style = `${selector} {`;
+
+		Object.keys(vars).forEach((cssVar) => {
+			let currentSuffix = suffix;
+			let settingKey = vars[cssVar];
+
+			if (typeof settingKey === 'object') {
+				if (settingKey.suffix) {
+					currentSuffix = settingKey.suffix;
+				}
+				settingKey = settingKey.key;
+			}
+
+			let newValue = value[settingKey] || null;
+
+			//Account for the button [don't add border width if no need]
+			if (cssVar.toLowerCase().includes('borderwidth') && isButton) {
+				if (value.type !== 'outline') {
+					style += `${cssVar}: 0;`;
+					return;
+				}
+			}
+
+			if (newValue) {
+				newValue = this.parseDirectionalValue(newValue, currentSuffix);
+			} else {
+				newValue = fallback;
+			}
+			style += `${cssVar}:${newValue};`;
+		});
+
+		style += '}';
+
+		return style;
+	}
+
+	isButtonSetting(settingId) {
+		return [
+			'\\Neve\\Customizer\\Controls\\React\\Button_Appearance',
+			'neve_button_appearance',
+		].includes(settingId);
+	}
+
+	parseDirectionalValue(value, suffix) {
+		if (typeof value !== 'object') {
+			return value + suffix;
+		}
+
+		if (!this.isDirectionalValue(value)) {
+			return value;
+		}
+
+		let directionalValue = '';
+
+		directions.forEach((direction) => {
+			directionalValue += `${value[direction]}${suffix} `;
+		});
+
+		directionalValue = directionalValue.trim();
+
+		return directionalValue;
+	}
+
+	isDirectionalValue(value) {
+		return (
+			typeof value.top !== 'undefined' &&
+			typeof value.right !== 'undefined' &&
+			typeof value.bottom !== 'undefined' &&
+			typeof value.left !== 'undefined'
+		);
+	}
+
+	getSuffix() {
+		if (this.suffix) {
+			return this.suffix;
+		}
+
+		return '';
+	}
+
+	maybeParseJson(input) {
+		if (typeof input !== 'string') {
+			return input;
+		}
+		try {
+			JSON.parse(input);
+		} catch (error) {
+			return input;
+		}
+		return JSON.parse(input);
+	}
+}
 
 export const addCSS = (id, content = '') => {
 	let style = document.querySelector('#' + id + '-css-style');
@@ -50,7 +244,6 @@ export const addTemplateCSS = (settingType, id, newValue, args) => {
 				style += `@media (${map[device]}) {${deviceStyle}}`;
 			}
 		} else {
-			const directions = ['top', 'right', 'bottom', 'left'];
 			style = args.template;
 			_.each(directions, function (dir) {
 				const directionRegex = new RegExp(`{{value.${dir}}}`, 'g');

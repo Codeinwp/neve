@@ -1,7 +1,7 @@
 /* global neveCustomizePreview, _,jQuery */
-import {initNavigation, repositionDropdowns} from '../frontend/navigation';
-import {removeClass, addClass} from '../utils.js';
-import {replaceCSSVar, addCSS, addTemplateCSS} from './css-var-handler';
+import { initNavigation, repositionDropdowns } from '../frontend/navigation';
+import { removeClass, addClass } from '../utils.js';
+import { CSSVariablesHandler, addCSS, addTemplateCSS } from './css-var-handler';
 
 function handleResponsiveRadioButtons(args, nextValue) {
 	if (!args.additional) return false;
@@ -22,12 +22,12 @@ function handleResponsiveRadioButtons(args, nextValue) {
 }
 
 /**
-	* Run JS on load.
-	*/
+ * Run JS on load.
+ */
 window.addEventListener('load', function () {
 	/**
-		* Add action when Header Panel rendered by customizer.
-		*/
+	 * Add action when Header Panel rendered by customizer.
+	 */
 	document.addEventListener('header_builder_panel_changed', function (e) {
 		if (e.detail.partial_id === 'hfg_header_layout_partial') {
 			window.HFG.init();
@@ -67,22 +67,23 @@ window.addEventListener('load', function () {
 		desktop: 'min-width: 961px',
 	};
 
+	const varsHandler = new CSSVariablesHandler();
+
 	_.each(neveCustomizePreview, function (settings, settingType) {
 		_.each(settings, function (args, settingId) {
 			wp.customize(settingId, function (setting) {
 				setting.bind(function (newValue) {
 					if (
+						neveCustomizePreview.newSkin &&
 						args.additional &&
-						args.additional.cssVar &&
-						args.additional.cssVarSelector
+						args.additional.cssVar
 					) {
-						replaceCSSVar(
+						varsHandler.run(
 							settingId,
-							args.additional.cssVarSelector,
-							args.additional.cssVar,
-							newValue
+							settingType,
+							newValue,
+							args.additional.cssVar
 						);
-
 						return false;
 					}
 					if (args.additional && args.additional.template) {
@@ -376,14 +377,14 @@ window.addEventListener('load', function () {
 									style += `line-height:${
 										args.live_refresh_default.line_height[
 											device
-											]
+										]
 									}${
 										args.live_refresh_default.line_height
 											.suffix &&
 										args.live_refresh_default.line_height
 											.suffix[device]
 											? args.live_refresh_default
-												.line_height.suffix[device]
+													.line_height.suffix[device]
 											: ''
 									};`;
 								}
@@ -519,8 +520,8 @@ window.addEventListener('load', function () {
 								'#nv-css-vars-inline-css'
 							);
 
-							const {palettes, activePalette} = newValue;
-							const {colors} = palettes[activePalette];
+							const { palettes, activePalette } = newValue;
+							const { colors } = palettes[activePalette];
 							let globalColorsCSS = ':root{';
 							Object.keys(colors).map((slug) => {
 								globalColorsCSS += `--${slug}:${colors[slug]};`;
@@ -649,10 +650,10 @@ window.addEventListener('load', function () {
 			} else {
 				$('head').append(
 					'<style type="text/css" class="' +
-					settings.styleClass +
-					'">' +
-					result +
-					'</style>'
+						settings.styleClass +
+						'">' +
+						result +
+						'</style>'
 				);
 			}
 		},

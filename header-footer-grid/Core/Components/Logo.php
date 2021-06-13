@@ -207,6 +207,10 @@ class Logo extends Abstract_Component {
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => '--color',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					[
 						'selector' => $this->default_selector . ' .brand .nv-title-tagline-wrap',
 						'prop'     => 'color',

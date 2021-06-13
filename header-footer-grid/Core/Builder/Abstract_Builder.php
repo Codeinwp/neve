@@ -358,10 +358,17 @@ abstract class Abstract_Builder implements Builder {
 					'label'                 => __( 'Row height', 'neve' ),
 					'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 					'live_refresh_selector' => $row_class,
-					'live_refresh_css_prop' => array(
-						'prop' => 'height',
-						'unit' => 'px',
-					),
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'responsive' => true,
+							'vars'       => '--height',
+							'suffix'     => 'px',
+							'fallback'   => 'auto',
+							'selector'   => $row_class,
+						],
+						'prop'   => 'height',
+						'unit'   => 'px',
+					],
 					'options'               => [
 						'input_attrs' => [
 							'step'       => 1,

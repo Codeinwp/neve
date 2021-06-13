@@ -110,6 +110,7 @@ class Button extends Abstract_Component {
 				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);
+
 		SettingsManager::get_instance()->add(
 			[
 				'id'                 => self::TEXT_ID,
@@ -128,15 +129,35 @@ class Button extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                 => self::STYLE_ID,
-				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'                => SettingsManager::TAB_STYLE,
-				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback'  => 'neve_sanitize_button_appearance',
-				'label'              => __( 'Appearance', 'neve' ),
-				'type'               => 'neve_button_appearance',
-				'section'            => $this->section,
-				'conditional_header' => $this->get_builder_id() === 'header',
+				'id'                    => self::STYLE_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'     => 'neve_sanitize_button_appearance',
+				'label'                 => __( 'Appearance', 'neve' ),
+				'type'                  => 'neve_button_appearance',
+				'section'               => $this->section,
+				'conditional_header'    => $this->get_builder_id() === 'header',
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => [
+							'--primaryBtnBg'           => 'background',
+							'--primaryBtnColor'        => 'text',
+							'--primaryBtnHoverBg'      => 'backgroundHover',
+							'--primaryBtnHoverColor'   => 'textHover',
+							'--primaryBtnBorderRadius' => [
+								'key'    => 'borderRadius',
+								'suffix' => 'px',
+							],
+							'--primaryBtnBorderWidth'  => [
+								'key'    => 'borderWidth',
+								'suffix' => 'px',
+							],
+						],
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
+				],
 			]
 		);
 	}

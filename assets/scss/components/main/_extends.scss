@@ -19,7 +19,9 @@
 
   background-color: var(--primaryBtnBg);
   color: var(--primaryBtnColor);
-  border: var(--primaryBtnBorderWidth, 0) solid currentColor;
+  border-style: solid;
+  border-color: currentColor;
+  border-width: var(--primaryBtnBorderWidth, 0);
   border-radius: var(--primaryBtnBorderRadius, 3px);
   padding: var(--primaryBtnPadding, 10px 15px);
 
@@ -52,7 +54,9 @@
   cursor: pointer;
   box-sizing: border-box;
 
-  border: var(--primaryBtnBorderWidth, 0) solid currentColor;
+  border-style: solid;
+  border-color: currentColor;
+  border-width: var(--primaryBtnBorderWidth, 0);
   border-radius: var(--primaryBtnBorderRadius, 3px);
   padding: var(--primaryBtnPadding, 10px 15px);
 
@@ -69,7 +73,9 @@
 
   background-color: var(--secondaryBtnBg);
   color: var(--secondaryBtnColor);
-  border: var(--secondaryBtnBorderWidth, 0) solid currentColor;
+  border-style: solid;
+  border-color: currentColor;
+  border-width: var(--secondaryBtnBorderWidth, 0);
   border-radius: var(--secondaryBtnBorderRadius, 3px);
   padding: var(--secondaryBtnPadding, 7px 12px);
 
@@ -89,7 +95,9 @@
 %nv-button-secondary-no-colors {
   cursor: pointer;
   border-radius: var(--secondaryBtnBorderRadius, 3px);
-  border: var(--secondaryBtnBorderWidth, 0) solid currentColor;
+  border-style: solid;
+  border-color: currentColor;
+  border-width: var(--secondaryBtnBorderWidth, 0);
   padding: var(--secondaryBtnPadding, 7px 12px);
 
   font-weight: var(--btnFontWeight, 700);
@@ -102,7 +110,9 @@
 // Form Fields
 %nv-form-fields {
   margin-bottom: var(--formFieldSpacing);
-  border: var(--formFieldBorderWidth) solid var(--formFieldBorderColor);
+  border-style: solid;
+  border-color: var(--formFieldBorderColor);
+  border-width: var(--formFieldBorderWidth) ;
   border-radius: var(--formFieldBorderRadius, 3px);
   background: var(--formFieldBgColor);
   color: var(--formFieldColor);
