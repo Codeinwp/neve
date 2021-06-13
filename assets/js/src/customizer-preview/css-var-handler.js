@@ -15,7 +15,6 @@ export class CSSVariablesHandler {
 			vars,
 			responsive = false,
 			suffix = '',
-			reduce = false,
 			fallback = 'inherit',
 		} = params;
 
@@ -31,18 +30,15 @@ export class CSSVariablesHandler {
 		this.selector = `body ${selector}`;
 		this.suffix = suffix;
 		this.responsive = responsive;
-		this.reduce = reduce;
 		this.fallback = fallback;
 
 		const css = this.getStyle();
-
-		console.log(css);
 
 		addCSS(id, css);
 	}
 
 	getStyle() {
-		const { vars, responsive, reduce } = this;
+		const { vars, responsive } = this;
 
 		//We have a simple (non-composed) responsive control.
 		if (responsive) {
@@ -76,6 +72,9 @@ export class CSSVariablesHandler {
 		let style = '';
 		devices.forEach((device) => {
 			let useFallback = false;
+
+			const finalSuffix = value[`${device}-unit`] || suffix;
+
 			if (!parsedValue[device]) {
 				useFallback = true;
 			}
@@ -83,7 +82,7 @@ export class CSSVariablesHandler {
 			let singularValue = parsedValue[device];
 			singularValue = useFallback
 				? fallback
-				: this.parseDirectionalValue(singularValue, suffix);
+				: this.parseDirectionalValue(singularValue, finalSuffix);
 
 			if (mediaQueries[device]) {
 				style += `@media(${mediaQueries[device]}) {`;

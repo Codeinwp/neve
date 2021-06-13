@@ -482,9 +482,14 @@ abstract class Abstract_Component implements Component {
 					'default'     => $this->default_padding_value,
 				],
 				'live_refresh_selector' => $padding_selector,
-				'live_refresh_css_prop' => array(
-					'prop' => 'padding',
-				),
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'       => '--padding',
+						'responsive' => true,
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
+					'prop'   => 'padding',
+				],
 				'section'               => $this->section,
 				'conditional_header'    => $this->get_builder_id() === 'header',
 			]
@@ -502,7 +507,12 @@ abstract class Abstract_Component implements Component {
 				'type'                  => '\Neve\Customizer\Controls\React\Spacing',
 				'live_refresh_selector' => '.builder-item--' . $this->get_id(),
 				'live_refresh_css_prop' => array(
-					'prop' => 'margin',
+					'cssVar' => [
+						'vars'       => '--margin',
+						'responsive' => true,
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
+					'prop'   => 'margin',
 				),
 				'section'               => $this->section,
 				'conditional_header'    => $this->get_builder_id() === 'header',
@@ -738,7 +748,7 @@ abstract class Abstract_Component implements Component {
 					'--letterSpacing' => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.letterSpacing',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
-						Dynamic_Selector::META_SUFFIX => 'px',
+						Dynamic_Selector::META_SUFFIX  => 'px',
 						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'letterSpacing' ),
 					],
 					'--fontWeight'    => [

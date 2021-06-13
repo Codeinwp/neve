@@ -35,5 +35,6 @@
   letter-spacing: var(--letterSpacing, var(--bodyLetterSpacing));
   font-weight: var(--fontWeight, var(--bodyFontWeight));
   text-transform: var(--textTransform, var(--bodyTextTransform));
-  //TODO: Continue Here.
+  padding: var(--padding, 0);
+  margin: var(--margin, 0);
 }
