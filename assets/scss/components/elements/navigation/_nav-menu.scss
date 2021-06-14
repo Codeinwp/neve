@@ -13,12 +13,15 @@
 .nav-ul {
   display: flex;
   flex-wrap: wrap;
+  margin-right: calc(var(--spacing) / 2 * -1);
+  margin-left: calc(var(--spacing) / 2 * -1);
 
   li a {
 	display: flex;
 	align-items: center;
 	min-height: var(--height);
 	color: var(--color);
+	position: relative;
   }
 
   a:hover {
@@ -28,13 +31,13 @@
   > li {
 	margin: 0 calc(var(--spacing) / 2);
 
-	&:first-child {
-	  margin-left: 0;
-	}
-
-	&:last-child {
-	  margin-right: 0;
-	}
+	//&:first-of-type {
+	//  margin-left: 0;
+	//}
+	//
+	//&:last-child {
+	//  margin-right: 0;
+	//}
   }
 
   li {
@@ -193,9 +196,10 @@
   .has-caret.amp {
 	padding-right: 0;
   }
+
   .amp.dropdown-open + .sub-menu {
-	  max-height: 1300px !important;
-	}
+	max-height: 1300px !important;
+  }
 }
 
 

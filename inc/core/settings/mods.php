@@ -437,9 +437,9 @@ class Mods {
 				];
 			case Config::MODS_BUTTON_PRIMARY_PADDING:
 				$device = $new ? [
-					'top'    => 10,
+					'top'    => 13,
 					'right'  => 15,
-					'bottom' => 10,
+					'bottom' => 13,
 					'left'   => 15,
 				] : [
 					'top'    => 8,
@@ -460,8 +460,8 @@ class Mods {
 				return $new ? 40 : 10;
 			case Config::MODS_FORM_FIELDS_PADDING:
 				return [
-					'top'    => $new ? 15 : 7,
-					'bottom' => $new ? 15 : 7,
+					'top'    => $new ? 10 : 7,
+					'bottom' => $new ? 10 : 7,
 					'left'   => 12,
 					'right'  => 12,
 					'unit'   => 'px',

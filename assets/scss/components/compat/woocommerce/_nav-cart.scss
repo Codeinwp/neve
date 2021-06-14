@@ -56,8 +56,8 @@ $cart-width: 360px;
   z-index: 100;
   width: $cart-width;
   text-align: left;
-  --primaryBtnPadding: 10px 15px;
-  --secondaryBtnPadding: 10px 15px;
+  --primaryBtnPadding: 13px 15px;
+  --secondaryBtnPadding: 13px 15px;
 
   .widget {
 	// Overflow needed to hide scrollbar.

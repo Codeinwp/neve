@@ -738,6 +738,7 @@ abstract class Abstract_Component implements Component {
 					'--fontSize'      => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_SUFFIX  => 'em',
 						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
 					],
 					'--lineHeight'    => [
@@ -832,6 +833,12 @@ abstract class Abstract_Component implements Component {
 					'priority'              => $priority + 1,
 					'type'                  => '\Neve\Customizer\Controls\React\Font_Family',
 					'live_refresh_selector' => $this->default_typography_selector,
+					'live_refresh_css_prop' => array(
+						'cssVar' => [
+							'vars'     => '--fontFamily',
+							'selector' => '.builder-item--' . $this->get_id(),
+						],
+					),
 					'section'               => $this->section,
 					'options'               => [
 						'input_attrs' => [
@@ -850,7 +857,28 @@ abstract class Abstract_Component implements Component {
 					'transport'             => 'postMessage',
 					'priority'              => $priority + 2,
 					'type'                  => '\Neve\Customizer\Controls\React\Typography',
-					'live_refresh_selector' => $this->default_typography_selector,
+					'live_refresh_selector' => neve_is_new_skin() ? true : $this->default_typography_selector,
+					'live_refresh_css_prop' => array(
+						'cssVar' => [
+							'vars'     => [
+								'--textTransform' => 'textTransform',
+								'--fontWeight'    => 'fontWeight',
+								'--fontSize'      => [
+									'key'        => 'fontSize',
+									'responsive' => true,
+								],
+								'--lineHeight'    => [
+									'key'        => 'lineHeight',
+									'responsive' => true,
+								],
+								'--letterSpacing' => [
+									'key'        => 'letterSpacing',
+									'responsive' => true,
+								],
+							],
+							'selector' => '.builder-item--' . $this->get_id(),
+						],
+					),
 					'section'               => $this->section,
 					'default'               => $this->typography_default,
 					'sanitize_callback'     => 'neve_sanitize_typography_control',

@@ -22,14 +22,8 @@ class Frontend extends Generator {
 	 * Generator constructor.
 	 */
 	public function __construct() {
-		$this->_subscribers = [
-			'.container' => [
-				Config::CSS_PROP_MAX_WIDTH => [
-					Dynamic_Selector::META_KEY           => Config::MODS_CONTAINER_WIDTH,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-			],
-		];
+		$this->_subscribers = [];
+		$this->setup_container();
 		$this->setup_blog_layout();
 		$this->setup_legacy_gutenberg_palette();
 		$this->setup_layout_subscribers();
@@ -38,6 +32,29 @@ class Frontend extends Generator {
 		$this->setup_blog_typography();
 		$this->setup_blog_colors();
 		$this->setup_form_fields_style();
+	}
+
+	/**
+	 * Setup the container styles.
+	 *
+	 * @return false
+	 */
+	private function setup_container() {
+		if ( ! neve_is_new_skin() ) {
+			$this->_subscribers['.container'] = [
+				Config::CSS_PROP_MAX_WIDTH => [
+					Dynamic_Selector::META_KEY           => Config::MODS_CONTAINER_WIDTH,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+			];
+
+			return false;
+		}
+
+		$this->_subscribers[] = [
+			Dynamic_Selector::KEY_SELECTOR => ':root',
+			Dynamic_Selector::KEY_RULES    => $this->get_container_rules(),
+		];
 	}
 
 	/**

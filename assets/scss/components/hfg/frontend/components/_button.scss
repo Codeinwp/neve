@@ -8,4 +8,16 @@
   }
 }
 
+.site-header {
+  .builder-item .item--inner {
+	&[class*="nav-icon"],
+	&[class*="button_base"] {
+	  padding: 0 !important;
+	}
+  }
+
+  .builder-item [class*="button_base"] .button {
+	--primaryBtnPadding: var(--padding)
+  }
+}
 

@@ -1,27 +1,33 @@
 @import "../../main/variables";
 
+
 .woocommerce-notices-wrapper > div {
   display: flex;
   align-items: center;
   flex-direction: column-reverse;
-  justify-content: flex-end;
   text-align: center;
   padding: 15px;
+  --btnFs: $text-sm;
+  --primaryBtnPadding: 10px 15px;
+  --primaryBtnBorderWidth: 3px;
+  --primaryBtnColor: #fff;
+  --primaryBtnHoverColor: #fff;
+  --primaryBtnHoverBg: transparent;
+  --primaryBtnBg: transparent;
 
   &:before {
 	display: none;
   }
 
-  > a.button {
+  .restore-item {
+	@extend %nv-button-primary-no-colors;
+  }
+
+  .button {
+	width: 100%;
+	margin-top: $spacing-sm;
 	white-space: normal;
 	margin-left: auto;
-	--btnFs: $text-sm;
-	--primaryBtnPadding: 10px 15px;
-	--primaryBtnBorderWidth: 3px;
-	--primaryBtnColor: #fff;
-	--primaryBtnHoverColor: #fff;
-	--primaryBtnHoverBg: transparent;
-	--primaryBtnBg: transparent;
   }
 }
 
@@ -56,8 +62,14 @@ $notices: (
 @mixin notices--tablet-sm() {
   .woocommerce-notices-wrapper > div {
 	flex-direction: row-reverse;
+	justify-content: flex-end;
 	text-align: left;
 	padding-left: $spacing-aired;
+
+	.restore-item {
+	  order: -1;
+	  margin-left: auto;
+	}
 
 	&:before {
 	  display: flex;

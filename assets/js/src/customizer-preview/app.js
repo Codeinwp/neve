@@ -542,9 +542,43 @@ window.addEventListener('load', function () {
 		});
 	});
 	wp.customize.preview.bind('font-selection', function (data) {
-		let selector = neveCustomizePreview[data.type][data.controlId].selector;
+		const controlData = neveCustomizePreview[data.type][data.controlId];
+
+		let selector = controlData.selector;
+
 		const source = data.source;
 		const id = data.controlId + '_font_family';
+
+		if (source.toLowerCase() === 'google') {
+			const linkNode = document.querySelector('#' + id),
+				fontValue = data.value.replace(' ', '+'),
+				url =
+					'//fonts.googleapis.com/css?family=' +
+					fontValue +
+					'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&display=swap"';
+			if (linkNode !== null) {
+				linkNode.setAttribute('href', url);
+			} else {
+				const newNode = document.createElement('link');
+				newNode.setAttribute('rel', 'stylesheet');
+				newNode.setAttribute('id', id);
+				newNode.setAttribute('href', url);
+				newNode.setAttribute('type', 'text/css');
+				newNode.setAttribute('media', 'all');
+				document.querySelector('head').appendChild(newNode);
+			}
+		}
+
+		const { additional = false } = controlData;
+		if (additional !== false) {
+			return false;
+		}
+
+		const { cssVar = false } = additional;
+		if (cssVar !== false) {
+			return false;
+		}
+
 		const defaultFontface = data.inherit
 			? 'inherit'
 			: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
@@ -566,25 +600,6 @@ window.addEventListener('load', function () {
 				data.controlId,
 				selector + '{font-family: ' + data.value + ' ;}'
 			);
-		}
-		if (source.toLowerCase() === 'google') {
-			const linkNode = document.querySelector('#' + id),
-				fontValue = data.value.replace(' ', '+'),
-				url =
-					'//fonts.googleapis.com/css?family=' +
-					fontValue +
-					'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&display=swap"';
-			if (linkNode !== null) {
-				linkNode.setAttribute('href', url);
-				return false;
-			}
-			const newNode = document.createElement('link');
-			newNode.setAttribute('rel', 'stylesheet');
-			newNode.setAttribute('id', id);
-			newNode.setAttribute('href', url);
-			newNode.setAttribute('type', 'text/css');
-			newNode.setAttribute('media', 'all');
-			document.querySelector('head').appendChild(newNode);
 		}
 	});
 	wp.customize('background_image', function (value) {

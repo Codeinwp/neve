@@ -1,4 +1,4 @@
-$container_width: 1200px; // 1200px; 75em
+$container_width: var(--container); // 1200px; 75em
 
 // Colors
 $gl-devices-list: (

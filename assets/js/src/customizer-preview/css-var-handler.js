@@ -27,7 +27,7 @@ export class CSSVariablesHandler {
 		this.settingType = settingType;
 		this.value = value;
 		this.vars = vars;
-		this.selector = `body ${selector}`;
+		this.selector = `html ${selector}`;
 		this.suffix = suffix;
 		this.responsive = responsive;
 		this.fallback = fallback;
@@ -42,7 +42,13 @@ export class CSSVariablesHandler {
 
 		//We have a simple (non-composed) responsive control.
 		if (responsive) {
-			return this.getResponsiveVarCSS();
+			return this.getResponsiveVarCSS(
+				this.selector,
+				vars,
+				this.value,
+				this.suffix,
+				this.fallback
+			);
 		}
 
 		if (Array.isArray(vars)) {
@@ -65,15 +71,18 @@ export class CSSVariablesHandler {
 		}
 	}
 
-	getResponsiveVarCSS() {
-		const { selector, vars, value, suffix, fallback } = this;
+	getResponsiveVarCSS(selector, variable, value, suffix, fallback) {
 		const parsedValue = this.maybeParseJson(value);
 
 		let style = '';
 		devices.forEach((device) => {
 			let useFallback = false;
 
-			const finalSuffix = value[`${device}-unit`] || suffix;
+			let finalSuffix = value[`${device}-unit`] || suffix;
+
+			if (value.suffix && value.suffix[device]) {
+				finalSuffix = value.suffix[device];
+			}
 
 			if (!parsedValue[device]) {
 				useFallback = true;
@@ -88,7 +97,7 @@ export class CSSVariablesHandler {
 				style += `@media(${mediaQueries[device]}) {`;
 			}
 			style += `${selector}{`;
-			style += `${vars}:${singularValue};`;
+			style += `${variable}:${singularValue};`;
 			style += '}';
 			if (mediaQueries[device]) {
 				style += '}';
@@ -112,18 +121,34 @@ export class CSSVariablesHandler {
 
 		const isButton = this.isButtonSetting(settingType);
 
-		let style = `${selector} {`;
+		let style = '';
 
 		Object.keys(vars).forEach((cssVar) => {
 			let currentSuffix = suffix;
 			let settingKey = vars[cssVar];
 
+			// If we have a key with additional values, we make sure to take them into account.
 			if (typeof settingKey === 'object') {
 				if (settingKey.suffix) {
 					currentSuffix = settingKey.suffix;
 				}
+
+				// If the setting inside is responsive, we add CSS for the responsive case and bail.
+				if (settingKey.responsive) {
+					style += this.getResponsiveVarCSS(
+						selector,
+						cssVar,
+						value[settingKey.key],
+						currentSuffix,
+						fallback
+					);
+					return false;
+				}
+
 				settingKey = settingKey.key;
 			}
+
+			style += `${selector} {`;
 
 			let newValue = value[settingKey] || null;
 
@@ -141,9 +166,8 @@ export class CSSVariablesHandler {
 				newValue = fallback;
 			}
 			style += `${cssVar}:${newValue};`;
+			style += '}';
 		});
-
-		style += '}';
 
 		return style;
 	}

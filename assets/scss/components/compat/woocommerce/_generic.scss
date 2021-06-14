@@ -43,10 +43,18 @@ main .nv-shop {
 	  color: var(--nv-text-color);
 	}
 
+	.dots {
+	  background: 0;
+	}
+
 	a:focus,
-	a:hover,
+	a:hover {
+	  background: var(--nv-light-bg);
+	  color: var(--nv-text-color);
+	}
+
 	span.current {
-	  background: var(--nv-dark-bg);
+	  background: var(--nv-primary-accent);
 	  color: var(--nv-text-dark-bg);
 	}
   }

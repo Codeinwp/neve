@@ -23,7 +23,7 @@
   border-color: currentColor;
   border-width: var(--primaryBtnBorderWidth, 0);
   border-radius: var(--primaryBtnBorderRadius, 3px);
-  padding: var(--primaryBtnPadding, 10px 15px);
+  padding: var(--primaryBtnPadding, 13px 15px);
 
   font-weight: var(--btnFontWeight, 700);
   font-size: var(--btnFs, var(--bodyFontSize));
@@ -41,7 +41,7 @@
 %nv-button-primary-no-border {
   cursor: pointer;
   box-sizing: border-box;
-  padding: var(--btnPadding, 10px 15px);
+  padding: var(--btnPadding, 13px 15px);
   border-radius: var(--primaryBtnBorderRadius, 3px);
   font-weight: var(--btnFontWeight, 700);
   font-size: var(--btnFs, var(--bodyFontSize));
@@ -58,7 +58,7 @@
   border-color: currentColor;
   border-width: var(--primaryBtnBorderWidth, 0);
   border-radius: var(--primaryBtnBorderRadius, 3px);
-  padding: var(--primaryBtnPadding, 10px 15px);
+  padding: var(--primaryBtnPadding, 13px 15px);
 
   font-weight: var(--btnFontWeight, 700);
   font-size: var(--btnFs, var(--bodyFontSize));

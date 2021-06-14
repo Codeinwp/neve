@@ -1,0 +1,18 @@
+ul.page-numbers {
+  a, span {
+	line-height: 1;
+	background: var(--nv-light-bg);
+	border-radius: 3px;
+	padding: 12px 15px;
+	color: var(--nv-text-color);
+  }
+
+  .dots {
+	background: 0;
+  }
+
+  .current {
+	background: var(--nv-primary-accent);
+	color: var(--nv-text-dark-bg);
+  }
+}

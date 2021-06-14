@@ -163,11 +163,11 @@ class Css_Prop {
 					$suffix    = isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : $suffix );
 				}
 
-				return sprintf( ' %s: %s%s; ', $css_prop, $value, $suffix );
+				return sprintf( ' %s: %s%s;', $css_prop, $value, $suffix );
 				break;
 			//Letter spacing has a legacy value of non-responsive which we need to take into consideration.
 			case Config::CSS_PROP_LETTER_SPACING:
-				return sprintf( ' %s: %spx; ', $css_prop, $value );
+				return sprintf( ' %s: %spx;', $css_prop, $value );
 				break;
 			case Config::CSS_PROP_CUSTOM_BTN_TYPE:
 				if ( $value !== 'outline' ) {
@@ -190,13 +190,13 @@ class Css_Prop {
 				}
 				Font_Manager::add_google_font( $value );
 
-				return sprintf( ' %s: %s, var(--nv-fallback-ff); ', $css_prop, $value );
+				return sprintf( ' %s: %s, var(--nv-fallback-ff);', $css_prop, $value );
 
 				break;
 			case Config::CSS_PROP_TEXT_TRANSFORM:
 			case Config::CSS_PROP_BOX_SHADOW:
 			case Config::CSS_PROP_GRID_TEMPLATE_COLS:
-				return sprintf( ' %s: %s; ', $css_prop, $value );
+				return sprintf( ' %s: %s;', $css_prop, $value );
 				break;
 			default:
 				if ( isset( $meta['directional-prop'] ) ) {
@@ -205,7 +205,7 @@ class Css_Prop {
 
 				$suffix = self::get_suffix( $meta, $device, $value, $css_prop );
 
-				return sprintf( ' %s: %s%s; ', $css_prop, $value, $suffix );
+				return sprintf( ' %s: %s%s;', $css_prop, $value, $suffix );
 				break;
 		}
 
@@ -273,25 +273,26 @@ class Css_Prop {
 		}, ARRAY_FILTER_USE_KEY );
 
 		if ( count( array_unique( $filtered ) ) === 1 ) {
-			if( absint($value['top']) === 0 ) {
+			if ( absint( $value['top'] ) === 0 ) {
 				$suffix = '';
 			}
 
-			$template .= $value['top'] . $suffix . ';';
+			$template .= $value['top'] . $suffix;
 
 			return $css_prop . ':' . $template . ';';
 		}
 
 		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] ) {
-			$top_suffix = absint($value['top']) === 0 ? '' : $suffix;
+			$top_suffix   = absint( $value['top'] ) === 0 ? '' : $suffix;
 			$right_suffix = absint( $value['right'] ) === 0 ? '' : $suffix;
-  			$template .= $value['top'] . $top_suffix . ' ' . $value['right'] . $right_suffix;
+
+			$template .= $value['top'] . $top_suffix . ' ' . $value['right'] . $right_suffix;
 
 			return $css_prop . ':' . $template . ';';
 		}
 
 		foreach ( Config::$directional_keys as $direction ) {
-			if ( ! isset( $value[ $direction ] ) || absint( $value[$direction] ) === 0 ) {
+			if ( ! isset( $value[ $direction ] ) || absint( $value[ $direction ] ) === 0 ) {
 				$template .= '0 ';
 			}
 			$template .= $value[ $direction ] . $suffix . ' ';

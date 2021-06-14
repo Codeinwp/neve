@@ -14,6 +14,27 @@ use Neve\Core\Settings\Mods;
  * @since 3.0.0
  */
 trait Css_Vars {
+	/**
+	 * Get container rules.
+	 *
+	 * @return array[]
+	 */
+	public function get_container_rules() {
+		return [
+			'--container' => [
+				Dynamic_Selector::META_KEY           => Config::MODS_CONTAINER_WIDTH,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 748, "tablet": 992, "desktop": 1170 }',
+			],
+		];
+	}
+
+	/**
+	 * Get button rules.
+	 *
+	 * @return array
+	 */
 	public function get_button_rules() {
 		$mod_key_primary   = Mods::get_alternative_mod( Config::MODS_BUTTON_PRIMARY_STYLE );
 		$default_primary   = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_STYLE );
