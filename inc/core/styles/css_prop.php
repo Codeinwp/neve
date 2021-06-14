@@ -267,6 +267,7 @@ class Css_Prop {
 		$suffix   = $suffix ? $suffix : 'px';
 		$template = '';
 
+
 		// Directional array without any other keys than the actual directions.
 		$filtered = array_filter( $value, function ( $key ) {
 			return in_array( $key, Config::$directional_keys, true );
@@ -282,7 +283,7 @@ class Css_Prop {
 			return $css_prop . ':' . $template . ';';
 		}
 
-		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] ) {
+		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
 			$top_suffix   = absint( $value['top'] ) === 0 ? '' : $suffix;
 			$right_suffix = absint( $value['right'] ) === 0 ? '' : $suffix;
 
@@ -294,6 +295,8 @@ class Css_Prop {
 		foreach ( Config::$directional_keys as $direction ) {
 			if ( ! isset( $value[ $direction ] ) || absint( $value[ $direction ] ) === 0 ) {
 				$template .= '0 ';
+
+				continue;
 			}
 			$template .= $value[ $direction ] . $suffix . ' ';
 		}

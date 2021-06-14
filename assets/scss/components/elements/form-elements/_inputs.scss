@@ -13,6 +13,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 input[type="submit"],
+select,
 textarea {
   display: inline-block;
   -webkit-appearance: none;
@@ -61,6 +62,14 @@ fieldset {
   input[type="text"], input[type="search"], input[type="password"], textarea, select {
 	width: 100%;
   }
+}
+
+select {
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 18px;
+  padding-right: 20px !important;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCI+PHBhdGggZmlsbD0iIzYyNjI2MiIgZD0iTTE1IDhsLTQgNi00LTZoOHoiLz48L3N2Zz4=");
 }
 
 

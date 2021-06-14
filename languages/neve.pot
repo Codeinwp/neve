@@ -479,34 +479,34 @@ msgstr ""
 msgid "Margin"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:816
+#: header-footer-grid/Core/Components/Abstract_Component.php:814
 #: inc/customizer/options/main.php:56
 msgid "Typography"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:924
+#: header-footer-grid/Core/Components/Abstract_Component.php:922
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:109
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:42
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:111
 msgid "Top"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:928
+#: header-footer-grid/Core/Components/Abstract_Component.php:926
 msgid "Middle"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:932
+#: header-footer-grid/Core/Components/Abstract_Component.php:930
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:111
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:44
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:121
 msgid "Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:945
+#: header-footer-grid/Core/Components/Abstract_Component.php:943
 msgid "Vertical Alignment"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:1024
+#: header-footer-grid/Core/Components/Abstract_Component.php:1022
 #: inc/customizer/options/layout_sidebar.php:129
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:153
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:112
@@ -515,11 +515,11 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:1028
+#: header-footer-grid/Core/Components/Abstract_Component.php:1026
 msgid "Center"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:1032
+#: header-footer-grid/Core/Components/Abstract_Component.php:1030
 #: inc/customizer/options/layout_sidebar.php:133
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:155
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:110
@@ -528,11 +528,11 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:1038
+#: header-footer-grid/Core/Components/Abstract_Component.php:1036
 msgid "Justify"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:1055
+#: header-footer-grid/Core/Components/Abstract_Component.php:1053
 msgid "Alignment"
 msgstr ""
 
