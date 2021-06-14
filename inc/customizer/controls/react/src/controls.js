@@ -1,6 +1,6 @@
-/* global domReady, initDeviceSwitchers, NeveReactCustomize */
+/* global CustomEvent, NeveReactCustomize */
 import './public-path.js';
-
+import domReady from '@wordpress/dom-ready';
 import { render } from '@wordpress/element';
 
 import { init as initDynamicFields } from './dynamic-fields/index';
@@ -54,6 +54,18 @@ controlConstructor.neve_inline_select = InlineSelectControl;
 controlConstructor.neve_builder_control = BuilderControl;
 controlConstructor.neve_builder_columns = BuilderColumns;
 controlConstructor.hfg_instructions = InstructionsControl;
+
+const initDeviceSwitchers = () => {
+	const deviceButtons = document.querySelector(
+		'#customize-footer-actions .devices, .hfg--cb-devices-switcher a.switch-to'
+	);
+	deviceButtons.addEventListener('click', function (e) {
+		const event = new CustomEvent('neveChangedRepsonsivePreview', {
+			detail: e.target.dataset.device,
+		});
+		document.dispatchEvent(event);
+	});
+};
 
 const initBlogPageFocus = () => {
 	wp.customize.section('neve_blog_archive_layout', (section) => {
