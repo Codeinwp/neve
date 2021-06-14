@@ -4,8 +4,8 @@ import './editor.scss';
 /**
  * Internal dependencies
  */
-const { registerPlugin } = wp.plugins;
-const { Icon } = wp.components;
+import { registerPlugin } from '@wordpress/plugins';
+import { Icon } from '@wordpress/components';
 
 import Sidebar from './components/Sidebar';
 import { neveIcon } from './helpers/icons.js';

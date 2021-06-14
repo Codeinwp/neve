@@ -6,10 +6,11 @@ import {
 	alignRightIcon,
 } from '../helpers/icons.js';
 
-const { compose } = wp.compose;
-const { withDispatch, withSelect } = wp.data;
-const { Component } = wp.element;
-const {
+import { compose } from '@wordpress/compose';
+
+import { withDispatch, withSelect, select } from '@wordpress/data';
+import { Component } from '@wordpress/element';
+import {
 	PanelBody,
 	Button,
 	BaseControl,
@@ -17,8 +18,8 @@ const {
 	ButtonGroup,
 	ToggleControl,
 	RangeControl,
-} = wp.components;
-const { __ } = wp.i18n;
+} from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 class MetaFieldsManager extends Component {
 	constructor(props) {
@@ -62,9 +63,7 @@ class MetaFieldsManager extends Component {
 	}
 
 	componentDidUpdate() {
-		const metaData = wp.data
-			.select('core/editor')
-			.getEditedPostAttribute('meta');
+		const metaData = select('core/editor').getEditedPostAttribute('meta');
 
 		const omitEmpty = (obj) => {
 			Object.keys(obj)
@@ -165,9 +164,9 @@ class MetaFieldsManager extends Component {
 	}
 
 	renderPageLayoutGroup() {
-		const template = wp.data
-			.select('core/editor')
-			.getEditedPostAttribute('template');
+		const template = select('core/editor').getEditedPostAttribute(
+			'template'
+		);
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
@@ -376,9 +375,9 @@ class MetaFieldsManager extends Component {
 	}
 
 	renderPageTitleGroup() {
-		const template = wp.data
-			.select('core/editor')
-			.getEditedPostAttribute('template');
+		const template = select('core/editor').getEditedPostAttribute(
+			'template'
+		);
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
@@ -386,7 +385,7 @@ class MetaFieldsManager extends Component {
 			this.props.metaValue('neve_post_elements_order') ||
 				this.defaultSortables
 		).includes('meta');
-		const postType = wp.data.select('core/editor').getCurrentPostType();
+		const postType = select('core/editor').getCurrentPostType();
 		return (
 			<div className="nv-option-category">
 				<PanelBody title={__('Page Title', 'neve')} intialOpen={true}>
@@ -552,10 +551,10 @@ class MetaFieldsManager extends Component {
 			settings.elements['sharing-icons'] = __('Sharing Icons', 'neve');
 		}
 
-		const template = wp.data
-			.select('core/editor')
-			.getEditedPostAttribute('template');
-		const postType = wp.data.select('core/editor').getCurrentPostType();
+		const template = select('core/editor').getEditedPostAttribute(
+			'template'
+		);
+		const postType = select('core/editor').getCurrentPostType();
 		return (
 			<div className="nv-option-category">
 				<PanelBody title={__('Elements', 'neve')} intialOpen={true}>
@@ -686,12 +685,16 @@ export default compose([
 			},
 		};
 	}),
-	withSelect((select) => {
+	withSelect((selectHandler) => {
 		return {
 			metaValue: (id) => {
-				return select('core/editor').getEditedPostAttribute('meta')[id];
+				return selectHandler('core/editor').getEditedPostAttribute(
+					'meta'
+				)[id];
 			},
-			allMeta: select('core/editor').getEditedPostAttribute('meta'),
+			allMeta: selectHandler('core/editor').getEditedPostAttribute(
+				'meta'
+			),
 		};
 	}),
 ])(MetaFieldsManager);

@@ -1,3 +1,4 @@
+/* global domReady, initDeviceSwitchers, NeveReactCustomize */
 import './public-path.js';
 
 import { render } from '@wordpress/element';
@@ -88,11 +89,48 @@ const initQuickLinksSections = () => {
 		render(<Instructions control={section} />, section.container[0]);
 	});
 };
+const checkHasElementorTemplates = () => {
+	if (NeveReactCustomize.elementor.hasElementorShopTemplate) {
+		window.wp.customize
+			.section('woocommerce_product_catalog')
+			.notifications.add(
+				new window.wp.customize.Notification(
+					'neve-custom-elementor-shop-template',
+					{
+						type: 'warning',
+						message:
+							'Some of the settings might not work as expected because you are using a custom shop template made in Elementor.',
+					}
+				)
+			);
+	}
+
+	if (NeveReactCustomize.elementor.hasElementorProductTemplate) {
+		window.wp.customize
+			.section('neve_single_product_layout')
+			.notifications.add(
+				new window.wp.customize.Notification(
+					'neve-custom-elementor-product-template',
+					{
+						type: 'warning',
+						message:
+							'Some of the settings might not work as expected because you are using a custom product template made in Elementor.',
+					}
+				)
+			);
+	}
+};
+
+domReady(() => {
+	initDeviceSwitchers();
+	initBlogPageFocus();
+});
 
 window.wp.customize.bind('ready', () => {
 	initDynamicFields();
 	initQuickLinksSections();
 	initBlogPageFocus();
+	checkHasElementorTemplates();
 });
 
 window.HFG = {
