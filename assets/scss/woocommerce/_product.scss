@@ -38,7 +38,7 @@
 		margin-right: -2px;
 		margin-left: -2px;
 
-	  	> * {
+	  	> *:not(script):not(noscript) {
 		  margin-right: 2px;
 		  margin-left: 2px;
 		  display: flex;
@@ -58,7 +58,7 @@
 		margin-right: -1px;
 		margin-left: -1px;
 
-		> * {
+		> *:not(script):not(noscript) {
 		  margin-right: 1px;
 		  margin-left: 1px;
 		  display: flex;
