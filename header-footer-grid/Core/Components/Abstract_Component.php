@@ -871,6 +871,7 @@ abstract class Abstract_Component implements Component {
 								],
 								'--letterSpacing' => [
 									'key'        => 'letterSpacing',
+									'suffix'     => 'px',
 									'responsive' => true,
 								],
 							],

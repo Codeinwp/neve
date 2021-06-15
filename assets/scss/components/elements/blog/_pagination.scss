@@ -1,6 +1,9 @@
 ul.page-numbers {
+  display: flex;
+
   a, span {
 	line-height: 1;
+	margin-right: $spacing-md;
 	background: var(--nv-light-bg);
 	border-radius: 3px;
 	padding: 12px 15px;

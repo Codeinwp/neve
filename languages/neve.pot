@@ -484,29 +484,29 @@ msgstr ""
 msgid "Typography"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:922
+#: header-footer-grid/Core/Components/Abstract_Component.php:923
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:109
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:42
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:111
 msgid "Top"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:926
+#: header-footer-grid/Core/Components/Abstract_Component.php:927
 msgid "Middle"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:930
+#: header-footer-grid/Core/Components/Abstract_Component.php:931
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:111
 #: inc/customizer/controls/react/src/non-responsive-spacing/NRSpacingComponent.js:44
 #: inc/customizer/controls/react/src/spacing/SpacingComponent.js:121
 msgid "Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:943
+#: header-footer-grid/Core/Components/Abstract_Component.php:944
 msgid "Vertical Alignment"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:1022
+#: header-footer-grid/Core/Components/Abstract_Component.php:1023
 #: inc/customizer/options/layout_sidebar.php:129
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:153
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:112
@@ -515,11 +515,11 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:1026
+#: header-footer-grid/Core/Components/Abstract_Component.php:1027
 msgid "Center"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:1030
+#: header-footer-grid/Core/Components/Abstract_Component.php:1031
 #: inc/customizer/options/layout_sidebar.php:133
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:155
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearance.js:110
@@ -528,11 +528,11 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:1036
+#: header-footer-grid/Core/Components/Abstract_Component.php:1037
 msgid "Justify"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:1053
+#: header-footer-grid/Core/Components/Abstract_Component.php:1054
 msgid "Alignment"
 msgstr ""
 
