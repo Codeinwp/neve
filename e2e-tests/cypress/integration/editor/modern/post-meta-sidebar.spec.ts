@@ -153,15 +153,14 @@ describe('Single post meta sidebar', function () {
 	it('Check author avatar', function () {
 		cy.loginWithRequest(postSetup.url);
 		cy.clearWelcome();
-		cy.get('#wp-admin-bar-edit a').click();
-
-		cy.get('.interface-complementary-area-header');
-
-		cy.activateCheckbox('.components-toggle-control__label', 'Author Avatar');
-		cy.updatePost();
-
-		cy.visit(postSetup.url);
-		cy.get('.nv-meta-list .author .photo').should('exist');
+		cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'posts', {
+			meta: {
+				neve_meta_author_avatar: 'on',
+			},
+		}).then(() => {
+			cy.visit(postSetup.url);
+			cy.get('.nv-meta-list .author .photo').should('exist');
+		});
 	});
 
 	it('Check post elements', function () {
