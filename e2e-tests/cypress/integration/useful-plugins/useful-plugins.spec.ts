@@ -1,5 +1,5 @@
 describe('Useful Plugins Tab - Install Optimole Plugin', function () {
-	beforeEach(function () {
+	before(function () {
 		cy.loginWithRequest('/wp-admin/themes.php?page=neve-welcome#plugins');
 	});
 
