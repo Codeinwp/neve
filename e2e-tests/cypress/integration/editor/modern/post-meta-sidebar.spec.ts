@@ -127,35 +127,27 @@ describe('Single post meta sidebar', function () {
 			meta: {
 				neve_meta_title_alignment: 'center',
 			},
+		}).then(() => {
+			cy.visit(postSetup.url);
+			cy.get('.title').should('have.css', 'text-align', 'center');
 		});
-		cy.visit(postSetup.url);
-		cy.get('h1.entry-title')
-			.should('have.class', 'has-text-align-center')
-			.and('have.css', 'text-align')
-			.and('eq', 'center');
 
 		cy.updatePageOrPostByRequest(postId, 'posts', {
 			meta: {
 				neve_meta_title_alignment: 'right',
 			},
+		}).then(() => {
+			cy.visit(postSetup.url);
+			cy.get('.title').should('have.css', 'text-align', 'right');
 		});
-		cy.visit(postSetup.url);
-		cy.get('h1.entry-title')
-			.should('have.class', 'has-text-align-right')
-			.and('have.css', 'text-align')
-			.and('eq', 'right');
-
 		cy.updatePageOrPostByRequest(postId, 'posts', {
 			meta: {
 				neve_meta_title_alignment: 'left',
 			},
+		}).then(() => {
+			cy.visit(postSetup.url);
+			cy.get('.title').should('have.css', 'text-align', 'left');
 		});
-		cy.visit(postSetup.url);
-		cy.get('h1.entry-title')
-			.should('have.class', 'has-text-align-left')
-			.and('have.css', 'text-align')
-			.and('eq', 'left');
-		cy.get('#wp-admin-bar-edit a').click();
 	});
 
 	it('Check author avatar', function () {
