@@ -11,7 +11,7 @@ describe('Useful Plugins Tab - Install Optimole Plugin', function () {
 	});
 
 	it('Can activates Plugins', function () {
-		cy.get('.feedzy-rss-feeds > .card-footer > .components-button')
+		cy.get('.templates-patterns-collection > .card-footer > .components-button')
 			.should('have.text', 'Activate')
 			.and('be.enabled');
 	});
