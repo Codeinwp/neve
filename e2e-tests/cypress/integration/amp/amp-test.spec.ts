@@ -1,26 +1,12 @@
 describe('AMP Check', function () {
 	before('Sets up search icon on menu top row', function () {
-		cy.goToCustomizer();
-		cy.aliasRestRoutes();
-
-		cy.get('#accordion-panel-hfg_header').should('be.visible').click();
-
-		cy.get('.top > .inner-row > .slots-right-wrap > .right > .components-button').click();
-		cy.get('button').contains('Search Form').click({ force: true });
-
-		cy.get('.responsive-switches > :nth-child(2)').click({ force: true });
-		cy.get('.top > .inner-row > .slots-right-wrap > .right > .components-button').click({
-			force: true,
-		});
-		cy.get('button').contains('Search Form').click({ force: true });
-		cy.get('#save').click({ force: true });
-		cy.wait('@customizerSave').then((interception) => {
-			expect(interception.response.body.success).to.be.true;
-			expect(interception.response.statusCode).to.equal(200);
-		});
-		cy.visit('/wp-admin');
-		cy.get('#wp-admin-bar-logout > a').click({
-			force: true,
+		cy.loginWithRequest('/wp-admin');
+		cy.fixture('amp/amp-setup').then((setup) => {
+			cy.setCustomizeSettings(setup).then(() => {
+				cy.exec(
+					'docker-compose -f ../docker-compose.ci.yml run --rm -u root cli wp --allow-root plugin install amp --activate',
+				);
+			});
 		});
 	});
 
