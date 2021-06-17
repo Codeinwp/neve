@@ -38,14 +38,11 @@
 		margin-right: -2px;
 		margin-left: -2px;
 
-		> .quantity, > .single_add_to_cart_button, > .wc-forward, > .nv-wl-wrap {
+		> .quantity, > .single_add_to_cart_button, > .wc-forward {
 		  display: flex;
 		  margin-right: 2px;
 		  margin-left: 2px;
 		  margin-top: 4px!important;
-		}
-
-		> .quantity, > .single_add_to_cart_button, > .wc-forward {
 		  justify-content: center;
 		  align-items: center;
 		}
