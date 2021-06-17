@@ -3,6 +3,7 @@ describe('AMP Check', function () {
 		cy.loginWithRequest('/wp-admin');
 		cy.fixture('amp/amp-setup').then((setup) => {
 			cy.setCustomizeSettings(setup);
+		});
 	});
 
 	it('Checks the search box from the menu', function () {
