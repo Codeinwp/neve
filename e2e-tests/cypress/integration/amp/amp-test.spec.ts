@@ -4,7 +4,7 @@ describe('AMP Check', function () {
 		cy.fixture('amp/amp-setup').then((setup) => {
 			cy.setCustomizeSettings(setup).then(() => {
 				cy.exec(
-					'docker-compose -f ../docker-compose.ci.yml run --rm -u root cli wp --allow-root plugin install amp --activate',
+					`docker-compose -f ../docker-compose.ci.yml run --rm -u root cli bash -c "wp menu create sample-menu --allow-root && wp menu location assign sample-menu primary --allow-root && wp menu item add-post sample-menu 1 --title='Parent menu' --allow-root && wp menu item add-post sample-menu 1 --title='Submenu Item' --allow-root  --parent-id='$(wp menu item list sample-menu --allow-root --format=ids)'"`,
 				);
 			});
 		});
