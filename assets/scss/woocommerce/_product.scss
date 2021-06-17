@@ -18,19 +18,19 @@
 		}
 	}
 
-  .entry-summary .quantity {
-	margin-left: 2px !important;
-	margin-right: 2px !important;
-  }
+	.entry-summary .quantity {
+	  margin-left: 2px !important;
+	  margin-right: 2px !important;
+	}
 
-  .quantity input {
-	padding-right: 4px !important;
-	padding-left: 4px !important;
-	box-sizing: border-box;
-	line-height: normal;
-  }
+	.quantity input {
+	  padding-right: 4px !important;
+	  padding-left: 4px !important;
+	  box-sizing: border-box;
+	  line-height: normal;
+	}
 
-  	.woocommerce-variation-add-to-cart,
+	.woocommerce-variation-add-to-cart,
 	.entry-summary > form.cart {
 		display: flex;
 		flex-wrap: wrap;
@@ -38,19 +38,19 @@
 		margin-right: -2px;
 		margin-left: -2px;
 
-	    > .quantity, > .single_add_to_cart_button, > .wc-forward, > .nv-wl-wrap {
+		> .quantity, > .single_add_to_cart_button, > .wc-forward, > .nv-wl-wrap {
 		  display: flex;
 		  margin-right: 2px;
 		  margin-left: 2px;
 		  margin-top: 4px!important;
 		}
 
-	  	> .quantity, > .single_add_to_cart_button, > .wc-forward {
+		> .quantity, > .single_add_to_cart_button, > .wc-forward {
 		  justify-content: center;
 		  align-items: center;
 		}
 
-	  	.quantity input {
+		.quantity input {
 		  align-self: normal;
 		}
 	}
