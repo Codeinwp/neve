@@ -38,7 +38,7 @@
 		margin-right: -2px;
 		margin-left: -2px;
 
-		> .quantity:not(.hidden), > .single_add_to_cart_button, > .wc-forward {
+		.quantity:not(.hidden), .single_add_to_cart_button, .wc-forward {
 		  display: flex;
 		  margin-right: 2px;
 		  margin-left: 2px;
