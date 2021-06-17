@@ -38,38 +38,20 @@
 		margin-right: -2px;
 		margin-left: -2px;
 
-	  	> * {
+	    > .quantity, > .single_add_to_cart_button, > .wc-forward, > .nv-wl-wrap {
+		  display: flex;
 		  margin-right: 2px;
 		  margin-left: 2px;
-		  display: flex;
-		  align-self: normal;
+		  margin-top: 4px!important;
+		}
+
+	  	> .quantity, > .single_add_to_cart_button, > .wc-forward {
+		  justify-content: center;
 		  align-items: center;
 		}
 
 	  	.quantity input {
-		  align-self: inherit;
-		}
-	}
-
-  	.single_variation_wrap {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: stretch;
-		margin-right: -1px;
-		margin-left: -1px;
-
-		> * {
-		  margin-right: 1px;
-		  margin-left: 1px;
-		  display: flex;
 		  align-self: normal;
-		  align-items: center;
-		}
-
-		.woocommerce-variation {
-		  display: flex;
-		  flex-wrap: wrap;
-		  flex: 0 0 100%;
 		}
 	}
 }
