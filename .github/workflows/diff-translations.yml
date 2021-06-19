@@ -1,0 +1,36 @@
+name: Translations Diff
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+    branches-ignore:
+      - 'update_dependencies'
+
+jobs:
+  translation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Ref Base
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          path: neve-base
+      - name: FRESH Makepot BASE
+        run: |
+         cd neve-base
+         ls languages/
+         npm run build:makepot
+         ls languages/
+      - name: Checkout Ref Head
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          path: neve-head
+      - name: FRESH Makepot HEAD
+        run: |
+         cd neve-head
+         ls languages/
+         npm run build:makepot
+         ls languages/
+      - name: Calculate Diff
+        run: git diff --exit-code -B1%/1% ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot | grep diss
