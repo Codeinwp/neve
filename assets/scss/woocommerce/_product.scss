@@ -28,6 +28,7 @@
 
 	.nv-single-product-actions-wrap {
 	  display: flex;
+	  flex-wrap: wrap;
 	  flex-basis: 100%;
 	  .quantity, .single_add_to_cart_button {
 		display: flex;

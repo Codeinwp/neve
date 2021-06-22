@@ -193,8 +193,13 @@ class Woocommerce {
 		$this->wrap_action_buttons();
 	}
 
+	/**
+	 * Wrap quantity and add to cart button in a div.
+	 *
+	 * @return bool
+	 */
 	public function wrap_action_buttons() {
-		if ( ! is_product() ){
+		if ( ! is_product() ) {
 			return false;
 		}
 
@@ -206,20 +211,25 @@ class Woocommerce {
 		$product_type = $product->get_type();
 
 		$opening_hook = 'woocommerce_before_add_to_cart_quantity';
-		if ( $product_type === 'grouped' || $product_type === 'external' ){
+		if ( $product_type === 'grouped' || $product_type === 'external' ) {
 			$opening_hook = 'woocommerce_before_add_to_cart_button';
 		}
 
-		add_action( $opening_hook, array( $this, 'open_actions_wrapper' ) );
-		add_action( 'woocommerce_after_add_to_cart_button', array( $this, 'close_actions_wrapper') );
-	}
+		add_action(
+			$opening_hook,
+			function () {
+				echo '<div class="nv-single-product-actions-wrap">';
+			} 
+		);
 
-	public function open_actions_wrapper() {
-		echo '<div class="nv-single-product-actions-wrap">';
-	}
+		add_action(
+			'woocommerce_after_add_to_cart_button',
+			function () {
+				echo '</div>';
+			} 
+		);
 
-	public function close_actions_wrapper() {
-		echo '</div>';
+		return true;
 	}
 
 	/**
