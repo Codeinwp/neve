@@ -55,7 +55,7 @@ jobs:
           edit-mode: replace
       - name: Delete comment
         uses: jungwinter/comment@v1
-        if: ${{ success() }} && steps.find_coomment.outputs.comment-id != ''
+        if: steps.find_coomment.outputs.comment-id != ''
         with:
           type: delete
           comment_id: ${{ steps.find_coomment.outputs.comment-id }}
