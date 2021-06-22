@@ -32,5 +32,31 @@ jobs:
          ls languages/
          npm run build:makepot
          ls languages/
+      - name: Find Comment
+        uses: peter-evans/find-comment@v1
+        id: find_coomment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'pirate-bot'
+          body-includes: PR has POT difference
       - name: Calculate Diff
-        run: git diff --exit-code -B1%/1% ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot | grep diss
+        env:
+          PERCENT_TRESHOLD: 5
+        run: pdiff=$(git diff --exit-code -U100000 ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot | awk '/^i/ {getline; next} /^-/ {pa += length} /^ / {qu += length} END {print pa/(pa+qu)*100}') && if [[ $pdiff > $PERCENT_TRESHOLD ]]; then echo "Greater then $PERCENT_TRESHOLD% difference $pdiff"; exit 1; else echo "Less than $PERCENT_TRESHOLD%  difference $pdiff"; exit 0; fi
+      - name: Step failed Create or update comment
+        if: ${{ failure() }}
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ steps.find_coomment.outputs.comment-id }}
+          token: ${{ secrets.BOT_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            :crossed_flags::guardsman: PR has POT difference @preda-bogdan cc: @selul @abaicus
+          edit-mode: replace
+      - name: Delete comment
+        uses: jungwinter/comment@v1
+        if: ${{ success() }} && steps.find_coomment.outputs.comment-id != ''
+        with:
+          type: delete
+          comment_id: ${{ steps.find_coomment.outputs.comment-id }}
+          token: ${{ secrets.BOT_TOKEN }}
