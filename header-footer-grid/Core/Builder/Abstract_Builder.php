@@ -1335,8 +1335,9 @@ abstract class Abstract_Builder implements Builder {
 				$was_previous_mergeable = false;
 			}
 
-			// Make sure array index starts at 0.
-			$render_buffer[ $slot ] = array_values( $render_buffer[ $slot ] );
+			if( isset( $render_buffer[$slot] ) && is_array( $render_buffer[$slot] ) ) {
+				$render_buffer[ $slot ] = array_values( $render_buffer[ $slot ] );
+			}
 		}
 
 		if ( ! $this->columns_layout ) {

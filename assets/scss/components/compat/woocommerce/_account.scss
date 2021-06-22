@@ -86,7 +86,7 @@ body.woocommerce-account {
 	nav > ul {
 	  display: flex;
 	  width: 100%;
-
+	  flex-wrap: wrap;
 
 	  li {
 		margin: 0 $spacing-md 0 0;

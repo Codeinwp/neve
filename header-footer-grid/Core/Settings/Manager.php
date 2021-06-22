@@ -21,8 +21,8 @@ use Neve\Core\Settings\Mods;
 class Manager {
 
 	const TAB_GENERAL = 'general';
-	const TAB_LAYOUT  = 'layout';
-	const TAB_STYLE   = 'style';
+	const TAB_LAYOUT = 'layout';
+	const TAB_STYLE = 'style';
 
 	/**
 	 * Holds an instance of this class.
@@ -104,7 +104,7 @@ class Manager {
 	/**
 	 * Load settings/control group in customizer.
 	 *
-	 * @param null                       $group Group to load.
+	 * @param null $group Group to load.
 	 * @param \WP_Customize_Manager|null $customize_manager Manager object.
 	 *
 	 * @return \WP_Customize_Manager Customizer object.
@@ -114,7 +114,7 @@ class Manager {
 			'refresh'     => true,
 			'postMessage' => true,
 		];
-		$section                = '';
+		$section = '';
 		foreach ( $this->get_settings_group( $group ) as $id ) {
 
 			if ( ! isset( self::$settings[ $id ] ) ) {
@@ -122,7 +122,7 @@ class Manager {
 			}
 			$arguments = self::$settings[ $id ];
 
-			if ( isset( $arguments['live_refresh_css_prop'] ) && isset( $arguments['live_refresh_css_prop']['cssVar'] ) ) {
+			if ( isset( $arguments['live_refresh_css_prop'] ) && isset( $arguments['live_refresh_css_prop']['cssVar'] ) && neve_is_new_skin() ) {
 				$transport = 'postMessage';
 			} else {
 				$transport = isset( $core_transports[ $arguments['transport'] ] ) ? $arguments['transport'] : $this->handle_transport( $arguments['transport'], $id );
@@ -235,7 +235,7 @@ class Manager {
 	 * Utility method to define existing controls for component tabs.
 	 *
 	 * @param string $id The ID for the tab.
-	 * @param array  $tabs List of tab and controls to use.
+	 * @param array $tabs List of tab and controls to use.
 	 *
 	 * @since   1.0.1
 	 * @access  public
@@ -339,14 +339,14 @@ class Manager {
 			self::$groups[ $arguments['group'] ][] = $id;
 
 			if ( isset( $arguments['tab'] ) && in_array(
-				$arguments['tab'],
-				array(
-					self::TAB_GENERAL,
-					self::TAB_LAYOUT,
-					self::TAB_STYLE,
-				),
-				true
-			) ) {
+					$arguments['tab'],
+					array(
+						self::TAB_GENERAL,
+						self::TAB_LAYOUT,
+						self::TAB_STYLE,
+					),
+					true
+				) ) {
 				if ( ! isset( self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] ) ) {
 					self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] = [];
 				}
@@ -363,19 +363,24 @@ class Manager {
 				}
 			);
 		}
-		if ( isset( $arguments['live_refresh_selector'] ) ) {
+		if ( isset( $arguments['live_refresh_selector'] ) && $arguments['live_refresh_selector'] !== false ) {
 			add_filter(
 				'neve_customize_preview_localization',
 				function ( $array ) use ( $arguments ) {
+					$args = [];
+
 					if ( ! isset( $array[ $arguments['type'] ] ) ) {
 						$array[ $arguments['type'] ] = [];
 					}
-					$args = [
-						'selector' => $arguments['live_refresh_selector'],
-					];
+
+					if ( isset( $arguments['live_refresh_selector'] ) ) {
+						$args['selector'] = $arguments['live_refresh_selector'];
+					}
+
 					if ( isset( $arguments['live_refresh_css_prop'] ) ) {
 						$args['additional'] = $arguments['live_refresh_css_prop'];
 					}
+
 					$array[ $arguments['type'] ][ $arguments['group'] . '_' . $arguments['id'] ] = $args;
 
 					return $array;
@@ -431,7 +436,7 @@ class Manager {
 	 * Return registered default.
 	 *
 	 * @param string $id Setting id.
-	 * @param null   $subkey Subkey, if any.
+	 * @param null $subkey Subkey, if any.
 	 *
 	 * @return mixed|null
 	 */
@@ -450,7 +455,7 @@ class Manager {
 	 * Get setting value based on context.
 	 *
 	 * @param string $id Setting id.
-	 * @param mixed  $default Default value.
+	 * @param mixed $default Default value.
 	 *
 	 * @return mixed Mod value.
 	 */

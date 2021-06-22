@@ -165,7 +165,7 @@ abstract class Base_Customizer {
 				$new_control  = $this->wpc->add_control( $control->id, $control->control_args );
 				$control_type = isset( $control->control_args['type'] ) ? $control->control_args['type'] : $new_control->type;
 			}
-			if ( isset( $control->control_args['live_refresh_selector'] ) && $control->control_args['live_refresh_selector'] === true ) {
+			if ( isset( $control->control_args['live_refresh_selector'] ) && $control->control_args['live_refresh_selector'] !== false ) {
 				$control_args = array(
 					'selector'   => $control->control_args['live_refresh_selector'],
 					'id'         => $control->id,

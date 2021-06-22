@@ -1,7 +1,7 @@
 @import "../../main/variables";
 
 
-.woocommerce-notices-wrapper > div {
+.woocommerce-info, .woocommerce-error, .woocommerce-message {
   display: flex;
   align-items: center;
   flex-direction: column-reverse;
@@ -19,11 +19,11 @@
 	display: none;
   }
 
-  .restore-item {
+  > a {
 	@extend %nv-button-primary-no-colors;
   }
 
-  .button {
+  a, .button {
 	width: 100%;
 	margin-top: $spacing-sm;
 	white-space: normal;
@@ -60,15 +60,17 @@ $notices: (
 }
 
 @mixin notices--tablet-sm() {
-  .woocommerce-notices-wrapper > div {
+  .woocommerce-info, .woocommerce-error, .woocommerce-message {
 	flex-direction: row-reverse;
 	justify-content: flex-end;
 	text-align: left;
 	padding-left: $spacing-aired;
 
-	.restore-item {
+	a, .button {
 	  order: -1;
-	  margin-left: auto;
+	  margin-left: auto !important;
+	  margin-top: 0;
+	  width: auto ;
 	}
 
 	&:before {
@@ -77,11 +79,6 @@ $notices: (
 	  align-items: center;
 	  height: 100%;
 	  color: #fff;
-	}
-
-	.button {
-	  margin-top: 0;
-	  width: auto;
 	}
   }
 }

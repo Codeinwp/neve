@@ -856,7 +856,7 @@ abstract class Abstract_Component implements Component {
 					'priority'              => $priority + 2,
 					'type'                  => '\Neve\Customizer\Controls\React\Typography',
 					'live_refresh_selector' => neve_is_new_skin() ? true : $this->default_typography_selector,
-					'live_refresh_css_prop' => array(
+					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => [
 								'--textTransform' => 'textTransform',
@@ -877,7 +877,7 @@ abstract class Abstract_Component implements Component {
 							],
 							'selector' => '.builder-item--' . $this->get_id(),
 						],
-					),
+					],
 					'section'               => $this->section,
 					'default'               => $this->typography_default,
 					'sanitize_callback'     => 'neve_sanitize_typography_control',

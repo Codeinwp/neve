@@ -7,7 +7,6 @@ import {
 	useState,
 } from '@wordpress/element';
 import { Spinner } from '@wordpress/components';
-import SidebarContent from './components/SidebarContent';
 
 import {
 	BuilderActions,
@@ -29,6 +28,11 @@ import BuilderContext from './BuilderContext';
 
 const Builder = lazy(
 	() => import(/* webpackChunkName: "builder" */ './components/Builder')
+);
+
+const SidebarContent = lazy(
+	() =>
+		import(/* webpackChunkName: "sidebar" */ './components/SidebarContent')
 );
 
 type Props = {

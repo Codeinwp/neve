@@ -40,7 +40,7 @@
 
 //<editor-fold desc="Product thumbnail">
 .product-thumbnail img {
-  width: 60px !important;
+  min-width: 60px !important;
 }
 
 //</editor-fold>
@@ -111,7 +111,7 @@
 
 @mixin cart--tablet() {
   .product-thumbnail img {
-	width: 120px !important;
+	min-width: 120px !important;
   }
 
   .woocommerce table.shop_table.cart {
