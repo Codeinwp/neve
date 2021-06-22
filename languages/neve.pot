@@ -1271,7 +1271,7 @@ msgctxt "Theme starter content"
 msgid "Blog"
 msgstr ""
 
-#: inc/compatibility/woocommerce.php:380
+#: inc/compatibility/woocommerce.php:411
 msgid "Filter"
 msgstr ""
 

@@ -189,6 +189,37 @@ class Woocommerce {
 		$this->move_checkout_coupon();
 		$this->add_inline_selectors();
 		add_action( 'wp', [ $this, 'setup_form_buttons' ] );
+
+		$this->wrap_action_buttons();
+	}
+
+	public function wrap_action_buttons() {
+		if ( ! is_product() ){
+			return false;
+		}
+
+		$product = wc_get_product( get_the_ID() );
+		if ( empty( $product ) ) {
+			return false;
+		}
+
+		$product_type = $product->get_type();
+
+		$opening_hook = 'woocommerce_before_add_to_cart_quantity';
+		if ( $product_type === 'grouped' || $product_type === 'external' ){
+			$opening_hook = 'woocommerce_before_add_to_cart_button';
+		}
+
+		add_action( $opening_hook, array( $this, 'open_actions_wrapper' ) );
+		add_action( 'woocommerce_after_add_to_cart_button', array( $this, 'close_actions_wrapper') );
+	}
+
+	public function open_actions_wrapper() {
+		echo '<div class="nv-single-product-actions-wrap">';
+	}
+
+	public function close_actions_wrapper() {
+		echo '</div>';
 	}
 
 	/**
