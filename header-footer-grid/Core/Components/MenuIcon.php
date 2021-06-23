@@ -28,6 +28,7 @@ class MenuIcon extends Abstract_Component {
 	const TEXT_ID           = 'menu_label';
 	const BUTTON_APPEARANCE = 'button_appearance';
 	const COMPONENT_SLUG    = 'nav-icon';
+	const MENU_ICON         = 'menu_icon';
 	const QUICK_LINKS_ID    = 'quick-links';
 
 	/**
@@ -134,6 +135,33 @@ class MenuIcon extends Abstract_Component {
 						),
 					),
 				],
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::MENU_ICON,
+				'group'                 => $this->get_id(),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'refresh',
+				'sanitize_callback'     => 'wp_filter_nohtml_kses',
+				'label'                 => __( 'Menu Icon', 'neve' ),
+				'description'           => __( 'Menu Icon', 'neve' ),
+				'type'                  => 'Neve\Customizer\Controls\React\Inline_Select',
+				'default'               => 'default',
+				'options'               => [
+					'options' => [
+						'default' => 'Default',
+						'arrow'   => 'Arrow',
+						'minus'   => 'Minus',
+						'vortex'  => 'Vortex',
+						'squeeze' => 'Squeeze',
+					],
+					'default' => 'default',
+				],
+				'section'               => $this->section,
+				'live_refresh_selector' => $this->default_selector,
+				'conditional_header'    => true,
 			]
 		);
 
