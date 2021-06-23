@@ -190,6 +190,15 @@ class Woocommerce {
 		$this->add_inline_selectors();
 		add_action( 'wp', [ $this, 'setup_form_buttons' ] );
 
+		add_filter(
+			'nv_product_types_without_quantity',
+			function( $types ) {
+				// Compatibility with WooCommerce Appointments plugin.
+				$types[] = 'appointment';
+				return $types;
+			} 
+		);
+
 		$this->wrap_action_buttons();
 	}
 
@@ -210,8 +219,16 @@ class Woocommerce {
 
 		$product_type = $product->get_type();
 
-		$opening_hook = 'woocommerce_before_add_to_cart_quantity';
-		if ( $product_type === 'grouped' || $product_type === 'external' ) {
+		/**
+		 * Filters the product types that doesn't contain a quantity field.
+		 *
+		 * @since 2.11.7
+		 *
+		 * @param array $types Product types.
+		 */
+		$types_without_quantity = apply_filters( 'nv_product_types_without_quantity', [ 'grouped', 'external' ] );
+		$opening_hook           = 'woocommerce_before_add_to_cart_quantity';
+		if ( in_array( $product_type, $types_without_quantity, true ) ) {
 			$opening_hook = 'woocommerce_before_add_to_cart_button';
 		}
 
@@ -219,14 +236,14 @@ class Woocommerce {
 			$opening_hook,
 			function () {
 				echo '<div class="nv-single-product-actions-wrap">';
-			} 
+			}
 		);
 
 		add_action(
 			'woocommerce_after_add_to_cart_button',
 			function () {
 				echo '</div>';
-			} 
+			}
 		);
 
 		return true;
