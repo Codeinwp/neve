@@ -4,7 +4,7 @@ main .nv-shop {
   margin-top: $spacing-aired;
 }
 
-//<editor-fold desc="On Sale Badge">
+// === Sale Badge === //
 .woocommerce {
   span.onsale {
 	background-color: $success;
@@ -24,9 +24,7 @@ main .nv-shop {
   }
 }
 
-//</editor-fold>
-
-//<editor-fold desc="Pagination">
+// === Pagination === //
 .woocommerce nav.woocommerce-pagination ul {
   display: flex;
   border: 0;
@@ -60,24 +58,23 @@ main .nv-shop {
   }
 }
 
-//</editor-fold>
-
-//<editor-fold desc="Rating">
+// === Rating === //
 .woocommerce {
   .star-rating {
 	color: #ffb100;
   }
 }
 
-//</editor-fold>
-
 // === Woo blocks === //
 .nv-content-wrap ul.wc-block-grid__products {
   list-style-type: none;
   padding-left: 0;
 }
-//</editor-fold>
 
 .woocommerce .blockOverlay {
   background-color: var(--nv-site-bg) !important;
+}
+
+.woocommerce form .form-row textarea:focus {
+  box-shadow: 0 0 3px 0 var(--nv-secondary-accent);
 }

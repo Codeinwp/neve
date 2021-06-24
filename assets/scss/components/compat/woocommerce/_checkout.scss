@@ -154,6 +154,11 @@
 	  box-shadow: 0 0 3px 0 var(--nv-secondary-accent);
 	  --formFieldBorderColor: var(--nv-secondary-accent);
 	}
+
+	[data-selected=true] {
+	  background-color: var(--nv-light-bg);
+	  color: var(--nv-text-color);
+	}
   }
 
   .select2-container--default .select2-selection--single {

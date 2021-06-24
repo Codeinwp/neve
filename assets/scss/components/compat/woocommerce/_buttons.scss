@@ -22,6 +22,7 @@ a.added_to_cart,
   }
 }
 
+
 .woocommerce ul.products li.product .button {
   white-space: normal;
 }
@@ -29,8 +30,8 @@ a.added_to_cart,
 
 //<editor-fold [AJAX add-to-cart loading]>
 .woocommerce {
-  .loading {
-	display: flex !important;
+  .button.loading {
+	display: inline-flex !important;
 	padding-right: 15px !important;
 
 	&:after {
