@@ -325,7 +325,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
 #: inc/compatibility/elementor.php:117
-#: inc/core/front_end.php:115
+#: inc/core/front_end.php:114
 #: inc/customizer/options/layout_blog.php:183
 #: inc/customizer/controls/react/src/common/common.js:77
 msgid "Text Color"
@@ -590,22 +590,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:509
+#: inc/core/front_end.php:356
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:506
+#: inc/core/front_end.php:353
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:508
+#: inc/core/front_end.php:355
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:507
+#: inc/core/front_end.php:354
 msgid "Footer Two"
 msgstr ""
 
@@ -656,7 +656,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Nav.php:43
 #: header-footer-grid/Core/Components/Nav.php:221
 #: header-footer-grid/templates/components/component-nav.php:26
-#: inc/core/front_end.php:72
+#: inc/core/front_end.php:71
 msgid "Primary Menu"
 msgstr ""
 
@@ -712,7 +712,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/NavFooter.php:41
 #: header-footer-grid/Core/Components/NavFooter.php:138
 #: header-footer-grid/templates/components/component-nav-footer.php:23
-#: inc/core/front_end.php:73
+#: inc/core/front_end.php:72
 msgid "Footer Menu"
 msgstr ""
 
@@ -798,7 +798,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/SecondNav.php:41
 #: header-footer-grid/Core/Components/SecondNav.php:136
 #: header-footer-grid/templates/components/component-nav-secondary.php:23
-#: inc/core/front_end.php:74
+#: inc/core/front_end.php:73
 msgid "Secondary Menu"
 msgstr ""
 
@@ -1052,7 +1052,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:499
+#: inc/core/front_end.php:346
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:149
 msgid "Sidebar"
 msgstr ""
@@ -1177,55 +1177,55 @@ msgid "Two columns with text"
 msgstr ""
 
 #: inc/compatibility/elementor.php:112
-#: inc/core/front_end.php:95
+#: inc/core/front_end.php:94
 #: inc/customizer/controls/react/src/common/common.js:72
 msgid "Primary Accent"
 msgstr ""
 
 #: inc/compatibility/elementor.php:113
-#: inc/core/front_end.php:99
+#: inc/core/front_end.php:98
 #: inc/customizer/controls/react/src/common/common.js:73
 msgid "Secondary Accent"
 msgstr ""
 
 #: inc/compatibility/elementor.php:114
-#: inc/core/front_end.php:103
+#: inc/core/front_end.php:102
 #: inc/customizer/controls/react/src/common/common.js:74
 msgid "Site Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:115
-#: inc/core/front_end.php:107
+#: inc/core/front_end.php:106
 #: inc/customizer/controls/react/src/common/common.js:75
 msgid "Light Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:116
-#: inc/core/front_end.php:111
+#: inc/core/front_end.php:110
 #: inc/customizer/controls/react/src/common/common.js:76
 msgid "Dark Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:118
-#: inc/core/front_end.php:119
+#: inc/core/front_end.php:118
 #: inc/customizer/controls/react/src/common/common.js:78
 msgid "Text Dark Background"
 msgstr ""
 
 #: inc/compatibility/elementor.php:119
-#: inc/core/front_end.php:123
+#: inc/core/front_end.php:122
 #: inc/customizer/controls/react/src/common/common.js:79
 msgid "Extra Color 1"
 msgstr ""
 
 #: inc/compatibility/elementor.php:120
-#: inc/core/front_end.php:127
+#: inc/core/front_end.php:126
 #: inc/customizer/controls/react/src/common/common.js:80
 msgid "Extra Color 2"
 msgstr ""
 
 #: inc/compatibility/elementor.php:292
-#: inc/core/front_end.php:90
+#: inc/core/front_end.php:89
 msgid "Theme"
 msgstr ""
 
@@ -1305,7 +1305,7 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: inc/core/front_end.php:500
+#: inc/core/front_end.php:347
 msgid "Shop Sidebar"
 msgstr ""
 
