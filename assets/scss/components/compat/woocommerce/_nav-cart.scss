@@ -78,6 +78,10 @@ $cart-width: 360px;
 	border-bottom: $base-border;
 	font-size: $text-sm;
 
+	&:last-child {
+	  border: 0;
+	}
+
 	img {
 	  position: absolute;
 	  left: 35px;
@@ -155,9 +159,12 @@ $cart-width: 360px;
   }
 }
 
-
 @mixin nav-cart--laptop() {
-  .menu-item-nav-cart:hover .nv-nav-cart {
-	display: block;
+  .menu-item-nav-cart {
+	&:hover, &:focus-within {
+	  .nv-nav-cart {
+		display: block;
+	  }
+	}
   }
 }

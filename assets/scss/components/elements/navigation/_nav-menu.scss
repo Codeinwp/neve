@@ -30,14 +30,6 @@
 
   > li {
 	margin: 0 calc(var(--spacing) / 2);
-
-	//&:first-of-type {
-	//  margin-left: 0;
-	//}
-	//
-	//&:last-child {
-	//  margin-right: 0;
-	//}
   }
 
   li {
@@ -62,8 +54,8 @@
 
 	svg {
 	  fill: currentColor;
-	  width: 1em !important;
-	  height: 1em !important;
+	  width: .5em;
+	  height: .5em;
 	}
   }
 
@@ -121,6 +113,11 @@
 	a {
 	  padding: $spacing-sm 20px;
 	  white-space: unset;
+	}
+
+	.caret svg {
+	  width: 1em;
+	  height: 1em;
 	}
 
 	.caret-wrap {

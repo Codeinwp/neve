@@ -1,11 +1,4 @@
 // Buttons
-
-@mixin nv-button-generic() {
-  cursor: pointer;
-  border-style: solid;
-  box-sizing: border-box;
-}
-
 %nv-button {
   cursor: pointer;
   box-sizing: border-box;

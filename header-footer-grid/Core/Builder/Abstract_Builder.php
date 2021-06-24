@@ -1335,7 +1335,7 @@ abstract class Abstract_Builder implements Builder {
 				$was_previous_mergeable = false;
 			}
 
-			if( isset( $render_buffer[$slot] ) && is_array( $render_buffer[$slot] ) ) {
+			if ( isset( $render_buffer[ $slot ] ) && is_array( $render_buffer[ $slot ] ) ) {
 				$render_buffer[ $slot ] = array_values( $render_buffer[ $slot ] );
 			}
 		}

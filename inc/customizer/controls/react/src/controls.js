@@ -88,10 +88,38 @@ const initQuickLinksSections = () => {
 		render(<Instructions control={section} />, section.container[0]);
 	});
 };
+const bindDataAttrQuickLinks = () => {
+	const dataControlFocusElements = document.querySelectorAll(
+		'[data-control-focus]'
+	);
+
+	if (!dataControlFocusElements) {
+		return;
+	}
+
+	dataControlFocusElements.forEach((el) => {
+		el.addEventListener('click', () => {
+			const attribute = el.getAttribute('data-control-focus');
+
+			if (!attribute) {
+				return;
+			}
+
+			const control = window.wp.customize.control(attribute);
+
+			if (!control) {
+				return;
+			}
+
+			control.focus();
+		});
+	});
+};
 
 window.wp.customize.bind('ready', () => {
 	initDynamicFields();
 	initQuickLinksSections();
+	bindDataAttrQuickLinks();
 	initBlogPageFocus();
 });
 

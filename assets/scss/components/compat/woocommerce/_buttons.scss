@@ -1,29 +1,26 @@
-
-//.woocommerce {
-  .added_to_cart {
+.woocommerce {
+  a.added_to_cart {
 	display: inline-block;
 	width: auto;
-	margin-left: $spacing-xs;
+	padding: var(--secondaryBtnPadding)
   }
 
-  .button {
-	&.added {
-	  display: none;
-	}
+  .button.added {
+	display: none !important;
   }
+}
 
-  .button.button-secondary.more-details,
-  .woocommerce .price_slider_amount button.button,
-  a.added_to_cart,
-  .checkout_coupon button.button,
-  .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout) {
-	@extend %nv-button-secondary;
+.button.button-secondary.more-details,
+.woocommerce .price_slider_amount button.button,
+a.added_to_cart,
+.checkout_coupon button.button,
+.woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout) {
+  @extend %nv-button-secondary;
 
-	&:hover {
-	  @extend %nv-button-secondary-hover;
-	}
+  &:hover {
+	@extend %nv-button-secondary-hover;
   }
-//}
+}
 
 .woocommerce ul.products li.product .button {
   white-space: normal;
@@ -32,14 +29,13 @@
 
 //<editor-fold [AJAX add-to-cart loading]>
 .woocommerce {
-  a.button.loading, button.button.loading, input.button.loading {
-	display: inline-flex;
-	align-items: center;
-	column-gap: 4px;
-	padding-right: inherit;
+  .loading {
+	display: flex !important;
+	padding-right: 15px !important;
 
-	&::after {
-	  position: initial;
+	&:after {
+	  margin-left: 5px;
+	  position: unset !important;
 	}
   }
 }

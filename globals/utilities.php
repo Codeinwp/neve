@@ -1365,7 +1365,7 @@ function neve_get_global_colors_default( $migrated = false ) {
 						'nv-light-bg'         => '#323232',
 						'nv-dark-bg'          => '#1A1A1A',
 						'nv-text-color'       => '#FFFFFF',
-						'nv-text-dark-bg'     => 'rgba(255,255,255,0.8)',
+						'nv-text-dark-bg'     => '#FFFFFF',
 						'nv-c-1'              => '#77B978',
 						'nv-c-2'              => '#F37262',
 					],

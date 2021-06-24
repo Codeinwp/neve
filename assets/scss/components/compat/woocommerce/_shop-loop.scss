@@ -34,7 +34,8 @@
 	> h2, > h3 {
 	  padding-top: 0;
 	  color: var(--nv-text-color);
-	  font-size: $text-lg;
+	  //font-size: $text-lg;
+	  font-size: var( --productTitleFs, 1.25em )
 	}
   }
 }
