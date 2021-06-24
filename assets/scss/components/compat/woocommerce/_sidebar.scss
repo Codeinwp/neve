@@ -1,6 +1,6 @@
 @import "../../main/variables";
 
-.nv-sidebar-wrap.shop-sidebar {
+.shop-sidebar {
   position: fixed;
   top: 0;
   left: 0;
@@ -21,6 +21,16 @@
   display: flex;
   justify-content: flex-end;
   margin-bottom: $spacing-md;
+
+  .nv-sidebar-toggle {
+	@extend %nv-button-secondary;
+  }
+}
+
+.nv-woo-filters {
+  .nv-sidebar-toggle {
+		margin-right: 20px;
+  }
 }
 
 @mixin shop-sidebar--laptop() {
@@ -28,7 +38,7 @@
 	display: none;
   }
 
-  .nv-sidebar-wrap.shop-sidebar {
+  .shop-sidebar {
 	height: auto;
 	background: transparent;
 	position: static;

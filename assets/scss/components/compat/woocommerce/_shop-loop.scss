@@ -4,15 +4,10 @@
   @extend %nv-reset-field-spacing
 }
 
-.nv-woo-filters .nv-sidebar-toggle {
-  color: var(--nv-text-color);
-}
-
 .nv-woo-filters {
   display: flex;
   align-items: center;
   margin-bottom: $spacing-xl;
-  justify-content: space-between;
 
   .woocommerce-ordering {
 	margin: 0;
@@ -34,8 +29,7 @@
 	> h2, > h3 {
 	  padding-top: 0;
 	  color: var(--nv-text-color);
-	  //font-size: $text-lg;
-	  font-size: var( --productTitleFs, 1.25em )
+	  font-size: var( --productTitleFs, #{$text-lg} )
 	}
   }
 }

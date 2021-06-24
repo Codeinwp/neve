@@ -141,12 +141,13 @@
 	  .button {
 		--secondaryBtnPadding: 15px 40px;
 		--primaryBtnPadding: 18px 40px;
+		margin-left: auto;
 	  }
 	}
   }
 
   .cart_totals {
-	width: 40% !important;
+	width: 40%;
   }
 }
 
@@ -239,22 +240,7 @@
 //</editor-fold>
 
 .cross-sells {
-  border: $muted-border;
-  margin-bottom: $spacing-md;
-
   > h2 {
-	margin-bottom: 0;
-	font-size: 1em;
-	padding: 9px 12px;
-	background-color: var(--nv-light-bg);
-  }
-
-  ul.products {
-	padding: 12px 12px 0;
-	margin-bottom: 0;
-
-	.product {
-	  margin-bottom: $spacing-xs !important;
-	}
+	font-size: var(--h4FontSize);
   }
 }

@@ -67,7 +67,8 @@ $cart-width: 360px;
   .woocommerce-mini-cart {
 	// Margin needed to hide scrollbar.
 	margin-right: -40px !important;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	max-height: 300px;
   }
 
