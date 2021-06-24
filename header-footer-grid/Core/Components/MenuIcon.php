@@ -13,7 +13,9 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use Neve\Core\Dynamic_Css;
 use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
 
 /**
@@ -82,6 +84,53 @@ class MenuIcon extends Abstract_Component {
 		$this->set_property( 'icon', 'menu' );
 		$this->set_property( 'section', self::COMPONENT_ID );
 		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() . ' .navbar-toggle' );
+
+		add_action( 'wp_enqueue_scripts', [ $this, 'load_scripts' ] );
+	}
+
+	/**
+	 * Method to check that the component is active.
+	 *
+	 * @return bool
+	 */
+	private function is_component_active() {
+		$builders = Main::get_instance()->get_builders();
+		foreach ( $builders as $builder ) {
+			if ( $builder->is_component_active( $this->get_id() ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Load Component Scripts
+	 *
+	 * @return void
+	 */
+	public function load_scripts() {
+		if ( $this->is_component_active() || is_customize_preview() ) {
+			wp_add_inline_style( 'neve-style', $this->toggle_style() );
+		}
+	}
+
+	/**
+	 * Get CSS to use as inline script
+	 *
+	 * @return string
+	 */
+	public function toggle_style() {
+		$css = '';
+		$menu_icon = Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' );
+		if ( $menu_icon !== 'default' ) {
+			$path = NEVE_MAIN_DIR . '/header-footer-grid/assets/css/frontend/components/menu-icon/' . $menu_icon . '.css';
+			if ( file_exists( $path ) ) {
+				$css = file_get_contents( $path );
+			}
+		}
+		error_log( $css );
+
+		return Dynamic_Css::minify_css( $css );
 	}
 
 	/**

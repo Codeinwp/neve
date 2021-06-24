@@ -1,0 +1,55 @@
+// Settings
+// ==================================================
+$hamburger-layer-width         : 15px !default;
+$hamburger-layer-height        : 2px !default;
+$hamburger-layer-spacing       : 3px !default;
+$hamburger-layer-border-radius : 2px !default;
+
+// Hamburger
+// ==================================================
+.hamburger {
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+	background-color: currentColor;
+  }
+}
+
+.hamburger-box {
+  width: $hamburger-layer-width;
+  height: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: $hamburger-layer-height / -2;
+  &,
+  &:before,
+  &:after {
+	width: $hamburger-layer-width;
+	height: $hamburger-layer-height;
+	background-color: currentColor;
+	border-radius: $hamburger-layer-border-radius;
+	position: absolute;
+	transition-property: transform;
+	transition-duration: 0.15s;
+	transition-timing-function: ease;
+  }
+  &:before,
+  &:after {
+	content: "";
+	display: block;
+  }
+  &:before {
+	top: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+  }
+  &:after {
+	bottom: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+  }
+}
