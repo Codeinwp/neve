@@ -124,7 +124,7 @@ class MenuIcon extends Abstract_Component {
 		$menu_icon = Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' );
 		$base_path = NEVE_MAIN_DIR . '/header-footer-grid/assets/components/menu-icon/';
 		if ( $menu_icon !== 'default' ) {
-			$path = $base_path . $menu_icon . '.min.php';
+			$path = $base_path . $menu_icon . '.css.min.php';
 			ob_start();
 			include $path;
 			$css = ob_get_contents();
