@@ -87,7 +87,20 @@ class Lifter {
 		add_filter( 'lifterlms_show_page_title', '__return_false' );
 
 		add_action( 'neve_llms_content', array( $this, 'content_open' ), 10 );
-		add_action( 'lifterlms_after_loop', array( $this, 'content_close' ), 10 );
+		add_action(
+			'lifterlms_after_loop',
+			function() {
+				echo '<div>';
+			},
+			10 
+		);
+		add_action(
+			'lifterlms_after_main_content',
+			function() {
+				echo '<div>';
+			},
+			10 
+		);
 
 		add_action( 'widgets_init', array( $this, 'register_catalog_sidebar' ) );
 		add_filter( 'llms_get_theme_default_sidebar', array( $this, 'lms_sidebar' ) );
@@ -296,14 +309,6 @@ class Lifter {
 		echo '</div>';
 		$class = apply_filters( 'neve_lifter_wrap_classes', 'nv-content-wrap entry-content' );
 		echo '<div class="' . esc_attr( $class ) . '">';
-	}
-
-	/**
-	 * Close content.
-	 */
-	public function content_close() {
-		echo '</div>'; // .nv-content-wrap .entry-content close
-		echo '</div>'; // .nv-single-page-wrap .col close
 	}
 
 	/**
