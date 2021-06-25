@@ -1,8 +1,20 @@
 /*
- * Squeeze
+ * Donner
  */
-.hamburger--squeeze {
+.hamburger--donner {
   .hamburger-inner {
+	&:before {
+	  width: $hamburger-layer-width;
+	  left: -3px;
+	}
+	&{
+	  width: 10px;
+	  left: 5px;
+	}
+	&:after {
+	  width: 5px;
+	  left: 2px;
+	}
 	transition-duration: 0.075s;
 	transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 	&::before {
@@ -16,6 +28,12 @@
   }
   &.is-active {
 	.hamburger-inner {
+	  &,
+	  &:before,
+	  &:after {
+		width: $hamburger-layer-width;
+		left: auto;
+	  }
 	  transform: rotate(45deg);
 	  transition-delay: 0.12s;
 	  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);

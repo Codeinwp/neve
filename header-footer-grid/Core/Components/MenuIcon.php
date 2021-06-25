@@ -85,7 +85,9 @@ class MenuIcon extends Abstract_Component {
 		$this->set_property( 'section', self::COMPONENT_ID );
 		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() . ' .navbar-toggle' );
 
-		add_action( 'wp_enqueue_scripts', [ $this, 'load_scripts' ] );
+		add_filter( 'neve_dynamic_style_output', array( $this, 'template_styles' ) );
+
+
 	}
 
 	/**
@@ -104,14 +106,15 @@ class MenuIcon extends Abstract_Component {
 	}
 
 	/**
-	 * Load Component Scripts
+	 * Load template styles
 	 *
-	 * @return void
+	 * @return string
 	 */
-	public function load_scripts() {
+	public function template_styles( $css ) {
 		if ( $this->is_component_active() || is_customize_preview() ) {
-			wp_add_inline_style( 'neve-style', $this->toggle_style() );
+			return $css . $this->component_style();
 		}
+		return $css;
 	}
 
 	/**
@@ -119,7 +122,7 @@ class MenuIcon extends Abstract_Component {
 	 *
 	 * @return string
 	 */
-	public function toggle_style() {
+	public function component_style() {
 		$css       = '';
 		$menu_icon = Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' );
 		$base_path = NEVE_MAIN_DIR . '/header-footer-grid/assets/components/menu-icon/';

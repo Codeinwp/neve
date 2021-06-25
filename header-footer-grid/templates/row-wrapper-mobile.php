@@ -27,6 +27,9 @@ if ( $menu_icon !== 'default' ) {
 		case 'arrow':
 			$class .= 'hamburger--arrow';
 			break;
+		case 'donner':
+			$class .= 'hamburger--donner';
+			break;
 		case 'minus':
 			$class .= 'hamburger--minus';
 			break;
