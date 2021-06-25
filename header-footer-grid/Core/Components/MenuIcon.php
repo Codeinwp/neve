@@ -125,12 +125,7 @@ class MenuIcon extends Abstract_Component {
 		$base_path = NEVE_MAIN_DIR . '/header-footer-grid/assets/components/menu-icon/';
 		if ( $menu_icon !== 'default' ) {
 			$path = $base_path . $menu_icon . '.css.min.php';
-			$css = require_once $path;
-			error_log( $css );
-//			ob_start();
-//			include $path;
-//			$css = ob_get_contents();
-//			ob_end_clean();
+			$css  = require_once $path;
 		}
 
 		return Dynamic_Css::minify_css( $css );

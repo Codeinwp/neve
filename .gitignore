@@ -10,6 +10,7 @@ visual-regression/*
 **/.DS_Store
 e2e-tests/cypress/videos/*
 header-footer-grid/assets/css/style*
+header-footer-grid/assets/components/*
 storybook-static
 yarn-error.log
 assets/js/build/*
