@@ -52,49 +52,6 @@ class Buttons extends Base_Customizer {
 			return;
 		}
 
-		$buttons = [
-			'button'           => __( 'Primary Button', 'neve' ),
-			'secondary_button' => __( 'Secondary Button', 'neve' ),
-		];
-
-		foreach ( $buttons as $button => $heading_text ) {
-			$this->add_control(
-				new Control(
-					'neve_' . $button . '_appearance_heading',
-					[
-						'sanitize_callback' => 'sanitize_text_field',
-					],
-					[
-						'label'            => esc_html( $heading_text ),
-						'section'          => $this->section_id,
-						'class'            => 'buttons-' . $button . '-appearance-accordion',
-						'accordion'        => true,
-						'controls_to_wrap' => 1,
-						'expanded'         => $button === 'button',
-					],
-					'Neve\Customizer\Controls\Heading'
-				)
-			);
-
-			$mod_key  = Mods::get_alternative_mod( 'neve_' . $button . '_appearance' );
-			$defaults = Mods::get_alternative_mod_default( 'neve_' . $button . '_appearance' );
-
-			$this->add_control(
-				new Control(
-					$mod_key,
-					[
-						'sanitize_callback' => 'neve_sanitize_button_appearance',
-						'default'           => $defaults,
-					],
-					[
-						'default_vals' => $defaults,
-						'label'        => __( 'Button Appearance', 'neve' ),
-						'section'      => $this->section_id,
-					],
-					'\Neve\Customizer\Controls\React\Button_Appearance'
-				)
-			);
-		}
 
 		$this->add_control(
 			new Control(
@@ -107,7 +64,7 @@ class Buttons extends Base_Customizer {
 					'section'          => $this->section_id,
 					'class'            => 'buttons-general-accordion',
 					'accordion'        => true,
-					'expanded'         => false,
+					'expanded'         => true,
 					'controls_to_wrap' => 2,
 				],
 				'Neve\Customizer\Controls\Heading'
@@ -134,14 +91,6 @@ class Buttons extends Base_Customizer {
 				'\Neve\Customizer\Controls\React\Spacing'
 			)
 		);
-
-		$live_refresh_selectors = [
-			'button'           => apply_filters( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL, Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL ] ),
-			'secondary_button' => apply_filters( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL, Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL ] ),
-			'default_button'   => '.wp-block-button .wp-block-button__link',
-		];
-
-		$live_refresh_selectors = join( ',', array_values( $live_refresh_selectors ) );
 
 		$this->add_control(
 			new Control(
@@ -177,12 +126,83 @@ class Buttons extends Base_Customizer {
 						),
 					),
 					'type'                  => 'neve_typeface_control',
-					'live_refresh_selector' => $live_refresh_selectors,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar'             => [
+							'vars' => [
+								'--btnFs'            => [
+									'key'        => 'fontSize',
+									'responsive' => true,
+									'suffix'     => 'px',
+								],
+								'--btnLineHeight'    => [
+									'key'        => 'lineHeight',
+									'responsive' => true,
+								],
+								'--btnLetterSpacing' => [
+									'key'        => 'letterSpacing',
+									'responsive' => true,
+									'suffix'     => 'px',
+								],
+								'--btnTextTransform' => [
+									'key' => 'textTransform',
+								],
+								'--btnFontWeight'    => [
+									'key' => 'fontWeight',
+								],
+							],
+							'selector' => 'body',
+						],
+					],
 					'refresh_on_reset'      => true,
 				],
 				'\Neve\Customizer\Controls\React\Typography'
 			)
 		);
+
+		$buttons = [
+			'button'           => __( 'Primary Button', 'neve' ),
+			'secondary_button' => __( 'Secondary Button', 'neve' ),
+		];
+
+		foreach ( $buttons as $button => $heading_text ) {
+			$this->add_control(
+				new Control(
+					'neve_' . $button . '_appearance_heading',
+					[
+						'sanitize_callback' => 'sanitize_text_field',
+					],
+					[
+						'label'            => esc_html( $heading_text ),
+						'section'          => $this->section_id,
+						'class'            => 'buttons-' . $button . '-appearance-accordion',
+						'accordion'        => true,
+						'controls_to_wrap' => 1,
+						'expanded'         => false,
+					],
+					'Neve\Customizer\Controls\Heading'
+				)
+			);
+
+			$mod_key  = Mods::get_alternative_mod( 'neve_' . $button . '_appearance' );
+			$defaults = Mods::get_alternative_mod_default( 'neve_' . $button . '_appearance' );
+
+			$this->add_control(
+				new Control(
+					$mod_key,
+					[
+						'sanitize_callback' => 'neve_sanitize_button_appearance',
+						'default'           => $defaults,
+					],
+					[
+						'default_vals' => $defaults,
+						'label'        => __( 'Button Appearance', 'neve' ),
+						'section'      => $this->section_id,
+					],
+					'\Neve\Customizer\Controls\React\Button_Appearance'
+				)
+			);
+		}
 	}
 
 	/**
