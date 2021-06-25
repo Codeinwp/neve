@@ -29,7 +29,7 @@
 	> h2, > h3 {
 	  padding-top: 0;
 	  color: var(--nv-text-color);
-	  font-size: var( --productTitleFs, #{$text-lg} )
+	  font-size: #{$text-lg}
 	}
   }
 }

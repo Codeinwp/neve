@@ -105,7 +105,7 @@
   margin-bottom: var(--formFieldSpacing);
   border-style: solid;
   border-color: var(--formFieldBorderColor);
-  border-width: var(--formFieldBorderWidth) ;
+  border-width: var(--formFieldBorderWidth);
   border-radius: var(--formFieldBorderRadius, 3px);
   background-color: var(--formFieldBgColor);
   color: var(--formFieldColor);
@@ -130,4 +130,12 @@
 
 %nv-reset-field-spacing {
   --formFieldSpacing: 0;
+}
+
+%nv-has-typography {
+  font-weight: var(--fontWeight);
+  text-transform: var(--textTransform);
+  letter-spacing: var(--letterSpacing);
+  line-height: var(--lineHeight);
+  font-size: var(--fontSize);
 }
