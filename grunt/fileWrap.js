@@ -4,7 +4,7 @@
 module.exports = {
 	requires: ['sass'],
 	wrapPHP: {
-		header: '<?php return <<<CSS\n', // if fileMode = true, it is a file name
+		header: "<?php return <<<'CSS'\n", // if fileMode = true, it is a file name
 		footer: '\nCSS;', // if fileMode = true, it is a file name
 		src: [
 			'header-footer-grid/assets/components/**/*.css.min.php',
