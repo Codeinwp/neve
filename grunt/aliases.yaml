@@ -1,6 +1,8 @@
 build:
 # Transpile SCSS
 - 'sass'
+# Wrap CSS.PHP output
+- 'fileWrap'
 # Concatenate Customizer Controls CSS Files into one || todo: review this on customizer audit
 - 'concat'
 # RTL CSS

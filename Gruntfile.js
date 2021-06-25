@@ -15,6 +15,7 @@ const paths = {
 }
 const taskMap = {
   sass: 'grunt-contrib-sass',
+  fileWrap: 'grunt-file-wrap',
   watch: 'grunt-contrib-watch',
   rtlcss: 'grunt-rtlcss',
   concat: 'grunt-contrib-concat',

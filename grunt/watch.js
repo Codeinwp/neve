@@ -3,7 +3,7 @@
 module.exports = {
 	sass: {
 		files: [ 'assets/scss/**/*.scss', 'header-footer-grid/assets/scss/**/*.scss' ],
-		tasks: [ 'sass:style', 'cssmin' ]
+		tasks: [ 'sass:style', 'sass:phpStyle', 'fileWrap', 'cssmin' ]
 	},
 	customizerSass: {
 		files: [

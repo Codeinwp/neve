@@ -4,7 +4,7 @@
 const sass = require('node-sass');
 
 const components = {
-	'menu-icon': ['arrow', 'minus', 'squeeze', 'vortex'],
+	'menu-icon': ['arrow', 'donner', 'minus', 'squeeze', 'vortex'],
 };
 
 const mapPhpFiles = {};
@@ -42,7 +42,7 @@ module.exports = {
 			implementation: sass,
 			noCache: true,
 			outputStyle: 'compressed',
-			sourceMap: true,
+			sourceMap: false,
 		},
 		files: [mapPhpFiles],
 	},

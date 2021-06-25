@@ -132,6 +132,7 @@
 		"grunt-contrib-concat": "^1.0.1",
 		"grunt-contrib-cssmin": "^3.0.0",
 		"grunt-contrib-watch": "^1.0.0",
+		"grunt-file-wrap": "^0.0.2",
 		"grunt-newer": "^1.3.0",
 		"grunt-rtlcss": "^2.0.2",
 		"grunt-sass": "^3.1.0",
