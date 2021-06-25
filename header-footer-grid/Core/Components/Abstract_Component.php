@@ -766,6 +766,21 @@ abstract class Abstract_Component implements Component {
 					],
 				]
 			);
+
+			/*
+			Attempt to match the font family for cart icon.
+			if ( strpos( $this->get_id(), Nav::COMPONENT_ID ) > - 1 ) {
+				$css_array[] = [
+					Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' ~ .builder-item--header_cart_icon',
+					Dynamic_Selector::KEY_RULES    => [
+						'--fontFamily'    => [
+							Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FONT_FAMILY_ID,
+							Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FONT_FAMILY_ID ),
+						],
+					],
+				];
+			}
+			*/
 		}
 
 		$css_array[] = [
