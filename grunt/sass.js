@@ -17,6 +17,10 @@ module.exports = {
 			'assets/css/woocommerce.css': 'assets/scss/woocommerce.scss',
 			'assets/css/lifter.css': 'assets/scss/lifter.scss',
 			'assets/css/gutenberg-editor-style.css': 'assets/scss/gutenberg-editor-style.scss',
+			'header-footer-grid/assets/components/menu-icon/arrow.php': 'header-footer-grid/assets/scss/frontend/components/menu-icon/arrow.scss',
+			'header-footer-grid/assets/components/menu-icon/minus.php': 'header-footer-grid/assets/scss/frontend/components/menu-icon/minus.scss',
+			'header-footer-grid/assets/components/menu-icon/squeeze.php': 'header-footer-grid/assets/scss/frontend/components/menu-icon/squeeze.scss',
+			'header-footer-grid/assets/components/menu-icon/vortex.php': 'header-footer-grid/assets/scss/frontend/components/menu-icon/vortex.scss',
 		} ]
 	},
 };
