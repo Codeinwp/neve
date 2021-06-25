@@ -17,6 +17,7 @@ use Neve\Core\Dynamic_Css;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
+use ScssPhp\ScssPhp\Compiler;
 
 /**
  * Class MenuIcon
@@ -122,10 +123,19 @@ class MenuIcon extends Abstract_Component {
 	public function toggle_style() {
 		$css = '';
 		$menu_icon = Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' );
+		$base_path = NEVE_MAIN_DIR . '/header-footer-grid/assets/scss/frontend/components/menu-icon/';
+		$compiler = new Compiler();
+		$compiler->setImportPaths( $base_path );
 		if ( $menu_icon !== 'default' ) {
-			$path = NEVE_MAIN_DIR . '/header-footer-grid/assets/css/frontend/components/menu-icon/' . $menu_icon . '.css';
+			$path = $base_path . $menu_icon . '.scss';
 			if ( file_exists( $path ) ) {
-				$css = file_get_contents( $path );
+				//$css = file_get_contents( $path );
+				try {
+					$css = $compiler->compileString( file_get_contents( $path ) )->getCss();
+				} catch ( \Exception $exception ) {
+					$css = '';
+					error_log( $exception->getMessage() );
+				}
 			}
 		}
 		error_log( $css );

@@ -16,7 +16,8 @@
   },
   "require": {
 	"codeinwp/themeisle-sdk": "^3.0",
-    "wptt/webfont-loader": "^1.1"
+    "wptt/webfont-loader": "^1.1",
+	"scssphp/scssphp": "^1.5.2"
   },
   "autoload": {
 	"psr-4": {
