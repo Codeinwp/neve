@@ -120,17 +120,16 @@ class MenuIcon extends Abstract_Component {
 	 * @return string
 	 */
 	public function toggle_style() {
-		$css = '';
+		$css       = '';
 		$menu_icon = Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' );
 		$base_path = NEVE_MAIN_DIR . '/header-footer-grid/assets/components/menu-icon/';
 		if ( $menu_icon !== 'default' ) {
 			$path = $base_path . $menu_icon . '.min.php';
 			ob_start();
-			include( $path );
+			include $path;
 			$css = ob_get_contents();
 			ob_end_clean();
 		}
-		error_log( $css );
 
 		return Dynamic_Css::minify_css( $css );
 	}
