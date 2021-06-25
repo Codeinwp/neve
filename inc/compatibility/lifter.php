@@ -113,9 +113,6 @@ class Lifter {
 	 * Add inline selectors for LifterLMS.
 	 */
 	private function add_inline_selectors() {
-		if ( neve_is_new_skin() ) {
-			return;
-		}
 		add_filter(
 			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
 			array(
