@@ -82,7 +82,7 @@ class Lifter {
 		remove_action( 'lifterlms_after_main_content', 'lifterlms_output_content_wrapper_end', 10 );
 		remove_all_actions( 'lifterlms_sidebar' );
 
-		add_action( 'lifterlms_before_loop', array( $this, 'content_wrapper_open' ), 0 );
+		add_action( 'lifterlms_before_main_content', array( $this, 'content_wrapper_open' ), 0 );
 		add_action( 'lifterlms_after_loop', array( $this, 'content_wrapper_close' ), 100 );
 		add_filter( 'lifterlms_show_page_title', '__return_false' );
 
@@ -92,14 +92,14 @@ class Lifter {
 			function() {
 				echo '<div>';
 			},
-			10 
+			10
 		);
 		add_action(
 			'lifterlms_after_main_content',
 			function() {
 				echo '<div>';
 			},
-			10 
+			10
 		);
 
 		add_action( 'widgets_init', array( $this, 'register_catalog_sidebar' ) );
