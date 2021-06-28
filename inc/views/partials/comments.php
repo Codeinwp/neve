@@ -31,32 +31,44 @@ class Comments extends Base_View {
 	 * Render the comments form.
 	 */
 	public function render_comment_form() {
-		$display_form_first = apply_filters( 'neve_show_comment_form_first', false );
+		$display_form_first    = apply_filters( 'neve_show_comment_form_first', false );
+		$comment_form_settings = $this->get_sumbit_form_settings();
 
 		if ( $display_form_first ) {
-			comment_form();
+			comment_form( $comment_form_settings );
 		}
 
 		if ( have_comments() ) {
-			$comment_title_tag = neve_is_new_skin() ? 'h4' : 'h2';
-			?>
-			<div class="nv-comments-title-wrap">
-			<?php
-			echo '<' . esc_html( $comment_title_tag ) . ' class="comments-title">';
-			echo wp_kses_post( $this->get_comments_title() );
-			echo '</' . esc_html( $comment_title_tag ) . '>'
-			?>
+			$comment_title_tag     = neve_is_new_skin() ? 'h4' : 'h2';
+			$comments_wrap_classes = [ 'nv-comments-wrap' ];
+			$is_boxed              = get_theme_mod( 'neve_comments_boxed_layout', false );
+			if ( $is_boxed ) {
+				$comments_wrap_classes[] = 'is-boxed';
+			}
 
-			<ol class="nv-comments-list">
-				<?php
-				wp_list_comments(
-					array(
-						'callback' => array( $this, 'comment_list_callback' ),
-						'style'    => 'ol',
-					)
-				);
-				?>
-			</ol>
+			?>
+			<div class="<?php echo esc_attr( implode( ' ', $comments_wrap_classes ) ); ?>">
+
+				<div class="nv-comments-title-wrap">
+					<?php
+					echo '<' . esc_html( $comment_title_tag ) . ' class="comments-title">';
+					echo wp_kses_post( $this->get_comments_title() );
+					echo '</' . esc_html( $comment_title_tag ) . '>'
+					?>
+				</div>
+
+				<ol class="nv-comments-list">
+					<?php
+					wp_list_comments(
+						array(
+							'callback' => array( $this, 'comment_list_callback' ),
+							'style'    => 'ol',
+						)
+					);
+					?>
+				</ol>
+
+			</div>
 
 			<?php
 			$this->maybe_render_comments_navigation();
@@ -70,8 +82,37 @@ class Comments extends Base_View {
 			<?php
 		}
 		if ( ! $display_form_first ) {
-			comment_form();
+			comment_form( $comment_form_settings );
 		}
+	}
+
+	/**
+	 * Get forms settings.
+	 *
+	 * @return array
+	 */
+	private function get_sumbit_form_settings() {
+		$form_settings = [];
+
+		$form_title = get_theme_mod( 'neve_post_comment_form_title' );
+		if ( ! empty( $form_title ) ) {
+			$form_settings['title_reply'] = $form_title;
+		}
+
+		$submit_button_style           = get_theme_mod( 'neve_post_comment_form_button_style', 'primary' );
+		$form_settings['class_submit'] = 'button button-' . esc_attr( $submit_button_style );
+
+		$button_text = get_theme_mod( 'neve_post_comment_form_button_text' );
+		if ( ! empty( $button_text ) ) {
+			$form_settings['label_submit'] = $button_text;
+		}
+
+		$boxed_layout = get_theme_mod( 'neve_comments_form_boxed_layout', false );
+		if ( $boxed_layout ) {
+			$form_settings['class_container'] = 'comment-respond is-boxed';
+		}
+
+		return $form_settings;
 	}
 
 	/**
@@ -129,22 +170,20 @@ class Comments extends Base_View {
 					<article id="comment-<?php comment_ID(); ?>" class="nv-comment-article">
 						<?php
 						if ( neve_is_new_skin() ) {
-							?>
-								<div class='nv-comment-avatar'>
-									<?php echo get_avatar( $comment, 50 ); ?>
-								</div>
-								<div class="comment-content">
-							<?php
+							echo '<div class="nv-comment-avatar">';
+							echo get_avatar( $comment, 50 );
+							echo '</div>';
+							echo '<div class="comment-content">';
 						}
 						?>
 						<div class="nv-comment-header">
 							<?php
 							if ( ! neve_is_new_skin() ) {
-								?>
-							<div class='nv-comment-avatar'>
-								<?php echo get_avatar( $comment, 50 ); ?>
-							</div>
-							<?php } ?>
+								echo '<div class="nv-comment-avatar">';
+								echo get_avatar( $comment, 50 );
+								echo '</div>';
+							}
+							?>
 							<div class="comment-author vcard">
 								<span class="fn author"><?php echo get_comment_author_link(); ?></span>
 								<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
@@ -177,11 +216,11 @@ class Comments extends Base_View {
 								</p>
 							<?php } ?>
 						</div>
-							<?php
-							if ( neve_is_new_skin() ) {
-								echo '</div>';
-							}
-							?>
+						<?php
+						if ( neve_is_new_skin() ) {
+							echo '</div>';
+						}
+						?>
 					</article>
 				</li>
 				<?php
@@ -224,7 +263,11 @@ class Comments extends Base_View {
 	 * @return string
 	 */
 	private function get_comments_title() {
-		$comments_title =
+
+		$comments_number = number_format_i18n( get_comments_number() );
+		$title           = get_the_title();
+
+		$empty_comments_title =
 			sprintf(
 				esc_html(
 					/* translators: number of comments */
@@ -236,9 +279,17 @@ class Comments extends Base_View {
 						'neve'
 					)
 				),
-				number_format_i18n( get_comments_number() ),
-				get_the_title()
+				$comments_number,
+				$title
 			);
+
+		$comments_title = get_theme_mod( 'neve_post_comment_section_title' );
+		if ( empty( $comments_title ) ) {
+			return apply_filters( 'neve_filter_comments_title', $empty_comments_title );
+		}
+
+		$comments_title = str_replace( '{comments_number}', $comments_number, $comments_title );
+		$comments_title = str_replace( '{title}', $title, $comments_title );
 
 		return apply_filters( 'neve_filter_comments_title', $comments_title );
 	}

@@ -10,6 +10,7 @@ type BuilderContext = {
 	dragging: boolean;
 	hasColumns: boolean;
 	device: DeviceTypes;
+	previewSidebar: boolean;
 };
 
 const BuilderContext = createContext<BuilderContext>({} as BuilderContext);

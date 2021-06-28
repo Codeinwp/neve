@@ -9,6 +9,8 @@ namespace Neve\Core\Styles;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Customizer\Defaults\Single_Post;
+use Neve\Customizer\Options\Layout_Single_Post;
 
 /**
  * Class Generator for Frontend.
@@ -17,6 +19,7 @@ use Neve\Core\Settings\Mods;
  */
 class Frontend extends Generator {
 	use Css_Vars;
+	use Single_Post;
 
 	/**
 	 * Generator constructor.
@@ -29,10 +32,13 @@ class Frontend extends Generator {
 		$this->setup_layout_subscribers();
 		$this->setup_buttons();
 		$this->setup_typography();
+		$this->setup_blog_meta();
 		$this->setup_blog_typography();
 		$this->setup_blog_colors();
 		$this->setup_form_fields_style();
+		$this->setup_single_post_style();
 	}
+
 
 	/**
 	 * Setup the container styles.
@@ -156,6 +162,8 @@ class Frontend extends Generator {
 		}
 	}
 
+
+
 	/**
 	 * Add css for blog layout.
 	 *
@@ -187,7 +195,6 @@ class Frontend extends Generator {
 				},
 			],
 		];
-
 	}
 
 	/**
@@ -213,17 +220,14 @@ class Frontend extends Generator {
 			],
 			Config::CSS_PROP_FONT_WEIGHT    => [
 				Dynamic_Selector::META_KEY => Config::MODS_TYPEFACE_GENERAL . '.fontWeight',
-				'font'                     => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+				'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
 			],
 			Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_TYPEFACE_GENERAL . '.textTransform',
-			Config::CSS_PROP_FONT_FAMILY    => [
-				Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
-				Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
-			],
+			Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_GENERAL,
 		];
 		foreach ( neve_get_headings_selectors() as $id => $heading_selector
 		) {
-			$heading_mod                             = Mods::get_alternative_mod( sprintf( 'neve_%s_typeface_general', $id ) );
+			$heading_mod                             = sprintf( 'neve_%s_typeface_general', $id );
 			$this->_subscribers[ $heading_selector ] = [
 				Config::CSS_PROP_FONT_SIZE      => [
 					Dynamic_Selector::META_KEY           => $heading_mod . '.fontSize',
@@ -240,9 +244,8 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
 				Config::CSS_PROP_FONT_WEIGHT    => [
-					Dynamic_Selector::META_KEY     => $heading_mod . '.fontWeight',
-					Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( 'headings_weight' ),
-					'font'                         => 'mods_' . Config::MODS_FONT_HEADINGS,
+					Dynamic_Selector::META_KEY => $heading_mod . '.fontWeight',
+					'font'                     => 'mods_' . Config::MODS_FONT_HEADINGS,
 				],
 				Config::CSS_PROP_TEXT_TRANSFORM => $heading_mod . '.textTransform',
 				Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_HEADINGS,
@@ -269,13 +272,10 @@ class Frontend extends Generator {
 				],
 				Config::CSS_PROP_FONT_WEIGHT    => [
 					Dynamic_Selector::META_KEY => Config::MODS_TYPEFACE_GENERAL . '.fontWeight',
-					'font'                     => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
 				],
 				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_TYPEFACE_GENERAL . '.textTransform',
-				Config::CSS_PROP_FONT_FAMILY    => [
-					Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
-					Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
-				],
+				Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_GENERAL,
 			];
 		}
 	}
@@ -337,7 +337,7 @@ class Frontend extends Generator {
 				],
 				Config::CSS_PROP_FONT_WEIGHT    => [
 					Dynamic_Selector::META_KEY => Config::MODS_BUTTON_TYPEFACE . '.fontWeight',
-					'font'                     => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
 				],
 				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_BUTTON_TYPEFACE . '.textTransform',
 			],
@@ -395,7 +395,7 @@ class Frontend extends Generator {
 				],
 				Config::CSS_PROP_FONT_WEIGHT    => [
 					Dynamic_Selector::META_KEY => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontWeight',
-					'font'                     => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
 				],
 				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.textTransform',
 			],
@@ -718,169 +718,6 @@ class Frontend extends Generator {
 	}
 
 	/**
-	 * Setup legacy form field styles.
-	 */
-	private function setup_legacy_form_fields_style() {
-		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING ] = [
-			Config::CSS_PROP_MARGIN_BOTTOM => [
-				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_SPACING,
-				Dynamic_Selector::META_DEFAULT => 10,
-			],
-		];
-
-		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS ] = [
-			Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_FORM_FIELDS_BACKGROUND_COLOR,
-			Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_FORM_FIELDS_BORDER_WIDTH,
-			Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_FORM_FIELDS_BORDER_RADIUS,
-			Config::CSS_PROP_BORDER_COLOR     => Config::MODS_FORM_FIELDS_BORDER_COLOR,
-			Config::CSS_PROP_COLOR            => [
-				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
-			],
-			Config::CSS_PROP_PADDING          => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING,
-				Dynamic_Selector::META_IS_RESPONSIVE => false,
-			],
-			Config::CSS_PROP_TEXT_TRANSFORM   => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.textTransform',
-				Dynamic_Selector::META_IS_RESPONSIVE => false,
-				Dynamic_Selector::META_SUFFIX        => '',
-			],
-			Config::CSS_PROP_FONT_SIZE        => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontSize',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'px',
-			],
-			Config::CSS_PROP_LINE_HEIGHT      => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.lineHeight',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => '',
-			],
-			Config::CSS_PROP_LETTER_SPACING   => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.letterSpacing',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-			],
-			Config::CSS_PROP_FONT_WEIGHT      => [
-				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontWeight',
-			],
-			Config::CSS_PROP_FONT_FAMILY      => [
-				Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
-				Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
-			],
-		];
-
-		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_LABELS ] = [
-			Config::CSS_PROP_MARGIN_BOTTOM  => [
-				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_LABELS_SPACING,
-				Dynamic_Selector::META_SUFFIX  => 'px',
-				Dynamic_Selector::META_DEFAULT => 10,
-			],
-			Config::CSS_PROP_FONT_SIZE      => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontSize',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'px',
-			],
-			Config::CSS_PROP_LINE_HEIGHT    => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.lineHeight',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => '',
-			],
-			Config::CSS_PROP_LETTER_SPACING => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.letterSpacing',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-			],
-			Config::CSS_PROP_FONT_WEIGHT    => [
-				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontWeight',
-			],
-			Config::CSS_PROP_TEXT_TRANSFORM => [
-				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.textTransform',
-			],
-		];
-
-		$this->_subscribers[ Config::CSS_SELECTOR_FORM_SEARCH_INPUTS ] = [
-			Config::CSS_PROP_PADDING_RIGHT => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING . '.right',
-				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-					$value = absint( $value ) + 33;
-
-					return sprintf( '%s:%s !important;', $css_prop, $value . 'px' );
-				},
-				Dynamic_Selector::META_DEFAULT       => 12,
-				Dynamic_Selector::META_IS_RESPONSIVE => false,
-			],
-			Config::CSS_PROP_FONT_FAMILY   => [
-				Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
-				Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
-			],
-		];
-
-		/**
-		 * Form buttons.
-		 */
-		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
-
-		if ( $form_buttons_type === 'primary' ) {
-			add_filter(
-				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
-				array(
-					$this,
-					'add_form_buttons',
-				),
-				10,
-				1
-			);
-			add_filter(
-				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_PADDING,
-				array(
-					$this,
-					'add_form_buttons',
-				),
-				10,
-				1
-			);
-			add_filter(
-				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
-				array(
-					$this,
-					'add_form_buttons_hover',
-				),
-				10,
-				1
-			);
-
-			return;
-		}
-		add_filter(
-			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
-			array(
-				$this,
-				'add_form_buttons',
-			),
-			10,
-			1
-		);
-		add_filter(
-			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_PADDING,
-			array(
-				$this,
-				'add_form_buttons',
-			),
-			10,
-			1
-		);
-		add_filter(
-			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
-			array(
-				$this,
-				'add_form_buttons_hover',
-			),
-			10,
-			1
-		);
-
-	}
-
-	/**
 	 * Adds form field styles
 	 */
 	private function setup_form_fields_style() {
@@ -1047,7 +884,7 @@ class Frontend extends Generator {
 	 * @return string
 	 */
 	public function add_form_buttons( $selector ) {
-		return ( $selector . ', form input[type="submit"], form button[type="submit"], #comments input[type="submit"]' );
+		return ( $selector . ', form input[type="submit"], form button[type="submit"]' );
 	}
 
 	/**
@@ -1058,6 +895,249 @@ class Frontend extends Generator {
 	 * @return string
 	 */
 	public function add_form_buttons_hover( $selector ) {
-		return ( $selector . ', form input[type="submit"]:hover, form button[type="submit"]:hover, #comments input[type="submit"]:hover' );
+		return ( $selector . ', form input[type="submit"]:hover, form button[type="submit"]:hover' );
+	}
+
+	/**
+	 * Add css for blog meta.
+	 */
+	public function setup_blog_meta() {
+		$meta_key = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
+		if ( is_singular( 'post' ) ) {
+			$meta_key = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
+		}
+
+		$this->_subscribers[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.nv-meta-list .meta.author img.photo',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_HEIGHT => [
+					Dynamic_Selector::META_KEY           => $meta_key,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				Config::CSS_PROP_WIDTH  => [
+					Dynamic_Selector::META_KEY           => $meta_key,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+			],
+		];
+	}
+
+	/**
+	 * Setup legacy form field styles.
+	 */
+	private function setup_legacy_form_fields_style() {
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING ] = [
+			Config::CSS_PROP_MARGIN_BOTTOM => [
+				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_SPACING,
+				Dynamic_Selector::META_DEFAULT => 10,
+			],
+		];
+
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS ] = [
+			Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_FORM_FIELDS_BACKGROUND_COLOR,
+			Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_FORM_FIELDS_BORDER_WIDTH,
+			Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_FORM_FIELDS_BORDER_RADIUS,
+			Config::CSS_PROP_BORDER_COLOR     => Config::MODS_FORM_FIELDS_BORDER_COLOR,
+			Config::CSS_PROP_COLOR            => [
+				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
+			],
+			Config::CSS_PROP_PADDING          => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING,
+				Dynamic_Selector::META_IS_RESPONSIVE => false,
+			],
+			Config::CSS_PROP_TEXT_TRANSFORM   => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.textTransform',
+				Dynamic_Selector::META_IS_RESPONSIVE => false,
+				Dynamic_Selector::META_SUFFIX        => '',
+			],
+			Config::CSS_PROP_FONT_SIZE        => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontSize',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+			],
+			Config::CSS_PROP_LINE_HEIGHT      => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.lineHeight',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => '',
+			],
+			Config::CSS_PROP_LETTER_SPACING   => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.letterSpacing',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+			],
+			Config::CSS_PROP_FONT_WEIGHT      => [
+				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontWeight',
+			],
+			Config::CSS_PROP_FONT_FAMILY      => Config::MODS_FONT_GENERAL,
+		];
+
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_LABELS ] = [
+			Config::CSS_PROP_MARGIN_BOTTOM  => [
+				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_LABELS_SPACING,
+				Dynamic_Selector::META_SUFFIX  => 'px',
+				Dynamic_Selector::META_DEFAULT => 10,
+			],
+			Config::CSS_PROP_FONT_SIZE      => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontSize',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+			],
+			Config::CSS_PROP_LINE_HEIGHT    => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.lineHeight',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => '',
+			],
+			Config::CSS_PROP_LETTER_SPACING => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.letterSpacing',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+			],
+			Config::CSS_PROP_FONT_WEIGHT    => [
+				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontWeight',
+			],
+			Config::CSS_PROP_TEXT_TRANSFORM => [
+				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.textTransform',
+			],
+		];
+
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_SEARCH_INPUTS ] = [
+			Config::CSS_PROP_PADDING_RIGHT => [
+				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING . '.right',
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+					$value = absint( $value ) + 33;
+
+					return sprintf( '%s:%s !important;', $css_prop, $value . 'px' );
+				},
+				Dynamic_Selector::META_DEFAULT       => 12,
+				Dynamic_Selector::META_IS_RESPONSIVE => false,
+			],
+			Config::CSS_PROP_FONT_FAMILY   => Config::MODS_FONT_GENERAL,
+		];
+
+		/**
+		 * Form buttons.
+		 */
+		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
+
+		if ( $form_buttons_type === 'primary' ) {
+			add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL, [ $this, 'add_form_buttons' ] );
+			add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_PADDING, [ $this, 'add_form_buttons' ] );
+			add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_HOVER, [ $this, 'add_form_buttons_hover' ] );
+			return;
+		}
+
+		add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL, [ $this, 'add_form_buttons' ] );
+		add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_PADDING, [ $this, 'add_form_buttons' ] );
+		add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER, [ $this, 'add_form_buttons_hover' ] );
+	}
+
+	/**
+	 * Add css for single post.
+	 */
+	private function setup_single_post_style() {
+
+		$cover_padding_default                = $this->padding_default( 'cover' );
+		$this->_subscribers['.nv-post-cover'] = [
+			Config::CSS_PROP_MIN_HEIGHT => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_HEIGHT,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+				Dynamic_Selector::META_AS_JSON       => true,
+				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "300", "tablet": "300", "desktop": "300" }',
+			],
+			Config::CSS_PROP_COLOR      => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_TEXT_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
+			],
+			Config::CSS_PROP_PADDING    => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_PADDING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
+			],
+		];
+
+		$this->_subscribers['.nv-post-cover .nv-overlay'] = [
+			Config::CSS_PROP_BACKGROUND_COLOR => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BACKGROUND_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
+			],
+			Config::CSS_PROP_MIX_BLEND_MODE   => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BLEND_MODE,
+				Dynamic_Selector::META_DEFAULT => 'normal',
+			],
+			Config::CSS_PROP_OPACITY          => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_OVERLAY_OPACITY,
+				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 0.5, "tablet": 0.5, "desktop": 0.5 }',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+			],
+		];
+
+		$this->_subscribers['.nv-post-cover .nv-meta-list li, .nv-post-cover .nv-meta-list a'] = [
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_TEXT_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
+			],
+		];
+
+		$this->_subscribers['.nv-title-meta-wrap.is-boxed'] = [
+			Config::CSS_PROP_PADDING          => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_BOXED_TITLE_PADDING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
+			],
+			Config::CSS_PROP_BACKGROUND_COLOR => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+			],
+		];
+
+		$this->_subscribers['.nv-single-post-wrap > *:not(:last-child)'] = [
+			Config::CSS_PROP_MARGIN_BOTTOM => [
+				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_ELEMENTS_SPACING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+			],
+		];
+
+		$this->_subscribers['.nv-comments-wrap.is-boxed'] = [
+			Config::CSS_PROP_PADDING          => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_PADDING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
+			],
+			Config::CSS_PROP_BACKGROUND_COLOR => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_BACKGROUND_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+			],
+		];
+
+		$this->_subscribers['.nv-comments-wrap.is-boxed, .nv-comments-wrap.is-boxed a'] = [
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_TEXT_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
+			],
+		];
+
+		$this->_subscribers['.comment-respond.is-boxed'] = [
+			Config::CSS_PROP_PADDING          => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_FORM_PADDING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
+			],
+			Config::CSS_PROP_BACKGROUND_COLOR => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_FORM_BACKGROUND_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+			],
+		];
+
+		$this->_subscribers['.comment-respond.is-boxed, .comment-respond.is-boxed a'] = [
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_FORM_TEXT_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
+			],
+		];
 	}
 }

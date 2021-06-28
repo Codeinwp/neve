@@ -11,6 +11,7 @@
   @include typography--tablet();
   @include gutenberg--tablet();
   @include comments--tablet();
+  @include cover-layout--tablet();
 }
 
 @media (min-width: #{$laptop}) {
@@ -23,6 +24,7 @@
   @include page--laptop();
   @include sidebar--laptop();
   @include hfg-alignments--laptop();
+  @include cover-layout--laptop();
 }
 
 @media (min-width: #{$desktop}) {

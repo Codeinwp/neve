@@ -200,7 +200,7 @@ class Pagination extends Base_View {
 			'%title'
 		);
 
-		echo '<div class="nv-post-navigation">';
+		echo '<div class="' . esc_attr( apply_filters( 'neve_post_navigation_class', 'nv-post-navigation' ) ) . '">';
 		previous_post_link( $prev_format, $prev_link );
 		next_post_link( $next_format, $next_link );
 		echo '</div>';

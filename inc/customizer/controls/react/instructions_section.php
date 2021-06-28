@@ -5,7 +5,6 @@
  *
  * @package Neve
  */
-
 namespace Neve\Customizer\Controls\React;
 
 /**
@@ -17,14 +16,12 @@ namespace Neve\Customizer\Controls\React;
  * @see        WP_Customize_Section
  */
 class Instructions_Section extends \WP_Customize_Section {
-
 	/**
 	 * Type of this section.
 	 *
 	 * @var string
 	 */
 	public $type = 'hfg_instructions';
-
 	/**
 	 * Default options schema.
 	 *
@@ -37,14 +34,12 @@ class Instructions_Section extends \WP_Customize_Section {
 		'hadOldBuilder'   => false,
 		'builderMigrated' => false,
 	];
-
 	/**
 	 * Options passed to control.
 	 *
 	 * @var array
 	 */
 	public $options = [];
-
 	/**
 	 * Gather the parameters passed to client JavaScript via JSON.
 	 *
@@ -54,11 +49,8 @@ class Instructions_Section extends \WP_Customize_Section {
 	public function json() {
 		$json            = parent::json();
 		$json['options'] = wp_parse_args( $this->options, $this->default_options );
-
 		return $json;
 	}
-
-
 	/**
 	 * Render template.
 	 */
@@ -71,5 +63,3 @@ class Instructions_Section extends \WP_Customize_Section {
 		<?php
 	}
 }
-
-

@@ -1,5 +1,5 @@
+/* global CustomEvent, NeveReactCustomize */
 import './public-path.js';
-
 import { render } from '@wordpress/element';
 
 import { init as initDynamicFields } from './dynamic-fields/index';
@@ -53,6 +53,18 @@ controlConstructor.neve_inline_select = InlineSelectControl;
 controlConstructor.neve_builder_control = BuilderControl;
 controlConstructor.neve_builder_columns = BuilderColumns;
 controlConstructor.hfg_instructions = InstructionsControl;
+
+const initDeviceSwitchers = () => {
+	const deviceButtons = document.querySelector(
+		'#customize-footer-actions .devices, .hfg--cb-devices-switcher a.switch-to'
+	);
+	deviceButtons.addEventListener('click', function (e) {
+		const event = new CustomEvent('neveChangedRepsonsivePreview', {
+			detail: e.target.dataset.device,
+		});
+		document.dispatchEvent(event);
+	});
+};
 
 const initBlogPageFocus = () => {
 	wp.customize.section('neve_blog_archive_layout', (section) => {
@@ -115,11 +127,45 @@ const bindDataAttrQuickLinks = () => {
 		});
 	});
 };
+const checkHasElementorTemplates = () => {
+	if (NeveReactCustomize.elementor.hasElementorShopTemplate) {
+		window.wp.customize
+			.section('woocommerce_product_catalog')
+			.notifications.add(
+				new window.wp.customize.Notification(
+					'neve-custom-elementor-shop-template',
+					{
+						type: 'warning',
+						message:
+							'Some of the settings might not work as expected because you are using a custom shop template made in Elementor.',
+					}
+				)
+			);
+	}
+
+	if (NeveReactCustomize.elementor.hasElementorProductTemplate) {
+		window.wp.customize
+			.section('neve_single_product_layout')
+			.notifications.add(
+				new window.wp.customize.Notification(
+					'neve-custom-elementor-product-template',
+					{
+						type: 'warning',
+						message:
+							'Some of the settings might not work as expected because you are using a custom product template made in Elementor.',
+					}
+				)
+			);
+	}
+};
 
 window.wp.customize.bind('ready', () => {
 	initDynamicFields();
 	initQuickLinksSections();
 	bindDataAttrQuickLinks();
+	initBlogPageFocus();
+	checkHasElementorTemplates();
+	initDeviceSwitchers();
 	initBlogPageFocus();
 });
 

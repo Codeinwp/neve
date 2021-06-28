@@ -128,7 +128,7 @@ class Layout_Container extends Base_Customizer {
 				new Control(
 					$control_id,
 					array(
-						'sanitize_callback' => array( $this, 'sanitize_container_layout' ),
+						'sanitize_callback' => 'neve_sanitize_container_layout',
 						'transport'         => $this->selective_refresh,
 						'default'           => 'contained',
 					),
@@ -145,21 +145,5 @@ class Layout_Container extends Base_Customizer {
 				)
 			);
 		}
-	}
-
-	/**
-	 * Sanitize the container layout value
-	 *
-	 * @param string $value value from the control.
-	 *
-	 * @return bool
-	 */
-	public function sanitize_container_layout( $value ) {
-		$allowed_values = array( 'contained', 'full-width' );
-		if ( ! in_array( $value, $allowed_values, true ) ) {
-			return 'contained';
-		}
-
-		return esc_html( $value );
 	}
 }

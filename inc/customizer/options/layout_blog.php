@@ -371,7 +371,7 @@ class Layout_Blog extends Base_Customizer {
 					'priority'         => 70,
 					'class'            => 'blog-layout-post-meta-accordion',
 					'accordion'        => true,
-					'controls_to_wrap' => 3,
+					'controls_to_wrap' => 5,
 					'expanded'         => false,
 				),
 				'Neve\Customizer\Controls\Heading'
@@ -398,17 +398,34 @@ class Layout_Blog extends Base_Customizer {
 			new Control(
 				'neve_post_meta_ordering',
 				array(
-					'sanitize_callback' => array( $this, 'sanitize_meta_ordering' ),
+					'sanitize_callback' => 'neve_sanitize_meta_ordering',
 					'default'           => wp_json_encode( $order_default_components ),
 				),
 				array(
 					'label'           => esc_html__( 'Meta Order', 'neve' ),
 					'section'         => 'neve_blog_archive_layout',
 					'components'      => $components,
-					'priority'        => 75,
+					'priority'        => 71,
 					'active_callback' => array( $this, 'should_show_meta_order' ),
 				),
 				'Neve\Customizer\Controls\React\Ordering'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_metadata_separator',
+				array(
+					'sanitize_callback' => 'sanitize_text_field',
+					'default'           => esc_html( '/' ),
+				),
+				array(
+					'priority'    => 72,
+					'section'     => 'neve_blog_archive_layout',
+					'label'       => esc_html__( 'Separator', 'neve' ),
+					'description' => esc_html__( 'For special characters make sure to use Unicode. For example > can be displayed using \003E.', 'neve' ),
+					'type'        => 'text',
+				)
 			)
 		);
 
@@ -423,8 +440,68 @@ class Layout_Blog extends Base_Customizer {
 					'label'    => esc_html__( 'Show Author Avatar', 'neve' ),
 					'section'  => 'neve_blog_archive_layout',
 					'type'     => 'neve_toggle_control',
-					'priority' => 80,
+					'priority' => 73,
 				)
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_author_avatar_size',
+				array(
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'default'           => wp_json_encode(
+						array(
+							'desktop' => 20,
+							'tablet'  => 20,
+							'mobile'  => 20,
+						)
+					),
+				),
+				array(
+					'label'           => esc_html__( 'Avatar Size', 'neve' ),
+					'section'         => 'neve_blog_archive_layout',
+					'units'           => array(
+						'px',
+					),
+					'input_attr'      => array(
+						'mobile'  => array(
+							'min'          => 20,
+							'max'          => 50,
+							'default'      => 20,
+							'default_unit' => 'px',
+						),
+						'tablet'  => array(
+							'min'          => 20,
+							'max'          => 50,
+							'default'      => 20,
+							'default_unit' => 'px',
+						),
+						'desktop' => array(
+							'min'          => 20,
+							'max'          => 50,
+							'default'      => 20,
+							'default_unit' => 'px',
+						),
+					),
+					'input_attrs'     => [
+						'step'       => 1,
+						'min'        => 20,
+						'max'        => 50,
+						'defaultVal' => [
+							'mobile'  => 20,
+							'tablet'  => 20,
+							'desktop' => 20,
+						],
+						'units'      => [ 'px' ],
+					],
+					'priority'        => 74,
+					'active_callback' => function () {
+						return get_theme_mod( 'neve_author_avatar', false );
+					},
+					'responsive'      => true,
+				),
+				'Neve\Customizer\Controls\React\Responsive_Range'
 			)
 		);
 
@@ -443,7 +520,6 @@ class Layout_Blog extends Base_Customizer {
 				)
 			)
 		);
-
 	}
 
 	/**
@@ -476,33 +552,6 @@ class Layout_Blog extends Base_Customizer {
 		}
 
 		return esc_html( $value );
-	}
-
-	/**
-	 * Sanitize meta order control.
-	 */
-	public function sanitize_meta_ordering( $value ) {
-		$allowed = array(
-			'author',
-			'category',
-			'date',
-			'comments',
-			'reading',
-		);
-
-		if ( empty( $value ) ) {
-			return $allowed;
-		}
-
-		$decoded = json_decode( $value, true );
-
-		foreach ( $decoded as $val ) {
-			if ( ! in_array( $val, $allowed, true ) ) {
-				return $allowed;
-			}
-		}
-
-		return $value;
 	}
 
 	/**

@@ -27,6 +27,7 @@ class Dynamic_Selector {
 	const META_DEFAULT       = 'default';
 	const META_DEVICE_ONLY   = 'device_only';
 	const META_FILTER        = 'filter';
+	const META_AS_JSON       = 'as_json';
 
 	const KEY_SELECTOR = 'selectors';
 	const KEY_RULES    = 'rules';

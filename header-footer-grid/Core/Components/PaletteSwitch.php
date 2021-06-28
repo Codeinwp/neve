@@ -123,7 +123,12 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return string
 	 */
 	public function toggle_script() {
-		return '"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let n="light";if(localStorage.getItem(t))"dark"===localStorage.getItem(t)&&(n="dark");else if(!window.matchMedia)return!1;"dark"===n&&document.documentElement.setAttribute(e,"dark")}r();const a=document.getElementById("neve_body");function n(n){if(n.srcElement&&(n.srcElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement.parentElement.parentElement.matches("a.palette-icon-wrapper"))){if(n.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}}a.addEventListener("click",n,!1);';
+		$auto_adjust   = Mods::get( $this->get_id() . '_' . self::AUTO_ADJUST, 0 );
+		$default_state = '"light"';
+		if ( $auto_adjust ) {
+			$default_state = 'window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"';
+		}
+		return '"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let n=' . $default_state . ';if(localStorage.getItem(t))"dark"===localStorage.getItem(t)&&(n="dark");else if(!window.matchMedia)return!1;"dark"===n&&document.documentElement.setAttribute(e,"dark")}r();const a=document.getElementById("neve_body");function n(n){if(n.srcElement&&(n.srcElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.parentElement.matches("a.palette-icon-wrapper"))){if(n.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}}a.addEventListener("click",n,!1);';
 	}
 
 	/**
@@ -236,7 +241,7 @@ class PaletteSwitch extends Abstract_Component {
 				'section'     => $this->section,
 				'label'       => __( 'Light Palette', 'neve' ),
 				/* translators: %s: Link to Edit global color customizer. */
-				'description' => sprintf( __( 'The base palette is used for light mode. %1$sEdit color palettes%2$s.', 'neve' ), '<br/><a href="' . admin_url( '/customize.php?autofocus[section]=neve_colors_background_section' ) . '">', '</a>' ),
+				'description' => sprintf( __( 'The base palette is used for light mode. %1$sEdit color palettes%2$s.', 'neve' ), '<br/><a onclick="wp.customize.control(\'neve_global_colors\').focus()" href="javascript:void(0);">', '</a>' ),
 				'type'        => 'hidden',
 				'default'     => '',
 			]
@@ -254,8 +259,9 @@ class PaletteSwitch extends Abstract_Component {
 				'type'                  => 'Neve\Customizer\Controls\React\Inline_Select',
 				'default'               => $dark_palette_default,
 				'options'               => [
-					'options' => $available_palettes,
-					'default' => $dark_palette_default,
+					'options'    => $available_palettes,
+					'default'    => $dark_palette_default,
+					'changes_on' => 'neve_global_colors',
 				],
 				'live_refresh_selector' => true,
 				'section'               => $this->section,
