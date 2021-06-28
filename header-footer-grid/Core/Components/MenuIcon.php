@@ -87,16 +87,38 @@ class MenuIcon extends Abstract_Component {
 		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() . ' .navbar-toggle' );
 
 		add_filter( 'neve_dynamic_style_output', array( $this, 'template_styles' ) );
+		add_filter( 'neve_menu_icon_classes', array( $this, 'add_menu_icon_classes' ), 10, 2 );
 	}
 
+	/**
+	 * Filter classes for menu icon.
+	 *
+	 * @param string $class The classes.
+	 * @param string $icon The icon used.
+	 *
+	 * @return mixed|string
+	 */
+	public function add_menu_icon_classes( $class = '', $icon = 'default' ) {
+		if ( $icon !== 'default' ) {
+			$add_class = 'hamburger--' . $icon;
+			if ( strpos( $class, $add_class ) === false ) {
+				$class .= $add_class;
+			}
+		}
+		return $class;
+	}
+
+	/**
+	 * Load generated component styles
+	 */
 	private function load_component_template_style() {
-		$css_inline_style       = '';
-		$menu_icon = Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' );
-		$base_path = NEVE_MAIN_DIR . '/header-footer-grid/assets/components/menu-icon/';
+		$css_inline_style = '';
+		$menu_icon        = Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' );
+		$base_path        = NEVE_MAIN_DIR . '/header-footer-grid/assets/components/menu-icon/';
 		if ( $menu_icon !== 'default' ) {
 			$path = $base_path . $menu_icon . '.css.min.php';
 			if ( is_file( $path ) && $path !== '' ) {
-				$css_inline_style  = require_once $path;
+				$css_inline_style = require_once $path;
 			}
 		}
 
@@ -201,6 +223,7 @@ class MenuIcon extends Abstract_Component {
 						'default' => 'Default',
 						'arrow'   => 'Arrow',
 						'donner'  => 'Donner',
+						'dots'    => 'Dots',
 						'minus'   => 'Minus',
 						'vortex'  => 'Vortex',
 						'squeeze' => 'Squeeze',

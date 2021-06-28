@@ -13,27 +13,11 @@ use HFG\Core\Components\MenuIcon;
 
 $item_attributes = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 $label           = component_setting( MenuIcon::TEXT_ID );
-$icon            = component_setting( MenuIcon::MENU_ICON );
+$menu_icon       = component_setting( MenuIcon::MENU_ICON );
 
 $class = '';
-if ( $icon !== 'default' ) {
-	$class = 'hamburger menu-mobile-toggle ';
-	switch ( $icon ) {
-		case 'arrow':
-			$class .= 'hamburger--arrow';
-			break;
-		case 'donner':
-			$class .= 'hamburger--donner';
-			break;
-		case 'minus':
-			$class .= 'hamburger--minus';
-			break;
-		case 'vortex':
-			$class .= 'hamburger--vortex';
-			break;
-		default:
-			$class .= 'hamburger--squeeze';
-	}
+if ( $menu_icon !== 'default' ) {
+	$class = apply_filters( 'neve_menu_icon_classes', 'hamburger menu-mobile-toggle ', $menu_icon );
 }
 ?>
 <div class="menu-mobile-toggle item-button navbar-toggle-wrapper">
@@ -51,7 +35,7 @@ if ( $icon !== 'default' ) {
 			echo '<span class="nav-toggle-label">' . esc_html( $label ) . '</span>';
 		}
 
-		if ( $icon === 'default' ) {
+		if ( $menu_icon === 'default' ) {
 			?>
 			<div class="bars">
 				<span class="icon-bar"></span>

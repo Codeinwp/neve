@@ -22,23 +22,7 @@ $menu_icon        = component_setting( MenuIcon::MENU_ICON );
 
 $class = '';
 if ( $menu_icon !== 'default' ) {
-	$class = 'hamburger is-active ';
-	switch ( $menu_icon ) {
-		case 'arrow':
-			$class .= 'hamburger--arrow';
-			break;
-		case 'donner':
-			$class .= 'hamburger--donner';
-			break;
-		case 'minus':
-			$class .= 'hamburger--minus';
-			break;
-		case 'vortex':
-			$class .= 'hamburger--vortex';
-			break;
-		default:
-			$class .= 'hamburger--squeeze';
-	}
+	$class = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active ', $menu_icon );
 }
 ?>
 <div id="header-menu-sidebar" class="<?php echo esc_attr( join( ' ', $classes ) ); ?>">
