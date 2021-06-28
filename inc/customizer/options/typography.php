@@ -136,11 +136,11 @@ class Typography extends Base_Customizer {
 					'default'           => 'Arial, Helvetica, sans-serif',
 				],
 				[
-					'label'       => esc_html__( 'Fallback Font', 'neve' ),
-					'section'     => 'neve_typography_general',
-					'priority'    => 12,
-					'type'        => 'neve_font_family_control',
-					'input_attrs' => [
+					'label'                 => esc_html__( 'Fallback Font', 'neve' ),
+					'section'               => 'neve_typography_general',
+					'priority'              => 12,
+					'type'                  => 'neve_font_family_control',
+					'input_attrs'           => [
 						'system' => true,
 						'link'   => [
 							'string'  => __( 'Learn more about fallback fonts', 'neve' ),
