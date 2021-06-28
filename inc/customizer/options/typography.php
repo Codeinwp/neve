@@ -355,55 +355,5 @@ class Typography extends Base_Customizer {
 			);
 		}
 	}
-
-
-		/**
-		 * Get default value for headings typography.
-		 *
-		 * @param string $heading_type the heading type [h1,h2...h6].
-		 *
-		 * @return array
-		 */
-	private function get_headings_typography_defaults( $heading_type ) {
-		if ( ! neve_is_new_skin() ) {
-			return $this->get_legacy_headings_defaults( $heading_type );
-		}
-
-
-
-		$font_size = array_merge(
-			$size_map[ $heading_type ],
-			[
-				'suffix' => [
-					'mobile'  => 'px',
-					'tablet'  => 'px',
-					'desktop' => 'px',
-				],
-			]
-		);
-
-		$line_height = array_merge(
-			$height_map[ $heading_type ],
-			[
-				'suffix' => [
-					'mobile'  => 'em',
-					'tablet'  => 'em',
-					'desktop' => 'em',
-				],
-			]
-		);
-
-		return array(
-			'fontWeight'    => '700',
-			'fontSize'      => $font_size,
-			'textTransform' => 'none',
-			'letterSpacing' => [
-				'mobile'  => 0,
-				'tablet'  => 0,
-				'desktop' => 0,
-			],
-			'lineHeight'    => $line_height,
-		);
-	}
 }
 
