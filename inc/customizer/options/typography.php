@@ -275,7 +275,7 @@ class Typography extends Base_Customizer {
 						'controls_to_wrap' => 1,
 						'expanded'         => false,
 					),
-					'Neve\Customizer\Controls\Heading'
+					'Neve\Customizer\Controls\React\Heading'
 				)
 			);
 

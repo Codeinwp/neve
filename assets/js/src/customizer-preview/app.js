@@ -615,51 +615,54 @@ window.addEventListener('load', function () {
 			});
 		});
 	});
-	wp.customize.preview.bind('font-selection', function (data) {
-		let selector = neveCustomizePreview[data.type][data.controlId].selector;
-		const source = data.source;
-		const id = data.controlId + '_font_family';
-		const defaultFontface = data.inherit
-			? 'inherit'
-			: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
+	window.wp.customize.bind('ready', () => {
+		wp.customize.preview.bind('font-selection', function (data) {
+			let selector =
+				neveCustomizePreview[data.type][data.controlId].selector;
+			const source = data.source;
+			const id = data.controlId + '_font_family';
+			const defaultFontface = data.inherit
+				? 'inherit'
+				: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
 
-		// Make selector more specific by adding `html` before.
-		selector = selector.split(',');
-		selector = selector
-			.map(function (sel) {
-				return 'html ' + sel;
-			})
-			.join(',');
-		if (data.value === false) {
-			addCss(
-				data.controlId,
-				selector + '{font-family: ' + defaultFontface + ';}'
-			);
-		} else {
-			addCss(
-				data.controlId,
-				selector + '{font-family: ' + data.value + ' ;}'
-			);
-		}
-		if (source.toLowerCase() === 'google') {
-			const linkNode = document.querySelector('#' + id),
-				fontValue = data.value.replace(' ', '+'),
-				url =
-					'//fonts.googleapis.com/css?family=' +
-					fontValue +
-					'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&display=swap"';
-			if (linkNode !== null) {
-				linkNode.setAttribute('href', url);
-				return false;
+			// Make selector more specific by adding `html` before.
+			selector = selector.split(',');
+			selector = selector
+				.map(function (sel) {
+					return 'html ' + sel;
+				})
+				.join(',');
+			if (data.value === false) {
+				addCss(
+					data.controlId,
+					selector + '{font-family: ' + defaultFontface + ';}'
+				);
+			} else {
+				addCss(
+					data.controlId,
+					selector + '{font-family: ' + data.value + ' ;}'
+				);
 			}
-			const newNode = document.createElement('link');
-			newNode.setAttribute('rel', 'stylesheet');
-			newNode.setAttribute('id', id);
-			newNode.setAttribute('href', url);
-			newNode.setAttribute('type', 'text/css');
-			newNode.setAttribute('media', 'all');
-			document.querySelector('head').appendChild(newNode);
-		}
+			if (source.toLowerCase() === 'google') {
+				const linkNode = document.querySelector('#' + id),
+					fontValue = data.value.replace(' ', '+'),
+					url =
+						'//fonts.googleapis.com/css?family=' +
+						fontValue +
+						'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&display=swap"';
+				if (linkNode !== null) {
+					linkNode.setAttribute('href', url);
+					return false;
+				}
+				const newNode = document.createElement('link');
+				newNode.setAttribute('rel', 'stylesheet');
+				newNode.setAttribute('id', id);
+				newNode.setAttribute('href', url);
+				newNode.setAttribute('type', 'text/css');
+				newNode.setAttribute('media', 'all');
+				document.querySelector('head').appendChild(newNode);
+			}
+		});
 	});
 	wp.customize('background_image', function (value) {
 		value.bind(function (newval) {
