@@ -14,6 +14,7 @@ namespace HFG\Core\Components;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Core\Dynamic_Css;
+use Neve\Core\Inline_Css;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
@@ -86,8 +87,20 @@ class MenuIcon extends Abstract_Component {
 		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() . ' .navbar-toggle' );
 
 		add_filter( 'neve_dynamic_style_output', array( $this, 'template_styles' ) );
+	}
 
+	private function load_component_template_style() {
+		$css_inline_style       = '';
+		$menu_icon = Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' );
+		$base_path = NEVE_MAIN_DIR . '/header-footer-grid/assets/components/menu-icon/';
+		if ( $menu_icon !== 'default' ) {
+			$path = $base_path . $menu_icon . '.css.min.php';
+			if ( is_file( $path ) && $path !== '' ) {
+				$css_inline_style  = require_once $path;
+			}
+		}
 
+		Inline_Css::get_instance()->add_to_queue( $this->get_id(), $css_inline_style );
 	}
 
 	/**
@@ -111,27 +124,11 @@ class MenuIcon extends Abstract_Component {
 	 * @return string
 	 */
 	public function template_styles( $css ) {
+		$this->load_component_template_style();
 		if ( $this->is_component_active() || is_customize_preview() ) {
-			return $css . $this->component_style();
+			return $css . Dynamic_Css::minify_css( Inline_Css::get_instance()->get_by_id( $this->get_id() ) );
 		}
 		return $css;
-	}
-
-	/**
-	 * Get CSS to use as inline script
-	 *
-	 * @return string
-	 */
-	public function component_style() {
-		$css       = '';
-		$menu_icon = Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' );
-		$base_path = NEVE_MAIN_DIR . '/header-footer-grid/assets/components/menu-icon/';
-		if ( $menu_icon !== 'default' ) {
-			$path = $base_path . $menu_icon . '.css.min.php';
-			$css  = require_once $path;
-		}
-
-		return Dynamic_Css::minify_css( $css );
 	}
 
 	/**
