@@ -15,12 +15,23 @@ const Instructions: React.FC<Props> = ({ control }) => {
 
 	const linkKeys = Object.keys(quickLinks);
 
+	const expandEventHeaders = (slug: string): void => {
+		const { type } = window.wp.customize.control(slug).params;
+		if (type === 'neve_customizer_heading') {
+			window.wp.customize.control(slug).triggerExpandHeader();
+		}
+	};
+
 	const focusControl = (slug: string): void => {
 		if (slug === 'toggle_sidebar') {
 			window.wp.customize.previewer.send('header_sidebar_open');
 			return;
 		}
-		window.wp.customize.control(slug).focus();
+		window.wp.customize.control(slug).focus({
+			completeCallback: () => {
+				expandEventHeaders(slug);
+			},
+		});
 	};
 
 	return (

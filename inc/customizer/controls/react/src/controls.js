@@ -25,6 +25,7 @@ import { InlineSelectControl } from './inline-select/Control';
 import { BuilderControl } from './builder/Control';
 import { BuilderColumns } from './builder-columns/Control';
 import { InstructionsControl } from './builder-instructions/Control';
+import { HeadingControl } from './heading/Control';
 
 import './style.scss';
 import Instructions from './builder-instructions/Instructions.tsx';
@@ -53,6 +54,7 @@ controlConstructor.neve_inline_select = InlineSelectControl;
 controlConstructor.neve_builder_control = BuilderControl;
 controlConstructor.neve_builder_columns = BuilderColumns;
 controlConstructor.hfg_instructions = InstructionsControl;
+controlConstructor.neve_customizer_heading = HeadingControl;
 
 const initDeviceSwitchers = () => {
 	const deviceButtons = document.querySelector(

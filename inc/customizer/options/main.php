@@ -10,6 +10,7 @@
 
 namespace Neve\Customizer\Options;
 
+use Neve\Core\Settings\Mods;
 use Neve\Customizer\Controls\React\Instructions_Section;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
@@ -80,7 +81,7 @@ class Main extends Base_Customizer {
 					'type'     => 'hfg_instructions',
 					'options'  => array(
 						'quickLinks' => array(
-							'neve_body_font_family'     => array(
+							Mods::get_alternative_mod('neve_body_font_family')     => array(
 								'label' => esc_html__( 'Change main font', 'neve' ),
 								'icon'  => 'dashicons-editor-spellcheck',
 							),

@@ -80,13 +80,21 @@ class Typography extends Base_Customizer {
 					'sanitize_callback' => 'sanitize_text_field',
 					'default'           => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 				],
-				[
+				array(
 					'label'                 => esc_html__( 'Body', 'neve' ),
 					'section'               => 'neve_typography_general',
 					'priority'              => 10,
 					'type'                  => 'neve_font_family_control',
 					'live_refresh_selector' => apply_filters( 'neve_body_font_family_selectors', 'body, .site-title' ),
-				],
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'     => '--bodyFontFamily',
+							'selector' => 'body',
+							'fallback' => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
+							'suffix'   => ', var(--nv-fallback-ff)',
+						],
+					],
+				),
 				'\Neve\Customizer\Controls\React\Font_Family'
 			)
 		);
@@ -140,6 +148,13 @@ class Typography extends Base_Customizer {
 							'new_tab' => true,
 						],
 					],
+					'live_refresh_selector' => neve_is_new_skin(),
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'     => '--nv-fallback-ff',
+							'selector' => 'body',
+						],
+					],
 				],
 				'\Neve\Customizer\Controls\React\Font_Family'
 			)
@@ -166,6 +181,13 @@ class Typography extends Base_Customizer {
 					'priority'              => 10,
 					'type'                  => 'neve_font_family_control',
 					'live_refresh_selector' => apply_filters( 'neve_headings_font_family_selectors', 'h1:not(.site-title), .single h1.entry-title, h2, h3, .woocommerce-checkout h3, h4, h5, h6' ),
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'     => '--headingsFontFamily',
+							'selector' => 'body',
+						],
+						'type'   => 'svg-icon-size',
+					],
 					'input_attrs'           => [
 						'default_is_inherit' => true,
 					],
@@ -193,7 +215,7 @@ class Typography extends Base_Customizer {
 						'controls_to_wrap' => 1,
 						'expanded'         => false,
 					),
-					'Neve\Customizer\Controls\Heading'
+					'Neve\Customizer\Controls\React\Heading'
 				)
 			);
 

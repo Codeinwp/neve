@@ -542,6 +542,7 @@ window.addEventListener('load', function () {
 			});
 		});
 	});
+
 	wp.customize.preview.bind('font-selection', function (data) {
 		const controlData = neveCustomizePreview[data.type][data.controlId];
 
@@ -571,12 +572,12 @@ window.addEventListener('load', function () {
 		}
 
 		const { additional = false } = controlData;
-		if (additional !== false) {
-			return false;
-		}
 
-		const { cssVar = false } = additional;
-		if (cssVar !== false) {
+		if (
+			additional !== false &&
+			additional.cssVar !== undefined &&
+			neveCustomizePreview.newSkin
+		) {
 			return false;
 		}
 
@@ -603,6 +604,7 @@ window.addEventListener('load', function () {
 			);
 		}
 	});
+
 	wp.customize('background_image', function (value) {
 		value.bind(function (newval) {
 			if (!newval) {
