@@ -189,6 +189,18 @@ class Manager {
 			'controls' => $this->get_tabs_group( $group ),
 		);
 
+		if ( in_array(
+			$section,
+			[
+				'hfg_header_layout_section',
+				'hfg_footer_layout_section',
+				'hfg_page_header_layout_section',
+			],
+			true
+		) ) {
+			return $customize_manager;
+		}
+
 		foreach ( $args['tabs'] as $tab => $values ) {
 			$tabs = $this->get_tabs_group( $group );
 			if ( empty( $tabs[ $tab ] ) ) {
@@ -369,8 +381,8 @@ class Manager {
 		if ( isset( $arguments['conditional_header'] ) && $arguments['conditional_header'] === true ) {
 			add_filter(
 				'neve_react_controls_localization',
-				function ( $array ) use ( $id ) {
-					$array['headerControls'][] = $id;
+				function ( $array ) use ( $id, $default ) {
+					$array['headerControls'][ $id ] = $default;
 
 					return $array;
 				}
@@ -420,13 +432,13 @@ class Manager {
 	 */
 	public function get_default( $id, $subkey = null ) {
 		return isset( self::$settings[ $id ]['default'] )
-				? ( $subkey === null
+			? ( $subkey === null
 				? self::$settings[ $id ]['default']
 				: ( isset( self::$settings[ $id ]['default'][ $subkey ] )
 					? self::$settings[ $id ]['default'][ $subkey ]
 					: null
 				) )
-				: null;
+			: null;
 	}
 
 	/**

@@ -13,7 +13,7 @@ describe('Single page sidebar', function () {
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
 		});
-		cy.get('.post-publish-panel__postpublish-header a')
+		cy.get('.post-publish-panel__postpublish-header a', { timeout: 15000 })
 			.contains(pageSetup.title)
 			.should('have.attr', 'href')
 			.then((href) => {

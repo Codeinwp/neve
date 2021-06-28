@@ -134,6 +134,7 @@ class Config {
 	const CSS_PROP_BOX_SHADOW                 = 'box-shadow';
 	const CSS_PROP_MIX_BLEND_MODE             = 'mix-blend-mode';
 	const CSS_PROP_OPACITY                    = 'opacity';
+	const CSS_PROP_GRID_TEMPLATE_COLS         = 'grid-template-columns';
 
 	const CSS_PROP_CUSTOM_BTN_TYPE           = 'btn-type';
 	const CSS_PROP_CUSTOM_FONT_WEIGHT_FAMILY = 'btn-type';

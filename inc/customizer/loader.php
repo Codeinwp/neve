@@ -44,6 +44,19 @@ class Loader {
 		}
 		$this->define_modules();
 		$this->load_modules();
+		add_action( 'customize_register', array( $this, 'change_pro_controls' ), PHP_INT_MAX );
+	}
+
+	/**
+	 * Method to modify already defined controls.
+	 *
+	 * @param \WP_Customize_Manager $wp_customize The WP_Customize_Manager object.
+	 */
+	public function change_pro_controls( \WP_Customize_Manager $wp_customize ) {
+		if ( neve_can_use_conditional_header() ) {
+			$control                  = $wp_customize->get_control( 'neve_global_header' );
+			$control->active_callback = '__return_false';
+		}
 	}
 
 	/**
@@ -89,16 +102,20 @@ class Loader {
 			apply_filters(
 				'neve_react_controls_localization',
 				array(
-					'headerControls'   => [ 'hfg_header_layout' ],
-					'instructionalVid' => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
-					'dynamicTags'      => array(
+					'nonce'                         => wp_create_nonce( 'wp_rest' ),
+					'headerControls'                => [],
+					'instructionalVid'              => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
+					'dynamicTags'                   => array(
 						'controls' => array(),
 						'options'  => array(),
 					),
-					'fonts'            => array(
+					'fonts'                         => array(
 						'System' => neve_get_standard_fonts(),
 						'Google' => neve_get_google_fonts(),
 					),
+					'hideConditionalHeaderSelector' => neve_can_use_conditional_header(),
+					'dashUpdatesMessage'            => sprintf( 'Please %s to the latest version of Neve Pro to manage the conditional headers.', '<a href="' . esc_url( admin_url( 'update-core.php' ) ) . '">' . __( 'update', 'neve' ) . '</a>' ),
+					'bundlePath'                    => get_template_directory_uri() . '/inc/customizer/controls/react/bundle/',
 				)
 			)
 		);
@@ -145,6 +162,7 @@ class Loader {
 				'neve_customize_preview_localization',
 				array(
 					'currentFeaturedImage' => '',
+					'newBuilder'           => neve_is_new_builder(),
 				)
 			)
 		);

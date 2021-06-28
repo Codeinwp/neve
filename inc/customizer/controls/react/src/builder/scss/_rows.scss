@@ -1,0 +1,194 @@
+@import 'vars';
+
+.rows-wrapper {
+  display: flex;
+
+  .vertical-rows {
+	margin-right: 10px;
+
+	.row {
+	  height: 100%;
+	}
+  }
+
+  .horizontal-rows {
+	flex-grow: 1;
+  }
+}
+
+.row {
+  display: flex;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border: $wp-grey-border;
+  flex-wrap: nowrap;
+  &:last-child {
+	margin-bottom: 0;
+  }
+
+  .row-settings {
+	width: 32px;
+	display: flex;
+	padding: 0 2px;
+	min-width: unset;
+	align-items: center;
+	height: auto;
+	flex-grow: 1;
+	justify-content: center;
+	border-right: $wp-grey-border;
+  }
+
+  .inner-row {
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+  }
+
+  .droppable-wrap {
+	flex: 1;
+	position: relative;
+
+	&.right, &.c-left {
+	  .droppable {
+		justify-content: flex-end;
+	  }
+	}
+
+	&.center {
+	  .droppable {
+		justify-content: center;
+		transition: .3s ease;
+		width: auto;
+	  }
+	}
+  }
+
+  .droppable {
+	display: flex;
+	padding: 0 2px;
+	align-items: center;
+	min-height: $rows-height;
+	border-right: $droppable-border;
+	flex: 1;
+  }
+
+  &.c-left, &.right {
+	.builder-item:first-child {
+	  margin-left: auto;
+	}
+  }
+}
+
+.row.sidebar .row-inner {
+  width: 200px;
+
+  .droppable-wrap {
+	height: 100%;
+  }
+
+  .droppable {
+	flex-direction: column;
+	justify-content: flex-start;
+	height: 100%;
+	border: 0;
+	flex-grow: 1;
+  }
+}
+
+.sidebar-actions {
+  .row-settings {
+	height: 100%;
+	border-radius: 0;
+
+	&:not(:first-child) {
+	  border-top: $wp-grey-border;
+	}
+  }
+
+  .dashicon {
+	font-size: 15px;
+	margin: 0 !important;
+  }
+}
+
+.has-items .sidebar-actions {
+  .row-settings {
+	height: 50%;
+  }
+}
+
+.slots-wrap {
+  display: flex;
+  width: 50%;
+
+  &:last-child .droppable-wrap:last-child .droppable {
+	border: 0;
+  }
+
+  &.slots-center-wrap {
+	width: auto;
+	transition: .3s ease;
+
+	&.expanded .droppable:empty {
+	  min-width: 150px;
+	  border-right: $droppable-border;
+	}
+
+	&:hover .droppable:empty {
+	  min-width: 150px;
+	  border-right: $droppable-border;
+	}
+  }
+}
+
+.no-center {
+  .center .droppable:empty {
+	border-right: 0;
+	padding: 0;
+  }
+
+  .slots-center-wrap .droppable:empty {
+	min-width: 0;
+	transition: .3s ease;
+  }
+
+  &:hover {
+	.slots-center-wrap .droppable:empty {
+	  min-width: 150px;
+	  border-right: $droppable-border;
+	}
+  }
+
+  .has-popover.center .droppable:empty {
+	min-width: 150px;
+	border-right: $droppable-border;
+  }
+
+  .c-left, .c-right {
+	display: none;
+  }
+}
+
+.open-popover {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 0;
+  padding: 0;
+  height: unset;
+  min-width: unset;
+  border-radius: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.droppable-wrap {
+  &:hover, &.has-popover {
+	.open-popover {
+	  opacity: .25;
+	}
+  }
+}

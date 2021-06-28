@@ -10,7 +10,7 @@
 
 namespace Neve\Customizer\Options;
 
-use HFG\Core\Customizer\Instructions_Section;
+use Neve\Customizer\Controls\React\Instructions_Section;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Panel;
@@ -27,7 +27,6 @@ class Main extends Base_Customizer {
 	public function add_controls() {
 		$this->register_types();
 		$this->add_main_panels();
-		$this->add_ui();
 		$this->change_controls();
 	}
 
@@ -100,24 +99,6 @@ class Main extends Base_Customizer {
 						),
 					),
 				)
-			)
-		);
-	}
-
-	/**
-	 * Adds UI control.
-	 */
-	private function add_ui() {
-		$this->add_control(
-			new Control(
-				'neve_ui_control',
-				[
-					'sanitize_callback' => 'sanitize_text_field',
-				],
-				[
-					'section' => 'static_front_page',
-					'type'    => 'neve_ui_control',
-				]
 			)
 		);
 	}

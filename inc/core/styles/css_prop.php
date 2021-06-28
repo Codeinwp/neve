@@ -218,6 +218,7 @@ class Css_Prop {
 			case Config::CSS_PROP_BOX_SHADOW:
 			case Config::CSS_PROP_MIX_BLEND_MODE:
 			case Config::CSS_PROP_OPACITY:
+			case Config::CSS_PROP_GRID_TEMPLATE_COLS:
 				return sprintf( ' %s: %s; ', $css_prop, $value );
 				break;
 		}
