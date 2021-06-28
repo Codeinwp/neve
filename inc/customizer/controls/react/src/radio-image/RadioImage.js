@@ -16,7 +16,7 @@ const RadioImage = ({ choices, onClick, value, label, documentation }) => {
 			return null;
 		}
 
-		if (documentation.link) {
+		if (!documentation.link || !documentation.label) {
 			return null;
 		}
 
