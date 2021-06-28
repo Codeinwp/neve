@@ -2,6 +2,7 @@
 
 .nv-meta-list {
   margin-bottom: $spacing-md;
+  font-size: $text-sm;
 
   li, span {
 	display: inline;
@@ -10,10 +11,6 @@
 	  content: '/';
 	  padding: 0 $spacing-xxs;
 	}
-  }
-
-  li {
-	font-size: $text-sm;
   }
 
   .posted-on:not(.nv-show-updated) .updated {

@@ -99,6 +99,11 @@ class Form_Fields extends Base_Customizer {
 					'default'               => $default_padding,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'      => [
+							'selector' => 'body',
+							'vars'     => '--formFieldPadding',
+							'suffix'   => 'px',
+						],
 						'responsive'  => false,
 						'directional' => true,
 						'template'    =>
@@ -152,6 +157,11 @@ class Form_Fields extends Base_Customizer {
 					'priority'              => 16,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'   => [
+							'selector' => 'body',
+							'vars'     => '--formFieldSpacing',
+							'suffix'   => 'px',
+						],
 						'template' => '
 						 form:not([role="search"]):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code),
 						 form textarea,
@@ -181,6 +191,10 @@ class Form_Fields extends Base_Customizer {
 					'default'               => 'var(--nv-site-bg)',
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'   => [
+							'selector' => 'body',
+							'vars'     => '--formFieldBgColor',
+						],
 						'template' => '
 							body form input:read-write,
 							body form textarea,
@@ -220,6 +234,11 @@ class Form_Fields extends Base_Customizer {
 					'default'               => $default_width,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'      => [
+							'selector' => 'body',
+							'vars'     => '--formFieldBorderWidth',
+							'suffix'   => 'px',
+						],
 						'responsive'  => false,
 						'directional' => true,
 						'template'    => '
@@ -274,6 +293,11 @@ class Form_Fields extends Base_Customizer {
 					],
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'      => [
+							'selector' => 'body',
+							'vars'     => '--formFieldBorderRadius',
+							'suffix'   => 'px',
+						],
 						'responsive'  => false,
 						'directional' => true,
 						'template'    => '
@@ -315,6 +339,10 @@ class Form_Fields extends Base_Customizer {
 					'default'               => '#dddddd',
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'   => [
+							'selector' => 'body',
+							'vars'     => '--formFieldBorderColor',
+						],
 						'template' => '
 							body form input:read-write,
 							body form textarea,
@@ -375,6 +403,10 @@ class Form_Fields extends Base_Customizer {
 					'default'               => 'var(--nv-text-color)',
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'   => [
+							'selector' => 'body',
+							'vars'     => '--formFieldColor',
+						],
 						'template' => '
 							body form input:read-write,
 							body form textarea,
@@ -446,6 +478,28 @@ class Form_Fields extends Base_Customizer {
 						.widget select,
 						.wc-block-product-search form input.wc-block-product-search__field
 					',
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'     => [
+								'--formFieldTextTransform' => 'textTransform',
+								'--formFieldFontWeight'    => 'fontWeight',
+								'--formFieldFontSize'      => [
+									'key'        => 'fontSize',
+									'responsive' => true,
+								],
+								'--formFieldLineHeight'    => [
+									'key'        => 'lineHeight',
+									'responsive' => true,
+								],
+								'--formFieldLetterSpacing' => [
+									'key'        => 'letterSpacing',
+									'suffix'     => 'px',
+									'responsive' => true,
+								],
+							],
+							'selector' => 'body',
+						],
+					],
 				],
 				'\Neve\Customizer\Controls\React\Typography'
 			)
@@ -496,6 +550,11 @@ class Form_Fields extends Base_Customizer {
 					'priority'              => 51,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'     => [
+							'selector' => 'body',
+							'suffix'   => 'px',
+							'vars'     => '--formLabelSpacing',
+						],
 						'responsive' => false,
 						'template'   => 'body form label, body .wpforms-container .wpforms-field-label, .woocommerce form .form-row label {margin-bottom: {{value}}px;}',
 					],
@@ -541,6 +600,28 @@ class Form_Fields extends Base_Customizer {
 					'type'                  => 'neve_typeface_control',
 					'refresh_on_reset'      => true,
 					'live_refresh_selector' => 'form label, body .wpforms-container .wpforms-field-label, .woocommerce form .form-row label',
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'     => [
+								'--formLabelTextTransform' => 'textTransform',
+								'--formLabelFontWeight'    => 'fontWeight',
+								'--formLabelFontSize'      => [
+									'key'        => 'fontSize',
+									'responsive' => true,
+								],
+								'--formLabelLineHeight'    => [
+									'key'        => 'lineHeight',
+									'responsive' => true,
+								],
+								'--formLabelLetterSpacing' => [
+									'key'        => 'letterSpacing',
+									'suffix'     => 'px',
+									'responsive' => true,
+								],
+							],
+							'selector' => 'body',
+						],
+					],
 				],
 				'\Neve\Customizer\Controls\React\Typography'
 			)

@@ -40,6 +40,10 @@ export class CSSVariablesHandler {
 	getStyle() {
 		const { vars, responsive } = this;
 
+		if (this.isDirectionalValue(this.value)) {
+			return this.getDirectionalNonResponsive();
+		}
+
 		//We have a simple (non-composed) responsive control.
 		if (responsive) {
 			return this.getResponsiveVarCSS(
@@ -71,17 +75,39 @@ export class CSSVariablesHandler {
 		}
 	}
 
+	getDirectionalNonResponsive() {
+		const { selector, value, vars, suffix } = this;
+		const parsedValue = this.maybeParseJson(value);
+
+		let finalSuffix = suffix || '';
+
+		if (parsedValue.unit !== undefined) {
+			finalSuffix = parsedValue.unit;
+		}
+
+		const finalValue = this.parseDirectionalValue(parsedValue, finalSuffix);
+
+		return `${selector}{${vars}:${finalValue};}`;
+	}
+
 	getResponsiveVarCSS(selector, variable, value, suffix, fallback) {
 		const parsedValue = this.maybeParseJson(value);
+
+		if (parsedValue === undefined) {
+			return '';
+		}
 
 		let style = '';
 		devices.forEach((device) => {
 			let useFallback = false;
+			let finalSuffix = suffix;
 
-			let finalSuffix = value[`${device}-unit`] || suffix;
+			if (parsedValue[`${device}-unit`] !== undefined) {
+				finalSuffix = parsedValue[`${device}-unit`];
+			}
 
-			if (value.suffix && value.suffix[device]) {
-				finalSuffix = value.suffix[device];
+			if (parsedValue.suffix && parsedValue.suffix[device]) {
+				finalSuffix = parsedValue.suffix[device];
 			}
 
 			if (!parsedValue[device]) {

@@ -15,6 +15,7 @@ $overlay: rgba(0, 0, 0, 0.75);
 }
 
 .cover-post {
+  box-shadow: var(--boxShadow, none);
   position: relative;
   background-size: cover;
   display: flex;
@@ -31,6 +32,10 @@ $overlay: rgba(0, 0, 0, 0.75);
 	bottom: 0;
   }
 
+  amp-img, img {
+	--boxShadow: none;
+  }
+
   .inner {
 	max-width: 100%;
 	min-height: 350px;
@@ -40,11 +45,11 @@ $overlay: rgba(0, 0, 0, 0.75);
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	color: #fff;
+	color: var(--color, #fff);
 	flex-grow: 1;
 
-	a:not(.button), a:not(.button):hover, a:not(.button):focus, li {
-	  color: #fff;
+	a:not(.button) {
+	  color: var(--color, #fff);
 	}
   }
 }

@@ -322,7 +322,29 @@ class Typography extends Base_Customizer {
 						'priority'              => $control_settings['priority'] += 1,
 						'section'               => 'neve_typography_blog',
 						'type'                  => 'neve_typeface_control',
-						'live_refresh_selector' => $control_settings['live_refresh_selector'],
+						'live_refresh_selector' => neve_is_new_skin() ? true : $control_settings['live_refresh_selector'],
+						'live_refresh_css_prop' => [
+							'cssVar' => [
+								'vars'     => [
+									'--textTransform' => 'textTransform',
+									'--fontWeight'    => 'fontWeight',
+									'--fontSize'      => [
+										'key'        => 'fontSize',
+										'responsive' => true,
+									],
+									'--lineHeight'    => [
+										'key'        => 'lineHeight',
+										'responsive' => true,
+									],
+									'--letterSpacing' => [
+										'key'        => 'letterSpacing',
+										'suffix'     => 'px',
+										'responsive' => true,
+									],
+								],
+								'selector' => $control_settings['live_refresh_selector'],
+							],
+						],
 						'refresh_on_reset'      => true,
 						'input_attrs'           => array(
 							'default_is_empty'       => true,
