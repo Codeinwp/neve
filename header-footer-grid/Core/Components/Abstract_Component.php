@@ -18,6 +18,7 @@ use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use HFG\Traits\Core;
+use Neve\Core\Inline_Css;
 use Neve\Core\Settings\Config;
 use Neve\Core\Styles\Dynamic_Selector;
 use Neve\Views\Font_Manager;
@@ -300,6 +301,17 @@ abstract class Abstract_Component implements Component {
 	public $has_typeface_control = false;
 
 	/**
+	 * Holds the base path to the generated .css.min.php
+	 * for the component.
+	 *
+	 * Defaults to empty.
+	 * If empty will not register any css templates.
+	 *
+	 * @var string
+	 */
+	protected $base_css_template_path = '';
+
+	/**
 	 * Abstract_Component constructor.
 	 *
 	 * @param string $panel Builder panel.
@@ -337,10 +349,23 @@ abstract class Abstract_Component implements Component {
 		$css_array = $this->add_style( $css_array );
 		$generator = new Css_Generator();
 		$generator->set( $css_array );
-		$style = $generator->generate();
+		$style  = $generator->generate();
+		$style .= Inline_Css::get_instance()->get_styles();
 
 		echo '<style type="text/css" id="' . esc_attr( $this->get_id() ) . '-style">' . $style . '</style>';  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		self::$should_show_css = false;
+	}
+
+	/**
+	 * Register component templates
+	 *
+	 * @param string $template The template to register.
+	 */
+	public function register_component_template_style( $template = '' ) {
+		if ( ! empty( $template ) && ! empty( $this->base_css_template_path ) ) {
+			$path = $this->base_css_template_path . $template . '.css.min.php';
+			Inline_Css::get_instance()->add_to_queue( $path );
+		}
 	}
 
 	/**
@@ -644,6 +669,7 @@ abstract class Abstract_Component implements Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
+		$this->register_component_template_style();
 		if ( $this->has_font_family_control || $this->has_typeface_control ) {
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => $this->default_typography_selector,

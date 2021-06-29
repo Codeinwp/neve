@@ -85,8 +85,8 @@ class MenuIcon extends Abstract_Component {
 		$this->set_property( 'icon', 'menu' );
 		$this->set_property( 'section', self::COMPONENT_ID );
 		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() . ' .navbar-toggle' );
+		$this->set_property( 'base_css_template_path', NEVE_MAIN_DIR . '/header-footer-grid/assets/components/menu-icon/' );
 
-		add_filter( 'neve_dynamic_style_output', array( $this, 'template_styles' ) );
 		add_filter( 'neve_menu_icon_classes', array( $this, 'add_menu_icon_classes' ), 10, 2 );
 	}
 
@@ -109,48 +109,16 @@ class MenuIcon extends Abstract_Component {
 	}
 
 	/**
-	 * Load generated component styles
-	 */
-	private function load_component_template_style() {
-		$css_inline_style = '';
-		$menu_icon        = Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' );
-		$base_path        = NEVE_MAIN_DIR . '/header-footer-grid/assets/components/menu-icon/';
-		if ( $menu_icon !== 'default' ) {
-			$path = $base_path . $menu_icon . '.css.min.php';
-			if ( is_file( $path ) && $path !== '' ) {
-				$css_inline_style = require_once $path;
-			}
-		}
-
-		Inline_Css::get_instance()->add_to_queue( $this->get_id(), $css_inline_style );
-	}
-
-	/**
-	 * Method to check that the component is active.
+	 * Register component templates
 	 *
-	 * @return bool
+	 * @inheritDoc
 	 */
-	private function is_component_active() {
-		$builders = Main::get_instance()->get_builders();
-		foreach ( $builders as $builder ) {
-			if ( $builder->is_component_active( $this->get_id() ) ) {
-				return true;
-			}
+	public function register_component_template_style( $template = '' ) {
+		$menu_icon = Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' );
+		if ( $menu_icon !== 'default' && ! empty( $menu_icon ) ) {
+			$template = $menu_icon;
 		}
-		return false;
-	}
-
-	/**
-	 * Load template styles
-	 *
-	 * @return string
-	 */
-	public function template_styles( $css ) {
-		$this->load_component_template_style();
-		if ( $this->is_component_active() || is_customize_preview() ) {
-			return $css . Dynamic_Css::minify_css( Inline_Css::get_instance()->get_by_id( $this->get_id() ) );
-		}
-		return $css;
+		parent::register_component_template_style( $template );
 	}
 
 	/**
