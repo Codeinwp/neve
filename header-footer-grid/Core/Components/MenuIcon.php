@@ -192,6 +192,7 @@ class MenuIcon extends Abstract_Component {
 						'arrow'   => 'Arrow',
 						'donner'  => 'Donner',
 						'dots'    => 'Dots',
+						'minimal' => 'Minimal',
 						'minus'   => 'Minus',
 						'vortex'  => 'Vortex',
 						'squeeze' => 'Squeeze',

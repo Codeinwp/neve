@@ -4,16 +4,16 @@
 .hamburger--donner {
   .hamburger-inner {
 	&:before {
-	  width: $hamburger-layer-width;
+	  width: $hamburger-layer-width + 1;
 	  left: -3px;
 	}
 	&{
 	  width: 10px;
-	  left: 5px;
+	  left: 3px;
 	}
 	&:after {
-	  width: 5px;
-	  left: 2px;
+	  width: 4px;
+	  left: 3px;
 	}
 	transition-duration: 0.075s;
 	transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);

@@ -4,7 +4,15 @@
 const sass = require('node-sass');
 
 const components = {
-	'menu-icon': ['arrow', 'donner', 'dots', 'minus', 'squeeze', 'vortex'],
+	'menu-icon': [
+		'arrow',
+		'donner',
+		'dots',
+		'minus',
+		'minimal',
+		'squeeze',
+		'vortex',
+	],
 };
 
 const mapPhpFiles = {};
