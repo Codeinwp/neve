@@ -37,7 +37,7 @@ export const initNavigation = () => {
 export const repositionDropdowns = () => {
 	const { isRTL } = NeveProperties;
 	const dropDowns = document.querySelectorAll(
-		'.neve-mega-menu > .sub-menu, .minimal .nv-nav-search'
+		'.sub-menu, .minimal .nv-nav-search'
 	);
 
 	if (dropDowns.length === 0) return;
@@ -46,6 +46,7 @@ export const repositionDropdowns = () => {
 	neveEach(dropDowns, (dropDown) => {
 		const bounding = dropDown.getBoundingClientRect();
 		const parentBounding = dropDown.parentElement.getBoundingClientRect();
+		const isChildSub = dropDown.parentNode.parentNode.classList.contains('sub-menu');
 		dropDown.style.left = isRTL ? 'auto' : '0';
 		dropDown.style.right = isRTL ? '0' : 'auto';
 		const secondHalf = isRTL
@@ -57,12 +58,12 @@ export const repositionDropdowns = () => {
 		}
 
 		if (bounding.left < 0) {
-			dropDown.style.left = '0';
+			dropDown.style.left = isChildSub ? '100%' : '0';
 			dropDown.style.right = 'auto';
 		}
 		if (parentBounding.left + bounding.width >= windowWidth) {
 			dropDown.style.left = 'auto';
-			dropDown.style.right = '0';
+			dropDown.style.right = isChildSub ? '100%' : '0';
 		}
 
 		if (
