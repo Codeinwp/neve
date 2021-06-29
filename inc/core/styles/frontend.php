@@ -1070,7 +1070,7 @@ class Frontend extends Generator {
 				[
 					$this,
 					'add_form_buttons_hover',
-				] 
+				]
 			);
 
 			return;
@@ -1085,7 +1085,136 @@ class Frontend extends Generator {
 	 * Add css for single post.
 	 */
 	private function setup_single_post_style() {
+		if ( ! neve_is_new_skin() ) {
+			$this->setup_single_post_style_legacy();
+			return;
+		}
 
+		$rules = [
+			'--postCoverHeight' => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_HEIGHT,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_AS_JSON       => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "300", "tablet": "300", "desktop": "300" }',
+			]
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => ':root',
+			'rules'     => $rules,
+		];
+
+//		$cover_padding_default                = $this->padding_default( 'cover' );
+//		$this->_subscribers['.nv-post-cover'] = [
+//			Config::CSS_PROP_MIN_HEIGHT => [
+//				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_HEIGHT,
+//				Dynamic_Selector::META_IS_RESPONSIVE => true,
+//				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+//				Dynamic_Selector::META_AS_JSON       => true,
+//				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "300", "tablet": "300", "desktop": "300" }',
+//			],
+//			Config::CSS_PROP_COLOR      => [
+//				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_TEXT_COLOR,
+//				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
+//			],
+//			Config::CSS_PROP_PADDING    => [
+//				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_PADDING,
+//				Dynamic_Selector::META_IS_RESPONSIVE => true,
+//				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+//				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
+//			],
+//		];
+//
+//		$this->_subscribers['.nv-post-cover .nv-overlay'] = [
+//			Config::CSS_PROP_BACKGROUND_COLOR => [
+//				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BACKGROUND_COLOR,
+//				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
+//			],
+//			Config::CSS_PROP_MIX_BLEND_MODE   => [
+//				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BLEND_MODE,
+//				Dynamic_Selector::META_DEFAULT => 'normal',
+//			],
+//			Config::CSS_PROP_OPACITY          => [
+//				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_OVERLAY_OPACITY,
+//				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 0.5, "tablet": 0.5, "desktop": 0.5 }',
+//				Dynamic_Selector::META_IS_RESPONSIVE => true,
+//			],
+//		];
+//
+//		$this->_subscribers['.nv-post-cover .nv-meta-list li, .nv-post-cover .nv-meta-list a'] = [
+//			Config::CSS_PROP_COLOR => [
+//				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_TEXT_COLOR,
+//				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
+//			],
+//		];
+//
+//		$this->_subscribers['.nv-title-meta-wrap.is-boxed'] = [
+//			Config::CSS_PROP_PADDING          => [
+//				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_BOXED_TITLE_PADDING,
+//				Dynamic_Selector::META_IS_RESPONSIVE => true,
+//				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+//				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
+//			],
+//			Config::CSS_PROP_BACKGROUND_COLOR => [
+//				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
+//				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+//			],
+//		];
+//
+//		$this->_subscribers['.nv-single-post-wrap > *:not(:last-child)'] = [
+//			Config::CSS_PROP_MARGIN_BOTTOM => [
+//				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_ELEMENTS_SPACING,
+//				Dynamic_Selector::META_IS_RESPONSIVE => true,
+//				Dynamic_Selector::META_SUFFIX        => 'px',
+//			],
+//		];
+//
+//		$this->_subscribers['.nv-comments-wrap.is-boxed'] = [
+//			Config::CSS_PROP_PADDING          => [
+//				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_PADDING,
+//				Dynamic_Selector::META_IS_RESPONSIVE => true,
+//				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+//				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
+//			],
+//			Config::CSS_PROP_BACKGROUND_COLOR => [
+//				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_BACKGROUND_COLOR,
+//				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+//			],
+//		];
+//
+//		$this->_subscribers['.nv-comments-wrap.is-boxed, .nv-comments-wrap.is-boxed a'] = [
+//			Config::CSS_PROP_COLOR => [
+//				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_TEXT_COLOR,
+//				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
+//			],
+//		];
+//
+//		$this->_subscribers['.comment-respond.is-boxed'] = [
+//			Config::CSS_PROP_PADDING          => [
+//				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_FORM_PADDING,
+//				Dynamic_Selector::META_IS_RESPONSIVE => true,
+//				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+//				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
+//			],
+//			Config::CSS_PROP_BACKGROUND_COLOR => [
+//				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_FORM_BACKGROUND_COLOR,
+//				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+//			],
+//		];
+//
+//		$this->_subscribers['.comment-respond.is-boxed, .comment-respond.is-boxed a'] = [
+//			Config::CSS_PROP_COLOR => [
+//				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_FORM_TEXT_COLOR,
+//				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
+//			],
+//		];
+	}
+
+	/**
+	 * Add css for single post.
+	 */
+	private function setup_single_post_style_legacy() {
 		$cover_padding_default                = $this->padding_default( 'cover' );
 		$this->_subscribers['.nv-post-cover'] = [
 			Config::CSS_PROP_MIN_HEIGHT => [
