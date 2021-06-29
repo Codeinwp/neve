@@ -1,17 +1,23 @@
 @import "./components/main/extends";
 
-.lms-container {
-  .llms-loop-list {
-	padding: 0;
-	}
+.llms-loop-list {
+  padding: 0!important;
+}
+
+.llms-sd-section-footer{
+  margin-bottom: 25px;
 }
 
 .llms-pagination {
   margin: 10px auto;
-  ul li .page-numbers {
-	text-decoration: none;
-	display: inline-block;
-	padding: 12px 15px;
+  ul{
+	list-style-type: none;
+	padding: 0;
+	li .page-numbers {
+	  text-decoration: none;
+	  display: inline-block;
+	  padding: 12px 15px;
+	}
   }
 }
 
