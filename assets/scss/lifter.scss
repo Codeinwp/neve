@@ -22,16 +22,16 @@
 }
 
 .llms-button-primary, .llms-button-action {
+  display: inline-block;
   @extend %nv-button-primary;
-
   &:hover {
 	@extend %nv-button-primary-hover;
   }
 }
 
 .llms-button-secondary {
+  display: inline-block;
   @extend %nv-button-secondary;
-
   &:hover {
 	@extend %nv-button-secondary-hover;
   }

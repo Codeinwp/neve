@@ -269,7 +269,7 @@ class Lifter {
 	 * Load Sidebar
 	 */
 	public function load_catalog_sidebar() {
-		$sidebar_position =  $this->get_sidebar_position();
+		$sidebar_position = $this->get_sidebar_position();
 		if ( $sidebar_position === 'right' ) {
 			add_action( 'neve_llms_content_after', array( $this, 'render_catalog_sidebar' ), 11 );
 		}
