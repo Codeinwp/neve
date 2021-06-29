@@ -174,13 +174,13 @@
   .select2-results__options,
   .select2-search,
   .select2-search__field {
-	color: var(--nv-text-color);
-	background-color: var(--nv-site-bg);
+	color: var(--formFieldColor);
+	background-color: var(--formFieldBgColor);
   }
 
   .select2-selection__rendered {
 	padding: 0 !important;
-	color: var(--nv-text-color) !important;
+	color: var(--formFieldColor) !important;
   }
 
   .select2-selection__arrow {

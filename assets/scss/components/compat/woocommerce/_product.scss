@@ -215,6 +215,13 @@
   display: inline-block;
 }
 
+@mixin product--tablet() {
+  .nv-single-product-top {
+	.summary {
+	  margin-left: 4%;
+	}
+  }
+}
 @mixin product--laptop() {
   body.single-product .neve-main > .container > .row {
 	flex-wrap: wrap;
@@ -232,11 +239,6 @@
 
 	.images {
 	  width: 100% !important;
-	}
-  }
-  .nv-single-product-top {
-	.summary {
-	  margin-left: 4%;
 	}
   }
 }
