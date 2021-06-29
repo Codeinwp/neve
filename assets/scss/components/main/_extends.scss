@@ -139,3 +139,35 @@
   line-height: var(--lineHeight);
   font-size: var(--fontSize);
 }
+
+%nv-has-h1-typography {
+  font-size: var(--fontSize, var(--h1FontSize));
+  font-weight: var(--fontWeight, var(--h1FontWeight));
+  line-height: var(--lineHeight, var(--h1LineHeight));
+  letter-spacing: var(--letterSpacing, var(--h1LetterSpacing));
+  text-transform: var(--textTransform, var(--h1TextTransform));
+}
+
+%nv-has-h2-typography {
+  font-size: var(--fontSize, var(--h2FontSize));
+  font-weight: var(--fontWeight, var(--h2FontWeight));
+  line-height: var(--lineHeight, var(--h2LineHeight));
+  letter-spacing: var(--letterSpacing, var(--h2LetterSpacing));
+  text-transform: var(--textTransform, var(--h2TextTransform));
+}
+
+%nv-has-h3-typography {
+  font-size: var(--fontSize, var(--h3FontSize));
+  font-weight: var(--fontWeight, var(--h3FontWeight));
+  line-height: var(--lineHeight, var(--h3LineHeight));
+  letter-spacing: var(--letterSpacing, var(--h3LetterSpacing));
+  text-transform: var(--textTransform, var(--h3TextTransform));
+}
+
+%nv-has-h4-typography {
+  font-size: var(--fontSize, var(--h4FontSize));
+  font-weight: var(--fontWeight, var(--h4FontWeight));
+  line-height: var(--lineHeight, var(--h4LineHeight));
+  letter-spacing: var(--letterSpacing, var(--h4LetterSpacing));
+  text-transform: var(--textTransform, var(--h4TextTransform));
+}

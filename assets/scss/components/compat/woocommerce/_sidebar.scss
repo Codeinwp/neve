@@ -8,6 +8,7 @@
   z-index: 100000;
   height: 100vh;
   overflow: auto;
+  width: 100%;
   transition: all 0.3s ease-out;
   background-color: var(--nv-site-bg);
   transform: translateX(-100%);

@@ -282,21 +282,19 @@ const HFGBuilder: React.FC<Props> = ({
 		>
 			<div>
 				<Suspense fallback={<Spinner />}>
-					{!hidden && (
-						<>
-							<div className={`neve-hfg-builder`}>
-								<SidebarContent />
-							</div>
-							{createPortal(
-								<Builder
-									hidden={hidden}
-									value={value}
-									portalMount={portalMount}
-								/>,
-								portalMount
-							)}
-						</>
-					)}
+					<>
+						<div className={`neve-hfg-builder`}>
+							<SidebarContent />
+						</div>
+						{createPortal(
+							<Builder
+								hidden={hidden}
+								value={value}
+								portalMount={portalMount}
+							/>,
+							portalMount
+						)}
+					</>
 				</Suspense>
 			</div>
 		</BuilderContext.Provider>
