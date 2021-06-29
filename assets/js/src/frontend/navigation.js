@@ -46,7 +46,9 @@ export const repositionDropdowns = () => {
 	neveEach(dropDowns, (dropDown) => {
 		const bounding = dropDown.getBoundingClientRect();
 		const parentBounding = dropDown.parentElement.getBoundingClientRect();
-		const isChildSub = dropDown.parentNode.parentNode.classList.contains('sub-menu');
+		const isChildSub = dropDown.parentNode.parentNode.classList.contains(
+			'sub-menu'
+		);
 		dropDown.style.left = isRTL ? 'auto' : '0';
 		dropDown.style.right = isRTL ? '0' : 'auto';
 		const secondHalf = isRTL
