@@ -26,7 +26,7 @@
 	  transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 	}
   }
-  &.is-active {
+  .is-active &, &.is-active {
 	.hamburger-inner {
 	  &,
 	  &:before,

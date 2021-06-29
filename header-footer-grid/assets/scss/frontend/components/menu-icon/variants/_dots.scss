@@ -19,7 +19,7 @@
 	  opacity 0s linear;
 	}
   }
-  &.is-active {
+  .is-active &, &.is-active {
 	.hamburger-inner {
 	  & {
 		left: inherit;

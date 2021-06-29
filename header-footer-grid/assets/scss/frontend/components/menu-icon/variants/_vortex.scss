@@ -19,7 +19,7 @@
 	}
   }
 
-  &.is-active {
+  .is-active &, &.is-active {
 	.hamburger-inner {
 	  transform: rotate(765deg);
 	  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);

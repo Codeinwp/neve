@@ -77,6 +77,8 @@ class Dynamic_Css {
 
 		$style .= $this->get_root_css();
 
+		$style .= Inline_Css::get_instance()->get_styles();
+
 		$style = self::minify_css( $style );
 
 		wp_add_inline_style( $is_for_gutenberg ? self::GUTENBERG_HANDLE : self::FRONTEND_HANDLE, $style );

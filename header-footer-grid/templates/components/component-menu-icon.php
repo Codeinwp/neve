@@ -17,7 +17,7 @@ $menu_icon       = component_setting( MenuIcon::MENU_ICON );
 
 $class = '';
 if ( $menu_icon !== 'default' ) {
-	$class = apply_filters( 'neve_menu_icon_classes', 'hamburger menu-mobile-toggle ', $menu_icon );
+	$class = apply_filters( 'neve_menu_icon_classes', 'hamburger ', $menu_icon );
 }
 ?>
 <div class="menu-mobile-toggle item-button navbar-toggle-wrapper">
