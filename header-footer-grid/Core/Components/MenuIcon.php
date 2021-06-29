@@ -13,8 +13,6 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
-use Neve\Core\Dynamic_Css;
-use Neve\Core\Inline_Css;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
@@ -98,7 +96,10 @@ class MenuIcon extends Abstract_Component {
 	 *
 	 * @return mixed|string
 	 */
-	public function add_menu_icon_classes( $class = '', $icon = 'default' ) {
+	public function add_menu_icon_classes( $class = '', $icon = '' ) {
+		if ( empty( $icon ) ) {
+			$icon = Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' );
+		}
 		if ( $icon !== 'default' ) {
 			$add_class = 'hamburger--' . $icon;
 			if ( strpos( $class, $add_class ) === false ) {

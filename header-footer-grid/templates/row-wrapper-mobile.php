@@ -11,31 +11,26 @@ namespace HFG;
 
 use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Builder\Header as HeaderBuilder;
-use HFG\Core\Components\MenuIcon;
 
 $interaction_type = row_setting( Abstract_Builder::LAYOUT_SETTING );
 $classes          = [ 'header-menu-sidebar', 'menu-sidebar-panel', $interaction_type ];
 $is_contained     = in_array( $interaction_type, [ 'full_canvas', 'dropdown' ], true );
 $inner_classes    = 'header-menu-sidebar-inner ' . ( $is_contained ? ' container' : '' );
 $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
-$menu_icon        = component_setting( MenuIcon::MENU_ICON );
 
-$class = '';
-if ( $menu_icon !== 'default' ) {
-	$class = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active ', $menu_icon );
-}
+$menu_icon_class = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active ' );
 ?>
 <div id="header-menu-sidebar" class="<?php echo esc_attr( join( ' ', $classes ) ); ?>">
 	<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">
 		<div class="close-sidebar-panel navbar-toggle-wrapper">
-			<button class="<?php echo esc_attr( $class ); ?> navbar-toggle active" <?php echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<button class="<?php echo esc_attr( $menu_icon_class ); ?> navbar-toggle active" <?php echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					aria-label="
 				<?php
 					esc_html_e( 'Navigation Menu', 'neve' );
 				?>
 				">
 				<?php
-				if ( $menu_icon === 'default' ) {
+				if ( $menu_icon_class === 'hamburger is-active ' ) {
 					?>
 					<div class="bars">
 						<span class="icon-bar"></span>
