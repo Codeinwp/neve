@@ -74,6 +74,15 @@ declare namespace Cypress {
 		): void;
 
 		/**
+		 * Inserts a new post by request
+		 *
+		 * @param title
+		 * @param content
+		 * @param type
+		 * @param featured the id of the image you want to feature
+		 */
+		insertPostWithRequest(title: string, content: string, type: string, featured?: number, tags?);
+		/**
 		 * Click on update button on a published post
 		 *
 		 * @example
