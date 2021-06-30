@@ -146,27 +146,28 @@ Cypress.Commands.add(
 	'insertPostWithRequest',
 	(title = 'Test Title', content = 'Test content', type = 'posts', featured = 0) => {
 		cy.loginWithRequest();
-
-		cy.request({
-			method: 'POST',
-			url: '/wp-json/wp/v2/' + type,
-			auth: {
-				bearer: window.localStorage.getItem('jwt'),
-			},
-			body: {
-				title,
-				status: 'publish',
-				content: {
-					raw: content,
-					rendered: 'The test content',
-					protected: false,
+		cy.getJWT().then(() => {
+			cy.request({
+				method: 'POST',
+				url: '/wp-json/wp/v2/' + type,
+				auth: {
+					bearer: window.localStorage.getItem('jwt'),
 				},
-				featured_media: featured,
-			},
-		}).then((resp) => {
-			expect(resp.status).to.eq(201);
-			cy.setLocalStorage('postId', resp.body.id);
-			cy.setLocalStorage('postUrl', resp.body.slug);
+				body: {
+					title,
+					status: 'publish',
+					content: {
+						raw: content,
+						rendered: 'The test content',
+						protected: false,
+					},
+					featured_media: featured,
+				},
+			}).then((resp) => {
+				expect(resp.status).to.eq(201);
+				cy.setLocalStorage('postId', resp.body.id);
+				cy.setLocalStorage('postUrl', '/' + resp.body.slug);
+			});
 		});
 	},
 );
@@ -315,12 +316,14 @@ Cypress.Commands.add('getJWT', () => {
 });
 
 Cypress.Commands.add('updatePageOrPostByRequest', (postId: string, type: string, body) => {
-	cy.request({
-		method: 'POST',
-		url: '/wp-json/wp/v2/' + type + '/' + postId,
-		auth: {
-			bearer: window.localStorage.getItem('jwt'),
-		},
-		body,
+	cy.getJWT().then(() => {
+		cy.request({
+			method: 'POST',
+			url: '/wp-json/wp/v2/' + type + '/' + postId,
+			auth: {
+				bearer: window.localStorage.getItem('jwt'),
+			},
+			body,
+		});
 	});
 });

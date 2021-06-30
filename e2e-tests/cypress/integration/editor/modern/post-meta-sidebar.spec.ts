@@ -6,14 +6,18 @@ describe('Single post meta sidebar', function () {
 	};
 
 	before('Create new post named "' + postSetup.title + '".', function () {
-		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4, ['test-tag']);
+		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4, ['test-tag']).then(
+			() => {
+				postSetup.url = window.localStorage.getItem('postUrl');
+			},
+		);
 
 		cy.setCustomizeSettings({
 			neve_migrated_hfg_colors: true,
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
 		});
-		postSetup.url = '/' + cy.getLocalStorage('postUrl');
+
 		cy.saveLocalStorage();
 	});
 

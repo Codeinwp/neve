@@ -202,7 +202,7 @@ declare namespace Cypress {
 		 *
 		 * @example cy.getJWT()
 		 */
-		getJWT(): void;
+		getJWT();
 
 		/**
 		 * Updates a post or page by request to WP Rest API.
