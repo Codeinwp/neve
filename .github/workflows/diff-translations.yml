@@ -41,8 +41,7 @@ jobs:
           body-includes: PR has POT difference
       - name: Calculate Diff
         env:
-          PERCENT_TRESHOLD: 5
-#        run: pdiff=$(git diff --exit-code -U100000 ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot | awk '/^i/ {getline; next} /^-/ {pa += length} /^ / {qu += length} END {print pa/(pa+qu)*100}') && if [[ $pdiff > $PERCENT_TRESHOLD ]]; then echo "Greater then $PERCENT_TRESHOLD% difference $pdiff"; exit 1; else echo "Less than $PERCENT_TRESHOLD%  difference $pdiff"; exit 0; fi
+          PERCENT_TRESHOLD: 2
         run: new=$(diff -u ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot  | grep -E "^\+msgid" | sed -E 's/^\+//' <<< $(wc -l)) && total=$(cat ./neve-base/languages/neve.pot | grep -E "^\msgid" | sed -E 's/^\+//' <<< $(wc -l)) && pdiff=$(awk '{print $1*100/$2}' <<<"${new} ${total}") && if [[ $pdiff > $PERCENT_TRESHOLD ]]; then echo "Greater then $PERCENT_TRESHOLD% difference $pdiff% | new lines $new from total $total"; exit 1; else echo "Less than $PERCENT_TRESHOLD%  difference $pdiff% | new lines $new from total $total"; exit 0; fi
       - name: Step failed Create or update comment
         if: ${{ failure() }}
