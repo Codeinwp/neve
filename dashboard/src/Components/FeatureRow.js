@@ -40,21 +40,6 @@ const FeatureRow = ({ item }) => {
 									<p>
 										{description + ' '}
 										{docsLink &&
-											typeof createInterpolateElement ===
-												'undefined' && (
-												<>
-													{__(
-														'More details ',
-														'neve'
-													)}
-													<ExternalLink
-														href={docsLink}
-													>
-														{__('here.', 'neve')}
-													</ExternalLink>
-												</>
-											)}
-										{docsLink &&
 											typeof createInterpolateElement !==
 												'undefined' &&
 											createInterpolateElement(

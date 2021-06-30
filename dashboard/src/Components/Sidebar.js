@@ -18,18 +18,6 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 					<div className="sidebar-section">
 						<h4>{__('Neve Community', 'neve')}</h4>
 						<p>
-							{typeof createInterpolateElement ===
-								'undefined' && (
-								<>
-									{__(
-										'Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our ',
-										'neve'
-									)}
-									<ExternalLink href="https://neve.nolt.io">
-										{__('public roadmap.', 'neve')}
-									</ExternalLink>
-								</>
-							)}
 							{typeof createInterpolateElement !== 'undefined' &&
 								createInterpolateElement(
 									__(
