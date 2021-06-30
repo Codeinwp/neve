@@ -2,7 +2,7 @@
 # Set Arguments
 file1="$1"
 file2="$2"
-PERCENT_TRESHOLD=${3-foo}
+PERCENT_TRESHOLD=${3-2}
 
 # Get new lines between the 2 files
 new=$(diff -u $file1 $file2 | grep -E "^\+msgid" | sed -E 's/^\+//' <<< $(wc -l))
