@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.79, 0.14, 0.15, 0.86)
+}
+
+body > .wrapper:not(.et-fb-iframe-ancestor) {
+	overflow: hidden;
+}
+
+.neve-main {
+  flex: 1 auto;
+}
+
+.archive-container {
+  padding-top: $spacing-sm;
+}

@@ -12,8 +12,8 @@ const options = {
 		{
 			name: 'left-right',
 			priority: 100,
-			search: [ 'left', 'Left', 'LEFT' ],
-			replace: [ 'right', 'Right', 'RIGHT' ],
+			search: ['left', 'Left', 'LEFT'],
+			replace: ['right', 'Right', 'RIGHT'],
 			options: {
 				scope: '*',
 				ignoreCase: false,
@@ -22,8 +22,8 @@ const options = {
 		{
 			name: 'ltr-rtl',
 			priority: 100,
-			search: [ 'ltr', 'Ltr', 'LTR' ],
-			replace: [ 'rtl', 'Rtl', 'RTL' ],
+			search: ['ltr', 'Ltr', 'LTR'],
+			replace: ['rtl', 'Rtl', 'RTL'],
 			options: {
 				scope: '*',
 				ignoreCase: false,
@@ -39,7 +39,15 @@ module.exports = {
 		cwd: './',
 		dest: './',
 		ext,
-		src: [ 'style-main.css' ],
+		src: ['style-main.css'],
+	},
+	styleLegacy: {
+		options,
+		expand: true,
+		cwd: './assets/css',
+		dest: './assets/css',
+		ext,
+		src: ['style-legacy.css'],
 	},
 	woocommerce: {
 		options,
@@ -47,7 +55,15 @@ module.exports = {
 		cwd: './assets/css/',
 		dest: './assets/css/',
 		ext,
-		src: [ 'woocommerce.css' ],
+		src: ['woocommerce.css'],
+	},
+	woocommerceLegacy: {
+		options,
+		expand: true,
+		cwd: './assets/css/',
+		dest: './assets/css/',
+		ext,
+		src: ['woocommerce-legacy.css'],
 	},
 	customizerStyle: {
 		options,
@@ -55,7 +71,7 @@ module.exports = {
 		cwd: './assets/css/',
 		dest: './assets/css/',
 		ext,
-		src: [ 'customizer-style.css' ],
+		src: ['customizer-style.css'],
 	},
 	reactControls: {
 		options,
@@ -63,7 +79,7 @@ module.exports = {
 		cwd: './inc/customizer/controls/react/bundle',
 		dest: './inc/customizer/controls/react/bundle',
 		ext,
-		src: [ 'style-controls.css' ],
+		src: ['style-controls.css'],
 	},
 	megaMenu: {
 		options,
@@ -71,7 +87,7 @@ module.exports = {
 		cwd: './assets/css/',
 		dest: './assets/css/',
 		ext,
-		src: [ 'mega-menu.css' ],
+		src: ['mega-menu.css'],
 	},
 	hfg: {
 		options,
@@ -79,7 +95,7 @@ module.exports = {
 		cwd: './header-footer-grid/assets/css/',
 		dest: './header-footer-grid/assets/css/',
 		ext,
-		src: [ 'style.css' ],
+		src: ['style.css'],
 	},
 	dashboard: {
 		options,
@@ -87,6 +103,6 @@ module.exports = {
 		cwd: './dashboard/build/',
 		dest: './dashboard/build/',
 		ext,
-		src: [ 'style-dashboard.css' ],
+		src: ['style-dashboard.css'],
 	},
 };

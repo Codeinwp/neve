@@ -1,0 +1,173 @@
+// Buttons
+%nv-button {
+  cursor: pointer;
+  box-sizing: border-box;
+  border-color: currentColor;
+  text-align: center;
+}
+
+%nv-button-primary {
+  cursor: pointer;
+  box-sizing: border-box;
+
+  background-color: var(--primaryBtnBg);
+  color: var(--primaryBtnColor);
+  border-style: solid;
+  border-color: currentColor;
+  border-width: var(--primaryBtnBorderWidth, 0);
+  border-radius: var(--primaryBtnBorderRadius, 3px);
+  padding: var(--primaryBtnPadding, 13px 15px);
+
+  font-weight: var(--btnFontWeight, 700);
+  font-size: var(--btnFs, var(--bodyFontSize));
+  line-height: var(--btnLineHeight, 1.6);
+  letter-spacing: var(--btnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--btnTextTransform, none);
+}
+
+%nv-button-primary-hover {
+  background-color: var(--primaryBtnHoverBg);
+  color: var(--primaryBtnHoverColor);
+  border-color: var(--primaryBtnHoverColor);
+}
+
+%nv-button-primary-no-border {
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: var(--btnPadding, 13px 15px);
+  border-radius: var(--primaryBtnBorderRadius, 3px);
+  font-weight: var(--btnFontWeight, 700);
+  font-size: var(--btnFs, var(--bodyFontSize));
+  line-height: var(--btnLineHeight, 1.6);
+  letter-spacing: var(--btnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--btnTextTransform, none);
+}
+
+%nv-button-primary-no-colors {
+  cursor: pointer;
+  box-sizing: border-box;
+
+  border-style: solid;
+  border-color: currentColor;
+  border-width: var(--primaryBtnBorderWidth, 0);
+  border-radius: var(--primaryBtnBorderRadius, 3px);
+  padding: var(--primaryBtnPadding, 13px 15px);
+
+  font-weight: var(--btnFontWeight, 700);
+  font-size: var(--btnFs, var(--bodyFontSize));
+  line-height: var(--btnLineHeight, 1.6);
+  letter-spacing: var(--btnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--btnTextTransform, none);
+}
+
+%nv-button-secondary {
+  cursor: pointer;
+  box-sizing: border-box;
+
+  background-color: var(--secondaryBtnBg);
+  color: var(--secondaryBtnColor);
+  border-style: solid;
+  border-color: currentColor;
+  border-width: var(--secondaryBtnBorderWidth, 0);
+  border-radius: var(--secondaryBtnBorderRadius, 3px);
+  padding: var(--secondaryBtnPadding, 7px 12px);
+
+  font-weight: var(--btnFontWeight, 700);
+  font-size: var(--btnFs, var(--bodyFontSize));
+  line-height: var(--btnLineHeight, 1.6);
+  letter-spacing: var(--btnLetterSpacing);
+  text-transform: var(--btnTextTransform, none);
+}
+
+%nv-button-secondary-hover {
+  background-color: var(--secondaryBtnHoverBg);
+  color: var(--secondaryBtnHoverColor);
+  border-color: var(--secondaryBtnHoverColor);
+}
+
+%nv-button-secondary-no-colors {
+  cursor: pointer;
+  border-radius: var(--secondaryBtnBorderRadius, 3px);
+  border-style: solid;
+  border-color: currentColor;
+  border-width: var(--secondaryBtnBorderWidth, 0);
+  padding: var(--secondaryBtnPadding, 7px 12px);
+
+  font-weight: var(--btnFontWeight, 700);
+  font-size: var(--btnFs, var(--bodyFontSize));
+  line-height: var(--btnLineHeight, 1.6);
+  letter-spacing: var(--btnLetterSpacing, var(--bodyLetterSpacing));
+  text-transform: var(--btnTextTransform, none);
+}
+
+// Form Fields
+%nv-form-fields {
+  margin-bottom: var(--formFieldSpacing);
+  border-style: solid;
+  border-color: var(--formFieldBorderColor);
+  border-width: var(--formFieldBorderWidth);
+  border-radius: var(--formFieldBorderRadius, 3px);
+  background-color: var(--formFieldBgColor);
+  color: var(--formFieldColor);
+  padding: var(--formFieldPadding);
+
+  text-transform: var(--formFieldTextTransform);
+  font-weight: var(--formFieldFontWeight);
+  font-family: var(--bodyFontFamily);
+  font-size: var(--formFieldFontSize);
+  letter-spacing: var(--formFieldLetterSpacing);
+  line-height: var(--formFieldLineHeight);
+}
+
+%nv-form-labels {
+  margin-bottom: var(--formLabelSpacing);
+  font-weight: var(--formLabelFontWeight, var(--bodyFontWeight));
+  text-transform: var(--formLabelTextTransform);
+  letter-spacing: var(--formLabelLetterSpacing);
+  line-height: var(--formLabelLineHeight);
+  font-size: var(--formLabelFontSize, var(--bodyFontSize));
+}
+
+%nv-reset-field-spacing {
+  --formFieldSpacing: 0;
+}
+
+%nv-has-typography {
+  font-weight: var(--fontWeight);
+  text-transform: var(--textTransform);
+  letter-spacing: var(--letterSpacing);
+  line-height: var(--lineHeight);
+  font-size: var(--fontSize);
+}
+
+%nv-has-h1-typography {
+  font-size: var(--fontSize, var(--h1FontSize));
+  font-weight: var(--fontWeight, var(--h1FontWeight));
+  line-height: var(--lineHeight, var(--h1LineHeight));
+  letter-spacing: var(--letterSpacing, var(--h1LetterSpacing));
+  text-transform: var(--textTransform, var(--h1TextTransform));
+}
+
+%nv-has-h2-typography {
+  font-size: var(--fontSize, var(--h2FontSize));
+  font-weight: var(--fontWeight, var(--h2FontWeight));
+  line-height: var(--lineHeight, var(--h2LineHeight));
+  letter-spacing: var(--letterSpacing, var(--h2LetterSpacing));
+  text-transform: var(--textTransform, var(--h2TextTransform));
+}
+
+%nv-has-h3-typography {
+  font-size: var(--fontSize, var(--h3FontSize));
+  font-weight: var(--fontWeight, var(--h3FontWeight));
+  line-height: var(--lineHeight, var(--h3LineHeight));
+  letter-spacing: var(--letterSpacing, var(--h3LetterSpacing));
+  text-transform: var(--textTransform, var(--h3TextTransform));
+}
+
+%nv-has-h4-typography {
+  font-size: var(--fontSize, var(--h4FontSize));
+  font-weight: var(--fontWeight, var(--h4FontWeight));
+  line-height: var(--lineHeight, var(--h4LineHeight));
+  letter-spacing: var(--letterSpacing, var(--h4LetterSpacing));
+  text-transform: var(--textTransform, var(--h4TextTransform));
+}

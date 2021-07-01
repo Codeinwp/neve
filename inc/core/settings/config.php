@@ -167,9 +167,18 @@ class Config {
 	const CSS_SELECTOR_FORM_INPUTS              = 'form_inputs';
 	const CSS_SELECTOR_FORM_INPUTS_LABELS       = 'form_labels';
 	const CSS_SELECTOR_FORM_BUTTON              = 'form_buttons';
+	const CSS_SELECTOR_FORM_BUTTON_HOVER        = 'form_buttons_hover';
 	const CSS_SELECTOR_FORM_SEARCH_INPUTS       = 'search_form_inputs';
 
 	const CONTENT_DEFAULT_PADDING = 30;
+
+	/**
+	 * Keys for directional values.
+	 *
+	 * @var string[]
+	 */
+	public static $directional_keys = [ 'top', 'right', 'bottom', 'left' ];
+
 	/**
 	 * Holds tag->css selector mapper.
 	 *
@@ -207,7 +216,8 @@ class Config {
 		self::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING    => 'form:not([role="search"]):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code), form textarea, form select, .widget select',
 		self::CSS_SELECTOR_FORM_INPUTS                 => 'form input:read-write, form textarea, form select, form select option, form.wp-block-search input.wp-block-search__input, .widget select',
 		self::CSS_SELECTOR_FORM_INPUTS_LABELS          => 'form label, .wpforms-container .wpforms-field-label',
-		self::CSS_SELECTOR_FORM_BUTTON                 => 'form input[type="submit"]',
+		self::CSS_SELECTOR_FORM_BUTTON                 => 'form input[type="submit"], form button[type="submit"], form *[value*="ubmit"], #comments input[type="submit"]',
+		self::CSS_SELECTOR_FORM_BUTTON_HOVER           => 'form input[type="submit"]:hover, form button[type="submit"]:hover, form *[value*="ubmit"]:hover, #comments input[type="submit"]:hover',
 		self::CSS_SELECTOR_FORM_SEARCH_INPUTS          => 'form.search-form input:read-write',
 	];
 }

@@ -20,10 +20,10 @@ function neve_get_button_appearance_default( $button = 'button' ) {
 		'text'            => '',
 		'textHover'       => '',
 		'borderRadius'    => [
-			'top'     => 3,
-			'right'   => 3,
-			'botttom' => 3,
-			'left'    => 3,
+			'top'    => 3,
+			'right'  => 3,
+			'bottom' => 3,
+			'left'   => 3,
 		],
 		'borderWidth'     => [
 			'top'    => 1,

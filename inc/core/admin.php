@@ -108,6 +108,7 @@ class Admin {
 
 		if ( ! empty( $header ) || ! empty( $footer ) ) {
 			set_theme_mod( 'neve_migrated_builders', false );
+
 			return;
 		}
 
@@ -274,6 +275,7 @@ class Admin {
 		if ( ! empty( $activated_time ) ) {
 			if ( time() - intval( $activated_time ) > WEEK_IN_SECONDS ) {
 				update_option( $this->dismiss_notice_key, 'yes' );
+
 				return;
 			}
 		}
@@ -505,7 +507,10 @@ class Admin {
 			NEVE_VERSION,
 			true
 		);
-		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
+
+		$path = neve_is_new_skin() ? 'gutenberg-editor-style' : 'gutenberg-editor-legacy-style';
+
+		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/' . $path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 	}
 
 	/**
@@ -577,6 +582,7 @@ class Admin {
 		if ( array_key_exists( 'otter-blocks/otter-blocks.php', $plugins ) ) {
 			$plugins['otter-blocks/otter-blocks.php']['Name'] = 'Gutenberg Blocks and Template Library by Neve theme';
 		}
+
 		return $plugins;
 	}
 

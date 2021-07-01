@@ -54,7 +54,10 @@ class Loader {
 	 */
 	public function change_pro_controls( \WP_Customize_Manager $wp_customize ) {
 		if ( neve_can_use_conditional_header() ) {
-			$control                  = $wp_customize->get_control( 'neve_global_header' );
+			$control = $wp_customize->get_control( 'neve_global_header' );
+			if ( empty( $control ) ) {
+				return;
+			}
 			$control->active_callback = '__return_false';
 		}
 	}
@@ -91,7 +94,16 @@ class Loader {
 		wp_style_add_data( 'neve-customizer-style', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-customizer-style' );
 
-		wp_enqueue_script( 'neve-customizer-controls', NEVE_ASSETS_URL . 'js/build/all/customizer-controls.js', array( 'jquery', 'wp-color-picker' ), NEVE_VERSION, true );
+		wp_enqueue_script(
+			'neve-customizer-controls',
+			NEVE_ASSETS_URL . 'js/build/all/customizer-controls.js',
+			array(
+				'jquery',
+				'wp-color-picker',
+			),
+			NEVE_VERSION,
+			true
+		);
 
 		$bundle_path  = get_template_directory_uri() . '/inc/customizer/controls/react/bundle/';
 		$dependencies = ( include get_template_directory() . '/inc/customizer/controls/react/bundle/controls.asset.php' );
@@ -163,6 +175,7 @@ class Loader {
 				array(
 					'currentFeaturedImage' => '',
 					'newBuilder'           => neve_is_new_builder(),
+					'newSkin'              => neve_is_new_skin(),
 				)
 			)
 		);

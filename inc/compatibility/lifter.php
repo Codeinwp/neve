@@ -82,12 +82,25 @@ class Lifter {
 		remove_action( 'lifterlms_after_main_content', 'lifterlms_output_content_wrapper_end', 10 );
 		remove_all_actions( 'lifterlms_sidebar' );
 
-		add_action( 'lifterlms_before_loop', array( $this, 'content_wrapper_open' ), 0 );
+		add_action( 'lifterlms_before_main_content', array( $this, 'content_wrapper_open' ), 0 );
 		add_action( 'lifterlms_after_loop', array( $this, 'content_wrapper_close' ), 100 );
 		add_filter( 'lifterlms_show_page_title', '__return_false' );
 
 		add_action( 'neve_llms_content', array( $this, 'content_open' ), 10 );
-		add_action( 'lifterlms_after_loop', array( $this, 'content_close' ), 10 );
+		add_action(
+			'lifterlms_after_loop',
+			function() {
+				echo '<div>';
+			},
+			10
+		);
+		add_action(
+			'lifterlms_after_main_content',
+			function() {
+				echo '<div>';
+			},
+			10
+		);
 
 		add_action( 'widgets_init', array( $this, 'register_catalog_sidebar' ) );
 		add_filter( 'llms_get_theme_default_sidebar', array( $this, 'lms_sidebar' ) );
@@ -100,7 +113,6 @@ class Lifter {
 	 * Add inline selectors for LifterLMS.
 	 */
 	private function add_inline_selectors() {
-
 		add_filter(
 			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
 			array(
@@ -206,7 +218,6 @@ class Lifter {
 		return ( $selectors . $this->primary_buttons_selectors['hover'] );
 	}
 
-
 	/**
 	 * Add secondary btn selectors.
 	 *
@@ -219,7 +230,6 @@ class Lifter {
 
 	}
 
-
 	/**
 	 * Add secondary btn selectors.
 	 *
@@ -231,12 +241,13 @@ class Lifter {
 		return ( $selectors . $this->secondary_buttons_selectors['hover'] );
 	}
 
-
 	/**
 	 * Enqueue styles.
 	 */
 	public function load_styles() {
-		wp_enqueue_style( 'neve-lifter', NEVE_ASSETS_URL . 'css/lifter' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		$path = neve_is_new_skin() ? 'lifter' : 'lifter-legacy';
+
+		wp_enqueue_style( 'neve-lifter', NEVE_ASSETS_URL . 'css/' . $path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 	}
 
 	/**
@@ -295,14 +306,6 @@ class Lifter {
 		echo '</div>';
 		$class = apply_filters( 'neve_lifter_wrap_classes', 'nv-content-wrap entry-content' );
 		echo '<div class="' . esc_attr( $class ) . '">';
-	}
-
-	/**
-	 * Close content.
-	 */
-	public function content_close() {
-		echo '</div>'; // .nv-content-wrap .entry-content close
-		echo '</div>'; // .nv-single-page-wrap .col close
 	}
 
 	/**

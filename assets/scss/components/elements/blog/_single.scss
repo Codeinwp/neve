@@ -1,0 +1,127 @@
+@import "../../main/variables";
+
+.nv-single-post-wrap {
+  .entry-header,
+  .nv-thumb-wrap,
+  .nv-content-wrap,
+  .nv-post-navigation,
+  .nv-tags-list {
+	&:first-child {
+	  padding-top: $spacing-aired;
+	}
+
+	&:last-child {
+	  padding-bottom: $spacing-lg;
+	}
+  }
+}
+
+.nv-page-title-wrap {
+  margin-top: $spacing-aired;
+}
+
+.entry-header .title, .page .title, .nv-page-title {
+  margin-bottom: $spacing-xl;
+}
+
+.nv-thumb-wrap {
+  margin-bottom: $spacing-aired;
+}
+
+.nv-single-post-wrap {
+  .nv-content-wrap,
+  .nv-tags-list {
+	margin-bottom: $spacing-aired;
+  }
+}
+
+.attachment-neve-blog {
+  display: flex;
+}
+
+.nv-post-navigation {
+  display: flex;
+  justify-content: space-between;
+
+  .previous,
+  .next {
+	a:hover {
+	  text-decoration: none;
+
+	  span:not(.nav-direction) {
+		text-decoration: underline;
+	  }
+	}
+
+	.nav-direction {
+	  color: var(--nv-text-color);
+	  display: flex;
+	  flex-direction: column;
+	  font-size: 0.8em;
+	  text-transform: uppercase;
+	}
+
+  }
+
+  .next {
+	margin-left: auto;
+	text-align: right;
+  }
+}
+
+.post-pages-links {
+  display: flex;
+  list-style-type: none;
+
+  > a:not(:last-child) span, > span {
+	padding-right: $spacing-sm;
+  }
+}
+
+.post-password-form {
+  margin-bottom: $spacing-md;
+  text-align: center;
+
+  input[type=submit] {
+	height: 39px;
+	margin-left: $spacing-xs;
+  }
+
+  label {
+	margin-bottom: 0;
+  }
+
+  p {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+
+  label > input {
+	margin-left: $spacing-xs;
+  }
+}
+
+.nv-tags-list, .tagcloud {
+  a {
+	margin-left: $spacing-xs;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #fff;
+	padding: 10px;
+	border-radius: 4px;
+	background: var(--nv-primary-accent);
+	line-height: 1;
+	font-size: .75em !important;
+  }
+}
+
+.tagcloud {
+  display: flex;
+  flex-wrap: wrap;
+
+  a {
+	margin: 0 $spacing-xs $spacing-xs 0;
+	color: #fff !important;
+  }
+}

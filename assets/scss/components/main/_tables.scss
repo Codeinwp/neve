@@ -1,0 +1,42 @@
+@import "variables";
+// === Tables === //
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-width: 1px 0 0 1px;
+  margin: 0 0 1.5em;
+  width: 100%;
+}
+
+.wp-block-table {
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
+
+  figcaption {
+	margin: $spacing-sm auto;
+	text-align: center;
+  }
+
+  &.is-style-stripes {
+	border: 0;
+
+	tbody tr {
+	  &:nth-child(odd) {
+		background-color: var(--nv-light-bg);
+	  }
+	}
+  }
+}
+
+th, td {
+  padding: $spacing-md;
+}
+
+th {
+  padding-bottom: $spacing-xs;
+}
+
+td {
+  font-size: $text-sm;
+  border-bottom: $base-border;
+}

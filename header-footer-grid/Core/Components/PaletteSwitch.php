@@ -78,6 +78,7 @@ class PaletteSwitch extends Abstract_Component {
 				if ( neve_is_amp() ) {
 					return $output . " [class]=\"isDark ? 'neve-dark-theme' : 'neve-light-theme'\" class=\"neve-dark-theme\" ";
 				}
+
 				return $output;
 			}
 		);
@@ -101,35 +102,18 @@ class PaletteSwitch extends Abstract_Component {
 	 * @return string
 	 */
 	public function toggle_style() {
-		$css = '.toggle-palette a, .toggle-palette a:focus {
-			text-decoration: none;
-		  }
-		  .toggle-palette a span {
-			display: inline-flex;
-		  }
-		  .toggle-palette a span.icon {
-			vertical-align: middle;
-		  }
-		  .toggle-palette a:hover span.icon {
-		    text-decoration: none;
-		  }
-		  .toggle-palette a span.label {
-			display: inline-flex;
-			vertical-align: middle;
-			color: var(--nv-primary-accent);
-		  }
-		  .toggle-palette a svg {
-			color: var(--nv-primary-accent);
-		  }
-		  .toggle-palette a:hover {
-			text-decoration: none;
-		  }
-		  .toggle-palette a:hover svg {
-			color: var(--nv-secondary-accent);
-		  }
-		  .toggle-palette a:focus span.label {
-			text-decoration: underline;
-		  }';
+		$css = '.toggle-palette a {
+			display: flex;
+			align-items: center;
+		}
+		.toggle-palette .icon {
+			display: flex;
+		}
+		.toggle-palette .label {
+			font-size: 0.85em;
+			margin-left: 5px;
+		}';
+
 		return Dynamic_Css::minify_css( $css );
 	}
 
@@ -159,6 +143,7 @@ class PaletteSwitch extends Abstract_Component {
 				return true;
 			}
 		}
+
 		return false;
 	}
 
@@ -427,6 +412,7 @@ class PaletteSwitch extends Abstract_Component {
 		if ( in_array( $icon, array_keys( $available_icons ), true ) ) {
 			return $available_icons[ $icon ];
 		}
+
 		return $available_icons['contrast'];
 	}
 

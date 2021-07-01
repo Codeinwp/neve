@@ -1,0 +1,29 @@
+.editor-styles-wrapper {
+	&, > * {
+		background-color: var(--nv-site-bg);
+	}
+
+  .editor-post-title__input, .block-list-appender textarea {
+	&::placeholder {
+	  color: var(--nv-text-color);
+	  opacity: .5;
+	}
+  }
+  .block-list-appender textarea {
+	color: var(--nv-text-color);
+  }
+  @import "main/variables";
+  @import "main/mixins";
+  @import "gutenberg-editor/typography";
+  @import "gutenberg-editor/formatting";
+  @import "gutenberg-editor/layout";
+  @import "gutenberg-editor/media-queries";
+}
+
+.neve-meta-button-group {
+  .components-button-group {
+    .components-button.is-primary:not(.import) {
+      z-index: inherit;
+    }
+  }
+}

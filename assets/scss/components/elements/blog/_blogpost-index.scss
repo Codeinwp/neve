@@ -1,0 +1,84 @@
+@import "../../main/variables";
+
+.entry-title {
+  word-wrap: break-word;
+
+  a {
+	color: var(--nv-text-color);
+  }
+}
+
+.nv-post-thumbnail-wrap {
+  amp-img, img {
+	display: inline-block;
+	box-shadow: var(--boxShadow, none)
+  }
+}
+
+.posts-wrapper > article {
+  padding: 0 15px;
+  margin-bottom: $spacing-aired;
+  width: var(--postWidth);
+}
+
+.blog-entry-title {
+  word-wrap: break-word;
+}
+
+
+.article-content-col .content {
+  width: 100%;
+  border-bottom: 0 solid;
+  padding-bottom: $spacing-md;
+  display: flex;
+  flex-direction: column;
+
+  .button {
+	display: inline-block;
+	align-self: flex-start;
+  }
+}
+
+.bypostauthor {
+  display: block;
+}
+
+.posts-wrapper {
+  display: flex;
+  margin-bottom: $spacing-xl;
+}
+
+.excerpt-wrap > *:last-child {
+  margin-bottom: 0;
+}
+
+.layout-grid .content > * {
+  margin: $spacing-xs 0;
+
+  &:last-child {
+	margin-bottom: 0;
+  }
+
+  &:first-child {
+	margin-top: 0;
+  }
+}
+
+.nv-non-grid-article {
+  .non-grid-content {
+	display: flex;
+	flex-direction: column;
+
+	> * {
+	  margin: 0 0 $spacing-md;
+
+	  &:last-child {
+		margin-bottom: 0;
+	  }
+	}
+  }
+}
+
+article {
+  word-break: break-word;
+}
