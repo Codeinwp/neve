@@ -1,8 +1,14 @@
 .woocommerce {
   a.added_to_cart {
-	display: inline-block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: auto;
 	padding: var(--secondaryBtnPadding)
+  }
+
+  li a.added_to_cart {
+	display: inline-block;
   }
 
   .button.added {
@@ -31,6 +37,7 @@ a.added_to_cart,
 //<editor-fold [AJAX add-to-cart loading]>
 .woocommerce {
   .button.loading {
+	justify-content: center;
 	display: inline-flex !important;
 	padding-right: 15px !important;
 

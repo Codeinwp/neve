@@ -1390,7 +1390,7 @@ function neve_get_global_colors_default( $migrated = false ) {
 					'name'          => __( 'Dark Mode', 'neve' ),
 					'allowDeletion' => false,
 					'colors'        => [
-						'nv-primary-accent'   => '#005dff',
+						'nv-primary-accent'   => '#00c2ff',
 						'nv-secondary-accent' => '#00c2ff',
 						'nv-site-bg'          => '#121212',
 						'nv-light-bg'         => '#1a1a1a',
@@ -1472,7 +1472,7 @@ function neve_is_new_builder() {
  * @since 3.0.0
  */
 function neve_is_new_skin() {
-	return get_theme_mod( 'neve_new_skin', true );
+	return get_theme_mod( 'neve_new_skin', false );
 }
 
 /**
