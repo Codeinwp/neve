@@ -158,6 +158,27 @@ class Layout_Single_Post extends Base_Customizer {
 			)
 		);
 
+		$live_refresh_settings = [
+			'responsive' => true,
+			'prop'       => 'min-height',
+			'suffix'     => [
+				'mobile'  => 'px',
+				'desktop' => 'px',
+				'tablet'  => 'px',
+			],
+			'template' => '.nv-post-cover{ min-height: {{value}}; }',
+		];
+
+		if ( neve_is_new_skin() ) {
+			$live_refresh_settings = [
+				'cssVar' => [
+					'responsive' => true,
+					'vars'       => '--postCoverHeight',
+					'selector'   => 'body',
+					'suffix'     => 'px',
+				]
+			];
+		}
 		$this->add_control(
 			new Control(
 				'neve_post_cover_height',
@@ -186,24 +207,34 @@ class Layout_Single_Post extends Base_Customizer {
 					],
 					'priority'              => 5,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'responsive' => true,
-						'prop'       => 'min-height',
-						'suffix'     => [
-							'mobile'  => 'px',
-							'desktop' => 'px',
-							'tablet'  => 'px',
-						],
-						'template'   => '.nv-post-cover{
-							min-height: {{value}};
-						}',
-					],
+					'live_refresh_css_prop' => $live_refresh_settings,
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)
 		);
 
+		$live_refresh_settings = [
+			'responsive'  => true,
+			'directional' => true,
+			'template'    =>
+				'.nv-post-cover {
+							padding-top: {{value.top}};
+							padding-right: {{value.right}};
+							padding-bottom: {{value.bottom}};
+							padding-left: {{value.left}};
+						}',
+		];
+
+		if ( neve_is_new_skin() ) {
+			$live_refresh_settings = [
+				'cssVar'      => array(
+					'vars'       => '--postCoverPadding',
+					'selector'   => 'body',
+					'responsive' => true,
+				),
+			];
+		}
 		$this->add_control(
 			new Control(
 				'neve_post_cover_padding',
@@ -221,17 +252,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'default'               => $this->padding_default( 'cover' ),
 					'priority'              => 5,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'responsive'  => true,
-						'directional' => true,
-						'template'    =>
-							'.nv-post-cover {
-							padding-top: {{value.top}};
-							padding-right: {{value.right}};
-							padding-bottom: {{value.bottom}};
-							padding-left: {{value.left}};
-						}',
-					],
+					'live_refresh_css_prop' => $live_refresh_settings,
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'\Neve\Customizer\Controls\React\Spacing'
@@ -349,6 +370,22 @@ class Layout_Single_Post extends Base_Customizer {
 			)
 		);
 
+		$live_refresh_settings = [
+			'template' => '
+			.nv-post-cover .nv-overlay {
+			    background-color: {{value}};
+		    }',
+
+		];
+
+		if ( neve_is_new_skin() ) {
+			$live_refresh_settings = [
+				'cssVar'      => array(
+					'vars'       => '--postCoverOverlayBackground',
+					'selector'   => 'body',
+				),
+			];
+		}
 		$this->add_control(
 			new Control(
 				'neve_post_cover_background_color',
@@ -362,19 +399,30 @@ class Layout_Single_Post extends Base_Customizer {
 					'section'               => $this->section,
 					'priority'              => 5,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'template' => '
-							.nv-post-cover .nv-overlay {
-							    background-color: {{value}};
-						    }',
-
-					],
+					'live_refresh_css_prop' => $live_refresh_settings,
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\React\Color'
 			)
 		);
 
+		$live_refresh_settings = [
+			'template' => '
+					.nv-post-cover,
+					.nv-post-cover .nv-meta-list li,
+					.nv-post-cover .nv-meta-list a{
+					   color: {{value}};
+				    }',
+		];
+
+		if ( neve_is_new_skin() ) {
+			$live_refresh_settings = [
+				'cssVar' => [
+					'vars'       => '--postCoverColor',
+					'selector'   => 'body',
+				]
+			];
+		}
 		$this->add_control(
 			new Control(
 				'neve_post_cover_text_color',
@@ -388,20 +436,30 @@ class Layout_Single_Post extends Base_Customizer {
 					'section'               => $this->section,
 					'priority'              => 5,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'template' => '
-							.nv-post-cover,
-							.nv-post-cover .nv-meta-list li,
-							.nv-post-cover .nv-meta-list a{
-							   color: {{value}};
-						    }',
-					],
+					'live_refresh_css_prop' => $live_refresh_settings,
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\React\Color'
 			)
 		);
 
+		$live_refresh_settings = [
+			'responsive' => true,
+			'prop'       => 'opacity',
+			'template'   => '.nv-post-cover .nv-overlay {
+				opacity: {{value}};
+			}',
+		];
+
+		if ( neve_is_new_skin() ) {
+			$live_refresh_settings = [
+				'cssVar' => [
+					'responsive' => true,
+					'vars'       => '--postCoverOverlayOpacity',
+					'selector'   => 'body',
+				]
+			];
+		}
 		$this->add_control(
 			new Control(
 				'neve_post_cover_overlay_opacity',
@@ -426,13 +484,7 @@ class Layout_Single_Post extends Base_Customizer {
 					],
 					'priority'              => 5,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'responsive' => true,
-						'prop'       => 'opacity',
-						'template'   => '.nv-post-cover .nv-overlay {
-							opacity: {{value}};
-						}',
-					],
+					'live_refresh_css_prop' => $live_refresh_settings,
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
@@ -457,6 +509,21 @@ class Layout_Single_Post extends Base_Customizer {
 			)
 		);
 
+		$live_refresh_settings = [
+			'template' => '
+			.nv-post-cover .nv-overlay{
+			   mix-blend-mode: {{value}};
+		    }',
+		];
+
+		if ( neve_is_new_skin() ) {
+			$live_refresh_settings = [
+				'cssVar' => [
+					'vars'       => '--postCoverOverlayBlendMode',
+					'selector'   => 'body',
+				]
+			];
+		}
 		$this->add_control(
 			new Control(
 				'neve_post_cover_blend_mode',
@@ -486,13 +553,7 @@ class Layout_Single_Post extends Base_Customizer {
 						'luminosity'  => esc_html__( 'Luminosity', 'neve' ),
 					],
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'template' => '
-							.nv-post-cover .nv-overlay{
-							   mix-blend-mode: {{value}};
-						    }',
-
-					],
+					'live_refresh_css_prop' => $live_refresh_settings,
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				]
 			)
@@ -528,6 +589,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'padding_default'        => $this->padding_default( 'cover' ),
 				'background_default'     => 'var(--nv-light-bg)',
 				'boxed_selector'         => '.nv-title-meta-wrap.is-boxed',
+				'variables'              => ['padding' => '--postCoverBoxedTitlePadding', 'background' => '--postCoverBoxedTitleBackground' ],
 				'toggle_active_callback' => function() {
 					return get_theme_mod( 'neve_post_header_layout' ) === 'cover';
 				},
@@ -590,6 +652,32 @@ class Layout_Single_Post extends Base_Customizer {
 			)
 		);
 
+
+		$live_refresh_settings = [
+			'responsive' => true,
+			'prop'       => 'min-height',
+			'suffix'     => [
+				'mobile'  => 'px',
+				'desktop' => 'px',
+				'tablet'  => 'px',
+			],
+			'template'   => '
+			.nv-single-post-wrap > *:not(:last-child){
+				margin-bottom: {{value}};
+			}',
+		];
+
+		if ( neve_is_new_skin() ) {
+			$live_refresh_settings = [
+				'cssVar' => [
+					'responsive' => true,
+					'vars'       => '--postElementsSpacing',
+					'selector'   => 'body',
+					'suffix'     => 'px',
+				]
+			];
+		}
+
 		$this->add_control(
 			new Control(
 				'neve_single_post_elements_spacing',
@@ -605,9 +693,9 @@ class Layout_Single_Post extends Base_Customizer {
 						'max'        => 500,
 						'units'      => [ 'px' ],
 						'defaultVal' => [
-							'mobile'  => 20,
-							'tablet'  => 20,
-							'desktop' => 20,
+							'mobile'  => 60,
+							'tablet'  => 60,
+							'desktop' => 60,
 							'suffix'  => [
 								'mobile'  => 'px',
 								'tablet'  => 'px',
@@ -617,19 +705,7 @@ class Layout_Single_Post extends Base_Customizer {
 					],
 					'priority'              => 6,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'responsive' => true,
-						'prop'       => 'min-height',
-						'suffix'     => [
-							'mobile'  => 'px',
-							'desktop' => 'px',
-							'tablet'  => 'px',
-						],
-						'template'   => '
-						.nv-single-post-wrap > *:not(:last-child){
-							margin-bottom: {{value}};
-						}',
-					],
+					'live_refresh_css_prop' => $live_refresh_settings,
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)
@@ -825,6 +901,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'background_default'        => 'var(--nv-light-bg)',
 				'color_default'             => 'var(--nv-text-color)',
 				'boxed_selector'            => '.nv-comments-wrap.is-boxed',
+				'variables'                 => ['padding' => '--postCommentsBoxedPadding', 'background' => '--postCommentsBoxedBackground', 'color' => '--postCommentsBoxedColor' ],
 				'text_color_css_selector'   => '.nv-comments-wrap.is-boxed, .nv-comments-wrap.is-boxed a',
 				'border_color_css_selector' => '.nv-comments-wrap.is-boxed .nv-comment-article',
 				'toggle_active_callback'    => function() {
@@ -904,6 +981,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'background_default'      => 'var(--nv-light-bg)',
 				'color_default'           => 'var(--nv-text-color)',
 				'boxed_selector'          => '.comment-respond.is-boxed',
+				'variables'               => ['padding' => '--postCommentFormBoxedPadding', 'background' => '--postCommentFormBoxedBackground', 'color' => '--postCommentFormBoxedColor' ],
 				'text_color_css_selector' => '.comment-respond.is-boxed, .comment-respond.is-boxed a',
 				'toggle_active_callback'  => function() {
 					return $this->element_is_enabled( 'comments' );

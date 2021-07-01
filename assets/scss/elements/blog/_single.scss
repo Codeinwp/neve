@@ -100,3 +100,143 @@
     border: 1px solid var(--nv-primary-accent);
   }
 }
+
+
+
+
+
+
+
+
+
+
+.nv-post-cover {
+  margin-bottom: $spacing-sm;
+  display: flex;
+  position: relative;
+
+  &.has-image{
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+  }
+
+  .nv-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+  }
+
+  .nv-title-meta-wrap {
+	display: inline-flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	z-index: 1;
+	&.reversed{
+	  flex-direction: column-reverse;
+	}
+  }
+
+  .container{
+	z-index: 1;
+	display: flex;
+  }
+}
+
+.nv-comments-wrap.is-boxed {
+  .nv-comments-title-wrap {
+	margin: 0;
+  }
+  .nv-comments-list {
+	padding: 0;
+  }
+}
+
+.mobile-top {
+  align-self: flex-start;
+}
+
+.mobile-middle {
+  align-self: center;
+}
+
+.mobile-bottom {
+  align-self: flex-end;
+}
+
+.nv-post-cover.mobile-left,
+.nv-post-cover .container.mobile-left {
+  justify-content: flex-start;
+}
+
+.nv-post-cover.mobile-center,
+.nv-post-cover .container.mobile-center {
+  justify-content: center;
+}
+
+.nv-post-cover.mobile-right,
+.nv-post-cover .container.mobile-right {
+  justify-content: right;
+}
+
+@mixin cover-layout--tablet() {
+  .tablet-top {
+	align-self: flex-start;
+  }
+
+  .tablet-middle {
+	align-self: center;
+  }
+
+  .tablet-bottom {
+	align-self: flex-end;
+  }
+
+  .nv-post-cover.tablet-left,
+  .nv-post-cover .container.tablet-left {
+	justify-content: flex-start;
+  }
+
+  .nv-post-cover.tablet-center,
+  .nv-post-cover .container.tablet-center {
+	justify-content: center;
+  }
+
+  .nv-post-cover.tablet-right,
+  .nv-post-cover .container.tablet-right {
+	justify-content: flex-end
+  }
+}
+
+@mixin cover-layout--laptop() {
+  .desktop-top {
+	align-self: flex-start;
+  }
+
+  .desktop-middle {
+	align-self: center;
+  }
+
+  .desktop-bottom {
+	align-self: flex-end;
+  }
+
+  .nv-post-cover.desktop-left,
+  .nv-post-cover .container.desktop-left {
+	justify-content: flex-start;
+  }
+
+  .nv-post-cover.desktop-center,
+  .nv-post-cover .container.desktop-center {
+	justify-content: center;
+  }
+
+  .nv-post-cover.desktop-right,
+  .nv-post-cover .container.desktop-right {
+	justify-content: flex-end
+  }
+}

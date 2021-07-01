@@ -5,6 +5,7 @@
 
 @media (min-width: #{$tablet}) {
   @include comments--tablet();
+  @include cover-layout--tablet();
 }
 
 @media (min-width: #{$laptop}) {
@@ -15,6 +16,7 @@
   @include sidebar--laptop();
   @include hfg-alignments--laptop();
   @include gutenberg--laptop();
+  @include cover-layout--laptop();
 }
 
 @media (min-width: #{$desktop}) {
