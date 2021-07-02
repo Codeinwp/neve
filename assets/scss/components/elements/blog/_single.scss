@@ -32,6 +32,11 @@
   }
 }
 
+.single .nv-meta-list .meta.author .photo{
+  width: var(--singleMetaAuthorAvatarSize);
+  height: var(--singleMetaAuthorAvatarSize);
+}
+
 .nv-page-title-wrap {
   margin-top: $spacing-aired;
 }

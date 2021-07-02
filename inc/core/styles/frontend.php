@@ -951,24 +951,39 @@ class Frontend extends Generator {
 			return;
 		}
 
-		$meta_key = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
-		if ( is_singular( 'post' ) ) {
-			$meta_key = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
-		}
-
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.nv-meta-list .meta.author img.photo',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_HEIGHT => [
-					Dynamic_Selector::META_KEY           => $meta_key,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-				Config::CSS_PROP_WIDTH  => [
-					Dynamic_Selector::META_KEY           => $meta_key,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
+		$rules = [
+			'--blogMetaAuthorAvatarSize' => [
+				Dynamic_Selector::META_KEY           => Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 20, "tablet": 20, "desktop": 20 }',
+			],
+			'--singleMetaAuthorAvatarSize' => [
+				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_DEFAULT       => Mods::get( Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE, '{ "mobile": 20, "tablet": 20, "desktop": 20 }')
 			],
 		];
+
+		$this->_subscribers[] = [
+			'selectors' => ':root',
+			'rules'     => $rules,
+		];
+
+////		$this->_subscribers[] = [
+////			Dynamic_Selector::KEY_SELECTOR => '.nv-meta-list .meta.author img.photo',
+////			Dynamic_Selector::KEY_RULES    => [
+////				Config::CSS_PROP_HEIGHT => [
+////					Dynamic_Selector::META_KEY           => $meta_key,
+////					Dynamic_Selector::META_IS_RESPONSIVE => true,
+////				],
+////				Config::CSS_PROP_WIDTH  => [
+////					Dynamic_Selector::META_KEY           => $meta_key,
+////					Dynamic_Selector::META_IS_RESPONSIVE => true,
+////				],
+////			],
+////		];
 	}
 
 	/**

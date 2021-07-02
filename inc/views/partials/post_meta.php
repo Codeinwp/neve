@@ -61,21 +61,30 @@ class Post_Meta extends Base_View {
 	 */
 	public function add_dynamic_gravatar( $args_array ) {
 
-		$meta_key = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
-		if ( is_singular( 'post' ) ) {
-			$meta_key = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
-		}
-
-		$avatar_size = Mods::to_json( $meta_key );
-
-		if ( ! isset( $args_array['size'] ) ) {
-			return $args_array;
-		}
-		if ( ! is_array( $avatar_size ) ) {
-			return $args_array;
-		}
-
-		$args_array['size'] = max( $avatar_size );
+//		$meta_key = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
+//		$default  = wp_json_encode(
+//			array(
+//				'desktop' => 20,
+//				'tablet'  => 20,
+//				'mobile'  => 20,
+//			)
+//		);
+//		if ( is_singular( 'post' ) ) {
+//			$default = Mods::get( $meta_key, $default );
+//			$meta_key = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
+//		}
+//
+//		$avatar_size = Mods::get( $meta_key, $default );
+//		var_dump( $avatar_size );
+//
+//		if ( ! isset( $args_array['size'] ) ) {
+//			return $args_array;
+//		}
+//		if ( ! is_array( $avatar_size ) ) {
+//			return $args_array;
+//		}
+//
+//		$args_array['size'] = max( $avatar_size );
 
 		return $args_array;
 	}

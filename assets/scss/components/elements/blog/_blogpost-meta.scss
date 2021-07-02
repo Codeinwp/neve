@@ -19,6 +19,8 @@
 
   .meta.author {
 	.photo {
+	  width: var(--blogMetaAuthorAvatarSize);
+	  height: var(--blogMetaAuthorAvatarSize);
 	  border-radius: 50%;
 	  transform: translateY(30%);
 	  margin-right: 3px;
