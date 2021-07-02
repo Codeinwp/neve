@@ -166,17 +166,17 @@ class Layout_Single_Post extends Base_Customizer {
 				'desktop' => 'px',
 				'tablet'  => 'px',
 			],
-			'template' => '.nv-post-cover{ min-height: {{value}}; }',
+			'template'   => '.nv-post-cover{ min-height: {{value}}; }',
 		];
 
 		if ( neve_is_new_skin() ) {
 			$live_refresh_settings = [
 				'cssVar' => [
 					'responsive' => true,
-					'vars'       => '--postCoverHeight',
-					'selector'   => 'body',
+					'vars'       => '--height',
+					'selector'   => '.nv-post-cover',
 					'suffix'     => 'px',
-				]
+				],
 			];
 		}
 		$this->add_control(
@@ -228,9 +228,9 @@ class Layout_Single_Post extends Base_Customizer {
 
 		if ( neve_is_new_skin() ) {
 			$live_refresh_settings = [
-				'cssVar'      => array(
-					'vars'       => '--postCoverPadding',
-					'selector'   => 'body',
+				'cssVar' => array(
+					'vars'       => '--padding',
+					'selector'   => '.nv-post-cover',
 					'responsive' => true,
 				),
 			];
@@ -380,9 +380,9 @@ class Layout_Single_Post extends Base_Customizer {
 
 		if ( neve_is_new_skin() ) {
 			$live_refresh_settings = [
-				'cssVar'      => array(
-					'vars'       => '--postCoverOverlayBackground',
-					'selector'   => 'body',
+				'cssVar' => array(
+					'vars'     => '--background',
+					'selector' => '.nv-overlay',
 				),
 			];
 		}
@@ -418,9 +418,9 @@ class Layout_Single_Post extends Base_Customizer {
 		if ( neve_is_new_skin() ) {
 			$live_refresh_settings = [
 				'cssVar' => [
-					'vars'       => '--postCoverColor',
-					'selector'   => 'body',
-				]
+					'vars'     => '--color',
+					'selector' => '.nv-post-cover',
+				],
 			];
 		}
 		$this->add_control(
@@ -455,9 +455,9 @@ class Layout_Single_Post extends Base_Customizer {
 			$live_refresh_settings = [
 				'cssVar' => [
 					'responsive' => true,
-					'vars'       => '--postCoverOverlayOpacity',
-					'selector'   => 'body',
-				]
+					'vars'       => '--opacity',
+					'selector'   => '.nv-overlay',
+				],
 			];
 		}
 		$this->add_control(
@@ -519,9 +519,9 @@ class Layout_Single_Post extends Base_Customizer {
 		if ( neve_is_new_skin() ) {
 			$live_refresh_settings = [
 				'cssVar' => [
-					'vars'       => '--postCoverOverlayBlendMode',
-					'selector'   => 'body',
-				]
+					'vars'     => '--blendMode',
+					'selector' => '.nv-overlay',
+				],
 			];
 		}
 		$this->add_control(
@@ -589,13 +589,16 @@ class Layout_Single_Post extends Base_Customizer {
 				'padding_default'        => $this->padding_default( 'cover' ),
 				'background_default'     => 'var(--nv-light-bg)',
 				'boxed_selector'         => '.nv-title-meta-wrap.is-boxed',
-				'variables'              => ['padding' => '--postCoverBoxedTitlePadding', 'background' => '--postCoverBoxedTitleBackground' ],
+				'cssVar'                 => [
+					'padding'    => '--boxedTitlePadding',
+					'background' => '--boxedTitleBackground',
+					'selector'   => '.nv-post-cover',
+				],
 				'toggle_active_callback' => function() {
 					return get_theme_mod( 'neve_post_header_layout' ) === 'cover';
 				},
 				'active_callback'        => function() {
 					return get_theme_mod( 'neve_post_header_layout' ) === 'cover' && get_theme_mod( 'neve_post_cover_title_boxed_layout', false );
-
 				},
 			]
 		);
@@ -671,10 +674,10 @@ class Layout_Single_Post extends Base_Customizer {
 			$live_refresh_settings = [
 				'cssVar' => [
 					'responsive' => true,
-					'vars'       => '--postElementsSpacing',
-					'selector'   => 'body',
+					'vars'       => '--marginBottom',
+					'selector'   => '.nv-single-post-wrap',
 					'suffix'     => 'px',
-				]
+				],
 			];
 		}
 
@@ -788,16 +791,7 @@ class Layout_Single_Post extends Base_Customizer {
 			)
 		);
 
-		$avatar_size_default = get_theme_mod(
-			'neve_author_avatar_size',
-			wp_json_encode(
-				[
-					'desktop' => 20,
-					'tablet'  => 20,
-					'mobile'  => 20,
-				]
-			)
-		);
+		$avatar_size_default = neve_is_new_skin() ? false : get_theme_mod( 'neve_author_avatar_size', '{ "mobile": 20, "tablet": 20, "desktop": 20 }' );
 		$this->add_control(
 			new Control(
 				'neve_single_post_avatar_size',
@@ -901,7 +895,17 @@ class Layout_Single_Post extends Base_Customizer {
 				'background_default'        => 'var(--nv-light-bg)',
 				'color_default'             => 'var(--nv-text-color)',
 				'boxed_selector'            => '.nv-comments-wrap.is-boxed',
-				'variables'                 => ['padding' => '--postCommentsBoxedPadding', 'background' => '--postCommentsBoxedBackground', 'color' => '--postCommentsBoxedColor' ],
+				'cssVar'                    => [
+					'padding'    => '--boxedCommentsPadding',
+					'background' => '--boxedCommentsBackground',
+					'color'      => '--boxedCommentsColor',
+					'selector'   => '.nv-comments-wrap',
+				],
+				'variables'                 => [
+					'padding'    => '--postCommentsBoxedPadding',
+					'background' => '--postCommentsBoxedBackground',
+					'color'      => '--postCommentsBoxedColor',
+				],
 				'text_color_css_selector'   => '.nv-comments-wrap.is-boxed, .nv-comments-wrap.is-boxed a',
 				'border_color_css_selector' => '.nv-comments-wrap.is-boxed .nv-comment-article',
 				'toggle_active_callback'    => function() {
@@ -981,7 +985,12 @@ class Layout_Single_Post extends Base_Customizer {
 				'background_default'      => 'var(--nv-light-bg)',
 				'color_default'           => 'var(--nv-text-color)',
 				'boxed_selector'          => '.comment-respond.is-boxed',
-				'variables'               => ['padding' => '--postCommentFormBoxedPadding', 'background' => '--postCommentFormBoxedBackground', 'color' => '--postCommentFormBoxedColor' ],
+				'cssVar'                  => [
+					'padding'    => '--boxedCommentFormPadding',
+					'background' => '--boxedCommentFormBackground',
+					'color'      => '--boxedCommentFormColor',
+					'selector'   => '.comment-respond',
+				],
 				'text_color_css_selector' => '.comment-respond.is-boxed, .comment-respond.is-boxed a',
 				'toggle_active_callback'  => function() {
 					return $this->element_is_enabled( 'comments' );

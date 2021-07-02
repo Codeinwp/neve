@@ -352,7 +352,7 @@ abstract class Base_Customizer {
 			)
 		);
 
-		$live_refresh_settings = [
+		$padding_live_refresh_settings = [
 			'responsive'  => true,
 			'directional' => true,
 			'template'    =>
@@ -364,14 +364,49 @@ abstract class Base_Customizer {
 						}',
 		];
 
-		if ( neve_is_new_skin() ) {
-			$live_refresh_settings = [
-				'cssVar'      => array(
-					'vars'       => $settings['variables']['padding'],
-					'selector'   => 'body',
+		$background_live_refresh_settings = [
+			'template' =>
+				$settings['boxed_selector'] . '{
+				   background-color: {{value}};
+			    }',
+
+		];
+
+		$has_text_color = isset( $settings['has_text_color'] ) ? $settings['has_text_color'] : true;
+		if ( $has_text_color ) {
+			$template = $settings['text_color_css_selector'] . '{ color: {{value}}; }';
+			if ( array_key_exists( 'border_color_css_selector', $settings ) ) {
+				$template .= $settings['border_color_css_selector'] . '{ border-color: {{value}}; }';
+			}
+			$color_live_refresh_settings = [
+				'template' => $template,
+			];
+		}
+
+		if ( neve_is_new_skin() && array_key_exists( 'cssVar', $settings ) ) {
+			$padding_live_refresh_settings = [
+				'cssVar' => array(
+					'vars'       => $settings['cssVar']['padding'],
+					'selector'   => $settings['cssVar']['selector'],
 					'responsive' => true,
 				),
 			];
+
+			$background_live_refresh_settings = [
+				'cssVar' => array(
+					'vars'     => $settings['cssVar']['background'],
+					'selector' => $settings['cssVar']['selector'],
+				),
+			];
+
+			if ( $has_text_color ) {
+				$color_live_refresh_settings = [
+					'cssVar' => array(
+						'vars'     => $settings['cssVar']['color'],
+						'selector' => $settings['cssVar']['selector'],
+					),
+				];
+			}
 		}
 
 		$this->add_control(
@@ -391,29 +426,12 @@ abstract class Base_Customizer {
 					'default'               => array_key_exists( 'padding_default', $settings ) ? $settings['padding_default'] : false,
 					'priority'              => $settings['priority'],
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => $live_refresh_settings,
+					'live_refresh_css_prop' => $padding_live_refresh_settings,
 					'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
 				],
 				'\Neve\Customizer\Controls\React\Spacing'
 			)
 		);
-
-		$live_refresh_settings = [
-			'template' =>
-				$settings['boxed_selector'] . '{
-				   background-color: {{value}};
-			    }',
-
-		];
-
-		if ( neve_is_new_skin() ) {
-			$live_refresh_settings = [
-				'cssVar'      => array(
-					'vars'       => $settings['variables']['background'],
-					'selector'   => 'body',
-				),
-			];
-		}
 
 		$this->add_control(
 			new Control(
@@ -428,32 +446,14 @@ abstract class Base_Customizer {
 					'section'               => $settings['section'],
 					'priority'              => $settings['priority'],
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => $live_refresh_settings,
+					'live_refresh_css_prop' => $background_live_refresh_settings,
 					'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
 				],
 				'Neve\Customizer\Controls\React\Color'
 			)
 		);
 
-		$has_text_color = isset( $settings['has_text_color'] ) ? $settings['has_text_color'] : true;
-
 		if ( $has_text_color ) {
-			$template = $settings['text_color_css_selector'] . '{ color: {{value}}; }';
-			if ( array_key_exists( 'border_color_css_selector', $settings ) ) {
-				$template .= $settings['border_color_css_selector'] . '{ border-color: {{value}}; }';
-			}
-			$live_refresh_settings = [
-				'template' => $template,
-			];
-
-			if ( neve_is_new_skin() ) {
-				$live_refresh_settings = [
-					'cssVar'      => array(
-						'vars'       => $settings['variables']['color'],
-						'selector'   => 'body',
-					),
-				];
-			}
 			$this->add_control(
 				new Control(
 					'neve_' . $id . '_boxed_text_color',
@@ -467,7 +467,7 @@ abstract class Base_Customizer {
 						'section'               => $settings['section'],
 						'priority'              => $settings['priority'],
 						'live_refresh_selector' => true,
-						'live_refresh_css_prop' => $live_refresh_settings,
+						'live_refresh_css_prop' => $color_live_refresh_settings,
 						'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
 					],
 					'Neve\Customizer\Controls\React\Color'

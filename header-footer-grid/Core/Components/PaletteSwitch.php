@@ -25,13 +25,13 @@ use Neve\Core\Styles\Dynamic_Selector;
  */
 class PaletteSwitch extends Abstract_Component {
 
-	const COMPONENT_ID = 'header_palette_switch';
-	const DARK_PALETTE_ID = 'dark_palette';
-	const LIGHT_PALETTE_ID = 'light_palette_description';
-	const TOGGLE_ICON_ID = 'toggle_icon';
-	const PLACEHOLDER_ID = 'placeholder';
-	const AUTO_ADJUST = 'auto_adjust_color';
-	const SIZE_ID = 'icon_size';
+	const COMPONENT_ID      = 'header_palette_switch';
+	const DARK_PALETTE_ID   = 'dark_palette';
+	const LIGHT_PALETTE_ID  = 'light_palette_description';
+	const TOGGLE_ICON_ID    = 'toggle_icon';
+	const PLACEHOLDER_ID    = 'placeholder';
+	const AUTO_ADJUST       = 'auto_adjust_color';
+	const SIZE_ID           = 'icon_size';
 	const DEFAULT_ICON_SIZE = 16;
 
 	/**
@@ -160,7 +160,7 @@ class PaletteSwitch extends Abstract_Component {
 			return '';
 		}
 
-		$css           .= ' ';
+		$css          .= ' ';
 		$default_light = 'base';
 		$default_dark  = 'darkMode';
 

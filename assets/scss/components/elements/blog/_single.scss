@@ -21,20 +21,15 @@
   .comments-area,
   .nv-thumb-wrap {
 	&:not( :last-child ){
-	  margin-bottom: var(--postElementsSpacing, $spacing-aired);
+	  margin-bottom: var(--marginBottom, $spacing-aired);
 	}
   }
 
   .entry-header {
 	&:not( :last-child ){
-	  margin-bottom: var(--postElementsSpacing);
+	  margin-bottom: var(--marginBottom);
 	}
   }
-}
-
-.single .nv-meta-list .meta.author .photo{
-  width: var(--singleMetaAuthorAvatarSize);
-  height: var(--singleMetaAuthorAvatarSize);
 }
 
 .nv-page-title-wrap {
@@ -138,9 +133,9 @@
 }
 
 .nv-post-cover {
-  min-height: var(--postCoverHeight);
-  color: var(--postCoverColor, var(--nv-text-dark-bg));
-  padding: var(--postCoverPadding);
+  min-height: var(--height);
+  color: var(--color, var(--nv-text-dark-bg));
+  padding: var(--padding);
   display: flex;
   position: relative;
 
@@ -148,19 +143,6 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-  }
-
-  .nv-overlay {
-	background-color: var(--postCoverOverlayBackground,var(--nv-dark-bg));
-	mix-blend-mode: var(--postCoverOverlayBlendMode,normal);
-	opacity: var(--postCoverOverlayOpacity);
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
   }
 
   .nv-title-meta-wrap {
@@ -172,14 +154,14 @@
 	  flex-direction: column-reverse;
 	}
 	&.is-boxed{
-	  padding: var(--postCoverBoxedTitlePadding);
-	  background-color: var(--postCoverBoxedTitleBackground);
+	  padding: var(--boxedTitlePadding);
+	  background-color: var(--boxedTitleBackground, var(--nv-light-bg));
 	}
   }
 
   .nv-meta-list{
 	li, a {
-	  color: var(--postCoverColor, var(--nv-text-dark-bg) );
+	  color: var(--color, var(--nv-text-dark-bg) );
 	}
   }
 
@@ -190,10 +172,23 @@
 
 }
 
+.nv-overlay {
+  background-color: var(--background,var(--nv-dark-bg));
+  mix-blend-mode: var(--blendMode,normal);
+  opacity: var(--opacity);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
 .nv-comments-wrap.is-boxed {
-  padding: var(--postCommentsBoxedPadding);
-  background: var(--postCommentsBoxedBackground,var(--nv-light-bg));
-  color: var(--postCommentsBoxedColor, var(--nv-text-color));
+  padding: var(--boxedCommentsPadding);
+  background: var(--boxedCommentsBackground,var(--nv-light-bg));
+  color: var(--boxedCommentsColor, var(--nv-text-color));
 
   .nv-comments-title-wrap {
 	margin: 0;
@@ -204,23 +199,22 @@
   }
 
   a {
-	color: var(--postCommentsBoxedColor, var(--nv-text-color));
+	color: var(--boxedCommentsColor, var(--nv-text-color));
   }
 
   .nv-comments-list .comment{
-	border-color: var(--postCommentsBoxedColor, var(--nv-text-color)) !important;
+	border-color: var(--boxedCommentsColor, var(--nv-text-color)) !important;
   }
 }
 
 .comment-respond.is-boxed {
-  padding: var(--postCommentFormBoxedPadding);
-  background: var(--postCommentFormBoxedBackground,var(--nv-light-bg));
-  color: var(--postCommentFormBoxedColor, var(--nv-text-color));
+  padding: var(--boxedCommentFormPadding);
+  background: var(--boxedCommentFormBackground,var(--nv-light-bg));
+  color: var(--boxedCommentFormColor, var(--nv-text-color));
   a {
-	color: var(--postCommentFormBoxedColor, var(--nv-text-color));
+	color: var(--boxedCommentFormColor, var(--nv-text-color));
   }
 }
-
 
 .mobile-top {
   align-self: flex-start;

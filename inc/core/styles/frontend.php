@@ -952,38 +952,31 @@ class Frontend extends Generator {
 		}
 
 		$rules = [
-			'--blogMetaAuthorAvatarSize' => [
+			'--avatarSize' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
 				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 20, "tablet": 20, "desktop": 20 }',
 			],
-			'--singleMetaAuthorAvatarSize' => [
+		];
+
+		$rules_single = [
+			'--avatarSize' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
-				Dynamic_Selector::META_DEFAULT       => Mods::get( Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE, '{ "mobile": 20, "tablet": 20, "desktop": 20 }')
 			],
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => ':root',
+			'selectors' => '.nv-meta-list',
 			'rules'     => $rules,
 		];
 
-////		$this->_subscribers[] = [
-////			Dynamic_Selector::KEY_SELECTOR => '.nv-meta-list .meta.author img.photo',
-////			Dynamic_Selector::KEY_RULES    => [
-////				Config::CSS_PROP_HEIGHT => [
-////					Dynamic_Selector::META_KEY           => $meta_key,
-////					Dynamic_Selector::META_IS_RESPONSIVE => true,
-////				],
-////				Config::CSS_PROP_WIDTH  => [
-////					Dynamic_Selector::META_KEY           => $meta_key,
-////					Dynamic_Selector::META_IS_RESPONSIVE => true,
-////				],
-////			],
-////		];
+		$this->_subscribers[] = [
+			'selectors' => '.single .nv-meta-list',
+			'rules'     => $rules_single,
+		];
 	}
 
 	/**
@@ -1135,85 +1128,109 @@ class Frontend extends Generator {
 			return;
 		}
 
-		$rules = [
-			'--postCoverHeight' => [
+		$cover_rules = [
+			'--height'               => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_HEIGHT,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_AS_JSON       => true,
 				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
 				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "400", "tablet": "400", "desktop": "400" }',
 			],
-			'--postCoverColor' => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_TEXT_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
+			'--color'                => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_TEXT_COLOR,
 			],
-			'--postCoverPadding' => [
+			'--padding'              => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-			'--postCoverOverlayBackground' => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BACKGROUND_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
-			],
-			'--postCoverOverlayBlendMode' => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BLEND_MODE,
-				Dynamic_Selector::META_DEFAULT => 'normal',
-			],
-			'--postCoverOverlayOpacity'  => [
-				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_OVERLAY_OPACITY,
-				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 0.5, "tablet": 0.5, "desktop": 0.5 }',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-			],
-			'--postCoverBoxedTitlePadding' => [
+			'--boxedTitlePadding'    => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_BOXED_TITLE_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-			'--postCoverBoxedTitleBackground' => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)'
+			'--boxedTitleBackground' => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
 			],
-			'--postElementsSpacing' => [
-				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_ELEMENTS_SPACING,
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.nv-post-cover',
+			'rules'     => $cover_rules,
+		];
+
+		$overlay_rules = [
+			'--background' => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BACKGROUND_COLOR,
+			],
+			'--blendMode'  => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BLEND_MODE,
+			],
+			'--opacity'    => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_OVERLAY_OPACITY,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 0.5, "tablet": 0.5, "desktop": 0.5 }',
 			],
-			'--postCommentsBoxedPadding' => [
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.nv-overlay',
+			'rules'     => $overlay_rules,
+		];
+
+		$boxed_comments_rules = [
+			'--boxedCommentsPadding'    => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-			'--postCommentsBoxedBackground' => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_BACKGROUND_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+			'--boxedCommentsBackground' => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_BACKGROUND_COLOR,
 			],
-			'--postCommentsBoxedColor' => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_TEXT_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
+			'--boxedCommentsColor'      => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_TEXT_COLOR,
 			],
-			'--postCommentFormBoxedPadding' => [
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.nv-comments-wrap',
+			'rules'     => $boxed_comments_rules,
+		];
+
+		$boxed_comment_form_rules = [
+			'--boxedCommentFormPadding'    => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_FORM_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-			'--postCommentFormBoxedBackground' => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_FORM_BACKGROUND_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+			'--boxedCommentFormBackground' => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_FORM_BACKGROUND_COLOR,
 			],
-			'--postCommentFormBoxedColor' => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_FORM_TEXT_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
+			'--boxedCommentFormColor'      => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_FORM_TEXT_COLOR,
 			],
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => ':root',
-			'rules'     => $rules,
+			'selectors' => '.comment-respond',
+			'rules'     => $boxed_comment_form_rules,
+		];
+
+		$spacing_rules = [
+			'--marginBottom' => [
+				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_ELEMENTS_SPACING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+			],
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.nv-single-post-wrap',
+			'rules'     => $spacing_rules,
 		];
 	}
 

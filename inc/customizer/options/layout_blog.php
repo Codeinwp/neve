@@ -454,13 +454,7 @@ class Layout_Blog extends Base_Customizer {
 				'neve_author_avatar_size',
 				array(
 					'sanitize_callback' => 'neve_sanitize_range_value',
-					'default'           => wp_json_encode(
-						array(
-							'desktop' => 20,
-							'tablet'  => 20,
-							'mobile'  => 20,
-						)
-					),
+					'default'           => '{ "mobile": 20, "tablet": 20, "desktop": 20 }',
 				),
 				array(
 					'label'           => esc_html__( 'Avatar Size', 'neve' ),
