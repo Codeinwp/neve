@@ -1,10 +1,10 @@
 @import "variables";
-// === Tables === //
+
 table {
   border-collapse: separate;
   border-spacing: 0;
   border-width: 1px 0 0 1px;
-  margin: 0 0 1.5em;
+  margin: 0 0 $spacing-md;
   width: 100%;
 }
 

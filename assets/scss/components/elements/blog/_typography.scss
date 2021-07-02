@@ -1,19 +1,16 @@
-// === Blog Archive Post Title === //
-.blog-entry-title {
-  font-size: var(--fontSize, var(--h3FontSize));
-  font-weight: var(--fontWeight, var(--h3FontWeight));
-  line-height: var(--lineHeight, var(--h3LineHeight));
-  letter-spacing: var(--letterSpacing, var(--h3LetterSpacing));
-  text-transform: var(--textTransform, var(--h3TextTransform));
-}
-
 // === Single Post Title === //
 .title.entry-title {
-  font-size: var(--fontSize, var(--h1FontSize));
-  font-weight: var(--fontWeight, var(--h1FontWeight));
-  line-height: var(--lineHeight, var(--h1LineHeight));
-  letter-spacing: var(--letterSpacing, var(--h1LetterSpacing));
-  text-transform: var(--textTransform, var(--h1TextTransform));
+  @extend %nv-has-h1-typography
+}
+
+// === Blog Archive Post Title === //
+.blog-entry-title {
+  @extend %nv-has-h3-typography
+}
+
+// === Comment reply title === //
+.comment-reply-title {
+  @extend %nv-has-h4-typography
 }
 
 // === Excerpt === //
@@ -24,13 +21,4 @@
 // === Meta === //
 .nv-meta-list li {
   @extend %nv-has-typography
-}
-
-// === Comment reply title === //
-.comment-reply-title {
-  font-size: var(--fontSize, var(--h4FontSize));
-  font-weight: var(--fontWeight, var(--h4FontWeight));
-  line-height: var(--lineHeight, var(--h4LineHeight));
-  letter-spacing: var(--letterSpacing, var(--h4LetterSpacing));
-  text-transform: var(--textTransform, var(--h4TextTransform));
 }

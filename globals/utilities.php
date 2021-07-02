@@ -1375,13 +1375,13 @@ function neve_get_global_colors_default( $migrated = false ) {
 					'name'          => __( 'Base', 'neve' ),
 					'allowDeletion' => false,
 					'colors'        => [
-						'nv-primary-accent'   => '#0466cb',
-						'nv-secondary-accent' => '#0071ea',
-						'nv-site-bg'          => '#FFFFFF',
+						'nv-primary-accent'   => '#2f5aae',
+						'nv-secondary-accent' => '#2f5aae',
+						'nv-site-bg'          => '#ffffff',
 						'nv-light-bg'         => '#f4f5f7',
-						'nv-dark-bg'          => '#191D1F',
+						'nv-dark-bg'          => '#121212',
 						'nv-text-color'       => '#272626',
-						'nv-text-dark-bg'     => '#FFFFFF',
+						'nv-text-dark-bg'     => '#ffffff',
 						'nv-c-1'              => '#9463ae',
 						'nv-c-2'              => '#be574b',
 					],
@@ -1390,13 +1390,13 @@ function neve_get_global_colors_default( $migrated = false ) {
 					'name'          => __( 'Dark Mode', 'neve' ),
 					'allowDeletion' => false,
 					'colors'        => [
-						'nv-primary-accent'   => '#0071ea',
-						'nv-secondary-accent' => '#2997ff',
+						'nv-primary-accent'   => '#00c2ff',
+						'nv-secondary-accent' => '#00c2ff',
 						'nv-site-bg'          => '#121212',
-						'nv-light-bg'         => '#171c1f',
-						'nv-dark-bg'          => '#1A1A1A',
-						'nv-text-color'       => '#f5f5f7',
-						'nv-text-dark-bg'     => '#FFFFFF',
+						'nv-light-bg'         => '#1a1a1a',
+						'nv-dark-bg'          => '#000000',
+						'nv-text-color'       => '#ffffff',
+						'nv-text-dark-bg'     => '#ffffff',
 						'nv-c-1'              => '#198754',
 						'nv-c-2'              => '#be574b',
 					],
@@ -1472,7 +1472,7 @@ function neve_is_new_builder() {
  * @since 3.0.0
  */
 function neve_is_new_skin() {
-	return get_theme_mod( 'neve_new_skin', true );
+	return get_theme_mod( 'neve_new_skin', false );
 }
 
 /**

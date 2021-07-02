@@ -25,13 +25,13 @@ use Neve\Core\Styles\Dynamic_Selector;
  */
 class PaletteSwitch extends Abstract_Component {
 
-	const COMPONENT_ID      = 'header_palette_switch';
-	const DARK_PALETTE_ID   = 'dark_palette';
-	const LIGHT_PALETTE_ID  = 'light_palette_description';
-	const TOGGLE_ICON_ID    = 'toggle_icon';
-	const PLACEHOLDER_ID    = 'placeholder';
-	const AUTO_ADJUST       = 'auto_adjust_color';
-	const SIZE_ID           = 'icon_size';
+	const COMPONENT_ID = 'header_palette_switch';
+	const DARK_PALETTE_ID = 'dark_palette';
+	const LIGHT_PALETTE_ID = 'light_palette_description';
+	const TOGGLE_ICON_ID = 'toggle_icon';
+	const PLACEHOLDER_ID = 'placeholder';
+	const AUTO_ADJUST = 'auto_adjust_color';
+	const SIZE_ID = 'icon_size';
 	const DEFAULT_ICON_SIZE = 16;
 
 	/**
@@ -128,6 +128,7 @@ class PaletteSwitch extends Abstract_Component {
 		if ( $auto_adjust ) {
 			$default_state = 'window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"';
 		}
+
 		return '"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let n=' . $default_state . ';if(localStorage.getItem(t))"dark"===localStorage.getItem(t)&&(n="dark");else if(!window.matchMedia)return!1;"dark"===n&&document.documentElement.setAttribute(e,"dark")}r();const a=document.getElementById("neve_body");function n(n){if(n.srcElement&&(n.srcElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.parentElement.matches("a.palette-icon-wrapper"))){if(n.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}}a.addEventListener("click",n,!1);';
 	}
 
@@ -159,7 +160,7 @@ class PaletteSwitch extends Abstract_Component {
 			return '';
 		}
 
-		$css          .= ' ';
+		$css           .= ' ';
 		$default_light = 'base';
 		$default_dark  = 'darkMode';
 
@@ -307,7 +308,7 @@ class PaletteSwitch extends Abstract_Component {
 				'default'               => $default_size_values,
 				'options'               => [
 					'input_attrs' => [
-						'step'           => 4,
+						'step'           => 1,
 						'min'            => 8,
 						'max'            => 120,
 						'defaultVal'     => $default_size_values,
