@@ -24,7 +24,7 @@ final class Main {
 	public function init() {
 		add_filter( 'debug_information', [ $this, 'neve_add_debug_info' ] );
 
-		add_filter( 'site_status_tests', [ $this, 'neve_add_connectivity_test' ] );
+		add_filter( 'site_status_tests', [ $this, 'neve_add_tests' ] );
 	}
 
 	/**
@@ -35,12 +35,24 @@ final class Main {
 	 * @return array
 	 */
 	public function neve_add_debug_info( $debug_info ) {
+		$custom_customizer_css = wp_get_custom_css();
+
 		$debug_info['neve'] = array(
 			'label'  => __( 'Neve', 'neve' ),
 			'fields' => array(
-				'api' => array(
+				'api'            => array(
 					'label'   => __( 'API connectivity', 'neve' ),
 					'value'   => $this->test_api_connectivity() ? __( 'YES', 'neve' ) : __( 'NO', 'neve' ) . ' ' . get_transient( 'neve_troubleshoot_api_reason' ),
+					'private' => false,
+				),
+				'child'          => array(
+					'label'   => __( 'Child theme files', 'neve' ),
+					'value'   => is_child_theme() ? $this->list_files() : __( 'NO', 'neve' ),
+					'private' => false,
+				),
+				'customizer_css' => array(
+					'label'   => __( 'Customizer Custom CSS', 'neve' ),
+					'value'   => empty( $custom_customizer_css ) ? 'NO' : $custom_customizer_css,
 					'private' => false,
 				),
 			),
@@ -50,13 +62,22 @@ final class Main {
 	}
 
 	/**
-	 * Register API test for the Status Page
+	 * List active theme files
+	 *
+	 * @return string
+	 */
+	public function list_files() {
+		return implode( ",\n\r", list_files( get_stylesheet_directory(), 2 ) );
+	}
+
+	/**
+	 * Register tests for the Status Page
 	 *
 	 * @param array $tests List of tests.
 	 *
 	 * @return array
 	 */
-	public function neve_add_connectivity_test( $tests ) {
+	public function neve_add_tests( $tests ) {
 		$tests['direct']['neve_api_test'] = array(
 			'label' => __( 'Neve API connectivity', 'neve' ),
 			'test'  => [ $this, 'neve_api_test' ],
