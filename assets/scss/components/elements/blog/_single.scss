@@ -16,12 +16,19 @@
   }
 
   .nv-content-wrap,
-  .nv-tags-list {
-	margin-bottom: var(--postElementsSpacing, $spacing-aired);
+  .nv-tags-list,
+  .nv-post-navigation,
+  .comments-area,
+  .nv-thumb-wrap {
+	&:not( :last-child ){
+	  margin-bottom: var(--postElementsSpacing, $spacing-aired);
+	}
   }
 
-  .nv-post-navigation {
-	margin-bottom: var(--postElementsSpacing);
+  .entry-header {
+	&:not( :last-child ){
+	  margin-bottom: var(--postElementsSpacing);
+	}
   }
 }
 
@@ -31,10 +38,6 @@
 
 .entry-header .title, .page .title, .nv-page-title {
   margin-bottom: $spacing-xl;
-}
-
-.nv-thumb-wrap {
-  margin-bottom: $spacing-aired;
 }
 
 .attachment-neve-blog {

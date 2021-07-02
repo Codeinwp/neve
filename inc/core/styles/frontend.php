@@ -946,6 +946,36 @@ class Frontend extends Generator {
 	 * Add css for blog meta.
 	 */
 	public function setup_blog_meta() {
+		if ( ! neve_is_new_skin() ) {
+			$this->setup_blog_meta_legacy();
+			return;
+		}
+
+		$meta_key = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
+		if ( is_singular( 'post' ) ) {
+			$meta_key = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
+		}
+
+		$this->_subscribers[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.nv-meta-list .meta.author img.photo',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_HEIGHT => [
+					Dynamic_Selector::META_KEY           => $meta_key,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				Config::CSS_PROP_WIDTH  => [
+					Dynamic_Selector::META_KEY           => $meta_key,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+			],
+		];
+	}
+
+	/**
+	 * Add css for blog meta.
+	 */
+	public function setup_blog_meta_legacy() {
+
 		$meta_key = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
 		if ( is_singular( 'post' ) ) {
 			$meta_key = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
