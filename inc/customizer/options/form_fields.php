@@ -49,8 +49,10 @@ class Form_Fields extends Base_Customizer {
 			new Section(
 				$this->section_id,
 				[
-					'priority' => 45,
-					'title'    => esc_html__( 'Form Fields', 'neve' ),
+					'priority'           => 45,
+					'description_hidden' => true,
+					'description'        => __( 'Customize the general design of the form elements across the site.', 'neve' ) . ' ' . neve_external_link( 'https://docs.themeisle.com/article/1341-neve-form-fields', 'Learn More' ),
+					'title'              => esc_html__( 'Form Fields', 'neve' ),
 				]
 			)
 		);
@@ -584,7 +586,7 @@ class Form_Fields extends Base_Customizer {
 			new Control(
 				'neve_form_button_type',
 				[
-					'sanitize_callback' => [ $this, 'sanitize_button_type' ],
+					'sanitize_callback' => 'neve_sanitize_button_type',
 					'default'           => 'primary',
 				],
 				[
@@ -605,20 +607,5 @@ class Form_Fields extends Base_Customizer {
 				'Neve\Customizer\Controls\React\Inline_Select'
 			)
 		);
-	}
-
-	/**
-	 * Sanitize Button Type option.
-	 *
-	 * @param string $value the control value.
-	 *
-	 * @return string
-	 */
-	public function sanitize_button_type( $value ) {
-		if ( ! in_array( $value, [ 'primary', 'secondary' ], true ) ) {
-			return 'primary';
-		}
-
-		return $value;
 	}
 }

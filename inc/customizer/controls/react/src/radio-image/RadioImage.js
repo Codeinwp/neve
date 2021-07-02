@@ -1,7 +1,35 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import { ExternalLink } from '@wordpress/components';
 
-const RadioImage = ({ choices, onClick, value, label }) => {
+const RadioImage = ({ choices, onClick, value, label, documentation }) => {
+	const renderDocumentation = () => {
+		if (typeof window.NeveProReactCustomize !== 'undefined') {
+			const { whiteLabel } = window.NeveProReactCustomize;
+
+			if (whiteLabel) {
+				return null;
+			}
+		}
+
+		if (!documentation) {
+			return null;
+		}
+
+		if (documentation.link) {
+			return null;
+		}
+
+		return (
+			<ExternalLink
+				href={documentation.link}
+				style={{ float: 'right', marginTop: '5px' }}
+			>
+				{documentation.label}
+			</ExternalLink>
+		);
+	};
+
 	return (
 		<>
 			{label && (
@@ -36,6 +64,8 @@ const RadioImage = ({ choices, onClick, value, label }) => {
 					);
 				})}
 			</div>
+
+			{renderDocumentation()}
 		</>
 	);
 };

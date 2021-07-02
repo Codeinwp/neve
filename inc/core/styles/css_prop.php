@@ -21,6 +21,36 @@ class Css_Prop {
 	}
 
 	/**
+	 * Get suffix from controls that store data in the following format:
+	 * { desktop: value, tablet: value, mobile: value, deskotp-unit: px, tablet-unit: px, mobile-unit: px }
+	 *
+	 * @param array $meta Subscribers meta data.
+	 */
+	public static function get_unit_responsive( $meta, $device ) {
+		$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
+		$suffix    = 'px';
+		if ( isset( $all_value[ $device . '-unit' ] ) ) {
+			$suffix = $all_value[ $device . '-unit' ];
+		} elseif ( isset( $all_value['unit'] ) ) {
+			$suffix = $all_value['unit'];
+		}
+
+		return $suffix;
+	}
+
+	/**
+	 * Get suffix from controls that store data in the following format:
+	 * { desktop: value, tablet: value, mobile: value, suffix : { deskop: px, tablet: px, mobile: px} }
+	 *
+	 * @param array $meta Subscribers meta data.
+	 */
+	public static function get_suffix_responsive( $meta, $device ) {
+		$default_value = isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null;
+		$all_value = isset( $meta[ Dynamic_Selector::META_AS_JSON ] ) ? Mods::to_json( $meta[ 'key' ], $default_value ) : Mods::get( $meta[ 'key' ], $default_value );
+		return isset( $all_value[ 'suffix' ][ $device ] ) ? $all_value[ 'suffix' ][ $device ] : (isset( $all_value[ 'suffix' ] ) && is_string( $all_value[ 'suffix' ] ) ? $all_value[ 'suffix' ] : 'px');;
+	}
+
+	/**
 	 * Transform rule meta into CSS rule string.
 	 *
 	 * @param string $css_prop CSS Prop.
@@ -72,10 +102,9 @@ class Css_Prop {
 			case Config::CSS_PROP_LEFT:
 			case Config::CSS_PROP_RIGHT:
 				$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'px';
-				if ( $suffix === 'responsive_suffix' ) {
-					$all_value = Mods::get( $meta[ 'key' ], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
 
-					$suffix = isset( $all_value[ 'suffix' ] ) ? $all_value[ 'suffix' ][ $device ] : (isset( $all_value[ 'suffix' ] ) ? $all_value[ 'suffix' ] : 'px');;
+				if ( $suffix === 'responsive_suffix' ) {
+					$suffix = self::get_suffix_responsive( $meta, $device );
 				}
 
 				return sprintf( "%s: %s%s;",
@@ -100,14 +129,9 @@ class Css_Prop {
 				}
 
 				if ( $suffix === 'responsive_unit' ) {
-					$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
-					$suffix    = 'px';
-					if ( isset( $all_value[ $device . '-unit' ] ) ) {
-						$suffix = $all_value[ $device . '-unit' ];
-					} elseif ( isset( $all_value['unit'] ) ) {
-						$suffix = $all_value['unit'];
-					}
+					$suffix = self::get_unit_responsive( $meta, $device );
 				}
+
 				$non_empty_values = array_filter( $value, 'strlen' );
 				if ( count( $non_empty_values ) === 4 ) {
 					return sprintf( "%s:%s%s %s%s %s%s %s%s;",
@@ -192,6 +216,9 @@ class Css_Prop {
 				break;
 			case Config::CSS_PROP_TEXT_TRANSFORM:
 			case Config::CSS_PROP_BOX_SHADOW:
+			case Config::CSS_PROP_MIX_BLEND_MODE:
+			case Config::CSS_PROP_OPACITY:
+			case Config::CSS_PROP_GRID_TEMPLATE_COLS:
 				return sprintf( ' %s: %s; ', $css_prop, $value );
 				break;
 		}

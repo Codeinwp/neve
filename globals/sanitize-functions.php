@@ -206,3 +206,132 @@ function neve_sanitize_typography_control( $value ) {
 
 	return $value;
 }
+
+/**
+ * Sanitize alignment.
+ *
+ * @param array $input alignment responsive array.
+ *
+ * @return array
+ */
+function neve_sanitize_alignment( $input ) {
+	$default = [
+		'mobile'  => 'left',
+		'tablet'  => 'left',
+		'desktop' => 'left',
+	];
+	$allowed = [ 'left', 'center', 'right', 'justify' ];
+
+	if ( ! is_array( $input ) ) {
+		return $default;
+	}
+
+	foreach ( $input as $device => $alignment ) {
+		if ( ! in_array( $alignment, $allowed ) ) {
+			$input[ $device ] = 'left';
+		}
+	}
+
+	return $input;
+}
+
+/**
+ * Sanitize position.
+ *
+ * @param array $input alignment responsive array.
+ *
+ * @return array
+ */
+function neve_sanitize_position( $input ) {
+	$default = [
+		'mobile'  => 'middle',
+		'tablet'  => 'middle',
+		'desktop' => 'middle',
+	];
+	$allowed = [ 'top', 'middle', 'bottom' ];
+
+	if ( ! is_array( $input ) ) {
+		return $default;
+	}
+
+	foreach ( $input as $device => $alignment ) {
+		if ( ! in_array( $alignment, $allowed ) ) {
+			$input[ $device ] = 'middle';
+		}
+	}
+
+	return $input;
+}
+
+/**
+ * Sanitize meta order control.
+ */
+function neve_sanitize_meta_ordering( $value ) {
+	$allowed = array(
+		'author',
+		'category',
+		'date',
+		'comments',
+		'reading',
+	);
+
+	if ( empty( $value ) ) {
+		return $allowed;
+	}
+
+	$decoded = json_decode( $value, true );
+
+	foreach ( $decoded as $val ) {
+		if ( ! in_array( $val, $allowed, true ) ) {
+			return $allowed;
+		}
+	}
+
+	return $value;
+}
+
+/**
+ * Sanitize blend mode option.
+ *
+ * @param string $input Control input.
+ *
+ * @return string
+ */
+function neve_sanitize_blend_mode( $input ) {
+	$blend_mode_options = [ 'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'saturation', 'color', 'difference', 'exclusion', 'hue', 'luminosity' ];
+	if ( ! in_array( $input, $blend_mode_options, true ) ) {
+		return 'normal';
+	}
+	return $input;
+}
+
+/**
+ * Sanitize the container layout value
+ *
+ * @param string $value value from the control.
+ *
+ * @return bool
+ */
+function neve_sanitize_container_layout( $value ) {
+	$allowed_values = array( 'contained', 'full-width' );
+	if ( ! in_array( $value, $allowed_values, true ) ) {
+		return 'contained';
+	}
+
+	return esc_html( $value );
+}
+
+/**
+ * Sanitize Button Type option.
+ *
+ * @param string $value the control value.
+ *
+ * @return string
+ */
+function neve_sanitize_button_type( $value ) {
+	if ( ! in_array( $value, [ 'primary', 'secondary' ], true ) ) {
+		return 'primary';
+	}
+
+	return $value;
+}

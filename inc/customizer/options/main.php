@@ -10,6 +10,7 @@
 
 namespace Neve\Customizer\Options;
 
+use Neve\Customizer\Controls\React\Instructions_Section;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Panel;
@@ -26,7 +27,6 @@ class Main extends Base_Customizer {
 	public function add_controls() {
 		$this->register_types();
 		$this->add_main_panels();
-		$this->add_ui();
 		$this->change_controls();
 	}
 
@@ -54,6 +54,7 @@ class Main extends Base_Customizer {
 			),
 			'neve_typography' => array(
 				'priority' => 35,
+
 				'title'    => __( 'Typography', 'neve' ),
 			),
 		);
@@ -69,22 +70,35 @@ class Main extends Base_Customizer {
 				)
 			);
 		}
-	}
-
-	/**
-	 * Adds UI control.
-	 */
-	private function add_ui() {
-		$this->add_control(
-			new Control(
-				'neve_ui_control',
-				[
-					'sanitize_callback' => 'sanitize_text_field',
-				],
-				[
-					'section' => 'static_front_page',
-					'type'    => 'neve_ui_control',
-				]
+		$this->wpc->add_section(
+			new Instructions_Section(
+				$this->wpc,
+				'neve_typography_quick_links',
+				array(
+					'priority' => -100,
+					'panel'    => 'neve_typography',
+					'type'     => 'hfg_instructions',
+					'options'  => array(
+						'quickLinks' => array(
+							'neve_body_font_family'     => array(
+								'label' => esc_html__( 'Change main font', 'neve' ),
+								'icon'  => 'dashicons-editor-spellcheck',
+							),
+							'neve_headings_font_family' => array(
+								'label' => esc_html__( 'Change headings font', 'neve' ),
+								'icon'  => 'dashicons-heading',
+							),
+							'neve_h1_accordion_wrap'    => array(
+								'label' => esc_html__( 'Change H1 font size', 'neve' ),
+								'icon'  => 'dashicons-info-outline',
+							),
+							'neve_archive_typography_post_title' => array(
+								'label' => esc_html__( 'Change archive font size', 'neve' ),
+								'icon'  => 'dashicons-sticky',
+							),
+						),
+					),
+				)
 			)
 		);
 	}

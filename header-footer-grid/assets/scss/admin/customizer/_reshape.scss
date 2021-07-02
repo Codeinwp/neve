@@ -32,37 +32,6 @@ ul[id^="sub-accordion-panel-hfg"] > li.accordion-section:not(.panel-meta) {
   display: none !important;
 }
 
-.hfg-instructions-section {
-  display: list-item !important;
-
-  video {
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-
-  .quick-links {
-    font-size: 14px;
-    font-weight: 500;
-
-    a {
-      text-decoration: none;
-    }
-  }
-
-  .quick-links-wrap {
-    margin: 10px 0;
-    display: block;
-    background: #fff;
-    border-radius: 3px;
-    padding: 10px 20px;
-
-    span {
-      margin-right: 10px;
-    }
-  }
-}
-
 .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar .hfg--cb-row .hfg--row-inner .hfg--cb-items.hfg--sidebar-items {
   height: calc(100% - 30px);
 }

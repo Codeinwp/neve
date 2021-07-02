@@ -17,6 +17,7 @@ hr {
 ul {
   list-style: none;
 }
+
 ul, ol {
   padding: 0 !important;
   margin: 0;
@@ -52,6 +53,7 @@ input[type=date], input[type=datetime-local], input[type=datetime], input[type=e
   text-align: center;
   transition: color .1s ease-in;
 }
+
 button, input, select, textarea {
   box-sizing: border-box;
   font-family: inherit;
@@ -70,14 +72,56 @@ button, input, select, textarea {
 .mock-customize {
   display: flex;
   min-height: 100%;
+  position: relative;
 }
 
-.sidebar {
+.customizer-sidebar {
   width: 300px;
   background-color: #eeeeee;
   padding: 15px 15px 0;
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
+  position: relative;
+  box-sizing: border-box;
+  transition: all .18s ease;
+  @media screen and (min-width: 1667px) {
+	width: 18%;
+
+	&.collapsed {
+	  left: -18%;
+
+	  .collapse-sidebar {
+		left: calc(100% + 23px) !important;
+	  }
+	}
+  }
+
+  &.collapsed {
+	left: -332px;
+
+	.collapse-sidebar {
+	  left: calc(100% + 45px);
+
+	  svg {
+		transform: rotate(180deg);
+	  }
+	}
+  }
+
+  .collapse-sidebar {
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+	border-radius: 100%;
+	background-color: #0b78fb;
+	color: #fff;
+	padding: 3px !important;
+	width: 20px;
+	height: 20px;
+	min-width: unset;
+	z-index: 100;
+  }
+
 }
 
 img {
@@ -103,7 +147,7 @@ pre {
   box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
   padding: 15px 20px;
   position: absolute;
-  left: 400px;
+  left: 450px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -116,3 +160,4 @@ pre {
 	margin: 0 0 20px;
   }
 }
+

@@ -1,0 +1,69 @@
+.items-popover {
+  box-shadow: 0 3px 30px rgba(25, 30, 35, .1);
+  border-radius: 4px;
+  z-index: 100000;
+
+  .popover-header {
+	display: flex;
+	padding: 5px 10px;
+	position: relative;
+	border-bottom: 1px solid #e1e4e7;
+
+	input {
+	  appearance: none;
+	  width: 100%;
+	  height: 35px;
+	  border: 1px solid #8d96a0;
+	  outline: none;
+	  box-shadow: none;
+	  font-size: 13px;
+	  margin: 16px;
+	  padding: 11px 16px 11px 30px;
+	  border-radius: 4px;
+	}
+
+	> svg {
+	  position: absolute;
+	  fill: #8d96a0;
+	  left: 30px;
+	  top: 50%;
+	  transform: translateY(-50%);
+	}
+  }
+
+  .items-popover-content {
+	width: 400px;
+	padding: 10px;
+	overflow-y: auto;
+	max-height: 375px;
+	height: 375px;
+	background-color: #fff;
+  }
+
+  .items-popover-list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 10px;
+  }
+
+  .popover-item {
+	width: 100%;
+	height: auto;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	padding: 7px;
+	color: #545d66;
+	line-height: 1.4em;
+	font-size: 13px;
+	&:hover {
+	  background: #f3f3f5;
+	}
+	.dashicon {
+	  margin: 0 0 10px;
+	}
+  }
+}

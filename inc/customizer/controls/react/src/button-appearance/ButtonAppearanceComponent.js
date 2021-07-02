@@ -62,7 +62,7 @@ const ButtonAppearanceComponent = ({ control }) => {
 	const { label, no_hover } = control.params;
 
 	useEffect(() => {
-		global.addEventListener('neve-changed-customizer-value', (e) => {
+		document.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) return false;
 			if (e.detail.id !== control.id) return false;
 			// Migrate border-radius and border-width

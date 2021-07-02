@@ -111,36 +111,55 @@ add_action( 'init', 'neve_self_heal_mods', 1 );
  * @return array Migration schema.
  */
 function neve_hfg_footer_settings() {
+
+	$empty_row = [
+		'left'    => [],
+		'c-left'  => [],
+		'center'  => [],
+		'c-right' => [],
+		'right'   => [],
+	];
+
 	$builder  = [
 		'desktop' => [
-			'top'    => [],
-			'bottom' => [],
+			'top'    => $empty_row,
+			'main'   => $empty_row,
+			'bottom' => $empty_row,
 		],
 	];
 	$sidebars = (int) get_theme_mod( 'neve_footer_widget_columns', '0' );
 
-	$sidebars_names = array(
+	$components                                        = [];
+	$builder['desktop']['bottom']['c-left'][]          = [
+		'id' => 'footer_copyright',
+	];
+	$components['footer_copyright']['component_align'] = [
+		'mobile'  => 'center',
+		'tablet'  => 'center',
+		'desktop' => 'center',
+	];
+	$sidebars_names                                    = array(
 		'footer-one-widgets',
 		'footer-two-widgets',
 		'footer-three-widgets',
 		'footer-four-widgets',
 	);
 	for ( $i = 0; $i < $sidebars; $i ++ ) {
-		$builder['desktop']['top'][ $sidebars_names[ $i ] ] = [
+		$builder['desktop']['top'][ $sidebars_names[ $i ] ][] = [
 			'id'    => $sidebars_names[ $i ],
 			'width' => 12 / $sidebars,
 			'x'     => $i * ( 12 / $sidebars ),
 		];
 	}
-	$components   = [];
+
 	$content_type = get_theme_mod( 'neve_footer_content_type', 'text' );
 	if ( $content_type === 'text' ) {
-		$builder['desktop']['bottom']['footer_copyright']  = [
+		$builder['desktop']['bottom']['footer_copyright'][] = [
 			'id'    => 'footer_copyright',
 			'width' => 12,
 			'x'     => 0,
 		];
-		$components['footer_copyright']['component_align'] = 'center';
+		$components['footer_copyright']['component_align']  = 'center';
 	}
 
 	$components['hfg_footer_layout_bottom']['skin'] = 'dark-mode';
@@ -163,9 +182,64 @@ function neve_hfg_footer_settings() {
 /**
  * Define migration logic for header.
  *
- * @return array Migratoin schema.
+ * @return array Migration schema.
  */
 function neve_hfg_header_settings() {
+	$empty_row = [
+		'left'    => [],
+		'c-left'  => [],
+		'center'  => [],
+		'c-right' => [],
+		'right'   => [],
+	];
+	$builder   = [
+		'desktop' => [
+			'top'    => $empty_row,
+			'main'   => $empty_row,
+			'bottom' => $empty_row,
+		],
+		'mobile'  => [
+			'top'     => $empty_row,
+			'main'    => $empty_row,
+			'bottom'  => $empty_row,
+			'sidebar' => [],
+		],
+	];
+
+	$builder['desktop']['main']['left'][]  = [
+		'id'       => 'logo',
+		'settings' => [
+			'align' => 'left',
+		],
+	];
+	$builder['desktop']['main']['right'][] = [
+		'id'       => 'primary-menu',
+		'settings' => [
+			'align' => 'right',
+		],
+	];
+	$builder['mobile']['main']['left'][]   = [
+		'id' => 'logo',
+	];
+	$builder['mobile']['main']['right'][]  = [
+		'id' => 'nav-icon',
+	];
+	$builder['mobile']['sidebar'][]        = [
+		'id' => 'primary-menu',
+	];
+
+	return [
+		'builder'    => $builder,
+		'components' => [],
+	];
+}
+
+/**
+ * Define migration logic for header.
+ *
+ * @return array Migration schema.
+ */
+function neve_hfg_legacy_header_settings() {
 	$builder    = [
 		'desktop' => [
 			'top'    => [],
@@ -301,11 +375,99 @@ function neve_hfg_header_settings() {
 	];
 }
 
+/**
+ * Define migration logic for footer.
+ *
+ * @return array Migration schema.
+ */
+function neve_hfg_legacy_footer_settings() {
+	$builder  = [
+		'desktop' => [
+			'top'    => [],
+			'bottom' => [],
+		],
+	];
+	$sidebars = (int) get_theme_mod( 'neve_footer_widget_columns', '0' );
+
+	$sidebars_names = array(
+		'footer-one-widgets',
+		'footer-two-widgets',
+		'footer-three-widgets',
+		'footer-four-widgets',
+	);
+	for ( $i = 0; $i < $sidebars; $i ++ ) {
+		$builder['desktop']['top'][ $sidebars_names[ $i ] ] = [
+			'id'    => $sidebars_names[ $i ],
+			'width' => 12 / $sidebars,
+			'x'     => $i * ( 12 / $sidebars ),
+		];
+	}
+	$components   = [];
+	$content_type = get_theme_mod( 'neve_footer_content_type', 'text' );
+	if ( $content_type === 'text' ) {
+		$builder['desktop']['bottom']['footer_copyright']  = [
+			'id'    => 'footer_copyright',
+			'width' => 12,
+			'x'     => 0,
+		];
+		$components['footer_copyright']['component_align'] = 'center';
+	}
+
+	$components['hfg_footer_layout_bottom']['skin'] = 'dark-mode';
+
+	if ( $content_type === 'footer_menu' ) {
+		$builder['desktop']['bottom']['footer-menu']  = [
+			'id'    => 'footer-menu',
+			'width' => 12,
+			'x'     => 0,
+		];
+		$components['footer-menu']['component_align'] = 'center';
+	}
+
+	return [
+		'builder'    => $builder,
+		'components' => $components,
+	];
+}
+
+
 add_filter(
 	'hfg_settings_schema',
 	function ( $old_schema ) {
-		$header     = neve_hfg_header_settings();
-		$footer     = neve_hfg_footer_settings();
+		$is_new_builder = neve_is_new_builder();
+		$header         = $is_new_builder ? neve_hfg_header_settings() : neve_hfg_legacy_header_settings();
+		$footer         = $is_new_builder ? neve_hfg_footer_settings() : neve_hfg_legacy_footer_settings();
+
+		$empty_row   = [
+			'left'    => [],
+			'c-left'  => [],
+			'center'  => [],
+			'c-right' => [],
+			'right'   => [],
+		];
+		$page_header = $is_new_builder ?
+			[
+				'desktop' => [
+					'top'    => $empty_row,
+					'bottom' => $empty_row,
+				],
+				'mobile'  => [
+					'top'    => $empty_row,
+					'bottom' => $empty_row,
+				],
+			]
+			:
+			[
+				'desktop' => [
+					'top'    => [],
+					'bottom' => [],
+				],
+				'mobile'  => [
+					'top'    => [],
+					'bottom' => [],
+				],
+			];
+
 		$components = array_merge( $header['components'], $footer['components'] );
 		$defaults   = [];
 		foreach ( $components as $id => $settings ) {
@@ -314,15 +476,28 @@ add_filter(
 			}
 		}
 
+		if ( $is_new_builder ) {
+			return array_merge(
+				[
+					'hfg_header_layout_v2'      => wp_json_encode( $header['builder'] ),
+					'hfg_footer_layout_v2'      => wp_json_encode( $footer['builder'] ),
+					'hfg_page_header_layout_v2' => wp_json_encode( $page_header ),
+				],
+				$defaults
+			);
+		};
+
 		return array_merge(
 			[
-				'hfg_header_layout' => wp_json_encode( $header['builder'] ),
-				'hfg_footer_layout' => wp_json_encode( $footer['builder'] ),
+				'hfg_header_layout'      => wp_json_encode( $header['builder'] ),
+				'hfg_footer_layout'      => wp_json_encode( $footer['builder'] ),
+				'hfg_page_header_layout' => wp_json_encode( $page_header ),
 			],
 			$defaults
 		);
 
-	}
+	},
+	101
 );
 
 
