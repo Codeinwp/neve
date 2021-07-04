@@ -89,4 +89,10 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
       - run: ./bin/envs/init.sh theme-check latest yes
-
+  phpstan:
+    name: PHPStan
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout/v2
+    - uses: php-actions/composer@v5
+    - uses: php-actions/phpstan@v2
