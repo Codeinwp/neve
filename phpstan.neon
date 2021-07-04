@@ -1,0 +1,11 @@
+parameters:
+    level: 5
+    paths:
+        - functions.php
+        - globals
+        - inc
+        - header-footer-grid/Core
+    bootstrapFiles:
+        - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
