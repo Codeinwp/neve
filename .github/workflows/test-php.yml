@@ -102,3 +102,5 @@ jobs:
           args: --ignore-platform-reqs
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v2
+        with:
+          memory_limit: 256M
