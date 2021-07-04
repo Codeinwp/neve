@@ -93,6 +93,12 @@ jobs:
     name: PHPStan
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: php-actions/composer@v5
-      - uses: php-actions/phpstan@v2
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: php-actions/composer@v5
+        with:
+          dev: yes
+          args: --ignore-platform-reqs
+      - name: PHPStan Static Analysis
+        uses: php-actions/phpstan@v2
