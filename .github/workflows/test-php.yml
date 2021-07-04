@@ -103,4 +103,4 @@ jobs:
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v2
         with:
-          memory_limit: 256M
+          memory_limit: 512M
