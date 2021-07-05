@@ -7,5 +7,7 @@ parameters:
         - header-footer-grid/Core
     bootstrapFiles:
         - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+    dynamicConstantNames:
+        - NEVE_DEBUG
 includes:
     - vendor/szepeviktor/phpstan-wordpress/extension.neon
