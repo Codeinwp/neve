@@ -67,7 +67,7 @@ class Masonry extends Base_View {
 	/**
 	 * Check if masonry is enabled.
 	 *
-	 * @return string
+	 * @return bool
 	 */
 	public function is_masonry_enabled() {
 		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
@@ -77,7 +77,7 @@ class Masonry extends Base_View {
 			return false;
 		}
 
-		return get_theme_mod( 'neve_enable_masonry', false );
+		return (bool) get_theme_mod( 'neve_enable_masonry', false );
 	}
 
 	/**
