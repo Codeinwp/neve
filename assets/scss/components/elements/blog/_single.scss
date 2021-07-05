@@ -134,7 +134,6 @@
 
 .nv-post-cover {
   min-height: var(--height);
-  color: var(--color, var(--nv-text-dark-bg));
   padding: var(--padding);
   display: flex;
   position: relative;
@@ -146,16 +145,13 @@
   }
 
   .nv-title-meta-wrap {
+	color: var(--color, var(--nv-text-dark-bg));
 	display: inline-flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	z-index: 1;
 	&.reversed{
 	  flex-direction: column-reverse;
-	}
-	&.is-boxed{
-	  padding: var(--boxPadding);
-	  background: var(--boxBg, var(--nv-light-bg));
 	}
   }
 
@@ -172,6 +168,41 @@
 
 }
 
+.nv-is-boxed{
+  padding: var(--padding);
+  background: var(--background,var(--nv-light-bg));
+  color: var(--color, var(--nv-text-color));
+
+  &.nv-title-meta-wrap {
+	padding: var(--padding);
+	background: var(--background, var(--nv-light-bg));
+  }
+
+  &.nv-comments-wrap {
+	.nv-comments-title-wrap {
+	  margin: 0;
+	}
+
+	.nv-comments-list {
+	  padding: 0;
+	}
+
+	a {
+	  color: var(--color, var(--nv-text-color));
+	}
+
+	.nv-comments-list .comment{
+	  border-color: var(--color, var(--nv-text-color)) !important;
+	}
+  }
+
+  &.comment-respond {
+	a {
+	  color: var(--color, var(--nv-text-color));
+	}
+  }
+}
+
 .nv-overlay {
   background-color: var(--background,var(--nv-dark-bg));
   mix-blend-mode: var(--blendMode,normal);
@@ -185,36 +216,9 @@
   bottom: 0;
 }
 
-.nv-comments-wrap.is-boxed {
-  padding: var(--padding);
-  background: var(--bgColor,var(--nv-light-bg));
-  color: var(--color, var(--nv-text-color));
 
-  .nv-comments-title-wrap {
-	margin: 0;
-  }
 
-  .nv-comments-list {
-	padding: 0;
-  }
 
-  a {
-	color: var(--color, var(--nv-text-color));
-  }
-
-  .nv-comments-list .comment{
-	border-color: var(--color, var(--nv-text-color)) !important;
-  }
-}
-
-.comment-respond.is-boxed {
-  padding: var(--boxedCommentFormPadding);
-  background: var(--boxedCommentFormBackground,var(--nv-light-bg));
-  color: var(--boxedCommentFormColor, var(--nv-text-color));
-  a {
-	color: var(--boxedCommentFormColor, var(--nv-text-color));
-  }
-}
 
 .mobile-top {
   align-self: flex-start;

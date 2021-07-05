@@ -339,7 +339,7 @@ abstract class Base_Customizer {
 				'neve_' . $id . '_boxed_layout',
 				[
 					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => false,
+					'default'           => array_key_exists( 'is_boxed_default', $settings ) ? $settings['is_boxed_default'] : false,
 				],
 				[
 					'label'           => esc_html__( 'Boxed layout', 'neve' ),
@@ -383,27 +383,27 @@ abstract class Base_Customizer {
 			];
 		}
 
-		if ( neve_is_new_skin() && array_key_exists( 'cssVar', $settings ) ) {
+		if ( neve_is_new_skin() ) {
 			$padding_live_refresh_settings = [
 				'cssVar' => array(
-					'vars'       => $settings['cssVar']['padding'],
-					'selector'   => $settings['cssVar']['selector'],
+					'vars'       => '--padding',
+					'selector'   => $settings['boxed_selector'],
 					'responsive' => true,
 				),
 			];
 
 			$background_live_refresh_settings = [
 				'cssVar' => array(
-					'vars'     => $settings['cssVar']['background'],
-					'selector' => $settings['cssVar']['selector'],
+					'vars'     => '--background',
+					'selector' => $settings['boxed_selector'],
 				),
 			];
 
 			if ( $has_text_color ) {
 				$color_live_refresh_settings = [
 					'cssVar' => array(
-						'vars'     => $settings['cssVar']['color'],
-						'selector' => $settings['cssVar']['selector'],
+						'vars'     => '--color',
+						'selector' => $settings['boxed_selector'],
 					),
 				];
 			}

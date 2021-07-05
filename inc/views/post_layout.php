@@ -203,7 +203,7 @@ class Post_Layout extends Base_View {
 		];
 		$title_mode              = get_theme_mod( 'neve_post_cover_title_boxed_layout', false );
 		if ( $title_mode ) {
-			$title_meta_wrap_classes[] = 'is-boxed';
+			$title_meta_wrap_classes[] = 'nv-is-boxed';
 		}
 		$meta_before = get_theme_mod( 'neve_post_cover_meta_before_title', false );
 		if ( $meta_before ) {

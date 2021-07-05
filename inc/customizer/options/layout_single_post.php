@@ -484,12 +484,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'has_text_color'         => false,
 				'padding_default'        => $this->padding_default( 'cover' ),
 				'background_default'     => 'var(--nv-light-bg)',
-				'boxed_selector'         => '.nv-title-meta-wrap.is-boxed',
-				'cssVar'                 => [
-					'padding'    => '--boxPadding',
-					'background' => '--boxBg',
-					'selector'   => '.nv-post-cover',
-				],
+				'boxed_selector'         => '.nv-is-boxed.nv-title-meta-wrap',
 				'toggle_active_callback' => function() {
 					return get_theme_mod( 'neve_post_header_layout' ) === 'cover';
 				},
@@ -657,7 +652,7 @@ class Layout_Single_Post extends Base_Customizer {
 			],
 		];
 
-		if ( ! in_array( $setting, $live_refresh_settings, true ) ) {
+		if ( ! array_key_exists( $setting, $live_refresh_settings ) ) {
 			return false;
 		}
 
@@ -686,7 +681,7 @@ class Layout_Single_Post extends Base_Customizer {
 			$live_refresh_settings['neve_post_cover_text_color']        = [
 				'cssVar' => [
 					'vars'     => '--color',
-					'selector' => '.nv-post-cover',
+					'selector' => '.nv-post-cover .nv-title-meta-wrap',
 				],
 			];
 			$live_refresh_settings['neve_post_cover_overlay_opacity']   = [
@@ -894,20 +889,9 @@ class Layout_Single_Post extends Base_Customizer {
 				'padding_default'           => $this->padding_default(),
 				'background_default'        => 'var(--nv-light-bg)',
 				'color_default'             => 'var(--nv-text-color)',
-				'boxed_selector'            => '.nv-comments-wrap.is-boxed',
-				'cssVar'                    => [
-					'padding'    => '--padding',
-					'background' => '--bgColor',
-					'color'      => '--color',
-					'selector'   => '.nv-comments-wrap',
-				],
-				'variables'                 => [
-					'padding'    => '--postCommentsBoxedPadding',
-					'background' => '--postCommentsBoxedBackground',
-					'color'      => '--postCommentsBoxedColor',
-				],
-				'text_color_css_selector'   => '.nv-comments-wrap.is-boxed, .nv-comments-wrap.is-boxed a',
-				'border_color_css_selector' => '.nv-comments-wrap.is-boxed .nv-comment-article',
+				'boxed_selector'            => '.nv-is-boxed.nv-comments-wrap',
+				'text_color_css_selector'   => '.nv-comments-wrap.nv-is-boxed, .nv-comments-wrap.nv-is-boxed a',
+				'border_color_css_selector' => '.nv-comments-wrap.nv-is-boxed .nv-comment-article',
 				'toggle_active_callback'    => function() {
 					return $this->element_is_enabled( 'comments' );
 				},
@@ -982,21 +966,16 @@ class Layout_Single_Post extends Base_Customizer {
 				'priority'                => 71,
 				'section'                 => $this->section,
 				'padding_default'         => $this->padding_default(),
+				'is_boxed_default'        => neve_is_new_skin(),
 				'background_default'      => 'var(--nv-light-bg)',
 				'color_default'           => 'var(--nv-text-color)',
-				'boxed_selector'          => '.comment-respond.is-boxed',
-				'cssVar'                  => [
-					'padding'    => '--boxedCommentFormPadding',
-					'background' => '--boxedCommentFormBackground',
-					'color'      => '--boxedCommentFormColor',
-					'selector'   => '.comment-respond',
-				],
-				'text_color_css_selector' => '.comment-respond.is-boxed, .comment-respond.is-boxed a',
+				'boxed_selector'          => '.nv-is-boxed.comment-respond',
+				'text_color_css_selector' => '.comment-respond.nv-is-boxed, .comment-respond.nv-is-boxed a',
 				'toggle_active_callback'  => function() {
 					return $this->element_is_enabled( 'comments' );
 				},
 				'active_callback'         => function() {
-					return $this->element_is_enabled( 'comments' ) && get_theme_mod( 'neve_comments_form_boxed_layout', false );
+					return $this->element_is_enabled( 'comments' ) && get_theme_mod( 'neve_comments_form_boxed_layout', neve_is_new_skin() );
 				},
 			]
 		);

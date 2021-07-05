@@ -1129,36 +1129,52 @@ class Frontend extends Generator {
 		}
 
 		$cover_rules = [
-			'--height'     => [
+			'--height'  => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_HEIGHT,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_AS_JSON       => true,
 				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
 				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "400", "tablet": "400", "desktop": "400" }',
 			],
-			'--color'      => [
-				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_TEXT_COLOR,
-			],
-			'--padding'    => [
+			'--padding' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
-			],
-			'--boxPadding' => [
-				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_BOXED_TITLE_PADDING,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
-				'directional-prop'                   => Config::CSS_PROP_PADDING,
-			],
-			'--boxBg'      => [
-				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
 			],
 		];
 
 		$this->_subscribers[] = [
 			'selectors' => '.nv-post-cover',
 			'rules'     => $cover_rules,
+		];
+
+		$title_rules = [
+			'--color' => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_TEXT_COLOR,
+			],
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.nv-post-cover .nv-title-meta-wrap',
+			'rules'     => $title_rules,
+		];
+
+		$boxed_title_rules = [
+			'--padding'    => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_BOXED_TITLE_PADDING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
+				'directional-prop'                   => Config::CSS_PROP_PADDING,
+			],
+			'--background' => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
+			],
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.nv-is-boxed.nv-title-meta-wrap',
+			'rules'     => $boxed_title_rules,
 		];
 
 		$overlay_rules = [
@@ -1181,42 +1197,42 @@ class Frontend extends Generator {
 		];
 
 		$boxed_comments_rules = [
-			'--padding' => [
+			'--padding'    => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-			'--bgColor' => [
+			'--background' => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_BACKGROUND_COLOR,
 			],
-			'--color'   => [
+			'--color'      => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_TEXT_COLOR,
 			],
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => '.nv-comments-wrap',
+			'selectors' => '.nv-is-boxed.nv-comments-wrap',
 			'rules'     => $boxed_comments_rules,
 		];
 
 		$boxed_comment_form_rules = [
-			'--boxedCommentFormPadding'    => [
+			'--padding'    => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_FORM_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-			'--boxedCommentFormBackground' => [
+			'--background' => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_FORM_BACKGROUND_COLOR,
 			],
-			'--boxedCommentFormColor'      => [
+			'--color'      => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_FORM_TEXT_COLOR,
 			],
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => '.comment-respond',
+			'selectors' => '.nv-is-boxed.comment-respond',
 			'rules'     => $boxed_comment_form_rules,
 		];
 
@@ -1282,7 +1298,7 @@ class Frontend extends Generator {
 			],
 		];
 
-		$this->_subscribers['.nv-title-meta-wrap.is-boxed'] = [
+		$this->_subscribers['.nv-title-meta-wrap.nv-is-boxed'] = [
 			Config::CSS_PROP_PADDING          => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_BOXED_TITLE_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
@@ -1303,7 +1319,7 @@ class Frontend extends Generator {
 			],
 		];
 
-		$this->_subscribers['.nv-comments-wrap.is-boxed'] = [
+		$this->_subscribers['.nv-comments-wrap.nv-is-boxed'] = [
 			Config::CSS_PROP_PADDING          => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
@@ -1316,14 +1332,14 @@ class Frontend extends Generator {
 			],
 		];
 
-		$this->_subscribers['.nv-comments-wrap.is-boxed, .nv-comments-wrap.is-boxed a'] = [
+		$this->_subscribers['.nv-comments-wrap.nv-is-boxed, .nv-comments-wrap.nv-is-boxed a'] = [
 			Config::CSS_PROP_COLOR => [
 				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_TEXT_COLOR,
 				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
 			],
 		];
 
-		$this->_subscribers['.comment-respond.is-boxed'] = [
+		$this->_subscribers['.comment-respond.nv-is-boxed'] = [
 			Config::CSS_PROP_PADDING          => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_FORM_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
@@ -1336,7 +1352,7 @@ class Frontend extends Generator {
 			],
 		];
 
-		$this->_subscribers['.comment-respond.is-boxed, .comment-respond.is-boxed a'] = [
+		$this->_subscribers['.comment-respond.nv-is-boxed, .comment-respond.nv-is-boxed a'] = [
 			Config::CSS_PROP_COLOR => [
 				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_FORM_TEXT_COLOR,
 				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',

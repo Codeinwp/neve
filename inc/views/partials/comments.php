@@ -43,7 +43,7 @@ class Comments extends Base_View {
 			$comments_wrap_classes = [ 'nv-comments-wrap' ];
 			$is_boxed              = get_theme_mod( 'neve_comments_boxed_layout', false );
 			if ( $is_boxed ) {
-				$comments_wrap_classes[] = 'is-boxed';
+				$comments_wrap_classes[] = 'nv-is-boxed';
 			}
 
 			?>
@@ -107,9 +107,9 @@ class Comments extends Base_View {
 			$form_settings['label_submit'] = $button_text;
 		}
 
-		$boxed_layout = get_theme_mod( 'neve_comments_form_boxed_layout', false );
+		$boxed_layout = get_theme_mod( 'neve_comments_form_boxed_layout', neve_is_new_skin() );
 		if ( $boxed_layout ) {
-			$form_settings['class_container'] = 'comment-respond is-boxed';
+			$form_settings['class_container'] = 'comment-respond nv-is-boxed';
 		}
 
 		return $form_settings;
