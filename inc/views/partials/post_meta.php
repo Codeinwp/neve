@@ -299,7 +299,7 @@ class Post_Meta extends Base_View {
 	/**
 	 * Get the comments with a link.
 	 *
-	 * @return string
+	 * @return string|false
 	 */
 	public static function get_comments() {
 		if ( ! get_post() ) {
