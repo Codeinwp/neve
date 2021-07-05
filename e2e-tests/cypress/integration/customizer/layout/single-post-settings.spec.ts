@@ -9,6 +9,19 @@ describe('Single Post Check', function () {
 		cy.get('button').contains('Update').click();
 	});
 
+	it('Shows all options on customizer', function () {
+		cy.goToCustomizer();
+		cy.get('#accordion-panel-neve_layout > .accordion-section-title').click();
+		cy.get('#accordion-section-neve_single_post_layout > .accordion-section-title').click();
+
+		cy.get('#sub-accordion-section-neve_single_post_layout').contains('Header Layout');
+		cy.get('#sub-accordion-section-neve_single_post_layout').contains('Title Alignment');
+		cy.get('#sub-accordion-section-neve_single_post_layout').contains('Page Elements');
+		cy.get('#sub-accordion-section-neve_single_post_layout').contains('Post Meta');
+		cy.get('#sub-accordion-section-neve_single_post_layout').contains('Comments Section');
+		cy.get('#sub-accordion-section-neve_single_post_layout').contains('Submit Form Section');
+	});
+
 	context('Hidden', function () {
 		before(function () {
 			cy.fixture('customizer/layout/single-post-settings').then((postSetup) => {
