@@ -60,4 +60,22 @@ describe('Single Post Check', function () {
 			});
 		});
 	});
+
+	context('Header Cover', function () {
+		const urls = ['/hello-world', '/markup-text-alignment', '/scheduled'];
+		before(function () {
+			cy.fixture('customizer/layout/single-post-settings').then((setup) => {
+				cy.setCustomizeSettings(setup.cover);
+			});
+		});
+		urls.forEach(function (url) {
+			it(`Should have the cover layout on the single post ${url} as the setup`, function () {
+				cy.visit(url);
+				cy.get('.nv-overlay')
+					.should('have.css', 'height', '505px')
+					.and('have.css', 'background-color', 'rgb(198, 53, 53)')
+					.and('have.css', 'color', 'rgb(255, 255, 255)');
+			});
+		});
+	});
 });
