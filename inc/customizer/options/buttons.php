@@ -85,6 +85,7 @@ class Buttons extends Base_Customizer {
 					'section'           => $this->section_id,
 					'input_attrs'       => [
 						'units' => [ 'px' ],
+						'min'   => 0,
 					],
 					'default'           => $defaults,
 				),
@@ -289,6 +290,7 @@ class Buttons extends Base_Customizer {
 						'section'           => $this->section_id,
 						'input_attrs'       => [
 							'units' => [ 'px' ],
+							'min'   => 0,
 						],
 						'default'           => $defaults,
 					),

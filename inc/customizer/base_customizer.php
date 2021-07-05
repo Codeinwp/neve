@@ -422,6 +422,7 @@ abstract class Base_Customizer {
 					'section'               => $settings['section'],
 					'input_attrs'           => [
 						'units' => [ 'em', 'px' ],
+						'min'   => 0,
 					],
 					'default'               => array_key_exists( 'padding_default', $settings ) ? $settings['padding_default'] : false,
 					'priority'              => $settings['priority'],

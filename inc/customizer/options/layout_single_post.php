@@ -133,6 +133,7 @@ class Layout_Single_Post extends Base_Customizer {
 	 * Add header layout controls.
 	 */
 	private function header_layout() {
+
 		$this->add_control(
 			new Control(
 				'neve_post_header_layout',
@@ -158,27 +159,6 @@ class Layout_Single_Post extends Base_Customizer {
 			)
 		);
 
-		$live_refresh_settings = [
-			'responsive' => true,
-			'prop'       => 'min-height',
-			'suffix'     => [
-				'mobile'  => 'px',
-				'desktop' => 'px',
-				'tablet'  => 'px',
-			],
-			'template'   => '.nv-post-cover{ min-height: {{value}}; }',
-		];
-
-		if ( neve_is_new_skin() ) {
-			$live_refresh_settings = [
-				'cssVar' => [
-					'responsive' => true,
-					'vars'       => '--height',
-					'selector'   => '.nv-post-cover',
-					'suffix'     => 'px',
-				],
-			];
-		}
 		$this->add_control(
 			new Control(
 				'neve_post_cover_height',
@@ -207,34 +187,14 @@ class Layout_Single_Post extends Base_Customizer {
 					],
 					'priority'              => 5,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => $live_refresh_settings,
+					'live_refresh_css_prop' => $this->get_live_refresh_settings( 'neve_post_cover_height' ),
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)
 		);
 
-		$live_refresh_settings = [
-			'responsive'  => true,
-			'directional' => true,
-			'template'    =>
-				'.nv-post-cover {
-							padding-top: {{value.top}};
-							padding-right: {{value.right}};
-							padding-bottom: {{value.bottom}};
-							padding-left: {{value.left}};
-						}',
-		];
 
-		if ( neve_is_new_skin() ) {
-			$live_refresh_settings = [
-				'cssVar' => array(
-					'vars'       => '--padding',
-					'selector'   => '.nv-post-cover',
-					'responsive' => true,
-				),
-			];
-		}
 		$this->add_control(
 			new Control(
 				'neve_post_cover_padding',
@@ -248,11 +208,12 @@ class Layout_Single_Post extends Base_Customizer {
 					'section'               => $this->section,
 					'input_attrs'           => [
 						'units' => [ 'em', 'px' ],
+						'min'   => 0,
 					],
 					'default'               => $this->padding_default( 'cover' ),
 					'priority'              => 5,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => $live_refresh_settings,
+					'live_refresh_css_prop' => $this->get_live_refresh_settings( 'neve_post_cover_padding' ),
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'\Neve\Customizer\Controls\React\Spacing'
@@ -370,22 +331,6 @@ class Layout_Single_Post extends Base_Customizer {
 			)
 		);
 
-		$live_refresh_settings = [
-			'template' => '
-			.nv-post-cover .nv-overlay {
-			    background-color: {{value}};
-		    }',
-
-		];
-
-		if ( neve_is_new_skin() ) {
-			$live_refresh_settings = [
-				'cssVar' => array(
-					'vars'     => '--background',
-					'selector' => '.nv-overlay',
-				),
-			];
-		}
 		$this->add_control(
 			new Control(
 				'neve_post_cover_background_color',
@@ -399,30 +344,13 @@ class Layout_Single_Post extends Base_Customizer {
 					'section'               => $this->section,
 					'priority'              => 5,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => $live_refresh_settings,
+					'live_refresh_css_prop' => $this->get_live_refresh_settings( 'neve_post_cover_background_color' ),
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\React\Color'
 			)
 		);
 
-		$live_refresh_settings = [
-			'template' => '
-					.nv-post-cover,
-					.nv-post-cover .nv-meta-list li,
-					.nv-post-cover .nv-meta-list a{
-					   color: {{value}};
-				    }',
-		];
-
-		if ( neve_is_new_skin() ) {
-			$live_refresh_settings = [
-				'cssVar' => [
-					'vars'     => '--color',
-					'selector' => '.nv-post-cover',
-				],
-			];
-		}
 		$this->add_control(
 			new Control(
 				'neve_post_cover_text_color',
@@ -436,30 +364,13 @@ class Layout_Single_Post extends Base_Customizer {
 					'section'               => $this->section,
 					'priority'              => 5,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => $live_refresh_settings,
+					'live_refresh_css_prop' => $this->get_live_refresh_settings( 'neve_post_cover_text_color' ),
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\React\Color'
 			)
 		);
 
-		$live_refresh_settings = [
-			'responsive' => true,
-			'prop'       => 'opacity',
-			'template'   => '.nv-post-cover .nv-overlay {
-				opacity: {{value}};
-			}',
-		];
-
-		if ( neve_is_new_skin() ) {
-			$live_refresh_settings = [
-				'cssVar' => [
-					'responsive' => true,
-					'vars'       => '--opacity',
-					'selector'   => '.nv-overlay',
-				],
-			];
-		}
 		$this->add_control(
 			new Control(
 				'neve_post_cover_overlay_opacity',
@@ -484,7 +395,7 @@ class Layout_Single_Post extends Base_Customizer {
 					],
 					'priority'              => 5,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => $live_refresh_settings,
+					'live_refresh_css_prop' => $this->get_live_refresh_settings( 'neve_post_cover_overlay_opacity' ),
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
@@ -509,21 +420,6 @@ class Layout_Single_Post extends Base_Customizer {
 			)
 		);
 
-		$live_refresh_settings = [
-			'template' => '
-			.nv-post-cover .nv-overlay{
-			   mix-blend-mode: {{value}};
-		    }',
-		];
-
-		if ( neve_is_new_skin() ) {
-			$live_refresh_settings = [
-				'cssVar' => [
-					'vars'     => '--blendMode',
-					'selector' => '.nv-overlay',
-				],
-			];
-		}
 		$this->add_control(
 			new Control(
 				'neve_post_cover_blend_mode',
@@ -553,7 +449,7 @@ class Layout_Single_Post extends Base_Customizer {
 						'luminosity'  => esc_html__( 'Luminosity', 'neve' ),
 					],
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => $live_refresh_settings,
+					'live_refresh_css_prop' => $this->get_live_refresh_settings( 'neve_post_cover_blend_mode' ),
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				]
 			)
@@ -590,8 +486,8 @@ class Layout_Single_Post extends Base_Customizer {
 				'background_default'     => 'var(--nv-light-bg)',
 				'boxed_selector'         => '.nv-title-meta-wrap.is-boxed',
 				'cssVar'                 => [
-					'padding'    => '--boxedTitlePadding',
-					'background' => '--boxedTitleBackground',
+					'padding'    => '--boxPadding',
+					'background' => '--boxBg',
 					'selector'   => '.nv-post-cover',
 				],
 				'toggle_active_callback' => function() {
@@ -655,32 +551,6 @@ class Layout_Single_Post extends Base_Customizer {
 			)
 		);
 
-
-		$live_refresh_settings = [
-			'responsive' => true,
-			'prop'       => 'min-height',
-			'suffix'     => [
-				'mobile'  => 'px',
-				'desktop' => 'px',
-				'tablet'  => 'px',
-			],
-			'template'   => '
-			.nv-single-post-wrap > *:not(:last-child){
-				margin-bottom: {{value}};
-			}',
-		];
-
-		if ( neve_is_new_skin() ) {
-			$live_refresh_settings = [
-				'cssVar' => [
-					'responsive' => true,
-					'vars'       => '--marginBottom',
-					'selector'   => '.nv-single-post-wrap',
-					'suffix'     => 'px',
-				],
-			];
-		}
-
 		$this->add_control(
 			new Control(
 				'neve_single_post_elements_spacing',
@@ -708,11 +578,141 @@ class Layout_Single_Post extends Base_Customizer {
 					],
 					'priority'              => 6,
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => $live_refresh_settings,
+					'live_refresh_css_prop' => $this->get_live_refresh_settings( 'neve_single_post_elements_spacing' ),
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)
 		);
+	}
+
+	/**
+	 * Get the live refresh settings.
+	 *
+	 * @param string $setting Setting name.
+	 *
+	 * @return array | false
+	 */
+	private function get_live_refresh_settings( $setting ) {
+
+		$live_refresh_settings = [
+			'neve_post_cover_height'            => [
+				'responsive' => true,
+				'prop'       => 'min-height',
+				'suffix'     => [
+					'mobile'  => 'px',
+					'desktop' => 'px',
+					'tablet'  => 'px',
+				],
+				'template'   => '.nv-post-cover{ min-height: {{value}}; }',
+			],
+			'neve_post_cover_padding'           => [
+				'responsive'  => true,
+				'directional' => true,
+				'template'    =>
+					'.nv-post-cover {
+						padding-top: {{value.top}};
+						padding-right: {{value.right}};
+						padding-bottom: {{value.bottom}};
+						padding-left: {{value.left}};
+					}',
+			],
+			'neve_post_cover_background_color'  => [
+				'template' => '
+					.nv-post-cover .nv-overlay {
+					    background-color: {{value}};
+				    }',
+			],
+			'neve_post_cover_text_color'        => [
+				'template' => '
+					.nv-post-cover,
+					.nv-post-cover .nv-meta-list li,
+					.nv-post-cover .nv-meta-list a{
+					   color: {{value}};
+				    }',
+			],
+			'neve_post_cover_overlay_opacity'   => [
+				'responsive' => true,
+				'prop'       => 'opacity',
+				'template'   => '.nv-post-cover .nv-overlay {
+					opacity: {{value}};
+				}',
+			],
+			'neve_post_cover_blend_mode'        => [
+				'template' => '.nv-post-cover .nv-overlay{
+				   mix-blend-mode: {{value}};
+			    }',
+			],
+			'neve_single_post_elements_spacing' => [
+				'responsive' => true,
+				'prop'       => 'min-height',
+				'suffix'     => [
+					'mobile'  => 'px',
+					'desktop' => 'px',
+					'tablet'  => 'px',
+				],
+				'template'   => '
+					.nv-single-post-wrap > *:not(:last-child){
+						margin-bottom: {{value}};
+					}',
+			],
+		];
+
+		if ( ! in_array( $setting, $live_refresh_settings, true ) ) {
+			return false;
+		}
+
+		if ( neve_is_new_skin() ) {
+			$live_refresh_settings['neve_post_cover_height']            = [
+				'cssVar' => [
+					'responsive' => true,
+					'vars'       => '--height',
+					'selector'   => '.nv-post-cover',
+					'suffix'     => 'px',
+				],
+			];
+			$live_refresh_settings['neve_post_cover_padding']           = [
+				'cssVar' => array(
+					'vars'       => '--padding',
+					'selector'   => '.nv-post-cover',
+					'responsive' => true,
+				),
+			];
+			$live_refresh_settings['neve_post_cover_background_color']  = [
+				'cssVar' => array(
+					'vars'     => '--background',
+					'selector' => '.nv-overlay',
+				),
+			];
+			$live_refresh_settings['neve_post_cover_text_color']        = [
+				'cssVar' => [
+					'vars'     => '--color',
+					'selector' => '.nv-post-cover',
+				],
+			];
+			$live_refresh_settings['neve_post_cover_overlay_opacity']   = [
+				'cssVar' => [
+					'responsive' => true,
+					'vars'       => '--opacity',
+					'selector'   => '.nv-overlay',
+				],
+			];
+			$live_refresh_settings['neve_post_cover_blend_mode']        = [
+				'cssVar' => [
+					'vars'     => '--blendMode',
+					'selector' => '.nv-overlay',
+				],
+			];
+			$live_refresh_settings['neve_single_post_elements_spacing'] = [
+				'cssVar' => [
+					'responsive' => true,
+					'vars'       => '--spacing',
+					'selector'   => '.nv-single-post-wrap',
+					'suffix'     => 'px',
+				],
+			];
+		}
+
+		return $live_refresh_settings[ $setting ];
 	}
 
 	/**
@@ -896,9 +896,9 @@ class Layout_Single_Post extends Base_Customizer {
 				'color_default'             => 'var(--nv-text-color)',
 				'boxed_selector'            => '.nv-comments-wrap.is-boxed',
 				'cssVar'                    => [
-					'padding'    => '--boxedCommentsPadding',
-					'background' => '--boxedCommentsBackground',
-					'color'      => '--boxedCommentsColor',
+					'padding'    => '--padding',
+					'background' => '--bgColor',
+					'color'      => '--color',
 					'selector'   => '.nv-comments-wrap',
 				],
 				'variables'                 => [

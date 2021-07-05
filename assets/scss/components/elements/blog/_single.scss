@@ -21,13 +21,13 @@
   .comments-area,
   .nv-thumb-wrap {
 	&:not( :last-child ){
-	  margin-bottom: var(--marginBottom, $spacing-aired);
+	  margin-bottom: var(--spacing, $spacing-aired);
 	}
   }
 
   .entry-header {
 	&:not( :last-child ){
-	  margin-bottom: var(--marginBottom);
+	  margin-bottom: var(--spacing);
 	}
   }
 }
@@ -154,8 +154,8 @@
 	  flex-direction: column-reverse;
 	}
 	&.is-boxed{
-	  padding: var(--boxedTitlePadding);
-	  background-color: var(--boxedTitleBackground, var(--nv-light-bg));
+	  padding: var(--boxPadding);
+	  background: var(--boxBg, var(--nv-light-bg));
 	}
   }
 
@@ -186,9 +186,9 @@
 }
 
 .nv-comments-wrap.is-boxed {
-  padding: var(--boxedCommentsPadding);
-  background: var(--boxedCommentsBackground,var(--nv-light-bg));
-  color: var(--boxedCommentsColor, var(--nv-text-color));
+  padding: var(--padding);
+  background: var(--bgColor,var(--nv-light-bg));
+  color: var(--color, var(--nv-text-color));
 
   .nv-comments-title-wrap {
 	margin: 0;
@@ -199,11 +199,11 @@
   }
 
   a {
-	color: var(--boxedCommentsColor, var(--nv-text-color));
+	color: var(--color, var(--nv-text-color));
   }
 
   .nv-comments-list .comment{
-	border-color: var(--boxedCommentsColor, var(--nv-text-color)) !important;
+	border-color: var(--color, var(--nv-text-color)) !important;
   }
 }
 
