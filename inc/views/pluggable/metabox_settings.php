@@ -143,11 +143,11 @@ class Metabox_Settings {
 	/**
 	 * Get the post id.
 	 *
-	 * @return bool|string
+	 * @return int|false
 	 */
 	private function get_post_id() {
 		if ( $this->is_blog_static() ) {
-			return get_option( 'page_for_posts' );
+			return (int) get_option( 'page_for_posts' );
 		}
 
 		if ( is_search() ) {
