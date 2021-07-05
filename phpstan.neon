@@ -9,5 +9,7 @@ parameters:
         - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
     dynamicConstantNames:
         - NEVE_DEBUG
+    ignoreErrors:
+        - '#^Function apply_filters(_ref_array)? invoked with [34567] parameters, 2 required\.$#'
 includes:
     - vendor/szepeviktor/phpstan-wordpress/extension.neon
