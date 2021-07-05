@@ -2,7 +2,7 @@
 /* eslint-disable chai-friendly/no-unused-expressions */
 import 'cypress-file-upload';
 import '@percy/cypress';
-import 'cypress-nv-commands/src';
+import 'cypress-nv-commands';
 import 'cypress-localstorage-commands';
 import { scrollToBottom } from 'scroll-to-bottomjs';
 
