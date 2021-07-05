@@ -138,9 +138,9 @@ class Comments extends Base_View {
 	/**
 	 * Comment list callback.
 	 *
-	 * @param string $comment comment.
-	 * @param array  $args    arguments.
-	 * @param int    $depth   the comments depth.
+	 * @param \WP_Comment $comment comment.
+	 * @param array       $args    arguments.
+	 * @param int         $depth   the comments depth.
 	 */
 	public function comment_list_callback( $comment, $args, $depth ) {
 		switch ( $comment->comment_type ) {
@@ -169,7 +169,7 @@ class Comments extends Base_View {
 							</div>
 							<div class="comment-author vcard">
 								<span class="fn author"><?php echo get_comment_author_link(); ?></span>
-								<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+								<a href="<?php echo esc_url( get_comment_link() ); ?>">
 									<time class="entry-date published"
 											datetime="<?php echo esc_attr( get_comment_time( 'c' ) ); ?>"
 											content="<?php echo esc_attr( get_comment_time( 'Y-m-d' ) ); ?>">
