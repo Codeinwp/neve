@@ -215,7 +215,7 @@ class Magic_Tags {
 	 * @return string.
 	 */
 	public function meta_category() {
-		return get_the_category_list( ', ', get_the_ID() );
+		return get_the_category_list( ', ', '', get_the_ID() );
 	}
 
 	/**
