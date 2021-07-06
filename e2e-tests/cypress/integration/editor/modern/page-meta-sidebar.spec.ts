@@ -6,23 +6,17 @@ describe('Single page sidebar', function () {
 	};
 
 	before('Create new page named "' + pageSetup.title + '".', function () {
-		cy.insertPost(pageSetup.title, pageSetup.content, 'page');
+		cy.insertPostWithRequest(pageSetup.title, pageSetup.content, 'pages').then(() => {
+			pageSetup.url = window.localStorage.getItem('postUrl');
+		});
 
 		cy.setCustomizeSettings({
 			neve_migrated_hfg_colors: true,
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
+			neve_default_sidebar_layout: 'full-width',
+			neve_sitewide_content_width: 100,
 		});
-		cy.get('.post-publish-panel__postpublish-header a', { timeout: 15000 })
-			.contains(pageSetup.title)
-			.should('have.attr', 'href')
-			.then((href) => {
-				pageSetup.url = href.toString();
-			})
-			.then(() => {
-				window.localStorage.setItem('pageId', Cypress.$('#post_ID').val().toString());
-				cy.getJWT();
-			});
 		cy.saveLocalStorage();
 	});
 
@@ -52,7 +46,7 @@ describe('Single page sidebar', function () {
 		});
 
 		it('Full-width', function () {
-			cy.updatePageOrPostByRequest(window.localStorage.getItem('pageId'), 'pages', {
+			cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
 				meta: {
 					neve_meta_sidebar: 'full-width',
 				},
@@ -62,7 +56,7 @@ describe('Single page sidebar', function () {
 			cy.get('.nv-sidebar-wrap').should('not.exist');
 		});
 		it('Left', function () {
-			cy.updatePageOrPostByRequest(window.localStorage.getItem('pageId'), 'pages', {
+			cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
 				meta: {
 					neve_meta_sidebar: 'left',
 				},
@@ -72,7 +66,7 @@ describe('Single page sidebar', function () {
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
 		});
 		it('Right', function () {
-			cy.updatePageOrPostByRequest(window.localStorage.getItem('pageId'), 'pages', {
+			cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
 				meta: {
 					neve_meta_sidebar: 'right',
 				},

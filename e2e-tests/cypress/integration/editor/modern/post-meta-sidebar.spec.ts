@@ -6,11 +6,9 @@ describe('Single post meta sidebar', function () {
 	};
 
 	before('Create new post named "' + postSetup.title + '".', function () {
-		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4, ['test-tag']).then(
-			() => {
-				postSetup.url = window.localStorage.getItem('postUrl');
-			},
-		);
+		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4, 0).then(() => {
+			postSetup.url = window.localStorage.getItem('postUrl');
+		});
 
 		cy.setCustomizeSettings({
 			neve_migrated_hfg_colors: true,
