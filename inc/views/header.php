@@ -138,7 +138,7 @@ class Header extends Base_View {
 			$search .= '<a class="button button-secondary close-responsive-search">' . __( 'Close', 'neve' ) . '</a>';
 			$search .= '</div>';
 		}
-		$search .= get_search_form( false );
+		$search .= version_compare( get_bloginfo( 'version' ), '5.2.0', '>=' ) ? get_search_form( array( 'echo' => false ) ) : get_search_form( false );
 		$search .= '</div>';
 		$search .= '</' . esc_attr( $tag ) . '>';
 
