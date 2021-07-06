@@ -1,4 +1,4 @@
-/* global NeveProperties */
+/* global NeveProperties menuCalcEvent */
 /* jshint esversion: 6 */
 import {
 	isMobile,
@@ -60,6 +60,9 @@ export const repositionDropdowns = () => {
 			left = 'auto';
 			dropDown.style.right = right;
 			dropDown.style.left = left;
+		}
+		if (typeof menuCalcEvent !== 'undefined') {
+			window.dispatchEvent(menuCalcEvent);
 		}
 	});
 };

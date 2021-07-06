@@ -217,11 +217,63 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		wp_style_add_data( 'neve-mega-menu', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-mega-menu' );
 
+		$style = <<<'CSS'
+.left .neve-mega-menu > .sub-menu {
+	left: 0;
+	right: auto;
+	transform: none;
+}
+.center .neve-mega-menu > .sub-menu {
+	transform: translateX(50%);
+}
+.right .neve-mega-menu > .sub-menu {
+	left: auto;
+	right: 0;
+	transform: none;
+}
+CSS;
+		wp_add_inline_style( 'neve-mega-menu', $style );
+
 		// Fix for MegaMenu alignment
 		$script_min = <<<'JSMIN'
-function megaMenuCalc(){var e=window.innerWidth,t=document.querySelectorAll(".neve-mega-menu > .sub-menu"),a=NeveProperties.isRTL;t.forEach(function(t){var n=t.getBoundingClientRect(),i=t.parentElement.getBoundingClientRect(),l=t.parentNode.parentNode.classList.contains("sub-menu");t.style.left=a?"auto":"0",t.style.right=a?"0":"auto";var u=a?i.left<e/2:i.left>e/2;u&&(t.style.left=a?"0":"auto",t.style.right=a?"auto":"0"),n.left<0&&(t.style.left=l?"100%":"0",t.style.right="auto"),i.left+n.width>=e&&(t.style.left="auto",t.style.right=l?"100%":"0"),i.left-n.width<0&&i.left+n.width>=e&&(t.style.left="auto",t.style.right="calc( 100% - "+(e-i.right+i.width/2)+"px )")})}var megaResizeTimeout;window.addEventListener("resize",function(){clearTimeout(megaResizeTimeout),megaResizeTimeout=setTimeout(megaMenuCalc,500)}),document.addEventListener("DOMContentLoaded",function(e){megaMenuCalc()}),window.addEventListener("load",function(){document.addEventListener("header_builder_panel_changed",function(e){return"hfg_header_layout_partial"===e.detail.partial_id?(megaMenuCalc(),!1):"primary-menu_partial"===e.detail.partial_id?(megaMenuCalc(),!1):void 0})});
+function megaMenuCalc(){var e=window.innerWidth,t=document.querySelectorAll(".neve-mega-menu > .sub-menu"),a=NeveProperties.isRTL;t.forEach(function(t){var n=t.getBoundingClientRect(),i=t.parentElement.getBoundingClientRect(),l=t.parentNode.parentNode.classList.contains("sub-menu");t.style.transform="translateX(0)",t.style.left=a?"auto":"0",t.style.right=a?"0":"auto";var u=a?i.left<e/2:i.left>e/2;u&&(t.style.left=a?"0":"auto",t.style.right=a?"auto":"0"),n.left<0&&(t.style.left=l?"100%":"0",t.style.right="auto"),i.left+n.width>=e&&(t.style.left="auto",t.style.right=l?"100%":"0"),i.left-n.width<0&&i.left+n.width>=e&&(t.style.left="auto",t.style.right="calc( 100% - "+(e-i.right+i.width/2)+"px )")})}var megaResizeTimeout;window.addEventListener("resize",function(){clearTimeout(megaResizeTimeout),megaResizeTimeout=setTimeout(megaMenuCalc,500)}),document.addEventListener("DOMContentLoaded",function(e){megaMenuCalc()}),window.addEventListener("load",function(){document.addEventListener("header_builder_panel_changed",function(e){return"hfg_header_layout_partial"===e.detail.partial_id?(megaMenuCalc(),!1):"primary-menu_partial"===e.detail.partial_id?(megaMenuCalc(),!1):void 0})});
 JSMIN;
-		wp_add_inline_script( 'neve-script', $script_min );
+
+		$script = <<<'JS'
+function megaMenuCalcEvent() {
+    console.log('Event triggered');
+	var megaMenuDowns = document.querySelectorAll(
+		'.neve-mega-menu > .sub-menu'
+	);
+	megaMenuDowns.forEach( function (dropDown) {
+	    var isRTL = NeveProperties.isRTL === "1";
+	    var windowWidth = window.innerWidth;
+		dropDown.style.left = '0';
+		dropDown.style.right = '0';
+		dropDown.style.transform = 'none';
+
+		var bounding = dropDown.getBoundingClientRect();
+		var percentage = Math.round( Math.abs(bounding.left) / bounding.width * 100 );
+		if ( percentage > 100 ) {
+			var tmp = percentage - 100;
+			percentage = 100 - tmp;
+		}
+		if (bounding.left < 0) {
+			dropDown.style.transform = `translateX(${percentage}%)`;
+		}
+		if (bounding.left + bounding.width >= windowWidth) {
+		    percentage = Math.round( Math.abs(bounding.left + bounding.width - windowWidth) / bounding.width * 100 );
+		    percentage = percentage * -1;
+			dropDown.style.transform = `translateX(${percentage}%)`;
+		}
+	});
+}
+var menuCalcEvent = new Event('menuCalc');
+window.addEventListener('menuCalc', function (e) {
+	megaMenuCalcEvent();
+}, false);
+JS;
+		wp_add_inline_script( 'neve-script', $script );
 		self::$mega_menu_enqueued = true;
 	}
 }
