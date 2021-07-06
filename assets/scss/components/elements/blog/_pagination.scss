@@ -1,5 +1,10 @@
 ul.page-numbers {
   display: flex;
+  flex-wrap: wrap;
+
+  li{
+	margin-bottom: $spacing-sm;
+  }
 
   a, span {
 	line-height: 1;
@@ -8,6 +13,7 @@ ul.page-numbers {
 	border-radius: 3px;
 	padding: 12px 15px;
 	color: var(--nv-text-color);
+	display: block;
   }
 
   .dots {
