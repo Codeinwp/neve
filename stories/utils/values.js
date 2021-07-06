@@ -141,6 +141,91 @@ export const MULTISELECT_CHOICES = {
 	page: 'Pages',
 	post: 'Posts',
 };
+export const SOCIAL_ICONS_DEFAULT = [
+	{
+		"visibility":"yes",
+		"title":"Facebook",
+		"icon":"facebook",
+		"url":"#",
+		"icon_color":"#fff",
+		"background_color":"#3b5998"
+	},
+	{
+		"visibility":"yes",
+		"title":"Twitter",
+		"icon":"twitter",
+		"url":"#",
+		"icon_color":"#fff",
+		"background_color":"#1da1f2"
+	},
+	{
+		"visibility":"yes",
+		"title":"Youtube",
+		"icon":"youtube-play",
+		"url":"#",
+		"icon_color":"#fff",
+		"background_color":"#cd201f"
+	},
+	{
+		"visibility":"yes",
+		"title":"Instagram",
+		"icon":"instagram",
+		"url":"#",
+		"icon_color":"#686868",
+		"background_color":"#e1306c"
+	}
+]
+export const CONTACT_DEFAULT = [
+	{
+		"title":"email@example.com",
+		"icon":"envelope",
+		"item_type":"email",
+		"visibility":"yes"
+	},
+	{
+		"title":"202-555-0191",
+		"icon":"phone",
+		"item_type":"phone",
+		"visibility":"yes"
+	},
+	{
+		"title":"499 Pirate Island Plaza",
+		"icon":"map-marker",
+		"item_type":"text",
+		"visibility":"yes"
+	}
+]
+
+// export const SOCIAL_ICONS_DEFAULT = [
+// 	{
+// 		"title": "Social Title 1",
+// 		"name" : "Social Name 1"
+// 	},
+// 	{
+// 		"title": "Social Title 2",
+// 		"name" : "Social Name 2"
+// 	},
+// 	{
+// 		"title": "Social Title 3",
+// 		"name" : "Social Name 3"
+// 	}
+// ]
+//
+// export const CONTACT_DEFAULT = [
+// 	{
+// 		"title": "Contact Title 1",
+// 		"name" : "Contact Name 1"
+// 	},
+// 	{
+// 		"title": "Contact Title 2",
+// 		"name" : "Contact Name 2"
+// 	},
+// 	{
+// 		"title": "Contact Title 3",
+// 		"name" : "Contact Name 3"
+// 	}
+// ]
+
 export const ORDERING_DEFAULT = ['title', 'thumbnail'];
 export const ORDERING_NO_TOGGLES = [
 	'title',
