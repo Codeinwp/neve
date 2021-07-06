@@ -150,7 +150,7 @@ class Layout_Sidebar extends Base_View {
 	/**
 	 * Get current context.
 	 *
-	 * @return string
+	 * @return string|false
 	 */
 	private function get_context() {
 		if ( class_exists( 'WooCommerce', false ) && ( is_woocommerce() || is_product() || is_cart() || is_checkout() || is_account_page() ) ) {
@@ -168,5 +168,7 @@ class Layout_Sidebar extends Base_View {
 		if ( is_archive() || is_home() ) {
 			return 'blog-archive';
 		}
+
+		return false;
 	}
 }
