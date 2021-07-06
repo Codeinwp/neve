@@ -3,11 +3,18 @@ describe('Single post meta sidebar', function () {
 		title: 'Test Post',
 		content: 'The Post Content',
 		url: '/',
+		id: 'banana',
 	};
 
 	before('Create new post named "' + postSetup.title + '".', function () {
-		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4, 0).then(() => {
+		cy.createTagWithRequest('tag-test');
+		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4).then(() => {
 			postSetup.url = window.localStorage.getItem('postUrl');
+			postSetup.id = window.localStorage.getItem('postId').toString();
+			const tagId = parseInt(window.localStorage.getItem('tagId'));
+			cy.log(postSetup.id);
+			cy.log(postSetup.url);
+			cy.updatePageOrPostByRequest(postSetup.id, 'posts', { tags: tagId });
 		});
 
 		cy.setCustomizeSettings({
@@ -159,7 +166,7 @@ describe('Single post meta sidebar', function () {
 		cy.loginWithRequest(postSetup.url);
 		cy.reload();
 		cy.get('#wp-admin-bar-edit a').click();
-
+		cy.clearWelcome();
 		cy.get('.interface-complementary-area-header');
 
 		cy.get('.ti-sortable-item-label').each((el, index) => {
