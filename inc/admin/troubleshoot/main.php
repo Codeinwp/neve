@@ -7,7 +7,6 @@
 
 namespace Neve\Admin\Troubleshoot;
 
-use ThemeisleSDK\Modules\Licenser;
 use ThemeisleSDK\Product;
 
 /**
@@ -134,17 +133,8 @@ final class Main {
 		if ( $transient !== false ) {
 			return ( $transient === 'yes' );
 		}
-		// Maybe Refactor this to use a health check instead of calling the API.
-		$product  = new Product( get_template_directory() . '/style.css' );
-		$response = ( new Licenser() )->safe_get(
-			sprintf(
-				'%slicense/version/%s/%s/%s/%s',
-				Product::API_URL,
-				rawurlencode( $product->get_name() ),
-				'free',
-				$product->get_version(),
-				rawurlencode( home_url() )
-			),
+		$response = wp_remote_get( //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get, Already used.
+			sprintf( '%shealth', Product::API_URL ),
 			array(
 				'timeout'   => 15, //phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout, Inherited by wp_remote_get only, for vip environment we use defaults.
 				'sslverify' => false,
