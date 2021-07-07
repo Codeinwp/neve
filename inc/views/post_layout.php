@@ -29,8 +29,11 @@ class Post_Layout extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_do_single_post', [ $this, 'render_post' ] );
-		add_action( 'neve_after_header_wrapper_hook', [ $this, 'render_cover_header' ] );
-		add_filter( 'neve_post_title_alignment', [ $this, 'align_post_title' ] );
+
+		if ( neve_is_new_skin() ) {
+			add_action( 'neve_after_header_wrapper_hook', [ $this, 'render_cover_header' ] );
+			add_filter( 'neve_post_title_alignment', [ $this, 'align_post_title' ] );
+		}
 	}
 
 	/**
@@ -64,13 +67,13 @@ class Post_Layout extends Base_View {
 		foreach ( $content_order as $index => $item ) {
 			switch ( $item ) {
 				case 'title-meta':
-					if ( $header_layout !== 'normal' ) {
+					if ( Layout_Single_Post::is_cover_layout() ) {
 						break;
 					}
 					$this->render_entry_header();
 					break;
 				case 'thumbnail':
-					if ( $header_layout !== 'normal' ) {
+					if ( Layout_Single_Post::is_cover_layout() ) {
 						break;
 					}
 					echo '<div class="nv-thumb-wrap">';
@@ -96,7 +99,7 @@ class Post_Layout extends Base_View {
 					do_action( 'neve_do_tags' );
 					break;
 				case 'title':
-					if ( $header_layout !== 'normal' ) {
+					if ( Layout_Single_Post::is_cover_layout() ) {
 						break;
 					}
 					if ( $index !== $content_order_length - 1 && $content_order[ $index + 1 ] === 'meta' ) {
@@ -106,7 +109,7 @@ class Post_Layout extends Base_View {
 					$this->render_entry_header( false );
 					break;
 				case 'meta':
-					if ( $header_layout !== 'normal' ) {
+					if ( Layout_Single_Post::is_cover_layout() ) {
 						break;
 					}
 					if ( $index !== 0 && $content_order[ $index - 1 ] === 'title' ) {
@@ -203,7 +206,7 @@ class Post_Layout extends Base_View {
 		];
 		$title_mode              = get_theme_mod( 'neve_post_cover_title_boxed_layout', false );
 		if ( $title_mode ) {
-			$title_meta_wrap_classes[] = 'is-boxed';
+			$title_meta_wrap_classes[] = 'nv-is-boxed';
 		}
 		$meta_before = get_theme_mod( 'neve_post_cover_meta_before_title', false );
 		if ( $meta_before ) {

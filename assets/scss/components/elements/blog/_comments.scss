@@ -1,10 +1,5 @@
 @import "../../main/variables";
 
-.comment-respond {
-  background-color: var(--nv-light-bg);
-  padding: $spacing-xl;
-}
-
 .nv-comment-content {
   margin-bottom: 0 !important;
 
@@ -58,14 +53,6 @@
 	  float: right;
 	}
   }
-
-  input[type=submit] {
-	@extend %nv-button-primary;
-
-	&:hover {
-	  @extend %nv-button-primary-hover;
-	}
-  }
 }
 
 .nv-comment-header {
@@ -75,10 +62,6 @@
 
   .vcard {
 	display: grid;
-
-	a {
-	  color: var(--nv-text-color);
-	}
 
 	.author {
 	  font-weight: 700;
