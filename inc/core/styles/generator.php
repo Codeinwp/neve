@@ -30,7 +30,7 @@ class Generator {
 	/**
 	 * Current context.
 	 *
-	 * @var null
+	 * @var string|null
 	 */
 	protected $context = null;
 
