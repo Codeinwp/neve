@@ -46,6 +46,87 @@ class Amp {
 		add_filter( 'neve_search_menu_item_filter', array( $this, 'add_search_menu_item_attrs' ), 10, 2 );
 		add_action( 'neve_after_header_hook', array( $this, 'render_amp_states' ) );
 		add_filter( 'neve_nav_toggle_data_attrs', array( $this, 'add_nav_toggle_attrs' ) );
+
+
+		add_action( 'wp_head', [ $this, 'add_amp_experiments' ], 1 );
+
+		$pagination_type = get_theme_mod( 'neve_pagination_type', 'number' );
+		if ( $pagination_type === 'infinite' ) {
+			remove_all_actions('neve_do_pagination');
+			add_action( 'neve_do_pagination', [ $this, 'add_amp_pagination'] );
+		}
+	}
+
+	/**
+	 *
+	 */
+	public function add_amp_pagination() {
+		$prev_text = sprintf(
+			'%s <span class="nav-prev-text">%s</span>',
+			'<span aria-hidden="true">&larr;</span>',
+			__( 'Newer <span class="nav-short">Posts</span>', 'twentytwenty' )
+		);
+		$next_text = sprintf(
+			'<span class="nav-next-text">%s</span> %s',
+			__( 'Older <span class="nav-short">Posts</span>', 'twentytwenty' ),
+			'<span aria-hidden="true">&rarr;</span>'
+		);
+
+		$posts_pagination = get_the_posts_pagination(
+			array(
+				'mid_size'  => 1,
+				'prev_text' => $prev_text,
+				'next_text' => $next_text,
+			)
+		);
+
+		// If we're not outputting the previous page link, prepend a placeholder with visibility: hidden to take its place.
+		if ( strpos( $posts_pagination, 'prev page-numbers' ) === false ) {
+			$posts_pagination = str_replace( '<div class="nav-links">', '<div class="nav-links"><span class="prev page-numbers placeholder" aria-hidden="true">' . $prev_text . '</span>', $posts_pagination );
+		}
+
+		// If we're not outputting the next page link, append a placeholder with visibility: hidden to take its place.
+		if ( strpos( $posts_pagination, 'next page-numbers' ) === false ) {
+			$posts_pagination = str_replace( '</div>', '<span class="next page-numbers placeholder" aria-hidden="true">' . $next_text . '</span></div>', $posts_pagination );
+		}
+
+		if ( $posts_pagination ) {
+
+			if( ! is_paged() ) {
+
+				$pages = array_filter( array_map(
+					static function( $link ) {
+						if ( preg_match( '#<a.+?href="(.+?)">(.+?)</a>#s', $link, $matches ) ) {
+							$amp_url = html_entity_decode( $matches[1] );
+							$title   = html_entity_decode( $matches[2] );
+							return [
+								'url'    => $amp_url,
+								'title'  => $title,
+								'image'  => get_site_icon_url()
+							];
+						}
+						return null;
+					},
+					paginate_links( [ 'type' => 'array' ] )
+				) );
+
+
+
+
+				echo '<amp-next-page>';
+				echo '<script type="application/json">';
+				echo wp_json_encode( array_values( $pages ) );
+				echo '</script>';
+				echo '</amp-next-page>';
+			}
+		}
+	}
+
+	/**
+	 * Amp experiments for infinite scroll feature.
+	 */
+	public function add_amp_experiments() {
+		echo '<meta name="amp-experiments-opt-in" content="amp-next-page">';
 	}
 
 	/**
