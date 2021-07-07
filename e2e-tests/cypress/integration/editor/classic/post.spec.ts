@@ -5,7 +5,7 @@ describe('Posts meta box default settings', function () {
 		url: '/',
 	};
 	before('Create new post named "' + postSetup.title + '".', function () {
-		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'post', 4).then(() => {
+		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4).then(() => {
 			postSetup.url = window.localStorage.getItem('postUrl');
 		});
 
