@@ -39,17 +39,17 @@ final class Main {
 			'fields' => array(
 				'api'            => array(
 					'label'   => __( 'API connectivity', 'neve' ),
-					'value'   => $this->test_api_connectivity() ? __( 'YES', 'neve' ) : __( 'NO', 'neve' ) . ' ' . get_transient( 'neve_troubleshoot_api_reason' ),
+					'value'   => $this->test_api_connectivity() ? __( 'Yes', 'neve' ) : __( 'No', 'neve' ) . ' ' . get_transient( 'neve_troubleshoot_api_reason' ),
 					'private' => false,
 				),
 				'child'          => array(
 					'label'   => __( 'Child theme files', 'neve' ),
-					'value'   => is_child_theme() ? $this->list_files() : __( 'NO', 'neve' ),
+					'value'   => is_child_theme() ? $this->list_files() : __( 'No', 'neve' ),
 					'private' => false,
 				),
 				'customizer_css' => array(
 					'label'   => __( 'Customizer Custom CSS', 'neve' ),
-					'value'   => empty( $custom_customizer_css ) ? 'NO' : $custom_customizer_css,
+					'value'   => empty( $custom_customizer_css ) ? __( 'No', 'neve' ) : $custom_customizer_css,
 					'private' => false,
 				),
 			),
@@ -110,11 +110,6 @@ final class Main {
 			$result['description']    = sprintf(
 				'<p>%s</p>',
 				__( 'API connectivity for Neve is NOT available on your site.', 'neve' )
-			);
-			$result['actions']       .= sprintf(
-				'<p><a href="%s">%s</a></p>',
-				esc_url( 'https://themeisle.com/contact/' ),
-				__( 'Contact Support', 'neve' )
 			);
 		}
 
