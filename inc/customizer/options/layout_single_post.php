@@ -91,7 +91,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'priority'        => 70,
 				'expanded'        => true,
 				'accordion'       => false,
-				'active_callback' => function() {
+				'active_callback' => function () {
 					return $this->element_is_enabled( 'comments' );
 				},
 			],
@@ -100,7 +100,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'priority'        => 71,
 				'expanded'        => true,
 				'accordion'       => false,
-				'active_callback' => function() {
+				'active_callback' => function () {
 					return $this->element_is_enabled( 'comments' );
 				},
 			],
@@ -528,10 +528,10 @@ class Layout_Single_Post extends Base_Customizer {
 				'padding_default'        => $this->padding_default( 'cover' ),
 				'background_default'     => 'var(--nv-light-bg)',
 				'boxed_selector'         => '.nv-title-meta-wrap.is-boxed',
-				'toggle_active_callback' => function() {
+				'toggle_active_callback' => function () {
 					return get_theme_mod( 'neve_post_header_layout' ) === 'cover';
 				},
-				'active_callback'        => function() {
+				'active_callback'        => function () {
 					return get_theme_mod( 'neve_post_header_layout' ) === 'cover' && get_theme_mod( 'neve_post_cover_title_boxed_layout', false );
 
 				},
@@ -641,7 +641,16 @@ class Layout_Single_Post extends Base_Customizer {
 	 */
 	private function post_meta() {
 
-		$order_default_components = get_theme_mod( 'neve_post_meta_ordering', wp_json_encode( [ 'author', 'date', 'comments' ] ) );
+		$order_default_components = get_theme_mod(
+			'neve_post_meta_ordering',
+			wp_json_encode(
+				[
+					'author',
+					'date',
+					'comments',
+				] 
+			) 
+		);
 
 		/**
 		 * Filters the elements that appears in meta.
@@ -809,7 +818,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'priority'        => 70,
 					'section'         => $this->section,
 					'type'            => 'text',
-					'active_callback' => function() {
+					'active_callback' => function () {
 						return $this->element_is_enabled( 'comments' );
 					},
 				]
@@ -827,10 +836,10 @@ class Layout_Single_Post extends Base_Customizer {
 				'boxed_selector'            => '.nv-comments-wrap.is-boxed',
 				'text_color_css_selector'   => '.nv-comments-wrap.is-boxed, .nv-comments-wrap.is-boxed a',
 				'border_color_css_selector' => '.nv-comments-wrap.is-boxed .nv-comment-article',
-				'toggle_active_callback'    => function() {
+				'toggle_active_callback'    => function () {
 					return $this->element_is_enabled( 'comments' );
 				},
-				'active_callback'           => function() {
+				'active_callback'           => function () {
 					return $this->element_is_enabled( 'comments' ) && get_theme_mod( 'neve_comments_boxed_layout', false );
 				},
 			]
@@ -847,7 +856,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'priority'        => 71,
 					'section'         => $this->section,
 					'type'            => 'text',
-					'active_callback' => function() {
+					'active_callback' => function () {
 						return $this->element_is_enabled( 'comments' );
 					},
 				]
@@ -870,7 +879,7 @@ class Layout_Single_Post extends Base_Customizer {
 						'primary'   => esc_html__( 'Primary', 'neve' ),
 						'secondary' => esc_html__( 'Secondary', 'neve' ),
 					],
-					'active_callback' => function() {
+					'active_callback' => function () {
 						return $this->element_is_enabled( 'comments' );
 					},
 				]
@@ -888,7 +897,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'priority'        => 71,
 					'section'         => $this->section,
 					'type'            => 'text',
-					'active_callback' => function() {
+					'active_callback' => function () {
 						return $this->element_is_enabled( 'comments' );
 					},
 				]
@@ -905,10 +914,10 @@ class Layout_Single_Post extends Base_Customizer {
 				'color_default'           => 'var(--nv-text-color)',
 				'boxed_selector'          => '.comment-respond.is-boxed',
 				'text_color_css_selector' => '.comment-respond.is-boxed, .comment-respond.is-boxed a',
-				'toggle_active_callback'  => function() {
+				'toggle_active_callback'  => function () {
 					return $this->element_is_enabled( 'comments' );
 				},
-				'active_callback'         => function() {
+				'active_callback'         => function () {
 					return $this->element_is_enabled( 'comments' ) && get_theme_mod( 'neve_comments_form_boxed_layout', false );
 				},
 			]
@@ -919,6 +928,9 @@ class Layout_Single_Post extends Base_Customizer {
 	 * Change heading controls properties.
 	 */
 	public function adjust_headings() {
+		if ( ! neve_is_new_skin() ) {
+			return;
+		}
 		$this->change_customizer_object( 'control', 'neve_comments_heading', 'controls_to_wrap', 15 );
 	}
 
@@ -999,6 +1011,7 @@ class Layout_Single_Post extends Base_Customizer {
 		if ( ! self::is_cover_layout() ) {
 			return false;
 		}
+
 		return get_theme_mod( 'neve_post_cover_title_boxed_layout', false );
 	}
 }

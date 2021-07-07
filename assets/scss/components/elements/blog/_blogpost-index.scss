@@ -9,8 +9,11 @@
 }
 
 .nv-post-thumbnail-wrap {
+  a, img {
+	display: block;
+  }
+
   amp-img, img {
-	display: inline-block;
 	box-shadow: var(--boxShadow, none)
   }
 }
