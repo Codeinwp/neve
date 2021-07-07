@@ -43,7 +43,7 @@ abstract class Page_Builder_Base {
 		}
 
 		$post_id = get_the_ID();
-		if ( ! isset( $post_id ) || $post_id === false ) {
+		if ( ! $post_id ) {
 			return;
 		}
 
