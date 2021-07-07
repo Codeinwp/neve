@@ -13,7 +13,8 @@ total=$(cat $file1 | grep -E "^\msgid" | sed -E 's/^\+//' <<< $(wc -l))
 # Compute the difference
 pdiff=$(awk '{print $1*100/$2}' <<<"${new} ${total}")
 
-if [[ $pdiff > $PERCENT_TRESHOLD ]]
+#if [[ $pdiff > $PERCENT_TRESHOLD ]]
+if awk "BEGIN {exit !($pdiff >= $PERCENT_TRESHOLD)}";
 then
 	echo "Greater then $PERCENT_TRESHOLD% difference $pdiff% | new lines $new from total $total"
 	exit 1;
