@@ -11,21 +11,10 @@
 	}
   }
 
-  .nv-content-wrap,
-  .nv-tags-list,
-  .nv-post-navigation,
-  .comments-area,
-  .nv-thumb-wrap {
-	&:not( :last-child ){
-	  margin-bottom: var(--spacing, $spacing-aired);
-	}
+  > div:not(:last-child) {
+	margin-bottom: var(--spacing, $spacing-aired);
   }
-
-  .entry-header {
-	&:not( :last-child ){
-	  margin-bottom: var(--spacing);
-	}
-  }
+  
 }
 
 .nv-page-title-wrap {
@@ -206,10 +195,6 @@
   top: 0;
   bottom: 0;
 }
-
-
-
-
 
 .mobile-top {
   align-self: flex-start;
