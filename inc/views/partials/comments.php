@@ -32,7 +32,7 @@ class Comments extends Base_View {
 	 */
 	public function render_comment_form() {
 		$display_form_first    = apply_filters( 'neve_show_comment_form_first', false );
-		$comment_form_settings = $this->get_sumbit_form_settings();
+		$comment_form_settings = neve_is_new_skin() ? $this->get_sumbit_form_settings() : array();
 
 		if ( $display_form_first ) {
 			comment_form( $comment_form_settings );
@@ -107,8 +107,8 @@ class Comments extends Base_View {
 			$form_settings['label_submit'] = $button_text;
 		}
 
-		$boxed_layout = get_theme_mod( 'neve_comments_form_boxed_layout', neve_is_new_skin() );
-		if ( $boxed_layout ) {
+		$boxed_layout = get_theme_mod( 'neve_comments_form_boxed_layout', true );
+		if ( $boxed_layout && neve_is_new_skin() ) {
 			$form_settings['class_container'] = 'comment-respond nv-is-boxed';
 		}
 

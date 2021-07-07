@@ -7,6 +7,8 @@
 
 namespace Neve\Customizer\Defaults;
 
+use Neve\Customizer\Options\Layout_Single_Post;
+
 /**
  * Trait Single_Post_Defaults
  *
@@ -95,7 +97,7 @@ trait Single_Post {
 			'comments',
 		];
 
-		if ( get_theme_mod( 'neve_post_header_layout' ) === 'cover' ) {
+		if ( Layout_Single_Post::is_cover_layout() ) {
 			$default_components = [
 				'content',
 				'tags',
