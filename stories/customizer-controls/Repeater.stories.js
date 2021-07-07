@@ -1,5 +1,4 @@
-import React from 'react';
-import Repeater from "./Repeater";
+import Repeater from "../../inc/customizer/controls/react/src/repeater/Repeater";
 import {
 	CustomizerDecorator,
 } from '../components/decorators';

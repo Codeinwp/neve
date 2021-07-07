@@ -1,0 +1,83 @@
+$general-color: #444;
+
+.nv-repeater-items-container {
+  display: grid;
+  row-gap: 10px;
+  background-color: transparent;
+  transition: all 1s;
+
+  .nv-repeater-item {
+	.nv-repeater-item-header {
+	  display: flex;
+	  flex-direction: row;
+	  border: 1px solid #ddd;
+	  height: 40px;
+	  background-color: #FFFFFF;
+
+	  &.visibility-hidden > * {
+		opacity: .75;
+	  }
+
+	  .repeater-visibility-button {
+		background-color: #ffffff;
+		height: 100%;
+		min-width: 40px;
+		width: 40px;
+		border: 0;
+		border-right: 1px solid #ddd;
+		color: $general-color;
+	  }
+
+	  h4 {
+		display: flex;
+		margin: 0;
+		padding-left: 10px;
+		align-items: center;
+		color: $general-color;
+	  }
+
+	  .repeater-expand-arrow {
+		color: $general-color;
+		height: inherit;
+		width: 30px;
+		margin-left: auto;
+		margin-right: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	  }
+	}
+
+	.nv-repeater-content {
+	  background-color: #FFFFFF;
+	  padding: 10px 10px 10px 10px;
+	  border: 1px solid #ddd;
+	  border-top: 0;
+	  display: grid;
+	  row-gap: 10px;
+
+	  .customize-control-title {
+		font-size: 13px;
+		line-height: 1.4em;
+		font-weight: normal;
+		color: #444444;
+	  }
+	}
+  }
+}
+
+.nv-repeater-options {
+  padding-top: 10px;
+  display: flex;
+  justify-content: end;
+  column-gap: 15px;
+  height: 40px;
+
+  .nv-repeater-reorder-button {
+
+  }
+
+  .nv-repeater-add-item-button {
+	//border: 1px solid #ddd;
+  }
+}
