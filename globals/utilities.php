@@ -1484,3 +1484,20 @@ function neve_is_new_skin() {
 function neve_can_use_conditional_header() {
 	return defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '3.0.0', '<' ) && neve_is_new_builder();
 }
+
+/**
+ * Wrapper for wp_remote_get on VIP environments.
+ *
+ * @param string $url Url to check.
+ * @param array  $args Option params.
+ *
+ * @return array|\WP_Error
+ */
+function neve_safe_get( $url, $args = array() ) {
+	return function_exists( 'vip_safe_wp_remote_get' )
+		? vip_safe_wp_remote_get( $url )
+		: wp_remote_get( //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get, Already used.
+			$url,
+			$args
+		);
+}

@@ -7,8 +7,6 @@
 
 namespace Neve\Admin\Troubleshoot;
 
-use ThemeisleSDK\Product;
-
 /**
  * Class Main
  *
@@ -133,13 +131,7 @@ final class Main {
 		if ( $transient !== false ) {
 			return ( $transient === 'yes' );
 		}
-		$response = wp_remote_get( //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get, Already used.
-			sprintf( '%shealth', Product::API_URL ),
-			array(
-				'timeout'   => 15, //phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout, Inherited by wp_remote_get only, for vip environment we use defaults.
-				'sslverify' => false,
-			)
-		);
+		$response = neve_safe_get( 'https://api.themeisle.com/health' );
 		if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) ) {
 			$reason = is_wp_error( $response ) ? $response->get_error_message() : $response['response']['message'];
 			set_transient( 'neve_troubleshoot_api_reason', $reason, 10 * MINUTE_IN_SECONDS );
