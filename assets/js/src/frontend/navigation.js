@@ -11,6 +11,7 @@ import {
 } from '../utils.js';
 
 let pageUrl;
+const strings = ['dropdown-open', 'active', 'nav-clickaway-overlay'];
 
 /**
  * Initialize nav logic.
@@ -36,7 +37,6 @@ export const initNavigation = () => {
  */
 export const repositionDropdowns = () => {
 	const { isRTL } = NeveProperties;
-	let left, right;
 	const dropDowns = document.querySelectorAll(
 		'.sub-menu, .minimal .nv-nav-search'
 	);
@@ -49,17 +49,13 @@ export const repositionDropdowns = () => {
 			rightDist = bounding.left;
 
 		if (rightDist < 0) {
-			left = isRTL ? 'auto' : 0;
-			right = isRTL ? '-100%' : 'auto';
-			dropDown.style.right = right;
-			dropDown.style.left = left;
+			dropDown.style.right = isRTL ? '-100%' : 'auto';
+			dropDown.style.left = isRTL ? 'auto' : 0;
 		}
 
 		if (rightDist + bounding.width >= windowWidth) {
-			right = isRTL ? 0 : '100%';
-			left = 'auto';
-			dropDown.style.right = right;
-			dropDown.style.left = left;
+			dropDown.style.right = isRTL ? 0 : '100%';
+			dropDown.style.left = 'auto';
 		}
 		if (typeof menuCalcEvent !== 'undefined') {
 			window.dispatchEvent(menuCalcEvent);
@@ -97,11 +93,11 @@ function handleMobileDropdowns() {
 			const subMenu = caret.parentNode.parentNode.querySelector(
 				'.sub-menu'
 			);
-			toggleClass(caret, 'dropdown-open');
-			toggleClass(subMenu, 'dropdown-open');
+			toggleClass(caret, strings[0]);
+			toggleClass(subMenu, strings[0]);
 			createNavOverlay(
-				document.querySelectorAll('.dropdown-open'),
-				'dropdown-open'
+				document.querySelectorAll(`.${strings[0]}`),
+				strings[0]
 			);
 		});
 	});
@@ -119,12 +115,12 @@ function handleSearch() {
 		searchItem.addEventListener('click', (e) => {
 			e.preventDefault();
 			e.stopPropagation();
-			toggleClass(searchItem, 'active');
+			toggleClass(searchItem, strings[1]);
 			setTimeout(() => {
 				searchItem.querySelector('.search-field').focus();
 			}, 50);
 			if (!isMobile()) {
-				createNavOverlay(searchItem, 'active');
+				createNavOverlay(searchItem, strings[1]);
 			}
 		});
 	});
@@ -139,9 +135,9 @@ function handleSearch() {
 		button.addEventListener('click', (e) => {
 			e.preventDefault();
 			neveEach(navItem, (search) => {
-				removeClass(search, 'active');
+				removeClass(search, strings[1]);
 			});
-			const overlay = document.querySelector('.nav-clickaway-overlay');
+			const overlay = document.querySelector(`.${strings[2]}`);
 			if (overlay === null) {
 				return;
 			}
@@ -176,12 +172,12 @@ window.addEventListener('resize', handleMiniCartPosition);
  * @param {string} classToRemove
  */
 function createNavOverlay(item, classToRemove) {
-	let navClickaway = document.querySelector('.nav-clickaway-overlay');
+	let navClickaway = document.querySelector(`.${strings[2]}`);
 	if (navClickaway !== null) {
 		navClickaway.parentNode.removeChild(navClickaway);
 	}
 	navClickaway = document.createElement('div');
-	addClass(navClickaway, 'nav-clickaway-overlay');
+	addClass(navClickaway, strings[2]);
 
 	const primaryNav = document.querySelector('header.header');
 	primaryNav.parentNode.insertBefore(navClickaway, primaryNav);
@@ -204,10 +200,10 @@ function handleIeDropdowns() {
 		const parentItem = dropdown.parentNode;
 
 		parentItem.addEventListener('mouseenter', () => {
-			addClass(dropdown, 'dropdown-open');
+			addClass(dropdown, strings[0]);
 		});
 		parentItem.addEventListener('mouseleave', () => {
-			removeClass(dropdown, 'dropdown-open');
+			removeClass(dropdown, strings[0]);
 		});
 	});
 }
