@@ -34,10 +34,10 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	/**
 	 * Add the caret inside the menu item link.
 	 *
-	 * @param string $title menu item title.
-	 * @param object $item menu item object.
-	 * @param object $args menu args.
-	 * @param int    $depth the menu item depth.
+	 * @param string    $title menu item title.
+	 * @param \WP_Post  $item menu item object.
+	 * @param \stdClass $args menu args.
+	 * @param int       $depth the menu item depth.
 	 *
 	 * @return string
 	 */
