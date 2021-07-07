@@ -303,11 +303,11 @@ class Post_Layout extends Base_View {
 	 * Get alignment classes for the title on the cover layout.
 	 *
 	 * @param string $theme_mod Theme mod id.
-	 * @param string $default   The default value for the control.
+	 * @param array  $default   The default value for the control.
 	 *
 	 * @return string
 	 */
-	private function get_alignment_classes( $theme_mod, $default = null ) {
+	private function get_alignment_classes( $theme_mod, $default = array() ) {
 		$classes = [];
 
 		$title_alignment = get_theme_mod( $theme_mod, $default );
