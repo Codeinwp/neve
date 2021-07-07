@@ -287,6 +287,17 @@ class Css_Prop {
 		return $suffix;
 	}
 
+	/**
+	 * Transforms the directional properties.
+	 *
+	 * @param array $meta Meta array.
+	 * @param string $device Current device.
+	 * @param string $value Value.
+	 * @param string $css_prop Css Property.
+	 * @param string $type Type of directional property.
+	 *
+	 * @return string
+	 */
 	public static function transform_directional_prop( $meta, $device, $value, $css_prop, $type ) {
 
 		$suffix   = self::get_suffix( $meta, $device, $value, $css_prop );
@@ -304,6 +315,10 @@ class Css_Prop {
 				$suffix = '';
 			}
 
+			if ( empty( $value['top'] ) ) {
+				return '';
+			}
+
 			$template .= $value['top'] . $suffix;
 
 			return $css_prop . ':' . $template . ';';
@@ -312,6 +327,10 @@ class Css_Prop {
 		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
 			$top_suffix   = absint( $value['top'] ) === 0 ? '' : $suffix;
 			$right_suffix = absint( $value['right'] ) === 0 ? '' : $suffix;
+
+			if( empty( $value['top'] ) && empty( $value['right'] ) ) {
+				return '';
+			}
 
 			$template .= $value['top'] . $top_suffix . ' ' . $value['right'] . $right_suffix;
 
@@ -325,6 +344,10 @@ class Css_Prop {
 				continue;
 			}
 			$template .= $value[ $direction ] . $suffix . ' ';
+		}
+
+		if( empty( $template ) ) {
+			return '';
 		}
 
 		$template = trim( $template ) . ';';

@@ -25,6 +25,9 @@
   word-wrap: break-word;
 }
 
+.article-content-col {
+  width: 100%;
+}
 
 .article-content-col .content {
   width: 100%;
@@ -68,6 +71,7 @@
   .non-grid-content {
 	display: flex;
 	flex-direction: column;
+	flex-grow: 1;
 
 	> * {
 	  margin: 0 0 $spacing-md;

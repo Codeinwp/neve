@@ -222,17 +222,17 @@ class Frontend extends Generator {
 			return false;
 		}
 
-		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
-		if ( ! in_array( $blog_layout, [ 'grid', 'covers' ], true ) ) {
-			return false;
-		}
-
 		$this->_subscribers[':root'] = [
 			'--postWidth' => [
 				Dynamic_Selector::META_KEY           => 'neve_grid_layout',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => '{"desktop":1,"tablet":1,"mobile":1}',
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+					$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
+					if ( ! in_array( $blog_layout, [ 'grid', 'covers' ], true ) ) {
+						return sprintf( '%s:%s;', $css_prop, '100%' );
+					}
+
 					if ( $value < 1 ) {
 						$value = 1;
 					}
@@ -1070,7 +1070,7 @@ class Frontend extends Generator {
 				[
 					$this,
 					'add_form_buttons_hover',
-				] 
+				]
 			);
 
 			return;
