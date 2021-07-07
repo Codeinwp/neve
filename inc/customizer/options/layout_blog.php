@@ -527,7 +527,7 @@ class Layout_Blog extends Base_Customizer {
 	 *
 	 * @param string $value value from the control.
 	 *
-	 * @return bool
+	 * @return string
 	 */
 	public function sanitize_blog_layout( $value ) {
 		$allowed_values = array( 'default', 'covers', 'grid' );
@@ -543,7 +543,7 @@ class Layout_Blog extends Base_Customizer {
 	 *
 	 * @param string $value value from the control.
 	 *
-	 * @return bool
+	 * @return string
 	 */
 	public function sanitize_pagination_type( $value ) {
 		$allowed_values = array( 'number', 'infinite' );
