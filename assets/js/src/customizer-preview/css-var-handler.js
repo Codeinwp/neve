@@ -216,7 +216,7 @@ export class CSSVariablesHandler {
 
 		let directionalValue = '';
 		directions.forEach((direction) => {
-			if (!value[direction]) {
+			if (value[direction] !== 0 && !value[direction]) {
 				directionalValue += this.fallback ? `${this.fallback} ` : '0 ';
 			} else {
 				directionalValue += `${value[direction]}${suffix} `;

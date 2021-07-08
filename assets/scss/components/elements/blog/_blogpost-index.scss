@@ -19,7 +19,6 @@
 }
 
 .posts-wrapper > article {
-  padding: 0 15px;
   margin-bottom: $spacing-aired;
   width: var(--postWidth);
 }
@@ -51,6 +50,7 @@
 
 .posts-wrapper {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: $spacing-xl;
 }
 

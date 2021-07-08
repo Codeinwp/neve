@@ -8,8 +8,7 @@
 }
 
 .builder-item {
-  margin-top: 4px;
-  margin-bottom: 4px;
+  margin: 4px 0;
   position: relative;
   min-height: 1px;
   padding-right: 15px;
@@ -27,8 +26,7 @@
 $desktop: map-get($gl-devices-list, desktop);
 @media #{$desktop}{
   .builder-item {
-	margin-top: 8px;
-	margin-bottom: 8px;
+	margin: 8px 0;
   }
 }
 

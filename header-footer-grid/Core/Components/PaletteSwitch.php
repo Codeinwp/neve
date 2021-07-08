@@ -108,6 +108,7 @@ class PaletteSwitch extends Abstract_Component {
 		}
 		.toggle-palette .icon {
 			display: flex;
+			width: var(--iconSize);
 		}
 		.toggle-palette .label {
 			font-size: 0.85em;
@@ -250,43 +251,39 @@ class PaletteSwitch extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                    => self::DARK_PALETTE_ID,
-				'group'                 => $this->get_id(),
-				'tab'                   => SettingsManager::TAB_GENERAL,
-				'transport'             => 'refresh',
-				'sanitize_callback'     => 'wp_filter_nohtml_kses',
-				'label'                 => __( 'Dark Palette', 'neve' ),
-				'description'           => __( 'Dark Palette', 'neve' ),
-				'type'                  => 'Neve\Customizer\Controls\React\Inline_Select',
-				'default'               => $dark_palette_default,
-				'options'               => [
+				'id'                => self::DARK_PALETTE_ID,
+				'group'             => $this->get_id(),
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
+				'label'             => __( 'Dark Palette', 'neve' ),
+				'description'       => __( 'Dark Palette', 'neve' ),
+				'type'              => 'Neve\Customizer\Controls\React\Inline_Select',
+				'default'           => $dark_palette_default,
+				'options'           => [
 					'options'    => $available_palettes,
 					'default'    => $dark_palette_default,
 					'changes_on' => 'neve_global_colors',
 				],
-				'live_refresh_selector' => true,
-				'section'               => $this->section,
-				'conditional_header'    => true,
+				'section'           => $this->section,
 			]
 		);
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                    => self::TOGGLE_ICON_ID,
-				'group'                 => $this->get_id(),
-				'tab'                   => SettingsManager::TAB_GENERAL,
-				'transport'             => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback'     => 'wp_filter_nohtml_kses',
-				'label'                 => __( 'Select icon', 'neve' ),
-				'description'           => __( 'Select icon', 'neve' ),
-				'type'                  => 'Neve\Customizer\Controls\React\Radio_Buttons',
-				'default'               => 'contrast',
-				'options'               => [
+				'id'                => self::TOGGLE_ICON_ID,
+				'group'             => $this->get_id(),
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
+				'label'             => __( 'Select icon', 'neve' ),
+				'description'       => __( 'Select icon', 'neve' ),
+				'type'              => 'Neve\Customizer\Controls\React\Radio_Buttons',
+				'default'           => 'contrast',
+				'options'           => [
 					'is_for' => 'palette_switch',
 				],
-				'live_refresh_selector' => true,
-				'section'               => $this->section,
-				'conditional_header'    => true,
+				'section'           => $this->section,
 			]
 		);
 
@@ -308,16 +305,21 @@ class PaletteSwitch extends Abstract_Component {
 				'default'               => $default_size_values,
 				'options'               => [
 					'input_attrs' => [
-						'step'           => 1,
-						'min'            => 8,
-						'max'            => 120,
-						'defaultVal'     => $default_size_values,
-						'units'          => [ 'px' ],
-						'hideResponsive' => false,
+						'step'       => 1,
+						'min'        => 8,
+						'max'        => 120,
+						'defaultVal' => $default_size_values,
+						'units'      => [ 'px' ],
 					],
 				],
 				'live_refresh_selector' => $this->default_selector . ' div.component-wrap .palette-icon-wrapper svg',
 				'live_refresh_css_prop' => array(
+					'cssVar'  => [
+						'vars'       => '--iconSize',
+						'responsive' => true,
+						'suffix'     => 'px',
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'type'    => 'svg-icon-size',
 					'default' => self::DEFAULT_ICON_SIZE,
 				),
@@ -374,6 +376,22 @@ class PaletteSwitch extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
+		if ( neve_is_new_skin() ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
+				Dynamic_Selector::KEY_RULES    => [
+					'--iconSize' => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
+						Dynamic_Selector::META_DEFAULT => '{ "mobile": "' . self::DEFAULT_ICON_SIZE . '", "tablet": "' . self::DEFAULT_ICON_SIZE . '", "desktop": "' . self::DEFAULT_ICON_SIZE . '" }',
+						Dynamic_Selector::META_SUFFIX  => 'px',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+					],
+				],
+			];
+
+			return parent::add_style( $css_array );
+		}
+
 		$selector = '.builder-item--' . $this->get_id() . ' .toggle-palette a.toggle span.icon';
 
 		$css_array[] = [
