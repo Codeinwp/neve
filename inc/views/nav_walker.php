@@ -82,10 +82,6 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @see   Walker::start_el()
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
-		if ( is_null( $args ) ) {
-			$args = new \stdClass();
-		}
-
 		if ( ! is_object( $args ) ) {
 			return;
 		}
