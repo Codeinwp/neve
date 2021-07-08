@@ -72,16 +72,20 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	/**
 	 * Start_el
 	 *
-	 * @param string   $output Output.
-	 * @param \WP_Post $item Item.
-	 * @param int      $depth Depth.
-	 * @param array    $args Args.
-	 * @param int      $id id.
+	 * @param string    $output Output.
+	 * @param \WP_Post  $item Item.
+	 * @param int       $depth Depth.
+	 * @param \stdClass $args Args.
+	 * @param int       $id id.
 	 * @since 3.0.0
 	 *
 	 * @see   Walker::start_el()
 	 */
-	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+		if ( is_null( $args ) ) {
+			$args = new \stdClass();
+		}
+
 		if ( ! is_object( $args ) ) {
 			return;
 		}
