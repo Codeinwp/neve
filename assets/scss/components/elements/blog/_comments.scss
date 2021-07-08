@@ -63,6 +63,10 @@
   .vcard {
 	display: grid;
 
+	a {
+	  color: var(--color, var(--nv-text-color));
+	}
+
 	.author {
 	  font-weight: 700;
 	}

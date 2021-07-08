@@ -1161,13 +1161,13 @@ class Frontend extends Generator {
 		];
 
 		$boxed_title_rules = [
-			'--padding'    => [
+			'--padding' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_BOXED_TITLE_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-			'--background' => [
+			'--bgColor' => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
 			],
 		];
@@ -1178,13 +1178,13 @@ class Frontend extends Generator {
 		];
 
 		$overlay_rules = [
-			'--background' => [
+			'--bgColor'   => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BACKGROUND_COLOR,
 			],
-			'--blendMode'  => [
+			'--blendMode' => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BLEND_MODE,
 			],
-			'--opacity'    => [
+			'--opacity'   => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_OVERLAY_OPACITY,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 0.5, "tablet": 0.5, "desktop": 0.5 }',
@@ -1197,16 +1197,16 @@ class Frontend extends Generator {
 		];
 
 		$boxed_comments_rules = [
-			'--padding'    => [
+			'--padding' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-			'--background' => [
+			'--bgColor' => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_BACKGROUND_COLOR,
 			],
-			'--color'      => [
+			'--color'   => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_TEXT_COLOR,
 			],
 		];
@@ -1217,16 +1217,16 @@ class Frontend extends Generator {
 		];
 
 		$boxed_comment_form_rules = [
-			'--padding'    => [
+			'--padding' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_FORM_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-			'--background' => [
+			'--bgColor' => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_FORM_BACKGROUND_COLOR,
 			],
-			'--color'      => [
+			'--color'   => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_FORM_TEXT_COLOR,
 			],
 		];

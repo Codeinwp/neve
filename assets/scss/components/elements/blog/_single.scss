@@ -3,7 +3,7 @@
 .nv-single-post-wrap {
   > div {
 	&:first-child {
-	  padding-top: $spacing-aired;
+	  margin-top: $spacing-aired;
 	}
 
 	&:last-child {
@@ -14,7 +14,6 @@
   > div:not(:last-child) {
 	margin-bottom: var(--spacing, $spacing-aired);
   }
-  
 }
 
 .nv-page-title-wrap {
@@ -150,12 +149,12 @@
 
 .nv-is-boxed{
   padding: var(--padding);
-  background: var(--background,var(--nv-light-bg));
+  background: var(--bgColor,var(--nv-light-bg));
   color: var(--color, var(--nv-text-color));
 
   &.nv-title-meta-wrap {
 	padding: var(--padding);
-	background: var(--background, var(--nv-light-bg));
+	background: var(--bgColor, var(--nv-light-bg));
   }
 
   &.nv-comments-wrap {
@@ -184,7 +183,7 @@
 }
 
 .nv-overlay {
-  background-color: var(--background,var(--nv-dark-bg));
+  background-color: var(--bgColor,var(--nv-dark-bg));
   mix-blend-mode: var(--blendMode,normal);
   opacity: var(--opacity);
   position: absolute;

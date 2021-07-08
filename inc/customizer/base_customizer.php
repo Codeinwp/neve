@@ -394,7 +394,7 @@ abstract class Base_Customizer {
 
 			$background_live_refresh_settings = [
 				'cssVar' => array(
-					'vars'     => '--background',
+					'vars'     => '--bgColor',
 					'selector' => $settings['boxed_selector'],
 				),
 			];

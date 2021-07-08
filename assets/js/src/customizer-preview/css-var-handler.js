@@ -215,9 +215,12 @@ export class CSSVariablesHandler {
 		}
 
 		let directionalValue = '';
-
 		directions.forEach((direction) => {
-			directionalValue += `${value[direction]}${suffix} `;
+			if (!value[direction]) {
+				directionalValue += this.fallback ? `${this.fallback} ` : '0 ';
+			} else {
+				directionalValue += `${value[direction]}${suffix} `;
+			}
 		});
 
 		directionalValue = directionalValue.trim();

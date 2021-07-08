@@ -361,7 +361,7 @@ class Layout_Single_Post extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => array(
-							'vars'     => '--background',
+							'vars'     => '--bgColor',
 							'selector' => '.nv-overlay',
 						),
 					],
@@ -583,13 +583,13 @@ class Layout_Single_Post extends Base_Customizer {
 		);
 
 		if ( neve_is_new_skin() ) {
-
 			$this->add_control(
 				new Control(
 					'neve_single_post_elements_spacing',
 					[
 						'sanitize_callback' => 'neve_sanitize_range_value',
 						'transport'         => $this->selective_refresh,
+						'default'           => '{"desktop":60,"tablet":60,"mobile":60}',
 					],
 					[
 						'label'                 => esc_html__( 'Spacing between elements', 'neve' ),
