@@ -42,7 +42,7 @@ abstract class Base_Customizer {
 	/**
 	 * Controls to register.
 	 *
-	 * @var array  Controls that will be registered.
+	 * @var array  Controls that will be registered. (list of \Neve\Customizer\Types\Control instances.)
 	 */
 	private $controls_to_register = array();
 
@@ -158,6 +158,7 @@ abstract class Base_Customizer {
 	 */
 	private function register_controls() {
 		$controls = $this->controls_to_register;
+		/** @var \Neve\Customizer\Types\Control $control */
 		foreach ( $controls as $control ) {
 			$this->wpc->add_setting( $control->id, $control->setting_args );
 			$control_type = null;
