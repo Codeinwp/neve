@@ -34,13 +34,13 @@ class Radio_Buttons extends \WP_Customize_Control {
 	/**
 	 * Should have larger buttons.
 	 *
-	 * @var array
+	 * @var bool
 	 */
 	public $large_buttons = false;
 	/**
 	 * Show the labels.
 	 *
-	 * @var array
+	 * @var bool
 	 */
 	public $show_labels = false;
 
