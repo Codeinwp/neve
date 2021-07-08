@@ -22,7 +22,7 @@ class Button_Appearance extends \WP_Customize_Control {
 	/**
 	 * Additional arguments passed to JS.
 	 *
-	 * @var array
+	 * @var bool
 	 */
 	public $no_hover = false;
 
