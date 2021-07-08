@@ -5,6 +5,10 @@ parameters:
         - globals
         - inc
         - header-footer-grid/Core
+        - header-footer-grid/loader.php
+        - header-footer-grid/Main.php
+        - header-footer-grid/functions-migration.php
+        - header-footer-grid/functions-template.php
     bootstrapFiles:
         - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
     dynamicConstantNames:
