@@ -5,63 +5,85 @@ $general-color: #444;
   row-gap: 10px;
   background-color: transparent;
   transition: all 1s;
+}
 
-  .nv-repeater-item {
-	.nv-repeater-item-header {
+.nv-repeater-item {
+  .nv-repeater-item-header {
+	display: flex;
+	flex-direction: row;
+	border: 1px solid #ddd;
+	height: 40px;
+	background-color: #FFFFFF;
+
+	&.visibility-hidden > * {
+	  opacity: .75;
+	}
+
+	.dashicon {
+	  color: $general-color;
+	  height: inherit;
+	  width: 30px;
+	  margin-left: auto;
+	  margin-right: 0;
 	  display: flex;
-	  flex-direction: row;
-	  border: 1px solid #ddd;
-	  height: 40px;
+	  justify-content: center;
+	  align-items: center;
+	}
+
+	.repeater-visibility-button {
+	  background-color: #ffffff;
+	  height: 100%;
+	  min-width: 40px;
+	  width: 40px;
+	  border: 0;
+	  border-right: 1px solid #ddd;
+	  color: $general-color;
+	}
+
+	.nv-repeater-expand-button {
+	  border: none;
 	  background-color: #FFFFFF;
+	  display: flex;
+	  width: 100%;
+	}
 
-	  &.visibility-hidden > * {
-		opacity: .75;
-	  }
+	.nv-repeater-handle {
+	  border: none;
+	  background-color: #FFFFFF;
+	  margin-left: auto;
+	  width: 40px;
 
-	  .repeater-visibility-button {
-		background-color: #ffffff;
-		height: 100%;
-		min-width: 40px;
-		width: 40px;
-		border: 0;
-		border-right: 1px solid #ddd;
-		color: $general-color;
-	  }
-
-	  h4 {
-		display: flex;
-		margin: 0;
-		padding-left: 10px;
-		align-items: center;
-		color: $general-color;
-	  }
-
-	  .repeater-expand-arrow {
-		color: $general-color;
-		height: inherit;
-		width: 30px;
-		margin-left: auto;
-		margin-right: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+	  .dashicon {
+		color: #bfbfbf;
 	  }
 	}
 
-	.nv-repeater-content {
-	  background-color: #FFFFFF;
-	  padding: 10px 10px 10px 10px;
-	  border: 1px solid #ddd;
-	  border-top: 0;
-	  display: grid;
-	  row-gap: 10px;
+	h4 {
+	  display: flex;
+	  margin: 0;
+	  padding-left: 10px;
+	  align-items: center;
+	  color: $general-color;
+	}
+  }
 
-	  .customize-control-title {
-		font-size: 13px;
-		line-height: 1.4em;
-		font-weight: normal;
-		color: #444444;
-	  }
+  .nv-repeater-content {
+	background-color: #FFFFFF;
+	padding: 10px 10px 10px 10px;
+	border: 1px solid #ddd;
+	border-top: 0;
+	display: grid;
+	row-gap: 10px;
+
+	.customize-control-title {
+	  font-size: 13px;
+	  line-height: 1.4em;
+	  font-weight: normal;
+	  color: #444444;
+	}
+
+	.nv-repeater-remove-button {
+	  width: max-content;
 	}
   }
 }
@@ -74,7 +96,7 @@ $general-color: #444;
   height: 40px;
 
   .nv-repeater-reorder-button {
-
+	padding: 0 10px 0 10px;
   }
 
   .nv-repeater-add-item-button {

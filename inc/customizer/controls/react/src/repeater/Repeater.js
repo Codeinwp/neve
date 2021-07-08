@@ -1,18 +1,17 @@
 import '../scss/_repeater.scss';
-import Item from './RepeaterItem';
+import { SortableRepeaterItem } from './RepeaterItem';
 import PropTypes from 'prop-types';
 import { Button } from '@wordpress/components';
 import { useState } from '@wordpress/element';
+import { SortableContainer } from 'react-sortable-hoc';
+import arrayMove from 'array-move';
 
-const List = ({ children }) => (
+const List = SortableContainer(({ children }) => (
 	<div className="nv-repeater-items-container">{children}</div>
-);
+));
 
 const Repeater = ({ value, onUpdate }) => {
 	const [sorting, setSorting] = useState(false);
-	const isContact = value[0]
-		? value[0].hasOwnProperty('item_type')
-		: undefined;
 
 	const handleToggle = (index) => {
 		const newValue = [...value];
@@ -23,84 +22,60 @@ const Repeater = ({ value, onUpdate }) => {
 
 	const handleAddItem = () => {
 		const newValue = [...value];
-		if (!isContact) {
-			newValue.push({
-				visibility: 'yes',
-				title: '',
-				icon: '',
-				url: '',
-				icon_color: '',
-				background_color: '',
-			});
-			onUpdate(newValue);
-			return;
+		const newItem = {};
+
+		for (const [field] of Object.entries(newValue[0])) {
+			newItem[field] = '';
 		}
 
-		newValue.push({
-			title: '',
-			icon: '',
-			item_type: '',
-			visibility: 'yes',
-		});
+		newItem.visibility = 'yes';
+		newValue.push(newItem);
 		onUpdate(newValue);
 	};
 
 	const handleRemove = (index) => {
 		const newValue = [...value];
 		newValue.splice(index, 1);
-
 		onUpdate(newValue);
 	};
 
-	const handleContentChange = (index) => (type) => (newData) => {
+	const handleContentChange = (index, newItemValue) => {
 		const newValue = [...value];
-
-		switch (type) {
-			case 'title':
-				newValue[index].title = newData;
-				break;
-			case 'icon':
-				newValue[index].icon = newData;
-				break;
-			case 'url':
-				newValue[index].url = newData;
-				break;
-			case 'icon_color':
-				newValue[index].icon_color = newData;
-				break;
-			case 'background_color':
-				newValue[index].background_color = newData;
-				break;
-			case 'item_type':
-				newValue[index].item_type = newData;
-				break;
-		}
+		newValue[index] = newItemValue;
 		onUpdate(newValue);
 	};
 
-	const listItems = [];
-	for (let i = 0; i < value.length; ++i) {
-		listItems[i] = (
-			<Item
-				value={value}
-				onToggle={handleToggle}
-				onContentChange={handleContentChange(i)}
-				onRemove={handleRemove}
-				index={i}
-				sorting={sorting}
-				key={'repeater-item-' + i}
-			/>
-		);
-	}
+	const handleSortEnd = ({ newIndex, oldIndex }) => {
+		const newOrder = arrayMove(value, oldIndex, newIndex);
+		onUpdate(newOrder);
+	};
 
 	return (
 		<>
-			<List children={listItems} />
+			<List lockAxis="y" useDragHandle onSortEnd={handleSortEnd}>
+				{value.map((val, index) => {
+					return (
+						<SortableRepeaterItem
+							className="nv-repeater-item"
+							value={value}
+							itemIndex={index}
+							onToggle={handleToggle}
+							onContentChange={(newItemValue) =>
+								handleContentChange(index, newItemValue)
+							}
+							onRemove={handleRemove}
+							index={index}
+							sorting={sorting}
+							key={'repeater-item-' + index}
+						/>
+					);
+				})}
+			</List>
 			<div className="nv-repeater-options">
 				{value.length > 1 && (
 					<Button
+						className="nv-repeater-reorder-button"
 						isLink
-						style={{ padding: '0 10px 0 10px' }}
 						onClick={() => {
 							setSorting(!sorting);
 						}}
