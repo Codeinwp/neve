@@ -112,12 +112,12 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	/**
 	 * Ends the element output, if needed.
 	 *
-	 * @param string   $output the end el string.
-	 * @param \WP_Post $item item.
-	 * @param int      $depth item depth.
-	 * @param array    $args item args.
+	 * @param string    $output the end el string.
+	 * @param \WP_Post  $item item.
+	 * @param int       $depth item depth.
+	 * @param \stdClass $args item args.
 	 */
-	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
+	public function end_el( &$output, $item, $depth = 0, $args = null ) {
 		if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
 			$t = '';
 			$n = '';
