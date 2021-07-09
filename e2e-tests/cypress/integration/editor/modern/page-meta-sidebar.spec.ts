@@ -6,16 +6,24 @@ describe('Single page sidebar', function () {
 	};
 
 	before('Create new page named "' + pageSetup.title + '".', function () {
-		cy.insertPostWithRequest(pageSetup.title, pageSetup.content, 'pages').then(() => {
-			pageSetup.url = window.localStorage.getItem('postUrl');
-		});
+		cy.insertPostWithRequest(pageSetup.title, pageSetup.content, 'pages')
+			.then(() => {
+				pageSetup.url = window.localStorage.getItem('postUrl');
+			})
+			.then(() => {
+				cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
+					meta: {
+						neve_meta_sidebar: 'full-width',
+						neve_meta_enable_content_width: 'on',
+						neve_meta_content_width: 100,
+					},
+				});
+			});
 
 		cy.setCustomizeSettings({
 			neve_migrated_hfg_colors: true,
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
-			neve_default_sidebar_layout: 'full-width',
-			neve_sitewide_content_width: 100,
 		});
 		cy.saveLocalStorage();
 	});

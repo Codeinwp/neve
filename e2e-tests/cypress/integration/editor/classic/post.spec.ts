@@ -5,9 +5,17 @@ describe('Posts meta box default settings', function () {
 		url: '/',
 	};
 	before('Create new post named "' + postSetup.title + '".', function () {
-		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4).then(() => {
-			postSetup.url = window.localStorage.getItem('postUrl');
-		});
+		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4)
+			.then(() => {
+				postSetup.url = window.localStorage.getItem('postUrl');
+			})
+			.then(() => {
+				cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'posts', {
+					meta: {
+						neve_meta_content_width: 0,
+					},
+				});
+			});
 
 		cy.setCustomizeSettings({
 			neve_migrated_hfg_colors: true,

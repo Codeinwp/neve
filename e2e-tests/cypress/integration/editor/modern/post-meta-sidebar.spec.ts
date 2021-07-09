@@ -3,19 +3,20 @@ describe('Single post meta sidebar', function () {
 		title: 'Test Post',
 		content: 'The Post Content',
 		url: '/',
-		id: 'banana',
 	};
 
 	before('Create new post named "' + postSetup.title + '".', function () {
 		cy.createTagWithRequest('tag-test');
-		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4).then(() => {
-			postSetup.url = window.localStorage.getItem('postUrl');
-			postSetup.id = window.localStorage.getItem('postId').toString();
-			const tagId = parseInt(window.localStorage.getItem('tagId'));
-			cy.log(postSetup.id);
-			cy.log(postSetup.url);
-			cy.updatePageOrPostByRequest(postSetup.id, 'posts', { tags: tagId });
-		});
+		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4)
+			.then(() => {
+				postSetup.url = window.localStorage.getItem('postUrl');
+			})
+			.then(() => {
+				const tagId = parseInt(window.localStorage.getItem('tagId'));
+				cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'posts', {
+					tags: tagId,
+				});
+			});
 
 		cy.setCustomizeSettings({
 			neve_migrated_hfg_colors: true,
