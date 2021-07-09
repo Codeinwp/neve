@@ -20,6 +20,7 @@ const Handle = SortableHandle(() => (
 ));
 
 const RepeaterItem = ({
+	fields,
 	value,
 	itemIndex,
 	sorting,
@@ -33,9 +34,13 @@ const RepeaterItem = ({
 	const arrowDown = <Icon icon="arrow-down" />;
 	const visibleIcon = <Icon icon="visibility" />;
 	const hiddenIcon = <Icon icon="hidden" />;
+	const itemLabel = (
+		<h4>
+			{value[itemIndex].title === '' ? 'Item' : value[itemIndex].title}
+		</h4>
+	);
 
 	const toggleExpand = () => {
-		if (sorting) return;
 		setExpanded(!expanded);
 	};
 
@@ -62,21 +67,21 @@ const RepeaterItem = ({
 						{visible ? visibleIcon : hiddenIcon}
 					</button>
 				</Tooltip>
-				<button
-					className="nv-repeater-expand-button"
-					onClick={toggleExpand}
-				>
-					<h4>
-						{value[itemIndex].title === ''
-							? 'Item'
-							: value[itemIndex].title}
-					</h4>
-					{!sorting && (expanded ? arrowUp : arrowDown)}
-					{sorting && visible && <Handle />}
-				</button>
+				{!sorting && (
+					<button
+						className="nv-repeater-expand-button"
+						onClick={toggleExpand}
+					>
+						{itemLabel}
+						{expanded ? arrowUp : arrowDown}
+					</button>
+				)}
+				{sorting && itemLabel}
+				{sorting && <Handle />}
 			</div>
 			{!sorting && expanded && (
 				<RepeaterItemContent
+					fields={fields}
 					value={value}
 					index={itemIndex}
 					onContentChange={onContentChange}

@@ -10,7 +10,7 @@ const List = SortableContainer(({ children }) => (
 	<div className="nv-repeater-items-container">{children}</div>
 ));
 
-const Repeater = ({ value, onUpdate }) => {
+const Repeater = ({ fields, value, onUpdate }) => {
 	const [sorting, setSorting] = useState(false);
 
 	const handleToggle = (index) => {
@@ -57,6 +57,7 @@ const Repeater = ({ value, onUpdate }) => {
 					return (
 						<SortableRepeaterItem
 							className="nv-repeater-item"
+							fields={fields}
 							value={value}
 							itemIndex={index}
 							onToggle={handleToggle}

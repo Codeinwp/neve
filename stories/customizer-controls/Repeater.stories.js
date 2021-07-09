@@ -2,7 +2,7 @@ import Repeater from "../../inc/customizer/controls/react/src/repeater/Repeater"
 import {
 	CustomizerDecorator,
 } from '../components/decorators';
-import { SOCIAL_ICONS_DEFAULT, CONTACT_DEFAULT } from '../utils/values';
+import { SOCIAL_ICONS_DEFAULT, CONTACT_DEFAULT, FIELDS } from '../utils/values';
 import { useState } from '@wordpress/element';
 
 export default {
@@ -10,7 +10,8 @@ export default {
 	component: Repeater,
 	args: {
 		label: 'Repeater',
-		components: SOCIAL_ICONS_DEFAULT
+		components: SOCIAL_ICONS_DEFAULT,
+		fields: FIELDS
 	},
 	decorators: [ CustomizerDecorator ],
 };

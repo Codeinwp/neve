@@ -1,8 +1,15 @@
-import { FIELDS } from '../../../../../../stories/utils/values';
 import { Button, SelectControl, TextControl } from '@wordpress/components';
+import ICONS from '../common/icons';
+import IconSelector from './IconSelector';
 import ColorControl from '../common/ColorControl';
 
-const RepeaterItemContent = ({ value, index, onContentChange, onRemove }) => {
+const RepeaterItemContent = ({
+	fields,
+	value,
+	index,
+	onContentChange,
+	onRemove,
+}) => {
 	const changeContent = (type, newData) => {
 		const newItemValue = { ...value[index] };
 		newItemValue[type] = newData;
@@ -10,12 +17,12 @@ const RepeaterItemContent = ({ value, index, onContentChange, onRemove }) => {
 	};
 
 	const toComponent = (key) => {
-		if (FIELDS[key] === undefined) return null;
-		switch (FIELDS[key].type) {
+		if (fields[key] === undefined) return null;
+		switch (fields[key].type) {
 			case 'text':
 				return (
 					<TextControl
-						label={FIELDS[key].label}
+						label={fields[key].label}
 						value={value[index][key]}
 						onChange={(newData) => changeContent(key, newData)}
 						key={key + index}
@@ -23,23 +30,19 @@ const RepeaterItemContent = ({ value, index, onContentChange, onRemove }) => {
 				);
 			case 'icon':
 				return (
-					<SelectControl
-						label={FIELDS[key].label}
+					<IconSelector
+						label={fields[key].label}
 						value={value[index][key]}
-						onChange={(newData) => changeContent(key, newData)}
-						options={[
-							{
-								value: value[index].icon,
-								label: value[index].icon,
-							},
-						]}
+						onIconChoice={(newData) => changeContent(key, newData)}
+						icons={ICONS}
 						key={key + index}
 					/>
 				);
 			case 'color':
 				return (
 					<ColorControl
-						label={FIELDS[key].label}
+						className="repeater-color-control"
+						label={fields[key].label}
 						selectedColor={value[index][key]}
 						onChange={(newData) => changeContent(key, newData)}
 						disableGlobal
@@ -49,17 +52,14 @@ const RepeaterItemContent = ({ value, index, onContentChange, onRemove }) => {
 			case 'select':
 				return (
 					<SelectControl
-						label={FIELDS[key].label}
+						label={fields[key].label}
 						value={value[index][key]}
 						onChange={(newData) => changeContent(key, newData)}
-						options={
-							// ???
-							Object.values(FIELDS[key].choices)
-								.map(Object.entries)
-								.map(([[k, v]]) => {
-									return { value: k, label: v };
-								})
-						}
+						options={Object.values(fields[key].choices)
+							.map(Object.entries)
+							.map(([[k, v]]) => {
+								return { value: k, label: v };
+							})}
 						key={key + index}
 					/>
 				);

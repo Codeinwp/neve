@@ -4,7 +4,6 @@ $general-color: #444;
   display: grid;
   row-gap: 10px;
   background-color: transparent;
-  transition: all 1s;
 }
 
 .nv-repeater-item {
@@ -45,6 +44,7 @@ $general-color: #444;
 	  background-color: #FFFFFF;
 	  display: flex;
 	  width: 100%;
+	  padding: 0;
 	}
 
 	.nv-repeater-handle {
@@ -52,6 +52,7 @@ $general-color: #444;
 	  background-color: #FFFFFF;
 	  margin-left: auto;
 	  width: 40px;
+	  height: 40px;
 
 	  .dashicon {
 		color: #bfbfbf;
@@ -75,11 +76,60 @@ $general-color: #444;
 	display: grid;
 	row-gap: 10px;
 
-	.customize-control-title {
-	  font-size: 13px;
-	  line-height: 1.4em;
-	  font-weight: normal;
-	  color: #444444;
+	.icon-selector {
+	  display: grid;
+	  row-gap: 8px;
+	  border-radius: 2px;
+
+	  .icon-selector-label {
+		width: max-content;
+	  }
+
+	  .icon-selector-toggle {
+		width: 100%;
+		height: 30px;
+		display: flex;
+		border: 1px solid #757575;
+
+		.svg-container {
+		  height: 30px;
+		  width: 30px;
+		  padding-left: 5px;
+		  padding-right: 5px;
+		  box-shadow: none;
+		  background-color: transparent;
+		  color: black;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		}
+
+		.repeater-icon-name {
+			border: none;
+		  	width: 100%;
+		}
+
+		.repeater-icon-name:focus {
+		  outline: none;
+		}
+	  }
+	}
+
+	.icons-container {
+	  margin: 10px 10px 10px 10px;
+	  display: grid;
+	  grid-template-columns: repeat(6, 50px);
+	  grid-template-rows: auto;
+
+	  .icon-button {
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 1px;
+		padding: 0;
+	  }
 	}
 
 	.nv-repeater-remove-button {
