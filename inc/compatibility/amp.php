@@ -10,8 +10,6 @@
 
 namespace Neve\Compatibility;
 
-use Neve\Views\Pluggable\Pagination;
-
 /**
  * Class Amp
  *
@@ -341,7 +339,7 @@ class Amp {
 				'show_all'  => true,
 				'prev_next' => false,
 				'type'      => 'array',
-			] 
+			]
 		);
 
 		foreach ( $pagination as $page ) {
