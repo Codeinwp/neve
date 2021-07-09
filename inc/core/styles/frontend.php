@@ -1185,9 +1185,8 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BLEND_MODE,
 			],
 			'--opacity'   => [
-				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_OVERLAY_OPACITY,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 0.5, "tablet": 0.5, "desktop": 0.5 }',
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_OVERLAY_OPACITY,
+				Dynamic_Selector::META_DEFAULT => 50,
 			],
 		];
 

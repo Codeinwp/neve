@@ -185,7 +185,7 @@
 .nv-overlay {
   background-color: var(--bgColor,var(--nv-dark-bg));
   mix-blend-mode: var(--blendMode,normal);
-  opacity: var(--opacity);
+  opacity: calc( var(--opacity) / 100 );
   position: absolute;
   width: 100%;
   height: 100%;

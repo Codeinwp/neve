@@ -152,7 +152,6 @@ class Form_Fields extends Base_Customizer {
 						'min'        => 50,
 						'max'        => 100,
 						'defaultVal' => $default_spacing,
-						'units'      => [ 'px', 'em' ],
 					],
 					'priority'              => 16,
 					'live_refresh_selector' => true,

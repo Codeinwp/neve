@@ -1457,7 +1457,6 @@ function neve_get_global_colors_default( $migrated = false ) {
  * Checks that we are using the new builder.
  *
  * @return bool
- *
  * @since 3.0.0
  */
 function neve_is_new_builder() {
@@ -1468,11 +1467,10 @@ function neve_is_new_builder() {
  * Checks that we are using the new skin.
  *
  * @return bool
- *
  * @since 3.0.0
  */
 function neve_is_new_skin() {
-	return get_theme_mod( 'neve_new_skin', true );
+	return get_theme_mod( 'neve_new_skin', false ) === 'new';
 }
 
 /**

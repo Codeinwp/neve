@@ -8,6 +8,14 @@
   }
 }
 
+.nv-index-posts {
+  margin-top: $spacing-aired;
+
+  .nv-page-title-wrap {
+	margin-top: 0;
+  }
+}
+
 .nv-post-thumbnail-wrap {
   > a, img {
 	display: block;
@@ -19,7 +27,6 @@
 }
 
 .posts-wrapper > article {
-  margin-bottom: $spacing-aired;
   width: var(--postWidth);
 }
 
@@ -71,6 +78,8 @@
 }
 
 .nv-non-grid-article {
+  margin-bottom: var(--spacing, 60px);
+
   .non-grid-content {
 	display: flex;
 	flex-direction: column;
@@ -88,4 +97,17 @@
 
 article {
   word-break: break-word;
+}
+
+// Deny grid wrapper.
+body:not(.nv-blog-default) {
+  .posts-wrapper {
+	margin-left: calc(-1 * var(--gridSpacing, 30px) / 2);
+	margin-right: calc(-1 * var(--gridSpacing, 30px) / 2);
+
+	article {
+	  margin-bottom: calc(var(--gridSpacing, 30px) );
+	  padding: 0 calc(var(--gridSpacing, 30px) / 2);
+	}
+  }
 }

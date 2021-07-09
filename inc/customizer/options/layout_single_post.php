@@ -402,34 +402,28 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'sanitize_callback' => 'neve_sanitize_range_value',
 					'transport'         => $this->selective_refresh,
-					'default'           => '{ "mobile": 0.5, "tablet": 0.5, "desktop": 0.5 }',
+					'default'           => 50,
 				],
 				[
-					'label'                 => esc_html__( 'Overlay opacity', 'neve' ),
+					'label'                 => esc_html__( 'Overlay opacity', 'neve' ) . '(%)',
 					'section'               => $this->section,
-					'type'                  => 'neve_responsive_range_control',
 					'input_attrs'           => [
 						'min'        => 0,
-						'max'        => 1,
-						'defaultVal' => [
-							'mobile'  => 0,
-							'tablet'  => 0,
-							'desktop' => 0,
-						],
-						'step'       => 0.1,
+						'max'        => 100,
+						'step'       => 1,
+						'defaultVal' => 50,
 					],
 					'priority'              => 6,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => [
-							'responsive' => true,
-							'vars'       => '--opacity',
-							'selector'   => '.nv-overlay',
+							'vars'     => '--opacity',
+							'selector' => '.nv-overlay',
 						],
 					],
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
 				],
-				'\Neve\Customizer\Controls\React\Responsive_Range'
+				'Neve\Customizer\Controls\React\Range'
 			)
 		);
 
