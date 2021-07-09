@@ -4047,10 +4047,10 @@ cypress-localstorage-commands@^1.4.1:
   resolved "https://registry.yarnpkg.com/cypress-localstorage-commands/-/cypress-localstorage-commands-1.4.1.tgz#3df86b88b98919332af7720be2d10314bdb1222d"
   integrity sha512-rO8/hWu04o9w+gv8l70ew8QWBy3bGUiablQQzm4l3bWkGBVa4+kWXTuokrq6AZdO1/xv4rs4OBjN7sKDRl1JhQ==
 
-cypress-nv-commands@^1.0.16:
-  version "1.0.16"
-  resolved "https://registry.yarnpkg.com/cypress-nv-commands/-/cypress-nv-commands-1.0.16.tgz#724951ac2c6a973fb470d4675753a1862378c0f4"
-  integrity sha512-15+tw49ofBR4kNxNtE1Oo5+UNe5cECHO30ii/9VD5p/N/Yp2a3DPi+5BCx2VJ+aDFi5EjUfOFto9IlAm56veqA==
+cypress-nv-commands@^1.0.17:
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/cypress-nv-commands/-/cypress-nv-commands-1.0.17.tgz#9ac31f2d61bdf5b290c9b5a611f96fd8b84d7966"
+  integrity sha512-q2duyamo7jupPLVU3SFXbExbnnfDh3ghALjBtLINBF2kavGN0702YAQBw2KgQPMUvWDiC6UhCYe7ezeDschOmg==
 
 cypress-storybook@^0.5.1:
   version "0.5.1"
@@ -4811,6 +4811,13 @@ eslint-plugin-prettier@^3.3.0:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.3.1.tgz#7079cfa2497078905011e6f82e8dd8453d1371b7"
   integrity sha512-Rq3jkcFY8RYeQLgk2cCwuc0P7SEFwDravPhsJZOQ5N4YI4DSg50NyqJ/9gdZHzQlHf8MvafSesbNJCcP/FF6pQ==
+  dependencies:
+    prettier-linter-helpers "^1.0.0"
+
+eslint-plugin-prettier@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.4.0.tgz#cdbad3bf1dbd2b177e9825737fe63b476a08f0c7"
+  integrity sha512-UDK6rJT6INSfcOo545jiaOwB701uAIt2/dR7WnFQoGCVl1/EMqdANBmwUaqqQ45aXprsTGzSa39LI1PyuRBxxw==
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
