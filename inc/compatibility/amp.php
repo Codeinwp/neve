@@ -10,6 +10,8 @@
 
 namespace Neve\Compatibility;
 
+use Neve\Views\Pluggable\Pagination;
+
 /**
  * Class Amp
  *
@@ -48,85 +50,10 @@ class Amp {
 		add_filter( 'neve_nav_toggle_data_attrs', array( $this, 'add_nav_toggle_attrs' ) );
 
 
-		add_action( 'wp_head', [ $this, 'add_amp_experiments' ], 1 );
-
-		$pagination_type = get_theme_mod( 'neve_pagination_type', 'number' );
-		if ( $pagination_type === 'infinite' ) {
-			remove_all_actions('neve_do_pagination');
-			add_action( 'neve_do_pagination', [ $this, 'add_amp_pagination'] );
-		}
-	}
-
-	/**
-	 *
-	 */
-	public function add_amp_pagination() {
-		$prev_text = sprintf(
-			'%s <span class="nav-prev-text">%s</span>',
-			'<span aria-hidden="true">&larr;</span>',
-			__( 'Newer <span class="nav-short">Posts</span>', 'twentytwenty' )
-		);
-		$next_text = sprintf(
-			'<span class="nav-next-text">%s</span> %s',
-			__( 'Older <span class="nav-short">Posts</span>', 'twentytwenty' ),
-			'<span aria-hidden="true">&rarr;</span>'
-		);
-
-		$posts_pagination = get_the_posts_pagination(
-			array(
-				'mid_size'  => 1,
-				'prev_text' => $prev_text,
-				'next_text' => $next_text,
-			)
-		);
-
-		// If we're not outputting the previous page link, prepend a placeholder with visibility: hidden to take its place.
-		if ( strpos( $posts_pagination, 'prev page-numbers' ) === false ) {
-			$posts_pagination = str_replace( '<div class="nav-links">', '<div class="nav-links"><span class="prev page-numbers placeholder" aria-hidden="true">' . $prev_text . '</span>', $posts_pagination );
-		}
-
-		// If we're not outputting the next page link, append a placeholder with visibility: hidden to take its place.
-		if ( strpos( $posts_pagination, 'next page-numbers' ) === false ) {
-			$posts_pagination = str_replace( '</div>', '<span class="next page-numbers placeholder" aria-hidden="true">' . $next_text . '</span></div>', $posts_pagination );
-		}
-
-		if ( $posts_pagination ) {
-
-			if( ! is_paged() ) {
-
-				$pages = array_filter( array_map(
-					static function( $link ) {
-						if ( preg_match( '#<a.+?href="(.+?)">(.+?)</a>#s', $link, $matches ) ) {
-							$amp_url = html_entity_decode( $matches[1] );
-							$title   = html_entity_decode( $matches[2] );
-							return [
-								'url'    => $amp_url,
-								'title'  => $title,
-								'image'  => get_site_icon_url()
-							];
-						}
-						return null;
-					},
-					paginate_links( [ 'type' => 'array' ] )
-				) );
-
-
-
-
-				echo '<amp-next-page>';
-				echo '<script type="application/json">';
-				echo wp_json_encode( array_values( $pages ) );
-				echo '</script>';
-				echo '</amp-next-page>';
-			}
-		}
-	}
-
-	/**
-	 * Amp experiments for infinite scroll feature.
-	 */
-	public function add_amp_experiments() {
-		echo '<meta name="amp-experiments-opt-in" content="amp-next-page">';
+		/**
+		 * Add infinite scroll for amp.
+		 */
+		$this->maybe_add_amp_infinite_scroll();
 	}
 
 	/**
@@ -298,5 +225,145 @@ class Amp {
 		$output = str_replace( $caret, $amp_caret, $output );
 
 		return $output;
+	}
+
+	/**
+	 * Try to add amp infinite scroll.
+	 *
+	 * @return bool
+	 */
+	private function maybe_add_amp_infinite_scroll() {
+
+		if ( ! $this->should_display_infinite_scroll() ) {
+			return false;
+		}
+
+		add_action( 'wp_head', [ $this, 'add_amp_experiments' ], 1 );
+
+		remove_all_actions( 'neve_do_pagination' );
+		add_action( 'neve_before_footer_hook', [ $this, 'wrap_footer_before' ] );
+		add_action( 'neve_after_footer_hook', [ $this, 'wrap_footer_after' ] );
+
+		return true;
+	}
+
+	/**
+	 * Decide if amp infinite scroll should work.
+	 *
+	 * @return bool
+	 */
+	public function should_display_infinite_scroll() {
+		if ( $this->blog_has_sidebar() ) {
+			return false;
+		}
+
+		$pagination_type = get_theme_mod( 'neve_pagination_type', 'number' );
+		if ( $pagination_type !== 'infinite' ) {
+			return false;
+		}
+
+		$has_pagination = ! empty( get_the_posts_pagination() );
+		if ( ! $has_pagination ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Amp experiments for infinite scroll feature.
+	 */
+	public function add_amp_experiments() {
+		echo '<meta name="amp-experiments-opt-in" content="amp-next-page">';
+	}
+
+	/**
+	 * Check if blog has sidebar.
+	 *
+	 * @return bool
+	 */
+	public function blog_has_sidebar() {
+		$option           = 'neve_default_sidebar_layout';
+		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', false );
+		if ( $advanced_options !== false ) {
+			$option = 'neve_blog_archive_sidebar_layout';
+		}
+		return apply_filters( 'neve_sidebar_position', get_theme_mod( $option, 'right' ) ) !== 'full-width';
+	}
+
+	/**
+	 * Before footer pagination tags.
+	 */
+	public function wrap_footer_before() {
+		$amp_pagination_data = $this->get_amp_pagination_data();
+
+		if ( ! is_paged() ) {
+			echo '<amp-next-page>';
+			echo '<script type="application/json">';
+			echo wp_json_encode( $amp_pagination_data );
+			echo '</script>';
+			echo '<div footer>';
+		} else {
+			$links = paginate_links( array( 'type' => 'list' ) );
+			$links = str_replace(
+				array( '<a class="prev', '<a class="next' ),
+				array(
+					'<a rel="prev" class="prev',
+					'<a rel="next" class="next',
+				),
+				$links
+			);
+			echo '<div class="nv-index-posts" next-page-hide>';
+			echo wp_kses_post( $links );
+			echo '</div>';
+		}
+	}
+
+	/**
+	 * After footer pagination tags.
+	 */
+	public function wrap_footer_after() {
+		if ( ! is_paged() ) {
+			echo '</div>';
+			echo '</amp-next-page>';
+		}
+	}
+
+	/**
+	 * Get pagination data for amp-next-page
+	 *
+	 * @return array
+	 */
+	private function get_amp_pagination_data() {
+		$amp_pagination = [];
+		$pagination     = paginate_links(
+			[
+				'show_all'  => true,
+				'prev_next' => false,
+				'type'      => 'array',
+			] 
+		);
+
+		foreach ( $pagination as $page ) {
+
+			preg_match( '#<a.+?href="(.+?)">(.+?)</a>#s', $page, $matches );
+
+			if ( empty( $matches ) ) {
+				continue;
+			}
+
+			$url   = html_entity_decode( $matches[1] );
+			$page  = html_entity_decode( $matches[2] );
+			$image = get_site_icon_url();
+
+			$amp_pagination[] = [
+				'url'   => $url,
+				'title' => get_bloginfo( 'name' ) . ' - ' . __( 'Page', 'neve' ) . ' ' . $page . ' - ' . get_bloginfo( 'description' ),
+				'image' => $image,
+			];
+
+		}
+
+		return $amp_pagination;
 	}
 }
