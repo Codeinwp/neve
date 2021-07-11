@@ -17,6 +17,7 @@
 	},
 	"devDependencies": {
 		"@percy/cypress": "^2.3.4",
+		"@testing-library/cypress": "^7.0.6",
 		"@typescript-eslint/eslint-plugin": "^4.19.0",
 		"@typescript-eslint/parser": "^4.19.0",
 		"@wordpress/scripts": "^14.0.1",
