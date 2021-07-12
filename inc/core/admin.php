@@ -495,7 +495,8 @@ class Admin {
 	 */
 	public function enqueue_gutenberg_scripts() {
 		$screen = get_current_screen();
-		if ( ! post_type_supports( $screen->post_type, 'editor' ) ) {
+		// if is_block_editor is not `true` we should allow the guttenberg styles to load eg. the new widgets page.
+		if ( ! post_type_supports( $screen->post_type, 'editor' ) && $screen->is_block_editor !== true ) {
 			return;
 		}
 		wp_enqueue_script(
