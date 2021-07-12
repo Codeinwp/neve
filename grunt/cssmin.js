@@ -20,10 +20,18 @@ module.exports = {
 			'assets/css/customizer-style-rtl.min.css': [
 				'assets/css/customizer-style-rtl.css',
 			],
+
+			'assets/css/mega-menu-legacy.min.css': [
+				'assets/css/mega-menu-legacy.css',
+			],
 			'assets/css/mega-menu.min.css': ['assets/css/mega-menu.css'],
 			'assets/css/mega-menu-rtl.min.css': [
 				'assets/css/mega-menu-rtl.css',
 			],
+			'assets/css/mega-menu-legacy-rtl.min.css': [
+				'assets/css/mega-menu-legacy-rtl.css',
+			],
+
 			'style-main-rtl.min.css': ['style-main-rtl.css'],
 			'assets/css/style-legacy-rtl.min.css': [
 				'assets/css/style-legacy-rtl.css',
