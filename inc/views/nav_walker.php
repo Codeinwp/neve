@@ -219,7 +219,8 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		wp_style_add_data( 'neve-mega-menu', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-mega-menu' );
 
-		$style = <<<'CSS'
+		if ( neve_is_new_skin() ) {
+			$style = <<<'CSS'
 .left .neve-mega-menu > .sub-menu {
 	left: 0;
 	right: auto;
@@ -234,8 +235,9 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	transform: none;
 }
 CSS;
-		$style = Dynamic_Css::minify_css( $style );
-		wp_add_inline_style( 'neve-mega-menu', $style );
+			$style = Dynamic_Css::minify_css( $style );
+			wp_add_inline_style( 'neve-mega-menu', $style );
+		}
 
 		// Fix for MegaMenu alignment
 		$script = <<<'JS'
