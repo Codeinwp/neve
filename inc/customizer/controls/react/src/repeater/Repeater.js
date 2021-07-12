@@ -84,9 +84,15 @@ const Repeater = ({ fields, value, onUpdate }) => {
 						{sorting ? 'Done' : 'Reorder'}
 					</Button>
 				)}
-				<Button isSecondary onClick={handleAddItem}>
-					Add Item
-				</Button>
+				{!sorting && (
+					<Button
+						isSecondary
+						onClick={handleAddItem}
+						className="nv-repeater-add-item-button"
+					>
+						Add Item
+					</Button>
+				)}
 			</div>
 		</>
 	);

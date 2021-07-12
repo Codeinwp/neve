@@ -1,5 +1,5 @@
 import { Button, SelectControl, TextControl } from '@wordpress/components';
-import ICONS from '../common/icons';
+import getIcons from '../common/icons';
 import IconSelector from './IconSelector';
 import ColorControl from '../common/ColorControl';
 
@@ -34,7 +34,7 @@ const RepeaterItemContent = ({
 						label={fields[key].label}
 						value={value[index][key]}
 						onIconChoice={(newData) => changeContent(key, newData)}
-						icons={ICONS}
+						icons={getIcons(20)}
 						key={key + index}
 					/>
 				);

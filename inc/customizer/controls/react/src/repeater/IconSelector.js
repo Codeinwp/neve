@@ -1,20 +1,23 @@
 import React from 'react';
-import { Button, Icon, Popover, Tooltip } from '@wordpress/components';
-import { useState, useRef, useEffect } from '@wordpress/element';
+import {
+	Button,
+	Icon,
+	Popover,
+	Tooltip,
+	TextControl,
+	ButtonGroup,
+} from '@wordpress/components';
+import { useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 const IconSelector = ({ label, value, onIconChoice, icons }) => {
 	const [visible, setVisible] = useState(false);
-	const [name, setName] = useState(value);
-	const refInput = useRef();
-	const addIcon = <Icon icon="plus-alt2" />;
+	const [searchValue, setSearchValue] = useState('');
 
-	useEffect(() => {
-		if (visible) {
-			refInput.current.focus();
-		} else {
-			setName(value);
-		}
-	}, [visible]);
+	const handleRemove = () => {
+		onIconChoice('');
+		setSearchValue('');
+	};
 
 	const transformIcons = (tempIcons) => {
 		return Object.entries(tempIcons).map(([iconName, iconSVG]) => {
@@ -24,8 +27,8 @@ const IconSelector = ({ label, value, onIconChoice, icons }) => {
 						className="icon-button"
 						onClick={() => {
 							onIconChoice(iconName);
-							setName(iconName);
 							setVisible(false);
+							setSearchValue('');
 						}}
 					>
 						{iconSVG}
@@ -38,39 +41,69 @@ const IconSelector = ({ label, value, onIconChoice, icons }) => {
 	const filterOptions = () => {
 		const tempIcons = {};
 		for (const [iconName, svg] of Object.entries(icons)) {
-			if (iconName.indexOf(name) > -1) {
+			if (iconName.indexOf(searchValue) > -1) {
 				tempIcons[iconName] = svg;
 			}
 		}
 		return tempIcons;
 	};
 
+	const getContent = () => {
+		const iconsToShow = transformIcons(filterOptions());
+		return (
+			<div className="icons-popover-content">
+				<TextControl
+					placeholder={__('Search', 'neve')}
+					value={searchValue}
+					type="search"
+					onChange={setSearchValue}
+					className="icons-popover-header"
+				/>
+				<div className="icons-container">{iconsToShow}</div>
+			</div>
+		);
+	};
+
 	return (
 		<>
-			<div className="icon-selector">
-				<span className="icon-selector-label">{label}</span>
-				<div className="icon-selector-toggle">
+			<div className="neve-control-header icon-control">
+				{label && (
+					<span className="customize-control-title">{label}</span>
+				)}
+				{value !== '' && (
+					<ButtonGroup className="icon-setter">
+						<Button
+							className="repeater-icon-preview"
+							onClick={() => setVisible(!visible)}
+						>
+							{value !== '' && icons[value]}
+							{value === '' && <Icon icon="plus-alt2" />}
+						</Button>
+						<Button
+							className="repeater-delete-icon"
+							onClick={handleRemove}
+						>
+							<Icon icon="no-alt" />
+						</Button>
+					</ButtonGroup>
+				)}
+				{value === '' && (
 					<Button
-						isSecondary
-						className="svg-container"
+						className="add-icon-button"
 						onClick={() => setVisible(!visible)}
 					>
-						{icons[value] || addIcon}
+						<Icon icon="plus-alt2" />
 					</Button>
-					<input
-						ref={refInput}
-						className="repeater-icon-name"
-						placeholder="Search icon"
-						value={name}
-						onChange={(e) => setName(e.target.value)}
-						onClick={() => setVisible(true)}
-					/>
-				</div>
+				)}
 				{visible && (
-					<Popover position="bottom left">
-						<div className="icons-container">
-							{transformIcons(filterOptions())}
-						</div>
+					<Popover
+						position="bottom left"
+						onFocusOutside={() => {
+							setVisible(false);
+							setSearchValue('');
+						}}
+					>
+						{getContent()}
 					</Popover>
 				)}
 			</div>

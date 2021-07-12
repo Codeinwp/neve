@@ -35,9 +35,9 @@ const RepeaterItem = ({
 	const visibleIcon = <Icon icon="visibility" />;
 	const hiddenIcon = <Icon icon="hidden" />;
 	const itemLabel = (
-		<h4>
+		<span className="repeater-item-title">
 			{value[itemIndex].title === '' ? 'Item' : value[itemIndex].title}
-		</h4>
+		</span>
 	);
 
 	const toggleExpand = () => {
@@ -85,7 +85,10 @@ const RepeaterItem = ({
 					value={value}
 					index={itemIndex}
 					onContentChange={onContentChange}
-					onRemove={onRemove}
+					onRemove={(index) => {
+						setExpanded(false);
+						onRemove(index);
+					}}
 				/>
 			)}
 		</div>
