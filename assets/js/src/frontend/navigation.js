@@ -57,10 +57,10 @@ export const repositionDropdowns = () => {
 			dropDown.style.right = isRTL ? 0 : '100%';
 			dropDown.style.left = 'auto';
 		}
-		if (typeof menuCalcEvent !== 'undefined') {
-			window.dispatchEvent(menuCalcEvent);
-		}
 	});
+	if (typeof menuCalcEvent !== 'undefined') {
+		window.dispatchEvent(menuCalcEvent);
+	}
 };
 
 /**
