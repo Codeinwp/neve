@@ -60,7 +60,7 @@
   }
 
   .sub-menu {
-	background-color: var(--bgColor);
+	background-color: var(--bgColor, var(--overlayColor));
 	z-index: 100;
 	position: absolute;
 	top: 100%;
