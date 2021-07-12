@@ -7,7 +7,7 @@ describe('Form fields', function () {
 
 	it('Checks up the search field', function () {
 		cy.visit('/');
-		cy.get('.search-field')
+		cy.findByRole('searchbox', { name: /search for:/i })
 			.should('have.css', 'padding-top', '14px')
 			.and('have.css', 'padding-bottom', '14px')
 			.and('have.css', 'padding-left', '14px')
@@ -30,7 +30,7 @@ describe('Form fields', function () {
 	});
 	it('Checks up the comment label', function () {
 		cy.visit('/hello-world');
-		cy.contains('Name')
+		cy.get('label')
 			.should('have.css', 'font-size', '15px')
 			.and('have.css', 'line-height', '24px')
 			.and('have.css', 'letter-spacing', '1.5px')
@@ -40,7 +40,7 @@ describe('Form fields', function () {
 	});
 	it('Checks up the button', function () {
 		cy.visit('/hello-world');
-		cy.get('#submit')
+		cy.findByRole('button', { name: /post comment/i })
 			.should('have.css', 'background-color', 'rgb(3, 102, 214)')
 			.and('have.css', 'color', 'rgb(255, 255, 255)')
 			.and('have.css', 'border-radius', '3px')
