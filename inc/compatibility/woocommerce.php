@@ -101,7 +101,7 @@ class Woocommerce {
 		add_action( 'wp', array( $this, 'register_hooks' ), 11 );
 		add_action( 'neve_react_controls_localization', array( $this, 'add_customizer_options' ) );
 	}
-	
+
 	/**
 	 * Add params to specify if the site has elementor templates.
 	 *
@@ -113,7 +113,7 @@ class Woocommerce {
 		$options['elementor']['hasElementorProductTemplate'] = Elementor::has_template( 'product' );
 		return $options;
 	}
-	
+
 	/**
 	 * Should module load?
 	 *
@@ -129,7 +129,7 @@ class Woocommerce {
 
 		return ! ( $is_shop_template || $is_product_template );
 	}
-	
+
 	/**
 	 * Register hooks
 	 *
@@ -620,8 +620,7 @@ class Woocommerce {
 			.woocommerce .actions > button[type=submit],
 			.woocommerce button#place_order,
 			.woocommerce .return-to-shop > .button,
-			.woocommerce .button.woocommerce-form-login__submit,
-			.woocommerce.single .quantity input' );
+			.woocommerce .button.woocommerce-form-login__submit' );
 	}
 
 	/**

@@ -31,7 +31,9 @@ class MetaFieldsManager extends Component {
 			neve_meta_enable_content_width: 'off',
 			neve_meta_content_width: 70,
 			neve_meta_title_alignment: 'left',
-			neve_meta_author_avatar: 'off',
+			neve_meta_author_avatar: metaSidebar.avatarDefaultState
+				? 'on'
+				: 'off',
 			neve_meta_reading_time: 'off',
 			neve_post_elements_order: JSON.stringify([
 				'title',
@@ -472,10 +474,13 @@ class MetaFieldsManager extends Component {
 							<ToggleControl
 								label={__('Author Avatar', 'neve')}
 								checked={
-									'on' ===
 									this.props.metaValue(
 										'neve_meta_author_avatar'
 									)
+										? this.props.metaValue(
+												'neve_meta_author_avatar'
+										  ) === 'on'
+										: metaSidebar.avatarDefaultState
 								}
 								onChange={(value) => {
 									this.updateValues(
