@@ -240,12 +240,10 @@ CSS;
 		// Fix for MegaMenu alignment
 		$script = <<<'JS'
 function megaMenuCalcEvent() {
-    console.log('Event triggered');
 	var megaMenuDowns = document.querySelectorAll(
 		'.neve-mega-menu > .sub-menu'
 	);
 	megaMenuDowns.forEach( function (dropDown) {
-	    var isRTL = NeveProperties.isRTL === "1";
 	    var windowWidth = window.innerWidth;
 		dropDown.style.left = '0';
 		dropDown.style.right = '0';
