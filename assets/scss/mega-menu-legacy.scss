@@ -1,5 +1,5 @@
-@import "./components/main/variables";
-@import "./components/elements/mega-menu";
+@import "./main/variables";
+@import "./elements/mega-menu";
 
 @media (min-width: #{$tablet-sm}) {
   @include mega-menu--tablet();
@@ -7,4 +7,8 @@
 
 @media (min-width: #{$laptop}) {
   @include mega-menu--laptop();
+}
+
+@media (min-width: #{$desktop}) {
+  @include mega-menu--desktop();
 }
