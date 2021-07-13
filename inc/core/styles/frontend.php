@@ -948,6 +948,7 @@ class Frontend extends Generator {
 	public function setup_blog_meta() {
 		if ( ! neve_is_new_skin() ) {
 			$this->setup_blog_meta_legacy();
+
 			return;
 		}
 
@@ -1142,6 +1143,10 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
+			'--vAlign'  => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_POSITION,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+			],
 		];
 
 		$this->_subscribers[] = [
@@ -1168,7 +1173,8 @@ class Frontend extends Generator {
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
 			'--bgColor' => [
-				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
 			],
 		];
 

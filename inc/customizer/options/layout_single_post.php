@@ -287,38 +287,36 @@ class Layout_Single_Post extends Base_Customizer {
 				[
 					'sanitize_callback' => 'neve_sanitize_position',
 					'transport'         => $this->selective_refresh,
-					'default'           => $this->post_title_position(),
+					'default'           => [
+						'mobile'  => 'center',
+						'tablet'  => 'center',
+						'desktop' => 'center',
+					],
 				],
 				[
 					'label'                 => esc_html__( 'Title Position', 'neve' ),
 					'section'               => 'neve_single_post_layout',
 					'priority'              => 6,
 					'choices'               => [
-						'top'    => [
+						'flex-start' => [
 							'tooltip' => esc_html__( 'Top', 'neve' ),
 							'icon'    => 'arrow-up',
 						],
-						'middle' => [
+						'center'     => [
 							'tooltip' => esc_html__( 'Middle', 'neve' ),
 							'icon'    => 'sort',
 						],
-						'bottom' => [
+						'flex-end'   => [
 							'tooltip' => esc_html__( 'Bottom', 'neve' ),
 							'icon'    => 'arrow-down',
 						],
 					],
-					'live_refresh_selector' => '.nv-title-meta-wrap .title',
+					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
-						'remove_classes' => [
-							'mobile-top',
-							'mobile-middle',
-							'mobile-bottom',
-							'tablet-top',
-							'tablet-middle',
-							'tablet-bottom',
-							'desktop-top',
-							'desktop-middle',
-							'desktop-bottom',
+						'cssVar' => [
+							'vars'       => '--vAlign',
+							'responsive' => true,
+							'selector'   => '.nv-post-cover',
 						],
 					],
 					'show_labels'           => true,
@@ -513,7 +511,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'section'                => $this->section,
 				'has_text_color'         => false,
 				'padding_default'        => $this->padding_default( 'cover' ),
-				'background_default'     => 'var(--nv-light-bg)',
+				'background_default'     => 'var(--nv-dark-bg)',
 				'boxed_selector'         => '.nv-is-boxed.nv-title-meta-wrap',
 				'toggle_active_callback' => function() {
 					return get_theme_mod( 'neve_post_header_layout' ) === 'cover';

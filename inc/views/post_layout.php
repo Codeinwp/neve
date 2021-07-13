@@ -193,8 +193,7 @@ class Post_Layout extends Base_View {
 		$cover_style    = '';
 		$main_class     = [ 'nv-post-cover' ];
 		if ( $hide_thumbnail === false && ! empty( $post_thumbnail ) ) {
-			$main_class[] = 'has-image';
-			$cover_style  = 'style="background-image:url(' . esc_url( $post_thumbnail ) . ')"';
+			$cover_style = 'style="background-image:url(' . esc_url( $post_thumbnail ) . ')"';
 		}
 
 		$container_class = [ 'container' ];
@@ -212,9 +211,6 @@ class Post_Layout extends Base_View {
 		if ( $meta_before ) {
 			$title_meta_wrap_classes[] = 'reversed';
 		}
-
-		$position                  = $this->get_alignment_classes( 'neve_post_title_position', $this->post_title_position() );
-		$title_meta_wrap_classes[] = $position;
 
 		$alignment = apply_filters( 'neve_post_title_alignment', '' );
 		if ( $container_mode === 'contained' ) {

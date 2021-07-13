@@ -71,19 +71,6 @@ trait Single_Post {
 	}
 
 	/**
-	 * Get the default value for title vertical position.
-	 *
-	 * @return array
-	 */
-	public function post_title_position() {
-		return [
-			'mobile'  => 'bottom',
-			'tablet'  => 'bottom',
-			'desktop' => 'bottom',
-		];
-	}
-
-	/**
 	 * Get default values for ordering control
 	 *
 	 * @return array
