@@ -144,6 +144,8 @@ $general-color: #444;
 	  }
 
 	  .icons-popover-content {
+		max-height: 280px;
+
 		.icons-popover-header {
 		  margin: 5px 10px;
 		}
@@ -151,17 +153,26 @@ $general-color: #444;
 		.icons-container {
 		  margin: 10px 10px 10px 10px;
 		  display: grid;
-		  grid-template-columns: repeat(6, 50px);
-		  grid-template-rows: auto;
+		  grid-template-columns: repeat(5, 40px);
+		  grid-template-rows: repeat(auto-fill, 40px);
 
 		  .icon-button {
 			width: 40px;
 			height: 40px;
-			display: flex;
-			align-items: center;
 			justify-content: center;
-			border-radius: 1px;
 			padding: 0;
+		  }
+		}
+
+		.icons-load-more {
+		  width: 100%;
+		  display: flex;
+		  justify-content: center;
+		  padding-bottom: 10px;
+
+		  svg {
+			fill: #0073aa;
+			animation: 2s infinite linear neve-spin;
 		  }
 		}
 	  }
@@ -174,9 +185,9 @@ $general-color: #444;
 }
 
 .nv-repeater-options {
-  padding-top: 10px;
+  margin-top: 10px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   column-gap: 15px;
   height: 40px;
 

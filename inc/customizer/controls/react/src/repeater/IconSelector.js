@@ -9,10 +9,13 @@ import {
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import VisibilitySensor from 'react-visibility-sensor';
+import { update } from '@wordpress/icons';
 
 const IconSelector = ({ label, value, onIconChoice, icons }) => {
 	const [visible, setVisible] = useState(false);
 	const [searchValue, setSearchValue] = useState('');
+	const [loadUntil, setLoadUntil] = useState(15);
 
 	const handleRemove = () => {
 		onIconChoice('');
@@ -20,21 +23,24 @@ const IconSelector = ({ label, value, onIconChoice, icons }) => {
 	};
 
 	const transformIcons = (tempIcons) => {
-		return Object.entries(tempIcons).map(([iconName, iconSVG]) => {
-			return (
-				<Tooltip className="tooltip" text={iconName} key={iconName}>
-					<Button
-						className="icon-button"
-						onClick={() => {
-							onIconChoice(iconName);
-							setVisible(false);
-							setSearchValue('');
-						}}
-					>
-						{iconSVG}
-					</Button>
-				</Tooltip>
-			);
+		return Object.entries(tempIcons).map(([iconName, iconSVG], index) => {
+			if (index < loadUntil) {
+				return (
+					<Tooltip className="tooltip" text={iconName} key={iconName}>
+						<Button
+							className="icon-button"
+							onClick={() => {
+								onIconChoice(iconName);
+								setVisible(false);
+								setSearchValue('');
+							}}
+						>
+							{iconSVG}
+						</Button>
+					</Tooltip>
+				);
+			}
+			return null;
 		});
 	};
 
@@ -50,6 +56,10 @@ const IconSelector = ({ label, value, onIconChoice, icons }) => {
 
 	const getContent = () => {
 		const iconsToShow = transformIcons(filterOptions());
+		const containment = document.getElementsByClassName(
+			'components-popover__content'
+		)[0];
+
 		return (
 			<div className="icons-popover-content">
 				<TextControl
@@ -59,7 +69,23 @@ const IconSelector = ({ label, value, onIconChoice, icons }) => {
 					onChange={setSearchValue}
 					className="icons-popover-header"
 				/>
+
 				<div className="icons-container">{iconsToShow}</div>
+
+				{loadUntil < Object.keys(iconsToShow).length && (
+					<div className="icons-load-more">
+						<VisibilitySensor
+							containment={containment}
+							onChange={(isVisible) => {
+								if (isVisible) {
+									setLoadUntil(loadUntil + 15);
+								}
+							}}
+						>
+							<Icon icon={update} />
+						</VisibilitySensor>
+					</div>
+				)}
 			</div>
 		);
 	};
@@ -70,14 +96,13 @@ const IconSelector = ({ label, value, onIconChoice, icons }) => {
 				{label && (
 					<span className="customize-control-title">{label}</span>
 				)}
-				{value !== '' && (
+				{icons[value] && (
 					<ButtonGroup className="icon-setter">
 						<Button
 							className="repeater-icon-preview"
 							onClick={() => setVisible(!visible)}
 						>
-							{value !== '' && icons[value]}
-							{value === '' && <Icon icon="plus-alt2" />}
+							{icons[value]}
 						</Button>
 						<Button
 							className="repeater-delete-icon"
@@ -87,7 +112,7 @@ const IconSelector = ({ label, value, onIconChoice, icons }) => {
 						</Button>
 					</ButtonGroup>
 				)}
-				{value === '' && (
+				{!icons[value] && (
 					<Button
 						className="add-icon-button"
 						onClick={() => setVisible(!visible)}

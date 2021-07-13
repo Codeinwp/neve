@@ -2,7 +2,12 @@ import Repeater from "../../inc/customizer/controls/react/src/repeater/Repeater"
 import {
 	CustomizerDecorator,
 } from '../components/decorators';
-import { SOCIAL_ICONS_DEFAULT, CONTACT_DEFAULT, FIELDS } from '../utils/values';
+import {
+	SOCIAL_ICONS_DEFAULT,
+	CONTACT_DEFAULT,
+	SHARING_ICONS_DEFAULT,
+	FIELDS
+} from '../utils/values';
 import { useState } from '@wordpress/element';
 
 export default {
@@ -32,6 +37,8 @@ const Template = (args) => {
 
 export const SocialIcons = Template.bind({});
 export const Contact = Template.bind({});
+export const Sharing = Template.bind({});
 
 SocialIcons.args = { components: SOCIAL_ICONS_DEFAULT };
 Contact.args = { components: CONTACT_DEFAULT };
+Sharing.args = { components: SHARING_ICONS_DEFAULT };

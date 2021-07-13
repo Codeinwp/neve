@@ -1,4 +1,9 @@
-import { Button, SelectControl, TextControl } from '@wordpress/components';
+import {
+	Button,
+	SelectControl,
+	TextControl,
+	ToggleControl,
+} from '@wordpress/components';
 import getIcons from '../common/icons';
 import IconSelector from './IconSelector';
 import ColorControl from '../common/ColorControl';
@@ -34,7 +39,7 @@ const RepeaterItemContent = ({
 						label={fields[key].label}
 						value={value[index][key]}
 						onIconChoice={(newData) => changeContent(key, newData)}
-						icons={getIcons(20)}
+						icons={getIcons(18)}
 						key={key + index}
 					/>
 				);
@@ -45,7 +50,6 @@ const RepeaterItemContent = ({
 						label={fields[key].label}
 						selectedColor={value[index][key]}
 						onChange={(newData) => changeContent(key, newData)}
-						disableGlobal
 						key={key + index}
 					/>
 				);
@@ -60,6 +64,15 @@ const RepeaterItemContent = ({
 							.map(([[k, v]]) => {
 								return { value: k, label: v };
 							})}
+						key={key + index}
+					/>
+				);
+			case 'checkbox':
+				return (
+					<ToggleControl
+						label={fields[key].label}
+						checked={value[index][key]}
+						onChange={(newData) => changeContent(key, newData)}
 						key={key + index}
 					/>
 				);

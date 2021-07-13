@@ -25,6 +25,10 @@ const Repeater = ({ fields, value, onUpdate }) => {
 		const newItem = {};
 
 		for (const [field] of Object.entries(newValue[0])) {
+			if (typeof value[0][field] === 'boolean') {
+				newItem[field] = true;
+				continue;
+			}
 			newItem[field] = '';
 		}
 

@@ -205,6 +205,30 @@ export const FIELDS = {
 			{ email: 'Email' },
 			{ phone: 'Phone' },
 		]
+	},
+	social_network: {
+		type: 'select',
+		label: 'Social Network',
+		choices: [
+			{ facebook: 'Facebook' },
+			{ twitter: 'Twitter' },
+			{ email: 'Email' },
+			{ pinterest: 'Pinterest' },
+			{ linkedin: 'LinkedIn' },
+			{ tumblr: 'Tumblr' },
+			{ reddit: 'Reddit' },
+			{ whatsapp: 'WhatsApp' },
+			{ sms: 'SMS' },
+			{ vk: 'VKontakte' }
+		]
+	},
+	display_desktop: {
+		type: 'checkbox',
+		label: 'Show on Desktop'
+	},
+	display_mobile: {
+		type: 'checkbox',
+		label: 'Show on Mobile'
 	}
 }
 
@@ -226,6 +250,30 @@ export const CONTACT_DEFAULT = [
 		icon: 'map-marker',
 		item_type: 'text',
 		visibility: 'yes'
+	}
+]
+
+export const SHARING_ICONS_DEFAULT = [
+	{
+		visibility: 'yes',
+		title: 'Facebook',
+		social_network: 'facebook',
+		display_desktop: true,
+		display_mobile: true
+	},
+	{
+		visibility: 'yes',
+		title: 'Twitter',
+		social_network: 'twitter',
+		display_desktop: true,
+		display_mobile: true
+	},
+	{
+		visibility: 'yes',
+		title: 'Email',
+		social_network: 'email',
+		display_desktop: true,
+		display_mobile: true
 	}
 ]
 
