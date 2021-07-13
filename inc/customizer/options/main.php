@@ -119,7 +119,7 @@ class Main extends Base_Customizer {
 	 */
 	private function add_skin_switcher() {
 		// If we migrated the skin this shouldn't show up at all.
-		if ( get_theme_mod( 'neve_migrated_skin' ) === true ) {
+		if ( get_theme_mod( 'neve_was_auto_skin_switch' ) === true ) {
 			return;
 		}
 

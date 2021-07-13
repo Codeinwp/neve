@@ -88,10 +88,6 @@ class Admin {
 	 * @since 3.0.0
 	 */
 	public function run_skin_and_builder_switches() {
-		$fresh = get_option( 'fresh_site' );
-		if ( ! $fresh ) {
-			return;
-		}
 		$this->switch_to_new_builder();
 		$this->switch_to_new_skin();
 	}
@@ -103,15 +99,21 @@ class Admin {
 	 * @since 3.0.0
 	 */
 	public function switch_to_new_skin() {
-		$flag = 'neve_migrated_skin';
-
+		$flag            = 'neve_migrated_skin';
+		$was_auto_switch = 'neve_was_auto_skin_switch';
 		if ( get_theme_mod( $flag ) === true ) {
 			return;
 		}
-
 		// Flag this as a routine that already ran.
 		set_theme_mod( $flag, true );
-		set_theme_mod( 'neve_new_skin', 'new' );
+
+		$fresh = get_option( 'fresh_site' );
+		if ( $fresh ) {
+			set_theme_mod( $was_auto_switch, true );
+			set_theme_mod( 'neve_new_skin', 'new' );
+
+			return;
+		}
 	}
 
 	/**
@@ -124,9 +126,15 @@ class Admin {
 		if ( get_theme_mod( $flag ) === true ) {
 			return;
 		}
-
 		// Flag this as a routine that already ran.
 		set_theme_mod( $flag, true );
+
+		$fresh = get_option( 'fresh_site' );
+		if ( $fresh ) {
+			set_theme_mod( 'neve_migrated_builders', true );
+
+			return;
+		}
 
 		// If we do have previously set options for header or footer, use the old builder.
 		$header = get_theme_mod( 'hfg_header_layout' );
