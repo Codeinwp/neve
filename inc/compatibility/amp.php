@@ -246,11 +246,27 @@ class Amp {
 	}
 
 	/**
+	 * Check if it's blog post index.
+	 *
+	 * @return bool
+	 */
+	private function is_blog_page() {
+		global $post;
+
+		$post_type = get_post_type( $post );
+		return ( $post_type === 'post' ) && ( is_home() || is_archive() );
+	}
+
+	/**
 	 * Decide if amp infinite scroll should work.
 	 *
 	 * @return bool
 	 */
 	public function should_display_infinite_scroll() {
+
+		if ( ! $this->is_blog_page() ) {
+			return false;
+		}
 		if ( $this->blog_has_sidebar() ) {
 			return false;
 		}
