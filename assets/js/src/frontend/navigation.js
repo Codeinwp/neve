@@ -1,4 +1,4 @@
-/* global NeveProperties */
+/* global NeveProperties menuCalcEvent */
 /* jshint esversion: 6 */
 import {
 	isMobile,
@@ -11,6 +11,7 @@ import {
 } from '../utils.js';
 
 let pageUrl;
+const strings = ['dropdown-open', 'active', 'nav-clickaway-overlay'];
 
 /**
  * Initialize nav logic.
@@ -37,47 +38,29 @@ export const initNavigation = () => {
 export const repositionDropdowns = () => {
 	const { isRTL } = NeveProperties;
 	const dropDowns = document.querySelectorAll(
-		'.neve-mega-menu > .sub-menu, .minimal .nv-nav-search'
+		'.sub-menu, .minimal .nv-nav-search'
 	);
 
 	if (dropDowns.length === 0) return;
 
 	const windowWidth = window.innerWidth;
 	neveEach(dropDowns, (dropDown) => {
-		const bounding = dropDown.getBoundingClientRect();
-		const parentBounding = dropDown.parentElement.getBoundingClientRect();
-		dropDown.style.left = isRTL ? 'auto' : '0';
-		dropDown.style.right = isRTL ? '0' : 'auto';
-		const secondHalf = isRTL
-			? parentBounding.left < windowWidth / 2
-			: parentBounding.left > windowWidth / 2;
-		if (secondHalf) {
-			dropDown.style.left = isRTL ? '0' : 'auto';
-			dropDown.style.right = isRTL ? 'auto' : '0';
+		const bounding = dropDown.getBoundingClientRect(),
+			rightDist = bounding.left;
+
+		if (rightDist < 0) {
+			dropDown.style.right = isRTL ? '-100%' : 'auto';
+			dropDown.style.left = isRTL ? 'auto' : 0;
 		}
 
-		if (bounding.left < 0) {
-			dropDown.style.left = '0';
-			dropDown.style.right = 'auto';
-		}
-		if (parentBounding.left + bounding.width >= windowWidth) {
+		if (rightDist + bounding.width >= windowWidth) {
+			dropDown.style.right = isRTL ? 0 : '100%';
 			dropDown.style.left = 'auto';
-			dropDown.style.right = '0';
-		}
-
-		if (
-			parentBounding.left - bounding.width < 0 &&
-			parentBounding.left + bounding.width >= windowWidth
-		) {
-			dropDown.style.left = 'auto';
-			dropDown.style.right =
-				'calc( 100% - ' +
-				(windowWidth -
-					parentBounding.right +
-					parentBounding.width / 2) +
-				'px )';
 		}
 	});
+	if (typeof menuCalcEvent !== 'undefined') {
+		window.dispatchEvent(menuCalcEvent);
+	}
 };
 
 /**
@@ -110,11 +93,11 @@ function handleMobileDropdowns() {
 			const subMenu = caret.parentNode.parentNode.querySelector(
 				'.sub-menu'
 			);
-			toggleClass(caret, 'dropdown-open');
-			toggleClass(subMenu, 'dropdown-open');
+			toggleClass(caret, strings[0]);
+			toggleClass(subMenu, strings[0]);
 			createNavOverlay(
-				document.querySelectorAll('.dropdown-open'),
-				'dropdown-open'
+				document.querySelectorAll(`.${strings[0]}`),
+				strings[0]
 			);
 		});
 	});
@@ -132,12 +115,12 @@ function handleSearch() {
 		searchItem.addEventListener('click', (e) => {
 			e.preventDefault();
 			e.stopPropagation();
-			toggleClass(searchItem, 'active');
+			toggleClass(searchItem, strings[1]);
 			setTimeout(() => {
 				searchItem.querySelector('.search-field').focus();
 			}, 50);
 			if (!isMobile()) {
-				createNavOverlay(searchItem, 'active');
+				createNavOverlay(searchItem, strings[1]);
 			}
 		});
 	});
@@ -152,9 +135,9 @@ function handleSearch() {
 		button.addEventListener('click', (e) => {
 			e.preventDefault();
 			neveEach(navItem, (search) => {
-				removeClass(search, 'active');
+				removeClass(search, strings[1]);
 			});
-			const overlay = document.querySelector('.nav-clickaway-overlay');
+			const overlay = document.querySelector(`.${strings[2]}`);
 			if (overlay === null) {
 				return;
 			}
@@ -189,12 +172,12 @@ window.addEventListener('resize', handleMiniCartPosition);
  * @param {string} classToRemove
  */
 function createNavOverlay(item, classToRemove) {
-	let navClickaway = document.querySelector('.nav-clickaway-overlay');
+	let navClickaway = document.querySelector(`.${strings[2]}`);
 	if (navClickaway !== null) {
 		navClickaway.parentNode.removeChild(navClickaway);
 	}
 	navClickaway = document.createElement('div');
-	addClass(navClickaway, 'nav-clickaway-overlay');
+	addClass(navClickaway, strings[2]);
 
 	const primaryNav = document.querySelector('header.header');
 	primaryNav.parentNode.insertBefore(navClickaway, primaryNav);
@@ -217,10 +200,10 @@ function handleIeDropdowns() {
 		const parentItem = dropdown.parentNode;
 
 		parentItem.addEventListener('mouseenter', () => {
-			addClass(dropdown, 'dropdown-open');
+			addClass(dropdown, strings[0]);
 		});
 		parentItem.addEventListener('mouseleave', () => {
-			removeClass(dropdown, 'dropdown-open');
+			removeClass(dropdown, strings[0]);
 		});
 	});
 }

@@ -71,11 +71,49 @@ class Admin {
 
 		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
 
-		add_action( 'init', [ $this, 'switch_to_new_builder' ] );
+		add_action( 'init', [ $this, 'run_skin_and_builder_switches' ] );
+		add_filter( 'ti_tpc_theme_mods_pre_import', [ $this, 'remove_old_hfg_values' ] );
+
 		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
 		add_filter( 'neve_pro_react_controls_localization', [ $this, 'adapt_conditional_headers' ] );
 		if ( class_exists( '\Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers' ) ) {
 			\Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers::$theme_mods_keys[] = 'hfg_header_layout_v2';
+		}
+	}
+
+	/**
+	 * Switch to the new 3.0 features.
+	 *
+	 * @return void
+	 *
+	 * @since 3.0.0
+	 */
+	public function run_skin_and_builder_switches() {
+		$this->switch_to_new_builder();
+		$this->switch_to_new_skin();
+	}
+
+	/**
+	 * Switch to the new 3.0 skin.
+	 *
+	 * @return void
+	 * @since 3.0.0
+	 */
+	public function switch_to_new_skin() {
+		$flag            = 'neve_migrated_skin';
+		$was_auto_switch = 'neve_was_auto_skin_switch';
+		if ( get_theme_mod( $flag ) === true ) {
+			return;
+		}
+		// Flag this as a routine that already ran.
+		set_theme_mod( $flag, true );
+
+		$fresh = get_option( 'fresh_site' );
+		if ( $fresh ) {
+			set_theme_mod( $was_auto_switch, true );
+			set_theme_mod( 'neve_new_skin', 'new' );
+
+			return;
 		}
 	}
 
@@ -86,17 +124,14 @@ class Admin {
 	 */
 	public function switch_to_new_builder() {
 		$flag = 'neve_ran_builder_migration';
-		if ( get_theme_mod( $flag ) ) {
+		if ( get_theme_mod( $flag ) === true ) {
 			return;
 		}
-
 		// Flag this as a routine that already ran.
 		set_theme_mod( $flag, true );
 
 		$fresh = get_option( 'fresh_site' );
-
-		// If we have a fresh site. Make sure we're going to use the new builder.
-		if ( $fresh === true ) {
+		if ( $fresh ) {
 			set_theme_mod( 'neve_migrated_builders', true );
 
 			return;
@@ -108,11 +143,36 @@ class Admin {
 
 		if ( ! empty( $header ) || ! empty( $footer ) ) {
 			set_theme_mod( 'neve_migrated_builders', false );
+
 			return;
 		}
 
 		// If we don't have any data, use the new builder.
 		set_theme_mod( 'neve_migrated_builders', true );
+	}
+
+	/**
+	 * Filter out old HFG values if the new builder is active.
+	 *
+	 * @param array $theme_mods the theme mods array.
+	 *
+	 * @return array
+	 * @since 3.0.0
+	 */
+	public function remove_old_hfg_values( $theme_mods ) {
+		if ( ! neve_is_new_builder() ) {
+			return $theme_mods;
+		}
+
+		$to_remove = [ 'hfg_header_layout', 'hfg_footer_layout' ];
+
+		foreach ( $to_remove as $slug ) {
+			if ( isset( $theme_mods[ $slug ] ) ) {
+				unset( $theme_mods[ $slug ] );
+			}
+		}
+
+		return $theme_mods;
 	}
 
 	/**
@@ -159,6 +219,8 @@ class Admin {
 	 * @param \WP_REST_Request $request the received request.
 	 *
 	 * @return \WP_REST_Response
+	 *
+	 * @since 3.0.0
 	 */
 	public function migrate_builders_data( \WP_REST_Request $request ) {
 		$is_rollback = $request->get_header( 'rollback' );
@@ -274,6 +336,7 @@ class Admin {
 		if ( ! empty( $activated_time ) ) {
 			if ( time() - intval( $activated_time ) > WEEK_IN_SECONDS ) {
 				update_option( $this->dismiss_notice_key, 'yes' );
+
 				return;
 			}
 		}
@@ -505,7 +568,10 @@ class Admin {
 			NEVE_VERSION,
 			true
 		);
-		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
+
+		$path = neve_is_new_skin() ? 'gutenberg-editor-style' : 'gutenberg-editor-legacy-style';
+
+		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/' . $path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 	}
 
 	/**
@@ -577,6 +643,7 @@ class Admin {
 		if ( array_key_exists( 'otter-blocks/otter-blocks.php', $plugins ) ) {
 			$plugins['otter-blocks/otter-blocks.php']['Name'] = 'Gutenberg Blocks and Template Library by Neve theme';
 		}
+
 		return $plugins;
 	}
 

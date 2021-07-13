@@ -1,0 +1,163 @@
+@import "../../main/variables";
+
+.nv-single-post-wrap {
+  > div {
+	&:first-child {
+	  margin-top: $spacing-aired;
+	}
+
+	&:last-child {
+	  padding-bottom: $spacing-lg;
+	}
+  }
+
+  > div:not(:last-child) {
+	margin-bottom: var(--spacing, $spacing-aired);
+  }
+}
+
+.nv-page-title-wrap {
+  margin-top: $spacing-aired;
+}
+
+.entry-header .title, .page .title, .nv-page-title {
+  margin-bottom: $spacing-xl;
+}
+
+.attachment-neve-blog {
+  display: flex;
+}
+
+.nv-post-navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: $spacing-md;
+
+  span {
+	display: block;
+  }
+
+  .nav-direction {
+	color: var(--nv-text-color);
+	font-size: 0.8em;
+	text-transform: uppercase;
+  }
+
+  a:hover span:last-child {
+	text-decoration: underline;
+  }
+
+  .next {
+	grid-column: 2;
+	text-align: right;
+  }
+}
+
+.post-pages-links {
+  display: flex;
+  list-style-type: none;
+
+  > a:not(:last-child) span, > span {
+	padding-right: $spacing-sm;
+  }
+}
+
+.post-password-form {
+  margin-bottom: $spacing-md;
+  text-align: center;
+
+  input[type=submit] {
+	height: 39px;
+	margin-left: $spacing-xs;
+  }
+
+  label {
+	margin-bottom: 0;
+  }
+
+  p {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+
+  label > input {
+	margin-left: $spacing-xs;
+  }
+}
+
+.nv-tags-list, .tagcloud {
+  a {
+	margin-left: $spacing-xs;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #fff;
+	padding: 10px;
+	border-radius: 4px;
+	background: var(--nv-primary-accent);
+	line-height: 1;
+	font-size: .75em !important;
+	display: inline-block;
+  }
+}
+
+.tagcloud {
+  display: flex;
+  flex-wrap: wrap;
+
+  a {
+	margin: 0 $spacing-xs $spacing-xs 0;
+	color: #fff !important;
+  }
+}
+
+.nv-post-cover {
+  min-height: var(--height);
+  padding: var(--padding);
+  display: flex;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  .nv-title-meta-wrap {
+	color: var(--color, var(--nv-text-dark-bg));
+	display: flex;
+	flex-direction: column;
+	z-index: 1;
+	align-self: var(--vAlign, flex-end);
+
+	a {
+	  color: var(--color, var(--nv-text-dark-bg));
+	}
+
+	&.reversed {
+	  flex-direction: column-reverse;
+	}
+  }
+
+  .container {
+	display: flex;
+  }
+}
+
+.nv-is-boxed {
+  padding: var(--padding);
+  background: var(--bgColor, var(--nv-light-bg));
+  color: var(--color, var(--nv-text-color));
+
+  a {
+	color: var(--color, var(--nv-text-color));
+  }
+}
+
+.nv-overlay {
+  background-color: var(--bgColor, var(--nv-dark-bg));
+  mix-blend-mode: var(--blendMode, normal);
+  opacity: calc(var(--opacity) / 100);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}

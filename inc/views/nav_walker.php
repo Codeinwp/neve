@@ -10,6 +10,8 @@
 
 namespace Neve\Views;
 
+use Neve\Core\Dynamic_Css;
+
 /**
  * Class Nav_Walker
  *
@@ -77,6 +79,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @param int      $depth Depth.
 	 * @param array    $args Args.
 	 * @param int      $id id.
+	 *
 	 * @since 3.0.0
 	 *
 	 * @see   Walker::start_el()
@@ -193,7 +196,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 */
 	public static function fallback() {
 		$fallback_args = array(
-			'depth'      => -1,
+			'depth'      => - 1,
 			'menu_id'    => 'nv-primary-navigation-' . \HFG\current_row( \HFG\Core\Builder\Header::BUILDER_NAME ),
 			'menu_class' => 'primary-menu-ul nav-ul',
 			'container'  => 'ul',
@@ -212,10 +215,50 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		if ( self::$mega_menu_enqueued ) {
 			return;
 		}
-		wp_register_style( 'neve-mega-menu', get_template_directory_uri() . '/assets/css/mega-menu' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+
+		$path = neve_is_new_skin() ? 'mega-menu' : 'mega-menu-legacy';
+
+		wp_register_style( 'neve-mega-menu', get_template_directory_uri() . '/assets/css/' . $path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 		wp_style_add_data( 'neve-mega-menu', 'rtl', 'replace' );
 		wp_style_add_data( 'neve-mega-menu', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-mega-menu' );
+
+		if ( ! neve_is_new_skin() ) {
+			// Fix for MegaMenu alignment
+			$script = <<<'JS'
+function megaMenuCalcEvent() {
+	var megaMenuDowns = document.querySelectorAll(
+		'.header--row-inner .neve-mega-menu > .sub-menu'
+	);
+	megaMenuDowns.forEach( function (dropDown) {
+	    var windowWidth = window.innerWidth;
+		dropDown.style.left = '0';
+		dropDown.style.right = '0';
+		dropDown.style.transform = 'none';
+
+		var bounding = dropDown.getBoundingClientRect();
+		var percentage = Math.round( Math.abs(bounding.left) / bounding.width * 100 );
+		if ( percentage > 100 ) {
+			var tmp = percentage - 100;
+			percentage = 100 - tmp;
+		}
+		if (bounding.left < 0) {
+			dropDown.style.transform = `translateX(${percentage}%)`;
+		}
+		if (bounding.left + bounding.width >= windowWidth) {
+		    percentage = Math.round( Math.abs(bounding.left + bounding.width - windowWidth) / bounding.width * 100 );
+		    percentage = percentage * -1;
+			dropDown.style.transform = `translateX(${percentage}%)`;
+		}
+	});
+}
+var menuCalcEvent = new Event('menuCalc');
+window.addEventListener('menuCalc', function (e) {
+	megaMenuCalcEvent();
+}, false);
+JS;
+			wp_add_inline_script( 'neve-script', $script );
+		}
 		self::$mega_menu_enqueued = true;
 	}
 }

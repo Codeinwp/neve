@@ -10,12 +10,12 @@
 
 namespace Neve\Customizer\Options;
 
+use Neve\Core\Settings\Mods;
 use Neve\Customizer\Controls\React\Instructions_Section;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Panel;
-use Neve\Customizer\Types\Partial;
-use Neve\Views\Header;
+use Neve\Customizer\Types\Section;
 
 /**
  * Main customizer handler.
@@ -28,6 +28,7 @@ class Main extends Base_Customizer {
 		$this->register_types();
 		$this->add_main_panels();
 		$this->change_controls();
+		$this->add_skin_switcher();
 	}
 
 	/**
@@ -75,12 +76,12 @@ class Main extends Base_Customizer {
 				$this->wpc,
 				'neve_typography_quick_links',
 				array(
-					'priority' => -100,
+					'priority' => - 100,
 					'panel'    => 'neve_typography',
 					'type'     => 'hfg_instructions',
 					'options'  => array(
 						'quickLinks' => array(
-							'neve_body_font_family'     => array(
+							Mods::get_alternative_mod( 'neve_body_font_family' ) => array(
 								'label' => esc_html__( 'Change main font', 'neve' ),
 								'icon'  => 'dashicons-editor-spellcheck',
 							),
@@ -110,4 +111,53 @@ class Main extends Base_Customizer {
 		$this->change_customizer_object( 'section', 'static_front_page', 'panel', 'neve_layout' );
 	}
 
+	/**
+	 * Add the skin switcher.
+	 *
+	 * @return void
+	 * @since 3.0.0
+	 */
+	private function add_skin_switcher() {
+		// If we migrated the skin this shouldn't show up at all.
+		if ( get_theme_mod( 'neve_was_auto_skin_switch' ) === true ) {
+			return;
+		}
+
+		// If we're not using the new builder. We don't show the switch & section.
+		if ( ! neve_is_new_builder() ) {
+			return;
+		}
+
+		// If the pro version is incompatible. We don't show the switch.
+		if ( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '3.0.0', '<' ) ) {
+			return;
+		}
+
+		$section = 'neve_style_section';
+
+		$this->add_section(
+			new Section(
+				$section,
+				[
+					'priority' => 201,
+					'title'    => esc_html__( 'Style', 'neve' ),
+				]
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_new_skin',
+				[
+					'transport'         => 'postMessage',
+					'sanitize_callback' => 'sanitize_text_field',
+					'default'           => 'old',
+				],
+				[
+					'type'    => 'neve_skin_switcher',
+					'section' => $section,
+				]
+			)
+		);
+	}
 }

@@ -1,0 +1,39 @@
+$line-height: 1.68421 !default;
+$h-font-weight: 700;
+
+// Font sizes.
+$text-sm: .9em;
+$text-lg: 1.25em;
+$text-xl: 1.5em;
+
+// Spacing variables.
+$spacing-xxs: 8px;
+$spacing-xs: 10px;
+$spacing-sm: 15px;
+$spacing-md: 20px;
+$spacing-lg: 30px;
+$spacing-xl: 40px;
+$spacing-xxl: 80px;
+$spacing-aired: 60px;
+
+
+$muted-white: #f0f0f0;
+$muted-white-med: #c9c9c9;
+$gray-color: #676767; //rgba(0,0,0,.54);
+
+$body-color: var(--nv-text-color);
+$success: var(--nv-c-1);
+$error: var(--nv-c-2);
+
+$muted-border: 1px solid var(--nv-light-bg);
+$muted-border-med: 1px solid #c9c9c9;
+$soft-box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+
+$base-border: 2px solid var(--nv-text-color);
+$base-border-strong: 4px solid var(--nv-text-color);
+
+$tablet-sm: "576px";
+$tablet: "769px";
+$laptop: "960px";
+$desktop: "1200px";
+

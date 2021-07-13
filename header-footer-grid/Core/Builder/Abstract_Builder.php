@@ -358,10 +358,17 @@ abstract class Abstract_Builder implements Builder {
 					'label'                 => __( 'Row height', 'neve' ),
 					'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 					'live_refresh_selector' => $row_class,
-					'live_refresh_css_prop' => array(
-						'prop' => 'height',
-						'unit' => 'px',
-					),
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'responsive' => true,
+							'vars'       => '--height',
+							'suffix'     => 'px',
+							'fallback'   => 'auto',
+							'selector'   => $row_class,
+						],
+						'prop'   => 'height',
+						'unit'   => 'px',
+					],
 					'options'               => [
 						'input_attrs' => [
 							'step'       => 1,
@@ -425,6 +432,10 @@ abstract class Abstract_Builder implements Builder {
 				'transport'             => 'postMessage',
 				'live_refresh_selector' => $row_class,
 				'live_refresh_css_prop' => [
+					'cssVar'  => [
+						'vars'     => '--color',
+						'selector' => $row_class,
+					],
 					'partial' => $row_id === 'sidebar' ? 'hfg_header_layout_partial' : $row_setting_id . '_partial',
 				],
 				'sanitize_callback'     => 'wp_filter_nohtml_kses',
@@ -790,17 +801,16 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
-	 * Method to generate css array for each row.
+	 * Add legacy row styles.
 	 *
-	 * @param string $row_index The row index.
-	 * @param array  $css_array The css array.
+	 * @param array  $css_array css array.
+	 * @param string $row_index row index.
 	 *
 	 * @return array
-	 * @since   1.0.0
-	 * @access  private
 	 */
-	private function add_row_style( $row_index, $css_array = array() ) {
-		$selector    = $row_index === 'sidebar' ? '.header-menu-sidebar .header-menu-sidebar-bg' : '.' . $this->get_id() . '-' . $row_index . '-inner';
+	private function add_legacy_row_styles( $css_array, $row_index ) {
+		$selector = $row_index === 'sidebar' ? '.header-menu-sidebar .header-menu-sidebar-bg' : '.' . $this->get_id() . '-' . $row_index . '-inner';
+
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $selector,
 			Dynamic_Selector::KEY_RULES    => [
@@ -965,9 +975,147 @@ abstract class Abstract_Builder implements Builder {
 			$css_array = $this->add_sidebar_styles( $css_array );
 		}
 
+		return $css_array;
+	}
+
+	/**
+	 * Method to generate css array for each row.
+	 *
+	 * @param string $row_index The row index.
+	 * @param array  $css_array The css array.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  private
+	 */
+	private function add_row_style( $row_index, $css_array = array() ) {
 		if ( neve_is_new_builder() ) {
 			$css_array = $this->add_new_builder_styles( $css_array, $row_index );
 		}
+
+		if ( ! neve_is_new_skin() ) {
+			return $this->add_legacy_row_styles( $css_array, $row_index );
+		}
+
+		$rules          = [];
+		$selector       = $row_index === 'sidebar' ? '.header-menu-sidebar-bg' : '.' . $this->get_id() . '-' . $row_index;
+		$default_colors = $this->get_default_row_colors( $row_index );
+
+		if ( $row_index !== 'sidebar' ) {
+			$rules['--height'] = [
+				Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_height',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+					$value = (int) $value;
+					if ( $value > 0 ) {
+						return sprintf( '%s:%s;', $css_prop, $value . 'px' );
+					}
+
+					return '';
+				},
+				Dynamic_Selector::META_DEFAULT       => '{ desktop: 0, tablet: 0, mobile: 0 }',
+			];
+		}
+
+		$rules['--color'] = [
+			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
+			Dynamic_Selector::META_DEFAULT => $default_colors['text'],
+		];
+
+		// If there is no default, use site background.
+		$default_color = isset( $default_colors['background'] ) ? $default_colors['background'] : 'var(--nv-site-bg)';
+
+		$background = get_theme_mod(
+			$this->control_id . '_' . $row_index . '_background',
+			[
+				'type'       => 'color',
+				'colorValue' => $default_color,
+			]
+		);
+
+		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
+			$rules = array_merge(
+				$rules,
+				[
+					'--bgColor' => [
+						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
+						Dynamic_Selector::META_DEFAULT => $default_color,
+					],
+				]
+			);
+		}
+
+		if ( $background['type'] === 'image' ) {
+			$rules = array_merge(
+				$rules,
+				[
+					'--overlayColor'     => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
+					],
+					'--bgImage'          => [
+						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							$image = 'none';
+							if ( isset( $value['useFeatured'] ) && $value['useFeatured'] === true && is_singular() ) {
+								$featured_image = get_the_post_thumbnail_url();
+								if ( ! empty( $featured_image ) ) {
+									$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
+								} else {
+									$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
+								}
+							} elseif ( ! empty( $value['imageUrl'] ) ) {
+								$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
+							}
+
+							return sprintf( '%s:%s;', $css_prop, $image );
+						},
+					],
+					'--bgPosition'       => [
+						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							if ( empty( $value['focusPoint'] ) || empty( $value['focusPoint']['x'] ) || empty( $value['focusPoint']['y'] ) ) {
+								return '';
+							}
+
+							$parsed_position = round( $value['focusPoint']['x'] * 100 ) . '% ' . round( $value['focusPoint']['y'] * 100 ) . '%;';
+
+							return sprintf( '%s:%s;', $css_prop, $parsed_position );
+						},
+					],
+					'--bgAttachment'     => [
+						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							if ( ! isset( $value['fixed'] ) || $value['fixed'] !== true ) {
+								return '';
+							}
+
+							return sprintf( '%s:fixed;', $css_prop );
+						},
+					],
+					'--bgOverlayOpacity' => [
+						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							if ( ! isset( $value['overlayOpacity'] ) ) {
+								return '';
+							}
+
+							return sprintf( '%s:%s;', $css_prop, $value['overlayOpacity'] / 100 );
+						},
+					],
+				]
+			);
+		}
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector,
+			Dynamic_Selector::KEY_RULES    => $rules,
+		];
+
+
+		if ( $row_index === 'sidebar' ) {
+			$css_array = $this->add_sidebar_styles( $css_array );
+		}
+
 
 		return $css_array;
 	}
@@ -1150,7 +1298,7 @@ abstract class Abstract_Builder implements Builder {
 				}
 
 				if ( $row_index === 'sidebar' ) {
-					$render_index++;
+					$render_index ++;
 				}
 
 				$align = $this->get_component_alignment( $component['id'] );
@@ -1191,8 +1339,9 @@ abstract class Abstract_Builder implements Builder {
 				$was_previous_mergeable = false;
 			}
 
-			// Make sure array index starts at 0.
-			$render_buffer[ $slot ] = array_values( $render_buffer[ $slot ] );
+			if ( isset( $render_buffer[ $slot ] ) && is_array( $render_buffer[ $slot ] ) ) {
+				$render_buffer[ $slot ] = array_values( $render_buffer[ $slot ] );
+			}
 		}
 
 		if ( ! $this->columns_layout ) {
@@ -1593,6 +1742,22 @@ abstract class Abstract_Builder implements Builder {
 				'light-mode' => 'var(--nv-text-color)',
 			],
 		];
+
+		$is_footer_bottom = $this->get_id() === 'footer' && $row_id === 'bottom';
+
+		// On the new skin, the bottom footer row should be dark by default.
+		if ( neve_is_new_skin() && $is_footer_bottom ) {
+			$bg_color_map = [
+				'background' => [
+					'dark-mode'  => 'var(--nv-site-bg)',
+					'light-mode' => 'var(--nv-dark-bg)',
+				],
+				'text'       => [
+					'dark-mode'  => 'var(--nv-text-color)',
+					'light-mode' => 'var(--nv-text-dark-bg)',
+				],
+			];
+		}
 
 		$row_setting_id = $this->control_id . '_' . $row_id;
 		$background     = $bg_color_map['background']['light-mode'];

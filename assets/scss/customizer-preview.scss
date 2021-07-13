@@ -36,6 +36,7 @@
       position: relative;
 
       &.has_menu {
+		position: unset;
         .item--preview-name {
           left: auto;
         }
