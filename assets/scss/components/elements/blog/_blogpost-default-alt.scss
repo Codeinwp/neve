@@ -31,12 +31,7 @@
 	}
 
 	&.has-post-thumbnail.layout-alternative:nth-child(even) {
-	  &.image-left{
-		--thumbGridColumn: 2;
-	  }
-	  &.image-right{
-		--thumbGridColumn: 1;
-	  }
+	  --thumbGridColumn: 2;
 
 	  .content {
 		grid-template-columns: var(--postColTemplate, 65fr 35fr);
