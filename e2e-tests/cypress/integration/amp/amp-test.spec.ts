@@ -1,6 +1,5 @@
 describe('AMP Check', function () {
 	before('Sets up search icon on menu top row', function () {
-		cy.loginWithRequest('/wp-admin');
 		cy.fixture('amp/amp-setup').then((setup) => {
 			cy.setCustomizeSettings(setup);
 		});
@@ -12,9 +11,7 @@ describe('AMP Check', function () {
 			'.header-top.hide-on-mobile > .header--row-inner > .container > .row > .right > .builder-item > .item--inner > .component-wrap > .widget > .search-form > .search-submit',
 		).as('navSearchButton');
 
-		cy.get(
-			'.header-top.hide-on-mobile > .header--row-inner > .container > .row > .right > .builder-item > .item--inner > .component-wrap > .widget > .search-form > label > .search-field',
-		)
+	  cy.findByPlaceholderText(/upper search/i)
 			.as('navSearchForm')
 			.should('be.visible');
 
