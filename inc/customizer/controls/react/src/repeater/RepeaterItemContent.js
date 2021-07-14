@@ -54,16 +54,25 @@ const RepeaterItemContent = ({
 					/>
 				);
 			case 'select':
+				const defaultOption = [
+					{ value: '', label: 'Select', disabled: true },
+				];
 				return (
 					<SelectControl
 						label={fields[key].label}
 						value={value[index][key]}
 						onChange={(newData) => changeContent(key, newData)}
-						options={Object.values(fields[key].choices)
-							.map(Object.entries)
-							.map(([[k, v]]) => {
-								return { value: k, label: v };
-							})}
+						options={defaultOption.concat(
+							Object.values(fields[key].choices)
+								.map(Object.entries)
+								.map(([[k, v]]) => {
+									return {
+										value: k,
+										label: v,
+										disabled: false,
+									};
+								})
+						)}
 						key={key + index}
 					/>
 				);
