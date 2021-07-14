@@ -202,7 +202,7 @@ jobs:
           working-directory: ./e2e-tests
           env: host=localhost,port=8080
           browser: chrome
-          install: true
+          install: ${{ ! steps.yarn-and-build-cache.outputs.cache-hit }}
           headless: true
           parallel: true
           group: e2e-${{ matrix.specs }}
