@@ -26,7 +26,7 @@ global $_neve_bootstrap_errors;
 
 $_neve_bootstrap_errors = new WP_Error();
 
-if ( version_compare( PHP_VERSION, '5.5' ) < 0 ) {
+if ( version_compare( PHP_VERSION, '7.0' ) < 0 ) {
 	$_neve_bootstrap_errors->add(
 		'minimum_php_version',
 		sprintf(
@@ -37,7 +37,7 @@ if ( version_compare( PHP_VERSION, '5.5' ) < 0 ) {
 				'<a href="https://wordpress.org/support/upgrade-php/">%s</a>',
 				__( 'upgrading PHP to the latest version', 'neve' )
 			),
-			'5.5+'
+			'7.0'
 		)
 	);
 }

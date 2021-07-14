@@ -1,0 +1,166 @@
+@import "variables";
+@import "./tables";
+@import "./separators";
+
+// === Headings font sizes === //
+.has-neve-body-font-size {
+  font-size: var(--bodyFontSize);
+}
+
+.has-neve-h-1-font-size {
+  font-size: var(--h1FontSize);
+}
+
+.has-neve-h-2-font-size {
+  font-size: var(--h2FontSize);
+}
+
+.has-neve-h-3-font-size {
+  font-size: var(--h3FontSize);
+}
+
+.has-neve-h-4-font-size {
+  font-size: var(--h4FontSize);
+}
+
+.has-neve-h-5-font-size {
+  font-size: var(--h5FontSize);
+}
+
+
+
+// === Buttons === //
+.wp-block-button__link {
+  @extend %nv-button-primary-no-border;
+  @extend %nv-button;
+}
+
+.is-style-primary .wp-block-button__link {
+  @extend %nv-button-primary;
+
+  &:hover {
+	@extend %nv-button-primary-hover;
+  }
+}
+
+.is-style-secondary .wp-block-button__link {
+  @extend %nv-button-secondary;
+
+  &:hover {
+	@extend %nv-button-secondary-hover;
+  }
+}
+
+// === Alignments === //
+.alignfull {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 0 7.5px;
+}
+
+.alignwide {
+  width: 98vw;
+  max-width: 98vw;
+  margin-left: calc(50% - 49vw);
+  margin-right: calc(50% - 49vw);
+}
+
+.nv-sidebar-left,
+.nv-sidebar-right {
+  .alignfull, .alignwide {
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+  }
+}
+
+// === Quotes === //
+blockquote {
+  margin: $spacing-xl 0;
+
+  p {
+	margin-bottom: $spacing-xs;
+  }
+
+  cite {
+	font-style: normal;
+	font-size: $text-sm !important;
+  }
+
+  &.has-text-align-left {
+	border-left: $base-border-strong;
+	padding-left: $spacing-md;
+  }
+
+  &.has-text-align-right {
+	border-right: $base-border-strong;
+	padding-right: $spacing-md;
+  }
+
+  &.is-style-large {
+	border: 0;
+	padding: 0;
+
+	&.wp-block-quote > p {
+	  margin-bottom: $spacing-md;
+	  font-style: normal;
+	  font-size: $text-lg;
+	}
+  }
+}
+
+// === Pull Quotes === //
+.wp-block-pullquote {
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  border-top: $base-border-strong;
+  border-bottom: $base-border-strong;
+  padding: $spacing-lg $spacing-md;
+
+  p {
+	font-size: $text-xl !important;
+  }
+
+  blockquote {
+	margin: 0;
+  }
+
+  &.alignleft {
+	text-align: left;
+  }
+
+  &.alignright {
+	text-align: right;
+  }
+
+  &.is-style-solid-color {
+	background-color: var(--nv-light-bg);
+
+	blockquote {
+	  text-align: inherit;
+	  max-width: 90%;
+	}
+  }
+}
+
+
+//<editor-fold desc="Verse">
+.wp-block-verse {
+  background-color: inherit;
+  font-size: $text-lg;
+  border: 0;
+}
+
+//</editor-fold>
+
+@mixin gutenberg--laptop() {
+  .alignwide {
+	width: 70vw;
+	max-width: 70vw;
+	margin-left: calc(50% - 35vw);
+	margin-right: calc(50% - 35vw);
+  }
+}
+

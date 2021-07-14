@@ -1,5 +1,6 @@
-/* global CustomEvent,NeveReactCustomize */
-import domReady from '@wordpress/dom-ready';
+/* global CustomEvent, NeveReactCustomize */
+import './public-path.js';
+import { render } from '@wordpress/element';
 
 import { init as initDynamicFields } from './dynamic-fields/index';
 import { ToggleControl } from './toggle/Control';
@@ -18,13 +19,18 @@ import { MultiSelectControl } from './multiselect/Control';
 import { ResponsiveRadioButtonsControl } from './responsive-radio-buttons/Control';
 import { RadioImageControl } from './radio-image/Control';
 import { OrderingControl } from './ordering/Control';
-import { UiControl } from './ui/Control';
 import { GlobalColorsControl } from './global-colors/Control';
 import { NRSpacingControl } from './non-responsive-spacing/Control';
 import { InlineSelectControl } from './inline-select/Control';
+import { BuilderControl } from './builder/Control';
+import { BuilderColumns } from './builder-columns/Control';
+import { InstructionsControl } from './builder-instructions/Control';
+import { HeadingControl } from './heading/Control';
+import { SkinSwitcherControl } from './skin-switcher/Control';
 import { RepeaterControl } from './repeater/Control';
 
 import './style.scss';
+import Instructions from './builder-instructions/Instructions.tsx';
 
 const { controlConstructor } = wp.customize;
 
@@ -44,10 +50,14 @@ controlConstructor.neve_multiselect = MultiSelectControl;
 controlConstructor.neve_responsive_radio_buttons_control = ResponsiveRadioButtonsControl;
 controlConstructor.neve_radio_image_control = RadioImageControl;
 controlConstructor.neve_ordering_control = OrderingControl;
-controlConstructor.neve_ui_control = UiControl;
 controlConstructor.neve_global_colors = GlobalColorsControl;
 controlConstructor.neve_non_responsive_spacing = NRSpacingControl;
 controlConstructor.neve_inline_select = InlineSelectControl;
+controlConstructor.neve_builder_control = BuilderControl;
+controlConstructor.neve_builder_columns = BuilderColumns;
+controlConstructor.hfg_instructions = InstructionsControl;
+controlConstructor.neve_customizer_heading = HeadingControl;
+controlConstructor.neve_skin_switcher = SkinSwitcherControl;
 controlConstructor.neve_repeater_control = RepeaterControl;
 
 const initDeviceSwitchers = () => {
@@ -80,22 +90,114 @@ const initBlogPageFocus = () => {
 	});
 };
 
-domReady(() => {
+const initQuickLinksSections = () => {
+	const quickLinks = document.querySelectorAll(
+		'.control-section.neve-quick-links'
+	);
+
+	quickLinks.forEach((node) => {
+		const slug = node.getAttribute('data-slug');
+		const section = wp.customize.section(slug);
+
+		if (!section) {
+			return;
+		}
+
+		render(<Instructions control={section} />, section.container[0]);
+	});
+};
+const bindDataAttrQuickLinks = () => {
+	const dataControlFocusElements = document.querySelectorAll(
+		'[data-control-focus]'
+	);
+
+	if (!dataControlFocusElements) {
+		return;
+	}
+
+	dataControlFocusElements.forEach((el) => {
+		el.addEventListener('click', () => {
+			const attribute = el.getAttribute('data-control-focus');
+
+			if (!attribute) {
+				return;
+			}
+
+			const control = window.wp.customize.control(attribute);
+
+			if (!control) {
+				return;
+			}
+
+			control.focus();
+		});
+	});
+};
+const checkHasElementorTemplates = () => {
+	if (NeveReactCustomize.elementor.hasElementorShopTemplate) {
+		window.wp.customize
+			.section('woocommerce_product_catalog')
+			.notifications.add(
+				new window.wp.customize.Notification(
+					'neve-custom-elementor-shop-template',
+					{
+						type: 'warning',
+						message:
+							'Some of the settings might not work as expected because you are using a custom shop template made in Elementor.',
+					}
+				)
+			);
+	}
+
+	if (NeveReactCustomize.elementor.hasElementorProductTemplate) {
+		window.wp.customize
+			.section('neve_single_product_layout')
+			.notifications.add(
+				new window.wp.customize.Notification(
+					'neve-custom-elementor-product-template',
+					{
+						type: 'warning',
+						message:
+							'Some of the settings might not work as expected because you are using a custom product template made in Elementor.',
+					}
+				)
+			);
+	}
+};
+
+window.wp.customize.bind('ready', () => {
+	initDynamicFields();
+	initQuickLinksSections();
+	bindDataAttrQuickLinks();
+	initBlogPageFocus();
+	checkHasElementorTemplates();
 	initDeviceSwitchers();
 	initBlogPageFocus();
-});
-
-wp.customize.bind('ready', () => {
-	initDynamicFields();
 });
 
 window.HFG = {
 	getSettings: () => {
 		const usedSettings = {};
-		NeveReactCustomize.headerControls.map((item) => {
-			if (!wp.customize.control(item)) return false;
-			usedSettings[item] = wp.customize.control(item).setting.get();
-			return item;
+		const { headerControls } = window.NeveReactCustomize;
+		Object.keys(headerControls).forEach((modKey) => {
+			const control = window.wp.customize.control(modKey);
+			// If the control isn't there don't do anything.
+			if (!control) {
+				return;
+			}
+
+			// If the value is default don't do anything.
+			const value = control.setting();
+
+			// Compare stringified versions as this can contain arrays and objects.
+			if (
+				JSON.stringify(value) === JSON.stringify(headerControls[modKey])
+			) {
+				return;
+			}
+
+			// Save key/value pair.
+			usedSettings[modKey] = value;
 		});
 		return JSON.stringify(usedSettings);
 	},

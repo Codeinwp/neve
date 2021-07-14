@@ -1,0 +1,44 @@
+@import "vars";
+
+.neve-hfg-builder {
+  .neve-builder {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin-left: 300px;
+	padding: 10px 20px 20px;
+	background-color: $wp-light-grey;
+	border-top: $wp-grey-border;
+	transition: all .18s;
+
+	&.hide {
+	  transition: bottom .2s ease;
+	  bottom: -100%;
+	}
+
+	@media screen and (min-width: 1667px) {
+	  margin-left: 18%;
+	}
+  }
+
+  @import 'rows';
+  @import 'builder-item';
+  @import 'responsive-switches';
+  @import 'sidebar-items';
+  @import 'columns-builder';
+  @import 'items-popover';
+}
+
+@import 'customizer-adjustments';
+@import 'instructional-section';
+
+
+.neve-builder-portal-wrap {
+  z-index: 10;
+  position: relative;
+}
+
+.collapsed .neve-builder {
+  margin-left: 0;
+}

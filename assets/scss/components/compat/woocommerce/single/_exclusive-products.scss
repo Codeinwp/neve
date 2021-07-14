@@ -1,0 +1,48 @@
+
+section.exclusive {
+  .nv-card-content-wrapper {
+	position: relative;
+	width: 100%;
+  }
+
+  .dots-nav {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+
+	.dot {
+	  background: 0;
+	  border: 1px solid #b7b7b7;
+	  margin: 5px;
+	  width: 8px;
+	  height: 8px;
+	  padding: 0;
+	  border-radius: 100%;
+
+	  &.tns-nav-active {
+		background: #404248;
+		border-color: #404248;
+	  }
+	}
+  }
+
+
+  .tns-outer {
+	/* rtl:begin:ignore */
+	direction: ltr;
+	/* rtl:end:ignore */
+	overflow: hidden;
+	position: relative;
+  }
+
+  .tns-ovh {
+	padding-right: 4px;
+	overflow: unset;
+	margin-bottom: $spacing-sm;
+  }
+
+  .tns-visually-hidden {
+	display: none;
+  }
+}

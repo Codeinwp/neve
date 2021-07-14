@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+	/* Specify ECMAScript target version */
+	"target": "ES2018",
+	/* Specify module code generation */
+	"module": "esnext",
+	/* Specify library files to be included in the compilation. */
+	"lib": [
+	  "ESNext",
+	  "DOM",
+	  "ES2018"
+	],
+	/* Specify JSX code generation */
+	"jsx": "react",
+	/* Enable all strict type-checking options */
+	"strict": true,
+	/* Specify module resolution strategy */
+	"moduleResolution": "node",
+	/* List of folders to include type definitions from */
+	"typeRoots": [
+	  "./@types",
+	  "../../../../../node_modules/@types"
+	],
+	/* allow import React instead of import * as React */
+	"allowSyntheticDefaultImports": true,
+	/*  Emit interop between CommonJS and ES modules */
+	"esModuleInterop": true,
+	"resolveJsonModule": true,
+  },
+  "exclude": ["../../../../../node_modules"]
+}

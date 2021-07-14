@@ -455,71 +455,14 @@ abstract class Abstract_Component implements Component {
 	 */
 	public function define_settings() {
 		$this->add_settings();
-		$padding_selector = '.builder-item--' . $this->get_id() . ' > :not(.customize-partial-edit-shortcut):not(.item--preview-name):first-of-type';
+
+		$padding_selector = '.builder-item--' . $this->get_id();
+
 		if ( $this->default_selector !== null ) {
 			$padding_selector = $this->default_selector;
 		}
-		$margin_selector = '.builder-item--' . $this->get_id();
-		$align_choices   = [
-			'left'   => [
-				'tooltip' => __( 'Left', 'neve' ),
-				'icon'    => 'editor-alignleft',
-			],
-			'center' => [
-				'tooltip' => __( 'Center', 'neve' ),
-				'icon'    => 'editor-aligncenter',
-			],
-			'right'  => [
-				'tooltip' => __( 'Right', 'neve' ),
-				'icon'    => 'editor-alignright',
-			],
-		];
-		if ( strpos( $this->get_id(), Button::COMPONENT_ID ) > -1 ) {
-			$align_choices['justify'] = [
-				'tooltip' => __( 'Justify', 'neve' ),
-				'icon'    => 'editor-justify',
-			];
-		}
 
-		if ( $this->get_id() !== Search::COMPONENT_ID ) {
-			SettingsManager::get_instance()->add(
-				[
-					'id'                    => self::ALIGNMENT_ID,
-					'group'                 => $this->get_id(),
-					'tab'                   => SettingsManager::TAB_LAYOUT,
-					'transport'             => $this->is_auto_width ? 'post' . $this->get_builder_id() : 'postMessage',
-					'sanitize_callback'     => [ $this, 'sanitize_alignment' ],
-					'default'               => [
-						'desktop' => $this->default_align,
-						'tablet'  => $this->default_align,
-						'mobile'  => $this->default_align,
-					],
-					'label'                 => __( 'Alignment', 'neve' ),
-					'type'                  => '\Neve\Customizer\Controls\React\Responsive_Radio_Buttons',
-					'live_refresh_selector' => $this->is_auto_width ? null : $margin_selector,
-					'live_refresh_css_prop' => [
-						'remove_classes' => [
-							'mobile-left',
-							'mobile-right',
-							'mobile-center',
-							'tablet-left',
-							'tablet-right',
-							'tablet-center',
-							'desktop-left',
-							'desktop-right',
-							'desktop-center',
-						],
-						'is_for'         => 'horizontal',
-					],
-					'options'               => [
-						'choices' => $align_choices,
-					],
-					'section'               => $this->section,
-					'conditional_header'    => $this->get_builder_id() === 'header',
-				]
-			);
-		}
-
+		$this->add_horizontal_alignment_control();
 		$this->add_vertical_alignment_control();
 
 		SettingsManager::get_instance()->add(
@@ -539,9 +482,14 @@ abstract class Abstract_Component implements Component {
 					'default'     => $this->default_padding_value,
 				],
 				'live_refresh_selector' => $padding_selector,
-				'live_refresh_css_prop' => array(
-					'prop' => 'padding',
-				),
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'       => '--padding',
+						'responsive' => true,
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
+					'prop'   => 'padding',
+				],
 				'section'               => $this->section,
 				'conditional_header'    => $this->get_builder_id() === 'header',
 			]
@@ -557,9 +505,14 @@ abstract class Abstract_Component implements Component {
 				'default'               => $this->default_margin_value,
 				'label'                 => __( 'Margin', 'neve' ),
 				'type'                  => '\Neve\Customizer\Controls\React\Spacing',
-				'live_refresh_selector' => $margin_selector,
+				'live_refresh_selector' => '.builder-item--' . $this->get_id(),
 				'live_refresh_css_prop' => array(
-					'prop' => 'margin',
+					'cssVar' => [
+						'vars'       => '--margin',
+						'responsive' => true,
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
+					'prop'   => 'margin',
 				),
 				'section'               => $this->section,
 				'conditional_header'    => $this->get_builder_id() === 'header',
@@ -632,15 +585,13 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
-	 * Method to add Component css styles.
+	 * Add legacy style.
 	 *
-	 * @param array $css_array An array containing css rules.
+	 * @param array $css_array the styles css array.
 	 *
 	 * @return array
-	 * @since   1.0.0
-	 * @access  public
 	 */
-	public function add_style( array $css_array = array() ) {
+	private function add_legacy_style( array $css_array ) {
 		if ( $this->has_font_family_control || $this->has_typeface_control ) {
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => $this->default_typography_selector,
@@ -742,6 +693,100 @@ abstract class Abstract_Component implements Component {
 			],
 		];
 
+		return $css_array;
+	}
+
+	/**
+	 * Method to add Component css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function add_style( array $css_array = array() ) {
+		if ( ! neve_is_new_skin() ) {
+			return $this->add_legacy_style( $css_array );
+		}
+
+		$rules = [
+			'--padding' => [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::PADDING_ID,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::PADDING_ID ),
+				'directional-prop'                   => Config::CSS_PROP_PADDING,
+			],
+			'--margin'  => [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::MARGIN_ID,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::MARGIN_ID ),
+				'directional-prop'                   => Config::CSS_PROP_MARGIN,
+			],
+		];
+
+		if ( $this->has_font_family_control || $this->has_typeface_control ) {
+			$rules = array_merge(
+				$rules,
+				[
+					'--fontFamily'    => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FONT_FAMILY_ID,
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FONT_FAMILY_ID ),
+					],
+					'--fontSize'      => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_SUFFIX  => 'em',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
+					],
+					'--lineHeight'    => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.lineHeight',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'lineHeight' ),
+					],
+					'--letterSpacing' => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.letterSpacing',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_SUFFIX  => 'px',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'letterSpacing' ),
+					],
+					'--fontWeight'    => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontWeight',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontWeight' ),
+					],
+					'--textTransform' => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.textTransform',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'textTransform' ),
+					],
+					'--iconSize'      => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_SUFFIX  => 'responsive_suffix',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
+					],
+				]
+			);
+
+			/*
+			Attempt to match the font family for cart icon.
+			if ( strpos( $this->get_id(), Nav::COMPONENT_ID ) > - 1 ) {
+				$css_array[] = [
+					Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' ~ .builder-item--header_cart_icon',
+					Dynamic_Selector::KEY_RULES    => [
+						'--fontFamily'    => [
+							Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FONT_FAMILY_ID,
+							Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FONT_FAMILY_ID ),
+						],
+					],
+				];
+			}
+			*/
+		}
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
+			Dynamic_Selector::KEY_RULES    => $rules,
+		];
 
 		return $css_array;
 	}
@@ -801,6 +846,12 @@ abstract class Abstract_Component implements Component {
 					'priority'              => $priority + 1,
 					'type'                  => '\Neve\Customizer\Controls\React\Font_Family',
 					'live_refresh_selector' => $this->default_typography_selector,
+					'live_refresh_css_prop' => array(
+						'cssVar' => [
+							'vars'     => '--fontFamily',
+							'selector' => '.builder-item--' . $this->get_id(),
+						],
+					),
 					'section'               => $this->section,
 					'options'               => [
 						'input_attrs' => [
@@ -819,7 +870,29 @@ abstract class Abstract_Component implements Component {
 					'transport'             => 'postMessage',
 					'priority'              => $priority + 2,
 					'type'                  => '\Neve\Customizer\Controls\React\Typography',
-					'live_refresh_selector' => $this->default_typography_selector,
+					'live_refresh_selector' => neve_is_new_skin() ? true : $this->default_typography_selector,
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'     => [
+								'--textTransform' => 'textTransform',
+								'--fontWeight'    => 'fontWeight',
+								'--fontSize'      => [
+									'key'        => 'fontSize',
+									'responsive' => true,
+								],
+								'--lineHeight'    => [
+									'key'        => 'lineHeight',
+									'responsive' => true,
+								],
+								'--letterSpacing' => [
+									'key'        => 'letterSpacing',
+									'suffix'     => 'px',
+									'responsive' => true,
+								],
+							],
+							'selector' => '.builder-item--' . $this->get_id(),
+						],
+					],
 					'section'               => $this->section,
 					'default'               => $this->typography_default,
 					'sanitize_callback'     => 'neve_sanitize_typography_control',
@@ -911,6 +984,7 @@ abstract class Abstract_Component implements Component {
 				'desktop' => $default_int_val,
 			];
 		}
+
 		return [
 			'mobile'  => $old,
 			'tablet'  => $old,
@@ -918,31 +992,76 @@ abstract class Abstract_Component implements Component {
 		];
 	}
 
+
 	/**
-	 * Sanitize alignment.
-	 *
-	 * @param array $input alignment responsive array.
-	 *
-	 * @return array
+	 * Add horizontal alignment to component.
 	 */
-	public function sanitize_alignment( $input ) {
-		$default = [
-			'mobile'  => 'left',
-			'tablet'  => 'left',
-			'desktop' => 'left',
+	private function add_horizontal_alignment_control() {
+		if ( strpos( $this->get_id(), Search::COMPONENT_ID ) > - 1 ) {
+			return;
+		}
+
+		// New skin drops alignment for navigation
+		if ( neve_is_new_skin() && strpos( $this->get_id(), Nav::COMPONENT_ID ) > - 1 ) {
+			return;
+		}
+
+		$align_choices = [
+			'left'   => [
+				'tooltip' => __( 'Left', 'neve' ),
+				'icon'    => 'editor-alignleft',
+			],
+			'center' => [
+				'tooltip' => __( 'Center', 'neve' ),
+				'icon'    => 'editor-aligncenter',
+			],
+			'right'  => [
+				'tooltip' => __( 'Right', 'neve' ),
+				'icon'    => 'editor-alignright',
+			],
 		];
-		$allowed = [ 'left', 'center', 'right', 'justify' ];
-
-		if ( ! is_array( $input ) ) {
-			return $default;
+		if ( strpos( $this->get_id(), Button::COMPONENT_ID ) > - 1 ) {
+			$align_choices['justify'] = [
+				'tooltip' => __( 'Justify', 'neve' ),
+				'icon'    => 'editor-justify',
+			];
 		}
 
-		foreach ( $input as $device => $alignment ) {
-			if ( ! in_array( $alignment, $allowed ) ) {
-				$input[ $device ] = 'left';
-			}
-		}
-
-		return $input;
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::ALIGNMENT_ID,
+				'group'                 => $this->get_id(),
+				'tab'                   => SettingsManager::TAB_LAYOUT,
+				'transport'             => $this->is_auto_width ? 'post' . $this->get_builder_id() : 'postMessage',
+				'sanitize_callback'     => 'neve_sanitize_alignment',
+				'default'               => [
+					'desktop' => $this->default_align,
+					'tablet'  => $this->default_align,
+					'mobile'  => $this->default_align,
+				],
+				'label'                 => __( 'Alignment', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Radio_Buttons',
+				'live_refresh_selector' => $this->is_auto_width ? null : '.builder-item--' . $this->get_id(),
+				'live_refresh_css_prop' => [
+					'remove_classes' => [
+						'mobile-left',
+						'mobile-right',
+						'mobile-center',
+						'tablet-left',
+						'tablet-right',
+						'tablet-center',
+						'desktop-left',
+						'desktop-right',
+						'desktop-center',
+					],
+					'is_for'         => 'horizontal',
+				],
+				'options'               => [
+					'choices' => $align_choices,
+				],
+				'section'               => $this->section,
+				'conditional_header'    => $this->get_builder_id() === 'header',
+			]
+		);
 	}
 }

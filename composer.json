@@ -28,9 +28,9 @@
 	]
   },
   "scripts": {
-	"format": "phpcbf --standard=phpcs.xml --report-summary --report-source -s  --runtime-set testVersion 5.5- ",
-	"format-fix-exit": "\"vendor/bin/phpcbf-fix-exit-0\" --standard=phpcs.xml --report-summary --report-source -s  --runtime-set testVersion 5.5- ",
-	"phpcs": "phpcs --standard=phpcs.xml -s  --runtime-set testVersion 5.5-",
+	"format": "phpcbf --standard=phpcs.xml --report-summary --report-source -s  --runtime-set testVersion 7.0- ",
+	"format-fix-exit": "\"vendor/bin/phpcbf-fix-exit-0\" --standard=phpcs.xml --report-summary --report-source -s  --runtime-set testVersion 7.0- ",
+	"phpcs": "phpcs --standard=phpcs.xml -s  --runtime-set testVersion 7.0-",
 	"lint": "composer run-script phpcs",
 	"phpcs-i": "phpcs -i",
 	"post-install-cmd": [
@@ -46,7 +46,7 @@
 	"optimize-autoloader": true,
 	"platform-check": false,
 	"platform": {
-	  "php": "5.6"
+	  "php": "7.0"
 	}
   },
   "extra": {

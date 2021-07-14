@@ -13,7 +13,7 @@ const ColorComponent = ({ control }) => {
 	};
 
 	useEffect(() => {
-		global.addEventListener('neve-changed-customizer-value', (e) => {
+		document.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) return false;
 			if (e.detail.id !== control.id) return false;
 			updateValues(e.detail.value);

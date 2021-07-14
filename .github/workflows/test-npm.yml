@@ -55,5 +55,3 @@ jobs:
         env:
           CI_JOB_NUMBER: 1
         run: yarn run size
-      - name: Check translations
-        run: git diff --exit-code languages/neve.pot

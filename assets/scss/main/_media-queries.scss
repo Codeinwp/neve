@@ -11,8 +11,6 @@
   @include typography--tablet();
   @include gutenberg--tablet();
   @include comments--tablet();
-  @include hidden-on-mobile--tablet();
-  @include hidden-on-tablet--tablet();
 }
 
 @media (min-width: #{$laptop}) {
@@ -22,12 +20,8 @@
   @include nav-search--laptop();
   @include blog-layout-default-alt--laptop();
   @include blogpost-index--laptop();
-  @include single-post--laptop();
   @include page--laptop();
   @include sidebar--laptop();
-  @include blog-layout--laptop();
-  @include hidden-on-tablet--laptop();
-  @include show-on-desktop--laptop();
   @include hfg-alignments--laptop();
 }
 

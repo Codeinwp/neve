@@ -191,7 +191,7 @@
 		);
 
 		$document.on( 'click', '.navbar-toggle', function( e ) {
-			wp.customize.preview.send( 'neve-toggle-navbar', {} );
+			wp.customize.preview.send( 'neve-toggle-navbar', {status: document.body.classList.contains('is-menu-sidebar')} );
 		} );
 
 		$document.on( 'click', '.builder-item-focus', function(e) {
@@ -218,25 +218,6 @@
 			} );
 			header_changed( settings.partial.id );
 		});
-
-		function setupPreviewNamePosition() {
-			$( '.hfg-grid .has_menu.builder-item-focus' ).each( function() {
-				var parentPos = $( this ).closest( '.hfg-grid' ).offset();
-				var childPos = $( this ).offset();
-				var h = $( this ).innerHeight();
-				var top = childPos.top - parentPos.top;
-				$( this ).find( '.item--preview-name' ).css( { top: top + h } );
-			} );
-		}
-
-		setupPreviewNamePosition();
-
-		$document.on(
-				'selective-refresh-content-rendered  after_auto_render_css',
-				function(event, id, field_name) {
-					setupPreviewNamePosition();
-				}
-		);
 	} );
 
 	var skips_to_add_shortcut = {

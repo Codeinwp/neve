@@ -1,6 +1,6 @@
 ---
 name: Automated test
-about: Suggest a test for a feature or functionality
+about: Suggest an automated test for a feature or functionality
 
 ---
 

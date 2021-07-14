@@ -16,6 +16,11 @@ $container_class = apply_filters( 'neve_container_class_filter', 'container', 'b
 
 get_header();
 
+$wrapper_classes = [ 'posts-wrapper' ];
+if ( ! neve_is_new_skin() ) {
+	$wrapper_classes[] = 'row';
+}
+
 ?>
 	<div class="<?php echo esc_attr( $container_class ); ?> archive-container">
 		<div class="row">
@@ -60,7 +65,7 @@ get_header();
 
 				if ( have_posts() ) {
 					/* Start the Loop. */
-					echo '<div class="posts-wrapper row">';
+					echo '<div class="' . esc_attr( join( ' ', $wrapper_classes ) ) . '">';
 
 
 					$pagination_type = get_theme_mod( 'neve_pagination_type', 'number' );

@@ -6,17 +6,24 @@ describe('Single post meta sidebar', function () {
 	};
 
 	before('Create new post named "' + postSetup.title + '".', function () {
-		cy.insertPost(postSetup.title, postSetup.content, 'post', true, true);
-		cy.get('.post-publish-panel__postpublish-header a')
-			.contains(postSetup.title)
-			.should('have.attr', 'href')
-			.then((href) => {
-				postSetup.url = href.toString();
+		cy.createTagWithRequest('tag-test');
+		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4)
+			.then(() => {
+				postSetup.url = window.localStorage.getItem('postUrl');
 			})
 			.then(() => {
-				window.localStorage.setItem('postId', Cypress.$('#post_ID').val().toString());
-				cy.getJWT();
+				const tagId = parseInt(window.localStorage.getItem('tagId'));
+				cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'posts', {
+					tags: tagId,
+				});
 			});
+
+		cy.setCustomizeSettings({
+			neve_migrated_hfg_colors: true,
+			nav_menu_locations: [],
+			custom_css_post_id: -1,
+		});
+
 		cy.saveLocalStorage();
 	});
 
@@ -120,56 +127,47 @@ describe('Single post meta sidebar', function () {
 			meta: {
 				neve_meta_title_alignment: 'center',
 			},
+		}).then(() => {
+			cy.visit(postSetup.url);
+			cy.get('.title').should('have.css', 'text-align', 'center');
 		});
-		cy.visit(postSetup.url);
-		cy.get('h1.entry-title')
-			.should('have.class', 'has-text-align-center')
-			.and('have.css', 'text-align')
-			.and('eq', 'center');
 
 		cy.updatePageOrPostByRequest(postId, 'posts', {
 			meta: {
 				neve_meta_title_alignment: 'right',
 			},
+		}).then(() => {
+			cy.visit(postSetup.url);
+			cy.get('.title').should('have.css', 'text-align', 'right');
 		});
-		cy.visit(postSetup.url);
-		cy.get('h1.entry-title')
-			.should('have.class', 'has-text-align-right')
-			.and('have.css', 'text-align')
-			.and('eq', 'right');
-
 		cy.updatePageOrPostByRequest(postId, 'posts', {
 			meta: {
 				neve_meta_title_alignment: 'left',
 			},
+		}).then(() => {
+			cy.visit(postSetup.url);
+			cy.get('.title').should('have.css', 'text-align', 'left');
 		});
-		cy.visit(postSetup.url);
-		cy.get('h1.entry-title')
-			.should('have.class', 'has-text-align-left')
-			.and('have.css', 'text-align')
-			.and('eq', 'left');
-		cy.get('#wp-admin-bar-edit a').click();
 	});
 
 	it('Check author avatar', function () {
 		cy.loginWithRequest(postSetup.url);
 		cy.clearWelcome();
-		cy.get('#wp-admin-bar-edit a').click();
-
-		cy.get('.interface-complementary-area-header');
-
-		cy.activateCheckbox('.components-toggle-control__label', 'Author Avatar');
-		cy.updatePost();
-
-		cy.visit(postSetup.url);
-		cy.get('.nv-meta-list .author .photo').should('exist');
+		cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'posts', {
+			meta: {
+				neve_meta_author_avatar: 'on',
+			},
+		}).then(() => {
+			cy.visit(postSetup.url);
+			cy.get('.nv-meta-list .author .photo').should('exist');
+		});
 	});
 
 	it('Check post elements', function () {
 		cy.loginWithRequest(postSetup.url);
 		cy.reload();
 		cy.get('#wp-admin-bar-edit a').click();
-
+		cy.clearWelcome();
 		cy.get('.interface-complementary-area-header');
 
 		cy.get('.ti-sortable-item-label').each((el, index) => {
