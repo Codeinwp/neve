@@ -81,7 +81,7 @@ class Main extends Base_Customizer {
 					'type'     => 'hfg_instructions',
 					'options'  => array(
 						'quickLinks' => array(
-							Mods::get_alternative_mod( 'neve_body_font_family' ) => array(
+							'neve_body_font_family'     => array(
 								'label' => esc_html__( 'Change main font', 'neve' ),
 								'icon'  => 'dashicons-editor-spellcheck',
 							),

@@ -780,88 +780,88 @@ class Frontend extends Generator {
 			Dynamic_Selector::KEY_SELECTOR => ':root',
 			Dynamic_Selector::KEY_RULES    => [
 				'--formFieldSpacing'       => [
-					Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_SPACING ),
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_SPACING,
 					Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_SPACING ),
 					Dynamic_Selector::META_SUFFIX  => 'px',
 				],
 				'--formFieldBorderWidth'   => [
-					Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BORDER_WIDTH ),
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_WIDTH,
 					Dynamic_Selector::META_SUFFIX  => 'px',
 					Dynamic_Selector::META_DEFAULT => $border_width_default,
 					'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
 				],
 				'--formFieldBorderRadius'  => [
-					Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BORDER_RADIUS ),
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_RADIUS,
 					Dynamic_Selector::META_SUFFIX  => 'px',
 					Dynamic_Selector::META_DEFAULT => $border_radius_default,
 					'directional-prop'             => Config::CSS_PROP_BORDER_RADIUS,
 				],
 				'--formFieldBgColor'       => [
-					Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BACKGROUND_COLOR ),
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BACKGROUND_COLOR,
 					Dynamic_Selector::META_DEFAULT => 'var(--nv-site-bg)',
 				],
 				'--formFieldBorderColor'   => [
-					Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BORDER_COLOR ),
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_COLOR,
 					Dynamic_Selector::META_DEFAULT => '#dddddd',
 				],
 				'--formFieldColor'         => [
-					Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_COLOR ),
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_COLOR,
 					Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
 				],
 				'--formFieldPadding'       => [
-					Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_PADDING ),
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING,
 					Dynamic_Selector::META_DEFAULT       => Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_PADDING ),
 					Dynamic_Selector::META_SUFFIX        => 'px',
 					Dynamic_Selector::META_IS_RESPONSIVE => false,
 					'directional-prop'                   => Config::CSS_PROP_PADDING,
 				],
 				'--formFieldTextTransform' => [
-					Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_TYPEFACE ) . '.textTransform',
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.textTransform',
 					Dynamic_Selector::META_IS_RESPONSIVE => false,
 				],
 				'--formFieldFontSize'      => [
-					Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_TYPEFACE ) . '.fontSize',
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontSize',
 					Dynamic_Selector::META_SUFFIX        => 'px',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
 				'--formFieldLineHeight'    => [
-					Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_TYPEFACE ) . '.lineHeight',
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.lineHeight',
 					Dynamic_Selector::META_SUFFIX        => '',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
 				'--formFieldLetterSpacing' => [
-					Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_TYPEFACE ) . '.letterSpacing',
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.letterSpacing',
 					Dynamic_Selector::META_SUFFIX        => 'px',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
 				'--formFieldFontWeight'    => [
-					Dynamic_Selector::META_KEY => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_TYPEFACE ) . '.fontWeight',
+					Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontWeight',
 				],
 				// Form Labels
 				'--formLabelSpacing'       => [
-					Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_SPACING ),
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_LABELS_SPACING,
 					Dynamic_Selector::META_DEFAULT => 10,
 					Dynamic_Selector::META_SUFFIX  => 'px',
 				],
 				'--formLabelFontSize'      => [
-					Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_TYPEFACE ) . '.fontSize',
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontSize',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => 'px',
 				],
 				'--formLabelLineHeight'    => [
-					Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_TYPEFACE ) . '.lineHeight',
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.lineHeight',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => '',
 				],
 				'--formLabelLetterSpacing' => [
-					Dynamic_Selector::META_KEY           => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_TYPEFACE ) . '.letterSpacing',
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.letterSpacing',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
 				'--formLabelFontWeight'    => [
-					Dynamic_Selector::META_KEY => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_TYPEFACE ) . '.fontWeight',
+					Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontWeight',
 				],
 				'--formLabelTextTransform' => [
-					Dynamic_Selector::META_KEY => Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_TYPEFACE ) . '.textTransform',
+					Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.textTransform',
 				],
 			],
 		];
@@ -898,7 +898,7 @@ class Frontend extends Generator {
 			'override' => 'var(--secondaryBtnHoverColor)',
 		];
 
-		$mod_key_secondary = Mods::get_alternative_mod( Config::MODS_BUTTON_SECONDARY_STYLE );
+		$mod_key_secondary = Config::MODS_BUTTON_SECONDARY_STYLE;
 		$default_secondary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_SECONDARY_STYLE );
 		$secondary_values  = get_theme_mod( $mod_key_secondary, $default_secondary );
 
