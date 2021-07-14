@@ -46,7 +46,7 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Install Cypress yarn
         working-directory: ./e2e-tests
-        run: yarn install --frozen-lockfile
+        run: yarn install
       - name: Build files
         run: yarn run build
       - name: Create zip
