@@ -44,15 +44,26 @@ class Template_Parts extends Base_View {
 	 * Echo the post class.
 	 */
 	private function post_class() {
-		$class  = join( ' ', get_post_class() );
-		$layout = $this->get_layout();
-		$class .= ' layout-' . $layout;
+		$class          = join( ' ', get_post_class() );
+		$layout         = $this->get_layout();
+		$image_position = $this->get_image_position();
+		$class         .= ' layout-' . $layout;
+		$class         .= ' image-' . $image_position;
 		if ( in_array( $layout, [ 'grid', 'covers' ], true ) ) {
 			$class .= ' ' . $this->get_grid_columns_class();
 		} else {
 			$class .= ' col-12 nv-non-grid-article';
 		}
 		return $class;
+	}
+
+	/**
+	 * Get image position.
+	 *
+	 * @return string
+	 */
+	private function get_image_position() {
+		return get_theme_mod( 'neve_blog_list_image_position', 'left' );
 	}
 
 	/**
