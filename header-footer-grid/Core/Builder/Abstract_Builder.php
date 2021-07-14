@@ -758,7 +758,14 @@ abstract class Abstract_Builder implements Builder {
 						continue;
 					}
 					// Legacy
-					$components = array_merge( $components, array_combine( wp_list_pluck( $row, 'id' ), array_fill( 0, count( $row ), true ) ) );
+					$row_components = [];
+					foreach ( $row as $component ) {
+						if ( isset( $component['id'] ) ) {
+							$row_components[ $component['id'] ] = true;
+						}
+					}
+
+					$components = array_merge( $components, $row_components );
 				}
 			}
 			$this->active_components = $components;
