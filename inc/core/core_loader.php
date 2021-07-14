@@ -95,6 +95,7 @@ class Core_Loader {
 				'Views\Post_Layout',
 				'Views\Page_Layout',
 				'Views\Product_Layout',
+				'Views\Download_Layout',
 				'Views\Content_None',
 				'Views\Content_404',
 				'Views\Breadcrumbs',
