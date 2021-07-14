@@ -64,7 +64,7 @@ class Mods {
 		return isset( $value[ $subkey ] ) ? $value[ $subkey ] : $default;
 	}
 
-	/***
+	/**
 	 * Forced defaults.
 	 *
 	 * @param string $key Key name.
@@ -78,7 +78,7 @@ class Mods {
 			case Config::MODS_BUTTON_PRIMARY_STYLE:
 				return neve_get_button_appearance_default();
 			case Config::MODS_BUTTON_SECONDARY_STYLE:
-				return neve_get_button_appearance_default( 'secondary_button' );
+				return neve_get_button_appearance_default( 'secondary' );
 			case Config::MODS_TYPEFACE_GENERAL:
 				$defaults  = self::get_typography_defaults(
 					[
@@ -201,17 +201,6 @@ class Mods {
 	 */
 	public static function to_json( $key, $default = false, $as_array = true ) {
 		return json_decode( self::get( $key, $default ), $as_array );
-	}
-
-	/**
-	 * Get alternative key of theme mod based on skin mode.
-	 *
-	 * @param string $key theme mod key.
-	 *
-	 * @return string
-	 */
-	public static function get_alternative_mod( $key ) {
-		return neve_is_new_skin() ? $key . '_v2' : $key;
 	}
 
 	/**
@@ -367,74 +356,6 @@ class Mods {
 						],
 					)
 				);
-			case Config::MODS_BUTTON_PRIMARY_STYLE:
-				if ( ! $new ) {
-					return neve_get_button_appearance_default( 'primary' );
-				}
-
-				return [
-					'type'            => 'fill',
-					'background'      => 'var(--nv-primary-accent)',
-					'backgroundHover' => 'var(--nv-primary-accent)',
-					'text'            => '#ffffff',
-					'textHover'       => '#ffffff',
-					'borderRadius'    => [
-						'top'    => 3,
-						'right'  => 3,
-						'bottom' => 3,
-						'left'   => 3,
-					],
-					'borderWidth'     => [
-						'top'    => 1,
-						'right'  => 1,
-						'bottom' => 1,
-						'left'   => 1,
-					],
-				];
-			case Config::MODS_BUTTON_SECONDARY_STYLE:
-				if ( ! $new ) {
-					return neve_get_button_appearance_default( 'secondary' );
-				}
-
-				return [
-					'type'            => 'outline',
-					'background'      => '',
-					'backgroundHover' => '',
-					'text'            => 'var(--nv-primary-accent)',
-					'textHover'       => 'var(--nv-primary-accent)',
-					'borderRadius'    => [
-						'top'    => 3,
-						'right'  => 3,
-						'bottom' => 3,
-						'left'   => 3,
-					],
-					'borderWidth'     => [
-						'top'    => 3,
-						'right'  => 3,
-						'bottom' => 3,
-						'left'   => 3,
-					],
-				];
-			case Config::MODS_BUTTON_SECONDARY_PADDING:
-				$device = $new ? [
-					'top'    => 7,
-					'right'  => 15,
-					'bottom' => 7,
-					'left'   => 15,
-				] : [
-					'top'    => 8,
-					'right'  => 12,
-					'bottom' => 8,
-					'left'   => 12,
-				];
-				return [
-					'desktop'      => $device,
-					'tablet'       => $device,
-					'mobile'       => $device,
-					'desktop-unit' => 'px',
-					'tablet-unit'  => 'px',
-					'mobile-unit'  => 'px',
-				];
 			case Config::MODS_BUTTON_PRIMARY_PADDING:
 				$device = $new ? [
 					'top'    => 13,

@@ -13,6 +13,51 @@
  * @return array
  */
 function neve_get_button_appearance_default( $button = 'button' ) {
+	$new_skin = neve_is_new_skin();
+	if ( $new_skin ) {
+		if ( $button !== 'button' ) {
+			return [
+				'type'            => 'outline',
+				'background'      => '',
+				'backgroundHover' => '',
+				'text'            => 'var(--nv-primary-accent)',
+				'textHover'       => 'var(--nv-primary-accent)',
+				'borderRadius'    => [
+					'top'    => 3,
+					'right'  => 3,
+					'bottom' => 3,
+					'left'   => 3,
+				],
+				'borderWidth'     => [
+					'top'    => 3,
+					'right'  => 3,
+					'bottom' => 3,
+					'left'   => 3,
+				],
+			];
+		}
+
+		return [
+			'type'            => 'fill',
+			'background'      => 'var(--nv-primary-accent)',
+			'backgroundHover' => 'var(--nv-primary-accent)',
+			'text'            => '#ffffff',
+			'textHover'       => '#ffffff',
+			'borderRadius'    => [
+				'top'    => 3,
+				'right'  => 3,
+				'bottom' => 3,
+				'left'   => 3,
+			],
+			'borderWidth'     => [
+				'top'    => 1,
+				'right'  => 1,
+				'bottom' => 1,
+				'left'   => 1,
+			],
+		];
+	}
+
 	$defaults = [
 		'type'            => 'fill',
 		'background'      => '',

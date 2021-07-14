@@ -37,9 +37,9 @@ trait Css_Vars {
 	 */
 	public function get_button_rules() {
 		$mod_key_primary   = Config::MODS_BUTTON_PRIMARY_STYLE;
-		$default_primary   = Mods::new_skin_button_defaults();
+		$default_primary   = neve_get_button_appearance_default();
 		$mod_key_secondary = Config::MODS_BUTTON_SECONDARY_STYLE;
-		$default_secondary = Mods::new_skin_button_defaults( 'secondary' );
+		$default_secondary = neve_get_button_appearance_default( 'secondary' );
 
 		$rules = [
 			'--primaryBtnBg'             => [
@@ -106,10 +106,10 @@ trait Css_Vars {
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
 			Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
 				$mod_key_primary = Config::MODS_BUTTON_PRIMARY_STYLE;
-				$default_primary = Mods::new_skin_button_defaults();
+				$default_primary = neve_get_button_appearance_default();
 
 				$mod_key_secondary = Config::MODS_BUTTON_SECONDARY_STYLE;
-				$default_secondary = Mods::new_skin_button_defaults( 'secondary' );
+				$default_secondary = neve_get_button_appearance_default( 'secondary' );
 
 				$values   = [
 					'primary'   => get_theme_mod( $mod_key_primary, $default_primary ),
