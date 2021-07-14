@@ -186,7 +186,7 @@ class Buttons extends Base_Customizer {
 			);
 
 			$mod_key  = 'neve_' . $button . '_appearance';
-			$defaults = Mods::get_alternative_mod_default( 'neve_' . $button . '_appearance' );
+			$defaults = neve_get_button_appearance_default( $button );
 
 			$this->add_control(
 				new Control(
@@ -257,7 +257,7 @@ class Buttons extends Base_Customizer {
 		];
 		foreach ( $buttons as $button ) {
 			$mod_key  = 'neve_' . $button . '_appearance';
-			$defaults = Mods::get_alternative_mod_default( 'neve_' . $button . '_appearance' );
+			$defaults = neve_get_button_appearance_default( $button );
 
 			$this->add_control(
 				new Control(
