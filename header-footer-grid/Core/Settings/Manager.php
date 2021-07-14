@@ -121,7 +121,12 @@ class Manager {
 				continue;
 			}
 			$arguments = self::$settings[ $id ];
-			$transport = isset( $core_transports[ $arguments['transport'] ] ) ? $arguments['transport'] : $this->handle_transport( $arguments['transport'], $id );
+
+			if ( isset( $arguments['live_refresh_css_prop'] ) && isset( $arguments['live_refresh_css_prop']['cssVar'] ) && neve_is_new_skin() ) {
+				$transport = 'postMessage';
+			} else {
+				$transport = isset( $core_transports[ $arguments['transport'] ] ) ? $arguments['transport'] : $this->handle_transport( $arguments['transport'], $id );
+			}
 
 			$customize_manager->add_setting(
 				$id,
@@ -358,19 +363,24 @@ class Manager {
 				}
 			);
 		}
-		if ( isset( $arguments['live_refresh_selector'] ) ) {
+		if ( isset( $arguments['live_refresh_selector'] ) && $arguments['live_refresh_selector'] !== false ) {
 			add_filter(
 				'neve_customize_preview_localization',
 				function ( $array ) use ( $arguments ) {
+					$args = [];
+
 					if ( ! isset( $array[ $arguments['type'] ] ) ) {
 						$array[ $arguments['type'] ] = [];
 					}
-					$args = [
-						'selector' => $arguments['live_refresh_selector'],
-					];
+
+					if ( isset( $arguments['live_refresh_selector'] ) ) {
+						$args['selector'] = $arguments['live_refresh_selector'];
+					}
+
 					if ( isset( $arguments['live_refresh_css_prop'] ) ) {
 						$args['additional'] = $arguments['live_refresh_css_prop'];
 					}
+
 					$array[ $arguments['type'] ][ $arguments['group'] . '_' . $arguments['id'] ] = $args;
 
 					return $array;

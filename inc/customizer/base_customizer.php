@@ -168,7 +168,7 @@ abstract class Base_Customizer {
 				$new_control  = $this->wpc->add_control( $control->id, $control->control_args );
 				$control_type = isset( $control->control_args['type'] ) ? $control->control_args['type'] : $new_control->type;
 			}
-			if ( isset( $control->control_args['live_refresh_selector'] ) ) {
+			if ( isset( $control->control_args['live_refresh_selector'] ) && $control->control_args['live_refresh_selector'] !== false ) {
 				$control_args = array(
 					'selector'   => $control->control_args['live_refresh_selector'],
 					'id'         => $control->id,
@@ -339,7 +339,7 @@ abstract class Base_Customizer {
 				'neve_' . $id . '_boxed_layout',
 				[
 					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => false,
+					'default'           => array_key_exists( 'is_boxed_default', $settings ) ? $settings['is_boxed_default'] : false,
 				],
 				[
 					'label'           => esc_html__( 'Boxed layout', 'neve' ),
@@ -351,6 +351,63 @@ abstract class Base_Customizer {
 				'Neve\Customizer\Controls\Checkbox'
 			)
 		);
+
+		$padding_live_refresh_settings = [
+			'responsive'  => true,
+			'directional' => true,
+			'template'    =>
+				$settings['boxed_selector'] . '{
+							padding-top: {{value.top}};
+							padding-right: {{value.right}};
+							padding-bottom: {{value.bottom}};
+							padding-left: {{value.left}};
+						}',
+		];
+
+		$background_live_refresh_settings = [
+			'template' =>
+				$settings['boxed_selector'] . '{
+				   background-color: {{value}};
+			    }',
+
+		];
+
+		$has_text_color = isset( $settings['has_text_color'] ) ? $settings['has_text_color'] : true;
+		if ( $has_text_color ) {
+			$template = $settings['text_color_css_selector'] . '{ color: {{value}}; }';
+			if ( array_key_exists( 'border_color_css_selector', $settings ) ) {
+				$template .= $settings['border_color_css_selector'] . '{ border-color: {{value}}; }';
+			}
+			$color_live_refresh_settings = [
+				'template' => $template,
+			];
+		}
+
+		if ( neve_is_new_skin() ) {
+			$padding_live_refresh_settings = [
+				'cssVar' => array(
+					'vars'       => '--padding',
+					'selector'   => $settings['boxed_selector'],
+					'responsive' => true,
+				),
+			];
+
+			$background_live_refresh_settings = [
+				'cssVar' => array(
+					'vars'     => '--bgColor',
+					'selector' => $settings['boxed_selector'],
+				),
+			];
+
+			if ( $has_text_color ) {
+				$color_live_refresh_settings = [
+					'cssVar' => array(
+						'vars'     => '--color',
+						'selector' => $settings['boxed_selector'],
+					),
+				];
+			}
+		}
 
 		$this->add_control(
 			new Control(
@@ -365,21 +422,12 @@ abstract class Base_Customizer {
 					'section'               => $settings['section'],
 					'input_attrs'           => [
 						'units' => [ 'em', 'px' ],
+						'min'   => 0,
 					],
 					'default'               => array_key_exists( 'padding_default', $settings ) ? $settings['padding_default'] : false,
 					'priority'              => $settings['priority'],
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'responsive'  => true,
-						'directional' => true,
-						'template'    =>
-							$settings['boxed_selector'] . '{
-							padding-top: {{value.top}};
-							padding-right: {{value.right}};
-							padding-bottom: {{value.bottom}};
-							padding-left: {{value.left}};
-						}',
-					],
+					'live_refresh_css_prop' => $padding_live_refresh_settings,
 					'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
 				],
 				'\Neve\Customizer\Controls\React\Spacing'
@@ -399,26 +447,14 @@ abstract class Base_Customizer {
 					'section'               => $settings['section'],
 					'priority'              => $settings['priority'],
 					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'template' =>
-							$settings['boxed_selector'] . '{
-							   background-color: {{value}};
-						    }',
-
-					],
+					'live_refresh_css_prop' => $background_live_refresh_settings,
 					'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
 				],
 				'Neve\Customizer\Controls\React\Color'
 			)
 		);
 
-		$has_text_color = isset( $settings['has_text_color'] ) ? $settings['has_text_color'] : true;
-
 		if ( $has_text_color ) {
-			$template = $settings['text_color_css_selector'] . '{ color: {{value}}; }';
-			if ( array_key_exists( 'border_color_css_selector', $settings ) ) {
-				$template .= $settings['border_color_css_selector'] . '{ border-color: {{value}}; }';
-			}
 			$this->add_control(
 				new Control(
 					'neve_' . $id . '_boxed_text_color',
@@ -432,9 +468,7 @@ abstract class Base_Customizer {
 						'section'               => $settings['section'],
 						'priority'              => $settings['priority'],
 						'live_refresh_selector' => true,
-						'live_refresh_css_prop' => [
-							'template' => $template,
-						],
+						'live_refresh_css_prop' => $color_live_refresh_settings,
 						'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
 					],
 					'Neve\Customizer\Controls\React\Color'

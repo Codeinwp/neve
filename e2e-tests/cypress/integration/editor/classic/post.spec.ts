@@ -2,10 +2,20 @@ describe('Posts meta box default settings', function () {
 	const postSetup = {
 		title: 'Test Post',
 		content: 'The Post Content',
-		url: null,
+		url: '/',
 	};
 	before('Create new post named "' + postSetup.title + '".', function () {
-		cy.insertPost(postSetup.title, postSetup.content, 'post', true);
+		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4)
+			.then(() => {
+				postSetup.url = window.localStorage.getItem('postUrl');
+			})
+			.then(() => {
+				cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'posts', {
+					meta: {
+						neve_meta_content_width: 0,
+					},
+				});
+			});
 
 		cy.setCustomizeSettings({
 			neve_migrated_hfg_colors: true,
@@ -13,12 +23,16 @@ describe('Posts meta box default settings', function () {
 			custom_css_post_id: -1,
 		});
 
-		cy.get('.post-publish-panel__postpublish-header a')
-			.contains(postSetup.title)
-			.should('have.attr', 'href')
-			.then((href) => {
-				postSetup.url = href;
-			});
+		cy.saveLocalStorage();
+	});
+
+	beforeEach(function () {
+		cy.restoreLocalStorage();
+	});
+
+	afterEach(function () {
+		cy.removeLocalStorage('WP_DATA_USER_1');
+		cy.saveLocalStorage();
 	});
 	context('Deactivated Plugin', function () {
 		it('Default meta box settings on front end.', function () {

@@ -91,9 +91,9 @@ function neve_sanitize_range_value( $input ) {
 		return floatval( $input );
 	}
 	$range_value            = json_decode( $input, true );
-	$range_value['desktop'] = is_numeric( $range_value['desktop'] ) ? floatval( $range_value['desktop'] ) : '';
-	$range_value['tablet']  = is_numeric( $range_value['tablet'] ) ? floatval( $range_value['tablet'] ) : '';
-	$range_value['mobile']  = is_numeric( $range_value['mobile'] ) ? floatval( $range_value['mobile'] ) : '';
+	$range_value['desktop'] = isset( $range_value['desktop'] ) && is_numeric( $range_value['desktop'] ) ? floatval( $range_value['desktop'] ) : '';
+	$range_value['tablet']  = isset( $range_value['tablet'] ) && is_numeric( $range_value['tablet'] ) ? floatval( $range_value['tablet'] ) : '';
+	$range_value['mobile']  = isset( $range_value['mobile'] ) && is_numeric( $range_value['mobile'] ) ? floatval( $range_value['mobile'] ) : '';
 	return wp_json_encode( $range_value );
 }
 
@@ -244,11 +244,11 @@ function neve_sanitize_alignment( $input ) {
  */
 function neve_sanitize_position( $input ) {
 	$default = [
-		'mobile'  => 'middle',
-		'tablet'  => 'middle',
-		'desktop' => 'middle',
+		'mobile'  => 'center',
+		'tablet'  => 'center',
+		'desktop' => 'center',
 	];
-	$allowed = [ 'top', 'middle', 'bottom' ];
+	$allowed = [ 'flex-start', 'center', 'flex-end' ];
 
 	if ( ! is_array( $input ) ) {
 		return $default;
@@ -256,7 +256,7 @@ function neve_sanitize_position( $input ) {
 
 	foreach ( $input as $device => $alignment ) {
 		if ( ! in_array( $alignment, $allowed ) ) {
-			$input[ $device ] = 'middle';
+			$input[ $device ] = 'center';
 		}
 	}
 

@@ -39,6 +39,13 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 		if (builderNode === null || preview === null) {
 			return;
 		}
+
+		if (hidden) {
+			preview.style.maxHeight = '';
+			preview.style.marginTop = '';
+			return;
+		}
+
 		const height = builderNode.offsetHeight;
 		preview.style.maxHeight = `calc(100vh - ${height}px)`;
 		preview.style.marginTop = '0';
@@ -69,7 +76,7 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 				adaptPreviewHeight();
 			}
 		);
-	}, []);
+	}, [hidden]);
 
 	const builderClasses = classnames('neve-builder', {
 		hide: hidden,

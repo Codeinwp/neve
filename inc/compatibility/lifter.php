@@ -82,12 +82,26 @@ class Lifter {
 		remove_action( 'lifterlms_after_main_content', 'lifterlms_output_content_wrapper_end', 10 );
 		remove_all_actions( 'lifterlms_sidebar' );
 
-		add_action( 'lifterlms_before_loop', array( $this, 'content_wrapper_open' ), 0 );
-		add_action( 'lifterlms_after_loop', array( $this, 'content_wrapper_close' ), 100 );
+		add_action( 'lifterlms_before_main_content', array( $this, 'content_wrapper_open' ), 0 );
+		add_action( 'lifterlms_loop', array( $this, 'content_wrapper_close' ), 100 );
 		add_filter( 'lifterlms_show_page_title', '__return_false' );
 
 		add_action( 'neve_llms_content', array( $this, 'content_open' ), 10 );
-		add_action( 'lifterlms_after_loop', array( $this, 'content_close' ), 10 );
+		add_action(
+			'lifterlms_loop',
+			function() {
+				echo '</div>';
+				echo '</div>';
+			},
+			20
+		);
+		add_action(
+			'lifterlms_after_main_content',
+			function() {
+				echo '</div>';
+			},
+			20
+		);
 
 		add_action( 'widgets_init', array( $this, 'register_catalog_sidebar' ) );
 		add_filter( 'llms_get_theme_default_sidebar', array( $this, 'lms_sidebar' ) );
@@ -100,7 +114,6 @@ class Lifter {
 	 * Add inline selectors for LifterLMS.
 	 */
 	private function add_inline_selectors() {
-
 		add_filter(
 			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
 			array(
@@ -206,7 +219,6 @@ class Lifter {
 		return ( $selectors . $this->primary_buttons_selectors['hover'] );
 	}
 
-
 	/**
 	 * Add secondary btn selectors.
 	 *
@@ -219,7 +231,6 @@ class Lifter {
 
 	}
 
-
 	/**
 	 * Add secondary btn selectors.
 	 *
@@ -231,21 +242,36 @@ class Lifter {
 		return ( $selectors . $this->secondary_buttons_selectors['hover'] );
 	}
 
-
 	/**
 	 * Enqueue styles.
 	 */
 	public function load_styles() {
-		wp_enqueue_style( 'neve-lifter', NEVE_ASSETS_URL . 'css/lifter' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		$path = neve_is_new_skin() ? 'lifter' : 'lifter-legacy';
+
+		wp_enqueue_style( 'neve-lifter', NEVE_ASSETS_URL . 'css/' . $path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+	}
+
+	/**
+	 * Get sidebar position for catalog page.
+	 *
+	 * @return string
+	 */
+	private function get_sidebar_position() {
+		$advanced_sidebar = get_theme_mod( 'neve_advanced_layout_options', false );
+		$sidebar_position = get_theme_mod( 'neve_default_sidebar_layout', 'right' );
+		if ( $advanced_sidebar === true ) {
+			$sidebar_position = get_theme_mod( 'neve_other_pages_sidebar_layout', 'right' );
+		}
+		return $sidebar_position;
 	}
 
 	/**
 	 * Load Sidebar
 	 */
 	public function load_catalog_sidebar() {
-		$sidebar_position = get_theme_mod( 'neve_default_sidebar_layout', 'right' );
+		$sidebar_position = $this->get_sidebar_position();
 		if ( $sidebar_position === 'right' ) {
-			add_action( 'lifterlms_after_main_content', array( $this, 'render_catalog_sidebar' ), 11 );
+			add_action( 'neve_llms_content_after', array( $this, 'render_catalog_sidebar' ), 11 );
 		}
 		if ( $sidebar_position === 'left' ) {
 			add_action( 'neve_llms_content', array( $this, 'render_catalog_sidebar' ), 1 );
@@ -277,8 +303,8 @@ class Lifter {
 	 * Close Content Wrapper
 	 */
 	public function content_wrapper_close() {
-		echo '</div>'; // .row close
-		echo '</div>'; // .lms-container close
+		do_action( 'neve_llms_content_after' );
+		echo '</div>';
 	}
 
 	/**
@@ -295,14 +321,6 @@ class Lifter {
 		echo '</div>';
 		$class = apply_filters( 'neve_lifter_wrap_classes', 'nv-content-wrap entry-content' );
 		echo '<div class="' . esc_attr( $class ) . '">';
-	}
-
-	/**
-	 * Close content.
-	 */
-	public function content_close() {
-		echo '</div>'; // .nv-content-wrap .entry-content close
-		echo '</div>'; // .nv-single-page-wrap .col close
 	}
 
 	/**
@@ -329,7 +347,7 @@ class Lifter {
 			return;
 		}
 
-		$sidebar_position = get_theme_mod( 'neve_default_sidebar_layout', 'right' );
+		$sidebar_position = $this->get_sidebar_position();
 		echo '<div class="nv-sidebar-wrap col-sm-12 nv-' . esc_attr( $sidebar_position ) . ' catalog-sidebar">';
 		dynamic_sidebar( 'llms_shop' );
 		echo '</div>';
