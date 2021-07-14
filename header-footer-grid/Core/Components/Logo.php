@@ -87,12 +87,13 @@ class Logo extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_settings() {
+
 		if ( $this->get_class_const( 'COMPONENT_ID' ) === 'logo' ) {
 			SettingsManager::get_instance()->add_controls_to_tabs(
 				$this->get_class_const( 'COMPONENT_ID' ),
 				array(
 					SettingsManager::TAB_GENERAL => array(
-						self::CUSTOM_LOGO => array(),
+						//self::CUSTOM_LOGO => array(),
 						'blogname'        => array(),
 						'blogdescription' => array(),
 						'site_icon'       => array(),
@@ -100,6 +101,24 @@ class Logo extends Abstract_Component {
 				)
 			);
 		}
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::CUSTOM_LOGO,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'absint',
+				'default'           => get_theme_mod( 'custom_logo' ),
+				'label'             => __( 'Logo base', 'neve' ),
+				'type'              => '\Neve\Customizer\Controls\React\Logo_Palette',
+				'options'           => [
+					'priority'    => 0,
+					'input_attrs' => [],
+				],
+				'section'           => $this->section,
+			]
+		);
 
 		SettingsManager::get_instance()->add(
 			[
