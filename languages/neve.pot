@@ -678,6 +678,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:177
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:125
+#: inc/customizer/controls/react/src/repeater/IconsContent.js:44
 msgid "Search"
 msgstr ""
 
@@ -2361,11 +2362,15 @@ msgstr ""
 
 #: inc/customizer/controls/react/src/ordering/Ordering.js:18
 #: inc/customizer/controls/react/src/ordering/Ordering.js:20
+#: inc/customizer/controls/react/src/repeater/RepeaterItem.js:10
+#: inc/customizer/controls/react/src/repeater/RepeaterItem.js:12
 msgid "Drag to Reorder"
 msgstr ""
 
 #: inc/customizer/controls/react/src/ordering/Ordering.js:48
 #: inc/customizer/controls/react/src/ordering/Ordering.js:50
+#: inc/customizer/controls/react/src/repeater/RepeaterItem.js:58
+#: inc/customizer/controls/react/src/repeater/RepeaterItem.js:60
 msgid "Toggle Visibility"
 msgstr ""
 

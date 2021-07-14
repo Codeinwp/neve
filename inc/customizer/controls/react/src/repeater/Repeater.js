@@ -55,7 +55,7 @@ const Repeater = ({ fields, value, onUpdate }) => {
 	};
 
 	return (
-		<>
+		<div className="nv-repeater">
 			<List lockAxis="y" useDragHandle onSortEnd={handleSortEnd}>
 				{value.map((val, index) => {
 					return (
@@ -98,12 +98,14 @@ const Repeater = ({ fields, value, onUpdate }) => {
 					</Button>
 				)}
 			</div>
-		</>
+		</div>
 	);
 };
 
 Repeater.propTypes = {
 	value: PropTypes.array.isRequired,
+	fields: PropTypes.object.isRequired,
+	onUpdate: PropTypes.func.isRequired,
 };
 
 export default Repeater;

@@ -7,6 +7,7 @@ import {
 	ButtonGroup,
 } from '@wordpress/components';
 import { useState, lazy, Suspense } from '@wordpress/element';
+import PropTypes from 'prop-types';
 
 const IconsContent = lazy(() =>
 	import(/* webpackChunkName: "icon-selector" */ './IconsContent')
@@ -66,6 +67,13 @@ const IconSelector = ({ label, value, onIconChoice, icons }) => {
 			)}
 		</div>
 	);
+};
+
+IconSelector.propTypes = {
+	label: PropTypes.string.isRequired,
+	value: PropTypes.string.isRequired,
+	onIconChoice: PropTypes.func.isRequired,
+	icons: PropTypes.object.isRequired,
 };
 
 export default IconSelector;

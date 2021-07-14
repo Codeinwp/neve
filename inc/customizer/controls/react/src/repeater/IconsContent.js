@@ -2,6 +2,7 @@ import { Button, TextControl, Tooltip } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import React from 'react';
 import { useState } from '@wordpress/element';
+import PropTypes from 'prop-types';
 
 const IconsContent = ({ onIconChoice, setVisible, icons }) => {
 	const [searchValue, setSearchValue] = useState('');
@@ -49,6 +50,12 @@ const IconsContent = ({ onIconChoice, setVisible, icons }) => {
 			<div className="icons-container">{iconsToShow}</div>
 		</div>
 	);
+};
+
+IconsContent.propTypes = {
+	onIconChoice: PropTypes.func.isRequired,
+	setVisible: PropTypes.func.isRequired,
+	icons: PropTypes.object.isRequired,
 };
 
 export default IconsContent;

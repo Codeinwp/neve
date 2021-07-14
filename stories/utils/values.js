@@ -200,27 +200,27 @@ export const FIELDS = {
 	item_type: {
 		type: 'select',
 		label: 'Type',
-		choices: [
-			{ text: 'Text' },
-			{ email: 'Email' },
-			{ phone: 'Phone' },
-		]
+		choices: {
+			text: 'Text',
+			email: 'Email',
+			phone: 'Phone',
+		}
 	},
 	social_network: {
 		type: 'select',
 		label: 'Social Network',
-		choices: [
-			{ facebook: 'Facebook' },
-			{ twitter: 'Twitter' },
-			{ email: 'Email' },
-			{ pinterest: 'Pinterest' },
-			{ linkedin: 'LinkedIn' },
-			{ tumblr: 'Tumblr' },
-			{ reddit: 'Reddit' },
-			{ whatsapp: 'WhatsApp' },
-			{ sms: 'SMS' },
-			{ vk: 'VKontakte' }
-		]
+		choices: {
+			facebook: 'Facebook',
+			twitter: 'Twitter',
+			email: 'Email',
+			pinterest: 'Pinterest',
+			linkedin: 'LinkedIn',
+			tumblr: 'Tumblr',
+			reddit: 'Reddit',
+			whatsapp: 'WhatsApp',
+			sms: 'SMS',
+			vk: 'VKontakte'
+		}
 	},
 	display_desktop: {
 		type: 'checkbox',

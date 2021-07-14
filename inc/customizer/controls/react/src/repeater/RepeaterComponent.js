@@ -8,8 +8,6 @@ const RepeaterComponent = ({ control }) => {
 	const [value, setValue] = useState(maybeParseJson(control.setting.get()));
 	const fields = control.params.fields;
 
-	// console.log('HELLO FROM REPEATER COMPONENT!');
-
 	const updateValue = (newVal) => {
 		setValue(newVal);
 		control.setting.set(JSON.stringify(newVal));

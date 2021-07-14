@@ -7,6 +7,7 @@ import {
 import getIcons from '../common/icons';
 import IconSelector from './IconSelector';
 import ColorControl from '../common/ColorControl';
+import PropTypes from 'prop-types';
 
 const RepeaterItemContent = ({
 	fields,
@@ -55,7 +56,7 @@ const RepeaterItemContent = ({
 				);
 			case 'select':
 				const defaultOption = [
-					{ value: '', label: 'Select', disabled: true },
+					{ value: 'empty', label: 'Select', disabled: true },
 				];
 				return (
 					<SelectControl
@@ -63,15 +64,15 @@ const RepeaterItemContent = ({
 						value={value[index][key]}
 						onChange={(newData) => changeContent(key, newData)}
 						options={defaultOption.concat(
-							Object.values(fields[key].choices)
-								.map(Object.entries)
-								.map(([[k, v]]) => {
+							Object.entries(fields[key].choices).map(
+								([k, v]) => {
 									return {
 										value: k,
 										label: v,
 										disabled: false,
 									};
-								})
+								}
+							)
 						)}
 						key={key + index}
 					/>
@@ -105,6 +106,14 @@ const RepeaterItemContent = ({
 			)}
 		</div>
 	);
+};
+
+RepeaterItemContent.propTypes = {
+	fields: PropTypes.object.isRequired,
+	value: PropTypes.array.isRequired,
+	index: PropTypes.number.isRequired,
+	onContentChange: PropTypes.func.isRequired,
+	onRemove: PropTypes.func.isRequired,
 };
 
 export default RepeaterItemContent;
