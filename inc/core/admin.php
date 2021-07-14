@@ -89,66 +89,47 @@ class Admin {
 	 * @since 3.0.0
 	 */
 	public function run_skin_and_builder_switches() {
-		$this->switch_to_new_builder();
-		$this->switch_to_new_skin();
-	}
+		$flag = 'neve_ran_migrations';
 
-	/**
-	 * Switch to the new 3.0 skin.
-	 *
-	 * @return void
-	 * @since 3.0.0
-	 */
-	public function switch_to_new_skin() {
-		$flag            = 'neve_migrated_skin';
-		$was_auto_switch = 'neve_was_auto_skin_switch';
 		if ( get_theme_mod( $flag ) === true ) {
 			return;
 		}
-		// Flag this as a routine that already ran.
+
 		set_theme_mod( $flag, true );
 
-		$fresh = get_option( 'fresh_site' );
-		if ( $fresh ) {
-			set_theme_mod( $was_auto_switch, true );
-			set_theme_mod( 'neve_new_skin', 'new' );
+		$all_mods = get_theme_mods();
 
-			return;
-		}
-	}
+		$mods = [
+			'hfg_header_layout',
+			'hfg_footer_layout',
+			'neve_headings_font_family',
+			'neve_body_font_family',
+			'neve_global_colors',
+			'neve_button_appearance',
+			'neve_secondary_button_appearance',
+			'neve_typeface_general',
+			'neve_form_fields_padding',
+			'neve_default_sidebar_layout',
+			'neve_advanced_layout_options',
+		];
 
-	/**
-	 * Switch to the new builder if this is a fresh site or there is nothing set up for the old header/footer.
-	 *
-	 * @since 3.0.0
-	 */
-	public function switch_to_new_builder() {
-		$flag = 'neve_ran_builder_migration';
-		if ( get_theme_mod( $flag ) === true ) {
-			return;
-		}
-		// Flag this as a routine that already ran.
-		set_theme_mod( $flag, true );
-
-		$fresh = get_option( 'fresh_site' );
-		if ( $fresh ) {
-			set_theme_mod( 'neve_migrated_builders', true );
-
-			return;
+		$should_switch = false;
+		foreach ( $mods as $mod_to_check ) {
+			if ( ! array_key_exists( $mod_to_check, $all_mods ) ) {
+				continue;
+			}
+			$should_switch = true;
 		}
 
-		// If we do have previously set options for header or footer, use the old builder.
-		$header = get_theme_mod( 'hfg_header_layout' );
-		$footer = get_theme_mod( 'hfg_footer_layout' );
+		if ( ! $should_switch ) {
+			return;
+		}
 
-		if ( ! empty( $header ) || ! empty( $footer ) ) {
+		set_theme_mod( 'neve_new_skin', 'old' );
+		set_theme_mod( 'neve_had_old_skin', true );
+		if ( neve_had_old_hfb() ) {
 			set_theme_mod( 'neve_migrated_builders', false );
-
-			return;
 		}
-
-		// If we don't have any data, use the new builder.
-		set_theme_mod( 'neve_migrated_builders', true );
 	}
 
 	/**
@@ -164,7 +145,7 @@ class Admin {
 			return $theme_mods;
 		}
 
-		$to_remove = [ 'hfg_header_layout', 'hfg_footer_layout' ];
+		$to_remove = [ 'hfg_header_layout', 'hfg_footer_layout', 'background_color' ];
 
 		foreach ( $to_remove as $slug ) {
 			if ( isset( $theme_mods[ $slug ] ) ) {

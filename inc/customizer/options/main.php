@@ -118,8 +118,8 @@ class Main extends Base_Customizer {
 	 * @since 3.0.0
 	 */
 	private function add_skin_switcher() {
-		// If we migrated the skin this shouldn't show up at all.
-		if ( get_theme_mod( 'neve_was_auto_skin_switch' ) === true ) {
+		// If we started with the new skin this shouldn't show up at all.
+		if ( get_theme_mod( 'neve_had_old_skin' ) === false ) {
 			return;
 		}
 
@@ -151,7 +151,7 @@ class Main extends Base_Customizer {
 				[
 					'transport'         => 'postMessage',
 					'sanitize_callback' => 'sanitize_text_field',
-					'default'           => 'old',
+					'default'           => 'new',
 				],
 				[
 					'type'    => 'neve_skin_switcher',
