@@ -11,7 +11,7 @@ describe('AMP Check', function () {
 			'.header-top.hide-on-mobile > .header--row-inner > .container > .row > .right > .builder-item > .item--inner > .component-wrap > .widget > .search-form > .search-submit',
 		).as('navSearchButton');
 
-	  cy.findByPlaceholderText(/upper search/i)
+		cy.findByPlaceholderText(/upper search/i)
 			.as('navSearchForm')
 			.should('be.visible');
 

@@ -62,14 +62,18 @@ describe('Global Colors', function () {
 
 	it('Palette Selector in Color Component', function () {
 		cy.findByRole('heading', {
-      name: /palette colors/i
-    })
+			name: /palette colors/i,
+		});
 		cy.get('.color-array-wrap').should('be.visible');
 		cy.get('.color-array-wrap .neve-color-component').should('have.length', 9);
 
 		cy.get(':nth-child(2) > .components-dropdown > .components-button').click();
 
-		cy.get(':nth-child(2) > .components-dropdown > .components-button').should('have.attr', 'aria-expanded', 'true');
+		cy.get(':nth-child(2) > .components-dropdown > .components-button').should(
+			'have.attr',
+			'aria-expanded',
+			'true',
+		);
 	});
 
 	it('Palette Reset', function () {
