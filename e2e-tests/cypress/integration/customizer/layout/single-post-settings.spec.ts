@@ -1,12 +1,8 @@
 describe('Single Post Check', function () {
 	before(function () {
-		cy.loginWithRequest();
-		cy.visit('/markup-image-alignment/');
-		cy.get('#wp-admin-bar-edit').click();
-		cy.clearWelcome();
-		cy.get('.components-panel__body').contains('Discussion').click();
-		cy.get('label').contains('Allow comments').click();
-		cy.get('button').contains('Update').click();
+		cy.setCustomizeSettings({
+			neve_new_skin: 'new',
+		});
 	});
 
 	it('Shows all options on customizer', function () {
@@ -38,7 +34,7 @@ describe('Single Post Check', function () {
 				'.nv-post-navigation',
 			];
 
-			cy.visit('/markup-image-alignment/');
+			cy.visit('/template-comments/');
 			HIDDEN.forEach((className) => {
 				cy.get('.nv-single-post-wrap').should('not.have.descendants', className);
 			});
