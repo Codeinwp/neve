@@ -14,6 +14,7 @@ parameters:
         - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
         - tests/php/static-analysis-stubs/header-footer-elementor.php
         - tests/php/static-analysis-stubs/yoast-wordpress-seo.php
+        - tests/php/static-analysis-stubs/rankmath.php
     dynamicConstantNames:
         - NEVE_DEBUG
     ignoreErrors:
