@@ -104,10 +104,10 @@ class Logo extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::CUSTOM_LOGO,
+				'id'                => self::COMPONENT_ID,
 				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'refresh',
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => 'absint',
 				'default'           => get_theme_mod( 'custom_logo' ),
 				'label'             => __( 'Logo base', 'neve' ),

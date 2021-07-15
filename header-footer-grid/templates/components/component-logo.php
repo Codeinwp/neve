@@ -19,9 +19,9 @@ $show_desc     = component_setting( Logo::SHOW_TAGLINE );
 $is_not_link   = component_setting( Logo::DISABLE_LINK, false );
 $display_order = component_setting( Logo::DISPLAY, 'default' );
 $main_logo     = get_theme_mod( 'custom_logo' );
+$main_logo 	   = component_setting( Logo::COMPONENT_ID, $main_logo );
 
 $custom_logo_id = $_id === 'logo' ? $main_logo : component_setting( Logo::CUSTOM_LOGO, $main_logo );
-
 $wrapper_tag = 'p';
 if ( get_option( 'show_on_front' ) === 'posts' && is_home() ) {
 	$wrapper_tag = 'h1';
