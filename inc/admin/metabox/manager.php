@@ -115,10 +115,6 @@ final class Manager {
 	 * Register meta box to control layout on pages and posts.
 	 */
 	public function add() {
-		if ( $this->should_add_meta() === false ) {
-			return;
-		}
-
 		$post_type         = 'Neve';
 		$post_type_from_db = get_post_type();
 		if ( $post_type_from_db ) {
@@ -198,26 +194,6 @@ final class Manager {
 			'<strong>SHIFT + ALT + S</strong> ' . esc_html__( 'or', 'neve' ) . ' <strong>control + option + S</strong>'
 		);
 		echo '</div>';
-	}
-
-	/**
-	 * Decide if the metabox should be visible.
-	 *
-	 * @return bool
-	 */
-	public function should_add_meta() {
-		global $post;
-
-		if ( empty( $post ) ) {
-			return false;
-		}
-
-		$restricted_pages_id = array();
-		if ( in_array( $post->ID, $restricted_pages_id, true ) ) {
-			return false;
-		}
-
-		return true;
 	}
 
 	/**
