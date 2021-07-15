@@ -17,43 +17,54 @@ use Neve\Customizer\Options\Layout_Single_Post;
 trait Single_Post {
 
 	/**
-	 * Get default values for cover padding.
+	 * Get default values for padding controls.
 	 *
 	 * @return array
 	 */
 	public function padding_default( $param = '' ) {
-
-		$m_t = $m_r = $m_b = $m_l = $t_t = $t_r = $t_b = $t_l = $d_t = $d_r = $d_b = $d_l = 40; //phpcs:ignore Squiz.PHP.DisallowMultipleAssignments.Found
-
-		if ( $param === 'cover' ) {
-			$m_t = $m_b = 40; //phpcs:ignore Squiz.PHP.DisallowMultipleAssignments.Found
-			$m_r = $m_l = $d_r = $d_l = $t_r = $t_l = 15; //phpcs:ignore Squiz.PHP.DisallowMultipleAssignments.Found
-			$t_t = $t_b = $d_t = $d_b = 60; //phpcs:ignore Squiz.PHP.DisallowMultipleAssignments.Found
-		}
-
-		return [
+		$map = [
 			'mobile'       => [
-				'top'    => $m_t,
-				'right'  => $m_r,
-				'bottom' => $m_b,
-				'left'   => $m_l,
+				'top'    => 20,
+				'right'  => 20,
+				'bottom' => 20,
+				'left'   => 20,
 			],
 			'tablet'       => [
-				'top'    => $t_t,
-				'right'  => $t_r,
-				'bottom' => $t_b,
-				'left'   => $t_l,
+				'top'    => 30,
+				'right'  => 30,
+				'bottom' => 30,
+				'left'   => 30,
 			],
 			'desktop'      => [
-				'top'    => $d_t,
-				'right'  => $d_r,
-				'bottom' => $d_b,
-				'left'   => $d_l,
+				'top'    => 40,
+				'right'  => 40,
+				'bottom' => 40,
+				'left'   => 40,
 			],
 			'mobile-unit'  => 'px',
 			'tablet-unit'  => 'px',
 			'desktop-unit' => 'px',
 		];
+
+		if ( $param === 'cover' ) {
+			$map['mobile']['top']    = 40;
+			$map['mobile']['right']  = 15;
+			$map['mobile']['bottom'] = 40;
+			$map['mobile']['left']   = 15;
+
+			$map['tablet']['top']    = 60;
+			$map['tablet']['right']  = 30;
+			$map['tablet']['bottom'] = 60;
+			$map['tablet']['left']   = 30;
+
+
+			$map['desktop']['top']    = 60;
+			$map['desktop']['right']  = 40;
+			$map['desktop']['bottom'] = 60;
+			$map['desktop']['left']   = 40;
+		}
+
+		return $map;
 	}
 
 	/**
