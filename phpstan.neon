@@ -12,6 +12,7 @@ parameters:
     bootstrapFiles:
         - vendor/wptt/webfont-loader/wptt-webfont-loader.php
         - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+        - tests/php/static-analysis-stubs/header-footer-elementor.php
     dynamicConstantNames:
         - NEVE_DEBUG
     ignoreErrors:
