@@ -10,6 +10,7 @@ parameters:
         - header-footer-grid/functions-migration.php
         - header-footer-grid/functions-template.php
     bootstrapFiles:
+        - vendor/wptt/webfont-loader/wptt-webfont-loader.php
         - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
     dynamicConstantNames:
         - NEVE_DEBUG
