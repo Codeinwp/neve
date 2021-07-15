@@ -194,7 +194,7 @@ class Mods {
 	 * Get and transform setting to json.
 	 *
 	 * @param string $key Key name.
-	 * @param string $default Default value.
+	 * @param mixed  $default Default value.
 	 * @param bool   $as_array As array or Object.
 	 *
 	 * @return mixed
