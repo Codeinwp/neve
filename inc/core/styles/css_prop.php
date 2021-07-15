@@ -130,7 +130,7 @@ class Css_Prop {
 					$suffix = self::get_unit_responsive( $meta, $device );
 				}
 
-				$non_empty_values = array_filter( $value, 'strlen' );
+				$non_empty_values = array_filter( $value, 'strlen' ); // @phpstan-ignore-line
 				if ( count( $non_empty_values ) === 4 ) {
 					return sprintf( "%s:%s%s %s%s %s%s %s%s;",
 						$css_prop,
