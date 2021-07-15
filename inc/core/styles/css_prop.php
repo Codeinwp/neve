@@ -87,7 +87,6 @@ class Css_Prop {
 				}
 
 				return sprintf( "%s: %s%s;", ($css_prop), neve_sanitize_colors( $value ), isset( $meta[ 'important' ] ) && $meta[ 'important' ] ? '!important' : '' );
-				break;
 			case Config::CSS_PROP_MAX_WIDTH:
 			case Config::CSS_PROP_WIDTH:
 			case Config::CSS_PROP_FLEX_BASIS:
@@ -112,7 +111,6 @@ class Css_Prop {
 					($value),
 					$suffix
 				);
-				break;
 			case Config::CSS_PROP_BORDER_RADIUS:
 			case Config::CSS_PROP_BORDER_WIDTH:
 			case Config::CSS_PROP_PADDING:
@@ -172,7 +170,6 @@ class Css_Prop {
 				}
 
 				return $rule;
-				break;
 			//Line height uses an awkward format saved, and we can't define it as responsive because we would need to use the suffix part.
 			case Config::CSS_PROP_LINE_HEIGHT:
 			case Config::CSS_PROP_FONT_SIZE:
@@ -185,18 +182,15 @@ class Css_Prop {
 				}
 
 				return sprintf( ' %s: %s%s; ', $css_prop, $value, $suffix );
-				break;
 			//Letter spacing has a legacy value of non-responsive which we need to take into consideration.
 			case Config::CSS_PROP_LETTER_SPACING:
 				return sprintf( ' %s: %spx; ', $css_prop, $value );
-				break;
 			case Config::CSS_PROP_CUSTOM_BTN_TYPE:
 				if ( $value !== 'outline' ) {
 					return 'border:none;';
 				}
 
 				return "border:1px solid;";
-				break;
 			case Config::CSS_PROP_FONT_WEIGHT:
 				if ( isset( $meta[ 'font' ] ) ) {
 					$font = strpos( $meta[ 'font' ], 'mods_' ) === 0 ? Mods::get( str_replace( 'mods_', '', $meta[ 'font' ] ) ) : $meta[ 'font' ];
@@ -204,7 +198,6 @@ class Css_Prop {
 				}
 
 				return sprintf( ' %s: %s;', $css_prop, intval( $value ) );
-				break;
 			case Config::CSS_PROP_FONT_FAMILY:
 				if ( $value === 'default' ) {
 					return '';
@@ -212,15 +205,12 @@ class Css_Prop {
 				Font_Manager::add_google_font( $value );
 
 				return sprintf( ' %s: %s, var(--nv-fallback-ff); ', $css_prop, $value );
-
-				break;
 			case Config::CSS_PROP_TEXT_TRANSFORM:
 			case Config::CSS_PROP_BOX_SHADOW:
 			case Config::CSS_PROP_MIX_BLEND_MODE:
 			case Config::CSS_PROP_OPACITY:
 			case Config::CSS_PROP_GRID_TEMPLATE_COLS:
 				return sprintf( ' %s: %s; ', $css_prop, $value );
-				break;
 		}
 
 		return '';
