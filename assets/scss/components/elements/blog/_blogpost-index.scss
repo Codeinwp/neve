@@ -17,7 +17,7 @@
 }
 
 .nv-post-thumbnail-wrap {
-  > a, img {
+  > a, img:not(.photo) {
 	display: block;
   }
 
