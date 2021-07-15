@@ -295,6 +295,11 @@ class Css_Prop {
 			$value      = array_fill_keys( $directions, $value );
 		}
 
+		// If we still don't have an array. Make sure to drop this setting.
+		if ( ! is_array( $value ) ) {
+			return '';
+		}
+
 		// Directional array without any other keys than the actual directions.
 		$filtered = array_filter( $value, function ( $key ) {
 			return in_array( $key, Config::$directional_keys, true );
