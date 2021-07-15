@@ -31,6 +31,7 @@ body > .nv-repeater-item {
 	background-color: #FFFFFF;
 
 	&.visibility-hidden > * > .dashicon,
+	&.visibility-hidden > .repeater-item-title,
 	&.visibility-hidden > * > .repeater-item-title {
 	  color: lighten($text-color, 25%);
 	}
