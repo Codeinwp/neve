@@ -13,6 +13,7 @@ parameters:
         - vendor/wptt/webfont-loader/wptt-webfont-loader.php
         - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
         - tests/php/static-analysis-stubs/header-footer-elementor.php
+        - tests/php/static-analysis-stubs/yoast-wordpress-seo.php
     dynamicConstantNames:
         - NEVE_DEBUG
     ignoreErrors:
