@@ -159,7 +159,7 @@ class Dynamic_Selector {
 	/**
 	 * Get dynamic value.
 	 *
-	 * @param array $meta Prop meta.
+	 * @param array|string $meta Prop meta.
 	 *
 	 * @return bool|mixed
 	 */
