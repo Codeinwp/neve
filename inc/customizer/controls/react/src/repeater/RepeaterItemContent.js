@@ -8,6 +8,7 @@ import getIcons from '../common/icons';
 import IconSelector from './IconSelector';
 import ColorControl from '../common/ColorControl';
 import PropTypes from 'prop-types';
+import { __ } from '@wordpress/i18n';
 
 const RepeaterItemContent = ({
 	fields,
@@ -56,7 +57,7 @@ const RepeaterItemContent = ({
 				);
 			case 'select':
 				const defaultOption = [
-					{ value: 'empty', label: 'Select', disabled: true },
+					{ value: '', label: 'Select', disabled: true },
 				];
 				return (
 					<SelectControl
@@ -101,7 +102,7 @@ const RepeaterItemContent = ({
 					isLink
 					onClick={() => onRemove(index)}
 				>
-					Remove
+					{__('Remove', 'neve')}
 				</Button>
 			)}
 		</div>

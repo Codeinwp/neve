@@ -26,13 +26,6 @@ class Repeater extends \WP_Customize_Control {
 	 *
 	 * @var array
 	 */
-	public $components = [];
-
-	/**
-	 * Additional arguments passed to JS.
-	 *
-	 * @var array
-	 */
 	public $fields = [];
 
 	/**
@@ -40,7 +33,6 @@ class Repeater extends \WP_Customize_Control {
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['components'] = $this->components;
-		$this->json['fields']     = $this->fields;
+		$this->json['fields'] = $this->fields;
 	}
 }

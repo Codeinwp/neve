@@ -37,7 +37,9 @@ const RepeaterItem = ({
 	const hiddenIcon = <Icon icon="hidden" />;
 	const itemLabel = (
 		<span className="repeater-item-title">
-			{value[itemIndex].title === '' ? 'Item' : value[itemIndex].title}
+			{value[itemIndex].title === ''
+				? __('Item', 'neve')
+				: value[itemIndex].title}
 		</span>
 	);
 
@@ -58,7 +60,7 @@ const RepeaterItem = ({
 				<Tooltip text={__('Toggle Visibility', 'neve')}>
 					<button
 						aria-label={__('Toggle Visibility', 'neve')}
-						className="toggle repeater-visibility-button"
+						className="repeater-visibility-button"
 						onClick={(e) => {
 							e.preventDefault();
 							e.stopPropagation();

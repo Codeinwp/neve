@@ -5,6 +5,7 @@ import { Button } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { SortableContainer } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
+import { __ } from '@wordpress/i18n';
 
 const List = SortableContainer(({ children }) => (
 	<div className="nv-repeater-items-container">{children}</div>
@@ -25,14 +26,23 @@ const Repeater = ({ fields, value, onUpdate }) => {
 		const newItem = {};
 
 		for (const [field] of Object.entries(newValue[0])) {
+			if (field === 'visibility') {
+				newItem[field] = 'yes';
+				continue;
+			}
+
 			if (typeof value[0][field] === 'boolean') {
 				newItem[field] = true;
+				continue;
+			}
+
+			if (fields[field].type === 'select') {
+				newItem[field] = Object.keys(fields[field].choices)[0];
 				continue;
 			}
 			newItem[field] = '';
 		}
 
-		newItem.visibility = 'yes';
 		newValue.push(newItem);
 		onUpdate(newValue);
 	};
@@ -85,7 +95,7 @@ const Repeater = ({ fields, value, onUpdate }) => {
 							setSorting(!sorting);
 						}}
 					>
-						{sorting ? 'Done' : 'Reorder'}
+						{sorting ? __('Done', 'neve') : __('Reorder', 'neve')}
 					</Button>
 				)}
 				{!sorting && (
@@ -94,7 +104,7 @@ const Repeater = ({ fields, value, onUpdate }) => {
 						onClick={handleAddItem}
 						className="nv-repeater-add-item-button"
 					>
-						Add Item
+						{__('Add Item', 'neve')}
 					</Button>
 				)}
 			</div>

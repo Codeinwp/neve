@@ -51,7 +51,7 @@ const IconSelector = ({ label, value, onIconChoice, icons }) => {
 				<Popover
 					position="bottom left"
 					onFocusOutside={() => {
-						setVisible(false);
+						setVisible(!visible);
 					}}
 				>
 					{

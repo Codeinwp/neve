@@ -13,11 +13,7 @@ const RepeaterComponent = ({ control }) => {
 		control.setting.set(JSON.stringify(newVal));
 	};
 
-	return (
-		<div className="neve-white-background-control">
-			<Repeater fields={fields} value={value} onUpdate={updateValue} />
-		</div>
-	);
+	return <Repeater fields={fields} value={value} onUpdate={updateValue} />;
 };
 
 RepeaterComponent.propTypes = {
