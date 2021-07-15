@@ -101,7 +101,7 @@ abstract class Control_Base {
 	/**
 	 * Render control label.
 	 *
-	 * @return string
+	 * @return void
 	 */
 	protected function render_label() {
 		$label = array_key_exists( 'label', $this->settings ) ? $this->settings['label'] : '';
@@ -129,7 +129,7 @@ abstract class Control_Base {
 	/**
 	 * Save control data.
 	 *
-	 * @param string $post_id Post id.
+	 * @param int $post_id Post id.
 	 *
 	 * @return void
 	 */
