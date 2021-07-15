@@ -216,6 +216,12 @@ class Css_Prop {
 			case Config::CSS_PROP_GRID_TEMPLATE_COLS:
 				return sprintf( ' %s: %s;', $css_prop, $value );
 			default:
+				$is_font_family_var = strpos( strtolower( $css_prop ), 'fontfamily' ) > - 1;
+
+				if ( $is_font_family_var ) {
+					Font_Manager::add_google_font( $value );
+				}
+
 				if ( isset( $meta['directional-prop'] ) ) {
 					return self::transform_directional_prop( $meta, $device, $value, $css_prop, $meta['directional-prop'] );
 				}
