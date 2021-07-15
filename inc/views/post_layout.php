@@ -207,11 +207,6 @@ class Post_Layout extends Base_View {
 		if ( $title_mode ) {
 			$title_meta_wrap_classes[] = 'nv-is-boxed';
 		}
-		$meta_before = get_theme_mod( 'neve_post_cover_meta_before_title', false );
-		if ( $meta_before ) {
-			$title_meta_wrap_classes[] = 'reversed';
-		}
-
 		$alignment = apply_filters( 'neve_post_title_alignment', '' );
 		if ( $container_mode === 'contained' ) {
 			$container_class[] = $alignment;
@@ -219,14 +214,21 @@ class Post_Layout extends Base_View {
 			$main_class[] = $alignment;
 		}
 
+		$meta_before = get_theme_mod( 'neve_post_cover_meta_before_title', false );
+
 		echo '<div class="' . esc_attr( implode( ' ', $main_class ) ) . '" ' . $cover_style . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<div class="nv-overlay"></div>';
 		echo $container_mode === 'contained' ? '<div class="' . esc_attr( implode( ' ', $container_class ) ) . '">' : '';
 
 		echo '<div class="' . esc_attr( implode( ' ', $title_meta_wrap_classes ) ) . '">';
+		if ( $meta_before ) {
+			self::render_post_meta();
+		}
 		do_action( 'neve_before_post_title' );
 		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
-		self::render_post_meta();
+		if ( ! $meta_before ) {
+			self::render_post_meta();
+		}
 		echo '</div>';
 
 		echo $container_mode === 'contained' ? '</div>' : '';
