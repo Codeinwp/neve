@@ -21,6 +21,7 @@ describe('Posts meta box default settings', function () {
 			neve_migrated_hfg_colors: true,
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
+			neve_new_skin: 'new',
 		});
 
 		cy.saveLocalStorage();
