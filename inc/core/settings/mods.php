@@ -34,7 +34,7 @@ class Mods {
 	 * Get theme mod.
 	 *
 	 * @param string $key Key value.
-	 * @param string $default Default value.
+	 * @param mixed  $default Default value.
 	 *
 	 * @return mixed Mod value.
 	 */
