@@ -13,7 +13,7 @@ describe('Search Icon Component', function () {
 		cy.get('@searchIcon').should('have.class', 'canvas');
 		cy.get('@searchIcon').find('> .nv-search').click();
 		cy.get('@searchIcon').should('have.class', 'active');
-		cy.findByRole('searchbox', { name: /search for\.\.\./i }).should('be.visible');
+		cy.get('.nv-nav-search').should('be.visible');
 		cy.get('@searchIcon').find('.close-responsive-search').click();
 		cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible');
 	});
