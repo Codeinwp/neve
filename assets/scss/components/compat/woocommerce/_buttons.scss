@@ -1,3 +1,7 @@
+.ajax_add_to_cart.added {
+  display: none !important;
+}
+
 .woocommerce {
   a.added_to_cart {
 	display: flex;
@@ -9,10 +13,7 @@
 
   li a.added_to_cart {
 	display: inline-block;
-  }
-
-  .button.added {
-	display: none !important;
+	margin-top: 1em;
   }
 }
 
