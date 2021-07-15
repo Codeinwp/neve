@@ -57,7 +57,7 @@ describe('Single Post Check', function () {
 				'nv-thumb-wrap',
 			];
 
-			cy.visit('/markup-image-alignment/');
+			cy.visit('/template-comments/');
 			// eslint-disable-next-line no-unused-vars
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			ORDER.forEach((className) => {
@@ -82,8 +82,8 @@ describe('Single Post Check', function () {
 				cy.visit(url);
 				cy.get('.nv-overlay')
 					.should('have.css', 'height', '505px')
-					.and('have.css', 'background-color', 'rgb(198, 53, 53)')
-					.and('have.css', 'color', 'rgb(255, 255, 255)');
+					.and('have.css', 'background-color', 'rgb(198, 53, 53)');
+				cy.get('.nv-title-meta-wrap').should('have.css', 'color', 'rgb(255, 255, 255)');
 			});
 		});
 	});
