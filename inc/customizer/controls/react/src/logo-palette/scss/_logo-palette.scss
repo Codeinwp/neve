@@ -1,0 +1,67 @@
+.logo-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-select {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 81px;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  padding: 6px;
+  margin-bottom: 12px;
+  text-align: center;
+  &:only-of-type {
+	width: 195px;
+	height: 111px;
+  }
+  &:before {
+	pointer-events: none;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+  }
+
+  &:hover {
+	&:before{
+	  background: rgba(34, 113, 177, 0.88);
+	}
+	.add-icon {
+	  fill: currentColor;
+	  color: #FFFFFF;
+	}
+  }
+
+  .add-icon {
+	position: absolute;
+  }
+
+  .remove {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 2px 0;
+	width: 36px;
+	height: 24px;
+	background: red;
+	color: #FFFFFF;
+	z-index: 9999;
+  }
+
+  &:hover .remove {
+	display: block;
+  }
+
+  img {
+	height: 100%;
+  }
+}

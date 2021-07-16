@@ -26,6 +26,7 @@ class Logo extends Abstract_Component {
 
 	const COMPONENT_ID = 'logo';
 	const CUSTOM_LOGO  = 'custom_logo';
+	const USE_SAME     = 'same_logo';
 	const DISPLAY      = 'display';
 	const MAX_WIDTH    = 'max_width';
 	const SHOW_TITLE   = 'show_title';
@@ -81,6 +82,28 @@ class Logo extends Abstract_Component {
 	}
 
 	/**
+	 * Sanitize the logo json
+	 *
+	 * @param string $input A json data for the logo component.
+	 *
+	 * @return string
+	 */
+	public function sanitize_logo_json( $input ) {
+		$inputs = json_decode( $input, true );
+		if ( is_array( $inputs ) && ! empty( $inputs ) ) {
+			return $input;
+		}
+
+		return wp_json_encode(
+			array(
+				'light' => get_theme_mod( 'custom_logo' ),
+				'dark'  => get_theme_mod( 'custom_logo' ),
+				'same'  => true,
+			)
+		);
+	}
+
+	/**
 	 * Called to register component controls.
 	 *
 	 * @since   1.0.0
@@ -93,7 +116,7 @@ class Logo extends Abstract_Component {
 				$this->get_class_const( 'COMPONENT_ID' ),
 				array(
 					SettingsManager::TAB_GENERAL => array(
-						//self::CUSTOM_LOGO => array(),
+						// self::CUSTOM_LOGO => array(),
 						'blogname'        => array(),
 						'blogdescription' => array(),
 						'site_icon'       => array(),
@@ -102,23 +125,54 @@ class Logo extends Abstract_Component {
 			);
 		}
 
+		$custom_logo_args = get_theme_support( 'custom-logo' );
+		$default          = array(
+			'light' => get_theme_mod( 'custom_logo' ),
+			'dark'  => get_theme_mod( 'custom_logo' ),
+			'same'  => true,
+		);
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::COMPONENT_ID,
 				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'               => SettingsManager::TAB_GENERAL,
 				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'absint',
-				'default'           => get_theme_mod( 'custom_logo' ),
+				// 'sanitize_callback' => 'absint',
+				// 'default'           => get_theme_mod( 'custom_logo' ),
+				'sanitize_callback' => array( $this, 'sanitize_logo_json' ),
+				'default'           => wp_json_encode( $default ),
 				'label'             => __( 'Logo base', 'neve' ),
 				'type'              => '\Neve\Customizer\Controls\React\Logo_Palette',
 				'options'           => [
 					'priority'    => 0,
-					'input_attrs' => [],
+					'input_attrs' => [
+						'sameLabel'  => __( 'Use one logo for both modes', 'neve' ),
+						'height'     => isset( $custom_logo_args[0]['height'] ) ? $custom_logo_args[0]['height'] : null,
+						'width'      => isset( $custom_logo_args[0]['width'] ) ? $custom_logo_args[0]['width'] : null,
+						'flexHeight' => isset( $custom_logo_args[0]['flex-height'] ) ? $custom_logo_args[0]['flex-height'] : null,
+						'flexWidth'  => isset( $custom_logo_args[0]['flex-width'] ) ? $custom_logo_args[0]['flex-width'] : null,
+					],
 				],
 				'section'           => $this->section,
 			]
 		);
+		// SettingsManager::get_instance()->add(
+		// [
+		// 'id'                 => self::USE_SAME,
+		// 'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+		// 'tab'                => SettingsManager::TAB_GENERAL,
+		// 'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+		// 'sanitize_callback'  => 'absint',
+		// 'default'            => 1,
+		// 'options'            => [
+		// 'priority' => 0,
+		// ],
+		// 'label'              => __( 'Use one logo for both modes', 'neve' ),
+		// 'type'               => 'neve_toggle_control',
+		// 'section'            => $this->section,
+		// 'conditional_header' => true,
+		// ]
+		// );
 
 		SettingsManager::get_instance()->add(
 			[
