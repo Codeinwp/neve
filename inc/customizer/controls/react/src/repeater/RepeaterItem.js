@@ -43,7 +43,8 @@ const RepeaterItem = ({
 		</span>
 	);
 
-	const toggleExpand = () => {
+	const toggleExpand = (e) => {
+		e.preventDefault();
 		setExpanded(!expanded);
 	};
 
