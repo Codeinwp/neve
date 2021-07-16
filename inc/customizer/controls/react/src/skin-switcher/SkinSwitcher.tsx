@@ -29,7 +29,7 @@ const SkinSwitcher: React.FC<Props> = ({ control }) => {
 
 	const options = [
 		{
-			value: 'legacy',
+			value: 'old',
 			label: __('Legacy Skin', 'neve'),
 		},
 		{
