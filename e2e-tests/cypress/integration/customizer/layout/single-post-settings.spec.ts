@@ -1,12 +1,8 @@
 describe('Single Post Check', function () {
 	before(function () {
-		cy.loginWithRequest();
-		cy.visit('/markup-image-alignment/');
-		cy.get('#wp-admin-bar-edit').click();
-		cy.clearWelcome();
-		cy.get('.components-panel__body').contains('Discussion').click();
-		cy.get('label').contains('Allow comments').click();
-		cy.get('button').contains('Update').click();
+		cy.setCustomizeSettings({
+			neve_new_skin: 'new',
+		});
 	});
 
 	it('Shows all options on customizer', function () {
@@ -38,7 +34,7 @@ describe('Single Post Check', function () {
 				'.nv-post-navigation',
 			];
 
-			cy.visit('/markup-image-alignment/');
+			cy.visit('/template-comments/');
 			HIDDEN.forEach((className) => {
 				cy.get('.nv-single-post-wrap').should('not.have.descendants', className);
 			});
@@ -61,7 +57,7 @@ describe('Single Post Check', function () {
 				'nv-thumb-wrap',
 			];
 
-			cy.visit('/markup-image-alignment/');
+			cy.visit('/template-comments/');
 			// eslint-disable-next-line no-unused-vars
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			ORDER.forEach((className) => {
@@ -86,8 +82,8 @@ describe('Single Post Check', function () {
 				cy.visit(url);
 				cy.get('.nv-overlay')
 					.should('have.css', 'height', '505px')
-					.and('have.css', 'background-color', 'rgb(198, 53, 53)')
-					.and('have.css', 'color', 'rgb(255, 255, 255)');
+					.and('have.css', 'background-color', 'rgb(198, 53, 53)');
+				cy.get('.nv-title-meta-wrap').should('have.css', 'color', 'rgb(255, 255, 255)');
 			});
 		});
 	});

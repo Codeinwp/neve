@@ -44,9 +44,6 @@ jobs:
         run: composer install --no-dev --prefer-dist --no-progress --no-suggest
       - name: Install yarn deps
         run: yarn install --frozen-lockfile
-      - name: Install Cypress yarn
-        working-directory: ./e2e-tests
-        run: yarn install --frozen-lockfile
       - name: Build files
         run: yarn run build
       - name: Create zip
@@ -179,16 +176,6 @@ jobs:
       ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        id: yarn-and-build-cache
-        with:
-          path: |
-            ~/.cache/Cypress
-            node_modules
-            ./e2e-tests/node_modules
-          key: ${{ runner.os }}-node_modules-build-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node_modules-build-
       - name: Install ${{ matrix.envs }} env for ${{ matrix.specs }} specs
         run: bash ./bin/envs/init.sh ${{ matrix.envs }} latest no "$ZIP_URL"
       - name: Run ${{ matrix.specs }} Cypress tests
@@ -202,7 +189,6 @@ jobs:
           working-directory: ./e2e-tests
           env: host=localhost,port=8080
           browser: chrome
-          install: ${{ ! steps.yarn-and-build-cache.outputs.cache-hit }}
           headless: true
           parallel: true
           group: e2e-${{ matrix.specs }}
