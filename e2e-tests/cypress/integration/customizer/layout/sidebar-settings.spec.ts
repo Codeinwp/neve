@@ -1,6 +1,6 @@
 describe('Sidebar/Content Settings', function () {
 	context('Sidebar site wide on front end.', function () {
-		before(function () {
+		beforeEach(function () {
 			cy.fixture('customizer/layout/sidebar-settings').then((sidebarSetup) => {
 				cy.setCustomizeSettings(sidebarSetup.site_wide);
 			});
@@ -34,7 +34,7 @@ describe('Sidebar/Content Settings', function () {
 	});
 
 	context('Sidebar advanced on front end.', function () {
-		before(function () {
+		beforeEach(function () {
 			cy.fixture('customizer/layout/sidebar-settings').then((sidebarSetup) => {
 				cy.setCustomizeSettings(sidebarSetup.advanced);
 			});
