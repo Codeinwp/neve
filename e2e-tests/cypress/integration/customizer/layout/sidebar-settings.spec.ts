@@ -43,7 +43,7 @@ describe('Sidebar/Content Settings', function () {
 
 		it('Index', function () {
 			cy.visit('/');
-			cy.wait(900);
+			cy.wait(1500);
 			cy.reload();
 			cy.get('.nv-sidebar-wrap').should('have.css', 'max-width', '80%');
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
