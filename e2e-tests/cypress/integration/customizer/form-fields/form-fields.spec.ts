@@ -7,6 +7,7 @@ describe('Form fields', function () {
 
 	it('Checks up the search field', function () {
 		cy.visit('/');
+		cy.wait(500);
 		cy.reload();
 		cy.findByRole('searchbox')
 			.should('have.css', 'padding-top', '14px')
