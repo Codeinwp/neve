@@ -208,7 +208,20 @@ class Woocommerce {
 				11
 			);
 			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ] );
+			// Change default for shop columns WooCommerce option.
+			add_filter( 'default_option_woocommerce_catalog_columns', [ $this, 'change_default_shop_cols' ] );
 		}
+	}
+
+	/**
+	 * Change default for catalog columns.
+	 *
+	 * @param int $default default value -> 4.
+	 *
+	 * @return int
+	 */
+	public function change_default_shop_cols( $default ) {
+		return 3;
 	}
 
 	/**
