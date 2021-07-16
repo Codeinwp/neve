@@ -104,17 +104,17 @@ class Admin {
 		$all_mods = get_theme_mods();
 
 		$mods = [
-				'hfg_header_layout',
-				'hfg_footer_layout',
-				'neve_headings_font_family',
-				'neve_body_font_family',
-				'neve_global_colors',
-				'neve_button_appearance',
-				'neve_secondary_button_appearance',
-				'neve_typeface_general',
-				'neve_form_fields_padding',
-				'neve_default_sidebar_layout',
-				'neve_advanced_layout_options',
+			'hfg_header_layout',
+			'hfg_footer_layout',
+			'neve_headings_font_family',
+			'neve_body_font_family',
+			'neve_global_colors',
+			'neve_button_appearance',
+			'neve_secondary_button_appearance',
+			'neve_typeface_general',
+			'neve_form_fields_padding',
+			'neve_default_sidebar_layout',
+			'neve_advanced_layout_options',
 		];
 
 		$should_switch = false;
