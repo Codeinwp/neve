@@ -7,17 +7,9 @@ describe('Palette Switch component', function () {
 
 	it('Changes the color palette by clicking', function () {
 		cy.visit('/');
-		cy.findByRole('heading', { name: /hello world!/i }).should(
-			'have.css',
-			'color',
-			'rgb(57, 57, 57)',
-		);
+		cy.findAllByRole('heading').should('have.css', 'color', 'rgb(39, 38, 38)');
 		cy.get('.icon > svg > path').click();
-		cy.findByRole('heading', { name: /hello world!/i }).should(
-			'have.css',
-			'color',
-			'rgb(255, 255, 255)',
-		);
+		cy.findAllByRole('heading').should('have.css', 'color', 'rgb(255, 255, 255)');
 	});
 
 	it('Removes color palette from website', function () {
@@ -38,20 +30,12 @@ describe('Palette Swich auto', function () {
 	it('Automatically changes the color palette when dark is default', function () {
 		cy.setLocalStorage('neve_user_theme', 'dark');
 		cy.visit('/');
-		cy.findByRole('heading', { name: /hello world!/i }).should(
-			'have.css',
-			'color',
-			'rgb(255, 255, 255)',
-		);
+		cy.findAllByRole('heading').should('have.css', 'color', 'rgb(255, 255, 255)');
 	});
 
 	it('Automatically changes the color palette when light is default', function () {
 		cy.setLocalStorage('neve_user_theme', 'light');
 		cy.visit('/');
-		cy.findByRole('heading', { name: /hello world!/i }).should(
-			'have.css',
-			'color',
-			'rgb(57, 57, 57)',
-		);
+		cy.findAllByRole('heading').should('have.css', 'color', 'rgb(39, 38, 38)');
 	});
 });
