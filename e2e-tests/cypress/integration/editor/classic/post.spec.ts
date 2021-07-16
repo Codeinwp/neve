@@ -21,6 +21,7 @@ describe('Posts meta box default settings', function () {
 			neve_migrated_hfg_colors: true,
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
+			neve_new_skin: 'new',
 		});
 
 		cy.saveLocalStorage();
@@ -81,6 +82,7 @@ describe('Posts meta box default settings', function () {
 			cy.get('#publish').contains('Update').click();
 
 			cy.visit(postSetup.url);
+			cy.wait(500);
 			cy.reload();
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left').and('be.visible');
 			cy.get('.single-post-container').should('have.class', 'container-fluid').and('be.visible');
