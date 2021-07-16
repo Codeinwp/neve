@@ -10,6 +10,8 @@
 
 namespace Neve\Core;
 
+use Neve\Core\Settings\Mods_Migrator;
+
 /**
  * Class Admin
  *
@@ -72,7 +74,7 @@ class Admin {
 		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
 
 		add_action( 'init', [ $this, 'run_skin_and_builder_switches' ] );
-		add_filter( 'ti_tpc_theme_mods_pre_import', [ $this, 'remove_old_hfg_values' ] );
+		add_filter( 'ti_tpc_theme_mods_pre_import', [ $this, 'migrate_theme_mods_for_new_skin' ] );
 
 		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
 		add_filter( 'neve_pro_react_controls_localization', [ $this, 'adapt_conditional_headers' ] );
@@ -141,20 +143,12 @@ class Admin {
 	 * @return array
 	 * @since 3.0.0
 	 */
-	public function remove_old_hfg_values( $theme_mods ) {
-		if ( ! neve_is_new_builder() ) {
+	public function migrate_theme_mods_for_new_skin( $theme_mods ) {
+		if ( ! neve_is_new_skin() ) {
 			return $theme_mods;
 		}
-
-		$to_remove = [ 'hfg_header_layout', 'hfg_footer_layout', 'background_color' ];
-
-		foreach ( $to_remove as $slug ) {
-			if ( isset( $theme_mods[ $slug ] ) ) {
-				unset( $theme_mods[ $slug ] );
-			}
-		}
-
-		return $theme_mods;
+		$migrator = new Mods_Migrator( $theme_mods );
+		return $migrator->get_migrated_mods();
 	}
 
 	/**
