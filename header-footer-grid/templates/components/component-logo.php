@@ -14,21 +14,14 @@ use HFG\Core\Components\Logo;
 
 $_id = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
 
-$show_name                = component_setting( Logo::SHOW_TITLE );
-$show_desc                = component_setting( Logo::SHOW_TAGLINE );
-$is_not_link              = component_setting( Logo::DISABLE_LINK, false );
-$display_order            = component_setting( Logo::DISPLAY, 'default' );
-$main_logo                = get_theme_mod( 'custom_logo' );
-$default_conditional_logo = \wp_json_encode(
-	array(
-		'light' => get_theme_mod( 'custom_logo' ),
-		'dark'  => get_theme_mod( 'custom_logo' ),
-		'same'  => true,
-	)
-);
-$conditional_logo         = json_decode( component_setting( Logo::COMPONENT_ID, $default_conditional_logo ), true );
-$main_logo                = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $main_logo;
-// var_dump( $main_logo );
+$show_name     = component_setting( Logo::SHOW_TITLE );
+$show_desc     = component_setting( Logo::SHOW_TAGLINE );
+$is_not_link   = component_setting( Logo::DISABLE_LINK, false );
+$display_order = component_setting( Logo::DISPLAY, 'default' );
+$main_logo     = get_theme_mod( 'custom_logo' );
+
+$conditional_logo = json_decode( component_setting( Logo::COMPONENT_ID, Logo::sanitize_logo_json( '' ) ), true );
+$main_logo        = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $main_logo;
 
 $custom_logo_id = $_id === 'logo' ? $main_logo : component_setting( Logo::CUSTOM_LOGO, $main_logo );
 $wrapper_tag    = 'p';
@@ -60,7 +53,9 @@ if ( $is_not_link ) {
 
 do_action( 'hfg_before_wp_get_attachment_image', $custom_logo_id );
 
-$logo_settings = array();
+$logo_settings = array(
+	'id' => 'neve-main-logo',
+);
 
 /**
  * Filters whether the skip lazy class should be added.
@@ -76,7 +71,58 @@ if ( $should_add_skip_lazy ) {
 
 $image = wp_get_attachment_image( $custom_logo_id, apply_filters( 'hfg_logo_image_size', 'full' ), false, $logo_settings );
 do_action( 'hfg_after_wp_get_attachment_image', $custom_logo_id, $image );
+if ( ! empty( $conditional_logo ) ) {
+	$logo_light_id = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $main_logo;
+	$logo_dark_id  = isset( $conditional_logo['dark'] ) ? $conditional_logo['dark'] : $logo_light_id;
+
+	$variants = array(
+		'light' => array(
+			'src'    => wp_get_attachment_image_url( $logo_light_id, apply_filters( 'hfg_logo_image_size', 'full' ), false ),
+			'srcset' => wp_get_attachment_image_srcset( $logo_light_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+			'sizes'  => wp_get_attachment_image_sizes( $logo_light_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+		),
+		'dark'  => array(
+			'src'    => wp_get_attachment_image_url( $logo_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ), false ),
+			'srcset' => wp_get_attachment_image_srcset( $logo_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+			'sizes'  => wp_get_attachment_image_sizes( $logo_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+		),
+	);
+}
 ?>
+<script type="application/javascript">
+	var html = document.documentElement;
+	var theme = html.getAttribute('data-neve-theme') || 'light';
+	function setCurrentTheme( theme ) {
+		var isConditional = <?php echo $conditional_logo['same'] ? 'true' : 'false'; ?>;
+		var picture = document.getElementById( 'neve-main-logo' );
+		if( ! picture ) {
+			return;
+		}
+		if ( theme === 'light' || isConditional ) {
+			picture.src = "<?php echo esc_attr( $variants['light']['src'] ); ?>";
+			picture.srcset = "<?php echo esc_attr( $variants['light']['srcset'] ); ?>";
+			picture.sizes = "<?php echo esc_attr( $variants['light']['sizes'] ); ?>";
+			return;
+		}
+		picture.src = "<?php echo esc_attr( $variants['dark']['src'] ); ?>";
+		picture.srcset = "<?php echo esc_attr( $variants['dark']['srcset'] ); ?>";
+		picture.sizes = "<?php echo esc_attr( $variants['dark']['sizes'] ); ?>";
+	}
+
+	var observer = new MutationObserver(function(mutations) {
+		mutations.forEach(function(mutation) {
+			if (mutation.type == "attributes") {
+				theme = html.getAttribute('data-neve-theme');
+				setCurrentTheme(theme);
+			}
+		});
+	});
+
+	setCurrentTheme(theme);
+	observer.observe(html, {
+		attributes: true
+	});
+</script>
 <div class="site-logo">
 	<?php
 	echo ( $start_tag ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

@@ -29,6 +29,9 @@
 	right: 0;
 	bottom: 0;
   }
+  &.dark {
+	background: #555D65;
+  }
 
   &:hover {
 	&:before{
@@ -38,6 +41,20 @@
 	  fill: currentColor;
 	  color: #FFFFFF;
 	}
+	p {
+	  pointer-events: none;
+	  display: block;
+	}
+	.add-icon + p {
+	  top: 70%;
+	}
+  }
+
+  p {
+	position: absolute;
+	font-weight: bold;
+	color: #FFF;
+	display: none;
   }
 
   .add-icon {

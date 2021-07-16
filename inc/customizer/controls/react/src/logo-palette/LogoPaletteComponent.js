@@ -7,7 +7,7 @@ import { __ } from '@wordpress/i18n';
 import { Button, Icon } from '@wordpress/components';
 import { trash, plusCircleFilled } from '@wordpress/icons';
 
-import { useState } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 
 const LogoPaletteComponent = ({ control }) => {
 	const controlSetting = maybeParseJson(control.setting.get());
@@ -17,10 +17,59 @@ const LogoPaletteComponent = ({ control }) => {
 		flexHeight,
 		flexWidth,
 		sameLabel,
+		builderListen,
+		compChange,
 	} = control.params.input_attrs;
 	const [setting, setSetting] = useState(controlSetting);
 	const [light, setLight] = useState();
 	const [dark, setDark] = useState();
+	const [isPaletteActive, setIsPaletteActive] = useState(false);
+
+	const hasValue = (object, value) => {
+		return Object.values(object).some(function (val) {
+			if (val === value) {
+				return true;
+			}
+			if (val && typeof val === 'object') {
+				return hasValue(val, value);
+			}
+			if (
+				val &&
+				Object.prototype.toString.call(val) === '[object Array]'
+			) {
+				return val.some((obj) => {
+					return hasValue(obj, value);
+				});
+			}
+			return false;
+		});
+	};
+
+	useEffect(() => {
+		if (
+			typeof builderListen !== 'string' ||
+			typeof compChange !== 'string' ||
+			builderListen === '' ||
+			compChange === ''
+		) {
+			return;
+		}
+
+		window.wp.customize.bind('ready', () => {
+			// Update select settings with current global colors
+			const currentHeaderItems = maybeParseJson(
+				window.wp.customize.control(builderListen).setting.get()
+			);
+			setIsPaletteActive(hasValue(currentHeaderItems, compChange));
+		});
+
+		window.wp.customize.control(builderListen, (customizeControl) => {
+			customizeControl.setting.bind('changed', (nextValue) => {
+				const currentHeaderItems = maybeParseJson(nextValue);
+				setIsPaletteActive(hasValue(currentHeaderItems, compChange));
+			});
+		});
+	}, [builderListen, compChange]);
 
 	const preloadAttachement = (id, type = 'light') => {
 		if (!wp.media.attachment(id).get('url')) {
@@ -112,6 +161,7 @@ const LogoPaletteComponent = ({ control }) => {
 										className="add-icon"
 										icon={plusCircleFilled}
 									/>
+									<p>{__('Add Light Logo', 'neve')}</p>
 								</div>
 							)}
 							{light && (
@@ -124,6 +174,7 @@ const LogoPaletteComponent = ({ control }) => {
 											resetAttachment('light');
 										}}
 									/>
+									<p>{__('Light Mode', 'neve')}</p>
 									<img
 										aria-hidden="true"
 										alt=""
@@ -135,7 +186,7 @@ const LogoPaletteComponent = ({ control }) => {
 						</>
 					)}
 				/>
-				{!setting.same && (
+				{!setting.same && isPaletteActive && (
 					<MediaLibrary
 						onSelect={(data) => {
 							updateControlValue(data, 'dark');
@@ -150,7 +201,7 @@ const LogoPaletteComponent = ({ control }) => {
 							<>
 								{!dark && (
 									<div
-										className="logo-select"
+										className="logo-select dark"
 										aria-hidden="true"
 										onClick={open}
 									>
@@ -158,10 +209,11 @@ const LogoPaletteComponent = ({ control }) => {
 											className="add-icon"
 											icon={plusCircleFilled}
 										/>
+										<p>{__('Add Dark Logo', 'neve')}</p>
 									</div>
 								)}
 								{dark && (
-									<div className="logo-select">
+									<div className="logo-select dark">
 										<Button
 											className="remove"
 											icon={trash}
@@ -170,6 +222,7 @@ const LogoPaletteComponent = ({ control }) => {
 												resetAttachment('dark');
 											}}
 										/>
+										<p>{__('Dark Mode', 'neve')}</p>
 										<img
 											aria-hidden="true"
 											alt=""
@@ -183,11 +236,13 @@ const LogoPaletteComponent = ({ control }) => {
 					/>
 				)}
 			</div>
-			<Toggle
-				label={sameLabel}
-				checked={setting.same}
-				onChange={toggleValue}
-			/>
+			{isPaletteActive && (
+				<Toggle
+					label={sameLabel}
+					checked={setting.same}
+					onChange={toggleValue}
+				/>
+			)}
 		</>
 	);
 };

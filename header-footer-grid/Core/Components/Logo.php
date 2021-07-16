@@ -88,7 +88,7 @@ class Logo extends Abstract_Component {
 	 *
 	 * @return string
 	 */
-	public function sanitize_logo_json( $input ) {
+	public static function sanitize_logo_json( $input ) {
 		$inputs = json_decode( $input, true );
 		if ( is_array( $inputs ) && ! empty( $inputs ) ) {
 			return $input;
@@ -137,8 +137,6 @@ class Logo extends Abstract_Component {
 				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'               => SettingsManager::TAB_GENERAL,
 				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				// 'sanitize_callback' => 'absint',
-				// 'default'           => get_theme_mod( 'custom_logo' ),
 				'sanitize_callback' => array( $this, 'sanitize_logo_json' ),
 				'default'           => wp_json_encode( $default ),
 				'label'             => __( 'Logo base', 'neve' ),
@@ -146,33 +144,18 @@ class Logo extends Abstract_Component {
 				'options'           => [
 					'priority'    => 0,
 					'input_attrs' => [
-						'sameLabel'  => __( 'Use one logo for both modes', 'neve' ),
-						'height'     => isset( $custom_logo_args[0]['height'] ) ? $custom_logo_args[0]['height'] : null,
-						'width'      => isset( $custom_logo_args[0]['width'] ) ? $custom_logo_args[0]['width'] : null,
-						'flexHeight' => isset( $custom_logo_args[0]['flex-height'] ) ? $custom_logo_args[0]['flex-height'] : null,
-						'flexWidth'  => isset( $custom_logo_args[0]['flex-width'] ) ? $custom_logo_args[0]['flex-width'] : null,
+						'builderListen' => 'hfg_header_layout' . ( neve_is_new_builder() ? '_v2' : '' ),
+						'compChange'    => PaletteSwitch::COMPONENT_ID,
+						'sameLabel'     => __( 'Use one logo for both modes', 'neve' ),
+						'height'        => isset( $custom_logo_args[0]['height'] ) ? $custom_logo_args[0]['height'] : null,
+						'width'         => isset( $custom_logo_args[0]['width'] ) ? $custom_logo_args[0]['width'] : null,
+						'flexHeight'    => isset( $custom_logo_args[0]['flex-height'] ) ? $custom_logo_args[0]['flex-height'] : null,
+						'flexWidth'     => isset( $custom_logo_args[0]['flex-width'] ) ? $custom_logo_args[0]['flex-width'] : null,
 					],
 				],
 				'section'           => $this->section,
 			]
 		);
-		// SettingsManager::get_instance()->add(
-		// [
-		// 'id'                 => self::USE_SAME,
-		// 'group'              => $this->get_class_const( 'COMPONENT_ID' ),
-		// 'tab'                => SettingsManager::TAB_GENERAL,
-		// 'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-		// 'sanitize_callback'  => 'absint',
-		// 'default'            => 1,
-		// 'options'            => [
-		// 'priority' => 0,
-		// ],
-		// 'label'              => __( 'Use one logo for both modes', 'neve' ),
-		// 'type'               => 'neve_toggle_control',
-		// 'section'            => $this->section,
-		// 'conditional_header' => true,
-		// ]
-		// );
 
 		SettingsManager::get_instance()->add(
 			[
