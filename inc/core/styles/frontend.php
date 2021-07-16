@@ -10,7 +10,6 @@ namespace Neve\Core\Styles;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Customizer\Defaults\Single_Post;
-use Neve\Customizer\Options\Layout_Single_Post;
 
 /**
  * Class Generator for Frontend.
@@ -177,35 +176,54 @@ class Frontend extends Generator {
 			return;
 		}
 
-		$archive_typography = array(
-			Config::CSS_SELECTOR_ARCHIVE_POST_TITLE        => Config::MODS_TYPEFACE_ARCHIVE_POST_TITLE,
-			Config::CSS_SELECTOR_ARCHIVE_POST_EXCERPT      => Config::MODS_TYPEFACE_ARCHIVE_POST_EXCERPT,
-			Config::CSS_SELECTOR_ARCHIVE_POST_META         => Config::MODS_TYPEFACE_ARCHIVE_POST_META,
-			Config::CSS_SELECTOR_SINGLE_POST_TITLE         => Config::MODS_TYPEFACE_SINGLE_POST_TITLE,
-			Config::CSS_SELECTOR_SINGLE_POST_META          => Config::MODS_TYPEFACE_SINGLE_POST_META,
-			Config::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE => Config::MODS_TYPEFACE_SINGLE_POST_COMMENT_TITLE,
-		);
-		foreach ( $archive_typography as $selector => $mod ) {
+		$archive_typography = [
+			Config::CSS_SELECTOR_ARCHIVE_POST_TITLE        => [
+				'mod'  => Config::MODS_TYPEFACE_ARCHIVE_POST_TITLE,
+				'font' => Config::MODS_FONT_HEADINGS,
+			],
+			Config::CSS_SELECTOR_ARCHIVE_POST_EXCERPT      => [
+				'mod'  => Config::MODS_TYPEFACE_ARCHIVE_POST_EXCERPT,
+				'font' => Config::MODS_FONT_GENERAL,
+			],
+			Config::CSS_SELECTOR_ARCHIVE_POST_META         => [
+				'mod'  => Config::MODS_TYPEFACE_ARCHIVE_POST_META,
+				'font' => Config::MODS_FONT_GENERAL,
+			],
+			Config::CSS_SELECTOR_SINGLE_POST_TITLE         => [
+				'mod'  => Config::MODS_TYPEFACE_SINGLE_POST_TITLE,
+				'font' => Config::MODS_FONT_HEADINGS,
+			],
+			Config::CSS_SELECTOR_SINGLE_POST_META          => [
+				'mod'  => Config::MODS_TYPEFACE_SINGLE_POST_META,
+				'font' => Config::MODS_FONT_GENERAL,
+			],
+			Config::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE => [
+				'mod'  => Config::MODS_TYPEFACE_SINGLE_POST_COMMENT_TITLE,
+				'font' => Config::MODS_FONT_HEADINGS,
+			],
+		];
+		foreach ( $archive_typography as $selector => $args ) {
 			$this->_subscribers[ $selector ] = [
 				'--fontSize'      => [
-					Dynamic_Selector::META_KEY           => $mod . '.fontSize',
+					Dynamic_Selector::META_KEY           => $args['mod'] . '.fontSize',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => 'px',
 				],
 				'--lineHeight'    => [
-					Dynamic_Selector::META_KEY           => $mod . '.lineHeight',
+					Dynamic_Selector::META_KEY           => $args['mod'] . '.lineHeight',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => '',
 				],
 				'--letterSpacing' => [
-					Dynamic_Selector::META_KEY           => $mod . '.letterSpacing',
+					Dynamic_Selector::META_KEY           => $args['mod'] . '.letterSpacing',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => 'px',
 				],
 				'--fontWeight'    => [
-					Dynamic_Selector::META_KEY => $mod . '.fontWeight',
+					Dynamic_Selector::META_KEY => $args['mod'] . '.fontWeight',
+					'font'                     => 'mods_' . $args['font'],
 				],
-				'--textTransform' => $mod . '.textTransform',
+				'--textTransform' => $args['mod'] . '.textTransform',
 			];
 		}
 	}
