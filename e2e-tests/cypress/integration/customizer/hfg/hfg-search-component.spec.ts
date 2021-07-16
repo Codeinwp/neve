@@ -7,12 +7,13 @@ describe('Search Icon Component', function () {
 
 	it('Canvas Search Works on Front End', function () {
 		cy.visit('/');
+		cy.reload();
 		cy.get('.builder-item--header_search_responsive .menu-item-nav-search').as('searchIcon');
 		cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible');
 		cy.get('@searchIcon').should('have.class', 'canvas');
 		cy.get('@searchIcon').find('> .nv-search').click();
 		cy.get('@searchIcon').should('have.class', 'active');
-		cy.get('@searchIcon').find('.nv-nav-search').should('be.visible');
+		cy.get('.nv-nav-search').should('be.visible');
 		cy.get('@searchIcon').find('.close-responsive-search').click();
 		cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible');
 	});
@@ -27,13 +28,14 @@ describe('Search Icon Component', function () {
 
 		it('Minimal Search Works on Front End', function () {
 			cy.visit('/');
+			cy.reload();
 			cy.get('.builder-item--header_search_responsive .menu-item-nav-search').as('searchIcon');
 			cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible');
 			cy.get('@searchIcon').should('have.class', 'minimal');
 			cy.get('@searchIcon').find('> .nv-search').click();
 			cy.get('@searchIcon').should('have.class', 'active');
 			cy.get('@searchIcon').find('.nv-nav-search').should('be.visible');
-			cy.get('.nav-clickaway-overlay').should('exist').click();
+			cy.get('.nav-clickaway-overlay').click();
 			cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible');
 			cy.get('.nav-clickaway-overlay').should('not.exist');
 		});
@@ -49,13 +51,14 @@ describe('Search Icon Component', function () {
 
 		it('Floating Search Works on Front End', function () {
 			cy.visit('/');
+			cy.reload();
 			cy.get('.builder-item--header_search_responsive .menu-item-nav-search').as('searchIcon');
 			cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible');
 			cy.get('@searchIcon').should('have.class', 'floating');
 			cy.get('@searchIcon').find('> .nv-search').click();
 			cy.get('@searchIcon').should('have.class', 'active');
 			cy.get('@searchIcon').find('.nv-nav-search').should('be.visible');
-			cy.get('.nav-clickaway-overlay').should('exist');
+			cy.get('.nav-clickaway-overlay');
 			cy.get('@searchIcon').find('.close-responsive-search').click();
 			cy.get('@searchIcon').find('.nv-nav-search').should('not.be.visible');
 			cy.get('.nav-clickaway-overlay').should('not.exist');

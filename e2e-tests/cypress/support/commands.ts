@@ -2,9 +2,10 @@
 /* eslint-disable chai-friendly/no-unused-expressions */
 import 'cypress-file-upload';
 import '@percy/cypress';
-import 'cypress-nv-commands/index'
+import 'cypress-nv-commands/index';
 import 'cypress-localstorage-commands';
 import { scrollToBottom } from 'scroll-to-bottomjs';
+import '@testing-library/cypress/add-commands';
 
 Cypress.Commands.add('insertCoverBlock', () => {
 	const text =
