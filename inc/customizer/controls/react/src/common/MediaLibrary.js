@@ -233,7 +233,7 @@ class MediaLibrary extends Component {
 	}
 
 	onCropped(croppedImage) {
-		const { onSelect} = this.props;
+		const { onSelect } = this.props;
 		const url = croppedImage.url,
 			attachmentId = croppedImage.attachment_id,
 			w = croppedImage.width,
