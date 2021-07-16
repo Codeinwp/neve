@@ -19,15 +19,15 @@ describe('Page meta box settings', function () {
 					},
 				});
 			});
+	});
+
+	beforeEach(function () {
 		cy.setCustomizeSettings({
 			neve_migrated_hfg_colors: true,
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
 			neve_new_skin: 'new',
 		});
-	});
-
-	beforeEach(function () {
 		cy.restoreLocalStorage();
 	});
 
