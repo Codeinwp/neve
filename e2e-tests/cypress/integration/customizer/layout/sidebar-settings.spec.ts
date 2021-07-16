@@ -27,6 +27,8 @@ describe('Sidebar/Content Settings', function () {
 		});
 		it('Index', function () {
 			cy.visit('/');
+			cy.wait(2000);
+			cy.reload();
 			cy.get('.nv-sidebar-wrap').should('have.css', 'max-width', '50%');
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
 			cy.get('.nv-index-posts').should('have.css', 'max-width', '50%');
@@ -61,6 +63,8 @@ describe('Sidebar/Content Settings', function () {
 		});
 		it('Index', function () {
 			cy.visit('/');
+			cy.wait(2000);
+			cy.reload();
 			cy.get('.nv-sidebar-wrap').should('have.css', 'max-width', '80%');
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
 			cy.get('.nv-index-posts').should('have.css', 'max-width', '20%');
