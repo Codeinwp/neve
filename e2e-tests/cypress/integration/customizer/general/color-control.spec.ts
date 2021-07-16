@@ -1,6 +1,4 @@
 describe('Color Control', function () {
-	const rgbColor = 'rgb(253, 143, 106)';
-
 	before('Setup Color Control - Customizer', function () {
 		cy.fixture('customizer/general/color-control-setup').then((colorSetup) => {
 			cy.setCustomizeSettings(colorSetup);
@@ -9,6 +7,6 @@ describe('Color Control', function () {
 
 	it('Test Color Control - Front End', function () {
 		cy.visit('/');
-		cy.get('.header-main-inner').should('have.css', 'color').and('eq', rgbColor);
+		cy.get('.header-main-inner').should('have.css', 'color', 'rgb(253, 143, 106)');
 	});
 });

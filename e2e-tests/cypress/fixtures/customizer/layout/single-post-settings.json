@@ -1,5 +1,5 @@
 {
-	"hidden": { "neve_layout_single_post_elements_order": "[]" },
+	"hidden": { "neve_layout_single_post_elements_order": "[]", "neve_new_skin": "new" },
 	"enabled": {
 		"neve_layout_single_post_elements_order": "[\"post-navigation\",\"tags\",\"content\",\"comments\",\"title-meta\",\"thumbnail\"]"
 	},
@@ -54,6 +54,7 @@
 		"neve_post_cover_overlay_opacity": "{\"mobile\":0.5,\"tablet\":0.5,\"desktop\":0.6}",
 		"neve_post_cover_hide_thumbnail": false,
 		"neve_post_cover_blend_mode": "normal",
-		"neve_post_cover_title_boxed_layout": false
+		"neve_post_cover_title_boxed_layout": false,
+		"neve_new_skin": "new"
 	}
 }
