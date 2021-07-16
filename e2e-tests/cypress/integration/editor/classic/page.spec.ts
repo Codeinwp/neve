@@ -95,6 +95,7 @@ describe('Page meta box settings', function () {
 			cy.get('#publish').contains('Update').click();
 
 			cy.visit(pageSetup.url);
+			cy.wait(500);
 			cy.reload();
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left').and('be.visible');
 			cy.get('.single-page-container').should('have.class', 'container-fluid').and('be.visible');
