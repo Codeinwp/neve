@@ -8,7 +8,7 @@ describe('Sidebar/Content Settings', function () {
 
 		it('Page', function () {
 			cy.visit('/sample-page');
-      cy.reload();
+			cy.reload();
 			cy.get('.nv-sidebar-wrap').should('have.css', 'max-width', '50%');
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
 			cy.get('.nv-single-page-wrap').should('have.css', 'max-width', '50%');
@@ -25,7 +25,7 @@ describe('Sidebar/Content Settings', function () {
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
 			cy.get('.nv-single-post-wrap').should('have.css', 'max-width', '50%');
 		});
-    it('Index', function () {
+		it('Index', function () {
 			cy.visit('/');
 			cy.get('.nv-sidebar-wrap').should('have.css', 'max-width', '50%');
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
@@ -42,7 +42,7 @@ describe('Sidebar/Content Settings', function () {
 
 		it('Page', function () {
 			cy.visit('/sample-page');
-      cy.reload()
+			cy.reload();
 			cy.get('.nv-sidebar-wrap').should('have.css', 'max-width', '30%');
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
 			cy.get('.nv-single-page-wrap').should('have.css', 'max-width', '70%');
@@ -59,7 +59,7 @@ describe('Sidebar/Content Settings', function () {
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-right');
 			cy.get('.nv-single-post-wrap').should('have.css', 'max-width', '70%');
 		});
-    it('Index', function () {
+		it('Index', function () {
 			cy.visit('/');
 			cy.get('.nv-sidebar-wrap').should('have.css', 'max-width', '80%');
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
