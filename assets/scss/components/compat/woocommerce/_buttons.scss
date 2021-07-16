@@ -1,5 +1,7 @@
-.ajax_add_to_cart.added {
-  display: none !important;
+.ajax_add_to_cart, .single_add_to_cart_button {
+  &.added {
+	display: none !important;
+  }
 }
 
 .woocommerce {
