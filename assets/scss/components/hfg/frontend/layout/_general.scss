@@ -87,7 +87,7 @@ $desktop: map-get($gl-devices-list, desktop);
   .row {
 	display: grid;
 	grid-template-columns: auto auto;
-	height: var(--height, auto);
+	min-height: var(--height, auto);
   }
 }
 
