@@ -19,14 +19,14 @@ $show_desc                = component_setting( Logo::SHOW_TAGLINE );
 $is_not_link              = component_setting( Logo::DISABLE_LINK, false );
 $display_order            = component_setting( Logo::DISPLAY, 'default' );
 $main_logo                = get_theme_mod( 'custom_logo' );
-$default_conditional_logo = wp_json_decode(
+$default_conditional_logo = \wp_json_encode(
 	array(
 		'light' => get_theme_mod( 'custom_logo' ),
 		'dark'  => get_theme_mod( 'custom_logo' ),
 		'same'  => true,
-	) 
+	)
 );
-$conditional_logo         = wp_json_decode( component_setting( Logo::COMPONENT_ID, $default_conditional_logo ), true );
+$conditional_logo         = json_decode( component_setting( Logo::COMPONENT_ID, $default_conditional_logo ), true );
 $main_logo                = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $main_logo;
 // var_dump( $main_logo );
 
