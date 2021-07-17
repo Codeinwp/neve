@@ -15,6 +15,7 @@ parameters:
         - tests/php/static-analysis-stubs/header-footer-elementor.php
         - tests/php/static-analysis-stubs/yoast-wordpress-seo.php
         - tests/php/static-analysis-stubs/rankmath.php
+        - tests/php/static-analysis-stubs/neve-pro.php
     dynamicConstantNames:
         - NEVE_DEBUG
     ignoreErrors:
