@@ -40,10 +40,10 @@ fi
 
 if ! wp core is-installed --allow-root; then
 	wp  --allow-root core install --url="$SITE_URL" --title=SandboxSite --admin_user=admin --admin_password=admin --admin_email=admin@admin.com
+	mkdir -p /var/www/html/wp-content/uploads
+	rm -rf /var/www/html/wp-content/plugins/akismet
 fi
 
-mkdir -p /var/www/html/wp-content/uploads
-rm -rf /var/www/html/wp-content/plugins/akismet
 
 WP_SITE_PATH=$(wp eval 'echo ABSPATH;' --allow-root);
 
