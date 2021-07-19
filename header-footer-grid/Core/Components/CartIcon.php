@@ -29,7 +29,6 @@ class CartIcon extends Abstract_Component {
 	const COLOR_ID        = 'color';
 	const HOVER_COLOR_ID  = 'hover_color';
 	const ICON_SELECTOR   = 'icon_selector';
-	const CART_TOTAL      = 'cart_total';
 	const CART_LABEL      = 'cart_label';
 	const CART_FOCUS      = 'cart_focus';
 	const MINI_CART_STYLE = 'mini_cart_style';
@@ -288,6 +287,11 @@ class CartIcon extends Abstract_Component {
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
 				Dynamic_Selector::META_SUFFIX  => 'px',
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SIZE_ID ),
+			],
+			'--labelSize'  => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::LABEL_SIZE_ID,
+				Dynamic_Selector::META_SUFFIX  => 'px',
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::LABEL_SIZE_ID ),
 			],
 			'--color'      => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,

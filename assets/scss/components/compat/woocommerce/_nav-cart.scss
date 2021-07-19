@@ -20,6 +20,10 @@ $cart-width: 360px;
 	}
   }
 
+  .cart-icon-label {
+	font-size: var(--labelSize);
+  }
+
   .cart-count {
 	background: var(--nv-light-bg);
 	color: var(--nv-text-color);
