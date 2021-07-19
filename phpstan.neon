@@ -18,6 +18,7 @@ parameters:
         - tests/php/static-analysis-stubs/neve-pro.php
         - tests/php/static-analysis-stubs/legacy-wp-core.php
         - tests/php/static-analysis-stubs/breadcrumb-navxt.php
+        - tests/php/static-analysis-stubs/seopress.php
     dynamicConstantNames:
         - NEVE_DEBUG
     ignoreErrors:
