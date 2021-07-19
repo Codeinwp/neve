@@ -77,8 +77,11 @@ $desktop: map-get($gl-devices-list, desktop);
 }
 
 [data-row-id] {
-  background-color: var(--bgColor);
   color: var(--color);
+
+  .header--row-inner {
+	background: var(--bgColor);
+  }
 
   a {
 	color: var(--color);
