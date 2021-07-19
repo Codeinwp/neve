@@ -8,7 +8,12 @@ describe('Single post meta sidebar', function () {
 	before('Create new post named "' + postSetup.title + '".', function () {
 		cy.createTagWithRequest('tag-test' + Math.random());
 		cy.getRandomAttachament().then(() => {
-			cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', parseInt(window.localStorage.getItem('randomAttachmentId')))
+			cy.insertPostWithRequest(
+				postSetup.title,
+				postSetup.content,
+				'posts',
+				parseInt(window.localStorage.getItem('randomAttachmentId')),
+			)
 				.then(() => {
 					postSetup.url = window.localStorage.getItem('postUrl');
 				})
@@ -24,7 +29,7 @@ describe('Single post meta sidebar', function () {
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
 			neve_new_skin: 'new',
-			neve_ran_migrations: true
+			neve_ran_migrations: true,
 		});
 
 		cy.saveLocalStorage();
