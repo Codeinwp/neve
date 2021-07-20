@@ -68,7 +68,7 @@ abstract class Page_Builder_Base {
 	/**
 	 * Set page layout.
 	 *
-	 * @param string $post_id the post id.
+	 * @param int $post_id the post id.
 	 */
 	private function set_page_template( $post_id ) {
 		global $post;
