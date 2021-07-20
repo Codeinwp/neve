@@ -41,7 +41,7 @@
 		"cypress:open": "cypress open",
 		"cypress:storybook:open": "cypress open --config-file cypress.storybook.json",
 		"cypress:run": "cypress run",
-		"cypress:storybook:run": "wait-on http://localhost:6006 && cypress run --config-file cypress.storybook.json --record",
+		"cypress:storybook:run": "wait-on http://localhost:6006 && cypress run --config-file cypress.storybook.json",
 		"visual:test": "percy exec -- cypress run --config baseUrl=https://qa-neve.themeisle.com,video=false --spec 'cypress/integration/visual-regression/**/*.spec.js' --headless"
 	}
 }

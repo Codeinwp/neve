@@ -26,7 +26,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Build Cypress
         working-directory: ./e2e-tests
-        run: yarn install
+        run:  yarn install --frozen-lockfile
       - name: Install and Build 🔧
         run: |
           yarn install --frozen-lockfile
@@ -35,5 +35,4 @@ jobs:
       - name: E2E Tests 🚀
         working-directory: ./e2e-tests
         run: |
-          yarn install --frozen-lockfile
-          yarn run cypress:storybook:run --key=${{ secrets.CYPRESS_RECORD_KEY }}
+          yarn run cypress:storybook:run --record --key=${{ secrets.CYPRESS_RECORD_KEY }}
