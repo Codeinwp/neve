@@ -22,6 +22,7 @@ parameters:
         - tests/php/static-analysis-stubs/pwa.php
         - tests/php/static-analysis-stubs/web-stories-wp.php
         - tests/php/static-analysis-stubs/lifter-lms.php
+        - tests/php/static-analysis-stubs/bb-header-footer.php
     dynamicConstantNames:
         - NEVE_DEBUG
     ignoreErrors:
