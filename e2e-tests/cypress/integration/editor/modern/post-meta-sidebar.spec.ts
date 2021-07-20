@@ -7,7 +7,7 @@ describe('Single post meta sidebar', function () {
 
 	before('Create new post named "' + postSetup.title + '".', function () {
 		cy.createTagWithRequest('tag-test' + Math.random());
-		cy.getRandomAttachament().then(() => {
+		cy.getRandomAttachment().then(() => {
 			cy.insertPostWithRequest(
 				postSetup.title,
 				postSetup.content,
