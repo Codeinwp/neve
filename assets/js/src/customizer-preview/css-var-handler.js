@@ -192,12 +192,19 @@ export class CSSVariablesHandler {
 	}
 
 	getStringVarCSS() {
-		const { selector, vars, value, suffix, fallback } = this;
+		const {
+			selector,
+			vars,
+			value,
+			suffix,
+			fallback,
+			validateSuffix,
+		} = this;
 		if (typeof selector)
 			if (!value) {
 				return `${selector} {${vars}:${fallback};}`;
 			}
-		return `${selector} {${vars}:${value}${suffix};}`;
+		return `${selector} {${vars}:${value}${validateSuffix(suffix)};}`;
 	}
 
 	getComposedVarCSS() {
@@ -265,7 +272,7 @@ export class CSSVariablesHandler {
 
 	parseDirectionalValue(value, suffix) {
 		if (typeof value !== 'object') {
-			return value + suffix;
+			return value + this.validateSuffix(suffix);
 		}
 
 		if (!this.isDirectionalValue(value)) {
@@ -277,7 +284,9 @@ export class CSSVariablesHandler {
 			if (value[direction] !== 0 && !value[direction]) {
 				directionalValue += this.fallback ? `${this.fallback} ` : '0 ';
 			} else {
-				directionalValue += `${value[direction]}${suffix} `;
+				directionalValue += `${value[direction]}${this.validateSuffix(
+					suffix
+				)} `;
 			}
 		});
 
@@ -295,14 +304,6 @@ export class CSSVariablesHandler {
 		);
 	}
 
-	getSuffix() {
-		if (this.suffix) {
-			return this.suffix;
-		}
-
-		return '';
-	}
-
 	maybeParseJson(input) {
 		if (typeof input !== 'string') {
 			return input;
@@ -313,6 +314,15 @@ export class CSSVariablesHandler {
 			return input;
 		}
 		return JSON.parse(input);
+	}
+
+	validateSuffix(val) {
+		const valid = ['px', 'em', '%', 'vh', 'vw'];
+		if (!valid.includes(val)) {
+			return '';
+		}
+
+		return val;
 	}
 }
 
