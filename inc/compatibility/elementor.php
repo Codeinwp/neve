@@ -238,7 +238,7 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Check if it page was edited with page builder.
 	 *
-	 * @param string $pid post id.
+	 * @param int $pid post id.
 	 *
 	 * @return bool
 	 */

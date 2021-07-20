@@ -22,7 +22,7 @@ abstract class Page_Builder_Base {
 	/**
 	 * Decide if a page is edited with a page builder or not.
 	 *
-	 * @param string $pid Post id.
+	 * @param int $pid Post id.
 	 *
 	 * @return bool
 	 */
