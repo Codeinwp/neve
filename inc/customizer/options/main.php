@@ -133,7 +133,7 @@ class Main extends Base_Customizer {
 		}
 
 		// If the pro version is incompatible. We don't show the switch.
-		if ( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '3.0.0', '<' ) ) {
+		if ( defined( 'NEVE_PRO_COMPATIBILITY_FEATURES' ) && isset( NEVE_PRO_COMPATIBILITY_FEATURES['skinv2'] ) ) {
 			return;
 		}
 
