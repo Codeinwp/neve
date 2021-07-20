@@ -21,6 +21,7 @@ parameters:
         - tests/php/static-analysis-stubs/seopress.php
         - tests/php/static-analysis-stubs/pwa.php
         - tests/php/static-analysis-stubs/web-stories-wp.php
+        - tests/php/static-analysis-stubs/lifter-lms.php
     dynamicConstantNames:
         - NEVE_DEBUG
     ignoreErrors:
