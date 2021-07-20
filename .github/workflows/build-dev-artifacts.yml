@@ -2,7 +2,7 @@ name: Build and test
 
 on:
   pull_request:
-    types: [opened, synchronize, ready_for_review]
+    types: [ opened, synchronize, ready_for_review ]
     branches-ignore:
       - "update_dependencies"
 jobs:
@@ -44,6 +44,9 @@ jobs:
         run: composer install --no-dev --prefer-dist --no-progress --no-suggest
       - name: Install yarn deps
         run: yarn install --frozen-lockfile
+      - name: Install Cypress yarn
+        working-directory: ./e2e-tests
+        run: yarn install --frozen-lockfile
       - name: Build files
         run: yarn run build
       - name: Create zip
@@ -64,6 +67,16 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE_DIR: artifact/
           DEST_DIR: ${{ github.event.pull_request.base.repo.name }}-${{ steps.retrieve-branch-name.outputs.branch_name }}-${{ steps.retrieve-git-sha-8.outputs.sha8 }}/
+      - name: Upload Branch to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_DEV_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SOURCE_DIR: artifact/
+          DEST_DIR: ${{ github.event.pull_request.base.repo.name }}-${{ steps.retrieve-branch-name.outputs.branch_name }}/
 
   comment-on-pr:
     name: Comment on PR with links to plugin ZIPs
@@ -113,7 +126,6 @@ jobs:
   e2e:
     name: E2E for ${{ matrix.specs }} on ${{ matrix.envs }}
     needs: dev-zip
-    if: "! contains(github.event.head_commit.message, '[skip e2e]')"
     strategy:
       fail-fast: false
       matrix:
@@ -176,6 +188,16 @@ jobs:
       ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        id: yarn-and-build-cache
+        with:
+          path: |
+            ~/.cache/Cypress
+            node_modules
+            ./e2e-tests/node_modules
+          key: ${{ runner.os }}-node_modules-build-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-build-
       - name: Install ${{ matrix.envs }} env for ${{ matrix.specs }} specs
         run: bash ./bin/envs/init.sh ${{ matrix.envs }} latest no "$ZIP_URL"
       - name: Run ${{ matrix.specs }} Cypress tests
@@ -189,6 +211,7 @@ jobs:
           working-directory: ./e2e-tests
           env: host=localhost,port=8080
           browser: chrome
+          install: ${{ ! steps.yarn-and-build-cache.outputs.cache-hit }}
           headless: true
           parallel: true
           group: e2e-${{ matrix.specs }}
