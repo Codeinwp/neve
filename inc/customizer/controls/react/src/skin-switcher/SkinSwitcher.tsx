@@ -49,7 +49,7 @@ const SkinSwitcher: React.FC<Props> = ({ control }) => {
 		setVal(control, value).then(() => {
 			window.wp.customize.previewer
 				.save()
-				.then((res: Record<string, unknown>) => {
+				.then(() => {
 					window.wp.customize.notifications.add(
 						new window.wp.customize.OverlayNotification(
 							'neve_switching_skin',
