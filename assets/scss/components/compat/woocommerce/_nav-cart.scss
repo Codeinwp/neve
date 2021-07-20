@@ -41,6 +41,8 @@ $cart-width: 360px;
 // Hide minicart on mobile
 .nv-nav-cart {
   display: none;
+  opacity: 0;
+  visibility: hidden;
 }
 
 //Menu mini cart positioning
@@ -55,6 +57,7 @@ $cart-width: 360px;
 .nv-nav-cart {
   background: var(--nv-site-bg);
   color: var(--nv-text-color);
+  transition: all .3s;
   box-shadow: $soft-box-shadow;
   position: absolute;
   z-index: 100;
@@ -161,10 +164,15 @@ $cart-width: 360px;
 }
 
 @mixin nav-cart--laptop() {
+  .nv-nav-cart {
+	display: block;
+  }
+
   .menu-item-nav-cart {
 	&:hover, &:focus-within {
 	  .nv-nav-cart {
-		display: block;
+		opacity: 1;
+		visibility: visible;
 	  }
 	}
   }
