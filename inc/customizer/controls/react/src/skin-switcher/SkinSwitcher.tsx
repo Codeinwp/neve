@@ -47,21 +47,19 @@ const SkinSwitcher: React.FC<Props> = ({ control }) => {
 		setSwitching(true);
 
 		setVal(control, value).then(() => {
-			window.wp.customize.previewer
-				.save()
-				.then(() => {
-					window.wp.customize.notifications.add(
-						new window.wp.customize.OverlayNotification(
-							'neve_switching_skin',
-							{
-								message: __('Switching skin', 'neve') + '...',
-								type: 'success',
-								loading: true,
-							}
-						)
-					);
-					window.location.reload();
-				});
+			window.wp.customize.previewer.save().then(() => {
+				window.wp.customize.notifications.add(
+					new window.wp.customize.OverlayNotification(
+						'neve_switching_skin',
+						{
+							message: __('Switching skin', 'neve') + '...',
+							type: 'success',
+							loading: true,
+						}
+					)
+				);
+				window.location.reload();
+			});
 		});
 	};
 
