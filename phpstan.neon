@@ -20,6 +20,7 @@ parameters:
         - tests/php/static-analysis-stubs/breadcrumb-navxt.php
         - tests/php/static-analysis-stubs/seopress.php
         - tests/php/static-analysis-stubs/pwa.php
+        - tests/php/static-analysis-stubs/web-stories-wp.php
     dynamicConstantNames:
         - NEVE_DEBUG
     ignoreErrors:
