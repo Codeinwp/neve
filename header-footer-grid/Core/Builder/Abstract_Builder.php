@@ -404,7 +404,13 @@ abstract class Abstract_Builder implements Builder {
 				'label'                 => __( 'Row Background', 'neve' ),
 				'type'                  => 'neve_background_control',
 				'live_refresh_selector' => $row_id === 'sidebar' ? $row_class . ' .header-menu-sidebar-bg' : $row_class,
-				'live_refresh_css_prop' => [ 'partial' => $row_id === 'sidebar' ? 'hfg_header_layout_partial' : $row_setting_id . '_partial' ],
+				'live_refresh_css_prop' => [
+					'cssVar'  => [
+						'vars'     => 'backgroundControl',
+						'selector' => $row_id === 'sidebar' ? '.header-menu-sidebar-bg' : '.' . $this->get_id() . '-' . $row_id,
+					],
+					'partial' => $row_id === 'sidebar' ? 'hfg_header_layout_partial' : $row_setting_id . '_partial',
+				],
 				'options'               => [
 					'priority' => 100,
 				],
@@ -758,7 +764,14 @@ abstract class Abstract_Builder implements Builder {
 						continue;
 					}
 					// Legacy
-					$components = array_merge( $components, array_combine( wp_list_pluck( $row, 'id' ), array_fill( 0, count( $row ), true ) ) );
+					$row_components = [];
+					foreach ( $row as $component ) {
+						if ( isset( $component['id'] ) ) {
+							$row_components[ $component['id'] ] = true;
+						}
+					}
+
+					$components = array_merge( $components, $row_components );
 				}
 			}
 			$this->active_components = $components;

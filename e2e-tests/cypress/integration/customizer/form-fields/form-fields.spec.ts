@@ -35,7 +35,7 @@ describe('Form fields', function () {
 	});
 	it('Checks up the comment label', function () {
 		cy.visit('/hello-world');
-		cy.get('label')
+		cy.get('.comment-form-comment label')
 			.should('have.css', 'font-size', '15px')
 			.and('have.css', 'line-height', '24px')
 			.and('have.css', 'letter-spacing', '1.5px')

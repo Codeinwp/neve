@@ -1,5 +1,9 @@
 import './style.css'
-import 'cypress-storybook/react';
+try {
+	require ('../e2e-tests/node_modules/cypress-storybook/react');
+} catch (ex) {
+	console.log(ex);
+}
 import '@wordpress/components/build-style/style.css'
 import '@icon/dashicons/dashicons.css'
 import {FONTS} from '../stories/utils/values'

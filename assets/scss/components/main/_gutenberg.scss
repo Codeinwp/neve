@@ -79,6 +79,10 @@
 // === Quotes === //
 blockquote {
   margin: $spacing-xl 0;
+  border-color: var(--nv-text-color);
+  border-style: solid;
+  border-width: 0 0 0 4px;
+  padding: 0 0 0 $spacing-md;
 
   p {
 	margin-bottom: $spacing-xs;
@@ -89,14 +93,14 @@ blockquote {
 	font-size: $text-sm !important;
   }
 
-  &.has-text-align-left {
-	border-left: $base-border-strong;
-	padding-left: $spacing-md;
+  &.has-text-align-center {
+	border: 0;
+	padding: 0;
   }
 
   &.has-text-align-right {
-	border-right: $base-border-strong;
-	padding-right: $spacing-md;
+	border-width: 0 4px 0 0;
+	padding: 0 $spacing-md 0 0;
   }
 
   &.is-style-large {

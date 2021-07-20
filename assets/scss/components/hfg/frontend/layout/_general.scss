@@ -77,8 +77,8 @@ $desktop: map-get($gl-devices-list, desktop);
 }
 
 [data-row-id] {
-  background-color: var(--bgColor);
   color: var(--color);
+  background: var(--bgColor);
 
   a {
 	color: var(--color);
@@ -87,7 +87,7 @@ $desktop: map-get($gl-devices-list, desktop);
   .row {
 	display: grid;
 	grid-template-columns: auto auto;
-	height: var(--height, auto);
+	min-height: var(--height, auto);
   }
 }
 

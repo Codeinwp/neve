@@ -213,6 +213,10 @@
 
   .order-total {
 	font-size: var(--bodyFontSize);
+
+	th {
+	  font-weight: 700 !important;
+	}
   }
 
   #shipping_method {

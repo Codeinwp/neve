@@ -1,6 +1,8 @@
 {
 	"neve_ran_builder_migration": true,
 	"neve_migrated_builders": true,
+	"neve_ran_migrations": true,
+	"neve_had_old_skin": true,
 	"neve_migrated_hfg_colors": true,
 	"nav_menu_locations": {
 		"primary": 176
