@@ -4096,9 +4096,9 @@ cypress-localstorage-commands@^1.4.1:
   integrity sha512-rO8/hWu04o9w+gv8l70ew8QWBy3bGUiablQQzm4l3bWkGBVa4+kWXTuokrq6AZdO1/xv4rs4OBjN7sKDRl1JhQ==
 
 cypress-nv-commands@^1.0.20:
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/cypress-nv-commands/-/cypress-nv-commands-1.0.22.tgz#0da9ba45bd21f2f38b108ed6c6f81ce97f086186"
-  integrity sha512-61yiKWTDg5wHVCmLQmxw7xmRqwexBAudhUNd39TJzDZWCeiShlEjtBpNK1Lw8HV408f0CynxufL8+YBXawIS3Q==
+  version "1.0.23"
+  resolved "https://registry.yarnpkg.com/cypress-nv-commands/-/cypress-nv-commands-1.0.23.tgz#aaad43370dfa82d067198e8995ba44cfe1055f56"
+  integrity sha512-qfj1WKiEKccnfDGQo2m/2R7aCz+Rkn0V69A7l+LlQZDe7QwOmKLmY9nVFOJWYirf4fOKvgNyUn5hs8AlclSMmg==
 
 cypress-storybook@^0.5.1:
   version "0.5.1"
