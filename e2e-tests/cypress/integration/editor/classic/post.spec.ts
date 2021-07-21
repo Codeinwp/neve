@@ -5,7 +5,7 @@ describe('Posts meta box default settings', function () {
 		url: '/',
 	};
 	before('Create new post named "' + postSetup.title + '".', function () {
-		cy.getRandomAttachament().then(() => {
+		cy.getRandomAttachment().then(() => {
 			cy.insertPostWithRequest(
 				postSetup.title,
 				postSetup.content,
