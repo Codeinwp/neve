@@ -112,7 +112,6 @@ describe('Single page sidebar', function () {
 
 		cy.openNeveSidebar();
 
-
 		cy.get('.neve_meta_content_width').find('input[type=number]').type('{selectall}').type('60');
 		cy.updatePost();
 		cy.visit(pageSetup.url);
