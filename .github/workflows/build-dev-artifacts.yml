@@ -195,7 +195,7 @@ jobs:
           key: ${{ runner.os }}-yarn-e2e-${{ hashFiles('./e2e-tests/yarn.lock') }}
       - name: Install Cypress yarn
         working-directory: ./e2e-tests
-        run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile --prefer-offline
       - name: Install ${{ matrix.envs }} env for ${{ matrix.specs }} specs
         run: bash ./bin/envs/init.sh ${{ matrix.envs }} latest no "$ZIP_URL"
       - name: Run ${{ matrix.specs }} Cypress tests
