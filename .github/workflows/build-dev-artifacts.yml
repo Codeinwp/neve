@@ -150,14 +150,8 @@ jobs:
           - machines: 1
             specs: "editor/classic"
             envs: "classic-editor"
-          - machines: 2
-            specs: "editor/classic"
-            envs: "classic-editor"
           ## 2 machines for modern editor (Gutenberg)
           - machines: 1
-            specs: "editor/modern"
-            envs: "default"
-          - machines: 2
             specs: "editor/modern"
             envs: "default"
           ## 6 machines for customizer tests
