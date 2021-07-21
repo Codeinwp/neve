@@ -8,7 +8,7 @@ import { useState, useEffect } from '@wordpress/element';
 
 const ResponsiveToggleComponent = ({ control }) => {
 	useEffect(() => {
-		global.addEventListener('neve-changed-customizer-value', (e) => {
+		document.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) {
 				return false;
 			}
@@ -37,6 +37,7 @@ const ResponsiveToggleComponent = ({ control }) => {
 			/>
 			<ResponsiveControl
 				excluded={control.params.excluded || []}
+				hideResponsive={control.params.hideResponsive || false}
 				onChange={(nextDevice) => {
 					setDevice(nextDevice);
 				}}

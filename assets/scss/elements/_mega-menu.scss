@@ -157,7 +157,7 @@
 @mixin mega-menu--laptop() {
 	.header--row .nv-nav-wrap .primary-menu-ul {
 		> .neve-mega-menu {
-			position: static;
+			position: relative;
 		}
 
 		.neve-mega-menu > .sub-menu {
@@ -192,8 +192,8 @@
 		.neve-mega-menu .neve-mm-col > .sub-menu {
 			visibility: visible;
 			position: relative;
-			left: initial;
-			right: initial;
+			left: initial !important;
+			right: initial !important;
 			opacity: 1;
 			box-shadow: none;
 			display: flex;

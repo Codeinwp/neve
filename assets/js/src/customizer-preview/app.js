@@ -1,6 +1,7 @@
 /* global neveCustomizePreview, _,jQuery */
 import { initNavigation, repositionDropdowns } from '../frontend/navigation';
 import { removeClass, addClass } from '../utils.js';
+import { CSSVariablesHandler, addCSS, addTemplateCSS } from './css-var-handler';
 
 function handleResponsiveRadioButtons(args, nextValue) {
 	if (!args.additional) return false;
@@ -20,84 +21,6 @@ function handleResponsiveRadioButtons(args, nextValue) {
 	});
 }
 
-function addCss(id, content = '') {
-	let style = document.querySelector('#' + id + '-css-style');
-	if (!style) {
-		style = document.createElement('style');
-		style.setAttribute('id', id + '-css-style');
-		style.setAttribute('type', 'text/css');
-		document.querySelector('head').appendChild(style);
-	}
-	style.innerHTML = content;
-}
-
-function addStyle(settingType, id, newValue, args) {
-	const map = {
-		mobile: 'max-width: 576px',
-		tablet: 'min-width: 576px',
-		desktop: 'min-width: 960px',
-	};
-
-	let style = '';
-	if (args.directional) {
-		if (args.responsive) {
-			for (const device in map) {
-				let deviceStyle = args.template;
-				const suffix = newValue[device + '-unit'];
-				_.each(newValue[device], function (value, direction) {
-					const directionRegex = new RegExp(
-						`{{value.${direction}}}`,
-						'g'
-					);
-					deviceStyle = deviceStyle.replace(
-						directionRegex,
-						value + suffix
-					);
-				});
-				style += `@media (${map[device]}) {${deviceStyle}}`;
-			}
-		} else {
-			const directions = ['top', 'right', 'bottom', 'left'];
-			style = args.template;
-			_.each(directions, function (dir) {
-				const directionRegex = new RegExp(`{{value.${dir}}}`, 'g');
-				style = style.replace(
-					directionRegex,
-					newValue[dir] + newValue.unit
-				);
-			});
-		}
-		addCss(id, style);
-		return false;
-	}
-
-	const regex = new RegExp('{{value}}', 'g');
-	if (args.responsive) {
-		const template = args.template;
-		const value = JSON.parse(newValue);
-		for (const device in map) {
-			const suffix = value[device + '-unit'] || '';
-			if (value[device] === 0 || value[device] === '0') {
-				style += `@media (${map[device]}) {${template.replace(
-					regex,
-					'0'
-				)}${suffix}}`;
-			} else {
-				style += `@media (${map[device]}) {${template.replace(
-					regex,
-					value[device] || 'inherit'
-				)}${suffix}}`;
-			}
-		}
-	} else if (newValue === 0 || newValue === '0') {
-		style += args.template.replace(regex, '0');
-	} else {
-		const value = newValue || args.fallback || 'inherit';
-		style += args.template.replace(regex, value.toString());
-	}
-	addCss(id, style);
-}
-
 /**
  * Run JS on load.
  */
@@ -109,6 +32,7 @@ window.addEventListener('load', function () {
 		if (e.detail.partial_id === 'hfg_header_layout_partial') {
 			window.HFG.init();
 			window.HFG.initSearch();
+			repositionDropdowns();
 			return false;
 		}
 		if (e.detail.partial_id === 'primary-menu_partial') {
@@ -144,17 +68,34 @@ window.addEventListener('load', function () {
 		desktop: 'min-width: 961px',
 	};
 
+	const varsHandler = new CSSVariablesHandler();
+
 	_.each(neveCustomizePreview, function (settings, settingType) {
 		_.each(settings, function (args, settingId) {
 			wp.customize(settingId, function (setting) {
 				setting.bind(function (newValue) {
-					// Handles new template selective refresh.
+					if (
+						neveCustomizePreview.newSkin &&
+						args.additional &&
+						args.additional.cssVar
+					) {
+						varsHandler.run(
+							settingId,
+							settingType,
+							newValue,
+							args.additional.cssVar
+						);
+						return false;
+					}
 					if (args.additional && args.additional.template) {
-						addStyle(
+						// Handles new template selective refresh.
+						addTemplateCSS(
 							settingType,
 							settingId,
 							newValue,
-							args.additional
+							args.additional,
+							args.responsive || false,
+							args.directional || false
 						);
 						return false;
 					}
@@ -176,7 +117,7 @@ window.addEventListener('load', function () {
                   ${i.prop}: ${newValue} !important;
                 }`;
 							});
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case 'neve_background_control':
 							if (newValue.type === 'color') {
@@ -196,7 +137,7 @@ window.addEventListener('load', function () {
 								style += `${args.selector}:before{ content: none !important;}`;
 								style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu {background-color: ${color}!important;}`;
 								style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
-								addCss(settingId, style);
+								addCSS(settingId, style);
 								return false;
 							}
 							if (
@@ -232,7 +173,9 @@ window.addEventListener('load', function () {
 									.querySelector('.header-menu-sidebar')
 									.classList.contains('dropdown')
 							) {
-								style += 'position: absolute;';
+								style += neveCustomizePreview.newBuilder
+									? ''
+									: 'position: absolute;';
 							}
 							style +=
 								'top: 0; bottom: 0; width: 100%; content:"";';
@@ -256,14 +199,13 @@ window.addEventListener('load', function () {
 							style +=
 								args.selector +
 								'{ background-color: transparent !important; }';
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Responsive_Radio_Buttons':
 							handleResponsiveRadioButtons(args, newValue);
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Radio_Buttons':
 							if (!args.additional) return false;
-
 							const classes =
 								'hfg-item-v-top hfg-item-v-middle hfg-item-v-bottom';
 							const newClass = 'hfg-item-v-' + newValue;
@@ -272,8 +214,11 @@ window.addEventListener('load', function () {
 								args.selector
 							);
 							_.each(itemInner, function (item) {
-								removeClass(item.parentNode, classes);
-								addClass(item.parentNode, newClass);
+								const node = neveCustomizePreview.newBuilder
+									? item.parentNode.parentNode
+									: item.parentNode;
+								removeClass(node, classes);
+								addClass(node, newClass);
 							});
 							break;
 						case '\\Neve\\Customizer\\Controls\\Radio_Image':
@@ -335,7 +280,7 @@ window.addEventListener('load', function () {
 									args.additional.prop +
 									':unset;}}';
 							}
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Spacing':
 							for (const device in deviceMap) {
@@ -385,7 +330,7 @@ window.addEventListener('load', function () {
 								}
 								style += '}}';
 							}
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Typography':
 							style += `html ${args.selector}{`;
@@ -456,7 +401,7 @@ window.addEventListener('load', function () {
 								}
 								style += `}}`;
 							}
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Button_Appearance':
 							const bgColor = newValue.background || 'unset';
@@ -519,7 +464,7 @@ window.addEventListener('load', function () {
 										background-color: ${txtColor};
 										color: ${txtColor};
 									}`;
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case 'text':
 							const textContainer = document.querySelector(
@@ -551,14 +496,14 @@ window.addEventListener('load', function () {
 											width: ${newValue}px;
 											height: ${newValue}px;
 										}`;
-								addCss(settingId, style);
+								addCSS(settingId, style);
 								return false;
 							}
 
 							style += `html ${args.selector} {
 											${args.additional.type}: ${newValue}px;
 										}`;
-							addCss(settingId, style);
+							addCSS(settingId, style);
 
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Color':
@@ -567,7 +512,7 @@ window.addEventListener('load', function () {
 							style += `html ${args.selector} {
 										${args.additional.prop}: ${colorValue};
 									}`;
-							addCss(settingId, style);
+							addCSS(settingId, style);
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Font_Family':
 							break;
@@ -597,10 +542,45 @@ window.addEventListener('load', function () {
 			});
 		});
 	});
+
 	wp.customize.preview.bind('font-selection', function (data) {
-		let selector = neveCustomizePreview[data.type][data.controlId].selector;
+		const controlData = neveCustomizePreview[data.type][data.controlId];
+
+		let selector = controlData.selector;
+
 		const source = data.source;
 		const id = data.controlId + '_font_family';
+
+		if (source.toLowerCase() === 'google') {
+			const linkNode = document.querySelector('#' + id),
+				fontValue = data.value.replace(' ', '+'),
+				url =
+					'//fonts.googleapis.com/css?family=' +
+					fontValue +
+					'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&display=swap"';
+			if (linkNode !== null) {
+				linkNode.setAttribute('href', url);
+			} else {
+				const newNode = document.createElement('link');
+				newNode.setAttribute('rel', 'stylesheet');
+				newNode.setAttribute('id', id);
+				newNode.setAttribute('href', url);
+				newNode.setAttribute('type', 'text/css');
+				newNode.setAttribute('media', 'all');
+				document.querySelector('head').appendChild(newNode);
+			}
+		}
+
+		const { additional = false } = controlData;
+
+		if (
+			additional !== false &&
+			additional.cssVar !== undefined &&
+			neveCustomizePreview.newSkin
+		) {
+			return false;
+		}
+
 		const defaultFontface = data.inherit
 			? 'inherit'
 			: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
@@ -613,36 +593,18 @@ window.addEventListener('load', function () {
 			})
 			.join(',');
 		if (data.value === false) {
-			addCss(
+			addCSS(
 				data.controlId,
 				selector + '{font-family: ' + defaultFontface + ';}'
 			);
 		} else {
-			addCss(
+			addCSS(
 				data.controlId,
 				selector + '{font-family: ' + data.value + ' ;}'
 			);
 		}
-		if (source.toLowerCase() === 'google') {
-			const linkNode = document.querySelector('#' + id),
-				fontValue = data.value.replace(' ', '+'),
-				url =
-					'//fonts.googleapis.com/css?family=' +
-					fontValue +
-					'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&display=swap"';
-			if (linkNode !== null) {
-				linkNode.setAttribute('href', url);
-				return false;
-			}
-			const newNode = document.createElement('link');
-			newNode.setAttribute('rel', 'stylesheet');
-			newNode.setAttribute('id', id);
-			newNode.setAttribute('href', url);
-			newNode.setAttribute('type', 'text/css');
-			newNode.setAttribute('media', 'all');
-			document.querySelector('head').appendChild(newNode);
-		}
 	});
+
 	wp.customize('background_image', function (value) {
 		value.bind(function (newval) {
 			if (!newval) {
@@ -786,9 +748,9 @@ jQuery.neveRangesPreview.init();
 			},
 			neve_other_pages_content_width: {
 				content:
-					'body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col',
+					'body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col, body.post-type-archive-course .neve-main > .container .col, body.post-type-archive-llms_membership .neve-main > .container .col',
 				sidebar:
-					'body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap',
+					'body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap, body.post-type-archive-course .nv-sidebar-wrap, body.post-type-archive-llms_membership .nv-sidebar-wrap',
 			},
 		},
 		contentWidthsPreview() {
@@ -799,7 +761,7 @@ jQuery.neveRangesPreview.init();
 							${args.content} { max-width: ${newval}% !important; }
 							${args.sidebar} { max-width: ${100 - newval}% !important; }
 						}`;
-						addCss(id + '-css', style);
+						addCSS(id + '-css', style);
 					});
 				});
 			});

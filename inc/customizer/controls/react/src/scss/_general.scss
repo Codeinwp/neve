@@ -32,7 +32,6 @@
 	width: 30px;
 	height: 30px;
 	padding: 5px 0 5px 5px;
-
 	&:hover {
 	  box-shadow: none !important;
 
@@ -41,8 +40,8 @@
 	  }
 	}
 
-	svg {
-	  margin: 0 !important;
+	.dashicon, svg {
+	  margin: 0 auto !important;
 	  width: 17px;
 	  fill: $icon-fill;
 	}

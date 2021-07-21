@@ -60,10 +60,10 @@ class Layout_Container extends Base_Customizer {
 					'default'           => '{ "mobile": 748, "tablet": 992, "desktop": 1170 }',
 				],
 				[
-					'label'       => esc_html__( 'Container width', 'neve' ),
-					'section'     => 'neve_container',
-					'type'        => 'neve_responsive_range_control',
-					'input_attrs' => [
+					'label'                 => esc_html__( 'Container width', 'neve' ),
+					'section'               => 'neve_container',
+					'type'                  => 'neve_responsive_range_control',
+					'input_attrs'           => [
 						'min'        => 200,
 						'max'        => 2000,
 						'units'      => [ 'px' ],
@@ -73,7 +73,15 @@ class Layout_Container extends Base_Customizer {
 							'desktop' => 1170,
 						],
 					],
-					'priority'    => 25,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'       => '--container',
+							'responsive' => true,
+							'suffix'     => 'px',
+						],
+					],
+					'priority'              => 25,
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)
@@ -120,7 +128,7 @@ class Layout_Container extends Base_Customizer {
 				new Control(
 					$control_id,
 					array(
-						'sanitize_callback' => array( $this, 'sanitize_container_layout' ),
+						'sanitize_callback' => 'neve_sanitize_container_layout',
 						'transport'         => $this->selective_refresh,
 						'default'           => 'contained',
 					),
@@ -137,21 +145,5 @@ class Layout_Container extends Base_Customizer {
 				)
 			);
 		}
-	}
-
-	/**
-	 * Sanitize the container layout value
-	 *
-	 * @param string $value value from the control.
-	 *
-	 * @return bool
-	 */
-	public function sanitize_container_layout( $value ) {
-		$allowed_values = array( 'contained', 'full-width' );
-		if ( ! in_array( $value, $allowed_values, true ) ) {
-			return 'contained';
-		}
-
-		return esc_html( $value );
 	}
 }

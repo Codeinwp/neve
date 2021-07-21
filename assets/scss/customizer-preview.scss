@@ -1,4 +1,17 @@
 /* Customize Preview */
+.edit-row-action {
+  top: 0;
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  right: 0;
+  background: #0073aa;
+  fill: #FFFFFF;
+  font-size: 0;
+  display: none;
+  cursor: pointer;
+}
+
 .customize-previewing {
   overflow-x: hidden;
 
@@ -13,8 +26,6 @@
   }
 
   .has-nav .builder-item-focus.item--inner {
-	position: unset;
-
 	.item--preview-name {
 	  top: unset;
 	}
@@ -25,6 +36,7 @@
       position: relative;
 
       &.has_menu {
+		position: unset;
         .item--preview-name {
           left: auto;
         }
@@ -32,13 +44,12 @@
     }
 
     .item--preview-name {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
       position: absolute;
       top: 100%;
       left: 0;
       background: #0073aa;
-      color: #fff;
-      padding: 5px !important;
+      color: #fff !important;
+	  padding: 5px !important;
       font-size: 12px !important;
       font-weight: 600 !important;
       line-height: 14px !important;
@@ -46,18 +57,6 @@
       cursor: pointer;
       border-radius: 0;
       display: none;
-    }
-
-    .edit-row-action {
-      top: 0;
-      width: 26px;
-      position: absolute;
-      right: 0;
-      background: #0073aa;
-      fill: #FFFFFE;
-      font-size: 0;
-      display: none;
-      cursor: pointer;
     }
 
     &:hover {
@@ -89,8 +88,16 @@
       &:hover {
         &.item--inner {
           position: relative;
-          outline: 1px dashed #ff472e;
-          outline-offset: -1px;
+
+		  .item--preview-name {
+			top: unset;
+			bottom: 0;
+			left:0 !important;
+
+			.dashicons {
+			  color: #fff !important;
+			}
+		  }
         }
       }
     }

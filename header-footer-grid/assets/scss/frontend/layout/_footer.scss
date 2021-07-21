@@ -26,21 +26,7 @@
   }
 }
 
-
-// Footer Main
-.footer-main {
-  .footer--row-inner {
-    padding-top: 2.5em;
-    padding-bottom: 2.5em;
-  }
-}
-
 .footer--row {
-  &.layout-fullwidth {
-    .hfg-container {
-      max-width: initial;
-    }
-  }
   .builder-item--group {
     justify-content: flex-start;
     .item--inner {

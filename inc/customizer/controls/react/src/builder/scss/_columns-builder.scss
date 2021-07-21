@@ -1,0 +1,71 @@
+.neve-builder.columns-builder {
+  .row {
+	.slots-wrap {
+	  width: 100%;
+
+	  .droppable-wrap {
+		box-sizing: border-box;
+
+		&.hide {
+		  display: none;
+		}
+
+		&.last .droppable {
+		  border: none;
+		}
+
+		.droppable {
+		  justify-content: center;
+		  flex-direction: column;
+		  height: 100%;
+		  box-sizing: border-box;
+		  align-items: center;
+		  padding: 2px 4px;
+
+		  .builder-item {
+			margin: 2px 2px;
+			width: 100%;
+		  }
+		}
+	  }
+
+	  &.col-2 {
+		&.right-third .droppable-wrap.left {
+		  flex-grow: 2;
+		}
+
+		&.left-third .droppable-wrap.c-left {
+		  flex-grow: 2;
+		}
+	  }
+
+	  &.col-3 {
+		&.right-half .droppable-wrap.center {
+		  flex-grow: 2;
+		}
+
+		&.left-half .droppable-wrap.left {
+		  flex-grow: 2;
+		}
+
+		&.center-half .droppable-wrap.c-left {
+		  flex-grow: 2;
+		}
+
+		&.center-two-thirds .droppable-wrap.c-left {
+		  flex-grow: 3;
+		}
+	  }
+
+	  &.col-4 {
+		&.left-half .droppable-wrap.left {
+		  flex-grow: 2;
+		}
+
+		&.right-half .droppable-wrap.c-right {
+		  flex-grow: 2;
+		}
+	  }
+	}
+  }
+}

@@ -1,59 +1,25 @@
 describe('AMP Check', function () {
 	before('Sets up search icon on menu top row', function () {
-		cy.goToCustomizer();
-		cy.aliasRestRoutes();
-
-		cy.get('#accordion-panel-hfg_header').should('be.visible').click();
-
-		cy.get(
-			'.hfg--builder-show .hfg--panel-desktop .hfg--row-top .row--grid > div:last-child',
-		).trigger('mouseover');
-		cy.get(
-			'.hfg--builder-show .hfg--panel-desktop .hfg--row-top .row--grid > div:last-child .add-button--grid',
-		).click({ force: true });
-
-		cy.get('.widgets-panel--visible');
-		cy.get(
-			'.widgets-panel--visible .hfg--widgets-desktop  .grid-stack-item.for-s-header_search_responsive',
-		).click();
-
-		cy.get('#save').click({ force: true });
-		cy.wait('@customizerSave').then((interception) => {
-			expect(interception.response.body.success).to.be.true;
-			expect(interception.response.statusCode).to.equal(200);
-		});
-		cy.visit('/wp-admin');
-		cy.get('#wp-admin-bar-logout > a').click({
-			force: true,
+		cy.fixture('amp/amp-setup').then((setup) => {
+			cy.setCustomizeSettings(setup);
 		});
 	});
 
 	it('Checks the search box from the menu', function () {
 		cy.visit('/?amp');
 		cy.get(
-			'.header--row.header-top[data-show-on=desktop] .builder-item--header_search_responsive .nv-search-icon-component .menu-item-nav-search',
+			'.header-top.hide-on-mobile > .header--row-inner > .container > .row > .right > .builder-item > .item--inner > .component-wrap > .widget > .search-form > .search-submit',
 		).as('navSearchButton');
 
-		cy.get('a.nv-icon > svg').click();
-		cy.get('@navSearchButton').should('have.class', 'active');
+		cy.findByPlaceholderText(/upper search/i)
+			.as('navSearchForm')
+			.should('be.visible');
 
-		cy.get('@navSearchButton').find('> .nv-nav-search').as('navSearchForm').should('be.visible');
+		cy.get('@navSearchForm').should('have.css', 'opacity', '1');
 
-		cy.get('@navSearchButton').find('.close-responsive-search').click();
-		cy.get('@navSearchButton').should('not.have.class', 'active');
-		cy.get('@navSearchForm').should('have.css', 'opacity', '0');
-		cy.get('@navSearchButton').click();
+		cy.get('@navSearchForm').click();
 
-		cy.get('@navSearchForm')
-			.find('form')
-			.invoke('removeAttr', 'target')
-			.invoke('removeAttr', 'action');
-		cy.get('@navSearchForm').find('.search-field').as('formField').click();
-		cy.get('@navSearchForm').find('.search-submit').as('submitButton');
-		cy.get('@formField').should('have.focus').type('Hello');
-		cy.get('@submitButton').click();
-		cy.url().should('include', '/?s=Hello');
-		cy.get('.nv-page-title').find('h1').should('have.text', 'Search Results for: Hello');
+		cy.get('@navSearchForm').should('have.focus').type('Hello');
 	});
 
 	it('Checks the sidebar menu on mobile', function () {

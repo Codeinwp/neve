@@ -86,6 +86,10 @@ class Copyright extends Abstract_Component {
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => '--color',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					[
 						'selector' => $this->default_typography_selector . ', ' . $this->default_typography_selector . ' *:not(a)',
 						'prop'     => 'color',
@@ -95,7 +99,6 @@ class Copyright extends Abstract_Component {
 			]
 		);
 	}
-
 
 	/**
 	 * Method to add Component css styles.
@@ -107,10 +110,24 @@ class Copyright extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
+		if ( ! neve_is_new_skin() ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $this->default_typography_selector . ', ' . $this->default_typography_selector . ' *',
+				Dynamic_Selector::KEY_RULES    => [
+					\Neve\Core\Settings\Config::CSS_PROP_COLOR => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
+					],
+				],
+			];
+
+			return parent::add_style( $css_array );
+		}
+
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_typography_selector . ', ' . $this->default_typography_selector . ' *',
+			Dynamic_Selector::KEY_SELECTOR => '.item--inner.builder-item--' . $this->get_id(),
 			Dynamic_Selector::KEY_RULES    => [
-				\Neve\Core\Settings\Config::CSS_PROP_COLOR => [
+				'--color' => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
 					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
 				],

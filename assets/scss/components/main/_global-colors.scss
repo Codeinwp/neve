@@ -1,0 +1,21 @@
+$colors: (
+		"neve-link-color" :"--nv-primary-accent",
+		"neve-link-hover-color" : "--nv-secondary-accent",
+		"neve-text-color" : "--nv-text-color",
+		"nv-site-bg" : "--nv-site-bg",
+		"nv-light-bg" : "--nv-light-bg",
+		"nv-dark-bg" : "--nv-dark-bg",
+		"nv-text-dark-bg" : "--nv-text-dark-bg",
+		"nv-c-1" : "--nv-c-1",
+		"nv-c-2" : "--nv-c-2",
+);
+
+@each $selector, $variable in $colors {
+  .has-#{$selector}-color {
+	color: var(#{$variable}) !important;
+  }
+
+  .has-#{$selector}-background-color {
+	background-color: var(#{$variable}) !important;
+  }
+}

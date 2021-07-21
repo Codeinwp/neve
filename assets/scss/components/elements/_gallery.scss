@@ -1,0 +1,31 @@
+@for $items from 1 through 9 {
+  .gallery-columns-#{$items} .gallery-item {
+    @if ($items == 1) {
+      width: 100%;
+      max-width: 100%;
+    } @else {
+      max-width: (100%/$items - 2);
+      width: (100%/$items - 2);
+    }
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.gallery-item {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+}
+
+.nv-content-wrap ul.wp-block-gallery {
+  padding-left: 0;
+}
+
+.gallery-caption {
+  box-sizing: border-box
+}

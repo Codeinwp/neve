@@ -4,7 +4,7 @@
 		"target": "es5",
 		"downlevelIteration": true,
 		"lib": ["es5", "dom"],
-		"types": ["cypress", "node", "cypress-storybook/cypress"]
+		"types": ["cypress", "node", "cypress-storybook/cypress", "cypress-nv-commands", "@testing-library/cypress"]
 	},
 	"include": [
 		"cypress/**/**/*.ts",

@@ -1,0 +1,55 @@
+@import "../../main/variables";
+
+.shop-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100000;
+  height: 100vh;
+  overflow: auto;
+  width: 100%;
+  transition: all 0.3s ease-out;
+  background-color: var(--nv-site-bg);
+  transform: translateX(-100%);
+
+  &.sidebar-open {
+	transform: translateX(0)
+  }
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: $spacing-md;
+
+  .nv-sidebar-toggle {
+	@extend %nv-button-secondary;
+  }
+}
+
+.nv-woo-filters {
+  .nv-sidebar-toggle {
+		margin-right: 20px;
+  }
+}
+
+@mixin shop-sidebar--laptop() {
+  .nv-sidebar-toggle {
+	display: none;
+  }
+
+  .shop-sidebar {
+	height: auto;
+	background: transparent;
+	position: static;
+	overflow: visible;
+	max-width: 30%;
+	transform: none;
+	z-index: unset;
+
+	.sidebar-header {
+	  display: none;
+	}
+  }
+}

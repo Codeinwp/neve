@@ -1,0 +1,80 @@
+@import "../../main/variables";
+
+main .nv-shop {
+  margin-top: $spacing-aired;
+}
+
+// === Sale Badge === //
+.woocommerce {
+  span.onsale {
+	background-color: $success;
+	border-radius: 0;
+	line-height: inherit;
+	min-height: auto;
+	left: 0;
+	top: 0;
+	font-weight: 500;
+  }
+
+  ul.products li.product .onsale {
+	top: 0;
+	left: 0;
+	right: auto;
+	margin: 0;
+  }
+}
+
+// === Pagination === //
+.woocommerce nav.woocommerce-pagination ul {
+  display: flex;
+  border: 0;
+  margin: 0;
+
+  li {
+	margin-right: $spacing-md;
+	border: 0;
+
+	a, span {
+	  background: var(--nv-light-bg);
+	  border-radius: 3px;
+	  padding: 12px 15px;
+	  color: var(--nv-text-color);
+	}
+
+	.dots {
+	  background: 0;
+	}
+
+	a:focus,
+	a:hover {
+	  background: var(--nv-light-bg);
+	  color: var(--nv-text-color);
+	}
+
+	span.current {
+	  background: var(--nv-primary-accent);
+	  color: var(--nv-text-dark-bg);
+	}
+  }
+}
+
+// === Rating === //
+.woocommerce {
+  .star-rating {
+	color: #ffb100;
+  }
+}
+
+// === Woo blocks === //
+.nv-content-wrap ul.wc-block-grid__products {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.woocommerce .blockOverlay {
+  background-color: var(--nv-site-bg) !important;
+}
+
+.woocommerce form .form-row textarea:focus {
+  box-shadow: 0 0 3px 0 var(--nv-secondary-accent);
+}

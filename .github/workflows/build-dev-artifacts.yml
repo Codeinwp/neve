@@ -2,7 +2,7 @@ name: Build and test
 
 on:
   pull_request:
-    types: [opened, synchronize, ready_for_review]
+    types: [ opened, synchronize, ready_for_review ]
     branches-ignore:
       - "update_dependencies"
 jobs:
@@ -67,6 +67,16 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE_DIR: artifact/
           DEST_DIR: ${{ github.event.pull_request.base.repo.name }}-${{ steps.retrieve-branch-name.outputs.branch_name }}-${{ steps.retrieve-git-sha-8.outputs.sha8 }}/
+      - name: Upload Branch to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_DEV_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SOURCE_DIR: artifact/
+          DEST_DIR: ${{ github.event.pull_request.base.repo.name }}-${{ steps.retrieve-branch-name.outputs.branch_name }}/
 
   comment-on-pr:
     name: Comment on PR with links to plugin ZIPs

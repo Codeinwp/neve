@@ -27,6 +27,7 @@ class Dynamic_Selector {
 	const META_DEFAULT       = 'default';
 	const META_DEVICE_ONLY   = 'device_only';
 	const META_FILTER        = 'filter';
+	const META_AS_JSON       = 'as_json';
 
 	const KEY_SELECTOR = 'selectors';
 	const KEY_RULES    = 'rules';
@@ -138,9 +139,10 @@ class Dynamic_Selector {
 			}
 			if ( $this->get_context() === self::CONTEXT_GUTENBERG ) {
 				$expanded_selectors = explode( ',', $expanded_selectors );
+
 				$expanded_selectors = array_map(
 					function ( $value ) {
-						return '.editor-styles-wrapper ' . $value;
+						return $value === ':root' ? $value : '.editor-styles-wrapper ' . $value;
 					},
 					$expanded_selectors
 				);

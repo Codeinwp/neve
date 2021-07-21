@@ -1,0 +1,14 @@
+@import "../main/variables";
+
+.nv-title-meta-wrap, .nv-page-title {
+  .neve-breadcrumbs-wrapper {
+	margin-bottom: $spacing-lg;
+	display: block;
+  }
+}
+
+.neve-breadcrumbs-wrapper {
+  a {
+	color: $gray-color;
+  }
+}
