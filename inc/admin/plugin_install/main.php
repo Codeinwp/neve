@@ -140,7 +140,7 @@ class Main {
 	 *
 	 * @param string $slug plugin slug.
 	 *
-	 * @return bool
+	 * @return string
 	 */
 	public function check_plugin_state( $slug ) {
 
