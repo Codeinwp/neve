@@ -69,7 +69,7 @@ class Mods {
 	 *
 	 * @param string $key Key name.
 	 *
-	 * @return array|bool
+	 * @return array|bool|string
 	 */
 	private static function defaults( $key ) {
 		switch ( $key ) {
@@ -208,7 +208,7 @@ class Mods {
 	 *
 	 * @param string $key theme mod key.
 	 *
-	 * @return string | array
+	 * @return string|array|int|false
 	 */
 	public static function get_alternative_mod_default( $key ) {
 		$new                    = neve_is_new_skin();
