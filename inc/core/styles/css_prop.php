@@ -229,10 +229,7 @@ class Css_Prop {
 				$suffix = self::get_suffix( $meta, $device, $value, $css_prop );
 
 				return sprintf( ' %s: %s%s;', $css_prop, $value, $suffix );
-				break;
 		}
-
-		return '';
 	}
 
 	/**
