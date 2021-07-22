@@ -20,7 +20,7 @@ $is_not_link   = component_setting( Logo::DISABLE_LINK, false );
 $display_order = component_setting( Logo::DISPLAY, 'default' );
 $main_logo     = get_theme_mod( 'custom_logo' );
 
-$conditional_logo = json_decode( component_setting( Logo::COMPONENT_ID, Logo::sanitize_logo_json( '' ) ), true );
+$conditional_logo = json_decode( component_setting( Logo::COMPONENT_ID, Logo::sanitize_logo_json( $main_logo ) ), true );
 $main_logo        = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $main_logo;
 
 $custom_logo_id = $_id === 'logo' ? $main_logo : component_setting( Logo::CUSTOM_LOGO, $main_logo );

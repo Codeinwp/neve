@@ -103,7 +103,7 @@ const LogoPaletteComponent = ({ control }) => {
 			nextValue.light = attachment.id;
 		}
 
-		if (type === 'dark') {
+		if (type === 'dark' || setting.same) {
 			setDark(attachment);
 			nextValue.dark = { ...nextValue.dark };
 			nextValue.dark = attachment.id;

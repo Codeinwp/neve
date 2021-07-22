@@ -149,8 +149,8 @@ class Logo extends Abstract_Component {
 						'sameLabel'     => __( 'Use one logo for both modes', 'neve' ),
 						'height'        => isset( $custom_logo_args[0]['height'] ) ? $custom_logo_args[0]['height'] : null,
 						'width'         => isset( $custom_logo_args[0]['width'] ) ? $custom_logo_args[0]['width'] : null,
-						'flexHeight'    => isset( $custom_logo_args[0]['flex-height'] ) ? $custom_logo_args[0]['flex-height'] : null,
-						'flexWidth'     => isset( $custom_logo_args[0]['flex-width'] ) ? $custom_logo_args[0]['flex-width'] : null,
+						'flexHeight'    => isset( $custom_logo_args[0]['flex-height'] ) ? $custom_logo_args[0]['flex-height'] : true,
+						'flexWidth'     => false, // this can not flex as to allow correct cropping
 					],
 				],
 				'section'           => $this->section,
