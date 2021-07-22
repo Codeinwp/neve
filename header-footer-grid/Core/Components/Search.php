@@ -81,6 +81,12 @@ class Search extends Abstract_Component {
 				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'     => [
+						'responsive' => true,
+						'vars'       => '--height',
+						'suffix'     => 'px',
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'responsive' => true,
 					'template'   =>
 						'body ' . $this->default_selector . ' input[type=search] {
@@ -121,6 +127,12 @@ class Search extends Abstract_Component {
 				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'     => [
+						'responsive' => true,
+						'vars'       => '--formFieldFontSize',
+						'suffix'     => 'px',
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'responsive' => true,
 					'template'   =>
 						'body ' . $this->default_selector . ' input[type=search] {
@@ -159,28 +171,26 @@ class Search extends Abstract_Component {
 			]
 		);
 
+		$new_skin = neve_is_new_skin();
+
+		$per_device           = $new_skin ? [
+			'top'    => 2,
+			'right'  => 2,
+			'bottom' => 2,
+			'left'   => 2,
+		] : [
+			'top'    => 1,
+			'right'  => 1,
+			'bottom' => 1,
+			'left'   => 1,
+		];
 		$default_border_width = [
 			'desktop-unit' => 'px',
 			'tablet-unit'  => 'px',
 			'mobile-unit'  => 'px',
-			'desktop'      => [
-				'top'    => 1,
-				'right'  => 1,
-				'bottom' => 1,
-				'left'   => 1,
-			],
-			'tablet'       => [
-				'top'    => 1,
-				'right'  => 1,
-				'bottom' => 1,
-				'left'   => 1,
-			],
-			'mobile'       => [
-				'top'    => 1,
-				'right'  => 1,
-				'bottom' => 1,
-				'left'   => 1,
-			],
+			'desktop'      => $per_device,
+			'tablet'       => $per_device,
+			'mobile'       => $per_device,
 		];
 
 		SettingsManager::get_instance()->add(
@@ -203,6 +213,12 @@ class Search extends Abstract_Component {
 				],
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'      => [
+						'responsive' => true,
+						'vars'       => '--formFieldBorderWidth',
+						'suffix'     => 'px',
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'responsive'  => true,
 					'directional' => true,
 					'template'    =>
@@ -260,6 +276,12 @@ class Search extends Abstract_Component {
 				],
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'      => [
+						'responsive' => true,
+						'vars'       => '--formFieldBorderRadius',
+						'suffix'     => 'px',
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'responsive'  => true,
 					'directional' => true,
 					'template'    =>
@@ -286,6 +308,10 @@ class Search extends Abstract_Component {
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'   => [
+						'vars'     => '--formFieldBgColor',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					'template' =>
 						'body ' . $this->default_selector . ' input[type=search] {
 							background-color: {{value}} !important;
@@ -308,6 +334,13 @@ class Search extends Abstract_Component {
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar'   => [
+						'vars'     => [
+							'--formFieldColor',
+							'--formFieldBorderColor',
+						],
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					'template' =>
 						'body ' . $this->default_selector . ' input[type=search], body ' . $this->default_selector . ' input::placeholder {
 							color: {{value}};
@@ -325,15 +358,13 @@ class Search extends Abstract_Component {
 	}
 
 	/**
-	 * Method to add Component css styles.
+	 * Add legacy style.
 	 *
-	 * @param array $css_array An array containing css rules.
+	 * @param array $css_array css array.
 	 *
 	 * @return array
-	 * @since   1.0.0
-	 * @access  public
 	 */
-	public function add_style( array $css_array = array() ) {
+	private function add_legacy_style( $css_array ) {
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' input[type=submit],' . $this->default_selector . ' .nv-search-icon-wrap',
 			Dynamic_Selector::KEY_RULES    => [
@@ -372,6 +403,7 @@ class Search extends Abstract_Component {
 						if ( ! empty( $fs ) ) {
 							$style = sprintf( 'padding-right:%spx;', $padding );
 						}
+
 						return $style;
 					},
 				],
@@ -433,36 +465,87 @@ class Search extends Abstract_Component {
 	}
 
 	/**
+	 * Method to add Component css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function add_style( array $css_array = array() ) {
+		if ( ! neve_is_new_skin() ) {
+			return $this->add_legacy_style( $css_array );
+		}
+
+		$rules = [
+			'--height'                => [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_HEIGHT,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_HEIGHT ),
+			],
+			'--formFieldFontSize'     => [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_FONT_SIZE,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+			],
+			'--formFieldBorderWidth'  => [
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_BORDER_WIDTH,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BORDER_WIDTH ),
+				'directional-prop'                   => Config::CSS_PROP_BORDER_WIDTH,
+			],
+			'--formFieldBorderRadius' => [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_BORDER_RADIUS,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BORDER_RADIUS ),
+				'directional-prop'                   => Config::CSS_PROP_BORDER_RADIUS,
+			],
+			'--formFieldBgColor'      => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_BG,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BG ),
+			],
+			'--formFieldBorderColor'  => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_TEXT_COLOR,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_TEXT_COLOR ),
+			],
+			'--formFieldColor'        => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_TEXT_COLOR,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_TEXT_COLOR ),
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
+			Dynamic_Selector::KEY_RULES    => $rules,
+		];
+
+
+		return parent::add_style( $css_array );
+	}
+
+	/**
 	 * The render method for the component.
 	 *
 	 * @since   1.0.0
 	 * @access  public
 	 */
 	public function render_component() {
-		add_filter( 'get_search_form', [ $this, 'change_placeholder' ] );
+		add_filter( 'nv_search_placeholder', [ $this, 'change_placeholder' ] );
 		Main::get_instance()->load( 'components/component-search' );
-		remove_filter( 'get_search_form', [ $this, 'change_placeholder' ] );
+		remove_filter( 'nv_search_placeholder', [ $this, 'change_placeholder' ] );
 	}
 
 	/**
 	 * Change the form placeholder.
 	 *
-	 * @param string $form form markup.
+	 * @param string $placeholder placeholder string.
 	 *
 	 * @return string
 	 */
-	public function change_placeholder( $form ) {
-		$form        = '';
-		$placeholder = get_theme_mod( $this->get_id() . '_placeholder', __( 'Search for...', 'neve' ) );
-
-		$form .= '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">';
-		$form .= '<label>';
-		$form .= '<span class="screen-reader-text">' . __( 'Search for...', 'neve' ) . '</span>';
-		$form .= '<input type="search" class="search-field" placeholder="' . esc_html( $placeholder ) . '" value="" name="s">';
-		$form .= '</label>';
-		$form .= '<input type="submit" class="search-submit" value="Search">';
-		$form .= '</form>';
-
-		return $form;
+	public function change_placeholder( $placeholder ) {
+		return get_theme_mod( $this->get_id() . '_placeholder', __( 'Search for...', 'neve' ) );
 	}
 }

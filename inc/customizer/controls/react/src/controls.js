@@ -1,6 +1,5 @@
 /* global CustomEvent, NeveReactCustomize */
 import './public-path.js';
-import domReady from '@wordpress/dom-ready';
 import { render } from '@wordpress/element';
 
 import { init as initDynamicFields } from './dynamic-fields/index';
@@ -27,6 +26,7 @@ import { BuilderControl } from './builder/Control';
 import { BuilderColumns } from './builder-columns/Control';
 import { InstructionsControl } from './builder-instructions/Control';
 import { HeadingControl } from './heading/Control';
+import { SkinSwitcherControl } from './skin-switcher/Control';
 
 import './style.scss';
 import Instructions from './builder-instructions/Instructions.tsx';
@@ -56,6 +56,7 @@ controlConstructor.neve_builder_control = BuilderControl;
 controlConstructor.neve_builder_columns = BuilderColumns;
 controlConstructor.hfg_instructions = InstructionsControl;
 controlConstructor.neve_customizer_heading = HeadingControl;
+controlConstructor.neve_skin_switcher = SkinSwitcherControl;
 
 const initDeviceSwitchers = () => {
 	const deviceButtons = document.querySelector(
@@ -103,6 +104,33 @@ const initQuickLinksSections = () => {
 		render(<Instructions control={section} />, section.container[0]);
 	});
 };
+const bindDataAttrQuickLinks = () => {
+	const dataControlFocusElements = document.querySelectorAll(
+		'[data-control-focus]'
+	);
+
+	if (!dataControlFocusElements) {
+		return;
+	}
+
+	dataControlFocusElements.forEach((el) => {
+		el.addEventListener('click', () => {
+			const attribute = el.getAttribute('data-control-focus');
+
+			if (!attribute) {
+				return;
+			}
+
+			const control = window.wp.customize.control(attribute);
+
+			if (!control) {
+				return;
+			}
+
+			control.focus();
+		});
+	});
+};
 const checkHasElementorTemplates = () => {
 	if (NeveReactCustomize.elementor.hasElementorShopTemplate) {
 		window.wp.customize
@@ -135,16 +163,14 @@ const checkHasElementorTemplates = () => {
 	}
 };
 
-domReady(() => {
-	initDeviceSwitchers();
-	initBlogPageFocus();
-});
-
 window.wp.customize.bind('ready', () => {
 	initDynamicFields();
 	initQuickLinksSections();
+	bindDataAttrQuickLinks();
 	initBlogPageFocus();
 	checkHasElementorTemplates();
+	initDeviceSwitchers();
+	initBlogPageFocus();
 });
 
 window.HFG = {

@@ -6,23 +6,26 @@ describe('Single page sidebar', function () {
 	};
 
 	before('Create new page named "' + pageSetup.title + '".', function () {
-		cy.insertPost(pageSetup.title, pageSetup.content, 'page');
+		cy.insertPostWithRequest(pageSetup.title, pageSetup.content, 'pages')
+			.then(() => {
+				pageSetup.url = window.localStorage.getItem('postUrl');
+			})
+			.then(() => {
+				cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
+					meta: {
+						neve_meta_sidebar: 'full-width',
+						neve_meta_enable_content_width: 'on',
+						neve_meta_content_width: 100,
+					},
+				});
+			});
 
 		cy.setCustomizeSettings({
 			neve_migrated_hfg_colors: true,
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
+			neve_new_skin: 'new',
 		});
-		cy.get('.post-publish-panel__postpublish-header a', { timeout: 15000 })
-			.contains(pageSetup.title)
-			.should('have.attr', 'href')
-			.then((href) => {
-				pageSetup.url = href.toString();
-			})
-			.then(() => {
-				window.localStorage.setItem('pageId', Cypress.$('#post_ID').val().toString());
-				cy.getJWT();
-			});
 		cy.saveLocalStorage();
 	});
 
@@ -52,7 +55,7 @@ describe('Single page sidebar', function () {
 		});
 
 		it('Full-width', function () {
-			cy.updatePageOrPostByRequest(window.localStorage.getItem('pageId'), 'pages', {
+			cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
 				meta: {
 					neve_meta_sidebar: 'full-width',
 				},
@@ -62,7 +65,7 @@ describe('Single page sidebar', function () {
 			cy.get('.nv-sidebar-wrap').should('not.exist');
 		});
 		it('Left', function () {
-			cy.updatePageOrPostByRequest(window.localStorage.getItem('pageId'), 'pages', {
+			cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
 				meta: {
 					neve_meta_sidebar: 'left',
 				},
@@ -72,7 +75,7 @@ describe('Single page sidebar', function () {
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
 		});
 		it('Right', function () {
-			cy.updatePageOrPostByRequest(window.localStorage.getItem('pageId'), 'pages', {
+			cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
 				meta: {
 					neve_meta_sidebar: 'right',
 				},
@@ -108,8 +111,6 @@ describe('Single page sidebar', function () {
 		cy.clearWelcome();
 
 		cy.openNeveSidebar();
-
-		cy.activateCheckbox('.components-toggle-control__label', 'Custom Content Width (%)');
 
 		cy.get('.neve_meta_content_width').find('input[type=number]').type('{selectall}').type('60');
 		cy.updatePost();

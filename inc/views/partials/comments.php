@@ -22,6 +22,9 @@ class Comments extends Base_View {
 	public function init() {
 		add_action( 'neve_do_comment_area', array( $this, 'render_comment_form' ) );
 		add_filter( 'comment_form_defaults', array( $this, 'leave_reply_title_tag' ) );
+		if ( neve_is_new_skin() ) {
+			add_filter( 'comment_form_fields', array( $this, 'move_textarea' ) );
+		}
 	}
 
 	/**
@@ -29,27 +32,29 @@ class Comments extends Base_View {
 	 */
 	public function render_comment_form() {
 		$display_form_first    = apply_filters( 'neve_show_comment_form_first', false );
-		$comment_form_settings = $this->get_sumbit_form_settings();
+		$comment_form_settings = neve_is_new_skin() ? $this->get_sumbit_form_settings() : array();
 
 		if ( $display_form_first ) {
 			comment_form( $comment_form_settings );
 		}
 
 		if ( have_comments() ) {
-
+			$comment_title_tag     = neve_is_new_skin() ? 'h4' : 'h2';
 			$comments_wrap_classes = [ 'nv-comments-wrap' ];
 			$is_boxed              = get_theme_mod( 'neve_comments_boxed_layout', false );
 			if ( $is_boxed ) {
-				$comments_wrap_classes[] = 'is-boxed';
+				$comments_wrap_classes[] = 'nv-is-boxed';
 			}
 
 			?>
 			<div class="<?php echo esc_attr( implode( ' ', $comments_wrap_classes ) ); ?>">
 
 				<div class="nv-comments-title-wrap">
-					<h2 class="comments-title">
-						<?php echo wp_kses_post( $this->get_comments_title() ); ?>
-					</h2>
+					<?php
+					echo '<' . esc_html( $comment_title_tag ) . ' class="comments-title">';
+					echo wp_kses_post( $this->get_comments_title() );
+					echo '</' . esc_html( $comment_title_tag ) . '>'
+					?>
 				</div>
 
 				<ol class="nv-comments-list">
@@ -102,9 +107,9 @@ class Comments extends Base_View {
 			$form_settings['label_submit'] = $button_text;
 		}
 
-		$boxed_layout = get_theme_mod( 'neve_comments_form_boxed_layout', false );
-		if ( $boxed_layout ) {
-			$form_settings['class_container'] = 'comment-respond is-boxed';
+		$boxed_layout = get_theme_mod( 'neve_comments_form_boxed_layout', true );
+		if ( $boxed_layout && neve_is_new_skin() ) {
+			$form_settings['class_container'] = 'comment-respond nv-is-boxed';
 		}
 
 		return $form_settings;
@@ -162,11 +167,23 @@ class Comments extends Base_View {
 			default:
 				?>
 				<li <?php comment_class(); ?> id="comment-item-<?php comment_ID(); ?>">
-				<article id="comment-<?php comment_ID(); ?>" class="nv-comment-article">
+					<article id="comment-<?php comment_ID(); ?>" class="nv-comment-article">
+						<?php
+						if ( neve_is_new_skin() ) {
+							echo '<div class="nv-comment-avatar">';
+							echo get_avatar( $comment, 50 );
+							echo '</div>';
+							echo '<div class="comment-content">';
+						}
+						?>
 						<div class="nv-comment-header">
-							<div class='nv-comment-avatar'>
-								<?php echo get_avatar( $comment, 50 ); ?>
-							</div>
+							<?php
+							if ( ! neve_is_new_skin() ) {
+								echo '<div class="nv-comment-avatar">';
+								echo get_avatar( $comment, 50 );
+								echo '</div>';
+							}
+							?>
 							<div class="comment-author vcard">
 								<span class="fn author"><?php echo get_comment_author_link(); ?></span>
 								<a href="<?php echo esc_url( get_comment_link() ); ?>">
@@ -180,38 +197,64 @@ class Comments extends Base_View {
 									</time>
 								</a>
 							</div>
+							<?php
+							if ( neve_is_new_skin() ) {
+									$this->render_edit_reply_link( $args, $depth );
+							}
+							?>
 						</div>
 						<div class="nv-comment-content comment nv-content-wrap">
 							<?php comment_text(); ?>
-							<div class="edit-reply">
-								<?php edit_comment_link( '(' . esc_html__( 'Edit', 'neve' ) . ')' ); ?>
-								<?php
-								comment_reply_link(
-									array_merge(
-										$args,
-										array(
-											'reply_text' => esc_html__( 'Reply', 'neve' ),
-											'add_below'  => 'comment',
-											'depth'      => $depth,
-											'max_depth'  => $args['max_depth'],
-											'before'     => '<span class="nv-reply-link">',
-											'after'      => '</span>',
-										)
-									)
-								);
-								?>
-							</div>
+							<?php
+							if ( ! neve_is_new_skin() ) {
+								$this->render_edit_reply_link( $args, $depth );
+							}
+							?>
 							<?php if ( '0' === $comment->comment_approved ) { ?>
 								<p class="comment-awaiting-moderation">
 									<?php echo esc_html__( 'Comment awaiting moderation.', 'neve' ); ?>
 								</p>
 							<?php } ?>
 						</div>
+						<?php
+						if ( neve_is_new_skin() ) {
+							echo '</div>';
+						}
+						?>
 					</article>
 				</li>
 				<?php
 				break;
 		}
+	}
+
+	/**
+	 *  Render edit/reply link.
+	 *
+	 * @param array $args comment args.
+	 * @param int   $depth the depth of comment.
+	 */
+	private function render_edit_reply_link( $args, $depth ) {
+		?>
+		<div class="edit-reply">
+			<?php edit_comment_link( '(' . esc_html__( 'Edit', 'neve' ) . ')' ); ?>
+			<?php
+			comment_reply_link(
+				array_merge(
+					$args,
+					array(
+						'reply_text' => esc_html__( 'Reply', 'neve' ),
+						'add_below'  => 'comment',
+						'depth'      => $depth,
+						'max_depth'  => $args['max_depth'],
+						'before'     => '<span class="nv-reply-link">',
+						'after'      => '</span>',
+					)
+				)
+			);
+			?>
+		</div>
+		<?php
 	}
 
 	/**
@@ -259,9 +302,44 @@ class Comments extends Base_View {
 	 * @return array
 	 */
 	public function leave_reply_title_tag( $args ) {
-		$args['title_reply_before'] = '<h3 id="reply-title" class="comment-reply-title">';
-		$args['title_reply_after']  = '</h3>';
+		$tag = neve_is_new_skin() ? 'h4' : 'h3';
+
+		$args['title_reply_before'] = '<' . $tag . ' id="reply-title" class="comment-reply-title">';
+		$args['title_reply_after']  = '</' . $tag . '>';
 
 		return $args;
+	}
+
+
+	/**
+	 * Move textarea field in comment form after the website field.
+	 *
+	 * @param array $fields array of fields.
+	 *
+	 * @return array
+	 */
+	public function move_textarea( $fields ) {
+		if ( ! isset( $fields['url'] ) ) {
+			return $fields;
+		}
+		$keys = array_keys( $fields );
+
+		$textarea_index = array_search( 'comment', $keys );
+		// Remove textarea
+		unset( $keys[ $textarea_index ] );
+		// Reset indexes.
+		$keys = array_values( $keys );
+
+		// Get website url field index.
+		$index = array_search( 'url', $keys );
+		// Insert textarea after url field.
+		array_splice( $keys, $index + 1, 0, 'comment' );
+
+		$new_fields = [];
+		foreach ( $keys as $key ) {
+			$new_fields[ $key ] = $fields[ $key ];
+		}
+
+		return $new_fields;
 	}
 }

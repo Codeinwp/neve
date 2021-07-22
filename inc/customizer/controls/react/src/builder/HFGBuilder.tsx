@@ -30,11 +30,9 @@ const Builder = lazy(
 	() => import(/* webpackChunkName: "builder" */ './components/Builder')
 );
 
-const BuilderSidebar = lazy(
+const SidebarContent = lazy(
 	() =>
-		import(
-			/* webpackChunkName: "builder-sidebar" */ './components/SidebarContent'
-		)
+		import(/* webpackChunkName: "sidebar" */ './components/SidebarContent')
 );
 
 type Props = {
@@ -284,21 +282,19 @@ const HFGBuilder: React.FC<Props> = ({
 		>
 			<div>
 				<Suspense fallback={<Spinner />}>
-					{!hidden && (
-						<>
-							<div className={`neve-hfg-builder`}>
-								<BuilderSidebar />
-							</div>
-							{createPortal(
-								<Builder
-									hidden={hidden}
-									value={value}
-									portalMount={portalMount}
-								/>,
-								portalMount
-							)}
-						</>
-					)}
+					<>
+						<div className={`neve-hfg-builder`}>
+							<SidebarContent />
+						</div>
+						{createPortal(
+							<Builder
+								hidden={hidden}
+								value={value}
+								portalMount={portalMount}
+							/>,
+							portalMount
+						)}
+					</>
 				</Suspense>
 			</div>
 		</BuilderContext.Provider>

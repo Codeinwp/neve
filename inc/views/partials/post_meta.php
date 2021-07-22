@@ -32,7 +32,6 @@ class Post_Meta extends Base_View {
 		add_action( 'neve_do_tags', array( $this, 'render_tags_list' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'meta_custom_separator' ) );
 		add_filter( 'neve_gravatar_args', [ $this, 'add_dynamic_gravatar' ] );
-
 	}
 
 	/**
@@ -61,16 +60,18 @@ class Post_Meta extends Base_View {
 	 */
 	public function add_dynamic_gravatar( $args_array ) {
 
-		$meta_key = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
+		$meta_key    = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
+		$default     = '{ "mobile": 20, "tablet": 20, "desktop": 20 }';
+		$avatar_size = Mods::to_json( $meta_key, $default );
 		if ( is_singular( 'post' ) ) {
-			$meta_key = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
+			$single_avatar_size = Mods::to_json( Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE );
+			$avatar_size        = ! empty( $single_avatar_size ) ? $single_avatar_size : $avatar_size;
 		}
-
-		$avatar_size = Mods::to_json( $meta_key );
 
 		if ( ! isset( $args_array['size'] ) ) {
 			return $args_array;
 		}
+
 		if ( ! is_array( $avatar_size ) ) {
 			return $args_array;
 		}

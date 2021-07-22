@@ -14,6 +14,7 @@ namespace HFG\Core\Components;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
 
 /**
@@ -137,42 +138,71 @@ class MenuIcon extends Abstract_Component {
 			]
 		);
 
+		$new_skin = neve_is_new_skin();
+		$mod_key  = self::BUTTON_APPEARANCE;
+		$default  = $new_skin ? [
+			'type'         => 'outline',
+			'borderRadius' => [
+				'top'    => 0,
+				'left'   => 0,
+				'bottom' => 0,
+				'right'  => 0,
+			],
+		] : [ 'type' => 'outline' ];
+
 		SettingsManager::get_instance()->add(
 			[
-				'id'                    => self::BUTTON_APPEARANCE,
+				'id'                    => $mod_key,
 				'group'                 => $this->get_id(),
 				'transport'             => 'postMessage',
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'sanitize_callback'     => 'neve_sanitize_button_appearance',
-				'default'               => [ 'type' => 'outline' ],
+				'default'               => $default,
 				'label'                 => __( 'Appearance', 'neve' ),
 				'type'                  => '\Neve\Customizer\Controls\React\Button_Appearance',
 				'section'               => $this->section,
 				'options'               => [
-					'no_hover' => true,
+					'no_hover'     => true,
+					'default_vals' => $default,
 				],
 				'live_refresh_selector' => $this->default_selector,
-				'live_refresh_css_prop' => array(
+				'live_refresh_css_prop' => [
+					'cssVar'             => [
+						'vars'     => [
+							'--bgColor'      => 'background',
+							'--color'        => 'text',
+							'--borderRadius' => [
+								'key'    => 'borderRadius',
+								'suffix' => 'px',
+							],
+							'--borderWidth'  => [
+								'key'    => 'borderWidth',
+								'suffix' => 'px',
+							],
+						],
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					'additional_buttons' => $this->get_class_const( 'COMPONENT_ID' ) !== 'header_menu_icon' ? [] : [
 						[
 							'button' => $this->close_button,
 							'text'   => '.icon-bar',
 						],
 					],
-				),
+				],
 				'conditional_header'    => true,
 			]
 		);
 	}
 
+
 	/**
-	 * Add CSS style for the component.
+	 * Add legacy style.
 	 *
-	 * @param array $css_array the css style array.
+	 * @param array $css_array css array.
 	 *
 	 * @return array
 	 */
-	public function add_style( array $css_array = array() ) {
+	private function add_legacy_style( $css_array ) {
 		$id          = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ', ' . $this->close_button,
@@ -192,6 +222,47 @@ class MenuIcon extends Abstract_Component {
 			],
 		];
 
+		return parent::add_style( $css_array );
+	}
+
+	/**
+	 * Add CSS style for the component.
+	 *
+	 * @param array $css_array the css style array.
+	 *
+	 * @return array
+	 */
+	public function add_style( array $css_array = array() ) {
+		if ( ! neve_is_new_skin() ) {
+			return $this->add_legacy_style( $css_array );
+		}
+
+		$id = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
+
+		$rules = [
+			'--bgColor'      => $id . '.background',
+			'--color'        => $id . '.text',
+			'--borderRadius' => [
+				Dynamic_Selector::META_KEY => $id . '.borderRadius',
+				'directional-prop'         => Config::CSS_PROP_BORDER_RADIUS,
+			],
+			'--borderWidth'  => [
+				Dynamic_Selector::META_KEY => $id . '.borderWidth',
+				'directional-prop'         => Config::CSS_PROP_BORDER_WIDTH,
+			],
+		];
+
+		$value = SettingsManager::get_instance()->get( $id );
+
+
+		if ( isset( $value['type'] ) && $value['type'] !== 'outline' ) {
+			$rules ['--borderWidth']['override'] = 0;
+		}
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ',' . $this->close_button,
+			Dynamic_Selector::KEY_RULES    => $rules,
+		];
 
 		return parent::add_style( $css_array );
 	}

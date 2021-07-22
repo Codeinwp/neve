@@ -358,6 +358,8 @@ final class Manager {
 		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
 
 		$post_elements_default_order = $this->get_post_elements_default_order();
+		$show_avatar                 = $this->get_author_avatar_state();
+
 
 		$localized_data = apply_filters(
 			'neve_meta_sidebar_localize_filter',
@@ -370,6 +372,7 @@ final class Manager {
 					),
 				),
 				'elementsDefaultOrder' => $post_elements_default_order,
+				'avatarDefaultState'   => $show_avatar,
 				'isCoverLayout'        => Layout_Single_Post::is_cover_layout(),
 			)
 		);
@@ -413,6 +416,16 @@ final class Manager {
 		}
 
 		return wp_json_encode( $content_order );
+	}
+
+	/**
+	 * Get the value of author avatar display from customizer.
+	 *
+	 * @return bool
+	 */
+	private function get_author_avatar_state() {
+		$show_avatar = get_theme_mod( 'neve_author_avatar', false );
+		return get_theme_mod( 'neve_single_post_author_avatar', $show_avatar );
 	}
 
 	/**

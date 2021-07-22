@@ -337,7 +337,7 @@ class Builder_Migrator {
 	 *
 	 * @return array|boolean
 	 */
-	private function get_new_builder_value_from_old( $old_value ) {
+	public function get_new_builder_value_from_old( $old_value ) {
 		if ( ! is_array( $old_value ) ) {
 			return false;
 		}

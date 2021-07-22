@@ -1367,10 +1367,48 @@ add_filter( 'neve_external_link', 'neve_external_link', 10, 3 );
  * @return array
  */
 function neve_get_global_colors_default( $migrated = false ) {
+	if ( neve_is_new_skin() ) {
+		return [
+			'activePalette' => 'base',
+			'palettes'      => [
+				'base'     => [
+					'name'          => __( 'Base', 'neve' ),
+					'allowDeletion' => false,
+					'colors'        => [
+						'nv-primary-accent'   => '#2f5aae',
+						'nv-secondary-accent' => '#2f5aae',
+						'nv-site-bg'          => '#ffffff',
+						'nv-light-bg'         => '#f4f5f7',
+						'nv-dark-bg'          => '#121212',
+						'nv-text-color'       => '#272626',
+						'nv-text-dark-bg'     => '#ffffff',
+						'nv-c-1'              => '#9463ae',
+						'nv-c-2'              => '#be574b',
+					],
+				],
+				'darkMode' => [
+					'name'          => __( 'Dark Mode', 'neve' ),
+					'allowDeletion' => false,
+					'colors'        => [
+						'nv-primary-accent'   => '#00c2ff',
+						'nv-secondary-accent' => '#00c2ff',
+						'nv-site-bg'          => '#121212',
+						'nv-light-bg'         => '#1a1a1a',
+						'nv-dark-bg'          => '#000000',
+						'nv-text-color'       => '#ffffff',
+						'nv-text-dark-bg'     => '#ffffff',
+						'nv-c-1'              => '#198754',
+						'nv-c-2'              => '#be574b',
+					],
+				],
+			],
+		];
+	}
 
 	$old_link_color       = get_theme_mod( 'neve_link_color', '#0366d6' );
 	$old_link_hover_color = get_theme_mod( 'neve_link_hover_color', '#0e509a' );
 	$old_text_color       = get_theme_mod( 'neve_text_color', '#393939' );
+
 	// We use a static var to avoid calling get_theme_mod multiple times due to the filter used to alter the value.
 	static $old_bg_color;
 	if ( ! isset( $old_bg_color ) ) {
@@ -1419,11 +1457,20 @@ function neve_get_global_colors_default( $migrated = false ) {
  * Checks that we are using the new builder.
  *
  * @return bool
- *
  * @since 3.0.0
  */
 function neve_is_new_builder() {
 	return get_theme_mod( 'neve_migrated_builders', true );
+}
+
+/**
+ * Checks that we are using the new skin.
+ *
+ * @return bool
+ * @since 3.0.0
+ */
+function neve_is_new_skin() {
+	return get_theme_mod( 'neve_new_skin', 'new' ) !== 'old';
 }
 
 /**
@@ -1433,5 +1480,15 @@ function neve_is_new_builder() {
  * @since 3.0.0
  */
 function neve_can_use_conditional_header() {
-	return defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '3.0.0', '<' ) && neve_is_new_builder();
+	return defined( 'NEVE_PRO_COMPATIBILITY_FEATURES' ) && isset( NEVE_PRO_COMPATIBILITY_FEATURES['headerv2'] ) && neve_is_new_builder();
+}
+
+/**
+ * Check that we had old builder.
+ *
+ * @return bool
+ * @since 3.0.0
+ */
+function neve_had_old_hfb() {
+	return ( get_theme_mod( 'hfg_header_layout' ) !== false || get_theme_mod( 'hfg_footer_layout' ) ) !== false;
 }

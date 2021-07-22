@@ -1,0 +1,75 @@
+@import "../main/variables";
+@import "form-elements/inputs";
+@import "form-elements/buttons";
+
+.widget-search {
+  width: 100%;
+  margin: 0 !important;
+}
+
+.search-form {
+  display: flex;
+  max-width: 100%;
+  line-height: 1;
+  --formFieldSpacing: 0;
+  --formLabelSpacing: 0;
+  --primaryBtnBg: var(--formFieldBgColor);
+  --primaryBtnHoverBg: var(--formFieldBgColor);
+  --primaryBtnColor: var(--formFieldBorderColor);
+  --primaryBtnHoverColor: var(--formFieldBorderColor);
+
+  svg {
+	fill: var(--formFieldColor);
+	width: var(--formFieldFontSize);
+	opacity: .5;
+	height: auto;
+  }
+
+  .search-submit {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 45px;
+	z-index: 1;
+	--primaryBtnBorderWidth: var(--formFieldBorderWidth);
+	--primaryBtnBorderColor: var(--formFieldBorderColor);
+	--primaryBtnBorderRadius: var(--formFieldBorderRadius);
+	--primaryBtnPadding: var(--formFieldPadding);
+	height: var(--height);
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	border-left: 0;
+	position: relative;
+
+	&:before {
+	  content: "";
+	  display: block;
+	  width: 3px;
+	  height: 100%;
+	  background-color: var(--formFieldBgColor);
+	  left: -3px;
+	  top: 0;
+	  bottom: 0;
+	  position: absolute;
+	}
+  }
+
+  .search-field {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: var(--height);
+	border-right: 0;
+	flex-grow: 1;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	width: calc( 100% - 45px );
+	max-width: 100%;
+
+	&:focus ~ {
+	  button {
+		box-shadow: 0 0 3px 0 var(--nv-secondary-accent);
+		border-color: var(--nv-secondary-accent);
+	  }
+	}
+  }
+}

@@ -64,6 +64,11 @@ class Button extends Abstract_Component {
 	 */
 	public function __construct( $panel ) {
 		parent::__construct( $panel );
+		if ( neve_is_new_skin() ) {
+			$this->default_selector = '.builder-item--' . $this->get_id();
+
+			return;
+		}
 		$this->default_selector = '.builder-item > .item--inner.builder-item--' . $this->get_id() . ' > .component-wrap > a.button.button-primary';
 	}
 
@@ -105,6 +110,7 @@ class Button extends Abstract_Component {
 				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);
+
 		SettingsManager::get_instance()->add(
 			[
 				'id'                 => self::TEXT_ID,
@@ -123,29 +129,47 @@ class Button extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                 => self::STYLE_ID,
-				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'                => SettingsManager::TAB_STYLE,
-				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback'  => 'neve_sanitize_button_appearance',
-				'label'              => __( 'Appearance', 'neve' ),
-				'type'               => 'neve_button_appearance',
-				'section'            => $this->section,
-				'conditional_header' => $this->get_builder_id() === 'header',
+				'id'                    => self::STYLE_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'     => 'neve_sanitize_button_appearance',
+				'label'                 => __( 'Appearance', 'neve' ),
+				'type'                  => 'neve_button_appearance',
+				'section'               => $this->section,
+				'conditional_header'    => $this->get_builder_id() === 'header',
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => [
+							'--primaryBtnBg'           => 'background',
+							'--primaryBtnColor'        => 'text',
+							'--primaryBtnHoverBg'      => 'backgroundHover',
+							'--primaryBtnHoverColor'   => 'textHover',
+							'--primaryBtnBorderRadius' => [
+								'key'    => 'borderRadius',
+								'suffix' => 'px',
+							],
+							'--primaryBtnBorderWidth'  => [
+								'key'    => 'borderWidth',
+								'suffix' => 'px',
+							],
+						],
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
+				],
 			]
 		);
 	}
 
 	/**
-	 * Method to add Component css styles.
+	 * Add legacy style.
 	 *
-	 * @param array $css_array An array containing css rules.
+	 * @param array $css_array css array.
 	 *
 	 * @return array
-	 * @since   1.0.0
-	 * @access  public
 	 */
-	public function add_style( array $css_array = array() ) {
+	private function add_legacy_style( $css_array ) {
 		$id = $this->get_id() . '_' . self::STYLE_ID;
 
 		$css_array[] = [
@@ -155,7 +179,6 @@ class Button extends Abstract_Component {
 				Config::CSS_PROP_COLOR            => $id . '.text',
 				Config::CSS_PROP_BORDER_RADIUS    => [
 					Dynamic_Selector::META_KEY => $id . '.borderRadius',
-		// Dynamic_Selector::META_DEFAULT => '3',
 				],
 				Config::CSS_PROP_CUSTOM_BTN_TYPE  => [
 					Dynamic_Selector::META_KEY => $id . '.type',
@@ -173,6 +196,49 @@ class Button extends Abstract_Component {
 			],
 		];
 
+
+		return parent::add_style( $css_array );
+	}
+
+	/**
+	 * Method to add Component css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function add_style( array $css_array = array() ) {
+		if ( ! neve_is_new_skin() ) {
+			return $this->add_legacy_style( $css_array );
+		}
+
+		$id    = $this->get_id() . '_' . self::STYLE_ID;
+		$value = get_theme_mod( $id );
+
+		$rules = [
+			'--primaryBtnBg'           => [ Dynamic_Selector::META_KEY => $id . '.background' ],
+			'--primaryBtnColor'        => [ Dynamic_Selector::META_KEY => $id . '.text' ],
+			'--primaryBtnHoverBg'      => [ Dynamic_Selector::META_KEY => $id . '.backgroundHover' ],
+			'--primaryBtnHoverColor'   => [ Dynamic_Selector::META_KEY => $id . '.textHover' ],
+			'--primaryBtnBorderRadius' => [
+				Dynamic_Selector::META_KEY => $id . '.borderRadius',
+				'directional-prop'         => Config::CSS_PROP_BORDER_RADIUS,
+			],
+		];
+
+		if ( isset( $value['type'] ) && $value['type'] === 'outline' ) {
+			$rules['--primaryBtnBorderWidth'] = [
+				Dynamic_Selector::META_KEY => $id . '.borderWidth',
+				'directional-prop'         => Config::CSS_PROP_BORDER_WIDTH,
+			];
+		}
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector,
+			Dynamic_Selector::KEY_RULES    => $rules,
+		];
 
 		return parent::add_style( $css_array );
 	}
