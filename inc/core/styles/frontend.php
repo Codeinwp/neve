@@ -54,7 +54,7 @@ class Frontend extends Generator {
 	/**
 	 * Setup the container styles.
 	 *
-	 * @return false
+	 * @return void
 	 */
 	private function setup_container() {
 		if ( ! neve_is_new_skin() ) {
@@ -65,7 +65,7 @@ class Frontend extends Generator {
 				],
 			];
 
-			return false;
+			return;
 		}
 
 		$this->_subscribers[] = [
