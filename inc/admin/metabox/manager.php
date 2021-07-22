@@ -445,7 +445,10 @@ final class Manager {
 			return;
 		}
 
-		$checkout_was_updated = get_post_meta( $post_id, 'neve_checkout_updated', 'no' );
+		$checkout_was_updated = get_post_meta( $post_id, 'neve_checkout_updated', true );
+		// assign default value
+		$checkout_was_updated = ( $checkout_was_updated !== '' ) ? $checkout_was_updated : 'no';
+
 		if ( Main::is_new_page() || ( Main::is_checkout() && $checkout_was_updated === 'no' ) ) {
 			update_post_meta( $post_id, 'neve_meta_sidebar', 'full-width' );
 			update_post_meta( $post_id, 'neve_meta_enable_content_width', 'on' );
