@@ -1,3 +1,7 @@
+#customize-theme-controls .customize-pane-child.accordion-section-content {
+	overflow-y: hidden;
+}
+
 .control-wrap {
 	width: 100%;
 }
