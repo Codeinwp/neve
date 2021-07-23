@@ -7,7 +7,7 @@ describe('Blog/Archive 1 / Default Layout', function () {
 	});
 	it('Tests Default Layout (List)', function () {
 		cy.visit('/');
-		cy.get('article').each((el) => {
+		cy.get('article.post').each((el) => {
 			// Layout classes and styles.
 			cy.get(el).should('have.class', 'layout-default');
 			cy.get(el).find('.content').should('have.css', 'flex-direction', 'row');
@@ -16,7 +16,7 @@ describe('Blog/Archive 1 / Default Layout', function () {
 
 	it('Post Content Order', function () {
 		cy.visit('/');
-		cy.get('article').each((el) => {
+		cy.get('article.post').each((el) => {
 			cy.get(el).find('.excerpt-wrap:first-child').should('exist').and('be.visible');
 			cy.get(el).find('.nv-meta-list:last-child').should('exist').and('be.visible');
 			cy.get(el).should('have.descendants', '.nv-meta-list');
@@ -27,7 +27,7 @@ describe('Blog/Archive 1 / Default Layout', function () {
 	it('Meta Order', function () {
 		cy.visit('/');
 
-		cy.get('article').each((el) => {
+		cy.get('article.post').each((el) => {
 			cy.get(el).find('.nv-meta-list > .date:first-child').should('exist');
 			cy.get(el).find('.nv-meta-list > .author:nth-child(2)').should('exist');
 			cy.get(el).find('.nv-meta-list > .category:last-child').should('exist');
@@ -36,7 +36,7 @@ describe('Blog/Archive 1 / Default Layout', function () {
 
 	it('No Author Avatar', function () {
 		cy.visit('/');
-		cy.get('article').each((el) => {
+		cy.get('article.post').each((el) => {
 			cy.get(el).find('.author .photo').should('not.exist');
 		});
 	});
@@ -44,7 +44,7 @@ describe('Blog/Archive 1 / Default Layout', function () {
 	it('Excerpt length', function () {
 		cy.visit('/');
 		let count = 5;
-		cy.get('article').each((el) => {
+		cy.get('article.post').each((el) => {
 			if (count === 0) {
 				return false;
 			}
@@ -83,7 +83,7 @@ describe('Blog/Archive 1 / Default Layout', function () {
 
 		cy.visit('/');
 		let count = 0;
-		cy.get('article').each((el) => {
+		cy.get('article.post').each((el) => {
 			cy.get(el).should('have.class', 'layout-alternative');
 			if (count % 2 === 0) {
 				cy.get(el).find('.content').should('have.css', 'flex-direction', 'row-reverse');
@@ -106,7 +106,7 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 
 	it('Grid layout', function () {
 		cy.visit('/');
-		cy.get('article').each((el) => {
+		cy.get('article.post').each((el) => {
 			cy.get(el)
 				.should('have.class', 'layout-grid')
 				.and('have.class', 'col-md-4')
@@ -123,7 +123,7 @@ describe('Blog/Archive 2 / Grid Layout', function () {
 
 	it('Author Avatar', function () {
 		cy.visit('/');
-		cy.get('article').each((el) => {
+		cy.get('article.post').each((el) => {
 			cy.get(el).find('.author').should('have.descendants', '.photo');
 		});
 	});
@@ -139,7 +139,7 @@ describe('Blog/Archive 3 / Covers Layout', function () {
 
 	it('Covers layout', function () {
 		cy.visit('/');
-		cy.get('article').each((el) => {
+		cy.get('article.post').each((el) => {
 			cy.get(el).should('have.class', 'layout-covers');
 			cy.get(el)
 				.find('.cover-post.nv-post-thumbnail-wrap')
@@ -151,7 +151,7 @@ describe('Blog/Archive 3 / Covers Layout', function () {
 
 	it('Thumbnail Box Shadow', function () {
 		cy.visit('/');
-		cy.get('article').each((el) => {
+		cy.get('article.post').each((el) => {
 			cy.get(el)
 				.find('.cover-post.nv-post-thumbnail-wrap')
 				.should(
@@ -164,7 +164,7 @@ describe('Blog/Archive 3 / Covers Layout', function () {
 
 	it('Post Content Order', function () {
 		cy.visit('/');
-		cy.get('article').each((el) => {
+		cy.get('article.post').each((el) => {
 			cy.get(el).find('.entry-title:first-child').should('exist');
 			cy.get(el).find('.nv-meta-list:last-child').should('exist');
 		});
@@ -172,7 +172,7 @@ describe('Blog/Archive 3 / Covers Layout', function () {
 
 	it('Text Color', function () {
 		cy.visit('/');
-		cy.get('article').each((el) => {
+		cy.get('article.post').each((el) => {
 			cy.get(el).find('.inner').should('have.css', 'color', 'rgb(186, 218, 85)');
 		});
 	});
@@ -182,7 +182,7 @@ describe('Blog/Archive 3 / Covers Layout', function () {
 			expect(response.body).to.contains(`"neve_enable_masonry":true`);
 		});
 		cy.visit('/');
-		cy.get('article').each((el) => {
+		cy.get('article.post').each((el) => {
 			cy.get(el).should('have.css', 'position', 'absolute');
 			cy.get(el).should('have.css', 'left');
 			cy.get(el).should('have.css', 'top');

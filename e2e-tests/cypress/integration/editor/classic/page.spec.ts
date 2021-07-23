@@ -2,24 +2,38 @@ describe('Page meta box settings', function () {
 	const pageSetup = {
 		title: 'Test Page',
 		content: 'The Page Content',
-		url: null,
+		url: '/',
 	};
 
 	before('Create new page named "' + pageSetup.title + '".', function () {
-		cy.insertPost(pageSetup.title, pageSetup.content, 'page');
-
+		cy.insertPostWithRequest(pageSetup.title, pageSetup.content, 'pages')
+			.then(() => {
+				pageSetup.url = window.localStorage.getItem('postUrl');
+			})
+			.then(() => {
+				cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
+					meta: {
+						neve_meta_sidebar: 'full-width',
+						neve_meta_enable_content_width: 'on',
+						neve_meta_content_width: 100,
+					},
+				});
+			});
 		cy.setCustomizeSettings({
 			neve_migrated_hfg_colors: true,
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
+			neve_new_skin: 'new',
 		});
+	});
 
-		cy.get('.post-publish-panel__postpublish-header a')
-			.contains(pageSetup.title)
-			.should('have.attr', 'href')
-			.then((href) => {
-				pageSetup.url = href;
-			});
+	beforeEach(function () {
+		cy.restoreLocalStorage();
+	});
+
+	afterEach(function () {
+		cy.removeLocalStorage('WP_DATA_USER_1');
+		cy.saveLocalStorage();
 	});
 
 	context('Deactivated plugin', function () {
@@ -59,7 +73,7 @@ describe('Page meta box settings', function () {
 			cy.loginWithRequest(pageSetup.url);
 
 			cy.get('#wp-admin-bar-edit a').click();
-			cy.get('#neve_meta_content_width-range').invoke('val', 70).trigger('change');
+			cy.get('#neve_meta_content_width-range').invoke('val', 70).trigger('change', { force: true });
 			cy.get('#publish').contains('Update').click();
 
 			cy.visit(pageSetup.url);
@@ -76,11 +90,12 @@ describe('Page meta box settings', function () {
 			cy.get('label[for="neve_meta_disable_title"]').click();
 			cy.get('label[for="neve_meta_disable_header"]').click();
 			cy.get('label[for="neve_meta_disable_footer"]').click();
-			cy.get('#neve_meta_content_width-range').invoke('val', 70).trigger('change');
+			cy.get('#neve_meta_content_width-range').invoke('val', 70).trigger('change', { force: true });
 
 			cy.get('#publish').contains('Update').click();
 
 			cy.visit(pageSetup.url);
+			cy.wait(500);
 			cy.reload();
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left').and('be.visible');
 			cy.get('.single-page-container').should('have.class', 'container-fluid').and('be.visible');

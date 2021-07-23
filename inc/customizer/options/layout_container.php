@@ -60,10 +60,10 @@ class Layout_Container extends Base_Customizer {
 					'default'           => '{ "mobile": 748, "tablet": 992, "desktop": 1170 }',
 				],
 				[
-					'label'       => esc_html__( 'Container width', 'neve' ),
-					'section'     => 'neve_container',
-					'type'        => 'neve_responsive_range_control',
-					'input_attrs' => [
+					'label'                 => esc_html__( 'Container width', 'neve' ),
+					'section'               => 'neve_container',
+					'type'                  => 'neve_responsive_range_control',
+					'input_attrs'           => [
 						'min'        => 200,
 						'max'        => 2000,
 						'units'      => [ 'px' ],
@@ -73,7 +73,15 @@ class Layout_Container extends Base_Customizer {
 							'desktop' => 1170,
 						],
 					],
-					'priority'    => 25,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'       => '--container',
+							'responsive' => true,
+							'suffix'     => 'px',
+						],
+					],
+					'priority'              => 25,
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)

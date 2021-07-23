@@ -25,12 +25,19 @@ class Button_Appearance extends \WP_Customize_Control {
 	 * @var array
 	 */
 	public $no_hover = false;
+	/**
+	 * Default values.
+	 *
+	 * @var array
+	 */
+	public $default_vals = [];
 
 	/**
 	 * Send to JS.
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['no_hover'] = $this->no_hover;
+		$this->json['no_hover']    = $this->no_hover;
+		$this->json['defaultVals'] = $this->default_vals;
 	}
 }

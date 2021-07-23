@@ -1,0 +1,59 @@
+.style-border-bottom {
+  a:after {
+	bottom: 0;
+  }
+}
+
+.style-border-top {
+  a:after {
+	top: 0;
+  }
+}
+
+.style-border-top, .style-border-bottom, .style-full-height {
+  a:hover {
+	&:after {
+	  width: 100%;
+	}
+  }
+
+  a:after {
+	position: absolute;
+	content: "";
+	display: block;
+	margin: 0 auto;
+	width: 0;
+	height: 2px;
+	transition: opacity .3s ease, width .3s ease;
+	right: 0;
+	left: 0;
+	pointer-events: none;
+	background-color: var(--hoverColor, currentColor);
+  }
+}
+
+
+.style-full-height {
+  li a:hover {
+	color: var(--color);
+
+	&:after {
+	  width: calc(100% + var(--spacing));
+	}
+  }
+
+  a {
+	z-index: 1;
+
+	&:after {
+	  margin: 0 auto;
+	  top: 0;
+	  bottom: 0;
+	  left: calc(var(--spacing) / 2 * -1);
+	  right: calc(var(--spacing) / 2 * -1);
+	  height: 100%;
+	  z-index: -1;
+	}
+  }
+
+}
