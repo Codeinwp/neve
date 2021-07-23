@@ -4,6 +4,7 @@
   box-sizing: border-box;
   border-color: currentColor;
   text-align: center;
+  font-family: var(--bodyFontFamily),var(--nv-fallback-ff);
 }
 
 %nv-button-primary {

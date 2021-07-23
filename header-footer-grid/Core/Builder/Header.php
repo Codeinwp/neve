@@ -54,7 +54,7 @@ class Header extends Abstract_Builder {
 				)
 			)
 		);
-		$migrated_hfg = get_theme_mod( 'neve_migrated_builders', true );
+		$migrated_hfg = neve_is_new_builder();
 
 		$this->set_property(
 			'instructions_array',
@@ -75,7 +75,7 @@ class Header extends Abstract_Builder {
 					),
 				),
 				'builderMigrated' => $migrated_hfg,
-				'hadOldBuilder'   => ( get_theme_mod( 'hfg_header_layout' ) !== false || get_theme_mod( 'hfg_footer_layout' ) ) !== false,
+				'hadOldBuilder'   => neve_had_old_hfb() && ! neve_is_new_skin(),
 			)
 		);
 	}

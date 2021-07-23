@@ -11,6 +11,7 @@
   img {
 	max-width: var(--maxWidth);
 	display: block;
+	margin: 0 auto;
   }
 
   .title-with-logo {
@@ -25,7 +26,10 @@
 
   h1, p {
 	font-size: 24px;
-	font-weight: var(--h4FontWeight);
+	font-weight: var(--h1FontWeight);
+	line-height: var(--bodyLineHeight);
+	letter-spacing: var(--bodyLetterSpacing);
+	text-transform: var(--textTransform, var(--bodyTextTransform));
 	margin: 0;
   }
 

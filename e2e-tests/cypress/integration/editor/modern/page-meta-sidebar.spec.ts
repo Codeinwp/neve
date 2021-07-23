@@ -24,6 +24,7 @@ describe('Single page sidebar', function () {
 			neve_migrated_hfg_colors: true,
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
+			neve_new_skin: 'new',
 		});
 		cy.saveLocalStorage();
 	});
@@ -110,8 +111,6 @@ describe('Single page sidebar', function () {
 		cy.clearWelcome();
 
 		cy.openNeveSidebar();
-
-		cy.activateCheckbox('.components-toggle-control__label', 'Custom Content Width (%)');
 
 		cy.get('.neve_meta_content_width').find('input[type=number]').type('{selectall}').type('60');
 		cy.updatePost();

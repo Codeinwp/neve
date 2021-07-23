@@ -36,55 +36,45 @@ trait Css_Vars {
 	 * @return array
 	 */
 	public function get_button_rules() {
-		$mod_key_primary   = Mods::get_alternative_mod( Config::MODS_BUTTON_PRIMARY_STYLE );
-		$default_primary   = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_STYLE );
-		$mod_key_secondary = Mods::get_alternative_mod( Config::MODS_BUTTON_SECONDARY_STYLE );
-		$default_secondary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_SECONDARY_STYLE );
+		$mod_key_primary   = Config::MODS_BUTTON_PRIMARY_STYLE;
+		$default_primary   = neve_get_button_appearance_default();
+		$mod_key_secondary = Config::MODS_BUTTON_SECONDARY_STYLE;
+		$default_secondary = neve_get_button_appearance_default( 'secondary' );
 
 		$rules = [
 			'--primaryBtnBg'             => [
-				Dynamic_Selector::META_KEY     => $mod_key_primary . '.background',
-				Dynamic_Selector::META_DEFAULT => $default_primary['background'],
+				Dynamic_Selector::META_KEY => $mod_key_primary . '.background',
 			],
 			'--secondaryBtnBg'           => [
-				Dynamic_Selector::META_KEY     => $mod_key_secondary . '.background',
-				Dynamic_Selector::META_DEFAULT => $default_secondary['background'],
+				Dynamic_Selector::META_KEY => $mod_key_secondary . '.background',
 			],
 			'--primaryBtnHoverBg'        => [
-				Dynamic_Selector::META_KEY     => $mod_key_primary . '.backgroundHover',
-				Dynamic_Selector::META_DEFAULT => $default_primary['backgroundHover'],
+				Dynamic_Selector::META_KEY => $mod_key_primary . '.backgroundHover',
 			],
 			'--secondaryBtnHoverBg'      => [
-				Dynamic_Selector::META_KEY     => $mod_key_secondary . '.backgroundHover',
-				Dynamic_Selector::META_DEFAULT => $default_secondary['backgroundHover'],
+				Dynamic_Selector::META_KEY => $mod_key_secondary . '.backgroundHover',
 			],
 			'--primaryBtnColor'          => [
-				Dynamic_Selector::META_KEY     => $mod_key_primary . '.text',
-				Dynamic_Selector::META_DEFAULT => $default_primary['text'],
+				Dynamic_Selector::META_KEY => $mod_key_primary . '.text',
 			],
 			'--secondaryBtnColor'        => [
-				Dynamic_Selector::META_KEY     => $mod_key_secondary . '.text',
-				Dynamic_Selector::META_DEFAULT => $default_secondary['text'],
+				Dynamic_Selector::META_KEY => $mod_key_secondary . '.text',
 			],
 			'--primaryBtnHoverColor'     => [
-				Dynamic_Selector::META_KEY     => $mod_key_primary . '.textHover',
-				Dynamic_Selector::META_DEFAULT => $default_primary['textHover'],
+				Dynamic_Selector::META_KEY => $mod_key_primary . '.textHover',
 			],
 			'--secondaryBtnHoverColor'   => [
-				Dynamic_Selector::META_KEY     => $mod_key_secondary . '.textHover',
-				Dynamic_Selector::META_DEFAULT => $default_secondary['textHover'],
+				Dynamic_Selector::META_KEY => $mod_key_secondary . '.textHover',
 			],
 			'--primaryBtnBorderRadius'   => [
-				Dynamic_Selector::META_KEY     => $mod_key_primary . '.borderRadius',
-				Dynamic_Selector::META_DEFAULT => $default_primary['borderRadius'],
-				Dynamic_Selector::META_SUFFIX  => 'px',
-				'directional-prop'             => Config::CSS_PROP_BORDER_RADIUS,
+				Dynamic_Selector::META_KEY    => $mod_key_primary . '.borderRadius',
+				Dynamic_Selector::META_SUFFIX => 'px',
+				'directional-prop'            => Config::CSS_PROP_BORDER_RADIUS,
 			],
 			'--secondaryBtnBorderRadius' => [
-				Dynamic_Selector::META_KEY     => $mod_key_secondary . '.borderRadius',
-				Dynamic_Selector::META_DEFAULT => $default_secondary['borderRadius'],
-				Dynamic_Selector::META_SUFFIX  => 'px',
-				'directional-prop'             => Config::CSS_PROP_BORDER_RADIUS,
+				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.borderRadius',
+				Dynamic_Selector::META_SUFFIX => 'px',
+				'directional-prop'            => Config::CSS_PROP_BORDER_RADIUS,
 			],
 		];
 
@@ -95,33 +85,31 @@ trait Css_Vars {
 		// Border Width
 		if ( isset( $primary_values['type'] ) && $primary_values['type'] === 'outline' ) {
 			$rules['--primaryBtnBorderWidth'] = [
-				Dynamic_Selector::META_KEY     => $mod_key_primary . '.borderWidth',
-				Dynamic_Selector::META_DEFAULT => $default_primary['borderWidth'],
-				Dynamic_Selector::META_SUFFIX  => 'px',
-				'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
+				Dynamic_Selector::META_KEY    => $mod_key_primary . '.borderWidth',
+				Dynamic_Selector::META_SUFFIX => 'px',
+				'directional-prop'            => Config::CSS_PROP_BORDER_WIDTH,
 			];
 		}
 		if ( isset( $secondary_values['type'] ) && $secondary_values['type'] === 'outline' ) {
 			$rules['--secondaryBtnBorderWidth'] = [
-				Dynamic_Selector::META_KEY     => $mod_key_secondary . '.borderWidth',
-				Dynamic_Selector::META_DEFAULT => $default_secondary['borderWidth'],
-				Dynamic_Selector::META_SUFFIX  => 'px',
-				'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
+				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.borderWidth',
+				Dynamic_Selector::META_SUFFIX => 'px',
+				'directional-prop'            => Config::CSS_PROP_BORDER_WIDTH,
 			];
 		}
 
-		$mod_key_primary       = Mods::get_alternative_mod( Config::MODS_BUTTON_PRIMARY_PADDING );
+		$mod_key_primary       = Config::MODS_BUTTON_PRIMARY_PADDING;
 		$default_primary       = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_PADDING );
 		$rules['--btnPadding'] = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary,
 			Dynamic_Selector::META_DEFAULT       => $default_primary,
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
 			Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-				$mod_key_primary = Mods::get_alternative_mod( Config::MODS_BUTTON_PRIMARY_STYLE );
-				$default_primary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_STYLE );
+				$mod_key_primary = Config::MODS_BUTTON_PRIMARY_STYLE;
+				$default_primary = neve_get_button_appearance_default();
 
-				$mod_key_secondary = Mods::get_alternative_mod( Config::MODS_BUTTON_SECONDARY_STYLE );
-				$default_secondary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_SECONDARY_STYLE );
+				$mod_key_secondary = Config::MODS_BUTTON_SECONDARY_STYLE;
+				$default_secondary = neve_get_button_appearance_default( 'secondary' );
 
 				$values   = [
 					'primary'   => get_theme_mod( $mod_key_primary, $default_primary ),
@@ -156,7 +144,7 @@ trait Css_Vars {
 			'directional-prop'                   => Config::CSS_PROP_PADDING,
 		];
 
-		$mod_key_primary             = Mods::get_alternative_mod( Config::MODS_BUTTON_TYPEFACE );
+		$mod_key_primary             = Config::MODS_BUTTON_TYPEFACE;
 		$rules['--btnFs']            = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary . '.fontSize',
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
@@ -188,11 +176,11 @@ trait Css_Vars {
 	 */
 	public function get_typography_rules() {
 		$default = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_GENERAL );
-		$mod_key = Mods::get_alternative_mod( Config::MODS_TYPEFACE_GENERAL );
+		$mod_key = Config::MODS_TYPEFACE_GENERAL;
 
 		$rules = [
 			'--bodyFontFamily'     => [
-				Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+				Dynamic_Selector::META_KEY     => Config::MODS_FONT_GENERAL,
 				Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 			],
 			'--bodyFontSize'       => [
@@ -216,18 +204,18 @@ trait Css_Vars {
 			'--bodyFontWeight'     => [
 				Dynamic_Selector::META_KEY     => $mod_key . '.fontWeight',
 				Dynamic_Selector::META_DEFAULT => $default['fontWeight'],
-				'font'                         => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_HEADINGS ),
+				'font'                         => 'mods_' . Config::MODS_FONT_HEADINGS,
 			],
 			'--bodyTextTransform'  => [
 				Dynamic_Selector::META_KEY => $mod_key . '.textTransform',
 			],
 			'--headingsFontFamily' => [
-				Dynamic_Selector::META_KEY => Mods::get_alternative_mod( Config::MODS_FONT_HEADINGS ),
+				Dynamic_Selector::META_KEY => Config::MODS_FONT_HEADINGS,
 			],
 		];
 		foreach ( neve_get_headings_selectors() as $id => $heading_selector ) {
 			$composed_key = sprintf( 'neve_%s_typeface_general', $id );
-			$mod_key      = Mods::get_alternative_mod( $composed_key );
+			$mod_key      = $composed_key;
 			$default      = Mods::get_alternative_mod_default( $composed_key );
 
 			$rules[ '--' . $id . 'FontSize' ] = [
@@ -240,7 +228,7 @@ trait Css_Vars {
 			$rules[ '--' . $id . 'FontWeight' ] = [
 				Dynamic_Selector::META_KEY     => $mod_key . '.fontWeight',
 				Dynamic_Selector::META_DEFAULT => $default['fontWeight'],
-				'font'                         => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_HEADINGS ),
+				'font'                         => 'mods_' . Config::MODS_FONT_HEADINGS,
 			];
 
 			$rules[ '--' . $id . 'LineHeight' ] = [

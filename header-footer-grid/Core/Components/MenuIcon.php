@@ -139,7 +139,7 @@ class MenuIcon extends Abstract_Component {
 		);
 
 		$new_skin = neve_is_new_skin();
-		$mod_key  = Mods::get_alternative_mod( self::BUTTON_APPEARANCE );
+		$mod_key  = self::BUTTON_APPEARANCE;
 		$default  = $new_skin ? [
 			'type'         => 'outline',
 			'borderRadius' => [
@@ -203,7 +203,7 @@ class MenuIcon extends Abstract_Component {
 	 * @return array
 	 */
 	private function add_legacy_style( $css_array ) {
-		$id          = $this->get_id() . '_' . Mods::get_alternative_mod( self::BUTTON_APPEARANCE );
+		$id          = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ', ' . $this->close_button,
 			Dynamic_Selector::KEY_RULES    => [
@@ -237,7 +237,7 @@ class MenuIcon extends Abstract_Component {
 			return $this->add_legacy_style( $css_array );
 		}
 
-		$id = $this->get_id() . '_' . Mods::get_alternative_mod( self::BUTTON_APPEARANCE );
+		$id = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
 
 		$rules = [
 			'--bgColor'      => $id . '.background',

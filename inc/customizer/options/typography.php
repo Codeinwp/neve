@@ -74,7 +74,7 @@ class Typography extends Base_Customizer {
 		 */
 		$this->add_control(
 			new Control(
-				Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+				Config::MODS_FONT_GENERAL,
 				[
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
@@ -102,7 +102,7 @@ class Typography extends Base_Customizer {
 		$defaults = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_GENERAL );
 		$this->add_control(
 			new Control(
-				Mods::get_alternative_mod( Config::MODS_TYPEFACE_GENERAL ),
+				Config::MODS_TYPEFACE_GENERAL,
 				[
 					'transport' => $this->selective_refresh,
 					'default'   => $defaults,
@@ -223,7 +223,7 @@ class Typography extends Base_Customizer {
 			$default_values = Mods::get_alternative_mod_default( $mod_key );
 			$this->add_control(
 				new Control(
-					Mods::get_alternative_mod( $mod_key ),
+					$mod_key,
 					[
 						'transport' => $this->selective_refresh,
 						'default'   => $default_values,

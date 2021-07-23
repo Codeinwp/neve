@@ -5,22 +5,29 @@ describe('Posts meta box default settings', function () {
 		url: '/',
 	};
 	before('Create new post named "' + postSetup.title + '".', function () {
-		cy.insertPostWithRequest(postSetup.title, postSetup.content, 'posts', 4)
-			.then(() => {
-				postSetup.url = window.localStorage.getItem('postUrl');
-			})
-			.then(() => {
-				cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'posts', {
-					meta: {
-						neve_meta_content_width: 0,
-					},
+		cy.getRandomAttachment().then(() => {
+			cy.insertPostWithRequest(
+				postSetup.title,
+				postSetup.content,
+				'posts',
+				parseInt(window.localStorage.getItem('randomAttachmentId')),
+			)
+				.then(() => {
+					postSetup.url = window.localStorage.getItem('postUrl');
+				})
+				.then(() => {
+					cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'posts', {
+						meta: {
+							neve_meta_content_width: 0,
+						},
+					});
 				});
-			});
-
+		});
 		cy.setCustomizeSettings({
 			neve_migrated_hfg_colors: true,
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
+			neve_new_skin: 'new',
 		});
 
 		cy.saveLocalStorage();
@@ -81,6 +88,7 @@ describe('Posts meta box default settings', function () {
 			cy.get('#publish').contains('Update').click();
 
 			cy.visit(postSetup.url);
+			cy.wait(500);
 			cy.reload();
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left').and('be.visible');
 			cy.get('.single-post-container').should('have.class', 'container-fluid').and('be.visible');

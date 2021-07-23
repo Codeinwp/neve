@@ -175,7 +175,7 @@ class Gutenberg extends Generator {
 				],
 				Config::CSS_PROP_FONT_WEIGHT    => [
 					Dynamic_Selector::META_KEY => Config::MODS_BUTTON_TYPEFACE . '.fontWeight',
-					'font'                     => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
 				],
 				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_BUTTON_TYPEFACE . '.textTransform',
 			],
@@ -206,7 +206,7 @@ class Gutenberg extends Generator {
 				],
 				Config::CSS_PROP_FONT_WEIGHT    => [
 					Dynamic_Selector::META_KEY => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontWeight',
-					'font'                     => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
 				],
 				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.textTransform',
 			],
@@ -240,7 +240,7 @@ class Gutenberg extends Generator {
 			Dynamic_Selector::KEY_SELECTOR => '.editor-styles-wrapper',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_FONT_FAMILY => [
-					Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+					Dynamic_Selector::META_KEY     => Config::MODS_FONT_GENERAL,
 					Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 				],
 			],
@@ -269,11 +269,11 @@ class Gutenberg extends Generator {
 				],
 				Config::CSS_PROP_FONT_WEIGHT    => [
 					Dynamic_Selector::META_KEY => Config::MODS_TYPEFACE_GENERAL . '.fontWeight',
-					'font'                     => 'mods_' . Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
 				],
 				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_TYPEFACE_GENERAL . '.textTransform',
 				Config::CSS_PROP_FONT_FAMILY    => [
-					Dynamic_Selector::META_KEY     => Mods::get_alternative_mod( Config::MODS_FONT_GENERAL ),
+					Dynamic_Selector::META_KEY     => Config::MODS_FONT_GENERAL,
 					Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 				],
 			],
@@ -293,7 +293,7 @@ class Gutenberg extends Generator {
 				'neve_h6_typeface_general' => '.wp-block h6, h6.wp-block',
 			] as $heading_mod => $heading_selector
 		) {
-			$heading_mod          = Mods::get_alternative_mod( $heading_mod );
+
 			$this->_subscribers[] = [
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_FONT_SIZE      => [
