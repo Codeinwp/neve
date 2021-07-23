@@ -108,6 +108,7 @@ class Admin {
 		$mods = [
 			'hfg_header_layout',
 			'hfg_footer_layout',
+			'neve_blog_archive_layout',
 			'neve_headings_font_family',
 			'neve_body_font_family',
 			'neve_global_colors',
@@ -121,10 +122,10 @@ class Admin {
 
 		$should_switch = false;
 		foreach ( $mods as $mod_to_check ) {
-			if ( ! array_key_exists( $mod_to_check, $all_mods ) ) {
-				continue;
+			if ( isset( $all_mods[ $mod_to_check ] ) ) {
+				$should_switch = true;
+				break;
 			}
-			$should_switch = true;
 		}
 
 		if ( ! $should_switch ) {

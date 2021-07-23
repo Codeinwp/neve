@@ -14,6 +14,6 @@ describe('Header Row Background Control', function () {
 		cy.get('@row')
 			.should('have.css', 'background-image')
 			.and('contain', 'url(')
-			.and('contain', 'wp-content/uploads');
+			.and('contain', 'placeholder.com');
 	});
 });

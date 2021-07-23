@@ -112,8 +112,6 @@ describe('Single page sidebar', function () {
 
 		cy.openNeveSidebar();
 
-		cy.activateCheckbox('.components-toggle-control__label', 'Custom Content Width (%)');
-
 		cy.get('.neve_meta_content_width').find('input[type=number]').type('{selectall}').type('60');
 		cy.updatePost();
 		cy.visit(pageSetup.url);
