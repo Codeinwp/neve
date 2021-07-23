@@ -20,7 +20,7 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Elementor location manager
 	 *
-	 * @var \ElementorPro\Modules\ThemeBuilder\Module
+	 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Locations_Manager
 	 */
 	public $elementor_location_manager;
 
@@ -145,7 +145,7 @@ class Elementor extends Page_Builder_Base {
 			return;
 		}
 
-		// Elementor locations compatibility.
+		// Elementor locations compatibility. (This action fires by Elementor Pro)
 		add_action( 'elementor/theme/register_locations', array( $this, 'register_theme_locations' ) );
 
 		// Override theme templates.
