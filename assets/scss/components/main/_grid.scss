@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 0 auto;
+  max-width: var(--container);
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.container-fluid {
+  width: 100%;
+  margin: 0 auto;
+
+  > div {
+	margin: 0 -15px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.col {
+  padding: 0 15px;
+  margin: 0 auto;
+  flex-grow: 1;
+  max-width: 100%;
+}

@@ -10,6 +10,11 @@ $container_class = apply_filters( 'neve_container_class_filter', 'container', 'b
 
 get_header();
 
+$wrapper_classes = [ 'posts-wrapper' ];
+if ( ! neve_is_new_skin() ) {
+	$wrapper_classes[] = 'row';
+}
+
 ?>
 	<div class="<?php echo esc_attr( $container_class ); ?> archive-container">
 		<div class="row">
@@ -19,7 +24,7 @@ get_header();
 				do_action( 'neve_page_header', 'search' );
 				if ( have_posts() ) {
 					/* Start the Loop. */
-					echo '<div class="posts-wrapper row">';
+					echo '<div class="' . esc_attr( join( ' ', $wrapper_classes ) ) . '">';
 					while ( have_posts() ) {
 						the_post();
 						get_template_part( 'template-parts/content' );

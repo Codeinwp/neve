@@ -1,0 +1,59 @@
+@mixin rtl() {
+  html[dir="rtl"] & {
+    @content;
+  }
+}
+
+// Skin mode
+@function black($opacity) {
+  @return rgba(black, $opacity)
+}
+@function white($opacity) {
+  @return rgba(white, $opacity)
+}
+
+// Mobile first responsive
+@mixin mq($media) {
+  @if $media == min-xs {
+    @media (min-width: $screen_xs) { @content; }
+  }
+  @else if $media == max-xs {
+    @media (max-width: $screen_xs) { @content; }
+  }
+
+  @if $media == min-sm {
+    @media (min-width: $screen_sm) { @content; }
+  }
+  @else if $media == max-sm {
+    @media (max-width: $screen_sm) { @content; }
+  }
+
+  @else if $media == min-md {
+    @media (min-width: $screen_md) { @content; }
+  }
+  @else if $media == max-md {
+    @media (max-width: $screen_md) { @content; }
+  }
+
+  @else if $media == min-lg {
+    @media (min-width: $screen_lg) { @content; }
+  }
+  @else if $media == max-lg {
+    @media (max-width: $screen_lg) { @content; }
+  }
+}
+
+//Device Query
+@mixin for_device( $device_name ){
+  @if map-has-key( $gl-devices-list, $device_name) {
+    @media #{map-get( $gl-devices-list, $device_name)} {
+      @content;
+    }
+  }@else {
+    @if map-has-key( $gl-mq-list, $device_name) {
+      @media #{map-get($gl-mq-list, $device_name)} {
+        @content;
+      }
+    }
+  }
+}

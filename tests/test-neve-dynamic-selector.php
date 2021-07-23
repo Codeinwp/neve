@@ -36,16 +36,36 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$this->assertContains( "#ccc", $css );
 	}
 
-	public function test_css_generation_with_invalid_rule() {
+	public function test_css_generation_with_generic_rule() {
 		set_theme_mod( 'sample-color', '#ccc' );
 		$subscriber = new \Neve\Core\Styles\Dynamic_Selector( [
 			'.test-selector' => [
-				'invalid_rule' => 'sample-color'
+				'--css-var-example' => 'sample-color'
 			]
 		] );
 		$css        = '';
 		$css        .= $subscriber;
-		$this->assertEmpty( $css );
+		$this->assertContains('--css-var-example', $css);
+		$this->assertNotEmpty( $css );
+	}
+
+	public function test_css_generation_with_value_override() {
+		set_theme_mod( 'overridden-color', '#bada55' );
+		$subscriber = new \Neve\Core\Styles\Dynamic_Selector( [
+			'.test-selector' => [
+				\Neve\Core\Settings\Config::CSS_PROP_COLOR => [
+					'key'      => 'overridden-color',
+					'override' => 'var(--nv-text-color)'
+				]
+			]
+		] );
+
+		$css        = '';
+		$css        .= $subscriber;
+
+		$this->assertNotEmpty( $css );
+		$this->assertNotContains( "#bada55", $css );
+		$this->assertContains( "var(--nv-text-color)", $css );
 	}
 
 	public function test_css_generation_with_key() {

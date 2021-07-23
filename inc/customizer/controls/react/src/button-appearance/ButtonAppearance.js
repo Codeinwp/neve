@@ -79,6 +79,10 @@ const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 													settings[optionType]
 														.controls[controlSlug]
 												}
+												defaultValue={
+													defaultVals[controlSlug] ||
+													null
+												}
 												selectedColor={
 													value[controlSlug]
 												}

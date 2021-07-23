@@ -1,0 +1,39 @@
+@import "../../main/variables";
+
+.site-logo {
+  align-items: center;
+  display: flex;
+
+  amp-img img {
+	max-height: 60px;
+  }
+
+  img {
+	max-width: var(--maxWidth);
+	display: block;
+	margin: 0 auto;
+  }
+
+  .title-with-logo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	> *:first-child {
+	  margin-right: 10px;
+	}
+  }
+
+  h1, p {
+	font-size: 24px;
+	font-weight: var(--h1FontWeight);
+	line-height: var(--bodyLineHeight);
+	letter-spacing: var(--bodyLetterSpacing);
+	text-transform: var(--textTransform, var(--bodyTextTransform));
+	margin: 0;
+  }
+
+  small {
+	display: block;
+  }
+}

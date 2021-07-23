@@ -43,6 +43,13 @@ class Simple_Upsell_Section extends \WP_Customize_Section {
 	public $text = '';
 
 	/**
+	 * Screen reader text.
+	 *
+	 * @var string
+	 */
+	public $screen_reader = '';
+
+	/**
 	 * Gather the parameters passed to client JavaScript via JSON.
 	 *
 	 * @return array The array to be exported to the client as JSON.

@@ -67,6 +67,10 @@ class Layout_Sidebar extends Base_View {
 		$theme_mod     = $sidebar_setup['theme_mod'];
 		$theme_mod     = apply_filters( 'neve_sidebar_position', get_theme_mod( $theme_mod, 'right' ) );
 
+		$layout       = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
+		$posts_layout = neve_is_new_skin() ? ' nv-blog-' . $layout : '';
+
+		$classes[] = $posts_layout;
 		$classes[] = 'nv-sidebar-' . $theme_mod;
 
 		return $classes;
@@ -144,7 +148,7 @@ class Layout_Sidebar extends Base_View {
 		$label        = apply_filters( 'neve_filter_sidebar_close_button_text', __( 'Close', 'neve' ), $slug );
 		$button_attrs = apply_filters( 'neve_filter_sidebar_close_button_data_attrs', '', $slug );
 
-		return '<div class="sidebar-header"><span class="nv-sidebar-toggle in-sidebar button button-secondary secondary-default" ' . $button_attrs . '>' . esc_html( $label ) . '</span></div>';
+		return '<div class="sidebar-header"><a href="#" class="nv-sidebar-toggle in-sidebar button-secondary secondary-default" ' . $button_attrs . '>' . esc_html( $label ) . '</a></div>';
 	}
 
 	/**

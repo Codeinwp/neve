@@ -10,7 +10,6 @@ namespace Neve\Core\Styles;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Customizer\Defaults\Single_Post;
-use Neve\Customizer\Options\Layout_Single_Post;
 
 /**
  * Class Generator for Frontend.
@@ -18,21 +17,29 @@ use Neve\Customizer\Options\Layout_Single_Post;
  * @package Neve\Core\Styles
  */
 class Frontend extends Generator {
+	use Css_Vars;
 	use Single_Post;
+
+	/**
+	 * Box shadow map values
+	 *
+	 * @var string[]
+	 */
+	private $box_shadow_map = [
+		1 => '0 1px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.1)',
+		2 => '0 3px 6px -5px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1)',
+		3 => '0 10px 20px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1)',
+		4 => '0 14px 28px rgba(0, 0, 0, 0.12), 0 10px 10px rgba(0, 0, 0, 0.12)',
+		5 => '0 16px 38px -12px rgba(0,0,0,0.56), 0 4px 25px 0 rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.2)',
+	];
 
 	/**
 	 * Generator constructor.
 	 */
 	public function __construct() {
-		$this->_subscribers = [
-			'.container' => [
-				Config::CSS_PROP_MAX_WIDTH => [
-					Dynamic_Selector::META_KEY           => Config::MODS_CONTAINER_WIDTH,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-			],
-		];
-		$this->setup_form_buttons();
+		$this->_subscribers = [];
+		$this->setup_container();
+		$this->setup_blog_layout();
 		$this->setup_legacy_gutenberg_palette();
 		$this->setup_layout_subscribers();
 		$this->setup_buttons();
@@ -45,21 +52,26 @@ class Frontend extends Generator {
 	}
 
 	/**
-	 * Setup Form Buttons Type
+	 * Setup the container styles.
+	 *
+	 * @return false
 	 */
-	private function setup_form_buttons() {
-		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
+	private function setup_container() {
+		if ( ! neve_is_new_skin() ) {
+			$this->_subscribers['.container'] = [
+				Config::CSS_PROP_MAX_WIDTH => [
+					Dynamic_Selector::META_KEY           => Config::MODS_CONTAINER_WIDTH,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+			];
 
-		if ( $form_buttons_type === 'primary' ) {
-			add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL, [ $this, 'add_form_buttons' ] );
-			add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_PADDING, [ $this, 'add_form_buttons' ] );
-			add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_HOVER, [ $this, 'add_form_buttons_hover' ] );
-			return;
+			return false;
 		}
 
-		add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL, [ $this, 'add_form_buttons' ] );
-		add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_PADDING, [ $this, 'add_form_buttons' ] );
-		add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER, [ $this, 'add_form_buttons_hover' ] );
+		$this->_subscribers[] = [
+			Dynamic_Selector::KEY_SELECTOR => ':root',
+			Dynamic_Selector::KEY_RULES    => $this->get_container_rules(),
+		];
 	}
 
 	/**
@@ -90,200 +102,268 @@ class Frontend extends Generator {
 	}
 
 	/**
-	 * Setup settings subscribers for layout.
-	 *
-	 * TODO: Exclude sidebar CSS when there is not sidebar option selected.
-	 * TODO: Better exclude classes when Woo is not present, i.e shop-sidebar class is added even when Woo is not used.
+	 * Setup legacy blog colors.
 	 */
-	public function setup_layout_subscribers() {
-		$is_advanced_on = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, false );
-		if ( ! $is_advanced_on ) {
+	private function setup_legacy_blog_colors() {
+		$this->_subscribers['.cover-post .inner, .cover-post .inner a:not(.button), .cover-post .inner a:not(.button):hover, .cover-post .inner a:not(.button):focus, .cover-post .inner li'] = [
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY => 'neve_blog_covers_text_color',
+			],
+		];
 
-			$this->_subscribers['#content .container .col, #content .container-fluid .col']                             = [
-				Config::CSS_PROP_MAX_WIDTH => [
-					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
-					Dynamic_Selector::META_SUFFIX      => '%',
-					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-				],
-			];
-			$this->_subscribers['.alignfull > [class*="__inner-container"], .alignwide > [class*="__inner-container"]'] = [
-				Config::CSS_PROP_MAX_WIDTH => [
-					Dynamic_Selector::META_KEY           => Config::MODS_SITEWIDE_CONTENT_WIDTH,
-					Dynamic_Selector::META_DEFAULT       => 70,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
-						if ( $device === Dynamic_Selector::DESKTOP ) {
-							return sprintf( 'max-width:%spx', round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) );
-						}
-						if ( $device === Dynamic_Selector::MOBILE ) {
-							return sprintf( 'max-width:%spx;margin:auto', ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) );
-						}
+		$selector = get_theme_mod( 'neve_blog_archive_layout', 'grid' ) === 'covers' ? '.cover-post.nv-post-thumbnail-wrap' : '.nv-post-thumbnail-wrap img';
 
+		$this->_subscribers[ $selector ] = [
+			Config::CSS_PROP_BOX_SHADOW => [
+				Dynamic_Selector::META_KEY    => 'neve_post_thumbnail_box_shadow',
+				Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+					if ( absint( $value ) === 0 ) {
 						return '';
-					},
-				],
-			];
-			$this->_subscribers['.container-fluid .alignfull > [class*="__inner-container"], .container-fluid .alignwide > [class*="__inner-container"]'] = [
-				Config::CSS_PROP_MAX_WIDTH => [
-					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
-					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-					Dynamic_Selector::META_FILTER      => function ( $css_prop, $value, $meta, $device ) {
-						return sprintf( 'max-width:calc(%s%% + %spx)', $value, Config::CONTENT_DEFAULT_PADDING / 2 );
-					},
-				],
-			];
-			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar'] = [
-				Config::CSS_PROP_MAX_WIDTH => [
-					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
-					Dynamic_Selector::META_FILTER      => 'minus_100',
-					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-					Dynamic_Selector::META_SUFFIX      => '%',
-				],
-			];
+					}
 
-			return;
-		}
-		// Others content width.
-		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col'] = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY         => Config::MODS_OTHERS_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-				Dynamic_Selector::META_SUFFIX      => '%',
-			],
-		];
-		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap']             = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY         => Config::MODS_OTHERS_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-				Dynamic_Selector::META_FILTER      => 'minus_100',
-				Dynamic_Selector::META_SUFFIX      => '%',
-			],
-		];
-		// Archive content width.
-		$this->_subscribers['.neve-main > .archive-container .nv-index-posts.col'] = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY         => Config::MODS_ARCHIVE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-				Dynamic_Selector::META_SUFFIX      => '%',
-			],
-		];
-		$this->_subscribers['.neve-main > .archive-container .nv-sidebar-wrap']    = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY         => Config::MODS_ARCHIVE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-				Dynamic_Selector::META_FILTER      => 'minus_100',
-				Dynamic_Selector::META_SUFFIX      => '%',
-			],
-		];
-		// Single content width.
-		$this->_subscribers['.neve-main > .single-post-container .nv-single-post-wrap.col'] = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-				Dynamic_Selector::META_SUFFIX      => '%',
-			],
-		];
+					if ( ! array_key_exists( absint( $value ), $this->box_shadow_map ) ) {
+						return '';
+					}
 
-		$this->_subscribers['.single-post-container .alignfull > [class*="__inner-container"], .single-post-container .alignwide > [class*="__inner-container"]']                                 = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEFAULT       => 70,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-					$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
-					$value = $device !== Dynamic_Selector::DESKTOP ? ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) : round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING );
-
-					return sprintf( 'max-width:%spx', $value );
+					return sprintf( '%s:%s;', $css_prop, $this->box_shadow_map[ $value ] );
 				},
 			],
 		];
-		$this->_subscribers['.container-fluid.single-post-container .alignfull > [class*="__inner-container"], .container-fluid.single-post-container .alignwide > [class*="__inner-container"]'] = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-				Dynamic_Selector::META_FILTER      => function ( $css_prop, $value, $meta, $device ) {
-					return sprintf( 'max-width:calc(%s%% + %spx)', $value, Config::CONTENT_DEFAULT_PADDING / 2 );
-				},
-			],
-		];
-
-		$this->_subscribers['.neve-main > .single-post-container .nv-sidebar-wrap'] = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-				Dynamic_Selector::META_FILTER      => 'minus_100',
-				Dynamic_Selector::META_SUFFIX      => '%',
-			],
-		];
-
-		// TODO provide context handler for better checks.
-		if ( ! class_exists( 'WooCommerce', false ) ) {
-			return;
-		}
-
-		$this->_subscribers['.archive.woocommerce .neve-main > .shop-container .nv-shop.col']     = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_ARCHIVE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-				Dynamic_Selector::META_SUFFIX      => '%',
-			],
-		];
-		$this->_subscribers['.archive.woocommerce .neve-main > .shop-container .nv-sidebar-wrap'] = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_ARCHIVE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-				Dynamic_Selector::META_FILTER      => 'minus_100',
-				Dynamic_Selector::META_SUFFIX      => '%',
-			],
-		];
-
-
-		$this->_subscribers['.single-product .neve-main > .shop-container .nv-shop.col'] = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-				Dynamic_Selector::META_SUFFIX      => '%',
-			],
-		];
-
-		$this->_subscribers['.single-product .alignfull > [class*="__inner-container"], .single-product .alignwide > [class*="__inner-container"]']                  = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY           => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEFAULT       => 70,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-					$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
-					$value = $device !== Dynamic_Selector::DESKTOP ? ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) : round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING );
-
-					return sprintf( 'max-width:%spx', $value );
-				},
-			],
-		];
-		$this->_subscribers['.single-product .container-fluid .alignfull > [class*="__inner-container"], .single-product .alignwide > [class*="__inner-container"]'] = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-				Dynamic_Selector::META_FILTER      => function ( $css_prop, $value, $meta, $device ) {
-					return sprintf( 'max-width:calc(%s%% + %spx)', $value, Config::CONTENT_DEFAULT_PADDING / 2 );
-				},
-			],
-		];
-		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap'] = [
-			Config::CSS_PROP_MAX_WIDTH => [
-				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
-				Dynamic_Selector::META_FILTER      => 'minus_100',
-				Dynamic_Selector::META_SUFFIX      => '%',
-			],
-		];
-
 	}
 
 	/**
-	 * Setup button subscribers.
+	 * Add css for blog colors.
 	 */
-	public function setup_buttons() {
+	public function setup_blog_colors() {
+		if ( ! neve_is_new_skin() ) {
+			$this->setup_legacy_blog_colors();
+
+			return;
+		}
+
+		$layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
+		if ( $layout === 'covers' ) {
+			$this->_subscribers['.cover-post'] = [
+				'--color' => 'neve_blog_covers_text_color',
+			];
+		}
+
+		$this->_subscribers['.nv-post-thumbnail-wrap'] = [
+			'--boxShadow' => [
+				Dynamic_Selector::META_KEY    => 'neve_post_thumbnail_box_shadow',
+				Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+					if ( absint( $value ) === 0 ) {
+						return '';
+					}
+
+					if ( ! array_key_exists( absint( $value ), $this->box_shadow_map ) ) {
+						return '';
+					}
+
+					return sprintf( '%s:%s;', $css_prop, $this->box_shadow_map[ $value ] );
+				},
+			],
+		];
+	}
+
+	/**
+	 * Add css for blog typography.
+	 */
+	public function setup_blog_typography() {
+		if ( ! neve_is_new_skin() ) {
+			$this->setup_legacy_blog_typography();
+
+			return;
+		}
+
+		$archive_typography = [
+			Config::CSS_SELECTOR_ARCHIVE_POST_TITLE        => [
+				'mod'  => Config::MODS_TYPEFACE_ARCHIVE_POST_TITLE,
+				'font' => Config::MODS_FONT_HEADINGS,
+			],
+			Config::CSS_SELECTOR_ARCHIVE_POST_EXCERPT      => [
+				'mod'  => Config::MODS_TYPEFACE_ARCHIVE_POST_EXCERPT,
+				'font' => Config::MODS_FONT_GENERAL,
+			],
+			Config::CSS_SELECTOR_ARCHIVE_POST_META         => [
+				'mod'  => Config::MODS_TYPEFACE_ARCHIVE_POST_META,
+				'font' => Config::MODS_FONT_GENERAL,
+			],
+			Config::CSS_SELECTOR_SINGLE_POST_TITLE         => [
+				'mod'  => Config::MODS_TYPEFACE_SINGLE_POST_TITLE,
+				'font' => Config::MODS_FONT_HEADINGS,
+			],
+			Config::CSS_SELECTOR_SINGLE_POST_META          => [
+				'mod'  => Config::MODS_TYPEFACE_SINGLE_POST_META,
+				'font' => Config::MODS_FONT_GENERAL,
+			],
+			Config::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE => [
+				'mod'  => Config::MODS_TYPEFACE_SINGLE_POST_COMMENT_TITLE,
+				'font' => Config::MODS_FONT_HEADINGS,
+			],
+		];
+		foreach ( $archive_typography as $selector => $args ) {
+			$this->_subscribers[ $selector ] = [
+				'--fontSize'      => [
+					Dynamic_Selector::META_KEY           => $args['mod'] . '.fontSize',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'px',
+				],
+				'--lineHeight'    => [
+					Dynamic_Selector::META_KEY           => $args['mod'] . '.lineHeight',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => '',
+				],
+				'--letterSpacing' => [
+					Dynamic_Selector::META_KEY           => $args['mod'] . '.letterSpacing',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'px',
+				],
+				'--fontWeight'    => [
+					Dynamic_Selector::META_KEY => $args['mod'] . '.fontWeight',
+					'font'                     => 'mods_' . $args['font'],
+				],
+				'--textTransform' => $args['mod'] . '.textTransform',
+			];
+		}
+	}
+
+	/**
+	 * Add css for blog layout.
+	 *
+	 * Removed grid in new skin CSS so this should handle the grid.
+	 *
+	 * @since 3.0.0
+	 */
+	public function setup_blog_layout() {
+		if ( ! neve_is_new_skin() ) {
+			return false;
+		}
+
+		$this->_subscribers[':root'] = [
+			'--postWidth' => [
+				Dynamic_Selector::META_KEY           => 'neve_grid_layout',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => '{"desktop":1,"tablet":1,"mobile":1}',
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+					$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
+					if ( ! in_array( $blog_layout, [ 'grid', 'covers' ], true ) ) {
+						return sprintf( '%s:%s;', $css_prop, '100%' );
+					}
+
+					if ( $value < 1 ) {
+						$value = 1;
+					}
+
+					return sprintf( '%s:%s;', $css_prop, 100 / $value . '%' );
+				},
+			],
+		];
+	}
+
+	/**
+	 * Setups the legacy typography, used before 3.0.
+	 *
+	 * @since 3.0.0
+	 */
+	public function setup_legacy_typography() {
+		$this->_subscribers[ Config::CSS_SELECTOR_TYPEFACE_GENERAL ] = [
+			Config::CSS_PROP_FONT_SIZE      => [
+				Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.fontSize',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+			],
+			Config::CSS_PROP_LINE_HEIGHT    => [
+				Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.lineHeight',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => '',
+			],
+			Config::CSS_PROP_LETTER_SPACING => [
+				Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.letterSpacing',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+			],
+			Config::CSS_PROP_FONT_WEIGHT    => [
+				Dynamic_Selector::META_KEY => Config::MODS_TYPEFACE_GENERAL . '.fontWeight',
+				'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+			],
+			Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_TYPEFACE_GENERAL . '.textTransform',
+			Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_GENERAL,
+		];
+		foreach ( neve_get_headings_selectors() as $id => $heading_selector
+		) {
+			$heading_mod                             = sprintf( 'neve_%s_typeface_general', $id );
+			$this->_subscribers[ $heading_selector ] = [
+				Config::CSS_PROP_FONT_SIZE      => [
+					Dynamic_Selector::META_KEY           => $heading_mod . '.fontSize',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'em',
+				],
+				Config::CSS_PROP_LINE_HEIGHT    => [
+					Dynamic_Selector::META_KEY           => $heading_mod . '.lineHeight',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => '',
+				],
+				Config::CSS_PROP_LETTER_SPACING => [
+					Dynamic_Selector::META_KEY           => $heading_mod . '.letterSpacing',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				Config::CSS_PROP_FONT_WEIGHT    => [
+					Dynamic_Selector::META_KEY => $heading_mod . '.fontWeight',
+					'font'                     => 'mods_' . Config::MODS_FONT_HEADINGS,
+				],
+				Config::CSS_PROP_TEXT_TRANSFORM => $heading_mod . '.textTransform',
+				Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_HEADINGS,
+			];
+		}
+
+		// Legacy filters.
+		$extra_selectors_heading = apply_filters( 'neve_headings_font_family_selectors', '' );
+		if ( ! empty( $extra_selectors_heading ) ) {
+			$extra_selectors_heading                        = ltrim( $extra_selectors_heading, ', ' );
+			$this->_subscribers[ $extra_selectors_heading ] = [
+				Config::CSS_PROP_FONT_FAMILY => Config::MODS_FONT_HEADINGS,
+			];
+		}
+
+		$extra_selectors_body = apply_filters( 'neve_body_font_family_selectors', '' );
+
+		if ( ! empty( $extra_selectors_body ) ) {
+			$extra_selectors_body                        = ltrim( $extra_selectors_body, ', ' );
+			$this->_subscribers[ $extra_selectors_body ] = [
+				Config::CSS_PROP_LETTER_SPACING => [
+					Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.letterSpacing',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				Config::CSS_PROP_FONT_WEIGHT    => [
+					Dynamic_Selector::META_KEY => Config::MODS_TYPEFACE_GENERAL . '.fontWeight',
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+				],
+				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_TYPEFACE_GENERAL . '.textTransform',
+				Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_GENERAL,
+			];
+		}
+	}
+
+	/**
+	 * Setup typography subscribers.
+	 */
+	public function setup_typography() {
+		if ( ! neve_is_new_skin() ) {
+			$this->setup_legacy_typography();
+
+			return;
+		}
+		$rules                = $this->get_typography_rules();
+		$this->_subscribers[] = [
+			Dynamic_Selector::KEY_SELECTOR => ':root',
+			Dynamic_Selector::KEY_RULES    => $rules,
+		];
+	}
+
+	/**
+	 * Setup legacy button.
+	 */
+	private function setup_legacy_buttons() {
 		// Primary button config.
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
@@ -494,90 +574,436 @@ class Frontend extends Generator {
 	}
 
 	/**
-	 * Setup typography subscribers.
+	 * Setup button subscribers.
 	 */
-	public function setup_typography() {
-		$this->_subscribers[ Config::CSS_SELECTOR_TYPEFACE_GENERAL ] = [
-			Config::CSS_PROP_FONT_SIZE      => [
-				Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.fontSize',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'px',
-			],
-			Config::CSS_PROP_LINE_HEIGHT    => [
-				Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.lineHeight',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => '',
-			],
-			Config::CSS_PROP_LETTER_SPACING => [
-				Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.letterSpacing',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-			],
-			Config::CSS_PROP_FONT_WEIGHT    => [
-				Dynamic_Selector::META_KEY => Config::MODS_TYPEFACE_GENERAL . '.fontWeight',
-				'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
-			],
-			Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_TYPEFACE_GENERAL . '.textTransform',
-			Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_GENERAL,
+	public function setup_buttons() {
+		if ( ! neve_is_new_skin() ) {
+			$this->setup_legacy_buttons();
+
+			return;
+		}
+
+		$rules                = $this->get_button_rules();
+		$this->_subscribers[] = [
+			Dynamic_Selector::KEY_SELECTOR => ':root',
+			Dynamic_Selector::KEY_RULES    => $rules,
 		];
-		foreach ( neve_get_headings_selectors() as $id => $heading_selector
-		) {
-			$heading_mod                             = sprintf( 'neve_%s_typeface_general', $id );
-			$this->_subscribers[ $heading_selector ] = [
-				Config::CSS_PROP_FONT_SIZE      => [
-					Dynamic_Selector::META_KEY           => $heading_mod . '.fontSize',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'em',
+	}
+
+	/**
+	 * Setup settings subscribers for layout.
+	 *
+	 * TODO: Exclude sidebar CSS when there is not sidebar option selected.
+	 * TODO: Better exclude classes when Woo is not present, i.e shop-sidebar class is added even when Woo is not used.
+	 */
+	public function setup_layout_subscribers() {
+		$is_advanced_on = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, false );
+		if ( ! $is_advanced_on ) {
+
+			$this->_subscribers['#content .container .col, #content .container-fluid .col']                             = [
+				Config::CSS_PROP_MAX_WIDTH => [
+					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
+					Dynamic_Selector::META_SUFFIX      => '%',
+					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				],
-				Config::CSS_PROP_LINE_HEIGHT    => [
-					Dynamic_Selector::META_KEY           => $heading_mod . '.lineHeight',
+			];
+			$this->_subscribers['.alignfull > [class*="__inner-container"], .alignwide > [class*="__inner-container"]'] = [
+				Config::CSS_PROP_MAX_WIDTH => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SITEWIDE_CONTENT_WIDTH,
+					Dynamic_Selector::META_DEFAULT       => 70,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
+						if ( $device === Dynamic_Selector::DESKTOP ) {
+							return sprintf( 'max-width:%spx', round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) );
+						}
+						if ( $device === Dynamic_Selector::MOBILE ) {
+							return sprintf( 'max-width:%spx;margin:auto', ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) );
+						}
+
+						return '';
+					},
+				],
+			];
+			$this->_subscribers['.container-fluid .alignfull > [class*="__inner-container"], .container-fluid .alignwide > [class*="__inner-container"]'] = [
+				Config::CSS_PROP_MAX_WIDTH => [
+					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
+					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+					Dynamic_Selector::META_FILTER      => function ( $css_prop, $value, $meta, $device ) {
+						return sprintf( 'max-width:calc(%s%% + %spx)', $value, Config::CONTENT_DEFAULT_PADDING / 2 );
+					},
+				],
+			];
+			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar'] = [
+				Config::CSS_PROP_MAX_WIDTH => [
+					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
+					Dynamic_Selector::META_FILTER      => 'minus_100',
+					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+					Dynamic_Selector::META_SUFFIX      => '%',
+				],
+			];
+
+			return;
+		}
+		// Others content width.
+		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col, body.post-type-archive-course .neve-main > .container .col, body.post-type-archive-llms_membership .neve-main > .container .col'] = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_OTHERS_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_SUFFIX      => '%',
+			],
+		];
+		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap, body.post-type-archive-course .nv-sidebar-wrap, body.post-type-archive-llms_membership .nv-sidebar-wrap']                                     = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_OTHERS_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_FILTER      => 'minus_100',
+				Dynamic_Selector::META_SUFFIX      => '%',
+			],
+		];
+		// Archive content width.
+		$this->_subscribers['.neve-main > .archive-container .nv-index-posts.col'] = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_ARCHIVE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_SUFFIX      => '%',
+			],
+		];
+		$this->_subscribers['.neve-main > .archive-container .nv-sidebar-wrap']    = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_ARCHIVE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_FILTER      => 'minus_100',
+				Dynamic_Selector::META_SUFFIX      => '%',
+			],
+		];
+		// Single content width.
+		$this->_subscribers['.neve-main > .single-post-container .nv-single-post-wrap.col'] = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_SUFFIX      => '%',
+			],
+		];
+
+		$this->_subscribers['.single-post-container .alignfull > [class*="__inner-container"], .single-post-container .alignwide > [class*="__inner-container"]']                                 = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT       => 70,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+					$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
+					$value = $device !== Dynamic_Selector::DESKTOP ? ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) : round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING );
+
+					return sprintf( 'max-width:%spx', $value );
+				},
+			],
+		];
+		$this->_subscribers['.container-fluid.single-post-container .alignfull > [class*="__inner-container"], .container-fluid.single-post-container .alignwide > [class*="__inner-container"]'] = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_FILTER      => function ( $css_prop, $value, $meta, $device ) {
+					return sprintf( 'max-width:calc(%s%% + %spx)', $value, Config::CONTENT_DEFAULT_PADDING / 2 );
+				},
+			],
+		];
+
+		$this->_subscribers['.neve-main > .single-post-container .nv-sidebar-wrap'] = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_FILTER      => 'minus_100',
+				Dynamic_Selector::META_SUFFIX      => '%',
+			],
+		];
+
+		// TODO provide context handler for better checks.
+		if ( ! class_exists( 'WooCommerce', false ) ) {
+			return;
+		}
+
+		$this->_subscribers['.archive.woocommerce .neve-main > .shop-container .nv-shop.col']     = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_ARCHIVE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_SUFFIX      => '%',
+			],
+		];
+		$this->_subscribers['.archive.woocommerce .neve-main > .shop-container .nv-sidebar-wrap'] = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_ARCHIVE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_FILTER      => 'minus_100',
+				Dynamic_Selector::META_SUFFIX      => '%',
+			],
+		];
+
+
+		$this->_subscribers['.single-product .neve-main > .shop-container .nv-shop.col'] = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_SUFFIX      => '%',
+			],
+		];
+
+		$this->_subscribers['.single-product .alignfull > [class*="__inner-container"], .single-product .alignwide > [class*="__inner-container"]']                  = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY           => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT       => 70,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+					$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
+					$value = $device !== Dynamic_Selector::DESKTOP ? ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) : round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING );
+
+					return sprintf( 'max-width:%spx', $value );
+				},
+			],
+		];
+		$this->_subscribers['.single-product .container-fluid .alignfull > [class*="__inner-container"], .single-product .alignwide > [class*="__inner-container"]'] = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_FILTER      => function ( $css_prop, $value, $meta, $device ) {
+					return sprintf( 'max-width:calc(%s%% + %spx)', $value, Config::CONTENT_DEFAULT_PADDING / 2 );
+				},
+			],
+		];
+		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap'] = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_FILTER      => 'minus_100',
+				Dynamic_Selector::META_SUFFIX      => '%',
+			],
+		];
+
+	}
+
+	/**
+	 * Adds form field styles
+	 */
+	private function setup_form_fields_style() {
+		if ( ! neve_is_new_skin() ) {
+			$this->setup_legacy_form_fields_style();
+
+			return;
+		}
+
+		$border_width_default  = array_fill_keys( Config::$directional_keys, '2' );
+		$border_radius_default = array_fill_keys( Config::$directional_keys, '3' );
+
+		$this->_subscribers[] = [
+			Dynamic_Selector::KEY_SELECTOR => ':root',
+			Dynamic_Selector::KEY_RULES    => [
+				'--formFieldSpacing'       => [
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_SPACING,
+					Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_SPACING ),
+					Dynamic_Selector::META_SUFFIX  => 'px',
+				],
+				'--formFieldBorderWidth'   => [
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_WIDTH,
+					Dynamic_Selector::META_SUFFIX  => 'px',
+					Dynamic_Selector::META_DEFAULT => $border_width_default,
+					'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
+				],
+				'--formFieldBorderRadius'  => [
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_RADIUS,
+					Dynamic_Selector::META_SUFFIX  => 'px',
+					Dynamic_Selector::META_DEFAULT => $border_radius_default,
+					'directional-prop'             => Config::CSS_PROP_BORDER_RADIUS,
+				],
+				'--formFieldBgColor'       => [
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BACKGROUND_COLOR,
+					Dynamic_Selector::META_DEFAULT => 'var(--nv-site-bg)',
+				],
+				'--formFieldBorderColor'   => [
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_COLOR,
+					Dynamic_Selector::META_DEFAULT => '#dddddd',
+				],
+				'--formFieldColor'         => [
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_COLOR,
+					Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
+				],
+				'--formFieldPadding'       => [
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING,
+					Dynamic_Selector::META_DEFAULT       => Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_PADDING ),
+					Dynamic_Selector::META_SUFFIX        => 'px',
+					Dynamic_Selector::META_IS_RESPONSIVE => false,
+					'directional-prop'                   => Config::CSS_PROP_PADDING,
+				],
+				'--formFieldTextTransform' => [
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.textTransform',
+					Dynamic_Selector::META_IS_RESPONSIVE => false,
+				],
+				'--formFieldFontSize'      => [
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontSize',
+					Dynamic_Selector::META_SUFFIX        => 'px',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				'--formFieldLineHeight'    => [
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.lineHeight',
+					Dynamic_Selector::META_SUFFIX        => '',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				'--formFieldLetterSpacing' => [
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.letterSpacing',
+					Dynamic_Selector::META_SUFFIX        => 'px',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				'--formFieldFontWeight'    => [
+					Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontWeight',
+				],
+				// Form Labels
+				'--formLabelSpacing'       => [
+					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_LABELS_SPACING,
+					Dynamic_Selector::META_DEFAULT => 10,
+					Dynamic_Selector::META_SUFFIX  => 'px',
+				],
+				'--formLabelFontSize'      => [
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontSize',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'px',
+				],
+				'--formLabelLineHeight'    => [
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.lineHeight',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => '',
 				],
-				Config::CSS_PROP_LETTER_SPACING => [
-					Dynamic_Selector::META_KEY           => $heading_mod . '.letterSpacing',
+				'--formLabelLetterSpacing' => [
+					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.letterSpacing',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
-				Config::CSS_PROP_FONT_WEIGHT    => [
-					Dynamic_Selector::META_KEY => $heading_mod . '.fontWeight',
-					'font'                     => 'mods_' . Config::MODS_FONT_HEADINGS,
+				'--formLabelFontWeight'    => [
+					Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontWeight',
 				],
-				Config::CSS_PROP_TEXT_TRANSFORM => $heading_mod . '.textTransform',
-				Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_HEADINGS,
-			];
+				'--formLabelTextTransform' => [
+					Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.textTransform',
+				],
+			],
+		];
+
+		// Form button style. Override if needed.
+		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
+
+		if ( $form_buttons_type === 'primary' ) {
+			return;
 		}
 
-		// Legacy filters.
-		$extra_selectors_heading = apply_filters( 'neve_headings_font_family_selectors', '' );
-		if ( ! empty( $extra_selectors_heading ) ) {
-			$extra_selectors_heading                        = ltrim( $extra_selectors_heading, ', ' );
-			$this->_subscribers[ $extra_selectors_heading ] = [
-				Config::CSS_PROP_FONT_FAMILY => Config::MODS_FONT_HEADINGS,
-			];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['background-color']       = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnBg, transparent)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['color']                  = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnColor)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['padding']                = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnPadding, 7px 12px)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['border-radius']          = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnBorderRadius, 3px)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['background-color'] = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnHoverBg, transparent)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['color']            = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnHoverColor)',
+		];
+
+		$mod_key_secondary = Config::MODS_BUTTON_SECONDARY_STYLE;
+		$default_secondary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_SECONDARY_STYLE );
+		$secondary_values  = get_theme_mod( $mod_key_secondary, $default_secondary );
+
+		if ( ! isset( $secondary_values['type'] ) || $secondary_values['type'] !== 'outline' ) {
+			return;
 		}
 
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['border-width']       = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnBorderWidth, 3px)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['border-color']       = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnHoverColor)',
+		];
+		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['border-color'] = [
+			'key'      => 'neve_form_button_type',
+			'override' => 'var(--secondaryBtnHoverColor)',
+		];
+	}
 
-		$extra_selectors_body = apply_filters( 'neve_body_font_family_selectors', '' );
-		if ( ! empty( $extra_selectors_body ) ) {
-			$extra_selectors_body                        = ltrim( $extra_selectors_body, ', ' );
-			$this->_subscribers[ $extra_selectors_body ] = [
-				Config::CSS_PROP_LETTER_SPACING => [
-					Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.letterSpacing',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-				Config::CSS_PROP_FONT_WEIGHT    => [
-					Dynamic_Selector::META_KEY => Config::MODS_TYPEFACE_GENERAL . '.fontWeight',
-					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
-				],
-				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_TYPEFACE_GENERAL . '.textTransform',
-				Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_GENERAL,
-			];
-		}
+	/**
+	 * Add form buttons selectors to the Buttons selector.
+	 *
+	 * @param string $selector the CSS selector received from the filter.
+	 *
+	 * @return string
+	 */
+	public function add_form_buttons( $selector ) {
+		return ( $selector . ', form input[type="submit"], form button[type="submit"]' );
+	}
+
+	/**
+	 * Add form buttons hover selectors to the Buttons selector.
+	 *
+	 * @param string $selector the CSS selector received from the filter.
+	 *
+	 * @return string
+	 */
+	public function add_form_buttons_hover( $selector ) {
+		return ( $selector . ', form input[type="submit"]:hover, form button[type="submit"]:hover' );
 	}
 
 	/**
 	 * Add css for blog meta.
 	 */
 	public function setup_blog_meta() {
+		if ( ! neve_is_new_skin() ) {
+			$this->setup_blog_meta_legacy();
+
+			return;
+		}
+
+		$rules = [
+			'--avatarSize' => [
+				Dynamic_Selector::META_KEY           => Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 20, "tablet": 20, "desktop": 20 }',
+			],
+		];
+
+		$rules_single = [
+			'--avatarSize' => [
+				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_DEFAULT       => Mods::get( 'neve_author_avatar_size', '{ "mobile": 20, "tablet": 20, "desktop": 20 }' ),
+			],
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.nv-meta-list',
+			'rules'     => $rules,
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.single .nv-meta-list',
+			'rules'     => $rules_single,
+		];
+	}
+
+	/**
+	 * Add css for blog meta.
+	 */
+	public function setup_blog_meta_legacy() {
+
 		$meta_key = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
 		if ( is_singular( 'post' ) ) {
 			$meta_key = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
@@ -599,81 +1025,9 @@ class Frontend extends Generator {
 	}
 
 	/**
-	 * Add css for blog typography.
+	 * Setup legacy form field styles.
 	 */
-	public function setup_blog_typography() {
-		$archive_typography = [
-			Config::CSS_SELECTOR_ARCHIVE_POST_TITLE        => Config::MODS_TYPEFACE_ARCHIVE_POST_TITLE,
-			Config::CSS_SELECTOR_ARCHIVE_POST_EXCERPT      => Config::MODS_TYPEFACE_ARCHIVE_POST_EXCERPT,
-			Config::CSS_SELECTOR_ARCHIVE_POST_META         => Config::MODS_TYPEFACE_ARCHIVE_POST_META,
-			Config::CSS_SELECTOR_SINGLE_POST_TITLE         => Config::MODS_TYPEFACE_SINGLE_POST_TITLE,
-			Config::CSS_SELECTOR_SINGLE_POST_META          => Config::MODS_TYPEFACE_SINGLE_POST_META,
-			Config::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE => Config::MODS_TYPEFACE_SINGLE_POST_COMMENT_TITLE,
-		];
-		foreach ( $archive_typography as $selector => $mod ) {
-			$this->_subscribers[ $selector ] = [
-				Config::CSS_PROP_FONT_SIZE      => [
-					Dynamic_Selector::META_KEY           => $mod . '.fontSize',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'px',
-				],
-				Config::CSS_PROP_LINE_HEIGHT    => [
-					Dynamic_Selector::META_KEY           => $mod . '.lineHeight',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => '',
-				],
-				Config::CSS_PROP_LETTER_SPACING => [
-					Dynamic_Selector::META_KEY           => $mod . '.letterSpacing',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-				Config::CSS_PROP_FONT_WEIGHT    => [
-					Dynamic_Selector::META_KEY => $mod . '.fontWeight',
-				],
-				Config::CSS_PROP_TEXT_TRANSFORM => $mod . '.textTransform',
-			];
-		}
-	}
-
-	/**
-	 * Add css for blog colors.
-	 */
-	public function setup_blog_colors() {
-		$this->_subscribers['.cover-post .inner, .cover-post .inner a:not(.button), .cover-post .inner a:not(.button):hover, .cover-post .inner a:not(.button):focus, .cover-post .inner li'] = [
-			Config::CSS_PROP_COLOR => [
-				Dynamic_Selector::META_KEY => 'neve_blog_covers_text_color',
-			],
-		];
-
-		$selector = get_theme_mod( 'neve_blog_archive_layout', 'grid' ) === 'covers' ? '.cover-post.nv-post-thumbnail-wrap' : '.nv-post-thumbnail-wrap img';
-
-		$this->_subscribers[ $selector ] = [
-			Config::CSS_PROP_BOX_SHADOW => [
-				Dynamic_Selector::META_KEY    => 'neve_post_thumbnail_box_shadow',
-				Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-					if ( absint( $value ) === 0 ) {
-						return '';
-					}
-					$map = [
-						1 => '0 1px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.1)',
-						2 => '0 3px 6px -5px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1)',
-						3 => '0 10px 20px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1)',
-						4 => '0 14px 28px rgba(0, 0, 0, 0.12), 0 10px 10px rgba(0, 0, 0, 0.12)',
-						5 => '0 16px 38px -12px rgba(0,0,0,0.56), 0 4px 25px 0 rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.2)',
-					];
-					if ( ! array_key_exists( absint( $value ), $map ) ) {
-						return '';
-					}
-
-					return sprintf( '%s:%s;', $css_prop, $map[ $value ] );
-				},
-			],
-		];
-	}
-
-	/**
-	 * Adds form field styles.
-	 */
-	private function setup_form_fields_style() {
+	private function setup_legacy_form_fields_style() {
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING ] = [
 			Config::CSS_PROP_MARGIN_BOTTOM => [
 				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_SPACING,
@@ -760,138 +1114,198 @@ class Frontend extends Generator {
 			],
 			Config::CSS_PROP_FONT_FAMILY   => Config::MODS_FONT_GENERAL,
 		];
+
+		/**
+		 * Form buttons.
+		 */
+		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
+
+		if ( $form_buttons_type === 'primary' ) {
+			add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL, [ $this, 'add_form_buttons' ] );
+			add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_PADDING, [ $this, 'add_form_buttons' ] );
+			add_filter(
+				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
+				[
+					$this,
+					'add_form_buttons_hover',
+				]
+			);
+
+			return;
+		}
+
+		add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL, [ $this, 'add_form_buttons' ] );
+		add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_PADDING, [ $this, 'add_form_buttons' ] );
+		add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER, [ $this, 'add_form_buttons_hover' ] );
 	}
 
 	/**
 	 * Add css for single post.
 	 */
 	private function setup_single_post_style() {
+		if ( ! neve_is_new_skin() ) {
+			return;
+		}
 
-		$cover_padding_default                = $this->padding_default( 'cover' );
-		$this->_subscribers['.nv-post-cover'] = [
-			Config::CSS_PROP_MIN_HEIGHT => [
+		$cover_rules = [
+			'--height'  => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_HEIGHT,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
 				Dynamic_Selector::META_AS_JSON       => true,
-				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "300", "tablet": "300", "desktop": "300" }',
+				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "400", "tablet": "400", "desktop": "400" }',
 			],
-			Config::CSS_PROP_COLOR      => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_TEXT_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
-			],
-			Config::CSS_PROP_PADDING    => [
+			'--padding' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
+				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-		];
-
-		$this->_subscribers['.nv-post-cover .nv-overlay'] = [
-			Config::CSS_PROP_BACKGROUND_COLOR => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BACKGROUND_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
-			],
-			Config::CSS_PROP_MIX_BLEND_MODE   => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BLEND_MODE,
-				Dynamic_Selector::META_DEFAULT => 'normal',
-			],
-			Config::CSS_PROP_OPACITY          => [
-				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_OVERLAY_OPACITY,
-				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 0.5, "tablet": 0.5, "desktop": 0.5 }',
+			'--vAlign'  => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_POSITION,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 			],
 		];
 
-		$this->_subscribers['.nv-post-cover .nv-meta-list li, .nv-post-cover .nv-meta-list a'] = [
-			Config::CSS_PROP_COLOR => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_TEXT_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-dark-bg)',
+		$this->_subscribers[] = [
+			'selectors' => '.nv-post-cover',
+			'rules'     => $cover_rules,
+		];
+
+		$title_rules = [
+			'--color' => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_TEXT_COLOR,
 			],
 		];
 
-		$this->_subscribers['.nv-title-meta-wrap.is-boxed'] = [
-			Config::CSS_PROP_PADDING          => [
+		$this->_subscribers[] = [
+			'selectors' => '.nv-post-cover .nv-title-meta-wrap',
+			'rules'     => $title_rules,
+		];
+
+		$boxed_title_rules = [
+			'--padding' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_BOXED_TITLE_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
+				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-			Config::CSS_PROP_BACKGROUND_COLOR => [
+			'--bgColor' => [
 				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
 			],
 		];
 
-		$this->_subscribers['.nv-single-post-wrap > *:not(:last-child)'] = [
-			Config::CSS_PROP_MARGIN_BOTTOM => [
+		$this->_subscribers[] = [
+			'selectors' => '.nv-is-boxed.nv-title-meta-wrap',
+			'rules'     => $boxed_title_rules,
+		];
+
+		$overlay_rules = [
+			'--bgColor'   => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BACKGROUND_COLOR,
+			],
+			'--blendMode' => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BLEND_MODE,
+			],
+			'--opacity'   => [
+				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_OVERLAY_OPACITY,
+				Dynamic_Selector::META_DEFAULT => 50,
+			],
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.nv-overlay',
+			'rules'     => $overlay_rules,
+		];
+
+		$boxed_comments_rules = [
+			'--padding' => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_PADDING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
+				'directional-prop'                   => Config::CSS_PROP_PADDING,
+			],
+			'--bgColor' => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_BACKGROUND_COLOR,
+			],
+			'--color'   => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_TEXT_COLOR,
+			],
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.nv-is-boxed.nv-comments-wrap',
+			'rules'     => $boxed_comments_rules,
+		];
+
+		$boxed_comment_form_rules = [
+			'--padding' => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_FORM_PADDING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
+				'directional-prop'                   => Config::CSS_PROP_PADDING,
+			],
+			'--bgColor' => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_FORM_BACKGROUND_COLOR,
+			],
+			'--color'   => [
+				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_FORM_TEXT_COLOR,
+			],
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.nv-is-boxed.comment-respond',
+			'rules'     => $boxed_comment_form_rules,
+		];
+
+		$spacing_rules = [
+			'--spacing' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_ELEMENTS_SPACING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
 			],
 		];
 
-		$this->_subscribers['.nv-comments-wrap.is-boxed'] = [
-			Config::CSS_PROP_PADDING          => [
-				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_PADDING,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
-				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
-			],
-			Config::CSS_PROP_BACKGROUND_COLOR => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_BACKGROUND_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
-			],
-		];
-
-		$this->_subscribers['.nv-comments-wrap.is-boxed, .nv-comments-wrap.is-boxed a'] = [
-			Config::CSS_PROP_COLOR => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_TEXT_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
-			],
-		];
-
-		$this->_subscribers['.comment-respond.is-boxed'] = [
-			Config::CSS_PROP_PADDING          => [
-				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_FORM_PADDING,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
-				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
-			],
-			Config::CSS_PROP_BACKGROUND_COLOR => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_FORM_BACKGROUND_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
-			],
-		];
-
-		$this->_subscribers['.comment-respond.is-boxed, .comment-respond.is-boxed a'] = [
-			Config::CSS_PROP_COLOR => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COMMENTS_FORM_TEXT_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
-			],
+		$this->_subscribers[] = [
+			'selectors' => '.nv-single-post-wrap',
+			'rules'     => $spacing_rules,
 		];
 	}
 
 	/**
-	 * Add form buttons selectors to the Buttons selector.
-	 *
-	 * @param string $selector the CSS selector received from the filter.
-	 *
-	 * @return string
+	 * Setup legacy blog typography.
 	 */
-	public function add_form_buttons( $selector ) {
-		return ( $selector . ', form input[type="submit"], form button[type="submit"]' );
-	}
-
-	/**
-	 * Add form buttons hover selectors to the Buttons selector.
-	 *
-	 * @param string $selector the CSS selector received from the filter.
-	 *
-	 * @return string
-	 */
-	public function add_form_buttons_hover( $selector ) {
-		return ( $selector . ', form input[type="submit"]:hover, form button[type="submit"]:hover' );
+	private function setup_legacy_blog_typography() {
+		$archive_typography = array(
+			Config::CSS_SELECTOR_ARCHIVE_POST_TITLE        => Config::MODS_TYPEFACE_ARCHIVE_POST_TITLE,
+			Config::CSS_SELECTOR_ARCHIVE_POST_EXCERPT      => Config::MODS_TYPEFACE_ARCHIVE_POST_EXCERPT,
+			Config::CSS_SELECTOR_ARCHIVE_POST_META         => Config::MODS_TYPEFACE_ARCHIVE_POST_META,
+			Config::CSS_SELECTOR_SINGLE_POST_TITLE         => Config::MODS_TYPEFACE_SINGLE_POST_TITLE,
+			Config::CSS_SELECTOR_SINGLE_POST_META          => Config::MODS_TYPEFACE_SINGLE_POST_META,
+			Config::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE => Config::MODS_TYPEFACE_SINGLE_POST_COMMENT_TITLE,
+		);
+		foreach ( $archive_typography as $selector => $mod ) {
+			$this->_subscribers[ $selector ] = [
+				Config::CSS_PROP_FONT_SIZE      => [
+					Dynamic_Selector::META_KEY           => $mod . '.fontSize',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'px',
+				],
+				Config::CSS_PROP_LINE_HEIGHT    => [
+					Dynamic_Selector::META_KEY           => $mod . '.lineHeight',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => '',
+				],
+				Config::CSS_PROP_LETTER_SPACING => [
+					Dynamic_Selector::META_KEY           => $mod . '.letterSpacing',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				Config::CSS_PROP_FONT_WEIGHT    => [
+					Dynamic_Selector::META_KEY => $mod . '.fontWeight',
+				],
+				Config::CSS_PROP_TEXT_TRANSFORM => $mod . '.textTransform',
+			];
+		}
 	}
 }
