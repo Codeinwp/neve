@@ -324,8 +324,8 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Update has_template transient value when a post updated or inserted.
 	 *
-	 * @param  int     $post_ID that post ID.
-	 * @param  WP_Post $post that WP_Post object.
+	 * @param  int      $post_ID that post ID.
+	 * @param  \WP_Post $post that WP_Post object.
 	 * @return void
 	 */
 	public function update_has_template_transient( $post_ID, $post ) {
