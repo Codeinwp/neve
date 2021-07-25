@@ -16,7 +16,7 @@ class Main {
 	/**
 	 * Instance of class.
 	 *
-	 * @var bool $instance instance variable.
+	 * @var Main|null $instance instance variable.
 	 */
 	private static $instance;
 
