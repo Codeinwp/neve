@@ -25,6 +25,7 @@ parameters:
         - tests/php/static-analysis-stubs/bb-header-footer.php
         - tests/php/static-analysis-stubs/elementor.php
         - tests/php/static-analysis-stubs/elementor-pro.php
+        - tests/php/static-analysis-stubs/amp-wp.php
     dynamicConstantNames:
         - NEVE_DEBUG
     ignoreErrors:

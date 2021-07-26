@@ -11,10 +11,12 @@ use Neve_Pro\Modules\Header_Footer_Grid\Components\Icons;
 /**
  * Check if we're delivering AMP
  *
+ * Function(is_amp_endpoint) is deprecated since AMP v2.0, use amp_is_request instead of it since v2.0
+ *
  * @return bool
  */
 function neve_is_amp() {
-	return function_exists( 'is_amp_endpoint' ) && is_amp_endpoint();
+	return ( function_exists( 'amp_is_request' ) && amp_is_request() ) || ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() );
 }
 
 /**
