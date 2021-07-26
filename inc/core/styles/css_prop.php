@@ -237,7 +237,7 @@ class Css_Prop {
 	 *
 	 * @param array $meta Meta array.
 	 * @param string $device Current device.
-	 * @param string $value Value.
+	 * @param mixed $value Value.
 	 *
 	 * @return string
 	 *
