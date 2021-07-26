@@ -158,10 +158,6 @@ function neve_sanitize_background( $value ) {
  * @return array
  */
 function neve_sanitize_button_appearance( $value ) {
-	if ( is_array( $value ) ) {
-		return $value;
-	}
-
 	return $value;
 }
 
