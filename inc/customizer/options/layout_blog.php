@@ -137,18 +137,14 @@ class Layout_Blog extends Base_Customizer {
 			)
 		);
 
+		$grid_layout_default = neve_is_new_skin() ? '{"desktop":3,"tablet":2,"mobile":1}' : '{"desktop":1,"tablet":1,"mobile":1}';
+
 		$this->add_control(
 			new Control(
 				'neve_grid_layout',
 				array(
 					'sanitize_callback' => 'neve_sanitize_range_value',
-					'default'           => wp_json_encode(
-						array(
-							'desktop' => 1,
-							'tablet'  => 1,
-							'mobile'  => 1,
-						)
-					),
+					'default'           => $grid_layout_default,
 				),
 				array(
 					'label'           => esc_html__( 'Columns', 'neve' ),
@@ -160,11 +156,7 @@ class Layout_Blog extends Base_Customizer {
 						'step'       => 1,
 						'min'        => 1,
 						'max'        => 4,
-						'defaultVal' => [
-							'mobile'  => 1,
-							'tablet'  => 1,
-							'desktop' => 1,
-						],
+						'defaultVal' => json_decode( $grid_layout_default, true ),
 					],
 					'priority'        => 11,
 					'active_callback' => array( $this, 'is_column_layout' ),
