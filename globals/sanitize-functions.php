@@ -310,7 +310,7 @@ function neve_sanitize_blend_mode( $input ) {
  *
  * @param string $value value from the control.
  *
- * @return bool
+ * @return string
  */
 function neve_sanitize_container_layout( $value ) {
 	$allowed_values = array( 'contained', 'full-width' );
