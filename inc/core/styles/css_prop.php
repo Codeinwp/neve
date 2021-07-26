@@ -279,14 +279,13 @@ class Css_Prop {
 	 *
 	 * @param array $meta Meta array.
 	 * @param string $device Current device.
-	 * @param string $value Value.
+	 * @param array|int $value Value.
 	 * @param string $css_prop Css Property.
 	 * @param string $type Type of directional property.
 	 *
 	 * @return string
 	 */
 	public static function transform_directional_prop( $meta, $device, $value, $css_prop, $type ) {
-
 		$suffix   = self::get_suffix( $meta, $device, $value, $css_prop );
 		$suffix   = $suffix ? $suffix : 'px';
 		$template = '';
