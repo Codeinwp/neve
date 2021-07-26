@@ -8,6 +8,7 @@
 
 namespace Neve\Views\Layouts;
 
+use Neve\Customizer\Defaults\Layout;
 use Neve\Views\Base_View;
 
 /**
@@ -16,6 +17,8 @@ use Neve\Views\Base_View;
  * @package Neve\Views\Layouts
  */
 class Layout_Sidebar extends Base_View {
+	use Layout;
+
 	/**
 	 * Function that is run after instantiation.
 	 *
@@ -35,7 +38,7 @@ class Layout_Sidebar extends Base_View {
 	public function sidebar( $context, $position ) {
 		$sidebar_setup = $this->get_sidebar_setup( $context );
 		$theme_mod     = $sidebar_setup['theme_mod'];
-		$theme_mod     = apply_filters( 'neve_sidebar_position', get_theme_mod( $theme_mod, 'right' ) );
+		$theme_mod     = apply_filters( 'neve_sidebar_position', get_theme_mod( $theme_mod, $this->sidebar_layout_alignment_default( $theme_mod ) ) );
 		if ( $theme_mod !== $position ) {
 			return;
 		}
@@ -65,7 +68,7 @@ class Layout_Sidebar extends Base_View {
 
 		$sidebar_setup = $this->get_sidebar_setup( $context );
 		$theme_mod     = $sidebar_setup['theme_mod'];
-		$theme_mod     = apply_filters( 'neve_sidebar_position', get_theme_mod( $theme_mod, 'right' ) );
+		$theme_mod     = apply_filters( 'neve_sidebar_position', get_theme_mod( $theme_mod, $this->sidebar_layout_alignment_default( $theme_mod ) ) );
 
 		$layout       = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
 		$posts_layout = neve_is_new_skin() ? ' nv-blog-' . $layout : '';
@@ -84,11 +87,12 @@ class Layout_Sidebar extends Base_View {
 	 * @return array
 	 */
 	public function get_sidebar_setup( $context ) {
-		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', false );
-		$sidebar_setup    = array(
+		$new_skin         = neve_is_new_skin();
+		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', $new_skin );
+		$sidebar_setup    = [
 			'theme_mod'    => '',
 			'sidebar_slug' => 'blog-sidebar',
-		);
+		];
 
 		if ( class_exists( 'WooCommerce', false ) && ( is_woocommerce() || is_product() || is_cart() || is_checkout() || is_account_page() ) ) {
 			$sidebar_setup['sidebar_slug'] = 'shop-sidebar';

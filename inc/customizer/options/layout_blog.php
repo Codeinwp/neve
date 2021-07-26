@@ -11,6 +11,7 @@
 namespace Neve\Customizer\Options;
 
 use Neve\Customizer\Base_Customizer;
+use Neve\Customizer\Defaults\Layout;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
 
@@ -20,6 +21,7 @@ use Neve\Customizer\Types\Section;
  * @package Neve\Customizer\Options
  */
 class Layout_Blog extends Base_Customizer {
+	use Layout;
 	/**
 	 * Function that should be extended to add customizer controls.
 	 *
@@ -618,7 +620,7 @@ class Layout_Blog extends Base_Customizer {
 			return false;
 		}
 
-		$columns = json_decode( get_theme_mod( 'neve_grid_layout', '{"desktop":1,"tablet":1,"mobile":1}' ), true );
+		$columns = json_decode( get_theme_mod( 'neve_grid_layout', $this->grid_columns_default() ), true );
 		$columns = array_filter(
 			array_values( $columns ),
 			function ( $value ) {
