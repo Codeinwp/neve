@@ -18,9 +18,9 @@ use HFG\Core\Magic_Tags;
 /**
  * Return registered builders.
  *
- * @param string $builder_name The builder id.
+ * @param string $builder_name The builder id. (header|footer|page_header etc.).
  *
- * @return Abstract_Builder[]|Abstract_Builder Array of builders registered.
+ * @return Abstract_Builder instance, such as HFG\Core\Builder\Header|Neve_Pro\Modules\Header_Footer_Grid\Builder\Page_Header|HFG\Core\Builder\Footer
  */
 function get_builder( $builder_name = '' ) {
 	return Main::get_instance()->get_builder( $builder_name );
