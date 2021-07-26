@@ -84,7 +84,7 @@ function neve_is_json( $string ) {
  *
  * @param string $input Control input.
  *
- * @return float
+ * @return string|float Returns json string or float.
  */
 function neve_sanitize_range_value( $input ) {
 	if ( ! neve_is_json( $input ) ) {
