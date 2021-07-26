@@ -177,7 +177,7 @@ function media_from_id( $id, $size = 'full' ) {
  * @param string $url  The attachment url.
  * @param string $size The media size.
  *
- * @return bool
+ * @return string|false
  */
 function media_from_url( $url, $size = 'full' ) {
 	$img_id = function_exists( 'wpcom_vip_attachment_url_to_postid' ) ? wpcom_vip_attachment_url_to_postid( $url ) : attachment_url_to_postid( $url ); //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.attachment_url_to_postid_attachment_url_to_postid
