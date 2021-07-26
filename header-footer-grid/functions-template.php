@@ -56,7 +56,6 @@ function render_components( $builder_name = '', $device = null, $row_index = nul
  */
 function current_component( $builder_name = '', $component_id = null ) {
 	$builder = Main::get_instance()->get_builder( $builder_name );
-	$builder = is_array( $builder ) ? reset( $builder ) : $builder;
 
 	return $builder->get_component( $component_id );
 }
