@@ -431,6 +431,16 @@ class Metabox_Settings {
 			return $position;
 		}
 
+		$has_content_width = get_post_meta( $post_id, self::ENABLE_CONTENT_WIDTH, true );
+
+		if ( $has_content_width === 'on' ) {
+			$content_width = get_post_meta( $post_id, self::CONTENT_WIDTH, true );
+
+			if ( $content_width >= 95 ) {
+				return 'full-width';
+			}
+		}
+
 		$meta_value = get_post_meta( $post_id, self::SIDEBAR, true );
 		if ( empty( $meta_value ) || $meta_value === 'default' ) {
 			return $position;
