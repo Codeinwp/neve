@@ -133,7 +133,7 @@ function row_setting( $id, $default = null ) {
  * @param mixed      $value The media reference.
  * @param mixed|null $size  Optional. The size desired.
  *
- * @return array|bool|false|string
+ * @return string|false
  */
 function get_media( $value, $size = 'full' ) {
 
@@ -154,12 +154,12 @@ function get_media( $value, $size = 'full' ) {
 }
 
 /**
- * Retrieve media from post id.
+ * Retrieve media URL from post id.
  *
  * @param int    $id   Post ID.
  * @param string $size Media size.
  *
- * @return bool
+ * @return false|string
  */
 function media_from_id( $id, $size = 'full' ) {
 	$image_attributes = wp_get_attachment_image_src( $id, $size );
@@ -198,7 +198,7 @@ function media_from_url( $url, $size = 'full' ) {
  * @param array  $array Array for media.
  * @param string $size  The media size.
  *
- * @return bool|false|string
+ * @return false|string
  */
 function media_from_array( $array = array(), $size = 'full' ) {
 	$value = wp_parse_args(
