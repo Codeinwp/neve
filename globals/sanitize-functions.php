@@ -61,7 +61,7 @@ function neve_sanitize_rgba( $value ) {
  *
  * @param bool $value value to be sanitized.
  *
- * @return string
+ * @return bool
  */
 function neve_sanitize_checkbox( $value ) {
 	return isset( $value ) && true === (bool) $value;
