@@ -104,7 +104,7 @@ class Manager {
 	/**
 	 * Load settings/control group in customizer.
 	 *
-	 * @param null                       $group Group to load.
+	 * @param string|null                $group Group to load.
 	 * @param \WP_Customize_Manager|null $customize_manager Manager object.
 	 *
 	 * @return \WP_Customize_Manager Customizer object.
