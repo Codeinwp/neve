@@ -10,6 +10,7 @@ parameters:
         - %currentWorkingDirectory%/header-footer-grid/functions-migration.php
         - %currentWorkingDirectory%/header-footer-grid/functions-template.php
     bootstrapFiles:
+        - %currentWorkingDirectory%/inc/core/styles/generator.php
         - %currentWorkingDirectory%/vendor/wptt/webfont-loader/wptt-webfont-loader.php
         - %currentWorkingDirectory%/vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
         - %currentWorkingDirectory%/tests/php/static-analysis-stubs/header-footer-elementor.php
