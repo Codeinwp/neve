@@ -28,7 +28,18 @@
 	font-weight: 700;
 	font-size: var(--h4FontSize);
   }
+
+  @extend %nv-reset-field-spacing;
 }
+
+.wp-block-search .wp-block-search__button {
+  @extend %nv-button-primary;
+}
+
+.wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper {
+  @extend %nv-form-fields;
+}
+
 
 .post-date {
   display: block;
