@@ -435,8 +435,8 @@ class Manager {
 	/**
 	 * Return registered default.
 	 *
-	 * @param string $id Setting id.
-	 * @param null   $subkey Subkey, if any.
+	 * @param string      $id Setting id.
+	 * @param null|string $subkey Subkey, if any.
 	 *
 	 * @return mixed|null
 	 */
