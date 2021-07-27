@@ -45,6 +45,14 @@ const LogoPaletteComponent = ({ control }) => {
 		});
 	};
 
+	const changeOnPalette = (currentHeaderItems, componentChange) => {
+		const hasPaletteComp = hasValue(currentHeaderItems, componentChange);
+		if (!hasPaletteComp) {
+			toggleValue(true);
+		}
+		setIsPaletteActive(hasPaletteComp);
+	};
+
 	useEffect(() => {
 		if (
 			typeof builderListen !== 'string' ||
@@ -56,17 +64,16 @@ const LogoPaletteComponent = ({ control }) => {
 		}
 
 		window.wp.customize.bind('ready', () => {
-			// Update select settings with current global colors
 			const currentHeaderItems = maybeParseJson(
 				window.wp.customize.control(builderListen).setting.get()
 			);
-			setIsPaletteActive(hasValue(currentHeaderItems, compChange));
+			changeOnPalette(currentHeaderItems, compChange);
 		});
 
 		window.wp.customize.control(builderListen, (customizeControl) => {
 			customizeControl.setting.bind('changed', (nextValue) => {
 				const currentHeaderItems = maybeParseJson(nextValue);
-				setIsPaletteActive(hasValue(currentHeaderItems, compChange));
+				changeOnPalette(currentHeaderItems, compChange);
 			});
 		});
 	}, [builderListen, compChange]);
