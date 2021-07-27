@@ -83,7 +83,7 @@ class Magic_Tags {
 	 *
 	 * @param string $input the input.
 	 *
-	 * @return string|
+	 * @return string
 	 */
 	public function do_magic_tags( $input ) {
 		if ( empty( self::$magic_tag_regex ) ) {
