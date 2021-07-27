@@ -39,7 +39,14 @@ class Layout_Sidebar extends Base_View {
 		$sidebar_setup = $this->get_sidebar_setup( $context );
 		$theme_mod     = $sidebar_setup['theme_mod'];
 		$theme_mod     = apply_filters( 'neve_sidebar_position', get_theme_mod( $theme_mod, $this->sidebar_layout_alignment_default( $theme_mod ) ) );
+
 		$content_width = get_theme_mod( $sidebar_setup['content_width'], $this->sidebar_layout_width_default( $sidebar_setup['content_width'] ) );
+
+		$meta_width = apply_filters( 'neve_meta_content_width', false );
+
+		if ( $meta_width !== false && ! empty( $meta_width ) ) {
+			$content_width = $meta_width;
+		}
 
 		if ( $content_width >= 95 ) {
 			return;

@@ -466,6 +466,10 @@ final class Manager {
 	 * @param \WP_Post $post Post object.
 	 */
 	public function set_page_width( $post_id, $post ) {
+		if ( neve_is_new_skin() ) {
+			return;
+		}
+
 		$parent_id = wp_is_post_revision( $post_id );
 		if ( $parent_id ) {
 			$post_id = $parent_id;

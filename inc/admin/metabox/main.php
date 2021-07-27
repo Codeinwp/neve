@@ -13,6 +13,21 @@ namespace Neve\Admin\Metabox;
  * @package Neve\Admin\Metabox
  */
 class Main extends Controls_Base {
+
+	/**
+	 * Is new skin.
+	 *
+	 * @var bool
+	 */
+	private $new_skin;
+
+	/**
+	 * Main constructor.
+	 */
+	public function __construct() {
+		$this->new_skin = neve_is_new_skin();
+	}
+
 	/**
 	 * Add controls.
 	 */
@@ -42,11 +57,18 @@ class Main extends Controls_Base {
 				)
 			)
 		);
+
+		$position_default = ( self::is_new_page() || self::is_checkout() ) ? 'full-width' : 'default';
+
+		if ( $this->new_skin ) {
+			$position_default = 'default';
+		}
+
 		$this->add_control(
 			new Controls\Radio(
 				'neve_meta_sidebar',
 				array(
-					'default'  => ( self::is_new_page() || self::is_checkout() ) ? 'full-width' : 'default',
+					'default'  => $position_default,
 					'choices'  => array(
 						'default'    => __( 'Customizer Setting', 'neve' ),
 						'left'       => __( 'Left Sidebar', 'neve' ),
@@ -120,11 +142,19 @@ class Main extends Controls_Base {
 	 * Add content width control.
 	 */
 	private function add_content_width() {
+
+		$enabled_default = ( self::is_new_page() || self::is_checkout() ) ? 'on' : 'off';
+		$width_default   = ( self::is_new_page() || self::is_checkout() ) ? 100 : 70;
+		if ( $this->new_skin ) {
+			$enabled_default = 'off';
+			$width_default   = self::is_post() ? 70 : 100;
+		}
+
 		$this->add_control(
 			new Controls\Checkbox(
 				'neve_meta_enable_content_width',
 				array(
-					'default'     => ( self::is_new_page() || self::is_checkout() ) ? 'on' : 'off',
+					'default'     => $enabled_default,
 					'label'       => __( 'Content Width', 'neve' ) . ' (%)',
 					'input_label' => __( 'Enable Individual Content Width', 'neve' ),
 					'priority'    => 50,
@@ -135,7 +165,7 @@ class Main extends Controls_Base {
 			new Controls\Range(
 				'neve_meta_content_width',
 				array(
-					'default'    => ( self::is_new_page() || self::is_checkout() ) ? 100 : 70,
+					'default'    => $width_default,
 					'min'        => 50,
 					'max'        => 100,
 					'hidden'     => self::hide_content_width(),
@@ -252,6 +282,28 @@ class Main extends Controls_Base {
 			return false;
 		}
 		if ( $_GET['post'] === get_option( 'woocommerce_checkout_page_id' ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check if is post.
+	 */
+	public static function is_post() {
+		global $pagenow;
+
+		// New post.
+		if ( $pagenow === 'post-new.php' && ! isset( $_GET['post_type'] ) ) {
+			return true;
+		}
+
+		if ( ! isset( $_GET['post'] ) ) {
+			return false;
+		}
+
+		if ( get_post_type( absint( $_GET['post'] ) ) === 'post' ) {
 			return true;
 		}
 
