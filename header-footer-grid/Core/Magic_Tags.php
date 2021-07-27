@@ -283,7 +283,7 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function author_bio() {
-		return get_the_author_meta( 'description', get_post_field( 'post_author', get_the_ID() ) );
+		return get_the_author_meta( 'description', ( (int) get_post_field( 'post_author', get_the_ID() ) ) );
 	}
 
 	/**
@@ -292,7 +292,7 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function author_name() {
-		return get_the_author_meta( 'display_name', get_post_field( 'post_author', get_the_ID() ) );
+		return get_the_author_meta( 'display_name', ( (int) get_post_field( 'post_author', get_the_ID() ) ) );
 	}
 
 	/**
