@@ -10,6 +10,7 @@
 
 namespace Neve\Views\Pluggable;
 
+use Neve\Customizer\Defaults\Layout;
 use Neve\Views\Base_View;
 
 /**
@@ -18,6 +19,7 @@ use Neve\Views\Base_View;
  * @package Neve\Views\Pluggable
  */
 class Masonry extends Base_View {
+	use Layout;
 	/**
 	 * Function that is run after instantiation.
 	 *
@@ -86,7 +88,7 @@ class Masonry extends Base_View {
 	 * @return int
 	 */
 	private function get_max_columns() {
-		$columns = get_theme_mod( 'neve_grid_layout', '{mobile:1, tablet:1, desktop:1}' );
+		$columns = get_theme_mod( 'neve_grid_layout', $this->grid_columns_default() );
 		if ( is_int( $columns ) ) {
 			return $columns;
 		}

@@ -1492,3 +1492,12 @@ function neve_can_use_conditional_header() {
 function neve_had_old_hfb() {
 	return ( get_theme_mod( 'hfg_header_layout' ) !== false || get_theme_mod( 'hfg_footer_layout' ) ) !== false;
 }
+
+/**
+ * Check if we have pro support.
+ *
+ * @param string $feature feature to check support for.
+ */
+function neve_pro_has_support( $feature ) {
+	return ( defined( 'NEVE_PRO_COMPATIBILITY_FEATURES' ) && isset( NEVE_PRO_COMPATIBILITY_FEATURES[ $feature ] ) );
+}

@@ -9,6 +9,7 @@ namespace Neve\Core\Styles;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Customizer\Defaults\Layout;
 use Neve\Customizer\Defaults\Single_Post;
 
 /**
@@ -19,6 +20,7 @@ use Neve\Customizer\Defaults\Single_Post;
 class Frontend extends Generator {
 	use Css_Vars;
 	use Single_Post;
+	use Layout;
 
 	/**
 	 * Box shadow map values
@@ -234,6 +236,8 @@ class Frontend extends Generator {
 	 * Removed grid in new skin CSS so this should handle the grid.
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return bool|void
 	 */
 	public function setup_blog_layout() {
 		if ( ! neve_is_new_skin() ) {
@@ -244,7 +248,7 @@ class Frontend extends Generator {
 			'--postWidth' => [
 				Dynamic_Selector::META_KEY           => 'neve_grid_layout',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => '{"desktop":1,"tablet":1,"mobile":1}',
+				Dynamic_Selector::META_DEFAULT       => $this->grid_columns_default(),
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
 					$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
 					if ( ! in_array( $blog_layout, [ 'grid', 'covers' ], true ) ) {
@@ -597,7 +601,7 @@ class Frontend extends Generator {
 	 * TODO: Better exclude classes when Woo is not present, i.e shop-sidebar class is added even when Woo is not used.
 	 */
 	public function setup_layout_subscribers() {
-		$is_advanced_on = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, false );
+		$is_advanced_on = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, neve_is_new_skin() );
 		if ( ! $is_advanced_on ) {
 
 			$this->_subscribers['#content .container .col, #content .container-fluid .col']                             = [
@@ -649,6 +653,7 @@ class Frontend extends Generator {
 		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col, body.post-type-archive-course .neve-main > .container .col, body.post-type-archive-llms_membership .neve-main > .container .col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_OTHERS_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_OTHERS_CONTENT_WIDTH ),
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX      => '%',
 			],
@@ -656,6 +661,7 @@ class Frontend extends Generator {
 		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap, body.post-type-archive-course .nv-sidebar-wrap, body.post-type-archive-llms_membership .nv-sidebar-wrap']                                     = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_OTHERS_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_OTHERS_CONTENT_WIDTH ),
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_FILTER      => 'minus_100',
 				Dynamic_Selector::META_SUFFIX      => '%',
@@ -665,6 +671,7 @@ class Frontend extends Generator {
 		$this->_subscribers['.neve-main > .archive-container .nv-index-posts.col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_ARCHIVE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_ARCHIVE_CONTENT_WIDTH ),
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX      => '%',
 			],
@@ -672,6 +679,7 @@ class Frontend extends Generator {
 		$this->_subscribers['.neve-main > .archive-container .nv-sidebar-wrap']    = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_ARCHIVE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_ARCHIVE_CONTENT_WIDTH ),
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_FILTER      => 'minus_100',
 				Dynamic_Selector::META_SUFFIX      => '%',
@@ -681,6 +689,7 @@ class Frontend extends Generator {
 		$this->_subscribers['.neve-main > .single-post-container .nv-single-post-wrap.col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_SINGLE_CONTENT_WIDTH ),
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX      => '%',
 			],
@@ -689,7 +698,7 @@ class Frontend extends Generator {
 		$this->_subscribers['.single-post-container .alignfull > [class*="__inner-container"], .single-post-container .alignwide > [class*="__inner-container"]']                                 = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEFAULT       => 70,
+				Dynamic_Selector::META_DEFAULT       => $this->sidebar_layout_width_default( Config::MODS_SINGLE_CONTENT_WIDTH ),
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
 					$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
@@ -702,6 +711,7 @@ class Frontend extends Generator {
 		$this->_subscribers['.container-fluid.single-post-container .alignfull > [class*="__inner-container"], .container-fluid.single-post-container .alignwide > [class*="__inner-container"]'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_SINGLE_CONTENT_WIDTH ),
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_FILTER      => function ( $css_prop, $value, $meta, $device ) {
 					return sprintf( 'max-width:calc(%s%% + %spx)', $value, Config::CONTENT_DEFAULT_PADDING / 2 );
@@ -712,6 +722,7 @@ class Frontend extends Generator {
 		$this->_subscribers['.neve-main > .single-post-container .nv-sidebar-wrap'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_SINGLE_CONTENT_WIDTH ),
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_FILTER      => 'minus_100',
 				Dynamic_Selector::META_SUFFIX      => '%',
@@ -726,6 +737,7 @@ class Frontend extends Generator {
 		$this->_subscribers['.archive.woocommerce .neve-main > .shop-container .nv-shop.col']     = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_ARCHIVE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_SHOP_ARCHIVE_CONTENT_WIDTH ),
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX      => '%',
 			],
@@ -733,6 +745,7 @@ class Frontend extends Generator {
 		$this->_subscribers['.archive.woocommerce .neve-main > .shop-container .nv-sidebar-wrap'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_ARCHIVE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_SHOP_ARCHIVE_CONTENT_WIDTH ),
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_FILTER      => 'minus_100',
 				Dynamic_Selector::META_SUFFIX      => '%',
@@ -743,6 +756,7 @@ class Frontend extends Generator {
 		$this->_subscribers['.single-product .neve-main > .shop-container .nv-shop.col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_SHOP_SINGLE_CONTENT_WIDTH ),
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX      => '%',
 			],
@@ -751,7 +765,7 @@ class Frontend extends Generator {
 		$this->_subscribers['.single-product .alignfull > [class*="__inner-container"], .single-product .alignwide > [class*="__inner-container"]']                  = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY           => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
-				Dynamic_Selector::META_DEFAULT       => 70,
+				Dynamic_Selector::META_DEFAULT       => $this->sidebar_layout_width_default( Config::MODS_SHOP_SINGLE_CONTENT_WIDTH ),
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
 					$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
@@ -764,6 +778,7 @@ class Frontend extends Generator {
 		$this->_subscribers['.single-product .container-fluid .alignfull > [class*="__inner-container"], .single-product .alignwide > [class*="__inner-container"]'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_SHOP_SINGLE_CONTENT_WIDTH ),
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_FILTER      => function ( $css_prop, $value, $meta, $device ) {
 					return sprintf( 'max-width:calc(%s%% + %spx)', $value, Config::CONTENT_DEFAULT_PADDING / 2 );
@@ -773,12 +788,12 @@ class Frontend extends Generator {
 		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_SHOP_SINGLE_CONTENT_WIDTH ),
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_FILTER      => 'minus_100',
 				Dynamic_Selector::META_SUFFIX      => '%',
 			],
 		];
-
 	}
 
 	/**

@@ -149,7 +149,7 @@ abstract class Control_Base {
 		if ( isset( $_POST[ $this->id ] ) ) {
 			$value = $this->sanitize_value( wp_unslash( $_POST[ $this->id ] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			// Remove post meta on default.
-			if ( $value === $this->settings['default'] ) {
+			if ( $value === $this->settings['default'] && $this->id !== 'neve_meta_content_width' ) {
 				delete_post_meta( $post_id, $this->id );
 
 				return;

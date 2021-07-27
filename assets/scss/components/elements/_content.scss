@@ -73,6 +73,10 @@ pre {
   ul, ol {
 	padding-left: $spacing-lg;
   }
+
+  li {
+	margin-top: $spacing-xs;
+  }
 }
 
 // === Content Floating Alignments === //
