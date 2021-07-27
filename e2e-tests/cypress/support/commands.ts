@@ -6,6 +6,7 @@ import 'cypress-nv-commands/index';
 import 'cypress-localstorage-commands';
 import { scrollToBottom } from 'scroll-to-bottomjs';
 import '@testing-library/cypress/add-commands';
+import 'cypress-real-events';
 
 Cypress.Commands.add('insertCoverBlock', () => {
 	const text =

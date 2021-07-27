@@ -4100,6 +4100,11 @@ cypress-nv-commands@^1.0.20:
   resolved "https://registry.yarnpkg.com/cypress-nv-commands/-/cypress-nv-commands-1.0.24.tgz#ba866df04999d41e548917aeaa31fb5146c59a95"
   integrity sha512-Md5fxH51osRIigOHjSv2xfhw0BVrbC+npL474MVL3g5YQwpqFcx/k83QQqVj7d6hFjw0Iuy7zu1uqHxWetebmw==
 
+cypress-real-events@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.5.1.tgz#5eeb86d2a7aad9aa6d5271e288a23e46373915cd"
+  integrity sha512-Jwi/IJePcZrKyhdtVddaf+mqJrj3y1vpREMDgtWwz+oxvj5FbBpeU0ASu9zpB3bMbsMo7g//buopZIe4jx3iSA==
+
 cypress-storybook@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/cypress-storybook/-/cypress-storybook-0.5.1.tgz#e71b14ecfbe16a70b9f003c8294143ef466db78f"
