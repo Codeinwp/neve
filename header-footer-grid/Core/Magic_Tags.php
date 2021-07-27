@@ -328,7 +328,7 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function author_url() {
-		return get_author_posts_url( get_post_field( 'post_author', get_the_ID() ) );
+		return get_author_posts_url( ( (int) get_post_field( 'post_author', get_the_ID() ) ) );
 	}
 
 	/**
