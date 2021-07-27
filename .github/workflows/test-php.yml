@@ -95,11 +95,19 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
-      - name: Install dependencies
-        uses: php-actions/composer@v5
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Setup Composer cache
+        uses: actions/cache@v1
         with:
-          dev: yes
-          args: --ignore-platform-reqs
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Install composer
+        run: composer config platform.php 7.1 && composer update
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v2
         with:
