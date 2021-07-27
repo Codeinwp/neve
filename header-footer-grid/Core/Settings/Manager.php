@@ -37,9 +37,9 @@ class Manager {
 	 *
 	 * @since   1.0.0
 	 * @access  private
-	 * @var Defaults $_defaults
+	 * @var Defaults $_defaults (Defaults class implements to \ArrayAccess, it can be used an array)
 	 */
-	private static $_defaults = [];
+	private static $_defaults;
 	/**
 	 * Used to save the register settings ids and their defaults.
 	 *
