@@ -1492,3 +1492,13 @@ function neve_can_use_conditional_header() {
 function neve_had_old_hfb() {
 	return ( get_theme_mod( 'hfg_header_layout' ) !== false || get_theme_mod( 'hfg_footer_layout' ) ) !== false;
 }
+
+/**
+ * Check that if new widget editor is available.
+ *
+ * @return bool
+ * @since 3.0.0
+ */
+function neve_is_new_widget_editor() {
+	return ( defined( 'GUTENBERG_VERSION' ) && version_compare( GUTENBERG_VERSION, '10.6.2', '>' ) ) || version_compare( substr( get_bloginfo( 'version' ), 0, 3 ), '5.8', '>=' );
+}
