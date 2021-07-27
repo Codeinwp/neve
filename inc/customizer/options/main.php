@@ -133,13 +133,10 @@ class Main extends Base_Customizer {
 		}
 
 		// If the pro version exists but it's incompatible, we don't show the switch.
-		if ( defined( 'NEVE_PRO_VERSION' ) && ! defined( 'NEVE_PRO_COMPATIBILITY_FEATURES' ) ) {
-			return;
-		}
-
-		// If the pro version doesn't support this, we don't do it.
-		if ( ! isset( NEVE_PRO_COMPATIBILITY_FEATURES['skinv2'] ) ) {
-			return;
+		if ( defined( 'NEVE_PRO_VERSION' ) ) {
+			if ( ! neve_pro_has_support( 'skinv2' ) ) {
+				return;
+			}
 		}
 
 		$section = 'neve_style_section';
