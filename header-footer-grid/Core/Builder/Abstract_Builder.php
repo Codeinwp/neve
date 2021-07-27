@@ -1254,8 +1254,8 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Render the builder components.
 	 *
-	 * @param string $device the device [desktop|mobile].
-	 * @param string $row the row id.
+	 * @param string|null $device the device [desktop|mobile].
+	 * @param string|null $row the row id.
 	 */
 	public function new_render_components( $device, $row ) {
 		$row_index = 0;
