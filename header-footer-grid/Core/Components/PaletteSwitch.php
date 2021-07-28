@@ -147,6 +147,7 @@ class PaletteSwitch extends Abstract_Component {
 		.toggle-palette .icon {
 			display: flex;
 			width: var(--iconSize);
+			height: var(--iconSize);
 		}
 		.toggle-palette .label {
 			font-size: 0.85em;
