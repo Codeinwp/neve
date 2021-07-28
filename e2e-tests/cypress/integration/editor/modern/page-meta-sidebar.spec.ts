@@ -6,23 +6,30 @@ describe('Single page sidebar', function () {
 	};
 
 	before('Create new page named "' + pageSetup.title + '".', function () {
-		cy.insertPost(pageSetup.title, pageSetup.content, 'page');
-
-		cy.setCustomizeSettings({
-			neve_migrated_hfg_colors: true,
-			nav_menu_locations: [],
-			custom_css_post_id: -1,
-		});
-		cy.get('.post-publish-panel__postpublish-header a')
-			.contains(pageSetup.title)
-			.should('have.attr', 'href')
-			.then((href) => {
-				pageSetup.url = href.toString();
+		cy.insertPostWithRequest(pageSetup.title, pageSetup.content, 'pages')
+			.then(() => {
+				pageSetup.url = window.localStorage.getItem('postUrl');
 			})
 			.then(() => {
-				window.localStorage.setItem('pageId', Cypress.$('#post_ID').val().toString());
-				cy.getJWT();
+				cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
+					meta: {
+						neve_meta_sidebar: 'full-width',
+						neve_meta_enable_content_width: 'on',
+						neve_meta_content_width: 100,
+					},
+				});
 			});
+
+		cy.setCustomizeSettings({
+			custom_css_post_id: -1,
+			nav_menu_locations: [],
+			neve_migrated_hfg_colors: true,
+			neve_new_skin: 'new',
+			neve_ran_migrations: true,
+			neve_blog_archive_content_width: 50,
+			neve_other_pages_content_width: 30,
+			neve_single_post_content_width: 40,
+		});
 		cy.saveLocalStorage();
 	});
 
@@ -52,7 +59,7 @@ describe('Single page sidebar', function () {
 		});
 
 		it('Full-width', function () {
-			cy.updatePageOrPostByRequest(window.localStorage.getItem('pageId'), 'pages', {
+			cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
 				meta: {
 					neve_meta_sidebar: 'full-width',
 				},
@@ -62,7 +69,7 @@ describe('Single page sidebar', function () {
 			cy.get('.nv-sidebar-wrap').should('not.exist');
 		});
 		it('Left', function () {
-			cy.updatePageOrPostByRequest(window.localStorage.getItem('pageId'), 'pages', {
+			cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
 				meta: {
 					neve_meta_sidebar: 'left',
 				},
@@ -72,7 +79,7 @@ describe('Single page sidebar', function () {
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left');
 		});
 		it('Right', function () {
-			cy.updatePageOrPostByRequest(window.localStorage.getItem('pageId'), 'pages', {
+			cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
 				meta: {
 					neve_meta_sidebar: 'right',
 				},
@@ -108,8 +115,6 @@ describe('Single page sidebar', function () {
 		cy.clearWelcome();
 
 		cy.openNeveSidebar();
-
-		cy.activateCheckbox('.components-toggle-control__label', 'Custom Content Width (%)');
 
 		cy.get('.neve_meta_content_width').find('input[type=number]').type('{selectall}').type('60');
 		cy.updatePost();

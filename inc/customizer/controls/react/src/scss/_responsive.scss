@@ -19,7 +19,7 @@
 	min-width: unset !important;
 
 	svg, .dashicon {
-	  fill: $icon-fill;
+	  color: lighten($accent-color, 20);
 	  height: 15px;
 	  width: 16px;
 	  font-size: 15px;
@@ -34,7 +34,7 @@ $devicemap : 'tablet', 'mobile', 'desktop';
 	.neve-responsive-control-bar {
 	  button.#{$device} {
 		.dashicon {
-		  color: lighten($accent-color, 20);
+		  color: darken($accent-color, 50);
 		}
 	  }
 	}

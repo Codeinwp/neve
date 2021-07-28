@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="Themeisle">
-    <description>Themeisle rules for PHP_CodeSniffer</description>
+    <description>Themeisle rules for PHP_CodeSniffer.</description>
 
     <file>.</file>
 

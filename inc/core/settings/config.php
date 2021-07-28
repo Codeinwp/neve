@@ -79,6 +79,27 @@ class Config {
 	const MODS_FORM_FIELDS_COLOR            = 'neve_input_text_color';
 	const MODS_FORM_FIELDS_LABELS_TYPEFACE  = 'neve_label_typeface';
 
+	const MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE = 'neve_author_avatar_size';
+	const MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE  = 'neve_single_post_avatar_size';
+	const MODS_SINGLE_POST_ELEMENTS_SPACING         = 'neve_single_post_elements_spacing';
+
+	const MODS_POST_COVER_HEIGHT                 = 'neve_post_cover_height';
+	const MODS_POST_COVER_PADDING                = 'neve_post_cover_padding';
+	const MODS_POST_COVER_BACKGROUND_COLOR       = 'neve_post_cover_background_color';
+	const MODS_POST_COVER_OVERLAY_OPACITY        = 'neve_post_cover_overlay_opacity';
+	const MODS_POST_COVER_TEXT_COLOR             = 'neve_post_cover_text_color';
+	const MODS_POST_COVER_BLEND_MODE             = 'neve_post_cover_blend_mode';
+	const MODS_POST_COVER_TITLE_POSITION         = 'neve_post_title_position';
+	const MODS_POST_COVER_BOXED_TITLE_PADDING    = 'neve_post_cover_title_boxed_padding';
+	const MODS_POST_COVER_BOXED_TITLE_BACKGROUND = 'neve_post_cover_title_boxed_background_color';
+
+	const MODS_POST_COMMENTS_PADDING               = 'neve_comments_boxed_padding';
+	const MODS_POST_COMMENTS_BACKGROUND_COLOR      = 'neve_comments_boxed_background_color';
+	const MODS_POST_COMMENTS_TEXT_COLOR            = 'neve_comments_boxed_text_color';
+	const MODS_POST_COMMENTS_FORM_PADDING          = 'neve_comments_form_boxed_padding';
+	const MODS_POST_COMMENTS_FORM_BACKGROUND_COLOR = 'neve_comments_form_boxed_background_color';
+	const MODS_POST_COMMENTS_FORM_TEXT_COLOR       = 'neve_comments_form_boxed_text_color';
+
 	const CSS_PROP_BORDER_COLOR               = 'border-color';
 	const CSS_PROP_BACKGROUND_COLOR           = 'background-color';
 	const CSS_PROP_COLOR                      = 'color';
@@ -112,6 +133,9 @@ class Config {
 	const CSS_PROP_TEXT_TRANSFORM             = 'text-transform';
 	const CSS_PROP_FONT_FAMILY                = 'font-family';
 	const CSS_PROP_BOX_SHADOW                 = 'box-shadow';
+	const CSS_PROP_MIX_BLEND_MODE             = 'mix-blend-mode';
+	const CSS_PROP_OPACITY                    = 'opacity';
+	const CSS_PROP_GRID_TEMPLATE_COLS         = 'grid-template-columns';
 
 	const CSS_PROP_CUSTOM_BTN_TYPE           = 'btn-type';
 	const CSS_PROP_CUSTOM_FONT_WEIGHT_FAMILY = 'btn-type';
@@ -144,9 +168,18 @@ class Config {
 	const CSS_SELECTOR_FORM_INPUTS              = 'form_inputs';
 	const CSS_SELECTOR_FORM_INPUTS_LABELS       = 'form_labels';
 	const CSS_SELECTOR_FORM_BUTTON              = 'form_buttons';
+	const CSS_SELECTOR_FORM_BUTTON_HOVER        = 'form_buttons_hover';
 	const CSS_SELECTOR_FORM_SEARCH_INPUTS       = 'search_form_inputs';
 
 	const CONTENT_DEFAULT_PADDING = 30;
+
+	/**
+	 * Keys for directional values.
+	 *
+	 * @var string[]
+	 */
+	public static $directional_keys = [ 'top', 'right', 'bottom', 'left' ];
+
 	/**
 	 * Holds tag->css selector mapper.
 	 *
@@ -184,7 +217,8 @@ class Config {
 		self::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING    => 'form:not([role="search"]):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code), form textarea, form select, .widget select',
 		self::CSS_SELECTOR_FORM_INPUTS                 => 'form input:read-write, form textarea, form select, form select option, form.wp-block-search input.wp-block-search__input, .widget select',
 		self::CSS_SELECTOR_FORM_INPUTS_LABELS          => 'form label, .wpforms-container .wpforms-field-label',
-		self::CSS_SELECTOR_FORM_BUTTON                 => 'form input[type="submit"]',
+		self::CSS_SELECTOR_FORM_BUTTON                 => 'form input[type="submit"], form button[type="submit"], form *[value*="ubmit"], #comments input[type="submit"]',
+		self::CSS_SELECTOR_FORM_BUTTON_HOVER           => 'form input[type="submit"]:hover, form button[type="submit"]:hover, form *[value*="ubmit"]:hover, #comments input[type="submit"]:hover',
 		self::CSS_SELECTOR_FORM_SEARCH_INPUTS          => 'form.search-form input:read-write',
 	];
 }

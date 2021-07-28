@@ -1,46 +1,49 @@
 @import "vars";
 
 .neve-radio-image {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .option {
+	text-align: center;
+	padding: 3px;
+	box-sizing: border-box;
+	width: 33.33%;
+  }
+
+  label {
+	margin: 0 auto;
+	flex-direction: column;
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	.option {
-		text-align: center;
-		padding: 3px;
-	  	box-sizing: border-box;
-	  	width:33.33%;
+  }
+
+  span {
+	margin-top: 7px;
+	color: $accent-color;
+	font-weight: 800;
+	font-size: 9px;
+	line-height: 18px;
+	text-transform: uppercase;
+  }
+
+  button {
+	cursor: pointer;
+	border: none;
+	padding: 0;
+	background: 0;
+
+	&.active {
+	  outline: 2px solid $wp-blue;
 	}
 
-	label {
-		margin: 0 auto;
-		flex-direction: column;
-		display: flex;
+	&:hover {
+	  filter: saturate(3);
 	}
 
-	span {
-		margin-top: 7px;
-		color: $accent-color;
-		font-weight: 800;
-		font-size: 9px;
-		line-height: 18px;
-		text-transform: uppercase;
+	img {
+	  display: block;
+	  margin: 0 auto;
 	}
-
-	button {
-		cursor: pointer;
-		border: none;
-		padding: 0;
-
-		&.active {
-			outline: 2px solid $wp-blue;
-		}
-
-		&:hover {
-			filter: saturate(3);
-		}
-
-		img {
-			display: block;
-		}
-	}
+  }
 }

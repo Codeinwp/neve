@@ -64,7 +64,7 @@ class Mods {
 		return isset( $value[ $subkey ] ) ? $value[ $subkey ] : $default;
 	}
 
-	/***
+	/**
 	 * Forced defaults.
 	 *
 	 * @param string $key Key name.
@@ -78,7 +78,7 @@ class Mods {
 			case Config::MODS_BUTTON_PRIMARY_STYLE:
 				return neve_get_button_appearance_default();
 			case Config::MODS_BUTTON_SECONDARY_STYLE:
-				return neve_get_button_appearance_default( 'secondary_button' );
+				return neve_get_button_appearance_default( 'secondary' );
 			case Config::MODS_TYPEFACE_GENERAL:
 				$defaults  = self::get_typography_defaults(
 					[
@@ -203,4 +203,200 @@ class Mods {
 		return json_decode( self::get( $key, $default ), $as_array );
 	}
 
+	/**
+	 * Get alternative mod default.
+	 *
+	 * @param string $key theme mod key.
+	 *
+	 * @return string | array
+	 */
+	public static function get_alternative_mod_default( $key ) {
+		$new                    = neve_is_new_skin();
+		$headings_generic_setup = [
+			'fontWeight'    => $new ? '700' : '600',
+			'textTransform' => 'none',
+			'letterSpacing' => [
+				'mobile'  => 0,
+				'tablet'  => 0,
+				'desktop' => 0,
+			],
+		];
+		$headings_sufix         = [
+			'mobile'  => $new ? 'px' : 'em',
+			'tablet'  => $new ? 'px' : 'em',
+			'desktop' => $new ? 'px' : 'em',
+		];
+		switch ( $key ) {
+			case Config::MODS_FONT_GENERAL:
+				return $new ? 'Arial, Helvetica, sans-serif' : false;
+			case Config::MODS_TYPEFACE_GENERAL:
+				return [
+					'fontSize'      => [
+						'suffix'  => [
+							'mobile'  => 'px',
+							'tablet'  => 'px',
+							'desktop' => 'px',
+						],
+						'mobile'  => 15,
+						'tablet'  => 16,
+						'desktop' => 16,
+					],
+					'lineHeight'    => [
+						'mobile'  => 1.6,
+						'tablet'  => 1.6,
+						'desktop' => $new ? 1.7 : 1.6,
+					],
+					'letterSpacing' => [
+						'mobile'  => 0,
+						'tablet'  => 0,
+						'desktop' => 0,
+					],
+					'fontWeight'    => '400',
+					'textTransform' => 'none',
+				];
+			case Config::MODS_TYPEFACE_H1:
+				return array_merge(
+					$headings_generic_setup,
+					array(
+						'fontSize'   => [
+							'mobile'  => $new ? '36' : '1.5',
+							'tablet'  => $new ? '38' : '1.5',
+							'desktop' => $new ? '40' : '2',
+							'suffix'  => $headings_sufix,
+						],
+						'lineHeight' => [
+							'mobile'  => $new ? 1.2 : 1.6,
+							'tablet'  => $new ? 1.2 : 1.6,
+							'desktop' => $new ? 1.1 : 1.6,
+						],
+					)
+				);
+			case Config::MODS_TYPEFACE_H2:
+				return array_merge(
+					$headings_generic_setup,
+					array(
+						'fontSize'   => [
+							'mobile'  => $new ? '28' : '1.3',
+							'tablet'  => $new ? '30' : '1.3',
+							'desktop' => $new ? '32' : '1.75',
+							'suffix'  => $headings_sufix,
+						],
+						'lineHeight' => [
+							'mobile'  => $new ? 1.3 : 1.6,
+							'tablet'  => $new ? 1.2 : 1.6,
+							'desktop' => $new ? 1.2 : 1.6,
+						],
+					)
+				);
+			case Config::MODS_TYPEFACE_H3:
+				return array_merge(
+					$headings_generic_setup,
+					array(
+						'fontSize'   => [
+							'mobile'  => $new ? '24' : '1.1',
+							'tablet'  => $new ? '26' : '1.1',
+							'desktop' => $new ? '28' : '1.5',
+							'suffix'  => $headings_sufix,
+						],
+						'lineHeight' => [
+							'mobile'  => $new ? 1.4 : 1.6,
+							'tablet'  => $new ? 1.4 : 1.6,
+							'desktop' => $new ? 1.4 : 1.6,
+						],
+					)
+				);
+			case Config::MODS_TYPEFACE_H4:
+				return array_merge(
+					$headings_generic_setup,
+					array(
+						'fontSize'   => [
+							'mobile'  => $new ? '20' : '1',
+							'tablet'  => $new ? '22' : '1',
+							'desktop' => $new ? '24' : '1.25',
+							'suffix'  => $headings_sufix,
+						],
+						'lineHeight' => [
+							'mobile'  => 1.6,
+							'tablet'  => $new ? 1.5 : 1.6,
+							'desktop' => $new ? 1.5 : 1.6,
+						],
+					)
+				);
+			case Config::MODS_TYPEFACE_H5:
+				return array_merge(
+					$headings_generic_setup,
+					array(
+						'fontSize'   => [
+							'mobile'  => $new ? '16' : '0.75',
+							'tablet'  => $new ? '18' : '0.75',
+							'desktop' => $new ? '20' : '1',
+							'suffix'  => $headings_sufix,
+						],
+						'lineHeight' => [
+							'mobile'  => 1.6,
+							'tablet'  => 1.6,
+							'desktop' => 1.6,
+						],
+					)
+				);
+			case Config::MODS_TYPEFACE_H6:
+				return array_merge(
+					$headings_generic_setup,
+					array(
+						'fontSize'   => [
+							'mobile'  => $new ? '14' : '0.75',
+							'tablet'  => $new ? '14' : '0.75',
+							'desktop' => $new ? '16' : '1',
+							'suffix'  => $headings_sufix,
+						],
+						'lineHeight' => [
+							'mobile'  => 1.6,
+							'tablet'  => 1.6,
+							'desktop' => 1.6,
+						],
+					)
+				);
+			case Config::MODS_BUTTON_PRIMARY_PADDING:
+				$device = $new ? [
+					'top'    => 13,
+					'right'  => 15,
+					'bottom' => 13,
+					'left'   => 15,
+				] : [
+					'top'    => 8,
+					'right'  => 12,
+					'bottom' => 8,
+					'left'   => 12,
+				];
+
+				return [
+					'desktop'      => $device,
+					'tablet'       => $device,
+					'mobile'       => $device,
+					'desktop-unit' => 'px',
+					'tablet-unit'  => 'px',
+					'mobile-unit'  => 'px',
+				];
+			case Config::MODS_FORM_FIELDS_SPACING:
+				return $new ? 40 : 10;
+			case Config::MODS_FORM_FIELDS_PADDING:
+				return [
+					'top'    => $new ? 10 : 7,
+					'bottom' => $new ? 10 : 7,
+					'left'   => 12,
+					'right'  => 12,
+					'unit'   => 'px',
+				];
+			case Config::MODS_FORM_FIELDS_BORDER_WIDTH:
+				return [
+					'top'    => $new ? 2 : 1,
+					'right'  => $new ? 2 : 1,
+					'left'   => $new ? 2 : 1,
+					'bottom' => $new ? 2 : 1,
+					'unit'   => 'px',
+				];
+			default:
+				return false;
+		}
+	}
 }

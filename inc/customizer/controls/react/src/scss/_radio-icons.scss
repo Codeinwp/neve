@@ -32,11 +32,15 @@
 	height: 28px;
 	border: 1px solid $input-borders;
 	border-radius: 0;
+	margin-left: -1px;
 
+	&:first-child {
+	  margin-left: 0;
+	}
 
-	svg {
+	svg, .dashicon {
 	  width: 20px;
-	  margin-right: 0 !important;
+	  margin: 0 auto !important;
 	}
 
 	&.active {

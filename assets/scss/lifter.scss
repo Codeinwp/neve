@@ -1,85 +1,46 @@
-.nv-content-wrap ul.llms-loop-list{
-  padding: 0;
+@import "./components/main/extends";
+
+.llms-loop-list {
+  padding: 0!important;
 }
 
-.lms-container {
-  .nv-page-title-wrap,
-  .nv-sidebar-wrap {
-    margin-top: 30px;
-  }
+.llms-sd-section-footer{
+  margin-bottom: 25px;
 }
 
 .llms-pagination {
   margin: 10px auto;
-  ul {
-    text-align: center;
-    li{
-      float: none;
-      display: inline;
-      .page-numbers{
-        text-decoration: none;
-        margin: 10px auto;
-        display: inline-block;
-      }
-    }
+  ul{
+	list-style-type: none;
+	padding: 0;
+	li .page-numbers {
+	  text-decoration: none;
+	  display: inline-block;
+	  padding: 12px 15px;
+	}
   }
 }
 
-.llms-loop-link{
-  &:hover{
-    text-decoration: none;
+.llms-button-primary, .llms-button-action {
+  display: inline-block;
+  @extend %nv-button-primary;
+  &:hover {
+	@extend %nv-button-primary-hover;
   }
 }
 
-#neve_body .nv-content-wrap {
-  a{
-    &.llms-button-primary, &.llms-sd-link, &.llms-loop-link, &.llms-button-secondary{
-      text-decoration: none;
-    }  }
-}
-
-.llms-button-primary, .llms-button-action{
-  font-size: .8em;
-  font-weight: 600;
-  padding: 8px 12px;
-  transition: all .15s ease-in-out;
-  text-align: center;
-  vertical-align: middle;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  text-transform: uppercase;
-  cursor: pointer;
-  line-height: 1.68421;
-  font-family: inherit;
-  background-color: #0366d6;
-  color: #fff;
-  &:hover{
-    text-decoration: none;
-    background-color: #0366d6;
-    color: #fff;
-    opacity: .9;
-  }
-}
-
-.llms-button-secondary{
-  border-radius: 3px;
-  border: 1px solid #676767;
-  background-color: transparent;
-  font-weight: 600;
-  color: #676767;
-  &:hover{
-    background: transparent;
+.llms-button-secondary {
+  display: inline-block;
+  @extend %nv-button-secondary;
+  &:hover {
+	@extend %nv-button-secondary-hover;
   }
 }
 
 .llms-loop-item-footer {
   .avatar, .llms-author-info {
-    vertical-align: middle;
+	vertical-align: middle;
   }
-}
-
-footer.llms-loop-item-footer {
-  background-color: inherit;
 }
 
 .llms-choice > label {
@@ -88,31 +49,27 @@ footer.llms-loop-item-footer {
 
 .single-course {
   .review_box {
-    input[type="text"], textarea {
-      display: block;
-      margin: 10px 0;
-      width: 100%;
-    }
+	background-color: var(--nv-light-bg);
+	padding: 40px;
 
-    textarea {
-      height: 200px;
-    }
+	input:read-write, textarea {
+	  max-width: 100%;
+	  width: 100%;
+	  display: block;
+	  @extend %nv-form-fields;
+	}
+
+	textarea {
+	  height: 200px;
+	}
   }
+
   .llms-lesson-counter {
-    display: inline-block;
-    margin-bottom: 0px;
+  	display: inline-block;
+  	margin-bottom: 0;
   }
 }
 
-.llms-person-login-form-wrapper {
-  max-width: 100%;
-}
-
-.llms-course-nav  .llms-lesson-preview{
+.llms-course-nav .llms-lesson-preview {
   width: 100%;
-  .llms-main{
-    .llms-pre-text, .llms-lesson-title{
-      text-align: center;
-    }
-  }
 }

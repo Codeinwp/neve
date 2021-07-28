@@ -45,7 +45,7 @@ class CustomHtml extends Abstract_Component {
 	/**
 	 * Add form and input tag to allowed tags in header_footer_grid context.
 	 *
-	 * @param array        $tags    HTML Tags.
+	 * @param array        $tags HTML Tags.
 	 * @param string|array $context The context for which to retrieve tags.
 	 *
 	 * @return array
@@ -165,6 +165,10 @@ class CustomHtml extends Abstract_Component {
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => '--color',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
 					[
 						'selector' => $this->default_typography_selector . ', ' . $this->default_typography_selector . ' *:not(a)',
 						'prop'     => 'color',
@@ -186,15 +190,30 @@ class CustomHtml extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
+		if ( ! neve_is_new_skin() ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $this->default_typography_selector . ', ' . $this->default_typography_selector . ' *',
+				Dynamic_Selector::KEY_RULES    => [
+					\Neve\Core\Settings\Config::CSS_PROP_COLOR => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
+					],
+				],
+			];
+
+			return parent::add_style( $css_array );
+		}
+
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_typography_selector . ', ' . $this->default_typography_selector . ' *',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
 			Dynamic_Selector::KEY_RULES    => [
-				\Neve\Core\Settings\Config::CSS_PROP_COLOR => [
+				'--color' => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
 					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
 				],
 			],
 		];
+
 		return parent::add_style( $css_array );
 	}
 

@@ -1,0 +1,55 @@
+@import "../../main/variables";
+$overlay: rgba(0, 0, 0, 0.75);
+
+.layout-covers {
+  .article-content-col,
+  .content,
+  .cover-post {
+  	height: 100%;
+  }
+
+  .content {
+	border: 0;
+	padding-bottom: 0;
+  }
+}
+
+.cover-post {
+  box-shadow: var(--boxShadow, none);
+  position: relative;
+  background-size: cover;
+  display: flex;
+  background-position: center;
+  overflow: hidden;
+
+  &:after {
+	background-color: $overlay;
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+  }
+
+  amp-img, img {
+	--boxShadow: none;
+  }
+
+  .inner {
+	max-width: 100%;
+	min-height: 350px;
+	position: relative;
+	z-index: 10;
+	padding: 25px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	color: var(--color, #fff);
+	flex-grow: 1;
+
+	a:not(.button) {
+	  color: var(--color, #fff);
+	}
+  }
+}

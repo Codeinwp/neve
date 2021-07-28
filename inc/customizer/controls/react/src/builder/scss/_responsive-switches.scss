@@ -1,0 +1,48 @@
+@import "vars";
+
+.responsive-switches {
+  display: inline-flex;
+  width: auto;
+
+  .device-switcher {
+	border-bottom: 2px solid $wp-grey;
+	border-radius: 0;
+	font-weight: 600;
+	color: $item-text-color;
+	padding: 5px 15px;
+	opacity: .85;
+
+	.dashicons {
+	  color: $item-icons-color;
+	}
+
+	&.active {
+	  opacity: 1;
+	  border-bottom-color: $wp-blue;
+
+	  &.dashicons {
+		color: $wp-blue;
+	  }
+	}
+  }
+}
+
+.builder-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.builder-instructions {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+
+  p {
+	margin: 0;
+  }
+
+  strong {
+	margin-right: 5px;
+  }
+}

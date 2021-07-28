@@ -1,4 +1,5 @@
 {
+  "root": true,
 	"extends": [
 		"plugin:cypress/recommended",
 		"plugin:chai-friendly/recommended",

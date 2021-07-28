@@ -11,7 +11,7 @@ const RadioButtonsComponent = ({ control }) => {
 	const [value, setValue] = useState(control.setting.get());
 
 	useEffect(() => {
-		global.addEventListener('neve-changed-customizer-value', (e) => {
+		document.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) return false;
 			if (e.detail.id !== control.id) return false;
 			updateValue(e.detail.value);
@@ -129,6 +129,25 @@ const RadioButtonsComponent = ({ control }) => {
 					'cart-icon-style6': {
 						tooltip: __('Style 6', 'neve'),
 						icon: SVG.cartIconStyle6,
+					},
+				};
+			case 'palette_switch':
+				return {
+					contrast: {
+						tooltip: __('Contrast', 'neve'),
+						icon: SVG.paletteIconStyle1,
+					},
+					night: {
+						tooltip: __('Night', 'neve'),
+						icon: SVG.paletteIconStyle2,
+					},
+					toggle: {
+						tooltip: __('Toggle', 'neve'),
+						icon: SVG.paletteIconStyle3,
+					},
+					accessibility: {
+						tooltip: __('Accessibility', 'neve'),
+						icon: SVG.paletteIconStyle4,
 					},
 				};
 		}

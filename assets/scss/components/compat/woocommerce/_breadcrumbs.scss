@@ -1,0 +1,28 @@
+@import "../../main/variables";
+
+.woocommerce .woocommerce-breadcrumb {
+  color: var(--nv-text-color);
+  font-size: 14px;
+
+  a {
+	color: var(--nv-secondary-accent);
+  }
+
+  .nv-breadcrumb-delimiter {
+	padding: 0 $spacing-xxs;
+  }
+}
+
+.woocommerce {
+  .woocommerce-result-count {
+	float: none;
+	margin: 0;
+  }
+}
+
+.nv-bc-count-wrap {
+  margin-bottom: $spacing-md;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+}

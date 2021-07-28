@@ -34,7 +34,15 @@ class Header extends Base_View {
 	 * Hide last menu item search in mobile sidebar.
 	 */
 	public function hide_last_menu_item_search_in_sidebar() {
-		wp_add_inline_style( 'neve-style', '.header-menu-sidebar-inner li.menu-item-nav-search { display: none; }' );
+		if ( neve_is_new_builder() ) {
+			return;
+		}
+
+		wp_add_inline_style(
+			'neve-style',
+			'.header-menu-sidebar-inner li.menu-item-nav-search { display: none; }
+		[data-row-id] .row { display: flex !important; align-items: center; flex-wrap: unset;}'
+		);
 	}
 
 	/**

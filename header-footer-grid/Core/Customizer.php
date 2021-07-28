@@ -66,7 +66,7 @@ class Customizer {
 			}
 		}
 
-		if ( is_admin() ) {
+		if ( ! neve_is_new_builder() ) {
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'scripts' ) );
 			add_action( 'customize_controls_print_footer_scripts', array( $this, 'template' ) );
 		}
@@ -77,7 +77,7 @@ class Customizer {
 		}
 
 		add_filter( 'body_class', array( $this, 'hfg_body_classes' ) );
-		add_filter( 'neve_react_controls_localization', array( $this, 'add_dynamic_tags_options' ) );
+		add_filter( 'neve_react_controls_localization', array( $this, 'add_builders_and_dynamic_tags' ) );
 	}
 
 	/**
@@ -85,9 +85,10 @@ class Customizer {
 	 *
 	 * @param array $array the localized array.
 	 *
-	 * @return mixed
+	 * @return array
 	 */
-	public function add_dynamic_tags_options( $array ) {
+	public function add_builders_and_dynamic_tags( $array ) {
+		$array['HFG']                    = $this->get_builders_data();
 		$array['dynamicTags']['options'] = Magic_Tags::get_instance()->get_options();
 
 		return $array;
@@ -242,9 +243,9 @@ class Customizer {
 			$builder->customize_register( $wp_customize );
 		}
 
-		$wp_customize->register_section_type( '\HFG\Core\Customizer\Instructions_Section' );
-		$wp_customize->register_control_type( '\HFG\Core\Customizer\Instructions_Control' );
+		$wp_customize->register_section_type( '\Neve\Customizer\Controls\React\Instructions_Section' );
 	}
+
 
 	/**
 	 * The Customizer templates.
@@ -265,21 +266,21 @@ class Customizer {
 						<div class="hfg--cb-notice conditional-header hidden">
 							<i class="dashicons dashicons-info"></i>
 							<p>
-							<?php
+								<?php
 								/* translators: %s is the header name */
 								echo wp_kses_post( sprintf( __( 'You are customizing the %s Header', 'neve' ), ' <a>' . __( 'Default', 'neve' ) . '</a> ' ) );
-							?>
-								</p>
+								?>
+							</p>
 						</div>
 						<# } #>
 						<div class="hfg--cb-notice welcome-notice {{data.id}} hidden">
 							<p>
 								<?php /* translators: %s is the type of builder */ ?>
 								<span><?php echo sprintf( esc_html__( '%s Builder:', 'neve' ), '{{data.title}}' ); ?></span>
-							<?php
+								<?php
 								/* translators: %s is the header name */
 								echo esc_html__( 'Click on any empty space to add components, or existing components to adjust settings.', 'neve' );
-							?>
+								?>
 								<a href="#" data-open-nv-modal="hfg-instructional"><i class="dashicons dashicons-info"></i></a>
 							</p>
 						</div>
@@ -287,7 +288,7 @@ class Customizer {
 							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
 							<a class="button button-secondary hfg--panel-close" href="#">
 								<span class="close-text"><i class="dashicons dashicons-arrow-down-alt2"
-										style="margin-top: 4px;"></i> <?php esc_html_e( 'Close', 'neve' ); ?></span>
+															style="margin-top: 4px;"></i> <?php esc_html_e( 'Close', 'neve' ); ?></span>
 								<span class="panel-name-text">
 									<i class="dashicons dashicons-arrow-up-alt2" style="margin-top: 4px;"></i>
 									{{ data.title }}
@@ -318,6 +319,9 @@ class Customizer {
 					<div class="hfg--sidebar-visible icon"><i class="dashicons dashicons-{{data.icon}}"></i></div>
 					<span class="hfg--cb-item-name" data-section="{{ data.section }}">{{ data.name }}</span>
 					<span class="hfg--cb-item-remove hfg-cb-icon"></span>
+					<# if(data.section.indexOf('neve_') !== -1) { #>
+					<span class="hfg--cb-item-admin-setting hfg-cb-icon" data-widget="{{ data.section }}"></span>
+					<# } #>
 					<span class="hfg--cb-item-setting hfg-cb-icon" data-section="{{ data.section }}"></span>
 				</div>
 			</div>
@@ -329,7 +333,7 @@ class Customizer {
 					<div class="hfg-component-search">
 						<i class="dashicons dashicons-search"></i>
 						<input class="component-search" type="search"
-							placeholder="<?php esc_attr_e( 'Search Components', 'neve' ); ?>..."/>
+								placeholder="<?php esc_attr_e( 'Search Components', 'neve' ); ?>..."/>
 					</div>
 					<button class="close button button-link">
 						<i class="dashicons dashicons-no"></i>

@@ -8,12 +8,11 @@ describe('Header Builder Alignment Control', function () {
 		it('Checks alignment for the Logo to Center', function () {
 			cy.visit('/');
 
-			cy.get('.header-main .desktop-center.hfg-item-first')
+			cy.get('.site-logo')
 				.should('be.visible')
 				.and('not.have.class', 'mobile-left')
 				.and('not.have.class', 'tablet-left')
-				.find('.site-logo')
-				.should('be.visible');
+				.and('have.css', 'text-align', 'center');
 		});
 	});
 
@@ -26,12 +25,11 @@ describe('Header Builder Alignment Control', function () {
 		it('Checks alignment for the Logo to Right', function () {
 			cy.visit('/');
 
-			cy.get('.header-main .desktop-right.hfg-item-first')
+			cy.get('.site-logo')
 				.should('be.visible')
 				.and('not.have.class', 'mobile-left')
 				.and('not.have.class', 'tablet-left')
-				.find('.site-logo')
-				.should('be.visible');
+				.and('have.css', 'text-align', 'right');
 		});
 	});
 });

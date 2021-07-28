@@ -9,6 +9,10 @@ namespace Neve\Admin\Metabox;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Customizer\Defaults\Layout;
+use Neve\Customizer\Defaults\Single_Post;
+use Neve\Customizer\Options\Layout_Single_Post;
+use Neve\Views\Post_Layout;
 
 /**
  * Class Manager
@@ -16,6 +20,8 @@ use Neve\Core\Settings\Mods;
  * @package Neve\Admin\Metabox
  */
 final class Manager {
+	use Single_Post;
+	use Layout;
 
 	/**
 	 * Control instances.
@@ -353,12 +359,15 @@ final class Manager {
 		if ( $post_type !== 'post' && $post_type !== 'page' ) {
 			return false;
 		}
+
+		$dependencies = ( include get_template_directory() . '/inc/admin/metabox/build/index.asset.php' );
+
 		wp_enqueue_script(
 			'neve-meta-sidebar',
 			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.js',
-			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-keyboard-shortcuts', 'wp-i18n' ),
-			NEVE_VERSION,
-			false
+			$dependencies['dependencies'],
+			$dependencies['version'],
+			true
 		);
 
 		if ( function_exists( 'wp_set_script_translations' ) ) {
@@ -368,13 +377,20 @@ final class Manager {
 		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
 		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
 
-		$advanced_layout = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS );
-		$single_width    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_CONTENT_WIDTH, 70 ) : Mods::get( Config::MODS_OTHERS_CONTENT_WIDTH, 70 );
-		$content_width   = $advanced_layout ? $single_width : Mods::get( Config::MODS_SITEWIDE_CONTENT_WIDTH, 70 );
+		$advanced_layout = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, neve_is_new_skin() );
+
+		$single_width  = $post_type === 'post' ?
+			Mods::get( Config::MODS_SINGLE_CONTENT_WIDTH, $this->sidebar_layout_width_default( Config::MODS_SINGLE_CONTENT_WIDTH ) ) :
+			Mods::get( Config::MODS_OTHERS_CONTENT_WIDTH, $this->sidebar_layout_width_default( Config::MODS_OTHERS_CONTENT_WIDTH ) );
+		$content_width = $advanced_layout ?
+			$single_width :
+			Mods::get( Config::MODS_SITEWIDE_CONTENT_WIDTH, $this->sidebar_layout_width_default( Config::MODS_SITEWIDE_CONTENT_WIDTH ) );
 
 		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
 
 		$post_elements_default_order = $this->get_post_elements_default_order();
+		$show_avatar                 = $this->get_author_avatar_state();
+
 
 		$localized_data = apply_filters(
 			'neve_meta_sidebar_localize_filter',
@@ -387,6 +403,8 @@ final class Manager {
 					),
 				),
 				'elementsDefaultOrder' => $post_elements_default_order,
+				'avatarDefaultState'   => $show_avatar,
+				'isCoverLayout'        => Layout_Single_Post::is_cover_layout(),
 			)
 		);
 		wp_localize_script(
@@ -397,7 +415,7 @@ final class Manager {
 
 		wp_enqueue_style(
 			'neve-meta-sidebar-css', // Handle.
-			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/editor.css',
+			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.css',
 			array( 'wp-edit-blocks' ),
 			NEVE_VERSION
 		);
@@ -409,16 +427,7 @@ final class Manager {
 	 * @return string
 	 */
 	private function get_post_elements_default_order() {
-		$default_order = apply_filters(
-			'neve_single_post_elements_default_order',
-			array(
-				'title-meta',
-				'thumbnail',
-				'content',
-				'tags',
-				'comments',
-			)
-		);
+		$default_order = $this->post_ordering();
 
 		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
 		if ( ! is_string( $content_order ) ) {
@@ -429,8 +438,9 @@ final class Manager {
 			return wp_json_encode( $content_order );
 		}
 
+		$is_cover_layout  = Layout_Single_Post::is_cover_layout();
 		$title_meta_index = array_search( 'title-meta', $content_order );
-		if ( $title_meta_index !== false ) {
+		if ( $title_meta_index !== false && ! $is_cover_layout ) {
 			$content_order[ $title_meta_index ] = 'title';
 			$next_index                         = $title_meta_index + 1;
 			$content_order                      = array_merge( array_slice( $content_order, 0, $next_index, true ), array( 'meta' ), array_slice( $content_order, $next_index, null, true ) );
@@ -440,12 +450,26 @@ final class Manager {
 	}
 
 	/**
+	 * Get the value of author avatar display from customizer.
+	 *
+	 * @return bool
+	 */
+	private function get_author_avatar_state() {
+		$show_avatar = get_theme_mod( 'neve_author_avatar', false );
+		return get_theme_mod( 'neve_single_post_author_avatar', $show_avatar );
+	}
+
+	/**
 	 * Set page width to 100% if it's a new page.
 	 *
 	 * @param int      $post_id Post id.
 	 * @param \WP_Post $post Post object.
 	 */
 	public function set_page_width( $post_id, $post ) {
+		if ( neve_is_new_skin() ) {
+			return;
+		}
+
 		$parent_id = wp_is_post_revision( $post_id );
 		if ( $parent_id ) {
 			$post_id = $parent_id;

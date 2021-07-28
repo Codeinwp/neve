@@ -1,11 +1,19 @@
+/* global neveDash */
 import { changeOption as changeSetting } from '../../utils/rest';
 
-import { ToggleControl, Dashicon } from '@wordpress/components';
+import { ToggleControl, Dashicon, ExternalLink } from '@wordpress/components';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import { useState } from '@wordpress/element';
 
-const Toggle = ({ slug, label, getOption, changeOption, setToast }) => {
+const Toggle = ({
+	slug,
+	label,
+	documentation,
+	getOption,
+	changeOption,
+	setToast,
+}) => {
 	const [loading, setLoading] = useState(false);
 	return (
 		<div className="module-option toggle">
@@ -26,6 +34,12 @@ const Toggle = ({ slug, label, getOption, changeOption, setToast }) => {
 					});
 				}}
 			/>
+			.&nbsp;{' '}
+			{!neveDash.whiteLabel && documentation && documentation.url && (
+				<ExternalLink href={documentation.url}>
+					{documentation.label}
+				</ExternalLink>
+			)}
 			{loading && (
 				<Dashicon size={18} icon="update" className="is-loading" />
 			)}

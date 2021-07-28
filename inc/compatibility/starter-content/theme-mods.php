@@ -569,7 +569,7 @@ return array(
 			'tablet'  => 'left',
 			'mobile'  => 'left',
 		),
-	'hfg_header_layout'                           => '{"desktop":{"top":[],"main":[{"x":0,"y":1,"width":3,"height":1,"id":"logo"},{"x":3,"y":1,"width":6,"height":1,"id":"primary-menu"},{"x":9,"y":1,"width":1,"height":1,"id":"header_search_responsive"},{"x":10,"y":1,"width":2,"height":1,"id":"button_base"}],"bottom":[]},"mobile":{"top":[],"main":[{"x":0,"y":1,"width":8,"height":1,"id":"logo"},{"x":8,"y":1,"width":4,"height":1,"id":"nav-icon"}],"bottom":[],"sidebar":[{"x":0,"y":1,"width":1,"height":1,"id":"header_search"},{"x":1,"y":1,"width":8,"height":1,"id":"primary-menu"},{"x":9,"y":1,"width":1,"height":1,"id":"button_base"}]}}',
+	'hfg_header_layout_v2'                        => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"primary-menu"},{"id":"header_search_responsive"},{"id":"button_base"}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]}},"mobile":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo","width":8,"x":0}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"nav-icon","width":4,"x":8}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"sidebar":[{"id":"header_search"},{"id":"primary-menu"},{"id":"button_base"}]}}',
 	'button_base_component_padding'               =>
 		array(
 			'mobile'       =>
@@ -701,35 +701,13 @@ return array(
 	'header_search_responsive_field_text_color'   => 'var(--nv-primary-accent)',
 	'footer_copyright_color'                      => 'var(--nv-primary-accent)',
 	'footer_copyright_component_vertical_align'   => 'middle',
-	'hfg_footer_layout_bottom_height'             => '{"mobile":0,"tablet":0,"desktop":50}',
-	'footer_copyright_component_margin'           =>
+	'footer_copyright_component_align'            =>
 		array(
-			'mobile'       =>
-				array(
-					'top'    => 0,
-					'right'  => 0,
-					'bottom' => 0,
-					'left'   => 0,
-				),
-			'tablet'       =>
-				array(
-					'top'    => 0,
-					'right'  => 0,
-					'bottom' => 0,
-					'left'   => 0,
-				),
-			'desktop'      =>
-				array(
-					'top'    => '-10',
-					'right'  => '0',
-					'bottom' => '20',
-					'left'   => '0',
-				),
-			'mobile-unit'  => 'px',
-			'tablet-unit'  => 'px',
-			'desktop-unit' => 'px',
+			'mobile'  => 'center',
+			'tablet'  => 'center',
+			'desktop' => 'center',
 		),
-	'hfg_footer_layout'                           => '{"desktop":{"top":[],"bottom":[{"x":0,"y":1,"width":12,"height":1,"id":"footer_copyright"}]}}',
+	'hfg_footer_layout_v2'                        => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[],"c-left":[{"id":"footer_copyright"}],"center":[],"c-right":[],"right":[]}}}',
 	'primary-menu_component_padding'              =>
 		array(
 			'mobile'       =>
@@ -758,5 +736,19 @@ return array(
 			'desktop-unit' => 'px',
 		),
 	'button_base_link_setting'                    => '/?pagename=contact',
-
+	'hfg_footer_layout_bottom_background'         =>
+		array(
+			'type'              => 'color',
+			'colorValue'        => 'var(--nv-site-bg)',
+			'imageUrl'          => '',
+			'focusPoint'        =>
+				array(
+					'x' => 0.5,
+					'y' => 0.5,
+				),
+			'overlayColorValue' => '',
+			'overlayOpacity'    => 50,
+			'fixed'             => false,
+			'useFeatured'       => false,
+		),
 );
