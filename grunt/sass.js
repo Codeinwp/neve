@@ -29,8 +29,6 @@ module.exports = {
 					'assets/scss/gutenberg-editor-style.scss',
 				'assets/css/gutenberg-editor-legacy-style.css':
 					'assets/scss/gutenberg-editor-legacy-style.scss',
-				'header-footer-grid/assets/css/admin/customizer/customizer.css':
-					'header-footer-grid/assets/scss/admin/customizer/customizer.scss',
 			},
 		],
 	},
