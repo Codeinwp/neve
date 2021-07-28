@@ -1,6 +1,7 @@
 // === Separators === //
 .wp-block-separator {
   border-bottom: 0;
+  border-top: 2px solid;
 
   &.is-style-wide {
 	border-width: 4px;

@@ -1494,6 +1494,15 @@ function neve_had_old_hfb() {
 }
 
 /**
+ * Check if we have pro support.
+ *
+ * @param string $feature feature to check support for.
+ */
+function neve_pro_has_support( $feature ) {
+	return ( defined( 'NEVE_PRO_COMPATIBILITY_FEATURES' ) && isset( NEVE_PRO_COMPATIBILITY_FEATURES[ $feature ] ) );
+}
+
+/**
  * Check that if new widget editor is available.
  *
  * @return bool

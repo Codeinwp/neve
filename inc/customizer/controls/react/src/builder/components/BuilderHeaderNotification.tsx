@@ -6,7 +6,6 @@ import {
 } from '@wordpress/element';
 import { Button, Modal } from '@wordpress/components';
 import { __, sprintf } from '@wordpress/i18n';
-import { useSelect } from '@wordpress/data';
 import { info } from '@wordpress/icons';
 
 type Props = {
@@ -19,6 +18,7 @@ const BuilderHeaderNotification: React.FC<Props> = ({
 	builderName,
 }) => {
 	const [modalVisible, setModalVisible] = useState(false);
+	const [currentHeaderName, setCurrentHeaderName] = useState(null);
 
 	const toggleModal = () => {
 		setModalVisible(!modalVisible);
@@ -28,18 +28,18 @@ const BuilderHeaderNotification: React.FC<Props> = ({
 		window.wp.customize.control('neve_header_conditional_selector').focus();
 	};
 
+	useEffect(() => {
+		document.addEventListener('nv-change-conditional-header', (e) => {
+			// @ts-ignore
+			setCurrentHeaderName(e.detail);
+		});
+	}, []);
+
 	const {
 		dashUpdatesMessage,
 		instructionalVid,
 		hideConditionalHeaderSelector: incompatiblePro,
 	} = window.NeveReactCustomize;
-
-	let currentEditedHeader = null;
-
-	const { currentHeaderLayout, headerLayouts } = useSelect((select) => ({
-		currentHeaderLayout: select('neve-store')?.getCurrentLayout(),
-		headerLayouts: select('neve-store')?.getHeaderLayouts(),
-	}));
 
 	// Disable conditional headers on old versions of the plugin.
 	useEffect(() => {
@@ -67,41 +67,9 @@ const BuilderHeaderNotification: React.FC<Props> = ({
 		);
 	});
 
-	if (
-		builder === 'header' &&
-		currentHeaderLayout &&
-		currentHeaderLayout !== 'default'
-	) {
-		currentEditedHeader = headerLayouts[currentHeaderLayout];
-	}
-
-	return (
-		<span className="builder-instructions">
-			{currentEditedHeader && (
-				<p>
-					{createInterpolateElement(
-						sprintf(
-							/* translators: %1$s conditional header name (ie: Posts Header, Page Header, 404 Header) */
-							__(
-								'You are customizing the <Button>%1$s</Button> Header',
-								'neve'
-							),
-							currentEditedHeader
-						),
-						{
-							Button: (
-								<Button
-									isLink
-									onClick={focusConditionalSelector}
-								>
-									#dumptext
-								</Button>
-							),
-						}
-					)}
-				</p>
-			)}
-			{!currentEditedHeader && (
+	const renderInstruction = () => {
+		if (builder !== 'header' || !currentHeaderName) {
+			return (
 				<p>
 					<strong>
 						{sprintf(
@@ -115,7 +83,35 @@ const BuilderHeaderNotification: React.FC<Props> = ({
 						'neve'
 					)}
 				</p>
-			)}
+			);
+		}
+
+		return (
+			<p>
+				{createInterpolateElement(
+					sprintf(
+						/* translators: %1$s conditional header name (ie: Posts Header, Page Header, 404 Header) */
+						__(
+							'You are customizing the <Button>%1$s</Button> Header',
+							'neve'
+						),
+						currentHeaderName || __('')
+					),
+					{
+						Button: (
+							<Button isLink onClick={focusConditionalSelector}>
+								#dumptext
+							</Button>
+						),
+					}
+				)}
+			</p>
+		);
+	};
+
+	return (
+		<span className="builder-instructions">
+			{renderInstruction()}
 			<Button
 				style={{ padding: 0 }}
 				isLink

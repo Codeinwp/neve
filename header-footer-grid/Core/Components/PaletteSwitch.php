@@ -147,6 +147,7 @@ class PaletteSwitch extends Abstract_Component {
 		.toggle-palette .icon {
 			display: flex;
 			width: var(--iconSize);
+			height: var(--iconSize);
 		}
 		.toggle-palette .label {
 			font-size: 0.85em;
@@ -168,7 +169,7 @@ class PaletteSwitch extends Abstract_Component {
 			$default_state = 'window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"';
 		}
 
-		return '"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let n=' . $default_state . ',r=localStorage.getItem(t);"dark"===r&&(n="dark"),"light"===r&&(n="light"),document.documentElement.setAttribute(e,n)}r();const a=document.getElementById("neve_body");function n(n){if(n.srcElement&&(n.srcElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.parentElement.matches("a.palette-icon-wrapper"))){if(n.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}}a&&a.addEventListener("click",n,!1);';
+		return '!function(){"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let n=' . $default_state . ',r=localStorage.getItem(t);"dark"===r&&(n="dark"),"light"===r&&(n="light"),document.documentElement.setAttribute(e,n)}r();const a=document.getElementById("neve_body");function n(n){if(n.srcElement&&(n.srcElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.parentElement.matches("a.palette-icon-wrapper"))){if(n.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}}a&&a.addEventListener("click",n,!1);}();';
 	}
 
 	/**

@@ -9,6 +9,7 @@ namespace Neve\Admin\Metabox;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Customizer\Defaults\Layout;
 use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Options\Layout_Single_Post;
 use Neve\Views\Post_Layout;
@@ -20,6 +21,7 @@ use Neve\Views\Post_Layout;
  */
 final class Manager {
 	use Single_Post;
+	use Layout;
 
 	/**
 	 * Control instances.
@@ -375,9 +377,14 @@ final class Manager {
 		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
 		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
 
-		$advanced_layout = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS );
-		$single_width    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_CONTENT_WIDTH, 70 ) : Mods::get( Config::MODS_OTHERS_CONTENT_WIDTH, 70 );
-		$content_width   = $advanced_layout ? $single_width : Mods::get( Config::MODS_SITEWIDE_CONTENT_WIDTH, 70 );
+		$advanced_layout = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, neve_is_new_skin() );
+
+		$single_width  = $post_type === 'post' ?
+			Mods::get( Config::MODS_SINGLE_CONTENT_WIDTH, $this->sidebar_layout_width_default( Config::MODS_SINGLE_CONTENT_WIDTH ) ) :
+			Mods::get( Config::MODS_OTHERS_CONTENT_WIDTH, $this->sidebar_layout_width_default( Config::MODS_OTHERS_CONTENT_WIDTH ) );
+		$content_width = $advanced_layout ?
+			$single_width :
+			Mods::get( Config::MODS_SITEWIDE_CONTENT_WIDTH, $this->sidebar_layout_width_default( Config::MODS_SITEWIDE_CONTENT_WIDTH ) );
 
 		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
 
@@ -459,6 +466,10 @@ final class Manager {
 	 * @param \WP_Post $post Post object.
 	 */
 	public function set_page_width( $post_id, $post ) {
+		if ( neve_is_new_skin() ) {
+			return;
+		}
+
 		$parent_id = wp_is_post_revision( $post_id );
 		if ( $parent_id ) {
 			$post_id = $parent_id;
