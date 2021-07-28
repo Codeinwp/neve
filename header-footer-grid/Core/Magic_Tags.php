@@ -112,14 +112,12 @@ class Magic_Tags {
 	/**
 	 * Do single magic tag.
 	 *
-	 * @param string $tag the magic tag.
+	 * @param array $matches matches array of regular expression.
 	 *
 	 * @return string
 	 */
-	private function do_magic_tag( $tag ) {
-		if ( is_array( $tag ) ) {
-			$tag = reset( $tag );
-		}
+	private function do_magic_tag( $matches ) {
+		$tag = $matches[0];
 
 		$tag = trim( $tag, '{} ' );
 
