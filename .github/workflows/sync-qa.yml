@@ -72,10 +72,3 @@ jobs:
           PAGELY_INTEGRATION_ID: ${{secrets.PAGELY_INTEGRATION_ID}}
           PAGELY_APP_ID: ${{secrets.STG_DEMOSITES_PAGELY_APP_ID}}
           PAGELY_WORKING_DIR: "${{github.workspace}}/dist/neve"
-  empty-job:
-    runs-on: ubuntu-latest
-    if: success()
-    steps:
-      - name: Meep
-        run: |
-          echo "Nothing to do. This is a fork."
