@@ -32,7 +32,7 @@ function get_builder( $builder_name = '' ) {
  * @param string $builder_name The builder id.
  */
 function render_builder( $builder_name = '' ) {
-	Main::get_instance()->get_builder( $builder_name )->render();
+	get_builder( $builder_name )->render();
 }
 
 /**
@@ -43,7 +43,7 @@ function render_builder( $builder_name = '' ) {
  * @param null   $row_index    The row index.
  */
 function render_components( $builder_name = '', $device = null, $row_index = null ) {
-	Main::get_instance()->get_builder( $builder_name )->render_components( $device, $row_index );
+	get_builder( $builder_name )->render_components( $device, $row_index );
 }
 
 /**
@@ -55,7 +55,7 @@ function render_components( $builder_name = '', $device = null, $row_index = nul
  * @return Core\Components\Abstract_Component
  */
 function current_component( $builder_name = '', $component_id = null ) {
-	$builder = Main::get_instance()->get_builder( $builder_name );
+	$builder = get_builder( $builder_name );
 
 	return $builder->get_component( $component_id );
 }
@@ -68,7 +68,7 @@ function current_component( $builder_name = '', $component_id = null ) {
  * @return string|null
  */
 function current_device( $builder_name = '' ) {
-	return Main::get_instance()->get_builder( $builder_name )->get_current_device();
+	return get_builder( $builder_name )->get_current_device();
 }
 
 /**
@@ -79,7 +79,7 @@ function current_device( $builder_name = '' ) {
  * @return string|null
  */
 function current_row( $builder_name = '' ) {
-	return Main::get_instance()->get_builder( $builder_name )->get_current_row_index();
+	return get_builder( $builder_name )->get_current_row_index();
 }
 
 /**
