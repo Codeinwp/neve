@@ -1501,3 +1501,13 @@ function neve_had_old_hfb() {
 function neve_pro_has_support( $feature ) {
 	return ( defined( 'NEVE_PRO_COMPATIBILITY_FEATURES' ) && isset( NEVE_PRO_COMPATIBILITY_FEATURES[ $feature ] ) );
 }
+
+/**
+ * Check that if new widget editor is available.
+ *
+ * @return bool
+ * @since 3.0.0
+ */
+function neve_is_new_widget_editor() {
+	return ( defined( 'GUTENBERG_VERSION' ) && version_compare( GUTENBERG_VERSION, '10.6.2', '>' ) ) || version_compare( substr( get_bloginfo( 'version' ), 0, 3 ), '5.8', '>=' );
+}
