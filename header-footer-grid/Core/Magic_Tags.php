@@ -448,7 +448,7 @@ class Magic_Tags {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			return '';
 		}
-		return '<span class="nv-cart-icon-total-plain">' . WC()->cart->cart_contents_total . '</span>';
+		return '<span class="nv-cart-icon-total-plain">' . WC()->cart->get_cart_contents_total() . '</span>';
 	}
 
 	/**
