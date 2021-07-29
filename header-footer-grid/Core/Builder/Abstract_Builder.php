@@ -1234,7 +1234,7 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Add row utility classes.
 	 *
-	 * @param string $classes footer classes.
+	 * @param array  $classes footer classes.
 	 * @param string $row_index row index.
 	 *
 	 * @return mixed
