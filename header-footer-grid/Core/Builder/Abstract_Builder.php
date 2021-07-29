@@ -535,7 +535,10 @@ abstract class Abstract_Builder implements Builder {
 			$component->customize_register( $wp_customize );
 		}
 
-		if ( null !== $wp_customize->get_panel( $this->panel ) ) {
+		/** @var \WP_Customize_Panel|null $panel */
+		$panel = $wp_customize->get_panel( $this->panel );
+
+		if ( null !== $panel ) {
 			return $wp_customize;
 		}
 
