@@ -1170,7 +1170,7 @@ abstract class Abstract_Builder implements Builder {
 	 * @param string $id component id.
 	 * @param bool   $vertical should get vertical alignment.
 	 *
-	 * @return array
+	 * @return array|string|false
 	 */
 	private function get_component_alignment( $id, $vertical = false ) {
 		if ( $vertical ) {
