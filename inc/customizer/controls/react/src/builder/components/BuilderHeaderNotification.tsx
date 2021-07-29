@@ -88,27 +88,23 @@ const BuilderHeaderNotification: React.FC<Props> = ({
 
 		return (
 			<p>
-				{typeof createInterpolateElement !== 'undefined' &&
-					createInterpolateElement(
-						sprintf(
-							/* translators: %1$s conditional header name (ie: Posts Header, Page Header, 404 Header) */
-							__(
-								'You are customizing the <Button>%1$s</Button> Header',
-								'neve'
-							),
-							currentHeaderName || __('')
+				{createInterpolateElement(
+					sprintf(
+						/* translators: %1$s conditional header name (ie: Posts Header, Page Header, 404 Header) */
+						__(
+							'You are customizing the <Button>%1$s</Button> Header',
+							'neve'
 						),
-						{
-							Button: (
-								<Button
-									isLink
-									onClick={focusConditionalSelector}
-								>
-									#dumptext
-								</Button>
-							),
-						}
-					)}
+						currentHeaderName || __('')
+					),
+					{
+						Button: (
+							<Button isLink onClick={focusConditionalSelector}>
+								#dumptext
+							</Button>
+						),
+					}
+				)}
 			</p>
 		);
 	};
