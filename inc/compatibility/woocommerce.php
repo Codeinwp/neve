@@ -11,6 +11,7 @@ namespace Neve\Compatibility;
 use HFG\Core\Components\CartIcon;
 use HFG\Core\Magic_Tags;
 use Neve\Core\Settings\Config;
+use Neve\Customizer\Defaults\Layout;
 use Neve\Views\Layouts\Layout_Sidebar;
 
 /**
@@ -19,6 +20,8 @@ use Neve\Views\Layouts\Layout_Sidebar;
  * @package Neve\Compatibility
  */
 class Woocommerce {
+
+	use Layout;
 
 	/**
 	 * Primary button selectors.
@@ -725,17 +728,16 @@ class Woocommerce {
 		if ( ! is_active_sidebar( 'shop-sidebar' ) ) {
 			return false;
 		}
-		if ( is_shop() ) {
-			$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( 'neve_shop_archive_sidebar_layout', 'right' ) );
-			if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
-				return false;
-			}
-		}
+
+		$mod = 'neve_shop_archive_sidebar_layout';
 		if ( is_product() ) {
-			$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( 'neve_single_product_sidebar_layout', 'right' ) );
-			if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
-				return false;
-			}
+			$mod = 'neve_single_product_sidebar_layout';
+		}
+
+		$default   = $this->sidebar_layout_alignment_default( $mod );
+		$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( $mod, $default ) );
+		if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
+			return false;
 		}
 
 		return true;

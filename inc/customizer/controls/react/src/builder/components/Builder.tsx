@@ -32,7 +32,7 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 		};
 	}, []);
 
-	const adaptPreviewHeight = () => {
+	const adaptPreviewHeight = (scroll = false) => {
 		const builderNode: HTMLElement | null =
 			portalMount?.querySelector('.neve-builder') || null;
 
@@ -49,6 +49,10 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 		const height = builderNode.offsetHeight;
 		preview.style.maxHeight = `calc(100vh - ${height}px)`;
 		preview.style.marginTop = '0';
+
+		if (!scroll) {
+			return;
+		}
 
 		if (builder === 'footer') {
 			setTimeout(() => {
@@ -73,7 +77,7 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 		window.wp.customize.previewer.bind(
 			'selective-refresh-setting-validities',
 			() => {
-				adaptPreviewHeight();
+				adaptPreviewHeight(false);
 			}
 		);
 	}, [hidden]);
