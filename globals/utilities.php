@@ -159,6 +159,7 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '' ) {
 		return $svg;
 	}
 	echo( $svg ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	return null;
 }
 
 /**
@@ -169,7 +170,7 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '' ) {
  * @param int  $size icon size.
  * @param bool $amp_ready Should we add the AMP binding.
  *
- * @return string
+ * @return string|null
  */
 function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_ready = false ) {
 
@@ -186,6 +187,7 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 		return $svg;
 	}
 	echo $svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	return null;
 }
 
 /**
