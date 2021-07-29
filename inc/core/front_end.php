@@ -21,8 +21,6 @@ use Neve\Core\Settings\Mods;
  */
 class Front_End {
 
-
-
 	/**
 	 * Theme setup.
 	 */
@@ -49,7 +47,6 @@ class Front_End {
 		add_theme_support( 'custom-logo', $logo_settings );
 		add_theme_support( 'html5', array( 'search-form' ) );
 		add_theme_support( 'customize-selective-refresh-widgets' );
-		add_theme_support( 'custom-background', [] );
 		add_theme_support( 'align-wide' );
 		add_theme_support( 'editor-color-palette', $this->get_gutenberg_color_palette() );
 		add_theme_support( 'fl-theme-builder-headers' );
@@ -63,7 +60,6 @@ class Front_End {
 		add_filter( 'script_loader_tag', array( $this, 'filter_script_loader_tag' ), 10, 2 );
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
-		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
 
 		$this->add_amp_support();
 		$nav_menus_to_register = apply_filters(
@@ -275,158 +271,6 @@ class Front_End {
 	}
 
 	/**
-	 * Add new Gutenberg templates on Otter plugin.
-	 *
-	 * @param array $templates_list the templates list array.
-	 *
-	 * @return array
-	 */
-	public function add_gutenberg_templates( $templates_list ) {
-		$current_theme = wp_get_theme()->Name;
-
-		$templates = array(
-			array(
-				'title'          => '',
-				'type'           => 'block',
-				'author'         => $current_theme,
-				'keywords'       => array( 'big title', 'header', 'about' ),
-				'categories'     => array( 'header' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/big-title/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/big-title/screenshot.jpg',
-			),
-			array(
-				'title'          => '',
-				'type'           => 'block',
-				'author'         => $current_theme,
-				'keywords'       => array( 'about us', 'about', 'description', 'showcase' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/about-us/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/about-us/screenshot.jpg',
-			),
-			array(
-				'title'          => '',
-				'type'           => 'block',
-				'author'         => $current_theme,
-				'keywords'       => array( 'focus', 'our focus', 'services', 'features', 'showcase' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/our-focus/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/our-focus/screenshot.png',
-			),
-			array(
-				'title'          => '',
-				'type'           => 'block',
-				'author'         => $current_theme,
-				'keywords'       => array( 'video', 'embed', 'youtube', 'movie' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/video/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/video/screenshot.jpg',
-			),
-			array(
-				'title'          => '',
-				'type'           => 'block',
-				'author'         => $current_theme,
-				'keywords'       => array(
-					'team',
-					'our team',
-					'employees',
-					'clients',
-					'members',
-					'people',
-					'image',
-					'card',
-				),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/our-team/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/our-team/screenshot.jpg',
-			),
-			array(
-				'title'          => '',
-				'type'           => 'block',
-				'author'         => $current_theme,
-				'keywords'       => array( 'ribbon', 'statistics', 'numbers', 'clients', 'banner', 'logo', 'carousel' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/ribbon/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/ribbon/screenshot.jpg',
-			),
-			array(
-				'title'          => '',
-				'type'           => 'block',
-				'author'         => $current_theme,
-				'keywords'       => array( 'pricing', 'plan', 'packages', 'membership', 'product' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/pricing/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/pricing/screenshot.jpg',
-			),
-			array(
-				'title'          => '',
-				'type'           => 'block',
-				'author'         => $current_theme,
-				'keywords'       => array( 'testimonials', 'review', 'feedback', 'testimonial', 'happy', 'clients' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/testimonials/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/testimonials/screenshot.jpg',
-			),
-			array(
-				'title'          => '',
-				'type'           => 'block',
-				'author'         => $current_theme,
-				'keywords'       => array(
-					'features',
-					'card',
-					'about',
-					'services',
-					'advantages',
-					'items',
-					'boxes',
-					'why',
-				),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/features/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/features/screenshot.jpg',
-			),
-			array(
-				'title'          => '',
-				'type'           => 'block',
-				'author'         => $current_theme,
-				'keywords'       => array( 'blog', 'stories', 'posts', 'grid' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/blog/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/blog/screenshot.jpg',
-			),
-			array(
-				'title'          => '',
-				'type'           => 'block',
-				'author'         => $current_theme,
-				'keywords'       => array(
-					'contact',
-					'us',
-					'form',
-					'message',
-					'email',
-					'support',
-					'get',
-					'in',
-					'touch',
-				),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/contact/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/contact/screenshot.jpg',
-			),
-			array(
-				'title'          => '',
-				'type'           => 'block',
-				'author'         => $current_theme,
-				'keywords'       => array( 'footer', 'resources', 'links', 'credits', 'contact', 'social', 'sharing' ),
-				'categories'     => array( 'footer' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/footer/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/footer/screenshot.png',
-			),
-		);
-
-		return array_merge( $templates, $templates_list );
-	}
-
-	/**
 	 * Enqueue scripts and styles.
 	 */
 	public function enqueue_scripts() {
@@ -439,13 +283,17 @@ class Front_End {
 	 */
 	private function add_styles() {
 		if ( class_exists( 'WooCommerce', false ) ) {
-			wp_register_style( 'neve-woocommerce', NEVE_ASSETS_URL . 'css/woocommerce' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+			$style_path = neve_is_new_skin() ? 'css/woocommerce' : 'css/woocommerce-legacy';
+
+			wp_register_style( 'neve-woocommerce', NEVE_ASSETS_URL . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 			wp_style_add_data( 'neve-woocommerce', 'rtl', 'replace' );
 			wp_style_add_data( 'neve-woocommerce', 'suffix', '.min' );
 			wp_enqueue_style( 'neve-woocommerce' );
 		}
 
-		wp_register_style( 'neve-style', get_template_directory_uri() . '/style-main' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		$style_path = neve_is_new_skin() ? '/style-main' : '/assets/css/style-legacy';
+
+		wp_register_style( 'neve-style', get_template_directory_uri() . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 		wp_style_add_data( 'neve-style', 'rtl', 'replace' );
 		wp_style_add_data( 'neve-style', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-style' );

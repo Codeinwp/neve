@@ -1,0 +1,17 @@
+name: Sync branches
+on:
+  push:
+    branches:
+      - 'master'
+jobs:
+  sync-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Merge master -> development
+        uses: Codeinwp/merge-branch@master
+        with:
+          type: now
+          from_branch: master
+          target_branch: development
+          github_token: ${{ secrets.BOT_TOKEN }}

@@ -120,62 +120,21 @@ function neve_hfg_footer_settings() {
 		'right'   => [],
 	];
 
-	$builder  = [
+	$builder = [
 		'desktop' => [
 			'top'    => $empty_row,
 			'main'   => $empty_row,
 			'bottom' => $empty_row,
 		],
 	];
-	$sidebars = (int) get_theme_mod( 'neve_footer_widget_columns', '0' );
 
-	$components                                        = [];
-	$builder['desktop']['bottom']['c-left'][]          = [
+	$builder['desktop']['bottom']['left'][] = [
 		'id' => 'footer_copyright',
 	];
-	$components['footer_copyright']['component_align'] = [
-		'mobile'  => 'center',
-		'tablet'  => 'center',
-		'desktop' => 'center',
-	];
-	$sidebars_names                                    = array(
-		'footer-one-widgets',
-		'footer-two-widgets',
-		'footer-three-widgets',
-		'footer-four-widgets',
-	);
-	for ( $i = 0; $i < $sidebars; $i ++ ) {
-		$builder['desktop']['top'][ $sidebars_names[ $i ] ][] = [
-			'id'    => $sidebars_names[ $i ],
-			'width' => 12 / $sidebars,
-			'x'     => $i * ( 12 / $sidebars ),
-		];
-	}
-
-	$content_type = get_theme_mod( 'neve_footer_content_type', 'text' );
-	if ( $content_type === 'text' ) {
-		$builder['desktop']['bottom']['footer_copyright'][] = [
-			'id'    => 'footer_copyright',
-			'width' => 12,
-			'x'     => 0,
-		];
-		$components['footer_copyright']['component_align']  = 'center';
-	}
-
-	$components['hfg_footer_layout_bottom']['skin'] = 'dark-mode';
-
-	if ( $content_type === 'footer_menu' ) {
-		$builder['desktop']['bottom']['footer-menu']  = [
-			'id'    => 'footer-menu',
-			'width' => 12,
-			'x'     => 0,
-		];
-		$components['footer-menu']['component_align'] = 'center';
-	}
 
 	return [
 		'builder'    => $builder,
-		'components' => $components,
+		'components' => [],
 	];
 }
 
@@ -207,16 +166,10 @@ function neve_hfg_header_settings() {
 	];
 
 	$builder['desktop']['main']['left'][]  = [
-		'id'       => 'logo',
-		'settings' => [
-			'align' => 'left',
-		],
+		'id' => 'logo',
 	];
 	$builder['desktop']['main']['right'][] = [
-		'id'       => 'primary-menu',
-		'settings' => [
-			'align' => 'right',
-		],
+		'id' => 'primary-menu',
 	];
 	$builder['mobile']['main']['left'][]   = [
 		'id' => 'logo',

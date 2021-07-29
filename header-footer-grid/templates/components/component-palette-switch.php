@@ -21,10 +21,10 @@ if ( neve_is_amp() ) {
 }
 ?>
 <div class="toggle-palette">
-	<a class="toggle palette-icon-wrapper" <?php echo $amp_state; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+	<a class="toggle palette-icon-wrapper" href="#" <?php echo $amp_state; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 		<span class="icon"><?php echo $svg_icon; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 		<?php if ( $label !== '' ) { ?>
-			<span class="label builder-item--primary-menu"><?php echo esc_attr( $label ); ?></span>
+			<span class="label builder-item--primary-menu"><?php echo esc_html( $label ); ?></span>
 		<?php } ?>
 	</a>
 </div>

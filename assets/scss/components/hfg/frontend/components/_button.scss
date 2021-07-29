@@ -1,0 +1,23 @@
+.hfg-is-group {
+  > div:first-of-type .button {
+	margin-right: 20px;
+  }
+
+  > div:last-of-type .button {
+	margin-left: 20px;
+  }
+}
+
+.header {
+  .builder-item .item--inner {
+	&[class*="nav-icon"],
+	&[class*="button_base"] {
+	  padding: 0 !important;
+	}
+  }
+
+  .builder-item [class*="button_base"] .button {
+	--primaryBtnPadding: var(--padding)
+  }
+}
+

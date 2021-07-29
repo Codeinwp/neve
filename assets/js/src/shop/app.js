@@ -25,7 +25,8 @@ function handleShopSidebar() {
 	const html = document.querySelector('html');
 	const toggles = document.querySelectorAll('.nv-sidebar-toggle');
 	neveEach(toggles, (toggle) => {
-		toggle.addEventListener('click', function () {
+		toggle.addEventListener('click', function (e) {
+			e.preventDefault();
 			sidebar.classList.toggle('sidebar-open');
 			html.classList.toggle('menu-openend');
 		});

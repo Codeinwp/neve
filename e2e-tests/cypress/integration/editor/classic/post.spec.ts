@@ -2,23 +2,44 @@ describe('Posts meta box default settings', function () {
 	const postSetup = {
 		title: 'Test Post',
 		content: 'The Post Content',
-		url: null,
+		url: '/',
 	};
 	before('Create new post named "' + postSetup.title + '".', function () {
-		cy.insertPost(postSetup.title, postSetup.content, 'post', true);
-
+		cy.getRandomAttachment().then(() => {
+			cy.insertPostWithRequest(
+				postSetup.title,
+				postSetup.content,
+				'posts',
+				parseInt(window.localStorage.getItem('randomAttachmentId')),
+			)
+				.then(() => {
+					postSetup.url = window.localStorage.getItem('postUrl');
+				})
+				.then(() => {
+					cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'posts', {
+						meta: {
+							neve_meta_content_width: 0,
+						},
+					});
+				});
+		});
 		cy.setCustomizeSettings({
 			neve_migrated_hfg_colors: true,
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
+			neve_new_skin: 'new',
 		});
 
-		cy.get('.post-publish-panel__postpublish-header a')
-			.contains(postSetup.title)
-			.should('have.attr', 'href')
-			.then((href) => {
-				postSetup.url = href;
-			});
+		cy.saveLocalStorage();
+	});
+
+	beforeEach(function () {
+		cy.restoreLocalStorage();
+	});
+
+	afterEach(function () {
+		cy.removeLocalStorage('WP_DATA_USER_1');
+		cy.saveLocalStorage();
 	});
 	context('Deactivated Plugin', function () {
 		it('Default meta box settings on front end.', function () {
@@ -67,6 +88,7 @@ describe('Posts meta box default settings', function () {
 			cy.get('#publish').contains('Update').click();
 
 			cy.visit(postSetup.url);
+			cy.wait(500);
 			cy.reload();
 			cy.get('.nv-sidebar-wrap').should('have.class', 'nv-left').and('be.visible');
 			cy.get('.single-post-container').should('have.class', 'container-fluid').and('be.visible');

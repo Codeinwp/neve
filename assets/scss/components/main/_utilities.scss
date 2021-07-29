@@ -1,0 +1,30 @@
+.hidden-on-mobile {
+  display: none;
+}
+.hidden-on-tablet {
+  display: initial;
+}
+.show-on-desktop {
+  display: none;
+}
+
+@mixin hidden-on-mobile--tablet() {
+  .hidden-on-mobile {
+    display: initial;
+  }
+}
+@mixin hidden-on-tablet--tablet() {
+  .hidden-on-tablet {
+    display: none;
+  }
+}
+@mixin hidden-on-tablet--laptop() {
+  .hidden-on-tablet {
+    display: initial;
+  }
+}
+@mixin show-on-desktop--laptop() {
+  .show-on-desktop {
+    display: initial;
+  }
+}
