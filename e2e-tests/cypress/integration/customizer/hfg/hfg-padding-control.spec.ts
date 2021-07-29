@@ -7,8 +7,8 @@ describe('Header Builder Padding Control', function () {
 	});
 
 	it('Sets up Padding for the Logo Component', function () {
-		cy.get('.site-logo').should('be.visible');
-		cy.get('.site-logo').should('have.css', 'padding-top').and('contain', '11px');
-		cy.get('.site-logo').should('have.css', 'padding-bottom').and('contain', '9px');
+		cy.get('.builder-item--logo').should('be.visible');
+		cy.get('.builder-item--logo').should('have.css', 'padding-top').and('contain', '11px');
+		cy.get('.builder-item--logo').should('have.css', 'padding-bottom').and('contain', '9px');
 	});
 });

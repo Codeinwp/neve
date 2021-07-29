@@ -194,8 +194,8 @@ Background.propTypes = {
 		type: PropTypes.string,
 		imageUrl: PropTypes.string,
 		focusPoint: PropTypes.shape({
-			x: PropTypes.number,
-			y: PropTypes.number,
+			x: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+			y: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 		}),
 		colorValue: PropTypes.string,
 		overlayColorValue: PropTypes.string,

@@ -29,7 +29,7 @@ const SkinSwitcher: React.FC<Props> = ({ control }) => {
 
 	const options = [
 		{
-			value: 'legacy',
+			value: 'old',
 			label: __('Legacy Skin', 'neve'),
 		},
 		{
@@ -47,21 +47,19 @@ const SkinSwitcher: React.FC<Props> = ({ control }) => {
 		setSwitching(true);
 
 		setVal(control, value).then(() => {
-			window.wp.customize.previewer
-				.save()
-				.then((res: Record<string, unknown>) => {
-					window.wp.customize.notifications.add(
-						new window.wp.customize.OverlayNotification(
-							'neve_switching_skin',
-							{
-								message: __('Switching skin', 'neve') + '...',
-								type: 'success',
-								loading: true,
-							}
-						)
-					);
-					window.location.reload();
-				});
+			window.wp.customize.previewer.save().then(() => {
+				window.wp.customize.notifications.add(
+					new window.wp.customize.OverlayNotification(
+						'neve_switching_skin',
+						{
+							message: __('Switching skin', 'neve') + '...',
+							type: 'success',
+							loading: true,
+						}
+					)
+				);
+				window.location.reload();
+			});
 		});
 	};
 

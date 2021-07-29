@@ -31,7 +31,7 @@
   }
   svg {
 	width: var(--iconSize);
-	height: auto;
+	height: var(--iconSize);
   }
 
   &.minimal {

@@ -20,8 +20,8 @@
   margin-top: $spacing-aired;
 }
 
-.entry-header .title, .page .title, .nv-page-title {
-  margin-bottom: $spacing-xl;
+.entry-header .title {
+  margin-bottom: $spacing-xs;
 }
 
 .attachment-neve-blog {
@@ -127,12 +127,12 @@
 	z-index: 1;
 	align-self: var(--vAlign, flex-end);
 
-	a {
-	  color: var(--color, var(--nv-text-dark-bg));
+	> *:last-child {
+	  margin-bottom: 0;
 	}
 
-	&.reversed {
-	  flex-direction: column-reverse;
+	a {
+	  color: var(--color, var(--nv-text-dark-bg));
 	}
   }
 

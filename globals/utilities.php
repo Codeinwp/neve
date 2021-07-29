@@ -1470,7 +1470,7 @@ function neve_is_new_builder() {
  * @since 3.0.0
  */
 function neve_is_new_skin() {
-	return get_theme_mod( 'neve_new_skin', false ) === 'new';
+	return get_theme_mod( 'neve_new_skin', 'new' ) !== 'old';
 }
 
 /**
@@ -1480,5 +1480,34 @@ function neve_is_new_skin() {
  * @since 3.0.0
  */
 function neve_can_use_conditional_header() {
-	return defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '3.0.0', '>=' ) && neve_is_new_builder();
+	return defined( 'NEVE_PRO_COMPATIBILITY_FEATURES' ) && isset( NEVE_PRO_COMPATIBILITY_FEATURES['headerv2'] ) && neve_is_new_builder();
+}
+
+/**
+ * Check that we had old builder.
+ *
+ * @return bool
+ * @since 3.0.0
+ */
+function neve_had_old_hfb() {
+	return ( get_theme_mod( 'hfg_header_layout' ) !== false || get_theme_mod( 'hfg_footer_layout' ) ) !== false;
+}
+
+/**
+ * Check if we have pro support.
+ *
+ * @param string $feature feature to check support for.
+ */
+function neve_pro_has_support( $feature ) {
+	return ( defined( 'NEVE_PRO_COMPATIBILITY_FEATURES' ) && isset( NEVE_PRO_COMPATIBILITY_FEATURES[ $feature ] ) );
+}
+
+/**
+ * Check that if new widget editor is available.
+ *
+ * @return bool
+ * @since 3.0.0
+ */
+function neve_is_new_widget_editor() {
+	return ( defined( 'GUTENBERG_VERSION' ) && version_compare( GUTENBERG_VERSION, '10.6.2', '>' ) ) || version_compare( substr( get_bloginfo( 'version' ), 0, 3 ), '5.8', '>=' );
 }

@@ -59,6 +59,28 @@ class PaletteSwitch extends Abstract_Component {
 	protected $component_slug = 'hfg-palette-icon';
 
 	/**
+	 * Return a svg icon for the provided string.
+	 *
+	 * @param string $icon The icon string.
+	 *
+	 * @return string
+	 */
+	public static function get_icon( $icon ) {
+		$available_icons = [
+			'contrast'      => '<svg fill="currentColor" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256,0C114.516,0,0,114.497,0,256c0,141.484,114.497,256,256,256c141.484,0,256-114.497,256-256 C512,114.516,397.503,0,256,0z M276,471.079V40.921C385.28,50.889,472,142.704,472,256C472,369.28,385.294,461.11,276,471.079z" /></svg>',
+			'night'         => '<svg fill="currentColor" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>',
+			'toggle'        => '<svg fill="currentColor" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M384 64H192C86 64 0 150 0 256s86 192 192 192h192c106 0 192-86 192-192S490 64 384 64zm0 320c-70.8 0-128-57.3-128-128 0-70.8 57.3-128 128-128 70.8 0 128 57.3 128 128 0 70.8-57.3 128-128 128z" /></svg>',
+			'accessibility' => '<svg fill="currentColor" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 48c114.953 0 208 93.029 208 208 0 114.953-93.029 208-208 208-114.953 0-208-93.029-208-208 0-114.953 93.029-208 208-208m0-40C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 56C149.961 64 64 149.961 64 256s85.961 192 192 192 192-85.961 192-192S362.039 64 256 64zm0 44c19.882 0 36 16.118 36 36s-16.118 36-36 36-36-16.118-36-36 16.118-36 36-36zm117.741 98.023c-28.712 6.779-55.511 12.748-82.14 15.807.851 101.023 12.306 123.052 25.037 155.621 3.617 9.26-.957 19.698-10.217 23.315-9.261 3.617-19.699-.957-23.316-10.217-8.705-22.308-17.086-40.636-22.261-78.549h-9.686c-5.167 37.851-13.534 56.208-22.262 78.549-3.615 9.255-14.05 13.836-23.315 10.217-9.26-3.617-13.834-14.056-10.217-23.315 12.713-32.541 24.185-54.541 25.037-155.621-26.629-3.058-53.428-9.027-82.141-15.807-8.6-2.031-13.926-10.648-11.895-19.249s10.647-13.926 19.249-11.895c96.686 22.829 124.283 22.783 220.775 0 8.599-2.03 17.218 3.294 19.249 11.895 2.029 8.601-3.297 17.219-11.897 19.249z" /></svg>',
+		];
+
+		if ( in_array( $icon, array_keys( $available_icons ), true ) ) {
+			return $available_icons[ $icon ];
+		}
+
+		return $available_icons['contrast'];
+	}
+
+	/**
 	 * PaletteSwitch constructor
 	 *
 	 * @return void
@@ -97,6 +119,22 @@ class PaletteSwitch extends Abstract_Component {
 	}
 
 	/**
+	 * Method to check that the component is active.
+	 *
+	 * @return bool
+	 */
+	private function is_component_active() {
+		$builders = Main::get_instance()->get_builders();
+		foreach ( $builders as $builder ) {
+			if ( $builder->is_component_active( $this->get_id() ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Get CSS to use as inline script
 	 *
 	 * @return string
@@ -109,6 +147,7 @@ class PaletteSwitch extends Abstract_Component {
 		.toggle-palette .icon {
 			display: flex;
 			width: var(--iconSize);
+			height: var(--iconSize);
 		}
 		.toggle-palette .label {
 			font-size: 0.85em;
@@ -130,23 +169,7 @@ class PaletteSwitch extends Abstract_Component {
 			$default_state = 'window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"';
 		}
 
-		return '"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let n=' . $default_state . ';if(localStorage.getItem(t))"dark"===localStorage.getItem(t)&&(n="dark");else if(!window.matchMedia)return!1;"dark"===n&&document.documentElement.setAttribute(e,"dark")}r();const a=document.getElementById("neve_body");function n(n){if(n.srcElement&&(n.srcElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.parentElement.matches("a.palette-icon-wrapper"))){if(n.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}}if(a){a.addEventListener("click",n,!1);}';
-	}
-
-	/**
-	 * Method to check that the component is active.
-	 *
-	 * @return bool
-	 */
-	private function is_component_active() {
-		$builders = Main::get_instance()->get_builders();
-		foreach ( $builders as $builder ) {
-			if ( $builder->is_component_active( $this->get_id() ) ) {
-				return true;
-			}
-		}
-
-		return false;
+		return '!function(){"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let n=' . $default_state . ',r=localStorage.getItem(t);"dark"===r&&(n="dark"),"light"===r&&(n="light"),document.documentElement.setAttribute(e,n)}r();const a=document.getElementById("neve_body");function n(n){if(n.srcElement&&(n.srcElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.parentElement.matches("a.palette-icon-wrapper"))){if(n.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}}a&&a.addEventListener("click",n,!1);}();';
 	}
 
 	/**
@@ -411,28 +434,6 @@ class PaletteSwitch extends Abstract_Component {
 		];
 
 		return parent::add_style( $css_array );
-	}
-
-	/**
-	 * Return a svg icon for the provided string.
-	 *
-	 * @param string $icon The icon string.
-	 *
-	 * @return string
-	 */
-	public static function get_icon( $icon ) {
-		$available_icons = [
-			'contrast'      => '<svg fill="currentColor" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256,0C114.516,0,0,114.497,0,256c0,141.484,114.497,256,256,256c141.484,0,256-114.497,256-256 C512,114.516,397.503,0,256,0z M276,471.079V40.921C385.28,50.889,472,142.704,472,256C472,369.28,385.294,461.11,276,471.079z" /></svg>',
-			'night'         => '<svg fill="currentColor" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>',
-			'toggle'        => '<svg fill="currentColor" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M384 64H192C86 64 0 150 0 256s86 192 192 192h192c106 0 192-86 192-192S490 64 384 64zm0 320c-70.8 0-128-57.3-128-128 0-70.8 57.3-128 128-128 70.8 0 128 57.3 128 128 0 70.8-57.3 128-128 128z" /></svg>',
-			'accessibility' => '<svg fill="currentColor" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 48c114.953 0 208 93.029 208 208 0 114.953-93.029 208-208 208-114.953 0-208-93.029-208-208 0-114.953 93.029-208 208-208m0-40C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 56C149.961 64 64 149.961 64 256s85.961 192 192 192 192-85.961 192-192S362.039 64 256 64zm0 44c19.882 0 36 16.118 36 36s-16.118 36-36 36-36-16.118-36-36 16.118-36 36-36zm117.741 98.023c-28.712 6.779-55.511 12.748-82.14 15.807.851 101.023 12.306 123.052 25.037 155.621 3.617 9.26-.957 19.698-10.217 23.315-9.261 3.617-19.699-.957-23.316-10.217-8.705-22.308-17.086-40.636-22.261-78.549h-9.686c-5.167 37.851-13.534 56.208-22.262 78.549-3.615 9.255-14.05 13.836-23.315 10.217-9.26-3.617-13.834-14.056-10.217-23.315 12.713-32.541 24.185-54.541 25.037-155.621-26.629-3.058-53.428-9.027-82.141-15.807-8.6-2.031-13.926-10.648-11.895-19.249s10.647-13.926 19.249-11.895c96.686 22.829 124.283 22.783 220.775 0 8.599-2.03 17.218 3.294 19.249 11.895 2.029 8.601-3.297 17.219-11.897 19.249z" /></svg>',
-		];
-
-		if ( in_array( $icon, array_keys( $available_icons ), true ) ) {
-			return $available_icons[ $icon ];
-		}
-
-		return $available_icons['contrast'];
 	}
 
 	/**
