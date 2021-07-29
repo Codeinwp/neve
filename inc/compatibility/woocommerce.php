@@ -325,6 +325,8 @@ class Woocommerce {
 	private function edit_woocommerce_header() {
 		remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
 		remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10 );
+		add_action( 'neve_before_shop_loop_content', 'woocommerce_product_archive_description', 0 );
+		add_action( 'neve_before_shop_loop_content', 'woocommerce_taxonomy_archive_description', 0 );
 		remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
