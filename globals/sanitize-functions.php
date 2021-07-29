@@ -45,9 +45,6 @@ function neve_sanitize_rgba( $value ) {
 	$green = 'rgba(0,0,0,0)';
 	$blue  = 'rgba(0,0,0,0)';
 	$alpha = 'rgba(0,0,0,0)';   // If empty or an array return transparent
-	if ( empty( $value ) || is_array( $value ) ) {
-		return '';
-	}
 
 	// By now we know the string is formatted as an rgba color so we need to further sanitize it.
 	$value = str_replace( ' ', '', $value );
