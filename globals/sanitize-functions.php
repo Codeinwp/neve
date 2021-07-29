@@ -64,7 +64,7 @@ function neve_sanitize_rgba( $value ) {
  * @return bool
  */
 function neve_sanitize_checkbox( $value ) {
-	return isset( $value ) && true === (bool) $value;
+	return true === (bool) $value;
 }
 
 /**
