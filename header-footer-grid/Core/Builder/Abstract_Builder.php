@@ -1255,11 +1255,10 @@ abstract class Abstract_Builder implements Builder {
 	 * Render the builder components.
 	 *
 	 * @param string|null $device the device [desktop|mobile].
-	 * @param string|null $row the row id.
 	 */
-	public function new_render_components( $device, $row ) {
+	public function new_render_components( $device ) {
 		$row_index = 0;
-		if ( $device === null && $row === null ) {
+		if ( $device === null ) {
 			$device    = self::$current_device;
 			$row_index = self::$current_row;
 		}
@@ -1433,11 +1432,10 @@ abstract class Abstract_Builder implements Builder {
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
-	 * @param null|array  $row Row details.
 	 */
-	public function render_components( $device = null, $row = null ) {
+	public function render_components( $device = null ) {
 		if ( neve_is_new_builder() ) {
-			$this->new_render_components( $device, $row );
+			$this->new_render_components( $device );
 
 			return;
 		}

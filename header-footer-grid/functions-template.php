@@ -40,10 +40,9 @@ function render_builder( $builder_name = '' ) {
  *
  * @param string $builder_name The builder id.
  * @param null   $device       The device.
- * @param null   $row_index    The row index.
  */
-function render_components( $builder_name = '', $device = null, $row_index = null ) {
-	get_builder( $builder_name )->render_components( $device, $row_index );
+function render_components( $builder_name = '', $device = null ) {
+	get_builder( $builder_name )->render_components( $device );
 }
 
 /**
