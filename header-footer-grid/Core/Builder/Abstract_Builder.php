@@ -1448,7 +1448,7 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		$row_index = 0;
-		if ( $device === null && $row === null ) {
+		if ( $device === null ) {
 			$device    = self::$current_device;
 			$row_index = self::$current_row;
 		}
