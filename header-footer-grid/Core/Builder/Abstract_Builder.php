@@ -1282,6 +1282,10 @@ abstract class Abstract_Builder implements Builder {
 			'right'   => [],
 		];
 
+		$slot            = null;
+		$component_index = null;
+		$slot_data       = null; 
+
 		foreach ( $data as $slot => $slot_data ) {
 			$is_side_slot = in_array( $slot, [ 'right', 'left' ], true );
 			if ( ! ( $this->row_has_slot( 'center' ) && $is_side_slot ) && empty( $slot_data ) && $builder_id !== 'footer' ) {
