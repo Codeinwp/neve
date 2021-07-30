@@ -14,6 +14,8 @@ namespace HFG\Core\Components;
 use HFG\Core\Settings\Config;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use Neve\Core\Dynamic_Css;
+use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
 
 /**
@@ -79,6 +81,105 @@ class Logo extends Abstract_Component {
 		$this->set_property( 'section', 'title_tagline' );
 		$this->set_property( 'preview_image', esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/component-site-logo.jpg' ) );
 		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() . ' .site-logo' );
+
+		add_action( 'wp_enqueue_scripts', [ $this, 'load_scripts' ] );
+	}
+
+	/**
+	 * Method to check that the component is active.
+	 *
+	 * @return bool
+	 */
+	private function is_component_active() {
+		$builders = Main::get_instance()->get_builders();
+		foreach ( $builders as $builder ) {
+			if ( $builder->is_component_active( $this->get_id() ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Load Component Scripts
+	 *
+	 * @return void
+	 */
+	public function load_scripts() {
+		if ( $this->is_component_active() || is_customize_preview() ) {
+			wp_add_inline_script( 'neve-script', $this->toggle_script() );
+		}
+	}
+
+	/**
+	 * Get JS contents from file to use as inline script.
+	 *
+	 * @return string
+	 */
+	public function toggle_script() {
+		$main_logo = get_theme_mod( 'custom_logo' );
+
+		$conditional_logo = json_decode( Mods::get( $this->get_id() . '_' . self::COMPONENT_ID, self::sanitize_logo_json( $main_logo ) ), true );
+		$main_logo        = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $main_logo;
+
+		if ( ! empty( $conditional_logo ) ) {
+			$logo_light_id = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $main_logo;
+			$logo_dark_id  = isset( $conditional_logo['dark'] ) ? $conditional_logo['dark'] : $logo_light_id;
+
+			$variants = array(
+				'light' => array(
+					'src'    => wp_get_attachment_image_url( $logo_light_id, apply_filters( 'hfg_logo_image_size', 'full' ), false ),
+					'srcset' => wp_get_attachment_image_srcset( $logo_light_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+					'sizes'  => wp_get_attachment_image_sizes( $logo_light_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+				),
+				'dark'  => array(
+					'src'    => wp_get_attachment_image_url( $logo_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ), false ),
+					'srcset' => wp_get_attachment_image_srcset( $logo_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+					'sizes'  => wp_get_attachment_image_sizes( $logo_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+				),
+			);
+		}
+
+		$script = "
+	var html = document.documentElement;
+	var theme = html.getAttribute('data-neve-theme') || 'light';
+
+	function setCurrentTheme( theme ) {
+		var isConditional = " . ( $conditional_logo['same'] ? 'true' : 'false' ) . ";
+		var pictures = document.getElementsByClassName( 'neve-main-logo' );
+		for(var i = 0; i<pictures.length; i++) {
+			var picture = pictures.item(i);
+			if( ! picture ) {
+				continue;
+			};
+			if ( theme === 'light' || isConditional ) {
+				picture.src = '" . esc_attr( $variants['light']['src'] ) . "';
+				picture.srcset = '" . esc_attr( $variants['light']['srcset'] ) . "';
+				picture.sizes = '" . esc_attr( $variants['light']['sizes'] ) . "';
+				continue;
+			};
+			picture.src = '" . esc_attr( $variants['dark']['src'] ) . "';
+			picture.srcset = '" . esc_attr( $variants['dark']['srcset'] ) . "';
+			picture.sizes = '" . esc_attr( $variants['dark']['sizes'] ) . "';
+		};
+	};
+
+	var observer = new MutationObserver(function(mutations) {
+		mutations.forEach(function(mutation) {
+			if (mutation.type == 'attributes') {
+				theme = html.getAttribute('data-neve-theme');
+				setCurrentTheme(theme);
+			};
+		});
+	});
+
+	//setCurrentTheme(theme);
+	observer.observe(html, {
+		attributes: true
+	});";
+
+		return $script;
 	}
 
 	/**
@@ -90,7 +191,7 @@ class Logo extends Abstract_Component {
 	 */
 	public static function sanitize_logo_json( $input ) {
 		$inputs = json_decode( $input, true );
-		if ( is_array( $inputs ) && ! empty( $inputs ) ) {
+		if ( is_array( $inputs ) && ! empty( $inputs ) && ! empty( $input ) ) {
 			return $input;
 		}
 
@@ -136,7 +237,8 @@ class Logo extends Abstract_Component {
 				'id'                => self::COMPONENT_ID,
 				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				// 'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'transport'         => 'refresh',
 				'sanitize_callback' => array( $this, 'sanitize_logo_json' ),
 				'default'           => wp_json_encode( $default ),
 				'label'             => __( 'Logo base', 'neve' ),

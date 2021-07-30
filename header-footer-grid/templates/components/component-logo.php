@@ -54,7 +54,7 @@ if ( $is_not_link ) {
 do_action( 'hfg_before_wp_get_attachment_image', $custom_logo_id );
 
 $logo_settings = array(
-	'id' => 'neve-main-logo',
+	'class' => 'neve-main-logo',
 );
 
 /**
@@ -66,63 +66,13 @@ $logo_settings = array(
  */
 $should_add_skip_lazy = apply_filters( 'neve_skip_lazy', true );
 if ( $should_add_skip_lazy ) {
-	$logo_settings['class'] = 'skip-lazy';
+	$logo_settings['class'] = isset( $logo_settings['class'] ) ? $logo_settings['class'] . ' skip-lazy' : 'skip-lazy';
 }
 
 $image = wp_get_attachment_image( $custom_logo_id, apply_filters( 'hfg_logo_image_size', 'full' ), false, $logo_settings );
 do_action( 'hfg_after_wp_get_attachment_image', $custom_logo_id, $image );
-if ( ! empty( $conditional_logo ) ) {
-	$logo_light_id = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $main_logo;
-	$logo_dark_id  = isset( $conditional_logo['dark'] ) ? $conditional_logo['dark'] : $logo_light_id;
-
-	$variants = array(
-		'light' => array(
-			'src'    => wp_get_attachment_image_url( $logo_light_id, apply_filters( 'hfg_logo_image_size', 'full' ), false ),
-			'srcset' => wp_get_attachment_image_srcset( $logo_light_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
-			'sizes'  => wp_get_attachment_image_sizes( $logo_light_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
-		),
-		'dark'  => array(
-			'src'    => wp_get_attachment_image_url( $logo_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ), false ),
-			'srcset' => wp_get_attachment_image_srcset( $logo_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
-			'sizes'  => wp_get_attachment_image_sizes( $logo_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
-		),
-	);
-}
 ?>
-<script type="application/javascript">
-	var html = document.documentElement;
-	var theme = html.getAttribute('data-neve-theme') || 'light';
-	function setCurrentTheme( theme ) {
-		var isConditional = <?php echo $conditional_logo['same'] ? 'true' : 'false'; ?>;
-		var picture = document.getElementById( 'neve-main-logo' );
-		if( ! picture ) {
-			return;
-		}
-		if ( theme === 'light' || isConditional ) {
-			picture.src = "<?php echo esc_attr( $variants['light']['src'] ); ?>";
-			picture.srcset = "<?php echo esc_attr( $variants['light']['srcset'] ); ?>";
-			picture.sizes = "<?php echo esc_attr( $variants['light']['sizes'] ); ?>";
-			return;
-		}
-		picture.src = "<?php echo esc_attr( $variants['dark']['src'] ); ?>";
-		picture.srcset = "<?php echo esc_attr( $variants['dark']['srcset'] ); ?>";
-		picture.sizes = "<?php echo esc_attr( $variants['dark']['sizes'] ); ?>";
-	}
 
-	var observer = new MutationObserver(function(mutations) {
-		mutations.forEach(function(mutation) {
-			if (mutation.type == "attributes") {
-				theme = html.getAttribute('data-neve-theme');
-				setCurrentTheme(theme);
-			}
-		});
-	});
-
-	setCurrentTheme(theme);
-	observer.observe(html, {
-		attributes: true
-	});
-</script>
 <div class="site-logo">
 	<?php
 	echo ( $start_tag ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

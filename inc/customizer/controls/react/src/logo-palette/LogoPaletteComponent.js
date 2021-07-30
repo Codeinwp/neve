@@ -47,6 +47,7 @@ const LogoPaletteComponent = ({ control }) => {
 
 	const changeOnPalette = (currentHeaderItems, componentChange) => {
 		const hasPaletteComp = hasValue(currentHeaderItems, componentChange);
+		setSetting(maybeParseJson(control.setting.get()));
 		if (!hasPaletteComp) {
 			toggleValue(true);
 		}
@@ -120,8 +121,8 @@ const LogoPaletteComponent = ({ control }) => {
 	};
 
 	const toggleValue = (val) => {
-		const nextValue = { ...setting };
-		nextValue.same = { ...nextValue.same };
+		const currentSetting = maybeParseJson(control.setting.get());
+		const nextValue = { ...currentSetting };
 		nextValue.same = val;
 
 		updateControlSetting(nextValue);
