@@ -89,6 +89,14 @@ module.exports = {
 		ext,
 		src: ['mega-menu.css'],
 	},
+	megaMenuLegacy: {
+		options,
+		expand: true,
+		cwd: './assets/css/',
+		dest: './assets/css/',
+		ext,
+		src: ['mega-menu-legacy.css'],
+	},
 	hfg: {
 		options,
 		expand: true,

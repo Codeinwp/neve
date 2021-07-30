@@ -17,6 +17,8 @@ module.exports = {
 				'assets/css/customizer-preview.css':
 					'assets/scss/customizer-preview.scss',
 				'assets/css/mega-menu.css': 'assets/scss/mega-menu.scss',
+				'assets/css/mega-menu-legacy.css':
+					'assets/scss/mega-menu-legacy.scss',
 				'assets/css/woocommerce.css': 'assets/scss/woocommerce.scss',
 				'assets/css/woocommerce-legacy.css':
 					'assets/scss/woocommerce-legacy.scss',

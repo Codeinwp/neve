@@ -23,6 +23,7 @@
 	flex-grow: 1;
 	display: flex;
 	justify-content: center;
+	align-items: center;
   }
 }
 
@@ -122,7 +123,7 @@
   div.product p.price bdi,
   div.product span.price,
   div.product p.price,
-  li.product ins, {
+  li.product ins {
 	color: var(--nv-text-color);
   }
 
@@ -221,8 +222,6 @@
 	  margin-left: 4%;
 	}
   }
-}
-@mixin product--laptop() {
   body.single-product .neve-main > .container > .row {
 	flex-wrap: wrap;
   }

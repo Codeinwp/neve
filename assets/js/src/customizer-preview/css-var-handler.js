@@ -40,6 +40,10 @@ export class CSSVariablesHandler {
 	getStyle() {
 		const { vars, responsive } = this;
 
+		if (vars === 'backgroundControl') {
+			return this.getBackgroundControlVars();
+		}
+
 		if (this.isDirectionalValue(this.value)) {
 			return this.getDirectionalNonResponsive();
 		}
@@ -73,6 +77,60 @@ export class CSSVariablesHandler {
 			default:
 				break;
 		}
+	}
+
+	getBackgroundControlVars() {
+		const { value, selector } = this;
+
+		const {
+			type,
+			imageUrl,
+			focusPoint,
+			colorValue,
+			overlayColorValue,
+			overlayOpacity,
+			useFeatured,
+			fixed,
+		} = value;
+
+		const definitions = {
+			'--bgImage': 'unset',
+			'--overlayColor': 'unset',
+			'--bgOverlayOpacity': 'unset',
+			'--bgAttachment': 'unset',
+			'--bgPosition': 'unset',
+		};
+
+		if (type === 'color') {
+			definitions['--bgColor'] = colorValue;
+		} else {
+			const { currentFeaturedImage } = window.neveCustomizePreview;
+
+			let finalUrl = imageUrl;
+			if (useFeatured) {
+				finalUrl = currentFeaturedImage
+					? currentFeaturedImage
+					: imageUrl;
+			}
+
+			const hasImage = finalUrl !== '';
+
+			const { x, y } = focusPoint;
+
+			const focus = `${(x * 100).toFixed(0)}% ${(y * 100).toFixed(0)}%`;
+
+			definitions['--bgImage'] = hasImage ? `url("${finalUrl}")` : 'none';
+			definitions['--overlayColor'] = overlayColorValue || 'transparent';
+			definitions['--bgOverlayOpacity'] = `${overlayOpacity / 100}`;
+			definitions['--bgAttachment'] = fixed ? 'fixed' : 'unset';
+			definitions['--bgPosition'] = focus;
+		}
+
+		const properties = Object.entries(definitions)
+			.map(([prop, val]) => `${prop}:${val}`)
+			.join(';');
+
+		return `${selector}{${properties}}`;
 	}
 
 	getDirectionalNonResponsive() {
@@ -134,12 +192,19 @@ export class CSSVariablesHandler {
 	}
 
 	getStringVarCSS() {
-		const { selector, vars, value, suffix, fallback } = this;
+		const {
+			selector,
+			vars,
+			value,
+			suffix,
+			fallback,
+			validateSuffix,
+		} = this;
 		if (typeof selector)
 			if (!value) {
 				return `${selector} {${vars}:${fallback};}`;
 			}
-		return `${selector} {${vars}:${value}${suffix};}`;
+		return `${selector} {${vars}:${value}${validateSuffix(suffix)};}`;
 	}
 
 	getComposedVarCSS() {
@@ -207,7 +272,7 @@ export class CSSVariablesHandler {
 
 	parseDirectionalValue(value, suffix) {
 		if (typeof value !== 'object') {
-			return value + suffix;
+			return value + this.validateSuffix(suffix);
 		}
 
 		if (!this.isDirectionalValue(value)) {
@@ -215,9 +280,14 @@ export class CSSVariablesHandler {
 		}
 
 		let directionalValue = '';
-
 		directions.forEach((direction) => {
-			directionalValue += `${value[direction]}${suffix} `;
+			if (value[direction] !== 0 && !value[direction]) {
+				directionalValue += this.fallback ? `${this.fallback} ` : '0 ';
+			} else {
+				directionalValue += `${value[direction]}${this.validateSuffix(
+					suffix
+				)} `;
+			}
 		});
 
 		directionalValue = directionalValue.trim();
@@ -234,14 +304,6 @@ export class CSSVariablesHandler {
 		);
 	}
 
-	getSuffix() {
-		if (this.suffix) {
-			return this.suffix;
-		}
-
-		return '';
-	}
-
 	maybeParseJson(input) {
 		if (typeof input !== 'string') {
 			return input;
@@ -252,6 +314,15 @@ export class CSSVariablesHandler {
 			return input;
 		}
 		return JSON.parse(input);
+	}
+
+	validateSuffix(val) {
+		const valid = ['px', 'em', '%', 'vh', 'vw'];
+		if (!valid.includes(val)) {
+			return '';
+		}
+
+		return val;
 	}
 }
 

@@ -1,10 +1,5 @@
 @import "../../main/variables";
 
-.comment-respond {
-  background-color: var(--nv-light-bg);
-  padding: $spacing-xl;
-}
-
 .nv-comment-content {
   margin-bottom: 0 !important;
 
@@ -15,7 +10,7 @@
 
 #comments {
   li.comment {
-	border-bottom: $base-border;
+	border-bottom: 2px solid;
 	padding-bottom: $spacing-xl;
 	margin-bottom: $spacing-xl;
   }
@@ -58,14 +53,6 @@
 	  float: right;
 	}
   }
-
-  input[type=submit] {
-	@extend %nv-button-primary;
-
-	&:hover {
-	  @extend %nv-button-primary-hover;
-	}
-  }
 }
 
 .nv-comment-header {
@@ -77,7 +64,7 @@
 	display: grid;
 
 	a {
-	  color: var(--nv-text-color);
+	  color: var(--color, var(--nv-text-color));
 	}
 
 	.author {

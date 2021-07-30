@@ -244,11 +244,11 @@ function neve_sanitize_alignment( $input ) {
  */
 function neve_sanitize_position( $input ) {
 	$default = [
-		'mobile'  => 'middle',
-		'tablet'  => 'middle',
-		'desktop' => 'middle',
+		'mobile'  => 'center',
+		'tablet'  => 'center',
+		'desktop' => 'center',
 	];
-	$allowed = [ 'top', 'middle', 'bottom' ];
+	$allowed = [ 'flex-start', 'center', 'flex-end' ];
 
 	if ( ! is_array( $input ) ) {
 		return $default;
@@ -256,7 +256,7 @@ function neve_sanitize_position( $input ) {
 
 	foreach ( $input as $device => $alignment ) {
 		if ( ! in_array( $alignment, $allowed ) ) {
-			$input[ $device ] = 'middle';
+			$input[ $device ] = 'center';
 		}
 	}
 

@@ -71,7 +71,7 @@ class Buttons extends Base_Customizer {
 			)
 		);
 
-		$mod_key  = Mods::get_alternative_mod( Config::MODS_BUTTON_PRIMARY_PADDING );
+		$mod_key  = Config::MODS_BUTTON_PRIMARY_PADDING;
 		$defaults = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_PADDING );
 		$this->add_control(
 			new Control(
@@ -85,6 +85,7 @@ class Buttons extends Base_Customizer {
 					'section'           => $this->section_id,
 					'input_attrs'       => [
 						'units' => [ 'px' ],
+						'min'   => 0,
 					],
 					'default'           => $defaults,
 				),
@@ -94,7 +95,7 @@ class Buttons extends Base_Customizer {
 
 		$this->add_control(
 			new Control(
-				Mods::get_alternative_mod( Config::MODS_BUTTON_TYPEFACE ),
+				Config::MODS_BUTTON_TYPEFACE,
 				[
 					'transport' => $this->selective_refresh,
 				],
@@ -184,8 +185,8 @@ class Buttons extends Base_Customizer {
 				)
 			);
 
-			$mod_key  = Mods::get_alternative_mod( 'neve_' . $button . '_appearance' );
-			$defaults = Mods::get_alternative_mod_default( 'neve_' . $button . '_appearance' );
+			$mod_key  = 'neve_' . $button . '_appearance';
+			$defaults = neve_get_button_appearance_default( $button );
 
 			$this->add_control(
 				new Control(
@@ -255,8 +256,8 @@ class Buttons extends Base_Customizer {
 			'secondary_button' => apply_filters( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL, Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL ] ),
 		];
 		foreach ( $buttons as $button ) {
-			$mod_key  = Mods::get_alternative_mod( 'neve_' . $button . '_appearance' );
-			$defaults = Mods::get_alternative_mod_default( 'neve_' . $button . '_appearance' );
+			$mod_key  = 'neve_' . $button . '_appearance';
+			$defaults = neve_get_button_appearance_default( $button );
 
 			$this->add_control(
 				new Control(
@@ -275,7 +276,7 @@ class Buttons extends Base_Customizer {
 				)
 			);
 
-			$mod_key  = Mods::get_alternative_mod( 'neve_' . $button . '_padding' );
+			$mod_key  = 'neve_' . $button . '_padding';
 			$defaults = Mods::get_alternative_mod_default( 'neve_' . $button . '_padding' );
 			$this->add_control(
 				new Control(
@@ -289,6 +290,7 @@ class Buttons extends Base_Customizer {
 						'section'           => $this->section_id,
 						'input_attrs'       => [
 							'units' => [ 'px' ],
+							'min'   => 0,
 						],
 						'default'           => $defaults,
 					),
@@ -300,7 +302,7 @@ class Buttons extends Base_Customizer {
 
 			$this->add_control(
 				new Control(
-					Mods::get_alternative_mod( 'neve_' . $button . '_typeface' ),
+					'neve_' . $button . '_typeface',
 					[
 						'transport' => $this->selective_refresh,
 					],

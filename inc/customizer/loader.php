@@ -54,7 +54,12 @@ class Loader {
 	 */
 	public function change_pro_controls( \WP_Customize_Manager $wp_customize ) {
 		if ( neve_can_use_conditional_header() ) {
-			$control = $wp_customize->get_control( 'neve_global_header' );
+			return;
+		}
+
+		$controls_to_disable = [ 'neve_global_header', 'neve_header_conditional_selector' ];
+		foreach ( $controls_to_disable as $control_slug ) {
+			$control = $wp_customize->get_control( $control_slug );
 			if ( empty( $control ) ) {
 				return;
 			}
@@ -125,7 +130,7 @@ class Loader {
 						'System' => neve_get_standard_fonts(),
 						'Google' => neve_get_google_fonts(),
 					),
-					'hideConditionalHeaderSelector' => neve_can_use_conditional_header(),
+					'hideConditionalHeaderSelector' => ! neve_can_use_conditional_header(),
 					'dashUpdatesMessage'            => sprintf( 'Please %s to the latest version of Neve Pro to manage the conditional headers.', '<a href="' . esc_url( admin_url( 'update-core.php' ) ) . '">' . __( 'update', 'neve' ) . '</a>' ),
 					'bundlePath'                    => get_template_directory_uri() . '/inc/customizer/controls/react/bundle/',
 				)

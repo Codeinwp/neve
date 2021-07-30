@@ -26,7 +26,6 @@ class Colors_Background extends Base_Customizer {
 	 * @return void
 	 */
 	public function add_controls() {
-		$this->wpc->remove_control( 'background_color' );
 		$this->section_colors_background();
 		$this->controls_colors();
 	}

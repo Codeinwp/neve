@@ -1,18 +1,18 @@
 @import "../../main/variables";
 
 .nv-single-post-wrap {
-  .entry-header,
-  .nv-thumb-wrap,
-  .nv-content-wrap,
-  .nv-post-navigation,
-  .nv-tags-list {
+  > div {
 	&:first-child {
-	  padding-top: $spacing-aired;
+	  margin-top: $spacing-aired;
 	}
 
 	&:last-child {
 	  padding-bottom: $spacing-lg;
 	}
+  }
+
+  > div:not(:last-child) {
+	margin-bottom: var(--spacing, $spacing-aired);
   }
 }
 
@@ -20,19 +20,8 @@
   margin-top: $spacing-aired;
 }
 
-.entry-header .title, .page .title, .nv-page-title {
-  margin-bottom: $spacing-xl;
-}
-
-.nv-thumb-wrap {
-  margin-bottom: $spacing-aired;
-}
-
-.nv-single-post-wrap {
-  .nv-content-wrap,
-  .nv-tags-list {
-	margin-bottom: $spacing-aired;
-  }
+.entry-header .title {
+  margin-bottom: $spacing-xs;
 }
 
 .attachment-neve-blog {
@@ -40,31 +29,26 @@
 }
 
 .nv-post-navigation {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: $spacing-md;
 
-  .previous,
-  .next {
-	a:hover {
-	  text-decoration: none;
+  span {
+	display: block;
+  }
 
-	  span:not(.nav-direction) {
-		text-decoration: underline;
-	  }
-	}
+  .nav-direction {
+	color: var(--nv-text-color);
+	font-size: 0.8em;
+	text-transform: uppercase;
+  }
 
-	.nav-direction {
-	  color: var(--nv-text-color);
-	  display: flex;
-	  flex-direction: column;
-	  font-size: 0.8em;
-	  text-transform: uppercase;
-	}
-
+  a:hover span:last-child {
+	text-decoration: underline;
   }
 
   .next {
-	margin-left: auto;
+	grid-column: 2;
 	text-align: right;
   }
 }
@@ -113,6 +97,7 @@
 	background: var(--nv-primary-accent);
 	line-height: 1;
 	font-size: .75em !important;
+	display: inline-block;
   }
 }
 
@@ -124,4 +109,55 @@
 	margin: 0 $spacing-xs $spacing-xs 0;
 	color: #fff !important;
   }
+}
+
+.nv-post-cover {
+  min-height: var(--height);
+  padding: var(--padding);
+  display: flex;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  .nv-title-meta-wrap {
+	color: var(--color, var(--nv-text-dark-bg));
+	display: flex;
+	flex-direction: column;
+	z-index: 1;
+	align-self: var(--vAlign, flex-end);
+
+	> *:last-child {
+	  margin-bottom: 0;
+	}
+
+	a {
+	  color: var(--color, var(--nv-text-dark-bg));
+	}
+  }
+
+  .container {
+	display: flex;
+  }
+}
+
+.nv-is-boxed {
+  padding: var(--padding);
+  background: var(--bgColor, var(--nv-light-bg));
+  color: var(--color, var(--nv-text-color));
+
+  a {
+	color: var(--color, var(--nv-text-color));
+  }
+}
+
+.nv-overlay {
+  background-color: var(--bgColor, var(--nv-dark-bg));
+  mix-blend-mode: var(--blendMode, normal);
+  opacity: calc(var(--opacity) / 100);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }

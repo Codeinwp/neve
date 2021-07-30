@@ -11,6 +11,7 @@ const ToggleComponent = ({ control }) => {
 		document.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) return false;
 			if (e.detail.id !== control.id) return false;
+			if (e.detail.value === value) return false;
 			toggleValue(e.detail.value);
 		});
 	}, []);

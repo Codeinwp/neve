@@ -1,268 +1,259 @@
 /* Style mega-menu and its children on mobile */
+.header--row {
+  .neve-mega-menu > .sub-menu {
+	cursor: default;
+	width: var(--container);
+	max-width: 100%;
+  }
+}
+
 .nav-ul > .neve-mega-menu {
+  .sub-menu .sub-menu {
+	max-height: none;
+  }
 
-	> .sub-menu {
-		cursor: default;
+  .neve-mm-col {
+	text-align: left;
+	cursor: default;
+	flex: 1;
+
+	.sub-menu {
+	  border: 0;
+	  padding-left: 0;
+
+	  .sub-menu {
+		left: 0;
+		top: 100%;
+	  }
 	}
+  }
 
-	.sub-menu .sub-menu {
-		max-height: none;
+  a {
+	display: flex;
+	align-items: center;
+
+	i {
+	  margin-top: 0;
+	  vertical-align: unset;
 	}
+  }
 
-	.neve-mm-col {
-		text-align: left;
-		cursor: default;
-		flex: 1;
+  li.neve-mm-divider {
+	height: 1px;
+	margin: $spacing-xs auto;
+	width: 100%;
+	background-color: currentColor !important;
+	padding: 0;
+	cursor: default;
+  }
 
-		.sub-menu {
-			border: 0;
-			padding-left: 0;
+  .neve-mm-description {
+	text-align: left;
+	justify-content: flex-start;
+  }
 
-			.sub-menu {
-				left: 0;
-				top: 100%;
-			}
-		}
+  .neve-mm-heading > span {
+	padding: 7px 14px;
+	display: flex;
+	height: 100%;
+	cursor: default;
+	align-items: center;
+
+	i {
+	  margin-right: 10px;
 	}
-
-	a {
-		display: flex;
-		align-items: center;
-
-		i {
-			margin-top: 0;
-			vertical-align: unset;
-		}
-	}
-
-	li.neve-mm-divider {
-		height: 1px;
-		margin: $spacing-xs auto;
-		width: 100%;
-		background-color: currentColor !important;
-		padding: 0;
-		cursor: default;
-	}
-
-	.neve-mm-description {
-		text-align: left;
-		justify-content: flex-start;
-	}
-
-	.neve-mm-heading > span {
-		padding: 7px 14px;
-		display: flex;
-		height: 100%;
-		cursor: default;
-		align-items: center;
-
-		i {
-			margin-right: 10px;
-		}
-	}
+  }
 }
 
 .neve-mm-description {
-	font-size: .8em;
-	padding: 0 0 7px;
-	width: 100%;
-	display: flex;
-	text-align: center;
+  font-size: .8em;
+  padding: 0 0 7px;
+  width: 100%;
+  display: flex;
+  text-align: center;
 }
 
 .neve-mm-heading > span, .neve-mm-heading > a {
-	font-size: 1.1em;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	white-space: normal;
-	font-weight: 700;
-	text-transform: uppercase;
+  font-size: 1.1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  white-space: normal;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .neve-mm-heading {
-	i {
-		margin-right: $spacing-xs;
-	}
+  i {
+	margin-right: $spacing-xs;
+  }
 }
 
 .header-menu-sidebar-inner {
-	.sub-menu, .sub-menu li {
-		background-color: transparent !important;
-	}
+  .sub-menu, .sub-menu li {
+	background-color: transparent !important;
+  }
 
-	.neve-mega-menu .neve-mm-col > .sub-menu {
-		.sub-menu {
-			max-height: 0;
+  .neve-mega-menu .neve-mm-col > .sub-menu {
+	.sub-menu {
+	  max-height: 0;
 
-			&.dropdown-open {
-				max-height: 3000px;
-			}
-		}
+	  &.dropdown-open {
+		max-height: 3000px;
+	  }
 	}
+  }
 
-	.nav-ul > .neve-mega-menu .neve-mm-heading {
-		> span {
-			padding: 3px 0;
-		}
+  .nav-ul > .neve-mega-menu .neve-mm-heading {
+	> span {
+	  padding: 3px 0;
 	}
+  }
 
-	.mobile-center {
-		.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
-			text-align: center;
-			justify-content: center;
-		}
+  .mobile-center {
+	.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+	  text-align: center;
+	  justify-content: center;
 	}
+  }
 
-	.mobile-left {
-		.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
-			text-align: left;
-			justify-content: flex-start;
-		}
+  .mobile-left {
+	.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+	  text-align: left;
+	  justify-content: flex-start;
 	}
+  }
 
-	.mobile-right {
-		.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
-			text-align: right;
-			justify-content: flex-end;
-		}
+  .mobile-right {
+	.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+	  text-align: right;
+	  justify-content: flex-end;
 	}
+  }
 }
 
 @mixin mega-menu--tablet() {
-	.header-menu-sidebar-inner {
-		.tablet-center {
-			.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
-				text-align: center;
-				justify-content: center;
-			}
-		}
-
-		.tablet-left {
-			.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
-				text-align: left;
-				justify-content: flex-start;
-			}
-		}
-
-		.tablet-right {
-			.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
-				text-align: right;
-				justify-content: flex-end;
-			}
-		}
+  .header-menu-sidebar-inner {
+	.tablet-center {
+	  .neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+		text-align: center;
+		justify-content: center;
+	  }
 	}
+
+	.tablet-left {
+	  .neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+		text-align: left;
+		justify-content: flex-start;
+	  }
+	}
+
+	.tablet-right {
+	  .neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+		text-align: right;
+		justify-content: flex-end;
+	  }
+	}
+  }
 }
 
 @mixin mega-menu--laptop() {
-	.header--row .nv-nav-wrap .primary-menu-ul {
-		> .neve-mega-menu {
-			position: relative;
-		}
+  .header--row .nv-nav-wrap .primary-menu-ul {
+	.neve-mega-menu > .sub-menu {
+	  left: 50%;
+	  transform: translateX(-50%);
+	  position: absolute;
+	  display: flex;
+	  padding: 20px;
+	  top: auto;
 
-		.neve-mega-menu > .sub-menu {
-			width: 950px;
-			position: absolute;
-			display: flex;
-			padding: 20px;
-			top: auto;
-
-			&:not(.dropdown-open) {
-				pointer-events: none;
-			}
-		}
-
-		.neve-mega-menu:hover > .sub-menu,
-		.neve-mega-menu:focus > .sub-menu,
-		.neve-mega-menu:focus-within > .sub-menu {
-			opacity: 1;
-			visibility: visible;
-			pointer-events: all;
-		}
-
-		.neve-mega-menu {
-			li > {
-				> a, > span {
-					padding: 7px 0;
-					margin: 0 14px;
-				}
-			}
-		}
-
-		.neve-mega-menu .neve-mm-col > .sub-menu {
-			visibility: visible;
-			position: relative;
-			left: initial;
-			right: initial;
-			opacity: 1;
-			box-shadow: none;
-			display: flex;
-			flex-direction: column;
-			text-align: left;
-			width: 100%;
-
-			a {
-				white-space: normal;
-				justify-content: flex-start;
-			}
-		}
-
-		.neve-mega-menu .neve-mm-col {
-			padding: 0 10px;
-			align-items: flex-start;
-			border: 0;
-		}
-
-		.neve-mega-menu .neve-mm-col:not(:last-child) {
-			border-right: 1px solid currentColor !important;
-		}
-
-		.neve-mega-menu .neve-mm-col > .sub-menu {
-			li:not(.neve-mm-divider) {
-				border: 0;
-			}
-		}
+	  &:not(.dropdown-open) {
+		pointer-events: none;
+	  }
 	}
-	.neve-mm-description {
+
+	.neve-mega-menu:hover > .sub-menu,
+	.neve-mega-menu:focus > .sub-menu,
+	.neve-mega-menu:focus-within > .sub-menu {
+	  opacity: 1;
+	  visibility: visible;
+	  pointer-events: all;
+	}
+
+	.neve-mega-menu {
+	  position: unset;
+	  li > {
+		> a, > span {
+		  padding: 7px 0;
+		  margin: 0 14px;
+		}
+	  }
+	}
+
+	.neve-mega-menu .neve-mm-col > .sub-menu {
+	  visibility: visible;
+	  position: relative;
+	  left: initial;
+	  right: initial;
+	  opacity: 1;
+	  box-shadow: none;
+	  display: flex;
+	  flex-direction: column;
+	  text-align: left;
+	  width: 100%;
+
+	  a {
+		white-space: normal;
+		justify-content: flex-start;
+	  }
+	}
+
+	.neve-mega-menu .neve-mm-col {
+	  padding: 0 10px;
+	  align-items: flex-start;
+	  border: 0;
+	}
+
+	.neve-mega-menu .neve-mm-col:not(:last-child) {
+	  border-right: 1px solid currentColor !important;
+	}
+
+	.neve-mega-menu .neve-mm-col > .sub-menu {
+	  li:not(.neve-mm-divider) {
+		border: 0;
+	  }
+	}
+  }
+  .neve-mm-description {
+	justify-content: center;
+	padding: 0 12px 7px;
+  }
+
+  .header-menu-sidebar-inner {
+	.desktop-center {
+	  .neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+		text-align: center;
 		justify-content: center;
-		padding: 0 12px 7px;
+	  }
 	}
 
-	.header-menu-sidebar-inner {
-		.desktop-center {
-			.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
-				text-align: center;
-				justify-content: center;
-			}
-		}
-
-		.desktop-left {
-			.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
-				text-align: left;
-				justify-content: flex-start;
-			}
-		}
-
-		.desktop-right {
-			.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
-				text-align: right;
-				justify-content: flex-end;
-			}
-		}
+	.desktop-left {
+	  .neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+		text-align: left;
+		justify-content: flex-start;
+	  }
 	}
-}
 
-@mixin mega-menu--desktop() {
-	.header--row .nv-nav-wrap .primary-menu-ul {
-		.neve-mega-menu {
-			> .sub-menu {
-				width: 1170px;
-			}
-		}
+	.desktop-right {
+	  .neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+		text-align: right;
+		justify-content: flex-end;
+	  }
 	}
+  }
 }
 
 // Make sure the component is static if it's in the main rows and has a navigation.
 .header--row .builder-item.has-nav {
-	position: static;
+  position: static;
 }

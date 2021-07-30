@@ -46,8 +46,9 @@ class Css_Prop {
 	 */
 	public static function get_suffix_responsive( $meta, $device ) {
 		$default_value = isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null;
-		$all_value = isset( $meta[ Dynamic_Selector::META_AS_JSON ] ) ? Mods::to_json( $meta[ 'key' ], $default_value ) : Mods::get( $meta[ 'key' ], $default_value );
-		return isset( $all_value[ 'suffix' ][ $device ] ) ? $all_value[ 'suffix' ][ $device ] : (isset( $all_value[ 'suffix' ] ) && is_string( $all_value[ 'suffix' ] ) ? $all_value[ 'suffix' ] : 'px');;
+		$all_value     = isset( $meta[ Dynamic_Selector::META_AS_JSON ] ) ? Mods::to_json( $meta['key'], $default_value ) : Mods::get( $meta['key'], $default_value );
+
+		return isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) && is_string( $all_value['suffix'] ) ? $all_value['suffix'] : 'px' );;
 	}
 
 	/**
@@ -62,12 +63,12 @@ class Css_Prop {
 	 */
 	public static function transform( $css_prop, $value, $meta, $device ) {
 		//If we have a custom filter, let's call it.
-		if ( isset( $meta[ 'filter' ] ) ) {
-			if ( is_callable( $meta[ 'filter' ] ) ) {
-				return call_user_func_array( $meta[ 'filter' ], [ $css_prop, $value, $meta, $device ] );
+		if ( isset( $meta['filter'] ) ) {
+			if ( is_callable( $meta['filter'] ) ) {
+				return call_user_func_array( $meta['filter'], [ $css_prop, $value, $meta, $device ] );
 			}
-			if ( method_exists( __CLASS__, $meta[ 'filter' ] ) ) {
-				return call_user_func_array( [ __CLASS__, $meta[ 'filter' ] ], [ $css_prop, $value, $meta, $device ] );
+			if ( method_exists( __CLASS__, $meta['filter'] ) ) {
+				return call_user_func_array( [ __CLASS__, $meta['filter'] ], [ $css_prop, $value, $meta, $device ] );
 			}
 
 			return '';
@@ -82,15 +83,14 @@ class Css_Prop {
 			case Config::CSS_PROP_COLOR:
 			case Config::CSS_PROP_FILL_COLOR:
 			case Config::CSS_PROP_BORDER_COLOR:
-				$mode = (false === strpos( $value, 'rgba' )) ? 'hex' : 'rgba';
-				$is_var = (strpos( $value, 'var' ) !== false);
+				$mode   = ( false === strpos( $value, 'rgba' ) ) ? 'hex' : 'rgba';
+				$is_var = ( strpos( $value, 'var' ) !== false );
 
 				if ( $mode === 'hex' && ! $is_var ) {
 					$value = strpos( $value, "#" ) === 0 ? $value : '#' . $value;
 				}
 
-				return sprintf( "%s: %s%s;", ($css_prop), neve_sanitize_colors( $value ), isset( $meta[ 'important' ] ) && $meta[ 'important' ] ? '!important' : '' );
-				break;
+				return sprintf( "%s: %s%s;", ( $css_prop ), neve_sanitize_colors( $value ), isset( $meta['important'] ) && $meta['important'] ? '!important' : '' );
 			case Config::CSS_PROP_MAX_WIDTH:
 			case Config::CSS_PROP_WIDTH:
 			case Config::CSS_PROP_FLEX_BASIS:
@@ -111,11 +111,10 @@ class Css_Prop {
 				}
 
 				return sprintf( "%s: %s%s;",
-					($css_prop),
-					($value),
+					( $css_prop ),
+					( $value ),
 					$suffix
 				);
-				break;
 			case Config::CSS_PROP_BORDER_RADIUS:
 			case Config::CSS_PROP_BORDER_WIDTH:
 			case Config::CSS_PROP_PADDING:
@@ -139,13 +138,13 @@ class Css_Prop {
 				if ( count( $non_empty_values ) === 4 ) {
 					return sprintf( "%s:%s%s %s%s %s%s %s%s;",
 						$css_prop,
-						(int) $value[ 'top' ],
+						(int) $value['top'],
 						$suffix,
-						(int) $value[ 'right' ],
+						(int) $value['right'],
 						$suffix,
-						(int) $value[ 'bottom' ],
+						(int) $value['bottom'],
 						$suffix,
-						(int) $value[ 'left' ],
+						(int) $value['left'],
 						$suffix
 					);
 				}
@@ -162,20 +161,19 @@ class Css_Prop {
 					],
 				];
 
-				if( isset( $non_empty_values['unit'] ) ) {
-					unset ($non_empty_values['unit']);
+				if ( isset( $non_empty_values['unit'] ) ) {
+					unset ( $non_empty_values['unit'] );
 				}
 
 				foreach ( $non_empty_values as $position => $position_value ) {
 					$rule .= sprintf( "%s:%s%s;",
-						sprintf( (is_array( $patterns[ $css_prop ] ) ? $patterns[ $css_prop ][ $position ] : $patterns[ $css_prop ]), $position ),
+						sprintf( ( is_array( $patterns[ $css_prop ] ) ? $patterns[ $css_prop ][ $position ] : $patterns[ $css_prop ] ), $position ),
 						(int) $position_value,
 						$suffix
 					);
 				}
 
 				return $rule;
-				break;
 			//Line height uses an awkward format saved, and we can't define it as responsive because we would need to use the suffix part.
 			case Config::CSS_PROP_LINE_HEIGHT:
 			case Config::CSS_PROP_FONT_SIZE:
@@ -183,31 +181,27 @@ class Css_Prop {
 				$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'em';
 				// We consider the provided suffix as default, in case that we have a responsive setting with responsive suffix.
 				if ( isset( $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) && $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) {
-					$all_value = Mods::get( $meta[ 'key' ] );
-					$suffix = isset( $all_value[ 'suffix' ][ $device ] ) ? $all_value[ 'suffix' ][ $device ] : (isset( $all_value[ 'suffix' ] ) ? $all_value[ 'suffix' ] : $suffix);
+					$all_value = Mods::get( $meta['key'] );
+					$suffix    = isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : $suffix );
 				}
 
 				return sprintf( ' %s: %s%s;', $css_prop, $value, $suffix );
-				break;
 			//Letter spacing has a legacy value of non-responsive which we need to take into consideration.
 			case Config::CSS_PROP_LETTER_SPACING:
 				return sprintf( ' %s: %spx;', $css_prop, $value );
-				break;
 			case Config::CSS_PROP_CUSTOM_BTN_TYPE:
 				if ( $value !== 'outline' ) {
 					return 'border:none;';
 				}
 
 				return "border:1px solid;";
-				break;
 			case Config::CSS_PROP_FONT_WEIGHT:
-				if ( isset( $meta[ 'font' ] ) ) {
-					$font = strpos( $meta[ 'font' ], 'mods_' ) === 0 ? Mods::get( str_replace( 'mods_', '', $meta[ 'font' ] ) ) : $meta[ 'font' ];
+				if ( isset( $meta['font'] ) ) {
+					$font = strpos( $meta['font'], 'mods_' ) === 0 ? Mods::get( str_replace( 'mods_', '', $meta['font'] ) ) : $meta['font'];
 					Font_Manager::add_google_font( $font, strval( $value ) );
 				}
 
 				return sprintf( ' %s: %s;', $css_prop, intval( $value ) );
-				break;
 			case Config::CSS_PROP_FONT_FAMILY:
 				if ( $value === 'default' ) {
 					return '';
@@ -215,16 +209,19 @@ class Css_Prop {
 				Font_Manager::add_google_font( $value );
 
 				return sprintf( ' %s: %s, var(--nv-fallback-ff);', $css_prop, $value );
-
-				break;
 			case Config::CSS_PROP_TEXT_TRANSFORM:
 			case Config::CSS_PROP_BOX_SHADOW:
 			case Config::CSS_PROP_MIX_BLEND_MODE:
 			case Config::CSS_PROP_OPACITY:
 			case Config::CSS_PROP_GRID_TEMPLATE_COLS:
 				return sprintf( ' %s: %s;', $css_prop, $value );
-				break;
 			default:
+				$is_font_family_var = strpos( strtolower( $css_prop ), 'fontfamily' ) > - 1;
+
+				if ( $is_font_family_var ) {
+					Font_Manager::add_google_font( $value );
+				}
+
 				if ( isset( $meta['directional-prop'] ) ) {
 					return self::transform_directional_prop( $meta, $device, $value, $css_prop, $meta['directional-prop'] );
 				}
@@ -264,18 +261,11 @@ class Css_Prop {
 		}
 
 		if ( $suffix === 'responsive_unit' ) {
-			$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
-			$suffix    = 'px';
-			if ( isset( $all_value[ $device . '-unit' ] ) ) {
-				$suffix = $all_value[ $device . '-unit' ];
-			} elseif ( isset( $all_value['unit'] ) ) {
-				$suffix = $all_value['unit'];
-			}
+			$suffix = self::get_unit_responsive( $meta, $device );
 		}
 
 		if ( $suffix === 'responsive_suffix' ) {
-			$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
-			$suffix    = isset( $all_value['suffix'] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : 'px' );;
+			$suffix = self::get_suffix_responsive( $meta, $device );
 		}
 
 		// Enqueue any google fonts we might be missing.
@@ -287,12 +277,34 @@ class Css_Prop {
 		return $suffix;
 	}
 
+	/**
+	 * Transforms the directional properties.
+	 *
+	 * @param array $meta Meta array.
+	 * @param string $device Current device.
+	 * @param string $value Value.
+	 * @param string $css_prop Css Property.
+	 * @param string $type Type of directional property.
+	 *
+	 * @return string
+	 */
 	public static function transform_directional_prop( $meta, $device, $value, $css_prop, $type ) {
 
 		$suffix   = self::get_suffix( $meta, $device, $value, $css_prop );
 		$suffix   = $suffix ? $suffix : 'px';
 		$template = '';
 
+
+		// Make sure that this is directional, even if an int value is provided.
+		if ( is_int( $value ) ) {
+			$directions = Config::$directional_keys;
+			$value      = array_fill_keys( $directions, $value );
+		}
+
+		// If we still don't have an array. Make sure to drop this setting.
+		if ( ! is_array( $value ) ) {
+			return '';
+		}
 
 		// Directional array without any other keys than the actual directions.
 		$filtered = array_filter( $value, function ( $key ) {
@@ -304,6 +316,10 @@ class Css_Prop {
 				$suffix = '';
 			}
 
+			if ( empty( $value['top'] ) && absint( $value['top'] ) !== 0 ) {
+				return '';
+			}
+
 			$template .= $value['top'] . $suffix;
 
 			return $css_prop . ':' . $template . ';';
@@ -312,6 +328,10 @@ class Css_Prop {
 		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
 			$top_suffix   = absint( $value['top'] ) === 0 ? '' : $suffix;
 			$right_suffix = absint( $value['right'] ) === 0 ? '' : $suffix;
+
+			if ( empty( $value['top'] ) && absint( $value['top'] ) !== 0 && empty( $value['right'] ) && absint( $value['right'] ) ) {
+				return '';
+			}
 
 			$template .= $value['top'] . $top_suffix . ' ' . $value['right'] . $right_suffix;
 
@@ -325,6 +345,10 @@ class Css_Prop {
 				continue;
 			}
 			$template .= $value[ $direction ] . $suffix . ' ';
+		}
+
+		if ( empty( $template ) ) {
+			return '';
 		}
 
 		$template = trim( $template ) . ';';

@@ -58,6 +58,7 @@ $component-alignments: (
 	}
 	.desktop-#{$alignment} {
 	  text-align: #{$alignment};
+	  justify-content: $flex-setting;
 
 	  .nav-ul, .nv-nav-wrap, .component-wrap, .site-logo, .nv-search-icon-component, .builder-item--footer-menu {
 		justify-content: $flex-setting;

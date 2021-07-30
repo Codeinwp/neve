@@ -52,7 +52,7 @@ describe('Global Colors', function () {
 			cy.get(color).should('have.css', 'background-color').and('eq', 'rgb(0, 0, 0)');
 		});
 		cy.get('#save').click({ force: true });
-		cy.wait(500);
+		cy.wait(1000);
 		cy.request('/wp-json/wpthememods/v1/settings').then((themeOptions) => {
 			expect(themeOptions.body).to.contains(
 				`{"base":{"name":"Base","allowDeletion":false,"colors":{"nv-primary-accent":"#000000","nv-secondary-accent":"#000000","nv-site-bg":"#000000","nv-light-bg":"#000000","nv-dark-bg":"#000000","nv-text-color":"#000000","nv-text-dark-bg":"#000000","nv-c-1":"#000000","nv-c-2":"#000000"}`,
@@ -61,17 +61,19 @@ describe('Global Colors', function () {
 	});
 
 	it('Palette Selector in Color Component', function () {
-		cy.getCustomizerControl('neve_button_appearance').as('buttonControl');
-		cy.wait(100);
-		cy.get('@buttonControl').find('.global-color-picker').first().click();
-		cy.get('.nv-custom-palette-wrap').should('be.visible');
-		cy.get('.nv-custom-palette-wrap .nv-custom-palette-color').should('have.length', 9);
+		cy.findByRole('heading', {
+			name: /palette colors/i,
+		});
+		cy.get('.color-array-wrap').should('be.visible');
+		cy.get('.color-array-wrap .neve-color-component').should('have.length', 9);
 
-		cy.get('.nv-custom-palette-wrap .nv-custom-palette-color').first().click();
+		cy.get(':nth-child(2) > .components-dropdown > .components-button').click();
 
-		cy.get('@buttonControl').find('.global-color-picker').first().should('have.class', 'active');
-
-		cy.get('.nv-custom-palette-wrap button').contains('Edit').click();
+		cy.get(':nth-child(2) > .components-dropdown > .components-button').should(
+			'have.attr',
+			'aria-expanded',
+			'true',
+		);
 	});
 
 	it('Palette Reset', function () {

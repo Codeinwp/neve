@@ -64,7 +64,7 @@ class Mods {
 		return isset( $value[ $subkey ] ) ? $value[ $subkey ] : $default;
 	}
 
-	/***
+	/**
 	 * Forced defaults.
 	 *
 	 * @param string $key Key name.
@@ -78,7 +78,7 @@ class Mods {
 			case Config::MODS_BUTTON_PRIMARY_STYLE:
 				return neve_get_button_appearance_default();
 			case Config::MODS_BUTTON_SECONDARY_STYLE:
-				return neve_get_button_appearance_default( 'secondary_button' );
+				return neve_get_button_appearance_default( 'secondary' );
 			case Config::MODS_TYPEFACE_GENERAL:
 				$defaults  = self::get_typography_defaults(
 					[
@@ -204,17 +204,6 @@ class Mods {
 	}
 
 	/**
-	 * Get alternative key of theme mod based on skin mode.
-	 *
-	 * @param string $key theme mod key.
-	 *
-	 * @return string
-	 */
-	public static function get_alternative_mod( $key ) {
-		return neve_is_new_skin() ? $key . '_v2' : $key;
-	}
-
-	/**
 	 * Get alternative mod default.
 	 *
 	 * @param string $key theme mod key.
@@ -270,9 +259,9 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '32' : '1.5',
-							'tablet'  => $new ? '40' : '1.5',
-							'desktop' => $new ? '48' : '2',
+							'mobile'  => $new ? '36' : '1.5',
+							'tablet'  => $new ? '38' : '1.5',
+							'desktop' => $new ? '40' : '2',
 							'suffix'  => $headings_sufix,
 						],
 						'lineHeight' => [
@@ -287,9 +276,9 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '24' : '1.3',
-							'tablet'  => $new ? '32' : '1.3',
-							'desktop' => $new ? '40' : '1.75',
+							'mobile'  => $new ? '28' : '1.3',
+							'tablet'  => $new ? '30' : '1.3',
+							'desktop' => $new ? '32' : '1.75',
 							'suffix'  => $headings_sufix,
 						],
 						'lineHeight' => [
@@ -304,9 +293,9 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '20' : '1.1',
-							'tablet'  => $new ? '24' : '1.1',
-							'desktop' => $new ? '32' : '1.5',
+							'mobile'  => $new ? '24' : '1.1',
+							'tablet'  => $new ? '26' : '1.1',
+							'desktop' => $new ? '28' : '1.5',
 							'suffix'  => $headings_sufix,
 						],
 						'lineHeight' => [
@@ -321,8 +310,8 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '18' : '1',
-							'tablet'  => $new ? '20' : '1',
+							'mobile'  => $new ? '20' : '1',
+							'tablet'  => $new ? '22' : '1',
 							'desktop' => $new ? '24' : '1.25',
 							'suffix'  => $headings_sufix,
 						],
@@ -356,7 +345,7 @@ class Mods {
 					array(
 						'fontSize'   => [
 							'mobile'  => $new ? '14' : '0.75',
-							'tablet'  => $new ? '16' : '0.75',
+							'tablet'  => $new ? '14' : '0.75',
 							'desktop' => $new ? '16' : '1',
 							'suffix'  => $headings_sufix,
 						],
@@ -367,74 +356,6 @@ class Mods {
 						],
 					)
 				);
-			case Config::MODS_BUTTON_PRIMARY_STYLE:
-				if ( ! $new ) {
-					return neve_get_button_appearance_default( 'primary' );
-				}
-
-				return [
-					'type'            => 'fill',
-					'background'      => 'var(--nv-primary-accent)',
-					'backgroundHover' => 'var(--nv-primary-accent)',
-					'text'            => '#ffffff',
-					'textHover'       => '#ffffff',
-					'borderRadius'    => [
-						'top'    => 3,
-						'right'  => 3,
-						'bottom' => 3,
-						'left'   => 3,
-					],
-					'borderWidth'     => [
-						'top'    => 1,
-						'right'  => 1,
-						'bottom' => 1,
-						'left'   => 1,
-					],
-				];
-			case Config::MODS_BUTTON_SECONDARY_STYLE:
-				if ( ! $new ) {
-					return neve_get_button_appearance_default( 'secondary' );
-				}
-
-				return [
-					'type'            => 'outline',
-					'background'      => '',
-					'backgroundHover' => '',
-					'text'            => 'var(--nv-primary-accent)',
-					'textHover'       => 'var(--nv-primary-accent)',
-					'borderRadius'    => [
-						'top'    => 3,
-						'right'  => 3,
-						'bottom' => 3,
-						'left'   => 3,
-					],
-					'borderWidth'     => [
-						'top'    => 3,
-						'right'  => 3,
-						'bottom' => 3,
-						'left'   => 3,
-					],
-				];
-			case Config::MODS_BUTTON_SECONDARY_PADDING:
-				$device = $new ? [
-					'top'    => 7,
-					'right'  => 15,
-					'bottom' => 7,
-					'left'   => 15,
-				] : [
-					'top'    => 8,
-					'right'  => 12,
-					'bottom' => 8,
-					'left'   => 12,
-				];
-				return [
-					'desktop'      => $device,
-					'tablet'       => $device,
-					'mobile'       => $device,
-					'desktop-unit' => 'px',
-					'tablet-unit'  => 'px',
-					'mobile-unit'  => 'px',
-				];
 			case Config::MODS_BUTTON_PRIMARY_PADDING:
 				$device = $new ? [
 					'top'    => 13,

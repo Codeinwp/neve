@@ -4,6 +4,7 @@
   box-sizing: border-box;
   border-color: currentColor;
   text-align: center;
+  font-family: var(--bodyFontFamily),var(--nv-fallback-ff);
 }
 
 %nv-button-primary {
@@ -14,6 +15,7 @@
   color: var(--primaryBtnColor);
   border-style: solid;
   border-color: currentColor;
+  fill: currentColor;
   border-width: var(--primaryBtnBorderWidth, 0);
   border-radius: var(--primaryBtnBorderRadius, 3px);
   padding: var(--primaryBtnPadding, 13px 15px);
@@ -68,6 +70,7 @@
   color: var(--secondaryBtnColor);
   border-style: solid;
   border-color: currentColor;
+  fill: currentColor;
   border-width: var(--secondaryBtnBorderWidth, 0);
   border-radius: var(--secondaryBtnBorderRadius, 3px);
   padding: var(--secondaryBtnPadding, 7px 12px);

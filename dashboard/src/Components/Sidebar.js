@@ -18,19 +18,20 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 					<div className="sidebar-section">
 						<h4>{__('Neve Community', 'neve')}</h4>
 						<p>
-							{createInterpolateElement(
-								__(
-									'Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our <external_link>public roadmap</external_link>.',
-									'neve'
-								),
-								{
-									external_link: (
-										<ExternalLink href="https://neve.nolt.io">
-											#dumptext
-										</ExternalLink>
+							{typeof createInterpolateElement !== 'undefined' &&
+								createInterpolateElement(
+									__(
+										'Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our <external_link>public roadmap</external_link>.',
+										'neve'
 									),
-								}
-							)}
+									{
+										external_link: (
+											<ExternalLink href="https://neve.nolt.io">
+												#dumptext
+											</ExternalLink>
+										),
+									}
+								)}
 						</p>
 						<ExternalLink href="https://www.facebook.com/groups/648646435537266/">
 							{__('Join our Facebook Group', 'neve')}

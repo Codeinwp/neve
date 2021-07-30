@@ -21,7 +21,8 @@
   svg {
 	fill: var(--formFieldColor);
 	width: var(--formFieldFontSize);
-	opacity: .5
+	opacity: .5;
+	height: auto;
   }
 
   .search-submit {
