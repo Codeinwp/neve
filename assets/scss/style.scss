@@ -1,28 +1,24 @@
 @charset "UTF-8";
-@import "main/variables";
-@import "main/mixins";
-@import "main/extends";
-@import "main/reset";
+@import "components/main/variables";
+@import "components/main/extends";
+@import "components/main/reset";
 
-@import "main/grid";
-@import "main/typography";
-@import "main/a11y";
-@import "main/neve-icons";
-@import "main/gutenberg";
-@import "main/utilities";
+@import "components/main/grid";
+@import "components/main/typography";
+@import "components/main/a11y";
+@import "components/main/neve-icons";
+@import "components/main/gutenberg";
+@import "components/main/global-colors";
+@import "components/elements/navigation";
+@import "components/elements/page";
+@import "components/elements/form-elements";
+@import "components/elements/blog";
+@import "components/elements/content";
+@import "components/elements/gallery";
+@import "components/elements/sidebar";
+@import "components/elements/breadcrumbs";
+@import "components/elements/hfg-alignments";
+@import "components/main/media-queries";
+@import "components/compat/elementor";
 
-@import "elements/navigation";
-@import "elements/footer";
-@import "elements/page";
-@import "elements/form-elements";
-@import "elements/blog";
-@import "elements/content";
-@import "elements/gallery";
-@import "elements/sidebar";
-@import "elements/breadcrumbs";
-@import "elements/hfg-alignments";
-
-@import "main/media-queries";
-@import "compat/elementor";
-
-@import "../../header-footer-grid/assets/scss/style";
+@import "./components/hfg/style";

@@ -11,6 +11,7 @@ namespace Neve\Compatibility;
 use HFG\Core\Components\CartIcon;
 use HFG\Core\Magic_Tags;
 use Neve\Core\Settings\Config;
+use Neve\Customizer\Defaults\Layout;
 use Neve\Views\Layouts\Layout_Sidebar;
 
 /**
@@ -19,6 +20,8 @@ use Neve\Views\Layouts\Layout_Sidebar;
  * @package Neve\Compatibility
  */
 class Woocommerce {
+
+	use Layout;
 
 	/**
 	 * Primary button selectors.
@@ -189,6 +192,39 @@ class Woocommerce {
 		$this->move_checkout_coupon();
 		$this->add_inline_selectors();
 		add_action( 'wp', [ $this, 'setup_form_buttons' ] );
+
+		if ( neve_is_new_skin() ) {
+			add_action(
+				'woocommerce_checkout_before_order_review_heading',
+				function () {
+					echo '<div>';
+				}
+			);
+			add_action( 'woocommerce_checkout_after_order_review', [ $this, 'close_div' ] );
+
+			add_action(
+				'woocommerce_before_single_product_summary',
+				function () {
+					echo '<div class="nv-single-product-top">';
+
+				},
+				11
+			);
+			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ] );
+			// Change default for shop columns WooCommerce option.
+			add_filter( 'default_option_woocommerce_catalog_columns', [ $this, 'change_default_shop_cols' ] );
+		}
+	}
+
+	/**
+	 * Change default for catalog columns.
+	 *
+	 * @param int $default default value -> 4.
+	 *
+	 * @return int
+	 */
+	public function change_default_shop_cols( $default ) {
+		return 3;
 	}
 
 	/**
@@ -256,6 +292,12 @@ class Woocommerce {
 	 * @return mixed
 	 */
 	public function change_breadcrumbs_delimiter( $default ) {
+		if ( neve_is_new_skin() ) {
+			$default['delimiter'] = '<span class="nv-breadcrumb-delimiter">\</span>';
+
+			return $default;
+		}
+
 		$default['delimiter'] = '<span class="nv-breadcrumb-delimiter">&raquo;</span>';
 
 		return $default;
@@ -283,6 +325,8 @@ class Woocommerce {
 	private function edit_woocommerce_header() {
 		remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
 		remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10 );
+		add_action( 'neve_before_shop_loop_content', 'woocommerce_product_archive_description', 0 );
+		add_action( 'neve_before_shop_loop_content', 'woocommerce_taxonomy_archive_description', 0 );
 		remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
@@ -377,9 +421,19 @@ class Woocommerce {
 			return;
 		}
 
-		$button_text  = apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) . '»' );
 		$button_attrs = apply_filters( 'neve_woocommerce_sidebar_filter_btn_data_attrs', '' );
-		echo '<a class="nv-sidebar-toggle" ' . wp_kses_post( $button_attrs ) . '>' . esc_html( $button_text ) . '</a>';
+
+
+		if ( neve_is_new_skin() ) {
+			echo '<a href="#" class="nv-sidebar-toggle" ' . wp_kses_post( $button_attrs ) . '>';
+			echo '<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M25 21.6667V1.66667C25 0.75 24.25 0 23.3333 0H1.66667C0.75 0 0 0.75 0 1.66667V21.6667C0 22.5833 0.75 23.3333 1.66667 23.3333H23.3333C24.25 23.3333 25 22.5833 25 21.6667ZM8.33333 13.3333H10C10.9167 13.3333 11.6667 14.0833 11.6667 15C11.6667 15.9167 10.9167 16.6667 10 16.6667H8.33333V19.1667C8.33333 19.6333 7.96667 20 7.5 20C7.03333 20 6.66667 19.6333 6.66667 19.1667V16.6667H5C4.08333 16.6667 3.33333 15.9167 3.33333 15C3.33333 14.0833 4.08333 13.3333 5 13.3333H6.66667V4.16667C6.66667 3.7 7.03333 3.33333 7.5 3.33333C7.96667 3.33333 8.33333 3.7 8.33333 4.16667V13.3333ZM15 10H16.6667V19.1667C16.6667 19.6333 17.0333 20 17.5 20C17.9667 20 18.3333 19.6333 18.3333 19.1667V10H20C20.9167 10 21.6667 9.25 21.6667 8.33333C21.6667 7.41667 20.9167 6.66667 20 6.66667H18.3333V4.16667C18.3333 3.7 17.9667 3.33333 17.5 3.33333C17.0333 3.33333 16.6667 3.7 16.6667 4.16667V6.66667H15C14.0833 6.66667 13.3333 7.41667 13.3333 8.33333C13.3333 9.25 14.0833 10 15 10Z" fill="currentColor"/></svg>';
+			echo '</a>';
+
+			return;
+		}
+
+		$button_text = apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) . '»' );
+		echo '<a href="#" class="nv-sidebar-toggle" ' . wp_kses_post( $button_attrs ) . '>' . esc_html( $button_text ) . '</a>';
 	}
 
 	/**
@@ -502,7 +556,7 @@ class Woocommerce {
 		.woocommerce-page .select2-container--default .select2-selection--single,
 		.woocommerce-page .woocommerce form .form-row input.input-text,
 		.woocommerce-page .woocommerce form .form-row textarea,
-		.wc-block-product-search form input.wc-block-product-search__field';
+		input.wc-block-product-search__field';
 	}
 
 	/**
@@ -515,7 +569,6 @@ class Woocommerce {
 	public function add_inputs_spacing_selectors( $selectors ) {
 		return $selectors . ', .woocommerce-page .select2';
 	}
-
 
 	/**
 	 * Add checkout labels to style.
@@ -677,17 +730,16 @@ class Woocommerce {
 		if ( ! is_active_sidebar( 'shop-sidebar' ) ) {
 			return false;
 		}
-		if ( is_shop() ) {
-			$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( 'neve_shop_archive_sidebar_layout', 'right' ) );
-			if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
-				return false;
-			}
-		}
+
+		$mod = 'neve_shop_archive_sidebar_layout';
 		if ( is_product() ) {
-			$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( 'neve_single_product_sidebar_layout', 'right' ) );
-			if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
-				return false;
-			}
+			$mod = 'neve_single_product_sidebar_layout';
+		}
+
+		$default   = $this->sidebar_layout_alignment_default( $mod );
+		$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( $mod, $default ) );
+		if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
+			return false;
 		}
 
 		return true;
@@ -784,9 +836,11 @@ class Woocommerce {
 	}
 
 	/**
-	 * Setup Form Buttons Type
+	 * Setup legacy form buttons.
+	 *
+	 * @since 3.0.0
 	 */
-	public function setup_form_buttons() {
+	private function setup_legacy_form_buttons() {
 		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
 		if ( $form_buttons_type === 'primary' ) {
 			add_filter(
@@ -825,6 +879,41 @@ class Woocommerce {
 		add_filter(
 			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
 			array( $this, 'add_buttons_hover_selectors' ),
+			10,
+			1
+		);
+	}
+
+	/**
+	 * Setup Form Buttons Type
+	 */
+	public function setup_form_buttons() {
+		if ( ! neve_is_new_skin() ) {
+			$this->setup_legacy_form_buttons();
+
+			return;
+		}
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_FORM_BUTTON,
+			function ( $selectors ) {
+				return $selectors . '
+				,#review_form #respond input#submit,
+				.woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+				.woocommerce-checkout #payment .place-order button#place_order,
+				.woocommerce-account .woocommerce [type="submit"]';
+			},
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_FORM_BUTTON_HOVER,
+			function ( $selectors ) {
+				return $selectors . '
+				,#review_form #respond input#submit:hover,
+				.woocommerce-cart .wc-proceed-to-checkout a.checkout-button:hover,
+				.woocommerce-checkout #payment .place-order button#place_order:hover,
+				.woocommerce-account .woocommerce [type="submit"]:hover';
+			},
 			10,
 			1
 		);

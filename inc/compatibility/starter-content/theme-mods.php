@@ -701,6 +701,12 @@ return array(
 	'header_search_responsive_field_text_color'   => 'var(--nv-primary-accent)',
 	'footer_copyright_color'                      => 'var(--nv-primary-accent)',
 	'footer_copyright_component_vertical_align'   => 'middle',
+	'footer_copyright_component_align'            =>
+		array(
+			'mobile'  => 'center',
+			'tablet'  => 'center',
+			'desktop' => 'center',
+		),
 	'hfg_footer_layout_v2'                        => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[],"c-left":[{"id":"footer_copyright"}],"center":[],"c-right":[],"right":[]}}}',
 	'primary-menu_component_padding'              =>
 		array(
@@ -730,5 +736,19 @@ return array(
 			'desktop-unit' => 'px',
 		),
 	'button_base_link_setting'                    => '/?pagename=contact',
-
+	'hfg_footer_layout_bottom_background'         =>
+		array(
+			'type'              => 'color',
+			'colorValue'        => 'var(--nv-site-bg)',
+			'imageUrl'          => '',
+			'focusPoint'        =>
+				array(
+					'x' => 0.5,
+					'y' => 0.5,
+				),
+			'overlayColorValue' => '',
+			'overlayOpacity'    => 50,
+			'fixed'             => false,
+			'useFeatured'       => false,
+		),
 );

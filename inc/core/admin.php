@@ -10,6 +10,8 @@
 
 namespace Neve\Core;
 
+use Neve\Core\Settings\Mods_Migrator;
+
 /**
  * Class Admin
  *
@@ -71,7 +73,9 @@ class Admin {
 
 		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
 
-		add_action( 'init', [ $this, 'switch_to_new_builder' ] );
+		add_action( 'init', [ $this, 'run_skin_and_builder_switches' ] );
+		add_filter( 'ti_tpc_theme_mods_pre_import', [ $this, 'migrate_theme_mods_for_new_skin' ] );
+
 		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
 		add_filter( 'neve_pro_react_controls_localization', [ $this, 'adapt_conditional_headers' ] );
 		if ( class_exists( '\Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers' ) ) {
@@ -80,39 +84,72 @@ class Admin {
 	}
 
 	/**
-	 * Switch to the new builder if this is a fresh site or there is nothing set up for the old header/footer.
+	 * Switch to the new 3.0 features.
+	 *
+	 * @return void
 	 *
 	 * @since 3.0.0
 	 */
-	public function switch_to_new_builder() {
-		$flag = 'neve_ran_builder_migration';
-		if ( get_theme_mod( $flag ) ) {
+	public function run_skin_and_builder_switches() {
+		$flag = 'neve_ran_migrations';
+
+		if ( get_theme_mod( $flag ) === true ) {
 			return;
 		}
 
-		// Flag this as a routine that already ran.
 		set_theme_mod( $flag, true );
 
-		$fresh = get_option( 'fresh_site' );
-
-		// If we have a fresh site. Make sure we're going to use the new builder.
-		if ( $fresh === true ) {
-			set_theme_mod( 'neve_migrated_builders', true );
-
-			return;
-		}
-
-		// If we do have previously set options for header or footer, use the old builder.
-		$header = get_theme_mod( 'hfg_header_layout' );
-		$footer = get_theme_mod( 'hfg_footer_layout' );
-
-		if ( ! empty( $header ) || ! empty( $footer ) ) {
+		if ( neve_had_old_hfb() ) {
 			set_theme_mod( 'neve_migrated_builders', false );
+		}
+
+		$all_mods = get_theme_mods();
+
+		$mods = [
+			'hfg_header_layout',
+			'hfg_footer_layout',
+			'neve_blog_archive_layout',
+			'neve_headings_font_family',
+			'neve_body_font_family',
+			'neve_global_colors',
+			'neve_button_appearance',
+			'neve_secondary_button_appearance',
+			'neve_typeface_general',
+			'neve_form_fields_padding',
+			'neve_default_sidebar_layout',
+			'neve_advanced_layout_options',
+		];
+
+		$should_switch = false;
+		foreach ( $mods as $mod_to_check ) {
+			if ( isset( $all_mods[ $mod_to_check ] ) ) {
+				$should_switch = true;
+				break;
+			}
+		}
+
+		if ( ! $should_switch ) {
 			return;
 		}
 
-		// If we don't have any data, use the new builder.
-		set_theme_mod( 'neve_migrated_builders', true );
+		set_theme_mod( 'neve_new_skin', 'old' );
+		set_theme_mod( 'neve_had_old_skin', true );
+	}
+
+	/**
+	 * Filter out old HFG values if the new builder is active.
+	 *
+	 * @param array $theme_mods the theme mods array.
+	 *
+	 * @return array
+	 * @since 3.0.0
+	 */
+	public function migrate_theme_mods_for_new_skin( $theme_mods ) {
+		if ( ! neve_is_new_skin() ) {
+			return $theme_mods;
+		}
+		$migrator = new Mods_Migrator( $theme_mods );
+		return $migrator->get_migrated_mods();
 	}
 
 	/**
@@ -159,6 +196,8 @@ class Admin {
 	 * @param \WP_REST_Request $request the received request.
 	 *
 	 * @return \WP_REST_Response
+	 *
+	 * @since 3.0.0
 	 */
 	public function migrate_builders_data( \WP_REST_Request $request ) {
 		$is_rollback = $request->get_header( 'rollback' );
@@ -274,6 +313,7 @@ class Admin {
 		if ( ! empty( $activated_time ) ) {
 			if ( time() - intval( $activated_time ) > WEEK_IN_SECONDS ) {
 				update_option( $this->dismiss_notice_key, 'yes' );
+
 				return;
 			}
 		}
@@ -506,7 +546,10 @@ class Admin {
 			NEVE_VERSION,
 			true
 		);
-		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
+
+		$path = neve_is_new_skin() ? 'gutenberg-editor-style' : 'gutenberg-editor-legacy-style';
+
+		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/' . $path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 	}
 
 	/**
@@ -578,6 +621,7 @@ class Admin {
 		if ( array_key_exists( 'otter-blocks/otter-blocks.php', $plugins ) ) {
 			$plugins['otter-blocks/otter-blocks.php']['Name'] = 'Gutenberg Blocks and Template Library by Neve theme';
 		}
+
 		return $plugins;
 	}
 

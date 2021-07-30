@@ -8,6 +8,8 @@
 
 namespace Neve\Views;
 
+use Neve\Core\Styles\Css_Vars;
+
 /**
  * Class Template_Parts
  *
@@ -160,13 +162,15 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_title() {
+		$tag = neve_is_new_skin() ? 'h3' : 'h2';
+
 		$markup = '';
 
-		$markup .= '<h2 class="blog-entry-title entry-title">';
+		$markup .= '<' . $tag . ' class="blog-entry-title entry-title">';
 		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">';
 		$markup .= get_the_title();
 		$markup .= '</a>';
-		$markup .= '</h2>';
+		$markup .= '</' . $tag . '>';
 
 		return $markup;
 	}
@@ -215,6 +219,10 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_grid_columns_class() {
+		if ( neve_is_new_skin() ) {
+			return '';
+		}
+
 		$classes    = '';
 		$columns    = get_theme_mod(
 			'neve_grid_layout',
@@ -274,7 +282,8 @@ class Template_Parts extends Base_View {
 		$markup .= '</a>';
 
 		if ( ! empty( $read_more_args['classes'] ) ) {
-			$markup = '<div class="read-more-wrapper" style="padding: 10px 0 0;">' . $markup . '</div>';
+			$style  = neve_is_new_skin() ? '' : 'padding: 10px 0 0;';
+			$markup = '<div class="read-more-wrapper" style="' . esc_attr( $style ) . '">' . $markup . '</div>';
 		}
 
 		$new_moretag .= $markup;

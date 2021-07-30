@@ -1,0 +1,10 @@
+$container_width: var(--container); // 1200px; 75em
+
+// Colors
+$gl-devices-list: (
+        desktop: "(min-width: 960px)",
+        tablet: "(max-width: 959px)",
+        mobile: "(max-width: 576px)"
+) !default;
+
+$menu_sidebar_active_z_index: 999900;

@@ -9,6 +9,7 @@ namespace Neve\Customizer\Options;
 
 use HFG\Traits\Core;
 use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
@@ -80,34 +81,29 @@ class Form_Fields extends Base_Customizer {
 			)
 		);
 
+		// Padding
+		$default_padding = Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_PADDING );
 		$this->add_control(
 			new Control(
-				'neve_form_fields_padding',
+				Config::MODS_FORM_FIELDS_PADDING,
 				[
 					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
 					'transport'         => $this->selective_refresh,
-					'default'           => [
-						'top'    => '7',
-						'bottom' => '7',
-						'left'   => '12',
-						'right'  => '12',
-						'unit'   => 'px',
-					],
+					'default'           => $default_padding,
 				],
 				[
 					'label'                 => esc_html__( 'Field Padding', 'neve' ),
 					'section'               => $this->section_id,
 					'priority'              => 15,
 					'units'                 => [ 'px', 'em' ],
-					'default'               => [
-						'top'    => '7',
-						'right'  => '12',
-						'bottom' => '7',
-						'left'   => '12',
-						'unit'   => 'px',
-					],
+					'default'               => $default_padding,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'      => [
+							'selector' => 'body',
+							'vars'     => '--formFieldPadding',
+							'suffix'   => 'px',
+						],
 						'responsive'  => false,
 						'directional' => true,
 						'template'    =>
@@ -138,14 +134,15 @@ class Form_Fields extends Base_Customizer {
 			)
 		);
 
-
+		// Spacing
+		$default_spacing = Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_SPACING );
 		$this->add_control(
 			new Control(
-				'neve_form_fields_spacing',
+				Config::MODS_FORM_FIELDS_SPACING,
 				[
 					'sanitize_callback' => 'absint',
 					'transport'         => $this->selective_refresh,
-					'default'           => 10,
+					'default'           => $default_spacing,
 				],
 				[
 					'label'                 => esc_html__( 'Field Spacing', 'neve' ),
@@ -154,12 +151,16 @@ class Form_Fields extends Base_Customizer {
 					'input_attrs'           => [
 						'min'        => 50,
 						'max'        => 100,
-						'defaultVal' => 10,
-						'units'      => [ 'px', 'em' ],
+						'defaultVal' => $default_spacing,
 					],
 					'priority'              => 16,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'   => [
+							'selector' => 'body',
+							'vars'     => '--formFieldSpacing',
+							'suffix'   => 'px',
+						],
 						'template' => '
 						 form:not([role="search"]):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code),
 						 form textarea,
@@ -173,9 +174,10 @@ class Form_Fields extends Base_Customizer {
 			)
 		);
 
+		// Background color
 		$this->add_control(
 			new Control(
-				'neve_form_fields_background_color',
+				Config::MODS_FORM_FIELDS_BACKGROUND_COLOR,
 				[
 					'sanitize_callback' => 'neve_sanitize_colors',
 					'default'           => 'var(--nv-site-bg)',
@@ -188,6 +190,10 @@ class Form_Fields extends Base_Customizer {
 					'default'               => 'var(--nv-site-bg)',
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'   => [
+							'selector' => 'body',
+							'vars'     => '--formFieldBgColor',
+						],
 						'template' => '
 							body form input:read-write,
 							body form textarea,
@@ -209,34 +215,29 @@ class Form_Fields extends Base_Customizer {
 			)
 		);
 
+		// Border width
+		$default_width = Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_BORDER_WIDTH );
 		$this->add_control(
 			new Control(
-				'neve_form_fields_border_width',
+				Config::MODS_FORM_FIELDS_BORDER_WIDTH,
 				[
 					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
 					'transport'         => $this->selective_refresh,
-					'default'           => [
-						'top'    => '1',
-						'right'  => '1',
-						'left'   => '1',
-						'bottom' => '1',
-						'unit'   => 'px',
-					],
+					'default'           => $default_width,
 				],
 				[
 					'label'                 => esc_html__( 'Border Width', 'neve' ),
 					'section'               => $this->section_id,
 					'priority'              => 18,
 					'units'                 => [ 'px', 'em' ],
-					'default'               => [
-						'top'    => '1',
-						'right'  => '1',
-						'left'   => '1',
-						'bottom' => '1',
-						'unit'   => 'px',
-					],
+					'default'               => $default_width,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'      => [
+							'selector' => 'body',
+							'vars'     => '--formFieldBorderWidth',
+							'suffix'   => 'px',
+						],
 						'responsive'  => false,
 						'directional' => true,
 						'template'    => '
@@ -262,13 +263,14 @@ class Form_Fields extends Base_Customizer {
 			)
 		);
 
+		// Border radius
 		$this->add_control(
 			new Control(
-				'neve_form_fields_border_radius',
+				Config::MODS_FORM_FIELDS_BORDER_RADIUS,
 				[
 					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
 					'transport'         => $this->selective_refresh,
-					'default'           => [
+					'default'           => neve_is_new_skin() ? false : [
 						'top'    => '',
 						'right'  => '',
 						'left'   => '',
@@ -290,6 +292,11 @@ class Form_Fields extends Base_Customizer {
 					],
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'      => [
+							'selector' => 'body',
+							'vars'     => '--formFieldBorderRadius',
+							'suffix'   => 'px',
+						],
 						'responsive'  => false,
 						'directional' => true,
 						'template'    => '
@@ -315,9 +322,10 @@ class Form_Fields extends Base_Customizer {
 			)
 		);
 
+		// Border color
 		$this->add_control(
 			new Control(
-				'neve_form_fields_border_color',
+				Config::MODS_FORM_FIELDS_BORDER_COLOR,
 				[
 					'sanitize_callback' => 'neve_sanitize_colors',
 					'default'           => '#dddddd',
@@ -330,6 +338,10 @@ class Form_Fields extends Base_Customizer {
 					'default'               => '#dddddd',
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'   => [
+							'selector' => 'body',
+							'vars'     => '--formFieldBorderColor',
+						],
 						'template' => '
 							body form input:read-write,
 							body form textarea,
@@ -374,9 +386,10 @@ class Form_Fields extends Base_Customizer {
 			)
 		);
 
+		// Field text color
 		$this->add_control(
 			new Control(
-				'neve_input_text_color',
+				Config::MODS_FORM_FIELDS_COLOR,
 				[
 					'sanitize_callback' => 'neve_sanitize_colors',
 					'default'           => 'var(--nv-text-color)',
@@ -389,6 +402,10 @@ class Form_Fields extends Base_Customizer {
 					'default'               => 'var(--nv-text-color)',
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'   => [
+							'selector' => 'body',
+							'vars'     => '--formFieldColor',
+						],
 						'template' => '
 							body form input:read-write,
 							body form textarea,
@@ -409,9 +426,10 @@ class Form_Fields extends Base_Customizer {
 			)
 		);
 
+		// Field typeface
 		$this->add_control(
 			new Control(
-				'neve_input_typeface',
+				Config::MODS_FORM_FIELDS_TYPEFACE,
 				[
 					'transport' => $this->selective_refresh,
 				],
@@ -459,6 +477,28 @@ class Form_Fields extends Base_Customizer {
 						.widget select,
 						.wc-block-product-search form input.wc-block-product-search__field
 					',
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'     => [
+								'--formFieldTextTransform' => 'textTransform',
+								'--formFieldFontWeight'    => 'fontWeight',
+								'--formFieldFontSize'      => [
+									'key'        => 'fontSize',
+									'responsive' => true,
+								],
+								'--formFieldLineHeight'    => [
+									'key'        => 'lineHeight',
+									'responsive' => true,
+								],
+								'--formFieldLetterSpacing' => [
+									'key'        => 'letterSpacing',
+									'suffix'     => 'px',
+									'responsive' => true,
+								],
+							],
+							'selector' => 'body',
+						],
+					],
 				],
 				'\Neve\Customizer\Controls\React\Typography'
 			)
@@ -488,9 +528,10 @@ class Form_Fields extends Base_Customizer {
 			)
 		);
 
+		// Label spacing
 		$this->add_control(
 			new Control(
-				'neve_label_spacing',
+				Config::MODS_FORM_FIELDS_LABELS_SPACING,
 				[
 					'sanitize_callback' => 'absint',
 					'transport'         => $this->selective_refresh,
@@ -508,6 +549,11 @@ class Form_Fields extends Base_Customizer {
 					'priority'              => 51,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
+						'cssVar'     => [
+							'selector' => 'body',
+							'suffix'   => 'px',
+							'vars'     => '--formLabelSpacing',
+						],
 						'responsive' => false,
 						'template'   => 'body form label, body .wpforms-container .wpforms-field-label, .woocommerce form .form-row label {margin-bottom: {{value}}px;}',
 					],
@@ -518,41 +564,63 @@ class Form_Fields extends Base_Customizer {
 
 		$this->add_control(
 			new Control(
-				'neve_label_typeface',
+				Config::MODS_FORM_FIELDS_LABELS_TYPEFACE,
 				[
 					'transport' => $this->selective_refresh,
 				],
 				[
 					'priority'              => 52,
 					'section'               => $this->section_id,
-					'input_attrs'           => array(
+					'input_attrs'           => [
 						'default_is_empty'       => true,
 						'size_units'             => [ 'px', 'em' ],
 						'weight_default'         => 'none',
-						'size_default'           => array(
-							'suffix'  => array(
+						'size_default'           => [
+							'suffix'  => [
 								'mobile'  => 'px',
 								'tablet'  => 'px',
 								'desktop' => 'px',
-							),
+							],
 							'mobile'  => '',
 							'tablet'  => '',
 							'desktop' => '',
-						),
-						'line_height_default'    => array(
+						],
+						'line_height_default'    => [
 							'mobile'  => '',
 							'tablet'  => '',
 							'desktop' => '',
-						),
-						'letter_spacing_default' => array(
+						],
+						'letter_spacing_default' => [
 							'mobile'  => '',
 							'tablet'  => '',
 							'desktop' => '',
-						),
-					),
+						],
+					],
 					'type'                  => 'neve_typeface_control',
 					'refresh_on_reset'      => true,
 					'live_refresh_selector' => 'form label, body .wpforms-container .wpforms-field-label, .woocommerce form .form-row label',
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'     => [
+								'--formLabelTextTransform' => 'textTransform',
+								'--formLabelFontWeight'    => 'fontWeight',
+								'--formLabelFontSize'      => [
+									'key'        => 'fontSize',
+									'responsive' => true,
+								],
+								'--formLabelLineHeight'    => [
+									'key'        => 'lineHeight',
+									'responsive' => true,
+								],
+								'--formLabelLetterSpacing' => [
+									'key'        => 'letterSpacing',
+									'suffix'     => 'px',
+									'responsive' => true,
+								],
+							],
+							'selector' => 'body',
+						],
+					],
 				],
 				'\Neve\Customizer\Controls\React\Typography'
 			)

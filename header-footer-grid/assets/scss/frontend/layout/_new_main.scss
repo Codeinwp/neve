@@ -103,7 +103,10 @@ $desktop: map-get($gl-devices-list, desktop);
 // Fixes for background, overlays and vertical alignments
 [class*=--row-inner] {
   position: relative;
+  align-items: center;
+  display: flex;
+
   .container, .row {
-	height: 100%;
+	height: auto;
   }
 }

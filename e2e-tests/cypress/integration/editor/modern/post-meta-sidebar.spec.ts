@@ -6,24 +6,32 @@ describe('Single post meta sidebar', function () {
 	};
 
 	before('Create new post named "' + postSetup.title + '".', function () {
-		cy.insertPost(postSetup.title, postSetup.content, 'post', true, true);
-
+		cy.createTagWithRequest('tag-test' + Math.random());
+		cy.getRandomAttachment().then(() => {
+			cy.insertPostWithRequest(
+				postSetup.title,
+				postSetup.content,
+				'posts',
+				parseInt(window.localStorage.getItem('randomAttachmentId')),
+			)
+				.then(() => {
+					postSetup.url = window.localStorage.getItem('postUrl');
+				})
+				.then(() => {
+					const tagId = parseInt(window.localStorage.getItem('tagId'));
+					cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'posts', {
+						tags: tagId,
+					});
+				});
+		});
 		cy.setCustomizeSettings({
 			neve_migrated_hfg_colors: true,
 			nav_menu_locations: [],
 			custom_css_post_id: -1,
+			neve_new_skin: 'new',
+			neve_ran_migrations: true,
 		});
 
-		cy.get('.post-publish-panel__postpublish-header a')
-			.contains(postSetup.title)
-			.should('have.attr', 'href')
-			.then((href) => {
-				postSetup.url = href.toString();
-			})
-			.then(() => {
-				window.localStorage.setItem('postId', Cypress.$('#post_ID').val().toString());
-				cy.getJWT();
-			});
 		cy.saveLocalStorage();
 	});
 
@@ -167,7 +175,7 @@ describe('Single post meta sidebar', function () {
 		cy.loginWithRequest(postSetup.url);
 		cy.reload();
 		cy.get('#wp-admin-bar-edit a').click();
-
+		cy.clearWelcome();
 		cy.get('.interface-complementary-area-header');
 
 		cy.get('.ti-sortable-item-label').each((el, index) => {

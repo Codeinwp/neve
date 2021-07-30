@@ -32,16 +32,27 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 		};
 	}, []);
 
-	const adaptPreviewHeight = () => {
+	const adaptPreviewHeight = (scroll = false) => {
 		const builderNode: HTMLElement | null =
 			portalMount?.querySelector('.neve-builder') || null;
 
 		if (builderNode === null || preview === null) {
 			return;
 		}
+
+		if (hidden) {
+			preview.style.maxHeight = '';
+			preview.style.marginTop = '';
+			return;
+		}
+
 		const height = builderNode.offsetHeight;
 		preview.style.maxHeight = `calc(100vh - ${height}px)`;
 		preview.style.marginTop = '0';
+
+		if (!scroll) {
+			return;
+		}
 
 		if (builder === 'footer') {
 			setTimeout(() => {
@@ -66,10 +77,10 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 		window.wp.customize.previewer.bind(
 			'selective-refresh-setting-validities',
 			() => {
-				adaptPreviewHeight();
+				adaptPreviewHeight(false);
 			}
 		);
-	}, []);
+	}, [hidden]);
 
 	const builderClasses = classnames('neve-builder', {
 		hide: hidden,

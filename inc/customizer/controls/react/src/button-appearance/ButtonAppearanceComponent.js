@@ -6,7 +6,6 @@ import { useState, useEffect } from '@wordpress/element';
 
 const ButtonAppearanceComponent = ({ control }) => {
 	const controlValue = control.setting.get();
-
 	const defaultsFromControl = {
 		borderRadius: {
 			top: 3,
@@ -43,8 +42,8 @@ const ButtonAppearanceComponent = ({ control }) => {
 
 	const defaultVals = control.params.defaultVals
 		? {
-				...control.params.defaultVals,
 				...defaultsFromControl,
+				...control.params.defaultVals,
 		  }
 		: defaultsFromControl;
 
