@@ -1,7 +1,6 @@
 /* global NeveProperties menuCalcEvent */
 /* jshint esversion: 6 */
 import {
-	isMobile,
 	isIe,
 	unhashUrl,
 	toggleClass,
@@ -119,12 +118,10 @@ function handleSearch() {
 			setTimeout(() => {
 				searchItem.querySelector('.search-field').focus();
 			}, 50);
-			if (!isMobile()) {
-				createNavOverlay(searchItem, strings[1]);
-			}
+			createNavOverlay(searchItem, strings[1]);
 		});
 	});
-	// Don't close thee search if interacted with.
+	// Don't close the search if interacted with.
 	neveEach(navSearch, (item) => {
 		item.addEventListener('click', (e) => {
 			e.stopPropagation();

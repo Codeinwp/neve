@@ -1570,6 +1570,8 @@
           right: 3px; }
         .hfg--cb-row .hfg--cb-items.hfg--sidebar-items .grid-stack-item .hfg--cb-item-setting {
           right: 26px; }
+        .hfg--cb-row .hfg--cb-items.hfg--sidebar-items .grid-stack-item .hfg--cb-item-admin-setting {
+          right: 26px; }
         .hfg--cb-row .hfg--cb-items.hfg--sidebar-items .grid-stack-item.ui-draggable-handle {
           width: 100% !important;
           min-width: 100%; }
@@ -1739,6 +1741,23 @@
       font-size: 15px; }
     .grid-stack-item .hfg--cb-item-setting:hover {
       color: #0073aa; }
+  .grid-stack-item .hfg--cb-item-admin-setting {
+    background: inherit;
+    top: 50%;
+    right: 22px;
+    padding: 5px 3px;
+    transform: translateY(-50%);
+    cursor: pointer; }
+    html[dir="rtl"] .grid-stack-item .hfg--cb-item-admin-setting {
+      right: auto;
+      left: 22px; }
+    .grid-stack-item .hfg--cb-item-admin-setting:before {
+      content: "\f108";
+      font-size: 15px; }
+    .grid-stack-item .hfg--cb-item-admin-setting:hover {
+      color: #0073aa; }
+  .grid-stack-item .hfg--cb-item-admin-setting + .hfg--cb-item-setting {
+    right: 42px; }
 
 .grid-stack.grid-stack-1 > .grid-stack-item {
   min-width: 100%; }
@@ -2979,26 +2998,6 @@
 ul[id^="sub-accordion-panel-hfg"] > li.accordion-section:not(.panel-meta) {
   display: none !important; }
 
-.hfg-instructions-section {
-  display: list-item !important; }
-  .hfg-instructions-section video {
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box; }
-  .hfg-instructions-section .quick-links {
-    font-size: 14px;
-    font-weight: 500; }
-    .hfg-instructions-section .quick-links a {
-      text-decoration: none; }
-  .hfg-instructions-section .quick-links-wrap {
-    margin: 10px 0;
-    display: block;
-    background: #fff;
-    border-radius: 3px;
-    padding: 10px 20px; }
-    .hfg-instructions-section .quick-links-wrap span {
-      margin-right: 10px; }
-
 .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar .hfg--cb-row .hfg--row-inner .hfg--cb-items.hfg--sidebar-items {
   height: calc(100% - 30px); }
 
@@ -3348,3 +3347,5 @@ body.hfg--widgets-open .wp-full-overlay:after {
 
 .hfg--widgets .grid-stack-item.order-30 {
   order: 30; }
+
+/*# sourceMappingURL=customizer.css.map */

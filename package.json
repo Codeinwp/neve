@@ -54,7 +54,7 @@
 			"gzip": false,
 			"running": false,
 			"webpack": false,
-			"limit": "39.5 KB",
+			"limit": "41 KB",
 			"path": "style-main.min.css"
 		}
 	],
@@ -121,11 +121,9 @@
 		"core-js": "^3.6.5",
 		"cross-env": "^7.0.2",
 		"css-loader": "^5.0.1",
-		"cypress-storybook": "^0.5.1",
 		"eslint": "^7.20.0",
 		"eslint-import-resolver-typescript": "^2.4.0",
 		"eslint-plugin-chai-friendly": "^0.6.0",
-		"eslint-plugin-cypress": "^2.11.2",
 		"git-commit-msg-linter": "^3.1.0",
 		"grunt": "^1.2.1",
 		"grunt-cli": "^1.3.2",
@@ -164,7 +162,7 @@
 	},
 	"scripts": {
 		"build": "npm-run-all build:*",
-		"build:makepot": "docker run --user root --rm --volume  \"$(pwd):/var/www/html/neve\" wordpress:cli bash -c 'php -d memory_limit=1024M \"$(which wp)\" i18n make-pot ./neve/ ./neve/languages/neve.pot --headers={\\\"Last-Translator\\\":\\\"friends@themeisle.com\\\"\\,\\\"Project-Id-Version\\\":\\\"Neve\\\"\\,\\\"Report-Msgid-Bugs-To\\\":\\\"https://github.com/Codeinwp/neve/issues\\\"\\} --allow-root --exclude=dist,build,bundle '",
+		"build:makepot": "docker run --user root --rm --volume  \"$(pwd):/var/www/html/neve\" wordpress:cli bash -c 'php -d memory_limit=1024M \"$(which wp)\" i18n make-pot ./neve/ ./neve/languages/neve.pot --headers={\\\"Last-Translator\\\":\\\"friends@themeisle.com\\\"\\,\\\"Project-Id-Version\\\":\\\"Neve\\\"\\,\\\"Report-Msgid-Bugs-To\\\":\\\"https://github.com/Codeinwp/neve/issues\\\"\\} --allow-root --exclude=dist,build,bundle,e2e-tests '",
 		"build:customizer": "wp-scripts build inc/customizer/controls/react/src/controls.js --output-path=inc/customizer/controls/react/bundle",
 		"build:dash": "wp-scripts build dashboard/src/dashboard.js --output-path=dashboard/build",
 		"build:metabox": "wp-scripts build inc/admin/metabox/src/index.js --output-path=inc/admin/metabox/build",

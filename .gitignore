@@ -19,3 +19,4 @@ dashboard/build/*
 inc/customizer/controls/react/bundle/*
 inc/admin/metabox/build
 languages/neve.pot
+/e2e-tests/cypress/screenshots/

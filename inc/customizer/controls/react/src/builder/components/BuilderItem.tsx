@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Icon } from '@wordpress/components';
-import { closeSmall, cog, dragHandle } from '@wordpress/icons';
+import { closeSmall, cog, dragHandle, settings } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 import { RowTypes, SlotTypes } from '../../@types/utils';
 import { useContext } from '@wordpress/element';
@@ -29,8 +29,15 @@ const BuilderItem: React.FC<Props> = (props) => {
 	const { name, section } = itemDetails;
 	const { removeItem } = actions;
 
+	const isBlockWidget = section && section.includes('neve_sidebar-widgets');
+
 	const isActive = currentSection === section;
 	const itemSection = window.wp.customize.section(section);
+
+	const focusItemWidget = () => {
+		const newSection = section.replace('neve_', '');
+		window.wp.customize.section(newSection).focus();
+	};
 
 	const focusItemSection = () => {
 		itemSection.focus();
@@ -54,10 +61,22 @@ const BuilderItem: React.FC<Props> = (props) => {
 					icon={cog}
 					iconSize={iconSize}
 					className="settings"
-					onClick={focusItemSection}
+					onClick={
+						!isBlockWidget ? focusItemSection : focusItemWidget
+					}
 					label={__('Item Settings', 'neve')}
 					showTooltip={false}
 				/>
+				{isBlockWidget && (
+					<Button
+						icon={settings}
+						iconSize={iconSize}
+						className="settings"
+						onClick={focusItemSection}
+						label={__('Widget Settings', 'neve')}
+						showTooltip={false}
+					/>
+				)}
 				<Button
 					iconSize={iconSize}
 					icon={closeSmall}

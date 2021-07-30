@@ -11,6 +11,7 @@ namespace Neve\Compatibility;
 use HFG\Core\Components\CartIcon;
 use HFG\Core\Magic_Tags;
 use Neve\Core\Settings\Config;
+use Neve\Customizer\Defaults\Layout;
 use Neve\Views\Layouts\Layout_Sidebar;
 
 /**
@@ -19,6 +20,8 @@ use Neve\Views\Layouts\Layout_Sidebar;
  * @package Neve\Compatibility
  */
 class Woocommerce {
+
+	use Layout;
 
 	/**
 	 * Primary button selectors.
@@ -208,7 +211,20 @@ class Woocommerce {
 				11
 			);
 			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ] );
+			// Change default for shop columns WooCommerce option.
+			add_filter( 'default_option_woocommerce_catalog_columns', [ $this, 'change_default_shop_cols' ] );
 		}
+	}
+
+	/**
+	 * Change default for catalog columns.
+	 *
+	 * @param int $default default value -> 4.
+	 *
+	 * @return int
+	 */
+	public function change_default_shop_cols( $default ) {
+		return 3;
 	}
 
 	/**
@@ -309,6 +325,8 @@ class Woocommerce {
 	private function edit_woocommerce_header() {
 		remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
 		remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10 );
+		add_action( 'neve_before_shop_loop_content', 'woocommerce_product_archive_description', 0 );
+		add_action( 'neve_before_shop_loop_content', 'woocommerce_taxonomy_archive_description', 0 );
 		remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
@@ -712,17 +730,16 @@ class Woocommerce {
 		if ( ! is_active_sidebar( 'shop-sidebar' ) ) {
 			return false;
 		}
-		if ( is_shop() ) {
-			$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( 'neve_shop_archive_sidebar_layout', 'right' ) );
-			if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
-				return false;
-			}
-		}
+
+		$mod = 'neve_shop_archive_sidebar_layout';
 		if ( is_product() ) {
-			$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( 'neve_single_product_sidebar_layout', 'right' ) );
-			if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
-				return false;
-			}
+			$mod = 'neve_single_product_sidebar_layout';
+		}
+
+		$default   = $this->sidebar_layout_alignment_default( $mod );
+		$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( $mod, $default ) );
+		if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
+			return false;
 		}
 
 		return true;

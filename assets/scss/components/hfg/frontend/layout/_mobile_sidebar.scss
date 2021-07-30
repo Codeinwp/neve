@@ -61,9 +61,8 @@
 }
 
 .menu_sidebar_dropdown {
-  .header--row {
-	position: relative;
-	z-index: $menu_sidebar_active_z_index;
+  .header-menu-sidebar-overlay {
+	display: none;
   }
 
   .header-menu-sidebar {

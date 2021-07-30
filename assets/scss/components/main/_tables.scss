@@ -6,6 +6,7 @@ table {
   border-width: 1px 0 0 1px;
   margin: 0 0 $spacing-md;
   width: 100%;
+  word-break: initial;
 }
 
 .wp-block-table {

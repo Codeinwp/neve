@@ -85,7 +85,7 @@ class Form_Fields extends Base_Customizer {
 		$default_padding = Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_PADDING );
 		$this->add_control(
 			new Control(
-				Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_PADDING ),
+				Config::MODS_FORM_FIELDS_PADDING,
 				[
 					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
 					'transport'         => $this->selective_refresh,
@@ -138,7 +138,7 @@ class Form_Fields extends Base_Customizer {
 		$default_spacing = Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_SPACING );
 		$this->add_control(
 			new Control(
-				Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_SPACING ),
+				Config::MODS_FORM_FIELDS_SPACING,
 				[
 					'sanitize_callback' => 'absint',
 					'transport'         => $this->selective_refresh,
@@ -177,7 +177,7 @@ class Form_Fields extends Base_Customizer {
 		// Background color
 		$this->add_control(
 			new Control(
-				Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BACKGROUND_COLOR ),
+				Config::MODS_FORM_FIELDS_BACKGROUND_COLOR,
 				[
 					'sanitize_callback' => 'neve_sanitize_colors',
 					'default'           => 'var(--nv-site-bg)',
@@ -219,7 +219,7 @@ class Form_Fields extends Base_Customizer {
 		$default_width = Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_BORDER_WIDTH );
 		$this->add_control(
 			new Control(
-				Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BORDER_WIDTH ),
+				Config::MODS_FORM_FIELDS_BORDER_WIDTH,
 				[
 					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
 					'transport'         => $this->selective_refresh,
@@ -266,7 +266,7 @@ class Form_Fields extends Base_Customizer {
 		// Border radius
 		$this->add_control(
 			new Control(
-				Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BORDER_RADIUS ),
+				Config::MODS_FORM_FIELDS_BORDER_RADIUS,
 				[
 					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
 					'transport'         => $this->selective_refresh,
@@ -325,7 +325,7 @@ class Form_Fields extends Base_Customizer {
 		// Border color
 		$this->add_control(
 			new Control(
-				Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_BORDER_COLOR ),
+				Config::MODS_FORM_FIELDS_BORDER_COLOR,
 				[
 					'sanitize_callback' => 'neve_sanitize_colors',
 					'default'           => '#dddddd',
@@ -389,7 +389,7 @@ class Form_Fields extends Base_Customizer {
 		// Field text color
 		$this->add_control(
 			new Control(
-				Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_COLOR ),
+				Config::MODS_FORM_FIELDS_COLOR,
 				[
 					'sanitize_callback' => 'neve_sanitize_colors',
 					'default'           => 'var(--nv-text-color)',
@@ -429,7 +429,7 @@ class Form_Fields extends Base_Customizer {
 		// Field typeface
 		$this->add_control(
 			new Control(
-				Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_TYPEFACE ),
+				Config::MODS_FORM_FIELDS_TYPEFACE,
 				[
 					'transport' => $this->selective_refresh,
 				],
@@ -531,7 +531,7 @@ class Form_Fields extends Base_Customizer {
 		// Label spacing
 		$this->add_control(
 			new Control(
-				Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_SPACING ),
+				Config::MODS_FORM_FIELDS_LABELS_SPACING,
 				[
 					'sanitize_callback' => 'absint',
 					'transport'         => $this->selective_refresh,
@@ -564,7 +564,7 @@ class Form_Fields extends Base_Customizer {
 
 		$this->add_control(
 			new Control(
-				Mods::get_alternative_mod( Config::MODS_FORM_FIELDS_LABELS_TYPEFACE ),
+				Config::MODS_FORM_FIELDS_LABELS_TYPEFACE,
 				[
 					'transport' => $this->selective_refresh,
 				],

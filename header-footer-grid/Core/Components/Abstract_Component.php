@@ -753,6 +753,7 @@ abstract class Abstract_Component implements Component {
 					'--fontWeight'    => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontWeight',
 						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontWeight' ),
+						'font'                         => 'mods_' . $this->get_id() . '_' . self::FONT_FAMILY_ID,
 					],
 					'--textTransform' => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.textTransform',
