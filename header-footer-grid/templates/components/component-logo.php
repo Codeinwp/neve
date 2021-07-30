@@ -19,12 +19,18 @@ $show_desc     = component_setting( Logo::SHOW_TAGLINE );
 $is_not_link   = component_setting( Logo::DISABLE_LINK, false );
 $display_order = component_setting( Logo::DISPLAY, 'default' );
 $main_logo     = get_theme_mod( 'custom_logo' );
+$custom_logo   = component_setting( Logo::CUSTOM_LOGO, $main_logo );
 
-$conditional_logo = json_decode( component_setting( Logo::COMPONENT_ID, Logo::sanitize_logo_json( $main_logo ) ), true );
-$main_logo        = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $main_logo;
+$active_logo      = $_id === 'logo' ? $main_logo : $custom_logo;
+$active_logo_id   = $_id === 'logo' ? Logo::LOGO : Logo::CUSTOM_LOGO;
+$conditional_logo = json_decode( component_setting( $active_logo_id, Logo::sanitize_logo_json( $active_logo ) ), true );
+$custom_logo_id   = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $active_logo;
 
-$custom_logo_id = $_id === 'logo' ? $main_logo : component_setting( Logo::CUSTOM_LOGO, $main_logo );
-$wrapper_tag    = 'p';
+// var_dump( $_id );
+// var_dump( $custom_logo_id );
+// var_dump( $conditional_logo );
+
+$wrapper_tag = 'p';
 if ( get_option( 'show_on_front' ) === 'posts' && is_home() ) {
 	$wrapper_tag = 'h1';
 }
@@ -54,7 +60,8 @@ if ( $is_not_link ) {
 do_action( 'hfg_before_wp_get_attachment_image', $custom_logo_id );
 
 $logo_settings = array(
-	'class' => 'neve-main-logo',
+	'class'        => 'neve-site-logo',
+	'data-variant' => $_id,
 );
 
 /**
@@ -64,10 +71,10 @@ $logo_settings = array(
  *
  * @since 2.11
  */
-$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', true );
-if ( $should_add_skip_lazy ) {
-	$logo_settings['class'] = isset( $logo_settings['class'] ) ? $logo_settings['class'] . ' skip-lazy' : 'skip-lazy';
-}
+// $should_add_skip_lazy = apply_filters( 'neve_skip_lazy', true );
+// if ( $should_add_skip_lazy ) {
+// $logo_settings['class'] = isset( $logo_settings['class'] ) ? $logo_settings['class'] . ' skip-lazy' : 'skip-lazy';
+// }
 
 $image = wp_get_attachment_image( $custom_logo_id, apply_filters( 'hfg_logo_image_size', 'full' ), false, $logo_settings );
 do_action( 'hfg_after_wp_get_attachment_image', $custom_logo_id, $image );

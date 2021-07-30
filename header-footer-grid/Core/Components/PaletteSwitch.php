@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Script_Register;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Core\Dynamic_Css;
@@ -93,6 +94,7 @@ class PaletteSwitch extends Abstract_Component {
 
 		add_filter( 'neve_after_css_root', [ $this, 'toggle_css' ], 10, 1 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'load_scripts' ] );
+		add_filter( 'hfg_component_scripts', [ $this, 'register_script' ] );
 
 		add_filter(
 			'language_attributes',
@@ -107,6 +109,19 @@ class PaletteSwitch extends Abstract_Component {
 	}
 
 	/**
+	 * Register Inline Scripts for component.
+	 *
+	 * @return string
+	 */
+	public function register_script() {
+		$script_register = Script_Register::get_instance();
+		if ( ( $this->is_component_active() || is_customize_preview() ) && $script_register->is_queued( self::COMPONENT_ID ) === false ) {
+			$script_register->register_script( self::COMPONENT_ID, $this->toggle_script() );
+		}
+		return $script_register->inline_scripts();
+	}
+
+	/**
 	 * Load Component Scripts
 	 *
 	 * @return void
@@ -114,7 +129,7 @@ class PaletteSwitch extends Abstract_Component {
 	public function load_scripts() {
 		if ( $this->is_component_active() || is_customize_preview() ) {
 			wp_add_inline_style( 'neve-style', $this->toggle_style() );
-			wp_add_inline_script( 'neve-script', $this->toggle_script() );
+			// wp_add_inline_script( 'neve-script', $this->toggle_script() );
 		}
 	}
 

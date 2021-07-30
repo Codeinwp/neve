@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Script_Register;
 use HFG\Core\Settings\Config;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
@@ -27,6 +28,7 @@ class Logo extends Abstract_Component {
 
 
 	const COMPONENT_ID = 'logo';
+	const LOGO         = 'logo';
 	const CUSTOM_LOGO  = 'custom_logo';
 	const USE_SAME     = 'same_logo';
 	const DISPLAY      = 'display';
@@ -82,7 +84,23 @@ class Logo extends Abstract_Component {
 		$this->set_property( 'preview_image', esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/component-site-logo.jpg' ) );
 		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() . ' .site-logo' );
 
-		add_action( 'wp_enqueue_scripts', [ $this, 'load_scripts' ] );
+		// add_action( 'wp_enqueue_scripts', [ $this, 'load_scripts' ] );
+		add_filter( 'hfg_component_scripts', [ $this, 'register_script' ] );
+
+		add_filter( 'hfg_logo_variants', [ $this, 'filter_logo_variants' ] );
+	}
+
+	/**
+	 * Register Inline Scripts for component.
+	 *
+	 * @return string
+	 */
+	public function register_script() {
+		$script_register = Script_Register::get_instance();
+		if ( ( $this->is_component_active() || is_customize_preview() ) && $script_register->is_queued( self::COMPONENT_ID ) === false ) {
+			$script_register->register_script( self::COMPONENT_ID, $this->toggle_script() );
+		}
+		return $script_register->inline_scripts();
 	}
 
 	/**
@@ -113,55 +131,74 @@ class Logo extends Abstract_Component {
 	}
 
 	/**
+	 * Generate the variants for the Logo
+	 *
+	 * @param array $variants Contains other variants from similar components.
+	 *
+	 * @return array
+	 */
+	public function filter_logo_variants( $variants ) {
+		$main_logo          = get_theme_mod( 'custom_logo' );
+		$conditional_main   = json_decode( Mods::get( self::COMPONENT_ID . '_' . self::LOGO, self::sanitize_logo_json( $main_logo ) ), true );
+		$logo_main_light_id = $main_logo;
+		$logo_main_dark_id  = $logo_main_light_id;
+		$logo_main_same     = true;
+		if ( ! empty( $conditional_main ) ) {
+			$logo_main_light_id = isset( $conditional_main['light'] ) ? $conditional_main['light'] : $main_logo;
+			$logo_main_dark_id  = isset( $conditional_main['dark'] ) ? $conditional_main['dark'] : $logo_main_light_id;
+			$logo_main_same     = isset( $conditional_main['same'] ) ? $conditional_main['same'] : $logo_main_same;
+		}
+
+		$variants[ $this->get_id() ] = array(
+			'light' => array(
+				'src'    => wp_get_attachment_image_url( $logo_main_light_id, apply_filters( 'hfg_logo_image_size', 'full' ), false ),
+				'srcset' => wp_get_attachment_image_srcset( $logo_main_light_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+				'sizes'  => wp_get_attachment_image_sizes( $logo_main_light_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+			),
+			'dark'  => array(
+				'src'    => wp_get_attachment_image_url( $logo_main_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ), false ),
+				'srcset' => wp_get_attachment_image_srcset( $logo_main_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+				'sizes'  => wp_get_attachment_image_sizes( $logo_main_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+			),
+			'same'  => $logo_main_same,
+		);
+		return $variants;
+	}
+
+	/**
 	 * Get JS contents from file to use as inline script.
 	 *
 	 * @return string
 	 */
 	public function toggle_script() {
-		$main_logo = get_theme_mod( 'custom_logo' );
+		$variants      = apply_filters( 'hfg_logo_variants', array() );
+		$variants_json = wp_json_encode( $variants );
 
-		$conditional_logo = json_decode( Mods::get( $this->get_id() . '_' . self::COMPONENT_ID, self::sanitize_logo_json( $main_logo ) ), true );
-		$main_logo        = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $main_logo;
-
-		if ( ! empty( $conditional_logo ) ) {
-			$logo_light_id = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $main_logo;
-			$logo_dark_id  = isset( $conditional_logo['dark'] ) ? $conditional_logo['dark'] : $logo_light_id;
-
-			$variants = array(
-				'light' => array(
-					'src'    => wp_get_attachment_image_url( $logo_light_id, apply_filters( 'hfg_logo_image_size', 'full' ), false ),
-					'srcset' => wp_get_attachment_image_srcset( $logo_light_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
-					'sizes'  => wp_get_attachment_image_sizes( $logo_light_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
-				),
-				'dark'  => array(
-					'src'    => wp_get_attachment_image_url( $logo_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ), false ),
-					'srcset' => wp_get_attachment_image_srcset( $logo_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
-					'sizes'  => wp_get_attachment_image_sizes( $logo_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
-				),
-			);
-		}
-
-		$script = "
+		$script = <<<JS
 	var html = document.documentElement;
 	var theme = html.getAttribute('data-neve-theme') || 'light';
+	var variants = {$variants_json};
 
 	function setCurrentTheme( theme ) {
-		var isConditional = " . ( $conditional_logo['same'] ? 'true' : 'false' ) . ";
-		var pictures = document.getElementsByClassName( 'neve-main-logo' );
+		var pictures = document.getElementsByClassName( 'neve-site-logo' );
 		for(var i = 0; i<pictures.length; i++) {
 			var picture = pictures.item(i);
 			if( ! picture ) {
 				continue;
 			};
-			if ( theme === 'light' || isConditional ) {
-				picture.src = '" . esc_attr( $variants['light']['src'] ) . "';
-				picture.srcset = '" . esc_attr( $variants['light']['srcset'] ) . "';
-				picture.sizes = '" . esc_attr( $variants['light']['sizes'] ) . "';
-				continue;
+			var compId = picture.getAttribute('data-variant');
+			if ( compId && variants[compId] ) {
+				var isConditional = variants[compId]['same'];
+				if ( theme === 'light' || isConditional ) {
+					picture.src = variants[compId]['light']['src'];
+					picture.srcset = variants[compId]['light']['srcset'] || '';
+					picture.sizes = variants[compId]['light']['sizes'];
+					continue;
+				};
+				picture.src = variants[compId]['dark']['src'];
+				picture.srcset = variants[compId]['dark']['srcset'] || '';
+				picture.sizes = variants[compId]['dark']['sizes'];
 			};
-			picture.src = '" . esc_attr( $variants['dark']['src'] ) . "';
-			picture.srcset = '" . esc_attr( $variants['dark']['srcset'] ) . "';
-			picture.sizes = '" . esc_attr( $variants['dark']['sizes'] ) . "';
 		};
 	};
 
@@ -177,8 +214,8 @@ class Logo extends Abstract_Component {
 	//setCurrentTheme(theme);
 	observer.observe(html, {
 		attributes: true
-	});";
-
+	});
+JS;
 		return $script;
 	}
 
@@ -217,7 +254,7 @@ class Logo extends Abstract_Component {
 				$this->get_class_const( 'COMPONENT_ID' ),
 				array(
 					SettingsManager::TAB_GENERAL => array(
-						// self::CUSTOM_LOGO => array(),
+						self::LOGO        => array(),
 						'blogname'        => array(),
 						'blogdescription' => array(),
 						'site_icon'       => array(),
@@ -234,7 +271,7 @@ class Logo extends Abstract_Component {
 		);
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::COMPONENT_ID,
+				'id'                => self::LOGO,
 				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'               => SettingsManager::TAB_GENERAL,
 				// 'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
