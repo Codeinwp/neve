@@ -16,7 +16,7 @@ describe('Header Mini Cart Functionality', function () {
 	it('Value of products is updated when adding or removing a product', function () {
 		let countBefore = 0;
 
-		// Add prodcut to cart
+		// Add product to cart
 		cy.visit('/product/album');
 		cy.get('.cart-count')
 			.invoke('text')
@@ -33,11 +33,33 @@ describe('Header Mini Cart Functionality', function () {
 		cy.get('.nv-icon > svg')
 			.realHover({ pointer: 'mouse', position: 'center' })
 			.then(() => {
-				cy.findByRole('link', {
+				cy.findAllByRole('link', {
 					name: /remove this item/i,
-				}).click();
+				}).click({ multiple: true });
 			});
 		cy.get('.cart-count').should('have.text', '0');
+	});
+
+	it('Enables Checkout page button on mini cart when at least one product is on cart', function () {
+		cy.visit('/product/sunglasses/');
+		cy.findByRole('button', {
+			name: /add to cart/i,
+		}).click();
+
+		cy.get('.nv-icon > svg')
+			.realHover({ pointer: 'mouse', position: 'center' })
+			.then(() => {
+				//Checks if the view cart exists
+				cy.findByRole('link', {
+					name: /view cart/i,
+				});
+
+				//Clicks on the Checkout button
+				cy.findByRole('link', {
+					name: /checkout/i,
+				}).click();
+			});
+		cy.url().should('contain', '/checkout');
 	});
 });
 
