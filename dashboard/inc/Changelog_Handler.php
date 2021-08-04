@@ -100,8 +100,11 @@ class Changelog_Handler {
 	 * @return string
 	 */
 	private function parse_md_and_clean( $string ) {
-		// Drop starting lines and asterisks.
-		$string = trim( str_replace( [ '*', '-' ], '', $string ) );
+		// Drop spaces, starting lines | asterisks.
+		$string = trim( $string );
+		$string = ltrim( $string, '*' );
+		$string = ltrim( $string, '-' );
+
 		// Replace markdown links with <a> tags.
 		$string = preg_replace_callback(
 			'/\[(.*?)]\((.*?)\)/',
