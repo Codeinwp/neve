@@ -49,7 +49,7 @@ if ( version_compare( PHP_VERSION, '7.0' ) < 0 ) {
 
 $_files_to_check = defined( 'NEVE_IGNORE_SOURCE_CHECK' ) ? [] : [
 	NEVE_MAIN_DIR . 'vendor/autoload.php',
-	NEVE_MAIN_DIR . 'style-main.css',
+	NEVE_MAIN_DIR . 'style-main-new.css',
 	NEVE_MAIN_DIR . 'assets/js/build/modern/frontend.js',
 	NEVE_MAIN_DIR . 'dashboard/build/dashboard.js',
 	NEVE_MAIN_DIR . 'inc/customizer/controls/react/bundle/controls.js',

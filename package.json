@@ -55,7 +55,7 @@
 			"running": false,
 			"webpack": false,
 			"limit": "41 KB",
-			"path": "style-main.min.css"
+			"path": "style-main-new.min.css"
 		}
 	],
 	"simple-git-hooks": {
