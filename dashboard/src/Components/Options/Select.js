@@ -14,6 +14,7 @@ const Select = ({
 	return (
 		<div className="module-option toggle">
 			<SelectControl
+				style={{ minWidth: '200px' }}
 				label={label}
 				value={getOption(slug) || 'css'}
 				onChange={(value) => {

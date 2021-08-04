@@ -50,6 +50,7 @@ const ModuleCard = ({
 									label: labelGroup,
 									type,
 									placeholder,
+									documentation: documentationOption,
 									choices,
 								} = optionGroup[optionSlug];
 								return (
@@ -65,6 +66,9 @@ const ModuleCard = ({
 											<Toggle
 												label={labelGroup}
 												slug={optionSlug}
+												documentation={
+													documentationOption
+												}
 											/>
 										)}
 										{'select' === type && (

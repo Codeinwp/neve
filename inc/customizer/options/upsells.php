@@ -103,7 +103,7 @@ class Upsells extends Base_Customizer {
 					),
 					'button_url'         => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_source=getpro&utm_campaign=neve' ) ),
 					'button_text'        => esc_html__( 'Get the PRO version!', 'neve' ),
-					'screen_reader'      => esc_html__( '(opens in new tab)', 'neve' ),
+					'screen_reader'      => esc_html__( '(opens in a new tab)', 'neve' ),
 				),
 				'Neve\Customizer\Controls\Upsell_Control'
 			)

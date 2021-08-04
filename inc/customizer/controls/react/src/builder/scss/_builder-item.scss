@@ -1,0 +1,97 @@
+@import "vars";
+
+.builder-item {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: $wp-grey-border;
+  min-width: 90px;
+  white-space: nowrap;
+  cursor: grab;
+  margin: 0 2px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  height: $rows-height - 7;
+  color: $item-text-color;
+  z-index: 1;
+
+  button {
+	padding: 0;
+	min-width: 30px;
+
+	.settings {
+	  padding: 5px;
+	}
+
+	.remove {
+	  padding: 5px;
+	}
+  }
+
+  &.active {
+	background-color: $wp-blue;
+	color: #fff;
+
+	svg {
+	  fill: #fff;
+	}
+  }
+
+  .handle {
+	width: 15px;
+	padding: 0 2px 0 5px;
+  }
+
+  svg {
+	fill: $item-icons-color;
+  }
+
+  .actions {
+	margin-left: auto;
+  }
+
+  &.sortable-ghost {
+	border: $droppable-border;
+	padding-right: 10px;
+  }
+}
+
+.droppable-wrap {
+  &.sidebar {
+	padding: 4px;
+	width: 100%;
+	box-sizing: border-box;
+
+	.builder-item {
+	  min-width: unset;
+	  max-width: 100%;
+	  width: 100%;
+	  margin: 0 0 4px;
+
+	  .name {
+		max-width: 90%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	  }
+
+	  &:last-child {
+		margin-bottom: 0;
+	  }
+	}
+  }
+  &.overflowed {
+	.builder-item {
+	  .name {
+		max-width: 35px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		transition: max-width .2s ease;
+	  }
+	  &:hover {
+		.name {
+		  max-width: 250px;
+		}
+	  }
+	}
+  }
+}

@@ -1,0 +1,13 @@
+ul[id^="sub-accordion-panel-hfg_"] {
+  .control-subsection {
+	display: none !important;
+  }
+
+  li[id*="accordion-section-hfg_"] {
+	display: block !important;
+  }
+
+  #accordion-section-neve_header_presets {
+	margin-top: 20px;
+  }
+}

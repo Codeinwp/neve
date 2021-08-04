@@ -74,7 +74,8 @@ class Metabox_Settings {
 		);
 		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'filter_post_elements' ) );
 		add_filter( 'neve_post_title_alignment', array( $this, 'filter_title_alignment' ) );
-		add_filter( 'neve_display_author_avatar', array( $this, 'filter_author_avatar_display' ) );
+		add_filter( 'neve_display_author_avatar', array( $this, 'filter_author_avatar_display' ), 15 );
+		add_filter( 'neve_meta_content_width', array( $this, 'get_content_width' ) );
 	}
 
 	/**
@@ -117,7 +118,7 @@ class Metabox_Settings {
 			! is_single() &&
 			! is_page() &&
 			! $this->is_blog_static() &&
-			( class_exists( 'WooCommerce', false ) && ! is_shop() )
+			$this->is_not_woo_shop()
 		) {
 			return false;
 		}
@@ -197,7 +198,9 @@ class Metabox_Settings {
 		$style = sprintf(
 			'
 			/* Main column width */
-			.wp-block {
+			.wp-block,
+			.block-editor-block-list__layout > .wp-block-separator,
+			.block-editor-block-list__layout > .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
 			    max-width: %s;
 			}
 
@@ -395,6 +398,18 @@ class Metabox_Settings {
 	}
 
 	/**
+	 * If WooCommerce does not exist or if ir exists and page is not shop
+	 * This also touches the following issues:
+	 * Codeinwp/neve-pro-addon/issues/999
+	 * Codeinwp/neve/issues/2790
+	 *
+	 * @return bool
+	 */
+	private function is_not_woo_shop() {
+		return ( ! class_exists( 'WooCommerce', false ) || ( class_exists( 'WooCommerce', false ) && ! is_shop() ) );
+	}
+
+	/**
 	 * Change sidebar position based on meta.
 	 *
 	 * @param string $position sidebar position coming from filter.
@@ -403,10 +418,11 @@ class Metabox_Settings {
 	 */
 	public function filter_sidebar_position( $position ) {
 		if (
-			! is_single()
-			&& ! is_page()
-			&& ( class_exists( 'WooCommerce', false ) && ! is_shop() )
-			&& ! $this->is_blog_static() ) {
+			! is_single() &&
+			! is_page() &&
+			! $this->is_blog_static() &&
+			$this->is_not_woo_shop()
+		) {
 			return $position;
 		}
 
@@ -414,6 +430,16 @@ class Metabox_Settings {
 
 		if ( $post_id === false ) {
 			return $position;
+		}
+
+		$has_content_width = get_post_meta( $post_id, self::ENABLE_CONTENT_WIDTH, true );
+
+		if ( $has_content_width === 'on' ) {
+			$content_width = get_post_meta( $post_id, self::CONTENT_WIDTH, true );
+
+			if ( $content_width >= 95 ) {
+				return 'full-width';
+			}
 		}
 
 		$meta_value = get_post_meta( $post_id, self::SIDEBAR, true );
@@ -437,8 +463,8 @@ class Metabox_Settings {
 		if (
 			! is_single() &&
 			! is_page() &&
-			! $this->is_blog_static()
-			&& ( class_exists( 'WooCommerce', false ) && ! is_shop() )
+			! $this->is_blog_static() &&
+			$this->is_not_woo_shop()
 		) {
 			return $class;
 		}

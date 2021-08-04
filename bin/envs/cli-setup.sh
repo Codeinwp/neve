@@ -3,22 +3,27 @@ set -e
 NEVE_LOCATION=$1
 WP_VERSION=$2
 WP_ENV=$3
-WP_CACHED_ENV="/var/www/html/wp-content/${WP_ENV}.sql"
+WP_CACHED_ENV="${WP_SITE_PATH}wp-content/${WP_ENV}.sql"
 SKIP_CACHE=$4
+export NEVE_REPO_PATH=${NEVE_REPO_PATH:=/tmp/repo/neve}
+SITE_URL="${CYPRESS_BASE_URL:=http://localhost:8080}"
+
 
 init_environment(){
 	#Setup core
 	wp --allow-root core update --version=$WP_VERSION
 	wp --allow-root core update-db
-	rm -rf  /var/www/html/wp-content/themes/*
-	chmod 0777 -R /var/www/html/wp-content/
+
+	if [ $NEVE_LOCATION != "neve" ]; then
+		rm -rf  /var/www/html/wp-content/themes/*
+		chmod 0777 -R /var/www/html/wp-content/
+	fi
 	echo "Installing Neve theme from $NEVE_LOCATION"
 	wp --allow-root theme install --activate $NEVE_LOCATION
 	wp --allow-root option update fresh_site 0
   echo "Installing Theme API Plugin"
   wp --allow-root plugin install https://github.com/Codeinwp/wp-thememods-api/archive/main.zip --force --activate
-  echo "Installing JWT Auth Plugin"
-  wp --allow-root plugin install api-bearer-auth --force --activate
+  wp --allow-root plugin install https://gist.github.com/selul/2f5f76d423f9d44f7b5a927e17001c28/archive/ffe3a56894c9aed005e69268ad50dfb16b8177fb.zip --force --activate
 }
 
 
@@ -32,14 +37,19 @@ if [ -f $WP_CACHED_ENV ] && [ $SKIP_CACHE == "no" ]; then
     exit 0;
 fi
 
-wp  --allow-root core install --url=http://localhost:8080 --title=SandboxSite --admin_user=admin --admin_password=admin --admin_email=admin@admin.com
-mkdir -p /var/www/html/wp-content/uploads
-rm -rf /var/www/html/wp-content/plugins/akismet
+if ! wp core is-installed --allow-root; then
+	wp  --allow-root core install --url="$SITE_URL" --title=SandboxSite --admin_user=admin --admin_password=admin --admin_email=admin@admin.com
+	mkdir -p /var/www/html/wp-content/uploads
+	rm -rf /var/www/html/wp-content/plugins/akismet
+fi
+
+
+WP_SITE_PATH=$(wp eval 'echo ABSPATH;' --allow-root);
+
 
 init_environment
 
-
-bash /var/www/html/bin/envs/$WP_ENV/start.sh
+bash ${NEVE_REPO_PATH}/bin/envs/$WP_ENV/start.sh
 
 wp --allow-root cache flush
 

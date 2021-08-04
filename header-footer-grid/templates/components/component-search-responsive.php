@@ -32,14 +32,14 @@ if ( neve_is_amp() ) {
 }
 ?>
 <div class="nv-search-icon-component" <?php echo wp_kses_post( $component_styles ); ?>>
-	<div [class]="visible ? 'menu-item-nav-search active <?php echo esc_attr( $open ); ?>' : 'menu-item-nav-search <?php echo esc_attr( $open ); ?>'" class="menu-item-nav-search <?php echo esc_attr( $open ); ?>" id="nv-search-icon-responsive" tabindex="0">
+	<div [class]="visible ? 'menu-item-nav-search active <?php echo esc_attr( $open ); ?>' : 'menu-item-nav-search <?php echo esc_attr( $open ); ?>'" class="menu-item-nav-search <?php echo esc_attr( $open ); ?>" tabindex="0">
 		<?php neve_search_icon( true, true, 15, ! empty( $amp_state ) ); ?>
 		<div class="nv-nav-search" aria-label="search">
-			<div class="form-wrap <?php echo $open === 'canvas' ? 'container' : ''; ?>">
+			<div class="form-wrap <?php echo $open === 'canvas' ? 'container responsive-search' : ''; ?>">
 				<?php get_search_form(); ?>
 			</div>
 			<?php if ( $open !== 'minimal' ) { ?>
-				<div class="close-container <?php echo $open === 'canvas' ? 'container' : ''; ?>">
+				<div class="close-container <?php echo $open === 'canvas' ? 'container responsive-search' : ''; ?>">
 					<button tabindex="0" class="close-responsive-search"
 							<?php
 							echo $amp_state; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

@@ -1,0 +1,30 @@
+.control-section-hfg_instructions {
+  display: list-item !important;
+
+  .quick-links-inner {
+	padding: 0 15px;
+  }
+}
+
+.quick-links-inner {
+  .quick-links {
+	font-size: 14px;
+	font-weight: 500;
+
+	button {
+	  text-decoration: none;
+	}
+  }
+
+  .quick-links-wrap {
+	margin: 10px 0;
+	display: block;
+	background: #fff;
+	border-radius: 3px;
+	padding: 10px 20px;
+
+	span {
+	  margin-right: 10px;
+	}
+  }
+}

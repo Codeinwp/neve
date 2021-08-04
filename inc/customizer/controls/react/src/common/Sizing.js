@@ -84,8 +84,8 @@ const SizingControl = ({
 				key="tooltip-link"
 				text={
 					linked
-						? __('Unlink Values', 'neve')
-						: __('Link Values', 'neve')
+						? __('Unlink values', 'neve')
+						: __('Link values', 'neve')
 				}
 			>
 				<Button

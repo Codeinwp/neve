@@ -1,15 +1,22 @@
 import './style.css'
-import 'cypress-storybook/react';
+try {
+	require ('../e2e-tests/node_modules/cypress-storybook/react');
+} catch (ex) {
+	console.log(ex);
+}
 import '@wordpress/components/build-style/style.css'
 import '@icon/dashicons/dashicons.css'
 import {FONTS} from '../stories/utils/values'
+import {BuildersData} from "./dummy-data";
 
-export const parameters = {
-	actions: {argTypesRegex: "^on[A-Z].*"},
-}
+window.NeveReactCustomize = {}
+window.NeveReactCustomize.HFG = BuildersData
 
-window.wp = {
+const wpObject = {
 	customize: {
+		bind: (event, callback) => {
+			callback();
+		},
 		previewedDevice: (device) => {
 			const wrap = document.querySelector('.mock-customize');
 
@@ -19,13 +26,61 @@ window.wp = {
 			wrap.classList.remove('preview-desktop', 'preview-mobile', 'preview-tablet')
 			wrap.classList.add(`preview-${device}`);
 		},
-		previewer : {
-			refresh : () => {
-				console.log('REFRESH');
+		section: (slug) => ({
+			focus: () => console.log(`Focusing Section ${slug}.`),
+			expanded: (value) => console.log(`Set Expanded for ${slug} to ${value}.`),
+			params: {
+				title: `Title: ${slug}`,
+			}
+		}),
+		state: (slug) => ({
+			get: () => {
+				return 'title_tagline'
+			},
+			bind: () => {
+			}
+		}),
+		previewer: {
+			bind: (e) => {
+				console.log('Event Bound:', e);
+			},
+			send: (e) => {
+				console.log(e)
+			},
+			refresh: () => {
+				console.log('REFRESH PREVIEW');
+			}
+		},
+		control: (slug, callback) => {
+			if (callback) {
+				callback(window.wp.customize.control(slug))
+			}
+
+			if (slug.indexOf('_columns_layout') > -1) {
+				return {
+					setting: {
+						value: 'left-third',
+						get: () => window.wp.customize.control(slug).setting.value,
+						set: (value) => {},
+						bind: (value) => window.wp.customize.control(slug).setting.value
+					}
+				}
+			}
+			if (slug.indexOf('_columns_number') > -1) {
+				return {
+					setting: {
+						value: 2,
+						get: () => window.wp.customize.control(slug).setting.value,
+						set: (value) => {},
+						bind: (value) => window.wp.customize.control(slug).setting.value
+					}
+				}
 			}
 		}
 	}
-}
+};
+
+window.wp = wpObject;
 
 const head = document.querySelector('#nv-google-fonts');
 const families = FONTS.Google.join('|');

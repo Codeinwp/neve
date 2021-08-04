@@ -1,34 +1,43 @@
-/* global CustomEvent */
 import { Button, Tooltip, ButtonGroup } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import PropTypes from 'prop-types';
 
-const ResponsiveControl = ({
-	onChange,
-	excluded,
-	controlLabel,
-	hideResponsive,
-	children,
-}) => {
-	const changeViewType = (device) => {
-		wp.customize.previewedDevice(device);
-	};
+const ResponsiveControl = (props) => {
+	const {
+		onChange,
+		excluded,
+		controlLabel,
+		hideResponsive,
+		children,
+	} = props;
 
 	useEffect(() => {
-		// eslint-disable-next-line @wordpress/no-global-event-listener
-		document.addEventListener('neveChangedRepsonsivePreview', (e) => {
-			onChange(e.detail);
+		window.wp.customize.bind('ready', () => {
+			window.wp.customize.previewedDevice.bind((newDevice) => {
+				onChange(checkExcludedTablet(newDevice));
+			});
 		});
 	}, []);
 
+	const checkExcludedTablet = (device) => {
+		if (!excluded) {
+			return device;
+		}
+
+		if (!excluded.includes(device)) {
+			return device;
+		}
+
+		if (device === 'tablet') {
+			return 'mobile';
+		}
+	};
+
 	const dispatchViewChange = (device) => {
-		changeViewType(device);
-		const event = new CustomEvent('neveChangedRepsonsivePreview', {
-			detail: device,
-		});
-		document.dispatchEvent(event);
+		onChange(checkExcludedTablet(device));
+		wp.customize.previewedDevice(device);
 	};
 
 	const devices = {

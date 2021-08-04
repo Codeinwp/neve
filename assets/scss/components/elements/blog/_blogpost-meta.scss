@@ -1,0 +1,37 @@
+@import "../../main/variables";
+
+.nv-meta-list {
+  margin-bottom: $spacing-md;
+  font-size: $text-sm;
+
+  li, span {
+	display: inline;
+
+	&:not(:last-child):after {
+	  content: '/';
+	  padding: 0 $spacing-xxs;
+	}
+  }
+
+  .posted-on:not(.nv-show-updated) .updated {
+	display: none;
+  }
+
+  .photo {
+	width: var(--avatarSize);
+	height: var(--avatarSize);
+	border-radius: 50%;
+	transform: translateY(30%);
+	margin-right: 3px;
+  }
+
+}
+
+.nv-dynamic-author-meta {
+  .photo {
+	width: $spacing-sm;
+	height: $spacing-sm;
+	border-radius: 50%;
+	transform: translateY(30%);
+  }
+}

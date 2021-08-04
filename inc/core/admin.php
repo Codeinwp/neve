@@ -10,6 +10,8 @@
 
 namespace Neve\Core;
 
+use Neve\Core\Settings\Mods_Migrator;
+
 /**
  * Class Admin
  *
@@ -70,6 +72,159 @@ class Admin {
 		add_filter( 'all_plugins', array( $this, 'change_plugin_names' ) );
 
 		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
+
+		$this->run_skin_and_builder_switches();
+
+		add_filter( 'ti_tpc_theme_mods_pre_import', [ $this, 'migrate_theme_mods_for_new_skin' ] );
+
+		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
+		add_filter( 'neve_pro_react_controls_localization', [ $this, 'adapt_conditional_headers' ] );
+		if ( class_exists( '\Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers' ) ) {
+			\Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers::$theme_mods_keys[] = 'hfg_header_layout_v2';
+		}
+	}
+
+	/**
+	 * Switch to the new 3.0 features.
+	 *
+	 * @return void
+	 *
+	 * @since 3.0.0
+	 */
+	public function run_skin_and_builder_switches() {
+		$flag = 'neve_ran_migrations';
+
+		if ( get_theme_mod( $flag ) === true ) {
+			return;
+		}
+
+		set_theme_mod( $flag, true );
+
+		if ( neve_had_old_hfb() ) {
+			set_theme_mod( 'neve_migrated_builders', false );
+		}
+
+		$all_mods = get_theme_mods();
+
+		$mods = [
+			'hfg_header_layout',
+			'hfg_footer_layout',
+			'neve_blog_archive_layout',
+			'neve_headings_font_family',
+			'neve_body_font_family',
+			'neve_global_colors',
+			'neve_button_appearance',
+			'neve_secondary_button_appearance',
+			'neve_typeface_general',
+			'neve_form_fields_padding',
+			'neve_default_sidebar_layout',
+			'neve_advanced_layout_options',
+		];
+
+		$should_switch = false;
+		foreach ( $mods as $mod_to_check ) {
+			if ( isset( $all_mods[ $mod_to_check ] ) ) {
+				$should_switch = true;
+				break;
+			}
+		}
+
+		if ( ! $should_switch ) {
+			return;
+		}
+
+		set_theme_mod( 'neve_new_skin', 'old' );
+		set_theme_mod( 'neve_had_old_skin', true );
+	}
+
+	/**
+	 * Filter out old HFG values if the new builder is active.
+	 *
+	 * @param array $theme_mods the theme mods array.
+	 *
+	 * @return array
+	 * @since 3.0.0
+	 */
+	public function migrate_theme_mods_for_new_skin( $theme_mods ) {
+		if ( ! neve_is_new_skin() ) {
+			return $theme_mods;
+		}
+		$migrator = new Mods_Migrator( $theme_mods );
+		return $migrator->get_migrated_mods();
+	}
+
+	/**
+	 * Filter localization data to adapt to the new builder.
+	 *
+	 * @param array $array localization array.
+	 *
+	 * @return array
+	 */
+	public function adapt_conditional_headers( $array ) {
+		if ( ! neve_is_new_builder() ) {
+			return $array;
+		}
+
+		if ( isset( $array['headerControls'] ) ) {
+			$array['headerControls'][] = 'hfg_header_layout_v2';
+		}
+
+		$array['currentValues'] = [ 'hfg_header_layout_v2' => json_decode( get_theme_mod( 'hfg_header_layout_v2', wp_json_encode( neve_hfg_header_settings() ) ), true ) ];
+
+		return $array;
+	}
+
+	/**
+	 * Register Rest Routes.
+	 */
+	public function register_rest_routes() {
+		register_rest_route(
+			'nv/migration',
+			'/new_header_builder',
+			array(
+				'methods'             => \WP_REST_Server::READABLE,
+				'callback'            => [ $this, 'migrate_builders_data' ],
+				'permission_callback' => function () {
+					return current_user_can( 'manage_options' );
+				},
+			)
+		);
+	}
+
+	/**
+	 * Migration routine request.
+	 *
+	 * @param \WP_REST_Request $request the received request.
+	 *
+	 * @return \WP_REST_Response
+	 *
+	 * @since 3.0.0
+	 */
+	public function migrate_builders_data( \WP_REST_Request $request ) {
+		$is_rollback = $request->get_header( 'rollback' );
+		$is_dismiss  = $request->get_header( 'dismiss' );
+
+		if ( $is_dismiss === 'yes' ) {
+			remove_theme_mod( 'hfg_header_layout' );
+			remove_theme_mod( 'hfg_footer_layout' );
+
+			return new \WP_REST_Response( [ 'success' => true ], 200 );
+		}
+
+		if ( $is_rollback === 'yes' ) {
+			set_theme_mod( 'neve_migrated_builders', false );
+
+			return new \WP_REST_Response( [ 'success' => true ], 200 );
+		}
+
+		$migrator = new Builder_Migrator();
+		$response = $migrator->run();
+
+		if ( $response === true ) {
+			set_theme_mod( 'neve_migrated_builders', true );
+		}
+
+		return new \WP_REST_Response( [ 'success' => $response ], 200 );
 	}
 
 	/**
@@ -159,6 +314,7 @@ class Admin {
 		if ( ! empty( $activated_time ) ) {
 			if ( time() - intval( $activated_time ) > WEEK_IN_SECONDS ) {
 				update_option( $this->dismiss_notice_key, 'yes' );
+
 				return;
 			}
 		}
@@ -380,7 +536,8 @@ class Admin {
 	 */
 	public function enqueue_gutenberg_scripts() {
 		$screen = get_current_screen();
-		if ( ! post_type_supports( $screen->post_type, 'editor' ) ) {
+		// if is_block_editor is `true` we should allow the Gutenberg styles to load eg. the new widgets page.
+		if ( ! post_type_supports( $screen->post_type, 'editor' ) && $screen->is_block_editor !== true ) {
 			return;
 		}
 		wp_enqueue_script(
@@ -390,7 +547,10 @@ class Admin {
 			NEVE_VERSION,
 			true
 		);
-		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
+
+		$path = neve_is_new_skin() ? 'gutenberg-editor-style' : 'gutenberg-editor-legacy-style';
+
+		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/' . $path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 	}
 
 	/**
@@ -462,6 +622,7 @@ class Admin {
 		if ( array_key_exists( 'otter-blocks/otter-blocks.php', $plugins ) ) {
 			$plugins['otter-blocks/otter-blocks.php']['Name'] = 'Gutenberg Blocks and Template Library by Neve theme';
 		}
+
 		return $plugins;
 	}
 

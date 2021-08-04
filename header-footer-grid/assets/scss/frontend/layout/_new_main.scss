@@ -1,0 +1,112 @@
+.site-header {
+  position: relative;
+
+  .header--row-inner {
+	align-items: center;
+	display: flex;
+  }
+}
+
+.builder-item {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  &.hfg-end {
+	margin-left: auto;
+  }
+
+  &.hfg-start {
+	margin-right: auto;
+  }
+}
+
+$desktop: map-get($gl-devices-list, desktop);
+@media #{$desktop}{
+  .builder-item {
+	margin-top: 8px;
+	margin-bottom: 8px;
+  }
+}
+
+//<editor-fold desc="Row Layout">
+.hfg-slot {
+  display: flex;
+  align-items: center;
+
+  &.right {
+	justify-content: flex-end;
+  }
+
+  &.center {
+	justify-content: center;
+  }
+}
+
+
+.layout-fullwidth {
+  .container {
+	max-width: 100% !important;
+  }
+}
+
+.layout-contained {
+  max-width: $container_width;
+  margin: 0 auto;
+}
+
+// Page Header and Header specific alignments.
+[data-row-id] {
+  .row {
+	display: grid;
+	grid-template-columns: auto auto;
+  }
+}
+
+.has-center .row--wrapper {
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.footer--row {
+  .hfg-slot {
+	display: flex;
+	flex-direction: column;
+  }
+
+  .row {
+	display: grid;
+  }
+
+  .builder-item {
+	width: 100%;
+  }
+}
+
+//</editor-fold>
+
+//<editor-fold desc="Row Styles">
+.hfg_header.site-header {
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+}
+
+//</editor-fold>
+
+@media (max-width: 960px) {
+  footer .footer--row-inner .row {
+	grid-template-columns: 1fr;
+  }
+}
+
+// Fixes for background, overlays and vertical alignments
+[class*=--row-inner] {
+  position: relative;
+  align-items: center;
+  display: flex;
+
+  .container, .row {
+	height: auto;
+  }
+}

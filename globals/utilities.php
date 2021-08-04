@@ -175,7 +175,7 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 	if ( $amp_ready ) {
 		$amp_state = 'on="tap:AMP.setState({visible: !visible})" role="button" tabindex="0" ';
 	}
-	$start_tag = $is_link ? 'a href="#"' : 'div';
+	$start_tag = $is_link ? 'a aria-label="' . __( 'Search', 'neve' ) . '" href="#"' : 'div';
 	$end_tag   = $is_link ? 'a' : 'div';
 	$svg       = '<' . $start_tag . ' class="nv-icon nv-search" ' . $amp_state . '>
 				<svg width="' . $size . '" height="' . $size . '" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg>
@@ -1329,18 +1329,91 @@ function neve_get_headings_selectors() {
 }
 
 /**
+ * Return ready to use external anchor tag.
+ *
+ * This should be used only in admin context, i.e options page, customizer
+ * and it will automatically be switched off if the whitelabel is on.
+ *
+ * @param string $link Link url.
+ * @param string $text Link text.
+ * @param bool   $echo Echo the result.
+ *
+ * @return string Full anchor tag.
+ */
+function neve_external_link( $link, $text = '', $echo = false ) {
+	$text          = empty( $text ) ? __( 'Learn More', 'neve' ) : $text;
+	$return        = sprintf(
+		'<a target="_blank" rel="external noopener noreferrer" href="' . esc_url( $link ) . '"><span class="screen-reader-text">%s</span><svg xmlns="http://www.w3.org/2000/svg" focusable="false" role="img" viewBox="0 0 512 512" width="12" height="12" style="margin-right: 5px;"><path fill="currentColor" d="M432 320H400a16 16 0 0 0-16 16V448H64V128H208a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16H48A48 48 0 0 0 0 112V464a48 48 0 0 0 48 48H400a48 48 0 0 0 48-48V336A16 16 0 0 0 432 320ZM488 0h-128c-21.4 0-32 25.9-17 41l35.7 35.7L135 320.4a24 24 0 0 0 0 34L157.7 377a24 24 0 0 0 34 0L435.3 133.3 471 169c15 15 41 4.5 41-17V24A24 24 0 0 0 488 0Z"/></svg>%s</a>',
+		esc_html__( '(opens in a new tab)', 'neve' ),
+		esc_html( $text )
+	);
+	$is_whitelabel = apply_filters( 'neve_is_theme_whitelabeled', false ) || apply_filters( 'neve_is_plugin_whitelabeled', false );
+	if ( $is_whitelabel ) {
+		return '';
+	}
+	if ( ! $echo ) {
+		return $return;
+	}
+	echo $return; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, Already escaped.
+	return '';
+}
+
+add_filter( 'neve_external_link', 'neve_external_link', 10, 3 );
+/**
  * Get Global Colors Default
  *
  * @param bool $migrated get with migrated colors.
+ *
  * @return array
  */
 function neve_get_global_colors_default( $migrated = false ) {
+	if ( neve_is_new_skin() ) {
+		return [
+			'activePalette' => 'base',
+			'palettes'      => [
+				'base'     => [
+					'name'          => __( 'Base', 'neve' ),
+					'allowDeletion' => false,
+					'colors'        => [
+						'nv-primary-accent'   => '#2f5aae',
+						'nv-secondary-accent' => '#2f5aae',
+						'nv-site-bg'          => '#ffffff',
+						'nv-light-bg'         => '#f4f5f7',
+						'nv-dark-bg'          => '#121212',
+						'nv-text-color'       => '#272626',
+						'nv-text-dark-bg'     => '#ffffff',
+						'nv-c-1'              => '#9463ae',
+						'nv-c-2'              => '#be574b',
+					],
+				],
+				'darkMode' => [
+					'name'          => __( 'Dark Mode', 'neve' ),
+					'allowDeletion' => false,
+					'colors'        => [
+						'nv-primary-accent'   => '#00c2ff',
+						'nv-secondary-accent' => '#00c2ff',
+						'nv-site-bg'          => '#121212',
+						'nv-light-bg'         => '#1a1a1a',
+						'nv-dark-bg'          => '#000000',
+						'nv-text-color'       => '#ffffff',
+						'nv-text-dark-bg'     => '#ffffff',
+						'nv-c-1'              => '#198754',
+						'nv-c-2'              => '#be574b',
+					],
+				],
+			],
+		];
+	}
 
 	$old_link_color       = get_theme_mod( 'neve_link_color', '#0366d6' );
 	$old_link_hover_color = get_theme_mod( 'neve_link_hover_color', '#0e509a' );
 	$old_text_color       = get_theme_mod( 'neve_text_color', '#393939' );
-	$old_bg_color         = '#' . get_theme_mod( 'background_color', 'ffffff' );
 
+	// We use a static var to avoid calling get_theme_mod multiple times due to the filter used to alter the value.
+	static $old_bg_color;
+	if ( ! isset( $old_bg_color ) ) {
+		$old_bg_color = '#' . get_theme_mod( 'background_color', 'ffffff' );
+	}
 	add_filter( 'theme_mod_background_color', '__return_empty_string' );
 
 	return [
@@ -1378,4 +1451,63 @@ function neve_get_global_colors_default( $migrated = false ) {
 			],
 		],
 	];
+}
+
+/**
+ * Checks that we are using the new builder.
+ *
+ * @return bool
+ * @since 3.0.0
+ */
+function neve_is_new_builder() {
+	return get_theme_mod( 'neve_migrated_builders', true );
+}
+
+/**
+ * Checks that we are using the new skin.
+ *
+ * @return bool
+ * @since 3.0.0
+ */
+function neve_is_new_skin() {
+	return get_theme_mod( 'neve_new_skin', 'new' ) !== 'old';
+}
+
+/**
+ * Check that we can use conditional headers in PRO.
+ *
+ * @return bool
+ * @since 3.0.0
+ */
+function neve_can_use_conditional_header() {
+	return defined( 'NEVE_PRO_COMPATIBILITY_FEATURES' ) && isset( NEVE_PRO_COMPATIBILITY_FEATURES['headerv2'] ) && neve_is_new_builder();
+}
+
+/**
+ * Check that we had old builder.
+ *
+ * @return bool
+ * @since 3.0.0
+ */
+function neve_had_old_hfb() {
+	return ( get_theme_mod( 'hfg_header_layout' ) !== false || get_theme_mod( 'hfg_footer_layout' ) ) !== false;
+}
+
+/**
+ * Check if we have pro support.
+ *
+ * @param string $feature feature to check support for.
+ */
+function neve_pro_has_support( $feature ) {
+	return ( defined( 'NEVE_PRO_COMPATIBILITY_FEATURES' ) && isset( NEVE_PRO_COMPATIBILITY_FEATURES[ $feature ] ) );
+}
+
+/**
+ * Check that if new widget editor is available.
+ *
+ * @return bool
+ * @since 3.0.0
+ */
+function neve_is_new_widget_editor() {
+	return ( defined( 'GUTENBERG_VERSION' ) && version_compare( GUTENBERG_VERSION, '10.6.2', '>' ) ) || version_compare( substr( get_bloginfo( 'version' ), 0, 3 ), '5.8', '>=' );
 }

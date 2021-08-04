@@ -1,12 +1,19 @@
 /* jshint esversion: 6 */
 /* global NeveReactCustomize */
 import PropTypes from 'prop-types';
-import FontFamilySelector from './FontFamilySelector.js';
 
-import { useState } from '@wordpress/element';
+import { lazy, Suspense, useEffect, useState } from '@wordpress/element';
+import { Spinner } from '@wordpress/components';
+import React from 'react';
+
+const FontFamilySelector = lazy(() =>
+	import(/* webpackChunkName: "ff-selector" */ './FontFamilySelector')
+);
 
 const TypefaceComponent = ({ control }) => {
 	const [fontFamily, setFontFamily] = useState(control.setting.get());
+	const [visible, setVisible] = useState(false);
+	const { section } = control.params;
 
 	const defaultParams = {
 		default_is_inherit: false,
@@ -18,6 +25,26 @@ const TypefaceComponent = ({ control }) => {
 				...control.params.input_attrs,
 		  }
 		: defaultParams;
+
+	useEffect(() => {
+		window.wp.customize.bind('ready', () => {
+			window.wp.customize
+				.state('expandedSection')
+				.bind((expandedSection) => {
+					if (!expandedSection) {
+						return;
+					}
+
+					if (!expandedSection.id) {
+						return;
+					}
+
+					if (expandedSection.id === section) {
+						setVisible(true);
+					}
+				});
+		});
+	}, []);
 
 	const maybeGetTypekitFont = (font) => {
 		const { typekitSlugs } = NeveReactCustomize;
@@ -59,16 +86,20 @@ const TypefaceComponent = ({ control }) => {
 				</span>
 			)}
 			<div className="neve-typeface-control neve-white-background-control">
-				<FontFamilySelector
-					fonts={NeveReactCustomize.fonts}
-					selected={fontFamily}
-					onFontChoice={(fontSource, font) => {
-						onChoseFont(fontSource, font);
-					}}
-					inheritDefault={controlParams.default_is_inherit}
-					systemFonts={controlParams.system}
-					maybeGetTypekit={maybeGetTypekitFont}
-				/>
+				<Suspense fallback={<Spinner />}>
+					{visible && (
+						<FontFamilySelector
+							fonts={NeveReactCustomize.fonts}
+							selected={fontFamily}
+							onFontChoice={(fontSource, font) => {
+								onChoseFont(fontSource, font);
+							}}
+							inheritDefault={controlParams.default_is_inherit}
+							systemFonts={controlParams.system}
+							maybeGetTypekit={maybeGetTypekitFont}
+						/>
+					)}
+				</Suspense>
 			</div>
 		</>
 	);

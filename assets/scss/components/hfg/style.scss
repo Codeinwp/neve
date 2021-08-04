@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+@import "frontend/mixins";
+@import "frontend/vars";
+@import "frontend/layout/mobile_sidebar";
+@import "frontend/layout/footer";
+@import "frontend/layout/general";
+
+// COMPONENTS
+@import "frontend/components/button";
+
+.hfg-grid {
+  display: flex;
+}
+
+// HIDING COLS FOR DEVICES
+@each $mq-key, $mq-value in $gl-devices-list {
+  @media #{$mq-value} {
+	.hide-on-#{$mq-key} {
+	  display: none;
+	}
+  }
+}
+
+.component-wrap {
+  display: flex;
+  margin: 4px 0;
+}
+
+.builder-item .item--inner {
+  color: var(--color);
+  font-family: var(--fontFamily, var(--bodyFontFamily));
+  font-size: var(--fontSize, var(--bodyFontSize));
+  line-height: var(--lineHeight, var(--bodyLineHeight));
+  letter-spacing: var(--letterSpacing, var(--bodyLetterSpacing));
+  font-weight: var(--fontWeight, var(--bodyFontWeight));
+  text-transform: var(--textTransform, var(--bodyTextTransform));
+  padding: var(--padding, 0);
+  margin: var(--margin, 0);
+}

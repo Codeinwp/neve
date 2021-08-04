@@ -1524,11 +1524,23 @@ let hfgPanels = {};
       focus: function() {
         this.container.on(
           'click',
-          '.hfg--cb-item-setting, .hfg--cb-item-name, .item-tooltip',
+          '.hfg--cb-item-setting, .hfg--cb-item-admin-setting, .hfg--cb-item-name, .item-tooltip',
           function(e) {
             e.preventDefault()
             let section = $( this ).data( 'section' ) || ''
-            //console.log( 'Clicked section' , section );
+            console.log( 'Clicked section' , section );
+
+            if ( section.indexOf('neve_') !== -1 ) {
+            	section = section.replace( 'neve_', '' );
+				console.log( 'New section' , section );
+			}
+
+			let widget = $( this ).data( 'widget' ) || ''
+			if ( widget ) {
+				console.log( 'Clicked widget' , widget );
+				section = widget
+			}
+
             let control = $( this ).attr( 'data-control' ) || ''
             let did = false
             if ( control ) {
@@ -1542,6 +1554,7 @@ let hfgPanels = {};
                 section &&
                 !_.isUndefined( wpcustomize.section( section ) )
               ) {
+              	console.log( 'Before focus section' )
                 wpcustomize.section( section ).focus()
               }
             }
@@ -1987,10 +2000,6 @@ let hfgPanels = {};
             e.preventDefault()
             let device = $( this ).data( 'device' )
             that.switchToDevice( device )
-            let event = new CustomEvent( 'neveChangedRepsonsivePreview', {
-              'detail': device
-            } )
-            document.dispatchEvent( event )
           }
         )
 

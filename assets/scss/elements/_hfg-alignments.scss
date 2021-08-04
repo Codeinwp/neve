@@ -75,6 +75,7 @@ $component-alignments: (
 $component-v-alignments: (
 		'top' : flex-start,
 		'bottom': flex-end,
+		'middle': center,
 );
 
 @each $alignment, $align-self in $component-v-alignments  {
