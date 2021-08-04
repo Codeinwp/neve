@@ -75,6 +75,9 @@ class Front_End {
 
 		add_image_size( 'neve-blog', 930, 620, true );
 		add_filter( 'wp_nav_menu_args', array( $this, 'nav_walker' ), 1001 );
+		if ( neve_is_new_skin() ) {
+			add_filter( 'theme_mod_background_color', '__return_empty_string' );
+		}
 		$this->add_woo_support();
 	}
 
