@@ -15,40 +15,39 @@ get_header();
 <div class="<?php echo esc_attr( $container_class ); ?> download-archive-container">
 
 	<main id="main" class="site-main" role="main">
-
-		<?php
-			/**
-			 *  Executes actions before the post content.
-			 *
-			 * @since 3.0.0
-			 */
-			do_action( 'neve_before_download_archive' );
+		<div id="neve-edd-grid-container">
+			<?php
+				/**
+				 * Executes actions before the post content.
+				 *
+				 * @since 3.0.0
+				 */
+				do_action( 'neve_before_download_archive' );
+				
+			if ( have_posts() ) {
 			
-		if ( have_posts() ) {
-		  
-			while ( have_posts() ) {
-				the_post();
-				get_template_part( 'template-parts/content-download-archive' ); 
-			}       
-		} else {
-			get_template_part( 'template-parts/content', 'none' );
-		}
+				while ( have_posts() ) {
+					the_post();
+					get_template_part( 'template-parts/content-download-archive' ); 
+				}
+			} else {
+				get_template_part( 'template-parts/content', 'none' );
+			}
 
-			/**
-			*  Executes actions after the post content.
-			*
-			* @since 3.0.0
-			*/
-			do_action( 'neve_after_download_archive' );
-			
-			/**
-			* Download pagination
-			*/
-			// TODO Add download navigation
-			
-		?>
-			</div>
-
+				/**
+				* Executes actions after the post content.
+				*
+				* @since 3.0.0
+				*/
+				do_action( 'neve_after_download_archive' );
+				
+				/**
+				* Download pagination
+				*/
+				// TODO Add download navigation
+				
+			?>
+		</div>
 	</main>
 
 </div>

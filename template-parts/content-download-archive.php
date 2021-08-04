@@ -7,4 +7,3 @@
  */
 
 do_action( 'neve_do_download', 'archive' );
-

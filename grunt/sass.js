@@ -29,6 +29,8 @@ module.exports = {
 					'assets/scss/gutenberg-editor-style.scss',
 				'assets/css/gutenberg-editor-legacy-style.css':
 					'assets/scss/gutenberg-editor-legacy-style.scss',
+				'assets/css/easy-digital-downloads.css':
+					'assets/scss/easy-digital-downloads.scss',
 			},
 		],
 	},
