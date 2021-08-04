@@ -21,7 +21,7 @@
   }
 }
 
-button, input[type=button], .btn, input[type="submit"] {
+button, input[type=button], .btn, input[type="submit"] , input[type="reset"] {
   //noinspection SassScssResolvedByNameOnly
   @extend %nv-button;
   //noinspection SassScssResolvedByNameOnly
