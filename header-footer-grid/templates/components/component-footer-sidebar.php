@@ -33,7 +33,8 @@ if ( is_active_sidebar( $_id ) ) {
 							/* translators: %1$s - link %2$s - name %3$s - label */
 							'<a href="%1$s"><strong>%2$s  %3$s</strong></a>',
 							esc_url( admin_url( 'customize.php?autofocus[section]=sidebar-widgets-footer-' . $_id ) ),
-							__( 'Appearance &rarr; Customize &rarr; Footer &rarr;', 'neve' ), //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							/* translators: %1$s - &rarr; symbol %2$s - &rarr; symbol %3$s - &rarr; symbol */
+							sprintf( __( 'Appearance %1$s Customize %2$s Footer %3$s', 'neve' ), '&rarr;', '&rarr;', '&rarr;' ), //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 							esc_attr( current_component()->get_property( 'label' ) )
 						)
 					)

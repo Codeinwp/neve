@@ -19,6 +19,27 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+#### [Version 3.0.0](https://github.com/Codeinwp/neve/compare/v2.11.6...v3.0.0) (2021-08-04)
+
+- [Feat] New Header & Footer builder experience
+- [Feat] New default skin for frontend with better performance and page weight - [Learn more](https://docs.themeisle.com/article/1388-neve-3-0-core-design)
+- [Feat] Color palette switcher header component (dark mode toggle) - [Learn more](https://docs.themeisle.com/article/1358-header-palette-switch-dark-light-theme)
+- [Feat] New single post layout and customization options
+- [Fix] Improve accessibility for the search form
+- [Fix] Scripts appearing next to single product buttons
+- [Fix] Compatibility issue with the PW WooCommerce Gift Cards plugin 
+- [Fix] Compatibility issue with the WooCommerce Appointments plugin
+- [Fix] Wishlist button looking distorted on the product page with sticky add to cart enabled
+- [Fix] magic tag for {meta_author} not rendering the author avatar
+- [Fix] Modified the check for the sidebar so that it does not conflict with the individual post settings
+- [Fix] Disable Neve Styles on Custom Single Product and Products Archive Elementor Templates
+- [Fix] Compatibility for Gutenberg widgets editor inside the customizer
+- Add ability to self-heal theme mods in case of corrupted value
+- Remove Otter compatibility for Gutenberg Templates
+
+
+
+
 ##### [Version 2.11.6](https://github.com/Codeinwp/neve/compare/v2.11.5...v2.11.6) (2021-06-01)
 
 - [Fix] wishlist button on single product pages

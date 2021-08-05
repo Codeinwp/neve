@@ -1,6 +1,6 @@
 /* global metaSidebar */
 import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 import { useShortcut } from '@wordpress/keyboard-shortcuts';
 import { useCallback } from '@wordpress/element';
@@ -58,8 +58,8 @@ const Sidebar = compose(
 	}
 	document.getElementById('neve-page-settings-notice').style.display =
 		'block';
-
-	let sidebarLabel = __('Neve Options', 'neve');
+	//translators: %s - Theme Name
+	let sidebarLabel = sprintf(__('%s Options', 'neve'), __('Neve', 'neve'));
 	if (metaSidebar.whiteLabeled) {
 		sidebarLabel = metaSidebar.whiteLabelThemeName
 			? metaSidebar.whiteLabelThemeName + ' ' + __('Options', 'neve')

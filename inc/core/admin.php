@@ -73,7 +73,8 @@ class Admin {
 
 		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
 
-		add_action( 'init', [ $this, 'run_skin_and_builder_switches' ] );
+		$this->run_skin_and_builder_switches();
+
 		add_filter( 'ti_tpc_theme_mods_pre_import', [ $this, 'migrate_theme_mods_for_new_skin' ] );
 
 		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
@@ -535,7 +536,8 @@ class Admin {
 	 */
 	public function enqueue_gutenberg_scripts() {
 		$screen = get_current_screen();
-		if ( ! post_type_supports( $screen->post_type, 'editor' ) ) {
+		// if is_block_editor is `true` we should allow the Gutenberg styles to load eg. the new widgets page.
+		if ( ! post_type_supports( $screen->post_type, 'editor' ) && $screen->is_block_editor !== true ) {
 			return;
 		}
 		wp_enqueue_script(
