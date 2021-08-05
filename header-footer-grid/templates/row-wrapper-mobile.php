@@ -28,14 +28,14 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 					esc_html_e( 'Navigation Menu', 'neve' );
 				?>
 				">
-				<div class="bars">
+				<span class="bars">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-				</div>
+				</span>
 				<span class="screen-reader-text">
 				<?php
-				esc_html_e( 'Toggle Navigation', 'neve' );
+				esc_html_e( 'Navigation Menu', 'neve' );
 				?>
 					</span>
 			</button>

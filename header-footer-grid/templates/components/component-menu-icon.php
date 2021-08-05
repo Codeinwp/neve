@@ -31,12 +31,12 @@ $label           = component_setting( MenuIcon::TEXT_ID );
 			echo '<span class="nav-toggle-label">' . esc_html( $label ) . '</span>';
 		}
 		?>
-		<div class="bars">
+		<span class="bars">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
-		</div>
-		<span class="screen-reader-text"><?php esc_html_e( 'Toggle Navigation', 'neve' ); ?></span>
+		</span>
+		<span class="screen-reader-text"><?php esc_html_e( 'Navigation Menu', 'neve' ); ?></span>
 	</button>
 </div> <!--.navbar-toggle-wrapper-->
 
