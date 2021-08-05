@@ -47,6 +47,7 @@ class Front_End {
 		add_theme_support( 'custom-logo', $logo_settings );
 		add_theme_support( 'html5', array( 'search-form' ) );
 		add_theme_support( 'customize-selective-refresh-widgets' );
+		add_theme_support( 'custom-background', [] );
 		add_theme_support( 'align-wide' );
 		add_theme_support( 'editor-color-palette', $this->get_gutenberg_color_palette() );
 		add_theme_support( 'fl-theme-builder-headers' );
@@ -74,6 +75,9 @@ class Front_End {
 
 		add_image_size( 'neve-blog', 930, 620, true );
 		add_filter( 'wp_nav_menu_args', array( $this, 'nav_walker' ), 1001 );
+		if ( neve_is_new_skin() ) {
+			add_filter( 'theme_mod_background_color', '__return_empty_string' );
+		}
 		$this->add_woo_support();
 	}
 
