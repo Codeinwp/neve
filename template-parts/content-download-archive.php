@@ -6,4 +6,4 @@
  * @package Neve
  */
 
-do_action( 'neve_do_download', 'archive' );
+do_action( 'neve_do_download_archive', 'archive-download' );

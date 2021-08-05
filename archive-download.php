@@ -6,49 +6,84 @@
  * @package Neve
  */
 
+/**
+ * Create pagination for Easy Digital Downloads Archive.
+ */
+function neve_edd_download_nav() {
+
+	// TODO-UV Possibly move this method to a more appropriate file. 
+	
+	global $wp_query;
+
+	$big          = 999999;
+	$search_for   = array( $big, '#038;' );
+	$replace_with = array( '%#%', '&' );
+
+	$pagination = paginate_links(
+		array(
+			'base'      => str_replace( $search_for, $replace_with, get_pagenum_link( $big ) ),
+			'format'    => '?paged=%#%',
+			'current'   => max( 1, get_query_var( 'paged' ) ),
+			'total'     => $wp_query->max_num_pages,
+			'prev_next' => false,
+		) 
+	);
+	?>
+
+	<div id="neve-edd-download-pagination" class="navigation">
+		<?php 
+		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $pagination; 
+		?>
+	</div>
+
+	<?php
+}
+
 $container_class = apply_filters( 'neve_container_class_filter', 'container', 'download-archive' );
 
 get_header();
 
 ?>
 
-<div class="<?php echo esc_attr( $container_class ); ?> download-archive-container">
+<div id= "neve-edd-download-archive-container" class="<?php echo esc_attr( $container_class ); ?>">
 
-	<main id="main" class="site-main" role="main">
-		<div id="neve-edd-grid-container">
-			<?php
-				/**
-				 * Executes actions before the post content.
-				 *
-				 * @since 3.0.0
-				 */
-				do_action( 'neve_before_download_archive' );
+		<div id="wrapper">
+			<div id="neve-edd-grid-container">
+				<?php
+					/**
+					 * Executes actions before the post content.
+					 *
+					 * @since 3.0.0
+					 */
+					do_action( 'neve_before_download_archive' );
+					
+				if ( have_posts() ) {
 				
-			if ( have_posts() ) {
-			
-				while ( have_posts() ) {
-					the_post();
-					get_template_part( 'template-parts/content-download-archive' ); 
+					while ( have_posts() ) {
+						the_post();
+						get_template_part( 'template-parts/content-download-archive' ); 
+					}
+				} else {
+					get_template_part( 'template-parts/content', 'none' );
 				}
-			} else {
-				get_template_part( 'template-parts/content', 'none' );
-			}
 
-				/**
-				* Executes actions after the post content.
-				*
-				* @since 3.0.0
-				*/
-				do_action( 'neve_after_download_archive' );
-				
-				/**
-				* Download pagination
-				*/
-				// TODO Add download navigation
-				
-			?>
+					/**
+					* Executes actions after the post content.
+					*
+					* @since 3.0.0
+					*/
+					do_action( 'neve_after_download_archive' );
+					
+				?>
+			</div>
+				<?php 
+					/**
+					 * Download pagination
+					 */
+					neve_edd_download_nav();        
+				?>
 		</div>
-	</main>
 
 </div>
 

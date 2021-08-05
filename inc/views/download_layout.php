@@ -20,7 +20,8 @@ class Download_Layout extends Base_View {
 	 * @return void
 	 */
 	public function init() {
-		add_action( 'neve_do_download', array( $this, 'render_download_archive' ) );
+		add_action( 'neve_do_download_archive', array( $this, 'render_download_archive' ) );
+		add_action( 'neve_do_single_download', array( $this, 'render_download_single' ) );
 	}
 
 	/**
@@ -29,7 +30,7 @@ class Download_Layout extends Base_View {
 	 * @param string $context the context provided in do_action.
 	 */
 	public function render_download_archive( $context ) {
-		if ( $context !== 'archive' ) {
+		if ( $context !== 'archive-download' ) {
 			return;
 		}
 		
@@ -47,18 +48,23 @@ class Download_Layout extends Base_View {
 		// ) );
 		// TODO Give users the ability to switch between link to go to single post and directly adding to cart
 		?>
-		<div class="neve-edd-download" id="edd_download_<?php the_ID(); ?>">
+		<div class="neve-edd-download-item" id="edd_download_<?php the_ID(); ?>">
+			<?php do_action( 'edd_download_before' ); ?>
 			<ul>
-				<li><?php the_post_thumbnail( 'medium' ); ?></li>
-				<li><p><?php the_title(); ?></p></li>
-				<li><p><?php edd_price( get_the_ID() ); ?></p></li>
+				<li class="neve-edd-download-thumbnail"><?php the_post_thumbnail( 'medium' ); ?></li>
+				<?php do_action( 'edd_download_after_thumbnail' ); ?>
+				<?php do_action( 'edd_download_before_title' ); ?>
+				<li class="neve-edd-download-download-meta neve-edd-download-title"><p><?php the_title(); ?></p></li>
+				<?php do_action( 'edd_download_after_title' ); ?>
+				<li class="neve-edd-download-download-meta neve-edd-download-price"><p><?php edd_price( get_the_ID() ); ?></p></li>
 				<!-- <li> -->
 					<!-- <div class="edd_download_buy_button">	 -->
 					<?php // echo edd_get_purchase_link( array( 'download_id' => get_the_ID(), 'text' => 'Buy Now' ) ); ?>
 					<!-- </div> -->
 				<!-- </li>  -->
-				<li><a href="<?php echo esc_url( get_permalink() ); ?>"><?php _e( 'Buy Now', 'neve' ); ?> </a></li>
+				<li class="neve-edd-download-download-meta neve-edd-download-buy-btn"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php _e( 'Buy Now', 'neve' ); ?> </a></li>
 			</ul>
+			<?php do_action( 'edd_download_after' ); ?>
 		</div>
 		<?php
 	}
@@ -69,10 +75,10 @@ class Download_Layout extends Base_View {
 	 * @param string $context the context provided in do_action.
 	 */
 	public function render_download_single( $context ) {
-		if ( $context !== 'single' ) {
+		if ( $context !== 'single-download' ) {
 			return;
 		}
-
+		// single download template code
 	}   
 
 }

@@ -292,6 +292,18 @@ class Front_End {
 			wp_enqueue_style( 'neve-woocommerce' );
 		}
 
+		if ( \class_exists( 'Easy_Digital_Downloads' ) ) {
+
+			$style_path = 'css/easy-digital-downloads';
+
+			wp_register_style( 'neve-easy-digital-downloads', NEVE_ASSETS_URL . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+			// TODO RTL styles
+			// wp_style_add_data( 'neve-woocommerce', 'rtl', 'replace' );
+			wp_style_add_data( 'neve-easy-digital-downloads', 'suffix', '.min' );
+			wp_enqueue_style( 'neve-easy-digital-downloads' );
+
+		}
+
 		$style_path = neve_is_new_skin() ? '/style-main' : '/assets/css/style-legacy';
 
 		wp_register_style( 'neve-style', get_template_directory_uri() . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
