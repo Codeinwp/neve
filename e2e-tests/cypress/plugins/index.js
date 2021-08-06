@@ -2,6 +2,7 @@
 // const {
 // 	addMatchImageSnapshotPlugin,
 // } = require('cypress-image-snapshot/plugin');
+const htmlvalidate = require('cypress-html-validate/dist/plugin');
 
 module.exports = (on) => {
 	//	addMatchImageSnapshotPlugin(on, config);
@@ -20,4 +21,5 @@ const percyHealthCheck = require('@percy/cypress/task');
 
 module.exports = (on) => {
 	on('task', percyHealthCheck);
+	htmlvalidate.install(on);
 };
