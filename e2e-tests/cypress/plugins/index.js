@@ -20,6 +20,9 @@ module.exports = (on) => {
 const percyHealthCheck = require('@percy/cypress/task');
 
 module.exports = (on) => {
+	const config = {
+		extends: ['html-validate:document'],
+	};
 	on('task', percyHealthCheck);
-	htmlvalidate.install(on);
+	htmlvalidate.install(on, config);
 };
