@@ -19,6 +19,18 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.0.1](https://github.com/Codeinwp/neve/compare/v3.0.0...v3.0.1) (2021-08-06)
+
+- [Fix] bring back custom-background theme support
+- [Fix] input type reset on new skin
+- [Fix] fatal error because of non-existent class property
+- [Fix] footer row display when using old skin
+- [Fix] single product top wrap priority
+- [Fix] builder breaking in specific edge-case when using the pro version
+
+
+
+
 #### [Version 3.0.0](https://github.com/Codeinwp/neve/compare/v2.11.6...v3.0.0) (2021-08-04)
 
 - [Feat] New Header & Footer builder experience
