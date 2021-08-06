@@ -73,9 +73,11 @@ const HFGBuilder: React.FC<Props> = ({
 			});
 	};
 
-	const [sidebarItems, setSidebarItems] = useState<ItemInterface[]>(
-		getSidebarItems()
-	);
+	const [sidebarItems, setSidebarItems] = useState<ItemInterface[]>([]);
+
+	const updateSidebarItems = () => {
+		setSidebarItems([...getSidebarItems()]);
+	};
 
 	const onDragStart = () => {
 		setDragging(true);
@@ -211,6 +213,7 @@ const HFGBuilder: React.FC<Props> = ({
 	 * Bind the device switchers to the device state.
 	 */
 	useEffect(() => {
+		updateSidebarItems();
 		bindDeviceSwitching();
 	}, []);
 
@@ -218,8 +221,8 @@ const HFGBuilder: React.FC<Props> = ({
 	 * Make sure we update the sidebar.
 	 */
 	useEffect(() => {
-		setSidebarItems(getSidebarItems());
-	}, [device, value[device]]);
+		updateSidebarItems();
+	}, [device]);
 
 	const bindDeviceSwitching = () => {
 		window.wp.customize.bind('ready', () => {
@@ -265,6 +268,7 @@ const HFGBuilder: React.FC<Props> = ({
 		setDevice,
 		setSidebarItems,
 		togglePreviewSidebar,
+		updateSidebarItems,
 	};
 
 	return (
