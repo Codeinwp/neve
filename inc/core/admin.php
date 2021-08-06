@@ -79,9 +79,6 @@ class Admin {
 
 		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
 		add_filter( 'neve_pro_react_controls_localization', [ $this, 'adapt_conditional_headers' ] );
-		if ( class_exists( '\Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers' ) ) {
-			\Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers::$theme_mods_keys[] = 'hfg_header_layout_v2';
-		}
 	}
 
 	/**

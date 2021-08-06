@@ -27,7 +27,7 @@ const BuilderItem: React.FC<Props> = (props) => {
 	}
 
 	const { name, section } = itemDetails;
-	const { removeItem } = actions;
+	const { removeItem, updateSidebarItems } = actions;
 
 	const isBlockWidget = section && section.includes('neve_sidebar-widgets');
 
@@ -46,6 +46,7 @@ const BuilderItem: React.FC<Props> = (props) => {
 	const remove = () => {
 		removeItem(row, slot, index);
 		itemSection.expanded(false);
+		updateSidebarItems();
 	};
 
 	const iconSize = 18;

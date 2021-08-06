@@ -206,11 +206,10 @@ class Woocommerce {
 				'woocommerce_before_single_product_summary',
 				function () {
 					echo '<div class="nv-single-product-top">';
-
 				},
 				11
 			);
-			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ] );
+			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ], 1 );
 			// Change default for shop columns WooCommerce option.
 			add_filter( 'default_option_woocommerce_catalog_columns', [ $this, 'change_default_shop_cols' ] );
 		}
