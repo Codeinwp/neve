@@ -1,7 +1,7 @@
 describe('Header Mini Cart Functionality', function () {
 	before(function () {
 		cy.fixture('woocommerce/header-mini-cart').then((setup) => {
-			cy.setCustomizeSettings(setup);
+			cy.setCustomizeSettings(setup.functionality);
 		});
 	});
 
@@ -76,7 +76,7 @@ describe('Header Mini Cart Style', function () {
 			cy.viewport(1920, 1080);
 		});
 
-		it.only('Check style for the mini cart', function () {
+		it('Check style for the mini cart', function () {
 			cy.get('.nv-icon > svg')
 				.should('have.css', 'color', 'rgb(118, 5, 5)')
 				.and('have.css', 'fill', 'rgb(118, 5, 5)')
@@ -84,12 +84,9 @@ describe('Header Mini Cart Style', function () {
 
 			cy.get('.nv-icon > svg')
 				.realHover()
-				.then(() => {
-					cy.get('.nv-icon > svg')
-						.should('have.css', 'color', 'rgb(18 90 50)')
-						.and('have.css', 'fill', 'rgb(18 90 50)')
-						.and('have.css', 'width', '80px');
-				});
+				.should('have.css', 'color', 'rgb(18, 90, 50)')
+				.and('have.css', 'fill', 'rgb(18, 90, 50)')
+				.and('have.css', 'width', '80px');
 		});
 	});
 
