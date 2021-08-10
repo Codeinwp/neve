@@ -1,9 +1,9 @@
 .wrapper {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.79, 0.14, 0.15, 0.86)
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	position: relative;
+	transition: all 0.3s cubic-bezier(0.79, 0.14, 0.15, 0.86);
 }
 
 body > .wrapper:not(.et-fb-iframe-ancestor) {
@@ -11,5 +11,5 @@ body > .wrapper:not(.et-fb-iframe-ancestor) {
 }
 
 .neve-main {
-  flex: 1 auto;
+	flex: 1 auto;
 }

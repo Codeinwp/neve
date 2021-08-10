@@ -1,10 +1,12 @@
 //List fixes
 .neve-main .elementor-text-editor {
-  ul, ol {
-    padding-left: $spacing-sm;
-  }
 
-  ul {
-    list-style: inherit;
-  }
+	ul,
+	ol {
+		padding-left: $spacing-sm;
+	}
+
+	ul {
+		list-style: inherit;
+	}
 }

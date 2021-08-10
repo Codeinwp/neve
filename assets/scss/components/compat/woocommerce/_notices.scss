@@ -1,89 +1,98 @@
 @import "../../main/variables";
 
 .woocommerce-NoticeGroup > ul {
-  flex-direction: column;
-  align-items: flex-start;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
-.woocommerce-info, .woocommerce-error, .woocommerce-message {
-  display: flex;
-  align-items: center;
-  flex-direction: column-reverse;
-  text-align: center;
-  padding: 15px;
-  --btnFs: $text-sm;
-  --primaryBtnPadding: 10px 15px;
-  --primaryBtnBorderWidth: 3px;
-  --primaryBtnColor: #fff;
-  --primaryBtnHoverColor: #fff;
-  --primaryBtnHoverBg: transparent;
-  --primaryBtnBg: transparent;
+.woocommerce-info,
+.woocommerce-error,
+.woocommerce-message {
+	display: flex;
+	align-items: center;
+	flex-direction: column-reverse;
+	text-align: center;
+	padding: 15px;
+	--btnFs: $text-sm;
+	--primaryBtnPadding: 10px 15px;
+	--primaryBtnBorderWidth: 3px;
+	--primaryBtnColor: #fff;
+	--primaryBtnHoverColor: #fff;
+	--primaryBtnHoverBg: transparent;
+	--primaryBtnBg: transparent;
 
-  &:before {
-	display: none;
-  }
+	&::before {
+		display: none;
+	}
 
-  > a {
-	@extend %nv-button-primary-no-colors;
-  }
+	> a {
 
-  a, .button {
-	width: 100%;
-	margin-top: $spacing-sm;
-	white-space: normal;
-	margin-left: auto;
-  }
+		@extend %nv-button-primary-no-colors;
+	}
+
+	a,
+	.button {
+		width: 100%;
+		margin-top: $spacing-sm;
+		white-space: normal;
+		margin-left: auto;
+	}
 }
 
 $notices: (
-		'message': $success,
-		'error': $error,
-		'info': var(--nv-primary-accent),
+	"message": $success,
+	"error": $error,
+	"info": var(--nv-primary-accent),
 );
 
 @each $noticeName, $color in $notices {
-  .woocommerce .woocommerce-#{$noticeName},
-  .woocommerce-page .woocommerce-#{$noticeName} {
-	border-radius: 3px;
-	background: $color;
-	border: 0;
-	color: #fff;
+	.woocommerce .woocommerce-#{$noticeName},
+	.woocommerce-page .woocommerce-#{$noticeName} {
+		border-radius: 3px;
+		background: $color;
+		border: 0;
+		color: #fff;
 
-	a, &:before {
-	  color: inherit;
+		a,
+		&::before {
+			color: inherit;
+		}
 	}
-  }
 }
 
 .woocommerce .woocommerce-error {
-  padding-left: 3.5em;
+	padding-left: 3.5em;
 
-  li {
-	width: 100%;
-	margin: 0;
-  }
+	li {
+		width: 100%;
+		margin: 0;
+	}
 }
 
 @mixin notices--tablet-sm() {
-  .woocommerce-info, .woocommerce-error, .woocommerce-message {
-	flex-direction: row-reverse;
-	justify-content: flex-end;
-	text-align: left;
-	padding-left: $spacing-aired;
 
-	a, .button {
-	  order: -1;
-	  margin-left: auto !important;
-	  margin-top: 0;
-	  width: auto ;
-	}
+	.woocommerce-info,
+	.woocommerce-error,
+	.woocommerce-message {
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+		text-align: left;
+		padding-left: $spacing-aired;
 
-	&:before {
-	  display: flex;
-	  top: 0;
-	  align-items: center;
-	  height: 100%;
-	  color: #fff;
+		a,
+		.button {
+			order: -1;
+			margin-left: auto !important;
+			margin-top: 0;
+			width: auto;
+		}
+
+		&::before {
+			display: flex;
+			top: 0;
+			align-items: center;
+			height: 100%;
+			color: #fff;
+		}
 	}
-  }
 }

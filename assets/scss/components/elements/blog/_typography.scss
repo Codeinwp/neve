@@ -1,24 +1,29 @@
 // === Single Post Title === //
 .title.entry-title {
-  @extend %nv-has-h1-typography
+
+	@extend %nv-has-h1-typography;
 }
 
 // === Blog Archive Post Title === //
 .blog-entry-title {
-  @extend %nv-has-h3-typography
+
+	@extend %nv-has-h3-typography;
 }
 
 // === Comment reply title === //
 .comment-reply-title {
-  @extend %nv-has-h4-typography
+
+	@extend %nv-has-h4-typography;
 }
 
 // === Excerpt === //
 .entry-summary {
-  @extend %nv-has-typography
+
+	@extend %nv-has-typography;
 }
 
 // === Meta === //
 .nv-meta-list li {
-  @extend %nv-has-typography
+
+	@extend %nv-has-typography;
 }
