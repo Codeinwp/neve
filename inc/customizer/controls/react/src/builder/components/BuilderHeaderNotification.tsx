@@ -51,11 +51,19 @@ const BuilderHeaderNotification: React.FC<Props> = ({
 			'neve_header_conditional_selector'
 		);
 
-		if (!control) {
+		if (control) {
 			return;
 		}
 
-		const sectionToNotify = control.params.section;
+		const transparentControl = window.wp.customize.control(
+			'neve_transparent_header'
+		);
+
+		if (!transparentControl) {
+			return;
+		}
+
+		const sectionToNotify = transparentControl.params.section;
 		window.wp.customize.section(sectionToNotify).notifications.add(
 			new window.wp.customize.Notification(
 				'neve-incompatible-conditional',
