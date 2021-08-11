@@ -16,6 +16,14 @@ use Neve\Views\Base_View;
  * @package Neve\Views\Partials
  */
 class Comments extends Base_View {
+
+	/**
+	 * Holds if an open children tag is opened for replies.
+	 *
+	 * @var bool
+	 */
+	private $is_tag_open = false;
+
 	/**
 	 * Add in functionality.
 	 */
@@ -61,8 +69,9 @@ class Comments extends Base_View {
 					<?php
 					wp_list_comments(
 						array(
-							'callback' => array( $this, 'comment_list_callback' ),
-							'style'    => 'ol',
+							'callback'     => array( $this, 'comment_list_callback' ),
+							'end-callback' => array( $this, 'end_comment_list_callback' ),
+							'style'        => 'div',
 						)
 					);
 					?>
@@ -138,6 +147,20 @@ class Comments extends Base_View {
 			</div>
 		</nav>
 		<?php
+	}
+
+	/**
+	 * Comment list end callback.
+	 *
+	 * @param string $comment comment.
+	 * @param array  $args    arguments.
+	 * @param int    $depth   the comments depth.
+	 */
+	public function end_comment_list_callback( $comment, $args, $depth ) {
+		if ( $this->is_tag_open && $comment->comment_parent == 0 ) {
+			$this->is_tag_open = false;
+			echo '</ol></div><!-- close children div -->';
+		}
 	}
 
 	/**
@@ -225,6 +248,10 @@ class Comments extends Base_View {
 				</li>
 				<?php
 				break;
+		}
+		if ( $args['has_children'] === true ) {
+			$this->is_tag_open = true;
+			echo '<div class="children" role="listitem"><ol>';
 		}
 	}
 
