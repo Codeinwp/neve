@@ -10,6 +10,7 @@ import { Spinner } from '@wordpress/components';
 
 import {
 	BuilderActions,
+	BuilderChangeEvent,
 	BuilderContentInterface,
 	BuilderItemType,
 	DeviceTypes,
@@ -21,6 +22,7 @@ import {
 import {
 	arraysAreIdentical,
 	getUsedItemsFromItems,
+	maybeParseJson,
 	ROW_SCHEMA,
 } from './common/utils';
 import { ItemInterface } from 'react-sortablejs';
@@ -57,11 +59,14 @@ const HFGBuilder: React.FC<Props> = ({
 	const [previewSidebar, togglePreviewSidebar] = useState<boolean>(false);
 	const [currentSection, setCurrentSection] = useState<string>('');
 
-	const getSidebarItems = () => {
+	const getSidebarItems = (
+		explicitValue: BuilderContentInterface | null = null
+	) => {
+		const usedValue = explicitValue || value;
 		const allItems = window.NeveReactCustomize.HFG[builder].items;
 		const usedItems =
-			value && value[device]
-				? getUsedItemsFromItems(value[device])
+			usedValue && usedValue[device]
+				? getUsedItemsFromItems(usedValue[device])
 				: Object.keys(allItems);
 		return Object.keys(allItems)
 			.filter((key) => !usedItems.includes(key))
@@ -77,6 +82,12 @@ const HFGBuilder: React.FC<Props> = ({
 
 	const updateSidebarItems = () => {
 		setSidebarItems([...getSidebarItems()]);
+	};
+
+	const explicitlyUpdateSidebarItemsWithThisValue = (
+		explicitVal: BuilderContentInterface
+	) => {
+		setSidebarItems([...getSidebarItems(explicitVal)]);
 	};
 
 	const onDragStart = () => {
@@ -215,6 +226,7 @@ const HFGBuilder: React.FC<Props> = ({
 	useEffect(() => {
 		updateSidebarItems();
 		bindDeviceSwitching();
+		bindValueChanges();
 	}, []);
 
 	/*
@@ -258,6 +270,33 @@ const HFGBuilder: React.FC<Props> = ({
 					setCurrentSection(expandedSection.id);
 				});
 		});
+	};
+
+	const bindValueChanges = () => {
+		document.addEventListener(
+			'neve-changed-builder-value',
+			(e: BuilderChangeEvent) => {
+				const { detail } = e;
+				if (!detail) return false;
+				const { id, value: builderValue } = detail;
+				let actualValue = builderValue;
+
+				if (!actualValue) {
+					actualValue = { ...value };
+				}
+
+				if (!id || id !== builder) return false;
+
+				const parsed = maybeParseJson(actualValue);
+
+				onChange(parsed as BuilderContentInterface);
+				explicitlyUpdateSidebarItemsWithThisValue(
+					parsed as BuilderContentInterface
+				);
+
+				return false;
+			}
+		);
 	};
 
 	const actions: BuilderActions = {
