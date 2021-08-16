@@ -5,21 +5,26 @@ describe('Font Family Selector', function () {
 	context('Default', function () {
 		beforeEach(function () {
 			cy.loadStory('Customizer/Controls/Font Family Selector', 'Default');
-			cy.get('.value-previewer > pre').as('valuePreview');
+		});
+		it('Google Font Appears', function () {
+			cy.findByRole('button', {
+				name: /default abc/i,
+			}).click();
+			cy.findByRole('link', {
+				name: /acme abc/i,
+			});
 		});
 	});
 
 	context('Only System Fonts', function () {
 		beforeEach(function () {
 			cy.loadStory('Customizer/Controls/Font Family Selector', 'Only System Fonts');
-			cy.get('.value-previewer > pre').as('valuePreview');
 		});
 	});
 
 	context('Inherit is Default', function () {
 		beforeEach(function () {
 			cy.loadStory('Customizer/Controls/Font Family Selector', 'Inherit Is Default');
-			cy.get('.value-previewer > pre').as('valuePreview');
 		});
 	});
 });
