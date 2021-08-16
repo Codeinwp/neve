@@ -32,7 +32,9 @@ class Product_Layout extends Base_View {
 
 		// We are using this twice since product_image_wrap is opening two divs which needs to be closed.
 		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'wrapper_close_div' ), 11 );
-		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'wrapper_close_div' ), 12 );
+		if ( neve_pro_has_support( 'malformed_div_on_shop' ) ) {
+			add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'wrapper_close_div' ), 12 );
+		}
 
 	}
 
