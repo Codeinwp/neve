@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '2.11.6' );
+define( 'NEVE_VERSION', '3.0.1' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 define( 'NEVE_MAIN_DIR', get_template_directory() . '/' );
@@ -49,7 +49,7 @@ if ( version_compare( PHP_VERSION, '7.0' ) < 0 ) {
 
 $_files_to_check = defined( 'NEVE_IGNORE_SOURCE_CHECK' ) ? [] : [
 	NEVE_MAIN_DIR . 'vendor/autoload.php',
-	NEVE_MAIN_DIR . 'style-main.css',
+	NEVE_MAIN_DIR . 'style-main-new.css',
 	NEVE_MAIN_DIR . 'assets/js/build/modern/frontend.js',
 	NEVE_MAIN_DIR . 'dashboard/build/dashboard.js',
 	NEVE_MAIN_DIR . 'inc/customizer/controls/react/bundle/controls.js',

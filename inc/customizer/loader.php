@@ -59,11 +59,7 @@ class Loader {
 
 		$controls_to_disable = [ 'neve_global_header', 'neve_header_conditional_selector' ];
 		foreach ( $controls_to_disable as $control_slug ) {
-			$control = $wp_customize->get_control( $control_slug );
-			if ( empty( $control ) ) {
-				return;
-			}
-			$control->active_callback = '__return_false';
+			$wp_customize->remove_control( $control_slug );
 		}
 	}
 

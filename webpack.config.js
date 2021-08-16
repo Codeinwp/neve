@@ -16,4 +16,11 @@ module.exports = {
 		...config.resolve,
 		extensions: ['.js', '.tsx', '.ts', 'js', 'jsx'],
 	},
+	optimization: {
+		...config.optimization,
+		splitChunks: {
+			...config.optimization.splitChunks,
+			automaticNameDelimiter: '-',
+		},
+	},
 };

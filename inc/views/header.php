@@ -41,7 +41,8 @@ class Header extends Base_View {
 		wp_add_inline_style(
 			'neve-style',
 			'.header-menu-sidebar-inner li.menu-item-nav-search { display: none; }
-		[data-row-id] .row { display: flex !important; align-items: center; flex-wrap: unset;}'
+		[data-row-id] .row { display: flex !important; align-items: center; flex-wrap: unset;}
+		@media (max-width: 960px) { .footer--row .row { flex-direction: column; } }'
 		);
 	}
 
