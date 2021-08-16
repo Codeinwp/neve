@@ -10,7 +10,7 @@ describe('Dynamic Fields Inserter', function () {
 			cy.loadStory('Customizer/Controls/Dynamic Fields Inserter', 'All Options Enabled');
 		});
 
-		testData.forEach((tag) => {
+		testData.allOptions.forEach((tag) => {
 			it(` ${tag.name} works`, function () {
 				cy.findByRole('button', {
 					name: /insert dynamic tag/i,
@@ -28,7 +28,33 @@ describe('Dynamic Fields Inserter', function () {
 
 	context('Only URL Options', function () {
 		beforeEach(function () {
-			cy.loadStory('Customizer/Controls/Dynamic Fields Inserter', 'Only URL Options');
+			cy.loadStory('Customizer/Controls/Dynamic Fields Inserter', 'Only Url Options');
+		});
+
+		testData.onlyUrl.forEach((tag) => {
+			it(`${tag.name} is present`, function () {
+				cy.findByRole('button', {
+					name: /insert dynamic tag/i,
+				}).click();
+				cy.findByRole('menuitem', {
+					name: tag.name,
+				}).click();
+
+				cy.findByRole('textbox', {
+					name: /test input:/i,
+				}).should('have.value', tag.value);
+			});
+		});
+
+		testData.noUrl.forEach((tag) => {
+			it(`${tag.name} does not exist`, function () {
+				cy.findByRole('button', {
+					name: /insert dynamic tag/i,
+				}).click();
+				cy.findByRole('menuitem', {
+					name: tag.name,
+				}).should('not.exist');
+			});
 		});
 	});
 });
