@@ -29,7 +29,10 @@ class Product_Layout extends Base_View {
 		// Wrap product image in a div and add another div for buttons on image option
 		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'product_image_wrap' ), 8 );
 		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'out_of_stock_badge' ), 9 );
+
+		// We are using this twice since product_image_wrap is opening two divs which needs to be closed.
 		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'wrapper_close_div' ), 11 );
+		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'wrapper_close_div' ), 12 );
 
 	}
 
