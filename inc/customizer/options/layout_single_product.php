@@ -156,9 +156,8 @@ class Layout_Single_Product extends Base_Customizer {
 	 * @return string
 	 */
 	public function sanitize_categories( $value ) {
-		$categories      = $this->get_shop_categories();
-		$possible_values = array_keys( $categories );
-		if ( ! in_array( (string) $value, $possible_values, true ) ) {
+		$categories = $this->get_shop_categories();
+		if ( ! array_key_exists( $value, $categories ) ) {
 			return '-';
 		}
 
