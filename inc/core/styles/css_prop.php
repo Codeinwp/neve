@@ -134,7 +134,7 @@ class Css_Prop {
 					$suffix = self::get_unit_responsive( $meta, $device );
 				}
 
-				$non_empty_values = array_filter( $value, 'strlen' );
+				$non_empty_values = array_filter( $value, 'strlen' ); // @phpstan-ignore-line
 				if ( count( $non_empty_values ) === 4 ) {
 					return sprintf( "%s:%s%s %s%s %s%s %s%s;",
 						$css_prop,
@@ -229,10 +229,7 @@ class Css_Prop {
 				$suffix = self::get_suffix( $meta, $device, $value, $css_prop );
 
 				return sprintf( ' %s: %s%s;', $css_prop, $value, $suffix );
-				break;
 		}
-
-		return '';
 	}
 
 	/**
@@ -240,7 +237,7 @@ class Css_Prop {
 	 *
 	 * @param array $meta Meta array.
 	 * @param string $device Current device.
-	 * @param string $value Value.
+	 * @param mixed $value Value.
 	 *
 	 * @return string
 	 *
@@ -282,14 +279,13 @@ class Css_Prop {
 	 *
 	 * @param array $meta Meta array.
 	 * @param string $device Current device.
-	 * @param string $value Value.
+	 * @param array|int $value Value.
 	 * @param string $css_prop Css Property.
 	 * @param string $type Type of directional property.
 	 *
 	 * @return string
 	 */
 	public static function transform_directional_prop( $meta, $device, $value, $css_prop, $type ) {
-
 		$suffix   = self::get_suffix( $meta, $device, $value, $css_prop );
 		$suffix   = $suffix ? $suffix : 'px';
 		$template = '';

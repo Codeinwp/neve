@@ -83,7 +83,7 @@ class Main {
 	 * Main Instance
 	 * Ensures only one instance of class is loaded or can be loaded.
 	 *
-	 * @return \HFG\Main Instance.
+	 * @return \HFG\Main|null Instance.
 	 * @since   1.0.0
 	 * @access  public
 	 */

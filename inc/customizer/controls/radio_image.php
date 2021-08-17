@@ -60,14 +60,6 @@ class Radio_Image extends \WP_Customize_Control {
 	public $choices;
 
 	/**
-	 * Subcontrols of each option
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $subcontrols = array();
-
-	/**
 	 * Radio_Image constructor.
 	 *
 	 * @param \WP_Customize_Manager $manager Customizer manager object.
@@ -87,10 +79,6 @@ class Radio_Image extends \WP_Customize_Control {
 				foreach ( $this->choices as $value => $args ) {
 					$this->controls[ $value ] = $args['controls'];
 				}
-			}
-
-			if ( array_key_exists( 'subcontrols', $args ) ) {
-				$this->subcontrols = esc_attr( $args['subcontrols'] );
 			}
 		}
 
@@ -128,10 +116,9 @@ class Radio_Image extends \WP_Customize_Control {
 		if ( ! empty( $this->choices ) ) {
 			$json['width'] = number_format( 100 / count( $this->choices ), 2 );
 		}
-		$json['id']          = $this->id;
-		$json['link']        = $this->get_link();
-		$json['value']       = $this->value();
-		$json['subcontrols'] = $this->subcontrols;
+		$json['id']    = $this->id;
+		$json['link']  = $this->get_link();
+		$json['value'] = $this->value();
 
 		return $json;
 	}

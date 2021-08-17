@@ -92,7 +92,6 @@ class Upsell_Control extends \WP_Customize_Control {
 	 */
 	public function __construct( \WP_Customize_Manager $manager, $id, array $args ) {
 		parent::__construct( $manager, $id, $args );
-		$this->button_text;
 		$this->pro_label = esc_html__( 'PRO', 'neve' );
 	}
 
