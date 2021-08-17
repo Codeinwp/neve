@@ -1515,3 +1515,20 @@ function neve_pro_has_support( $feature ) {
 function neve_is_new_widget_editor() {
 	return ( defined( 'GUTENBERG_VERSION' ) && version_compare( GUTENBERG_VERSION, '10.6.2', '>' ) ) || version_compare( substr( get_bloginfo( 'version' ), 0, 3 ), '5.8', '>=' );
 }
+
+/**
+ * Wrapper for wp_remote_get on VIP environments.
+ *
+ * @param string $url Url to check.
+ * @param array  $args Option params.
+ *
+ * @return array|\WP_Error
+ */
+function neve_safe_get( $url, $args = array() ) {
+	return function_exists( 'vip_safe_wp_remote_get' )
+		? vip_safe_wp_remote_get( $url )
+		: wp_remote_get( //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get, Already used.
+			$url,
+			$args
+		);
+}
