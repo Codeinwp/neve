@@ -3,8 +3,9 @@ name: Translations Diff
 on:
   pull_request:
     types: [opened, edited, synchronize, ready_for_review]
-    branches-ignore:
-      - 'update_dependencies'
+    branches:
+      - 'development'
+      - 'new/**'
 
 jobs:
   translation:
@@ -24,7 +25,7 @@ jobs:
       - name: Checkout Ref Head
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: development
           path: neve-head
       - name: FRESH Makepot HEAD
         run: |
