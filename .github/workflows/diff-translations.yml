@@ -14,7 +14,6 @@ jobs:
       - name: Checkout Ref Base
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request.base.ref }}
           path: neve-base
       - name: FRESH Makepot BASE
         run: |
