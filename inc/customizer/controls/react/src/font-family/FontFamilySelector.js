@@ -195,7 +195,7 @@ const FontFamilySelector = ({
 							setSearch('');
 						}}
 					>
-						{fonts ? getFontList() : __('Loading…', 'neve')}
+						{fonts ? getFontList() : __('In Progress', 'neve')}
 					</Popover>
 				)}
 			</Button>

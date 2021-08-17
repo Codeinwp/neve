@@ -553,7 +553,7 @@ window.addEventListener('load', function () {
 
 		if (source.toLowerCase() === 'google') {
 			const linkNode = document.querySelector('#' + id),
-				fontValue = data.value.replace(' ', '+'),
+				fontValue = data.value.split(' ').join('+').split('"').join(''),
 				url =
 					'//fonts.googleapis.com/css?family=' +
 					fontValue +

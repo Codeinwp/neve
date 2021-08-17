@@ -24,7 +24,7 @@ class Responsive_Number extends \WP_Customize_Control {
 	 * Responsive flag.
 	 *
 	 * @access public
-	 * @var string
+	 * @var bool
 	 */
 	public $responsive = true;
 

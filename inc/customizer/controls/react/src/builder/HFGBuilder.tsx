@@ -10,6 +10,7 @@ import { Spinner } from '@wordpress/components';
 
 import {
 	BuilderActions,
+	BuilderChangeEvent,
 	BuilderContentInterface,
 	BuilderItemType,
 	DeviceTypes,
@@ -21,6 +22,7 @@ import {
 import {
 	arraysAreIdentical,
 	getUsedItemsFromItems,
+	maybeParseJson,
 	ROW_SCHEMA,
 } from './common/utils';
 import { ItemInterface } from 'react-sortablejs';
@@ -57,11 +59,14 @@ const HFGBuilder: React.FC<Props> = ({
 	const [previewSidebar, togglePreviewSidebar] = useState<boolean>(false);
 	const [currentSection, setCurrentSection] = useState<string>('');
 
-	const getSidebarItems = () => {
+	const getSidebarItems = (
+		explicitValue: BuilderContentInterface | null = null
+	) => {
+		const usedValue = explicitValue || value;
 		const allItems = window.NeveReactCustomize.HFG[builder].items;
 		const usedItems =
-			value && value[device]
-				? getUsedItemsFromItems(value[device])
+			usedValue && usedValue[device]
+				? getUsedItemsFromItems(usedValue[device])
 				: Object.keys(allItems);
 		return Object.keys(allItems)
 			.filter((key) => !usedItems.includes(key))
@@ -73,9 +78,17 @@ const HFGBuilder: React.FC<Props> = ({
 			});
 	};
 
-	const [sidebarItems, setSidebarItems] = useState<ItemInterface[]>(
-		getSidebarItems()
-	);
+	const [sidebarItems, setSidebarItems] = useState<ItemInterface[]>([]);
+
+	const updateSidebarItems = () => {
+		setSidebarItems([...getSidebarItems()]);
+	};
+
+	const explicitlyUpdateSidebarItemsWithThisValue = (
+		explicitVal: BuilderContentInterface
+	) => {
+		setSidebarItems([...getSidebarItems(explicitVal)]);
+	};
 
 	const onDragStart = () => {
 		setDragging(true);
@@ -211,15 +224,17 @@ const HFGBuilder: React.FC<Props> = ({
 	 * Bind the device switchers to the device state.
 	 */
 	useEffect(() => {
+		updateSidebarItems();
 		bindDeviceSwitching();
+		bindValueChanges();
 	}, []);
 
 	/*
 	 * Make sure we update the sidebar.
 	 */
 	useEffect(() => {
-		setSidebarItems(getSidebarItems());
-	}, [device, value[device]]);
+		updateSidebarItems();
+	}, [device]);
 
 	const bindDeviceSwitching = () => {
 		window.wp.customize.bind('ready', () => {
@@ -257,6 +272,33 @@ const HFGBuilder: React.FC<Props> = ({
 		});
 	};
 
+	const bindValueChanges = () => {
+		document.addEventListener(
+			'neve-changed-builder-value',
+			(e: BuilderChangeEvent) => {
+				const { detail } = e;
+				if (!detail) return false;
+				const { id, value: builderValue } = detail;
+				let actualValue = builderValue;
+
+				if (!actualValue) {
+					actualValue = { ...value };
+				}
+
+				if (!id || id !== builder) return false;
+
+				const parsed = maybeParseJson(actualValue);
+
+				onChange(parsed as BuilderContentInterface);
+				explicitlyUpdateSidebarItemsWithThisValue(
+					parsed as BuilderContentInterface
+				);
+
+				return false;
+			}
+		);
+	};
+
 	const actions: BuilderActions = {
 		updateLayout,
 		onDragStart,
@@ -265,6 +307,7 @@ const HFGBuilder: React.FC<Props> = ({
 		setDevice,
 		setSidebarItems,
 		togglePreviewSidebar,
+		updateSidebarItems,
 	};
 
 	return (

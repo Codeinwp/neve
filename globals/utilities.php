@@ -11,10 +11,12 @@ use Neve_Pro\Modules\Header_Footer_Grid\Components\Icons;
 /**
  * Check if we're delivering AMP
  *
+ * Function(is_amp_endpoint) is deprecated since AMP v2.0, use amp_is_request instead of it since v2.0
+ *
  * @return bool
  */
 function neve_is_amp() {
-	return function_exists( 'is_amp_endpoint' ) && is_amp_endpoint();
+	return ( function_exists( 'amp_is_request' ) && amp_is_request() ) || ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() );
 }
 
 /**
@@ -157,6 +159,7 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '' ) {
 		return $svg;
 	}
 	echo( $svg ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	return null;
 }
 
 /**
@@ -167,7 +170,7 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '' ) {
  * @param int  $size icon size.
  * @param bool $amp_ready Should we add the AMP binding.
  *
- * @return string
+ * @return string|null
  */
 function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_ready = false ) {
 
@@ -184,6 +187,7 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 		return $svg;
 	}
 	echo $svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	return null;
 }
 
 /**
@@ -1491,4 +1495,23 @@ function neve_can_use_conditional_header() {
  */
 function neve_had_old_hfb() {
 	return ( get_theme_mod( 'hfg_header_layout' ) !== false || get_theme_mod( 'hfg_footer_layout' ) ) !== false;
+}
+
+/**
+ * Check if we have pro support.
+ *
+ * @param string $feature feature to check support for.
+ */
+function neve_pro_has_support( $feature ) {
+	return ( defined( 'NEVE_PRO_COMPATIBILITY_FEATURES' ) && isset( NEVE_PRO_COMPATIBILITY_FEATURES[ $feature ] ) );
+}
+
+/**
+ * Check that if new widget editor is available.
+ *
+ * @return bool
+ * @since 3.0.0
+ */
+function neve_is_new_widget_editor() {
+	return ( defined( 'GUTENBERG_VERSION' ) && version_compare( GUTENBERG_VERSION, '10.6.2', '>' ) ) || version_compare( substr( get_bloginfo( 'version' ), 0, 3 ), '5.8', '>=' );
 }

@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '2.11.6' );
+define( 'NEVE_VERSION', '3.0.1' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 define( 'NEVE_MAIN_DIR', get_template_directory() . '/' );
@@ -49,7 +49,7 @@ if ( version_compare( PHP_VERSION, '7.0' ) < 0 ) {
 
 $_files_to_check = defined( 'NEVE_IGNORE_SOURCE_CHECK' ) ? [] : [
 	NEVE_MAIN_DIR . 'vendor/autoload.php',
-	NEVE_MAIN_DIR . 'style-main.css',
+	NEVE_MAIN_DIR . 'style-main-new.css',
 	NEVE_MAIN_DIR . 'assets/js/build/modern/frontend.js',
 	NEVE_MAIN_DIR . 'dashboard/build/dashboard.js',
 	NEVE_MAIN_DIR . 'inc/customizer/controls/react/bundle/controls.js',
@@ -111,5 +111,27 @@ require_once 'globals/hooks.php';
 require_once 'globals/sanitize-functions.php';
 require_once get_template_directory() . '/start.php';
 
+/**
+ * If the new widget editor is available,
+ * we re-assign the widgets to hfg_footer
+ */
+if ( neve_is_new_widget_editor() ) {
+	/**
+	 * Re-assign the widgets to hfg_footer
+	 *
+	 * @param array  $section_args The section arguments.
+	 * @param string $section_id The section ID.
+	 * @param string $sidebar_id The sidebar ID.
+	 *
+	 * @return mixed
+	 */
+	function neve_customizer_custom_widget_areas( $section_args, $section_id, $sidebar_id ) {
+		if ( strpos( $section_id, 'widgets-footer' ) ) {
+			$section_args['panel'] = 'hfg_footer';
+		}
+		return $section_args;
+	}
+	add_filter( 'customizer_widgets_section_args', 'neve_customizer_custom_widget_areas', 10, 3 );
+}
 
 require_once get_template_directory() . '/header-footer-grid/loader.php';

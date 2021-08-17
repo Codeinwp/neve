@@ -15,6 +15,7 @@ yarn-error.log
 assets/js/build/*
 assets/css/*
 style-main*
+style-main-new*
 dashboard/build/*
 inc/customizer/controls/react/bundle/*
 inc/admin/metabox/build

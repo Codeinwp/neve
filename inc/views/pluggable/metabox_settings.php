@@ -75,6 +75,7 @@ class Metabox_Settings {
 		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'filter_post_elements' ) );
 		add_filter( 'neve_post_title_alignment', array( $this, 'filter_title_alignment' ) );
 		add_filter( 'neve_display_author_avatar', array( $this, 'filter_author_avatar_display' ), 15 );
+		add_filter( 'neve_meta_content_width', array( $this, 'get_content_width' ) );
 	}
 
 	/**
@@ -143,11 +144,11 @@ class Metabox_Settings {
 	/**
 	 * Get the post id.
 	 *
-	 * @return bool|string
+	 * @return int|false
 	 */
 	private function get_post_id() {
 		if ( $this->is_blog_static() ) {
-			return get_option( 'page_for_posts' );
+			return (int) get_option( 'page_for_posts' );
 		}
 
 		if ( is_search() ) {
@@ -296,7 +297,7 @@ class Metabox_Settings {
 	/**
 	 * Get content width status.
 	 *
-	 * @return int|string
+	 * @return int
 	 */
 	private function get_content_width_default() {
 		if ( (int) $this->get_post_id() === (int) get_option( 'woocommerce_checkout_page_id' ) ) {
@@ -429,6 +430,16 @@ class Metabox_Settings {
 
 		if ( $post_id === false ) {
 			return $position;
+		}
+
+		$has_content_width = get_post_meta( $post_id, self::ENABLE_CONTENT_WIDTH, true );
+
+		if ( $has_content_width === 'on' ) {
+			$content_width = get_post_meta( $post_id, self::CONTENT_WIDTH, true );
+
+			if ( $content_width >= 95 ) {
+				return 'full-width';
+			}
 		}
 
 		$meta_value = get_post_meta( $post_id, self::SIDEBAR, true );

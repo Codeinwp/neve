@@ -115,7 +115,7 @@ const ResponsiveRangeComponent = ({ control }) => {
 				<RangeControl
 					resetFallbackValue={defaultVal[currentDevice]}
 					value={displayValue}
-					min={min < 0 ? min : 0}
+					min={min || 0}
 					max={max || 100}
 					step={step || 1}
 					allowReset

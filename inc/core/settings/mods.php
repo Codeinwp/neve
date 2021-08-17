@@ -34,7 +34,7 @@ class Mods {
 	 * Get theme mod.
 	 *
 	 * @param string $key Key value.
-	 * @param string $default Default value.
+	 * @param mixed  $default Default value.
 	 *
 	 * @return mixed Mod value.
 	 */
@@ -69,7 +69,7 @@ class Mods {
 	 *
 	 * @param string $key Key name.
 	 *
-	 * @return array|bool
+	 * @return array|bool|string
 	 */
 	private static function defaults( $key ) {
 		switch ( $key ) {
@@ -194,7 +194,7 @@ class Mods {
 	 * Get and transform setting to json.
 	 *
 	 * @param string $key Key name.
-	 * @param string $default Default value.
+	 * @param mixed  $default Default value.
 	 * @param bool   $as_array As array or Object.
 	 *
 	 * @return mixed
@@ -208,7 +208,7 @@ class Mods {
 	 *
 	 * @param string $key theme mod key.
 	 *
-	 * @return string | array
+	 * @return string|array|int|false
 	 */
 	public static function get_alternative_mod_default( $key ) {
 		$new                    = neve_is_new_skin();
@@ -259,9 +259,9 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '32' : '1.5',
-							'tablet'  => $new ? '40' : '1.5',
-							'desktop' => $new ? '48' : '2',
+							'mobile'  => $new ? '36' : '1.5',
+							'tablet'  => $new ? '38' : '1.5',
+							'desktop' => $new ? '40' : '2',
 							'suffix'  => $headings_sufix,
 						],
 						'lineHeight' => [
@@ -276,9 +276,9 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '24' : '1.3',
-							'tablet'  => $new ? '32' : '1.3',
-							'desktop' => $new ? '40' : '1.75',
+							'mobile'  => $new ? '28' : '1.3',
+							'tablet'  => $new ? '30' : '1.3',
+							'desktop' => $new ? '32' : '1.75',
 							'suffix'  => $headings_sufix,
 						],
 						'lineHeight' => [
@@ -293,9 +293,9 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '20' : '1.1',
-							'tablet'  => $new ? '24' : '1.1',
-							'desktop' => $new ? '32' : '1.5',
+							'mobile'  => $new ? '24' : '1.1',
+							'tablet'  => $new ? '26' : '1.1',
+							'desktop' => $new ? '28' : '1.5',
 							'suffix'  => $headings_sufix,
 						],
 						'lineHeight' => [
@@ -310,8 +310,8 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '18' : '1',
-							'tablet'  => $new ? '20' : '1',
+							'mobile'  => $new ? '20' : '1',
+							'tablet'  => $new ? '22' : '1',
 							'desktop' => $new ? '24' : '1.25',
 							'suffix'  => $headings_sufix,
 						],
@@ -345,7 +345,7 @@ class Mods {
 					array(
 						'fontSize'   => [
 							'mobile'  => $new ? '14' : '0.75',
-							'tablet'  => $new ? '16' : '0.75',
+							'tablet'  => $new ? '14' : '0.75',
 							'desktop' => $new ? '16' : '1',
 							'suffix'  => $headings_sufix,
 						],

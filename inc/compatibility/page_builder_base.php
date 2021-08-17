@@ -22,7 +22,7 @@ abstract class Page_Builder_Base {
 	/**
 	 * Decide if a page is edited with a page builder or not.
 	 *
-	 * @param string $pid Post id.
+	 * @param int $pid Post id.
 	 *
 	 * @return bool
 	 */
@@ -43,7 +43,7 @@ abstract class Page_Builder_Base {
 		}
 
 		$post_id = get_the_ID();
-		if ( ! isset( $post_id ) || $post_id === false ) {
+		if ( ! $post_id ) {
 			return;
 		}
 
@@ -68,7 +68,7 @@ abstract class Page_Builder_Base {
 	/**
 	 * Set page layout.
 	 *
-	 * @param string $post_id the post id.
+	 * @param int $post_id the post id.
 	 */
 	private function set_page_template( $post_id ) {
 		global $post;
