@@ -31,7 +31,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Install composer
-        run: composer config platform.php 7.1 && composer update --prefer-dist --no-progress --no-suggest
+        run: composer install --ignore-platform-reqs --prefer-dist --no-progress --no-suggest
       - name: Run PHPCS
         run: composer run lint
 
@@ -107,7 +107,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Install composer
-        run: composer config platform.php 7.1 && composer update
+        run: composer install --ignore-platform-reqs
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v2
         with:
