@@ -85,6 +85,8 @@ class Font_Manager extends Base_View {
 		// Get list of all Google Fonts.
 		$google_fonts = neve_get_google_fonts();
 
+		$font = str_replace( '"', '', $font );
+
 		// Make sure font is in our list of fonts.
 		if ( ! $google_fonts || ! in_array( $font, $google_fonts, true ) ) {
 			return;

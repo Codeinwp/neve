@@ -37,9 +37,9 @@ class Manager {
 	 *
 	 * @since   1.0.0
 	 * @access  private
-	 * @var Defaults $_defaults
+	 * @var Defaults $_defaults (Defaults class implements to \ArrayAccess, it can be used an array)
 	 */
-	private static $_defaults = [];
+	private static $_defaults;
 	/**
 	 * Used to save the register settings ids and their defaults.
 	 *
@@ -104,7 +104,7 @@ class Manager {
 	/**
 	 * Load settings/control group in customizer.
 	 *
-	 * @param null                       $group Group to load.
+	 * @param string|null                $group Group to load.
 	 * @param \WP_Customize_Manager|null $customize_manager Manager object.
 	 *
 	 * @return \WP_Customize_Manager Customizer object.
@@ -435,8 +435,8 @@ class Manager {
 	/**
 	 * Return registered default.
 	 *
-	 * @param string $id Setting id.
-	 * @param null   $subkey Subkey, if any.
+	 * @param string      $id Setting id.
+	 * @param null|string $subkey Subkey, if any.
 	 *
 	 * @return mixed|null
 	 */

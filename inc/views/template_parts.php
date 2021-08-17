@@ -43,7 +43,7 @@ class Template_Parts extends Base_View {
 	/**
 	 * Echo the post class.
 	 */
-	private function post_class() {
+	protected function post_class() {
 		$class  = join( ' ', get_post_class() );
 		$layout = $this->get_layout();
 		$class .= ' layout-' . $layout;
@@ -262,7 +262,7 @@ class Template_Parts extends Base_View {
 
 		$new_moretag = '&hellip;&nbsp;';
 
-		if ( isset( $moretag ) && ( $moretag !== ' [&hellip;]' ) ) {
+		if ( $moretag !== ' [&hellip;]' ) {
 			$new_moretag = '';
 		}
 

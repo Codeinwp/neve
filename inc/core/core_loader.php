@@ -125,6 +125,7 @@ class Core_Loader {
 				'Compatibility\Web_Stories',
 
 				'Admin\Metabox\Manager',
+				'Admin\Troubleshoot\Main',
 			)
 		);
 	}

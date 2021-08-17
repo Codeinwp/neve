@@ -18,9 +18,9 @@ use HFG\Core\Magic_Tags;
 /**
  * Return registered builders.
  *
- * @param string $builder_name The builder id.
+ * @param string $builder_name The builder id. (header|footer|page_header etc.).
  *
- * @return Abstract_Builder[]|Abstract_Builder Array of builders registered.
+ * @return Abstract_Builder instance, such as HFG\Core\Builder\Header|Neve_Pro\Modules\Header_Footer_Grid\Builder\Page_Header|HFG\Core\Builder\Footer
  */
 function get_builder( $builder_name = '' ) {
 	return Main::get_instance()->get_builder( $builder_name );
@@ -32,7 +32,7 @@ function get_builder( $builder_name = '' ) {
  * @param string $builder_name The builder id.
  */
 function render_builder( $builder_name = '' ) {
-	Main::get_instance()->get_builder( $builder_name )->render();
+	get_builder( $builder_name )->render();
 }
 
 /**
@@ -40,10 +40,9 @@ function render_builder( $builder_name = '' ) {
  *
  * @param string $builder_name The builder id.
  * @param null   $device       The device.
- * @param null   $row_index    The row index.
  */
-function render_components( $builder_name = '', $device = null, $row_index = null ) {
-	Main::get_instance()->get_builder( $builder_name )->render_components( $device, $row_index );
+function render_components( $builder_name = '', $device = null ) {
+	get_builder( $builder_name )->render_components( $device );
 }
 
 /**
@@ -55,8 +54,7 @@ function render_components( $builder_name = '', $device = null, $row_index = nul
  * @return Core\Components\Abstract_Component
  */
 function current_component( $builder_name = '', $component_id = null ) {
-	$builder = Main::get_instance()->get_builder( $builder_name );
-	$builder = is_array( $builder ) ? reset( $builder ) : $builder;
+	$builder = get_builder( $builder_name );
 
 	return $builder->get_component( $component_id );
 }
@@ -69,7 +67,7 @@ function current_component( $builder_name = '', $component_id = null ) {
  * @return string|null
  */
 function current_device( $builder_name = '' ) {
-	return Main::get_instance()->get_builder( $builder_name )->get_current_device();
+	return get_builder( $builder_name )->get_current_device();
 }
 
 /**
@@ -80,7 +78,7 @@ function current_device( $builder_name = '' ) {
  * @return string|null
  */
 function current_row( $builder_name = '' ) {
-	return Main::get_instance()->get_builder( $builder_name )->get_current_row_index();
+	return get_builder( $builder_name )->get_current_row_index();
 }
 
 /**
@@ -134,7 +132,7 @@ function row_setting( $id, $default = null ) {
  * @param mixed      $value The media reference.
  * @param mixed|null $size  Optional. The size desired.
  *
- * @return array|bool|false|string
+ * @return string|false
  */
 function get_media( $value, $size = 'full' ) {
 
@@ -155,12 +153,12 @@ function get_media( $value, $size = 'full' ) {
 }
 
 /**
- * Retrieve media from post id.
+ * Retrieve media URL from post id.
  *
  * @param int    $id   Post ID.
  * @param string $size Media size.
  *
- * @return bool
+ * @return false|string
  */
 function media_from_id( $id, $size = 'full' ) {
 	$image_attributes = wp_get_attachment_image_src( $id, $size );
@@ -177,7 +175,7 @@ function media_from_id( $id, $size = 'full' ) {
  * @param string $url  The attachment url.
  * @param string $size The media size.
  *
- * @return bool
+ * @return string|false
  */
 function media_from_url( $url, $size = 'full' ) {
 	$img_id = function_exists( 'wpcom_vip_attachment_url_to_postid' ) ? wpcom_vip_attachment_url_to_postid( $url ) : attachment_url_to_postid( $url ); //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.attachment_url_to_postid_attachment_url_to_postid
@@ -199,7 +197,7 @@ function media_from_url( $url, $size = 'full' ) {
  * @param array  $array Array for media.
  * @param string $size  The media size.
  *
- * @return bool|false|string
+ * @return false|string
  */
 function media_from_array( $array = array(), $size = 'full' ) {
 	$value = wp_parse_args(

@@ -52,6 +52,7 @@ label {
 
 fieldset {
   padding: $spacing-lg - 10px $spacing-lg;
+  margin-bottom: $spacing-md;
   border: 2px solid var(--nv-light-bg);
 
   legend {

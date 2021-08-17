@@ -11,10 +11,12 @@ use Neve_Pro\Modules\Header_Footer_Grid\Components\Icons;
 /**
  * Check if we're delivering AMP
  *
+ * Function(is_amp_endpoint) is deprecated since AMP v2.0, use amp_is_request instead of it since v2.0
+ *
  * @return bool
  */
 function neve_is_amp() {
-	return function_exists( 'is_amp_endpoint' ) && is_amp_endpoint();
+	return ( function_exists( 'amp_is_request' ) && amp_is_request() ) || ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() );
 }
 
 /**
@@ -157,6 +159,7 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '' ) {
 		return $svg;
 	}
 	echo( $svg ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	return null;
 }
 
 /**
@@ -167,7 +170,7 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '' ) {
  * @param int  $size icon size.
  * @param bool $amp_ready Should we add the AMP binding.
  *
- * @return string
+ * @return string|null
  */
 function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_ready = false ) {
 
@@ -184,6 +187,7 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 		return $svg;
 	}
 	echo $svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	return null;
 }
 
 /**
@@ -1510,4 +1514,21 @@ function neve_pro_has_support( $feature ) {
  */
 function neve_is_new_widget_editor() {
 	return ( defined( 'GUTENBERG_VERSION' ) && version_compare( GUTENBERG_VERSION, '10.6.2', '>' ) ) || version_compare( substr( get_bloginfo( 'version' ), 0, 3 ), '5.8', '>=' );
+}
+
+/**
+ * Wrapper for wp_remote_get on VIP environments.
+ *
+ * @param string $url Url to check.
+ * @param array  $args Option params.
+ *
+ * @return array|\WP_Error
+ */
+function neve_safe_get( $url, $args = array() ) {
+	return function_exists( 'vip_safe_wp_remote_get' )
+		? vip_safe_wp_remote_get( $url )
+		: wp_remote_get( //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get, Already used.
+			$url,
+			$args
+		);
 }

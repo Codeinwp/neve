@@ -209,7 +209,7 @@ class Pagination extends Base_View {
 	/**
 	 * Has infinite scroll.
 	 *
-	 * @return string
+	 * @return bool
 	 */
 	private function has_infinite_scroll() {
 		if ( neve_is_amp() ) {

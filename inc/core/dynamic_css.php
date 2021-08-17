@@ -85,7 +85,7 @@ class Dynamic_Css {
 	/**
 	 * Basic CSS minification.
 	 *
-	 * @param $css
+	 * @param string $css
 	 *
 	 * @return string
 	 */
