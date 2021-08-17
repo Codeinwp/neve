@@ -41,10 +41,11 @@ class Masonry extends Template_Parts {
 	 * @return string
 	 */
 	public function maybe_wrap_custom_layout( $content, $post_id ) {
-		if ( ! $this->is_blog() ) {
+		if ( ! $this->is_masonry_enabled() ) {
 			return $content;
 		}
-		if ( ! $this->is_masonry_enabled() ) {
+
+		if ( ! $this->is_blog() ) {
 			return $content;
 		}
 
