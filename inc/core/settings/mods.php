@@ -34,7 +34,7 @@ class Mods {
 	 * Get theme mod.
 	 *
 	 * @param string $key Key value.
-	 * @param string $default Default value.
+	 * @param mixed  $default Default value.
 	 *
 	 * @return mixed Mod value.
 	 */
@@ -69,7 +69,7 @@ class Mods {
 	 *
 	 * @param string $key Key name.
 	 *
-	 * @return array|bool
+	 * @return array|bool|string
 	 */
 	private static function defaults( $key ) {
 		switch ( $key ) {
@@ -194,7 +194,7 @@ class Mods {
 	 * Get and transform setting to json.
 	 *
 	 * @param string $key Key name.
-	 * @param string $default Default value.
+	 * @param mixed  $default Default value.
 	 * @param bool   $as_array As array or Object.
 	 *
 	 * @return mixed
@@ -208,7 +208,7 @@ class Mods {
 	 *
 	 * @param string $key theme mod key.
 	 *
-	 * @return string | array
+	 * @return string|array|int|false
 	 */
 	public static function get_alternative_mod_default( $key ) {
 		$new                    = neve_is_new_skin();

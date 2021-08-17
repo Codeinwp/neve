@@ -117,10 +117,6 @@ final class Manager {
 	 * Register meta box to control layout on pages and posts.
 	 */
 	public function add() {
-		if ( $this->should_add_meta() === false ) {
-			return;
-		}
-
 		$post_type         = 'Neve';
 		$post_type_from_db = get_post_type();
 		if ( $post_type_from_db ) {
@@ -200,26 +196,6 @@ final class Manager {
 			'<strong>SHIFT + ALT + S</strong> ' . esc_html__( 'or', 'neve' ) . ' <strong>control + option + S</strong>'
 		);
 		echo '</div>';
-	}
-
-	/**
-	 * Decide if the metabox should be visible.
-	 *
-	 * @return bool
-	 */
-	public function should_add_meta() {
-		global $post;
-
-		if ( empty( $post ) ) {
-			return false;
-		}
-
-		$restricted_pages_id = array();
-		if ( in_array( $post->ID, $restricted_pages_id, true ) ) {
-			return false;
-		}
-
-		return true;
 	}
 
 	/**
@@ -480,7 +456,10 @@ final class Manager {
 			return;
 		}
 
-		$checkout_was_updated = get_post_meta( $post_id, 'neve_checkout_updated', 'no' );
+		$checkout_was_updated = get_post_meta( $post_id, 'neve_checkout_updated', true );
+		// assign default value
+		$checkout_was_updated = ( $checkout_was_updated !== '' ) ? $checkout_was_updated : 'no';
+
 		if ( Main::is_new_page() || ( Main::is_checkout() && $checkout_was_updated === 'no' ) ) {
 			update_post_meta( $post_id, 'neve_meta_sidebar', 'full-width' );
 			update_post_meta( $post_id, 'neve_meta_enable_content_width', 'on' );

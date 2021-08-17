@@ -286,8 +286,17 @@ class Admin {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
+
+		// to check under the gutenberg v5.5.0
 		if ( function_exists( 'is_gutenberg_page' ) && is_gutenberg_page() ) {
 			return;
+		}
+
+		// to check above the gutenberg v5.5.0 (is_gutenberg_page is deprecated with )
+		if ( method_exists( $current_screen, 'is_block_editor' ) ) {
+			if ( $current_screen->is_block_editor() ) {
+				return;
+			}
 		}
 
 		/**

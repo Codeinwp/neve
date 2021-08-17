@@ -53,6 +53,9 @@
 	"installer-disable": "true"
   },
   "require-dev": {
-    "codeinwp/phpcs-ruleset": "dev-main"
+    "codeinwp/phpcs-ruleset": "dev-main",
+    "phpstan/phpstan": "0.12.90",
+    "szepeviktor/phpstan-wordpress": "^0.7.6",
+    "php-stubs/woocommerce-stubs": "^5.4"
   }
 }
