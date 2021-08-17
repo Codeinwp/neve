@@ -33,6 +33,7 @@
 	"phpcs": "phpcs --standard=phpcs.xml -s  --runtime-set testVersion 7.0-",
 	"lint": "composer run-script phpcs",
 	"phpcs-i": "phpcs -i",
+	"phpstan": "phpstan analyse",
 	"post-install-cmd": [
 	  "[ ! -z \"$GITHUB_ACTIONS\" ] && yarn run bump-vendor || true"
 	],
