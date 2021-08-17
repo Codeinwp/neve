@@ -17,7 +17,7 @@ jobs:
           path: neve-head
       - name: FRESH Makepot BASE
         run: |
-         cd neve-base
+         cd neve-head
          ls languages/
          npm run build:makepot
          ls languages/
@@ -28,7 +28,7 @@ jobs:
           path: neve-base
       - name: FRESH Makepot HEAD
         run: |
-         cd neve-head
+         cd neve-base
          ls languages/
          npm run build:makepot
          ls languages/
