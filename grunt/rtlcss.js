@@ -39,7 +39,7 @@ module.exports = {
 		cwd: './',
 		dest: './',
 		ext,
-		src: ['style-main.css'],
+		src: ['style-main-new.css'],
 	},
 	styleLegacy: {
 		options,

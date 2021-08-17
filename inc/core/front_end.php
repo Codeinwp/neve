@@ -47,6 +47,7 @@ class Front_End {
 		add_theme_support( 'custom-logo', $logo_settings );
 		add_theme_support( 'html5', array( 'search-form' ) );
 		add_theme_support( 'customize-selective-refresh-widgets' );
+		add_theme_support( 'custom-background', [] );
 		add_theme_support( 'align-wide' );
 		add_theme_support( 'editor-color-palette', $this->get_gutenberg_color_palette() );
 		add_theme_support( 'fl-theme-builder-headers' );
@@ -74,6 +75,9 @@ class Front_End {
 
 		add_image_size( 'neve-blog', 930, 620, true );
 		add_filter( 'wp_nav_menu_args', array( $this, 'nav_walker' ), 1001 );
+		if ( neve_is_new_skin() ) {
+			add_filter( 'theme_mod_background_color', '__return_empty_string' );
+		}
 		$this->add_woo_support();
 	}
 
@@ -291,7 +295,7 @@ class Front_End {
 			wp_enqueue_style( 'neve-woocommerce' );
 		}
 
-		$style_path = neve_is_new_skin() ? '/style-main' : '/assets/css/style-legacy';
+		$style_path = neve_is_new_skin() ? '/style-main-new' : '/assets/css/style-legacy';
 
 		wp_register_style( 'neve-style', get_template_directory_uri() . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 		wp_style_add_data( 'neve-style', 'rtl', 'replace' );

@@ -78,3 +78,9 @@ main .nv-shop {
 .woocommerce form .form-row textarea:focus {
   box-shadow: 0 0 3px 0 var(--nv-secondary-accent);
 }
+
+.woocommerce-cart,.woocommerce-checkout, .woocommerce-account {
+	.nv-single-page-wrap {
+		margin-bottom: $spacing-aired;
+	}
+}

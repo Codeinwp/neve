@@ -73,14 +73,12 @@ class Admin {
 
 		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
 
-		add_action( 'init', [ $this, 'run_skin_and_builder_switches' ] );
+		$this->run_skin_and_builder_switches();
+
 		add_filter( 'ti_tpc_theme_mods_pre_import', [ $this, 'migrate_theme_mods_for_new_skin' ] );
 
 		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
 		add_filter( 'neve_pro_react_controls_localization', [ $this, 'adapt_conditional_headers' ] );
-		if ( class_exists( '\Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers' ) ) {
-			\Neve_Pro\Modules\Header_Footer_Grid\Customizer\Conditional_Headers::$theme_mods_keys[] = 'hfg_header_layout_v2';
-		}
 	}
 
 	/**
@@ -288,8 +286,17 @@ class Admin {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
+
+		// to check under the gutenberg v5.5.0
 		if ( function_exists( 'is_gutenberg_page' ) && is_gutenberg_page() ) {
 			return;
+		}
+
+		// to check above the gutenberg v5.5.0 (is_gutenberg_page is deprecated with )
+		if ( method_exists( $current_screen, 'is_block_editor' ) ) {
+			if ( $current_screen->is_block_editor() ) {
+				return;
+			}
 		}
 
 		/**
