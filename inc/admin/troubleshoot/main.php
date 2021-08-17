@@ -76,9 +76,10 @@ final class Main {
 	 */
 	public function neve_add_tests( $tests ) {
 		$tests['direct']['neve_api_test'] = array(
-			'label' => __( 'Neve API connectivity', 'neve' ),
+			'label' => __( 'Neve', 'neve' ) . ' ' . __( 'API connectivity', 'neve' ),
 			'test'  => [ $this, 'neve_api_test' ],
 		);
+
 		return $tests;
 	}
 
@@ -89,7 +90,7 @@ final class Main {
 	 */
 	public function neve_api_test() {
 		$result = array(
-			'label'       => __( 'Neve API connectivity', 'neve' ),
+			'label'       => __( 'Neve', 'neve' ) . ' ' . __( 'API connectivity', 'neve' ),
 			'status'      => 'good',
 			'badge'       => array(
 				'label' => __( 'Neve', 'neve' ),
@@ -97,7 +98,8 @@ final class Main {
 			),
 			'description' => sprintf(
 				'<p>%s</p>',
-				__( 'API connectivity for Neve is available.', 'neve' )
+				/* translators: Theme Name */
+				sprintf( __( 'API for %s is reachable.', 'neve' ), __( 'Neve', 'neve' ) )
 			),
 			'actions'     => '',
 			'test'        => 'neve_api_test',
@@ -105,11 +107,12 @@ final class Main {
 
 		if ( ! $this->test_api_connectivity() ) {
 			$result['status']         = 'critical';
-			$result['label']          = __( 'Can NOT connect to API', 'neve' );
+			$result['label']          = __( 'Can not connect to API', 'neve' );
 			$result['badge']['color'] = 'red';
 			$result['description']    = sprintf(
 				'<p>%s</p>',
-				__( 'API connectivity for Neve is NOT available on your site.', 'neve' )
+				/* translators: Theme Name */
+				sprintf( __( 'API for %s is reachable on your site.', 'neve' ), __( 'Neve', 'neve' ) )
 			);
 		}
 
@@ -131,10 +134,12 @@ final class Main {
 			$reason = is_wp_error( $response ) ? $response->get_error_message() : $response['response']['message'];
 			set_transient( 'neve_troubleshoot_api_reason', $reason, 10 * MINUTE_IN_SECONDS );
 			set_transient( 'neve_troubleshoot_api_response', 'no', 10 * MINUTE_IN_SECONDS );
+
 			return false;
 		}
 		set_transient( 'neve_troubleshoot_api_reason', '', 10 * MINUTE_IN_SECONDS );
 		set_transient( 'neve_troubleshoot_api_response', 'yes', 10 * MINUTE_IN_SECONDS );
+
 		return true;
 	}
 }

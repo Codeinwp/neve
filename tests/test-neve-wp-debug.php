@@ -39,6 +39,6 @@ class TestNeveWpDebug extends WP_UnitTestCase {
 		$debug_info = apply_filters( 'debug_information', [] );
 		$this->assertTrue( isset( $debug_info['neve'] ), 'There is no `neve` key registered for debug info.' );
 
-		$this->assertEquals( 'NO Server is unreachable.', $debug_info['neve']['fields']['api']['value'] );
+		$this->assertEquals( 'No Server is unreachable.', $debug_info['neve']['fields']['api']['value'] );
 	}
 }
