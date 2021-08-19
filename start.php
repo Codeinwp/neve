@@ -13,6 +13,7 @@ function neve_run() {
 		'NEVE_COMPATIBILITY_FEATURES',
 		[
 			'single_customizer' => true,
+			'repeater_control'  => true,
 		] 
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
