@@ -12,8 +12,8 @@ function neve_run() {
 	define(
 		'NEVE_COMPATIBILITY_FEATURES',
 		[
-			'single_customizer' => true,
-			'repeater_control'  => true,
+			'single_customizer'     => true,
+			'repeater_control'      => true,
 			'malformed_div_on_shop' => true,
 		]
 	);
