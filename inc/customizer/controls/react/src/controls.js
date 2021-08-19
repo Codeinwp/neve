@@ -27,6 +27,7 @@ import { BuilderColumns } from './builder-columns/Control';
 import { InstructionsControl } from './builder-instructions/Control';
 import { HeadingControl } from './heading/Control';
 import { SkinSwitcherControl } from './skin-switcher/Control';
+import { RepeaterControl } from './repeater/Control';
 
 import './style.scss';
 import Instructions from './builder-instructions/Instructions.tsx';
@@ -57,6 +58,7 @@ controlConstructor.neve_builder_columns = BuilderColumns;
 controlConstructor.hfg_instructions = InstructionsControl;
 controlConstructor.neve_customizer_heading = HeadingControl;
 controlConstructor.neve_skin_switcher = SkinSwitcherControl;
+controlConstructor.neve_repeater_control = RepeaterControl;
 
 const initDeviceSwitchers = () => {
 	const deviceButtons = document.querySelector(
