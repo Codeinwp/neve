@@ -58,7 +58,7 @@ const Sidebar = compose(
 	}
 	document.getElementById('neve-page-settings-notice').style.display =
 		'block';
-	//translators: %s - Theme Name
+	//translators: %s - Theme name
 	let sidebarLabel = sprintf(__('%s Options', 'neve'), __('Neve', 'neve'));
 	if (metaSidebar.whiteLabeled) {
 		sidebarLabel = metaSidebar.whiteLabelThemeName

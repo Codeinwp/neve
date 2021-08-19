@@ -252,16 +252,16 @@
         },
         {
             "name": "php-stubs/woocommerce-stubs",
-            "version": "v5.4.0",
+            "version": "v5.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-stubs/woocommerce-stubs.git",
-                "reference": "f0f6a806d92d8918d0dfccde5c7300ce182aec0d"
+                "reference": "310159b717404028f8703e8adf9a4e87a93edc56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-stubs/woocommerce-stubs/zipball/f0f6a806d92d8918d0dfccde5c7300ce182aec0d",
-                "reference": "f0f6a806d92d8918d0dfccde5c7300ce182aec0d",
+                "url": "https://api.github.com/repos/php-stubs/woocommerce-stubs/zipball/310159b717404028f8703e8adf9a4e87a93edc56",
+                "reference": "310159b717404028f8703e8adf9a4e87a93edc56",
                 "shasum": ""
             },
             "require": {
@@ -290,22 +290,22 @@
             ],
             "support": {
                 "issues": "https://github.com/php-stubs/woocommerce-stubs/issues",
-                "source": "https://github.com/php-stubs/woocommerce-stubs/tree/v5.4.0"
+                "source": "https://github.com/php-stubs/woocommerce-stubs/tree/v5.6.0"
             },
-            "time": "2021-06-09T05:54:56+00:00"
+            "time": "2021-08-18T05:07:47+00:00"
         },
         {
             "name": "php-stubs/wordpress-stubs",
-            "version": "v5.7.2",
+            "version": "v5.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-stubs/wordpress-stubs.git",
-                "reference": "beda02c58f1c4689d42c8dde6a84f7f0c9c93f42"
+                "reference": "794e6eedfd5f2a334d581214c007fc398be588fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-stubs/wordpress-stubs/zipball/beda02c58f1c4689d42c8dde6a84f7f0c9c93f42",
-                "reference": "beda02c58f1c4689d42c8dde6a84f7f0c9c93f42",
+                "url": "https://api.github.com/repos/php-stubs/wordpress-stubs/zipball/794e6eedfd5f2a334d581214c007fc398be588fe",
+                "reference": "794e6eedfd5f2a334d581214c007fc398be588fe",
                 "shasum": ""
             },
             "replace": {
@@ -334,9 +334,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-stubs/wordpress-stubs/issues",
-                "source": "https://github.com/php-stubs/wordpress-stubs/tree/v5.7.2"
+                "source": "https://github.com/php-stubs/wordpress-stubs/tree/v5.8.0"
             },
-            "time": "2021-05-13T07:54:04+00:00"
+            "time": "2021-07-21T02:34:37+00:00"
         },
         {
             "name": "phpcompatibility/php-compatibility",
@@ -764,16 +764,16 @@
         },
         {
             "name": "szepeviktor/phpstan-wordpress",
-            "version": "v0.7.6",
+            "version": "v0.7.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/szepeviktor/phpstan-wordpress.git",
-                "reference": "3721127a9ddc62c8dc14fc8726cbfb3e47529bbe"
+                "reference": "bdbea69b2ba4a69998c3b6fe2b7106d78a23bd72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/szepeviktor/phpstan-wordpress/zipball/3721127a9ddc62c8dc14fc8726cbfb3e47529bbe",
-                "reference": "3721127a9ddc62c8dc14fc8726cbfb3e47529bbe",
+                "url": "https://api.github.com/repos/szepeviktor/phpstan-wordpress/zipball/bdbea69b2ba4a69998c3b6fe2b7106d78a23bd72",
+                "reference": "bdbea69b2ba4a69998c3b6fe2b7106d78a23bd72",
                 "shasum": ""
             },
             "require": {
@@ -799,7 +799,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "PHPStan\\WordPress\\": "src/"
+                    "SzepeViktor\\PHPStan\\WordPress\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -816,7 +816,7 @@
             ],
             "support": {
                 "issues": "https://github.com/szepeviktor/phpstan-wordpress/issues",
-                "source": "https://github.com/szepeviktor/phpstan-wordpress/tree/v0.7.6"
+                "source": "https://github.com/szepeviktor/phpstan-wordpress/tree/v0.7.7"
             },
             "funding": [
                 {
@@ -824,7 +824,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-06-19T15:51:50+00:00"
+            "time": "2021-07-14T09:19:15+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",

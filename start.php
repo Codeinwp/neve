@@ -14,7 +14,8 @@ function neve_run() {
 		[
 			'single_customizer' => true,
 			'repeater_control'  => true,
-		] 
+			'malformed_div_on_shop' => true,
+		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
 	if ( is_readable( $vendor_file ) ) {
