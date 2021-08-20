@@ -159,7 +159,7 @@ class Comments extends Base_View {
 	public function end_comment_list_callback( $comment, $args, $depth ) {
 		if ( $this->is_tag_open && $comment->comment_parent == 0 ) {
 			$this->is_tag_open = false;
-			echo '</ol></div><!-- close children div -->';
+			echo '</ol></li><!-- close children li -->';
 		}
 	}
 
@@ -251,7 +251,7 @@ class Comments extends Base_View {
 		}
 		if ( $args['has_children'] === true ) {
 			$this->is_tag_open = true;
-			echo '<div class="children" role="listitem"><ol>';
+			echo '<li class="children" role="listitem"><ol>';
 		}
 	}
 
