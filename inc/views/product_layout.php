@@ -182,7 +182,7 @@ class Product_Layout extends Base_View {
 	 * @return array|mixed
 	 */
 	public function prefix_post_class( $classes ) {
-		if ( 'product' == get_post_type() ) {
+		if ( 'product' === get_post_type() ) {
 			$classes = array_diff( $classes, array( 'first', 'last' ) );
 		}
 		return $classes;
