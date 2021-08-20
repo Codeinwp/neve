@@ -144,11 +144,11 @@ class Metabox_Settings {
 	/**
 	 * Get the post id.
 	 *
-	 * @return bool|string
+	 * @return int|false
 	 */
 	private function get_post_id() {
 		if ( $this->is_blog_static() ) {
-			return get_option( 'page_for_posts' );
+			return (int) get_option( 'page_for_posts' );
 		}
 
 		if ( is_search() ) {
@@ -297,7 +297,7 @@ class Metabox_Settings {
 	/**
 	 * Get content width status.
 	 *
-	 * @return int|string
+	 * @return int
 	 */
 	private function get_content_width_default() {
 		if ( (int) $this->get_post_id() === (int) get_option( 'woocommerce_checkout_page_id' ) ) {

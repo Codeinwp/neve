@@ -13,6 +13,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 input[type="submit"],
+input[type="reset"],
 select,
 textarea {
   display: inline-block;
@@ -51,6 +52,7 @@ label {
 
 fieldset {
   padding: $spacing-lg - 10px $spacing-lg;
+  margin-bottom: $spacing-md;
   border: 2px solid var(--nv-light-bg);
 
   legend {

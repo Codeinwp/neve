@@ -98,6 +98,7 @@ type BuilderActions = {
 	setDevice: Dispatch<SetStateAction<DeviceTypes>>;
 	setSidebarItems: (value: ItemInterface[]) => void;
 	togglePreviewSidebar: (value: boolean) => void;
+	updateSidebarItems: () => void;
 };
 
 declare global {

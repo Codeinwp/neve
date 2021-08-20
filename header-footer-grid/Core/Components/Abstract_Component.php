@@ -375,7 +375,7 @@ abstract class Abstract_Component implements Component {
 	 * Method to set protected properties for class.
 	 *
 	 * @param string $key The property key name.
-	 * @param string $value The property value.
+	 * @param mixed  $value The property value.
 	 *
 	 * @return bool
 	 * @since   1.0.0

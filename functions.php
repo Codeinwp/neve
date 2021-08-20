@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '3.0.0' );
+define( 'NEVE_VERSION', '3.0.1' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 define( 'NEVE_MAIN_DIR', get_template_directory() . '/' );
@@ -61,7 +61,7 @@ foreach ( $_files_to_check as $_file_to_check ) {
 			sprintf(
 			/* translators: %s: commands to run the theme */
 				__( 'You appear to be running the Neve theme from source code. Please finish installation by running %s.', 'neve' ), // phpcs:ignore WordPress.Security.EscapeOutput
-				'<code>composer install &amp;&amp; yarn install --frozen-lockfile &amp;&amp; yarn run build</code>'
+				'<code>composer install --no-dev &amp;&amp; yarn install --frozen-lockfile &amp;&amp; yarn run build</code>'
 			)
 		);
 		break;

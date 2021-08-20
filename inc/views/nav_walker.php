@@ -36,10 +36,10 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	/**
 	 * Add the caret inside the menu item link.
 	 *
-	 * @param string $title menu item title.
-	 * @param object $item menu item object.
-	 * @param object $args menu args.
-	 * @param int    $depth the menu item depth.
+	 * @param string    $title menu item title.
+	 * @param \WP_Post  $item menu item object.
+	 * @param \stdClass $args menu args.
+	 * @param int       $depth the menu item depth.
 	 *
 	 * @return string
 	 */
@@ -74,17 +74,16 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	/**
 	 * Start_el
 	 *
-	 * @param string   $output Output.
-	 * @param \WP_Post $item Item.
-	 * @param int      $depth Depth.
-	 * @param array    $args Args.
-	 * @param int      $id id.
-	 *
+	 * @param string    $output Output.
+	 * @param \WP_Post  $item Item.
+	 * @param int       $depth Depth.
+	 * @param \stdClass $args Args.
+	 * @param int       $id id.
 	 * @since 3.0.0
 	 *
 	 * @see   Walker::start_el()
 	 */
-	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
 		if ( ! is_object( $args ) ) {
 			return;
 		}
@@ -111,12 +110,12 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	/**
 	 * Ends the element output, if needed.
 	 *
-	 * @param string   $output the end el string.
-	 * @param \WP_Post $item item.
-	 * @param int      $depth item depth.
-	 * @param array    $args item args.
+	 * @param string    $output the end el string.
+	 * @param \WP_Post  $item item.
+	 * @param int       $depth item depth.
+	 * @param \stdClass $args item args.
 	 */
-	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
+	public function end_el( &$output, $item, $depth = 0, $args = null ) {
 		if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
 			$t = '';
 			$n = '';

@@ -206,11 +206,10 @@ class Woocommerce {
 				'woocommerce_before_single_product_summary',
 				function () {
 					echo '<div class="nv-single-product-top">';
-
 				},
 				11
 			);
-			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ] );
+			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ], 1 );
 			// Change default for shop columns WooCommerce option.
 			add_filter( 'default_option_woocommerce_catalog_columns', [ $this, 'change_default_shop_cols' ] );
 		}
@@ -323,10 +322,6 @@ class Woocommerce {
 	 * Change functions hooked into woocommerce header.
 	 */
 	private function edit_woocommerce_header() {
-		remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
-		remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10 );
-		add_action( 'neve_before_shop_loop_content', 'woocommerce_product_archive_description', 0 );
-		add_action( 'neve_before_shop_loop_content', 'woocommerce_taxonomy_archive_description', 0 );
 		remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
