@@ -36,6 +36,7 @@ class Product_Layout extends Base_View {
 			add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'wrapper_close_div' ), 14 );
 		}
 
+
 	}
 
 	/**
@@ -151,19 +152,40 @@ class Product_Layout extends Base_View {
 		}
 
 		echo '<ul class="products exclusive-products">';
+		add_filter( 'woocommerce_post_class', array( $this, 'prefix_post_class' ), 21, 2 );
 		while ( $loop->have_posts() ) {
 			$loop->the_post();
 			wc_get_template_part( 'content', 'product' );
 			$dots++;
 		}
+		remove_filter( 'woocommerce_post_class', array( $this, 'prefix_post_class' ) );
 		wp_reset_postdata();
 		echo '</ul>';
-		echo '<div class="dots-nav">';
-		for ( $i = 0; $i < $dots; $i++ ) {
-			echo '<a class="dot"></a>';
+
+		if ( $loop->post_count > 4 ) {
+			echo '<div class="dots-nav">';
+			for ( $i = 0; $i < $dots; $i++ ) {
+				echo '<a class="dot"></a>';
+			}
+			echo '</div>';
 		}
-		echo '</div>';
+
 		echo '</section>';
+	}
+
+	/**
+	 * Function that remove woocommerce first / last classes on products.
+	 * This function is applied only on Exclusive products.
+	 *
+	 * @param string $classes WooCommerce classes on products.
+	 *
+	 * @return array|mixed
+	 */
+	public function prefix_post_class( $classes ) {
+		if ( 'product' == get_post_type() ) {
+			$classes = array_diff( $classes, array( 'first', 'last' ) );
+		}
+		return $classes;
 	}
 
 	/**
