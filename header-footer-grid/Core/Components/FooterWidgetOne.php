@@ -55,7 +55,7 @@ class FooterWidgetOne extends Abstract_FooterWidget {
 				self::COMPONENT_ID,
 				array(
 					SettingsManager::TAB_GENERAL => array(
-						'sidebar_widgets-footer-one-widgets' => array(),
+						'sidebars_widgets-footer-one-widgets' => array(),
 					),
 				)
 			);
