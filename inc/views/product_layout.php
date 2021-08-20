@@ -177,7 +177,7 @@ class Product_Layout extends Base_View {
 	 * Function that remove woocommerce first / last classes on products.
 	 * This function is applied only on Exclusive products.
 	 *
-	 * @param string $classes WooCommerce classes on products.
+	 * @param array $classes WooCommerce classes on products.
 	 *
 	 * @return array|mixed
 	 */
