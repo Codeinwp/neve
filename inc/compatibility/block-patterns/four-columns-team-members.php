@@ -9,11 +9,11 @@ return array(
 	'title'      => __( 'Four columns with team members', 'neve' ),
 	'content'    => '<!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
-<div class="wp-block-image is-style-default"><figure class="aligncenter "><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-3.jpg" alt=""/></figure></div>
+<div class="wp-block-column"><!-- wp:image {"align":"center","id":398,"sizeSlug":"large","className":"is-style-default"} -->
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-large"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-3.jpg" alt="" class="wp-image-398"/></figure></div>
 <!-- /wp:image -->
 
-<!-- wp:heading {"align":"center","level":3} -->
+<!-- wp:heading {"textAlign":"center","level":3} -->
 <h3 class="has-text-align-center">Tim Jerris</h3>
 <!-- /wp:heading -->
 
@@ -22,26 +22,24 @@ return array(
 <!-- /wp:paragraph -->
 
 <!-- wp:social-links {"align":"center"} -->
-<ul class="wp-block-social-links aligncenter"><!-- wp:social-link {"url":"","service":"wordpress"} /-->
-
-<!-- wp:social-link {"url":"#","service":"twitter"} /-->
+<ul class="wp-block-social-links aligncenter"><!-- wp:social-link {"url":"#","service":"twitter"} /-->
 
 <!-- wp:social-link {"url":"#","service":"facebook"} /-->
 
-<!-- wp:social-link {"service":"instagram"} /-->
+<!-- wp:social-link {"url":"#","service":"linkedin"} /--></ul>
+<!-- /wp:social-links -->
 
-<!-- wp:social-link {"url":"#","service":"linkedin"} /-->
-
-<!-- wp:social-link {"service":"youtube"} /--></ul>
-<!-- /wp:social-links --></div>
+<!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
-<div class="wp-block-image is-style-default"><figure class="aligncenter "><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-4.jpg" alt="" /></figure></div>
+<div class="wp-block-column"><!-- wp:image {"align":"center","id":399,"sizeSlug":"large","className":"is-style-default"} -->
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-large"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-4.jpg" alt="" class="wp-image-399"/></figure></div>
 <!-- /wp:image -->
 
-<!-- wp:heading {"align":"center","level":3} -->
+<!-- wp:heading {"textAlign":"center","level":3} -->
 <h3 class="has-text-align-center">Erica Browser</h3>
 <!-- /wp:heading -->
 
@@ -50,26 +48,24 @@ return array(
 <!-- /wp:paragraph -->
 
 <!-- wp:social-links {"align":"center"} -->
-<ul class="wp-block-social-links aligncenter"><!-- wp:social-link {"url":"","service":"wordpress"} /-->
-
-<!-- wp:social-link {"url":"#","service":"twitter"} /-->
+<ul class="wp-block-social-links aligncenter"><!-- wp:social-link {"url":"#","service":"twitter"} /-->
 
 <!-- wp:social-link {"url":"#","service":"facebook"} /-->
 
-<!-- wp:social-link {"service":"instagram"} /-->
+<!-- wp:social-link {"url":"#","service":"linkedin"} /--></ul>
+<!-- /wp:social-links -->
 
-<!-- wp:social-link {"url":"#","service":"linkedin"} /-->
-
-<!-- wp:social-link {"service":"youtube"} /--></ul>
-<!-- /wp:social-links --></div>
+<!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
-<div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-2.jpg" alt="" /></figure></div>
+<div class="wp-block-column"><!-- wp:image {"align":"center","id":397,"sizeSlug":"large","className":"is-style-default"} -->
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-large"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-2.jpg" alt="" class="wp-image-397"/></figure></div>
 <!-- /wp:image -->
 
-<!-- wp:heading {"align":"center","level":3} -->
+<!-- wp:heading {"textAlign":"center","level":3} -->
 <h3 class="has-text-align-center">Jack Nolston</h3>
 <!-- /wp:heading -->
 
@@ -78,26 +74,24 @@ return array(
 <!-- /wp:paragraph -->
 
 <!-- wp:social-links {"align":"center"} -->
-<ul class="wp-block-social-links aligncenter"><!-- wp:social-link {"url":"","service":"wordpress"} /-->
-
-<!-- wp:social-link {"url":"#","service":"twitter"} /-->
+<ul class="wp-block-social-links aligncenter"><!-- wp:social-link {"url":"#","service":"twitter"} /-->
 
 <!-- wp:social-link {"url":"#","service":"facebook"} /-->
 
-<!-- wp:social-link {"service":"instagram"} /-->
+<!-- wp:social-link {"url":"#","service":"linkedin"} /--></ul>
+<!-- /wp:social-links -->
 
-<!-- wp:social-link {"url":"#","service":"linkedin"} /-->
-
-<!-- wp:social-link {"service":"youtube"} /--></ul>
-<!-- /wp:social-links --></div>
+<!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
-<div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-1.jpg" alt="" /></figure></div>
+<div class="wp-block-column"><!-- wp:image {"align":"center","id":396,"sizeSlug":"large","className":"is-style-default"} -->
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-large"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-1.jpg" alt="" class="wp-image-396"/></figure></div>
 <!-- /wp:image -->
 
-<!-- wp:heading {"align":"center","level":3} -->
+<!-- wp:heading {"textAlign":"center","level":3} -->
 <h3 class="has-text-align-center">Jane Austin</h3>
 <!-- /wp:heading -->
 
@@ -106,18 +100,16 @@ return array(
 <!-- /wp:paragraph -->
 
 <!-- wp:social-links {"align":"center"} -->
-<ul class="wp-block-social-links aligncenter"><!-- wp:social-link {"url":"","service":"wordpress"} /-->
-
-<!-- wp:social-link {"url":"#","service":"twitter"} /-->
+<ul class="wp-block-social-links aligncenter"><!-- wp:social-link {"url":"#","service":"twitter"} /-->
 
 <!-- wp:social-link {"url":"#","service":"facebook"} /-->
 
-<!-- wp:social-link {"service":"instagram"} /-->
+<!-- wp:social-link {"url":"#","service":"linkedin"} /--></ul>
+<!-- /wp:social-links -->
 
-<!-- wp:social-link {"url":"#","service":"linkedin"} /-->
-
-<!-- wp:social-link {"service":"youtube"} /--></ul>
-<!-- /wp:social-links --></div>
+<!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->',
 	'categories' => array( 'columns' ),
