@@ -71,16 +71,18 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 	// Offset preview to make space for builder.
 	useEffect(() => {
 		setTimeout(() => {
-			adaptPreviewHeight();
+			adaptPreviewHeight(true);
 		}, 100);
+	}, [hidden]);
 
+	useEffect(() => {
 		window.wp.customize.previewer.bind(
 			'selective-refresh-setting-validities',
 			() => {
-				adaptPreviewHeight(false);
+				adaptPreviewHeight();
 			}
 		);
-	}, [hidden]);
+	}, []);
 
 	const builderClasses = classnames('neve-builder', {
 		hide: hidden,
