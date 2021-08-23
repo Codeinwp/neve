@@ -152,9 +152,9 @@ class Comments extends Base_View {
 	/**
 	 * Comment list end callback.
 	 *
-	 * @param string $comment comment.
-	 * @param array  $args    arguments.
-	 * @param int    $depth   the comments depth.
+	 * @param \WP_Comment $comment comment.
+	 * @param array       $args    arguments.
+	 * @param int         $depth   the comments depth.
 	 */
 	public function end_comment_list_callback( $comment, $args, $depth ) {
 		if ( $this->is_tag_open && $comment->comment_parent == 0 ) {
