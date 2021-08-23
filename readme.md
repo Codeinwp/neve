@@ -19,6 +19,16 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.0.2](https://github.com/Codeinwp/neve/compare/v3.0.1...v3.0.2) (2021-08-23)
+
+- [Fix] issue with some hosting environments not loading JS files that contained ~ in the file name
+- [Fix] items in customizer panel don't adjust when changing presets 
+- [Fix] adds backspacing for Woocommerce standard pages and fieldset
+- [Fix] solve an issue with multi worded google fonts names
+- [Fix] blog custom layout inside the loop with masonry
+- [Fix] div tag isn't closed for products on the shop page
+- [Fix] Product category description displayed above the breadcrumbs and the sort
+
 ##### [Version 3.0.1](https://github.com/Codeinwp/neve/compare/v3.0.0...v3.0.1) (2021-08-06)
 
 - [Fix] bring back custom-background theme support
