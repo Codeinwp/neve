@@ -9,7 +9,7 @@ return array(
 	'title'      => __( 'Four columns with team members', 'neve' ),
 	'content'    => '<!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"align":"center","id":398,"sizeSlug":"large","className":"is-style-default"} -->
+<div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
 <div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-3.jpg" alt="" /></figure></div>
 <!-- /wp:image -->
 
@@ -35,7 +35,7 @@ return array(
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"align":"center","id":399,"sizeSlug":"large","className":"is-style-default"} -->
+<div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
 <div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-4.jpg" alt="" /></figure></div>
 <!-- /wp:image -->
 
@@ -61,7 +61,7 @@ return array(
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"align":"center","id":397,"sizeSlug":"large","className":"is-style-default"} -->
+<div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
 <div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-2.jpg" alt="" /></figure></div>
 <!-- /wp:image -->
 
@@ -87,7 +87,7 @@ return array(
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"align":"center","id":396,"sizeSlug":"large","className":"is-style-default"} -->
+<div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
 <div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-1.jpg" alt="" /></figure></div>
 <!-- /wp:image -->
 
