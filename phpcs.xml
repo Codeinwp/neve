@@ -28,6 +28,9 @@
 		<exclude name="WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_pattern"></exclude>
 
 	</rule>
+	<rule ref="Wordpress-Core">
+		<exclude name="Generic.Commenting.DocComment.MissingShort"></exclude>
+	</rule>
 	<rule ref="WPThemeReview.Templates.ReservedFileNamePrefix.ReservedTemplatePrefixFound">
 		<exclude-pattern>views/page-header.php</exclude-pattern>
 	</rule>

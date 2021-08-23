@@ -23,14 +23,14 @@ class Builder_Columns extends \WP_Customize_Control {
 	/**
 	 * Layout Choices.
 	 *
-	 * @var \string[][]
+	 * @var array
 	 */
 	public $choices = [];
 
 	/**
 	 * Columns control slug.
 	 *
-	 * @var \string[][]
+	 * @var string|null
 	 */
 	public $columns_control = null;
 

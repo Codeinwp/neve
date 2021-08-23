@@ -16,6 +16,14 @@ use Neve\Views\Base_View;
  * @package Neve\Views\Partials
  */
 class Comments extends Base_View {
+
+	/**
+	 * Holds if an open children tag is opened for replies.
+	 *
+	 * @var bool
+	 */
+	private $is_tag_open = false;
+
 	/**
 	 * Add in functionality.
 	 */
@@ -61,8 +69,9 @@ class Comments extends Base_View {
 					<?php
 					wp_list_comments(
 						array(
-							'callback' => array( $this, 'comment_list_callback' ),
-							'style'    => 'ol',
+							'callback'     => array( $this, 'comment_list_callback' ),
+							'end-callback' => array( $this, 'end_comment_list_callback' ),
+							'style'        => 'div',
 						)
 					);
 					?>
@@ -141,11 +150,25 @@ class Comments extends Base_View {
 	}
 
 	/**
+	 * Comment list end callback.
+	 *
+	 * @param \WP_Comment $comment comment.
+	 * @param array       $args    arguments.
+	 * @param int         $depth   the comments depth.
+	 */
+	public function end_comment_list_callback( $comment, $args, $depth ) {
+		if ( $this->is_tag_open && $comment->comment_parent == 0 ) {
+			$this->is_tag_open = false;
+			echo '</ol></li><!-- close children li -->';
+		}
+	}
+
+	/**
 	 * Comment list callback.
 	 *
-	 * @param string $comment comment.
-	 * @param array  $args    arguments.
-	 * @param int    $depth   the comments depth.
+	 * @param \WP_Comment $comment comment.
+	 * @param array       $args    arguments.
+	 * @param int         $depth   the comments depth.
 	 */
 	public function comment_list_callback( $comment, $args, $depth ) {
 		switch ( $comment->comment_type ) {
@@ -186,7 +209,7 @@ class Comments extends Base_View {
 							?>
 							<div class="comment-author vcard">
 								<span class="fn author"><?php echo get_comment_author_link(); ?></span>
-								<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+								<a href="<?php echo esc_url( get_comment_link() ); ?>">
 									<time class="entry-date published"
 											datetime="<?php echo esc_attr( get_comment_time( 'c' ) ); ?>"
 											content="<?php echo esc_attr( get_comment_time( 'Y-m-d' ) ); ?>">
@@ -225,6 +248,10 @@ class Comments extends Base_View {
 				</li>
 				<?php
 				break;
+		}
+		if ( $args['has_children'] === true ) {
+			$this->is_tag_open = true;
+			echo '<li class="children" role="listitem"><ol>';
 		}
 	}
 

@@ -33,6 +33,7 @@
 	"phpcs": "phpcs --standard=phpcs.xml -s  --runtime-set testVersion 7.0-",
 	"lint": "composer run-script phpcs",
 	"phpcs-i": "phpcs -i",
+	"phpstan": "phpstan analyse",
 	"post-install-cmd": [
 	  "[ ! -z \"$GITHUB_ACTIONS\" ] && yarn run bump-vendor || true"
 	],
@@ -53,6 +54,9 @@
 	"installer-disable": "true"
   },
   "require-dev": {
-    "codeinwp/phpcs-ruleset": "dev-main"
+    "codeinwp/phpcs-ruleset": "dev-main",
+    "phpstan/phpstan": "0.12.90",
+    "szepeviktor/phpstan-wordpress": "^0.7.6",
+    "php-stubs/woocommerce-stubs": "^5.4"
   }
 }

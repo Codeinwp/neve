@@ -29,7 +29,7 @@ class Global_Colors extends \WP_Customize_Control {
 	/**
 	 * Additional arguments passed to JS.
 	 *
-	 * @var string
+	 * @var array
 	 */
 	public $input_attrs = [];
 

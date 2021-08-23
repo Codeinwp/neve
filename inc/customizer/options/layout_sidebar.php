@@ -328,7 +328,7 @@ class Layout_Sidebar extends Base_Customizer {
 	 *
 	 * @param string $value value from the control.
 	 *
-	 * @return bool
+	 * @return string
 	 */
 	public function sanitize_sidebar_layout( $value ) {
 		$allowed_values = array( 'left', 'right', 'full-width', 'off-canvas' );

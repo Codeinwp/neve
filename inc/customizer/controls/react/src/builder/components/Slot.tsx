@@ -25,7 +25,7 @@ const Slot: React.FC<Props> = ({ items, slotId, rowId, className }) => {
 		sidebarItems,
 	} = useContext(BuilderContext);
 
-	const { updateLayout, onDragStart } = actions;
+	const { updateLayout, onDragStart, updateSidebarItems } = actions;
 	const [popupOpen, setPopupOpen] = useState<boolean>(false);
 	const [searchQuery, setSearchQuery] = useState<string>('');
 	const slotClasses = classnames('droppable-wrap', slotId, className, {
@@ -41,6 +41,7 @@ const Slot: React.FC<Props> = ({ items, slotId, rowId, className }) => {
 		nextItems.push({ id: itemId });
 		updateLayout(rowId, slotId, nextItems);
 		setPopupOpen(false);
+		updateSidebarItems();
 	};
 
 	const runSearch = (e: ChangeEvent<HTMLInputElement>) => {

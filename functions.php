@@ -61,7 +61,7 @@ foreach ( $_files_to_check as $_file_to_check ) {
 			sprintf(
 			/* translators: %s: commands to run the theme */
 				__( 'You appear to be running the Neve theme from source code. Please finish installation by running %s.', 'neve' ), // phpcs:ignore WordPress.Security.EscapeOutput
-				'<code>composer install &amp;&amp; yarn install --frozen-lockfile &amp;&amp; yarn run build</code>'
+				'<code>composer install --no-dev &amp;&amp; yarn install --frozen-lockfile &amp;&amp; yarn run build</code>'
 			)
 		);
 		break;
