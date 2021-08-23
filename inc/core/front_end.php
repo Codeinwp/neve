@@ -61,6 +61,7 @@ class Front_End {
 		add_filter( 'script_loader_tag', array( $this, 'filter_script_loader_tag' ), 10, 2 );
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
+		add_filter( 'should_load_separate_core_block_assets', '__return_true' );
 
 		$this->add_amp_support();
 		$nav_menus_to_register = apply_filters(
