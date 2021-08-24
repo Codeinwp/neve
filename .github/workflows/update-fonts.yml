@@ -1,0 +1,43 @@
+name: Update Google Fonts
+on:
+  push:
+    branches:
+      - act/update-g-fonts
+jobs:
+  update-fonts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup PHP version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.1'
+          extensions: simplexml
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Update Fonts
+        run: php ./bin/update-google-fonts.php ${{ secrets.GOOGLE_TOKEN }}
+        env:
+          GOOGLE_TOKEN: ${{secrets.GOOGLE_TOKEN}}
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Setup Composer cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Install composer
+        run: composer install --ignore-platform-reqs --prefer-dist --no-progress --no-suggest
+      - name: Setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      - name: Commit
+        run: |
+          git status
+          git add ./globals/google-fonts.php
+          git commit -m "chore: update google fonts"
+          git push origin ci/update-fonts
