@@ -127,6 +127,10 @@
 	  &.dropdown-open .caret {
 		transform: rotateX(180deg);
 	  }
+
+	  &:focus {
+		outline: none
+	  }
 	}
 
 	.sub-menu {
