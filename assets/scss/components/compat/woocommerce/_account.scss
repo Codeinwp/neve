@@ -19,10 +19,10 @@ body.woocommerce-account {
 	}
 
 	.woocommerce-form-login .form-row:nth-child(3) {
-		float: left;
-		display: flex;
 		flex-direction: row-reverse;
 		align-items: center;
+		display: flex;
+		justify-content: flex-end;
 	}
 
 	.woocommerce-form__label-for-checkbox {
@@ -41,7 +41,8 @@ body.woocommerce-account {
 
 	.woocommerce-LostPassword {
 		margin: 0;
-		float: right;
+		display: flex;
+		justify-content: flex-end;
 	}
 
 	h2 {

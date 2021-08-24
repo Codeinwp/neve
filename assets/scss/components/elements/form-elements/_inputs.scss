@@ -50,12 +50,22 @@ button {
 	opacity: 0.5;
 }
 
+select {
+	min-height: 35px;
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 18px;
+	padding-right: 20px !important;
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCI+PHBhdGggZmlsbD0iIzYyNjI2MiIgZD0iTTE1IDhsLTQgNi00LTZoOHoiLz48L3N2Zz4=);
+}
+
 label {
 	display: inline-block;
 }
 
 fieldset {
 	padding: $spacing-lg - 10px $spacing-lg;
+	margin-bottom: $spacing-md;
 	border: 2px solid var(--nv-light-bg);
 
 	legend {
@@ -71,15 +81,6 @@ fieldset {
 	select {
 		width: 100%;
 	}
-}
-
-select {
-	min-height: 35px;
-	background-repeat: no-repeat;
-	background-position: right;
-	background-size: 18px;
-	padding-right: 20px !important;
-	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCI+PHBhdGggZmlsbD0iIzYyNjI2MiIgZD0iTTE1IDhsLTQgNi00LTZoOHoiLz48L3N2Zz4=);
 }
 
 

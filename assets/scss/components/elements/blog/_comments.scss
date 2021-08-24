@@ -35,10 +35,6 @@
 
 	ol {
 		list-style: none;
-
-		ol li {
-			padding-left: $spacing-xl;
-		}
 	}
 
 	textarea {
@@ -107,6 +103,10 @@
 
 .nv-comments-list {
 	margin-bottom: $spacing-xxl;
+
+	.children li:not(.children) {
+		padding-left: $spacing-xl;
+	}
 }
 
 @mixin comments--tablet() {

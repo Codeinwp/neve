@@ -20,7 +20,7 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Elementor location manager
 	 *
-	 * @var \ElementorPro\Modules\ThemeBuilder\Module
+	 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Locations_Manager
 	 */
 	public $elementor_location_manager;
 
@@ -145,7 +145,7 @@ class Elementor extends Page_Builder_Base {
 			return;
 		}
 
-		// Elementor locations compatibility.
+		// Elementor locations compatibility. (This action fires by Elementor Pro)
 		add_action( 'elementor/theme/register_locations', array( $this, 'register_theme_locations' ) );
 
 		// Override theme templates.
@@ -238,7 +238,7 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Check if it page was edited with page builder.
 	 *
-	 * @param string $pid post id.
+	 * @param int $pid post id.
 	 *
 	 * @return bool
 	 */
@@ -324,8 +324,8 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Update has_template transient value when a post updated or inserted.
 	 *
-	 * @param  int     $post_ID that post ID.
-	 * @param  WP_Post $post that WP_Post object.
+	 * @param  int      $post_ID that post ID.
+	 * @param  \WP_Post $post that WP_Post object.
 	 * @return void
 	 */
 	public function update_has_template_transient( $post_ID, $post ) {

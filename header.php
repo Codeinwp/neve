@@ -75,7 +75,7 @@ do_action( 'neve_body_start_after' );
 	do_action( 'neve_before_header_wrapper_hook' );
 	?>
 
-	<header class="<?php echo esc_attr( $header_classes ); ?>" role="banner">
+	<header class="<?php echo esc_attr( $header_classes ); ?>" role="banner" next-page-hide>
 		<a class="neve-skip-link show-on-focus" href="#content" tabindex="0">
 			<?php echo __( 'Skip to content', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</a>

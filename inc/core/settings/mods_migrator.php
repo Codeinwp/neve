@@ -189,6 +189,8 @@ class Mods_Migrator {
 
 				return array_merge( $defaults, $old_value );
 		}
+
+		return array();
 	}
 
 	/**

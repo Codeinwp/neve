@@ -12,6 +12,7 @@
 namespace HFG\Core\Builder;
 
 use HFG\Core\Components\Abstract_Component;
+use HFG\Core\Components\Nav;
 use HFG\Core\Css_Generator;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
@@ -241,7 +242,7 @@ abstract class Abstract_Builder implements Builder {
 	 * Method to set protected properties for class.
 	 *
 	 * @param string $key The property key name.
-	 * @param string $value The property value.
+	 * @param mixed  $value The property value.
 	 *
 	 * @return bool
 	 * @since   1.0.0
@@ -535,7 +536,10 @@ abstract class Abstract_Builder implements Builder {
 			$component->customize_register( $wp_customize );
 		}
 
-		if ( null !== $wp_customize->get_panel( $this->panel ) ) {
+		/** @var \WP_Customize_Panel|null $panel */
+		$panel = $wp_customize->get_panel( $this->panel );
+
+		if ( null !== $panel ) {
 			return $wp_customize;
 		}
 
@@ -1168,9 +1172,9 @@ abstract class Abstract_Builder implements Builder {
 	 * Get the component alignment.
 	 *
 	 * @param string $id component id.
-	 * @param false  $vertical should get vertical alignment.
+	 * @param bool   $vertical should get vertical alignment.
 	 *
-	 * @return array
+	 * @return array|string|false
 	 */
 	private function get_component_alignment( $id, $vertical = false ) {
 		if ( $vertical ) {
@@ -1234,7 +1238,7 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Add row utility classes.
 	 *
-	 * @param string $classes footer classes.
+	 * @param array  $classes footer classes.
 	 * @param string $row_index row index.
 	 *
 	 * @return mixed
@@ -1254,12 +1258,11 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Render the builder components.
 	 *
-	 * @param string $device the device [desktop|mobile].
-	 * @param string $row the row id.
+	 * @param string|null $device the device [desktop|mobile].
 	 */
-	public function new_render_components( $device, $row ) {
+	public function new_render_components( $device ) {
 		$row_index = 0;
-		if ( $device === null && $row === null ) {
+		if ( $device === null ) {
 			$device    = self::$current_device;
 			$row_index = self::$current_row;
 		}
@@ -1279,6 +1282,10 @@ abstract class Abstract_Builder implements Builder {
 			'c-right' => [],
 			'right'   => [],
 		];
+
+		$slot            = null;
+		$component_index = null;
+		$slot_data       = null;
 
 		foreach ( $data as $slot => $slot_data ) {
 			$is_side_slot = in_array( $slot, [ 'right', 'left' ], true );
@@ -1323,13 +1330,18 @@ abstract class Abstract_Builder implements Builder {
 					$classes[] = 'has-nav';
 				}
 
-				foreach ( $align as $device_slug => $align_slug ) {
-					$alignment_is_mobile = in_array( $device_slug, [ 'tablet', 'mobile' ], true );
-					$is_header_sidebar   = $builder_id === 'header' && $row_index === 'sidebar';
-					// Make sure we don't apply device-specific classes if the rows aren't visible on respective device.
-					// Footer has same rows on all devices.
-					if ( $builder_id === 'footer' || $is_header_sidebar || ( $device === $device_slug || ( $alignment_is_mobile && $device === 'mobile' ) ) ) {
-						$classes[] = $device_slug . '-' . $align_slug;
+				$new_skin = neve_is_new_skin();
+
+				// We don't add align classes to primary menus as there's no align control in new skin.
+				if ( ! $new_skin || strpos( $component['id'], Nav::COMPONENT_ID ) === false ) {
+					foreach ( $align as $device_slug => $align_slug ) {
+						$alignment_is_mobile = in_array( $device_slug, [ 'tablet', 'mobile' ], true );
+						$is_header_sidebar   = $builder_id === 'header' && $row_index === 'sidebar';
+						// Make sure we don't apply device-specific classes if the rows aren't visible on respective device.
+						// Footer has same rows on all devices.
+						if ( $builder_id === 'footer' || $is_header_sidebar || ( $device === $device_slug || ( $alignment_is_mobile && $device === 'mobile' ) ) ) {
+							$classes[] = $device_slug . '-' . $align_slug;
+						}
 					}
 				}
 
@@ -1433,17 +1445,16 @@ abstract class Abstract_Builder implements Builder {
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
-	 * @param null|array  $row Row details.
 	 */
-	public function render_components( $device = null, $row = null ) {
+	public function render_components( $device = null ) {
 		if ( neve_is_new_builder() ) {
-			$this->new_render_components( $device, $row );
+			$this->new_render_components( $device );
 
 			return;
 		}
 
 		$row_index = 0;
-		if ( $device === null && $row === null ) {
+		if ( $device === null ) {
 			$device    = self::$current_device;
 			$row_index = self::$current_row;
 		}

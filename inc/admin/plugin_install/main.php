@@ -16,7 +16,7 @@ class Main {
 	/**
 	 * Instance of class.
 	 *
-	 * @var bool $instance instance variable.
+	 * @var Main|null $instance instance variable.
 	 */
 	private static $instance;
 
@@ -140,7 +140,7 @@ class Main {
 	 *
 	 * @param string $slug plugin slug.
 	 *
-	 * @return bool
+	 * @return string
 	 */
 	public function check_plugin_state( $slug ) {
 
