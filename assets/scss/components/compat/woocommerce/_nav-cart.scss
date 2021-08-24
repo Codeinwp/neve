@@ -12,6 +12,7 @@ $cart-width: 360px;
 
   .nv-cart {
 	display: flex;
+	align-items: center;
 
 	svg {
 	  width: var(--iconSize);

@@ -247,6 +247,10 @@
 	}
 }
 
+.carte-wrap:focus {
+	outline: none;
+}
+
 @mixin nav-menu--tablet-sm() {
 	.header-menu-sidebar-inner {
 		.tablet-center {
