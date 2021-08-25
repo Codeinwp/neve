@@ -47,6 +47,6 @@ jobs:
         with:
           commit_message: 'chore: update google fonts'
           file_pattern: 'globals/google-fonts.php'
-          commit_author: themeisle[bot]
+          commit_author: themeisle[bot] <${{ secrets.BOT_EMAIL }}>
           commit_user_name: themeisle[bot]
           commit_user_email: ${{ secrets.BOT_EMAIL }}
