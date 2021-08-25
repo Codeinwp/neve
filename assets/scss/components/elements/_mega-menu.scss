@@ -160,7 +160,8 @@
 @mixin mega-menu--laptop() {
   .header--row .nv-nav-wrap .primary-menu-ul {
 	.neve-mega-menu > .sub-menu {
-	  left: 50%;
+	  left: 50% !important;
+	  right: unset;
 	  transform: translateX(-50%);
 	  position: absolute;
 	  display: flex;
