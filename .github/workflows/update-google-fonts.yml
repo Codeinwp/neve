@@ -47,7 +47,7 @@ jobs:
         with:
           commit-message: "chore: Update Google fonts"
           token: ${{ secrets.BOT_TOKEN }}
-          title: "[Automatic] Update Google Fonts"
+          title: "Update Google Fonts"
           author: themeisle[bot] <${{ secrets.BOT_EMAIL }}>
           branch: ci/update-fonts
           base: development
