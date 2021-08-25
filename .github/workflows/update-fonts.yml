@@ -14,6 +14,8 @@ jobs:
           extensions: simplexml
       - name: Checkout source code
         uses: actions/checkout@v2
+        with:
+          ref: ci/update-fonts
       - name: Update Fonts
         run: php ./bin/update-google-fonts.php ${{ secrets.GOOGLE_TOKEN }}
         env:
@@ -31,13 +33,8 @@ jobs:
             ${{ runner.os }}-composer-
       - name: Install composer
         run: composer install --ignore-platform-reqs --prefer-dist --no-progress --no-suggest
-      - name: Setup git config
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
       - name: Commit
-        run: |
-          git status
-          git add ./globals/google-fonts.php
-          git commit -m "chore: update google fonts"
-          git push origin ci/update-fonts
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'chore: update google fonts'
+          add: 'globals/google-fonts.php'
