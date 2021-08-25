@@ -283,7 +283,7 @@ function neve_get_standard_fonts() {
 }
 
 /**
- * Get all google fonts.
+ * Get all google fonts
  *
  * @return array
  */
