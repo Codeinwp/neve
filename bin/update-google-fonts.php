@@ -48,29 +48,47 @@ class GoogleFontsUpdater {
 	 * Run fonts update.
 	 */
 	private function run_update() {
-		echo 'Fetching fonts... ⏬';
+		echo 'Fetching fonts... ⏬' . "\n";
 
 		$new_fonts = $this->get_fonts();
-		$now       = gmdate( 'd/m/y' );
-		$output    = <<<PHP
+
+		$different = array_diff( $new_fonts, $this->old_fonts );
+
+		if ( empty( $different ) ) {
+			echo 'No need to update. Old fonts are already up to date with the API ✅' . "\n";
+
+			return;
+		}
+
+		$fonts_array_string = 'array(' . "\n";
+
+		foreach ( $new_fonts as $font ) {
+			$fonts_array_string .= '	\'' . $font . '\',' . "\n";
+		}
+
+		$fonts_array_string .= ')';
+
+		$now    = gmdate( 'd/m/y' );
+		$output = <<<PHP
 <?php
 /**
  * Updated on $now
  *
  * @package neve
  */
-return $new_fonts;
+return $fonts_array_string;
+
 PHP;
 
 		file_put_contents( dirname( __DIR__ ) . self::FILE_PATH, $output ); //phpcs:ignore
 
-		echo 'Fonts updated ✅';
+		echo 'Fonts updated ✅' . "\n";
 	}
 
 	/**
 	 * Get google fonts.
 	 *
-	 * @return string
+	 * @return array
 	 */
 	private function get_fonts() {
 		$url     = self::API . '?key=' . $this->api_key;
@@ -93,15 +111,7 @@ PHP;
 
 		sort( $fonts_array );
 
-		$output = 'array(' . "\n";
-
-		foreach ( $fonts_array as $font ) {
-			$output .= '"' . $font . '",' . "\n";
-		}
-
-		$output .= ')';
-
-		return $output;
+		return $fonts_array;
 	}
 }
 
