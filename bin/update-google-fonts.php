@@ -95,10 +95,7 @@ PHP;
 
 		$output = 'array(' . "\n";
 
-		foreach ( $fonts_array as $i => $font ) {
-			if ( $i > 10 ) {
-				continue;
-			}
+		foreach ( $fonts_array as $font ) {
 			$output .= '"' . $font . '",' . "\n";
 		}
 

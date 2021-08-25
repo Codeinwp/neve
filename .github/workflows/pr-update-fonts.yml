@@ -1,0 +1,25 @@
+name: Create Pull Request for Update Google Fonts
+on:
+  push:
+    branches:
+      - ci/update-fonts
+jobs:
+  update-fonts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+        with:
+          ref: ci/update-fonts
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          title: "[Automatic] Update Google Fonts"
+          author: themeisle[bot]
+          branch: ci/update-fonts
+          base: development
+          body: |
+            ### Checklist Before Merge:
+            - [ ] There are no removed fonts;
+            - [ ] Only `globals/google-fonts.php` has been changed;
