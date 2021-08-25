@@ -42,7 +42,7 @@ jobs:
       - name: Install composer
         run: composer install --ignore-platform-reqs --prefer-dist --no-progress --no-suggest
       - name: Run PHPCBF
-        run: composer run format-fix-exit
+        run: composer run format-fix-exit globals/google-fonts.php
       - name: Commit & Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
