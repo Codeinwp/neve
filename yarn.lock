@@ -4382,6 +4382,15 @@
     stylelint-config-recommended-scss "^4.2.0"
     stylelint-scss "^3.17.2"
 
+"@wordpress/stylelint-config@^19.1.0":
+  version "19.1.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/stylelint-config/-/stylelint-config-19.1.0.tgz#ec023dfd265e1f8ae20e5c760f67aee9ba85a1e5"
+  integrity sha512-K/wB9rhB+pH5WvDh3fV3DN5C3Bud+jPGXmnPY8fOXKMYI3twCFozK/j6sVuaJHqGp/0kKEF0hkkGh+HhD30KGQ==
+  dependencies:
+    stylelint-config-recommended "^3.0.0"
+    stylelint-config-recommended-scss "^4.2.0"
+    stylelint-scss "^3.17.2"
+
 "@wordpress/token-list@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@wordpress/token-list/-/token-list-2.1.1.tgz#ccd01bfa87d8c9e63c95de78f8526b9d74679780"
