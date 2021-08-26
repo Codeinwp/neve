@@ -5,6 +5,7 @@ $cart-width: 360px;
 //Cart icon in menu
 .cart-icon-wrapper {
 	display: flex;
+	align-items: center;
 
 	&:hover {
 		color: var(--hoverColor, var(--color));

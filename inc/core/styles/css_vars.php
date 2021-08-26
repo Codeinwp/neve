@@ -100,6 +100,7 @@ trait Css_Vars {
 
 		$mod_key_primary       = Config::MODS_BUTTON_PRIMARY_PADDING;
 		$default_primary       = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_PADDING );
+
 		$rules['--btnPadding'] = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary,
 			Dynamic_Selector::META_DEFAULT       => $default_primary,
@@ -119,19 +120,19 @@ trait Css_Vars {
 					'primary'   => $value,
 					'secondary' => $value,
 				];
-
 				foreach ( $values as $btn_type => $appearance_values ) {
 					if ( ! isset( $appearance_values['type'] ) || $appearance_values['type'] !== 'outline' ) {
 						continue;
 					}
-
 					$border_width = $appearance_values['borderWidth'];
 
 					foreach ( $paddings[ $btn_type ] as $direction => $padding_value ) {
 						if ( ! isset( $border_width[ $direction ] ) || absint( $border_width[ $direction ] ) === 0 ) {
 							continue;
 						}
-
+						if(  ! is_numeric( $padding_value ) ){
+							continue;
+						}
 						$paddings[ $btn_type ][ $direction ] = $padding_value - $border_width[ $direction ];
 					}
 				}
