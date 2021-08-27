@@ -6,7 +6,10 @@ describe('Single Sizing Input', function () {
 	context('Default', function () {
 		beforeEach(function () {
 			cy.loadStory('Customizer/Controls/Single Sizing Input', 'Default');
-			cy.get('.value-previewer > pre').as('valuePreview');
+		});
+
+		it('Has default value', function () {
+			cy.findByRole('spinbutton').should('have.value', '10');
 		});
 	});
 });
