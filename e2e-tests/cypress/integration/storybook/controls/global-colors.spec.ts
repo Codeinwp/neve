@@ -82,7 +82,7 @@ describe('Global Colors', function () {
 			cy.findByText(/palette 4/i).realHover();
 			cy.findByRole('button', {
 				name: /remove palette/i,
-			}).click();
+			}).click({ force: true });
 			cy.get(
 				':nth-child(4) > :nth-child(1) > .components-modal__screen-overlay > .components-modal__frame > .components-modal__content > .actions > .is-primary',
 			).click();

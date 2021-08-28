@@ -8,7 +8,9 @@ describe('Header Builder', function () {
 		});
 
 		it('Remove a component on builder', function () {
-			cy.get('.left > .droppable > .builder-item > .actions > .remove > svg').click();
+			cy.get('.left > .droppable > .builder-item > .actions > .remove > svg').click({
+				force: true,
+			});
 			cy.get('.left > .droppable > .builder-item').should('not.exist');
 		});
 
