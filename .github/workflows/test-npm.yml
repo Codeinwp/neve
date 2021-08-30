@@ -45,6 +45,8 @@ jobs:
         run: yarn run lint:dash
       - name: Run customizer check
         run: yarn run lint:customizer
+      - name: Run Stylelint on SCSS
+        run: yarn run lint:scss
       - name: Run cypress check
         working-directory: ./e2e-tests
         run: yarn run lint:cypress

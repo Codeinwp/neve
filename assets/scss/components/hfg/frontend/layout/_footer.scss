@@ -1,35 +1,38 @@
 .site-footer {
-  position: relative;
-  z-index: 10;
+	position: relative;
+	z-index: 10;
 
-  .item--inner.has_menu {
-	display: flex;
-  }
-
-  p {
-	&:last-child {
-	  margin-bottom: 0;
+	.item--inner.has_menu {
+		display: flex;
 	}
-  }
+
+	p {
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 }
 
 .footer--row {
-  .hfg-slot {
-	display: flex;
-	flex-direction: column;
-  }
 
-  .row {
-	display: grid;
-  }
+	.hfg-slot {
+		display: flex;
+		flex-direction: column;
+	}
 
-  .builder-item {
-	width: 100%;
-  }
+	.row {
+		display: grid;
+	}
+
+	.builder-item {
+		width: 100%;
+	}
 }
 
 @media (max-width: 960px) {
-  footer .footer--row-inner .row {
-	grid-template-columns: 1fr;
-  }
+
+	footer .footer--row-inner .row {
+		grid-template-columns: 1fr;
+	}
 }

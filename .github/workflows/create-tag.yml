@@ -33,7 +33,7 @@ jobs:
         id: release
         run: |
           yarn install --frozen-lockfile
-          composer install --prefer-dist --no-progress --no-suggest --no-dev
+          composer install --prefer-dist --no-progress --no-suggest --ignore-platform-reqs
           yarn run build
           yarn run release
         env:

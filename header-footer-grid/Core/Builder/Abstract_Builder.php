@@ -12,6 +12,7 @@
 namespace HFG\Core\Builder;
 
 use HFG\Core\Components\Abstract_Component;
+use HFG\Core\Components\Nav;
 use HFG\Core\Css_Generator;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
@@ -1284,7 +1285,7 @@ abstract class Abstract_Builder implements Builder {
 
 		$slot            = null;
 		$component_index = null;
-		$slot_data       = null; 
+		$slot_data       = null;
 
 		foreach ( $data as $slot => $slot_data ) {
 			$is_side_slot = in_array( $slot, [ 'right', 'left' ], true );
@@ -1329,13 +1330,18 @@ abstract class Abstract_Builder implements Builder {
 					$classes[] = 'has-nav';
 				}
 
-				foreach ( $align as $device_slug => $align_slug ) {
-					$alignment_is_mobile = in_array( $device_slug, [ 'tablet', 'mobile' ], true );
-					$is_header_sidebar   = $builder_id === 'header' && $row_index === 'sidebar';
-					// Make sure we don't apply device-specific classes if the rows aren't visible on respective device.
-					// Footer has same rows on all devices.
-					if ( $builder_id === 'footer' || $is_header_sidebar || ( $device === $device_slug || ( $alignment_is_mobile && $device === 'mobile' ) ) ) {
-						$classes[] = $device_slug . '-' . $align_slug;
+				$new_skin = neve_is_new_skin();
+
+				// We don't add align classes to primary menus as there's no align control in new skin.
+				if ( ! $new_skin || strpos( $component['id'], Nav::COMPONENT_ID ) === false ) {
+					foreach ( $align as $device_slug => $align_slug ) {
+						$alignment_is_mobile = in_array( $device_slug, [ 'tablet', 'mobile' ], true );
+						$is_header_sidebar   = $builder_id === 'header' && $row_index === 'sidebar';
+						// Make sure we don't apply device-specific classes if the rows aren't visible on respective device.
+						// Footer has same rows on all devices.
+						if ( $builder_id === 'footer' || $is_header_sidebar || ( $device === $device_slug || ( $alignment_is_mobile && $device === 'mobile' ) ) ) {
+							$classes[] = $device_slug . '-' . $align_slug;
+						}
 					}
 				}
 

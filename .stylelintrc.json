@@ -1,0 +1,16 @@
+{
+  "extends": [
+	"@wordpress/stylelint-config/scss"
+  ],
+  "rules": {
+	"no-descending-specificity": null,
+	"selector-class-pattern": null,
+	"selector-id-pattern": null,
+	"selector-type-no-unknown": [
+	  true,
+	  {
+		"ignoreTypes": [ "amp-img" ]
+	  }
+	]
+  }
+}
