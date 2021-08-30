@@ -148,8 +148,12 @@
       margin-top: $spacing-sm;
     }
 
-    ol > ol {
+    ol > .children {
       padding-left: $spacing-sm;
+    }
+
+    .children {
+      margin-top: $spacing-sm;
     }
 
     .comment-form {

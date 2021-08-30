@@ -78,4 +78,5 @@ inc/admin/metabox/src
 inc/customizer/controls/react/src
 assets/js/src
 lint-staged.config.js
+.stylelintrc.json
 phpstan.neon
