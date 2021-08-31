@@ -22,7 +22,7 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 <div id="header-menu-sidebar" class="<?php echo esc_attr( join( ' ', $classes ) ); ?>">
 	<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">
 		<div class="close-sidebar-panel navbar-toggle-wrapper">
-			<button class="navbar-toggle active" <?php echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<button type="button" class="navbar-toggle active" <?php echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					aria-label="
 				<?php
 					esc_html_e( 'Navigation Menu', 'neve' );
