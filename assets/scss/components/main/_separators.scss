@@ -1,17 +1,17 @@
 // === Separators === //
 .wp-block-separator {
-  border-bottom: 0;
-  border-top: 2px solid;
+	border-bottom: 0;
+	border-top: 2px solid;
 
-  &.is-style-wide {
-	border-width: 4px;
-  }
-
-  &.is-style-dots {
-	border-top: 4px dotted;
-
-	&:before {
-	  content: none;
+	&.is-style-wide {
+		border-width: 4px;
 	}
-  }
+
+	&.is-style-dots {
+		border-top: 4px dotted;
+
+		&::before {
+			content: none;
+		}
+	}
 }

@@ -1,22 +1,25 @@
-.ajax_add_to_cart, .single_add_to_cart_button {
-  &.added {
-	display: none !important;
-  }
+.ajax_add_to_cart,
+.single_add_to_cart_button {
+
+	&.added {
+		display: none !important;
+	}
 }
 
 .woocommerce {
-  a.added_to_cart {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: auto;
-	padding: var(--secondaryBtnPadding)
-  }
 
-  li a.added_to_cart {
-	display: inline-block;
-	margin-top: 1em;
-  }
+	a.added_to_cart {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: auto;
+		padding: var(--secondaryBtnPadding);
+	}
+
+	li a.added_to_cart {
+		display: inline-block;
+		margin-top: 1em;
+	}
 }
 
 .button.button-secondary.more-details,
@@ -24,34 +27,38 @@
 a.added_to_cart,
 .checkout_coupon button.button,
 .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout) {
-  @extend %nv-button-secondary;
 
-  &:hover {
-	@extend %nv-button-secondary-hover;
-  }
+	@extend %nv-button-secondary;
+
+	&:hover {
+
+		@extend %nv-button-secondary-hover;
+	}
 }
 
 
 .woocommerce ul.products li.product .button {
-  white-space: normal;
+	white-space: normal;
 }
 
 
-//<editor-fold [AJAX add-to-cart loading]>
+// === Ajax add to cart loading === //
+/* stylelint-disable */
 .woocommerce {
-  .button.loading {
-	justify-content: center;
-	display: inline-flex !important;
-	padding-right: 15px !important;
 
-	&:after {
-	  margin-left: 5px;
-	  position: unset !important;
+	.button.loading {
+		justify-content: center;
+		display: inline-flex !important;
+		padding-right: 15px !important;
+
+		&::after {
+			margin-left: 5px;
+			position: unset !important;
+		}
 	}
-  }
 }
 
-//</editor-fold>
+// === Primary Buttons === //
 #review_form #respond input#submit,
 .woocommerce #respond input#submit.disabled,
 .woocommerce #respond input#submit:disabled,
@@ -73,17 +80,18 @@ a.added_to_cart,
 .woocommerce #respond input#submit.alt,
 .woocommerce a.button.alt,
 .woocommerce button.button.alt,
-.woocommerce input.button.alt,
-.woocommerce a.button {
-  @extend %nv-button-primary;
+.woocommerce input.button.alt {
 
-  &:hover {
-	@extend %nv-button-primary-hover;
-  }
+	@extend %nv-button-primary;
+
+	&:hover {
+
+		@extend %nv-button-primary-hover;
+	}
 }
 
 
-// alt disabled buttons
+// === Alt disabled buttons === //
 .woocommerce #respond input#submit.alt.disabled,
 .woocommerce #respond input#submit.alt:disabled,
 .woocommerce #respond input#submit.alt:disabled[disabled],
@@ -96,9 +104,11 @@ a.added_to_cart,
 .woocommerce input.button.alt.disabled,
 .woocommerce input.button.alt:disabled,
 .woocommerce input.button.alt:disabled[disabled] {
-  @extend %nv-button-primary;
 
-  &:hover {
-	@extend %nv-button-primary-hover;
-  }
+	@extend %nv-button-primary;
+
+	&:hover {
+
+		@extend %nv-button-primary-hover;
+	}
 }
