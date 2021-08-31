@@ -23,6 +23,9 @@ module.exports = (on) => {
 	const config = {
 		extends: ['html-validate:document', 'html-validate:standard'],
 		rules: { 'require-sri': 'off' },
+		exclude: [
+			'#adminbarsearch > input:nth-child(3)' // wp admin bar search input
+		]
 	};
 	on('task', percyHealthCheck);
 	htmlvalidate.install(on, config);
