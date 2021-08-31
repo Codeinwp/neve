@@ -191,12 +191,12 @@
 
 		.neve-mega-menu > .sub-menu {
 			left: 50% !important;
-		  	right: unset !important;
+			right: unset !important;
 			transform: translateX(-50%);
 			position: absolute;
-			display: flex;
 			padding: 20px;
 			top: auto;
+			display: none;
 
 			&:not(.dropdown-open) {
 				pointer-events: none;
@@ -206,6 +206,7 @@
 		.neve-mega-menu:hover > .sub-menu,
 		.neve-mega-menu:focus > .sub-menu,
 		.neve-mega-menu:focus-within > .sub-menu {
+			display: flex;
 			opacity: 1;
 			visibility: visible;
 			pointer-events: all;
