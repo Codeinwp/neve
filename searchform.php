@@ -8,7 +8,6 @@
 $placeholder = apply_filters( 'nv_search_placeholder', __( 'Search for...', 'neve' ) );
 $aria_label  = __( 'Search', 'neve' );
 $home_url    = home_url( '/' );
-
 if ( function_exists( 'PLL' ) ) {
 	$pll_data = PLL();
 	if ( property_exists( $pll_data, 'links' ) && method_exists( $pll_data->links, 'get_home_url' ) ) {
