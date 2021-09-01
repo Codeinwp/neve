@@ -26,10 +26,7 @@ module.exports = (on) => {
 	};
 
 	const options = {
-		exclude: [
-			'#adminbarsearch > input:nth-child(3)', // wp admin bar search input
-			'#submit',
-		],
+		include: ['.header', '.site-footer', '.blog-sidebar'],
 	};
 
 	on('task', percyHealthCheck);
