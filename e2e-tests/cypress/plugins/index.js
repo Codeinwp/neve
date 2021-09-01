@@ -27,10 +27,10 @@ module.exports = (on) => {
 
 	const options = {
 		exclude: [
-			'#adminbarsearch > input:nth-child(3)' // wp admin bar search input
-		]
+			'#adminbarsearch > input:nth-child(3)', // wp admin bar search input
+		],
 	};
-	
+
 	on('task', percyHealthCheck);
 	htmlvalidate.install(on, config, options);
 };
