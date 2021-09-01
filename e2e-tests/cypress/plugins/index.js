@@ -28,6 +28,7 @@ module.exports = (on) => {
 	const options = {
 		exclude: [
 			'#adminbarsearch > input:nth-child(3)', // wp admin bar search input
+			'#submit',
 		],
 	};
 
