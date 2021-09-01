@@ -65,30 +65,6 @@
 	}
 }
 
-.post-password-form {
-	margin-bottom: $spacing-md;
-	text-align: center;
-
-	input[type="submit"] {
-		height: 39px;
-		margin-left: $spacing-xs;
-	}
-
-	label {
-		margin-bottom: 0;
-	}
-
-	p {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	label > input {
-		margin-left: $spacing-xs;
-	}
-}
-
 .nv-tags-list,
 .tagcloud {
 
