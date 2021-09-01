@@ -75,7 +75,7 @@ class Form_Fields extends Base_Customizer {
 					'priority'         => 10,
 					'class'            => 'form-fields-accordion',
 					'accordion'        => true,
-					'controls_to_wrap' => 6,
+					'controls_to_wrap' => 5,
 				],
 				'Neve\Customizer\Controls\Heading'
 			)
@@ -131,46 +131,6 @@ class Form_Fields extends Base_Customizer {
 					],
 				],
 				'\Neve\Customizer\Controls\React\Nr_Spacing'
-			)
-		);
-
-		// Spacing
-		$default_spacing = Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_SPACING );
-		$this->add_control(
-			new Control(
-				Config::MODS_FORM_FIELDS_SPACING,
-				[
-					'sanitize_callback' => 'absint',
-					'transport'         => $this->selective_refresh,
-					'default'           => $default_spacing,
-				],
-				[
-					'label'                 => esc_html__( 'Field Spacing', 'neve' ),
-					'section'               => $this->section_id,
-					'type'                  => 'neve_range_control',
-					'input_attrs'           => [
-						'min'        => 50,
-						'max'        => 100,
-						'defaultVal' => $default_spacing,
-					],
-					'priority'              => 16,
-					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'cssVar'   => [
-							'selector' => 'body',
-							'vars'     => '--formFieldSpacing',
-							'suffix'   => 'px',
-						],
-						'template' => '
-						 form:not([role="search"]):not(.woocommerce-cart-form):not(.woocommerce-ordering):not(.cart) input:read-write:not(#coupon_code),
-						 form textarea,
-						 form select,
-						 .woocommerce-page .select2 {
-						    margin-bottom: {{value}}px;
-					     }',
-					],
-				],
-				'Neve\Customizer\Controls\React\Range'
 			)
 		);
 
@@ -522,43 +482,9 @@ class Form_Fields extends Base_Customizer {
 					'class'            => 'form-labels-accordion',
 					'accordion'        => true,
 					'expanded'         => false,
-					'controls_to_wrap' => 2,
+					'controls_to_wrap' => 1,
 				],
 				'Neve\Customizer\Controls\Heading'
-			)
-		);
-
-		// Label spacing
-		$this->add_control(
-			new Control(
-				Config::MODS_FORM_FIELDS_LABELS_SPACING,
-				[
-					'sanitize_callback' => 'absint',
-					'transport'         => $this->selective_refresh,
-					'default'           => 10,
-				],
-				[
-					'label'                 => esc_html__( 'Label Spacing', 'neve' ),
-					'section'               => $this->section_id,
-					'type'                  => 'neve_range_control',
-					'input_attrs'           => [
-						'min'        => 50,
-						'max'        => 100,
-						'defaultVal' => 10,
-					],
-					'priority'              => 51,
-					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'cssVar'     => [
-							'selector' => 'body',
-							'suffix'   => 'px',
-							'vars'     => '--formLabelSpacing',
-						],
-						'responsive' => false,
-						'template'   => 'body form label, body .wpforms-container .wpforms-field-label, .woocommerce form .form-row label {margin-bottom: {{value}}px;}',
-					],
-				],
-				'Neve\Customizer\Controls\React\Range'
 			)
 		);
 

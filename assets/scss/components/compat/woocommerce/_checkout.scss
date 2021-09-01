@@ -162,7 +162,6 @@
 .woocommerce-page {
 
 	.select2-container {
-		margin-bottom: var(--formFieldSpacing);
 
 		&.select2-container--open {
 			outline: 0;
@@ -178,8 +177,6 @@
 
 	.select2-container--default .select2-selection--single {
 		height: auto;
-
-		@extend %nv-reset-field-spacing;
 	}
 
 	.select2-container--default .select2-selection--single,
