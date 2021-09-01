@@ -17,7 +17,7 @@ $label           = component_setting( MenuIcon::TEXT_ID );
 
 ?>
 <div class="menu-mobile-toggle item-button navbar-toggle-wrapper">
-	<button class="navbar-toggle"
+	<button type="button" class="navbar-toggle"
 		<?php
 		echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>
