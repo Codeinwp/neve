@@ -20,7 +20,13 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run StorybookCypress tests
+      - name: Install root dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Start Storybook
+        run: yarn run build && yarn storybook &
+
+      - name: Run Storybook Cypress tests 🚀
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
