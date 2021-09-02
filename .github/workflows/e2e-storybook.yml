@@ -35,7 +35,6 @@ jobs:
           yarn install --frozen-lockfile
           yarn run build
           yarn storybook &
-
       - name: [${{ matrix.container }}] Run Storybook Cypress tests 🚀
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
