@@ -1,5 +1,3 @@
-import { should } from 'chai';
-
 describe('Radio Icons', function () {
 	before(function () {
 		cy.visitStorybook();
