@@ -24,7 +24,9 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Start Storybook
-        run: yarn run build && yarn storybook &
+        run: |
+          yarn run build
+          yarn storybook &
 
       - name: Run Storybook Cypress tests 🚀
         env:
