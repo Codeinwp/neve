@@ -1,5 +1,5 @@
 describe('Color', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 
