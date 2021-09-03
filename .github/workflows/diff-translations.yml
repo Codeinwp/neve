@@ -44,7 +44,8 @@ jobs:
           curl -o podiff.gz ftp://download.gnu.org.ua/pub/releases/podiff/podiff-1.3.tar.gz
           tar -xf podiff.gz
           cd podiff-1.3
-          make && mv podiff ../bin
+          make
+          mv podiff $GITHUB_WORKSPACE/bin
           echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
           cd ..
           ls $GITHUB_WORKSPACE/bin
