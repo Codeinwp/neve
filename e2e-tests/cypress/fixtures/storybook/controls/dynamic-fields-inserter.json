@@ -1,0 +1,234 @@
+{
+	"allOptions": [
+		{
+			"name": "Current Single Title",
+			"value": "{current_single_title}"
+		},
+		{
+			"name": "Current Single Excerpt",
+			"value": "{current_single_excerpt}"
+		},
+		{
+			"name": "Current Single URL",
+			"value": "{current_single_url}"
+		},
+		{
+			"name": "Current Post Meta",
+			"value": "{current_post_meta}"
+		},
+		{
+			"name": "Author meta",
+			"value": "{meta_author}"
+		},
+		{
+			"name": "Date meta",
+			"value": "{meta_date}"
+		},
+		{
+			"name": "Category meta",
+			"value": "{meta_category}"
+		},
+		{
+			"name": "Comments meta",
+			"value": "{meta_comments}"
+		},
+		{
+			"name": "Author meta",
+			"value": "{meta_author}"
+		},
+		{
+			"name": "Time to read meta",
+			"value": "{meta_time_to_read}"
+		},
+		{
+			"name": "Archive Description",
+			"value": "{archive_description}"
+		},
+
+		{
+			"name": "Archive Title",
+			"value": "{archive_title}"
+		},
+		{
+			"name": "Archive URL",
+			"value": "{archive_url}"
+		},
+		{
+			"name": "Author Bio",
+			"value": "{author_bio}"
+		},
+		{
+			"name": "Author Name",
+			"value": "{author_name}"
+		},
+		{
+			"name": "Author URL",
+			"value": "{author_url}"
+		},
+		{
+			"name": "Site Title",
+			"value": "{site_title}"
+		},
+		{
+			"name": "Site Tagline",
+			"value": "{site_tagline}"
+		},
+		{
+			"name": "Home URL",
+			"value": "{home_url}"
+		},
+		{
+			"name": "Current Year",
+			"value": "{current_year}"
+		},
+		{
+			"name": "Total + Currency Symbol",
+			"value": "{cart_total_currency_symbol}"
+		},
+		{
+			"name": "Total",
+			"value": "{cart_total}"
+		},
+		{
+			"name": "Currency Name",
+			"value": "{currency_name}"
+		},
+		{
+			"name": "Currency Symbol",
+			"value": "{currency_symbol}"
+		},
+		{
+			"name": "Product Price",
+			"value": "{product_price}"
+		},
+		{
+			"name": "Product Title",
+			"value": "{product_title}"
+		},
+		{
+			"name": "Cart URL",
+			"value": "{cart_link}"
+		},
+		{
+			"name": "Checkout URL",
+			"value": "{checkout_link}"
+		}
+	],
+	"onlyUrl": [
+		{
+			"name": "Current Single URL",
+			"value": "{current_single_url}"
+		},
+		{
+			"name": "Archive URL",
+			"value": "{archive_url}"
+		},
+		{
+			"name": "Author URL",
+			"value": "{author_url}"
+		},
+		{
+			"name": "Home URL",
+			"value": "{home_url}"
+		},
+		{
+			"name": "Cart URL",
+			"value": "{cart_link}"
+		},
+		{
+			"name": "Checkout URL",
+			"value": "{checkout_link}"
+		}
+	],
+	"noUrl": [
+		{
+			"name": "Current Single Title",
+			"value": "{current_single_title}"
+		},
+		{
+			"name": "Current Single Excerpt",
+			"value": "{current_single_excerpt}"
+		},
+		{
+			"name": "Current Post Meta",
+			"value": "{current_post_meta}"
+		},
+		{
+			"name": "Author meta",
+			"value": "{meta_author}"
+		},
+		{
+			"name": "Date meta",
+			"value": "{meta_date}"
+		},
+		{
+			"name": "Category meta",
+			"value": "{meta_category}"
+		},
+		{
+			"name": "Comments meta",
+			"value": "{meta_comments}"
+		},
+		{
+			"name": "Author meta",
+			"value": "{meta_author}"
+		},
+		{
+			"name": "Time to read meta",
+			"value": "{meta_time_to_read}"
+		},
+		{
+			"name": "Archive Description",
+			"value": "{archive_description}"
+		},
+
+		{
+			"name": "Archive Title",
+			"value": "{archive_title}"
+		},
+		{
+			"name": "Author Bio",
+			"value": "{author_bio}"
+		},
+		{
+			"name": "Author Name",
+			"value": "{author_name}"
+		},
+		{
+			"name": "Site Title",
+			"value": "{site_title}"
+		},
+		{
+			"name": "Site Tagline",
+			"value": "{site_tagline}"
+		},
+		{
+			"name": "Current Year",
+			"value": "{current_year}"
+		},
+		{
+			"name": "Total + Currency Symbol",
+			"value": "{cart_total_currency_symbol}"
+		},
+		{
+			"name": "Total",
+			"value": "{cart_total}"
+		},
+		{
+			"name": "Currency Name",
+			"value": "{currency_name}"
+		},
+		{
+			"name": "Currency Symbol",
+			"value": "{currency_symbol}"
+		},
+		{
+			"name": "Product Price",
+			"value": "{product_price}"
+		},
+		{
+			"name": "Product Title",
+			"value": "{product_title}"
+		}
+	]
+}
