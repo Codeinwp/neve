@@ -8,12 +8,15 @@ on:
 
 jobs:
   e2e-storybook:
+    strategy:
+      fail-fast: false
+      matrix:
+        # run 3 copies of the current job in parallel
+        containers: [1, 2, 3]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
-        with:
-          persist-credentials: false
+        uses: actions/checkout@v2
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -27,12 +30,25 @@ jobs:
       - name: Build Cypress
         working-directory: ./e2e-tests
         run:  yarn install --frozen-lockfile
-      - name: Install and Build 🔧
+      - name: Start Storybook
         run: |
           yarn install --frozen-lockfile
           yarn run build
           yarn storybook &
-      - name: E2E Tests 🚀
-        working-directory: ./e2e-tests
-        run: |
-          yarn run cypress:storybook:run --record --key=${{ secrets.CYPRESS_RECORD_KEY }}
+      - name: Run Storybook Cypress tests 🚀 -  ${{ matrix.container }}
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: ./e2e-tests
+          env: host=localhost,port=6006
+          browser: chrome
+          headless: true
+          parallel: true
+          group: e2e-storybook
+          config-file: cypress.storybook.json
+          record: true
+          spec: cypress/integration/storybook/**/*,

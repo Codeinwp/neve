@@ -1,5 +1,5 @@
 describe('Accordion', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 
@@ -7,7 +7,7 @@ describe('Accordion', function () {
 		cy.loadStory('Customizer/Controls/Accordion', 'Initially Opened');
 
 		cy.get('.nv-accordion').should('have.class', 'expanded');
-		cy.get('.accordion-content').should('exist');
+		cy.get('.accordion-content');
 
 		cy.get('.nv-accordion').click();
 		cy.get('.nv-accordion').should('not.have.class', 'expanded');
@@ -22,7 +22,7 @@ describe('Accordion', function () {
 
 		cy.get('.nv-accordion').click();
 		cy.get('.nv-accordion').should('have.class', 'expanded');
-		cy.get('.accordion-content').should('exist');
+		cy.get('.accordion-content');
 	});
 
 	it('Label Works', function () {

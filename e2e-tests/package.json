@@ -1,7 +1,7 @@
 {
 	"name": "e2e-tests",
 	"version": "1.0.0",
-	"description": "Cypress e2e-tests for Neve",
+	"description": "Cypress e2e-tests for Neve.",
 	"author": "ThemeIsle <friends@themeisle.com>",
 	"license": "GPL-2.0-or-later",
 	"keywords": [
@@ -25,6 +25,7 @@
 		"cypress-file-upload": "^5.0.3",
 		"cypress-localstorage-commands": "^1.4.1",
 		"cypress-nv-commands": "^1.0.20",
+		"cypress-real-events": "^1.5.1",
 		"cypress-storybook": "^0.5.1",
 		"eslint": "^7.22.0",
 		"eslint-config-prettier": "^8.1.0",
