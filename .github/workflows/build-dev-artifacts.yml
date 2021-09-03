@@ -9,9 +9,8 @@ jobs:
   wait-for-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Wait on tests
-        uses: ./
+      - name: Wait for tests to succeed
+        uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: ${{ github.sha }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
