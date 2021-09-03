@@ -46,7 +46,7 @@ jobs:
           cd podiff-1.3
           make
           ls
-          mv podiff $GITHUB_WORKSPACE/bin
+          mv ./podiff $GITHUB_WORKSPACE/bin
           echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
           cd ..
           ls $GITHUB_WORKSPACE/bin
