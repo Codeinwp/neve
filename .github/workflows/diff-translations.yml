@@ -49,6 +49,7 @@ jobs:
           cd ..
       - name: Run Podiff
         run: |
+          echo "$PATH"
           ${GITHUB_WORKSPACE}/neve-head/bin/pot-diff.sh ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot $PERCENT_TRESHOLD
       - name: Step failed Create or update comment
         if: ${{ failure() }}
