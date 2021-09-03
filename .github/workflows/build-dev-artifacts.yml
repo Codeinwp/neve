@@ -15,7 +15,7 @@ jobs:
           ref: ${{ github.sha }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           running-workflow-name: wait-for-tests
-          check-regexp: Test.?
+          check-regexp: Test.*
   dev-zip:
     needs: wait-for-tests
     name: Build ZIP and upload to s3
