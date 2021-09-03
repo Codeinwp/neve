@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Pause until all workflows are completed
-        uses: willgarcia/workflow-wait-action@v0.1.0
+        uses: willgarcia/workflow-wait-action@main
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
           timeout: 300
