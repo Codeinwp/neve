@@ -71,6 +71,9 @@
 
 .ti-sortable-item-area {
 	z-index: 999999;
+  &.sortable-ghost {
+	color: #ccc;
+  }
 
 	&:not(:first-of-type):not(:last-of-type) {
 		.ti-sortable-item {

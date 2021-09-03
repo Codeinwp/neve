@@ -6,7 +6,7 @@
 // import arrayMove from 'array-move';
 // import { Component } from '@wordpress/element';
 // import { Button } from '@wordpress/components';
-// import { __ } from '@wordpress/i18n';
+
 //
 // const DragHandle = sortableHandle(() => {
 // 	return (
@@ -74,110 +74,91 @@
 // 						);
 // 					})}
 // 				</SortableList>
-// 				<div className="disabled-items neve-meta-control">
-// 					{Object.keys(elements).map((value, index) => {
-// 						if (currentValues.includes(value)) {
-// 							return false;
-// 						}
-// 						return (
-// 							<div className="ti-sortable-item-area" key={index}>
-// 								<div className="ti-sortable-item hidden">
-// 									<Button
-// 										isTertiary
-// 										icon="hidden"
-// 										label={__('Toggle', 'neve')}
-// 										showTooltip={true}
-// 										className="ti-sortable-item-toggle"
-// 										onClick={() => {
-// 											this.props.toggle(value);
-// 										}}
-// 									/>
-// 									<div className="ti-sortable-item-label">
-// 										{elements[value]}
-// 									</div>
-// 								</div>
-// 							</div>
-// 						);
-// 					})}
-// 				</div>
+
 // 			</div>
 // 		);
 // 	}
 // }
 //
-// export default compose([
-// 	withDispatch((dispatch, props, { select }) => {
-// 		return {
-// 			onSortStart({ index }) {
-// 				document.querySelector(
-// 					'.ti-sortable-item-area:nth-of-type(' + (index + 1) + ')'
-// 				).style.color = '#ccc';
-// 			},
-// 			onSortEnd({ oldIndex, newIndex }) {
-// 				const metaValue = JSON.parse(
-// 					select('core/editor').getEditedPostAttribute('meta')[
-// 						props.id
-// 					] || props.data.default
-// 				);
-// 				const newElements = arrayMove(metaValue, oldIndex, newIndex);
-// 				props.stateUpdate(props.id, JSON.stringify(newElements));
-// 				dispatch('core/editor').editPost({
-// 					meta: { [props.id]: JSON.stringify(newElements) },
-// 				});
-// 				document.querySelector(
-// 					'.ti-sortable-item-area:nth-of-type(' + (newIndex + 1) + ')'
-// 				).style.color = null;
-// 			},
-// 			toggle(value) {
-// 				let metaValue = JSON.parse(
-// 					select('core/editor').getEditedPostAttribute('meta')[
-// 						props.id
-// 					] || props.data.default
-// 				);
-// 				if (metaValue.includes(value)) {
-// 					metaValue = metaValue.filter((e) => e !== value);
-// 				} else {
-// 					metaValue.push(value);
-// 				}
-// 				props.stateUpdate(props.id, JSON.stringify(metaValue));
-// 				dispatch('core/editor').editPost({
-// 					meta: { [props.id]: JSON.stringify(metaValue) },
-// 				});
-// 			},
-// 		};
-// 	}),
-// 	withSelect((select, props) => {
-// 		const metaValue = select('core/editor').getEditedPostAttribute('meta')[
-// 			props.id
-// 		];
-// 		return { metaFieldValue: metaValue || props.data.default };
-// 	}),
-// ])(SortableItems);
 
 import { compose } from '@wordpress/compose';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { ReactSortable } from 'react-sortablejs';
+import { Button } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
+import React from 'react';
 
 const SortableItems = (props) => {
-	const currentValues = props.metaFieldValue;
-
+	const { updateElement, metaFieldValue, toggle } = props;
+	const elements = props.data.elements;
 	return (
 		<div>
-			<ReactSortable list={currentValues} setList={props.updateElement}>
-				{currentValues.map((item) => {
+			<ReactSortable
+				className="neve-meta-control neve-meta-sortable-items"
+				list={metaFieldValue}
+				setList={updateElement}
+			>
+				{metaFieldValue.map((item) => {
 					return (
-						<div className="ti-sortable-item-label" key={item.id}>
-							{item.value}
+						<div
+							className={`ti-sortable-item-area ti-sortable-item-area-${item.id}`}
+							key={item.id}
+						>
+							<div className="ti-sortable-item">
+								<Button
+									isTertiary
+									icon="visibility"
+									label={__('Toggle', 'neve')}
+									showTooltip={true}
+									className="ti-sortable-item-toggle"
+									onClick={() => {
+										toggle(item.id);
+									}}
+								/>
+								<div className="ti-sortable-item-label">
+									{item.value}
+								</div>
+								<div className="ti-sortable-handle">
+									<Button isTertiary icon="menu" />
+								</div>
+							</div>
 						</div>
 					);
 				})}
 			</ReactSortable>
+			<div className="disabled-items neve-meta-control">
+				{Object.keys(elements).map((value, index) => {
+					if (metaFieldValue.find((item) => item.id === value)) {
+						return false;
+					}
+
+					return (
+						<div className="ti-sortable-item-area" key={index}>
+							<div className="ti-sortable-item hidden">
+								<Button
+									isTertiary
+									icon="hidden"
+									label={__('Toggle', 'neve')}
+									showTooltip={true}
+									className="ti-sortable-item-toggle"
+									onClick={() => {
+										toggle(value);
+									}}
+								/>
+								<div className="ti-sortable-item-label">
+									{elements[value]}
+								</div>
+							</div>
+						</div>
+					);
+				})}
+			</div>
 		</div>
 	);
 };
 
 export default compose(
-	withDispatch((dispatch, props) => {
+	withDispatch((dispatch, props, { select }) => {
 		return {
 			updateElement(value) {
 				const val = value.map((item) => {
@@ -186,6 +167,22 @@ export default compose(
 				props.stateUpdate(props.id, JSON.stringify(val));
 				dispatch('core/editor').editPost({
 					meta: { [props.id]: JSON.stringify(val) },
+				});
+			},
+			toggle(value) {
+				let metaValue = JSON.parse(
+					select('core/editor').getEditedPostAttribute('meta')[
+						props.id
+					] || props.data.default
+				);
+				if (metaValue.includes(value)) {
+					metaValue = metaValue.filter((e) => e !== value);
+				} else {
+					metaValue.push(value);
+				}
+				props.stateUpdate(props.id, JSON.stringify(metaValue));
+				dispatch('core/editor').editPost({
+					meta: { [props.id]: JSON.stringify(metaValue) },
 				});
 			},
 		};
