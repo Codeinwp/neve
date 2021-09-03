@@ -47,6 +47,7 @@ jobs:
           make && mv podiff ../bin
           echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
           cd ..
+          ls $GITHUB_WORKSPACE/bin
       - name: Run Podiff
         run: |
           echo "$PATH"
