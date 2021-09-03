@@ -43,9 +43,9 @@ jobs:
         env:
           PERCENT_TRESHOLD: 2
         run: |
-        wget -O podiff ftp://download.gnu.org.ua/pub/releases/podiff
-        chmod 0777 podiff
-        ${GITHUB_WORKSPACE}/neve-head/bin/pot-diff.sh ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot $PERCENT_TRESHOLD
+          wget -O podiff ftp://download.gnu.org.ua/pub/releases/podiff
+          chmod 0777 podiff
+          ${GITHUB_WORKSPACE}/neve-head/bin/pot-diff.sh ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot $PERCENT_TRESHOLD
       - name: Step failed Create or update comment
         if: ${{ failure() }}
         uses: peter-evans/create-or-update-comment@v1
