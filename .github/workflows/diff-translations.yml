@@ -62,6 +62,6 @@ jobs:
             - name: Everything else
               paths: unmatched
               teams:
-                - @selul
+                - "@selul"
           status: Required review
           token:  ${{ secrets.BOT_TOKEN }}
