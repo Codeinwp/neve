@@ -63,5 +63,5 @@ jobs:
               paths: unmatched
               teams:
                 - "admin-neve"
-          status: Has translation changes, Required review from admin-neve
+          status: Has translation changes, a review admin-neve team is required
           token:  ${{ secrets.BOT_TOKEN }}
