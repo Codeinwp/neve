@@ -1,7 +1,8 @@
 @import "../main/global-colors";
 @import "../main/variables";
 
-.wp-block {
+body &,
+body & p {
 	color: var(--nv-text-color);
 	font-size: var(--bodyFontSize);
 	line-height: var(--bodyLineHeight);
@@ -9,7 +10,9 @@
 	font-family: var(--bodyFontFamily);
 	text-transform: var(--bodyTextTransform);
 	font-weight: var(--bodyFontWeight);
+}
 
+.wp-block {
 	// Group colors
 	&.has-text-color .wp-block {
 		color: inherit;
