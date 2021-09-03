@@ -1,5 +1,5 @@
 describe('Accordion', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

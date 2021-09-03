@@ -1,5 +1,5 @@
 describe('Responsive', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

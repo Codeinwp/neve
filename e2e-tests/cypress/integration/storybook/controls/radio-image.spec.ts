@@ -1,5 +1,5 @@
 describe('Radio Image', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

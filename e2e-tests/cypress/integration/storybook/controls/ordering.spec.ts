@@ -1,5 +1,5 @@
 describe('Ordering', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

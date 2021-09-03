@@ -1,5 +1,5 @@
 describe('Font Family Selector', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 	context('Default', function () {

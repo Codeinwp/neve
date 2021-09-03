@@ -1,5 +1,5 @@
 describe('Radio Icons', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

@@ -1,5 +1,5 @@
 describe('Multiselect', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

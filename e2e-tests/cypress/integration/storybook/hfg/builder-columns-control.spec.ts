@@ -1,5 +1,5 @@
 describe('Builder Columns Control', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 	context('Default', function () {

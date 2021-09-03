@@ -1,5 +1,5 @@
 describe('Range', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

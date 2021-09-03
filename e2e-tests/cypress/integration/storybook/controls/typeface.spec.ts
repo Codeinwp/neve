@@ -1,5 +1,5 @@
 describe('Typeface', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

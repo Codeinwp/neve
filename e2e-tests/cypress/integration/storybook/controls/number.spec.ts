@@ -1,5 +1,5 @@
 describe('number', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

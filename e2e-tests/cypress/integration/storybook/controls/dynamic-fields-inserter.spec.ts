@@ -2,7 +2,7 @@
 const testData = require('../../../fixtures/storybook/controls/dynamic-fields-inserter.json');
 
 describe('Dynamic Fields Inserter', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 	context('All Options Enabled', function () {

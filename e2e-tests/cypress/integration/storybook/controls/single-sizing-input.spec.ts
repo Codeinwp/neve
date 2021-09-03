@@ -1,5 +1,5 @@
 describe('Single Sizing Input', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

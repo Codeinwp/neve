@@ -1,5 +1,5 @@
 describe('Presets Selector', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

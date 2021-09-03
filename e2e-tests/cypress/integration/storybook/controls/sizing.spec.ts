@@ -1,5 +1,5 @@
 describe('Sizing', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

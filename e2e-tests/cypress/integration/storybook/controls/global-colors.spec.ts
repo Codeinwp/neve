@@ -1,5 +1,5 @@
 describe('Global Colors', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

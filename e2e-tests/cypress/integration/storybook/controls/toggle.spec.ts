@@ -1,5 +1,5 @@
 describe('Toggle', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 

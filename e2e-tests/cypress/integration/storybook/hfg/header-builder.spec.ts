@@ -1,5 +1,5 @@
 describe('Header Builder', function () {
-	before(function () {
+	beforeEach(function () {
 		cy.visitStorybook();
 	});
 	context('Default', function () {
