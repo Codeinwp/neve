@@ -1,86 +1,3 @@
-// import {
-// 	sortableContainer,
-// 	sortableElement,
-// 	sortableHandle,
-// } from 'react-sortable-hoc';
-// import arrayMove from 'array-move';
-// import { Component } from '@wordpress/element';
-// import { Button } from '@wordpress/components';
-
-//
-// const DragHandle = sortableHandle(() => {
-// 	return (
-// 		<div className="ti-sortable-handle">
-// 			<Button isTertiary icon="menu" />
-// 		</div>
-// 	);
-// });
-//
-// const SortableItem = sortableElement(({ value, label, toggle }) => {
-// 	const icon = 'visibility';
-// 	return (
-// 		<div className={`ti-sortable-item-area ti-sortable-item-area-${value}`}>
-// 			<div key={value} className="ti-sortable-item">
-// 				<Button
-// 					isTertiary
-// 					icon={icon}
-// 					label={__('Toggle', 'neve')}
-// 					showTooltip={true}
-// 					className="ti-sortable-item-toggle"
-// 					onClick={() => {
-// 						toggle(value);
-// 					}}
-// 				/>
-// 				<div className="ti-sortable-item-label">{label}</div>
-// 				<DragHandle />
-// 			</div>
-// 		</div>
-// 	);
-// });
-//
-// const SortableList = sortableContainer(({ children }) => {
-// 	return (
-// 		<div className="neve-meta-control neve-meta-sortable-items">
-// 			{children}
-// 		</div>
-// 	);
-// });
-//
-// class SortableItems extends Component {
-// 	render() {
-// 		const elements = this.props.data.elements;
-// 		const currentValues = JSON.parse(this.props.metaFieldValue);
-// 		return (
-// 			<div>
-// 				<SortableList
-// 					onSortEnd={this.props.onSortEnd}
-// 					lockAxis="y"
-// 					useDragHandle
-// 					hideSortableGhost={false}
-// 					onSortStart={this.props.onSortStart}
-// 				>
-// 					{currentValues.map((value, index) => {
-// 						if (undefined === elements[value]) {
-// 							return false;
-// 						}
-// 						return (
-// 							<SortableItem
-// 								key={`item-${value}`}
-// 								index={index}
-// 								value={value}
-// 								label={elements[value]}
-// 								toggle={this.props.toggle}
-// 							/>
-// 						);
-// 					})}
-// 				</SortableList>
-
-// 			</div>
-// 		);
-// 	}
-// }
-//
-
 import { compose } from '@wordpress/compose';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { ReactSortable } from 'react-sortablejs';
@@ -97,6 +14,8 @@ const SortableItems = (props) => {
 				className="neve-meta-control neve-meta-sortable-items"
 				list={metaFieldValue}
 				setList={updateElement}
+				handle=".ti-sortable-handle"
+				animation="300"
 			>
 				{metaFieldValue.map((item) => {
 					return (
