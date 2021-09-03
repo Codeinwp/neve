@@ -46,7 +46,7 @@ jobs:
           curl -o podiff.gz ftp://download.gnu.org.ua/pub/releases/podiff/podiff-1.3.tar.gz
           tar -xf podiff.gz
           cd podiff-1.3
-          make && mv podiff ../podiff
+          make && mv podiff ../bin/podiff
           cd ..
           ${GITHUB_WORKSPACE}/neve-head/bin/pot-diff.sh ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot $PERCENT_TRESHOLD
       - name: Step failed Create or update comment
