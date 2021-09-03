@@ -50,11 +50,9 @@ jobs:
           mv ./podiff $GITHUB_WORKSPACE/bin
           echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
           cd ..
-          ls $GITHUB_WORKSPACE/bin
       - name: Run Podiff
         id: translation_status
         run: |
-          echo "$PATH"
           ${GITHUB_WORKSPACE}/neve-head/bin/pot-diff.sh ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot $PERCENT_TRESHOLD
       - name: Step require review
         if: steps.translation_status.outputs.has_pot_diff != 'success'
