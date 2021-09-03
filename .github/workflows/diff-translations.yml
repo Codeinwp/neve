@@ -58,7 +58,7 @@ jobs:
           ${GITHUB_WORKSPACE}/neve-head/bin/pot-diff.sh ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot $PERCENT_TRESHOLD
       - name: Step require review
         if: steps.translation_status.outputs.has_pot_diff != 'success'
-        uses: Automattic/action-required-review
+        uses: Automattic/action-required-review@master
         with:
           requirements: |
             - name: Everything else
