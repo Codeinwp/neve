@@ -62,6 +62,6 @@ jobs:
             - name: Everything else
               paths: unmatched
               teams:
-                - "@selul"
-          status: Required review
+                - "admin-neve"
+          status: Has translation changes, Required review from admin-neve
           token:  ${{ secrets.BOT_TOKEN }}
