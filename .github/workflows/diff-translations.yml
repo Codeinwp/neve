@@ -1,6 +1,7 @@
 name: Translations Diff
 
 on:
+  pull_request_review:
   pull_request:
     types: [opened, edited, synchronize, ready_for_review]
     branches:
@@ -51,23 +52,18 @@ jobs:
           cd ..
           ls $GITHUB_WORKSPACE/bin
       - name: Run Podiff
+        id: translation_status
         run: |
           echo "$PATH"
           ${GITHUB_WORKSPACE}/neve-head/bin/pot-diff.sh ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot $PERCENT_TRESHOLD
-      - name: Step failed Create or update comment
-        if: ${{ failure() }}
-        uses: peter-evans/create-or-update-comment@v1
+      - name: Step require review
+        if: steps.translation_status.outputs.has_pot_diff != 'success'
+        uses: Automattic/action-required-review
         with:
-          comment-id: ${{ steps.find_coomment.outputs.comment-id }}
-          token: ${{ secrets.BOT_TOKEN }}
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            :crossed_flags::guardsman: PR has POT difference cc: @selul
-          edit-mode: replace
-      - name: Delete comment
-        uses: jungwinter/comment@v1
-        if: steps.find_coomment.outputs.comment-id != ''
-        with:
-          type: delete
-          comment_id: ${{ steps.find_coomment.outputs.comment-id }}
-          token: ${{ secrets.BOT_TOKEN }}
+          requirements: |
+            - name: Everything else
+              paths: unmatched
+              teams:
+                - @selul
+          status: Required review
+          token:  ${{ secrets.BOT_TOKEN }}
