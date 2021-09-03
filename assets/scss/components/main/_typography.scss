@@ -100,3 +100,7 @@ ul,
 ol {
 	padding-left: var(--listPad, 0);
 }
+
+ul {
+	list-style: var(--listStyle, none);
+}

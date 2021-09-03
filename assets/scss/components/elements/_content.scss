@@ -58,6 +58,7 @@ pre {
 .nv-content-wrap,
 .excerpt-wrap {
 	--listPad: 20px;
+	--listStyle: disc;
 
 	&::after {
 		content: "";
@@ -65,15 +66,10 @@ pre {
 		display: table;
 	}
 
-	ul {
-		list-style-type: initial;
-	}
-
 	> ul,
 	> ol {
 		margin: $spacing-lg 0;
 	}
-
 
 	li {
 		margin-top: $spacing-xs;
