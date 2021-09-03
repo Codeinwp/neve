@@ -76,6 +76,7 @@ class Layout_Container extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => [
+							'selector'   => 'body',
 							'vars'       => '--container',
 							'responsive' => true,
 							'suffix'     => 'px',
