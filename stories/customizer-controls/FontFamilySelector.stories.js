@@ -1,4 +1,4 @@
-import FontFamilySelector from '../../inc/customizer/controls/react/src/font-family/FontFamilySelector';
+import FontFamilySelector from '../../assets/apps/customizer-controls/src/font-family/FontFamilySelector';
 import {
 	WhiteBackgroundDecorator,
 	CustomizerDecorator,

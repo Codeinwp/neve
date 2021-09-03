@@ -51,8 +51,8 @@ $_files_to_check = defined( 'NEVE_IGNORE_SOURCE_CHECK' ) ? [] : [
 	NEVE_MAIN_DIR . 'vendor/autoload.php',
 	NEVE_MAIN_DIR . 'style-main-new.css',
 	NEVE_MAIN_DIR . 'assets/js/build/modern/frontend.js',
-	NEVE_MAIN_DIR . 'dashboard/build/dashboard.js',
-	NEVE_MAIN_DIR . 'inc/customizer/controls/react/bundle/controls.js',
+	NEVE_MAIN_DIR . 'assets/apps/dashboard/build/dashboard.js',
+	NEVE_MAIN_DIR . 'assets/apps/customizer-controls/build/controls.js',
 ];
 foreach ( $_files_to_check as $_file_to_check ) {
 	if ( ! is_file( $_file_to_check ) ) {

@@ -1,5 +1,5 @@
 import { useState } from '@wordpress/element';
-import GlobalColors from '../../inc/customizer/controls/react/src/global-colors/GlobalColors';
+import GlobalColors from '../../assets/apps/customizer-controls/src/global-colors/GlobalColors';
 import { CustomizerDecorator } from '../components/decorators';
 import { GLOBAL_COLORS_DEFAULT, GLOBAL_COLORS_FILLED } from '../utils/values';
 

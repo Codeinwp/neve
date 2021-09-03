@@ -74,8 +74,6 @@ const gruntConfig = (grunt) => {
     '!**/vendor/**/*',
     '!header-footer-grid/assets/js/**/*',
     '!**/rollup.config.js',
-    '!inc/customizer/controls/react/**/*',
-    '!inc/admin/metabox/src/**/*',
     '!dist/**/*',
     '!cypress/**/*'
   ] )

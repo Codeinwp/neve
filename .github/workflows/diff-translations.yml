@@ -1,6 +1,7 @@
 name: Translations Diff
 
 on:
+  pull_request_review:
   pull_request:
     types: [opened, edited, synchronize, ready_for_review]
     branches:
@@ -39,24 +40,28 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: 'pirate-bot'
           body-includes: PR has POT difference
-      - name: Calculate Diff
-        env:
-          PERCENT_TRESHOLD: 2
-        run: ${GITHUB_WORKSPACE}/neve-head/bin/pot-diff.sh ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot $PERCENT_TRESHOLD
-      - name: Step failed Create or update comment
-        if: ${{ failure() }}
-        uses: peter-evans/create-or-update-comment@v1
+      - name: Install PODiff
+        run: |
+          curl -o podiff.gz ftp://download.gnu.org.ua/pub/releases/podiff/podiff-1.3.tar.gz
+          tar -xf podiff.gz
+          cd podiff-1.3
+          make
+          mkdir -p $GITHUB_WORKSPACE/bin
+          mv ./podiff $GITHUB_WORKSPACE/bin
+          echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
+          cd ..
+      - name: Run Podiff
+        id: translation_status
+        run: |
+          ${GITHUB_WORKSPACE}/neve-head/bin/pot-diff.sh ./neve-base/languages/neve.pot ./neve-head/languages/neve.pot $PERCENT_TRESHOLD
+      - name: Step require review
+        if: steps.translation_status.outputs.has_pot_diff != 'success'
+        uses: Automattic/action-required-review@master
         with:
-          comment-id: ${{ steps.find_coomment.outputs.comment-id }}
-          token: ${{ secrets.BOT_TOKEN }}
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            :crossed_flags::guardsman: PR has POT difference cc: @selul
-          edit-mode: replace
-      - name: Delete comment
-        uses: jungwinter/comment@v1
-        if: steps.find_coomment.outputs.comment-id != ''
-        with:
-          type: delete
-          comment_id: ${{ steps.find_coomment.outputs.comment-id }}
-          token: ${{ secrets.BOT_TOKEN }}
+          requirements: |
+            - name: Everything else
+              paths: unmatched
+              teams:
+                - "admin-neve"
+          status: Has translation changes, Required review from admin-neve
+          token:  ${{ secrets.BOT_TOKEN }}

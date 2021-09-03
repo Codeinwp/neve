@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from '@wordpress/element';
-import InlineSelect from '../../inc/customizer/controls/react/src/common/InlineSelect';
+import InlineSelect from '../../assets/apps/customizer-controls/src/common/InlineSelect';
 import {
 	CustomizerDecorator,
 	WhiteBackgroundDecorator,
