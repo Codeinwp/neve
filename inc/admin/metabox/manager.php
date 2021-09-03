@@ -336,11 +336,11 @@ final class Manager {
 			return false;
 		}
 
-		$dependencies = ( include get_template_directory() . '/inc/admin/metabox/build/index.asset.php' );
+		$dependencies = ( include get_template_directory() . '/assets/apps/metabox/build/index.asset.php' );
 
 		wp_enqueue_script(
 			'neve-meta-sidebar',
-			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.js',
+			trailingslashit( get_template_directory_uri() ) . 'assets/apps/metabox/build/index.js',
 			$dependencies['dependencies'],
 			$dependencies['version'],
 			true
@@ -391,7 +391,7 @@ final class Manager {
 
 		wp_enqueue_style(
 			'neve-meta-sidebar-css', // Handle.
-			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.css',
+			trailingslashit( get_template_directory_uri() ) . 'assets/apps/metabox/build/index.css',
 			array( 'wp-edit-blocks' ),
 			NEVE_VERSION
 		);

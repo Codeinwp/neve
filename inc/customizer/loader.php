@@ -106,8 +106,8 @@ class Loader {
 			true
 		);
 
-		$bundle_path  = get_template_directory_uri() . '/inc/customizer/controls/react/bundle/';
-		$dependencies = ( include get_template_directory() . '/inc/customizer/controls/react/bundle/controls.asset.php' );
+		$bundle_path  = get_template_directory_uri() . '/assets/apps/customizer-controls/build/';
+		$dependencies = ( include get_template_directory() . '/assets/apps/customizer-controls/build/controls.asset.php' );
 		wp_register_script( 'react-controls', $bundle_path . 'controls.js', $dependencies['dependencies'], $dependencies['version'], true );
 		wp_localize_script(
 			'react-controls',
@@ -128,7 +128,7 @@ class Loader {
 					),
 					'hideConditionalHeaderSelector' => ! neve_can_use_conditional_header(),
 					'dashUpdatesMessage'            => sprintf( 'Please %s to the latest version of Neve Pro to manage the conditional headers.', '<a href="' . esc_url( admin_url( 'update-core.php' ) ) . '">' . __( 'update', 'neve' ) . '</a>' ),
-					'bundlePath'                    => get_template_directory_uri() . '/inc/customizer/controls/react/bundle/',
+					'bundlePath'                    => get_template_directory_uri() . '/assets/apps/customizer-controls/build/',
 				)
 			)
 		);

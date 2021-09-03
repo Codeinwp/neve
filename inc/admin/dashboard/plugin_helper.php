@@ -2,15 +2,15 @@
 /**
  * Plugin Action Helper
  *
- * @package Neve
+ * @package Neve\Admin\Dashboard
  */
 
-namespace Neve_Dash;
+namespace Neve\Admin\Dashboard;
 
 /**
  * Class Plugin_Helper
  *
- * @package Neve
+ * @package Neve\Admin\Dashboard
  */
 class Plugin_Helper {
 	/**
@@ -18,7 +18,7 @@ class Plugin_Helper {
 	 *
 	 * @param string $slug - plugin slug.
 	 *
-	 * @return bool
+	 * @return string
 	 */
 	public function get_plugin_state( $slug ) {
 		$plugin_link_suffix = $this->get_plugin_path( $slug );
