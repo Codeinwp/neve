@@ -441,7 +441,7 @@ abstract class Abstract_Builder implements Builder {
 				'live_refresh_css_prop' => [
 					'cssVar'  => [
 						'vars'     => '--color',
-						'selector' => $row_class,
+						'selector' => $row_id === 'sidebar' ? '.header-menu-sidebar-bg' : '.' . $this->get_id() . '-' . $row_id,
 					],
 					'partial' => $row_id === 'sidebar' ? 'hfg_header_layout_partial' : $row_setting_id . '_partial',
 				],
