@@ -10,11 +10,13 @@ main .nv-shop {
 	span.onsale {
 		background-color: $success;
 		border-radius: 0;
-		line-height: inherit;
-		min-height: auto;
 		left: 0;
 		top: 0;
 		font-weight: 500;
+		min-height: 3em;
+		min-width: 3em;
+		line-height: 3 !important;
+		padding: 0 5px;
 	}
 
 	ul.products li.product .onsale {
