@@ -9,7 +9,7 @@ env:
   CYPRESS_INSTALL_BINARY: 0
 jobs:
   phplint:
-    name: PHP Lint
+    name: Test - PHP Lint
     runs-on: ubuntu-latest
     steps:
       - name: Setup PHP version
@@ -34,9 +34,8 @@ jobs:
         run: composer install --ignore-platform-reqs --prefer-dist --no-progress --no-suggest
       - name: Run PHPCS
         run: composer run lint
-
   phpunit:
-      name: PHPUnit
+      name: Test - PHPUnit
       runs-on: ubuntu-latest
       services:
         mysql:
@@ -73,10 +72,8 @@ jobs:
           run: composer install --prefer-dist --no-progress --no-suggest --no-dev
         - name: Run phpunit
           run: phpunit
-
-
   themecheck:
-    name: Theme Check
+    name: Test - Theme Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -90,7 +87,7 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
       - run: ./bin/envs/init.sh theme-check latest yes
   phpstan:
-    name: PHPStan
+    name: Test - PHPStan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
