@@ -95,3 +95,8 @@ h6 {
 	letter-spacing: var(--h6LetterSpacing);
 	text-transform: var(--h6TextTransform);
 }
+
+ul,
+ol {
+	padding-left: var(--listPad, 0);
+}

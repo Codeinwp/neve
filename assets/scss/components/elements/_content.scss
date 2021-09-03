@@ -57,6 +57,7 @@ pre {
 
 .nv-content-wrap,
 .excerpt-wrap {
+	--listPad: 20px;
 
 	&::after {
 		content: "";
@@ -73,10 +74,6 @@ pre {
 		margin: $spacing-lg 0;
 	}
 
-	ul,
-	ol {
-		padding-left: $spacing-lg;
-	}
 
 	li {
 		margin-top: $spacing-xs;
