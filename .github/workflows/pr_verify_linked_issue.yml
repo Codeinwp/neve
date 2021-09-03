@@ -8,7 +8,6 @@ on:
 
 jobs:
   verify_linked_issue:
-    name: Test issue being linked
     runs-on: ubuntu-latest
     if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' && github.actor != 'pirate-bot'
     name: Ensure Pull Request has a linked issue.
