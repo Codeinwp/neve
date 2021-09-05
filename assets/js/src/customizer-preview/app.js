@@ -761,9 +761,11 @@ if (!newSkin) {
 			$.each(this.contentWidths, function (id, args) {
 				wp.customize(id, function (value) {
 					value.bind(function (newval) {
+						const hideSidebar = newval >= 95 ? `display:none` : ``;
+
 						const style = ` @media (min-width: 961px) {
 							${args.content} { max-width: ${newval}% !important; }
-							${args.sidebar} { max-width: ${100 - newval}% !important; }
+							${args.sidebar} { max-width: ${100 - newval}% !important; ${hideSidebar} }
 						}`;
 						addCSS(id + '-css', style);
 					});

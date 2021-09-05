@@ -48,7 +48,7 @@ class Layout_Sidebar extends Base_View {
 			$content_width = $meta_width;
 		}
 
-		if ( $content_width >= 95 ) {
+		if ( $content_width >= 95 && ! is_customize_preview() ) {
 			return;
 		}
 
