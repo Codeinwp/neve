@@ -3,6 +3,7 @@ import {
 	SortableElement,
 	SortableHandle,
 } from 'react-sortable-hoc';
+import { ReactSortable } from 'react-sortablejs';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import arrayMove from 'array-move';
@@ -143,6 +144,15 @@ const Ordering = ({
 					/>
 				))}
 			</List>
+			<div>
+				{console.log(value)}
+				{/*<ReactSortable list={value} setList={handleSortEnd}>*/}
+				{/*	{value.map(*/}
+				{/*		(slug, index) =>*/}
+				{/*			Object.keys(components).includes(slug) && slug*/}
+				{/*	)}*/}
+				{/*</ReactSortable>*/}
+			</div>
 		</>
 	);
 };
