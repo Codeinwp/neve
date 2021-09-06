@@ -2,7 +2,7 @@
 import React from 'react';
 import { useEffect, useState } from '@wordpress/element';
 import { WPCustomizeControl } from '../@types/customizer-control';
-import { BuilderChangeEvent, BuilderContentInterface } from '../@types/utils';
+import { BuilderContentInterface } from '../@types/utils';
 import { maybeParseJson } from './common/utils';
 import HFGBuilder from './HFGBuilder';
 

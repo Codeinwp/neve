@@ -812,11 +812,6 @@ class Frontend extends Generator {
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => ':root',
 			Dynamic_Selector::KEY_RULES    => [
-				'--formFieldSpacing'       => [
-					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_SPACING,
-					Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_SPACING ),
-					Dynamic_Selector::META_SUFFIX  => 'px',
-				],
 				'--formFieldBorderWidth'   => [
 					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_WIDTH,
 					Dynamic_Selector::META_SUFFIX  => 'px',
@@ -871,11 +866,6 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontWeight',
 				],
 				// Form Labels
-				'--formLabelSpacing'       => [
-					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_LABELS_SPACING,
-					Dynamic_Selector::META_DEFAULT => 10,
-					Dynamic_Selector::META_SUFFIX  => 'px',
-				],
 				'--formLabelFontSize'      => [
 					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontSize',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
@@ -1043,13 +1033,6 @@ class Frontend extends Generator {
 	 * Setup legacy form field styles.
 	 */
 	private function setup_legacy_form_fields_style() {
-		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_WITH_SPACING ] = [
-			Config::CSS_PROP_MARGIN_BOTTOM => [
-				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_SPACING,
-				Dynamic_Selector::META_DEFAULT => 10,
-			],
-		];
-
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS ] = [
 			Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_FORM_FIELDS_BACKGROUND_COLOR,
 			Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_FORM_FIELDS_BORDER_WIDTH,
@@ -1089,11 +1072,6 @@ class Frontend extends Generator {
 		];
 
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_LABELS ] = [
-			Config::CSS_PROP_MARGIN_BOTTOM  => [
-				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_LABELS_SPACING,
-				Dynamic_Selector::META_SUFFIX  => 'px',
-				Dynamic_Selector::META_DEFAULT => 10,
-			],
 			Config::CSS_PROP_FONT_SIZE      => [
 				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontSize',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,

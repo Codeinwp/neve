@@ -5,26 +5,26 @@
  * @package neve
  */
 
-namespace Neve_Dash;
+namespace Neve\Admin\Dashboard;
 
 /**
  * Class Main
  *
- * @package Neve_Dash
+ * @package Neve\Admin\Dashboard
  */
 class Main {
 	/**
-	 * Chanfelog Handler..
+	 * Changelog Handler.
 	 *
 	 * @var Changelog_Handler
 	 */
-	private $cl_handler = null;
+	private $cl_handler;
 	/**
 	 * Plugin Helper instance.
 	 *
 	 * @var Plugin_Helper
 	 */
-	private $plugin_helper = null;
+	private $plugin_helper;
 	/**
 	 * Current theme args.
 	 *
@@ -68,17 +68,17 @@ class Main {
 	 * Main constructor.
 	 */
 	public function __construct() {
-		$this->run_actions();
 		$this->plugin_helper = new Plugin_Helper();
 		$this->cl_handler    = new Changelog_Handler();
-		$this->setup_config();
-		add_action( 'init', [ $this, 'setup_config' ] );
 	}
 
 	/**
 	 * Run WordPress attached to actions.
 	 */
-	private function run_actions() {
+	public function init() {
+
+		$this->setup_config();
+		add_action( 'init', [ $this, 'setup_config' ] );
 		add_action( 'admin_menu', [ $this, 'register' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
 		add_action( 'init', array( $this, 'register_settings' ) );
@@ -156,8 +156,8 @@ class Main {
 			return;
 		}
 
-		$build_path   = get_template_directory_uri() . '/dashboard/build/';
-		$dependencies = ( include get_template_directory() . '/dashboard/build/dashboard.asset.php' );
+		$build_path   = get_template_directory_uri() . '/assets/apps/dashboard/build/';
+		$dependencies = ( include get_template_directory() . '/assets/apps/dashboard/build/dashboard.asset.php' );
 
 		wp_register_style( 'neve-dash-style', $build_path . 'style-dashboard.css', [ 'wp-components' ], $dependencies['version'] );
 		wp_style_add_data( 'neve-dash-style', 'rtl', 'replace' );
@@ -184,7 +184,7 @@ class Main {
 		$data              = [
 			'nonce'               => wp_create_nonce( 'wp_rest' ),
 			'version'             => 'v' . NEVE_VERSION,
-			'assets'              => get_template_directory_uri() . '/dashboard/assets/',
+			'assets'              => get_template_directory_uri() . '/assets/img/dashboard/',
 			'hasOldPro'           => (bool) ( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.1.11', '<' ) ),
 			'isRTL'               => is_rtl(),
 			'notifications'       => $this->get_notifications(),
@@ -205,9 +205,9 @@ class Main {
 				/* translators: %s - Theme name */
 				'starterSitesTabDescription'    => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: 1 - Theme name, 2 - Cloud Templates & Patterns Collection */
-				'starterSitesUnavailableActive' => sprintf( __( 'In order to be able to import any starter sites for %1$s you would need to have the  plugin active.', 'neve' ), wp_kses_post( $theme_name ), 'Cloud Templates & Patterns Collection' ),
+				'starterSitesUnavailableActive' => sprintf( __( 'In order to be able to import any starter sites for %1$s you would need to have the %2$s plugin active.', 'neve' ), wp_kses_post( $theme_name ), 'Cloud Templates & Patterns Collection' ),
 				/* translators: %s - Theme name */
-				'starterSitesUnavailableUpdate' => sprintf( __( 'In order to be able to import any starter sites for %1$s  you would need to have the %2$s plugin updated to the latest version.', 'neve' ), wp_kses_post( $theme_name ), 'Cloud Templates & Patterns Collection' ),
+				'starterSitesUnavailableUpdate' => sprintf( __( 'In order to be able to import any starter sites for %1$s you would need to have the %2$s plugin updated to the latest version.', 'neve' ), wp_kses_post( $theme_name ), 'Cloud Templates & Patterns Collection' ),
 				/* translators: %s - Theme name */
 				'supportCardDescription'        => sprintf( __( 'We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */

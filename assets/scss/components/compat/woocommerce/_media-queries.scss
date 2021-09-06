@@ -1,24 +1,26 @@
 @media (min-width: #{$tablet-sm}) {
-  @include notices--tablet-sm();
-  @include shop-loop--tablet-sm();
+
+	@include notices--tablet-sm();
+	@include shop-loop--tablet-sm();
 }
 
 @media (min-width: #{$tablet}) {
-  @include cart--tablet();
-  @include account--tablet();
-  @include product--tablet();
+
+	@include cart--tablet();
+	@include account--tablet();
+	@include product--tablet();
 }
 
 @media (min-width: #{$laptop}) {
-  @include reviews--laptop();
-  @include shop-loop--laptop();
-  @include nav-cart--laptop();
-  @include shop-sidebar--laptop();
-  @include cart--laptop();
-  @include checkout--laptop();
+
+	@include reviews--laptop();
+	@include nav-cart--laptop();
+	@include shop-sidebar--laptop();
+	@include cart--laptop();
+	@include checkout--laptop();
 }
 
-@media (min-width: #{$desktop}) {
-
-}
+//@media (min-width: #{$desktop}) {
+//
+//}
 

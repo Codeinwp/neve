@@ -1,43 +1,45 @@
 @import "variables";
 
 table {
-  border-collapse: separate;
-  border-spacing: 0;
-  border-width: 1px 0 0 1px;
-  margin: 0 0 $spacing-md;
-  width: 100%;
-  word-break: initial;
+	border-collapse: separate;
+	border-spacing: 0;
+	border-width: 1px 0 0 1px;
+	margin: 0 0 $spacing-md;
+	width: 100%;
+	word-break: initial;
 }
 
 .wp-block-table {
-  margin-top: $spacing-lg;
-  margin-bottom: $spacing-lg;
+	margin-top: $spacing-lg;
+	margin-bottom: $spacing-lg;
 
-  figcaption {
-	margin: $spacing-sm auto;
-	text-align: center;
-  }
-
-  &.is-style-stripes {
-	border: 0;
-
-	tbody tr {
-	  &:nth-child(odd) {
-		background-color: var(--nv-light-bg);
-	  }
+	figcaption {
+		margin: $spacing-sm auto;
+		text-align: center;
 	}
-  }
+
+	&.is-style-stripes {
+		border: 0;
+
+		tbody tr {
+
+			&:nth-child(odd) {
+				background-color: var(--nv-light-bg);
+			}
+		}
+	}
 }
 
-th, td {
-  padding: $spacing-md;
+th,
+td {
+	padding: $spacing-md;
 }
 
 th {
-  padding-bottom: $spacing-xs;
+	padding-bottom: $spacing-xs;
 }
 
 td {
-  font-size: $text-sm;
-  border-bottom: $base-border;
+	font-size: $text-sm;
+	border-bottom: $base-border;
 }

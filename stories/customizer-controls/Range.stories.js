@@ -1,4 +1,4 @@
-import Range from '../../inc/customizer/controls/react/src/range/Range';
+import Range from '../../assets/apps/customizer-controls/src/range/Range';
 import { useState } from '@wordpress/element';
 import {
 	WhiteBackgroundDecorator,

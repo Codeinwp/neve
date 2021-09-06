@@ -234,7 +234,6 @@ class Front_End {
 			'youtu.be',
 			'cloudup.com',
 			'dailymotion.com',
-			'collegehumor.com',
 			'ted.com',
 			'vimeo.com',
 		];

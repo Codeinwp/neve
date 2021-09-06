@@ -1,5 +1,5 @@
 import { useState } from '@wordpress/element';
-import RadioIcons from '../../inc/customizer/controls/react/src/common/RadioIcons';
+import RadioIcons from '../../assets/apps/customizer-controls/src/common/RadioIcons';
 import {
 	CustomizerDecorator,
 	WhiteBackgroundDecorator,

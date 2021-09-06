@@ -377,8 +377,6 @@ class Mods {
 					'tablet-unit'  => 'px',
 					'mobile-unit'  => 'px',
 				];
-			case Config::MODS_FORM_FIELDS_SPACING:
-				return $new ? 40 : 10;
 			case Config::MODS_FORM_FIELDS_PADDING:
 				return [
 					'top'    => $new ? 10 : 7,

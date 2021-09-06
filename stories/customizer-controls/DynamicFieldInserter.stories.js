@@ -1,4 +1,4 @@
-import DynamicFieldInserter from '../../inc/customizer/controls/react/src/dynamic-fields/dynamic-field-inserter';
+import DynamicFieldInserter from '../../assets/apps/customizer-controls/src/dynamic-fields/dynamic-field-inserter';
 import {
 	WhiteBackgroundDecorator,
 	CustomizerDecorator,

@@ -1,4 +1,4 @@
-import Ordering from '../../inc/customizer/controls/react/src/ordering/Ordering';
+import Ordering from '../../assets/apps/customizer-controls/src/ordering/Ordering';
 import {
 	WhiteBackgroundDecorator,
 	CustomizerDecorator,

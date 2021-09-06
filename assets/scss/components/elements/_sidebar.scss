@@ -1,90 +1,92 @@
 @import "../main/variables";
 
-.nv-single-post-wrap, .nv-index-posts {
-  margin-bottom: $spacing-aired;
+.nv-single-post-wrap,
+.nv-index-posts {
+	margin-bottom: $spacing-aired;
 }
 
 .nv-sidebar-wrap {
-  padding: $spacing-aired 15px;
-  margin-bottom: $spacing-md;
-  flex-grow: 1;
+	padding: $spacing-aired 15px;
+	margin-bottom: $spacing-md;
+	flex-grow: 1;
 }
 
 .widget {
-  word-break: break-word;
-  margin-bottom: $spacing-xl;
+	word-break: break-word;
+	margin-bottom: $spacing-xl;
 
-  &:last-child {
-	margin: 0;
-  }
+	&:last-child {
+		margin: 0;
+	}
 
-  select {
-	max-width: 100%;
-	width: 100%;
-  }
+	select {
+		max-width: 100%;
+		width: 100%;
+	}
 
-  .widget-title {
-	margin-bottom: $spacing-xs;
-	font-weight: 700;
-	font-size: var(--h4FontSize);
-  }
+	.widget-title {
+		margin-bottom: $spacing-xs;
+		font-weight: 700;
+		font-size: var(--h4FontSize);
+	}
 
-  @extend %nv-reset-field-spacing;
+	ul {
+		padding: 0;
+
+		ul {
+			padding-left: $spacing-xs;
+		}
+	}
+
+	li {
+		margin-top: $spacing-xs;
+	}
 }
 
 .wp-block-search .wp-block-search__button {
-  @extend %nv-button-primary;
+
+	@extend %nv-button-primary;
 }
 
 .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper {
-  @extend %nv-form-fields;
+
+	@extend %nv-form-fields;
 }
 
 
 .post-date {
-  display: block;
-  font-size: $text-sm;
-  opacity: .7;
+	display: block;
+	font-size: $text-sm;
+	opacity: 0.7;
 }
 
 .widget_recent_entries a {
-  color: var(--nv-text-color);
-}
-
-.widget {
-  ul {
-	padding: 0;
-
-	ul {
-	  padding-left: $spacing-xs;
-	}
-  }
-
-  li {
-	margin-top: $spacing-xs;
-  }
+	color: var(--nv-text-color);
 }
 
 .widget_media_image img {
-  width: 100%;
+	width: 100%;
 }
 
 .widget_calendar {
-  td, th {
-	padding: $spacing-xs;
-  }
+
+	td,
+	th {
+		padding: $spacing-xs;
+	}
 }
 
 @mixin sidebar--laptop() {
-  .nv-sidebar-wrap {
-	max-width: 30%;
 
-	&.nv-right {
-	  padding-left: 45px;
-	}
+	.nv-sidebar-wrap {
+		max-width: 30%;
 
-	&.nv-left {
-	  padding-right: 45px;
+		&.nv-right {
+			padding-left: 45px;
+		}
+
+		&.nv-left {
+			padding-right: 45px;
+		}
 	}
-  }
 }

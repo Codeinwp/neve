@@ -1,136 +1,141 @@
 @import "../main/variables";
 
 dl {
-  margin: $spacing-md 0;
+	margin: $spacing-md 0;
 
-  dd {
-	padding-left: $spacing-lg;
-  }
+	dd {
+		padding-left: $spacing-lg;
+	}
 
-  dt {
-	font-weight: 600;
-  }
+	dt {
+		font-weight: 600;
+	}
 }
 
 .nv-iframe-embed {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  padding-top: 25px;
-  height: 0;
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
 
-  iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-  }
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
 }
 
 figcaption {
-  font-size: $text-sm;
-  opacity: .75;
+	font-size: $text-sm;
+	opacity: 0.75;
 }
 
 code {
-  background: #d0effb;
-  border-radius: 5px;
-  border: $muted-border;
-  padding: 0 3px;
-  color: #333;
+	background: #d0effb;
+	border-radius: 5px;
+	border: $muted-border;
+	padding: 0 3px;
+	color: #333;
 }
 
 pre {
-  display: block;
-  padding: $spacing-lg;
-  background: var(--nv-light-bg);
-  margin: $spacing-md 0;
-  white-space: pre-wrap;
-  font-size: $text-sm;
-  font-family: Courier, monospace;
+	display: block;
+	padding: $spacing-lg;
+	background: var(--nv-light-bg);
+	margin: $spacing-md 0;
+	white-space: pre-wrap;
+	font-size: $text-sm;
+	font-family: Courier, monospace;
 
-  code {
-	border: 0;
-	background: transparent;
-  }
+	code {
+		border: 0;
+		background: transparent;
+	}
 }
 
-.nv-content-wrap, .excerpt-wrap {
-  &:after {
-	content: "";
-	clear: both;
-	display: table;
-  }
+.nv-content-wrap,
+.excerpt-wrap {
 
-  ul {
-	list-style-type: initial;
-  }
+	&::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
 
-  > ul, > ol {
-	margin: $spacing-lg 0;
-  }
+	ul {
+		list-style-type: initial;
+	}
 
-  ul, ol {
-	padding-left: $spacing-lg;
-  }
+	> ul,
+	> ol {
+		margin: $spacing-lg 0;
+	}
 
-  li {
-	margin-top: $spacing-xs;
-  }
+	ul,
+	ol {
+		padding-left: $spacing-lg;
+	}
+
+	li {
+		margin-top: $spacing-xs;
+	}
 }
 
 // === Content Floating Alignments === //
 .alignleft {
-  float: left;
-  margin: $spacing-md $spacing-md $spacing-md 0;
+	float: left;
+	margin: $spacing-md $spacing-md $spacing-md 0;
 }
 
 .alignright {
-  float: right;
-  margin: $spacing-md 0 $spacing-md $spacing-md;
+	float: right;
+	margin: $spacing-md 0 $spacing-md $spacing-md;
 }
 
 .aligncenter {
-  display: block;
-  text-align: center;
-  margin: 0 auto;
+	display: block;
+	text-align: center;
+	margin: 0 auto;
 }
 
 .wp-caption {
-  max-width: 100%;
+	max-width: 100%;
 }
 
 .wp-caption-text {
-  text-align: center;
-  font-size: .8em;
-  font-weight: 500;
+	text-align: center;
+	font-size: 0.8em;
+	font-weight: 500;
 }
 
 .twitter-tweet.twitter-tweet-rendered {
-  padding: $spacing-sm 0;
-  margin: auto;
+	padding: $spacing-sm 0;
+	margin: auto;
 }
 
 hr {
-  color: inherit;
-  height: 0;
-  border: 0;
-  border-top: 2px solid;
-  margin: $spacing-xs 0 $spacing-md;
-  display: inline-block;
-  width: 100%;
+	color: inherit;
+	height: 0;
+	border: 0;
+	border-top: 2px solid;
+	margin: $spacing-xs 0 $spacing-md;
+	display: inline-block;
+	width: 100%;
 }
 
 audio {
-  display: flex;
-  height: 50px;
+	display: flex;
+	height: 50px;
 }
 
 @mixin content--laptop() {
-  .neve-main > .container .col {
-	max-width: 70%;
-  }
-  .neve-main > .container > .row {
-	flex-wrap: nowrap;
-  }
+
+	.neve-main > .container .col {
+		max-width: 70%;
+	}
+
+	.neve-main > .container > .row {
+		flex-wrap: nowrap;
+	}
 }
