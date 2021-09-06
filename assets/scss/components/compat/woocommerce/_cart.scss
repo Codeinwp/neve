@@ -9,11 +9,6 @@
 
 //</editor-fold>
 
-#coupon_code {
-
-	@extend %nv-reset-field-spacing;
-}
-
 //<editor-fold desc="Coupon code">
 .woocommerce table.cart td.actions .input-text#coupon_code {
 	width: 200px;
