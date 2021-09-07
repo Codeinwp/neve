@@ -1,21 +1,11 @@
-import {
-	SortableContainer,
-	SortableElement,
-	SortableHandle,
-} from 'react-sortable-hoc';
 import { ReactSortable } from 'react-sortablejs';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import arrayMove from 'array-move';
 
 import { __ } from '@wordpress/i18n';
 import { Tooltip, Icon } from '@wordpress/components';
 
-const List = SortableContainer(({ children }) => (
-	<div className="items-list">{children}</div>
-));
-
-const Handle = SortableHandle(() => (
+const Handle = () => (
 	<Tooltip text={__('Drag to Reorder', 'neve')}>
 		<button
 			aria-label={__('Drag to Reorder', 'neve')}
@@ -27,7 +17,7 @@ const Handle = SortableHandle(() => (
 			<Icon icon="menu" />
 		</button>
 	</Tooltip>
-));
+);
 
 const Item = ({
 	label,
@@ -74,8 +64,6 @@ Item.propTypes = {
 	disabled: PropTypes.bool,
 };
 
-const SortableItem = SortableElement(Item);
-
 const Ordering = ({
 	onUpdate,
 	components,
@@ -87,11 +75,6 @@ const Ordering = ({
 	const disabled = Object.keys(components).filter(
 		(item) => !value.includes(item)
 	);
-
-	const handleSortEnd = ({ newIndex, oldIndex }) => {
-		const newOrder = arrayMove(value, oldIndex, newIndex);
-		onUpdate(newOrder);
-	};
 
 	const handleToggle = (slug) => {
 		let newValue = [...value];
@@ -110,19 +93,43 @@ const Ordering = ({
 				/* eslint-disable-next-line jsx-a11y/label-has-for */
 				<label className="customize-control-title">{label}</label>
 			)}
-			<List
-				items={value}
-				lockAxis="y"
-				useDragHandle
-				onSortEnd={handleSortEnd}
+			{/*<List*/}
+			{/*	items={value}*/}
+			{/*	lockAxis="y"*/}
+			{/*	useDragHandle*/}
+			{/*	onSortEnd={handleSortEnd}*/}
+			{/*>*/}
+
+
+			{/*	/!*{disabled.map((slug, index) => (*!/*/}
+			{/*	/!*	<Item*!/*/}
+			{/*	/!*		className="disabled"*!/*/}
+			{/*	/!*		key={index}*!/*/}
+			{/*	/!*		slug={slug}*!/*/}
+			{/*	/!*		label={components[slug]}*!/*/}
+			{/*	/!*		index={index}*!/*/}
+			{/*	/!*		onToggle={handleToggle}*!/*/}
+			{/*	/!*		allowsToggle={allowsToggle}*!/*/}
+			{/*	/!*		disabled*!/*/}
+			{/*	/!*	/>*!/*/}
+			{/*	/!*))}*!/*/}
+			{/*</List>*/}
+
+			<ReactSortable
+				className="items-list"
+				list={value}
+				setList={onUpdate}
+				animation={300}
+				forceFallback={true}
+				handle=".handle"
 			>
 				{value.map(
 					(slug, index) =>
 						Object.keys(components).includes(slug) && (
-							<SortableItem
+							<Item
 								key={index}
-								label={components[slug]}
 								index={index}
+								label={components[slug]}
 								slug={slug}
 								onToggle={handleToggle}
 								allowsToggle={allowsToggle}
@@ -130,29 +137,7 @@ const Ordering = ({
 							/>
 						)
 				)}
-
-				{disabled.map((slug, index) => (
-					<Item
-						className="disabled"
-						key={index}
-						slug={slug}
-						label={components[slug]}
-						index={index}
-						onToggle={handleToggle}
-						allowsToggle={allowsToggle}
-						disabled
-					/>
-				))}
-			</List>
-			<div>
-				{console.log(value)}
-				{/*<ReactSortable list={value} setList={handleSortEnd}>*/}
-				{/*	{value.map(*/}
-				{/*		(slug, index) =>*/}
-				{/*			Object.keys(components).includes(slug) && slug*/}
-				{/*	)}*/}
-				{/*</ReactSortable>*/}
-			</div>
+			</ReactSortable>
 		</>
 	);
 };
