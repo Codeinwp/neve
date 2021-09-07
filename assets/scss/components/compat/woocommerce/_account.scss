@@ -13,20 +13,11 @@ body.woocommerce-account {
 		margin-bottom: 0;
 	}
 
-	.form-row {
-		margin: 0;
-		padding: 0;
-	}
-
 	.woocommerce-form-login .form-row:nth-child(3) {
 		flex-direction: row-reverse;
 		align-items: center;
 		display: flex;
 		justify-content: flex-end;
-	}
-
-	.woocommerce-form__label-for-checkbox {
-		--formLabelSpacing: 0;
 	}
 
 	nav > ul {

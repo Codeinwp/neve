@@ -1,3 +1,20 @@
+##### [Version 3.0.3](https://github.com/Codeinwp/neve/compare/v3.0.2...v3.0.3) (2021-09-06)
+
+- [Fix] Cart icon component is vertically misaligned when it has a label
+- [Fix] Fix notice with legacy values on padding for buttons when values are empty
+- [Fix] Letterbox effect on video embeds
+- [Fix] HTML structure for menu icon and consistency of aria-label with screen reader text
+- [Fix] Search on other languages when PolyLang is activated
+- [Fix] Customizer live refresh selector for header sidebar text color
+- [Fix] Post tags spacing when there are a lot of tags
+- [Fix] Mega menu container live refresh & size issues on old skin
+- [Fix] Typography style specificity inside the editor was causing some blocks to act weird
+- [Fix] Block patterns provided the theme provides had broken styles
+- [Fix] Drop form fields & labels spacing controls
+- [Fix] Design on password-protected posts
+- Removes mobile dropdown outline on tap
+- Update Google Fonts
+
 ##### [Version 3.0.2](https://github.com/Codeinwp/neve/compare/v3.0.1...v3.0.2) (2021-08-23)
 
 - [Fix] issue with some hosting environments not loading JS files that contained ~ in the file name

@@ -1,4 +1,4 @@
-import Typeface from '../../inc/customizer/controls/react/src/typeface/Typeface';
+import Typeface from '../../assets/apps/customizer-controls/src/typeface/Typeface';
 import { TYPEFACE_DEFAULT, TYPEFACE_EMPTY } from '../utils/values';
 import {
 	CustomizerDecorator,

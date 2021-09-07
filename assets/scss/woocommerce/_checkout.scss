@@ -74,10 +74,6 @@
 		align-items: center;
 	  }
 
-	  .form-row {
-		padding: 0;
-	  }
-
 	  .lost_password {
 		float: right;
 	  }
@@ -139,11 +135,6 @@
 
 	label {
 	  font-size: .85em;
-	}
-
-	.form-row {
-	  padding: 0;
-	  margin-bottom: 0;
 	}
 
 	textarea {
@@ -315,7 +306,6 @@
 	  flex-direction: row;
 
 	  p.form-row {
-		margin-bottom: 0;
 		width: auto;
 	  }
 

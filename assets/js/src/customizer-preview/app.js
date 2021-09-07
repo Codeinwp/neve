@@ -2,6 +2,7 @@
 import { initNavigation, repositionDropdowns } from '../frontend/navigation';
 import { removeClass, addClass } from '../utils.js';
 import { CSSVariablesHandler, addCSS, addTemplateCSS } from './css-var-handler';
+const { newSkin } = window.neveCustomizePreview;
 
 function handleResponsiveRadioButtons(args, nextValue) {
 	if (!args.additional) return false;
@@ -716,7 +717,10 @@ window.addEventListener('load', function () {
 		},
 	};
 })(jQuery);
-jQuery.neveRangesPreview.init();
+
+if (!newSkin) {
+	jQuery.neveRangesPreview.init();
+}
 
 (function ($) {
 	$.neveLayoutPreview = {

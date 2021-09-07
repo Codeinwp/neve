@@ -65,38 +65,19 @@
 	}
 }
 
-.post-password-form {
-	margin-bottom: $spacing-md;
-	text-align: center;
-
-	input[type="submit"] {
-		height: 39px;
-		margin-left: $spacing-xs;
-	}
-
-	label {
-		margin-bottom: 0;
-	}
-
-	p {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	label > input {
-		margin-left: $spacing-xs;
-	}
+.post-password-form input[type="submit"] {
+	margin-top: $spacing-md;
 }
 
 .nv-tags-list,
+.wp-block-tag-cloud,
 .tagcloud {
 
 	a {
-		margin-left: $spacing-xs;
+		margin: 0 $spacing-xs $spacing-xs 0;
 		font-weight: 700;
 		text-transform: uppercase;
-		color: #fff;
+		color: #fff !important;
 		padding: 10px;
 		border-radius: 4px;
 		background: var(--nv-primary-accent);
@@ -104,16 +85,15 @@
 		font-size: 0.75em !important;
 		display: inline-block;
 	}
+
+	span {
+		margin-right: $spacing-xs;
+	}
 }
 
 .tagcloud {
 	display: flex;
 	flex-wrap: wrap;
-
-	a {
-		margin: 0 $spacing-xs $spacing-xs 0;
-		color: #fff !important;
-	}
 }
 
 .nv-post-cover {

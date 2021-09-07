@@ -9,7 +9,7 @@ on:
 jobs:
   e2e-storybook:
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         # run 3 copies of the current job in parallel
         containers: [1, 2, 3]

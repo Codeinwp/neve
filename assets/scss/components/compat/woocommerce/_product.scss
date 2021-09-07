@@ -8,11 +8,6 @@
 	position: relative;
 }
 
-.qty {
-
-	@extend %nv-reset-field-spacing;
-}
-
 .woocommerce.single .nv-woo-filters {
 	display: none;
 }

@@ -43,9 +43,6 @@ class Admin {
 	 */
 	public function __construct() {
 		$this->set_props();
-		if ( class_exists( '\Neve_Dash\Main' ) ) {
-			new \Neve_Dash\Main();
-		}
 		add_action(
 			'admin_init',
 			function () {

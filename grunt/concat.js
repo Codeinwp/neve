@@ -6,8 +6,7 @@ module.exports = {
 			separator: ''
 		},
 		src: [
-			'./inc/customizer/controls/css/*.css',
-			'./inc/addons/customizer/controls/css/*.css',
+			'./assets/customizer/css/*.css'
 		],
 		dest: './assets/css/customizer-style.css'
 	},
