@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '3.0.2' );
+define( 'NEVE_VERSION', '3.0.3' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 define( 'NEVE_MAIN_DIR', get_template_directory() . '/' );
@@ -51,8 +51,8 @@ $_files_to_check = defined( 'NEVE_IGNORE_SOURCE_CHECK' ) ? [] : [
 	NEVE_MAIN_DIR . 'vendor/autoload.php',
 	NEVE_MAIN_DIR . 'style-main-new.css',
 	NEVE_MAIN_DIR . 'assets/js/build/modern/frontend.js',
-	NEVE_MAIN_DIR . 'dashboard/build/dashboard.js',
-	NEVE_MAIN_DIR . 'inc/customizer/controls/react/bundle/controls.js',
+	NEVE_MAIN_DIR . 'assets/apps/dashboard/build/dashboard.js',
+	NEVE_MAIN_DIR . 'assets/apps/customizer-controls/build/controls.js',
 ];
 foreach ( $_files_to_check as $_file_to_check ) {
 	if ( ! is_file( $_file_to_check ) ) {

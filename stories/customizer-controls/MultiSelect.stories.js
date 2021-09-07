@@ -1,5 +1,5 @@
 import { useState } from '@wordpress/element';
-import MultiSelect from '../../inc/customizer/controls/react/src/multiselect/MultiSelect';
+import MultiSelect from '../../assets/apps/customizer-controls/src/multiselect/MultiSelect';
 import {
 	MULTISELECT_DEFAULT,
 	MULTISELECT_CHOICES,

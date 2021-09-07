@@ -126,6 +126,7 @@ class Core_Loader {
 
 				'Admin\Metabox\Manager',
 				'Admin\Troubleshoot\Main',
+				'Admin\Dashboard\Main',
 			)
 		);
 	}

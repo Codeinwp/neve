@@ -14,14 +14,6 @@
 	#reviews {
 		display: grid;
 		grid-row-gap: $spacing-xl;
-		--formFieldSpacing: 10px;
-
-		form {
-
-			p {
-				margin-bottom: 0 !important;
-			}
-		}
 
 		.comment-form-cookies-consent {
 			margin-bottom: $spacing-md !important;

@@ -124,7 +124,7 @@ jobs:
     name: E2E for ${{ matrix.specs }} on ${{ matrix.envs }}
     needs: dev-zip
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         include:
           ## Amp specs needs just one machine

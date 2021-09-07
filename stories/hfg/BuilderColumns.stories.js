@@ -1,4 +1,4 @@
-import BuilderColumns from '../../inc/customizer/controls/react/src/builder-columns/BuilderColumns';
+import BuilderColumns from '../../assets/apps/customizer-controls/src/builder-columns/BuilderColumns';
 import { CustomizerDecorator } from '../components/decorators';
 import { useEffect, useState } from '@wordpress/element';
 

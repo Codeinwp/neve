@@ -140,6 +140,10 @@ $notices: (
 
 //</editor-fold>
 
+.woocommerce form .form-row {
+	margin-bottom: 20px;
+}
+
 
 @mixin generic--tablet-sm() {
 	.woocommerce-notices-wrapper > div {

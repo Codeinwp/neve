@@ -40,8 +40,7 @@ describe('Form fields', function () {
 			.and('have.css', 'line-height', '24px')
 			.and('have.css', 'letter-spacing', '1.5px')
 			.and('have.css', 'font-weight', '100')
-			.and('have.css', 'text-transform', 'capitalize')
-			.and('have.css', 'margin-bottom', '20px');
+			.and('have.css', 'text-transform', 'capitalize');
 	});
 	it('Checks up the button', function () {
 		cy.visit('/hello-world');

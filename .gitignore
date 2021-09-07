@@ -16,8 +16,6 @@ assets/js/build/*
 assets/css/*
 style-main*
 style-main-new*
-dashboard/build/*
-inc/customizer/controls/react/bundle/*
-inc/admin/metabox/build
+assets/apps/*/build/*
 languages/neve.pot
 /e2e-tests/cypress/screenshots/
