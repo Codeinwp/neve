@@ -20,11 +20,10 @@ const Handle = () => (
 );
 
 const Item = ({
-	label,
-	slug,
+	item,
 	onToggle,
-	className,
 	allowsToggle = true,
+	className,
 	disabled = false,
 }) => {
 	return (
@@ -43,47 +42,47 @@ const Item = ({
 						onClick={(e) => {
 							e.preventDefault();
 							e.stopPropagation();
-							onToggle(slug);
+							onToggle(item.id);
 						}}
 					>
 						<Icon icon="visibility" />
 					</button>
 				</Tooltip>
 			)}
-			<span className="label">{label}</span>
+			<span className="label">{item.label}</span>
 			{!disabled && <Handle />}
 		</div>
 	);
 };
 
 Item.propTypes = {
-	label: PropTypes.string.isRequired,
-	slug: PropTypes.string.isRequired,
+	item: PropTypes.object.isRequired,
 	onToggle: PropTypes.func.isRequired,
+	allowsToggle: PropTypes.bool.isRequired,
 	className: PropTypes.string,
 	disabled: PropTypes.bool,
 };
 
 const Ordering = ({
+	label,
 	onUpdate,
 	components,
-	label,
-	value,
+	items,
 	allowsToggle = true,
-	orderHeaderElements,
 }) => {
-	const disabled = Object.keys(components).filter(
-		(item) => !value.includes(item)
-	);
+	const disabled = Object.keys(components)
+		.filter((item) => !items.some((e) => e.id === item))
+		.map((item) => {
+			return { id: item, label: components[item] };
+		});
 
-	const handleToggle = (slug) => {
-		let newValue = [...value];
-		if (newValue.includes(slug)) {
-			newValue = newValue.filter((item) => item !== slug);
+	const handleToggle = (item) => {
+		let newValue = [...items];
+		if (newValue.some((e) => e.id === item)) {
+			newValue = newValue.filter((element) => item !== element.id);
 		} else {
-			newValue.push(slug);
+			newValue.push({ id: item, label: components[item] });
 		}
-
 		onUpdate(newValue);
 	};
 
@@ -93,60 +92,41 @@ const Ordering = ({
 				/* eslint-disable-next-line jsx-a11y/label-has-for */
 				<label className="customize-control-title">{label}</label>
 			)}
-			{/*<List*/}
-			{/*	items={value}*/}
-			{/*	lockAxis="y"*/}
-			{/*	useDragHandle*/}
-			{/*	onSortEnd={handleSortEnd}*/}
-			{/*>*/}
-
-
-			{/*	/!*{disabled.map((slug, index) => (*!/*/}
-			{/*	/!*	<Item*!/*/}
-			{/*	/!*		className="disabled"*!/*/}
-			{/*	/!*		key={index}*!/*/}
-			{/*	/!*		slug={slug}*!/*/}
-			{/*	/!*		label={components[slug]}*!/*/}
-			{/*	/!*		index={index}*!/*/}
-			{/*	/!*		onToggle={handleToggle}*!/*/}
-			{/*	/!*		allowsToggle={allowsToggle}*!/*/}
-			{/*	/!*		disabled*!/*/}
-			{/*	/!*	/>*!/*/}
-			{/*	/!*))}*!/*/}
-			{/*</List>*/}
-
 			<ReactSortable
 				className="items-list"
-				list={value}
+				list={items}
 				setList={onUpdate}
 				animation={300}
-				forceFallback={true}
 				handle=".handle"
 			>
-				{value.map(
-					(slug, index) =>
-						Object.keys(components).includes(slug) && (
-							<Item
-								key={index}
-								index={index}
-								label={components[slug]}
-								slug={slug}
-								onToggle={handleToggle}
-								allowsToggle={allowsToggle}
-								orderHeaderElements={orderHeaderElements}
-							/>
-						)
-				)}
+				{items.map((item, index) => (
+					<Item
+						key={index}
+						item={item}
+						onToggle={handleToggle}
+						allowsToggle={allowsToggle}
+					/>
+				))}
 			</ReactSortable>
+			{disabled.map((item, index) => (
+				<Item
+					className="disabled"
+					key={index}
+					item={item}
+					onToggle={handleToggle}
+					allowsToggle={allowsToggle}
+					disabled
+				/>
+			))}
 		</>
 	);
 };
 
 Ordering.propTypes = {
+	label: PropTypes.string.isRequired,
 	onUpdate: PropTypes.func.isRequired,
 	components: PropTypes.object.isRequired,
-	label: PropTypes.string.isRequired,
-	value: PropTypes.array.isRequired,
+	items: PropTypes.object.isRequired,
 	allowsToggle: PropTypes.bool,
 };
 

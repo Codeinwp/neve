@@ -1,5 +1,4 @@
 /* jshint esversion: 6 */
-// import Ordering from './Ordering';
 import { lazy, Suspense, useEffect, useState } from '@wordpress/element';
 import { Spinner } from '@wordpress/components';
 import { maybeParseJson } from '../common/common';
@@ -15,8 +14,15 @@ const OrderingComponent = ({ control }) => {
 	const [isVisible, setVisible] = useState(false);
 	const { section, components, label } = control.params;
 	const updateValue = (newVal) => {
-		setValue(newVal);
-		control.setting.set(JSON.stringify(newVal));
+		const controlValue = newVal.map((element) => element.id);
+		setValue(controlValue);
+		control.setting.set(JSON.stringify(controlValue));
+	};
+
+	const normalizeValue = (values) => {
+		return values.map((val) => {
+			return { id: val, label: components[val] };
+		});
 	};
 
 	useEffect(() => {
@@ -102,7 +108,7 @@ const OrderingComponent = ({ control }) => {
 					<Ordering
 						label={label}
 						components={components}
-						value={value}
+						items={normalizeValue(value)}
 						onUpdate={updateValue}
 					/>
 				)}

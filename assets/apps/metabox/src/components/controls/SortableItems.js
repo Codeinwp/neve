@@ -15,7 +15,7 @@ const SortableItems = (props) => {
 				list={metaFieldValue}
 				setList={updateElement}
 				handle=".ti-sortable-handle"
-				animation="300"
+				animation={300}
 			>
 				{metaFieldValue.map((item) => {
 					return (
