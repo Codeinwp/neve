@@ -19,18 +19,12 @@ const Handle = () => (
 	</Tooltip>
 );
 
-const Item = ({
-	item,
-	onToggle,
-	allowsToggle = true,
-	className,
-	disabled = false,
-}) => {
+const Item = ({ item, onToggle, allowsToggle = true }) => {
 	return (
 		<div
 			className={classnames([
 				'neve-sortable-item',
-				className,
+				item.visible === true ? 'visible' : 'disabled',
 				{ 'no-toggle': !allowsToggle },
 			])}
 		>
@@ -50,7 +44,7 @@ const Item = ({
 				</Tooltip>
 			)}
 			<span className="label">{item.label}</span>
-			{!disabled && <Handle />}
+			{item.visible && <Handle />}
 		</div>
 	);
 };
@@ -63,26 +57,14 @@ Item.propTypes = {
 	disabled: PropTypes.bool,
 };
 
-const Ordering = ({
-	label,
-	onUpdate,
-	components,
-	items,
-	allowsToggle = true,
-}) => {
-	const disabled = Object.keys(components)
-		.filter((item) => !items.some((e) => e.id === item))
-		.map((item) => {
-			return { id: item, label: components[item] };
-		});
-
+const Ordering = ({ label, onUpdate, items, allowsToggle = true }) => {
 	const handleToggle = (item) => {
-		let newValue = [...items];
-		if (newValue.some((e) => e.id === item)) {
-			newValue = newValue.filter((element) => item !== element.id);
-		} else {
-			newValue.push({ id: item, label: components[item] });
-		}
+		const newValue = [...items].map((e) => {
+			if (e.id === item) {
+				e.visible = !e.visible;
+			}
+			return e;
+		});
 		onUpdate(newValue);
 	};
 
@@ -108,16 +90,6 @@ const Ordering = ({
 					/>
 				))}
 			</ReactSortable>
-			{disabled.map((item, index) => (
-				<Item
-					className="disabled"
-					key={index}
-					item={item}
-					onToggle={handleToggle}
-					allowsToggle={allowsToggle}
-					disabled
-				/>
-			))}
 		</>
 	);
 };
@@ -125,7 +97,6 @@ const Ordering = ({
 Ordering.propTypes = {
 	label: PropTypes.string.isRequired,
 	onUpdate: PropTypes.func.isRequired,
-	components: PropTypes.object.isRequired,
 	items: PropTypes.object.isRequired,
 	allowsToggle: PropTypes.bool,
 };
