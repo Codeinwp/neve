@@ -354,7 +354,7 @@ class Elementor extends Page_Builder_Base {
 
 		$transient_key        = 'neve_elementor_has_template_' . $elementor_template_type;
 		$transient_expiry_sec = HOUR_IN_SECONDS;
-		$cached_value         = get_transient( $transient_key );
+		$cached_value         = get_transient( $transient_key ) == true; // cast transient (string) to bool
 
 		if ( $force_refresh !== true && $cached_value !== false ) {
 			return $cached_value;
