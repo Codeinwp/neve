@@ -57,9 +57,15 @@ Item.propTypes = {
 	disabled: PropTypes.bool,
 };
 
-const Ordering = ({ label, onUpdate, items, allowsToggle = true }) => {
+const Ordering = ({
+	label,
+	onUpdate,
+	value,
+	components,
+	allowsToggle = true,
+}) => {
 	const handleToggle = (item) => {
-		const newValue = [...items].map((e) => {
+		const newValue = value.map((e) => {
 			if (e.id === item) {
 				e.visible = !e.visible;
 			}
@@ -67,6 +73,33 @@ const Ordering = ({ label, onUpdate, items, allowsToggle = true }) => {
 		});
 		onUpdate(newValue);
 	};
+
+	const normalizeValue = (values) => {
+		const needNormalize =
+			values.filter((e) => typeof e === 'string').length > 0;
+		if (!needNormalize) {
+			return values.sort((x, y) => {
+				if (x.visible === y.visible) {
+					return 0;
+				}
+				if (x.visible) {
+					return -1;
+				}
+				return 1;
+			});
+		}
+		const activeElements = values.map((val) => {
+			return { id: val, label: components[val], visible: true };
+		});
+		const disabledElement = Object.keys(components)
+			.filter((item) => !activeElements.some((e) => e.id === item))
+			.map((item) => {
+				return { id: item, label: components[item], visible: false };
+			});
+		return [...activeElements, ...disabledElement];
+	};
+
+	value = normalizeValue(value);
 
 	return (
 		<>
@@ -76,14 +109,14 @@ const Ordering = ({ label, onUpdate, items, allowsToggle = true }) => {
 			)}
 			<ReactSortable
 				className="items-list"
-				list={items}
+				list={value}
 				setList={onUpdate}
 				animation={300}
 				handle=".handle"
 			>
-				{items.map((item, index) => (
+				{value.map((item, index) => (
 					<Item
-						key={index}
+						key={'ordering-element-' + index}
 						item={item}
 						onToggle={handleToggle}
 						allowsToggle={allowsToggle}
@@ -97,8 +130,9 @@ const Ordering = ({ label, onUpdate, items, allowsToggle = true }) => {
 Ordering.propTypes = {
 	label: PropTypes.string.isRequired,
 	onUpdate: PropTypes.func.isRequired,
-	items: PropTypes.object.isRequired,
+	value: PropTypes.object.isRequired,
 	allowsToggle: PropTypes.bool,
+	components: PropTypes.array.isRequired,
 };
 
 export default Ordering;

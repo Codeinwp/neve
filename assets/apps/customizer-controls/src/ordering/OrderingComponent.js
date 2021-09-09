@@ -21,18 +21,6 @@ const OrderingComponent = ({ control }) => {
 		control.setting.set(JSON.stringify(controlValue));
 	};
 
-	const normalizeValue = (values) => {
-		const activeElements = values.map((val) => {
-			return { id: val, label: components[val], visible: true };
-		});
-		const disabledElement = Object.keys(components)
-			.filter((item) => !activeElements.some((e) => e.id === item))
-			.map((item) => {
-				return { id: item, label: components[item], visible: false };
-			});
-		return [...activeElements, ...disabledElement];
-	};
-
 	useEffect(() => {
 		window.wp.customize.bind('ready', () => {
 			window.wp.customize
@@ -115,7 +103,8 @@ const OrderingComponent = ({ control }) => {
 				{isVisible && (
 					<Ordering
 						label={label}
-						items={normalizeValue(value)}
+						value={value}
+						components={components}
 						onUpdate={updateValue}
 					/>
 				)}
