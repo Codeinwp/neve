@@ -9,7 +9,13 @@ function initShop() {
 	if (document.body.classList.contains('woocommerce')) {
 		handleShopSidebar();
 	}
-	if (document.body.classList.contains('nv-exclusive')) {
+
+	const countExclusive = document.querySelectorAll('.exclusive-products li')
+		.length;
+	if (
+		document.body.classList.contains('nv-exclusive') &&
+		countExclusive > 4
+	) {
 		handleExclusiveSlider();
 	}
 }

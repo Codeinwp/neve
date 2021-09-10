@@ -48,4 +48,19 @@ section.exclusive {
 	.tns-visually-hidden {
 		display: none;
 	}
+
+	ul.products.exclusive-products {
+		--shopColTemplate: 4;
+		margin: 0;
+	}
+
+	ul.tns-slider li.product,
+	ul:not(.tns-slider) li:nth-child(4) {
+		margin: 0;
+		clear: none;
+	}
+
+	ul:not(.tns-slider) li:nth-child(n+5) {
+		display: none;
+	}
 }
