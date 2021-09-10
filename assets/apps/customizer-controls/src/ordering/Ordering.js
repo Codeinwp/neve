@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { __ } from '@wordpress/i18n';
 import { Tooltip, Icon } from '@wordpress/components';
+import { useEffect } from '@wordpress/element';
 
 const Handle = () => (
 	<Tooltip text={__('Drag to Reorder', 'neve')}>
@@ -19,7 +20,8 @@ const Handle = () => (
 	</Tooltip>
 );
 
-const Item = ({ item, onToggle, allowsToggle = true }) => {
+const Item = ({ item, onToggle, components, allowsToggle = true }) => {
+	const label = components[item.id];
 	return (
 		<div
 			className={classnames([
@@ -43,7 +45,7 @@ const Item = ({ item, onToggle, allowsToggle = true }) => {
 					</button>
 				</Tooltip>
 			)}
-			<span className="label">{item.label}</span>
+			<span className="label">{label}</span>
 			{item.visible && <Handle />}
 		</div>
 	);
@@ -71,35 +73,55 @@ const Ordering = ({
 			}
 			return e;
 		});
-		onUpdate(newValue);
+		handleChange(newValue);
 	};
 
-	const normalizeValue = (values) => {
-		const needNormalize =
-			values.filter((e) => typeof e === 'string').length > 0;
-		if (!needNormalize) {
-			return values.sort((x, y) => {
-				if (x.visible === y.visible) {
-					return 0;
-				}
-				if (x.visible) {
-					return -1;
-				}
-				return 1;
-			});
-		}
-		const activeElements = values.map((val) => {
-			return { id: val, label: components[val], visible: true };
+	const handleChange = (newVal) => {
+		const updatedValue = newVal.sort((x, y) => {
+			if (x.visible === y.visible) {
+				return 0;
+			}
+			if (x.visible) {
+				return -1;
+			}
+			return 1;
 		});
-		const disabledElement = Object.keys(components)
-			.filter((item) => !activeElements.some((e) => e.id === item))
-			.map((item) => {
-				return { id: item, label: components[item], visible: false };
-			});
-		return [...activeElements, ...disabledElement];
+		onUpdate(updatedValue);
 	};
 
-	value = normalizeValue(value);
+	useEffect(() => {
+		const maybeNormalizeData = (val) => {
+			const needNormalize =
+				val.filter((e) => typeof e === 'string').length > 0;
+			if (needNormalize) {
+				return val.map((element) => {
+					return { id: element, visible: true };
+				});
+			}
+			return val;
+		};
+
+		const normalizedValue = maybeNormalizeData(value);
+
+		const enabledItems = normalizedValue.map((element) => {
+			element.visible = true;
+			return element;
+		});
+
+		const disabledItems = Object.keys(components)
+			.filter((element) => {
+				return (
+					enabledItems.filter((el) => {
+						return element === el.id;
+					}).length === 0
+				);
+			})
+			.map((element) => {
+				return { id: element, visible: false };
+			});
+
+		onUpdate([...enabledItems, ...disabledItems]);
+	}, []);
 
 	return (
 		<>
@@ -110,7 +132,7 @@ const Ordering = ({
 			<ReactSortable
 				className="items-list"
 				list={value}
-				setList={onUpdate}
+				setList={handleChange}
 				animation={300}
 				handle=".handle"
 			>
@@ -120,6 +142,7 @@ const Ordering = ({
 						item={item}
 						onToggle={handleToggle}
 						allowsToggle={allowsToggle}
+						components={components}
 					/>
 				))}
 			</ReactSortable>

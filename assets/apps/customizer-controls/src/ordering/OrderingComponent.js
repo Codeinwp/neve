@@ -13,12 +13,17 @@ const OrderingComponent = ({ control }) => {
 	const [value, setValue] = useState(maybeParseJson(control.setting.get()));
 	const [isVisible, setVisible] = useState(false);
 	const { section, components, label } = control.params;
+
 	const updateValue = (newVal) => {
-		const controlValue = newVal
-			.filter((element) => element.visible)
-			.map((element) => element.id);
-		setValue(controlValue);
-		control.setting.set(JSON.stringify(controlValue));
+		const dbValue = newVal
+			.filter((element) => {
+				return element.visible === true;
+			})
+			.map((element) => {
+				return { id: element.id };
+			});
+		setValue(newVal);
+		control.setting.set(JSON.stringify(dbValue));
 	};
 
 	useEffect(() => {

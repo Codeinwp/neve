@@ -277,13 +277,13 @@ export const SHARING_ICONS_DEFAULT = [
 	}
 ]
 
-export const ORDERING_DEFAULT = ['title', 'thumbnail'];
+export const ORDERING_DEFAULT = [{ id: 'title' }, { id: 'thumbnail' }];
 export const ORDERING_NO_TOGGLES = [
-	'title',
-	'thumbnail',
-	'content',
-	'tags',
-	'comments',
+	{ id: 'title' },
+	{ id: 'thumbnail' },
+	{ id: 'content' },
+	{ id: 'tags' },
+	{ id: 'comments' },
 ];
 export const ORDERING_COMPONENTS = {
 	title: 'Title & Meta',
