@@ -129,6 +129,51 @@ class Pagination extends Base_View {
 	}
 
 	/**
+	 * Create jump to navigation inputs.
+	 * 
+	 * @return string $markup HTML to output on page.
+	 */
+	private function create_jump_to_html() {
+
+		// Value escaped once we confirm it's not empty, we never save this value to the DB.
+		$request = $_SERVER['REQUEST_URI'] ?? ''; //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		
+		if ( empty( $request ) ) {
+			return;
+		}
+
+		$request = esc_attr( $request );
+
+		global $wp_query;
+
+		$search_query = esc_attr( get_search_query() );
+		$search_input = ! empty( $search_query ) ? "<input id='s' type='hidden' value='$search_query' name='s' />" : '';
+
+		$button_text = apply_filters( 'neve_pagination_jump_button_text', __( 'Go', 'neve' ) );
+		$button_text = esc_attr( $button_text );
+
+		$max_num_pages = absint( $wp_query->max_num_pages );
+		$max_num_pages = esc_attr( $max_num_pages );
+
+		$current_page = ! empty( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : '';
+
+		$markup = <<<MARKUP
+		<li id="nv-pagination-jump">
+			<form action="$request" method="GET">
+				<a class="page-numbers">
+					<input id="nv-pagination-jump-page-num" placeholder="#" type="number" value="$current_page" max="$max_num_pages" name="paged" />
+					<input id="nv-pagination-jump-go" value="$button_text" type="submit" /> 
+					$search_input
+				</a>
+		   </form>
+		</li>
+MARKUP;
+
+		return $markup;
+
+	}
+
+	/**
 	 * Render the pagination.
 	 *
 	 * @param string $context Pagination location context.
@@ -166,6 +211,12 @@ class Pagination extends Base_View {
 		if ( $this->has_infinite_scroll() ) {
 			echo wp_kses_post( '<div class="load-more-posts"><span class="nv-loader" style="display: none;"></span><span class="infinite-scroll-trigger"></span></div>' );
 		}
+
+		if ( ! $this->has_infinite_scroll() && get_theme_mod( 'neve_enable_jump_to_pagination' ) ) {
+			// All outputs escaped inside method.
+			echo $this->create_jump_to_html(); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
+
 	}
 
 	/**

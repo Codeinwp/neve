@@ -277,6 +277,23 @@ class Layout_Blog extends Base_Customizer {
 			)
 		);
 
+		$this->add_control(
+			new Control(
+				'neve_enable_jump_to_pagination',
+				array(
+					'default'           => true,
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+				),
+				array(
+					'type'            => 'neve_toggle_control',
+					'priority'        => 54,
+					'section'         => 'neve_blog_archive_layout',
+					'label'           => esc_html__( 'Enable Jump To Page', 'neve' ),
+					'active_callback' => array( $this, 'should_show_jump_to' ),
+				)
+			)
+		);
+
 		$order_default_components = array(
 			'thumbnail',
 			'title-meta',
@@ -625,6 +642,19 @@ class Layout_Blog extends Base_Customizer {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Callback to show Jump To pagination control.
+	 *
+	 * @return bool
+	 */
+	public function should_show_jump_to() {
+
+		$pagination_type = get_theme_mod( 'neve_pagination_type' );
+
+		return $pagination_type === 'number' ? true : false;
+
 	}
 
 	/**

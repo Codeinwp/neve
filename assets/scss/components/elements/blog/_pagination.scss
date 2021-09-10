@@ -25,4 +25,21 @@ ul.page-numbers {
 		background: var(--nv-primary-accent);
 		color: var(--nv-text-dark-bg);
 	}
+
+	#nv-pagination-jump {
+
+		a {
+			padding: 3px 8px;
+		}
+
+		#nv-pagination-jump-page-num {
+			padding: 5px;
+    		width: 50px;
+		}
+
+		#nv-pagination-jump-go {
+			padding: 5px 20px;
+		}
+	}
+	
 }
