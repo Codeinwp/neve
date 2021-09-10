@@ -200,7 +200,7 @@ class Magic_Tags {
 	 */
 	public function meta_date() {
 		ob_start();
-		do_action( 'neve_post_meta_single', array( 'date' ), false );
+		do_action( 'neve_post_meta_single', [ ['id'=>'date'] ], false );
 		$meta = ob_get_contents();
 		ob_end_clean();
 

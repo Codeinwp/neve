@@ -397,27 +397,45 @@ final class Manager {
 		);
 	}
 
+	static function post_order_value() {
+		$default_components = [
+			['id' => 'title-meta'],
+			['id' => 'thumbnail'],
+			['id' => 'content'],
+			['id' => 'tags'],
+			['id' => 'comments'],
+		];
+
+		if ( Layout_Single_Post::is_cover_layout() ) {
+			$default_components = [
+				[ 'id' => 'content' ],
+				[ 'id' => 'tags' ],
+				[ 'id' => 'comments' ],
+			];
+		}
+
+		$default_order = apply_filters( 'neve_single_post_elements_default_order', $default_components );
+		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
+		$content_order = json_decode( $content_order, true );
+		return neve_maybe_normalize_ordering( $content_order );
+	}
+
 	/**
 	 * Get the value of elements order from customizer.
 	 *
 	 * @return string
 	 */
 	private function get_post_elements_default_order() {
-		$default_order = $this->post_ordering();
-
-		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
-		if ( ! is_string( $content_order ) ) {
-			$content_order = wp_json_encode( $default_order );
-		}
+		$content_order = self::post_order_value();
 		$content_order = json_decode( $content_order, true );
 		if ( empty( $content_order ) ) {
 			return wp_json_encode( $content_order );
 		}
 
 		$is_cover_layout  = Layout_Single_Post::is_cover_layout();
-		$title_meta_index = array_search( 'title-meta', $content_order );
+		$title_meta_index = array_search( 'title-meta', array_column( $content_order, 'id' ), true );
 		if ( $title_meta_index !== false && ! $is_cover_layout ) {
-			$content_order[ $title_meta_index ] = 'title';
+			$content_order[ $title_meta_index ] = ['id'=>'title'];
 			$next_index                         = $title_meta_index + 1;
 			$content_order                      = array_merge( array_slice( $content_order, 0, $next_index, true ), array( 'meta' ), array_slice( $content_order, $next_index, null, true ) );
 		}

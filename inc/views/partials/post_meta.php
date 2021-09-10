@@ -98,7 +98,7 @@ class Post_Meta extends Base_View {
 		$index     = 1;
 		$tag       = $as_list === true ? 'li' : 'span';
 		foreach ( $order as $meta ) {
-			switch ( $meta ) {
+			switch ( $meta['id'] ) {
 				case 'author':
 					$markup .= '<' . $tag . '  class="meta author vcard">';
 					$markup .= self::neve_get_author_meta();
@@ -175,15 +175,15 @@ class Post_Meta extends Base_View {
 	private function sanitize_order_array( $order ) {
 		$allowed_order_values = apply_filters(
 			'neve_meta_filter',
-			array(
-				'author'   => __( 'Author', 'neve' ),
-				'category' => __( 'Category', 'neve' ),
-				'date'     => __( 'Date', 'neve' ),
-				'comments' => __( 'Comments', 'neve' ),
-			)
+			[
+				[ 'id' => 'author' ],
+				[ 'id' => 'category'],
+				[ 'id' => 'date'],
+				[ 'id' => 'comments'],
+			]
 		);
 		foreach ( $order as $index => $value ) {
-			if ( ! array_key_exists( $value, $allowed_order_values ) ) {
+			if ( ! in_array( $value, $allowed_order_values, true ) ) {
 				unset( $order[ $index ] );
 			}
 		}

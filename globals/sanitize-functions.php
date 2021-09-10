@@ -261,12 +261,37 @@ function neve_sanitize_position( $input ) {
  */
 function neve_sanitize_meta_ordering( $value ) {
 	$allowed = array(
-		'author',
-		'category',
-		'date',
-		'comments',
-		'reading',
+		['id' => 'author'],
+		['id' => 'category'],
+		['id' => 'date'],
+		['id' => 'comments'],
+		['id' => 'reading'],
 	);
+
+	if ( empty( $value ) ) {
+		return $allowed;
+	}
+
+	$decoded = json_decode( $value, true );
+
+	foreach ( $decoded as $val ) {
+		if ( ! in_array( $val, $allowed, true ) ) {
+			return $allowed;
+		}
+	}
+
+	return $value;
+}
+
+/**
+ * Sanitize content order control.
+ */
+function neve_sanitize_post_content_ordering( $value ) {
+	$allowed = [
+		[ 'id' => 'thumbnail' ],
+		[ 'id' => 'title-meta' ],
+		[ 'id' => 'excerpt' ],
+	];
 
 	if ( empty( $value ) ) {
 		return $allowed;

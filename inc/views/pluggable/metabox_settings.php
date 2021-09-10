@@ -498,18 +498,19 @@ class Metabox_Settings {
 	 * @return array
 	 */
 	public function filter_post_elements( $elements_order ) {
-		$post_id = $this->get_post_id();
-
-		if ( $post_id === false ) {
-			return $elements_order;
-		}
-
-		$meta_elements_order = get_post_meta( $post_id, self::ELEMENTS_ORDER, true );
-		if ( empty( $meta_elements_order ) ) {
-			return $elements_order;
-		}
-
-		return json_decode( $meta_elements_order, true );
+//		$post_id = $this->get_post_id();
+//
+//		if ( $post_id === false ) {
+//			return $elements_order;
+//		}
+//
+//		$meta_elements_order = get_post_meta( $post_id, self::ELEMENTS_ORDER, true );
+//		if ( empty( $meta_elements_order ) ) {
+//			return $elements_order;
+//		}
+//
+//		return json_decode( $meta_elements_order, true );
+		return $elements_order;
 	}
 
 	/**

@@ -8,6 +8,7 @@
 
 namespace Neve\Views;
 
+use Neve\Admin\Metabox\Manager;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
@@ -55,17 +56,16 @@ class Post_Layout extends Base_View {
 		$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', true );
 		$skip_lazy_class      = '';
 		if ( $should_add_skip_lazy ) {
-			$thumbnail_index = array_search( 'thumbnail', $content_order );
-			$content_index   = array_search( 'content', $content_order );
+			$thumbnail_index = array_search( 'thumbnail', array_column( $content_order, 'id' ) );
+			$content_index   = array_search( 'content', array_column( $content_order, 'id' ) );
 			if ( $thumbnail_index < $content_index ) {
 				$skip_lazy_class = 'skip-lazy';
 			}
 		}
 
 		$content_order_length = count( $content_order );
-		$header_layout        = get_theme_mod( 'neve_post_header_layout', 'normal' );
 		foreach ( $content_order as $index => $item ) {
-			switch ( $item ) {
+			switch ( $item['id'] ) {
 				case 'title-meta':
 					if ( Layout_Single_Post::is_cover_layout() ) {
 						break;
@@ -146,7 +146,7 @@ class Post_Layout extends Base_View {
 		if ( ! get_post() ) {
 			return false;
 		}
-		$default_meta_order = get_theme_mod( 'neve_post_meta_ordering', wp_json_encode( array( 'author', 'date', 'comments' ) ) );
+		$default_meta_order = Template_Parts::get_meta_order();
 		$meta_order         = get_theme_mod( 'neve_single_post_meta_ordering', $default_meta_order );
 		$meta_order         = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
 		$meta_order         = apply_filters( 'neve_post_meta_ordering_filter', $meta_order );
@@ -257,22 +257,16 @@ class Post_Layout extends Base_View {
 	 * @return array
 	 */
 	private function get_content_order() {
-		$default_order = $this->post_ordering();
-
-		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
-		if ( ! is_string( $content_order ) ) {
-			$content_order = wp_json_encode( $default_order );
-		}
-		$content_order = json_decode( $content_order, true );
+		$content_order = Manager::post_order_value();
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
-			$title_key = array_search( 'title-meta', $content_order, true );
+			$title_key = array_search( 'title-meta', array_column( $content_order, 'id' ), true );
 			if ( $title_key !== false ) {
 				unset( $content_order[ $title_key ] );
 			}
 		}
 
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'featured-image' ) !== true || ! has_post_thumbnail() ) {
-			$thumb_index = array_search( 'thumbnail', $content_order, true );
+			$thumb_index = array_search( 'thumbnail',  array_column( $content_order, 'id' ), true );
 			if ( $thumb_index !== false ) {
 				unset( $content_order[ $thumb_index ] );
 			}

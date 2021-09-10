@@ -512,3 +512,19 @@ function neve_safe_get( $url, $args = array() ) {
 			$args
 		);
 }
+
+/**
+ * Function to normalize ordering control.
+ *
+ * @param array $value Control data.
+ *
+ * @return array
+ */
+function neve_maybe_normalize_ordering( $value ) {
+	foreach ( $value as $key => $val ){
+		if ( is_string( $val ) ){
+			$value[$key] = ['id' => $val ];
+		}
+	}
+	return $value;
+}

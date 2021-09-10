@@ -14,6 +14,7 @@ use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Defaults\Layout;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
+use Neve\Views\Template_Parts;
 
 /**
  * Class Layout_Blog
@@ -277,29 +278,28 @@ class Layout_Blog extends Base_Customizer {
 			)
 		);
 
-		$order_default_components = array(
-			'thumbnail',
-			'title-meta',
-			'excerpt',
-		);
 
-		$components = array(
-			'thumbnail'  => __( 'Thumbnail', 'neve' ),
-			'title-meta' => __( 'Title & Meta', 'neve' ),
-			'excerpt'    => __( 'Excerpt', 'neve' ),
-		);
+		$order_default_components = [
+			[ 'id' => 'thumbnail' ],
+			[ 'id' => 'title-meta' ],
+			[ 'id' => 'excerpt' ],
+		];
 
 		$this->add_control(
 			new Control(
 				'neve_post_content_ordering',
 				array(
-					'sanitize_callback' => array( $this, 'sanitize_post_content_ordering' ),
+					'sanitize_callback' => 'neve_sanitize_post_content_ordering',
 					'default'           => wp_json_encode( $order_default_components ),
 				),
 				array(
 					'label'      => esc_html__( 'Post Content Order', 'neve' ),
 					'section'    => 'neve_blog_archive_layout',
-					'components' => $components,
+					'components' => [
+						'thumbnail'  => __( 'Thumbnail', 'neve' ),
+						'title-meta' => __( 'Title & Meta', 'neve' ),
+						'excerpt'    => __( 'Excerpt', 'neve' ),
+					],
 					'priority'   => 55,
 				),
 				'Neve\Customizer\Controls\React\Ordering'
@@ -376,20 +376,20 @@ class Layout_Blog extends Base_Customizer {
 			)
 		);
 
-		$order_default_components = array(
-			'author',
-			'date',
-			'comments',
-		);
+		$order_default_components = [
+			[ 'id' => 'author' ],
+			[ 'id' => 'date' ],
+			[ 'id' => 'comments' ],
+		];
 
 		$components = apply_filters(
 			'neve_meta_filter',
-			array(
+			[
 				'author'   => __( 'Author', 'neve' ),
 				'category' => __( 'Category', 'neve' ),
 				'date'     => __( 'Date', 'neve' ),
 				'comments' => __( 'Comments', 'neve' ),
-			)
+			]
 		);
 
 		$this->add_control(
@@ -546,30 +546,7 @@ class Layout_Blog extends Base_Customizer {
 		return esc_html( $value );
 	}
 
-	/**
-	 * Sanitize content order control.
-	 */
-	public function sanitize_post_content_ordering( $value ) {
-		$allowed = array(
-			'thumbnail',
-			'title-meta',
-			'excerpt',
-		);
 
-		if ( empty( $value ) ) {
-			return $allowed;
-		}
-
-		$decoded = json_decode( $value, true );
-
-		foreach ( $decoded as $val ) {
-			if ( ! in_array( $val, $allowed, true ) ) {
-				return $allowed;
-			}
-		}
-
-		return $value;
-	}
 
 	/**
 	 * Callback to show the meta order control.
@@ -577,14 +554,8 @@ class Layout_Blog extends Base_Customizer {
 	 * @return bool
 	 */
 	public function should_show_meta_order() {
-		$default       = array(
-			'thumbnail',
-			'title-meta',
-			'excerpt',
-		);
-		$content_order = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default ) );
-		$content_order = json_decode( $content_order, true );
-		if ( ! in_array( 'title-meta', $content_order, true ) ) {
+		$content_order = Template_Parts::get_elements_order();
+		if ( ! in_array( ['id' => 'title-meta'], $content_order, true ) ) {
 			return false;
 		}
 
