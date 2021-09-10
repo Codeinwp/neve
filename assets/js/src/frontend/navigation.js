@@ -22,7 +22,6 @@ export const initNavigation = () => {
 	handleMobileDropdowns();
 	handleSearch();
 	handleMiniCartPosition();
-	positionPaginationJumper();
 	if (isIe() === true) {
 		handleIeDropdowns();
 	}
@@ -204,27 +203,4 @@ function handleIeDropdowns() {
 			removeClass(dropdown, strings[0]);
 		});
 	});
-}
-
-/**
- * Position the Jump to pagination input box.
- */
-function positionPaginationJumper() {
-	const paginationNumbers = document.querySelector('ul.page-numbers');
-
-	const jumpto = document.querySelector('#nv-pagination-jump');
-
-	if (!paginationNumbers || !jumpto) {
-		return;
-	}
-
-	const lastElement = paginationNumbers.lastElementChild;
-
-	const nextBtn = document.querySelector('.next.page-numbers');
-
-	if (nextBtn) {
-		lastElement.insertAdjacentElement('beforebegin', jumpto);
-	} else {
-		lastElement.insertAdjacentElement('afterend', jumpto);
-	}
 }

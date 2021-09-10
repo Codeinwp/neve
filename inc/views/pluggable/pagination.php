@@ -129,6 +129,15 @@ class Pagination extends Base_View {
 	}
 
 	/**
+	 * Determine whether to show the Jump to page HTML input.
+	 * 
+	 * @return bool
+	 */
+	private function show_jump_to_page_input() {
+		return ( ! $this->has_infinite_scroll() && get_theme_mod( 'neve_enable_jump_to_pagination' ) ) ? true : false;
+	}
+
+	/**
 	 * Create jump to navigation inputs.
 	 * 
 	 * @return mixed $markup HTML to output on page.
@@ -157,7 +166,7 @@ class Pagination extends Base_View {
 		$current_page = ! empty( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : '';
 
 		$markup = <<<MARKUP
-		<li id="nv-pagination-jump">
+		<div id="nv-pagination-jump">
 			<form action="$request" method="GET">
 				<a class="page-numbers">
 					<input id="nv-pagination-jump-page-num" placeholder="#" type="number" value="$current_page" max="$max_num_pages" name="paged" />
@@ -165,11 +174,44 @@ class Pagination extends Base_View {
 					$search_input
 				</a>
 		   </form>
-		</li>
+		</div>
 MARKUP;
 
 		return $markup;
 
+	}
+
+	/**
+	 * Normalize our jump to feature element so that it can be used in render_pagination() method
+	 *
+	 * @return string $links All links as a string just like if we used paginate_links() with 'list' as the the 'type' arg.
+	 */
+	private function normalize_jump_to_input() {
+
+		$links           = paginate_links( array( 'type' => 'array' ) );
+		$last_element    = \array_pop( $links );
+		$jump_to_element = $this->create_jump_to_html();
+		
+		/**
+		 * If the next button is present, add the element just before it...
+		 * If it's not then add the jump to element as the last item instead.
+		 */
+		if ( \strpos( $last_element, '<a class="next page-numbers"' ) !== false ) {
+			\array_push( $links, $jump_to_element, $last_element ); 
+		} else {
+			\array_push( $links, $last_element, $jump_to_element );
+		}
+
+		\array_walk(
+			$links,
+			function( &$value ) {
+				$value = '<li>' . $value . '</li>';
+			} 
+		);
+
+		$links = '<ul class="page-numbers">' . \implode( '', $links ) . '</ul>';
+
+		return $links;
 	}
 
 	/**
@@ -193,7 +235,12 @@ MARKUP;
 			do_action( 'neve_before_pagination' );
 		}
 
-		$links = paginate_links( array( 'type' => 'list' ) );
+		if ( $this->show_jump_to_page_input() ) {
+			$links = $this->normalize_jump_to_input();
+		} else {
+			$links = paginate_links( array( 'type' => 'list' ) );
+		}
+
 		$links = str_replace(
 			array( '<a class="prev', '<a class="next' ),
 			array(
@@ -204,16 +251,32 @@ MARKUP;
 		);
 
 		echo $this->has_infinite_scroll() ? '<div style="display: none;">' : '';
+		
+		// If the jump to page feature is enabled we need to allow a few other HTML elements in wp_kses()
+		if ( $this->show_jump_to_page_input() ) {
+			add_filter(
+				'wp_kses_allowed_html',
+				function( $tags ) {
+				
+					$tags['input']                = array();
+					$tags['input']['id']          = array();
+					$tags['input']['max']         = array();
+					$tags['input']['name']        = array();
+					$tags['input']['placeholder'] = array();
+					$tags['input']['type']        = array();
+					$tags['input']['value']       = array();
+
+					return $tags;
+
+				}
+			);
+		}
+
 		echo wp_kses_post( $links );
 		echo $this->has_infinite_scroll() ? '</div>' : '';
 
 		if ( $this->has_infinite_scroll() ) {
 			echo wp_kses_post( '<div class="load-more-posts"><span class="nv-loader" style="display: none;"></span><span class="infinite-scroll-trigger"></span></div>' );
-		}
-
-		if ( ! $this->has_infinite_scroll() && get_theme_mod( 'neve_enable_jump_to_pagination' ) ) {
-			// All outputs escaped inside method.
-			echo $this->create_jump_to_html(); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 
 	}
