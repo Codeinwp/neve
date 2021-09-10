@@ -131,7 +131,7 @@ class Pagination extends Base_View {
 	/**
 	 * Create jump to navigation inputs.
 	 * 
-	 * @return string $markup HTML to output on page.
+	 * @return mixed $markup HTML to output on page.
 	 */
 	private function create_jump_to_html() {
 
@@ -153,7 +153,6 @@ class Pagination extends Base_View {
 		$button_text = esc_attr( $button_text );
 
 		$max_num_pages = absint( $wp_query->max_num_pages );
-		$max_num_pages = esc_attr( $max_num_pages );
 
 		$current_page = ! empty( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : '';
 
