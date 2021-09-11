@@ -215,6 +215,29 @@ MARKUP;
 	}
 
 	/**
+	 * Add extra allowed HTML tags to wp_kses()
+	 * 
+	 * Form tag is added automatically once input tag is present, see WP Docs for more information.
+	 *
+	 * @param array $tags Currently allowed HTML tags.
+	 * 
+	 * @return array $tags All allowed tags for wp_kses()
+	 */
+	public function allow_extra_tags( $tags ) {
+
+		$tags['input']                = array();
+		$tags['input']['id']          = array();
+		$tags['input']['max']         = array();
+		$tags['input']['name']        = array();
+		$tags['input']['placeholder'] = array();
+		$tags['input']['type']        = array();
+		$tags['input']['value']       = array();
+
+		return $tags;
+
+	}
+
+	/**
 	 * Render the pagination.
 	 *
 	 * @param string $context Pagination location context.
@@ -252,27 +275,22 @@ MARKUP;
 
 		echo $this->has_infinite_scroll() ? '<div style="display: none;">' : '';
 		
-		// If the jump to page feature is enabled we need to allow a few other HTML elements in wp_kses()
+		/**
+		 * Allow extra HTML tags for this feature.
+		 */
 		if ( $this->show_jump_to_page_input() ) {
-			add_filter(
-				'wp_kses_allowed_html',
-				function( $tags ) {
-				
-					$tags['input']                = array();
-					$tags['input']['id']          = array();
-					$tags['input']['max']         = array();
-					$tags['input']['name']        = array();
-					$tags['input']['placeholder'] = array();
-					$tags['input']['type']        = array();
-					$tags['input']['value']       = array();
-
-					return $tags;
-
-				}
-			);
+			add_filter( 'wp_kses_allowed_html', array( $this, 'allow_extra_tags' ) );
 		}
 
 		echo wp_kses_post( $links );
+
+		/**
+		 * Remove extra HTML tags no longer needed.
+		 */
+		if ( $this->show_jump_to_page_input() ) {
+			remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_extra_tags' ) );
+		}
+
 		echo $this->has_infinite_scroll() ? '</div>' : '';
 
 		if ( $this->has_infinite_scroll() ) {
