@@ -427,7 +427,6 @@ final class Manager {
 	 */
 	private function get_post_elements_default_order() {
 		$content_order = self::post_order_value();
-		$content_order = json_decode( $content_order, true );
 		if ( empty( $content_order ) ) {
 			return wp_json_encode( $content_order );
 		}
@@ -437,7 +436,7 @@ final class Manager {
 		if ( $title_meta_index !== false && ! $is_cover_layout ) {
 			$content_order[ $title_meta_index ] = ['id'=>'title'];
 			$next_index                         = $title_meta_index + 1;
-			$content_order                      = array_merge( array_slice( $content_order, 0, $next_index, true ), array( 'meta' ), array_slice( $content_order, $next_index, null, true ) );
+			$content_order                      = array_merge( array_slice( $content_order, 0, $next_index, true ), [ [ 'id' => 'meta' ] ], array_slice( $content_order, $next_index, null, true ) );
 		}
 
 		return wp_json_encode( $content_order );
