@@ -82,7 +82,7 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 				adaptPreviewHeight();
 			}
 		);
-	}, []);
+	}, [hidden]);
 
 	const builderClasses = classnames('neve-builder', {
 		hide: hidden,
