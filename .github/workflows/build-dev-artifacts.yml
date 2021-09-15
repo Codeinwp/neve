@@ -186,7 +186,7 @@ jobs:
         uses: shioyang/check-pr-labels-on-push-action@v1.0.3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          labels: '["enhancement"]'
+          labels: '["debug"]'
       - name: Run ${{ matrix.specs }} Cypress tests
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
