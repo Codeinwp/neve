@@ -14,6 +14,9 @@ module.exports = {
 		"yarn run format:dash",
 		"yarn run lint:metabox"
 	],
+	"assets/scss/components/**/*.scss": [
+		"yarn run lint:scss --fix"
+	],
 	"assets/js/src/**/*.js": () => [ // We ignore here the staged restriction.
 		"yarn run format:global",
 		"yarn run lint:global",

@@ -8,6 +8,13 @@
  *
  * @package Neve
  */
+add_action(
+	'body_class',
+	function ( $class ) {
+		$class[] = 'nv-template';
+		return $class;
+	}
+);
 
 get_header();
 if ( have_posts() ) {

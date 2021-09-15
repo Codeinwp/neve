@@ -1,49 +1,41 @@
-/* global NeveProperties menuCalcEvent */
+/* global NeveProperties menuCalcEvent CustomEvent */
 /* jshint esversion: 6 */
 import {
-	isIe,
-	unhashUrl,
 	toggleClass,
 	removeClass,
 	addClass,
-	neveEach,
+	addEvent,
+	NV_FOCUS_TRAP_START,
+	NV_FOCUS_TRAP_END,
 } from '../utils.js';
 
-let pageUrl;
 const strings = ['dropdown-open', 'active', 'nav-clickaway-overlay'];
-
 /**
  * Initialize nav logic.
  */
 export const initNavigation = () => {
-	pageUrl = window.location.href;
 	repositionDropdowns();
 	handleScrollLinks();
 	handleMobileDropdowns();
 	handleSearch();
 	handleMiniCartPosition();
-	if (isIe() === true) {
-		handleIeDropdowns();
-	}
 	window.HFG.initSearch = function () {
 		handleSearch();
 		handleMobileDropdowns();
 	};
 };
-
 /**
  * Reposition drop downs in case they go off screen.
  */
 export const repositionDropdowns = () => {
 	const { isRTL } = NeveProperties;
-	const dropDowns = document.querySelectorAll(
-		'.sub-menu, .minimal .nv-nav-search'
-	);
+	const dropDowns =
+		document.querySelectorAll('.sub-menu, .minimal .nv-nav-search') || [];
 
 	if (dropDowns.length === 0) return;
 
 	const windowWidth = window.innerWidth;
-	neveEach(dropDowns, (dropDown) => {
+	dropDowns.forEach((dropDown) => {
 		const bounding = dropDown.getBoundingClientRect(),
 			rightDist = bounding.left;
 
@@ -64,19 +56,15 @@ export const repositionDropdowns = () => {
 
 /**
  * Handle links that link to the current page.
+ *
+ * When we click on a link which refference a section inside the current page,
+ * we close the sidebar if is open.
  */
 function handleScrollLinks() {
-	const links = document.querySelectorAll('.nv-nav-wrap a');
-	if (links.length === 0) return;
-
-	neveEach(links, (link) => {
-		link.addEventListener('click', (event) => {
-			const href = event.target.getAttribute('href');
-			if (href === null) return false;
-			if (unhashUrl(href) === unhashUrl(pageUrl)) {
-				window.HFG.toggleMenuSidebar(false);
-			}
-		});
+	document.addEventListener('click', function (event) {
+		if (event.target.hash && event.target.hash.includes('#')) {
+			window.HFG.toggleMenuSidebar(false);
+		}
 	});
 }
 
@@ -85,61 +73,118 @@ function handleScrollLinks() {
  */
 function handleMobileDropdowns() {
 	const carets = document.querySelectorAll('.caret-wrap');
-	neveEach(carets, (caret) => {
-		caret.addEventListener('click', (e) => {
-			e.preventDefault();
-			e.stopPropagation();
-			const subMenu = caret.parentNode.parentNode.querySelector(
-				'.sub-menu'
-			);
-			toggleClass(caret, strings[0]);
-			toggleClass(subMenu, strings[0]);
-			createNavOverlay(
-				document.querySelectorAll(`.${strings[0]}`),
-				strings[0]
-			);
-		});
-	});
+	addEvent(carets, 'click', openCarrets);
+	addEvent(carets, 'keyup', openCarrets);
+}
+
+function openCarrets(e, caret) {
+	e.preventDefault();
+	e.stopPropagation();
+	const subMenu = caret.parentNode.parentNode.querySelector('.sub-menu');
+	toggleClass(caret, strings[0]);
+	toggleClass(subMenu, strings[0]);
+	createNavOverlay(document.querySelectorAll(`.${strings[0]}`), strings[0]);
+}
+
+function getKeyboardFocusableElements(element = document) {
+	focusTrapDetails.elements = [
+		...element.querySelectorAll(
+			'a[href], button, input, textarea, select, details,[tabindex]:not([tabindex="-1"])'
+		),
+	].filter(
+		(el) => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden')
+	);
+	return focusTrapDetails.elements;
+}
+
+/**
+ * @namespace
+ * @property {Element}  container               - The container which traps the focus.
+ * @property {string}  firstFocus       - The first element which will be focusable inside the container
+ * @property {string}  close         - the close element, which will be clicked to close the trap
+ * @property {Element}  backFocus      - The element that receives focus when we trap is released
+ * @property {NodeList} elements      - The element that receives focus when we trap is released
+ */
+let focusTrapDetails = {};
+document.addEventListener(NV_FOCUS_TRAP_START, function (event) {
+	focusTrapDetails = event.detail;
+	setTimeout(() => {
+		focusTrapDetails.container
+			.querySelector(focusTrapDetails.firstFocus)
+			.focus();
+	}, 100);
+	document.addEventListener('keydown', startFocusTrap);
+});
+document.addEventListener(NV_FOCUS_TRAP_END, function () {
+	focusTrapDetails = {};
+	document.removeEventListener('keydown', startFocusTrap);
+});
+
+function startFocusTrap(event) {
+	const elements =
+		focusTrapDetails.elements ||
+		getKeyboardFocusableElements(focusTrapDetails.container);
+	const tabKey = event.keyCode === 9;
+	const shiftKey = event.shiftKey;
+	const escKey = event.keyCode === 27;
+	const activeEl = document.activeElement; // eslint-disable-line @wordpress/no-global-active-element
+	const lastEl = elements[elements.length - 1];
+	const firstEl = elements[0];
+	if (escKey) {
+		event.preventDefault();
+		focusTrapDetails.container
+			.querySelector(focusTrapDetails.close)
+			.click();
+		focusTrapDetails.backFocus.focus();
+		document.dispatchEvent(new CustomEvent(NV_FOCUS_TRAP_END));
+	}
+	if (!shiftKey && tabKey && lastEl === activeEl) {
+		event.preventDefault();
+		firstEl.focus();
+	}
+	if (shiftKey && tabKey && firstEl === activeEl) {
+		event.preventDefault();
+		lastEl.focus();
+	}
+	if (tabKey && firstEl === lastEl) {
+		event.preventDefault();
+	}
 }
 
 /**
  * Handle searches.
  */
 function handleSearch() {
-	const navSearch = document.querySelectorAll('.nv-nav-search'),
-		navItem = document.querySelectorAll('.menu-item-nav-search'),
-		close = document.querySelectorAll('.close-responsive-search');
-	// Handle search opening.
-	neveEach(navItem, (searchItem) => {
-		searchItem.addEventListener('click', (e) => {
-			e.preventDefault();
-			e.stopPropagation();
-			toggleClass(searchItem, strings[1]);
-			setTimeout(() => {
-				searchItem.querySelector('.search-field').focus();
-			}, 50);
-			createNavOverlay(searchItem, strings[1]);
-		});
+	const navSearch = document.querySelectorAll('.nv-nav-search') || [],
+		navItem = document.querySelectorAll('.menu-item-nav-search') || [],
+		close = document.querySelectorAll('.close-responsive-search') || [];
+	addEvent(navItem, 'click', (e, searchItem) => {
+		e.preventDefault();
+		e.stopPropagation();
+		toggleClass(searchItem, strings[1]);
+		createNavOverlay(searchItem, strings[1]);
+		document.dispatchEvent(
+			new CustomEvent(NV_FOCUS_TRAP_START, {
+				detail: {
+					container: searchItem.querySelector('.nv-nav-search'),
+					close: '.close-responsive-search',
+					firstFocus: '.search-field',
+					backFocus: searchItem,
+				},
+			})
+		);
 	});
-	// Don't close the search if interacted with.
-	neveEach(navSearch, (item) => {
-		item.addEventListener('click', (e) => {
-			e.stopPropagation();
-		});
+	addEvent(navSearch, 'click', (e) => {
+		e.stopPropagation();
 	});
-	// Mobile search close buttons.
-	neveEach(close, (button) => {
-		button.addEventListener('click', (e) => {
-			e.preventDefault();
-			neveEach(navItem, (search) => {
-				removeClass(search, strings[1]);
-			});
-			const overlay = document.querySelector(`.${strings[2]}`);
-			if (overlay === null) {
-				return;
-			}
-			overlay.parentNode.removeChild(overlay);
-		});
+	addEvent(close, 'click', (e) => {
+		e.preventDefault();
+		removeClass(navItem, strings[1]);
+		const overlay = document.querySelector(`.${strings[2]}`);
+		if (overlay === null) {
+			return;
+		}
+		overlay.parentNode.removeChild(overlay);
 	});
 }
 
@@ -151,7 +196,6 @@ function handleMiniCartPosition() {
 	if (item === null) {
 		return;
 	}
-
 	const miniCart = item.querySelector('.nv-nav-cart');
 
 	if (miniCart !== null) {
@@ -182,25 +226,5 @@ function createNavOverlay(item, classToRemove) {
 	navClickaway.addEventListener('click', () => {
 		removeClass(item, classToRemove);
 		navClickaway.parentNode.removeChild(navClickaway);
-	});
-}
-
-/**
- * Handle dropdowns for special browsers that...
- * have trouble understanding what hover is.
- */
-function handleIeDropdowns() {
-	const dropdowns = document.querySelectorAll(
-		'.header--row[data-show-on="desktop"] .sub-menu'
-	);
-	neveEach(dropdowns, (dropdown) => {
-		const parentItem = dropdown.parentNode;
-
-		parentItem.addEventListener('mouseenter', () => {
-			addClass(dropdown, strings[0]);
-		});
-		parentItem.addEventListener('mouseleave', () => {
-			removeClass(dropdown, strings[0]);
-		});
 	});
 }

@@ -22,17 +22,17 @@ use Neve\Core\Styles\Dynamic_Selector;
  * @package HFG\Core\Components
  */
 class Nav extends Abstract_Component {
-	const COMPONENT_ID     = 'primary-menu';
-	const STYLE_ID         = 'style';
-	const COLOR_ID         = 'color';
-	const HOVER_COLOR_ID   = 'hover_color';
-	const ACTIVE_COLOR_ID  = 'active_color';
-	const LAST_ITEM_ID     = 'neve_last_menu_item';
-	const NAV_MENU_ID      = 'nv-primary-navigation';
-	const ITEM_HEIGHT      = 'item_height';
-	const SPACING          = 'spacing';
-	const EXPAND_DROPDOWNS = 'expand_dropdowns';
-
+	const COMPONENT_ID             = 'primary-menu';
+	const STYLE_ID                 = 'style';
+	const COLOR_ID                 = 'color';
+	const HOVER_COLOR_ID           = 'hover_color';
+	const ACTIVE_COLOR_ID          = 'active_color';
+	const LAST_ITEM_ID             = 'neve_last_menu_item';
+	const NAV_MENU_ID              = 'nv-primary-navigation';
+	const ITEM_HEIGHT              = 'item_height';
+	const SPACING                  = 'spacing';
+	const EXPAND_DROPDOWNS         = 'expand_dropdowns';
+	const DROPDOWNS_EXPANDED_CLASS = 'dropdowns-expanded';
 	/**
 	 * Nav constructor.
 	 *

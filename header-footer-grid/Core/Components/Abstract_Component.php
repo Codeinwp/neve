@@ -846,6 +846,7 @@ abstract class Abstract_Component implements Component {
 					'transport'             => 'postMessage',
 					'priority'              => $priority + 1,
 					'type'                  => '\Neve\Customizer\Controls\React\Font_Family',
+					'sanitize_callback'     => 'sanitize_text_field',
 					'live_refresh_selector' => $this->default_typography_selector,
 					'live_refresh_css_prop' => array(
 						'cssVar' => [
