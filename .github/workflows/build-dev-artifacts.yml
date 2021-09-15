@@ -181,6 +181,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install ${{ matrix.envs }} env for ${{ matrix.specs }} specs
         run: bash ./bin/envs/init.sh ${{ matrix.envs }} latest no "$ZIP_URL"
+      - uses: danielchabr/pr-labels-checker@v3
+        id: check_debug
+        with:
+          hasSome: debug
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
       - name: Run ${{ matrix.specs }} Cypress tests
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -195,5 +200,5 @@ jobs:
           headless: true
           parallel: true
           group: e2e-${{ matrix.specs }}
-          record: true
+          record: ${{ steps.check_debug.outputs.passed  }}
           spec: cypress/integration/${{ matrix.specs }}/**/*,
