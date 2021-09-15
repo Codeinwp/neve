@@ -8,7 +8,7 @@ on:
     paths:
       - '.storybook/**'
       - 'e2e-tests/**'
-      - '.github/**'
+      - '.github/e2e-storybook.yml'
       - 'package.json'
       - 'stories/**'
 jobs:
