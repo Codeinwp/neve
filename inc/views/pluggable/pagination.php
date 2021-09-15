@@ -26,6 +26,7 @@ class Pagination extends Base_View {
 		add_filter( 'neve_filter_main_script_localization', array( $this, 'filter_localization' ) );
 		add_action( 'neve_do_pagination', array( $this, 'render_pagination' ) );
 		add_action( 'neve_post_navigation', array( $this, 'render_post_navigation' ) );
+		add_filter( 'paginate_links_output', array( $this, 'maybe_add_jump_to_page_input' ) );
 	}
 
 	/**
@@ -129,12 +130,20 @@ class Pagination extends Base_View {
 	}
 
 	/**
-	 * Determine whether to show the Jump to page HTML input.
+	 * Filter the pagination links to decide whether or not to show the "Jump to Page" input field.
 	 * 
-	 * @return bool
+	 * @param mixed $markup the pagination links from the filter.
+	 * 
+	 * @return mixed
 	 */
-	private function show_jump_to_page_input() {
-		return ( ! $this->has_infinite_scroll() && get_theme_mod( 'neve_enable_jump_to_pagination' ) ) ? true : false;
+	public function maybe_add_jump_to_page_input( $markup ) {
+
+		if ( get_theme_mod( 'neve_pagination_type', 'number' ) === 'jump-to-page' ) {
+			return $this->normalize_jump_to_input();    
+		}
+
+		return $markup;
+
 	}
 
 	/**
@@ -144,39 +153,33 @@ class Pagination extends Base_View {
 	 */
 	private function create_jump_to_html() {
 
-		// Value escaped once we confirm it's not empty, we never save this value to the DB.
-		$request = $_SERVER['REQUEST_URI'] ?? ''; //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		
-		if ( empty( $request ) ) {
+		global $wp, $wp_query;
+
+		if ( empty( $wp->request ) ) {
 			return;
 		}
 
-		$request = esc_attr( $request );
-
-		global $wp_query;
-
-		$search_query = esc_attr( get_search_query() );
-		$search_input = ! empty( $search_query ) ? "<input id='s' type='hidden' value='$search_query' name='s' />" : '';
+		$request = '/' . $wp->request;
 
 		$button_text = apply_filters( 'neve_pagination_jump_button_text', __( 'Go', 'neve' ) );
-		$button_text = esc_attr( $button_text );
 
-		$max_num_pages = absint( $wp_query->max_num_pages );
+		/**
+		 * Escaping functions require args to be strings.
+		 */
+		$max_num_pages = (string) absint( $wp_query->max_num_pages );
+		$current_page  = ! empty( get_query_var( 'paged' ) ) ? (string) get_query_var( 'paged' ) : '';
 
-		$current_page = ! empty( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : '';
+		$search_query = get_search_query();
+		$markup       = '';
 
-		$markup = <<<MARKUP
-		<div id="nv-pagination-jump">
-			<form action="$request" method="GET">
-				<a class="page-numbers">
-					<input id="nv-pagination-jump-page-num" placeholder="#" type="number" value="$current_page" max="$max_num_pages" name="paged" />
-					<input id="nv-pagination-jump-go" value="$button_text" type="submit" /> 
-					$search_input
-				</a>
-		   </form>
-		</div>
-MARKUP;
-
+		$markup .= '<div id="nv-pagination-jump">';
+		$markup .= '<form action="' . esc_url( $request ) . '" >';
+		$markup .= '<a class="page-numbers">';
+		$markup .= '<input id="nv-pagination-jump-page-num" placeholder="#" type="number" value="' . esc_attr( $current_page ) . '" max="' . esc_attr( $max_num_pages ) . '" name="paged" /> ';
+		$markup .= ! empty( $search_query ) ? '<input id="s" type="hidden" value="' . esc_attr( $search_query ) . '" name="s" />' : '';
+		$markup .= '<input id="nv-pagination-jump-go" value="' . esc_attr( $button_text ) . '" type="submit" />';
+		$markup .= '</a></form></div>';
+		
 		return $markup;
 
 	}
@@ -189,42 +192,40 @@ MARKUP;
 	private function normalize_jump_to_input() {
 
 		$links           = paginate_links( array( 'type' => 'array' ) );
-		$last_element    = \array_pop( $links );
+		$last_element    = array_pop( $links );
 		$jump_to_element = $this->create_jump_to_html();
 		
 		/**
 		 * If the next button is present, add the element just before it...
 		 * If it's not then add the jump to element as the last item instead.
 		 */
-		if ( \strpos( $last_element, '<a class="next page-numbers"' ) !== false ) {
-			\array_push( $links, $jump_to_element, $last_element ); 
+		if ( strpos( $last_element, '<a class="next page-numbers"' ) !== false ) {
+			array_push( $links, $jump_to_element, $last_element ); 
 		} else {
-			\array_push( $links, $last_element, $jump_to_element );
+			array_push( $links, $last_element, $jump_to_element );
 		}
 
-		\array_walk(
+		array_walk(
 			$links,
 			function( &$value ) {
 				$value = '<li>' . $value . '</li>';
 			} 
 		);
 
-		$links = '<ul class="page-numbers">' . \implode( '', $links ) . '</ul>';
+		$links = '<ul class="page-numbers">' . implode( '', $links ) . '</ul>';
 
 		return $links;
 	}
 
 	/**
 	 * Add extra allowed HTML tags to wp_kses()
-	 * 
-	 * Form tag is added automatically once input tag is present, see WP Docs for more information.
 	 *
-	 * @param array $tags Currently allowed HTML tags.
-	 * 
-	 * @return array $tags All allowed tags for wp_kses()
+	 * @return array $tags Extra tags needed by the Jump to Page markup that are stripped by wp_kses() by default.
 	 */
 	public function allow_extra_tags( $tags ) {
 
+		$tags['form']                 = array();
+		$tags['form']['action']       = array();
 		$tags['input']                = array();
 		$tags['input']['id']          = array();
 		$tags['input']['max']         = array();
@@ -258,11 +259,7 @@ MARKUP;
 			do_action( 'neve_before_pagination' );
 		}
 
-		if ( $this->show_jump_to_page_input() ) {
-			$links = $this->normalize_jump_to_input();
-		} else {
-			$links = paginate_links( array( 'type' => 'list' ) );
-		}
+		$links = paginate_links( array( 'type' => 'list' ) );
 
 		$links = str_replace(
 			array( '<a class="prev', '<a class="next' ),
@@ -278,7 +275,7 @@ MARKUP;
 		/**
 		 * Allow extra HTML tags for this feature.
 		 */
-		if ( $this->show_jump_to_page_input() ) {
+		if ( get_theme_mod( 'neve_pagination_type', 'number' ) === 'jump-to-page' ) {
 			add_filter( 'wp_kses_allowed_html', array( $this, 'allow_extra_tags' ) );
 		}
 
@@ -287,7 +284,7 @@ MARKUP;
 		/**
 		 * Remove extra HTML tags no longer needed.
 		 */
-		if ( $this->show_jump_to_page_input() ) {
+		if ( get_theme_mod( 'neve_pagination_type', 'number' ) === 'jump-to-page' ) {
 			remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_extra_tags' ) );
 		}
 

@@ -191,14 +191,16 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 }
 
 /**
- *  Escape HTML strings containing SVG.
+ * Escape an HTML string.
+ * 
+ * Pass optional additional tags to whitelist during the escaping.
  *
  * @param string $input the input string.
  * @param array  $additional_args additional allowed.
  *
  * @return string
  */
-function neve_custom_kses_escape( $input, $additional_args ) {
+function neve_custom_kses_escape( $input, $additional_args = array() ) {
 	$kses_defaults = wp_kses_allowed_html( 'post' );
 	$allowed_tags  = array_merge( $kses_defaults, $additional_args );
 

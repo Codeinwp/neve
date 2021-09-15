@@ -270,29 +270,14 @@ class Layout_Blog extends Base_Customizer {
 					'priority' => 53,
 					'type'     => 'select',
 					'choices'  => array(
-						'number'   => esc_html__( 'Number', 'neve' ),
-						'infinite' => esc_html__( 'Infinite Scroll', 'neve' ),
+						'number'       => esc_html__( 'Number', 'neve' ),
+						'jump-to-page' => esc_html__( 'Jump to Page', 'neve' ),
+						'infinite'     => esc_html__( 'Infinite Scroll', 'neve' ),
 					),
 				)
 			)
 		);
 
-		$this->add_control(
-			new Control(
-				'neve_enable_jump_to_pagination',
-				array(
-					'default'           => true,
-					'sanitize_callback' => 'neve_sanitize_checkbox',
-				),
-				array(
-					'type'            => 'neve_toggle_control',
-					'priority'        => 54,
-					'section'         => 'neve_blog_archive_layout',
-					'label'           => esc_html__( 'Enable Jump To Page', 'neve' ),
-					'active_callback' => array( $this, 'should_show_jump_to' ),
-				)
-			)
-		);
 
 		$order_default_components = array(
 			'thumbnail',
@@ -555,7 +540,7 @@ class Layout_Blog extends Base_Customizer {
 	 * @return string
 	 */
 	public function sanitize_pagination_type( $value ) {
-		$allowed_values = array( 'number', 'infinite' );
+		$allowed_values = array( 'number', 'infinite', 'jump-to-page' );
 		if ( ! in_array( $value, $allowed_values, true ) ) {
 			return 'number';
 		}
@@ -644,18 +629,6 @@ class Layout_Blog extends Base_Customizer {
 		return true;
 	}
 
-	/**
-	 * Callback to show Jump To pagination control.
-	 *
-	 * @return bool
-	 */
-	public function should_show_jump_to() {
-
-		$pagination_type = get_theme_mod( 'neve_pagination_type' );
-
-		return $pagination_type === 'number' ? true : false;
-
-	}
 
 	/**
 	 * Add typography shortcut.
