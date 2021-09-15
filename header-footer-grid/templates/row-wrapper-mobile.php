@@ -24,9 +24,9 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 		<div class="close-sidebar-panel navbar-toggle-wrapper">
 			<button type="button" class="navbar-toggle active" <?php echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					aria-label="
-				<?php
+					<?php
 					esc_html_e( 'Navigation Menu', 'neve' );
-				?>
+					?>
 				">
 				<span class="bars">
 					<span class="icon-bar"></span>
