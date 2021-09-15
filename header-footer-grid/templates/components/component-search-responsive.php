@@ -27,12 +27,15 @@ if ( ! empty( $component_styles_array ) ) {
 	$component_styles .= '" ';
 }
 $amp_state = '';
+$amp_class = '';
 if ( neve_is_amp() ) {
 	$amp_state = ' on="tap:AMP.setState({visible: !visible})" ';
+	$amp_class = '[class]="visible ? \'menu-item-nav-search active ' . esc_attr( $open ) . '\' : \'menu-item-nav-search ' . esc_attr( $open ) . '\'"';
 }
+
 ?>
 <div class="nv-search-icon-component" <?php echo wp_kses_post( $component_styles ); ?>>
-	<div [class]="visible ? 'menu-item-nav-search active <?php echo esc_attr( $open ); ?>' : 'menu-item-nav-search <?php echo esc_attr( $open ); ?>'" class="menu-item-nav-search <?php echo esc_attr( $open ); ?>">
+	<div <?php echo $amp_class; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, Already escaped. ?> class="menu-item-nav-search <?php echo esc_attr( $open ); ?>">
 		<?php neve_search_icon( true, true, 15, ! empty( $amp_state ) ); ?>
 		<div class="nv-nav-search" aria-label="search">
 			<div class="form-wrap <?php echo $open === 'canvas' ? 'container responsive-search' : ''; ?>">

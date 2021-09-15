@@ -97,9 +97,11 @@
 	@extend %show-dropdown;
 }
 
-//We need to use display none on elements that should not be tabbable in the viewport, otherise they will be considered when navigating with keyboard
+//We need to use display none on elements
+// that should not be tabbable in the viewport
+// otherise they will be considered when navigating with keyboard
 body:not(.is-menu-sidebar) .header-menu-sidebar-inner {
-  display:none;
+	display: none;
 }
 // === Inside Sidebar === //
 .header-menu-sidebar {
