@@ -164,7 +164,7 @@ class Pagination extends Base_View {
 		$button_text = apply_filters( 'neve_pagination_jump_button_text', __( 'Go', 'neve' ) );
 
 		/**
-		 * Escaping functions require args to be strings.
+		 * Escaping functions require args to be strings or PHPStan will throw error.
 		 */
 		$max_num_pages = (string) absint( $wp_query->max_num_pages );
 		$current_page  = ! empty( get_query_var( 'paged' ) ) ? (string) get_query_var( 'paged' ) : '';
