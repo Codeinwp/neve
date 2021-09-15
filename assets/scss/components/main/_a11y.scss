@@ -11,7 +11,7 @@
 	padding: $spacing-xs $spacing-sm;
 
 	&:focus {
-		z-index: 20;
+		z-index: 999999;
 		width: auto;
 		height: auto;
 		clip: auto;
