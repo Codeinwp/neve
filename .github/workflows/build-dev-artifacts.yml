@@ -196,5 +196,5 @@ jobs:
           headless: true
           parallel: true
           group: e2e-${{ matrix.specs }}
-          record: ${{ contains(github.event.pull_request.labels.*.name, 'debug') }}
+          record: true
           spec: cypress/integration/${{ matrix.specs }}/**/*,
