@@ -48,8 +48,7 @@ a {
 .widget_text,
 .nv-template .neve-main,
 .nv-comment-content {
-
-	a {
+	a:not([class*="button"] ) {
 		text-decoration: underline;
 	}
 }
