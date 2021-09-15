@@ -2,6 +2,7 @@
 import { initNavigation, repositionDropdowns } from '../frontend/navigation';
 import { removeClass, addClass } from '../utils.js';
 import { CSSVariablesHandler, addCSS, addTemplateCSS } from './css-var-handler';
+const { newSkin } = window.neveCustomizePreview;
 
 function handleResponsiveRadioButtons(args, nextValue) {
 	if (!args.additional) return false;
@@ -553,7 +554,7 @@ window.addEventListener('load', function () {
 
 		if (source.toLowerCase() === 'google') {
 			const linkNode = document.querySelector('#' + id),
-				fontValue = data.value.replace(' ', '+'),
+				fontValue = data.value.split(' ').join('+').split('"').join(''),
 				url =
 					'//fonts.googleapis.com/css?family=' +
 					fontValue +
@@ -716,7 +717,10 @@ window.addEventListener('load', function () {
 		},
 	};
 })(jQuery);
-jQuery.neveRangesPreview.init();
+
+if (!newSkin) {
+	jQuery.neveRangesPreview.init();
+}
 
 (function ($) {
 	$.neveLayoutPreview = {

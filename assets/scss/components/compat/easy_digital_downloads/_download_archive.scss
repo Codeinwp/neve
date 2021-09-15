@@ -1,53 +1,53 @@
-#neve-edd-download-archive-container{
-    margin: 100px auto;
+#neve-edd-download-archive-container {
+	margin: 100px auto;
 }
 
-#neve-edd-grid-container{
-    display: grid;
-    gap: 20px 10px;
-    grid-template-columns: repeat(3, auto);
-    margin-bottom: 50px;
+#neve-edd-grid-container {
+	display: grid;
+	gap: 20px 10px;
+	grid-template-columns: repeat(3, auto);
+	margin-bottom: 50px;
 }
 
-#neve-edd-grid-container p{
-    margin-bottom: 20px;
+#neve-edd-grid-container p {
+	margin-bottom: 20px;
 }
 
-.neve-edd-download-item{
-    margin-top: 40px;
+.neve-edd-download-item {
+	margin-top: 40px;
 }
 
-.neve-edd-download-title{
-    font-weight: bold;
+.neve-edd-download-title {
+	font-weight: 700;
 }
 
-.neve-edd-download-buy-btn a{
-    background: #2F5AAE;
-    border-radius: 3px;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px;
+.neve-edd-download-buy-btn a {
+	background: #2f5aae;
+	border-radius: 3px;
+	color: #fff;
+	text-decoration: none;
+	padding: 10px;
 }
 
-.neve-edd-download-buy-btn a:hover{
-    // color: unset;
-    opacity: 1;
-    color: #fff;
+.neve-edd-download-buy-btn a:hover {
+	// color: unset;
+	opacity: 1;
+	color: #fff;
 }
 
-#neve-edd-download-pagination{
-    margin-top: 150px;
+#neve-edd-download-pagination {
+	margin-top: 150px;
 }
 
-#neve-edd-download-pagination .page-numbers{
-    background: #F8F8F8;
-    color: #000;
-    margin-right: 20px;
-    padding: 20px;
+#neve-edd-download-pagination .page-numbers {
+	background: #f8f8f8;
+	color: #000;
+	margin-right: 20px;
+	padding: 20px;
 }
 
-#neve-edd-download-pagination .page-numbers.current{
-    background: #2F5AAE;
-    border-radius: 3px;
-    color: #fff;
+#neve-edd-download-pagination .page-numbers.current {
+	background: #2f5aae;
+	border-radius: 3px;
+	color: #fff;
 }

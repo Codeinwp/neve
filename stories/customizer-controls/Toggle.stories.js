@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from '@wordpress/element';
-import Toggle from '../../inc/customizer/controls/react/src/toggle/Toggle';
+import Toggle from '../../assets/apps/customizer-controls/src/toggle/Toggle';
 import { CustomizerDecorator } from '../components/decorators';
 
 export default {

@@ -2,6 +2,7 @@
 // const {
 // 	addMatchImageSnapshotPlugin,
 // } = require('cypress-image-snapshot/plugin');
+const htmlvalidate = require('cypress-html-validate/dist/plugin');
 
 module.exports = (on) => {
 	//	addMatchImageSnapshotPlugin(on, config);
@@ -19,5 +20,15 @@ module.exports = (on) => {
 const percyHealthCheck = require('@percy/cypress/task');
 
 module.exports = (on) => {
+	const config = {
+		extends: ['html-validate:document', 'html-validate:standard'],
+		rules: { 'require-sri': 'off' },
+	};
+
+	const options = {
+		include: ['.header', '.site-footer', '.blog-sidebar'],
+	};
+
 	on('task', percyHealthCheck);
+	htmlvalidate.install(on, config, options);
 };

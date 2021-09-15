@@ -39,7 +39,7 @@ module.exports = {
 		cwd: './',
 		dest: './',
 		ext,
-		src: ['style-main.css'],
+		src: ['style-main-new.css'],
 	},
 	styleLegacy: {
 		options,
@@ -76,8 +76,8 @@ module.exports = {
 	reactControls: {
 		options,
 		expand: true,
-		cwd: './inc/customizer/controls/react/bundle',
-		dest: './inc/customizer/controls/react/bundle',
+		cwd: './assets/apps/customizer-controls/build',
+		dest: './assets/apps/customizer-controls/build',
 		ext,
 		src: ['style-controls.css'],
 	},
@@ -108,8 +108,8 @@ module.exports = {
 	dashboard: {
 		options,
 		expand: true,
-		cwd: './dashboard/build/',
-		dest: './dashboard/build/',
+		cwd: './assets/apps/dashboard/build/',
+		dest: './assets/apps/dashboard/build/',
 		ext,
 		src: ['style-dashboard.css'],
 	},

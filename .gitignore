@@ -15,9 +15,8 @@ yarn-error.log
 assets/js/build/*
 assets/css/*
 style-main*
-dashboard/build/*
-inc/customizer/controls/react/bundle/*
-inc/admin/metabox/build
+style-main-new*
+assets/apps/*/build/*
 languages/neve.pot
 /e2e-tests/cypress/screenshots/
 logs.log

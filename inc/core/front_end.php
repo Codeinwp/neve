@@ -75,6 +75,9 @@ class Front_End {
 
 		add_image_size( 'neve-blog', 930, 620, true );
 		add_filter( 'wp_nav_menu_args', array( $this, 'nav_walker' ), 1001 );
+		if ( neve_is_new_skin() ) {
+			add_filter( 'theme_mod_background_color', '__return_empty_string' );
+		}
 		$this->add_woo_support();
 	}
 
@@ -231,7 +234,6 @@ class Front_End {
 			'youtu.be',
 			'cloudup.com',
 			'dailymotion.com',
-			'collegehumor.com',
 			'ted.com',
 			'vimeo.com',
 		];
@@ -297,14 +299,14 @@ class Front_End {
 			$style_path = 'css/easy-digital-downloads';
 
 			wp_register_style( 'neve-easy-digital-downloads', NEVE_ASSETS_URL . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
-			// TODO RTL styles
-			// wp_style_add_data( 'neve-woocommerce', 'rtl', 'replace' );
+			// TODO-UV RTL styles
+			// wp_style_add_data( 'neve-easy-digital-downloads', 'rtl', 'replace' );
 			wp_style_add_data( 'neve-easy-digital-downloads', 'suffix', '.min' );
 			wp_enqueue_style( 'neve-easy-digital-downloads' );
 
 		}
 
-		$style_path = neve_is_new_skin() ? '/style-main' : '/assets/css/style-legacy';
+		$style_path = neve_is_new_skin() ? '/style-main-new' : '/assets/css/style-legacy';
 
 		wp_register_style( 'neve-style', get_template_directory_uri() . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 		wp_style_add_data( 'neve-style', 'rtl', 'replace' );

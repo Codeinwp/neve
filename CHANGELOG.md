@@ -1,3 +1,76 @@
+##### [Version 3.0.4](https://github.com/Codeinwp/neve/compare/v3.0.3...v3.0.4) (2021-09-15)
+
+- fix customizer loading when elementor pro is active
+- fix exclusive products category restriction
+- fix list indent overrides some blocks that contain ul/ol
+- improve links appear within a larger body of block-level content, they must be clearly distinguishable from surrounding content
+- improve keyboard navigation, allow focus trap inside search/mobile sidebar
+- allow overwriting of Woocommerce search form and default search form
+- Fix footer being hidden after we add one component
+- Fix font family saving issue on the Header Nav widget
+
+##### [Version 3.0.3](https://github.com/Codeinwp/neve/compare/v3.0.2...v3.0.3) (2021-09-06)
+
+- [Fix] Cart icon component is vertically misaligned when it has a label
+- [Fix] Fix notice with legacy values on padding for buttons when values are empty
+- [Fix] Letterbox effect on video embeds
+- [Fix] HTML structure for menu icon and consistency of aria-label with screen reader text
+- [Fix] Search on other languages when PolyLang is activated
+- [Fix] Customizer live refresh selector for header sidebar text color
+- [Fix] Post tags spacing when there are a lot of tags
+- [Fix] Mega menu container live refresh & size issues on old skin
+- [Fix] Typography style specificity inside the editor was causing some blocks to act weird
+- [Fix] Block patterns provided the theme provides had broken styles
+- [Fix] Drop form fields & labels spacing controls
+- [Fix] Design on password-protected posts
+- Removes mobile dropdown outline on tap
+- Update Google Fonts
+
+##### [Version 3.0.2](https://github.com/Codeinwp/neve/compare/v3.0.1...v3.0.2) (2021-08-23)
+
+- [Fix] issue with some hosting environments not loading JS files that contained ~ in the file name
+- [Fix] items in customizer panel don't adjust when changing presets 
+- [Fix] adds backspacing for Woocommerce standard pages and fieldset
+- [Fix] solve an issue with multi worded google fonts names
+- [Fix] blog custom layout inside the loop with masonry
+- [Fix] div tag isn't closed for products on the shop page
+- [Fix] Product category description displayed above the breadcrumbs and the "sort by" dropdown instead of below
+- [Fix] Alignment classes still apply on the new skin for the primary menu when they shouldn't 
+- [Fix] WooCommerce account login form appearance
+- [Fix] Footer One component not working properly in WordPress core version 5.7.2
+- [Fix] Autoscroll in customizer when opening Header/Footer builder
+- [Fix] Comment reply HTML markup
+- [Feat] Adds AMP infinite scroll
+- [Feat] Adds section for Neve troubleshooting info
+- [Feat] Enhanced repeater control for Customizer settings
+
+##### [Version 3.0.1](https://github.com/Codeinwp/neve/compare/v3.0.0...v3.0.1) (2021-08-06)
+
+- [Fix] bring back custom-background theme support
+- [Fix] input type reset on new skin
+- [Fix] fatal error because of non-existent class property
+- [Fix] footer row display when using old skin
+- [Fix] single product top wrap priority
+- [Fix] builder breaking in specific edge-case when using the pro version
+
+#### [Version 3.0.0](https://github.com/Codeinwp/neve/compare/v2.11.6...v3.0.0) (2021-08-04)
+
+- [Feat] New Header & Footer builder experience
+- [Feat] New default skin for frontend with better performance and page weight - [Learn more](https://docs.themeisle.com/article/1388-neve-3-0-core-design)
+- [Feat] Color palette switcher header component (dark mode toggle) - [Learn more](https://docs.themeisle.com/article/1358-header-palette-switch-dark-light-theme)
+- [Feat] New single post layout and customization options
+- [Fix] Improve accessibility for the search form
+- [Fix] Scripts appearing next to single product buttons
+- [Fix] Compatibility issue with the PW WooCommerce Gift Cards plugin 
+- [Fix] Compatibility issue with the WooCommerce Appointments plugin
+- [Fix] Wishlist button looking distorted on the product page with sticky add to cart enabled
+- [Fix] magic tag for {meta_author} not rendering the author avatar
+- [Fix] Modified the check for the sidebar so that it does not conflict with the individual post settings
+- [Fix] Disable Neve Styles on Custom Single Product and Products Archive Elementor Templates
+- [Fix] Compatibility for Gutenberg widgets editor inside the customizer
+- Add ability to self-heal theme mods in case of corrupted value
+- Remove Otter compatibility for Gutenberg Templates
+
 ##### [Version 2.11.6](https://github.com/Codeinwp/neve/compare/v2.11.5...v2.11.6) (2021-06-01)
 
 - [Fix] wishlist button on single product pages

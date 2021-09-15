@@ -9,6 +9,7 @@ namespace Neve\Admin\Metabox;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Customizer\Defaults\Layout;
 use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Options\Layout_Single_Post;
 use Neve\Views\Post_Layout;
@@ -20,6 +21,7 @@ use Neve\Views\Post_Layout;
  */
 final class Manager {
 	use Single_Post;
+	use Layout;
 
 	/**
 	 * Control instances.
@@ -115,10 +117,6 @@ final class Manager {
 	 * Register meta box to control layout on pages and posts.
 	 */
 	public function add() {
-		if ( $this->should_add_meta() === false ) {
-			return;
-		}
-
 		$post_type         = 'Neve';
 		$post_type_from_db = get_post_type();
 		if ( $post_type_from_db ) {
@@ -198,26 +196,6 @@ final class Manager {
 			'<strong>SHIFT + ALT + S</strong> ' . esc_html__( 'or', 'neve' ) . ' <strong>control + option + S</strong>'
 		);
 		echo '</div>';
-	}
-
-	/**
-	 * Decide if the metabox should be visible.
-	 *
-	 * @return bool
-	 */
-	public function should_add_meta() {
-		global $post;
-
-		if ( empty( $post ) ) {
-			return false;
-		}
-
-		$restricted_pages_id = array();
-		if ( in_array( $post->ID, $restricted_pages_id, true ) ) {
-			return false;
-		}
-
-		return true;
 	}
 
 	/**
@@ -358,11 +336,11 @@ final class Manager {
 			return false;
 		}
 
-		$dependencies = ( include get_template_directory() . '/inc/admin/metabox/build/index.asset.php' );
+		$dependencies = ( include get_template_directory() . '/assets/apps/metabox/build/index.asset.php' );
 
 		wp_enqueue_script(
 			'neve-meta-sidebar',
-			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.js',
+			trailingslashit( get_template_directory_uri() ) . 'assets/apps/metabox/build/index.js',
 			$dependencies['dependencies'],
 			$dependencies['version'],
 			true
@@ -375,9 +353,14 @@ final class Manager {
 		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
 		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
 
-		$advanced_layout = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS );
-		$single_width    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_CONTENT_WIDTH, 70 ) : Mods::get( Config::MODS_OTHERS_CONTENT_WIDTH, 70 );
-		$content_width   = $advanced_layout ? $single_width : Mods::get( Config::MODS_SITEWIDE_CONTENT_WIDTH, 70 );
+		$advanced_layout = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, neve_is_new_skin() );
+
+		$single_width  = $post_type === 'post' ?
+			Mods::get( Config::MODS_SINGLE_CONTENT_WIDTH, $this->sidebar_layout_width_default( Config::MODS_SINGLE_CONTENT_WIDTH ) ) :
+			Mods::get( Config::MODS_OTHERS_CONTENT_WIDTH, $this->sidebar_layout_width_default( Config::MODS_OTHERS_CONTENT_WIDTH ) );
+		$content_width = $advanced_layout ?
+			$single_width :
+			Mods::get( Config::MODS_SITEWIDE_CONTENT_WIDTH, $this->sidebar_layout_width_default( Config::MODS_SITEWIDE_CONTENT_WIDTH ) );
 
 		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
 
@@ -408,7 +391,7 @@ final class Manager {
 
 		wp_enqueue_style(
 			'neve-meta-sidebar-css', // Handle.
-			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.css',
+			trailingslashit( get_template_directory_uri() ) . 'assets/apps/metabox/build/index.css',
 			array( 'wp-edit-blocks' ),
 			NEVE_VERSION
 		);
@@ -459,6 +442,10 @@ final class Manager {
 	 * @param \WP_Post $post Post object.
 	 */
 	public function set_page_width( $post_id, $post ) {
+		if ( neve_is_new_skin() ) {
+			return;
+		}
+
 		$parent_id = wp_is_post_revision( $post_id );
 		if ( $parent_id ) {
 			$post_id = $parent_id;
@@ -469,7 +456,10 @@ final class Manager {
 			return;
 		}
 
-		$checkout_was_updated = get_post_meta( $post_id, 'neve_checkout_updated', 'no' );
+		$checkout_was_updated = get_post_meta( $post_id, 'neve_checkout_updated', true );
+		// assign default value
+		$checkout_was_updated = ( $checkout_was_updated !== '' ) ? $checkout_was_updated : 'no';
+
 		if ( Main::is_new_page() || ( Main::is_checkout() && $checkout_was_updated === 'no' ) ) {
 			update_post_meta( $post_id, 'neve_meta_sidebar', 'full-width' );
 			update_post_meta( $post_id, 'neve_meta_enable_content_width', 'on' );

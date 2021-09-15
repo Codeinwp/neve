@@ -32,7 +32,7 @@ module.exports = {
 				'assets/css/mega-menu-legacy-rtl.css',
 			],
 
-			'style-main-rtl.min.css': ['style-main-rtl.css'],
+			'style-main-new-rtl.min.css': ['style-main-new-rtl.css'],
 			'assets/css/style-legacy-rtl.min.css': [
 				'assets/css/style-legacy-rtl.css',
 			],
@@ -42,7 +42,7 @@ module.exports = {
 			'header-footer-grid/assets/css/style.min.css': [
 				'header-footer-grid/assets/css/style.css',
 			],
-			'style-main.min.css': ['style-main.css'],
+			'style-main-new.min.css': ['style-main-new.css'],
 			'assets/css/style-legacy.min.css': ['assets/css/style-legacy.css'],
 			'assets/css/customizer-preview.min.css': [
 				'assets/css/customizer-preview.css',

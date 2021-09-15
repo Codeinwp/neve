@@ -41,7 +41,8 @@ class Header extends Base_View {
 		wp_add_inline_style(
 			'neve-style',
 			'.header-menu-sidebar-inner li.menu-item-nav-search { display: none; }
-		[data-row-id] .row { display: flex !important; align-items: center; flex-wrap: unset;}'
+		[data-row-id] .row { display: flex !important; align-items: center; flex-wrap: unset;}
+		@media (max-width: 960px) { .footer--row .row { flex-direction: column; } }'
 		);
 	}
 
@@ -129,7 +130,7 @@ class Header extends Base_View {
 
 		$id = 'nv-menu-item-search-' . self::$primary_nav_instance_no;
 
-		$search     .= '<' . esc_attr( $tag ) . ' class="' . esc_attr( $class ) . '" id="' . esc_attr( $id ) . '" tabindex="0" aria-label="search">';
+		$search     .= '<' . esc_attr( $tag ) . ' class="' . esc_attr( $class ) . '" id="' . esc_attr( $id ) . '"  aria-label="search">';
 		$extra_attrs = apply_filters( 'neve_search_menu_item_filter', '', self::$primary_nav_instance_no );
 		$search     .= '<a href="#" class="nv-nav-search-icon" ' . $extra_attrs . '>' . neve_search_icon() . '</a>';
 		$search     .= '<div class="nv-nav-search">';
@@ -138,7 +139,11 @@ class Header extends Base_View {
 			$search .= '<a class="button button-secondary close-responsive-search">' . __( 'Close', 'neve' ) . '</a>';
 			$search .= '</div>';
 		}
-		$search .= get_search_form( false );
+		if ( version_compare( get_bloginfo( 'version' ), '5.2.0', '>=' ) ) {
+			$search .= get_search_form( array( 'echo' => false ) );
+		} else {
+			$search .= get_search_form( false ); // @phpstan-ignore-line
+		}
 		$search .= '</div>';
 		$search .= '</' . esc_attr( $tag ) . '>';
 

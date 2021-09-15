@@ -11,6 +11,7 @@
 namespace Neve\Customizer\Options;
 
 use Neve\Customizer\Base_Customizer;
+use Neve\Customizer\Defaults\Layout;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
 
@@ -20,6 +21,7 @@ use Neve\Customizer\Types\Section;
  * @package Neve\Customizer\Options
  */
 class Layout_Blog extends Base_Customizer {
+	use Layout;
 	/**
 	 * Function that should be extended to add customizer controls.
 	 *
@@ -135,18 +137,14 @@ class Layout_Blog extends Base_Customizer {
 			)
 		);
 
+		$grid_layout_default = neve_is_new_skin() ? '{"desktop":3,"tablet":2,"mobile":1}' : '{"desktop":1,"tablet":1,"mobile":1}';
+
 		$this->add_control(
 			new Control(
 				'neve_grid_layout',
 				array(
 					'sanitize_callback' => 'neve_sanitize_range_value',
-					'default'           => wp_json_encode(
-						array(
-							'desktop' => 1,
-							'tablet'  => 1,
-							'mobile'  => 1,
-						)
-					),
+					'default'           => $grid_layout_default,
 				),
 				array(
 					'label'           => esc_html__( 'Columns', 'neve' ),
@@ -158,11 +156,7 @@ class Layout_Blog extends Base_Customizer {
 						'step'       => 1,
 						'min'        => 1,
 						'max'        => 4,
-						'defaultVal' => [
-							'mobile'  => 1,
-							'tablet'  => 1,
-							'desktop' => 1,
-						],
+						'defaultVal' => json_decode( $grid_layout_default, true ),
 					],
 					'priority'        => 11,
 					'active_callback' => array( $this, 'is_column_layout' ),
@@ -525,7 +519,7 @@ class Layout_Blog extends Base_Customizer {
 	 *
 	 * @param string $value value from the control.
 	 *
-	 * @return bool
+	 * @return string
 	 */
 	public function sanitize_blog_layout( $value ) {
 		$allowed_values = array( 'default', 'covers', 'grid' );
@@ -541,7 +535,7 @@ class Layout_Blog extends Base_Customizer {
 	 *
 	 * @param string $value value from the control.
 	 *
-	 * @return bool
+	 * @return string
 	 */
 	public function sanitize_pagination_type( $value ) {
 		$allowed_values = array( 'number', 'infinite' );
@@ -618,7 +612,7 @@ class Layout_Blog extends Base_Customizer {
 			return false;
 		}
 
-		$columns = json_decode( get_theme_mod( 'neve_grid_layout', '{"desktop":1,"tablet":1,"mobile":1}' ), true );
+		$columns = json_decode( get_theme_mod( 'neve_grid_layout', $this->grid_columns_default() ), true );
 		$columns = array_filter(
 			array_values( $columns ),
 			function ( $value ) {

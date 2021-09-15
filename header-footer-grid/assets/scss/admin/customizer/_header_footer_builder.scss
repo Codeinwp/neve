@@ -358,6 +358,10 @@ $cb_padding: 20px;
 					right: 26px;
 				}
 
+				.hfg--cb-item-admin-setting {
+					right: 26px;
+				}
+
 				&.ui-draggable-handle {
 					width: 100% !important;
 					min-width: 100%;
@@ -609,6 +613,32 @@ $cb_padding: 20px;
 			color: $builder_active_color;
 		}
 	}
+
+	.hfg--cb-item-admin-setting {
+		background: inherit;
+		top: 50%;
+		right: 22px;
+		@include rtl() {
+			right: auto;
+			left: 22px;
+		}
+		padding: 5px 3px;
+		transform: translateY(-50%);
+		cursor: pointer;
+
+		&:before {
+			content: "\f108";
+			font-size: 15px;
+		}
+
+		&:hover {
+			color: $builder_active_color;
+		}
+	}
+
+  .hfg--cb-item-admin-setting + .hfg--cb-item-setting {
+	right: 42px;
+  }
 }
 
 $gridstack-columns: 12 !default;

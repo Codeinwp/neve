@@ -1,53 +1,64 @@
 // === Separators === //
 .wp-block {
-  .wp-block-separator {
-	max-width: 100% !important;
-  }
+
+	.wp-block-separator {
+		max-width: 100% !important;
+	}
 }
 
 .wp-block-separator {
-  height: unset !important;
-  border-top: 2px solid;
-  border-bottom: 0;
-  opacity: 1;
+	width: unset !important;
+	height: unset !important;
+	border-top: 2px solid;
+	border-bottom: 0;
+	opacity: 1;
 }
 
 @import "../main/separators";
 
 // === Buttons === //
 .wp-block-button {
-  .wp-block-button__link {
-	@extend %nv-button;
-	@extend %nv-button-primary-no-colors;
 
-
-	&:hover {
-	  opacity: .9;
-	}
-  }
-
-  &.is-style-outline,
-  &.is-style-secondary {
 	.wp-block-button__link {
-	  @extend %nv-button-secondary;
 
-	  &:hover {
-		@extend %nv-button-secondary-hover;
-	  }
+		@extend %nv-button;
+		@extend %nv-button-primary-no-colors;
+
+
+		&:hover {
+			opacity: 0.9;
+		}
 	}
-  }
 
-  &.is-style-primary {
-	.wp-block-button__link {
-	  @extend %nv-button-primary;
+	&.is-style-outline,
+	&.is-style-secondary {
 
-	  &:hover {
-		@extend %nv-button-primary-hover;
-	  }
+		.wp-block-button__link {
+
+			@extend %nv-button-secondary;
+
+			&:hover {
+
+				@extend %nv-button-secondary-hover;
+			}
+		}
 	}
-  }
+
+	&.is-style-primary {
+
+		.wp-block-button__link {
+
+			@extend %nv-button-primary;
+
+			&:hover {
+
+				@extend %nv-button-primary-hover;
+			}
+		}
+	}
 }
 
 .wp-block-button__link.add_to_cart_button {
-  @extend %nv-button-primary;
+
+	@extend %nv-button-primary;
 }

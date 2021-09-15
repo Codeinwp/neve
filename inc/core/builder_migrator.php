@@ -19,7 +19,7 @@ class Builder_Migrator {
 	/**
 	 * Known builders.
 	 *
-	 * @var string[]
+	 * @var array
 	 */
 	private $builders = [
 		'header'      => [ 'top', 'main', 'bottom', 'sidebar' ],
@@ -30,21 +30,21 @@ class Builder_Migrator {
 	/**
 	 * Current device migrating.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	private static $current_device = null;
 
 	/**
 	 * Current builder migrating.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	private static $current_builder = null;
 
 	/**
 	 * Current Row Migrating
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	private static $current_row = null;
 

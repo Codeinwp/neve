@@ -93,6 +93,7 @@ add_action( 'init', 'neve_hfg_migrate_skin_to_bg_color' );
  * Function to self heal theme mods option, in case of corrupted value.
  */
 function neve_self_heal_mods() {
+	/** @var mixed $all_mods */
 	$all_mods = get_theme_mods();
 	if ( $all_mods === false ) {
 		return;

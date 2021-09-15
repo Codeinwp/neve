@@ -319,6 +319,9 @@ class Customizer {
 					<div class="hfg--sidebar-visible icon"><i class="dashicons dashicons-{{data.icon}}"></i></div>
 					<span class="hfg--cb-item-name" data-section="{{ data.section }}">{{ data.name }}</span>
 					<span class="hfg--cb-item-remove hfg-cb-icon"></span>
+					<# if(data.section.indexOf('neve_') !== -1) { #>
+					<span class="hfg--cb-item-admin-setting hfg-cb-icon" data-widget="{{ data.section }}"></span>
+					<# } #>
 					<span class="hfg--cb-item-setting hfg-cb-icon" data-section="{{ data.section }}"></span>
 				</div>
 			</div>

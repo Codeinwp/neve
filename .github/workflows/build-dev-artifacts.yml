@@ -44,9 +44,6 @@ jobs:
         run: composer install --no-dev --prefer-dist --no-progress --no-suggest
       - name: Install yarn deps
         run: yarn install --frozen-lockfile
-      - name: Install Cypress yarn
-        working-directory: ./e2e-tests
-        run: yarn install --frozen-lockfile
       - name: Build files
         run: yarn run build
       - name: Create zip
@@ -127,7 +124,7 @@ jobs:
     name: E2E for ${{ matrix.specs }} on ${{ matrix.envs }}
     needs: dev-zip
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         include:
           ## Amp specs needs just one machine
@@ -150,14 +147,8 @@ jobs:
           - machines: 1
             specs: "editor/classic"
             envs: "classic-editor"
-          - machines: 2
-            specs: "editor/classic"
-            envs: "classic-editor"
           ## 2 machines for modern editor (Gutenberg)
           - machines: 1
-            specs: "editor/modern"
-            envs: "default"
-          - machines: 2
             specs: "editor/modern"
             envs: "default"
           ## 6 machines for customizer tests
@@ -188,18 +179,13 @@ jobs:
       ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        id: yarn-and-build-cache
-        with:
-          path: |
-            ~/.cache/Cypress
-            node_modules
-            ./e2e-tests/node_modules
-          key: ${{ runner.os }}-node_modules-build-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node_modules-build-
       - name: Install ${{ matrix.envs }} env for ${{ matrix.specs }} specs
         run: bash ./bin/envs/init.sh ${{ matrix.envs }} latest no "$ZIP_URL"
+      - uses: danielchabr/pr-labels-checker@master
+        id: check_debug
+        with:
+          hasSome: debug
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
       - name: Run ${{ matrix.specs }} Cypress tests
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -211,9 +197,8 @@ jobs:
           working-directory: ./e2e-tests
           env: host=localhost,port=8080
           browser: chrome
-          install: ${{ ! steps.yarn-and-build-cache.outputs.cache-hit }}
           headless: true
           parallel: true
           group: e2e-${{ matrix.specs }}
-          record: true
+          record: ${{ steps.check_debug.outputs.passed  }}
           spec: cypress/integration/${{ matrix.specs }}/**/*,

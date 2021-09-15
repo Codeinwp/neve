@@ -1,4 +1,4 @@
-import SingleSizingInput from '../../inc/customizer/controls/react/src/common/SingleSizingInput';
+import SingleSizingInput from '../../assets/apps/customizer-controls/src/common/SingleSizingInput';
 import {
 	WhiteBackgroundDecorator,
 	CustomizerDecorator,

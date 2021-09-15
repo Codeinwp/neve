@@ -101,7 +101,7 @@ abstract class Control_Base {
 	/**
 	 * Render control label.
 	 *
-	 * @return string
+	 * @return void
 	 */
 	protected function render_label() {
 		$label = array_key_exists( 'label', $this->settings ) ? $this->settings['label'] : '';
@@ -129,7 +129,7 @@ abstract class Control_Base {
 	/**
 	 * Save control data.
 	 *
-	 * @param string $post_id Post id.
+	 * @param int $post_id Post id.
 	 *
 	 * @return void
 	 */
@@ -149,7 +149,7 @@ abstract class Control_Base {
 		if ( isset( $_POST[ $this->id ] ) ) {
 			$value = $this->sanitize_value( wp_unslash( $_POST[ $this->id ] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			// Remove post meta on default.
-			if ( $value === $this->settings['default'] ) {
+			if ( $value === $this->settings['default'] && $this->id !== 'neve_meta_content_width' ) {
 				delete_post_meta( $post_id, $this->id );
 
 				return;

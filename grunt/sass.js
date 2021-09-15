@@ -12,7 +12,7 @@ module.exports = {
 		},
 		files: [
 			{
-				'style-main.css': 'assets/scss/style.scss',
+				'style-main-new.css': 'assets/scss/style.scss',
 				'assets/css/style-legacy.css': 'assets/scss/style-legacy.scss',
 				'assets/css/customizer-preview.css':
 					'assets/scss/customizer-preview.scss',

@@ -141,6 +141,142 @@ export const MULTISELECT_CHOICES = {
 	page: 'Pages',
 	post: 'Posts',
 };
+export const SOCIAL_ICONS_DEFAULT = [
+	{
+		visibility: 'yes',
+		title: 'Facebook',
+		icon: 'facebook',
+		url: '#',
+		icon_color: '#fff',
+		background_color: '#3b5998'
+	},
+	{
+		visibility: 'yes',
+		title: 'Twitter',
+		icon: 'twitter',
+		url: '#',
+		icon_color: '#fff',
+		background_color: '#1da1f2'
+	},
+	{
+		visibility: 'yes',
+		title: 'Youtube',
+		icon: 'youtube-play',
+		url: '#',
+		icon_color: '#fff',
+		background_color: '#cd201f'
+	},
+	{
+		visibility: 'yes',
+		title: 'Instagram',
+		icon: 'instagram',
+		url: '#',
+		icon_color: '#686868',
+		background_color: '#e1306c'
+	}
+]
+
+export const FIELDS = {
+	title: {
+		type: 'text',
+		label: 'Title'
+	},
+	icon: {
+		type: 'icon',
+		label: 'Icon'
+	},
+	url: {
+		type: 'text',
+		label: 'Link'
+	},
+	icon_color: {
+		type: 'color',
+		label: 'Icon Color'
+	},
+	background_color: {
+		type: 'color',
+		label: 'Background Color'
+	},
+	item_type: {
+		type: 'select',
+		label: 'Type',
+		choices: {
+			text: 'Text',
+			email: 'Email',
+			phone: 'Phone',
+		}
+	},
+	social_network: {
+		type: 'select',
+		label: 'Social Network',
+		choices: {
+			facebook: 'Facebook',
+			twitter: 'Twitter',
+			email: 'Email',
+			pinterest: 'Pinterest',
+			linkedin: 'LinkedIn',
+			tumblr: 'Tumblr',
+			reddit: 'Reddit',
+			whatsapp: 'WhatsApp',
+			sms: 'SMS',
+			vk: 'VKontakte'
+		}
+	},
+	display_desktop: {
+		type: 'checkbox',
+		label: 'Show on Desktop'
+	},
+	display_mobile: {
+		type: 'checkbox',
+		label: 'Show on Mobile'
+	}
+}
+
+export const CONTACT_DEFAULT = [
+	{
+		title: 'email@example.com',
+		icon: 'envelope',
+		item_type: 'email',
+		visibility: 'yes'
+	},
+	{
+		title: '202-555-0191',
+		icon: 'phone',
+		item_type: 'phone',
+		visibility: 'yes'
+	},
+	{
+		title: '499 Pirate Island Plaza',
+		icon: 'map-marker',
+		item_type: 'text',
+		visibility: 'yes'
+	}
+]
+
+export const SHARING_ICONS_DEFAULT = [
+	{
+		visibility: 'yes',
+		title: 'Facebook',
+		social_network: 'facebook',
+		display_desktop: true,
+		display_mobile: true
+	},
+	{
+		visibility: 'yes',
+		title: 'Twitter',
+		social_network: 'twitter',
+		display_desktop: true,
+		display_mobile: true
+	},
+	{
+		visibility: 'yes',
+		title: 'Email',
+		social_network: 'email',
+		display_desktop: true,
+		display_mobile: true
+	}
+]
+
 export const ORDERING_DEFAULT = ['title', 'thumbnail'];
 export const ORDERING_NO_TOGGLES = [
 	'title',
