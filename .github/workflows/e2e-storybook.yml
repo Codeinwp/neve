@@ -5,7 +5,12 @@ on:
     types: [opened, synchronize, ready_for_review]
     branches-ignore:
       - 'update_dependencies'
-
+    paths:
+      - '.storybook/**'
+      - 'e2e-tests/**'
+      - '.github/**'
+      - 'package.json'
+      - 'stories/**'
 jobs:
   e2e-storybook:
     strategy:
