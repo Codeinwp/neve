@@ -44,6 +44,16 @@ a {
 	}
 }
 
+.entry-content,
+.widget_text,
+.nv-template .neve-main,
+.nv-comment-content {
+
+	a {
+		text-decoration: underline;
+	}
+}
+
 ins {
 	text-decoration: none;
 }

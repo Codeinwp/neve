@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 import { tns } from 'tiny-slider/src/tiny-slider';
-import { neveEach } from '../utils';
 
 /**
  * Init shop.
@@ -29,8 +28,8 @@ function handleShopSidebar() {
 		return;
 	}
 	const html = document.querySelector('html');
-	const toggles = document.querySelectorAll('.nv-sidebar-toggle');
-	neveEach(toggles, (toggle) => {
+	const toggles = document.querySelectorAll('.nv-sidebar-toggle') || [];
+	toggles.forEach((toggle) => {
 		toggle.addEventListener('click', function (e) {
 			e.preventDefault();
 			sidebar.classList.toggle('sidebar-open');
