@@ -19,6 +19,20 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.0.4](https://github.com/Codeinwp/neve/compare/v3.0.3...v3.0.4) (2021-09-15)
+
+- fix customizer loading when elementor pro is active
+- fix exclusive products category restriction
+- fix list indent overrides some blocks that contain ul/ol
+- improve links appear within a larger body of block-level content, they must be clearly distinguishable from surrounding content
+- improve keyboard navigation, allow focus trap inside search/mobile sidebar
+- allow overwriting of Woocommerce search form and default search form
+- Fix footer being hidden after we add one component
+- Fix font family saving issue on the Header Nav widget
+
+
+
+
 ##### [Version 3.0.3](https://github.com/Codeinwp/neve/compare/v3.0.2...v3.0.3) (2021-09-06)
 
 - [Fix] Cart icon component is vertically misaligned when it has a label
