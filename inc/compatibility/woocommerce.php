@@ -197,7 +197,7 @@ class Woocommerce {
 			add_action(
 				'woocommerce_checkout_before_order_review_heading',
 				function () {
-					echo '<div>';
+					echo '<div class="nv-order-review">';
 				}
 			);
 			add_action( 'woocommerce_checkout_after_order_review', [ $this, 'close_div' ] );

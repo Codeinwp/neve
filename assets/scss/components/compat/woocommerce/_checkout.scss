@@ -36,6 +36,10 @@
 	form.checkout {
 		display: grid;
 		grid-template-columns: 1fr;
+
+		> *:not(#customer_details):not(.nv-order-review) {
+			grid-column: span 2;
+		}
 	}
 
 	.woocommerce-NoticeGroup {
