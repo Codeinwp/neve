@@ -19,9 +19,10 @@
     "wptt/webfont-loader": "^1.1"
   },
   "autoload": {
-	"psr-4": {
-	  "HFG\\": "header-footer-grid/"
-	},
+        "classmap": [
+	  "inc/",
+	  "header-footer-grid/"
+	],
 	"files": [
 	  "vendor/codeinwp/themeisle-sdk/load.php"
 	]
