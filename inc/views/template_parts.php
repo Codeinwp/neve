@@ -162,15 +162,12 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_title() {
-		$tag = neve_is_new_skin() ? 'h3' : 'h2';
+		$markup = '<h2 class="blog-entry-title entry-title">';
 
-		$markup = '';
-
-		$markup .= '<' . $tag . ' class="blog-entry-title entry-title">';
 		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">';
 		$markup .= get_the_title();
 		$markup .= '</a>';
-		$markup .= '</' . $tag . '>';
+		$markup .= '</h2>';
 
 		return $markup;
 	}
