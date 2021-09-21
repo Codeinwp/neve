@@ -124,8 +124,8 @@ class Main {
 			return;
 		}
 
-		$page_title = $theme['name'] . ' ' . __( 'Options', 'neve' ) . ' ';
-		$menu_name  = $theme['name'] . ' ' . __( 'Options', 'neve' ) . ' ';
+		$page_title = sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme['name'] ) );
+		$menu_name  = sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme['name'] ) );
 
 		$theme_page = ! empty( $theme['template'] ) ? $theme['template'] . '-welcome' : $theme['slug'] . '-welcome';
 		add_theme_page( $page_title, $menu_name, 'activate_plugins', $theme_page, [ $this, 'render' ] );
