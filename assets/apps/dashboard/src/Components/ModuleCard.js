@@ -17,6 +17,7 @@ import { withSelect, withDispatch } from '@wordpress/data';
 import { Fragment, useState } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
+import MultiSelect from '../../../customizer-controls/src/multiselect/MultiSelect';
 
 const ModuleCard = ({
 	slug,
@@ -53,6 +54,7 @@ const ModuleCard = ({
 									documentation: documentationOption,
 									choices,
 								} = optionGroup[optionSlug];
+								const [items, setItems] = useState(optionGroup[optionSlug].default);
 								return (
 									<Fragment key={indexGroup}>
 										{'text' === type && (
@@ -76,6 +78,15 @@ const ModuleCard = ({
 												label={labelGroup}
 												slug={optionSlug}
 												choices={choices}
+											/>
+										)}
+										{'multi_select' === type && (
+											<MultiSelect
+												label={labelGroup}
+												slug={optionSlug}
+												choices={choices}
+												onChange={setItems}
+												currentValue={items}
 											/>
 										)}
 									</Fragment>
