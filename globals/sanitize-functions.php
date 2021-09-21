@@ -328,3 +328,47 @@ function neve_sanitize_button_type( $value ) {
 
 	return $value;
 }
+
+/**
+ * Sanitize font variants.
+ *
+ * @param string[] $value the incoming value.
+ *
+ * @return string[]
+ */
+function neve_sanitize_font_variants( $value ) {
+	$default = [ '400' ];
+	$allowed = [
+		'100',
+		'200',
+		'300',
+		'400',
+		'500',
+		'600',
+		'700',
+		'800',
+		'900',
+		'100italic',
+		'200italic',
+		'300italic',
+		'400italic',
+		'500italic',
+		'600italic',
+		'700italic',
+		'800italic',
+		'900italic',
+	];
+	if ( ! is_array( $value ) ) {
+		return $default;
+	}
+
+	foreach ( $value as $variant ) {
+		if ( in_array( $variant, $allowed, true ) ) {
+			continue;
+		}
+		$key = array_search( $variant, $value );
+		unset( $value[ $key ] );
+	}
+
+	return $value;
+}

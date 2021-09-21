@@ -69,6 +69,7 @@ class Typography extends Base_Customizer {
 	 * Add general typography controls
 	 */
 	private function controls_typography_general() {
+
 		/**
 		 * Body font family
 		 */
@@ -81,6 +82,10 @@ class Typography extends Base_Customizer {
 					'default'           => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 				],
 				array(
+					'settings'              => [
+						'default'  => Config::MODS_FONT_GENERAL,
+						'variants' => Config::MODS_FONT_GENERAL_VARIANTS,
+					],
 					'label'                 => esc_html__( 'Body', 'neve' ),
 					'section'               => 'neve_typography_general',
 					'priority'              => 10,
@@ -98,6 +103,18 @@ class Typography extends Base_Customizer {
 				'\Neve\Customizer\Controls\React\Font_Family'
 			)
 		);
+		/**
+		 * Body font family subsets.
+		 */
+		$this->wpc->add_setting(
+			Config::MODS_FONT_GENERAL_VARIANTS,
+			[
+				'transport'         => $this->selective_refresh,
+				'sanitize_callback' => 'neve_sanitize_font_variants',
+				'default'           => [ '400' ],
+			]
+		);
+
 
 		$defaults = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_GENERAL );
 		$this->add_control(
