@@ -26,7 +26,7 @@ class GoogleFontsUpdater {
 	/**
 	 * Fonts file path.
 	 */
-	const FILE_PATH = '/globals/google-fonts.php';
+	const FILE_PATH = './globals/google-fonts.php';
 
 	/**
 	 * Google Fonts API Root
@@ -40,7 +40,7 @@ class GoogleFontsUpdater {
 	 */
 	public function __construct( $google_api_key ) {
 		$this->api_key   = $google_api_key;
-		$this->old_fonts = include './' . self::FILE_PATH;
+		$this->old_fonts = include self::FILE_PATH;
 		$this->run_update();
 	}
 
@@ -52,18 +52,43 @@ class GoogleFontsUpdater {
 
 		$new_fonts = $this->get_fonts();
 
-		$different = array_diff( $new_fonts, $this->old_fonts );
+		$has_new_fonts = array_diff( array_keys( $new_fonts ), array_keys( $this->old_fonts ) );
 
-		if ( empty( $different ) ) {
+		$has_new_variants = false;
+		foreach ( $new_fonts as $font => $variants ) {
+			if ( count( $variants ) === count( $this->old_fonts[ $font ] ) ) {
+				continue;
+			}
+
+			$has_new_variants = true;
+		}
+
+		if ( empty( $has_new_fonts ) && $has_new_variants === false ) {
 			echo 'No need to update. Old fonts are already up to date with the API ✅' . "\n";
 
 			return;
 		}
 
+		if ( ! empty( $has_new_fonts ) ) {
+			echo 'There are new fonts... ⏬' . "\n";
+		}
+		if ( $has_new_variants === true ) {
+			echo 'There are new variants... ⏬' . "\n";
+		}
+
 		$fonts_array_string = 'array(' . "\n";
 
-		foreach ( $new_fonts as $font ) {
-			$fonts_array_string .= '	\'' . $font . '\',' . "\n";
+		foreach ( $new_fonts as $font => $variants ) {
+			// No variants, empty array.
+			if ( empty( $variants ) ) {
+				$fonts_array_string .= '	\'' . $font . '\' => array(),' . "\n";
+			} else {
+				$fonts_array_string .= '	\'' . $font . '\' => array(';
+				foreach ( $variants as $variant ) {
+					$fonts_array_string .= " '$variant',";
+				}
+				$fonts_array_string .= '),' . "\n";
+			}
 		}
 
 		$fonts_array_string .= ')';
@@ -92,25 +117,62 @@ PHP;
 	private function get_fonts() {
 		$url     = self::API . '?key=' . $this->api_key;
 		$request = file_get_contents( $url ); //phpcs:ignore
-		$body    = json_decode( $request, true );
+		$body    = json_decode( $request );
 
+		// Unknown subsets. These are not provided by the API.
 		$fonts_array = [
-			'Droid Sans',
-			'Droid Sans Mono',
-			'Droid Serif',
+			'Droid Sans'      => [],
+			'Droid Sans Mono' => [],
+			'Droid Serif'     => [],
 		];
 
-		foreach ( $body['items'] as $item ) {
-			$fonts_array[] = $item['family'];
+		foreach ( $body->items as $font ) {
+			$fonts_array[ $font->family ] = $this->get_variants( $font->variants );
 		}
 
-		if ( ! empty( $this->old_fonts ) ) {
-			$fonts_array = array_unique( array_merge( $this->old_fonts, $fonts_array ) );
+		foreach ( $this->old_fonts as $font_family => $data ) {
+			if ( isset( $fonts_array[ $font_family ] ) ) {
+				continue;
+			}
+
+			// These fonts won't have subsets as google considers them deprecated anyways.
+			// They are here only for backwards compatibility.
+			$fonts_array[ $font_family ] = [];
 		}
 
-		sort( $fonts_array );
+		ksort( $fonts_array );
 
 		return $fonts_array;
+	}
+
+	/**
+	 * Get font variants
+	 *
+	 * @param array $variants font variants from API.
+	 *
+	 * @return array|array[]
+	 */
+	private function get_variants( $variants ) {
+		$regular = [];
+		$italics = [];
+
+		foreach ( $variants as $variant ) {
+			if ( $variant === 'regular' ) {
+				$variant = '400';
+			}
+
+			if ( $variant === 'italic' ) {
+				$variant = '400italic';
+			}
+
+			if ( strpos( $variant, 'italic' ) !== false ) {
+				$italics[] = $variant;
+			} else {
+				$regular[] = $variant;
+			}
+		}
+
+		return array_merge( $regular, $italics );
 	}
 }
 
