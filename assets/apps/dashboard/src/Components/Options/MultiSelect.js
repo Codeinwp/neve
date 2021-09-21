@@ -17,7 +17,7 @@ const MultiSelectOption = ({
 				style={{ minWidth: '200px' }}
 				label={label}
 				choices={choices}
-				currentValue={getOption(slug) || [ 'category' ]}
+				currentValue={getOption(slug) || ['category']}
 				onChange={(value) => {
 					changeSetting(slug, value).then((r) => {
 						if (r.success) {
