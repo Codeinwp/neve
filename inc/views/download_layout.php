@@ -57,11 +57,11 @@ class Download_Layout extends Base_View {
 				<li class="neve-edd-download-download-meta neve-edd-download-title"><p><?php the_title(); ?></p></li>
 				<?php do_action( 'edd_download_after_title' ); ?>
 				<li class="neve-edd-download-download-meta neve-edd-download-price"><p><?php edd_price( get_the_ID() ); ?></p></li>
-				<!-- <li> -->
-					<!-- <div class="edd_download_buy_button">	 -->
+				<!-- <li>
+					<div class="edd_download_buy_button">	
 					<?php // echo edd_get_purchase_link( array( 'download_id' => get_the_ID(), 'text' => 'Buy Now' ) ); ?>
-					<!-- </div> -->
-				<!-- </li>  -->
+					</div>
+				</li>  -->
 				<li class="neve-edd-download-download-meta neve-edd-download-buy-btn"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php _e( 'Buy Now', 'neve' ); ?> </a></li>
 			</ul>
 			<?php do_action( 'edd_download_after' ); ?>

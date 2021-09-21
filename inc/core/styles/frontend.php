@@ -42,6 +42,7 @@ class Frontend extends Generator {
 		$this->_subscribers = [];
 		$this->setup_container();
 		$this->setup_blog_layout();
+		$this->setup_edd_layout();
 		$this->setup_legacy_gutenberg_palette();
 		$this->setup_layout_subscribers();
 		$this->setup_buttons();
@@ -230,6 +231,39 @@ class Frontend extends Generator {
 		}
 	}
 
+	/**
+	 * Setup Easy Digital Downloads customizer CSS layout variables.
+	 * 
+	 * @return mixed
+	 */
+	public function setup_edd_layout() {
+
+		if ( ! neve_is_new_skin() ) {
+			return false;
+		}
+		
+		$this->_subscribers['#neve-edd-download-archive-container #neve-edd-grid-container'] = [
+			'--grid-cols'         => [
+				Dynamic_Selector::META_KEY           => 'neve_edd_grid_columns',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => '{"desktop":3,"tablet":2,"mobile":1}',
+			],
+			'--grid-cols-spacing' => [
+				Dynamic_Selector::META_KEY           => 'neve_edd_grid_spacing',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => '{"desktop":40,"tablet":30,"mobile":20}',
+				Dynamic_Selector::META_SUFFIX        => 'px',
+			],
+		];
+		
+		$this->_subscribers['.neve-edd-download-buy-btn a'] = [
+			'--edd-btn-color' => [
+				Dynamic_Selector::META_KEY     => 'neve_edd_buy_button_color',
+				Dynamic_Selector::META_DEFAULT => '#2f5aae',
+			],
+		];
+
+	}
 	/**
 	 * Add css for blog layout.
 	 *

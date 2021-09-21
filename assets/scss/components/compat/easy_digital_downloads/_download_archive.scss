@@ -4,8 +4,8 @@
 
 #neve-edd-grid-container {
 	display: grid;
-	gap: 20px 10px;
-	grid-template-columns: repeat(3, auto);
+	gap: var(--grid-cols-spacing);
+	grid-template-columns: repeat(var(--grid-cols), auto);
 	margin-bottom: 50px;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .neve-edd-download-buy-btn a {
-	background: #2f5aae;
+	background: var(--edd-btn-color);
 	border-radius: 3px;
 	color: #fff;
 	text-decoration: none;
@@ -30,7 +30,6 @@
 }
 
 .neve-edd-download-buy-btn a:hover {
-	// color: unset;
 	opacity: 1;
 	color: #fff;
 }

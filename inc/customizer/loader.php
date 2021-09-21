@@ -76,6 +76,7 @@ class Loader {
 				'Customizer\Options\Layout_Single_Post',
 				'Customizer\Options\Layout_Single_Product',
 				'Customizer\Options\Layout_Sidebar',
+				'Customizer\Options\Layout_Downloads',
 				'Customizer\Options\Typography',
 				'Customizer\Options\Colors_Background',
 				'Customizer\Options\Buttons',

@@ -90,6 +90,30 @@ const initBlogPageFocus = () => {
 	});
 };
 
+const initEDDArchiveFocus = () => {
+	wp.customize.section('neve_edd_archive', (section) => {
+		section.expanded.bind((isExpanded) => {
+			if (isExpanded) {
+				wp.customize.previewer.previewUrl.set(
+					'/index.php?post_type=download'
+				);
+			}
+		});
+	});
+};
+
+const initEDDSinglePostFocus = () => {
+	wp.customize.section('neve_edd_single_posts', (section) => {
+		section.expanded.bind((isExpanded) => {
+			if (isExpanded) {
+				wp.customize.previewer.previewUrl.set(
+					'/index.php?post_type=download'
+				);
+			}
+		});
+	});
+};
+
 const initQuickLinksSections = () => {
 	const quickLinks = document.querySelectorAll(
 		'.control-section.neve-quick-links'
@@ -169,10 +193,11 @@ window.wp.customize.bind('ready', () => {
 	initDynamicFields();
 	initQuickLinksSections();
 	bindDataAttrQuickLinks();
-	initBlogPageFocus();
 	checkHasElementorTemplates();
 	initDeviceSwitchers();
 	initBlogPageFocus();
+	initEDDArchiveFocus();
+	initEDDSinglePostFocus();
 });
 
 window.HFG = {

@@ -45,6 +45,15 @@ class Main extends Base_Customizer {
 	}
 
 	/**
+	 * Check if Easy Digital Downloads is active.
+	 * 
+	 * @return bool
+	 */
+	private function is_edd_active() {
+		return class_exists( 'Easy_Digital_Downloads' );
+	}
+
+	/**
 	 * Add main panels.
 	 */
 	private function add_main_panels() {
@@ -55,10 +64,19 @@ class Main extends Base_Customizer {
 			),
 			'neve_typography' => array(
 				'priority' => 35,
-
 				'title'    => __( 'Typography', 'neve' ),
 			),
 		);
+
+		/**
+		 * Add EDD Panel if plugin active.
+		 */
+		if ( $this->is_edd_active() ) {
+			$panels['neve_download'] = array(
+				'priority' => 45,
+				'title'    => __( 'Easy Digital Downloads', 'neve' ),
+			);
+		}
 
 		foreach ( $panels as $panel_id => $panel ) {
 			$this->add_panel(
