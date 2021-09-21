@@ -285,12 +285,18 @@ function neve_get_standard_fonts() {
 /**
  * Get all google fonts
  *
+ * @param bool $with_variants should fetch variants.
+ *
  * @return array
  */
-function neve_get_google_fonts() {
+function neve_get_google_fonts( $with_variants = false ) {
 	$fonts = ( include NEVE_MAIN_DIR . 'globals/google-fonts.php' );
 
-	return apply_filters( 'neve_google_fonts_array', $fonts );
+	if ( $with_variants ) {
+		return apply_filters( 'neve_google_fonts_with_variants_array', $fonts );
+	}
+
+	return apply_filters( 'neve_google_fonts_array', array_keys( $fonts ) );
 }
 
 /**

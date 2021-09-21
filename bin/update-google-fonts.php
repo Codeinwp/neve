@@ -119,7 +119,7 @@ PHP;
 		$request = file_get_contents( $url ); //phpcs:ignore
 		$body    = json_decode( $request );
 
-		// Unknown subsets. These are not provided by the API.
+		// Unknown variants. These are not provided by the API.
 		$fonts_array = [
 			'Droid Sans'      => [],
 			'Droid Sans Mono' => [],
@@ -135,7 +135,7 @@ PHP;
 				continue;
 			}
 
-			// These fonts won't have subsets as google considers them deprecated anyways.
+			// These fonts won't have variants as google considers them deprecated anyways.
 			// They are here only for backwards compatibility.
 			$fonts_array[ $font_family ] = [];
 		}
