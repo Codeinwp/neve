@@ -4,6 +4,7 @@ import Accordion from './Accordion';
 import InputForm from './Options/InputForm';
 import Select from './Options/Select';
 import Toggle from './Options/Toggle';
+import MultiSelectOption from './Options/MultiSelect';
 import { changeOption } from '../utils/rest';
 import classnames from 'classnames';
 
@@ -17,7 +18,6 @@ import { withSelect, withDispatch } from '@wordpress/data';
 import { Fragment, useState } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
-import MultiSelect from '../../../customizer-controls/src/multiselect/MultiSelect';
 
 const ModuleCard = ({
 	slug,
@@ -54,7 +54,6 @@ const ModuleCard = ({
 									documentation: documentationOption,
 									choices,
 								} = optionGroup[optionSlug];
-								const [items, setItems] = useState(optionGroup[optionSlug].default);
 								return (
 									<Fragment key={indexGroup}>
 										{'text' === type && (
@@ -81,12 +80,10 @@ const ModuleCard = ({
 											/>
 										)}
 										{'multi_select' === type && (
-											<MultiSelect
+											<MultiSelectOption
 												label={labelGroup}
 												slug={optionSlug}
 												choices={choices}
-												onChange={setItems}
-												currentValue={items}
 											/>
 										)}
 									</Fragment>
