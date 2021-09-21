@@ -14,9 +14,13 @@ export default {
 const Template = (args) => {
 	const [value, setValue] = useState('equal');
 	const [columns, setColumns] = useState(1);
+	const [safeColumns, setSafeColumns] = useState(1);
 
 	const updateColNumber = (e) => {
 		setColumns(e.target.value);
+		if (choices[columns]) {
+			setSafeColumns(columns);
+		}
 	};
 
 	const choices = {
@@ -85,8 +89,14 @@ const Template = (args) => {
 	};
 
 	useEffect(() => {
-		if (!choices[columns][value]) {
-			setValue(Object.keys(choices[columns])[0]);
+		if (choices[columns]) {
+			setSafeColumns(columns);
+		}
+	}, [columns]);
+
+	useEffect(() => {
+		if (!choices[safeColumns][value]) {
+			setValue(Object.keys(choices[safeColumns])[0]);
 		}
 	}, [columns]);
 
@@ -105,7 +115,7 @@ const Template = (args) => {
 			<BuilderColumns
 				value={value}
 				onChange={setValue}
-				columns={columns}
+				columns={safeColumns}
 				choices={choices}
 				{...args}
 			/>
