@@ -142,12 +142,17 @@ class Loader {
 		wp_style_add_data( 'react-controls', 'rtl', 'replace' );
 		wp_enqueue_style( 'react-controls' );
 
-		wp_enqueue_style(
-			'neve-fonts-control-google-fonts',
-			'https://fonts.googleapis.com/css?family=' . join( '|', neve_get_google_fonts() ) . '&text=Abc&display=swap"',
-			[],
-			NEVE_VERSION
-		);
+		$fonts  = neve_get_google_fonts();
+		$chunks = array_chunk( $fonts, absint( count( $fonts ) / 5 ) );
+
+		foreach ( $chunks as $fonts_chunk ) {
+			wp_enqueue_style(
+				'neve-fonts-control-google-fonts',
+				'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=Abc&display=swap"',
+				[],
+				NEVE_VERSION
+			);
+		}
 	}
 
 	/**
