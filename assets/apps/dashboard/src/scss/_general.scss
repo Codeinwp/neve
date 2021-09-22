@@ -11,7 +11,7 @@
   margin-left: 30px;
 }
 
-svg.is-loading, button.is-loading svg {
+svg.is-loading, button.is-loading .dashicon {
   color: $dark-grey;
   animation-name: spin;
   animation-duration: 2000ms;
