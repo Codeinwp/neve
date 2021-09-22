@@ -954,6 +954,7 @@ abstract class Abstract_Builder implements Builder {
 								if ( in_array( $current_archive->taxonomy, $allowed_taxonomies ) ) {
 									$image_id       = get_term_meta( $current_archive->term_id, 'thumbnail_id', true );
 									$featured_image = wp_get_attachment_image_url( $image_id, 'full' );
+									$featured_image = apply_filters( 'nv_enable_featured_image_taxonomy_featured_image_url', $featured_image );
 								}
 
 								if ( ! empty( $featured_image ) ) {
@@ -1100,6 +1101,7 @@ abstract class Abstract_Builder implements Builder {
 								if ( in_array( $current_archive->taxonomy, $allowed_taxonomies ) ) {
 									$image_id       = get_term_meta( $current_archive->term_id, 'thumbnail_id', true );
 									$featured_image = wp_get_attachment_image_url( $image_id, 'full' );
+									$featured_image = apply_filters( 'nv_enable_featured_image_taxonomy_featured_image_url', $featured_image );
 								}
 								if ( ! empty( $featured_image ) ) {
 									$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
