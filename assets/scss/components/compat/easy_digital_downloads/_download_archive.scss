@@ -1,11 +1,11 @@
 #neve-edd-download-archive-container {
-	margin: 100px auto;
+	margin: 60px auto;
 }
 
 #neve-edd-grid-container {
 	display: grid;
-	gap: var(--grid-cols-spacing);
-	grid-template-columns: repeat(var(--grid-cols), auto);
+	gap: var(--grid-cols-spacing, 40);
+	grid-template-columns: repeat(var(--grid-cols, 4), auto);
 	margin-bottom: 50px;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .neve-edd-download-buy-btn a {
-	background: var(--edd-btn-color);
+	background: var(--edd-btn-color, var(--primaryBtnBg, #2f5aae));
 	border-radius: 3px;
 	color: #fff;
 	text-decoration: none;
@@ -43,10 +43,11 @@
 	color: #000;
 	margin-right: 20px;
 	padding: 20px;
+
+	&.current {
+		background: #2f5aae;
+		border-radius: 3px;
+		color: #fff;
+	}
 }
 
-#neve-edd-download-pagination .page-numbers.current {
-	background: #2f5aae;
-	border-radius: 3px;
-	color: #fff;
-}

@@ -1,0 +1,33 @@
+//TODO-UV This only applies on single download sidebar..should be universal?
+.single-download-container .nv-sidebar-wrap {
+
+	padding: 20px 15px;
+
+	.edd-cart-number-of-items {
+		font-style: normal;
+	}
+
+	.edd_total {
+		background: none;
+		font-size: 20px;
+		padding: 20px 0;
+	}
+
+	.edd_checkout {
+
+		width: 100%;
+
+		a {
+			background: #2f5aae;
+			border-radius: 3px;
+			color: #fff;
+			display: block;
+			text-align: center;
+			width: 70%;
+			padding: 15px;
+
+		}
+
+	}
+
+}

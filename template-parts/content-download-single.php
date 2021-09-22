@@ -6,5 +6,4 @@
  * @package Neve
  */
 do_action( 'neve_do_single_download', 'single-download' );
-// do_action( 'neve_do_single_post', 'single-post' );
 
