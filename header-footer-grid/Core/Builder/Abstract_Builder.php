@@ -941,6 +941,7 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 							$background = $value;
 							$style      = '';
+							$image_url  = apply_filters( 'nv_header_booster_featured_image_url', $background['imageUrl'], $background['useFeatured'] );
 							if ( isset( $background['useFeatured'] ) && $background['useFeatured'] === true && is_singular() ) {
 								$featured_image = get_the_post_thumbnail_url();
 								if ( ! empty( $featured_image ) ) {
@@ -948,22 +949,8 @@ abstract class Abstract_Builder implements Builder {
 								} else {
 									$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
 								}
-							} elseif ( isset( $background['useFeatured'] ) && $background['useFeatured'] === true && is_archive() ) {
-								$current_archive    = get_queried_object();
-								$allowed_taxonomies = get_option( 'nv_pro_featured_image_taxonomies' );
-								if ( in_array( $current_archive->taxonomy, $allowed_taxonomies ) ) {
-									$image_id       = get_term_meta( $current_archive->term_id, 'thumbnail_id', true );
-									$featured_image = wp_get_attachment_image_url( $image_id, 'full' );
-									$featured_image = apply_filters( 'nv_enable_featured_image_taxonomy_featured_image_url', $featured_image );
-								}
-
-								if ( ! empty( $featured_image ) ) {
-									$style .= sprintf( 'background-image: url("%s");', esc_url( $featured_image ) );
-								} else {
-									$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
-								}
-							} elseif ( ! empty( $background['imageUrl'] ) ) {
-								$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
+							} elseif ( ! empty( $image_url ) ) {
+								$style .= sprintf( 'background-image: url("%s");', esc_url( $image_url ) );
 							}
 							$style .= 'background-size:cover;';
 
@@ -1086,7 +1073,8 @@ abstract class Abstract_Builder implements Builder {
 					'--bgImage'          => [
 						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							$image = 'none';
+							$image     = 'none';
+							$image_url = apply_filters( 'nv_header_booster_featured_image_url', $value['imageUrl'], $value['useFeatured'] );
 							if ( isset( $value['useFeatured'] ) && $value['useFeatured'] === true && is_singular() ) {
 								$featured_image = get_the_post_thumbnail_url();
 								if ( ! empty( $featured_image ) ) {
@@ -1094,22 +1082,8 @@ abstract class Abstract_Builder implements Builder {
 								} else {
 									$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
 								}
-							} elseif ( isset( $value['useFeatured'] ) && $value['useFeatured'] === true && is_archive() ) {
-								$current_archive    = get_queried_object();
-								$allowed_taxonomies = get_option( 'nv_pro_featured_image_taxonomies' );
-
-								if ( in_array( $current_archive->taxonomy, $allowed_taxonomies ) ) {
-									$image_id       = get_term_meta( $current_archive->term_id, 'thumbnail_id', true );
-									$featured_image = wp_get_attachment_image_url( $image_id, 'full' );
-									$featured_image = apply_filters( 'nv_enable_featured_image_taxonomy_featured_image_url', $featured_image );
-								}
-								if ( ! empty( $featured_image ) ) {
-									$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
-								} else {
-									$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
-								}
-							} elseif ( ! empty( $value['imageUrl'] ) ) {
-								$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
+							} elseif ( ! empty( $image_url ) ) {
+								$image = sprintf( 'url("%s")', esc_url( $image_url ) );
 							}
 
 							return sprintf( '%s:%s;', $css_prop, $image );
