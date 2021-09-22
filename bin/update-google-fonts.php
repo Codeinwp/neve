@@ -26,7 +26,7 @@ class GoogleFontsUpdater {
 	/**
 	 * Fonts file path.
 	 */
-	const FILE_PATH = './globals/google-fonts.php';
+	const FILE_PATH = '/globals/google-fonts.php';
 
 	/**
 	 * Google Fonts API Root
@@ -40,7 +40,7 @@ class GoogleFontsUpdater {
 	 */
 	public function __construct( $google_api_key ) {
 		$this->api_key   = $google_api_key;
-		$this->old_fonts = include self::FILE_PATH;
+		$this->old_fonts = include '.' . self::FILE_PATH;
 		$this->run_update();
 	}
 
@@ -91,7 +91,7 @@ class GoogleFontsUpdater {
 			}
 		}
 
-		$fonts_array_string .= ')';
+		$fonts_array_string .= ");\n";
 
 		$now    = gmdate( 'd/m/y' );
 		$output = <<<PHP
@@ -101,7 +101,7 @@ class GoogleFontsUpdater {
  *
  * @package neve
  */
-return $fonts_array_string;
+return $fonts_array_string
 PHP;
 
 		file_put_contents( dirname( __DIR__ ) . self::FILE_PATH, $output ); //phpcs:ignore

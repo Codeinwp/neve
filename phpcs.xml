@@ -13,6 +13,7 @@
     <exclude-pattern>*.js</exclude-pattern>
     <exclude-pattern>*.css</exclude-pattern>
 	<exclude-pattern>*.asset.php</exclude-pattern>
+<!--	<exclude-pattern>globals/google-fonts.php</exclude-pattern>-->
 
     <rule ref="Themeisle"/>
 	<rule ref="WordPress.WP.I18n">
