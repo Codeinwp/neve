@@ -111,7 +111,7 @@ class Typography extends Base_Customizer {
 			[
 				'transport'         => $this->selective_refresh,
 				'sanitize_callback' => 'neve_sanitize_font_variants',
-				'default'           => [ '400' ],
+				'default'           => [],
 			]
 		);
 

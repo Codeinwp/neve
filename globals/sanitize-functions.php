@@ -337,7 +337,6 @@ function neve_sanitize_button_type( $value ) {
  * @return string[]
  */
 function neve_sanitize_font_variants( $value ) {
-	$default = [ '400' ];
 	$allowed = [
 		'100',
 		'200',
@@ -359,7 +358,7 @@ function neve_sanitize_font_variants( $value ) {
 		'900italic',
 	];
 	if ( ! is_array( $value ) ) {
-		return $default;
+		return [];
 	}
 
 	foreach ( $value as $variant ) {
