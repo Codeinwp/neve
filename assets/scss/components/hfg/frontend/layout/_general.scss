@@ -83,6 +83,8 @@ $desktop: map-get($gl-devices-list, desktop);
 [data-row-id] {
 	color: var(--color);
 	background: var(--bgColor);
+	border-bottom-width: var(--borderWidth, 0);
+	border-bottom-style: solid;
 
 	a {
 		color: var(--color);

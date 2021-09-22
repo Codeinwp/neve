@@ -36,6 +36,7 @@ abstract class Abstract_Builder implements Builder {
 	const COLUMNS_NUMBER     = 'columns_number';
 	const COLUMNS_LAYOUT     = 'columns_layout';
 	const HEIGHT_SETTING     = 'height';
+	const BOTTOM_BORDER      = 'bottom_border';
 	const SKIN_SETTING       = 'skin';
 	const TEXT_COLOR         = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
@@ -390,6 +391,46 @@ abstract class Abstract_Builder implements Builder {
 				]
 			);
 		}
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::BOTTOM_BORDER,
+				'group'                 => $row_setting_id,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'section'               => $row_setting_id,
+				'label'                 => __( 'Bottom border width', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
+				'live_refresh_selector' => '.header-main',
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'responsive' => true,
+						'vars'       => '--borderWidth',
+						'suffix'     => 'px',
+						'fallback'   => '0',
+						'selector'   => '.' . $this->get_id() . '-' . $row_id,
+					],
+					'prop'   => 'border-bottom-width',
+					'unit'   => 'px',
+				],
+				'options'               => [
+					'input_attrs' => [
+						'step'       => 1,
+						'min'        => 0,
+						'max'        => 50,
+						'defaultVal' => [
+							'mobile'  => 0,
+							'tablet'  => 0,
+							'desktop' => 0,
+						],
+						'units'      => [ 'px' ],
+					],
+				],
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
+				'default'               => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+				'conditional_header'    => $this->get_id() === 'header',
+			]
+		);
 
 		if ( $this->columns_layout && neve_is_new_builder() ) {
 			$this->add_columns_layout_controls( $row_setting_id );
@@ -1037,6 +1078,12 @@ abstract class Abstract_Builder implements Builder {
 		$rules['--color'] = [
 			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
 			Dynamic_Selector::META_DEFAULT => $default_colors['text'],
+		];
+
+		$rules['--borderWidth'] = [
+			Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::BOTTOM_BORDER,
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			Dynamic_Selector::META_DEFAULT       => '{ desktop: 0, tablet: 0, mobile: 0 }',
 		];
 
 		// If there is no default, use site background.
