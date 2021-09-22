@@ -949,10 +949,12 @@ abstract class Abstract_Builder implements Builder {
 									$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
 								}
 							} elseif ( isset( $background['useFeatured'] ) && $background['useFeatured'] === true && is_archive() ) {
-								$current_archive = get_queried_object();
-
-								$image_id       = get_term_meta( $current_archive->term_id, 'thumbnail_id', true );
-								$featured_image = wp_get_attachment_image_url( $image_id, 'full' );
+								$current_archive    = get_queried_object();
+								$allowed_taxonomies = get_option( 'nv_pro_featured_image_taxonomies' );
+								if ( in_array( $current_archive->taxonomy, $allowed_taxonomies ) ) {
+									$image_id       = get_term_meta( $current_archive->term_id, 'thumbnail_id', true );
+									$featured_image = wp_get_attachment_image_url( $image_id, 'full' );
+								}
 
 								if ( ! empty( $featured_image ) ) {
 									$style .= sprintf( 'background-image: url("%s");', esc_url( $featured_image ) );
@@ -1092,11 +1094,13 @@ abstract class Abstract_Builder implements Builder {
 									$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
 								}
 							} elseif ( isset( $value['useFeatured'] ) && $value['useFeatured'] === true && is_archive() ) {
-								$current_archive = get_queried_object();
+								$current_archive    = get_queried_object();
+								$allowed_taxonomies = get_option( 'nv_pro_featured_image_taxonomies' );
 
-								$image_id       = get_term_meta( $current_archive->term_id, 'thumbnail_id', true );
-								$featured_image = wp_get_attachment_image_url( $image_id, 'full' );
-
+								if ( in_array( $current_archive->taxonomy, $allowed_taxonomies ) ) {
+									$image_id       = get_term_meta( $current_archive->term_id, 'thumbnail_id', true );
+									$featured_image = wp_get_attachment_image_url( $image_id, 'full' );
+								}
 								if ( ! empty( $featured_image ) ) {
 									$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
 								} else {
