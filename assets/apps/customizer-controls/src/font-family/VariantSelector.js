@@ -2,6 +2,7 @@ import { useEffect, useState } from '@wordpress/element';
 import { fontVariantMap as variantMap } from '../common/common';
 import MultiSelect from '../multiselect/MultiSelect';
 import { __ } from '@wordpress/i18n';
+import PropTypes from 'prop-types';
 
 export function VariantSelector({ setting, fontFamily }) {
 	const { fontVariants } = window.NeveReactCustomize;
@@ -51,5 +52,7 @@ export function VariantSelector({ setting, fontFamily }) {
 	);
 }
 
-//TODO: proptypes
-VariantSelector.propTypes = {};
+VariantSelector.propTypes = {
+	setting: PropTypes.object.isRequired,
+	fontFamily: PropTypes.string.isRequired,
+};
