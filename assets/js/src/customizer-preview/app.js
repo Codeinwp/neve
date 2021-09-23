@@ -761,10 +761,19 @@ if (!newSkin) {
 			$.each(this.contentWidths, function (id, args) {
 				wp.customize(id, function (value) {
 					value.bind(function (newval) {
+						const sidebar = $('.nv-sidebar-wrap');
+
+						if (newval >= 95) {
+							sidebar.addClass('hide');
+						} else {
+							sidebar.removeClass('hide');
+						}
+
 						const style = ` @media (min-width: 961px) {
 							${args.content} { max-width: ${newval}% !important; }
 							${args.sidebar} { max-width: ${100 - newval}% !important; }
 						}`;
+
 						addCSS(id + '-css', style);
 					});
 				});

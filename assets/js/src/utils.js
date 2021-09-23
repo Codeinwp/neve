@@ -1,13 +1,7 @@
 /* global IntersectionObserver,NodeList,XMLHttpRequest */
-/**
- * Check if we're on mobile resolution.
- *
- * @return {boolean} Mobile status.
- */
-export const isMobile = () => {
-	return window.innerWidth <= 960;
-};
 
+export const NV_FOCUS_TRAP_START = 'nv-focus-trap-start';
+export const NV_FOCUS_TRAP_END = 'nv-focus-trap-end';
 /**
  * Foreach wrapper.
  *
@@ -39,27 +33,6 @@ export const httpGetAsync = (theUrl, callback, params) => {
 };
 
 /**
- * Check if user is viewing on the best browser ever.
- */
-export const isIe = () => {
-	return /(Trident|MSIE|Edge)/.test(window.navigator.userAgent);
-};
-
-/**
- * Unhash url.
- *
- * @param {string} url
- * @return {string} Formated URL.
- */
-export const unhashUrl = (url) => {
-	const parts = url.split('#');
-	if (parts.length > 1) {
-		return parts[0];
-	}
-	return url;
-};
-
-/**
  * Add event handler to elements.
  *
  * @param {NodeList} element
@@ -68,11 +41,9 @@ export const unhashUrl = (url) => {
  */
 export const addEvent = (element, event, callBack) => {
 	const array = element instanceof NodeList ? element : [element];
-
-	for (let i = 0; i < array.length; i++) {
-		//eslint-disable-next-line no-unused-expressions
-		array[i] && array[i].addEventListener(event, callBack);
-	}
+	array.forEach((item) =>
+		item.addEventListener(event, (e) => callBack(e, item))
+	);
 };
 
 /**
@@ -109,13 +80,10 @@ export const removeClass = (element, className) => {
 
 export const batchProcess = (element, classNames, method) => {
 	const classes = classNames.split(' ');
-
 	const array = element instanceof NodeList ? element : [element];
-	for (let i = 0; i < array.length; i++) {
-		//eslint-disable-next-line  no-unused-expressions
-		array[i] &&
-			array[i].classList[method].apply(array[i].classList, classes);
-	}
+	array.forEach((item) =>
+		item.classList[method].apply(item.classList, classes)
+	);
 };
 /**
  * Check if element is in view.

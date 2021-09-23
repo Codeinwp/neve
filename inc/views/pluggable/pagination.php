@@ -90,7 +90,22 @@ class Pagination extends Base_View {
 			ob_start();
 			while ( $query->have_posts() ) {
 				$query->the_post();
+
+				/**
+				 * Executes actions before rendering the post content.
+				 *
+				 * @since 2.11 in the /index.php
+				 */
+				do_action( 'neve_loop_entry_before' );
+
 				get_template_part( 'template-parts/content' );
+
+				/**
+				 * Executes actions after rendering the post content.
+				 *
+				 * @since 2.11 in the /index.php
+				 */
+				do_action( 'neve_loop_entry_after' );
 			}
 			wp_reset_postdata();
 			$output = ob_get_contents();
