@@ -36,8 +36,8 @@ abstract class Abstract_Builder implements Builder {
 	const COLUMNS_NUMBER     = 'columns_number';
 	const COLUMNS_LAYOUT     = 'columns_layout';
 	const HEIGHT_SETTING     = 'height';
-	const BOTTOM_BORDER      = 'header_bottom_border';
-	const BORDER_COLOR       = 'header_border_color';
+	const BOTTOM_BORDER      = 'bottom_border';
+	const BORDER_COLOR       = 'border_color';
 	const SKIN_SETTING       = 'skin';
 	const TEXT_COLOR         = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
@@ -460,7 +460,7 @@ abstract class Abstract_Builder implements Builder {
 				'section'               => $row_setting_id,
 				'label'                 => __( 'Divider width', 'neve' ),
 				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
-				'live_refresh_selector' => $row_class,
+				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar' => [
 						'responsive' => true,
@@ -469,8 +469,6 @@ abstract class Abstract_Builder implements Builder {
 						'fallback'   => '0',
 						'selector'   => '.' . $this->get_id() . '-' . $row_id,
 					],
-					'prop'   => 'border-bottom-width',
-					'unit'   => 'px',
 				],
 				'options'               => [
 					'input_attrs' => [
@@ -502,14 +500,14 @@ abstract class Abstract_Builder implements Builder {
 				'conditional_header'    => $this->get_id() === 'header',
 				'type'                  => 'neve_color_control',
 				'transport'             => 'postMessage',
-				'live_refresh_selector' => $row_class,
+				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar' => [
 						'vars'     => '--headerBorderColor',
 						'selector' => '.' . $this->get_id() . '-' . $row_id,
 					],
 				],
-				'sanitize_callback'     => 'wp_filter_nohtml_kses',
+				'sanitize_callback'     => 'neve_sanitize_colors',
 				'default'               => 'var(--nv-light-bg)',
 			]
 		);
