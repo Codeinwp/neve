@@ -53,6 +53,6 @@ export function VariantSelector({ setting, fontFamily }) {
 }
 
 VariantSelector.propTypes = {
-	setting: PropTypes.object.isRequired,
+	setting: PropTypes.func.isRequired,
 	fontFamily: PropTypes.string.isRequired,
 };

@@ -62,18 +62,6 @@ const TypefaceComponent = ({ control }) => {
 		return typekitSlugs[font];
 	};
 
-	// const wrapFonts = (font) => {
-	// 	const list = font.split(',');
-	// 	const formatList = list.map((fontName) => {
-	// 		if (fontName.includes('serif')) {
-	// 			return fontName.trim();
-	// 		}
-	// 		return '"' + fontName.trim() + '"';
-	// 	});
-	// 	const newFont = formatList.join(', ');
-	// 	return newFont;
-	// };
-
 	const onChoseFont = (fontSource, font) => {
 		setFontFamily(font);
 		updateControl(font, fontSource);
