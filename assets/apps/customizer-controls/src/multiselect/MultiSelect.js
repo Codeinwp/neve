@@ -1,4 +1,4 @@
-import { chevronDown, closeSmall, chevronUp } from '@wordpress/icons';
+import { chevronDown, closeSmall, chevronUp, plus } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 import {
 	Icon,
@@ -37,6 +37,12 @@ const MultiSelect = ({ choices, onChange, currentValue, label }) => {
 
 	const addItem = (slug) => onChange([...currentValue, slug]);
 
+	const getDropDownIcon = (isOpen) => {
+		if (currentValue.length === 0) return plus;
+
+		return isOpen ? chevronUp : chevronDown;
+	};
+
 	return (
 		<div className="neve-white-background-control neve-multiselect">
 			<span className="customize-control-title">{label}</span>
@@ -51,7 +57,7 @@ const MultiSelect = ({ choices, onChange, currentValue, label }) => {
 							isSmall
 							isDefault
 							disabled={addable.length < 1}
-							icon={isOpen ? chevronUp : chevronDown}
+							icon={getDropDownIcon(isOpen)}
 							onClick={onToggle}
 							aria-expanded={isOpen}
 						/>
