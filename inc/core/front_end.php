@@ -346,6 +346,11 @@ class Front_End {
 			wp_script_add_data( 'neve-shop-script', 'async', true );
 		}
 
+		// TODO-UV Only enqueue if option abled in customizer
+		if ( class_exists( 'Easy_Digital_Downloads', false ) ) {
+			wp_register_script( 'neve-edd-script', NEVE_ASSETS_URL . 'js/build/modern/edd.js', array(), NEVE_VERSION, true );
+			wp_enqueue_script( 'neve-edd-script' );
+		}
 
 		if ( is_singular() ) {
 			wp_enqueue_script( 'comment-reply' );

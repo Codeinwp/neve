@@ -41,6 +41,12 @@
 		{
 			"gzip": false,
 			"running": false,
+			"limit": "1 KB",
+			"path": "assets/js/build/modern/edd.js"
+		},
+		{
+			"gzip": false,
+			"running": false,
 			"webpack": false,
 			"limit": "41 KB",
 			"path": "style-main-new.min.css"

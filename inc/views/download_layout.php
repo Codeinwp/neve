@@ -21,8 +21,10 @@ class Download_Layout extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_do_download_archive', array( $this, 'render_download_archive' ) );
-		add_filter( 'edd_purchase_link_defaults', array( $this, 'change_edd_purchase_btn_defaults' ) );
 		add_action( 'neve_do_single_download', array( $this, 'render_download_single' ) );
+
+		add_filter( 'edd_purchase_link_defaults', array( $this, 'change_edd_purchase_btn_defaults' ) );
+		add_filter( 'wp_nav_menu_items', array( $this, 'add_edd_cart_menu_item' ), 10, 2 );
 	}
 
 	/**
@@ -34,7 +36,6 @@ class Download_Layout extends Base_View {
 
 		$defaults['color'] = '';
 		$defaults['class'] = 'edd-submit nv-edd-buy-btn';
-		$defaults['price'] = false;
 		$defaults['text']  = __( 'Buy Now', 'neve' );
 
 		$defaults = apply_filters( 'nv_edd_purchase_link_defaults', $defaults );
@@ -54,7 +55,7 @@ class Download_Layout extends Base_View {
 		$id = get_the_ID();
 		?>
 
-		<div class="neve-edd-download-item" id="edd_download_<?php echo esc_html( $id ); ?>">
+		<div class="neve-edd-download-item" id="edd_download_<?php echo esc_html( (string) $id ); ?>">
 			<?php do_action( 'edd_download_before' ); ?>
 			<ul>
 				<li class="neve-edd-download-thumbnail">
@@ -76,7 +77,7 @@ class Download_Layout extends Base_View {
 						if ( edd_has_variable_prices( $id ) ) {
 							echo wp_kses_post( edd_price_range( $id ) );
 						} else {
-							wp_kses_post( edd_price( $id ) );  // echo's by default
+							wp_kses_post( (string) edd_price( $id ) );  // echo's by default
 						}
 						?>
 					</p>
@@ -178,6 +179,37 @@ class Download_Layout extends Base_View {
 
 		<?php
 
+	}
+
+	/**
+	 * Add EDD cart icon to menu.
+	 *
+	 * @param string $items The current menu items in the navigation.
+	 * @param object $args An object containing wp_nav_menu() arguments.
+	 * 
+	 * @return string
+	 */
+	public function add_edd_cart_menu_item( $items, $args ) {
+
+		if ( ! function_exists( 'edd_get_checkout_uri' ) ) {
+			return $items;
+		}
+
+		if ( $args->theme_location !== 'primary' ) {// @todo CHANGE header TO YOUR OWN THEME LOCATION
+			return $items;
+		}
+	 
+		$edd_separator = apply_filters( 'nv_edd_cart_total_separator', '-' );
+
+		$markup  = '<li class="menu-item" id="edd-cart-menu-item"><a class="dashicons-before dashicons-cart" href="' . edd_get_checkout_uri() . '">&nbsp;'; 
+		$markup .= '<span id="header-cart" class="edd-cart-quantity">' . edd_get_cart_quantity() . '</span>';
+		$markup .= '<span>&nbsp;' . $edd_separator . '&nbsp;</span>';
+		$markup .= '<span class="nv-edd-cart-total">' . edd_currency_filter( edd_format_amount( (string) edd_get_cart_total() ) ) . '</span>';
+		$markup .= '</a></li>';
+
+		$items = $items . $markup;
+	
+		return $items;
 	}
 
 }
