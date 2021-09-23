@@ -182,7 +182,6 @@ abstract class Abstract_Builder implements Builder {
 			'main'    => '#ffffff',
 			'bottom'  => '#ffffff',
 			'sidebar' => '#ffffff',
-			'border'  => '#e3e3e3',
 		),
 		'footer'      => array(
 			'top'    => '#ffffff',
@@ -511,7 +510,7 @@ abstract class Abstract_Builder implements Builder {
 					],
 				],
 				'sanitize_callback'     => 'wp_filter_nohtml_kses',
-				'default'               => $this->default_colors['header']['border'],
+				'default'               => 'var(--nv-light-bg)',
 			]
 		);
 
@@ -1115,7 +1114,7 @@ abstract class Abstract_Builder implements Builder {
 
 		$rules['--headerBorderColor'] = [
 			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::BORDER_COLOR,
-			Dynamic_Selector::META_DEFAULT => $this->default_colors['header']['border'],
+			Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
 		];
 
 		$rules['--color'] = [
