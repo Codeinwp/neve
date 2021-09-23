@@ -175,7 +175,7 @@ class Pagination extends Base_View {
 		$markup .= '<div id="nv-pagination-jump">';
 		$markup .= '<form action="' . esc_url( $request ) . '" >';
 		$markup .= '<a class="page-numbers">';
-		$markup .= '<input id="nv-pagination-jump-page-num" placeholder="#" type="number" value="' . esc_attr( $current_page ) . '" max="' . esc_attr( $max_num_pages ) . '" name="paged" /> ';
+		$markup .= '<input id="nv-pagination-jump-page-num" placeholder="#" type="number" value="' . esc_attr( $current_page ) . '" min="1" max="' . esc_attr( $max_num_pages ) . '" name="paged" /> ';
 		$markup .= ! empty( $search_query ) ? '<input id="s" type="hidden" value="' . esc_attr( $search_query ) . '" name="s" />' : '';
 		$markup .= '<input id="nv-pagination-jump-go" value="' . esc_attr( $button_text ) . '" type="submit" />';
 		$markup .= '</a></form></div>';
@@ -228,6 +228,7 @@ class Pagination extends Base_View {
 		$tags['form']['action']       = array();
 		$tags['input']                = array();
 		$tags['input']['id']          = array();
+		$tags['input']['min']         = array();
 		$tags['input']['max']         = array();
 		$tags['input']['name']        = array();
 		$tags['input']['placeholder'] = array();
