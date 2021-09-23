@@ -263,6 +263,14 @@ class Frontend extends Generator {
 			],
 		];
 
+		$this->_subscribers['.single-download .single-download-container'] = [
+			'--edd-buy-btn-align' => [
+				Dynamic_Selector::META_KEY           => 'neve_edd_single_post_buy_btn_position',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => '{"desktop":"left","tablet":"left","mobile":"center"}',
+			],
+		];
+
 	}
 	/**
 	 * Add css for blog layout.

@@ -51,9 +51,10 @@ class Download_Layout extends Base_View {
 		if ( $context !== 'archive-download' ) {
 			return;
 		}
+		$id = get_the_ID();
 		?>
 
-		<div class="neve-edd-download-item" id="edd_download_<?php the_ID(); ?>">
+		<div class="neve-edd-download-item" id="edd_download_<?php echo esc_html( $id ); ?>">
 			<?php do_action( 'edd_download_before' ); ?>
 			<ul>
 				<li class="neve-edd-download-thumbnail">
@@ -71,7 +72,13 @@ class Download_Layout extends Base_View {
 				<?php do_action( 'edd_download_after_title' ); ?>
 				<li class="neve-edd-download-download-meta neve-edd-download-price">
 					<p>
-						<?php edd_price( get_the_ID() ); ?>
+						<?php 
+						if ( edd_has_variable_prices( $id ) ) {
+							echo wp_kses_post( edd_price_range( $id ) );
+						} else {
+							wp_kses_post( edd_price( $id ) );  // echo's by default
+						}
+						?>
 					</p>
 				</li>
 				<!-- <li>
@@ -121,7 +128,7 @@ class Download_Layout extends Base_View {
 							<p><span class="nv-edd-single-download-categories"><?php esc_html_e( 'Category', 'neve' ); ?>:</span>
 								<?php foreach ( $categories as $key => $category ) : ?>
 									<span class="nv-edd-single-download-category">
-										<a href="<?php esc_url( get_category_link( $category->term_id ) ); ?>">
+										<a href="<?php echo esc_url( get_category_link( $category->term_id ) ); ?>">
 											<?php 
 												echo esc_html( $category->name );
 												echo esc_html( ( $key !== ( $categories_count - 1 ) ) ? ',' : '' );
@@ -156,7 +163,7 @@ class Download_Layout extends Base_View {
 					<p><span class="nv-edd-single-download-tags"><?php esc_html_e( 'Download tags', 'neve' ); ?>:</span> 
 						<?php foreach ( $tags as $key => $tag ) : ?>
 							<span class="nv-edd-single-download-tag">
-								<a href="<?php esc_url( get_category_link( $tag->term_id ) ); ?>">
+								<a href="<?php echo esc_url( get_category_link( $tag->term_id ) ); ?>">
 									<?php 
 										echo esc_html( $tag->name );
 									?>
@@ -171,6 +178,6 @@ class Download_Layout extends Base_View {
 
 		<?php
 
-	}   
+	}
 
 }

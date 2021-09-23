@@ -3,6 +3,7 @@
 	margin: 60px auto;
 
 	.nv-edd-content {
+
 		margin-bottom: 80px;
 
 		.nv-edd-buy-btn {
@@ -12,8 +13,14 @@
 			padding: 20px 50px;
 		}
 
+		.edd_download_purchase_form {
+			text-align: var(--edd-buy-btn-align, left);
+		}
+
 		.edd_purchase_submit_wrapper .edd-cart-added-alert {
 			margin-top: 10px;
+			position: relative;
+			text-align: var(--edd-buy-btn-align, left);
 		}
 
 	}

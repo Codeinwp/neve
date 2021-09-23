@@ -40,14 +40,15 @@ class Layout_Downloads extends Base_Customizer {
 			return;
 		}
 
-		$this->section_downloads();
-		$this->add_layout_controls();
+		$this->section_edd();
+		$this->add_single_download_layout_controls();
+		$this->add_archive_downloads_layout_controls();
 	}
 
 	/**
 	 * Add customize section
 	 */
-	private function section_downloads() {
+	private function section_edd() {
 		$this->add_section(
 			new Section(
 				'neve_edd_archive',
@@ -72,9 +73,79 @@ class Layout_Downloads extends Base_Customizer {
 	}
 
 	/**
-	 * Add EDD layout controls.
+	 * Add EDD single download layout controls.
 	 */
-	private function add_layout_controls() {
+	private function add_single_download_layout_controls() {
+
+
+		$this->add_control(
+			new Control(
+				'neve_edd_single_post_layout',
+				array(
+					'sanitize_callback' => 'sanitize_text_field',
+				),
+				array(
+					'label'            => esc_html__( 'Single Post', 'neve' ),
+					'section'          => 'neve_edd_single_posts',
+					'priority'         => 10,
+					'class'            => 'single-post-layout-accordion',
+					'accordion'        => true,
+					'controls_to_wrap' => 1,
+				),
+				'Neve\Customizer\Controls\Heading'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_edd_single_post_buy_btn_position',
+				[
+					'sanitize_callback' => 'neve_sanitize_alignment',
+					'transport'         => 'postMessage',
+					'default'           => array(
+						'mobile'  => 'center',
+						'tablet'  => 'left',
+						'desktop' => 'left',
+					),
+				],
+				[
+					'label'                 => esc_html__( 'Buy Button Position', 'neve' ),
+					'section'               => 'neve_edd_single_posts',
+					'priority'              => 15,
+					'choices'               => [
+						'left'   => [
+							'tooltip' => esc_html__( 'Left', 'neve' ),
+							'icon'    => 'editor-alignleft',
+						],
+						'center' => [
+							'tooltip' => esc_html__( 'Center', 'neve' ),
+							'icon'    => 'editor-aligncenter',
+						],
+						'right'  => [
+							'tooltip' => esc_html__( 'Right', 'neve' ),
+							'icon'    => 'editor-alignright',
+						],
+					],
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'       => '--edd-buy-btn-align',
+							'responsive' => true,
+							'selector'   => '.nv-edd-content .edd_download_purchase_form',
+						],
+					],
+					'show_labels'           => true,
+				],
+				'\Neve\Customizer\Controls\React\Responsive_Radio_Buttons'
+			)
+		);
+
+	}
+
+	/**
+	 * Add EDD archive layout controls.
+	 */
+	private function add_archive_downloads_layout_controls() {
 	
 		$this->add_control(
 			new Control(
@@ -88,9 +159,9 @@ class Layout_Downloads extends Base_Customizer {
 					'priority'         => 10,
 					'class'            => 'grid-layout-accordion',
 					'accordion'        => true,
-					'controls_to_wrap' => 2,
+					'controls_to_wrap' => 3,
 				),
-				'Neve\Customizer\Controls\Heading'
+				'\Neve\Customizer\Controls\Heading'
 			)
 		);
 
@@ -124,7 +195,7 @@ class Layout_Downloads extends Base_Customizer {
 						],
 					],
 				],
-				'Neve\Customizer\Controls\React\Responsive_Range'
+				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)
 		);
 
@@ -160,7 +231,7 @@ class Layout_Downloads extends Base_Customizer {
 						],
 					],
 				],
-				'Neve\Customizer\Controls\React\Responsive_Range'
+				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)
 		);
 
@@ -185,27 +256,10 @@ class Layout_Downloads extends Base_Customizer {
 						],
 					],
 				),
-				'Neve\Customizer\Controls\React\Color'
+				'\Neve\Customizer\Controls\React\Color'
 			)
 		);
 
-		$this->add_control(
-			new Control(
-				'neve_edd_single_post_layout',
-				array(
-					'sanitize_callback' => 'sanitize_text_field',
-				),
-				array(
-					'label'            => esc_html__( 'Single Post', 'neve' ),
-					'section'          => 'neve_edd_single_posts',
-					'priority'         => 10,
-					'class'            => 'single-post-layout-accordion',
-					'accordion'        => true,
-					'controls_to_wrap' => 5,
-				),
-				'Neve\Customizer\Controls\Heading'
-			)
-		);
 	}
 
 }
