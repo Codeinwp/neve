@@ -36,7 +36,8 @@ abstract class Abstract_Builder implements Builder {
 	const COLUMNS_NUMBER     = 'columns_number';
 	const COLUMNS_LAYOUT     = 'columns_layout';
 	const HEIGHT_SETTING     = 'height';
-	const BOTTOM_BORDER      = 'bottom_border';
+	const BOTTOM_BORDER      = 'header_bottom_border';
+	const BORDER_COLOR       = 'header_border_color';
 	const SKIN_SETTING       = 'skin';
 	const TEXT_COLOR         = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
@@ -181,6 +182,7 @@ abstract class Abstract_Builder implements Builder {
 			'main'    => '#ffffff',
 			'bottom'  => '#ffffff',
 			'sidebar' => '#ffffff',
+			'border'  => '#e3e3e3',
 		),
 		'footer'      => array(
 			'top'    => '#ffffff',
@@ -392,46 +394,6 @@ abstract class Abstract_Builder implements Builder {
 			);
 		}
 
-		SettingsManager::get_instance()->add(
-			[
-				'id'                    => self::BOTTOM_BORDER,
-				'group'                 => $row_setting_id,
-				'tab'                   => SettingsManager::TAB_STYLE,
-				'section'               => $row_setting_id,
-				'label'                 => __( 'Bottom border width', 'neve' ),
-				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
-				'live_refresh_selector' => '.header-main',
-				'live_refresh_css_prop' => [
-					'cssVar' => [
-						'responsive' => true,
-						'vars'       => '--borderWidth',
-						'suffix'     => 'px',
-						'fallback'   => '0',
-						'selector'   => '.' . $this->get_id() . '-' . $row_id,
-					],
-					'prop'   => 'border-bottom-width',
-					'unit'   => 'px',
-				],
-				'options'               => [
-					'input_attrs' => [
-						'step'       => 1,
-						'min'        => 0,
-						'max'        => 50,
-						'defaultVal' => [
-							'mobile'  => 0,
-							'tablet'  => 0,
-							'desktop' => 0,
-						],
-						'units'      => [ 'px' ],
-					],
-				],
-				'transport'             => 'postMessage',
-				'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
-				'default'               => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
-				'conditional_header'    => $this->get_id() === 'header',
-			]
-		);
-
 		if ( $this->columns_layout && neve_is_new_builder() ) {
 			$this->add_columns_layout_controls( $row_setting_id );
 		}
@@ -490,6 +452,69 @@ abstract class Abstract_Builder implements Builder {
 				'default'               => $default_colors['text'],
 			]
 		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::BOTTOM_BORDER,
+				'group'                 => $row_setting_id,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'section'               => $row_setting_id,
+				'label'                 => __( 'Divider width', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
+				'live_refresh_selector' => $row_class,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'responsive' => true,
+						'vars'       => '--headerBorderWidth',
+						'suffix'     => 'px',
+						'fallback'   => '0',
+						'selector'   => '.' . $this->get_id() . '-' . $row_id,
+					],
+					'prop'   => 'border-bottom-width',
+					'unit'   => 'px',
+				],
+				'options'               => [
+					'input_attrs' => [
+						'step'       => 1,
+						'min'        => 0,
+						'max'        => 50,
+						'defaultVal' => [
+							'mobile'  => 0,
+							'tablet'  => 0,
+							'desktop' => 0,
+						],
+						'units'      => [ 'px' ],
+					],
+				],
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
+				'default'               => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+				'conditional_header'    => $this->get_id() === 'header',
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::BORDER_COLOR,
+				'group'                 => $row_setting_id,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'label'                 => __( 'Divider Color', 'neve' ),
+				'section'               => $row_setting_id,
+				'conditional_header'    => $this->get_id() === 'header',
+				'type'                  => 'neve_color_control',
+				'transport'             => 'postMessage',
+				'live_refresh_selector' => $row_class,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => '--headerBorderColor',
+						'selector' => '.' . $this->get_id() . '-' . $row_id,
+					],
+				],
+				'sanitize_callback'     => 'wp_filter_nohtml_kses',
+				'default'               => $this->default_colors['header']['border'],
+			]
+		);
+
 		do_action( 'hfg_row_settings', $this->get_id(), $row_id, $row_setting_id );
 	}
 
@@ -1075,12 +1100,7 @@ abstract class Abstract_Builder implements Builder {
 			];
 		}
 
-		$rules['--color'] = [
-			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
-			Dynamic_Selector::META_DEFAULT => $default_colors['text'],
-		];
-
-		$rules['--borderWidth'] = [
+		$rules['--headerBorderWidth'] = [
 			Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::BOTTOM_BORDER,
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
 			Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
@@ -1091,6 +1111,16 @@ abstract class Abstract_Builder implements Builder {
 
 				return '';
 			},
+		];
+
+		$rules['--headerBorderColor'] = [
+			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::BORDER_COLOR,
+			Dynamic_Selector::META_DEFAULT => $this->default_colors['header']['border'],
+		];
+
+		$rules['--color'] = [
+			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
+			Dynamic_Selector::META_DEFAULT => $default_colors['text'],
 		];
 
 		// If there is no default, use site background.
