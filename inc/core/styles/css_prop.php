@@ -372,7 +372,7 @@ class Css_Prop {
 	}
 
 	/**
-	 * Strip side spacesm wrap font family in quotes.
+	 * Strip side spaces wrap font family in quotes.
 	 *
 	 * @param string $family the font family.
 	 *
