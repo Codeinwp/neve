@@ -458,7 +458,7 @@ abstract class Abstract_Builder implements Builder {
 				'group'                 => $row_setting_id,
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'section'               => $row_setting_id,
-				'label'                 => __( 'Divider width', 'neve' ),
+				'label'                 => __( 'Border Width', 'neve' ),
 				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
@@ -495,7 +495,7 @@ abstract class Abstract_Builder implements Builder {
 				'id'                    => self::BORDER_COLOR,
 				'group'                 => $row_setting_id,
 				'tab'                   => SettingsManager::TAB_STYLE,
-				'label'                 => __( 'Divider Color', 'neve' ),
+				'label'                 => __( 'Border Color', 'neve' ),
 				'section'               => $row_setting_id,
 				'conditional_header'    => $this->get_id() === 'header',
 				'type'                  => 'neve_color_control',
