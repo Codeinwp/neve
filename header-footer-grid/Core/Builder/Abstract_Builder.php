@@ -1016,9 +1016,9 @@ abstract class Abstract_Builder implements Builder {
 		 * @param boolean $use_featured Flag to specify if featured image should be used or fallback.
 		 * @param array $meta           Additional meta for the image.
 		 *
-		 * @since 3.0.0
+		 * @since 3.0.5
 		 */
-		return apply_filters( 'nv_header_booster_featured_image_url', $image, $use_featured, $meta );
+		return apply_filters( 'nv_builder_row_image_url', $image, $use_featured, $meta );
 	}
 
 	/**
