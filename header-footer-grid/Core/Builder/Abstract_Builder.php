@@ -464,7 +464,7 @@ abstract class Abstract_Builder implements Builder {
 				'live_refresh_css_prop' => [
 					'cssVar' => [
 						'responsive' => true,
-						'vars'       => '--headerBorderWidth',
+						'vars'       => '--rowBWidth',
 						'suffix'     => 'px',
 						'fallback'   => '0',
 						'selector'   => '.' . $this->get_id() . '-' . $row_id,
@@ -503,7 +503,7 @@ abstract class Abstract_Builder implements Builder {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar' => [
-						'vars'     => '--headerBorderColor',
+						'vars'     => '--rowBColor',
 						'selector' => '.' . $this->get_id() . '-' . $row_id,
 					],
 				],
@@ -1097,7 +1097,7 @@ abstract class Abstract_Builder implements Builder {
 			];
 		}
 
-		$rules['--headerBorderWidth'] = [
+		$rules['--rowBWidth'] = [
 			Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::BOTTOM_BORDER,
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
 			Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
@@ -1110,7 +1110,7 @@ abstract class Abstract_Builder implements Builder {
 			},
 		];
 
-		$rules['--headerBorderColor'] = [
+		$rules['--rowBColor'] = [
 			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::BORDER_COLOR,
 			Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
 		];
