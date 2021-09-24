@@ -80,10 +80,17 @@ $desktop: map-get($gl-devices-list, desktop);
 	}
 }
 
+[class*="row-inner"]:not(.footer--row-inner) {
+	border-bottom: var(--rowBWidth, 0) solid var(--rowBColor);
+}
+
+.footer--row-inner {
+	border-top: var(--rowBWidth, 0) solid var(--rowBColor);
+}
+
 [data-row-id] {
 	color: var(--color);
 	background: var(--bgColor);
-	border-bottom: var(--rowBWidth, 0) solid var(--rowBColor);
 
 	a {
 		color: var(--color);
