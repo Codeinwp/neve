@@ -1,5 +1,7 @@
 /* global _ */
 
+import { parseFontFamily } from './common.js';
+
 const directions = ['top', 'right', 'bottom', 'left'];
 const devices = ['mobile', 'tablet', 'desktop'];
 const mediaQueries = {
@@ -199,11 +201,20 @@ export class CSSVariablesHandler {
 			suffix,
 			fallback,
 			validateSuffix,
+			settingType,
 		} = this;
+
 		if (typeof selector)
 			if (!value) {
 				return `${selector} {${vars}:${fallback};}`;
 			}
+
+		if (
+			settingType === '\\Neve\\Customizer\\Controls\\React\\Font_Family'
+		) {
+			return `${selector} {${vars}:${parseFontFamily(value)};}`;
+		}
+
 		return `${selector} {${vars}:${value}${validateSuffix(suffix)};}`;
 	}
 
