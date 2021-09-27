@@ -4,7 +4,7 @@
 
 #neve-edd-grid-container {
 	display: grid;
-	gap: var(--grid-cols-spacing, 40);
+	gap: var(--grid-cols-spacing, 40px);
 	grid-template-columns: repeat(var(--grid-cols, 4), auto);
 	margin-bottom: 50px;
 }

@@ -57,7 +57,6 @@ let all_coverage = {
 	__export = [],
 	modern = {
 		'assets/js/build/modern/shop.js': 'assets/js/src/shop/app.js',
-		'assets/js/build/modern/edd.js': 'assets/js/src/edd/app.js',
 		'assets/js/build/modern/frontend.js': 'assets/js/src/frontend/app.js',
 	};
 
