@@ -1,3 +1,5 @@
+const allOptions = ['media', 'custom layouts', 'pages', 'posts'];
+
 describe('Multiselect', function () {
 	beforeEach(function () {
 		cy.visitStorybook();
@@ -7,23 +9,6 @@ describe('Multiselect', function () {
 		beforeEach(function () {
 			cy.loadStory('Customizer/Controls/Multiselect', 'Default');
 			cy.get('.value-previewer > pre').as('valuePreview');
-		});
-		it('Changes color when hovering to remove an item', function () {
-			cy.findByRole('button', {
-				name: /posts/i,
-			})
-				.realHover()
-				.should('have.css', 'background-color', 'rgb(236, 124, 124)');
-			cy.findByText(/remove item/i);
-		});
-
-		it('Changes color when hovering to add an item', function () {
-			cy.findByRole('button', {
-				name: /media/i,
-			})
-				.realHover()
-				.should('have.css', 'background-color', 'rgb(110, 183, 122)');
-			cy.findByText(/add item/i);
 		});
 	});
 
@@ -35,11 +20,7 @@ describe('Multiselect', function () {
 
 		it('Can add all items', function () {
 			cy.get('@valuePreview').should('have.text', '[]');
-			cy.findByText(/add items by clicking the ones below\./i);
-			cy.findByText(/all items are already selected\./i).should('not.exist');
-			clickAllOptions();
-			cy.findByText(/all items are already selected\./i);
-			cy.findByText(/add items by clicking the ones below\./i).should('not.exist');
+			addAllOptions();
 			cy.get('@valuePreview').should(
 				'have.text',
 				'[\n "attachment",\n "neve_custom_layouts",\n "page",\n "post"\n]',
@@ -53,31 +34,40 @@ describe('Multiselect', function () {
 			cy.get('.value-previewer > pre').as('valuePreview');
 		});
 		it('Can remove all items', function () {
-			cy.findByText(/all items are already selected\./i);
-			cy.findByText(/add items by clicking the ones below\./i).should('not.exist');
 			cy.get('@valuePreview').should(
 				'have.text',
 				'[\n "attachment",\n "neve_custom_layouts",\n "page",\n "post"\n]',
 			);
-			clickAllOptions();
+			cy.get('.dd-toggle').should('not.have.attr', 'disabled');
+			removeAllOptions();
 			cy.get('@valuePreview').should('have.text', '[]');
-			cy.findByText(/add items by clicking the ones below\./i);
-			cy.findByText(/all items are already selected\./i).should('not.exist');
 		});
 	});
 });
 
-const clickAllOptions = () => {
-	cy.findByRole('button', {
-		name: /media/i,
-	}).click();
-	cy.findByRole('button', {
-		name: /custom layouts/i,
-	}).click();
-	cy.findByRole('button', {
-		name: /pages/i,
-	}).click();
-	cy.findByRole('button', {
-		name: /posts/i,
-	}).click();
+const addAllOptions = () => {
+	cy.get('.dd-toggle button').as('toggle');
+
+	cy.get('@toggle').should('not.have.attr', 'disabled');
+
+	allOptions.forEach((option) => {
+		cy.get('@toggle').click();
+		cy.get('.components-popover__content').should('be.visible');
+		cy.get('button').contains(option, { matchCase: false }).click();
+	});
+
+	cy.get('.components-popover__content').should('not.exist');
+	cy.get('@toggle').should('have.attr', 'disabled');
+};
+
+const removeAllOptions = () => {
+	cy.get('.dd-toggle button').as('toggle');
+
+	cy.get('@toggle').should('have.attr', 'disabled');
+
+	allOptions.forEach((option) => {
+		cy.get('.token').contains(option, { matchCase: false }).click();
+	});
+
+	cy.get('@toggle').should('not.have.attr', 'disabled');
 };
