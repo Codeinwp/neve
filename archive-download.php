@@ -30,7 +30,7 @@ function neve_edd_download_nav() {
 	);
 	?>
 
-	<div id="neve-edd-download-pagination" class="navigation">
+	<div id="nv-edd-download-pagination" class="navigation">
 		<?php 
 		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $pagination; 
@@ -46,10 +46,10 @@ get_header();
 
 ?>
 
-<div id= "neve-edd-download-archive-container" class="<?php echo esc_attr( $container_class ); ?>">
+<div id= "nv-edd-download-archive-container" class="<?php echo esc_attr( $container_class ); ?>">
 
 		<div id="wrapper">
-			<div id="neve-edd-grid-container">
+			<div id="nv-edd-grid-container">
 				<?php
 					/**
 					 * Executes actions before the post content.

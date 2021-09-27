@@ -1,27 +1,31 @@
-#neve-edd-download-archive-container {
+#nv-edd-download-archive-container {
 	margin: 60px auto;
 }
 
-#neve-edd-grid-container {
+#nv-edd-grid-container {
 	display: grid;
 	gap: var(--grid-cols-spacing, 40px);
 	grid-template-columns: repeat(var(--grid-cols, 4), auto);
 	margin-bottom: 50px;
 }
 
-#neve-edd-grid-container p {
+#nv-edd-grid-container p {
 	margin-bottom: 20px;
 }
 
-.neve-edd-download-item {
+.nv-edd-download-item {
 	margin-top: 40px;
 }
 
-.neve-edd-download-title {
-	font-weight: 700;
+.nv-edd-download-title {
+	font-size: var(--fontSize, "initial");
+	letter-spacing: var(--letterSpacing, "initial");
+	line-height: var(--lineHeight, "initial");
+	text-transform: var(--textTransform, "initial");
+	font-weight: var(--fontWeight, 700);
 }
 
-.neve-edd-download-buy-btn a {
+.nv-edd-download-buy-btn a {
 	background: var(--edd-btn-color, var(--primaryBtnBg, #2f5aae));
 	border-radius: 3px;
 	color: #fff;
@@ -29,16 +33,16 @@
 	padding: 10px;
 }
 
-.neve-edd-download-buy-btn a:hover {
+.nv-edd-download-buy-btn a:hover {
 	opacity: 1;
 	color: #fff;
 }
 
-#neve-edd-download-pagination {
+#nv-edd-download-pagination {
 	margin-top: 150px;
 }
 
-#neve-edd-download-pagination .page-numbers {
+#nv-edd-download-pagination .page-numbers {
 	background: #f8f8f8;
 	color: #000;
 	margin-right: 20px;

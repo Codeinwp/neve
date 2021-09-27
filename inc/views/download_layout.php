@@ -54,15 +54,15 @@ class Download_Layout extends Base_View {
 		$id = get_the_ID();
 		?>
 
-		<div class="neve-edd-download-item" id="edd_download_<?php echo esc_html( (string) $id ); ?>">
+		<div class="nv-edd-download-item" id="edd_download_<?php echo esc_html( (string) $id ); ?>">
 			<?php do_action( 'edd_download_before' ); ?>
 			<ul>
-				<li class="neve-edd-download-thumbnail">
+				<li class="nv-edd-download-thumbnail">
 					<a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_post_thumbnail( 'medium' ); ?></a>
 				</li>
 				<?php do_action( 'edd_download_after_thumbnail' ); ?>
 				<?php do_action( 'edd_download_before_title' ); ?>
-				<li class="neve-edd-download-download-meta neve-edd-download-title">
+				<li class="nv-edd-download-download-meta nv-edd-download-title">
 					<p>
 						<a href="<?php echo esc_url( get_permalink() ); ?>">
 							<?php the_title(); ?>
@@ -70,7 +70,7 @@ class Download_Layout extends Base_View {
 					</p>
 				</li>
 				<?php do_action( 'edd_download_after_title' ); ?>
-				<li class="neve-edd-download-download-meta neve-edd-download-price">
+				<li class="nv-edd-download-download-meta nv-edd-download-price">
 					<p>
 						<?php 
 						if ( edd_has_variable_prices( $id ) ) {
@@ -86,7 +86,7 @@ class Download_Layout extends Base_View {
 					<?php // echo edd_get_purchase_link( array( 'download_id' => get_the_ID(), 'text' => 'Buy Now' ) ); ?>
 					</div>
 				</li>  -->
-				<li class="neve-edd-download-download-meta neve-edd-download-buy-btn">
+				<li class="nv-edd-download-download-meta nv-edd-download-buy-btn">
 					<a href="<?php echo esc_url( get_permalink() ); ?>">
 						<?php esc_html_e( 'Buy Now', 'neve' ); ?>
 					</a>
