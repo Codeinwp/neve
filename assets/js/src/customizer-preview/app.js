@@ -1,6 +1,8 @@
 /* global neveCustomizePreview, _,jQuery */
+
 import { initNavigation, repositionDropdowns } from '../frontend/navigation';
 import { removeClass, addClass } from '../utils.js';
+import { parseFontFamily } from './common.js';
 import { CSSVariablesHandler, addCSS, addTemplateCSS } from './css-var-handler';
 const { newSkin } = window.neveCustomizePreview;
 
@@ -553,12 +555,12 @@ window.addEventListener('load', function () {
 		const id = data.controlId + '_font_family';
 
 		if (source.toLowerCase() === 'google') {
-			const linkNode = document.querySelector('#' + id),
-				fontValue = data.value.split(' ').join('+').split('"').join(''),
-				url =
-					'//fonts.googleapis.com/css?family=' +
-					fontValue +
-					'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&display=swap"';
+			const linkNode = document.querySelector('#' + id);
+			const fontValue = data.value.replace(' ', '+');
+			const url =
+				'//fonts.googleapis.com/css?family=' +
+				fontValue +
+				'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&display=swap"';
 			if (linkNode !== null) {
 				linkNode.setAttribute('href', url);
 			} else {
@@ -598,12 +600,13 @@ window.addEventListener('load', function () {
 				data.controlId,
 				selector + '{font-family: ' + defaultFontface + ';}'
 			);
-		} else {
-			addCSS(
-				data.controlId,
-				selector + '{font-family: ' + data.value + ' ;}'
-			);
+			return false;
 		}
+		const parsedFontFamily = parseFontFamily(data.value);
+		addCSS(
+			data.controlId,
+			selector + '{font-family: ' + parsedFontFamily + ' ;}'
+		);
 	});
 
 	wp.customize('background_image', function (value) {

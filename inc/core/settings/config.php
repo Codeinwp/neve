@@ -53,6 +53,7 @@ class Config {
 	const MODS_TYPEFACE_H5                 = 'neve_h5_typeface_general';
 	const MODS_TYPEFACE_H6                 = 'neve_h6_typeface_general';
 	const MODS_FONT_GENERAL                = 'neve_body_font_family';
+	const MODS_FONT_GENERAL_VARIANTS       = 'neve_body_font_family_variants';
 	const MODS_FONT_HEADINGS               = 'neve_headings_font_family';
 	const MODS_DEFAULT_CONTAINER_STYLE     = 'neve_default_container_style';
 	const MODS_SINGLE_POST_CONTAINER_STYLE = 'neve_single_post_container_style';
