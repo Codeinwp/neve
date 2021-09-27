@@ -146,10 +146,10 @@ class Loader {
 		$fonts  = neve_get_google_fonts();
 		$chunks = array_chunk( $fonts, absint( count( $fonts ) / 5 ) );
 
-		foreach ( $chunks as $fonts_chunk ) {
+		foreach ( $chunks as $index => $fonts_chunk ) {
 			wp_enqueue_style(
-				'neve-fonts-control-google-fonts',
-				'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=Abc&display=swap"',
+				'neve-fonts-control-google-fonts-' . $index,
+				'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=Abc"',
 				[],
 				NEVE_VERSION
 			);
