@@ -10,20 +10,50 @@ const Ordering = lazy(() =>
 import { __ } from '@wordpress/i18n';
 
 const OrderingComponent = ({ control }) => {
-	const [value, setValue] = useState(maybeParseJson(control.setting.get()));
-	const [isVisible, setVisible] = useState(false);
 	const { section, components, label } = control.params;
 
-	const updateValue = (newVal) => {
-		const dbValue = newVal
-			.filter((element) => {
-				return element.visible === true;
-			})
-			.map((element) => {
-				return { id: element.id };
+	const maybeNormalizeValue = (val) => {
+		const needNormalize =
+			val.filter((e) => typeof e === 'string').length > 0;
+		const normalizedValue = needNormalize
+			? val.map((element) => {
+					return { id: element, visible: true };
+			  })
+			: val;
+
+		if (needNormalize) {
+			const enabledItems = normalizedValue.map((element) => {
+				element.visible = true;
+				return element;
 			});
+
+			const disabledItems = Object.keys(components)
+				.filter((element) => {
+					return (
+						enabledItems.filter((el) => {
+							return element === el.id;
+						}).length === 0
+					);
+				})
+				.map((element) => {
+					return { id: element, visible: false };
+				});
+
+			return [...enabledItems, ...disabledItems];
+		}
+
+		return normalizedValue;
+	};
+
+	const [value, setValue] = useState(
+		maybeNormalizeValue(maybeParseJson(control.setting.get()))
+	);
+
+	const [isVisible, setVisible] = useState(false);
+
+	const updateValue = (newVal) => {
 		setValue(newVal);
-		control.setting.set(JSON.stringify(dbValue));
+		control.setting.set(JSON.stringify(newVal));
 	};
 
 	useEffect(() => {

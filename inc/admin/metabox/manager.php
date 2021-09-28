@@ -417,7 +417,8 @@ final class Manager {
 		$default_order = apply_filters( 'neve_single_post_elements_default_order', $default_components );
 		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
 		$content_order = json_decode( $content_order, true );
-		return neve_maybe_normalize_ordering( $content_order );
+		return $content_order;
+//		return neve_maybe_normalize_ordering( $content_order );
 	}
 
 	/**

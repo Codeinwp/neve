@@ -559,22 +559,22 @@ class Layout_Single_Post extends Base_Customizer {
 		 */
 		$components = apply_filters( 'neve_single_post_elements', $all_components );
 
-		$this->add_control(
-			new Control(
-				'neve_layout_single_post_elements_order',
-				[
-//					'sanitize_callback' => [ $this, 'sanitize_post_elements_ordering' ],
-					'default'           => wp_json_encode( $order_default_components ),
-				],
-				[
-					'label'      => esc_html__( 'Elements Order', 'neve' ),
-					'section'    => 'neve_single_post_layout',
-					'components' => $components,
-					'priority'   => 8,
-				],
-				'Neve\Customizer\Controls\React\Ordering'
-			)
-		);
+//		$this->add_control(
+//			new Control(
+//				'neve_layout_single_post_elements_order',
+//				[
+////					'sanitize_callback' => [ $this, 'sanitize_post_elements_ordering' ],
+//					'default'           => wp_json_encode( $order_default_components ),
+//				],
+//				[
+//					'label'      => esc_html__( 'Elements Order', 'neve' ),
+//					'section'    => 'neve_single_post_layout',
+//					'components' => $components,
+//					'priority'   => 8,
+//				],
+//				'Neve\Customizer\Controls\React\Ordering'
+//			)
+//		);
 
 		if ( neve_is_new_skin() ) {
 			$this->add_control(
@@ -644,22 +644,22 @@ class Layout_Single_Post extends Base_Customizer {
 			]
 		);
 
-		$this->add_control(
-			new Control(
-				'neve_single_post_meta_ordering',
-				[
-					'sanitize_callback' => 'neve_sanitize_meta_ordering',
-					'default'           => $order_default_components,
-				],
-				[
-					'label'      => esc_html__( 'Meta Order', 'neve' ),
-					'section'    => $this->section,
-					'components' => $components,
-					'priority'   => 10,
-				],
-				'Neve\Customizer\Controls\React\Ordering'
-			)
-		);
+//		$this->add_control(
+//			new Control(
+//				'neve_single_post_meta_ordering',
+//				[
+//					'sanitize_callback' => 'neve_sanitize_meta_ordering',
+//					'default'           => $order_default_components,
+//				],
+//				[
+//					'label'      => esc_html__( 'Meta Order', 'neve' ),
+//					'section'    => $this->section,
+//					'components' => $components,
+//					'priority'   => 10,
+//				],
+//				'Neve\Customizer\Controls\React\Ordering'
+//			)
+//		);
 
 		$default_separator = get_theme_mod( 'neve_metadata_separator', esc_html( '/' ) );
 		$this->add_control(

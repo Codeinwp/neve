@@ -280,9 +280,9 @@ class Layout_Blog extends Base_Customizer {
 
 
 		$order_default_components = [
-			[ 'id' => 'thumbnail' ],
-			[ 'id' => 'title-meta' ],
-			[ 'id' => 'excerpt' ],
+			[ 'id' => 'thumbnail', 'visible' => true ],
+			[ 'id' => 'title-meta', 'visible' => true ],
+			[ 'id' => 'excerpt', 'visible' => true ],
 		];
 
 		$this->add_control(
@@ -377,9 +377,10 @@ class Layout_Blog extends Base_Customizer {
 		);
 
 		$order_default_components = [
-			[ 'id' => 'author' ],
-			[ 'id' => 'date' ],
-			[ 'id' => 'comments' ],
+			[ 'id' => 'author', 'visible' => true ],
+			[ 'id' => 'date', 'visible' => true ],
+			[ 'id' => 'comments', 'visible' => true ],
+			[ 'id' => 'category', 'visible' => false ],
 		];
 
 		$components = apply_filters(
@@ -555,11 +556,12 @@ class Layout_Blog extends Base_Customizer {
 	 */
 	public function should_show_meta_order() {
 		$content_order = Template_Parts::get_elements_order();
-		if ( ! in_array( ['id' => 'title-meta'], $content_order, true ) ) {
-			return false;
+		foreach ( $content_order as $element ) {
+			if ( $element['id'] === 'title-meta' && $element['visible'] === true ){
+				return true;
+			}
 		}
-
-		return true;
+		return false;
 	}
 
 	/**

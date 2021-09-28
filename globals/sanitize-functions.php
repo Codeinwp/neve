@@ -260,23 +260,24 @@ function neve_sanitize_position( $input ) {
  * Sanitize meta order control.
  */
 function neve_sanitize_meta_ordering( $value ) {
-	$allowed = array(
-		['id' => 'author'],
-		['id' => 'category'],
-		['id' => 'date'],
-		['id' => 'comments'],
-		['id' => 'reading'],
-	);
+	$allowed = [ 'author', 'category', 'date', 'comments'  ];
+	$default_value = [
+		[ 'id' => 'author', 'visible' => true ],
+		[ 'id' => 'date', 'visible' => true ],
+		[ 'id' => 'comments', 'visible' => true ],
+		[ 'id' => 'category', 'visible' => false ],
+	];
 
 	if ( empty( $value ) ) {
-		return $allowed;
+		return $default_value;
 	}
 
 	$decoded = json_decode( $value, true );
+	$decoded = neve_maybe_normalize_ordering( $decoded, $allowed );
 
 	foreach ( $decoded as $val ) {
-		if ( ! in_array( $val, $allowed, true ) ) {
-			return $allowed;
+		if ( ! in_array( $val['id'], $allowed, true ) ) {
+			return $default_value;
 		}
 	}
 
@@ -287,21 +288,23 @@ function neve_sanitize_meta_ordering( $value ) {
  * Sanitize content order control.
  */
 function neve_sanitize_post_content_ordering( $value ) {
-	$allowed = [
-		[ 'id' => 'thumbnail' ],
-		[ 'id' => 'title-meta' ],
-		[ 'id' => 'excerpt' ],
+	$allowed = [ 'thumbnail', 'title-meta', 'excerpt' ];
+	$default_value = [
+		[ 'id' => 'thumbnail', 'visible' => true ],
+		[ 'id' => 'title-meta', 'visible' => true ],
+		[ 'id' => 'excerpt', 'visible' => true ],
 	];
 
 	if ( empty( $value ) ) {
-		return $allowed;
+		return $default_value;
 	}
 
 	$decoded = json_decode( $value, true );
+	$decoded = neve_maybe_normalize_ordering( $decoded, $allowed );
 
-	foreach ( $decoded as $val ) {
-		if ( ! in_array( $val, $allowed, true ) ) {
-			return $allowed;
+	foreach ( $decoded as $key => $val ) {
+		if ( ! in_array( $val['id'], $allowed, true ) ) {
+			return $default_value;
 		}
 	}
 

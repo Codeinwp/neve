@@ -61,14 +61,15 @@ class Template_Parts extends Base_View {
 	 * @return array
 	 */
 	static function get_elements_order() {
+		$components = [ 'thumbnail', 'title-meta', 'excerpt', ];
 		$default_order = [
-			[ 'id' => 'thumbnail' ],
-			[ 'id' => 'title-meta' ],
-			[ 'id' => 'excerpt' ],
+			[ 'id' => 'thumbnail', 'visible' => true ],
+			[ 'id' => 'title-meta', 'visible' => true ],
+			[ 'id' => 'excerpt', 'visible' => true ],
 		];
 		$order = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) );
 		$order = json_decode( $order, true );
-		return neve_maybe_normalize_ordering( $order );
+		return neve_maybe_normalize_ordering( $order, $components );
 	}
 
 	/**
@@ -192,16 +193,19 @@ class Template_Parts extends Base_View {
 	 * @return array
 	 */
 	static function get_meta_order() {
+		$components = [ 'author', 'category', 'date', 'comments' ];
 		$default_meta_order = wp_json_encode(
 			[
-				[ 'id' => 'author' ],
-				[ 'id' => 'date' ],
-				[ 'id' => 'comments' ]
+				[ 'id' => 'author', 'visible' => true ],
+				[ 'id' => 'date', 'visible' => true ],
+				[ 'id' => 'comments', 'visible' => true ],
+				[ 'id' => 'category', 'visible' => false ],
 			]
 		);
 		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
 		$meta_order = json_decode( $meta_order, true );
-		return neve_maybe_normalize_ordering( $meta_order );
+
+		return neve_maybe_normalize_ordering( $meta_order, $components );
 	}
 
 	/**
@@ -212,7 +216,6 @@ class Template_Parts extends Base_View {
 	private function get_meta() {
 
 		$meta_order = self::get_meta_order();
-		$meta_order = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
 
 		ob_start();
 		do_action( 'neve_post_meta_archive', $meta_order );
@@ -323,6 +326,9 @@ class Template_Parts extends Base_View {
 	private function get_ordered_content_parts( $order, $exclude_thumbnail = false ) {
 		$markup        = '';
 		foreach ( $order as $content_bit ) {
+			if ( $content_bit['visible'] === false ) {
+				continue;
+			}
 			switch ( $content_bit['id'] ) {
 				case 'thumbnail':
 					if ( $exclude_thumbnail ) {

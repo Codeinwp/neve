@@ -1,10 +1,8 @@
 import { ReactSortable } from 'react-sortablejs';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-
 import { __ } from '@wordpress/i18n';
 import { Tooltip, Icon } from '@wordpress/components';
-import { useEffect } from '@wordpress/element';
 
 const Handle = () => (
 	<Tooltip text={__('Drag to Reorder', 'neve')}>
@@ -89,40 +87,6 @@ const Ordering = ({
 		onUpdate(updatedValue);
 	};
 
-	useEffect(() => {
-		const maybeNormalizeData = (val) => {
-			const needNormalize =
-				val.filter((e) => typeof e === 'string').length > 0;
-			if (needNormalize) {
-				return val.map((element) => {
-					return { id: element, visible: true };
-				});
-			}
-			return val;
-		};
-
-		const normalizedValue = maybeNormalizeData(value);
-
-		const enabledItems = normalizedValue.map((element) => {
-			element.visible = true;
-			return element;
-		});
-
-		const disabledItems = Object.keys(components)
-			.filter((element) => {
-				return (
-					enabledItems.filter((el) => {
-						return element === el.id;
-					}).length === 0
-				);
-			})
-			.map((element) => {
-				return { id: element, visible: false };
-			});
-
-		onUpdate([...enabledItems, ...disabledItems]);
-	}, []);
-
 	return (
 		<>
 			{label /* TODO: Add proper label id for this */ && (
@@ -153,9 +117,9 @@ const Ordering = ({
 Ordering.propTypes = {
 	label: PropTypes.string.isRequired,
 	onUpdate: PropTypes.func.isRequired,
-	value: PropTypes.object.isRequired,
+	value: PropTypes.array.isRequired,
 	allowsToggle: PropTypes.bool,
-	components: PropTypes.array.isRequired,
+	components: PropTypes.object.isRequired,
 };
 
 export default Ordering;

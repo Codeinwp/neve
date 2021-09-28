@@ -520,11 +520,21 @@ function neve_safe_get( $url, $args = array() ) {
  *
  * @return array
  */
-function neve_maybe_normalize_ordering( $value ) {
+function neve_maybe_normalize_ordering( $value, $components ) {
 	foreach ( $value as $key => $val ){
 		if ( is_string( $val ) ){
-			$value[$key] = ['id' => $val ];
+			$value[$key] = ['id' => $val, 'visible' => true ];
+
+			$index = array_search( $val, $components, true );
+			if ( $index !== false) {
+				unset($components[$index]);
+			}
 		}
 	}
+
+	foreach ( $components as $component ) {
+		$value[] = [ 'id' => $component, 'visible' => false ];
+	}
+
 	return $value;
 }
