@@ -95,7 +95,6 @@ class Core_Loader {
 				'Views\Post_Layout',
 				'Views\Page_Layout',
 				'Views\Product_Layout',
-				'Views\Download_Layout',
 				'Views\Content_None',
 				'Views\Content_404',
 				'Views\Breadcrumbs',
@@ -124,6 +123,7 @@ class Core_Loader {
 				'Compatibility\Patterns',
 				'Compatibility\PWA',
 				'Compatibility\Web_Stories',
+				'Compatibility\Easy_Digital_Downloads',
 
 				'Admin\Metabox\Manager',
 				'Admin\Troubleshoot\Main',

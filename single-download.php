@@ -11,7 +11,7 @@ $container_class = apply_filters( 'neve_container_class_filter', 'container', 's
 get_header();
 
 ?>
-	<div class="<?php echo esc_attr( $container_class ); ?> single-download-container">
+	<div id="nv-single-download-container" class="<?php echo esc_attr( $container_class ); ?>">
 		<div class="row">
 			<?php do_action( 'neve_do_sidebar', 'single-post', 'left' ); ?>
 			<article id="download-<?php echo esc_attr( get_the_ID() ); ?>"

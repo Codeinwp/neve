@@ -1,6 +1,22 @@
-.single-download .single-download-container {
+.single-download #nv-single-download-container {
 
 	margin: 60px auto;
+
+	.nv-edd-single-download-title h1,
+	.nv-edd-single-download-meta {
+		font-weight: var(--fontWeight, "inherit");
+		letter-spacing: var(--letterSpacing, var(--h1LetterSpacing, 0));
+		line-height: var(--lineHeight, var(--h1LineHeight, 1.1));
+		text-transform: var(--textTransform, "inherit");
+	}
+
+	.nv-edd-single-download-title h1 {
+		font-size: var(--fontSize, var(--h1FontSize, "40px"));
+	}
+
+	.nv-edd-single-download-meta {
+		font-size: var(--fontSize, var(--bodyFontSize, "16px"));
+	}
 
 	.nv-edd-content {
 
@@ -26,8 +42,8 @@
 	}
 
 	.nv-edd-single-download-tags {
-		font-size: 20px;
-		font-weight: 700;
+		font-size: var(--fontSize, "20px");
+		font-weight: var(--fontWeight, 700);
 	}
 
 }

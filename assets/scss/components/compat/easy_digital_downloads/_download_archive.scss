@@ -1,57 +1,60 @@
 #nv-edd-download-archive-container {
+
 	margin: 60px auto;
-}
 
-#nv-edd-grid-container {
-	display: grid;
-	gap: var(--grid-cols-spacing, 40px);
-	grid-template-columns: repeat(var(--grid-cols, 4), auto);
-	margin-bottom: 50px;
-}
+	#nv-edd-grid-container {
+		display: grid;
+		gap: var(--grid-cols-spacing, 40px);
+		grid-template-columns: repeat(var(--grid-cols, 4), auto);
+		margin-bottom: 50px;
+	}
 
-#nv-edd-grid-container p {
-	margin-bottom: 20px;
-}
+	#nv-edd-grid-container p {
+		margin-bottom: 20px;
+	}
 
-.nv-edd-download-item {
-	margin-top: 40px;
-}
+	.nv-edd-download-item {
+		margin-top: 40px;
+	}
 
-.nv-edd-download-title {
-	font-size: var(--fontSize, "initial");
-	letter-spacing: var(--letterSpacing, "initial");
-	line-height: var(--lineHeight, "initial");
-	text-transform: var(--textTransform, "initial");
-	font-weight: var(--fontWeight, 700);
-}
+	.nv-edd-download-title,
+	.nv-edd-download-meta {
+		font-size: var(--fontSize, "inherit");
+		font-weight: var(--fontWeight, 700);
+		letter-spacing: var(--letterSpacing, "inherit");
+		line-height: var(--lineHeight, "inherit");
+		text-transform: var(--textTransform, "inherit");
+	}
 
-.nv-edd-download-buy-btn a {
-	background: var(--edd-btn-color, var(--primaryBtnBg, #2f5aae));
-	border-radius: 3px;
-	color: #fff;
-	text-decoration: none;
-	padding: 10px;
-}
-
-.nv-edd-download-buy-btn a:hover {
-	opacity: 1;
-	color: #fff;
-}
-
-#nv-edd-download-pagination {
-	margin-top: 150px;
-}
-
-#nv-edd-download-pagination .page-numbers {
-	background: #f8f8f8;
-	color: #000;
-	margin-right: 20px;
-	padding: 20px;
-
-	&.current {
-		background: #2f5aae;
+	.nv-edd-download-buy-btn a {
+		background: var(--edd-btn-color, var(--primaryBtnBg, #2f5aae));
 		border-radius: 3px;
 		color: #fff;
+		text-decoration: none;
+		padding: 10px;
 	}
+
+	.nv-edd-download-buy-btn a:hover {
+		opacity: 1;
+		color: #fff;
+	}
+
+	#nv-edd-download-pagination {
+		margin-top: 150px;
+	}
+
+	#nv-edd-download-pagination .page-numbers {
+		background: #f8f8f8;
+		color: #000;
+		margin-right: 20px;
+		padding: 20px;
+
+		&.current {
+			background: #2f5aae;
+			border-radius: 3px;
+			color: #fff;
+		}
+	}
+
 }
 

@@ -5,14 +5,14 @@
  *
  * @package Neve
  */
-namespace Neve\Views;
+namespace Neve\Compatibility;
 
 /**
- * Class Download_Layout
+ * Class Easy_Digital_Downloads
  *
- * @package Neve\Views
+ * @package Neve\Compatibility
  */
-class Download_Layout extends Base_View {
+class Easy_Digital_Downloads {
 
 	/**
 	 * Function that is run after instantiation.
@@ -62,7 +62,7 @@ class Download_Layout extends Base_View {
 				</li>
 				<?php do_action( 'edd_download_after_thumbnail' ); ?>
 				<?php do_action( 'edd_download_before_title' ); ?>
-				<li class="nv-edd-download-download-meta nv-edd-download-title">
+				<li class="nv-edd-download-title">
 					<p>
 						<a href="<?php echo esc_url( get_permalink() ); ?>">
 							<?php the_title(); ?>
@@ -70,13 +70,13 @@ class Download_Layout extends Base_View {
 					</p>
 				</li>
 				<?php do_action( 'edd_download_after_title' ); ?>
-				<li class="nv-edd-download-download-meta nv-edd-download-price">
-					<p>
+				<li class="nv-edd-download-meta">
+					<p class="nv-edd-download-price">
 						<?php 
 						if ( edd_has_variable_prices( $id ) ) {
 							echo wp_kses_post( edd_price_range( $id ) );
 						} else {
-							wp_kses_post( (string) edd_price( $id ) );  // echo's by default
+							wp_kses_post( (string) edd_price( $id ) );  // edd_price() function echo's by default
 						}
 						?>
 					</p>
@@ -86,7 +86,7 @@ class Download_Layout extends Base_View {
 					<?php // echo edd_get_purchase_link( array( 'download_id' => get_the_ID(), 'text' => 'Buy Now' ) ); ?>
 					</div>
 				</li>  -->
-				<li class="nv-edd-download-download-meta nv-edd-download-buy-btn">
+				<li class="nv-edd-download-buy-btn">
 					<a href="<?php echo esc_url( get_permalink() ); ?>">
 						<?php esc_html_e( 'Buy Now', 'neve' ); ?>
 					</a>
