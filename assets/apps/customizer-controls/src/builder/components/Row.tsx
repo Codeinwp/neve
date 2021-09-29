@@ -29,7 +29,7 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 		hasColumns,
 		previewSidebar,
 	} = useContext(BuilderContext);
-	const { updateLayout, togglePreviewSidebar } = actions;
+	const { updateLayout, togglePreviewSidebar, updateSidebarItems } = actions;
 	const slots: SlotTypes[] = ['left', 'c-left', 'center', 'c-right', 'right'];
 
 	const section = `hfg_${builder}_layout_${rowId}`;
@@ -92,6 +92,7 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 				}
 			});
 			setColumns(parsedColNumber);
+			updateSidebarItems();
 		};
 
 		window.wp.customize.control(
