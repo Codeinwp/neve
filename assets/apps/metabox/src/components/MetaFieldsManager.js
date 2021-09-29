@@ -1,5 +1,5 @@
 /* global metaSidebar */
-import PageOrder from './controls/PageOrder';
+import SortableItems from './controls/SortableItems';
 import {
 	alignCenterIcon,
 	alignLeftIcon,
@@ -36,13 +36,13 @@ class MetaFieldsManager extends Component {
 				: 'off',
 			neve_meta_reading_time: 'off',
 			neve_post_elements_order: JSON.stringify([
-				{ id: 'title' },
-				{ id: 'meta' },
-				{ id: 'thumbnail' },
-				{ id: 'content' },
-				{ id: 'tags' },
-				{ id: 'comments' },
-				{ id: 'post-navigation' },
+				'title',
+				'meta',
+				'thumbnail',
+				'content',
+				'tags',
+				'comments',
+				'post-navigation',
 			]),
 			neve_meta_disable_header: 'off',
 			neve_meta_disable_footer: 'off',
@@ -139,12 +139,12 @@ class MetaFieldsManager extends Component {
 			blockWidthDefault =
 				Math.round(
 					(contentWidthDefault / 100) *
-						metaSidebar.actions.neve_meta_content_width.editor
+					metaSidebar.actions.neve_meta_content_width.editor
 				) + 'px';
 			blocKWidth =
 				Math.round(
 					(contentWidth / 100) *
-						metaSidebar.actions.neve_meta_content_width.editor
+					metaSidebar.actions.neve_meta_content_width.editor
 				) + 'px';
 		}
 
@@ -383,11 +383,10 @@ class MetaFieldsManager extends Component {
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
-		// const showMetaElements = JSON.parse(
-		// 	this.props.metaValue('neve_post_elements_order') ||
-		// 		this.defaultSortables
-		// ).includes('meta');
-		const showMetaElements = true;
+		const showMetaElements = JSON.parse(
+			this.props.metaValue('neve_post_elements_order') ||
+			this.defaultSortables
+		).includes('meta');
 		const postType = select('core/editor').getCurrentPostType();
 		return (
 			<div className="nv-option-category">
@@ -479,8 +478,8 @@ class MetaFieldsManager extends Component {
 										'neve_meta_author_avatar'
 									)
 										? this.props.metaValue(
-												'neve_meta_author_avatar'
-										  ) === 'on'
+										'neve_meta_author_avatar'
+									) === 'on'
 										: metaSidebar.avatarDefaultState
 								}
 								onChange={(value) => {
@@ -526,32 +525,29 @@ class MetaFieldsManager extends Component {
 	}
 
 	renderElementsGroup() {
-		const { metaValue, setMetaValue } = this.props;
-		const { isCoverLayout, elementsDefaultOrder, enable_pro } = metaSidebar;
-
-		const metaElements = isCoverLayout
+		const metaElements = metaSidebar.isCoverLayout
 			? {
-					content: __('Content', 'neve'),
-					tags: __('Tags', 'neve'),
-					comments: __('Comments', 'neve'),
-					'post-navigation': __('Post Navigation', 'neve'),
-			  }
+				content: __('Content', 'neve'),
+				tags: __('Tags', 'neve'),
+				comments: __('Comments', 'neve'),
+				'post-navigation': __('Post Navigation', 'neve'),
+			}
 			: {
-					title: __('Post Title', 'neve'),
-					meta: __('Post Meta', 'neve'),
-					thumbnail: __('Featured Image', 'neve'),
-					content: __('Content', 'neve'),
-					tags: __('Tags', 'neve'),
-					comments: __('Comments', 'neve'),
-					'post-navigation': __('Post Navigation', 'neve'),
-			  };
+				title: __('Post Title', 'neve'),
+				meta: __('Post Meta', 'neve'),
+				thumbnail: __('Featured Image', 'neve'),
+				content: __('Content', 'neve'),
+				tags: __('Tags', 'neve'),
+				comments: __('Comments', 'neve'),
+				'post-navigation': __('Post Navigation', 'neve'),
+			};
 
 		const settings = {
 			elements: metaElements,
-			default: JSON.parse(elementsDefaultOrder),
+			default: metaSidebar.elementsDefaultOrder,
 		};
 
-		if (enable_pro) {
+		if (metaSidebar.enable_pro) {
 			settings.elements['author-biography'] = __(
 				'Author Biography',
 				'neve'
@@ -564,17 +560,21 @@ class MetaFieldsManager extends Component {
 			'template'
 		);
 		const postType = select('core/editor').getCurrentPostType();
-
 		return (
 			<div className="nv-option-category">
 				<PanelBody title={__('Elements', 'neve')} intialOpen={true}>
 					{'elementor_header_footer' !== template &&
 					'post' === postType ? (
-						<PageOrder
-							getMetaValue={metaValue}
-							setMetaValue={setMetaValue}
-							data={settings}
-						/>
+						<BaseControl
+							id="neve_post_elements_order"
+							className="neve-meta-control neve-meta-sortable"
+						>
+							<SortableItems
+								stateUpdate={this.updateValues}
+								id="neve_post_elements_order"
+								data={settings}
+							/>
+						</BaseControl>
 					) : (
 						''
 					)}
