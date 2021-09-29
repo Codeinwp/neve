@@ -148,12 +148,39 @@ class Pagination extends Base_View {
 	}
 
 	/**
-	 * Check if Jump to Page feature is enabled
+	 * Check if Jump to Page feature is enabled.
+	 * 
+	 * @param string $post_type The post type in the loop.
 	 * 
 	 * @return bool 
 	 */
-	private function jump_to_enabled() {
-		return get_theme_mod( 'neve_pagination_type', 'number' ) === 'jump-to-page' ? true : false;
+	private function jump_to_enabled( $post_type = '' ) {
+
+		$allowed = $this->post_types_with_pagination_control();
+		
+		// Use the default blog pagination option if we don't have a specific setting for the archive in question.
+		$mod_id  = $allowed[ $post_type ] ?? 'neve_pagination_type'; 
+		$enabled = get_theme_mod( $mod_id, 'number' ) === 'jump-to-page' ? true : false;
+
+		return apply_filters( 'neve_jump_to_enabled', $enabled, $post_type );
+
+	}
+
+	/**
+	 * An array of Post types that have their own pagination control in Customizer.
+	 * 
+	 * Add post types where you give users the ability to change pagination type for archive pages.
+	 * 
+	 * @return mixed 
+	 */
+	private function post_types_with_pagination_control() {
+
+		$control_ids = array(
+			'post'    => 'neve_pagination_type',
+			'product' => 'neve_shop_pagination_type',
+		);
+
+		return apply_filters( 'neve_pagination_control_post_types', $control_ids );
 	}
 
 	/**
@@ -164,8 +191,10 @@ class Pagination extends Base_View {
 	 * @return mixed
 	 */
 	public function maybe_add_jump_to_page_input( $markup ) {
+		
+		$post_type = get_post_type();
 
-		if ( $this->jump_to_enabled() ) {
+		if ( $this->jump_to_enabled( $post_type ) ) {
 			return $this->normalize_jump_to_input();    
 		}
 
@@ -193,7 +222,6 @@ class Pagination extends Base_View {
 		
 	}
 
-
 	/**
 	 * Create jump to navigation inputs.
 	 * 
@@ -216,9 +244,9 @@ class Pagination extends Base_View {
 		 * If plain permalinks are used we need extra inputs to handle it
 		 */
 		$permalink_structure                = get_option( 'permalink_structure' );
-		$plain_permalink_blog_archive_input = ( empty( $permalink_structure ) && $wp_query->is_posts_page ) ? '<input id="page-id" type="hidden" value="' . esc_attr( $wp_query->query['page_id'] ) . '" name="page_id" />' : '';
-		$plain_permalink_cpt_archive_input  = ( empty( $permalink_structure ) && $wp_query->is_post_type_archive ) ? '<input id="post-type" type="hidden" value="' . esc_attr( $wp_query->query['post_type'] ) . '" name="post_type" />' : '';
-		$plain_permalink_cpt_taxonomy_input = ( empty( $permalink_structure ) && $wp_query->is_tax ) ? '<input id="post-type" type="hidden" value="' . esc_attr( $wp_query->query_vars['term'] ) . '" name="' . esc_attr( $wp_query->query_vars['taxonomy'] ) . '" />' : '';
+		$plain_permalink_blog_archive_input = ( empty( $permalink_structure ) && $wp_query->is_posts_page ) ? '<input id="nv-page-jump-pid" type="hidden" value="' . esc_attr( $wp_query->query['page_id'] ) . '" name="page_id" />' : '';
+		$plain_permalink_cpt_archive_input  = ( empty( $permalink_structure ) && $wp_query->is_post_type_archive ) ? '<input id="nv-page-jump-cpt" type="hidden" value="' . esc_attr( $wp_query->query['post_type'] ) . '" name="post_type" />' : '';
+		$plain_permalink_cpt_taxonomy_input = ( empty( $permalink_structure ) && $wp_query->is_tax ) ? '<input id="nv-page-jump-cpt-tax" type="hidden" value="' . esc_attr( $wp_query->query_vars['term'] ) . '" name="' . esc_attr( $wp_query->query_vars['taxonomy'] ) . '" />' : '';
 
 		$label       = esc_html__( 'Go to Page', 'neve' );
 		$button_text = esc_html( apply_filters( 'neve_pagination_jump_button_text', '&raquo;' ) );
@@ -269,30 +297,6 @@ MARKUP;
 	}
 
 	/**
-	 * Add extra allowed HTML tags to wp_kses()
-	 *
-	 * @return array $tags Extra tags needed by the Jump to Page markup that are stripped by wp_kses() by default.
-	 */
-	public function allow_extra_tags( $tags ) {
-
-		$tags['form']                 = array();
-		$tags['form']['id']           = array();
-		$tags['form']['autocomplete'] = array();
-		$tags['a']['onclick']         = true;
-		$tags['input']                = array();
-		$tags['input']['id']          = array();
-		$tags['input']['min']         = array();
-		$tags['input']['max']         = array();
-		$tags['input']['name']        = array();
-		$tags['input']['placeholder'] = array();
-		$tags['input']['type']        = array();
-		$tags['input']['value']       = array();
-
-		return $tags;
-
-	}
-
-	/**
 	 * Render the pagination.
 	 *
 	 * @param string $context Pagination location context.
@@ -325,22 +329,8 @@ MARKUP;
 		);
 
 		echo $this->has_infinite_scroll() ? '<div style="display: none;">' : '';
-		
-		/**
-		 * Allow extra HTML tags for this feature.
-		 */
-		if ( get_theme_mod( 'neve_pagination_type', 'number' ) === 'jump-to-page' ) {
-			add_filter( 'wp_kses_allowed_html', array( $this, 'allow_extra_tags' ) );
-		}
 
-		echo wp_kses_post( $links );
-
-		/**
-		 * Remove extra HTML tags no longer needed.
-		 */
-		if ( get_theme_mod( 'neve_pagination_type', 'number' ) === 'jump-to-page' ) {
-			remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_extra_tags' ) );
-		}
+		echo $this->jump_to_enabled() ? neve_custom_kses_escape( $links, jump_to_page_extra_tags() ) : neve_custom_kses_escape( $links ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		echo $this->has_infinite_scroll() ? '</div>' : '';
 
