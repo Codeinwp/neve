@@ -941,14 +941,14 @@ class Layout_Single_Post extends Base_Customizer {
 		];
 
 		if ( empty( $value ) ) {
-			return $allowed;
+			return wp_json_encode( $allowed );
 		}
 
 		$decoded = json_decode( $value, true );
 
 		foreach ( $decoded as $val ) {
 			if ( ! in_array( $val, $allowed, true ) ) {
-				return $allowed;
+				return wp_json_encode( $allowed );
 			}
 		}
 

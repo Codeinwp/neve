@@ -13,36 +13,28 @@ const OrderingComponent = ({ control }) => {
 	const { section, components, label } = control.params;
 
 	const maybeNormalizeValue = (val) => {
-		const needNormalize =
-			val.filter((e) => typeof e === 'string').length > 0;
-		const normalizedValue = needNormalize
-			? val.map((element) => {
-					return { id: element, visible: true };
-			  })
-			: val;
+		const normalizedValue = val.map((element) => {
+			return { id: element, visible: true };
+		});
 
-		if (needNormalize) {
-			const enabledItems = normalizedValue.map((element) => {
-				element.visible = true;
-				return element;
+		const enabledItems = normalizedValue.map((element) => {
+			element.visible = true;
+			return element;
+		});
+
+		const disabledItems = Object.keys(components)
+			.filter((element) => {
+				return (
+					enabledItems.filter((el) => {
+						return element === el.id;
+					}).length === 0
+				);
+			})
+			.map((element) => {
+				return { id: element, visible: false };
 			});
 
-			const disabledItems = Object.keys(components)
-				.filter((element) => {
-					return (
-						enabledItems.filter((el) => {
-							return element === el.id;
-						}).length === 0
-					);
-				})
-				.map((element) => {
-					return { id: element, visible: false };
-				});
-
-			return [...enabledItems, ...disabledItems];
-		}
-
-		return normalizedValue;
+		return [...enabledItems, ...disabledItems];
 	};
 
 	const [value, setValue] = useState(
@@ -52,8 +44,16 @@ const OrderingComponent = ({ control }) => {
 	const [isVisible, setVisible] = useState(false);
 
 	const updateValue = (newVal) => {
+		const dbValue = newVal
+			.filter(function (element) {
+				return element.visible === true;
+			})
+			.map((element) => {
+				return element.id;
+			});
+
 		setValue(newVal);
-		control.setting.set(JSON.stringify(newVal));
+		control.setting.set(JSON.stringify(dbValue));
 	};
 
 	useEffect(() => {
