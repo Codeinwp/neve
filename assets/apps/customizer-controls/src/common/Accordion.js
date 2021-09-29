@@ -17,7 +17,12 @@ const Accordion = ({ children, label, initiallyExpanded = true }) => {
 			<button className={classes} onClick={toggle}>
 				<h4>
 					{label}
-					<Icon size={30} icon={expanded ? chevronUp : chevronDown} />
+					<Icon
+						width={30}
+						height={30}
+						size={30}
+						icon={expanded ? chevronUp : chevronDown}
+					/>
 				</h4>
 			</button>
 			{expanded && children}

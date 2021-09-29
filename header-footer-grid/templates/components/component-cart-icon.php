@@ -40,7 +40,7 @@ if ( (bool) $expand_enabled === false ) {
 		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="cart-icon-wrapper">
 			<?php
 			if ( ! empty( $cart_label ) ) {
-				echo '<span class="cart-icon-label">';
+				echo '<span class="cart-icon-label inherit-ff">';
 				echo wp_kses_post( $cart_label );
 				echo '</span>';
 			}

@@ -80,3 +80,24 @@ export const globalPaletteColors = [
 		'nv-c-2': __('Extra Color 2', 'neve'),
 	},
 ];
+
+export const fontVariantMap = {
+	100: 'Thin 100',
+	200: 'Extra Light 200',
+	300: 'Light 300',
+	400: 'Regular 400',
+	500: 'Medium 500',
+	600: 'Semi-Bold 600',
+	700: 'Bold 700',
+	800: 'Extra Bold 800',
+	900: 'Black 900',
+	'100italic': 'Thin 100 Italic',
+	'200italic': 'Extra Light 200 Italic',
+	'300italic': 'Light 300 Italic',
+	'400italic': 'Regular 400 Italic',
+	'500italic': 'Medium 500 Italic',
+	'600italic': 'Semi-Bold 600 Italic',
+	'700italic': 'Bold 700 Italic',
+	'800italic': 'Extra Bold 800 Italic',
+	'900italic': 'Black 900 Italic',
+};

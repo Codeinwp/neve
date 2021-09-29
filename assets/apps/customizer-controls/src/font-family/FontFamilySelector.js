@@ -104,6 +104,9 @@ const FontFamilySelector = ({
 			options.push(
 				<li className="load-more" key="load-more">
 					<VisibilitySensor
+						offset={{ top: 20 }}
+						minTopValue={1}
+						partialVisibility={true}
 						onChange={(isVisible) => {
 							if (isVisible) {
 								setLoadUntil(loadUntil + 30);
