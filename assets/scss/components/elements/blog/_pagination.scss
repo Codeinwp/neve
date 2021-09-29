@@ -26,20 +26,29 @@ ul.page-numbers {
 		color: var(--nv-text-dark-bg);
 	}
 
-	#nv-pagination-jump {
+	#nv-page-jumper-wrap {
+
+		span {
+			padding: 0;
+			background: none;
+		}
+
+		label,
+		input {
+			margin-right: 10px;
+		}
 
 		a {
-			padding: 3px 8px;
+			display: inline-block;
 		}
 
-		#nv-pagination-jump-page-num {
-			padding: 5px;
-			width: 50px;
-		}
-
-		#nv-pagination-jump-go {
-			padding: 5px 20px;
-		}
 	}
 
+}
+
+@mixin jump-to--desktop {
+
+	#nv-page-jump {
+		margin-left: auto;
+	}
 }
