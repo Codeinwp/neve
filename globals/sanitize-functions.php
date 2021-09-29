@@ -260,51 +260,23 @@ function neve_sanitize_position( $input ) {
  * Sanitize meta order control.
  */
 function neve_sanitize_meta_ordering( $value ) {
-	$allowed = [ 'author', 'category', 'date', 'comments'  ];
-	$default_value = [
-		[ 'id' => 'author', 'visible' => true ],
-		[ 'id' => 'date', 'visible' => true ],
-		[ 'id' => 'comments', 'visible' => true ],
-		[ 'id' => 'category', 'visible' => false ],
-	];
+	$allowed = array(
+		'author',
+		'category',
+		'date',
+		'comments',
+		'reading',
+	);
 
 	if ( empty( $value ) ) {
-		return $default_value;
+		return $allowed;
 	}
 
 	$decoded = json_decode( $value, true );
-	$decoded = neve_maybe_normalize_ordering( $decoded, $allowed );
 
 	foreach ( $decoded as $val ) {
-		if ( ! in_array( $val['id'], $allowed, true ) ) {
-			return $default_value;
-		}
-	}
-
-	return $value;
-}
-
-/**
- * Sanitize content order control.
- */
-function neve_sanitize_post_content_ordering( $value ) {
-	$allowed = [ 'thumbnail', 'title-meta', 'excerpt' ];
-	$default_value = [
-		[ 'id' => 'thumbnail', 'visible' => true ],
-		[ 'id' => 'title-meta', 'visible' => true ],
-		[ 'id' => 'excerpt', 'visible' => true ],
-	];
-
-	if ( empty( $value ) ) {
-		return $default_value;
-	}
-
-	$decoded = json_decode( $value, true );
-	$decoded = neve_maybe_normalize_ordering( $decoded, $allowed );
-
-	foreach ( $decoded as $key => $val ) {
-		if ( ! in_array( $val['id'], $allowed, true ) ) {
-			return $default_value;
+		if ( ! in_array( $val, $allowed, true ) ) {
+			return $allowed;
 		}
 	}
 
@@ -352,6 +324,49 @@ function neve_sanitize_container_layout( $value ) {
 function neve_sanitize_button_type( $value ) {
 	if ( ! in_array( $value, [ 'primary', 'secondary' ], true ) ) {
 		return 'primary';
+	}
+
+	return $value;
+}
+
+/**
+ * Sanitize font variants.
+ *
+ * @param string[] $value the incoming value.
+ *
+ * @return string[]
+ */
+function neve_sanitize_font_variants( $value ) {
+	$allowed = [
+		'100',
+		'200',
+		'300',
+		'400',
+		'500',
+		'600',
+		'700',
+		'800',
+		'900',
+		'100italic',
+		'200italic',
+		'300italic',
+		'400italic',
+		'500italic',
+		'600italic',
+		'700italic',
+		'800italic',
+		'900italic',
+	];
+	if ( ! is_array( $value ) ) {
+		return [];
+	}
+
+	foreach ( $value as $variant ) {
+		if ( in_array( $variant, $allowed, true ) ) {
+			continue;
+		}
+		$key = array_search( $variant, $value );
+		unset( $value[ $key ] );
 	}
 
 	return $value;

@@ -56,23 +56,6 @@ class Template_Parts extends Base_View {
 	}
 
 	/**
-	 * Get the order of elements for the element card.
-	 *
-	 * @return array
-	 */
-	static function get_elements_order() {
-		$components = [ 'thumbnail', 'title-meta', 'excerpt', ];
-		$default_order = [
-			[ 'id' => 'thumbnail', 'visible' => true ],
-			[ 'id' => 'title-meta', 'visible' => true ],
-			[ 'id' => 'excerpt', 'visible' => true ],
-		];
-		$order = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) );
-		$order = json_decode( $order, true );
-		return neve_maybe_normalize_ordering( $order, $components );
-	}
-
-	/**
 	 * Render inner content for <article>
 	 *
 	 * @return string
@@ -81,33 +64,38 @@ class Template_Parts extends Base_View {
 		$markup = '';
 
 		$layout = $this->get_layout();
-		$order  = $this::get_elements_order();
 
 		if ( in_array( $layout, [ 'alternative', 'default' ] ) ) {
 			$markup .= $this->get_post_thumbnail();
 			$markup .= '<div class="non-grid-content ' . esc_attr( $layout ) . '-layout-content">';
-			$markup .= $this->get_ordered_content_parts( $order, true );
+			$markup .= $this->get_ordered_content_parts( true );
 			$markup .= '</div>';
 
 			return $markup;
 		}
 
 		if ( $layout === 'covers' ) {
+			$default_order = array(
+				'thumbnail',
+				'title-meta',
+				'excerpt',
+			);
+			$order         = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
 			$style         = '';
-			if ( in_array( ['id' => 'thumbnail' ], $order, true ) ) {
+			if ( in_array( 'thumbnail', $order, true ) ) {
 				$thumb  = get_the_post_thumbnail_url();
 				$style .= ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
 			}
 			$markup .= '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
 			$markup .= '<div class="inner">';
-			$markup .= $this->get_ordered_content_parts( $order, true );
+			$markup .= $this->get_ordered_content_parts( true );
 			$markup .= '</div>';
 			$markup .= '</div>';
 
 			return $markup;
 		}
 
-		return $this->get_ordered_content_parts( $order );
+		return $this->get_ordered_content_parts();
 	}
 
 	/**
@@ -174,38 +162,14 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_title() {
-		$tag = neve_is_new_skin() ? 'h3' : 'h2';
+		$markup = '<h2 class="blog-entry-title entry-title">';
 
-		$markup = '';
-
-		$markup .= '<' . $tag . ' class="blog-entry-title entry-title">';
 		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">';
 		$markup .= get_the_title();
 		$markup .= '</a>';
-		$markup .= '</' . $tag . '>';
+		$markup .= '</h2>';
 
 		return $markup;
-	}
-
-	/**
-	 * Get meta order value.
-	 *
-	 * @return array
-	 */
-	static function get_meta_order() {
-		$components = [ 'author', 'category', 'date', 'comments' ];
-		$default_meta_order = wp_json_encode(
-			[
-				[ 'id' => 'author', 'visible' => true ],
-				[ 'id' => 'date', 'visible' => true ],
-				[ 'id' => 'comments', 'visible' => true ],
-				[ 'id' => 'category', 'visible' => false ],
-			]
-		);
-		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
-		$meta_order = json_decode( $meta_order, true );
-
-		return neve_maybe_normalize_ordering( $meta_order, $components );
 	}
 
 	/**
@@ -214,8 +178,17 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_meta() {
+		$default_meta_order = wp_json_encode(
+			array(
+				'author',
+				'date',
+				'comments',
+			)
+		);
 
-		$meta_order = self::get_meta_order();
+		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
+
+		$meta_order = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
 
 		ob_start();
 		do_action( 'neve_post_meta_archive', $meta_order );
@@ -318,18 +291,20 @@ class Template_Parts extends Base_View {
 	/**
 	 * Get ordered content parts.
 	 *
-	 * @param array $order Elements order.
 	 * @param bool $exclude_thumbnail exclude thumbnail from order.
-	 *
 	 * @return string
 	 */
-	private function get_ordered_content_parts( $order, $exclude_thumbnail = false ) {
+	private function get_ordered_content_parts( $exclude_thumbnail = false ) {
 		$markup        = '';
+		$default_order = array(
+			'thumbnail',
+			'title-meta',
+			'excerpt',
+		);
+		$order         = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) );
+		$order         = json_decode( $order, true );
 		foreach ( $order as $content_bit ) {
-			if ( $content_bit['visible'] === false ) {
-				continue;
-			}
-			switch ( $content_bit['id'] ) {
+			switch ( $content_bit ) {
 				case 'thumbnail':
 					if ( $exclude_thumbnail ) {
 						break;

@@ -176,11 +176,11 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 
 	$amp_state = '';
 	if ( $amp_ready ) {
-		$amp_state = 'on="tap:AMP.setState({visible: !visible})" role="button" tabindex="0" ';
+		$amp_state = 'on="tap:AMP.setState({visible: !visible})" role="button"  ';
 	}
 	$start_tag = $is_link ? 'a aria-label="' . __( 'Search', 'neve' ) . '" href="#"' : 'div';
 	$end_tag   = $is_link ? 'a' : 'div';
-	$svg       = '<' . $start_tag . ' class="nv-icon nv-search" ' . $amp_state . '>
+	$svg       = '<' . $start_tag . ' role="button" class="nv-icon nv-search" ' . $amp_state . '>
 				<svg width="' . $size . '" height="' . $size . '" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg>
 			</' . $end_tag . '>';
 	if ( $echo === false ) {
@@ -285,12 +285,18 @@ function neve_get_standard_fonts() {
 /**
  * Get all google fonts
  *
+ * @param bool $with_variants should fetch variants.
+ *
  * @return array
  */
-function neve_get_google_fonts() {
+function neve_get_google_fonts( $with_variants = false ) {
 	$fonts = ( include NEVE_MAIN_DIR . 'globals/google-fonts.php' );
 
-	return apply_filters( 'neve_google_fonts_array', $fonts );
+	if ( $with_variants ) {
+		return apply_filters( 'neve_google_fonts_with_variants_array', $fonts );
+	}
+
+	return apply_filters( 'neve_google_fonts_array', array_keys( $fonts ) );
 }
 
 /**
@@ -511,30 +517,4 @@ function neve_safe_get( $url, $args = array() ) {
 			$url,
 			$args
 		);
-}
-
-/**
- * Function to normalize ordering control.
- *
- * @param array $value Control data.
- *
- * @return array
- */
-function neve_maybe_normalize_ordering( $value, $components ) {
-	foreach ( $value as $key => $val ){
-		if ( is_string( $val ) ){
-			$value[$key] = ['id' => $val, 'visible' => true ];
-
-			$index = array_search( $val, $components, true );
-			if ( $index !== false) {
-				unset($components[$index]);
-			}
-		}
-	}
-
-	foreach ( $components as $component ) {
-		$value[] = [ 'id' => $component, 'visible' => false ];
-	}
-
-	return $value;
 }

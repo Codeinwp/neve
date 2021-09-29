@@ -22,17 +22,17 @@ use Neve\Core\Styles\Dynamic_Selector;
  * @package HFG\Core\Components
  */
 class Nav extends Abstract_Component {
-	const COMPONENT_ID     = 'primary-menu';
-	const STYLE_ID         = 'style';
-	const COLOR_ID         = 'color';
-	const HOVER_COLOR_ID   = 'hover_color';
-	const ACTIVE_COLOR_ID  = 'active_color';
-	const LAST_ITEM_ID     = 'neve_last_menu_item';
-	const NAV_MENU_ID      = 'nv-primary-navigation';
-	const ITEM_HEIGHT      = 'item_height';
-	const SPACING          = 'spacing';
-	const EXPAND_DROPDOWNS = 'expand_dropdowns';
-
+	const COMPONENT_ID             = 'primary-menu';
+	const STYLE_ID                 = 'style';
+	const COLOR_ID                 = 'color';
+	const HOVER_COLOR_ID           = 'hover_color';
+	const ACTIVE_COLOR_ID          = 'active_color';
+	const LAST_ITEM_ID             = 'neve_last_menu_item';
+	const NAV_MENU_ID              = 'nv-primary-navigation';
+	const ITEM_HEIGHT              = 'item_height';
+	const SPACING                  = 'spacing';
+	const EXPAND_DROPDOWNS         = 'expand_dropdowns';
+	const DROPDOWNS_EXPANDED_CLASS = 'dropdowns-expanded';
 	/**
 	 * Nav constructor.
 	 *
@@ -203,23 +203,23 @@ class Nav extends Abstract_Component {
 		 */
 		$old_last_menu_item = json_decode( get_theme_mod( 'neve_last_menu_item' ) );
 		if ( $old_last_menu_item !== false && ! empty( $old_last_menu_item ) ) {
-//			SettingsManager::get_instance()->add(
-//				[
-//					'id'                => $this->get_class_const( 'LAST_ITEM_ID' ),
-//					'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-//					'tab'               => SettingsManager::TAB_GENERAL,
-//					'noformat'          => true,
-//					'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-//					'sanitize_callback' => array( $this, 'sanitize_last_menu_item' ),
-//					'default'           => wp_json_encode( $order_default_components ),
-//					'label'             => __( 'Last Menu Item', 'neve' ),
-//					'type'              => 'Neve\Customizer\Controls\Ordering',
-//					'options'           => [
-//						'components' => $components,
-//					],
-//					'section'           => $this->section,
-//				]
-//			);
+			SettingsManager::get_instance()->add(
+				[
+					'id'                => $this->get_class_const( 'LAST_ITEM_ID' ),
+					'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+					'tab'               => SettingsManager::TAB_GENERAL,
+					'noformat'          => true,
+					'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+					'sanitize_callback' => array( $this, 'sanitize_last_menu_item' ),
+					'default'           => wp_json_encode( $order_default_components ),
+					'label'             => __( 'Last Menu Item', 'neve' ),
+					'type'              => 'Neve\Customizer\Controls\Ordering',
+					'options'           => [
+						'components' => $components,
+					],
+					'section'           => $this->section,
+				]
+			);
 		}
 		SettingsManager::get_instance()->add(
 			[

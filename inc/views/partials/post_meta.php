@@ -91,17 +91,14 @@ class Post_Meta extends Base_View {
 		if ( ! is_array( $order ) || empty( $order ) ) {
 			return;
 		}
-
+		$order     = $this->sanitize_order_array( $order );
 		$pid       = get_the_ID();
 		$post_type = get_post_type( $pid );
 		$markup    = $as_list === true ? '<ul class="nv-meta-list">' : '<span class="nv-meta-list nv-dynamic-meta">';
 		$index     = 1;
 		$tag       = $as_list === true ? 'li' : 'span';
 		foreach ( $order as $meta ) {
-			if ( $meta['visible'] === false ) {
-				continue;
-			}
-			switch ( $meta['id'] ) {
+			switch ( $meta ) {
 				case 'author':
 					$markup .= '<' . $tag . '  class="meta author vcard">';
 					$markup .= self::neve_get_author_meta();
@@ -166,6 +163,32 @@ class Post_Meta extends Base_View {
 		}
 		$markup .= $as_list === true ? '</ul>' : '</span>';
 		echo ( $markup ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+
+	/**
+	 * Makes sure there's a valid meta order array.
+	 *
+	 * @param array $order meta order array.
+	 *
+	 * @return mixed
+	 */
+	private function sanitize_order_array( $order ) {
+		$allowed_order_values = apply_filters(
+			'neve_meta_filter',
+			array(
+				'author'   => __( 'Author', 'neve' ),
+				'category' => __( 'Category', 'neve' ),
+				'date'     => __( 'Date', 'neve' ),
+				'comments' => __( 'Comments', 'neve' ),
+			)
+		);
+		foreach ( $order as $index => $value ) {
+			if ( ! array_key_exists( $value, $allowed_order_values ) ) {
+				unset( $order[ $index ] );
+			}
+		}
+
+		return $order;
 	}
 
 	/**

@@ -88,18 +88,18 @@ trait Single_Post {
 	 */
 	public function post_ordering() {
 		$default_components = [
-			['id' => 'title-meta'],
-			['id' => 'thumbnail'],
-			['id' => 'content'],
-			['id' => 'tags'],
-			['id' => 'comments'],
+			'title-meta',
+			'thumbnail',
+			'content',
+			'tags',
+			'comments',
 		];
 
 		if ( Layout_Single_Post::is_cover_layout() ) {
 			$default_components = [
-				[ 'id' => 'content' ],
-				[ 'id' => 'tags' ],
-				[ 'id' => 'comments' ],
+				'content',
+				'tags',
+				'comments',
 			];
 		}
 

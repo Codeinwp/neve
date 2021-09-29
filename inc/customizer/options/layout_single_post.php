@@ -11,12 +11,10 @@
 namespace Neve\Customizer\Options;
 
 use HFG\Traits\Core;
-use Neve\Admin\Metabox\Manager;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
-use Neve\Views\Template_Parts;
 
 /**
  * Class Layout_Single_Post
@@ -559,22 +557,22 @@ class Layout_Single_Post extends Base_Customizer {
 		 */
 		$components = apply_filters( 'neve_single_post_elements', $all_components );
 
-//		$this->add_control(
-//			new Control(
-//				'neve_layout_single_post_elements_order',
-//				[
-////					'sanitize_callback' => [ $this, 'sanitize_post_elements_ordering' ],
-//					'default'           => wp_json_encode( $order_default_components ),
-//				],
-//				[
-//					'label'      => esc_html__( 'Elements Order', 'neve' ),
-//					'section'    => 'neve_single_post_layout',
-//					'components' => $components,
-//					'priority'   => 8,
-//				],
-//				'Neve\Customizer\Controls\React\Ordering'
-//			)
-//		);
+		$this->add_control(
+			new Control(
+				'neve_layout_single_post_elements_order',
+				[
+					'sanitize_callback' => [ $this, 'sanitize_post_elements_ordering' ],
+					'default'           => wp_json_encode( $order_default_components ),
+				],
+				[
+					'label'      => esc_html__( 'Elements Order', 'neve' ),
+					'section'    => 'neve_single_post_layout',
+					'components' => $components,
+					'priority'   => 8,
+				],
+				'Neve\Customizer\Controls\React\Ordering'
+			)
+		);
 
 		if ( neve_is_new_skin() ) {
 			$this->add_control(
@@ -625,7 +623,8 @@ class Layout_Single_Post extends Base_Customizer {
 	 * Add post meta controls.
 	 */
 	private function post_meta() {
-		$order_default_components = Template_Parts::get_meta_order();
+
+		$order_default_components = get_theme_mod( 'neve_post_meta_ordering', wp_json_encode( [ 'author', 'date', 'comments' ] ) );
 
 		/**
 		 * Filters the elements that appears in meta.
@@ -644,22 +643,22 @@ class Layout_Single_Post extends Base_Customizer {
 			]
 		);
 
-//		$this->add_control(
-//			new Control(
-//				'neve_single_post_meta_ordering',
-//				[
-//					'sanitize_callback' => 'neve_sanitize_meta_ordering',
-//					'default'           => $order_default_components,
-//				],
-//				[
-//					'label'      => esc_html__( 'Meta Order', 'neve' ),
-//					'section'    => $this->section,
-//					'components' => $components,
-//					'priority'   => 10,
-//				],
-//				'Neve\Customizer\Controls\React\Ordering'
-//			)
-//		);
+		$this->add_control(
+			new Control(
+				'neve_single_post_meta_ordering',
+				[
+					'sanitize_callback' => 'neve_sanitize_meta_ordering',
+					'default'           => $order_default_components,
+				],
+				[
+					'label'      => esc_html__( 'Meta Order', 'neve' ),
+					'section'    => $this->section,
+					'components' => $components,
+					'priority'   => 10,
+				],
+				'Neve\Customizer\Controls\React\Ordering'
+			)
+		);
 
 		$default_separator = get_theme_mod( 'neve_metadata_separator', esc_html( '/' ) );
 		$this->add_control(
@@ -905,7 +904,19 @@ class Layout_Single_Post extends Base_Customizer {
 	 * @return bool
 	 */
 	public function element_is_enabled( $element ) {
-		$content_order = Manager::post_order_value();
+		$default_order = apply_filters(
+			'neve_single_post_elements_default_order',
+			array(
+				'title-meta',
+				'thumbnail',
+				'content',
+				'tags',
+				'comments',
+			)
+		);
+
+		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
+		$content_order = json_decode( $content_order, true );
 		if ( ! in_array( $element, $content_order, true ) ) {
 			return false;
 		}
