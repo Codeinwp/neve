@@ -56,25 +56,12 @@ pre {
 
 .nv-content-wrap,
 .excerpt-wrap {
-
-	&::after {
-		content: "";
-		clear: both;
-		display: table;
-	}
-
-	ul {
-		list-style-type: initial;
-	}
+	--listPad: 20px;
+	--listStyle: disc;
 
 	> ul,
 	> ol {
 		margin: $spacing-lg 0;
-	}
-
-	ul,
-	ol {
-		padding-left: $spacing-lg;
 	}
 
 	li {

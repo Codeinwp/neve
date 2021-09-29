@@ -1,7 +1,7 @@
 {
 	"name": "neve",
 	"nicename": "Neve",
-	"version": "3.0.3",
+	"version": "3.0.5",
 	"description": "Neve theme by ThemeIsle",
 	"category": "themes",
 	"author": "ThemeIsle <friends@themeisle.com>",
@@ -29,7 +29,7 @@
 		{
 			"gzip": false,
 			"running": false,
-			"limit": "6 KB",
+			"limit": "7 KB",
 			"path": "assets/js/build/modern/frontend.js"
 		},
 		{
@@ -37,18 +37,6 @@
 			"running": false,
 			"limit": "33 KB",
 			"path": "assets/js/build/modern/shop.js"
-		},
-		{
-			"gzip": false,
-			"running": false,
-			"limit": "33 KB",
-			"path": "assets/js/build/all/shop.js"
-		},
-		{
-			"gzip": false,
-			"running": false,
-			"limit": "6.5 KB",
-			"path": "assets/js/build/all/frontend.js"
 		},
 		{
 			"gzip": false,

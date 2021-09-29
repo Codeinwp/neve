@@ -1425,6 +1425,14 @@ abstract class Abstract_Builder implements Builder {
 				}
 				if ( count( $component_group['components'] ) > 1 ) {
 					$component_group['classes'][] = 'hfg-is-group';
+
+					// If there is a primary or secondary menu component inside the group, add a class to it.
+					foreach ( $component_group['components'] as $component_slug ) {
+						if ( strpos( $component_slug, 'primary-menu' ) === false && strpos( $component_slug, 'secondary-menu' ) === false ) {
+							continue;
+						}
+						$component_group['classes'][] = 'has-' . $component_slug;
+					}
 				}
 				echo sprintf( '<div class="%s">', esc_attr( join( ' ', $component_group['classes'] ) ) );
 				foreach ( $component_group['components'] as $component ) {

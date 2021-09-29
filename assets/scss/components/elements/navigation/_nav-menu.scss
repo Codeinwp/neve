@@ -97,7 +97,12 @@
 	@extend %show-dropdown;
 }
 
-
+//We need to use display none on elements
+// that should not be tabbable in the viewport
+// otherise they will be considered when navigating with keyboard
+body:not(.is-menu-sidebar) .header-menu-sidebar-inner {
+	display: none;
+}
 // === Inside Sidebar === //
 .header-menu-sidebar {
 
@@ -110,7 +115,7 @@
 		flex-direction: column;
 
 		li {
-			margin: 0;
+			margin: 1px;
 		}
 
 		a {
@@ -131,9 +136,6 @@
 				transform: rotateX(180deg);
 			}
 
-			&:focus {
-				outline: none;
-			}
 		}
 
 		.sub-menu {
@@ -141,6 +143,7 @@
 			left: unset !important;
 			top: unset !important;
 			right: unset !important;
+			background: unset;
 			position: relative;
 			max-width: 100%;
 			box-shadow: none;

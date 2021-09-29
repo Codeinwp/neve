@@ -1,3 +1,32 @@
+##### [Version 3.0.5](https://github.com/Codeinwp/neve/compare/v3.0.4...v3.0.5) (2021-09-29)
+
+- [Feat] Add additional font variants control for body font family used on the body
+- [Fix] Remove hardcoded concatenation for menu item and page title
+- [Fix] Fix hooks added in the REST endpoint for dynamic elements of the infinite scroll
+- [Fix] Icons not rotating during site import in progress actions
+- [Fix] Sidebar visibility on customizer preview
+- [Fix] Food store compatibility
+- [Fix] Unclosed div element on the shop page
+- [Fix] Remove aria-role which was breaking AMP validator on the menu carets
+- [Fix] Components inside the mobile sidebar inheriting wrong colors
+- [Fix] Dropdowns inside the mobile sidebar inheriting overlay background color when using a background image
+- [Fix] Footer components not updating after columns change
+- Header components labels font styles should be inherited from the primary menu if placed in the same slot 
+- Change archive post title tag back to h2
+- Refreshed design for the Architecture starter site - [Gutenberg](https://demosites.io/architecture-gb/) | [Elementor](https://demosites.io/architecture/)
+- Remove some unused CSS
+
+##### [Version 3.0.4](https://github.com/Codeinwp/neve/compare/v3.0.3...v3.0.4) (2021-09-15)
+
+- fix customizer loading when elementor pro is active
+- fix exclusive products category restriction
+- fix list indent overrides some blocks that contain ul/ol
+- improve links appear within a larger body of block-level content, they must be clearly distinguishable from surrounding content
+- improve keyboard navigation, allow focus trap inside search/mobile sidebar
+- allow overwriting of Woocommerce search form and default search form
+- Fix footer being hidden after we add one component
+- Fix font family saving issue on the Header Nav widget
+
 ##### [Version 3.0.3](https://github.com/Codeinwp/neve/compare/v3.0.2...v3.0.3) (2021-09-06)
 
 - [Fix] Cart icon component is vertically misaligned when it has a label

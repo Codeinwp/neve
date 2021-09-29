@@ -44,6 +44,16 @@ a {
 	}
 }
 
+.entry-content,
+.widget_text,
+.nv-template .neve-main,
+.nv-comment-content {
+
+	a:not([class*="button"]) {
+		text-decoration: underline;
+	}
+}
+
 ins {
 	text-decoration: none;
 }
@@ -94,4 +104,13 @@ h6 {
 	line-height: var(--h6LineHeight);
 	letter-spacing: var(--h6LetterSpacing);
 	text-transform: var(--h6TextTransform);
+}
+
+ul,
+ol {
+	padding-left: var(--listPad, 0);
+}
+
+ul {
+	list-style: var(--listStyle, none);
 }
