@@ -12,7 +12,6 @@ import {
 	BuilderActions,
 	BuilderChangeEvent,
 	BuilderContentInterface,
-	BuilderItemType,
 	DeviceTypes,
 	LayoutUpdate,
 	RemoveItem,
@@ -44,6 +43,7 @@ type Props = {
 	builder: string;
 	portalMount: HTMLElement;
 	hidden: boolean;
+	mounted: boolean;
 };
 
 const HFGBuilder: React.FC<Props> = ({
@@ -53,6 +53,7 @@ const HFGBuilder: React.FC<Props> = ({
 	value,
 	hidden,
 	portalMount,
+	mounted,
 }) => {
 	const [device, setDevice] = useState<DeviceTypes>('desktop');
 	const [dragging, setDragging] = useState<boolean>(false);
@@ -78,7 +79,9 @@ const HFGBuilder: React.FC<Props> = ({
 			});
 	};
 
-	const [sidebarItems, setSidebarItems] = useState<ItemInterface[]>([]);
+	const [sidebarItems, setSidebarItems] = useState<ItemInterface[]>(
+		getSidebarItems()
+	);
 
 	const updateSidebarItems = () => {
 		setSidebarItems([...getSidebarItems()]);
@@ -100,81 +103,59 @@ const HFGBuilder: React.FC<Props> = ({
 	const updateLayout: LayoutUpdate = (row, slot, items) => {
 		onDragEnd();
 
+		const nextItems = { ...value[device] };
+		const updateItems: Array<StringObjectKeys> = [...items];
+
 		if (row === 'sidebar') {
-			updateSidebar(items);
+			if (arraysAreIdentical(items, nextItems[row])) {
+				return false;
+			}
 
-			return false;
-		}
+			nextItems[row] = updateItems;
 
-		const nextItems = { ...value[device] };
+			const finalValue = { ...value, [device]: nextItems };
+			onChange(finalValue);
+		} else {
+			// Make sure row exists and has slots.
+			if (!nextItems[row]) {
+				nextItems[row] = ROW_SCHEMA;
+			}
 
-		// Make sure row exists and has slots.
-		if (!nextItems[row]) {
-			nextItems[row] = ROW_SCHEMA;
-		}
+			if (arraysAreIdentical(items, nextItems[row][slot])) {
+				return false;
+			}
 
-		if (arraysAreIdentical(items, nextItems[row][slot])) {
-			return false;
-		}
+			const update = nextItems[row];
 
-		const update = nextItems[row];
-		const updateItems: Array<StringObjectKeys> = [];
-
-		if (items.length > 0) {
-			items.forEach((item) => {
-				updateItems.push(item);
-			});
-		}
-
-		if (slot === 'center' && items.length === 0 && !hasColumns) {
-			const sideSlots = ['c-left', 'c-right'];
-			sideSlots.forEach((sideSlot) => {
-				if (!Array.isArray(update[sideSlot])) {
-					return false;
-				}
-				if (update[sideSlot].length < 1) {
-					return false;
-				}
-
-				const nextSlot = sideSlot === 'c-left' ? 'left' : 'right';
-
-				update[sideSlot].forEach((itemToMove: StringObjectKeys) => {
-					if (nextSlot === 'left') {
-						nextItems[row][nextSlot].push(itemToMove);
-					} else {
-						nextItems[row][nextSlot].unshift(itemToMove);
+			if (slot === 'center' && items.length === 0 && !hasColumns) {
+				const sideSlots = ['c-left', 'c-right'];
+				sideSlots.forEach((sideSlot) => {
+					if (!Array.isArray(update[sideSlot])) {
+						return false;
 					}
+					if (update[sideSlot].length < 1) {
+						return false;
+					}
+
+					const nextSlot = sideSlot === 'c-left' ? 'left' : 'right';
+
+					update[sideSlot].forEach((itemToMove: StringObjectKeys) => {
+						if (nextSlot === 'left') {
+							nextItems[row][nextSlot].push(itemToMove);
+						} else {
+							nextItems[row][nextSlot].unshift(itemToMove);
+						}
+					});
+					nextItems[row][sideSlot] = [];
 				});
-				nextItems[row][sideSlot] = [];
-			});
+			}
+
+			update[slot] = updateItems;
+			nextItems[row][slot] = updateItems;
+
+			const finalValue = { ...value, [device]: nextItems };
+			onChange(finalValue);
 		}
-
-		update[slot] = updateItems;
-		nextItems[row][slot] = updateItems;
-
-		const finalValue = { ...value, [device]: nextItems };
-
-		onChange(finalValue);
-	};
-
-	const updateSidebar = (items: BuilderItemType[]) => {
-		if (arraysAreIdentical(items, value[device].sidebar)) {
-			return false;
-		}
-
-		const nextItems = { ...value[device] };
-		const updateItems: Array<StringObjectKeys> = [];
-
-		if (items.length > 0) {
-			items.forEach((item) => {
-				updateItems.push(item);
-			});
-		}
-
-		nextItems.sidebar = updateItems;
-		const finalValue = { ...value, [device]: nextItems };
-
-		onChange(finalValue);
 	};
 
 	const removeItem: RemoveItem = (row, slot, indexToRemove) => {
@@ -224,7 +205,6 @@ const HFGBuilder: React.FC<Props> = ({
 	 * Bind the device switchers to the device state.
 	 */
 	useEffect(() => {
-		updateSidebarItems();
 		bindDeviceSwitching();
 		bindValueChanges();
 	}, []);
@@ -325,19 +305,21 @@ const HFGBuilder: React.FC<Props> = ({
 		>
 			<div>
 				<Suspense fallback={<Spinner />}>
-					<>
-						<div className={`neve-hfg-builder`}>
-							<SidebarContent />
-						</div>
-						{createPortal(
-							<Builder
-								hidden={hidden}
-								value={value}
-								portalMount={portalMount}
-							/>,
-							portalMount
-						)}
-					</>
+					{mounted && (
+						<>
+							<div className={`neve-hfg-builder`}>
+								<SidebarContent items={sidebarItems} />
+							</div>
+							{createPortal(
+								<Builder
+									hidden={hidden}
+									value={value}
+									portalMount={portalMount}
+								/>,
+								portalMount
+							)}
+						</>
+					)}
 				</Suspense>
 			</div>
 		</BuilderContext.Provider>

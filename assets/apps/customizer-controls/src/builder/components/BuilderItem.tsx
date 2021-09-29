@@ -17,7 +17,7 @@ type Props = {
 
 const BuilderItem: React.FC<Props> = (props) => {
 	const { componentId, currentSection, slot, row, index } = props;
-	const { actions, builder } = useContext(BuilderContext);
+	const { actions, builder, sidebarItems } = useContext(BuilderContext);
 
 	const itemDetails =
 		window.NeveReactCustomize.HFG[builder].items[componentId];
@@ -27,7 +27,7 @@ const BuilderItem: React.FC<Props> = (props) => {
 	}
 
 	const { name, section } = itemDetails;
-	const { removeItem, updateSidebarItems } = actions;
+	const { removeItem, setSidebarItems } = actions;
 
 	const isBlockWidget = section && section.includes('neve_sidebar-widgets');
 
@@ -46,7 +46,11 @@ const BuilderItem: React.FC<Props> = (props) => {
 	const remove = () => {
 		removeItem(row, slot, index);
 		itemSection.expanded(false);
-		updateSidebarItems();
+		setSidebarItems(
+			[...sidebarItems, { id: componentId }].sort((a, b) => {
+				return a.id < b.id ? -1 : 1;
+			})
+		);
 	};
 
 	const iconSize = 18;
