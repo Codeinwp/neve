@@ -1,4 +1,4 @@
-/* global _ */
+/* global _, Event */
 
 const directions = ['top', 'right', 'bottom', 'left'];
 const devices = ['mobile', 'tablet', 'desktop'];
@@ -16,6 +16,7 @@ export class CSSVariablesHandler {
 			responsive = false,
 			suffix = '',
 			fallback = 'inherit',
+			dispatchWindowResize = false,
 		} = params;
 
 		//Bail if no selectors or variables.
@@ -35,6 +36,12 @@ export class CSSVariablesHandler {
 		const css = this.getStyle();
 
 		addCSS(id, css);
+
+		if (dispatchWindowResize) {
+			setTimeout(() => {
+				window.dispatchEvent(new Event('resize'));
+			}, 200);
+		}
 	}
 
 	getStyle() {

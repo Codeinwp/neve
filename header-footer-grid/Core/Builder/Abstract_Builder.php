@@ -363,11 +363,12 @@ abstract class Abstract_Builder implements Builder {
 					'live_refresh_selector' => $row_class,
 					'live_refresh_css_prop' => [
 						'cssVar' => [
-							'responsive' => true,
-							'vars'       => '--height',
-							'suffix'     => 'px',
-							'fallback'   => 'auto',
-							'selector'   => $row_class,
+							'responsive'           => true,
+							'vars'                 => '--height',
+							'suffix'               => 'px',
+							'fallback'             => 'auto',
+							'selector'             => $row_class,
+							'dispatchWindowResize' => true,
 						],
 						'prop'   => 'height',
 						'unit'   => 'px',
@@ -463,11 +464,12 @@ abstract class Abstract_Builder implements Builder {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar' => [
-						'responsive' => true,
-						'vars'       => '--rowBWidth',
-						'suffix'     => 'px',
-						'fallback'   => '0',
-						'selector'   => '.' . $this->get_id() . '-' . $row_id,
+						'responsive'           => true,
+						'vars'                 => '--rowBWidth',
+						'suffix'               => 'px',
+						'fallback'             => '0',
+						'selector'             => '.' . $this->get_id() . '-' . $row_id,
+						'dispatchWindowResize' => true,
 					],
 				],
 				'options'               => [
