@@ -32,13 +32,15 @@ export class CSSVariablesHandler {
 		this.suffix = suffix;
 		this.responsive = responsive;
 		this.fallback = fallback;
+		this.timeout = null;
 
 		const css = this.getStyle();
 
 		addCSS(id, css);
 
 		if (dispatchWindowResize) {
-			setTimeout(() => {
+			clearTimeout(this.timeout);
+			this.timeout = setTimeout(() => {
 				window.dispatchEvent(new Event('resize'));
 			}, 200);
 		}
