@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
 const OrderingComponent = ({ control }) => {
 	const { section, components, label } = control.params;
 
-	const maybeNormalizeValue = (val) => {
+	const normalizeValue = (val) => {
 		const normalizedValue = val.map((element) => {
 			return { id: element, visible: true };
 		});
@@ -38,7 +38,7 @@ const OrderingComponent = ({ control }) => {
 	};
 
 	const [value, setValue] = useState(
-		maybeNormalizeValue(maybeParseJson(control.setting.get()))
+		normalizeValue(maybeParseJson(control.setting.get()))
 	);
 
 	const [isVisible, setVisible] = useState(false);
