@@ -240,36 +240,6 @@ function neve_get_svg_allowed_tags() {
 }
 
 /**
- * Add extra allowed HTML tags to wp_kses()
- *
- * @return array Extra tags needed by the Jump to Page feature markup that are stripped by wp_kses() by default.
- */
-function jump_to_page_extra_tags() {
-
-		/**
-		 * We need this or else the 'a' tag default allowed attributes 
-		 * would be overridden when we add the onclick attribute
-		 * */ 
-		$tags = wp_kses_allowed_html( 'post' );
-
-		$tags['form']                 = array();
-		$tags['form']['id']           = array();
-		$tags['form']['autocomplete'] = array();
-		$tags['a']['onclick']         = array();
-		$tags['input']                = array();
-		$tags['input']['id']          = array();
-		$tags['input']['min']         = array();
-		$tags['input']['max']         = array();
-		$tags['input']['name']        = array();
-		$tags['input']['placeholder'] = array();
-		$tags['input']['type']        = array();
-		$tags['input']['value']       = array();
-
-		return $tags;
-
-}
-
-/**
  * Escape SVG.
  *
  * @param string $input input string to escape.

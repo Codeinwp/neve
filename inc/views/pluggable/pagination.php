@@ -27,9 +27,6 @@ class Pagination extends Base_View {
 		add_action( 'neve_do_pagination', array( $this, 'render_pagination' ) );
 		add_action( 'neve_post_navigation', array( $this, 'render_post_navigation' ) );
 		add_filter( 'paginate_links_output', array( $this, 'maybe_add_jump_to_page_input' ) );
-		if ( $this->jump_to_enabled() ) {
-			add_action( 'wp_footer', array( $this, 'expose_jump_to_js' ) );
-		}
 	}
 
 	/**
@@ -235,7 +232,7 @@ class Pagination extends Base_View {
 		 * Escaping functions require args to be strings or PHPStan will throw error.
 		 */
 		$max_num_pages = esc_attr( (string) absint( $wp_query->max_num_pages ) );
-		$current_page  = ! empty( get_query_var( 'paged' ) ) ? esc_attr( (string) get_query_var( 'paged' ) ) : '';
+		$current_page  = ! empty( get_query_var( 'paged' ) ) ? esc_attr( (string) get_query_var( 'paged' ) ) : 1;
 
 		$search_query = esc_attr( get_search_query() );
 		$search_input = ! empty( $search_query ) ? '<input id="s" type="hidden" value="' . $search_query . '" name="s" />' : '';
@@ -279,15 +276,15 @@ MARKUP;
 	private function normalize_jump_to_input() {
 
 		$links           = paginate_links( array( 'type' => 'array' ) );
-		$last_element    = array_pop( $links );
 		$jump_to_element = $this->create_jump_to_html();
 		
-		array_push( $links, $last_element, $jump_to_element );
+		array_push( $links, $jump_to_element );
 
 		array_walk(
 			$links,
 			function( &$value ) use ( $jump_to_element ) {
-				$value = ( $value === $jump_to_element ) ? '<li id="nv-page-jump">' . $value . '</li>' : '<li>' . $value . '</li>';
+				// We're not escaping the jump to page element because it's dynamic values are already escaped.
+				$value = ( $value === $jump_to_element ) ? '<li id="nv-page-jump">' . $value . '</li>' : '<li>' . wp_kses_post( $value ) . '</li>';
 			}
 		);
 
@@ -317,6 +314,10 @@ MARKUP;
 			do_action( 'neve_before_pagination' );
 		}
 
+		if ( $this->jump_to_enabled() ) {
+			wp_add_inline_script( 'neve-script-js', $this->expose_jump_to_js() );
+		}
+
 		$links = paginate_links( array( 'type' => 'list' ) );
 
 		$links = str_replace(
@@ -330,7 +331,11 @@ MARKUP;
 
 		echo $this->has_infinite_scroll() ? '<div style="display: none;">' : '';
 
-		echo $this->jump_to_enabled() ? neve_custom_kses_escape( $links, jump_to_page_extra_tags() ) : neve_custom_kses_escape( $links ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		/**
+		 * If Jump to page feature is enabled then we do not need to escape links since we already escape
+		 * Them in $this->normalize_jump_to_input();
+		 */
+		echo $this->jump_to_enabled() ? $links : neve_custom_kses_escape( $links ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		echo $this->has_infinite_scroll() ? '</div>' : '';
 
