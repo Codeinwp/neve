@@ -20,6 +20,7 @@ import {
 	RangeControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { maybeParseJson } from '../../../customizer-controls/src/common/common';
 
 class MetaFieldsManager extends Component {
 	constructor(props) {
@@ -139,12 +140,12 @@ class MetaFieldsManager extends Component {
 			blockWidthDefault =
 				Math.round(
 					(contentWidthDefault / 100) *
-					metaSidebar.actions.neve_meta_content_width.editor
+						metaSidebar.actions.neve_meta_content_width.editor
 				) + 'px';
 			blocKWidth =
 				Math.round(
 					(contentWidth / 100) *
-					metaSidebar.actions.neve_meta_content_width.editor
+						metaSidebar.actions.neve_meta_content_width.editor
 				) + 'px';
 		}
 
@@ -385,7 +386,7 @@ class MetaFieldsManager extends Component {
 		}
 		const showMetaElements = JSON.parse(
 			this.props.metaValue('neve_post_elements_order') ||
-			this.defaultSortables
+				this.defaultSortables
 		).includes('meta');
 		const postType = select('core/editor').getCurrentPostType();
 		return (
@@ -478,8 +479,8 @@ class MetaFieldsManager extends Component {
 										'neve_meta_author_avatar'
 									)
 										? this.props.metaValue(
-										'neve_meta_author_avatar'
-									) === 'on'
+												'neve_meta_author_avatar'
+										  ) === 'on'
 										: metaSidebar.avatarDefaultState
 								}
 								onChange={(value) => {
@@ -527,39 +528,61 @@ class MetaFieldsManager extends Component {
 	renderElementsGroup() {
 		const metaElements = metaSidebar.isCoverLayout
 			? {
-				content: __('Content', 'neve'),
-				tags: __('Tags', 'neve'),
-				comments: __('Comments', 'neve'),
-				'post-navigation': __('Post Navigation', 'neve'),
-			}
+					content: __('Content', 'neve'),
+					tags: __('Tags', 'neve'),
+					comments: __('Comments', 'neve'),
+					'post-navigation': __('Post Navigation', 'neve'),
+			  }
 			: {
-				title: __('Post Title', 'neve'),
-				meta: __('Post Meta', 'neve'),
-				thumbnail: __('Featured Image', 'neve'),
-				content: __('Content', 'neve'),
-				tags: __('Tags', 'neve'),
-				comments: __('Comments', 'neve'),
-				'post-navigation': __('Post Navigation', 'neve'),
-			};
+					title: __('Post Title', 'neve'),
+					meta: __('Post Meta', 'neve'),
+					thumbnail: __('Featured Image', 'neve'),
+					content: __('Content', 'neve'),
+					tags: __('Tags', 'neve'),
+					comments: __('Comments', 'neve'),
+					'post-navigation': __('Post Navigation', 'neve'),
+			  };
 
-		const settings = {
-			elements: metaElements,
-			default: metaSidebar.elementsDefaultOrder,
-		};
+		const elements = metaElements;
 
 		if (metaSidebar.enable_pro) {
-			settings.elements['author-biography'] = __(
-				'Author Biography',
-				'neve'
-			);
-			settings.elements['related-posts'] = __('Related Posts', 'neve');
-			settings.elements['sharing-icons'] = __('Sharing Icons', 'neve');
+			elements['author-biography'] = __('Author Biography', 'neve');
+			elements['related-posts'] = __('Related Posts', 'neve');
+			elements['sharing-icons'] = __('Sharing Icons', 'neve');
 		}
 
 		const template = select('core/editor').getEditedPostAttribute(
 			'template'
 		);
 		const postType = select('core/editor').getCurrentPostType();
+		const orderingValue =
+			select('core/editor').getEditedPostAttribute('meta')
+				.neve_post_elements_order || metaSidebar.elementsDefaultOrder;
+
+		const maybeNormalizeValue = (val) => {
+			const normalizedValue = val.map((element) => {
+				return { id: element, visible: true };
+			});
+
+			const enabledItems = normalizedValue.map((element) => {
+				element.visible = true;
+				return element;
+			});
+
+			const disabledItems = Object.keys(metaElements)
+				.filter((element) => {
+					return (
+						enabledItems.filter((el) => {
+							return element === el.id;
+						}).length === 0
+					);
+				})
+				.map((element) => {
+					return { id: element, visible: false };
+				});
+
+			return [...enabledItems, ...disabledItems];
+		};
 		return (
 			<div className="nv-option-category">
 				<PanelBody title={__('Elements', 'neve')} intialOpen={true}>
@@ -572,7 +595,10 @@ class MetaFieldsManager extends Component {
 							<SortableItems
 								stateUpdate={this.updateValues}
 								id="neve_post_elements_order"
-								data={settings}
+								elements={metaElements}
+								value={maybeNormalizeValue(
+									maybeParseJson(orderingValue)
+								)}
 							/>
 						</BaseControl>
 					) : (
