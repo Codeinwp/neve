@@ -768,20 +768,21 @@ abstract class Abstract_Component implements Component {
 				]
 			);
 
-			/*
-			Attempt to match the font family for cart icon.
-			if ( strpos( $this->get_id(), Nav::COMPONENT_ID ) > - 1 ) {
+			if ( strpos( $this->get_id(), Nav::COMPONENT_ID ) !== false || strpos( $this->get_id(), SecondNav::COMPONENT_ID ) !== false ) {
 				$css_array[] = [
-					Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' ~ .builder-item--header_cart_icon',
+					Dynamic_Selector::KEY_SELECTOR => '.hfg-is-group.has-' . $this->get_id() . ' .inherit-ff',
 					Dynamic_Selector::KEY_RULES    => [
-						'--fontFamily'    => [
+						'--inheritedFF' => [
 							Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FONT_FAMILY_ID,
 							Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FONT_FAMILY_ID ),
+						],
+						'--inheritedFW' => [
+							Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontWeight',
+							Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontWeight' ),
 						],
 					],
 				];
 			}
-			*/
 		}
 
 		$css_array[] = [
@@ -999,12 +1000,12 @@ abstract class Abstract_Component implements Component {
 	 * Add horizontal alignment to component.
 	 */
 	private function add_horizontal_alignment_control() {
-		if ( strpos( $this->get_id(), Search::COMPONENT_ID ) > - 1 ) {
+		if ( strpos( $this->get_id(), Search::COMPONENT_ID ) !== false ) {
 			return;
 		}
 
 		// New skin drops alignment for navigation
-		if ( neve_is_new_skin() && strpos( $this->get_id(), Nav::COMPONENT_ID ) > - 1 ) {
+		if ( neve_is_new_skin() && strpos( $this->get_id(), Nav::COMPONENT_ID ) !== false ) {
 			return;
 		}
 
@@ -1022,7 +1023,7 @@ abstract class Abstract_Component implements Component {
 				'icon'    => 'editor-alignright',
 			],
 		];
-		if ( strpos( $this->get_id(), Button::COMPONENT_ID ) > - 1 ) {
+		if ( strpos( $this->get_id(), Button::COMPONENT_ID ) !== false ) {
 			$align_choices['justify'] = [
 				'tooltip' => __( 'Justify', 'neve' ),
 				'icon'    => 'editor-justify',

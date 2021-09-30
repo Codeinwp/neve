@@ -1,52 +1,44 @@
 .neve-multiselect {
 
-  .selected-options {
-	display: flex;
-	border: 1px solid $input-borders;
-	border-radius: 3px;
-	padding: 5px 5px 0 5px;
-	flex-wrap: wrap;
-	.placeholder {
-	  user-select: none;
-	  color: #555;
-	  margin-bottom: 5px;
+	.multiselect-wrap {
+		border: 1px solid #ccc;
+		display: flex;
+
+		.selected-options {
+			padding: 0 0 3px 3px;
+			border-radius: 2px;
+			flex-grow: 1;
+			display: flex;
+			flex-wrap: wrap;
+			min-height: 30px;
+		}
 	}
+
 	.token {
-	  &:hover {
-		background-color: #EC7C7C;
-		color: #fff;
-	  }
-	}
-  }
+		margin: 3px 3px 0 0;
+		display: flex;
+		background: #ededed;
+		align-items: center;
+		padding: 3px 8px 3px 5px !important;
+		height: auto;
 
-  .available-options {
-	margin-top: 10px;
-	display: flex;
-	flex-wrap: wrap;
-  }
+		.title {
+			color: #555d66;
+			font-size: 14px;
+		}
 
-  .token {
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	background-color: #efefef;
-	color: #333;
-	padding: 3px 5px 3px 10px;
-	margin: 0 5px 5px 0;
-	border-radius: 20px;
-	border: none;
-
-	&:hover {
-	  background-color: #6EB77A;
-	  color: #FFF;
+		svg {
+			color: #00000080;
+		}
 	}
 
-	.title {
-	  margin-right: 5px;
-	}
+	.dd-toggle {
+		display: flex;
+		align-items: center;
+		margin: -1px;
 
-	svg {
-	  fill: currentColor;
+		button {
+			height: 100%;
+		}
 	}
-  }
 }

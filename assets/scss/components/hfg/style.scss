@@ -38,3 +38,8 @@
 	padding: var(--padding, 0);
 	margin: var(--margin, 0);
 }
+
+.inherit-ff {
+	font-family: var(--inheritedFF);
+	font-weight: var(--inheritedFW);
+}

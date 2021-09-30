@@ -375,4 +375,17 @@ class Front_End {
 			register_sidebar( $sidebar_settings );
 		}
 	}
+
+	/**
+	 * Get strings.
+	 *
+	 * @return array
+	 */
+	public function get_strings() {
+		return [
+			'add_item'     => __( 'Add item', 'neve' ),
+			'add_items'    => __( 'Add items by clicking the ones below.', 'neve' ),
+			'all_selected' => __( 'All items are already selected.', 'neve' ),
+		];
+	}
 }

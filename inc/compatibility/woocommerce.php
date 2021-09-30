@@ -791,7 +791,7 @@ class Woocommerce {
 		$cart_label = get_theme_mod( 'header_cart_icon_' . CartIcon::CART_LABEL );
 		if ( ! empty( $cart_label ) ) {
 			$cart_label                    = Magic_Tags::get_instance()->do_magic_tags( $cart_label );
-			$fragments['.cart-icon-label'] = '<span class="cart-icon-label">' . $cart_label . '</span>';
+			$fragments['.cart-icon-label'] = '<span class="cart-icon-label inherit-ff">' . $cart_label . '</span>';
 		}
 
 		return $fragments;
