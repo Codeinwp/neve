@@ -22,13 +22,6 @@
 
 		margin-bottom: 80px;
 
-		.nv-edd-buy-btn {
-			background: var(--primaryBtnBg, #2f5aae);
-			border: none;
-			color: var(--nv-text-dark-bg, #fff);
-			padding: 20px 50px;
-		}
-
 		.edd_download_purchase_form {
 			text-align: var(--edd-buy-btn-align, left);
 		}
@@ -46,4 +39,7 @@
 		font-weight: var(--fontWeight, 700);
 	}
 
+	.edd_price_options {
+		margin-bottom: 10px;
+	}
 }

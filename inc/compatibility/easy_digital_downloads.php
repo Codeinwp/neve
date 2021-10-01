@@ -15,6 +15,13 @@ namespace Neve\Compatibility;
 class Easy_Digital_Downloads {
 
 	/**
+	 * The current context of the loop
+	 *
+	 * @var string
+	 */
+	private $context;
+
+	/**
 	 * Function that is run after instantiation.
 	 *
 	 * @return void
@@ -22,8 +29,38 @@ class Easy_Digital_Downloads {
 	public function init() {
 		add_action( 'neve_do_download_archive', array( $this, 'render_download_archive' ) );
 		add_action( 'neve_do_single_download', array( $this, 'render_download_single' ) );
+		add_filter( 'edd_purchase_link_defaults', array( $this, 'change_purchase_button_defaults' ) );
+		add_filter( 'edd_settings_styles', array( $this, 'neve_edd_settings_styles' ) );
+	}
 
-		add_filter( 'edd_purchase_link_defaults', array( $this, 'change_edd_purchase_btn_defaults' ) );
+	/**
+	 * Filter the settings from EDD's "Styles" tab
+	 *
+	 * @param mixed $settings EDD style settings.
+	 * @return array 
+	 */
+	public function neve_edd_settings_styles( $settings ) {
+
+		// Remove this setting because setting it to "plain" can cause weird behaviors in ajax buy button rendering.
+		unset( $settings['main']['button_style'] );
+		return $settings;
+	}
+	/**
+	 * Get the type of button to show on the archive pages
+	 *
+	 * @return string 
+	 */
+	private function get_archive_button_type() {
+		return get_theme_mod( 'neve_edd_archive_buy_button_type', 'go-to-download' );
+	}
+
+	/**
+	 * Whether or not to show the price inside the EDD button.
+	 *
+	 * @return bool 
+	 */
+	private function show_archive_button_price() {
+		return get_theme_mod( 'neve_edd_ajax_buy_button_show_price', true );
 	}
 
 	/**
@@ -31,15 +68,66 @@ class Easy_Digital_Downloads {
 	 *
 	 * @return array $defaults Altered defaults.
 	 */
-	public function change_edd_purchase_btn_defaults( $defaults ) {
+	public function change_purchase_button_defaults( $defaults = array() ) {
+
+		/**
+		 * If Ajax add to cart is enabled, and this is an archive page, get the price setting from customizer.
+		 */
+		if ( $this->get_archive_button_type() === 'ajax-add-to-cart' && $this->context === 'archive-download' ) {
+			$defaults['price'] = $this->show_archive_button_price();
+		}
 
 		$defaults['color'] = '';
-		$defaults['class'] = 'edd-submit nv-edd-buy-btn';
+		$defaults['class'] = 'button button-primary nv-edd-buy-btn-ajax';
 		$defaults['text']  = __( 'Buy Now', 'neve' );
 
 		$defaults = apply_filters( 'nv_edd_purchase_link_defaults', $defaults );
 
 		return $defaults;
+	}
+
+	/**
+	 * Output the price to the page.
+	 * 
+	 * @param mixed $id The ID of the current download in the loop.
+	 * @return void 
+	 */
+	private function output_price( $id ) {
+
+		/**
+		 * If Ajax add to cart is enabled, and the user chose to show the price inside the button then bail.
+		 */
+		if ( $this->get_archive_button_type() === 'ajax-add-to-cart' && $this->show_archive_button_price() === true ) {
+			return;
+		}
+
+		echo '<div class="nv-edd-download-meta">';
+		echo '<p class="nv-edd-download-price">';
+		if ( edd_has_variable_prices( $id ) ) {
+			echo wp_kses_post( edd_price_range( $id ) );
+		} else {
+			wp_kses_post( (string) edd_price( $id ) );  // edd_price() function echo's by default
+		}
+		echo '</p>';
+		echo '</div>';
+
+	}
+
+	/**
+	 * Output the button to the page.
+	 * 
+	 * @return void 
+	 */
+	private function output_buy_button_type() {
+
+		if ( $this->get_archive_button_type() === 'go-to-download' ) {
+			echo '<a class="button button-primary nv-edd-buy-btn" href="' . esc_url( get_permalink() ) . '">';
+			echo esc_html_e( 'Buy Now', 'neve' );
+			echo '</a>';
+		} else {
+			echo edd_get_purchase_link(); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
+
 	}
 
 	/**
@@ -51,48 +139,43 @@ class Easy_Digital_Downloads {
 		if ( $context !== 'archive-download' ) {
 			return;
 		}
-		$id = get_the_ID();
+		$this->context = $context;
+		$id            = get_the_ID();
+		global $edd_download_shortcode_item_atts, $edd_download_shortcode_item_i;
 		?>
 
-		<div class="nv-edd-download-item" id="edd_download_<?php echo esc_html( (string) $id ); ?>">
-			<?php do_action( 'edd_download_before' ); ?>
-			<ul>
-				<li class="nv-edd-download-thumbnail">
-					<a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_post_thumbnail( 'medium' ); ?></a>
-				</li>
-				<?php do_action( 'edd_download_after_thumbnail' ); ?>
-				<?php do_action( 'edd_download_before_title' ); ?>
-				<li class="nv-edd-download-title">
-					<p>
-						<a href="<?php echo esc_url( get_permalink() ); ?>">
-							<?php the_title(); ?>
-						</a>
-					</p>
-				</li>
-				<?php do_action( 'edd_download_after_title' ); ?>
-				<li class="nv-edd-download-meta">
-					<p class="nv-edd-download-price">
-						<?php 
-						if ( edd_has_variable_prices( $id ) ) {
-							echo wp_kses_post( edd_price_range( $id ) );
-						} else {
-							wp_kses_post( (string) edd_price( $id ) );  // edd_price() function echo's by default
-						}
-						?>
-					</p>
-				</li>
-				<!-- <li>
-					<div class="edd_download_buy_button">	
-					<?php // echo edd_get_purchase_link( array( 'download_id' => get_the_ID(), 'text' => 'Buy Now' ) ); ?>
+		<div class="<?php echo esc_attr( apply_filters( 'edd_download_class', 'edd_download', get_the_ID(), $edd_download_shortcode_item_atts, $edd_download_shortcode_item_i ) ); ?> nv-edd-download-item" id="edd_download_<?php echo esc_html( (string) $id ); ?>">
+			<div class="<?php echo esc_attr( apply_filters( 'edd_download_inner_class', 'edd_download_inner', get_the_ID(), $edd_download_shortcode_item_atts, $edd_download_shortcode_item_i ) ); ?>">
+				<?php do_action( 'edd_download_before' ); ?>
+					<div class="nv-edd-download-thumbnail">
+						<a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_post_thumbnail( 'medium' ); ?></a>
 					</div>
-				</li>  -->
-				<li class="nv-edd-download-buy-btn">
-					<a href="<?php echo esc_url( get_permalink() ); ?>">
-						<?php esc_html_e( 'Buy Now', 'neve' ); ?>
-					</a>
-				</li>
-			</ul>
-			<?php do_action( 'edd_download_after' ); ?>
+					<?php do_action( 'edd_download_after_thumbnail' ); ?>
+					<?php do_action( 'edd_download_before_title' ); ?>
+					<div class="nv-edd-download-title">
+						<p>
+							<a href="<?php echo esc_url( get_permalink() ); ?>">
+								<?php the_title(); ?>
+							</a>
+						</p>
+					</div>
+					<div>
+					<?php 
+						do_action( 'edd_download_after_title' );
+						apply_filters( 'neve_edd_archive_excerpt', '', $id ); 
+						do_action( 'edd_download_after_content' );
+					?>
+					</div>
+
+					<?php 
+					$this->output_price( $id );
+					do_action( 'edd_download_after_price', $id ); 
+					?>
+					<div class="nv-edd-buy-btn-wrap">
+						<?php $this->output_buy_button_type(); ?>
+					</div>
+				<?php do_action( 'edd_download_after' ); ?>
+			</div>
 		</div>
 		<?php
 	}
@@ -106,7 +189,7 @@ class Easy_Digital_Downloads {
 		if ( $context !== 'single-download' ) {
 			return;
 		}
-
+		$this->context    = $context;
 		$id               = get_the_ID();
 		$categories       = get_the_terms( $id, 'download_category' );
 		$categories_count = ! empty( $categories ) ? count( $categories ) : 0;

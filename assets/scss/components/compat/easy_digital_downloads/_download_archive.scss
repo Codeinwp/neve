@@ -5,7 +5,7 @@
 	#nv-edd-grid-container {
 		display: grid;
 		gap: var(--grid-cols-spacing, 40px);
-		grid-template-columns: repeat(var(--grid-cols, 4), auto);
+		grid-template-columns: repeat(var(--grid-cols, 4), 1fr);
 		margin-bottom: 50px;
 	}
 
@@ -26,19 +26,6 @@
 		text-transform: var(--textTransform, "inherit");
 	}
 
-	.nv-edd-download-buy-btn a {
-		background: var(--edd-btn-color, var(--primaryBtnBg, #2f5aae));
-		border-radius: 3px;
-		color: #fff;
-		text-decoration: none;
-		padding: 10px;
-	}
-
-	.nv-edd-download-buy-btn a:hover {
-		opacity: 1;
-		color: #fff;
-	}
-
 	#nv-edd-download-pagination {
 		margin-top: 150px;
 	}
@@ -54,6 +41,10 @@
 			border-radius: 3px;
 			color: #fff;
 		}
+	}
+
+	.edd_price_options {
+		margin-bottom: 10px;
 	}
 
 }
