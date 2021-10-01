@@ -29,8 +29,44 @@ class Easy_Digital_Downloads {
 	public function init() {
 		add_action( 'neve_do_download_archive', array( $this, 'render_download_archive' ) );
 		add_action( 'neve_do_single_download', array( $this, 'render_download_single' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'neve_dequeue_edd_styles' ) );
 		add_filter( 'edd_purchase_link_defaults', array( $this, 'change_purchase_button_defaults' ) );
 		add_filter( 'edd_settings_styles', array( $this, 'neve_edd_settings_styles' ) );
+		add_filter( 'body_class', array( $this, 'add_body_class' ) );
+	}
+
+	/**
+	 * Add neve easy digital downloads body class.
+	 * 
+	 * @param array $classes Current classes on body.
+	 */
+	public function add_body_class( $classes ) {
+
+		$classes = (array) $classes;
+
+		if ( edd_is_checkout() ||
+		edd_is_success_page() ||
+		edd_is_failed_transaction_page() ||
+		edd_is_purchase_history_page() ||
+		is_post_type_archive( 'download' ) ||
+		get_post_type() == 'download' ||
+		is_tax( 'download_category' ) ||
+		is_tax( 'download_tag' )
+		) {
+			$classes[] = 'nv-edd';
+		}
+
+		return $classes;
+
+	}
+
+	/**
+	 * Dequeue the EDD default styles as we have our own.
+	 * 
+	 * @return void 
+	 */
+	public function neve_dequeue_edd_styles() {
+		wp_dequeue_style( 'edd-styles' );
 	}
 
 	/**
@@ -40,11 +76,24 @@ class Easy_Digital_Downloads {
 	 * @return array 
 	 */
 	public function neve_edd_settings_styles( $settings ) {
+		/*
+		 * Settings with type 'descriptive_text' are automatically stripped by EDD
+		 * So this field is not saved to the DB on save changes.
+		 * 
+		 * see edd_settings_sanitize()
+		 */
+		$settings['main'] = array(
+			'neve_controlled' => array(
+				'id'   => 'neve_controlled',
+				'name' => esc_html__( 'Controlled by Neve', 'neve' ),
+				'desc' => esc_html__( 'Neve Theme controls base style settings of Easy Digital Downloads. Additional settings from other extensions might appear below.', 'neve' ),
+				'type' => 'descriptive_text',
+			),
+		);
 
-		// Remove this setting because setting it to "plain" can cause weird behaviors in ajax buy button rendering.
-		unset( $settings['main']['button_style'] );
 		return $settings;
 	}
+
 	/**
 	 * Get the type of button to show on the archive pages
 	 *
@@ -69,8 +118,7 @@ class Easy_Digital_Downloads {
 	 * @return array $defaults Altered defaults.
 	 */
 	public function change_purchase_button_defaults( $defaults = array() ) {
-
-		/**
+		/*
 		 * If Ajax add to cart is enabled, and this is an archive page, get the price setting from customizer.
 		 */
 		if ( $this->get_archive_button_type() === 'ajax-add-to-cart' && $this->context === 'archive-download' ) {
@@ -78,7 +126,8 @@ class Easy_Digital_Downloads {
 		}
 
 		$defaults['color'] = '';
-		$defaults['class'] = 'button button-primary nv-edd-buy-btn-ajax';
+		$classes           = $defaults['class'];
+		$defaults['class'] = $classes . ' nv-edd-buy-btn';
 		$defaults['text']  = __( 'Buy Now', 'neve' );
 
 		$defaults = apply_filters( 'nv_edd_purchase_link_defaults', $defaults );
@@ -93,8 +142,7 @@ class Easy_Digital_Downloads {
 	 * @return void 
 	 */
 	private function output_price( $id ) {
-
-		/**
+		/*
 		 * If Ajax add to cart is enabled, and the user chose to show the price inside the button then bail.
 		 */
 		if ( $this->get_archive_button_type() === 'ajax-add-to-cart' && $this->show_archive_button_price() === true ) {
@@ -121,7 +169,7 @@ class Easy_Digital_Downloads {
 	private function output_buy_button_type() {
 
 		if ( $this->get_archive_button_type() === 'go-to-download' ) {
-			echo '<a class="button button-primary nv-edd-buy-btn" href="' . esc_url( get_permalink() ) . '">';
+			echo '<a class="button nv-edd-buy-btn" href="' . esc_url( get_permalink() ) . '">';
 			echo esc_html_e( 'Buy Now', 'neve' );
 			echo '</a>';
 		} else {

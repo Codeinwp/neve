@@ -41,3 +41,31 @@ function edd_price_range( $download_id = 0 ) {}
  * @return string $purchase_form
  */
 function edd_get_purchase_link( $args = array() ) {}
+/**
+ * Determines if we're currently on the Checkout page
+ *
+ * @since 1.1.2
+ * @return bool True if on the Checkout page, false otherwise
+ */
+function edd_is_checkout() {}
+/**
+ * Determines if we're currently on the Success page.
+ *
+ * @since 1.9.9
+ * @return bool True if on the Success page, false otherwise.
+ */
+function edd_is_success_page() {}
+/**
+ * Determines if we're currently on the Failed Transaction page.
+ *
+ * @since 2.1
+ * @return bool True if on the Failed Transaction page, false otherwise.
+ */
+function edd_is_failed_transaction_page() {}
+/**
+ * Determines if we're currently on the Purchase History page.
+ *
+ * @since 2.1
+ * @return bool True if on the Purchase History page, false otherwise.
+ */
+function edd_is_purchase_history_page() {}

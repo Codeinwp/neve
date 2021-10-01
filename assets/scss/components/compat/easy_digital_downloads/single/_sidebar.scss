@@ -1,5 +1,5 @@
 //TODO-UV This only applies on single download sidebar..should be universal?
-.nv-sidebar-wrap {
+.nv-edd .nv-sidebar-wrap {
 
 	.edd-cart-number-of-items {
 		font-style: normal;
@@ -9,25 +9,6 @@
 		background: none;
 		font-size: 20px;
 		padding: 20px 0;
-	}
-
-	.edd_checkout {
-
-		width: 100%;
-
-		a {
-			background: var(--primaryBtnBg, #2f5aae);
-			border-radius: 3px;
-			border: none;
-			color: var(--nv-text-dark-bg, #fff);
-			display: block;
-			font-weight: 400;
-			text-align: center;
-			padding: 15px;
-			width: 60%;
-
-		}
-
 	}
 
 	.widget_edd_product_details {
