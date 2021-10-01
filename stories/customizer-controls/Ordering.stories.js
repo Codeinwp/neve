@@ -9,7 +9,7 @@ import {
 	ORDERING_NO_TOGGLES,
 } from '../utils/values';
 import { useState } from '@wordpress/element';
-import { maybeParseJson } from '../../assets/apps/customizer-controls/src/common/common'
+import { maybeParseJson } from '../../assets/apps/customizer-controls/src/common/common';
 
 export default {
 	title: 'Customizer/Controls/Ordering',
@@ -52,12 +52,17 @@ const Template = (args) => {
 	const [value, setValue] = useState(
 		normalizeValue(maybeParseJson(args.customizeValue))
 	);
+
+	const displayValue = value
+		.filter((item) => item.visible)
+		.map((item) => item.id);
+
 	return (
 		<>
 			<Ordering {...args} value={value} onUpdate={setValue} />
 			<div className="value-previewer">
 				<strong>Value:</strong>
-				<pre>{JSON.stringify(value, null, ' ')}</pre>
+				<pre>{JSON.stringify(displayValue, null, ' ')}</pre>
 			</div>
 		</>
 	);
