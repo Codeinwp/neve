@@ -1353,7 +1353,7 @@ abstract class Abstract_Builder implements Builder {
 						'classes'    => $classes,
 						'components' => [],
 					];
-					if ( $builder_id === 'footer' && ! empty( $vertical_align ) &&  ! $new_skin ) {
+					if ( $builder_id === 'footer' && ! empty( $vertical_align ) && ! $new_skin ) {
 						$render_buffer[ $slot ][ $render_index ]['vertical-align'] = 'hfg-item-v-' . $vertical_align;
 					}
 				}
