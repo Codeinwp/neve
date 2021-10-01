@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 22/09/21
+ * Updated on 29/09/21
  *
  * @package neve
  */
@@ -950,7 +950,7 @@ return array(
 	'Oldenburg' => array( '400',),
 	'Oleo Script' => array( '400', '700',),
 	'Oleo Script Swash Caps' => array( '400', '700',),
-	'Open Sans' => array( '300', '400', '600', '700', '800', '300italic', '400italic', '600italic', '700italic', '800italic',),
+	'Open Sans' => array( '300', '400', '500', '600', '700', '800', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic',),
 	'Open Sans Condensed' => array( '300', '700', '300italic',),
 	'Oranienbaum' => array( '400',),
 	'Orbitron' => array( '400', '500', '600', '700', '800', '900',),
