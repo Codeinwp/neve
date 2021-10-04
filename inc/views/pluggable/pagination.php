@@ -234,35 +234,33 @@ class Pagination extends Base_View {
 		$max_num_pages = esc_attr( (string) absint( $wp_query->max_num_pages ) );
 		$current_page  = ! empty( get_query_var( 'paged' ) ) ? esc_attr( (string) get_query_var( 'paged' ) ) : 1;
 
-		$search_query = esc_attr( get_search_query() );
-		$search_input = ! empty( $search_query ) ? '<input id="s" type="hidden" value="' . $search_query . '" name="s" />' : '';
-		
-		/**
-		 * If plain permalinks are used we need extra inputs to handle it
-		 */
-		$permalink_structure                = get_option( 'permalink_structure' );
-		$plain_permalink_blog_archive_input = ( empty( $permalink_structure ) && $wp_query->is_posts_page ) ? '<input id="nv-page-jump-pid" type="hidden" value="' . esc_attr( $wp_query->query['page_id'] ) . '" name="page_id" />' : '';
-		$plain_permalink_cpt_archive_input  = ( empty( $permalink_structure ) && $wp_query->is_post_type_archive ) ? '<input id="nv-page-jump-cpt" type="hidden" value="' . esc_attr( $wp_query->query['post_type'] ) . '" name="post_type" />' : '';
-		$plain_permalink_cpt_taxonomy_input = ( empty( $permalink_structure ) && $wp_query->is_tax ) ? '<input id="nv-page-jump-cpt-tax" type="hidden" value="' . esc_attr( $wp_query->query_vars['term'] ) . '" name="' . esc_attr( $wp_query->query_vars['taxonomy'] ) . '" />' : '';
-
 		$label       = esc_html__( 'Go to Page', 'neve' );
 		$button_text = esc_html( apply_filters( 'neve_pagination_jump_button_text', '&raquo;' ) );
 
-		$markup = <<<MARKUP
+		/* Add extra needed inputs. */
+		$additional_inputs = '';
+		if ( ! empty( $_GET ) ) {
+			foreach ( $_GET as $key => $value ) {
+				// prevent adding two paged values to query.
+				if ( $key === 'paged' ) {
+					continue;
+				}
+				$additional_inputs .= '<input type="hidden" name="' . $key . '" value="' . $value . '"/>';
+			}
+		}
+
+		$markup = <<<HTML
 		<div id="nv-page-jumper-wrap">
-			<form id="nv-page-jump-form" autocomplete="off" >
+			<form id="nv-page-jump-form" method="GET" autocomplete="off" >
 				<span>
 					<label for="paged">$label</label>
 					<input id="nv-page-jump-num" placeholder="#" type="number" value="$current_page" min="1" max="$max_num_pages" name="paged" />
-					$plain_permalink_blog_archive_input
-					$plain_permalink_cpt_archive_input
-					$plain_permalink_cpt_taxonomy_input
-					$search_input
+					$additional_inputs
 					<a class="page-numbers" href="#" onclick="nvJumpTo(event)">$button_text</a>
 				</span>
 			</form>
 		</div>
-MARKUP;
+HTML;
 	
 		return $markup;
 

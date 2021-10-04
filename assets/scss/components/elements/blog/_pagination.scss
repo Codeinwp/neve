@@ -43,6 +43,8 @@ ul.page-numbers {
 		}
 
 		a {
+			background: var(--nv-primary-accent);
+			color: var(--nv-text-dark-bg);
 			display: inline-block;
 		}
 
