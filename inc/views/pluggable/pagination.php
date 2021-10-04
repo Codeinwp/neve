@@ -204,19 +204,18 @@ class Pagination extends Base_View {
 	 * 
 	 * If we don't create a dedicated JS function for the inline onclick, the a tag would first scroll to the top of the page(#) and then submit the form.
 	 * 
-	 * @return void
+	 * @return string
 	 */
 	public function expose_jump_to_js() {
 
-		echo "
-		<script type='text/javascript'>
+		$js = "
 		function nvJumpTo(e){
 			e.preventDefault();
 			document.querySelector('#nv-page-jump-form').submit()
 		}
-		</script>
 		";
 		
+		return $js;
 	}
 
 	/**
@@ -313,7 +312,7 @@ HTML;
 		}
 
 		if ( $this->jump_to_enabled() ) {
-			wp_add_inline_script( 'neve-script-js', $this->expose_jump_to_js() );
+			wp_add_inline_script( 'neve-script', $this->expose_jump_to_js() );
 		}
 
 		$links = paginate_links( array( 'type' => 'list' ) );
