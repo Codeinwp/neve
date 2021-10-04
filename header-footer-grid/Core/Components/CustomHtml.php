@@ -147,6 +147,14 @@ class CustomHtml extends Abstract_Component {
 				'description'        => __( 'Arbitrary HTML code. It supports also shortcodes.', 'neve' ),
 				'type'               => '\Neve\Customizer\Controls\React\Rich_Text',
 				'section'            => $this->section,
+				'options'            => array(
+					'input_attrs' => array(
+						'toolbars' => array(
+							'toolbar1' => 'formatselect,styleselect,bold,italic,bullist,numlist,link,alignleft,aligncenter,alignright,wp_adv',
+							'toolbar2' => 'strikethrough,hr,forecolor,pastetext,removeformat,charmap,outdent,indent',
+						),
+					),
+				),
 				'use_dynamic_fields' => array( 'string', 'url' ),
 				'conditional_header' => $this->get_builder_id() === 'header',
 			]

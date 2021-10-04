@@ -6,9 +6,16 @@ import RichText from './RichText';
 const RichTextComponent = ({ control }) => {
 	const [value, setValue] = useState(control.setting.get());
 	const { id: controlId, params } = control;
-	const { label, section } = params;
+	const { label, section, toolbars } = params;
+	const toolbarOneDefaults =
+		'formatselect,bold,italic,bullist,numlist,link,wp_adv';
+	const toolbarTwoDefaults =
+		'strikethrough,hr,forecolor,pastetext,removeformat';
+	const {
+		toolbar1 = toolbarOneDefaults,
+		toolbar2 = toolbarTwoDefaults,
+	} = toolbars;
 	const editorId = `${controlId}-editor`;
-
 	/**
 	 * Get the editor to be used based on the available version that WP loads.
 	 *
@@ -61,10 +68,8 @@ const RichTextComponent = ({ control }) => {
 			mediaButtons: true,
 
 			tinymce: {
-				toolbar1:
-					'formatselect,styleselect,bold,italic,bullist,numlist,link,alignleft,aligncenter,alignright,wp_adv',
-				toolbar2:
-					'strikethrough,hr,forecolor,pastetext,removeformat,charmap,outdent,indent,undo,redo,wp_help',
+				toolbar1,
+				toolbar2,
 				style_formats_merge: true,
 				style_formats: [],
 			},
@@ -84,10 +89,8 @@ const RichTextComponent = ({ control }) => {
 						mediaButtons: true,
 
 						tinymce: {
-							toolbar1:
-								'formatselect,styleselect,bold,italic,bullist,numlist,link,alignleft,aligncenter,alignright,wp_adv',
-							toolbar2:
-								'strikethrough,hr,forecolor,pastetext,removeformat,charmap,outdent,indent,undo,redo,wp_help',
+							toolbar1,
+							toolbar2,
 							style_formats_merge: true,
 							style_formats: [],
 						},

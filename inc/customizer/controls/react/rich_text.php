@@ -20,16 +20,13 @@ class Rich_Text extends \WP_Customize_Control {
 	 */
 	public $type = 'neve_rich_text';
 	/**
-	 * Additional arguments passed to JS.
-	 *
-	 * @var array
-	 */
-	public $choices = [];
-	/**
 	 * Send to JS.
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['choices'] = $this->choices;
+		$this->json['toolbars'] = [];
+		if ( isset( $this->input_attrs['toolbars'] ) && ! empty( $this->input_attrs['toolbars'] ) ) {
+			$this->json['toolbars'] = $this->input_attrs['toolbars'];
+		}
 	}
 }
