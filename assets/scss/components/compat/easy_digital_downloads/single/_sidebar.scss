@@ -1,5 +1,4 @@
-//TODO-UV This only applies on single download sidebar..should be universal?
-.nv-edd .nv-sidebar-wrap {
+.nv-sidebar-wrap {
 
 	.edd-cart-number-of-items {
 		font-style: normal;
@@ -12,10 +11,6 @@
 	}
 
 	.widget_edd_product_details {
-
-		h3 span {
-			font-size: 20px;
-		}
 
 		.edd_price_options {
 			margin-top: -20px;
@@ -30,6 +25,10 @@
 		.tags {
 			font-size: 14px;
 			margin-bottom: 10px;
+		}
+
+		.edd-meta {
+			margin-top: 10px;
 		}
 
 	}

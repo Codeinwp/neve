@@ -1,24 +1,22 @@
-.nv-edd {
+.nv-edd a.button,
+.nv-edd a.button.edd-add-to-cart,
+.nv-edd button.button,
+.widget_edd_cart_widget .edd_checkout a,
+.nv-sidebar-wrap a.edd_go_to_checkout,
+.nv-sidebar-wrap .button.edd-add-to-cart {
 
-	a.button,
-	a.button.edd-add-to-cart,
-	button.button,
-	.edd_checkout a {
+	@extend %nv-button-primary;
 
-		@extend %nv-button-primary;
+	&:hover {
 
-		&:hover {
-
-			@extend %nv-button-primary-hover;
-		}
+		@extend %nv-button-primary-hover;
 	}
+}
 
-	.edd_purchase_submit_wrapper a.edd-add-to-cart {
-		display: none;
-	}
+.edd_purchase_submit_wrapper a.edd-add-to-cart {
+	display: none;
+}
 
-	.edd_purchase_submit_wrapper a.edd-add-to-cart.edd-has-js {
-		display: inline-block;
-	}
-
+.edd_purchase_submit_wrapper a.edd-add-to-cart.edd-has-js {
+	display: inline-block;
 }

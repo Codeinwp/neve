@@ -33,15 +33,15 @@
 		}
 
 		#nv-edd-download-pagination .page-numbers {
-			background: #f8f8f8;
-			color: #000;
+			background: var(--nv-light-bg);
+			border-radius: 3px;
+			color: var(--nv-text-color);
 			margin-right: 20px;
-			padding: 20px;
+			padding: 12px 15px;
 
 			&.current {
-				background: #2f5aae;
-				border-radius: 3px;
-				color: #fff;
+				background: var(--nv-primary-accent);
+				color: var(--nv-text-dark-bg);
 			}
 		}
 

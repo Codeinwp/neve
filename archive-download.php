@@ -11,8 +11,6 @@
  */
 function neve_edd_download_nav() {
 
-	// TODO-UV Possibly move this method to a more appropriate file. 
-	
 	global $wp_query;
 
 	$big          = 999999;
@@ -34,6 +32,7 @@ function neve_edd_download_nav() {
 		<?php 
 		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $pagination; 
+		// TODO use pagination from pluggable class once we have infinite scroll supported for edd.
 		?>
 	</div>
 
