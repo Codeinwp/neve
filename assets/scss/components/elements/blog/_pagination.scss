@@ -38,14 +38,17 @@ ul.page-numbers {
 			margin-right: 10px;
 		}
 
-		input {
-			width: 60px;
+		input#nv-page-jump-num {
+			width: 70px;
 		}
 
-		a {
+		input#nv-page-jump-submit {
 			background: var(--nv-primary-accent);
 			color: var(--nv-text-dark-bg);
-			display: inline-block;
+			line-height: 1;
+			font-size: var(--bodyFontSize);
+			border-radius: 3px;
+			padding: 12px 15px;
 		}
 
 	}
@@ -57,4 +60,5 @@ ul.page-numbers {
 	#nv-page-jump {
 		margin-left: auto;
 	}
+
 }

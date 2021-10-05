@@ -200,25 +200,6 @@ class Pagination extends Base_View {
 	}
 
 	/**
-	 * Expose our Jump to JavaScript on the page.
-	 * 
-	 * If we don't create a dedicated JS function for the inline onclick, the a tag would first scroll to the top of the page(#) and then submit the form.
-	 * 
-	 * @return string
-	 */
-	public function expose_jump_to_js() {
-
-		$js = "
-		function nvJumpTo(e){
-			e.preventDefault();
-			document.querySelector('#nv-page-jump-form').submit()
-		}
-		";
-		
-		return $js;
-	}
-
-	/**
 	 * Create jump to navigation inputs.
 	 * 
 	 * @return mixed $markup HTML to output on page.
@@ -248,19 +229,19 @@ class Pagination extends Base_View {
 			}
 		}
 
-		$markup = <<<HTML
-		<div id="nv-page-jumper-wrap">
-			<form id="nv-page-jump-form" method="GET" autocomplete="off" >
+		$markup = "
+		<div id='nv-page-jumper-wrap'>
+			<form id='nv-page-jump-form' method='GET' autocomplete='off' >
 				<span>
-					<label for="paged">$label</label>
-					<input id="nv-page-jump-num" placeholder="#" type="number" value="$current_page" min="1" max="$max_num_pages" name="paged" />
+					<label for='paged'>$label</label>
+					<input id='nv-page-jump-num' placeholder='#' type='number' value='$current_page' min='1' max='$max_num_pages' name='paged' />
 					$additional_inputs
-					<a class="page-numbers" href="#" onclick="nvJumpTo(event)">$button_text</a>
+					<input id='nv-page-jump-submit' type='submit' value='$button_text' />
 				</span>
 			</form>
 		</div>
-HTML;
-	
+		";
+		
 		return $markup;
 
 	}
@@ -309,10 +290,6 @@ HTML;
 			 * @since 2.3.8
 			 */
 			do_action( 'neve_before_pagination' );
-		}
-
-		if ( $this->jump_to_enabled() ) {
-			wp_add_inline_script( 'neve-script', $this->expose_jump_to_js() );
 		}
 
 		$links = paginate_links( array( 'type' => 'list' ) );
