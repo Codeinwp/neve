@@ -44,6 +44,8 @@ function neve_hooks() {
 			'neve_before_header_wrapper_hook',
 			'neve_after_header_hook',
 			'neve_after_header_wrapper_hook',
+			'neve_before_mobile_menu_content',
+			'neve_after_mobile_menu_content',
 		),
 		'footer'     => array(
 			'neve_before_footer_hook',
@@ -117,6 +119,7 @@ function neve_hooks() {
 			'woocommerce_cart_totals_before_order_total',
 			'woocommerce_proceed_to_checkout',
 			'woocommerce_after_cart_totals',
+			'woocommerce_cart_is_empty',
 		);
 		$hooks['checkout'] = array(
 			'woocommerce_before_checkout_billing_form',
@@ -130,6 +133,23 @@ function neve_hooks() {
 			'woocommerce_review_order_before_submit',
 			'woocommerce_review_order_after_submit',
 			'woocommerce_review_order_after_payment',
+		);
+		$hooks['login']    = array(
+			'woocommerce_login_form_start',
+			'woocommerce_login_form_end',
+		);
+		$hooks['register'] = array(
+			'woocommerce_register_form_end',
+			'woocommerce_register_form_start',
+		);
+		$hooks['account']  = array(
+			'woocommerce_before_my_account',
+			'woocommerce_before_account_navigation',
+			'woocommerce_account_navigation',
+			'woocommerce_after_account_navigation',
+			'woocommerce_account_content',
+			'woocommerce_account_dashboard',
+			'woocommerce_after_my_account',
 		);
 	}
 
