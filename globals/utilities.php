@@ -510,7 +510,7 @@ function neve_is_new_widget_editor() {
  * @return bool
  * @since 3.0.5
  */
-function is_using_wp_version( $version = '5.8' ) {
+function neve_is_using_wp_version( $version = '5.8' ) {
 	global $wp_version;
 	return version_compare( $wp_version, $version, '>=' );
 }
