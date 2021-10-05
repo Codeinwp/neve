@@ -25,23 +25,6 @@ function edd_has_variable_prices( $download_id = 0 ) {}
  */
 function edd_price_range( $download_id = 0 ) {}
 /**
- * Get Purchase Link
- *
- * Builds a Purchase link for a specified download based on arguments passed.
- * This function is used all over EDD to generate the Purchase or Add to Cart
- * buttons. If no arguments are passed, the function uses the defaults that have
- * been set by the plugin. The Purchase link is built for simple and variable
- * pricing and filters are available throughout the function to override
- * certain elements of the function.
- *
- * $download_id = null, $link_text = null, $style = null, $color = null, $class = null
- *
- * @since 1.0
- * @param array $args Arguments for display
- * @return string $purchase_form
- */
-function edd_get_purchase_link( $args = array() ) {}
-/**
  * Determines if we're currently on the Checkout page
  *
  * @since 1.1.2
