@@ -67,9 +67,9 @@ describe('Global Colors', function () {
 		cy.get('.color-array-wrap').should('be.visible');
 		cy.get('.color-array-wrap .neve-color-component').should('have.length', 9);
 
-		cy.get('.color-array-wrap:nth-child(2) > .components-dropdown > .components-button').click();
+		cy.get('.color-array-wrap :nth-child(2) > .components-dropdown > .components-button').click();
 
-		cy.get('.color-array-wrap:nth-child(2) > .components-dropdown > .components-button').should(
+		cy.get('.color-array-wrap :nth-child(2) > .components-dropdown > .components-button').should(
 			'have.attr',
 			'aria-expanded',
 			'true',
