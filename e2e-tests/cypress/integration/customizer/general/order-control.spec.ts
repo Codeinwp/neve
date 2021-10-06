@@ -31,7 +31,6 @@ describe('Ordering Control', function () {
 	});
 
 	it('Test Ordering', function () {
-		cy.log('Before change value', value);
 		cy.get('@control').find('.handle').should('have.length', 3);
 		dropElAfter(
 			'#customize-control-neve_post_content_ordering .items-list .neve-sortable-item .handle',
@@ -41,12 +40,10 @@ describe('Ordering Control', function () {
 
 		cy.window().then((win) => {
 			const newValue = JSON.parse(win.wp.customize.control('neve_post_content_ordering').setting());
-			cy.log('Expected value', newValue);
 			const tmp = value[0];
 			value[0] = value[1];
 			value[1] = value[2];
 			value[2] = tmp;
-			cy.log('New value', value);
 			expect(value).to.deep.eq(newValue);
 		});
 	});
