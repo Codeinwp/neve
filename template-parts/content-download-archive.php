@@ -6,4 +6,5 @@
  * @package Neve
  */
 
-do_action( 'neve_do_download_archive', 'archive-download' );
+( defined( 'NEVE_PRO_PATH' ) ) ? do_action( 'neve_do_download_archive', 'archive-download' ) : do_action( 'neve_blog_post_template_part_content', 'single' );
+

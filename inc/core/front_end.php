@@ -299,7 +299,7 @@ class Front_End {
 			$style_path = 'css/easy-digital-downloads';
 
 			wp_register_style( 'neve-easy-digital-downloads', NEVE_ASSETS_URL . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
-			// TODO-UV RTL styles
+			// TODO RTL styles
 			// wp_style_add_data( 'neve-easy-digital-downloads', 'rtl', 'replace' );
 			wp_style_add_data( 'neve-easy-digital-downloads', 'suffix', '.min' );
 			wp_enqueue_style( 'neve-easy-digital-downloads' );

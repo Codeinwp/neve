@@ -11,8 +11,6 @@
  */
 function neve_edd_download_nav() {
 
-	// TODO-UV Possibly move this method to a more appropriate file. 
-	
 	global $wp_query;
 
 	$big          = 999999;
