@@ -17,7 +17,6 @@ describe('Ordering Control', function () {
 		cy.window().then((win) => {
 			const defaultValue = JSON.stringify(['thumbnail', 'title-meta', 'excerpt']);
 			const currentValue = win.wp.customize.control('neve_post_content_ordering').setting();
-			console.log(defaultValue);
 			if (currentValue !== defaultValue) {
 				win.wp.customize.control('neve_post_content_ordering').setting.set(defaultValue);
 				cy.aliasRestRoutes();
@@ -40,7 +39,6 @@ describe('Ordering Control', function () {
 			);
 		cy.window().then((win) => {
 			const newValue = JSON.parse(win.wp.customize.control('neve_post_content_ordering').setting());
-			console.log(newValue);
 			const tmp = value[0];
 			value[0] = value[1];
 			value[1] = value[2];
