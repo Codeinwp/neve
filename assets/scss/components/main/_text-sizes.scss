@@ -1,0 +1,11 @@
+.has-medium-font-size {
+	font-size: calc(var(--h3FontSize) * 1.4);
+}
+
+.has-large-font-size {
+	font-size: calc(var(--h2FontSize) * 1.4);
+}
+
+.has-huge-font-size {
+	font-size: calc(var(--h1FontSize) * 1.4);
+}

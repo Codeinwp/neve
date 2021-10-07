@@ -50,6 +50,7 @@ class Front_End {
 		add_theme_support( 'custom-background', [] );
 		add_theme_support( 'align-wide' );
 		add_theme_support( 'editor-color-palette', $this->get_gutenberg_color_palette() );
+		add_theme_support( 'disable-custom-font-sizes' );
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
 		add_theme_support( 'fl-theme-builder-parts' );
