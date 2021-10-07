@@ -17,6 +17,7 @@ describe('Ordering Control', function () {
 		cy.window().then((win) => {
 			const defaultValue = JSON.stringify(['thumbnail', 'title-meta', 'excerpt']);
 			const currentValue = win.wp.customize.control('neve_post_content_ordering').setting();
+			console.log(defaultValue);
 			if (currentValue !== defaultValue) {
 				win.wp.customize.control('neve_post_content_ordering').setting.set(defaultValue);
 				cy.aliasRestRoutes();
@@ -32,14 +33,14 @@ describe('Ordering Control', function () {
 
 	it('Test Ordering', function () {
 		cy.get('@control').find('.handle').should('have.length', 3);
-		dropElAfter(
-			'#customize-control-neve_post_content_ordering .items-list .neve-sortable-item .handle',
-			0,
-			1,
-		);
-
+		cy.get('#customize-control-neve_post_content_ordering .items-list .neve-sortable-item .handle')
+			.eq(0)
+			.drag(
+				'#customize-control-neve_post_content_ordering .items-list .neve-sortable-item .handle:eq(2)',
+			);
 		cy.window().then((win) => {
 			const newValue = JSON.parse(win.wp.customize.control('neve_post_content_ordering').setting());
+			console.log(newValue);
 			const tmp = value[0];
 			value[0] = value[1];
 			value[1] = value[2];
@@ -59,30 +60,3 @@ describe('Ordering Control', function () {
 		});
 	});
 });
-
-/**
- * Drag and drop an element after another.
- *
- * @param selector
- * @param moveFrom
- * @param moveTo
- * @example cy.dropElAfter('control', 0, 1)
- */
-const dropElAfter = (selector, moveFrom: number, moveTo: number) => {
-	cy.get(selector).then((el) => {
-		const drag = el[moveFrom].getBoundingClientRect();
-		const drop = el[moveTo].getBoundingClientRect();
-		cy.get(el[moveFrom]).trigger('mousedown', {
-			which: 1,
-			pageX: drag.x,
-			pageY: drag.y,
-		});
-		cy.document().trigger('mousemove', {
-			which: 1,
-			pageX: drop.x,
-			pageY: drop.y + 35,
-		});
-		cy.wait(200);
-		cy.document().trigger('mouseup');
-	});
-};

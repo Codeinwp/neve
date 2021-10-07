@@ -16,6 +16,7 @@
 		"url": "https://github.com/Codeinwp/neve/issues"
 	},
 	"devDependencies": {
+		"@4tw/cypress-drag-drop": "^2.0.0",
 		"@percy/cypress": "^2.3.4",
 		"@testing-library/cypress": "^7.0.6",
 		"@typescript-eslint/eslint-plugin": "^4.19.0",
