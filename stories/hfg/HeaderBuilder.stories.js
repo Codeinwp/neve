@@ -51,6 +51,7 @@ const Template = (args) => {
 				value={value}
 				builder={'header'}
 				portalMount={portalMount}
+				mounted={true}
 				{...args}
 			/>
 		</>
