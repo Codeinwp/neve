@@ -83,26 +83,24 @@ const RichTextComponent = ({ control }) => {
 
 		if (wp.oldEditor) {
 			setTimeout(() => {
-				setTimeout(() => {
-					removeEditorChangeListener();
+				removeEditorChangeListener();
 
-					correctEditor().remove(editorId);
+				correctEditor().remove(editorId);
 
-					correctEditor().initialize(editorId, {
-						quicktags: true,
-						mediaButtons: true,
+				correctEditor().initialize(editorId, {
+					quicktags: true,
+					mediaButtons: true,
 
-						tinymce: {
-							toolbar1,
-							toolbar2,
-							style_formats_merge: true,
-							style_formats: [],
-						},
-					});
+					tinymce: {
+						toolbar1,
+						toolbar2,
+						style_formats_merge: true,
+						style_formats: [],
+					},
+				});
 
-					setTimeout(addEditorChangeListener, 0);
-				}, 300);
-			}, 1000);
+				setTimeout(addEditorChangeListener, 0);
+			}, 300);
 		}
 	};
 
