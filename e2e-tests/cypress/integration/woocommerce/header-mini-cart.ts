@@ -174,8 +174,5 @@ describe('Header Mini Cart Style', function () {
 				.and('have.css', 'fill', 'rgb(18, 90, 50)')
 				.and('have.css', 'width', '80px');
 		});
-		it('Check alignment', function () {
-			cy.get('[data-item-id="header_cart_icon"]').should('have.css', 'text-align', 'center');
-		});
 	});
 });

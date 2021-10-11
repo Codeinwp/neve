@@ -243,6 +243,7 @@ trait Css_Vars {
 				Dynamic_Selector::META_KEY           => $mod_key . '.letterSpacing',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $default['letterSpacing'],
+				Dynamic_Selector::META_SUFFIX        => 'px',
 			];
 
 			$rules[ '--' . $id . 'TextTransform' ] = [
