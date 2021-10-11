@@ -5,6 +5,7 @@ import RichText from './RichText';
 
 const RichTextComponent = ({ control }) => {
 	const [value, setValue] = useState(control.setting.get());
+	let isInit = false;
 	const { id: controlId, params } = control;
 	const { label, section, toolbars } = params;
 	const toolbarOneDefaults =
@@ -51,8 +52,6 @@ const RichTextComponent = ({ control }) => {
 
 	/**
 	 * Initialise the editor.
-	 *
-	 * @return {(function(): void)} There is no return.
 	 */
 	const initEditor = () => {
 		// We also hook here to listen for changes of the dynamic settings change to also trigger the editor content update.
@@ -65,7 +64,7 @@ const RichTextComponent = ({ control }) => {
 
 		// this replaces the default line breaks for old textarea content
 		let content = document.getElementById(editorId).value;
-		content = content.replace(/\n/g, '<br />');
+		content = content.replace(/(?<!>)\n/g, '<br/>');
 		document.getElementById(editorId).value = content;
 
 		correctEditor().initialize(editorId, {
@@ -105,15 +104,6 @@ const RichTextComponent = ({ control }) => {
 				}, 300);
 			}, 1000);
 		}
-
-		return () => {
-			if (!window.tinymce.editors[editorId]) return;
-
-			setTimeout(() => {
-				window.tinymce.editors[editorId].off('change', listener);
-				correctEditor().remove(editorId);
-			}, 300);
-		};
 	};
 
 	/**
@@ -140,6 +130,13 @@ const RichTextComponent = ({ control }) => {
 	 * We check here that the section is visible so that we trigger the editor load and initialisation
 	 */
 	useEffect(() => {
+		// Update value from events passed by the conditional header
+		document.addEventListener('neve-changed-customizer-value', (e) => {
+			if (!e.detail) return false;
+			if (e.detail.id !== controlId) return false;
+			updateValues(e.detail.value);
+		});
+
 		window.wp.customize.bind('ready', () => {
 			window.wp.customize
 				.state('expandedSection')
@@ -152,12 +149,13 @@ const RichTextComponent = ({ control }) => {
 						return;
 					}
 
-					if (expandedSection.id === section) {
+					if (expandedSection.id === section && isInit === false) {
 						initEditor();
+						isInit = true;
 					}
 				});
 		});
-	}, [section]);
+	}, []);
 
 	return (
 		<RichText
