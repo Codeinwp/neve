@@ -1,3 +1,7 @@
+p[class^="has"][class$="-font-size"] {
+	line-height: 1;
+}
+
 .has-medium-font-size {
 	font-size: calc(var(--h3FontSize) * 1.4);
 }
