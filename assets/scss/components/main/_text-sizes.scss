@@ -1,4 +1,4 @@
-p[class^="has"][class$="-font-size"] {
+p[class*="has-"][class*="-font-size"] {
 	line-height: 1;
 }
 

@@ -192,6 +192,12 @@ a:not(.wp-block-button__link) {
 	border-radius: 0;
 }
 
+// Gutenberg text sizes.
+p[class*="has-"][class*="-font-size"] {
+	line-height: 1;
+}
+
+
 .has-medium-font-size {
 
 	&,
