@@ -1,4 +1,4 @@
-/* global _ */
+/* global _, Event */
 
 import { parseFontFamily } from './common.js';
 
@@ -18,6 +18,7 @@ export class CSSVariablesHandler {
 			responsive = false,
 			suffix = '',
 			fallback = 'inherit',
+			dispatchWindowResize = false,
 			valueRemap,
 		} = params;
 
@@ -34,11 +35,19 @@ export class CSSVariablesHandler {
 		this.suffix = suffix;
 		this.responsive = responsive;
 		this.fallback = fallback;
+		this.timeout = null;
 		this.valueRemap = valueRemap;
 
 		const css = this.getStyle();
 
 		addCSS(id, css);
+
+		if (dispatchWindowResize) {
+			clearTimeout(this.timeout);
+			this.timeout = setTimeout(() => {
+				window.dispatchEvent(new Event('resize'));
+			}, 200);
+		}
 	}
 
 	getStyle() {
