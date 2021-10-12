@@ -22,11 +22,12 @@ const Item = ({ item, onToggle, components, allowsToggle = true }) => {
 	const label = components[item.id];
 	return (
 		<div
-			className={classnames([
-				'neve-sortable-item',
-				item.visible === true ? 'visible' : 'disabled',
-				{ 'no-toggle': !allowsToggle },
-			])}
+			className={classnames({
+				'neve-sortable-item': true,
+				'no-toggle': !allowsToggle,
+				visible: item.visible,
+				disabled: !item.visible,
+			})}
 		>
 			{allowsToggle && (
 				<Tooltip text={__('Toggle Visibility', 'neve')}>

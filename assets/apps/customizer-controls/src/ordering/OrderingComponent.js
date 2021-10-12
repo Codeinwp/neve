@@ -13,26 +13,13 @@ const OrderingComponent = ({ control }) => {
 	const { section, components, label } = control.params;
 
 	const normalizeValue = (val) => {
-		const normalizedValue = val.map((element) => {
+		const enabledItems = val.map((element) => {
 			return { id: element, visible: true };
 		});
 
-		const enabledItems = normalizedValue.map((element) => {
-			element.visible = true;
-			return element;
-		});
-
 		const disabledItems = Object.keys(components)
-			.filter((element) => {
-				return (
-					enabledItems.filter((el) => {
-						return element === el.id;
-					}).length === 0
-				);
-			})
-			.map((element) => {
-				return { id: element, visible: false };
-			});
+			.filter((componentSlug) => !val.includes(componentSlug))
+			.map((id) => ({ id, visible: false }));
 
 		return [...enabledItems, ...disabledItems];
 	};
@@ -45,12 +32,8 @@ const OrderingComponent = ({ control }) => {
 
 	const updateValue = (newVal) => {
 		const dbValue = newVal
-			.filter(function (element) {
-				return element.visible === true;
-			})
-			.map((element) => {
-				return element.id;
-			});
+			.filter((el) => el.visible === true)
+			.map((el) => el.id);
 
 		setValue(newVal);
 		control.setting.set(JSON.stringify(dbValue));
