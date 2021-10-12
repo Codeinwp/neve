@@ -1409,7 +1409,7 @@ abstract class Abstract_Builder implements Builder {
 				$align = $this->get_component_alignment( $component['id'] );
 
 				$vertical_align = $this->get_component_alignment( $component['id'], true );
-				$classes        = [ 'builder-item' ];
+				$classes        = [ 'builder-item', preg_match( '/^divider/', $component['id'] ) ? 'divider-ancestor' : '' ];
 
 				if ( strpos( $component['id'], 'primary-menu' ) > - 1 ) {
 					$classes[] = 'has-nav';
