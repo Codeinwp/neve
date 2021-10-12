@@ -13,7 +13,6 @@ type Props = {
 
 const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 	const { setting, params } = control;
-
 	const builder: string = params.builderType;
 	const hasColumns: boolean = params.columnsLayout;
 
@@ -22,6 +21,7 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 		maybeParseJson(setting.get())
 	);
 	const [isHidden, setHidden] = useState<boolean>(true);
+	const [isMounted, setMounted] = useState<boolean>(false);
 
 	const onChange = (nextValue: BuilderContentInterface) => {
 		const next = JSON.stringify(nextValue);
@@ -110,6 +110,26 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 		bindHideOnPaneCollapse();
 	}, []);
 
+	useEffect(() => {
+		window.wp.customize.bind('ready', () => {
+			window.wp.customize
+				.state('expandedPanel')
+				.bind((activePanel: Record<string, string>) => {
+					if (!activePanel) {
+						return;
+					}
+
+					if (!activePanel.id) {
+						return;
+					}
+
+					if (activePanel.id === `hfg_${builder}`) {
+						setMounted(true);
+					}
+				});
+		});
+	}, []);
+
 	return (
 		<HFGBuilder
 			hasColumns={hasColumns}
@@ -118,6 +138,7 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 			value={value}
 			onChange={onChange}
 			portalMount={portalMount}
+			mounted={isMounted}
 		/>
 	);
 };

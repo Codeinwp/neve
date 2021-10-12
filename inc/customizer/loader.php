@@ -117,6 +117,7 @@ class Loader {
 				array(
 					'nonce'                         => wp_create_nonce( 'wp_rest' ),
 					'headerControls'                => [],
+					'shouldUseColorPickerFix'       => (int) ( ! neve_is_using_wp_version( '5.8' ) ),
 					'instructionalVid'              => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
 					'dynamicTags'                   => array(
 						'controls' => array(),

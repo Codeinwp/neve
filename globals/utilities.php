@@ -503,6 +503,19 @@ function neve_is_new_widget_editor() {
 }
 
 /**
+ * Check that the active WordPress version is greater than the passed value.
+ *
+ * @param string $version The default check is for `5.8` other values are accepted.
+ *
+ * @return bool
+ * @since 3.0.5
+ */
+function neve_is_using_wp_version( $version = '5.8' ) {
+	global $wp_version;
+	return version_compare( $wp_version, $version, '>=' );
+}
+
+/**
  * Wrapper for wp_remote_get on VIP environments.
  *
  * @param string $url Url to check.

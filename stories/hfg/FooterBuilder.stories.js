@@ -37,6 +37,7 @@ const FooterTemplate = (args) => {
 				value={value}
 				builder={'footer'}
 				portalMount={portalMount}
+				mounted={true}
 				{...args}
 			/>
 		</>

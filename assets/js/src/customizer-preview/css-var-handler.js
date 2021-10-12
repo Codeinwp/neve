@@ -18,6 +18,7 @@ export class CSSVariablesHandler {
 			responsive = false,
 			suffix = '',
 			fallback = 'inherit',
+			valueRemap,
 		} = params;
 
 		//Bail if no selectors or variables.
@@ -33,6 +34,7 @@ export class CSSVariablesHandler {
 		this.suffix = suffix;
 		this.responsive = responsive;
 		this.fallback = fallback;
+		this.valueRemap = valueRemap;
 
 		const css = this.getStyle();
 
@@ -179,11 +181,34 @@ export class CSSVariablesHandler {
 				? fallback
 				: this.parseDirectionalValue(singularValue, finalSuffix);
 
+			let innerStyle = '';
+
+			if (typeof variable === 'string') {
+				innerStyle = `${variable}:${singularValue};`;
+			}
+
+			// Some variables can be remapped when the values are string but responsive.
+			if (Array.isArray(variable)) {
+				variable.forEach((v) => {
+					let finalValue = singularValue;
+
+					if (
+						this.valueRemap &&
+						this.valueRemap[v] &&
+						this.valueRemap[v][singularValue]
+					) {
+						finalValue = this.valueRemap[v][singularValue];
+					}
+
+					innerStyle += `${v}:${finalValue};`;
+				});
+			}
+
 			if (mediaQueries[device]) {
 				style += `@media(${mediaQueries[device]}) {`;
 			}
 			style += `${selector}{`;
-			style += `${variable}:${singularValue};`;
+			style += innerStyle;
 			style += '}';
 			if (mediaQueries[device]) {
 				style += '}';

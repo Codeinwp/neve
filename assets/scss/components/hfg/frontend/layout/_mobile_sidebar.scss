@@ -21,12 +21,6 @@
 			position: relative;
 		}
 	}
-
-	/* Item showing animation  */
-	.item--inner {
-		transition: transform 0.3s, opacity 0.3s;
-		opacity: 0;
-	}
 }
 
 .header-menu-sidebar-bg {
@@ -43,6 +37,28 @@
 	padding: 20px 0;
 	overflow-x: hidden;
 	height: 100%;
+	// We need to use display none on elements
+	// that should not be tabbable in the viewport
+	// otherwise they will be considered when navigating with keyboard.
+	display: none;
+
+	opacity: 0;
+	transition: opacity 0.3s ease;
+
+	.is-menu-sidebar & {
+		display: block;
+		opacity: 1;
+	}
+
+	.hiding-header-menu-sidebar & {
+		display: block;
+		transition: all 0.3s ease;
+		opacity: 0;
+	}
+
+	.item--inner {
+		width: 100%;
+	}
 }
 
 .menu_sidebar_slide_left {
@@ -119,56 +135,11 @@
 	}
 }
 
-/* Hiding Menu Sidebar animation. */
-.hiding-header-menu-sidebar {
-
-	.header-menu-sidebar {
-		visibility: visible;
-		transition: all 0.3s cubic-bezier(0.79, 0.14, 0.15, 0.86);
-	}
-
-	&.menu_sidebar_slide_left {
-
-		.header-menu-sidebar {
-			transform: translateX(-100%);
-		}
-	}
-
-	&.menu_sidebar_slide_right {
-
-		.header-menu-sidebar {
-			transform: translateX(100%);
-		}
-	}
-
-	&.menu_sidebar_dropdown {
-
-		.header-menu-sidebar-inner {
-			height: 0;
-			padding: 0;
-			overflow: hidden;
-		}
-	}
-
-	&.menu_sidebar_full_canvas {
-
-		.header-menu-sidebar {
-			opacity: 0;
-			pointer-events: none;
-		}
-	}
-}
-
 /* Showing Menu Sidebar animation. */
 .is-menu-sidebar {
 
 	.header-menu-sidebar {
 		visibility: visible;
-
-
-		.item--inner {
-			opacity: 1;
-		}
 	}
 
 	&.menu_sidebar_slide_left {
