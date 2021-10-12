@@ -123,9 +123,10 @@ class Main {
 		if ( empty( $theme['name'] ) || empty( $theme['slug'] ) ) {
 			return;
 		}
-
-		$page_title = $theme['name'] . ' ' . __( 'Options', 'neve' ) . ' ';
-		$menu_name  = $theme['name'] . ' ' . __( 'Options', 'neve' ) . ' ';
+		/* translators: %s - Theme name */
+		$page_title = sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme['name'] ) );
+		/* translators: %s - Theme name */
+		$menu_name = sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme['name'] ) );
 
 		$theme_page = ! empty( $theme['template'] ) ? $theme['template'] . '-welcome' : $theme['slug'] . '-welcome';
 		add_theme_page( $page_title, $menu_name, 'activate_plugins', $theme_page, [ $this, 'render' ] );

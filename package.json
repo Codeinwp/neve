@@ -1,7 +1,7 @@
 {
 	"name": "neve",
 	"nicename": "Neve",
-	"version": "3.0.4",
+	"version": "3.0.6",
 	"description": "Neve theme by ThemeIsle",
 	"category": "themes",
 	"author": "ThemeIsle <friends@themeisle.com>",
@@ -42,7 +42,7 @@
 			"gzip": false,
 			"running": false,
 			"webpack": false,
-			"limit": "41 KB",
+			"limit": "38 KB",
 			"path": "style-main-new.min.css"
 		}
 	],

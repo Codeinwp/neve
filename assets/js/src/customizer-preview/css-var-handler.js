@@ -1,5 +1,7 @@
 /* global _, Event */
 
+import { parseFontFamily } from './common.js';
+
 const directions = ['top', 'right', 'bottom', 'left'];
 const devices = ['mobile', 'tablet', 'desktop'];
 const mediaQueries = {
@@ -17,6 +19,7 @@ export class CSSVariablesHandler {
 			suffix = '',
 			fallback = 'inherit',
 			dispatchWindowResize = false,
+			valueRemap,
 		} = params;
 
 		//Bail if no selectors or variables.
@@ -33,6 +36,7 @@ export class CSSVariablesHandler {
 		this.responsive = responsive;
 		this.fallback = fallback;
 		this.timeout = null;
+		this.valueRemap = valueRemap;
 
 		const css = this.getStyle();
 
@@ -186,11 +190,34 @@ export class CSSVariablesHandler {
 				? fallback
 				: this.parseDirectionalValue(singularValue, finalSuffix);
 
+			let innerStyle = '';
+
+			if (typeof variable === 'string') {
+				innerStyle = `${variable}:${singularValue};`;
+			}
+
+			// Some variables can be remapped when the values are string but responsive.
+			if (Array.isArray(variable)) {
+				variable.forEach((v) => {
+					let finalValue = singularValue;
+
+					if (
+						this.valueRemap &&
+						this.valueRemap[v] &&
+						this.valueRemap[v][singularValue]
+					) {
+						finalValue = this.valueRemap[v][singularValue];
+					}
+
+					innerStyle += `${v}:${finalValue};`;
+				});
+			}
+
 			if (mediaQueries[device]) {
 				style += `@media(${mediaQueries[device]}) {`;
 			}
 			style += `${selector}{`;
-			style += `${variable}:${singularValue};`;
+			style += innerStyle;
 			style += '}';
 			if (mediaQueries[device]) {
 				style += '}';
@@ -208,11 +235,20 @@ export class CSSVariablesHandler {
 			suffix,
 			fallback,
 			validateSuffix,
+			settingType,
 		} = this;
+
 		if (typeof selector)
 			if (!value) {
 				return `${selector} {${vars}:${fallback};}`;
 			}
+
+		if (
+			settingType === '\\Neve\\Customizer\\Controls\\React\\Font_Family'
+		) {
+			return `${selector} {${vars}:${parseFontFamily(value)};}`;
+		}
+
 		return `${selector} {${vars}:${value}${validateSuffix(suffix)};}`;
 	}
 

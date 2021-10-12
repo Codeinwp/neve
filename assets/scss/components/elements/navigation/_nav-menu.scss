@@ -9,6 +9,11 @@
 	transition: 0.3s ease;
 }
 
+.dd-title {
+	flex-grow: var(--flexG);
+}
+
+
 // === Desktop menu === //
 .nav-ul {
 	display: flex;
@@ -33,7 +38,6 @@
 	}
 
 	li {
-		cursor: pointer;
 		display: block;
 		position: relative;
 
@@ -80,10 +84,6 @@
 			display: flex;
 		}
 
-		.menu-item-title-wrap {
-			flex-grow: 1;
-		}
-
 		.sub-menu {
 			left: 100%;
 			top: 0;
@@ -97,29 +97,24 @@
 	@extend %show-dropdown;
 }
 
-//We need to use display none on elements
-// that should not be tabbable in the viewport
-// otherise they will be considered when navigating with keyboard
-body:not(.is-menu-sidebar) .header-menu-sidebar-inner {
-	display: none;
-}
 // === Inside Sidebar === //
 .header-menu-sidebar {
 
-	.menu-item-title-wrap {
-		flex-grow: 1;
+	.nv-nav-wrap {
+		width: 100%;
 	}
 
 	.nav-ul {
-		margin: 0 -15px;
+		--spacing: 0;
 		flex-direction: column;
+		width: 100%;
 
 		li {
-			margin: 1px;
+			width: 100%;
 		}
 
 		a {
-			padding: $spacing-sm 20px;
+			padding: $spacing-sm 0;
 			white-space: unset;
 		}
 
@@ -129,8 +124,8 @@ body:not(.is-menu-sidebar) .header-menu-sidebar-inner {
 		}
 
 		.caret-wrap {
-			margin: -15px;
-			padding: 15px 30px 15px 20px;
+			margin: -15px 0;
+			padding: 15px 15px 15px 20px;
 
 			&.dropdown-open .caret {
 				transform: rotateX(180deg);
@@ -143,6 +138,7 @@ body:not(.is-menu-sidebar) .header-menu-sidebar-inner {
 			left: unset !important;
 			top: unset !important;
 			right: unset !important;
+			background: unset;
 			position: relative;
 			max-width: 100%;
 			box-shadow: none;
@@ -153,10 +149,6 @@ body:not(.is-menu-sidebar) .header-menu-sidebar-inner {
 
 			&.dropdown-open {
 				max-height: 1300px;
-			}
-
-			a {
-				padding-left: $spacing-xl;
 			}
 		}
 

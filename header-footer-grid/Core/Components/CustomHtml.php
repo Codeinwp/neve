@@ -39,6 +39,7 @@ class CustomHtml extends Abstract_Component {
 		$this->set_property( 'icon', 'welcome-write-blog' );
 		$this->set_property( 'has_typeface_control', true );
 		$this->set_property( 'default_typography_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() . ' .nv-html-content' ); //phpcs:ignore WordPressVIPMinimum.Security.Vuejs.RawHTMLDirectiveFound
+		$this->set_property( 'has_horizontal_alignment', true );
 		add_filter( 'wp_kses_allowed_html', array( $this, 'allow_input_form_tags' ), 10, 2 );
 	}
 

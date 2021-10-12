@@ -78,6 +78,7 @@ class Logo extends Abstract_Component {
 		$this->set_property( 'section', 'title_tagline' );
 		$this->set_property( 'preview_image', esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/component-site-logo.jpg' ) );
 		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() . ' .site-logo' );
+		$this->set_property( 'has_horizontal_alignment', true );
 	}
 
 	/**

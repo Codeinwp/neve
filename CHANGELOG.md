@@ -1,3 +1,36 @@
+##### [Version 3.0.6](https://github.com/Codeinwp/neve/compare/v3.0.5...v3.0.6) (2021-10-11)
+
+- [Feat] Adds alignment option to the mobile sidebar row setting;
+- [Feat] Adds vertical alignment option for each footer row
+- [Fix] Conflict with the global header from Elementor Pro
+- [Fix] Cannot update a page: Updating failed. Can not update the value of 'neve_meta_sidebar' in the database
+- [Fix] Missing default value for vertical-align on the single post cover layout
+- [Fix] Builder rows with columns controls execute sync too soon on some environments
+- [Fix] The available items aren't properly updated when adding a component to the mobile sidebar
+- [Fix] Outdated template alert for search form on WooCommerce Status
+- [Fix] Remove forced 100% width of images inside image widgets 
+- [Fix] Custom layouts not acting properly on old skin
+- [Fix] Letter-spacing inline-style not applying for headings
+- Updated Google Fonts
+
+##### [Version 3.0.5](https://github.com/Codeinwp/neve/compare/v3.0.4...v3.0.5) (2021-09-29)
+
+- [Feat] Add additional font variants control for body font family used on the body
+- [Fix] Remove hardcoded concatenation for menu item and page title
+- [Fix] Fix hooks added in the REST endpoint for dynamic elements of the infinite scroll
+- [Fix] Icons not rotating during site import in progress actions
+- [Fix] Sidebar visibility on customizer preview
+- [Fix] Food store compatibility
+- [Fix] Unclosed div element on the shop page
+- [Fix] Remove aria-role which was breaking AMP validator on the menu carets
+- [Fix] Components inside the mobile sidebar inheriting wrong colors
+- [Fix] Dropdowns inside the mobile sidebar inheriting overlay background color when using a background image
+- [Fix] Footer components not updating after columns change
+- Header components labels font styles should be inherited from the primary menu if placed in the same slot 
+- Change archive post title tag back to h2
+- Refreshed design for the Architecture starter site - [Gutenberg](https://demosites.io/architecture-gb/) | [Elementor](https://demosites.io/architecture/)
+- Remove some unused CSS
+
 ##### [Version 3.0.4](https://github.com/Codeinwp/neve/compare/v3.0.3...v3.0.4) (2021-09-15)
 
 - fix customizer loading when elementor pro is active
