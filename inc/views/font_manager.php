@@ -27,6 +27,13 @@ class Font_Manager extends Base_View {
 	public static $font_families = array();
 
 	/**
+	 * Body font family variants.
+	 *
+	 * @var array
+	 */
+	public static $body_variants = array();
+
+	/**
 	 * Add a google font.
 	 *
 	 * @param string $font_family font family.
@@ -34,17 +41,38 @@ class Font_Manager extends Base_View {
 	 */
 	final public static function add_google_font( $font_family, $font_weight = '400' ) {
 		if ( empty( $font_family ) ) {
-			$body_mod     = Config::MODS_FONT_GENERAL;
-			$body_default = Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL );
-			$body_font    = Mods::get( $body_mod, $body_default );
+			$body_font = self::get_body_font_family();
 			if ( empty( $body_font ) ) {
 				return;
 			}
 			$font_family = $body_font;
 		}
-		if ( ! in_array( $font_weight, [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], true ) ) {
+
+		$allowed_variants = [
+			'100',
+			'200',
+			'300',
+			'400',
+			'500',
+			'600',
+			'700',
+			'800',
+			'900',
+			'100italic',
+			'200italic',
+			'300italic',
+			'400italic',
+			'500italic',
+			'600italic',
+			'700italic',
+			'800italic',
+			'900italic',
+		];
+
+		if ( ! in_array( $font_weight, $allowed_variants, true ) ) {
 			$font_weight = '400';
 		}
+
 		if ( array_key_exists( $font_family, self::$font_families ) ) {
 			self::$font_families[ $font_family ][] = $font_weight;
 			self::$font_families[ $font_family ]   = array_unique( self::$font_families[ $font_family ] );
@@ -60,8 +88,56 @@ class Font_Manager extends Base_View {
 	 * @return void
 	 */
 	public function init() {
+		$this->add_body_variants();
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_google_fonts' ), 200 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'register_google_fonts' ), 200 );
+	}
+
+	/**
+	 * Add body font family variants.
+	 */
+	private function add_body_variants() {
+		$body_font   = self::get_body_font_family();
+		$gfonts_data = neve_get_google_fonts( true );
+
+		// Variations are only available for Google fonts.
+		if ( ! in_array( $body_font, array_keys( $gfonts_data ) ) ) {
+			return;
+		}
+
+		// If there are no variations statically defined then don't do anything.
+		if ( empty( $gfonts_data[ $body_font ] ) ) {
+			return;
+		}
+
+		$variations = $this->get_body_variations();
+
+		sort( $variations );
+
+		foreach ( $variations as $variation ) {
+			self::add_google_font( $body_font, $variation );
+		}
+	}
+
+	/**
+	 * Get body font family.
+	 *
+	 * @return string
+	 */
+	public static function get_body_font_family() {
+		$body_mod     = Config::MODS_FONT_GENERAL;
+		$body_default = Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL );
+
+		return Mods::get( $body_mod, $body_default );
+	}
+
+	/**
+	 * Get body variations.
+	 *
+	 * @return string[]
+	 */
+	private function get_body_variations() {
+		return get_theme_mod( Config::MODS_FONT_GENERAL_VARIANTS, [] );
 	}
 
 	/**
@@ -76,19 +152,19 @@ class Font_Manager extends Base_View {
 	/**
 	 * Enqueues a Google Font
 	 *
-	 * @param string $font    font string.
+	 * @param string $font font string.
 	 * @param array  $weights font weights.
 	 *
 	 * @since 1.1.38
 	 */
 	private function enqueue_google_font( $font, $weights = [] ) {
 		// Get list of all Google Fonts.
-		$google_fonts = neve_get_google_fonts();
+		$google_fonts = neve_get_google_fonts( true );
 
 		$font = str_replace( '"', '', $font );
 
 		// Make sure font is in our list of fonts.
-		if ( ! $google_fonts || ! in_array( $font, $google_fonts, true ) ) {
+		if ( ! in_array( $font, array_keys( $google_fonts ), true ) ) {
 			return;
 		}
 
@@ -97,7 +173,17 @@ class Font_Manager extends Base_View {
 
 		// In customizer, all font weights should be active for the preview.
 		if ( is_customize_preview() ) {
-			$weights = [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ];
+			$weights = isset( $google_fonts[ $font ] ) ? $google_fonts[ $font ] : [
+				'100',
+				'200',
+				'300',
+				'400',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+			];
 		}
 
 		// Sanitize font name.

@@ -2,8 +2,12 @@
 	position: relative;
 	z-index: 10;
 
-	.item--inner.has_menu {
-		display: flex;
+	.item--inner {
+		width: 100%;
+
+		&.has_menu {
+			display: flex;
+		}
 	}
 
 	p {
@@ -23,6 +27,7 @@
 
 	.row {
 		display: grid;
+		align-items: var(--vAlign);
 	}
 
 	.builder-item {

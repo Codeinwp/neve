@@ -307,7 +307,8 @@ class Gutenberg extends Generator {
 						Dynamic_Selector::META_SUFFIX => '',
 					],
 					Config::CSS_PROP_LETTER_SPACING => [
-						Dynamic_Selector::META_KEY => $heading_mod . '.letterSpacing',
+						Dynamic_Selector::META_KEY    => $heading_mod . '.letterSpacing',
+						Dynamic_Selector::META_SUFFIX => 'px',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 					Config::CSS_PROP_FONT_WEIGHT    => [

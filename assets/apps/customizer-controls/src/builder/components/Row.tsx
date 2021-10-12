@@ -29,7 +29,7 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 		hasColumns,
 		previewSidebar,
 	} = useContext(BuilderContext);
-	const { updateLayout, togglePreviewSidebar } = actions;
+	const { updateLayout, togglePreviewSidebar, updateSidebarItems } = actions;
 	const slots: SlotTypes[] = ['left', 'c-left', 'center', 'c-right', 'right'];
 
 	const section = `hfg_${builder}_layout_${rowId}`;
@@ -51,28 +51,28 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 	 * Check if the section is active when sections are expanded.
 	 */
 	useEffect(() => {
-		bindRowSettingsButton();
+		window.wp.customize.state('expandedSection').bind(rowSettingsHandler);
 
-		if (!hasColumns) {
-			return;
+		if (hasColumns) {
+			bindColumnsSync();
 		}
 
-		bindColumnsSync();
+		return () => {
+			window.wp.customize
+				.state('expandedSection')
+				.unbind(rowSettingsHandler);
+		};
 	}, []);
 
-	const bindRowSettingsButton = () => {
-		window.wp.customize
-			.state('expandedSection')
-			.bind((expandedSection: StringObjectKeys) => {
-				if (!expandedSection || expandedSection.id !== section) {
-					setCurrentRow(false);
-					return false;
-				}
+	const rowSettingsHandler = (expandedSection: StringObjectKeys) => {
+		if (!expandedSection || expandedSection.id !== section) {
+			setCurrentRow(false);
+			return false;
+		}
 
-				if (expandedSection.id === section) {
-					setCurrentRow(true);
-				}
-			});
+		if (expandedSection.id === section) {
+			setCurrentRow(true);
+		}
 	};
 
 	const bindColumnsSync = () => {
@@ -92,6 +92,7 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 				}
 			});
 			setColumns(parsedColNumber);
+			updateSidebarItems();
 		};
 
 		window.wp.customize.control(
@@ -124,11 +125,6 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 				togglePreviewSidebar(status);
 			}
 		);
-
-		// Toggle theme sidebar if it was previously opened on customizer refresh.
-		window.wp.customize.previewer.bind('ready', () => {
-			togglePreviewSidebar(false);
-		});
 	}, []);
 
 	// Toggle sidebar in preview.
@@ -168,7 +164,7 @@ const Row: React.FC<Props> = ({ items, rowId }) => {
 				</div>
 
 				<div className="row-inner">
-					<Slot slotId={rowId} rowId={rowId} items={items} />
+					<Slot slotId={rowId} rowId={rowId} items={items || []} />
 				</div>
 			</div>
 		);

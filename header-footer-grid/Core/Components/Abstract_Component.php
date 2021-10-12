@@ -300,6 +300,13 @@ abstract class Abstract_Component implements Component {
 	public $has_typeface_control = false;
 
 	/**
+	 * Should have horizontal alignment.
+	 *
+	 * @var bool
+	 */
+	public $has_horizontal_alignment = false;
+
+	/**
 	 * Abstract_Component constructor.
 	 *
 	 * @param string $panel Builder panel.
@@ -463,7 +470,6 @@ abstract class Abstract_Component implements Component {
 		}
 
 		$this->add_horizontal_alignment_control();
-		$this->add_vertical_alignment_control();
 
 		SettingsManager::get_instance()->add(
 			[
@@ -768,20 +774,44 @@ abstract class Abstract_Component implements Component {
 				]
 			);
 
-			/*
-			Attempt to match the font family for cart icon.
-			if ( strpos( $this->get_id(), Nav::COMPONENT_ID ) > - 1 ) {
+			if ( strpos( $this->get_id(), Nav::COMPONENT_ID ) !== false || strpos( $this->get_id(), SecondNav::COMPONENT_ID ) !== false ) {
 				$css_array[] = [
-					Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' ~ .builder-item--header_cart_icon',
+					Dynamic_Selector::KEY_SELECTOR => '.hfg-is-group.has-' . $this->get_id() . ' .inherit-ff',
 					Dynamic_Selector::KEY_RULES    => [
-						'--fontFamily'    => [
+						'--inheritedFF' => [
 							Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FONT_FAMILY_ID,
 							Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FONT_FAMILY_ID ),
+						],
+						'--inheritedFW' => [
+							Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontWeight',
+							Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontWeight' ),
 						],
 					],
 				];
 			}
-			*/
+		}
+
+		if ( $this->has_horizontal_alignment ) {
+			$rules['--textAlign'] = [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ALIGNMENT_ID,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ALIGNMENT_ID ),
+			];
+
+			$justify_map = [
+				'left'   => 'flex-start',
+				'center' => 'center',
+				'right'  => 'flex-end',
+			];
+
+			$rules['--justify'] = [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ALIGNMENT_ID,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ( $justify_map ) {
+					return sprintf( '%s: %s;', $css_prop, $justify_map[ $value ] );
+				},
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ALIGNMENT_ID ),
+			];
 		}
 
 		$css_array[] = [
@@ -799,6 +829,9 @@ abstract class Abstract_Component implements Component {
 	 */
 	public function assign_builder( $builder_id ) {
 		$this->builder_id = $builder_id;
+		if ( $this->builder_id === 'footer' ) {
+			$this->has_horizontal_alignment = true;
+		}
 	}
 
 	/**
@@ -929,50 +962,6 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
-	 * Add verical alignment control.
-	 */
-	private function add_vertical_alignment_control() {
-		if ( $this->builder_id !== 'footer' ) {
-			return;
-		}
-		$align_choices = [
-			'top'    => [
-				'tooltip' => __( 'Top', 'neve' ),
-				'icon'    => 'arrow-up',
-			],
-			'middle' => [
-				'tooltip' => __( 'Middle', 'neve' ),
-				'icon'    => 'sort',
-			],
-			'bottom' => [
-				'tooltip' => __( 'Bottom', 'neve' ),
-				'icon'    => 'arrow-down',
-			],
-		];
-
-		SettingsManager::get_instance()->add(
-			[
-				'id'                    => self::VERTICAL_ALIGN_ID,
-				'group'                 => $this->get_id(),
-				'tab'                   => SettingsManager::TAB_LAYOUT,
-				'transport'             => 'postMessage',
-				'sanitize_callback'     => 'wp_filter_nohtml_kses',
-				'default'               => 'middle',
-				'label'                 => __( 'Vertical Alignment', 'neve' ),
-				'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
-				'live_refresh_selector' => '.builder-item--' . $this->get_id(),
-				'live_refresh_css_prop' => [
-					'is_for' => 'vertical',
-				],
-				'options'               => [
-					'choices' => $align_choices,
-				],
-				'section'               => $this->section,
-			]
-		);
-	}
-
-	/**
 	 * Get the item height default.
 	 *
 	 * @return array
@@ -999,12 +988,11 @@ abstract class Abstract_Component implements Component {
 	 * Add horizontal alignment to component.
 	 */
 	private function add_horizontal_alignment_control() {
-		if ( strpos( $this->get_id(), Search::COMPONENT_ID ) > - 1 ) {
+		if ( strpos( $this->get_id(), Search::COMPONENT_ID ) !== false ) {
 			return;
 		}
 
-		// New skin drops alignment for navigation
-		if ( neve_is_new_skin() && strpos( $this->get_id(), Nav::COMPONENT_ID ) > - 1 ) {
+		if ( neve_is_new_skin() && ! $this->has_horizontal_alignment ) {
 			return;
 		}
 
@@ -1022,7 +1010,7 @@ abstract class Abstract_Component implements Component {
 				'icon'    => 'editor-alignright',
 			],
 		];
-		if ( strpos( $this->get_id(), Button::COMPONENT_ID ) > - 1 ) {
+		if ( strpos( $this->get_id(), Button::COMPONENT_ID ) !== false ) {
 			$align_choices['justify'] = [
 				'tooltip' => __( 'Justify', 'neve' ),
 				'icon'    => 'editor-justify',
@@ -1045,6 +1033,21 @@ abstract class Abstract_Component implements Component {
 				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Radio_Buttons',
 				'live_refresh_selector' => $this->is_auto_width ? null : '.builder-item--' . $this->get_id(),
 				'live_refresh_css_prop' => [
+					'cssVar'         => [
+						'vars'       => [
+							'--textAlign',
+							'--justify',
+						],
+						'valueRemap' => [
+							'--justify' => [
+								'left'   => 'flex-start',
+								'center' => 'center',
+								'right'  => 'flex-end',
+							],
+						],
+						'responsive' => true,
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
 					'remove_classes' => [
 						'mobile-left',
 						'mobile-right',

@@ -195,9 +195,17 @@ class Woocommerce {
 
 		if ( neve_is_new_skin() ) {
 			add_action(
+				'woocommerce_checkout_before_customer_details', 
+				function () {
+					echo '<div class="nv-customer-details">';
+				},
+				0 
+			);
+			add_action( 'woocommerce_checkout_after_customer_details', [ $this, 'close_div' ] );
+			add_action(
 				'woocommerce_checkout_before_order_review_heading',
 				function () {
-					echo '<div>';
+					echo '<div class="nv-order-review">';
 				}
 			);
 			add_action( 'woocommerce_checkout_after_order_review', [ $this, 'close_div' ] );
@@ -783,7 +791,7 @@ class Woocommerce {
 		$cart_label = get_theme_mod( 'header_cart_icon_' . CartIcon::CART_LABEL );
 		if ( ! empty( $cart_label ) ) {
 			$cart_label                    = Magic_Tags::get_instance()->do_magic_tags( $cart_label );
-			$fragments['.cart-icon-label'] = '<span class="cart-icon-label">' . $cart_label . '</span>';
+			$fragments['.cart-icon-label'] = '<span class="cart-icon-label inherit-ff">' . $cart_label . '</span>';
 		}
 
 		return $fragments;

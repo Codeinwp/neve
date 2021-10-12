@@ -29,10 +29,18 @@ const BuilderHeaderNotification: React.FC<Props> = ({
 	};
 
 	useEffect(() => {
-		document.addEventListener('nv-change-conditional-header', (e) => {
-			// @ts-ignore
+		// @ts-ignore
+		const updateName = (e) => {
 			setCurrentHeaderName(e.detail);
-		});
+		};
+
+		document.addEventListener('nv-change-conditional-header', updateName);
+
+		return () =>
+			document.removeEventListener(
+				'nv-change-conditional-header',
+				updateName
+			);
 	}, []);
 
 	const {

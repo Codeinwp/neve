@@ -291,7 +291,7 @@ class CartIcon extends Abstract_Component {
 			'--labelSize'  => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::LABEL_SIZE_ID,
 				Dynamic_Selector::META_SUFFIX  => 'px',
-				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::LABEL_SIZE_ID ),
+				Dynamic_Selector::META_DEFAULT => 15,
 			],
 			'--color'      => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,

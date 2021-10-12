@@ -9,6 +9,10 @@
 	padding: $spacing-aired 15px;
 	margin-bottom: $spacing-md;
 	flex-grow: 1;
+
+	&.hide {
+		display: none;
+	}
 }
 
 .widget {
@@ -62,10 +66,6 @@
 
 .widget_recent_entries a {
 	color: var(--nv-text-color);
-}
-
-.widget_media_image img {
-	width: 100%;
 }
 
 .widget_calendar {

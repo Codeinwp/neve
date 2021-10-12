@@ -2,7 +2,6 @@
 @import "components/main/variables";
 @import "components/main/extends";
 @import "components/main/reset";
-
 @import "components/main/grid";
 @import "components/main/typography";
 @import "components/main/a11y";
@@ -20,5 +19,4 @@
 @import "components/elements/hfg-alignments";
 @import "components/main/media-queries";
 @import "components/compat/elementor";
-
-@import "./components/hfg/style";
+@import "components/hfg/style";
