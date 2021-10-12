@@ -2,7 +2,6 @@ import { withDispatch } from '@wordpress/data';
 import { ReactSortable } from 'react-sortablejs';
 import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import React from 'react';
 
 const SortableItems = (props) => {
 	const { value, elements, updateElement, toggle } = props;
