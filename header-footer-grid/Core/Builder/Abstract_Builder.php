@@ -1409,7 +1409,7 @@ abstract class Abstract_Builder implements Builder {
 				$align = $this->get_component_alignment( $component['id'] );
 
 				$vertical_align = $this->get_component_alignment( $component['id'], true );
-				$classes        = [ 'builder-item', preg_match( '/^divider/', $component['id'] ) ? 'divider-ancestor' : '' ];
+				$classes        = [ 'builder-item' ];
 
 				if ( strpos( $component['id'], 'primary-menu' ) > - 1 ) {
 					$classes[] = 'has-nav';
@@ -1440,6 +1440,12 @@ abstract class Abstract_Builder implements Builder {
 						$render_buffer[ $slot ][ $render_index ]['vertical-align'] = 'hfg-item-v-' . $vertical_align;
 					}
 				}
+
+				// If the component is a divider, add a supplementary class
+				if ( preg_match( '/^divider/', $component['id'] ) && ! in_array( 'divider-ancestor', $render_buffer[ $slot ][ $render_index ]['classes'], true ) ) {
+					array_push( $render_buffer[ $slot ][ $render_index ]['classes'], 'divider-ancestor' );
+				}
+
 				$render_buffer[ $slot ][ $render_index ]['components'][] = $component['id'];
 
 				if ( $is_mergeable ) {
