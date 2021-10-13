@@ -23,7 +23,7 @@ function neve_edd_download_nav() {
 			'format'    => '?paged=%#%',
 			'current'   => max( 1, get_query_var( 'paged' ) ),
 			'total'     => $wp_query->max_num_pages,
-			'prev_next' => false,
+			'prev_next' => true,
 		) 
 	);
 	?>
