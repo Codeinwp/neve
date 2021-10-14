@@ -166,9 +166,8 @@ class MetaFieldsManager extends Component {
 	}
 
 	renderPageLayoutGroup() {
-		const template = select('core/editor').getEditedPostAttribute(
-			'template'
-		);
+		const template =
+			select('core/editor').getEditedPostAttribute('template');
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
@@ -377,9 +376,8 @@ class MetaFieldsManager extends Component {
 	}
 
 	renderPageTitleGroup() {
-		const template = select('core/editor').getEditedPostAttribute(
-			'template'
-		);
+		const template =
+			select('core/editor').getEditedPostAttribute('template');
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
@@ -556,9 +554,8 @@ class MetaFieldsManager extends Component {
 			settings.elements['sharing-icons'] = __('Sharing Icons', 'neve');
 		}
 
-		const template = select('core/editor').getEditedPostAttribute(
-			'template'
-		);
+		const template =
+			select('core/editor').getEditedPostAttribute('template');
 		const postType = select('core/editor').getCurrentPostType();
 		return (
 			<div className="nv-option-category">
@@ -697,9 +694,8 @@ export default compose([
 					'meta'
 				)[id];
 			},
-			allMeta: selectHandler('core/editor').getEditedPostAttribute(
-				'meta'
-			),
+			allMeta:
+				selectHandler('core/editor').getEditedPostAttribute('meta'),
 		};
 	}),
 ])(MetaFieldsManager);

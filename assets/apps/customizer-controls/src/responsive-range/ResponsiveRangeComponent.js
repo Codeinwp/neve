@@ -33,14 +33,8 @@ const ResponsiveRangeComponent = ({ control }) => {
 	}, []);
 
 	const { label } = control.params;
-	const {
-		hideResponsive,
-		units,
-		defaultVal,
-		step,
-		min,
-		max,
-	} = control.params.input_attrs;
+	const { hideResponsive, units, defaultVal, step, min, max } =
+		control.params.input_attrs;
 
 	const unitButtons = () => {
 		if (!units) {

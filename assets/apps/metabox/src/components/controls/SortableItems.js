@@ -150,9 +150,8 @@ export default compose([
 		};
 	}),
 	withSelect((select, props) => {
-		const metaValue = select('core/editor').getEditedPostAttribute('meta')[
-			props.id
-		];
+		const metaValue =
+			select('core/editor').getEditedPostAttribute('meta')[props.id];
 		return { metaFieldValue: metaValue || props.data.default };
 	}),
 ])(SortableItems);
