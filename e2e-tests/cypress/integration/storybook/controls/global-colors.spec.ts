@@ -83,9 +83,9 @@ describe('Global Colors', function () {
 			cy.findByRole('button', {
 				name: /remove palette/i,
 			}).click({ force: true });
-			cy.get(
-				':nth-child(4) > :nth-child(1) > .components-modal__screen-overlay > .components-modal__frame > .components-modal__content > .actions > .is-primary',
-			).click();
+			cy.findByRole('button', {
+				name: /delete/i,
+			}).click({ force: true });
 			cy.get('@allPalettes').should(
 				'have.text',
 				'["base","darkMode","palette3","palette5","palette6"]',
