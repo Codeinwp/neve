@@ -1442,7 +1442,7 @@ abstract class Abstract_Builder implements Builder {
 				}
 
 				// If the component is a divider, add a supplementary class
-				if ( preg_match( '/^divider/', $component['id'] ) && ! in_array( 'divider-ancestor', $render_buffer[ $slot ][ $render_index ]['classes'], true ) ) {
+				if ( preg_match( '/^divider/', $component['id'] ) && ! in_array( 'divider-ancestor', $render_buffer[ $slot ][ $render_index ]['classes'], true ) && $row_index !== 'sidebar' ) {
 					array_push( $render_buffer[ $slot ][ $render_index ]['classes'], 'divider-ancestor' );
 				}
 
