@@ -65,6 +65,8 @@
 	"devDependencies": {
 		"@babel/core": "^7.10.5",
 		"@babel/preset-env": "^7.11.0",
+		"@emotion/core": "^11.0.0",
+		"@emotion/styled": "^11.3.0",
 		"@icon/dashicons": "^0.9.0-alpha.3",
 		"@rollup/plugin-commonjs": "^11.1.0",
 		"@rollup/plugin-multi-entry": "^4.0.0",
