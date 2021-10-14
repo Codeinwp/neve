@@ -5,14 +5,22 @@ on:
       - ci/publish-npm-package
 
 jobs:
-  build-and-deploy:
+  publish-package:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 12.x ]
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
         with:
           persist-credentials: false
-      - name: Version and Publish 🔧
+      - name: Setup node ${{ matrix.node-version }} 🔧
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org/
+      - name: Version and Publish 📦
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
