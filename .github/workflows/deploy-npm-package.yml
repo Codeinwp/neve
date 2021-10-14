@@ -2,7 +2,7 @@ name: Build and Publish NPM Package 🚀
 on:
   push:
     branches:
-      - ci/publish-npm-package
+      - development
 
 jobs:
   publish-package:
