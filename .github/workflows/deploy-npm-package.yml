@@ -2,7 +2,7 @@ name: Build and Publish NPM Package 🚀
 on:
   push:
     branches:
-      - development
+      - ci/publish-npm-package
 
 jobs:
   publish-package:
@@ -24,6 +24,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          cd ./assets/apps/customizer-controls/src
+          cd ./assets/apps/components
           npm version patch
           npm publish

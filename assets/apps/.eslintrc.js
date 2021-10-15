@@ -6,10 +6,10 @@ module.exports = {
 	ignorePatterns: ['**/vendor/**'],
 	rules: {
 		'@wordpress/no-global-event-listener': 'off',
-		// Ignore the current package json and use the root one.
+		// Ignore the nested package json files and use the root one.
 		'import/no-extraneous-dependencies': [
 			'error',
-			{ packageDir: path.join(__dirname, '../../../../') },
+			{ packageDir: path.join(__dirname, '../../') },
 		],
 	},
 	overrides: [

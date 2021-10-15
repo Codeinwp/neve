@@ -2,7 +2,7 @@
 // import Ordering from './Ordering';
 import { lazy, Suspense, useEffect, useState } from '@wordpress/element';
 import { Spinner } from '@wordpress/components';
-import { maybeParseJson } from '../common/common';
+import { maybeParseJson } from '@neve-wp/components';
 import PropTypes from 'prop-types';
 
 const Ordering = lazy(() =>

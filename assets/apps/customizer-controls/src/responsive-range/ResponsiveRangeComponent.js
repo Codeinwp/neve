@@ -2,8 +2,11 @@
 
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import ResponsiveControl from '../common/Responsive';
-import { maybeParseJson, getIntValAsResponsive } from '../common/common';
+import {
+	ResponsiveControl,
+	maybeParseJson,
+	getIntValAsResponsive,
+} from '@neve-wp/components';
 
 import { RangeControl, Button } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';

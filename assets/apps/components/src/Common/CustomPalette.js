@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 import classnames from 'classnames';
-import { globalPaletteColors } from '../common/common';
+import { globalPaletteColors } from './common';
 
 const CustomPalette = ({ title, onChange, activeColor }) => {
 	const focusGlobalColors = () => {

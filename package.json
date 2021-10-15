@@ -50,11 +50,11 @@
 		"pre-commit": "npx lint-staged"
 	},
 	"dependencies": {
+		"@neve-wp/components": "file:./assets/apps/components",
 		"array-move": "^3.0.1",
 		"classnames": "^2.2.6",
 		"eslint-plugin-prettier": "^3.3.1",
 		"fuse.js": "^6.4.1",
-		"neve-customizer-controls": "file:./assets/apps/customizer-controls/src",
 		"prop-types": "^15.7.2",
 		"react-sortable-hoc": "^1.11.0",
 		"react-sortablejs": "^6.0.0",
@@ -94,6 +94,7 @@
 		"@wordpress/components": "^18.0.0",
 		"@wordpress/compose": "^5.0.3",
 		"@wordpress/data": "^6.1.1",
+		"@wordpress/dependency-extraction-webpack-plugin": "^3.2.1",
 		"@wordpress/dom-ready": "^3.2.2",
 		"@wordpress/edit-post": "^5.0.3",
 		"@wordpress/element": "^4.0.2",
@@ -153,6 +154,7 @@
 	"scripts": {
 		"build": "npm-run-all build:*",
 		"build:makepot": "docker run --user root --rm --volume  \"$(pwd):/var/www/html/neve\" wordpress:cli bash -c 'php -d memory_limit=1024M \"$(which wp)\" i18n make-pot ./neve/ ./neve/languages/neve.pot --headers={\\\"Last-Translator\\\":\\\"friends@themeisle.com\\\"\\,\\\"Project-Id-Version\\\":\\\"Neve\\\"\\,\\\"Report-Msgid-Bugs-To\\\":\\\"https://github.com/Codeinwp/neve/issues\\\"\\} --allow-root --exclude=dist,build,bundle,e2e-tests '",
+		"build:ui-components": "wp-scripts build assets/apps/components/src/components.js --output-path=assets/apps/components/build --env=nevePackage",
 		"build:customizer": "wp-scripts build assets/apps/customizer-controls/src/controls.js --output-path=assets/apps/customizer-controls/build",
 		"build:dash": "wp-scripts build assets/apps/dashboard/src/dashboard.js --output-path=assets/apps/dashboard/build",
 		"build:metabox": "wp-scripts build assets/apps/metabox/src/index.js --output-path=assets/apps/metabox/build",
@@ -173,6 +175,9 @@
 		"format:dash": "wp-scripts format assets/apps/dashboard/src",
 		"lint:customizer": "wp-scripts lint-js assets/apps/customizer-controls/src/",
 		"format:customizer": "wp-scripts format assets/apps/customizer-controls/src/",
+	  	"lint:ui-components": "wp-scripts lint-js assets/apps/components/src/",
+		"format:ui-components": "wp-scripts format assets/apps/components/src/",
+		"watch:ui-components": "wp-scripts start assets/apps/components/src/components.js --output-path=assets/apps/components/build --env=nevePackage",
 		"watch:customizer": "wp-scripts start assets/apps/customizer-controls/src/controls.js --output-path=assets/apps/customizer-controls/build",
 		"watch:metabox": "wp-scripts start assets/apps/metabox/src/index.js --output-path=assets/apps/metabox/build",
 		"watch:rollup": "./node_modules/.bin/rollup -c --watch",

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Button } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { SortableContainer } from 'react-sortable-hoc';
-import arrayMove from 'array-move';
+import { arrayMove } from 'array-move';
 import { __ } from '@wordpress/i18n';
 
 const List = SortableContainer(({ children }) => (

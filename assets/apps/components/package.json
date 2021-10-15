@@ -1,8 +1,8 @@
 {
-  "name": "neve-customizer-controls",
-  "version": "1.0.1",
+  "name": "@neve-wp/components",
+  "version": "0.0.2",
   "description": "Neve Customizer Controls",
-  "main": "src/controls.js",
+  "main": "src/components.js",
   "author": "themeisle <friends@themeisle.com>",
   "license": "GPL-2.0-or-later"
 }
