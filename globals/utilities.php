@@ -143,13 +143,11 @@ function neve_hooks() {
 			'woocommerce_register_form_start',
 		);
 		$hooks['account']  = array(
-			'woocommerce_before_my_account',
 			'woocommerce_before_account_navigation',
 			'woocommerce_account_navigation',
 			'woocommerce_after_account_navigation',
 			'woocommerce_account_content',
 			'woocommerce_account_dashboard',
-			'woocommerce_after_my_account',
 		);
 	}
 
