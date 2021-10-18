@@ -40,13 +40,15 @@ HFG.prototype.init = function (skipSidebar = false) {
 	 * When click to outside of menu sidebar.
 	 */
 	const overlay = document.querySelector('.header-menu-sidebar-overlay');
-	addEvent(
-		overlay,
-		'click',
-		function () {
-			this.toggleMenuSidebar(false);
-		}.bind(this)
-	);
+	if (overlay) {
+		addEvent(
+			overlay,
+			'click',
+			function () {
+				this.toggleMenuSidebar(false);
+			}.bind(this)
+		);
+	}
 };
 
 /**
