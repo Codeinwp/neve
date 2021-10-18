@@ -15,18 +15,14 @@ namespace Neve\Compatibility;
 class Easy_Digital_Downloads {
 
 	/**
-	 * The current context of the loop
-	 *
-	 * @var string
-	 */
-	private $context;
-
-	/**
 	 * Function that is run after instantiation.
 	 *
 	 * @return void
 	 */
 	public function init() {
+		if ( ! class_exists( 'Easy_Digital_Downloads' ) ) {
+			return;
+		}
 		add_action( 'wp_enqueue_scripts', array( $this, 'neve_dequeue_edd_styles' ) );
 		add_filter( 'edd_settings_styles', array( $this, 'neve_edd_settings_styles' ) );
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
