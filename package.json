@@ -191,7 +191,7 @@
 		"release": "npx semantic-release",
 		"dist": "bash ./bin/dist.sh",
 	  	"link:components": "npm link ./assets/apps/components",
-		"storybook": "npm run link:components && start-storybook -p 6006",
-		"build-storybook": "npm run link:components && build-storybook"
+		"storybook": "yarn run link:components & start-storybook -p 6006",
+		"build-storybook": "yarn run link:components & build-storybook"
 	}
 }
