@@ -190,7 +190,8 @@
 		"pre-commit": "npm-run-all phpcs build size",
 		"release": "npx semantic-release",
 		"dist": "bash ./bin/dist.sh",
-		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook"
+	  	"link:components": "npm link ./assets/apps/components",
+		"storybook": "npm run link:components && start-storybook -p 6006",
+		"build-storybook": "npm run link:components && build-storybook"
 	}
 }

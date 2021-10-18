@@ -1,8 +1,12 @@
 {
   "name": "@neve-wp/components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Neve Customizer Controls",
   "main": "src/components.js",
   "author": "themeisle <friends@themeisle.com>",
-  "license": "GPL-2.0-or-later"
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@wordpress/dependency-extraction-webpack-plugin": "^3.2.1",
+    "@wordpress/scripts": "^18.1.0"
+  }
 }
