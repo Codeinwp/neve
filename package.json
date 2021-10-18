@@ -190,8 +190,7 @@
 		"pre-commit": "npm-run-all phpcs build size",
 		"release": "npx semantic-release",
 		"dist": "bash ./bin/dist.sh",
-		"link:components" : "yarn link --link-folder ./assets/apps/components",
-		"storybook": "yarn run link:components && start-storybook -p 6006",
-		"build-storybook": "yarn run link:components && build-storybook"
+		"storybook": "start-storybook -p 6006",
+		"build-storybook": "build-storybook"
 	}
 }

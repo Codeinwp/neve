@@ -24,7 +24,7 @@ const plugins = [
 module.exports = (env) => {
 	let entry = config.entry;
 
-	if (env.nevePackage) {
+	if (env && env.nevePackage) {
 		entry = {
 			components: {
 				import: `./assets/apps/components/src/components.js`,
