@@ -175,7 +175,7 @@
 		"format:dash": "wp-scripts format assets/apps/dashboard/src",
 		"lint:customizer": "wp-scripts lint-js assets/apps/customizer-controls/src/",
 		"format:customizer": "wp-scripts format assets/apps/customizer-controls/src/",
-	  	"lint:ui-components": "wp-scripts lint-js assets/apps/components/src/",
+		"lint:ui-components": "wp-scripts lint-js assets/apps/components/src/",
 		"format:ui-components": "wp-scripts format assets/apps/components/src/",
 		"watch:ui-components": "wp-scripts start assets/apps/components/src/components.js --output-path=assets/apps/components/build --env=nevePackage",
 		"watch:customizer": "wp-scripts start assets/apps/customizer-controls/src/controls.js --output-path=assets/apps/customizer-controls/build",
@@ -190,8 +190,8 @@
 		"pre-commit": "npm-run-all phpcs build size",
 		"release": "npx semantic-release",
 		"dist": "bash ./bin/dist.sh",
-	  	"link:components": "npm link ./assets/apps/components",
-		"storybook": "yarn run link:components & start-storybook -p 6006",
-		"build-storybook": "yarn run link:components & build-storybook"
+		"link:components" : "yarn link --link-folder ./assets/apps/components",
+		"storybook": "yarn run link:components && start-storybook -p 6006",
+		"build-storybook": "yarn run link:components && build-storybook"
 	}
 }
