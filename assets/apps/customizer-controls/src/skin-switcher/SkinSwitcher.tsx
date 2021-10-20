@@ -38,7 +38,7 @@ const SkinSwitcher: React.FC<Props> = ({ control }) => {
 		},
 	];
 
-	const handleChange = (newVal: boolean) => {
+	const handleChange = (newVal: string) => {
 		setValue(newVal);
 		setChanged(true);
 	};

@@ -18,7 +18,7 @@ const ColorControl = ({
 	disableGlobal,
 }) => {
 	let toggle = null;
-	const { shouldUseColorPickerFix } = window.NeveReactCustomize;
+	const { shouldUseColorPickerFix } = window.nvComponents;
 
 	/**
 	 * Check if Default Color Picker can be used or the patched version.

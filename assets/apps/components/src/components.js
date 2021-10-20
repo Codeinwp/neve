@@ -1,4 +1,6 @@
 // Controls
+import './style.scss';
+
 export { default as Background } from './Controls/Background';
 export { default as ButtonAppearance } from './Controls/ButtonAppearance';
 export { default as ColorControl } from './Controls/ColorControl';
