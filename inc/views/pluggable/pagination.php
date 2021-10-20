@@ -217,12 +217,12 @@ class Pagination extends Base_View {
 			);
 
 			$jump_to_form = '<form class="nv-page-nav-form" action="' . esc_url( get_pagenum_link() ) . '" method="get" autocomplete="off">
-				<input class="nv-page-input-number" type="number" min="1" step="1" value="' . absint( $current_page ) . '" placeholder="1" size="3" name="paged" />
+				<input class="page-input" type="number" min="1" step="1" value="' . absint( $current_page ) . '" placeholder="1" size="3" name="paged" />
 				' . wp_kses(
 					$has_id . $has_search,
 					$allowed_tags
 				) . '
-				<input class="nv-go-to-button" value="»" type="submit" >
+				<input value="»" type="submit" >
 			</form>';
 
 			$links = str_replace(
