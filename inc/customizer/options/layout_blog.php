@@ -272,7 +272,7 @@ class Layout_Blog extends Base_Customizer {
 					'choices'  => array(
 						'number'   => esc_html__( 'Number', 'neve' ),
 						'infinite' => esc_html__( 'Infinite Scroll', 'neve' ),
-						'jump-to'  => esc_html__( 'Jump to page', 'neve' ),
+						'jump-to'  => esc_html__( 'Search Field', 'neve' ),
 					),
 				)
 			)
