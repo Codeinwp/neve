@@ -272,6 +272,7 @@ class Layout_Blog extends Base_Customizer {
 					'choices'  => array(
 						'number'   => esc_html__( 'Number', 'neve' ),
 						'infinite' => esc_html__( 'Infinite Scroll', 'neve' ),
+						'jump-to'  => esc_html__( 'Jump to page', 'neve' ),
 					),
 				)
 			)
@@ -538,7 +539,7 @@ class Layout_Blog extends Base_Customizer {
 	 * @return string
 	 */
 	public function sanitize_pagination_type( $value ) {
-		$allowed_values = array( 'number', 'infinite' );
+		$allowed_values = array( 'number', 'infinite', 'jump-to' );
 		if ( ! in_array( $value, $allowed_values, true ) ) {
 			return 'number';
 		}

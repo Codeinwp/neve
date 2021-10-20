@@ -164,7 +164,11 @@ class Pagination extends Base_View {
 			do_action( 'neve_before_pagination' );
 		}
 
-		$links = paginate_links( array( 'type' => 'list' ) );
+		$paginate_args = array( 'type' => 'list' );
+		if ( $this->has_jump_to() ) {
+			$paginate_args['format'] = '?paged=%#%';
+		}
+		$links = paginate_links( $paginate_args );
 		$links = str_replace(
 			array( '<a class="prev', '<a class="next' ),
 			array(
@@ -174,8 +178,61 @@ class Pagination extends Base_View {
 			$links
 		);
 
+		$allowed_tags = 'post';
+		if ( $this->has_jump_to() ) {
+			$current_page = ( ! empty( get_query_var( 'paged' ) ) ) ? get_query_var( 'paged' ) : 1;
+			$has_id       = ( ! empty( get_query_var( 'page_id' ) ) ) ? '<input type="hidden" name="page_id" value="' . absint( get_query_var( 'page_id' ) ) . '" />' : '';
+
+			$allowed_tags = array(
+				'ul'    => array(
+					'class' => array(),
+				),
+				'li'    => array(
+					'class' => array(),
+				),
+				'a'     => array(
+					'class' => array(),
+					'href'  => array(),
+				),
+				'span'  => array(
+					'class' => array(),
+				),
+				'form'  => array(
+					'class'        => array(),
+					'action'       => array( esc_url( get_pagenum_link() ) ),
+					'method'       => array( 'get' ),
+					'autocomplete' => array( 'off' ),
+				),
+				'input' => array(
+					'class'       => array(),
+					'type'        => array( 'number', 'hidden' ),
+					'name'        => array( 'paged', 'page_id' ),
+					'value'       => array(),
+					'min'         => array(),
+					'step'        => array(),
+					'placeholder' => array(),
+					'size'        => array(),
+				),
+			);
+
+			$jump_to_form = '<form class="nv-page-nav-form" action="' . esc_url( get_pagenum_link() ) . '" method="get" autocomplete="off">
+				<input class="nv-page-input-number" type="number" min="1" step="1" value="' . absint( $current_page ) . '" placeholder="1" size="3" name="paged" />
+				' . wp_kses(
+					$has_id,
+					$allowed_tags
+				) . '
+				<input class="nv-go-to-button" value="»" type="submit" >
+			</form>';
+
+			$links = str_replace(
+				'</ul>',
+				'<li>' . $jump_to_form . '</li></ul>',
+				$links
+			);
+		}
+
 		echo $this->has_infinite_scroll() ? '<div style="display: none;">' : '';
-		echo wp_kses_post( $links );
+		echo wp_kses( $links, $allowed_tags );
 		echo $this->has_infinite_scroll() ? '</div>' : '';
 
 		if ( $this->has_infinite_scroll() ) {
@@ -219,6 +276,20 @@ class Pagination extends Base_View {
 		previous_post_link( $prev_format, $prev_link );
 		next_post_link( $next_format, $next_link );
 		echo '</div>';
+	}
+
+	/**
+	 * Go to page option is enabled
+	 *
+	 * @return bool
+	 */
+	private function has_jump_to() {
+		$pagination_type = get_theme_mod( 'neve_pagination_type', 'number' );
+		if ( $pagination_type === 'jump-to' ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

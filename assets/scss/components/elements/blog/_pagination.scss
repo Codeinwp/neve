@@ -6,8 +6,34 @@ ul.page-numbers {
 		margin-bottom: $spacing-sm;
 	}
 
+	.nv-go-to-button {
+		all: unset;
+		cursor: pointer;
+
+		&:hover {
+			background: var(--nv-primary-accent);
+			color: var(--nv-text-dark-bg);
+		}
+	}
+
+	form {
+		display: flex;
+	}
+
+	.nv-page-input-number {
+		-webkit-appearance: none;
+		-moz-appearance: textfield;
+		line-height: 1;
+		margin-right: $spacing-xs;
+		border-radius: 3px;
+		padding: 8px 15px;
+		color: var(--nv-text-color);
+		width: 100%;
+	}
+
 	a,
-	span {
+	span,
+	.nv-go-to-button {
 		line-height: 1;
 		margin-right: $spacing-md;
 		background: var(--nv-light-bg);
