@@ -182,6 +182,7 @@ class Pagination extends Base_View {
 		if ( $this->has_jump_to() ) {
 			$current_page = ( ! empty( get_query_var( 'paged' ) ) ) ? get_query_var( 'paged' ) : 1;
 			$has_id       = ( ! empty( get_query_var( 'page_id' ) ) ) ? '<input type="hidden" name="page_id" value="' . absint( get_query_var( 'page_id' ) ) . '" />' : '';
+			$has_search   = ( is_search() && ! empty( get_query_var( 's' ) ) ) ? '<input type="hidden" name="s" value="' . esc_attr( get_query_var( 's' ) ) . '" />' : '';
 
 			$allowed_tags = array(
 				'ul'    => array(
@@ -206,7 +207,7 @@ class Pagination extends Base_View {
 				'input' => array(
 					'class'       => array(),
 					'type'        => array( 'number', 'hidden' ),
-					'name'        => array( 'paged', 'page_id' ),
+					'name'        => array( 'paged', 'page_id', 's' ),
 					'value'       => array(),
 					'min'         => array(),
 					'step'        => array(),
@@ -218,7 +219,7 @@ class Pagination extends Base_View {
 			$jump_to_form = '<form class="nv-page-nav-form" action="' . esc_url( get_pagenum_link() ) . '" method="get" autocomplete="off">
 				<input class="nv-page-input-number" type="number" min="1" step="1" value="' . absint( $current_page ) . '" placeholder="1" size="3" name="paged" />
 				' . wp_kses(
-					$has_id,
+					$has_id . $has_search,
 					$allowed_tags
 				) . '
 				<input class="nv-go-to-button" value="»" type="submit" >
