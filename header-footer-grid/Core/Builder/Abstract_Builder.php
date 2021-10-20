@@ -1508,7 +1508,7 @@ abstract class Abstract_Builder implements Builder {
 				$slot_classes[] = $slot_data[0]['vertical-align'];
 			}
 
-			if ( array_key_exists( 'components', $slot_data[0] ) && preg_grep( '/^divider/', $slot_data[0]['components'] ) ) {
+			if ( isset( $slot_data[0] ) && array_key_exists( 'components', $slot_data[0] ) && preg_grep( '/^divider/', $slot_data[0]['components'] ) ) {
 				$slot_classes[] = 'has-divider';
 			}
 
