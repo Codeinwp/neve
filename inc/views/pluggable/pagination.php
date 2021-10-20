@@ -285,8 +285,7 @@ class Pagination extends Base_View {
 	 * @return bool
 	 */
 	private function has_jump_to() {
-		$pagination_type = get_theme_mod( 'neve_pagination_type', 'number' );
-		if ( $pagination_type === 'jump-to' ) {
+		if ( get_theme_mod( 'neve_pagination_type', 'number' ) === 'jump-to' ) {
 			return true;
 		}
 
