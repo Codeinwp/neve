@@ -38,6 +38,13 @@ final class Manager {
 	private $control_classes;
 
 	/**
+	 * Supported post types to show Neve Options
+	 *
+	 * @var array|null
+	 */
+	private $supported_post_types = null;
+
+	/**
 	 * Init function
 	 */
 	public function init() {
@@ -54,6 +61,90 @@ final class Manager {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'meta_sidebar_script_enqueue' ) );
 
 		add_action( 'save_post', array( $this, 'set_page_width' ), 10, 2 );
+	}
+
+	/**
+	 * Get supported post types for the 'block_editor' context.
+	 *
+	 * @return array
+	 */
+	public function get_block_editor() {
+		if ( ! is_null( $this->supported_post_types ) ) {
+			return $this->supported_post_types;
+		}
+
+		$default_post_types = array( 'post', 'page' );
+
+		$extra_post_types = array_values(
+			get_post_types(
+				[
+					'public'   => true,
+					'_builtin' => false,
+				],
+				'names'
+			)
+		);
+
+		$all_post_types = array_merge( $default_post_types, $extra_post_types );
+
+		$exclude_list = array(
+			'sfwd-certificates',
+			'courses',
+			'e-landing-page',
+			'piotnetforms-book',
+			'piotnetforms',
+			'course',
+			'piotnetforms-data',
+			'jet-menu',
+			'jet-popup',
+			'adsforwp-groups',
+			'pgc_simply_gallery',
+			'lesson',
+			'editor-story',
+			'pafe-form-booking',
+			'sfwd-assignment',
+			'sfwd-essays',
+			'pafe-formabandonment',
+			'frm_display',
+			'sfwd-transactions',
+			'jet-engine',
+			'jet-theme-core',
+			'product',
+			'reply',
+			'jet_options_preset',
+			'tutor_assignments',
+			'brizy_template',
+			'jet-smart-filters',
+			'pafe-fonts',
+			'pafe-form-database',
+			'ct_content_block',
+			'adsforwp',
+			'iamport_payment',
+			'tribe_events',
+			'mec_esb',
+			'elementor_library',
+			'testimonial',
+			'zion_template',
+			'popup',
+			'jet-engine-booking',
+			'tutor_quiz',
+			'piotnetforms-aban',
+			'forum',
+			'topic',
+			'sfwd-quiz',
+			'mec-events',
+			'jet-woo-builder',
+			'neve_custom_layouts',
+			'feedzy_imports',
+			'neve_cart_notices',
+			'visualizer',
+		);
+
+		$supported_post_types = array_diff( $all_post_types, $exclude_list );
+
+		$this->supported_post_types = apply_filters( 'neve_post_type_supported_list', $supported_post_types, 'block_editor' );
+
+		return $this->supported_post_types;
 	}
 
 	/**
@@ -148,7 +239,7 @@ final class Manager {
 					$post_type
 				),
 				array( $this, 'render_metabox_notice' ),
-				array( 'post', 'page' ),
+				$this->get_block_editor(),
 				'side',
 				'default',
 				array(
@@ -332,7 +423,7 @@ final class Manager {
 	 */
 	public function meta_sidebar_script_enqueue() {
 		global $post_type;
-		if ( $post_type !== 'post' && $post_type !== 'page' ) {
+		if ( ! in_array( $post_type, $this->get_block_editor() ) ) {
 			return false;
 		}
 
