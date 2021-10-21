@@ -3,10 +3,9 @@ import RepeaterItemContent from './RepeaterItemContent';
 import { Icon, Tooltip } from '@wordpress/components';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
-import { SortableElement, SortableHandle } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 
-const Handle = SortableHandle(() => (
+const Handle = () => (
 	<Tooltip text={__('Drag to Reorder', 'neve')}>
 		<button
 			aria-label={__('Drag to Reorder', 'neve')}
@@ -18,7 +17,7 @@ const Handle = SortableHandle(() => (
 			<Icon icon="menu" />
 		</button>
 	</Tooltip>
-));
+);
 
 const RepeaterItem = ({
 	fields,
@@ -98,8 +97,6 @@ const RepeaterItem = ({
 		</div>
 	);
 };
-
-export const SortableRepeaterItem = SortableElement(RepeaterItem);
 
 RepeaterItem.propTypes = {
 	fields: PropTypes.object.isRequired,
