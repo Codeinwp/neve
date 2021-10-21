@@ -180,9 +180,14 @@ class Pagination extends Base_View {
 
 		$allowed_tags = 'post';
 		if ( $this->has_jump_to() ) {
-			$current_page = ( ! empty( get_query_var( 'paged' ) ) ) ? get_query_var( 'paged' ) : 1;
-			$has_id       = ( ! empty( get_query_var( 'page_id' ) ) ) ? '<input type="hidden" name="page_id" value="' . absint( get_query_var( 'page_id' ) ) . '" />' : '';
-			$has_search   = ( is_search() && ! empty( get_query_var( 's' ) ) ) ? '<input type="hidden" name="s" value="' . esc_attr( get_query_var( 's' ) ) . '" />' : '';
+
+			parse_str( wp_parse_url( get_pagenum_link(), PHP_URL_QUERY ), $url_query_args );
+
+			$current_page      = ( ! empty( get_query_var( 'paged' ) ) ) ? get_query_var( 'paged' ) : 1;
+			$additional_fields = '';
+			foreach ( $url_query_args as $key => $value ) {
+				$additional_fields .= '<input type="hidden" name="' . esc_attr( $key ) . '" value="' . esc_attr( $value ) . '" />';
+			}
 
 			$allowed_tags = array(
 				'ul'    => array(
@@ -219,7 +224,7 @@ class Pagination extends Base_View {
 			$jump_to_form = '<form class="nv-page-nav-form" action="' . esc_url( get_pagenum_link() ) . '" method="get" autocomplete="off">
 				<input class="page-input" type="number" min="1" step="1" value="' . absint( $current_page ) . '" placeholder="1" size="3" name="paged" />
 				' . wp_kses(
-					$has_id . $has_search,
+					$additional_fields,
 					$allowed_tags
 				) . '
 				<input value="»" type="submit" >
