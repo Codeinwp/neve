@@ -290,11 +290,7 @@ class Pagination extends Base_View {
 	 * @return bool
 	 */
 	private function has_jump_to() {
-		if ( get_theme_mod( 'neve_pagination_type', 'number' ) === 'jump-to' ) {
-			return true;
-		}
-
-		return false;
+		return get_theme_mod( 'neve_pagination_type', 'number' ) === 'jump-to';
 	}
 
 	/**
