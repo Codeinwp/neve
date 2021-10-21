@@ -55,7 +55,6 @@
 		"eslint-plugin-prettier": "^3.3.1",
 		"fuse.js": "^6.4.1",
 		"prop-types": "^15.7.2",
-		"react-sortable-hoc": "^1.11.0",
 		"react-sortablejs": "^6.0.0",
 		"react-visibility-sensor": "^5.1.1",
 		"sortablejs": "^1.13.0",
