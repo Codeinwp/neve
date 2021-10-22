@@ -45,74 +45,7 @@ class Supported_Post_Types {
 	 *
 	 * @return array
 	 */
-	private static function get_block_editor() {
-		$default_post_types = array( 'post', 'page' );
-
-		$extra_post_types = array_values(
-			get_post_types(
-				[
-					'public'   => true,
-					'_builtin' => false,
-				],
-				'names' 
-			) 
-		);
-
-		$all_post_types = array_merge( $default_post_types, $extra_post_types );
-
-		$exclude_list = array(
-			'sfwd-certificates',
-			'courses',
-			'e-landing-page',
-			'piotnetforms-book',
-			'piotnetforms',
-			'course',
-			'piotnetforms-data',
-			'jet-menu',
-			'jet-popup',
-			'adsforwp-groups',
-			'pgc_simply_gallery',
-			'lesson',
-			'editor-story',
-			'pafe-form-booking',
-			'sfwd-assignment',
-			'sfwd-essays',
-			'pafe-formabandonment',
-			'frm_display',
-			'sfwd-transactions',
-			'jet-engine',
-			'jet-theme-core',
-			'product',
-			'reply',
-			'jet_options_preset',
-			'tutor_assignments',
-			'brizy_template',
-			'jet-smart-filters',
-			'pafe-fonts',
-			'pafe-form-database',
-			'ct_content_block',
-			'adsforwp',
-			'iamport_payment',
-			'tribe_events',
-			'mec_esb',
-			'elementor_library',
-			'testimonial',
-			'zion_template',
-			'popup',
-			'jet-engine-booking',
-			'tutor_quiz',
-			'piotnetforms-aban',
-			'forum',
-			'topic',
-			'sfwd-quiz',
-			'mec-events',
-			'jet-woo-builder',
-			'neve_custom_layouts',
-			'feedzy_imports',
-			'neve_cart_notices',
-			'visualizer',
-		);
-
-		return array_values( array_diff( $all_post_types, $exclude_list ) );
+	public static function get_block_editor() {
+		return array( 'post', 'page' );
 	}
 }
