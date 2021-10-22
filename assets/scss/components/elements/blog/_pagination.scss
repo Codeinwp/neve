@@ -6,8 +6,25 @@ ul.page-numbers {
 		margin-bottom: $spacing-sm;
 	}
 
+	input[type="submit"] {
+		all: unset;
+		cursor: pointer;
+	}
+
+	form {
+		display: flex;
+	}
+
+	.page-input {
+		line-height: 1;
+		margin-right: $spacing-xs;
+		padding: 8px 15px;
+		font-size: var(--bodyFontSize);
+	}
+
 	a,
-	span {
+	span,
+	input[type="submit"] {
 		line-height: 1;
 		margin-right: $spacing-md;
 		background: var(--nv-light-bg);
