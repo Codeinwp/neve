@@ -11,6 +11,14 @@ namespace Neve\Core;
  */
 class Supported_Post_Types {
 	const SUPPORTED_CONTEXTS = array( 'block_editor' );
+
+	/**
+	 * 
+	 * Stores post types.
+	 * 
+	 * @var array
+	 */
+	public static $maps = [];
 	
 	/**
 	 * Get supported post types
@@ -23,15 +31,13 @@ class Supported_Post_Types {
 			return false;
 		}
 
-		static $values = array();
-
-		if ( ! array_key_exists( $context, $values ) ) {
+		if ( ! array_key_exists( $context, self::$maps ) ) {
 			$get_func = 'get_' . $context;
 
-			$values[ $context ] = apply_filters( 'neve_post_type_supported_list', self::$get_func(), $context );
+			self::$maps[ $context ] = apply_filters( 'neve_post_type_supported_list', self::$get_func(), $context );
 		}
 
-		return $values[ $context ];
+		return self::$maps[ $context ];
 	}
 
 	/**
