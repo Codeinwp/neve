@@ -66,7 +66,7 @@ declare module '@neve-wp/components' {
 	const NumberControl: React.FunctionComponent<NumberControlProps>;
 
 	interface RadioIconsProps {
-		options: Record<string, unknown>;
+		options: Record<string, unknown>[];
 		onChange: (nextValue: Record<string, unknown>) => void;
 		value: string | number;
 		showLabels: boolean;
@@ -75,8 +75,8 @@ declare module '@neve-wp/components' {
 	const RadioIcons: React.FunctionComponent<RadioIconsProps>;
 
 	interface RadioImageProps {
-		choices: Record<string, unknown>;
-		onClick: (nextValue: string) => void;
+		choices: Record<string, unknown>[];
+		onClick: (nextValue: number) => void;
 		value: string;
 	}
 
