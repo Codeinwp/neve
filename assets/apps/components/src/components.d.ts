@@ -22,7 +22,7 @@ declare module '@neve-wp/components' {
 	interface ColorControlProps {
 		label?: string;
 		selectedColor: string;
-		onChange: (nextValue: Record<string, unknown>) => void;
+		onChange: (nextValue: string) => void;
 		defaultValue?: string;
 		disableGlobal?: boolean;
 	}
@@ -75,7 +75,7 @@ declare module '@neve-wp/components' {
 	const RadioIcons: React.FunctionComponent<RadioIconsProps>;
 
 	interface RadioImageProps {
-		choices: Record<string, unknown>[];
+		choices: Record<string, string>;
 		onClick: (nextValue: number) => void;
 		value: string;
 	}
