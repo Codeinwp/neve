@@ -108,8 +108,7 @@ const OrderingComponent = ({ control }) => {
 
 							break;
 					}
-
-					updateValue(newVal);
+					updateValue(normalizeValue(newVal));
 				});
 			}
 		);
