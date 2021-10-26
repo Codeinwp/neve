@@ -175,7 +175,12 @@ class MetaFieldsManager extends Component {
 
 		return (
 			<div className="nv-option-category">
-				<PanelBody title={__('Page Layout', 'neve')} intialOpen={true}>
+				<PanelBody
+					title={
+						`${metaSidebar.postTypeLabel} ` + __('Layout', 'neve')
+					}
+					intialOpen={true}
+				>
 					<BaseControl
 						id="neve_meta_sidebar"
 						label={__('Sidebar', 'neve')}
@@ -390,7 +395,13 @@ class MetaFieldsManager extends Component {
 		const postType = select('core/editor').getCurrentPostType();
 		return (
 			<div className="nv-option-category">
-				<PanelBody title={__('Page Title', 'neve')} intialOpen={true}>
+				<PanelBody
+					title={
+						`${metaSidebar.postTypeLabel} ` +
+						__('Page Title', 'neve')
+					}
+					intialOpen={true}
+				>
 					<BaseControl
 						label={__('Title alignment', 'neve')}
 						id="neve_meta_title_alignment"

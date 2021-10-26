@@ -368,6 +368,8 @@ final class Manager {
 		$post_elements_default_order = $this->get_post_elements_default_order();
 		$show_avatar                 = $this->get_author_avatar_state();
 
+		$post_type_details = get_post_type_object( $post_type );
+		$post_type_label   = esc_html( $post_type_details->labels->singular_name );
 
 		$localized_data = apply_filters(
 			'neve_meta_sidebar_localize_filter',
@@ -381,6 +383,7 @@ final class Manager {
 				),
 				'elementsDefaultOrder' => $post_elements_default_order,
 				'avatarDefaultState'   => $show_avatar,
+				'postTypeLabel'        => $post_type_label,
 				'isCoverLayout'        => Layout_Single_Post::is_cover_layout(),
 			)
 		);
