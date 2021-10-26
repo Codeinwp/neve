@@ -397,8 +397,7 @@ class MetaFieldsManager extends Component {
 			<div className="nv-option-category">
 				<PanelBody
 					title={
-						`${metaSidebar.postTypeLabel} ` +
-						__('Page Title', 'neve')
+						`${metaSidebar.postTypeLabel} ` + __('Title', 'neve')
 					}
 					intialOpen={true}
 				>
