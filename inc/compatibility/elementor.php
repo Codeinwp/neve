@@ -50,6 +50,7 @@ class Elementor extends Page_Builder_Base {
 			$css .= '--e-global-color-' . str_replace( '-', '', $slug ) . ':' . $color . ';';
 		}
 		$css .= '}';
+		$css  = apply_filters( 'neve_elementor_colors', $css );
 		$css  = Dynamic_Css::minify_css( $css );
 		wp_add_inline_style( 'neve-style', $css );
 	}
@@ -291,7 +292,7 @@ class Elementor extends Page_Builder_Base {
 	private function get_global_color_prefix() {
 		return ( apply_filters( 'ti_wl_theme_is_localized', false ) ? __( 'Theme', 'neve' ) : 'Neve' ) . ' - ';
 	}
-	
+
 	/**
 	 * Is the current page has an elementor template
 	 *
@@ -320,7 +321,7 @@ class Elementor extends Page_Builder_Base {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Update has_template transient value when a post updated or inserted.
 	 *
