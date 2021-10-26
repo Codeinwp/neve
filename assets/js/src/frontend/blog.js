@@ -53,7 +53,7 @@ const infiniteScroll = () => {
 	}
 
 	isInView(document.querySelector('.infinite-scroll-trigger'), () => {
-		if (parent.wp && parent.wp.customize) {
+		if (parent && parent.wp && parent.wp.customize) {
 			parent.wp.customize.requestChangesetUpdate().then(() => {
 				requestMorePosts();
 			});
