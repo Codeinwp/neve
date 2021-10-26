@@ -9,6 +9,7 @@ import {
 	ORDERING_NO_TOGGLES,
 } from '../utils/values';
 import { useState } from '@wordpress/element';
+import { maybeParseJson } from '../../assets/apps/customizer-controls/src/common/common';
 
 export default {
 	title: 'Customizer/Controls/Ordering',
@@ -23,13 +24,45 @@ export default {
 };
 
 const Template = (args) => {
-	const [value, setValue] = useState(args.customizeValue);
+	const normalizeValue = (val) => {
+		const normalizedValue = val.map((element) => {
+			return { id: element, visible: true };
+		});
+
+		const enabledItems = normalizedValue.map((element) => {
+			element.visible = true;
+			return element;
+		});
+
+		const disabledItems = Object.keys(args.components)
+			.filter((element) => {
+				return (
+					enabledItems.filter((el) => {
+						return element === el.id;
+					}).length === 0
+				);
+			})
+			.map((element) => {
+				return { id: element, visible: false };
+			});
+
+		return [...enabledItems, ...disabledItems];
+	};
+
+	const [value, setValue] = useState(
+		normalizeValue(maybeParseJson(args.customizeValue))
+	);
+
+	const displayValue = value
+		.filter((item) => item.visible)
+		.map((item) => item.id);
+
 	return (
 		<>
 			<Ordering {...args} value={value} onUpdate={setValue} />
 			<div className="value-previewer">
 				<strong>Value:</strong>
-				<pre>{JSON.stringify(value, null, ' ')}</pre>
+				<pre>{JSON.stringify(displayValue, null, ' ')}</pre>
 			</div>
 		</>
 	);

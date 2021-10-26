@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 29/09/21
+ * Updated on 25/10/21
  *
  * @package neve
  */
@@ -1298,8 +1298,15 @@ return array(
 	'ZCOOL KuaiLe' => array( '400',),
 	'ZCOOL QingKe HuangYou' => array( '400',),
 	'ZCOOL XiaoWei' => array( '400',),
+	'Zen Antique' => array( '400',),
+	'Zen Antique Soft' => array( '400',),
 	'Zen Dots' => array( '400',),
+	'Zen Kaku Gothic Antique' => array( '300', '400', '500', '700', '900',),
+	'Zen Kaku Gothic New' => array( '300', '400', '500', '700', '900',),
+	'Zen Kurenaido' => array( '400',),
 	'Zen Loop' => array( '400', '400italic',),
+	'Zen Maru Gothic' => array( '300', '400', '500', '700', '900',),
+	'Zen Old Mincho' => array( '400', '700', '900',),
 	'Zen Tokyo Zoo' => array( '400',),
 	'Zeyada' => array( '400',),
 	'Zhi Mang Xing' => array( '400',),

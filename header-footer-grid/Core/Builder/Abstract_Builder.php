@@ -36,6 +36,8 @@ abstract class Abstract_Builder implements Builder {
 	const COLUMNS_NUMBER     = 'columns_number';
 	const COLUMNS_LAYOUT     = 'columns_layout';
 	const HEIGHT_SETTING     = 'height';
+	const BOTTOM_BORDER      = 'bottom_border';
+	const BORDER_COLOR       = 'border_color';
 	const SKIN_SETTING       = 'skin';
 	const TEXT_COLOR         = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
@@ -363,11 +365,12 @@ abstract class Abstract_Builder implements Builder {
 					'live_refresh_selector' => $row_class,
 					'live_refresh_css_prop' => [
 						'cssVar' => [
-							'responsive' => true,
-							'vars'       => '--height',
-							'suffix'     => 'px',
-							'fallback'   => 'auto',
-							'selector'   => $row_class,
+							'responsive'           => true,
+							'vars'                 => '--height',
+							'suffix'               => 'px',
+							'fallback'             => 'auto',
+							'selector'             => $row_class,
+							'dispatchWindowResize' => true,
 						],
 						'prop'   => 'height',
 						'unit'   => 'px',
@@ -451,6 +454,68 @@ abstract class Abstract_Builder implements Builder {
 				'default'               => $default_colors['text'],
 			]
 		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::BOTTOM_BORDER,
+				'group'                 => $row_setting_id,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'section'               => $row_setting_id,
+				'label'                 => __( 'Border Width', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'responsive'           => true,
+						'vars'                 => '--rowBWidth',
+						'suffix'               => 'px',
+						'fallback'             => '0',
+						'selector'             => '.' . $this->get_id() . '-' . $row_id,
+						'dispatchWindowResize' => true,
+					],
+				],
+				'options'               => [
+					'input_attrs' => [
+						'step'       => 1,
+						'min'        => 0,
+						'max'        => 50,
+						'defaultVal' => [
+							'mobile'  => 0,
+							'tablet'  => 0,
+							'desktop' => 0,
+						],
+						'units'      => [ 'px' ],
+					],
+				],
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
+				'default'               => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+				'conditional_header'    => $this->get_id() === 'header',
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::BORDER_COLOR,
+				'group'                 => $row_setting_id,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'label'                 => __( 'Border Color', 'neve' ),
+				'section'               => $row_setting_id,
+				'conditional_header'    => $this->get_id() === 'header',
+				'type'                  => 'neve_color_control',
+				'transport'             => 'postMessage',
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => '--rowBColor',
+						'selector' => '.' . $this->get_id() . '-' . $row_id,
+					],
+				],
+				'sanitize_callback'     => 'neve_sanitize_colors',
+				'default'               => 'var(--nv-light-bg)',
+			]
+		);
+
 		do_action( 'hfg_row_settings', $this->get_id(), $row_id, $row_setting_id );
 	}
 
@@ -943,16 +1008,9 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 							$background = $value;
 							$style      = '';
-							if ( isset( $background['useFeatured'] ) && $background['useFeatured'] === true && is_singular() ) {
-								$featured_image = get_the_post_thumbnail_url();
-								if ( ! empty( $featured_image ) ) {
-									$style .= sprintf( 'background-image: url("%s");', esc_url( $featured_image ) );
-								} else {
-									$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
-								}
-							} elseif ( ! empty( $background['imageUrl'] ) ) {
-								$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
-							}
+							$image      = $this->get_row_featured_image( $background['imageUrl'], $background['useFeatured'], $meta );
+
+							$style .= sprintf( 'background-image: %s;', esc_attr( $image ) );
 							$style .= 'background-size:cover;';
 
 							if ( ! empty( $background['focusPoint'] ) && ! empty( $background['focusPoint']['x'] ) && ! empty( $background['focusPoint']['y'] ) ) {
@@ -998,6 +1056,39 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 * Returns the featured image for the header row.
+	 *
+	 * @param string  $image_url The image URL.
+	 * @param boolean $use_featured Flag if featured image should be used.
+	 * @param array   $meta Additional meta for the image.
+	 *
+	 * @return string
+	 */
+	private function get_row_featured_image( $image_url, $use_featured, $meta ) {
+		$image = 'none';
+		if ( ! empty( $use_featured ) && $use_featured === true && is_singular() ) {
+			$featured_image = get_the_post_thumbnail_url();
+			if ( ! empty( $featured_image ) ) {
+				$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
+			} else {
+				$image = sprintf( 'url("%s")', esc_url( $image_url ) );
+			}
+		} elseif ( ! empty( $image_url ) ) {
+			$image = sprintf( 'url("%s")', esc_url( $image_url ) );
+		}
+		/**
+		 * Filters the background featured image output url.
+		 *
+		 * @param string $image         The background image value: `none` or `url(<url>)`.
+		 * @param boolean $use_featured Flag to specify if featured image should be used or fallback.
+		 * @param array $meta           Additional meta for the image.
+		 *
+		 * @since 3.0.5
+		 */
+		return apply_filters( 'nv_builder_row_image_url', $image, $use_featured, $meta );
+	}
+
+	/**
 	 * Method to generate css array for each row.
 	 *
 	 * @param string $row_index The row index.
@@ -1035,6 +1126,24 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::META_DEFAULT       => '{ desktop: 0, tablet: 0, mobile: 0 }',
 			];
 		}
+
+		$rules['--rowBWidth'] = [
+			Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::BOTTOM_BORDER,
+			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+				$value = (int) $value;
+				if ( $value > 0 ) {
+					return sprintf( '%s:%s;', $css_prop, $value . 'px' );
+				}
+
+				return '';
+			},
+		];
+
+		$rules['--rowBColor'] = [
+			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::BORDER_COLOR,
+			Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+		];
 
 		$rules['--color'] = [
 			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
@@ -1074,18 +1183,7 @@ abstract class Abstract_Builder implements Builder {
 					'--bgImage'          => [
 						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							$image = 'none';
-							if ( isset( $value['useFeatured'] ) && $value['useFeatured'] === true && is_singular() ) {
-								$featured_image = get_the_post_thumbnail_url();
-								if ( ! empty( $featured_image ) ) {
-									$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
-								} else {
-									$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
-								}
-							} elseif ( ! empty( $value['imageUrl'] ) ) {
-								$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
-							}
-
+							$image = $this->get_row_featured_image( $value['imageUrl'], $value['useFeatured'], $meta );
 							return sprintf( '%s:%s;', $css_prop, $image );
 						},
 					],
