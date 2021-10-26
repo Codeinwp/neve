@@ -123,6 +123,8 @@
 
 	.container {
 		display: flex;
+		justify-content: var(--justify, center);
+		text-align: var(--textAlign, center);
 	}
 }
 
