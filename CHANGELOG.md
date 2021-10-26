@@ -1,3 +1,8 @@
+##### [Version 3.0.8](https://github.com/Codeinwp/neve/compare/v3.0.7...v3.0.8) (2021-10-26)
+
+- [Fix] Ordering control when header layout is changed on the single post
+- [Fix] Customizer controls not loading properly due to browser caching issue in some instances
+
 ##### [Version 3.0.7](https://github.com/Codeinwp/neve/compare/v3.0.6...v3.0.7) (2021-10-26)
 
 - [Feat] Header row border control - [Learn more](https://docs.themeisle.com/article/1245-header-rows-settings#border)
