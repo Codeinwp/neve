@@ -4,9 +4,7 @@ import { Spinner } from '@wordpress/components';
 import { maybeParseJson } from '../common/common';
 import PropTypes from 'prop-types';
 
-const Ordering = lazy(() =>
-	import(/* webpackChunkName: "ordering" */ './Ordering')
-);
+const Ordering = lazy(() => import('./Ordering'));
 import { __ } from '@wordpress/i18n';
 
 const OrderingComponent = ({ control }) => {
@@ -108,8 +106,7 @@ const OrderingComponent = ({ control }) => {
 
 							break;
 					}
-
-					updateValue(newVal);
+					updateValue(normalizeValue(newVal));
 				});
 			}
 		);
