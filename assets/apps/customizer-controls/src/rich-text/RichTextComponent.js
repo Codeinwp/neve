@@ -62,11 +62,6 @@ const RichTextComponent = ({ control }) => {
 			setEditorContent(input.value);
 		});
 
-		// this replaces the default line breaks for old textarea content
-		let content = document.getElementById(editorId).value;
-		content = content.replace(/(?<!>)\n/g, '<br/>');
-		document.getElementById(editorId).value = content;
-
 		correctEditor().initialize(editorId, {
 			quicktags: true,
 			mediaButtons: true,
