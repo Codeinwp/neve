@@ -19,6 +19,20 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.0.7](https://github.com/Codeinwp/neve/compare/v3.0.6...v3.0.7) (2021-10-26)
+
+- [Feat] Header row border control - [Learn more](https://docs.themeisle.com/article/1245-header-rows-settings#border)
+- [Feat] Jump to page blog pagination type - [Learn more](https://docs.themeisle.com/article/1306-neve-blog-archive-options#ordering)
+- [Feat] Support for the named text sizes inside the editor 
+- [Feat] TinyMCE field inside header HTML Component
+- [Feat] Add Painter starter site - [Elementor](https://demosites.io/painter/)
+- [Feat] Add Freelance Designer starter site - [Elementor](https://demosites.io/minimal-portfolio/)
+- Replace react-sortable-hoc with sortablejs already used in the header
+- Update Google Fonts
+
+
+
+
 ##### [Version 3.0.6](https://github.com/Codeinwp/neve/compare/v3.0.5...v3.0.6) (2021-10-11)
 
 - [Feat] Adds alignment option to the mobile sidebar row setting;
