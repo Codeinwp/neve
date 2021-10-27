@@ -277,7 +277,7 @@ class Layout_Single_Post extends Base_Customizer {
 								],
 							],
 							'responsive' => true,
-							'selector'   => '.nv-post-cover .container',
+							'selector'   => '.nv-post-cover .container, .entry-header .entry-title',
 						],
 						'remove_classes' => [
 							'mobile-left',

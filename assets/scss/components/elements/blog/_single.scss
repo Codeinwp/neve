@@ -24,6 +24,7 @@
 
 .entry-header .title {
 	margin-bottom: $spacing-xs;
+	text-align: var(--textAlign, left);
 }
 
 .attachment-neve-blog {
