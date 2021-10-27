@@ -19,6 +19,13 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.0.9](https://github.com/Codeinwp/neve/compare/v3.0.8...v3.0.9) (2021-10-26)
+
+- [Fix] editor in HTML header component
+
+
+
+
 ##### [Version 3.0.8](https://github.com/Codeinwp/neve/compare/v3.0.7...v3.0.8) (2021-10-26)
 
 - [Fix] Ordering control when header layout is changed on the single post
