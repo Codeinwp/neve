@@ -53,7 +53,7 @@ const infiniteScroll = () => {
 	}
 
 	isInView(document.querySelector('.infinite-scroll-trigger'), () => {
-		if (parent.wp.customize) {
+		if (parent && parent.wp && parent.wp.customize) {
 			parent.wp.customize.requestChangesetUpdate().then(() => {
 				requestMorePosts();
 			});
@@ -105,6 +105,7 @@ const requestMorePosts = () => {
  * @return {*} Sanitized URL.
  */
 const maybeParseUrlForCustomizer = (url) => {
+	if (typeof wp === 'undefined') return url;
 	//Add change-set uuid.
 	if (typeof wp.customize === 'undefined') return url;
 	url +=
