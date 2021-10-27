@@ -70,6 +70,9 @@ module.exports = {
 			'assets/css/easy-digital-downloads.min.css': [
 				'assets/css/easy-digital-downloads.css',
 			],
+			'assets/css/easy-digital-downloads-rtl.min.css': [
+				'assets/css/easy-digital-downloads-rtl.css',
+			],
 		},
 	},
 };
