@@ -76,7 +76,7 @@ declare module '@neve-wp/components' {
 
 	interface RadioImageProps {
 		choices: Record<string, string>;
-		onClick: (nextValue: number) => void;
+		onClick: (nextValue: string) => void;
 		value: string;
 	}
 
