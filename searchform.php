@@ -29,7 +29,7 @@ if ( function_exists( 'PLL' ) ) {
 
 <form role="search"
 	method="get"
-	class="<?php echo esc_html( implode( ' ', $form_classes ) ); ?>"
+	class="<?php echo esc_attr( implode( ' ', $form_classes ) ); ?>"
 	action="<?php echo esc_url( $home_url ); ?>">
 	<label>
 		<span class="screen-reader-text"><?php echo esc_html__( 'Search for...', 'neve' ); ?></span>
@@ -37,7 +37,7 @@ if ( function_exists( 'PLL' ) ) {
 	<input type="search"
 		class="search-field"
 		placeholder="<?php echo esc_attr( $placeholder ); ?>"
-		value="<?php echo esc_html( $value ); ?>"
+		value="<?php echo esc_attr( $value ); ?>"
 		name="s"/>
 	<button type="submit"
 			class="search-submit"
