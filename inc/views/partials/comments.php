@@ -136,7 +136,7 @@ class Comments extends Base_View {
 
 		$aria_label = __( 'Comments Navigation', 'neve' );
 		?>
-		<nav class="nv-comment-navigation" role="navigation" aria-label="<?php echo esc_html( $aria_label ); ?>">
+		<nav class="nv-comment-navigation" role="navigation" aria-label="<?php echo esc_attr( $aria_label ); ?>">
 			<div class="nav-links">
 				<div class="nav-previous">
 					<?php previous_comments_link( __( 'Previous', 'neve' ) ); ?>
