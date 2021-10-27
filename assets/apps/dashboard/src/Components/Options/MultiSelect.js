@@ -1,7 +1,7 @@
 import { changeOption as changeSetting } from '../../utils/rest';
 import { compose } from '@wordpress/compose';
 import { withDispatch, withSelect } from '@wordpress/data';
-import MultiSelect from '../../../../customizer-controls/src/multiselect/MultiSelect';
+import { MultiSelect } from '@neve-wp/components';
 
 const MultiSelectOption = ({
 	slug,
