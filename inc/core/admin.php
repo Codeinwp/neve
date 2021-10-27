@@ -85,8 +85,16 @@ class Admin {
 		$deps = include trailingslashit( NEVE_MAIN_DIR ) . 'assets/apps/components/build/components.asset.php';
 
 		wp_register_script( 'neve-components', trailingslashit( NEVE_ASSETS_URL ) . 'apps/components/build/components.js', $deps['dependencies'], $deps['version'], false );
-		wp_localize_script( 'neve-components', 'nvComponents', [ 'shouldUseColorPickerFix' => (int) ( ! neve_is_using_wp_version( '5.8' ) ) ] );
+		wp_localize_script(
+			'neve-components',
+			'nvComponents',
+			[
+				'shouldUseColorPickerFix' => (int) ( ! neve_is_using_wp_version( '5.8' ) ),
+				'customizerURL'           => esc_url( admin_url( 'customize.php' ) ),
+			] 
+		);
 		wp_register_style( 'neve-components', trailingslashit( NEVE_ASSETS_URL ) . 'apps/components/build/style-components.css', [ 'wp-components' ], $deps['version'] );
+		wp_add_inline_style( 'neve-components', Dynamic_Css::get_root_css() );
 	}
 
 	/**
