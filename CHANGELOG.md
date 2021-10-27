@@ -1,3 +1,7 @@
+##### [Version 3.0.10](https://github.com/Codeinwp/neve/compare/v3.0.9...v3.0.10) (2021-10-27)
+
+- [Fix] header rows background images not applying on legacy skin
+
 ##### [Version 3.0.9](https://github.com/Codeinwp/neve/compare/v3.0.8...v3.0.9) (2021-10-26)
 
 - [Fix] editor in HTML header component
