@@ -92,7 +92,9 @@ class PaletteSwitch extends Abstract_Component {
 		$this->set_property( 'is_auto_width', true );
 
 		add_filter( 'neve_after_css_root', [ $this, 'toggle_css' ], 10, 1 );
-		add_filter( 'neve_elementor_colors', [ $this, 'toggle_elementor_css' ], 10, 1 );
+		if ( defined( 'ELEMENTOR_VERSION' ) ) {
+			add_filter( 'neve_elementor_colors', [ $this, 'toggle_elementor_css' ], 10, 1 );
+		}
 		add_action( 'wp_enqueue_scripts', [ $this, 'load_scripts' ] );
 
 		add_filter(
