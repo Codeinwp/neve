@@ -1,31 +1,7 @@
 @import "variables";
 @import "./tables";
 @import "./separators";
-
-// === Headings font sizes === //
-.has-neve-body-font-size {
-	font-size: var(--bodyFontSize);
-}
-
-.has-neve-h-1-font-size {
-	font-size: var(--h1FontSize);
-}
-
-.has-neve-h-2-font-size {
-	font-size: var(--h2FontSize);
-}
-
-.has-neve-h-3-font-size {
-	font-size: var(--h3FontSize);
-}
-
-.has-neve-h-4-font-size {
-	font-size: var(--h4FontSize);
-}
-
-.has-neve-h-5-font-size {
-	font-size: var(--h5FontSize);
-}
+@import "./text-sizes";
 
 
 // === Buttons === //

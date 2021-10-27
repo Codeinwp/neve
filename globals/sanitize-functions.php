@@ -269,14 +269,14 @@ function neve_sanitize_meta_ordering( $value ) {
 	);
 
 	if ( empty( $value ) ) {
-		return $allowed;
+		return wp_json_encode( $allowed );
 	}
 
 	$decoded = json_decode( $value, true );
 
 	foreach ( $decoded as $val ) {
 		if ( ! in_array( $val, $allowed, true ) ) {
-			return $allowed;
+			return wp_json_encode( $allowed );
 		}
 	}
 
@@ -324,6 +324,49 @@ function neve_sanitize_container_layout( $value ) {
 function neve_sanitize_button_type( $value ) {
 	if ( ! in_array( $value, [ 'primary', 'secondary' ], true ) ) {
 		return 'primary';
+	}
+
+	return $value;
+}
+
+/**
+ * Sanitize font variants.
+ *
+ * @param string[] $value the incoming value.
+ *
+ * @return string[]
+ */
+function neve_sanitize_font_variants( $value ) {
+	$allowed = [
+		'100',
+		'200',
+		'300',
+		'400',
+		'500',
+		'600',
+		'700',
+		'800',
+		'900',
+		'100italic',
+		'200italic',
+		'300italic',
+		'400italic',
+		'500italic',
+		'600italic',
+		'700italic',
+		'800italic',
+		'900italic',
+	];
+	if ( ! is_array( $value ) ) {
+		return [];
+	}
+
+	foreach ( $value as $variant ) {
+		if ( in_array( $variant, $allowed, true ) ) {
+			continue;
+		}
+		$key = array_search( $variant, $value );
+		unset( $value[ $key ] );
 	}
 
 	return $value;

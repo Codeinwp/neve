@@ -1157,6 +1157,11 @@ class Frontend extends Generator {
 			'--vAlign'  => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_POSITION,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => [
+					'mobile'  => 'center',
+					'tablet'  => 'center',
+					'desktop' => 'center',
+				],
 			],
 		];
 

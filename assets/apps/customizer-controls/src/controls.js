@@ -28,6 +28,7 @@ import { InstructionsControl } from './builder-instructions/Control';
 import { HeadingControl } from './heading/Control';
 import { SkinSwitcherControl } from './skin-switcher/Control';
 import { RepeaterControl } from './repeater/Control';
+import { RichTextControl } from './rich-text/Control';
 
 import './style.scss';
 import Instructions from './builder-instructions/Instructions.tsx';
@@ -59,6 +60,7 @@ controlConstructor.hfg_instructions = InstructionsControl;
 controlConstructor.neve_customizer_heading = HeadingControl;
 controlConstructor.neve_skin_switcher = SkinSwitcherControl;
 controlConstructor.neve_repeater_control = RepeaterControl;
+controlConstructor.neve_rich_text = RichTextControl;
 
 const initDeviceSwitchers = () => {
 	const deviceButtons = document.querySelector(

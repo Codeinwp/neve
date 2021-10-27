@@ -44,6 +44,8 @@ function neve_hooks() {
 			'neve_before_header_wrapper_hook',
 			'neve_after_header_hook',
 			'neve_after_header_wrapper_hook',
+			'neve_before_mobile_menu_content',
+			'neve_after_mobile_menu_content',
 		),
 		'footer'     => array(
 			'neve_before_footer_hook',
@@ -117,6 +119,7 @@ function neve_hooks() {
 			'woocommerce_cart_totals_before_order_total',
 			'woocommerce_proceed_to_checkout',
 			'woocommerce_after_cart_totals',
+			'woocommerce_cart_is_empty',
 		);
 		$hooks['checkout'] = array(
 			'woocommerce_before_checkout_billing_form',
@@ -130,6 +133,21 @@ function neve_hooks() {
 			'woocommerce_review_order_before_submit',
 			'woocommerce_review_order_after_submit',
 			'woocommerce_review_order_after_payment',
+		);
+		$hooks['login']    = array(
+			'woocommerce_login_form_start',
+			'woocommerce_login_form_end',
+		);
+		$hooks['register'] = array(
+			'woocommerce_register_form_end',
+			'woocommerce_register_form_start',
+		);
+		$hooks['account']  = array(
+			'woocommerce_before_account_navigation',
+			'woocommerce_account_navigation',
+			'woocommerce_after_account_navigation',
+			'woocommerce_account_content',
+			'woocommerce_account_dashboard',
 		);
 	}
 
@@ -295,12 +313,18 @@ function neve_get_standard_fonts() {
 /**
  * Get all google fonts
  *
+ * @param bool $with_variants should fetch variants.
+ *
  * @return array
  */
-function neve_get_google_fonts() {
+function neve_get_google_fonts( $with_variants = false ) {
 	$fonts = ( include NEVE_MAIN_DIR . 'globals/google-fonts.php' );
 
-	return apply_filters( 'neve_google_fonts_array', $fonts );
+	if ( $with_variants ) {
+		return apply_filters( 'neve_google_fonts_with_variants_array', $fonts );
+	}
+
+	return apply_filters( 'neve_google_fonts_array', array_keys( $fonts ) );
 }
 
 /**
@@ -504,6 +528,19 @@ function neve_pro_has_support( $feature ) {
  */
 function neve_is_new_widget_editor() {
 	return ( defined( 'GUTENBERG_VERSION' ) && version_compare( GUTENBERG_VERSION, '10.6.2', '>' ) ) || version_compare( substr( get_bloginfo( 'version' ), 0, 3 ), '5.8', '>=' );
+}
+
+/**
+ * Check that the active WordPress version is greater than the passed value.
+ *
+ * @param string $version The default check is for `5.8` other values are accepted.
+ *
+ * @return bool
+ * @since 3.0.5
+ */
+function neve_is_using_wp_version( $version = '5.8' ) {
+	global $wp_version;
+	return version_compare( $wp_version, $version, '>=' );
 }
 
 /**

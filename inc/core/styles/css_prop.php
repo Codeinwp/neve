@@ -220,6 +220,8 @@ class Css_Prop {
 
 				if ( $is_font_family_var ) {
 					Font_Manager::add_google_font( $value );
+
+					$value = self::format_font_family_value( $value );
 				}
 
 				if ( isset( $meta['directional-prop'] ) ) {
@@ -350,5 +352,41 @@ class Css_Prop {
 		$template = trim( $template ) . ';';
 
 		return $css_prop . ':' . $template . ';';
+	}
+
+	/**
+	 * Format the font family value.
+	 *
+	 * @param string $value the font family value.
+	 */
+	public static function format_font_family_value( $value ) {
+		if ( strpos( $value, ',' ) !== false ) {
+			$value = explode( ',', $value );
+
+			$value = array_map( 'self::quote_font_family', $value );
+
+			return join( ',', $value );
+		}
+
+		return self::quote_font_family( $value );
+	}
+
+	/**
+	 * Strip side spaces wrap font family in quotes.
+	 *
+	 * @param string $family the font family.
+	 *
+	 * @return string
+	 */
+	private static function quote_font_family( $family ) {
+		// Make sure we don't have whitespace.
+		$family = trim( $family );
+		// Remove quotes. Because of previously faulty fix.
+		$family = trim( $family, '"' );
+		if ( strpos( $family, ' ' ) === false ) {
+			return $family;
+		}
+
+		return '"' . $family . '"';
 	}
 }

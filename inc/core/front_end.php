@@ -50,6 +50,7 @@ class Front_End {
 		add_theme_support( 'custom-background', [] );
 		add_theme_support( 'align-wide' );
 		add_theme_support( 'editor-color-palette', $this->get_gutenberg_color_palette() );
+		add_theme_support( 'disable-custom-font-sizes' );
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
 		add_theme_support( 'fl-theme-builder-parts' );
@@ -384,5 +385,18 @@ class Front_End {
 			);
 			register_sidebar( $sidebar_settings );
 		}
+	}
+
+	/**
+	 * Get strings.
+	 *
+	 * @return array
+	 */
+	public function get_strings() {
+		return [
+			'add_item'     => __( 'Add item', 'neve' ),
+			'add_items'    => __( 'Add items by clicking the ones below.', 'neve' ),
+			'all_selected' => __( 'All items are already selected.', 'neve' ),
+		];
 	}
 }

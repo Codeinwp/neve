@@ -59,12 +59,6 @@ pre {
 	--listPad: 20px;
 	--listStyle: disc;
 
-	&::after {
-		content: "";
-		clear: both;
-		display: table;
-	}
-
 	> ul,
 	> ol {
 		margin: $spacing-lg 0;

@@ -89,7 +89,22 @@ class Pagination extends Base_View {
 			ob_start();
 			while ( $query->have_posts() ) {
 				$query->the_post();
+
+				/**
+				 * Executes actions before rendering the post content.
+				 *
+				 * @since 2.11 in the /index.php
+				 */
+				do_action( 'neve_loop_entry_before' );
+
 				get_template_part( 'template-parts/content' );
+
+				/**
+				 * Executes actions after rendering the post content.
+				 *
+				 * @since 2.11 in the /index.php
+				 */
+				do_action( 'neve_loop_entry_after' );
 			}
 			wp_reset_postdata();
 			$output = ob_get_contents();
@@ -149,7 +164,11 @@ class Pagination extends Base_View {
 			do_action( 'neve_before_pagination' );
 		}
 
-		$links = paginate_links( array( 'type' => 'list' ) );
+		$paginate_args = array( 'type' => 'list' );
+		if ( $this->has_jump_to() ) {
+			$paginate_args['format'] = '?paged=%#%';
+		}
+		$links = paginate_links( $paginate_args );
 		$links = str_replace(
 			array( '<a class="prev', '<a class="next' ),
 			array(
@@ -159,8 +178,67 @@ class Pagination extends Base_View {
 			$links
 		);
 
+		$allowed_tags = 'post';
+		if ( $this->has_jump_to() ) {
+
+			parse_str( wp_parse_url( get_pagenum_link(), PHP_URL_QUERY ), $url_query_args );
+
+			$current_page      = ( ! empty( get_query_var( 'paged' ) ) ) ? get_query_var( 'paged' ) : 1;
+			$additional_fields = '';
+			foreach ( $url_query_args as $key => $value ) {
+				$additional_fields .= '<input type="hidden" name="' . esc_attr( $key ) . '" value="' . esc_attr( $value ) . '" />';
+			}
+
+			$allowed_tags = array(
+				'ul'    => array(
+					'class' => array(),
+				),
+				'li'    => array(
+					'class' => array(),
+				),
+				'a'     => array(
+					'class' => array(),
+					'href'  => array(),
+				),
+				'span'  => array(
+					'class' => array(),
+				),
+				'form'  => array(
+					'class'        => array(),
+					'action'       => array( esc_url( get_pagenum_link() ) ),
+					'method'       => array( 'get' ),
+					'autocomplete' => array( 'off' ),
+				),
+				'input' => array(
+					'class'       => array(),
+					'type'        => array( 'number', 'hidden' ),
+					'name'        => array( 'paged', 'page_id', 's' ),
+					'value'       => array(),
+					'min'         => array(),
+					'step'        => array(),
+					'placeholder' => array(),
+					'size'        => array(),
+				),
+			);
+
+			$jump_to_form = '<form class="nv-page-nav-form" action="' . esc_url( get_pagenum_link() ) . '" method="get" autocomplete="off">
+				<input class="page-input" type="number" min="1" step="1" value="' . absint( $current_page ) . '" placeholder="1" size="3" name="paged" />
+				' . wp_kses(
+					$additional_fields,
+					$allowed_tags
+				) . '
+				<input value="»" type="submit" >
+			</form>';
+
+			$links = str_replace(
+				'</ul>',
+				'<li>' . $jump_to_form . '</li></ul>',
+				$links
+			);
+		}
+
 		echo $this->has_infinite_scroll() ? '<div style="display: none;">' : '';
-		echo wp_kses_post( $links );
+		echo wp_kses( $links, $allowed_tags );
 		echo $this->has_infinite_scroll() ? '</div>' : '';
 
 		if ( $this->has_infinite_scroll() ) {
@@ -204,6 +282,15 @@ class Pagination extends Base_View {
 		previous_post_link( $prev_format, $prev_link );
 		next_post_link( $next_format, $next_link );
 		echo '</div>';
+	}
+
+	/**
+	 * Go to page option is enabled
+	 *
+	 * @return bool
+	 */
+	private function has_jump_to() {
+		return get_theme_mod( 'neve_pagination_type', 'number' ) === 'jump-to';
 	}
 
 	/**

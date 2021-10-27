@@ -20,7 +20,7 @@ $container_classes[] = 'nav-menu-secondary';
 ?>
 <div class="nv-top-bar">
 	<div role="navigation" class="menu-content <?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
-		aria-label="<?php echo esc_html( __( 'Secondary Menu', 'neve' ) ); ?>">
+		aria-label="<?php esc_attr_e( 'Secondary Menu', 'neve' ); ?>">
 		<?php
 		wp_nav_menu(
 			array(
