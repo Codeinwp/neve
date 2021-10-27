@@ -22,9 +22,12 @@
 	margin-top: $spacing-aired;
 }
 
+.entry-header .nv-title-meta-wrap {
+  text-align: var(--textAlign, center);
+}
+
 .entry-header .title {
 	margin-bottom: $spacing-xs;
-	text-align: var(--textAlign, left);
 }
 
 .attachment-neve-blog {

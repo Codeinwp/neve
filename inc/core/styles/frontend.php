@@ -1181,13 +1181,18 @@ class Frontend extends Generator {
 		];
 
 		$title_rules = [
-			'--color' => [
+			'--color'     => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_TEXT_COLOR,
+			],
+			'--textAlign' => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_ALIGNMENT,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => $this->post_title_alignment(),
 			],
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => '.nv-post-cover .nv-title-meta-wrap',
+			'selectors' => '.nv-post-cover .nv-title-meta-wrap, .entry-header .nv-title-meta-wrap',
 			'rules'     => $title_rules,
 		];
 
