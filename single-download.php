@@ -6,7 +6,7 @@
  * @package Neve
  */
 
-$container_class = apply_filters( 'neve_container_class_filter', 'container', 'single-post' );
+$container_class = apply_filters( 'neve_container_class_filter', 'container', 'single-download' );
 
 get_header();
 
@@ -18,11 +18,11 @@ get_header();
 					class="<?php echo esc_attr( join( ' ', get_post_class( 'nv-single-download-wrap col' ) ) ); ?>">
 				<?php
 				/**
-				 *  Executes actions before the post content.
+				 *  Executes actions before the download content.
 				 *
 				 * @since 3.0.0
 				 */
-				do_action( 'neve_before_post_content' );
+				do_action( 'neve_before_download_content' );
 
 				if ( have_posts() ) {
 					while ( have_posts() ) {
@@ -34,11 +34,11 @@ get_header();
 				}
 
 				/**
-				 *  Executes actions after the post content.
+				 *  Executes actions after the download content.
 				 *
 				 * @since 3.0.0
 				 */
-				do_action( 'neve_after_post_content' );
+				do_action( 'neve_after_download_content' );
 				?>
 			</article>
 			<?php do_action( 'neve_do_sidebar', 'single-post', 'right' ); ?>

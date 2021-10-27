@@ -48,14 +48,16 @@ get_header();
 <div id= "nv-edd-download-archive-container" class="<?php echo esc_attr( $container_class ); ?>">
 
 		<div id="wrapper">
+			<?php
+			/**
+			 * Executes actions before the download content.
+			 *
+			 * @since 3.0.0
+			 */
+			do_action( 'neve_before_download_archive' );
+			?>
 			<div id="nv-edd-grid-container">
 				<?php
-					/**
-					 * Executes actions before the post content.
-					 *
-					 * @since 3.0.0
-					 */
-					do_action( 'neve_before_download_archive' );
 					
 				if ( have_posts() ) {
 				
@@ -67,20 +69,20 @@ get_header();
 					get_template_part( 'template-parts/content', 'none' );
 				}
 
-					/**
-					* Executes actions after the post content.
-					*
-					* @since 3.0.0
-					*/
-					do_action( 'neve_after_download_archive' );
-					
 				?>
 			</div>
 				<?php 
-					/**
-					 * Download pagination
-					 */
-					neve_edd_download_nav();        
+				/**
+				 * Executes actions after the post content.
+				 *
+				 * @since 3.0.0
+				 */
+				do_action( 'neve_after_download_archive' );
+
+				/**
+				 * Download pagination
+				 */
+				neve_edd_download_nav();        
 				?>
 		</div>
 

@@ -133,6 +133,16 @@ function neve_hooks() {
 		);
 	}
 
+	$hooks['download-archive'] = array(
+		'neve_before_download_archive',
+		'neve_after_download_archive',
+	);
+
+	$hooks['single-download'] = array(
+		'neve_before_download_content',
+		'neve_after_download_content',
+	);
+
 	return apply_filters( 'neve_hooks_list', $hooks );
 }
 
