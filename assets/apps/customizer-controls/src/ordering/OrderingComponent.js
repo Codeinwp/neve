@@ -1,22 +1,40 @@
 /* jshint esversion: 6 */
-// import Ordering from './Ordering';
 import { lazy, Suspense, useEffect, useState } from '@wordpress/element';
 import { Spinner } from '@wordpress/components';
 import { maybeParseJson } from '@neve-wp/components';
 import PropTypes from 'prop-types';
 
-const Ordering = lazy(() =>
-	import(/* webpackChunkName: "ordering" */ './Ordering')
-);
+const Ordering = lazy(() => import('./Ordering'));
 import { __ } from '@wordpress/i18n';
 
 const OrderingComponent = ({ control }) => {
-	const [value, setValue] = useState(maybeParseJson(control.setting.get()));
-	const [isVisible, setVisible] = useState(false);
 	const { section, components, label } = control.params;
+
+	const normalizeValue = (val) => {
+		const enabledItems = val.map((element) => {
+			return { id: element, visible: true };
+		});
+
+		const disabledItems = Object.keys(components)
+			.filter((componentSlug) => !val.includes(componentSlug))
+			.map((id) => ({ id, visible: false }));
+
+		return [...enabledItems, ...disabledItems];
+	};
+
+	const [value, setValue] = useState(
+		normalizeValue(maybeParseJson(control.setting.get()))
+	);
+
+	const [isVisible, setVisible] = useState(false);
+
 	const updateValue = (newVal) => {
+		const dbValue = newVal
+			.filter((el) => el.visible === true)
+			.map((el) => el.id);
+
 		setValue(newVal);
-		control.setting.set(JSON.stringify(newVal));
+		control.setting.set(JSON.stringify(dbValue));
 	};
 
 	useEffect(() => {
@@ -88,8 +106,7 @@ const OrderingComponent = ({ control }) => {
 
 							break;
 					}
-
-					updateValue(newVal);
+					updateValue(normalizeValue(newVal));
 				});
 			}
 		);
@@ -101,8 +118,8 @@ const OrderingComponent = ({ control }) => {
 				{isVisible && (
 					<Ordering
 						label={label}
-						components={components}
 						value={value}
+						components={components}
 						onUpdate={updateValue}
 					/>
 				)}
