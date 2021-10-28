@@ -810,7 +810,7 @@ class Woocommerce {
 		 * @param bool $status Whether the breadcrumbs should be loaded from 3rd parties or not.
 		 * @since 3.1
 		 */
-		$enable_3rd_party_breadcrumbs = apply_filters( 'neve_woo_3rd_party_breadcrumbs', false );
+		$enable_3rd_party_breadcrumbs = apply_filters( 'neve_woo_3rd_party_breadcrumbs', true );
 		if ( ! $enable_3rd_party_breadcrumbs ) {
 			woocommerce_breadcrumb();
 			return;
