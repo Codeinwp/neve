@@ -50,8 +50,15 @@ class Elementor extends Page_Builder_Base {
 			$css .= '--e-global-color-' . str_replace( '-', '', $slug ) . ':' . $color . ';';
 		}
 		$css .= '}';
-		$css  = apply_filters( 'neve_elementor_colors', $css );
-		$css  = Dynamic_Css::minify_css( $css );
+		/**
+		 * Filters the css with base vars for elementor colors.
+		 *
+		 * @param array $css Single post page components.
+		 *
+		 * @since 3.0.7
+		 */
+		$css = apply_filters( 'neve_elementor_colors', $css );
+		$css = Dynamic_Css::minify_css( $css );
 		wp_add_inline_style( 'neve-style', $css );
 	}
 
