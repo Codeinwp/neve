@@ -55,7 +55,7 @@ class Elementor extends Page_Builder_Base {
 		 *
 		 * @param array $css Single post page components.
 		 *
-		 * @since 3.0.7
+		 * @since 3.1.0
 		 */
 		$css = apply_filters( 'neve_elementor_colors', $css );
 		$css = Dynamic_Css::minify_css( $css );
