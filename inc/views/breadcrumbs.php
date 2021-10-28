@@ -7,8 +7,8 @@
 
 namespace Neve\Views;
 
+use RankMath\Helpers\Api;
 use WPSEO_Options;
-use RankMath\Helper;
 
 
 /**
@@ -147,8 +147,8 @@ class Breadcrumbs extends Base_View {
 		// Rank Math breadcrumbs
 		$rankmath_breadcrumbs_enabled = true;
 		if ( function_exists( 'rank_math_the_breadcrumbs' ) ) {
-			if ( $check && class_exists( 'RankMath\Helper' ) && method_exists( '\RankMath\Helper', 'get_settings' ) ) {
-				$rankmath_breadcrumbs_enabled = Helper::get_settings( 'general.breadcrumbs' );
+			if ( $check && class_exists( '\RankMath\Helpers\Api' ) && method_exists( '\RankMath\Helpers\Api', 'get_settings' ) ) {
+				$rankmath_breadcrumbs_enabled = Api::get_settings( 'general.breadcrumbs' );
 			}
 
 			if ( $rankmath_breadcrumbs_enabled ) {
