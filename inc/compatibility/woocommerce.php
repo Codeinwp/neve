@@ -301,7 +301,7 @@ class Woocommerce {
 	public function change_breadcrumbs_delimiter( $default ) {
 		if ( neve_is_new_skin() ) {
 			$separator = '\\';
-			if ( class_exists( 'WPSEO_Options' ) ) {
+			if ( class_exists( 'WPSEO_Options' ) && method_exists( 'WPSEO_Options', 'get_options' ) ) {
 				$options   = \WPSEO_Options::get_options( array( 'wpseo_titles' ) );
 				$separator = array_key_exists( 'breadcrumbs-sep', $options ) ? $options['breadcrumbs-sep'] : $separator;
 			}
