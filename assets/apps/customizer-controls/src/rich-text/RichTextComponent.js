@@ -54,13 +54,12 @@ const RichTextComponent = ({ control }) => {
 	 * Initialise the editor.
 	 */
 	const initEditor = () => {
-		// We also hook here to listen for changes of the dynamic settings change to also trigger the editor content update.
-		const input = document.querySelector(
-			`[data-customize-setting-link="${controlId}"]`
-		);
-		input.addEventListener('change', () => {
-			setEditorContent(input.value);
+		// this replaces the default line breaks for old textarea content
+		let content = document.getElementById(editorId).value;
+		content = content.replace(/[a-zA-Z0-9\}(?:\s)]\n/g, function (a) {
+			return a + '<br/>';
 		});
+		document.getElementById(editorId).value = content;
 
 		correctEditor().initialize(editorId, {
 			quicktags: true,
@@ -123,6 +122,14 @@ const RichTextComponent = ({ control }) => {
 	 * We check here that the section is visible so that we trigger the editor load and initialisation
 	 */
 	useEffect(() => {
+		// We also hook here to listen for changes of the dynamic settings change to also trigger the editor content update.
+		const input = document.querySelector(
+			`[data-customize-setting-link="${controlId}"]`
+		);
+		input.addEventListener('change', () => {
+			setEditorContent(input.value);
+		});
+
 		// Update value from events passed by the conditional header
 		document.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) return false;

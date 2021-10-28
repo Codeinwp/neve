@@ -7,8 +7,9 @@ const RichText = ({ onChange, currentValue, label, id, editorId }) => {
 			<textarea
 				id={editorId}
 				data-customize-setting-link={id}
-				className="neve-custom-html-control-tinymce-editor"
+				className="neve-custom-html-control-tinymce-editor mce-tinymce"
 				value={currentValue}
+				style={{ width: '100%' }}
 				onChange={({ target: { value } }) => onChange(value)}
 			/>
 		</div>
