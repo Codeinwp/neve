@@ -12,7 +12,9 @@ use HFG\Core\Components\CartIcon;
 use HFG\Core\Magic_Tags;
 use Neve\Core\Settings\Config;
 use Neve\Customizer\Defaults\Layout;
+use Neve\Views\Breadcrumbs;
 use Neve\Views\Layouts\Layout_Sidebar;
+use RankMath\Helper;
 
 /**
  * Class Woocommerce
@@ -185,7 +187,7 @@ class Woocommerce {
 		add_filter( 'woocommerce_product_additional_information_heading', '__return_false' );
 
 		// Add breadcrumbs and results count
-		add_action( 'neve_bc_count', 'woocommerce_breadcrumb' );
+		add_action( 'neve_bc_count', [ $this, 'render_breadcrumbs' ] );
 		add_action( 'neve_bc_count', 'woocommerce_result_count' );
 
 		$this->edit_woocommerce_header();
@@ -300,13 +302,7 @@ class Woocommerce {
 	 */
 	public function change_breadcrumbs_delimiter( $default ) {
 		if ( neve_is_new_skin() ) {
-			$separator = '\\';
-			if ( class_exists( 'WPSEO_Options' ) && method_exists( 'WPSEO_Options', 'get_options' ) ) {
-				$options                   = \WPSEO_Options::get_options( array( 'wpseo_titles' ) );
-				$yoast_breadcrumbs_enabled = array_key_exists( 'breadcrumbs-enable', $options ) ? $options['breadcrumbs-enable'] : false;
-				$separator                 = array_key_exists( 'breadcrumbs-sep', $options ) && $yoast_breadcrumbs_enabled ? $options['breadcrumbs-sep'] : $separator;
-			}
-			$default['delimiter'] = '<span class="nv-breadcrumb-delimiter"> ' . esc_html( $separator ) . ' </span>';
+			$default['delimiter'] = '<span class="nv-breadcrumb-delimiter">\</span>';
 
 			return $default;
 		}
@@ -345,6 +341,7 @@ class Woocommerce {
 
 		// Change breadcrumbs.
 		add_filter( 'woocommerce_breadcrumb_defaults', array( $this, 'change_breadcrumbs_delimiter' ) );
+
 	}
 
 	/**
@@ -801,6 +798,16 @@ class Woocommerce {
 		}
 
 		return $fragments;
+	}
+
+	/**
+	 * Render woocommerce breadcrumbs.
+	 */
+	public function render_breadcrumbs() {
+		$is_seo_breadcrumb = Breadcrumbs::maybe_render_seo_breadcrumbs( 'small', true );
+		if ( ! $is_seo_breadcrumb ) {
+			woocommerce_breadcrumb();
+		}
 	}
 
 	/**

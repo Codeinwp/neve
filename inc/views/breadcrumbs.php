@@ -8,6 +8,7 @@
 namespace Neve\Views;
 
 use WPSEO_Options;
+use RankMath\Helper;
 
 
 /**
@@ -90,6 +91,10 @@ class Breadcrumbs extends Base_View {
 
 	/**
 	 * Render Breadcrumbs.
+	 *
+	 * @param string $html_tag Wrapper HTML tag.
+	 *
+	 * @return bool
 	 */
 	public function render_breadcrumbs( $html_tag ) {
 		if ( is_front_page() ) {
@@ -99,42 +104,65 @@ class Breadcrumbs extends Base_View {
 			$html_tag = 'small';
 		}
 
-		// Yoast breadcrumbs
-		if ( function_exists( 'yoast_breadcrumb' ) ) {
-			yoast_breadcrumb( '<' . esc_html( $html_tag ) . ' class="nv--yoast-breadcrumb neve-breadcrumbs-wrapper">', '</' . esc_html( $html_tag ) . '>' );
+		return self::maybe_render_seo_breadcrumbs( $html_tag );
+	}
 
-			return true;
+
+	/**
+	 * Render 3rd parties breadcrumbs
+	 *
+	 * @param string $html_tag Wrapper HTML tag.
+	 * @param bool   $check Flag that controls if is needed to check if breadcrumbs are enabled in 3rd parties.
+	 *
+	 * @return bool
+	 */
+	public static function maybe_render_seo_breadcrumbs( $html_tag, $check = false ) {
+
+		// Yoast breadcrumbs
+		$yoast_breadcrumbs_enabled = true;
+		if ( function_exists( 'yoast_breadcrumb' ) ) {
+			if ( $check && class_exists( 'WPSEO_Options' ) && method_exists( 'WPSEO_Options', 'get_options' ) ) {
+				$options                   = \WPSEO_Options::get_options( array( 'wpseo_titles' ) );
+				$yoast_breadcrumbs_enabled = array_key_exists( 'breadcrumbs-enable', $options ) ? $options['breadcrumbs-enable'] : false;
+			}
+			if ( $yoast_breadcrumbs_enabled ) {
+				yoast_breadcrumb( '<' . esc_html( $html_tag ) . ' class="nv--yoast-breadcrumb neve-breadcrumbs-wrapper">', '</' . esc_html( $html_tag ) . '>' );
+				return true;
+			}
 		}
 
 		// SEOPress breadcrumbs
+		$seopress_breadcrumbs_enabled = true;
 		if ( function_exists( 'seopress_display_breadcrumbs' ) ) {
-			echo '<' . esc_html( $html_tag ) . ' class="neve-breadcrumbs-wrapper">';
-			seopress_display_breadcrumbs();
-			echo '</' . esc_html( $html_tag ) . '>';
-
-			return true;
+			if ( $check ) {
+				$seopress_breadcrumbs_enabled = get_option( 'seopress_toggle' );
+			}
+			if ( $seopress_breadcrumbs_enabled ) {
+				echo '<' . esc_html( $html_tag ) . ' class="neve-breadcrumbs-wrapper">';
+				seopress_display_breadcrumbs();
+				echo '</' . esc_html( $html_tag ) . '>';
+				return true;
+			}
 		}
 
 		// Rank Math breadcrumbs
+		$rankmath_breadcrumbs_enabled = true;
 		if ( function_exists( 'rank_math_the_breadcrumbs' ) ) {
-			echo '<' . esc_html( $html_tag ) . ' class="neve-breadcrumbs-wrapper">';
-			rank_math_the_breadcrumbs(
-				[
-					'wrap_before' => '<nav aria-label="breadcrumbs" class="rank-math-breadcrumb">',
-					'wrap_after'  => '</nav>',
-				]
-			);
-			echo '</' . esc_html( $html_tag ) . '>';
+			if ( $check && class_exists( 'RankMath\Helper' ) && method_exists( 'RankMath\Helper', 'get_settings' ) ) {
+				$rankmath_breadcrumbs_enabled = Helper::get_settings( 'general.breadcrumbs' );
+			}
 
-			return true;
-		}
-
-		if ( function_exists( 'bcn_display' ) ) {
-			echo '<small class="neve-breadcrumbs-wrapper">';
-			bcn_display();
-			echo '</small>';
-
-			return true;
+			if ( $rankmath_breadcrumbs_enabled ) {
+				echo '<' . esc_html( $html_tag ) . ' class="neve-breadcrumbs-wrapper">';
+				rank_math_the_breadcrumbs(
+					[
+						'wrap_before' => '<nav aria-label="breadcrumbs" class="rank-math-breadcrumb">',
+						'wrap_after'  => '</nav>',
+					]
+				);
+				echo '</' . esc_html( $html_tag ) . '>';
+				return true;
+			}
 		}
 
 		return false;
