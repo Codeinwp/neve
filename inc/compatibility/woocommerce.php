@@ -804,6 +804,18 @@ class Woocommerce {
 	 * Render woocommerce breadcrumbs.
 	 */
 	public function render_breadcrumbs() {
+		/**
+		 * Filters the condition that decides if breadcrumbs should be loaded from WooCommerce or 3rd parties.
+		 *
+		 * @param bool $status Whether the breadcrumbs should be loaded from 3rd parties or not.
+		 * @since 3.1
+		 */
+		$enable_3rd_party_breadcrumbs = apply_filters( 'neve_woo_3rd_party_breadcrumbs', false );
+		if ( ! $enable_3rd_party_breadcrumbs ) {
+			woocommerce_breadcrumb();
+			return;
+		}
+
 		$is_seo_breadcrumb = Breadcrumbs::maybe_render_seo_breadcrumbs( 'small', true );
 		if ( ! $is_seo_breadcrumb ) {
 			woocommerce_breadcrumb();
