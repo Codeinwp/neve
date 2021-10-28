@@ -122,7 +122,7 @@ class Breadcrumbs extends Base_View {
 		$yoast_breadcrumbs_enabled = true;
 		if ( function_exists( 'yoast_breadcrumb' ) ) {
 			if ( $check && class_exists( 'WPSEO_Options' ) && method_exists( 'WPSEO_Options', 'get_options' ) ) {
-				$options                   = \WPSEO_Options::get_options( array( 'wpseo_titles' ) );
+				$options                   = WPSEO_Options::get_options( array( 'wpseo_titles' ) );
 				$yoast_breadcrumbs_enabled = array_key_exists( 'breadcrumbs-enable', $options ) ? $options['breadcrumbs-enable'] : false;
 			}
 			if ( $yoast_breadcrumbs_enabled ) {
