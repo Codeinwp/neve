@@ -10,8 +10,9 @@
 }
 
 .neve-breadcrumbs-wrapper {
+	font-size: 14px;
 
 	a {
-		color: $gray-color;
+		color: var(--nv-secondary-accent);
 	}
 }
