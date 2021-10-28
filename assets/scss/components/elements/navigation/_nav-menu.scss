@@ -11,6 +11,8 @@
 
 .dd-title {
 	flex-grow: var(--flexG);
+	display: flex;
+	align-items: center;
 }
 
 

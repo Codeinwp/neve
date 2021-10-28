@@ -301,6 +301,12 @@ class Front_End {
 		wp_style_add_data( 'neve-style', 'rtl', 'replace' );
 		wp_style_add_data( 'neve-style', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-style' );
+
+		$mm_path = neve_is_new_skin() ? 'mega-menu' : 'mega-menu-legacy';
+
+		wp_register_style( 'neve-mega-menu', get_template_directory_uri() . '/assets/css/' . $mm_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		wp_style_add_data( 'neve-mega-menu', 'rtl', 'replace' );
+		wp_style_add_data( 'neve-mega-menu', 'suffix', '.min' );
 	}
 
 	/**
