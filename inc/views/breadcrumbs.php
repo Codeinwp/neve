@@ -121,9 +121,8 @@ class Breadcrumbs extends Base_View {
 		// Yoast breadcrumbs
 		$yoast_breadcrumbs_enabled = true;
 		if ( function_exists( 'yoast_breadcrumb' ) ) {
-			if ( $check && class_exists( 'WPSEO_Options' ) && method_exists( 'WPSEO_Options', 'get_options' ) ) {
-				$options                   = WPSEO_Options::get_options( array( 'wpseo_titles' ) );
-				$yoast_breadcrumbs_enabled = array_key_exists( 'breadcrumbs-enable', $options ) ? $options['breadcrumbs-enable'] : false;
+			if ( $check && class_exists( 'WPSEO_Options' ) && method_exists( 'WPSEO_Options', 'get' ) ) {
+				$yoast_breadcrumbs_enabled = WPSEO_Options::get( 'breadcrumbs-enable', false );
 			}
 			if ( $yoast_breadcrumbs_enabled ) {
 				yoast_breadcrumb( '<' . esc_html( $html_tag ) . ' class="nv--yoast-breadcrumb neve-breadcrumbs-wrapper">', '</' . esc_html( $html_tag ) . '>' );
