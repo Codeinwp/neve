@@ -7,6 +7,10 @@
 	a {
 		color: var(--nv-secondary-accent);
 	}
+
+	.nv-breadcrumb-delimiter {
+		padding: 0 $spacing-xxs;
+	}
 }
 
 .woocommerce {
