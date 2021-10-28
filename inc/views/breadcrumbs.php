@@ -147,7 +147,7 @@ class Breadcrumbs extends Base_View {
 		// Rank Math breadcrumbs
 		$rankmath_breadcrumbs_enabled = true;
 		if ( function_exists( 'rank_math_the_breadcrumbs' ) ) {
-			if ( $check && class_exists( '\RankMath\Helpers\Api' ) && method_exists( '\RankMath\Helpers\Api', 'get_settings' ) ) {
+			if ( $check && class_exists( '\RankMath\Helpers\Api' ) ) {
 				$rankmath_breadcrumbs_enabled = Api::get_settings( 'general.breadcrumbs' );
 			}
 
