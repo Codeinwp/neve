@@ -804,6 +804,18 @@ class Woocommerce {
 	 * Render woocommerce breadcrumbs.
 	 */
 	public function render_breadcrumbs() {
+
+		/**
+		 * Filters the visibility of breadcrumbs.
+		 *
+		 * @param bool $status Whether the breadcrumbs should be displayed or not.
+		 * @since 3.1
+		 */
+		$should_display_breadcrumbs = apply_filters( 'neve_breadcrumbs_toggle', true );
+		if ( ! $should_display_breadcrumbs ) {
+			return;
+		}
+
 		/**
 		 * Filters the condition that decides if breadcrumbs should be loaded from WooCommerce or 3rd parties.
 		 *
