@@ -308,25 +308,6 @@ class Post_Layout extends Base_View {
 	}
 
 	/**
-	 * Convert from array to inline style.
-	 *
-	 * @param array $array Css properties in array.
-	 *
-	 * @return string
-	 */
-	private function get_inline_style( $array ) {
-		return implode(
-			'; ',
-			array_map(
-				function ( $v, $k ) {
-					return sprintf( '%s:%s', $k, $v ); },
-				$array,
-				array_keys( $array )
-			)
-		);
-	}
-
-	/**
 	 * Get alignment classes for the title on the cover layout.
 	 *
 	 * @param string $theme_mod Theme mod id.
