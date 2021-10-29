@@ -1140,6 +1140,12 @@ class Frontend extends Generator {
 			return;
 		}
 
+		$justify_map = [
+			'left'   => 'flex-start',
+			'center' => 'center',
+			'right'  => 'flex-end',
+		];
+
 		$cover_rules = [
 			'--height'    => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_HEIGHT,
@@ -1158,6 +1164,9 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_ALIGNMENT,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->post_title_alignment(),
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ( $justify_map ) {
+					return sprintf( '%s: %s;', $css_prop, $justify_map[ $value ] );
+				},
 			],
 			'--textAlign' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_ALIGNMENT,

@@ -542,7 +542,14 @@ class Metabox_Settings {
 
 		$style .= '--textAlign:' . esc_attr( $title_meta_alignment ) . ';';
 		if ( $context === 'cover' ) {
-			$style .= '--justify:' . esc_attr( $title_meta_alignment ) . ';';
+			$justify_map = [
+				'left'   => 'flex-start',
+				'center' => 'center',
+				'right'  => 'flex-end',
+			];
+			if ( isset( $justify_map[ $title_meta_alignment ] ) ) {
+				$style .= '--justify:' . esc_attr( $justify_map[ $title_meta_alignment ] ) . ';';
+			}
 		}
 		return $style;
 	}
