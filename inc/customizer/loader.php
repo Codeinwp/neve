@@ -74,6 +74,7 @@ class Loader {
 				'Customizer\Options\Layout_Container',
 				'Customizer\Options\Layout_Blog',
 				'Customizer\Options\Layout_Single_Post',
+				'Customizer\Options\Layout_Single_Page',
 				'Customizer\Options\Layout_Single_Product',
 				'Customizer\Options\Layout_Sidebar',
 				'Customizer\Options\Typography',
