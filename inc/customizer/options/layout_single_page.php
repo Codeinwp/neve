@@ -137,7 +137,7 @@ class Layout_Single_Page extends Base_Customizer {
 						'cssVar' => [
 							'responsive' => true,
 							'vars'       => '--height',
-							'selector'   => '.nv-page-cover',
+							'selector'   => 'body.page .nv-post-cover',
 							'suffix'     => 'px',
 						],
 					],
@@ -168,7 +168,7 @@ class Layout_Single_Page extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'cssVar' => array(
 							'vars'       => '--padding',
-							'selector'   => '.nv-page-cover',
+							'selector'   => 'body.page .nv-post-cover',
 							'responsive' => true,
 						),
 					],
@@ -222,7 +222,7 @@ class Layout_Single_Page extends Base_Customizer {
 						],
 					],
 					'show_labels'           => true,
-					'live_refresh_selector' => '.nv-page-cover .nv-title-meta-wrap,.entry-header .entry-title',
+					'live_refresh_selector' => 'body.page .nv-post-cover .nv-title-meta-wrap,.entry-header .entry-title',
 					'live_refresh_css_prop' => [
 						'remove_classes' => [
 							'mobile-left',
@@ -279,7 +279,7 @@ class Layout_Single_Page extends Base_Customizer {
 						'cssVar' => [
 							'vars'       => '--vAlign',
 							'responsive' => true,
-							'selector'   => '.nv-page-cover',
+							'selector'   => 'body.page .nv-post-cover',
 						],
 					],
 					'show_labels'           => true,
@@ -305,7 +305,7 @@ class Layout_Single_Page extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'cssVar' => array(
 							'vars'     => '--bgColor',
-							'selector' => '.nv-overlay',
+							'selector' => 'body.page .nv-overlay',
 						),
 					],
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
@@ -330,7 +330,7 @@ class Layout_Single_Page extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => '--color',
-							'selector' => '.nv-page-cover .nv-title-meta-wrap',
+							'selector' => 'body.page .nv-post-cover .nv-title-meta-wrap',
 						],
 					],
 					'active_callback'       => [ $this, 'is_cover_with_title' ],
@@ -361,7 +361,7 @@ class Layout_Single_Page extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => '--opacity',
-							'selector' => '.nv-overlay',
+							'selector' => 'body.page .nv-overlay',
 						],
 					],
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
@@ -419,7 +419,7 @@ class Layout_Single_Page extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => '--blendMode',
-							'selector' => '.nv-overlay',
+							'selector' => 'body.page .nv-overlay',
 						],
 					],
 					'active_callback'       => [ get_called_class(), 'is_cover_layout' ],
@@ -456,7 +456,7 @@ class Layout_Single_Page extends Base_Customizer {
 				'has_text_color'         => false,
 				'padding_default'        => $this->padding_default( 'cover' ),
 				'background_default'     => 'var(--nv-dark-bg)',
-				'boxed_selector'         => '.nv-is-boxed.nv-title-meta-wrap',
+				'boxed_selector'         => 'body.page .nv-is-boxed.nv-title-meta-wrap',
 				'toggle_active_callback' => function() {
 					return $this->is_cover_with_title();
 				},

@@ -94,6 +94,16 @@ class Config {
 	const MODS_POST_COVER_BOXED_TITLE_PADDING    = 'neve_post_cover_title_boxed_padding';
 	const MODS_POST_COVER_BOXED_TITLE_BACKGROUND = 'neve_post_cover_title_boxed_background_color';
 
+	const MODS_PAGE_COVER_HEIGHT                 = 'neve_page_cover_height';
+	const MODS_PAGE_COVER_PADDING                = 'neve_page_cover_padding';
+	const MODS_PAGE_COVER_BACKGROUND_COLOR       = 'neve_page_cover_background_color';
+	const MODS_PAGE_COVER_OVERLAY_OPACITY        = 'neve_page_cover_overlay_opacity';
+	const MODS_PAGE_COVER_TEXT_COLOR             = 'neve_page_cover_text_color';
+	const MODS_PAGE_COVER_BLEND_MODE             = 'neve_page_cover_blend_mode';
+	const MODS_PAGE_COVER_TITLE_POSITION         = 'neve_page_title_position';
+	const MODS_PAGE_COVER_BOXED_TITLE_PADDING    = 'neve_page_cover_title_boxed_padding';
+	const MODS_PAGE_COVER_BOXED_TITLE_BACKGROUND = 'neve_page_cover_title_boxed_background_color';
+
 	const MODS_POST_COMMENTS_PADDING               = 'neve_comments_boxed_padding';
 	const MODS_POST_COMMENTS_BACKGROUND_COLOR      = 'neve_comments_boxed_background_color';
 	const MODS_POST_COMMENTS_TEXT_COLOR            = 'neve_comments_boxed_text_color';
