@@ -44,6 +44,7 @@ module.exports = (env) => {
 		output: {
 			...config.output,
 			chunkFilename: (pathData) => {
+				// Use content hash.
 				return `${pathData.chunk.contentHash.javascript}.js`;
 			},
 		},
