@@ -41,6 +41,12 @@ module.exports = (env) => {
 		...config,
 		entry,
 		plugins,
+		output: {
+			...config.output,
+			chunkFilename: (pathData) => {
+				return `${pathData.chunk.contentHash.javascript}.js`;
+			},
+		},
 		module: {
 			...config.module,
 			rules: [
