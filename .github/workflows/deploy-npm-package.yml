@@ -9,6 +9,7 @@ on:
 jobs:
   publish-package:
     runs-on: ubuntu-latest
+    if: github.actor != 'pirate-bot'
     strategy:
       matrix:
         node-version: [ 12.x ]
