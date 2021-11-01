@@ -22,8 +22,12 @@
 	margin-top: $spacing-aired;
 }
 
-.entry-header .title {
-	margin-bottom: $spacing-xs;
+.entry-header {
+	text-align: var(--textAlign, center);
+
+	.title {
+		margin-bottom: $spacing-xs;
+	}
 }
 
 .attachment-neve-blog {
@@ -99,6 +103,7 @@
 .nv-post-cover {
 	min-height: var(--height);
 	padding: var(--padding);
+	justify-content: var(--justify, center);
 	display: flex;
 	position: relative;
 	background-size: cover;
@@ -123,6 +128,8 @@
 
 	.container {
 		display: flex;
+		justify-content: var(--justify, center);
+		text-align: var(--textAlign, center);
 	}
 }
 

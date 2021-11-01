@@ -222,18 +222,22 @@ class Layout_Single_Page extends Base_Customizer {
 						],
 					],
 					'show_labels'           => true,
-					'live_refresh_selector' => 'body.page .nv-post-cover .nv-title-meta-wrap,.entry-header .entry-title',
+					'live_refresh_selector' => 'body.page .nv-post-cover .nv-title-meta-wrap,body.page .entry-header .entry-title',
 					'live_refresh_css_prop' => [
-						'remove_classes' => [
-							'mobile-left',
-							'mobile-right',
-							'mobile-center',
-							'tablet-left',
-							'tablet-right',
-							'tablet-center',
-							'desktop-left',
-							'desktop-right',
-							'desktop-center',
+						'cssVar' => [
+							'vars'       => [
+								'--textAlign',
+								'--justify',
+							],
+							'valueRemap' => [
+								'--justify' => [
+									'left'   => 'flex-start',
+									'center' => 'center',
+									'right'  => 'flex-end',
+								],
+							],
+							'responsive' => true,
+							'selector'   => 'body.page .nv-post-cover .container, body.page .nv-post-cover, body.page .entry-header',
 						],
 					],
 					'active_callback'       => function() {
