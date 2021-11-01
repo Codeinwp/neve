@@ -20,7 +20,7 @@ import {
 	RangeControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { maybeParseJson } from '../../../customizer-controls/src/common/common';
+import { maybeParseJson } from '@neve-wp/components';
 
 class MetaFieldsManager extends Component {
 	constructor(props) {

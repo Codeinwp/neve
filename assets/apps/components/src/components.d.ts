@@ -111,4 +111,21 @@ declare module '@neve-wp/components' {
 	}
 
 	const Accordion: React.FunctionComponent<AccordionProps>;
+
+	type MaybeParseJSONFunc = (
+		value: string
+	) => Record<string | number, unknown>;
+	const maybeParseJson: MaybeParseJSONFunc;
+
+	type IsObjectFunc = (value: unknown) => boolean;
+	const isObject: IsObjectFunc;
+
+	type MergeDeepFunc = (
+		value: Record<string | number, unknown>[]
+	) => Record<string | number, unknown>;
+	const mergeDeep: MergeDeepFunc;
+
+	const globalPaletteColors: Record<string, string>;
+	const getIntValAsResponsive: (value: unknown) => Record<string, number>;
+	const fontVariantMap: Record<string | number, string>;
 }
