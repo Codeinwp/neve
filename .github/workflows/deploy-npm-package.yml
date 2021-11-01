@@ -1,6 +1,8 @@
 name: Build and Publish NPM Package 🚀
 on:
   push:
+    paths:
+      - 'assets/apps/components/**'
     branches:
       - ci/publish-npm-package
 
@@ -27,3 +29,15 @@ jobs:
           cd ./assets/apps/components
           npm version patch
           npm publish
+      - name: Commit files 📦
+        run: |
+          git config --local user.email "${{ secrets.BOT_EMAIL }}"
+          git config --local user.name "pirate-bot"
+          git add assets/apps/components/package.json
+          git commit -m "Sync components package version [skip ci]"
+      - name: Push changes 📦
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.BOT_TOKEN }}
+          branch: ${{ github.ref }}
+

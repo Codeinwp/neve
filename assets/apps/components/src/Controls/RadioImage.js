@@ -56,7 +56,7 @@ const RadioImage = ({ choices, onClick, value, label, documentation }) => {
 									<img
 										src={image || url}
 										alt={name || `Option ${choice}`}
-									/> 
+									/>
 								</button>
 								{name && <span>{name}</span>}
 							</label>

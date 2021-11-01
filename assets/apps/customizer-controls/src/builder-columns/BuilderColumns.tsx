@@ -5,20 +5,20 @@ import { RadioImage } from '@neve-wp/components';
 type Props = {
 	label: string;
 	value: string;
-	onChange: (val: string) => void; 
+	onChange: (val: string) => void;
 	columns: number;
 	choices: Record<number, Record<string, string>>;
 };
 
-const BuilderColumns: React.FC<Props> = (props) => { 
+const BuilderColumns: React.FC<Props> = (props) => {
 	const { label, value, onChange, columns, choices } = props;
 
 	const visibleChoices = choices[columns];
 
 	return (
-		<div className="neve-white-background-control"> 
+		<div className="neve-white-background-control">
 			{label && <span className="customize-control-title">{label}</span>}
-			<RadioImage 
+			<RadioImage
 				choices={visibleChoices}
 				value={value}
 				onClick={onChange}

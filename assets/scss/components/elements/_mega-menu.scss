@@ -15,7 +15,6 @@
 	}
 
 	.neve-mm-col {
-		text-align: left;
 		cursor: default;
 		flex: 1;
 
@@ -55,7 +54,7 @@
 	}
 
 	.neve-mm-heading > span {
-		padding: 7px 14px;
+		padding: 10px 20px;
 		display: flex;
 		height: 100%;
 		cursor: default;
@@ -117,72 +116,6 @@
 			padding: 3px 0;
 		}
 	}
-
-	.mobile-center {
-
-		.neve-mm-heading > a,
-		.neve-mm-heading > span,
-		.neve-mm-description {
-			text-align: center;
-			justify-content: center;
-		}
-	}
-
-	.mobile-left {
-
-		.neve-mm-heading > a,
-		.neve-mm-heading > span,
-		.neve-mm-description {
-			text-align: left;
-			justify-content: flex-start;
-		}
-	}
-
-	.mobile-right {
-
-		.neve-mm-heading > a,
-		.neve-mm-heading > span,
-		.neve-mm-description {
-			text-align: right;
-			justify-content: flex-end;
-		}
-	}
-}
-
-@mixin mega-menu--tablet() {
-
-	.header-menu-sidebar-inner {
-
-		.tablet-center {
-
-			.neve-mm-heading > a,
-			.neve-mm-heading > span,
-			.neve-mm-description {
-				text-align: center;
-				justify-content: center;
-			}
-		}
-
-		.tablet-left {
-
-			.neve-mm-heading > a,
-			.neve-mm-heading > span,
-			.neve-mm-description {
-				text-align: left;
-				justify-content: flex-start;
-			}
-		}
-
-		.tablet-right {
-
-			.neve-mm-heading > a,
-			.neve-mm-heading > span,
-			.neve-mm-description {
-				text-align: right;
-				justify-content: flex-end;
-			}
-		}
-	}
 }
 
 @mixin mega-menu--laptop() {
@@ -203,13 +136,16 @@
 			}
 		}
 
-		.neve-mega-menu:hover > .sub-menu,
-		.neve-mega-menu:focus > .sub-menu,
-		.neve-mega-menu:focus-within > .sub-menu {
-			display: flex;
-			opacity: 1;
-			visibility: visible;
-			pointer-events: all;
+		.neve-mega-menu:hover,
+		.neve-mega-menu:focus,
+		.neve-mega-menu:focus-within {
+
+			> .sub-menu {
+				display: flex;
+				opacity: 1;
+				visibility: visible;
+				pointer-events: all;
+			}
 		}
 
 		.neve-mega-menu {
@@ -254,7 +190,7 @@
 		}
 
 		.neve-mega-menu .neve-mm-col:not(:last-child) {
-			border-right: 1px solid currentColor !important;
+			border-right: 1px solid currentColor;
 		}
 	}
 
