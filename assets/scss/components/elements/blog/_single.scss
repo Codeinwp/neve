@@ -108,6 +108,7 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
+	justify-content: var(--justify, center);
 
 	.nv-title-meta-wrap {
 		color: var(--color, var(--nv-text-dark-bg));

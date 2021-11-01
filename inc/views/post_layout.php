@@ -198,7 +198,6 @@ class Post_Layout extends Base_View {
 		$hide_thumbnail = get_theme_mod( 'neve_post_cover_hide_thumbnail', false );
 		$post_thumbnail = get_the_post_thumbnail_url();
 		$cover_style    = '';
-		$main_class     = [ 'nv-post-cover' ];
 		if ( $hide_thumbnail === false && ! empty( $post_thumbnail ) ) {
 			$cover_style = 'background-image:url(' . esc_url( $post_thumbnail ) . ');';
 		}
@@ -228,21 +227,9 @@ class Post_Layout extends Base_View {
 			$cover_style = 'style="' . $cover_style . '"';
 		}
 
-		/**
-		 * Keep this for legacy purpose
-		 */
-		if ( ! neve_is_new_skin() ) {
-			$alignment = apply_filters( 'neve_post_title_alignment', '' );
-			if ( $container_mode === 'contained' ) {
-				$container_class[] = $alignment;
-			} else {
-				$main_class[] = $alignment;
-			}
-		}
-
 		$meta_before = get_theme_mod( 'neve_post_cover_meta_before_title', false );
 
-		echo '<div class="' . esc_attr( implode( ' ', $main_class ) ) . '" ' . wp_kses_post( $cover_style ) . '>';
+		echo '<div class="nv-post-cover" ' . wp_kses_post( $cover_style ) . '>';
 		echo '<div class="nv-overlay"></div>';
 		echo $container_mode === 'contained' ? '<div class="' . esc_attr( implode( ' ', $container_class ) ) . '">' : '';
 
