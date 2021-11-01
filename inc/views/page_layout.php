@@ -19,7 +19,8 @@ class Page_Layout extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_after_header_wrapper_hook', [ $this, 'render_cover_header' ] );
-		add_action( 'neve_do_single_page', array( $this, 'render_page' ) );
+		add_action( 'neve_do_single_page', [ $this, 'render_page' ] );
+		add_filter( 'neve_page_title_alignment_style', [ $this, 'filter_title_alignment_style' ], 10, 2 );
 	}
 
 	/**
@@ -66,15 +67,20 @@ class Page_Layout extends Base_View {
 			$title_meta_wrap_classes[] = 'nv-is-boxed';
 		}
 
-		$hide_title = get_theme_mod( 'neve_page_hide_title', false );
+		$hide_title          = get_theme_mod( 'neve_page_hide_title', false );
+		$specific_hide_title = get_post_meta( get_the_ID(), 'neve_meta_disable_title', true );
+		if ( ! empty( $specific_hide_title ) ) {
+			$hide_title = $specific_hide_title === 'on';
+		}
 
 		echo '<div class="nv-post-cover" ' . wp_kses_post( $cover_style ) . '>';
 		echo '<div class="nv-overlay"></div>';
 		echo $container_mode === 'contained' ? '<div class="container">' : '';
-		if ( $hide_title === false ) {
+		if ( ! $hide_title ) {
 			echo '<div class="' . esc_attr( implode( ' ', $title_meta_wrap_classes ) ) . '">';
-			do_action( 'neve_before_post_title' );
+			do_action( 'neve_before_page_title' );
 			echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
+			do_action( 'neve_after_page_title' );
 			echo '</div>';
 		}
 		echo $container_mode === 'contained' ? '</div>' : '';
@@ -95,5 +101,45 @@ class Page_Layout extends Base_View {
 
 		echo '</div>';
 		do_action( 'neve_do_pagination', 'single' );
+	}
+
+	/**
+	 * Filters the styles provided and adds specific vars for post title if meta exists.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param string $style The inline title styles.
+	 * @param string $context The context. ('cover', 'normal'). Defaults: 'normal'.
+	 *
+	 * @return string
+	 */
+	public function filter_title_alignment_style( $style, $context = 'normal' ) {
+		// Don't override with specific post title styles in Customizer context.
+		if ( is_customize_preview() ) {
+			return $style;
+		}
+
+		$post_id = get_the_ID();
+		if ( $post_id === false ) {
+			return $style;
+		}
+
+		$title_meta_alignment = get_post_meta( $post_id, 'neve_meta_title_alignment', true );
+		if ( empty( $title_meta_alignment ) ) {
+			return $style;
+		}
+
+		$style .= '--textAlign:' . esc_attr( $title_meta_alignment ) . ';';
+		if ( $context === 'cover' ) {
+			$justify_map = [
+				'left'   => 'flex-start',
+				'center' => 'center',
+				'right'  => 'flex-end',
+			];
+			if ( isset( $justify_map[ $title_meta_alignment ] ) ) {
+				$style .= '--justify:' . esc_attr( $justify_map[ $title_meta_alignment ] ) . ';';
+			}
+		}
+		return $style;
 	}
 }

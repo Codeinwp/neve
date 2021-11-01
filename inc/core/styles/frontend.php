@@ -1338,7 +1338,7 @@ class Frontend extends Generator {
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => 'body.page .nv-post-cover .nv-title-meta-wrap, body.page .entry-header',
+			'selectors' => 'body.page .nv-post-cover .nv-title-meta-wrap, .nv-page-title-wrap',
 			'rules'     => $title_rules,
 		];
 

@@ -48,6 +48,10 @@ class Page_Header extends Base_View {
 		if ( empty( $title_args['string'] ) ) {
 			return;
 		}
+		$header_layout = get_theme_mod( 'neve_page_header_layout', 'normal' );
+		if ( $header_layout !== 'normal' ) {
+			return false;
+		}
 
 		$title_args['category_description'] = $this->get_archive_description();
 

@@ -222,7 +222,7 @@ class Layout_Single_Page extends Base_Customizer {
 						],
 					],
 					'show_labels'           => true,
-					'live_refresh_selector' => 'body.page .nv-post-cover .nv-title-meta-wrap,body.page .entry-header .entry-title',
+					'live_refresh_selector' => 'body.page .nv-post-cover .nv-title-meta-wrap, .nv-page-title-wrap',
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'       => [
@@ -237,7 +237,7 @@ class Layout_Single_Page extends Base_Customizer {
 								],
 							],
 							'responsive' => true,
-							'selector'   => 'body.page .nv-post-cover .container, body.page .nv-post-cover, body.page .entry-header',
+							'selector'   => 'body.page .nv-post-cover .container, body.page .nv-post-cover, .nv-page-title-wrap',
 						],
 					],
 					'active_callback'       => function() {
@@ -382,10 +382,11 @@ class Layout_Single_Page extends Base_Customizer {
 					'default'           => false,
 				],
 				[
-					'label'    => esc_html__( 'Hide featured image', 'neve' ),
-					'section'  => $this->section,
-					'type'     => 'neve_toggle_control',
-					'priority' => 55,
+					'label'           => esc_html__( 'Hide featured image', 'neve' ),
+					'section'         => $this->section,
+					'type'            => 'neve_toggle_control',
+					'priority'        => 55,
+					'active_callback' => [ get_called_class(), 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\Checkbox'
 			)
