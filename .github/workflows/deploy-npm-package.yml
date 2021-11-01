@@ -34,7 +34,7 @@ jobs:
           git config --local user.email "${{ secrets.BOT_EMAIL }}"
           git config --local user.name "pirate-bot"
           git add assets/apps/components/package.json
-          git commit -m "Sync components package version [skip ci]"
+          git commit -m "Sync components package version"
       - name: Push changes 📦
         uses: ad-m/github-push-action@master
         with:
