@@ -122,17 +122,17 @@ class Customizer {
 	 * @access  public
 	 */
 	public function scripts() {
-		$suffix = $this->get_assets_suffix();
+
 		wp_enqueue_style(
 			'hfg-customizer-control',
-			esc_url( Config::get_url() ) . '/assets/css/admin/customizer/customizer' . $suffix . '.css',
+			esc_url( Config::get_url() ) . '/assets/css/admin/customizer/customizer.css',
 			array(),
 			Main::VERSION
 		);
 
 		wp_register_script(
 			'hfg-layout-builder',
-			esc_url( Config::get_url() ) . '/assets/js/customizer/builder' . $suffix . '.js',
+			esc_url( Config::get_url() ) . '/assets/js/customizer/builder.js',
 			array(
 				'customize-controls',
 				'jquery-ui-resizable',
@@ -211,10 +211,10 @@ class Customizer {
 		if ( ! is_customize_preview() ) {
 			return;
 		}
-		$suffix = $this->get_assets_suffix();
+
 		wp_enqueue_script(
 			'hfg-customizer',
-			esc_url( Config::get_url() ) . '/assets/js/customizer/customizer' . $suffix . '.js',
+			esc_url( Config::get_url() ) . '/assets/js/customizer/customizer.js',
 			array(
 				'customize-preview',
 				'customize-selective-refresh',
