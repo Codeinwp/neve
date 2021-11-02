@@ -54,12 +54,26 @@ const Repeater = ({ fields, value, onUpdate }) => {
 		onUpdate(newValue);
 	};
 
+	const setList = (l) => {
+		const final = l.map((i) => {
+			Object.keys(i).forEach((k) => {
+				if (![...Object.keys(fields), 'visibility'].includes(k)) {
+					delete i[k];
+				}
+			});
+			return i;
+		});
+
+		onUpdate(final);
+		return final;
+	};
+
 	return (
 		<div className="nv-repeater">
 			<ReactSortable
 				className="nv-repeater-items-container"
 				list={value}
-				setList={onUpdate}
+				setList={setList}
 				animation={300}
 				forceFallback={true}
 				handle=".nv-repeater-handle"
