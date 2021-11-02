@@ -108,7 +108,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 						'section'          => $this->section,
 						'priority'         => $heading_data['priority'],
 						'class'            => $heading_id . '-accordion',
-						'expanded'         => array_key_exists( 'expanded', $heading_data ) ? $heading_data['expanded'] : true,
+						'expanded'         => $heading_data['expanded'],
 						'accordion'        => array_key_exists( 'accordion', $heading_data ) ? $heading_data['accordion'] : true,
 						'controls_to_wrap' => array_key_exists( 'controls_to_wrap', $heading_data ) ? $heading_data['controls_to_wrap'] : 0,
 						'active_callback'  => array_key_exists( 'active_callback', $heading_data ) ? $heading_data['active_callback'] : '__return_true',
