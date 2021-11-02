@@ -38,7 +38,7 @@ class Page_Layout extends Base_View {
 
 		$cover_style = '';
 
-		$hide_thumbnail = get_theme_mod( 'neve_page_hide_thumbnail', false );
+		$hide_thumbnail = get_theme_mod( 'neve_page_cover_hide_thumbnail', false );
 		$page_thumbnail = get_the_post_thumbnail_url();
 		if ( $hide_thumbnail === false && ! empty( $page_thumbnail ) ) {
 			$cover_style = 'background-image:url(' . esc_url( $page_thumbnail ) . ');';

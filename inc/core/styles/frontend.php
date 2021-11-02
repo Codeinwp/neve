@@ -50,8 +50,8 @@ class Frontend extends Generator {
 		$this->setup_blog_typography();
 		$this->setup_blog_colors();
 		$this->setup_form_fields_style();
+		$this->setup_header_style();
 		$this->setup_single_post_style();
-		$this->setup_single_page_style();
 	}
 
 	/**
@@ -1141,107 +1141,6 @@ class Frontend extends Generator {
 			return;
 		}
 
-		$justify_map = [
-			'left'   => 'flex-start',
-			'center' => 'center',
-			'right'  => 'flex-end',
-		];
-
-		$cover_rules = [
-			'--height'    => [
-				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_HEIGHT,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_AS_JSON       => true,
-				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
-				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "400", "tablet": "400", "desktop": "400" }',
-			],
-			'--padding'   => [
-				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_PADDING,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
-				'directional-prop'                   => Config::CSS_PROP_PADDING,
-			],
-			'--justify'   => [
-				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_ALIGNMENT,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => $this->post_title_alignment(),
-				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ( $justify_map ) {
-					return sprintf( '%s: %s;', $css_prop, $justify_map[ $value ] );
-				},
-			],
-			'--textAlign' => [
-				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_ALIGNMENT,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => $this->post_title_alignment(),
-			],
-			'--vAlign'    => [
-				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_POSITION,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => [
-					'mobile'  => 'center',
-					'tablet'  => 'center',
-					'desktop' => 'center',
-				],
-			],
-		];
-
-		$this->_subscribers[] = [
-			'selectors' => '.single-post .nv-post-cover',
-			'rules'     => $cover_rules,
-		];
-
-		$title_rules = [
-			'--color'     => [
-				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_TEXT_COLOR,
-			],
-			'--textAlign' => [
-				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_ALIGNMENT,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => $this->post_title_alignment(),
-			],
-		];
-
-		$this->_subscribers[] = [
-			'selectors' => '.single-post .nv-post-cover .nv-title-meta-wrap, .entry-header',
-			'rules'     => $title_rules,
-		];
-
-		$boxed_title_rules = [
-			'--padding' => [
-				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_BOXED_TITLE_PADDING,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
-				'directional-prop'                   => Config::CSS_PROP_PADDING,
-			],
-			'--bgColor' => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
-			],
-		];
-
-		$this->_subscribers[] = [
-			'selectors' => '.nv-is-boxed.nv-title-meta-wrap',
-			'rules'     => $boxed_title_rules,
-		];
-
-		$overlay_rules = [
-			'--bgColor'   => [
-				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BACKGROUND_COLOR,
-			],
-			'--blendMode' => [
-				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_BLEND_MODE,
-			],
-			'--opacity'   => [
-				Dynamic_Selector::META_KEY     => Config::MODS_POST_COVER_OVERLAY_OPACITY,
-				Dynamic_Selector::META_DEFAULT => 50,
-			],
-		];
-
-		$this->_subscribers[] = [
-			'selectors' => '.nv-overlay',
-			'rules'     => $overlay_rules,
-		];
-
 		$boxed_comments_rules = [
 			'--padding' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_PADDING,
@@ -1296,11 +1195,56 @@ class Frontend extends Generator {
 		];
 	}
 
-
 	/**
-	 * Add css for single post.
+	 * Add css for post/page header.
 	 */
-	private function setup_single_page_style() {
+	private function setup_header_style() {
+
+		if ( ! neve_is_new_skin() ) {
+			return;
+		}
+
+		$context = '';
+		if ( is_singular( 'post' ) ) {
+			$context = 'post';
+		}
+
+		if ( is_singular( 'page' ) ) {
+			$context = 'page';
+		}
+
+		if ( empty( $context ) ) {
+			return;
+		}
+
+		$dataset = [
+			'height'           => Config::MODS_POST_COVER_HEIGHT,
+			'padding'          => Config::MODS_POST_COVER_PADDING,
+			'title_alignment'  => Config::MODS_POST_COVER_TITLE_ALIGNMENT,
+			'title_position'   => Config::MODS_POST_COVER_TITLE_POSITION,
+			'text_color'       => Config::MODS_POST_COVER_TEXT_COLOR,
+			'background_color' => Config::MODS_POST_COVER_BACKGROUND_COLOR,
+			'blend_mode'       => Config::MODS_POST_COVER_BLEND_MODE,
+			'opacity'          => Config::MODS_POST_COVER_OVERLAY_OPACITY,
+			'boxed_padding'    => Config::MODS_POST_COVER_BOXED_TITLE_PADDING,
+			'boxed_background' => Config::MODS_POST_COVER_BOXED_TITLE_BACKGROUND,
+		];
+		if ( $context === 'page' ) {
+			$dataset = [
+				'height'           => Config::MODS_PAGE_COVER_HEIGHT,
+				'padding'          => Config::MODS_PAGE_COVER_PADDING,
+				'title_alignment'  => Config::MODS_PAGE_COVER_TITLE_ALIGNMENT,
+				'title_position'   => Config::MODS_PAGE_COVER_TITLE_POSITION,
+				'text_color'       => Config::MODS_PAGE_COVER_TEXT_COLOR,
+				'background_color' => Config::MODS_PAGE_COVER_BACKGROUND_COLOR,
+				'blend_mode'       => Config::MODS_PAGE_COVER_BLEND_MODE,
+				'opacity'          => Config::MODS_PAGE_COVER_OVERLAY_OPACITY,
+				'boxed_padding'    => Config::MODS_PAGE_COVER_BOXED_TITLE_PADDING,
+				'boxed_background' => Config::MODS_PAGE_COVER_BOXED_TITLE_BACKGROUND,
+			];
+		}
+
+
 		$justify_map = [
 			'left'   => 'flex-start',
 			'center' => 'center',
@@ -1309,20 +1253,20 @@ class Frontend extends Generator {
 
 		$cover_rules = [
 			'--height'    => [
-				Dynamic_Selector::META_KEY           => Config::MODS_PAGE_COVER_HEIGHT,
+				Dynamic_Selector::META_KEY           => $dataset['height'],
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_AS_JSON       => true,
 				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
 				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "400", "tablet": "400", "desktop": "400" }',
 			],
 			'--padding'   => [
-				Dynamic_Selector::META_KEY           => Config::MODS_PAGE_COVER_PADDING,
+				Dynamic_Selector::META_KEY           => $dataset['padding'],
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
 			'--justify'   => [
-				Dynamic_Selector::META_KEY           => Config::MODS_PAGE_TITLE_ALIGNMENT,
+				Dynamic_Selector::META_KEY           => $dataset['title_alignment'],
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => self::post_title_alignment(),
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ( $justify_map ) {
@@ -1330,12 +1274,12 @@ class Frontend extends Generator {
 				},
 			],
 			'--textAlign' => [
-				Dynamic_Selector::META_KEY           => Config::MODS_PAGE_TITLE_ALIGNMENT,
+				Dynamic_Selector::META_KEY           => $dataset['title_alignment'],
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => self::post_title_alignment(),
 			],
 			'--vAlign'    => [
-				Dynamic_Selector::META_KEY           => Config::MODS_PAGE_COVER_TITLE_POSITION,
+				Dynamic_Selector::META_KEY           => $dataset['title_position'],
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => [
 					'mobile'  => 'center',
@@ -1346,59 +1290,59 @@ class Frontend extends Generator {
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => '.page .nv-post-cover',
+			'selectors' => '.nv-post-cover',
 			'rules'     => $cover_rules,
 		];
 
 		$title_rules = [
 			'--color'     => [
-				Dynamic_Selector::META_KEY => Config::MODS_PAGE_COVER_TEXT_COLOR,
+				Dynamic_Selector::META_KEY => $dataset['text_color'],
 			],
 			'--textAlign' => [
-				Dynamic_Selector::META_KEY           => Config::MODS_PAGE_TITLE_ALIGNMENT,
+				Dynamic_Selector::META_KEY           => $dataset['title_alignment'],
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => self::post_title_alignment(),
 			],
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => '.page .nv-post-cover .nv-title-meta-wrap, .nv-page-title-wrap',
+			'selectors' => '.nv-post-cover .nv-title-meta-wrap, .nv-page-title-wrap, .entry-header',
 			'rules'     => $title_rules,
 		];
 
 		$boxed_title_rules = [
 			'--padding' => [
-				Dynamic_Selector::META_KEY           => Config::MODS_PAGE_COVER_BOXED_TITLE_PADDING,
+				Dynamic_Selector::META_KEY           => $dataset['boxed_padding'],
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
 			'--bgColor' => [
-				Dynamic_Selector::META_KEY     => Config::MODS_PAGE_COVER_BOXED_TITLE_BACKGROUND,
+				Dynamic_Selector::META_KEY     => $dataset['boxed_background'],
 				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
 			],
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => '.page .nv-is-boxed.nv-title-meta-wrap',
+			'selectors' => '.nv-is-boxed.nv-title-meta-wrap',
 			'rules'     => $boxed_title_rules,
 		];
 
 		$overlay_rules = [
 			'--bgColor'   => [
-				Dynamic_Selector::META_KEY => Config::MODS_PAGE_COVER_BACKGROUND_COLOR,
+				Dynamic_Selector::META_KEY => $dataset['background_color'],
 			],
 			'--blendMode' => [
-				Dynamic_Selector::META_KEY => Config::MODS_PAGE_COVER_BLEND_MODE,
+				Dynamic_Selector::META_KEY => $dataset['blend_mode'],
 			],
 			'--opacity'   => [
-				Dynamic_Selector::META_KEY     => Config::MODS_PAGE_COVER_OVERLAY_OPACITY,
+				Dynamic_Selector::META_KEY     => $dataset['opacity'],
 				Dynamic_Selector::META_DEFAULT => 50,
 			],
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => '.page .nv-overlay',
+			'selectors' => '.nv-overlay',
 			'rules'     => $overlay_rules,
 		];
 	}

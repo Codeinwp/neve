@@ -170,7 +170,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 				[
 					'sanitize_callback' => 'neve_sanitize_range_value',
 					'transport'         => $this->selective_refresh,
-					'default'           => '{ "mobile": 400, "tablet": 400, "desktop": 400 }',
+					'default'           => '{ "mobile": 250, "tablet": 320, "desktop": 400 }',
 				],
 				[
 					'label'                 => esc_html__( 'Cover height', 'neve' ),
@@ -374,7 +374,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'cssVar' => array(
 							'vars'     => '--bgColor',
-							'selector' => $this->cover_selector,
+							'selector' => $this->cover_selector . ' .nv-overlay',
 						),
 					],
 					'active_callback'       => [ $this, 'is_cover_layout' ],
@@ -432,7 +432,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => '--opacity',
-							'selector' => $this->cover_selector,
+							'selector' => $this->cover_selector . ' .nv-overlay',
 						],
 					],
 					'active_callback'       => [ $this, 'is_cover_layout' ],
