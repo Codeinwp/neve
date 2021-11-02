@@ -73,7 +73,7 @@ class Metabox_Settings {
 			}
 		);
 		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'filter_post_elements' ) );
-		add_filter( 'neve_post_title_alignment_style', array( $this, 'filter_title_alignment_style' ), 10, 2 );
+		add_filter( 'neve_title_alignment_style', array( $this, 'filter_title_alignment_style' ), 10, 2 );
 		add_filter( 'neve_display_author_avatar', array( $this, 'filter_author_avatar_display' ), 15 );
 		add_filter( 'neve_meta_content_width', array( $this, 'get_content_width' ) );
 	}

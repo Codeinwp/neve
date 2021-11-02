@@ -29,10 +29,6 @@ class Post_Layout extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_do_single_post', [ $this, 'render_post' ] );
-
-		if ( neve_is_new_skin() ) {
-			add_action( 'neve_after_header_wrapper_hook', [ $this, 'render_cover_header' ] );
-		}
 	}
 
 	/**
@@ -62,7 +58,6 @@ class Post_Layout extends Base_View {
 		}
 
 		$content_order_length = count( $content_order );
-		$header_layout        = get_theme_mod( 'neve_post_header_layout', 'normal' );
 		foreach ( $content_order as $index => $item ) {
 			switch ( $item ) {
 				case 'title-meta':
@@ -174,72 +169,6 @@ class Post_Layout extends Base_View {
 			self::render_post_meta();
 		}
 		echo '</div>';
-		echo '</div>';
-	}
-
-	/**
-	 * Render the cover layout on single post.
-	 */
-	public function render_cover_header() {
-		if ( ! is_singular( 'post' ) ) {
-			return false;
-		}
-
-		$header_layout = get_theme_mod( 'neve_post_header_layout', 'normal' );
-		if ( $header_layout !== 'cover' ) {
-			return false;
-		}
-
-		$hide_thumbnail = get_theme_mod( 'neve_post_cover_hide_thumbnail', false );
-		$post_thumbnail = get_the_post_thumbnail_url();
-		$cover_style    = '';
-		if ( $hide_thumbnail === false && ! empty( $post_thumbnail ) ) {
-			$cover_style = 'background-image:url(' . esc_url( $post_thumbnail ) . ');';
-		}
-
-		$container_class = [ 'container' ];
-
-		$container_mode = get_theme_mod( 'neve_post_cover_container', 'contained' );
-
-		$title_meta_wrap_classes = [
-			'nv-title-meta-wrap',
-		];
-		$title_mode              = get_theme_mod( 'neve_post_cover_title_boxed_layout', false );
-		if ( $title_mode ) {
-			$title_meta_wrap_classes[] = 'nv-is-boxed';
-		}
-
-		/**
-		 * Filters the post title styles to override specific styles.
-		 *
-		 * @param string $style The styles for the title.
-		 * @param string $context The context of the layout (e.g. 'cover', 'normal'). Default is 'normal'.
-		 *
-		 * @since 3.1.0
-		 */
-		$cover_style = apply_filters( 'neve_post_title_alignment_style', $cover_style, 'cover' );
-		if ( ! empty( $cover_style ) ) {
-			$cover_style = 'style="' . $cover_style . '"';
-		}
-
-		$meta_before = get_theme_mod( 'neve_post_cover_meta_before_title', false );
-
-		echo '<div class="nv-post-cover" ' . wp_kses_post( $cover_style ) . '>';
-		echo '<div class="nv-overlay"></div>';
-		echo $container_mode === 'contained' ? '<div class="' . esc_attr( implode( ' ', $container_class ) ) . '">' : '';
-
-		echo '<div class="' . esc_attr( implode( ' ', $title_meta_wrap_classes ) ) . '">';
-		if ( $meta_before ) {
-			self::render_post_meta();
-		}
-		do_action( 'neve_before_post_title' );
-		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
-		if ( ! $meta_before ) {
-			self::render_post_meta();
-		}
-		echo '</div>';
-
-		echo $container_mode === 'contained' ? '</div>' : '';
 		echo '</div>';
 	}
 

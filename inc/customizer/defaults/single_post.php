@@ -105,4 +105,25 @@ trait Single_Post {
 
 		return apply_filters( 'neve_single_post_elements_default_order', $default_components );
 	}
+
+	/**
+	 * Get the context for header.
+	 *
+	 * @return string
+	 */
+	public function get_header_context() {
+		if ( ! neve_is_new_skin() ) {
+			return false;
+		}
+
+		if ( is_singular( 'post' ) ) {
+			return 'post';
+		}
+
+		if ( is_singular( 'page' ) ) {
+			return 'page';
+		}
+
+		return false;
+	}
 }

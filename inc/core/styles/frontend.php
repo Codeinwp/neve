@@ -1200,19 +1200,7 @@ class Frontend extends Generator {
 	 */
 	private function setup_header_style() {
 
-		if ( ! neve_is_new_skin() ) {
-			return;
-		}
-
-		$context = '';
-		if ( is_singular( 'post' ) ) {
-			$context = 'post';
-		}
-
-		if ( is_singular( 'page' ) ) {
-			$context = 'page';
-		}
-
+		$context = $this->get_header_context();
 		if ( empty( $context ) ) {
 			return;
 		}
