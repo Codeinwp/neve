@@ -95,7 +95,7 @@ trait Single_Post {
 			'comments',
 		];
 
-		if ( Layout_Single_Post::is_cover_layout() ) {
+		if ( get_theme_mod( 'neve_post_header_layout' ) === 'cover' && neve_is_new_skin() ) {
 			$default_components = [
 				'content',
 				'tags',
