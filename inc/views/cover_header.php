@@ -82,12 +82,12 @@ class Cover_Header extends Base_View {
 
 		echo '<div class="' . esc_attr( implode( ' ', $title_meta_wrap_classes ) ) . '">';
 		if ( $meta_before === true ) {
-			self::render_post_meta();
+			Post_Layout::render_post_meta();
 		}
 		do_action( 'neve_before_post_title' );
 		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 		if ( $meta_before === false ) {
-			self::render_post_meta();
+			Post_Layout::render_post_meta();
 		}
 		echo '</div>';
 

@@ -109,7 +109,7 @@ trait Single_Post {
 	/**
 	 * Get the context for header.
 	 *
-	 * @return string
+	 * @return string | false
 	 */
 	public function get_header_context() {
 		if ( ! neve_is_new_skin() ) {
