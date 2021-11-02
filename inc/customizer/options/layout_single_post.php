@@ -262,7 +262,7 @@ class Layout_Single_Post extends Base_Customizer {
 						],
 					],
 					'show_labels'           => true,
-					'live_refresh_selector' => '.nv-post-cover .nv-title-meta-wrap,.entry-header .entry-title',
+					'live_refresh_selector' => '.single-post .nv-post-cover .nv-title-meta-wrap, .entry-header .entry-title',
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'       => [
@@ -277,7 +277,7 @@ class Layout_Single_Post extends Base_Customizer {
 								],
 							],
 							'responsive' => true,
-							'selector'   => '.nv-post-cover .container, .entry-header',
+							'selector'   => '.single-post .nv-post-cover .container, .entry-header',
 						],
 					],
 				],

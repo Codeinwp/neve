@@ -1186,7 +1186,7 @@ class Frontend extends Generator {
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => '.nv-post-cover',
+			'selectors' => '.single-post .nv-post-cover',
 			'rules'     => $cover_rules,
 		];
 
@@ -1202,7 +1202,7 @@ class Frontend extends Generator {
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => '.nv-post-cover .nv-title-meta-wrap, .entry-header',
+			'selectors' => '.single-post .nv-post-cover .nv-title-meta-wrap, .entry-header',
 			'rules'     => $title_rules,
 		];
 
@@ -1346,7 +1346,7 @@ class Frontend extends Generator {
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => 'body.page .nv-post-cover',
+			'selectors' => '.page .nv-post-cover',
 			'rules'     => $cover_rules,
 		];
 
@@ -1362,7 +1362,7 @@ class Frontend extends Generator {
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => 'body.page .nv-post-cover .nv-title-meta-wrap, .nv-page-title-wrap',
+			'selectors' => '.page .nv-post-cover .nv-title-meta-wrap, .nv-page-title-wrap',
 			'rules'     => $title_rules,
 		];
 
@@ -1380,7 +1380,7 @@ class Frontend extends Generator {
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => 'body.page .nv-is-boxed.nv-title-meta-wrap',
+			'selectors' => '.page .nv-is-boxed.nv-title-meta-wrap',
 			'rules'     => $boxed_title_rules,
 		];
 
@@ -1398,7 +1398,7 @@ class Frontend extends Generator {
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => 'body.page .nv-overlay',
+			'selectors' => '.page .nv-overlay',
 			'rules'     => $overlay_rules,
 		];
 	}
