@@ -22,8 +22,12 @@
 	margin-top: $spacing-aired;
 }
 
-.entry-header .title {
-	margin-bottom: $spacing-xs;
+.entry-header {
+	text-align: var(--textAlign, center);
+
+	.title {
+		margin-bottom: $spacing-xs;
+	}
 }
 
 .attachment-neve-blog {
@@ -104,6 +108,7 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
+	justify-content: var(--justify, center);
 
 	.nv-title-meta-wrap {
 		color: var(--color, var(--nv-text-dark-bg));
@@ -123,6 +128,8 @@
 
 	.container {
 		display: flex;
+		justify-content: var(--justify, center);
+		text-align: var(--textAlign, center);
 	}
 }
 
