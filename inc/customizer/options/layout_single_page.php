@@ -47,7 +47,7 @@ class Layout_Single_Page extends Base_Layout_Single {
 					'default'           => false,
 				],
 				[
-					'label'    => esc_html__( 'Hide page title', 'neve' ),
+					'label'    => esc_html__( 'Disable Title', 'neve' ),
 					'section'  => $this->section,
 					'type'     => 'neve_toggle_control',
 					'priority' => 25,

@@ -70,7 +70,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 	private function get_section_label() {
 		$labels = [
 			'post' => esc_html__( 'Single Post', 'neve' ),
-			'page' => esc_html__( 'Single Page', 'neve' ),
+			'page' => esc_html__( 'Page', 'neve' ),
 		];
 
 		if ( array_key_exists( $this->post_type, $labels ) ) {
