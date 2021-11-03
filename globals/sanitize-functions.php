@@ -269,14 +269,14 @@ function neve_sanitize_meta_ordering( $value ) {
 	);
 
 	if ( empty( $value ) ) {
-		return $allowed;
+		return wp_json_encode( $allowed );
 	}
 
 	$decoded = json_decode( $value, true );
 
 	foreach ( $decoded as $val ) {
 		if ( ! in_array( $val, $allowed, true ) ) {
-			return $allowed;
+			return wp_json_encode( $allowed );
 		}
 	}
 

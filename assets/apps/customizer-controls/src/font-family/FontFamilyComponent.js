@@ -7,9 +7,7 @@ import { Spinner } from '@wordpress/components';
 import React from 'react';
 import { VariantSelector } from './VariantSelector';
 
-const FontFamilySelector = lazy(() =>
-	import(/* webpackChunkName: "ff-selector" */ './FontFamilySelector')
-);
+const FontFamilySelector = lazy(() => import('./FontFamilySelector'));
 
 const TypefaceComponent = ({ control }) => {
 	const [fontFamily, setFontFamily] = useState(control.setting.get());
