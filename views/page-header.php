@@ -4,7 +4,7 @@
  *
  * @package Neve
  */
-$title_style = apply_filters( 'neve_page_title_alignment_style', '', 'normal' );
+$title_style = apply_filters( 'neve_title_alignment_style', '', 'normal' );
 if ( ! empty( $title_style ) ) {
 	$title_style = 'style="' . $title_style . '"';
 }
