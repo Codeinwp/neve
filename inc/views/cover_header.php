@@ -49,8 +49,7 @@ class Cover_Header extends Base_View {
 			$cover_style = 'background-image:url(' . esc_url( $post_thumbnail ) . ');';
 		}
 
-		$container_mode = get_theme_mod( 'neve_' . $context . '_cover_container', 'contained' );
-
+		$container_mode          = get_theme_mod( 'neve_' . $context . '_cover_container', 'contained' );
 		$title_mode              = get_theme_mod( 'neve_' . $context . '_cover_title_boxed_layout', false );
 		$title_meta_wrap_classes = [
 			'nv-title-meta-wrap',
