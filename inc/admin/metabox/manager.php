@@ -380,7 +380,7 @@ final class Manager {
 				),
 				'elementsDefaultOrder' => $post_elements_default_order,
 				'avatarDefaultState'   => $show_avatar,
-				'isCoverLayout'        => get_theme_mod( 'neve_post_header_layout' ) === 'cover' && neve_is_new_skin(),
+				'isCoverLayout'        => Layout_Single_Post::is_cover_layout(),
 			)
 		);
 		wp_localize_script(
@@ -414,7 +414,7 @@ final class Manager {
 			return wp_json_encode( $content_order );
 		}
 
-		$is_cover_layout  = get_theme_mod( 'neve_post_header_layout' ) === 'cover' && neve_is_new_skin();
+		$is_cover_layout  = Layout_Single_Post::is_cover_layout();
 		$title_meta_index = array_search( 'title-meta', $content_order );
 		if ( $title_meta_index !== false && ! $is_cover_layout ) {
 			$content_order[ $title_meta_index ] = 'title';

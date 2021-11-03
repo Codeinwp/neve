@@ -7,14 +7,12 @@
 
 namespace Neve\Customizer\Options;
 
-use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Types\Control;
 
 /**
  * Class Layout_Single_Page
  */
 class Layout_Single_Page extends Base_Layout_Single {
-	use Single_Post;
 
 	/**
 	 * Returns the post type.
@@ -55,5 +53,14 @@ class Layout_Single_Page extends Base_Layout_Single {
 				'Neve\Customizer\Controls\Checkbox'
 			)
 		);
+	}
+
+	/**
+	 * Fuction used for active_callback control property.
+	 *
+	 * @return bool
+	 */
+	public static function is_cover_layout() {
+		return get_theme_mod( 'neve_page_header_layout' ) === 'cover' && neve_is_new_skin();
 	}
 }

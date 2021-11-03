@@ -11,10 +11,7 @@
 namespace Neve\Customizer\Options;
 
 use HFG\Traits\Core;
-use Neve\Customizer\Base_Customizer;
-use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Types\Control;
-use Neve\Customizer\Types\Section;
 
 /**
  * Class Layout_Single_Post
@@ -23,7 +20,6 @@ use Neve\Customizer\Types\Section;
  */
 class Layout_Single_Post extends Base_Layout_Single {
 	use Core;
-	use Single_Post;
 
 	/**
 	 * Returns the post type.
@@ -52,6 +48,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 
 		if ( neve_is_new_skin() ) {
 			$this->add_subsections();
+			$this->header_layout();
 			$this->post_meta();
 			$this->comments();
 			add_action( 'customize_register', [ $this, 'adjust_headings' ], PHP_INT_MAX );
@@ -66,19 +63,19 @@ class Layout_Single_Post extends Base_Layout_Single {
 		$headings = [
 			'page_elements'    => [
 				'title'            => esc_html__( 'Page Elements', 'neve' ),
-				'priority'         => 7,
+				'priority'         => 95,
 				'controls_to_wrap' => 2,
 				'expanded'         => false,
 			],
 			'meta'             => [
 				'title'            => esc_html__( 'Post Meta', 'neve' ),
-				'priority'         => 9,
+				'priority'         => 110,
 				'controls_to_wrap' => 5,
 				'expanded'         => false,
 			],
 			'comments_section' => [
 				'title'           => esc_html__( 'Comments Section', 'neve' ),
-				'priority'        => 70,
+				'priority'        => 150,
 				'expanded'        => true,
 				'accordion'       => false,
 				'active_callback' => function() {
@@ -87,7 +84,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 			],
 			'comments_form'    => [
 				'title'           => esc_html__( 'Submit Form Section', 'neve' ),
-				'priority'        => 71,
+				'priority'        => 175,
 				'expanded'        => true,
 				'accordion'       => false,
 				'active_callback' => function() {
@@ -120,6 +117,29 @@ class Layout_Single_Post extends Base_Layout_Single {
 	}
 
 	/**
+	 * Add header layout controls.
+	 */
+	private function header_layout() {
+		$this->add_control(
+			new Control(
+				'neve_post_cover_meta_before_title',
+				[
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => false,
+				],
+				[
+					'label'           => esc_html__( 'Display meta before title', 'neve' ),
+					'section'         => $this->section,
+					'type'            => 'neve_toggle_control',
+					'priority'        => 40,
+					'active_callback' => [ $this, 'is_cover_layout' ],
+				],
+				'Neve\Customizer\Controls\Checkbox'
+			)
+		);
+	}
+
+	/**
 	 * Add content order control.
 	 */
 	private function control_content_order() {
@@ -133,7 +153,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 			'comments'        => __( 'Comments', 'neve' ),
 		];
 
-		if ( $this->is_cover_layout() ) {
+		if ( self::is_cover_layout() ) {
 			$all_components = [
 				'content'         => __( 'Content', 'neve' ),
 				'tags'            => __( 'Tags', 'neve' ),
@@ -164,7 +184,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 					'label'      => esc_html__( 'Elements Order', 'neve' ),
 					'section'    => 'neve_single_post_layout',
 					'components' => $components,
-					'priority'   => 8,
+					'priority'   => 100,
 				],
 				'Neve\Customizer\Controls\React\Ordering'
 			)
@@ -197,7 +217,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 								],
 							],
 						],
-						'priority'              => 8,
+						'priority'              => 105,
 						'live_refresh_selector' => true,
 						'live_refresh_css_prop' => [
 							'cssVar' => [
@@ -250,7 +270,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 					'label'      => esc_html__( 'Meta Order', 'neve' ),
 					'section'    => $this->section,
 					'components' => $components,
-					'priority'   => 10,
+					'priority'   => 115,
 				],
 				'Neve\Customizer\Controls\React\Ordering'
 			)
@@ -265,7 +285,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 					'default'           => $default_separator,
 				],
 				[
-					'priority'    => 10,
+					'priority'    => 120,
 					'section'     => $this->section,
 					'label'       => esc_html__( 'Separator', 'neve' ),
 					'description' => esc_html__( 'For special characters make sure to use Unicode. For example > can be displayed using \003E.', 'neve' ),
@@ -286,7 +306,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 					'label'    => esc_html__( 'Show Author Avatar', 'neve' ),
 					'section'  => $this->section,
 					'type'     => 'neve_toggle_control',
-					'priority' => 10,
+					'priority' => 125,
 				]
 			)
 		);
@@ -334,7 +354,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 						],
 						'units'      => [ 'px' ],
 					],
-					'priority'        => 10,
+					'priority'        => 130,
 					'active_callback' => function () {
 						return get_theme_mod( 'neve_single_post_author_avatar', false );
 					},
@@ -355,7 +375,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 					'label'    => esc_html__( 'Use last updated date instead of the published one', 'neve' ),
 					'section'  => $this->section,
 					'type'     => 'neve_toggle_control',
-					'priority' => 10,
+					'priority' => 135,
 				]
 			)
 		);
@@ -375,7 +395,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 				[
 					'label'           => esc_html__( 'Section title', 'neve' ),
 					'description'     => esc_html__( 'The following magic tags are available for this field: {title} and {comments_number}. Leave this field empty for default behavior.', 'neve' ),
-					'priority'        => 70,
+					'priority'        => 155,
 					'section'         => $this->section,
 					'type'            => 'text',
 					'active_callback' => function() {
@@ -388,7 +408,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 		$this->add_boxed_layout_controls(
 			'comments',
 			[
-				'priority'                  => 70,
+				'priority'                  => 160,
 				'section'                   => $this->section,
 				'padding_default'           => $this->padding_default(),
 				'background_default'        => 'var(--nv-light-bg)',
@@ -413,7 +433,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 				],
 				[
 					'label'           => esc_html__( 'Section title', 'neve' ),
-					'priority'        => 71,
+					'priority'        => 180,
 					'section'         => $this->section,
 					'type'            => 'text',
 					'active_callback' => function() {
@@ -433,7 +453,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 				[
 					'label'           => esc_html__( 'Button style', 'neve' ),
 					'section'         => $this->section,
-					'priority'        => 71,
+					'priority'        => 185,
 					'type'            => 'select',
 					'choices'         => [
 						'primary'   => esc_html__( 'Primary', 'neve' ),
@@ -454,7 +474,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 				],
 				[
 					'label'           => esc_html__( 'Button text', 'neve' ),
-					'priority'        => 71,
+					'priority'        => 190,
 					'section'         => $this->section,
 					'type'            => 'text',
 					'active_callback' => function() {
@@ -467,7 +487,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 		$this->add_boxed_layout_controls(
 			'comments_form',
 			[
-				'priority'                => 71,
+				'priority'                => 195,
 				'section'                 => $this->section,
 				'padding_default'         => $this->padding_default(),
 				'is_boxed_default'        => true,
@@ -552,12 +572,21 @@ class Layout_Single_Post extends Base_Layout_Single {
 	}
 
 	/**
+	 * Fuction used for active_callback control property.
+	 *
+	 * @return bool
+	 */
+	public static function is_cover_layout() {
+		return get_theme_mod( 'neve_post_header_layout' ) === 'cover' && neve_is_new_skin();
+	}
+
+	/**
 	 *  Fuction used for active_callback control property for boxed title.
 	 *
 	 * @return bool
 	 */
 	public function is_boxed_title() {
-		if ( ! $this->is_cover_layout() ) {
+		if ( ! self::is_cover_layout() ) {
 			return false;
 		}
 		return get_theme_mod( 'neve_post_cover_title_boxed_layout', false );

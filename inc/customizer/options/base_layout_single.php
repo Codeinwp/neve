@@ -148,7 +148,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 				],
 				[
 					'section'  => $this->section,
-					'priority' => $this->post_type === 'post' ? 6 : 10,
+					'priority' => 10,
 					'choices'  => [
 						'normal' => [
 							'name'  => esc_html__( 'Normal', 'neve' ),
@@ -190,7 +190,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 							],
 						],
 					],
-					'priority'              => $this->post_type === 'post' ? 6 : 15,
+					'priority'              => 15,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => [
@@ -222,7 +222,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 						'min'   => 0,
 					],
 					'default'               => $this->padding_default( 'cover' ),
-					'priority'              => $this->post_type === 'post' ? 6 : 20,
+					'priority'              => 20,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => array(
@@ -248,7 +248,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Title Alignment', 'neve' ),
 					'section'               => $this->section,
-					'priority'              => $this->post_type === 'post' ? 6 : 30,
+					'priority'              => 30,
 					'choices'               => [
 						'left'   => [
 							'tooltip' => esc_html__( 'Left', 'neve' ),
@@ -305,7 +305,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Title Position', 'neve' ),
 					'section'               => $this->section,
-					'priority'              => $this->post_type === 'post' ? 6 : 35,
+					'priority'              => 35,
 					'choices'               => [
 						'flex-start' => [
 							'tooltip' => esc_html__( 'Top', 'neve' ),
@@ -337,27 +337,6 @@ abstract class Base_Layout_Single extends Base_Customizer {
 			)
 		);
 
-		// This control could be added in layout_single_post but because all controls there need to have priority = 6, its position will be wrong
-		if ( $this->post_type === 'post' ) {
-			$this->add_control(
-				new Control(
-					'neve_post_cover_meta_before_title',
-					[
-						'sanitize_callback' => 'neve_sanitize_checkbox',
-						'default'           => false,
-					],
-					[
-						'label'           => esc_html__( 'Display meta before title', 'neve' ),
-						'section'         => $this->section,
-						'type'            => 'neve_toggle_control',
-						'priority'        => 6,
-						'active_callback' => [ $this, 'is_cover_layout' ],
-					],
-					'Neve\Customizer\Controls\Checkbox'
-				)
-			);
-		}
-
 		$this->add_control(
 			new Control(
 				'neve_' . $this->post_type . '_cover_background_color',
@@ -369,7 +348,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Overlay color', 'neve' ),
 					'section'               => $this->section,
-					'priority'              => $this->post_type === 'post' ? 6 : 40,
+					'priority'              => 45,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => array(
@@ -394,7 +373,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Text color', 'neve' ),
 					'section'               => $this->section,
-					'priority'              => $this->post_type === 'post' ? 6 : 45,
+					'priority'              => 50,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => [
@@ -427,7 +406,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 						'step'       => 1,
 						'defaultVal' => 50,
 					],
-					'priority'              => $this->post_type === 'post' ? 6 : 50,
+					'priority'              => 55,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => [
@@ -452,7 +431,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 					'label'           => esc_html__( 'Hide featured image', 'neve' ),
 					'section'         => $this->section,
 					'type'            => 'neve_toggle_control',
-					'priority'        => $this->post_type === 'post' ? 6 : 55,
+					'priority'        => 60,
 					'active_callback' => [ $this, 'is_cover_layout' ],
 				],
 				'Neve\Customizer\Controls\Checkbox'
@@ -470,7 +449,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 				[
 					'label'                 => esc_html__( 'Blend mode', 'neve' ),
 					'section'               => $this->section,
-					'priority'              => $this->post_type === 'post' ? 6 : 60,
+					'priority'              => 65,
 					'type'                  => 'select',
 					'choices'               => [
 						'normal'      => esc_html__( 'Normal', 'neve' ),
@@ -509,7 +488,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 				[
 					'label'           => esc_html__( 'Cover container', 'neve' ),
 					'section'         => $this->section,
-					'priority'        => $this->post_type === 'post' ? 6 : 65,
+					'priority'        => 70,
 					'type'            => 'select',
 					'choices'         => [
 						'contained'  => esc_html__( 'Contained', 'neve' ),
@@ -525,7 +504,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 		$this->add_boxed_layout_controls(
 			$this->post_type . '_cover_title',
 			[
-				'priority'               => $this->post_type === 'post' ? 6 : 70,
+				'priority'               => 75,
 				'section'                => $this->section,
 				'has_text_color'         => false,
 				'padding_default'        => $this->padding_default( 'cover' ),
@@ -547,7 +526,5 @@ abstract class Base_Layout_Single extends Base_Customizer {
 	 *
 	 * @return bool
 	 */
-	public function is_cover_layout() {
-		return get_theme_mod( 'neve_' . $this->post_type . '_header_layout' ) === 'cover' && neve_is_new_skin();
-	}
+	abstract public static function is_cover_layout();
 }

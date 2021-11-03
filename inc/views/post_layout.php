@@ -61,13 +61,13 @@ class Post_Layout extends Base_View {
 		foreach ( $content_order as $index => $item ) {
 			switch ( $item ) {
 				case 'title-meta':
-					if ( get_theme_mod( 'neve_post_header_layout' ) === 'cover' && neve_is_new_skin() ) {
+					if ( Layout_Single_Post::is_cover_layout() ) {
 						break;
 					}
 					$this->render_entry_header();
 					break;
 				case 'thumbnail':
-					if ( get_theme_mod( 'neve_post_header_layout' ) === 'cover' && neve_is_new_skin() ) {
+					if ( Layout_Single_Post::is_cover_layout() ) {
 						break;
 					}
 					echo '<div class="nv-thumb-wrap">';
@@ -93,7 +93,7 @@ class Post_Layout extends Base_View {
 					do_action( 'neve_do_tags' );
 					break;
 				case 'title':
-					if ( get_theme_mod( 'neve_post_header_layout' ) === 'cover' && neve_is_new_skin() ) {
+					if ( Layout_Single_Post::is_cover_layout() ) {
 						break;
 					}
 					if ( $index !== $content_order_length - 1 && $content_order[ $index + 1 ] === 'meta' ) {
@@ -103,7 +103,7 @@ class Post_Layout extends Base_View {
 					$this->render_entry_header( false );
 					break;
 				case 'meta':
-					if ( get_theme_mod( 'neve_post_header_layout' ) === 'cover' && neve_is_new_skin() ) {
+					if ( Layout_Single_Post::is_cover_layout() ) {
 						break;
 					}
 					if ( $index !== 0 && $content_order[ $index - 1 ] === 'title' ) {

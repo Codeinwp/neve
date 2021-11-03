@@ -234,4 +234,16 @@ class Config {
 		self::CSS_SELECTOR_FORM_BUTTON_HOVER           => 'form input[type="submit"]:hover, form button[type="submit"]:hover, form *[value*="ubmit"]:hover, #comments input[type="submit"]:hover',
 		self::CSS_SELECTOR_FORM_SEARCH_INPUTS          => 'form.search-form input:read-write',
 	];
+
+	/**
+	 * Get the constant value based on the context.
+	 *
+	 * @param string $context Current context.
+	 * @param string $meta    Value to get.
+	 *
+	 * @return string
+	 */
+	public static function get_constant_value( $context, $meta ) {
+		return constant( 'self::MODS_' . strtoupper( $context ) . '_' . strtoupper( $meta ) );
+	}
 }

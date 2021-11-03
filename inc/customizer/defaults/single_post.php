@@ -95,7 +95,7 @@ trait Single_Post {
 			'comments',
 		];
 
-		if ( get_theme_mod( 'neve_post_header_layout' ) === 'cover' && neve_is_new_skin() ) {
+		if ( Layout_Single_Post::is_cover_layout() ) {
 			$default_components = [
 				'content',
 				'tags',
@@ -109,11 +109,11 @@ trait Single_Post {
 	/**
 	 * Get the context for header.
 	 *
-	 * @return string | false
+	 * @return string
 	 */
 	public function get_header_context() {
 		if ( ! neve_is_new_skin() ) {
-			return false;
+			return '';
 		}
 
 		if ( is_singular( 'post' ) ) {
@@ -124,6 +124,6 @@ trait Single_Post {
 			return 'page';
 		}
 
-		return false;
+		return '';
 	}
 }
