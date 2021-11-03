@@ -470,7 +470,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => '--blendMode',
-							'selector' => $this->cover_selector . '.has-background .nv-overlay',
+							'selector' => $this->cover_selector . ' .nv-overlay',
 						],
 					],
 					'active_callback'       => [ $this, 'is_cover_layout' ],
@@ -509,7 +509,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 				'has_text_color'         => false,
 				'padding_default'        => $this->padding_default( 'cover' ),
 				'background_default'     => 'var(--nv-dark-bg)',
-				'boxed_selector'         => '.page .nv-is-boxed.nv-title-meta-wrap',
+				'boxed_selector'         => $this->cover_selector . ' .nv-is-boxed.nv-title-meta-wrap',
 				'toggle_active_callback' => function() {
 					return $this->post_type === 'post' ? $this->is_cover_layout() : $this->is_cover_layout() && ! get_theme_mod( 'neve_page_hide_title', false );
 				},

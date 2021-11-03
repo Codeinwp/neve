@@ -42,13 +42,11 @@ class Cover_Header extends Base_View {
 			return;
 		}
 
-		$hide_thumbnail  = get_theme_mod( 'neve_' . $context . '_cover_hide_thumbnail', false );
-		$post_thumbnail  = get_the_post_thumbnail_url();
-		$cover_style     = '';
-		$thumbnail_class = '';
+		$hide_thumbnail = get_theme_mod( 'neve_' . $context . '_cover_hide_thumbnail', false );
+		$post_thumbnail = get_the_post_thumbnail_url();
+		$cover_style    = '';
 		if ( $hide_thumbnail === false && ! empty( $post_thumbnail ) ) {
-			$thumbnail_class = 'has-background';
-			$cover_style     = 'background-image:url(' . esc_url( $post_thumbnail ) . ');';
+			$cover_style = 'background-image:url(' . esc_url( $post_thumbnail ) . ');';
 		}
 
 		$container_mode = get_theme_mod( 'neve_' . $context . '_cover_container', 'contained' );
@@ -78,20 +76,23 @@ class Cover_Header extends Base_View {
 			$cover_style = 'style="' . $cover_style . '"';
 		}
 
-		echo '<div class="nv-post-cover ' . esc_attr( $thumbnail_class ) . '" ' . wp_kses_post( $cover_style ) . '>';
+		echo '<div class="nv-post-cover" ' . wp_kses_post( $cover_style ) . '>';
 		echo '<div class="nv-overlay"></div>';
 		echo $container_mode === 'contained' ? '<div class="container">' : '';
 
-		echo '<div class="' . esc_attr( implode( ' ', $title_meta_wrap_classes ) ) . '">';
-		if ( $meta_before === true ) {
-			Post_Layout::render_post_meta();
+		$hide_title = $context === 'page' && get_theme_mod( 'neve_page_hide_title', true ) === true;
+		if ( ! $hide_title ) {
+			echo '<div class="' . esc_attr( implode( ' ', $title_meta_wrap_classes ) ) . '">';
+			if ( $meta_before === true ) {
+				Post_Layout::render_post_meta();
+			}
+			do_action( 'neve_before_post_title' );
+			echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
+			if ( $meta_before === false ) {
+				Post_Layout::render_post_meta();
+			}
+			echo '</div>';
 		}
-		do_action( 'neve_before_post_title' );
-		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
-		if ( $meta_before === false ) {
-			Post_Layout::render_post_meta();
-		}
-		echo '</div>';
 
 		echo $container_mode === 'contained' ? '</div>' : '';
 		echo '</div>';

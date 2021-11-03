@@ -1291,20 +1291,18 @@ class Frontend extends Generator {
 		];
 
 		$overlay_rules = [
-			'--bgColor' => [
+			'--bgColor'   => [
 				Dynamic_Selector::META_KEY => Config::get_constant_value( $context, 'COVER_BACKGROUND_COLOR' ),
 			],
-			'--opacity' => [
+			'--opacity'   => [
 				Dynamic_Selector::META_KEY     => Config::get_constant_value( $context, 'COVER_OVERLAY_OPACITY' ),
 				Dynamic_Selector::META_DEFAULT => 50,
 			],
-		];
-		if ( has_post_thumbnail() ) {
-			$overlay_rules['--blendMode'] = [
+			'--blendMode' => [
 				Dynamic_Selector::META_KEY     => Config::get_constant_value( $context, 'COVER_BLEND_MODE' ),
 				Dynamic_Selector::META_DEFAULT => 'normal',
-			];
-		}
+			],
+		];
 
 		$this->_subscribers[] = [
 			'selectors' => '.nv-overlay',
