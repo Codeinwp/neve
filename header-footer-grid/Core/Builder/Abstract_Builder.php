@@ -1010,7 +1010,7 @@ abstract class Abstract_Builder implements Builder {
 							$style      = '';
 							$image      = $this->get_row_featured_image( $background['imageUrl'], $background['useFeatured'], $meta );
 
-							$style .= sprintf( 'background-image: %s;', esc_attr( $image ) );
+							$style .= sprintf( 'background-image: %s;', wp_kses_post( $image ) );
 							$style .= 'background-size:cover;';
 
 							if ( ! empty( $background['focusPoint'] ) && ! empty( $background['focusPoint']['x'] ) && ! empty( $background['focusPoint']['y'] ) ) {

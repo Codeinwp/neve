@@ -12,7 +12,9 @@ use HFG\Core\Components\CartIcon;
 use HFG\Core\Magic_Tags;
 use Neve\Core\Settings\Config;
 use Neve\Customizer\Defaults\Layout;
+use Neve\Views\Breadcrumbs;
 use Neve\Views\Layouts\Layout_Sidebar;
+use RankMath\Helper;
 
 /**
  * Class Woocommerce
@@ -185,7 +187,7 @@ class Woocommerce {
 		add_filter( 'woocommerce_product_additional_information_heading', '__return_false' );
 
 		// Add breadcrumbs and results count
-		add_action( 'neve_bc_count', 'woocommerce_breadcrumb' );
+		add_action( 'neve_bc_count', [ $this, 'render_breadcrumbs' ] );
 		add_action( 'neve_bc_count', 'woocommerce_result_count' );
 
 		$this->edit_woocommerce_header();
@@ -195,11 +197,11 @@ class Woocommerce {
 
 		if ( neve_is_new_skin() ) {
 			add_action(
-				'woocommerce_checkout_before_customer_details', 
+				'woocommerce_checkout_before_customer_details',
 				function () {
 					echo '<div class="nv-customer-details">';
 				},
-				0 
+				0
 			);
 			add_action( 'woocommerce_checkout_after_customer_details', [ $this, 'close_div' ] );
 			add_action(
@@ -339,6 +341,7 @@ class Woocommerce {
 
 		// Change breadcrumbs.
 		add_filter( 'woocommerce_breadcrumb_defaults', array( $this, 'change_breadcrumbs_delimiter' ) );
+
 	}
 
 	/**
@@ -795,6 +798,40 @@ class Woocommerce {
 		}
 
 		return $fragments;
+	}
+
+	/**
+	 * Render woocommerce breadcrumbs.
+	 */
+	public function render_breadcrumbs() {
+
+		/**
+		 * Filters the visibility of breadcrumbs.
+		 *
+		 * @param bool $status Whether the breadcrumbs should be displayed or not.
+		 * @since 3.1
+		 */
+		$should_display_breadcrumbs = apply_filters( 'neve_breadcrumbs_toggle', true );
+		if ( ! $should_display_breadcrumbs ) {
+			return;
+		}
+
+		/**
+		 * Filters the condition that decides if breadcrumbs should be loaded from WooCommerce or 3rd parties.
+		 *
+		 * @param bool $status Whether the breadcrumbs should be loaded from 3rd parties or not.
+		 * @since 3.1
+		 */
+		$enable_3rd_party_breadcrumbs = apply_filters( 'neve_woo_3rd_party_breadcrumbs', false );
+		if ( ! $enable_3rd_party_breadcrumbs ) {
+			woocommerce_breadcrumb();
+			return;
+		}
+
+		$is_seo_breadcrumb = Breadcrumbs::maybe_render_seo_breadcrumbs( 'small', true );
+		if ( ! $is_seo_breadcrumb ) {
+			woocommerce_breadcrumb();
+		}
 	}
 
 	/**
