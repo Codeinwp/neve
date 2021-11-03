@@ -156,7 +156,7 @@ class Post_Layout extends Base_View {
 	 * @return void
 	 */
 	private function render_entry_header( $render_meta = true ) {
-		$normal_style = apply_filters( 'neve_post_title_alignment_style', '', 'normal' );
+		$normal_style = apply_filters( 'neve_title_alignment_style', '', 'normal' );
 		if ( ! empty( $normal_style ) ) {
 			$normal_style = 'style="' . $normal_style . '"';
 		}
