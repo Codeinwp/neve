@@ -42,11 +42,13 @@ class Cover_Header extends Base_View {
 			return;
 		}
 
-		$hide_thumbnail = get_theme_mod( 'neve_' . $context . '_cover_hide_thumbnail', false );
-		$post_thumbnail = get_the_post_thumbnail_url();
-		$cover_style    = '';
+		$hide_thumbnail  = get_theme_mod( 'neve_' . $context . '_cover_hide_thumbnail', false );
+		$post_thumbnail  = get_the_post_thumbnail_url();
+		$cover_style     = '';
+		$thumbnail_class = '';
 		if ( $hide_thumbnail === false && ! empty( $post_thumbnail ) ) {
-			$cover_style = 'background-image:url(' . esc_url( $post_thumbnail ) . ');';
+			$thumbnail_class = 'has-background';
+			$cover_style     = 'background-image:url(' . esc_url( $post_thumbnail ) . ');';
 		}
 
 		$container_mode = get_theme_mod( 'neve_' . $context . '_cover_container', 'contained' );
@@ -58,7 +60,7 @@ class Cover_Header extends Base_View {
 		];
 
 		$meta_before = '';
-		if ( $context === 'post ' ) {
+		if ( $context === 'post' ) {
 			$meta_before = get_theme_mod( 'neve_post_cover_meta_before_title', false );
 		}
 
@@ -76,7 +78,7 @@ class Cover_Header extends Base_View {
 			$cover_style = 'style="' . $cover_style . '"';
 		}
 
-		echo '<div class="nv-post-cover" ' . wp_kses_post( $cover_style ) . '>';
+		echo '<div class="nv-post-cover ' . esc_attr( $thumbnail_class ) . '" ' . wp_kses_post( $cover_style ) . '>';
 		echo '<div class="nv-overlay"></div>';
 		echo $container_mode === 'contained' ? '<div class="container">' : '';
 

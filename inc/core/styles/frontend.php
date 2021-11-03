@@ -1317,17 +1317,19 @@ class Frontend extends Generator {
 		];
 
 		$overlay_rules = [
-			'--bgColor'   => [
+			'--bgColor' => [
 				Dynamic_Selector::META_KEY => $dataset['background_color'],
 			],
-			'--blendMode' => [
-				Dynamic_Selector::META_KEY => $dataset['blend_mode'],
-			],
-			'--opacity'   => [
+			'--opacity' => [
 				Dynamic_Selector::META_KEY     => $dataset['opacity'],
 				Dynamic_Selector::META_DEFAULT => 50,
 			],
 		];
+		if ( has_post_thumbnail() ) {
+			$overlay_rules['--blendMode'] = [
+				Dynamic_Selector::META_KEY => $dataset['blend_mode'],
+			];
+		}
 
 		$this->_subscribers[] = [
 			'selectors' => '.nv-overlay',

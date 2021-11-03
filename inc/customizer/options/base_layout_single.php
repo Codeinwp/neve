@@ -491,7 +491,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => '--blendMode',
-							'selector' => $this->cover_selector . ' .nv-overlay',
+							'selector' => $this->cover_selector . '.has-background .nv-overlay',
 						],
 					],
 					'active_callback'       => [ $this, 'is_cover_layout' ],
