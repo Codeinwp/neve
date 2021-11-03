@@ -418,7 +418,8 @@ abstract class Abstract_Builder implements Builder {
 					'partial' => $row_id === 'sidebar' ? 'hfg_header_layout_partial' : $row_setting_id . '_partial',
 				],
 				'options'               => [
-					'priority' => 100,
+					'priority'        => 100,
+					'active_callback' => [ $this, 'background_options_active_callback' ],
 				],
 				'default'               => [
 					'type'       => 'color',
@@ -517,6 +518,15 @@ abstract class Abstract_Builder implements Builder {
 		);
 
 		do_action( 'hfg_row_settings', $this->get_id(), $row_id, $row_setting_id );
+	}
+
+	/**
+	 * Returns true if advanced options from global settings are active
+	 *
+	 * @return bool
+	 */
+	public function background_options_active_callback() {
+		return ! get_theme_mod( 'neve_advanced_header_style', true );
 	}
 
 	/**
