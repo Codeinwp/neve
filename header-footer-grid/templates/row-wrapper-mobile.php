@@ -42,9 +42,24 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 			</button>
 		</div>
 		<div id="header-menu-sidebar-inner" class="<?php echo esc_attr( $inner_classes ); ?>">
+			<?php
+			/**
+			 * Executes actions before the content of the menu sidebar that appears on mobile devices.
+			 *
+			 * @since 3.0.6
+			 */
+			do_action( 'neve_before_mobile_menu_content' ); 
+			?>
 			<?php render_components( HeaderBuilder::BUILDER_NAME ); ?>
+			<?php
+			/**
+			 * Executes actions after the content of the menu sidebar that appears on mobile devices.
+			 *
+			 * @since 3.0.6
+			 */
+			do_action( 'neve_after_mobile_menu_content' ); 
+			?>
 		</div>
 	</div>
 </div>
 <div class="header-menu-sidebar-overlay"></div>
-

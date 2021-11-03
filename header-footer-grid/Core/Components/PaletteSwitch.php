@@ -91,7 +91,10 @@ class PaletteSwitch extends Abstract_Component {
 		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() );
 		$this->set_property( 'is_auto_width', true );
 
-		add_filter( 'neve_after_css_root', [ $this, 'toggle_css' ], 10, 1 );
+		add_filter( 'neve_after_css_root', [ $this, 'toggle_css' ] );
+		if ( defined( 'ELEMENTOR_VERSION' ) ) {
+			add_filter( 'neve_elementor_colors', [ $this, 'toggle_elementor_css' ] );
+		}
 		add_action( 'wp_enqueue_scripts', [ $this, 'load_scripts' ] );
 
 		add_filter(
@@ -173,6 +176,86 @@ class PaletteSwitch extends Abstract_Component {
 	}
 
 	/**
+	 * Utility method to return light and dark palette variants.
+	 *
+	 * @return array
+	 */
+	private function get_light_dark_palettes() {
+		$default_light = 'base';
+		$default_dark  = 'darkMode';
+
+		$customizer       = Mods::get( 'neve_global_colors', neve_get_global_colors_default( true ) );
+		$defined_palettes = $customizer['palettes'];
+		$active_light     = $customizer['activePalette'];
+		$active_dark      = Mods::get( $this->get_id() . '_' . self::DARK_PALETTE_ID, $default_dark );
+
+		$palette_light = $defined_palettes[ $default_light ];
+		if ( isset( $defined_palettes[ $active_light ] ) ) {
+			$palette_light = $defined_palettes[ $active_light ];
+		}
+
+		$palette_dark = $defined_palettes[ $default_dark ];
+		if ( isset( $defined_palettes[ $active_dark ] ) ) {
+			$palette_dark = $defined_palettes[ $active_dark ];
+		}
+
+		return [ $palette_light, $palette_dark ];
+	}
+
+	/**
+	 * Adds the palette variants to elementor
+	 *
+	 * @param string $css The global colors CSS from elementor.
+	 *
+	 * @return string
+	 */
+	public function toggle_elementor_css( $css ) {
+		if ( ! $this->is_component_active() && ! is_customize_preview() ) {
+			return $css;
+		}
+
+		$auto_adjust                          = Mods::get( $this->get_id() . '_' . self::AUTO_ADJUST, 0 );
+		list( $palette_light, $palette_dark ) = $this->get_light_dark_palettes();
+
+		$light_css = '';
+		foreach ( $palette_light['colors'] as $slug => $color ) {
+			$light_css .= '--e-global-color-' . str_replace( '-', '', $slug ) . ':' . $color . ';';
+		}
+
+		$dark_css = '';
+		foreach ( $palette_dark['colors'] as $slug => $color ) {
+			$dark_css .= '--e-global-color-' . str_replace( '-', '', $slug ) . ':' . $color . ';';
+		}
+
+		if ( $auto_adjust && ! is_customize_preview() ) {
+			$css .= '
+				/* Light mode */
+				@media (prefers-color-scheme: light) {
+				  :root{
+				    ' . $light_css . '
+				  }
+				}
+
+				/* Dark mode */
+				@media (prefers-color-scheme: dark) {
+				  :root{
+				    ' . $dark_css . '
+				  }
+				}
+			';
+		}
+
+		return $css . '
+		[data-neve-theme="light"], html.neve-light-theme {
+			' . $light_css . '
+		}
+		[data-neve-theme="dark"], html.neve-dark-theme ~ * {
+			' . $dark_css . '
+		}
+		';
+	}
+
+	/**
 	 * Methods used to filter CSS global colors
 	 *
 	 * @param string $css The CSS string.
@@ -184,30 +267,15 @@ class PaletteSwitch extends Abstract_Component {
 			return '';
 		}
 
-		$css          .= ' ';
-		$default_light = 'base';
-		$default_dark  = 'darkMode';
+		$css                                 .= ' ';
+		$auto_adjust                          = Mods::get( $this->get_id() . '_' . self::AUTO_ADJUST, 0 );
+		list( $palette_light, $palette_dark ) = $this->get_light_dark_palettes();
 
-		$auto_adjust = Mods::get( $this->get_id() . '_' . self::AUTO_ADJUST, 0 );
-
-		$customizer       = Mods::get( 'neve_global_colors', neve_get_global_colors_default( true ) );
-		$defined_palettes = $customizer['palettes'];
-		$active_light     = $customizer['activePalette'];
-		$active_dark      = Mods::get( $this->get_id() . '_' . self::DARK_PALETTE_ID, $default_dark );
-
-		$palette_light = $defined_palettes[ $default_light ];
-		if ( isset( $defined_palettes[ $active_light ] ) ) {
-			$palette_light = $defined_palettes[ $active_light ];
-		}
 		$light_css = '';
 		foreach ( $palette_light['colors'] as $slug => $color ) {
 			$light_css .= '--' . $slug . ':' . $color . ';';
 		}
 
-		$palette_dark = $defined_palettes[ $default_dark ];
-		if ( isset( $defined_palettes[ $active_dark ] ) ) {
-			$palette_dark = $defined_palettes[ $active_dark ];
-		}
 		$dark_css = '';
 		foreach ( $palette_dark['colors'] as $slug => $color ) {
 			$dark_css .= '--' . $slug . ':' . $color . ';';

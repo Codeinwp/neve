@@ -9,19 +9,12 @@ $text-color: #50575e;
   }
 }
 
-body > .nv-repeater-item {
-  z-index: 1000000;
-
-  .components-tooltip {
-	display: none;
-  }
-
-  .nv-repeater-handle:focus :active {
-	cursor: grabbing;
-  }
-}
-
 .nv-repeater-item {
+  &.sortable-chosen {
+	.components-tooltip {
+	  display: none;
+	}
+  }
   .nv-repeater-item-header {
 	display: flex;
 	flex-direction: row;

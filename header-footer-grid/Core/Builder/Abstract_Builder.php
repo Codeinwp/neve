@@ -1018,16 +1018,9 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 							$background = $value;
 							$style      = '';
-							if ( isset( $background['useFeatured'] ) && $background['useFeatured'] === true && is_singular() ) {
-								$featured_image = get_the_post_thumbnail_url();
-								if ( ! empty( $featured_image ) ) {
-									$style .= sprintf( 'background-image: url("%s");', esc_url( $featured_image ) );
-								} else {
-									$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
-								}
-							} elseif ( ! empty( $background['imageUrl'] ) ) {
-								$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
-							}
+							$image      = $this->get_row_featured_image( $background['imageUrl'], $background['useFeatured'], $meta );
+
+							$style .= sprintf( 'background-image: %s;', wp_kses_post( $image ) );
 							$style .= 'background-size:cover;';
 
 							if ( ! empty( $background['focusPoint'] ) && ! empty( $background['focusPoint']['x'] ) && ! empty( $background['focusPoint']['y'] ) ) {
@@ -1070,6 +1063,39 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		return $css_array;
+	}
+
+	/**
+	 * Returns the featured image for the header row.
+	 *
+	 * @param string  $image_url The image URL.
+	 * @param boolean $use_featured Flag if featured image should be used.
+	 * @param array   $meta Additional meta for the image.
+	 *
+	 * @return string
+	 */
+	private function get_row_featured_image( $image_url, $use_featured, $meta ) {
+		$image = 'none';
+		if ( ! empty( $use_featured ) && $use_featured === true && is_singular() ) {
+			$featured_image = get_the_post_thumbnail_url();
+			if ( ! empty( $featured_image ) ) {
+				$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
+			} else {
+				$image = sprintf( 'url("%s")', esc_url( $image_url ) );
+			}
+		} elseif ( ! empty( $image_url ) ) {
+			$image = sprintf( 'url("%s")', esc_url( $image_url ) );
+		}
+		/**
+		 * Filters the background featured image output url.
+		 *
+		 * @param string $image         The background image value: `none` or `url(<url>)`.
+		 * @param boolean $use_featured Flag to specify if featured image should be used or fallback.
+		 * @param array $meta           Additional meta for the image.
+		 *
+		 * @since 3.0.5
+		 */
+		return apply_filters( 'nv_builder_row_image_url', $image, $use_featured, $meta );
 	}
 
 	/**
@@ -1167,18 +1193,7 @@ abstract class Abstract_Builder implements Builder {
 					'--bgImage'          => [
 						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							$image = 'none';
-							if ( isset( $value['useFeatured'] ) && $value['useFeatured'] === true && is_singular() ) {
-								$featured_image = get_the_post_thumbnail_url();
-								if ( ! empty( $featured_image ) ) {
-									$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
-								} else {
-									$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
-								}
-							} elseif ( ! empty( $value['imageUrl'] ) ) {
-								$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
-							}
-
+							$image = $this->get_row_featured_image( $value['imageUrl'], $value['useFeatured'], $meta );
 							return sprintf( '%s:%s;', $css_prop, $image );
 						},
 					],
@@ -2299,15 +2314,19 @@ abstract class Abstract_Builder implements Builder {
 			],
 		];
 
-		$layout      = $styles_map[ $columns ][ $layout ];
+		$proportions = 'equal';
+		if ( isset( $styles_map[ $columns ] ) && isset( $styles_map[ $columns ][ $layout ] ) ) {
+			$proportions = $styles_map[ $columns ][ $layout ];
+		}
+
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.' . $builder . '-' . $row . '-inner .row',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_GRID_TEMPLATE_COLS => [
 					Dynamic_Selector::META_KEY     => $mods_prefix . self::COLUMNS_LAYOUT,
 					Dynamic_Selector::META_DEFAULT => 'auto',
-					Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $layout ) {
-						return sprintf( '%s:%s;', $css_prop, $layout );
+					Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $proportions ) {
+						return sprintf( '%s:%s;', $css_prop, $proportions );
 					},
 				],
 				'--vAlign'                          => [
