@@ -360,6 +360,10 @@ class Css_Prop {
 	 * @param string $value the font family value.
 	 */
 	public static function format_font_family_value( $value ) {
+		// At some point we were setting the DB values with quotes and removed that.
+		// Make sure we drop the slashes and quotes.
+		$value = str_replace( [ '"', '\\' ], '', $value );
+
 		if ( strpos( $value, ',' ) !== false ) {
 			$value = explode( ',', $value );
 
