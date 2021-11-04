@@ -29,6 +29,12 @@ const RichTextComponent = ({ control }) => {
 	 * We check here that the section is visible so that we trigger the load of the component
 	 */
 	useEffect(() => {
+		document.addEventListener('neve-changed-customizer-value', (e) => {
+			if (!e.detail) return false;
+			if (e.detail.id !== controlId) return false;
+			updateValues(e.detail.value);
+		});
+
 		window.wp.customize.bind('ready', () => {
 			window.wp.customize
 				.state('expandedSection')
