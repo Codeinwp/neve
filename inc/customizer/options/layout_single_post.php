@@ -177,8 +177,8 @@ class Layout_Single_Post extends Base_Customizer {
 						'max'        => 700,
 						'units'      => [ 'px', 'vh' ],
 						'defaultVal' => [
-							'mobile'  => 400,
-							'tablet'  => 400,
+							'mobile'  => 250,
+							'tablet'  => 320,
 							'desktop' => 400,
 							'suffix'  => [
 								'mobile'  => 'px',
@@ -264,16 +264,20 @@ class Layout_Single_Post extends Base_Customizer {
 					'show_labels'           => true,
 					'live_refresh_selector' => '.nv-post-cover .nv-title-meta-wrap,.entry-header .entry-title',
 					'live_refresh_css_prop' => [
-						'remove_classes' => [
-							'mobile-left',
-							'mobile-right',
-							'mobile-center',
-							'tablet-left',
-							'tablet-right',
-							'tablet-center',
-							'desktop-left',
-							'desktop-right',
-							'desktop-center',
+						'cssVar' => [
+							'vars'       => [
+								'--textAlign',
+								'--justify',
+							],
+							'valueRemap' => [
+								'--justify' => [
+									'left'   => 'flex-start',
+									'center' => 'center',
+									'right'  => 'flex-end',
+								],
+							],
+							'responsive' => true,
+							'selector'   => '.nv-post-cover .container, .entry-header',
 						],
 					],
 				],
