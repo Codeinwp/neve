@@ -2304,15 +2304,19 @@ abstract class Abstract_Builder implements Builder {
 			],
 		];
 
-		$layout      = $styles_map[ $columns ][ $layout ];
+		$proportions = 'equal';
+		if ( isset( $styles_map[ $columns ] ) && isset( $styles_map[ $columns ][ $layout ] ) ) {
+			$proportions = $styles_map[ $columns ][ $layout ];
+		}
+
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.' . $builder . '-' . $row . '-inner .row',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_GRID_TEMPLATE_COLS => [
 					Dynamic_Selector::META_KEY     => $mods_prefix . self::COLUMNS_LAYOUT,
 					Dynamic_Selector::META_DEFAULT => 'auto',
-					Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $layout ) {
-						return sprintf( '%s:%s;', $css_prop, $layout );
+					Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $proportions ) {
+						return sprintf( '%s:%s;', $css_prop, $proportions );
 					},
 				],
 				'--vAlign'                          => [
