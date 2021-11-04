@@ -5,7 +5,7 @@ import { useState, useEffect } from '@wordpress/element';
 
 const BackgroundComponent = ({ control }) => {
 	const controlVal = control.setting.get();
-	const { label } = control.params;
+	const { label, description } = control.params;
 	const [value, setValue] = useState({
 		type: controlVal.type || 'color',
 		imageUrl: controlVal.imageUrl || '',
@@ -34,7 +34,14 @@ const BackgroundComponent = ({ control }) => {
 		});
 	}, []);
 
-	return <Background onChange={updateValue} value={value} label={label} />;
+	return (
+		<Background
+			onChange={updateValue}
+			value={value}
+			label={label}
+			description={description}
+		/>
+	);
 };
 
 BackgroundComponent.propTypes = {

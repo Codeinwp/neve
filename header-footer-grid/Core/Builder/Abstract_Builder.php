@@ -419,7 +419,9 @@ abstract class Abstract_Builder implements Builder {
 				],
 				'options'               => [
 					'priority'        => 100,
-					'active_callback' => [ $this, 'background_options_active_callback' ],
+					'active_callback' => function () use ( $row_id ) {
+						return $row_id === 'sidebar' || get_theme_mod( 'neve_advanced_header_style', true );
+					},
 				],
 				'default'               => [
 					'type'       => 'color',
@@ -518,15 +520,6 @@ abstract class Abstract_Builder implements Builder {
 		);
 
 		do_action( 'hfg_row_settings', $this->get_id(), $row_id, $row_setting_id );
-	}
-
-	/**
-	 * Returns true if advanced options from global settings are active
-	 *
-	 * @return bool
-	 */
-	public function background_options_active_callback() {
-		return ! get_theme_mod( 'neve_advanced_header_style', true );
 	}
 
 	/**

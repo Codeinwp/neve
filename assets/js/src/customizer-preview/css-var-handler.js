@@ -20,6 +20,7 @@ export class CSSVariablesHandler {
 			fallback = 'inherit',
 			dispatchWindowResize = false,
 			valueRemap,
+			isGlobalSet,
 		} = params;
 
 		//Bail if no selectors or variables.
@@ -37,6 +38,7 @@ export class CSSVariablesHandler {
 		this.fallback = fallback;
 		this.timeout = null;
 		this.valueRemap = valueRemap;
+		this.isGlobalSet = isGlobalSet;
 
 		const css = this.getStyle();
 
