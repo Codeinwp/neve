@@ -178,6 +178,15 @@ const RichText = ({
 		initEditor();
 	}, []);
 
+	// Re-init text editor content on conditional changes.
+	useEffect(() => {
+		document.addEventListener('neve-changed-customizer-value', (e) => {
+			if (!e.detail) return false;
+			if (e.detail.id !== id) return false;
+			setEditorContent(e.detail.value);
+		});
+	}, []);
+
 	return (
 		<div
 			className="neve-white-background-control neve-rich-text"
