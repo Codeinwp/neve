@@ -75,11 +75,19 @@ class Cover_Header extends Base_View {
 			$cover_style = 'style="' . $cover_style . '"';
 		}
 
+		$hide_title = false;
+		if ( $context === 'page' ) {
+			$hide_title          = get_theme_mod( 'neve_page_hide_title', false );
+			$specific_hide_title = get_post_meta( get_the_ID(), 'neve_meta_disable_title', true );
+			if ( ! empty( $specific_hide_title ) ) {
+				$hide_title = $specific_hide_title === 'on';
+			}
+		}
+
 		echo '<div class="nv-post-cover" ' . wp_kses_post( $cover_style ) . '>';
 		echo '<div class="nv-overlay"></div>';
 		echo $container_mode === 'contained' ? '<div class="container">' : '';
 
-		$hide_title = $context === 'page' && get_theme_mod( 'neve_page_hide_title', true ) === true;
 		if ( ! $hide_title ) {
 			echo '<div class="' . esc_attr( implode( ' ', $title_meta_wrap_classes ) ) . '">';
 			if ( $meta_before === true ) {
