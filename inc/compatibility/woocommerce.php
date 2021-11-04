@@ -203,7 +203,7 @@ class Woocommerce {
 				},
 				0
 			);
-			add_action( 'woocommerce_checkout_after_customer_details', [ $this, 'close_div' ] );
+			add_action( 'woocommerce_checkout_after_customer_details', [ $this, 'close_div' ], PHP_INT_MAX );
 			add_action(
 				'woocommerce_checkout_before_order_review_heading',
 				function () {
