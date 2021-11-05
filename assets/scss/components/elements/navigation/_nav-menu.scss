@@ -23,7 +23,7 @@
 	margin-right: calc(var(--spacing) / 2 * -1);
 	margin-left: calc(var(--spacing) / 2 * -1);
 
-	li a {
+	li > a {
 		display: flex;
 		align-items: center;
 		min-height: var(--height);
@@ -31,7 +31,7 @@
 		position: relative;
 	}
 
-	a:hover {
+	li > a:hover {
 		color: var(--hoverColor);
 	}
 
@@ -80,7 +80,7 @@
 			min-width: 150px;
 		}
 
-		a {
+		li > a {
 			padding: $spacing-xs $spacing-md;
 			white-space: nowrap;
 			display: flex;
@@ -115,7 +115,7 @@
 			width: 100%;
 		}
 
-		a {
+		li:not([class*="block"]) > a {
 			padding: $spacing-sm 0;
 			white-space: unset;
 		}
@@ -150,7 +150,7 @@
 			@extend %show-dropdown;
 
 			&.dropdown-open {
-				max-height: 1300px;
+				max-height: unset;
 			}
 		}
 

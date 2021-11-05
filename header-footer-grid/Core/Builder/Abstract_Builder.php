@@ -1962,7 +1962,7 @@ abstract class Abstract_Builder implements Builder {
 							'--flexG'   => [
 								'left'   => '1',
 								'center' => '0',
-								'right'  => '1',
+								'right'  => '0',
 							],
 						],
 						'responsive' => true,
@@ -2255,7 +2255,7 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_KEY     => $align_id,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 						Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) {
-							if ( $value !== 'center' ) {
+							if ( $value === 'left' ) {
 								return sprintf( '%s: 1;', $css_prop );
 							}
 
