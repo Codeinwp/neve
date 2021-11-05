@@ -157,7 +157,6 @@ class CustomHtml extends Abstract_Component {
 						'allowedDynamicFields' => array( 'string', 'url' ),
 					),
 				),
-				// 'use_dynamic_fields' => array( 'string', 'url' ),
 				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);
