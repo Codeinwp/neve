@@ -14,40 +14,44 @@ const SortableItems = (props) => {
 				handle=".ti-sortable-handle"
 				animation="300"
 			>
-				{value.map((item) => {
-					const { id, visible } = item;
-					return (
-						<div
-							className={`ti-sortable-item-area ti-sortable-item-area-${id}`}
-							key={id}
-						>
+				{value
+					.filter((item) => {
+						return elements.hasOwnProperty(item.id);
+					})
+					.map((item) => {
+						const { id, visible } = item;
+						return (
 							<div
-								className={
-									visible
-										? 'ti-sortable-item'
-										: 'ti-sortable-item hidden'
-								}
+								className={`ti-sortable-item-area ti-sortable-item-area-${id}`}
+								key={id}
 							>
-								<Button
-									isTertiary
-									icon={visible ? 'visibility' : 'hidden'}
-									label={__('Toggle', 'neve')}
-									showTooltip={true}
-									className="ti-sortable-item-toggle"
-									onClick={() => {
-										toggle(id);
-									}}
-								/>
-								<div className="ti-sortable-item-label">
-									{elements[id]}
-								</div>
-								<div className="ti-sortable-handle">
-									<Button isTertiary icon="menu" />
+								<div
+									className={
+										visible
+											? 'ti-sortable-item'
+											: 'ti-sortable-item hidden'
+									}
+								>
+									<Button
+										isTertiary
+										icon={visible ? 'visibility' : 'hidden'}
+										label={__('Toggle', 'neve')}
+										showTooltip={true}
+										className="ti-sortable-item-toggle"
+										onClick={() => {
+											toggle(id);
+										}}
+									/>
+									<div className="ti-sortable-item-label">
+										{elements[id]}
+									</div>
+									<div className="ti-sortable-handle">
+										<Button isTertiary icon="menu" />
+									</div>
 								</div>
 							</div>
-						</div>
-					);
-				})}
+						);
+					})}
 			</ReactSortable>
 		</div>
 	);
