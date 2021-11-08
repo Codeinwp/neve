@@ -1140,21 +1140,40 @@ class Frontend extends Generator {
 			return;
 		}
 
+		$justify_map = [
+			'left'   => 'flex-start',
+			'center' => 'center',
+			'right'  => 'flex-end',
+		];
+
 		$cover_rules = [
-			'--height'  => [
+			'--height'    => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_HEIGHT,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_AS_JSON       => true,
 				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
 				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "400", "tablet": "400", "desktop": "400" }',
 			],
-			'--padding' => [
+			'--padding'   => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-			'--vAlign'  => [
+			'--justify'   => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_ALIGNMENT,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => $this->post_title_alignment(),
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ( $justify_map ) {
+					return sprintf( '%s: %s;', $css_prop, $justify_map[ $value ] );
+				},
+			],
+			'--textAlign' => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_ALIGNMENT,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => $this->post_title_alignment(),
+			],
+			'--vAlign'    => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_POSITION,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => [
@@ -1171,13 +1190,18 @@ class Frontend extends Generator {
 		];
 
 		$title_rules = [
-			'--color' => [
+			'--color'     => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COVER_TEXT_COLOR,
+			],
+			'--textAlign' => [
+				Dynamic_Selector::META_KEY           => Config::MODS_POST_COVER_TITLE_ALIGNMENT,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => $this->post_title_alignment(),
 			],
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => '.nv-post-cover .nv-title-meta-wrap',
+			'selectors' => '.nv-post-cover .nv-title-meta-wrap, .entry-header',
 			'rules'     => $title_rules,
 		];
 
