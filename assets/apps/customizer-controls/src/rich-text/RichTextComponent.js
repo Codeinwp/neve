@@ -48,6 +48,15 @@ const RichTextComponent = ({ control }) => {
 		});
 	}, []);
 
+	useEffect(() => {
+		document.addEventListener('neve-changed-customizer-value', (e) => {
+			if (isVisible) return;
+			if (!e.detail) return false;
+			if (e.detail.id !== controlId) return false;
+			updateValues(e.detail.value);
+		});
+	}, []);
+
 	return (
 		<Suspense fallback={<Spinner />}>
 			{isVisible && (
