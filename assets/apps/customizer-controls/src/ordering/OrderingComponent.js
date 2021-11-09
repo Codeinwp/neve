@@ -4,7 +4,9 @@ import { Spinner } from '@wordpress/components';
 import { maybeParseJson } from '../common/common';
 import PropTypes from 'prop-types';
 
-const Ordering = lazy(() => import('./Ordering'));
+const Ordering = lazy(() =>
+	import(/* webpackChunkName: "order" */ './Ordering')
+);
 import { __ } from '@wordpress/i18n';
 
 const OrderingComponent = ({ control }) => {
