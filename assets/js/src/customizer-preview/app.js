@@ -25,9 +25,9 @@ function handleResponsiveRadioButtons(args, nextValue) {
 }
 
 /**
- * Run JS on load.
+ * Run JS on preview-ready.
  */
-window.addEventListener('load', function () {
+wp.customize.bind('preview-ready', function () {
 	/**
 	 * Add action when Header Panel rendered by customizer.
 	 */
