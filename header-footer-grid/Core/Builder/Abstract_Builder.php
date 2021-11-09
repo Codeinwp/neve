@@ -1125,25 +1125,25 @@ abstract class Abstract_Builder implements Builder {
 				},
 				Dynamic_Selector::META_DEFAULT       => '{ desktop: 0, tablet: 0, mobile: 0 }',
 			];
+
+			$rules['--rowBWidth'] = [
+				Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::BOTTOM_BORDER,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+					$value = (int) $value;
+					if ( $value >= 0 ) {
+						return sprintf( '%s:%s;', $css_prop, $value . 'px' );
+					}
+
+					return '';
+				},
+			];
+
+			$rules['--rowBColor'] = [
+				Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::BORDER_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+			];
 		}
-
-		$rules['--rowBWidth'] = [
-			Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::BOTTOM_BORDER,
-			Dynamic_Selector::META_IS_RESPONSIVE => true,
-			Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-				$value = (int) $value;
-				if ( $value > 0 ) {
-					return sprintf( '%s:%s;', $css_prop, $value . 'px' );
-				}
-
-				return '';
-			},
-		];
-
-		$rules['--rowBColor'] = [
-			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::BORDER_COLOR,
-			Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
-		];
 
 		$rules['--color'] = [
 			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
