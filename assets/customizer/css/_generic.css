@@ -11,6 +11,6 @@
 	display: block;
 }
 
-#customize-theme-controls .customize-pane-child.accordion-section-content {
+.customize-pane-child.accordion-section-content {
 	height: 100%;
 }
