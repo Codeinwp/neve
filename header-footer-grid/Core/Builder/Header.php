@@ -11,9 +11,14 @@
 
 namespace HFG\Core\Builder;
 
+use Elementor\Settings;
 use HFG\Core\Customizer\Header_Presets;
 use HFG\Main;
+use Neve\Customizer\Controls\Button;
+use Neve\Customizer\Controls\Heading;
 use Neve\Customizer\Controls\React\Presets_Selector;
+use Neve\Customizer\Controls\React\Responsive_Toggle;
+use Neve\Customizer\Controls\Tabs;
 use WP_Customize_Manager;
 
 /**
@@ -130,9 +135,190 @@ class Header extends Abstract_Builder {
 			)
 		);
 
+		$this->customize_register_global_header( $wp_customize );
 		return parent::customize_register( $wp_customize );
 	}
 
+	/**
+	 * Registers controls for the global header
+	 *
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 */
+	private function customize_register_global_header( WP_Customize_Manager $wp_customize ) {
+		$wp_customize->add_section(
+			'neve_pro_global_header_settings',
+			[
+				'title'    => __( 'General', 'neve' ),
+				'priority' => 200,
+				'panel'    => 'hfg_header',
+			]
+		);
+
+
+		$wp_customize->add_setting(
+			'global_header_tabs',
+			[
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
+			]
+		);
+
+		$wp_customize->add_control(
+			new Tabs(
+				$wp_customize,
+				'neve_pro_global_header_settings',
+				[
+					'priority' => - 100,
+					'section'  => 'neve_pro_global_header_settings',
+					'tabs'     => array(
+						'general' => array(
+							'label' => esc_html__( 'General', 'neve' ),
+							'icon'  => 'admin-generic',
+						),
+						'style'   => array(
+							'label' => esc_html__( 'Style', 'neve' ),
+							'icon'  => 'admin-customizer',
+						),
+					),
+					'controls' => array(
+						'general' => array(
+							'neve_global_header' => array(),
+							'neve_header_conditional_selector' => array(),
+						),
+						'style'   => array(
+							'neve_background_heading'    => array(),
+							'neve_global_background'     => array(),
+							'neve_transparent_header'    => array(),
+							'neve_advanced_header_style' => array(),
+							'neve_top_header_shortcut'   => array(),
+						),
+					),
+				]
+			)
+		);
+
+		$this->customize_header_background( $wp_customize );
+	}
+
+	/**
+	 * Registers controls for global header background
+	 *
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 */
+	private function customize_header_background( WP_Customize_Manager $wp_customize ) {
+		$wp_customize->add_setting(
+			'neve_background_heading',
+			[
+				'sanitize_callback' => 'sanitize_text_field',
+			]
+		);
+		$wp_customize->add_control(
+			new Heading(
+				$wp_customize,
+				'neve_background_heading',
+				array(
+					'label'            => esc_html__( 'Background', 'neve' ),
+					'section'          => 'neve_pro_global_header_settings',
+					'priority'         => 20,
+					'class'            => 'background-accordion',
+					'accordion'        => true,
+					'controls_to_wrap' => 5,
+					'tab'              => 'style',
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'neve_advanced_header_style',
+			array(
+				'sanitize_callback' => 'neve_sanitize_checkbox',
+				'default'           => true,
+			)
+		);
+		$wp_customize->add_control(
+			'neve_advanced_header_style',
+			array(
+				'label'    => esc_html__( 'Enable Individual Row Background', 'neve' ),
+				'section'  => 'neve_pro_global_header_settings',
+				'type'     => 'neve_toggle_control',
+				'tab'      => 'style',
+				'priority' => 30,
+			)
+		);
+
+		$wp_customize->add_setting(
+			'neve_global_background',
+			array(
+				'transport'         => 'postMessage',
+				'sanitize_callback' => 'neve_sanitize_background',
+				'default'           => [
+					'type'       => 'color',
+					'colorValue' => '#000000',
+				],
+			)
+		);
+
+		$wp_customize->add_control(
+			'neve_global_background',
+			array(
+				'label'                 => esc_html__( 'Global Background', 'neve' ),
+				'description'           => esc_html__( 'A background color or image that spans across all header rows.', 'neve' ),
+				'section'               => 'neve_pro_global_header_settings',
+				'type'                  => 'neve_background_control',
+				'priority'              => 30,
+				'active_callback'       => [ $this, 'background_options_active_callback' ],
+				'tab'                   => 'style',
+				'conditional_header'    => true,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'        => 'backgroundControl',
+						'selector'    => '.hfg_header',
+						'isGlobalSet' => true,
+					],
+				],
+			)
+		);
+
+		$rows = [ 'top', 'main', 'bottom' ];
+		foreach ( $rows as $row ) {
+			$wp_customize->add_setting(
+				'neve_' . $row . '_header_shortcut',
+				[
+					'sanitize_callback' => 'neve_sanitize_text_field',
+				]
+			);
+			$wp_customize->add_control(
+				new Button(
+					$wp_customize,
+					'neve_' . $row . '_header_shortcut',
+					[
+						'button_class'     => 'nv-top-bar-menu-shortcut',
+						// translators: comment
+						'text_before'      => sprintf( __( 'Set Background for the %s Row', 'neve' ), ucfirst( $row ) ),
+						'text_after'       => '.',
+						'button_text'      => __( 'here', 'neve' ),
+						'is_button'        => false,
+						'control_to_focus' => 'hfg_header_layout_' . $row . '_background',
+						'shortcut'         => true,
+						'section'          => 'neve_pro_global_header_settings',
+						'priority'         => 40,
+						'active_callback'  => function () {
+							return get_theme_mod( 'neve_advanced_header_style', true );
+						},
+					]
+				)
+			);
+		}
+	}
+
+	/**
+	 * Returns true if individual options from header background are disabled
+	 *
+	 * @return bool
+	 */
+	public function background_options_active_callback() {
+		return ! get_theme_mod( 'neve_advanced_header_style', true );
+	}
 
 	/**
 	 * Method called via hook.

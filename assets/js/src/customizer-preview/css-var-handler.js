@@ -20,7 +20,6 @@ export class CSSVariablesHandler {
 			fallback = 'inherit',
 			dispatchWindowResize = false,
 			valueRemap,
-			isGlobalSet,
 		} = params;
 
 		//Bail if no selectors or variables.
@@ -38,7 +37,6 @@ export class CSSVariablesHandler {
 		this.fallback = fallback;
 		this.timeout = null;
 		this.valueRemap = valueRemap;
-		this.isGlobalSet = isGlobalSet;
 
 		const css = this.getStyle();
 
@@ -92,6 +90,23 @@ export class CSSVariablesHandler {
 			default:
 				break;
 		}
+	}
+
+	getBackgroundDefaultVars(selector) {
+		const definitions = {
+			'--isGlobalImg': 'none',
+			'--isGlobalOvr': 'transparent',
+			'--isGlobalOpa': '0',
+			'--isGlobalAtt': 'unset',
+			'--isGlobalPos': '50% 50%',
+			'--bgColor': 'unset',
+		};
+
+		const properties = Object.entries(definitions)
+			.map(([prop, val]) => `${prop}:${val}`)
+			.join(';');
+
+		return `${selector}{${properties}}`;
 	}
 
 	getBackgroundControlVars() {

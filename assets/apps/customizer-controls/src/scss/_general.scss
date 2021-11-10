@@ -73,6 +73,16 @@
   display: list-item !important;
 }
 
+#sub-accordion-panel-hfg_header #accordion-section-neve_pro_global_header_settings {
+  display: list-item !important;
+}
+
+#customize-control-neve_top_header_shortcut p,
+#customize-control-neve_main_header_shortcut p,
+#customize-control-neve_bottom_header_shortcut p, {
+  margin: 0;
+}
+
 .neve-white-background-control {
   padding: 10px;
   background: #fff;
