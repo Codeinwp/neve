@@ -19,6 +19,29 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.0.11](https://github.com/Codeinwp/neve/compare/v3.0.10...v3.0.11) (2021-11-10)
+
+- [Feat] Add the possibility to replace WooCommerce Breadcrumbs with the ones from Yoast, SeoPress Pro, or RankMath - [Learn more](https://docs.themeisle.com/article/1123-breadcrumbs-in-neve#woo)
+- [Fix] Infinite scroll not working in some specific context
+- [Fix] Compatibility of palette switcher with Elementor global colors
+- [Fix] Archive featured image as background works only with all taxonomies enabled
+- [Fix] Post title alignment
+- [Fix] Repeater control adding unused values to the database & causing customizer to load in publishing state
+- [Fix] Edge case of footer columns not having a proper corresponding layout
+- [Fix] Bug affecting the container size and elements style
+- [Fix] Compatibility with Cartflows plugin
+- [Fix] HTML Component's TinyMCE new lines for existing content and Safari support
+- [Fix] Bring back custom font size field inside the WordPress editor
+- [Fix] Removed previously added values for font-size presets inside the editor
+- [Fix] Removed redundant border controls for mobile header sidebar
+- [Fix] Ordering control with blank elements
+- [Fix] Double scrollbar appearing in some customizer sections
+- [Fix] Inconsistent console error inside the customizer preview  
+- Update Google Fonts
+
+
+
+
 ##### [Version 3.0.10](https://github.com/Codeinwp/neve/compare/v3.0.9...v3.0.10) (2021-10-27)
 
 - [Fix] header rows background images not applying on legacy skin
