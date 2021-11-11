@@ -17,8 +17,8 @@ use HFG\Main;
 use Neve\Customizer\Controls\Button;
 use Neve\Customizer\Controls\Heading;
 use Neve\Customizer\Controls\React\Presets_Selector;
-use Neve\Customizer\Controls\React\Responsive_Toggle;
 use Neve\Customizer\Controls\Tabs;
+use HFG\Core\Settings\Manager as SettingsManager;
 use WP_Customize_Manager;
 
 /**
@@ -83,6 +83,8 @@ class Header extends Abstract_Builder {
 				'hadOldBuilder'   => neve_had_old_hfb() && ! neve_is_new_skin(),
 			)
 		);
+
+		add_filter( 'hfg_header_wrapper_class', [ $this, 'add_class_to_header_wrapper' ] );
 	}
 
 	/**
@@ -215,7 +217,7 @@ class Header extends Abstract_Builder {
 			new Heading(
 				$wp_customize,
 				'neve_background_heading',
-				array(
+				[
 					'label'            => esc_html__( 'Background', 'neve' ),
 					'section'          => 'neve_pro_global_header_settings',
 					'priority'         => 20,
@@ -223,43 +225,43 @@ class Header extends Abstract_Builder {
 					'accordion'        => true,
 					'controls_to_wrap' => 5,
 					'tab'              => 'style',
-				)
+				]
 			)
 		);
 
 		$wp_customize->add_setting(
 			'neve_advanced_header_style',
-			array(
+			[
 				'sanitize_callback' => 'neve_sanitize_checkbox',
 				'default'           => true,
-			)
+			]
 		);
 		$wp_customize->add_control(
 			'neve_advanced_header_style',
-			array(
+			[
 				'label'    => esc_html__( 'Enable Individual Row Background', 'neve' ),
 				'section'  => 'neve_pro_global_header_settings',
 				'type'     => 'neve_toggle_control',
 				'tab'      => 'style',
 				'priority' => 30,
-			)
+			]
 		);
 
 		$wp_customize->add_setting(
 			'neve_global_background',
-			array(
+			[
 				'transport'         => 'postMessage',
 				'sanitize_callback' => 'neve_sanitize_background',
+				'theme_supports'    => 'hfg_support',
 				'default'           => [
 					'type'       => 'color',
 					'colorValue' => '#000000',
 				],
-			)
+			]
 		);
-
 		$wp_customize->add_control(
 			'neve_global_background',
-			array(
+			[
 				'label'                 => esc_html__( 'Global Background', 'neve' ),
 				'description'           => esc_html__( 'A background color or image that spans across all header rows.', 'neve' ),
 				'section'               => 'neve_pro_global_header_settings',
@@ -271,12 +273,11 @@ class Header extends Abstract_Builder {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar' => [
-						'vars'        => 'backgroundControl',
-						'selector'    => '.hfg_header',
-						'isGlobalSet' => true,
+						'vars'     => 'backgroundControl',
+						'selector' => '.hfg_header',
 					],
 				],
-			)
+			]
 		);
 
 		$rows = [ 'top', 'main', 'bottom' ];
@@ -309,6 +310,16 @@ class Header extends Abstract_Builder {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Adds a class to the header wrapper.
+	 *
+	 * @param string $classes Existing classes.
+	 * @return string Updated classes.
+	 */
+	public function add_class_to_header_wrapper( $classes ) {
+		return $classes . $this->background_options_active_callback() ? ' global-styled' : '';
 	}
 
 	/**
