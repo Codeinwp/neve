@@ -211,7 +211,6 @@
 		wp.customize.selectiveRefresh.bind( 'partial-content-rendered', function(
 				settings
 		)  {
-			console.log( 'settings.partial.id', settings.partial.id );
 			dispatchEvent( document, 'selective-refresh-content-rendered', {
 				bubbles: true,
 				detail: settings.partial.id
