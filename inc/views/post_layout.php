@@ -6,6 +6,7 @@
  * @package Neve\Views
  */
 
+
 namespace Neve\Views;
 
 use Neve\Core\Settings\Config;

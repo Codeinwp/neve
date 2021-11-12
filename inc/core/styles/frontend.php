@@ -236,9 +236,8 @@ class Frontend extends Generator {
 	 *
 	 * Removed grid in new skin CSS so this should handle the grid.
 	 *
-	 * @since 3.0.0
-	 *
 	 * @return bool|void
+	 * @since 3.0.0
 	 */
 	public function setup_blog_layout() {
 		if ( ! neve_is_new_skin() ) {
@@ -1195,17 +1194,37 @@ class Frontend extends Generator {
 		];
 	}
 
-
+	/**
+	 * Check that all mods passed can be used for the provided context.
+	 * We use this to check if we can register subscribers for the provided mods.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param string[] $mods               A list of mods.
+	 * @param string   $context            A context for the mods.
+	 * @param string   $allowed_context    A list of allowed contexts to be passed on.
+	 *
+	 * @return int
+	 */
+	private function can_use_mods( $mods, $context, $allowed_context ) {
+		return array_reduce(
+			$mods,
+			function ( $carry, $item ) use ( $context, $allowed_context ) {
+				if ( empty( $this->get_cover_meta( $context, $item, $allowed_context ) ) ) {
+					return 0;
+				}
+				return $carry;
+			},
+			1
+		);
+	}
 
 	/**
 	 * Add css for post/page header.
 	 */
 	private function setup_header_style() {
 
-		$context = $this->get_header_context();
-		if ( empty( $context ) ) {
-			return;
-		}
+		list( $context, $allowed_context ) = $this->get_cover_context();
 
 		$justify_map = [
 			'left'   => 'flex-start',
@@ -1213,101 +1232,131 @@ class Frontend extends Generator {
 			'right'  => 'flex-end',
 		];
 
-		$cover_rules = [
-			'--height'    => [
-				Dynamic_Selector::META_KEY           => Config::get_constant_value( $context, 'COVER_HEIGHT' ),
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_AS_JSON       => true,
-				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
-				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "250", "tablet": "320", "desktop": "400" }',
+		$can_use_cover_rules = $this->can_use_mods(
+			[
+				Config::MODS_COVER_HEIGHT,
+				Config::MODS_COVER_PADDING,
+				Config::MODS_COVER_TITLE_ALIGNMENT,
+				Config::MODS_COVER_TITLE_POSITION,
 			],
-			'--padding'   => [
-				Dynamic_Selector::META_KEY           => Config::get_constant_value( $context, 'COVER_PADDING' ),
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
-				'directional-prop'                   => Config::CSS_PROP_PADDING,
-			],
-			'--justify'   => [
-				Dynamic_Selector::META_KEY           => Config::get_constant_value( $context, 'COVER_TITLE_ALIGNMENT' ),
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => self::post_title_alignment(),
-				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ( $justify_map ) {
-					return sprintf( '%s: %s;', $css_prop, $justify_map[ $value ] );
-				},
-			],
-			'--textAlign' => [
-				Dynamic_Selector::META_KEY           => Config::get_constant_value( $context, 'COVER_TITLE_ALIGNMENT' ),
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => self::post_title_alignment(),
-			],
-			'--vAlign'    => [
-				Dynamic_Selector::META_KEY           => Config::get_constant_value( $context, 'COVER_TITLE_POSITION' ),
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => [
-					'mobile'  => 'center',
-					'tablet'  => 'center',
-					'desktop' => 'center',
+			$context,
+			$allowed_context
+		);
+		if ( $can_use_cover_rules ) {
+			$cover_rules          = [
+				'--height'    => [
+					Dynamic_Selector::META_KEY           => $this->get_cover_meta( $context, Config::MODS_COVER_HEIGHT, $allowed_context ),
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_AS_JSON       => true,
+					Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+					Dynamic_Selector::META_DEFAULT       => '{ "mobile": "250", "tablet": "320", "desktop": "400" }',
 				],
-			],
-		];
+				'--padding'   => [
+					Dynamic_Selector::META_KEY           => $this->get_cover_meta( $context, Config::MODS_COVER_PADDING, $allowed_context ),
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
+					'directional-prop'                   => Config::CSS_PROP_PADDING,
+				],
+				'--justify'   => [
+					Dynamic_Selector::META_KEY           => $this->get_cover_meta( $context, Config::MODS_COVER_TITLE_ALIGNMENT, $allowed_context ),
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_DEFAULT       => self::post_title_alignment(),
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ( $justify_map ) {
+						return sprintf( '%s: %s;', $css_prop, $justify_map[ $value ] );
+					},
+				],
+				'--textAlign' => [
+					Dynamic_Selector::META_KEY           => $this->get_cover_meta( $context, Config::MODS_COVER_TITLE_ALIGNMENT, $allowed_context ),
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_DEFAULT       => self::post_title_alignment(),
+				],
+				'--vAlign'    => [
+					Dynamic_Selector::META_KEY           => $this->get_cover_meta( $context, Config::MODS_COVER_TITLE_POSITION, $allowed_context ),
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_DEFAULT       => [
+						'mobile'  => 'center',
+						'tablet'  => 'center',
+						'desktop' => 'center',
+					],
+				],
+			];
+			$this->_subscribers[] = [
+				'selectors' => '.nv-post-cover',
+				'rules'     => $cover_rules,
+			];
+		}
 
-		$this->_subscribers[] = [
-			'selectors' => '.nv-post-cover',
-			'rules'     => $cover_rules,
-		];
+		$can_use_title_rules = $this->can_use_mods(
+			[ Config::MODS_COVER_TEXT_COLOR, Config::MODS_COVER_TITLE_ALIGNMENT ],
+			$context,
+			$allowed_context
+		);
+		if ( $can_use_title_rules ) {
+			$title_rules          = [
+				'--color'     => [
+					Dynamic_Selector::META_KEY => $this->get_cover_meta( $context, Config::MODS_COVER_TEXT_COLOR, $allowed_context ),
+				],
+				'--textAlign' => [
+					Dynamic_Selector::META_KEY           => $this->get_cover_meta( $context, Config::MODS_COVER_TITLE_ALIGNMENT, $allowed_context ),
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_DEFAULT       => self::post_title_alignment(),
+				],
+			];
+			$this->_subscribers[] = [
+				'selectors' => '.nv-post-cover .nv-title-meta-wrap, .nv-page-title-wrap, .entry-header',
+				'rules'     => $title_rules,
+			];
+		}
 
-		$title_rules = [
-			'--color'     => [
-				Dynamic_Selector::META_KEY => Config::get_constant_value( $context, 'COVER_TEXT_COLOR' ),
-			],
-			'--textAlign' => [
-				Dynamic_Selector::META_KEY           => Config::get_constant_value( $context, 'COVER_TITLE_ALIGNMENT' ),
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => self::post_title_alignment(),
-			],
-		];
+		$can_use_boxed_title_rules = $this->can_use_mods(
+			[ Config::MODS_COVER_BOXED_TITLE_PADDING, Config::MODS_COVER_BOXED_TITLE_BACKGROUND ],
+			$context,
+			$allowed_context
+		);
+		if ( $can_use_boxed_title_rules ) {
+			$boxed_title_rules    = [
+				'--padding' => [
+					Dynamic_Selector::META_KEY           => $this->get_cover_meta( $context, Config::MODS_COVER_BOXED_TITLE_PADDING, $allowed_context ),
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
+					'directional-prop'                   => Config::CSS_PROP_PADDING,
+				],
+				'--bgColor' => [
+					Dynamic_Selector::META_KEY     => $this->get_cover_meta( $context, Config::MODS_COVER_BOXED_TITLE_BACKGROUND, $allowed_context ),
+					Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
+				],
+			];
+			$this->_subscribers[] = [
+				'selectors' => '.nv-is-boxed.nv-title-meta-wrap',
+				'rules'     => $boxed_title_rules,
+			];
+		}
 
-		$this->_subscribers[] = [
-			'selectors' => '.nv-post-cover .nv-title-meta-wrap, .nv-page-title-wrap, .entry-header',
-			'rules'     => $title_rules,
-		];
+		$can_use_overlay_rules = $this->can_use_mods(
+			[ Config::MODS_COVER_BACKGROUND_COLOR, Config::MODS_COVER_OVERLAY_OPACITY, Config::MODS_COVER_BLEND_MODE ],
+			$context,
+			$allowed_context
+		);
+		if ( $can_use_overlay_rules ) {
+			$overlay_rules        = [
+				'--bgColor'   => [
+					Dynamic_Selector::META_KEY => $this->get_cover_meta( $context, Config::MODS_COVER_BACKGROUND_COLOR, $allowed_context ),
+				],
+				'--opacity'   => [
+					Dynamic_Selector::META_KEY     => $this->get_cover_meta( $context, Config::MODS_COVER_OVERLAY_OPACITY, $allowed_context ),
+					Dynamic_Selector::META_DEFAULT => 50,
+				],
+				'--blendMode' => [
+					Dynamic_Selector::META_KEY     => $this->get_cover_meta( $context, Config::MODS_COVER_BLEND_MODE, $allowed_context ),
+					Dynamic_Selector::META_DEFAULT => 'normal',
+				],
+			];
+			$this->_subscribers[] = [
+				'selectors' => '.nv-overlay',
+				'rules'     => $overlay_rules,
+			];
+		}
 
-		$boxed_title_rules = [
-			'--padding' => [
-				Dynamic_Selector::META_KEY           => Config::get_constant_value( $context, 'COVER_BOXED_TITLE_PADDING' ),
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
-				'directional-prop'                   => Config::CSS_PROP_PADDING,
-			],
-			'--bgColor' => [
-				Dynamic_Selector::META_KEY     => Config::get_constant_value( $context, 'COVER_BOXED_TITLE_BACKGROUND' ),
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
-			],
-		];
-
-		$this->_subscribers[] = [
-			'selectors' => '.nv-is-boxed.nv-title-meta-wrap',
-			'rules'     => $boxed_title_rules,
-		];
-
-		$overlay_rules = [
-			'--bgColor'   => [
-				Dynamic_Selector::META_KEY => Config::get_constant_value( $context, 'COVER_BACKGROUND_COLOR' ),
-			],
-			'--opacity'   => [
-				Dynamic_Selector::META_KEY     => Config::get_constant_value( $context, 'COVER_OVERLAY_OPACITY' ),
-				Dynamic_Selector::META_DEFAULT => 50,
-			],
-			'--blendMode' => [
-				Dynamic_Selector::META_KEY     => Config::get_constant_value( $context, 'COVER_BLEND_MODE' ),
-				Dynamic_Selector::META_DEFAULT => 'normal',
-			],
-		];
-
-		$this->_subscribers[] = [
-			'selectors' => '.nv-overlay',
-			'rules'     => $overlay_rules,
-		];
 	}
 
 	/**

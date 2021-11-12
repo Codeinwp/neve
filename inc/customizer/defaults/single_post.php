@@ -7,6 +7,7 @@
 
 namespace Neve\Customizer\Defaults;
 
+use Neve\Core\Settings\Config;
 use Neve\Customizer\Options\Layout_Single_Post;
 
 /**
@@ -107,23 +108,79 @@ trait Single_Post {
 	}
 
 	/**
-	 * Get the context for header.
+	 * Return the cover context.
+	 *
+	 * @since 3.1.0
+	 * @return array
+	 */
+	public function get_cover_context() {
+		/**
+		 * Filters the list of available post types to use as context for cover meta settings.
+		 *
+		 * @param string[] $allowed_context An array of allowed post types for context. E.g. [ 'post', 'page' ].
+		 *
+		 * @since 3.1.0
+		 */
+		$allowed_context = apply_filters( 'neve_allowed_cover_post_types', [ 'post', 'page' ], 10, 1 );
+		$context         = get_post_type();
+
+		return [ $context, $allowed_context ];
+	}
+
+
+	/**
+	 * Check the context for the single post is valid.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param string $context The post type context.
+	 *
+	 * @return boolean
+	 */
+	public function is_valid_context( $context ) {
+		if ( ! neve_is_new_skin() ) {
+			return false;
+		}
+
+		return is_singular( $context );
+	}
+
+	/**
+	 * Return the meta to use as context.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param string   $context            The context to get the meta for.
+	 * @param string   $meta               The meta key to get the final meta for.
+	 * @param string[] $allowed_context    The allowed contexts to check against.
 	 *
 	 * @return string
 	 */
-	public function get_header_context() {
-		if ( ! neve_is_new_skin() ) {
+	public function get_cover_meta( $context, $meta, $allowed_context = [ 'post', 'page' ] ) {
+		if ( empty( $context ) ) {
 			return '';
 		}
 
-		if ( is_singular( 'post' ) ) {
-			return 'post';
+		if ( ! in_array( $context, $allowed_context, true ) || ! $this->is_valid_context( $context ) ) {
+			return '';
 		}
 
-		if ( is_singular( 'page' ) ) {
-			return 'page';
+		$allowed_meta = [
+			Config::MODS_COVER_HEIGHT,
+			Config::MODS_COVER_PADDING,
+			Config::MODS_COVER_BACKGROUND_COLOR,
+			Config::MODS_COVER_OVERLAY_OPACITY,
+			Config::MODS_COVER_TEXT_COLOR,
+			Config::MODS_COVER_BLEND_MODE,
+			Config::MODS_COVER_TITLE_ALIGNMENT,
+			Config::MODS_COVER_TITLE_POSITION,
+			Config::MODS_COVER_BOXED_TITLE_PADDING,
+			Config::MODS_COVER_BOXED_TITLE_BACKGROUND,
+		];
+		if ( ! in_array( $meta, $allowed_meta, true ) ) {
+			return '';
 		}
 
-		return '';
+		return 'neve_' . $context . '_' . $meta;
 	}
 }
