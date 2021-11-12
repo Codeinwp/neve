@@ -132,7 +132,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 				if ( ! self::$mega_menu_enqueued ) {
 					$this->enqueue_mega_menu_style();
 				}
-				$output .= '<span class="neve-mm-description">' . esc_html( $item->description ) . '</span>';
+				$output .= '<div class="neve-mm-description">' . esc_html( $item->description ) . '</div>';
 			}
 		}
 		$output .= "</li>{$n}";

@@ -92,7 +92,7 @@ $desktop: map-get($gl-devices-list, desktop);
 	color: var(--color);
 	background: var(--bgColor);
 
-	li > a {
+	a {
 		color: var(--color);
 	}
 

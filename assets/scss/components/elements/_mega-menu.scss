@@ -36,6 +36,8 @@
 }
 
 .neve-mm-description {
+	padding: 0 0 15px;
+	text-transform: none;
 	font-size: 0.8em;
 	display: flex;
 }
@@ -129,7 +131,7 @@
 		}
 
 		.neve-mm-description {
-			padding: 10px 20px;
+			padding: 0 20px 10px;
 		}
 
 		.neve-mega-menu .neve-mm-col:not(:last-child) {
