@@ -420,7 +420,7 @@ abstract class Abstract_Builder implements Builder {
 				'options'               => [
 					'priority'        => 100,
 					'active_callback' => function () use ( $row_id ) {
-						return $row_id === 'sidebar' || get_theme_mod( 'neve_advanced_header_style', true );
+						return $row_id === 'sidebar' || get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true );
 					},
 				],
 				'default'               => [

@@ -13,7 +13,9 @@ namespace HFG\Core\Builder;
 
 use Elementor\Settings;
 use HFG\Core\Customizer\Header_Presets;
+use Neve\Core\Settings\Config;
 use HFG\Main;
+use Neve\Core\Styles\Dynamic_Selector;
 use Neve\Customizer\Controls\Button;
 use Neve\Customizer\Controls\Heading;
 use Neve\Customizer\Controls\React\Presets_Selector;
@@ -137,16 +139,6 @@ class Header extends Abstract_Builder {
 			)
 		);
 
-		$this->customize_register_global_header( $wp_customize );
-		return parent::customize_register( $wp_customize );
-	}
-
-	/**
-	 * Registers controls for the global header
-	 *
-	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
-	 */
-	private function customize_register_global_header( WP_Customize_Manager $wp_customize ) {
 		$wp_customize->add_section(
 			'neve_pro_global_header_settings',
 			[
@@ -156,49 +148,11 @@ class Header extends Abstract_Builder {
 			]
 		);
 
-
-		$wp_customize->add_setting(
-			'global_header_tabs',
-			[
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-			]
-		);
-
-		$wp_customize->add_control(
-			new Tabs(
-				$wp_customize,
-				'neve_pro_global_header_settings',
-				[
-					'priority' => - 100,
-					'section'  => 'neve_pro_global_header_settings',
-					'tabs'     => array(
-						'general' => array(
-							'label' => esc_html__( 'General', 'neve' ),
-							'icon'  => 'admin-generic',
-						),
-						'style'   => array(
-							'label' => esc_html__( 'Style', 'neve' ),
-							'icon'  => 'admin-customizer',
-						),
-					),
-					'controls' => array(
-						'general' => array(
-							'neve_global_header' => array(),
-							'neve_header_conditional_selector' => array(),
-						),
-						'style'   => array(
-							'neve_background_heading'    => array(),
-							'neve_global_background'     => array(),
-							'neve_transparent_header'    => array(),
-							'neve_advanced_header_style' => array(),
-							'neve_top_header_shortcut'   => array(),
-						),
-					),
-				]
-			)
-		);
-
 		$this->customize_header_background( $wp_customize );
+
+		SettingsManager::get_instance()->load( 'neve_pro_global_header_settings', $wp_customize );
+
+		return parent::customize_register( $wp_customize );
 	}
 
 	/**
@@ -207,69 +161,50 @@ class Header extends Abstract_Builder {
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 */
 	private function customize_header_background( WP_Customize_Manager $wp_customize ) {
-		$wp_customize->add_setting(
-			'neve_background_heading',
+		SettingsManager::get_instance()->add(
 			[
-				'sanitize_callback' => 'sanitize_text_field',
-			]
-		);
-		$wp_customize->add_control(
-			new Heading(
-				$wp_customize,
-				'neve_background_heading',
-				[
-					'label'            => esc_html__( 'Background', 'neve' ),
-					'section'          => 'neve_pro_global_header_settings',
-					'priority'         => 20,
-					'class'            => 'background-accordion',
+				'id'        => 'background_heading',
+				'group'     => 'neve_pro_global_header_settings',
+				'label'     => esc_html__( 'Background', 'neve' ),
+				'section'   => 'neve_pro_global_header_settings',
+				'priority'  => 20,
+				'tab'       => 'style',
+				'transport' => 'postMessage',
+				'type'      => 'Neve\Customizer\Controls\Heading',
+				'options'   => [
 					'accordion'        => true,
 					'controls_to_wrap' => 5,
-					'tab'              => 'style',
-				]
-			)
-		);
-
-		$wp_customize->add_setting(
-			'neve_advanced_header_style',
-			[
-				'sanitize_callback' => 'neve_sanitize_checkbox',
-				'default'           => true,
-			]
-		);
-		$wp_customize->add_control(
-			'neve_advanced_header_style',
-			[
-				'label'    => esc_html__( 'Enable Individual Row Background', 'neve' ),
-				'section'  => 'neve_pro_global_header_settings',
-				'type'     => 'neve_toggle_control',
-				'tab'      => 'style',
-				'priority' => 30,
-			]
-		);
-
-		$wp_customize->add_setting(
-			'neve_global_background',
-			[
-				'transport'         => 'postMessage',
-				'sanitize_callback' => 'neve_sanitize_background',
-				'theme_supports'    => 'hfg_support',
-				'default'           => [
-					'type'       => 'color',
-					'colorValue' => '#000000',
+					'expanded'         => true,
+					'class'            => 'background-accordion',
 				],
 			]
 		);
-		$wp_customize->add_control(
-			'neve_global_background',
+
+		SettingsManager::get_instance()->add(
 			[
+				'id'                 => 'advanced_style',
+				'group'              => 'neve_pro_global_header_settings',
+				'label'              => esc_html__( 'Enable Individual Row Background', 'neve' ),
+				'section'            => 'neve_pro_global_header_settings',
+				'type'               => 'neve_toggle_control',
+				'tab'                => 'style',
+				'priority'           => 30,
+				'transport'          => 'refresh',
+				'sanitize_callback'  => 'neve_sanitize_checkbox',
+				'default'            => true,
+				'conditional_header' => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => 'background',
+				'group'                 => 'neve_pro_global_header_settings',
+				'tab'                   => 'style',
+				'section'               => 'neve_pro_global_header_settings',
 				'label'                 => esc_html__( 'Global Background', 'neve' ),
 				'description'           => esc_html__( 'A background color or image that spans across all header rows.', 'neve' ),
-				'section'               => 'neve_pro_global_header_settings',
 				'type'                  => 'neve_background_control',
-				'priority'              => 30,
-				'active_callback'       => [ $this, 'background_options_active_callback' ],
-				'tab'                   => 'style',
-				'conditional_header'    => true,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar' => [
@@ -277,37 +212,45 @@ class Header extends Abstract_Builder {
 						'selector' => '.hfg_header',
 					],
 				],
+				'options'               => [
+					'priority'        => 100,
+					'active_callback' => [ $this, 'background_options_active_callback' ],
+				],
+				'default'               => [
+					'type'       => 'color',
+					'colorValue' => 'var(--nv-site-bg)',
+				],
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'neve_sanitize_background',
+				'conditional_header'    => true,
 			]
 		);
 
 		$rows = [ 'top', 'main', 'bottom' ];
 		foreach ( $rows as $row ) {
-			$wp_customize->add_setting(
-				'neve_' . $row . '_header_shortcut',
+			SettingsManager::get_instance()->add(
 				[
-					'sanitize_callback' => 'neve_sanitize_text_field',
-				]
-			);
-			$wp_customize->add_control(
-				new Button(
-					$wp_customize,
-					'neve_' . $row . '_header_shortcut',
-					[
-						'button_class'     => 'nv-top-bar-menu-shortcut',
+					'id'                => $row . '_shortcut',
+					'group'             => 'neve_pro_global_header_settings',
+					'tab'               => 'style',
+					'section'           => 'neve_pro_global_header_settings',
+					'transport'         => 'postMessage',
+					'sanitize_callback' => 'esc_attr',
+					'type'              => '\Neve\Customizer\Controls\Button',
+					'options'           => [
 						// translators: comment
 						'text_before'      => sprintf( __( 'Set Background for the %s Row', 'neve' ), ucfirst( $row ) ),
 						'text_after'       => '.',
 						'button_text'      => __( 'here', 'neve' ),
+						'button_class'     => 'button_background',
+						'shortcut'         => true,
 						'is_button'        => false,
 						'control_to_focus' => 'hfg_header_layout_' . $row . '_background',
-						'shortcut'         => true,
-						'section'          => 'neve_pro_global_header_settings',
-						'priority'         => 40,
 						'active_callback'  => function () {
-							return get_theme_mod( 'neve_advanced_header_style', true );
+							return get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true );
 						},
-					]
-				)
+					],
+				]
 			);
 		}
 	}
@@ -328,7 +271,7 @@ class Header extends Abstract_Builder {
 	 * @return bool
 	 */
 	public function background_options_active_callback() {
-		return ! get_theme_mod( 'neve_advanced_header_style', true );
+		return ! get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true );
 	}
 
 	/**
@@ -368,6 +311,129 @@ class Header extends Abstract_Builder {
 		Main::get_instance()->load( 'row-wrapper', $name );
 	}
 
+	/**
+	 * Method to add global header css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 * @return array
+	 */
+	public function add_style( array $css_array = array() ) {
+		$background = get_theme_mod(
+			'neve_pro_global_header_settings_background',
+			[
+				'type'       => 'color',
+				'colorValue' => 'var(--nv-site-bg)',
+			]
+		);
+
+		$rules         = [];
+		$control_id    = 'neve_pro_global_header_settings_background';
+		$selector      = '.hfg_header';
+		$default_color = 'var(--nv-site-bg)';
+
+		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
+			$rules = array_merge(
+				$rules,
+				[
+					'--bgColor' => [
+						Dynamic_Selector::META_KEY     => $control_id . '.colorValue',
+						Dynamic_Selector::META_DEFAULT => $default_color,
+					],
+				]
+			);
+		}
+
+		if ( $background['type'] === 'image' ) {
+			$rules = array_merge(
+				$rules,
+				[
+					'--overlayColor'     => [
+						Dynamic_Selector::META_KEY => $control_id . '.overlayColorValue',
+					],
+					'--bgImage'          => [
+						Dynamic_Selector::META_KEY    => $control_id,
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							$image = $this->get_row_featured_image( $value['imageUrl'], $value['useFeatured'], $meta );
+							return sprintf( '%s:%s;', $css_prop, $image );
+						},
+					],
+					'--bgPosition'       => [
+						Dynamic_Selector::META_KEY    => $control_id,
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							if ( empty( $value['focusPoint'] ) || empty( $value['focusPoint']['x'] ) || empty( $value['focusPoint']['y'] ) ) {
+								return '';
+							}
+
+							$parsed_position = round( $value['focusPoint']['x'] * 100 ) . '% ' . round( $value['focusPoint']['y'] * 100 ) . '%;';
+
+							return sprintf( '%s:%s;', $css_prop, $parsed_position );
+						},
+					],
+					'--bgAttachment'     => [
+						Dynamic_Selector::META_KEY    => $control_id,
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							if ( ! isset( $value['fixed'] ) || $value['fixed'] !== true ) {
+								return '';
+							}
+
+							return sprintf( '%s:fixed;', $css_prop );
+						},
+					],
+					'--bgOverlayOpacity' => [
+						Dynamic_Selector::META_KEY    => $control_id,
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							if ( ! isset( $value['overlayOpacity'] ) ) {
+								return '';
+							}
+
+							return sprintf( '%s:%s;', $css_prop, $value['overlayOpacity'] / 100 );
+						},
+					],
+				]
+			);
+		}
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector,
+			Dynamic_Selector::KEY_RULES    => $rules,
+		];
+
+		return parent::add_style( $css_array );
+	}
+
+
+	/**
+	 * Returns the featured image for the header row.
+	 *
+	 * @param string  $image_url The image URL.
+	 * @param boolean $use_featured Flag if featured image should be used.
+	 * @param array   $meta Additional meta for the image.
+	 *
+	 * @return string
+	 */
+	private function get_row_featured_image( $image_url, $use_featured, $meta ) {
+		$image = 'none';
+		if ( ! empty( $use_featured ) && $use_featured === true && is_singular() ) {
+			$featured_image = get_the_post_thumbnail_url();
+			if ( ! empty( $featured_image ) ) {
+				$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
+			} else {
+				$image = sprintf( 'url("%s")', esc_url( $image_url ) );
+			}
+		} elseif ( ! empty( $image_url ) ) {
+			$image = sprintf( 'url("%s")', esc_url( $image_url ) );
+		}
+		/**
+		 * Filters the background featured image output url.
+		 *
+		 * @param string $image         The background image value: `none` or `url(<url>)`.
+		 * @param boolean $use_featured Flag to specify if featured image should be used or fallback.
+		 * @param array $meta           Additional meta for the image.
+		 *
+		 * @since 3.0.5
+		 */
+		return apply_filters( 'nv_builder_row_image_url', $image, $use_featured, $meta );
+	}
 
 	/**
 	 * Return  the builder rows.
