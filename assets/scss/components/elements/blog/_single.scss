@@ -100,15 +100,19 @@
 	flex-wrap: wrap;
 }
 
+.page .nv-post-cover {
+	margin-bottom: 60px;
+}
+
 .nv-post-cover {
 	min-height: var(--height);
 	padding: var(--padding);
+	justify-content: var(--justify, center);
 	display: flex;
 	position: relative;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	justify-content: var(--justify, center);
 
 	.nv-title-meta-wrap {
 		color: var(--color, var(--nv-text-dark-bg));

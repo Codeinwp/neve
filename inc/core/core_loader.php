@@ -94,6 +94,7 @@ class Core_Loader {
 				'Views\Page_Header',
 				'Views\Post_Layout',
 				'Views\Page_Layout',
+				'Views\Cover_Header',
 				'Views\Product_Layout',
 				'Views\Content_None',
 				'Views\Content_404',
