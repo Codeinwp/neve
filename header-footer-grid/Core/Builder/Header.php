@@ -11,15 +11,10 @@
 
 namespace HFG\Core\Builder;
 
-use Elementor\Settings;
 use HFG\Core\Customizer\Header_Presets;
-use Neve\Core\Settings\Config;
 use HFG\Main;
 use Neve\Core\Styles\Dynamic_Selector;
-use Neve\Customizer\Controls\Button;
-use Neve\Customizer\Controls\Heading;
 use Neve\Customizer\Controls\React\Presets_Selector;
-use Neve\Customizer\Controls\Tabs;
 use HFG\Core\Settings\Manager as SettingsManager;
 use WP_Customize_Manager;
 
@@ -148,7 +143,7 @@ class Header extends Abstract_Builder {
 			]
 		);
 
-		$this->customize_header_background( $wp_customize );
+		$this->customize_header_background();
 
 		SettingsManager::get_instance()->load( 'neve_pro_global_header_settings', $wp_customize );
 
@@ -157,18 +152,15 @@ class Header extends Abstract_Builder {
 
 	/**
 	 * Registers controls for global header background
-	 *
-	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 */
-	private function customize_header_background( WP_Customize_Manager $wp_customize ) {
+	private function customize_header_background() {
 		SettingsManager::get_instance()->add(
 			[
 				'id'        => 'background_heading',
 				'group'     => 'neve_pro_global_header_settings',
 				'label'     => esc_html__( 'Background', 'neve' ),
 				'section'   => 'neve_pro_global_header_settings',
-				'priority'  => 20,
-				'tab'       => 'style',
+				'priority'  => 15,
 				'transport' => 'postMessage',
 				'type'      => 'Neve\Customizer\Controls\Heading',
 				'options'   => [
@@ -187,8 +179,7 @@ class Header extends Abstract_Builder {
 				'label'              => esc_html__( 'Enable Individual Row Background', 'neve' ),
 				'section'            => 'neve_pro_global_header_settings',
 				'type'               => 'neve_toggle_control',
-				'tab'                => 'style',
-				'priority'           => 30,
+				'priority'           => 15,
 				'transport'          => 'refresh',
 				'sanitize_callback'  => 'neve_sanitize_checkbox',
 				'default'            => true,
@@ -200,7 +191,6 @@ class Header extends Abstract_Builder {
 			[
 				'id'                    => 'background',
 				'group'                 => 'neve_pro_global_header_settings',
-				'tab'                   => 'style',
 				'section'               => 'neve_pro_global_header_settings',
 				'label'                 => esc_html__( 'Global Background', 'neve' ),
 				'description'           => esc_html__( 'A background color or image that spans across all header rows.', 'neve' ),
@@ -213,7 +203,7 @@ class Header extends Abstract_Builder {
 					],
 				],
 				'options'               => [
-					'priority'        => 100,
+					'priority'        => 15,
 					'active_callback' => [ $this, 'background_options_active_callback' ],
 				],
 				'default'               => [
@@ -232,13 +222,13 @@ class Header extends Abstract_Builder {
 				[
 					'id'                => $row . '_shortcut',
 					'group'             => 'neve_pro_global_header_settings',
-					'tab'               => 'style',
 					'section'           => 'neve_pro_global_header_settings',
 					'transport'         => 'postMessage',
 					'sanitize_callback' => 'esc_attr',
 					'type'              => '\Neve\Customizer\Controls\Button',
+					'priority'          => 15,
 					'options'           => [
-						// translators: comment
+						// translators: %s row name
 						'text_before'      => sprintf( __( 'Set Background for the %s Row', 'neve' ), ucfirst( $row ) ),
 						'text_after'       => '.',
 						'button_text'      => __( 'here', 'neve' ),
