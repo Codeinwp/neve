@@ -209,7 +209,7 @@ class Header extends Abstract_Builder {
 				'live_refresh_css_prop' => [
 					'cssVar' => [
 						'vars'     => 'backgroundControl',
-						'selector' => '.hfg_header',
+						'selector' => '.global-styled',
 					],
 				],
 				'options'               => [
@@ -328,7 +328,7 @@ class Header extends Abstract_Builder {
 
 		$rules         = [];
 		$control_id    = 'neve_pro_global_header_settings_background';
-		$selector      = '.hfg_header';
+		$selector      = '.global-styled';
 		$default_color = 'var(--nv-site-bg)';
 
 		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {

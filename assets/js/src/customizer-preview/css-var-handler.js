@@ -92,23 +92,6 @@ export class CSSVariablesHandler {
 		}
 	}
 
-	getBackgroundDefaultVars(selector) {
-		const definitions = {
-			'--isGlobalImg': 'none',
-			'--isGlobalOvr': 'transparent',
-			'--isGlobalOpa': '0',
-			'--isGlobalAtt': 'unset',
-			'--isGlobalPos': '50% 50%',
-			'--bgColor': 'unset',
-		};
-
-		const properties = Object.entries(definitions)
-			.map(([prop, val]) => `${prop}:${val}`)
-			.join(';');
-
-		return `${selector}{${properties}}`;
-	}
-
 	getBackgroundControlVars() {
 		const { value, selector } = this;
 

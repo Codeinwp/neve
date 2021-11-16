@@ -7,12 +7,7 @@
 	}
 }
 
-.global-styled .header--row,
-.global-styled .header--row-inner {
-	background: none;
-}
-
-.hfg_header {
+.global-styled {
 	background: var(--bgColor);
 	position: relative;
 	background-image: var(--bgImage, none);
@@ -30,6 +25,11 @@
 		content: "";
 		background-color: var(--overlayColor);
 		opacity: var(--bgOverlayOpacity);
+	}
+
+	.header--row,
+	.header--row-inner {
+		background: none;
 	}
 }
 
@@ -88,11 +88,11 @@ $desktop: map-get($gl-devices-list, desktop);
 [class*="row-inner"],
 .header-menu-sidebar-bg {
 	position: relative;
-	background-image: var(--isGlobalImg, var(--bgImage, none));
-	background-position: var(--isGlobalPos, var(--bgPosition, center));
+	background-image: var(--bgImage, none);
+	background-position: var(--bgPosition, center);
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-attachment: var(--isGlobalAtt, var(--bgAttachment));
+	background-attachment: var(--bgAttachment);
 
 	&::before {
 		display: block;
@@ -101,8 +101,8 @@ $desktop: map-get($gl-devices-list, desktop);
 		bottom: 0;
 		position: absolute;
 		content: "";
-		background-color: var(--isGlobalCol, var(--overlayColor));
-		opacity: var(--isGlobalOpa, var(--bgOverlayOpacity));
+		background-color: var(--overlayColor);
+		opacity: var(--bgOverlayOpacity);
 	}
 }
 
