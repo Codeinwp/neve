@@ -48,7 +48,7 @@ jobs:
           options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
       steps:
         - name: Setup PHP version
-          uses: shivammathur/setup-php@v1
+          uses: shivammathur/setup-php@v2
           with:
             php-version: '7.1'
             extensions: simplexml, mysql
