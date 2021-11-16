@@ -24,9 +24,13 @@ class Rich_Text extends \WP_Customize_Control {
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['toolbars'] = [];
+		$this->json['toolbars']             = [];
+		$this->json['allowedDynamicFields'] = [];
 		if ( isset( $this->input_attrs['toolbars'] ) && ! empty( $this->input_attrs['toolbars'] ) ) {
 			$this->json['toolbars'] = $this->input_attrs['toolbars'];
+		}
+		if ( isset( $this->input_attrs['allowedDynamicFields'] ) && ! empty( $this->input_attrs['allowedDynamicFields'] ) ) {
+			$this->json['allowedDynamicFields'] = $this->input_attrs['allowedDynamicFields'];
 		}
 	}
 }

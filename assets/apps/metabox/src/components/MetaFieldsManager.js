@@ -560,9 +560,13 @@ class MetaFieldsManager extends Component {
 				.neve_post_elements_order || metaSidebar.elementsDefaultOrder;
 
 		const maybeNormalizeValue = (val) => {
-			const enabledItems = val.map((element) => {
-				return { id: element, visible: true };
-			});
+			const enabledItems = val
+				.filter((element) => {
+					return elements.hasOwnProperty(element);
+				})
+				.map((element) => {
+					return { id: element, visible: true };
+				});
 
 			const disabledItems = Object.keys(metaElements)
 				.filter((componentSlug) => !val.includes(componentSlug))
