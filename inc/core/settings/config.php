@@ -24,14 +24,18 @@ class Config {
 	 *
 	 * @deprecated
 	 */
-	const MODS_LINK_HOVER_COLOR           = 'neve_link_hover_color';
-	const MODS_GLOBAL_COLORS              = 'neve_global_colors';
-	const MODS_TEXT_COLOR                 = 'neve_text_color';
-	const MODS_CONTAINER_WIDTH            = 'neve_container_width';
-	const MODS_SITEWIDE_CONTENT_WIDTH     = 'neve_sitewide_content_width';
-	const MODS_OTHERS_CONTENT_WIDTH       = 'neve_other_pages_content_width';
-	const MODS_ARCHIVE_CONTENT_WIDTH      = 'neve_blog_archive_content_width';
-	const MODS_SINGLE_CONTENT_WIDTH       = 'neve_single_post_content_width';
+	const MODS_LINK_HOVER_COLOR       = 'neve_link_hover_color';
+	const MODS_GLOBAL_COLORS          = 'neve_global_colors';
+	const MODS_TEXT_COLOR             = 'neve_text_color';
+	const MODS_CONTAINER_WIDTH        = 'neve_container_width';
+	const MODS_SITEWIDE_CONTENT_WIDTH = 'neve_sitewide_content_width';
+	const MODS_OTHERS_CONTENT_WIDTH   = 'neve_other_pages_content_width';
+	const MODS_ARCHIVE_CONTENT_WIDTH  = 'neve_blog_archive_content_width';
+	const MODS_SINGLE_CONTENT_WIDTH   = 'neve_single_post_content_width';
+	/**
+	 * This is only used in a dynamic context for all allowed post types
+	 */
+	const MODS_CONTENT_WIDTH              = 'content_width';
 	const MODS_SHOP_ARCHIVE_CONTENT_WIDTH = 'neve_shop_archive_content_width';
 	const MODS_SHOP_SINGLE_CONTENT_WIDTH  = 'neve_single_product_content_width';
 	const MODS_ADVANCED_LAYOUT_OPTIONS    = 'neve_advanced_layout_options';

@@ -108,20 +108,23 @@ trait Single_Post {
 	}
 
 	/**
-	 * Return the cover context.
+	 * Return the custom post type context.
 	 *
 	 * @since 3.1.0
+	 *
+	 * @param string[] $allowed The default context to be allowed.
+	 *
 	 * @return array
 	 */
-	public function get_cover_context() {
+	public function get_cpt_context( $allowed = [ 'post', 'page' ] ) {
 		/**
-		 * Filters the list of available post types to use as context for cover meta settings.
+		 * Filters the list of available post types to use as context for custom post type meta settings.
 		 *
 		 * @param string[] $allowed_context An array of allowed post types for context. E.g. [ 'post', 'page' ].
 		 *
 		 * @since 3.1.0
 		 */
-		$allowed_context = apply_filters( 'neve_allowed_cover_post_types', [ 'post', 'page' ], 10, 1 );
+		$allowed_context = apply_filters( 'neve_allowed_custom_post_types', $allowed, 10, 1 );
 		$context         = get_post_type();
 
 		return [ $context, $allowed_context ];
@@ -146,6 +149,46 @@ trait Single_Post {
 	}
 
 	/**
+	 * Checks that a dynamic meta is allowed in the provided context.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param string   $context The context to get the meta for.
+	 * @param string[] $allowed_context The allowed contexts to check against.
+	 *
+	 * @return bool
+	 */
+	private function is_meta_context_allowed( $context, $allowed_context ) {
+		if ( empty( $context ) ) {
+			return false;
+		}
+
+		if ( ! in_array( $context, $allowed_context, true ) || ! $this->is_valid_context( $context ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Return the sidebar content width meta based on context.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param string   $context            The context to get the meta for.
+	 * @param string[] $allowed_context    The allowed contexts to check against.
+	 *
+	 * @return string
+	 */
+	public function get_sidebar_content_width_meta( $context, $allowed_context = [ 'post' ] ) {
+		if ( ! $this->is_meta_context_allowed( $context, $allowed_context ) ) {
+			return '';
+		}
+
+		return 'neve_single_' . $context . '_' . Config::MODS_CONTENT_WIDTH;
+	}
+
+	/**
 	 * Return the meta to use as context.
 	 *
 	 * @since 3.1.0
@@ -157,11 +200,7 @@ trait Single_Post {
 	 * @return string
 	 */
 	public function get_cover_meta( $context, $meta, $allowed_context = [ 'post', 'page' ] ) {
-		if ( empty( $context ) ) {
-			return '';
-		}
-
-		if ( ! in_array( $context, $allowed_context, true ) || ! $this->is_valid_context( $context ) ) {
+		if ( ! $this->is_meta_context_allowed( $context, $allowed_context ) ) {
 			return '';
 		}
 
