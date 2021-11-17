@@ -31,6 +31,20 @@ class Header extends Abstract_Builder {
 	const BUILDER_NAME = 'header';
 
 	/**
+	 * Settings ids.
+	 */
+	const BACKGROUND_HEADING = 'background_heading';
+	const ADVANCED_STYLE     = 'advanced_style';
+	const BACKGROUND_SETTING = 'background';
+
+	/**
+	 * Default color for global header background
+	 *
+	 * @var string Background default color.
+	 */
+	protected $default_background = 'var(--nv-site-bg)';
+
+	/**
 	 * Header init.
 	 *
 	 * @since   1.0.0
@@ -143,7 +157,7 @@ class Header extends Abstract_Builder {
 			]
 		);
 
-		$this->customize_header_background();
+		$this->customize_global_header();
 
 		SettingsManager::get_instance()->load( 'neve_pro_global_header_settings', $wp_customize );
 
@@ -153,13 +167,15 @@ class Header extends Abstract_Builder {
 	/**
 	 * Registers controls for global header background
 	 */
-	private function customize_header_background() {
+	private function customize_global_header() {
+		$section_id = 'neve_pro_global_header_settings';
+
 		SettingsManager::get_instance()->add(
 			[
-				'id'        => 'background_heading',
-				'group'     => 'neve_pro_global_header_settings',
+				'id'        => self::BACKGROUND_HEADING,
+				'group'     => $section_id,
 				'label'     => esc_html__( 'Background', 'neve' ),
-				'section'   => 'neve_pro_global_header_settings',
+				'section'   => $section_id,
 				'priority'  => 15,
 				'transport' => 'postMessage',
 				'type'      => 'Neve\Customizer\Controls\Heading',
@@ -174,10 +190,10 @@ class Header extends Abstract_Builder {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                 => 'advanced_style',
-				'group'              => 'neve_pro_global_header_settings',
+				'id'                 => self::ADVANCED_STYLE,
+				'group'              => $section_id,
 				'label'              => esc_html__( 'Enable Individual Row Background', 'neve' ),
-				'section'            => 'neve_pro_global_header_settings',
+				'section'            => $section_id,
 				'type'               => 'neve_toggle_control',
 				'priority'           => 15,
 				'transport'          => 'refresh',
@@ -189,9 +205,9 @@ class Header extends Abstract_Builder {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                    => 'background',
-				'group'                 => 'neve_pro_global_header_settings',
-				'section'               => 'neve_pro_global_header_settings',
+				'id'                    => self::BACKGROUND_SETTING,
+				'group'                 => $section_id,
+				'section'               => $section_id,
 				'label'                 => esc_html__( 'Global Background', 'neve' ),
 				'description'           => esc_html__( 'A background color or image that spans across all header rows.', 'neve' ),
 				'type'                  => 'neve_background_control',
@@ -208,7 +224,7 @@ class Header extends Abstract_Builder {
 				],
 				'default'               => [
 					'type'       => 'color',
-					'colorValue' => 'var(--nv-site-bg)',
+					'colorValue' => $this->default_background,
 				],
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'neve_sanitize_background',
@@ -221,8 +237,8 @@ class Header extends Abstract_Builder {
 			SettingsManager::get_instance()->add(
 				[
 					'id'                => $row . '_shortcut',
-					'group'             => 'neve_pro_global_header_settings',
-					'section'           => 'neve_pro_global_header_settings',
+					'group'             => $section_id,
+					'section'           => $section_id,
 					'transport'         => 'postMessage',
 					'sanitize_callback' => 'esc_attr',
 					'type'              => '\Neve\Customizer\Controls\Button',
@@ -389,40 +405,6 @@ class Header extends Abstract_Builder {
 		];
 
 		return parent::add_style( $css_array );
-	}
-
-
-	/**
-	 * Returns the featured image for the header row.
-	 *
-	 * @param string  $image_url The image URL.
-	 * @param boolean $use_featured Flag if featured image should be used.
-	 * @param array   $meta Additional meta for the image.
-	 *
-	 * @return string
-	 */
-	private function get_row_featured_image( $image_url, $use_featured, $meta ) {
-		$image = 'none';
-		if ( ! empty( $use_featured ) && $use_featured === true && is_singular() ) {
-			$featured_image = get_the_post_thumbnail_url();
-			if ( ! empty( $featured_image ) ) {
-				$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
-			} else {
-				$image = sprintf( 'url("%s")', esc_url( $image_url ) );
-			}
-		} elseif ( ! empty( $image_url ) ) {
-			$image = sprintf( 'url("%s")', esc_url( $image_url ) );
-		}
-		/**
-		 * Filters the background featured image output url.
-		 *
-		 * @param string $image         The background image value: `none` or `url(<url>)`.
-		 * @param boolean $use_featured Flag to specify if featured image should be used or fallback.
-		 * @param array $meta           Additional meta for the image.
-		 *
-		 * @since 3.0.5
-		 */
-		return apply_filters( 'nv_builder_row_image_url', $image, $use_featured, $meta );
 	}
 
 	/**

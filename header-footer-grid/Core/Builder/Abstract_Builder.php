@@ -1067,7 +1067,7 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @return string
 	 */
-	private function get_row_featured_image( $image_url, $use_featured, $meta ) {
+	protected function get_row_featured_image( $image_url, $use_featured, $meta ) {
 		$image = 'none';
 		if ( ! empty( $use_featured ) && $use_featured === true && is_singular() ) {
 			$featured_image = get_the_post_thumbnail_url();
@@ -1864,7 +1864,7 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @return array
 	 */
-	private function get_default_row_colors( $row_id ) {
+	protected function get_default_row_colors( $row_id ) {
 		$bg_color_map = [
 			'background' => [
 				'dark-mode'  => 'var(--nv-dark-bg)',
