@@ -193,9 +193,9 @@ trait Single_Post {
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param string   $context            The context to get the meta for.
-	 * @param string   $meta               The meta key to get the final meta for.
-	 * @param string[] $allowed_context    The allowed contexts to check against.
+	 * @param string $context            The context to get the meta for.
+	 * @param string $meta               The meta key to get the final meta for.
+	 * @param array  $allowed_context    The allowed contexts to check against.
 	 *
 	 * @return string
 	 */
