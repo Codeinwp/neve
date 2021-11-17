@@ -1203,7 +1203,7 @@ class Frontend extends Generator {
 	 *
 	 * @param string[] $mods               A list of mods.
 	 * @param string   $context            A context for the mods.
-	 * @param string   $allowed_context    A list of allowed contexts to be passed on.
+	 * @param array    $allowed_context    A list of allowed contexts to be passed on.
 	 *
 	 * @return int
 	 */
