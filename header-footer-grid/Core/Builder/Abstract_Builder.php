@@ -1820,6 +1820,7 @@ abstract class Abstract_Builder implements Builder {
 			'devices'    => $this->devices,
 			'items'      => $this->get_components_settings(),
 			'rows'       => $this->get_rows(),
+			'upsells'    => $this->get_upsell_components(),
 		);
 	}
 
@@ -2327,5 +2328,14 @@ abstract class Abstract_Builder implements Builder {
 		];
 
 		return $css_array;
+	}
+
+	/**
+	 * Get upsell components.
+	 *
+	 * @return array
+	 */
+	protected function get_upsell_components() {
+		return [];
 	}
 }

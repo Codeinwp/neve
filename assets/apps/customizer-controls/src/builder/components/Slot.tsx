@@ -1,13 +1,15 @@
-import React, { ChangeEvent } from 'react';
-import { BuilderItemType, RowTypes, SlotTypes } from '../../@types/utils';
-import { ReactSortable } from 'react-sortablejs';
-import BuilderItem from './BuilderItem';
+import React from 'react';
 import classnames from 'classnames';
-import { Button, Popover, Icon } from '@wordpress/components';
+import { ReactSortable } from 'react-sortablejs';
+
+import { plus } from '@wordpress/icons';
+import { Button } from '@wordpress/components';
 import { useContext, useState } from '@wordpress/element';
-import { close, plus, search } from '@wordpress/icons';
-import { __ } from '@wordpress/i18n';
+
+import BuilderItem from './BuilderItem';
 import BuilderContext from '../BuilderContext';
+import ComponentsPopover from './ComponentsPopover';
+import { BuilderItemType, RowTypes, SlotTypes } from '../../@types/utils';
 
 type Props = {
 	rowId: RowTypes;
@@ -17,38 +19,19 @@ type Props = {
 };
 
 const Slot: React.FC<Props> = ({ items, slotId, rowId, className }) => {
-	const {
-		currentSection,
-		builder,
-		actions,
-		dragging,
-		sidebarItems,
-	} = useContext(BuilderContext);
+	const { currentSection, builder, actions, dragging } = useContext(
+		BuilderContext
+	);
+	const { updateLayout, onDragStart } = actions;
 
-	const { updateLayout, onDragStart, setSidebarItems } = actions;
 	const [popupOpen, setPopupOpen] = useState<boolean>(false);
-	const [searchQuery, setSearchQuery] = useState<string>('');
 	const slotClasses = classnames('droppable-wrap', slotId, className, {
 		'has-popover': popupOpen,
 		overflowed: items.length >= 3 && rowId !== 'sidebar',
 	});
 
-	const addItemToSlot = (itemId: string) => {
-		const itemSection =
-			window.NeveReactCustomize.HFG[builder].items[itemId].section;
-		window.wp.customize.section(itemSection).focus();
-		const nextItems = [...items];
-		nextItems.push({ id: itemId });
-		updateLayout(rowId, slotId, nextItems);
-		setSidebarItems(sidebarItems.filter((i) => i.id !== itemId));
-		setPopupOpen(false);
-	};
-
-	const runSearch = (e: ChangeEvent<HTMLInputElement>) => {
-		setSearchQuery(e.target.value.toLowerCase());
-	};
-
-	const allItems = window.NeveReactCustomize.HFG[builder].items;
+	const openPopup = () => setPopupOpen(true);
+	const closePopup = () => setPopupOpen(false);
 
 	return (
 		<div className={slotClasses}>
@@ -83,90 +66,18 @@ const Slot: React.FC<Props> = ({ items, slotId, rowId, className }) => {
 			{!dragging && (
 				<Button
 					className="open-popover"
-					isPrimary
+					onClick={openPopup}
 					icon={plus}
-					onClick={() => {
-						setPopupOpen(!popupOpen);
-					}}
+					isPrimary
 				/>
 			)}
 			{popupOpen && (
-				<Popover
-					position="top center"
-					noArrow={false}
-					className="items-popover"
-					onFocusOutside={() => {
-						setPopupOpen(false);
-					}}
-				>
-					<div className="popover-header">
-						<Icon icon={search} />
-						<input
-							onChange={runSearch}
-							disabled={sidebarItems.length < 1}
-							type="search"
-							placeholder={__('Search for a component…', 'neve')}
-						/>
-						<Button
-							isLink
-							icon={close}
-							onClick={() => {
-								setPopupOpen(false);
-							}}
-						/>
-					</div>
-					<div className="items-popover-content">
-						{sidebarItems.length < 1 && (
-							<div className="no-components">
-								<span>
-									All available components are used inside the
-									builder
-								</span>
-							</div>
-						)}
-
-						{sidebarItems.length > 0 && (
-							<div className="items-popover-list">
-								{sidebarItems
-									.filter((item) => {
-										const { name } = allItems[item.id];
-
-										return (
-											name
-												.toLowerCase()
-												.indexOf(searchQuery) > -1 ||
-											item.id
-												.toString()
-												.indexOf(searchQuery) > -1
-										);
-									})
-									.map((item, index) => {
-										const { id } = item;
-										if (!id) {
-											return null;
-										}
-
-										return (
-											<Button
-												className="popover-item"
-												icon={allItems[id].icon}
-												onClick={() => {
-													addItemToSlot(
-														id.toString()
-													);
-												}}
-												key={`${id}-${index}`}
-											>
-												<span className="name">
-													{allItems[id].name}
-												</span>
-											</Button>
-										);
-									})}
-							</div>
-						)}
-					</div>
-				</Popover>
+				<ComponentsPopover
+					items={items}
+					rowId={rowId}
+					slotId={slotId}
+					closePopup={closePopup}
+				/>
 			)}
 		</div>
 	);

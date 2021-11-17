@@ -248,7 +248,13 @@ export const BuildersData = {
 				"title": "Mobile menu content",
 				"description": "Design your Header by dragging, dropping and resizing all the elements in real-time. <br/><a target=\"_blank\" href=\"https://docs.themeisle.com/article/946-neve-doc#header\">Read full documentation</a>."
 			}
-		}
+		},
+		'upsells': [
+			{
+				'icon': 'admin-links',
+				'name': 'Upsell Component'
+			}
+		]
 	},
 	"footer": {
 		"id": "hfg_footer_layout",
