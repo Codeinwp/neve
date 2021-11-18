@@ -16,6 +16,7 @@ use HFG\Main;
 use Neve\Core\Styles\Dynamic_Selector;
 use Neve\Customizer\Controls\React\Presets_Selector;
 use HFG\Core\Settings\Manager as SettingsManager;
+use WP_Customize_Control;
 use WP_Customize_Manager;
 
 /**
@@ -161,7 +162,47 @@ class Header extends Abstract_Builder {
 
 		SettingsManager::get_instance()->load( 'neve_pro_global_header_settings', $wp_customize );
 
+		$tabs = $wp_customize->get_control( 'neve_pro_global_header_settings_tabs' );
+		$this->move_pro_controls( $wp_customize, $tabs );
+
 		return parent::customize_register( $wp_customize );
+	}
+
+	/**
+	 * Moves the controls from pro in the specific tabs so that they
+	 * merge well with the Neve global header setting
+	 *
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 * @param WP_Customize_Control $global_settings_tabs The Tabs Control.
+	 */
+	private function move_pro_controls( WP_Customize_Manager $wp_customize, WP_Customize_Control $global_settings_tabs ) {
+		if ( ! property_exists( $global_settings_tabs, 'controls' ) || ! property_exists( $global_settings_tabs, 'tabs' ) ) {
+			return;
+		}
+
+		if ( $wp_customize->get_control( 'neve_transparent_header' ) !== null ) {
+			$global_settings_tabs->controls['style']['neve_transparent_header'] = [];
+		}
+
+		if ( $wp_customize->get_control( 'neve_transparent_only_on_home' ) !== null ) {
+			$wp_customize->get_control( 'neve_transparent_only_on_home' )->priority   = 10;
+			$global_settings_tabs->controls['style']['neve_transparent_only_on_home'] = [];
+		}
+
+		if ( $wp_customize->get_control( 'neve_global_header' ) !== null ) {
+			$global_settings_tabs->tabs['general']                           = [
+				'label' => esc_html__( 'General', 'neve' ),
+				'icon'  => 'admin-generic',
+			];
+			$global_settings_tabs->controls['general']['neve_global_header'] = [];
+		}
+
+		if ( $wp_customize->get_control( 'neve_header_conditional_selector' ) !== null ) {
+			$global_settings_tabs->controls['general']['neve_header_conditional_selector'] = [];
+		}
+
+		// sorts the tabs so the general tab is showed first
+		ksort( $global_settings_tabs->tabs );
 	}
 
 	/**
@@ -176,12 +217,13 @@ class Header extends Abstract_Builder {
 				'group'     => $section_id,
 				'label'     => esc_html__( 'Background', 'neve' ),
 				'section'   => $section_id,
+				'tab'       => 'style',
 				'priority'  => 15,
 				'transport' => 'postMessage',
 				'type'      => 'Neve\Customizer\Controls\Heading',
 				'options'   => [
 					'accordion'        => true,
-					'controls_to_wrap' => 5,
+					'controls_to_wrap' => 20,
 					'expanded'         => true,
 					'class'            => 'background-accordion',
 				],
@@ -194,8 +236,9 @@ class Header extends Abstract_Builder {
 				'group'              => $section_id,
 				'label'              => esc_html__( 'Enable Individual Row Background', 'neve' ),
 				'section'            => $section_id,
+				'tab'                => 'style',
 				'type'               => 'neve_toggle_control',
-				'priority'           => 15,
+				'priority'           => 25,
 				'transport'          => 'refresh',
 				'sanitize_callback'  => 'neve_sanitize_checkbox',
 				'default'            => true,
@@ -208,6 +251,7 @@ class Header extends Abstract_Builder {
 				'id'                    => self::BACKGROUND_SETTING,
 				'group'                 => $section_id,
 				'section'               => $section_id,
+				'tab'                   => 'style',
 				'label'                 => esc_html__( 'Global Background', 'neve' ),
 				'description'           => esc_html__( 'A background color or image that spans across all header rows.', 'neve' ),
 				'type'                  => 'neve_background_control',
@@ -219,7 +263,7 @@ class Header extends Abstract_Builder {
 					],
 				],
 				'options'               => [
-					'priority'        => 15,
+					'priority'        => 30,
 					'active_callback' => [ $this, 'background_options_active_callback' ],
 				],
 				'default'               => [
@@ -239,10 +283,11 @@ class Header extends Abstract_Builder {
 					'id'                => $row . '_shortcut',
 					'group'             => $section_id,
 					'section'           => $section_id,
+					'tab'               => 'style',
 					'transport'         => 'postMessage',
 					'sanitize_callback' => 'esc_attr',
 					'type'              => '\Neve\Customizer\Controls\Button',
-					'priority'          => 15,
+					'priority'          => 35,
 					'options'           => [
 						// translators: %s row name
 						'text_before'      => sprintf( __( 'Set Background for the %s Row', 'neve' ), ucfirst( $row ) ),

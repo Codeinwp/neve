@@ -213,23 +213,21 @@ class Manager {
 			}
 		}
 
-		if ( ! empty( $args['tabs'] ) ) {
-			$customize_manager->add_setting(
+		$customize_manager->add_setting(
+			$group . '_tabs',
+			array(
+				'theme_supports'    => Config::get_support(),
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
+			)
+		);
+		$customize_manager->add_control(
+			new Tabs(
+				$customize_manager,
 				$group . '_tabs',
-				array(
-					'theme_supports'    => Config::get_support(),
-					'transport'         => 'refresh',
-					'sanitize_callback' => 'wp_filter_nohtml_kses',
-				)
-			);
-			$customize_manager->add_control(
-				new Tabs(
-					$customize_manager,
-					$group . '_tabs',
-					$args
-				)
-			);
-		}
+				$args
+			)
+		);
 
 		return $customize_manager;
 	}
