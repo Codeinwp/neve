@@ -481,7 +481,7 @@ abstract class Abstract_Builder implements Builder {
 				'options'               => [
 					'priority'        => 100,
 					'active_callback' => function () use ( $row_id ) {
-						return $row_id === 'sidebar' || get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true );
+						return $this->has_background_setting( $row_id );
 					},
 				],
 				'default'               => [
@@ -520,6 +520,28 @@ abstract class Abstract_Builder implements Builder {
 		);
 
 		do_action( 'hfg_row_settings', $this->get_id(), $row_id, $row_setting_id );
+	}
+
+	/**
+	 * Decides if the background setting should be visible for current row.
+	 *
+	 * @param string $row_id The row id.
+	 * @return bool True if setting should be displayed, false if not.
+	 */
+	public function has_background_setting( $row_id ) {
+		if ( $this->get_id() !== 'header' ) {
+			return true;
+		}
+
+		if ( $row_id === 'sidebar' ) {
+			return true;
+		}
+
+		if ( get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true ) === true ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -1108,6 +1130,10 @@ abstract class Abstract_Builder implements Builder {
 
 		if ( ! neve_is_new_skin() ) {
 			return $this->add_legacy_row_styles( $css_array, $row_index );
+		}
+
+		if ( get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true ) === false && $this->get_id() === 'header' && $row_index !== 'sidebar' ) {
+			return $css_array;
 		}
 
 		$rules          = [];

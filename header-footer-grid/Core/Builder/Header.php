@@ -234,7 +234,7 @@ class Header extends Abstract_Builder {
 			[
 				'id'                 => self::ADVANCED_STYLE,
 				'group'              => $section_id,
-				'label'              => esc_html__( 'Enable Individual Row Background', 'neve' ),
+				'label'              => esc_html__( 'Enable Advanced Options', 'neve' ),
 				'section'            => $section_id,
 				'tab'                => 'style',
 				'type'               => 'neve_toggle_control',
@@ -252,8 +252,7 @@ class Header extends Abstract_Builder {
 				'group'                 => $section_id,
 				'section'               => $section_id,
 				'tab'                   => 'style',
-				'label'                 => esc_html__( 'Global Background', 'neve' ),
-				'description'           => esc_html__( 'A background color or image that spans across all header rows.', 'neve' ),
+				'label'                 => esc_html__( 'Global', 'neve' ),
 				'type'                  => 'neve_background_control',
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
@@ -264,7 +263,7 @@ class Header extends Abstract_Builder {
 				],
 				'options'               => [
 					'priority'        => 30,
-					'active_callback' => [ $this, 'background_options_active_callback' ],
+					'active_callback' => [ $this, 'has_global_background' ],
 				],
 				'default'               => [
 					'type'       => 'color',
@@ -276,8 +275,11 @@ class Header extends Abstract_Builder {
 			]
 		);
 
-		$rows = [ 'top', 'main', 'bottom' ];
-		foreach ( $rows as $row ) {
+		foreach ( $this->get_rows() as $row => $row_data ) {
+			if ( $row === 'sidebar' ) {
+				continue;
+			}
+
 			SettingsManager::get_instance()->add(
 				[
 					'id'                => $row . '_shortcut',
@@ -289,17 +291,13 @@ class Header extends Abstract_Builder {
 					'type'              => '\Neve\Customizer\Controls\Button',
 					'priority'          => 35,
 					'options'           => [
-						// translators: %s row name
-						'text_before'      => sprintf( __( 'Set Background for the %s Row', 'neve' ), ucfirst( $row ) ),
-						'text_after'       => '.',
-						'button_text'      => __( 'here', 'neve' ),
+						'button_text'      => $row_data['title'],
 						'button_class'     => 'button_background',
+						'icon_class'       => 'edit',
 						'shortcut'         => true,
 						'is_button'        => false,
 						'control_to_focus' => 'hfg_header_layout_' . $row . '_background',
-						'active_callback'  => function () {
-							return get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true );
-						},
+						'active_callback'  => [ $this, 'has_not_global_background' ],
 					],
 				]
 			);
@@ -313,7 +311,7 @@ class Header extends Abstract_Builder {
 	 * @return string Updated classes.
 	 */
 	public function add_class_to_header_wrapper( $classes ) {
-		return $classes . $this->background_options_active_callback() ? ' global-styled' : '';
+		return $classes . $this->has_global_background() ? ' global-styled' : '';
 	}
 
 	/**
@@ -321,8 +319,17 @@ class Header extends Abstract_Builder {
 	 *
 	 * @return bool
 	 */
-	public function background_options_active_callback() {
+	public function has_global_background() {
 		return ! get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true );
+	}
+
+	/**
+	 * Returns true if individual options from header background are active
+	 *
+	 * @return bool
+	 */
+	public function has_not_global_background() {
+		return ! $this->has_global_background();
 	}
 
 	/**

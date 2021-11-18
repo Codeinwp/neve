@@ -81,6 +81,10 @@
 #customize-control-neve_pro_global_header_settings_main_shortcut p,
 #customize-control-neve_pro_global_header_settings_bottom_shortcut p, {
   margin: 0;
+
+  a {
+	cursor: pointer;
+  }
 }
 
 .neve-white-background-control {
