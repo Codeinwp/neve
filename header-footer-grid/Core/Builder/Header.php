@@ -152,7 +152,7 @@ class Header extends Abstract_Builder {
 		$wp_customize->add_section(
 			'neve_pro_global_header_settings',
 			[
-				'title'    => __( 'General', 'neve' ),
+				'title'    => __( 'Global Header Settings', 'neve' ),
 				'priority' => 200,
 				'panel'    => 'hfg_header',
 			]

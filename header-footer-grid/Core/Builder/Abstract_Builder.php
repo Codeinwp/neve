@@ -1132,10 +1132,6 @@ abstract class Abstract_Builder implements Builder {
 			return $this->add_legacy_row_styles( $css_array, $row_index );
 		}
 
-		if ( get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true ) === false && $this->get_id() === 'header' && $row_index !== 'sidebar' ) {
-			return $css_array;
-		}
-
 		$rules          = [];
 		$selector       = $row_index === 'sidebar' ? '.header-menu-sidebar-bg' : '.' . $this->get_id() . '-' . $row_index;
 		$default_colors = $this->get_default_row_colors( $row_index );
@@ -1179,77 +1175,80 @@ abstract class Abstract_Builder implements Builder {
 			Dynamic_Selector::META_DEFAULT => $default_colors['text'],
 		];
 
-		// If there is no default, use site background.
-		$default_color = isset( $default_colors['background'] ) ? $default_colors['background'] : 'var(--nv-site-bg)';
+		// Exclude the following rules for the header when the global header background is active.
+		if ( get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true ) === true || $this->get_id() !== 'header' || $row_index === 'sidebar' ) {
+			// If there is no default, use site background.
+			$default_color = isset( $default_colors['background'] ) ? $default_colors['background'] : 'var(--nv-site-bg)';
 
-		$background = get_theme_mod(
-			$this->control_id . '_' . $row_index . '_background',
-			[
-				'type'       => 'color',
-				'colorValue' => $default_color,
-			]
-		);
-
-		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
-			$rules = array_merge(
-				$rules,
+			$background = get_theme_mod(
+				$this->control_id . '_' . $row_index . '_background',
 				[
-					'--bgColor' => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
-						Dynamic_Selector::META_DEFAULT => $default_color,
-					],
+					'type'       => 'color',
+					'colorValue' => $default_color,
 				]
 			);
-		}
 
-		if ( $background['type'] === 'image' ) {
-			$rules = array_merge(
-				$rules,
-				[
-					'--overlayColor'     => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
-					],
-					'--bgImage'          => [
-						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
-						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							$image = $this->get_row_featured_image( $value['imageUrl'], $value['useFeatured'], $meta );
-							return sprintf( '%s:%s;', $css_prop, $image );
-						},
-					],
-					'--bgPosition'       => [
-						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
-						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							if ( empty( $value['focusPoint'] ) || empty( $value['focusPoint']['x'] ) || empty( $value['focusPoint']['y'] ) ) {
-								return '';
-							}
+			if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
+				$rules = array_merge(
+					$rules,
+					[
+						'--bgColor' => [
+							Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
+							Dynamic_Selector::META_DEFAULT => $default_color,
+						],
+					]
+				);
+			}
 
-							$parsed_position = round( $value['focusPoint']['x'] * 100 ) . '% ' . round( $value['focusPoint']['y'] * 100 ) . '%;';
+			if ( $background['type'] === 'image' ) {
+				$rules = array_merge(
+					$rules,
+					[
+						'--overlayColor'     => [
+							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
+						],
+						'--bgImage'          => [
+							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+								$image = $this->get_row_featured_image( $value['imageUrl'], $value['useFeatured'], $meta );
+								return sprintf( '%s:%s;', $css_prop, $image );
+							},
+						],
+						'--bgPosition'       => [
+							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+								if ( empty( $value['focusPoint'] ) || empty( $value['focusPoint']['x'] ) || empty( $value['focusPoint']['y'] ) ) {
+									return '';
+								}
 
-							return sprintf( '%s:%s;', $css_prop, $parsed_position );
-						},
-					],
-					'--bgAttachment'     => [
-						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
-						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							if ( ! isset( $value['fixed'] ) || $value['fixed'] !== true ) {
-								return '';
-							}
+								$parsed_position = round( $value['focusPoint']['x'] * 100 ) . '% ' . round( $value['focusPoint']['y'] * 100 ) . '%;';
 
-							return sprintf( '%s:fixed;', $css_prop );
-						},
-					],
-					'--bgOverlayOpacity' => [
-						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
-						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							if ( ! isset( $value['overlayOpacity'] ) ) {
-								return '';
-							}
+								return sprintf( '%s:%s;', $css_prop, $parsed_position );
+							},
+						],
+						'--bgAttachment'     => [
+							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+								if ( ! isset( $value['fixed'] ) || $value['fixed'] !== true ) {
+									return '';
+								}
 
-							return sprintf( '%s:%s;', $css_prop, $value['overlayOpacity'] / 100 );
-						},
-					],
-				]
-			);
+								return sprintf( '%s:fixed;', $css_prop );
+							},
+						],
+						'--bgOverlayOpacity' => [
+							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+								if ( ! isset( $value['overlayOpacity'] ) ) {
+									return '';
+								}
+
+								return sprintf( '%s:%s;', $css_prop, $value['overlayOpacity'] / 100 );
+							},
+						],
+					]
+				);
+			}
 		}
 
 		$css_array[] = [
