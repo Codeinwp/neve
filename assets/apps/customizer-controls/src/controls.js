@@ -48,7 +48,8 @@ controlConstructor.neve_responsive_range_control = ResponsiveRangeControl;
 controlConstructor.neve_color_control = ColorControl;
 controlConstructor.neve_presets_selector = PresetsSelectorControl;
 controlConstructor.neve_multiselect = MultiSelectControl;
-controlConstructor.neve_responsive_radio_buttons_control = ResponsiveRadioButtonsControl;
+controlConstructor.neve_responsive_radio_buttons_control =
+	ResponsiveRadioButtonsControl;
 controlConstructor.neve_radio_image_control = RadioImageControl;
 controlConstructor.neve_ordering_control = OrderingControl;
 controlConstructor.neve_global_colors = GlobalColorsControl;

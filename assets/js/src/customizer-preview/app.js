@@ -557,9 +557,8 @@ window.addEventListener('load', function () {
 									.querySelector(args.additional.parent)
 									.prepend(wrap);
 							}
-							document.querySelector(
-								args.selector
-							).innerHTML = newValue;
+							document.querySelector(args.selector).innerHTML =
+								newValue;
 							break;
 						case 'neve_range_control':
 						case 'Neve\\Customizer\\Controls\\React\\Range':

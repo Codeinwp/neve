@@ -11,6 +11,7 @@ import {FONTS} from '../stories/utils/values'
 import {BuildersData} from "./dummy-data";
 
 window.NeveReactCustomize = {}
+window.nvComponents = {}
 window.NeveReactCustomize.HFG = BuildersData
 
 const wpObject = {

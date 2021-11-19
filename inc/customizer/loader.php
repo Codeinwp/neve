@@ -118,7 +118,6 @@ class Loader {
 				array(
 					'nonce'                         => wp_create_nonce( 'wp_rest' ),
 					'headerControls'                => [],
-					'shouldUseColorPickerFix'       => (int) ( ! neve_is_using_wp_version( '5.8' ) ),
 					'instructionalVid'              => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
 					'dynamicTags'                   => array(
 						'controls' => array(),
@@ -141,7 +140,7 @@ class Loader {
 			wp_set_script_translations( 'react-controls', 'neve' );
 		}
 
-		wp_register_style( 'react-controls', $bundle_path . 'style-controls.css', [ 'wp-components' ], $dependencies['version'] );
+		wp_register_style( 'react-controls', $bundle_path . 'style-controls.css', [ 'neve-components' ], $dependencies['version'] );
 		wp_style_add_data( 'react-controls', 'rtl', 'replace' );
 		wp_enqueue_style( 'react-controls' );
 
