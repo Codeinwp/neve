@@ -1,0 +1,44 @@
+name: Build and Publish NPM Package 🚀
+on:
+  push:
+    paths:
+      - 'assets/apps/components/**'
+    branches:
+      - development
+
+jobs:
+  publish-package:
+    runs-on: ubuntu-latest
+    if: github.actor != 'pirate-bot'
+    strategy:
+      matrix:
+        node-version: [ 12.x ]
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+      - name: Setup node ${{ matrix.node-version }} 🔧
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org/
+      - name: Version and Publish 📦
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          cd ./assets/apps/components
+          npm version patch
+          npm publish
+      - name: Commit files 📦
+        run: |
+          git config --local user.email "${{ secrets.BOT_EMAIL }}"
+          git config --local user.name "pirate-bot"
+          git add assets/apps/components/package.json
+          git commit -m "Sync components package version"
+      - name: Push changes 📦
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.BOT_TOKEN }}
+          branch: ${{ github.ref }}
+

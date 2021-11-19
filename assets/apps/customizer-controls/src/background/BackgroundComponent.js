@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-import Background from './Background';
+import { Background } from '@neve-wp/components';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from '@wordpress/element';
 

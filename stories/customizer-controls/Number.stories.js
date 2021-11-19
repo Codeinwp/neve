@@ -1,4 +1,4 @@
-import NumberControl from '../../assets/apps/customizer-controls/src/common/NumberControl';
+import { NumberControl } from '../../assets/apps/components/src/components';
 import {
 	WhiteBackgroundDecorator,
 	CustomizerDecorator,

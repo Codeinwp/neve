@@ -1,4 +1,4 @@
-import MultiSelect from './MultiSelect';
+import { MultiSelect } from '@neve-wp/components';
 import { useState } from '@wordpress/element';
 
 const MultiSelectComponent = ({ control }) => {

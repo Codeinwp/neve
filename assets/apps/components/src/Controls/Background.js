@@ -11,7 +11,7 @@ import {
 } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/media-utils';
 
-import ColorControl from '../common/ColorControl';
+import ColorControl from './ColorControl';
 
 const Background = ({ onChange, value, label, description }) => {
 	const getButtons = () => {

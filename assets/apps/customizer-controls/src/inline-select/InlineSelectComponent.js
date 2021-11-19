@@ -1,5 +1,5 @@
 import { useEffect, useState } from '@wordpress/element';
-import InlineSelect from '../common/InlineSelect';
+import { InlineSelect } from '@neve-wp/components';
 
 const InlineSelectComponent = ({ control }) => {
 	const { label, options, changesOn } = control.params;
