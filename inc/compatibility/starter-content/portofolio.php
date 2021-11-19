@@ -36,7 +36,7 @@ return [
 <p class="has-text-align-center has-neve-text-color-color has-text-color">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:buttons {"align":"center"} -->
+<!-- wp:buttons {"align":"center", "layout":{"type":"flex","justifyContent":"center"}} -->
 <div class="wp-block-buttons aligncenter"><!-- wp:button {"className":"is-style-primary"} -->
 <div class="wp-block-button is-style-primary"><a class="wp-block-button__link" href="#">PROJECT DETAILS</a></div>
 <!-- /wp:button --></div>
@@ -60,7 +60,7 @@ return [
 <p class="has-text-align-center has-neve-text-color-color has-text-color">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:buttons {"align":"center"} -->
+<!-- wp:buttons {"align":"center", "layout":{"type":"flex","justifyContent":"center"}} -->
 <div class="wp-block-buttons aligncenter"><!-- wp:button {"className":"is-style-primary"} -->
 <div class="wp-block-button is-style-primary"><a class="wp-block-button__link" href="#">PROJECT DETAILS</a></div>
 <!-- /wp:button --></div>
@@ -98,7 +98,7 @@ return [
 <p class="has-text-align-center has-neve-text-color-color has-text-color">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:buttons {"align":"center"} -->
+<!-- wp:buttons {"align":"center", "layout":{"type":"flex","justifyContent":"center"}} -->
 <div class="wp-block-buttons aligncenter"><!-- wp:button {"className":"is-style-primary"} -->
 <div class="wp-block-button is-style-primary"><a class="wp-block-button__link" href="#">PROJECT DETAILS</a></div>
 <!-- /wp:button --></div>
@@ -122,7 +122,7 @@ return [
 <p class="has-text-align-center has-neve-text-color-color has-text-color">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:buttons {"align":"center"} -->
+<!-- wp:buttons {"align":"center", "layout":{"type":"flex","justifyContent":"center"}} -->
 <div class="wp-block-buttons aligncenter"><!-- wp:button {"className":"is-style-primary"} -->
 <div class="wp-block-button is-style-primary"><a class="wp-block-button__link" href="#">PROJECT DETAILS</a></div>
 <!-- /wp:button --></div>
