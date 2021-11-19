@@ -1,9 +1,11 @@
 /* jshint esversion: 6 */
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import ResponsiveControl from '../common/Responsive.js';
-import SizingControl from '../common/Sizing.js';
-import { mergeDeep } from '../common/common';
+import {
+	mergeDeep,
+	ResponsiveControl,
+	SizingControl,
+} from '@neve-wp/components';
 
 import { useState, useEffect } from '@wordpress/element';
 import { Button } from '@wordpress/components';

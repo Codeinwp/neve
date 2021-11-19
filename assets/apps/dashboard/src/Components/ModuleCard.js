@@ -211,9 +211,8 @@ const ModuleCard = ({
 
 export default compose(
 	withSelect((select) => {
-		const { getModuleStatus, getLicenseTier, getProOption } = select(
-			'neve-dashboard'
-		);
+		const { getModuleStatus, getLicenseTier, getProOption } =
+			select('neve-dashboard');
 		return {
 			getOption: (slug) => getProOption(slug),
 			getModuleStatus: (slug) => getModuleStatus(slug),

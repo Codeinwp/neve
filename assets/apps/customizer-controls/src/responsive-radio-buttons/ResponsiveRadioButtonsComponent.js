@@ -1,9 +1,7 @@
 /* jshint esversion: 6 */
 
 import PropTypes from 'prop-types';
-import RadioIcons from '../common/RadioIcons';
-import ResponsiveControl from '../common/Responsive';
-
+import { RadioIcons, ResponsiveControl } from '@neve-wp/components';
 import { useState, useEffect } from '@wordpress/element';
 
 const ResponsiveRadioButtonsComponent = ({ control }) => {

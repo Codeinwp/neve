@@ -9,8 +9,9 @@ function initShop() {
 		handleShopSidebar();
 	}
 
-	const countExclusive = document.querySelectorAll('.exclusive-products li')
-		.length;
+	const countExclusive = document.querySelectorAll(
+		'.exclusive-products li'
+	).length;
 	if (
 		document.body.classList.contains('nv-exclusive') &&
 		countExclusive > 4

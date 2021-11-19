@@ -20,7 +20,7 @@ import {
 	RangeControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { maybeParseJson } from '../../../customizer-controls/src/common/common';
+import { maybeParseJson } from '@neve-wp/components';
 
 class MetaFieldsManager extends Component {
 	constructor(props) {
@@ -167,9 +167,8 @@ class MetaFieldsManager extends Component {
 	}
 
 	renderPageLayoutGroup() {
-		const template = select('core/editor').getEditedPostAttribute(
-			'template'
-		);
+		const template =
+			select('core/editor').getEditedPostAttribute('template');
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
@@ -378,9 +377,8 @@ class MetaFieldsManager extends Component {
 	}
 
 	renderPageTitleGroup() {
-		const template = select('core/editor').getEditedPostAttribute(
-			'template'
-		);
+		const template =
+			select('core/editor').getEditedPostAttribute('template');
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
@@ -551,9 +549,8 @@ class MetaFieldsManager extends Component {
 			elements['sharing-icons'] = __('Sharing Icons', 'neve');
 		}
 
-		const template = select('core/editor').getEditedPostAttribute(
-			'template'
-		);
+		const template =
+			select('core/editor').getEditedPostAttribute('template');
 		const postType = select('core/editor').getCurrentPostType();
 		const orderingValue =
 			select('core/editor').getEditedPostAttribute('meta')
@@ -714,9 +711,8 @@ export default compose([
 					'meta'
 				)[id];
 			},
-			allMeta: selectHandler('core/editor').getEditedPostAttribute(
-				'meta'
-			),
+			allMeta:
+				selectHandler('core/editor').getEditedPostAttribute('meta'),
 		};
 	}),
 ])(MetaFieldsManager);
