@@ -1,0 +1,81 @@
+.neve-button-appearance-control {
+  .neve-color-component {
+    .customize-control-title {
+      font-weight: inherit;
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+  .neve-responsive-sizing {
+    margin-bottom: 10px;
+
+	.dashicon {
+	  margin: 0;
+	}
+  }
+
+  .neve-white-background-control {
+    padding-bottom: 0;
+  }
+
+  .components-panel {
+    margin: 0 -16px -1px;
+  }
+
+  .components-panel__arrow {
+	width: 24px;
+	height: 24px;
+  }
+
+  .components-panel__row {
+    margin-top: 10px;
+    display: block;
+  }
+
+  .neve-radio-icons {
+	padding: 0;
+    button {
+      height: 30px;
+
+      &.is-text {
+        font-weight: 700;
+        color: $accent-color;
+      }
+
+      svg {
+        height: 20px;
+        width: 55px;
+      }
+
+      .button-filled-svg {
+        path {
+          fill: #fff;
+        }
+      }
+
+      .button-outline-svg {
+        rect {
+          fill: none;
+          stroke: $accent-color;
+          stroke-miterlimit: 10;
+        }
+      }
+
+      &.active {
+        .button-filled-svg {
+          path {
+            fill: $accent-color;
+          }
+        }
+
+        .button-outline-svg {
+          rect {
+            fill: none;
+            stroke: #fff;
+            stroke-miterlimit: 10;
+          }
+        }
+      }
+    }
+  }
+}

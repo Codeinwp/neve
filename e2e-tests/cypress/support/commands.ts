@@ -4,9 +4,11 @@ import 'cypress-file-upload';
 import '@percy/cypress';
 import 'cypress-nv-commands/index';
 import 'cypress-localstorage-commands';
+import 'cypress-real-events';
 import { scrollToBottom } from 'scroll-to-bottomjs';
 import '@testing-library/cypress/add-commands';
-
+import 'cypress-real-events';
+import '@4tw/cypress-drag-drop';
 Cypress.Commands.add('insertCoverBlock', () => {
 	const text =
 		'<!-- wp:cover {"overlayColor":"neve-button-color","align":"full"} -->\n' +

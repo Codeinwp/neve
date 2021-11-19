@@ -48,8 +48,16 @@ class Layout_Sidebar extends Base_View {
 			$content_width = $meta_width;
 		}
 
+		$class_hide_sidebar_conditionally = '';
+
 		if ( $content_width >= 95 ) {
-			return;
+			if ( is_customize_preview() ) {
+				// render the sidebar and hide it with CSS
+				$class_hide_sidebar_conditionally = 'hide';
+			} else {
+				// do not load sidebar as SSR
+				return;
+			}
 		}
 
 		if ( $theme_mod !== $position ) {
@@ -61,7 +69,7 @@ class Layout_Sidebar extends Base_View {
 		}
 
 		$args = array(
-			'wrap_classes' => 'nv-' . $position . ' ' . $sidebar_setup['sidebar_slug'],
+			'wrap_classes' => 'nv-' . $position . ' ' . $sidebar_setup['sidebar_slug'] . ' ' . $class_hide_sidebar_conditionally,
 			'data_attrs'   => apply_filters( 'neve_sidebar_data_attrs', '', $sidebar_setup['sidebar_slug'] ),
 			'close_button' => $this->get_sidebar_close( $sidebar_setup['sidebar_slug'] ),
 			'slug'         => $sidebar_setup['sidebar_slug'],
@@ -180,7 +188,7 @@ class Layout_Sidebar extends Base_View {
 	/**
 	 * Get current context.
 	 *
-	 * @return string
+	 * @return string|false
 	 */
 	private function get_context() {
 		if ( class_exists( 'WooCommerce', false ) && ( is_woocommerce() || is_product() || is_cart() || is_checkout() || is_account_page() ) ) {
@@ -198,5 +206,7 @@ class Layout_Sidebar extends Base_View {
 		if ( is_archive() || is_home() ) {
 			return 'blog-archive';
 		}
+
+		return false;
 	}
 }

@@ -272,6 +272,7 @@ class Layout_Blog extends Base_Customizer {
 					'choices'  => array(
 						'number'   => esc_html__( 'Number', 'neve' ),
 						'infinite' => esc_html__( 'Infinite Scroll', 'neve' ),
+						'jump-to'  => esc_html__( 'Number', 'neve' ) . ' & ' . esc_html__( 'Search Field', 'neve' ),
 					),
 				)
 			)
@@ -519,7 +520,7 @@ class Layout_Blog extends Base_Customizer {
 	 *
 	 * @param string $value value from the control.
 	 *
-	 * @return bool
+	 * @return string
 	 */
 	public function sanitize_blog_layout( $value ) {
 		$allowed_values = array( 'default', 'covers', 'grid' );
@@ -535,10 +536,10 @@ class Layout_Blog extends Base_Customizer {
 	 *
 	 * @param string $value value from the control.
 	 *
-	 * @return bool
+	 * @return string
 	 */
 	public function sanitize_pagination_type( $value ) {
-		$allowed_values = array( 'number', 'infinite' );
+		$allowed_values = array( 'number', 'infinite', 'jump-to' );
 		if ( ! in_array( $value, $allowed_values, true ) ) {
 			return 'number';
 		}
@@ -557,14 +558,14 @@ class Layout_Blog extends Base_Customizer {
 		);
 
 		if ( empty( $value ) ) {
-			return $allowed;
+			return wp_json_encode( $allowed );
 		}
 
 		$decoded = json_decode( $value, true );
 
 		foreach ( $decoded as $val ) {
 			if ( ! in_array( $val, $allowed, true ) ) {
-				return $allowed;
+				return wp_json_encode( $allowed );
 			}
 		}
 

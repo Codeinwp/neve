@@ -1,21 +1,18 @@
-@media (min-width: #{$tablet-sm}) {
-  @include hfg-alignments--tablet-sm();
-  @include nav-menu--tablet-sm();
-}
-
 @media (min-width: #{$tablet}) {
-  @include comments--tablet();
+
+	@include comments--tablet();
 }
 
 @media (min-width: #{$laptop}) {
-  @include content--laptop();
-  @include nav-menu--laptop();
-  @include nav-search--laptop();
-  @include blog-layout-default-alt--laptop();
-  @include sidebar--laptop();
-  @include hfg-alignments--laptop();
-  @include gutenberg--laptop();
+
+	@include content--laptop();
+	@include nav-menu--laptop();
+	@include blog-layout-default-alt--laptop();
+	@include sidebar--laptop();
+	@include gutenberg--laptop();
 }
 
+//@media (min-width: #{$tablet-sm}) {
+//}
 //@media (min-width: #{$desktop}) {
 //}

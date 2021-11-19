@@ -1,6 +1,11 @@
-/* global NeveProperties */
+/* global NeveProperties CustomEvent */
 /* jshint esversion: 6 */
-import { addEvent, addClass, removeClass } from '../utils.js';
+import {
+	addEvent,
+	addClass,
+	removeClass,
+	NV_FOCUS_TRAP_START,
+} from '../utils.js';
 
 export const HFG = function () {
 	this.options = {
@@ -27,30 +32,34 @@ HFG.prototype.init = function (skipSidebar = false) {
 	const menuMobileToggleButtons = document.querySelectorAll(
 		'.menu-mobile-toggle'
 	);
-	addEvent(menuMobileToggleButtons, 'click', () => {
-		this.toggleMenuSidebar(true);
+	addEvent(menuMobileToggleButtons, 'click', (event) => {
+		this.toggleMenuSidebar(true, event.target);
 	});
 
 	/**
 	 * When click to outside of menu sidebar.
 	 */
 	const overlay = document.querySelector('.header-menu-sidebar-overlay');
-	addEvent(
-		overlay,
-		'click',
-		function () {
-			this.toggleMenuSidebar(false);
-		}.bind(this)
-	);
+	if (overlay) {
+		addEvent(
+			overlay,
+			'click',
+			function () {
+				this.toggleMenuSidebar(false);
+			}.bind(this)
+		);
+	}
 };
 
 /**
  * Toggle menu sidebar.
  *
  * @param {boolean} toggle
+ * @param {Element} target
  */
-HFG.prototype.toggleMenuSidebar = function (toggle) {
-	const buttons = document.querySelectorAll('.menu-mobile-toggle');
+HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
+	const TOGGLE_CLASS_CONTAINER = '.menu-mobile-toggle';
+	const buttonsContainer = document.querySelectorAll(TOGGLE_CLASS_CONTAINER);
 	removeClass(document.body, 'hiding-header-menu-sidebar');
 
 	if (
@@ -64,7 +73,7 @@ HFG.prototype.toggleMenuSidebar = function (toggle) {
 		}
 		addClass(document.body, 'hiding-header-menu-sidebar');
 		removeClass(document.body, 'is-menu-sidebar');
-		removeClass(buttons, 'is-active');
+		removeClass(buttonsContainer, 'is-active');
 		// Remove the hiding class after 1 second.
 		setTimeout(
 			function () {
@@ -74,6 +83,20 @@ HFG.prototype.toggleMenuSidebar = function (toggle) {
 		);
 	} else {
 		addClass(document.body, 'is-menu-sidebar');
-		addClass(buttons, 'is-active');
+		addClass(buttonsContainer, 'is-active');
+		if (target) {
+			document.dispatchEvent(
+				new CustomEvent(NV_FOCUS_TRAP_START, {
+					detail: {
+						container: document.getElementById(
+							'header-menu-sidebar'
+						),
+						close: '.close-sidebar-panel button',
+						firstFocus: 'a,input',
+						backFocus: target,
+					},
+				})
+			);
+		}
 	}
 };

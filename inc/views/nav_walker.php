@@ -10,6 +10,7 @@
 
 namespace Neve\Views;
 
+use HFG\Core\Components\Nav;
 use Neve\Core\Dynamic_Css;
 
 /**
@@ -36,10 +37,10 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	/**
 	 * Add the caret inside the menu item link.
 	 *
-	 * @param string $title menu item title.
-	 * @param object $item menu item object.
-	 * @param object $args menu args.
-	 * @param int    $depth the menu item depth.
+	 * @param string    $title menu item title.
+	 * @param \WP_Post  $item menu item object.
+	 * @param \stdClass $args menu args.
+	 * @param int       $depth the menu item depth.
 	 *
 	 * @return string
 	 */
@@ -60,10 +61,13 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			return $title;
 		}
 
-		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
-			$title = '<span class="menu-item-title-wrap">' . $title . '</span>';
+		// We add tabindex for sidebar in order for the carret to  be focusable.
+		$expanded = strpos( $args->menu_id, 'sidebar' ) !== false ? 'tabindex="0"' : '';
 
-			$title .= '<div class="caret-wrap ' . $item->menu_order . '" tabindex="0">';
+		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
+			$title = '<span class="menu-item-title-wrap dd-title">' . $title . '</span>';
+
+			$title .= '<div ' . $expanded . ' class="caret-wrap ' . $item->menu_order . '">';
 			$title .= '<span class="caret"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg></span>';
 			$title .= '</div>';
 		}
@@ -74,17 +78,16 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	/**
 	 * Start_el
 	 *
-	 * @param string   $output Output.
-	 * @param \WP_Post $item Item.
-	 * @param int      $depth Depth.
-	 * @param array    $args Args.
-	 * @param int      $id id.
-	 *
+	 * @param string    $output Output.
+	 * @param \WP_Post  $item Item.
+	 * @param int       $depth Depth.
+	 * @param \stdClass $args Args.
+	 * @param int       $id id.
 	 * @since 3.0.0
 	 *
 	 * @see   Walker::start_el()
 	 */
-	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
 		if ( ! is_object( $args ) ) {
 			return;
 		}
@@ -111,12 +114,12 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	/**
 	 * Ends the element output, if needed.
 	 *
-	 * @param string   $output the end el string.
-	 * @param \WP_Post $item item.
-	 * @param int      $depth item depth.
-	 * @param array    $args item args.
+	 * @param string    $output the end el string.
+	 * @param \WP_Post  $item item.
+	 * @param int       $depth item depth.
+	 * @param \stdClass $args item args.
 	 */
-	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
+	public function end_el( &$output, $item, $depth = 0, $args = null ) {
 		if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
 			$t = '';
 			$n = '';
@@ -129,7 +132,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 				if ( ! self::$mega_menu_enqueued ) {
 					$this->enqueue_mega_menu_style();
 				}
-				$output .= '<span class="neve-mm-description">' . esc_html( $item->description ) . '</span>';
+				$output .= '<div class="neve-mm-description">' . esc_html( $item->description ) . '</div>';
 			}
 		}
 		$output .= "</li>{$n}";
@@ -216,11 +219,6 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			return;
 		}
 
-		$path = neve_is_new_skin() ? 'mega-menu' : 'mega-menu-legacy';
-
-		wp_register_style( 'neve-mega-menu', get_template_directory_uri() . '/assets/css/' . $path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
-		wp_style_add_data( 'neve-mega-menu', 'rtl', 'replace' );
-		wp_style_add_data( 'neve-mega-menu', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-mega-menu' );
 
 		if ( ! neve_is_new_skin() ) {

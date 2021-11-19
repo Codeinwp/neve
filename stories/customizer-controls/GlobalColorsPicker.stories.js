@@ -1,5 +1,5 @@
 import { useState } from '@wordpress/element';
-import GlobalColorsPicker from '../../inc/customizer/controls/react/src/common/GlobalColorsPicker';
+import { GlobalColorsPicker } from '../../assets/apps/components/src/components';
 import { CustomizerDecorator } from '../components/decorators';
 
 export default {

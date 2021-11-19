@@ -1,0 +1,16 @@
+.control-wrap {
+	width: 100%;
+}
+
+.has-media-queries .control-wrap {
+	display: none;
+	width: 100%;
+}
+
+.has-media-queries .control-wrap.active {
+	display: block;
+}
+
+#customize-theme-controls .customize-pane-child.accordion-section-content {
+	height: 100%;
+}

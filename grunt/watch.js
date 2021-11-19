@@ -7,8 +7,7 @@ module.exports = {
 	},
 	customizerSass: {
 		files: [
-			'inc/customizer/controls/css/*.css',
-			'inc/addons/customizer/controls/css/*.css',
+			'assets/customizer/css/*.css'
 		],
 		tasks: [ 'concat:customizerStyle', 'cssmin:customizerStyle']
 	},

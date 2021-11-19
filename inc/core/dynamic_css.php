@@ -75,7 +75,7 @@ class Dynamic_Css {
 
 		$style = apply_filters( 'neve_dynamic_style_output', $this->generator->generate(), $is_for_gutenberg ? 'gutenberg' : 'frontend' );
 
-		$style .= $this->get_root_css();
+		$style .= self::get_root_css();
 
 		$style = self::minify_css( $style );
 
@@ -85,7 +85,7 @@ class Dynamic_Css {
 	/**
 	 * Basic CSS minification.
 	 *
-	 * @param $css
+	 * @param string $css
 	 *
 	 * @return string
 	 */
@@ -110,17 +110,17 @@ class Dynamic_Css {
 	 *
 	 * @return string
 	 */
-	public function get_root_css() {
+	public static function get_root_css() {
 		$css = ':root{';
 
-		$css .= $this->get_css_vars();
-		$css .= $this->get_fallback_font();
+		$css .= self::get_css_vars();
+		$css .= self::get_fallback_font();
 
 		$css .= '}';
 
 		$css .= apply_filters( 'neve_after_css_root', $css );
 
-		return self::minify_css($css);
+		return self::minify_css( $css );
 	}
 
 	/**
@@ -128,7 +128,7 @@ class Dynamic_Css {
 	 *
 	 * @return string
 	 */
-	public function get_fallback_font() {
+	public static function get_fallback_font() {
 		$fallback = get_theme_mod( 'neve_fallback_font_family', 'Arial, Helvetica, sans-serif' );
 
 		return '--nv-fallback-ff:' . $fallback . ';';
@@ -139,7 +139,7 @@ class Dynamic_Css {
 	 *
 	 * @return string
 	 */
-	private function get_css_vars() {
+	private static function get_css_vars() {
 		$global_colors = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
 
 		if ( empty( $global_colors ) ) {

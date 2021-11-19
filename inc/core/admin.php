@@ -43,9 +43,6 @@ class Admin {
 	 */
 	public function __construct() {
 		$this->set_props();
-		if ( class_exists( '\Neve_Dash\Main' ) ) {
-			new \Neve_Dash\Main();
-		}
 		add_action(
 			'admin_init',
 			function () {
@@ -79,6 +76,25 @@ class Admin {
 
 		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
 		add_filter( 'neve_pro_react_controls_localization', [ $this, 'adapt_conditional_headers' ] );
+	}
+
+	/**
+	 * Register script for react components.
+	 */
+	public function register_react_components() {
+		$deps = include trailingslashit( NEVE_MAIN_DIR ) . 'assets/apps/components/build/components.asset.php';
+
+		wp_register_script( 'neve-components', trailingslashit( NEVE_ASSETS_URL ) . 'apps/components/build/components.js', $deps['dependencies'], $deps['version'], false );
+		wp_localize_script(
+			'neve-components',
+			'nvComponents',
+			[
+				'shouldUseColorPickerFix' => (int) ( ! neve_is_using_wp_version( '5.8' ) ),
+				'customizerURL'           => esc_url( admin_url( 'customize.php' ) ),
+			] 
+		);
+		wp_register_style( 'neve-components', trailingslashit( NEVE_ASSETS_URL ) . 'apps/components/build/style-components.css', [ 'wp-components' ], $deps['version'] );
+		wp_add_inline_style( 'neve-components', Dynamic_Css::get_root_css() );
 	}
 
 	/**
@@ -147,6 +163,7 @@ class Admin {
 			return $theme_mods;
 		}
 		$migrator = new Mods_Migrator( $theme_mods );
+
 		return $migrator->get_migrated_mods();
 	}
 
@@ -286,8 +303,17 @@ class Admin {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
+
+		// to check under the gutenberg v5.5.0
 		if ( function_exists( 'is_gutenberg_page' ) && is_gutenberg_page() ) {
 			return;
+		}
+
+		// to check above the gutenberg v5.5.0 (is_gutenberg_page is deprecated with )
+		if ( method_exists( $current_screen, 'is_block_editor' ) ) {
+			if ( $current_screen->is_block_editor() ) {
+				return;
+			}
 		}
 
 		/**
@@ -556,33 +582,33 @@ class Admin {
 	private function dismiss_script() {
 		?>
 		<script type="text/javascript">
-			function handleNoticeActions($) {
-				var actions = $('.nv-welcome-notice').find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
-				$.each(actions, function (index, actionButton) {
-					$(actionButton).on('click', function (e) {
-						e.preventDefault()
-						var redirect = $(this).attr('href')
-						$.post(
-								'<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
-								{
-									nonce: '<?php echo esc_attr( wp_create_nonce( 'remove_notice_confirmation' ) ); ?>',
-									action: 'neve_dismiss_welcome_notice',
-									success: function () {
-										if (typeof redirect !== 'undefined' && window.location.href !== redirect) {
-											window.location = redirect
-											return false
-										}
-										$('.nv-welcome-notice').fadeOut()
+									function handleNoticeActions($) {
+										var actions = $('.nv-welcome-notice').find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
+										$.each(actions, function (index, actionButton) {
+											$(actionButton).on('click', function (e) {
+												e.preventDefault()
+												var redirect = $(this).attr('href')
+												$.post(
+													'<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
+													{
+														nonce: '<?php echo esc_attr( wp_create_nonce( 'remove_notice_confirmation' ) ); ?>',
+														action: 'neve_dismiss_welcome_notice',
+														success: function () {
+															if (typeof redirect !== 'undefined' && window.location.href !== redirect) {
+																window.location = redirect
+																return false
+															}
+															$('.nv-welcome-notice').fadeOut()
+														}
+													}
+												)
+											})
+										})
 									}
-								}
-						)
-					})
-				})
-			}
 
-			jQuery(document).ready(function () {
-				handleNoticeActions(jQuery)
-			})
+									jQuery(document).ready(function () {
+										handleNoticeActions(jQuery)
+									})
 		</script>
 		<?php
 	}

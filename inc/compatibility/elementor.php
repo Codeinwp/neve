@@ -20,7 +20,7 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Elementor location manager
 	 *
-	 * @var \ElementorPro\Modules\ThemeBuilder\Module
+	 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Locations_Manager
 	 */
 	public $elementor_location_manager;
 
@@ -50,7 +50,15 @@ class Elementor extends Page_Builder_Base {
 			$css .= '--e-global-color-' . str_replace( '-', '', $slug ) . ':' . $color . ';';
 		}
 		$css .= '}';
-		$css  = Dynamic_Css::minify_css( $css );
+		/**
+		 * Filters the css with base vars for elementor colors.
+		 *
+		 * @param array $css Single post page components.
+		 *
+		 * @since 3.1.0
+		 */
+		$css = apply_filters( 'neve_elementor_colors', $css );
+		$css = Dynamic_Css::minify_css( $css );
 		wp_add_inline_style( 'neve-style', $css );
 	}
 
@@ -145,7 +153,7 @@ class Elementor extends Page_Builder_Base {
 			return;
 		}
 
-		// Elementor locations compatibility.
+		// Elementor locations compatibility. (This action fires by Elementor Pro)
 		add_action( 'elementor/theme/register_locations', array( $this, 'register_theme_locations' ) );
 
 		// Override theme templates.
@@ -238,7 +246,7 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Check if it page was edited with page builder.
 	 *
-	 * @param string $pid post id.
+	 * @param int $pid post id.
 	 *
 	 * @return bool
 	 */
@@ -291,7 +299,7 @@ class Elementor extends Page_Builder_Base {
 	private function get_global_color_prefix() {
 		return ( apply_filters( 'ti_wl_theme_is_localized', false ) ? __( 'Theme', 'neve' ) : 'Neve' ) . ' - ';
 	}
-	
+
 	/**
 	 * Is the current page has an elementor template
 	 *
@@ -320,12 +328,12 @@ class Elementor extends Page_Builder_Base {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Update has_template transient value when a post updated or inserted.
 	 *
-	 * @param  int     $post_ID that post ID.
-	 * @param  WP_Post $post that WP_Post object.
+	 * @param  int      $post_ID that post ID.
+	 * @param  \WP_Post $post that WP_Post object.
 	 * @return void
 	 */
 	public function update_has_template_transient( $post_ID, $post ) {
@@ -354,7 +362,7 @@ class Elementor extends Page_Builder_Base {
 
 		$transient_key        = 'neve_elementor_has_template_' . $elementor_template_type;
 		$transient_expiry_sec = HOUR_IN_SECONDS;
-		$cached_value         = get_transient( $transient_key );
+		$cached_value         = get_transient( $transient_key ) == true; // cast transient (string) to bool
 
 		if ( $force_refresh !== true && $cached_value !== false ) {
 			return $cached_value;

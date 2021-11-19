@@ -18,7 +18,7 @@ abstract class Base_Inline {
 	/**
 	 * Mobile style (default).
 	 *
-	 * @var string
+	 * @var array
 	 */
 	private $style = array(
 		'mobile'  => '',

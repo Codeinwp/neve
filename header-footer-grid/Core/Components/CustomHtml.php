@@ -39,6 +39,7 @@ class CustomHtml extends Abstract_Component {
 		$this->set_property( 'icon', 'welcome-write-blog' );
 		$this->set_property( 'has_typeface_control', true );
 		$this->set_property( 'default_typography_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() . ' .nv-html-content' ); //phpcs:ignore WordPressVIPMinimum.Security.Vuejs.RawHTMLDirectiveFound
+		$this->set_property( 'has_horizontal_alignment', true );
 		add_filter( 'wp_kses_allowed_html', array( $this, 'allow_input_form_tags' ), 10, 2 );
 	}
 
@@ -143,12 +144,19 @@ class CustomHtml extends Abstract_Component {
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback'  => 'wp_kses_post',
 				'default'            => get_theme_mod( 'neve_top_bar_content', '' ),
-				' '                  => '',
 				'label'              => __( 'HTML', 'neve' ),
 				'description'        => __( 'Arbitrary HTML code. It supports also shortcodes.', 'neve' ),
-				'type'               => 'textarea',
+				'type'               => '\Neve\Customizer\Controls\React\Rich_Text',
 				'section'            => $this->section,
-				'use_dynamic_fields' => array( 'string', 'url' ),
+				'options'            => array(
+					'input_attrs' => array(
+						'toolbars'             => array(
+							'toolbar1' => 'formatselect,styleselect,bold,italic,bullist,numlist,link,alignleft,aligncenter,alignright,wp_adv',
+							'toolbar2' => 'strikethrough,hr,forecolor,pastetext,removeformat,charmap,outdent,indent',
+						),
+						'allowedDynamicFields' => array( 'string', 'url' ),
+					),
+				),
 				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);

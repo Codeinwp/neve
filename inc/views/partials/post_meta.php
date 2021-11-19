@@ -131,7 +131,7 @@ class Post_Meta extends Base_View {
 						break;
 					}
 					$markup .= '<' . $tag . ' class="meta category">';
-					$markup .= get_the_category_list( ', ', get_the_ID() );
+					$markup .= get_the_category_list( ', ', '', get_the_ID() );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'comments':
@@ -300,7 +300,7 @@ class Post_Meta extends Base_View {
 	/**
 	 * Get the comments with a link.
 	 *
-	 * @return string
+	 * @return string|false
 	 */
 	public static function get_comments() {
 		if ( ! get_post() ) {

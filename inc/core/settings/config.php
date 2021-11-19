@@ -53,6 +53,7 @@ class Config {
 	const MODS_TYPEFACE_H5                 = 'neve_h5_typeface_general';
 	const MODS_TYPEFACE_H6                 = 'neve_h6_typeface_general';
 	const MODS_FONT_GENERAL                = 'neve_body_font_family';
+	const MODS_FONT_GENERAL_VARIANTS       = 'neve_body_font_family_variants';
 	const MODS_FONT_HEADINGS               = 'neve_headings_font_family';
 	const MODS_DEFAULT_CONTAINER_STYLE     = 'neve_default_container_style';
 	const MODS_SINGLE_POST_CONTAINER_STYLE = 'neve_single_post_container_style';
@@ -89,9 +90,21 @@ class Config {
 	const MODS_POST_COVER_OVERLAY_OPACITY        = 'neve_post_cover_overlay_opacity';
 	const MODS_POST_COVER_TEXT_COLOR             = 'neve_post_cover_text_color';
 	const MODS_POST_COVER_BLEND_MODE             = 'neve_post_cover_blend_mode';
+	const MODS_POST_COVER_TITLE_ALIGNMENT        = 'neve_post_title_alignment';
 	const MODS_POST_COVER_TITLE_POSITION         = 'neve_post_title_position';
 	const MODS_POST_COVER_BOXED_TITLE_PADDING    = 'neve_post_cover_title_boxed_padding';
 	const MODS_POST_COVER_BOXED_TITLE_BACKGROUND = 'neve_post_cover_title_boxed_background_color';
+
+	const MODS_PAGE_COVER_HEIGHT                 = 'neve_page_cover_height';
+	const MODS_PAGE_COVER_PADDING                = 'neve_page_cover_padding';
+	const MODS_PAGE_COVER_BACKGROUND_COLOR       = 'neve_page_cover_background_color';
+	const MODS_PAGE_COVER_OVERLAY_OPACITY        = 'neve_page_cover_overlay_opacity';
+	const MODS_PAGE_COVER_TEXT_COLOR             = 'neve_page_cover_text_color';
+	const MODS_PAGE_COVER_BLEND_MODE             = 'neve_page_cover_blend_mode';
+	const MODS_PAGE_COVER_TITLE_ALIGNMENT        = 'neve_page_title_alignment';
+	const MODS_PAGE_COVER_TITLE_POSITION         = 'neve_page_title_position';
+	const MODS_PAGE_COVER_BOXED_TITLE_PADDING    = 'neve_page_cover_title_boxed_padding';
+	const MODS_PAGE_COVER_BOXED_TITLE_BACKGROUND = 'neve_page_cover_title_boxed_background_color';
 
 	const MODS_POST_COMMENTS_PADDING               = 'neve_comments_boxed_padding';
 	const MODS_POST_COMMENTS_BACKGROUND_COLOR      = 'neve_comments_boxed_background_color';
@@ -221,4 +234,16 @@ class Config {
 		self::CSS_SELECTOR_FORM_BUTTON_HOVER           => 'form input[type="submit"]:hover, form button[type="submit"]:hover, form *[value*="ubmit"]:hover, #comments input[type="submit"]:hover',
 		self::CSS_SELECTOR_FORM_SEARCH_INPUTS          => 'form.search-form input:read-write',
 	];
+
+	/**
+	 * Get the constant value based on the context.
+	 *
+	 * @param string $context Current context.
+	 * @param string $meta    Value to get.
+	 *
+	 * @return string
+	 */
+	public static function get_constant_value( $context, $meta ) {
+		return constant( 'self::MODS_' . strtoupper( $context ) . '_' . strtoupper( $meta ) );
+	}
 }

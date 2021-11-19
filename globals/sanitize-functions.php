@@ -45,9 +45,6 @@ function neve_sanitize_rgba( $value ) {
 	$green = 'rgba(0,0,0,0)';
 	$blue  = 'rgba(0,0,0,0)';
 	$alpha = 'rgba(0,0,0,0)';   // If empty or an array return transparent
-	if ( empty( $value ) || is_array( $value ) ) {
-		return '';
-	}
 
 	// By now we know the string is formatted as an rgba color so we need to further sanitize it.
 	$value = str_replace( ' ', '', $value );
@@ -61,10 +58,10 @@ function neve_sanitize_rgba( $value ) {
  *
  * @param bool $value value to be sanitized.
  *
- * @return string
+ * @return bool
  */
 function neve_sanitize_checkbox( $value ) {
-	return isset( $value ) && true === (bool) $value;
+	return true === (bool) $value;
 }
 
 /**
@@ -84,7 +81,7 @@ function neve_is_json( $string ) {
  *
  * @param string $input Control input.
  *
- * @return float
+ * @return string|float Returns json string or float.
  */
 function neve_sanitize_range_value( $input ) {
 	if ( ! neve_is_json( $input ) ) {
@@ -158,10 +155,6 @@ function neve_sanitize_background( $value ) {
  * @return array
  */
 function neve_sanitize_button_appearance( $value ) {
-	if ( is_array( $value ) ) {
-		return $value;
-	}
-
 	return $value;
 }
 
@@ -276,14 +269,14 @@ function neve_sanitize_meta_ordering( $value ) {
 	);
 
 	if ( empty( $value ) ) {
-		return $allowed;
+		return wp_json_encode( $allowed );
 	}
 
 	$decoded = json_decode( $value, true );
 
 	foreach ( $decoded as $val ) {
 		if ( ! in_array( $val, $allowed, true ) ) {
-			return $allowed;
+			return wp_json_encode( $allowed );
 		}
 	}
 
@@ -310,7 +303,7 @@ function neve_sanitize_blend_mode( $input ) {
  *
  * @param string $value value from the control.
  *
- * @return bool
+ * @return string
  */
 function neve_sanitize_container_layout( $value ) {
 	$allowed_values = array( 'contained', 'full-width' );
@@ -331,6 +324,49 @@ function neve_sanitize_container_layout( $value ) {
 function neve_sanitize_button_type( $value ) {
 	if ( ! in_array( $value, [ 'primary', 'secondary' ], true ) ) {
 		return 'primary';
+	}
+
+	return $value;
+}
+
+/**
+ * Sanitize font variants.
+ *
+ * @param string[] $value the incoming value.
+ *
+ * @return string[]
+ */
+function neve_sanitize_font_variants( $value ) {
+	$allowed = [
+		'100',
+		'200',
+		'300',
+		'400',
+		'500',
+		'600',
+		'700',
+		'800',
+		'900',
+		'100italic',
+		'200italic',
+		'300italic',
+		'400italic',
+		'500italic',
+		'600italic',
+		'700italic',
+		'800italic',
+		'900italic',
+	];
+	if ( ! is_array( $value ) ) {
+		return [];
+	}
+
+	foreach ( $value as $variant ) {
+		if ( in_array( $variant, $allowed, true ) ) {
+			continue;
+		}
+		$key = array_search( $variant, $value );
+		unset( $value[ $key ] );
 	}
 
 	return $value;

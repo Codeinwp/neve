@@ -1,0 +1,74 @@
+.nv-custom-palette-wrap {
+  .header {
+	display: flex;
+	align-items: center;
+	padding: 5px 0 20px;
+
+	.edit-gc-link {
+	  margin-left: auto;
+	  text-decoration: none;
+	}
+  }
+
+  ul {
+	li {
+	  white-space: nowrap;
+	  padding: 2px 0;
+	}
+	a {
+	  display: flex;
+	  align-items: center;
+	  text-decoration: none;
+	  color: #555D66;
+	  font-weight: 500;
+	  font-size: 14px;
+
+	  span {
+		margin-left: 7px;
+	  }
+	}
+  }
+
+  .nv-custom-palette-color {
+	height: 30px;
+	width: 30px;
+	display: block;
+	border-radius: 50%;
+	border: 1px solid #ccc;
+	margin: 2px;
+
+	&.active {
+	  margin: 0;
+	  border: 3px solid #8FD7EE;
+	}
+  }
+}
+
+.globa-color-popover {
+  border-radius: 100px !important;
+}
+
+.neve-color-component.allows-global {
+  .components-popover__content {
+	border: none;
+	border-radius: 5px !important;
+  }
+}
+.global-color-picker {
+  .dashicon {
+	width: auto !important;
+	font-size: 16px !important;
+	line-height: normal;
+	display: flex;
+	align-items: center;
+	margin-right: 0 !important;
+  }
+
+  svg {
+	margin-right: 0 !important;
+  }
+
+  &.active {
+	color: $wp-blue;
+  }
+}

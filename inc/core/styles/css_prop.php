@@ -134,7 +134,7 @@ class Css_Prop {
 					$suffix = self::get_unit_responsive( $meta, $device );
 				}
 
-				$non_empty_values = array_filter( $value, 'strlen' );
+				$non_empty_values = array_filter( $value, 'strlen' ); // @phpstan-ignore-line
 				if ( count( $non_empty_values ) === 4 ) {
 					return sprintf( "%s:%s%s %s%s %s%s %s%s;",
 						$css_prop,
@@ -220,6 +220,8 @@ class Css_Prop {
 
 				if ( $is_font_family_var ) {
 					Font_Manager::add_google_font( $value );
+
+					$value = self::format_font_family_value( $value );
 				}
 
 				if ( isset( $meta['directional-prop'] ) ) {
@@ -229,10 +231,7 @@ class Css_Prop {
 				$suffix = self::get_suffix( $meta, $device, $value, $css_prop );
 
 				return sprintf( ' %s: %s%s;', $css_prop, $value, $suffix );
-				break;
 		}
-
-		return '';
 	}
 
 	/**
@@ -240,7 +239,7 @@ class Css_Prop {
 	 *
 	 * @param array $meta Meta array.
 	 * @param string $device Current device.
-	 * @param string $value Value.
+	 * @param mixed $value Value.
 	 *
 	 * @return string
 	 *
@@ -282,14 +281,13 @@ class Css_Prop {
 	 *
 	 * @param array $meta Meta array.
 	 * @param string $device Current device.
-	 * @param string $value Value.
+	 * @param array|int $value Value.
 	 * @param string $css_prop Css Property.
 	 * @param string $type Type of directional property.
 	 *
 	 * @return string
 	 */
 	public static function transform_directional_prop( $meta, $device, $value, $css_prop, $type ) {
-
 		$suffix   = self::get_suffix( $meta, $device, $value, $css_prop );
 		$suffix   = $suffix ? $suffix : 'px';
 		$template = '';
@@ -354,5 +352,45 @@ class Css_Prop {
 		$template = trim( $template ) . ';';
 
 		return $css_prop . ':' . $template . ';';
+	}
+
+	/**
+	 * Format the font family value.
+	 *
+	 * @param string $value the font family value.
+	 */
+	public static function format_font_family_value( $value ) {
+		// At some point we were setting the DB values with quotes and removed that.
+		// Make sure we drop the slashes and quotes.
+		$value = str_replace( [ '"', '\\' ], '', $value );
+
+		if ( strpos( $value, ',' ) !== false ) {
+			$value = explode( ',', $value );
+
+			$value = array_map( 'self::quote_font_family', $value );
+
+			return join( ',', $value );
+		}
+
+		return self::quote_font_family( $value );
+	}
+
+	/**
+	 * Strip side spaces wrap font family in quotes.
+	 *
+	 * @param string $family the font family.
+	 *
+	 * @return string
+	 */
+	private static function quote_font_family( $family ) {
+		// Make sure we don't have whitespace.
+		$family = trim( $family );
+		// Remove quotes. Because of previously faulty fix.
+		$family = trim( $family, '"' );
+		if ( strpos( $family, ' ' ) === false ) {
+			return $family;
+		}
+
+		return '"' . $family . '"';
 	}
 }

@@ -133,28 +133,19 @@ describe('Single page sidebar', function () {
 		cy.get('.neve_meta_title_alignment .nv-align-center').click();
 		cy.updatePost();
 		cy.visit(pageSetup.url);
-		cy.get('.nv-page-title')
-			.should('have.class', 'has-text-align-center')
-			.and('have.css', 'text-align')
-			.and('eq', 'center');
+		cy.get('.nv-page-title').should('have.css', 'text-align').and('eq', 'center');
 		cy.get('#wp-admin-bar-edit a').click();
 
 		cy.get('.neve_meta_title_alignment .nv-align-right').click();
 		cy.updatePost();
 		cy.visit(pageSetup.url);
-		cy.get('.nv-page-title')
-			.should('have.class', 'has-text-align-right')
-			.and('have.css', 'text-align')
-			.and('eq', 'right');
+		cy.get('.nv-page-title').should('have.css', 'text-align').and('eq', 'right');
 		cy.get('#wp-admin-bar-edit a').click();
 
 		cy.get('.neve_meta_title_alignment .nv-align-left').click();
 		cy.updatePost();
 		cy.visit(pageSetup.url);
-		cy.get('.nv-page-title')
-			.should('have.class', 'has-text-align-left')
-			.and('have.css', 'text-align')
-			.and('eq', 'left');
+		cy.get('.nv-page-title').should('have.css', 'text-align').and('eq', 'left');
 		cy.get('#wp-admin-bar-edit a').click();
 	});
 

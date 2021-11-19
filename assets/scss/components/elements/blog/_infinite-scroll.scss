@@ -1,17 +1,18 @@
 .nv-loader {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  border: 3px solid var(--nv-primary-accent);
-  border-left: 3px solid transparent;
-  animation: spin 1s linear infinite;
-  margin: 0 auto;
-  display: none;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	border: 3px solid var(--nv-primary-accent);
+	border-left: 3px solid transparent;
+	animation: spin 1s linear infinite;
+	margin: 0 auto;
+	display: none;
 }
 
 @keyframes spin {
-  100% {
-	-webkit-transform: rotate(360deg);
-	transform: rotate(360deg);
-  }
+
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
 }

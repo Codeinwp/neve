@@ -1,4 +1,4 @@
-import RadioImage from '../../inc/customizer/controls/react/src/radio-image/RadioImage';
+import { RadioImage } from '../../assets/apps/components/src/components';
 import { CustomizerDecorator } from '../components/decorators';
 import { useState } from '@wordpress/element';
 import { RADIO_IMAGE_CHOICES } from '../utils/values';

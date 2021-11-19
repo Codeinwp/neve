@@ -19,6 +19,148 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.0.11](https://github.com/Codeinwp/neve/compare/v3.0.10...v3.0.11) (2021-11-10)
+
+- [Feat] Add the possibility to replace WooCommerce Breadcrumbs with the ones from Yoast, SeoPress Pro, or RankMath - [Learn more](https://docs.themeisle.com/article/1123-breadcrumbs-in-neve#woo)
+- [Fix] Infinite scroll not working in some specific context
+- [Fix] Compatibility of palette switcher with Elementor global colors
+- [Fix] Archive featured image as background works only with all taxonomies enabled
+- [Fix] Post title alignment
+- [Fix] Repeater control adding unused values to the database & causing customizer to load in publishing state
+- [Fix] Edge case of footer columns not having a proper corresponding layout
+- [Fix] Bug affecting the container size and elements style
+- [Fix] Compatibility with Cartflows plugin
+- [Fix] HTML Component's TinyMCE new lines for existing content and Safari support
+- [Fix] Bring back custom font size field inside the WordPress editor
+- [Fix] Removed previously added values for font-size presets inside the editor
+- [Fix] Removed redundant border controls for mobile header sidebar
+- [Fix] Ordering control with blank elements
+- [Fix] Double scrollbar appearing in some customizer sections
+- [Fix] Inconsistent console error inside the customizer preview  
+- Update Google Fonts
+
+
+
+
+##### [Version 3.0.10](https://github.com/Codeinwp/neve/compare/v3.0.9...v3.0.10) (2021-10-27)
+
+- [Fix] header rows background images not applying on legacy skin
+
+
+
+
+##### [Version 3.0.9](https://github.com/Codeinwp/neve/compare/v3.0.8...v3.0.9) (2021-10-26)
+
+- [Fix] editor in HTML header component
+
+
+
+
+##### [Version 3.0.8](https://github.com/Codeinwp/neve/compare/v3.0.7...v3.0.8) (2021-10-26)
+
+- [Fix] Ordering control when header layout is changed on the single post
+- [Fix] Customizer controls not loading properly due to browser caching issue in some instances
+
+
+
+
+##### [Version 3.0.7](https://github.com/Codeinwp/neve/compare/v3.0.6...v3.0.7) (2021-10-26)
+
+- [Feat] Header row border control - [Learn more](https://docs.themeisle.com/article/1245-header-rows-settings#border)
+- [Feat] Jump to page blog pagination type - [Learn more](https://docs.themeisle.com/article/1306-neve-blog-archive-options#ordering)
+- [Feat] Support for the named text sizes inside the editor 
+- [Feat] TinyMCE field inside header HTML Component
+- [Feat] Add Painter starter site - [Elementor](https://demosites.io/painter/)
+- [Feat] Add Freelance Designer starter site - [Elementor](https://demosites.io/minimal-portfolio/)
+- Replace react-sortable-hoc with sortablejs already used in the header
+- Update Google Fonts
+
+
+
+
+##### [Version 3.0.6](https://github.com/Codeinwp/neve/compare/v3.0.5...v3.0.6) (2021-10-11)
+
+- [Feat] Adds alignment option to the mobile sidebar row setting;
+- [Feat] Adds vertical alignment option for each footer row
+- [Fix] Conflict with the global header from Elementor Pro
+- [Fix] Cannot update a page: Updating failed. Can not update the value of 'neve_meta_sidebar' in the database
+- [Fix] Missing default value for vertical-align on the single post cover layout
+- [Fix] Builder rows with columns controls execute sync too soon on some environments
+- [Fix] The available items aren't properly updated when adding a component to the mobile sidebar
+- [Fix] Outdated template alert for search form on WooCommerce Status
+- [Fix] Remove forced 100% width of images inside image widgets 
+- [Fix] Custom layouts not acting properly on old skin
+- [Fix] Letter-spacing inline-style not applying for headings
+- Updated Google Fonts
+
+
+
+
+##### [Version 3.0.5](https://github.com/Codeinwp/neve/compare/v3.0.4...v3.0.5) (2021-09-29)
+
+- [Feat] Add additional font variants control for body font family used on the body
+- [Fix] Remove hardcoded concatenation for menu item and page title
+- [Fix] Fix hooks added in the REST endpoint for dynamic elements of the infinite scroll
+- [Fix] Icons not rotating during site import in progress actions
+- [Fix] Sidebar visibility on customizer preview
+- [Fix] Food store compatibility
+- [Fix] Unclosed div element on the shop page
+- [Fix] Remove aria-role which was breaking AMP validator on the menu carets
+- [Fix] Components inside the mobile sidebar inheriting wrong colors
+- [Fix] Dropdowns inside the mobile sidebar inheriting overlay background color when using a background image
+- [Fix] Footer components not updating after columns change
+- Header components labels font styles should be inherited from the primary menu if placed in the same slot 
+- Change archive post title tag back to h2
+- Refreshed design for the Architecture starter site - [Gutenberg](https://demosites.io/architecture-gb/) | [Elementor](https://demosites.io/architecture/)
+- Remove some unused CSS
+
+
+
+
+##### [Version 3.0.4](https://github.com/Codeinwp/neve/compare/v3.0.3...v3.0.4) (2021-09-15)
+
+- fix customizer loading when elementor pro is active
+- fix exclusive products category restriction
+- fix list indent overrides some blocks that contain ul/ol
+- improve links appear within a larger body of block-level content, they must be clearly distinguishable from surrounding content
+- improve keyboard navigation, allow focus trap inside search/mobile sidebar
+- allow overwriting of Woocommerce search form and default search form
+- Fix footer being hidden after we add one component
+- Fix font family saving issue on the Header Nav widget
+
+
+
+
+##### [Version 3.0.3](https://github.com/Codeinwp/neve/compare/v3.0.2...v3.0.3) (2021-09-06)
+
+- [Fix] Cart icon component is vertically misaligned when it has a label
+- [Fix] Fix notice with legacy values on padding for buttons when values are empty
+- [Fix] Letterbox effect on video embeds
+- [Fix] HTML structure for menu icon and consistency of aria-label with screen reader text
+- [Fix] Search on other languages when PolyLang is activated
+- [Fix] Customizer live refresh selector for header sidebar text color
+- [Fix] Post tags spacing when there are a lot of tags
+- [Fix] Mega menu container live refresh & size issues on old skin
+- [Fix] Typography style specificity inside the editor was causing some blocks to act weird
+- [Fix] Block patterns provided the theme provides had broken styles
+- [Fix] Drop form fields & labels spacing controls
+- [Fix] Design on password-protected posts
+- Removes mobile dropdown outline on tap
+- Update Google Fonts
+
+
+
+
+##### [Version 3.0.2](https://github.com/Codeinwp/neve/compare/v3.0.1...v3.0.2) (2021-08-23)
+
+- [Fix] issue with some hosting environments not loading JS files that contained ~ in the file name
+- [Fix] items in customizer panel don't adjust when changing presets 
+- [Fix] adds backspacing for Woocommerce standard pages and fieldset
+- [Fix] solve an issue with multi worded google fonts names
+- [Fix] blog custom layout inside the loop with masonry
+- [Fix] div tag isn't closed for products on the shop page
+- [Fix] Product category description displayed above the breadcrumbs and the sort
+
 ##### [Version 3.0.1](https://github.com/Codeinwp/neve/compare/v3.0.0...v3.0.1) (2021-08-06)
 
 - [Fix] bring back custom-background theme support

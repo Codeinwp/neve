@@ -1,0 +1,44 @@
+.neve-multiselect {
+
+	.multiselect-wrap {
+		border: 1px solid #ccc;
+		display: flex;
+
+		.selected-options {
+			padding: 0 0 3px 3px;
+			border-radius: 2px;
+			flex-grow: 1;
+			display: flex;
+			flex-wrap: wrap;
+			min-height: 30px;
+		}
+	}
+
+	.token {
+		margin: 3px 3px 0 0 !important;
+		display: flex;
+		background: #ededed;
+		align-items: center;
+		padding: 3px 8px 3px 5px !important;
+		height: auto;
+
+		.title {
+			color: #555d66;
+			font-size: 14px;
+		}
+
+		svg {
+			color: #00000080;
+		}
+	}
+
+	.dd-toggle {
+		display: flex;
+		align-items: center;
+		margin: -1px;
+
+		button {
+			height: 100%;
+		}
+	}
+}

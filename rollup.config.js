@@ -35,9 +35,9 @@ const ROLLUP_MODERN = {
 			[
 				"@babel/env",
 				{
-					"targets": {
-						"esmodules": true
-					},
+					"targets": ["defaults",
+						"not ie >= 0"],
+					"debug": true,
 					"useBuiltIns": "usage",
 					"corejs": 3,
 					"exclude": [
@@ -52,9 +52,7 @@ let all_coverage = {
 		'assets/js/build/all/metabox.js': 'assets/js/src/metabox.js',
 		'assets/js/build/all/gutenberg.js': 'assets/js/src/gutenberg.js',
 		'assets/js/build/all/customizer-preview.js': ['assets/js/src/customizer-preview/app.js', './inc/customizer/options/js/*.js'],
-		'assets/js/build/all/customizer-controls.js': ['./inc/customizer/controls/js/*.js'],
-		'assets/js/build/all/shop.js': 'assets/js/src/shop/app.js',
-		'assets/js/build/all/frontend.js': 'assets/js/src/frontend/app.js',
+		'assets/js/build/all/customizer-controls.js': ['./assets/customizer/js/*.js']
 	},
 	__export = [],
 	modern = {

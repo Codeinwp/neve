@@ -1,0 +1,151 @@
+.neve-font-family-control {
+
+	.font-family-selector-toggle {
+		width: 100%;
+		height: 35px;
+		align-items: center;
+		justify-content: center;
+		display: flex;
+		border: 1px solid $input-borders;
+		box-shadow: none;
+		background-color: transparent;
+
+		.ff-name {
+			color: $accent-color;
+			width: 65%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			line-height: 1;
+			text-align: left;
+		}
+
+		.ff-preview {
+			color: $accent-color !important;
+			line-height: 1;
+			margin-left: auto;
+			font-size: 21px;
+		}
+	}
+
+	.popover-content {
+		position: relative;
+		display: block;
+		width: 300px !important;
+		height: 400px;
+	}
+
+	.popover-header {
+		position: absolute;
+		top: -40px;
+	}
+
+	.search {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #fff;
+		box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+		border-bottom: 1px solid #ccc;
+		padding: 5px;
+		width: 300px;
+		top: 0;
+		box-sizing: border-box;
+
+		.components-base-control__field {
+			margin-bottom: 0;
+
+			input {
+				height: 25px;
+				width: 100%;
+			}
+		}
+
+		.components-base-control {
+			width: 85%;
+		}
+
+		.close-font-selector {
+			padding: 0 5px;
+			margin-left: auto;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+
+	.components-popover__content {
+		overflow: auto !important;
+		max-height: 440px;
+		//display: block;
+		//height: 440px
+	}
+
+	.neve-fonts-list {
+		max-height: 400px;
+		margin-top: 40px;
+		overflow: auto;
+
+		.load-more {
+			padding: 10px 0;
+
+			svg {
+				fill: #0073aa;
+				animation: 2s infinite linear neve-spin;
+			}
+		}
+
+		li {
+			margin: 0;
+
+			&.selected a {
+				background-color: #0b69da;
+				color: #fff;
+			}
+
+			&.no-result {
+				opacity: 0.75;
+				font-weight: 600;
+				padding: 10px 0;
+			}
+
+			&.font-group-header {
+				text-align: left;
+				padding: 5px 10px;
+				font-size: 15px;
+				font-weight: 600;
+				background-color: #efefef;
+			}
+
+			a {
+				align-items: center;
+				display: flex;
+				padding: 5px 10px;
+				transition: 0.2s ease;
+				color: #333;
+				border-bottom: 1px solid #efefef;
+				text-decoration: none;
+
+				&:hover {
+					color: #fff;
+					background-color: #0073aa;
+				}
+
+				.neve-font-family {
+					font-size: 14px;
+					font-weight: 400;
+					text-align: left;
+					max-width: 75%;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+
+				.neve-font-preview {
+					line-height: initial;
+					font-display: swap;
+					margin-left: auto;
+					font-size: 20px;
+				}
+			}
+		}
+	}
+}

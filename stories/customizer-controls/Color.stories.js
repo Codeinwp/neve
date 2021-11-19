@@ -1,5 +1,5 @@
 import { useState } from '@wordpress/element';
-import ColorControl from '../../inc/customizer/controls/react/src/common/ColorControl';
+import { ColorControl } from '../../assets/apps/components/src/components';
 import {
 	CustomizerDecorator,
 	WhiteBackgroundDecorator,

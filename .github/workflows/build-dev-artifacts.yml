@@ -124,7 +124,7 @@ jobs:
     name: E2E for ${{ matrix.specs }} on ${{ matrix.envs }}
     needs: dev-zip
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         include:
           ## Amp specs needs just one machine
@@ -181,6 +181,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install ${{ matrix.envs }} env for ${{ matrix.specs }} specs
         run: bash ./bin/envs/init.sh ${{ matrix.envs }} latest no "$ZIP_URL"
+
       - name: Run ${{ matrix.specs }} Cypress tests
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}

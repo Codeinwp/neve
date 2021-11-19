@@ -1,6 +1,7 @@
 import './style.css'
+
 try {
-	require ('../e2e-tests/node_modules/cypress-storybook/react');
+	require('../e2e-tests/node_modules/cypress-storybook/react');
 } catch (ex) {
 	console.log(ex);
 }
@@ -10,6 +11,7 @@ import {FONTS} from '../stories/utils/values'
 import {BuildersData} from "./dummy-data";
 
 window.NeveReactCustomize = {}
+window.nvComponents = {}
 window.NeveReactCustomize.HFG = BuildersData
 
 const wpObject = {
@@ -37,7 +39,12 @@ const wpObject = {
 			get: () => {
 				return 'title_tagline'
 			},
-			bind: () => {
+			bind: (a) => {
+				console.log('State Bounded and returns:', a());
+			},
+			unbind: (a) => {
+				console.log('State Unbounded and returns:', a());
+
 			}
 		}),
 		previewer: {
@@ -61,7 +68,8 @@ const wpObject = {
 					setting: {
 						value: 'left-third',
 						get: () => window.wp.customize.control(slug).setting.value,
-						set: (value) => {},
+						set: (value) => {
+						},
 						bind: (value) => window.wp.customize.control(slug).setting.value
 					}
 				}
@@ -71,7 +79,8 @@ const wpObject = {
 					setting: {
 						value: 2,
 						get: () => window.wp.customize.control(slug).setting.value,
-						set: (value) => {},
+						set: (value) => {
+						},
 						bind: (value) => window.wp.customize.control(slug).setting.value
 					}
 				}

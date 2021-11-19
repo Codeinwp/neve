@@ -43,7 +43,7 @@ class Template_Parts extends Base_View {
 	/**
 	 * Echo the post class.
 	 */
-	private function post_class() {
+	protected function post_class() {
 		$class  = join( ' ', get_post_class() );
 		$layout = $this->get_layout();
 		$class .= ' layout-' . $layout;
@@ -162,15 +162,12 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_title() {
-		$tag = neve_is_new_skin() ? 'h3' : 'h2';
+		$markup = '<h2 class="blog-entry-title entry-title">';
 
-		$markup = '';
-
-		$markup .= '<' . $tag . ' class="blog-entry-title entry-title">';
 		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">';
 		$markup .= get_the_title();
 		$markup .= '</a>';
-		$markup .= '</' . $tag . '>';
+		$markup .= '</h2>';
 
 		return $markup;
 	}
@@ -262,7 +259,7 @@ class Template_Parts extends Base_View {
 
 		$new_moretag = '&hellip;&nbsp;';
 
-		if ( isset( $moretag ) && ( $moretag !== ' [&hellip;]' ) ) {
+		if ( $moretag !== ' [&hellip;]' ) {
 			$new_moretag = '';
 		}
 

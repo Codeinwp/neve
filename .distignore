@@ -60,13 +60,9 @@ inc/admin/onboarding/package-lock.json
 blackfire
 rollup.config.js
 docker-compose.ci.yml
-renovate.json
-dashboard/src
-dashboard/node_modules
-dashboard/.eslintrc
-dashboard/package.json
-dashboard/package-lock.json
-dashboard/webpack.config.js
+assets/apps/dashboard/src
+assets/apps/customizer-controls/src
+assets/apps/metabox/src
 visual-regressions
 yarn.lock
 .ds_store
@@ -74,7 +70,7 @@ yarn.lock
 stories
 cypress.storybook.json
 tsconfig.json
-inc/admin/metabox/src
-inc/customizer/controls/react/src
 assets/js/src
 lint-staged.config.js
+.stylelintrc.json
+phpstan.neon

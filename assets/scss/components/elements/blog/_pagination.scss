@@ -1,27 +1,45 @@
 ul.page-numbers {
-  display: flex;
-  flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 
-  li{
-	margin-bottom: $spacing-sm;
-  }
+	li {
+		margin-bottom: $spacing-sm;
+	}
 
-  a, span {
-	line-height: 1;
-	margin-right: $spacing-md;
-	background: var(--nv-light-bg);
-	border-radius: 3px;
-	padding: 12px 15px;
-	color: var(--nv-text-color);
-	display: block;
-  }
+	input[type="submit"] {
+		all: unset;
+		cursor: pointer;
+	}
 
-  .dots {
-	background: 0;
-  }
+	form {
+		display: flex;
+	}
 
-  .current {
-	background: var(--nv-primary-accent);
-	color: var(--nv-text-dark-bg);
-  }
+	.page-input {
+		line-height: 1;
+		margin-right: $spacing-xs;
+		padding: 8px 15px;
+		font-size: var(--bodyFontSize);
+	}
+
+	a,
+	span,
+	input[type="submit"] {
+		line-height: 1;
+		margin-right: $spacing-md;
+		background: var(--nv-light-bg);
+		border-radius: 3px;
+		padding: 12px 15px;
+		color: var(--nv-text-color);
+		display: block;
+	}
+
+	.dots {
+		background: 0;
+	}
+
+	.current {
+		background: var(--nv-primary-accent);
+		color: var(--nv-text-dark-bg);
+	}
 }

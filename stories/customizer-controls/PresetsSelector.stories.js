@@ -1,4 +1,4 @@
-import PresetsSelector from '../../inc/customizer/controls/react/src/presets-selector/PresetsSelector';
+import PresetsSelector from '../../assets/apps/customizer-controls/src/presets-selector/PresetsSelector';
 import { PRESETS } from '../utils/values';
 import { CustomizerDecorator } from '../components/decorators';
 import { useState } from '@wordpress/element';

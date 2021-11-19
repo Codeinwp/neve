@@ -1,4 +1,4 @@
-import SizingControl from '../../inc/customizer/controls/react/src/common/Sizing';
+import { SizingControl } from '../../assets/apps/components/src/components';
 import {
 	WhiteBackgroundDecorator,
 	CustomizerDecorator,

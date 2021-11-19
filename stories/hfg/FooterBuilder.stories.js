@@ -1,4 +1,4 @@
-import HFGBuilder from '../../inc/customizer/controls/react/src/builder/HFGBuilder.tsx';
+import HFGBuilder from '../../assets/apps/customizer-controls/src/builder/HFGBuilder.tsx';
 import { CustomizerDecorator } from '../components/decorators';
 import { useState } from '@wordpress/element';
 
@@ -37,6 +37,7 @@ const FooterTemplate = (args) => {
 				value={value}
 				builder={'footer'}
 				portalMount={portalMount}
+				mounted={true}
 				{...args}
 			/>
 		</>

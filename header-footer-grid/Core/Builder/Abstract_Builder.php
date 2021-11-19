@@ -12,6 +12,7 @@
 namespace HFG\Core\Builder;
 
 use HFG\Core\Components\Abstract_Component;
+use HFG\Core\Components\Nav;
 use HFG\Core\Css_Generator;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
@@ -35,10 +36,14 @@ abstract class Abstract_Builder implements Builder {
 	const COLUMNS_NUMBER     = 'columns_number';
 	const COLUMNS_LAYOUT     = 'columns_layout';
 	const HEIGHT_SETTING     = 'height';
+	const BOTTOM_BORDER      = 'bottom_border';
+	const BORDER_COLOR       = 'border_color';
 	const SKIN_SETTING       = 'skin';
 	const TEXT_COLOR         = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
 	const WIDTH              = 'width';
+	const CONTENT_ALIGNMENT  = 'content_alignment';
+	const VERTICAL_ALIGN     = 'vertical_align';
 	/**
 	 * Layout config data.
 	 *
@@ -241,7 +246,7 @@ abstract class Abstract_Builder implements Builder {
 	 * Method to set protected properties for class.
 	 *
 	 * @param string $key The property key name.
-	 * @param string $value The property value.
+	 * @param mixed  $value The property value.
 	 *
 	 * @return bool
 	 * @since   1.0.0
@@ -360,11 +365,12 @@ abstract class Abstract_Builder implements Builder {
 					'live_refresh_selector' => $row_class,
 					'live_refresh_css_prop' => [
 						'cssVar' => [
-							'responsive' => true,
-							'vars'       => '--height',
-							'suffix'     => 'px',
-							'fallback'   => 'auto',
-							'selector'   => $row_class,
+							'responsive'           => true,
+							'vars'                 => '--height',
+							'suffix'               => 'px',
+							'fallback'             => 'auto',
+							'selector'             => $row_class,
+							'dispatchWindowResize' => true,
 						],
 						'prop'   => 'height',
 						'unit'   => 'px',
@@ -388,10 +394,71 @@ abstract class Abstract_Builder implements Builder {
 					'conditional_header'    => $this->get_id() === 'header',
 				]
 			);
+
+			SettingsManager::get_instance()->add(
+				[
+					'id'                    => self::BOTTOM_BORDER,
+					'group'                 => $row_setting_id,
+					'tab'                   => SettingsManager::TAB_STYLE,
+					'section'               => $row_setting_id,
+					'label'                 => __( 'Border Width', 'neve' ),
+					'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'responsive'           => true,
+							'vars'                 => '--rowBWidth',
+							'suffix'               => 'px',
+							'fallback'             => '0',
+							'selector'             => '.' . $this->get_id() . '-' . $row_id,
+							'dispatchWindowResize' => true,
+						],
+					],
+					'options'               => [
+						'input_attrs' => [
+							'step'       => 1,
+							'min'        => 0,
+							'max'        => 50,
+							'defaultVal' => [
+								'mobile'  => 0,
+								'tablet'  => 0,
+								'desktop' => 0,
+							],
+							'units'      => [ 'px' ],
+						],
+					],
+					'transport'             => 'postMessage',
+					'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
+					'default'               => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+					'conditional_header'    => $this->get_id() === 'header',
+				]
+			);
+
+			SettingsManager::get_instance()->add(
+				[
+					'id'                    => self::BORDER_COLOR,
+					'group'                 => $row_setting_id,
+					'tab'                   => SettingsManager::TAB_STYLE,
+					'label'                 => __( 'Border Color', 'neve' ),
+					'section'               => $row_setting_id,
+					'conditional_header'    => $this->get_id() === 'header',
+					'type'                  => 'neve_color_control',
+					'transport'             => 'postMessage',
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'     => '--rowBColor',
+							'selector' => '.' . $this->get_id() . '-' . $row_id,
+						],
+					],
+					'sanitize_callback'     => 'neve_sanitize_colors',
+					'default'               => 'var(--nv-light-bg)',
+				]
+			);
 		}
 
 		if ( $this->columns_layout && neve_is_new_builder() ) {
-			$this->add_columns_layout_controls( $row_setting_id );
+			$this->add_columns_layout_controls( $row_setting_id, $row_id );
 		}
 
 		$default_colors = $this->get_default_row_colors( $row_id );
@@ -440,7 +507,7 @@ abstract class Abstract_Builder implements Builder {
 				'live_refresh_css_prop' => [
 					'cssVar'  => [
 						'vars'     => '--color',
-						'selector' => $row_class,
+						'selector' => $row_id === 'sidebar' ? '.header-menu-sidebar-bg' : '.' . $this->get_id() . '-' . $row_id,
 					],
 					'partial' => $row_id === 'sidebar' ? 'hfg_header_layout_partial' : $row_setting_id . '_partial',
 				],
@@ -448,6 +515,7 @@ abstract class Abstract_Builder implements Builder {
 				'default'               => $default_colors['text'],
 			]
 		);
+
 		do_action( 'hfg_row_settings', $this->get_id(), $row_id, $row_setting_id );
 	}
 
@@ -535,7 +603,10 @@ abstract class Abstract_Builder implements Builder {
 			$component->customize_register( $wp_customize );
 		}
 
-		if ( null !== $wp_customize->get_panel( $this->panel ) ) {
+		/** @var \WP_Customize_Panel|null $panel */
+		$panel = $wp_customize->get_panel( $this->panel );
+
+		if ( null !== $panel ) {
 			return $wp_customize;
 		}
 
@@ -937,16 +1008,9 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 							$background = $value;
 							$style      = '';
-							if ( isset( $background['useFeatured'] ) && $background['useFeatured'] === true && is_singular() ) {
-								$featured_image = get_the_post_thumbnail_url();
-								if ( ! empty( $featured_image ) ) {
-									$style .= sprintf( 'background-image: url("%s");', esc_url( $featured_image ) );
-								} else {
-									$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
-								}
-							} elseif ( ! empty( $background['imageUrl'] ) ) {
-								$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
-							}
+							$image      = $this->get_row_featured_image( $background['imageUrl'], $background['useFeatured'], $meta );
+
+							$style .= sprintf( 'background-image: %s;', wp_kses_post( $image ) );
 							$style .= 'background-size:cover;';
 
 							if ( ! empty( $background['focusPoint'] ) && ! empty( $background['focusPoint']['x'] ) && ! empty( $background['focusPoint']['y'] ) ) {
@@ -992,6 +1056,39 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 * Returns the featured image for the header row.
+	 *
+	 * @param string  $image_url The image URL.
+	 * @param boolean $use_featured Flag if featured image should be used.
+	 * @param array   $meta Additional meta for the image.
+	 *
+	 * @return string
+	 */
+	private function get_row_featured_image( $image_url, $use_featured, $meta ) {
+		$image = 'none';
+		if ( ! empty( $use_featured ) && $use_featured === true && is_singular() ) {
+			$featured_image = get_the_post_thumbnail_url();
+			if ( ! empty( $featured_image ) ) {
+				$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
+			} else {
+				$image = sprintf( 'url("%s")', esc_url( $image_url ) );
+			}
+		} elseif ( ! empty( $image_url ) ) {
+			$image = sprintf( 'url("%s")', esc_url( $image_url ) );
+		}
+		/**
+		 * Filters the background featured image output url.
+		 *
+		 * @param string $image         The background image value: `none` or `url(<url>)`.
+		 * @param boolean $use_featured Flag to specify if featured image should be used or fallback.
+		 * @param array $meta           Additional meta for the image.
+		 *
+		 * @since 3.0.5
+		 */
+		return apply_filters( 'nv_builder_row_image_url', $image, $use_featured, $meta );
+	}
+
+	/**
 	 * Method to generate css array for each row.
 	 *
 	 * @param string $row_index The row index.
@@ -1027,6 +1124,24 @@ abstract class Abstract_Builder implements Builder {
 					return '';
 				},
 				Dynamic_Selector::META_DEFAULT       => '{ desktop: 0, tablet: 0, mobile: 0 }',
+			];
+
+			$rules['--rowBWidth'] = [
+				Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::BOTTOM_BORDER,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+					$value = (int) $value;
+					if ( $value >= 0 ) {
+						return sprintf( '%s:%s;', $css_prop, $value . 'px' );
+					}
+
+					return '';
+				},
+			];
+
+			$rules['--rowBColor'] = [
+				Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::BORDER_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
 			];
 		}
 
@@ -1068,18 +1183,7 @@ abstract class Abstract_Builder implements Builder {
 					'--bgImage'          => [
 						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							$image = 'none';
-							if ( isset( $value['useFeatured'] ) && $value['useFeatured'] === true && is_singular() ) {
-								$featured_image = get_the_post_thumbnail_url();
-								if ( ! empty( $featured_image ) ) {
-									$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
-								} else {
-									$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
-								}
-							} elseif ( ! empty( $value['imageUrl'] ) ) {
-								$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
-							}
-
+							$image = $this->get_row_featured_image( $value['imageUrl'], $value['useFeatured'], $meta );
 							return sprintf( '%s:%s;', $css_prop, $image );
 						},
 					],
@@ -1168,9 +1272,9 @@ abstract class Abstract_Builder implements Builder {
 	 * Get the component alignment.
 	 *
 	 * @param string $id component id.
-	 * @param false  $vertical should get vertical alignment.
+	 * @param bool   $vertical should get vertical alignment.
 	 *
-	 * @return array
+	 * @return array|string|false
 	 */
 	private function get_component_alignment( $id, $vertical = false ) {
 		if ( $vertical ) {
@@ -1234,7 +1338,7 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Add row utility classes.
 	 *
-	 * @param string $classes footer classes.
+	 * @param array  $classes footer classes.
 	 * @param string $row_index row index.
 	 *
 	 * @return mixed
@@ -1254,12 +1358,11 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Render the builder components.
 	 *
-	 * @param string $device the device [desktop|mobile].
-	 * @param string $row the row id.
+	 * @param string|null $device the device [desktop|mobile].
 	 */
-	public function new_render_components( $device, $row ) {
+	public function new_render_components( $device ) {
 		$row_index = 0;
-		if ( $device === null && $row === null ) {
+		if ( $device === null ) {
 			$device    = self::$current_device;
 			$row_index = self::$current_row;
 		}
@@ -1279,6 +1382,10 @@ abstract class Abstract_Builder implements Builder {
 			'c-right' => [],
 			'right'   => [],
 		];
+
+		$slot            = null;
+		$component_index = null;
+		$slot_data       = null;
 
 		foreach ( $data as $slot => $slot_data ) {
 			$is_side_slot = in_array( $slot, [ 'right', 'left' ], true );
@@ -1323,13 +1430,18 @@ abstract class Abstract_Builder implements Builder {
 					$classes[] = 'has-nav';
 				}
 
-				foreach ( $align as $device_slug => $align_slug ) {
-					$alignment_is_mobile = in_array( $device_slug, [ 'tablet', 'mobile' ], true );
-					$is_header_sidebar   = $builder_id === 'header' && $row_index === 'sidebar';
-					// Make sure we don't apply device-specific classes if the rows aren't visible on respective device.
-					// Footer has same rows on all devices.
-					if ( $builder_id === 'footer' || $is_header_sidebar || ( $device === $device_slug || ( $alignment_is_mobile && $device === 'mobile' ) ) ) {
-						$classes[] = $device_slug . '-' . $align_slug;
+				$new_skin = neve_is_new_skin();
+
+				// We don't add align classes to primary menus as there's no align control in new skin.
+				if ( ! $new_skin || strpos( $component['id'], Nav::COMPONENT_ID ) === false ) {
+					foreach ( $align as $device_slug => $align_slug ) {
+						$alignment_is_mobile = in_array( $device_slug, [ 'tablet', 'mobile' ], true );
+						$is_header_sidebar   = $builder_id === 'header' && $row_index === 'sidebar';
+						// Make sure we don't apply device-specific classes if the rows aren't visible on respective device.
+						// Footer has same rows on all devices.
+						if ( $builder_id === 'footer' || $is_header_sidebar || ( $device === $device_slug || ( $alignment_is_mobile && $device === 'mobile' ) ) ) {
+							$classes[] = $device_slug . '-' . $align_slug;
+						}
 					}
 				}
 
@@ -1339,7 +1451,7 @@ abstract class Abstract_Builder implements Builder {
 						'classes'    => $classes,
 						'components' => [],
 					];
-					if ( $builder_id === 'footer' && ! empty( $vertical_align ) ) {
+					if ( $builder_id === 'footer' && ! empty( $vertical_align ) && ! $new_skin ) {
 						$render_buffer[ $slot ][ $render_index ]['vertical-align'] = 'hfg-item-v-' . $vertical_align;
 					}
 				}
@@ -1394,11 +1506,9 @@ abstract class Abstract_Builder implements Builder {
 
 			$slot_classes = [ 'hfg-slot', $slot ];
 
-			if ( count( $slot_data ) === 1 ) {
-				$slot_classes[] = 'single';
-				if ( isset( $slot_data[0]['vertical-align'] ) ) {
-					$slot_classes[] = $slot_data[0]['vertical-align'];
-				}
+			// This doesn't apply to new skin as `vertical-align` is always empty.
+			if ( isset( $slot_data[0]['vertical-align'] ) ) {
+				$slot_classes[] = $slot_data[0]['vertical-align'];
 			}
 
 			if ( $row_index !== 'sidebar' ) {
@@ -1413,6 +1523,14 @@ abstract class Abstract_Builder implements Builder {
 				}
 				if ( count( $component_group['components'] ) > 1 ) {
 					$component_group['classes'][] = 'hfg-is-group';
+
+					// If there is a primary or secondary menu component inside the group, add a class to it.
+					foreach ( $component_group['components'] as $component_slug ) {
+						if ( strpos( $component_slug, 'primary-menu' ) === false && strpos( $component_slug, 'secondary-menu' ) === false ) {
+							continue;
+						}
+						$component_group['classes'][] = 'has-' . $component_slug;
+					}
 				}
 				echo sprintf( '<div class="%s">', esc_attr( join( ' ', $component_group['classes'] ) ) );
 				foreach ( $component_group['components'] as $component ) {
@@ -1433,17 +1551,16 @@ abstract class Abstract_Builder implements Builder {
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
-	 * @param null|array  $row Row details.
 	 */
-	public function render_components( $device = null, $row = null ) {
+	public function render_components( $device = null ) {
 		if ( neve_is_new_builder() ) {
-			$this->new_render_components( $device, $row );
+			$this->new_render_components( $device );
 
 			return;
 		}
 
 		$row_index = 0;
-		if ( $device === null && $row === null ) {
+		if ( $device === null ) {
 			$device    = self::$current_device;
 			$row_index = self::$current_row;
 		}
@@ -1794,6 +1911,68 @@ abstract class Abstract_Builder implements Builder {
 	 * @param string $row_setting_id row id.
 	 */
 	private function add_sidebar_controls( $row_setting_id ) {
+		$align_choices = [
+			'left'   => [
+				'tooltip' => __( 'Left', 'neve' ),
+				'icon'    => 'editor-alignleft',
+			],
+			'center' => [
+				'tooltip' => __( 'Center', 'neve' ),
+				'icon'    => 'editor-aligncenter',
+			],
+			'right'  => [
+				'tooltip' => __( 'Right', 'neve' ),
+				'icon'    => 'editor-alignright',
+			],
+		];
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::CONTENT_ALIGNMENT,
+				'group'                 => $row_setting_id,
+				'tab'                   => SettingsManager::TAB_LAYOUT,
+				'transport'             => 'postMessage',
+				'label'                 => __( 'Alignment', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Radio_Buttons',
+				'section'               => $row_setting_id,
+				'options'               => [
+					'choices' => $align_choices,
+				],
+				'conditional_header'    => true,
+				'sanitize_callback'     => 'neve_sanitize_alignment',
+				'default'               => [
+					'desktop' => 'left',
+					'tablet'  => 'left',
+					'mobile'  => 'left',
+				],
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'       => [
+							'--justify',
+							'--textAlign',
+							'--flexG',
+						],
+						'valueRemap' => [
+							'--justify' => [
+								'left'   => 'flex-start',
+								'center' => 'center',
+								'right'  => 'flex-end',
+							],
+							'--flexG'   => [
+								'left'   => '1',
+								'center' => '0',
+								'right'  => '0',
+							],
+						],
+						'responsive' => true,
+						'selector'   => '.header-menu-sidebar-bg',
+					],
+					'is_for' => 'horizontal',
+				],
+			]
+		);
+
 		SettingsManager::get_instance()->add(
 			[
 				'id'                 => self::LAYOUT_SETTING,
@@ -1812,7 +1991,7 @@ abstract class Abstract_Builder implements Builder {
 						'dropdown'    => __( 'Slide Down', 'neve' ),
 					],
 				],
-				'conditional_header' => $this->get_id() === 'header',
+				'conditional_header' => true,
 				'transport'          => 'refresh',
 				'sanitize_callback'  => 'wp_filter_nohtml_kses',
 				'default'            => 'slide_left',
@@ -1827,7 +2006,7 @@ abstract class Abstract_Builder implements Builder {
 				'label'                 => __( 'Sidebar Width', 'neve' ),
 				'transport'             => 'postMessage',
 				'section'               => $row_setting_id,
-				'conditional_header'    => $this->get_id() === 'header',
+				'conditional_header'    => true,
 				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 				'default'               => '{ "mobile": "350", "tablet": "350", "desktop": "350" }',
 				'options'               => [
@@ -1870,9 +2049,10 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Adds Column Layout Controls.
 	 *
-	 * @param string $row_setting_id row id.
+	 * @param string $row_setting_id row setting id [e.g. hfg_footer_layout_bottom].
+	 * @param string $row_id row id.
 	 */
-	private function add_columns_layout_controls( $row_setting_id ) {
+	private function add_columns_layout_controls( $row_setting_id, $row_id ) {
 		$choices = [];
 
 		for ( $i = 1; $i <= 5; $i ++ ) {
@@ -1913,6 +2093,46 @@ abstract class Abstract_Builder implements Builder {
 				'transport'         => 'post' . $row_setting_id,
 				'sanitize_callback' => [ $this, 'sanitize_columns' ],
 				'default'           => 'equal',
+			]
+		);
+
+		$align_choices = [
+			'flex-start' => [
+				'tooltip' => __( 'Top', 'neve' ),
+				'icon'    => 'arrow-up',
+			],
+			'center'     => [
+				'tooltip' => __( 'Middle', 'neve' ),
+				'icon'    => 'sort',
+			],
+			'flex-end'   => [
+				'tooltip' => __( 'Bottom', 'neve' ),
+				'icon'    => 'arrow-down',
+			],
+		];
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::VERTICAL_ALIGN,
+				'group'                 => $row_setting_id,
+				'tab'                   => SettingsManager::TAB_LAYOUT,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'wp_filter_nohtml_kses',
+				'default'               => 'flex-start',
+				'section'               => $row_setting_id,
+				'label'                 => __( 'Vertical Alignment', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => '--vAlign',
+						'selector' => '.' . $this->get_id() . '-' . $row_id . ' .row',
+					],
+					'is_for' => 'vertical',
+				],
+				'options'               => [
+					'choices' => $align_choices,
+				],
 			]
 		);
 	}
@@ -2000,6 +2220,54 @@ abstract class Abstract_Builder implements Builder {
 	 * @return array
 	 */
 	private function add_new_builder_styles( $css_array, $row ) {
+		$justify_map = [
+			'left'   => 'flex-start',
+			'center' => 'center',
+			'right'  => 'flex-end',
+		];
+
+		$align_default = [
+			'desktop' => 'left',
+			'tablet'  => 'left',
+			'mobile'  => 'left',
+		];
+
+		$align_id = $this->control_id . '_' . $row . '_' . self::CONTENT_ALIGNMENT;
+
+		if ( $row === 'sidebar' ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => '.header-menu-sidebar-bg',
+				Dynamic_Selector::KEY_RULES    => [
+					'--justify'   => [
+						Dynamic_Selector::META_KEY     => $align_id,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $justify_map ) {
+							return sprintf( '%s: %s;', $css_prop, $justify_map[ $value ] );
+						},
+						Dynamic_Selector::META_DEFAULT => $align_default,
+					],
+					'--textAlign' => [
+						Dynamic_Selector::META_KEY     => $align_id,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_DEFAULT => $align_default,
+					],
+					'--flexG'     => [
+						Dynamic_Selector::META_KEY     => $align_id,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) {
+							if ( $value === 'left' ) {
+								return sprintf( '%s: 1;', $css_prop );
+							}
+
+							return sprintf( '%s: 0;', $css_prop );
+						},
+						Dynamic_Selector::META_DEFAULT => $align_default,
+					],
+				],
+			];
+		}
+
+
 		if ( ! $this->columns_layout ) {
 			return $css_array;
 		}
@@ -2036,16 +2304,24 @@ abstract class Abstract_Builder implements Builder {
 			],
 		];
 
-		$layout      = $styles_map[ $columns ][ $layout ];
+		$proportions = 'equal';
+		if ( isset( $styles_map[ $columns ] ) && isset( $styles_map[ $columns ][ $layout ] ) ) {
+			$proportions = $styles_map[ $columns ][ $layout ];
+		}
+
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.' . $builder . '-' . $row . '-inner .row',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_GRID_TEMPLATE_COLS => [
 					Dynamic_Selector::META_KEY     => $mods_prefix . self::COLUMNS_LAYOUT,
 					Dynamic_Selector::META_DEFAULT => 'auto',
-					Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $layout ) {
-						return sprintf( '%s:%s;', $css_prop, $layout );
+					Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $proportions ) {
+						return sprintf( '%s:%s;', $css_prop, $proportions );
 					},
+				],
+				'--vAlign'                          => [
+					Dynamic_Selector::META_KEY     => $mods_prefix . self::VERTICAL_ALIGN,
+					Dynamic_Selector::META_DEFAULT => 'flex-start',
 				],
 			],
 		];

@@ -18,7 +18,7 @@ class Page_Layout extends Base_View {
 	 * Init function
 	 */
 	public function init() {
-		add_action( 'neve_do_single_page', array( $this, 'render_page' ) );
+		add_action( 'neve_do_single_page', [ $this, 'render_page' ] );
 	}
 
 	/**

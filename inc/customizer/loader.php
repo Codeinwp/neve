@@ -74,6 +74,7 @@ class Loader {
 				'Customizer\Options\Layout_Container',
 				'Customizer\Options\Layout_Blog',
 				'Customizer\Options\Layout_Single_Post',
+				'Customizer\Options\Layout_Single_Page',
 				'Customizer\Options\Layout_Single_Product',
 				'Customizer\Options\Layout_Sidebar',
 				'Customizer\Options\Typography',
@@ -106,8 +107,8 @@ class Loader {
 			true
 		);
 
-		$bundle_path  = get_template_directory_uri() . '/inc/customizer/controls/react/bundle/';
-		$dependencies = ( include get_template_directory() . '/inc/customizer/controls/react/bundle/controls.asset.php' );
+		$bundle_path  = get_template_directory_uri() . '/assets/apps/customizer-controls/build/';
+		$dependencies = ( include get_template_directory() . '/assets/apps/customizer-controls/build/controls.asset.php' );
 		wp_register_script( 'react-controls', $bundle_path . 'controls.js', $dependencies['dependencies'], $dependencies['version'], true );
 		wp_localize_script(
 			'react-controls',
@@ -126,9 +127,10 @@ class Loader {
 						'System' => neve_get_standard_fonts(),
 						'Google' => neve_get_google_fonts(),
 					),
+					'fontVariants'                  => neve_get_google_fonts( true ),
 					'hideConditionalHeaderSelector' => ! neve_can_use_conditional_header(),
 					'dashUpdatesMessage'            => sprintf( 'Please %s to the latest version of Neve Pro to manage the conditional headers.', '<a href="' . esc_url( admin_url( 'update-core.php' ) ) . '">' . __( 'update', 'neve' ) . '</a>' ),
-					'bundlePath'                    => get_template_directory_uri() . '/inc/customizer/controls/react/bundle/',
+					'bundlePath'                    => get_template_directory_uri() . '/assets/apps/customizer-controls/build/',
 				)
 			)
 		);
@@ -138,16 +140,21 @@ class Loader {
 			wp_set_script_translations( 'react-controls', 'neve' );
 		}
 
-		wp_register_style( 'react-controls', $bundle_path . 'style-controls.css', [ 'wp-components' ], $dependencies['version'] );
+		wp_register_style( 'react-controls', $bundle_path . 'style-controls.css', [ 'neve-components' ], $dependencies['version'] );
 		wp_style_add_data( 'react-controls', 'rtl', 'replace' );
 		wp_enqueue_style( 'react-controls' );
 
-		wp_enqueue_style(
-			'neve-fonts-control-google-fonts',
-			'https://fonts.googleapis.com/css?family=' . join( '|', neve_get_google_fonts() ) . '&text=Abc&display=swap"',
-			[],
-			NEVE_VERSION
-		);
+		$fonts  = neve_get_google_fonts();
+		$chunks = array_chunk( $fonts, absint( count( $fonts ) / 5 ) );
+
+		foreach ( $chunks as $index => $fonts_chunk ) {
+			wp_enqueue_style(
+				'neve-fonts-control-google-fonts-' . $index,
+				'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=Abc"',
+				[],
+				NEVE_VERSION
+			);
+		}
 	}
 
 	/**

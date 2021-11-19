@@ -1,4 +1,4 @@
-import Accordion from '../../inc/customizer/controls/react/src/common/Accordion';
+import { Accordion } from '../../assets/apps/components/src/components';
 import { CustomizerDecorator } from '../components/decorators';
 
 export default {

@@ -31,7 +31,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Install composer
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer install --ignore-platform-reqs --prefer-dist --no-progress --no-suggest
       - name: Run PHPCS
         run: composer run lint
 
@@ -48,11 +48,11 @@ jobs:
           options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
       steps:
         - name: Setup PHP version
-          uses: shivammathur/setup-php@v1
+          uses: shivammathur/setup-php@v2
           with:
             php-version: '7.1'
             extensions: simplexml, mysql
-            tools: phpunit:7.5.15
+            tools: phpunit-polyfills
         - name: Checkout source code
           uses: actions/checkout@v2
         - name: Install WordPress Test Suite
@@ -89,4 +89,27 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
       - run: ./bin/envs/init.sh theme-check latest yes
-
+  phpstan:
+    name: PHPStan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Setup Composer cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Install composer
+        run: composer install --ignore-platform-reqs
+      - name: PHPStan Static Analysis
+        uses: php-actions/phpstan@v2
+        with:
+          version: 0.12.99
+          memory_limit: 512M

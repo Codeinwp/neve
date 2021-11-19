@@ -16,68 +16,86 @@ input[type="submit"],
 input[type="reset"],
 select,
 textarea {
-  display: inline-block;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: none;
-  resize: vertical;
+	display: inline-block;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: none;
+	resize: vertical;
 }
 
-input:read-write, select, textarea, [tabindex="-1"] {
-  &:focus, &:focus-visible {
-	outline: 0;
-	box-shadow: 0 0 3px 0 var(--nv-secondary-accent);
-	--formFieldBorderColor: var(--nv-secondary-accent);
-  }
+input:read-write,
+select,
+textarea,
+[tabindex="-1"] {
+
+	&:focus,
+	&:focus-visible {
+		outline: 0;
+		box-shadow: 0 0 3px 0 var(--nv-secondary-accent);
+		--formFieldBorderColor: var(--nv-secondary-accent);
+	}
 }
 
-input, textarea, select, button {
-  line-height: inherit;
-  box-sizing: border-box;
+input,
+textarea,
+select,
+button {
+	line-height: inherit;
+	box-sizing: border-box;
 }
 
 ::placeholder {
-  color: inherit;
-  opacity: .5;
+	color: inherit;
+	opacity: 0.5;
 }
 
 select {
-  min-height: 35px;
+	min-height: 35px;
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 18px;
+	padding-right: 20px !important;
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCI+PHBhdGggZmlsbD0iIzYyNjI2MiIgZD0iTTE1IDhsLTQgNi00LTZoOHoiLz48L3N2Zz4=);
 }
 
 label {
-  display: inline-block;
+	display: inline-block;
 }
 
 fieldset {
-  padding: $spacing-lg - 10px $spacing-lg;
-  border: 2px solid var(--nv-light-bg);
+	padding: $spacing-lg - 10px $spacing-lg;
+	margin-bottom: $spacing-md;
+	border: 2px solid var(--nv-light-bg);
 
-  legend {
-	font-weight: 700;
-	padding: 0 $spacing-sm;
-	margin-left: -$spacing-sm;
-  }
+	legend {
+		font-weight: 700;
+		padding: 0 $spacing-sm;
+		margin-left: -$spacing-sm;
+	}
 
-  input[type="text"], input[type="search"], input[type="password"], textarea, select {
-	width: 100%;
-  }
-}
-
-select {
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: 18px;
-  padding-right: 20px !important;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCI+PHBhdGggZmlsbD0iIzYyNjI2MiIgZD0iTTE1IDhsLTQgNi00LTZoOHoiLz48L3N2Zz4=");
+	input[type="text"],
+	input[type="search"],
+	input[type="password"],
+	textarea,
+	select {
+		width: 100%;
+	}
 }
 
 
-form input:read-write, form textarea, form select, form select option, form.wp-block-search input.wp-block-search__input, .widget select {
-  @extend %nv-form-fields;
+form input:read-write,
+form textarea,
+form select,
+form select option,
+form.wp-block-search input.wp-block-search__input,
+.widget select {
+
+	@extend %nv-form-fields;
 }
 
-form label, .wpforms-container .wpforms-field-label {
-  @extend %nv-form-labels;
+form label,
+.wpforms-container .wpforms-field-label {
+
+	@extend %nv-form-labels;
 }
