@@ -311,7 +311,7 @@ class Header extends Abstract_Builder {
 	 * @return string Updated classes.
 	 */
 	public function add_class_to_header_wrapper( $classes ) {
-		return $classes . $this->has_global_background() ? ' global-styled' : '';
+		return $classes . ( $this->has_global_background() ? ' global-styled' : '' );
 	}
 
 	/**
