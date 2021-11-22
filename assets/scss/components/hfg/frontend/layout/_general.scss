@@ -7,32 +7,34 @@
 	}
 }
 
-.hfg_header {
+#header-grid.global-styled:not(.neve-transparent-header) {
 
-	&.global-styled:not(.neve-transparent-header) {
-		background: var(--bgColor);
-		position: relative !important; /* to not be overwritten from pro */
-		background-image: var(--bgImage, none);
-		background-position: var(--bgPosition, center);
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-attachment: var(--bgAttachment);
+	&.has-sticky-rows--desktop {
+		position: fixed;
+	}
 
-		&::before {
-			display: block;
-			width: 100%;
-			top: 0;
-			bottom: 0;
-			position: absolute;
-			content: "";
-			background-color: var(--overlayColor);
-			opacity: var(--bgOverlayOpacity);
-		}
+	background: var(--bgColor);
+	position: relative;
+	background-image: var(--bgImage, none);
+	background-position: var(--bgPosition, center);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: var(--bgAttachment);
 
-		.header--row,
-		.header--row-inner {
-			background: none;
-		}
+	&::before {
+		display: block;
+		width: 100%;
+		top: 0;
+		bottom: 0;
+		position: absolute;
+		content: "";
+		background-color: var(--overlayColor);
+		opacity: var(--bgOverlayOpacity);
+	}
+
+	.header--row,
+	.header--row-inner {
+		background: none;
 	}
 }
 
