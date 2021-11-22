@@ -38,7 +38,7 @@
 
 	.items-popover-content {
 		width: 400px;
-		padding: 10px;
+		padding: 10px 15px;
 		overflow-y: auto;
 		max-height: 375px;
 		height: 375px;
@@ -48,7 +48,8 @@
 	.items-popover-list {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		grid-gap: 15px;
+		grid-row-gap: 10px;
+		grid-column-gap: 15px;
 	}
 
 	.popover-item {
@@ -58,63 +59,64 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		justify-content: center !important;
 		box-sizing: border-box;
-		padding: 15px 7px;
+		padding: 7px 3px;
 		color: #545d66;
 		line-height: 1.4em;
 		font-size: 13px;
+		border: 1px solid #efefef;
+		box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
 
 		&:hover {
 			background: #f3f3f5;
 		}
 
 		.dashicon {
-			margin: 0 0 10px;
+			margin: 0 0 10px !important;
 		}
 	}
 
 	.ext.popover-item {
 		position: relative;
 		opacity: .45;
-
-		&:hover, &:focus {
-			opacity: 1;
-
-			.nv-lock {
-				background-color: $wp-blue;
-			}
-		}
+		cursor: not-allowed;
 	}
 
 	.nv-lock {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 2px 4px;
-		text-transform: uppercase;
-		background-color: #545d66;
-		color: #fff;
+		color: $wp-blue;
 		top: 5px;
 		right: 5px;
 		position: absolute;
 		width: unset;
 		height: unset;
-		border-radius: 20px;
 		font-size: 12px;
-
-		span {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			margin: 0;
-		}
 
 		.dashicons {
 			margin: 0 !important;
 			width: 14px;
 			height: 14px;
 			font-size: 13px;
+		}
+	}
+
+	.upsell-wrap {
+		font-size: 13px;
+		display: grid;
+		margin-top: 10px;
+
+		.count {
+			margin: 0 auto;
+			color: #BABABA;
+		}
+
+		.upsell-btn {
+			line-height: 1;
+			font-size: 13px;
+			border-radius: 4px;
+			justify-content: center;
+			height: auto;
+			min-height: 30px;
 		}
 	}
 }

@@ -19,7 +19,7 @@ type Props = {
 };
 
 const Slot: React.FC<Props> = ({ items, slotId, rowId, className }) => {
-	const { currentSection, builder, actions, dragging, sidebarItems } =
+	const { currentSection, builder, actions, dragging } =
 		useContext(BuilderContext);
 	const { updateLayout, onDragStart } = actions;
 

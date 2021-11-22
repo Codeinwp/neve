@@ -56,6 +56,7 @@ type HFGLayoutBuilderComponentProps = {
 	previewImage: string | null;
 	section: string;
 	width: number;
+	fromTheme: boolean;
 };
 
 type HFGLayoutBuilderRowProps = {

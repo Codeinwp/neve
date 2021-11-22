@@ -16,8 +16,8 @@ const Footer = {
 		top: { left: [], 'c-left': [], center: [], 'c-right': [], right: [] },
 		bottom: {
 			left: [],
-			'c-left': [],
-			center: [{ id: 'footer_copyright' }],
+			'c-left': [{ id: 'footer_copyright' }],
+			center: [],
 			'c-right': [],
 			right: [],
 		},

@@ -47,18 +47,24 @@ const ComponentsPopover: React.FC<Props> = ({
 	const allItems = window.NeveReactCustomize.HFG[builder].items;
 	const upsells = window.NeveReactCustomize.HFG[builder].upsells || [];
 
-	const filteredItems = sidebarItems.filter((item) => {
-		const { name } = allItems[item.id];
+	const getSidebarItems = (booster = false) => {
+		return sidebarItems.filter((item) => {
+			const { name, fromTheme } = allItems[item.id];
 
-		return (
-			name.toLowerCase().includes(searchQuery) ||
-			item.id.toString().includes(searchQuery)
-		);
-	});
+			if (!booster && !fromTheme) {
+				return false;
+			}
 
-	const filteredUpsells = upsells.filter((item) =>
-		item.name.toLowerCase().includes(searchQuery)
-	);
+			if (booster && fromTheme) {
+				return false;
+			}
+
+			return (
+				name.toLowerCase().includes(searchQuery) ||
+				item.id.toString().includes(searchQuery)
+			);
+		});
+	};
 
 	const renderItem = (item: ItemInterface, idx: number) => {
 		if (!item.id) {
@@ -79,22 +85,90 @@ const ComponentsPopover: React.FC<Props> = ({
 		);
 	};
 
-	const renderUpsell = (idx: number, icon: Dashicon.Icon, name: string) => (
-		<Button
-			key={idx}
-			className="popover-item ext"
-			href={url}
-			target="_blank"
-			icon={icon}
-			rel="external noreferrer noopener"
-		>
-			<span className="name">{name}</span>
-			<span className="nv-lock">
-				<Icon icon={'lock'} />
-				<span>PRO</span>
-			</span>
-		</Button>
-	);
+	const renderUpsell = (idx: number, icon: Dashicon.Icon, name: string) => {
+		return (
+			<Button key={idx} className="popover-item ext" disabled icon={icon}>
+				<span className="name">{name}</span>
+				<span className="nv-lock">
+					<Icon icon="lock" size={10} />
+				</span>
+			</Button>
+		);
+	};
+
+	const renderItems = () => {
+		if (sidebarItems.length < 1) {
+			return null;
+		}
+
+		const themeItems = getSidebarItems();
+		const boosterItems = getSidebarItems(true);
+
+		if (themeItems.length === 0 && boosterItems.length === 0) {
+			return (
+				<div className="no-components">
+					<span>
+						{__(
+							'All available components are used inside the builder',
+							'neve'
+						)}
+					</span>
+				</div>
+			);
+		}
+
+		return (
+			<>
+				<div className="items-popover-list">
+					{themeItems.map((item, index) => renderItem(item, index))}
+				</div>
+
+				{(boosterItems.length > 0 || upsells.length > 0) && (
+					<h4>
+						{__('PRO', 'neve')} {__('Components', 'neve')}
+					</h4>
+				)}
+
+				{boosterItems.length > 1 && (
+					<div className="items-popover-list">
+						{boosterItems.map((item, index) =>
+							renderItem(item, index)
+						)}
+					</div>
+				)}
+				{boosterItems.length < 1 && upsells.length > 0 && (
+					<>
+						<div className="items-popover-list">
+							{upsells.map(({ name, icon }, idx) => {
+								return renderUpsell(idx, icon, name);
+							})}
+						</div>
+						<div className="upsell-wrap">
+							<span className="count">
+								15+ {__('Components', 'neve')}
+							</span>
+							<p>
+								{__(
+									'Upgrade to Neve Pro and unlock all components, including Wish List, Breadcrumbs, Custom Layouts and many more.',
+									'neve'
+								)}
+							</p>
+							<Button
+								isPrimary
+								className="upsell-btn"
+								href={url}
+								target="_blank"
+								rel="external noreferrer noopener"
+							>
+								{__('Explore Neve PRO', 'neve')}
+							</Button>
+						</div>
+					</>
+				)}
+			</>
+		);
+	};
+
 	return (
 		<Popover
 			noArrow={false}
@@ -113,35 +187,7 @@ const ComponentsPopover: React.FC<Props> = ({
 				<Button isLink icon={close} onClick={closePopup} />
 			</div>
 
-			<div className="items-popover-content">
-				{filteredItems.length < 1 && filteredUpsells.length < 1 && (
-					<div className="no-components">
-						<span>
-							{__(
-								'All available components are used inside the builder',
-								'neve'
-							)}
-						</span>
-					</div>
-				)}
-
-				<div className="items-popover-list">
-					{sidebarItems.length > 0 && (
-						<>
-							{filteredItems.map((item, index) =>
-								renderItem(item, index)
-							)}
-						</>
-					)}
-					{filteredUpsells.length > 0 && (
-						<>
-							{filteredUpsells.map(({ name, icon }, idx) => {
-								return renderUpsell(idx, icon, name);
-							})}
-						</>
-					)}
-				</div>
-			</div>
+			<div className="items-popover-content">{renderItems()}</div>
 		</Popover>
 	);
 };

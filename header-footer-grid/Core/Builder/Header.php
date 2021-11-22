@@ -272,10 +272,6 @@ class Header extends Abstract_Builder {
 				'icon' => 'welcome-write-blog',
 				'name' => __( 'HTML', 'neve' ) . ' 2',
 			],
-			[
-				'icon' => 'tagcloud',
-				'name' => __( 'Primary Menu', 'neve' ) . ' 2',
-			],
 		];
 	}
 

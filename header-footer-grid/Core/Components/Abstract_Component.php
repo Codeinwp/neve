@@ -426,6 +426,7 @@ abstract class Abstract_Component implements Component {
 			'icon'          => $this->icon,
 			'previewImage'  => $this->preview_image,
 			'componentSlug' => $this->component_slug,
+			'fromTheme'     => $this->is_from_theme(),
 		);
 	}
 
@@ -1068,5 +1069,16 @@ abstract class Abstract_Component implements Component {
 				'conditional_header'    => $this->get_builder_id() === 'header',
 			]
 		);
+	}
+
+	/**
+	 * Is from theme
+	 *
+	 * @return boolean
+	 */
+	private function is_from_theme() {
+		$reflection = new \ReflectionClass( $this );
+
+		return strpos( $reflection->name, 'HFG\\Core\\Components\\' ) !== false;
 	}
 }
