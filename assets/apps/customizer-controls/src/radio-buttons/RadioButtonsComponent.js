@@ -1,8 +1,6 @@
 /*eslint camelcase: ["error", {allow: ["is_for","large_buttons","user_icon_style1","user_icon_style2","user_icon_style3","user_icon_style4","user_icon_style5",,"user_icon_style6","user_avatar"]}]*/
-
 import PropTypes from 'prop-types';
-import RadioIcons from '../common/RadioIcons';
-import SVG from '../common/svg.js';
+import { SVG, RadioIcons } from '@neve-wp/components';
 
 import { __ } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';

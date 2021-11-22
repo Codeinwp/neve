@@ -1,7 +1,6 @@
 /* jshint esversion: 6 */
 import React from 'react';
-// @ts-ignore
-import RadioImage from '../radio-image/RadioImage';
+import { RadioImage } from '@neve-wp/components';
 
 type Props = {
 	label: string;

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { __ } from '@wordpress/i18n';
-import SizingControl from '../common/Sizing';
+import SizingControl from '../Controls/Sizing';
 import { Panel, PanelBody, PanelRow } from '@wordpress/components';
-import ColorControl from '../common/ColorControl';
-import RadioIcons from '../common/RadioIcons';
+import ColorControl from './ColorControl';
+import RadioIcons from './RadioIcons';
 
 const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 	const { type, borderRadius, borderWidth } = value;

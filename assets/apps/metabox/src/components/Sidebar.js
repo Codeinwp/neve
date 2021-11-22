@@ -22,18 +22,16 @@ const Sidebar = compose(
 	}),
 	withSelect((selectHandler) => {
 		return {
-			template: selectHandler('core/editor').getEditedPostAttribute(
-				'template'
-			),
+			template:
+				selectHandler('core/editor').getEditedPostAttribute('template'),
 		};
 	})
 )(function (templateData) {
 	useShortcut(
 		'neve/open-meta-sidebar',
 		useCallback(() => {
-			const currentActiveSidebar = select(
-				'core/edit-post'
-			).getActiveGeneralSidebarName();
+			const currentActiveSidebar =
+				select('core/edit-post').getActiveGeneralSidebarName();
 			if (currentActiveSidebar) {
 				dispatch('core/edit-post').closeGeneralSidebar(
 					currentActiveSidebar

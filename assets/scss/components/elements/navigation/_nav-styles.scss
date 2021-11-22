@@ -49,6 +49,10 @@
 		}
 	}
 
+	.sub-menu a::after {
+		max-width: 100%;
+	}
+
 	a {
 		z-index: 1;
 

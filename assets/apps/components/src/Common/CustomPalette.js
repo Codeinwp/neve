@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
-import { Button } from '@wordpress/components';
+import { Button, ExternalLink } from '@wordpress/components';
 import classnames from 'classnames';
-import { globalPaletteColors } from '../common/common';
+import { globalPaletteColors } from './common';
 
 const CustomPalette = ({ title, onChange, activeColor }) => {
 	const focusGlobalColors = () => {
@@ -14,9 +14,23 @@ const CustomPalette = ({ title, onChange, activeColor }) => {
 				{title && (
 					<span className="customize-control-title">{title}</span>
 				)}
-				<Button isLink onClick={focusGlobalColors}>
-					{__('Edit', 'neve')}
-				</Button>
+				{window.wp.customize ? (
+					<Button
+						className="edit-gc-link"
+						isLink
+						onClick={focusGlobalColors}
+					>
+						{__('Edit', 'neve')}
+					</Button>
+				) : (
+					<ExternalLink
+						className="edit-gc-link"
+						href={`${window.nvComponents.customizerURL}?autofocus[section]=neve_colors_background_section`}
+						target="_blank"
+					>
+						{__('Edit', 'neve')}
+					</ExternalLink>
+				)}
 			</div>
 			<div className="nv-custom-palette-inner">
 				{globalPaletteColors.map((group, index) => {

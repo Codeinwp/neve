@@ -19,9 +19,8 @@ type Props = {
 };
 
 const Slot: React.FC<Props> = ({ items, slotId, rowId, className }) => {
-	const { currentSection, builder, actions, dragging } = useContext(
-		BuilderContext
-	);
+	const { currentSection, builder, actions, dragging, sidebarItems } =
+		useContext(BuilderContext);
 	const { updateLayout, onDragStart } = actions;
 
 	const [popupOpen, setPopupOpen] = useState<boolean>(false);

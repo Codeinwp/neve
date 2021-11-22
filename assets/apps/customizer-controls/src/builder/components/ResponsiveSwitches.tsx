@@ -25,9 +25,8 @@ const ResponsiveSwitches: React.FC<Props> = ({ device }) => {
 		{ title: __('Desktop', 'neve'), icon: 'desktop', slug: 'desktop' },
 		{ title: __('Mobile', 'neve'), icon: 'smartphone', slug: 'mobile' },
 	];
-	const { devices, title: builderName } = window.NeveReactCustomize.HFG[
-		builder
-	];
+	const { devices, title: builderName } =
+		window.NeveReactCustomize.HFG[builder];
 
 	const shownButtons = buttons.filter(({ slug }) =>
 		Object.keys(devices).includes(slug)

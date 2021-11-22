@@ -5,13 +5,8 @@ import { __ } from '@wordpress/i18n';
 import PropTypes from 'prop-types';
 
 const ResponsiveControl = (props) => {
-	const {
-		onChange,
-		excluded,
-		controlLabel,
-		hideResponsive,
-		children,
-	} = props;
+	const { onChange, excluded, controlLabel, hideResponsive, children } =
+		props;
 
 	useEffect(() => {
 		window.wp.customize.bind('ready', () => {

@@ -15,6 +15,7 @@ function neve_run() {
 			'single_customizer'     => true,
 			'repeater_control'      => true,
 			'malformed_div_on_shop' => true,
+			'mega_menu'             => true,
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';

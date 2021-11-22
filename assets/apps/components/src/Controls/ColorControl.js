@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import GlobalColorsPicker from '../common/GlobalColorsPicker';
+import GlobalColorsPicker from '../Common/GlobalColorsPicker';
 import { Button, Dropdown, Spinner, ColorPicker } from '@wordpress/components';
 import { lazy, Suspense } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -8,7 +8,7 @@ import classnames from 'classnames';
 // lazy load this so that is used to replace the default ColorPicker only if required
 // The fix is for this issue https://github.com/WordPress/gutenberg/issues/30798
 // applies to versions of WordPress < 5.8
-const ColorPickerFix = lazy(() => import('./ColorPickerFix'));
+const ColorPickerFix = lazy(() => import('../Common/ColorPickerFix'));
 
 const ColorControl = ({
 	label,
@@ -18,7 +18,7 @@ const ColorControl = ({
 	disableGlobal,
 }) => {
 	let toggle = null;
-	const { shouldUseColorPickerFix } = window.NeveReactCustomize;
+	const { shouldUseColorPickerFix } = window.nvComponents;
 
 	/**
 	 * Check if Default Color Picker can be used or the patched version.
