@@ -1423,6 +1423,7 @@ abstract class Abstract_Builder implements Builder {
 
 			$render_index           = 0;
 			$was_previous_mergeable = false;
+			$has_divider            = false;
 
 			foreach ( $slot_data as $component_index => $component ) {
 				if ( ! isset( $component['id'] ) ) {
@@ -1431,6 +1432,11 @@ abstract class Abstract_Builder implements Builder {
 
 				if ( ! isset( $this->builder_components[ $component['id'] ] ) ) {
 					continue;
+				}
+
+				$has_divider = false;
+				if ( preg_match( '/^divider/', $component['id'] ) ) {
+					$has_divider = true;
 				}
 
 				/**
@@ -1483,6 +1489,12 @@ abstract class Abstract_Builder implements Builder {
 						$render_buffer[ $slot ][ $render_index ]['vertical-align'] = 'hfg-item-v-' . $vertical_align;
 					}
 				}
+
+				// If the component is a divider, add a supplementary class
+				if ( $has_divider && ! in_array( 'has-divider', $render_buffer[ $slot ][ $render_index ]['classes'], true ) && $row_index !== 'sidebar' ) {
+					$render_buffer[ $slot ][ $render_index ]['classes'][] = 'has-divider';
+				}
+
 				$render_buffer[ $slot ][ $render_index ]['components'][] = $component['id'];
 
 				if ( $is_mergeable ) {
@@ -1537,6 +1549,12 @@ abstract class Abstract_Builder implements Builder {
 			// This doesn't apply to new skin as `vertical-align` is always empty.
 			if ( isset( $slot_data[0]['vertical-align'] ) ) {
 				$slot_classes[] = $slot_data[0]['vertical-align'];
+			}
+
+			foreach ( $slot_data as $item ) {
+				if ( array_key_exists( 'components', $item ) && preg_grep( '/^divider/', $item['components'] ) ) {
+					$slot_classes[] = 'has-divider';
+				}
 			}
 
 			if ( $row_index !== 'sidebar' ) {
