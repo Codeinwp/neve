@@ -119,7 +119,7 @@ const ComponentsPopover: React.FC<Props> = ({
 
 		return (
 			<>
-				<div className="items-popover-list">
+				<div className="items-popover-list theme-list">
 					{themeItems.map((item, index) => renderItem(item, index))}
 				</div>
 
@@ -130,7 +130,7 @@ const ComponentsPopover: React.FC<Props> = ({
 				)}
 
 				{boosterItems.length > 1 && (
-					<div className="items-popover-list">
+					<div className="items-popover-list booster-list">
 						{boosterItems.map((item, index) =>
 							renderItem(item, index)
 						)}
@@ -138,7 +138,7 @@ const ComponentsPopover: React.FC<Props> = ({
 				)}
 				{boosterItems.length < 1 && upsells.length > 0 && (
 					<>
-						<div className="items-popover-list">
+						<div className="items-popover-list upsell-list">
 							{upsells.map(({ name, icon }, idx) => {
 								return renderUpsell(idx, icon, name);
 							})}
