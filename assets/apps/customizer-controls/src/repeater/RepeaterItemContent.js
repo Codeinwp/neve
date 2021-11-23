@@ -4,9 +4,8 @@ import {
 	TextControl,
 	ToggleControl,
 } from '@wordpress/components';
-import getIcons from '../common/icons';
 import IconSelector from './IconSelector';
-import ColorControl from '../common/ColorControl';
+import { getIcons, ColorControl } from '@neve-wp/components';
 import PropTypes from 'prop-types';
 import { __ } from '@wordpress/i18n';
 

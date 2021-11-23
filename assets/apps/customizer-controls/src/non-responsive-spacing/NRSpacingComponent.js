@@ -1,11 +1,12 @@
 /* jshint esversion: 6 */
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import SizingControl from '../common/Sizing.js';
 
 import { useState, useEffect } from '@wordpress/element';
 import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+
+import { SizingControl } from '@neve-wp/components';
 
 const NRSpacingComponent = ({ control }) => {
 	const { params = {}, setting } = control;

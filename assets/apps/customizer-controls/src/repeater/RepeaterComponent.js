@@ -1,8 +1,8 @@
 /* jshint esversion: 6 */
 import Repeater from './Repeater';
-import { maybeParseJson } from '../common/common';
 import PropTypes from 'prop-types';
 import { useState } from '@wordpress/element';
+import { maybeParseJson } from '@neve-wp/components';
 
 const RepeaterComponent = ({ control }) => {
 	const [value, setValue] = useState(maybeParseJson(control.setting.get()));

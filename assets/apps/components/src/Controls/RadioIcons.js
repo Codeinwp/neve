@@ -1,7 +1,7 @@
 /* jshint esversion: 6 */
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import SVG from './svg';
+import SVG from '../Common/svg';
 
 import { Button } from '@wordpress/components';
 

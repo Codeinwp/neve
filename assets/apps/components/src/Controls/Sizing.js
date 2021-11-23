@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import SingleSizingInput from '../common/SingleSizingInput.js';
+import SingleSizingInput from '../Common/SingleSizingInput.js';
 import classnames from 'classnames';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';

@@ -1,7 +1,7 @@
 /*eslint camelcase: ["error", {allow: ["no_hover"]}]*/
 
 import PropTypes from 'prop-types';
-import ButtonAppearance from './ButtonAppearance';
+import { ButtonAppearance } from '@neve-wp/components';
 import { useState, useEffect } from '@wordpress/element';
 
 const ButtonAppearanceComponent = ({ control }) => {

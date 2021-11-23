@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
-import RadioImage from './RadioImage';
 import PropTypes from 'prop-types';
+import { RadioImage } from '@neve-wp/components';
 import { useState } from '@wordpress/element';
 
 const RadioImageComponent = ({ control }) => {

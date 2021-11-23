@@ -19,10 +19,8 @@ const RichText = ({
 		'formatselect,bold,italic,bullist,numlist,link,wp_adv';
 	const toolbarTwoDefaults =
 		'strikethrough,hr,forecolor,pastetext,removeformat';
-	const {
-		toolbar1 = toolbarOneDefaults,
-		toolbar2 = toolbarTwoDefaults,
-	} = toolbars;
+	const { toolbar1 = toolbarOneDefaults, toolbar2 = toolbarTwoDefaults } =
+		toolbars;
 	const editorId = `${id}-editor`;
 	NeveReactCustomize.fieldSelection = {};
 

@@ -1,4 +1,4 @@
-import SingleSizingInput from '../../assets/apps/customizer-controls/src/common/SingleSizingInput';
+import { SingleSizingInput } from '../../assets/apps/components/src/components';
 import {
 	WhiteBackgroundDecorator,
 	CustomizerDecorator,

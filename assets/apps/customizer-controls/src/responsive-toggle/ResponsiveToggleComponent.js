@@ -1,7 +1,7 @@
 /* jshint esversion: 6 */
 
 import PropTypes from 'prop-types';
-import ResponsiveControl from '../common/Responsive';
+import { ResponsiveControl } from '@neve-wp/components';
 
 import { ToggleControl } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';

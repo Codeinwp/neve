@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { useEffect, useState } from '@wordpress/element';
 
 // @ts-ignore
-import InlineSelect from '../common/InlineSelect';
+import { InlineSelect } from '@neve-wp/components';
 import { Button } from '@wordpress/components';
 
 type Props = {
@@ -38,7 +38,7 @@ const SkinSwitcher: React.FC<Props> = ({ control }) => {
 		},
 	];
 
-	const handleChange = (newVal: boolean) => {
+	const handleChange = (newVal: string) => {
 		setValue(newVal);
 		setChanged(true);
 	};
