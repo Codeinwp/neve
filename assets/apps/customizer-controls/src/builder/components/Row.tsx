@@ -22,13 +22,8 @@ type Props = {
 };
 
 const Row: React.FC<Props> = ({ items, rowId }) => {
-	const {
-		actions,
-		dragging,
-		builder,
-		hasColumns,
-		previewSidebar,
-	} = useContext(BuilderContext);
+	const { actions, dragging, builder, hasColumns, previewSidebar } =
+		useContext(BuilderContext);
 	const { updateLayout, togglePreviewSidebar, updateSidebarItems } = actions;
 	const slots: SlotTypes[] = ['left', 'c-left', 'center', 'c-right', 'right'];
 

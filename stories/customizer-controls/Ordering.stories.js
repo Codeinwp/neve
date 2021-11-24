@@ -9,7 +9,7 @@ import {
 	ORDERING_NO_TOGGLES,
 } from '../utils/values';
 import { useState } from '@wordpress/element';
-import { maybeParseJson } from '../../assets/apps/customizer-controls/src/common/common';
+import { maybeParseJson } from '@neve-wp/components';
 
 export default {
 	title: 'Customizer/Controls/Ordering',

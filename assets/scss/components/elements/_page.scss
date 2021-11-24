@@ -13,3 +13,7 @@ body > .wrapper:not(.et-fb-iframe-ancestor) {
 .neve-main {
 	flex: 1 auto;
 }
+
+.nv-page-title-wrap .nv-page-title {
+	text-align: var(--textAlign, left);
+}

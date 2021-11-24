@@ -1,6 +1,5 @@
 import { Button, TextControl, Tooltip } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import React from 'react';
 import { useState } from '@wordpress/element';
 import PropTypes from 'prop-types';
 
