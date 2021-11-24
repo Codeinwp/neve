@@ -19,6 +19,15 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+#### [Version 3.1.0](https://github.com/Codeinwp/neve/compare/v3.0.11...v3.1.0) (2021-11-24)
+
+- [Feat] Global options for page - [Learn more](https://docs.themeisle.com/article/1491-neve-page-options)
+- [Feat] Global header background
+- [Fix] Starter content buttons alignment with and without the Gutenberg plugin
+
+
+
+
 ##### [Version 3.0.11](https://github.com/Codeinwp/neve/compare/v3.0.10...v3.0.11) (2021-11-10)
 
 - [Feat] Add the possibility to replace WooCommerce Breadcrumbs with the ones from Yoast, SeoPress Pro, or RankMath - [Learn more](https://docs.themeisle.com/article/1123-breadcrumbs-in-neve#woo)
