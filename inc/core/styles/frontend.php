@@ -151,9 +151,10 @@ class Frontend extends Generator {
 			];
 		}
 
+		$thumbnail_box_shadow_meta_name                = apply_filters( 'neve_thumbnail_box_shadow_meta_filter', 'neve_post_thumbnail_box_shadow' );
 		$this->_subscribers['.nv-post-thumbnail-wrap'] = [
 			'--boxShadow' => [
-				Dynamic_Selector::META_KEY    => 'neve_post_thumbnail_box_shadow',
+				Dynamic_Selector::META_KEY    => $thumbnail_box_shadow_meta_name,
 				Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 					if ( absint( $value ) === 0 ) {
 						return '';

@@ -175,7 +175,6 @@ window.wp.customize.bind('ready', () => {
 	initBlogPageFocus();
 	checkHasElementorTemplates();
 	initDeviceSwitchers();
-	initBlogPageFocus();
 });
 
 window.HFG = {
