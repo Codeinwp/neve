@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import SizingControl from '../common/Sizing.js';
+import SizingControl from './Sizing';
 import classnames from 'classnames';
-import ResponsiveControl from '../common/Responsive.js';
+import ResponsiveControl from '../HOC/Responsive.js';
 
 import { Button } from '@wordpress/components';
 

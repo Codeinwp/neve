@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 import PropTypes from 'prop-types';
-import ColorControl from '../common/ColorControl.js';
+import { ColorControl } from '@neve-wp/components';
 
 import { useState, useEffect } from '@wordpress/element';
 

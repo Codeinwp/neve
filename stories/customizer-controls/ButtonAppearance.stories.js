@@ -1,4 +1,4 @@
-import ButtonAppearance from '../../assets/apps/customizer-controls/src/button-appearance/ButtonAppearance';
+import { ButtonAppearance } from '../../assets/apps/components/src/components';
 import { CustomizerDecorator } from '../components/decorators';
 import { useState } from '@wordpress/element';
 

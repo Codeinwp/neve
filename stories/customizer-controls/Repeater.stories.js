@@ -1,12 +1,10 @@
-import Repeater from "../../assets/apps/customizer-controls/src/repeater/Repeater";
-import {
-	CustomizerDecorator,
-} from '../components/decorators';
+import Repeater from '../../assets/apps/customizer-controls/src/repeater/Repeater';
+import { CustomizerDecorator } from '../components/decorators';
 import {
 	SOCIAL_ICONS_DEFAULT,
 	CONTACT_DEFAULT,
 	SHARING_ICONS_DEFAULT,
-	FIELDS
+	FIELDS,
 } from '../utils/values';
 import { useState } from '@wordpress/element';
 
@@ -16,9 +14,9 @@ export default {
 	args: {
 		label: 'Repeater',
 		components: SOCIAL_ICONS_DEFAULT,
-		fields: FIELDS
+		fields: FIELDS,
 	},
-	decorators: [ CustomizerDecorator ],
+	decorators: [CustomizerDecorator],
 };
 
 const Template = (args) => {
@@ -26,10 +24,10 @@ const Template = (args) => {
 
 	return (
 		<>
-			<Repeater {...args} value={value} onUpdate={setValue}/>
+			<Repeater {...args} value={value} onUpdate={setValue} />
 			<div className="value-previewer">
 				<strong>Components:</strong>
-				<pre>{ JSON.stringify(value, null, ' ') }</pre>
+				<pre>{JSON.stringify(value, null, ' ')}</pre>
 			</div>
 		</>
 	);

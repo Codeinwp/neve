@@ -1,26 +1,3 @@
-const config = require('@wordpress/scripts/config/webpack.config');
-module.exports = {
-	...config,
-	module: {
-		...config.module,
-		rules: [
-			{
-				test: /\.(tsx|ts|d.ts)?$/,
-				use: 'ts-loader',
-				exclude: /node_modules/,
-			},
-			...config.module.rules,
-		],
-	},
-	resolve: {
-		...config.resolve,
-		extensions: ['.js', '.tsx', '.ts', 'js', 'jsx'],
-	},
-	optimization: {
-		...config.optimization,
-		splitChunks: {
-			...config.optimization.splitChunks,
-			automaticNameDelimiter: '-',
-		},
-	},
-};
+const config = require('./assets/apps/components/config/webpack.config');
+
+module.exports = config;
