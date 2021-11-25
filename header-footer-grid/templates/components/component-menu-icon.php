@@ -22,7 +22,7 @@ $label           = component_setting( MenuIcon::TEXT_ID );
 		<?php
 		echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>
-			aria-label=" <?php esc_attr__( 'Navigation Menu', 'neve' ); ?> ">
+			aria-label="<?php esc_attr__( 'Navigation Menu', 'neve' ); ?> ">
 		<?php
 		if ( ! empty( $label ) ) {
 			echo '<span class="nav-toggle-label">' . esc_html( $label ) . '</span>';
