@@ -7,6 +7,8 @@ import {
 	NV_FOCUS_TRAP_START,
 } from '../utils.js';
 
+const closeNavSelector = '.close-sidebar-panel .navbar-toggle';
+
 export const HFG = function () {
 	this.options = {
 		menuToggleDuration: 300,
@@ -21,9 +23,7 @@ export const HFG = function () {
  */
 HFG.prototype.init = function (skipSidebar = false) {
 	if (skipSidebar === false) {
-		const closeButtons = document.querySelectorAll(
-			'.close-sidebar-panel .navbar-toggle'
-		);
+		const closeButtons = document.querySelectorAll(closeNavSelector);
 		addEvent(closeButtons, 'click', () => {
 			this.toggleMenuSidebar(false);
 		});
@@ -91,8 +91,8 @@ HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
 						container: document.getElementById(
 							'header-menu-sidebar'
 						),
-						close: '.close-sidebar-panel button',
-						firstFocus: 'a,input',
+						close: closeNavSelector,
+						firstFocus: closeNavSelector,
 						backFocus: target,
 					},
 				})
