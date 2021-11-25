@@ -212,6 +212,7 @@ class Manager {
 				unset( $args['tabs'][ $tab ] );
 			}
 		}
+
 		$customize_manager->add_setting(
 			$group . '_tabs',
 			array(
