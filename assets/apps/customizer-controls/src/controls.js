@@ -77,17 +77,19 @@ const initDeviceSwitchers = () => {
 
 const initCustomPagesFocus = () => {
 	const { sectionsFocus } = window.NeveReactCustomize;
-	Object.keys(sectionsFocus).forEach((sectionKey) => {
-		wp.customize.section(sectionKey, (section) => {
-			section.expanded.bind((isExpanded) => {
-				if (isExpanded) {
-					wp.customize.previewer.previewUrl.set(
-						sectionsFocus[sectionKey]
-					);
-				}
+	if (sectionsFocus !== undefined) {
+		Object.keys(sectionsFocus).forEach((sectionKey) => {
+			wp.customize.section(sectionKey, (section) => {
+				section.expanded.bind((isExpanded) => {
+					if (isExpanded) {
+						wp.customize.previewer.previewUrl.set(
+							sectionsFocus[sectionKey]
+						);
+					}
+				});
 			});
 		});
-	});
+	}
 };
 
 const initBlogPageFocus = () => {
