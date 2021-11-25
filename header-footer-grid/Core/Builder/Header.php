@@ -261,16 +261,16 @@ class Header extends Abstract_Builder {
 
 		return [
 			[
+				'icon' => 'welcome-write-blog',
+				'name' => __( 'HTML', 'neve' ) . ' 2',
+			],
+			[
 				'icon' => 'embed-generic',
 				'name' => __( 'Custom Layouts', 'neve' ),
 			],
 			[
-				'icon' => 'email',
-				'name' => __( 'Contact', 'neve' ),
-			],
-			[
-				'icon' => 'welcome-write-blog',
-				'name' => __( 'HTML', 'neve' ) . ' 2',
+				'icon' => 'share',
+				'name' => __( 'Social Icons', 'neve' ),
 			],
 		];
 	}
