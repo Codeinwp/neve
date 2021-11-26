@@ -24,8 +24,8 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 	<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">
 		<div class="close-sidebar-panel navbar-toggle-wrapper">
 			<button type="button" class="navbar-toggle active" <?php echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					value="<?php esc_attr__( 'Navigation Menu', 'neve' ); ?>"
-					aria-label="<?php esc_attr__( 'Navigation Menu', 'neve' ); ?> ">
+					value="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?>"
+					aria-label="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?> ">
 				<span class="bars">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>

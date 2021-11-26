@@ -18,11 +18,11 @@ $label           = component_setting( MenuIcon::TEXT_ID );
 ?>
 <div class="menu-mobile-toggle item-button navbar-toggle-wrapper">
 	<button type="button" class="navbar-toggle"
-			value="<?php esc_attr__( 'Navigation Menu', 'neve' ); ?>"
+			value="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?>"
 		<?php
 		echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>
-			aria-label="<?php esc_attr__( 'Navigation Menu', 'neve' ); ?> ">
+			aria-label="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?> ">
 		<?php
 		if ( ! empty( $label ) ) {
 			echo '<span class="nav-toggle-label">' . esc_html( $label ) . '</span>';
