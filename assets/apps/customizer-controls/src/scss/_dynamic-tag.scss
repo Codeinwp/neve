@@ -9,6 +9,13 @@
     bottom: 80px;
   }
 
+  &.customize-control-neve_rich_text .neve-dynamic-tag-selector {
+	top: 0;
+	right: 0;
+	bottom: auto;
+	z-index: 999;
+  }
+
   .neve-dynamic-tag-selector {
     position: absolute;
     bottom: 0;

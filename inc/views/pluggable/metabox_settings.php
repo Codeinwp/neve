@@ -73,7 +73,7 @@ class Metabox_Settings {
 			}
 		);
 		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'filter_post_elements' ) );
-		add_filter( 'neve_post_title_alignment', array( $this, 'filter_title_alignment' ) );
+		add_filter( 'neve_title_alignment_style', array( $this, 'filter_title_alignment_style' ), 10, 2 );
 		add_filter( 'neve_display_author_avatar', array( $this, 'filter_author_avatar_display' ), 15 );
 		add_filter( 'neve_meta_content_width', array( $this, 'get_content_width' ) );
 	}
@@ -513,25 +513,44 @@ class Metabox_Settings {
 	}
 
 	/**
-	 * Filter title alignment.
+	 * Filters the styles provided and adds specific vars for post title if meta exists.
 	 *
-	 * @param string $alignment Title alignment.
+	 * @since 3.1.0
 	 *
-	 * @return mixed
+	 * @param string $style The inline title styles.
+	 * @param string $context The context. ('cover', 'normal'). Defaults: 'normal'.
+	 *
+	 * @return string
 	 */
-	public function filter_title_alignment( $alignment ) {
+	public function filter_title_alignment_style( $style, $context = 'normal' ) {
+		// Don't override with specific post title styles in Customizer context.
+		if ( is_customize_preview() ) {
+			return $style;
+		}
+
 		$post_id = $this->get_post_id();
 
 		if ( $post_id === false ) {
-			return $alignment;
+			return $style;
 		}
 
 		$title_meta_alignment = get_post_meta( $post_id, self::TITLE_ALIGNMENT, true );
-		if ( ! empty( $title_meta_alignment ) ) {
-			return 'has-text-align-' . $title_meta_alignment;
+		if ( empty( $title_meta_alignment ) ) {
+			return $style;
 		}
 
-		return $alignment;
+		$style .= '--textAlign:' . esc_attr( $title_meta_alignment ) . ';';
+		if ( $context === 'cover' ) {
+			$justify_map = [
+				'left'   => 'flex-start',
+				'center' => 'center',
+				'right'  => 'flex-end',
+			];
+			if ( isset( $justify_map[ $title_meta_alignment ] ) ) {
+				$style .= '--justify:' . esc_attr( $justify_map[ $title_meta_alignment ] ) . ';';
+			}
+		}
+		return $style;
 	}
 
 	/**

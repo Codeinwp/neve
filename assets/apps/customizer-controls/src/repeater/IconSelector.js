@@ -9,9 +9,7 @@ import {
 import { useState, lazy, Suspense } from '@wordpress/element';
 import PropTypes from 'prop-types';
 
-const IconsContent = lazy(() =>
-	import(/* webpackChunkName: "icon-selector" */ './IconsContent')
-);
+const IconsContent = lazy(() => import('./IconsContent'));
 
 const IconSelector = ({ label, value, onIconChoice, icons }) => {
 	const [visible, setVisible] = useState(false);

@@ -1,20 +1,10 @@
-import {
-	SortableContainer,
-	SortableElement,
-	SortableHandle,
-} from 'react-sortable-hoc';
+import { ReactSortable } from 'react-sortablejs';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import arrayMove from 'array-move';
-
 import { __ } from '@wordpress/i18n';
 import { Tooltip, Icon } from '@wordpress/components';
 
-const List = SortableContainer(({ children }) => (
-	<div className="items-list">{children}</div>
-));
-
-const Handle = SortableHandle(() => (
+const Handle = () => (
 	<Tooltip text={__('Drag to Reorder', 'neve')}>
 		<button
 			aria-label={__('Drag to Reorder', 'neve')}
@@ -26,23 +16,18 @@ const Handle = SortableHandle(() => (
 			<Icon icon="menu" />
 		</button>
 	</Tooltip>
-));
+);
 
-const Item = ({
-	label,
-	slug,
-	onToggle,
-	className,
-	allowsToggle = true,
-	disabled = false,
-}) => {
+const Item = ({ item, onToggle, components, allowsToggle = true }) => {
+	const label = components[item.id];
 	return (
 		<div
-			className={classnames([
-				'neve-sortable-item',
-				className,
-				{ 'no-toggle': !allowsToggle },
-			])}
+			className={classnames({
+				'neve-sortable-item': true,
+				'no-toggle': !allowsToggle,
+				visible: item.visible,
+				disabled: !item.visible,
+			})}
 		>
 			{allowsToggle && (
 				<Tooltip text={__('Toggle Visibility', 'neve')}>
@@ -52,7 +37,7 @@ const Item = ({
 						onClick={(e) => {
 							e.preventDefault();
 							e.stopPropagation();
-							onToggle(slug);
+							onToggle(item.id);
 						}}
 					>
 						<Icon icon="visibility" />
@@ -60,48 +45,52 @@ const Item = ({
 				</Tooltip>
 			)}
 			<span className="label">{label}</span>
-			{!disabled && <Handle />}
+			{item.visible && <Handle />}
 		</div>
 	);
 };
 
 Item.propTypes = {
-	label: PropTypes.string.isRequired,
-	slug: PropTypes.string.isRequired,
+	item: PropTypes.object.isRequired,
 	onToggle: PropTypes.func.isRequired,
+	allowsToggle: PropTypes.bool.isRequired,
 	className: PropTypes.string,
 	disabled: PropTypes.bool,
 };
 
-const SortableItem = SortableElement(Item);
-
 const Ordering = ({
-	onUpdate,
-	components,
 	label,
+	onUpdate,
 	value,
+	components,
 	allowsToggle = true,
-	orderHeaderElements,
 }) => {
-	const disabled = Object.keys(components).filter(
-		(item) => !value.includes(item)
-	);
-
-	const handleSortEnd = ({ newIndex, oldIndex }) => {
-		const newOrder = arrayMove(value, oldIndex, newIndex);
-		onUpdate(newOrder);
+	const handleToggle = (item) => {
+		const newValue = value.map((e) => {
+			if (e.id === item) {
+				e.visible = !e.visible;
+			}
+			return e;
+		});
+		handleChange(newValue);
 	};
 
-	const handleToggle = (slug) => {
-		let newValue = [...value];
-		if (newValue.includes(slug)) {
-			newValue = newValue.filter((item) => item !== slug);
-		} else {
-			newValue.push(slug);
-		}
-
-		onUpdate(newValue);
+	const handleChange = (newVal) => {
+		const updatedValue = newVal.sort((x, y) => {
+			if (x.visible === y.visible) {
+				return 0;
+			}
+			if (x.visible) {
+				return -1;
+			}
+			return 1;
+		});
+		onUpdate(updatedValue);
 	};
+
+	value = value.filter((element) => {
+		return components.hasOwnProperty(element.id);
+	});
 
 	return (
 		<>
@@ -109,50 +98,37 @@ const Ordering = ({
 				/* eslint-disable-next-line jsx-a11y/label-has-for */
 				<label className="customize-control-title">{label}</label>
 			)}
-			<List
-				items={value}
-				lockAxis="y"
-				useDragHandle
-				onSortEnd={handleSortEnd}
+			<ReactSortable
+				className="items-list"
+				list={value}
+				setList={handleChange}
+				animation={300}
+				handle=".handle"
 			>
-				{value.map(
-					(slug, index) =>
-						Object.keys(components).includes(slug) && (
-							<SortableItem
-								key={index}
-								label={components[slug]}
-								index={index}
-								slug={slug}
-								onToggle={handleToggle}
-								allowsToggle={allowsToggle}
-								orderHeaderElements={orderHeaderElements}
-							/>
-						)
-				)}
-
-				{disabled.map((slug, index) => (
-					<Item
-						className="disabled"
-						key={index}
-						slug={slug}
-						label={components[slug]}
-						index={index}
-						onToggle={handleToggle}
-						allowsToggle={allowsToggle}
-						disabled
-					/>
-				))}
-			</List>
+				{value
+					.filter((element) => {
+						return components.hasOwnProperty(element.id);
+					})
+					.map((item, index) => (
+						<Item
+							key={'ordering-element-' + index}
+							item={item}
+							onToggle={handleToggle}
+							allowsToggle={allowsToggle}
+							components={components}
+						/>
+					))}
+			</ReactSortable>
 		</>
 	);
 };
 
 Ordering.propTypes = {
-	onUpdate: PropTypes.func.isRequired,
-	components: PropTypes.object.isRequired,
 	label: PropTypes.string.isRequired,
+	onUpdate: PropTypes.func.isRequired,
 	value: PropTypes.array.isRequired,
 	allowsToggle: PropTypes.bool,
+	components: PropTypes.object.isRequired,
 };
 
 export default Ordering;

@@ -19,23 +19,6 @@ namespace HFG\Traits;
 trait Core {
 
 	/**
-	 * Return if assets should use `.min` suffix or not.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @return string
-	 */
-	public function get_assets_suffix() {
-		// $suffix = '.min';
-		// if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-		// $suffix = '';
-		// }
-
-		return '';
-	}
-
-
-	/**
 	 * Utility method to convert associative array to css rules.
 	 *
 	 * @since   1.0.0

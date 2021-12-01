@@ -19,6 +19,74 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+#### [Version 3.1.0](https://github.com/Codeinwp/neve/compare/v3.0.11...v3.1.0) (2021-11-24)
+
+- [Feat] Global options for page - [Learn more](https://docs.themeisle.com/article/1491-neve-page-options)
+- [Feat] Global header background
+- [Fix] Starter content buttons alignment with and without the Gutenberg plugin
+
+
+
+
+##### [Version 3.0.11](https://github.com/Codeinwp/neve/compare/v3.0.10...v3.0.11) (2021-11-10)
+
+- [Feat] Add the possibility to replace WooCommerce Breadcrumbs with the ones from Yoast, SeoPress Pro, or RankMath - [Learn more](https://docs.themeisle.com/article/1123-breadcrumbs-in-neve#woo)
+- [Fix] Infinite scroll not working in some specific context
+- [Fix] Compatibility of palette switcher with Elementor global colors
+- [Fix] Archive featured image as background works only with all taxonomies enabled
+- [Fix] Post title alignment
+- [Fix] Repeater control adding unused values to the database & causing customizer to load in publishing state
+- [Fix] Edge case of footer columns not having a proper corresponding layout
+- [Fix] Bug affecting the container size and elements style
+- [Fix] Compatibility with Cartflows plugin
+- [Fix] HTML Component's TinyMCE new lines for existing content and Safari support
+- [Fix] Bring back custom font size field inside the WordPress editor
+- [Fix] Removed previously added values for font-size presets inside the editor
+- [Fix] Removed redundant border controls for mobile header sidebar
+- [Fix] Ordering control with blank elements
+- [Fix] Double scrollbar appearing in some customizer sections
+- [Fix] Inconsistent console error inside the customizer preview  
+- Update Google Fonts
+
+
+
+
+##### [Version 3.0.10](https://github.com/Codeinwp/neve/compare/v3.0.9...v3.0.10) (2021-10-27)
+
+- [Fix] header rows background images not applying on legacy skin
+
+
+
+
+##### [Version 3.0.9](https://github.com/Codeinwp/neve/compare/v3.0.8...v3.0.9) (2021-10-26)
+
+- [Fix] editor in HTML header component
+
+
+
+
+##### [Version 3.0.8](https://github.com/Codeinwp/neve/compare/v3.0.7...v3.0.8) (2021-10-26)
+
+- [Fix] Ordering control when header layout is changed on the single post
+- [Fix] Customizer controls not loading properly due to browser caching issue in some instances
+
+
+
+
+##### [Version 3.0.7](https://github.com/Codeinwp/neve/compare/v3.0.6...v3.0.7) (2021-10-26)
+
+- [Feat] Header row border control - [Learn more](https://docs.themeisle.com/article/1245-header-rows-settings#border)
+- [Feat] Jump to page blog pagination type - [Learn more](https://docs.themeisle.com/article/1306-neve-blog-archive-options#ordering)
+- [Feat] Support for the named text sizes inside the editor 
+- [Feat] TinyMCE field inside header HTML Component
+- [Feat] Add Painter starter site - [Elementor](https://demosites.io/painter/)
+- [Feat] Add Freelance Designer starter site - [Elementor](https://demosites.io/minimal-portfolio/)
+- Replace react-sortable-hoc with sortablejs already used in the header
+- Update Google Fonts
+
+
+
+
 ##### [Version 3.0.6](https://github.com/Codeinwp/neve/compare/v3.0.5...v3.0.6) (2021-10-11)
 
 - [Feat] Adds alignment option to the mobile sidebar row setting;

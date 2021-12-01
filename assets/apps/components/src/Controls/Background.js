@@ -11,9 +11,9 @@ import {
 } from '@wordpress/components';
 import { MediaUpload } from '@wordpress/media-utils';
 
-import ColorControl from '../common/ColorControl';
+import ColorControl from './ColorControl';
 
-const Background = ({ onChange, value, label }) => {
+const Background = ({ onChange, value, label, description }) => {
 	const getButtons = () => {
 		const types = ['color', 'image'];
 		const labels = {
@@ -55,6 +55,7 @@ const Background = ({ onChange, value, label }) => {
 	return (
 		<div className="neve-background-control">
 			{label && <span className="customize-control-title">{label}</span>}
+			{description && <p>{description}</p>}
 			<div className="control--top-toolbar">
 				<ButtonGroup className="neve-background-type-control">
 					{getButtons()}

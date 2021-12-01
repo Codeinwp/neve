@@ -4,6 +4,7 @@ import Accordion from './Accordion';
 import InputForm from './Options/InputForm';
 import Select from './Options/Select';
 import Toggle from './Options/Toggle';
+import MultiSelectOption from './Options/MultiSelect';
 import { changeOption } from '../utils/rest';
 import classnames from 'classnames';
 
@@ -21,6 +22,7 @@ import { __ } from '@wordpress/i18n';
 const ModuleCard = ({
 	slug,
 	setToast,
+	getOption,
 	changeModuleStatus,
 	getModuleStatus,
 	tier,
@@ -38,6 +40,10 @@ const ModuleCard = ({
 	} = neveDash.modules[slug];
 	const { upgradeLinks } = neveDash;
 
+	const isToggleEnabled = (toggleSlug) => {
+		return getOption(toggleSlug);
+	};
+
 	const renderOptionsAccordions = () => {
 		return options.map((group, index) => {
 			const { label, options: optionGroup } = group;
@@ -52,6 +58,7 @@ const ModuleCard = ({
 									placeholder,
 									documentation: documentationOption,
 									choices,
+									depends_on: dependsOn,
 								} = optionGroup[optionSlug];
 								return (
 									<Fragment key={indexGroup}>
@@ -73,6 +80,18 @@ const ModuleCard = ({
 										)}
 										{'select' === type && (
 											<Select
+												label={labelGroup}
+												slug={optionSlug}
+												choices={choices}
+											/>
+										)}
+										{(('multi_select' === type &&
+											undefined === dependsOn) ||
+											('multi_select' === type &&
+												isToggleEnabled(
+													dependsOn
+												))) && (
+											<MultiSelectOption
 												label={labelGroup}
 												slug={optionSlug}
 												choices={choices}
@@ -192,8 +211,10 @@ const ModuleCard = ({
 
 export default compose(
 	withSelect((select) => {
-		const { getModuleStatus, getLicenseTier } = select('neve-dashboard');
+		const { getModuleStatus, getLicenseTier, getProOption } =
+			select('neve-dashboard');
 		return {
+			getOption: (slug) => getProOption(slug),
 			getModuleStatus: (slug) => getModuleStatus(slug),
 			tier: getLicenseTier(),
 		};

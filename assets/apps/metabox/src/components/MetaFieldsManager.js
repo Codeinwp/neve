@@ -20,6 +20,7 @@ import {
 	RangeControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { maybeParseJson } from '@neve-wp/components';
 
 class MetaFieldsManager extends Component {
 	constructor(props) {
@@ -166,9 +167,8 @@ class MetaFieldsManager extends Component {
 	}
 
 	renderPageLayoutGroup() {
-		const template = select('core/editor').getEditedPostAttribute(
-			'template'
-		);
+		const template =
+			select('core/editor').getEditedPostAttribute('template');
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
@@ -382,9 +382,8 @@ class MetaFieldsManager extends Component {
 	}
 
 	renderPageTitleGroup() {
-		const template = select('core/editor').getEditedPostAttribute(
-			'template'
-		);
+		const template =
+			select('core/editor').getEditedPostAttribute('template');
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
@@ -552,24 +551,36 @@ class MetaFieldsManager extends Component {
 					'post-navigation': __('Post Navigation', 'neve'),
 			  };
 
-		const settings = {
-			elements: metaElements,
-			default: metaSidebar.elementsDefaultOrder,
-		};
+		const elements = metaElements;
 
 		if (metaSidebar.enable_pro) {
-			settings.elements['author-biography'] = __(
-				'Author Biography',
-				'neve'
-			);
-			settings.elements['related-posts'] = __('Related Posts', 'neve');
-			settings.elements['sharing-icons'] = __('Sharing Icons', 'neve');
+			elements['author-biography'] = __('Author Biography', 'neve');
+			elements['related-posts'] = __('Related Posts', 'neve');
+			elements['sharing-icons'] = __('Sharing Icons', 'neve');
 		}
 
-		const template = select('core/editor').getEditedPostAttribute(
-			'template'
-		);
+		const template =
+			select('core/editor').getEditedPostAttribute('template');
 		const postType = select('core/editor').getCurrentPostType();
+		const orderingValue =
+			select('core/editor').getEditedPostAttribute('meta')
+				.neve_post_elements_order || metaSidebar.elementsDefaultOrder;
+
+		const maybeNormalizeValue = (val) => {
+			const enabledItems = val
+				.filter((element) => {
+					return elements.hasOwnProperty(element);
+				})
+				.map((element) => {
+					return { id: element, visible: true };
+				});
+
+			const disabledItems = Object.keys(metaElements)
+				.filter((componentSlug) => !val.includes(componentSlug))
+				.map((id) => ({ id, visible: false }));
+
+			return [...enabledItems, ...disabledItems];
+		};
 		return (
 			<div className="nv-option-category">
 				<PanelBody title={__('Elements', 'neve')} intialOpen={true}>
@@ -582,7 +593,10 @@ class MetaFieldsManager extends Component {
 							<SortableItems
 								stateUpdate={this.updateValues}
 								id="neve_post_elements_order"
-								data={settings}
+								elements={metaElements}
+								value={maybeNormalizeValue(
+									maybeParseJson(orderingValue)
+								)}
 							/>
 						</BaseControl>
 					) : (
@@ -707,9 +721,8 @@ export default compose([
 					'meta'
 				)[id];
 			},
-			allMeta: selectHandler('core/editor').getEditedPostAttribute(
-				'meta'
-			),
+			allMeta:
+				selectHandler('core/editor').getEditedPostAttribute('meta'),
 		};
 	}),
 ])(MetaFieldsManager);

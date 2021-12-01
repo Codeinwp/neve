@@ -1,5 +1,5 @@
 import { useState } from '@wordpress/element';
-import ResponsiveControl from '../../assets/apps/customizer-controls/src/common/Responsive';
+import { ResponsiveControl } from '../../assets/apps/components/src/components';
 import {
 	CustomizerDecorator,
 	WhiteBackgroundDecorator,

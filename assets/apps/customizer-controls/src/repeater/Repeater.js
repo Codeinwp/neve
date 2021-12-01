@@ -1,15 +1,10 @@
 import '../scss/_repeater.scss';
-import { SortableRepeaterItem } from './RepeaterItem';
+import RepeaterItem from './RepeaterItem';
 import PropTypes from 'prop-types';
 import { Button } from '@wordpress/components';
 import { useState } from '@wordpress/element';
-import { SortableContainer } from 'react-sortable-hoc';
-import arrayMove from 'array-move';
+import { ReactSortable } from 'react-sortablejs';
 import { __ } from '@wordpress/i18n';
-
-const List = SortableContainer(({ children }) => (
-	<div className="nv-repeater-items-container">{children}</div>
-));
 
 const Repeater = ({ fields, value, onUpdate }) => {
 	const [sorting, setSorting] = useState(false);
@@ -59,17 +54,33 @@ const Repeater = ({ fields, value, onUpdate }) => {
 		onUpdate(newValue);
 	};
 
-	const handleSortEnd = ({ newIndex, oldIndex }) => {
-		const newOrder = arrayMove(value, oldIndex, newIndex);
-		onUpdate(newOrder);
+	const setList = (l) => {
+		const final = l.map((i) => {
+			Object.keys(i).forEach((k) => {
+				if (![...Object.keys(fields), 'visibility'].includes(k)) {
+					delete i[k];
+				}
+			});
+			return i;
+		});
+
+		onUpdate(final);
+		return final;
 	};
 
 	return (
 		<div className="nv-repeater">
-			<List lockAxis="y" useDragHandle onSortEnd={handleSortEnd}>
+			<ReactSortable
+				className="nv-repeater-items-container"
+				list={value}
+				setList={setList}
+				animation={300}
+				forceFallback={true}
+				handle=".nv-repeater-handle"
+			>
 				{value.map((val, index) => {
 					return (
-						<SortableRepeaterItem
+						<RepeaterItem
 							className="nv-repeater-item"
 							fields={fields}
 							value={value}
@@ -85,7 +96,7 @@ const Repeater = ({ fields, value, onUpdate }) => {
 						/>
 					);
 				})}
-			</List>
+			</ReactSortable>
 			<div className="nv-repeater-options">
 				{value.length > 1 && (
 					<Button

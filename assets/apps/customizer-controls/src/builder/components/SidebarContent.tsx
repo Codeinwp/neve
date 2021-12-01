@@ -43,7 +43,7 @@ const SidebarContent: React.FC<Props> = ({ items }) => {
 							setSidebarItems(nextState);
 						}}
 					>
-						{items.map((item, index) => {
+						{items.map((item) => {
 							const { name } = allItems[item.id];
 							return (
 								<div className="builder-item" key={item.id}>

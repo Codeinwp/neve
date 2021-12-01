@@ -27,14 +27,8 @@ import {
 import { ItemInterface } from 'react-sortablejs';
 import BuilderContext from './BuilderContext';
 
-const Builder = lazy(
-	() => import(/* webpackChunkName: "builder" */ './components/Builder')
-);
-
-const SidebarContent = lazy(
-	() =>
-		import(/* webpackChunkName: "sidebar" */ './components/SidebarContent')
-);
+const Builder = lazy(() => import('./components/Builder'));
+const SidebarContent = lazy(() => import('./components/SidebarContent'));
 
 type Props = {
 	hasColumns: boolean;

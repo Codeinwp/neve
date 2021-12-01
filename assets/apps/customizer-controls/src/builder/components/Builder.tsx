@@ -17,9 +17,8 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 	const { rows } = window.NeveReactCustomize.HFG[builder];
 	const items = { ...value[device] };
 
-	const preview: HTMLElement | null = document.querySelector(
-		'#customize-preview'
-	);
+	const preview: HTMLElement | null =
+		document.querySelector('#customize-preview');
 
 	// Remove preview offset.
 	useEffect(() => {

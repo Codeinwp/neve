@@ -394,6 +394,67 @@ abstract class Abstract_Builder implements Builder {
 					'conditional_header'    => $this->get_id() === 'header',
 				]
 			);
+
+			SettingsManager::get_instance()->add(
+				[
+					'id'                    => self::BOTTOM_BORDER,
+					'group'                 => $row_setting_id,
+					'tab'                   => SettingsManager::TAB_STYLE,
+					'section'               => $row_setting_id,
+					'label'                 => __( 'Border Width', 'neve' ),
+					'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'responsive'           => true,
+							'vars'                 => '--rowBWidth',
+							'suffix'               => 'px',
+							'fallback'             => '0',
+							'selector'             => '.' . $this->get_id() . '-' . $row_id,
+							'dispatchWindowResize' => true,
+						],
+					],
+					'options'               => [
+						'input_attrs' => [
+							'step'       => 1,
+							'min'        => 0,
+							'max'        => 50,
+							'defaultVal' => [
+								'mobile'  => 0,
+								'tablet'  => 0,
+								'desktop' => 0,
+							],
+							'units'      => [ 'px' ],
+						],
+					],
+					'transport'             => 'postMessage',
+					'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
+					'default'               => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+					'conditional_header'    => $this->get_id() === 'header',
+				]
+			);
+
+			SettingsManager::get_instance()->add(
+				[
+					'id'                    => self::BORDER_COLOR,
+					'group'                 => $row_setting_id,
+					'tab'                   => SettingsManager::TAB_STYLE,
+					'label'                 => __( 'Border Color', 'neve' ),
+					'section'               => $row_setting_id,
+					'conditional_header'    => $this->get_id() === 'header',
+					'type'                  => 'neve_color_control',
+					'transport'             => 'postMessage',
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'     => '--rowBColor',
+							'selector' => '.' . $this->get_id() . '-' . $row_id,
+						],
+					],
+					'sanitize_callback'     => 'neve_sanitize_colors',
+					'default'               => 'var(--nv-light-bg)',
+				]
+			);
 		}
 
 		if ( $this->columns_layout && neve_is_new_builder() ) {
@@ -418,7 +479,10 @@ abstract class Abstract_Builder implements Builder {
 					'partial' => $row_id === 'sidebar' ? 'hfg_header_layout_partial' : $row_setting_id . '_partial',
 				],
 				'options'               => [
-					'priority' => 100,
+					'priority'        => 100,
+					'active_callback' => function () use ( $row_id ) {
+						return $this->has_background_setting( $row_id );
+					},
 				],
 				'default'               => [
 					'type'       => 'color',
@@ -455,68 +519,29 @@ abstract class Abstract_Builder implements Builder {
 			]
 		);
 
-		SettingsManager::get_instance()->add(
-			[
-				'id'                    => self::BOTTOM_BORDER,
-				'group'                 => $row_setting_id,
-				'tab'                   => SettingsManager::TAB_STYLE,
-				'section'               => $row_setting_id,
-				'label'                 => __( 'Border Width', 'neve' ),
-				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
-				'live_refresh_selector' => true,
-				'live_refresh_css_prop' => [
-					'cssVar' => [
-						'responsive'           => true,
-						'vars'                 => '--rowBWidth',
-						'suffix'               => 'px',
-						'fallback'             => '0',
-						'selector'             => '.' . $this->get_id() . '-' . $row_id,
-						'dispatchWindowResize' => true,
-					],
-				],
-				'options'               => [
-					'input_attrs' => [
-						'step'       => 1,
-						'min'        => 0,
-						'max'        => 50,
-						'defaultVal' => [
-							'mobile'  => 0,
-							'tablet'  => 0,
-							'desktop' => 0,
-						],
-						'units'      => [ 'px' ],
-					],
-				],
-				'transport'             => 'postMessage',
-				'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
-				'default'               => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
-				'conditional_header'    => $this->get_id() === 'header',
-			]
-		);
-
-		SettingsManager::get_instance()->add(
-			[
-				'id'                    => self::BORDER_COLOR,
-				'group'                 => $row_setting_id,
-				'tab'                   => SettingsManager::TAB_STYLE,
-				'label'                 => __( 'Border Color', 'neve' ),
-				'section'               => $row_setting_id,
-				'conditional_header'    => $this->get_id() === 'header',
-				'type'                  => 'neve_color_control',
-				'transport'             => 'postMessage',
-				'live_refresh_selector' => true,
-				'live_refresh_css_prop' => [
-					'cssVar' => [
-						'vars'     => '--rowBColor',
-						'selector' => '.' . $this->get_id() . '-' . $row_id,
-					],
-				],
-				'sanitize_callback'     => 'neve_sanitize_colors',
-				'default'               => 'var(--nv-light-bg)',
-			]
-		);
-
 		do_action( 'hfg_row_settings', $this->get_id(), $row_id, $row_setting_id );
+	}
+
+	/**
+	 * Decides if the background setting should be visible for current row.
+	 *
+	 * @param string $row_id The row id.
+	 * @return bool True if setting should be displayed, false if not.
+	 */
+	public function has_background_setting( $row_id ) {
+		if ( $this->get_id() !== 'header' ) {
+			return true;
+		}
+
+		if ( $row_id === 'sidebar' ) {
+			return true;
+		}
+
+		if ( get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true ) === true ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -1008,16 +1033,9 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 							$background = $value;
 							$style      = '';
-							if ( isset( $background['useFeatured'] ) && $background['useFeatured'] === true && is_singular() ) {
-								$featured_image = get_the_post_thumbnail_url();
-								if ( ! empty( $featured_image ) ) {
-									$style .= sprintf( 'background-image: url("%s");', esc_url( $featured_image ) );
-								} else {
-									$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
-								}
-							} elseif ( ! empty( $background['imageUrl'] ) ) {
-								$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
-							}
+							$image      = $this->get_row_featured_image( $background['imageUrl'], $background['useFeatured'], $meta );
+
+							$style .= sprintf( 'background-image: %s;', wp_kses_post( $image ) );
 							$style .= 'background-size:cover;';
 
 							if ( ! empty( $background['focusPoint'] ) && ! empty( $background['focusPoint']['x'] ) && ! empty( $background['focusPoint']['y'] ) ) {
@@ -1063,6 +1081,39 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 * Returns the featured image for the header row.
+	 *
+	 * @param string  $image_url The image URL.
+	 * @param boolean $use_featured Flag if featured image should be used.
+	 * @param array   $meta Additional meta for the image.
+	 *
+	 * @return string
+	 */
+	protected function get_row_featured_image( $image_url, $use_featured, $meta ) {
+		$image = 'none';
+		if ( ! empty( $use_featured ) && $use_featured === true && is_singular() ) {
+			$featured_image = get_the_post_thumbnail_url();
+			if ( ! empty( $featured_image ) ) {
+				$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
+			} else {
+				$image = sprintf( 'url("%s")', esc_url( $image_url ) );
+			}
+		} elseif ( ! empty( $image_url ) ) {
+			$image = sprintf( 'url("%s")', esc_url( $image_url ) );
+		}
+		/**
+		 * Filters the background featured image output url.
+		 *
+		 * @param string $image         The background image value: `none` or `url(<url>)`.
+		 * @param boolean $use_featured Flag to specify if featured image should be used or fallback.
+		 * @param array $meta           Additional meta for the image.
+		 *
+		 * @since 3.0.5
+		 */
+		return apply_filters( 'nv_builder_row_image_url', $image, $use_featured, $meta );
+	}
+
+	/**
 	 * Method to generate css array for each row.
 	 *
 	 * @param string $row_index The row index.
@@ -1099,113 +1150,105 @@ abstract class Abstract_Builder implements Builder {
 				},
 				Dynamic_Selector::META_DEFAULT       => '{ desktop: 0, tablet: 0, mobile: 0 }',
 			];
+
+			$rules['--rowBWidth'] = [
+				Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::BOTTOM_BORDER,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+					$value = (int) $value;
+					if ( $value >= 0 ) {
+						return sprintf( '%s:%s;', $css_prop, $value . 'px' );
+					}
+
+					return '';
+				},
+			];
+
+			$rules['--rowBColor'] = [
+				Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::BORDER_COLOR,
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+			];
 		}
-
-		$rules['--rowBWidth'] = [
-			Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::BOTTOM_BORDER,
-			Dynamic_Selector::META_IS_RESPONSIVE => true,
-			Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-				$value = (int) $value;
-				if ( $value > 0 ) {
-					return sprintf( '%s:%s;', $css_prop, $value . 'px' );
-				}
-
-				return '';
-			},
-		];
-
-		$rules['--rowBColor'] = [
-			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::BORDER_COLOR,
-			Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
-		];
 
 		$rules['--color'] = [
 			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
 			Dynamic_Selector::META_DEFAULT => $default_colors['text'],
 		];
 
-		// If there is no default, use site background.
-		$default_color = isset( $default_colors['background'] ) ? $default_colors['background'] : 'var(--nv-site-bg)';
+		// Exclude the following rules for the header when the global header background is active.
+		if ( get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true ) === true || $this->get_id() !== 'header' || $row_index === 'sidebar' ) {
+			// If there is no default, use site background.
+			$default_color = isset( $default_colors['background'] ) ? $default_colors['background'] : 'var(--nv-site-bg)';
 
-		$background = get_theme_mod(
-			$this->control_id . '_' . $row_index . '_background',
-			[
-				'type'       => 'color',
-				'colorValue' => $default_color,
-			]
-		);
-
-		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
-			$rules = array_merge(
-				$rules,
+			$background = get_theme_mod(
+				$this->control_id . '_' . $row_index . '_background',
 				[
-					'--bgColor' => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
-						Dynamic_Selector::META_DEFAULT => $default_color,
-					],
+					'type'       => 'color',
+					'colorValue' => $default_color,
 				]
 			);
-		}
 
-		if ( $background['type'] === 'image' ) {
-			$rules = array_merge(
-				$rules,
-				[
-					'--overlayColor'     => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
-					],
-					'--bgImage'          => [
-						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
-						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							$image = 'none';
-							if ( isset( $value['useFeatured'] ) && $value['useFeatured'] === true && is_singular() ) {
-								$featured_image = get_the_post_thumbnail_url();
-								if ( ! empty( $featured_image ) ) {
-									$image = sprintf( 'url("%s")', esc_url( $featured_image ) );
-								} else {
-									$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
+			if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
+				$rules = array_merge(
+					$rules,
+					[
+						'--bgColor' => [
+							Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
+							Dynamic_Selector::META_DEFAULT => $default_color,
+						],
+					]
+				);
+			}
+
+			if ( $background['type'] === 'image' ) {
+				$rules = array_merge(
+					$rules,
+					[
+						'--overlayColor'     => [
+							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
+						],
+						'--bgImage'          => [
+							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+								$image = $this->get_row_featured_image( $value['imageUrl'], $value['useFeatured'], $meta );
+								return sprintf( '%s:%s;', $css_prop, $image );
+							},
+						],
+						'--bgPosition'       => [
+							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+								if ( empty( $value['focusPoint'] ) || empty( $value['focusPoint']['x'] ) || empty( $value['focusPoint']['y'] ) ) {
+									return '';
 								}
-							} elseif ( ! empty( $value['imageUrl'] ) ) {
-								$image = sprintf( 'url("%s")', esc_url( $value['imageUrl'] ) );
-							}
 
-							return sprintf( '%s:%s;', $css_prop, $image );
-						},
-					],
-					'--bgPosition'       => [
-						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
-						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							if ( empty( $value['focusPoint'] ) || empty( $value['focusPoint']['x'] ) || empty( $value['focusPoint']['y'] ) ) {
-								return '';
-							}
+								$parsed_position = round( $value['focusPoint']['x'] * 100 ) . '% ' . round( $value['focusPoint']['y'] * 100 ) . '%;';
 
-							$parsed_position = round( $value['focusPoint']['x'] * 100 ) . '% ' . round( $value['focusPoint']['y'] * 100 ) . '%;';
+								return sprintf( '%s:%s;', $css_prop, $parsed_position );
+							},
+						],
+						'--bgAttachment'     => [
+							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+								if ( ! isset( $value['fixed'] ) || $value['fixed'] !== true ) {
+									return '';
+								}
 
-							return sprintf( '%s:%s;', $css_prop, $parsed_position );
-						},
-					],
-					'--bgAttachment'     => [
-						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
-						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							if ( ! isset( $value['fixed'] ) || $value['fixed'] !== true ) {
-								return '';
-							}
+								return sprintf( '%s:fixed;', $css_prop );
+							},
+						],
+						'--bgOverlayOpacity' => [
+							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+								if ( ! isset( $value['overlayOpacity'] ) ) {
+									return '';
+								}
 
-							return sprintf( '%s:fixed;', $css_prop );
-						},
-					],
-					'--bgOverlayOpacity' => [
-						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
-						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							if ( ! isset( $value['overlayOpacity'] ) ) {
-								return '';
-							}
-
-							return sprintf( '%s:%s;', $css_prop, $value['overlayOpacity'] / 100 );
-						},
-					],
-				]
-			);
+								return sprintf( '%s:%s;', $css_prop, $value['overlayOpacity'] / 100 );
+							},
+						],
+					]
+				);
+			}
 		}
 
 		$css_array[] = [
@@ -1380,6 +1423,7 @@ abstract class Abstract_Builder implements Builder {
 
 			$render_index           = 0;
 			$was_previous_mergeable = false;
+			$has_divider            = false;
 
 			foreach ( $slot_data as $component_index => $component ) {
 				if ( ! isset( $component['id'] ) ) {
@@ -1388,6 +1432,11 @@ abstract class Abstract_Builder implements Builder {
 
 				if ( ! isset( $this->builder_components[ $component['id'] ] ) ) {
 					continue;
+				}
+
+				$has_divider = false;
+				if ( preg_match( '/^divider/', $component['id'] ) ) {
+					$has_divider = true;
 				}
 
 				/**
@@ -1440,6 +1489,12 @@ abstract class Abstract_Builder implements Builder {
 						$render_buffer[ $slot ][ $render_index ]['vertical-align'] = 'hfg-item-v-' . $vertical_align;
 					}
 				}
+
+				// If the component is a divider, add a supplementary class
+				if ( $has_divider && ! in_array( 'has-divider', $render_buffer[ $slot ][ $render_index ]['classes'], true ) && $row_index !== 'sidebar' ) {
+					$render_buffer[ $slot ][ $render_index ]['classes'][] = 'has-divider';
+				}
+
 				$render_buffer[ $slot ][ $render_index ]['components'][] = $component['id'];
 
 				if ( $is_mergeable ) {
@@ -1494,6 +1549,12 @@ abstract class Abstract_Builder implements Builder {
 			// This doesn't apply to new skin as `vertical-align` is always empty.
 			if ( isset( $slot_data[0]['vertical-align'] ) ) {
 				$slot_classes[] = $slot_data[0]['vertical-align'];
+			}
+
+			foreach ( $slot_data as $item ) {
+				if ( array_key_exists( 'components', $item ) && preg_grep( '/^divider/', $item['components'] ) ) {
+					$slot_classes[] = 'has-divider';
+				}
 			}
 
 			if ( $row_index !== 'sidebar' ) {
@@ -1846,7 +1907,7 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @return array
 	 */
-	private function get_default_row_colors( $row_id ) {
+	protected function get_default_row_colors( $row_id ) {
 		$bg_color_map = [
 			'background' => [
 				'dark-mode'  => 'var(--nv-dark-bg)',
@@ -1947,7 +2008,7 @@ abstract class Abstract_Builder implements Builder {
 							'--flexG'   => [
 								'left'   => '1',
 								'center' => '0',
-								'right'  => '1',
+								'right'  => '0',
 							],
 						],
 						'responsive' => true,
@@ -2240,7 +2301,7 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_KEY     => $align_id,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 						Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) {
-							if ( $value !== 'center' ) {
+							if ( $value === 'left' ) {
 								return sprintf( '%s: 1;', $css_prop );
 							}
 
@@ -2289,15 +2350,19 @@ abstract class Abstract_Builder implements Builder {
 			],
 		];
 
-		$layout      = $styles_map[ $columns ][ $layout ];
+		$proportions = 'equal';
+		if ( isset( $styles_map[ $columns ] ) && isset( $styles_map[ $columns ][ $layout ] ) ) {
+			$proportions = $styles_map[ $columns ][ $layout ];
+		}
+
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.' . $builder . '-' . $row . '-inner .row',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_GRID_TEMPLATE_COLS => [
 					Dynamic_Selector::META_KEY     => $mods_prefix . self::COLUMNS_LAYOUT,
 					Dynamic_Selector::META_DEFAULT => 'auto',
-					Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $layout ) {
-						return sprintf( '%s:%s;', $css_prop, $layout );
+					Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $proportions ) {
+						return sprintf( '%s:%s;', $css_prop, $proportions );
 					},
 				],
 				'--vAlign'                          => [

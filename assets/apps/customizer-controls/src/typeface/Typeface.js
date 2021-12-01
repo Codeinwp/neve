@@ -1,7 +1,6 @@
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import InlineSelect from '../common/InlineSelect';
-import NumberControl from '../common/NumberControl';
+import { InlineSelect, NumberControl } from '@neve-wp/components';
 import PropTypes from 'prop-types';
 
 const Typeface = (props) => {

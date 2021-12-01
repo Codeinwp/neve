@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 29/09/21
+ * Updated on 08/11/21
  *
  * @package neve
  */
@@ -315,6 +315,7 @@ return array(
 	'Dokdo' => array( '400',),
 	'Domine' => array( '400', '500', '600', '700',),
 	'Donegal One' => array( '400',),
+	'Dongle' => array( '300', '400', '700',),
 	'Doppio One' => array( '400',),
 	'Dorsa' => array( '400',),
 	'Dosis' => array( '200', '300', '400', '500', '600', '700', '800',),
@@ -365,7 +366,7 @@ return array(
 	'Faster One' => array( '400',),
 	'Fasthand' => array( '400',),
 	'Fauna One' => array( '400',),
-	'Faustina' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
+	'Faustina' => array( '300', '400', '500', '600', '700', '800', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic',),
 	'Federant' => array( '400',),
 	'Federo' => array( '400',),
 	'Felipa' => array( '400',),
@@ -694,9 +695,12 @@ return array(
 	'Mirza' => array( '400', '500', '600', '700',),
 	'Miss Fajardose' => array( '400',),
 	'Mitr' => array( '200', '300', '400', '500', '600', '700',),
+	'Mochiy Pop One' => array( '400',),
+	'Mochiy Pop P One' => array( '400',),
 	'Modak' => array( '400',),
 	'Modern Antiqua' => array( '400',),
 	'Mogra' => array( '400',),
+	'Mohave' => array( '300', '400', '500', '600', '700', '300italic', '400italic', '500italic', '600italic', '700italic',),
 	'Molengo' => array( '400',),
 	'Molle' => array( '400italic',),
 	'Monda' => array( '400', '700',),
@@ -829,6 +833,7 @@ return array(
 	'Noto Sans Math' => array( '400',),
 	'Noto Sans Mayan Numerals' => array( '400',),
 	'Noto Sans Medefaidrin' => array( '400', '500', '600', '700',),
+	'Noto Sans Meetei Mayek' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Meroitic' => array( '400',),
 	'Noto Sans Miao' => array( '400',),
 	'Noto Sans Modi' => array( '400',),
@@ -1059,6 +1064,7 @@ return array(
 	'Ravi Prakash' => array( '400',),
 	'Recursive' => array( '300', '400', '500', '600', '700', '800', '900',),
 	'Red Hat Display' => array( '300', '400', '500', '600', '700', '800', '900', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Red Hat Mono' => array( '300', '400', '500', '600', '700', '300italic', '400italic', '500italic', '600italic', '700italic',),
 	'Red Hat Text' => array( '300', '400', '500', '600', '700', '300italic', '400italic', '500italic', '600italic', '700italic',),
 	'Red Rose' => array( '300', '400', '500', '600', '700',),
 	'Redressed' => array( '400',),
@@ -1298,8 +1304,15 @@ return array(
 	'ZCOOL KuaiLe' => array( '400',),
 	'ZCOOL QingKe HuangYou' => array( '400',),
 	'ZCOOL XiaoWei' => array( '400',),
+	'Zen Antique' => array( '400',),
+	'Zen Antique Soft' => array( '400',),
 	'Zen Dots' => array( '400',),
+	'Zen Kaku Gothic Antique' => array( '300', '400', '500', '700', '900',),
+	'Zen Kaku Gothic New' => array( '300', '400', '500', '700', '900',),
+	'Zen Kurenaido' => array( '400',),
 	'Zen Loop' => array( '400', '400italic',),
+	'Zen Maru Gothic' => array( '300', '400', '500', '700', '900',),
+	'Zen Old Mincho' => array( '400', '700', '900',),
 	'Zen Tokyo Zoo' => array( '400',),
 	'Zeyada' => array( '400',),
 	'Zhi Mang Xing' => array( '400',),

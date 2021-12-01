@@ -1,4 +1,4 @@
-import Background from '../../assets/apps/customizer-controls/src/background/Background';
+import { Background } from '../../assets/apps/components/src/components';
 import { CustomizerDecorator } from '../components/decorators';
 import { useState } from '@wordpress/element';
 import bgImg from '../assets/img/Classic.jpg';

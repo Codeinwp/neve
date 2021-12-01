@@ -20,7 +20,7 @@ $container_classes[] = 'nav-menu-footer';
 ?>
 <div class="component-wrap">
 	<div role="navigation" class="<?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
-		aria-label="<?php echo esc_html( __( 'Footer Menu', 'neve' ) ); ?>">
+		aria-label="<?php esc_attr_e( 'Footer Menu', 'neve' ); ?>">
 
 		<?php
 		wp_nav_menu(
