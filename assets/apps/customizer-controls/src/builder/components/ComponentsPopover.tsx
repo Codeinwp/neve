@@ -97,15 +97,13 @@ const ComponentsPopover: React.FC<Props> = ({
 	};
 
 	const renderItems = () => {
-		if (sidebarItems.length < 1) {
-			return null;
-		}
-
 		const themeItems = getSidebarItems();
 		const boosterItems = getSidebarItems(true);
 
+		let noComponents = null;
+
 		if (themeItems.length === 0 && boosterItems.length === 0) {
-			return (
+			noComponents = (
 				<div className="no-components">
 					<span>
 						{__(
@@ -119,25 +117,36 @@ const ComponentsPopover: React.FC<Props> = ({
 
 		return (
 			<>
-				<div className="items-popover-list theme-list">
-					{themeItems.map((item, index) => renderItem(item, index))}
-				</div>
+				{noComponents ? (
+					noComponents
+				) : (
+					<>
+						<div className="items-popover-list theme-list">
+							{themeItems.map((item, index) =>
+								renderItem(item, index)
+							)}
+						</div>
 
-				{(boosterItems.length > 0 || upsells.length > 0) && (
-					<h4>
-						{__('PRO', 'neve')} {__('Components', 'neve')}
-					</h4>
-				)}
-
-				{boosterItems.length > 1 && (
-					<div className="items-popover-list booster-list">
-						{boosterItems.map((item, index) =>
-							renderItem(item, index)
+						{boosterItems.length > 0 && (
+							<>
+								<h4>
+									{__('PRO', 'neve')}{' '}
+									{__('Components', 'neve')}
+								</h4>
+								<div className="items-popover-list booster-list">
+									{boosterItems.map((item, index) =>
+										renderItem(item, index)
+									)}
+								</div>
+							</>
 						)}
-					</div>
+					</>
 				)}
 				{boosterItems.length < 1 && upsells.length > 0 && (
 					<>
+						<h4>
+							{__('PRO', 'neve')} {__('Components', 'neve')}
+						</h4>
 						<div className="items-popover-list upsell-list">
 							{upsells.map(({ name, icon }, idx) => {
 								return renderUpsell(idx, icon, name);

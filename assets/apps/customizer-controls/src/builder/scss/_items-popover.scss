@@ -41,8 +41,9 @@
 		padding: 10px 15px;
 		overflow-y: auto;
 		max-height: 375px;
-		height: 375px;
 		background-color: #fff;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.items-popover-list {
