@@ -24,11 +24,8 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 	<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">
 		<div class="close-sidebar-panel navbar-toggle-wrapper">
 			<button type="button" class="navbar-toggle active" <?php echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					aria-label="
-					<?php
-					esc_html_e( 'Navigation Menu', 'neve' );
-					?>
-				">
+					value="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?>"
+					aria-label="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?> ">
 				<span class="bars">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -48,7 +45,7 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 			 *
 			 * @since 3.0.6
 			 */
-			do_action( 'neve_before_mobile_menu_content' ); 
+			do_action( 'neve_before_mobile_menu_content' );
 			?>
 			<?php render_components( HeaderBuilder::BUILDER_NAME ); ?>
 			<?php
@@ -57,7 +54,7 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 			 *
 			 * @since 3.0.6
 			 */
-			do_action( 'neve_after_mobile_menu_content' ); 
+			do_action( 'neve_after_mobile_menu_content' );
 			?>
 		</div>
 	</div>
