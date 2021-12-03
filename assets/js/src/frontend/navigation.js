@@ -80,7 +80,7 @@ function handleMobileDropdowns() {
 function openCarrets(e, caret) {
 	e.preventDefault();
 	e.stopPropagation();
-	if (e.keyCode && e.keyCode !== 9) {
+	if (e.keyCode && ![9, 13].includes(e.keyCode)) {
 		return;
 	}
 	const subMenu = caret.parentNode.parentNode.querySelector('.sub-menu');
