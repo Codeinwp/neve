@@ -80,6 +80,9 @@ function handleMobileDropdowns() {
 function openCarrets(e, caret) {
 	e.preventDefault();
 	e.stopPropagation();
+	if (e.keyCode && e.keyCode !== 9) {
+		return;
+	}
 	const subMenu = caret.parentNode.parentNode.querySelector('.sub-menu');
 	toggleClass(caret, strings[0]);
 	toggleClass(subMenu, strings[0]);
