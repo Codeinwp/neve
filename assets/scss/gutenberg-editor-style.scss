@@ -29,23 +29,7 @@
   }
 }
 
-.wp-block-table {
-
-  td.focus-visible {
-    border-left: $base-border;
-    border-right: $base-border;
-  }
-
-  &.is-style-borders{
-
-    table{
-      border-collapse: collapse;
-    }
-
-		tbody td{
-			border: $base-border;
-		}
-
-	}
-
+.wp-block-table td.focus-visible {
+  border-left: $base-border;
+  border-right: $base-border;
 }
