@@ -21,7 +21,7 @@ wp.domReady(() => {
 
 	wp.blocks.registerBlockStyle('core/table', {
 		name: 'borders',
-		label: __('Borders'),
+		label: __('Borders', 'neve'),
 		isDefault: false,
 	});
 });
