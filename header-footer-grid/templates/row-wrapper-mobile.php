@@ -28,16 +28,9 @@ $close_classes    = 'close-sidebar-panel navbar-toggle-wrapper' . ( $close_conta
 		data-row-id="<?php echo esc_attr( $row_index ); ?>">
 	<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">
 		<div class="<?php echo esc_attr( $close_classes ); ?>">
-			<button type="button"
-					class="navbar-toggle active"
-					<?php
-					echo( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					?>
-					aria-label="
-					<?php
-					esc_html_e( 'Navigation Menu', 'neve' );
-					?>
-				">
+			<button type="button" class="navbar-toggle active" <?php echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					value="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?>"
+					aria-label="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?> ">
 				<span class="bars">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
