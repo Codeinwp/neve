@@ -13,7 +13,7 @@ describe('Footer Builder', function () {
 			cy.get('.bottom > .inner-row > .slots-wrap > .left > .components-button').click({
 				force: true,
 			});
-			cy.get(':nth-child(8) > .name').click();
+			cy.get('.theme-list :last-child > .name').click();
 			cy.get('.left > .droppable > .builder-item > .actions > .remove > svg').click({
 				force: true,
 			});

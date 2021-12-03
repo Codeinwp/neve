@@ -21,7 +21,8 @@ describe('Header Builder', function () {
 			cy.get('.top > .inner-row > .slots-left-wrap > .left > .components-button').click({
 				force: true,
 			});
-			cy.get('.items-popover-list > :nth-child(15)').click();
+			cy.get('.items-popover-list.booster-list').should('exist');
+			cy.get('.items-popover-list.theme-list > button:nth-child(6)').click({ force: true });
 			cy.get('.top > .inner-row > .slots-left-wrap > .left > .droppable > .builder-item');
 		});
 	});
