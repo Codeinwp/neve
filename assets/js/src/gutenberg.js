@@ -18,4 +18,10 @@ wp.domReady(() => {
 		label: __('Secondary'),
 		isDefault: false,
 	});
+
+	wp.blocks.registerBlockStyle('core/table', {
+		name: 'borders',
+		label: __('Borders'),
+		isDefault: false,
+	});
 });
