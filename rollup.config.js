@@ -51,7 +51,7 @@ const ROLLUP_MODERN = {
 let all_coverage = {
 		'assets/js/build/all/metabox.js': 'assets/js/src/metabox.js',
 		'assets/js/build/all/gutenberg.js': 'assets/js/src/gutenberg.js',
-		'assets/js/build/all/customizer-preview.js': ['assets/js/src/customizer-preview/app.js', './inc/customizer/options/js/*.js'],
+		'assets/js/build/all/customizer-preview.js': ['assets/js/src/customizer-preview/app.js'],
 		'assets/js/build/all/customizer-controls.js': ['./assets/customizer/js/*.js']
 	},
 	__export = [],
