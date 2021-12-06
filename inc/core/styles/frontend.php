@@ -975,13 +975,20 @@ class Frontend extends Generator {
 	public function setup_blog_meta() {
 		if ( ! neve_is_new_skin() ) {
 			$this->setup_blog_meta_legacy();
-
 			return;
+		}
+
+		list( $context, $allowed_context ) = $this->get_cpt_context();
+		$archive_avatar_size_meta_key      = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
+		$single_avatar_size_meta_key       = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
+		if ( in_array( $context, $allowed_context, true ) && neve_is_new_skin() && is_singular( $context ) || is_post_type_archive( $context ) ) {
+			$archive_avatar_size_meta_key = 'neve_' . $context . '_archive_author_avatar_size';
+			$single_avatar_size_meta_key  = 'neve_single_' . $context . '_avatar_size';
 		}
 
 		$rules = [
 			'--avatarSize' => [
-				Dynamic_Selector::META_KEY           => Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE,
+				Dynamic_Selector::META_KEY           => $archive_avatar_size_meta_key,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
 				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 20, "tablet": 20, "desktop": 20 }',
@@ -990,7 +997,7 @@ class Frontend extends Generator {
 
 		$rules_single = [
 			'--avatarSize' => [
-				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE,
+				Dynamic_Selector::META_KEY           => $single_avatar_size_meta_key,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
 				Dynamic_Selector::META_DEFAULT       => Mods::get( 'neve_author_avatar_size', '{ "mobile": 20, "tablet": 20, "desktop": 20 }' ),
