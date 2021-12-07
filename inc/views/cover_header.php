@@ -31,9 +31,8 @@ class Cover_Header extends Base_View {
 	 * Render the cover layout on single post.
 	 */
 	public function render_cover_header() {
-
-		$context = $this->get_header_context();
-		if ( empty( $context ) ) {
+		list( $context, $allowed_context ) = $this->get_cpt_context();
+		if ( ! in_array( $context, $allowed_context, true ) || ! $this->is_valid_context( $context ) ) {
 			return;
 		}
 

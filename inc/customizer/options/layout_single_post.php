@@ -182,7 +182,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 				],
 				[
 					'label'      => esc_html__( 'Elements Order', 'neve' ),
-					'section'    => 'neve_single_post_layout',
+					'section'    => $this->section,
 					'components' => $components,
 					'priority'   => 100,
 				],

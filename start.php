@@ -15,6 +15,7 @@ function neve_run() {
 			'single_customizer'     => true,
 			'repeater_control'      => true,
 			'malformed_div_on_shop' => true,
+			'custom_post_types_enh' => true,
 			'mega_menu'             => true,
 		]
 	);
