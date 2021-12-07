@@ -28,7 +28,7 @@ function neve_edd_download_nav() {
 	);
 	?>
 
-	<div id="nv-edd-download-pagination" class="navigation">
+	<div id="edd_download_pagination" class="navigation">
 		<?php 
 		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $pagination; 
