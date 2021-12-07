@@ -155,7 +155,7 @@ const LogoPaletteComponent = ({ control }) => {
 					suggestedHeight={height}
 					flexWidth={flexWidth}
 					flexHeight={flexHeight}
-					title={__('Select Logo', 'neve')}
+					title={__('Change Logo', 'neve')}
 					render={({ open }) => (
 						<>
 							{!light && (
@@ -168,7 +168,11 @@ const LogoPaletteComponent = ({ control }) => {
 										className="add-icon"
 										icon={plusCircleFilled}
 									/>
-									<p>{__('Add Light Logo', 'neve')}</p>
+									<p>
+										{__('Light Palette', 'neve') +
+											' / ' +
+											__('Upload Logo', 'neve')}
+									</p>
 								</div>
 							)}
 							{light && (
@@ -181,7 +185,11 @@ const LogoPaletteComponent = ({ control }) => {
 											resetAttachment('light');
 										}}
 									/>
-									<p>{__('Light Mode', 'neve')}</p>
+									<p>
+										{__('Light Palette', 'neve') +
+											' / ' +
+											__('Change Logo', 'neve')}
+									</p>
 									<img
 										aria-hidden="true"
 										alt=""
@@ -203,7 +211,7 @@ const LogoPaletteComponent = ({ control }) => {
 						suggestedHeight={height}
 						flexWidth={flexWidth}
 						flexHeight={flexHeight}
-						title={__('Select Logo Dark', 'neve')}
+						title={__('Change Logo', 'neve')}
 						render={({ open }) => (
 							<>
 								{!dark && (
@@ -216,7 +224,11 @@ const LogoPaletteComponent = ({ control }) => {
 											className="add-icon"
 											icon={plusCircleFilled}
 										/>
-										<p>{__('Add Dark Logo', 'neve')}</p>
+										<p>
+											{__('Dark Palette', 'neve') +
+												' / ' +
+												__('Upload Logo', 'neve')}
+										</p>
 									</div>
 								)}
 								{dark && (
@@ -229,7 +241,11 @@ const LogoPaletteComponent = ({ control }) => {
 												resetAttachment('dark');
 											}}
 										/>
-										<p>{__('Dark Mode', 'neve')}</p>
+										<p>
+											{__('Dark Palette', 'neve') +
+												' / ' +
+												__('Change Logo', 'neve')}
+										</p>
 										<img
 											aria-hidden="true"
 											alt=""

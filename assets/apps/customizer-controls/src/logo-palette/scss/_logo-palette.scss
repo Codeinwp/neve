@@ -1,6 +1,6 @@
 .logo-wrap {
-  display: flex;
-  justify-content: space-between;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .logo-select {
@@ -16,6 +16,7 @@
   padding: 6px;
   margin-bottom: 12px;
   text-align: center;
+  cursor: pointer;
   &:only-of-type {
 	width: 195px;
 	height: 111px;

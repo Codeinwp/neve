@@ -132,7 +132,6 @@ class PaletteSwitch extends Abstract_Component {
 	public function load_scripts() {
 		if ( $this->is_component_active() || is_customize_preview() ) {
 			wp_add_inline_style( 'neve-style', $this->toggle_style() );
-			// wp_add_inline_script( 'neve-script', $this->toggle_script() );
 		}
 	}
 

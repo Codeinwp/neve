@@ -85,7 +85,6 @@ class Logo extends Abstract_Component {
 		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() . ' .site-logo' );
 		$this->set_property( 'has_horizontal_alignment', true );
 
-		// add_action( 'wp_enqueue_scripts', [ $this, 'load_scripts' ] );
 		add_filter( 'hfg_component_scripts', [ $this, 'register_script' ] );
 
 		add_filter( 'hfg_logo_variants', [ $this, 'filter_logo_variants' ] );
@@ -212,7 +211,6 @@ class Logo extends Abstract_Component {
 		});
 	});
 
-	//setCurrentTheme(theme);
 	observer.observe(html, {
 		attributes: true
 	});
@@ -275,11 +273,9 @@ JS;
 				'id'                => self::LOGO,
 				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'               => SettingsManager::TAB_GENERAL,
-				// 'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'transport'         => 'refresh',
 				'sanitize_callback' => array( $this, 'sanitize_logo_json' ),
 				'default'           => wp_json_encode( $default ),
-				'label'             => __( 'Logo base', 'neve' ),
 				'type'              => '\Neve\Customizer\Controls\React\Logo_Palette',
 				'options'           => [
 					'priority'    => 0,

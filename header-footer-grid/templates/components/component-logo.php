@@ -67,10 +67,10 @@ $logo_settings = array(
  *
  * @since 2.11
  */
-// $should_add_skip_lazy = apply_filters( 'neve_skip_lazy', true );
-// if ( $should_add_skip_lazy ) {
-// $logo_settings['class'] = isset( $logo_settings['class'] ) ? $logo_settings['class'] . ' skip-lazy' : 'skip-lazy';
-// }
+$should_add_skip_lazy = apply_filters( 'neve_skip_lazy', true );
+if ( $should_add_skip_lazy ) {
+	$logo_settings['class'] = isset( $logo_settings['class'] ) ? $logo_settings['class'] . ' skip-lazy' : 'skip-lazy';
+}
 
 $image = wp_get_attachment_image( $custom_logo_id, apply_filters( 'hfg_logo_image_size', 'full' ), false, $logo_settings );
 do_action( 'hfg_after_wp_get_attachment_image', $custom_logo_id, $image );
