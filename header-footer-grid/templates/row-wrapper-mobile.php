@@ -16,13 +16,18 @@ $row_index        = current_row();
 $interaction_type = row_setting( Abstract_Builder::LAYOUT_SETTING );
 $classes          = [ 'header-menu-sidebar', 'menu-sidebar-panel', $interaction_type ];
 $is_contained     = in_array( $interaction_type, [ 'full_canvas', 'dropdown' ], true );
+$close_contained  = $interaction_type === 'dropdown';
 $inner_classes    = 'header-menu-sidebar-inner ' . ( $is_contained ? ' container' : '' );
 $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
+$close_classes    = 'close-sidebar-panel navbar-toggle-wrapper' . ( $close_contained ? ' container' : '' )
+
 
 ?>
-<div id="header-menu-sidebar" class="<?php echo esc_attr( join( ' ', $classes ) ); ?>" data-row-id="<?php echo esc_attr( $row_index ); ?>">
+<div
+		id="header-menu-sidebar" class="<?php echo esc_attr( join( ' ', $classes ) ); ?>"
+		data-row-id="<?php echo esc_attr( $row_index ); ?>">
 	<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">
-		<div class="close-sidebar-panel navbar-toggle-wrapper">
+		<div class="<?php echo esc_attr( $close_classes ); ?>">
 			<button type="button" class="navbar-toggle active" <?php echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					value="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?>"
 					aria-label="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?> ">
@@ -59,4 +64,4 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 		</div>
 	</div>
 </div>
-<div class="header-menu-sidebar-overlay"></div>
+<div class="header-menu-sidebar-overlay hfg-ov"></div>
