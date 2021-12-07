@@ -48,7 +48,8 @@ controlConstructor.neve_responsive_range_control = ResponsiveRangeControl;
 controlConstructor.neve_color_control = ColorControl;
 controlConstructor.neve_presets_selector = PresetsSelectorControl;
 controlConstructor.neve_multiselect = MultiSelectControl;
-controlConstructor.neve_responsive_radio_buttons_control = ResponsiveRadioButtonsControl;
+controlConstructor.neve_responsive_radio_buttons_control =
+	ResponsiveRadioButtonsControl;
 controlConstructor.neve_radio_image_control = RadioImageControl;
 controlConstructor.neve_ordering_control = OrderingControl;
 controlConstructor.neve_global_colors = GlobalColorsControl;
@@ -72,6 +73,23 @@ const initDeviceSwitchers = () => {
 		});
 		document.dispatchEvent(event);
 	});
+};
+
+const initCustomPagesFocus = () => {
+	const { sectionsFocus } = window.NeveReactCustomize;
+	if (sectionsFocus !== undefined) {
+		Object.keys(sectionsFocus).forEach((sectionKey) => {
+			wp.customize.section(sectionKey, (section) => {
+				section.expanded.bind((isExpanded) => {
+					if (isExpanded) {
+						wp.customize.previewer.previewUrl.set(
+							sectionsFocus[sectionKey]
+						);
+					}
+				});
+			});
+		});
+	}
 };
 
 const initBlogPageFocus = () => {
@@ -171,9 +189,10 @@ window.wp.customize.bind('ready', () => {
 	initDynamicFields();
 	initQuickLinksSections();
 	bindDataAttrQuickLinks();
+	initBlogPageFocus();
+	initCustomPagesFocus();
 	checkHasElementorTemplates();
 	initDeviceSwitchers();
-	initBlogPageFocus();
 });
 
 window.HFG = {

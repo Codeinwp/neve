@@ -73,8 +73,7 @@ class Metabox_Settings {
 			}
 		);
 		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'filter_post_elements' ) );
-		add_filter( 'neve_post_title_alignment', array( $this, 'filter_title_alignment' ) );
-		add_filter( 'neve_post_title_alignment_style', array( $this, 'filter_title_alignment_style' ), 10, 2 );
+		add_filter( 'neve_title_alignment_style', array( $this, 'filter_title_alignment_style' ), 10, 2 );
 		add_filter( 'neve_display_author_avatar', array( $this, 'filter_author_avatar_display' ), 15 );
 		add_filter( 'neve_meta_content_width', array( $this, 'get_content_width' ) );
 	}
@@ -150,6 +149,10 @@ class Metabox_Settings {
 	private function get_post_id() {
 		if ( $this->is_blog_static() ) {
 			return (int) get_option( 'page_for_posts' );
+		}
+
+		if ( is_archive() ) {
+			return false;
 		}
 
 		if ( is_search() ) {
@@ -552,28 +555,6 @@ class Metabox_Settings {
 			}
 		}
 		return $style;
-	}
-
-	/**
-	 * Filter title alignment.
-	 *
-	 * @param string $alignment Title alignment.
-	 *
-	 * @return mixed
-	 */
-	public function filter_title_alignment( $alignment ) {
-		$post_id = $this->get_post_id();
-
-		if ( $post_id === false ) {
-			return $alignment;
-		}
-
-		$title_meta_alignment = get_post_meta( $post_id, self::TITLE_ALIGNMENT, true );
-		if ( ! empty( $title_meta_alignment ) ) {
-			return 'has-text-align-' . $title_meta_alignment;
-		}
-
-		return $alignment;
 	}
 
 	/**

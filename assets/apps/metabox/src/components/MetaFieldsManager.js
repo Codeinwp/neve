@@ -20,7 +20,7 @@ import {
 	RangeControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { maybeParseJson } from '../../../customizer-controls/src/common/common';
+import { maybeParseJson } from '@neve-wp/components';
 
 class MetaFieldsManager extends Component {
 	constructor(props) {
@@ -167,16 +167,20 @@ class MetaFieldsManager extends Component {
 	}
 
 	renderPageLayoutGroup() {
-		const template = select('core/editor').getEditedPostAttribute(
-			'template'
-		);
+		const template =
+			select('core/editor').getEditedPostAttribute('template');
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
 
 		return (
 			<div className="nv-option-category">
-				<PanelBody title={__('Page Layout', 'neve')} intialOpen={true}>
+				<PanelBody
+					title={
+						`${metaSidebar.postTypeLabel} ` + __('Layout', 'neve')
+					}
+					intialOpen={true}
+				>
 					<BaseControl
 						id="neve_meta_sidebar"
 						label={__('Sidebar', 'neve')}
@@ -378,9 +382,8 @@ class MetaFieldsManager extends Component {
 	}
 
 	renderPageTitleGroup() {
-		const template = select('core/editor').getEditedPostAttribute(
-			'template'
-		);
+		const template =
+			select('core/editor').getEditedPostAttribute('template');
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
@@ -391,7 +394,12 @@ class MetaFieldsManager extends Component {
 		const postType = select('core/editor').getCurrentPostType();
 		return (
 			<div className="nv-option-category">
-				<PanelBody title={__('Page Title', 'neve')} intialOpen={true}>
+				<PanelBody
+					title={
+						`${metaSidebar.postTypeLabel} ` + __('Title', 'neve')
+					}
+					intialOpen={true}
+				>
 					<BaseControl
 						label={__('Title alignment', 'neve')}
 						id="neve_meta_title_alignment"
@@ -467,7 +475,7 @@ class MetaFieldsManager extends Component {
 						</ButtonGroup>
 					</BaseControl>
 
-					{showMetaElements && 'post' === postType ? (
+					{showMetaElements && 'page' !== postType ? (
 						<BaseControl
 							id="neve_meta_author_avatar"
 							className="neve-meta-control neve-meta-checkbox neve_meta_author_avatar"
@@ -551,18 +559,21 @@ class MetaFieldsManager extends Component {
 			elements['sharing-icons'] = __('Sharing Icons', 'neve');
 		}
 
-		const template = select('core/editor').getEditedPostAttribute(
-			'template'
-		);
+		const template =
+			select('core/editor').getEditedPostAttribute('template');
 		const postType = select('core/editor').getCurrentPostType();
 		const orderingValue =
 			select('core/editor').getEditedPostAttribute('meta')
 				.neve_post_elements_order || metaSidebar.elementsDefaultOrder;
 
 		const maybeNormalizeValue = (val) => {
-			const enabledItems = val.map((element) => {
-				return { id: element, visible: true };
-			});
+			const enabledItems = val
+				.filter((element) => {
+					return elements.hasOwnProperty(element);
+				})
+				.map((element) => {
+					return { id: element, visible: true };
+				});
 
 			const disabledItems = Object.keys(metaElements)
 				.filter((componentSlug) => !val.includes(componentSlug))
@@ -574,7 +585,7 @@ class MetaFieldsManager extends Component {
 			<div className="nv-option-category">
 				<PanelBody title={__('Elements', 'neve')} intialOpen={true}>
 					{'elementor_header_footer' !== template &&
-					'post' === postType ? (
+					'page' !== postType ? (
 						<BaseControl
 							id="neve_post_elements_order"
 							className="neve-meta-control neve-meta-sortable"
@@ -710,9 +721,8 @@ export default compose([
 					'meta'
 				)[id];
 			},
-			allMeta: selectHandler('core/editor').getEditedPostAttribute(
-				'meta'
-			),
+			allMeta:
+				selectHandler('core/editor').getEditedPostAttribute('meta'),
 		};
 	}),
 ])(MetaFieldsManager);

@@ -1,3 +1,29 @@
+#### [Version 3.1.0](https://github.com/Codeinwp/neve/compare/v3.0.11...v3.1.0) (2021-11-24)
+
+- [Feat] Global options for page - [Learn more](https://docs.themeisle.com/article/1491-neve-page-options)
+- [Feat] Global header background
+- [Fix] Starter content buttons alignment with and without the Gutenberg plugin
+
+##### [Version 3.0.11](https://github.com/Codeinwp/neve/compare/v3.0.10...v3.0.11) (2021-11-10)
+
+- [Feat] Add the possibility to replace WooCommerce Breadcrumbs with the ones from Yoast, SeoPress Pro, or RankMath - [Learn more](https://docs.themeisle.com/article/1123-breadcrumbs-in-neve#woo)
+- [Fix] Infinite scroll not working in some specific context
+- [Fix] Compatibility of palette switcher with Elementor global colors
+- [Fix] Archive featured image as background works only with all taxonomies enabled
+- [Fix] Post title alignment
+- [Fix] Repeater control adding unused values to the database & causing customizer to load in publishing state
+- [Fix] Edge case of footer columns not having a proper corresponding layout
+- [Fix] Bug affecting the container size and elements style
+- [Fix] Compatibility with Cartflows plugin
+- [Fix] HTML Component's TinyMCE new lines for existing content and Safari support
+- [Fix] Bring back custom font size field inside the WordPress editor
+- [Fix] Removed previously added values for font-size presets inside the editor
+- [Fix] Removed redundant border controls for mobile header sidebar
+- [Fix] Ordering control with blank elements
+- [Fix] Double scrollbar appearing in some customizer sections
+- [Fix] Inconsistent console error inside the customizer preview  
+- Update Google Fonts
+
 ##### [Version 3.0.10](https://github.com/Codeinwp/neve/compare/v3.0.9...v3.0.10) (2021-10-27)
 
 - [Fix] header rows background images not applying on legacy skin

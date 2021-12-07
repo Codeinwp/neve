@@ -88,6 +88,10 @@ const Ordering = ({
 		onUpdate(updatedValue);
 	};
 
+	value = value.filter((element) => {
+		return components.hasOwnProperty(element.id);
+	});
+
 	return (
 		<>
 			{label /* TODO: Add proper label id for this */ && (
@@ -101,15 +105,19 @@ const Ordering = ({
 				animation={300}
 				handle=".handle"
 			>
-				{value.map((item, index) => (
-					<Item
-						key={'ordering-element-' + index}
-						item={item}
-						onToggle={handleToggle}
-						allowsToggle={allowsToggle}
-						components={components}
-					/>
-				))}
+				{value
+					.filter((element) => {
+						return components.hasOwnProperty(element.id);
+					})
+					.map((item, index) => (
+						<Item
+							key={'ordering-element-' + index}
+							item={item}
+							onToggle={handleToggle}
+							allowsToggle={allowsToggle}
+							components={components}
+						/>
+					))}
 			</ReactSortable>
 		</>
 	);

@@ -40,7 +40,7 @@ class Layout_Container extends Base_View {
 		}
 
 		if ( $context === 'single-post' ) {
-			return ( $this->get_container_class( 'neve_single_post_container_style' ) );
+			return apply_filters( 'neve_single_container_style_filter', $this->get_container_class( 'neve_single_post_container_style' ) );
 		}
 
 		if ( $context === 'single-page' && class_exists( 'WooCommerce', false ) ) {

@@ -1,5 +1,6 @@
 import { ItemInterface } from 'react-sortablejs';
 import { Dispatch, SetStateAction } from 'react';
+import Dashicon from '@wordpress/components/dashicon';
 
 interface StringObjectKeys {
 	/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -55,6 +56,7 @@ type HFGLayoutBuilderComponentProps = {
 	previewImage: string | null;
 	section: string;
 	width: number;
+	fromTheme: boolean;
 };
 
 type HFGLayoutBuilderRowProps = {
@@ -76,6 +78,7 @@ type HFGLayoutBuilderProps = {
 	};
 	section: string;
 	title: string;
+	upsells: { icon: Dashicon.Icon; name: string }[];
 };
 
 type HFGLayoutBuilder = {

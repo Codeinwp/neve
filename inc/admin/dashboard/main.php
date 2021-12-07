@@ -160,7 +160,7 @@ class Main {
 		$build_path   = get_template_directory_uri() . '/assets/apps/dashboard/build/';
 		$dependencies = ( include get_template_directory() . '/assets/apps/dashboard/build/dashboard.asset.php' );
 
-		wp_register_style( 'neve-dash-style', $build_path . 'style-dashboard.css', [ 'wp-components' ], $dependencies['version'] );
+		wp_register_style( 'neve-dash-style', $build_path . 'style-dashboard.css', [ 'wp-components', 'neve-components' ], $dependencies['version'] );
 		wp_style_add_data( 'neve-dash-style', 'rtl', 'replace' );
 		wp_enqueue_style( 'neve-dash-style' );
 		wp_register_script( 'neve-dash-script', $build_path . 'dashboard.js', array_merge( $dependencies['dependencies'], [ 'updates' ] ), $dependencies['version'], true );

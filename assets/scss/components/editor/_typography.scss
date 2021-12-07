@@ -191,33 +191,3 @@ a:not(.wp-block-button__link) {
 	border: 0;
 	border-radius: 0;
 }
-
-// Gutenberg text sizes.
-p[class*="has-"][class*="-font-size"] {
-	line-height: 1;
-}
-
-
-.has-medium-font-size {
-
-	&,
-	&.wp-block {
-		font-size: calc(var(--h3FontSize) * 1.4) !important;
-	}
-}
-
-.has-large-font-size {
-
-	&,
-	&.wp-block {
-		font-size: calc(var(--h2FontSize) * 1.4) !important;
-	}
-}
-
-.has-huge-font-size {
-
-	&,
-	&.wp-block {
-		font-size: calc(var(--h1FontSize) * 1.4) !important;
-	}
-}

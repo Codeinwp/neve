@@ -4,6 +4,7 @@ import { initNavigation, repositionDropdowns } from '../frontend/navigation';
 import { removeClass, addClass } from '../utils.js';
 import { parseFontFamily } from './common.js';
 import { CSSVariablesHandler, addCSS, addTemplateCSS } from './css-var-handler';
+
 const { newSkin } = window.neveCustomizePreview;
 
 function handleResponsiveRadioButtons(args, nextValue) {
@@ -23,6 +24,74 @@ function handleResponsiveRadioButtons(args, nextValue) {
 		item.parentNode.classList.add(...classesToAdd);
 	});
 }
+
+/**
+ * Run JS on preview-ready.
+ */
+wp.customize.bind('preview-ready', function () {
+	wp.customize.preview.bind('font-selection', function (data) {
+		const controlData = neveCustomizePreview[data.type][data.controlId];
+
+		let selector = controlData.selector;
+
+		const source = data.source;
+		const id = data.controlId + '_font_family';
+
+		if (source.toLowerCase() === 'google') {
+			const linkNode = document.querySelector('#' + id);
+			const fontValue = data.value.replace(' ', '+');
+			const url =
+				'//fonts.googleapis.com/css?family=' +
+				fontValue +
+				'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&display=swap"';
+			if (linkNode !== null) {
+				linkNode.setAttribute('href', url);
+			} else {
+				const newNode = document.createElement('link');
+				newNode.setAttribute('rel', 'stylesheet');
+				newNode.setAttribute('id', id);
+				newNode.setAttribute('href', url);
+				newNode.setAttribute('type', 'text/css');
+				newNode.setAttribute('media', 'all');
+				document.querySelector('head').appendChild(newNode);
+			}
+		}
+
+		const { additional = false } = controlData;
+
+		if (
+			additional !== false &&
+			additional.cssVar !== undefined &&
+			neveCustomizePreview.newSkin
+		) {
+			return false;
+		}
+
+		const defaultFontface = data.inherit
+			? 'inherit'
+			: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
+
+		// Make selector more specific by adding `html` before.
+		selector = selector.split(',');
+		selector = selector
+			.map(function (sel) {
+				return 'html ' + sel;
+			})
+			.join(',');
+		if (data.value === false) {
+			addCSS(
+				data.controlId,
+				selector + '{font-family: ' + defaultFontface + ';}'
+			);
+			return false;
+		}
+		const parsedFontFamily = parseFontFamily(data.value);
+		addCSS(
+			data.controlId,
+			selector + '{font-family: ' + parsedFontFamily + ' ;}'
+		);
+	});
+});
 
 /**
  * Run JS on load.
@@ -488,9 +557,8 @@ window.addEventListener('load', function () {
 									.querySelector(args.additional.parent)
 									.prepend(wrap);
 							}
-							document.querySelector(
-								args.selector
-							).innerHTML = newValue;
+							document.querySelector(args.selector).innerHTML =
+								newValue;
 							break;
 						case 'neve_range_control':
 						case 'Neve\\Customizer\\Controls\\React\\Range':
@@ -544,69 +612,6 @@ window.addEventListener('load', function () {
 				});
 			});
 		});
-	});
-
-	wp.customize.preview.bind('font-selection', function (data) {
-		const controlData = neveCustomizePreview[data.type][data.controlId];
-
-		let selector = controlData.selector;
-
-		const source = data.source;
-		const id = data.controlId + '_font_family';
-
-		if (source.toLowerCase() === 'google') {
-			const linkNode = document.querySelector('#' + id);
-			const fontValue = data.value.replace(' ', '+');
-			const url =
-				'//fonts.googleapis.com/css?family=' +
-				fontValue +
-				'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&display=swap"';
-			if (linkNode !== null) {
-				linkNode.setAttribute('href', url);
-			} else {
-				const newNode = document.createElement('link');
-				newNode.setAttribute('rel', 'stylesheet');
-				newNode.setAttribute('id', id);
-				newNode.setAttribute('href', url);
-				newNode.setAttribute('type', 'text/css');
-				newNode.setAttribute('media', 'all');
-				document.querySelector('head').appendChild(newNode);
-			}
-		}
-
-		const { additional = false } = controlData;
-
-		if (
-			additional !== false &&
-			additional.cssVar !== undefined &&
-			neveCustomizePreview.newSkin
-		) {
-			return false;
-		}
-
-		const defaultFontface = data.inherit
-			? 'inherit'
-			: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
-
-		// Make selector more specific by adding `html` before.
-		selector = selector.split(',');
-		selector = selector
-			.map(function (sel) {
-				return 'html ' + sel;
-			})
-			.join(',');
-		if (data.value === false) {
-			addCSS(
-				data.controlId,
-				selector + '{font-family: ' + defaultFontface + ';}'
-			);
-			return false;
-		}
-		const parsedFontFamily = parseFontFamily(data.value);
-		addCSS(
-			data.controlId,
-			selector + '{font-family: ' + parsedFontFamily + ' ;}'
-		);
 	});
 
 	wp.customize('background_image', function (value) {
@@ -725,6 +730,23 @@ if (!newSkin) {
 	jQuery.neveRangesPreview.init();
 }
 
+let dynamicContentWidths = {};
+let dynamicContentContainers = {};
+if (
+	window.neveCustomizePreview &&
+	window.neveCustomizePreview.dynamicContentWidths
+) {
+	dynamicContentWidths = window.neveCustomizePreview.dynamicContentWidths;
+}
+
+if (
+	window.neveCustomizePreview &&
+	window.neveCustomizePreview.dynamicContentContainers
+) {
+	dynamicContentContainers =
+		window.neveCustomizePreview.dynamicContentContainers;
+}
+
 (function ($) {
 	$.neveLayoutPreview = {
 		init() {
@@ -759,6 +781,7 @@ if (!newSkin) {
 				sidebar:
 					'body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap, body.post-type-archive-course .nv-sidebar-wrap, body.post-type-archive-llms_membership .nv-sidebar-wrap',
 			},
+			...dynamicContentWidths,
 		},
 		contentWidthsPreview() {
 			$.each(this.contentWidths, function (id, args) {
@@ -791,6 +814,7 @@ if (!newSkin) {
 				'.woocommerce-page.post-type-archive .neve-main > div',
 			neve_single_product_container_style:
 				'.single-product .neve-main > div',
+			...dynamicContentContainers,
 		},
 		containersLivePreview() {
 			'use strict';

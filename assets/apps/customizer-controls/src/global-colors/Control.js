@@ -1,5 +1,5 @@
 import GlobalColorsComponent from './GlobalColorsComponent';
-import ControlWithLink from '../common/ControlWithLink';
+import { ControlWithLink } from '@neve-wp/components';
 import { render } from '@wordpress/element';
 
 export const GlobalColorsControl = wp.customize.Control.extend({

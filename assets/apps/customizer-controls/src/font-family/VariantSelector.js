@@ -1,7 +1,6 @@
 import { useEffect, useState } from '@wordpress/element';
-import { fontVariantMap as variantMap } from '../common/common';
-import MultiSelect from '../multiselect/MultiSelect';
 import { __ } from '@wordpress/i18n';
+import { MultiSelect, fontVariantMap as variantMap } from '@neve-wp/components';
 import PropTypes from 'prop-types';
 
 export function VariantSelector({ setting, fontFamily }) {
