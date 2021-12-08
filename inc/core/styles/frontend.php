@@ -651,7 +651,7 @@ class Frontend extends Generator {
 			return;
 		}
 		// Others content width.
-		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col, body.post-type-archive-course .neve-main > .container .col, body.post-type-archive-llms_membership .neve-main > .container .col'] = [
+		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search):not(.error404) .neve-main > .container .col, body.post-type-archive-course .neve-main > .container .col, body.post-type-archive-llms_membership .neve-main > .container .col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_OTHERS_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_OTHERS_CONTENT_WIDTH ),
@@ -659,7 +659,7 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_SUFFIX      => '%',
 			],
 		];
-		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap, body.post-type-archive-course .nv-sidebar-wrap, body.post-type-archive-llms_membership .nv-sidebar-wrap']                                     = [
+		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search):not(.error404) .nv-sidebar-wrap, body.post-type-archive-course .nv-sidebar-wrap, body.post-type-archive-llms_membership .nv-sidebar-wrap']                                     = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_OTHERS_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEFAULT     => $this->sidebar_layout_width_default( Config::MODS_OTHERS_CONTENT_WIDTH ),
