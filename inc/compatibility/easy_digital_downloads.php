@@ -23,8 +23,8 @@ class Easy_Digital_Downloads {
 		if ( ! class_exists( 'Easy_Digital_Downloads' ) ) {
 			return;
 		}
-		add_action( 'wp_enqueue_scripts', array( $this, 'neve_dequeue_edd_styles' ) );
-		add_filter( 'edd_settings_styles', array( $this, 'neve_edd_settings_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_edd_styles' ) );
+		add_filter( 'edd_settings_styles', array( $this, 'edd_settings_styles' ) );
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 	}
 
@@ -58,7 +58,7 @@ class Easy_Digital_Downloads {
 	 * 
 	 * @return void 
 	 */
-	public function neve_dequeue_edd_styles() {
+	public function dequeue_edd_styles() {
 		wp_dequeue_style( 'edd-styles' );
 	}
 
@@ -68,7 +68,7 @@ class Easy_Digital_Downloads {
 	 * @param mixed $settings EDD style settings.
 	 * @return array 
 	 */
-	public function neve_edd_settings_styles( $settings ) {
+	public function edd_settings_styles( $settings ) {
 		/*
 		 * Settings with type 'descriptive_text' are automatically stripped by EDD
 		 * So this field is not saved to the DB on save changes.
