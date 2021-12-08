@@ -159,11 +159,7 @@ const Typeface = (props) => {
 					onChange({ fontSize: nextVal });
 				}}
 				onReset={() => {
-					const nextFS = { ...fontSize };
-					nextFS[currentDevice] = defaultFS[currentDevice];
-					nextFS.suffix[currentDevice] =
-						defaultFS.suffix[currentDevice];
-					onChange({ fontSize: nextFS });
+					onChange({ fontSize: defaultFS });
 					if (refreshAfterReset) {
 						wp.customize.previewer.refresh();
 					}
@@ -196,11 +192,7 @@ const Typeface = (props) => {
 					onChange({ lineHeight: nextVal });
 				}}
 				onReset={() => {
-					const nextLH = { ...lineHeight };
-					nextLH[currentDevice] = defaultLH[currentDevice];
-					nextLH.suffix[currentDevice] =
-						defaultLH.suffix[currentDevice];
-					onChange({ lineHeight: nextLH });
+					onChange({ lineHeight: defaultLH });
 					if (refreshAfterReset) {
 						wp.customize.previewer.refresh();
 					}
@@ -241,9 +233,7 @@ const Typeface = (props) => {
 					onChange({ letterSpacing: nextVal });
 				}}
 				onReset={() => {
-					const nextLS = { ...letterSpacing };
-					nextLS[currentDevice] = defaultLS[currentDevice];
-					onChange({ letterSpacing: nextLS });
+					onChange({ letterSpacing: defaultLS });
 					if (refreshAfterReset) {
 						wp.customize.previewer.refresh();
 					}
