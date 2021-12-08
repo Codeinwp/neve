@@ -27,7 +27,6 @@ trait Layout {
 				'neve_other_pages_sidebar_layout',
 				'neve_single_product_sidebar_layout',
 			];
-			$full_width = apply_filters( 'neve_sidebar_layout_alignment_defaults', $full_width );
 			if ( in_array( $control_id, $full_width, true ) ) {
 				return 'full-width';
 			}
@@ -56,7 +55,6 @@ trait Layout {
 				'neve_other_pages_content_width',
 				'neve_single_product_content_width',
 			];
-			$full_width = apply_filters( 'neve_sidebar_full_width_defaults', $full_width );
 			if ( in_array( $control_id, $full_width, true ) ) {
 				return 100;
 			}

@@ -4,7 +4,6 @@ import { initNavigation, repositionDropdowns } from '../frontend/navigation';
 import { removeClass, addClass } from '../utils.js';
 import { parseFontFamily } from './common.js';
 import { CSSVariablesHandler, addCSS, addTemplateCSS } from './css-var-handler';
-
 const { newSkin } = window.neveCustomizePreview;
 
 function handleResponsiveRadioButtons(args, nextValue) {
@@ -730,23 +729,6 @@ if (!newSkin) {
 	jQuery.neveRangesPreview.init();
 }
 
-let dynamicContentWidths = {};
-let dynamicContentContainers = {};
-if (
-	window.neveCustomizePreview &&
-	window.neveCustomizePreview.dynamicContentWidths
-) {
-	dynamicContentWidths = window.neveCustomizePreview.dynamicContentWidths;
-}
-
-if (
-	window.neveCustomizePreview &&
-	window.neveCustomizePreview.dynamicContentContainers
-) {
-	dynamicContentContainers =
-		window.neveCustomizePreview.dynamicContentContainers;
-}
-
 (function ($) {
 	$.neveLayoutPreview = {
 		init() {
@@ -781,7 +763,6 @@ if (
 				sidebar:
 					'body:not(.single):not(.archive):not(.blog):not(.search):not(.error404) .nv-sidebar-wrap, body.post-type-archive-course .nv-sidebar-wrap, body.post-type-archive-llms_membership .nv-sidebar-wrap',
 			},
-			...dynamicContentWidths,
 		},
 		contentWidthsPreview() {
 			const self = this;
@@ -814,7 +795,6 @@ if (
 				'.woocommerce-page.post-type-archive .neve-main > div',
 			neve_single_product_container_style:
 				'.single-product .neve-main > div',
-			...dynamicContentContainers,
 		},
 		containersLivePreview() {
 			'use strict';
