@@ -165,6 +165,8 @@ class Layout_Sidebar extends Base_View {
 
 		$sidebar_setup['has_widgets'] = is_active_sidebar( $sidebar_setup['sidebar_slug'] );
 
+		$sidebar_setup = apply_filters( 'neve_sidebar_setup_filter', $sidebar_setup );
+
 		return $sidebar_setup;
 	}
 
