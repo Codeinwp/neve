@@ -127,7 +127,7 @@
 
 		.caret-wrap {
 			margin: -15px 0;
-			padding: 15px 15px 15px 20px;
+			padding: 15px 15px 15px 10px;
 
 			&.dropdown-open .caret {
 				transform: rotateX(180deg);
@@ -140,24 +140,24 @@
 			left: unset !important;
 			top: unset !important;
 			right: unset !important;
-			background: unset;
+			background: 0;
 			position: relative;
 			max-width: 100%;
 			box-shadow: none;
-			max-height: 0;
-			overflow: hidden;
+			display: none;
 
+			//Expanded by default vs desktop.
 			@extend %show-dropdown;
 
 			&.dropdown-open {
-				max-height: unset;
+				display: block;
 			}
 		}
 
 		&.dropdowns-expanded {
 
 			> li > .sub-menu {
-				max-height: 1200px;
+				display: block;
 			}
 
 			> li > a {
@@ -174,7 +174,7 @@
 	}
 
 	.amp.dropdown-open + .sub-menu {
-		max-height: 1300px !important;
+		display: block !important;
 	}
 }
 

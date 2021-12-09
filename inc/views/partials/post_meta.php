@@ -67,7 +67,6 @@ class Post_Meta extends Base_View {
 			$single_avatar_size = Mods::to_json( Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE );
 			$avatar_size        = ! empty( $single_avatar_size ) ? $single_avatar_size : $avatar_size;
 		}
-		$avatar_size = apply_filters( 'neve_author_avatar_size_filter', $avatar_size );
 
 		if ( ! isset( $args_array['size'] ) ) {
 			return $args_array;
@@ -351,7 +350,6 @@ class Post_Meta extends Base_View {
 		if ( is_singular( 'post' ) ) {
 			$separator = get_theme_mod( 'neve_single_post_metadata_separator', $separator );
 		}
-		$separator = apply_filters( 'neve_metadata_separator_filter', $separator );
 
 		$custom_css  = '';
 		$custom_css .= '.nv-meta-list li.meta:not(:last-child):after { content:"' . esc_html( $separator ) . '" }';

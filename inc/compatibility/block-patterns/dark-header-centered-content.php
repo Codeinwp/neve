@@ -21,7 +21,7 @@ return array(
 <!-- /wp:spacer -->
 
 <!-- wp:group -->
-<div class="wp-block-group"><div class="wp-block-group__inner-container"><!-- wp:buttons {"align":"center"} -->
+<div class="wp-block-group"><div class="wp-block-group__inner-container"><!-- wp:buttons {"align":"center", "layout":{"type":"flex","justifyContent":"center"}} -->
 <div class="wp-block-buttons aligncenter"><!-- wp:button {"className":"is-style-primary"} -->
 <div class="wp-block-button is-style-primary"><a class="wp-block-button__link">This is Primary Button</a></div>
 <!-- /wp:button --></div>

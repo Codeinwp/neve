@@ -204,14 +204,6 @@ class Layout_Sidebar extends Base_Customizer {
 	private function add_advanced_controls() {
 		$priority = 40;
 
-		/**
-		 * Filters the sidebar advanced controls.
-		 *
-		 * @param array $advanced_controls Container style controls.
-		 *
-		 * @since 3.1.0
-		 */
-		$this->advanced_controls = apply_filters( 'neve_sidebar_controls_filter', $this->advanced_controls );
 		foreach ( $this->advanced_controls as $id => $heading_label ) {
 			$heading_id = 'neve_' . $id . '_heading';
 			$layout_id  = 'neve_' . $id . '_sidebar_layout';

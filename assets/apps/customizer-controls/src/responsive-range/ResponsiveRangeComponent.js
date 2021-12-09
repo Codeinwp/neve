@@ -86,6 +86,13 @@ const ResponsiveRangeComponent = ({ control }) => {
 	};
 
 	const updateValues = (newValue) => {
+		// This happens when the reset button is pressed
+		if (newValue === undefined) {
+			setValue(defaultVal);
+			control.setting.set(JSON.stringify(defaultVal));
+			return;
+		}
+
 		const nextValue = { ...value };
 		nextValue[currentDevice] = newValue;
 		setValue(nextValue);
@@ -110,7 +117,6 @@ const ResponsiveRangeComponent = ({ control }) => {
 			</div>
 			<div className="range-wrap">
 				<RangeControl
-					resetFallbackValue={defaultVal[currentDevice]}
 					value={displayValue}
 					min={min || 0}
 					max={max || 100}

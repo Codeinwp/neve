@@ -36,6 +36,7 @@ if ( function_exists( 'PLL' ) ) {
 	</label>
 	<input type="search"
 		class="search-field"
+		aria-label="<?php echo esc_attr__( 'Search', 'neve' ); ?>"
 		placeholder="<?php echo esc_attr( $placeholder ); ?>"
 		value="<?php echo esc_attr( $value ); ?>"
 		name="s"/>
