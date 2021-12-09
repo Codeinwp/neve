@@ -128,7 +128,7 @@ class Post_Meta extends Base_View {
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'category':
-					if ( $post_type !== 'post' ) {
+					if ( ! in_array( 'category', get_object_taxonomies( $post_type ) ) ) {
 						break;
 					}
 					$markup .= '<' . $tag . ' class="meta category">';
