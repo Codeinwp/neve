@@ -126,6 +126,7 @@ trait Single_Post {
 		 */
 		$allowed_context = apply_filters( 'neve_allowed_custom_post_types', $allowed, 10, 1 );
 		$context         = get_post_type();
+		$context         = apply_filters( 'neve_context_filter', $context, 10, 1 );
 
 		return [ $context, $allowed_context ];
 	}
@@ -145,7 +146,7 @@ trait Single_Post {
 			return false;
 		}
 
-		return is_singular( $context );
+		return is_singular( $context ) || is_single();
 	}
 
 	/**

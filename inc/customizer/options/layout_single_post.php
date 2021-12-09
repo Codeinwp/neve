@@ -34,7 +34,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 	 * @return string
 	 */
 	public function get_cover_selector() {
-		return '.single-post .nv-post-cover';
+		return '.single .nv-post-cover';
 	}
 
 	/**
