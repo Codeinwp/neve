@@ -1,0 +1,46 @@
+#edd_checkout_form_wrap {
+
+	span.edd-description {
+		color: #666;
+		display: block;
+		font-size: 80%;
+		margin: 0 0 5px;
+	}
+
+	input.edd-input {
+		width: 100%;
+	}
+
+	input.edd-gateway {
+		margin-right: 5px;
+	}
+
+	.edd-gateway-option {
+		padding: 10px;
+	}
+
+	.edd-payment-icons img.payment-icon {
+		margin-right: 5px;
+		max-height: 32px;
+	}
+
+	#card_exp_month,
+	#card_exp_year {
+		width: 60px;
+	}
+
+	#edd_secure_site_wrapper span {
+		font-size: 80%;
+	}
+
+	.edd-icon {
+		display: inline-block;
+		fill: currentColor;
+		position: relative;
+		top: -0.0625em;
+		vertical-align: middle;
+		width: 1em;
+		height: 1em;
+	}
+
+}
