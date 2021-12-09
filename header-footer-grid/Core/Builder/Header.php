@@ -535,4 +535,32 @@ class Header extends Abstract_Builder {
 
 		return apply_filters( 'neve_header_presets_v2', $presets );
 	}
+
+	/**
+	 * Get upsell components.
+	 *
+	 * @return array
+	 */
+	protected function get_upsell_components() {
+		if ( defined( 'NEVE_PRO_VERSION' ) ) {
+			return [];
+		}
+
+		return [
+			[
+				'icon' => 'welcome-write-blog',
+				'name' => __( 'HTML', 'neve' ) . ' 2',
+			],
+			[
+				'icon' => 'embed-generic',
+				'name' => __( 'Custom Layouts', 'neve' ),
+			],
+			[
+				'icon' => 'share',
+				'name' => __( 'Social Icons', 'neve' ),
+			],
+		];
+	}
+
+
 }

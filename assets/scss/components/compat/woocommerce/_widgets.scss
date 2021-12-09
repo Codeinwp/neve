@@ -27,3 +27,11 @@
 		}
 	}
 }
+
+.woocommerce-widget-layered-nav .select2-selection--single {
+	padding-right: 30px !important;
+}
+
+body .select2-dropdown {
+	z-index: 100001;
+}
