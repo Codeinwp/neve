@@ -1,0 +1,10 @@
+form#edd_profile_editor_form {
+
+	p label {
+		display: block;
+	}
+
+	input:not(input[type="submit"]) {
+		width: 100%;
+	}
+}
