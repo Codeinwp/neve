@@ -23,7 +23,7 @@ const Pro = () => {
 
 			<div className="card upsell">
 				<ExternalLink href={neveDash.allfeaturesURL}>
-							{__('See all Pro features', 'neve')}
+					{__('See all Pro features', 'neve')}
 				</ExternalLink>
 				<Button
 					target="_blank"
