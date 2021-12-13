@@ -1,3 +1,4 @@
+/* global neveDash */
 import { Dashicon, ExternalLink } from '@wordpress/components';
 import { useState, createInterpolateElement } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -13,13 +14,11 @@ const FeatureRow = ({ item }) => {
 	const renderFeatureTitle = () => {
 		if (!presentational) {
 			return title;
-		} else {
-			return (
-				<ExternalLink href={neveDash.allfeaturesURL}>
-					{title}
-				</ExternalLink>
-			);
 		}
+
+		return (
+			<ExternalLink href={neveDash.allfeaturesURL}>{title}</ExternalLink>
+		);
 	};
 
 	const renderInfoIcon = () => {
