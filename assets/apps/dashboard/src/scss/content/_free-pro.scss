@@ -136,10 +136,8 @@
 			color: #616161;
 		}
 
-		a{
-			&:not(.components-external-link) {
-				padding: 10px 20px;
-			}
+		a {
+			padding: 10px 20px;
 			height: auto;
 			font-size: 15px;
 		}
@@ -184,7 +182,7 @@
 				margin-right: 10px;
 			}
 
-			a:not(.components-external-link) {
+			a {
 				margin-left: auto;
 			}
 		}

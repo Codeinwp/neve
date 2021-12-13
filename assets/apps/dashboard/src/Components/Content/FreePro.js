@@ -2,7 +2,7 @@
 import FeatureRow from '../FeatureRow';
 
 import { __ } from '@wordpress/i18n';
-import { Button, ExternalLink } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 
 const Pro = () => {
 	const { featureData } = neveDash;
@@ -22,9 +22,12 @@ const Pro = () => {
 			</table>
 
 			<div className="card upsell">
-				<ExternalLink href={neveDash.allfeaturesURL}>
-					{__('See all Pro features', 'neve')}
-				</ExternalLink>
+				<p>
+					{__(
+						'Get access to all Pro features and power-up your website',
+						'neve'
+					)}
+				</p>
 				<Button
 					target="_blank"
 					rel="external noreferrer noopener"
