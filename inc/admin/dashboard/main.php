@@ -193,6 +193,7 @@ class Main {
 			'plugins'             => $this->get_useful_plugins(),
 			'featureData'         => $this->get_free_pro_features(),
 			'showFeedbackNotice'  => $this->should_show_feedback_notice(),
+			'allfeaturesURL'      => esc_url( 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve#profeatures' ),
 			'upgradeURL'          => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ) ),
 			'supportURL'          => esc_url( 'https://wordpress.org/support/theme/neve/' ),
 			'docsURL'             => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
@@ -441,6 +442,10 @@ class Main {
 				'description' => __( 'Simple but effective module to help you navigate back to the top of the really long pages.', 'neve' ),
 				'inLite'      => false,
 				'docsLink'    => $this->get_doc_link( 'Scroll To Top', 'https://docs.themeisle.com/article/1060-scroll-to-top-module-documentation' ),
+			],
+			[
+				'title'          => __( 'See all Pro features', 'neve' ),
+				'presentational' => true,
 			],
 		];
 	}
