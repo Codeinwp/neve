@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 29/11/21
+ * Updated on 13/12/21
  *
  * @package neve
  */
@@ -107,6 +107,7 @@ return array(
 	'Bahiana' => array( '400',),
 	'Bahianita' => array( '400',),
 	'Bai Jamjuree' => array( '200', '300', '400', '500', '600', '700', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic',),
+	'Bakbak One' => array( '400',),
 	'Ballet' => array( '400',),
 	'Baloo' => array(),
 	'Baloo 2' => array( '400', '500', '600', '700', '800',),
