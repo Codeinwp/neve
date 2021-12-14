@@ -527,8 +527,8 @@ class Main {
 
 		$nv_pro_data = get_option( 'neve_pro_addon_license_data' ); 
 		
-		if ( $nv_pro_data->license === 'valid' ) {
-			return false;
+		if ( is_object( $nv_pro_data ) && $nv_pro_data->license === 'valid' ) {
+			return true;
 		}
 
 		return false;
