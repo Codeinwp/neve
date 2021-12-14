@@ -29,7 +29,10 @@ const Card = (props) => {
 			</div>
 			<div className="card-content">
 				{description && (
-					<p className="card-description" dangerouslySetInnerHTML={{__html: description}}></p>
+					<p
+						className="card-description"
+						dangerouslySetInnerHTML={{ __html: description }}
+					></p>
 				)}
 				{children}
 			</div>

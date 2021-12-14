@@ -56,7 +56,7 @@ const Start = (props) => {
 					title={__('Starter Sites', 'neve')}
 					description={neveDash.strings.starterSitesCardDescription}
 				>
-					<div class="button-group">
+					<div className="button-group">
 						{tabs['starter-sites'] ? (
 							<Button
 								isPrimary
@@ -71,11 +71,11 @@ const Start = (props) => {
 								{__('Go to Starter Sites', 'neve')}
 							</Button>
 						)}
-						{!neveDash.isValidLicense &&
+						{!neveDash.isValidLicense && (
 							<Button href={neveDash.getNeveURL} isSecondary>
 								{__('Get Neve Pro', 'neve')}
 							</Button>
-						}
+						)}
 					</div>
 				</Card>
 			)}
