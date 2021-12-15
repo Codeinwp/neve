@@ -156,12 +156,6 @@ const ComponentsPopover: React.FC<Props> = ({
 							<span className="count">
 								15+ {__('Components', 'neve')}
 							</span>
-							<p>
-								{__(
-									'Upgrade to Neve Pro and unlock all components, including Wish List, Breadcrumbs, Custom Layouts and many more.',
-									'neve'
-								)}
-							</p>
 							<Button
 								isPrimary
 								className="upsell-btn"
