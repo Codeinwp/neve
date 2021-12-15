@@ -54,14 +54,7 @@
 .header-menu-sidebar-inner {
 
 	.neve-mega-menu .neve-mm-col > .sub-menu {
-
-		.sub-menu {
-			max-height: 0;
-
-			&.dropdown-open {
-				max-height: 3000px;
-			}
-		}
+		display: block;
 	}
 }
 
