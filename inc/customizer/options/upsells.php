@@ -68,7 +68,7 @@ class Upsells extends Base_Customizer {
 	private function checkout_locked_layout() {
 		$this->add_control(
 			new Control(
-				'neve_checkout_locked_layout',
+				'neve_checkout_page_layout',
 				[
 					'default'           => 'standard',
 					'sanitize_callback' => [ $this, 'sanitize_checkout_layout' ],
@@ -94,6 +94,15 @@ class Upsells extends Base_Customizer {
 				'\Neve\Customizer\Controls\React\Radio_Image'
 			)
 		);
+	}
+
+	/**
+	 * Sanitize checkout layout that forcefully updates the selection as standard.
+	 *
+	 * @return string
+	 */
+	public function sanitize_checkout_layout() {
+		return 'standard';
 	}
 
 	/**
