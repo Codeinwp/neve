@@ -194,7 +194,7 @@ class Main {
 			'plugins'             => $this->get_useful_plugins(),
 			'featureData'         => $this->get_free_pro_features(),
 			'showFeedbackNotice'  => $this->should_show_feedback_notice(),
-			'getNeveURL'          => esc_url( 'https://themeisle.com/themes/neve/upgrade/?utm_source=welcome+starter+sites+card&utm_medium=dashboard&utm_campaign=neve' ),
+			'getNeveURL'          => esc_url( 'https://themeisle.com/themes/neve/upgrade/?utm_medium=nevedashboard&utm_source=welcomestartersitescard&utm_campaign=neve&utm_content=gotostartersites' ),
 			'upgradeURL'          => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ) ),
 			'supportURL'          => esc_url( 'https://wordpress.org/support/theme/neve/' ),
 			'docsURL'             => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
@@ -205,6 +205,7 @@ class Main {
 				'header'                        => sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
 				'starterSitesCardDescription'   => sprintf( __( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), wp_kses_post( $theme_name ) ),
+				'starterSitesCardUpsellMessage' => esc_html__( 'Upgrade to the Pro version and get instant access to all Premium Starter Sites — including Expert Sites — and much more.', 'neve' ),
 				/* translators: %s - Theme name */
 				'starterSitesTabDescription'    => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: 1 - Theme name, 2 - Cloud Templates & Patterns Collection */
@@ -233,13 +234,6 @@ class Main {
 			'tpcPath'             => defined( 'TIOB_PATH' ) ? TIOB_PATH . 'template-patterns-collection.php' : 'template-patterns-collection/template-patterns-collection.php',
 			'tpcAdminURL'         => admin_url( 'themes.php?page=tiob-starter-sites' ),
 		];
-
-		if ( ! $this->is_valid_license() ) {
-			$starter_sites_desc                             = $data['strings']['starterSitesCardDescription'];
-			$neve_pro_upsell                                = esc_html__( 'Upgrade to the Pro version and get instant access to all Premium Starter Sites; including Expert Sites, and much more.', 'neve' );
-			$starter_sites_desc_upsell                      = $starter_sites_desc . '<br/><br/>' . $neve_pro_upsell;
-			$data['strings']['starterSitesCardDescription'] = $starter_sites_desc_upsell;
-		}
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
 			$data['changelogPro'] = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );

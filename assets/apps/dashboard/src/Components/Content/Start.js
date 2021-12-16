@@ -56,6 +56,9 @@ const Start = (props) => {
 					title={__('Starter Sites', 'neve')}
 					description={neveDash.strings.starterSitesCardDescription}
 				>
+					{!neveDash.isValidLicense && (
+						<p>{neveDash.strings.starterSitesCardUpsellMessage}</p>
+					)}
 					<div className="button-group">
 						{tabs['starter-sites'] ? (
 							<Button
