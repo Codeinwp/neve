@@ -104,15 +104,13 @@
 }
 
 li#customize-control-neve_checkout_page_layout .neve-radio-image .option:not(:first-child) {
-	cursor:not-allowed;
+	cursor: not-allowed;
+    position: relative;
+    filter: saturate(0);
 }
 
 li#customize-control-neve_checkout_page_layout .neve-radio-image .option:not(:first-child) label {
     pointer-events: none;
-}
-
-li#customize-control-neve_checkout_page_layout .neve-radio-image .option:not(:first-child) {
-    position: relative;
 }
 
 li#customize-control-neve_checkout_page_layout .neve-radio-image .option:not(:first-child) button:before {
