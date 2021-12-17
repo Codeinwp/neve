@@ -106,18 +106,24 @@
 li#customize-control-neve_checkout_page_layout .neve-radio-image .option:not(:first-child) {
 	cursor: not-allowed;
     position: relative;
-    filter: saturate(0);
 }
 
 li#customize-control-neve_checkout_page_layout .neve-radio-image .option:not(:first-child) label {
     pointer-events: none;
 }
 
-li#customize-control-neve_checkout_page_layout .neve-radio-image .option:not(:first-child) button:before {
+li#customize-control-neve_checkout_page_layout .neve-radio-image .option:not(:first-child) button {
+    filter: saturate(0);
+}
+
+li#customize-control-neve_checkout_page_layout .neve-radio-image .option:not(:first-child) label:before {
     font-family: Dashicons;
     font-size:14px;
     position: absolute;
     top: 10px;
     right: 10px;
     content: "\f160";
+    color: #0073AA;
+    z-index: 1;
+    opacity: 0.45;
 }
