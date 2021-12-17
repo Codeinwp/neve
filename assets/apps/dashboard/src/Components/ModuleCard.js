@@ -48,7 +48,13 @@ const ModuleCard = ({
 		return options.map((group, index) => {
 			const { label, options: optionGroup } = group;
 			return (
-				<Accordion key={index} title={label}>
+				<Accordion
+					key={index}
+					title={label}
+					isOpen={
+						(getModuleStatus(slug) || false) && !required_actions
+					}
+				>
 					<div>
 						{Object.keys(optionGroup).map(
 							(optionSlug, indexGroup) => {
