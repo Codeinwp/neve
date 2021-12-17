@@ -1,3 +1,4 @@
+/* global NeveReactCustomize */
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { InlineSelect, NumberControl } from '@neve-wp/components';
@@ -8,6 +9,7 @@ const Typeface = (props) => {
 
 	const {
 		label,
+		fontFamily,
 		withTextTransform = true,
 		value = {
 			fontSize: {
@@ -106,22 +108,39 @@ const Typeface = (props) => {
 			fontWeight = 'none';
 		}
 
+		const { fontVariants, systemFontVariants } = NeveReactCustomize;
+		const allFontVariants = { ...fontVariants, ...systemFontVariants };
+		const defaultOptions = [
+			{ value: 'none', label: __('None', 'neve') },
+			{ value: 100, label: '100' },
+			{ value: 200, label: '200' },
+			{ value: 300, label: '300' },
+			{ value: 400, label: '400' },
+			{ value: 500, label: '500' },
+			{ value: 600, label: '600' },
+			{ value: 700, label: '700' },
+			{ value: 800, label: '800' },
+			{ value: 900, label: '900' },
+		];
+
+		let options;
+		if (allFontVariants[fontFamily] !== undefined) {
+			options = allFontVariants[fontFamily]
+				.filter((fv) => !fv.includes('italic'))
+				.reduce(
+					(acc, curr) => [
+						...acc,
+						{ value: parseInt(curr), label: curr },
+					],
+					[{ value: 'none', label: __('None', 'neve') }]
+				);
+		}
+
 		return (
 			<InlineSelect
 				label={__('Weight', 'neve')}
 				value={fontWeight}
-				options={[
-					{ value: 'none', label: __('None', 'neve') },
-					{ value: 100, label: '100' },
-					{ value: 200, label: '200' },
-					{ value: 300, label: '300' },
-					{ value: 400, label: '400' },
-					{ value: 500, label: '500' },
-					{ value: 600, label: '600' },
-					{ value: 700, label: '700' },
-					{ value: 800, label: '800' },
-					{ value: 900, label: '900' },
-				]}
+				options={options ? options : defaultOptions}
 				onChange={(nextValue) => {
 					onChange({ fontWeight: nextValue });
 					if (nextValue === 'none' && refreshAfterReset) {

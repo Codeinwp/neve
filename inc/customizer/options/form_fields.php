@@ -423,6 +423,7 @@ class Form_Fields extends Base_Customizer {
 						),
 					),
 					'type'                  => 'neve_typeface_control',
+					'font_family'           => get_theme_mod( 'neve_body_font_family', '' ),
 					'refresh_on_reset'      => true,
 					'live_refresh_selector' => '
 						form input:read-write,
@@ -523,6 +524,7 @@ class Form_Fields extends Base_Customizer {
 						],
 					],
 					'type'                  => 'neve_typeface_control',
+					'font_family'           => get_theme_mod( 'neve_body_font_family', '' ),
 					'refresh_on_reset'      => true,
 					'live_refresh_selector' => 'form label, body .wpforms-container .wpforms-field-label, .woocommerce form .form-row label',
 					'live_refresh_css_prop' => [

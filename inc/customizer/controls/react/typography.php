@@ -31,6 +31,12 @@ class Typography extends \WP_Customize_Control {
 	 * @var bool
 	 */
 	public $refresh_on_reset = false;
+	/**
+	 * The font family for which the setting are changed
+	 *
+	 * @var string
+	 */
+	public $font_family = '';
 
 	/**
 	 * Send to JS.
@@ -39,5 +45,6 @@ class Typography extends \WP_Customize_Control {
 		parent::to_json();
 		$this->json['input_attrs']      = is_array( $this->input_attrs ) ? wp_json_encode( $this->input_attrs ) : $this->input_attrs;
 		$this->json['refresh_on_reset'] = $this->refresh_on_reset;
+		$this->json['font_family']      = $this->font_family;
 	}
 }
