@@ -194,7 +194,7 @@ class Main {
 			'plugins'                 => $this->get_useful_plugins(),
 			'featureData'             => $this->get_free_pro_features(),
 			'showFeedbackNotice'      => $this->should_show_feedback_notice(),
-			'startSitesgetNeveProURL' => $this->build_neve_pro_upsell_url( 'starter_sites' ),
+			'startSitesgetNeveProURL' => esc_url( 'https://themeisle.com/themes/neve/upgrade/?utm_medium=nevedashboard&utm_source=welcomestartersitescard&utm_campaign=neve&utm_content=gotostartersites' ),
 			'upgradeURL'              => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ) ),
 			'supportURL'              => esc_url( 'https://wordpress.org/support/theme/neve/' ),
 			'docsURL'                 => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
@@ -527,38 +527,6 @@ class Main {
 
 		return false;
 
-	}
-
-	/**
-	 * Build neve pro upsell URL.
-	 * 
-	 * @param string $upsell 
-	 * @return string 
-	 */
-	private function build_neve_pro_upsell_url( $upsell ) {
-
-		$utm_medium   = 'nevedashboard';
-		$utm_campaign = 'neve';
-
-		switch ( $upsell ) {
-			case 'starter_sites':
-				$utm_source  = 'welcomestartersitescard';
-				$utm_content = 'gotostartersites';
-				break;
-			
-			default:
-				$utm_source  = 'neveupsell';
-				$utm_content = '';
-				break;
-		}
-
-		$link = "https://themeisle.com/themes/neve/upgrade/?utm_medium=$utm_medium&utm_source=$utm_source&utm_campaign=$utm_campaign";
-		
-		if ( ! empty( $utm_content ) ) {
-			$link = $link . "&utm_content=$utm_content";
-		}
-
-		return esc_url( $link );
 	}
 
 }
