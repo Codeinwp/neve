@@ -17,7 +17,9 @@ const FeatureRow = ({ item }) => {
 		}
 
 		return (
-			<ExternalLink href={neveDash.allfeaturesNeveProURL}>{title}</ExternalLink>
+			<ExternalLink href={neveDash.allfeaturesNeveProURL}>
+				{title}
+			</ExternalLink>
 		);
 	};
 
