@@ -389,11 +389,11 @@ class Front_End {
 	 */
 	public function get_strings() {
 		return [
-			'add_item'     => __( 'Add item', 'neve' ),
-			'add_items'    => __( 'Add items by clicking the ones below.', 'neve' ),
-			'all_selected' => __( 'All items are already selected.', 'neve' ),
-			'page_layout'  => __( 'Page Layout', 'neve' ),
-			'page_title'   => __( 'Page Title', 'neve' ),
+			'add_item'          => __( 'Add item', 'neve' ),
+			'add_items'         => __( 'Add items by clicking the ones below.', 'neve' ),
+			'all_selected'      => __( 'All items are already selected.', 'neve' ),
+			'page_layout'       => __( 'Page Layout', 'neve' ),
+			'page_title'        => __( 'Page Title', 'neve' ),
 			'upsell_components' => __( 'Upgrade to Neve Pro and unlock all components, including Wish List, Breadcrumbs, Custom Layouts and many more.', 'neve' ),
 		];
 	}
