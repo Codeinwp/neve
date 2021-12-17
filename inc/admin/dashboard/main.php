@@ -183,23 +183,23 @@ class Main {
 		$plugin_name       = apply_filters( 'ti_wl_plugin_name', 'Neve Pro' );
 		$plugin_name_addon = apply_filters( 'ti_wl_plugin_name', 'Neve Pro Addon' );
 		$data              = [
-			'nonce'               => wp_create_nonce( 'wp_rest' ),
-			'version'             => 'v' . NEVE_VERSION,
-			'assets'              => get_template_directory_uri() . '/assets/img/dashboard/',
-			'hasOldPro'           => (bool) ( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.1.11', '<' ) ),
-			'isRTL'               => is_rtl(),
-			'isValidLicense'      => $this->is_valid_license(),
-			'notifications'       => $this->get_notifications(),
-			'customizerShortcuts' => $this->get_customizer_shortcuts(),
-			'plugins'             => $this->get_useful_plugins(),
-			'featureData'         => $this->get_free_pro_features(),
-			'showFeedbackNotice'  => $this->should_show_feedback_notice(),
-			'getNeveURL'          => esc_url( 'https://themeisle.com/themes/neve/upgrade/?utm_medium=nevedashboard&utm_source=welcomestartersitescard&utm_campaign=neve&utm_content=gotostartersites' ),
-			'upgradeURL'          => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ) ),
-			'supportURL'          => esc_url( 'https://wordpress.org/support/theme/neve/' ),
-			'docsURL'             => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
-			'codexURL'            => esc_url( 'https://codex.nevewp.com/' ),
-			'strings'             => [
+			'nonce'                   => wp_create_nonce( 'wp_rest' ),
+			'version'                 => 'v' . NEVE_VERSION,
+			'assets'                  => get_template_directory_uri() . '/assets/img/dashboard/',
+			'hasOldPro'               => (bool) ( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.1.11', '<' ) ),
+			'isRTL'                   => is_rtl(),
+			'isValidLicense'          => $this->is_valid_license(),
+			'notifications'           => $this->get_notifications(),
+			'customizerShortcuts'     => $this->get_customizer_shortcuts(),
+			'plugins'                 => $this->get_useful_plugins(),
+			'featureData'             => $this->get_free_pro_features(),
+			'showFeedbackNotice'      => $this->should_show_feedback_notice(),
+			'startSitesgetNeveProURL' => $this->build_neve_pro_upsell_url( 'starter_sites' ),
+			'upgradeURL'              => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ) ),
+			'supportURL'              => esc_url( 'https://wordpress.org/support/theme/neve/' ),
+			'docsURL'                 => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
+			'codexURL'                => esc_url( 'https://codex.nevewp.com/' ),
+			'strings'                 => [
 				'proTabTitle'                   => wp_kses_post( $plugin_name ),
 				/* translators: %s - Theme name */
 				'header'                        => sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme_name ) ),
@@ -227,12 +227,12 @@ class Main {
 					'<a target="_blank" rel="external noreferrer noopener" href="https://store.themeisle.com/">ThemeIsle<span class="components-visually-hidden">' . esc_html__( '(opens in a new tab)', 'neve' ) . '</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="components-external-link__icon css-6wogo1-StyledIcon etxm6pv0" role="img" aria-hidden="true" focusable="false"><path d="M18.2 17c0 .7-.6 1.2-1.2 1.2H7c-.7 0-1.2-.6-1.2-1.2V7c0-.7.6-1.2 1.2-1.2h3.2V4.2H7C5.5 4.2 4.2 5.5 4.2 7v10c0 1.5 1.2 2.8 2.8 2.8h10c1.5 0 2.8-1.2 2.8-2.8v-3.6h-1.5V17zM14.9 3v1.5h3.7l-6.4 6.4 1.1 1.1 6.4-6.4v3.7h1.5V3h-6.3z"></path></svg></a>'
 				),
 			],
-			'changelog'           => $this->cl_handler->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
-			'onboarding'          => [],
-			'hasFileSystem'       => WP_Filesystem(),
-			'hidePluginsTab'      => apply_filters( 'neve_hide_useful_plugins', ! array_key_exists( 'useful_plugins', $old_about_config ) ),
-			'tpcPath'             => defined( 'TIOB_PATH' ) ? TIOB_PATH . 'template-patterns-collection.php' : 'template-patterns-collection/template-patterns-collection.php',
-			'tpcAdminURL'         => admin_url( 'themes.php?page=tiob-starter-sites' ),
+			'changelog'               => $this->cl_handler->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
+			'onboarding'              => [],
+			'hasFileSystem'           => WP_Filesystem(),
+			'hidePluginsTab'          => apply_filters( 'neve_hide_useful_plugins', ! array_key_exists( 'useful_plugins', $old_about_config ) ),
+			'tpcPath'                 => defined( 'TIOB_PATH' ) ? TIOB_PATH . 'template-patterns-collection.php' : 'template-patterns-collection/template-patterns-collection.php',
+			'tpcAdminURL'             => admin_url( 'themes.php?page=tiob-starter-sites' ),
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
@@ -527,6 +527,38 @@ class Main {
 
 		return false;
 
+	}
+
+	/**
+	 * Build neve pro upsell URL.
+	 * 
+	 * @param string $upsell 
+	 * @return string 
+	 */
+	private function build_neve_pro_upsell_url( $upsell ) {
+
+		$utm_medium   = 'nevedashboard';
+		$utm_campaign = 'neve';
+
+		switch ( $upsell ) {
+			case 'starter_sites':
+				$utm_source  = 'welcomestartersitescard';
+				$utm_content = 'gotostartersites';
+				break;
+			
+			default:
+				$utm_source  = 'neveupsell';
+				$utm_content = '';
+				break;
+		}
+
+		$link = "https://themeisle.com/themes/neve/upgrade/?utm_medium=$utm_medium&utm_source=$utm_source&utm_campaign=$utm_campaign";
+		
+		if ( ! empty( $utm_content ) ) {
+			$link = $link . "&utm_content=$utm_content";
+		}
+
+		return esc_url( $link );
 	}
 
 }

@@ -75,7 +75,7 @@ const Start = (props) => {
 							</Button>
 						)}
 						{!neveDash.isValidLicense && (
-							<Button href={neveDash.getNeveURL} isSecondary>
+							<Button href={neveDash.startSitesgetNeveProURL} isSecondary>
 								{__('Get Neve Pro', 'neve')}
 							</Button>
 						)}
