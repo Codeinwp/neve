@@ -394,6 +394,7 @@ class Front_End {
 			'all_selected' => __( 'All items are already selected.', 'neve' ),
 			'page_layout'  => __( 'Page Layout', 'neve' ),
 			'page_title'   => __( 'Page Title', 'neve' ),
+			'upsell_components' => __( 'Upgrade to Neve Pro and unlock all components, including Wish List, Breadcrumbs, Custom Layouts and many more.', 'neve' ),
 		];
 	}
 }
