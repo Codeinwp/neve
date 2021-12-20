@@ -1,5 +1,5 @@
 /* global NeveReactCustomize */
-import { useState } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { InlineSelect, NumberControl } from '@neve-wp/components';
 import PropTypes from 'prop-types';
@@ -9,7 +9,7 @@ const Typeface = (props) => {
 
 	const {
 		label,
-		fontFamily,
+		fontFamilyControl,
 		withTextTransform = true,
 		value = {
 			fontSize: {
@@ -70,6 +70,20 @@ const Typeface = (props) => {
 			desktop: '',
 		},
 	} = props;
+
+	const [fontFamily, setFontFamily] = useState(
+		wp.customize.control(fontFamilyControl)
+			? wp.customize.control(fontFamilyControl).setting()
+			: ''
+	);
+
+	useEffect(() => {
+		window.wp.customize.bind('change', (setting) => {
+			if (setting.id === fontFamilyControl) {
+				setFontFamily(setting.get());
+			}
+		});
+	}, []);
 
 	const renderTextTransform = () => {
 		if (!withTextTransform) {

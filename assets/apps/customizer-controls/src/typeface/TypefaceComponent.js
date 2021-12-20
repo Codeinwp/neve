@@ -1,4 +1,4 @@
-/*eslint camelcase: ["error", {allow: ["text_transform","weight_default","refresh_on_reset","font_family","letter_spacing_default","line_height_units","disable_transform","size_default","size_units","line_height_default"]}]*/
+/*eslint camelcase: ["error", {allow: ["text_transform","weight_default","refresh_on_reset","font_family_control","letter_spacing_default","line_height_units","disable_transform","size_default","size_units","line_height_default"]}]*/
 import PropTypes from 'prop-types';
 import { useState } from '@wordpress/element';
 
@@ -146,7 +146,7 @@ const TypefaceComponent = ({ control }) => {
 		});
 	};
 
-	const { label, font_family, refresh_on_reset } = control.params;
+	const { label, font_family_control, refresh_on_reset } = control.params;
 	const {
 		disable_transform,
 		size_default,
@@ -160,7 +160,7 @@ const TypefaceComponent = ({ control }) => {
 		<Typeface
 			label={label}
 			value={value}
-			fontFamily={font_family}
+			fontFamilyControl={font_family_control}
 			withTextTransform={disable_transform}
 			defaultFS={size_default}
 			fSUnit={size_units}

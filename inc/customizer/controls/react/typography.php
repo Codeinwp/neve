@@ -32,19 +32,19 @@ class Typography extends \WP_Customize_Control {
 	 */
 	public $refresh_on_reset = false;
 	/**
-	 * The font family for which the setting are changed
+	 * The control that holds the font family used by this control
 	 *
 	 * @var string
 	 */
-	public $font_family = '';
+	public $font_family_control = '';
 
 	/**
 	 * Send to JS.
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['input_attrs']      = is_array( $this->input_attrs ) ? wp_json_encode( $this->input_attrs ) : $this->input_attrs;
-		$this->json['refresh_on_reset'] = $this->refresh_on_reset;
-		$this->json['font_family']      = $this->font_family;
+		$this->json['input_attrs']         = is_array( $this->input_attrs ) ? wp_json_encode( $this->input_attrs ) : $this->input_attrs;
+		$this->json['refresh_on_reset']    = $this->refresh_on_reset;
+		$this->json['font_family_control'] = $this->font_family_control;
 	}
 }

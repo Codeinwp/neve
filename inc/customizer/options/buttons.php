@@ -127,7 +127,7 @@ class Buttons extends Base_Customizer {
 						),
 					),
 					'type'                  => 'neve_typeface_control',
-					'font_family'           => get_theme_mod( 'neve_body_font_family', '' ),
+					'font_family_control'   => 'neve_body_font_family',
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => [
