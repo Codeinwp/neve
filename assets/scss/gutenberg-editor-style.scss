@@ -29,7 +29,7 @@
   }
 }
 
-.wp-block-table td.focus-visible {
+.wp-block-table td:focus {
   border-left: $base-border;
   border-right: $base-border;
 }
