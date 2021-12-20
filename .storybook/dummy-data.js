@@ -18,7 +18,8 @@ export const BuildersData = {
 				"section": "yoast_breadcrumbs",
 				"icon": "editor-ul",
 				"previewImage": null,
-				"componentSlug": "hfg-generic-component"
+				"componentSlug": "hfg-generic-component",
+				"fromTheme": false
 			},
 			"button_base_3": {
 				"name": "Button",
@@ -28,7 +29,8 @@ export const BuildersData = {
 				"section": "header_button_3",
 				"icon": "admin-links",
 				"previewImage": null,
-				"componentSlug": "hfg-button"
+				"componentSlug": "hfg-button",
+				"fromTheme": false
 			},
 			"button_base": {
 				"name": "Button",
@@ -38,7 +40,8 @@ export const BuildersData = {
 				"section": "header_button",
 				"icon": "admin-links",
 				"previewImage": null,
-				"componentSlug": "hfg-button"
+				"componentSlug": "hfg-button",
+				"fromTheme": true
 			},
 			"button_base_2": {
 				"name": "Button",
@@ -48,7 +51,8 @@ export const BuildersData = {
 				"section": "header_button_2",
 				"icon": "admin-links",
 				"previewImage": null,
-				"componentSlug": "hfg-button"
+				"componentSlug": "hfg-button",
+				"fromTheme": false
 			},
 			"contact": {
 				"name": "Contact",
@@ -58,7 +62,8 @@ export const BuildersData = {
 				"section": "contact",
 				"icon": "email",
 				"previewImage": null,
-				"componentSlug": "hfg-generic-component"
+				"componentSlug": "hfg-generic-component",
+				"fromTheme": false
 			},
 			"custom_layout_4": {
 				"name": "Custom Layout",
@@ -68,7 +73,8 @@ export const BuildersData = {
 				"section": "custom_layout_4",
 				"icon": "embed-generic",
 				"previewImage": null,
-				"componentSlug": "hfg-custom-layout"
+				"componentSlug": "hfg-custom-layout",
+				"fromTheme": false
 			},
 			"custom_layout_3": {
 				"name": "Custom Layout",
@@ -78,7 +84,8 @@ export const BuildersData = {
 				"section": "custom_layout_3",
 				"icon": "embed-generic",
 				"previewImage": null,
-				"componentSlug": "hfg-custom-layout"
+				"componentSlug": "hfg-custom-layout",
+				"fromTheme": false
 			},
 			"custom_layout_2": {
 				"name": "Custom Layout",
@@ -88,7 +95,8 @@ export const BuildersData = {
 				"section": "custom_layout_2",
 				"icon": "embed-generic",
 				"previewImage": null,
-				"componentSlug": "hfg-custom-layout"
+				"componentSlug": "hfg-custom-layout",
+				"fromTheme": false
 			},
 			"custom_html_2": {
 				"name": "HTML",
@@ -98,7 +106,8 @@ export const BuildersData = {
 				"section": "custom_html_2",
 				"icon": "welcome-write-blog",
 				"previewImage": null,
-				"componentSlug": "hfg-html"
+				"componentSlug": "hfg-html",
+				"fromTheme": false
 			},
 			"custom_html_3": {
 				"name": "HTML",
@@ -108,7 +117,8 @@ export const BuildersData = {
 				"section": "custom_html_3",
 				"icon": "welcome-write-blog",
 				"previewImage": null,
-				"componentSlug": "hfg-html"
+				"componentSlug": "hfg-html",
+				"fromTheme": false
 			},
 			"custom_html": {
 				"name": "HTML",
@@ -118,7 +128,8 @@ export const BuildersData = {
 				"section": "custom_html",
 				"icon": "welcome-write-blog",
 				"previewImage": null,
-				"componentSlug": "hfg-html"
+				"componentSlug": "hfg-html",
+				"fromTheme": true
 			},
 			"logo_2": {
 				"name": "Logo & Site Identity",
@@ -128,7 +139,8 @@ export const BuildersData = {
 				"section": "title_tagline_2",
 				"icon": "admin-appearance",
 				"previewImage": "http://localhost:8080/wp-content/themes/neve/header-footer-grid/assets/images/customizer/component-site-logo.jpg",
-				"componentSlug": "hfg-logo"
+				"componentSlug": "hfg-logo",
+				"fromTheme": false
 			},
 			"logo": {
 				"name": "Logo & Site Identity",
@@ -138,7 +150,8 @@ export const BuildersData = {
 				"section": "title_tagline",
 				"icon": "admin-appearance",
 				"previewImage": "http://localhost:8080/wp-content/themes/neve/header-footer-grid/assets/images/customizer/component-site-logo.jpg",
-				"componentSlug": "hfg-logo"
+				"componentSlug": "hfg-logo",
+				"fromTheme": true
 			},
 			"nav-icon": {
 				"name": "Menu Icon",
@@ -148,7 +161,8 @@ export const BuildersData = {
 				"section": "header_menu_icon",
 				"icon": "menu",
 				"previewImage": null,
-				"componentSlug": "nav-icon"
+				"componentSlug": "nav-icon",
+				"fromTheme": true
 			},
 			"nav-icon_2": {
 				"name": "Menu Icon",
@@ -158,7 +172,8 @@ export const BuildersData = {
 				"section": "header_menu_icon_2",
 				"icon": "menu",
 				"previewImage": null,
-				"componentSlug": "nav-icon"
+				"componentSlug": "nav-icon",
+				"fromTheme": false
 			},
 			"primary-menu_2": {
 				"name": "Primary Menu",
@@ -168,7 +183,8 @@ export const BuildersData = {
 				"section": "header_menu_primary_2",
 				"icon": "tagcloud",
 				"previewImage": null,
-				"componentSlug": "hfg-primary-menu"
+				"componentSlug": "hfg-primary-menu",
+				"fromTheme": false
 			},
 			"primary-menu": {
 				"name": "Primary Menu",
@@ -178,7 +194,8 @@ export const BuildersData = {
 				"section": "header_menu_primary",
 				"icon": "tagcloud",
 				"previewImage": null,
-				"componentSlug": "hfg-primary-menu"
+				"componentSlug": "hfg-primary-menu",
+				"fromTheme": true
 			},
 			"header_search_2": {
 				"name": "Search Form",
@@ -188,7 +205,8 @@ export const BuildersData = {
 				"section": "header_search_2",
 				"icon": "code-standards",
 				"previewImage": null,
-				"componentSlug": "hfg-search-form"
+				"componentSlug": "hfg-search-form",
+				"fromTheme": false
 			},
 			"header_search": {
 				"name": "Search Form",
@@ -198,7 +216,8 @@ export const BuildersData = {
 				"section": "header_search",
 				"icon": "code-standards",
 				"previewImage": null,
-				"componentSlug": "hfg-search-form"
+				"componentSlug": "hfg-search-form",
+				"fromTheme": true
 			},
 			"header_search_responsive": {
 				"name": "Search Icon",
@@ -208,7 +227,8 @@ export const BuildersData = {
 				"section": "header_search_responsive",
 				"icon": "search",
 				"previewImage": null,
-				"componentSlug": "hfg-generic-component"
+				"componentSlug": "hfg-generic-component",
+				"fromTheme": true
 			},
 			"secondary-menu": {
 				"name": "Secondary Menu",
@@ -218,7 +238,8 @@ export const BuildersData = {
 				"section": "secondary_menu_primary",
 				"icon": "tagcloud",
 				"previewImage": null,
-				"componentSlug": "hfg-generic-component"
+				"componentSlug": "hfg-generic-component",
+				"fromTheme": true
 			},
 			"social_icons": {
 				"name": "Social Icons",
@@ -228,7 +249,8 @@ export const BuildersData = {
 				"section": "social_icons",
 				"icon": "share",
 				"previewImage": null,
-				"componentSlug": "hfg-generic-component"
+				"componentSlug": "hfg-generic-component",
+				"fromTheme": false
 			}
 		},
 		"rows": {
@@ -248,7 +270,13 @@ export const BuildersData = {
 				"title": "Mobile menu content",
 				"description": "Design your Header by dragging, dropping and resizing all the elements in real-time. <br/><a target=\"_blank\" href=\"https://docs.themeisle.com/article/946-neve-doc#header\">Read full documentation</a>."
 			}
-		}
+		},
+		'upsells': [
+			{
+				'icon': 'admin-links',
+				'name': 'Upsell Component'
+			}
+		]
 	},
 	"footer": {
 		"id": "hfg_footer_layout",
@@ -268,7 +296,8 @@ export const BuildersData = {
 				"section": "footer_copyright",
 				"icon": "nametag",
 				"previewImage": null,
-				"componentSlug": "hfg-generic-component"
+				"componentSlug": "hfg-generic-component",
+				"fromTheme": true
 			},
 			"custom_layout_5": {
 				"name": "Custom Layout",
@@ -278,7 +307,8 @@ export const BuildersData = {
 				"section": "custom_layout_5",
 				"icon": "embed-generic",
 				"previewImage": null,
-				"componentSlug": "hfg-custom-layout"
+				"componentSlug": "hfg-custom-layout",
+				"fromTheme": false
 			},
 			"custom_layout_6": {
 				"name": "Custom Layout",
@@ -288,7 +318,8 @@ export const BuildersData = {
 				"section": "custom_layout_6",
 				"icon": "embed-generic",
 				"previewImage": null,
-				"componentSlug": "hfg-custom-layout"
+				"componentSlug": "hfg-custom-layout",
+				"fromTheme": false
 			},
 			"custom_layout_7": {
 				"name": "Custom Layout",
@@ -298,7 +329,8 @@ export const BuildersData = {
 				"section": "custom_layout_7",
 				"icon": "embed-generic",
 				"previewImage": null,
-				"componentSlug": "hfg-custom-layout"
+				"componentSlug": "hfg-custom-layout",
+				"fromTheme": false
 			},
 			"footer-four-widgets": {
 				"name": "Footer Four",
@@ -308,7 +340,8 @@ export const BuildersData = {
 				"section": "sidebar-widgets-footer-four-widgets",
 				"icon": "welcome-widgets-menus",
 				"previewImage": null,
-				"componentSlug": "hfg-generic-component"
+				"componentSlug": "hfg-generic-component",
+				"fromTheme": true
 			},
 			"footer-menu": {
 				"name": "Footer Menu",
@@ -318,7 +351,8 @@ export const BuildersData = {
 				"section": "footer_menu_primary",
 				"icon": "tagcloud",
 				"previewImage": null,
-				"componentSlug": "hfg-generic-component"
+				"componentSlug": "hfg-generic-component",
+				"fromTheme": true
 			},
 			"footer-one-widgets": {
 				"name": "Footer One",
@@ -328,7 +362,8 @@ export const BuildersData = {
 				"section": "sidebar-widgets-footer-one-widgets",
 				"icon": "welcome-widgets-menus",
 				"previewImage": null,
-				"componentSlug": "hfg-generic-component"
+				"componentSlug": "hfg-generic-component",
+				"fromTheme": true
 			},
 			"footer-three-widgets": {
 				"name": "Footer Three",
@@ -338,7 +373,8 @@ export const BuildersData = {
 				"section": "sidebar-widgets-footer-three-widgets",
 				"icon": "welcome-widgets-menus",
 				"previewImage": null,
-				"componentSlug": "hfg-generic-component"
+				"componentSlug": "hfg-generic-component",
+				"fromTheme": true
 			},
 			"footer-two-widgets": {
 				"name": "Footer Two",
@@ -348,7 +384,8 @@ export const BuildersData = {
 				"section": "sidebar-widgets-footer-two-widgets",
 				"icon": "welcome-widgets-menus",
 				"previewImage": null,
-				"componentSlug": "hfg-generic-component"
+				"componentSlug": "hfg-generic-component",
+				"fromTheme": true
 			},
 			"social_icons_2": {
 				"name": "Social Icons",
@@ -358,7 +395,8 @@ export const BuildersData = {
 				"section": "social_icons_2",
 				"icon": "share",
 				"previewImage": null,
-				"componentSlug": "hfg-generic-component"
+				"componentSlug": "hfg-generic-component",
+				"fromTheme": false
 			}
 		},
 		"rows": {

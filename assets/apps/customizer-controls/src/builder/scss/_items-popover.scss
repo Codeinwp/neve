@@ -1,69 +1,124 @@
 .items-popover {
-  box-shadow: 0 3px 30px rgba(25, 30, 35, .1);
-  border-radius: 4px;
-  z-index: 100000;
+	box-shadow: 0 3px 30px rgba(25, 30, 35, .1);
+	border-radius: 4px;
+	z-index: 100000;
 
-  .popover-header {
-	display: flex;
-	padding: 5px 10px;
-	position: relative;
-	border-bottom: 1px solid #e1e4e7;
-
-	input {
-	  appearance: none;
-	  width: 100%;
-	  height: 35px;
-	  border: 1px solid #8d96a0;
-	  outline: none;
-	  box-shadow: none;
-	  font-size: 13px;
-	  margin: 16px;
-	  padding: 11px 16px 11px 30px;
-	  border-radius: 4px;
+	.no-components {
+		text-align: center;
+		padding: 30px;
 	}
 
-	> svg {
-	  position: absolute;
-	  fill: #8d96a0;
-	  left: 30px;
-	  top: 50%;
-	  transform: translateY(-50%);
-	}
-  }
+	.popover-header {
+		display: flex;
+		padding: 5px 10px;
+		position: relative;
+		border-bottom: 1px solid #e1e4e7;
 
-  .items-popover-content {
-	width: 400px;
-	padding: 10px;
-	overflow-y: auto;
-	max-height: 375px;
-	height: 375px;
-	background-color: #fff;
-  }
+		input {
+			appearance: none;
+			width: 100%;
+			height: 35px;
+			border: 1px solid #8d96a0;
+			outline: none;
+			box-shadow: none;
+			font-size: 13px;
+			margin: 16px;
+			padding: 11px 16px 11px 30px;
+			border-radius: 4px;
+		}
 
-  .items-popover-list {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 10px;
-  }
+		> svg {
+			position: absolute;
+			fill: #8d96a0;
+			left: 30px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
 
-  .popover-item {
-	width: 100%;
-	height: auto;
-	cursor: pointer;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	box-sizing: border-box;
-	padding: 7px;
-	color: #545d66;
-	line-height: 1.4em;
-	font-size: 13px;
-	&:hover {
-	  background: #f3f3f5;
+	.items-popover-content {
+		width: 400px;
+		padding: 10px 15px;
+		overflow-y: auto;
+		max-height: 375px;
+		background-color: #fff;
+		display: flex;
+		flex-direction: column;
 	}
-	.dashicon {
-	  margin: 0 0 10px;
+
+	.items-popover-list {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-row-gap: 10px;
+		grid-column-gap: 15px;
 	}
-  }
+
+	.popover-item {
+		width: 100%;
+		height: auto;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center !important;
+		box-sizing: border-box;
+		padding: 7px 3px;
+		color: #545d66;
+		line-height: 1.4em;
+		font-size: 13px;
+		border: 1px solid #efefef;
+		box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+
+		&:hover {
+			background: #f3f3f5;
+		}
+
+		.dashicon {
+			margin: 0 0 10px !important;
+		}
+	}
+
+	.ext.popover-item {
+		position: relative;
+		opacity: .45;
+		cursor: not-allowed;
+	}
+
+	.nv-lock {
+		color: $wp-blue;
+		top: 5px;
+		right: 5px;
+		position: absolute;
+		width: unset;
+		height: unset;
+		font-size: 12px;
+
+		.dashicons {
+			margin: 0 !important;
+			width: 14px;
+			height: 14px;
+			font-size: 13px;
+		}
+	}
+
+	.upsell-wrap {
+		font-size: 13px;
+		display: grid;
+		margin-top: 10px;
+
+		.count {
+			margin: 0 auto;
+			color: #BABABA;
+		}
+
+		.upsell-btn {
+			margin-top: 10px;
+			line-height: 1;
+			font-size: 13px;
+			border-radius: 4px;
+			justify-content: center;
+			height: auto;
+			min-height: 30px;
+		}
+	}
 }

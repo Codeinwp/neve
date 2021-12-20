@@ -61,6 +61,14 @@
 	}
 }
 
+.hiding-header-menu-sidebar {
+
+	.close-sidebar-panel {
+		transition: 0.3s ease;
+		opacity: 0;
+	}
+}
+
 .menu_sidebar_slide_left {
 
 	.header-menu-sidebar {
@@ -97,7 +105,7 @@
 
 .menu_sidebar_dropdown {
 
-	.header-menu-sidebar-overlay {
+	.hfg-ov {
 		display: none;
 	}
 
@@ -107,10 +115,6 @@
 		top: unset;
 		width: 100%;
 		display: block;
-
-		.close-sidebar-panel {
-			display: none;
-		}
 	}
 
 	.header-menu-sidebar-inner {
@@ -198,7 +202,7 @@
 }
 
 //<editor-fold desc="Sidebar overlay">
-.header-menu-sidebar-overlay {
+.hfg-ov {
 	top: 0;
 	bottom: 0;
 	right: 0;

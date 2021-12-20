@@ -19,6 +19,20 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.1.1](https://github.com/Codeinwp/neve/compare/v3.1.0...v3.1.1) (2021-12-09)
+
+- [Fix] Remove text-decoration on links that are not part of the page content
+- [Fix] Added value attribute for close button on menu and alt attribute on the search form
+- [Fix] Fixes the issue with the clear button inside WooCommerce widgets filter dropdowns
+- [Fix] Move autofocus to close button inside mobile nav menu to prevent the blue outline
+- [Fix] Sidebar on 404 page not working correctly
+- [Fix] The reset button on the customizer range and number controls
+- Add information about components in pro in header's popup
+- Update Google Fonts
+
+
+
+
 #### [Version 3.1.0](https://github.com/Codeinwp/neve/compare/v3.0.11...v3.1.0) (2021-11-24)
 
 - [Feat] Global options for page - [Learn more](https://docs.themeisle.com/article/1491-neve-page-options)

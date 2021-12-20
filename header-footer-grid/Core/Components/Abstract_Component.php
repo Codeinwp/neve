@@ -379,6 +379,22 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
+	 * Method to check that the component is active.
+	 *
+	 * @return bool
+	 */
+	protected function is_component_active() {
+		$builders = Main::get_instance()->get_builders();
+		foreach ( $builders as $builder ) {
+			if ( $builder->is_component_active( $this->get_id() ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Method to set protected properties for class.
 	 *
 	 * @param string $key The property key name.
@@ -426,6 +442,7 @@ abstract class Abstract_Component implements Component {
 			'icon'          => $this->icon,
 			'previewImage'  => $this->preview_image,
 			'componentSlug' => $this->component_slug,
+			'fromTheme'     => $this->is_from_theme(),
 		);
 	}
 
@@ -1068,5 +1085,16 @@ abstract class Abstract_Component implements Component {
 				'conditional_header'    => $this->get_builder_id() === 'header',
 			]
 		);
+	}
+
+	/**
+	 * Is from theme
+	 *
+	 * @return boolean
+	 */
+	private function is_from_theme() {
+		$reflection = new \ReflectionClass( $this );
+
+		return strpos( $reflection->name, 'HFG\\Core\\Components\\' ) !== false;
 	}
 }
