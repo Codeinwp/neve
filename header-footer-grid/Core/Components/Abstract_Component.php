@@ -379,6 +379,22 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
+	 * Method to check that the component is active.
+	 *
+	 * @return bool
+	 */
+	protected function is_component_active() {
+		$builders = Main::get_instance()->get_builders();
+		foreach ( $builders as $builder ) {
+			if ( $builder->is_component_active( $this->get_id() ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Method to set protected properties for class.
 	 *
 	 * @param string $key The property key name.
