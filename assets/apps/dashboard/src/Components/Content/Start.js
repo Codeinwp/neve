@@ -56,23 +56,35 @@ const Start = (props) => {
 					title={__('Starter Sites', 'neve')}
 					description={neveDash.strings.starterSitesCardDescription}
 				>
-					{tabs['starter-sites'] ? (
-						<Button
-							isPrimary
-							onClick={() => {
-								setTab('starter-sites');
-							}}
-						>
-							{__('Go to Starter Sites', 'neve')}
-						</Button>
-					) : (
-						<Button href={tpcAdminURL} isPrimary>
-							{__('Go to Starter Sites', 'neve')}
-						</Button>
+					{!neveDash.isValidLicense && (
+						<p>{neveDash.strings.starterSitesCardUpsellMessage}</p>
 					)}
+					<div className="button-group">
+						{tabs['starter-sites'] ? (
+							<Button
+								isPrimary
+								onClick={() => {
+									setTab('starter-sites');
+								}}
+							>
+								{__('Go to Starter Sites', 'neve')}
+							</Button>
+						) : (
+							<Button href={tpcAdminURL} isPrimary>
+								{__('Go to Starter Sites', 'neve')}
+							</Button>
+						)}
+						{!neveDash.isValidLicense && (
+							<Button
+								href={neveDash.startSitesgetNeveProURL}
+								isSecondary
+							>
+								{__('Get Neve Pro', 'neve')}
+							</Button>
+						)}
+					</div>
 				</Card>
 			)}
-
 			<Card
 				classNames="customizer-quick-links"
 				icon={neveDash.assets + 'compass.svg'}
