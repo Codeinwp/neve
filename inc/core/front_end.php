@@ -393,6 +393,18 @@ class Front_End {
 			'add_items'         => __( 'Add items by clicking the ones below.', 'neve' ),
 			'all_selected'      => __( 'All items are already selected.', 'neve' ),
 			'upsell_components' => __( 'Upgrade to Neve Pro and unlock all components, including Wish List, Breadcrumbs, Custom Layouts and many more.', 'neve' ),
+			'header_booster'    => esc_html__( 'Header Booster', 'neve' ),
+			'blog_booster'      => esc_html__( 'Blog Booster', 'neve' ),
+			'woo_booster'       => esc_html__( 'WooCommerce Booster', 'neve' ),
+			'custom_layouts'    => esc_html__( 'Custom Layouts', 'neve' ),
+			'white_label'       => esc_html__( 'White Label module', 'neve' ),
+			'scroll_to_top'     => esc_html__( 'Scroll to Top module', 'neve' ),
+			'elementor_booster' => esc_html__( 'Elementor Booster', 'neve' ),
+			'ext_h_description' => esc_html__( 'Extend your header with more components and settings, build sticky/transparent headers or display them conditionally.', 'neve' ),
+			'ctm_h_description' => esc_html__( 'Easily create custom headers and footers as well as adding your own custom code or content in any of the hooks locations.', 'neve' ),
+			'elem_description'  => esc_html__( 'Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click.', 'neve' ),
+			'get_pro_cta'       => esc_html__( 'Get the PRO version!', 'neve' ),
+			'opens_new_tab_des' => esc_html__( '(opens in a new tab)', 'neve' ),
 		];
 	}
 }
