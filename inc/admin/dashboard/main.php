@@ -447,7 +447,7 @@ class Main {
 				'docsLink'    => $this->get_doc_link( 'Scroll To Top', 'https://docs.themeisle.com/article/1060-scroll-to-top-module-documentation' ),
 			],
 			[
-				'title'          => __( 'See all Pro features', 'neve' ),
+				'title'          => __( 'See all PRO features', 'neve' ),
 				'presentational' => true,
 			],
 		];
