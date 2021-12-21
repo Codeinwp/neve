@@ -7,12 +7,16 @@
 
 namespace Neve\Admin\Dashboard;
 
+use Neve\Core\Theme_Info;
 /**
  * Class Main
  *
  * @package Neve\Admin\Dashboard
  */
 class Main {
+
+	use Theme_Info;
+
 	/**
 	 * Changelog Handler.
 	 *
@@ -188,7 +192,7 @@ class Main {
 			'assets'                  => get_template_directory_uri() . '/assets/img/dashboard/',
 			'hasOldPro'               => (bool) ( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.1.11', '<' ) ),
 			'isRTL'                   => is_rtl(),
-			'isValidLicense'          => $this->is_valid_license(),
+			'isValidLicense'          => $this->has_valid_addons(),
 			'notifications'           => $this->get_notifications(),
 			'customizerShortcuts'     => $this->get_customizer_shortcuts(),
 			'plugins'                 => $this->get_useful_plugins(),
@@ -515,23 +519,6 @@ class Main {
 			}
 		}
 		return false;
-	}
-
-	/**
-	 * Check if the Neve Pro license is valid.
-	 *
-	 * @return bool 
-	 */
-	private function is_valid_license() {
-
-		$nv_pro_data = get_option( 'neve_pro_addon_license_data' ); 
-		
-		if ( is_object( $nv_pro_data ) && $nv_pro_data->license === 'valid' ) {
-			return true;
-		}
-
-		return false;
-
 	}
 
 }
