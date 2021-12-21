@@ -1,7 +1,7 @@
 /* global neveDash */
 import FeatureRow from '../FeatureRow';
 
-import {__} from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 
 const Pro = ({ features, url }) => {
