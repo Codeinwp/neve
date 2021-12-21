@@ -134,6 +134,7 @@ li#customize-control-neve_checkout_page_layout .upsell-btn {
     box-shadow: rgba(91, 91, 92, 0.5) 0px 8px 30px 0px;
     white-space: nowrap;
     display:none;
+    color: #0073AA;
 }
 
 .upsell-btn .dashicons {
