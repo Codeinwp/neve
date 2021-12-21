@@ -1,6 +1,6 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { Button, Dashicon } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 import { WPCustomizeControl } from '../@types/customizer-control';
 
 type Props = {
@@ -23,7 +23,6 @@ const Upsells: React.FC<Props> = ({ control }) => {
 							href={url}
 							isPrimary
 						>
-							<Dashicon icon="external" />
 							{__('Learn More', 'neve')}
 							<span className="components-visually-hidden">
 								{__('(opens in a new tab)', 'neve')}
