@@ -7,9 +7,7 @@
 
 namespace Neve\Customizer\Options;
 
-use Neve\Admin\Dashboard\Upsell_Features;
 use Neve\Customizer\Base_Customizer;
-use Neve\Customizer\Controls\React\Instructions_Section;
 use Neve\Customizer\Types\Section;
 use Neve\Customizer\Types\Control;
 
@@ -21,6 +19,13 @@ use Neve\Customizer\Types\Control;
 class Upsells extends Base_Customizer {
 
 	/**
+	 * Holds the main upsell url
+	 *
+	 * @var string
+	 */
+	private $upsell_url = '';
+
+	/**
 	 * Init function
 	 *
 	 * @return bool|void
@@ -29,6 +34,8 @@ class Upsells extends Base_Customizer {
 		if ( defined( 'NEVE_PRO_VERSION' ) ) {
 			return false;
 		}
+
+		$this->upsell_url = esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_source=learnmorebtn&utm_campaign=neve' ) );
 
 		parent::init();
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'localize_upsell' ) );
@@ -65,26 +72,16 @@ class Upsells extends Base_Customizer {
 	 * Add upsells section
 	 */
 	private function section_upsells() {
+
 		$this->add_section(
 			new Section(
 				'neve_free_pro_upsell',
 				array(
 					'priority' => -100,
-					'title'    => esc_html__( 'View PRO Features', 'neve' ),
-					'features' => ( new Upsell_Features() )->get_upsell_features(),
-					'url'      => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ) ),
+					'title'    => esc_html__( 'Neve PRO Features', 'neve' ),
+					'url'      => $this->upsell_url,
 				),
 				'Neve\Customizer\Controls\React\Upsell_Section'
-			)
-		);
-
-		$this->add_section(
-			new Section(
-				'neve_upsells_section',
-				array(
-					'priority' => 10,
-					'title'    => esc_html__( 'View PRO Features', 'neve' ),
-				)
 			)
 		);
 	}
@@ -96,31 +93,15 @@ class Upsells extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_upsell_main_control',
-				array(
-					'sanitize_callback' => 'sanitize_text_field',
-				),
-				array(
-					'section'            => 'neve_free_pro_upsell',
-					'priority'           => 100,
-					'options'            => array(
-						esc_html__( 'Header Booster', 'neve' ),
-						esc_html__( 'Blog Booster', 'neve' ),
-						esc_html__( 'WooCommerce Booster', 'neve' ),
-						esc_html__( 'Custom Layouts', 'neve' ),
-						esc_html__( 'White Label module', 'neve' ),
-						esc_html__( 'Scroll to Top module', 'neve' ),
-						esc_html__( 'Elementor Booster', 'neve' ),
-					),
-					'explained_features' => array(
-						esc_html__( 'Extend your header with more components and settings, build sticky/transparent headers or display them conditionally.', 'neve' ),
-						esc_html__( 'Easily create custom headers and footers as well as adding your own custom code or content in any of the hooks locations.', 'neve' ),
-						esc_html__( 'Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click.', 'neve' ),
-					),
-					'button_url'         => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_source=getpro&utm_campaign=neve' ) ),
-					'button_text'        => esc_html__( 'Get the PRO version!', 'neve' ),
-					'screen_reader'      => esc_html__( '(opens in a new tab)', 'neve' ),
-				),
-				'Neve\Customizer\Controls\Upsell_Control'
+				[ 'sanitize_callback' => 'sanitize_text_field' ],
+				[
+					'text'        => esc_html__( 'Neve PRO Features', 'neve' ),
+					'button_text' => esc_html__( 'Learn More', 'neve' ),
+					'section'     => 'neve_free_pro_upsell',
+					'priority'    => PHP_INT_MIN,
+					'link'        => $this->upsell_url,
+				],
+				'Neve\Customizer\Controls\Simple_Upsell'
 			)
 		);
 

@@ -26,13 +26,6 @@ class Upsell_Section extends \WP_Customize_Section {
 	public $type = 'neve_upsell';
 
 	/**
-	 * Options passed to control.
-	 *
-	 * @var array
-	 */
-	public $features = [];
-
-	/**
 	 * Upgrade URL.
 	 *
 	 * @var string
@@ -46,9 +39,8 @@ class Upsell_Section extends \WP_Customize_Section {
 	 * @since 4.1.0
 	 */
 	public function json() {
-		$json             = parent::json();
-		$json['features'] = $this->features;
-		$json['url']      = $this->url;
+		$json        = parent::json();
+		$json['url'] = $this->url;
 		return $json;
 	}
 

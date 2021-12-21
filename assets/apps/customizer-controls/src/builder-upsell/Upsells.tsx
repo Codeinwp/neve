@@ -1,49 +1,34 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { Button, Modal } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { Button, Dashicon } from '@wordpress/components';
 import { WPCustomizeControl } from '../@types/customizer-control';
-// @ts-ignore
-import FreePro from '../../../dashboard/src/Components/Content/FreePro';
 
 type Props = {
 	control: WPCustomizeControl;
 };
 
 const Upsells: React.FC<Props> = ({ control }) => {
-	const { params, id } = control;
-	const { features, url } = params;
-	const [isOpen, setOpen] = useState(false);
-	const openModal = () => setOpen(true);
-	const closeModal = () => setOpen(false);
+	const { params } = control;
+	const { title, url } = params;
 
 	return (
 		<div className="upsell-inner">
-			{params.title && (
+			{title && (
 				<div className="neve-customizer-heading">
 					<span className="accordion-heading">{params.title}</span>
-					<Button
-						className="button button-primary"
-						onClick={openModal}
-					>
-						{__('Learn More', 'neve')}
-					</Button>
-					{isOpen && (
-						<Modal
-							style={{ width: '50%' }}
-							title={params.title}
-							onRequestClose={closeModal}
+					{url && (
+						<Button
+							target="_blank"
+							rel="external noreferrer noopener"
+							href={url}
+							isPrimary
 						>
-							<div id="neve-upsell">
-								<div className="tab-content free-pro">
-									<FreePro
-										style={{ width: '100%' }}
-										features={features}
-										url={url}
-									/>
-								</div>
-							</div>
-						</Modal>
+							<Dashicon icon="external" />
+							{__('Learn More', 'neve')}
+							<span className="components-visually-hidden">
+								{__('(opens in a new tab)', 'neve')}
+							</span>
+						</Button>
 					)}
 				</div>
 			)}
