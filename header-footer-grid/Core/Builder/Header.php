@@ -14,6 +14,7 @@ namespace HFG\Core\Builder;
 use HFG\Core\Customizer\Header_Presets;
 use HFG\Main;
 use Neve\Core\Styles\Dynamic_Selector;
+use Neve\Core\Theme_Info;
 use Neve\Customizer\Controls\React\Presets_Selector;
 use HFG\Core\Settings\Manager as SettingsManager;
 use WP_Customize_Control;
@@ -25,6 +26,7 @@ use WP_Customize_Manager;
  * @package HFG\Core\Builder
  */
 class Header extends Abstract_Builder {
+	use Theme_Info;
 
 	/**
 	 * Builder name.
@@ -542,7 +544,7 @@ class Header extends Abstract_Builder {
 	 * @return array
 	 */
 	protected function get_upsell_components() {
-		if ( defined( 'NEVE_PRO_VERSION' ) ) {
+		if ( $this->has_valid_addons() ) {
 			return [];
 		}
 

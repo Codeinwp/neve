@@ -7,6 +7,7 @@
 
 namespace Neve\Customizer\Options;
 
+use Neve\Core\Theme_Info;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Section;
 use Neve\Customizer\Types\Control;
@@ -18,14 +19,16 @@ use Neve\Customizer\Types\Control;
  */
 class Upsells extends Base_Customizer {
 
+	use Theme_Info;
+
 	/**
 	 * Init function
 	 *
 	 * @return bool|void
 	 */
 	public function init() {
-		if ( defined( 'NEVE_PRO_VERSION' ) ) {
-			return false;
+		if ( $this->has_valid_addons() ) {
+			return;
 		}
 
 		parent::init();
