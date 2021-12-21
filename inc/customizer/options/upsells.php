@@ -7,7 +7,9 @@
 
 namespace Neve\Customizer\Options;
 
+use Neve\Admin\Dashboard\Upsell_Features;
 use Neve\Customizer\Base_Customizer;
+use Neve\Customizer\Controls\React\Instructions_Section;
 use Neve\Customizer\Types\Section;
 use Neve\Customizer\Types\Control;
 
@@ -65,6 +67,19 @@ class Upsells extends Base_Customizer {
 	private function section_upsells() {
 		$this->add_section(
 			new Section(
+				'neve_free_pro_upsell',
+				array(
+					'priority' => -100,
+					'title'    => esc_html__( 'View PRO Features', 'neve' ),
+					'features' => ( new Upsell_Features() )->get_upsell_features(),
+					'url'      => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ) ),
+				),
+				'Neve\Customizer\Controls\React\Upsell_Section'
+			)
+		);
+
+		$this->add_section(
+			new Section(
 				'neve_upsells_section',
 				array(
 					'priority' => 10,
@@ -85,7 +100,7 @@ class Upsells extends Base_Customizer {
 					'sanitize_callback' => 'sanitize_text_field',
 				),
 				array(
-					'section'            => 'neve_upsells_section',
+					'section'            => 'neve_free_pro_upsell',
 					'priority'           => 100,
 					'options'            => array(
 						esc_html__( 'Header Booster', 'neve' ),

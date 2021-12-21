@@ -1,0 +1,32 @@
+@import "./../../../dashboard/src/scss/vars";
+#neve-upsell {
+  width: 100%;
+  padding-top: 2px;
+
+  @import "./../../../dashboard/src/scss/content/free-pro";
+
+  .tab-content.free-pro .card.table .table-head th {
+	padding: 25px 25px;
+  }
+
+  .tab-content.free-pro .upsell.card p {
+	margin-right: 25px;
+  }
+
+  .tab-content.free-pro .card.table, .tab-content.free-pro .upsell.card {
+	max-width: 100%;
+  }
+}
+
+.control-section.neve-upsell {
+	.neve-customizer-heading {
+	  max-width: 313px;
+	  padding-left: 25px;
+	  position: relative;
+
+	  .components-button {
+		position: absolute;
+		right: 13px;
+	  }
+	}
+}

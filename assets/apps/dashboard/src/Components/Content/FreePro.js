@@ -1,11 +1,15 @@
 /* global neveDash */
 import FeatureRow from '../FeatureRow';
 
-import { __ } from '@wordpress/i18n';
+import {__} from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 
-const Pro = () => {
-	const { featureData } = neveDash;
+const Pro = ({ features, url }) => {
+	if (typeof neveDash !== 'undefined') {
+		const { featureData, upgradeURL } = neveDash;
+		features = featureData;
+		url = upgradeURL;
+	}
 	return (
 		<div className="col">
 			<table className="card table">
@@ -15,7 +19,7 @@ const Pro = () => {
 						<th className="indicator">Neve</th>
 						<th className="indicator">Neve Pro</th>
 					</tr>
-					{featureData.map((item, index) => (
+					{features.map((item, index) => (
 						<FeatureRow key={index} item={item} />
 					))}
 				</tbody>
@@ -31,7 +35,7 @@ const Pro = () => {
 				<Button
 					target="_blank"
 					rel="external noreferrer noopener"
-					href={neveDash.upgradeURL}
+					href={url}
 					isPrimary
 				>
 					{__('Get Neve Pro Now', 'neve')}
