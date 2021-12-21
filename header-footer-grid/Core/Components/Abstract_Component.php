@@ -933,13 +933,14 @@ abstract class Abstract_Component implements Component {
 					'default'               => $this->typography_default,
 					'sanitize_callback'     => 'neve_sanitize_typography_control',
 					'options'               => [
-						'input_attrs' => array(
+						'input_attrs'         => array(
 							'size_units'             => [ 'em', 'px' ],
 							'weight_default'         => $this->typography_default['fontWeight'],
 							'size_default'           => $this->typography_default['fontSize'],
 							'line_height_default'    => $this->typography_default['lineHeight'],
 							'letter_spacing_default' => $this->typography_default['letterSpacing'],
 						),
+						'font_family_control' => $this->get_id() . '_' . self::FONT_FAMILY_ID,
 					],
 				]
 			);
