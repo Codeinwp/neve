@@ -147,6 +147,10 @@ jobs:
           - machines: 1
             specs: "useful-plugins"
             envs: "useful-plugins"
+          ## Mega menu specs needs just one machine
+          - machines: 1
+            specs: "mega-menu"
+            envs: "mega-menu"
           ## 2 machines for classic editor tests
           - machines: 1
             specs: "editor/classic"
