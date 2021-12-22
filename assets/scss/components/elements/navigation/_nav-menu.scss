@@ -43,7 +43,7 @@
 		display: block;
 		position: relative;
 
-		&.current-menu-item > a {
+		&.current-menu-item > a:not([href*="#"]) {
 			color: var(--activeColor);
 		}
 
