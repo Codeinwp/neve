@@ -51,6 +51,13 @@
   .card-description {
     margin: 15px 0 25px;
   }
+
+  .card-button-group{
+    .components-button.is-secondary{
+      margin-top: 10px;
+    }
+  }
+
 }
 
 @mixin card--laptop() {
