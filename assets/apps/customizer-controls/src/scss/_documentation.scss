@@ -1,0 +1,24 @@
+.control-section.neve-documentation {
+  display: block !important;
+  margin-bottom: 0;
+  .documentation-inner {
+	display: flex;
+  }
+  .neve-customizer-heading {
+	padding: 7px 10px 7px 14px;
+	display: flex;
+	flex-grow: 1;
+	margin: auto;
+	letter-spacing: initial;
+	font-size: 14px;
+	font-weight: 600;
+
+	&:hover, &:focus-within {
+	  cursor: default;
+	}
+
+	.components-button {
+	  margin-left: auto;
+	}
+  }
+}

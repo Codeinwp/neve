@@ -11,8 +11,10 @@
 namespace Neve\Customizer\Options;
 
 use Neve\Core\Settings\Mods;
+use Neve\Customizer\Controls\React\Documentation_Section;
 use Neve\Customizer\Controls\React\Instructions_Section;
 use Neve\Customizer\Base_Customizer;
+use Neve\Customizer\Controls\Simple_Upsell;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Panel;
 use Neve\Customizer\Types\Section;
@@ -100,6 +102,22 @@ class Main extends Base_Customizer {
 						),
 					),
 				)
+			)
+		);
+
+		/**
+		 * Documentation Section Main
+		 */
+		$docs_url = 'https://docs.themeisle.com/article/946-neve-doc';
+		$this->wpc->add_section(
+			new Documentation_Section(
+				$this->wpc,
+				'neve_documentation',
+				[
+					'priority' => PHP_INT_MAX,
+					'title'    => esc_html__( 'Neve', 'neve' ),
+					'url'      => $docs_url,
+				]
 			)
 		);
 	}
