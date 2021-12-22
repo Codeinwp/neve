@@ -51,6 +51,7 @@ const ModuleCard = ({
 				<Accordion
 					key={index}
 					title={label}
+					slug={slug}
 					isOpen={
 						(getModuleStatus(slug) || false) && !required_actions
 					}
