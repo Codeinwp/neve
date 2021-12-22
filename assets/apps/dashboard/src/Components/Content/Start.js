@@ -59,7 +59,13 @@ const Start = (props) => {
 					{!neveDash.isValidLicense && (
 						<p>{neveDash.strings.starterSitesCardUpsellMessage}</p>
 					)}
-					<div className="card-button-group">
+					<div
+						className={
+							!neveDash.isValidLicense
+								? 'card-button-group'
+								: 'card-button'
+						}
+					>
 						{tabs['starter-sites'] ? (
 							<Button
 								isPrimary

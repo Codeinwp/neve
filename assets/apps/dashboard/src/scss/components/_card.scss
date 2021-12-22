@@ -37,7 +37,7 @@
       margin-right: 10px;
       margin-top: auto;
       &.is-secondary{
-        outline: 1.5px solid;
+        outline: 1px solid;
         font-weight: 800;
       }
 		}
@@ -50,6 +50,10 @@
 
   .card-description {
     margin: 15px 0 25px;
+  }
+
+  .card-button{
+    margin-top: 60px;
   }
 
   .card-button-group{
