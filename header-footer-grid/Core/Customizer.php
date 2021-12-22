@@ -244,6 +244,8 @@ class Customizer {
 		}
 		$wp_customize->register_section_type( '\Neve\Customizer\Controls\React\Documentation_Section' );
 		$wp_customize->register_section_type( '\Neve\Customizer\Controls\React\Instructions_Section' );
+		$wp_customize->register_section_type( '\Neve\Customizer\Controls\React\Upsell_Section' );
+
 	}
 
 
