@@ -107,7 +107,7 @@ li#customize-control-neve_checkout_page_layout .option.upsell {
     position: relative;
 }
 
-li#customize-control-neve_checkout_page_layout label {
+li#customize-control-neve_checkout_page_layout .option.upsell label {
     pointer-events: none;
 }
 
