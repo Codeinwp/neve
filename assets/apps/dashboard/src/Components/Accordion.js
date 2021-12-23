@@ -8,7 +8,7 @@ import { Dashicon } from '@wordpress/components';
 
 const Accordion = (props) => {
 	const { isOpen, title, slug, children } = props;
-	const { seen } = neveDash.modules[slug];
+	const { seen } = slug ? neveDash.modules[slug] : {};
 	const [open, setOpen] = useState(seen ? false : isOpen);
 	const classes = classnames(['accordion', { open, closed: !open }]);
 	return (
