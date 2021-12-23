@@ -1,24 +1,27 @@
 .card {
-  width: 100%;
-  display: flex;
-  max-width: unset;
-  min-width: unset;
-  border: 1px solid $grey;
-  flex-direction: column;
-  padding: 30px 40px;
-  align-self: flex-start;
-  flex-grow: 0;
+	width: 100%;
+	display: flex;
+	max-width: unset;
+	min-width: unset;
+	border: 1px solid $grey;
+	flex-direction: column;
+	padding: 30px 40px;
+	align-self: flex-start;
+	flex-grow: 0;
 
-  .card-header {
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-    .title {
-      font-size: 18px;
-      line-height: 1.5;
-    }
-    .icon {
-      margin-right: 10px;
+	.card-header {
+		flex-direction: row;
+		display: flex;
+		align-items: center;
+
+		.title {
+			font-size: 18px;
+			line-height: 1.5;
+		}
+
+		.icon {
+			margin-right: 10px;
+
 			&.dashicon {
 				width: 33px;
 				height: 33px;
@@ -26,58 +29,63 @@
 				font-size: 33px;
 				color: $blue;
 			}
-    }
-  }
+		}
+	}
+
 	.card-content {
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
+
 		a, button {
 			align-self: flex-start;
-      margin-right: 10px;
-      margin-top: auto;
-      &.is-secondary{
-        outline: 1px solid;
-        font-weight: 800;
-      }
+			margin-right: 10px;
+			margin-top: auto;
+
+			&.is-secondary {
+				outline: 1px solid;
+				font-weight: 800;
+			}
 		}
 	}
 
-  p {
-    font-size: 15px;
-    color: #616161;
-  }
+	p {
+		font-size: 15px;
+		color: #616161;
+	}
 
-  .card-description {
-    margin: 15px 0 25px;
-  }
+	.card-description {
+		margin: 15px 0 25px;
+	}
 
-  .card-button{
-    margin-top: 60px;
-  }
+	.card-button {
+		margin-top: 60px;
+	}
 
-  .card-button-group{
-    .components-button.is-secondary{
-      margin-top: 10px;
-    }
-  }
+	.card-button-group {
+		.components-button.is-secondary {
+			margin-top: 10px;
+		}
+	}
 
 }
 
 @mixin card--laptop() {
-  .card {
-    margin: 0 0 20px;
-  }
+	.card {
+		margin: 0 0 20px;
+	}
 }
+
 @mixin card--desktop() {
-  .card {
-	padding: 20px 30px;
-	margin: 0 0 20px;
-  }
+	.card {
+		padding: 20px 30px;
+		margin: 0 0 20px;
+	}
 }
+
 @mixin card--desktop-large() {
-  .card {
-	padding: 30px 40px;
-	margin: 0 0 30px;
-  }
+	.card {
+		padding: 30px 40px;
+		margin: 0 0 30px;
+	}
 }
