@@ -42,6 +42,18 @@ class Upsells extends Base_Customizer {
 
 		parent::init();
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'localize_upsell' ) );
+
+		add_filter( 'theme_mod_neve_checkout_page_layout', array( $this, 'override_neve_checkout_page_layout_theme_mod' ), 10, 1 );
+	}
+
+	/**
+	 * Overrides neve_checkout_page_layout theme mod as 'standard' if Neve Pro addon is disabled or not activated.
+	 *
+	 * @param  string $value current value.
+	 * @return string
+	 */
+	public function override_neve_checkout_page_layout_theme_mod( $value ) {
+		return 'standard';
 	}
 
 	/**
