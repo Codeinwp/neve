@@ -1,3 +1,15 @@
+##### [Version 3.1.2](https://github.com/Codeinwp/neve/compare/v3.1.1...v3.1.2) (2021-12-23)
+
+- [Fix] 'neve_before_pagination' not working on the first page 
+- [Fix] Mega menu issue on mobile
+- [Fix] Primary navigation menu links to in-page sections have active color
+- [Fix] Adds left and right border when a user is editing table contents
+- [Feat[ Add documentation section in customizer
+- Remove the description in the header components selector popup
+- Improve upsells to better inform about pro functionality
+- Keep upsells when the license is invalid
+- Update Google Fonts
+
 ##### [Version 3.1.1](https://github.com/Codeinwp/neve/compare/v3.1.0...v3.1.1) (2021-12-09)
 
 - [Fix] Remove text-decoration on links that are not part of the page content
