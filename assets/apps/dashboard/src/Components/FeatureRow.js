@@ -1,20 +1,67 @@
+/* global neveDash */
 import { Dashicon, ExternalLink } from '@wordpress/components';
 import { useState, createInterpolateElement } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
 const FeatureRow = ({ item }) => {
-	const { title, description, inLite, docsLink } = item;
+	const { title, description, inLite, docsLink, presentational } = item;
 	const [tooltip, toggleTooltip] = useState(false);
 
 	const showTooltip = () => toggleTooltip(true);
 	const hideTooltip = () => toggleTooltip(false);
 
+	const renderFeatureTitle = () => {
+		if (!presentational) {
+			return title;
+		}
+
+		return (
+			<ExternalLink href={neveDash.allfeaturesNeveProURL}>
+				{title}
+			</ExternalLink>
+		);
+	};
+
+	const renderInfoIcon = () => {
+		if (!presentational) {
+			return <Dashicon icon="info" />;
+		}
+	};
+
+	const renderNeveLiteIndicator = () => {
+		if (!presentational) {
+			return (
+				<td
+					className={classnames([
+						'indicator',
+						{
+							error: !inLite,
+							success: inLite,
+						},
+					])}
+				>
+					<Dashicon size={30} icon={inLite ? 'yes' : 'no-alt'} />
+				</td>
+			);
+		}
+	};
+
+	const renderNeveProIndicator = () => {
+		if (!presentational) {
+			return (
+				<td className="indicator success">
+					<Dashicon size={30} icon="yes" />
+				</td>
+			);
+		}
+	};
+
 	return (
 		<tr className="feature-row">
 			<td className="large">
 				<div className="feat-wrap">
-					<h4>{title}</h4>
+					<h4>{renderFeatureTitle()}</h4>
 					<span
 						onMouseEnter={(e) => {
 							e.preventDefault();
@@ -33,7 +80,8 @@ const FeatureRow = ({ item }) => {
 							hideTooltip();
 						}}
 					>
-						<Dashicon icon="info" />
+						{renderInfoIcon()}
+
 						{tooltip && (
 							<div className="tooltip-content">
 								<div className="tooltip-inner">
@@ -64,20 +112,8 @@ const FeatureRow = ({ item }) => {
 					</span>
 				</div>
 			</td>
-			<td
-				className={classnames([
-					'indicator',
-					{
-						error: !inLite,
-						success: inLite,
-					},
-				])}
-			>
-				<Dashicon size={30} icon={inLite ? 'yes' : 'no-alt'} />
-			</td>
-			<td className="indicator success">
-				<Dashicon size={30} icon="yes" />
-			</td>
+			{renderNeveLiteIndicator()}
+			{renderNeveProIndicator()}
 		</tr>
 	);
 };
