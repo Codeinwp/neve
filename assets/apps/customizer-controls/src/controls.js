@@ -31,6 +31,7 @@ import { RepeaterControl } from './repeater/Control';
 import { RichTextControl } from './rich-text/Control';
 
 import './style.scss';
+import Documentation from './documentation-section/Documentation.tsx';
 import Instructions from './builder-instructions/Instructions.tsx';
 import Upsells from './builder-upsell/Upsells.tsx';
 
@@ -73,6 +74,23 @@ const initDeviceSwitchers = () => {
 			detail: e.target.dataset.device,
 		});
 		document.dispatchEvent(event);
+	});
+};
+
+const initDocSection = () => {
+	const docs = document.querySelectorAll(
+		'.control-section.neve-documentation'
+	);
+
+	docs.forEach((node) => {
+		const slug = node.getAttribute('data-slug');
+		const section = wp.customize.section(slug);
+
+		if (!section) {
+			return;
+		}
+
+		render(<Documentation control={section} />, section.container[0]);
 	});
 };
 
@@ -185,6 +203,7 @@ const checkHasElementorTemplates = () => {
 };
 
 window.wp.customize.bind('ready', () => {
+	initDocSection();
 	initDynamicFields();
 	initUpsellSection();
 	initQuickLinksSections();
