@@ -108,7 +108,7 @@ class Main extends Base_Customizer {
 		/**
 		 * Documentation Section Main
 		 */
-		$docs_url = 'https://docs.themeisle.com/article/946-neve-doc';
+		$docs_url = 'https://docs.themeisle.com/article/946-neve-doc?utm_medium=customizer&utm_source=docsbtn&utm_campaign=neve';
 		$this->wpc->add_section(
 			new Documentation_Section(
 				$this->wpc,
