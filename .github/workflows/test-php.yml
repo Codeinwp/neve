@@ -17,6 +17,7 @@ jobs:
         with:
           php-version: '7.1'
           extensions: simplexml
+          tools: composer:v2.1
       - name: Checkout source code
         uses: actions/checkout@v2
       - name: Get Composer Cache Directory

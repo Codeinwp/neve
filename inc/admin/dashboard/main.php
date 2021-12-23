@@ -7,12 +7,16 @@
 
 namespace Neve\Admin\Dashboard;
 
+use Neve\Core\Theme_Info;
 /**
  * Class Main
  *
  * @package Neve\Admin\Dashboard
  */
 class Main {
+
+	use Theme_Info;
+
 	/**
 	 * Changelog Handler.
 	 *
@@ -183,26 +187,30 @@ class Main {
 		$plugin_name       = apply_filters( 'ti_wl_plugin_name', 'Neve Pro' );
 		$plugin_name_addon = apply_filters( 'ti_wl_plugin_name', 'Neve Pro Addon' );
 		$data              = [
-			'nonce'               => wp_create_nonce( 'wp_rest' ),
-			'version'             => 'v' . NEVE_VERSION,
-			'assets'              => get_template_directory_uri() . '/assets/img/dashboard/',
-			'hasOldPro'           => (bool) ( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.1.11', '<' ) ),
-			'isRTL'               => is_rtl(),
-			'notifications'       => $this->get_notifications(),
-			'customizerShortcuts' => $this->get_customizer_shortcuts(),
-			'plugins'             => $this->get_useful_plugins(),
-			'featureData'         => $this->get_free_pro_features(),
-			'showFeedbackNotice'  => $this->should_show_feedback_notice(),
-			'upgradeURL'          => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ) ),
-			'supportURL'          => esc_url( 'https://wordpress.org/support/theme/neve/' ),
-			'docsURL'             => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
-			'codexURL'            => esc_url( 'https://codex.nevewp.com/' ),
-			'strings'             => [
+			'nonce'                   => wp_create_nonce( 'wp_rest' ),
+			'version'                 => 'v' . NEVE_VERSION,
+			'assets'                  => get_template_directory_uri() . '/assets/img/dashboard/',
+			'hasOldPro'               => (bool) ( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.1.11', '<' ) ),
+			'isRTL'                   => is_rtl(),
+			'isValidLicense'          => $this->has_valid_addons(),
+			'notifications'           => $this->get_notifications(),
+			'customizerShortcuts'     => $this->get_customizer_shortcuts(),
+			'plugins'                 => $this->get_useful_plugins(),
+			'featureData'             => $this->get_free_pro_features(),
+			'showFeedbackNotice'      => $this->should_show_feedback_notice(),
+			'allfeaturesNeveProURL'   => esc_url( 'https://themeisle.com/themes/neve/upgrade/?utm_medium=nevedashboard&utm_source=freevspro&utm_campaign=neve&utm_content=seeallfeatures#profeatures' ),
+			'startSitesgetNeveProURL' => esc_url( 'https://themeisle.com/themes/neve/upgrade/?utm_medium=nevedashboard&utm_source=welcomestartersitescard&utm_campaign=neve&utm_content=gotostartersites' ),
+			'upgradeURL'              => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ) ),
+			'supportURL'              => esc_url( 'https://wordpress.org/support/theme/neve/' ),
+			'docsURL'                 => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
+			'codexURL'                => esc_url( 'https://codex.nevewp.com/' ),
+			'strings'                 => [
 				'proTabTitle'                   => wp_kses_post( $plugin_name ),
 				/* translators: %s - Theme name */
 				'header'                        => sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
 				'starterSitesCardDescription'   => sprintf( __( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), wp_kses_post( $theme_name ) ),
+				'starterSitesCardUpsellMessage' => esc_html__( 'Upgrade to the Pro version and get instant access to all Premium Starter Sites — including Expert Sites — and much more.', 'neve' ),
 				/* translators: %s - Theme name */
 				'starterSitesTabDescription'    => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: 1 - Theme name, 2 - Cloud Templates & Patterns Collection */
@@ -224,12 +232,12 @@ class Main {
 					'<a target="_blank" rel="external noreferrer noopener" href="https://store.themeisle.com/">ThemeIsle<span class="components-visually-hidden">' . esc_html__( '(opens in a new tab)', 'neve' ) . '</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="components-external-link__icon css-6wogo1-StyledIcon etxm6pv0" role="img" aria-hidden="true" focusable="false"><path d="M18.2 17c0 .7-.6 1.2-1.2 1.2H7c-.7 0-1.2-.6-1.2-1.2V7c0-.7.6-1.2 1.2-1.2h3.2V4.2H7C5.5 4.2 4.2 5.5 4.2 7v10c0 1.5 1.2 2.8 2.8 2.8h10c1.5 0 2.8-1.2 2.8-2.8v-3.6h-1.5V17zM14.9 3v1.5h3.7l-6.4 6.4 1.1 1.1 6.4-6.4v3.7h1.5V3h-6.3z"></path></svg></a>'
 				),
 			],
-			'changelog'           => $this->cl_handler->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
-			'onboarding'          => [],
-			'hasFileSystem'       => WP_Filesystem(),
-			'hidePluginsTab'      => apply_filters( 'neve_hide_useful_plugins', ! array_key_exists( 'useful_plugins', $old_about_config ) ),
-			'tpcPath'             => defined( 'TIOB_PATH' ) ? TIOB_PATH . 'template-patterns-collection.php' : 'template-patterns-collection/template-patterns-collection.php',
-			'tpcAdminURL'         => admin_url( 'themes.php?page=tiob-starter-sites' ),
+			'changelog'               => $this->cl_handler->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
+			'onboarding'              => [],
+			'hasFileSystem'           => WP_Filesystem(),
+			'hidePluginsTab'          => apply_filters( 'neve_hide_useful_plugins', ! array_key_exists( 'useful_plugins', $old_about_config ) ),
+			'tpcPath'                 => defined( 'TIOB_PATH' ) ? TIOB_PATH . 'template-patterns-collection.php' : 'template-patterns-collection/template-patterns-collection.php',
+			'tpcAdminURL'             => admin_url( 'themes.php?page=tiob-starter-sites' ),
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
@@ -442,6 +450,10 @@ class Main {
 				'inLite'      => false,
 				'docsLink'    => $this->get_doc_link( 'Scroll To Top', 'https://docs.themeisle.com/article/1060-scroll-to-top-module-documentation' ),
 			],
+			[
+				'title'          => __( 'See all PRO features', 'neve' ),
+				'presentational' => true,
+			],
 		];
 	}
 
@@ -508,4 +520,5 @@ class Main {
 		}
 		return false;
 	}
+
 }

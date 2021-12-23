@@ -38,29 +38,36 @@ const RadioImage = ({ choices, onClick, value, label, documentation }) => {
 			)}
 			<div className="neve-radio-image">
 				{Object.keys(choices).map((choice, index) => {
-					const { name, image, url } = choices[choice];
+					const { name, image, url, upsellUrl } = choices[choice];
+					const divClass = classnames([
+						{ option: true, upsell: typeof upsellUrl !== 'undefined' },
+					]);
 					const buttonClass = classnames([
-						{ active: choice === value },
+						{ active: choice === value,},
 					]);
 					return (
-						<div className="option" key={index}>
-							{/*eslint-disable-next-line jsx-a11y/label-has-for */}
-							<label data-option={choice}>
-								<button
-									className={buttonClass}
-									onClick={(e) => {
-										e.preventDefault();
-										onClick(choice);
-									}}
-								>
-									<img
-										src={image || url}
-										alt={name || `Option ${choice}`}
-									/>
-								</button>
-								{name && <span>{name}</span>}
-							</label>
-						</div>
+						<>
+							<div className={divClass} key={index}>
+								{/*eslint-disable-next-line jsx-a11y/label-has-for */}
+								<label data-option={choice}>
+									{upsellUrl && <span class="dashicons dashicons-lock"></span>}
+									<button
+										className={buttonClass}
+										onClick={(e) => {
+											e.preventDefault();
+											onClick(choice);
+										}}
+									>
+										<img
+											src={image || url}
+											alt={name || `Option ${choice}`}
+										/>
+									</button>
+									{name && <span>{name}</span>}
+								</label>
+								{upsellUrl && <a class="upsell-btn" target="_blank" href={upsellUrl}>UNLOCK <span class="dashicons dashicons-external"></span></a>}
+							</div>
+						</>
 					);
 				})}
 			</div>

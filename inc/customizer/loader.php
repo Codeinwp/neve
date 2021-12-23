@@ -79,6 +79,7 @@ class Loader {
 				'Customizer\Options\Layout_Sidebar',
 				'Customizer\Options\Typography',
 				'Customizer\Options\Colors_Background',
+				'Customizer\Options\Checkout',
 				'Customizer\Options\Buttons',
 				'Customizer\Options\Form_Fields',
 				'Customizer\Options\Rtl',

@@ -28,3 +28,8 @@
 	}
   }
 }
+
+.wp-block-table td:focus {
+  border-left: $base-border;
+  border-right: $base-border;
+}
