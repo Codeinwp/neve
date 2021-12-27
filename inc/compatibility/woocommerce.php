@@ -186,6 +186,8 @@ class Woocommerce {
 		add_filter( 'woocommerce_product_description_heading', '__return_false' );
 		add_filter( 'woocommerce_product_additional_information_heading', '__return_false' );
 
+		add_filter( 'woocommerce_cart_item_price', array( $this, 'show_crossed_regular_price_on_cart' ), 10, 3 );
+
 		// Add breadcrumbs and results count
 		add_action( 'neve_bc_count', [ $this, 'render_breadcrumbs' ] );
 		add_action( 'neve_bc_count', 'woocommerce_result_count' );
@@ -223,6 +225,29 @@ class Woocommerce {
 			// Change default for shop columns WooCommerce option.
 			add_filter( 'default_option_woocommerce_catalog_columns', [ $this, 'change_default_shop_cols' ] );
 		}
+	}
+
+	/**
+	 * Normally, WooCommerce doesn't show the regular price on the cart, just shows the sale price.
+	 * With that, the regular price is shown also as crossed on the cart.
+	 *
+	 * @param  string $price that current price column value on the cart page.
+	 * @param  array  $cart_item current cart item.
+	 * @param  string $cart_item_key cart item key.
+	 * @return string
+	 */
+	public function show_crossed_regular_price_on_cart( $price, $cart_item, $cart_item_key ) {
+		$product = $cart_item['data'];
+
+		$regular_price = wc_price( $product->get_regular_price() );
+
+		if ( empty( $product->get_sale_price() ) ) {
+			return $regular_price;
+		}
+
+		$sale_price = wc_price( $product->get_sale_price() );
+
+		return sprintf( '<span class="screen-reader-text">%s:</span> <del>%s</del> <span class="screen-reader-text">%s:</span> <ins>%s</ins>', esc_html__( 'Previous price', 'neve' ), $regular_price, esc_html__( 'Discounted price', 'neve' ), $sale_price );
 	}
 
 	/**
