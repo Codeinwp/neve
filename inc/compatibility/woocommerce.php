@@ -239,15 +239,7 @@ class Woocommerce {
 	public function show_crossed_regular_price_on_cart( $price, $cart_item, $cart_item_key ) {
 		$product = $cart_item['data'];
 
-		$regular_price = wc_price( $product->get_regular_price() );
-
-		if ( empty( $product->get_sale_price() ) ) {
-			return $regular_price;
-		}
-
-		$sale_price = wc_price( $product->get_sale_price() );
-
-		return sprintf( '<span class="screen-reader-text">%s:</span> <del>%s</del> <span class="screen-reader-text">%s:</span> <ins>%s</ins>', esc_html__( 'Previous price', 'neve' ), $regular_price, esc_html__( 'Discounted price', 'neve' ), $sale_price );
+		return $product->get_price_html();
 	}
 
 	/**
