@@ -292,9 +292,6 @@ class Typography extends Base_Customizer {
 	 * Add controls for blog typography.
 	 */
 	private function controls_typography_blog() {
-		$heading_font_family = get_theme_mod( 'neve_headings_font_family', '' );
-		$body_font_family    = get_theme_mod( 'neve_body_font_family', '' );
-
 		$controls = array(
 			'neve_archive_typography_post_title'         => array(
 				'label'                 => __( 'Post title', 'neve' ),
