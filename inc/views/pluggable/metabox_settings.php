@@ -159,6 +159,11 @@ class Metabox_Settings {
 			return false;
 		}
 
+		// On shop page the returning id is the id of the first product. We need the id of the page.
+		if ( class_exists( 'WooCommerce' ) && is_shop() ) {
+			return wc_get_page_id( 'shop' );
+		}
+
 		global $post;
 		if ( empty( $post ) ) {
 			return false;
