@@ -19,6 +19,17 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.1.3](https://github.com/Codeinwp/neve/compare/v3.1.2...v3.1.3) (2022-01-06)
+
+- [Fix] Sidebar positioning on the shop page
+- [Fix] Hide the whole page cover when hiding title in page meta
+- [Fix] Conflict between Neve, Relevanssi Premium, and Elementor Pro
+- [Fix] Radio-image customizer control console errors
+- Improve the font-weight control to display only the weights that are available for the selected font
+
+
+
+
 ##### [Version 3.1.2](https://github.com/Codeinwp/neve/compare/v3.1.1...v3.1.2) (2021-12-23)
 
 - [Fix] 'neve_before_pagination' not working on the first page 
