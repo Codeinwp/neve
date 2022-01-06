@@ -40,34 +40,47 @@ const RadioImage = ({ choices, onClick, value, label, documentation }) => {
 				{Object.keys(choices).map((choice, index) => {
 					const { name, image, url, upsellUrl } = choices[choice];
 					const divClass = classnames([
-						{ option: true, upsell: typeof upsellUrl !== 'undefined' },
+						{
+							option: true,
+							upsell: typeof upsellUrl !== 'undefined',
+						},
 					]);
 					const buttonClass = classnames([
-						{ active: choice === value,},
+						{ active: choice === value },
 					]);
 					return (
-						<>
-							<div className={divClass} key={index}>
-								{/*eslint-disable-next-line jsx-a11y/label-has-for */}
-								<label data-option={choice}>
-									{upsellUrl && <span class="dashicons dashicons-lock"></span>}
-									<button
-										className={buttonClass}
-										onClick={(e) => {
-											e.preventDefault();
-											onClick(choice);
-										}}
-									>
-										<img
-											src={image || url}
-											alt={name || `Option ${choice}`}
-										/>
-									</button>
-									{name && <span>{name}</span>}
-								</label>
-								{upsellUrl && <a class="upsell-btn" target="_blank" href={upsellUrl}>UNLOCK <span class="dashicons dashicons-external"></span></a>}
-							</div>
-						</>
+						<div className={divClass} key={index}>
+							{/*eslint-disable-next-line jsx-a11y/label-has-for */}
+							<label data-option={choice}>
+								{upsellUrl && (
+									<span className="dashicons dashicons-lock" />
+								)}
+								<button
+									className={buttonClass}
+									onClick={(e) => {
+										e.preventDefault();
+										onClick(choice);
+									}}
+								>
+									<img
+										src={image || url}
+										alt={name || `Option ${choice}`}
+									/>
+								</button>
+								{name && <span>{name}</span>}
+							</label>
+							{upsellUrl && (
+								<a
+									rel="external noopener noreferrer"
+									className="upsell-btn"
+									target="_blank"
+									href={upsellUrl}
+								>
+									UNLOCK
+									<span className="dashicons dashicons-external" />
+								</a>
+							)}
+						</div>
 					);
 				})}
 			</div>
