@@ -4,7 +4,7 @@
 - [Fix] Mega menu issue on mobile
 - [Fix] Primary navigation menu links to in-page sections have active color
 - [Fix] Adds left and right border when a user is editing table contents
-- [Feat[ Add documentation section in customizer
+- [Feat] Add documentation section in customizer
 - Remove the description in the header components selector popup
 - Improve upsells to better inform about pro functionality
 - Keep upsells when the license is invalid
