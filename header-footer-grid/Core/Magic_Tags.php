@@ -472,7 +472,7 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function edd_cart_total() {
-		return '<span class="nv-edd-cart-icon-total-plain nv-edd-cart-total">' . edd_format_amount( edd_get_cart_total() ) . '</span>';
+		return '<span class="nv-edd-cart-icon-total-plain nv-edd-cart-total">' . edd_format_amount( (string) edd_get_cart_total() ) . '</span>';
 	}
 
 	/**
