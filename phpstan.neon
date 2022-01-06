@@ -11,6 +11,7 @@ parameters:
         - %currentWorkingDirectory%/header-footer-grid/functions-template.php
     bootstrapFiles:
         - %currentWorkingDirectory%/inc/core/styles/generator.php
+        - %currentWorkingDirectory%/inc/core/theme_info.php
         - %currentWorkingDirectory%/vendor/wptt/webfont-loader/wptt-webfont-loader.php
         - %currentWorkingDirectory%/vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
         - %currentWorkingDirectory%/tests/php/static-analysis-stubs/config.php

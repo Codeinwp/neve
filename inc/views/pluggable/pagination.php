@@ -155,7 +155,17 @@ class Pagination extends Base_View {
 			return;
 		}
 
-		if ( ! $this->has_infinite_scroll() && is_paged() ) {
+		$paginate_args = array( 'type' => 'list' );
+		if ( $this->has_jump_to() ) {
+			$paginate_args['format'] = '?paged=%#%';
+		}
+		$links = paginate_links( $paginate_args );
+
+		if ( empty( $links ) ) {
+			return;
+		}
+
+		if ( ! $this->has_infinite_scroll() ) {
 			/**
 			 * Executes actions before pagination.
 			 *
@@ -164,11 +174,6 @@ class Pagination extends Base_View {
 			do_action( 'neve_before_pagination' );
 		}
 
-		$paginate_args = array( 'type' => 'list' );
-		if ( $this->has_jump_to() ) {
-			$paginate_args['format'] = '?paged=%#%';
-		}
-		$links = paginate_links( $paginate_args );
 		$links = str_replace(
 			array( '<a class="prev', '<a class="next' ),
 			array(

@@ -1,3 +1,34 @@
+##### [Version 3.1.3](https://github.com/Codeinwp/neve/compare/v3.1.2...v3.1.3) (2022-01-06)
+
+- [Fix] Sidebar positioning on the shop page
+- [Fix] Hide the whole page cover when hiding title in page meta
+- [Fix] Conflict between Neve, Relevanssi Premium, and Elementor Pro
+- [Fix] Radio-image customizer control console errors
+- Improve the font-weight control to display only the weights that are available for the selected font
+
+##### [Version 3.1.2](https://github.com/Codeinwp/neve/compare/v3.1.1...v3.1.2) (2021-12-23)
+
+- [Fix] 'neve_before_pagination' not working on the first page 
+- [Fix] Mega menu issue on mobile
+- [Fix] Primary navigation menu links to in-page sections have active color
+- [Fix] Adds left and right border when a user is editing table contents
+- [Feat] Add documentation section in customizer
+- Remove the description in the header components selector popup
+- Improve upsells to better inform about pro functionality
+- Keep upsells when the license is invalid
+- Update Google Fonts
+
+##### [Version 3.1.1](https://github.com/Codeinwp/neve/compare/v3.1.0...v3.1.1) (2021-12-09)
+
+- [Fix] Remove text-decoration on links that are not part of the page content
+- [Fix] Added value attribute for close button on menu and alt attribute on the search form
+- [Fix] Fixes the issue with the clear button inside WooCommerce widgets filter dropdowns
+- [Fix] Move autofocus to close button inside mobile nav menu to prevent the blue outline
+- [Fix] Sidebar on 404 page not working correctly
+- [Fix] The reset button on the customizer range and number controls
+- Add information about components in pro in header's popup
+- Update Google Fonts
+
 #### [Version 3.1.0](https://github.com/Codeinwp/neve/compare/v3.0.11...v3.1.0) (2021-11-24)
 
 - [Feat] Global options for page - [Learn more](https://docs.themeisle.com/article/1491-neve-page-options)

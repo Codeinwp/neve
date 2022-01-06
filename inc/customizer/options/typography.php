@@ -135,6 +135,7 @@ class Typography extends Base_Customizer {
 						'letter_spacing_default' => $defaults['letterSpacing'],
 					),
 					'type'                  => 'neve_typeface_control',
+					'font_family_control'   => 'neve_body_font_family',
 					'live_refresh_selector' => 'body, .site-title',
 				],
 				'\Neve\Customizer\Controls\React\Typography'
@@ -256,6 +257,7 @@ class Typography extends Base_Customizer {
 							'letter_spacing_default' => $default_values['letterSpacing'],
 						),
 						'type'                  => 'neve_typeface_control',
+						'font_family_control'   => 'neve_headings_font_family',
 						'live_refresh_selector' => $selectors[ $heading_id ],
 						'live_refresh_css_prop' => [
 							'cssVar' => [
@@ -295,32 +297,38 @@ class Typography extends Base_Customizer {
 				'label'                 => __( 'Post title', 'neve' ),
 				'category_label'        => __( 'Blog Archive', 'neve' ),
 				'priority'              => 10,
+				'font_family_control'   => 'neve_headings_font_family',
 				'live_refresh_selector' => '.blog .blog-entry-title, .archive .blog-entry-title',
 			),
 			'neve_archive_typography_post_excerpt'       => array(
 				'label'                 => __( 'Post excerpt', 'neve' ),
 				'priority'              => 20,
+				'font_family_control'   => 'neve_body_font_family',
 				'live_refresh_selector' => '.blog .entry-summary, .archive .entry-summary, .blog .post-pages-links',
 			),
 			'neve_archive_typography_post_meta'          => array(
 				'label'                 => __( 'Post meta', 'neve' ),
 				'priority'              => 30,
+				'font_family_control'   => 'neve_body_font_family',
 				'live_refresh_selector' => '.blog .nv-meta-list li, .archive .nv-meta-list li',
 			),
 			'neve_single_post_typography_post_title'     => array(
 				'label'                 => __( 'Post title', 'neve' ),
 				'category_label'        => __( 'Single Post', 'neve' ),
 				'priority'              => 40,
+				'font_family_control'   => 'neve_headings_font_family',
 				'live_refresh_selector' => '.single h1.entry-title',
 			),
 			'neve_single_post_typography_post_meta'      => array(
 				'label'                 => __( 'Post meta', 'neve' ),
 				'priority'              => 50,
+				'font_family_control'   => 'neve_body_font_family',
 				'live_refresh_selector' => '.single .nv-meta-list li',
 			),
 			'neve_single_post_typography_comments_title' => array(
 				'label'                 => __( 'Comments reply title', 'neve' ),
 				'priority'              => 60,
+				'font_family_control'   => 'neve_headings_font_family',
 				'live_refresh_selector' => '.single .comment-reply-title',
 			),
 		);
@@ -361,6 +369,7 @@ class Typography extends Base_Customizer {
 						'priority'              => $control_settings['priority'] += 1,
 						'section'               => 'neve_typography_blog',
 						'type'                  => 'neve_typeface_control',
+						'font_family_control'   => $control_settings['font_family_control'],
 						'live_refresh_selector' => neve_is_new_skin() ? true : $control_settings['live_refresh_selector'],
 						'live_refresh_css_prop' => [
 							'cssVar' => [
