@@ -1,24 +1,22 @@
-/* global neveDash */
 import classnames from 'classnames';
-
-import { changeOption } from '../utils/rest';
 
 import { useState } from '@wordpress/element';
 import { Dashicon } from '@wordpress/components';
 
 const Accordion = (props) => {
 	const { isOpen, title, slug, children } = props;
-	const { seen } = slug ? neveDash.modules[slug] : {};
+	const seen = slug ? window.localStorage.getItem(slug) === 'seen' : null;
 	const [open, setOpen] = useState(seen ? false : isOpen);
 	const classes = classnames(['accordion', { open, closed: !open }]);
+
 	return (
 		<div className={classes}>
 			<button
 				aria-expanded={open}
 				className="accordion-header"
 				onClick={() => {
-					if (open && seen !== undefined && !seen) {
-						changeOption(slug, true, false, true, true).then();
+					if (open && !seen && slug !== undefined) {
+						window.localStorage.setItem(slug, 'seen');
 					}
 					setOpen(!open);
 				}}
