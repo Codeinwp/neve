@@ -82,7 +82,7 @@ class EddCartIcon extends Abstract_Component {
 					'default' => 15,
 				],
 				'section'               => $this->section,
-				// 'conditional_header'    => true,
+				'conditional_header'    => true,
 			]
 		);
 
