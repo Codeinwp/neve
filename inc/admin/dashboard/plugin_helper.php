@@ -129,7 +129,7 @@ class Plugin_Helper {
 			return $default;
 		}
 
-		$plugin_data = get_plugin_data( trailingslashit( WP_PLUGIN_DIR ) . $plugin_file );
+		$plugin_data = get_plugin_data( ABSPATH . 'wp-content/plugins/' . $plugin_file );
 		if ( ! empty( $plugin_data ) && array_key_exists( 'Version', $plugin_data ) ) {
 			return $plugin_data['Version'];
 		}
