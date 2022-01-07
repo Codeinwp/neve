@@ -123,15 +123,15 @@ class Plugin_Helper {
 	 * @param string $slug plugin slug.
 	 * @return string | bool
 	 */
-	public function get_active_plugin_version( $slug, $default = false ) {
+	public function get_plugin_version( $slug, $default = false ) {
 		$plugin_file = $this->get_plugin_path( $slug );
 		if ( ! is_plugin_active( $plugin_file ) ) {
 			return $default;
 		}
 
-		$plugin_data = $this->get_plugin_details( $slug );
-		if ( ! empty( $plugin_data ) && property_exists( $plugin_data, 'version' ) ) {
-			return $plugin_data['version'];
+		$plugin_data = get_plugin_data( trailingslashit( WP_PLUGIN_DIR ) . $plugin_file );
+		if ( ! empty( $plugin_data ) && array_key_exists( 'Version', $plugin_data ) ) {
+			return $plugin_data['Version'];
 		}
 		return $default;
 	}
