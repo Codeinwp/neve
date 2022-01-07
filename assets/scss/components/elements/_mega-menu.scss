@@ -136,4 +136,6 @@
 // Make sure the component is static if main row and has a nav
 .header--row .builder-item.has-nav {
 	position: static;
+	// Needed to fix grouped components not being interactive
+	z-index: 1;
 }
