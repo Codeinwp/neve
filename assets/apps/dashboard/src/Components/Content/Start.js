@@ -48,6 +48,9 @@ const Start = (props) => {
 		);
 	};
 
+	const ConditionalWrapper = ({ condition, wrapper, children }) =>
+		condition ? wrapper(children) : children;
+
 	return (
 		<>
 			{!starterSitesHidden && (
@@ -59,12 +62,12 @@ const Start = (props) => {
 					{!neveDash.isValidLicense && (
 						<p>{neveDash.strings.starterSitesCardUpsellMessage}</p>
 					)}
-					<div
-						className={
-							!neveDash.isValidLicense
-								? 'card-button-group'
-								: 'card-button'
-						}
+
+					<ConditionalWrapper
+						condition={!neveDash.isValidLicense}
+						wrapper={(children) => (
+							<div className="card-button-group">{children}</div>
+						)}
 					>
 						{tabs['starter-sites'] ? (
 							<Button
@@ -88,7 +91,7 @@ const Start = (props) => {
 								{__('Get Neve Pro', 'neve')}
 							</Button>
 						)}
-					</div>
+					</ConditionalWrapper>
 				</Card>
 			)}
 			<Card
