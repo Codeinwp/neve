@@ -123,7 +123,7 @@ class Logo extends Abstract_Component {
 	 *
 	 * @return bool
 	 */
-	private function is_component_active() {
+	protected function is_component_active() {
 		$builders = Main::get_instance()->get_builders();
 		foreach ( $builders as $builder ) {
 			if ( $builder->is_component_active( $this->get_id() ) ) {
