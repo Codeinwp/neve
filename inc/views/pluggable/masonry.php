@@ -49,7 +49,7 @@ class Masonry extends Template_Parts {
 			return $content;
 		}
 
-		return '<article class="' . $this->post_class() . '">' . $content . '</article>';
+		return '<article class="' . $this->post_class( 'custom' ) . '">' . $content . '</article>';
 	}
 
 	/**

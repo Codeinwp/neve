@@ -30,7 +30,7 @@ class Template_Parts extends Base_View {
 	/**
 	 * Render the post.
 	 */
-	public function render_post() {
+	public function render_post( $context ) {
 		$args = array(
 			'post_id'    => 'post-' . get_the_ID(),
 			'post_class' => $this->post_class(),
@@ -42,11 +42,17 @@ class Template_Parts extends Base_View {
 
 	/**
 	 * Echo the post class.
+	 *
+	 * @param string $context Current context.
+	 *
+	 * @return string
 	 */
-	protected function post_class() {
+	protected function post_class( $context = 'single' ) {
 		$class  = join( ' ', get_post_class() );
 		$layout = $this->get_layout();
-		$class .= ' layout-' . $layout;
+		if ( $context !== 'custom' ) {
+			$class .= ' layout-' . $layout;
+		}
 		if ( in_array( $layout, [ 'grid', 'covers' ], true ) ) {
 			$class .= ' ' . $this->get_grid_columns_class();
 		} else {
