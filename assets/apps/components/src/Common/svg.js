@@ -395,6 +395,91 @@ const SVG = {
 			/>
 		</svg>
 	),
+	sttIcon1: (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			role="img"
+			width="15"
+			height="15"
+			preserveAspectRatio="xMidYMid meet"
+			viewBox="0 0 24 24"
+		>
+			<path
+				d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6l-6 6l1.41 1.41z"
+				fill="currentColor"
+			></path>
+		</svg>
+	),
+	sttIcon2: (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			role="img"
+			width="15"
+			height="15"
+			preserveAspectRatio="xMidYMid meet"
+			viewBox="0 0 24 24"
+		>
+			<path
+				d="M7.41 18.41L6 17l6-6l6 6l-1.41 1.41L12 13.83l-4.59 4.58m0-6L6 11l6-6l6 6l-1.41 1.41L12 7.83l-4.59 4.58z"
+				fill="currentColor"
+			></path>
+		</svg>
+	),
+	sttIcon3: (
+		<svg width="15" height="15" aria-hidden="true" viewBox="0 0 448 512">
+			<path
+				fill="currentColor"
+				d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"
+			/>
+		</svg>
+	),
+	sttIcon4: (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			role="img"
+			width="15"
+			height="15"
+			preserveAspectRatio="xMidYMid meet"
+			viewBox="0 0 24 24"
+		>
+			<path
+				d="M15 20H9v-8H4.16L12 4.16L19.84 12H15v8z"
+				fill="currentColor"
+			></path>
+		</svg>
+	),
+	sttIcon5: (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			role="img"
+			width="15"
+			height="15"
+			preserveAspectRatio="xMidYMid meet"
+			viewBox="0 0 24 24"
+		>
+			<path d="M7 15l5-5l5 5H7z" fill="currentColor"></path>
+		</svg>
+	),
+	sttIcon6: (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			role="img"
+			width="15"
+			height="15"
+			preserveAspectRatio="xMidYMid meet"
+			viewBox="0 0 24 24"
+		>
+			<path
+				d="M4.08 11.92L12 4l7.92 7.92l-1.42 1.41l-5.5-5.5V22h-2V7.83l-5.5 5.5l-1.42-1.41M12 4h10V2H2v2h10z"
+				fill="currentColor"
+			></path>
+		</svg>
+	),
 };
 
 export default SVG;
