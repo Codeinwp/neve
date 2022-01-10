@@ -82,9 +82,14 @@ const Start = (props) => {
 						)}
 						{!neveDash.isValidLicense && (
 							<Button
+								target="_blank"
+								rel="external noreferrer noopener"
 								href={neveDash.startSitesgetNeveProURL}
 								isSecondary
 							>
+								<span class="components-visually-hidden">
+									(opens in a new tab)
+								</span>
 								{__('Get Neve Pro', 'neve')}
 							</Button>
 						)}
