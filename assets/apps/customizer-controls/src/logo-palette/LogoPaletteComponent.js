@@ -159,20 +159,22 @@ const LogoPaletteComponent = ({ control }) => {
 					render={({ open }) => (
 						<>
 							{!light && (
-								<div
-									className="logo-select"
-									aria-hidden="true"
-									onClick={open}
-								>
-									<Icon
-										className="add-icon"
-										icon={plusCircleFilled}
-									/>
-									<p>
-										{__('Light Palette', 'neve') +
-											' / ' +
-											__('Upload Logo', 'neve')}
-									</p>
+								<div className="logo-select">
+									<button
+										className="logo-select-inner"
+										aria-hidden="true"
+										onClick={open}
+									>
+										<Icon
+											className="add-icon"
+											icon={plusCircleFilled}
+										/>
+										<p>
+											{__('Light Palette', 'neve')}
+											<br />
+											{__('Upload Logo', 'neve')}
+										</p>
+									</button>
 								</div>
 							)}
 							{light && (
@@ -186,9 +188,9 @@ const LogoPaletteComponent = ({ control }) => {
 										}}
 									/>
 									<p>
-										{__('Light Palette', 'neve') +
-											' / ' +
-											__('Change Logo', 'neve')}
+										{__('Light Palette', 'neve')}
+										<br />
+										{__('Change Logo', 'neve')}
 									</p>
 									<img
 										aria-hidden="true"
@@ -215,20 +217,22 @@ const LogoPaletteComponent = ({ control }) => {
 						render={({ open }) => (
 							<>
 								{!dark && (
-									<div
-										className="logo-select dark"
-										aria-hidden="true"
-										onClick={open}
-									>
-										<Icon
-											className="add-icon"
-											icon={plusCircleFilled}
-										/>
-										<p>
-											{__('Dark Palette', 'neve') +
-												' / ' +
-												__('Upload Logo', 'neve')}
-										</p>
+									<div className="logo-select dark">
+										<button
+											className="logo-select-inner"
+											aria-hidden="true"
+											onClick={open}
+										>
+											<Icon
+												className="add-icon"
+												icon={plusCircleFilled}
+											/>
+											<p>
+												{__('Dark Palette', 'neve')}
+												<br />
+												{__('Upload Logo', 'neve')}
+											</p>
+										</button>
 									</div>
 								)}
 								{dark && (
@@ -242,9 +246,9 @@ const LogoPaletteComponent = ({ control }) => {
 											}}
 										/>
 										<p>
-											{__('Dark Palette', 'neve') +
-												' / ' +
-												__('Change Logo', 'neve')}
+											{__('Dark Palette', 'neve')}
+											<br />
+											{__('Change Logo', 'neve')}
 										</p>
 										<img
 											aria-hidden="true"
