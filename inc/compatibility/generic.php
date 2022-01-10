@@ -23,6 +23,10 @@ class Generic {
 		if ( class_exists( 'Mega_Menu', false ) ) {
 			add_filter( 'megamenu_themes', array( $this, 'max_megamenu_theme' ) );
 		}
+
+		if ( defined( 'FLUENTCRM' ) ) {
+			$this->fcrm_disable_global_color_palette();
+		}
 	}
 
 	/**
@@ -60,4 +64,30 @@ class Generic {
 		return $themes;
 	}
 
+	/**
+	 * FluentCRM compatibility.
+	 *
+	 * Disables global color palette for the FluentCRM editing screen.
+	 *
+	 * @return void
+	 */
+	public function fcrm_disable_global_color_palette() {
+		if ( ! is_admin() ) {
+			return;
+		}
+
+		if ( ! isset( $_GET['page'] ) ) {
+			return;
+		}
+
+		if ( $_GET['page'] !== 'fluentcrm-admin' ) {
+			return;
+		}
+		add_action(
+			'init',
+			function () {
+				remove_theme_support( 'editor-color-palette' );
+			}
+		);
+	}
 }
