@@ -51,10 +51,15 @@
 		margin: 15px 0 25px;
 	}
 
-  	.card-button-group {
-	  display: grid;
-	  grid-template-columns: min-content min-content;
-	  column-gap: 10px;
+	.card-button-wrap {
+	  display: flex;
+	  margin-top: auto;
+	  a {
+		margin-left: 10px;
+		&:first-child {
+		  margin: 0;
+		}
+	  }
 	}
 }
 
