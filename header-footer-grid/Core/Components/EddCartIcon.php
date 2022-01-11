@@ -69,7 +69,7 @@ class EddCartIcon extends Abstract_Component {
 						'defaultVal' => 15,
 					],
 				],
-				'live_refresh_selector' => $this->default_selector . ' span.nv-icon.nv-cart svg',
+				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar'  => [
 						'vars'     => '--iconSize',
@@ -100,16 +100,6 @@ class EddCartIcon extends Abstract_Component {
 						'vars'     => '--color',
 						'selector' => '.builder-item--' . $this->get_id(),
 					],
-					[
-						'selector' => $this->default_selector . ' svg',
-						'prop'     => 'fill',
-						'fallback' => 'inherit',
-					],
-					[
-						'selector' => $this->default_selector . ' .cart-icon-label',
-						'prop'     => 'color',
-						'fallback' => 'inherit',
-					],
 				],
 			]
 		);
@@ -129,16 +119,6 @@ class EddCartIcon extends Abstract_Component {
 					'cssVar' => [
 						'vars'     => '--hoverColor',
 						'selector' => '.builder-item--' . $this->get_id(),
-					],
-					[
-						'selector' => $this->default_selector . ':hover svg',
-						'prop'     => 'fill',
-						'fallback' => 'inherit',
-					],
-					[
-						'selector' => $this->default_selector . ':hover .cart-icon-label',
-						'prop'     => 'color',
-						'fallback' => 'inherit',
 					],
 				],
 			]
