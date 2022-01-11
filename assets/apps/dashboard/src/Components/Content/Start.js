@@ -87,10 +87,10 @@ const Start = (props) => {
 								href={neveDash.startSitesgetNeveProURL}
 								isSecondary
 							>
-								<span className="components-visually-hidden">
-									(opens in a new tab)
-								</span>
 								{__('Get Neve Pro', 'neve')}
+								<span className="components-visually-hidden">
+									{__('(opens in a new tab)', 'neve')}
+								</span>
 							</Button>
 						)}
 					</div>
