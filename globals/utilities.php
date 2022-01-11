@@ -576,6 +576,22 @@ function neve_edd_download_nav() {
 	$search_for   = array( $big, '#038;' );
 	$replace_with = array( '%#%', '&' );
 
+	$allowed_tags = array(
+		'ul'   => array(
+			'class' => array(),
+		),
+		'li'   => array(
+			'class' => array(),
+		),
+		'a'    => array(
+			'class' => array(),
+			'href'  => array(),
+		),
+		'span' => array(
+			'class' => array(),
+		),
+	);
+
 	$pagination = paginate_links(
 		array(
 			'base'      => str_replace( $search_for, $replace_with, get_pagenum_link( $big ) ),
@@ -589,8 +605,7 @@ function neve_edd_download_nav() {
 
 	<div id="edd_download_pagination" class="navigation">
 		<?php 
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $pagination; 
+		echo wp_kses( $pagination, $allowed_tags ); 
 		// TODO use pagination from pluggable class once we have infinite scroll supported for edd.
 		?>
 	</div>
