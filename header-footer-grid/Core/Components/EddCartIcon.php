@@ -52,8 +52,6 @@ class EddCartIcon extends Abstract_Component {
 	 */
 	public function add_settings() {
 
-		do_action( 'nv_edd_cart_icon_component_controls' );
-
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::SIZE_ID,
