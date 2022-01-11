@@ -20,7 +20,7 @@ class Easy_Digital_Downloads {
 	 * @return void
 	 */
 	public function init() {
-		if ( ! class_exists( 'Easy_Digital_Downloads' ) ) {
+		if ( ! class_exists( 'Easy_Digital_Downloads', false ) ) {
 			return;
 		}
 		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_edd_styles' ) );
