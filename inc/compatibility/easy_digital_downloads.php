@@ -35,8 +35,6 @@ class Easy_Digital_Downloads {
 	 */
 	public function add_body_class( $classes ) {
 
-		$classes = (array) $classes;
-
 		if ( edd_is_checkout() ||
 		edd_is_success_page() ||
 		edd_is_failed_transaction_page() ||
