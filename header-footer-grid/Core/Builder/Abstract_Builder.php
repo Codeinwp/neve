@@ -1217,7 +1217,7 @@ abstract class Abstract_Builder implements Builder {
 						'--bgPosition'       => [
 							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
 							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-								if ( empty( $value['focusPoint'] ) || empty( $value['focusPoint']['x'] ) || empty( $value['focusPoint']['y'] ) ) {
+								if ( ! $this->is_valid_focus_point( $value['focusPoint'] ) ) {
 									return '';
 								}
 
