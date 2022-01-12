@@ -158,27 +158,8 @@ const LogoPaletteComponent = ({ control }) => {
 					title={__('Change Logo', 'neve')}
 					render={({ open }) => (
 						<>
-							{!light && (
-								<div className="logo-select">
-									<button
-										className="logo-select-inner"
-										aria-hidden="true"
-										onClick={open}
-									>
-										<Icon
-											className="add-icon"
-											icon={plusCircleFilled}
-										/>
-										<p>
-											{__('Light Palette', 'neve')}
-											<br />
-											{__('Upload Logo', 'neve')}
-										</p>
-									</button>
-								</div>
-							)}
-							{light && (
-								<div className="logo-select">
+							<div className="logo-select">
+								{light && (
 									<Button
 										className="remove"
 										icon={trash}
@@ -187,19 +168,33 @@ const LogoPaletteComponent = ({ control }) => {
 											resetAttachment('light');
 										}}
 									/>
+								)}
+								<button
+									className="logo-select-inner"
+									onClick={open}
+								>
+									{!light && (
+										<Icon
+											className="add-icon"
+											icon={plusCircleFilled}
+										/>
+									)}
 									<p>
 										{__('Light Palette', 'neve')}
 										<br />
-										{__('Change Logo', 'neve')}
+										{dark
+											? __('Change Logo', 'neve')
+											: __('Upload Logo', 'neve')}
 									</p>
+								</button>
+								{light && (
 									<img
 										aria-hidden="true"
-										alt=""
+										alt={__('Light Palette', 'neve')}
 										src={light.url}
-										onClick={open}
 									/>
-								</div>
-							)}
+								)}
+							</div>
 						</>
 					)}
 				/>
@@ -216,27 +211,8 @@ const LogoPaletteComponent = ({ control }) => {
 						title={__('Change Logo', 'neve')}
 						render={({ open }) => (
 							<>
-								{!dark && (
-									<div className="logo-select dark">
-										<button
-											className="logo-select-inner"
-											aria-hidden="true"
-											onClick={open}
-										>
-											<Icon
-												className="add-icon"
-												icon={plusCircleFilled}
-											/>
-											<p>
-												{__('Dark Palette', 'neve')}
-												<br />
-												{__('Upload Logo', 'neve')}
-											</p>
-										</button>
-									</div>
-								)}
-								{dark && (
-									<div className="logo-select dark">
+								<div className="logo-select dark">
+									{dark && (
 										<Button
 											className="remove"
 											icon={trash}
@@ -245,19 +221,33 @@ const LogoPaletteComponent = ({ control }) => {
 												resetAttachment('dark');
 											}}
 										/>
+									)}
+									<button
+										className="logo-select-inner"
+										onClick={open}
+									>
+										{!dark && (
+											<Icon
+												className="add-icon"
+												icon={plusCircleFilled}
+											/>
+										)}
 										<p>
 											{__('Dark Palette', 'neve')}
 											<br />
-											{__('Change Logo', 'neve')}
+											{dark
+												? __('Change Logo', 'neve')
+												: __('Upload Logo', 'neve')}
 										</p>
+									</button>
+									{dark && (
 										<img
 											aria-hidden="true"
-											alt=""
+											alt={__('Dark Palette', 'neve')}
 											src={dark.url}
-											onClick={open}
 										/>
-									</div>
-								)}
+									)}
+								</div>
 							</>
 						)}
 					/>
