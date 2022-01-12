@@ -759,17 +759,17 @@ if (!newSkin) {
 			},
 			neve_other_pages_content_width: {
 				content:
-					'body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col, body.post-type-archive-course .neve-main > .container .col, body.post-type-archive-llms_membership .neve-main > .container .col',
+					'body:not(.single):not(.archive):not(.blog):not(.search):not(.error404) .neve-main > .container .col, body.post-type-archive-course .neve-main > .container .col, body.post-type-archive-llms_membership .neve-main > .container .col',
 				sidebar:
-					'body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap, body.post-type-archive-course .nv-sidebar-wrap, body.post-type-archive-llms_membership .nv-sidebar-wrap',
+					'body:not(.single):not(.archive):not(.blog):not(.search):not(.error404) .nv-sidebar-wrap, body.post-type-archive-course .nv-sidebar-wrap, body.post-type-archive-llms_membership .nv-sidebar-wrap',
 			},
 		},
 		contentWidthsPreview() {
+			const self = this;
 			$.each(this.contentWidths, function (id, args) {
 				wp.customize(id, function (value) {
 					value.bind(function (newval) {
-						const sidebar = $('.nv-sidebar-wrap');
-
+						const sidebar = $(self.contentWidths[id].sidebar);
 						if (newval >= 95) {
 							sidebar.addClass('hide');
 						} else {

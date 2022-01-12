@@ -1,4 +1,5 @@
-import { useState } from '@wordpress/element';
+/* global NeveReactCustomize */
+import { useState, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { InlineSelect, NumberControl } from '@neve-wp/components';
 import PropTypes from 'prop-types';
@@ -8,6 +9,7 @@ const Typeface = (props) => {
 
 	const {
 		label,
+		fontFamilyControl,
 		withTextTransform = true,
 		value = {
 			fontSize: {
@@ -69,6 +71,20 @@ const Typeface = (props) => {
 		},
 	} = props;
 
+	const [fontFamily, setFontFamily] = useState(
+		wp.customize.control(fontFamilyControl)
+			? wp.customize.control(fontFamilyControl).setting()
+			: ''
+	);
+
+	useEffect(() => {
+		window.wp.customize.bind('change', (setting) => {
+			if (setting.id === fontFamilyControl) {
+				setFontFamily(setting.get());
+			}
+		});
+	}, []);
+
 	const renderTextTransform = () => {
 		if (!withTextTransform) {
 			return;
@@ -106,22 +122,39 @@ const Typeface = (props) => {
 			fontWeight = 'none';
 		}
 
+		const { fontVariants, systemFontVariants } = NeveReactCustomize;
+		const allFontVariants = { ...fontVariants, ...systemFontVariants };
+		const defaultOptions = [
+			{ value: 'none', label: __('None', 'neve') },
+			{ value: 100, label: '100' },
+			{ value: 200, label: '200' },
+			{ value: 300, label: '300' },
+			{ value: 400, label: '400' },
+			{ value: 500, label: '500' },
+			{ value: 600, label: '600' },
+			{ value: 700, label: '700' },
+			{ value: 800, label: '800' },
+			{ value: 900, label: '900' },
+		];
+
+		let options;
+		if (allFontVariants[fontFamily] !== undefined) {
+			options = allFontVariants[fontFamily]
+				.filter((fv) => !fv.includes('italic'))
+				.reduce(
+					(acc, curr) => [
+						...acc,
+						{ value: parseInt(curr), label: curr },
+					],
+					[{ value: 'none', label: __('None', 'neve') }]
+				);
+		}
+
 		return (
 			<InlineSelect
 				label={__('Weight', 'neve')}
 				value={fontWeight}
-				options={[
-					{ value: 'none', label: __('None', 'neve') },
-					{ value: 100, label: '100' },
-					{ value: 200, label: '200' },
-					{ value: 300, label: '300' },
-					{ value: 400, label: '400' },
-					{ value: 500, label: '500' },
-					{ value: 600, label: '600' },
-					{ value: 700, label: '700' },
-					{ value: 800, label: '800' },
-					{ value: 900, label: '900' },
-				]}
+				options={options ? options : defaultOptions}
 				onChange={(nextValue) => {
 					onChange({ fontWeight: nextValue });
 					if (nextValue === 'none' && refreshAfterReset) {
@@ -159,11 +192,7 @@ const Typeface = (props) => {
 					onChange({ fontSize: nextVal });
 				}}
 				onReset={() => {
-					const nextFS = { ...fontSize };
-					nextFS[currentDevice] = defaultFS[currentDevice];
-					nextFS.suffix[currentDevice] =
-						defaultFS.suffix[currentDevice];
-					onChange({ fontSize: nextFS });
+					onChange({ fontSize: defaultFS });
 					if (refreshAfterReset) {
 						wp.customize.previewer.refresh();
 					}
@@ -196,11 +225,7 @@ const Typeface = (props) => {
 					onChange({ lineHeight: nextVal });
 				}}
 				onReset={() => {
-					const nextLH = { ...lineHeight };
-					nextLH[currentDevice] = defaultLH[currentDevice];
-					nextLH.suffix[currentDevice] =
-						defaultLH.suffix[currentDevice];
-					onChange({ lineHeight: nextLH });
+					onChange({ lineHeight: defaultLH });
 					if (refreshAfterReset) {
 						wp.customize.previewer.refresh();
 					}
@@ -241,9 +266,7 @@ const Typeface = (props) => {
 					onChange({ letterSpacing: nextVal });
 				}}
 				onReset={() => {
-					const nextLS = { ...letterSpacing };
-					nextLS[currentDevice] = defaultLS[currentDevice];
-					onChange({ letterSpacing: nextLS });
+					onChange({ letterSpacing: defaultLS });
 					if (refreshAfterReset) {
 						wp.customize.previewer.refresh();
 					}

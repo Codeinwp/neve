@@ -1,0 +1,36 @@
+$upsell_blue: #0065A6 !default;
+
+.control-section.neve-upsell {
+  	margin-bottom: 0;
+  	.upsell-inner {
+	  display: flex;
+	}
+	.neve-customizer-heading {
+	  color: $upsell_blue;
+	  padding: 7px 10px 7px 14px;
+	  display: flex;
+	  flex-grow: 1;
+	  margin: auto;
+	  letter-spacing: initial;
+	  font-size: 14px;
+	  font-weight: 600;
+
+	  &:hover, &:focus-within {
+		background-color: $upsell_blue;
+		color: #fff;
+		cursor: default;
+
+		.components-button {
+		  background: #fff;
+		  color: $upsell_blue;
+		}
+	  }
+
+	  .components-button {
+		margin-left: auto;
+		font-weight: 600;
+		font-size: 14px;
+		background: $upsell_blue;
+	  }
+	}
+}

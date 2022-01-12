@@ -13,10 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup PHP version
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '7.1'
           extensions: simplexml
+          tools: composer:v2.1
       - name: Checkout source code
         uses: actions/checkout@v2
       - name: Get Composer Cache Directory

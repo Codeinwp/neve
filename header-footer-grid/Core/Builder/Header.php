@@ -13,7 +13,11 @@ namespace HFG\Core\Builder;
 
 use HFG\Core\Customizer\Header_Presets;
 use HFG\Main;
+use Neve\Core\Styles\Dynamic_Selector;
+use Neve\Core\Theme_Info;
 use Neve\Customizer\Controls\React\Presets_Selector;
+use HFG\Core\Settings\Manager as SettingsManager;
+use WP_Customize_Control;
 use WP_Customize_Manager;
 
 /**
@@ -22,11 +26,26 @@ use WP_Customize_Manager;
  * @package HFG\Core\Builder
  */
 class Header extends Abstract_Builder {
+	use Theme_Info;
 
 	/**
 	 * Builder name.
 	 */
 	const BUILDER_NAME = 'header';
+
+	/**
+	 * Settings ids.
+	 */
+	const BACKGROUND_HEADING = 'background_heading';
+	const ADVANCED_STYLE     = 'advanced_style';
+	const BACKGROUND_SETTING = 'background';
+
+	/**
+	 * Default color for global header background
+	 *
+	 * @var string Background default color.
+	 */
+	protected $default_background = 'var(--nv-site-bg)';
 
 	/**
 	 * Header init.
@@ -78,6 +97,8 @@ class Header extends Abstract_Builder {
 				'hadOldBuilder'   => neve_had_old_hfb() && ! neve_is_new_skin(),
 			)
 		);
+
+		add_filter( 'hfg_header_wrapper_class', [ $this, 'add_class_to_header_wrapper' ] );
 	}
 
 	/**
@@ -130,9 +151,188 @@ class Header extends Abstract_Builder {
 			)
 		);
 
+		$wp_customize->add_section(
+			'neve_pro_global_header_settings',
+			[
+				'title'    => __( 'Global Header Settings', 'neve' ),
+				'priority' => 200,
+				'panel'    => 'hfg_header',
+			]
+		);
+
+		$this->customize_global_header();
+
+		SettingsManager::get_instance()->load( 'neve_pro_global_header_settings', $wp_customize );
+
+		$tabs = $wp_customize->get_control( 'neve_pro_global_header_settings_tabs' );
+		$this->move_pro_controls( $wp_customize, $tabs );
+
 		return parent::customize_register( $wp_customize );
 	}
 
+	/**
+	 * Moves the controls from pro in the specific tabs so that they
+	 * merge well with the Neve global header setting
+	 *
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 * @param WP_Customize_Control $global_settings_tabs The Tabs Control.
+	 */
+	private function move_pro_controls( WP_Customize_Manager $wp_customize, WP_Customize_Control $global_settings_tabs ) {
+		if ( ! property_exists( $global_settings_tabs, 'controls' ) || ! property_exists( $global_settings_tabs, 'tabs' ) ) {
+			return;
+		}
+
+		if ( $wp_customize->get_control( 'neve_transparent_header' ) !== null ) {
+			$global_settings_tabs->controls['style']['neve_transparent_header'] = [];
+		}
+
+		if ( $wp_customize->get_control( 'neve_transparent_only_on_home' ) !== null ) {
+			$wp_customize->get_control( 'neve_transparent_only_on_home' )->priority   = 10;
+			$global_settings_tabs->controls['style']['neve_transparent_only_on_home'] = [];
+		}
+
+		if ( $wp_customize->get_control( 'neve_global_header' ) !== null ) {
+			$global_settings_tabs->tabs['general']                           = [
+				'label' => esc_html__( 'General', 'neve' ),
+				'icon'  => 'admin-generic',
+			];
+			$global_settings_tabs->controls['general']['neve_global_header'] = [];
+		}
+
+		if ( $wp_customize->get_control( 'neve_header_conditional_selector' ) !== null ) {
+			$global_settings_tabs->controls['general']['neve_header_conditional_selector'] = [];
+		}
+
+		// sorts the tabs so the general tab is showed first
+		ksort( $global_settings_tabs->tabs );
+	}
+
+	/**
+	 * Registers controls for global header background
+	 */
+	private function customize_global_header() {
+		$section_id = 'neve_pro_global_header_settings';
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'        => self::BACKGROUND_HEADING,
+				'group'     => $section_id,
+				'label'     => esc_html__( 'Background', 'neve' ),
+				'section'   => $section_id,
+				'tab'       => 'style',
+				'priority'  => 15,
+				'transport' => 'postMessage',
+				'type'      => 'Neve\Customizer\Controls\Heading',
+				'options'   => [
+					'accordion'        => true,
+					'controls_to_wrap' => 20,
+					'expanded'         => true,
+					'class'            => 'background-accordion',
+				],
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::ADVANCED_STYLE,
+				'group'              => $section_id,
+				'label'              => esc_html__( 'Enable Advanced Options', 'neve' ),
+				'section'            => $section_id,
+				'tab'                => 'style',
+				'type'               => 'neve_toggle_control',
+				'priority'           => 25,
+				'transport'          => 'refresh',
+				'sanitize_callback'  => 'neve_sanitize_checkbox',
+				'default'            => true,
+				'conditional_header' => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::BACKGROUND_SETTING,
+				'group'                 => $section_id,
+				'section'               => $section_id,
+				'tab'                   => 'style',
+				'label'                 => esc_html__( 'Global', 'neve' ),
+				'type'                  => 'neve_background_control',
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => 'backgroundControl',
+						'selector' => '.global-styled',
+					],
+				],
+				'options'               => [
+					'priority'        => 30,
+					'active_callback' => [ $this, 'has_global_background' ],
+				],
+				'default'               => [
+					'type'       => 'color',
+					'colorValue' => $this->default_background,
+				],
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'neve_sanitize_background',
+				'conditional_header'    => true,
+			]
+		);
+
+		foreach ( $this->get_rows() as $row => $row_data ) {
+			if ( $row === 'sidebar' ) {
+				continue;
+			}
+
+			SettingsManager::get_instance()->add(
+				[
+					'id'                => $row . '_shortcut',
+					'group'             => $section_id,
+					'section'           => $section_id,
+					'tab'               => 'style',
+					'transport'         => 'postMessage',
+					'sanitize_callback' => 'esc_attr',
+					'type'              => '\Neve\Customizer\Controls\Button',
+					'priority'          => 35,
+					'options'           => [
+						'button_text'      => $row_data['title'],
+						'button_class'     => 'button_background',
+						'icon_class'       => 'edit',
+						'shortcut'         => true,
+						'is_button'        => false,
+						'control_to_focus' => 'hfg_header_layout_' . $row . '_background',
+						'active_callback'  => [ $this, 'has_not_global_background' ],
+					],
+				]
+			);
+		}
+	}
+
+	/**
+	 * Adds a class to the header wrapper.
+	 *
+	 * @param string $classes Existing classes.
+	 * @return string Updated classes.
+	 */
+	public function add_class_to_header_wrapper( $classes ) {
+		return $classes . ( $this->has_global_background() ? ' global-styled' : '' );
+	}
+
+	/**
+	 * Returns true if individual options from header background are disabled
+	 *
+	 * @return bool
+	 */
+	public function has_global_background() {
+		return ! get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true );
+	}
+
+	/**
+	 * Returns true if individual options from header background are active
+	 *
+	 * @return bool
+	 */
+	public function has_not_global_background() {
+		return ! $this->has_global_background();
+	}
 
 	/**
 	 * Method called via hook.
@@ -171,6 +371,95 @@ class Header extends Abstract_Builder {
 		Main::get_instance()->load( 'row-wrapper', $name );
 	}
 
+	/**
+	 * Method to add global header css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 * @return array
+	 */
+	public function add_style( array $css_array = array() ) {
+		$background = get_theme_mod(
+			'neve_pro_global_header_settings_background',
+			[
+				'type'       => 'color',
+				'colorValue' => 'var(--nv-site-bg)',
+			]
+		);
+
+		$rules         = [];
+		$control_id    = 'neve_pro_global_header_settings_background';
+		$selector      = '.global-styled';
+		$default_color = 'var(--nv-site-bg)';
+
+		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
+			$rules = array_merge(
+				$rules,
+				[
+					'--bgColor' => [
+						Dynamic_Selector::META_KEY     => $control_id . '.colorValue',
+						Dynamic_Selector::META_DEFAULT => $default_color,
+					],
+				]
+			);
+		}
+
+		if ( $background['type'] === 'image' ) {
+			$rules = array_merge(
+				$rules,
+				[
+					'--overlayColor'     => [
+						Dynamic_Selector::META_KEY => $control_id . '.overlayColorValue',
+					],
+					'--bgImage'          => [
+						Dynamic_Selector::META_KEY    => $control_id,
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							$image = $this->get_row_featured_image( $value['imageUrl'], $value['useFeatured'], $meta );
+							return sprintf( '%s:%s;', $css_prop, $image );
+						},
+					],
+					'--bgPosition'       => [
+						Dynamic_Selector::META_KEY    => $control_id,
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							if ( empty( $value['focusPoint'] ) || empty( $value['focusPoint']['x'] ) || empty( $value['focusPoint']['y'] ) ) {
+								return '';
+							}
+
+							$parsed_position = round( $value['focusPoint']['x'] * 100 ) . '% ' . round( $value['focusPoint']['y'] * 100 ) . '%;';
+
+							return sprintf( '%s:%s;', $css_prop, $parsed_position );
+						},
+					],
+					'--bgAttachment'     => [
+						Dynamic_Selector::META_KEY    => $control_id,
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							if ( ! isset( $value['fixed'] ) || $value['fixed'] !== true ) {
+								return '';
+							}
+
+							return sprintf( '%s:fixed;', $css_prop );
+						},
+					],
+					'--bgOverlayOpacity' => [
+						Dynamic_Selector::META_KEY    => $control_id,
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							if ( ! isset( $value['overlayOpacity'] ) ) {
+								return '';
+							}
+
+							return sprintf( '%s:%s;', $css_prop, $value['overlayOpacity'] / 100 );
+						},
+					],
+				]
+			);
+		}
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector,
+			Dynamic_Selector::KEY_RULES    => $rules,
+		];
+
+		return parent::add_style( $css_array );
+	}
 
 	/**
 	 * Return  the builder rows.
@@ -248,4 +537,32 @@ class Header extends Abstract_Builder {
 
 		return apply_filters( 'neve_header_presets_v2', $presets );
 	}
+
+	/**
+	 * Get upsell components.
+	 *
+	 * @return array
+	 */
+	protected function get_upsell_components() {
+		if ( $this->has_valid_addons() ) {
+			return [];
+		}
+
+		return [
+			[
+				'icon' => 'welcome-write-blog',
+				'name' => __( 'HTML', 'neve' ) . ' 2',
+			],
+			[
+				'icon' => 'embed-generic',
+				'name' => __( 'Custom Layouts', 'neve' ),
+			],
+			[
+				'icon' => 'share',
+				'name' => __( 'Social Icons', 'neve' ),
+			],
+		];
+	}
+
+
 }

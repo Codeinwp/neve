@@ -33,9 +33,11 @@ p {
 }
 
 a {
+	--linkDeco: none;
+
 	color: var(--nv-primary-accent);
 	cursor: pointer;
-	text-decoration: none;
+	text-decoration: var(--linkDeco);
 
 	&:hover,
 	&:focus {
@@ -49,8 +51,8 @@ a {
 .nv-template .neve-main,
 .nv-comment-content {
 
-	a:not([class*="button"]) {
-		text-decoration: underline;
+	a:not([class]) {
+		--linkDeco: underline;
 	}
 }
 

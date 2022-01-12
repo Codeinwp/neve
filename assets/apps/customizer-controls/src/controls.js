@@ -32,7 +32,9 @@ import { RepeaterControl } from './repeater/Control';
 import { RichTextControl } from './rich-text/Control';
 
 import './style.scss';
+import Documentation from './documentation-section/Documentation.tsx';
 import Instructions from './builder-instructions/Instructions.tsx';
+import Upsells from './builder-upsell/Upsells.tsx';
 
 const { controlConstructor } = wp.customize;
 
@@ -77,6 +79,23 @@ const initDeviceSwitchers = () => {
 	});
 };
 
+const initDocSection = () => {
+	const docs = document.querySelectorAll(
+		'.control-section.neve-documentation'
+	);
+
+	docs.forEach((node) => {
+		const slug = node.getAttribute('data-slug');
+		const section = wp.customize.section(slug);
+
+		if (!section) {
+			return;
+		}
+
+		render(<Documentation control={section} />, section.container[0]);
+	});
+};
+
 const initBlogPageFocus = () => {
 	wp.customize.section('neve_blog_archive_layout', (section) => {
 		section.expanded.bind((isExpanded) => {
@@ -92,6 +111,21 @@ const initBlogPageFocus = () => {
 				);
 			}
 		});
+	});
+};
+
+const initUpsellSection = () => {
+	const upsell = document.querySelectorAll('.control-section.neve-upsell');
+
+	upsell.forEach((node) => {
+		const slug = node.getAttribute('data-slug');
+		const section = wp.customize.section(slug);
+
+		if (!section) {
+			return;
+		}
+
+		render(<Upsells control={section} />, section.container[0]);
 	});
 };
 
@@ -171,7 +205,9 @@ const checkHasElementorTemplates = () => {
 };
 
 window.wp.customize.bind('ready', () => {
+	initDocSection();
 	initDynamicFields();
+	initUpsellSection();
 	initQuickLinksSections();
 	bindDataAttrQuickLinks();
 	initBlogPageFocus();
