@@ -92,7 +92,7 @@ class Logo extends Abstract_Component {
 		// We use this filter to port changes to the logo from the templates on the new component.
 		add_filter(
 			'pre_set_theme_mod_custom_logo',
-			function ( $value, $old_value ) {
+			function ( $value ) {
 				$conditional_main          = json_decode( Mods::get( self::COMPONENT_ID . '_' . self::LOGO, self::sanitize_logo_json( $old_value ) ), true );
 				$conditional_main['light'] = $value;
 				if ( $conditional_main['same'] ) {
