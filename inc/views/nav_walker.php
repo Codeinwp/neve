@@ -103,7 +103,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 
 		if ( isset( $item->classes ) && in_array( 'neve-mm-col', $item->classes, true ) ) {
-			$output .= '<li class="neve-mm-col">';
+			$output .= '<li class="' . esc_attr( join( ' ', $item->classes ) ) . '">';
 
 			return;
 		}
