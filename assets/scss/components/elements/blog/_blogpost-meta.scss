@@ -1,6 +1,8 @@
 @import "../../main/variables";
 
 .nv-meta-list {
+	display: flex;
+	flex-wrap: wrap;
 	margin-bottom: $spacing-md;
 	font-size: $text-sm;
 
