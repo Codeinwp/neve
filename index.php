@@ -12,6 +12,9 @@
  *
  * @since 1.0.0
  */
+
+use Neve\Views\Pluggable\Masonry;
+
 $container_class = apply_filters( 'neve_container_class_filter', 'container', 'blog-archive' );
 
 get_header();
@@ -20,6 +23,9 @@ $wrapper_classes = [ 'posts-wrapper' ];
 if ( ! neve_is_new_skin() ) {
 	$wrapper_classes[] = 'row';
 }
+
+$masonry            = new Masonry();
+$is_masonry_enabled = $masonry->is_masonry_enabled();
 
 ?>
 	<div class="<?php echo esc_attr( $container_class ); ?> archive-container">
@@ -116,16 +122,18 @@ if ( ! neve_is_new_skin() ) {
 							do_action( 'neve_loop_' . $current_post_type . '_entry_before' );
 						}
 
-						/**
-						 * Executes actions before rendering the post content.
-						 *
-						 * @since 2.11
-						 */
-						do_action( 'neve_loop_entry_before' );
+						if ( ! $is_masonry_enabled ) {
+							/**
+							 * Executes actions before rendering the post content.
+							 *
+							 * @since 2.11
+							 */
+							do_action( 'neve_loop_entry_before' );
+						}
 
 						get_template_part( 'template-parts/content', get_post_type() );
 
-						if ( $pagination_type !== 'infinite' ) {
+						if ( $pagination_type !== 'infinite' && ! $is_masonry_enabled ) {
 							if ( $post_index === $hook_after_post && $hook_after_post !== - 1 ) {
 								/**
 								 * Executes actions in the middle of the loop.
@@ -139,12 +147,14 @@ if ( ! neve_is_new_skin() ) {
 							$post_index ++;
 						}
 
-						/**
-						 * Executes actions after rendering the post content.
-						 *
-						 * @since 2.11
-						 */
-						do_action( 'neve_loop_entry_after' );
+						if ( ! $is_masonry_enabled ) {
+							/**
+							 * Executes actions after rendering the post content.
+							 *
+							 * @since 2.11
+							 */
+							do_action( 'neve_loop_entry_after' );
+						}
 
 						if ( $should_add_hook ) {
 							/**

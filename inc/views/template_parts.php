@@ -8,7 +8,7 @@
 
 namespace Neve\Views;
 
-use Neve\Core\Styles\Css_Vars;
+use Neve\Views\Pluggable\Masonry;
 
 /**
  * Class Template_Parts
@@ -62,6 +62,32 @@ class Template_Parts extends Base_View {
 	}
 
 	/**
+	 * Returns the markup of neve_loop_entry_${position} hook.
+	 *
+	 * @param string $position neve_loop_entry hook position.
+	 *
+	 * @return string
+	 */
+	private function maybe_get_loop_entry_hook( $position ) {
+		if ( ! in_array( $position, [ 'before', 'after' ], true ) ) {
+			return '';
+		}
+
+		$masonry            = new Masonry();
+		$is_masonry_enabled = $masonry->is_masonry_enabled();
+		if ( ! $is_masonry_enabled ) {
+			return '';
+		}
+
+		ob_start();
+		do_action( 'neve_loop_entry_' . $position );
+		$markup = ob_get_contents();
+		ob_end_clean();
+
+		return $markup;
+	}
+
+	/**
 	 * Render inner content for <article>
 	 *
 	 * @return string
@@ -71,10 +97,13 @@ class Template_Parts extends Base_View {
 
 		$layout = $this->get_layout();
 
+		$hook_before = $this->maybe_get_loop_entry_hook( 'before' );
+		$hook_after  = $this->maybe_get_loop_entry_hook( 'after' );
+
 		if ( in_array( $layout, [ 'alternative', 'default' ] ) ) {
 			$markup .= $this->get_post_thumbnail();
 			$markup .= '<div class="non-grid-content ' . esc_attr( $layout ) . '-layout-content">';
-			$markup .= $this->get_ordered_content_parts( true );
+			$markup .= $hook_before . $this->get_ordered_content_parts( true ) . $hook_after;
 			$markup .= '</div>';
 
 			return $markup;
@@ -94,14 +123,14 @@ class Template_Parts extends Base_View {
 			}
 			$markup .= '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
 			$markup .= '<div class="inner">';
-			$markup .= $this->get_ordered_content_parts( true );
+			$markup .= $hook_before . $this->get_ordered_content_parts( true ) . $hook_after;
 			$markup .= '</div>';
 			$markup .= '</div>';
 
 			return $markup;
 		}
 
-		return $this->get_ordered_content_parts();
+		return $hook_before . $this->get_ordered_content_parts() . $hook_after;
 	}
 
 	/**
