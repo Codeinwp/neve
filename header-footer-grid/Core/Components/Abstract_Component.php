@@ -379,6 +379,22 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
+	 * Method to check that the component is active.
+	 *
+	 * @return bool
+	 */
+	protected function is_component_active() {
+		$builders = Main::get_instance()->get_builders();
+		foreach ( $builders as $builder ) {
+			if ( $builder->is_component_active( $this->get_id() ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Method to set protected properties for class.
 	 *
 	 * @param string $key The property key name.
@@ -933,13 +949,14 @@ abstract class Abstract_Component implements Component {
 					'default'               => $this->typography_default,
 					'sanitize_callback'     => 'neve_sanitize_typography_control',
 					'options'               => [
-						'input_attrs' => array(
+						'input_attrs'         => array(
 							'size_units'             => [ 'em', 'px' ],
 							'weight_default'         => $this->typography_default['fontWeight'],
 							'size_default'           => $this->typography_default['fontSize'],
 							'line_height_default'    => $this->typography_default['lineHeight'],
 							'letter_spacing_default' => $this->typography_default['letterSpacing'],
 						),
+						'font_family_control' => $this->get_id() . '_' . self::FONT_FAMILY_ID,
 					],
 				]
 			);

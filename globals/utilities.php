@@ -271,33 +271,38 @@ function neve_kses_svg( $input ) {
 /**
  * Get standard fonts
  *
+ * @param bool $with_variants should fetch variants.
+ *
  * @return array
  */
-function neve_get_standard_fonts() {
-	return apply_filters(
-		'neve_standard_fonts_array',
-		array(
-			'Arial, Helvetica, sans-serif',
-			'Arial Black, Gadget, sans-serif',
-			'Bookman Old Style, serif',
-			'Comic Sans MS, cursive',
-			'Courier, monospace',
-			'Georgia, serif',
-			'Garamond, serif',
-			'Impact, Charcoal, sans-serif',
-			'Lucida Console, Monaco, monospace',
-			'Lucida Sans Unicode, Lucida Grande, sans-serif',
-			'MS Sans Serif, Geneva, sans-serif',
-			'MS Serif, New York, sans-serif',
-			'Palatino Linotype, Book Antiqua, Palatino, serif',
-			'Tahoma, Geneva, sans-serif',
-			'Times New Roman, Times, serif',
-			'Trebuchet MS, Helvetica, sans-serif',
-			'Verdana, Geneva, sans-serif',
-			'Paratina Linotype',
-			'Trebuchet MS',
-		)
+function neve_get_standard_fonts( $with_variants = false ) {
+	$fonts = array(
+		'Arial, Helvetica, sans-serif'                     => array( '400', '700', '400italic', '700italic' ),
+		'Arial Black, Gadget, sans-serif'                  => array( '900', '900italic' ),
+		'Bookman Old Style, serif'                         => array( '400', '700', '400italic', '700italic' ),
+		'Comic Sans MS, cursive'                           => array( '400', '700', '400italic', '700italic' ),
+		'Courier, monospace'                               => array( '400', '700', '400italic', '700italic' ),
+		'Georgia, serif'                                   => array( '400', '700', '400italic', '700italic' ),
+		'Garamond, serif'                                  => array( '400', '700', '400italic', '700italic' ),
+		'Impact, Charcoal, sans-serif'                     => array( '400', '700', '400italic', '700italic' ),
+		'Lucida Console, Monaco, monospace'                => array( '400', '700', '400italic', '700italic' ),
+		'Lucida Sans Unicode, Lucida Grande, sans-serif'   => array( '400', '700', '400italic', '700italic' ),
+		'MS Sans Serif, Geneva, sans-serif'                => array( '400', '700', '400italic', '700italic' ),
+		'MS Serif, New York, sans-serif'                   => array( '400', '700', '400italic', '700italic' ),
+		'Palatino Linotype, Book Antiqua, Palatino, serif' => array( '400', '700', '400italic', '700italic' ),
+		'Tahoma, Geneva, sans-serif'                       => array( '400', '700', '400italic', '700italic' ),
+		'Times New Roman, Times, serif'                    => array( '400', '700', '400italic', '700italic' ),
+		'Trebuchet MS, Helvetica, sans-serif'              => array( '400', '700', '400italic', '700italic' ),
+		'Verdana, Geneva, sans-serif'                      => array( '400', '700', '400italic', '700italic' ),
+		'Paratina Linotype'                                => array( '400', '700', '400italic', '700italic' ),
+		'Trebuchet MS'                                     => array( '400', '700', '400italic', '700italic' ),
 	);
+
+	if ( $with_variants ) {
+		return apply_filters( 'neve_standard_fonts_with_variants_array', $fonts );
+	}
+
+	return apply_filters( 'neve_standard_fonts_array', array_keys( $fonts ) );
 }
 
 /**
