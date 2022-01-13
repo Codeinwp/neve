@@ -229,6 +229,7 @@ window.wp.customize.bind('ready', () => {
 	initCustomPagesFocus();
 	checkHasElementorTemplates();
 	initDeviceSwitchers();
+	initBlogPageFocus();
 });
 
 window.HFG = {
