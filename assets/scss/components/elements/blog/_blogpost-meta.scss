@@ -1,14 +1,12 @@
 @import "../../main/variables";
 
 .nv-meta-list {
-	display: flex;
-	flex-wrap: wrap;
 	margin-bottom: $spacing-md;
 	font-size: $text-sm;
 
 	li,
 	span {
-		display: inline;
+		display: inline-block;
 
 		&:not(:last-child)::after {
 			content: "/";
