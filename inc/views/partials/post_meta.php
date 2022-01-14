@@ -145,7 +145,8 @@ class Post_Meta extends Base_View {
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'reading':
-					if ( $post_type !== 'post' ) {
+					$allowed_context = apply_filters( 'neve_post_type_supported_list', [ 'post' ], 'block_editor' );
+					if ( ! in_array( $post_type, $allowed_context ) ) {
 						break;
 					}
 					$reading_time = apply_filters( 'neve_do_read_time', '' );
