@@ -69,6 +69,11 @@ class Factory {
 	 */
 	public function build( $class ) {
 		$full_class_name = $this->namespace . $class;
+
+		if ( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '2.2.0', '>=' ) && substr( $full_class_name, 0, 18 ) === '\Neve_Pro\Modules\\' ) { // TODO: check the neve pro version before the release.
+			return $full_class_name::get_instance();
+		}
+
 		return new $full_class_name();
 	}
 }
