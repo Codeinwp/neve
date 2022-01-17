@@ -3,15 +3,36 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import SVG from '../Common/svg';
 
-import { Button } from '@wordpress/components';
+import { Button, TextareaControl } from '@wordpress/components';
+import { useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 const RadioIcons = ({
 	options,
 	onChange,
 	value,
+	customSetting,
 	showLabels,
 	largeButtons = false,
 }) => {
+	const [open, setOpen] = useState(value === 'custom');
+	const [error, setError] = useState(false);
+	const [customSVG, setCustomSVG] = useState(
+		customSetting ? window.atob(customSetting()) : ''
+	);
+	const [customValue, setCustomValue] = useState(
+		customSetting ? window.atob(customSetting()) : ''
+	);
+
+	const updateCustomValue = () => {
+		try {
+			customSetting.set(window.btoa(customSVG));
+			setCustomValue(customSVG);
+		} catch (e) {
+			setError(__('The input contains invalid characters.', 'neve'));
+		}
+	};
+
 	const Buttons = () => {
 		return Object.keys(options).map((type, index) => {
 			if (options[type].icon === 'text') {
@@ -40,6 +61,7 @@ const RadioIcons = ({
 						icon={icon}
 						onClick={() => {
 							onChange(type);
+							setOpen(type === 'custom');
 						}}
 					/>
 					{showLabels && (
@@ -52,15 +74,49 @@ const RadioIcons = ({
 		});
 	};
 
+	if (error) {
+		setTimeout(() => setError(false), 4000);
+	}
+
 	const wrapClasses = classnames([
 		'neve-radio-icons',
 		{ 'large-buttons': largeButtons },
 	]);
 
 	return (
-		<div className={wrapClasses}>
-			<Buttons />
-		</div>
+		<>
+			<div className={wrapClasses}>
+				<Buttons />
+			</div>
+			{open && (
+				<div className="neve-radio-icons-custom-svg">
+					<TextareaControl
+						label="Custom SVG"
+						onChange={setCustomSVG}
+						value={customSVG}
+						rows={8}
+					/>
+					<div className="custom-svg-buttons">
+						<Button
+							isPrimary
+							isSmall
+							disabled={customSVG === customValue}
+							onClick={updateCustomValue}
+						>
+							Save
+						</Button>
+						<Button
+							isSecondary
+							isSmall
+							onClick={() => setCustomSVG('')}
+						>
+							Clear
+						</Button>
+					</div>
+				</div>
+			)}
+			{error && <div className="error">{error}</div>}
+		</>
 	);
 };
 

@@ -11,9 +11,10 @@ namespace HFG;
 
 use HFG\Core\Components\PaletteSwitch;
 
-$icon_type = component_setting( PaletteSwitch::TOGGLE_ICON_ID );
-$svg_icon  = PaletteSwitch::get_icon( $icon_type );
-$label     = component_setting( PaletteSwitch::PLACEHOLDER_ID );
+$icon_type   = component_setting( PaletteSwitch::TOGGLE_ICON_ID );
+$icon_custom = component_setting( PaletteSwitch::TOGGLE_CUSTOM_ID, '' );
+$svg_icon    = PaletteSwitch::get_icon( $icon_type, $icon_custom );
+$label       = component_setting( PaletteSwitch::PLACEHOLDER_ID );
 
 $amp_state = '';
 if ( neve_is_amp() ) {

@@ -4,9 +4,11 @@ import { SVG, RadioIcons } from '@neve-wp/components';
 
 import { __ } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
+import { code } from '@wordpress/icons';
 
 const RadioButtonsComponent = ({ control }) => {
 	const [value, setValue] = useState(control.setting.get());
+	const { custom } = control.settings;
 
 	useEffect(() => {
 		document.addEventListener('neve-changed-customizer-value', (e) => {
@@ -152,6 +154,14 @@ const RadioButtonsComponent = ({ control }) => {
 	};
 	const { label, large_buttons, showLabels } = control.params;
 
+	const options = getChoices();
+	if (custom) {
+		options.custom = {
+			tooltip: __('Import custom SVG', 'neve'),
+			icon: code,
+		};
+	}
+
 	return (
 		<div className="neve-white-background-control">
 			{label && <span className="customize-control-title">{label}</span>}
@@ -159,7 +169,8 @@ const RadioButtonsComponent = ({ control }) => {
 				largeButtons={large_buttons}
 				showLabels={showLabels}
 				value={value}
-				options={getChoices()}
+				customSetting={custom}
+				options={options}
 				onChange={updateValue}
 			/>
 		</div>

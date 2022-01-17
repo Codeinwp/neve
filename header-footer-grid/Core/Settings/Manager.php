@@ -141,6 +141,38 @@ class Manager {
 				)
 			);
 
+			if ( isset( $arguments['settings'] ) ) {
+				foreach ( array_keys( $arguments['settings'] ) as $setting ) {
+					if ( $setting === 'default' ) {
+						$customize_manager->add_setting(
+							$id,
+							array(
+								'default'           => $arguments['preview_default'],
+								'theme_supports'    => Config::get_support(),
+								'transport'         => $transport,
+								'sanitize_callback' =>
+									isset( $arguments['sanitize_callback'] )
+										? $arguments['sanitize_callback']
+										: 'wp_filter_nohtml_kses',
+							)
+						);
+
+						continue;
+					}
+
+					$data = $arguments[ 'setting_' . $setting ] ?? [];
+					$customize_manager->add_setting(
+						$arguments['settings'][ $setting ],
+						array(
+							'default'           => $data['default'] ?? '',
+							'theme_supports'    => Config::get_support(),
+							'transport'         => isset( $core_transports[ $data['transport'] ] ) ? $data['transport'] : $this->handle_transport( $data['transport'], $arguments['settings'][ $setting ] ),
+							'sanitize_callback' => $data['sanitize_callback'] ?? 'wp_filter_nohtml_kses',
+						)
+					);
+				}
+			}
+
 			if ( ! isset( $arguments['type'] ) ) {
 				continue;
 			}
@@ -152,7 +184,8 @@ class Manager {
 					'description' => isset( $arguments['description'] ) ? $arguments['description'] : '',
 					'section'     => isset( $arguments['section'] ) ? $arguments['section'] : '',
 				],
-				isset( $arguments['options'] ) ? $arguments['options'] : []
+				isset( $arguments['options'] ) ? $arguments['options'] : [],
+				isset( $arguments['settings'] ) ? [ 'settings' => $arguments['settings'] ] : []
 			);
 
 			if ( ! is_subclass_of( $type, '\WP_Customize_Control' ) ) {
