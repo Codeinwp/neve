@@ -1217,7 +1217,7 @@ abstract class Abstract_Builder implements Builder {
 						'--bgPosition'       => [
 							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
 							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-								if ( empty( $value['focusPoint'] ) || empty( $value['focusPoint']['x'] ) || empty( $value['focusPoint']['y'] ) ) {
+								if ( ! $this->is_valid_focus_point( $value['focusPoint'] ) ) {
 									return '';
 								}
 
@@ -1575,6 +1575,11 @@ abstract class Abstract_Builder implements Builder {
 						if ( strpos( $component_slug, 'primary-menu' ) === false && strpos( $component_slug, 'secondary-menu' ) === false ) {
 							continue;
 						}
+
+						if ( strpos( $component_slug, 'primary-menu' ) !== false && ! in_array( 'has-nav', $component_group['classes'], true ) ) {
+							$component_group['classes'][] = 'has-nav';
+						}
+
 						$component_group['classes'][] = 'has-' . $component_slug;
 					}
 				}

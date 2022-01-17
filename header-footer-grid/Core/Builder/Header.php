@@ -420,7 +420,7 @@ class Header extends Abstract_Builder {
 					'--bgPosition'       => [
 						Dynamic_Selector::META_KEY    => $control_id,
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							if ( empty( $value['focusPoint'] ) || empty( $value['focusPoint']['x'] ) || empty( $value['focusPoint']['y'] ) ) {
+							if ( ! $this->is_valid_focus_point( $value['focusPoint'] ) ) {
 								return '';
 							}
 
