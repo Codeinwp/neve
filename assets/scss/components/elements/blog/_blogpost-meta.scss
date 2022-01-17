@@ -6,7 +6,7 @@
 
 	li,
 	span {
-		display: inline;
+		display: inline-block;
 
 		&:not(:last-child)::after {
 			content: "/";
