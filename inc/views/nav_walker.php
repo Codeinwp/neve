@@ -97,7 +97,13 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 
 		if ( isset( $item->title ) && $item->title === 'divider' ) {
-			$output .= '<li role="presentation" class="neve-mm-divider">';
+			$classes = [ 'neve-mm-divider' ];
+
+			if ( isset( $item->classes ) ) {
+				$classes = array_merge( $classes, $item->classes );
+			}
+
+			$output .= '<li role="presentation" class="' . esc_attr( join( ' ', $classes ) ) . '">';
 
 			return;
 		}
@@ -154,19 +160,6 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 
 		if ( in_array( 'neve-mm-heading', $item->classes, true ) ) {
-			add_filter(
-				'nav_menu_css_class',
-				function ( $classes, $nav_item, $args, $depth ) use ( $item ) {
-					if ( $nav_item !== $item ) {
-						return $classes;
-					}
-
-					return array( 'neve-mm-heading' );
-				},
-				10,
-				4
-			);
-
 			if ( $item->url === '#' ) {
 				add_filter(
 					'walker_nav_menu_start_el',
