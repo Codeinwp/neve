@@ -251,7 +251,7 @@ class PaletteSwitch extends Abstract_Component {
 			return '';
 		}
 
-		$css                                 .= ' ';
+		$style                                = ' ';
 		$auto_adjust                          = Mods::get( $this->get_id() . '_' . self::AUTO_ADJUST, 0 );
 		list( $palette_light, $palette_dark ) = $this->get_light_dark_palettes();
 
@@ -266,7 +266,7 @@ class PaletteSwitch extends Abstract_Component {
 		}
 
 		if ( $auto_adjust && ! is_customize_preview() ) {
-			$css .= '
+			$style .= '
 				/* Light mode */
 				@media (prefers-color-scheme: light) {
 				  :root{
@@ -283,7 +283,7 @@ class PaletteSwitch extends Abstract_Component {
 			';
 		}
 
-		return $css . '
+		$style .= '
 		[data-neve-theme="light"], html.neve-light-theme {
 			' . $light_css . '
 		}
@@ -291,6 +291,8 @@ class PaletteSwitch extends Abstract_Component {
 			' . $dark_css . '
 		}
 		';
+
+		return $style;
 	}
 
 	/**
