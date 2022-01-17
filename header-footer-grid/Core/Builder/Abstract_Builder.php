@@ -1575,6 +1575,11 @@ abstract class Abstract_Builder implements Builder {
 						if ( strpos( $component_slug, 'primary-menu' ) === false && strpos( $component_slug, 'secondary-menu' ) === false ) {
 							continue;
 						}
+
+						if ( strpos( $component_slug, 'primary-menu' ) !== false && ! in_array( 'has-nav', $component_group['classes'], true ) ) {
+							$component_group['classes'][] = 'has-nav';
+						}
+
 						$component_group['classes'][] = 'has-' . $component_slug;
 					}
 				}
