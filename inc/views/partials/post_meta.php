@@ -44,7 +44,7 @@ class Post_Meta extends Base_View {
 	public function should_display_author_avatar( $value ) {
 
 		$show_avatar = get_theme_mod( 'neve_author_avatar', false );
-		if ( is_singular( 'post' ) ) {
+		if ( is_singular() ) {
 			$show_avatar = get_theme_mod( 'neve_single_post_author_avatar', $show_avatar );
 		}
 
@@ -349,7 +349,7 @@ class Post_Meta extends Base_View {
 	public function meta_custom_separator() {
 
 		$separator = get_theme_mod( 'neve_metadata_separator', esc_html( '/' ) );
-		if ( is_singular( 'post' ) ) {
+		if ( is_singular() ) {
 			$separator = get_theme_mod( 'neve_single_post_metadata_separator', $separator );
 		}
 		$separator = apply_filters( 'neve_metadata_separator_filter', $separator );
