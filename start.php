@@ -16,6 +16,7 @@ function neve_run() {
 			'repeater_control'      => true,
 			'malformed_div_on_shop' => true,
 			'mega_menu'             => true,
+			'scroll_to_top_icons'   => true,
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
