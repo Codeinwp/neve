@@ -16,21 +16,16 @@ const RadioIcons = ({
 	largeButtons = false,
 }) => {
 	const [open, setOpen] = useState(value === 'custom');
-	const [error, setError] = useState(false);
 	const [customSVG, setCustomSVG] = useState(
-		customSetting ? window.atob(customSetting()) : ''
+		customSetting ? customSetting() : ''
 	);
 	const [customValue, setCustomValue] = useState(
-		customSetting ? window.atob(customSetting()) : ''
+		customSetting ? customSetting() : ''
 	);
 
 	const updateCustomValue = () => {
-		try {
-			customSetting.set(window.btoa(customSVG));
-			setCustomValue(customSVG);
-		} catch (e) {
-			setError(__('The input contains invalid characters.', 'neve'));
-		}
+		customSetting.set(customSVG);
+		setCustomValue(customSVG);
 	};
 
 	const Buttons = () => {
@@ -74,10 +69,6 @@ const RadioIcons = ({
 		});
 	};
 
-	if (error) {
-		setTimeout(() => setError(false), 4000);
-	}
-
 	const wrapClasses = classnames([
 		'neve-radio-icons',
 		{ 'large-buttons': largeButtons },
@@ -91,7 +82,7 @@ const RadioIcons = ({
 			{open && (
 				<div className="neve-radio-icons-custom-svg">
 					<TextareaControl
-						label="Custom SVG"
+						label={__('Custom SVG', 'neve')}
 						onChange={setCustomSVG}
 						value={customSVG}
 						rows={8}
@@ -103,19 +94,18 @@ const RadioIcons = ({
 							disabled={customSVG === customValue}
 							onClick={updateCustomValue}
 						>
-							Save
+							{__('Save', 'neve')}
 						</Button>
 						<Button
 							isSecondary
 							isSmall
 							onClick={() => setCustomSVG('')}
 						>
-							Clear
+							{__('Clear', 'neve')}
 						</Button>
 					</div>
 				</div>
 			)}
-			{error && <div className="error">{error}</div>}
 		</>
 	);
 };

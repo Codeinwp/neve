@@ -63,8 +63,18 @@
   }
 }
 
-.neve-radio-icons-custom-svg .custom-svg-buttons {
-  display: flex;
-  justify-content: flex-end;
-  column-gap: 5px;
+.neve-radio-icons-custom-svg {
+  overflow: hidden;
+  animation: .3s appear ease-out;
+
+  .custom-svg-buttons {
+	display: flex;
+	justify-content: flex-end;
+	column-gap: 5px;
+  }
+}
+
+@keyframes appear {
+  from { max-height: 0; }
+  to { max-height: 300px; }
 }

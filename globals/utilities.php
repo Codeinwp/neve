@@ -174,7 +174,7 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '', $icon_custo
 	}
 
 	if ( $cart_icon === 'custom' ) {
-		$icon = base64_decode( $icon_custom, true );
+		$icon = $icon_custom;
 	}
 
 	$svg = '<span class="nv-icon nv-cart">' . $icon . '</span>';
@@ -271,18 +271,6 @@ function neve_kses_svg( $input ) {
 	$svg_args = neve_get_svg_allowed_tags();
 
 	return neve_custom_kses_escape( $input, $svg_args );
-}
-
-/**
- * Sanitize base64 encoded SVG
- *
- * @param string $value the input string.
- *
- * @return string
- */
-function neve_sanitize_encoded_svg( $value ) {
-	$sanitized_svg = neve_kses_svg( base64_decode( $value, true ) );
-	return base64_encode( force_balance_tags( $sanitized_svg ) );
 }
 
 /**

@@ -68,7 +68,7 @@ class PaletteSwitch extends Abstract_Component {
 	 */
 	public static function get_icon( $icon, $icon_custom = '' ) {
 		if ( $icon === 'custom' ) {
-			return base64_decode( $icon_custom, true );
+			return $icon_custom;
 		}
 
 		$available_icons = [
@@ -357,7 +357,7 @@ class PaletteSwitch extends Abstract_Component {
 			],
 			'setting_custom' => [
 				'transport'         => 'post' . self::COMPONENT_ID,
-				'sanitize_callback' => 'neve_sanitize_encoded_svg',
+				'sanitize_callback' => 'neve_kses_svg',
 				'default'           => '',
 			],
 		] : [];
@@ -379,7 +379,7 @@ class PaletteSwitch extends Abstract_Component {
 						'is_for' => 'palette_switch',
 					],
 					'section'           => $this->section,
-				] 
+				]
 			)
 		);
 
