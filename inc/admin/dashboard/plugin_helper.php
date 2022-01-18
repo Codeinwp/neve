@@ -116,4 +116,23 @@ class Plugin_Helper {
 			esc_url( network_admin_url( 'plugins.php' ) )
 		);
 	}
+
+	/**
+	 * Get plugin version.
+	 *
+	 * @param string $slug plugin slug.
+	 * @return string | bool
+	 */
+	public function get_plugin_version( $slug, $default = false ) {
+		$plugin_file = $this->get_plugin_path( $slug );
+		if ( ! is_plugin_active( $plugin_file ) ) {
+			return $default;
+		}
+
+		$plugin_data = get_plugin_data( ABSPATH . 'wp-content/plugins/' . $plugin_file );
+		if ( ! empty( $plugin_data ) && array_key_exists( 'Version', $plugin_data ) ) {
+			return $plugin_data['Version'];
+		}
+		return $default;
+	}
 }
