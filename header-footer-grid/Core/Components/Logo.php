@@ -11,9 +11,12 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Script_Register;
 use HFG\Core\Settings\Config;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use Neve\Core\Dynamic_Css;
+use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
 
 /**
@@ -25,7 +28,9 @@ class Logo extends Abstract_Component {
 
 
 	const COMPONENT_ID = 'logo';
+	const LOGO         = 'logo';
 	const CUSTOM_LOGO  = 'custom_logo';
+	const USE_SAME     = 'same_logo';
 	const DISPLAY      = 'display';
 	const MAX_WIDTH    = 'max_width';
 	const SHOW_TITLE   = 'show_title';
@@ -79,6 +84,184 @@ class Logo extends Abstract_Component {
 		$this->set_property( 'preview_image', esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/component-site-logo.jpg' ) );
 		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() . ' .site-logo' );
 		$this->set_property( 'has_horizontal_alignment', true );
+
+		add_filter( 'hfg_component_scripts', [ $this, 'register_script' ] );
+
+		add_filter( 'hfg_logo_variants', [ $this, 'filter_logo_variants' ] );
+
+		// We use this filter to port changes to the logo from the templates on the new component.
+		add_filter( 'pre_set_theme_mod_custom_logo', [ $this, 'update_logo_theme_mod' ], 10, 2 );
+	}
+
+	/**
+	 * Updates the theme mode JSON based on the custom logo value.
+	 * Used for backwards compatibility with previous component.
+	 *
+	 * @param string $value The new value for the theme mod.
+	 * @param string $old_value The previous value.
+	 *
+	 * @return string
+	 */
+	public function update_logo_theme_mod( $value, $old_value ) {
+		$conditional_main          = json_decode( Mods::get( self::COMPONENT_ID . '_' . self::LOGO, self::sanitize_logo_json( $old_value ) ), true );
+		$conditional_main['light'] = $value;
+		if ( $conditional_main['same'] ) {
+			$conditional_main['dark'] = $value;
+		}
+		$update_palette_logo = wp_json_encode( $conditional_main );
+		set_theme_mod( self::COMPONENT_ID . '_' . self::LOGO, $update_palette_logo );
+		return $value;
+	}
+
+	/**
+	 * Register Inline Scripts for component.
+	 *
+	 * @return string
+	 */
+	public function register_script() {
+		$script_register = Script_Register::get_instance();
+		if ( ( $this->is_component_active() || is_customize_preview() ) && $script_register->is_queued( self::COMPONENT_ID ) === false ) {
+			$script_register->register_script( self::COMPONENT_ID, $this->toggle_script() );
+		}
+		return $script_register->inline_scripts();
+	}
+
+	/**
+	 * Method to check that the component is active.
+	 *
+	 * @return bool
+	 */
+	protected function is_component_active() {
+		$builders = Main::get_instance()->get_builders();
+		foreach ( $builders as $builder ) {
+			if ( $builder->is_component_active( $this->get_id() ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Load Component Scripts
+	 *
+	 * @return void
+	 */
+	public function load_scripts() {
+		if ( $this->is_component_active() || is_customize_preview() ) {
+			wp_add_inline_script( 'neve-script', $this->toggle_script() );
+		}
+	}
+
+	/**
+	 * Generate the variants for the Logo
+	 *
+	 * @param array $variants Contains other variants from similar components.
+	 *
+	 * @return array
+	 */
+	public function filter_logo_variants( $variants ) {
+		$main_logo          = get_theme_mod( 'custom_logo' );
+		$conditional_main   = json_decode( Mods::get( self::COMPONENT_ID . '_' . self::LOGO, self::sanitize_logo_json( $main_logo ) ), true );
+		$logo_main_light_id = $main_logo;
+		$logo_main_dark_id  = $logo_main_light_id;
+		$logo_main_same     = true;
+		if ( ! empty( $conditional_main ) ) {
+			$logo_main_light_id = isset( $conditional_main['light'] ) ? $conditional_main['light'] : $main_logo;
+			$logo_main_dark_id  = isset( $conditional_main['dark'] ) ? $conditional_main['dark'] : $logo_main_light_id;
+			$logo_main_same     = isset( $conditional_main['same'] ) ? $conditional_main['same'] : $logo_main_same;
+		}
+
+		$variants[ $this->get_id() ] = array(
+			'light' => array(
+				'src'    => wp_get_attachment_image_url( $logo_main_light_id, apply_filters( 'hfg_logo_image_size', 'full' ), false ),
+				'srcset' => wp_get_attachment_image_srcset( $logo_main_light_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+				'sizes'  => wp_get_attachment_image_sizes( $logo_main_light_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+			),
+			'dark'  => array(
+				'src'    => wp_get_attachment_image_url( $logo_main_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ), false ),
+				'srcset' => wp_get_attachment_image_srcset( $logo_main_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+				'sizes'  => wp_get_attachment_image_sizes( $logo_main_dark_id, apply_filters( 'hfg_logo_image_size', 'full' ) ),
+			),
+			'same'  => $logo_main_same,
+		);
+		return $variants;
+	}
+
+	/**
+	 * Get JS contents from file to use as inline script.
+	 *
+	 * @return string
+	 */
+	public function toggle_script() {
+		$variants      = apply_filters( 'hfg_logo_variants', array() );
+		$variants_json = wp_json_encode( $variants );
+
+		$script = <<<JS
+	var html = document.documentElement;
+	var theme = html.getAttribute('data-neve-theme') || 'light';
+	var variants = {$variants_json};
+
+	function setCurrentTheme( theme ) {
+		var pictures = document.getElementsByClassName( 'neve-site-logo' );
+		for(var i = 0; i<pictures.length; i++) {
+			var picture = pictures.item(i);
+			if( ! picture ) {
+				continue;
+			};
+			var compId = picture.getAttribute('data-variant');
+			if ( compId && variants[compId] ) {
+				var isConditional = variants[compId]['same'];
+				console.log(variants[compId]);
+				if ( theme === 'light' || isConditional || variants[compId]['dark']['src'] === false ) {
+					picture.src = variants[compId]['light']['src'];
+					picture.srcset = variants[compId]['light']['srcset'] || '';
+					picture.sizes = variants[compId]['light']['sizes'];
+					continue;
+				};
+				picture.src = variants[compId]['dark']['src'];
+				picture.srcset = variants[compId]['dark']['srcset'] || '';
+				picture.sizes = variants[compId]['dark']['sizes'];
+			};
+		};
+	};
+
+	var observer = new MutationObserver(function(mutations) {
+		mutations.forEach(function(mutation) {
+			if (mutation.type == 'attributes') {
+				theme = html.getAttribute('data-neve-theme');
+				setCurrentTheme(theme);
+			};
+		});
+	});
+
+	observer.observe(html, {
+		attributes: true
+	});
+JS;
+		return $script;
+	}
+
+	/**
+	 * Sanitize the logo json
+	 *
+	 * @param string $input A json data for the logo component.
+	 *
+	 * @return string
+	 */
+	public static function sanitize_logo_json( $input ) {
+		$inputs = json_decode( $input, true );
+		if ( is_array( $inputs ) && ! empty( $inputs ) && ! empty( $input ) ) {
+			return $input;
+		}
+
+		return wp_json_encode(
+			array(
+				'light' => get_theme_mod( 'custom_logo' ),
+				'dark'  => get_theme_mod( 'custom_logo' ),
+				'same'  => true,
+			)
+		);
 	}
 
 	/**
@@ -88,12 +271,13 @@ class Logo extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_settings() {
+
 		if ( $this->get_class_const( 'COMPONENT_ID' ) === 'logo' ) {
 			SettingsManager::get_instance()->add_controls_to_tabs(
 				$this->get_class_const( 'COMPONENT_ID' ),
 				array(
 					SettingsManager::TAB_GENERAL => array(
-						self::CUSTOM_LOGO => array(),
+						self::LOGO        => array(),
 						'blogname'        => array(),
 						'blogdescription' => array(),
 						'site_icon'       => array(),
@@ -101,6 +285,37 @@ class Logo extends Abstract_Component {
 				)
 			);
 		}
+
+		$custom_logo_args = get_theme_support( 'custom-logo' );
+		$default          = array(
+			'light' => get_theme_mod( 'custom_logo' ),
+			'dark'  => get_theme_mod( 'custom_logo' ),
+			'same'  => true,
+		);
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::LOGO,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'transport'         => 'refresh',
+				'sanitize_callback' => array( $this, 'sanitize_logo_json' ),
+				'default'           => wp_json_encode( $default ),
+				'type'              => '\Neve\Customizer\Controls\React\Logo_Palette',
+				'options'           => [
+					'priority'    => 0,
+					'input_attrs' => [
+						'builderListen' => 'hfg_header_layout' . ( neve_is_new_builder() ? '_v2' : '' ),
+						'compChange'    => PaletteSwitch::COMPONENT_ID,
+						'sameLabel'     => __( 'Use one logo for both modes', 'neve' ),
+						'height'        => isset( $custom_logo_args[0]['height'] ) ? $custom_logo_args[0]['height'] : null,
+						'width'         => isset( $custom_logo_args[0]['width'] ) ? $custom_logo_args[0]['width'] : null,
+						'flexHeight'    => isset( $custom_logo_args[0]['flex-height'] ) ? $custom_logo_args[0]['flex-height'] : true,
+						'flexWidth'     => false, // this can not flex as to allow correct cropping
+					],
+				],
+				'section'           => $this->section,
+			]
+		);
 
 		SettingsManager::get_instance()->add(
 			[

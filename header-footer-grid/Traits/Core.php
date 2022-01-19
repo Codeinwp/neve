@@ -109,4 +109,27 @@ trait Core {
 
 		return array();
 	}
+
+	/**
+	 * Checks that a focus point array is valid.
+	 *
+	 * @param array $input coordinates array [x=>number, y=>number].
+	 *
+	 * @return bool
+	 */
+	public function is_valid_focus_point( $input ) {
+		if ( ! is_array( $input ) ) {
+			return false;
+		}
+
+		if ( ! isset( $input['x'] ) || ! isset( $input['y'] ) ) {
+			return false;
+		}
+
+		if ( ! is_numeric( $input['x'] ) || ! is_numeric( $input['y'] ) ) {
+			return false;
+		}
+
+		return true;
+	}
 }
