@@ -13,6 +13,7 @@ export const fetchOptions = () => {
 
 export const changeOption = (option, value, module = false, pro = true) => {
 	option = (pro ? 'nv_pro_' : '') + option + (module ? '_status' : '');
+
 	const model = new models.Settings({
 		[option]: value,
 	});

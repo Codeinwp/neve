@@ -27,6 +27,7 @@ import { BuilderColumns } from './builder-columns/Control';
 import { InstructionsControl } from './builder-instructions/Control';
 import { HeadingControl } from './heading/Control';
 import { SkinSwitcherControl } from './skin-switcher/Control';
+import { LogoPaletteControl } from './logo-palette/Control';
 import { RepeaterControl } from './repeater/Control';
 import { RichTextControl } from './rich-text/Control';
 
@@ -62,6 +63,7 @@ controlConstructor.neve_builder_columns = BuilderColumns;
 controlConstructor.hfg_instructions = InstructionsControl;
 controlConstructor.neve_customizer_heading = HeadingControl;
 controlConstructor.neve_skin_switcher = SkinSwitcherControl;
+controlConstructor.neve_logo_palette_control = LogoPaletteControl;
 controlConstructor.neve_repeater_control = RepeaterControl;
 controlConstructor.neve_rich_text = RichTextControl;
 

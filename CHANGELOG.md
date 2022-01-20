@@ -1,3 +1,18 @@
+##### [Version 3.1.4](https://github.com/Codeinwp/neve/compare/v3.1.3...v3.1.4) (2022-01-20)
+
+- [Feat] Support for different logos with color palette switcher
+- [Feat] Open extra features when dashboard module is activated
+- [Feat] Show regular price too with the sale price on the WooCommerce cart
+- [Fix] Background customizer control throws a warning if focus point inputs saved empty
+- [Fix] Grouped header components next to mega-menu are not clickable
+- [Fix] Root CSS custom properties are outputted twice when using dark mode toggle in the header
+- [Fix] Secondary button style inconsistency in dashboard
+- [Fix] Accessibility label for the button in the header search component
+- [Fix] Show local version of installed plugins in the Neve options page
+- [Fix] Post meta date element layout when post width is narrow
+- [Fix] Allow additional classes on mega menu column, divider & heading items
+- [Fix] Single post section not displayed inside the customizer on the old skin
+
 ##### [Version 3.1.3](https://github.com/Codeinwp/neve/compare/v3.1.2...v3.1.3) (2022-01-06)
 
 - [Fix] Sidebar positioning on the shop page
