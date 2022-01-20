@@ -379,24 +379,21 @@ class PaletteSwitch extends Abstract_Component {
 		] : [];
 
 		SettingsManager::get_instance()->add(
-			array_merge(
-				$custom_icon_args,
-				[
-					'id'                => self::TOGGLE_ICON_ID,
-					'group'             => $this->get_id(),
-					'tab'               => SettingsManager::TAB_GENERAL,
-					'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-					'sanitize_callback' => 'wp_filter_nohtml_kses',
-					'label'             => __( 'Select icon', 'neve' ),
-					'description'       => __( 'Select icon', 'neve' ),
-					'type'              => 'Neve\Customizer\Controls\React\Radio_Buttons',
-					'default'           => 'contrast',
-					'options'           => [
-						'is_for' => 'palette_switch',
-					],
-					'section'           => $this->section,
-				]
-			)
+			[
+				'id'                => self::TOGGLE_ICON_ID,
+				'group'             => $this->get_id(),
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
+				'label'             => __( 'Select icon', 'neve' ),
+				'description'       => __( 'Select icon', 'neve' ),
+				'type'              => 'Neve\Customizer\Controls\React\Radio_Buttons',
+				'default'           => 'contrast',
+				'options'           => [
+					'is_for' => 'palette_switch',
+				],
+				'section'           => $this->section,
+			] + $custom_icon_args
 		);
 
 		$default_size_values = [
