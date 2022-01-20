@@ -14,33 +14,6 @@ import { MediaUpload } from '@wordpress/media-utils';
 import ColorControl from './ColorControl';
 
 const Background = ({ onChange, value, label, description }) => {
-	const getButtons = () => {
-		const types = ['color', 'image'];
-		const labels = {
-			color: __('Color', 'neve'),
-			image: __('Image', 'neve'),
-		};
-
-		const buttons = [];
-		types.map((type, index) => {
-			buttons.push(
-				<Button
-					key={index}
-					isPrimary={value.type === type}
-					isSecondary={value.type !== type}
-					onClick={() => {
-						onChange({ type });
-					}}
-				>
-					{labels[type]}
-				</Button>
-			);
-			return type;
-		});
-
-		return buttons;
-	};
-
 	const {
 		type,
 		colorValue,
@@ -52,15 +25,41 @@ const Background = ({ onChange, value, label, description }) => {
 		overlayOpacity,
 	} = value;
 
+	const getButtons = () => {
+		const types = ['color', 'image'];
+		const labels = {
+			color: __('Color', 'neve'),
+			image: __('Image', 'neve'),
+		};
+
+		const buttons = [];
+		types.forEach((buttonType, index) => {
+			buttons.push(
+				<Button
+					key={index}
+					isPrimary={value.type === buttonType}
+					isSecondary={value.type !== buttonType}
+					onClick={() => {
+						onChange({ type: buttonType });
+					}}
+				>
+					{labels[buttonType]}
+				</Button>
+			);
+		});
+
+		return (
+			<ButtonGroup className="neve-background-type-control">
+				{buttons}
+			</ButtonGroup>
+		);
+	};
+
 	return (
 		<div className="neve-background-control">
 			{label && <span className="customize-control-title">{label}</span>}
 			{description && <p>{description}</p>}
-			<div className="control--top-toolbar">
-				<ButtonGroup className="neve-background-type-control">
-					{getButtons()}
-				</ButtonGroup>
-			</div>
+			<div className="control--top-toolbar">{getButtons()}</div>
 			<div className="control--body">
 				{type === 'color' && (
 					<>
