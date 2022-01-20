@@ -54,6 +54,13 @@
 		}
 	}
 
+	.caret-wrap {
+		background-color: unset;
+		color: unset;
+		outline: 0;
+		padding: 0;
+	}
+
 	.caret {
 		display: flex;
 		margin-left: 5px;
