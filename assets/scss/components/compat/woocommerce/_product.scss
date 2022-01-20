@@ -155,9 +155,11 @@
 			}
 		}
 
-		tr:not(:last-child) {
+		tr{
+		  display: block;
+		  &:not(:last-child) {
 			margin-bottom: $spacing-xs;
-			display: block;
+		  }
 		}
 	}
 
