@@ -19,6 +19,7 @@ use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Traits\Core;
+use Neve\Compatibility\Elementor;
 use Neve\Core\Settings\Config;
 use Neve\Core\Styles\Dynamic_Selector;
 use Neve\Customizer\Controls\React\Instructions_Section;
@@ -844,6 +845,16 @@ abstract class Abstract_Builder implements Builder {
 	 * @return bool Is used?
 	 */
 	public function is_component_active( $component_id ) {
+
+		/**
+		 * If a component is part of header or footer but the header or footer are replaced by Elementor
+		 * the component should not run.
+		 */
+		$location = $this->get_id();
+		if ( in_array( $location, [ 'header', 'footer' ] ) && Elementor::is_elementor_template( $location ) ) {
+			return false;
+		}
+
 		if ( empty( $this->active_components ) ) {
 			$components = [];
 

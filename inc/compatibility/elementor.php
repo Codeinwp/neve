@@ -303,7 +303,7 @@ class Elementor extends Page_Builder_Base {
 	 * @param  string $cond Template showing condition it can be product_archive, product etc.
 	 * @return bool
 	 */
-	public static function is_elementor_template( $location, $cond ) {
+	public static function is_elementor_template( $location, $cond = '' ) {
 		if ( ! did_action( 'elementor_pro/init' ) ) {
 			return false;
 		}
@@ -313,6 +313,10 @@ class Elementor extends Page_Builder_Base {
 		$conditions_manager = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'theme-builder' )->get_conditions_manager();
 
 		$documents = $conditions_manager->get_documents_for_location( $location );
+
+		if ( empty( $cond ) ) {
+			return ! empty( $documents );
+		}
 
 		foreach ( $documents as $document ) {
 			$conditions = $conditions_manager->get_document_conditions( $document );
