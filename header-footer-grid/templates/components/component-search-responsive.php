@@ -43,7 +43,7 @@ if ( neve_is_amp() ) {
 			</div>
 			<?php if ( $open !== 'minimal' ) { ?>
 				<div class="close-container <?php echo $open === 'canvas' ? 'container responsive-search' : ''; ?>">
-					<button  class="close-responsive-search"
+					<button  class="close-responsive-search" aria-label="<?php echo esc_attr__( 'Close', 'neve' ); ?>"
 					<?php
 							echo $amp_state; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>

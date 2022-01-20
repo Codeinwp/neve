@@ -144,6 +144,37 @@ function neve_sanitize_background( $value ) {
 		return new WP_Error();
 	}
 
+	if ( ! isset( $value['focusPoint'] ) ) {
+		$value['focusPoint'] = [
+			'x' => 0.5,
+			'y' => 0.5,
+		];
+	}
+
+	foreach ( $value['focusPoint'] as $coordinate => $val ) {
+		if ( is_numeric( $val ) ) {
+			continue;
+		}
+
+		$val = 0;
+
+		$value['focusPoint'][ $coordinate ] = $val;
+	}
+
+
+	$value['imageUrl']          = esc_url( $value['imageUrl'] );
+	$value['colorValue']        = neve_sanitize_colors( $value['colorValue'] );
+	$value['overlayColorValue'] = neve_sanitize_colors( $value['overlayColorValue'] );
+
+
+	$value['overlayOpacity'] = (int) $value['overlayOpacity'];
+	if ( $value['overlayOpacity'] > 100 || $value['overlayOpacity'] < 0 ) {
+		$value['overlayOpacity'] = 50;
+	}
+
+	$value['fixed']       = (bool) $value['fixed'];
+	$value['useFeatured'] = (bool) $value['useFeatured'];
+
 	return $value;
 }
 
