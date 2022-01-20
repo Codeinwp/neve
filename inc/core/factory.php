@@ -70,7 +70,7 @@ class Factory {
 	public function build( $class ) {
 		$full_class_name = $this->namespace . $class;
 
-		if ( defined( 'NEVE_PRO_VERSION' ) && substr( $full_class_name, 0, 18 ) === '\Neve_Pro\Modules\\' && method_exists( $full_class_name, 'get_instance' ) ) {
+		if ( neve_pro_has_support( 'singleton_pattern_on_pro_modules' ) && ( '\Neve_Pro\Modules\\' === substr( $full_class_name, 0, 18 ) ) ) {
 			return $full_class_name::get_instance();
 		}
 

@@ -12,10 +12,11 @@ function neve_run() {
 	define(
 		'NEVE_COMPATIBILITY_FEATURES',
 		[
-			'single_customizer'     => true,
-			'repeater_control'      => true,
-			'malformed_div_on_shop' => true,
-			'mega_menu'             => true,
+			'single_customizer'                => true,
+			'repeater_control'                 => true,
+			'malformed_div_on_shop'            => true,
+			'mega_menu'                        => true,
+			'singleton_pattern_on_pro_modules' => true,
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
