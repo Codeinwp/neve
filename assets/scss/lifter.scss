@@ -73,3 +73,84 @@
 .llms-course-nav .llms-lesson-preview {
   width: 100%;
 }
+
+.llms-loop-item-content{
+  &:hover{
+	background: var(--nv-light-bg);
+  }
+  background: var(--nv-light-bg);
+  .llms-loop-link, .llms-meta, .llms-author{
+	color: var(--nv-text-color)!important;
+  }
+}
+
+.llms-lesson-preview .llms-lesson-link {
+  background: var(--nv-light-bg);
+  color: var(--nv-text-color) !important;
+  &:hover{
+	background: var(--nv-light-bg);
+	color: var(--nv-text-color);
+  }
+}
+
+.llms-table {
+  tbody tr:nth-child(odd) {
+	td, th {
+	  background: var(--nv-light-bg);
+	}
+  }
+  tfoot tr {
+	background: var(--nv-light-bg);
+  }
+}
+
+.orders-table tbody tr:nth-child(even) td,
+.llms-student-dashboard .orders-table tbody tr:nth-child(even) th {
+  background: var(--nv-light-bg)!important;
+}
+
+.llms-sd-widgets .llms-sd-widget {
+  background: var(--nv-light-bg);
+}
+
+.llms-notification {
+  background: var(--nv-light-bg)!important;
+  .llms-notification-body .llms-mini-cert{
+	background: var(--nv-light-bg)!important;
+  }
+}
+
+.llms-sd-notification-center .llms-notification .llms-notification-date{
+  color: var(--nv-text-color);
+}
+
+.llms-form-field .select2-container .select2-selection--single{
+  background: none;
+  border-style: solid;
+  border-color: var(--formFieldBorderColor);
+  border-width: var(--formFieldBorderWidth);
+}
+
+.lifterlms .select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: var(--nv-text-color);
+}
+
+.select2-search--dropdown, .select2-results {
+  background: var(--nv-light-bg);
+}
+
+.llms-access-plan .llms-access-plan-footer, .llms-access-plan .llms-access-plan-content {
+  background: var(--nv-light-bg);
+}
+
+.llms-checkout {
+  background: none;
+}
+
+.llms-achievement, .llms-certificate {
+  background: var(--nv-light-bg);
+}
+
+#llms-voucher-code {
+  display: block;
+}
