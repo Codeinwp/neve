@@ -1,4 +1,4 @@
-/* global NeveReactCustomize, Event */
+/* global NeveReactCustomize */
 
 import DynamicFieldInserter from './dynamic-field-inserter.js';
 import { render } from '@wordpress/element';
