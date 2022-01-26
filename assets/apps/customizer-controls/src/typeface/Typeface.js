@@ -79,7 +79,7 @@ const Typeface = (props) => {
 
 	useEffect(() => {
 		window.wp.customize.bind('change', (setting) => {
-			if (setting && setting.id === fontFamilyControl) {
+			if (setting.id === fontFamilyControl) {
 				setFontFamily(setting.get());
 			}
 		});
