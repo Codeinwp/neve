@@ -212,7 +212,6 @@ class Logo extends Abstract_Component {
 			var compId = picture.getAttribute('data-variant');
 			if ( compId && variants[compId] ) {
 				var isConditional = variants[compId]['same'];
-				console.log(variants[compId]);
 				if ( theme === 'light' || isConditional || variants[compId]['dark']['src'] === false ) {
 					picture.src = variants[compId]['light']['src'];
 					picture.srcset = variants[compId]['light']['srcset'] || '';
