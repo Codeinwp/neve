@@ -1,4 +1,4 @@
-/* global NeveReactCustomize */
+/* global NeveReactCustomize, Event */
 import PropTypes from 'prop-types';
 import { useCallback, useEffect, useRef } from '@wordpress/element';
 import DynamicFieldInserter from '../dynamic-fields/dynamic-field-inserter';
