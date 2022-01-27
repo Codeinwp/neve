@@ -245,17 +245,53 @@ function neve_get_svg_allowed_tags() {
 			'height'          => true,
 			'viewbox'         => true, // <= Must be lower case!
 		),
-		'g'        => array( 'fill' => true ),
+		'style'    => array(
+			'type' => true,
+		),
+		'g'        => array(
+			'fill'      => true,
+			'transform' => true,
+			'style'     => true,
+		),
+		'circle'   => array(
+			'cx'        => true,
+			'cy'        => true,
+			'r'         => true,
+			'class'     => true,
+			'style'     => true,
+			'transform' => true,
+		),
 		'title'    => array( 'title' => true ),
 		'path'     => array(
-			'd'    => true,
-			'fill' => true,
+			'd'              => true,
+			'fill'           => true,
+			'style'          => true,
+			'class'          => true,
+			'transform'      => true,
+			'stroke-linecap' => true,
 		),
 		'polyline' => array(
 			'fill'         => true,
 			'stroke'       => true,
 			'stroke-width' => true,
 			'points'       => true,
+		),
+		'polygon'  => array(
+			'class'     => true,
+			'points'    => true,
+			'style'     => true,
+			'transform' => true,
+		),
+		'rect'     => array(
+			'x'         => true,
+			'y'         => true,
+			'rx'        => true,
+			'ry'        => true,
+			'width'     => true,
+			'height'    => true,
+			'class'     => true,
+			'style'     => true,
+			'transform' => true,
 		),
 	);
 }
