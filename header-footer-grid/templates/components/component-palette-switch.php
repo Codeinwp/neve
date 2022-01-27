@@ -13,7 +13,7 @@ use HFG\Core\Components\PaletteSwitch;
 
 $icon_type   = component_setting( PaletteSwitch::TOGGLE_ICON_ID );
 $icon_custom = component_setting( PaletteSwitch::TOGGLE_CUSTOM_ID, '' );
-$svg_icon    = PaletteSwitch::get_icon( $icon_type, $icon_custom );
+$svg_icon    = neve_kses_svg( PaletteSwitch::get_icon( $icon_type, $icon_custom ) );
 $label       = component_setting( PaletteSwitch::PLACEHOLDER_ID );
 
 $amp_state = '';

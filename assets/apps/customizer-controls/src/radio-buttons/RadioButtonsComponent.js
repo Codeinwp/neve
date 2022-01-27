@@ -157,7 +157,7 @@ const RadioButtonsComponent = ({ control }) => {
 	const options = getChoices();
 	if (custom) {
 		options.custom = {
-			tooltip: __('Import custom SVG', 'neve'),
+			tooltip: __('Custom SVG', 'neve'),
 			icon: code,
 		};
 	}

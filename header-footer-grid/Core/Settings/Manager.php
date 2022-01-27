@@ -144,19 +144,6 @@ class Manager {
 			if ( isset( $arguments['settings'] ) ) {
 				foreach ( array_keys( $arguments['settings'] ) as $setting ) {
 					if ( $setting === 'default' ) {
-						$customize_manager->add_setting(
-							$id,
-							array(
-								'default'           => $arguments['preview_default'],
-								'theme_supports'    => Config::get_support(),
-								'transport'         => $transport,
-								'sanitize_callback' =>
-									isset( $arguments['sanitize_callback'] )
-										? $arguments['sanitize_callback']
-										: 'wp_filter_nohtml_kses',
-							)
-						);
-
 						continue;
 					}
 

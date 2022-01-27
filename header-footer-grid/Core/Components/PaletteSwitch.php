@@ -18,6 +18,7 @@ use Neve\Core\Dynamic_Css;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
+use Neve\Core\Theme_Info;
 
 /**
  * Class PaletteSwitch
@@ -25,6 +26,7 @@ use Neve\Core\Styles\Dynamic_Selector;
  * @package HFG\Core\Components
  */
 class PaletteSwitch extends Abstract_Component {
+	use Theme_Info;
 
 	const COMPONENT_ID      = 'header_palette_switch';
 	const DARK_PALETTE_ID   = 'dark_palette';
@@ -366,7 +368,7 @@ class PaletteSwitch extends Abstract_Component {
 			]
 		);
 
-		$custom_icon_args = self::should_load_pro_features() ? [
+		$custom_icon_args = $this->should_load_pro_features() ? [
 			'settings'       => [
 				'default' => self::COMPONENT_ID . '_' . self::TOGGLE_ICON_ID,
 				'custom'  => self::COMPONENT_ID . '_' . self::TOGGLE_CUSTOM_ID,
@@ -379,21 +381,24 @@ class PaletteSwitch extends Abstract_Component {
 		] : [];
 
 		SettingsManager::get_instance()->add(
-			[
-				'id'                => self::TOGGLE_ICON_ID,
-				'group'             => $this->get_id(),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'label'             => __( 'Select icon', 'neve' ),
-				'description'       => __( 'Select icon', 'neve' ),
-				'type'              => 'Neve\Customizer\Controls\React\Radio_Buttons',
-				'default'           => 'contrast',
-				'options'           => [
-					'is_for' => 'palette_switch',
+			array_merge(
+				[
+					'id'                => self::TOGGLE_ICON_ID,
+					'group'             => $this->get_id(),
+					'tab'               => SettingsManager::TAB_GENERAL,
+					'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
+					'label'             => __( 'Select icon', 'neve' ),
+					'description'       => __( 'Select icon', 'neve' ),
+					'type'              => 'Neve\Customizer\Controls\React\Radio_Buttons',
+					'default'           => 'contrast',
+					'options'           => [
+						'is_for' => 'palette_switch',
+					],
+					'section'           => $this->section,
 				],
-				'section'           => $this->section,
-			] + $custom_icon_args
+				$custom_icon_args 
+			)
 		);
 
 		$default_size_values = [
@@ -536,7 +541,7 @@ class PaletteSwitch extends Abstract_Component {
 	 *
 	 * @return bool
 	 */
-	public static function should_load_pro_features() {
-		return defined( 'NEVE_PRO_VERSION' );
+	public function should_load_pro_features() {
+		return $this->has_valid_addons();
 	}
 }

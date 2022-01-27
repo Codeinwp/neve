@@ -174,7 +174,7 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '', $icon_custo
 	}
 
 	if ( $cart_icon === 'custom' ) {
-		$icon = $icon_custom;
+		$icon = neve_kses_svg( $icon_custom );
 	}
 
 	$svg = '<span class="nv-icon nv-cart">' . $icon . '</span>';
