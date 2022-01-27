@@ -123,7 +123,29 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 						return;
 					}
 
-					if (activePanel.id === `hfg_${builder}`) {
+					if (
+						activePanel.id === `hfg_${builder}` &&
+						activePanel.id !== 'hfg_page_header'
+					) {
+						setMounted(true);
+					}
+				});
+
+			window.wp.customize
+				.state('expandedSection')
+				.bind((activeSection: Record<string, string>) => {
+					if (!activeSection) {
+						return;
+					}
+
+					if (!activeSection.id) {
+						return;
+					}
+
+					if (
+						activeSection.id ===
+						'neve_pro_global_page_header_settings'
+					) {
 						setMounted(true);
 					}
 				});
