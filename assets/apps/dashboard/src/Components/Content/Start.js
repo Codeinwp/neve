@@ -142,7 +142,7 @@ const Start = (props) => {
 						lockIcon={true}
 						title={__('WooCommerce Booster', 'neve')}
 						description={__(
-							'Empower your online store with awesome new features, specially designed for smooth WooCommerce integration.',
+							'Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration.',
 							'neve'
 						)}
 					>
