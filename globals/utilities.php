@@ -242,7 +242,10 @@ function neve_get_svg_allowed_tags() {
 			'role'            => true,
 			'xmlns'           => true,
 			'width'           => true,
+			'fill'            => true,
+			'fill-opacity'    => true,
 			'height'          => true,
+			'stroke'          => true,
 			'viewbox'         => true, // <= Must be lower case!
 		),
 		'style'    => array(
@@ -263,12 +266,16 @@ function neve_get_svg_allowed_tags() {
 		),
 		'title'    => array( 'title' => true ),
 		'path'     => array(
-			'd'              => true,
-			'fill'           => true,
-			'style'          => true,
-			'class'          => true,
-			'transform'      => true,
-			'stroke-linecap' => true,
+			'd'               => true,
+			'fill'            => true,
+			'fill-rule'       => true,
+			'clip-rule'       => true,
+			'style'           => true,
+			'class'           => true,
+			'transform'       => true,
+			'stroke-linecap'  => true,
+			'stroke-linejoin' => true,
+			'stroke-width'    => true,
 		),
 		'polyline' => array(
 			'fill'         => true,
