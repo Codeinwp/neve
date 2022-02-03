@@ -38,9 +38,10 @@ class Ordering extends \WP_Customize_Control {
 	/**
 	 * Send to JS.
 	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['components']   = $this->components;
-		$this->json['defaultOrder'] = $this->default_order;
+	public function json() {
+		$json                 = parent::json();
+		$json['components']   = $this->components;
+		$json['defaultOrder'] = $this->default_order;
+		return $json;
 	}
 }
