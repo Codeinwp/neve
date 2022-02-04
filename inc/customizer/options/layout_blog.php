@@ -38,6 +38,7 @@ class Layout_Blog extends Base_Customizer {
 	public function add_controls() {
 		$this->section_blog();
 		$this->add_layout_controls();
+		$this->add_featured_post();
 		$this->add_content_ordering_controls();
 		$this->add_post_meta_controls();
 		$this->add_typography_shortcut();
@@ -237,6 +238,70 @@ class Layout_Blog extends Base_Customizer {
 					'section'         => $this->section,
 					'label'           => esc_html__( 'Enable Masonry', 'neve' ),
 					'active_callback' => array( $this, 'should_show_masonry' ),
+				)
+			)
+		);
+	}
+
+	/**
+	 * Add featured post controls.
+	 */
+	private function add_featured_post() {
+		$this->add_control(
+			new Control(
+				'neve_featured_post_heading',
+				[
+					'sanitize_callback' => 'sanitize_text_field',
+				],
+				[
+					'label'            => esc_html__( 'Featured Post', 'neve' ),
+					'section'          => $this->section,
+					'priority'         => 40,
+					'class'            => 'featured-post-accordion',
+					'accordion'        => true,
+					'expanded'         => false,
+					'controls_to_wrap' => 2,
+				],
+				'Neve\Customizer\Controls\Heading'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_enable_featured_post',
+				[
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => false,
+				],
+				[
+					'label'    => esc_html__( 'Enabled featured post section', 'neve' ),
+					'section'  => $this->section,
+					'type'     => 'neve_toggle_control',
+					'priority' => 41,
+				],
+				'Neve\Customizer\Controls\Checkbox'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_featured_post_target',
+				array(
+					'default'           => 'latest',
+					'sanitize_callback' => array( $this, 'sanitize_featured_post_target' ),
+				),
+				array(
+					'label'           => esc_html__( 'Featured Post', 'neve' ),
+					'section'         => $this->section,
+					'priority'        => 42,
+					'type'            => 'select',
+					'choices'         => [
+						'latest' => esc_html__( 'Latest Post', 'neve' ),
+						'sticky' => esc_html__( 'Sticky Post', 'neve' ),
+					],
+					'active_callback' => function() {
+						return get_theme_mod( 'neve_enable_featured_post', false );
+					},
 				)
 			)
 		);
@@ -550,6 +615,22 @@ class Layout_Blog extends Base_Customizer {
 		$allowed_values = array( 'number', 'infinite', 'jump-to' );
 		if ( ! in_array( $value, $allowed_values, true ) ) {
 			return 'number';
+		}
+
+		return esc_html( $value );
+	}
+
+	/**
+	 * Sanitize featured post target
+	 *
+	 * @param string $value value from the control.
+	 *
+	 * @return string
+	 */
+	public function sanitize_featured_post_target( $value ) {
+		$allowed_values = [ 'sticky', 'latest' ];
+		if ( ! in_array( $value, $allowed_values, true ) ) {
+			return 'latest';
 		}
 
 		return esc_html( $value );
