@@ -36,9 +36,10 @@ class Spacing extends \WP_Customize_Control {
 	/**
 	 * Send to JS.
 	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['input_attrs'] = $this->input_attrs;
-		$this->json['default']     = $this->default;
+	public function json() {
+		$json                = parent::json();
+		$json['input_attrs'] = $this->input_attrs;
+		$json['default']     = $this->default;
+		return $json;
 	}
 }

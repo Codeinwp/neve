@@ -86,12 +86,14 @@ abstract class Base_Layout_Single extends Base_Customizer {
 	 * @return void
 	 */
 	public function add_controls() {
-		if ( ! neve_is_new_skin() ) {
+		if ( ! neve_is_new_skin() && $this->post_type !== 'post' ) {
 			return;
 		}
 		$this->create_section();
-		$this->add_header_layout_subsection();
-		$this->add_header_layout_controls();
+		if ( neve_is_new_skin() ) {
+			$this->add_header_layout_subsection();
+			$this->add_header_layout_controls();
+		}
 	}
 
 	/**
