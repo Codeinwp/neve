@@ -23,8 +23,10 @@ if ( ! neve_is_new_skin() ) {
 
 ?>
 	<div class="<?php echo esc_attr( $container_class ); ?> archive-container">
+		<?php do_action( 'neve_do_featured_post' ); ?>
 		<div class="row">
 			<?php
+
 			/**
 			 * Executes the rendering function for the sidebar.
 			 *

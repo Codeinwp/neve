@@ -125,3 +125,30 @@ body:not(.nv-blog-default) {
 		}
 	}
 }
+
+.nv-featured-post {
+  margin-top: 60px;
+  margin-bottom: 0px;
+  &.layout-default {
+	background: var( --nv-light-bg );
+
+	.content {
+	  grid-gap: 0;
+	}
+	.nv-post-thumbnail-wrap {
+	  position: relative;
+	  height: 320px;
+	  overflow: hidden;
+	}
+	.wp-post-image {
+	  width: 100%;
+	  box-shadow: none;
+	  position: absolute;
+	  top: -50%;
+	}
+	.content .default-layout-content{
+	  padding: 40px;
+	}
+  }
+}
+

@@ -22,9 +22,64 @@ class Template_Parts extends Base_View {
 	 * @return void
 	 */
 	public function init() {
+		add_action( 'neve_do_featured_post', array( $this, 'render_featured_post' ) );
 		add_action( 'neve_blog_post_template_part_content', array( $this, 'render_post' ) );
 		add_filter( 'excerpt_more', array( $this, 'link_excerpt_more' ) );
 		add_filter( 'the_content_more_link', array( $this, 'link_excerpt_more' ) );
+	}
+
+	/**
+	 * Render featured posts section.
+	 */
+	public function render_featured_post() {
+		if ( ! get_theme_mod( 'neve_enable_featured_post', false ) ) {
+			return;
+		}
+
+		/**
+		 * Filters the content parts.
+		 *
+		 * @since 3.1.5
+		 *
+		 * @param int $value Number of featured posts
+		 */
+		$post_number = apply_filters( 'nv_featured_posts_number', 1 );
+
+		$target = get_theme_mod( 'neve_featured_post_target', 'latest' );
+		if ( $target === 'latest' ) {
+			$posts = wp_get_recent_posts(
+				array(
+					'numberposts' => $post_number,
+					'post_status' => 'publish',
+				)
+			);
+		}
+
+		if ( $target === 'sticky' ) {
+			$posts = get_option( 'sticky_posts' );
+		}
+
+		foreach ( $posts as $post ) {
+			$post_id = is_array( $post ) && array_key_exists( 'ID', $post ) ? $post['ID'] : $post;
+
+			// Fixes the excerpt link for the featured post
+			add_filter(
+				'excerpt_more',
+				function() use ( $post_id ) {
+					return $this->link_excerpt_more( ' [&hellip;]', $post_id );
+				} 
+			);
+
+			$data = [
+				'post_id'    => 'post-' . $post_id,
+				'post_class' => $this->post_class( $post_id, 'nv-featured-post' ),
+				'content'    => $this->get_article_inner_content( $post_id ),
+			];
+			$this->get_view( 'archive-post', $data );
+
+			remove_all_filters( 'excerpt_more' );
+		}
+		add_filter( 'excerpt_more', array( $this, 'link_excerpt_more' ) );
 	}
 
 	/**
@@ -42,9 +97,12 @@ class Template_Parts extends Base_View {
 
 	/**
 	 * Echo the post class.
+	 *
+	 * @param int | null $post_id Post id.
+	 * @param string     $additional Additional classes.
 	 */
-	protected function post_class() {
-		$class  = join( ' ', get_post_class() );
+	protected function post_class( $post_id = null, $additional = '' ) {
+		$class  = join( ' ', get_post_class( '', $post_id ) );
 		$layout = $this->get_layout();
 		$class .= ' layout-' . $layout;
 		if ( in_array( $layout, [ 'grid', 'covers' ], true ) ) {
@@ -52,59 +110,63 @@ class Template_Parts extends Base_View {
 		} else {
 			$class .= ' col-12 nv-non-grid-article';
 		}
+
+		$class .= ' ' . $additional;
 		return $class;
 	}
 
 	/**
 	 * Render inner content for <article>
 	 *
+	 * @param int | null $post Post id.
+	 *
 	 * @return string
 	 */
-	private function get_article_inner_content() {
+	private function get_article_inner_content( $post_id = null ) {
 		$markup = '';
 
 		$layout = $this->get_layout();
-
 		if ( in_array( $layout, [ 'alternative', 'default' ] ) ) {
-			$markup .= $this->get_post_thumbnail();
+			$markup .= $this->get_post_thumbnail( $post_id );
 			$markup .= '<div class="non-grid-content ' . esc_attr( $layout ) . '-layout-content">';
-			$markup .= $this->get_ordered_content_parts( true );
+			$markup .= $this->get_ordered_content_parts( true, $post_id );
 			$markup .= '</div>';
 
 			return $markup;
 		}
 
 		if ( $layout === 'covers' ) {
-			$default_order = array(
-				'thumbnail',
-				'title-meta',
-				'excerpt',
-			);
-			$order         = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
-			$style         = '';
-			if ( in_array( 'thumbnail', $order, true ) ) {
-				$thumb  = get_the_post_thumbnail_url();
-				$style .= ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
-			}
-			$markup .= '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
-			$markup .= '<div class="inner">';
-			$markup .= $this->get_ordered_content_parts( true );
-			$markup .= '</div>';
-			$markup .= '</div>';
-
-			return $markup;
+			// $default_order = array(
+			// 'thumbnail',
+			// 'title-meta',
+			// 'excerpt',
+			// );
+			// $order         = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
+			// $style         = '';
+			// if ( in_array( 'thumbnail', $order, true ) ) {
+			// $thumb  = get_the_post_thumbnail_url( $post );
+			// $style .= ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
+			// }
+			// $markup .= '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
+			// $markup .= '<div class="inner">';
+			// $markup .= $this->get_ordered_content_parts( true, $post );
+			// $markup .= '</div>';
+			// $markup .= '</div>';
+			//
+			// return $markup;
 		}
 
-		return $this->get_ordered_content_parts();
+		// return $this->get_ordered_content_parts();
 	}
 
 	/**
 	 * Render the post thumbnail.
 	 *
+	 * @param int | null $post Post id.
 	 * @return string
 	 */
-	private function get_post_thumbnail() {
-		if ( ! has_post_thumbnail() ) {
+	private function get_post_thumbnail( $post_id = null ) {
+		if ( ! has_post_thumbnail( $post_id ) ) {
 			return '';
 		}
 
@@ -120,14 +182,15 @@ class Template_Parts extends Base_View {
 
 		$markup = '<div class="nv-post-thumbnail-wrap">';
 
-		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark" title="' . the_title_attribute(
+		$markup .= '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '" rel="bookmark" title="' . the_title_attribute(
 			array(
 				'echo' => false,
 			)
 		) . '">';
 
+		$pid     = $post_id ? $post_id : get_the_ID();
 		$markup .= get_the_post_thumbnail(
-			get_the_ID(),
+			$pid,
 			'neve-blog',
 			array( 'class' => $image_class )
 		);
@@ -159,13 +222,15 @@ class Template_Parts extends Base_View {
 	/**
 	 * Render title.
 	 *
+	 * @param int | null $post_id Post id.
+	 *
 	 * @return string
 	 */
-	private function get_title() {
+	private function get_title( $post_id = null ) {
 		$markup = '<h2 class="blog-entry-title entry-title">';
 
-		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">';
-		$markup .= get_the_title();
+		$markup .= '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '" rel="bookmark">';
+		$markup .= get_the_title( $post_id );
 		$markup .= '</a>';
 		$markup .= '</h2>';
 
@@ -175,9 +240,11 @@ class Template_Parts extends Base_View {
 	/**
 	 * Render meta.
 	 *
+	 * @param int | null $post_id Post id.
+	 *
 	 * @return string
 	 */
-	private function get_meta() {
+	private function get_meta( $post_id = null ) {
 		$default_meta_order = wp_json_encode(
 			array(
 				'author',
@@ -191,7 +258,7 @@ class Template_Parts extends Base_View {
 		$meta_order = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
 
 		ob_start();
-		do_action( 'neve_post_meta_archive', $meta_order );
+		do_action( 'neve_post_meta_archive', $meta_order, false, $post_id );
 		$meta = ob_get_clean();
 
 		return $meta;
@@ -200,11 +267,12 @@ class Template_Parts extends Base_View {
 	/**
 	 * Render excerpt.
 	 *
+	 * @param int | null $post_id Post id.
 	 * @return string
 	 */
-	private function get_excerpt() {
+	private function get_excerpt( $post_id = null ) {
 		ob_start();
-		do_action( 'neve_excerpt_archive', 'index' );
+		do_action( 'neve_excerpt_archive', 'index', $post_id );
 		$excerpt = ob_get_clean();
 
 		return $excerpt;
@@ -251,12 +319,11 @@ class Template_Parts extends Base_View {
 	/**
 	 * Change link excerpt more.
 	 *
-	 * @param string $moretag read more tag.
-	 *
+	 * @param string     $moretag read more tag.
+	 * @param int | null $post_id Post id.
 	 * @return string
 	 */
-	public function link_excerpt_more( $moretag ) {
-
+	public function link_excerpt_more( $moretag, $post_id = null ) {
 		$new_moretag = '&hellip;&nbsp;';
 
 		if ( $moretag !== ' [&hellip;]' ) {
@@ -271,11 +338,11 @@ class Template_Parts extends Base_View {
 			)
 		);
 
-		$markup  = '<a href="' . esc_url( get_the_permalink() ) . '"';
+		$markup  = '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '"';
 		$markup .= ' class="' . esc_attr( $read_more_args['classes'] ) . '"';
 		$markup .= ' rel="bookmark">';
 		$markup .= esc_html( $read_more_args['text'] );
-		$markup .= '<span class="screen-reader-text">' . get_the_title() . '</span>';
+		$markup .= '<span class="screen-reader-text">' . get_the_title( $post_id ) . '</span>';
 		$markup .= '</a>';
 
 		if ( ! empty( $read_more_args['classes'] ) ) {
@@ -291,10 +358,11 @@ class Template_Parts extends Base_View {
 	/**
 	 * Get ordered content parts.
 	 *
-	 * @param bool $exclude_thumbnail exclude thumbnail from order.
+	 * @param bool       $exclude_thumbnail exclude thumbnail from order.
+	 * @param int | null $post_id Post id.
 	 * @return string
 	 */
-	private function get_ordered_content_parts( $exclude_thumbnail = false ) {
+	private function get_ordered_content_parts( $exclude_thumbnail = false, $post_id = null ) {
 		$markup        = '';
 		$default_order = array(
 			'thumbnail',
@@ -309,20 +377,20 @@ class Template_Parts extends Base_View {
 					if ( $exclude_thumbnail ) {
 						break;
 					}
-					$markup .= $this->get_post_thumbnail();
+					$markup .= $this->get_post_thumbnail( $post_id );
 					break;
 				case 'title':
-					$markup .= $this->get_title();
+					$markup .= $this->get_title( $post_id );
 					break;
 				case 'meta':
-					$markup .= $this->get_meta();
+					$markup .= $this->get_meta( $post_id );
 					break;
 				case 'title-meta':
-					$markup .= $this->get_title();
-					$markup .= $this->get_meta();
+					$markup .= $this->get_title( $post_id );
+					$markup .= $this->get_meta( $post_id );
 					break;
 				case 'excerpt':
-					$markup .= $this->get_excerpt();
+					$markup .= $this->get_excerpt( $post_id );
 					$markup .= wp_link_pages(
 						array(
 							'before'      => '<div class="post-pages-links"><span>' . apply_filters( 'neve_page_link_before', esc_html__( 'Pages:', 'neve' ) ) . '</span>',

@@ -27,8 +27,8 @@ class Post_Meta extends Base_View {
 	 */
 	public function init() {
 		add_filter( 'neve_display_author_avatar', array( $this, 'should_display_author_avatar' ), 15 );
-		add_action( 'neve_post_meta_archive', array( $this, 'render_meta_list' ) );
-		add_action( 'neve_post_meta_single', array( $this, 'render_meta_list' ), 10, 2 );
+		add_action( 'neve_post_meta_archive', array( $this, 'render_meta_list' ), 10, 3 );
+		add_action( 'neve_post_meta_single', array( $this, 'render_meta_list' ), 10, 3 );
 		add_action( 'neve_do_tags', array( $this, 'render_tags_list' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'meta_custom_separator' ) );
 		add_filter( 'neve_gravatar_args', [ $this, 'add_dynamic_gravatar' ] );
@@ -85,15 +85,17 @@ class Post_Meta extends Base_View {
 	/**
 	 * Render meta list.
 	 *
-	 * @param array $order   the order array. Passed through the action parameter.
-	 * @param bool  $as_list Flag to display meta as list or as text.
+	 * @param array      $order   the order array. Passed through the action parameter.
+	 * @param bool       $as_list Flag to display meta as list or as text.
+	 * @param int | null $post_id Post id.
 	 */
-	public function render_meta_list( $order, $as_list = true ) {
+	public function render_meta_list( $order, $as_list = true, $post_id = null ) {
 		if ( ! is_array( $order ) || empty( $order ) ) {
 			return;
 		}
-		$order     = $this->sanitize_order_array( $order );
-		$pid       = get_the_ID();
+		$order = $this->sanitize_order_array( $order );
+
+		$pid       = $post_id ? $post_id : get_the_ID();
 		$post_type = get_post_type( $pid );
 		$markup    = $as_list === true ? '<ul class="nv-meta-list">' : '<span class="nv-meta-list nv-dynamic-meta">';
 		$index     = 1;
@@ -102,7 +104,7 @@ class Post_Meta extends Base_View {
 			switch ( $meta ) {
 				case 'author':
 					$markup .= '<' . $tag . '  class="meta author vcard">';
-					$markup .= self::neve_get_author_meta();
+					$markup .= self::neve_get_author_meta( $post_id );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'date':
@@ -124,19 +126,20 @@ class Post_Meta extends Base_View {
 					}
 
 					$markup .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . '">';
-					$markup .= self::get_time_tags();
+					$markup .= self::get_time_tags( $post_id );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'category':
 					if ( ! in_array( 'category', get_object_taxonomies( $post_type ) ) ) {
 						break;
 					}
+					$pid     = $post_id !== null ? $post_id : get_the_ID();
 					$markup .= '<' . $tag . ' class="meta category">';
-					$markup .= get_the_category_list( ', ', '', get_the_ID() );
+					$markup .= get_the_category_list( ', ', '', $pid );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'comments':
-					$comments = self::get_comments();
+					$comments = self::get_comments( $post_id );
 					if ( empty( $comments ) ) {
 						break;
 					}
@@ -149,7 +152,7 @@ class Post_Meta extends Base_View {
 					if ( ! in_array( $post_type, $allowed_context ) ) {
 						break;
 					}
-					$reading_time = apply_filters( 'neve_do_read_time', '' );
+					$reading_time = apply_filters( 'neve_do_read_time', $post_id );
 					if ( empty( $reading_time ) ) {
 						break;
 					}
@@ -196,13 +199,25 @@ class Post_Meta extends Base_View {
 	/**
 	 * Get the author meta.
 	 *
+	 * @param int | null $post_id Post id.
+	 *
 	 * @return string | false
 	 */
-	public static function neve_get_author_meta() {
-		global $post;
+	public static function neve_get_author_meta( $post_id = null ) {
+
+		if ( $post_id === null ) {
+			global $post;
+		} else {
+			if ( ! is_numeric( $post_id ) ) {
+				return false;
+			}
+			$post = get_post( $post_id );
+		}
+
 		if ( ! isset( $post ) ) {
 			return false;
 		}
+
 		$author_id      = $post->post_author;
 		$user_nicename  = get_the_author_meta( 'user_nicename', $author_id );
 		$display_name   = get_the_author_meta( 'display_name', $author_id );
@@ -244,11 +259,12 @@ class Post_Meta extends Base_View {
 	/**
 	 * Get <time> tags.
 	 *
+	 * @param int | null $post_id Post id.
 	 * @return string
 	 */
-	public static function get_time_tags() {
-		$created           = get_the_time( 'U' );
-		$modified          = get_the_modified_time( 'U' );
+	public static function get_time_tags( $post_id = null ) {
+		$created           = get_the_time( 'U', $post_id );
+		$modified          = get_the_modified_time( 'U', $post_id );
 		$has_updated_time  = $created !== $modified;
 		$show_updated_time = get_theme_mod( 'neve_show_last_updated_date', false );
 		if ( is_singular( 'post' ) ) {
@@ -302,16 +318,18 @@ class Post_Meta extends Base_View {
 	/**
 	 * Get the comments with a link.
 	 *
+	 * @param int | null $post_id Post id.
+	 *
 	 * @return string|false
 	 */
-	public static function get_comments() {
-		if ( ! get_post() ) {
+	public static function get_comments( $post_id = null ) {
+		if ( ! get_post( $post_id ) ) {
 			return false;
 		}
-		if ( ! comments_open() ) {
+		if ( ! comments_open( $post_id ) ) {
 			return false;
 		}
-		$comments_number = get_comments_number();
+		$comments_number = get_comments_number( $post_id );
 		if ( $comments_number < 1 ) {
 			return false;
 		}
@@ -321,7 +339,7 @@ class Post_Meta extends Base_View {
 		/* translators: %s: number of comments */
 		$comments = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'neve' ), $comments_number );
 
-		return '<a href="' . esc_url( get_comments_link() ) . '">' . esc_html( $comments ) . '</a>';
+		return '<a href="' . esc_url( get_comments_link( $post_id ) ) . '">' . esc_html( $comments ) . '</a>';
 	}
 
 	/**
