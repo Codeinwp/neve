@@ -17,6 +17,8 @@ function neve_run() {
 			'malformed_div_on_shop' => true,
 			'custom_post_types_enh' => true,
 			'mega_menu'             => true,
+			'scroll_to_top_icons'   => true,
+			'palette_logo'          => true,
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';

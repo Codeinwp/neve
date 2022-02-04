@@ -36,16 +36,9 @@
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
-
 		a, button {
-			align-self: flex-start;
-			margin-right: 10px;
-			margin-top: auto;
-
-			&.is-secondary {
-				outline: 1px solid;
-				font-weight: 800;
-			}
+		  align-self: flex-start;
+		  margin-top: auto;
 		}
 	}
 
@@ -58,16 +51,20 @@
 		margin: 15px 0 25px;
 	}
 
-	.card-button {
-		margin-top: 60px;
-	}
-
-	.card-button-group {
-		.components-button.is-secondary {
-			margin-top: 10px;
+	.card-button-wrap {
+	  display: flex;
+	  margin-top: auto;
+	  a {
+		margin-left: 10px;
+		&:first-child {
+		  margin: 0;
 		}
+	  }
 	}
 
+	.components-external-link{
+		color: $blue;
+	}
 }
 
 @mixin card--laptop() {
