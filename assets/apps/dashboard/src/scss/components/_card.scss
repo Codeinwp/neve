@@ -73,6 +73,10 @@
 			}
 		}
 	}
+
+	.components-external-link{
+		color: $blue;
+	}
 }
 
 @mixin card--laptop() {
