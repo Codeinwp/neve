@@ -216,7 +216,7 @@ class Upsells extends Base_Customizer {
 							[
 								'type'     => 'nv_simple_upsell_section',
 								'priority' => 10000,
-								'link'     => add_query_arg( 'utm_source', $args['panel'], 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_campaign=neve' ),
+								'link'     => add_query_arg( 'utm_source', $args['panel'], 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_campaign=neve&utm_content=learnmore' ),
 							]
 						),
 						'\Neve\Customizer\Controls\Simple_Upsell_Section'
@@ -233,7 +233,7 @@ class Upsells extends Base_Customizer {
 						$args,
 						[
 							'priority' => 10000,
-							'link'     => add_query_arg( 'utm_source', $args['section'], 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_campaign=neve' ),
+							'link'     => add_query_arg( 'utm_source', $args['section'], 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_campaign=neve&utm_content=learnmore' ),
 						]
 					),
 					'Neve\Customizer\Controls\Simple_Upsell'
