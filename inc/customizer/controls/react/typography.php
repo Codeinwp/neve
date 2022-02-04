@@ -41,10 +41,11 @@ class Typography extends \WP_Customize_Control {
 	/**
 	 * Send to JS.
 	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['input_attrs']         = is_array( $this->input_attrs ) ? wp_json_encode( $this->input_attrs ) : $this->input_attrs;
-		$this->json['refresh_on_reset']    = $this->refresh_on_reset;
-		$this->json['font_family_control'] = $this->font_family_control;
+	public function json() {
+		$json                        = parent::json();
+		$json['input_attrs']         = is_array( $this->input_attrs ) ? wp_json_encode( $this->input_attrs ) : $this->input_attrs;
+		$json['refresh_on_reset']    = $this->refresh_on_reset;
+		$json['font_family_control'] = $this->font_family_control;
+		return $json;
 	}
 }
