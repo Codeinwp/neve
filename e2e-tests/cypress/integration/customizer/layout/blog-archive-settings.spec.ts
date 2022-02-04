@@ -179,7 +179,7 @@ describe('Blog/Archive 3 / Covers Layout', function () {
 
 	it('Masonry', function () {
 		cy.request('wp-json/wpthememods/v1/settings').then((response) => {
-			expect(response.body).to.contains(`"neve_enable_masonry":true`);
+			expect(response.body).to.have.property('neve_enable_masonry', true);
 		});
 		cy.visit('/');
 		cy.get('article.post').each((el) => {
