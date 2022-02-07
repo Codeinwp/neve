@@ -23,15 +23,20 @@
 	margin-right: calc(var(--spacing) / 2 * -1);
 	margin-left: calc(var(--spacing) / 2 * -1);
 
-	li > a {
+	li > .wrap {
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 		min-height: var(--height);
 		color: var(--color);
 		position: relative;
+
+		a {
+			flex-grow: 1;
+		}
 	}
 
-	li > a:hover {
+	li > .wrap:hover > * {
 		color: var(--hoverColor);
 	}
 
@@ -40,11 +45,15 @@
 	}
 
 	li {
-		display: flex;
+		display: block;
 		position: relative;
 
-		&.current-menu-item > a:not([href*="#"]) {
-			color: var(--activeColor);
+		&.current-menu-item > .wrap a:not([href*="#"]) {
+
+			&,
+			+ .caret-wrap {
+				color: var(--activeColor);
+			}
 		}
 
 		&:hover > .sub-menu,
@@ -86,7 +95,7 @@
 			min-width: 150px;
 		}
 
-		li > a {
+		li > .wrap {
 			padding: $spacing-xs $spacing-md;
 			white-space: nowrap;
 			display: flex;
@@ -121,7 +130,7 @@
 			width: 100%;
 		}
 
-		li:not([class*="block"]) > a {
+		li:not([class*="block"]) > .wrap a {
 			padding: $spacing-sm 0;
 			white-space: unset;
 		}
@@ -166,7 +175,7 @@
 				display: block;
 			}
 
-			> li > a {
+			> li > .wrap {
 
 				.caret-wrap {
 					display: none;

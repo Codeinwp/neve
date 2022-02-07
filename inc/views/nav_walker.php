@@ -45,7 +45,8 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @return string
 	 */
 	public function add_caret( $title, $item, $args, $depth ) {
-		$args->after = '';
+		$args->before = '<div class="wrap">';
+		$args->after  = '</div>';
 
 		if ( neve_is_amp() ) {
 			return $title;
@@ -63,14 +64,17 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			return $title;
 		}
 
+		// We add tabindex 0 for sidebar in order for the caret to  be focusable.
+		$expanded = strpos( $args->menu_id, 'sidebar' ) !== false ? 'tabindex="0"' : 'tabindex="-1"';
+
 		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 			$title = '<span class="menu-item-title-wrap dd-title">' . $title . '</span>';
 
-			$caret  = '<button type="button" tabindex="-1" class="caret-wrap ' . $item->menu_order . '">';
+			$caret  = '<button ' . $expanded . ' type="button" class="caret-wrap ' . $item->menu_order . '">';
 			$caret .= '<span class="caret"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg></span>';
 			$caret .= '</button>';
 
-			$args->after = $caret;
+			$args->after = $caret . $args->after;
 		}
 
 		return $title;
