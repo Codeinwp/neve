@@ -40,7 +40,7 @@
 	}
 
 	li {
-		display: block;
+		display: flex;
 		position: relative;
 
 		&.current-menu-item > a:not([href*="#"]) {
