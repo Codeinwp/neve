@@ -1,23 +1,20 @@
 //List fixes
-.neve-main .elementor-text-editor {
+.elementor-widget-text-editor {
+	--listPad: #{$spacing-sm};
+	--listStyle: disc;
+}
 
-	ul,
-	ol {
-		padding-left: $spacing-sm;
-	}
+// Fix scroll snap
+body.elementor-page {
 
-	ul {
-		list-style: inherit;
+	.wrapper {
+		overflow: visible;
 	}
 }
 
-body.elementor-page {
+.elementor {
 
 	select {
 		background-image: none;
-  }
-  
-	.wrapper {
-		overflow: visible;
 	}
 }
