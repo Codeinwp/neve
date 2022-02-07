@@ -50,11 +50,12 @@ class Inline_Select extends \WP_Customize_Control {
 	/**
 	 * Send to JS.
 	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['options']    = $this->options;
-		$this->json['defaultVal'] = $this->default;
-		$this->json['link']       = $this->link;
-		$this->json['changesOn']  = $this->changes_on;
+	public function json() {
+		$json               = parent::json();
+		$json['options']    = $this->options;
+		$json['defaultVal'] = $this->default;
+		$json['link']       = $this->link;
+		$json['changesOn']  = $this->changes_on;
+		return $json;
 	}
 }

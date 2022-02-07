@@ -11,9 +11,11 @@ const Card = (props) => {
 		children,
 		classNames,
 		dashicon,
+		lockIcon,
 	} = props;
 	return (
 		<div className={classnames(['card', classNames])}>
+			{lockIcon && <Icon className="icon dashicon" icon="lock" />}
 			<div className="card-header">
 				{icon &&
 					(dashicon ? (
