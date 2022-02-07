@@ -67,7 +67,7 @@ class Template_Parts extends Base_View {
 				'excerpt_more',
 				function() use ( $post_id ) {
 					return $this->link_excerpt_more( ' [&hellip;]', $post_id );
-				} 
+				}
 			);
 
 			$data = [
@@ -118,15 +118,17 @@ class Template_Parts extends Base_View {
 	/**
 	 * Render inner content for <article>
 	 *
-	 * @param int | null $post Post id.
+	 * @param int | null $post_id Post id.
 	 *
 	 * @return string
 	 */
 	private function get_article_inner_content( $post_id = null ) {
-		$markup = '';
+		$markup            = '';
+		$layout            = $this->get_layout();
+		$is_featured_post  = $post_id !== null;
+		$featured_template = in_array( $layout, [ 'alternative', 'default', 'grid' ], true ) ? 'tp1' : 'tp2';
 
-		$layout = $this->get_layout();
-		if ( in_array( $layout, [ 'alternative', 'default' ] ) ) {
+		if ( in_array( $layout, [ 'alternative', 'default' ], true ) || ( $is_featured_post && $featured_template === 'tp1' ) ) {
 			$markup .= $this->get_post_thumbnail( $post_id );
 			$markup .= '<div class="non-grid-content ' . esc_attr( $layout ) . '-layout-content">';
 			$markup .= $this->get_ordered_content_parts( true, $post_id );
@@ -136,33 +138,33 @@ class Template_Parts extends Base_View {
 		}
 
 		if ( $layout === 'covers' ) {
-			// $default_order = array(
-			// 'thumbnail',
-			// 'title-meta',
-			// 'excerpt',
-			// );
-			// $order         = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
-			// $style         = '';
-			// if ( in_array( 'thumbnail', $order, true ) ) {
-			// $thumb  = get_the_post_thumbnail_url( $post );
-			// $style .= ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
-			// }
-			// $markup .= '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
-			// $markup .= '<div class="inner">';
-			// $markup .= $this->get_ordered_content_parts( true, $post );
-			// $markup .= '</div>';
-			// $markup .= '</div>';
-			//
-			// return $markup;
+			$default_order = array(
+				'thumbnail',
+				'title-meta',
+				'excerpt',
+			);
+			$order         = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
+			$style         = '';
+			if ( in_array( 'thumbnail', $order, true ) ) {
+				$thumb  = get_the_post_thumbnail_url( $post_id );
+				$style .= ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
+			}
+			$markup .= '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
+			$markup .= '<div class="inner">';
+			$markup .= $this->get_ordered_content_parts( true, $post_id );
+			$markup .= '</div>';
+			$markup .= '</div>';
+
+			return $markup;
 		}
 
-		// return $this->get_ordered_content_parts();
+		return $this->get_ordered_content_parts( false, $post_id );
 	}
 
 	/**
 	 * Render the post thumbnail.
 	 *
-	 * @param int | null $post Post id.
+	 * @param int | null $post_id Post id.
 	 * @return string
 	 */
 	private function get_post_thumbnail( $post_id = null ) {
@@ -369,8 +371,17 @@ class Template_Parts extends Base_View {
 			'title-meta',
 			'excerpt',
 		);
-		$order         = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) );
-		$order         = json_decode( $order, true );
+
+		$order = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) );
+		$order = json_decode( $order, true );
+		if ( $post_id !== null && in_array( 'thumbnail', $order, true ) ) {
+			$key = array_search( 'thumbnail', $order );
+			if ( $key !== false ) {
+				unset( $order[ $key ] );
+			}
+			array_unshift( $order, 'thumbnail' );
+		}
+
 		foreach ( $order as $content_bit ) {
 			switch ( $content_bit ) {
 				case 'thumbnail':

@@ -205,20 +205,15 @@ class Post_Meta extends Base_View {
 	 */
 	public static function neve_get_author_meta( $post_id = null ) {
 
-		if ( $post_id === null ) {
-			global $post;
-		} else {
-			if ( ! is_numeric( $post_id ) ) {
-				return false;
-			}
-			$post = get_post( $post_id );
-		}
+		global $post;
 
-		if ( ! isset( $post ) ) {
+		$current_post = $post_id !== null ? get_post( $post_id ) : $post;
+
+		if ( ! isset( $current_post ) ) {
 			return false;
 		}
 
-		$author_id      = $post->post_author;
+		$author_id      = $current_post->post_author;
 		$user_nicename  = get_the_author_meta( 'user_nicename', $author_id );
 		$display_name   = get_the_author_meta( 'display_name', $author_id );
 		$author_email   = get_the_author_meta( 'user_email', $author_id );
