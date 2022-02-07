@@ -40,9 +40,9 @@ wp.customize.bind('preview-ready', function () {
 			const linkNode = document.querySelector('#' + id);
 			const fontValue = data.value.replace(' ', '+');
 			const url =
-				'//fonts.googleapis.com/css?family=' +
+				'//fonts.googleapis.com/css2?family=' +
 				fontValue +
-				'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&display=swap"';
+				'%3Awght%40100%3B200%3B300%3B400%3B500%3B600%3B700%3B800&display=swap"';
 			if (linkNode !== null) {
 				linkNode.setAttribute('href', url);
 			} else {

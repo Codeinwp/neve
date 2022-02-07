@@ -189,11 +189,12 @@ class Font_Manager extends Base_View {
 		// Sanitize font name.
 		$url_string = trim( $font );
 
-		$base_url = '//fonts.googleapis.com/css';
+		$base_url = '//fonts.googleapis.com/css2';
 
 		// Add weights to URL.
 		if ( ! empty( $weights ) ) {
-			$url_string .= ':' . implode( ',', $weights );
+			asort( $weights );
+			$url_string .= ':wght@' . implode( ';', $weights );
 		}
 
 		$query_args = array(

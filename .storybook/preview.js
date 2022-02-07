@@ -91,11 +91,24 @@ const wpObject = {
 window.wp = wpObject;
 
 const head = document.querySelector('#nv-google-fonts');
-const families = FONTS.Google.join('|');
-const link = document.createElement('link');
-link.setAttribute('rel', 'stylesheet');
-link.setAttribute('id', 'google-fonts-css');
-link.setAttribute('href', `https://fonts.googleapis.com/css?family=${families}&text=Abc&display=swap&ver=2.9.5`);
-link.setAttribute('media', 'all');
-head.appendChild(link)
 
+const createChunks = (arr, size) =>
+Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+arr.slice(i * size, i * size + size)
+); 
+
+const chunks = createChunks(FONTS.Google, 60);
+
+for( let i = 0; i < chunks.length; i++ ){
+
+	let families = chunks[i].join('&family=');
+	families = families.replace(/\s/g, '+');
+
+	const link = document.createElement('link');
+	link.setAttribute('rel', 'stylesheet');
+	link.setAttribute('id', 'google-fonts-css-' + i);
+	link.setAttribute('href', `https://fonts.googleapis.com/css2?family=${families}&text=Abc&display=swap`);
+	link.setAttribute('media', 'all');
+	head.appendChild(link)
+
+}

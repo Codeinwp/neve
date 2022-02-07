@@ -147,16 +147,22 @@ class Loader {
 		wp_enqueue_style( 'react-controls' );
 
 		$fonts  = neve_get_google_fonts();
-		$chunks = array_chunk( $fonts, absint( count( $fonts ) / 5 ) );
+		$chunks = array_chunk( $fonts, absint( count( $fonts ) / 40 ) );
 
 		foreach ( $chunks as $index => $fonts_chunk ) {
+
+			$fonts = 'https://fonts.googleapis.com/css2?family=' . join( '&family=', $fonts_chunk ) . '&text=Abc';
+			$fonts = str_replace( ' ', '+', $fonts );
+
 			wp_enqueue_style(
 				'neve-fonts-control-google-fonts-' . $index,
-				'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=Abc"',
+				$fonts,
 				[],
 				NEVE_VERSION
 			);
+
 		}
+		
 	}
 
 	/**
