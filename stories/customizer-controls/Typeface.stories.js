@@ -38,6 +38,7 @@ export default {
 			tablet: 0.6,
 			desktop: 0.8,
 		},
+		fontFamilyControl: '',
 	},
 	decorators: [WhiteBackgroundDecorator, CustomizerDecorator],
 };

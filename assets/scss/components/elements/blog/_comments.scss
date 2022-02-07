@@ -84,6 +84,8 @@
 
 .comments-title {
 	margin-bottom: $spacing-xxl;
+
+	@extend %nv-has-h4-typography;
 }
 
 
