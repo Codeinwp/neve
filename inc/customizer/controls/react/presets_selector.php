@@ -38,9 +38,10 @@ class Presets_Selector extends \WP_Customize_Control {
 	/**
 	 * Send to JS.
 	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['presets'] = $this->presets;
-		$this->json['builder'] = $this->builder;
+	public function json() {
+		$json            = parent::json();
+		$json['presets'] = $this->presets;
+		$json['builder'] = $this->builder;
+		return $json;
 	}
 }
