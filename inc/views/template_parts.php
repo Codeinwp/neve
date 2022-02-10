@@ -70,9 +70,10 @@ class Template_Parts extends Base_View {
 				}
 			);
 
+			$has_thumbnail_class = has_post_thumbnail( $post_id ) ? 'with-thumb' : '';
 			$data = [
 				'post_id'    => 'post-' . $post_id,
-				'post_class' => $this->post_class( $post_id, 'nv-featured-post' ),
+				'post_class' => $this->post_class( $post_id, 'nv-featured-post ' . $has_thumbnail_class ),
 				'content'    => $this->get_article_inner_content( $post_id ),
 			];
 			$this->get_view( 'archive-post', $data );

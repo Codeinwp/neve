@@ -132,8 +132,11 @@ body:not(.nv-blog-default) {
   &:not(.layout-covers) {
 	background: var( --fpBackground, var(--nv-light-bg) );
 
-	.content {
+	&.with-thumb .content {
 	  grid-template-columns: var(--ftPostTemplate, 1fr);
+	}
+
+	.content {
 	  grid-gap: 0;
 	  padding: 0;
 	  .non-grid-content {
