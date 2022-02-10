@@ -108,7 +108,10 @@ class Template_Parts extends Base_View {
 		if ( in_array( $layout, [ 'grid', 'covers' ], true ) ) {
 			$class .= ' ' . $this->get_grid_columns_class();
 		} else {
-			$class .= ' col-12 nv-non-grid-article';
+			$class .= ' col-12 ';
+			if ( $post_id === null ) {
+				$class .= ' nv-non-grid-article';
+			}
 		}
 
 		$class .= ' ' . $additional;

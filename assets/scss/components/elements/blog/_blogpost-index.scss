@@ -130,9 +130,10 @@ body:not(.nv-blog-default) {
   margin-top: 60px;
   margin-bottom: 0px;
   &:not(.layout-covers) {
-	background: var(--nv-light-bg);
+	background: var( --fpBackground, var(--nv-light-bg) );
 
 	.content {
+	  grid-template-columns: var(--ftPostTemplate, 1fr);
 	  grid-gap: 0;
 	  padding: 0;
 	  .non-grid-content {
@@ -149,9 +150,10 @@ body:not(.nv-blog-default) {
 
 	.wp-post-image {
 	  width: 100%;
-	  box-shadow: none;
 	  position: absolute;
-	  top: -50%;
+	  margin: auto;
+	  left: 0;
+	  right: 0;
 	}
 
 	.nv-meta-list {
