@@ -63,10 +63,19 @@ class Template_Parts extends Base_View {
 	private function get_article_inner_content() {
 		$markup = '';
 
+		$default_order = array(
+			'thumbnail',
+			'title-meta',
+			'excerpt',
+		);
+		$order         = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
+
 		$layout = $this->get_layout();
 
 		if ( in_array( $layout, [ 'alternative', 'default' ] ) ) {
-			$markup .= $this->get_post_thumbnail();
+			if ( in_array( 'thumbnail', $order, true ) ) {
+				$markup .= $this->get_post_thumbnail();
+			}
 			$markup .= '<div class="non-grid-content ' . esc_attr( $layout ) . '-layout-content">';
 			$markup .= $this->get_ordered_content_parts( true );
 			$markup .= '</div>';
@@ -75,13 +84,7 @@ class Template_Parts extends Base_View {
 		}
 
 		if ( $layout === 'covers' ) {
-			$default_order = array(
-				'thumbnail',
-				'title-meta',
-				'excerpt',
-			);
-			$order         = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
-			$style         = '';
+			$style = '';
 			if ( in_array( 'thumbnail', $order, true ) ) {
 				$thumb  = get_the_post_thumbnail_url();
 				$style .= ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
@@ -337,6 +340,8 @@ class Template_Parts extends Base_View {
 					break;
 			}
 		}
+
+		// error_log( var_export( $markup, true ) );
 
 		return $markup;
 	}
