@@ -140,23 +140,23 @@ body:not(.nv-blog-default) {
 	  grid-gap: 0;
 	  padding: 0;
 	  .non-grid-content {
-		padding: 32px;
+		padding: var(--fpPadding, 32px);
 	  }
 	}
 
 	.nv-post-thumbnail-wrap {
 	  margin: 0;
 	  position: relative;
-	  height: 320px;
 	  overflow: hidden;
+	  min-height: 320px;
+	  height: 100%;
 	}
 
 	.wp-post-image {
-	  width: 100%;
 	  position: absolute;
-	  margin: auto;
-	  left: 0;
-	  right: 0;
+	  min-height: 100%;
+	  object-fit: cover;
+	  width: 100%;
 	}
 
 	.nv-meta-list {
