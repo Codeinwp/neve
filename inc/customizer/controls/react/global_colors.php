@@ -36,9 +36,10 @@ class Global_Colors extends \WP_Customize_Control {
 	/**
 	 * Send to JS.
 	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['defaultValues'] = $this->default_values;
-		$this->json['input_attrs']   = $this->input_attrs;
+	public function json() {
+		$json                  = parent::json();
+		$json['defaultValues'] = $this->default_values;
+		$json['input_attrs']   = $this->input_attrs;
+		return $json;
 	}
 }

@@ -28,8 +28,9 @@ class Font_Family extends \WP_Customize_Control {
 	/**
 	 * Send to JS.
 	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['input_attrs'] = $this->input_attrs;
+	public function json() {
+		$json                = parent::json();
+		$json['input_attrs'] = $this->input_attrs;
+		return $json;
 	}
 }

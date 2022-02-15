@@ -37,6 +37,11 @@
 	text-transform: var(--textTransform, var(--bodyTextTransform));
 	padding: var(--padding, 0);
 	margin: var(--margin, 0);
+	position: relative;
+
+	&.has_menu {
+		position: unset;
+	}
 }
 
 .inherit-ff {

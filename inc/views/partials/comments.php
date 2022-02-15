@@ -47,7 +47,6 @@ class Comments extends Base_View {
 		}
 
 		if ( have_comments() ) {
-			$comment_title_tag     = neve_is_new_skin() ? 'h4' : 'h2';
 			$comments_wrap_classes = [ 'nv-comments-wrap' ];
 			$is_boxed              = get_theme_mod( 'neve_comments_boxed_layout', false );
 			if ( $is_boxed ) {
@@ -59,9 +58,9 @@ class Comments extends Base_View {
 
 				<div class="nv-comments-title-wrap">
 					<?php
-					echo '<' . esc_html( $comment_title_tag ) . ' class="comments-title">';
+					echo '<h2 class="comments-title">';
 					echo wp_kses_post( $this->get_comments_title() );
-					echo '</' . esc_html( $comment_title_tag ) . '>'
+					echo '</h2>'
 					?>
 				</div>
 
@@ -329,7 +328,7 @@ class Comments extends Base_View {
 	 * @return array
 	 */
 	public function leave_reply_title_tag( $args ) {
-		$tag = neve_is_new_skin() ? 'h4' : 'h3';
+		$tag = neve_is_new_skin() ? 'h2' : 'h3';
 
 		$args['title_reply_before'] = '<' . $tag . ' id="reply-title" class="comment-reply-title">';
 		$args['title_reply_after']  = '</' . $tag . '>';

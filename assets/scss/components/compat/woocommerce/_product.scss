@@ -143,21 +143,14 @@
 /* stylelint-disable */
 .woocommerce {
 
-	div.product form.cart .variations {
-
-		td {
-			padding: 0;
-			display: block;
-			width: 100%;
-
-			&.label {
-				padding: 0;
-			}
+  	div.product form.cart .variations {
+	  	td, th {
+		  padding: 0;
 		}
 
-		tr:not(:last-child) {
-			margin-bottom: $spacing-xs;
-			display: block;
+	  	tr{
+		  margin-bottom: $spacing-sm;
+		  display: grid;
 		}
 	}
 

@@ -8,6 +8,14 @@
 	padding: 30px 40px;
 	align-self: flex-start;
 	flex-grow: 0;
+	position: relative;
+
+	.dashicons-lock {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		color: rgba(0, 115, 170, 0.2);
+	}
 
 	.card-header {
 		flex-direction: row;
@@ -23,10 +31,10 @@
 			margin-right: 10px;
 
 			&.dashicon {
-				width: 33px;
-				height: 33px;
+				width: 40px;
+				height: 40px;
 				fill: $blue;
-				font-size: 33px;
+				font-size: 40px;
 				color: $blue;
 			}
 		}
@@ -37,15 +45,10 @@
 		flex-direction: column;
 		flex-grow: 1;
 
-		a, button {
+		a,
+		button {
 			align-self: flex-start;
-			margin-right: 10px;
 			margin-top: auto;
-
-			&.is-secondary {
-				outline: 1px solid;
-				font-weight: 800;
-			}
 		}
 	}
 
@@ -58,25 +61,33 @@
 		margin: 15px 0 25px;
 	}
 
-	.card-button {
-		margin-top: 60px;
-	}
+	.card-button-wrap {
+		display: flex;
+		margin-top: auto;
 
-	.card-button-group {
-		.components-button.is-secondary {
-			margin-top: 10px;
+		a {
+			margin-left: 10px;
+
+			&:first-child {
+				margin: 0;
+			}
 		}
 	}
 
+	.components-external-link{
+		color: $blue;
+	}
 }
 
 @mixin card--laptop() {
+
 	.card {
 		margin: 0 0 20px;
 	}
 }
 
 @mixin card--desktop() {
+
 	.card {
 		padding: 20px 30px;
 		margin: 0 0 20px;
@@ -84,6 +95,7 @@
 }
 
 @mixin card--desktop-large() {
+
 	.card {
 		padding: 30px 40px;
 		margin: 0 0 30px;

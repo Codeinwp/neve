@@ -17,7 +17,6 @@ window.NeveReactCustomize.HFG = BuildersData
 const wpObject = {
 	customize: {
 		bind: (event, callback) => {
-			callback();
 		},
 		previewedDevice: (device) => {
 			const wrap = document.querySelector('.mock-customize');

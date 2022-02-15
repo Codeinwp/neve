@@ -59,13 +59,8 @@ const Start = (props) => {
 					{!neveDash.isValidLicense && (
 						<p>{neveDash.strings.starterSitesCardUpsellMessage}</p>
 					)}
-					<div
-						className={
-							!neveDash.isValidLicense
-								? 'card-button-group'
-								: 'card-button'
-						}
-					>
+
+					<div className="card-button-wrap">
 						{tabs['starter-sites'] ? (
 							<Button
 								isPrimary
@@ -82,10 +77,15 @@ const Start = (props) => {
 						)}
 						{!neveDash.isValidLicense && (
 							<Button
+								target="_blank"
+								rel="external noreferrer noopener"
 								href={neveDash.startSitesgetNeveProURL}
 								isSecondary
 							>
 								{__('Get Neve Pro', 'neve')}
+								<span className="components-visually-hidden">
+									{__('(opens in a new tab)', 'neve')}
+								</span>
 							</Button>
 						)}
 					</div>
@@ -119,6 +119,7 @@ const Start = (props) => {
 					<Card
 						icon={neveDash.assets + 'template-cloud.svg'}
 						title="Templates Cloud"
+						lockIcon={!pro}
 						description={__(
 							'Boost productivity and speed up your workflow by saving all your designs and share them automatically to all your sites in 1-click.',
 							'neve'
@@ -134,6 +135,40 @@ const Start = (props) => {
 								{__('Learn how to use Templates Cloud', 'neve')}
 							</ExternalLink>
 						)}
+					</Card>
+				</>
+			)}
+			{!pro && (
+				<>
+					<Card
+						classNames="woo-card"
+						icon="cart"
+						dashicon={true}
+						lockIcon={true}
+						title={__('WooCommerce Booster', 'neve')}
+						description={__(
+							'Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration.',
+							'neve'
+						)}
+					>
+						<ExternalLink href="https://docs.themeisle.com/article/1058-woocommerce-booster-documentation">
+							{__('Learn more', 'neve')}
+						</ExternalLink>
+					</Card>
+					<Card
+						classNames="block-editor-card"
+						icon="block-default"
+						dashicon={true}
+						lockIcon={true}
+						title={__('Block Editor Booster', 'neve')}
+						description={__(
+							'Enhance your Gutenberg experience with new blocks, including Business Hours, Popup, Review Comparison Table and more.',
+							'neve'
+						)}
+					>
+						<ExternalLink href="https://docs.themeisle.com/article/1473-neve-block-editor-booster-module">
+							{__('Learn more', 'neve')}
+						</ExternalLink>
 					</Card>
 				</>
 			)}
