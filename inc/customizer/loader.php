@@ -147,18 +147,24 @@ class Loader {
 		wp_enqueue_style( 'react-controls' );
 
 		$fonts  = neve_get_google_fonts();
-		$chunks = array_chunk( $fonts, absint( count( $fonts ) / 40 ) );
+		$chunks = array_chunk( $fonts, absint( count( $fonts ) / 20 ) );
+
+		$version = get_theme_mod( 'neve_google_fonts_version', 'v2' );
 
 		foreach ( $chunks as $index => $fonts_chunk ) {
 
-			$fonts = 'https://fonts.googleapis.com/css2?family=' . join( '&family=', $fonts_chunk ) . '&text=Abc';
-			$fonts = str_replace( ' ', '+', $fonts );
+			if ( $version === 'v2' ) {
+				$fonts = 'https://fonts.googleapis.com/css2?family=' . join( '&family=', $fonts_chunk ) . '&text=Abc';
+				$fonts = str_replace( ' ', '+', $fonts );
+			} else {
+				$fonts = 'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=Abc';
+			}
 
 			wp_enqueue_style(
 				'neve-fonts-control-google-fonts-' . $index,
 				$fonts,
 				[],
-				NEVE_VERSION
+				( $version === 'v2' ) ? null : NEVE_VERSION
 			);
 
 		}
@@ -192,6 +198,7 @@ class Loader {
 					'currentFeaturedImage' => '',
 					'newBuilder'           => neve_is_new_builder(),
 					'newSkin'              => neve_is_new_skin(),
+					'googleFontsVersion'   => get_theme_mod( 'neve_google_fonts_version', 'v2' ),
 				)
 			)
 		);

@@ -45,6 +45,7 @@ class Config {
 	 */
 	const MODS_BACKGROUND_COLOR            = 'background_color';
 	const MODS_BUTTON_SECONDARY_PADDING    = 'neve_secondary_button_padding';
+	const MODS_GOOGLE_FONTS_VERSION        = 'neve_google_fonts_version';
 	const MODS_TYPEFACE_GENERAL            = 'neve_typeface_general';
 	const MODS_TYPEFACE_H1                 = 'neve_h1_typeface_general';
 	const MODS_TYPEFACE_H2                 = 'neve_h2_typeface_general';

@@ -187,39 +187,30 @@ class Font_Manager extends Base_View {
 		}
 
 		// Sanitize font name.
-		$url_string = trim( $font );
+		$font = trim( $font );
 
-		$base_url = '//fonts.googleapis.com/css2';
-
-		// Add weights to URL.
-		if ( ! empty( $weights ) ) {
-			asort( $weights );
-			$url_string .= ':wght@' . implode( ';', $weights );
-		}
+		$version  = get_theme_mod( 'neve_google_fonts_version', 'v2' );
+		$base_url = ( $version === 'v2' ) ? '//fonts.googleapis.com/css2' : '//fonts.googleapis.com/css';
 
 		$query_args = array(
-			'family'  => urlencode( $url_string ),
+			'family'  => urlencode( $font ),
 			'display' => 'swap',
 		);
 
-		$subsets = [
-			'ru_RU' => 'cyrillic',
-			'bg_BG' => 'cyrillic',
-			'he_IL' => 'hebrew',
-			'el'    => 'greek',
-			'vi'    => 'vietnamese',
-			'uk'    => 'cyrillic',
-			'cs_CZ' => 'latin-ext',
-			'ro_RO' => 'latin-ext',
-			'pl_PL' => 'latin-ext',
-		];
-		$locale  = get_locale();
+		// Add weights to URL.
+		if ( ! empty( $weights ) ) {
 
-		if ( isset( $subsets[ $locale ] ) ) {
-			$query_args['subset'] = urlencode( $subsets[ $locale ] );
+			asort( $weights );
+
+			if ( $version === 'v2' ) {
+				$query_args = $this->get_google_font_v2_args( $font, $weights );
+			} else {
+				$query_args = $this->get_google_font_v1_args( $font, $weights );
+			}       
 		}
-		$url = add_query_arg( $query_args, $base_url );
 
+		$url = add_query_arg( $query_args, $base_url );
+	
 		// Enqueue style
 
 		/**
@@ -243,5 +234,82 @@ class Font_Manager extends Base_View {
 		} else {
 			wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
 		}
+	}
+
+	/**
+	 * Get Google fonts v1 query arguments.
+	 *
+	 * @param string $font 
+	 * @param array  $weights 
+	 * @return array
+	 */
+	private function get_google_font_v1_args( $font, $weights ) {
+
+		$font .= ':' . implode( ',', $weights );
+		
+		$query_args = array(
+			'family'  => urlencode( $font ),
+			'display' => 'swap',
+		);
+
+		$subsets = [
+			'ru_RU' => 'cyrillic',
+			'bg_BG' => 'cyrillic',
+			'he_IL' => 'hebrew',
+			'el'    => 'greek',
+			'vi'    => 'vietnamese',
+			'uk'    => 'cyrillic',
+			'cs_CZ' => 'latin-ext',
+			'ro_RO' => 'latin-ext',
+			'pl_PL' => 'latin-ext',
+		];
+		$locale  = get_locale();
+
+		if ( isset( $subsets[ $locale ] ) ) {
+			$query_args['subset'] = urlencode( $subsets[ $locale ] );
+		}
+
+		return $query_args;
+	}
+
+	/**
+	 * Get Google fonts v2 query arguments.
+	 * 
+	 * @param string $font 
+	 * @param array  $weights 
+	 * @return array
+	 */
+	private function get_google_font_v2_args( $font, $weights ) {
+
+		$weights_string = wp_json_encode( $weights );
+
+		if ( strpos( $weights_string, 'italic' ) ) {
+
+			$spec = array();
+
+			foreach ( $weights as $font_weight ) {
+				if ( strpos( $font_weight, 'italic' ) !== false ) {
+					$weight = str_replace( 'italic', '', $font_weight );
+					array_push( $spec, '1,' . $weight );
+				} else {
+					array_push( $spec, '0,' . $font_weight );
+				}
+			}    
+
+			$spec = array_unique( $spec );
+			asort( $spec );
+	
+			$font .= ':ital,wght@' . implode( ';', $spec );
+
+		} else {
+			$font .= ':wght@' . implode( ';', $weights );
+		}
+
+			$query_args = array(
+				'family'  => urlencode( $font ),
+				'display' => 'swap',
+			);
+
+			return $query_args;
 	}
 }

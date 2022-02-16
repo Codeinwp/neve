@@ -27,6 +27,7 @@ class Typography extends Base_Customizer {
 	 */
 	public function add_controls() {
 		$this->sections_typography();
+		$this->neve_typography_google_fonts_version();
 		$this->controls_typography_general();
 		$this->controls_typography_headings();
 		$this->controls_typography_blog();
@@ -37,15 +38,19 @@ class Typography extends Base_Customizer {
 	 */
 	private function sections_typography() {
 		$typography_sections = array(
-			'neve_typography_general'  => array(
+			'neve_typography_google_fonts_version' => array(
+				'title'    => __( 'Google Fonts Version', 'neve' ),
+				'priority' => 15,
+			),
+			'neve_typography_general'              => array(
 				'title'    => __( 'General', 'neve' ),
 				'priority' => 25,
 			),
-			'neve_typography_headings' => array(
+			'neve_typography_headings'             => array(
 				'title'    => __( 'Headings', 'neve' ),
 				'priority' => 35,
 			),
-			'neve_typography_blog'     => array(
+			'neve_typography_blog'                 => array(
 				'title'    => __( 'Blog', 'neve' ),
 				'priority' => 45,
 			),
@@ -63,6 +68,33 @@ class Typography extends Base_Customizer {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Add google fonts version typography controls
+	 */
+	private function neve_typography_google_fonts_version() {
+	
+		$this->add_control(
+			new Control(
+				Config::MODS_GOOGLE_FONTS_VERSION,
+				array(
+					'default'           => 'v2',
+					'sanitize_callback' => array( $this, 'sanitize_google_fonts_version' ),
+				),
+				array(
+					'label'    => esc_html__( 'Google Font Version', 'neve' ),
+					'section'  => 'neve_typography_google_fonts_version',
+					'priority' => 10,
+					'type'     => 'select',
+					'choices'  => array(
+						'v1' => esc_html__( 'Version 1', 'neve' ),
+						'v2' => esc_html__( 'Version 2', 'neve' ),
+					),
+				)
+			)
+		);
+
 	}
 
 	/**
@@ -424,6 +456,22 @@ class Typography extends Base_Customizer {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Sanitize google fonts version
+	 *
+	 * @param string $value value from the control.
+	 *
+	 * @return string
+	 */
+	public function sanitize_google_fonts_version( $value ) {
+		$allowed_values = array( 'v1', 'v2' );
+		if ( ! in_array( $value, $allowed_values, true ) ) {
+			return 'v2';
+		}
+
+		return esc_html( $value );
 	}
 }
 
