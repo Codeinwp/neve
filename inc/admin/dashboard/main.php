@@ -43,6 +43,7 @@ class Main {
 	 */
 	private $useful_plugins = [
 		'optimole-wp',
+		'wplk',
 		'wp-cloudflare-page-cache',
 		'templates-patterns-collection',
 		'themeisle-companion',
@@ -482,6 +483,12 @@ class Main {
 
 		$data = [];
 		foreach ( $this->useful_plugins as $slug ) {
+
+			if ( array_key_exists( $slug, $this->get_external_plugins_data() ) ) {
+				$data[ $slug ] = $this->get_external_plugins_data()[ $slug ];
+				continue;
+			}
+
 			$current_plugin = $this->plugin_helper->get_plugin_details( $slug );
 			if ( $current_plugin instanceof \WP_Error ) {
 				continue;
@@ -518,6 +525,29 @@ class Main {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Get data of external plugins that are not hosted on wp.org.
+	 * 
+	 * @return array
+	 */
+	private function get_external_plugins_data() {
+
+		$plugins = array(
+			'wplk' => array(
+				'banner'      => NEVE_ASSETS_URL . 'img/dashboard/wp-landing.jpg',
+				'name'        => 'WP Landing Kit',
+				'description' => __( 'Turn WordPress into a landing page powerhouse with Landing Kit. Map domains to pages or any other published resource.', 'neve' ),
+				'author'      => 'Themeisle',
+				'cta'         => 'external',
+				'url'         => 'https://wplandingkit.com/?utm_medium=nevedashboard&utm_source=recommendedplugins&utm_campaign=neve',
+				'premium'     => true,
+			),
+		
+		);
+
+		return $plugins;
 	}
 
 }
