@@ -3,15 +3,31 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import SVG from '../Common/svg';
 
-import { Button } from '@wordpress/components';
+import { Button, TextareaControl } from '@wordpress/components';
+import { useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 const RadioIcons = ({
 	options,
 	onChange,
 	value,
+	customSetting,
 	showLabels,
 	largeButtons = false,
 }) => {
+	const [open, setOpen] = useState(value === 'custom');
+	const [customSVG, setCustomSVG] = useState(
+		customSetting ? customSetting() : ''
+	);
+	const [customValue, setCustomValue] = useState(
+		customSetting ? customSetting() : ''
+	);
+
+	const updateCustomValue = () => {
+		customSetting.set(customSVG);
+		setCustomValue(customSVG);
+	};
+
 	const Buttons = () => {
 		return Object.keys(options).map((type, index) => {
 			if (options[type].icon === 'text') {
@@ -40,6 +56,7 @@ const RadioIcons = ({
 						icon={icon}
 						onClick={() => {
 							onChange(type);
+							setOpen(type === 'custom');
 						}}
 					/>
 					{showLabels && (
@@ -58,9 +75,38 @@ const RadioIcons = ({
 	]);
 
 	return (
-		<div className={wrapClasses}>
-			<Buttons />
-		</div>
+		<>
+			<div className={wrapClasses}>
+				<Buttons />
+			</div>
+			{open && (
+				<div className="neve-radio-icons-custom-svg">
+					<TextareaControl
+						label={__('Custom SVG', 'neve')}
+						onChange={setCustomSVG}
+						value={customSVG}
+						rows={8}
+					/>
+					<div className="custom-svg-buttons">
+						<Button
+							isPrimary
+							isSmall
+							disabled={customSVG === customValue}
+							onClick={updateCustomValue}
+						>
+							{__('Save', 'neve')}
+						</Button>
+						<Button
+							isSecondary
+							isSmall
+							onClick={() => setCustomSVG('')}
+						>
+							{__('Clear', 'neve')}
+						</Button>
+					</div>
+				</div>
+			)}
+		</>
 	);
 };
 
