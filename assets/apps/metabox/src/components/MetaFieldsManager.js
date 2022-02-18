@@ -246,6 +246,12 @@ class MetaFieldsManager extends Component {
 							]}
 							onChange={(value) => {
 								this.updateValues('neve_meta_sidebar', value);
+								if (value === 'left' || value === 'right') {
+									this.updateValues(
+										'neve_meta_content_width',
+										70
+									);
+								}
 							}}
 						/>
 					</BaseControl>
@@ -367,6 +373,22 @@ class MetaFieldsManager extends Component {
 								max={100}
 								step="1"
 							/>
+							{this.props.metaValue('neve_meta_content_width') &&
+								this.props.metaValue(
+									'neve_meta_content_width'
+								) > 80 &&
+								(this.props.metaValue('neve_meta_sidebar') ===
+									'left' ||
+									this.props.metaValue(
+										'neve_meta_sidebar'
+									) === 'right') && (
+									<small>
+										{__(
+											'Setting the content width over 80 might affect the sidebar width.',
+											'neve'
+										)}
+									</small>
+								)}
 						</BaseControl>
 					) : (
 						''
