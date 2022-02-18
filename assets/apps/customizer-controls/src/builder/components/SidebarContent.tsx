@@ -40,6 +40,7 @@ const SidebarContent: React.FC<Props> = ({ items }) => {
 								.sort((a, b) => {
 									return a.id < b.id ? -1 : 1;
 								});
+							console.log( nextState );
 							setSidebarItems(nextState);
 						}}
 					>
