@@ -249,7 +249,8 @@ class MetaFieldsManager extends Component {
 								if (value === 'left' || value === 'right') {
 									this.updateValues(
 										'neve_meta_content_width',
-										70
+										this.defaultState
+											.neve_meta_content_width
 									);
 								}
 							}}
