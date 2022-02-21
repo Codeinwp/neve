@@ -31,11 +31,7 @@ const Card = ({ slug, data, setPluginState }) => {
 		<div className={classnames(['card', 'plugin', slug])}>
 			<div className="card-header">
 				<img src={banner} alt={__('Banner Image', 'name')} />
-				{premium && (
-					<span className="premium-label">
-						{'Premium'}
-					</span>
-				)}
+				{premium && <span className="premium-label">{'Premium'}</span>}
 			</div>
 			<div className="card-body">
 				<h3 className="card-title">{name}</h3>
