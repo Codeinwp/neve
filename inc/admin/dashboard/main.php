@@ -43,7 +43,7 @@ class Main {
 	 */
 	private $useful_plugins = [
 		'optimole-wp',
-		'wplk',
+		'wp-landing-kit',
 		'wp-cloudflare-page-cache',
 		'templates-patterns-collection',
 		'themeisle-companion',
@@ -535,10 +535,10 @@ class Main {
 	private function get_external_plugins_data() {
 
 		$plugins = array(
-			'wplk' => array(
+			'wp-landing-kit' => array(
 				'banner'      => NEVE_ASSETS_URL . 'img/dashboard/wp-landing.jpg',
 				'name'        => 'WP Landing Kit',
-				'description' => __( 'Turn WordPress into a landing page powerhouse with Landing Kit. Map domains to pages or any other published resource.', 'neve' ),
+				'description' => 'Turn WordPress into a landing page powerhouse with Landing Kit. Map domains to pages or any other published resource.',
 				'author'      => 'Themeisle',
 				'cta'         => 'external',
 				'url'         => 'https://wplandingkit.com/?utm_medium=nevedashboard&utm_source=recommendedplugins&utm_campaign=neve',
