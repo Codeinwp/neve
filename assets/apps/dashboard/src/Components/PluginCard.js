@@ -33,7 +33,7 @@ const Card = ({ slug, data, setPluginState }) => {
 				<img src={banner} alt={__('Banner Image', 'name')} />
 				{premium && (
 					<span className="premium-label">
-						{__('Premium', 'neve')}
+						{'Premium'}
 					</span>
 				)}
 			</div>
