@@ -32,6 +32,11 @@ const InlineSelectComponent = ({ control }) => {
 		});
 
 		// Listen on value change and update select settings with current global colors
+		wp.customize.bind('change', function (setting) {
+			if (setting && setting.id === changesOn) {
+				window.wp.customize.previewer.refresh();
+			}
+		});
 		window.wp.customize.control(changesOn, (customizeControl) => {
 			customizeControl.setting.bind('changed', (nextValue) => {
 				const currentGlobalColors = nextValue.palettes;
