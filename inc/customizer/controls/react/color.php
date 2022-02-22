@@ -34,9 +34,10 @@ class Color extends \WP_Customize_Control {
 	/**
 	 * Send to JS.
 	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['default']      = $this->default;
-		$this->json['disableAlpha'] = $this->disable_alpha;
+	public function json() {
+		$json                 = parent::json();
+		$json['default']      = $this->default;
+		$json['disableAlpha'] = $this->disable_alpha;
+		return $json;
 	}
 }
