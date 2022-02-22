@@ -55,9 +55,6 @@ const mustBeCropped = (flexW, flexH, dstW, dstH, imgW, imgH) => {
 const calculateImageSelectOptions = (attachment, controller) => {
 	const currentCropControl = controller.get('control');
 
-	const flexWidth = !!parseInt(currentCropControl.params.flex_width, 10);
-	const flexHeight = !!parseInt(currentCropControl.params.flex_height, 10);
-
 	const realWidth = attachment.get('width');
 	const realHeight = attachment.get('height');
 
@@ -66,17 +63,7 @@ const calculateImageSelectOptions = (attachment, controller) => {
 
 	const ratio = xInit / yInit;
 
-	controller.set(
-		'canSkipCrop',
-		!currentCropControl.mustBeCropped(
-			flexWidth,
-			flexHeight,
-			xInit,
-			yInit,
-			realWidth,
-			realHeight
-		)
-	);
+	controller.set('canSkipCrop', true);
 
 	const xImg = xInit;
 	const yImg = yInit;
@@ -92,7 +79,7 @@ const calculateImageSelectOptions = (attachment, controller) => {
 	const x1 = parseFloat(((realWidth - xInit) / 2).toFixed(2));
 	const y1 = parseFloat(((realHeight - yInit) / 2).toFixed(2));
 
-	const imgSelectOptions = {
+	return {
 		handles: true,
 		keys: true,
 		instance: true,
@@ -106,22 +93,6 @@ const calculateImageSelectOptions = (attachment, controller) => {
 		x2: parseFloat((xInit + x1).toFixed(2)),
 		y2: parseFloat((yInit + y1).toFixed(2)),
 	};
-
-	if (flexHeight === false && flexWidth === false) {
-		imgSelectOptions.aspectRatio = 4 + ':' + 1;
-	}
-
-	if (true === flexHeight) {
-		delete imgSelectOptions.minHeight;
-		imgSelectOptions.maxWidth = realWidth;
-	}
-
-	if (true === flexWidth) {
-		delete imgSelectOptions.minWidth;
-		imgSelectOptions.maxHeight = realHeight;
-	}
-
-	return imgSelectOptions;
 };
 
 const setImageFromURL = (url, attachmentId, width, height) => {
