@@ -109,19 +109,11 @@
   background: var(--nv-light-bg)!important;
 }
 
-.llms-sd-widgets .llms-sd-widget {
-  background: var(--nv-light-bg);
-}
-
 .llms-notification {
   background: var(--nv-light-bg)!important;
   .llms-notification-body .llms-mini-cert{
 	background: var(--nv-light-bg)!important;
   }
-}
-
-.llms-sd-notification-center .llms-notification .llms-notification-date{
-  color: var(--nv-text-color);
 }
 
 .llms-form-field .select2-container .select2-selection--single{
@@ -131,30 +123,44 @@
   border-width: var(--formFieldBorderWidth);
 }
 
-.lifterlms .select2-container--default .select2-selection--single .select2-selection__rendered {
+.lifterlms .select2-container--default .select2-selection--single .select2-selection__rendered,
+.llms-sd-notification-center .llms-notification .llms-notification-date{
   color: var(--nv-text-color);
-}
-
-.select2-search--dropdown, .select2-results {
-  background: var(--nv-light-bg);
-}
-
-.llms-access-plan .llms-access-plan-footer, .llms-access-plan .llms-access-plan-content {
-  background: var(--nv-light-bg);
 }
 
 .llms-checkout {
   background: none;
 }
 
-.llms-achievement, .llms-certificate {
-  background: var(--nv-light-bg);
-}
-
 #llms-voucher-code {
   display: block;
 }
 
-.llms-instructor-info .llms-instructors .llms-author{
+.llms-instructor-info .llms-instructors .llms-author,
+.llms-quiz-ui,
+.llms-achievement, .llms-certificate,
+.llms-access-plan .llms-access-plan-footer, .llms-access-plan .llms-access-plan-content,
+.select2-search--dropdown, .select2-results,
+.llms-sd-widgets .llms-sd-widget {
   background: var(--nv-light-bg);
+}
+
+td .llms-progress .llms-progress-bar{
+  background-color: var(--nv-light-bg);
+  border: 1px solid;
+}
+
+.llms-progress .progress-bar-complete{
+	background-color: var(--lLmsPrimaryColor,var(--nv-primary-accent));
+}
+
+.llms-donut{
+  color: var(--lLmsPrimaryColor,var(--nv-primary-accent));
+  svg path{
+	stroke: var(--lLmsPrimaryColor,var(--nv-primary-accent));
+  }
+}
+
+.llms-certificate-container{
+  color: #000;
 }
