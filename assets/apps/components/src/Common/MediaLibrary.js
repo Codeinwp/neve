@@ -14,9 +14,12 @@ const getAttachmentsCollection = (ids) => {
 };
 
 const mustBeCropped = (flexW, flexH, dstW, dstH, imgW, imgH) => {
+	// We might be working with a SVG
+	if (imgW === imgH && imgW === 0) {
+		return false;
+	}
 	// If the width and height are both flexible
 	// then the user does not need to crop the image.
-
 	if (true === flexW && true === flexH) {
 		return false;
 	}
@@ -46,7 +49,7 @@ const mustBeCropped = (flexW, flexH, dstW, dstH, imgW, imgH) => {
 		return false;
 	}
 
-	return true;
+	return false;
 };
 
 const calculateImageSelectOptions = (attachment, controller) => {
@@ -61,7 +64,7 @@ const calculateImageSelectOptions = (attachment, controller) => {
 	let xInit = parseInt(currentCropControl.params.width, 10);
 	let yInit = parseInt(currentCropControl.params.height, 10);
 
-	const ratio = xInit / yInit;
+	const ratio = 4 / 1;
 
 	controller.set(
 		'canSkipCrop',
@@ -86,23 +89,39 @@ const calculateImageSelectOptions = (attachment, controller) => {
 		yInit = xInit / ratio;
 	}
 
-	const x1 = (realWidth - xInit) / 2;
-	const y1 = (realHeight - yInit) / 2;
+	const x1 = parseFloat(((realWidth - xInit) / 2).toFixed(2));
+	const y1 = parseFloat(((realHeight - yInit) / 2).toFixed(2));
 
-	return {
+	const imgSelectOptions = {
 		handles: true,
 		keys: true,
 		instance: true,
-		persistent: true,
-		imageWidth: realWidth,
-		imageHeight: realHeight,
+		persistent: false,
+		imageWidth: parseFloat(realWidth.toFixed(2)),
+		imageHeight: parseFloat(realHeight.toFixed(2)),
 		minWidth: xImg > xInit ? xInit : xImg,
 		minHeight: yImg > yInit ? yInit : yImg,
 		x1,
 		y1,
-		x2: xInit + x1,
-		y2: yInit + y1,
+		x2: parseFloat((xInit + x1).toFixed(2)),
+		y2: parseFloat((yInit + y1).toFixed(2)),
 	};
+
+	if (flexHeight === false && flexWidth === false) {
+		imgSelectOptions.aspectRatio = 4 + ':' + 1;
+	}
+
+	if (true === flexHeight) {
+		delete imgSelectOptions.minHeight;
+		imgSelectOptions.maxWidth = realWidth;
+	}
+
+	if (true === flexWidth) {
+		delete imgSelectOptions.minWidth;
+		imgSelectOptions.maxHeight = realHeight;
+	}
+
+	return imgSelectOptions;
 };
 
 const setImageFromURL = (url, attachmentId, width, height) => {
