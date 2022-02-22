@@ -49,7 +49,7 @@ const mustBeCropped = (flexW, flexH, dstW, dstH, imgW, imgH) => {
 		return false;
 	}
 
-	return false;
+	return true;
 };
 
 const calculateImageSelectOptions = (attachment, controller) => {
@@ -64,7 +64,7 @@ const calculateImageSelectOptions = (attachment, controller) => {
 	let xInit = parseInt(currentCropControl.params.width, 10);
 	let yInit = parseInt(currentCropControl.params.height, 10);
 
-	const ratio = 4 / 1;
+	const ratio = xInit / yInit;
 
 	controller.set(
 		'canSkipCrop',
