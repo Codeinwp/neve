@@ -19,6 +19,7 @@ function neve_run() {
 			'scroll_to_top_icons'   => true,
 			'palette_logo'          => true,
 			'link_control'          => true,
+			'page_header_support'   => true,
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
