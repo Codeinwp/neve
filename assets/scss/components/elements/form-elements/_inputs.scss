@@ -29,8 +29,7 @@ select,
 textarea,
 [tabindex="-1"] {
 
-	&:focus,
-	&:focus-visible {
+	&:focus {
 		outline: 0;
 		box-shadow: 0 0 3px 0 var(--nv-secondary-accent);
 		--formFieldBorderColor: var(--nv-secondary-accent);
