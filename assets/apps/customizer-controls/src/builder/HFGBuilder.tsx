@@ -152,14 +152,27 @@ const HFGBuilder: React.FC<Props> = ({
 		}
 	};
 
+	const itemRemovedCleanup = (id: string) => {
+		if (id === '') {
+			return;
+		}
+		if (id === 'header_palette_switch') {
+			localStorage.removeItem('neve_user_theme');
+			window.wp.customize.previewer.refresh();
+		}
+	};
+
 	const removeItem: RemoveItem = (row, slot, indexToRemove) => {
 		const nextItems = { ...value[device] };
 		if (row === 'sidebar') {
+			itemRemovedCleanup(nextItems[row][indexToRemove].id);
 			nextItems[row].splice(indexToRemove, 1);
 			const finalValue = { ...value, [device]: nextItems };
 			onChange(finalValue);
 			return false;
 		}
+
+		itemRemovedCleanup(nextItems[row][slot][indexToRemove].id);
 
 		nextItems[row][slot].splice(indexToRemove, 1);
 

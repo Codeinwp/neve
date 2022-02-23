@@ -12,6 +12,10 @@
 		max-width: var(--maxWidth);
 		display: block;
 		margin: 0 auto;
+
+		&[src$=".svg"] {
+			width: var(--maxWidth);
+		}
 	}
 
 	.title-with-logo {

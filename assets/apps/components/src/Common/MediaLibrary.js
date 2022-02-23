@@ -14,9 +14,12 @@ const getAttachmentsCollection = (ids) => {
 };
 
 const mustBeCropped = (flexW, flexH, dstW, dstH, imgW, imgH) => {
+	// We might be working with a SVG
+	if (imgW === imgH && imgW === 0) {
+		return false;
+	}
 	// If the width and height are both flexible
 	// then the user does not need to crop the image.
-
 	if (true === flexW && true === flexH) {
 		return false;
 	}
@@ -52,9 +55,6 @@ const mustBeCropped = (flexW, flexH, dstW, dstH, imgW, imgH) => {
 const calculateImageSelectOptions = (attachment, controller) => {
 	const currentCropControl = controller.get('control');
 
-	const flexWidth = !!parseInt(currentCropControl.params.flex_width, 10);
-	const flexHeight = !!parseInt(currentCropControl.params.flex_height, 10);
-
 	const realWidth = attachment.get('width');
 	const realHeight = attachment.get('height');
 
@@ -63,17 +63,7 @@ const calculateImageSelectOptions = (attachment, controller) => {
 
 	const ratio = xInit / yInit;
 
-	controller.set(
-		'canSkipCrop',
-		!currentCropControl.mustBeCropped(
-			flexWidth,
-			flexHeight,
-			xInit,
-			yInit,
-			realWidth,
-			realHeight
-		)
-	);
+	controller.set('canSkipCrop', true);
 
 	const xImg = xInit;
 	const yImg = yInit;
@@ -86,22 +76,22 @@ const calculateImageSelectOptions = (attachment, controller) => {
 		yInit = xInit / ratio;
 	}
 
-	const x1 = (realWidth - xInit) / 2;
-	const y1 = (realHeight - yInit) / 2;
+	const x1 = parseFloat(((realWidth - xInit) / 2).toFixed(2));
+	const y1 = parseFloat(((realHeight - yInit) / 2).toFixed(2));
 
 	return {
 		handles: true,
 		keys: true,
 		instance: true,
-		persistent: true,
-		imageWidth: realWidth,
-		imageHeight: realHeight,
+		persistent: false,
+		imageWidth: parseFloat(realWidth.toFixed(2)),
+		imageHeight: parseFloat(realHeight.toFixed(2)),
 		minWidth: xImg > xInit ? xInit : xImg,
 		minHeight: yImg > yInit ? yInit : yImg,
 		x1,
 		y1,
-		x2: xInit + x1,
-		y2: yInit + y1,
+		x2: parseFloat((xInit + x1).toFixed(2)),
+		y2: parseFloat((yInit + y1).toFixed(2)),
 	};
 };
 
