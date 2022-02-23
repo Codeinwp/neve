@@ -19,6 +19,18 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.1.6](https://github.com/Codeinwp/neve/compare/v3.1.5...v3.1.6) (2022-02-23)
+
+- [Fix] Jquery failure when elementor header is enabled and adding a product to cart
+- [Fix] Custom HTML component behavior on empty tags
+- [Fix] Customizer behavior when removing the pallet switcher component
+- [Fix] Padding on blog list layout for mobile devices
+- [Fix] Input focus on Safari browser
+- Improve support for SVG, allow crop skipping
+
+
+
+
 ##### [Version 3.1.5](https://github.com/Codeinwp/neve/compare/v3.1.4...v3.1.5) (2022-02-07)
 
 - [Fix] Inconsistent colors of links in the dashboard
