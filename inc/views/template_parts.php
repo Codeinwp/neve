@@ -282,7 +282,7 @@ class Template_Parts extends Base_View {
 		$markup .= '</a>';
 
 		if ( ! empty( $read_more_args['classes'] ) ) {
-			$style  = neve_is_new_skin() ? '' : 'padding: 10px 0 0;';
+			$style  = neve_is_new_skin() ? 'display: flex;' : 'padding: 10px 0 0;';
 			$markup = '<div class="read-more-wrapper" style="' . esc_attr( $style ) . '">' . $markup . '</div>';
 		}
 
