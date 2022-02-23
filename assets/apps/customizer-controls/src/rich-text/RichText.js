@@ -68,6 +68,7 @@ const RichText = ({
 				toolbar2,
 				style_formats_merge: true,
 				style_formats: [],
+				verify_html: false,
 			},
 		});
 
@@ -88,6 +89,7 @@ const RichText = ({
 						toolbar2,
 						style_formats_merge: true,
 						style_formats: [],
+						verify_html: false,
 					},
 				});
 

@@ -1,3 +1,28 @@
+##### [Version 3.1.6](https://github.com/Codeinwp/neve/compare/v3.1.5...v3.1.6) (2022-02-23)
+
+- [Fix] Jquery failure when elementor header is enabled and adding a product to cart
+- [Fix] Custom HTML component behavior on empty tags
+- [Fix] Customizer behavior when removing the pallet switcher component
+- [Fix] Padding on blog list layout for mobile devices
+- [Fix] Input focus on Safari browser
+- Improve support for SVG, allow crop skipping
+
+##### [Version 3.1.5](https://github.com/Codeinwp/neve/compare/v3.1.4...v3.1.5) (2022-02-07)
+
+- [Fix] Inconsistent colors of links in the dashboard
+- [Fix] WooCommerce product variations alignment when there are multiple variations
+- [Fix] Some buttons in the dashboard showing screen reader text
+- [Fix] Change comment reply title tag to H2 for accessibility reasons 
+- [Fix] List top and bottom margins not applying in nested HTML tags inside the content wrap
+- [Fix] Spaces from footer copyright component were stripped
+- [Fix] Scroll snap bug in Elementor
+- [Fix] Elementor select fields arrow
+- [Fix] Elementor list styles in text widget
+- [Fix] PHP 8.1 deprecation notices and warning
+- Updated deprecated methods theme in customizer controls classes
+- Add dashboard information cards
+- Update Google Fonts
+
 ##### [Version 3.1.4](https://github.com/Codeinwp/neve/compare/v3.1.3...v3.1.4) (2022-01-20)
 
 - [Feat] Support for different logos with color palette switcher
