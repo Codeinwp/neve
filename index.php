@@ -99,8 +99,21 @@ if ( ! neve_is_new_skin() ) {
 						do_action( 'neve_loop_' . $current_post_type . '_before' );
 					}
 
+					/**
+					 * Exclude posts from the main loop
+					 *
+					 * @param array $excluded_posts Excluded post ids.
+					 * @since 3.2
+					 */
+					$excluded_posts = apply_filters( 'nv_exclude_posts', [] );
+
 					while ( have_posts() ) {
 						the_post();
+
+						$pid = get_the_ID();
+						if ( in_array( $pid, $excluded_posts, true ) ) {
+							continue;
+						}
 
 						if ( $should_add_hook ) {
 							/**

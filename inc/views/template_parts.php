@@ -36,6 +36,11 @@ class Template_Parts extends Base_View {
 			return;
 		}
 
+		$post_type = get_post_type();
+		if ( $post_type !== 'post' || ! is_home() ) {
+			return;
+		}
+
 		/**
 		 * Filters the content parts.
 		 *
@@ -59,9 +64,10 @@ class Template_Parts extends Base_View {
 			$posts = get_option( 'sticky_posts' );
 		}
 
+		$posts_to_exclude = [];
 		foreach ( $posts as $post ) {
-			$post_id = is_array( $post ) && array_key_exists( 'ID', $post ) ? $post['ID'] : $post;
-
+			$post_id            = is_array( $post ) && array_key_exists( 'ID', $post ) ? $post['ID'] : $post;
+			$posts_to_exclude[] = $post_id;
 			// Fixes the excerpt link for the featured post
 			add_filter(
 				'excerpt_more',
@@ -71,7 +77,7 @@ class Template_Parts extends Base_View {
 			);
 
 			$has_thumbnail_class = has_post_thumbnail( $post_id ) ? 'with-thumb' : '';
-			$data = [
+			$data                = [
 				'post_id'    => 'post-' . $post_id,
 				'post_class' => $this->post_class( $post_id, 'nv-featured-post ' . $has_thumbnail_class ),
 				'content'    => $this->get_article_inner_content( $post_id ),
@@ -80,6 +86,12 @@ class Template_Parts extends Base_View {
 
 			remove_all_filters( 'excerpt_more' );
 		}
+		add_filter(
+			'nv_exclude_posts',
+			function () use ( $posts_to_exclude ) {
+				return $posts_to_exclude;
+			} 
+		);
 		add_filter( 'excerpt_more', array( $this, 'link_excerpt_more' ) );
 	}
 
