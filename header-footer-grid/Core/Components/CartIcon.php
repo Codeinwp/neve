@@ -107,7 +107,10 @@ class CartIcon extends Abstract_Component {
 		return '
 			(function($){
 				$(\'body\').on( \'added_to_cart\', function(){
-					document.querySelector( \'.responsive-nav-cart\' ).classList.remove(\'cart-is-empty\');
+					var responsiveCart = document.querySelector( \'.responsive-nav-cart\' );
+					if ( responsiveCart ) {
+						responsiveCart.classList.remove(\'cart-is-empty\');
+					}
 				});
 			})(jQuery);
 		';
