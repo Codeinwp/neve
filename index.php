@@ -23,7 +23,16 @@ if ( ! neve_is_new_skin() ) {
 
 ?>
 	<div class="<?php echo esc_attr( $container_class ); ?> archive-container">
-		<?php do_action( 'neve_do_featured_post' ); ?>
+
+		<?php
+		/**
+		 * Executes the rendering function for the featured post.
+		 *
+		 * @since 3.2
+		 */
+		do_action( 'neve_do_featured_post', 'index' );
+		?>
+
 		<div class="row">
 			<?php
 

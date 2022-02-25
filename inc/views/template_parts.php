@@ -22,10 +22,25 @@ class Template_Parts extends Base_View {
 	 * @return void
 	 */
 	public function init() {
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_featured_post_style' ) );
 		add_action( 'neve_do_featured_post', array( $this, 'render_featured_post' ) );
 		add_action( 'neve_blog_post_template_part_content', array( $this, 'render_post' ) );
 		add_filter( 'excerpt_more', array( $this, 'link_excerpt_more' ) );
 		add_filter( 'the_content_more_link', array( $this, 'link_excerpt_more' ) );
+	}
+
+	/**
+	 * Add inline style for featured post.
+	 */
+	public function add_featured_post_style() {
+		if ( ! get_theme_mod( 'neve_enable_featured_post', false ) ) {
+			return;
+		}
+
+		wp_add_inline_style(
+			'neve-style',
+			'.home.blog .nv-ft-post{margin-top:60px}.nv-ft-post{background:var(--nv-light-bg)}.nv-ft-post h2{font-size:calc( var(--fontSize, var(--h2FontSize)) * 1.3)}.nv-ft-post .nv-meta-list{display:block}.nv-ft-post .non-grid-content{padding:32px}.nv-ft-post .wp-post-image{position:absolute;object-fit:cover;width:100%;height:100%}.nv-ft-post .nv-post-thumbnail-wrap{margin:0;position:relative;min-height:320px}'
+		);
 	}
 
 	/**
@@ -79,7 +94,7 @@ class Template_Parts extends Base_View {
 			$has_thumbnail_class = has_post_thumbnail( $post_id ) ? 'with-thumb' : '';
 			$data                = [
 				'post_id'    => 'post-' . $post_id,
-				'post_class' => $this->post_class( $post_id, 'nv-featured-post ' . $has_thumbnail_class ),
+				'post_class' => $this->post_class( $post_id, 'nv-ft-post ' . $has_thumbnail_class ),
 				'content'    => $this->get_article_inner_content( $post_id ),
 			];
 			$this->get_view( 'archive-post', $data );

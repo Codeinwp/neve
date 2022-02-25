@@ -274,7 +274,7 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => false,
 				],
 				[
-					'label'    => esc_html__( 'Enabled featured post section', 'neve' ),
+					'label'    => esc_html__( 'Enable featured post section', 'neve' ),
 					'section'  => $this->section,
 					'type'     => 'neve_toggle_control',
 					'priority' => 41,
