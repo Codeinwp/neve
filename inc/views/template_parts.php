@@ -59,7 +59,7 @@ class Template_Parts extends Base_View {
 		/**
 		 * Filters the content parts.
 		 *
-		 * @since 3.1.5
+		 * @since 3.2
 		 *
 		 * @param int $value Number of featured posts
 		 */
@@ -77,6 +77,10 @@ class Template_Parts extends Base_View {
 
 		if ( $target === 'sticky' ) {
 			$posts = get_option( 'sticky_posts' );
+		}
+
+		if ( empty( $posts ) ) {
+			return;
 		}
 
 		$posts_to_exclude = [];
