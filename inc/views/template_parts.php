@@ -90,7 +90,7 @@ class Template_Parts extends Base_View {
 			'nv_exclude_posts',
 			function () use ( $posts_to_exclude ) {
 				return $posts_to_exclude;
-			} 
+			}
 		);
 		add_filter( 'excerpt_more', array( $this, 'link_excerpt_more' ) );
 	}
@@ -143,9 +143,17 @@ class Template_Parts extends Base_View {
 		$layout            = $this->get_layout();
 		$is_featured_post  = $post_id !== null;
 		$featured_template = in_array( $layout, [ 'alternative', 'default', 'grid' ], true ) ? 'tp1' : 'tp2';
+		$default_order     = array(
+			'thumbnail',
+			'title-meta',
+			'excerpt',
+		);
+		$order             = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
 
 		if ( in_array( $layout, [ 'alternative', 'default' ], true ) || ( $is_featured_post && $featured_template === 'tp1' ) ) {
-			$markup .= $this->get_post_thumbnail( $post_id );
+			if ( in_array( 'thumbnail', $order, true ) || ( $is_featured_post && $featured_template === 'tp1' ) ) {
+				$markup .= $this->get_post_thumbnail( $post_id );
+			}
 			$markup .= '<div class="non-grid-content ' . esc_attr( $layout ) . '-layout-content">';
 			$markup .= $this->get_ordered_content_parts( true, $post_id );
 			$markup .= '</div>';
@@ -154,13 +162,7 @@ class Template_Parts extends Base_View {
 		}
 
 		if ( $layout === 'covers' ) {
-			$default_order = array(
-				'thumbnail',
-				'title-meta',
-				'excerpt',
-			);
-			$order         = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
-			$style         = '';
+			$style = '';
 			if ( in_array( 'thumbnail', $order, true ) ) {
 				$thumb  = get_the_post_thumbnail_url( $post_id );
 				$style .= ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
@@ -364,7 +366,7 @@ class Template_Parts extends Base_View {
 		$markup .= '</a>';
 
 		if ( ! empty( $read_more_args['classes'] ) ) {
-			$style  = neve_is_new_skin() ? '' : 'padding: 10px 0 0;';
+			$style  = neve_is_new_skin() ? 'display: flex;' : 'padding: 10px 0 0;';
 			$markup = '<div class="read-more-wrapper" style="' . esc_attr( $style ) . '">' . $markup . '</div>';
 		}
 
