@@ -7,4 +7,9 @@ form#edd_profile_editor_form {
 	input:not(input[type="submit"]) {
 		width: 100%;
 	}
+
+	#edd_profile_submit_wrap {
+		margin-bottom: 0;
+	}
+
 }
