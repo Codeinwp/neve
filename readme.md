@@ -2,7 +2,7 @@
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
 **Tags:** blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar  
 **Requires at least:** 4.0  
-**Tested up to:** 5.7  
+**Tested up to:** 5.9  
 **Stable tag:** trunk  
 **Requires PHP:** 5.5.0  
 **License:** GPLv2 or later  
@@ -19,12 +19,24 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.1.6](https://github.com/Codeinwp/neve/compare/v3.1.5...v3.1.6) (2022-02-23)
+
+- [Fix] Jquery failure when elementor header is enabled and adding a product to cart
+- [Fix] Custom HTML component behavior on empty tags
+- [Fix] Customizer behavior when removing the pallet switcher component
+- [Fix] Padding on blog list layout for mobile devices
+- [Fix] Input focus on Safari browser
+- Improve support for SVG, allow crop skipping
+
+
+
+
 ##### [Version 3.1.5](https://github.com/Codeinwp/neve/compare/v3.1.4...v3.1.5) (2022-02-07)
 
 - [Fix] Inconsistent colors of links in the dashboard
 - [Fix] WooCommerce product variations alignment when there are multiple variations
 - [Fix] Some buttons in the dashboard showing screen reader text
-- [Fix] Change comment reply title tag to H2 for accessibility reasons 
+- [Fix] Change comment reply title tag to H2 for accessibility reasons
 - [Fix] List top and bottom margins not applying in nested HTML tags inside the content wrap
 - [Fix] Spaces from footer copyright component were stripped
 - [Fix] Scroll snap bug in Elementor
@@ -69,7 +81,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ##### [Version 3.1.2](https://github.com/Codeinwp/neve/compare/v3.1.1...v3.1.2) (2021-12-23)
 
-- [Fix] 'neve_before_pagination' not working on the first page 
+- [Fix] 'neve_before_pagination' not working on the first page
 - [Fix] Mega menu issue on mobile
 - [Fix] Primary navigation menu links to in-page sections have active color
 - [Fix] Adds left and right border when a user is editing table contents
@@ -122,7 +134,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 - [Fix] Removed redundant border controls for mobile header sidebar
 - [Fix] Ordering control with blank elements
 - [Fix] Double scrollbar appearing in some customizer sections
-- [Fix] Inconsistent console error inside the customizer preview  
+- [Fix] Inconsistent console error inside the customizer preview
 - Update Google Fonts
 
 
@@ -154,7 +166,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 - [Feat] Header row border control - [Learn more](https://docs.themeisle.com/article/1245-header-rows-settings#border)
 - [Feat] Jump to page blog pagination type - [Learn more](https://docs.themeisle.com/article/1306-neve-blog-archive-options#ordering)
-- [Feat] Support for the named text sizes inside the editor 
+- [Feat] Support for the named text sizes inside the editor
 - [Feat] TinyMCE field inside header HTML Component
 - [Feat] Add Painter starter site - [Elementor](https://demosites.io/painter/)
 - [Feat] Add Freelance Designer starter site - [Elementor](https://demosites.io/minimal-portfolio/)
@@ -174,7 +186,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 - [Fix] Builder rows with columns controls execute sync too soon on some environments
 - [Fix] The available items aren't properly updated when adding a component to the mobile sidebar
 - [Fix] Outdated template alert for search form on WooCommerce Status
-- [Fix] Remove forced 100% width of images inside image widgets 
+- [Fix] Remove forced 100% width of images inside image widgets
 - [Fix] Custom layouts not acting properly on old skin
 - [Fix] Letter-spacing inline-style not applying for headings
 - Updated Google Fonts
@@ -195,7 +207,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 - [Fix] Components inside the mobile sidebar inheriting wrong colors
 - [Fix] Dropdowns inside the mobile sidebar inheriting overlay background color when using a background image
 - [Fix] Footer components not updating after columns change
-- Header components labels font styles should be inherited from the primary menu if placed in the same slot 
+- Header components labels font styles should be inherited from the primary menu if placed in the same slot
 - Change archive post title tag back to h2
 - Refreshed design for the Architecture starter site - [Gutenberg](https://demosites.io/architecture-gb/) | [Elementor](https://demosites.io/architecture/)
 - Remove some unused CSS
@@ -240,7 +252,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 ##### [Version 3.0.2](https://github.com/Codeinwp/neve/compare/v3.0.1...v3.0.2) (2021-08-23)
 
 - [Fix] issue with some hosting environments not loading JS files that contained ~ in the file name
-- [Fix] items in customizer panel don't adjust when changing presets 
+- [Fix] items in customizer panel don't adjust when changing presets
 - [Fix] adds backspacing for Woocommerce standard pages and fieldset
 - [Fix] solve an issue with multi worded google fonts names
 - [Fix] blog custom layout inside the loop with masonry
@@ -267,7 +279,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 - [Feat] New single post layout and customization options
 - [Fix] Improve accessibility for the search form
 - [Fix] Scripts appearing next to single product buttons
-- [Fix] Compatibility issue with the PW WooCommerce Gift Cards plugin 
+- [Fix] Compatibility issue with the PW WooCommerce Gift Cards plugin
 - [Fix] Compatibility issue with the WooCommerce Appointments plugin
 - [Fix] Wishlist button looking distorted on the product page with sticky add to cart enabled
 - [Fix] magic tag for {meta_author} not rendering the author avatar
@@ -324,7 +336,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 - [Fix] Increase Templates Cloud visibility on Neve options page
 - [Fix] Infinite scroll loads posts of incorrect language - https://github.com/Codeinwp/neve/issues/2696
 - [Feat] Add global color as presets in beaver builder - https://github.com/Codeinwp/neve/issues/2328.
-- [Feat] Ignore lazyload on above the fold images 
+- [Feat] Ignore lazyload on above the fold images
 - [Feat] implement next page links for infinite scroll
 - [Feat] Adds compatibility for meta association on template import/export for Neve Cloud
 
@@ -348,7 +360,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 - [Fix] Hide the empty comment tag if comments are not enabled
 - [Fix] Hover color for secondary buttons when WooCommerce is active
 - [Fix] Headings not inheriting body font when set as default
-- [Fix] Active buttons from the editor sidebar overlapping the panel heading  
+- [Fix] Active buttons from the editor sidebar overlapping the panel heading
 - [Feat] Allow hosting Google Fonts locally
 - Show last updated date on posts
 - New developer hooks
