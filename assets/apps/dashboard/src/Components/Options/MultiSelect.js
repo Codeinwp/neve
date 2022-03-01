@@ -10,6 +10,7 @@ const MultiSelectOption = ({
 	getOption,
 	changeOption,
 	setToast,
+	disabled
 }) => {
 	return (
 		<div className="module-option neve-multiselect">
@@ -28,6 +29,7 @@ const MultiSelectOption = ({
 						setToast(false);
 					});
 				}}
+				disabled={disabled}
 			/>
 		</div>
 	);

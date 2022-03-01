@@ -13,6 +13,7 @@ const InputForm = ({
 	getOption,
 	setToast,
 	changeOption,
+	disabled
 }) => {
 	const [value, setValue] = useState(getOption(slug));
 	const [loading, setLoading] = useState(false);
@@ -43,12 +44,13 @@ const InputForm = ({
 						onChange={(e) => {
 							setValue(e.target.value);
 						}}
+						disabled={disabled}
 					/>
 					<div className="actions">
 						<Button
 							className={loading ? 'is-loading' : null}
 							type="submit"
-							disabled={loading}
+							disabled={loading || disabled}
 							label={__('Save', 'neve')}
 							icon={loading ? 'update' : 'editor-break'}
 						/>

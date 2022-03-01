@@ -10,6 +10,7 @@ const Select = ({
 	getOption,
 	changeOption,
 	setToast,
+	disabled
 }) => {
 	return (
 		<div className="module-option toggle">
@@ -17,6 +18,7 @@ const Select = ({
 				style={{ minWidth: '200px' }}
 				label={label}
 				value={getOption(slug) || 'css'}
+				disabled={disabled}
 				onChange={(value) => {
 					changeSetting(slug, value).then((r) => {
 						if (r.success) {

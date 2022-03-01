@@ -9,7 +9,7 @@ import {
 } from '@wordpress/components';
 import PropTypes from 'prop-types';
 
-const MultiSelect = ({ choices, onChange, currentValue, label }) => {
+const MultiSelect = ({ choices, onChange, currentValue, label, disabled }) => {
 	const Pill = ({ slug }) => {
 		return (
 			<Button
@@ -56,7 +56,7 @@ const MultiSelect = ({ choices, onChange, currentValue, label }) => {
 						<Button
 							isSmall
 							isDefault
-							disabled={addable.length < 1}
+							disabled={(addable.length < 1) || disabled}
 							icon={getDropDownIcon(isOpen)}
 							onClick={onToggle}
 							aria-expanded={isOpen}
@@ -93,6 +93,7 @@ MultiSelect.propTypes = {
 	onChange: PropTypes.func.isRequired,
 	currentValue: PropTypes.array.isRequired,
 	label: PropTypes.string,
+	disabled: PropTypes.bool
 };
 
 export default MultiSelect;

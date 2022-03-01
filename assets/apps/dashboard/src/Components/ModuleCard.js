@@ -38,7 +38,7 @@ const ModuleCard = ({
 		// eslint-disable-next-line camelcase
 		required_actions,
 	} = neveDash.modules[slug];
-	const { upgradeLinks } = neveDash;
+	const { upgradeLinks, autoModuleConfigAvailable } = neveDash;
 
 	const isToggleEnabled = (toggleSlug) => {
 		return getOption(toggleSlug);
@@ -74,6 +74,7 @@ const ModuleCard = ({
 												label={labelGroup}
 												slug={optionSlug}
 												placeholder={placeholder}
+												disabled={autoModuleConfigAvailable}
 											/>
 										)}
 										{'toggle' === type && (
@@ -83,6 +84,7 @@ const ModuleCard = ({
 												documentation={
 													documentationOption
 												}
+												disabled={autoModuleConfigAvailable}
 											/>
 										)}
 										{'select' === type && (
@@ -90,6 +92,7 @@ const ModuleCard = ({
 												label={labelGroup}
 												slug={optionSlug}
 												choices={choices}
+												disabled={autoModuleConfigAvailable}
 											/>
 										)}
 										{(('multi_select' === type &&
@@ -102,6 +105,7 @@ const ModuleCard = ({
 												label={labelGroup}
 												slug={optionSlug}
 												choices={choices}
+												disabled={autoModuleConfigAvailable}
 											/>
 										)}
 									</Fragment>
@@ -180,6 +184,7 @@ const ModuleCard = ({
 											}
 										);
 									}}
+									disabled={autoModuleConfigAvailable}
 								/>
 							)}
 						</Fragment>

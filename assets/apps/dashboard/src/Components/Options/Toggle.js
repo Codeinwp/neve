@@ -13,6 +13,7 @@ const Toggle = ({
 	getOption,
 	changeOption,
 	setToast,
+	disabled
 }) => {
 	const [loading, setLoading] = useState(false);
 	return (
@@ -20,6 +21,7 @@ const Toggle = ({
 			<ToggleControl
 				checked={getOption(slug) || false}
 				label={label}
+				disabled={disabled}
 				onChange={(value) => {
 					setLoading(true);
 					changeSetting(slug, value).then((r) => {
