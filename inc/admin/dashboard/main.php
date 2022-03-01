@@ -471,11 +471,11 @@ class Main {
 		if ( $available !== false && $hash === $current_hash ) {
 			$available = json_decode( $available, true );
 			foreach ( $available as $slug => $args ) {
-				$available[ $slug ]['cta']        = $this->plugin_helper->get_plugin_state( $slug );
+				$available[ $slug ]['cta']        = ( $args['cta'] === 'external' ) ? 'external' : $this->plugin_helper->get_plugin_state( $slug );
 				$available[ $slug ]['path']       = $this->plugin_helper->get_plugin_path( $slug );
 				$available[ $slug ]['activate']   = $this->plugin_helper->get_plugin_action_link( $slug );
 				$available[ $slug ]['deactivate'] = $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
-				$available[ $slug ]['version']    = $this->plugin_helper->get_plugin_version( $slug, $available[ $slug ]['version'] );
+				$available[ $slug ]['version']    = ! empty( $available[ $slug ]['version'] ) ? $this->plugin_helper->get_plugin_version( $slug, $available[ $slug ]['version'] ) : '';
 			}
 
 			return $available;
