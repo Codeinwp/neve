@@ -1,0 +1,37 @@
+@import "../../main/variables";
+
+.cart-icon-wrapper {
+	display: flex;
+	align-items: center;
+
+	&:hover {
+		color: var(--hoverColor, var(--color));
+	}
+
+	.nv-cart {
+		display: flex;
+
+		svg {
+			width: var(--iconSize);
+			height: var(--iconSize);
+		}
+	}
+
+	.edd-cart-icon-label {
+		margin-right: $spacing-xxs;
+		font-size: var(--labelSize);
+	}
+
+	.edd-cart-count {
+		background: var(--nv-light-bg);
+		color: var(--nv-text-color);
+		position: absolute;
+		font-size: 0.6em;
+		padding: 3px;
+		bottom: -7px;
+		right: -13px;
+		font-weight: 800;
+		line-height: 1;
+		border-radius: 3px;
+	}
+}
