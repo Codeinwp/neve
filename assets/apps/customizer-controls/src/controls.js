@@ -30,6 +30,7 @@ import { SkinSwitcherControl } from './skin-switcher/Control';
 import { LogoPaletteControl } from './logo-palette/Control';
 import { RepeaterControl } from './repeater/Control';
 import { RichTextControl } from './rich-text/Control';
+import { LinkControl } from './link/Control';
 
 import './style.scss';
 import Documentation from './documentation-section/Documentation.tsx';
@@ -66,6 +67,7 @@ controlConstructor.neve_skin_switcher = SkinSwitcherControl;
 controlConstructor.neve_logo_palette_control = LogoPaletteControl;
 controlConstructor.neve_repeater_control = RepeaterControl;
 controlConstructor.neve_rich_text = RichTextControl;
+controlConstructor.neve_link = LinkControl;
 
 const initDeviceSwitchers = () => {
 	const deviceButtons = document.querySelector(
