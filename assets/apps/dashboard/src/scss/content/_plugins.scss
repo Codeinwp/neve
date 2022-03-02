@@ -39,7 +39,6 @@
   }
 
   .author {
-    margin-left: 5px;
     max-width: 200px;
     overflow: hidden;
     white-space: nowrap;
@@ -56,6 +55,18 @@
       animation-timing-function: linear;
     }
   }
+
+  .premium-label{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px 20px;
+    background: var(--wp-admin-theme-color);
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
 }
 
 @mixin plugins--desktop() {

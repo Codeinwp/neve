@@ -43,6 +43,7 @@ class Main {
 	 */
 	private $useful_plugins = [
 		'optimole-wp',
+		'wp-landing-kit',
 		'wp-cloudflare-page-cache',
 		'templates-patterns-collection',
 		'themeisle-companion',
@@ -470,11 +471,11 @@ class Main {
 		if ( $available !== false && $hash === $current_hash ) {
 			$available = json_decode( $available, true );
 			foreach ( $available as $slug => $args ) {
-				$available[ $slug ]['cta']        = $this->plugin_helper->get_plugin_state( $slug );
+				$available[ $slug ]['cta']        = ( $args['cta'] === 'external' ) ? 'external' : $this->plugin_helper->get_plugin_state( $slug );
 				$available[ $slug ]['path']       = $this->plugin_helper->get_plugin_path( $slug );
 				$available[ $slug ]['activate']   = $this->plugin_helper->get_plugin_action_link( $slug );
 				$available[ $slug ]['deactivate'] = $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
-				$available[ $slug ]['version']    = $this->plugin_helper->get_plugin_version( $slug, $available[ $slug ]['version'] );
+				$available[ $slug ]['version']    = ! empty( $available[ $slug ]['version'] ) ? $this->plugin_helper->get_plugin_version( $slug, $available[ $slug ]['version'] ) : '';
 			}
 
 			return $available;
@@ -482,6 +483,12 @@ class Main {
 
 		$data = [];
 		foreach ( $this->useful_plugins as $slug ) {
+
+			if ( array_key_exists( $slug, $this->get_external_plugins_data() ) ) {
+				$data[ $slug ] = $this->get_external_plugins_data()[ $slug ];
+				continue;
+			}
+
 			$current_plugin = $this->plugin_helper->get_plugin_details( $slug );
 			if ( $current_plugin instanceof \WP_Error ) {
 				continue;
@@ -518,6 +525,29 @@ class Main {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Get data of external plugins that are not hosted on wp.org.
+	 * 
+	 * @return array
+	 */
+	private function get_external_plugins_data() {
+
+		$plugins = array(
+			'wp-landing-kit' => array(
+				'banner'      => NEVE_ASSETS_URL . 'img/dashboard/wp-landing.jpg',
+				'name'        => 'WP Landing Kit',
+				'description' => 'Turn WordPress into a landing page powerhouse with Landing Kit. Map domains to pages or any other published resource.',
+				'author'      => 'Themeisle',
+				'cta'         => 'external',
+				'url'         => 'https://wplandingkit.com/?utm_medium=nevedashboard&utm_source=recommendedplugins&utm_campaign=neve',
+				'premium'     => true,
+			),
+		
+		);
+
+		return $plugins;
 	}
 
 }
