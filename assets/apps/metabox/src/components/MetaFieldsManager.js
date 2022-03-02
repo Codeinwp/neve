@@ -18,6 +18,7 @@ import {
 	ButtonGroup,
 	ToggleControl,
 	RangeControl,
+	Notice,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { maybeParseJson } from '@neve-wp/components';
@@ -383,12 +384,14 @@ class MetaFieldsManager extends Component {
 									this.props.metaValue(
 										'neve_meta_sidebar'
 									) === 'right') && (
-									<small>
-										{__(
-											'Setting the content width over 80 might affect the sidebar width.',
-											'neve'
-										)}
-									</small>
+									<Notice isDismissible={false}>
+										<small>
+											{__(
+												'Note: Setting the content width over 80% might affect the sidebar width. Sidebar will ultimately disappear at 95%.',
+												'neve'
+											)}
+										</small>
+									</Notice>
 								)}
 						</BaseControl>
 					) : (
