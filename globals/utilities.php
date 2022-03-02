@@ -151,6 +151,16 @@ function neve_hooks() {
 		);
 	}
 
+	$hooks['download-archive'] = array(
+		'neve_before_download_archive',
+		'neve_after_download_archive',
+	);
+
+	$hooks['single-download'] = array(
+		'neve_before_download_content',
+		'neve_after_download_content',
+	);
+
 	return apply_filters( 'neve_hooks_list', $hooks );
 }
 
@@ -601,4 +611,53 @@ function neve_safe_get( $url, $args = array() ) {
 			$url,
 			$args
 		);
+}
+
+/**
+ * Create pagination for Easy Digital Downloads Archive.
+ */
+function neve_edd_download_nav() {
+
+	global $wp_query;
+
+	$big          = 999999;
+	$search_for   = array( $big, '#038;' );
+	$replace_with = array( '%#%', '&' );
+
+	$allowed_tags = array(
+		'ul'   => array(
+			'class' => array(),
+		),
+		'li'   => array(
+			'class' => array(),
+		),
+		'a'    => array(
+			'class' => array(),
+			'href'  => array(),
+		),
+		'span' => array(
+			'class' => array(),
+		),
+	);
+
+	$pagination = paginate_links(
+		array(
+			'base'      => str_replace( $search_for, $replace_with, get_pagenum_link( $big ) ),
+			'format'    => '?paged=%#%',
+			'current'   => max( 1, get_query_var( 'paged' ) ),
+			'total'     => $wp_query->max_num_pages,
+			'prev_next' => true,
+		) 
+	);
+	?>
+
+	<div id="edd_download_pagination" class="navigation">
+		<?php 
+		echo wp_kses( $pagination, $allowed_tags ); 
+		// TODO use pagination from pluggable class once we have infinite scroll supported for edd.
+		?>
+	</div>
+
+	<?php
+
 }

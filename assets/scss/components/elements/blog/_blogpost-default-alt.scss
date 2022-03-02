@@ -5,11 +5,11 @@
 	}
 }
 
-@mixin blog-layout-default-alt--laptop() {
+.non-grid-content {
+	padding: var(--padding);
+}
 
-	.non-grid-content {
-		padding: var(--padding);
-	}
+@mixin blog-layout-default-alt--laptop() {
 
 	.nv-non-grid-article {
 

@@ -31,6 +31,14 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 			return;
 		}
 
+		if (
+			next.search('header_palette_switch') === -1 &&
+			localStorage.getItem('neve_user_theme')
+		) {
+			localStorage.removeItem('neve_user_theme');
+			window.wp.customize.previewer.refresh();
+		}
+
 		setValue(nextValue);
 		control.setting.set(next);
 	};

@@ -57,7 +57,6 @@ class Main extends Base_Customizer {
 			),
 			'neve_typography' => array(
 				'priority' => 35,
-
 				'title'    => __( 'Typography', 'neve' ),
 			),
 		);
