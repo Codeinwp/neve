@@ -28,6 +28,7 @@ class CartIcon extends Abstract_Component {
 	const COLOR_ID        = 'color';
 	const HOVER_COLOR_ID  = 'hover_color';
 	const ICON_SELECTOR   = 'icon_selector';
+	const ICON_CUSTOM     = 'icon_selector_custom';
 	const CART_LABEL      = 'cart_label';
 	const CART_FOCUS      = 'cart_focus';
 	const MINI_CART_STYLE = 'mini_cart_style';

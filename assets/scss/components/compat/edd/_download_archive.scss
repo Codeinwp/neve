@@ -1,0 +1,70 @@
+.nv-edd #nv-edd-download-archive-container {
+	margin: 60px auto;
+}
+
+#nv-edd-grid-container {
+	display: grid;
+	gap: var(--grid-cols-spacing, 40px);
+	grid-template-columns: repeat(var(--grid-cols, 4), 1fr);
+	margin-bottom: 50px;
+}
+
+#edd_download_pagination {
+	margin: 150px 0;
+}
+
+#edd_download_pagination .page-numbers {
+	background: var(--nv-light-bg);
+	border-radius: 3px;
+	color: var(--nv-text-color);
+	margin-right: 20px;
+	padding: 12px 15px;
+	text-decoration: none;
+
+	&.current {
+		background: var(--nv-primary-accent);
+		color: var(--nv-text-dark-bg);
+	}
+}
+
+.edd_downloads_list .edd_download_inner .edd_download_title a {
+	text-decoration: none;
+}
+
+.edd_downloads_list {
+	display: grid;
+	grid-column-gap: 20px;
+	grid-row-gap: 40px;
+}
+
+@mixin archive--tablet {
+
+	// [downloads] shortcode
+	.edd_downloads_list {
+
+		&.edd_download_columns_1 {
+			grid-template-columns: repeat(1, 1fr);
+		}
+
+		&.edd_download_columns_2 {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		&.edd_download_columns_3 {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		&.edd_download_columns_4 {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		&.edd_download_columns_5 {
+			grid-template-columns: repeat(5, 1fr);
+		}
+
+		&.edd_download_columns_6 {
+			grid-template-columns: repeat(6, 1fr);
+		}
+	}
+
+}

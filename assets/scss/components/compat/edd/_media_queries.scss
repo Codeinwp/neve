@@ -1,0 +1,4 @@
+@media (min-width: #{$tablet-sm}) {
+
+	@include archive--tablet();
+}

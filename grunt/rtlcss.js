@@ -113,4 +113,12 @@ module.exports = {
 		ext,
 		src: ['style-dashboard.css'],
 	},
+	easy_digital_downloads: {
+		options,
+		expand: true,
+		cwd: './assets/css/',
+		dest: './assets/css/',
+		ext,
+		src: ['easy-digital-downloads.css'],
+	},
 };

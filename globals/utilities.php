@@ -151,6 +151,16 @@ function neve_hooks() {
 		);
 	}
 
+	$hooks['download-archive'] = array(
+		'neve_before_download_archive',
+		'neve_after_download_archive',
+	);
+
+	$hooks['single-download'] = array(
+		'neve_before_download_content',
+		'neve_after_download_content',
+	);
+
 	return apply_filters( 'neve_hooks_list', $hooks );
 }
 
@@ -166,12 +176,17 @@ function neve_hooks() {
  *
  * @return string|null
  */
-function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '' ) {
+function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '', $icon_custom = '' ) {
 	$icon = '<svg width="' . $size . '" height="' . $size . '" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M704 1536q0 52-38 90t-90 38-90-38-38-90 38-90 90-38 90 38 38 90zm896 0q0 52-38 90t-90 38-90-38-38-90 38-90 90-38 90 38 38 90zm128-1088v512q0 24-16.5 42.5t-40.5 21.5l-1044 122q13 60 13 70 0 16-24 64h920q26 0 45 19t19 45-19 45-45 19h-1024q-26 0-45-19t-19-45q0-11 8-31.5t16-36 21.5-40 15.5-29.5l-177-823h-204q-26 0-45-19t-19-45 19-45 45-19h256q16 0 28.5 6.5t19.5 15.5 13 24.5 8 26 5.5 29.5 4.5 26h1201q26 0 45 19t19 45z"/></svg>';
 	if ( ! empty( $cart_icon ) && class_exists( '\Neve_Pro\Modules\Header_Footer_Grid\Components\Icons' ) ) {
 		$cart_icon_svg = Icons::get_instance()->get_single_icon( $cart_icon );
 		$icon          = ! empty( $cart_icon_svg ) ? $cart_icon_svg : $icon;
 	}
+
+	if ( $cart_icon === 'custom' ) {
+		$icon = neve_kses_svg( $icon_custom );
+	}
+
 	$svg = '<span class="nv-icon nv-cart">' . $icon . '</span>';
 	if ( $echo === false ) {
 		return $svg;
@@ -237,20 +252,63 @@ function neve_get_svg_allowed_tags() {
 			'role'            => true,
 			'xmlns'           => true,
 			'width'           => true,
+			'fill'            => true,
+			'fill-opacity'    => true,
 			'height'          => true,
+			'stroke'          => true,
 			'viewbox'         => true, // <= Must be lower case!
 		),
-		'g'        => array( 'fill' => true ),
+		'style'    => array(
+			'type' => true,
+		),
+		'g'        => array(
+			'fill'      => true,
+			'transform' => true,
+			'style'     => true,
+		),
+		'circle'   => array(
+			'cx'        => true,
+			'cy'        => true,
+			'r'         => true,
+			'class'     => true,
+			'style'     => true,
+			'transform' => true,
+		),
 		'title'    => array( 'title' => true ),
 		'path'     => array(
-			'd'    => true,
-			'fill' => true,
+			'd'               => true,
+			'fill'            => true,
+			'fill-rule'       => true,
+			'clip-rule'       => true,
+			'style'           => true,
+			'class'           => true,
+			'transform'       => true,
+			'stroke-linecap'  => true,
+			'stroke-linejoin' => true,
+			'stroke-width'    => true,
 		),
 		'polyline' => array(
 			'fill'         => true,
 			'stroke'       => true,
 			'stroke-width' => true,
 			'points'       => true,
+		),
+		'polygon'  => array(
+			'class'     => true,
+			'points'    => true,
+			'style'     => true,
+			'transform' => true,
+		),
+		'rect'     => array(
+			'x'         => true,
+			'y'         => true,
+			'rx'        => true,
+			'ry'        => true,
+			'width'     => true,
+			'height'    => true,
+			'class'     => true,
+			'style'     => true,
+			'transform' => true,
 		),
 	);
 }
@@ -553,4 +611,53 @@ function neve_safe_get( $url, $args = array() ) {
 			$url,
 			$args
 		);
+}
+
+/**
+ * Create pagination for Easy Digital Downloads Archive.
+ */
+function neve_edd_download_nav() {
+
+	global $wp_query;
+
+	$big          = 999999;
+	$search_for   = array( $big, '#038;' );
+	$replace_with = array( '%#%', '&' );
+
+	$allowed_tags = array(
+		'ul'   => array(
+			'class' => array(),
+		),
+		'li'   => array(
+			'class' => array(),
+		),
+		'a'    => array(
+			'class' => array(),
+			'href'  => array(),
+		),
+		'span' => array(
+			'class' => array(),
+		),
+	);
+
+	$pagination = paginate_links(
+		array(
+			'base'      => str_replace( $search_for, $replace_with, get_pagenum_link( $big ) ),
+			'format'    => '?paged=%#%',
+			'current'   => max( 1, get_query_var( 'paged' ) ),
+			'total'     => $wp_query->max_num_pages,
+			'prev_next' => true,
+		) 
+	);
+	?>
+
+	<div id="edd_download_pagination" class="navigation">
+		<?php 
+		echo wp_kses( $pagination, $allowed_tags ); 
+		// TODO use pagination from pluggable class once we have infinite scroll supported for edd.
+		?>
+	</div>
+
+	<?php
+
 }

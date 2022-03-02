@@ -231,7 +231,7 @@ class Frontend extends Generator {
 			];
 		}
 	}
-
+	
 	/**
 	 * Add css for blog layout.
 	 *

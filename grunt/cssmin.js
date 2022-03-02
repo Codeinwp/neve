@@ -67,6 +67,12 @@ module.exports = {
 			'assets/css/gutenberg-editor-legacy-style.min.css': [
 				'assets/css/gutenberg-editor-legacy-style.css',
 			],
+			'assets/css/easy-digital-downloads.min.css': [
+				'assets/css/easy-digital-downloads.css',
+			],
+			'assets/css/easy-digital-downloads-rtl.min.css': [
+				'assets/css/easy-digital-downloads-rtl.css',
+			],
 		},
 	},
 };
