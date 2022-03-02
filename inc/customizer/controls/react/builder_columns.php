@@ -37,8 +37,8 @@ class Builder_Columns extends \WP_Customize_Control {
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 */
-	public function to_json() {
-		parent::to_json();
+	public function json() {
+		$json = parent::json();
 
 		$this->choices = [
 			1 => [
@@ -92,7 +92,9 @@ class Builder_Columns extends \WP_Customize_Control {
 			],
 		];
 
-		$this->json['choices']        = $this->choices;
-		$this->json['columnsControl'] = $this->columns_control;
+		$json['choices']        = $this->choices;
+		$json['columnsControl'] = $this->columns_control;
+
+		return $json;
 	}
 }

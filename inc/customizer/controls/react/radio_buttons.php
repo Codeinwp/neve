@@ -47,11 +47,12 @@ class Radio_Buttons extends \WP_Customize_Control {
 	/**
 	 * Send to JS.
 	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['choices']       = $this->choices;
-		$this->json['is_for']        = $this->is_for;
-		$this->json['large_buttons'] = $this->large_buttons;
-		$this->json['showLabels']    = $this->show_labels;
+	public function json() {
+		$json                  = parent::json();
+		$json['choices']       = $this->choices;
+		$json['is_for']        = $this->is_for;
+		$json['large_buttons'] = $this->large_buttons;
+		$json['showLabels']    = $this->show_labels;
+		return $json;
 	}
 }

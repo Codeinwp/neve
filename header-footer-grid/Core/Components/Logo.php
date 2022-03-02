@@ -18,6 +18,7 @@ use HFG\Main;
 use Neve\Core\Dynamic_Css;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
+use WP_Post;
 
 /**
  * Class Logo.
@@ -91,6 +92,53 @@ class Logo extends Abstract_Component {
 
 		// We use this filter to port changes to the logo from the templates on the new component.
 		add_filter( 'pre_set_theme_mod_custom_logo', [ $this, 'update_logo_theme_mod' ], 10, 2 );
+
+		// we remove the sizes for SVG
+		add_filter( 'wp_calculate_image_sizes', [ $this, 'filter_svg_logo_size' ], 10, 5 );
+		add_filter( 'wp_get_attachment_image_attributes', [ $this, 'clear_svg_size_attr' ], 10, 3 );
+	}
+
+	/**
+	 * Clear width and height attributes for SVG.
+	 *
+	 * @param array   $attr Attributes.
+	 * @param WP_Post $attachment The attachment.
+	 * @param string  $size The size.
+	 *
+	 * @return array
+	 */
+	final public function clear_svg_size_attr( $attr, $attachment, $size = 'thumbnail' ) {
+		if ( ! $attachment instanceof WP_Post ) {
+			return $attr;
+		}
+
+		$mime = get_post_mime_type( $attachment->ID );
+		if ( 'image/svg+xml' === $mime ) {
+			unset( $attr['width'] );
+			unset( $attr['height'] );
+		}
+
+		return $attr;
+	}
+
+	/**
+	 * Set the sizes for SVG.
+	 *
+	 * @param string $sizes The style sizes.
+	 * @param string $size The specified size.
+	 * @param string $image_src The source of the image.
+	 * @param array  $image_meta The meta for the image.
+	 * @param int    $attachment_id The attachment ID.
+	 *
+	 * @return string
+	 */
+	final public function filter_svg_logo_size( $sizes, $size, $image_src, $image_meta, $attachment_id ) {
+		$mime = get_post_mime_type( $attachment_id );
+		if ( 'image/svg+xml' === $mime ) {
+			return '';
+		}
+
+		return $sizes;
 	}
 
 	/**
@@ -209,10 +257,15 @@ class Logo extends Abstract_Component {
 			if( ! picture ) {
 				continue;
 			};
+			var fileExt = picture.src.slice((Math.max(0, picture.src.lastIndexOf(".")) || Infinity) + 1);
+			if ( fileExt === 'svg' ) {
+				picture.removeAttribute('width');
+				picture.removeAttribute('height');
+				picture.style = 'width: var(--maxWidth)';
+			}
 			var compId = picture.getAttribute('data-variant');
 			if ( compId && variants[compId] ) {
 				var isConditional = variants[compId]['same'];
-				console.log(variants[compId]);
 				if ( theme === 'light' || isConditional || variants[compId]['dark']['src'] === false ) {
 					picture.src = variants[compId]['light']['src'];
 					picture.srcset = variants[compId]['light']['srcset'] || '';
