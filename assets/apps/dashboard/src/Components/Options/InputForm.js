@@ -5,6 +5,7 @@ import { Button } from '@wordpress/components';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
+import NotificationIcon from '../Utilities/NotificationIcon';
 
 const InputForm = ({
 	slug,
@@ -13,7 +14,8 @@ const InputForm = ({
 	getOption,
 	setToast,
 	changeOption,
-	disabled
+	disabled,
+	disabledReason
 }) => {
 	const [value, setValue] = useState(getOption(slug));
 	const [loading, setLoading] = useState(false);
@@ -35,6 +37,7 @@ const InputForm = ({
 					});
 				}}
 			>
+				{ disabled && <NotificationIcon text={disabledReason} /> }
 				{label && <label htmlFor={slug}>{label}</label>}
 				<div className="input-wrap">
 					<input

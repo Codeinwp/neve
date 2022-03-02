@@ -5,6 +5,7 @@ import { ToggleControl, Dashicon, ExternalLink } from '@wordpress/components';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import { useState } from '@wordpress/element';
+import NotificationIcon from '../Utilities/NotificationIcon';
 
 const Toggle = ({
 	slug,
@@ -13,10 +14,12 @@ const Toggle = ({
 	getOption,
 	changeOption,
 	setToast,
-	disabled
+	disabled,
+	disabledReason
 }) => {
 	const [loading, setLoading] = useState(false);
-	return (
+	return <>
+		{ disabled && <NotificationIcon text={disabledReason} /> }
 		<div className="module-option toggle">
 			<ToggleControl
 				checked={getOption(slug) || false}
@@ -46,7 +49,7 @@ const Toggle = ({
 				<Dashicon size={18} icon="update" className="is-loading" />
 			)}
 		</div>
-	);
+	</>;
 };
 
 export default compose(

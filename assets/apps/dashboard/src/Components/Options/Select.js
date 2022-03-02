@@ -2,6 +2,7 @@ import { SelectControl } from '@wordpress/components';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import { changeOption as changeSetting } from '../../utils/rest';
+import NotificationIcon from '../Utilities/NotificationIcon';
 
 const Select = ({
 	slug,
@@ -10,9 +11,11 @@ const Select = ({
 	getOption,
 	changeOption,
 	setToast,
-	disabled
+	disabled,
+	disabledReason
 }) => {
-	return (
+	return <>
+		{ disabled && <NotificationIcon text={disabledReason} /> }
 		<div className="module-option toggle">
 			<SelectControl
 				style={{ minWidth: '200px' }}
@@ -37,7 +40,7 @@ const Select = ({
 				})}
 			/>
 		</div>
-	);
+	</>;
 };
 
 export default compose(

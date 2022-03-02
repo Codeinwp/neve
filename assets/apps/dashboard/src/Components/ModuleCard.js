@@ -7,6 +7,7 @@ import Toggle from './Options/Toggle';
 import MultiSelectOption from './Options/MultiSelect';
 import { changeOption } from '../utils/rest';
 import classnames from 'classnames';
+import NotificationIcon from './Utilities/NotificationIcon';
 
 import {
 	Button,
@@ -39,6 +40,8 @@ const ModuleCard = ({
 		required_actions,
 	} = neveDash.modules[slug];
 	const { upgradeLinks, autoModuleConfigAvailable } = neveDash;
+
+	const disabledReason = autoModuleConfigAvailable ? __( 'Cannot be updated due to automatic module configurations mode is enabled.' ) : '';
 
 	const isToggleEnabled = (toggleSlug) => {
 		return getOption(toggleSlug);
@@ -75,6 +78,7 @@ const ModuleCard = ({
 												slug={optionSlug}
 												placeholder={placeholder}
 												disabled={autoModuleConfigAvailable}
+												disabledReason={disabledReason}
 											/>
 										)}
 										{'toggle' === type && (
@@ -85,6 +89,7 @@ const ModuleCard = ({
 													documentationOption
 												}
 												disabled={autoModuleConfigAvailable}
+												disabledReason={disabledReason}
 											/>
 										)}
 										{'select' === type && (
@@ -93,6 +98,7 @@ const ModuleCard = ({
 												slug={optionSlug}
 												choices={choices}
 												disabled={autoModuleConfigAvailable}
+												disabledReason={disabledReason}
 											/>
 										)}
 										{(('multi_select' === type &&
@@ -106,6 +112,7 @@ const ModuleCard = ({
 												slug={optionSlug}
 												choices={choices}
 												disabled={autoModuleConfigAvailable}
+												disabledReason={disabledReason}
 											/>
 										)}
 									</Fragment>
@@ -148,7 +155,9 @@ const ModuleCard = ({
 								/>
 							)}
 							{!required_actions && (
-								<ToggleControl
+								<>
+									{ autoModuleConfigAvailable && <NotificationIcon text={disabledReason} /> }
+									<ToggleControl
 									checked={getModuleStatus(slug) || false}
 									onChange={(value) => {
 										setLoading(true);
@@ -186,6 +195,7 @@ const ModuleCard = ({
 									}}
 									disabled={autoModuleConfigAvailable}
 								/>
+								</>
 							)}
 						</Fragment>
 					)}

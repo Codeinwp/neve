@@ -2,6 +2,7 @@ import { changeOption as changeSetting } from '../../utils/rest';
 import { compose } from '@wordpress/compose';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { MultiSelect } from '@neve-wp/components';
+import NotificationIcon from '../Utilities/NotificationIcon';
 
 const MultiSelectOption = ({
 	slug,
@@ -10,9 +11,11 @@ const MultiSelectOption = ({
 	getOption,
 	changeOption,
 	setToast,
-	disabled
+	disabled,
+	disabledReason
 }) => {
-	return (
+	return <>
+		{ disabled && <NotificationIcon text={disabledReason} /> }
 		<div className="module-option neve-multiselect">
 			<MultiSelect
 				style={{ minWidth: '200px' }}
@@ -32,7 +35,7 @@ const MultiSelectOption = ({
 				disabled={disabled}
 			/>
 		</div>
-	);
+	</>;
 };
 
 export default compose(
