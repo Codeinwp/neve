@@ -16,7 +16,7 @@
 		 *
 		 * @since 2.3.8
 		 */
-		do_action( 'neve_before_sidebar_content' );
+		do_action( 'neve_before_sidebar_content', $args['context'], $args['position'] );
 		?>
 
 		<?php dynamic_sidebar( $args['slug'] ); ?>
@@ -27,7 +27,7 @@
 		 *
 		 * @since 2.3.8
 		 */
-		do_action( 'neve_after_sidebar_content' );
+		do_action( 'neve_after_sidebar_content', $args['context'], $args['position'] );
 		?>
 	</aside>
 </div>
