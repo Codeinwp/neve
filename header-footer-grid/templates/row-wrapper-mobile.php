@@ -36,11 +36,11 @@ $menu_icon_class = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active
 				<?php
 				if ( $menu_icon_class === 'hamburger is-active ' ) {
 					?>
-					<div class="bars">
+					<span class="bars">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
-					</div>
+					</span>
 					<?php
 				} else {
 					?>

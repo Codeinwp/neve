@@ -34,11 +34,11 @@ if ( $menu_icon !== 'default' ) {
 
 		if ( $menu_icon === 'default' ) {
 			?>
-			<div class="bars">
+			<span class="bars">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
-			</div>
+			</span>
 			<?php
 		} else {
 			?>
