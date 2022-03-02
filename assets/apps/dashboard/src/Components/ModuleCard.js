@@ -41,7 +41,11 @@ const ModuleCard = ({
 	} = neveDash.modules[slug];
 	const { upgradeLinks, autoModuleConfigAvailable } = neveDash;
 
-	const disabledReason = autoModuleConfigAvailable ? __( 'Cannot be updated due to automatic module configurations mode is enabled.' ) : '';
+	const disabledReason = autoModuleConfigAvailable
+		? __(
+				'Cannot be updated due to automatic module configurations mode is enabled.'
+		  )
+		: '';
 
 	const isToggleEnabled = (toggleSlug) => {
 		return getOption(toggleSlug);
@@ -77,7 +81,9 @@ const ModuleCard = ({
 												label={labelGroup}
 												slug={optionSlug}
 												placeholder={placeholder}
-												disabled={autoModuleConfigAvailable}
+												disabled={
+													autoModuleConfigAvailable
+												}
 												disabledReason={disabledReason}
 											/>
 										)}
@@ -88,7 +94,9 @@ const ModuleCard = ({
 												documentation={
 													documentationOption
 												}
-												disabled={autoModuleConfigAvailable}
+												disabled={
+													autoModuleConfigAvailable
+												}
 												disabledReason={disabledReason}
 											/>
 										)}
@@ -97,7 +105,9 @@ const ModuleCard = ({
 												label={labelGroup}
 												slug={optionSlug}
 												choices={choices}
-												disabled={autoModuleConfigAvailable}
+												disabled={
+													autoModuleConfigAvailable
+												}
 												disabledReason={disabledReason}
 											/>
 										)}
@@ -111,7 +121,9 @@ const ModuleCard = ({
 												label={labelGroup}
 												slug={optionSlug}
 												choices={choices}
-												disabled={autoModuleConfigAvailable}
+												disabled={
+													autoModuleConfigAvailable
+												}
 												disabledReason={disabledReason}
 											/>
 										)}
@@ -156,13 +168,20 @@ const ModuleCard = ({
 							)}
 							{!required_actions && (
 								<>
-									{ autoModuleConfigAvailable && <NotificationIcon text={disabledReason} /> }
+									{autoModuleConfigAvailable && (
+										<NotificationIcon
+											text={disabledReason}
+										/>
+									)}
 									<ToggleControl
-									checked={getModuleStatus(slug) || false}
-									onChange={(value) => {
-										setLoading(true);
-										changeOption(slug, value, true).then(
-											(r) => {
+										checked={getModuleStatus(slug) || false}
+										onChange={(value) => {
+											setLoading(true);
+											changeOption(
+												slug,
+												value,
+												true
+											).then((r) => {
 												if (r.success) {
 													changeModuleStatus(
 														slug,
@@ -190,11 +209,10 @@ const ModuleCard = ({
 														'neve'
 													)
 												);
-											}
-										);
-									}}
-									disabled={autoModuleConfigAvailable}
-								/>
+											});
+										}}
+										disabled={autoModuleConfigAvailable}
+									/>
 								</>
 							)}
 						</Fragment>

@@ -12,35 +12,37 @@ const Select = ({
 	changeOption,
 	setToast,
 	disabled,
-	disabledReason
+	disabledReason,
 }) => {
-	return <>
-		{ disabled && <NotificationIcon text={disabledReason} /> }
-		<div className="module-option toggle">
-			<SelectControl
-				style={{ minWidth: '200px' }}
-				label={label}
-				value={getOption(slug) || 'css'}
-				disabled={disabled}
-				onChange={(value) => {
-					changeSetting(slug, value).then((r) => {
-						if (r.success) {
-							changeOption(slug, value);
-							setToast(true);
-							return false;
-						}
-						setToast(false);
-					});
-				}}
-				options={Object.keys(choices).map((optionSlug) => {
-					return {
-						label: choices[optionSlug],
-						value: optionSlug,
-					};
-				})}
-			/>
-		</div>
-	</>;
+	return (
+		<>
+			{disabled && <NotificationIcon text={disabledReason} />}
+			<div className="module-option toggle">
+				<SelectControl
+					style={{ minWidth: '200px' }}
+					label={label}
+					value={getOption(slug) || 'css'}
+					disabled={disabled}
+					onChange={(value) => {
+						changeSetting(slug, value).then((r) => {
+							if (r.success) {
+								changeOption(slug, value);
+								setToast(true);
+								return false;
+							}
+							setToast(false);
+						});
+					}}
+					options={Object.keys(choices).map((optionSlug) => {
+						return {
+							label: choices[optionSlug],
+							value: optionSlug,
+						};
+					})}
+				/>
+			</div>
+		</>
+	);
 };
 
 export default compose(

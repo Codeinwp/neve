@@ -1,16 +1,17 @@
+/* global neveDash */
 export default {
 	getModuleStatus: (state, slug) => {
-		if( neveDash.autoModuleConfigAvailable ) {
+		if (neveDash.autoModuleConfigAvailable) {
 			return neveDash.autoModuleConfig.activeModules.includes(slug);
 		}
 
-		return state.settings['nv_pro_' + slug + '_status']
+		return state.settings['nv_pro_' + slug + '_status'];
 	},
 	getOption: (state, slug) => state.settings[slug],
 	getPlugins: (state) => state.plugins,
 	getProOption: (state, slug) => {
-		if( neveDash.autoModuleConfigAvailable ) {
-			if(  neveDash.autoModuleConfig.options[slug] ) {
+		if (neveDash.autoModuleConfigAvailable) {
+			if (neveDash.autoModuleConfig.options[slug]) {
 				return neveDash.autoModuleConfig.options[slug];
 			}
 

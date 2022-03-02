@@ -12,30 +12,32 @@ const MultiSelectOption = ({
 	changeOption,
 	setToast,
 	disabled,
-	disabledReason
+	disabledReason,
 }) => {
-	return <>
-		{ disabled && <NotificationIcon text={disabledReason} /> }
-		<div className="module-option neve-multiselect">
-			<MultiSelect
-				style={{ minWidth: '200px' }}
-				label={label}
-				choices={choices}
-				currentValue={getOption(slug) || ['category']}
-				onChange={(value) => {
-					changeSetting(slug, value).then((r) => {
-						if (r.success) {
-							changeOption(slug, value);
-							setToast(true);
-							return false;
-						}
-						setToast(false);
-					});
-				}}
-				disabled={disabled}
-			/>
-		</div>
-	</>;
+	return (
+		<>
+			{disabled && <NotificationIcon text={disabledReason} />}
+			<div className="module-option neve-multiselect">
+				<MultiSelect
+					style={{ minWidth: '200px' }}
+					label={label}
+					choices={choices}
+					currentValue={getOption(slug) || ['category']}
+					onChange={(value) => {
+						changeSetting(slug, value).then((r) => {
+							if (r.success) {
+								changeOption(slug, value);
+								setToast(true);
+								return false;
+							}
+							setToast(false);
+						});
+					}}
+					disabled={disabled}
+				/>
+			</div>
+		</>
+	);
 };
 
 export default compose(

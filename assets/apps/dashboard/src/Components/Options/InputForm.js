@@ -15,7 +15,7 @@ const InputForm = ({
 	setToast,
 	changeOption,
 	disabled,
-	disabledReason
+	disabledReason,
 }) => {
 	const [value, setValue] = useState(getOption(slug));
 	const [loading, setLoading] = useState(false);
@@ -37,7 +37,7 @@ const InputForm = ({
 					});
 				}}
 			>
-				{ disabled && <NotificationIcon text={disabledReason} /> }
+				{disabled && <NotificationIcon text={disabledReason} />}
 				{label && <label htmlFor={slug}>{label}</label>}
 				<div className="input-wrap">
 					<input

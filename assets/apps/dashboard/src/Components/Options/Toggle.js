@@ -15,41 +15,43 @@ const Toggle = ({
 	changeOption,
 	setToast,
 	disabled,
-	disabledReason
+	disabledReason,
 }) => {
 	const [loading, setLoading] = useState(false);
-	return <>
-		{ disabled && <NotificationIcon text={disabledReason} /> }
-		<div className="module-option toggle">
-			<ToggleControl
-				checked={getOption(slug) || false}
-				label={label}
-				disabled={disabled}
-				onChange={(value) => {
-					setLoading(true);
-					changeSetting(slug, value).then((r) => {
-						if (r.success) {
-							changeOption(slug, value);
-							setToast(true);
+	return (
+		<>
+			{disabled && <NotificationIcon text={disabledReason} />}
+			<div className="module-option toggle">
+				<ToggleControl
+					checked={getOption(slug) || false}
+					label={label}
+					disabled={disabled}
+					onChange={(value) => {
+						setLoading(true);
+						changeSetting(slug, value).then((r) => {
+							if (r.success) {
+								changeOption(slug, value);
+								setToast(true);
+								setLoading(false);
+								return false;
+							}
+							setToast(false);
 							setLoading(false);
-							return false;
-						}
-						setToast(false);
-						setLoading(false);
-					});
-				}}
-			/>
-			.&nbsp;{' '}
-			{!neveDash.whiteLabel && documentation && documentation.url && (
-				<ExternalLink href={documentation.url}>
-					{documentation.label}
-				</ExternalLink>
-			)}
-			{loading && (
-				<Dashicon size={18} icon="update" className="is-loading" />
-			)}
-		</div>
-	</>;
+						});
+					}}
+				/>
+				.&nbsp;{' '}
+				{!neveDash.whiteLabel && documentation && documentation.url && (
+					<ExternalLink href={documentation.url}>
+						{documentation.label}
+					</ExternalLink>
+				)}
+				{loading && (
+					<Dashicon size={18} icon="update" className="is-loading" />
+				)}
+			</div>
+		</>
+	);
 };
 
 export default compose(

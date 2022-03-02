@@ -56,7 +56,7 @@ const MultiSelect = ({ choices, onChange, currentValue, label, disabled }) => {
 						<Button
 							isSmall
 							isDefault
-							disabled={(addable.length < 1) || disabled}
+							disabled={addable.length < 1 || disabled}
 							icon={getDropDownIcon(isOpen)}
 							onClick={onToggle}
 							aria-expanded={isOpen}
@@ -93,7 +93,7 @@ MultiSelect.propTypes = {
 	onChange: PropTypes.func.isRequired,
 	currentValue: PropTypes.array.isRequired,
 	label: PropTypes.string,
-	disabled: PropTypes.bool
+	disabled: PropTypes.bool,
 };
 
 export default MultiSelect;
