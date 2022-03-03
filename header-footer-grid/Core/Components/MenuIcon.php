@@ -194,10 +194,10 @@ CSS;
 		if ( $menu_icon === 'arrow' ) {
 			$css .= <<<CSS
 				.is-active .hamburger--arrow .hamburger-inner:before, .hamburger--arrow.is-active .hamburger-inner:before {
-					 transform: translate3d(-3px, 0, 0) rotate(-45deg) scale(0.7, 1);
+					 transform: translate3d(-3px, 1px, 0) rotate(-45deg) scale(0.7, 1);
 				}
 				.is-active .hamburger--arrow .hamburger-inner:after, .hamburger--arrow.is-active .hamburger-inner:after {
-					 transform: translate3d(-3px, 0, 0) rotate(45deg) scale(0.7, 1);
+					 transform: translate3d(-3px, -1px, 0) rotate(45deg) scale(0.7, 1);
 				}
 CSS;
 		}
@@ -439,8 +439,8 @@ CSS;
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'refresh',
 				'sanitize_callback'     => 'wp_filter_nohtml_kses',
-				'label'                 => __( 'Menu Icon', 'neve' ),
-				'description'           => __( 'Menu Icon', 'neve' ),
+				'label'                 => __( 'Icon', 'neve' ),
+				'description'           => __( 'Icon', 'neve' ),
 				'type'                  => 'Neve\Customizer\Controls\React\Inline_Select',
 				'default'               => 'default',
 				'options'               => [
