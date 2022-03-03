@@ -19,7 +19,12 @@
 		do_action( 'neve_before_sidebar_content', $args['context'], $args['position'] );
 		?>
 
-		<?php dynamic_sidebar( $args['slug'] ); ?>
+		<?php
+		$has_custom_sidebar = apply_filters( 'neve_has_custom_sidebar', false, $args['context'] );
+		if ( ! $has_custom_sidebar ) {
+			dynamic_sidebar( $args['slug'] );
+		}
+		?>
 
 		<?php
 		/**
