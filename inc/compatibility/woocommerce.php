@@ -158,12 +158,9 @@ class Woocommerce {
 		add_action( 'woocommerce_after_main_content', array( $this, 'close_div' ), 15 );
 
 		// Handle shop sidebar.
-		$has_custom_sidebar = apply_filters( 'neve_has_custom_sidebar', false, 'shop' );
-		if ( ! $has_custom_sidebar ) {
-			remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
-			add_action('woocommerce_before_main_content', array($this, 'shop_sidebar_left'));
-			add_action('woocommerce_sidebar', array($this, 'shop_sidebar_right'));
-		}
+		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+		add_action( 'woocommerce_before_main_content', array( $this, 'shop_sidebar_left' ) );
+		add_action( 'woocommerce_sidebar', array( $this, 'shop_sidebar_right' ) );
 
 		/**
 		 * Change product page sidebar default position
