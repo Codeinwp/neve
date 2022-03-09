@@ -98,6 +98,23 @@ const initDocSection = () => {
 	});
 };
 
+const initCustomPagesFocus = () => {
+	const { sectionsFocus } = window.NeveReactCustomize;
+	if (sectionsFocus !== undefined) {
+		Object.keys(sectionsFocus).forEach((sectionKey) => {
+			wp.customize.section(sectionKey, (section) => {
+				section.expanded.bind((isExpanded) => {
+					if (isExpanded) {
+						wp.customize.previewer.previewUrl.set(
+							sectionsFocus[sectionKey]
+						);
+					}
+				});
+			});
+		});
+	}
+};
+
 const initBlogPageFocus = () => {
 	wp.customize.section('neve_blog_archive_layout', (section) => {
 		section.expanded.bind((isExpanded) => {
@@ -213,6 +230,7 @@ window.wp.customize.bind('ready', () => {
 	initQuickLinksSections();
 	bindDataAttrQuickLinks();
 	initBlogPageFocus();
+	initCustomPagesFocus();
 	checkHasElementorTemplates();
 	initDeviceSwitchers();
 	initBlogPageFocus();
