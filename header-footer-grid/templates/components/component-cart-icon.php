@@ -12,6 +12,7 @@ namespace HFG;
 use HFG\Core\Components\CartIcon;
 
 $icon_type         = CartIcon::should_load_pro_features() ? component_setting( CartIcon::ICON_SELECTOR, 'cart-icon-style1' ) : 'cart-icon-style1';
+$icon_custom       = CartIcon::should_load_pro_features() ? component_setting( CartIcon::ICON_CUSTOM, '' ) : '';
 $cart_style        = CartIcon::should_load_pro_features() ? component_setting( CartIcon::MINI_CART_STYLE, 'dropdown' ) : 'dropdown';
 $custom_html       = CartIcon::should_load_pro_features() ? component_setting( CartIcon::AFTER_CART_HTML ) : '';
 $expand_enabled    = CartIcon::should_load_pro_features() ? component_setting( CartIcon::CART_FOCUS, 1 ) : true;
@@ -45,7 +46,7 @@ if ( (bool) $expand_enabled === false ) {
 				echo '</span>';
 			}
 			?>
-			<?php neve_cart_icon( true, 15, $icon_type ); ?>
+			<?php neve_cart_icon( true, 15, $icon_type, $icon_custom ); ?>
 			<span class="screen-reader-text">
 				<?php esc_html_e( 'Cart', 'neve' ); ?>
 			</span>

@@ -18,6 +18,7 @@ use Neve\Core\Dynamic_Css;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
+use Neve\Core\Theme_Info;
 
 /**
  * Class PaletteSwitch
@@ -25,11 +26,13 @@ use Neve\Core\Styles\Dynamic_Selector;
  * @package HFG\Core\Components
  */
 class PaletteSwitch extends Abstract_Component {
+	use Theme_Info;
 
 	const COMPONENT_ID      = 'header_palette_switch';
 	const DARK_PALETTE_ID   = 'dark_palette';
 	const LIGHT_PALETTE_ID  = 'light_palette_description';
 	const TOGGLE_ICON_ID    = 'toggle_icon';
+	const TOGGLE_CUSTOM_ID  = 'toggle_icon_custom';
 	const PLACEHOLDER_ID    = 'placeholder';
 	const AUTO_ADJUST       = 'auto_adjust_color';
 	const SIZE_ID           = 'icon_size';
@@ -66,7 +69,11 @@ class PaletteSwitch extends Abstract_Component {
 	 *
 	 * @return string
 	 */
-	public static function get_icon( $icon ) {
+	public static function get_icon( $icon, $icon_custom = '' ) {
+		if ( $icon === 'custom' ) {
+			return $icon_custom;
+		}
+
 		$available_icons = [
 			'contrast'      => '<svg fill="currentColor" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256,0C114.516,0,0,114.497,0,256c0,141.484,114.497,256,256,256c141.484,0,256-114.497,256-256 C512,114.516,397.503,0,256,0z M276,471.079V40.921C385.28,50.889,472,142.704,472,256C472,369.28,385.294,461.11,276,471.079z" /></svg>',
 			'night'         => '<svg fill="currentColor" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>',
@@ -149,6 +156,7 @@ class PaletteSwitch extends Abstract_Component {
 			display: flex;
 			width: var(--iconSize);
 			height: var(--iconSize);
+			fill: currentColor;
 		}
 		.toggle-palette .label {
 			font-size: 0.85em;
@@ -360,22 +368,37 @@ class PaletteSwitch extends Abstract_Component {
 			]
 		);
 
+		$custom_icon_args = $this->should_load_pro_features() ? [
+			'settings'       => [
+				'default' => self::COMPONENT_ID . '_' . self::TOGGLE_ICON_ID,
+				'custom'  => self::COMPONENT_ID . '_' . self::TOGGLE_CUSTOM_ID,
+			],
+			'setting_custom' => [
+				'transport'         => 'post' . self::COMPONENT_ID,
+				'sanitize_callback' => 'neve_kses_svg',
+				'default'           => '',
+			],
+		] : [];
+
 		SettingsManager::get_instance()->add(
-			[
-				'id'                => self::TOGGLE_ICON_ID,
-				'group'             => $this->get_id(),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'label'             => __( 'Select icon', 'neve' ),
-				'description'       => __( 'Select icon', 'neve' ),
-				'type'              => 'Neve\Customizer\Controls\React\Radio_Buttons',
-				'default'           => 'contrast',
-				'options'           => [
-					'is_for' => 'palette_switch',
+			array_merge(
+				[
+					'id'                => self::TOGGLE_ICON_ID,
+					'group'             => $this->get_id(),
+					'tab'               => SettingsManager::TAB_GENERAL,
+					'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
+					'label'             => __( 'Select icon', 'neve' ),
+					'description'       => __( 'Select icon', 'neve' ),
+					'type'              => 'Neve\Customizer\Controls\React\Radio_Buttons',
+					'default'           => 'contrast',
+					'options'           => [
+						'is_for' => 'palette_switch',
+					],
+					'section'           => $this->section,
 				],
-				'section'           => $this->section,
-			]
+				$custom_icon_args 
+			)
 		);
 
 		$default_size_values = [
@@ -513,5 +536,12 @@ class PaletteSwitch extends Abstract_Component {
 		Main::get_instance()->load( 'components/component-palette-switch' );
 	}
 
-
+	/**
+	 * Check if pro features should load.
+	 *
+	 * @return bool
+	 */
+	public function should_load_pro_features() {
+		return $this->has_valid_addons();
+	}
 }

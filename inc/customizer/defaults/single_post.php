@@ -7,6 +7,7 @@
 
 namespace Neve\Customizer\Defaults;
 
+use Neve\Core\Settings\Config;
 use Neve\Customizer\Options\Layout_Single_Post;
 
 /**
@@ -107,23 +108,119 @@ trait Single_Post {
 	}
 
 	/**
-	 * Get the context for header.
+	 * Return the custom post type context.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param string[] $allowed The default context to be allowed.
+	 *
+	 * @return array
+	 */
+	public function get_cpt_context( $allowed = [ 'post', 'page' ] ) {
+		/**
+		 * Filters the list of available post types to use as context for custom post type meta settings.
+		 *
+		 * @param string[] $allowed_context An array of allowed post types for context. E.g. [ 'post', 'page' ].
+		 *
+		 * @since 3.1.0
+		 */
+		$allowed_context = apply_filters( 'neve_allowed_custom_post_types', $allowed, 10, 1 );
+		$context         = get_post_type();
+		$context         = apply_filters( 'neve_context_filter', $context, 10, 1 );
+
+		return [ $context, $allowed_context ];
+	}
+
+
+	/**
+	 * Check the context for the single post is valid.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param string $context The post type context.
+	 *
+	 * @return boolean
+	 */
+	public function is_valid_context( $context ) {
+		if ( ! neve_is_new_skin() ) {
+			return false;
+		}
+
+		return is_singular( $context ) || is_single();
+	}
+
+	/**
+	 * Checks that a dynamic meta is allowed in the provided context.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param string   $context The context to get the meta for.
+	 * @param string[] $allowed_context The allowed contexts to check against.
+	 *
+	 * @return bool
+	 */
+	private function is_meta_context_allowed( $context, $allowed_context ) {
+		if ( empty( $context ) ) {
+			return false;
+		}
+
+		if ( ! in_array( $context, $allowed_context, true ) || ! $this->is_valid_context( $context ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Return the sidebar content width meta based on context.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param string   $context            The context to get the meta for.
+	 * @param string[] $allowed_context    The allowed contexts to check against.
 	 *
 	 * @return string
 	 */
-	public function get_header_context() {
-		if ( ! neve_is_new_skin() ) {
+	public function get_sidebar_content_width_meta( $context, $allowed_context = [ 'post' ] ) {
+		if ( ! $this->is_meta_context_allowed( $context, $allowed_context ) ) {
 			return '';
 		}
 
-		if ( is_singular( 'post' ) ) {
-			return 'post';
+		return 'neve_single_' . $context . '_' . Config::MODS_CONTENT_WIDTH;
+	}
+
+	/**
+	 * Return the meta to use as context.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param string $context            The context to get the meta for.
+	 * @param string $meta               The meta key to get the final meta for.
+	 * @param array  $allowed_context    The allowed contexts to check against.
+	 *
+	 * @return string
+	 */
+	public function get_cover_meta( $context, $meta, $allowed_context = [ 'post', 'page' ] ) {
+		if ( ! $this->is_meta_context_allowed( $context, $allowed_context ) ) {
+			return '';
 		}
 
-		if ( is_singular( 'page' ) ) {
-			return 'page';
+		$allowed_meta = [
+			Config::MODS_COVER_HEIGHT,
+			Config::MODS_COVER_PADDING,
+			Config::MODS_COVER_BACKGROUND_COLOR,
+			Config::MODS_COVER_OVERLAY_OPACITY,
+			Config::MODS_COVER_TEXT_COLOR,
+			Config::MODS_COVER_BLEND_MODE,
+			Config::MODS_COVER_TITLE_ALIGNMENT,
+			Config::MODS_COVER_TITLE_POSITION,
+			Config::MODS_COVER_BOXED_TITLE_PADDING,
+			Config::MODS_COVER_BOXED_TITLE_BACKGROUND,
+		];
+		if ( ! in_array( $meta, $allowed_meta, true ) ) {
+			return '';
 		}
 
-		return '';
+		return 'neve_' . $context . '_' . $meta;
 	}
 }

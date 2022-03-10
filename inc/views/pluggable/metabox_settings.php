@@ -151,6 +151,10 @@ class Metabox_Settings {
 			return (int) get_option( 'page_for_posts' );
 		}
 
+		if ( is_archive() ) {
+			return false;
+		}
+
 		if ( is_search() ) {
 			return false;
 		}

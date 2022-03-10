@@ -44,7 +44,7 @@ class Post_Meta extends Base_View {
 	public function should_display_author_avatar( $value ) {
 
 		$show_avatar = get_theme_mod( 'neve_author_avatar', false );
-		if ( is_singular( 'post' ) ) {
+		if ( is_singular() ) {
 			$show_avatar = get_theme_mod( 'neve_single_post_author_avatar', $show_avatar );
 		}
 
@@ -67,6 +67,7 @@ class Post_Meta extends Base_View {
 			$single_avatar_size = Mods::to_json( Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE );
 			$avatar_size        = ! empty( $single_avatar_size ) ? $single_avatar_size : $avatar_size;
 		}
+		$avatar_size = apply_filters( 'neve_author_avatar_size_filter', $avatar_size );
 
 		if ( ! isset( $args_array['size'] ) ) {
 			return $args_array;
@@ -127,7 +128,7 @@ class Post_Meta extends Base_View {
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'category':
-					if ( $post_type !== 'post' ) {
+					if ( ! in_array( 'category', get_object_taxonomies( $post_type ) ) ) {
 						break;
 					}
 					$markup .= '<' . $tag . ' class="meta category">';
@@ -144,7 +145,8 @@ class Post_Meta extends Base_View {
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'reading':
-					if ( $post_type !== 'post' ) {
+					$allowed_context = apply_filters( 'neve_post_type_supported_list', [ 'post' ], 'block_editor' );
+					if ( ! in_array( $post_type, $allowed_context ) ) {
 						break;
 					}
 					$reading_time = apply_filters( 'neve_do_read_time', '' );
@@ -347,9 +349,10 @@ class Post_Meta extends Base_View {
 	public function meta_custom_separator() {
 
 		$separator = get_theme_mod( 'neve_metadata_separator', esc_html( '/' ) );
-		if ( is_singular( 'post' ) ) {
+		if ( is_singular() ) {
 			$separator = get_theme_mod( 'neve_single_post_metadata_separator', $separator );
 		}
+		$separator = apply_filters( 'neve_metadata_separator_filter', $separator );
 
 		$custom_css  = '';
 		$custom_css .= '.nv-meta-list li.meta:not(:last-child):after { content:"' . esc_html( $separator ) . '" }';
