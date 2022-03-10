@@ -2,6 +2,7 @@
 import HFGBuilderComponent from './HFGBuilderComponent.tsx';
 import { render } from '@wordpress/element';
 import React from 'react';
+import { isNull } from 'lodash';
 
 export const BuilderControl = wp.customize.Control.extend({
 	renderContent() {
@@ -10,9 +11,15 @@ export const BuilderControl = wp.customize.Control.extend({
 			`#accordion-section-${this.params.section}`
 		);
 		if (this.params.builderType === 'page_header') {
-			where = document.querySelector(
+			const pageHeaderComponents = document.querySelector(
 				`#customize-control-neve_pro_page_header_layout_components`
 			);
+			if (
+				!isNull(pageHeaderComponents) &&
+				pageHeaderComponents !== 'undefined'
+			) {
+				where = pageHeaderComponents;
+			}
 		}
 
 		const builderPortalMount = document.createElement('div');
