@@ -95,7 +95,7 @@ class Template_Parts extends Base_View {
 				}
 			);
 
-			$has_thumbnail_class = has_post_thumbnail( $post_id ) ? 'with-thumb' : '';
+			$has_thumbnail_class = apply_filters( 'neve_featured_has_post_thumbnail', '', $post_id );
 			$data                = [
 				'post_id'    => 'post-' . $post_id,
 				'post_class' => $this->post_class( $post_id, 'nv-ft-post ' . $has_thumbnail_class ),
