@@ -1,7 +1,14 @@
 import PropTypes from 'prop-types';
 import GlobalColorsPicker from '../Common/GlobalColorsPicker';
-import { Button, Dropdown, Spinner, ColorPicker } from '@wordpress/components';
-import { lazy, Suspense } from '@wordpress/element';
+import {
+	Button,
+	ButtonGroup,
+	Dropdown,
+	Spinner,
+	ColorPicker,
+	GradientPicker,
+} from '@wordpress/components';
+import { lazy, Suspense, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
@@ -16,6 +23,7 @@ const ColorControl = ({
 	onChange,
 	defaultValue,
 	disableGlobal,
+	allowGradient,
 }) => {
 	let toggle = null;
 	const { shouldUseColorPickerFix } = window.nvComponents;
@@ -42,6 +50,7 @@ const ColorControl = ({
 	};
 
 	const isGlobal = selectedColor && selectedColor.indexOf('var') > -1;
+	console.log('Here:', selectedColor);
 
 	const handleClear = () => {
 		onChange(defaultValue || '');
@@ -53,6 +62,13 @@ const ColorControl = ({
 		'neve-color-component',
 		{ 'allows-global': !disableGlobal },
 	]);
+
+	const [gradient, setGradient] = useState(defaultValue);
+	const isGradient = (value) => {
+		return value.toLowerCase().indexOf('gradient') !== -1;
+	};
+	const defaultPanelState = isGradient(selectedColor) ? 'gradient' : 'color';
+	const [activePanel, setActivePanel] = useState(defaultPanelState);
 
 	return (
 		<div className={wrapClasses}>
@@ -76,7 +92,7 @@ const ColorControl = ({
 						>
 							<span
 								className="color"
-								style={{ backgroundColor: selectedColor }}
+								style={{ background: selectedColor }}
 							/>
 							<span className="gradient" />
 						</Button>
@@ -86,20 +102,50 @@ const ColorControl = ({
 					<>
 						{/* eslint-disable-next-line  jsx-a11y/anchor-has-content */}
 						<a href="#color-picker" />
+						<ButtonGroup style={{ marginBottom: '8px' }}>
+							<Button
+								isPrimary={activePanel === 'color'}
+								isSecondary={activePanel !== 'color'}
+								onClick={() => setActivePanel('color')}
+							>
+								{__('Color', 'neve')}
+							</Button>
+							<Button
+								isPrimary={activePanel === 'gradient'}
+								isSecondary={activePanel !== 'gradient'}
+								onClick={() => setActivePanel('gradient')}
+							>
+								{__('Gradient', 'neve')}
+							</Button>
+						</ButtonGroup>
 						<Suspense fallback={<Spinner />}>
-							{!canUseDefaultColorPicker() && (
+							{!canUseDefaultColorPicker() &&
+								activePanel === 'color' && (
+									<>
+										<ColorPickerFix
+											color={selectedColor}
+											onChangeComplete={handleChange}
+										/>
+									</>
+								)}
+							{canUseDefaultColorPicker() &&
+								activePanel === 'color' && (
+									<>
+										<ColorPicker
+											color={selectedColor}
+											onChangeComplete={handleChange}
+										/>
+									</>
+								)}
+							{allowGradient && activePanel === 'gradient' && (
 								<>
-									<ColorPickerFix
-										color={selectedColor}
-										onChangeComplete={handleChange}
-									/>
-								</>
-							)}
-							{canUseDefaultColorPicker() && (
-								<>
-									<ColorPicker
-										color={selectedColor}
-										onChangeComplete={handleChange}
+									<GradientPicker
+										value={gradient}
+										onChange={(currentGradient) => {
+											setGradient(currentGradient);
+											onChange(currentGradient);
+										}}
+										clearable={false}
 									/>
 								</>
 							)}
@@ -131,6 +177,7 @@ ColorControl.propTypes = {
 	selectedColor: PropTypes.string,
 	defaultValue: PropTypes.string,
 	disableGlobal: PropTypes.bool,
+	allowGradient: PropTypes.bool,
 };
 
 export default ColorControl;

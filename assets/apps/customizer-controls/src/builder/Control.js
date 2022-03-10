@@ -9,11 +9,11 @@ export const BuilderControl = wp.customize.Control.extend({
 		let where = document.querySelector(
 			`#accordion-section-${this.params.section}`
 		);
-		if (this.params.builderType === 'page_header') {
-			where = document.querySelector(
-				`#customize-control-neve_pro_page_header_layout_components`
-			);
-		}
+		// if (this.params.builderType === 'page_header') {
+		// 	where = document.querySelector(
+		// 		`#customize-control-neve_pro_page_header_layout_components`
+		// 	);
+		// }
 
 		const builderPortalMount = document.createElement('div');
 		builderPortalMount.classList.add(

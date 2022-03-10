@@ -40,6 +40,13 @@ const PaletteColors = ({ values, defaults, save }) => {
 			return defaultColors[colorKey] !== colors[colorKey];
 		}).length < 1;
 
+	const canUseGradient = (slug, label) => {
+		if (slug.indexOf('-gb') !== -1) {
+			return true;
+		}
+		return label.toLowerCase().indexOf('background') !== -1;
+	};
+
 	return (
 		<Accordion label={__('Palette Colors', 'neve')}>
 			<div className="color-array-wrap">
@@ -51,6 +58,10 @@ const PaletteColors = ({ values, defaults, save }) => {
 								return (
 									<ColorControl
 										disableGlobal
+										allowGradient={canUseGradient(
+											slug,
+											group[slug]
+										)}
 										key={slug}
 										label={group[slug]}
 										selectedColor={colors[slug]}
