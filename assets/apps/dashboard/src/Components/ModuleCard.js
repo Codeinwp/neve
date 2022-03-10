@@ -43,7 +43,7 @@ const ModuleCard = ({
 
 	const disabledReason = autoModuleConfigAvailable
 		? __(
-				'Cannot be updated due to automatic module configurations mode is enabled.'
+				'Cannot be changed due to automatic module configurations mode being enabled.'
 		  )
 		: '';
 
