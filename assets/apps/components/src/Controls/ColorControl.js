@@ -50,7 +50,6 @@ const ColorControl = ({
 	};
 
 	const isGlobal = selectedColor && selectedColor.indexOf('var') > -1;
-	console.log('Here:', selectedColor);
 
 	const handleClear = () => {
 		onChange(defaultValue || '');
@@ -63,7 +62,7 @@ const ColorControl = ({
 		{ 'allows-global': !disableGlobal },
 	]);
 
-	const [gradient, setGradient] = useState(defaultValue);
+	const [gradient, setGradient] = useState(selectedColor);
 	const isGradient = (value) => {
 		return value.toLowerCase().indexOf('gradient') !== -1;
 	};
@@ -102,7 +101,7 @@ const ColorControl = ({
 					<>
 						{/* eslint-disable-next-line  jsx-a11y/anchor-has-content */}
 						<a href="#color-picker" />
-						<ButtonGroup style={{ marginBottom: '8px' }}>
+						<ButtonGroup className="color-toggle" style={{ marginBottom: '8px' }}>
 							<Button
 								isPrimary={activePanel === 'color'}
 								isSecondary={activePanel !== 'color'}
@@ -139,6 +138,15 @@ const ColorControl = ({
 								)}
 							{allowGradient && activePanel === 'gradient' && (
 								<>
+									<div
+										className="current-color-gradient"
+										style={{
+											background: selectedColor,
+											width: '100%',
+											height: '177px',
+											border: '1px solid #eee',
+										}}
+									/>
 									<GradientPicker
 										value={gradient}
 										onChange={(currentGradient) => {

@@ -23,14 +23,12 @@ function neve_sanitize_colors( $value ) {
 		return sanitize_text_field( $value );
 	}
 
-	if ( false !== strpos( $value, 'linear-gradient' ) ) {
+	if ( false !== strpos( $value, 'gradient' ) ) {
 		return $value;
 	}
 
-	error_log( var_export( $value, true ) );
 	// Is this an rgba color or a hex?
 	$mode = ( false === strpos( $value, 'rgba' ) ) ? 'hex' : 'rgba';
-	error_log( var_export( $mode, true ) );
 	if ( 'rgba' === $mode ) {
 		return neve_sanitize_rgba( $value );
 	} else {

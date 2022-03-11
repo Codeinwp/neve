@@ -1,0 +1,27 @@
+.neve-color-component {
+  .components-circular-option-picker {
+	min-width: 216px;
+  }
+
+  .components-custom-gradient-picker__gradient-bar {
+	width: inherit;
+	border-radius: 24px;
+
+	&:not(.has-gradient) {
+	  opacity: 1;
+	}
+  }
+
+  .components-input-control__suffix {
+	.components-truncate.components-text.components-spacer {
+	  margin: 0 calc(8px) calc(8px) 0;
+	}
+  }
+
+  .color-toggle.components-button-group {
+	.components-button {
+	  height: 26px;
+	  padding: 6px 8px;
+	}
+  }
+}
