@@ -41,7 +41,7 @@ const PaletteColors = ({ values, defaults, save }) => {
 		}).length < 1;
 
 	const canUseGradient = (slug, label) => {
-		if (slug.indexOf('-gb') !== -1) {
+		if (slug.indexOf('-bg') !== -1) {
 			return true;
 		}
 		return label.toLowerCase().indexOf('background') !== -1;

@@ -175,15 +175,15 @@ class Button extends Abstract_Component {
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $this->default_selector,
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => $id . '.background',
-				Config::CSS_PROP_COLOR            => $id . '.text',
-				Config::CSS_PROP_BORDER_RADIUS    => [
+				Config::CSS_PROP_BACKGROUND      => $id . '.background',
+				Config::CSS_PROP_COLOR           => $id . '.text',
+				Config::CSS_PROP_BORDER_RADIUS   => [
 					Dynamic_Selector::META_KEY => $id . '.borderRadius',
 				],
-				Config::CSS_PROP_CUSTOM_BTN_TYPE  => [
+				Config::CSS_PROP_CUSTOM_BTN_TYPE => [
 					Dynamic_Selector::META_KEY => $id . '.type',
 				],
-				Config::CSS_PROP_BORDER_WIDTH     => [
+				Config::CSS_PROP_BORDER_WIDTH    => [
 					Dynamic_Selector::META_KEY => $id . '.borderWidth',
 				],
 			],
@@ -191,8 +191,8 @@ class Button extends Abstract_Component {
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ':hover',
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => $id . '.backgroundHover',
-				Config::CSS_PROP_COLOR            => $id . '.textHover',
+				Config::CSS_PROP_BACKGROUND => $id . '.backgroundHover',
+				Config::CSS_PROP_COLOR      => $id . '.textHover',
 			],
 		];
 

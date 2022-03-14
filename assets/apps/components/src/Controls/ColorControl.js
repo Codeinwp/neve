@@ -101,22 +101,27 @@ const ColorControl = ({
 					<>
 						{/* eslint-disable-next-line  jsx-a11y/anchor-has-content */}
 						<a href="#color-picker" />
-						<ButtonGroup className="color-toggle" style={{ marginBottom: '8px' }}>
-							<Button
-								isPrimary={activePanel === 'color'}
-								isSecondary={activePanel !== 'color'}
-								onClick={() => setActivePanel('color')}
+						{allowGradient && (
+							<ButtonGroup
+								className="color-toggle"
+								style={{ marginBottom: '8px' }}
 							>
-								{__('Color', 'neve')}
-							</Button>
-							<Button
-								isPrimary={activePanel === 'gradient'}
-								isSecondary={activePanel !== 'gradient'}
-								onClick={() => setActivePanel('gradient')}
-							>
-								{__('Gradient', 'neve')}
-							</Button>
-						</ButtonGroup>
+								<Button
+									isPrimary={activePanel === 'color'}
+									isSecondary={activePanel !== 'color'}
+									onClick={() => setActivePanel('color')}
+								>
+									{__('Color', 'neve')}
+								</Button>
+								<Button
+									isPrimary={activePanel === 'gradient'}
+									isSecondary={activePanel !== 'gradient'}
+									onClick={() => setActivePanel('gradient')}
+								>
+									{__('Gradient', 'neve')}
+								</Button>
+							</ButtonGroup>
+						)}
 						<Suspense fallback={<Spinner />}>
 							{!canUseDefaultColorPicker() &&
 								activePanel === 'color' && (
@@ -177,6 +182,7 @@ const ColorControl = ({
 
 ColorControl.defaultProps = {
 	disableGlobal: false,
+	allowGradient: false,
 };
 
 ColorControl.propTypes = {
