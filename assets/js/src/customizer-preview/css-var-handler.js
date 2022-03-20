@@ -236,6 +236,7 @@ export class CSSVariablesHandler {
 			fallback,
 			validateSuffix,
 			settingType,
+			valueRemap,
 		} = this;
 
 		if (typeof selector)
@@ -249,7 +250,11 @@ export class CSSVariablesHandler {
 			return `${selector} {${vars}:${parseFontFamily(value)};}`;
 		}
 
-		return `${selector} {${vars}:${value}${validateSuffix(suffix)};}`;
+		return valueRemap
+			? `${selector} {${vars}:${valueRemap[vars][value]}${validateSuffix(
+					suffix
+			  )};}`
+			: `${selector} {${vars}:${value}${validateSuffix(suffix)};}`;
 	}
 
 	getComposedVarCSS() {

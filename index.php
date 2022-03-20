@@ -23,8 +23,19 @@ if ( ! neve_is_new_skin() ) {
 
 ?>
 	<div class="<?php echo esc_attr( $container_class ); ?> archive-container">
+
+		<?php
+		/**
+		 * Executes the rendering function for the featured post.
+		 *
+		 * @since 3.2
+		 */
+		do_action( 'neve_do_featured_post', 'index' );
+		?>
+
 		<div class="row">
 			<?php
+
 			/**
 			 * Executes the rendering function for the sidebar.
 			 *
@@ -97,8 +108,21 @@ if ( ! neve_is_new_skin() ) {
 						do_action( 'neve_loop_' . $current_post_type . '_before' );
 					}
 
+					/**
+					 * Exclude posts from the main loop
+					 *
+					 * @param array $excluded_posts Excluded post ids.
+					 * @since 3.2
+					 */
+					$excluded_posts = apply_filters( 'nv_exclude_posts', [] );
+
 					while ( have_posts() ) {
 						the_post();
+
+						$pid = get_the_ID();
+						if ( in_array( $pid, $excluded_posts, true ) ) {
+							continue;
+						}
 
 						if ( $should_add_hook ) {
 							/**
