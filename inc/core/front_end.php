@@ -294,6 +294,17 @@ class Front_End {
 			wp_enqueue_style( 'neve-woocommerce' );
 		}
 
+		if ( class_exists( 'Easy_Digital_Downloads' ) ) {
+
+			$style_path = 'css/easy-digital-downloads';
+
+			wp_register_style( 'neve-easy-digital-downloads', NEVE_ASSETS_URL . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+			wp_style_add_data( 'neve-easy-digital-downloads', 'rtl', 'replace' );
+			wp_style_add_data( 'neve-easy-digital-downloads', 'suffix', '.min' );
+			wp_enqueue_style( 'neve-easy-digital-downloads' );
+
+		}
+
 		$style_path = neve_is_new_skin() ? '/style-main-new' : '/assets/css/style-legacy';
 
 		wp_register_style( 'neve-style', get_template_directory_uri() . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
@@ -343,7 +354,6 @@ class Front_End {
 			wp_enqueue_script( 'neve-shop-script' );
 			wp_script_add_data( 'neve-shop-script', 'async', true );
 		}
-
 
 		if ( is_singular() ) {
 			wp_enqueue_script( 'comment-reply' );
@@ -396,6 +406,8 @@ class Front_End {
 			'add_item'          => __( 'Add item', 'neve' ),
 			'add_items'         => __( 'Add items by clicking the ones below.', 'neve' ),
 			'all_selected'      => __( 'All items are already selected.', 'neve' ),
+			'page_layout'       => __( 'Page Layout', 'neve' ),
+			'page_title'        => __( 'Page Title', 'neve' ),
 			'upsell_components' => __( 'Upgrade to Neve Pro and unlock all components, including Wish List, Breadcrumbs, Custom Layouts and many more.', 'neve' ),
 			'header_booster'    => esc_html__( 'Header Booster', 'neve' ),
 			'blog_booster'      => esc_html__( 'Blog Booster', 'neve' ),

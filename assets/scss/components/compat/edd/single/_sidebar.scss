@@ -1,0 +1,36 @@
+.nv-sidebar-wrap {
+
+	.edd-cart-number-of-items {
+		font-style: normal;
+	}
+
+	.edd_total {
+		background: none;
+		font-size: 20px;
+		padding: 20px 0;
+	}
+
+	.widget_edd_product_details {
+
+		.edd_price_options {
+			margin-top: -20px;
+		}
+
+		.edd_purchase_submit_wrapper .edd-cart-added-alert {
+			margin-top: 10px;
+			position: relative;
+		}
+
+		.categories,
+		.tags {
+			font-size: 14px;
+			margin-bottom: 10px;
+		}
+
+		.edd-meta {
+			margin-top: 10px;
+		}
+
+	}
+
+}

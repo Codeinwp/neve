@@ -15,11 +15,14 @@ function neve_run() {
 			'single_customizer'     => true,
 			'repeater_control'      => true,
 			'malformed_div_on_shop' => true,
+			'custom_post_types_enh' => true,
 			'mega_menu'             => true,
 			'scroll_to_top_icons'   => true,
 			'palette_logo'          => true,
+			'custom_icon'           => true,
 			'link_control'          => true,
 			'page_header_support'   => true,
+			'featured_post'         => true,
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';

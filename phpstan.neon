@@ -30,6 +30,7 @@ parameters:
         - %currentWorkingDirectory%/tests/php/static-analysis-stubs/elementor-pro.php
         - %currentWorkingDirectory%/tests/php/static-analysis-stubs/amp-wp.php
         - %currentWorkingDirectory%/tests/php/static-analysis-stubs/vip-go-mu-plugins.php
+        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/easy-digital-downloads.php
     dynamicConstantNames:
         - NEVE_DEBUG
     ignoreErrors:

@@ -93,6 +93,9 @@ export const batchProcess = (element, classNames, method) => {
  * @param {number} intersectionRatio
  */
 export const isInView = (element, callback, intersectionRatio = 0.5) => {
+	if (!element) {
+		return;
+	}
 	const intersectionObserver = new IntersectionObserver((entries) => {
 		if (entries[0].intersectionRatio <= intersectionRatio) {
 			return;
