@@ -195,7 +195,7 @@ trait Css_Vars {
 				Dynamic_Selector::META_DEFAULT       => $default['lineHeight'],
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => '',
-				Dynamic_Selector::META_IS_UNITLESS	 => true,
+				Dynamic_Selector::META_UNITLESS_EM	 => true,
 			],
 			'--bodyLetterSpacing'  => [
 				Dynamic_Selector::META_KEY           => $mod_key . '.letterSpacing',

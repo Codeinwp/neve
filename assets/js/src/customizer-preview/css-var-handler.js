@@ -20,6 +20,7 @@ export class CSSVariablesHandler {
 			fallback = 'inherit',
 			dispatchWindowResize = false,
 			valueRemap,
+			unitlessEm,
 		} = params;
 
 		//Bail if no selectors or variables.
@@ -37,6 +38,7 @@ export class CSSVariablesHandler {
 		this.fallback = fallback;
 		this.timeout = null;
 		this.valueRemap = valueRemap;
+		this.unitlessEm = unitlessEm;
 
 		const css = this.getStyle();
 
@@ -68,7 +70,8 @@ export class CSSVariablesHandler {
 				vars,
 				this.value,
 				this.suffix,
-				this.fallback
+				this.fallback,
+				this.unitlessEm
 			);
 		}
 
@@ -161,7 +164,14 @@ export class CSSVariablesHandler {
 		return `${selector}{${vars}:${finalValue};}`;
 	}
 
-	getResponsiveVarCSS(selector, variable, value, suffix, fallback) {
+	getResponsiveVarCSS(
+		selector,
+		variable,
+		value,
+		suffix,
+		fallback,
+		unitlessEm = false
+	) {
 		const parsedValue = this.maybeParseJson(value);
 
 		if (parsedValue === undefined) {
@@ -179,6 +189,10 @@ export class CSSVariablesHandler {
 
 			if (parsedValue.suffix && parsedValue.suffix[device]) {
 				finalSuffix = parsedValue.suffix[device];
+			}
+
+			if (unitlessEm && finalSuffix === 'em') {
+				finalSuffix = '';
 			}
 
 			if (!parsedValue[device]) {
@@ -253,7 +267,15 @@ export class CSSVariablesHandler {
 	}
 
 	getComposedVarCSS() {
-		const { selector, vars, settingType, value, suffix, fallback } = this;
+		const {
+			selector,
+			vars,
+			settingType,
+			value,
+			suffix,
+			fallback,
+			unitlessEm,
+		} = this;
 
 		const isButton = this.isButtonSetting(settingType);
 
@@ -276,7 +298,8 @@ export class CSSVariablesHandler {
 						cssVar,
 						value[settingKey.key],
 						currentSuffix,
-						fallback
+						fallback,
+						unitlessEm
 					);
 					return false;
 				}

@@ -464,17 +464,11 @@ window.addEventListener('load', function () {
 									newValue.lineHeight &&
 									newValue.lineHeight[device]
 								) {
-									let suffix = '';
-									if (
-										newValue.lineHeight.suffix[device] &&
-										newValue.lineHeight.suffix[device] !==
-											'em'
-									) {
-										suffix =
-											newValue.lineHeight.suffix[device];
-									}
-
-									style += `line-height:${newValue.lineHeight[device]}${suffix};`;
+									style += `line-height:${
+										newValue.lineHeight[device]
+									}${
+										newValue.lineHeight.suffix[device] || ''
+									};`;
 								}
 								style += `}}`;
 							}

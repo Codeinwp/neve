@@ -273,7 +273,7 @@ class Css_Prop {
 			Font_Manager::add_google_font( $font, strval( $value ) );
 		}
 
-		if ( isset( $meta[ Dynamic_Selector::META_IS_UNITLESS ] ) && $meta[ Dynamic_Selector::META_IS_UNITLESS ] ) {
+		if ( isset( $meta[ Dynamic_Selector::META_UNITLESS_EM ] ) && $meta[ Dynamic_Selector::META_UNITLESS_EM ] && $suffix === 'em' ) {
 			$suffix = '';
 		}
 

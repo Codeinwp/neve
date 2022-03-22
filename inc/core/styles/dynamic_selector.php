@@ -28,7 +28,7 @@ class Dynamic_Selector {
 	const META_DEVICE_ONLY   = 'device_only';
 	const META_FILTER        = 'filter';
 	const META_AS_JSON       = 'as_json';
-	const META_IS_UNITLESS   = 'unitless';
+	const META_UNITLESS_EM   = 'unitless_em';
 
 	const KEY_SELECTOR = 'selectors';
 	const KEY_RULES    = 'rules';
