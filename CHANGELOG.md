@@ -1,3 +1,14 @@
+#### [Version 3.2.0](https://github.com/Codeinwp/neve/compare/v3.1.6...v3.2.0) (2022-03-23)
+
+- [Feat] Add more menu icon options for the Menu Icon component. - [Learn more]( https://docs.themeisle.com/article/1230-menu-icon#style )
+- [Feat] Blog featured post. - [Learn more]( https://docs.themeisle.com/article/1306-neve-blog-archive-options#latestposts )
+- [Feat] Add compatibility with Easy Digital Downloads.
+- [Fix] Integration between LifterLMS and the pallet switcher from Neve.
+- [Fix] Alignment conflict with WooCommerce Product Add-ons.
+- [Fix] Off-canvas cart menu stays open.
+- Improve UX when customizing the sidebar by resetting the post's custom content width when the sidebar position changed.
+- Updated the recommended plugins.
+
 ##### [Version 3.1.6](https://github.com/Codeinwp/neve/compare/v3.1.5...v3.1.6) (2022-02-23)
 
 - [Fix] Jquery failure when elementor header is enabled and adding a product to cart
