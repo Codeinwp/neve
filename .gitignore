@@ -19,3 +19,4 @@ style-main-new*
 assets/apps/*/build/*
 languages/neve.pot
 /e2e-tests/cypress/screenshots/
+logs.log

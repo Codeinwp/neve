@@ -22,6 +22,14 @@ use Neve\Customizer\Types\Section;
  */
 class Layout_Blog extends Base_Customizer {
 	use Layout;
+
+	/**
+	 * Holds the section name.
+	 *
+	 * @var string $section
+	 */
+	private $section = 'neve_blog_archive_layout';
+
 	/**
 	 * Function that should be extended to add customizer controls.
 	 *
@@ -30,6 +38,7 @@ class Layout_Blog extends Base_Customizer {
 	public function add_controls() {
 		$this->section_blog();
 		$this->add_layout_controls();
+		$this->add_featured_post();
 		$this->add_content_ordering_controls();
 		$this->add_post_meta_controls();
 		$this->add_typography_shortcut();
@@ -76,7 +85,7 @@ class Layout_Blog extends Base_Customizer {
 	private function section_blog() {
 		$this->add_section(
 			new Section(
-				'neve_blog_archive_layout',
+				$this->section,
 				array(
 					'priority' => 35,
 					'title'    => esc_html__( 'Blog / Archive', 'neve' ),
@@ -98,7 +107,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'            => esc_html__( 'Blog Layout', 'neve' ),
-					'section'          => 'neve_blog_archive_layout',
+					'section'          => $this->section,
 					'priority'         => 10,
 					'class'            => 'blog-layout-accordion',
 					'accordion'        => true,
@@ -110,13 +119,13 @@ class Layout_Blog extends Base_Customizer {
 
 		$this->add_control(
 			new Control(
-				'neve_blog_archive_layout',
+				$this->section,
 				[
 					'default'           => 'grid',
 					'sanitize_callback' => [ $this, 'sanitize_blog_layout' ],
 				],
 				[
-					'section'  => 'neve_blog_archive_layout',
+					'section'  => $this->section,
 					'priority' => 11,
 					'choices'  => [
 						'default' => [
@@ -148,7 +157,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'           => esc_html__( 'Columns', 'neve' ),
-					'section'         => 'neve_blog_archive_layout',
+					'section'         => $this->section,
 					'units'           => array(
 						'items',
 					),
@@ -175,11 +184,11 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'                 => esc_html__( 'Text Color', 'neve' ),
-					'section'               => 'neve_blog_archive_layout',
+					'section'               => $this->section,
 					'priority'              => 15,
 					'default'               => '#ffffff',
 					'active_callback'       => function () {
-						return get_theme_mod( 'neve_blog_archive_layout' ) === 'covers';
+						return get_theme_mod( $this->section ) === 'covers';
 					},
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
@@ -207,10 +216,10 @@ class Layout_Blog extends Base_Customizer {
 				array(
 					'type'            => 'neve_toggle_control',
 					'priority'        => 17,
-					'section'         => 'neve_blog_archive_layout',
+					'section'         => $this->section,
 					'label'           => esc_html__( 'Alternating layout', 'neve' ),
 					'active_callback' => function () {
-						return get_theme_mod( 'neve_blog_archive_layout' ) === 'default';
+						return get_theme_mod( $this->section ) === 'default';
 					},
 				)
 			)
@@ -226,9 +235,73 @@ class Layout_Blog extends Base_Customizer {
 				array(
 					'type'            => 'neve_toggle_control',
 					'priority'        => 35,
-					'section'         => 'neve_blog_archive_layout',
+					'section'         => $this->section,
 					'label'           => esc_html__( 'Enable Masonry', 'neve' ),
 					'active_callback' => array( $this, 'should_show_masonry' ),
+				)
+			)
+		);
+	}
+
+	/**
+	 * Add featured post controls.
+	 */
+	private function add_featured_post() {
+		$this->add_control(
+			new Control(
+				'neve_featured_post_heading',
+				[
+					'sanitize_callback' => 'sanitize_text_field',
+				],
+				[
+					'label'            => esc_html__( 'Featured Post', 'neve' ),
+					'section'          => $this->section,
+					'priority'         => 40,
+					'class'            => 'featured-post-accordion',
+					'accordion'        => true,
+					'expanded'         => false,
+					'controls_to_wrap' => 2,
+				],
+				'Neve\Customizer\Controls\Heading'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_enable_featured_post',
+				[
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => false,
+				],
+				[
+					'label'    => esc_html__( 'Enable featured post section', 'neve' ),
+					'section'  => $this->section,
+					'type'     => 'neve_toggle_control',
+					'priority' => 41,
+				],
+				'Neve\Customizer\Controls\Checkbox'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_featured_post_target',
+				array(
+					'default'           => 'latest',
+					'sanitize_callback' => array( $this, 'sanitize_featured_post_target' ),
+				),
+				array(
+					'label'           => esc_html__( 'Featured Post', 'neve' ),
+					'section'         => $this->section,
+					'priority'        => 42,
+					'type'            => 'select',
+					'choices'         => [
+						'latest' => esc_html__( 'Latest Post', 'neve' ),
+						'sticky' => esc_html__( 'Sticky Post', 'neve' ),
+					],
+					'active_callback' => function() {
+						return get_theme_mod( 'neve_enable_featured_post', false );
+					},
 				)
 			)
 		);
@@ -246,7 +319,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'            => esc_html__( 'Ordering and Content', 'neve' ),
-					'section'          => 'neve_blog_archive_layout',
+					'section'          => $this->section,
 					'priority'         => 50,
 					'class'            => 'blog-layout-ordering-content-accordion',
 					'accordion'        => true,
@@ -266,7 +339,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'    => esc_html__( 'Post Pagination', 'neve' ),
-					'section'  => 'neve_blog_archive_layout',
+					'section'  => $this->section,
 					'priority' => 53,
 					'type'     => 'select',
 					'choices'  => array(
@@ -299,7 +372,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'      => esc_html__( 'Post Content Order', 'neve' ),
-					'section'    => 'neve_blog_archive_layout',
+					'section'    => $this->section,
 					'components' => $components,
 					'priority'   => 55,
 				),
@@ -316,7 +389,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'       => esc_html__( 'Excerpt Length', 'neve' ),
-					'section'     => 'neve_blog_archive_layout',
+					'section'     => $this->section,
 					'type'        => 'neve_range_control',
 					'input_attrs' => [
 						'min'        => 5,
@@ -339,7 +412,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'       => esc_html__( 'Thumbnail Shadow', 'neve' ),
-					'section'     => 'neve_blog_archive_layout',
+					'section'     => $this->section,
 					'type'        => 'neve_range_control',
 					'step'        => 1,
 					'input_attrs' => [
@@ -366,7 +439,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'            => esc_html__( 'Post Meta', 'neve' ),
-					'section'          => 'neve_blog_archive_layout',
+					'section'          => $this->section,
 					'priority'         => 70,
 					'class'            => 'blog-layout-post-meta-accordion',
 					'accordion'        => true,
@@ -402,7 +475,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'           => esc_html__( 'Meta Order', 'neve' ),
-					'section'         => 'neve_blog_archive_layout',
+					'section'         => $this->section,
 					'components'      => $components,
 					'priority'        => 71,
 					'active_callback' => array( $this, 'should_show_meta_order' ),
@@ -420,7 +493,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'priority'    => 72,
-					'section'     => 'neve_blog_archive_layout',
+					'section'     => $this->section,
 					'label'       => esc_html__( 'Separator', 'neve' ),
 					'description' => esc_html__( 'For special characters make sure to use Unicode. For example > can be displayed using \003E.', 'neve' ),
 					'type'        => 'text',
@@ -437,7 +510,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'    => esc_html__( 'Show Author Avatar', 'neve' ),
-					'section'  => 'neve_blog_archive_layout',
+					'section'  => $this->section,
 					'type'     => 'neve_toggle_control',
 					'priority' => 73,
 				)
@@ -453,7 +526,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'           => esc_html__( 'Avatar Size', 'neve' ),
-					'section'         => 'neve_blog_archive_layout',
+					'section'         => $this->section,
 					'units'           => array(
 						'px',
 					),
@@ -507,7 +580,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'    => esc_html__( 'Use last updated date instead of the published one', 'neve' ),
-					'section'  => 'neve_blog_archive_layout',
+					'section'  => $this->section,
 					'type'     => 'neve_toggle_control',
 					'priority' => 85,
 				)
@@ -542,6 +615,22 @@ class Layout_Blog extends Base_Customizer {
 		$allowed_values = array( 'number', 'infinite', 'jump-to' );
 		if ( ! in_array( $value, $allowed_values, true ) ) {
 			return 'number';
+		}
+
+		return esc_html( $value );
+	}
+
+	/**
+	 * Sanitize featured post target
+	 *
+	 * @param string $value value from the control.
+	 *
+	 * @return string
+	 */
+	public function sanitize_featured_post_target( $value ) {
+		$allowed_values = [ 'sticky', 'latest' ];
+		if ( ! in_array( $value, $allowed_values, true ) ) {
+			return 'latest';
 		}
 
 		return esc_html( $value );
@@ -598,7 +687,7 @@ class Layout_Blog extends Base_Customizer {
 	 * @return bool
 	 */
 	public function is_column_layout() {
-		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
+		$blog_layout = get_theme_mod( $this->section, 'grid' );
 
 		return in_array( $blog_layout, [ 'grid', 'covers' ], true );
 	}
@@ -646,7 +735,7 @@ class Layout_Blog extends Base_Customizer {
 					'is_button'        => false,
 					'control_to_focus' => 'neve_archive_typography_post_title_accordion_wrap',
 					'shortcut'         => true,
-					'section'          => 'neve_blog_archive_layout',
+					'section'          => $this->section,
 					'priority'         => 1000,
 				),
 				'\Neve\Customizer\Controls\Button'

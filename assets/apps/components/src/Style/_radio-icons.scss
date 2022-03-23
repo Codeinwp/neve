@@ -62,3 +62,20 @@
 	height: 30px;
   }
 }
+
+.neve-radio-icons-custom-svg {
+  overflow: hidden;
+  animation: .3s appear ease-out;
+  padding: 3px;
+
+  .custom-svg-buttons {
+	display: flex;
+	justify-content: flex-end;
+	column-gap: 5px;
+  }
+}
+
+@keyframes appear {
+  from { max-height: 0; }
+  to { max-height: 300px; }
+}

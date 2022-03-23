@@ -60,12 +60,14 @@ const OrderingComponent = ({ control }) => {
 	}, []);
 
 	useEffect(() => {
-		if (control.id !== 'neve_layout_single_post_elements_order') {
+		const regex = /neve_layout_single_(.+)_elements_order/m;
+		const matches = regex.exec(control.id);
+		if (matches === null) {
 			return;
 		}
 
 		window.wp.customize.control(
-			'neve_post_header_layout',
+			'neve_' + matches[1] + '_header_layout',
 			(customizeControl) => {
 				customizeControl.setting.bind((nextVal) => {
 					let newVal = maybeParseJson(control.setting.get());

@@ -30,6 +30,7 @@ import { SkinSwitcherControl } from './skin-switcher/Control';
 import { LogoPaletteControl } from './logo-palette/Control';
 import { RepeaterControl } from './repeater/Control';
 import { RichTextControl } from './rich-text/Control';
+import { LinkControl } from './link/Control';
 
 import './style.scss';
 import Documentation from './documentation-section/Documentation.tsx';
@@ -66,6 +67,7 @@ controlConstructor.neve_skin_switcher = SkinSwitcherControl;
 controlConstructor.neve_logo_palette_control = LogoPaletteControl;
 controlConstructor.neve_repeater_control = RepeaterControl;
 controlConstructor.neve_rich_text = RichTextControl;
+controlConstructor.neve_link = LinkControl;
 
 const initDeviceSwitchers = () => {
 	const deviceButtons = document.querySelector(
@@ -94,6 +96,23 @@ const initDocSection = () => {
 
 		render(<Documentation control={section} />, section.container[0]);
 	});
+};
+
+const initCustomPagesFocus = () => {
+	const { sectionsFocus } = window.NeveReactCustomize;
+	if (sectionsFocus !== undefined) {
+		Object.keys(sectionsFocus).forEach((sectionKey) => {
+			wp.customize.section(sectionKey, (section) => {
+				section.expanded.bind((isExpanded) => {
+					if (isExpanded) {
+						wp.customize.previewer.previewUrl.set(
+							sectionsFocus[sectionKey]
+						);
+					}
+				});
+			});
+		});
+	}
 };
 
 const initBlogPageFocus = () => {
@@ -211,6 +230,7 @@ window.wp.customize.bind('ready', () => {
 	initQuickLinksSections();
 	bindDataAttrQuickLinks();
 	initBlogPageFocus();
+	initCustomPagesFocus();
 	checkHasElementorTemplates();
 	initDeviceSwitchers();
 	initBlogPageFocus();

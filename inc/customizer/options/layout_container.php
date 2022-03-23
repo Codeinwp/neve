@@ -124,6 +124,15 @@ class Layout_Container extends Base_Customizer {
 			);
 		}
 
+		/**
+		 * Filters the container style controls.
+		 *
+		 * @param array $container_style_controls Container style controls.
+		 *
+		 * @since 3.1.0
+		 */
+		$container_style_controls = apply_filters( 'neve_container_style_filter', $container_style_controls );
+
 		foreach ( $container_style_controls as $control_id => $control ) {
 			$this->add_control(
 				new Control(

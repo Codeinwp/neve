@@ -6,6 +6,7 @@
  * @package Neve\Views
  */
 
+
 namespace Neve\Views;
 
 use Neve\Core\Settings\Config;
@@ -140,6 +141,7 @@ class Post_Layout extends Base_View {
 		if ( ! get_post() ) {
 			return false;
 		}
+
 		$default_meta_order = get_theme_mod( 'neve_post_meta_ordering', wp_json_encode( array( 'author', 'date', 'comments' ) ) );
 		$meta_order         = get_theme_mod( 'neve_single_post_meta_ordering', $default_meta_order );
 		$meta_order         = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;

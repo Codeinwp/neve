@@ -71,6 +71,10 @@ $text-color: #50575e;
 	  color: $text-color;
 	  font-size: 14px;
 	  font-weight: 600;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  white-space: nowrap;
+	  max-width: 12vw;
 	}
   }
 
