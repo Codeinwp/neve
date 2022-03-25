@@ -273,7 +273,8 @@ class Buttons extends Base_Customizer {
 						'section'      => $this->section_id,
 						'priority'     => 0,
 						'type'         => 'neve_button_appearance',
-					]
+					],
+					'\Neve\Customizer\Controls\React\Button_Appearance'
 				)
 			);
 

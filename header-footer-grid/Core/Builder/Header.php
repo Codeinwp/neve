@@ -255,7 +255,7 @@ class Header extends Abstract_Builder {
 				'section'               => $section_id,
 				'tab'                   => 'style',
 				'label'                 => esc_html__( 'Global', 'neve' ),
-				'type'                  => 'neve_background_control',
+				'type'                  => '\Neve\Customizer\Controls\React\Background',
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar' => [
