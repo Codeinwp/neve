@@ -43,7 +43,7 @@ const Typeface = (props) => {
 		onChange,
 		refreshAfterReset = false,
 		fSUnit = ['em', 'px'],
-		lHunit = ['em', 'px'],
+		lHunit = ['em', 'px', '—'],
 		defaultFS = {
 			suffix: {
 				mobile: 'px',
