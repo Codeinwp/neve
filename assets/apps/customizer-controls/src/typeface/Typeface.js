@@ -171,13 +171,18 @@ const Typeface = (props) => {
 			fontSize = { ...defaultFS };
 		}
 
+		const lowerStepUnits = ['em', '—'];
 		return (
 			<NumberControl
 				className="font-size"
 				label={__('Font Size', 'neve')}
 				default={defaultFS[currentDevice]}
 				value={fontSize[currentDevice]}
-				step={fontSize.suffix[currentDevice] === 'em' ? 0.1 : 1}
+				step={
+					lowerStepUnits.includes(fontSize.suffix[currentDevice])
+						? 0.1
+						: 1
+				}
 				units={fSUnit}
 				activeUnit={fontSize.suffix[currentDevice]}
 				hasResponsive
