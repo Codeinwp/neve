@@ -139,7 +139,7 @@ class Typography extends Base_Customizer {
 					'live_refresh_selector' => 'body, .site-title',
 					'live_refresh_css_prop' => [
 						'cssVar' => [
-							'vars'       => [
+							'vars'     => [
 								'--bodyTextTransform' => 'textTransform',
 								'--bodyFontWeight'    => 'fontWeight',
 								'--bodyFontSize'      => [
@@ -156,8 +156,7 @@ class Typography extends Base_Customizer {
 									'responsive' => true,
 								],
 							],
-							'selector'   => 'body',
-							'unitlessEm' => true,
+							'selector' => 'body',
 						],
 					],
 				],
