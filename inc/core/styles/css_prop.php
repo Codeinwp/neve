@@ -273,7 +273,7 @@ class Css_Prop {
 			Font_Manager::add_google_font( $font, strval( $value ) );
 		}
 
-		return $suffix;
+		return $suffix === '—' ? '' : $suffix;
 	}
 
 	/**
