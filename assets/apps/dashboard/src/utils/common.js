@@ -58,8 +58,11 @@ const tabs = {
 };
 
 const { plugins } = neveDash;
-const activeTPC = plugins['templates-patterns-collection'].cta === 'deactivate';
+const activeTPC =
+	plugins['templates-patterns-collection'] &&
+	plugins['templates-patterns-collection'].cta === 'deactivate';
 const properTPC =
+	plugins['templates-patterns-collection'] &&
 	compareVersions(
 		plugins['templates-patterns-collection'].version,
 		'1.0.10'

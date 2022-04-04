@@ -7,13 +7,15 @@ import { Button } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
 
 const StarterSitesUnavailable = ({ templatesPluginData }) => {
-	const { assets, tpcPath, tpcAdminURL, isOnboarding } = neveDash;
+	const { assets, tpcPath, tpcAdminURL, isOnboarding, pluginsURL } = neveDash;
 	const tpcRedirect = tpcAdminURL + (isOnboarding ? '&onboarding=yes' : '');
 	const [installing, setInstalling] = useState(false);
 	const [activating, setActivating] = useState(false);
 	const [updating, setUpdating] = useState(false);
 	const [error, setError] = useState(false);
-	const [currentState, setCurrentState] = useState(templatesPluginData.cta);
+	const [currentState, setCurrentState] = useState(
+		templatesPluginData?.cta || 'install'
+	);
 	const installPlugin = () => {
 		setInstalling(true);
 		wp.updates.ajax('install-plugin', {
@@ -41,7 +43,13 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
 		setInstalling(false);
 		setActivating(true);
 		setCurrentState('activate');
-		const activationURL = templatesPluginData.activate;
+		const activationURL = templatesPluginData?.activate || '';
+
+		if (!activationURL) {
+			window.location.href = pluginsURL;
+
+			return;
+		}
 
 		get(activationURL, true).then((r) => {
 			if (r.ok) {
@@ -86,7 +94,7 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
 						: __('Install and Activate')}
 				</Button>
 			),
-			activate: (
+			activate: templatesPluginData?.activate && (
 				<Button
 					disabled={activating}
 					isPrimary={!activating}
