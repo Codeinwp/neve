@@ -134,7 +134,11 @@ class Template_Parts extends Base_View {
 	 * @param string     $additional Additional classes.
 	 */
 	protected function post_class( $post_id = null, $additional = '' ) {
-		$class  = join( ' ', get_post_class( '', $post_id ) );
+		$class     = join( ' ', get_post_class( '', $post_id ) );
+		$post_type = get_post_type( $post_id );
+		if ( $post_type === 'neve_custom_layouts' ) {
+			return $class;
+		}
 		$layout = $this->get_layout();
 		$class .= ' layout-' . $layout;
 		if ( in_array( $layout, [ 'grid', 'covers' ], true ) ) {

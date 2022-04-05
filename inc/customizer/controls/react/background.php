@@ -1,6 +1,6 @@
 <?php
 /**
- * Responsive_Range Control. Handles data passing from args to JS.
+ * Color Control. Handles data passing from args to JS.
  *
  * @package Neve\Customizer\Controls\React
  */
@@ -8,30 +8,29 @@
 namespace Neve\Customizer\Controls\React;
 
 /**
- * Class Responsive_Range
+ * Class Button_Appearance
  *
  * @package Neve\Customizer\Controls\React
  */
-class Responsive_Range extends \WP_Customize_Control {
+class Background extends \WP_Customize_Control {
 	/**
 	 * Control type.
 	 *
 	 * @var string
 	 */
-	public $type = 'neve_responsive_range_control';
+	public $type = 'neve_background_control';
 	/**
 	 * Additional arguments passed to JS.
 	 *
-	 * @var array
+	 * @var string
 	 */
-	public $input_attrs = [];
-
+	public $default = '';
 	/**
 	 * Send to JS.
 	 */
 	public function json() {
-		$json                = parent::json();
-		$json['input_attrs'] = $this->input_attrs;
+		$json            = parent::json();
+		$json['default'] = $this->default;
 		return $json;
 	}
 

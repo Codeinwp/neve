@@ -137,6 +137,28 @@ class Typography extends Base_Customizer {
 					'type'                  => 'neve_typeface_control',
 					'font_family_control'   => 'neve_body_font_family',
 					'live_refresh_selector' => 'body, .site-title',
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'     => [
+								'--bodyTextTransform' => 'textTransform',
+								'--bodyFontWeight'    => 'fontWeight',
+								'--bodyFontSize'      => [
+									'key'        => 'fontSize',
+									'responsive' => true,
+								],
+								'--bodyLineHeight'    => [
+									'key'        => 'lineHeight',
+									'responsive' => true,
+								],
+								'--bodyLetterSpacing' => [
+									'key'        => 'letterSpacing',
+									'suffix'     => 'px',
+									'responsive' => true,
+								],
+							],
+							'selector' => 'body',
+						],
+					],
 				],
 				'\Neve\Customizer\Controls\React\Typography'
 			)

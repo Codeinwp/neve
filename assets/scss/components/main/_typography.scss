@@ -16,6 +16,8 @@ body {
 	font-weight: var(--bodyFontWeight);
 	overflow-x: hidden;
 	direction: ltr;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 h1,

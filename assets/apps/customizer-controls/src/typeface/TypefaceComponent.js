@@ -8,7 +8,7 @@ const TypefaceComponent = ({ control }) => {
 	let setVal = control.setting.get();
 	let defaultParams = {
 		size_units: ['em', 'px'],
-		line_height_units: ['em', 'px'],
+		line_height_units: ['em', 'px', '—'],
 		weight_default: 400,
 		text_transform: 'none',
 		size_default: {
@@ -70,7 +70,7 @@ const TypefaceComponent = ({ control }) => {
 
 	const emptyDefault = {
 		size_units: ['em', 'px'],
-		line_height_units: ['em', 'px'],
+		line_height_units: ['em', 'px', '-'],
 		weight_default: 'none',
 		text_transform: 'none',
 		size_default: {
