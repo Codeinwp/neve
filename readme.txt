@@ -19,6 +19,20 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.2.1](https://github.com/Codeinwp/neve/compare/v3.2.0...v3.2.1) (2022-04-05)
+
+- [Feat] Add an option to have unitless line-height for typography controls.
+- [Fix] Allow values lower than 1 for em unit.
+- [Fix] Custom layout made with Elementor when masonry is enabled.
+- [Fix] PHP warning due to React controls.
+- [Fix] Compatibility with Booking Activities plugin.
+- [Fix] Edge case where some plugins are not defined in the neveDash constant inside the dashboard.
+- Update Google Fonts.
+- Add antialiasing on text.
+
+
+
+
 #### [Version 3.2.0](https://github.com/Codeinwp/neve/compare/v3.1.6...v3.2.0) (2022-03-23)
 
 - [Feat] Add more menu icon options for the Menu Icon component. - [Learn more]( https://docs.themeisle.com/article/1230-menu-icon#style )
