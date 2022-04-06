@@ -309,11 +309,11 @@ class Css_Prop {
 		}, ARRAY_FILTER_USE_KEY );
 
 		if ( count( array_unique( $filtered ) ) === 1 ) {
-			if ( floatval( $value['top'] ) === 0.0 ) {
+			if ( neve_value_is_zero( $value['top'] ) ) {
 				$suffix = '';
 			}
 
-			if ( empty( $value['top'] ) && floatval( $value['top'] ) !== 0.0 ) {
+			if ( empty( $value['top'] ) && ! neve_value_is_zero( $value['top'] ) ) {
 				return '';
 			}
 
@@ -323,10 +323,10 @@ class Css_Prop {
 		}
 
 		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
-			$top_suffix   = floatval( $value['top'] ) === 0.0 ? '' : $suffix;
-			$right_suffix = floatval( $value['right'] ) === 0.0 ? '' : $suffix;
+			$top_suffix   = neve_value_is_zero( $value['top'] ) ? '' : $suffix;
+			$right_suffix = neve_value_is_zero( $value['right'] ) ? '' : $suffix;
 
-			if ( empty( $value['top'] ) && floatval( $value['top'] ) !== 0.0 && empty( $value['right'] ) && floatval( $value['right'] ) ) {
+			if ( empty( $value['top'] ) && ! neve_value_is_zero( $value['top'] ) && empty( $value['right'] ) && ! neve_value_is_zero( $value['right'] ) ) {
 				return '';
 			}
 
@@ -336,7 +336,7 @@ class Css_Prop {
 		}
 
 		foreach ( Config::$directional_keys as $direction ) {
-			if ( ! isset( $value[ $direction ] ) || floatval( $value[ $direction ] ) === 0.0 ) {
+			if ( ! isset( $value[ $direction ] ) || neve_value_is_zero( $value[ $direction ] ) ) {
 				$template .= '0 ';
 
 				continue;

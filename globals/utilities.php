@@ -647,17 +647,28 @@ function neve_edd_download_nav() {
 			'current'   => max( 1, get_query_var( 'paged' ) ),
 			'total'     => $wp_query->max_num_pages,
 			'prev_next' => true,
-		) 
+		)
 	);
 	?>
 
 	<div id="edd_download_pagination" class="navigation">
-		<?php 
-		echo wp_kses( $pagination, $allowed_tags ); 
+		<?php
+		echo wp_kses( $pagination, $allowed_tags );
 		// TODO use pagination from pluggable class once we have infinite scroll supported for edd.
 		?>
 	</div>
 
 	<?php
 
+}
+
+/**
+ * Check if a value is of unknown type is zero.
+ *
+ * @param mixed $value Value to check.
+ *
+ * @return bool
+ */
+function neve_value_is_zero( $value ){
+	return floatval($value) === 0.0;
 }
