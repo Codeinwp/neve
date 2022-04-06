@@ -1,3 +1,7 @@
+##### [Version 3.2.2](https://github.com/Codeinwp/neve/compare/v3.2.1...v3.2.2) (2022-04-06)
+
+- [Fix] Fatal error produced by abs function on servers with PHP 8, and Neve Pro installed.
+
 ##### [Version 3.2.1](https://github.com/Codeinwp/neve/compare/v3.2.0...v3.2.1) (2022-04-05)
 
 - [Feat] Add an option to have unitless line-height for typography controls.
