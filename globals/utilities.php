@@ -669,6 +669,6 @@ function neve_edd_download_nav() {
  *
  * @return bool
  */
-function neve_value_is_zero( $value ){
-	return floatval($value) === 0.0;
+function neve_value_is_zero( $value ) {
+	return floatval( $value ) === 0.0;
 }
