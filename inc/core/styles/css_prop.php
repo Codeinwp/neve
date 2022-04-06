@@ -309,11 +309,8 @@ class Css_Prop {
 		}, ARRAY_FILTER_USE_KEY );
 
 		if ( count( array_unique( $filtered ) ) === 1 ) {
-			if ( neve_value_is_zero( $value['top'] ) ) {
-				$suffix = '';
-			}
 
-			if ( empty( $value['top'] ) && ! neve_value_is_zero( $value['top'] ) ) {
+			if ( neve_value_is_zero( $value['top'] ) ) {
 				return '';
 			}
 
@@ -323,12 +320,13 @@ class Css_Prop {
 		}
 
 		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
-			$top_suffix   = neve_value_is_zero( $value['top'] ) ? '' : $suffix;
-			$right_suffix = neve_value_is_zero( $value['right'] ) ? '' : $suffix;
 
-			if ( empty( $value['top'] ) && ! neve_value_is_zero( $value['top'] ) && empty( $value['right'] ) && ! neve_value_is_zero( $value['right'] ) ) {
+			if ( neve_value_is_zero( $value['top'] ) && neve_value_is_zero( $value['right'] ) ) {
 				return '';
 			}
+
+			$top_suffix   = neve_value_is_zero( $value['top'] ) ? '' : $suffix;
+			$right_suffix = neve_value_is_zero( $value['right'] ) ? '' : $suffix;
 
 			$template .= $value['top'] . $top_suffix . ' ' . $value['right'] . $right_suffix;
 
