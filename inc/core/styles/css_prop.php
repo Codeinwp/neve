@@ -308,17 +308,12 @@ class Css_Prop {
 			return in_array( $key, Config::$directional_keys, true );
 		}, ARRAY_FILTER_USE_KEY );
 
-		// Values used for conditions
-		$check_value = array_map( function ( $val ) {
-			return (float) $val;
-		}, $value );
-
 		if ( count( array_unique( $filtered ) ) === 1 ) {
-			if ( abs( $check_value['top'] ) == 0 ) {
+			if ( floatval( $value['top'] ) === 0.0 ) {
 				$suffix = '';
 			}
 
-			if ( empty( $value['top'] ) && abs( $check_value['top'] ) != 0 ) {
+			if ( empty( $value['top'] ) && floatval( $value['top'] ) !== 0.0 ) {
 				return '';
 			}
 
@@ -328,10 +323,10 @@ class Css_Prop {
 		}
 
 		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
-			$top_suffix   = abs( $check_value['top'] ) == 0 ? '' : $suffix;
-			$right_suffix = abs( $check_value['right'] ) == 0 ? '' : $suffix;
+			$top_suffix   = floatval( $value['top'] ) == 0 ? '' : $suffix;
+			$right_suffix = floatval( $value['right'] ) == 0 ? '' : $suffix;
 
-			if ( empty( $value['top'] ) && abs( $check_value['top'] ) != 0 && empty( $value['right'] ) && abs( $check_value['right'] ) ) {
+			if ( empty( $value['top'] ) && floatval( $value['top'] ) != 0 && empty( $value['right'] ) && floatval( $value['right'] ) ) {
 				return '';
 			}
 
@@ -341,7 +336,7 @@ class Css_Prop {
 		}
 
 		foreach ( Config::$directional_keys as $direction ) {
-			if ( ! isset( $value[ $direction ] ) || abs( $check_value[ $direction ] ) == 0 ) {
+			if ( ! isset( $value[ $direction ] ) || floatval( $value[ $direction ] ) == 0 ) {
 				$template .= '0 ';
 
 				continue;
