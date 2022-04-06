@@ -323,10 +323,10 @@ class Css_Prop {
 		}
 
 		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
-			$top_suffix   = floatval( $value['top'] ) == 0 ? '' : $suffix;
-			$right_suffix = floatval( $value['right'] ) == 0 ? '' : $suffix;
+			$top_suffix   = floatval( $value['top'] ) === 0.0 ? '' : $suffix;
+			$right_suffix = floatval( $value['right'] ) === 0.0 ? '' : $suffix;
 
-			if ( empty( $value['top'] ) && floatval( $value['top'] ) != 0 && empty( $value['right'] ) && floatval( $value['right'] ) ) {
+			if ( empty( $value['top'] ) && floatval( $value['top'] ) !== 0.0 && empty( $value['right'] ) && floatval( $value['right'] ) ) {
 				return '';
 			}
 
@@ -336,7 +336,7 @@ class Css_Prop {
 		}
 
 		foreach ( Config::$directional_keys as $direction ) {
-			if ( ! isset( $value[ $direction ] ) || floatval( $value[ $direction ] ) == 0 ) {
+			if ( ! isset( $value[ $direction ] ) || floatval( $value[ $direction ] ) === 0.0 ) {
 				$template .= '0 ';
 
 				continue;
