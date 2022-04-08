@@ -22,6 +22,7 @@ function neve_run() {
 			'link_control'          => true,
 			'page_header_support'   => true,
 			'custom_icon'           => true,
+			'gradient_picker'       => true,
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
