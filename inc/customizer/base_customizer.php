@@ -445,6 +445,9 @@ abstract class Base_Customizer {
 				],
 				[
 					'label'                 => esc_html__( 'Background color', 'neve' ),
+					'input_attrs'           => [
+						'allow_gradient' => true,
+					],
 					'section'               => $settings['section'],
 					'priority'              => $settings['priority'],
 					'live_refresh_selector' => true,
