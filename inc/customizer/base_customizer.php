@@ -445,11 +445,11 @@ abstract class Base_Customizer {
 				],
 				[
 					'label'                 => esc_html__( 'Background color', 'neve' ),
+					'section'               => $settings['section'],
+					'priority'              => $settings['priority'],
 					'input_attrs'           => [
 						'allow_gradient' => true,
 					],
-					'section'               => $settings['section'],
-					'priority'              => $settings['priority'],
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => $background_live_refresh_settings,
 					'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
