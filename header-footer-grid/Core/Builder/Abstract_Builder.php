@@ -469,7 +469,7 @@ abstract class Abstract_Builder implements Builder {
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'section'               => $row_setting_id,
 				'label'                 => __( 'Row Background', 'neve' ),
-				'type'                  => 'neve_background_control',
+				'type'                  => '\Neve\Customizer\Controls\React\Background',
 				'live_refresh_selector' => $row_id === 'sidebar' ? $row_class . ' .header-menu-sidebar-bg' : $row_class,
 				'live_refresh_css_prop' => [
 					'cssVar'  => [

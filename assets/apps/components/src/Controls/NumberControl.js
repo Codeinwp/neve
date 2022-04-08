@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import SizingControl from './Sizing';
 import classnames from 'classnames';
 import ResponsiveControl from '../HOC/Responsive.js';
-
+import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 
 const NumberControl = (props) => {
@@ -25,9 +25,19 @@ const NumberControl = (props) => {
 		if (!units) {
 			return '';
 		}
+
+		const labels = {
+			'—': __('No unit', 'neve'),
+		};
+
 		if (units.length === 1) {
 			return (
-				<Button className="alone active" isSmall disabled>
+				<Button
+					className="alone active"
+					title={labels[units[0]] || units[0]}
+					isSmall
+					disabled
+				>
 					{units[0]}
 				</Button>
 			);
@@ -43,6 +53,7 @@ const NumberControl = (props) => {
 					className={classnames({
 						active: activeUnit === unit,
 					})}
+					title={labels[unit] || unit}
 				>
 					{unit}
 				</Button>
