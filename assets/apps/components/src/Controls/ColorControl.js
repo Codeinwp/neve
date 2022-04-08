@@ -64,7 +64,7 @@ const ColorControl = ({
 
 	const [gradient, setGradient] = useState(selectedColor);
 	const isGradient = (value) => {
-		return value.toLowerCase().indexOf('gradient') !== -1;
+		return value && value.toLowerCase().indexOf('gradient') !== -1;
 	};
 	const defaultPanelState = isGradient(selectedColor) ? 'gradient' : 'color';
 	const [activePanel, setActivePanel] = useState(defaultPanelState);
