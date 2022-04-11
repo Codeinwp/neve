@@ -118,7 +118,7 @@ const ColorControl = ({
 									isSecondary={activePanel !== 'gradient'}
 									onClick={() => setActivePanel('gradient')}
 								>
-									{__('Gradient', 'neve')}
+									{__('Gradient')}
 								</Button>
 							</ButtonGroup>
 						)}
