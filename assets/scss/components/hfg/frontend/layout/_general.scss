@@ -9,15 +9,13 @@
 
 #header-grid {
 
-	&.has-sticky-rows--desktop.global-styled:not(.neve-transparent-header),
-	&.has-sticky-rows--mobile.global-styled:not(.neve-transparent-header) {
-		position: fixed;
+	&.global-styled:not(.neve-transparent-header):not(.has-sticky-rows--mobile):not(.has-sticky-rows--desktop) {
+		position: relative;
 	}
 
 	&.global-styled:not(.neve-transparent-header) {
 
 		background: var(--bgColor);
-		position: relative;
 		background-image: var(--bgImage, none);
 		background-position: var(--bgPosition, center);
 		background-repeat: no-repeat;
