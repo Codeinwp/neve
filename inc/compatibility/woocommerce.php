@@ -103,8 +103,29 @@ class Woocommerce {
 	 * Initialize the module.
 	 */
 	public function init() {
+		add_filter( 'body_class', array( $this, 'add_payment_method_class' ) );
 		add_action( 'wp', array( $this, 'register_hooks' ), 11 );
 		add_action( 'neve_react_controls_localization', array( $this, 'add_customizer_options' ) );
+	}
+
+	/**
+	 * Add payment method class on body.
+	 *
+	 * @param array $classes Body classes.
+	 *
+	 * @return array
+	 */
+	public function add_payment_method_class( $classes ) {
+		if ( ! class_exists( 'WooCommerce', false ) ) {
+			return $classes;
+		}
+
+		if ( ! is_checkout() ) {
+			return $classes;
+		}
+
+		$classes[] = 'nv-pay-' . \WC()->session->get( 'chosen_payment_method' );
+		return $classes;
 	}
 
 	/**
@@ -126,6 +147,12 @@ class Woocommerce {
 	 */
 	public function should_load() {
 		if ( ! class_exists( 'WooCommerce', false ) ) {
+			return false;
+		}
+
+		// Klarna compatibility
+		$payment_method = \WC()->session->get( 'chosen_payment_method' );
+		if ( is_checkout() && $payment_method === 'kco' ) {
 			return false;
 		}
 
