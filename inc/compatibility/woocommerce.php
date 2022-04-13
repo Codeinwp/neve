@@ -150,14 +150,13 @@ class Woocommerce {
 			return false;
 		}
 
-		// Klarna compatibility
-		if ( is_checkout() && class_exists( 'WC', false ) ) {
+		// Prevent doing any modifications on the checkout page if the payment method is Klarna.
+		if ( is_checkout() ) {
 			$payment_method = \WC()->session->get( 'chosen_payment_method' );
 			if ( $payment_method === 'kco' ) {
 				return false;
 			}
 		}
-
 
 		$is_shop_template    = Elementor::is_elementor_template( 'archive', 'product_archive' );
 		$is_product_template = Elementor::is_elementor_template( 'single', 'product' );
