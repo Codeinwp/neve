@@ -15,6 +15,7 @@ use Neve\Customizer\Defaults\Layout;
 use Neve\Views\Breadcrumbs;
 use Neve\Views\Layouts\Layout_Sidebar;
 use RankMath\Helper;
+use WC_Payment_Gateways;
 
 /**
  * Class Woocommerce
@@ -155,10 +156,15 @@ class Woocommerce {
 			return null;
 		}
 
+		if ( ! class_exists( 'WC_Payment_Gateways', false ) ) {
+			return null;
+		}
+
 		$payment_method = WC()->session->get( 'chosen_payment_method' );
 		if ( ! $payment_method ) {
 			// If payment method is null, see if there is only one option;
-			$available_payment_methods = WC()->payment_gateways->get_available_payment_gateways();
+			$payment_gateways          = new WC_Payment_Gateways();
+			$available_payment_methods = $payment_gateways->get_available_payment_gateways();
 			if ( is_array( $available_payment_methods ) && count( $available_payment_methods ) === 1 ) {
 				return array_keys( $available_payment_methods )[0];
 			}
