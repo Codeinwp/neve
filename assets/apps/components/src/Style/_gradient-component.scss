@@ -3,6 +3,11 @@
 	min-width: 216px;
   }
 
+  .components-popover.is-from-bottom {
+	margin-top: 20px;
+	margin-left: 40px;
+  }
+
   .components-popover__content .components-popover__content {
 	bottom: inherit;
   }
