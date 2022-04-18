@@ -10,7 +10,10 @@ if ( ! empty( $title_style ) ) {
 }
 
 $hide_title          = get_theme_mod( 'neve_page_hide_title', false );
-$specific_hide_title = get_post_meta( get_the_ID(), 'neve_meta_disable_title', true );
+$current_page        = get_queried_object();
+$pid                 = $current_page instanceof WP_Post ? $current_page->ID : get_the_ID();
+$specific_hide_title = get_post_meta( $pid, 'neve_meta_disable_title', true );
+
 if ( ! empty( $specific_hide_title ) ) {
 	$hide_title = $specific_hide_title === 'on';
 }
