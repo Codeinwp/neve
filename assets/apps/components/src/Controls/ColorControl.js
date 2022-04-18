@@ -12,7 +12,6 @@ import {
 import { lazy, Suspense, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
-import { debounce } from 'lodash';
 
 // lazy load this so that is used to replace the default ColorPicker only if required
 // The fix is for this issue https://github.com/WordPress/gutenberg/issues/30798
@@ -70,11 +69,6 @@ const ColorControl = ({
 	};
 	const defaultPanelState = isGradient(selectedColor) ? 'gradient' : 'color';
 	const [activePanel, setActivePanel] = useState(defaultPanelState);
-
-	const debounceChange = debounce((currentGradient) => {
-		setGradient(currentGradient);
-		onChange(currentGradient);
-	}, 120);
 
 	return (
 		<div className={wrapClasses}>
@@ -161,7 +155,10 @@ const ColorControl = ({
 									/>
 									<GradientPicker
 										value={gradient}
-										onChange={debounceChange}
+										onChange={(currentGradient) => {
+											setGradient(currentGradient);
+											onChange(currentGradient);
+										}}
 										clearable={false}
 									/>
 								</>
