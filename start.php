@@ -23,6 +23,7 @@ function neve_run() {
 			'link_control'          => true,
 			'page_header_support'   => true,
 			'featured_post'         => true,
+			'php81_react_ctrls_fix' => true,
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';

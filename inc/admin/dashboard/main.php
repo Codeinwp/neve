@@ -239,6 +239,7 @@ class Main {
 			'hidePluginsTab'          => apply_filters( 'neve_hide_useful_plugins', ! array_key_exists( 'useful_plugins', $old_about_config ) ),
 			'tpcPath'                 => defined( 'TIOB_PATH' ) ? TIOB_PATH . 'template-patterns-collection.php' : 'template-patterns-collection/template-patterns-collection.php',
 			'tpcAdminURL'             => admin_url( 'themes.php?page=tiob-starter-sites' ),
+			'pluginsURL'              => esc_url( admin_url( 'plugins.php' ) ),
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {

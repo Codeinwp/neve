@@ -199,7 +199,7 @@ function handleMiniCartPosition() {
 	if (item === null) {
 		return;
 	}
-	const miniCart = item.querySelector('.nv-nav-cart');
+	const miniCart = item.querySelector('.nv-nav-cart:not(.cart-off-canvas)');
 
 	if (miniCart !== null) {
 		miniCart.style.left =

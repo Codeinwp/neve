@@ -135,7 +135,7 @@ class Button extends Abstract_Component {
 				'transport'             => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback'     => 'neve_sanitize_button_appearance',
 				'label'                 => __( 'Appearance', 'neve' ),
-				'type'                  => 'neve_button_appearance',
+				'type'                  => '\Neve\Customizer\Controls\React\Button_Appearance',
 				'section'               => $this->section,
 				'conditional_header'    => $this->get_builder_id() === 'header',
 				'live_refresh_selector' => true,

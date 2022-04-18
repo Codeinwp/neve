@@ -43,7 +43,7 @@ const Typeface = (props) => {
 		onChange,
 		refreshAfterReset = false,
 		fSUnit = ['em', 'px'],
-		lHunit = ['em', 'px'],
+		lHunit = ['em', 'px', '—'],
 		defaultFS = {
 			suffix: {
 				mobile: 'px',
@@ -207,11 +207,16 @@ const Typeface = (props) => {
 		if (!lineHeight) {
 			lineHeight = { ...defaultLH };
 		}
+		const lowerStepUnits = ['em', '—'];
 		return (
 			<NumberControl
 				className="line-height"
 				label={__('Line Height', 'neve')}
-				step={lineHeight.suffix[currentDevice] === 'em' ? 0.1 : 1}
+				step={
+					lowerStepUnits.includes(lineHeight.suffix[currentDevice])
+						? 0.1
+						: 1
+				}
 				default={defaultLH[currentDevice]}
 				value={lineHeight[currentDevice]}
 				units={lHunit}

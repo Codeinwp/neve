@@ -19,6 +19,41 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.2.2](https://github.com/Codeinwp/neve/compare/v3.2.1...v3.2.2) (2022-04-06)
+
+- [Fix] Fatal error produced by abs function on servers with PHP 8, and Neve Pro installed.
+
+
+
+
+##### [Version 3.2.1](https://github.com/Codeinwp/neve/compare/v3.2.0...v3.2.1) (2022-04-05)
+
+- [Feat] Add an option to have unitless line-height for typography controls.
+- [Fix] Allow values lower than 1 for em unit.
+- [Fix] Custom layout made with Elementor when masonry is enabled.
+- [Fix] PHP warning due to React controls.
+- [Fix] Compatibility with Booking Activities plugin.
+- [Fix] Edge case where some plugins are not defined in the neveDash constant inside the dashboard.
+- Update Google Fonts.
+- Add antialiasing on text.
+
+
+
+
+#### [Version 3.2.0](https://github.com/Codeinwp/neve/compare/v3.1.6...v3.2.0) (2022-03-23)
+
+- [Feat] Add more menu icon options for the Menu Icon component. - [Learn more]( https://docs.themeisle.com/article/1230-menu-icon#style )
+- [Feat] Blog featured post. - [Learn more]( https://docs.themeisle.com/article/1306-neve-blog-archive-options#latestposts )
+- [Feat] Add compatibility with Easy Digital Downloads.
+- [Fix] Integration between LifterLMS and the pallet switcher from Neve.
+- [Fix] Alignment conflict with WooCommerce Product Add-ons.
+- [Fix] Off-canvas cart menu stays open.
+- Improve UX when customizing the sidebar by resetting the post's custom content width when the sidebar position changed.
+- Updated the recommended plugins.
+
+
+
+
 ##### [Version 3.1.6](https://github.com/Codeinwp/neve/compare/v3.1.5...v3.1.6) (2022-02-23)
 
 - [Fix] Jquery failure when elementor header is enabled and adding a product to cart
