@@ -12,7 +12,7 @@ import {
 import { lazy, Suspense, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
-import { debounce } from '../../../../../../../plugins/neve-pro-addon/assets/js/utils';
+import { debounce } from 'lodash';
 
 // lazy load this so that is used to replace the default ColorPicker only if required
 // The fix is for this issue https://github.com/WordPress/gutenberg/issues/30798
