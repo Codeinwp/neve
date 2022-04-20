@@ -1,3 +1,12 @@
+##### [Version 3.2.3](https://github.com/Codeinwp/neve/compare/v3.2.2...v3.2.3) (2022-04-20)
+
+- [Feat] Add Xing to the icon list
+- [Fix] Hide title meta setting not working on the blog page
+- [Fix] Mobile sticky when it's not in the global header context
+- [Fix] Content shifting when using the Fancybox WP plugin
+- [Fix] Compatibility issues with Klarna payments
+- [Fix] Mini cart issues with Elementor templates
+
 ##### [Version 3.2.2](https://github.com/Codeinwp/neve/compare/v3.2.1...v3.2.2) (2022-04-06)
 
 - [Fix] Fatal error produced by abs function on servers with PHP 8, and Neve Pro installed.
