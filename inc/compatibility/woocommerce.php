@@ -280,7 +280,7 @@ class Woocommerce {
 				function () {
 					echo '<div class="nv-single-product-top">';
 				},
-				0
+				11
 			);
 			// here the priority should always be to close earlier than the Neve PRO performance module opening div
 			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ], -100 );
