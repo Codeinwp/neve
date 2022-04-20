@@ -132,10 +132,7 @@ $cart-width: 360px;
 		}
 
 		.buttons {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
 			padding: 0 $spacing-md;
-			grid-column-gap: $spacing-md;
 			margin-bottom: $spacing-md;
 
 			&::before {
@@ -151,6 +148,12 @@ $cart-width: 360px;
 			}
 		}
 	}
+}
+
+.woocommerce-mini-cart__buttons {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: $spacing-md;
 }
 
 //Menu mini cart positioning

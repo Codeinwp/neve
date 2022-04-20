@@ -15,6 +15,7 @@ use Neve\Customizer\Defaults\Layout;
 use Neve\Views\Breadcrumbs;
 use Neve\Views\Layouts\Layout_Sidebar;
 use RankMath\Helper;
+use WC_Payment_Gateways;
 
 /**
  * Class Woocommerce
@@ -103,8 +104,34 @@ class Woocommerce {
 	 * Initialize the module.
 	 */
 	public function init() {
+		add_filter( 'body_class', array( $this, 'add_payment_method_class' ) );
 		add_action( 'wp', array( $this, 'register_hooks' ), 11 );
 		add_action( 'neve_react_controls_localization', array( $this, 'add_customizer_options' ) );
+	}
+
+	/**
+	 * Add payment method class on body.
+	 *
+	 * @param array $classes Body classes.
+	 *
+	 * @return array
+	 */
+	public function add_payment_method_class( $classes ) {
+		if ( ! class_exists( 'WooCommerce', false ) ) {
+			return $classes;
+		}
+
+		if ( ! is_checkout() ) {
+			return $classes;
+		}
+
+		$payment_method = $this->get_payment_method();
+		if ( ! $payment_method ) {
+			return $classes;
+		}
+
+		$classes[] = 'nv-pay-' . esc_html( $payment_method );
+		return $classes;
 	}
 
 	/**
@@ -120,6 +147,32 @@ class Woocommerce {
 	}
 
 	/**
+	 * Get the selected payment method.
+	 *
+	 * @return string | null
+	 */
+	private function get_payment_method() {
+		if ( ! function_exists( 'WC' ) ) {
+			return null;
+		}
+
+		if ( ! class_exists( 'WC_Payment_Gateways' ) ) {
+			return null;
+		}
+
+		$payment_method = WC()->session->get( 'chosen_payment_method' );
+		if ( ! $payment_method ) {
+			// If payment method is null, see if there is only one option;
+			$payment_gateways          = new WC_Payment_Gateways();
+			$available_payment_methods = $payment_gateways->get_available_payment_gateways();
+			if ( is_array( $available_payment_methods ) && count( $available_payment_methods ) === 1 ) {
+				return array_keys( $available_payment_methods )[0];
+			}
+		}
+		return $payment_method;
+	}
+
+	/**
 	 * Should module load?
 	 *
 	 * @return bool
@@ -127,6 +180,14 @@ class Woocommerce {
 	public function should_load() {
 		if ( ! class_exists( 'WooCommerce', false ) ) {
 			return false;
+		}
+
+		// Prevent doing any modifications on the checkout page if the payment method is Klarna.
+		if ( is_checkout() ) {
+			$payment_method = $this->get_payment_method();
+			if ( $payment_method === 'kco' ) {
+				return false;
+			}
 		}
 
 		$is_shop_template    = Elementor::is_elementor_template( 'archive', 'product_archive' );
@@ -221,7 +282,8 @@ class Woocommerce {
 				},
 				11
 			);
-			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ], 1 );
+			// here the priority should always be to close earlier than the Neve PRO performance module opening div
+			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ], -100 );
 			// Change default for shop columns WooCommerce option.
 			add_filter( 'default_option_woocommerce_catalog_columns', [ $this, 'change_default_shop_cols' ] );
 		}
