@@ -27,6 +27,38 @@ function useObservableState(initialState, onStateChange) {
 	];
 }
 
+/**
+ * This monitors all events across opened popver components
+ */
+function useOutsideClickHook(ref, callback) {
+	useEffect(() => {
+		function handleClickOutside(event) {
+			const popovers =
+				document.getElementsByClassName('components-popover');
+			let shouldClose = true;
+			for (const popover of popovers) {
+				if (popover.contains(event.target)) {
+					shouldClose = false;
+					break;
+				}
+			}
+			if (
+				shouldClose &&
+				!event.target.className.match(/\bangle-picker[^\s]*/) &&
+				!event.target.className.match(/\bgradient-picker[^\s]*/)
+			) {
+				callback();
+			}
+		}
+		// Bind the event listener
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			// Unbind the event listener on clean up
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [ref]);
+}
+
 export default function Dropdown(props) {
 	const {
 		renderContent,
@@ -81,6 +113,8 @@ export default function Dropdown(props) {
 		}
 		setIsOpen(false);
 	}
+
+	useOutsideClickHook(containerRef, close);
 
 	const args = { isOpen, onToggle: toggle, onClose: close };
 
