@@ -73,12 +73,17 @@ const Notification = ({ data, slug }) => {
 							plugin: update.path,
 							success: () => {
 								resolve({ success: true });
+								window.location.href = window.neveDash.otterProInstall;
 							},
 							error: (err) => {
 								setErrorMessage(err.errorMessage);
 								resolve({ success: false });
 							},
 						});
+					}
+
+					if ('otter-new' === update.slug) {
+						window.location.href = window.neveDash.otterProInstall;
 					}
 				}
 			});
