@@ -151,6 +151,8 @@
 
 			&.dropdown-open {
 				display: block;
+				padding-left: 20px;
+				padding-right: 20px;
 			}
 		}
 
@@ -158,6 +160,8 @@
 
 			> li > .sub-menu {
 				display: block;
+				padding-left: 20px;
+				padding-right: 20px;
 			}
 
 			> li > a {
