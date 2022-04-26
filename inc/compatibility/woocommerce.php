@@ -282,7 +282,8 @@ class Woocommerce {
 				},
 				11
 			);
-			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ], 1 );
+			// here the priority should always be to close earlier than the Neve PRO performance module opening div
+			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ], -100 );
 			// Change default for shop columns WooCommerce option.
 			add_filter( 'default_option_woocommerce_catalog_columns', [ $this, 'change_default_shop_cols' ] );
 		}
