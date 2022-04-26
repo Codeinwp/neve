@@ -94,6 +94,11 @@ jobs:
     name: PHPStan
     runs-on: ubuntu-latest
     steps:
+      - name: Setup PHP version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          extensions: simplexml, mysql
       - name: Checkout source code
         uses: actions/checkout@v2
       - name: Get Composer Cache Directory
@@ -110,7 +115,4 @@ jobs:
       - name: Install composer
         run: composer install --ignore-platform-reqs
       - name: PHPStan Static Analysis
-        uses: php-actions/phpstan@v2
-        with:
-          version: 0.12.99
-          memory_limit: 512M
+        run: composer phpstan -- --memory-limit=512M
