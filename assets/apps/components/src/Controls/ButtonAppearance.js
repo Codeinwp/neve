@@ -79,6 +79,13 @@ const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 													settings[optionType]
 														.controls[controlSlug]
 												}
+												allowGradient={
+													settings[optionType]
+														.controls[
+														controlSlug
+													] ===
+													__('Background', 'neve')
+												}
 												defaultValue={
 													defaultVals[controlSlug] ||
 													null
