@@ -351,6 +351,9 @@ abstract class Base_Layout_Single extends Base_Customizer {
 					'label'                 => esc_html__( 'Overlay color', 'neve' ),
 					'section'               => $this->section,
 					'priority'              => 45,
+					'input_attrs'           => [
+						'allow_gradient' => true,
+					],
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => array(

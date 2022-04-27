@@ -108,6 +108,7 @@ class Config {
 
 	const CSS_PROP_BORDER_COLOR               = 'border-color';
 	const CSS_PROP_BACKGROUND_COLOR           = 'background-color';
+	const CSS_PROP_BACKGROUND                 = 'background';
 	const CSS_PROP_COLOR                      = 'color';
 	const CSS_PROP_MAX_WIDTH                  = 'max-width';
 	const CSS_PROP_BORDER_RADIUS_TOP_LEFT     = 'border-top-left-radius';
