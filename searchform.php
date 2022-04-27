@@ -43,9 +43,9 @@ if ( function_exists( 'PLL' ) ) {
 	<button type="submit"
 			class="search-submit"
 			aria-label="<?php echo esc_attr( $aria_label ); ?>">
-		<div class="nv-search-icon-wrap">
+		<span class="nv-search-icon-wrap">
 			<?php neve_search_icon( false, true ); ?>
-		</div>
+</span>
 	</button>
 	<?php
 	if ( array_key_exists( 'post_type', $args ) ) {
