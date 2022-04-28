@@ -311,10 +311,10 @@ class Main {
 		}
 
 		$is_booster_active = true === boolval( get_option( 'nv_pro_block_editor_booster_status', true ) ) && 'valid' === apply_filters( 'product_neve_license_status', false ) && defined( 'OTTER_BLOCKS_VERSION' );
-		$is_otter_new      = defined( 'OTTER_BLOCKS_VERSION' ) && defined( 'OTTER_BLOCKS_PRO_SUPPORT' );;
-		$has_otter_pro     = defined( 'OTTER_PRO_VERSION' );
-		$plugin_folder     = defined( 'OTTER_BLOCKS_PATH' ) ? basename( OTTER_BLOCKS_PATH ) : null;
-		$plugin_path       = $plugin_folder ? $plugin_folder . '/otter-blocks.php' : null;
+		$is_otter_new  = defined( 'OTTER_BLOCKS_VERSION' ) && defined( 'OTTER_BLOCKS_PRO_SUPPORT' );
+		$has_otter_pro = defined( 'OTTER_PRO_VERSION' );
+		$plugin_folder = defined( 'OTTER_BLOCKS_PATH' ) ? basename( OTTER_BLOCKS_PATH ) : null;
+		$plugin_path   = $plugin_folder ? $plugin_folder . '/otter-blocks.php' : null;
 
 		if ( $is_booster_active && ! $is_otter_new ) {
 			$notifications['otter-old'] = [
