@@ -38,7 +38,7 @@ const CustomPalette = ({ title, onChange, activeColor }) => {
 						<ul key={index}>
 							{Object.keys(group).map((slug) => {
 								const style = {
-									backgroundColor: `var(--${slug})`,
+									background: `var(--${slug})`,
 								};
 								const buttonClasses = classnames([
 									'nv-custom-palette-color',

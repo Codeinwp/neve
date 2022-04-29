@@ -37,7 +37,7 @@
 
 
 //<editor-fold desc="Product thumbnail">
-.product-thumbnail img {
+.product-thumbnail:not([class^="elementor"]) img {
 	min-width: 60px !important;
 }
 
@@ -110,7 +110,7 @@
 
 @mixin cart--tablet() {
 
-	.product-thumbnail img {
+	.product-thumbnail:not([class^="elementor"]) img {
 		min-width: 120px !important;
 	}
 

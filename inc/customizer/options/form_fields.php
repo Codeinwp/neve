@@ -148,6 +148,9 @@ class Form_Fields extends Base_Customizer {
 					'section'               => $this->section_id,
 					'priority'              => 17,
 					'default'               => 'var(--nv-site-bg)',
+					'input_attrs'           => [
+						'allow_gradient' => true,
+					],
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar'   => [

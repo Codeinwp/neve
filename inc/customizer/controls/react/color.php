@@ -32,12 +32,19 @@ class Color extends \WP_Customize_Control {
 	 */
 	public $disable_alpha = false;
 	/**
+	 * Allow gradient inside color picker.
+	 *
+	 * @var bool
+	 */
+	public $allow_gradient = false;
+	/**
 	 * Send to JS.
 	 */
 	public function json() {
-		$json                 = parent::json();
-		$json['default']      = $this->default;
-		$json['disableAlpha'] = $this->disable_alpha;
+		$json                  = parent::json();
+		$json['default']       = $this->default;
+		$json['disableAlpha']  = $this->disable_alpha;
+		$json['allowGradient'] = isset( $this->input_attrs['allow_gradient'] ) ? $this->input_attrs['allow_gradient'] : $this->allow_gradient;
 		return $json;
 	}
 
