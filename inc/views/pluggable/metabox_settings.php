@@ -151,6 +151,12 @@ class Metabox_Settings {
 			return (int) get_option( 'page_for_posts' );
 		}
 
+		// On shop page the returning id is the id of the first product. We need the id of the page.
+		// is_archive is true for shop page, so we need to check shop before is_archive
+		if ( class_exists( 'WooCommerce' ) && is_shop() ) {
+			return wc_get_page_id( 'shop' );
+		}
+
 		if ( is_archive() ) {
 			return false;
 		}
@@ -163,10 +169,6 @@ class Metabox_Settings {
 			return false;
 		}
 
-		// On shop page the returning id is the id of the first product. We need the id of the page.
-		if ( class_exists( 'WooCommerce' ) && is_shop() ) {
-			return wc_get_page_id( 'shop' );
-		}
 
 		global $post;
 		if ( empty( $post ) ) {

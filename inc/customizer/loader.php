@@ -176,7 +176,17 @@ class Loader {
 			NEVE_VERSION,
 			true
 		);
-		global $post_id;
+
+		$shop_has_meta = 'no';
+		$shop_id       = get_option( 'woocommerce_shop_page_id' );
+		if ( ! empty( $shop_id ) ) {
+			$meta = get_post_meta( $shop_id, 'neve_meta_sidebar', true );
+
+			if ( ! empty( $meta ) && $meta !== 'default' ) {
+				$shop_has_meta = 'yes';
+			}
+		}
+
 		wp_localize_script(
 			'neve-customizer-preview',
 			'neveCustomizePreview',
@@ -186,6 +196,7 @@ class Loader {
 					'currentFeaturedImage' => '',
 					'newBuilder'           => neve_is_new_builder(),
 					'newSkin'              => neve_is_new_skin(),
+					'shopHasMetaSidebar'   => $shop_has_meta,
 				)
 			)
 		);
