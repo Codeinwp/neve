@@ -243,8 +243,10 @@ class Main {
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
+			$installed_plugins       = get_plugins();
+			$is_otter_installed      = array_key_exists( 'otter-pro/otter-pro.php', $installed_plugins ) || in_array( 'otter-pro/otter-pro.php', $installed_plugins, true );
 			$data['changelogPro']    = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
-			$data['otterProInstall'] = esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=install_otter_pro' ), 'install_otter_pro' ) );
+			$data['otterProInstall'] = $is_otter_installed ? esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=otter-pro%2Fotter-pro.php&plugin_status=all&paged=1&s' ), 'activate-plugin_otter-pro/otter-pro.php' ) ) : esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=install_otter_pro' ), 'install_otter_pro' ) );
 		}
 
 		if ( isset( $_GET['onboarding'] ) && $_GET['onboarding'] === 'yes' ) {
@@ -310,37 +312,7 @@ class Main {
 			}
 		}
 
-		$is_booster_active = true === boolval( get_option( 'nv_pro_block_editor_booster_status', true ) ) && 'valid' === apply_filters( 'product_neve_license_status', false ) && defined( 'OTTER_BLOCKS_VERSION' );
-		$is_otter_new      = defined( 'OTTER_BLOCKS_VERSION' ) && defined( 'OTTER_BLOCKS_PRO_SUPPORT' );
-		$has_otter_pro     = defined( 'OTTER_PRO_VERSION' );
-		$plugin_folder     = defined( 'OTTER_BLOCKS_PATH' ) ? basename( OTTER_BLOCKS_PATH ) : null;
-		$plugin_path       = $plugin_folder ? $plugin_folder . '/otter-blocks.php' : null;
-
-		if ( $is_booster_active && ! $is_otter_new ) {
-			$notifications['otter-old'] = [
-				'text'   => __( 'You need to update Otter and install Otter Pro to continue using Block Editor Booster', 'neve' ),
-				'update' => [
-					'type' => 'otter',
-					'slug' => 'otter-old',
-					'path' => $plugin_path,
-				],
-				'cta'    => __( 'Update & Install', 'neve' ),
-				'type'   => 'warning',
-			];
-		}
-
-		if ( $is_booster_active && $is_otter_new && ! $has_otter_pro ) {
-			$notifications['otter-new'] = [
-				'text'   => __( 'You need to install Otter Pro to continue using Block Editor Booster', 'neve' ),
-				'update' => [
-					'type' => 'otter',
-					'slug' => 'otter-new',
-					'path' => $plugin_path,
-				],
-				'cta'    => __( 'Install', 'neve' ),
-				'type'   => 'warning',
-			];
-		}
+		$notifications = apply_filters( 'neve_dashboard_notifications', $notifications );
 
 		return $notifications;
 	}
