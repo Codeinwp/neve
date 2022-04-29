@@ -24,7 +24,7 @@ $overlay: rgba(0, 0, 0, 0.75);
 	overflow: hidden;
 
 	&::after {
-		background-color: $overlay;
+		background: $overlay;
 		content: "";
 		position: absolute;
 		left: 0;
