@@ -1,0 +1,59 @@
+.neve-color-component {
+  .components-circular-option-picker {
+	min-width: 216px;
+  }
+
+  .components-popover.is-from-bottom {
+	margin-top: 20px;
+	margin-left: 40px;
+  }
+
+  .components-popover__content .components-popover__content {
+	bottom: inherit;
+  }
+
+  .components-custom-gradient-picker .components-popover__content {
+	position: relative !important;
+	bottom: 0 !important;
+	left: 0 !important;
+	top: 0 !important;
+  }
+
+  .components-custom-gradient-picker .components-popover {
+	position: fixed;
+	top: auto !important;
+	bottom: auto !important;
+	left: 0 !important;
+	margin-left: 232px;
+	margin-top: -232px;
+	.components-popover__content {
+	  transform: translateX(0%);
+	}
+  }
+
+  .components-custom-gradient-picker__gradient-bar {
+	width: inherit;
+	border-radius: 24px;
+
+	.components-custom-gradient-picker__markers-container {
+	  width: calc(100% - 16px);
+	}
+
+	&:not(.has-gradient) {
+	  opacity: 1;
+	}
+  }
+
+  .components-input-control__suffix {
+	.components-truncate.components-text.components-spacer {
+	  margin: 0 calc(8px) calc(8px) 0;
+	}
+  }
+
+  .color-toggle.components-button-group {
+	.components-button {
+	  height: 26px;
+	  padding: 6px 8px;
+	}
+  }
+}

@@ -125,7 +125,7 @@ const PaletteSelector = ({ values, save }) => {
 										className="color"
 										key={index}
 										style={{
-											backgroundColor: colors[color],
+											background: colors[color],
 										}}
 									/>
 								);

@@ -16,7 +16,7 @@
 	&.global-styled:not(.neve-transparent-header) {
 
 		background: var(--bgColor);
-		background-image: var(--bgImage, none);
+		background-image: var(--bgImage, var(--bgColor, none));
 		background-position: var(--bgPosition, center);
 		background-repeat: no-repeat;
 		background-size: cover;
