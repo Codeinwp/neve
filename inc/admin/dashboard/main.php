@@ -244,7 +244,7 @@ class Main {
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
 			$installed_plugins       = get_plugins();
-			$is_otter_installed      = array_key_exists( 'otter-pro/otter-pro.php', $installed_plugins ) || in_array( 'otter-pro/otter-pro.php', $installed_plugins, true );
+			$is_otter_installed      = array_key_exists( 'otter-pro/otter-pro.php', $installed_plugins );
 			$data['changelogPro']    = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
 			$data['otterProInstall'] = $is_otter_installed ? esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=otter-pro%2Fotter-pro.php&plugin_status=all&paged=1&s' ), 'activate-plugin_otter-pro/otter-pro.php' ) ) : esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=install_otter_pro' ), 'install_otter_pro' ) );
 		}
