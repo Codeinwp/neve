@@ -58,7 +58,7 @@ class Page_Header extends Base_View {
 		}
 		$header_layout = get_theme_mod( 'neve_page_header_layout', 'normal' );
 		if ( $header_layout !== 'normal' && $context === 'single-page' ) {
-			return false;
+			return;
 		}
 
 		$title_args['category_description'] = $this->get_archive_description();
