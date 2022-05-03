@@ -807,30 +807,6 @@ class Woocommerce {
 	}
 
 	/**
-	 * Check if we should render the mobile sidebar toggle.
-	 *
-	 * @return bool
-	 */
-	private function should_render_sidebar_toggle() {
-		if ( ! is_active_sidebar( 'shop-sidebar' ) ) {
-			return false;
-		}
-
-		$mod = 'neve_shop_archive_sidebar_layout';
-		if ( is_product() ) {
-			$mod = 'neve_single_product_sidebar_layout';
-		}
-
-		$default   = $this->sidebar_layout_alignment_default( $mod );
-		$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( $mod, $default ) );
-		if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
-			return false;
-		}
-
-		return true;
-	}
-
-	/**
 	 * Does what it says.
 	 */
 	private function move_checkout_coupon() {

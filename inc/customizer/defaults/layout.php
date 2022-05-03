@@ -74,4 +74,18 @@ trait Layout {
 	private function grid_columns_default() {
 		return neve_is_new_skin() ? '{"desktop":3,"tablet":2,"mobile":1}' : '{"desktop":1,"tablet":1,"mobile":1}';
 	}
+
+	/**
+	 * Check if we should render the mobile sidebar toggle.
+	 *
+	 * @return bool
+	 */
+	private function should_render_sidebar_toggle() {
+		if ( ! is_active_sidebar( 'shop-sidebar' ) ) {
+			return false;
+		}
+
+		$body_classes = apply_filters( 'body_class', [] );
+		return is_array( $body_classes ) && in_array( 'neve-off-canvas', $body_classes );
+	}
 }
