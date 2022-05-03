@@ -7,6 +7,14 @@
 	margin: 0 !important;
 }
 
+.widget_search {
+
+	.search-form .search-submit,
+	.search-form .search-field {
+		height: auto;
+	}
+}
+
 .search-form {
 	display: flex;
 	max-width: 100%;
