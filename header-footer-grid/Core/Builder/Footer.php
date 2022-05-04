@@ -86,7 +86,7 @@ class Footer extends Abstract_Builder {
 				$processed_params        = [];
 				$has_legacy_search_style = apply_filters( 'neve_has_legacy_search_style_filter', false );
 				foreach ( $params as $param ) {
-					if ( isset( $param['widget_name'] ) && $param['widget_name'] === 'Search' && $has_legacy_search_style === false ) {
+					if ( isset( $param['before_widget'] ) && strpos( $param['before_widget'], 'widget_search' ) !== false && $has_legacy_search_style === false ) {
 						$param['before_widget'] = '<style type="text/css">.widget_search .search-form .search-submit, .widget_search .search-form .search-field { height: auto; }</style>' . $param['before_widget'];
 						add_filter( 'neve_has_legacy_search_style_filter', '__return_true' );
 					}
