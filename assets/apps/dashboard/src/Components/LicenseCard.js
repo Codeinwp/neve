@@ -4,12 +4,8 @@ import Toast from './Toast';
 import classnames from 'classnames';
 
 import { __ } from '@wordpress/i18n';
-import { Button, Dashicon, ExternalLink } from '@wordpress/components';
-import {
-	Fragment,
-	useState,
-	createInterpolateElement,
-} from '@wordpress/element';
+import { Button, Dashicon } from '@wordpress/components';
+import { Fragment, useState } from '@wordpress/element';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 
@@ -26,7 +22,7 @@ const LicenseCard = ({ isVisible, setSettings, changeLicense, license }) => {
 
 	const { valid, expiration } = license;
 	const { whiteLabel, strings } = neveDash;
-	const { licenseCardHeading } = strings;
+	const { licenseCardHeading, licenseCardDescription } = strings;
 
 	if (!isVisible) {
 		return null;
@@ -70,23 +66,12 @@ const LicenseCard = ({ isVisible, setSettings, changeLicense, license }) => {
 		<aside className="sidebar card license">
 			<div className="sidebar-section">
 				{licenseCardHeading && <h4>{licenseCardHeading}</h4>}
-				{!whiteLabel && (
-					<p>
-						{typeof createInterpolateElement !== 'undefined' &&
-							createInterpolateElement(
-								__(
-									'Enter your license from <external_link>ThemeIsle</external_link> purchase history in order to get plugin updates.',
-									'neve'
-								),
-								{
-									external_link: (
-										<ExternalLink href="https://store.themeisle.com/">
-											#dumptext
-										</ExternalLink>
-									),
-								}
-							)}
-					</p>
+				{!whiteLabel && licenseCardDescription && (
+					<p
+						dangerouslySetInnerHTML={{
+							__html: licenseCardDescription,
+						}}
+					/>
 				)}
 				<form
 					className="license-form"
