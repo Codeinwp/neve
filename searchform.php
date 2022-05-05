@@ -45,7 +45,7 @@ if ( function_exists( 'PLL' ) ) {
 			aria-label="<?php echo esc_attr( $aria_label ); ?>">
 		<span class="nv-search-icon-wrap">
 			<?php neve_search_icon( false, true ); ?>
-		</span>
+</span>
 	</button>
 	<?php
 	if ( array_key_exists( 'post_type', $args ) ) {

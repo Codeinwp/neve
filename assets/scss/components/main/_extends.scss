@@ -11,7 +11,7 @@
 	cursor: pointer;
 	box-sizing: border-box;
 
-	background-color: var(--primaryBtnBg);
+	background: var(--primaryBtnBg);
 	color: var(--primaryBtnColor);
 	border-style: solid;
 	border-color: currentColor;
@@ -28,7 +28,7 @@
 }
 
 %nv-button-primary-hover {
-	background-color: var(--primaryBtnHoverBg);
+	background: var(--primaryBtnHoverBg);
 	color: var(--primaryBtnHoverColor);
 	border-color: var(--primaryBtnHoverColor);
 }
@@ -109,7 +109,7 @@
 	border-color: var(--formFieldBorderColor);
 	border-width: var(--formFieldBorderWidth);
 	border-radius: var(--formFieldBorderRadius, 3px);
-	background-color: var(--formFieldBgColor);
+	background: var(--formFieldBgColor);
 	color: var(--formFieldColor);
 	padding: var(--formFieldPadding);
 

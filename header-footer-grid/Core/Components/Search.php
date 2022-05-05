@@ -306,6 +306,11 @@ class Search extends Abstract_Component {
 				'label'                 => __( 'Background Color', 'neve' ),
 				'type'                  => '\Neve\Customizer\Controls\React\Color',
 				'section'               => $this->section,
+				'options'               => [
+					'input_attrs' => [
+						'allow_gradient' => true,
+					],
+				],
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar'   => [
@@ -314,7 +319,7 @@ class Search extends Abstract_Component {
 					],
 					'template' =>
 						'body ' . $this->default_selector . ' input[type=search] {
-							background-color: {{value}} !important;
+							background: {{value}} !important;
 						}',
 					'fallback' => '#ffffff',
 				],

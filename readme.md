@@ -19,6 +19,30 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.2.4](https://github.com/Codeinwp/neve/compare/v3.2.3...v3.2.4) (2022-05-05)
+
+- [Feat] Gradient support for color controls
+- [Fix] Missing top margin for the featured post when the title is disabled
+- [Fix] The title on archives disappears when the page title has the cover layout
+- [Fix] Fixed the styles for the search widget prior to 5.8 on the new skin
+- [Fix] Add padding for submenu items in the sidebar menu
+- [Fix] Shop sidebar with the off-canvas layout not working when content width is above 95%
+
+
+
+
+##### [Version 3.2.3](https://github.com/Codeinwp/neve/compare/v3.2.2...v3.2.3) (2022-04-20)
+
+- [Feat] Add Xing to the icon list
+- [Fix] Hide title meta setting not working on the blog page
+- [Fix] Mobile sticky when it's not in the global header context
+- [Fix] Content shifting when using the Fancybox WP plugin
+- [Fix] Compatibility issues with Klarna payments
+- [Fix] Mini cart issues with Elementor templates
+
+
+
+
 ##### [Version 3.2.2](https://github.com/Codeinwp/neve/compare/v3.2.1...v3.2.2) (2022-04-06)
 
 - [Fix] Fatal error produced by abs function on servers with PHP 8, and Neve Pro installed.

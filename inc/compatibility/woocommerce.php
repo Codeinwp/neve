@@ -282,7 +282,8 @@ class Woocommerce {
 				},
 				11
 			);
-			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ], 1 );
+			// here the priority should always be to close earlier than the Neve PRO performance module opening div
+			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ], -100 );
 			// Change default for shop columns WooCommerce option.
 			add_filter( 'default_option_woocommerce_catalog_columns', [ $this, 'change_default_shop_cols' ] );
 		}
@@ -803,30 +804,6 @@ class Woocommerce {
 		}
 
 		return get_option( 'woocommerce_shop_page_id' );
-	}
-
-	/**
-	 * Check if we should render the mobile sidebar toggle.
-	 *
-	 * @return bool
-	 */
-	private function should_render_sidebar_toggle() {
-		if ( ! is_active_sidebar( 'shop-sidebar' ) ) {
-			return false;
-		}
-
-		$mod = 'neve_shop_archive_sidebar_layout';
-		if ( is_product() ) {
-			$mod = 'neve_single_product_sidebar_layout';
-		}
-
-		$default   = $this->sidebar_layout_alignment_default( $mod );
-		$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( $mod, $default ) );
-		if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
-			return false;
-		}
-
-		return true;
 	}
 
 	/**

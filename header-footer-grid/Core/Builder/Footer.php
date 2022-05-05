@@ -75,6 +75,26 @@ class Footer extends Abstract_Builder {
 		$this->devices = [
 			'desktop' => __( 'Footer', 'neve' ),
 		];
+
+		/**
+		 * Fix legacy search widget display in footer
+		 * Only applies for versions < 5.8
+		 */
+		add_filter(
+			'dynamic_sidebar_params',
+			function ( $params ) {
+				$processed_params        = [];
+				$has_legacy_search_style = apply_filters( 'neve_has_legacy_search_style_filter', false );
+				foreach ( $params as $param ) {
+					if ( isset( $param['before_widget'] ) && strpos( $param['before_widget'], 'widget_search' ) !== false && $has_legacy_search_style === false ) {
+						$param['before_widget'] = '<style type="text/css">.widget_search .search-form .search-submit, .widget_search .search-form .search-field { height: auto; }</style>' . $param['before_widget'];
+						add_filter( 'neve_has_legacy_search_style_filter', '__return_true' );
+					}
+					array_push( $processed_params, $param );
+				}
+				return $processed_params;
+			}
+		);
 	}
 
 	/**

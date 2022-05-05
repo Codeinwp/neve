@@ -789,16 +789,37 @@ if (
 				wp.customize(id, function (value) {
 					value.bind(function (newval) {
 						const sidebar = $(self.contentWidths[id].sidebar);
-						if (newval >= 95) {
+
+						let isOffCanvas = false;
+						if (id === 'neve_shop_archive_content_width') {
+							const sidebarLayout = wp
+								.customize('neve_shop_archive_sidebar_layout')
+								.get();
+							if (
+								neveCustomizePreview.shopHasMetaSidebar ===
+									'no' &&
+								sidebarLayout === 'off-canvas'
+							) {
+								isOffCanvas = true;
+							}
+						}
+
+						if (isOffCanvas === false && newval >= 95) {
 							sidebar.addClass('hide');
 						} else {
 							sidebar.removeClass('hide');
 						}
 
-						const style = ` @media (min-width: 961px) {
-							${args.content} { max-width: ${newval}% !important; }
-							${args.sidebar} { max-width: ${100 - newval}% !important; }
-						}`;
+						let style = ` @media (min-width: 961px) {
+							${args.content} { max-width: ${newval}% !important; }`;
+
+						if (isOffCanvas === false) {
+							style += `${args.sidebar} { max-width: ${
+								100 - newval
+							}% !important; }`;
+						}
+
+						style += '}';
 
 						addCSS(id + '-css', style);
 					});
