@@ -28,6 +28,7 @@ const ColorComponent = ({ control }) => {
 				defaultValue={control.params.default}
 				alphaDisabled={control.params.disableAlpha}
 				onChange={updateValues}
+				allowGradient={control.params.allowGradient}
 			/>
 		</div>
 	);

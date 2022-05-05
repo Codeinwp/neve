@@ -50,6 +50,7 @@ const RepeaterItemContent = ({
 						className="repeater-color-control"
 						label={fields[key].label}
 						selectedColor={value[index][key]}
+						allowGradient={fields[key].gradient || false}
 						onChange={(newData) => changeContent(key, newData)}
 						key={key + index}
 					/>

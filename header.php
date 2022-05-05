@@ -75,7 +75,7 @@ do_action( 'neve_body_start_after' );
 	do_action( 'neve_before_header_wrapper_hook' );
 	?>
 
-	<header class="<?php echo esc_attr( $header_classes ); ?>" role="banner" next-page-hide>
+	<header class="<?php echo esc_attr( $header_classes ); ?>" <?php echo ( neve_is_amp() ) ? 'next-page-hide' : ''; ?> >
 		<a class="neve-skip-link show-on-focus" href="#content" >
 			<?php echo __( 'Skip to content', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</a>
@@ -120,7 +120,7 @@ do_action( 'neve_body_start_after' );
 	do_action( 'neve_before_primary' );
 	?>
 
-	<main id="content" class="neve-main" role="main">
+	<main id="content" class="neve-main">
 
 <?php
 /**

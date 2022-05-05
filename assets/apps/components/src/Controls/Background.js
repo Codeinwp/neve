@@ -69,6 +69,7 @@ const Background = ({ onChange, value, label, description }) => {
 							}}
 							selectedColor={colorValue}
 							label={__('Color', 'neve')}
+							allowGradient={true}
 						/>
 						<div
 							className="neve-color-preview"

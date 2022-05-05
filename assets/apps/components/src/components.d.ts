@@ -25,6 +25,7 @@ declare module '@neve-wp/components' {
 		onChange: (nextValue: string) => void;
 		defaultValue?: string;
 		disableGlobal?: boolean;
+		allowGradient?: boolean;
 	}
 
 	const ColorControl: React.FunctionComponent<ColorControlProps>;
