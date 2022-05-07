@@ -427,6 +427,60 @@ class Layout_Blog extends Base_Customizer {
 		);
 	}
 
+	private function get_meta_default_data() {
+		$new_control_data = [];
+
+		$order_default_components = array(
+			'author',
+			'date',
+			'comments',
+		);
+
+		$components = apply_filters(
+			'neve_meta_filter',
+			array(
+				'author'   => __( 'Author', 'neve' ),
+				'category' => __( 'Category', 'neve' ),
+				'date'     => __( 'Date', 'neve' ),
+				'comments' => __( 'Comments', 'neve' ),
+			)
+		);
+
+		$default_data = get_theme_mod( 'neve_post_meta_ordering', wp_json_encode( $order_default_components ) );
+		if ( empty( $default_data ) ) {
+			return $new_control_data;
+		}
+
+		$default_data = json_decode( $default_data, true );
+		if ( ! is_array( $default_data ) ) {
+			return $new_control_data;
+		}
+
+		foreach ( $default_data as $meta_component ) {
+			if ( ! array_key_exists( $meta_component, $components ) ) {
+				continue;
+			}
+			$new_control_data[ $meta_component ] = [
+				'title'      => $components[ $meta_component ],
+				'visibility' => 'yes',
+				'hasOptions' => 'no',
+			];
+		}
+
+		foreach ( $components as $component_id => $label ) {
+			if ( array_key_exists( $component_id, $new_control_data ) ) {
+				continue;
+			}
+			$new_control_data[ $component_id ] = [
+				'title'      => $label,
+				'visibility' => 'no',
+				'hasOptions' => 'no',
+			];
+		}
+
+		return array_values( $new_control_data );
+	}
+
 	/**
 	 * Add controls for post meta.
 	 */
@@ -450,37 +504,51 @@ class Layout_Blog extends Base_Customizer {
 			)
 		);
 
-		$order_default_components = array(
-			'author',
-			'date',
-			'comments',
-		);
-
-		$components = apply_filters(
-			'neve_meta_filter',
-			array(
-				'author'   => __( 'Author', 'neve' ),
-				'category' => __( 'Category', 'neve' ),
-				'date'     => __( 'Date', 'neve' ),
-				'comments' => __( 'Comments', 'neve' ),
-			)
-		);
-
+		$order_default_components = $this->get_meta_default_data();
 		$this->add_control(
 			new Control(
-				'neve_post_meta_ordering',
-				array(
-					'sanitize_callback' => 'neve_sanitize_meta_ordering',
-					'default'           => wp_json_encode( $order_default_components ),
-				),
-				array(
-					'label'           => esc_html__( 'Meta Order', 'neve' ),
+				'neve_post_meta_ordering_new',
+				[
+					// 'sanitize_callback' => [ $this, 'sanitize_sharing_icons_repeater' ],
+					'default' => wp_json_encode( $order_default_components ),
+				],
+				[
+					'label'           => esc_html__( 'Meta Order2', 'neve' ),
 					'section'         => $this->section,
-					'components'      => $components,
+					'fields'          => [
+//						 'title'           => [
+//							 'type'  => 'text',
+//							 'label' => esc_html__( 'Title', 'neve' ),
+//						 ],
+						 'type'  => [
+							 'type'    => 'select',
+							 'label'   => __( 'Social Network', 'neve' ),
+							 'choices' => [
+								 'facebook'  => 'Facebook',
+								 'twitter'   => 'Twitter',
+								 'email'     => 'Email',
+								 'pinterest' => 'Pinterest',
+								 'linkedin'  => 'LinkedIn',
+								 'tumblr'    => 'Tumblr',
+								 'reddit'    => 'Reddit',
+								 'whatsapp'  => 'WhatsApp',
+								 'sms'       => 'SMS',
+								 'vk'        => 'VKontakte',
+							 ],
+						 ],
+//						 'display_desktop' => [
+//							 'type'  => 'checkbox',
+//							 'label' => esc_html__( 'Show on Desktop', 'neve' ),
+//						 ],
+						// 'display_mobile'  => [
+						// 'type'  => 'checkbox',
+						// 'label' => esc_html__( 'Show on Mobile', 'neve' ),
+						// ],
+					],
 					'priority'        => 71,
 					'active_callback' => array( $this, 'should_show_meta_order' ),
-				),
-				'Neve\Customizer\Controls\React\Ordering'
+				],
+				'\Neve\Customizer\Controls\React\Repeater'
 			)
 		);
 

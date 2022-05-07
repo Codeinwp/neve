@@ -20,11 +20,8 @@ const Repeater = ({ fields, value, onUpdate }) => {
 		const newValue = [...value];
 		const newItem = {};
 
-		for (const [field] of Object.entries(newValue[0])) {
-			if (field === 'visibility') {
-				newItem[field] = 'yes';
-				continue;
-			}
+		for (const [field] of Object.entries(fields)) {
+			newItem.visibility = 'yes';
 
 			if (typeof value[0][field] === 'boolean') {
 				newItem[field] = true;
@@ -57,7 +54,7 @@ const Repeater = ({ fields, value, onUpdate }) => {
 	const setList = (l) => {
 		const final = l.map((i) => {
 			Object.keys(i).forEach((k) => {
-				if (![...Object.keys(fields), 'visibility'].includes(k)) {
+				if (![...Object.keys(fields), 'title', 'visibility', 'hasOptions'].includes(k)) {
 					delete i[k];
 				}
 			});
