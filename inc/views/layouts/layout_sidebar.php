@@ -50,7 +50,7 @@ class Layout_Sidebar extends Base_View {
 
 		$class_hide_sidebar_conditionally = '';
 
-		if ( $content_width >= 95 && $this->should_render_sidebar_toggle() === false ) {
+		if ( $content_width >= 95 && ! $this->shop_sidebar_is_off_canvas() ) {
 			if ( is_customize_preview() ) {
 				// render the sidebar and hide it with CSS
 				$class_hide_sidebar_conditionally = 'hide';
