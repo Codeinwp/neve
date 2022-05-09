@@ -22,8 +22,32 @@ const RepeaterItemContent = ({
 		onContentChange(newItemValue);
 	};
 
-	const toComponent = (key) => {
+	const toComponent = (key, val) => {
 		if (fields[key] === undefined) return null;
+		const dependencies = Object.keys(fields[key]).filter((el) => {
+			return el.endsWith('_is');
+		});
+
+		const hasDependency = dependencies.length > 0;
+		let shouldRun = true;
+		if (hasDependency) {
+			dependencies.forEach((el) => {
+				if (shouldRun !== false) {
+					const dependency = el.replace('_is', '');
+					if (
+						val[dependency] &&
+						val[dependency] !== fields[key][el]
+					) {
+						shouldRun = false;
+					}
+				}
+			});
+		}
+
+		if (!shouldRun) {
+			return;
+		}
+
 		switch (fields[key].type) {
 			case 'text':
 				return (
@@ -93,7 +117,7 @@ const RepeaterItemContent = ({
 	return (
 		<div className="nv-repeater-content">
 			{Object.entries(value[index]).map(([key]) => {
-				return toComponent(key);
+				return toComponent(key, value[index]);
 			})}
 			{value.length > 1 && (
 				<Button

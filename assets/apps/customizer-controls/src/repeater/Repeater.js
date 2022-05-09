@@ -6,7 +6,7 @@ import { useState } from '@wordpress/element';
 import { ReactSortable } from 'react-sortablejs';
 import { __ } from '@wordpress/i18n';
 
-const Repeater = ({ fields, value, onUpdate }) => {
+const Repeater = ({ fields, allowNew, value, onUpdate }) => {
 	const [sorting, setSorting] = useState(false);
 
 	const handleToggle = (index) => {
@@ -106,7 +106,7 @@ const Repeater = ({ fields, value, onUpdate }) => {
 						{sorting ? __('Done', 'neve') : __('Reorder', 'neve')}
 					</Button>
 				)}
-				{!sorting && (
+				{!sorting && allowNew === 'yes' && (
 					<Button
 						isSecondary
 						onClick={handleAddItem}
@@ -123,6 +123,7 @@ const Repeater = ({ fields, value, onUpdate }) => {
 Repeater.propTypes = {
 	value: PropTypes.array.isRequired,
 	fields: PropTypes.object.isRequired,
+	allowNew: PropTypes.bool.isRequired,
 	onUpdate: PropTypes.func.isRequired,
 };
 

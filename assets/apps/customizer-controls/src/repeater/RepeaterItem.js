@@ -40,7 +40,7 @@ const RepeaterItem = ({
 			label = value[itemIndex].title;
 		}
 		if (value[itemIndex].type) {
-			label = value[itemIndex].type;
+			label = fields.type.choices[value[itemIndex].type];
 		}
 		return <span className="repeater-item-title">{label}</span>;
 	};

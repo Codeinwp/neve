@@ -7,13 +7,21 @@ import { maybeParseJson } from '@neve-wp/components';
 const RepeaterComponent = ({ control }) => {
 	const [value, setValue] = useState(maybeParseJson(control.setting.get()));
 	const fields = control.params.fields;
+	const allowNew = control.params.allow_new_fields;
 
 	const updateValue = (newVal) => {
 		setValue(newVal);
 		control.setting.set(JSON.stringify(newVal));
 	};
 
-	return <Repeater fields={fields} value={value} onUpdate={updateValue} />;
+	return (
+		<Repeater
+			fields={fields}
+			allowNew={allowNew}
+			value={value}
+			onUpdate={updateValue}
+		/>
+	);
 };
 
 RepeaterComponent.propTypes = {

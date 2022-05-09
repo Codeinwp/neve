@@ -427,6 +427,9 @@ class Layout_Blog extends Base_Customizer {
 		);
 	}
 
+	/**
+	 * @return array
+	 */
 	private function get_meta_default_data() {
 		$new_control_data = [];
 
@@ -482,6 +485,147 @@ class Layout_Blog extends Base_Customizer {
 	}
 
 	/**
+	 * @return array
+	 */
+	private function get_acf_options() {
+		$acf_options = [];
+		$groups = acf_get_field_groups(array('post_type' => 'post'));
+		foreach ( $groups as $group ){
+			$fields = acf_get_fields($group['key']);
+			if ( ! empty( $fields ) ){
+				foreach ( $fields as $field ){
+					$acf_options[$field['key']] = $field['label'];
+				}
+			}
+		}
+		return $acf_options;
+	}
+
+	/**
+	 * @return array
+	 */
+	private function get_toolset_options() {
+		$toolset_options = [];
+		$groups = apply_filters('wpcf_get_groups_by_post_type', 'post');
+		if( empty( $groups ) || ! is_array( $groups ) ){
+			return $toolset_options;
+		}
+
+		foreach( $groups as $group_id => $group_data ) {
+			$fields_from_group = apply_filters('wpcf_fields_by_group', $group_id);
+			if ( empty( $fields_from_group ) || ! is_array( $fields_from_group ) ) {
+				continue;
+			}
+
+			foreach ( $fields_from_group as $group_slug => $group_data ){
+				$toolset_options['wpcf-' . $group_slug] = $group_data['name'];
+			}
+		}
+
+		return $toolset_options;
+	}
+
+	/**
+	 * @return array
+	 */
+	private function get_metabox_options(){
+		$metabox_options = [];
+		if ( ! function_exists( 'rwmb_get_object_fields' ) ){
+			return $metabox_options;
+		}
+
+		$fields = rwmb_get_object_fields( 'post' );
+		if( empty( $fields ) || ! is_array( $fields ) ) {
+			return $metabox_options;
+		}
+		foreach ( $fields as $field_id => $field_data ) {
+			$metabox_options[$field_id] = $field_data['field_name'];
+		}
+
+		return $metabox_options;
+	}
+
+	/**
+	 * @return array
+	 */
+	private function get_meta_type_options() {
+		$fields_type = [
+			'raw' => __( 'Post Meta', 'neve' ),
+		];
+		if( class_exists( 'ACF', false ) ){
+			$fields_type['acf'] = 'ACF';
+		}
+
+		if ( defined( 'TYPES_ABSPATH' ) ) {
+			$fields_type['toolset'] = 'Toolset';
+		}
+		if ( class_exists( '\MBB\Parsers\MetaBox') ) {
+			$fields_type['metabox'] = 'Metabox';
+		}
+		return $fields_type;
+	}
+
+	/**
+	 * @return array[]
+	 */
+	private function get_meta_repeater_fields() {
+		$fields = [
+			'type'  => [
+				'type'    => 'select',
+				'label'   => __( 'Type', 'neve' ),
+				'choices' => $this->get_meta_type_options(),
+			],
+			'raw_field' => [
+				'type'    => 'text',
+				'label'   => __( 'Field', 'neve' ),
+				'type_is' => 'raw'
+			],
+		];
+
+		if( class_exists( 'ACF', false ) ){
+			$fields['acf_field'] = [
+				'type'    => 'select',
+				'label'   => __( 'Field', 'neve' ),
+				'type_is' => 'acf',
+				'choices' => $this->get_acf_options(),
+			];
+		}
+
+		if ( defined( 'TYPES_ABSPATH' ) ) {
+			$fields['toolset_field'] = [
+				'type' => 'select',
+				'label' => __( 'Field', 'neve' ),
+				'type_is' => 'toolset',
+				'choices' => $this->get_toolset_options(),
+			];
+		}
+
+		if ( class_exists( '\MBB\Parsers\MetaBox') ) {
+			$fields['metabox_field'] = [
+				'type' => 'select',
+				'label' => __( 'Field', 'neve' ),
+				'type_is' => 'metabox',
+				'choices' => $this->get_metabox_options(),
+			];
+		}
+
+		$fields['after'] = [
+			'type' => 'text',
+			'label' => __( 'After', 'neve' ),
+		];
+		$fields['before'] = [
+			'type' => 'text',
+			'label' => __( 'Before', 'neve' ),
+		];
+		$fields['fallback'] = [
+			'type' => 'text',
+			'label' => __( 'Fallback', 'neve' ),
+		];
+
+		return $fields;
+	}
+
+	/**
 	 * Add controls for post meta.
 	 */
 	private function add_post_meta_controls() {
@@ -513,40 +657,11 @@ class Layout_Blog extends Base_Customizer {
 					'default' => wp_json_encode( $order_default_components ),
 				],
 				[
-					'label'           => esc_html__( 'Meta Order2', 'neve' ),
-					'section'         => $this->section,
-					'fields'          => [
-//						 'title'           => [
-//							 'type'  => 'text',
-//							 'label' => esc_html__( 'Title', 'neve' ),
-//						 ],
-						 'type'  => [
-							 'type'    => 'select',
-							 'label'   => __( 'Social Network', 'neve' ),
-							 'choices' => [
-								 'facebook'  => 'Facebook',
-								 'twitter'   => 'Twitter',
-								 'email'     => 'Email',
-								 'pinterest' => 'Pinterest',
-								 'linkedin'  => 'LinkedIn',
-								 'tumblr'    => 'Tumblr',
-								 'reddit'    => 'Reddit',
-								 'whatsapp'  => 'WhatsApp',
-								 'sms'       => 'SMS',
-								 'vk'        => 'VKontakte',
-							 ],
-						 ],
-//						 'display_desktop' => [
-//							 'type'  => 'checkbox',
-//							 'label' => esc_html__( 'Show on Desktop', 'neve' ),
-//						 ],
-						// 'display_mobile'  => [
-						// 'type'  => 'checkbox',
-						// 'label' => esc_html__( 'Show on Mobile', 'neve' ),
-						// ],
-					],
-					'priority'        => 71,
-					'active_callback' => array( $this, 'should_show_meta_order' ),
+					'label'            => esc_html__( 'Meta Order2', 'neve' ),
+					'section'          => $this->section,
+					'fields'           => $this->get_meta_repeater_fields(),
+					'priority'         => 71,
+					'active_callback'  => array( $this, 'should_show_meta_order' ),
 				],
 				'\Neve\Customizer\Controls\React\Repeater'
 			)
