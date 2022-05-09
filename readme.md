@@ -19,6 +19,18 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.2.4](https://github.com/Codeinwp/neve/compare/v3.2.3...v3.2.4) (2022-05-05)
+
+- [Feat] Gradient support for color controls
+- [Fix] Missing top margin for the featured post when the title is disabled
+- [Fix] The title on archives disappears when the page title has the cover layout
+- [Fix] Fixed the styles for the search widget prior to 5.8 on the new skin
+- [Fix] Add padding for submenu items in the sidebar menu
+- [Fix] Shop sidebar with the off-canvas layout not working when content width is above 95%
+
+
+
+
 ##### [Version 3.2.3](https://github.com/Codeinwp/neve/compare/v3.2.2...v3.2.3) (2022-04-20)
 
 - [Feat] Add Xing to the icon list

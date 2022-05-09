@@ -182,7 +182,7 @@ class Dynamic_Selector {
 			// we use that value for all devices.
 			if ( is_string( $value ) ) {
 				$decoded_value = json_decode( $value, true );
-				$value         = $decoded_value !== false ? $decoded_value : $value;
+				$value         = $decoded_value !== null ? $decoded_value : $value;
 			}
 
 			return isset( $value[ $this->get_device() ] ) ? $value[ $this->get_device() ] : ( ( is_string( $value ) || is_numeric( $value ) ) ? $value : false );
