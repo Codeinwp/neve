@@ -428,204 +428,6 @@ class Layout_Blog extends Base_Customizer {
 	}
 
 	/**
-	 * @return array
-	 */
-	private function get_meta_default_data() {
-		$new_control_data = [];
-
-		$order_default_components = array(
-			'author',
-			'date',
-			'comments',
-		);
-
-		$components = apply_filters(
-			'neve_meta_filter',
-			array(
-				'author'   => __( 'Author', 'neve' ),
-				'category' => __( 'Category', 'neve' ),
-				'date'     => __( 'Date', 'neve' ),
-				'comments' => __( 'Comments', 'neve' ),
-			)
-		);
-
-		$default_data = get_theme_mod( 'neve_post_meta_ordering', wp_json_encode( $order_default_components ) );
-		if ( empty( $default_data ) ) {
-			return $new_control_data;
-		}
-
-		$default_data = json_decode( $default_data, true );
-		if ( ! is_array( $default_data ) ) {
-			return $new_control_data;
-		}
-
-		foreach ( $default_data as $meta_component ) {
-			if ( ! array_key_exists( $meta_component, $components ) ) {
-				continue;
-			}
-			$new_control_data[ $meta_component ] = [
-				'title'      => $components[ $meta_component ],
-				'visibility' => 'yes',
-				'hasOptions' => 'no',
-			];
-		}
-
-		foreach ( $components as $component_id => $label ) {
-			if ( array_key_exists( $component_id, $new_control_data ) ) {
-				continue;
-			}
-			$new_control_data[ $component_id ] = [
-				'title'      => $label,
-				'visibility' => 'no',
-				'hasOptions' => 'no',
-			];
-		}
-
-		return array_values( $new_control_data );
-	}
-
-	/**
-	 * @return array
-	 */
-	private function get_acf_options() {
-		$acf_options = [];
-		$groups = acf_get_field_groups(array('post_type' => 'post'));
-		foreach ( $groups as $group ){
-			$fields = acf_get_fields($group['key']);
-			if ( ! empty( $fields ) ){
-				foreach ( $fields as $field ){
-					$acf_options[$field['key']] = $field['label'];
-				}
-			}
-		}
-		return $acf_options;
-	}
-
-	/**
-	 * @return array
-	 */
-	private function get_toolset_options() {
-		$toolset_options = [];
-		$groups = apply_filters('wpcf_get_groups_by_post_type', 'post');
-		if( empty( $groups ) || ! is_array( $groups ) ){
-			return $toolset_options;
-		}
-
-		foreach( $groups as $group_id => $group_data ) {
-			$fields_from_group = apply_filters('wpcf_fields_by_group', $group_id);
-			if ( empty( $fields_from_group ) || ! is_array( $fields_from_group ) ) {
-				continue;
-			}
-
-			foreach ( $fields_from_group as $group_slug => $group_data ){
-				$toolset_options['wpcf-' . $group_slug] = $group_data['name'];
-			}
-		}
-
-		return $toolset_options;
-	}
-
-	/**
-	 * @return array
-	 */
-	private function get_metabox_options(){
-		$metabox_options = [];
-		if ( ! function_exists( 'rwmb_get_object_fields' ) ){
-			return $metabox_options;
-		}
-
-		$fields = rwmb_get_object_fields( 'post' );
-		if( empty( $fields ) || ! is_array( $fields ) ) {
-			return $metabox_options;
-		}
-		foreach ( $fields as $field_id => $field_data ) {
-			$metabox_options[$field_id] = $field_data['field_name'];
-		}
-
-		return $metabox_options;
-	}
-
-	/**
-	 * @return array
-	 */
-	private function get_meta_type_options() {
-		$fields_type = [
-			'raw' => __( 'Post Meta', 'neve' ),
-		];
-		if( class_exists( 'ACF', false ) ){
-			$fields_type['acf'] = 'ACF';
-		}
-
-		if ( defined( 'TYPES_ABSPATH' ) ) {
-			$fields_type['toolset'] = 'Toolset';
-		}
-		if ( class_exists( '\MBB\Parsers\MetaBox') ) {
-			$fields_type['metabox'] = 'Metabox';
-		}
-		return $fields_type;
-	}
-
-	/**
-	 * @return array[]
-	 */
-	private function get_meta_repeater_fields() {
-		$fields = [
-			'type'  => [
-				'type'    => 'select',
-				'label'   => __( 'Type', 'neve' ),
-				'choices' => $this->get_meta_type_options(),
-			],
-			'raw_field' => [
-				'type'    => 'text',
-				'label'   => __( 'Field', 'neve' ),
-				'type_is' => 'raw'
-			],
-		];
-
-		if( class_exists( 'ACF', false ) ){
-			$fields['acf_field'] = [
-				'type'    => 'select',
-				'label'   => __( 'Field', 'neve' ),
-				'type_is' => 'acf',
-				'choices' => $this->get_acf_options(),
-			];
-		}
-
-		if ( defined( 'TYPES_ABSPATH' ) ) {
-			$fields['toolset_field'] = [
-				'type' => 'select',
-				'label' => __( 'Field', 'neve' ),
-				'type_is' => 'toolset',
-				'choices' => $this->get_toolset_options(),
-			];
-		}
-
-		if ( class_exists( '\MBB\Parsers\MetaBox') ) {
-			$fields['metabox_field'] = [
-				'type' => 'select',
-				'label' => __( 'Field', 'neve' ),
-				'type_is' => 'metabox',
-				'choices' => $this->get_metabox_options(),
-			];
-		}
-
-		$fields['after'] = [
-			'type' => 'text',
-			'label' => __( 'After', 'neve' ),
-		];
-		$fields['before'] = [
-			'type' => 'text',
-			'label' => __( 'Before', 'neve' ),
-		];
-		$fields['fallback'] = [
-			'type' => 'text',
-			'label' => __( 'Fallback', 'neve' ),
-		];
-
-		return $fields;
-	}
-
-	/**
 	 * Add controls for post meta.
 	 */
 	private function add_post_meta_controls() {
@@ -648,18 +450,29 @@ class Layout_Blog extends Base_Customizer {
 			)
 		);
 
-		$order_default_components = $this->get_meta_default_data();
+		$default_value = $this->get_meta_default_data();
+		$components    = apply_filters(
+			'neve_meta_filter',
+			array(
+				'author'   => __( 'Author', 'neve' ),
+				'category' => __( 'Category', 'neve' ),
+				'date'     => __( 'Date', 'neve' ),
+				'comments' => __( 'Comments', 'neve' ),
+			)
+		);
+
 		$this->add_control(
 			new Control(
-				'neve_post_meta_ordering_new',
+				'neve_post_meta_fields',
 				[
 					// 'sanitize_callback' => [ $this, 'sanitize_sharing_icons_repeater' ],
-					'default' => wp_json_encode( $order_default_components ),
+					'default' => wp_json_encode( $default_value ),
 				],
 				[
-					'label'            => esc_html__( 'Meta Order2', 'neve' ),
+					'label'            => esc_html__( 'Meta Order', 'neve' ),
 					'section'          => $this->section,
-					'fields'           => $this->get_meta_repeater_fields(),
+					'components'       => $components,
+					'allow_new_fields' => 'no',
 					'priority'         => 71,
 					'active_callback'  => array( $this, 'should_show_meta_order' ),
 				],

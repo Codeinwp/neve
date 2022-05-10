@@ -25,6 +25,7 @@ function neve_run() {
 			'featured_post'         => true,
 			'php81_react_ctrls_fix' => true,
 			'gradient_picker'       => true,
+			'meta_custom_fields'    => true,
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';

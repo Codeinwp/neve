@@ -54,7 +54,7 @@ const Repeater = ({ fields, allowNew, value, onUpdate }) => {
 	const setList = (l) => {
 		const final = l.map((i) => {
 			Object.keys(i).forEach((k) => {
-				if (![...Object.keys(fields), 'title', 'visibility', 'hasOptions'].includes(k)) {
+				if (![...Object.keys(fields), 'title', 'visibility', 'blocked', 'slug'].includes(k)) {
 					delete i[k];
 				}
 			});

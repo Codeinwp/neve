@@ -90,18 +90,28 @@ class Post_Meta extends Base_View {
 	 * @param int | null $post_id Post id.
 	 */
 	public function render_meta_list( $order, $as_list = true, $post_id = null ) {
+		;
 		if ( ! is_array( $order ) || empty( $order ) ) {
 			return;
 		}
+
+		$order = array_filter(
+			$order,
+			function ( $el ) {
+				return isset( $el->visibility ) && $el->visibility === 'yes';
+			}
+		);
+
 		$order = $this->sanitize_order_array( $order );
 
-		$pid       = $post_id ? $post_id : get_the_ID();
+		$pid       = $post_id ?: get_the_ID();
 		$post_type = get_post_type( $pid );
 		$markup    = $as_list === true ? '<ul class="nv-meta-list">' : '<span class="nv-meta-list nv-dynamic-meta">';
 		$index     = 1;
 		$tag       = $as_list === true ? 'li' : 'span';
 		foreach ( $order as $meta ) {
-			switch ( $meta ) {
+			$slug = $meta->slug ?? 'custom';
+			switch ( $slug ) {
 				case 'author':
 					$markup .= '<' . $tag . '  class="meta author vcard">';
 					$markup .= self::neve_get_author_meta( $post_id );
@@ -160,6 +170,11 @@ class Post_Meta extends Base_View {
 					$markup .= $reading_time;
 					$markup .= '</' . $tag . '>';
 					break;
+				case 'custom':
+					ob_start();
+					do_action( 'neve_do_custom_meta', $meta, $tag );
+					$markup .= ob_get_clean();
+					break;
 				case 'default':
 				default:
 					break;
@@ -187,8 +202,8 @@ class Post_Meta extends Base_View {
 				'comments' => __( 'Comments', 'neve' ),
 			)
 		);
-		foreach ( $order as $index => $value ) {
-			if ( ! array_key_exists( $value, $allowed_order_values ) ) {
+		foreach ( $order as $index => $meta_item ) {
+			if ( isset( $meta_item->blocked ) && isset( $meta_item->slug ) && ! array_key_exists( $meta_item->slug, $allowed_order_values ) ) {
 				unset( $order[ $index ] );
 			}
 		}
