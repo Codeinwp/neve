@@ -15,8 +15,7 @@
 	"source": "https://github.com/Codeinwp/neve"
   },
   "require": {
-	"codeinwp/themeisle-sdk": "^3.0",
-    "wptt/webfont-loader": "^1.1"
+	"codeinwp/themeisle-sdk": "^3.0"
   },
   "autoload": {
 	"psr-4": {
