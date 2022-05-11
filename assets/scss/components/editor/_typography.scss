@@ -75,11 +75,11 @@ $headings: [h1,h2,h3,h4,h5,h6];
 
 .editor-post-title__block .editor-post-title__input {
 	color: var(--nv-text-color);
-	font-size: var(--h1FontSize);
-	font-weight: var(--h1FontWeight);
-	line-height: var(--h1LineHeight);
-	letter-spacing: var(--h1LetterSpacing);
-	text-transform: var(--h1TextTransform);
+	font-size: var(--h1fontsize);
+	font-weight: var(--h1fontweight);
+	line-height: var(--h1lineheight);
+	letter-spacing: var(--h1letterspacing);
+	text-transform: var(--h1texttransform);
 }
 
 // Lists

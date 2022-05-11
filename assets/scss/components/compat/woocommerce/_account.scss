@@ -9,7 +9,7 @@ body.woocommerce-account {
 	}
 
 	.woocommerce > h2 {
-		font-size: var(--h4FontSize);
+		font-size: var(--h4fontsize);
 		margin-bottom: 0;
 	}
 
@@ -37,7 +37,7 @@ body.woocommerce-account {
 	}
 
 	h2 {
-		--h2FontSize: var(--h3FontSize);
+		--h2fontsize: var(--h3fontsize);
 	}
 
 	table.my_account_orders {

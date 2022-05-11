@@ -138,33 +138,33 @@
 }
 
 %nv-has-h1-typography {
-	font-size: var(--fontsize, var(--h1FontSize));
-	font-weight: var(--fontweight, var(--h1FontWeight));
-	line-height: var(--lineheight, var(--h1LineHeight));
-	letter-spacing: var(--letterspacing, var(--h1LetterSpacing));
-	text-transform: var(--texttransform, var(--h1TextTransform));
+	font-size: var(--fontsize, var(--h1fontsize));
+	font-weight: var(--fontweight, var(--h1fontweight));
+	line-height: var(--lineheight, var(--h1lineheight));
+	letter-spacing: var(--letterspacing, var(--h1letterspacing));
+	text-transform: var(--texttransform, var(--h1texttransform));
 }
 
 %nv-has-h2-typography {
-	font-size: var(--fontsize, var(--h2FontSize));
-	font-weight: var(--fontweight, var(--h2FontWeight));
-	line-height: var(--lineheight, var(--h2LineHeight));
-	letter-spacing: var(--letterspacing, var(--h2LetterSpacing));
-	text-transform: var(--texttransform, var(--h2TextTransform));
+	font-size: var(--fontsize, var(--h2fontsize));
+	font-weight: var(--fontweight, var(--h2fontweight));
+	line-height: var(--lineheight, var(--h2lineheight));
+	letter-spacing: var(--letterspacing, var(--h2letterspacing));
+	text-transform: var(--texttransform, var(--h2texttransform));
 }
 
 %nv-has-h3-typography {
-	font-size: var(--fontsize, var(--h3FontSize));
-	font-weight: var(--fontweight, var(--h3FontWeight));
-	line-height: var(--lineheight, var(--h3LineHeight));
-	letter-spacing: var(--letterspacing, var(--h3LetterSpacing));
-	text-transform: var(--texttransform, var(--h3TextTransform));
+	font-size: var(--fontsize, var(--h3fontsize));
+	font-weight: var(--fontweight, var(--h3fontweight));
+	line-height: var(--lineheight, var(--h3lineheight));
+	letter-spacing: var(--letterspacing, var(--h3letterspacing));
+	text-transform: var(--texttransform, var(--h3texttransform));
 }
 
 %nv-has-h4-typography {
-	font-size: var(--fontsize, var(--h4FontSize));
-	font-weight: var(--fontweight, var(--h4FontWeight));
-	line-height: var(--lineheight, var(--h4LineHeight));
-	letter-spacing: var(--letterspacing, var(--h4LetterSpacing));
-	text-transform: var(--texttransform, var(--h4TextTransform));
+	font-size: var(--fontsize, var(--h4fontsize));
+	font-weight: var(--fontweight, var(--h4fontweight));
+	line-height: var(--lineheight, var(--h4lineheight));
+	letter-spacing: var(--letterspacing, var(--h4letterspacing));
+	text-transform: var(--texttransform, var(--h4texttransform));
 }
