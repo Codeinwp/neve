@@ -64,11 +64,11 @@ $headings: [h1,h2,h3,h4,h5,h6];
 
 		&.wp-block,
 		& {
-			font-size: var(--#{$heading}FontSize);
-			font-weight: var(--#{$heading}FontWeight);
-			line-height: var(--#{$heading}LineHeight);
-			letter-spacing: var(--#{$heading}LetterSpacing);
-			text-transform: var(--#{$heading}TextTransform);
+			font-size: var(--#{$heading}fontsize);
+			font-weight: var(--#{$heading}fontweight);
+			line-height: var(--#{$heading}lineheight);
+			letter-spacing: var(--#{$heading}letterspacing);
+			text-transform: var(--#{$heading}texttransform);
 		}
 	}
 }
