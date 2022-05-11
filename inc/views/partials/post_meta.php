@@ -104,7 +104,7 @@ class Post_Meta extends Base_View {
 
 		$order = $this->sanitize_order_array( $order );
 
-		$pid       = $post_id ?: get_the_ID();
+		$pid       = $post_id ? $post_id : get_the_ID();
 		$post_type = get_post_type( $pid );
 		$markup    = $as_list === true ? '<ul class="nv-meta-list">' : '<span class="nv-meta-list nv-dynamic-meta">';
 		$index     = 1;
@@ -172,7 +172,7 @@ class Post_Meta extends Base_View {
 					break;
 				case 'custom':
 					ob_start();
-					do_action( 'neve_do_custom_meta', $meta, $tag );
+					do_action( 'neve_do_custom_meta', $meta, $tag, $pid );
 					$markup .= ob_get_clean();
 					break;
 				case 'default':

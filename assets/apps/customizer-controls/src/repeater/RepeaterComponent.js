@@ -7,22 +7,6 @@ import { maybeParseJson } from '@neve-wp/components';
 const RepeaterComponent = ({ control }) => {
 	const { components, fields } = control.params;
 
-	// const getDependencies = () => {
-	// 	const dependencies = {};
-	// 	for (const [field, fieldProps] of Object.entries(fields)) {
-	// 		const dependentOf = Object.keys(fieldProps).filter((el)=>{
-	// 				return el.includes('_is');
-	// 			})
-	// 			.map((el) => {
-	// 				return el.replace('_is', '');
-	// 			});
-	// 		if( dependentOf.length > 0 ){
-	// 			dependencies[field] = dependentOf;
-	// 		}
-	// 	}
-	// 	return dependencies;
-	// };
-
 	const normalizeValue = (val) => {
 		if (components.length === 0) {
 			return val;
@@ -51,31 +35,6 @@ const RepeaterComponent = ({ control }) => {
 				});
 			}
 		});
-
-		// const dependencies = getDependencies();
-		// finalValue.map((element) => {
-		// 	for (const [dependency, dependentOf] of Object.entries(
-		// 		dependencies
-		// 	)) {
-		// 		const compareValue = dependency.replace('_field', '');
-		// 		for (const dependentField of dependentOf) {
-		// 			// console.log('dependentField: ' + dependentField );
-		// 			// console.log('element: ');
-		// 			// console.log(element);
-		// 			// console.log('element[dependentField]: ' + element[dependentField] );
-		// 			// console.log('compareValue ' + compareValue );
-		// 			if (
-		// 				element[dependentField] &&
-		// 				element[dependentField] !== compareValue
-		// 			) {
-		// 				// console.log( 'Deleting ' + element[dependency] );
-		// 				delete element[dependency];
-		// 				// console.log( element );
-		// 			}
-		// 		}
-		// 	}
-		// 	return element;
-		// });
 
 		return finalValue;
 	};

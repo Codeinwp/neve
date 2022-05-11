@@ -28,10 +28,22 @@ const Repeater = ({ fields, allowNew, value, onUpdate }) => {
 				continue;
 			}
 
-			if (fields[field].type === 'select') {
-				newItem[field] = Object.keys(fields[field].choices)[0];
+			// If the type is variable, get the first type in the array.
+			let type = fields[field].type;
+			if (typeof type === 'object') {
+				type = Object.values(fields[field].type)[0];
+			}
+
+			// If field type is select, the default value for a new field is the first item from select options
+			if (type === 'select') {
+				let choices = fields[field].choices;
+				if (typeof Object.values(choices)[0] === 'object') {
+					choices = Object.values(fields[field].choices)[0];
+				}
+				newItem[field] = Object.keys(choices)[0];
 				continue;
 			}
+
 			newItem[field] = '';
 		}
 
@@ -54,7 +66,15 @@ const Repeater = ({ fields, allowNew, value, onUpdate }) => {
 	const setList = (l) => {
 		const final = l.map((i) => {
 			Object.keys(i).forEach((k) => {
-				if (![...Object.keys(fields), 'title', 'visibility', 'blocked', 'slug'].includes(k)) {
+				if (
+					![
+						...Object.keys(fields),
+						'title',
+						'visibility',
+						'blocked',
+						'slug',
+					].includes(k)
+				) {
 					delete i[k];
 				}
 			});

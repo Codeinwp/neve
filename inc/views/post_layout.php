@@ -9,9 +9,7 @@
 
 namespace Neve\Views;
 
-use Neve\Core\Settings\Config;
-use Neve\Core\Settings\Mods;
-use Neve\Core\Styles\Dynamic_Selector;
+use Neve\Customizer\Defaults\Layout;
 use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Options\Layout_Single_Post;
 
@@ -22,6 +20,7 @@ use Neve\Customizer\Options\Layout_Single_Post;
  */
 class Post_Layout extends Base_View {
 	use Single_Post;
+	use Layout;
 
 	/**
 	 * Function that is run after instantiation.
@@ -142,10 +141,14 @@ class Post_Layout extends Base_View {
 			return false;
 		}
 
-		$default_meta_order = get_theme_mod( 'neve_post_meta_ordering', wp_json_encode( array( 'author', 'date', 'comments' ) ) );
-		$meta_order         = get_theme_mod( 'neve_single_post_meta_ordering', $default_meta_order );
-		$meta_order         = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
-		$meta_order         = apply_filters( 'neve_post_meta_ordering_filter', $meta_order );
+		$default       = wp_json_encode( [ 'author', 'date', 'comments' ] );
+		$default_value = Layout::get_meta_default_data( 'neve_post_meta_ordering', $default );
+		$default_value = get_theme_mod( 'neve_blog_post_meta_fields', wp_json_encode( $default_value ) );
+		$default_value = get_theme_mod( 'neve_single_post_meta_fields', $default_value );
+
+		$meta_order = get_theme_mod( 'neve_single_post_meta_fields', $default_value );
+		$meta_order = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
+		$meta_order = apply_filters( 'neve_post_meta_ordering_filter', $meta_order );
 
 		do_action( 'neve_post_meta_single', $meta_order, $is_list );
 		return true;

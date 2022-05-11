@@ -18,41 +18,51 @@ const RepeaterItemContent = ({
 }) => {
 	const changeContent = (type, newData) => {
 		const newItemValue = { ...value[index] };
+
+		const needsToUpdate = fields[type].dependent;
+		if (needsToUpdate) {
+			let currentType = fields[needsToUpdate].type;
+			if (typeof currentType === 'object') {
+				currentType = currentType[newData];
+			}
+
+			if (currentType === 'select') {
+				let choices = fields[needsToUpdate].choices;
+				if (typeof choices === 'object') {
+					choices = Object.keys(choices[newData])[0];
+				}
+				newItemValue[needsToUpdate] = choices;
+			} else {
+				newItemValue[needsToUpdate] = '';
+			}
+		}
+
 		newItemValue[type] = newData;
 		onContentChange(newItemValue);
 	};
 
 	const toComponent = (key, val) => {
 		if (fields[key] === undefined) return null;
-		const dependencies = Object.keys(fields[key]).filter((el) => {
-			return el.endsWith('_is');
-		});
 
-		const hasDependency = dependencies.length > 0;
-		let shouldRun = true;
-		if (hasDependency) {
-			dependencies.forEach((el) => {
-				if (shouldRun !== false) {
-					const dependency = el.replace('_is', '');
-					if (
-						val[dependency] &&
-						val[dependency] !== fields[key][el]
-					) {
-						shouldRun = false;
-					}
+		const currentField = { ...fields[key] };
+		if (currentField.depends_on) {
+			const currentValueOfDependent = val[currentField.depends_on];
+
+			for (const [fieldName, fieldValue] of Object.entries(
+				currentField
+			)) {
+				if (typeof fieldValue === 'object') {
+					currentField[fieldName] =
+						fieldValue[currentValueOfDependent];
 				}
-			});
+			}
 		}
 
-		if (!shouldRun) {
-			return;
-		}
-
-		switch (fields[key].type) {
+		switch (currentField.type) {
 			case 'text':
 				return (
 					<TextControl
-						label={fields[key].label}
+						label={currentField.label}
 						value={value[index][key]}
 						onChange={(newData) => changeContent(key, newData)}
 						key={key + index}
@@ -61,7 +71,7 @@ const RepeaterItemContent = ({
 			case 'icon':
 				return (
 					<IconSelector
-						label={fields[key].label}
+						label={currentField.label}
 						value={value[index][key]}
 						onIconChoice={(newData) => changeContent(key, newData)}
 						icons={getIcons(18)}
@@ -72,9 +82,9 @@ const RepeaterItemContent = ({
 				return (
 					<ColorControl
 						className="repeater-color-control"
-						label={fields[key].label}
+						label={currentField.label}
 						selectedColor={value[index][key]}
-						allowGradient={fields[key].gradient || false}
+						allowGradient={currentField.gradient || false}
 						onChange={(newData) => changeContent(key, newData)}
 						key={key + index}
 					/>
@@ -83,13 +93,14 @@ const RepeaterItemContent = ({
 				const defaultOption = [
 					{ value: '', label: 'Select', disabled: true },
 				];
+
 				return (
 					<SelectControl
-						label={fields[key].label}
+						label={currentField.label}
 						value={value[index][key]}
 						onChange={(newData) => changeContent(key, newData)}
 						options={defaultOption.concat(
-							Object.entries(fields[key].choices).map(
+							Object.entries(currentField.choices).map(
 								([k, v]) => {
 									return {
 										value: k,

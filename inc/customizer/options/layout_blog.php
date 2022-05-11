@@ -450,20 +450,12 @@ class Layout_Blog extends Base_Customizer {
 			)
 		);
 
-		$default_value = $this->get_meta_default_data();
-		$components    = apply_filters(
-			'neve_meta_filter',
-			array(
-				'author'   => __( 'Author', 'neve' ),
-				'category' => __( 'Category', 'neve' ),
-				'date'     => __( 'Date', 'neve' ),
-				'comments' => __( 'Comments', 'neve' ),
-			)
-		);
 
+		$default       = wp_json_encode( [ 'author', 'date', 'comments' ] );
+		$default_value = Layout::get_meta_default_data( 'neve_post_meta_ordering', $default );
 		$this->add_control(
 			new Control(
-				'neve_post_meta_fields',
+				'neve_blog_post_meta_fields',
 				[
 					// 'sanitize_callback' => [ $this, 'sanitize_sharing_icons_repeater' ],
 					'default' => wp_json_encode( $default_value ),
@@ -471,7 +463,15 @@ class Layout_Blog extends Base_Customizer {
 				[
 					'label'            => esc_html__( 'Meta Order', 'neve' ),
 					'section'          => $this->section,
-					'components'       => $components,
+					'components'       => apply_filters(
+						'neve_meta_filter',
+						array(
+							'author'   => __( 'Author', 'neve' ),
+							'category' => __( 'Category', 'neve' ),
+							'date'     => __( 'Date', 'neve' ),
+							'comments' => __( 'Comments', 'neve' ),
+						)
+					),
 					'allow_new_fields' => 'no',
 					'priority'         => 71,
 					'active_callback'  => array( $this, 'should_show_meta_order' ),

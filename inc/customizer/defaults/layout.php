@@ -94,14 +94,8 @@ trait Layout {
 	 *
 	 * @return array
 	 */
-	private function get_meta_default_data() {
+	public static function get_meta_default_data( $field, $default ) {
 		$new_control_data = [];
-
-		$order_default_components = array(
-			'author',
-			'date',
-			'comments',
-		);
 
 		$components = apply_filters(
 			'neve_meta_filter',
@@ -113,7 +107,7 @@ trait Layout {
 			)
 		);
 
-		$default_data = get_theme_mod( 'neve_post_meta_ordering', wp_json_encode( $order_default_components ) );
+		$default_data = get_theme_mod( $field, $default );
 		if ( empty( $default_data ) ) {
 			return $new_control_data;
 		}
