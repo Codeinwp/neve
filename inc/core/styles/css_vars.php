@@ -219,34 +219,34 @@ trait Css_Vars {
 			$mod_key      = $composed_key;
 			$default      = Mods::get_alternative_mod_default( $composed_key );
 
-			$rules[ '--' . $id . 'FontSize' ] = [
+			$rules[ '--' . $id . 'fontsize' ] = [
 				Dynamic_Selector::META_KEY           => $mod_key . '.fontSize',
 				Dynamic_Selector::META_DEFAULT       => $default['fontSize'],
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
 			];
 
-			$rules[ '--' . $id . 'FontWeight' ] = [
+			$rules[ '--' . $id . 'fontweight' ] = [
 				Dynamic_Selector::META_KEY     => $mod_key . '.fontWeight',
 				Dynamic_Selector::META_DEFAULT => $default['fontWeight'],
 				'font'                         => 'mods_' . Config::MODS_FONT_HEADINGS,
 			];
 
-			$rules[ '--' . $id . 'LineHeight' ] = [
+			$rules[ '--' . $id . 'lineheight' ] = [
 				Dynamic_Selector::META_KEY           => $mod_key . '.lineHeight',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $default['lineHeight'],
 				Dynamic_Selector::META_SUFFIX        => '',
 			];
 
-			$rules[ '--' . $id . 'LetterSpacing' ] = [
+			$rules[ '--' . $id . 'letterspacing' ] = [
 				Dynamic_Selector::META_KEY           => $mod_key . '.letterSpacing',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $default['letterSpacing'],
 				Dynamic_Selector::META_SUFFIX        => 'px',
 			];
 
-			$rules[ '--' . $id . 'TextTransform' ] = [
+			$rules[ '--' . $id . 'texttransform' ] = [
 				Dynamic_Selector::META_KEY     => $mod_key . '.textTransform',
 				Dynamic_Selector::META_DEFAULT => $default['textTransform'],
 			];
