@@ -64,7 +64,7 @@
 
 	td {
 		background: transparent !important;
-		font-size: var(--bodyFontSize);
+		font-size: var(--bodyfontsize);
 		padding: $spacing-xs 0;
 		border: 0;
 
@@ -141,8 +141,8 @@
 		tr:last-child {
 
 			.button {
-				--secondaryBtnPadding: 15px 40px;
-				--primaryBtnPadding: 18px 40px;
+				--secondarybtnpadding: 15px 40px;
+				--primarybtnpadding: 18px 40px;
 				margin-left: auto;
 			}
 		}
@@ -218,7 +218,7 @@
 	}
 
 	.order-total {
-		font-size: var(--bodyFontSize);
+		font-size: var(--bodyfontsize);
 
 		th {
 			font-weight: 700 !important;
@@ -243,7 +243,7 @@
 	.wc-proceed-to-checkout {
 		display: flex;
 		justify-content: flex-end;
-		--primaryBtnPadding: 15px 40px;
+		--primarybtnpadding: 15px 40px;
 	}
 }
 

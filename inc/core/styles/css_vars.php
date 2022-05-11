@@ -42,36 +42,36 @@ trait Css_Vars {
 		$default_secondary = neve_get_button_appearance_default( 'secondary' );
 
 		$rules = [
-			'--primaryBtnBg'             => [
+			'--primarybtnbg'             => [
 				Dynamic_Selector::META_KEY => $mod_key_primary . '.background',
 			],
-			'--secondaryBtnBg'           => [
+			'--secondarybtnbg'           => [
 				Dynamic_Selector::META_KEY => $mod_key_secondary . '.background',
 			],
-			'--primaryBtnHoverBg'        => [
+			'--primarybtnhoverbg'        => [
 				Dynamic_Selector::META_KEY => $mod_key_primary . '.backgroundHover',
 			],
-			'--secondaryBtnHoverBg'      => [
+			'--secondarybtnhoverbg'      => [
 				Dynamic_Selector::META_KEY => $mod_key_secondary . '.backgroundHover',
 			],
-			'--primaryBtnColor'          => [
+			'--primarybtncolor'          => [
 				Dynamic_Selector::META_KEY => $mod_key_primary . '.text',
 			],
-			'--secondaryBtnColor'        => [
+			'--secondarybtncolor'        => [
 				Dynamic_Selector::META_KEY => $mod_key_secondary . '.text',
 			],
-			'--primaryBtnHoverColor'     => [
+			'--primarybtnhovercolor'     => [
 				Dynamic_Selector::META_KEY => $mod_key_primary . '.textHover',
 			],
-			'--secondaryBtnHoverColor'   => [
+			'--secondarybtnhovercolor'   => [
 				Dynamic_Selector::META_KEY => $mod_key_secondary . '.textHover',
 			],
-			'--primaryBtnBorderRadius'   => [
+			'--primarybtnborderradius'   => [
 				Dynamic_Selector::META_KEY    => $mod_key_primary . '.borderRadius',
 				Dynamic_Selector::META_SUFFIX => 'px',
 				'directional-prop'            => Config::CSS_PROP_BORDER_RADIUS,
 			],
-			'--secondaryBtnBorderRadius' => [
+			'--secondarybtnborderradius' => [
 				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.borderRadius',
 				Dynamic_Selector::META_SUFFIX => 'px',
 				'directional-prop'            => Config::CSS_PROP_BORDER_RADIUS,
@@ -84,14 +84,14 @@ trait Css_Vars {
 
 		// Border Width
 		if ( isset( $primary_values['type'] ) && $primary_values['type'] === 'outline' ) {
-			$rules['--primaryBtnBorderWidth'] = [
+			$rules['--primarybtnborderwidth'] = [
 				Dynamic_Selector::META_KEY    => $mod_key_primary . '.borderWidth',
 				Dynamic_Selector::META_SUFFIX => 'px',
 				'directional-prop'            => Config::CSS_PROP_BORDER_WIDTH,
 			];
 		}
 		if ( isset( $secondary_values['type'] ) && $secondary_values['type'] === 'outline' ) {
-			$rules['--secondaryBtnBorderWidth'] = [
+			$rules['--secondarybtnborderwidth'] = [
 				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.borderWidth',
 				Dynamic_Selector::META_SUFFIX => 'px',
 				'directional-prop'            => Config::CSS_PROP_BORDER_WIDTH,
@@ -101,7 +101,7 @@ trait Css_Vars {
 		$mod_key_primary       = Config::MODS_BUTTON_PRIMARY_PADDING;
 		$default_primary       = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_PADDING );
 
-		$rules['--btnPadding'] = [
+		$rules['--btnpadding'] = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary,
 			Dynamic_Selector::META_DEFAULT       => $default_primary,
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
@@ -136,9 +136,9 @@ trait Css_Vars {
 						$paddings[ $btn_type ][ $direction ] = $padding_value - $border_width[ $direction ];
 					}
 				}
-				$final_value_default   = Css_Prop::transform_directional_prop( $meta, $device, $value, '--btnPadding', Config::CSS_PROP_PADDING );
-				$final_value_primary   = Css_Prop::transform_directional_prop( $meta, $device, $paddings['primary'], '--primaryBtnPadding', Config::CSS_PROP_PADDING );
-				$final_value_secondary = Css_Prop::transform_directional_prop( $meta, $device, $paddings['secondary'], '--secondaryBtnPadding', Config::CSS_PROP_PADDING );
+				$final_value_default   = Css_Prop::transform_directional_prop( $meta, $device, $value, '--btnpadding', Config::CSS_PROP_PADDING );
+				$final_value_primary   = Css_Prop::transform_directional_prop( $meta, $device, $paddings['primary'], '--primarybtnpadding', Config::CSS_PROP_PADDING );
+				$final_value_secondary = Css_Prop::transform_directional_prop( $meta, $device, $paddings['secondary'], '--secondarybtnpadding', Config::CSS_PROP_PADDING );
 
 				return $final_value_default . $final_value_primary . $final_value_secondary;
 			},
@@ -146,24 +146,24 @@ trait Css_Vars {
 		];
 
 		$mod_key_primary             = Config::MODS_BUTTON_TYPEFACE;
-		$rules['--btnFs']            = [
+		$rules['--btnfs']            = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary . '.fontSize',
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
 		];
-		$rules['--btnLineHeight']    = [
+		$rules['--btnlineheight']    = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary . '.lineHeight',
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
 		];
-		$rules['--btnLetterSpacing'] = [
+		$rules['--btnletterspacing'] = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary . '.letterSpacing',
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
 			Dynamic_Selector::META_SUFFIX        => 'px',
 		];
-		$rules['--btnTextTransform'] = [
+		$rules['--btntexttransform'] = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary . '.textTransform',
 			Dynamic_Selector::META_IS_RESPONSIVE => false,
 		];
-		$rules['--btnFontWeight']    = [
+		$rules['--btnfontweight']    = [
 			Dynamic_Selector::META_KEY => $mod_key_primary . '.fontWeight',
 		];
 
@@ -180,37 +180,37 @@ trait Css_Vars {
 		$mod_key = Config::MODS_TYPEFACE_GENERAL;
 
 		$rules = [
-			'--bodyFontFamily'     => [
+			'--bodyfontfamily'     => [
 				Dynamic_Selector::META_KEY     => Config::MODS_FONT_GENERAL,
 				Dynamic_Selector::META_DEFAULT => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 			],
-			'--bodyFontSize'       => [
+			'--bodyfontsize'       => [
 				Dynamic_Selector::META_KEY           => $mod_key . '.fontSize',
 				Dynamic_Selector::META_DEFAULT       => $default['fontSize'],
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
 			],
-			'--bodyLineHeight'     => [
+			'--bodylineheight'     => [
 				Dynamic_Selector::META_KEY           => $mod_key . '.lineHeight',
 				Dynamic_Selector::META_DEFAULT       => $default['lineHeight'],
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => '',
 			],
-			'--bodyLetterSpacing'  => [
+			'--bodyletterspacing'  => [
 				Dynamic_Selector::META_KEY           => $mod_key . '.letterSpacing',
 				Dynamic_Selector::META_DEFAULT       => $default['letterSpacing'],
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
 			],
-			'--bodyFontWeight'     => [
+			'--bodyfontweight'     => [
 				Dynamic_Selector::META_KEY     => $mod_key . '.fontWeight',
 				Dynamic_Selector::META_DEFAULT => $default['fontWeight'],
 				'font'                         => 'mods_' . Config::MODS_FONT_HEADINGS,
 			],
-			'--bodyTextTransform'  => [
+			'--bodytexttransform'  => [
 				Dynamic_Selector::META_KEY => $mod_key . '.textTransform',
 			],
-			'--headingsFontFamily' => [
+			'--headingsfontfamily' => [
 				Dynamic_Selector::META_KEY => Config::MODS_FONT_HEADINGS,
 			],
 		];

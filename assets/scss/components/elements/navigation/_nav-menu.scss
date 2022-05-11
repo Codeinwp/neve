@@ -10,7 +10,7 @@
 }
 
 .dd-title {
-	flex-grow: var(--flexG);
+	flex-grow: var(--flexg);
 	display: flex;
 	align-items: center;
 }
@@ -32,7 +32,7 @@
 	}
 
 	li > a:hover {
-		color: var(--hoverColor);
+		color: var(--hovercolor);
 	}
 
 	> li {
@@ -44,7 +44,7 @@
 		position: relative;
 
 		&.current-menu-item > a:not([href*="#"]) {
-			color: var(--activeColor);
+			color: var(--activecolor);
 		}
 
 		&:hover > .sub-menu,
@@ -67,7 +67,7 @@
 	}
 
 	.sub-menu {
-		background: var(--bgColor, var(--overlayColor));
+		background: var(--bgcolor, var(--overlaycolor));
 		z-index: 100;
 		position: absolute;
 		top: 100%;

@@ -9,12 +9,12 @@
 	}
 
 	img {
-		max-width: var(--maxWidth);
+		max-width: var(--maxwidth);
 		display: block;
 		margin: 0 auto;
 
 		&[src$=".svg"] {
-			width: var(--maxWidth);
+			width: var(--maxwidth);
 		}
 	}
 
@@ -32,9 +32,9 @@
 	p {
 		font-size: 24px;
 		font-weight: var(--h1FontWeight);
-		line-height: var(--bodyLineHeight);
-		letter-spacing: var(--bodyLetterSpacing);
-		text-transform: var(--textTransform, var(--bodyTextTransform));
+		line-height: var(--bodylineheight);
+		letter-spacing: var(--bodyletterspacing);
+		text-transform: var(--texttransform, var(--bodytexttransform));
 		margin: 0;
 	}
 

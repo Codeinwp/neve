@@ -546,7 +546,7 @@ class Metabox_Settings {
 			return $style;
 		}
 
-		$style .= '--textAlign:' . esc_attr( $title_meta_alignment ) . ';';
+		$style .= '--textalign:' . esc_attr( $title_meta_alignment ) . ';';
 		if ( $context === 'cover' ) {
 			$justify_map = [
 				'left'   => 'flex-start',

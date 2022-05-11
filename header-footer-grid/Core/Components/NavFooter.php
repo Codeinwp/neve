@@ -115,7 +115,7 @@ class NavFooter extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar' => [
-						'vars'     => '--hoverColor',
+						'vars'     => '--hovercolor',
 						'selector' => '.builder-item--' . $this->get_id(),
 					],
 					[
@@ -333,7 +333,7 @@ class NavFooter extends Abstract_Component {
 			'--color'      => [
 				Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::COLOR_ID,
 			],
-			'--hoverColor' => [
+			'--hovercolor' => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
 			],

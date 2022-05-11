@@ -7,12 +7,12 @@ html {
 body {
 	background-color: var(--nv-site-bg);
 	color: var(--nv-text-color);
-	font-size: var(--bodyFontSize);
-	line-height: var(--bodyLineHeight);
-	letter-spacing: var(--bodyLetterSpacing);
-	font-family: var(--bodyFontFamily), var(--nv-fallback-ff);
-	text-transform: var(--bodyTextTransform);
-	font-weight: var(--bodyFontWeight);
+	font-size: var(--bodyfontsize);
+	line-height: var(--bodylineheight);
+	letter-spacing: var(--bodyletterspacing);
+	font-family: var(--bodyfontfamily), var(--nv-fallback-ff);
+	text-transform: var(--bodytexttransform);
+	font-weight: var(--bodyfontweight);
 	overflow-x: hidden;
 	direction: ltr;
 	-webkit-font-smoothing: antialiased;
@@ -26,7 +26,7 @@ h4,
 h5,
 h6 {
 	margin-bottom: $spacing-lg;
-	font-family: var(--headingsFontFamily), var(--nv-fallback-ff);
+	font-family: var(--headingsfontfamily), var(--nv-fallback-ff);
 }
 
 p {
@@ -34,11 +34,11 @@ p {
 }
 
 a {
-	--linkDeco: none;
+	--linkdeco: none;
 
 	color: var(--nv-primary-accent);
 	cursor: pointer;
-	text-decoration: var(--linkDeco);
+	text-decoration: var(--linkdeco);
 
 	&:hover,
 	&:focus {
@@ -53,7 +53,7 @@ a {
 .nv-comment-content {
 
 	a:not([class]) {
-		--linkDeco: underline;
+		--linkdeco: underline;
 	}
 }
 
@@ -111,9 +111,9 @@ h6 {
 
 ul,
 ol {
-	padding-left: var(--listPad, 0);
+	padding-left: var(--listpad, 0);
 }
 
 ul {
-	list-style: var(--listStyle, none);
+	list-style: var(--liststyle, none);
 }

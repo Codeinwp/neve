@@ -407,7 +407,7 @@ abstract class Abstract_Builder implements Builder {
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'responsive'           => true,
-							'vars'                 => '--rowBWidth',
+							'vars'                 => '--rowbwidth',
 							'suffix'               => 'px',
 							'fallback'             => '0',
 							'selector'             => '.' . $this->get_id() . '-' . $row_id,
@@ -447,7 +447,7 @@ abstract class Abstract_Builder implements Builder {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => [
-							'vars'     => '--rowBColor',
+							'vars'     => '--rowbcolor',
 							'selector' => '.' . $this->get_id() . '-' . $row_id,
 						],
 					],
@@ -1151,7 +1151,7 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::META_DEFAULT       => '{ desktop: 0, tablet: 0, mobile: 0 }',
 			];
 
-			$rules['--rowBWidth'] = [
+			$rules['--rowbwidth'] = [
 				Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::BOTTOM_BORDER,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
@@ -1164,7 +1164,7 @@ abstract class Abstract_Builder implements Builder {
 				},
 			];
 
-			$rules['--rowBColor'] = [
+			$rules['--rowbcolor'] = [
 				Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::BORDER_COLOR,
 				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
 			];
@@ -1192,7 +1192,7 @@ abstract class Abstract_Builder implements Builder {
 				$rules = array_merge(
 					$rules,
 					[
-						'--bgColor' => [
+						'--bgcolor' => [
 							Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
 							Dynamic_Selector::META_DEFAULT => $default_color,
 						],
@@ -1204,17 +1204,17 @@ abstract class Abstract_Builder implements Builder {
 				$rules = array_merge(
 					$rules,
 					[
-						'--overlayColor'     => [
+						'--overlaycolor'     => [
 							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
 						],
-						'--bgImage'          => [
+						'--bgimage'          => [
 							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
 							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 								$image = $this->get_row_featured_image( $value['imageUrl'], $value['useFeatured'], $meta );
 								return sprintf( '%s:%s;', $css_prop, $image );
 							},
 						],
-						'--bgPosition'       => [
+						'--bgposition'       => [
 							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
 							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 								if ( ! $this->is_valid_focus_point( $value['focusPoint'] ) ) {
@@ -1226,7 +1226,7 @@ abstract class Abstract_Builder implements Builder {
 								return sprintf( '%s:%s;', $css_prop, $parsed_position );
 							},
 						],
-						'--bgAttachment'     => [
+						'--bgattachment'     => [
 							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
 							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 								if ( ! isset( $value['fixed'] ) || $value['fixed'] !== true ) {
@@ -1236,7 +1236,7 @@ abstract class Abstract_Builder implements Builder {
 								return sprintf( '%s:fixed;', $css_prop );
 							},
 						],
-						'--bgOverlayOpacity' => [
+						'--bgoverlayopacity' => [
 							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
 							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 								if ( ! isset( $value['overlayOpacity'] ) ) {
@@ -2002,8 +2002,8 @@ abstract class Abstract_Builder implements Builder {
 					'cssVar' => [
 						'vars'       => [
 							'--justify',
-							'--textAlign',
-							'--flexG',
+							'--textalign',
+							'--flexg',
 						],
 						'valueRemap' => [
 							'--justify' => [
@@ -2011,7 +2011,7 @@ abstract class Abstract_Builder implements Builder {
 								'center' => 'center',
 								'right'  => 'flex-end',
 							],
-							'--flexG'   => [
+							'--flexg'   => [
 								'left'   => '1',
 								'center' => '0',
 								'right'  => '0',
@@ -2177,7 +2177,7 @@ abstract class Abstract_Builder implements Builder {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar' => [
-						'vars'     => '--vAlign',
+						'vars'     => '--valign',
 						'selector' => '.' . $this->get_id() . '-' . $row_id . ' .row',
 					],
 					'is_for' => 'vertical',
@@ -2298,12 +2298,12 @@ abstract class Abstract_Builder implements Builder {
 						},
 						Dynamic_Selector::META_DEFAULT => $align_default,
 					],
-					'--textAlign' => [
+					'--textalign' => [
 						Dynamic_Selector::META_KEY     => $align_id,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 						Dynamic_Selector::META_DEFAULT => $align_default,
 					],
-					'--flexG'     => [
+					'--flexg'     => [
 						Dynamic_Selector::META_KEY     => $align_id,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 						Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) {
@@ -2371,7 +2371,7 @@ abstract class Abstract_Builder implements Builder {
 						return sprintf( '%s:%s;', $css_prop, $proportions );
 					},
 				],
-				'--vAlign'                          => [
+				'--valign'                          => [
 					Dynamic_Selector::META_KEY     => $mods_prefix . self::VERTICAL_ALIGN,
 					Dynamic_Selector::META_DEFAULT => 'flex-start',
 				],

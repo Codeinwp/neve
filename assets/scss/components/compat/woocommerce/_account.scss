@@ -41,13 +41,13 @@ body.woocommerce-account {
 	}
 
 	table.my_account_orders {
-		font-size: var(--bodyFontSize);
+		font-size: var(--bodyfontsize);
 	}
 
 	table {
 		border: 0 !important;
-		--primaryBtnFs: 0.9em;
-		--primaryBtnPadding: 8px 30px;
+		--primarybtnfs: 0.9em;
+		--primarybtnpadding: 8px 30px;
 
 		td {
 			border: 0 !important;
