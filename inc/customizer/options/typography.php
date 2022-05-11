@@ -284,17 +284,17 @@ class Typography extends Base_Customizer {
 						'live_refresh_css_prop' => [
 							'cssVar' => [
 								'vars'     => [
-									'--' . $heading_id . 'TextTransform' => 'textTransform',
-									'--' . $heading_id . 'FontWeight'    => 'fontWeight',
-									'--' . $heading_id . 'FontSize'      => [
+									'--' . $heading_id . 'texttransform' => 'textTransform',
+									'--' . $heading_id . 'fontweight'    => 'fontWeight',
+									'--' . $heading_id . 'fontsize'      => [
 										'key'        => 'fontSize',
 										'responsive' => true,
 									],
-									'--' . $heading_id . 'LineHeight'    => [
+									'--' . $heading_id . 'lineheight'    => [
 										'key'        => 'lineHeight',
 										'responsive' => true,
 									],
-									'--' . $heading_id . 'LetterSpacing' => [
+									'--' . $heading_id . 'letterspacing' => [
 										'key'        => 'letterSpacing',
 										'suffix'     => 'px',
 										'responsive' => true,
