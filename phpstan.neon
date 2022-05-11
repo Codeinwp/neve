@@ -34,6 +34,5 @@ parameters:
         - NEVE_DEBUG
     ignoreErrors:
         - '#^Function apply_filters(_ref_array)? invoked with [34567] parameters, 2 required\.$#'
-        - '#Parameter \#2 \$default of function get_theme_mod expects#'
 includes:
     - %currentWorkingDirectory%/vendor/szepeviktor/phpstan-wordpress/extension.neon
