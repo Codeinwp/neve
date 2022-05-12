@@ -10,7 +10,7 @@
 	margin-bottom: $spacing-md;
 	flex-grow: 1;
 
-	&.hide {
+	&.hide:not(.shop-sidebar) {
 		display: none;
 	}
 }
@@ -87,6 +87,10 @@
 
 		&.nv-left {
 			padding-right: 45px;
+		}
+
+		&.hide.shop-sidebar {
+			display: none;
 		}
 	}
 }

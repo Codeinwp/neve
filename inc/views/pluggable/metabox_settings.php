@@ -443,16 +443,8 @@ class Metabox_Settings {
 			return $position;
 		}
 
-		$has_content_width = get_post_meta( $post_id, self::ENABLE_CONTENT_WIDTH, true );
-		$meta_value        = get_post_meta( $post_id, self::SIDEBAR, true );
-		$sidebar_position  = empty( $meta_value ) || $meta_value === 'default' ? $position : $meta_value;
-
-		if ( $has_content_width === 'on' ) {
-			$content_width = get_post_meta( $post_id, self::CONTENT_WIDTH, true );
-			if ( $content_width >= 95 && $sidebar_position !== 'off-canvas' ) {
-				return 'full-width';
-			}
-		}
+		$meta_value       = get_post_meta( $post_id, self::SIDEBAR, true );
+		$sidebar_position = empty( $meta_value ) || $meta_value === 'default' ? $position : $meta_value;
 
 		return $sidebar_position;
 	}
