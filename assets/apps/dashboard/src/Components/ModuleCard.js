@@ -143,13 +143,17 @@ const ModuleCard = ({
 									className="is-loading"
 								/>
 							)}
-							{!required_actions && (
-								<ToggleControl
-									checked={getModuleStatus(slug) || false}
-									onChange={(value) => {
-										setLoading(true);
-										changeOption(slug, value, true).then(
-											(r) => {
+							{!required_actions &&
+								'block_editor_booster' !== slug && (
+									<ToggleControl
+										checked={getModuleStatus(slug) || false}
+										onChange={(value) => {
+											setLoading(true);
+											changeOption(
+												slug,
+												value,
+												true
+											).then((r) => {
 												if (r.success) {
 													changeModuleStatus(
 														slug,
@@ -177,11 +181,10 @@ const ModuleCard = ({
 														'neve'
 													)
 												);
-											}
-										);
-									}}
-								/>
-							)}
+											});
+										}}
+									/>
+								)}
 						</Fragment>
 					)}
 				</div>

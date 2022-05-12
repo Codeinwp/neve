@@ -243,7 +243,10 @@ class Main {
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
-			$data['changelogPro'] = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
+			$installed_plugins       = get_plugins();
+			$is_otter_installed      = array_key_exists( 'otter-pro/otter-pro.php', $installed_plugins );
+			$data['changelogPro']    = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
+			$data['otterProInstall'] = $is_otter_installed ? esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=otter-pro%2Fotter-pro.php&plugin_status=all&paged=1&s' ), 'activate-plugin_otter-pro/otter-pro.php' ) ) : esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=install_otter_pro' ), 'install_otter_pro' ) );
 		}
 
 		if ( isset( $_GET['onboarding'] ) && $_GET['onboarding'] === 'yes' ) {
@@ -308,6 +311,8 @@ class Main {
 				$notifications[ $key ]['text'] = sprintf( __( 'We recommend that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility.', 'neve' ), wp_kses_post( $this->theme_args['name'] ), apply_filters( 'ti_wl_plugin_name', 'Neve Pro' ) );
 			}
 		}
+
+		$notifications = apply_filters( 'neve_dashboard_notifications', $notifications );
 
 		return $notifications;
 	}
