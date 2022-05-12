@@ -76,11 +76,11 @@ trait Layout {
 	}
 
 	/**
-	 * Check if we should render the mobile sidebar toggle.
+	 * Check if the shop sidebar is off-canvas.
 	 *
 	 * @return bool
 	 */
-	private function should_render_sidebar_toggle() {
+	private function shop_sidebar_is_off_canvas() {
 		if ( ! is_active_sidebar( 'shop-sidebar' ) ) {
 			return false;
 		}

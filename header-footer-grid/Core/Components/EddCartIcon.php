@@ -72,7 +72,7 @@ class EddCartIcon extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar'  => [
-						'vars'     => '--iconSize',
+						'vars'     => '--iconsize',
 						'selector' => '.builder-item--' . $this->get_id(),
 						'suffix'   => 'px',
 					],
@@ -117,7 +117,7 @@ class EddCartIcon extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar' => [
-						'vars'     => '--hoverColor',
+						'vars'     => '--hovercolor',
 						'selector' => '.builder-item--' . $this->get_id(),
 					],
 				],
@@ -147,12 +147,12 @@ class EddCartIcon extends Abstract_Component {
 	 */
 	public function add_style( array $css_array = array() ) {
 		$rules = [
-			'--iconSize'   => [
+			'--iconsize'   => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
 				Dynamic_Selector::META_SUFFIX  => 'px',
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SIZE_ID ),
 			],
-			'--labelSize'  => [
+			'--labelsize'  => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::LABEL_SIZE_ID,
 				Dynamic_Selector::META_SUFFIX  => 'px',
 				Dynamic_Selector::META_DEFAULT => 15,
@@ -161,7 +161,7 @@ class EddCartIcon extends Abstract_Component {
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
 			],
-			'--hoverColor' => [
+			'--hovercolor' => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
 			],

@@ -142,15 +142,15 @@ class Button extends Abstract_Component {
 				'live_refresh_css_prop' => [
 					'cssVar' => [
 						'vars'     => [
-							'--primaryBtnBg'           => 'background',
-							'--primaryBtnColor'        => 'text',
-							'--primaryBtnHoverBg'      => 'backgroundHover',
-							'--primaryBtnHoverColor'   => 'textHover',
-							'--primaryBtnBorderRadius' => [
+							'--primarybtnbg'           => 'background',
+							'--primarybtncolor'        => 'text',
+							'--primarybtnhoverbg'      => 'backgroundHover',
+							'--primarybtnhovercolor'   => 'textHover',
+							'--primarybtnborderradius' => [
 								'key'    => 'borderRadius',
 								'suffix' => 'px',
 							],
-							'--primaryBtnBorderWidth'  => [
+							'--primarybtnborderwidth'  => [
 								'key'    => 'borderWidth',
 								'suffix' => 'px',
 							],
@@ -218,18 +218,18 @@ class Button extends Abstract_Component {
 		$value = get_theme_mod( $id );
 
 		$rules = [
-			'--primaryBtnBg'           => [ Dynamic_Selector::META_KEY => $id . '.background' ],
-			'--primaryBtnColor'        => [ Dynamic_Selector::META_KEY => $id . '.text' ],
-			'--primaryBtnHoverBg'      => [ Dynamic_Selector::META_KEY => $id . '.backgroundHover' ],
-			'--primaryBtnHoverColor'   => [ Dynamic_Selector::META_KEY => $id . '.textHover' ],
-			'--primaryBtnBorderRadius' => [
+			'--primarybtnbg'           => [ Dynamic_Selector::META_KEY => $id . '.background' ],
+			'--primarybtncolor'        => [ Dynamic_Selector::META_KEY => $id . '.text' ],
+			'--primarybtnhoverbg'      => [ Dynamic_Selector::META_KEY => $id . '.backgroundHover' ],
+			'--primarybtnhovercolor'   => [ Dynamic_Selector::META_KEY => $id . '.textHover' ],
+			'--primarybtnborderradius' => [
 				Dynamic_Selector::META_KEY => $id . '.borderRadius',
 				'directional-prop'         => Config::CSS_PROP_BORDER_RADIUS,
 			],
 		];
 
 		if ( isset( $value['type'] ) && $value['type'] === 'outline' ) {
-			$rules['--primaryBtnBorderWidth'] = [
+			$rules['--primarybtnborderwidth'] = [
 				Dynamic_Selector::META_KEY => $id . '.borderWidth',
 				'directional-prop'         => Config::CSS_PROP_BORDER_WIDTH,
 			];

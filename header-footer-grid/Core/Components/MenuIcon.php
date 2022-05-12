@@ -492,13 +492,13 @@ CSS;
 				'live_refresh_css_prop' => [
 					'cssVar'             => [
 						'vars'     => [
-							'--bgColor'      => 'background',
+							'--bgcolor'      => 'background',
 							'--color'        => 'text',
-							'--borderRadius' => [
+							'--borderradius' => [
 								'key'    => 'borderRadius',
 								'suffix' => 'px',
 							],
-							'--borderWidth'  => [
+							'--borderwidth'  => [
 								'key'    => 'borderWidth',
 								'suffix' => 'px',
 							],
@@ -563,13 +563,13 @@ CSS;
 		$id = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
 
 		$rules = [
-			'--bgColor'      => $id . '.background',
+			'--bgcolor'      => $id . '.background',
 			'--color'        => $id . '.text',
-			'--borderRadius' => [
+			'--borderradius' => [
 				Dynamic_Selector::META_KEY => $id . '.borderRadius',
 				'directional-prop'         => Config::CSS_PROP_BORDER_RADIUS,
 			],
-			'--borderWidth'  => [
+			'--borderwidth'  => [
 				Dynamic_Selector::META_KEY => $id . '.borderWidth',
 				'directional-prop'         => Config::CSS_PROP_BORDER_WIDTH,
 			],
@@ -579,7 +579,7 @@ CSS;
 
 
 		if ( isset( $value['type'] ) && $value['type'] !== 'outline' ) {
-			$rules ['--borderWidth']['override'] = 0;
+			$rules ['--borderwidth']['override'] = 0;
 		}
 
 		$css_array[] = [

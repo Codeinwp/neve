@@ -752,37 +752,37 @@ abstract class Abstract_Component implements Component {
 			$rules = array_merge(
 				$rules,
 				[
-					'--fontFamily'    => [
+					'--fontfamily'    => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FONT_FAMILY_ID,
 						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FONT_FAMILY_ID ),
 					],
-					'--fontSize'      => [
+					'--fontsize'      => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 						Dynamic_Selector::META_SUFFIX  => 'em',
 						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
 					],
-					'--lineHeight'    => [
+					'--lineheight'    => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.lineHeight',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'lineHeight' ),
 					],
-					'--letterSpacing' => [
+					'--letterspacing' => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.letterSpacing',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 						Dynamic_Selector::META_SUFFIX  => 'px',
 						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'letterSpacing' ),
 					],
-					'--fontWeight'    => [
+					'--fontweight'    => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontWeight',
 						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontWeight' ),
 						'font'                         => 'mods_' . $this->get_id() . '_' . self::FONT_FAMILY_ID,
 					],
-					'--textTransform' => [
+					'--texttransform' => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.textTransform',
 						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'textTransform' ),
 					],
-					'--iconSize'      => [
+					'--iconsize'      => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 						Dynamic_Selector::META_SUFFIX  => 'responsive_suffix',
@@ -795,11 +795,11 @@ abstract class Abstract_Component implements Component {
 				$css_array[] = [
 					Dynamic_Selector::KEY_SELECTOR => '.hfg-is-group.has-' . $this->get_id() . ' .inherit-ff',
 					Dynamic_Selector::KEY_RULES    => [
-						'--inheritedFF' => [
+						'--inheritedff' => [
 							Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FONT_FAMILY_ID,
 							Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FONT_FAMILY_ID ),
 						],
-						'--inheritedFW' => [
+						'--inheritedfw' => [
 							Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontWeight',
 							Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontWeight' ),
 						],
@@ -809,7 +809,7 @@ abstract class Abstract_Component implements Component {
 		}
 
 		if ( $this->has_horizontal_alignment ) {
-			$rules['--textAlign'] = [
+			$rules['--textalign'] = [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ALIGNMENT_ID,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ALIGNMENT_ID ),
@@ -900,7 +900,7 @@ abstract class Abstract_Component implements Component {
 					'live_refresh_selector' => $this->default_typography_selector,
 					'live_refresh_css_prop' => array(
 						'cssVar' => [
-							'vars'     => '--fontFamily',
+							'vars'     => '--fontfamily',
 							'selector' => '.builder-item--' . $this->get_id(),
 						],
 					),
@@ -926,17 +926,17 @@ abstract class Abstract_Component implements Component {
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => [
-								'--textTransform' => 'textTransform',
-								'--fontWeight'    => 'fontWeight',
-								'--fontSize'      => [
+								'--texttransform' => 'textTransform',
+								'--fontweight'    => 'fontWeight',
+								'--fontsize'      => [
 									'key'        => 'fontSize',
 									'responsive' => true,
 								],
-								'--lineHeight'    => [
+								'--lineheight'    => [
 									'key'        => 'lineHeight',
 									'responsive' => true,
 								],
-								'--letterSpacing' => [
+								'--letterspacing' => [
 									'key'        => 'letterSpacing',
 									'suffix'     => 'px',
 									'responsive' => true,
@@ -1053,7 +1053,7 @@ abstract class Abstract_Component implements Component {
 				'live_refresh_css_prop' => [
 					'cssVar'         => [
 						'vars'       => [
-							'--textAlign',
+							'--textalign',
 							'--justify',
 						],
 						'valueRemap' => [
