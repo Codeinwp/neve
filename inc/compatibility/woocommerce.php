@@ -227,7 +227,7 @@ class Woocommerce {
 		 * Change product page sidebar default position
 		 * Priority 9 to allow meta control to override this value
 		 */
-		add_filter( 'neve_sidebar_position', array( $this, 'product_page_sidebar_default_position' ), 9 );
+		// add_filter( 'neve_sidebar_position', array( $this, 'product_page_sidebar_default_position' ), 9 );
 
 		// Remove WooCommerce wrap.
 		remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
@@ -816,9 +816,15 @@ class Woocommerce {
 			return false;
 		}
 
-		$mod = 'neve_shop_archive_sidebar_layout';
-		if ( is_product() ) {
-			$mod = 'neve_single_product_sidebar_layout';
+		$new_skin         = neve_is_new_skin();
+		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', $new_skin );
+
+		$mod = 'neve_default_sidebar_layout';
+		if ( $advanced_options === true ) {
+			$mod = 'neve_shop_archive_sidebar_layout';
+			if ( is_product() ) {
+				$mod = 'neve_single_product_sidebar_layout';
+			}
 		}
 
 		$default   = $this->sidebar_layout_alignment_default( $mod );
