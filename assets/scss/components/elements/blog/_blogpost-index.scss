@@ -25,12 +25,12 @@
 
 	amp-img,
 	img {
-		box-shadow: var(--boxShadow, none);
+		box-shadow: var(--boxshadow, none);
 	}
 }
 
 .posts-wrapper > article {
-	width: var(--postWidth);
+	width: var(--postwidth);
 }
 
 .blog-entry-title {
@@ -116,12 +116,12 @@ article {
 body:not(.nv-blog-default) {
 
 	.posts-wrapper {
-		margin-left: calc(-1 * var(--gridSpacing, 30px) / 2);
-		margin-right: calc(-1 * var(--gridSpacing, 30px) / 2);
+		margin-left: calc(-1 * var(--gridspacing, 30px) / 2);
+		margin-right: calc(-1 * var(--gridspacing, 30px) / 2);
 
 		article {
-			margin-bottom: calc(var(--gridSpacing, 30px));
-			padding: 0 calc(var(--gridSpacing, 30px) / 2);
+			margin-bottom: calc(var(--gridspacing, 30px));
+			padding: 0 calc(var(--gridspacing, 30px) / 2);
 		}
 	}
 }

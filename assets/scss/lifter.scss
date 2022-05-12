@@ -117,10 +117,10 @@
 }
 
 .llms-form-field .select2-container .select2-selection--single{
-  background: var(--formFieldBgColor);
+  background: var(--formfieldbgcolor);
   border-style: solid;
-  border-color: var(--formFieldBorderColor);
-  border-width: var(--formFieldBorderWidth);
+  border-color: var(--formfieldbordercolor);
+  border-width: var(--formfieldborderwidth);
 }
 
 .lifterlms .select2-container--default .select2-selection--single .select2-selection__rendered,
@@ -151,13 +151,13 @@ td .llms-progress .llms-progress-bar{
 }
 
 .llms-progress .progress-bar-complete{
-	background-color: var(--lLmsPrimaryColor,var(--nv-primary-accent));
+	background-color: var(--llmsprimarycolor,var(--nv-primary-accent));
 }
 
 .llms-donut{
-  color: var(--lLmsPrimaryColor,var(--nv-primary-accent));
+  color: var(--llmsprimarycolor,var(--nv-primary-accent));
   svg path{
-	stroke: var(--lLmsPrimaryColor,var(--nv-primary-accent));
+	stroke: var(--llmsprimarycolor,var(--nv-primary-accent));
   }
 }
 

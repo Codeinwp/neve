@@ -5,21 +5,21 @@
 	align-items: center;
 
 	&:hover {
-		color: var(--hoverColor, var(--color));
+		color: var(--hovercolor, var(--color));
 	}
 
 	.nv-cart {
 		display: flex;
 
 		svg {
-			width: var(--iconSize);
-			height: var(--iconSize);
+			width: var(--iconsize);
+			height: var(--iconsize);
 		}
 	}
 
 	.edd-cart-icon-label {
 		margin-right: $spacing-xxs;
-		font-size: var(--labelSize);
+		font-size: var(--labelsize);
 	}
 
 	.edd-cart-count {

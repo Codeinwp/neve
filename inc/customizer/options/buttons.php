@@ -132,24 +132,24 @@ class Buttons extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => [
-								'--btnFs'            => [
+								'--btnfs'            => [
 									'key'        => 'fontSize',
 									'responsive' => true,
 									'suffix'     => 'px',
 								],
-								'--btnLineHeight'    => [
+								'--btnlineheight'    => [
 									'key'        => 'lineHeight',
 									'responsive' => true,
 								],
-								'--btnLetterSpacing' => [
+								'--btnletterspacing' => [
 									'key'        => 'letterSpacing',
 									'responsive' => true,
 									'suffix'     => 'px',
 								],
-								'--btnTextTransform' => [
+								'--btntexttransform' => [
 									'key' => 'textTransform',
 								],
-								'--btnFontWeight'    => [
+								'--btnfontweight'    => [
 									'key' => 'fontWeight',
 								],
 							],
