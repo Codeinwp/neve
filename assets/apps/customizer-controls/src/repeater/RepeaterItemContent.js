@@ -125,12 +125,14 @@ const RepeaterItemContent = ({
 		}
 	};
 
+	const isBlocked = value[index].blocked === 'yes';
+
 	return (
 		<div className="nv-repeater-content">
 			{Object.entries(value[index]).map(([key]) => {
 				return toComponent(key, value[index]);
 			})}
-			{value.length > 1 && (
+			{value.length > 1 && !isBlocked && (
 				<Button
 					className="nv-repeater-remove-button"
 					isDestructive

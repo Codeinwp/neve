@@ -103,17 +103,29 @@ class Post_Meta extends Base_View {
 		);
 
 		$order = $this->sanitize_order_array( $order );
+		$order = array_values( $order );
 
-		$pid       = $post_id ? $post_id : get_the_ID();
-		$post_type = get_post_type( $pid );
-		$markup    = $as_list === true ? '<ul class="nv-meta-list">' : '<span class="nv-meta-list nv-dynamic-meta">';
-		$index     = 1;
-		$tag       = $as_list === true ? 'li' : 'span';
-		foreach ( $order as $meta ) {
-			$slug = $meta->slug ?? 'custom';
+		$pid          = $post_id ? $post_id : get_the_ID();
+		$post_type    = get_post_type( $pid );
+		$markup       = $as_list === true ? '<ul class="nv-meta-list">' : '<span class="nv-meta-list nv-dynamic-meta">';
+		$index        = 1;
+		$tag          = $as_list === true ? 'li' : 'span';
+		$order_length = count( $order );
+		for ( $i = 0; $i < $order_length; $i++ ) {
+			$is_last_item = true;
+			for ( $j = $i + 1; $j < $order_length; $j++ ) {
+				if ( ! isset( $order[ $j ]->hide_on_mobile ) || $order[ $j ]->hide_on_mobile === false ) {
+					$is_last_item = false;
+					break;
+				}
+			}
+			$meta           = $order[ $i ];
+			$element_class  = $is_last_item ? 'last' : '';
+			$slug           = $meta->slug ?? 'custom';
+			$element_class .= isset( $meta->hide_on_mobile ) && $meta->hide_on_mobile === true ? ' no-mobile' : '';
 			switch ( $slug ) {
 				case 'author':
-					$markup .= '<' . $tag . '  class="meta author vcard">';
+					$markup .= '<' . $tag . '  class="meta author vcard ' . esc_attr( $element_class ) . '">';
 					$markup .= self::neve_get_author_meta( $post_id );
 					$markup .= '</' . $tag . '>';
 					break;
@@ -135,7 +147,7 @@ class Post_Meta extends Base_View {
 						$date_meta_classes[] = 'nv-show-updated';
 					}
 
-					$markup .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . '">';
+					$markup .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . ' ' . esc_attr( $element_class ) . '">';
 					$markup .= self::get_time_tags( $post_id );
 					$markup .= '</' . $tag . '>';
 					break;
@@ -144,7 +156,7 @@ class Post_Meta extends Base_View {
 						break;
 					}
 					$pid     = $post_id !== null ? $post_id : get_the_ID();
-					$markup .= '<' . $tag . ' class="meta category">';
+					$markup .= '<' . $tag . ' class="meta category ' . esc_attr( $element_class ) . '">';
 					$markup .= get_the_category_list( ', ', '', $pid );
 					$markup .= '</' . $tag . '>';
 					break;
@@ -153,7 +165,7 @@ class Post_Meta extends Base_View {
 					if ( empty( $comments ) ) {
 						break;
 					}
-					$markup .= '<' . $tag . ' class="meta comments">';
+					$markup .= '<' . $tag . ' class="meta comments ' . esc_attr( $element_class ) . '">';
 					$markup .= $comments;
 					$markup .= '</' . $tag . '>';
 					break;
@@ -166,14 +178,20 @@ class Post_Meta extends Base_View {
 					if ( empty( $reading_time ) ) {
 						break;
 					}
-					$markup .= '<' . $tag . ' class="meta reading-time">';
+					$markup .= '<' . $tag . ' class="meta reading-time ' . esc_attr( $element_class ) . '">';
 					$markup .= $reading_time;
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'custom':
 					ob_start();
 					do_action( 'neve_do_custom_meta', $meta, $tag, $pid );
-					$markup .= ob_get_clean();
+					$data = ob_get_clean();
+					if ( empty( $data ) ) {
+						break;
+					}
+					$markup .= '<' . $tag . ' class="meta custom ' . esc_attr( $element_class ) . '">';
+					$markup .= $data;
+					$markup .= '</' . $tag . '>';
 					break;
 				case 'default':
 				default:
@@ -385,6 +403,20 @@ class Post_Meta extends Base_View {
 		$custom_css  = '';
 		$custom_css .= '.nv-meta-list li.meta:not(:last-child):after { content:"' . esc_html( $separator ) . '" }';
 
+		$custom_css .= '.nv-meta-list .no-mobile{
+			display:none;
+		}';
+		$custom_css .= '.nv-meta-list li.last::after{
+			content: ""!important;
+		}';
+		$custom_css .= '@media (min-width: 769px) {
+			.nv-meta-list .no-mobile {
+				display: inline-block;
+			}
+			.nv-meta-list li.last::after {
+		 		content: "/" !important;
+			}
+		}';
 		wp_add_inline_style( 'neve-style', $custom_css );
 	}
 

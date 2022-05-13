@@ -48,7 +48,6 @@ const RepeaterItem = ({
 	};
 
 	const visible = value[itemIndex].visibility === 'yes';
-	const isBlocked = value[itemIndex].blocked === 'yes';
 
 	return (
 		<div className="nv-repeater-item">
@@ -71,7 +70,7 @@ const RepeaterItem = ({
 						{visible ? visibleIcon : hiddenIcon}
 					</button>
 				</Tooltip>
-				{!sorting && !isBlocked && (
+				{!sorting && (
 					<button
 						className="nv-repeater-expand-button"
 						onClick={toggleExpand}
@@ -80,15 +79,10 @@ const RepeaterItem = ({
 						{expanded ? arrowUp : arrowDown}
 					</button>
 				)}
-				{!sorting && isBlocked && (
-					<div className="nv-repeater-expand-button">
-						{itemLabel()}
-					</div>
-				)}
 				{sorting && itemLabel()}
 				{sorting && <Handle />}
 			</div>
-			{!sorting && expanded && !isBlocked && (
+			{!sorting && expanded && (
 				<RepeaterItemContent
 					fields={fields}
 					value={value}

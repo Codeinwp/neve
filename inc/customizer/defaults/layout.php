@@ -122,10 +122,11 @@ trait Layout {
 				continue;
 			}
 			$new_control_data[ $meta_component ] = [
-				'slug'       => $meta_component,
-				'title'      => $components[ $meta_component ],
-				'visibility' => 'yes',
-				'blocked'    => 'yes',
+				'slug'           => $meta_component,
+				'title'          => $components[ $meta_component ],
+				'visibility'     => 'yes',
+				'hide_on_mobile' => false,
+				'blocked'        => 'yes',
 			];
 		}
 
@@ -134,10 +135,11 @@ trait Layout {
 				continue;
 			}
 			$new_control_data[ $component_id ] = [
-				'slug'       => $component_id,
-				'title'      => $label,
-				'visibility' => 'no',
-				'blocked'    => 'yes',
+				'slug'           => $component_id,
+				'title'          => $label,
+				'visibility'     => 'no',
+				'hide_on_mobile' => false,
+				'blocked'        => 'yes',
 			];
 		}
 

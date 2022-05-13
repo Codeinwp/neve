@@ -25,6 +25,9 @@ const Repeater = ({ fields, allowNew, value, onUpdate }) => {
 
 			if (typeof value[0][field] === 'boolean') {
 				newItem[field] = true;
+				if (field === 'hide_on_mobile') {
+					newItem[field] = false;
+				}
 				continue;
 			}
 
