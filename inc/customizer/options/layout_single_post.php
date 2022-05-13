@@ -266,6 +266,12 @@ class Layout_Single_Post extends Base_Layout_Single {
 				[
 					'label'            => esc_html__( 'Meta Order', 'neve' ),
 					'section'          => $this->section,
+					'fields'           => [
+						'hide_on_mobile' => [
+							'type'  => 'checkbox',
+							'label' => __( 'Hide on mobile', 'neve' ),
+						],
+					],
 					'components'       => $components,
 					'allow_new_fields' => 'no',
 					'priority'         => 115,

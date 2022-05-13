@@ -463,6 +463,12 @@ class Layout_Blog extends Base_Customizer {
 				[
 					'label'            => esc_html__( 'Meta Order', 'neve' ),
 					'section'          => $this->section,
+					'fields'           => [
+						'hide_on_mobile' => [
+							'type'  => 'checkbox',
+							'label' => __( 'Hide on mobile', 'neve' ),
+						],
+					],
 					'components'       => apply_filters(
 						'neve_meta_filter',
 						array(
