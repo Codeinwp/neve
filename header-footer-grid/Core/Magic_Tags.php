@@ -291,6 +291,16 @@ class Magic_Tags {
 	}
 
 	/**
+	 * Title for the page currently being viewed.
+	 *
+	 * @return string
+	 */
+	public function current_query_title() {
+		$show_homepage_name = apply_filters( 'neve_query_title_magic_tag_on_homepage', false );
+		return ( $show_homepage_name && is_front_page() ) ? get_bloginfo( 'name' ) : wp_title( '' );
+	}
+
+	/**
 	 * Author Bio.
 	 *
 	 * @return string
@@ -636,19 +646,23 @@ class Magic_Tags {
 			[
 				'label'    => __( 'Global', 'neve' ),
 				'controls' => [
-					'site_title'   => [
+					'site_title'          => [
 						'label' => __( 'Site Title', 'neve' ),
 						'type'  => 'string',
 					],
-					'site_tagline' => [
+					'site_tagline'        => [
 						'label' => __( 'Site Tagline', 'neve' ),
 						'type'  => 'string',
 					],
-					'home_url'     => [
+					'current_query_title' => [
+						'label' => __( 'Current Page Title', 'neve' ),
+						'type'  => 'string',
+					],
+					'home_url'            => [
 						'label' => __( 'Home URL', 'neve' ),
 						'type'  => 'url',
 					],
-					'current_year' => [
+					'current_year'        => [
 						'label' => __( 'Current Year', 'neve' ),
 						'type'  => 'string',
 					],
