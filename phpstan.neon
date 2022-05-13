@@ -30,9 +30,11 @@ parameters:
         - %currentWorkingDirectory%/tests/php/static-analysis-stubs/amp-wp.php
         - %currentWorkingDirectory%/tests/php/static-analysis-stubs/vip-go-mu-plugins.php
         - %currentWorkingDirectory%/tests/php/static-analysis-stubs/easy-digital-downloads.php
+        - %currentWorkingDirectory%/vendor/wptt/webfont-loader/wptt-webfont-loader.php
     dynamicConstantNames:
         - NEVE_DEBUG
     ignoreErrors:
         - '#^Function apply_filters(_ref_array)? invoked with [34567] parameters, 2 required\.$#'
+        - '#Parameter \#2 \$default of function get_theme_mod expects#'
 includes:
     - %currentWorkingDirectory%/vendor/szepeviktor/phpstan-wordpress/extension.neon
