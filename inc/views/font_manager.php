@@ -219,8 +219,25 @@ class Font_Manager extends Base_View {
 		}
 		$url = add_query_arg( $query_args, $base_url );
 		
-		wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
+		/**
+		 * Allow users to download Google Fonts locally if they wish, by using a filter.
+		 */
+		$download_locally = apply_filters( 'neve_download_google_font', false );
+
+		if ( $download_locally ) {
+			$is_admin_context = is_admin() || is_customize_preview();
+			$vendor_file      = trailingslashit( get_template_directory() ) . 'vendor/wptt/webfont-loader/wptt-webfont-loader.php';
 		
+			if ( ! $is_admin_context && is_readable( $vendor_file ) ) {
+				require_once $vendor_file;
+				wp_add_inline_style( 'neve-style', wptt_get_webfont_styles( 'https:' . $url ) );
+			} else {
+				wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
+			}       
+		} else {
+			wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
+		}
+
 	}
 
 }
