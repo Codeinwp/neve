@@ -105,6 +105,7 @@ class Post_Meta extends Base_View {
 		$order = $this->sanitize_order_array( $order );
 		$order = array_values( $order );
 
+		// var_dump( has_filter( 'neve_do_custom_meta') );
 		$pid          = $post_id ? $post_id : get_the_ID();
 		$post_type    = get_post_type( $pid );
 		$markup       = $as_list === true ? '<ul class="nv-meta-list">' : '<span class="nv-meta-list nv-dynamic-meta">';
@@ -183,7 +184,7 @@ class Post_Meta extends Base_View {
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'custom':
-					$custom_meta = apply_filters( 'neve_do_custom_meta', $meta, $tag, $post_id );
+					$custom_meta = apply_filters( 'neve_do_custom_meta', '', $meta, $tag, $post_id );
 					if ( empty( $custom_meta ) ) {
 						break;
 					}
@@ -404,14 +405,14 @@ class Post_Meta extends Base_View {
 		$custom_css .= '.nv-meta-list .no-mobile{
 			display:none;
 		}';
-		$custom_css .= '.nv-meta-list li.last::after{
+		$custom_css .= '.nv-meta-list li.last:last-of-type::after{
 			content: ""!important;
 		}';
 		$custom_css .= '@media (min-width: 769px) {
 			.nv-meta-list .no-mobile {
 				display: inline-block;
 			}
-			.nv-meta-list li.last::after {
+			.nv-meta-list li.last:not(:last-child)::after {
 		 		content: "/" !important;
 			}
 		}';
