@@ -6,6 +6,7 @@ import { maybeParseJson } from '@neve-wp/components';
 
 const RepeaterComponent = ({ control }) => {
 	const { components, fields } = control.params;
+	const allowNewFields = control.params.allow_new_fields;
 
 	const normalizeValue = (val) => {
 		if (components.length === 0) {
@@ -35,6 +36,12 @@ const RepeaterComponent = ({ control }) => {
 				});
 			}
 		});
+
+		if (allowNewFields === 'no') {
+			return finalValue.filter((el) => {
+				return el.slug;
+			});
+		}
 
 		return finalValue;
 	};
