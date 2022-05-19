@@ -296,8 +296,10 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function current_query_title() {
-		$show_homepage_name = apply_filters( 'neve_query_title_magic_tag_on_homepage', false );
-		return ( $show_homepage_name && is_front_page() ) ? get_bloginfo( 'name' ) : wp_title( '' );
+		if ( get_option( 'show_on_front' ) === 'page' && is_front_page() ) {
+			return get_the_title();
+		}
+		return wp_title( '' );
 	}
 
 	/**
