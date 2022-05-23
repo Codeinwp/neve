@@ -299,6 +299,18 @@ class Magic_Tags {
 		if ( get_option( 'show_on_front' ) === 'page' && is_front_page() ) {
 			return get_the_title();
 		}
+
+		if ( class_exists( 'WooCommerce', false ) ) {
+
+			if ( is_product_category() || is_product_tag() ) {
+				return get_the_archive_title();
+			}
+
+			if ( is_shop() ) {
+				return get_the_title( get_option( 'woocommerce_shop_page_id' ) );
+			}       
+		}
+
 		return wp_title( '' );
 	}
 
