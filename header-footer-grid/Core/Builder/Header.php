@@ -395,7 +395,7 @@ class Header extends Abstract_Builder {
 			$rules = array_merge(
 				$rules,
 				[
-					'--bgColor' => [
+					'--bgcolor' => [
 						Dynamic_Selector::META_KEY     => $control_id . '.colorValue',
 						Dynamic_Selector::META_DEFAULT => $default_color,
 					],
@@ -407,17 +407,17 @@ class Header extends Abstract_Builder {
 			$rules = array_merge(
 				$rules,
 				[
-					'--overlayColor'     => [
+					'--overlaycolor'     => [
 						Dynamic_Selector::META_KEY => $control_id . '.overlayColorValue',
 					],
-					'--bgImage'          => [
+					'--bgimage'          => [
 						Dynamic_Selector::META_KEY    => $control_id,
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 							$image = $this->get_row_featured_image( $value['imageUrl'], $value['useFeatured'], $meta );
 							return sprintf( '%s:%s;', $css_prop, $image );
 						},
 					],
-					'--bgPosition'       => [
+					'--bgposition'       => [
 						Dynamic_Selector::META_KEY    => $control_id,
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 							if ( ! $this->is_valid_focus_point( $value['focusPoint'] ) ) {
@@ -429,7 +429,7 @@ class Header extends Abstract_Builder {
 							return sprintf( '%s:%s;', $css_prop, $parsed_position );
 						},
 					],
-					'--bgAttachment'     => [
+					'--bgattachment'     => [
 						Dynamic_Selector::META_KEY    => $control_id,
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 							if ( ! isset( $value['fixed'] ) || $value['fixed'] !== true ) {
@@ -439,7 +439,7 @@ class Header extends Abstract_Builder {
 							return sprintf( '%s:fixed;', $css_prop );
 						},
 					],
-					'--bgOverlayOpacity' => [
+					'--bgoverlayopacity' => [
 						Dynamic_Selector::META_KEY    => $control_id,
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 							if ( ! isset( $value['overlayOpacity'] ) ) {

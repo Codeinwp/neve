@@ -61,6 +61,32 @@ const Notification = ({ data, slug }) => {
 						},
 					});
 				}
+
+				if ('otter' === update.type) {
+					if (!update.slug || !update.path) {
+						return false;
+					}
+
+					if ('otter-old' === update.slug) {
+						wp.updates.ajax('update-plugin', {
+							slug: update.slug,
+							plugin: update.path,
+							success: () => {
+								resolve({ success: true });
+								window.location.href =
+									window.neveDash.otterProInstall;
+							},
+							error: (err) => {
+								setErrorMessage(err.errorMessage);
+								resolve({ success: false });
+							},
+						});
+					}
+
+					if ('otter-new' === update.slug) {
+						window.location.href = window.neveDash.otterProInstall;
+					}
+				}
 			});
 		};
 

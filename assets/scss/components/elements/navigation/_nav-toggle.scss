@@ -8,12 +8,12 @@
 }
 
 .navbar-toggle {
-	--primaryBtnColor: var(--color);
-	--primaryBtnHoverColor: var(--color);
-	--primaryBtnBg: var(--bgColor, transparent);
-	--primaryBtnHoverBg: var(--bgColor, transparent);
-	--primaryBtnBorderWidth: var(--borderWidth, 1px);
-	--primaryBtnBorderRadius: var(--borderRadius, 0);
+	--primarybtncolor: var(--color);
+	--primarybtnhovercolor: var(--color);
+	--primarybtnbg: var(--bgcolor, transparent);
+	--primarybtnhoverbg: var(--bgcolor, transparent);
+	--primarybtnborderwidth: var(--borderwidth, 1px);
+	--primarybtnborderradius: var(--borderradius, 0);
 	padding: var(--padding, 10px 15px);
 	box-shadow: none;
 	display: flex;

@@ -19,6 +19,16 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.2.5](https://github.com/Codeinwp/neve/compare/v3.2.4...v3.2.5) (2022-05-12)
+
+- [Fix] Sidebar toggle disappears on the shop on mobile
+- [Fix] External link in Neve Pro Addon license card
+- [Fix] PageSpeed module enabled on servers transforms CSS variables to lowercase
+- [Fix] Rollback button does not appear in some cases
+
+
+
+
 ##### [Version 3.2.4](https://github.com/Codeinwp/neve/compare/v3.2.3...v3.2.4) (2022-05-05)
 
 - [Feat] Gradient support for color controls

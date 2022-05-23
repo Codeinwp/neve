@@ -21,7 +21,10 @@
 
   a {
     color: $blue;
-	display: inline-block;
+    display: inline-block;
+    svg{
+      vertical-align: bottom;
+    }
   }
 }
 

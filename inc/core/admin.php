@@ -645,6 +645,9 @@ class Admin {
 		if ( array_key_exists( 'otter-blocks/otter-blocks.php', $plugins ) ) {
 			$plugins['otter-blocks/otter-blocks.php']['Name'] = 'Gutenberg Blocks and Template Library by Neve theme';
 		}
+		if ( array_key_exists( 'otter-pro/otter-pro.php', $plugins ) ) {
+			$plugins['otter-pro/otter-pro.php']['Description'] = $plugins['otter-pro/otter-pro.php']['Description'] . ' It is part of Block Editor Booster from Neve.';
+		}
 
 		return $plugins;
 	}

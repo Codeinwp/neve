@@ -163,7 +163,7 @@ class SearchResponsive extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar'   => [
-						'vars'     => '--iconSize',
+						'vars'     => '--iconsize',
 						'suffix'   => 'px',
 						'selector' => '.builder-item--' . $this->get_id(),
 					],
@@ -217,7 +217,7 @@ class SearchResponsive extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar'   => [
-						'vars'     => '--hoverColor',
+						'vars'     => '--hovercolor',
 						'selector' => '.builder-item--' . $this->get_id(),
 					],
 					'template' =>
@@ -306,7 +306,7 @@ class SearchResponsive extends Abstract_Component {
 				'live_refresh_css_prop' => [
 					'cssVar'     => [
 						'responsive' => true,
-						'vars'       => '--formFieldFontSize',
+						'vars'       => '--formfieldfontsize',
 						'suffix'     => 'px',
 						'selector'   => '.builder-item--' . $this->get_id(),
 					],
@@ -392,7 +392,7 @@ class SearchResponsive extends Abstract_Component {
 				'live_refresh_css_prop' => [
 					'cssVar'      => [
 						'responsive' => true,
-						'vars'       => '--formFieldBorderWidth',
+						'vars'       => '--formfieldborderwidth',
 						'suffix'     => 'px',
 						'selector'   => '.builder-item--' . $this->get_id(),
 					],
@@ -455,7 +455,7 @@ class SearchResponsive extends Abstract_Component {
 				'live_refresh_css_prop' => [
 					'cssVar'      => [
 						'responsive' => true,
-						'vars'       => '--formFieldBorderRadius',
+						'vars'       => '--formfieldborderradius',
 						'suffix'     => 'px',
 						'selector'   => '.builder-item--' . $this->get_id(),
 					],
@@ -491,7 +491,7 @@ class SearchResponsive extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'cssVar'   => [
-						'vars'     => '--formFieldBgColor',
+						'vars'     => '--formfieldbgcolor',
 						'selector' => '.builder-item--' . $this->get_id(),
 					],
 					'template' =>
@@ -518,8 +518,8 @@ class SearchResponsive extends Abstract_Component {
 				'live_refresh_css_prop' => [
 					'cssVar'   => [
 						'vars'     => [
-							'--formFieldColor',
-							'--formFieldBorderColor',
+							'--formfieldcolor',
+							'--formfieldbordercolor',
 						],
 						'selector' => '.builder-item--' . $this->get_id(),
 					],
@@ -713,7 +713,7 @@ class SearchResponsive extends Abstract_Component {
 
 
 		$rules = [
-			'--iconSize'              => [
+			'--iconsize'              => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SIZE_ID ),
 				Dynamic_Selector::META_SUFFIX  => 'px',
@@ -722,37 +722,37 @@ class SearchResponsive extends Abstract_Component {
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
 			],
-			'--hoverColor'            => [
+			'--hovercolor'            => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
 			],
-			'--formFieldFontSize'     => [
+			'--formfieldfontsize'     => [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_FONT_SIZE,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
 				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_FONT_SIZE ),
 			],
-			'--formFieldBorderWidth'  => [
+			'--formfieldborderwidth'  => [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_BORDER_WIDTH,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BORDER_WIDTH ),
 				'directional-prop'                   => Config::CSS_PROP_BORDER_WIDTH,
 			],
-			'--formFieldBorderRadius' => [
+			'--formfieldborderradius' => [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_BORDER_RADIUS,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BORDER_RADIUS ),
 				'directional-prop'                   => Config::CSS_PROP_BORDER_RADIUS,
 			],
-			'--formFieldBgColor'      => [
+			'--formfieldbgcolor'      => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_BG,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BG ),
 			],
-			'--formFieldBorderColor'  => [
+			'--formfieldbordercolor'  => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_TEXT_COLOR,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_TEXT_COLOR ),
 			],
-			'--formFieldColor'        => [
+			'--formfieldcolor'        => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_TEXT_COLOR,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_TEXT_COLOR ),
 			],

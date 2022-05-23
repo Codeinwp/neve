@@ -9,7 +9,7 @@ body.woocommerce-account {
 	}
 
 	.woocommerce > h2 {
-		font-size: var(--h4FontSize);
+		font-size: var(--h4fontsize);
 		margin-bottom: 0;
 	}
 
@@ -37,17 +37,17 @@ body.woocommerce-account {
 	}
 
 	h2 {
-		--h2FontSize: var(--h3FontSize);
+		--h2fontsize: var(--h3fontsize);
 	}
 
 	table.my_account_orders {
-		font-size: var(--bodyFontSize);
+		font-size: var(--bodyfontsize);
 	}
 
 	table {
 		border: 0 !important;
-		--primaryBtnFs: 0.9em;
-		--primaryBtnPadding: 8px 30px;
+		--primarybtnfs: 0.9em;
+		--primarybtnpadding: 8px 30px;
 
 		td {
 			border: 0 !important;

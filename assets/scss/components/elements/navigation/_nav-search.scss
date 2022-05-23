@@ -30,12 +30,12 @@
 	outline: 0;
 
 	.nv-icon:hover {
-		color: var(--hoverColor);
+		color: var(--hovercolor);
 	}
 
 	svg {
-		width: var(--iconSize);
-		height: var(--iconSize);
+		width: var(--iconsize);
+		height: var(--iconsize);
 	}
 
 	&.minimal {
@@ -82,7 +82,7 @@
 		.close-responsive-search {
 			display: flex;
 			align-items: center;
-			--primaryBtnPadding: 0 20px;
+			--primarybtnpadding: 0 20px;
 		}
 	}
 
@@ -121,11 +121,11 @@
 .close-responsive-search {
 	background: 0;
 	border: 0;
-	--primaryBtnHoverBg: 0;
+	--primarybtnhoverbg: 0;
 
 	> svg {
 		fill: var(--nv-text-color);
-		width: var(--formFieldFontSize);
+		width: var(--formfieldfontsize);
 		min-width: 25px;
 		min-height: 25px;
 	}

@@ -93,7 +93,7 @@ class Typography extends Base_Customizer {
 					'live_refresh_selector' => apply_filters( 'neve_body_font_family_selectors', 'body, .site-title' ),
 					'live_refresh_css_prop' => [
 						'cssVar' => [
-							'vars'     => '--bodyFontFamily',
+							'vars'     => '--bodyfontfamily',
 							'selector' => 'body',
 							'fallback' => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 							'suffix'   => ', var(--nv-fallback-ff)',
@@ -140,17 +140,17 @@ class Typography extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => [
-								'--bodyTextTransform' => 'textTransform',
-								'--bodyFontWeight'    => 'fontWeight',
-								'--bodyFontSize'      => [
+								'--bodytexttransform' => 'textTransform',
+								'--bodyfontweight'    => 'fontWeight',
+								'--bodyfontsize'      => [
 									'key'        => 'fontSize',
 									'responsive' => true,
 								],
-								'--bodyLineHeight'    => [
+								'--bodylineheight'    => [
 									'key'        => 'lineHeight',
 									'responsive' => true,
 								],
-								'--bodyLetterSpacing' => [
+								'--bodyletterspacing' => [
 									'key'        => 'letterSpacing',
 									'suffix'     => 'px',
 									'responsive' => true,
@@ -223,7 +223,7 @@ class Typography extends Base_Customizer {
 					'live_refresh_selector' => apply_filters( 'neve_headings_font_family_selectors', 'h1:not(.site-title), .single h1.entry-title, h2, h3, .woocommerce-checkout h3, h4, h5, h6' ),
 					'live_refresh_css_prop' => [
 						'cssVar' => [
-							'vars'     => '--headingsFontFamily',
+							'vars'     => '--headingsfontfamily',
 							'selector' => 'body',
 						],
 						'type'   => 'svg-icon-size',
@@ -284,17 +284,17 @@ class Typography extends Base_Customizer {
 						'live_refresh_css_prop' => [
 							'cssVar' => [
 								'vars'     => [
-									'--' . $heading_id . 'TextTransform' => 'textTransform',
-									'--' . $heading_id . 'FontWeight'    => 'fontWeight',
-									'--' . $heading_id . 'FontSize'      => [
+									'--' . $heading_id . 'texttransform' => 'textTransform',
+									'--' . $heading_id . 'fontweight'    => 'fontWeight',
+									'--' . $heading_id . 'fontsize'      => [
 										'key'        => 'fontSize',
 										'responsive' => true,
 									],
-									'--' . $heading_id . 'LineHeight'    => [
+									'--' . $heading_id . 'lineheight'    => [
 										'key'        => 'lineHeight',
 										'responsive' => true,
 									],
-									'--' . $heading_id . 'LetterSpacing' => [
+									'--' . $heading_id . 'letterspacing' => [
 										'key'        => 'letterSpacing',
 										'suffix'     => 'px',
 										'responsive' => true,
@@ -396,17 +396,17 @@ class Typography extends Base_Customizer {
 						'live_refresh_css_prop' => [
 							'cssVar' => [
 								'vars'     => [
-									'--textTransform' => 'textTransform',
-									'--fontWeight'    => 'fontWeight',
-									'--fontSize'      => [
+									'--texttransform' => 'textTransform',
+									'--fontweight'    => 'fontWeight',
+									'--fontsize'      => [
 										'key'        => 'fontSize',
 										'responsive' => true,
 									],
-									'--lineHeight'    => [
+									'--lineheight'    => [
 										'key'        => 'lineHeight',
 										'responsive' => true,
 									],
-									'--letterSpacing' => [
+									'--letterspacing' => [
 										'key'        => 'letterSpacing',
 										'suffix'     => 'px',
 										'responsive' => true,

@@ -154,8 +154,8 @@ class PaletteSwitch extends Abstract_Component {
 		}
 		.toggle-palette .icon {
 			display: flex;
-			width: var(--iconSize);
-			height: var(--iconSize);
+			width: var(--iconsize);
+			height: var(--iconsize);
 			fill: currentColor;
 		}
 		.toggle-palette .label {
@@ -397,7 +397,7 @@ class PaletteSwitch extends Abstract_Component {
 					],
 					'section'           => $this->section,
 				],
-				$custom_icon_args 
+				$custom_icon_args
 			)
 		);
 
@@ -429,7 +429,7 @@ class PaletteSwitch extends Abstract_Component {
 				'live_refresh_selector' => $this->default_selector . ' div.component-wrap .palette-icon-wrapper svg',
 				'live_refresh_css_prop' => array(
 					'cssVar'  => [
-						'vars'       => '--iconSize',
+						'vars'       => '--iconsize',
 						'responsive' => true,
 						'suffix'     => 'px',
 						'selector'   => '.builder-item--' . $this->get_id(),
@@ -494,7 +494,7 @@ class PaletteSwitch extends Abstract_Component {
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
 				Dynamic_Selector::KEY_RULES    => [
-					'--iconSize' => [
+					'--iconsize' => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
 						Dynamic_Selector::META_DEFAULT => '{ "mobile": "' . self::DEFAULT_ICON_SIZE . '", "tablet": "' . self::DEFAULT_ICON_SIZE . '", "desktop": "' . self::DEFAULT_ICON_SIZE . '" }',
 						Dynamic_Selector::META_SUFFIX  => 'px',

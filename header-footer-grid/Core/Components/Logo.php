@@ -261,7 +261,7 @@ class Logo extends Abstract_Component {
 			if ( fileExt === 'svg' ) {
 				picture.removeAttribute('width');
 				picture.removeAttribute('height');
-				picture.style = 'width: var(--maxWidth)';
+				picture.style = 'width: var(--maxwidth)';
 			}
 			var compId = picture.getAttribute('data-variant');
 			if ( compId && variants[compId] ) {
@@ -515,7 +515,7 @@ JS;
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
 			Dynamic_Selector::KEY_RULES    => [
-				'--maxWidth' => [
+				'--maxwidth' => [
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::MAX_WIDTH,
 					Dynamic_Selector::META_SUFFIX        => 'px',

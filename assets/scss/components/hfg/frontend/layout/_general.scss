@@ -15,12 +15,12 @@
 
 	&.global-styled:not(.neve-transparent-header) {
 
-		background: var(--bgColor);
-		background-image: var(--bgImage, var(--bgColor, none));
-		background-position: var(--bgPosition, center);
+		background: var(--bgcolor);
+		background-image: var(--bgimage, var(--bgcolor, none));
+		background-position: var(--bgposition, center);
 		background-repeat: no-repeat;
 		background-size: cover;
-		background-attachment: var(--bgAttachment);
+		background-attachment: var(--bgattachment);
 
 		&::before {
 			display: block;
@@ -29,8 +29,8 @@
 			bottom: 0;
 			position: absolute;
 			content: "";
-			background-color: var(--overlayColor);
-			opacity: var(--bgOverlayOpacity);
+			background-color: var(--overlaycolor);
+			opacity: var(--bgoverlayopacity);
 		}
 
 		.header--row,
@@ -95,11 +95,11 @@ $desktop: map-get($gl-devices-list, desktop);
 [class*="row-inner"],
 .header-menu-sidebar-bg {
 	position: relative;
-	background-image: var(--bgImage, none);
-	background-position: var(--bgPosition, center);
+	background-image: var(--bgimage, none);
+	background-position: var(--bgposition, center);
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-attachment: var(--bgAttachment);
+	background-attachment: var(--bgattachment);
 
 	&::before {
 		display: block;
@@ -108,22 +108,22 @@ $desktop: map-get($gl-devices-list, desktop);
 		bottom: 0;
 		position: absolute;
 		content: "";
-		background-color: var(--overlayColor);
-		opacity: var(--bgOverlayOpacity);
+		background-color: var(--overlaycolor);
+		opacity: var(--bgoverlayopacity);
 	}
 }
 
 [class*="row-inner"]:not(.footer--row-inner) {
-	border-bottom: var(--rowBWidth, 0) solid var(--rowBColor);
+	border-bottom: var(--rowbwidth, 0) solid var(--rowbcolor);
 }
 
 .footer--row-inner {
-	border-top: var(--rowBWidth, 0) solid var(--rowBColor);
+	border-top: var(--rowbwidth, 0) solid var(--rowbcolor);
 }
 
 [data-row-id] {
 	color: var(--color);
-	background: var(--bgColor);
+	background: var(--bgcolor);
 
 	a {
 		color: var(--color);
