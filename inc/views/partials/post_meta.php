@@ -90,7 +90,6 @@ class Post_Meta extends Base_View {
 	 * @param int | null $post_id Post id.
 	 */
 	public function render_meta_list( $order, $as_list = true, $post_id = null ) {
-		;
 		if ( ! is_array( $order ) || empty( $order ) ) {
 			return;
 		}
@@ -105,7 +104,6 @@ class Post_Meta extends Base_View {
 		$order = $this->sanitize_order_array( $order );
 		$order = array_values( $order );
 
-		// var_dump( has_filter( 'neve_do_custom_meta') );
 		$pid          = $post_id ? $post_id : get_the_ID();
 		$post_type    = get_post_type( $pid );
 		$markup       = $as_list === true ? '<ul class="nv-meta-list">' : '<span class="nv-meta-list nv-dynamic-meta">';
@@ -156,13 +154,12 @@ class Post_Meta extends Base_View {
 					if ( ! in_array( 'category', get_object_taxonomies( $post_type ) ) ) {
 						break;
 					}
-					$pid     = $post_id !== null ? $post_id : get_the_ID();
 					$markup .= '<' . $tag . ' class="meta category ' . esc_attr( $element_class ) . '">';
 					$markup .= get_the_category_list( ', ', '', $pid );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'comments':
-					$comments = self::get_comments( $post_id );
+					$comments = self::get_comments( $pid );
 					if ( empty( $comments ) ) {
 						break;
 					}

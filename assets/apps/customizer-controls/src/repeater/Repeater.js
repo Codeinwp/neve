@@ -93,7 +93,12 @@ const Repeater = ({ fields, allowNew, value, onUpdate }) => {
 			<ReactSortable
 				className="nv-repeater-items-container"
 				list={value}
-				setList={setList}
+				setList={(newItems, _, { dragging }) => {
+					if (!dragging) {
+						return;
+					}
+					setList(newItems);
+				}}
 				animation={300}
 				forceFallback={true}
 				handle=".nv-repeater-handle"
