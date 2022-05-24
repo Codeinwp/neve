@@ -260,8 +260,8 @@ class Layout_Single_Post extends Base_Layout_Single {
 			new Control(
 				'neve_single_post_meta_fields',
 				[
-					// 'sanitize_callback' => 'neve_sanitize_meta_ordering',
-					'default' => $default_value,
+					'sanitize_callback' => 'neve_sanitize_meta_ordering',
+					'default'           => $default_value,
 				],
 				[
 					'label'            => esc_html__( 'Meta Order', 'neve' ),

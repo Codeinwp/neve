@@ -292,25 +292,30 @@ function neve_sanitize_position( $input ) {
 
 /**
  * Sanitize meta order control.
+ *
+ * @param string $value Control input.
  */
 function neve_sanitize_meta_ordering( $value ) {
-	$allowed = array(
+	$allowed = [
 		'author',
 		'category',
 		'date',
 		'comments',
 		'reading',
-	);
+		'custom',
+	];
+
 
 	if ( empty( $value ) ) {
-		return wp_json_encode( $allowed );
+		return wp_json_encode( [] );
 	}
 
 	$decoded = json_decode( $value, true );
 
 	foreach ( $decoded as $val ) {
-		if ( ! in_array( $val, $allowed, true ) ) {
-			return wp_json_encode( $allowed );
+		$check = isset( $val['slug'] ) ? $val['slug'] : $val;
+		if ( ! in_array( $check, $allowed, true ) ) {
+			return wp_json_encode( [] );
 		}
 	}
 

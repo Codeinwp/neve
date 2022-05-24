@@ -457,8 +457,8 @@ class Layout_Blog extends Base_Customizer {
 			new Control(
 				'neve_blog_post_meta_fields',
 				[
-					// 'sanitize_callback' => [ $this, 'sanitize_sharing_icons_repeater' ],
-					'default' => wp_json_encode( $default_value ),
+					'sanitize_callback' => 'neve_sanitize_meta_ordering',
+					'default'           => wp_json_encode( $default_value ),
 				],
 				[
 					'label'            => esc_html__( 'Meta Order', 'neve' ),
