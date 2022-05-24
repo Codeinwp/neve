@@ -6,7 +6,7 @@
 }
 
 .woocommerce-Tabs-panel h2 {
-	font-size: var(--h4FontSize);
+	font-size: var(--h4fontsize);
 }
 
 .woocommerce {
@@ -49,11 +49,11 @@
 	}
 
 	#reply-title {
-		font-size: var(--h4FontSize);
-		font-weight: var(--h2FontWeight);
-		line-height: var(--h2LineHeight);
-		letter-spacing: var(--h2LetterSpacing);
-		text-transform: var(--h2TextTransform);
+		font-size: var(--h4fontsize);
+		font-weight: var(--h2fontweight);
+		line-height: var(--h2lineheight);
+		letter-spacing: var(--h2letterspacing);
+		text-transform: var(--h2texttransform);
 		margin-bottom: $spacing-lg;
 		display: block;
 	}

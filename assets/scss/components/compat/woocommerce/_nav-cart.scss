@@ -8,21 +8,21 @@ $cart-width: 360px;
 	align-items: center;
 
 	&:hover {
-		color: var(--hoverColor, var(--color));
+		color: var(--hovercolor, var(--color));
 	}
 
 	.nv-cart {
 		display: flex;
 
 		svg {
-			width: var(--iconSize);
-			height: var(--iconSize);
+			width: var(--iconsize);
+			height: var(--iconsize);
 		}
 	}
 
 	.cart-icon-label {
 		margin-right: $spacing-xxs;
-		font-size: var(--labelSize);
+		font-size: var(--labelsize);
 	}
 
 	.cart-count {
@@ -52,8 +52,8 @@ $cart-width: 360px;
 	z-index: 100;
 	width: $cart-width;
 	text-align: left;
-	--primaryBtnPadding: 13px 15px;
-	--secondaryBtnPadding: 13px 15px;
+	--primarybtnpadding: 13px 15px;
+	--secondarybtnpadding: 13px 15px;
 
 	.widget {
 		// Overflow needed to hide scrollbar.
@@ -140,7 +140,7 @@ $cart-width: 360px;
 			}
 
 			.button {
-				--btnFs: var(--bodyFontSize);
+				--btnfs: var(--bodyfontsize);
 				margin: 0;
 				display: flex;
 				align-items: center;

@@ -15,7 +15,7 @@
 
 		.nv-post-thumbnail-wrap {
 			margin-bottom: 0;
-			grid-column: var(--thumbGridColumn, 1);
+			grid-column: var(--thumbgridcolumn, 1);
 		}
 
 		.content {
@@ -29,14 +29,14 @@
 	.posts-wrapper > article {
 
 		&.has-post-thumbnail .content {
-			grid-template-columns: var(--postColTemplate, 35fr 65fr);
+			grid-template-columns: var(--postcoltemplate, 35fr 65fr);
 		}
 
 		&.has-post-thumbnail.layout-alternative:nth-child(even) {
-			--thumbGridColumn: 2;
+			--thumbgridcolumn: 2;
 
 			.content {
-				grid-template-columns: var(--postColTemplate, 65fr 35fr);
+				grid-template-columns: var(--postcoltemplate, 65fr 35fr);
 			}
 		}
 	}

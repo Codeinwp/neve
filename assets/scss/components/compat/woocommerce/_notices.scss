@@ -13,13 +13,13 @@
 	flex-direction: column-reverse;
 	text-align: center;
 	padding: 15px;
-	--btnFs: $text-sm;
-	--primaryBtnPadding: 10px 15px;
-	--primaryBtnBorderWidth: 3px;
-	--primaryBtnColor: #fff;
-	--primaryBtnHoverColor: #fff;
-	--primaryBtnHoverBg: transparent;
-	--primaryBtnBg: transparent;
+	--btnfs: $text-sm;
+	--primarybtnpadding: 10px 15px;
+	--primarybtnborderwidth: 3px;
+	--primarybtncolor: #fff;
+	--primarybtnhovercolor: #fff;
+	--primarybtnhoverbg: transparent;
+	--primarybtnbg: transparent;
 
 	&::before {
 		display: none;

@@ -153,7 +153,7 @@ class Frontend extends Generator {
 
 		$thumbnail_box_shadow_meta_name                = apply_filters( 'neve_thumbnail_box_shadow_meta_filter', 'neve_post_thumbnail_box_shadow' );
 		$this->_subscribers['.nv-post-thumbnail-wrap'] = [
-			'--boxShadow' => [
+			'--boxshadow' => [
 				Dynamic_Selector::META_KEY    => $thumbnail_box_shadow_meta_name,
 				Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 					if ( absint( $value ) === 0 ) {
@@ -208,30 +208,30 @@ class Frontend extends Generator {
 		];
 		foreach ( $archive_typography as $selector => $args ) {
 			$this->_subscribers[ $selector ] = [
-				'--fontSize'      => [
+				'--fontsize'      => [
 					Dynamic_Selector::META_KEY           => $args['mod'] . '.fontSize',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => 'px',
 				],
-				'--lineHeight'    => [
+				'--lineheight'    => [
 					Dynamic_Selector::META_KEY           => $args['mod'] . '.lineHeight',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => '',
 				],
-				'--letterSpacing' => [
+				'--letterspacing' => [
 					Dynamic_Selector::META_KEY           => $args['mod'] . '.letterSpacing',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => 'px',
 				],
-				'--fontWeight'    => [
+				'--fontweight'    => [
 					Dynamic_Selector::META_KEY => $args['mod'] . '.fontWeight',
 					'font'                     => 'mods_' . $args['font'],
 				],
-				'--textTransform' => $args['mod'] . '.textTransform',
+				'--texttransform' => $args['mod'] . '.textTransform',
 			];
 		}
 	}
-	
+
 	/**
 	 * Add css for blog layout.
 	 *
@@ -246,7 +246,7 @@ class Frontend extends Generator {
 		}
 
 		$this->_subscribers[':root'] = [
-			'--postWidth' => [
+			'--postwidth' => [
 				Dynamic_Selector::META_KEY           => 'neve_grid_layout',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->grid_columns_default(),
@@ -816,78 +816,78 @@ class Frontend extends Generator {
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => ':root',
 			Dynamic_Selector::KEY_RULES    => [
-				'--formFieldBorderWidth'   => [
+				'--formfieldborderwidth'   => [
 					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_WIDTH,
 					Dynamic_Selector::META_SUFFIX  => 'px',
 					Dynamic_Selector::META_DEFAULT => $border_width_default,
 					'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
 				],
-				'--formFieldBorderRadius'  => [
+				'--formfieldborderradius'  => [
 					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_RADIUS,
 					Dynamic_Selector::META_SUFFIX  => 'px',
 					Dynamic_Selector::META_DEFAULT => $border_radius_default,
 					'directional-prop'             => Config::CSS_PROP_BORDER_RADIUS,
 				],
-				'--formFieldBgColor'       => [
+				'--formfieldbgcolor'       => [
 					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BACKGROUND_COLOR,
 					Dynamic_Selector::META_DEFAULT => 'var(--nv-site-bg)',
 				],
-				'--formFieldBorderColor'   => [
+				'--formfieldbordercolor'   => [
 					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_COLOR,
 					Dynamic_Selector::META_DEFAULT => '#dddddd',
 				],
-				'--formFieldColor'         => [
+				'--formfieldcolor'         => [
 					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_COLOR,
 					Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
 				],
-				'--formFieldPadding'       => [
+				'--formfieldpadding'       => [
 					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING,
 					Dynamic_Selector::META_DEFAULT       => Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_PADDING ),
 					Dynamic_Selector::META_SUFFIX        => 'px',
 					Dynamic_Selector::META_IS_RESPONSIVE => false,
 					'directional-prop'                   => Config::CSS_PROP_PADDING,
 				],
-				'--formFieldTextTransform' => [
+				'--formfieldtexttransform' => [
 					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.textTransform',
 					Dynamic_Selector::META_IS_RESPONSIVE => false,
 				],
-				'--formFieldFontSize'      => [
+				'--formfieldfontsize'      => [
 					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontSize',
 					Dynamic_Selector::META_SUFFIX        => 'px',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
-				'--formFieldLineHeight'    => [
+				'--formfieldlineheight'    => [
 					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.lineHeight',
 					Dynamic_Selector::META_SUFFIX        => '',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
-				'--formFieldLetterSpacing' => [
+				'--formfieldletterspacing' => [
 					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.letterSpacing',
 					Dynamic_Selector::META_SUFFIX        => 'px',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
-				'--formFieldFontWeight'    => [
+				'--formfieldfontweight'    => [
 					Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontWeight',
 				],
 				// Form Labels
-				'--formLabelFontSize'      => [
+				'--formlabelfontsize'      => [
 					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontSize',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => 'px',
 				],
-				'--formLabelLineHeight'    => [
+				'--formlabellineheight'    => [
 					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.lineHeight',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => '',
 				],
-				'--formLabelLetterSpacing' => [
+				'--formlabelletterspacing' => [
 					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.letterSpacing',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
-				'--formLabelFontWeight'    => [
+				'--formlabelfontweight'    => [
 					Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontWeight',
 				],
-				'--formLabelTextTransform' => [
+				'--formlabeltexttransform' => [
 					Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.textTransform',
 				],
 			],
@@ -902,27 +902,27 @@ class Frontend extends Generator {
 
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['background-color']       = [
 			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnBg, transparent)',
+			'override' => 'var(--secondarybtnbg, transparent)',
 		];
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['color']                  = [
 			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnColor)',
+			'override' => 'var(--secondarybtncolor)',
 		];
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['padding']                = [
 			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnPadding, 7px 12px)',
+			'override' => 'var(--secondarybtnpadding, 7px 12px)',
 		];
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['border-radius']          = [
 			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnBorderRadius, 3px)',
+			'override' => 'var(--secondarybtnborderradius, 3px)',
 		];
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['background-color'] = [
 			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnHoverBg, transparent)',
+			'override' => 'var(--secondarybtnhoverbg, transparent)',
 		];
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['color']            = [
 			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnHoverColor)',
+			'override' => 'var(--secondarybtnhovercolor)',
 		];
 
 		$mod_key_secondary = Config::MODS_BUTTON_SECONDARY_STYLE;
@@ -935,15 +935,15 @@ class Frontend extends Generator {
 
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['border-width']       = [
 			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnBorderWidth, 3px)',
+			'override' => 'var(--secondarybtnborderwidth, 3px)',
 		];
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['border-color']       = [
 			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnHoverColor)',
+			'override' => 'var(--secondarybtnhovercolor)',
 		];
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['border-color'] = [
 			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondaryBtnHoverColor)',
+			'override' => 'var(--secondarybtnhovercolor)',
 		];
 	}
 
@@ -987,7 +987,7 @@ class Frontend extends Generator {
 		}
 
 		$rules = [
-			'--avatarSize' => [
+			'--avatarsize' => [
 				Dynamic_Selector::META_KEY           => $archive_avatar_size_meta_key,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
@@ -996,7 +996,7 @@ class Frontend extends Generator {
 		];
 
 		$rules_single = [
-			'--avatarSize' => [
+			'--avatarsize' => [
 				Dynamic_Selector::META_KEY           => $single_avatar_size_meta_key,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
@@ -1158,7 +1158,7 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-			'--bgColor' => [
+			'--bgcolor' => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_BACKGROUND_COLOR,
 			],
 			'--color'   => [
@@ -1178,7 +1178,7 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
-			'--bgColor' => [
+			'--bgcolor' => [
 				Dynamic_Selector::META_KEY => Config::MODS_POST_COMMENTS_FORM_BACKGROUND_COLOR,
 			],
 			'--color'   => [
@@ -1276,12 +1276,12 @@ class Frontend extends Generator {
 						return sprintf( '%s: %s;', $css_prop, $justify_map[ $value ] );
 					},
 				],
-				'--textAlign' => [
+				'--textalign' => [
 					Dynamic_Selector::META_KEY           => $this->get_cover_meta( $context, Config::MODS_COVER_TITLE_ALIGNMENT, $allowed_context ),
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_DEFAULT       => self::post_title_alignment(),
 				],
-				'--vAlign'    => [
+				'--valign'    => [
 					Dynamic_Selector::META_KEY           => $this->get_cover_meta( $context, Config::MODS_COVER_TITLE_POSITION, $allowed_context ),
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_DEFAULT       => [
@@ -1307,7 +1307,7 @@ class Frontend extends Generator {
 				'--color'     => [
 					Dynamic_Selector::META_KEY => $this->get_cover_meta( $context, Config::MODS_COVER_TEXT_COLOR, $allowed_context ),
 				],
-				'--textAlign' => [
+				'--textalign' => [
 					Dynamic_Selector::META_KEY           => $this->get_cover_meta( $context, Config::MODS_COVER_TITLE_ALIGNMENT, $allowed_context ),
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_DEFAULT       => self::post_title_alignment(),
@@ -1332,7 +1332,7 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
 					'directional-prop'                   => Config::CSS_PROP_PADDING,
 				],
-				'--bgColor' => [
+				'--bgcolor' => [
 					Dynamic_Selector::META_KEY     => $this->get_cover_meta( $context, Config::MODS_COVER_BOXED_TITLE_BACKGROUND, $allowed_context ),
 					Dynamic_Selector::META_DEFAULT => 'var(--nv-dark-bg)',
 				],
@@ -1350,14 +1350,14 @@ class Frontend extends Generator {
 		);
 		if ( $can_use_overlay_rules ) {
 			$overlay_rules        = [
-				'--bgColor'   => [
+				'--bgcolor'   => [
 					Dynamic_Selector::META_KEY => $this->get_cover_meta( $context, Config::MODS_COVER_BACKGROUND_COLOR, $allowed_context ),
 				],
 				'--opacity'   => [
 					Dynamic_Selector::META_KEY     => $this->get_cover_meta( $context, Config::MODS_COVER_OVERLAY_OPACITY, $allowed_context ),
 					Dynamic_Selector::META_DEFAULT => 50,
 				],
-				'--blendMode' => [
+				'--blendmode' => [
 					Dynamic_Selector::META_KEY     => $this->get_cover_meta( $context, Config::MODS_COVER_BLEND_MODE, $allowed_context ),
 					Dynamic_Selector::META_DEFAULT => 'normal',
 				],

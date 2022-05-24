@@ -227,7 +227,7 @@ class Woocommerce {
 		 * Change product page sidebar default position
 		 * Priority 9 to allow meta control to override this value
 		 */
-		add_filter( 'neve_sidebar_position', array( $this, 'product_page_sidebar_default_position' ), 9 );
+		// add_filter( 'neve_sidebar_position', array( $this, 'product_page_sidebar_default_position' ), 9 );
 
 		// Remove WooCommerce wrap.
 		remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
@@ -804,6 +804,36 @@ class Woocommerce {
 		}
 
 		return get_option( 'woocommerce_shop_page_id' );
+	}
+
+	/**
+	 * Check if we should render the mobile sidebar toggle.
+	 *
+	 * @return bool
+	 */
+	private function should_render_sidebar_toggle() {
+		if ( ! is_active_sidebar( 'shop-sidebar' ) ) {
+			return false;
+		}
+
+		$new_skin         = neve_is_new_skin();
+		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', $new_skin );
+
+		$mod = 'neve_default_sidebar_layout';
+		if ( $advanced_options === true ) {
+			$mod = 'neve_shop_archive_sidebar_layout';
+			if ( is_product() ) {
+				$mod = 'neve_single_product_sidebar_layout';
+			}
+		}
+
+		$default   = $this->sidebar_layout_alignment_default( $mod );
+		$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( $mod, $default ) );
+		if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**

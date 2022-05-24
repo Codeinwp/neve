@@ -11,14 +11,14 @@
 	display: flex;
 	max-width: 100%;
 	line-height: 1;
-	--primaryBtnBg: var(--formFieldBgColor);
-	--primaryBtnHoverBg: var(--formFieldBgColor);
-	--primaryBtnColor: var(--formFieldBorderColor);
-	--primaryBtnHoverColor: var(--formFieldBorderColor);
+	--primarybtnbg: var(--formfieldbgcolor);
+	--primarybtnhoverbg: var(--formfieldbgcolor);
+	--primarybtncolor: var(--formfieldbordercolor);
+	--primarybtnhovercolor: var(--formfieldbordercolor);
 
 	svg {
-		fill: var(--formFieldColor);
-		width: var(--formFieldFontSize);
+		fill: var(--formfieldcolor);
+		width: var(--formfieldfontsize);
 		opacity: 0.5;
 		height: auto;
 	}
@@ -29,10 +29,10 @@
 		align-items: center;
 		min-width: 45px;
 		z-index: 1;
-		--primaryBtnBorderWidth: var(--formFieldBorderWidth);
-		--primaryBtnBorderColor: var(--formFieldBorderColor);
-		--primaryBtnBorderRadius: var(--formFieldBorderRadius);
-		--primaryBtnPadding: var(--formFieldPadding);
+		--primarybtnborderwidth: var(--formfieldborderwidth);
+		--primarybtnbordercolor: var(--formfieldbordercolor);
+		--primarybtnborderradius: var(--formfieldborderradius);
+		--primarybtnpadding: var(--formfieldpadding);
 		height: var(--height);
 		border-bottom-left-radius: 0;
 		border-top-left-radius: 0;
@@ -44,7 +44,7 @@
 			display: block;
 			width: 3px;
 			height: 100%;
-			background-color: var(--formFieldBgColor);
+			background-color: var(--formfieldbgcolor);
 			left: -3px;
 			top: 0;
 			bottom: 0;

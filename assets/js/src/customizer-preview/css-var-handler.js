@@ -107,15 +107,15 @@ export class CSSVariablesHandler {
 		} = value;
 
 		const definitions = {
-			'--bgImage': 'unset',
-			'--overlayColor': 'unset',
-			'--bgOverlayOpacity': 'unset',
-			'--bgAttachment': 'unset',
-			'--bgPosition': 'unset',
+			'--bgimage': 'unset',
+			'--overlaycolor': 'unset',
+			'--bgoverlayopacity': 'unset',
+			'--bgattachment': 'unset',
+			'--bgposition': 'unset',
 		};
 
 		if (type === 'color') {
-			definitions['--bgColor'] = colorValue;
+			definitions['--bgcolor'] = colorValue;
 		} else {
 			const { currentFeaturedImage } = window.neveCustomizePreview;
 
@@ -132,11 +132,11 @@ export class CSSVariablesHandler {
 
 			const focus = `${(x * 100).toFixed(0)}% ${(y * 100).toFixed(0)}%`;
 
-			definitions['--bgImage'] = hasImage ? `url("${finalUrl}")` : 'none';
-			definitions['--overlayColor'] = overlayColorValue || 'transparent';
-			definitions['--bgOverlayOpacity'] = `${overlayOpacity / 100}`;
-			definitions['--bgAttachment'] = fixed ? 'fixed' : 'unset';
-			definitions['--bgPosition'] = focus;
+			definitions['--bgimage'] = hasImage ? `url("${finalUrl}")` : 'none';
+			definitions['--overlaycolor'] = overlayColorValue || 'transparent';
+			definitions['--bgoverlayopacity'] = `${overlayOpacity / 100}`;
+			definitions['--bgattachment'] = fixed ? 'fixed' : 'unset';
+			definitions['--bgposition'] = focus;
 		}
 
 		const properties = Object.entries(definitions)

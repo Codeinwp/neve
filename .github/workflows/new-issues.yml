@@ -1,14 +1,40 @@
-name: Move new/reopened issues into Triage
+name: Add to project
 
 on:
   issues:
-    types: [opened,reopened]
+    types: [opened,transferred]
+
 jobs:
-  automate-project-columns:
+  add-to-project:
+    name: Add issue to project
     runs-on: ubuntu-latest
     steps:
-      - uses: alex-page/github-project-automation-plus@v0.2.2
+      - uses: actions/add-to-project@main
+        id: add_project
         with:
-          project: Themes Prioritisation
-          column: Triage
-          repo-token: ${{ secrets.BOT_TOKEN }}
+          project-url: ${{ secrets.PROJECT_PLANNING }}
+          github-token: ${{ secrets.BOT_TOKEN_PROJECT }}
+      - name: Set Team
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN_PROJECT }}
+        run: |
+          gh api graphql -f query='
+          mutation(
+              $project: ID!
+              $item: ID!
+              $status_field: ID!
+              $status_value: String!
+            )  {
+            updateProjectNextItemField(
+              input: {
+                projectId: $project
+                itemId: $item
+                fieldId: $status_field
+                value: $status_value
+              }
+            ) {
+              projectNextItem {
+                id
+              }
+            }
+          }' -f project=${{ secrets.PROJECT_PLANNING_ID }} -f item=${{ steps.add_project.outputs.itemId }} -f status_field=${{ secrets.PLANNING_TEAM_FIELD_ID }} -f status_value=f0658f06 --silent

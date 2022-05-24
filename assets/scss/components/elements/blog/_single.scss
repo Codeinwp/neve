@@ -23,7 +23,7 @@
 }
 
 .entry-header {
-	text-align: var(--textAlign, center);
+	text-align: var(--textalign, center);
 
 	.title {
 		margin-bottom: $spacing-xs;
@@ -119,7 +119,7 @@
 		display: flex;
 		flex-direction: column;
 		z-index: 1;
-		align-self: var(--vAlign, flex-end);
+		align-self: var(--valign, flex-end);
 
 		> *:last-child {
 			margin-bottom: 0;
@@ -133,13 +133,13 @@
 	.container {
 		display: flex;
 		justify-content: var(--justify, center);
-		text-align: var(--textAlign, center);
+		text-align: var(--textalign, center);
 	}
 }
 
 .nv-is-boxed {
 	padding: var(--padding);
-	background: var(--bgColor, var(--nv-light-bg));
+	background: var(--bgcolor, var(--nv-light-bg));
 	color: var(--color, var(--nv-text-color));
 
 	a {
@@ -148,8 +148,8 @@
 }
 
 .nv-overlay {
-	background: var(--bgColor, var(--nv-dark-bg));
-	mix-blend-mode: var(--blendMode, normal);
+	background: var(--bgcolor, var(--nv-dark-bg));
+	mix-blend-mode: var(--blendmode, normal);
 	opacity: calc(var(--opacity) / 100);
 	position: absolute;
 	left: 0;

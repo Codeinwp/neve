@@ -16,7 +16,7 @@ $overlay: rgba(0, 0, 0, 0.75);
 }
 
 .cover-post {
-	box-shadow: var(--boxShadow, none);
+	box-shadow: var(--boxshadow, none);
 	position: relative;
 	background-size: cover;
 	display: flex;
@@ -35,7 +35,7 @@ $overlay: rgba(0, 0, 0, 0.75);
 
 	amp-img,
 	img {
-		--boxShadow: none;
+		--boxshadow: none;
 	}
 
 	.inner {
