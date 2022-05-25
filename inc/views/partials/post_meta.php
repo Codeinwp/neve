@@ -410,7 +410,7 @@ class Post_Meta extends Base_View {
 				display: inline-block;
 			}
 			.nv-meta-list li.last:not(:last-child)::after {
-		 		content: "/" !important;
+		 		content: "' . esc_html( $separator ) . '" !important;
 			}
 		}';
 		wp_add_inline_style( 'neve-style', $custom_css );
