@@ -38,7 +38,7 @@ class Repeater extends \WP_Customize_Control {
 	/**
 	 * Additional arguments passed to JS.
 	 *
-	 * @var array
+	 * @var string
 	 */
 	public $allow_new_fields = 'yes';
 

@@ -287,7 +287,7 @@ class Template_Parts extends Base_View {
 	 *
 	 * @param int | null $post_id Post id.
 	 *
-	 * @return string
+	 * @return string | bool
 	 */
 	private function get_meta( $post_id = null ) {
 		$default       = wp_json_encode( [ 'author', 'date', 'comments' ] );
