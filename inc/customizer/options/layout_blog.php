@@ -457,7 +457,7 @@ class Layout_Blog extends Base_Customizer {
 			new Control(
 				'neve_blog_post_meta_fields',
 				[
-					'sanitize_callback' => 'neve_sanitize_meta_ordering',
+					'sanitize_callback' => 'neve_sanitize_meta_repeater',
 					'default'           => wp_json_encode( $default_value ),
 				],
 				[
@@ -480,7 +480,7 @@ class Layout_Blog extends Base_Customizer {
 					),
 					'allow_new_fields' => 'no',
 					'priority'         => 71,
-					'active_callback'  => array( $this, 'should_show_meta_order' ),
+					'active_callback'  => [ $this, 'should_show_meta_order' ],
 				],
 				'\Neve\Customizer\Controls\React\Repeater'
 			)

@@ -296,30 +296,81 @@ function neve_sanitize_position( $input ) {
  * @param string $value Control input.
  */
 function neve_sanitize_meta_ordering( $value ) {
-	$allowed = [
+	$allowed = array(
 		'author',
 		'category',
 		'date',
 		'comments',
 		'reading',
-		'custom',
-	];
-
+	);
 
 	if ( empty( $value ) ) {
-		return wp_json_encode( [] );
+		return wp_json_encode( $allowed );
 	}
 
 	$decoded = json_decode( $value, true );
 
 	foreach ( $decoded as $val ) {
-		$check = isset( $val['slug'] ) ? $val['slug'] : $val;
-		if ( ! in_array( $check, $allowed, true ) ) {
-			return wp_json_encode( [] );
+		if ( ! in_array( $val, $allowed, true ) ) {
+			return wp_json_encode( $allowed );
 		}
 	}
 
 	return $value;
+}
+
+/**
+ * Sanitize meta repeater control.
+ *
+ * @param string $value Control input.
+ */
+function neve_sanitize_meta_repeater( $value ) {
+
+	$sanitized_value = [];
+
+	$allowed_slugs = [
+		'author',
+		'category',
+		'date',
+		'comments',
+		'reading',
+	];
+
+	$allowed_properties = [
+		'slug',
+		'title',
+		'visibility',
+		'blocked',
+		'hide_on_mobile',
+		'meta_type',
+		'field',
+		'after',
+		'before',
+		'fallback',
+	];
+
+	if ( empty( $value ) ) {
+		return wp_json_encode( $sanitized_value );
+	}
+
+	$decoded = json_decode( $value, true );
+
+	foreach ( $decoded as $val ) {
+		if ( isset( $val->slug ) && ! in_array( $val->slug, $allowed_slugs, true ) ) {
+			return wp_json_encode( $sanitized_value );
+		}
+
+		foreach ( $val as $property => $value ) {
+			if ( ! in_array( $property, $allowed_properties, true ) ) {
+				return wp_json_encode( $sanitized_value );
+			}
+			$val[ $property ] = wp_kses_post( $value );
+		}
+
+		$sanitized_value[] = $val;
+	}
+
+	return wp_json_encode( $sanitized_value );
 }
 
 /**
