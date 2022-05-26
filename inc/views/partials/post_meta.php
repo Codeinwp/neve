@@ -125,7 +125,7 @@ class Post_Meta extends Base_View {
 			switch ( $slug ) {
 				case 'author':
 					$markup .= '<' . $tag . '  class="meta author vcard ' . esc_attr( $element_class ) . '">';
-					$markup .= self::neve_get_author_meta( $post_id );
+					$markup .= self::neve_get_author_meta( $pid );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'date':
@@ -147,7 +147,7 @@ class Post_Meta extends Base_View {
 					}
 
 					$markup .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . ' ' . esc_attr( $element_class ) . '">';
-					$markup .= self::get_time_tags( $post_id );
+					$markup .= self::get_time_tags( $pid );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'category':
@@ -172,7 +172,7 @@ class Post_Meta extends Base_View {
 					if ( ! in_array( $post_type, $allowed_context ) ) {
 						break;
 					}
-					$reading_time = apply_filters( 'neve_do_read_time', $post_id );
+					$reading_time = apply_filters( 'neve_do_read_time', $pid );
 					if ( empty( $reading_time ) ) {
 						break;
 					}
