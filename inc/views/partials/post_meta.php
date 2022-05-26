@@ -181,10 +181,11 @@ class Post_Meta extends Base_View {
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'custom':
-					$custom_meta = apply_filters( 'neve_do_custom_meta', '', $meta, $tag, $post_id );
+					$custom_meta = apply_filters( 'neve_do_custom_meta', '', $meta, $tag, $pid );
 					if ( empty( $custom_meta ) ) {
 						break;
 					}
+
 					$markup .= '<' . $tag . ' class="meta custom ' . esc_attr( $element_class ) . '">';
 					$markup .= $custom_meta;
 					$markup .= '</' . $tag . '>';
