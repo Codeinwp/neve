@@ -121,7 +121,7 @@ class Post_Meta extends Base_View {
 			$meta           = $order[ $i ];
 			$element_class  = $is_last_item ? 'last' : '';
 			$slug           = $meta->slug ?? 'custom';
-			$element_class .= isset( $meta->hide_on_mobile ) && $meta->hide_on_mobile === true ? ' no-mobile' : '';
+			$element_class .= isset( $meta->hide_on_mobile ) && (bool) $meta->hide_on_mobile === true ? ' no-mobile' : '';
 			switch ( $slug ) {
 				case 'author':
 					$markup .= '<' . $tag . '  class="meta author vcard ' . esc_attr( $element_class ) . '">';
