@@ -39,6 +39,9 @@ const RepeaterItem = ({
 		if (value[itemIndex].title) {
 			label = value[itemIndex].title;
 		}
+		if (value[itemIndex].field) {
+			label = value[itemIndex].field;
+		}
 		return <span className="repeater-item-title">{label}</span>;
 	};
 

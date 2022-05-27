@@ -6,8 +6,9 @@ import { useState } from '@wordpress/element';
 import { ReactSortable } from 'react-sortablejs';
 import { __ } from '@wordpress/i18n';
 
-const Repeater = ({ fields, allowNew, value, onUpdate }) => {
+const Repeater = ({ fields, allowNew, value, onUpdate, newItemFields }) => {
 	const [sorting, setSorting] = useState(false);
+	const itemFields = newItemFields !== [] ? newItemFields : fields;
 
 	const handleToggle = (index) => {
 		const newValue = [...value];
@@ -20,7 +21,7 @@ const Repeater = ({ fields, allowNew, value, onUpdate }) => {
 		const newValue = [...value];
 		const newItem = {};
 
-		for (const [field] of Object.entries(fields)) {
+		for (const [field] of Object.entries(itemFields)) {
 			newItem.visibility = 'yes';
 
 			if (typeof value[0][field] === 'boolean') {
@@ -32,16 +33,16 @@ const Repeater = ({ fields, allowNew, value, onUpdate }) => {
 			}
 
 			// If the type is variable, get the first type in the array.
-			let type = fields[field].type;
+			let type = itemFields[field].type;
 			if (typeof type === 'object') {
-				type = Object.values(fields[field].type)[0];
+				type = Object.values(itemFields[field].type)[0];
 			}
 
 			// If field type is select, the default value for a new field is the first item from select options
 			if (type === 'select') {
-				let choices = fields[field].choices;
+				let choices = itemFields[field].choices;
 				if (typeof Object.values(choices)[0] === 'object') {
-					choices = Object.values(fields[field].choices)[0];
+					choices = Object.values(itemFields[field].choices)[0];
 				}
 				newItem[field] = Object.keys(choices)[0];
 				continue;
@@ -71,7 +72,7 @@ const Repeater = ({ fields, allowNew, value, onUpdate }) => {
 			Object.keys(i).forEach((k) => {
 				if (
 					![
-						...Object.keys(fields),
+						...Object.keys(itemFields),
 						'title',
 						'visibility',
 						'blocked',
@@ -107,7 +108,7 @@ const Repeater = ({ fields, allowNew, value, onUpdate }) => {
 					return (
 						<RepeaterItem
 							className="nv-repeater-item"
-							fields={fields}
+							fields={itemFields}
 							value={value}
 							itemIndex={index}
 							onToggle={handleToggle}
@@ -151,6 +152,7 @@ const Repeater = ({ fields, allowNew, value, onUpdate }) => {
 Repeater.propTypes = {
 	value: PropTypes.array.isRequired,
 	fields: PropTypes.object.isRequired,
+	newItemFields: PropTypes.object,
 	allowNew: PropTypes.bool.isRequired,
 	onUpdate: PropTypes.func.isRequired,
 };
