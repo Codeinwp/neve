@@ -8,7 +8,8 @@ import { __ } from '@wordpress/i18n';
 
 const Repeater = ({ fields, allowNew, value, onUpdate, newItemFields }) => {
 	const [sorting, setSorting] = useState(false);
-	const itemFields = newItemFields !== [] ? newItemFields : fields;
+	const itemFields =
+		Object.keys(newItemFields).length > 0 ? newItemFields : fields;
 
 	const handleToggle = (index) => {
 		const newValue = [...value];
