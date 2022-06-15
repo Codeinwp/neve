@@ -11,7 +11,7 @@ describe('Mega Menu Check', () => {
 		cy.get('@mm').find('.neve-mm-divider').should('be.visible').and('have.length', 4);
 		cy.get('@mm').find('.neve-mm-heading > span').should('be.visible').and('have.length', 4);
 
-		cy.get('@mm').find('.neve-mm-col > .sub-menu > .menu-item-has-children').as('dd');
+		cy.get('@mm').find('.neve-mm-col > .sub-menu > .wrap > .menu-item-has-children').as('dd');
 
 		cy.get('@dd').should('be.visible').and('have.length', 1);
 		cy.get('@dd').realHover();
@@ -32,7 +32,7 @@ describe('Mega Menu Check', () => {
 
 		cy.get('.header-menu-sidebar .neve-mega-menu').as('mm');
 
-		cy.get('@mm').find(' > a > .caret-wrap').click();
+		cy.get('@mm').find(' > .wrap > .caret-wrap').click();
 
 		cy.get('@mm').find('> .sub-menu').should('be.visible');
 		cy.get('@mm').find('.neve-mm-col').should('be.visible').and('have.length', 4);
