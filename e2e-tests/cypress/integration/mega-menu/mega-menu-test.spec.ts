@@ -32,7 +32,7 @@ describe('Mega Menu Check', () => {
 
 		cy.get('.header-menu-sidebar .neve-mega-menu').as('mm');
 
-		cy.get('@mm').find(' > a > .caret-wrap').click();
+		cy.get('@mm').find(' > .wrap > .caret-wrap').click();
 
 		cy.get('@mm').find('> .sub-menu').should('be.visible');
 		cy.get('@mm').find('.neve-mm-col').should('be.visible').and('have.length', 4);
