@@ -41,7 +41,7 @@ describe('Mega Menu Check', () => {
 
 		cy.get('@mm').find('.neve-mm-col > .sub-menu > .menu-item-has-children').as('dd');
 
-		cy.get('@dd').find('> a > .caret-wrap').click();
+		cy.get('@dd').find('> .wrap > .caret-wrap').click();
 		cy.get('@dd').find('.sub-menu').should('be.visible');
 		cy.get('@dd')
 			.find('.sub-menu a')
