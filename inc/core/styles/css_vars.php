@@ -82,6 +82,66 @@ trait Css_Vars {
 		$primary_values   = get_theme_mod( $mod_key_primary, $default_primary );
 		$secondary_values = get_theme_mod( $mod_key_secondary, $default_secondary );
 
+		// Button Shadow Primary
+		if ( isset( $primary_values['useShadow'] ) && ! empty( $primary_values['useShadow'] ) ) {
+			$rules['--primarybtnshadow'] = [
+				Dynamic_Selector::META_KEY    => $mod_key_primary . '.shadowColor',
+				Dynamic_Selector::META_DEFAULT       => 'none',
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ($primary_values) {
+					$blur   = intval($primary_values['shadowProperties']['blur']);
+					$width  = intval($primary_values['shadowProperties']['width']);
+					$height = intval($primary_values['shadowProperties']['height']);
+
+					return sprintf( '%s:%s;', $css_prop, sprintf('%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+				}
+			];
+		}
+
+		// Button Shadow Primary Hover
+		if ( isset( $primary_values['useShadowHover'] ) && ! empty( $primary_values['useShadowHover'] ) ) {
+			$rules['--primarybtnhovershadow'] = [
+				Dynamic_Selector::META_KEY    => $mod_key_primary . '.shadowColorHover',
+				Dynamic_Selector::META_DEFAULT       => 'none',
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ($primary_values) {
+					$blur   = intval($primary_values['shadowPropertiesHover']['blur']);
+					$width  = intval($primary_values['shadowPropertiesHover']['width']);
+					$height = intval($primary_values['shadowPropertiesHover']['height']);
+
+					return sprintf( '%s:%s;', $css_prop, sprintf('%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+				}
+			];
+		}
+
+		// Button Shadow Secondary
+		if ( isset( $secondary_values['useShadow'] ) && ! empty( $secondary_values['useShadow'] ) ) {
+			$rules['--secondarybtnshadow'] = [
+				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.shadowColor',
+				Dynamic_Selector::META_DEFAULT       => 'none',
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ($secondary_values) {
+					$blur   = intval($secondary_values['shadowProperties']['blur']);
+					$width  = intval($secondary_values['shadowProperties']['width']);
+					$height = intval($secondary_values['shadowProperties']['height']);
+
+					return sprintf( '%s:%s;', $css_prop, sprintf('%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+				}
+			];
+		}
+
+		// Button Shadow Secondary Hover
+		if ( isset( $secondary_values['useShadowHover'] ) && ! empty( $secondary_values['useShadowHover'] ) ) {
+			$rules['--secondarybtnhovershadow'] = [
+				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.shadowColorHover',
+				Dynamic_Selector::META_DEFAULT       => 'none',
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ($secondary_values) {
+					$blur   = intval($secondary_values['shadowPropertiesHover']['blur']);
+					$width  = intval($secondary_values['shadowPropertiesHover']['width']);
+					$height = intval($secondary_values['shadowPropertiesHover']['height']);
+
+					return sprintf( '%s:%s;', $css_prop, sprintf('%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+				}
+			];
+		}
+
 		// Border Width
 		if ( isset( $primary_values['type'] ) && $primary_values['type'] === 'outline' ) {
 			$rules['--primarybtnborderwidth'] = [

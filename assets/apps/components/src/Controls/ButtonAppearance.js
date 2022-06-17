@@ -4,6 +4,8 @@ import SizingControl from '../Controls/Sizing';
 import { Panel, PanelBody, PanelRow } from '@wordpress/components';
 import ColorControl from './ColorControl';
 import RadioIcons from './RadioIcons';
+import Toggle from './Toggle';
+import Range from '../../../customizer-controls/src/range/Range';
 
 const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 	const { type, borderRadius, borderWidth } = value;
@@ -57,12 +59,54 @@ const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 			},
 		};
 
+		const shadowCommonControls = {
+			color: {
+				label: __('Shadow', 'neve') + ' ' + __('Color', 'neve'),
+				type: 'color',
+			},
+			blur: {
+				label: __('Blur', 'neve'),
+				type: 'range',
+				min: 0,
+				max: 50,
+			},
+			width: {
+				label: __('Width', 'neve'),
+				type: 'range',
+				min: -50,
+				max: 50,
+			},
+			height: {
+				label: __('Height', 'neve'),
+				type: 'range',
+				min: -50,
+				max: 50,
+			},
+		};
+		const shadowSettings = {
+			normal: {
+				label: __('Button', 'neve') + ' ' + __('Shadow', 'neve'),
+				controls: shadowCommonControls,
+			},
+			hover: {
+				label: __('Button', 'neve') + ' ' + __('Shadow', 'neve'),
+				controls: shadowCommonControls,
+			},
+		};
+
 		return (
 			<Panel>
 				{Object.keys(settings).map((optionType, panelIndex) => {
 					if (noHover && optionType === 'hover') {
 						return null;
 					}
+					const shadowToggle =
+						'useShadow' + (optionType === 'hover' ? 'Hover' : '');
+					const shadowColor =
+						'shadowColor' + (optionType === 'hover' ? 'Hover' : '');
+					const shadowProperties =
+						'shadowProperties' +
+						(optionType === 'hover' ? 'Hover' : '');
 
 					return (
 						<PanelBody
@@ -70,6 +114,9 @@ const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 							title={noHover ? '' : settings[optionType].label}
 							initialOpen={optionType === 'normal'}
 						>
+							{/*
+							 * Color controls for Button Appearance
+							 */}
 							{Object.keys(settings[optionType].controls).map(
 								(controlSlug, controlIndex) => {
 									return (
@@ -104,6 +151,92 @@ const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 									);
 								}
 							)}
+							{/*
+							 * Shadow toggle for Button Appearance
+							 */}
+							<hr />
+							<PanelRow key={`shadow_${optionType}`}>
+								<Toggle
+									label={
+										__('Button', 'neve') +
+										' ' +
+										__('Shadow', 'neve')
+									}
+									checked={value[shadowToggle]}
+									onChange={(nextValue) => {
+										onChange(shadowToggle, nextValue);
+									}}
+								/>
+							</PanelRow>
+							{/*
+							 * Shadow Controls for Button Appearance
+							 */}
+							{value[shadowToggle] &&
+								Object.keys(
+									shadowSettings[optionType].controls
+								).map((controlSlug, controlIndex) => {
+									const {
+										label: shadowControlLabel,
+										type: shadowControlType,
+										...controlArgs
+									} = shadowSettings[optionType].controls[
+										controlSlug
+									];
+									return (
+										<PanelRow key={controlIndex}>
+											{shadowControlType === 'color' && (
+												<ColorControl
+													label={shadowControlLabel}
+													defaultValue={
+														defaultVals[
+															shadowColor
+														] || null
+													}
+													selectedColor={
+														value[shadowColor]
+													}
+													onChange={(nextColor) => {
+														onChange(
+															shadowColor,
+															nextColor
+														);
+													}}
+												/>
+											)}
+											{shadowControlType === 'range' && (
+												<Range
+													label={shadowControlLabel}
+													defaultVal={
+														defaultVals[
+															shadowProperties
+														][controlSlug]
+													}
+													value={
+														value[shadowProperties][
+															controlSlug
+														]
+													}
+													min={controlArgs.min}
+													max={controlArgs.max}
+													onChange={(nextValue) => {
+														const updatedProp = {
+															...value[
+																shadowProperties
+															],
+														};
+														updatedProp[
+															controlSlug
+														] = nextValue;
+														onChange(
+															shadowProperties,
+															updatedProp
+														);
+													}}
+												/>
+											)}
+										</PanelRow>
+									);
+								})}
 						</PanelBody>
 					);
 				})}
@@ -215,6 +348,22 @@ const valuePropTypeTemplate = PropTypes.shape({
 		bottom: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 		right: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 		left: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	}),
+	useShadow: PropTypes.bool,
+	shadowColor: PropTypes.string,
+	shadowProperties: PropTypes.shape({
+		opacity: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+		blur: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+		width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+		height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	}),
+	useShadowHover: PropTypes.bool,
+	shadowColorHover: PropTypes.string,
+	shadowPropertiesHover: PropTypes.shape({
+		opacity: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+		blur: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+		width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+		height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	}),
 });
 
