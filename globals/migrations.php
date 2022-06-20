@@ -111,53 +111,53 @@ function neve_get_button_appearance_default( $button = 'button' ) {
 		'useShadow'             => false,
 		'shadowColor'           => 'rgba(0,0,0,0.5)',
 		'shadowProperties'      => [
-			'blur'    => 5,
-			'width'   => 0,
-			'height'  => 0,
+			'blur'   => 5,
+			'width'  => 0,
+			'height' => 0,
 		],
 		'useShadowHover'        => false,
 		'shadowColorHover'      => 'rgba(0,0,0,0.5)',
 		'shadowPropertiesHover' => [
-			'blur'    => 5,
-			'width'   => 0,
-			'height'  => 0,
+			'blur'   => 5,
+			'width'  => 0,
+			'height' => 0,
 		],
 	];
 	if ( $button === 'secondary_button' ) {
-		$defaults['type']                   = 'outline';
-		$defaults['text']                   = get_theme_mod( 'neve_secondary_button_color' ) ? get_theme_mod( 'neve_secondary_button_color' ) : 'var(--nv-text-color)';
-		$defaults['textHover']              = get_theme_mod( 'neve_secondary_button_hover_color' ) ? get_theme_mod( 'neve_secondary_button_hover_color' ) : 'var(--nv-text-color)';
-		$defaults['borderRadius']           = get_theme_mod( 'neve_secondary_button_border_radius' ) ? get_theme_mod( 'neve_secondary_button_border_radius' ) : [
+		$defaults['type']                  = 'outline';
+		$defaults['text']                  = get_theme_mod( 'neve_secondary_button_color' ) ? get_theme_mod( 'neve_secondary_button_color' ) : 'var(--nv-text-color)';
+		$defaults['textHover']             = get_theme_mod( 'neve_secondary_button_hover_color' ) ? get_theme_mod( 'neve_secondary_button_hover_color' ) : 'var(--nv-text-color)';
+		$defaults['borderRadius']          = get_theme_mod( 'neve_secondary_button_border_radius' ) ? get_theme_mod( 'neve_secondary_button_border_radius' ) : [
 			'top'    => 3,
 			'right'  => 3,
 			'bottom' => 3,
 			'left'   => 3,
 		];
-		$defaults['useShadow']              = get_theme_mod( 'neve_secondary_button_use_shadow' ) ? get_theme_mod( 'neve_secondary_button_use_shadow' ) : $defaults['useShadow'];
-		$defaults['shadowColor']            = get_theme_mod( 'neve_secondary_button_shadow_color' ) ? get_theme_mod( 'neve_secondary_button_shadow_color' ) : $defaults['shadowColor'];
-		$defaults['shadowProperties']       = get_theme_mod( 'neve_secondary_button_shadow_properties' ) ? get_theme_mod( 'neve_secondary_button_shadow_properties' ) : $defaults['shadowProperties'];
-		$defaults['useShadowHover']         = get_theme_mod( 'neve_secondary_button_use_shadow_hover' ) ? get_theme_mod( 'neve_secondary_button_use_shadow_hover' ) : $defaults['useShadowHover'];
-		$defaults['shadowColorHover']       = get_theme_mod( 'neve_secondary_button_shadow_color_hover' ) ? get_theme_mod( 'neve_secondary_button_shadow_color_hover' ) : $defaults['shadowColorHover'];
-		$defaults['shadowPropertiesHover']  = get_theme_mod( 'neve_secondary_button_shadow_properties_hover' ) ? get_theme_mod( 'neve_secondary_button_shadow_properties_hover' ) : $defaults['shadowPropertiesHover'];
+		$defaults['useShadow']             = get_theme_mod( 'neve_secondary_button_use_shadow' ) ? get_theme_mod( 'neve_secondary_button_use_shadow' ) : $defaults['useShadow'];
+		$defaults['shadowColor']           = get_theme_mod( 'neve_secondary_button_shadow_color' ) ? get_theme_mod( 'neve_secondary_button_shadow_color' ) : $defaults['shadowColor'];
+		$defaults['shadowProperties']      = get_theme_mod( 'neve_secondary_button_shadow_properties' ) ? get_theme_mod( 'neve_secondary_button_shadow_properties' ) : $defaults['shadowProperties'];
+		$defaults['useShadowHover']        = get_theme_mod( 'neve_secondary_button_use_shadow_hover' ) ? get_theme_mod( 'neve_secondary_button_use_shadow_hover' ) : $defaults['useShadowHover'];
+		$defaults['shadowColorHover']      = get_theme_mod( 'neve_secondary_button_shadow_color_hover' ) ? get_theme_mod( 'neve_secondary_button_shadow_color_hover' ) : $defaults['shadowColorHover'];
+		$defaults['shadowPropertiesHover'] = get_theme_mod( 'neve_secondary_button_shadow_properties_hover' ) ? get_theme_mod( 'neve_secondary_button_shadow_properties_hover' ) : $defaults['shadowPropertiesHover'];
 
 		return $defaults;
 	}
-	$defaults['background']             = get_theme_mod( 'neve_button_color' ) ? get_theme_mod( 'neve_button_color' ) : 'var(--nv-primary-accent)';
-	$defaults['backgroundHover']        = get_theme_mod( 'neve_button_hover_color' ) ? get_theme_mod( 'neve_button_hover_color' ) : 'var(--nv-primary-accent)';
-	$defaults['text']                   = get_theme_mod( 'neve_button_text_color' ) ? get_theme_mod( 'neve_button_text_color' ) : '#ffffff';
-	$defaults['textHover']              = get_theme_mod( 'neve_button_hover_text_color' ) ? get_theme_mod( 'neve_button_hover_text_color' ) : '#ffffff';
-	$defaults['borderRadius']           = get_theme_mod( 'neve_button_border_radius' ) ? get_theme_mod( 'neve_button_border_radius' ) : [
+	$defaults['background']            = get_theme_mod( 'neve_button_color' ) ? get_theme_mod( 'neve_button_color' ) : 'var(--nv-primary-accent)';
+	$defaults['backgroundHover']       = get_theme_mod( 'neve_button_hover_color' ) ? get_theme_mod( 'neve_button_hover_color' ) : 'var(--nv-primary-accent)';
+	$defaults['text']                  = get_theme_mod( 'neve_button_text_color' ) ? get_theme_mod( 'neve_button_text_color' ) : '#ffffff';
+	$defaults['textHover']             = get_theme_mod( 'neve_button_hover_text_color' ) ? get_theme_mod( 'neve_button_hover_text_color' ) : '#ffffff';
+	$defaults['borderRadius']          = get_theme_mod( 'neve_button_border_radius' ) ? get_theme_mod( 'neve_button_border_radius' ) : [
 		'top'    => 3,
 		'right'  => 3,
 		'bottom' => 3,
 		'left'   => 3,
 	];
-	$defaults['useShadow']              = get_theme_mod( 'neve_button_use_shadow' ) ? get_theme_mod( 'neve_button_use_shadow' ) : $defaults['useShadow'];
-	$defaults['shadowColor']            = get_theme_mod( 'neve_button_shadow_color' ) ? get_theme_mod( 'neve_button_shadow_color' ) : $defaults['shadowColor'];
-	$defaults['shadowProperties']       = get_theme_mod( 'neve_button_shadow_properties' ) ? get_theme_mod( 'neve_button_shadow_properties' ) : $defaults['shadowProperties'];
-	$defaults['useShadowHover']         = get_theme_mod( 'neve_button_use_shadow_hover' ) ? get_theme_mod( 'neve_button_use_shadow_hover' ) : $defaults['useShadowHover'];
-	$defaults['shadowColorHover']       = get_theme_mod( 'neve_button_shadow_color_hover' ) ? get_theme_mod( 'neve_button_shadow_color_hover' ) : $defaults['shadowColorHover'];
-	$defaults['shadowPropertiesHover']  = get_theme_mod( 'neve_button_shadow_properties_hover' ) ? get_theme_mod( 'neve_button_shadow_properties_hover' ) : $defaults['shadowPropertiesHover'];
+	$defaults['useShadow']             = get_theme_mod( 'neve_button_use_shadow' ) ? get_theme_mod( 'neve_button_use_shadow' ) : $defaults['useShadow'];
+	$defaults['shadowColor']           = get_theme_mod( 'neve_button_shadow_color' ) ? get_theme_mod( 'neve_button_shadow_color' ) : $defaults['shadowColor'];
+	$defaults['shadowProperties']      = get_theme_mod( 'neve_button_shadow_properties' ) ? get_theme_mod( 'neve_button_shadow_properties' ) : $defaults['shadowProperties'];
+	$defaults['useShadowHover']        = get_theme_mod( 'neve_button_use_shadow_hover' ) ? get_theme_mod( 'neve_button_use_shadow_hover' ) : $defaults['useShadowHover'];
+	$defaults['shadowColorHover']      = get_theme_mod( 'neve_button_shadow_color_hover' ) ? get_theme_mod( 'neve_button_shadow_color_hover' ) : $defaults['shadowColorHover'];
+	$defaults['shadowPropertiesHover'] = get_theme_mod( 'neve_button_shadow_properties_hover' ) ? get_theme_mod( 'neve_button_shadow_properties_hover' ) : $defaults['shadowPropertiesHover'];
 
 	return $defaults;
 }
