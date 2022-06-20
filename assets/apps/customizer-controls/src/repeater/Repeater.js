@@ -109,7 +109,8 @@ const Repeater = ({ fields, allowNew, value, onUpdate, newItemFields }) => {
 					return (
 						<RepeaterItem
 							className="nv-repeater-item"
-							fields={itemFields}
+							newItemFields={newItemFields}
+							fields={fields}
 							value={value}
 							itemIndex={index}
 							onToggle={handleToggle}

@@ -11,15 +11,22 @@ import { __ } from '@wordpress/i18n';
 
 const RepeaterItemContent = ({
 	fields,
+	newItemFields,
 	value,
 	index,
 	onContentChange,
 	onRemove,
 }) => {
+	const isBlocked = value[index].blocked === 'yes';
+	const currentFields =
+		Object.keys(newItemFields).length > 0 && isBlocked === false
+			? newItemFields
+			: fields;
+
 	const changeContent = (type, newData) => {
 		const newItemValue = { ...value[index] };
 
-		const needsToUpdate = fields[type].dependent;
+		const needsToUpdate = fields[type] ? fields[type].dependent : false;
 		if (needsToUpdate) {
 			let currentType = fields[needsToUpdate].type;
 			if (typeof currentType === 'object') {
@@ -42,9 +49,7 @@ const RepeaterItemContent = ({
 	};
 
 	const toComponent = (key, val) => {
-		if (fields[key] === undefined) return null;
-
-		const currentField = { ...fields[key] };
+		const currentField = { ...currentFields[key] };
 		if (currentField.depends_on) {
 			const currentValueOfDependent = val[currentField.depends_on];
 
@@ -125,11 +130,9 @@ const RepeaterItemContent = ({
 		}
 	};
 
-	const isBlocked = value[index].blocked === 'yes';
-
 	return (
 		<div className="nv-repeater-content">
-			{Object.entries(value[index]).map(([key]) => {
+			{Object.entries(currentFields).map(([key]) => {
 				return toComponent(key, value[index]);
 			})}
 			{value.length > 1 && !isBlocked && (
@@ -148,6 +151,7 @@ const RepeaterItemContent = ({
 
 RepeaterItemContent.propTypes = {
 	fields: PropTypes.object.isRequired,
+	newItemFields: PropTypes.object.isRequired,
 	value: PropTypes.array.isRequired,
 	index: PropTypes.number.isRequired,
 	onContentChange: PropTypes.func.isRequired,

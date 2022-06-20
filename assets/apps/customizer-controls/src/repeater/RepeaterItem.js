@@ -21,6 +21,7 @@ const Handle = () => (
 
 const RepeaterItem = ({
 	fields,
+	newItemFields,
 	value,
 	itemIndex,
 	sorting,
@@ -88,6 +89,7 @@ const RepeaterItem = ({
 			{!sorting && expanded && (
 				<RepeaterItemContent
 					fields={fields}
+					newItemFields={newItemFields}
 					value={value}
 					index={itemIndex}
 					onContentChange={onContentChange}
@@ -103,6 +105,7 @@ const RepeaterItem = ({
 
 RepeaterItem.propTypes = {
 	fields: PropTypes.object.isRequired,
+	newItemFields: PropTypes.object.isRequired,
 	value: PropTypes.array.isRequired,
 	itemIndex: PropTypes.number.isRequired,
 	sorting: PropTypes.bool.isRequired,

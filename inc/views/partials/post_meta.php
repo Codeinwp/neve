@@ -137,11 +137,15 @@ class Post_Meta extends Base_View {
 			$meta           = $order[ $i ];
 			$element_class  = $last_item_on_mobile === $i ? 'last' : '';
 			$slug           = $meta->slug ?? 'custom';
+			$before         = $meta->before ?? '';
+			$after          = $meta->after ?? '';
 			$element_class .= isset( $meta->hide_on_mobile ) && (bool) $meta->hide_on_mobile === true ? ' no-mobile' : '';
 			switch ( $slug ) {
 				case 'author':
 					$markup .= '<' . $tag . '  class="meta author vcard ' . esc_attr( $element_class ) . '">';
+					$markup .= wp_kses_post( $before );
 					$markup .= self::neve_get_author_meta( $pid );
+					$markup .= wp_kses_post( $after );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'date':
@@ -163,7 +167,9 @@ class Post_Meta extends Base_View {
 					}
 
 					$markup .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . ' ' . esc_attr( $element_class ) . '">';
+					$markup .= wp_kses_post( $before );
 					$markup .= self::get_time_tags( $pid );
+					$markup .= wp_kses_post( $after );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'category':
@@ -171,7 +177,9 @@ class Post_Meta extends Base_View {
 						break;
 					}
 					$markup .= '<' . $tag . ' class="meta category ' . esc_attr( $element_class ) . '">';
+					$markup .= wp_kses_post( $before );
 					$markup .= get_the_category_list( ', ', '', $pid );
+					$markup .= wp_kses_post( $after );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'comments':
@@ -180,7 +188,9 @@ class Post_Meta extends Base_View {
 						break;
 					}
 					$markup .= '<' . $tag . ' class="meta comments ' . esc_attr( $element_class ) . '">';
+					$markup .= wp_kses_post( $before );
 					$markup .= $comments;
+					$markup .= wp_kses_post( $after );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'reading':
@@ -193,7 +203,9 @@ class Post_Meta extends Base_View {
 						break;
 					}
 					$markup .= '<' . $tag . ' class="meta reading-time ' . esc_attr( $element_class ) . '">';
+					$markup .= wp_kses_post( $before );
 					$markup .= $reading_time;
+					$markup .= wp_kses_post( $after );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'custom':
