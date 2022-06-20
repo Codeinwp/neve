@@ -33,6 +33,10 @@ describe('Page meta box settings', function () {
 
 	beforeEach(function () {
 		cy.restoreLocalStorage();
+		cy.setLocalStorage(
+			'WP_DATA_USER_1',
+			'{"core/interface":{"enableItems":{"singleEnableItems":{"complementaryArea":{"core/edit-post":"edit-post/document"}},"multipleEnableItems":{}},"preferences":{"features":{"core/edit-post":{"welcomeGuide":false}}}}}',
+		);
 	});
 
 	afterEach(function () {
