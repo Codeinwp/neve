@@ -28,7 +28,7 @@ Cypress.Commands.add('insertCoverBlock', () => {
 		'<p class="has-text-align-center has-large-font-size">test</p>\n' +
 		'<!-- /wp:paragraph --></div></div>\n' +
 		'<!-- /wp:cover -->';
-	cy.get('.edit-post-more-menu')
+	cy.get('.interface-more-menu-dropdown')
 		.click()
 		.get('.components-dropdown-menu__menu button')
 		.contains('Code editor')
