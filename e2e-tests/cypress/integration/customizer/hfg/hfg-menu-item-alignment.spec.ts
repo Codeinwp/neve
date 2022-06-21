@@ -12,9 +12,7 @@ describe('Menu item alignment', function () {
 		cy.get('.menu-item-title-wrap')
 			.contains('About The Tests')
 			.should('have.css', 'text-align', 'left');
-		cy.get(
-			'#nv-primary-navigation-sidebar > .menu-item-1643 > .wrap > .caret-wrap',
-		).click();
+		cy.get('#nv-primary-navigation-sidebar > .menu-item-1643 > .wrap > .caret-wrap').click();
 		cy.get('.menu-item-title-wrap').contains('Level 2').should('have.css', 'text-align', 'left');
 	});
 });
