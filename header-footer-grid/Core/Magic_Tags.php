@@ -291,6 +291,30 @@ class Magic_Tags {
 	}
 
 	/**
+	 * Title for the page currently being viewed.
+	 *
+	 * @return string
+	 */
+	public function current_query_title() {
+		if ( get_option( 'show_on_front' ) === 'page' && is_front_page() ) {
+			return get_the_title();
+		}
+
+		if ( class_exists( 'WooCommerce', false ) ) {
+
+			if ( is_product_category() || is_product_tag() ) {
+				return get_the_archive_title();
+			}
+
+			if ( is_shop() ) {
+				return get_the_title( get_option( 'woocommerce_shop_page_id' ) );
+			}       
+		}
+
+		return wp_title( '' );
+	}
+
+	/**
 	 * Author Bio.
 	 *
 	 * @return string
@@ -636,19 +660,23 @@ class Magic_Tags {
 			[
 				'label'    => __( 'Global', 'neve' ),
 				'controls' => [
-					'site_title'   => [
+					'site_title'          => [
 						'label' => __( 'Site Title', 'neve' ),
 						'type'  => 'string',
 					],
-					'site_tagline' => [
+					'site_tagline'        => [
 						'label' => __( 'Site Tagline', 'neve' ),
 						'type'  => 'string',
 					],
-					'home_url'     => [
+					'current_query_title' => [
+						'label' => __( 'Current Page Title', 'neve' ),
+						'type'  => 'string',
+					],
+					'home_url'            => [
 						'label' => __( 'Home URL', 'neve' ),
 						'type'  => 'url',
 					],
-					'current_year' => [
+					'current_year'        => [
 						'label' => __( 'Current Year', 'neve' ),
 						'type'  => 'string',
 					],
