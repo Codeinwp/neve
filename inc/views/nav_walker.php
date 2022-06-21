@@ -27,6 +27,13 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	public static $mega_menu_enqueued = false;
 
 	/**
+	 * Flag used to add inline mobile submenu button styles.
+	 *
+	 * @var bool
+	 */
+	public static $add_mobile_caret_button_style = false;
+
+	/**
 	 * Nav_Walker constructor.
 	 */
 	public function __construct() {
@@ -75,10 +82,12 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			$caret_svg = '<span class="caret"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg></span>';
 
 			if ( $is_sidebar_item ) {
-				$args->before = '<div class="wrap" style="padding: 15px 0; white-space: unset; display: flex; justify-content: space-between; align-items: center;">';
+				self::$add_mobile_caret_button_style = true;
+
+				$args->before = '<div class="wrap">';
 				$args->after  = '</div>';
 
-				$caret  = '<button ' . $expanded . ' type="button" class="caret-wrap navbar-toggle ' . $item->menu_order . '" style="border: unset; height: 100%;">';
+				$caret  = '<button ' . $expanded . ' type="button" class="caret-wrap navbar-toggle ' . $item->menu_order . '">';
 				$caret .= $caret_svg;
 				$caret .= '</button>';
 
@@ -91,7 +100,39 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			}
 		}
 
+
+
 		return $title;
+	}
+
+	/**
+	 * Ends the list of after the elements are added.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @see Walker::end_lvl()
+	 *
+	 * @param string   $output Used to append additional content (passed by reference).
+	 * @param int      $depth  Depth of menu item. Used for padding.
+	 * @param stdClass $args   An object of wp_nav_menu() arguments.
+	 */
+	public function end_lvl( &$output, $depth = 0, $args = null ) {
+		parent::end_lvl( $output, $depth, $args );
+
+		if ( $depth === 0 && self::$add_mobile_caret_button_style ) {
+			$output .= '<style>' . $this->get_mobile_submenu_style() . '</style>';
+		}
+	}
+
+	/**
+	 * Get mobile submenu inline styles
+	 */
+	public function get_mobile_submenu_style() {
+		$mobile_button_caret_css  = '.header-menu-sidebar .nav-ul li .wrap { padding: 15px 0; white-space: unset; display: flex; justify-content: space-between; align-items: center; }';
+		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a { width: 100%; }';
+		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a:hover { color: var(--hovercolor); }';
+		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap button { border: unset; height: 100%; }';
+		return Dynamic_Css::minify_css( $mobile_button_caret_css );
 	}
 
 	/**
