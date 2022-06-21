@@ -101,23 +101,28 @@ class Footer extends Abstract_Builder {
 			}
 		);
 
-		add_action( 'neve_after_slot_component', [ $this, 'add_footer_component' ], 10, 2 );
+		add_action( 'neve_after_slot_component', [ $this, 'add_footer_component' ], 10, 3 );
 	}
 
 	/**
 	 * Add footer component.
 	 *
 	 * @param string $builder Builder slug.
+	 * @param string $row Row slug.
 	 * @param string $slot Slot name.
 	 *
 	 * @return void
 	 */
-	public function add_footer_component( $builder, $slot ) {
+	public function add_footer_component( $builder, $row, $slot ) {
 		if ( $this->has_valid_addons() ) {
 			return;
 		}
 
 		if ( $builder !== self::BUILDER_NAME ) {
+			return;
+		}
+
+		if ( $row !== 'bottom' ) {
 			return;
 		}
 

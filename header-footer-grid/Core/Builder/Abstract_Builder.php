@@ -1592,7 +1592,7 @@ abstract class Abstract_Builder implements Builder {
 				echo '</div>';
 			}
 
-			do_action( 'neve_after_slot_component', $this->get_id(), $slot );
+			do_action( 'neve_after_slot_component', $this->get_id(), $row_index, $slot );
 
 			if ( $row_index !== 'sidebar' ) {
 				echo '</div>';
