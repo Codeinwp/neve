@@ -209,7 +209,14 @@ const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 													defaultVal={
 														defaultVals[
 															shadowProperties
+														] &&
+														defaultVals[
+															shadowProperties
 														][controlSlug]
+															? defaultVals[
+																	shadowProperties
+															  ][controlSlug]
+															: 0
 													}
 													value={
 														value[shadowProperties][
