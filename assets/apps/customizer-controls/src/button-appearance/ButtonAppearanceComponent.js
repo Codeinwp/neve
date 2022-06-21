@@ -22,7 +22,6 @@ const ButtonAppearanceComponent = ({ control }) => {
 		useShadow: false,
 		shadowColor: 'rgba(0,0,0,0.5)',
 		shadowProperties: {
-			opacity: 50,
 			blur: 5,
 			width: 0,
 			height: 0,
@@ -30,7 +29,6 @@ const ButtonAppearanceComponent = ({ control }) => {
 		useShadowHover: false,
 		shadowColorHover: 'rgba(0,0,0,0.5)',
 		shadowPropertiesHover: {
-			opacity: 50,
 			blur: 5,
 			width: 0,
 			height: 0,

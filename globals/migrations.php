@@ -37,18 +37,16 @@ function neve_get_button_appearance_default( $button = 'button' ) {
 				'useShadow'             => false,
 				'shadowColor'           => 'rgba(0,0,0,0.5)',
 				'shadowProperties'      => [
-					'opacity' => 50,
-					'blur'    => 5,
-					'width'   => 0,
-					'height'  => 0,
+					'blur'   => 5,
+					'width'  => 0,
+					'height' => 0,
 				],
 				'useShadowHover'        => false,
 				'shadowColorHover'      => 'rgba(0,0,0,0.5)',
 				'shadowPropertiesHover' => [
-					'opacity' => 50,
-					'blur'    => 5,
-					'width'   => 0,
-					'height'  => 0,
+					'blur'   => 5,
+					'width'  => 0,
+					'height' => 0,
 				],
 			];
 		}
@@ -74,18 +72,16 @@ function neve_get_button_appearance_default( $button = 'button' ) {
 			'useShadow'             => false,
 			'shadowColor'           => 'rgba(0,0,0,0.5)',
 			'shadowProperties'      => [
-				'opacity' => 50,
-				'blur'    => 5,
-				'width'   => 0,
-				'height'  => 0,
+				'blur'   => 5,
+				'width'  => 0,
+				'height' => 0,
 			],
 			'useShadowHover'        => false,
 			'shadowColorHover'      => 'rgba(0,0,0,0.5)',
 			'shadowPropertiesHover' => [
-				'opacity' => 50,
-				'blur'    => 5,
-				'width'   => 0,
-				'height'  => 0,
+				'blur'   => 5,
+				'width'  => 0,
+				'height' => 0,
 			],
 		];
 	}
