@@ -344,8 +344,7 @@ function neve_sanitize_meta_repeater( $value ) {
 		'hide_on_mobile',
 		'meta_type',
 		'field',
-		'after',
-		'before',
+		'format',
 		'fallback',
 	];
 

@@ -137,16 +137,15 @@ class Post_Meta extends Base_View {
 			$meta           = $order[ $i ];
 			$element_class  = $last_item_on_mobile === $i ? 'last' : '';
 			$slug           = $meta->slug ?? 'custom';
-			$before         = $meta->before ?? '';
-			$after          = $meta->after ?? '';
+			$format         = ! empty( $meta->format ) ? $meta->format : '{meta}';
 			$element_class .= isset( $meta->hide_on_mobile ) && (bool) $meta->hide_on_mobile === true ? ' no-mobile' : '';
 			switch ( $slug ) {
 				case 'author':
-					$markup .= '<' . $tag . '  class="meta author vcard ' . esc_attr( $element_class ) . '">';
-					$markup .= wp_kses_post( $before );
-					$markup .= self::neve_get_author_meta( $pid );
-					$markup .= wp_kses_post( $after );
-					$markup .= '</' . $tag . '>';
+					$show_before  = $format === '{meta}';
+					$meta_content = str_replace( '{meta}', self::neve_get_author_meta( $pid, $show_before ), $format );
+					$markup      .= '<' . $tag . '  class="meta author vcard ' . esc_attr( $element_class ) . '">';
+					$markup      .= wp_kses_post( $meta_content );
+					$markup      .= '</' . $tag . '>';
 					break;
 				case 'date':
 					$date_meta_classes = array(
@@ -165,33 +164,29 @@ class Post_Meta extends Base_View {
 					if ( $show_updated_time && $has_updated_time ) {
 						$date_meta_classes[] = 'nv-show-updated';
 					}
-
-					$markup .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . ' ' . esc_attr( $element_class ) . '">';
-					$markup .= wp_kses_post( $before );
-					$markup .= self::get_time_tags( $pid );
-					$markup .= wp_kses_post( $after );
-					$markup .= '</' . $tag . '>';
+					$meta_content = str_replace( '{meta}', self::get_time_tags( $pid ), $format );
+					$markup      .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . ' ' . esc_attr( $element_class ) . '">';
+					$markup      .= wp_kses_post( $meta_content );
+					$markup      .= '</' . $tag . '>';
 					break;
 				case 'category':
 					if ( ! in_array( 'category', get_object_taxonomies( $post_type ) ) ) {
 						break;
 					}
-					$markup .= '<' . $tag . ' class="meta category ' . esc_attr( $element_class ) . '">';
-					$markup .= wp_kses_post( $before );
-					$markup .= get_the_category_list( ', ', '', $pid );
-					$markup .= wp_kses_post( $after );
-					$markup .= '</' . $tag . '>';
+					$meta_content = str_replace( '{meta}', get_the_category_list( ', ', '', $pid ), $format );
+					$markup      .= '<' . $tag . ' class="meta category ' . esc_attr( $element_class ) . '">';
+					$markup      .= wp_kses_post( $meta_content );
+					$markup      .= '</' . $tag . '>';
 					break;
 				case 'comments':
 					$comments = self::get_comments( $pid );
 					if ( empty( $comments ) ) {
 						break;
 					}
-					$markup .= '<' . $tag . ' class="meta comments ' . esc_attr( $element_class ) . '">';
-					$markup .= wp_kses_post( $before );
-					$markup .= $comments;
-					$markup .= wp_kses_post( $after );
-					$markup .= '</' . $tag . '>';
+					$meta_content = str_replace( '{meta}', $comments, $format );
+					$markup      .= '<' . $tag . ' class="meta comments ' . esc_attr( $element_class ) . '">';
+					$markup      .= wp_kses_post( $meta_content );
+					$markup      .= '</' . $tag . '>';
 					break;
 				case 'reading':
 					$allowed_context = apply_filters( 'neve_post_type_supported_list', [ 'post' ], 'block_editor' );
@@ -202,20 +197,18 @@ class Post_Meta extends Base_View {
 					if ( empty( $reading_time ) ) {
 						break;
 					}
-					$markup .= '<' . $tag . ' class="meta reading-time ' . esc_attr( $element_class ) . '">';
-					$markup .= wp_kses_post( $before );
-					$markup .= $reading_time;
-					$markup .= wp_kses_post( $after );
-					$markup .= '</' . $tag . '>';
+					$meta_content = str_replace( '{meta}', $reading_time, $format );
+					$markup      .= '<' . $tag . ' class="meta reading-time ' . esc_attr( $element_class ) . '">';
+					$markup      .= wp_kses_post( $meta_content );
+					$markup      .= '</' . $tag . '>';
 					break;
 				case 'custom':
 					$custom_meta = apply_filters( 'neve_do_custom_meta', '', $meta, $tag, $pid );
 					if ( empty( $custom_meta ) ) {
 						break;
 					}
-
 					$markup .= '<' . $tag . ' class="meta custom ' . esc_attr( $element_class ) . '">';
-					$markup .= $custom_meta;
+					$markup .= wp_kses_post( $custom_meta );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'default':
@@ -260,7 +253,7 @@ class Post_Meta extends Base_View {
 	 *
 	 * @return string | false
 	 */
-	public static function neve_get_author_meta( $post_id = null ) {
+	public static function neve_get_author_meta( $post_id = null, $show_before = true ) {
 
 		global $post;
 
@@ -289,7 +282,7 @@ class Post_Meta extends Base_View {
 			$markup .= $avatar_markup;
 		}
 		$markup .= '<span class="author-name fn">';
-		if ( ! $display_avatar ) {
+		if ( ! $display_avatar && $show_before ) {
 			$markup .= __( 'by', 'neve' ) . ' ';
 		}
 

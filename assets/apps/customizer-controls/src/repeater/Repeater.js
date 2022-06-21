@@ -21,7 +21,6 @@ const Repeater = ({ fields, allowNew, value, onUpdate, newItemFields }) => {
 	const handleAddItem = () => {
 		const newValue = [...value];
 		const newItem = {};
-
 		for (const [field] of Object.entries(itemFields)) {
 			newItem.visibility = 'yes';
 
@@ -49,7 +48,7 @@ const Repeater = ({ fields, allowNew, value, onUpdate, newItemFields }) => {
 				continue;
 			}
 
-			newItem[field] = '';
+			newItem[field] = itemFields[field].default;
 		}
 
 		newValue.push(newItem);

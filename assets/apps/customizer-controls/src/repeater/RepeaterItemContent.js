@@ -68,7 +68,7 @@ const RepeaterItemContent = ({
 				return (
 					<TextControl
 						label={currentField.label}
-						value={value[index][key]}
+						value={value[index][key] || currentField.default}
 						onChange={(newData) => changeContent(key, newData)}
 						key={key + index}
 					/>
