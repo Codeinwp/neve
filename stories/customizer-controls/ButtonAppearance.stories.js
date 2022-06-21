@@ -68,5 +68,11 @@ EmptyValues.args = {
 		textHover: '',
 		borderRadius: { top: '', bottom: '', right: '', left: '' },
 		borderWidth: { top: '', bottom: '', right: '', left: '' },
+		useShadow: false,
+		shadowColor: '',
+		shadowProperties: { opacity: '', blur: '', width: '', height: '' },
+		useShadowHover: false,
+		shadowColorHover: '',
+		shadowPropertiesHover: { opacity: '', blur: '', width: '', height: '' },
 	},
 };
