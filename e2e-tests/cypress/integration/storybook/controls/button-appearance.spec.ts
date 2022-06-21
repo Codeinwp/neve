@@ -9,7 +9,7 @@ describe('Button Appearance', function () {
 		});
 		it('Default settings', function () {
 			cy.findByText(
-				/\{ "type": "fill", "background": "#cccccc", "backgroundhover": "#333333", "text": "#000000", "texthover": "#ffffff", "borderradius": \{ "top": 10, "bottom": 10, "right": 10, "left": 10 \}, "borderwidth": \{ "top": 1, "bottom": 1, "right": 1, "left": 1 \}, "useShadow": false, "shadowColor": "rgba(0,0,0,0.5)", "shadowProperties": \{ "opacity": 50, "blur": 5, "width": 0, "height": 0 \}, "useShadowHover": false, "shadowColorHover": "rgba(0,0,0,0.5)", "shadowPropertiesHover": \{ "opacity": 50, "blur": 5, "width": 0, "height": 0 \} \}/i,
+				/\{ "type": "fill", "background": "#cccccc", "backgroundhover": "#333333", "text": "#000000", "texthover": "#ffffff", "borderradius": \{ "top": 10, "bottom": 10, "right": 10, "left": 10 \}, "borderwidth": \{ "top": 1, "bottom": 1, "right": 1, "left": 1 \}, "useShadow": false, "shadowColor": "rgba(0,0,0,0.5)", "shadowProperties": \{ "blur": 5, "width": 0, "height": 0 \}, "useShadowHover": false, "shadowColorHover": "rgba(0,0,0,0.5)", "shadowPropertiesHover": \{ "blur": 5, "width": 0, "height": 0 \} \}/i,
 			);
 		});
 	});
@@ -68,7 +68,7 @@ describe('Button Appearance', function () {
 			}).should('not.exist');
 
 			cy.findByText(
-				/\{ "type": "", "background": "", "backgroundhover": "", "text": "", "texthover": "", "borderradius": \{ "top": "", "bottom": "", "right": "", "left": "" \}, "borderwidth": \{ "top": "", "bottom": "", "right": "", "left": "" \}, "useShadow": false, "shadowColor": "", "shadowProperties": \{ "opacity": "", "blur": "", "width": "", "height": "" \}, "useShadowHover": false, "shadowColorHover": "", "shadowPropertiesHover": \{ "opacity": "", "blur": "", "width": "", "height": "" \} \}/i,
+				/\{ "type": "", "background": "", "backgroundhover": "", "text": "", "texthover": "", "borderradius": \{ "top": "", "bottom": "", "right": "", "left": "" \}, "borderwidth": \{ "top": "", "bottom": "", "right": "", "left": "" \}, "useShadow": false, "shadowColor": "", "shadowProperties": \{ "blur": "", "width": "", "height": "" \}, "useShadowHover": false, "shadowColorHover": "", "shadowPropertiesHover": \{ "blur": "", "width": "", "height": "" \} \}/i,
 			);
 		});
 	});
