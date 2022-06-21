@@ -29,10 +29,12 @@ a.added_to_cart,
 .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout) {
 
 	@extend %nv-button-secondary;
+	box-shadow: var(--secondarybtnshadow, none);
 
 	&:hover {
 
 		@extend %nv-button-secondary-hover;
+		box-shadow: var(--secondarybtnhovershadow, none);
 	}
 }
 
@@ -83,10 +85,12 @@ a.added_to_cart,
 .woocommerce input.button.alt {
 
 	@extend %nv-button-primary;
+	box-shadow: var(--primarybtnshadow, none);
 
 	&:hover {
 
 		@extend %nv-button-primary-hover;
+		box-shadow: var(--primarybtnhovershadow, none);
 	}
 }
 
