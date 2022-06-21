@@ -15,6 +15,17 @@ export default {
 			textHover: '#ffffff',
 			borderRadius: { top: 10, bottom: 10, right: 10, left: 10 },
 			borderWidth: { top: 1, bottom: 1, right: 1, left: 1 },
+			useShadow: false,
+			shadowColor: 'rgba(0,0,0,0.5)',
+			shadowProperties: { opacity: 50, blur: 5, width: 0, height: 0 },
+			useShadowHover: false,
+			shadowColorHover: 'rgba(0,0,0,0.5)',
+			shadowPropertiesHover: {
+				opacity: 50,
+				blur: 5,
+				width: 0,
+				height: 0,
+			},
 		},
 	},
 	argTypes: {

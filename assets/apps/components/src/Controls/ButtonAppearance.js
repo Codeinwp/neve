@@ -71,13 +71,13 @@ const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 				max: 50,
 			},
 			width: {
-				label: __('Width', 'neve'),
+				label: __('Offset X', 'neve'),
 				type: 'range',
 				min: -50,
 				max: 50,
 			},
 			height: {
-				label: __('Height', 'neve'),
+				label: __('Offset Y', 'neve'),
 				type: 'range',
 				min: -50,
 				max: 50,
