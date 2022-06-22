@@ -486,6 +486,7 @@ CSS;
 				'section'               => $this->section,
 				'options'               => [
 					'no_hover'     => true,
+					'no_shadow'    => true,
 					'default_vals' => $default,
 				],
 				'live_refresh_selector' => $this->default_selector,
