@@ -45,14 +45,21 @@ const Instructions: React.FC<Props> = ({ control }) => {
 					</span>
 					<ul className="quick-links">
 						{linkKeys.map((settingSlug, index) => {
-							const { label, icon } = quickLinks[settingSlug];
+							const { label, icon, url } =
+								quickLinks[settingSlug];
+
 							return (
 								<li key={index}>
 									<Button
 										isLink
-										onClick={() =>
-											focusControl(settingSlug)
-										}
+										href={url || undefined}
+										target={'_blank'}
+										onClick={() => {
+											if (url) {
+												return;
+											}
+											focusControl(settingSlug);
+										}}
 									>
 										<span className={`dashicons ${icon}`} />
 										{label}

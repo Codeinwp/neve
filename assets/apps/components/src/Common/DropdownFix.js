@@ -42,7 +42,6 @@ function useOutsideClickHook(ref, callback) {
 					break;
 				}
 			}
-
 			if (
 				shouldClose &&
 				(typeof event.target.className === 'string' ||
