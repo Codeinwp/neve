@@ -7,7 +7,14 @@ import RadioIcons from './RadioIcons';
 import Toggle from './Toggle';
 import Range from '../../../customizer-controls/src/range/Range';
 
-const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
+const ButtonAppearance = ({
+	label,
+	value,
+	onChange,
+	noHover,
+	noShadow,
+	defaultVals,
+}) => {
 	const { type, borderRadius, borderWidth } = value;
 
 	const TypeControl = () => {
@@ -154,24 +161,27 @@ const ButtonAppearance = ({ label, value, onChange, noHover, defaultVals }) => {
 							{/*
 							 * Shadow toggle for Button Appearance
 							 */}
-							<hr />
-							<PanelRow key={`shadow_${optionType}`}>
-								<Toggle
-									label={
-										__('Button', 'neve') +
-										' ' +
-										__('Shadow', 'neve')
-									}
-									checked={value[shadowToggle]}
-									onChange={(nextValue) => {
-										onChange(shadowToggle, nextValue);
-									}}
-								/>
-							</PanelRow>
+							{!noShadow && <hr />}
+							{!noShadow && (
+								<PanelRow key={`shadow_${optionType}`}>
+									<Toggle
+										label={
+											__('Button', 'neve') +
+											' ' +
+											__('Shadow', 'neve')
+										}
+										checked={value[shadowToggle]}
+										onChange={(nextValue) => {
+											onChange(shadowToggle, nextValue);
+										}}
+									/>
+								</PanelRow>
+							)}
 							{/*
 							 * Shadow Controls for Button Appearance
 							 */}
-							{value[shadowToggle] &&
+							{!noShadow &&
+								value[shadowToggle] &&
 								Object.keys(
 									shadowSettings[optionType].controls
 								).map((controlSlug, controlIndex) => {

@@ -1,4 +1,4 @@
-/*eslint camelcase: ["error", {allow: ["no_hover"]}]*/
+/*eslint camelcase: ["error", {allow: ["no_hover", "no_shadow"]}]*/
 
 import PropTypes from 'prop-types';
 import { ButtonAppearance } from '@neve-wp/components';
@@ -72,7 +72,7 @@ const ButtonAppearanceComponent = ({ control }) => {
 		control.setting.set(nextValue);
 	};
 
-	const { label, no_hover } = control.params;
+	const { label, no_hover, no_shadow } = control.params;
 
 	useEffect(() => {
 		document.addEventListener('neve-changed-customizer-value', (e) => {
@@ -110,6 +110,7 @@ const ButtonAppearanceComponent = ({ control }) => {
 			value={value}
 			label={label}
 			noHover={no_hover}
+			noShadow={no_shadow}
 		/>
 	);
 };

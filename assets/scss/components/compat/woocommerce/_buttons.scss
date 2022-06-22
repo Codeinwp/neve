@@ -26,6 +26,7 @@
 .woocommerce .price_slider_amount button.button,
 a.added_to_cart,
 .checkout_coupon button.button,
+.woocommerce table.cart td.actions .input-text#coupon_code + .button,
 .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout) {
 
 	@extend %nv-button-secondary;
@@ -110,9 +111,11 @@ a.added_to_cart,
 .woocommerce input.button.alt:disabled[disabled] {
 
 	@extend %nv-button-primary;
+	box-shadow: var(--primarybtnshadow, none);
 
 	&:hover {
 
 		@extend %nv-button-primary-hover;
+		box-shadow: var(--primarybtnhovershadow, none);
 	}
 }
