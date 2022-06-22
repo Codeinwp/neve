@@ -91,6 +91,7 @@ class Font_Manager extends Base_View {
 		$this->add_body_variants();
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_google_fonts' ), 200 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'register_google_fonts' ), 200 );
+		add_action( 'wp_print_styles', array( $this, 'load_external_fonts_locally' ), PHP_INT_MAX );
 	}
 
 	/**
@@ -218,29 +219,103 @@ class Font_Manager extends Base_View {
 			$query_args['subset'] = urlencode( $subsets[ $locale ] );
 		}
 		$url = add_query_arg( $query_args, $base_url );
+		
+		wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
+	}
 
-		// Enqueue style
+	/**
+	 * Load Google Fonts locally.
+	 *
+	 * @return void 
+	 */
+	public function load_external_fonts_locally() {
 
 		/**
 		 * Filters whether the remote fonts should be hosted locally.
 		 *
 		 * This filter applies for both Google Fonts and Typekit Fonts if the Typekit module is used.
 		 *
-		 * @param bool $load_locally Whether the Google Fonts should be hosted locally. Default value is false.
+		 * @param bool $should_enqueue_locally Whether the Google Fonts should be hosted locally. Default value is false.
 		 *
 		 * @since 2.11
 		 */
 		$should_enqueue_locally = apply_filters( 'neve_load_remote_fonts_locally', false );
-		$is_admin_context       = is_admin() || is_customize_preview();
-		$vendor_file            = trailingslashit( get_template_directory() ) . 'vendor/wptt/webfont-loader/wptt-webfont-loader.php';
-		if ( (bool) $should_enqueue_locally && ! $is_admin_context && is_readable( $vendor_file ) ) {
-			require_once $vendor_file;
-			wp_add_inline_style(
-				'neve-style',
-				wptt_get_webfont_styles( 'https:' . $url )
-			);
-		} else {
-			wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
+
+		if ( ! (bool) $should_enqueue_locally ) {
+			return;
 		}
+
+		$is_admin_context = is_admin() || is_customize_preview();
+		$wptt_vendor_file = trailingslashit( get_template_directory() ) . 'vendor/wptt/webfont-loader/wptt-webfont-loader.php';
+
+		if ( $is_admin_context || ! is_readable( $wptt_vendor_file ) ) {
+			return;
+		}
+
+		/**
+		 * Bail when in Elementor edit mode. 
+		 * 
+		 * We do this so that initial load of Elementor editor will not be slowed down by Neve Pro downloading Roboto fonts.
+		 */ 
+		if ( class_exists( '\Elementor\Plugin' ) ) {
+			global $post;
+			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() || 
+				\Elementor\Plugin::$instance->preview->is_preview_mode()
+				) {
+				return;
+			}       
+		}
+
+		/**
+		 * Allow filtering for additional external font providers.
+		 * 
+		 * The domains provided to this filter should be from services that link directly to a CSS file or else WPTT will not be able to download the fonts.
+		 */
+		$external_font_domains = apply_filters(
+			'neve_font_providers',
+			array(
+				'fonts.googleapis.com/css',
+				'use.typekit.net',
+			)
+		);
+
+		global $wp_styles;
+		$enqueued_styles = $wp_styles->queue ?? '';
+
+		if ( ! is_array( $enqueued_styles ) ) {
+			return;
+		}
+
+		$external_fonts = array();
+
+		foreach ( $enqueued_styles as $style ) {
+
+			$source = $wp_styles->registered[ $style ]->src;
+
+			foreach ( $external_font_domains as $domain ) {
+
+				if ( strpos( $source, $domain ) !== false ) {
+					$parts = wp_parse_url( $source );
+					/**
+					 * Some plugins might set font url without protocol example //fonts.googleapis.com...
+					 * Lets build the url ourselves to be sure the its whats expected.
+					*/
+					$normalized_source = 'https://' . $parts['host'] . $parts['path'] . ( isset( $parts['query'] ) ? '?' . $parts['query'] : '' );
+					$external_fonts[]  = $normalized_source;
+					// Dequeue this handle since we are going to load the font locally
+					wp_dequeue_style( $style ); 
+				}           
+			}       
+		}
+
+		$external_fonts = array_unique( $external_fonts );
+
+		require_once $wptt_vendor_file;
+
+		foreach ( $external_fonts as $font_link ) {
+			wp_add_inline_style( 'neve-style', wptt_get_webfont_styles( $font_link ) );
+		}
+
 	}
+
 }
