@@ -170,49 +170,4 @@
 			}
 		}
 	}
-
-	.has-caret.amp {
-		padding-right: 0;
-	}
-
-	.amp.dropdown-open + .sub-menu {
-		display: block !important;
-	}
-}
-
-// === AMP === //
-.amp-desktop-caret-wrap {
-	display: none;
-}
-
-.amp-caret-wrap {
-
-	svg {
-		fill: currentColor;
-		width: 1em;
-	}
-}
-
-.has-caret.amp {
-	display: flex;
-	align-items: center;
-
-	.caret-wrap {
-		margin-left: auto;
-	}
-}
-
-.sub-menu .has-caret.amp {
-	padding-right: $spacing-md;
-}
-
-@mixin nav-menu--laptop() {
-
-	.amp-desktop-caret-wrap {
-		display: none;
-	}
-
-	.amp-caret-wrap {
-		display: block;
-	}
 }
