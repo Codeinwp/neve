@@ -42,8 +42,11 @@ function useOutsideClickHook(ref, callback) {
 					break;
 				}
 			}
+
 			if (
 				shouldClose &&
+				(typeof event.target.className === 'string' ||
+					event.target.className instanceof String) &&
 				!event.target.className.match(/\bangle-picker[^\s]*/) &&
 				!event.target.className.match(/\bgradient-picker[^\s]*/)
 			) {

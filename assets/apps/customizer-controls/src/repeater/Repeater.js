@@ -6,8 +6,10 @@ import { useState } from '@wordpress/element';
 import { ReactSortable } from 'react-sortablejs';
 import { __ } from '@wordpress/i18n';
 
-const Repeater = ({ fields, value, onUpdate }) => {
+const Repeater = ({ fields, allowNew, value, onUpdate, newItemFields }) => {
 	const [sorting, setSorting] = useState(false);
+	const itemFields =
+		Object.keys(newItemFields).length > 0 ? newItemFields : fields;
 
 	const handleToggle = (index) => {
 		const newValue = [...value];
@@ -19,23 +21,34 @@ const Repeater = ({ fields, value, onUpdate }) => {
 	const handleAddItem = () => {
 		const newValue = [...value];
 		const newItem = {};
-
-		for (const [field] of Object.entries(newValue[0])) {
-			if (field === 'visibility') {
-				newItem[field] = 'yes';
-				continue;
-			}
+		for (const [field] of Object.entries(itemFields)) {
+			newItem.visibility = 'yes';
 
 			if (typeof value[0][field] === 'boolean') {
 				newItem[field] = true;
+				if (field === 'hide_on_mobile') {
+					newItem[field] = false;
+				}
 				continue;
 			}
 
-			if (fields[field].type === 'select') {
-				newItem[field] = Object.keys(fields[field].choices)[0];
+			// If the type is variable, get the first type in the array.
+			let type = itemFields[field].type;
+			if (typeof type === 'object') {
+				type = Object.values(itemFields[field].type)[0];
+			}
+
+			// If field type is select, the default value for a new field is the first item from select options
+			if (type === 'select') {
+				let choices = itemFields[field].choices;
+				if (typeof Object.values(choices)[0] === 'object') {
+					choices = Object.values(itemFields[field].choices)[0];
+				}
+				newItem[field] = Object.keys(choices)[0];
 				continue;
 			}
-			newItem[field] = '';
+
+			newItem[field] = itemFields[field].default;
 		}
 
 		newValue.push(newItem);
@@ -57,7 +70,15 @@ const Repeater = ({ fields, value, onUpdate }) => {
 	const setList = (l) => {
 		const final = l.map((i) => {
 			Object.keys(i).forEach((k) => {
-				if (![...Object.keys(fields), 'visibility'].includes(k)) {
+				if (
+					![
+						...Object.keys(itemFields),
+						'title',
+						'visibility',
+						'blocked',
+						'slug',
+					].includes(k)
+				) {
 					delete i[k];
 				}
 			});
@@ -73,7 +94,12 @@ const Repeater = ({ fields, value, onUpdate }) => {
 			<ReactSortable
 				className="nv-repeater-items-container"
 				list={value}
-				setList={setList}
+				setList={(newItems, _, { dragging }) => {
+					if (!dragging) {
+						return;
+					}
+					setList(newItems);
+				}}
 				animation={300}
 				forceFallback={true}
 				handle=".nv-repeater-handle"
@@ -82,6 +108,7 @@ const Repeater = ({ fields, value, onUpdate }) => {
 					return (
 						<RepeaterItem
 							className="nv-repeater-item"
+							newItemFields={newItemFields}
 							fields={fields}
 							value={value}
 							itemIndex={index}
@@ -109,7 +136,7 @@ const Repeater = ({ fields, value, onUpdate }) => {
 						{sorting ? __('Done', 'neve') : __('Reorder', 'neve')}
 					</Button>
 				)}
-				{!sorting && (
+				{!sorting && allowNew === 'yes' && (
 					<Button
 						isSecondary
 						onClick={handleAddItem}
@@ -126,6 +153,8 @@ const Repeater = ({ fields, value, onUpdate }) => {
 Repeater.propTypes = {
 	value: PropTypes.array.isRequired,
 	fields: PropTypes.object.isRequired,
+	newItemFields: PropTypes.object,
+	allowNew: PropTypes.bool.isRequired,
 	onUpdate: PropTypes.func.isRequired,
 };
 
