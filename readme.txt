@@ -19,6 +19,20 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+#### [Version 3.3.0](https://github.com/Codeinwp/neve/compare/v3.2.5...v3.3.0) (2022-06-23)
+
+- [Feat] Add an option to hide post meta on mobile
+- [Feat] Add shadow controls for primary / secondary buttons
+- [Feat] Adds  magic tag to get the current title of the page being viewed.
+- [Fix] JS error in customizer on nested accordion
+- Update Google Fonts
+- Drop the copyright footer component and add static copyright;
+- Accessibility improvements: Replace dropdown links with buttons
+- We have started to add a new generation of starter sites called Expert Sites, which are more complex and cover a more variety of sections and integrations for each niche. Furthermore, we have started to review and convert some of the older ones to Expert Sites and you will see them available soon. To support this change, you will see a lighter starter site collection than we had in the past as we want to focus on a smaller but more powerful collection of ready-to-use sites which we can constantly update. You will still be able to access the legacy starter sites by [following this doc](https://docs.themeisle.com/article/1613-where-do-i-find-the-legacy-the-starter-sites), but keep in mind that those will no longer receive updates or be tested with the latest versions.
+
+
+
+
 ##### [Version 3.2.5](https://github.com/Codeinwp/neve/compare/v3.2.4...v3.2.5) (2022-05-12)
 
 - [Fix] Sidebar toggle disappears on the shop on mobile
