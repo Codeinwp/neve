@@ -13,7 +13,9 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use Neve\Core\Dynamic_Css;
 use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
 
 /**
@@ -86,6 +88,36 @@ class Button extends Abstract_Component {
 		$this->set_property( 'section', 'header_button' );
 		$this->set_property( 'icon', 'admin-links' );
 		$this->set_property( 'is_auto_width', true );
+
+		add_action( 'wp_enqueue_scripts', [ $this, 'load_scripts' ] );
+	}
+
+	/**
+	 * Load Component Scripts
+	 *
+	 * @return void
+	 */
+	public function load_scripts() {
+		if ( $this->is_component_active() || is_customize_preview() ) {
+			wp_add_inline_style( 'neve-style', $this->toggle_style() );
+		}
+	}
+
+	/**
+	 * Get CSS to use as inline script
+	 *
+	 * @return string
+	 */
+	public function toggle_style() {
+		$button_values = Mods::get( $this->get_id() . '_' . self::STYLE_ID, neve_get_button_appearance_default() );
+		$css           = '';
+		if (
+			( isset( $button_values['useShadow'] ) && ! empty( $button_values['useShadow'] ) ) ||
+			( isset( $button_values['useShadowHover'] ) && ! empty( $button_values['useShadowHover'] ) )
+		) {
+			$css = '.header .builder-item [class*="button_base"] .button {box-shadow: var(--primarybtnshadow, none);} .header .builder-item [class*="button_base"] .button:hover {box-shadow: var(--primarybtnhovershadow, none);}';
+		}
+		return Dynamic_Css::minify_css( $css );
 	}
 
 	/**
@@ -153,6 +185,12 @@ class Button extends Abstract_Component {
 							'--primarybtnborderwidth'  => [
 								'key'    => 'borderWidth',
 								'suffix' => 'px',
+							],
+							'--primarybtnshadow'       => [
+								'key' => 'useShadow',
+							],
+							'--primarybtnhovershadow'  => [
+								'key' => 'useShadowHover',
 							],
 						],
 						'selector' => '.builder-item--' . $this->get_id(),
@@ -234,6 +272,36 @@ class Button extends Abstract_Component {
 				'directional-prop'         => Config::CSS_PROP_BORDER_WIDTH,
 			];
 		}
+
+		$button_values                    = $value;
+		$rules['--primarybtnshadow']      = [
+			Dynamic_Selector::META_KEY     => $id . '.shadowColor',
+			Dynamic_Selector::META_DEFAULT => 'none',
+			Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $button_values ) {
+				if ( ! isset( $button_values['useShadow'] ) || empty( $button_values['useShadow'] ) ) {
+					return sprintf( '%s:%s;', $css_prop, 'none' );
+				}
+				$blur   = intval( $button_values['shadowProperties']['blur'] );
+				$width  = intval( $button_values['shadowProperties']['width'] );
+				$height = intval( $button_values['shadowProperties']['height'] );
+
+				return sprintf( '%s:%s;', $css_prop, sprintf( '%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+			},
+		];
+		$rules['--primarybtnhovershadow'] = [
+			Dynamic_Selector::META_KEY     => $id . '.shadowColorHover',
+			Dynamic_Selector::META_DEFAULT => 'none',
+			Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $button_values ) {
+				if ( ! isset( $button_values['useShadowHover'] ) || empty( $button_values['useShadowHover'] ) ) {
+					return sprintf( '%s:%s;', $css_prop, 'none' );
+				}
+				$blur   = intval( $button_values['shadowPropertiesHover']['blur'] );
+				$width  = intval( $button_values['shadowPropertiesHover']['width'] );
+				$height = intval( $button_values['shadowPropertiesHover']['height'] );
+
+				return sprintf( '%s:%s;', $css_prop, sprintf( '%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+			},
+		];
 
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $this->default_selector,

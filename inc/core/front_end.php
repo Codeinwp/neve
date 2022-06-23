@@ -278,7 +278,27 @@ class Front_End {
 	 */
 	public function enqueue_scripts() {
 		$this->add_styles();
+		$this->add_inline_styles();
 		$this->add_scripts();
+	}
+
+	/**
+	 * Enqueue inline styles for core components.
+	 */
+	private function add_inline_styles() {
+
+		// Add Inline styles if buttons shadows are being used.
+		$primary_values   = get_theme_mod( Config::MODS_BUTTON_PRIMARY_STYLE, neve_get_button_appearance_default() );
+		$secondary_values = get_theme_mod( Config::MODS_BUTTON_SECONDARY_STYLE, neve_get_button_appearance_default( 'secondary' ) );
+
+		if (
+			( isset( $primary_values['useShadow'] ) && ! empty( $primary_values['useShadow'] ) ) ||
+			( isset( $primary_values['useShadowHover'] ) && ! empty( $primary_values['useShadowHover'] ) ) ||
+			( isset( $secondary_values['useShadow'] ) && ! empty( $secondary_values['useShadow'] ) ) ||
+			( isset( $secondary_values['useShadowHover'] ) && ! empty( $secondary_values['useShadowHover'] ) )
+		) {
+			wp_add_inline_style( 'neve-style', '.button.button-primary, .is-style-primary .wp-block-button__link {box-shadow: var(--primarybtnshadow, none);} .button.button-primary:hover, .is-style-primary .wp-block-button__link:hover {box-shadow: var(--primarybtnhovershadow, none);} .button.button-secondary, .is-style-secondary .wp-block-button__link {box-shadow: var(--secondarybtnshadow, none);} .button.button-secondary:hover, .is-style-secondary .wp-block-button__link:hover {box-shadow: var(--secondarybtnhovershadow, none);}' );
+		}
 	}
 
 	/**

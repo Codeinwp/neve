@@ -29,11 +29,35 @@ class Repeater extends \WP_Customize_Control {
 	public $fields = [];
 
 	/**
+	 * Additional arguments passed to JS.
+	 *
+	 * @var array
+	 */
+	public $new_item_fields = [];
+
+	/**
+	 * Additional arguments passed to JS.
+	 *
+	 * @var array
+	 */
+	public $components = [];
+
+	/**
+	 * Additional arguments passed to JS.
+	 *
+	 * @var string
+	 */
+	public $allow_new_fields = 'yes';
+
+	/**
 	 * Send to JS.
 	 */
 	public function json() {
-		$json           = parent::json();
-		$json['fields'] = $this->fields;
+		$json                     = parent::json();
+		$json['fields']           = $this->fields;
+		$json['new_item_fields']  = $this->new_item_fields;
+		$json['allow_new_fields'] = $this->allow_new_fields;
+		$json['components']       = $this->components;
 		return $json;
 	}
 

@@ -9,7 +9,7 @@ describe('Button Appearance', function () {
 		});
 		it('Default settings', function () {
 			cy.findByText(
-				/\{ "type": "fill", "background": "#cccccc", "backgroundhover": "#333333", "text": "#000000", "texthover": "#ffffff", "borderradius": \{ "top": 10, "bottom": 10, "right": 10, "left": 10 \}, "borderwidth": \{ "top": 1, "bottom": 1, "right": 1, "left": 1 \} \}/i,
+				/\{ "type": "fill", "background": "#cccccc", "backgroundhover": "#333333", "text": "#000000", "texthover": "#ffffff", "borderradius": \{ "top": 10, "bottom": 10, "right": 10, "left": 10 \}, "borderwidth": \{ "top": 1, "bottom": 1, "right": 1, "left": 1 \}, "useshadow": false, "shadowcolor": "rgba\(0,0,0,0.5\)", "shadowproperties": \{ "blur": 5, "width": 0, "height": 0 \}, "useshadowhover": false, "shadowcolorhover": "rgba\(0,0,0,0.5\)", "shadowpropertieshover": \{ "blur": 5, "width": 0, "height": 0 \} \}/i,
 			);
 		});
 	});
@@ -68,7 +68,7 @@ describe('Button Appearance', function () {
 			}).should('not.exist');
 
 			cy.findByText(
-				/\{ "type": "", "background": "", "backgroundhover": "", "text": "", "texthover": "", "borderradius": \{ "top": "", "bottom": "", "right": "", "left": "" \}, "borderwidth": \{ "top": "", "bottom": "", "right": "", "left": "" \} \}/i,
+				/\{ "type": "", "background": "", "backgroundhover": "", "text": "", "texthover": "", "borderradius": \{ "top": "", "bottom": "", "right": "", "left": "" \}, "borderwidth": \{ "top": "", "bottom": "", "right": "", "left": "" \}, "useShadow": false, "shadowColor": "", "shadowProperties": \{ "blur": "", "width": "", "height": "" \}, "useShadowHover": false, "shadowColorHover": "", "shadowPropertiesHover": \{ "blur": "", "width": "", "height": "" \} \}/i,
 			);
 		});
 	});

@@ -11,6 +11,7 @@
 namespace Neve\Customizer\Options;
 
 use HFG\Traits\Core;
+use Neve\Customizer\Defaults\Layout;
 use Neve\Customizer\Types\Control;
 
 /**
@@ -20,6 +21,7 @@ use Neve\Customizer\Types\Control;
  */
 class Layout_Single_Post extends Base_Layout_Single {
 	use Core;
+	use Layout;
 
 	/**
 	 * Returns the post type.
@@ -240,16 +242,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 	 */
 	private function post_meta() {
 
-		$order_default_components = get_theme_mod( 'neve_post_meta_ordering', wp_json_encode( [ 'author', 'date', 'comments' ] ) );
-
-		/**
-		 * Filters the elements that appears in meta.
-		 *
-		 * @param array $elements Array of meta elements.
-		 *
-		 * @since 2.11.4
-		 */
-		$components = apply_filters(
+		$components    = apply_filters(
 			'neve_meta_filter',
 			[
 				'author'   => __( 'Author', 'neve' ),
@@ -258,21 +251,32 @@ class Layout_Single_Post extends Base_Layout_Single {
 				'comments' => __( 'Comments', 'neve' ),
 			]
 		);
+		$default       = wp_json_encode( [ 'author', 'date', 'comments' ] );
+		$default_value = Layout::get_meta_default_data( 'neve_post_meta_ordering', $default );
+		$default_value = get_theme_mod( 'neve_blog_post_meta_fields', wp_json_encode( $default_value ) );
+		$default_value = get_theme_mod( 'neve_single_post_meta_fields', $default_value );
 
 		$this->add_control(
 			new Control(
-				'neve_single_post_meta_ordering',
+				'neve_single_post_meta_fields',
 				[
-					'sanitize_callback' => 'neve_sanitize_meta_ordering',
-					'default'           => $order_default_components,
+					'sanitize_callback' => 'neve_sanitize_meta_repeater',
+					'default'           => $default_value,
 				],
 				[
-					'label'      => esc_html__( 'Meta Order', 'neve' ),
-					'section'    => $this->section,
-					'components' => $components,
-					'priority'   => 115,
+					'label'            => esc_html__( 'Meta Order', 'neve' ),
+					'section'          => $this->section,
+					'fields'           => [
+						'hide_on_mobile' => [
+							'type'  => 'checkbox',
+							'label' => __( 'Hide on mobile', 'neve' ),
+						],
+					],
+					'components'       => $components,
+					'allow_new_fields' => 'no',
+					'priority'         => 115,
 				],
-				'Neve\Customizer\Controls\React\Ordering'
+				'\Neve\Customizer\Controls\React\Repeater'
 			)
 		);
 
