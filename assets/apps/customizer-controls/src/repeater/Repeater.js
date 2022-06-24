@@ -6,7 +6,14 @@ import { useState } from '@wordpress/element';
 import { ReactSortable } from 'react-sortablejs';
 import { __ } from '@wordpress/i18n';
 
-const Repeater = ({ fields, allowNew, value, onUpdate, newItemFields }) => {
+const Repeater = ({
+	label,
+	fields,
+	allowNew,
+	value,
+	onUpdate,
+	newItemFields,
+}) => {
 	const [sorting, setSorting] = useState(false);
 	const itemFields =
 		Object.keys(newItemFields).length > 0 ? newItemFields : fields;
@@ -91,6 +98,8 @@ const Repeater = ({ fields, allowNew, value, onUpdate, newItemFields }) => {
 
 	return (
 		<div className="nv-repeater">
+			{label && <span className="customize-control-title">{label}</span>}
+
 			<ReactSortable
 				className="nv-repeater-items-container"
 				list={value}
