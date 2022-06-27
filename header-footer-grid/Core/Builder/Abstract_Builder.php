@@ -1289,13 +1289,13 @@ abstract class Abstract_Builder implements Builder {
 				}
 
 				if ( empty( $used ) ) {
-					if( $this->get_id() !== 'footer' ) {
+					if ( $this->get_id() !== 'footer' ) {
 						continue;
 					}
-					if( $row_index !== 'bottom' ) {
+					if ( $row_index !== 'bottom' ) {
 						continue;
 					}
-					if( $this->has_valid_addons() ) {
+					if ( $this->has_valid_addons() ) {
 						continue;
 					}
 				}
