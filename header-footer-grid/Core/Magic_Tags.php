@@ -161,7 +161,7 @@ class Magic_Tags {
 			$allowed_tags['span'] = [
 				'class' => [],
 			];
-		
+
 		}
 
 		return wp_kses( call_user_func( [ $this, $tag ] ), $allowed_tags );
@@ -308,10 +308,10 @@ class Magic_Tags {
 
 			if ( is_shop() ) {
 				return get_the_title( get_option( 'woocommerce_shop_page_id' ) );
-			}       
+			}
 		}
 
-		return wp_title( '' );
+		return wp_title( '', false );
 	}
 
 	/**
