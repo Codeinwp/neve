@@ -41,7 +41,7 @@ class Product_Layout extends Base_View {
 	 */
 	public function product_image_wrap() {
 		$product_classes = apply_filters( 'neve_wrapper_class', '' );
-		echo '<div class="nv-product-image ' . esc_attr( $product_classes ) . '">';
+		echo '<div class="sp-product-image ' . esc_attr( $product_classes ) . '">';
 		/**
 		 * Fires before the product warpper is rendered.
 		 *
