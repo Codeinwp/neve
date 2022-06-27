@@ -67,7 +67,7 @@ class Footer extends Abstract_Builder {
 					'footer_copyright_content'            => array(
 						'label' => esc_html__( 'Change Copyright', 'neve' ),
 						'icon'  => 'dashicons-nametag',
-						'url'   => $this->has_valid_addons() ? null : 'https://themeisle.com/themes/neve/pricing/',
+						'url'   => $this->has_valid_addons() ? null : 'https://themeisle.com/themes/neve/upgrade/',
 					),
 					'hfg_footer_layout_bottom_background' => array(
 						'label' => esc_html__( 'Change Footer Color', 'neve' ),
