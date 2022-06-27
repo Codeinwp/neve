@@ -11,6 +11,10 @@
   transition-delay: 1.5s;
   max-height: 1000px;
 
+  code {
+	display: inline;
+  }
+
   &.hidden {
     max-height: 0;
     overflow: hidden;
@@ -111,8 +115,7 @@
   }
 
   p {
-    display: flex;
-    align-items: center;
+    //display: block;
     font-size: 15px;
     font-weight: 600;
     margin: 0 10px 0;

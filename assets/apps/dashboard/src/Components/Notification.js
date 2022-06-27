@@ -3,12 +3,13 @@ import classnames from 'classnames';
 
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
-import { Button, Dashicon } from '@wordpress/components';
+import { external } from '@wordpress/icons';
+import { Button, Dashicon, Icon } from '@wordpress/components';
 
 const Notification = ({ data, slug }) => {
 	// eslint-disable-next-line no-unused-vars
 	const [hidden, setHidden] = useState(false);
-	const { text, cta, type, update, url } = data;
+	const { text, cta, type, update, url, targetBlank } = data;
 	const [inProgress, setInProgress] = useState(false);
 	const [done, setDone] = useState(false);
 	const [errorMessage, setErrorMessage] = useState(null);
@@ -153,10 +154,15 @@ const Notification = ({ data, slug }) => {
 	const LinkNotification = () => {
 		return (
 			<div className={classes}>
-				<p>{text}</p>
+				<p dangerouslySetInnerHTML={{ __html: text }} />
 				{url && cta && (
-					<Button isSecondary href={url}>
+					<Button
+						isSecondary
+						target={targetBlank ? '_blank' : ''}
+						href={url}
+					>
 						{cta}
+						{targetBlank && <Icon size={20} icon={external} />}
 					</Button>
 				)}
 			</div>
