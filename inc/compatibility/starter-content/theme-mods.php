@@ -707,7 +707,7 @@ return array(
 			'tablet'  => 'center',
 			'desktop' => 'center',
 		),
-	'hfg_footer_layout_v2'                        => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[{"id":"footer_copyright"}],"c-left":[],"center":[],"c-right":[],"right":[]}}}',
+	'hfg_footer_layout_v2'                        => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]}}}',
 	'primary-menu_component_padding'              =>
 		array(
 			'mobile'       =>
