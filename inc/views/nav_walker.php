@@ -34,6 +34,13 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	public static $add_mobile_caret_button_style = false;
 
 	/**
+	 * Flag used to add inline mobile dropdown js.
+	 *
+	 * @var bool
+	 */
+	public static $dropdowns_inline_js_enqueued = false;
+
+	/**
 	 * Nav_Walker constructor.
 	 */
 	public function __construct() {
@@ -94,6 +101,10 @@ class Nav_Walker extends \Walker_Nav_Menu {
 
 			if ( $is_sidebar_item ) {
 				add_action( 'neve_after_header_wrapper_hook', [ $this, 'inline_style_for_sidebar' ], 9 );
+
+				if ( $item->url === '#' && ! self::$dropdowns_inline_js_enqueued ) {
+					$this->enqueue_hash_url_dropdowns_inline_js();
+				}
 
 				$args->before = '<div class="wrap">';
 				$args->after  = '</div>';
@@ -303,5 +314,38 @@ JS;
 			wp_add_inline_script( 'neve-script', $script );
 		}
 		self::$mega_menu_enqueued = true;
+	}
+
+	/**
+	 * Enqueue JS for dropdowns with hash link.
+	 */
+	public function enqueue_hash_url_dropdowns_inline_js() {
+		if ( self::$dropdowns_inline_js_enqueued ) {
+			return;
+		}
+
+		// Fix for MegaMenu alignment
+		$script = <<<'JS'
+function initNoLinkDD() {
+    var noLinkDDs = document.querySelectorAll(
+		'.header-menu-sidebar-inner .menu-item-has-children a[href="#"]'
+	);
+
+    if( noLinkDDs.length < 1 ) {
+        return;
+	}
+
+    noLinkDDs.forEach( function (noLinkDD) {
+        var dropdownButton = noLinkDD.parentElement.querySelector('button');
+		noLinkDD.addEventListener('click', function (e) {
+			e.preventDefault();
+            dropdownButton.click();
+		});
+	});
+}
+window.addEventListener('DOMContentLoaded', initNoLinkDD);
+JS;
+		wp_add_inline_script( 'neve-script', $script );
+		self::$dropdowns_inline_js_enqueued = true;
 	}
 }
