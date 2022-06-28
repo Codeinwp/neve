@@ -388,7 +388,7 @@ class Layout_Sidebar extends Base_Customizer {
 		$sidebar       = get_theme_mod( 'neve_single_post_sidebar_layout', 'full-width' );
 		$content_width = get_theme_mod( 'neve_single_post_content_width', 70 );
 
-		if ( $sidebar !== 'full-width' && $content_width < 80 ) {
+		if ( $sidebar !== 'full-width' && $content_width > 80 ) {
 			return true;
 		}
 
