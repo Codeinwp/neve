@@ -202,7 +202,8 @@ class Layout_Sidebar extends Base_Customizer {
 	 * Advanced controls.
 	 */
 	private function add_advanced_controls() {
-		$priority = 40;
+		$priority        = 40;
+		$notice_priority = 0;
 
 		/**
 		 * Filters the sidebar advanced controls.
@@ -230,7 +231,7 @@ class Layout_Sidebar extends Base_Customizer {
 						'priority'         => $priority,
 						'class'            => esc_attr( 'advanced-sidebar-accordion-' . $heading_id ),
 						'accordion'        => true,
-						'controls_to_wrap' => 2,
+						'controls_to_wrap' => ( $id !== 'single_post' ) ? 2 : 3,
 						'expanded'         => ( $priority === 40 ), // true or false
 						'active_callback'  => array( $this, 'advanced_options_active_callback' ),
 					),
@@ -268,7 +269,7 @@ class Layout_Sidebar extends Base_Customizer {
 					$width_id,
 					array(
 						'sanitize_callback' => 'absint',
-						'transport'         => $this->selective_refresh,
+						'transport'         => 'refresh',
 						'default'           => $width_default,
 					),
 					array(
@@ -284,6 +285,24 @@ class Layout_Sidebar extends Base_Customizer {
 						'active_callback' => array( $this, 'advanced_options_active_callback' ),
 					),
 					'Neve\Customizer\Controls\React\Range'
+				)
+			);
+
+			if ( $id === 'single_post' ) {
+				$notice_priority = $priority + 5;
+			}
+
+			$this->add_control(
+				new Control(
+					'neve_content_width_notice',
+					[ 'sanitize_callback' => 'sanitize_text_field' ],
+					[
+						'text'            => esc_html__( 'Note: Setting the content width over 80% might affect the sidebar width. Sidebar will ultimately disappear at 95%.', 'neve' ),
+						'section'         => 'neve_sidebar',
+						'priority'        => $notice_priority,
+						'active_callback' => array( $this, 'sidebar_notice_active_callback' ),
+					],
+					'Neve\Customizer\Controls\Simple_Text'
 				)
 			);
 
@@ -348,16 +367,31 @@ class Layout_Sidebar extends Base_Customizer {
 	}
 
 	/**
-	 * Active callback function for site-wide options
+	 * Active callback function for site-wide options.
 	 */
 	public function sidewide_options_active_callback() {
 		return ! $this->advanced_options_active_callback();
 	}
 
 	/**
-	 * Active callback function for advanced controls
+	 * Active callback function for advanced controls.
 	 */
 	public function advanced_options_active_callback() {
 		return get_theme_mod( 'neve_advanced_layout_options', false );
+	}
+	
+	/**
+	 * Active callback function for sidebar notice.
+	 */
+	public function sidebar_notice_active_callback() {
+
+		$sidebar       = get_theme_mod( 'neve_single_post_sidebar_layout', 'full-width' );
+		$content_width = get_theme_mod( 'neve_single_post_content_width', 70 );
+
+		if ( $sidebar !== 'full-width' && $content_width < 80 ) {
+			return true;
+		}
+
+		return false;
 	}
 }
