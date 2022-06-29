@@ -241,6 +241,23 @@ class Layout_Blog extends Base_Customizer {
 				)
 			)
 		);
+
+		$this->add_control(
+			new Control(
+				'neve_archive_hide_title',
+				[
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => false,
+				],
+				[
+					'label'    => esc_html__( 'Disable Title', 'neve' ),
+					'section'  => $this->section,
+					'type'     => 'neve_toggle_control',
+					'priority' => 40,
+				],
+				'Neve\Customizer\Controls\Checkbox'
+			)
+		);
 	}
 
 	/**
