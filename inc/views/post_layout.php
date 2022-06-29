@@ -40,6 +40,10 @@ class Post_Layout extends Base_View {
 	 * @return bool
 	 */
 	public function filter_comments_open( $open ) {
+		if ( ! is_singular( 'post' ) ) {
+			return $open;
+		}
+
 		$content_order = $this->get_content_order();
 
 		if ( empty( $content_order ) ) {
