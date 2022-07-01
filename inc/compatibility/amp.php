@@ -46,12 +46,68 @@ class Amp {
 		add_filter( 'neve_search_menu_item_filter', array( $this, 'add_search_menu_item_attrs' ), 10, 2 );
 		add_action( 'neve_after_header_hook', array( $this, 'render_amp_states' ) );
 		add_filter( 'neve_nav_toggle_data_attrs', array( $this, 'add_nav_toggle_attrs' ) );
+		add_action( 'wp_head', array( $this, 'inline_styles' ) );
 
 
 		/**
 		 * Add infinite scroll for amp.
 		 */
 		$this->maybe_add_amp_infinite_scroll();
+	}
+
+	/**
+	 * Add inline styles for AMP.
+	 *
+	 * @return void
+	 */
+	public function inline_styles() {
+		echo '
+			<style>
+			.header-menu-sidebar .has-caret.amp {
+				padding: 15px 0 !important;
+			}
+			.header-menu-sidebar .amp.dropdown-open + .sub-menu {
+				display: block !important;
+			}
+			.site-logo amp-img img {
+				max-height: 60px;
+			}
+			.sub-menu .has-caret.amp {
+				padding: 10px 20px;
+			}
+			.amp-desktop-caret-wrap {
+				display: none;
+			}
+			.amp-caret-wrap svg {
+				fill: currentColor;
+				width: 1em;
+			}
+			.has-caret.amp {
+				height: 100%;
+				display: flex;
+				align-items: center;
+			}
+			.has-caret.amp a {
+				flex-grow: 1;
+			}
+			.has-caret.amp .caret-wrap {
+				margin-left: auto;
+			}
+			.nv-post-thumbnail-wrap amp-img {
+				box-shadow: var(--boxshadow, none);
+			}
+			.cover-post amp-img {
+				--boxshadow: none;
+			}
+			@media (min-width: 960px) {
+				.amp-desktop-caret-wrap {
+					display: none;
+				}
+				.amp-caret-wrap {
+					display: block;
+				}
+			}
+			</style>';
 	}
 
 	/**
@@ -68,6 +124,7 @@ class Amp {
 	 * @param object $item item information.
 	 * @param int    $depth item depth.
 	 * @param object $args menu args.
+	 *
 	 * @return string
 	 */
 	public function wrap_content( $item_output, $item, $depth, $args ) {
@@ -83,7 +140,7 @@ class Amp {
 			return $item_output;
 		}
 
-		if ( strpos( $item_output, 'has-caret' ) > -1 ) {
+		if ( strpos( $item_output, 'has-caret' ) > - 1 ) {
 			return $item_output;
 		}
 
@@ -103,6 +160,7 @@ class Amp {
 	 *
 	 * @param string $input input string.
 	 * @param int    $instance instance number of nav menu.
+	 *
 	 * @return string
 	 */
 	public function add_search_menu_item_attrs( $input, $instance ) {
@@ -252,6 +310,7 @@ class Amp {
 		global $post;
 
 		$post_type = get_post_type( $post );
+
 		return ( $post_type === 'post' ) && ( is_home() || is_archive() );
 	}
 
@@ -300,6 +359,7 @@ class Amp {
 		if ( $advanced_options !== false ) {
 			$option = 'neve_blog_archive_sidebar_layout';
 		}
+
 		return apply_filters( 'neve_sidebar_position', get_theme_mod( $option, 'right' ) ) !== 'full-width';
 	}
 
