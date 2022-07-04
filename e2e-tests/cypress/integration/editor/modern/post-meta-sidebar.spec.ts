@@ -110,6 +110,14 @@ describe('Single post meta sidebar', function () {
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 
+		cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'posts', {
+			meta: {
+				neve_meta_container: 'contained',
+			},
+		});
+
+		cy.visit(postSetup.url);
+
 		cy.openNeveSidebar();
 
 		cy.activateCheckbox('.components-toggle-control__label', 'Custom Content Width (%');
