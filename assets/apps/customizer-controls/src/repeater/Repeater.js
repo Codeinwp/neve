@@ -163,7 +163,7 @@ Repeater.propTypes = {
 	value: PropTypes.array.isRequired,
 	fields: PropTypes.object.isRequired,
 	newItemFields: PropTypes.object,
-	allowNew: PropTypes.bool.isRequired,
+	allowNew: PropTypes.oneOf(['no', 'yes']).isRequired,
 	onUpdate: PropTypes.func.isRequired,
 };
 
