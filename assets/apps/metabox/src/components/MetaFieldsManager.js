@@ -157,7 +157,9 @@ class MetaFieldsManager extends Component {
 		}
 		const css =
 			'.wp-block:not([data-align="full"]) { max-width: ' +
-			('on' === isCustomContentWidth ? blocKWidth : blockWidthDefault) +
+			('on' === isCustomContentWidth && 'full-width' !== containerType
+				? blocKWidth
+				: blockWidthDefault) +
 			'; }';
 
 		const head = document.head;
@@ -333,75 +335,83 @@ class MetaFieldsManager extends Component {
 						</ButtonGroup>
 					</BaseControl>
 
-					<BaseControl
-						id="neve_meta_enable_content_width"
-						className="neve-meta-control neve-meta-checkbox neve_meta_enable_content_width"
-					>
-						<ToggleControl
-							label={__('Custom Content Width (%)', 'neve')}
-							checked={
-								'on' ===
-								this.props.metaValue(
-									'neve_meta_enable_content_width'
-								)
-							}
-							onChange={(value) => {
-								this.updateValues(
-									'neve_meta_enable_content_width',
-									value ? 'on' : 'off'
-								);
-								this.updateValues(
-									'neve_meta_content_width',
-									this.props.metaValue(
-										'neve_meta_content_width'
-									) || 70
-								);
-							}}
-						/>
-					</BaseControl>
-
-					{'on' ===
-					this.props.metaValue('neve_meta_enable_content_width') ? (
+					{'full-width' !==
+						this.props.metaValue('neve_meta_container') && (
 						<BaseControl
-							id="neve_meta_content_width"
-							className="neve-meta-control neve-meta-range neve_meta_content_width"
+							id="neve_meta_enable_content_width"
+							className="neve-meta-control neve-meta-checkbox neve_meta_enable_content_width"
 						>
-							<RangeControl
-								value={this.props.metaValue(
-									'neve_meta_content_width'
-								)}
+							<ToggleControl
+								label={__('Custom Content Width (%)', 'neve')}
+								checked={
+									'on' ===
+									this.props.metaValue(
+										'neve_meta_enable_content_width'
+									)
+								}
 								onChange={(value) => {
 									this.updateValues(
+										'neve_meta_enable_content_width',
+										value ? 'on' : 'off'
+									);
+									this.updateValues(
 										'neve_meta_content_width',
-										value
+										this.props.metaValue(
+											'neve_meta_content_width'
+										) || 70
 									);
 								}}
-								min={0}
-								max={100}
-								step="1"
 							/>
-							{this.props.metaValue('neve_meta_content_width') &&
-								this.props.metaValue(
-									'neve_meta_content_width'
-								) > 80 &&
-								(this.props.metaValue('neve_meta_sidebar') ===
-									'left' ||
-									this.props.metaValue(
-										'neve_meta_sidebar'
-									) === 'right') && (
-									<Notice isDismissible={false}>
-										<small>
-											{__(
-												'Note: Setting the content width over 80% might affect the sidebar width. Sidebar will ultimately disappear at 95%.',
-												'neve'
-											)}
-										</small>
-									</Notice>
-								)}
 						</BaseControl>
-					) : (
-						''
 					)}
+
+					{'on' ===
+						this.props.metaValue(
+							'neve_meta_enable_content_width'
+						) &&
+						'full-width' !==
+							this.props.metaValue('neve_meta_container') && (
+							<BaseControl
+								id="neve_meta_content_width"
+								className="neve-meta-control neve-meta-range neve_meta_content_width"
+							>
+								<RangeControl
+									value={this.props.metaValue(
+										'neve_meta_content_width'
+									)}
+									onChange={(value) => {
+										this.updateValues(
+											'neve_meta_content_width',
+											value
+										);
+									}}
+									min={0}
+									max={100}
+									step="1"
+								/>
+								{this.props.metaValue(
+									'neve_meta_content_width'
+								) &&
+									this.props.metaValue(
+										'neve_meta_content_width'
+									) > 80 &&
+									(this.props.metaValue(
+										'neve_meta_sidebar'
+									) === 'left' ||
+										this.props.metaValue(
+											'neve_meta_sidebar'
+										) === 'right') && (
+										<Notice isDismissible={false}>
+											<small>
+												{__(
+													'Note: Setting the content width over 80% might affect the sidebar width. Sidebar will ultimately disappear at 95%.',
+													'neve'
+												)}
+											</small>
+										</Notice>
+									)}
+							</BaseControl>
+						)}
 				</PanelBody>
 			</div>
 		);
