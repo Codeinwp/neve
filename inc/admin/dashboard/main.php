@@ -307,6 +307,19 @@ class Main {
 			}
 		}
 
+		if ( $this->show_branding_notice() ) {
+			$notifications['branding-discount'] = [
+				'text'        => sprintf(
+				// translators: s - Discount Code
+					__( 'From 3.3.0 we decided to remove the copyright component from the free version. You can continue using it if you rollback to 3.2.x or you can upgrade to pro, using a one time 50%% discount: %s', 'neve' ),
+					wp_kses_post( '<code>NEVEBRANDING50</code>' )
+				),
+				'url'         => 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=copyrightnotice&utm_campaign=neve',
+				'targetBlank' => true,
+				'cta'         => __( 'Upgrade', 'neve' ),
+			];
+		}
+
 		if ( count( $notifications ) === 1 && is_plugin_active( $plugin_path ) ) {
 			foreach ( $notifications as $key => $notification ) {
 				/* translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro) */
@@ -317,6 +330,20 @@ class Main {
 		$notifications = apply_filters( 'neve_dashboard_notifications', $notifications );
 
 		return $notifications;
+	}
+
+
+	/**
+	 * Should branding notice be shown.
+	 *
+	 * @return bool
+	 */
+	private function show_branding_notice() {
+		if ( $this->has_valid_addons() ) {
+			return false;
+		}
+
+		return time() < strtotime( '2022-07-06' );
 	}
 
 	/**
@@ -537,7 +564,7 @@ class Main {
 
 	/**
 	 * Get data of external plugins that are not hosted on wp.org.
-	 * 
+	 *
 	 * @return array
 	 */
 	private function get_external_plugins_data() {
@@ -552,7 +579,7 @@ class Main {
 				'url'         => 'https://wplandingkit.com/?utm_medium=nevedashboard&utm_source=recommendedplugins&utm_campaign=neve',
 				'premium'     => true,
 			),
-		
+
 		);
 
 		return $plugins;
