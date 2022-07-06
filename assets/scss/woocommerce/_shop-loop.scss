@@ -32,7 +32,7 @@
 
 //<editor-fold desc="Product title link">
 .woocommerce ul.products li.product {
-	a:not(.nv-quick-view-product) {
+	div:not(.sp-quick-view-product) {
 		color: var(--nv-text-color);
 
 		&:hover h2 {
@@ -45,7 +45,7 @@
 		color: var(--nv-text-color);
 	}
 
-	.nv-product-image img {
+	.sp-product-image img {
 		width: 100%;
 	}
 }
