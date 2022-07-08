@@ -43,6 +43,7 @@
 	a:hover {
 		color: currentColor;
 
+		&,
 		span,
 		i {
 			color: var(--color) !important;
