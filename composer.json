@@ -47,7 +47,10 @@
 	"platform-check": false,
 	"platform": {
 	  "php": "7.0"
-	}
+	},
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
   },
   "extra": {
 	"installer-disable": "true"
