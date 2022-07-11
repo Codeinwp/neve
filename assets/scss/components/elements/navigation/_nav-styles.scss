@@ -26,11 +26,10 @@
 	a::after {
 		position: absolute;
 		content: "";
-		display: block;
 		margin: 0 auto;
 		width: 0;
 		height: 2px;
-		transition: opacity 0.3s ease, width 0.3s ease;
+		transition: all 0.3s ease;
 		right: 0;
 		left: 0;
 		pointer-events: none;
@@ -41,15 +40,21 @@
 
 .style-full-height {
 
-	li a:hover {
-		color: var(--color);
+	a:hover {
+		color: currentColor;
+
+		&,
+		span,
+		i {
+			color: var(--color) !important;
+		}
 
 		&::after {
 			width: calc(100% + var(--spacing));
 		}
 	}
 
-	.sub-menu a::after {
+	.header--row & .sub-menu a::after {
 		max-width: 100%;
 	}
 
@@ -57,7 +62,6 @@
 		z-index: 1;
 
 		&::after {
-			margin: 0 auto;
 			top: 0;
 			bottom: 0;
 			left: calc(var(--spacing) / 2 * -1);
@@ -66,5 +70,4 @@
 			z-index: -1;
 		}
 	}
-
 }
