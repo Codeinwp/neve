@@ -1,3 +1,15 @@
+##### [Version 3.3.2](https://github.com/Codeinwp/neve/compare/v3.3.1...v3.3.2) (2022-07-11)
+
+- [Feat] Add active menu item color for the secondary navigation header component
+- [Fix] Featured post section enabled makes page titles disappear
+- [Fix] Neve sidebar breaks editor layout when opened
+- [Fix] Tag cloud block styling
+- [Fix] Hover modes for HFG navigation components.
+- Update Google Fonts
+- Dropdowns with hash as href are toggled on link click
+- Improve performance by preventing AMP-related style for loading everywhere
+- Improve performance by requiring comment-reply.js only when is needed
+
 ##### [Version 3.3.1](https://github.com/Codeinwp/neve/compare/v3.3.0...v3.3.1) (2022-06-27)
 
 - [Fix] Both posted date and updated date are displayed
