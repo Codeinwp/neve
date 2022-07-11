@@ -127,7 +127,7 @@ class MetaFieldsManager extends Component {
 			'neve_meta_enable_content_width'
 		);
 		let containerType = this.props.metaValue('neve_meta_container');
-		if ('default' === containerType) {
+		if ('default' === containerType || '' === containerType) {
 			containerType =
 				metaSidebar.actions.neve_meta_content_width.container;
 		}

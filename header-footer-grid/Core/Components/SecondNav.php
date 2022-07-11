@@ -24,12 +24,13 @@ use Neve\Core\Styles\Dynamic_Selector;
  */
 class SecondNav extends Abstract_Component {
 
-	const COMPONENT_ID   = 'secondary-menu';
-	const STYLE_ID       = 'style';
-	const COLOR_ID       = 'color';
-	const HOVER_COLOR_ID = 'hover_color';
-	const ITEM_HEIGHT    = 'item_height';
-	const SPACING        = 'spacing';
+	const COMPONENT_ID    = 'secondary-menu';
+	const STYLE_ID        = 'style';
+	const COLOR_ID        = 'color';
+	const HOVER_COLOR_ID  = 'hover_color';
+	const ACTIVE_COLOR_ID = 'active_color';
+	const ITEM_HEIGHT     = 'item_height';
+	const SPACING         = 'spacing';
 
 	/**
 	 * Nav constructor.
@@ -101,7 +102,27 @@ class SecondNav extends Abstract_Component {
 				],
 			]
 		);
-
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::ACTIVE_COLOR_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'neve_sanitize_colors',
+				'default'               => '',
+				'label'                 => __( 'Active Item Color', 'neve' ),
+				'type'                  => 'neve_color_control',
+				'section'               => $this->section,
+				'conditional_header'    => true,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => '--activecolor',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
+				],
+			]
+		);
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::HOVER_COLOR_ID,
@@ -231,20 +252,24 @@ class SecondNav extends Abstract_Component {
 		}
 
 		$rules = [
-			'--color'      => [
+			'--color'       => [
 				Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::COLOR_ID,
 			],
-			'--hovercolor' => [
+			'--hovercolor'  => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
 			],
-			'--spacing'    => [
+			'--activecolor' => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ACTIVE_COLOR_ID ),
+			],
+			'--spacing'     => [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
 				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
 			],
-			'--height'     => [
+			'--height'      => [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ITEM_HEIGHT,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',

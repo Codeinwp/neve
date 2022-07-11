@@ -27,6 +27,7 @@ function neve_run() {
 			'gradient_picker'           => true,
 			'custom_post_types_sidebar' => true,
 			'meta_custom_fields'        => true,
+			'sparks'                    => true,
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';

@@ -102,7 +102,7 @@ const RepeaterItemContent = ({
 				return (
 					<SelectControl
 						label={currentField.label}
-						value={value[index][key]}
+						value={value[index][key] || ''}
 						onChange={(newData) => changeContent(key, newData)}
 						options={defaultOption.concat(
 							Object.entries(currentField.choices).map(

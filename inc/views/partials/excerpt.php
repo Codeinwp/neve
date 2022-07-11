@@ -43,7 +43,7 @@ class Excerpt extends Base_View {
 	 * @return string
 	 */
 	private function get_post_excerpt( $context, $post_id = null ) {
-		$length = $this->get_excerpt_lenght();
+		$length = $this->get_excerpt_length();
 
 		$output  = '';
 		$output .= '<div class="excerpt-wrap entry-summary">';
@@ -89,7 +89,7 @@ class Excerpt extends Base_View {
 	 *
 	 * @return int
 	 */
-	private function get_excerpt_lenght() {
+	private function get_excerpt_length() {
 		return absint( round( get_theme_mod( 'neve_post_excerpt_length', '25' ) ) );
 	}
 
@@ -99,6 +99,6 @@ class Excerpt extends Base_View {
 	 * @return int
 	 */
 	public function change_excerpt_length() {
-		return $this->get_excerpt_lenght();
+		return $this->get_excerpt_length();
 	}
 }
