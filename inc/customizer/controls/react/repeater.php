@@ -31,9 +31,9 @@ class Repeater extends \WP_Customize_Control {
 	/**
 	 * Additional arguments passed to JS.
 	 *
-	 * @var array
+	 * @var object
 	 */
-	public $new_item_fields = [];
+	public $new_item_fields;
 
 	/**
 	 * Additional arguments passed to JS.
@@ -48,6 +48,18 @@ class Repeater extends \WP_Customize_Control {
 	 * @var string
 	 */
 	public $allow_new_fields = 'yes';
+
+	/**
+	 * @param \WP_Customize_Manager $manager customize manager object.
+	 * @param String                $id control ID.
+	 * @param array                 $args control args.
+	 */
+	public function __construct( $manager, $id, $args = array() ) {
+		$this->new_item_fields = new \stdClass();
+
+		parent::__construct( $manager, $id, $args );
+	}
+
 
 	/**
 	 * Send to JS.

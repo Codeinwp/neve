@@ -4,7 +4,6 @@ import {
 	TextControl,
 	ToggleControl,
 } from '@wordpress/components';
-import { ResponsiveRangeControl } from '../responsive-range/Control';
 import IconSelector from './IconSelector';
 import { getIcons, ColorControl } from '@neve-wp/components';
 import PropTypes from 'prop-types';
@@ -124,14 +123,6 @@ const RepeaterItemContent = ({
 					<ToggleControl
 						label={fields[key].label}
 						checked={value[index][key]}
-						onChange={(newData) => changeContent(key, newData)}
-						key={key + index}
-					/>
-				);
-			case 'responsiveRange':
-				return (
-					<ResponsiveRangeControl
-						label={currentField.label}
 						onChange={(newData) => changeContent(key, newData)}
 						key={key + index}
 					/>
