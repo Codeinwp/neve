@@ -188,6 +188,7 @@ class Metabox_Settings {
 	 * Set editor width.
 	 */
 	public function editor_content_width() {
+		global $post_type;
 		$meta_value = $this->get_content_width();
 		$container  = $this->get_current_layout();
 
@@ -197,7 +198,8 @@ class Metabox_Settings {
 			$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
 			$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
 			if ( empty( $meta_value ) ) {
-				$meta_value = $this->get_content_width_default();
+				$meta_key   = $post_type === 'post' ? Config::MODS_SINGLE_CONTENT_WIDTH : Config::MODS_OTHERS_CONTENT_WIDTH;
+				$meta_value = Mods::get( $meta_key, $this->get_content_width_default() );
 			}
 			$editor_width_normal = round( ( $meta_value / 100 ) * $editor_width ) . 'px';
 		} else {

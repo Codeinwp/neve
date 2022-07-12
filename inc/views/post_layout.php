@@ -29,6 +29,32 @@ class Post_Layout extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_do_single_post', [ $this, 'render_post' ] );
+		add_filter( 'comments_open', [ $this, 'filter_comments_open' ] );
+	}
+
+	/**
+	 * Dequeue comments-reply script if comments are closed.
+	 *
+	 * @param bool $open Comments open status.
+	 *
+	 * @return bool
+	 */
+	public function filter_comments_open( $open ) {
+		if ( ! is_singular( 'post' ) ) {
+			return $open;
+		}
+
+		$content_order = $this->get_content_order();
+
+		if ( empty( $content_order ) ) {
+			return $open;
+		}
+
+		if ( ! in_array( 'comments', $content_order ) ) {
+			return false;
+		}
+
+		return $open;
 	}
 
 	/**

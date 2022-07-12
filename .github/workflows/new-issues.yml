@@ -25,15 +25,17 @@ jobs:
               $status_field: ID!
               $status_value: String!
             )  {
-            updateProjectNextItemField(
+            updateProjectV2ItemFieldValue(
               input: {
-                projectId: $project
+               projectId: $project
                 itemId: $item
                 fieldId: $status_field
-                value: $status_value
+                value: { 
+                  singleSelectOptionId: $status_value
+                  }
               }
             ) {
-              projectNextItem {
+              projectV2Item {
                 id
               }
             }

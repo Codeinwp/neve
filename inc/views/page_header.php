@@ -40,7 +40,7 @@ class Page_Header extends Base_View {
 	 * @return void
 	 */
 	public function run() {
-		$header_hook = get_theme_mod( 'neve_enable_featured_post', false ) ? 'neve_do_featured_post' : 'neve_page_header';
+		$header_hook = get_theme_mod( 'neve_enable_featured_post', false ) && is_home() ? 'neve_do_featured_post' : 'neve_page_header';
 		add_action( $header_hook, array( $this, 'render_page_header' ), 9 );
 		add_filter( 'get_the_archive_title', array( $this, 'filter_archive_title' ) );
 	}
