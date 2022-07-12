@@ -31,7 +31,7 @@
 		position: relative;
 	}
 
-	li > a:hover {
+	a:hover {
 		color: var(--hovercolor);
 	}
 
@@ -107,7 +107,6 @@
 	}
 
 	.nav-ul {
-		--spacing: 0;
 		flex-direction: column;
 		width: 100%;
 

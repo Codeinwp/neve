@@ -47,6 +47,12 @@ const Notification = ({ data, slug }) => {
 				}
 
 				if ('plugin' === update.type) {
+					if (update.slug === 'sparks-for-woocommerce') {
+						window.location.href =
+							window.neveDash.sparksInstallActivateEndpoint;
+						return;
+					}
+
 					if (!update.slug || !update.path) {
 						return false;
 					}
