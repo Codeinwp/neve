@@ -71,6 +71,8 @@ class Layout_Sidebar extends Base_View {
 			'data_attrs'   => apply_filters( 'neve_sidebar_data_attrs', '', $sidebar_setup['sidebar_slug'] ),
 			'close_button' => $this->get_sidebar_close( $sidebar_setup['sidebar_slug'] ),
 			'slug'         => $sidebar_setup['sidebar_slug'],
+			'context'      => $context,
+			'position'     => $position,
 		);
 
 		$this->get_view( 'sidebar', $args );
@@ -165,6 +167,12 @@ class Layout_Sidebar extends Base_View {
 
 		$sidebar_setup = apply_filters( 'neve_sidebar_setup_filter', $sidebar_setup );
 
+		add_filter(
+			'neve_' . $context . '_sidebar_setup',
+			function () use ( $sidebar_setup ) {
+				return $sidebar_setup;
+			}
+		);
 		return $sidebar_setup;
 	}
 

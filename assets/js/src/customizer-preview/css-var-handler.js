@@ -292,11 +292,71 @@ export class CSSVariablesHandler {
 			style += `${selector} {`;
 
 			let newValue = value[settingKey] || null;
+			//Account for button box-shadow
+			if (
+				isButton &&
+				(cssVar.toLowerCase().includes('btnshadow') ||
+					cssVar.toLowerCase().includes('btnhovershadow'))
+			) {
+				let propValue = 'none';
+				if (
+					value.useShadow &&
+					value.useShadow === true &&
+					cssVar.toLowerCase().includes('btnshadow')
+				) {
+					const color = value.shadowColor
+						? value.shadowColor
+						: 'rgba(0,0,0,0.5)';
+					const blur =
+						value.shadowProperties && value.shadowProperties.blur
+							? value.shadowProperties.blur
+							: 5;
+					const width =
+						value.shadowProperties && value.shadowProperties.width
+							? value.shadowProperties.width
+							: 0;
+					const height =
+						value.shadowProperties && value.shadowProperties.height
+							? value.shadowProperties.height
+							: 0;
+					propValue = `${width}px ${height}px ${blur}px ${color}`;
+				}
+				if (
+					value.useShadowHover &&
+					value.useShadowHover === true &&
+					cssVar.toLowerCase().includes('btnhovershadow')
+				) {
+					const color = value.shadowColorHover
+						? value.shadowColorHover
+						: 'rgba(0,0,0,0.5)';
+					const blur =
+						value.shadowPropertiesHover &&
+						value.shadowPropertiesHover.blur
+							? value.shadowPropertiesHover.blur
+							: 5;
+					const width =
+						value.shadowPropertiesHover &&
+						value.shadowPropertiesHover.width
+							? value.shadowPropertiesHover.width
+							: 0;
+					const height =
+						value.shadowPropertiesHover &&
+						value.shadowPropertiesHover.height
+							? value.shadowPropertiesHover.height
+							: 0;
+					propValue = `${width}px ${height}px ${blur}px ${color}`;
+				}
+
+				style += `${cssVar}: ${propValue};`;
+				style += '}';
+				return;
+			}
 
 			//Account for the button [don't add border width if no need]
 			if (cssVar.toLowerCase().includes('borderwidth') && isButton) {
 				if (value.type !== 'outline') {
 					style += `${cssVar}: 0;`;
+					style += '}';
 					return;
 				}
 			}

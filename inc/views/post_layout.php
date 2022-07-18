@@ -9,9 +9,7 @@
 
 namespace Neve\Views;
 
-use Neve\Core\Settings\Config;
-use Neve\Core\Settings\Mods;
-use Neve\Core\Styles\Dynamic_Selector;
+use Neve\Customizer\Defaults\Layout;
 use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Options\Layout_Single_Post;
 
@@ -22,6 +20,7 @@ use Neve\Customizer\Options\Layout_Single_Post;
  */
 class Post_Layout extends Base_View {
 	use Single_Post;
+	use Layout;
 
 	/**
 	 * Function that is run after instantiation.
@@ -30,6 +29,32 @@ class Post_Layout extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_do_single_post', [ $this, 'render_post' ] );
+		add_filter( 'comments_open', [ $this, 'filter_comments_open' ] );
+	}
+
+	/**
+	 * Dequeue comments-reply script if comments are closed.
+	 *
+	 * @param bool $open Comments open status.
+	 *
+	 * @return bool
+	 */
+	public function filter_comments_open( $open ) {
+		if ( ! is_singular( 'post' ) ) {
+			return $open;
+		}
+
+		$content_order = $this->get_content_order();
+
+		if ( empty( $content_order ) ) {
+			return $open;
+		}
+
+		if ( ! in_array( 'comments', $content_order ) ) {
+			return false;
+		}
+
+		return $open;
 	}
 
 	/**
@@ -142,10 +167,22 @@ class Post_Layout extends Base_View {
 			return false;
 		}
 
-		$default_meta_order = get_theme_mod( 'neve_post_meta_ordering', wp_json_encode( array( 'author', 'date', 'comments' ) ) );
-		$meta_order         = get_theme_mod( 'neve_single_post_meta_ordering', $default_meta_order );
-		$meta_order         = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
-		$meta_order         = apply_filters( 'neve_post_meta_ordering_filter', $meta_order );
+		/**
+		 * We replaced the old ordering control neve_post_meta_ordering with a repeater control named neve_single_post_meta_fields.
+		 * Because of that, we need to add some transformations:
+		 */
+
+		// Take the old control value and bring it to a form that can be used in a repeater.
+		$default_value = Layout::get_meta_default_data( 'neve_post_meta_ordering', wp_json_encode( [ 'author', 'date', 'comments' ] ) );
+
+		// We need to get the value of the meta on blogs and pass it as default for meta on single.
+		$default_value = get_theme_mod( 'neve_blog_post_meta_fields', wp_json_encode( $default_value ) );
+
+		$meta_order = get_theme_mod( 'neve_single_post_meta_fields', $default_value );
+		$meta_order = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
+
+		// We take the result and apply the neve_post_meta_ordering_filter that allows us to add values in neve pro
+		$meta_order = apply_filters( 'neve_post_meta_ordering_filter', $meta_order );
 
 		do_action( 'neve_post_meta_single', $meta_order, $is_list );
 		return true;

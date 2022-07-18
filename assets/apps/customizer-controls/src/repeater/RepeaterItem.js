@@ -21,6 +21,7 @@ const Handle = () => (
 
 const RepeaterItem = ({
 	fields,
+	newItemFields,
 	value,
 	itemIndex,
 	sorting,
@@ -34,13 +35,16 @@ const RepeaterItem = ({
 	const arrowDown = <Icon icon="arrow-down" />;
 	const visibleIcon = <Icon icon="visibility" />;
 	const hiddenIcon = <Icon icon="hidden" />;
-	const itemLabel = (
-		<span className="repeater-item-title">
-			{value[itemIndex].title === ''
-				? __('Item', 'neve')
-				: value[itemIndex].title}
-		</span>
-	);
+	const itemLabel = () => {
+		let label = __('Item', 'neve');
+		if (value[itemIndex].title) {
+			label = value[itemIndex].title;
+		}
+		if (value[itemIndex].field) {
+			label = value[itemIndex].field;
+		}
+		return <span className="repeater-item-title">{label}</span>;
+	};
 
 	const toggleExpand = (e) => {
 		e.preventDefault();
@@ -75,16 +79,17 @@ const RepeaterItem = ({
 						className="nv-repeater-expand-button"
 						onClick={toggleExpand}
 					>
-						{itemLabel}
+						{itemLabel()}
 						{expanded ? arrowUp : arrowDown}
 					</button>
 				)}
-				{sorting && itemLabel}
+				{sorting && itemLabel()}
 				{sorting && <Handle />}
 			</div>
 			{!sorting && expanded && (
 				<RepeaterItemContent
 					fields={fields}
+					newItemFields={newItemFields}
 					value={value}
 					index={itemIndex}
 					onContentChange={onContentChange}
@@ -100,6 +105,7 @@ const RepeaterItem = ({
 
 RepeaterItem.propTypes = {
 	fields: PropTypes.object.isRequired,
+	newItemFields: PropTypes.object.isRequired,
 	value: PropTypes.array.isRequired,
 	itemIndex: PropTypes.number.isRequired,
 	sorting: PropTypes.bool.isRequired,

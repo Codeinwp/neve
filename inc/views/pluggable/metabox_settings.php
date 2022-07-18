@@ -188,6 +188,7 @@ class Metabox_Settings {
 	 * Set editor width.
 	 */
 	public function editor_content_width() {
+		global $post_type;
 		$meta_value = $this->get_content_width();
 		$container  = $this->get_current_layout();
 
@@ -197,7 +198,8 @@ class Metabox_Settings {
 			$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
 			$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
 			if ( empty( $meta_value ) ) {
-				$meta_value = $this->get_content_width_default();
+				$meta_key   = $post_type === 'post' ? Config::MODS_SINGLE_CONTENT_WIDTH : Config::MODS_OTHERS_CONTENT_WIDTH;
+				$meta_value = Mods::get( $meta_key, $this->get_content_width_default() );
 			}
 			$editor_width_normal = round( ( $meta_value / 100 ) * $editor_width ) . 'px';
 		} else {
@@ -226,6 +228,7 @@ class Metabox_Settings {
 			$editor_width_normal
 		);
 
+		$style = $this->add_button_shadow_styles( $style );
 
 		wp_add_inline_style( 'neve-gutenberg-style', $style );
 
@@ -372,6 +375,26 @@ class Metabox_Settings {
 		';
 
 		wp_add_inline_style( 'neve-style', Dynamic_Css::minify_css( $style ) );
+	}
+
+	/**
+	 * Add button shadow styles if used.
+	 *
+	 * @param string $style Inline styles for the Gutenberg editor.
+	 */
+	private function add_button_shadow_styles( $style ) {
+		$primary_values   = Mods::get( Config::MODS_BUTTON_PRIMARY_STYLE, neve_get_button_appearance_default() );
+		$secondary_values = Mods::get( Config::MODS_BUTTON_SECONDARY_STYLE, neve_get_button_appearance_default( 'secondary' ) );
+		if (
+			( isset( $primary_values['useShadow'] ) && ! empty( $primary_values['useShadow'] ) ) ||
+			( isset( $primary_values['useShadowHover'] ) && ! empty( $primary_values['useShadowHover'] ) ) ||
+			( isset( $secondary_values['useShadow'] ) && ! empty( $secondary_values['useShadow'] ) ) ||
+			( isset( $secondary_values['useShadowHover'] ) && ! empty( $secondary_values['useShadowHover'] ) )
+		) {
+			$style = '.editor-styles-wrapper .wp-block-button.is-style-primary .wp-block-button__link {box-shadow: var(--primarybtnshadow, none);} .editor-styles-wrapper .wp-block-button.is-style-primary .wp-block-button__link:hover {box-shadow: var(--primarybtnhovershadow, none);} .editor-styles-wrapper .wp-block-button.is-style-secondary .wp-block-button__link {box-shadow: var(--secondarybtnshadow, none);} .editor-styles-wrapper .wp-block-button.is-style-secondary .wp-block-button__link:hover {box-shadow: var(--secondarybtnhovershadow, none);}';
+		}
+
+		return $style;
 	}
 
 	/**

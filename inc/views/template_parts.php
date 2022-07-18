@@ -8,7 +8,7 @@
 
 namespace Neve\Views;
 
-use Neve\Core\Styles\Css_Vars;
+use Neve\Customizer\Defaults\Layout;
 
 /**
  * Class Template_Parts
@@ -16,6 +16,8 @@ use Neve\Core\Styles\Css_Vars;
  * @package Neve\Views
  */
 class Template_Parts extends Base_View {
+	use Layout;
+
 	/**
 	 * Function that is run after instantiation.
 	 *
@@ -285,20 +287,17 @@ class Template_Parts extends Base_View {
 	 *
 	 * @param int | null $post_id Post id.
 	 *
-	 * @return string
+	 * @return string | bool
 	 */
 	private function get_meta( $post_id = null ) {
-		$default_meta_order = wp_json_encode(
-			array(
-				'author',
-				'date',
-				'comments',
-			)
-		);
+		$default       = wp_json_encode( [ 'author', 'date', 'comments' ] );
+		$default_value = Layout::get_meta_default_data( 'neve_post_meta_ordering', $default );
+		$meta_order    = get_theme_mod( 'neve_blog_post_meta_fields', wp_json_encode( $default_value ) );
 
-		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
-
-		$meta_order = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
+		$meta_order = json_decode( $meta_order );
+		if ( empty( $meta_order ) ) {
+			return false;
+		}
 
 		ob_start();
 		do_action( 'neve_post_meta_archive', $meta_order, true, $post_id );

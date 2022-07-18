@@ -83,6 +83,27 @@ class Post_Meta extends Base_View {
 	}
 
 	/**
+	 * Get the index of the last item on mobile to be able to hide the separator
+	 *
+	 * @param array $order Meta elements order.
+	 *
+	 * @return int
+	 */
+	private function get_mobile_last_item( $order ) {
+		$order_length    = count( $order );
+		$last_item_index = -1;
+		for ( $i = 0; $i < $order_length; $i++ ) {
+			for ( $j = $i + 1; $j < $order_length; $j++ ) {
+				if ( ! isset( $order[ $j ]->hide_on_mobile ) || (bool) $order[ $j ]->hide_on_mobile === false ) {
+					$last_item_index = $j;
+					break;
+				}
+			}
+		}
+		return $last_item_index;
+	}
+
+	/**
 	 * Render meta list.
 	 *
 	 * @param array      $order   the order array. Passed through the action parameter.
@@ -93,19 +114,38 @@ class Post_Meta extends Base_View {
 		if ( ! is_array( $order ) || empty( $order ) ) {
 			return;
 		}
-		$order = $this->sanitize_order_array( $order );
 
-		$pid       = $post_id ? $post_id : get_the_ID();
-		$post_type = get_post_type( $pid );
-		$markup    = $as_list === true ? '<ul class="nv-meta-list">' : '<span class="nv-meta-list nv-dynamic-meta">';
-		$index     = 1;
-		$tag       = $as_list === true ? 'li' : 'span';
-		foreach ( $order as $meta ) {
-			switch ( $meta ) {
+		// Filter the array to contain only visible elements
+		$order = array_filter(
+			$order,
+			function ( $el ) {
+				return isset( $el->visibility ) && $el->visibility === 'yes';
+			}
+		);
+
+		$order = $this->sanitize_order_array( $order );
+		$order = array_values( $order );
+
+		$pid                 = $post_id ? $post_id : get_the_ID();
+		$post_type           = get_post_type( $pid );
+		$markup              = $as_list === true ? '<ul class="nv-meta-list">' : '<span class="nv-meta-list nv-dynamic-meta">';
+		$tag                 = $as_list === true ? 'li' : 'span';
+		$last_item_on_mobile = $this->get_mobile_last_item( $order );
+		$order_length        = count( $order );
+
+		for ( $i = 0; $i < $order_length; $i++ ) {
+			$meta           = $order[ $i ];
+			$element_class  = $last_item_on_mobile === $i ? 'last' : '';
+			$slug           = $meta->slug ?? 'custom';
+			$format         = ! empty( $meta->format ) ? $meta->format : '{meta}';
+			$element_class .= isset( $meta->hide_on_mobile ) && (bool) $meta->hide_on_mobile === true ? ' no-mobile' : '';
+			switch ( $slug ) {
 				case 'author':
-					$markup .= '<' . $tag . '  class="meta author vcard">';
-					$markup .= self::neve_get_author_meta( $post_id );
-					$markup .= '</' . $tag . '>';
+					$show_before  = $format === '{meta}';
+					$meta_content = str_replace( '{meta}', self::neve_get_author_meta( $pid, $show_before ), $format );
+					$markup      .= '<' . $tag . '  class="meta author vcard ' . esc_attr( $element_class ) . '">';
+					$markup      .= wp_kses_post( $meta_content );
+					$markup      .= '</' . $tag . '>';
 					break;
 				case 'date':
 					$date_meta_classes = array(
@@ -124,47 +164,57 @@ class Post_Meta extends Base_View {
 					if ( $show_updated_time && $has_updated_time ) {
 						$date_meta_classes[] = 'nv-show-updated';
 					}
-
-					$markup .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . '">';
-					$markup .= self::get_time_tags( $post_id );
-					$markup .= '</' . $tag . '>';
+					$meta_content = str_replace( '{meta}', self::get_time_tags( $pid ), $format );
+					$markup      .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . ' ' . esc_attr( $element_class ) . '">';
+					$markup      .= $meta_content;
+					$markup      .= '</' . $tag . '>';
 					break;
 				case 'category':
 					if ( ! in_array( 'category', get_object_taxonomies( $post_type ) ) ) {
 						break;
 					}
-					$pid     = $post_id !== null ? $post_id : get_the_ID();
-					$markup .= '<' . $tag . ' class="meta category">';
-					$markup .= get_the_category_list( ', ', '', $pid );
-					$markup .= '</' . $tag . '>';
+					$meta_content = str_replace( '{meta}', get_the_category_list( ', ', '', $pid ), $format );
+					$markup      .= '<' . $tag . ' class="meta category ' . esc_attr( $element_class ) . '">';
+					$markup      .= wp_kses_post( $meta_content );
+					$markup      .= '</' . $tag . '>';
 					break;
 				case 'comments':
-					$comments = self::get_comments( $post_id );
+					$comments = self::get_comments( $pid );
 					if ( empty( $comments ) ) {
 						break;
 					}
-					$markup .= '<' . $tag . ' class="meta comments">';
-					$markup .= $comments;
-					$markup .= '</' . $tag . '>';
+					$meta_content = str_replace( '{meta}', $comments, $format );
+					$markup      .= '<' . $tag . ' class="meta comments ' . esc_attr( $element_class ) . '">';
+					$markup      .= wp_kses_post( $meta_content );
+					$markup      .= '</' . $tag . '>';
 					break;
 				case 'reading':
 					$allowed_context = apply_filters( 'neve_post_type_supported_list', [ 'post' ], 'block_editor' );
 					if ( ! in_array( $post_type, $allowed_context ) ) {
 						break;
 					}
-					$reading_time = apply_filters( 'neve_do_read_time', $post_id );
+					$reading_time = apply_filters( 'neve_do_read_time', $pid );
 					if ( empty( $reading_time ) ) {
 						break;
 					}
-					$markup .= '<' . $tag . ' class="meta reading-time">';
-					$markup .= $reading_time;
+					$meta_content = str_replace( '{meta}', $reading_time, $format );
+					$markup      .= '<' . $tag . ' class="meta reading-time ' . esc_attr( $element_class ) . '">';
+					$markup      .= wp_kses_post( $meta_content );
+					$markup      .= '</' . $tag . '>';
+					break;
+				case 'custom':
+					$custom_meta = apply_filters( 'neve_do_custom_meta', '', $meta, $tag, $pid );
+					if ( empty( $custom_meta ) ) {
+						break;
+					}
+					$markup .= '<' . $tag . ' class="meta custom ' . esc_attr( $element_class ) . '">';
+					$markup .= wp_kses_post( $custom_meta );
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'default':
 				default:
 					break;
 			}
-			$index ++;
 		}
 		$markup .= $as_list === true ? '</ul>' : '</span>';
 		echo ( $markup ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -187,8 +237,8 @@ class Post_Meta extends Base_View {
 				'comments' => __( 'Comments', 'neve' ),
 			)
 		);
-		foreach ( $order as $index => $value ) {
-			if ( ! array_key_exists( $value, $allowed_order_values ) ) {
+		foreach ( $order as $index => $meta_item ) {
+			if ( isset( $meta_item->blocked ) && isset( $meta_item->slug ) && ! array_key_exists( $meta_item->slug, $allowed_order_values ) ) {
 				unset( $order[ $index ] );
 			}
 		}
@@ -203,7 +253,7 @@ class Post_Meta extends Base_View {
 	 *
 	 * @return string | false
 	 */
-	public static function neve_get_author_meta( $post_id = null ) {
+	public static function neve_get_author_meta( $post_id = null, $show_before = true ) {
 
 		global $post;
 
@@ -232,7 +282,7 @@ class Post_Meta extends Base_View {
 			$markup .= $avatar_markup;
 		}
 		$markup .= '<span class="author-name fn">';
-		if ( ! $display_avatar ) {
+		if ( ! $display_avatar && $show_before ) {
 			$markup .= __( 'by', 'neve' ) . ' ';
 		}
 
@@ -328,9 +378,6 @@ class Post_Meta extends Base_View {
 		if ( $comments_number < 1 ) {
 			return false;
 		}
-		if ( ! is_front_page() && is_home() ) {
-			return false;
-		}
 		/* translators: %s: number of comments */
 		$comments = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'neve' ), $comments_number );
 
@@ -370,6 +417,20 @@ class Post_Meta extends Base_View {
 		$custom_css  = '';
 		$custom_css .= '.nv-meta-list li.meta:not(:last-child):after { content:"' . esc_html( $separator ) . '" }';
 
+		$custom_css .= '.nv-meta-list .no-mobile{
+			display:none;
+		}';
+		$custom_css .= '.nv-meta-list li.last::after{
+			content: ""!important;
+		}';
+		$custom_css .= '@media (min-width: 769px) {
+			.nv-meta-list .no-mobile {
+				display: inline-block;
+			}
+			.nv-meta-list li.last:not(:last-child)::after {
+		 		content: "' . esc_html( $separator ) . '" !important;
+			}
+		}';
 		wp_add_inline_style( 'neve-style', $custom_css );
 	}
 

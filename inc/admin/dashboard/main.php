@@ -243,10 +243,12 @@ class Main {
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
-			$installed_plugins       = get_plugins();
-			$is_otter_installed      = array_key_exists( 'otter-pro/otter-pro.php', $installed_plugins );
-			$data['changelogPro']    = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
-			$data['otterProInstall'] = $is_otter_installed ? esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=otter-pro%2Fotter-pro.php&plugin_status=all&paged=1&s' ), 'activate-plugin_otter-pro/otter-pro.php' ) ) : esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=install_otter_pro' ), 'install_otter_pro' ) );
+			$installed_plugins                     = get_plugins();
+			$is_otter_installed                    = array_key_exists( 'otter-pro/otter-pro.php', $installed_plugins );
+			$is_sparks_installed                   = array_key_exists( 'sparks-for-woocommerce/sparks-for-woocommerce.php', $installed_plugins );
+			$data['changelogPro']                  = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
+			$data['otterProInstall']               = $is_otter_installed ? esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=otter-pro%2Fotter-pro.php&plugin_status=all&paged=1&s' ), 'activate-plugin_otter-pro/otter-pro.php' ) ) : esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=install_otter_pro' ), 'install_otter_pro' ) );
+			$data['sparksInstallActivateEndpoint'] = $is_sparks_installed ? esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=sparks-for-woocommerce%2Fsparks-for-woocommerce.php&plugin_status=all&paged=1&s' ), 'activate-plugin_sparks-for-woocommerce/sparks-for-woocommerce.php' ) ) : esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=install_sparks' ), 'install_sparks' ) );
 		}
 
 		if ( isset( $_GET['onboarding'] ) && $_GET['onboarding'] === 'yes' ) {
@@ -305,6 +307,19 @@ class Main {
 			}
 		}
 
+		if ( $this->show_branding_notice() ) {
+			$notifications['branding-discount'] = [
+				'text'        => sprintf(
+				// translators: s - Discount Code
+					__( 'From 3.3.0 we decided to remove the copyright component from the free version. You can continue using it if you rollback to 3.2.x or you can upgrade to pro, using a one time 50%% discount: %s', 'neve' ),
+					wp_kses_post( '<code>NEVEBRANDING50</code>' )
+				),
+				'url'         => 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=copyrightnotice&utm_campaign=neve',
+				'targetBlank' => true,
+				'cta'         => __( 'Upgrade', 'neve' ),
+			];
+		}
+
 		if ( count( $notifications ) === 1 && is_plugin_active( $plugin_path ) ) {
 			foreach ( $notifications as $key => $notification ) {
 				/* translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro) */
@@ -315,6 +330,20 @@ class Main {
 		$notifications = apply_filters( 'neve_dashboard_notifications', $notifications );
 
 		return $notifications;
+	}
+
+
+	/**
+	 * Should branding notice be shown.
+	 *
+	 * @return bool
+	 */
+	private function show_branding_notice() {
+		if ( $this->has_valid_addons() ) {
+			return false;
+		}
+
+		return time() < strtotime( '2022-07-06' );
 	}
 
 	/**
@@ -535,7 +564,7 @@ class Main {
 
 	/**
 	 * Get data of external plugins that are not hosted on wp.org.
-	 * 
+	 *
 	 * @return array
 	 */
 	private function get_external_plugins_data() {
@@ -550,7 +579,7 @@ class Main {
 				'url'         => 'https://wplandingkit.com/?utm_medium=nevedashboard&utm_source=recommendedplugins&utm_campaign=neve',
 				'premium'     => true,
 			),
-		
+
 		);
 
 		return $plugins;

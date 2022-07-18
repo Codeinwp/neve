@@ -21,6 +21,7 @@ use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Traits\Core;
 use Neve\Core\Settings\Config;
 use Neve\Core\Styles\Dynamic_Selector;
+use Neve\Core\Theme_Info;
 use Neve\Customizer\Controls\React\Instructions_Section;
 use WP_Customize_Manager;
 
@@ -31,6 +32,7 @@ use WP_Customize_Manager;
  */
 abstract class Abstract_Builder implements Builder {
 	use Core;
+	use Theme_Info;
 
 	const LAYOUT_SETTING     = 'layout';
 	const COLUMNS_NUMBER     = 'columns_number';
@@ -1281,12 +1283,21 @@ abstract class Abstract_Builder implements Builder {
 			$row = $device_details[ $row_index ];
 			if ( neve_is_new_builder() ) {
 				$used = [];
+
 				foreach ( $row as $components ) {
 					$used = array_merge( $used, $components );
 				}
 
 				if ( empty( $used ) ) {
-					continue;
+					if ( $this->get_id() !== 'footer' ) {
+						continue;
+					}
+					if ( $row_index !== 'bottom' ) {
+						continue;
+					}
+					if ( $this->has_valid_addons() ) {
+						continue;
+					}
 				}
 			} elseif ( empty( $row ) ) {
 				continue;
@@ -1591,6 +1602,8 @@ abstract class Abstract_Builder implements Builder {
 				}
 				echo '</div>';
 			}
+
+			do_action( 'neve_after_slot_component', $this->get_id(), $row_index, $slot );
 
 			if ( $row_index !== 'sidebar' ) {
 				echo '</div>';

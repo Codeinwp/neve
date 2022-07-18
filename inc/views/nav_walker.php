@@ -27,11 +27,36 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	public static $mega_menu_enqueued = false;
 
 	/**
+	 * Flag used to add inline mobile submenu button styles.
+	 *
+	 * @var bool
+	 */
+	public static $add_mobile_caret_button_style = false;
+
+	/**
+	 * Flag used to add inline mobile dropdown js.
+	 *
+	 * @var bool
+	 */
+	public static $dropdowns_inline_js_enqueued = false;
+
+	/**
 	 * Nav_Walker constructor.
 	 */
 	public function __construct() {
 		add_filter( 'nav_menu_item_args', array( $this, 'tweak_mm_heading' ), 10, 3 );
 		add_filter( 'nav_menu_item_title', array( $this, 'add_caret' ), 10, 4 );
+	}
+
+	/**
+	 * Print inline styles if mobile submenu is used.
+	 */
+	public function inline_style_for_sidebar() {
+		if ( self::$add_mobile_caret_button_style ) {
+			return;
+		}
+		echo '<style>' . wp_kses_post( $this->get_mobile_submenu_style() ) . '</style>';
+		self::$add_mobile_caret_button_style = true;
 	}
 
 	/**
@@ -45,6 +70,9 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @return string
 	 */
 	public function add_caret( $title, $item, $args, $depth ) {
+		$args->before = '';
+		$args->after  = '';
+
 		if ( neve_is_amp() ) {
 			return $title;
 		}
@@ -61,18 +89,52 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			return $title;
 		}
 
-		// We add tabindex for sidebar in order for the carret to  be focusable.
-		$expanded = strpos( $args->menu_id, 'sidebar' ) !== false ? 'tabindex="0"' : '';
+		$is_sidebar_item = strpos( $args->menu_id, 'sidebar' ) !== false;
+		// We add tabindex 0 for sidebar in order for the caret to  be focusable.
+		$expanded = $is_sidebar_item ? 'tabindex="0"' : 'tabindex="-1"';
 
 		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
-			$title = '<span class="menu-item-title-wrap dd-title">' . $title . '</span>';
+			if ( strpos( $title, 'menu-item-title-wrap' ) === false ) {
+				$title = '<span class="menu-item-title-wrap dd-title">' . $title . '</span>';
+			}
+			$caret_svg = '<span class="caret"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg></span>';
 
-			$title .= '<div ' . $expanded . ' class="caret-wrap ' . $item->menu_order . '">';
-			$title .= '<span class="caret"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg></span>';
-			$title .= '</div>';
+			if ( $is_sidebar_item ) {
+				add_action( 'neve_after_header_wrapper_hook', [ $this, 'inline_style_for_sidebar' ], 9 );
+
+				if ( $item->url === '#' && ! self::$dropdowns_inline_js_enqueued ) {
+					$this->enqueue_hash_url_dropdowns_inline_js();
+				}
+
+				$args->before = '<div class="wrap">';
+				$args->after  = '</div>';
+
+				$caret  = '<button ' . $expanded . ' type="button" class="caret-wrap navbar-toggle ' . $item->menu_order . '">';
+				$caret .= $caret_svg;
+				$caret .= '</button>';
+
+				$args->after = $caret . $args->after;
+			} else {
+				$caret  = '<div ' . $expanded . ' class="caret-wrap ' . $item->menu_order . '">';
+				$caret .= $caret_svg;
+				$caret .= '</div>';
+				$title .= $caret;
+			}
 		}
 
+
+
 		return $title;
+	}
+
+	/**
+	 * Get mobile submenu inline styles
+	 */
+	public function get_mobile_submenu_style() {
+		$mobile_button_caret_css  = '.header-menu-sidebar .nav-ul li .wrap { position:relative; padding: 15px 0; display: flex; align-items: center; }';
+		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a { flex-grow: 1; }';
+		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap button { border: 0; z-index: 1; background: 0; }';
+		return Dynamic_Css::minify_css( $mobile_button_caret_css );
 	}
 
 	/**
@@ -251,5 +313,38 @@ JS;
 			wp_add_inline_script( 'neve-script', $script );
 		}
 		self::$mega_menu_enqueued = true;
+	}
+
+	/**
+	 * Enqueue JS for dropdowns with hash link.
+	 */
+	public function enqueue_hash_url_dropdowns_inline_js() {
+		if ( self::$dropdowns_inline_js_enqueued ) {
+			return;
+		}
+
+		// Fix for MegaMenu alignment
+		$script = <<<'JS'
+function initNoLinkDD() {
+    var noLinkDDs = document.querySelectorAll(
+		'.header-menu-sidebar-inner .menu-item-has-children a[href="#"]'
+	);
+
+    if( noLinkDDs.length < 1 ) {
+        return;
+	}
+
+    noLinkDDs.forEach( function (noLinkDD) {
+        var dropdownButton = noLinkDD.parentElement.querySelector('button');
+		noLinkDD.addEventListener('click', function (e) {
+			e.preventDefault();
+            dropdownButton.click();
+		});
+	});
+}
+window.addEventListener('DOMContentLoaded', initNoLinkDD);
+JS;
+		wp_add_inline_script( 'neve-script', $script );
+		self::$dropdowns_inline_js_enqueued = true;
 	}
 }

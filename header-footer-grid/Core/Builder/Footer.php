@@ -12,6 +12,7 @@
 namespace HFG\Core\Builder;
 
 use HFG\Main;
+use Neve\Core\Theme_Info;
 
 /**
  * Class Footer
@@ -19,6 +20,8 @@ use HFG\Main;
  * @package HFG\Core\Builder
  */
 class Footer extends Abstract_Builder {
+	use Theme_Info;
+
 	/**
 	 * Builder name.
 	 */
@@ -38,7 +41,7 @@ class Footer extends Abstract_Builder {
 			apply_filters(
 				'hfg_footer_panel_description',
 				sprintf(
-					/* translators: %s link to documentation */
+				/* translators: %s link to documentation */
 					esc_html__( 'Design your %1$s by dragging, dropping and resizing all the elements in real-time. %2$s.', 'neve' ),
 					/* translators: %s builder type */
 					$this->get_property( 'title' ),
@@ -64,6 +67,7 @@ class Footer extends Abstract_Builder {
 					'footer_copyright_content'            => array(
 						'label' => esc_html__( 'Change Copyright', 'neve' ),
 						'icon'  => 'dashicons-nametag',
+						'url'   => $this->has_valid_addons() ? null : 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_source=changecopyright&utm_campaign=neve',
 					),
 					'hfg_footer_layout_bottom_background' => array(
 						'label' => esc_html__( 'Change Footer Color', 'neve' ),
@@ -92,9 +96,51 @@ class Footer extends Abstract_Builder {
 					}
 					array_push( $processed_params, $param );
 				}
+
 				return $processed_params;
 			}
 		);
+
+		add_action( 'neve_after_slot_component', [ $this, 'add_footer_component' ], 10, 3 );
+	}
+
+	/**
+	 * Add footer component.
+	 *
+	 * @param string $builder Builder slug.
+	 * @param string $row Row slug.
+	 * @param string $slot Slot name.
+	 *
+	 * @return void
+	 */
+	public function add_footer_component( $builder, $row, $slot ) {
+		if ( $this->has_valid_addons() ) {
+			return;
+		}
+
+		if ( $builder !== self::BUILDER_NAME ) {
+			return;
+		}
+
+		if ( $row !== 'bottom' ) {
+			return;
+		}
+
+		if ( $slot !== 'left' ) {
+			return;
+		}
+
+		$output  = '<div class="builder-item"><div class="item--inner"><div class="component-wrap"><div>';
+		$output .= sprintf(
+		/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
+			esc_html__( '%1$s | Powered by %2$s', 'neve' ),
+			wp_kses_post( '<p><a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
+			wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a></p>' )
+		);
+		$output .= '</div></div></div></div>';
+
+
+		echo wp_kses_post( $output );
 	}
 
 	/**

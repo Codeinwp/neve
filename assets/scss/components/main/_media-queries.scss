@@ -6,7 +6,6 @@
 @media (min-width: #{$laptop}) {
 
 	@include content--laptop();
-	@include nav-menu--laptop();
 	@include blog-layout-default-alt--laptop();
 	@include sidebar--laptop();
 	@include gutenberg--laptop();

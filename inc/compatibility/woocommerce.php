@@ -760,7 +760,7 @@ class Woocommerce {
 	 * @return string
 	 */
 	public function add_secondary_btns_padding( $selectors ) {
-		return ( $selectors . $this->secondary_buttons_selectors['default'] . ',.woocommerce a.nv-quick-view-product.top' );
+		return ( $selectors . $this->secondary_buttons_selectors['default'] . ',.woocommerce div.sp-quick-view-product.top' );
 	}
 
 	/**
