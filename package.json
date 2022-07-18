@@ -141,6 +141,7 @@
 		"rollup-plugin-uglify": "^6.0.4",
 		"sass-loader": "^10.1.1",
 		"semantic-release": "^17.1.1",
+		"semantic-release-slack-bot": "^3.5.3",
 		"simple-git-hooks": "^2.2.0",
 		"size-limit": "4.6.0",
 		"style-loader": "^2.0.0",

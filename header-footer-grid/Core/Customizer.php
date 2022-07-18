@@ -242,7 +242,10 @@ class Customizer {
 		foreach ( $this->builders as $builder ) {
 			$builder->customize_register( $wp_customize );
 		}
-		$wp_customize->register_section_type( '\Neve\Customizer\Controls\React\Documentation_Section' );
+		$is_whitelabel = apply_filters( 'neve_is_theme_whitelabeled', false ) || apply_filters( 'neve_is_plugin_whitelabeled', false );
+		if ( ! $is_whitelabel ) {
+			$wp_customize->register_section_type( '\Neve\Customizer\Controls\React\Documentation_Section' );
+		}
 		$wp_customize->register_section_type( '\Neve\Customizer\Controls\React\Instructions_Section' );
 		$wp_customize->register_section_type( '\Neve\Customizer\Controls\React\Upsell_Section' );
 
