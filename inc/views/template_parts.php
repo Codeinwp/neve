@@ -294,9 +294,11 @@ class Template_Parts extends Base_View {
 		$default_value = Layout::get_meta_default_data( 'neve_post_meta_ordering', $default );
 		$meta_order    = get_theme_mod( 'neve_blog_post_meta_fields', wp_json_encode( $default_value ) );
 
-		$meta_order = json_decode( $meta_order );
-		if ( empty( $meta_order ) ) {
-			return false;
+		if ( ! is_array( $meta_order ) ) {
+			$meta_order = json_decode( $meta_order );
+			if ( empty( $meta_order ) ) {
+				return false;
+			}
 		}
 
 		ob_start();
