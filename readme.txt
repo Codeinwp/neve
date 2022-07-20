@@ -19,6 +19,15 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.3.3](https://github.com/Codeinwp/neve/compare/v3.3.2...v3.3.3) (2022-07-20)
+
+- [Feat] Adds theme.json & enable appearanceTools - [Documentation](https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json/#opt-in-into-ui-controls)
+- [Fix] Placement of the loop entry before/after hook
+- Update Google fonts
+
+
+
+
 ##### [Version 3.3.2](https://github.com/Codeinwp/neve/compare/v3.3.1...v3.3.2) (2022-07-11)
 
 - [Feat] Add active menu item color for the secondary navigation header component
