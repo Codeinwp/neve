@@ -8,6 +8,7 @@ import IconSelector from './IconSelector';
 import { getIcons, ColorControl } from '@neve-wp/components';
 import PropTypes from 'prop-types';
 import { __ } from '@wordpress/i18n';
+import Range from '../range/Range';
 
 const RepeaterItemContent = ({
 	fields,
@@ -125,6 +126,16 @@ const RepeaterItemContent = ({
 						checked={value[index][key]}
 						onChange={(newData) => changeContent(key, newData)}
 						key={key + index}
+					/>
+				);
+			case 'range':
+				return (
+					<Range
+						label={fields[key].label}
+						onChange={(newVal) => changeContent(key, newVal)}
+						key={key + index}
+						value={value[index][key]}
+						{...fields[key]}
 					/>
 				);
 		}

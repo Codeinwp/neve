@@ -121,7 +121,7 @@ trait Layout {
 			if ( ! array_key_exists( $meta_component, $components ) ) {
 				continue;
 			}
-			$new_control_data[ $meta_component ] = [
+			$new_control_data[ $meta_component ] = (object) [
 				'slug'           => $meta_component,
 				'title'          => $components[ $meta_component ],
 				'visibility'     => 'yes',
@@ -134,7 +134,7 @@ trait Layout {
 			if ( array_key_exists( $component_id, $new_control_data ) ) {
 				continue;
 			}
-			$new_control_data[ $component_id ] = [
+			$new_control_data[ $component_id ] = (object) [
 				'slug'           => $component_id,
 				'title'          => $label,
 				'visibility'     => 'no',

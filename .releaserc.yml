@@ -12,6 +12,14 @@ plugins:
     - prepareCmd: "replace-in-file \"== Changelog ==\" \"== Changelog ==\n\n${nextRelease.notes}\" readme.txt"
   - - "@semantic-release/exec"
     - prepareCmd: grunt version::${nextRelease.version} && grunt wp_readme_to_markdown
+  - - "semantic-release-slack-bot"
+    - notifyOnSuccess: false
+      notifyOnFail: false
+      markdownReleaseNotes: true
+      branchesConfig:
+        - pattern: master
+          notifyOnSuccess: true
+          notifyOnFail: false
   - - "@semantic-release/git"
     - assets:
         - CHANGELOG.md
