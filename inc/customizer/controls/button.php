@@ -107,7 +107,7 @@ class Button extends \WP_Customize_Control {
 			$control .= 'data-control-to-focus="' . esc_attr( $this->control_to_focus ) . '"';
 		}
 		$control .= ' class="' . esc_attr( $this->get_button_classes() ) . '"';
-		$control .= $this->is_button ? ' style="display: flex; align-items: center;"' : '';
+		$control .= $this->is_button ? ' style="display: flex; align-items: center;"' : ' style="cursor:pointer;"';
 		$control .= '>';
 		$control .= $this->get_icon();
 		$control .= esc_html( $this->button_text );
