@@ -5,7 +5,7 @@ import { useState } from '@wordpress/element';
 import { maybeParseJson } from '@neve-wp/components';
 
 const RepeaterComponent = ({ control }) => {
-	const { components, fields } = control.params;
+	const { label, components, fields } = control.params;
 	const allowNewFields = control.params.allow_new_fields;
 	const newItemFields = control.params.new_item_fields;
 
@@ -66,6 +66,7 @@ const RepeaterComponent = ({ control }) => {
 
 	return (
 		<Repeater
+			label={label}
 			fields={fields}
 			newItemFields={newItemFields}
 			allowNew={allowNew}

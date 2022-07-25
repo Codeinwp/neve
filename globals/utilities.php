@@ -672,3 +672,36 @@ function neve_edd_download_nav() {
 function neve_value_is_zero( $value ) {
 	return floatval( $value ) === 0.0;
 }
+
+
+/**
+ * Function that is called for triggering hooks on index.
+ *
+ * @param string $position Hook position.
+ */
+function neve_do_loop_hook( $position ) {
+	if ( ! in_array( $position, [ 'before', 'after', 'entry_before', 'entry_after' ] ) ) {
+		return;
+	}
+
+	$current_post_type = get_post_type();
+	if ( in_array( $current_post_type, array( 'post', 'page', 'product' ), true ) ) {
+		return;
+	}
+
+	/**
+	 * Executes actions on archives.
+	 *
+	 * The dynamic portion of the hook name, $current_post_type, refers to the post type slug.
+	 * The dynamic portion of the hook name, $position, refers to the hook placement. The accepted values are 'before'
+	 * ,'after', 'entry_before' and 'entry_after'.
+	 * This hook is not available for the following post types: post, page, product.
+	 *
+	 * Possible action names include:
+	 * - neve_loop_attachment_before
+	 * - neve_loop_acme_product_before
+	 *
+	 * @since 2.11
+	 */
+	do_action( "neve_loop_{$current_post_type}_{$position}" );
+}

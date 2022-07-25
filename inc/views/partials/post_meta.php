@@ -166,7 +166,7 @@ class Post_Meta extends Base_View {
 					}
 					$meta_content = str_replace( '{meta}', self::get_time_tags( $pid ), $format );
 					$markup      .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . ' ' . esc_attr( $element_class ) . '">';
-					$markup      .= wp_kses_post( $meta_content );
+					$markup      .= $meta_content;
 					$markup      .= '</' . $tag . '>';
 					break;
 				case 'category':

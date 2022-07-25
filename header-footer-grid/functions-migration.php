@@ -129,10 +129,6 @@ function neve_hfg_footer_settings() {
 		],
 	];
 
-	$builder['desktop']['bottom']['left'][] = [
-		'id' => 'footer_copyright',
-	];
-
 	return [
 		'builder'    => $builder,
 		'components' => [],
