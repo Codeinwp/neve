@@ -19,11 +19,6 @@ if ( (int) get_option( 'page_for_posts' ) === $pid || is_archive() ) {
 	$hide_title = get_theme_mod( 'neve_archive_hide_title', false );
 }
 
-if ( is_post_type_archive() ) {
-	$mod_name   = 'neve_' . get_post_type() . '_archive_hide_title';
-	$hide_title = get_theme_mod( $mod_name, false );
-}
-
 if ( ! empty( $specific_hide_title ) ) {
 	$hide_title = $specific_hide_title === 'on';
 }
