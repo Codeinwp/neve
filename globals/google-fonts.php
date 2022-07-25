@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 11/07/22
+ * Updated on 25/07/22
  *
  * @package neve
  */
@@ -455,7 +455,7 @@ return array(
 	'Gelasio' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Gemunu Libre' => array( '200', '300', '400', '500', '600', '700', '800',),
 	'Genos' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
-	'Gentium Basic' => array( '400', '700', '400italic', '700italic',),
+	'Gentium Basic' => array(),
 	'Gentium Book Basic' => array( '400', '700', '400italic', '700italic',),
 	'Gentium Book Plus' => array( '400', '700', '400italic', '700italic',),
 	'Gentium Plus' => array( '400', '700', '400italic', '700italic',),
