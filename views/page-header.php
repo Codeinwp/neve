@@ -9,10 +9,15 @@ if ( ! empty( $title_style ) ) {
 	$title_style = 'style="' . $title_style . '"';
 }
 
-$hide_title          = get_theme_mod( 'neve_page_hide_title', false );
+$hide_title = get_theme_mod( 'neve_page_hide_title', false );
+
 $current_page        = get_queried_object();
 $pid                 = $current_page instanceof WP_Post ? $current_page->ID : get_the_ID();
 $specific_hide_title = get_post_meta( $pid, 'neve_meta_disable_title', true );
+
+if ( (int) get_option( 'page_for_posts' ) === $pid || is_archive() ) {
+	$hide_title = get_theme_mod( 'neve_archive_hide_title', false );
+}
 
 if ( ! empty( $specific_hide_title ) ) {
 	$hide_title = $specific_hide_title === 'on';

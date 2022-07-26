@@ -111,7 +111,7 @@ class Layout_Blog extends Base_Customizer {
 					'priority'         => 10,
 					'class'            => 'blog-layout-accordion',
 					'accordion'        => true,
-					'controls_to_wrap' => 5,
+					'controls_to_wrap' => 6,
 				),
 				'Neve\Customizer\Controls\Heading'
 			)
@@ -203,6 +203,26 @@ class Layout_Blog extends Base_Customizer {
 					],
 				),
 				'Neve\Customizer\Controls\React\Color'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_archive_hide_title',
+				[
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => false,
+				],
+				[
+					'label'           => esc_html__( 'Disable Title', 'neve' ),
+					'section'         => $this->section,
+					'type'            => 'neve_toggle_control',
+					'priority'        => 16,
+					'active_callback' => function() {
+						return get_option( 'show_on_front' ) !== 'posts';
+					},
+				],
+				'Neve\Customizer\Controls\Checkbox'
 			)
 		);
 
