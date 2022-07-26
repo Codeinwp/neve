@@ -1,3 +1,9 @@
+##### [Version 3.3.4](https://github.com/Codeinwp/neve/compare/v3.3.3...v3.3.4) (2022-07-26)
+
+- [Feat] Add a new control to hide the title on archive pages
+- [Fix] Remove the theme.json file as it adds lots of other issues
+- Update Google Fonts
+
 ##### [Version 3.3.3](https://github.com/Codeinwp/neve/compare/v3.3.2...v3.3.3) (2022-07-20)
 
 - [Feat] Adds theme.json & enable "appearanceTools" - [Documentation](https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json/#opt-in-into-ui-controls)
