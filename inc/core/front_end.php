@@ -408,7 +408,7 @@ class Front_End {
 			return false;
 		}
 
-		if ( is_singular( 'post' ) && ! apply_filters( 'neve_post_has_comments', false ) ) {
+		if ( ! apply_filters( 'neve_post_has_comments', false ) ) {
 			return false;
 		}
 

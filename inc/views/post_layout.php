@@ -38,7 +38,14 @@ class Post_Layout extends Base_View {
 	 * @return bool
 	 */
 	public function post_has_comments() {
-		if ( ! is_singular( 'post' ) ) {
+		$post_type              = get_post_type();
+		$supported_post_types   = apply_filters( 'neve_post_type_supported_list', [], 'block_editor' );
+		$supported_post_types[] = 'post';
+		if ( ! in_array( $post_type, $supported_post_types, true ) ) {
+			return false;
+		}
+
+		if ( ! is_singular( $post_type ) ) {
 			return false;
 		}
 
