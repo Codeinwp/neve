@@ -387,10 +387,6 @@ class Front_End {
 	 */
 	public function should_load_comments_reply() {
 
-		if ( neve_is_amp() ) {
-			return false;
-		}
-
 		if ( ! is_singular() ) {
 			return false;
 		}
