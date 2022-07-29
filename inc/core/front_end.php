@@ -403,6 +403,11 @@ class Front_End {
 			return false;
 		}
 
+		$post_type = get_post_type();
+		if ( ! post_type_supports( $post_type, 'comments' ) ) {
+			return false;
+		}
+
 		if ( is_singular( 'post' ) && ! apply_filters( 'neve_post_has_comments', false ) ) {
 			return false;
 		}
