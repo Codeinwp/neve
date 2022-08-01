@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 25/07/22
+ * Updated on 01/08/22
  *
  * @package neve
  */
@@ -57,7 +57,7 @@ return array(
 	'Andada' => array(),
 	'Andada Pro' => array( '400', '500', '600', '700', '800', '400italic', '500italic', '600italic', '700italic', '800italic',),
 	'Andika' => array( '400', '700', '400italic', '700italic',),
-	'Andika New Basic' => array( '400', '700', '400italic', '700italic',),
+	'Andika New Basic' => array(),
 	'Anek Bangla' => array( '100', '200', '300', '400', '500', '600', '700', '800',),
 	'Anek Devanagari' => array( '100', '200', '300', '400', '500', '600', '700', '800',),
 	'Anek Gujarati' => array( '100', '200', '300', '400', '500', '600', '700', '800',),
@@ -611,7 +611,7 @@ return array(
 	'Kaushan Script' => array( '400',),
 	'Kavivanar' => array( '400',),
 	'Kavoon' => array( '400',),
-	'Kdam Thmor' => array( '400',),
+	'Kdam Thmor' => array(),
 	'Kdam Thmor Pro' => array( '400',),
 	'Keania One' => array( '400',),
 	'Kelly Slab' => array( '400',),
