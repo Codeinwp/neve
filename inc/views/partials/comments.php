@@ -18,11 +18,11 @@ use Neve\Views\Base_View;
 class Comments extends Base_View {
 
 	/**
-	 * Holds if an open children tag is opened for replies.
+	 * Holds comment IDs that have an opened children tag.
 	 *
-	 * @var bool
+	 * @var array
 	 */
-	private $is_tag_open = false;
+	private $comments_with_children = [];
 
 	/**
 	 * Add in functionality.
@@ -156,8 +156,8 @@ class Comments extends Base_View {
 	 * @param int         $depth   the comments depth.
 	 */
 	public function end_comment_list_callback( $comment, $args, $depth ) {
-		if ( $this->is_tag_open && $comment->comment_parent == 0 ) {
-			$this->is_tag_open = false;
+		if ( in_array( $comment->comment_ID, $this->comments_with_children ) ) {
+			unset( $this->comments_with_children[ $comment->comment_ID ] );
 			echo '</ol></li><!-- close children li -->';
 		}
 	}
@@ -249,7 +249,7 @@ class Comments extends Base_View {
 				break;
 		}
 		if ( $args['has_children'] === true ) {
-			$this->is_tag_open = true;
+			array_push( $this->comments_with_children, $comment->comment_ID );
 			echo '<li class="children" role="listitem"><ol>';
 		}
 	}
