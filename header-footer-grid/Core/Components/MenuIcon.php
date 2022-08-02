@@ -32,6 +32,7 @@ class MenuIcon extends Abstract_Component {
 	const BUTTON_APPEARANCE = 'button_appearance';
 	const COMPONENT_SLUG    = 'nav-icon';
 	const QUICK_LINKS_ID    = 'quick-links';
+	const LABEL_MARGIN_ID   = 'label_margin';
 	const MENU_ICON         = 'menu_icon';
 
 	/**
@@ -58,6 +59,35 @@ class MenuIcon extends Abstract_Component {
 			'right'  => 15,
 			'bottom' => 10,
 			'left'   => 15,
+		),
+		'mobile-unit'  => 'px',
+		'tablet-unit'  => 'px',
+		'desktop-unit' => 'px',
+	);
+
+	/**
+	 * Label margin settings default values.
+	 *
+	 * @var array
+	 */
+	protected $default_label_margin_value = array(
+		'mobile'       => array(
+			'top'    => 0,
+			'right'  => 5,
+			'bottom' => 0,
+			'left'   => 0,
+		),
+		'tablet'       => array(
+			'top'    => 0,
+			'right'  => 5,
+			'bottom' => 0,
+			'left'   => 0,
+		),
+		'desktop'      => array(
+			'top'    => 0,
+			'right'  => 5,
+			'bottom' => 0,
+			'left'   => 0,
 		),
 		'mobile-unit'  => 'px',
 		'tablet-unit'  => 'px',
@@ -434,6 +464,30 @@ CSS;
 
 		SettingsManager::get_instance()->add(
 			[
+				'id'                    => self::LABEL_MARGIN_ID,
+				'group'                 => $this->get_id(),
+				'transport'             => 'postMessage',
+				'tab'                   => SettingsManager::TAB_LAYOUT,
+				'sanitize_callback'     => array( $this, 'sanitize_spacing_array' ),
+				'label'                 => __( 'Margin', 'neve' ) . ' (' . __( 'Label', 'neve' ) . ')',
+				'type'                  => '\Neve\Customizer\Controls\React\Spacing',
+				'default'               => $this->default_label_margin_value,
+				'live_refresh_selector' => '.builder-item--' . $this->get_id(),
+				'live_refresh_css_prop' => array(
+					'cssVar' => [
+						'vars'       => '--label-margin',
+						'responsive' => true,
+						'selector'   => '.builder-item--' . $this->get_id(),
+					],
+					'prop'   => 'margin',
+				),
+				'section'               => $this->section,
+				'conditional_header'    => $this->get_builder_id() === 'header',
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
 				'id'                    => self::MENU_ICON,
 				'group'                 => $this->get_id(),
 				'tab'                   => SettingsManager::TAB_STYLE,
@@ -586,6 +640,18 @@ CSS;
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ',' . $this->close_button,
 			Dynamic_Selector::KEY_RULES    => $rules,
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
+			Dynamic_Selector::KEY_RULES    => [
+				'--label-margin' => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::LABEL_MARGIN_ID,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_DEFAULT       => $this->default_label_margin_value,
+					'directional-prop'                   => Config::CSS_PROP_MARGIN,
+				],
+			],
 		];
 
 		return parent::add_style( $css_array );

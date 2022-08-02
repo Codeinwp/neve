@@ -1,6 +1,6 @@
 .nav-toggle-label {
-	margin-right: 5px;
 	line-height: 1;
+	margin: var(--label-margin, 0 5px 0 0);
 }
 
 .navbar-toggle-wrapper {
