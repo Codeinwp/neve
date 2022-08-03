@@ -21,7 +21,6 @@ $close_contained  = $interaction_type === 'dropdown';
 $inner_classes    = 'header-menu-sidebar-inner ' . ( $is_contained ? ' container' : '' );
 $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 $close_classes    = 'close-sidebar-panel navbar-toggle-wrapper' . ( $close_contained ? ' container' : '' );
-$menu_icon        = component_setting( MenuIcon::MENU_ICON );
 
 $menu_icon_class = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active ' );
 ?>
