@@ -9,7 +9,6 @@ namespace Neve\Core\Styles;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
-use PHPUnit\Util\Type;
 
 /**
  * Class Generator
