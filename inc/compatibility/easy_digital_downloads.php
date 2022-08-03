@@ -24,13 +24,18 @@ class Easy_Digital_Downloads {
 			return;
 		}
 		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_edd_styles' ) );
-		add_filter( 'edd_settings_styles', array( $this, 'edd_settings_styles' ) );
+		$edd_settings_filter = 'edd_settings_misc';
+		// For EDD 2.x, use the `edd_settings_styles` filter.
+		if ( defined( 'EDD_VERSION' ) && version_compare( '2.10.999', EDD_VERSION, '>' ) ) {
+			$edd_settings_filter = 'edd_settings_styles';
+		}
+		add_filter( $edd_settings_filter, array( $this, 'edd_settings_styles' ) );
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 	}
 
 	/**
 	 * Add neve easy digital downloads body class.
-	 * 
+	 *
 	 * @param array $classes Current classes on body.
 	 */
 	public function add_body_class( $classes ) {
@@ -53,8 +58,8 @@ class Easy_Digital_Downloads {
 
 	/**
 	 * Dequeue the EDD default styles as we have our own.
-	 * 
-	 * @return void 
+	 *
+	 * @return void
 	 */
 	public function dequeue_edd_styles() {
 		wp_dequeue_style( 'edd-styles' );
@@ -64,13 +69,13 @@ class Easy_Digital_Downloads {
 	 * Filter the settings from EDD's "Styles" tab
 	 *
 	 * @param mixed $settings EDD style settings.
-	 * @return array 
+	 * @return array
 	 */
 	public function edd_settings_styles( $settings ) {
 		/*
 		 * Settings with type 'descriptive_text' are automatically stripped by EDD
 		 * So this field is not saved to the DB on save changes.
-		 * 
+		 *
 		 * see edd_settings_sanitize()
 		 */
 		$settings['main'] = array(
