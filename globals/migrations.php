@@ -53,10 +53,10 @@ function neve_get_button_appearance_default( $button = 'button' ) {
 
 		return [
 			'type'                  => 'fill',
-			'background'            => 'var(--nv-primary-accent)',
-			'backgroundHover'       => 'var(--nv-primary-accent)',
-			'text'                  => '#ffffff',
-			'textHover'             => '#ffffff',
+			'background'            => 'var(--nv-secondary-accent)',
+			'backgroundHover'       => 'var(--nv-secondary-accent)',
+			'text'                  => 'var(--nv-text-color)',
+			'textHover'             => 'var(--nv-text-color)',
 			'borderRadius'          => [
 				'top'    => 3,
 				'right'  => 3,
