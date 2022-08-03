@@ -127,7 +127,7 @@ class Autoloader {
 			$file           = $base_dir . $relative_class . '.php';
 
 			// if the mapped file exists, require it
-			if ( is_readable( $file ) && $this->require_file( $file ) ) {
+			if ( is_file( $file ) && $this->require_file( $file ) ) {
 				// yes, we're done
 				return $file;
 			}
