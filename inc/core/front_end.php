@@ -375,9 +375,44 @@ class Front_End {
 			wp_script_add_data( 'neve-shop-script', 'async', true );
 		}
 
-		if ( is_singular() & comments_open() && get_option( 'thread_comments' ) ) {
+		if ( $this->should_load_comments_reply() ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
+	}
+
+	/**
+	 * Dequeue comments-reply script if comments are closed.
+	 *
+	 * @return bool
+	 */
+	public function should_load_comments_reply() {
+
+		if ( ! is_singular() ) {
+			return false;
+		}
+
+		if ( ! comments_open() ) {
+			return false;
+		}
+
+		if ( ! (bool) get_option( 'thread_comments' ) ) {
+			return false;
+		}
+
+		if ( post_password_required() ) {
+			return false;
+		}
+
+		$post_type = get_post_type();
+		if ( ! post_type_supports( $post_type, 'comments' ) ) {
+			return false;
+		}
+
+		if ( ! apply_filters( 'neve_post_has_comments', false ) ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
