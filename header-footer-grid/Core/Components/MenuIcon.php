@@ -649,6 +649,7 @@ CSS;
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::LABEL_MARGIN_ID,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_DEFAULT       => $this->default_label_margin_value,
+					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 					'directional-prop'                   => Config::CSS_PROP_MARGIN,
 				],
 			],
