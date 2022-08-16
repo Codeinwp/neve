@@ -9,10 +9,11 @@ $container_class = apply_filters( 'neve_container_class_filter', 'container', 's
 
 get_header();
 
+$context = class_exists( 'WooCommerce', false ) && ( is_cart() || is_checkout() ) ? 'shop' : 'single-page';
 ?>
 <div class="<?php echo esc_attr( $container_class ); ?> single-page-container">
 	<div class="row">
-		<?php do_action( 'neve_do_sidebar', 'single-page', 'left' ); ?>
+		<?php do_action( 'neve_do_sidebar', $context, 'left' ); ?>
 		<div class="nv-single-page-wrap col">
 			<?php
 			/**
@@ -29,7 +30,7 @@ get_header();
 			 *
 			 * @since 1.0.7
 			 */
-			do_action( 'neve_page_header', 'single-page' );
+			do_action( 'neve_page_header', $context );
 
 			/**
 			 * Executes actions before the page content.
@@ -38,7 +39,7 @@ get_header();
 			 *
 			 * @since 1.0.7
 			 */
-			do_action( 'neve_before_content', 'single-page' );
+			do_action( 'neve_before_content', $context );
 
 			if ( have_posts() ) {
 				while ( have_posts() ) {
@@ -56,10 +57,10 @@ get_header();
 			 *
 			 * @since 1.0.7
 			 */
-			do_action( 'neve_after_content', 'single-page' );
+			do_action( 'neve_after_content', $context );
 			?>
 		</div>
-		<?php do_action( 'neve_do_sidebar', 'single-page', 'right' ); ?>
+		<?php do_action( 'neve_do_sidebar', $context, 'right' ); ?>
 	</div>
 </div>
 <?php get_footer(); ?>
