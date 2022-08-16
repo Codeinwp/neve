@@ -24,15 +24,15 @@ class Group_Select extends \WP_Customize_Control {
 	 *
 	 * @var array
 	 */
-	public $options = [];
+	public $options  = [];
 	public $disabled = false;
 
 	/**
 	 * Send to JS.
 	 */
 	public function json() {
-		$json            = parent::json();
-		$json['options'] = $this->options;
+		$json             = parent::json();
+		$json['options']  = $this->options;
 		$json['disabled'] = $this->disabled;
 		return $json;
 	}
