@@ -7,8 +7,29 @@ const GroupSelectComponent = ({ control }) => {
 	const [value, setValue] = useState(maybeParseJson(control.setting.get()));
 
 	const onChange = (nextVal) => {
-		setValue(nextVal);
-		control.setting.set(JSON.stringify(nextVal));
+		const saveValue = {};
+		nextVal.forEach((option) => {
+			const currentOpt = JSON.parse(option);
+			if (!saveValue[currentOpt.group]) {
+				saveValue[currentOpt.group] = [];
+			}
+			saveValue[currentOpt.group].push(currentOpt.value);
+		});
+		setValue(saveValue);
+		control.setting.set(JSON.stringify(saveValue));
+	};
+
+	const parsedValue = [];
+	Object.entries(value).forEach((groupOption) => {
+		const groupKey = groupOption[0];
+		groupOption[1].map((val) => {
+			parsedValue.push(JSON.stringify({ group: groupKey, value: val }));
+			return false;
+		});
+	});
+
+	const getObjKey = (obj, objValue) => {
+		return Object.keys(obj).find((key) => obj[key] === objValue);
 	};
 
 	return (
@@ -22,12 +43,13 @@ const GroupSelectComponent = ({ control }) => {
 					multiple
 					disabled={disabled}
 					aria-label={label}
-					value={value}
+					value={parsedValue}
 					onChange={onChange}
 					style={{ minHeight: '100px' }}
 				>
 					{Object.values(options).map((option, index) => {
 						const optGroupKey = `${option.label}-${index}`;
+						const objKey = getObjKey(options, option);
 						return (
 							<optgroup key={optGroupKey} label={option.label}>
 								{Object.values(option.value).map(
@@ -36,7 +58,10 @@ const GroupSelectComponent = ({ control }) => {
 										return (
 											<option
 												key={key}
-												value={groupedOption}
+												value={JSON.stringify({
+													group: objKey,
+													value: groupedOption,
+												})}
 											>
 												{groupedOption}
 											</option>
