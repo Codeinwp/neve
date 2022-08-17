@@ -9,7 +9,7 @@ $container_class = apply_filters( 'neve_container_class_filter', 'container', 's
 
 get_header();
 
-$context = class_exists( 'WooCommerce', false ) && ( is_cart() || is_checkout() || is_account_page() ) ? 'shop' : 'single-page';
+$context = class_exists( 'WooCommerce', false ) && ( is_cart() || is_checkout() || is_account_page() ) ? 'woo-page' : 'single-page';
 ?>
 <div class="<?php echo esc_attr( $container_class ); ?> single-page-container">
 	<div class="row">
