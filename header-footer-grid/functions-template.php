@@ -92,6 +92,9 @@ function current_row( $builder_name = '' ) {
  */
 function component_setting( $id, $default = null, $component_id = null ) {
 	if ( null === $component_id ) {
+		if ( empty( current_component() ) ) {
+			return false;
+		}
 		$component_id = current_component()->get_id();
 	}
 

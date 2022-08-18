@@ -256,10 +256,22 @@ class Button extends Abstract_Component {
 		$value = get_theme_mod( $id );
 
 		$rules = [
-			'--primarybtnbg'           => [ Dynamic_Selector::META_KEY => $id . '.background' ],
-			'--primarybtncolor'        => [ Dynamic_Selector::META_KEY => $id . '.text' ],
-			'--primarybtnhoverbg'      => [ Dynamic_Selector::META_KEY => $id . '.backgroundHover' ],
-			'--primarybtnhovercolor'   => [ Dynamic_Selector::META_KEY => $id . '.textHover' ],
+			'--primarybtnbg'           => [
+				Dynamic_Selector::META_KEY     => $id . '.background',
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-primary-accent)',
+			],
+			'--primarybtncolor'        => [
+				Dynamic_Selector::META_KEY     => $id . '.text',
+				Dynamic_Selector::META_DEFAULT => '#fff',
+			],
+			'--primarybtnhoverbg'      => [
+				Dynamic_Selector::META_KEY     => $id . '.backgroundHover',
+				Dynamic_Selector::META_DEFAULT => 'var(--nv-primary-accent)',
+			],
+			'--primarybtnhovercolor'   => [
+				Dynamic_Selector::META_KEY     => $id . '.textHover',
+				Dynamic_Selector::META_DEFAULT => '#fff',
+			],
 			'--primarybtnborderradius' => [
 				Dynamic_Selector::META_KEY => $id . '.borderRadius',
 				'directional-prop'         => Config::CSS_PROP_BORDER_RADIUS,
