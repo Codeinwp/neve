@@ -10,6 +10,7 @@ const FormTokenFieldComponent = ({ control }) => {
 	const hasLabel =
 		choices !== null &&
 		Array.isArray(choices) &&
+		choices.length > 0 &&
 		choices[0].hasOwnProperty('label');
 	let optionNames = [];
 	let optionValues = [];
