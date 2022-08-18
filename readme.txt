@@ -19,6 +19,15 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.3.6](https://github.com/Codeinwp/neve/compare/v3.3.5...v3.3.6) (2022-08-18)
+
+- [Fix] Border radius on buttons cannot be removed
+- [Fix] Default text color for primary buttons
+- Update Google Fonts
+
+
+
+
 ##### [Version 3.3.5](https://github.com/Codeinwp/neve/compare/v3.3.4...v3.3.5) (2022-08-03)
 
 - [Fix] Indentation for nested replies
