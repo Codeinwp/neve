@@ -24,7 +24,12 @@ class Group_Select extends \WP_Customize_Control {
 	 *
 	 * @var array
 	 */
-	public $options  = [];
+	public $options = [];
+	/**
+	 * Mark controls as disabled.
+	 *
+	 * @var bool
+	 */
 	public $disabled = false;
 
 	/**
