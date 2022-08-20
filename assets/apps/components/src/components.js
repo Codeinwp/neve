@@ -11,6 +11,7 @@ export { default as NumberControl } from './Controls/NumberControl';
 export { default as MultiSelect } from './Controls/MultiSelect';
 export { default as Toggle } from './Controls/Toggle';
 export { default as RadioImage } from './Controls/RadioImage';
+export { default as FormTokenFieldControl } from './Controls/FormTokenFieldControl';
 
 // UI Components
 export { default as Accordion } from './UI/Accordion';
