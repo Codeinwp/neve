@@ -1,6 +1,6 @@
 <?php
 /**
- * Form Token Field Control. Handles data passing from args to JS.
+ * Group_Select Control. Handles data passing from args to JS.
  *
  * @package Neve\Customizer\Controls\React
  */
@@ -8,7 +8,7 @@
 namespace Neve\Customizer\Controls\React;
 
 /**
- * Class Button_Appearance
+ * Class Group_Select
  *
  * @package Neve\Customizer\Controls\React
  */
