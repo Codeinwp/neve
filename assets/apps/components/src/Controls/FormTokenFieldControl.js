@@ -44,12 +44,7 @@ const FormTokenFieldControl = ({
 	};
 
 	const hasSubArray = (master, sub) => {
-		return sub.every(
-			(
-				(i) => (v) =>
-					(i = master.indexOf(v, i) + 1)
-			)(0)
-		);
+		return sub.every((e) => master.includes(e));
 	};
 
 	const validateInput = (newVal) => {

@@ -8,7 +8,7 @@
 namespace Neve\Customizer\Controls\React;
 
 /**
- * Class Button_Appearance
+ * Class Form_Token_Field
  *
  * @package Neve\Customizer\Controls\React
  */
