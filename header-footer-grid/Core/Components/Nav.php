@@ -14,6 +14,7 @@ namespace HFG\Core\Components;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
 
 /**
@@ -345,7 +346,9 @@ class Nav extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
+		add_filter( 'neve_additional_menu_class', array( $this, 'filter_additional_menu_class' ) );
 		Main::get_instance()->load( 'components/component-nav' );
+		remove_filter( 'neve_additional_menu_class', array( $this, 'filter_additional_menu_class' ) );
 	}
 
 	/**
@@ -388,6 +391,47 @@ class Nav extends Abstract_Component {
 			],
 		];
 
+		if ( self::should_load_pro_features() ) {
+			$rules['--justify']           = [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_content_alignment',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_DEFAULT       => 'flex-start',
+			];
+			$rules['--bwidth']            = [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_submenu_border',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+				'directional-prop'                   => Config::CSS_PROP_BORDER_WIDTH,
+			];
+			$rules['--itembwidth']        = [
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_submenu_item_border',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+				'directional-prop'                   => Config::CSS_PROP_BORDER_WIDTH,
+			];
+			$rules['--bcolor']            = [
+				Dynamic_Selector::META_KEY => $this->get_id() . '_submenu_border_color',
+			];
+			$rules['--itembcolor']        = [
+				Dynamic_Selector::META_KEY => $this->get_id() . '_submenu_item_border_color',
+			];
+			$rules['--itembcolorhover']   = [
+				Dynamic_Selector::META_KEY => $this->get_id() . '_submenu_item_border_color_hover',
+			];
+			$rules['--bgcolor']           = [
+				Dynamic_Selector::META_KEY => $this->get_id() . '_submenu_bg_color',
+			];
+			$rules['--itembgcolorhover']  = [
+				Dynamic_Selector::META_KEY => $this->get_id() . '_submenu_item_bg_color_hover',
+			];
+			$rules['--submenucolor']      = [
+				Dynamic_Selector::META_KEY => $this->get_id() . '_submenu_item_color',
+			];
+			$rules['--submenucolorhover'] = [
+				Dynamic_Selector::META_KEY => $this->get_id() . '_submenu_item_color_hover',
+			];
+		}
+
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $selector,
 			Dynamic_Selector::KEY_RULES    => $rules,
@@ -396,6 +440,37 @@ class Nav extends Abstract_Component {
 
 		return parent::add_style( $css_array );
 	}
+
+
+	/**
+	 * Add additional class for the menu.
+	 *
+	 * @param string $classes Menu classes.
+	 */
+	public function filter_additional_menu_class( $classes ) {
+		if ( ! self::should_load_pro_features() ) {
+			return $classes;
+		}
+
+		$sub_menu_animation_class = Mods::get( $this->get_id() . '_submenu_animation', '' );
+		if ( ! empty( $sub_menu_animation_class ) ) {
+			$classes .= ' nv-menu-animation-' . $sub_menu_animation_class;
+		}
+
+		return $classes;
+	}
+
+	/**
+	 * Check if pro features should load.
+	 *
+	 * @return bool
+	 */
+	public static function should_load_pro_features() {
+		return class_exists( '\Neve_Pro\Modules\Header_Footer_Grid\Components\Primary_Nav', false );
+	}
+
+
+
 
 	/**
 	 * Add legacy style.

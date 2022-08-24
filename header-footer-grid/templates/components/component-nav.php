@@ -15,7 +15,9 @@ use HFG\Core\Builder\Header as HeaderBuilder;
 $style                 = component_setting( Nav::STYLE_ID );
 $dropdowns_expanded    = component_setting( Nav::EXPAND_DROPDOWNS );
 $additional_menu_class = $dropdowns_expanded && current_row( HeaderBuilder::BUILDER_NAME ) === 'sidebar' ? ' ' . Nav::DROPDOWNS_EXPANDED_CLASS : '';
-$container_classes     = [ $style ];
+$additional_menu_class = apply_filters( 'neve_additional_menu_class', $additional_menu_class );
+
+$container_classes = [ $style ];
 
 $container_classes[] = 'nav-menu-primary';
 
