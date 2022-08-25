@@ -346,9 +346,11 @@ class Nav extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
-		add_filter( 'neve_additional_menu_class', array( $this, 'filter_additional_menu_class' ) );
+		add_filter( 'neve_additional_menu_class', [$this, 'filter_additional_menu_class'] );
+		add_filter( 'neve_additional_menu_container_class', [$this, 'filter_additional_menu_container_class'] );
 		Main::get_instance()->load( 'components/component-nav' );
-		remove_filter( 'neve_additional_menu_class', array( $this, 'filter_additional_menu_class' ) );
+		remove_filter( 'neve_additional_menu_class', [$this, 'filter_additional_menu_class'] );
+		remove_filter( 'neve_additional_menu_container_class', [$this, 'filter_additional_menu_container_class'] );
 	}
 
 	/**
@@ -430,6 +432,15 @@ class Nav extends Abstract_Component {
 			$rules['--submenucolorhover'] = [
 				Dynamic_Selector::META_KEY => $this->get_id() . '_submenu_item_color_hover',
 			];
+
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector . ' .sub-menu',
+				Dynamic_Selector::KEY_RULES    => [
+					'--hovercolor' => [
+						Dynamic_Selector::META_KEY => $this->get_id() . '_submenu_hover_skin_color_hover',
+					]
+				]
+			];
 		}
 
 		$css_array[] = [
@@ -441,6 +452,25 @@ class Nav extends Abstract_Component {
 		return parent::add_style( $css_array );
 	}
 
+	/**
+	 * @param $classes
+	 */
+	public function filter_additional_menu_container_class( $classes ){
+		if ( ! self::should_load_pro_features() ) {
+			return $classes;
+		}
+
+		$sub_menu_style = Mods::get( $this->get_id() . '_submenu_hover_skin' );
+		if ( $sub_menu_style === 'style-plain' ) {
+			$classes[] = 'submenu-' . $sub_menu_style;
+			return $classes;
+		}
+
+		$classes[] = 'sm-style';
+		$classes[] = 'submenu-' . $sub_menu_style;
+
+		return $classes;
+	}
 
 	/**
 	 * Add additional class for the menu.

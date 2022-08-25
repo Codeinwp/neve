@@ -1,45 +1,45 @@
-.style-border-bottom {
-
-	a::after {
-		bottom: 0;
-	}
+.submenu-style-border-bottom .sub-menu,
+.style-border-bottom:not([class*='submenu-style']),
+.style-border-bottom[class*='submenu-style'] > ul > li > {
+  a::after {
+	bottom: 0;
+  }
 }
 
-.style-border-top {
-
-	a::after {
-		top: 0;
-	}
+.submenu-style-border-top .sub-menu,
+.style-border-top:not([class*='submenu-style']),
+.style-border-top[class*='submenu-style'] > ul > li > {
+  a::after {
+	top: 0;
+  }
 }
 
-.style-border-top,
-.style-border-bottom,
-.style-full-height {
-
-	a:hover {
-
-		&::after {
-			width: 100%;
-		}
+.sm-style .sub-menu,
+.m-style:not([class*='submenu-style']),
+.m-style[class*='submenu-style'] > ul > li >{
+  a:hover {
+	&::after {
+	  width: 100%;
 	}
+  }
 
-	a::after {
-		position: absolute;
-		content: "";
-		margin: 0 auto;
-		width: 0;
-		height: 2px;
-		transition: all 0.3s ease;
-		right: 0;
-		left: 0;
-		pointer-events: none;
-		background-color: var(--hovercolor, currentColor);
-	}
+  a::after {
+	position: absolute;
+	content: "";
+	margin: 0 auto;
+	width: 0;
+	height: 2px;
+	transition: all 0.3s ease;
+	right: 0;
+	left: 0;
+	pointer-events: none;
+	background-color: var(--hovercolor, currentColor);
+  }
 }
 
-
-.style-full-height {
-
+.submenu-style-full-height .sub-menu,
+.style-full-height:not([class*='submenu-style']),
+.style-full-height[class*='submenu-style'] > ul > li > {
 	a:hover {
 		color: currentColor;
 
@@ -70,4 +70,10 @@
 			z-index: -1;
 		}
 	}
+}
+
+.submenu-style-full-height .sub-menu a:hover {
+  &::after {
+	width: 100%;
+  }
 }

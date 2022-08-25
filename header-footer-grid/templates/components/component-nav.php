@@ -12,14 +12,18 @@ namespace HFG;
 use HFG\Core\Components\Nav;
 use HFG\Core\Builder\Header as HeaderBuilder;
 
-$style                 = component_setting( Nav::STYLE_ID );
+$style                 = component_setting( Nav::STYLE_ID, 'style-plain' );
 $dropdowns_expanded    = component_setting( Nav::EXPAND_DROPDOWNS );
 $additional_menu_class = $dropdowns_expanded && current_row( HeaderBuilder::BUILDER_NAME ) === 'sidebar' ? ' ' . Nav::DROPDOWNS_EXPANDED_CLASS : '';
 $additional_menu_class = apply_filters( 'neve_additional_menu_class', $additional_menu_class );
 
-$container_classes = [ $style ];
+$container_classes = ['nav-menu-primary'];
+if ( $style !== 'style-plain' ) {
+	$container_classes[] = $style;
+	$container_classes[] = 'm-style';
+}
+$container_classes = apply_filters( 'neve_additional_menu_container_class', $container_classes );
 
-$container_classes[] = 'nav-menu-primary';
 
 $menu_id = Nav::NAV_MENU_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
 ?>
