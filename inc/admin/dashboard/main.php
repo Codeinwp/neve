@@ -44,13 +44,10 @@ class Main {
 	private $useful_plugins = [
 		'optimole-wp',
 		'wp-landing-kit',
+		'otter-blocks',
 		'wp-cloudflare-page-cache',
 		'templates-patterns-collection',
 		'themeisle-companion',
-		'otter-blocks',
-		'weglot',
-		'visualizer',
-		'wpforms-lite',
 		'translatepress-multilingual',
 		'amp',
 	];
