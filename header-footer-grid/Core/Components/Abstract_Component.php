@@ -738,12 +738,14 @@ abstract class Abstract_Component implements Component {
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::PADDING_ID,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::PADDING_ID ),
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
 			'--margin'  => [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::MARGIN_ID,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::MARGIN_ID ),
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 				'directional-prop'                   => Config::CSS_PROP_MARGIN,
 			],
 		];
