@@ -97,7 +97,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			if ( strpos( $title, 'menu-item-title-wrap' ) === false ) {
 				$title = '<span class="menu-item-title-wrap dd-title">' . $title . '</span>';
 			}
-			$caret_svg = '<span class="caret"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg></span>';
+			$caret_svg = '<span class="caret"><svg aria-label="' . esc_attr__( 'Dropdown', 'neve' ) . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg></span>';
 
 			if ( $is_sidebar_item ) {
 				add_action( 'neve_after_header_wrapper_hook', [ $this, 'inline_style_for_sidebar' ], 9 );
@@ -115,7 +115,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 
 				$args->after = $caret . $args->after;
 			} else {
-				$caret  = '<div ' . $expanded . ' class="caret-wrap ' . $item->menu_order . '">';
+				$caret  = '<div role="none"' . $expanded . ' class="caret-wrap ' . $item->menu_order . '">';
 				$caret .= $caret_svg;
 				$caret .= '</div>';
 				$title .= $caret;
