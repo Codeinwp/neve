@@ -36,8 +36,12 @@ const Instructions: React.FC<Props> = ({ control }) => {
 
 	return (
 		<div className="quick-links-inner">
-			{description && <p>{description}</p>}
-			<hr />
+			{description && (
+				<>
+					<p>{description}</p>
+					<hr />
+				</>
+			)}
 			{linkKeys.length && (
 				<div className="quick-links-wrap">
 					<span className="customize-control-title">
