@@ -1,4 +1,5 @@
 /* jshint esversion: 6 */
+/* global CustomEvent */
 import { tns } from 'tiny-slider/src/tiny-slider';
 
 /**
@@ -54,7 +55,7 @@ function handleExclusiveSlider() {
 		1200: { items: 4, gutter: 30 },
 	};
 
-	tns({
+	const slider = tns({
 		container: 'ul.exclusive-products',
 		slideBy: 1,
 		arrowKeys: true,
@@ -73,6 +74,19 @@ function handleExclusiveSlider() {
 		navAsThumbnails: true,
 		responsive,
 	});
+
+	// [If Sparks Variation Swatches is enabled and ] Initialize Sparks Variation Swatches for cloned products.
+	if (document.body.classList.contains('sparks-vs-shop-attribute')) {
+		slider.events.on('transitionEnd', () => {
+			document.dispatchEvent(
+				new CustomEvent('sparksVSNeedsInit', {
+					detail: {
+						container: '.products.exclusive',
+					},
+				})
+			);
+		});
+	}
 }
 
 /**
