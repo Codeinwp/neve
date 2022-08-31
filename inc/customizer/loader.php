@@ -124,6 +124,7 @@ class Loader {
 						'controls' => array(),
 						'options'  => array(),
 					),
+					'upsellComponentsLink'          => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'hfgcomponents' ),
 					'fonts'                         => array(
 						'System' => neve_get_standard_fonts(),
 						'Google' => neve_get_google_fonts(),

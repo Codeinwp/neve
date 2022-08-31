@@ -2017,17 +2017,23 @@ abstract class Abstract_Builder implements Builder {
 							'--justify',
 							'--textalign',
 							'--flexg',
+							'--wrapdropdownwidth',
 						],
 						'valueRemap' => [
-							'--justify' => [
+							'--justify'           => [
 								'left'   => 'flex-start',
 								'center' => 'center',
 								'right'  => 'flex-end',
 							],
-							'--flexg'   => [
+							'--flexg'             => [
 								'left'   => '1',
 								'center' => '0',
 								'right'  => '0',
+							],
+							'--wrapdropdownwidth' => [
+								'left'   => 'auto',
+								'center' => 'calc( 100% + 44px )',
+								'right'  => 'auto',
 							],
 						],
 						'responsive' => true,
@@ -2303,7 +2309,7 @@ abstract class Abstract_Builder implements Builder {
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => '.header-menu-sidebar-bg',
 				Dynamic_Selector::KEY_RULES    => [
-					'--justify'   => [
+					'--justify'           => [
 						Dynamic_Selector::META_KEY     => $align_id,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 						Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $justify_map ) {
@@ -2311,12 +2317,12 @@ abstract class Abstract_Builder implements Builder {
 						},
 						Dynamic_Selector::META_DEFAULT => $align_default,
 					],
-					'--textalign' => [
+					'--textalign'         => [
 						Dynamic_Selector::META_KEY     => $align_id,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 						Dynamic_Selector::META_DEFAULT => $align_default,
 					],
-					'--flexg'     => [
+					'--flexg'             => [
 						Dynamic_Selector::META_KEY     => $align_id,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 						Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) {
@@ -2325,6 +2331,18 @@ abstract class Abstract_Builder implements Builder {
 							}
 
 							return sprintf( '%s: 0;', $css_prop );
+						},
+						Dynamic_Selector::META_DEFAULT => $align_default,
+					],
+					'--wrapdropdownwidth' => [
+						Dynamic_Selector::META_KEY     => $align_id,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) {
+							if ( $value === 'center' ) {
+								return sprintf( '%s: %s;', $css_prop, 'calc( 100% + 44px )' );
+							}
+
+							return sprintf( '%s: auto;', $css_prop );
 						},
 						Dynamic_Selector::META_DEFAULT => $align_default,
 					],
