@@ -172,25 +172,6 @@ const Start = (props) => {
 					</Card>
 				</>
 			)}
-			{showFeedbackNotice && !pro && (
-				<Card
-					classNames="feedback-card"
-					icon="awards"
-					dashicon={true}
-					title={__('Feedback', 'neve')}
-					description={__(
-						'Share your feedback for Neve and get the chance to win the pro version.',
-						'neve'
-					)}
-				>
-					<Button
-						isPrimary
-						href="https://themeisle.com/review-neve-theme/"
-					>
-						{__('Leave Feedback', 'neve')}
-					</Button>
-				</Card>
-			)}
 		</>
 	);
 };
