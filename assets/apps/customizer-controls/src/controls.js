@@ -37,6 +37,9 @@ import Documentation from './documentation-section/Documentation.tsx';
 import Instructions from './builder-instructions/Instructions.tsx';
 import Upsells from './builder-upsell/Upsells.tsx';
 
+import SearchToggle from './customizer-search/SearchToggle.tsx';
+import SearchComponent from './customizer-search/SearchComponent.tsx';
+
 const { controlConstructor } = wp.customize;
 
 controlConstructor.neve_toggle_control = ToggleControl;
@@ -96,6 +99,47 @@ const initDocSection = () => {
 
 		render(<Documentation control={section} />, section.container[0]);
 	});
+};
+
+const initSearchCustomizer = () => {
+	const toggleSearchID = 'neve-customize-search';
+	const searchComponentID = 'neve-customize-search-field';
+	const searchResultsID = 'neve-customize-search-results';
+	const isSearchButton = document.querySelectorAll(`#${toggleSearchID}`);
+	if (isSearchButton.length === 0) {
+		const title = document.querySelectorAll(
+			'#customize-info .accordion-section-title'
+		);
+		if (title.length !== 0) {
+			const targetNode = document.createElement('div');
+			targetNode.setAttribute('id', toggleSearchID);
+			title[0].append(targetNode);
+			const searchButtonTarget = document.querySelectorAll(
+				`#${toggleSearchID}`
+			);
+			if (searchButtonTarget.length !== 0) {
+				render(<SearchToggle />, searchButtonTarget[0]);
+			}
+
+			const targetFieldNode = document.createElement('div');
+			targetFieldNode.setAttribute('id', searchComponentID);
+			const titleSection = document.getElementById('customize-info');
+			titleSection.append(targetFieldNode);
+			const searchFieldTarget = document.querySelectorAll(
+				`#${searchComponentID}`
+			);
+			if (searchFieldTarget.length !== 0) {
+				render(<SearchComponent />, searchFieldTarget[0]);
+			}
+
+			const customizerPanels = document.getElementById(
+				'customize-theme-controls'
+			);
+			const targetSearchResultsNode = document.createElement('div');
+			targetSearchResultsNode.setAttribute('id', searchResultsID);
+			customizerPanels.after(targetSearchResultsNode);
+		}
+	}
 };
 
 const initCustomPagesFocus = () => {
@@ -234,6 +278,7 @@ window.wp.customize.bind('ready', () => {
 	checkHasElementorTemplates();
 	initDeviceSwitchers();
 	initBlogPageFocus();
+	initSearchCustomizer();
 });
 
 window.HFG = {
