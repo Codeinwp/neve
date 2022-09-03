@@ -41,7 +41,8 @@ const ROLLUP_MODERN = {
 					"useBuiltIns": "usage",
 					"corejs": 3,
 					"exclude": [
-						"es.string.split"
+						"es.string.split",
+						'web.dom-collections.iterator'
 					]
 				}
 			]

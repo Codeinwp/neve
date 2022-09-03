@@ -44,13 +44,10 @@ class Main {
 	private $useful_plugins = [
 		'optimole-wp',
 		'wp-landing-kit',
+		'otter-blocks',
 		'wp-cloudflare-page-cache',
 		'templates-patterns-collection',
 		'themeisle-companion',
-		'otter-blocks',
-		'weglot',
-		'visualizer',
-		'wpforms-lite',
 		'translatepress-multilingual',
 		'amp',
 	];
@@ -199,9 +196,9 @@ class Main {
 			'plugins'                 => $this->get_useful_plugins(),
 			'featureData'             => $this->get_free_pro_features(),
 			'showFeedbackNotice'      => $this->should_show_feedback_notice(),
-			'allfeaturesNeveProURL'   => esc_url( 'https://themeisle.com/themes/neve/upgrade/?utm_medium=nevedashboard&utm_source=freevspro&utm_campaign=neve&utm_content=seeallfeatures#profeatures' ),
-			'startSitesgetNeveProURL' => esc_url( 'https://themeisle.com/themes/neve/upgrade/?utm_medium=nevedashboard&utm_source=welcomestartersitescard&utm_campaign=neve&utm_content=gotostartersites' ),
-			'upgradeURL'              => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ) ),
+			'allfeaturesNeveProURL'   => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'seeallfeatures', 'freevspropage' ),
+			'startSitesgetNeveProURL' => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'welcomestartersitescard', 'nevedashboard' ),
+			'upgradeURL'              => apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'getpronow', 'freevspropage' ) ),
 			'supportURL'              => esc_url( 'https://wordpress.org/support/theme/neve/' ),
 			'docsURL'                 => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
 			'codexURL'                => esc_url( 'https://codex.nevewp.com/' ),
@@ -314,7 +311,7 @@ class Main {
 					__( 'From 3.3.0 we decided to remove the copyright component from the free version. You can continue using it if you rollback to 3.2.x or you can upgrade to pro, using a one time 50%% discount: %s', 'neve' ),
 					wp_kses_post( '<code>NEVEBRANDING50</code>' )
 				),
-				'url'         => 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=copyrightnotice&utm_campaign=neve',
+				'url'         => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'copyrightnotice', 'nevedashboard' ),
 				'targetBlank' => true,
 				'cta'         => __( 'Upgrade', 'neve' ),
 			];
@@ -396,15 +393,8 @@ class Main {
 	 * @return string
 	 */
 	private function get_doc_link( $utm_term, $url ) {
-		$args = [
-			'utm_medium'   => 'aboutneve',
-			'utm_source'   => 'freevspro',
-			'utm_campaign' => 'neve',
-			'utm_term'     => $utm_term,
-		];
 
-
-		return add_query_arg( $args, esc_url( $url ) );
+		return tsdk_utmify( $url, $utm_term, 'freevspropage' );
 	}
 
 	/**
@@ -576,7 +566,7 @@ class Main {
 				'description' => 'Turn WordPress into a landing page powerhouse with Landing Kit. Map domains to pages or any other published resource.',
 				'author'      => 'Themeisle',
 				'cta'         => 'external',
-				'url'         => 'https://wplandingkit.com/?utm_medium=nevedashboard&utm_source=recommendedplugins&utm_campaign=neve',
+				'url'         => tsdk_utmify( 'https://wplandingkit.com/', 'recommendedplugins', 'nevedashboard' ),
 				'premium'     => true,
 			),
 
