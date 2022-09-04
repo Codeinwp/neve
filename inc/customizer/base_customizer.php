@@ -422,7 +422,7 @@ abstract class Base_Customizer {
 					'label'                 => esc_html__( 'Section padding', 'neve' ),
 					'section'               => $settings['section'],
 					'input_attrs'           => [
-						'units' => [ 'em', 'px' ],
+						'units' => [ 'px', 'em', 'rem' ],
 						'min'   => 0,
 					],
 					'default'               => array_key_exists( 'padding_default', $settings ) ? $settings['padding_default'] : false,

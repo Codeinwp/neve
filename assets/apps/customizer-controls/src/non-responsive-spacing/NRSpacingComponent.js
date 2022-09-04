@@ -14,7 +14,7 @@ const NRSpacingComponent = ({ control }) => {
 	const controlParams = {
 		min: 0,
 		max: 300,
-		units: ['px', 'em', '%'],
+		units: ['px', 'em', 'rem', '%'],
 		label: false,
 		defaultVal: { top: 0, right: 0, bottom: 0, left: 0, unit: 'px' },
 		...params,
@@ -59,11 +59,13 @@ const NRSpacingComponent = ({ control }) => {
 		handleUpdate({ ...val, unit });
 	};
 
+	const isRelativeUnit = (unitType) => ['em', 'rem'].includes(unitType);
+
 	const handleUnitChange = (unitType) => {
 		const nextValue = { ...value };
 		nextValue.unit = unitType;
 
-		if (unitType !== 'em') {
+		if (!isRelativeUnit(unitType)) {
 			nextValue.top = parseInt(nextValue.top);
 			nextValue.right = parseInt(nextValue.right);
 			nextValue.bottom = parseInt(value.bottom);
@@ -117,7 +119,7 @@ const NRSpacingComponent = ({ control }) => {
 			<SizingControl
 				min={min}
 				max={max}
-				step={unit === 'em' ? 0.1 : 1}
+				step={isRelativeUnit(unit) ? 0.1 : 1}
 				options={options}
 				defaults={defaultVal}
 				onChange={updateNumericValue}
