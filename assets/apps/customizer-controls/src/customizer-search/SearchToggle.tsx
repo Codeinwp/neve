@@ -3,24 +3,19 @@ import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 
 /**
+ * Type SearchToggleProps
+ */
+type SearchToggleProps = {
+	onToggle: () => void;
+};
+
+/**
  * Search Toggle.
  *
+ * @param {SearchToggleProps} SearchToggleProps
  * @class
  */
-const SearchToggle: React.FC = () => {
-	/**
-	 * Trigger toggle event.
-	 *
-	 * @return {void}
-	 */
-	const searchToggle = () => {
-		document.dispatchEvent(
-			new window.CustomEvent('nv-customizer-search-toggle', {
-				detail: {},
-			})
-		);
-	};
-
+const SearchToggle: React.FC<SearchToggleProps> = ({ onToggle }) => {
 	return (
 		<>
 			<Button
@@ -29,7 +24,7 @@ const SearchToggle: React.FC = () => {
 				isSmall
 				isLink
 				label={__('Search', 'neve') + ' ' + __('Toggle', 'neve')}
-				onClick={searchToggle}
+				onClick={onToggle}
 			>
 				<span className="screen-reader-text">
 					{__('Search', 'neve')}

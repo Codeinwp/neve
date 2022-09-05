@@ -37,8 +37,7 @@ import Documentation from './documentation-section/Documentation.tsx';
 import Instructions from './builder-instructions/Instructions.tsx';
 import Upsells from './builder-upsell/Upsells.tsx';
 
-import SearchToggle from './customizer-search/SearchToggle.tsx';
-import SearchComponent from './customizer-search/SearchComponent.tsx';
+import MainSearch from './customizer-search/MainSearch.tsx';
 
 const { controlConstructor } = wp.customize;
 
@@ -102,44 +101,54 @@ const initDocSection = () => {
 };
 
 const initSearchCustomizer = () => {
-	const toggleSearchID = 'neve-customize-search';
-	const searchComponentID = 'neve-customize-search-field';
-	const searchResultsID = 'neve-customize-search-results';
-	const isSearchButton = document.querySelectorAll(`#${toggleSearchID}`);
-	if (isSearchButton.length === 0) {
-		const title = document.querySelectorAll(
-			'#customize-info .accordion-section-title'
-		);
-		if (title.length !== 0) {
-			const targetNode = document.createElement('div');
-			targetNode.setAttribute('id', toggleSearchID);
-			title[0].append(targetNode);
-			const searchButtonTarget = document.querySelectorAll(
-				`#${toggleSearchID}`
+	// will remove the search icon if another plugin or WordPress add this feature
+	const checkSearchIcon = () => {
+		const searchCount = document.querySelectorAll(
+			'#customize-info .accordion-section-title .dashicons-search'
+		).length;
+		if (searchCount > 1) {
+			document.removeEventListener(
+				'DOMNodeInserted',
+				checkSearchIcon,
+				false
 			);
-			if (searchButtonTarget.length !== 0) {
-				render(<SearchToggle />, searchButtonTarget[0]);
-			}
-
-			const targetFieldNode = document.createElement('div');
-			targetFieldNode.setAttribute('id', searchComponentID);
-			const titleSection = document.getElementById('customize-info');
-			titleSection.append(targetFieldNode);
-			const searchFieldTarget = document.querySelectorAll(
-				`#${searchComponentID}`
-			);
-			if (searchFieldTarget.length !== 0) {
-				render(<SearchComponent />, searchFieldTarget[0]);
-			}
-
-			const customizerPanels = document.getElementById(
-				'customize-theme-controls'
-			);
-			const targetSearchResultsNode = document.createElement('div');
-			targetSearchResultsNode.setAttribute('id', searchResultsID);
-			customizerPanels.after(targetSearchResultsNode);
+			document.getElementById('neve-customize-search')?.remove();
 		}
-	}
+	};
+	document.addEventListener('DOMNodeInserted', checkSearchIcon, false);
+
+	const customizePreview = document.getElementById('customize-controls');
+	const mount = document.createElement('div');
+	customizePreview.appendChild(mount);
+
+	const title = document.querySelector(
+		'#customize-info .accordion-section-title'
+	);
+	const customizerPanels = document.getElementById(
+		'customize-theme-controls'
+	);
+	const titleSection = document.getElementById('customize-info');
+
+	const targetNode = document.createElement('div');
+	const targetFieldNode = document.createElement('div');
+	const targetSearchResultsNode = document.createElement('div');
+
+	targetNode.setAttribute('id', 'neve-customize-search');
+	targetFieldNode.setAttribute('id', 'neve-customize-search-field');
+	targetSearchResultsNode.setAttribute('id', 'neve-customize-search-results');
+
+	title.append(targetNode);
+	titleSection.append(targetFieldNode);
+	customizerPanels.after(targetSearchResultsNode);
+
+	render(
+		<MainSearch
+			search={targetFieldNode}
+			button={targetNode}
+			results={targetSearchResultsNode}
+		/>,
+		mount
+	);
 };
 
 const initCustomPagesFocus = () => {

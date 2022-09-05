@@ -51,15 +51,22 @@ declare global {
 }
 
 /**
+ * Type SearchComponentProps
+ */
+type SearchComponentProps = {
+	isOpened: boolean;
+};
+
+/**
  * Search Component
  * Handles search input, filtering and display of results.
  *
+ * @param {SearchComponentProps} SearchComponentProps
  * @class
  */
-const SearchComponent: React.FC = () => {
+const SearchComponent: React.FC<SearchComponentProps> = ({ isOpened }) => {
 	const [search, setSearch] = useState('');
 	const [resultsHTML, setResultsHTML] = useState('');
-	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const [matchResults, setMatchResults] = useState([] as Control[]);
 
 	const customizerPanels = document.getElementById(
@@ -91,35 +98,25 @@ const SearchComponent: React.FC = () => {
 
 			return control;
 		}
-	) as unknown as Control[];
+	) as Control[];
 
 	/**
 	 * This `useEffect()` is being used to listen for the toggleEvent
 	 * from `SearchToggle` component.
 	 */
 	useEffect(() => {
-		const toggleSearch = () => {
+		if (isOpened) {
 			document
 				.getElementById('neve-customize-search-field')
-				?.classList.toggle('visible');
-
-			if (isSearchOpen) {
-				clearField();
-				setIsSearchOpen(false);
-				return;
-			}
-			setIsSearchOpen(true);
+				?.classList.add('visible');
 			document.getElementById('nv-customizer-search-input')?.focus();
-		};
-
-		document.addEventListener('nv-customizer-search-toggle', toggleSearch);
-
-		return () =>
-			document.removeEventListener(
-				'nv-customizer-search-toggle',
-				toggleSearch
-			);
-	}, [isSearchOpen]);
+		} else {
+			document
+				.getElementById('neve-customize-search-field')
+				?.classList.remove('visible');
+			clearField();
+		}
+	}, [isOpened]);
 
 	/**
 	 * This `useEffect()` only handles displaying results for the search;
@@ -145,10 +142,7 @@ const SearchComponent: React.FC = () => {
 				'#customizer-search-results .accordion-section'
 			);
 			searchSettings.forEach((setting) =>
-				setting.addEventListener(
-					'click',
-					expandSection as unknown as EventListener
-				)
+				setting.addEventListener('click', expandSection)
 			);
 		}
 
@@ -157,10 +151,7 @@ const SearchComponent: React.FC = () => {
 				'#customizer-search-results .accordion-section'
 			);
 			searchSettings.forEach((setting) =>
-				setting.removeEventListener(
-					'click',
-					expandSection as unknown as EventListener
-				)
+				setting.removeEventListener('click', expandSection)
 			);
 		};
 	}, [resultsHTML]);
@@ -198,22 +189,18 @@ const SearchComponent: React.FC = () => {
 	/**
 	 * Handle redirect to specific section on click.
 	 *
-	 * @param {Event} event
-	 * @param {Event.target} event.target
-	 * @param {string} event.target.getAttribute
-	 * @param {Element} event.target.parentNode
-	 * @param {string} event.target.parentNode.getAttribute
+	 * @param {Event} evt
 	 * @return {void}
 	 */
-	const expandSection = (event: {
-		target: {
-			getAttribute: (data: string) => string;
-			parentNode: { getAttribute: (data: string) => string };
-		};
-	}) => {
+	const expandSection = (evt: Event) => {
+		if (evt === null) {
+			return;
+		}
+		const target = evt.target as HTMLElement;
+		const targetParent = target.parentNode as HTMLElement;
 		const sectionName =
-			event.target.getAttribute('data-section') ||
-			event.target.parentNode.getAttribute('data-section');
+			target.getAttribute('data-section') ||
+			(targetParent.getAttribute('data-section') as string);
 		const section = wp.customize.section(sectionName);
 		clearField();
 		section.expand();
