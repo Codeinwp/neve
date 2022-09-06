@@ -48,6 +48,15 @@ class Css_Prop {
 		$default_value = isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null;
 		$all_value     = isset( $meta[ Dynamic_Selector::META_AS_JSON ] ) ? Mods::to_json( $meta['key'], $default_value ) : Mods::get( $meta['key'], $default_value );
 
+		// The neve_responsive_range_control component double JSON stringified, therefore try to parse it again.
+		if( ! is_array( $all_value ) ) {
+			$maybe_parse_json = json_decode( $all_value , true);
+
+			if( is_array( $maybe_parse_json ) ) {
+				$all_value = $maybe_parse_json;
+			}
+		}
+
 		return isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) && is_string( $all_value['suffix'] ) ? $all_value['suffix'] : 'px' );;
 	}
 
