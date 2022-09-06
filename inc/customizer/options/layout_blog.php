@@ -162,7 +162,6 @@ class Layout_Blog extends Base_Customizer {
 						'items',
 					),
 					'input_attrs'     => [
-						'step'       => 1,
 						'min'        => 1,
 						'max'        => 4,
 						'defaultVal' => json_decode( $grid_layout_default, true ),
@@ -573,7 +572,6 @@ class Layout_Blog extends Base_Customizer {
 						),
 					),
 					'input_attrs'     => [
-						'step'       => 1,
 						'min'        => 20,
 						'max'        => 50,
 						'defaultVal' => [

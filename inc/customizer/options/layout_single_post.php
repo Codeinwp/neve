@@ -348,7 +348,6 @@ class Layout_Single_Post extends Base_Layout_Single {
 						],
 					],
 					'input_attrs'     => [
-						'step'       => 1,
 						'min'        => 20,
 						'max'        => 50,
 						'defaultVal' => [

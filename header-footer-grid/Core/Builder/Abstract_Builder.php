@@ -380,7 +380,6 @@ abstract class Abstract_Builder implements Builder {
 					],
 					'options'               => [
 						'input_attrs' => [
-							'step'       => 1,
 							'min'        => 0,
 							'max'        => 700,
 							'defaultVal' => [
@@ -424,13 +423,17 @@ abstract class Abstract_Builder implements Builder {
 					],
 					'options'               => [
 						'input_attrs' => [
-							'step'       => 1,
 							'min'        => 0,
 							'max'        => 50,
 							'defaultVal' => [
 								'mobile'  => 0,
 								'tablet'  => 0,
 								'desktop' => 0,
+								'suffix'  => [
+									'mobile'  => 'px',
+									'tablet'  => 'px',
+									'desktop' => 'px',
+								],
 							],
 							'units'      => [ 'px' ],
 						],
@@ -2104,6 +2107,11 @@ abstract class Abstract_Builder implements Builder {
 							'mobile'  => 360,
 							'tablet'  => 360,
 							'desktop' => 360,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
 						],
 					],
 				],

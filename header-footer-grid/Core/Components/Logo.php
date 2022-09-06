@@ -443,6 +443,11 @@ JS;
 							'mobile'  => 120,
 							'tablet'  => 120,
 							'desktop' => 120,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
 						],
 					],
 				],
