@@ -10,7 +10,6 @@ import { withSelect } from '@wordpress/data';
 const Start = (props) => {
 	const { setTab, tier } = props;
 	const {
-		showFeedbackNotice,
 		pro,
 		whiteLabel,
 		customizerShortcuts,
