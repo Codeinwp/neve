@@ -20,6 +20,7 @@ use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Traits\Core;
 use Neve\Core\Settings\Config;
+use Neve\Core\Styles\Css_Prop;
 use Neve\Core\Styles\Dynamic_Selector;
 use Neve\Core\Theme_Info;
 use Neve\Customizer\Controls\React\Instructions_Section;
@@ -386,8 +387,13 @@ abstract class Abstract_Builder implements Builder {
 								'mobile'  => 0,
 								'tablet'  => 0,
 								'desktop' => 0,
+								'suffix'  => [
+									'mobile'  => 'px',
+									'tablet'  => 'px',
+									'desktop' => 'px',
+								],
 							],
-							'units'      => [ 'px' ],
+							'units'      => [ 'px', 'em', 'rem' ],
 						],
 					],
 					'transport'             => 'postMessage',
@@ -1143,13 +1149,16 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_height',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-					$value = (int) $value;
+					$value       = (int) $value;
+					$unit_suffix = Css_Prop::get_suffix_responsive( $meta, $device );
+
 					if ( $value > 0 ) {
-						return sprintf( '%s:%s;', $css_prop, $value . 'px' );
+						return sprintf( '%s:%s;', $css_prop, $value . $unit_suffix );
 					}
 
 					return '';
 				},
+				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
 				Dynamic_Selector::META_DEFAULT       => '{ desktop: 0, tablet: 0, mobile: 0 }',
 			];
 
