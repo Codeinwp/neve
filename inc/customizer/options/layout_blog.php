@@ -580,8 +580,13 @@ class Layout_Blog extends Base_Customizer {
 							'mobile'  => 20,
 							'tablet'  => 20,
 							'desktop' => 20,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
 						],
-						'units'      => [ 'px' ],
+						'units'      => [ 'px', 'em', 'rem' ],
 					],
 					'priority'        => 74,
 					'active_callback' => function () {
