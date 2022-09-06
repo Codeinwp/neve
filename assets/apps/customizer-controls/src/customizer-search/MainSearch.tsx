@@ -39,7 +39,6 @@ const MainSearch: React.FC<MainSearchProps> = ({ search, button, results }) => {
 					isOpened={isOpened}
 					search={query}
 					setSearch={setQuery}
-					matchResults={matchResults}
 					setMatchResults={setMatchResults}
 				/>,
 				search
