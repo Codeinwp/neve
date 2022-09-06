@@ -1,7 +1,8 @@
 import { createPortal } from '@wordpress/element';
 import React, { useState } from 'react';
 import SearchToggle from './SearchToggle';
-import SearchComponent from './SearchComponent';
+import SearchComponent, { Control } from './SearchComponent';
+import SearchResults from './SearchResults';
 
 /**
  * Type MainSearchProps
@@ -20,6 +21,8 @@ type MainSearchProps = {
  */
 const MainSearch: React.FC<MainSearchProps> = ({ search, button, results }) => {
 	const [isOpened, setIsOpened] = useState(false);
+	const [query, setQuery] = useState('');
+	const [matchResults, setMatchResults] = useState([] as Control[]);
 
 	return (
 		<>
@@ -31,8 +34,25 @@ const MainSearch: React.FC<MainSearchProps> = ({ search, button, results }) => {
 				/>,
 				button
 			)}
-			{createPortal(<SearchComponent isOpened={isOpened} />, search)}
-			{createPortal(<div id="neve-customize-search-results" />, results)}
+			{createPortal(
+				<SearchComponent
+					isOpened={isOpened}
+					search={query}
+					setSearch={setQuery}
+					matchResults={matchResults}
+					setMatchResults={setMatchResults}
+				/>,
+				search
+			)}
+			{createPortal(
+				<SearchResults
+					matchResults={matchResults}
+					setMatchResults={setMatchResults}
+					query={query}
+					setQuery={setQuery}
+				/>,
+				results
+			)}
 		</>
 	);
 };

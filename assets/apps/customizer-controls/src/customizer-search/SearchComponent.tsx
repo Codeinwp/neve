@@ -8,12 +8,13 @@ import { useEffect, useState } from '@wordpress/element';
 /**
  * Customizer Control Type
  */
-type Control = {
+export type Control = {
 	section: string;
 	panelName: string | null;
 	sectionName: string;
 	panel: string;
 	label: string;
+	instanceNumber: number;
 };
 
 /**
@@ -55,6 +56,9 @@ declare global {
  */
 type SearchComponentProps = {
 	isOpened: boolean;
+	search: string;
+	setSearch: (value: string) => void;
+	setMatchResults: (value: Control[]) => void;
 };
 
 /**
@@ -64,16 +68,14 @@ type SearchComponentProps = {
  * @param {SearchComponentProps} SearchComponentProps
  * @class
  */
-const SearchComponent: React.FC<SearchComponentProps> = ({ isOpened }) => {
-	const [search, setSearch] = useState('');
-	const [resultsHTML, setResultsHTML] = useState('');
-	const [matchResults, setMatchResults] = useState([] as Control[]);
-
+const SearchComponent: React.FC<SearchComponentProps> = ({
+	isOpened,
+	search,
+	setSearch,
+	setMatchResults,
+}) => {
 	const customizerPanels = document.getElementById(
 		'customize-theme-controls'
-	);
-	const searchResults = document.getElementById(
-		'neve-customize-search-results'
 	);
 
 	const controls = Object.values(_wpCustomizeSettings.controls).map(
@@ -119,44 +121,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ isOpened }) => {
 	}, [isOpened]);
 
 	/**
-	 * This `useEffect()` only handles displaying results for the search;
-	 */
-	useEffect(() => {
-		if (search === '') {
-			clearField();
-			return;
-		}
-		if (matchResults.length === 0) {
-			return;
-		}
-		displayQueryMatch(search);
-	}, [matchResults, search]);
-
-	/**
-	 * This `useEffect()` only handles adding and removing event listeners to redirect to desired sections;
-	 */
-	useEffect(() => {
-		if (searchResults) {
-			searchResults.innerHTML = `<ul id="customizer-search-results">${resultsHTML}</ul>`;
-			const searchSettings = document.querySelectorAll(
-				'#customizer-search-results .accordion-section'
-			);
-			searchSettings.forEach((setting) =>
-				setting.addEventListener('click', expandSection)
-			);
-		}
-
-		return () => {
-			const searchSettings = document.querySelectorAll(
-				'#customizer-search-results .accordion-section'
-			);
-			searchSettings.forEach((setting) =>
-				setting.removeEventListener('click', expandSection)
-			);
-		};
-	}, [resultsHTML]);
-
-	/**
 	 * Clear the search input field.
 	 *
 	 * @return {void}
@@ -164,11 +128,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ isOpened }) => {
 	const clearField = () => {
 		setSearch('');
 		document.getElementById('nv-customizer-search-input')?.focus();
-
 		customizerPanels?.classList.remove('search-not-found');
-		if (searchResults) {
-			searchResults.innerHTML = '';
-		}
 	};
 
 	/**
@@ -184,26 +144,15 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ isOpened }) => {
 		setSearch(query);
 		const newResults = getControlsMatch(query);
 		setMatchResults(newResults);
-	};
-
-	/**
-	 * Handle redirect to specific section on click.
-	 *
-	 * @param {Event} evt
-	 * @return {void}
-	 */
-	const expandSection = (evt: Event) => {
-		if (evt === null) {
-			return;
+		if (query === '') {
+			customizerPanels?.classList.remove('search-not-found');
+		} else {
+			customizerPanels?.classList.add('search-not-found');
 		}
-		const target = evt.target as HTMLElement;
-		const targetParent = target.parentNode as HTMLElement;
-		const sectionName =
-			target.getAttribute('data-section') ||
-			(targetParent.getAttribute('data-section') as string);
-		const section = wp.customize.section(sectionName);
-		clearField();
-		section.expand();
+
+		if (newResults.length === 0) {
+			customizerPanels?.classList.remove('search-not-found');
+		}
 	};
 
 	/**
@@ -218,7 +167,11 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ isOpened }) => {
 			if (!control.panelName) control.panelName = '';
 			if (!control.sectionName) control.sectionName = '';
 
-			const regex = new RegExp(query, 'gi');
+			const matchQuery = query.replace(
+				/[-[\]{}()*+?.,\\^$|#\s]/g,
+				'\\$&'
+			);
+			const regex = new RegExp(matchQuery, 'gi');
 
 			return (
 				control.label.match(regex) ||
@@ -226,54 +179,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ isOpened }) => {
 				control.sectionName.match(regex)
 			);
 		});
-	};
-
-	/**
-	 * Handles results HTML generation.
-	 *
-	 * @param {string} query
-	 * @return {void}
-	 */
-	const displayQueryMatch = (query: string) => {
-		if (0 === matchResults.length) return;
-
-		const htmlString = matchResults
-			.map((control) => {
-				if ('' === control.label) return '';
-
-				let breadcrumbs = control.panelName;
-				if ('' !== control.sectionName) {
-					breadcrumbs = `${breadcrumbs} ▸ ${control.sectionName}`;
-				}
-
-				const regex = new RegExp(`(${query})`, 'gi');
-
-				const label = control.label.replace(
-					regex,
-					'<span class="hl">$1</span>'
-				);
-
-				if (breadcrumbs !== null) {
-					breadcrumbs = breadcrumbs.replace(
-						regex,
-						'<span class="hl">$1</span>'
-					);
-				}
-
-				return `
-					<li id="accordion-section-${control.section}" class="accordion-section control-section control-section-default" aria-owns="sub-accordion-section-${control.section}" data-section="${control.section}">
-						<h3 class="accordion-section-title" tabindex="0">
-							${label}
-							<span class="screen-reader-text">Press return or enter to open this section</span>
-						</h3>
-						<span class="search-setting-path">${breadcrumbs}</i></span>
-					</li>
-				`;
-			})
-			.join('');
-
-		customizerPanels?.classList.add('search-not-found');
-		setResultsHTML(htmlString);
 	};
 
 	return (
