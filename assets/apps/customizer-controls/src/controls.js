@@ -1,4 +1,4 @@
-/* global CustomEvent, NeveReactCustomize */
+/* global CustomEvent, NeveReactCustomize, MutationObserver */
 import './public-path.js';
 import { render } from '@wordpress/element';
 
@@ -102,20 +102,26 @@ const initDocSection = () => {
 
 const initSearchCustomizer = () => {
 	// will remove the search icon if another plugin or WordPress add this feature
-	const checkSearchIcon = () => {
-		const searchCount = document.querySelectorAll(
-			'#customize-info .accordion-section-title .dashicons-search'
-		).length;
-		if (searchCount > 1) {
-			document.removeEventListener(
-				'DOMNodeInserted',
-				checkSearchIcon,
-				false
-			);
-			document.getElementById('neve-customize-search')?.remove();
+	const callback = (mutationList, observer) => {
+		for (const mutation of mutationList) {
+			if (mutation.type === 'childList') {
+				const searchCount = document.querySelectorAll(
+					'#customize-info .accordion-section-title .dashicons-search'
+				).length;
+				if (searchCount > 1) {
+					observer.disconnect();
+					document.getElementById('neve-customize-search')?.remove();
+				}
+			}
 		}
 	};
-	document.addEventListener('DOMNodeInserted', checkSearchIcon, false);
+
+	const targetNodeMutation = document.querySelector(
+		'#customize-info .accordion-section-title'
+	);
+	const observer = new MutationObserver(callback);
+	const config = { attributes: false, childList: true, subtree: false };
+	observer.observe(targetNodeMutation, config);
 
 	const customizePreview = document.getElementById('customize-controls');
 	const mount = document.createElement('div');

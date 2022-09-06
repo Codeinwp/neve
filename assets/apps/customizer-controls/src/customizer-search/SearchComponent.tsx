@@ -3,7 +3,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 
 /**
  * Customizer Control Type
@@ -46,7 +46,9 @@ declare global {
 
 	const wp: {
 		customize: {
-			section: (sectionName: string) => { expand: () => void };
+			section: (sectionName: string) => {
+				expand: (p: { duration: number }) => void;
+			};
 		};
 	};
 }
@@ -58,6 +60,7 @@ type SearchComponentProps = {
 	isOpened: boolean;
 	search: string;
 	setSearch: (value: string) => void;
+	matchResults: Control[];
 	setMatchResults: (value: Control[]) => void;
 };
 
@@ -72,6 +75,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 	isOpened,
 	search,
 	setSearch,
+	matchResults,
 	setMatchResults,
 }) => {
 	const customizerPanels = document.getElementById(
@@ -120,6 +124,22 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 		}
 	}, [isOpened]);
 
+	useEffect(() => {
+		if (search === '') {
+			if (customizerPanels?.classList.contains('search-not-found')) {
+				customizerPanels?.classList.remove('search-not-found');
+			}
+		} else if (!customizerPanels?.classList.contains('search-not-found')) {
+			customizerPanels?.classList.add('search-not-found');
+		}
+
+		if (matchResults.length === 0) {
+			if (customizerPanels?.classList.contains('search-not-found')) {
+				customizerPanels?.classList.remove('search-not-found');
+			}
+		}
+	}, [search, matchResults]);
+
 	/**
 	 * Clear the search input field.
 	 *
@@ -142,17 +162,8 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 	const onInputChange = (event: { target: { value: string } }) => {
 		const query = event.target.value;
 		setSearch(query);
-		const newResults = getControlsMatch(query);
+		const newResults = getControlsMatch(search);
 		setMatchResults(newResults);
-		if (query === '') {
-			customizerPanels?.classList.remove('search-not-found');
-		} else {
-			customizerPanels?.classList.add('search-not-found');
-		}
-
-		if (newResults.length === 0) {
-			customizerPanels?.classList.remove('search-not-found');
-		}
 	};
 
 	/**

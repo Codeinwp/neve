@@ -7,7 +7,6 @@ import classnames from 'classnames';
  */
 type SearchResultsProps = {
 	matchResults: Control[];
-	setMatchResults: (value: Control[]) => void;
 	query: string;
 	setQuery: (value: string) => void;
 };
@@ -20,14 +19,9 @@ type SearchResultsProps = {
  */
 const SearchResults: React.FC<SearchResultsProps> = ({
 	matchResults,
-	setMatchResults,
 	query,
 	setQuery,
 }) => {
-	const customizerPanels = document.getElementById(
-		'customize-theme-controls'
-	);
-
 	/**
 	 * Handle redirect to specific section on click.
 	 *
@@ -39,11 +33,9 @@ const SearchResults: React.FC<SearchResultsProps> = ({
 			return;
 		}
 
-		const section = wp.customize.section(sectionName);
+		wp.customize.section(sectionName)?.expand({ duration: 0 });
+
 		setQuery('');
-		setMatchResults([]);
-		customizerPanels?.classList.remove('search-not-found');
-		section.expand();
 	};
 
 	/**
@@ -105,7 +97,8 @@ const SearchResults: React.FC<SearchResultsProps> = ({
 								className="accordion-section control-section control-section-default"
 								aria-owns={`sub-accordion-section-${control.section}`}
 								key={control.instanceNumber}
-								onClick={() => {
+								onClick={(event) => {
+									event.preventDefault();
 									expandSection(control.section);
 								}}
 							>

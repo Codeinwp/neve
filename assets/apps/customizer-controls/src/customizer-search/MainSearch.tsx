@@ -39,6 +39,7 @@ const MainSearch: React.FC<MainSearchProps> = ({ search, button, results }) => {
 					isOpened={isOpened}
 					search={query}
 					setSearch={setQuery}
+					matchResults={matchResults}
 					setMatchResults={setMatchResults}
 				/>,
 				search
@@ -46,7 +47,6 @@ const MainSearch: React.FC<MainSearchProps> = ({ search, button, results }) => {
 			{createPortal(
 				<SearchResults
 					matchResults={matchResults}
-					setMatchResults={setMatchResults}
 					query={query}
 					setQuery={setQuery}
 				/>,
