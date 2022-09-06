@@ -9,12 +9,7 @@ import { withSelect } from '@wordpress/data';
 
 const Start = (props) => {
 	const { setTab, tier } = props;
-	const {
-		pro,
-		whiteLabel,
-		customizerShortcuts,
-		tpcAdminURL,
-	} = neveDash;
+	const { pro, whiteLabel, customizerShortcuts, tpcAdminURL } = neveDash;
 	const starterSitesHidden = whiteLabel && whiteLabel.hideStarterSites;
 
 	const renderCustomizerLinks = () => {
