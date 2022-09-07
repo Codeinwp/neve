@@ -426,7 +426,7 @@ JS;
 				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'               => SettingsManager::TAB_GENERAL,
 				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' ),
+				'sanitize_callback' => 'neve_sanitize_range_value',
 				'default'           => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
 				'label'             => __( 'Logo max width', 'neve' ),
 				'type'              => '\Neve\Customizer\Controls\React\Responsive_Range',
@@ -438,7 +438,7 @@ JS;
 					'input_attrs'              => [
 						'min'        => 0,
 						'max'        => 350,
-						'units'      => [ 'px' ],
+						'units'      => [ 'px', 'em', 'rem' ],
 						'defaultVal' => [
 							'mobile'  => 120,
 							'tablet'  => 120,
@@ -523,7 +523,7 @@ JS;
 				'--maxwidth' => [
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::MAX_WIDTH,
-					Dynamic_Selector::META_SUFFIX        => 'px',
+					Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
 					Dynamic_Selector::META_DEFAULT       => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
 				],
 				'--color'    => [
