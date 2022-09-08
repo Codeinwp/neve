@@ -49,6 +49,9 @@ declare global {
 			section: (sectionName: string) => {
 				expand: (p: { duration: number }) => void;
 			};
+			panel: (sectionName: string) => {
+				expand: (p: { duration: number }) => void;
+			};
 		};
 	};
 }
