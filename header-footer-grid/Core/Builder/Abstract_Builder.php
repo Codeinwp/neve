@@ -2102,7 +2102,7 @@ abstract class Abstract_Builder implements Builder {
 					'input_attrs'     => [
 						'min'        => 1,
 						'max'        => 1000,
-						'units'      => [ 'px' ],
+						'units'      => [ 'px', 'em', 'rem' ],
 						'defaultVal' => [
 							'mobile'  => 360,
 							'tablet'  => 360,
@@ -2261,6 +2261,7 @@ abstract class Abstract_Builder implements Builder {
 					Config::CSS_PROP_WIDTH => [
 						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
 						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
+						Dynamic_Selector::META_SUFFIX  => 'responsive_suffix',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 				],
@@ -2273,6 +2274,7 @@ abstract class Abstract_Builder implements Builder {
 					Config::CSS_PROP_LEFT => [
 						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
 						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
+						Dynamic_Selector::META_SUFFIX  => 'responsive_suffix',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 				],
@@ -2285,6 +2287,7 @@ abstract class Abstract_Builder implements Builder {
 					Config::CSS_PROP_RIGHT => [
 						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
 						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
+						Dynamic_Selector::META_SUFFIX  => 'responsive_suffix',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 				],
