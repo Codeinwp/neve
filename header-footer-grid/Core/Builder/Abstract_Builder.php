@@ -2123,7 +2123,7 @@ abstract class Abstract_Builder implements Builder {
 							width: {{value}}px;
 						}',
 				],
-				'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
+				'sanitize_callback'     => 'neve_sanitize_range_value',
 			]
 		);
 	}
