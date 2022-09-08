@@ -9,13 +9,7 @@ import { withSelect } from '@wordpress/data';
 
 const Start = (props) => {
 	const { setTab, tier } = props;
-	const {
-		showFeedbackNotice,
-		pro,
-		whiteLabel,
-		customizerShortcuts,
-		tpcAdminURL,
-	} = neveDash;
+	const { pro, whiteLabel, customizerShortcuts, tpcAdminURL } = neveDash;
 	const starterSitesHidden = whiteLabel && whiteLabel.hideStarterSites;
 
 	const renderCustomizerLinks = () => {
@@ -171,25 +165,6 @@ const Start = (props) => {
 						</ExternalLink>
 					</Card>
 				</>
-			)}
-			{showFeedbackNotice && !pro && (
-				<Card
-					classNames="feedback-card"
-					icon="awards"
-					dashicon={true}
-					title={__('Feedback', 'neve')}
-					description={__(
-						'Share your feedback for Neve and get the chance to win the pro version.',
-						'neve'
-					)}
-				>
-					<Button
-						isPrimary
-						href="https://themeisle.com/review-neve-theme/"
-					>
-						{__('Leave Feedback', 'neve')}
-					</Button>
-				</Card>
 			)}
 		</>
 	);

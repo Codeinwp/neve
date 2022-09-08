@@ -23,8 +23,7 @@ const ComponentsPopover: React.FC<Props> = ({
 }) => {
 	const [searchQuery, setSearchQuery] = useState<string>('');
 
-	const url =
-		'https://themeisle.com/themes/neve/upgrade?utm_medium=customizer&utm_source=hfgcomponents&utm_campaign=neve';
+	const url = window.NeveReactCustomize.upsellComponentsLink;
 
 	const { builder, actions, sidebarItems } = useContext(BuilderContext);
 	const { updateLayout, setSidebarItems } = actions;
