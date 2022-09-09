@@ -58,6 +58,22 @@ class Nav extends Abstract_Component {
 				'filter_neve_last_menu_setting_slug',
 			)
 		);
+
+		add_action( 'init', [ $this, 'run_nav_init' ] );
+	}
+
+	/**
+	 * Way for adding other actions in pro.
+	 *
+	 * @since 3.4
+	 * @access public
+	 */
+	public function run_nav_init() {
+		if ( ! $this->is_component_active() ) {
+			return;
+		}
+
+		do_action( 'neve_after_nav_init', $this->get_class_const( 'COMPONENT_ID' ) );
 	}
 
 	/**
