@@ -1,4 +1,4 @@
-/* global  _wpCustomizeSettings wp */
+/* global  _wpCustomizeSettings */
 
 import React from 'react';
 import { __ } from '@wordpress/i18n';
@@ -47,10 +47,10 @@ declare global {
 	const wp: {
 		customize: {
 			section: (sectionName: string) => {
-				expand: (p: { duration: number }) => void;
+				expand: (p?: { duration: number }) => void;
 			};
 			panel: (sectionName: string) => {
-				expand: (p: { duration: number }) => void;
+				expand: (p?: { duration: number }) => void;
 			};
 		};
 	};

@@ -35,11 +35,11 @@ const SearchResults: React.FC<SearchResultsProps> = ({
 		}
 
 		if (panelName) {
-			wp.customize.panel(panelName)?.expand({ duration: 0 });
+			wp.customize.panel(panelName)?.expand();
 		}
 
 		if (sectionName) {
-			wp.customize.section(sectionName)?.expand({ duration: 0 });
+			wp.customize.section(sectionName)?.expand();
 		}
 
 		setQuery('');
