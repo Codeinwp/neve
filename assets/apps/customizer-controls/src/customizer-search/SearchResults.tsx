@@ -26,14 +26,21 @@ const SearchResults: React.FC<SearchResultsProps> = ({
 	 * Handle redirect to specific section on click.
 	 *
 	 * @param {string} sectionName
+	 * @param {string} panelName
 	 * @return {void}
 	 */
-	const expandSection = (sectionName: string) => {
-		if (!sectionName) {
+	const expandSection = (sectionName: string, panelName: string) => {
+		if (!sectionName && !panelName) {
 			return;
 		}
 
-		wp.customize.section(sectionName)?.expand({ duration: 0 });
+		if (panelName) {
+			wp.customize.panel(panelName)?.expand({ duration: 0 });
+		}
+
+		if (sectionName) {
+			wp.customize.section(sectionName)?.expand({ duration: 0 });
+		}
 
 		setQuery('');
 	};
@@ -99,7 +106,10 @@ const SearchResults: React.FC<SearchResultsProps> = ({
 								key={control.instanceNumber}
 								onClick={(event) => {
 									event.preventDefault();
-									expandSection(control.section);
+									expandSection(
+										control.section,
+										control.panel
+									);
 								}}
 							>
 								<h3
