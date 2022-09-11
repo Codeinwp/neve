@@ -12,6 +12,7 @@ namespace HFG;
 use HFG\Core\Components\Nav;
 use HFG\Core\Builder\Header as HeaderBuilder;
 
+$_id 				   = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
 $style                 = component_setting( Nav::STYLE_ID, 'style-plain' );
 $dropdowns_expanded    = component_setting( Nav::EXPAND_DROPDOWNS );
 $additional_menu_class = $dropdowns_expanded && current_row( HeaderBuilder::BUILDER_NAME ) === 'sidebar' ? ' ' . Nav::DROPDOWNS_EXPANDED_CLASS : '';
@@ -24,7 +25,6 @@ if ( $style !== 'style-plain' ) {
 }
 $container_classes = apply_filters( 'neve_additional_menu_container_class', $container_classes );
 
-
 $menu_id = Nav::NAV_MENU_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
 ?>
 <div class="nv-nav-wrap">
@@ -36,6 +36,7 @@ $menu_id = Nav::NAV_MENU_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
 			[
 				'theme_location' => 'primary',
 				'menu_id'        => $menu_id,
+				'component_id'	 => $_id,
 				'menu_class'     => 'primary-menu-ul nav-ul' . $additional_menu_class,
 				'container'      => 'ul',
 				'walker'         => '\Neve\Views\Nav_Walker',

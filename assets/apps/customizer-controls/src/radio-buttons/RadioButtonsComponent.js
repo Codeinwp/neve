@@ -177,6 +177,33 @@ const RadioButtonsComponent = ({ control }) => {
 						icon: SVG.sttIcon6,
 					},
 				};
+			case 'menu_caret':
+				return {
+					'mc-icon-style-1': {
+						tooltip: __('Icon Style 1', 'neve'),
+						icon: SVG.mcIcon1,
+					},
+					'mc-icon-style-2': {
+						tooltip: __('Icon Style 2', 'neve'),
+						icon: SVG.mcIcon2,
+					},
+					'mc-icon-style-3': {
+						tooltip: __('Icon Style 3', 'neve'),
+						icon: SVG.mcIcon3,
+					},
+					'mc-icon-style-4': {
+						tooltip: __('Icon Style 4', 'neve'),
+						icon: SVG.mcIcon4,
+					},
+					'mc-icon-style-5': {
+						tooltip: __('Icon Style 5', 'neve'),
+						icon: SVG.mcIcon5,
+					},
+					'mc-icon-style-6': {
+						tooltip: __('Icon Style 6', 'neve'),
+						icon: SVG.mcIcon6,
+					},
+				};
 		}
 	};
 	const { label, large_buttons, showLabels } = control.params;
