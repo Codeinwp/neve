@@ -1175,6 +1175,7 @@ class Frontend extends Generator {
 			'--padding' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_FORM_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
