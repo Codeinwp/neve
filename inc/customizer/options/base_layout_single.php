@@ -180,7 +180,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 					'type'                  => 'neve_responsive_range_control',
 					'input_attrs'           => [
 						'max'        => 700,
-						'units'      => [ 'px', 'vh' ],
+						'units'      => [ 'px', 'vh', 'em', 'rem' ],
 						'defaultVal' => [
 							'mobile'  => 250,
 							'tablet'  => 320,
