@@ -220,7 +220,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 					'label'                 => esc_html__( 'Cover padding', 'neve' ),
 					'section'               => $this->section,
 					'input_attrs'           => [
-						'units' => [ 'em', 'px' ],
+						'units' => [ 'px', 'em', 'rem' ],
 						'min'   => 0,
 					],
 					'default'               => $this->padding_default( 'cover' ),

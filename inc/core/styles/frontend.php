@@ -1266,6 +1266,7 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_KEY           => $this->get_cover_meta( $context, Config::MODS_COVER_PADDING, $allowed_context ),
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
+					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 					'directional-prop'                   => Config::CSS_PROP_PADDING,
 				],
 				'--justify'   => [
