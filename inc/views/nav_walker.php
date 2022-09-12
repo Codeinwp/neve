@@ -90,13 +90,13 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 
 		$default_caret_settings = [
-			'side' => is_rtl() ? 'left' : 'right',
+			'side'      => is_rtl() ? 'left' : 'right',
 			'icon_type' => 'icon',
-			'icon' => '<svg aria-label="' . esc_attr__( 'Dropdown', 'neve' ) . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg>',
+			'icon'      => '<svg aria-label="' . esc_attr__( 'Dropdown', 'neve' ) . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg>',
 		];
-		$caret_settings = apply_filters( 'neve_caret_settings', $default_caret_settings, $args->component_id );
+		$caret_settings         = apply_filters( 'neve_submenu_icon_settings', $default_caret_settings, $args->component_id );
 
-		$caret_pictogram = $this->get_caret_pictogram( $caret_settings );
+		$caret_pictogram = $this->get_submenu_icon( $caret_settings );
 
 
 		$is_sidebar_item = strpos( $args->menu_id, 'sidebar' ) !== false;
@@ -145,13 +145,20 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		return $title;
 	}
 
-	private function get_caret_pictogram( $settings ){
+	/**
+	 * Get submenu icon.
+	 *
+	 * @param array $settings Submenu icon settings.
+	 *
+	 * @return string
+	 */
+	private function get_caret_pictogram( $settings ) {
 		$caret = $settings['icon'];
 		if ( ! isset( $settings['icon_type'] ) ) {
 			return '<span class="caret">' . $caret . '</span>';
 		}
 
-		if ( $settings['icon_type'] === 'image' && array_key_exists( 'image', $settings ) && !empty( $settings['image'] ) ){
+		if ( $settings['icon_type'] === 'image' && array_key_exists( 'image', $settings ) && ! empty( $settings['image'] ) ) {
 			$caret = wp_get_attachment_image( $settings['image'], 'thumbnail', true );
 		}
 

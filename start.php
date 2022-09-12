@@ -28,6 +28,7 @@ function neve_run() {
 			'custom_post_types_sidebar' => true,
 			'meta_custom_fields'        => true,
 			'sparks'                    => true,
+			'submenu_style'             => true,
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
