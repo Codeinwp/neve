@@ -1,4 +1,4 @@
-/* global CustomEvent, NeveReactCustomize */
+/* global CustomEvent, NeveReactCustomize, MutationObserver */
 import './public-path.js';
 import { render } from '@wordpress/element';
 
@@ -38,6 +38,8 @@ import './style.scss';
 import Documentation from './documentation-section/Documentation.tsx';
 import Instructions from './builder-instructions/Instructions.tsx';
 import Upsells from './builder-upsell/Upsells.tsx';
+
+import MainSearch from './customizer-search/MainSearch.tsx';
 
 const { controlConstructor } = wp.customize;
 
@@ -100,6 +102,63 @@ const initDocSection = () => {
 
 		render(<Documentation control={section} />, section.container[0]);
 	});
+};
+
+const initSearchCustomizer = () => {
+	// will remove the search icon if another plugin or WordPress add this feature
+	const callback = (mutationList, observer) => {
+		for (const mutation of mutationList) {
+			if (mutation.type === 'childList') {
+				const searchCount = document.querySelectorAll(
+					'#customize-info .accordion-section-title .dashicons-search'
+				).length;
+				if (searchCount > 1) {
+					observer.disconnect();
+					document.getElementById('neve-customize-search')?.remove();
+				}
+			}
+		}
+	};
+
+	const targetNodeMutation = document.querySelector(
+		'#customize-info .accordion-section-title'
+	);
+	const observer = new MutationObserver(callback);
+	const config = { attributes: false, childList: true, subtree: false };
+	observer.observe(targetNodeMutation, config);
+
+	const customizePreview = document.getElementById('customize-controls');
+	const mount = document.createElement('div');
+	customizePreview.appendChild(mount);
+
+	const title = document.querySelector(
+		'#customize-info .accordion-section-title'
+	);
+	const customizerPanels = document.getElementById(
+		'customize-theme-controls'
+	);
+	const titleSection = document.getElementById('customize-info');
+
+	const targetNode = document.createElement('div');
+	const targetFieldNode = document.createElement('div');
+	const targetSearchResultsNode = document.createElement('div');
+
+	targetNode.setAttribute('id', 'neve-customize-search');
+	targetFieldNode.setAttribute('id', 'neve-customize-search-field');
+	targetSearchResultsNode.setAttribute('id', 'neve-customize-search-results');
+
+	title.append(targetNode);
+	titleSection.append(targetFieldNode);
+	customizerPanels.after(targetSearchResultsNode);
+
+	render(
+		<MainSearch
+			search={targetFieldNode}
+			button={targetNode}
+			results={targetSearchResultsNode}
+		/>,
+		mount
+	);
 };
 
 const initCustomPagesFocus = () => {
@@ -238,6 +297,7 @@ window.wp.customize.bind('ready', () => {
 	checkHasElementorTemplates();
 	initDeviceSwitchers();
 	initBlogPageFocus();
+	initSearchCustomizer();
 });
 
 window.HFG = {
