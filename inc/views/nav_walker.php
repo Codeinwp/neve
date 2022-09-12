@@ -96,7 +96,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		];
 		$caret_settings         = apply_filters( 'neve_submenu_icon_settings', $default_caret_settings, $args->component_id );
 
-		$caret_pictogram = $this->get_submenu_icon( $caret_settings );
+		$caret_pictogram = $this->get_caret_pictogram( $caret_settings );
 
 
 		$is_sidebar_item = strpos( $args->menu_id, 'sidebar' ) !== false;
