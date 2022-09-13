@@ -51,7 +51,7 @@ const RadioImage = ({ choices, onClick, value, label, documentation }) => {
 					return (
 						<div className={divClass} key={index}>
 							{/*eslint-disable-next-line jsx-a11y/label-has-for */}
-							<label data-option={choice}>
+							<label data-option={choice} className={buttonClass}>
 								{upsellUrl && (
 									<span className="dashicons dashicons-lock" />
 								)}
