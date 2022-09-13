@@ -1,15 +1,14 @@
-.submenu-style-border-bottom .sub-menu,
-.style-border-bottom:not([class*="submenu-style"]),
-.style-border-bottom[class*="submenu-style"] > ul > li > {
+.style-border-bottom > ul > li >,
+.sm-style-border-bottom .sub-menu {
 
 	a::after {
 		bottom: 0;
 	}
 }
 
-.submenu-style-border-top .sub-menu,
-.style-border-top:not([class*="submenu-style"]),
-.style-border-top[class*="submenu-style"] > ul > li > {
+
+.style-border-top > ul > li >,
+.sm-style-border-top .sub-menu {
 
 	a::after {
 		top: 0;
@@ -17,8 +16,7 @@
 }
 
 .sm-style .sub-menu,
-.m-style:not([class*="submenu-style"]),
-.m-style[class*="submenu-style"] > ul > li > {
+.m-style > ul > li > {
 
 	a:hover {
 
@@ -41,9 +39,9 @@
 	}
 }
 
-.submenu-style-full-height .sub-menu,
-.style-full-height:not([class*="submenu-style"]),
-.style-full-height[class*="submenu-style"] > ul > li > {
+
+.style-full-height > ul > li >,
+.sm-style-full-height .sub-menu {
 
 	a:hover {
 		color: currentColor;
@@ -57,10 +55,6 @@
 		&::after {
 			width: calc(100% + var(--spacing));
 		}
-	}
-
-	.header--row & .sub-menu a::after {
-		max-width: 100%;
 	}
 
 	a {
@@ -77,7 +71,7 @@
 	}
 }
 
-.submenu-style-full-height .sub-menu a:hover {
+.sm-style-full-height .sub-menu a:hover {
 
 	&::after {
 		width: 100%;
