@@ -153,16 +153,18 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @return string
 	 */
 	private function get_caret_pictogram( $settings ) {
-		$caret = $settings['icon'];
+		$pictogram = $settings['icon'];
+		$side      = $settings['side'];
+		$css       = $side === 'right' ? 'margin-left: 5px;' : 'margin-right: 5px;';
 		if ( ! isset( $settings['icon_type'] ) ) {
-			return '<span class="caret">' . $caret . '</span>';
+			return '<span class="caret" style="' . esc_attr( $css ) . '">' . $pictogram . '</span>';
 		}
 
 		if ( $settings['icon_type'] === 'image' && array_key_exists( 'image', $settings ) && ! empty( $settings['image'] ) ) {
-			$caret = wp_get_attachment_image( $settings['image'], 'thumbnail', true );
+			$pictogram = wp_get_attachment_image( $settings['image'], 'thumbnail', true );
 		}
 
-		return '<span class="caret">' . $caret . '</span>';
+		return '<span class="caret" style="' . esc_attr( $css ) . '">' . $pictogram . '</span>';
 	}
 
 	/**
