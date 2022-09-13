@@ -108,6 +108,8 @@ class Nav_Walker extends \Walker_Nav_Menu {
 				$title = '<span class="menu-item-title-wrap dd-title">' . $title . '</span>';
 			}
 
+			$caret_wrap_css = $caret_settings['side'] === 'right' ? 'margin-left:5px;' : 'margin-right:5px;';
+
 			if ( $is_sidebar_item ) {
 				add_action( 'neve_after_header_wrapper_hook', [ $this, 'inline_style_for_sidebar' ], 9 );
 
@@ -118,7 +120,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 				$args->before = '<div class="wrap">';
 				$args->after  = '</div>';
 
-				$caret  = '<button ' . $expanded . ' type="button" class="caret-wrap navbar-toggle ' . $item->menu_order . '">';
+				$caret  = '<button ' . $expanded . ' type="button" class="caret-wrap navbar-toggle ' . $item->menu_order . '" style="' . esc_attr( $caret_wrap_css ) . '">';
 				$caret .= $caret_pictogram;
 				$caret .= '</button>';
 
@@ -128,7 +130,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 					$args->after = $caret . $args->after;
 				}
 			} else {
-				$caret  = '<div role="none"' . $expanded . ' class="caret-wrap ' . $item->menu_order . '">';
+				$caret  = '<div role="none"' . $expanded . ' class="caret-wrap ' . $item->menu_order . '" style="' . esc_attr( $caret_wrap_css ) . '">';
 				$caret .= $caret_pictogram;
 				$caret .= '</div>';
 
@@ -154,17 +156,16 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 */
 	private function get_caret_pictogram( $settings ) {
 		$pictogram = $settings['icon'];
-		$side      = $settings['side'];
-		$css       = $side === 'right' ? 'margin-left: 5px;' : 'margin-right: 5px;';
+
 		if ( ! isset( $settings['icon_type'] ) ) {
-			return '<span class="caret" style="' . esc_attr( $css ) . '">' . $pictogram . '</span>';
+			return '<span class="caret">' . $pictogram . '</span>';
 		}
 
 		if ( $settings['icon_type'] === 'image' && array_key_exists( 'image', $settings ) && ! empty( $settings['image'] ) ) {
 			$pictogram = wp_get_attachment_image( $settings['image'], 'thumbnail', true );
 		}
 
-		return '<span class="caret" style="' . esc_attr( $css ) . '">' . $pictogram . '</span>';
+		return '<span class="caret">' . $pictogram . '</span>';
 	}
 
 	/**
