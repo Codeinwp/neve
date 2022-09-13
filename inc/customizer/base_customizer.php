@@ -26,6 +26,12 @@ abstract class Base_Customizer {
 	use Core;
 
 	/**
+	 * The minimum value of some customizer controls is 0 to able to allow usability relative to CSS units.
+	 * That can be removed after the https://github.com/Codeinwp/neve/issues/3609 issue is handled.
+	 */
+	const RELATIVE_CSS_UNIT_SUPPORTED_MIN_VALUE = 0;
+
+	/**
 	 * WP_Customize object
 	 *
 	 * @var WP_Customize_Manager $wp_customize object

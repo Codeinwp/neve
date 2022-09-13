@@ -572,7 +572,7 @@ class Layout_Blog extends Base_Customizer {
 						),
 					),
 					'input_attrs'     => [
-						'min'        => 20,
+						'min'        => self::RELATIVE_CSS_UNIT_SUPPORTED_MIN_VALUE,
 						'max'        => 50,
 						'defaultVal' => [
 							'mobile'  => 20,
