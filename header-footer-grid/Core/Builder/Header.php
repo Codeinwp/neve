@@ -366,6 +366,13 @@ class Header extends Abstract_Builder {
 
 		if ( $row_id === 'sidebar' && $device_id === 'mobile' ) {
 			$name = 'mobile';
+			add_filter(
+				'neve_additional_menu_class',
+				function ( $classes ) {
+					$classes .= ' nv-mobile-menu';
+					return $classes;
+				} 
+			);
 		}
 
 		Main::get_instance()->load( 'row-wrapper', $name );

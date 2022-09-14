@@ -14,6 +14,7 @@ namespace HFG\Core\Components;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
 
 /**
@@ -57,6 +58,22 @@ class Nav extends Abstract_Component {
 				'filter_neve_last_menu_setting_slug',
 			)
 		);
+
+		add_action( 'init', [ $this, 'run_nav_init' ] );
+	}
+
+	/**
+	 * Way for adding other actions in pro.
+	 *
+	 * @since 3.4
+	 * @access public
+	 */
+	public function run_nav_init() {
+		if ( ! $this->is_component_active() ) {
+			return;
+		}
+
+		do_action( 'neve_after_nav_init', $this->get_class_const( 'COMPONENT_ID' ) );
 	}
 
 	/**
@@ -345,7 +362,9 @@ class Nav extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
+		do_action( 'neve_before_render_nav', $this->get_id() );
 		Main::get_instance()->load( 'components/component-nav' );
+		do_action( 'neve_after_render_nav', $this->get_id() );
 	}
 
 	/**
@@ -392,6 +411,8 @@ class Nav extends Abstract_Component {
 			Dynamic_Selector::KEY_SELECTOR => $selector,
 			Dynamic_Selector::KEY_RULES    => $rules,
 		];
+
+		$css_array = apply_filters( 'neve_nav_filter_css', $css_array, $this->get_id() );
 
 
 		return parent::add_style( $css_array );
