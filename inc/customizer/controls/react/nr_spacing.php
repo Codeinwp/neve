@@ -39,7 +39,7 @@ class Nr_Spacing extends \WP_Customize_Control {
 	 *
 	 * @var array
 	 */
-	public $units = [ 'px', 'em', '%' ];
+	public $units = [ 'px', 'em', 'rem', '%' ];
 
 	/**
 	 * Default value.

@@ -207,7 +207,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 						'type'                  => 'neve_responsive_range_control',
 						'input_attrs'           => [
 							'max'        => 500,
-							'units'      => [ 'px' ],
+							'units'      => [ 'px', 'em', 'rem' ],
 							'defaultVal' => [
 								'mobile'  => 60,
 								'tablet'  => 60,
@@ -348,15 +348,19 @@ class Layout_Single_Post extends Base_Layout_Single {
 						],
 					],
 					'input_attrs'     => [
-						'step'       => 1,
-						'min'        => 20,
+						'min'        => self::RELATIVE_CSS_UNIT_SUPPORTED_MIN_VALUE,
 						'max'        => 50,
 						'defaultVal' => [
 							'mobile'  => 20,
 							'tablet'  => 20,
 							'desktop' => 20,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
 						],
-						'units'      => [ 'px' ],
+						'units'      => [ 'px', 'em', 'rem' ],
 					],
 					'priority'        => 130,
 					'active_callback' => function () {
