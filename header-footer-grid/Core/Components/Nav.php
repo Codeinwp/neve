@@ -69,10 +69,6 @@ class Nav extends Abstract_Component {
 	 * @access public
 	 */
 	public function run_nav_init() {
-		if ( ! $this->is_component_active() ) {
-			return;
-		}
-
 		do_action( 'neve_after_nav_init', $this->get_class_const( 'COMPONENT_ID' ) );
 	}
 
