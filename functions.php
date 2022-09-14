@@ -8,11 +8,11 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '3.3.5' );
+define( 'NEVE_VERSION', '3.3.7' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 define( 'NEVE_MAIN_DIR', get_template_directory() . '/' );
-
+define( 'NEVE_BASENAME', basename( NEVE_MAIN_DIR ) );
 if ( ! defined( 'NEVE_DEBUG' ) ) {
 	define( 'NEVE_DEBUG', false );
 }
@@ -104,7 +104,19 @@ function neve_filter_sdk( $products ) {
 }
 
 add_filter( 'themeisle_sdk_products', 'neve_filter_sdk' );
+add_filter(
+	'themeisle_sdk_compatibilities/' . NEVE_BASENAME,
+	function ( $compatibilities ) {
 
+		$compatibilities['NevePro'] = [
+			'basefile'  => defined( 'NEVE_PRO_BASEFILE' ) ? NEVE_PRO_BASEFILE : '',
+			'required'  => '2.1',
+			'tested_up' => '2.4',
+		];
+
+		return $compatibilities;
+	} 
+);
 require_once 'globals/migrations.php';
 require_once 'globals/utilities.php';
 require_once 'globals/hooks.php';
@@ -129,8 +141,10 @@ if ( neve_is_new_widget_editor() ) {
 		if ( strpos( $section_id, 'widgets-footer' ) ) {
 			$section_args['panel'] = 'hfg_footer';
 		}
+
 		return $section_args;
 	}
+
 	add_filter( 'customizer_widgets_section_args', 'neve_customizer_custom_widget_areas', 10, 3 );
 }
 

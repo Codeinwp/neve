@@ -320,6 +320,10 @@ class Css_Prop {
 		if ( count( array_unique( $filtered ) ) === 1 ) {
 
 			if ( neve_value_is_zero( $value['top'] ) ) {
+				$suffix = '';
+			}
+
+			if ( empty( $value['top'] ) && ! neve_value_is_zero( $value['top'] ) ) {
 				return '';
 			}
 

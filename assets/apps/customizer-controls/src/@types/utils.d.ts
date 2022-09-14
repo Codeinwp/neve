@@ -109,6 +109,7 @@ declare global {
 		wp: StringObjectKeys;
 		NeveReactCustomize: {
 			HFG: HFGLayoutBuilder;
+			upsellComponentsLink: string;
 			instructionalVid: string;
 			nonce: string;
 			hideConditionalHeaderSelector: boolean;

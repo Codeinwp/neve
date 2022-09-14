@@ -17,7 +17,7 @@ describe('Useful Plugins Tab - Install Optimole Plugin', function () {
 	});
 
 	it('Can deactivates Plugins', function () {
-		cy.get('.weglot > .card-footer > .components-button')
+		cy.get('.themeisle-companion > .card-footer > .components-button')
 			.should('have.text', 'Deactivate')
 			.and('be.enabled');
 	});

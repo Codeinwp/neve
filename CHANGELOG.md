@@ -1,3 +1,18 @@
+##### [Version 3.3.7](https://github.com/Codeinwp/neve/compare/v3.3.6...v3.3.7) (2022-08-31)
+
+- [Feat] Add margin control for menu label
+- Remove redundant class import
+- [Fix] Extra divider in Customizer on Instructions component
+- [Fix] Improved ARIA label on menu dropdown
+- [Fix] Improve compatibility with Sparks
+- [Fix] Items alignment on the sidebar
+
+##### [Version 3.3.6](https://github.com/Codeinwp/neve/compare/v3.3.5...v3.3.6) (2022-08-18)
+
+- [Fix] Border radius on buttons cannot be removed
+- [Fix] Default text color for primary buttons
+- Update Google Fonts
+
 ##### [Version 3.3.5](https://github.com/Codeinwp/neve/compare/v3.3.4...v3.3.5) (2022-08-03)
 
 - [Fix] Indentation for nested replies
