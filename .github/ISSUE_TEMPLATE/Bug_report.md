@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Report a bug so we can get to squashing it.
-
+labels: bug
 ---
 
 ### Description:

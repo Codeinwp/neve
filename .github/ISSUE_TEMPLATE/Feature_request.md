@@ -1,7 +1,7 @@
 ---
 name: Feature request
 about: Suggest a feature that we can implement.
-
+labels: enhancement
 ---
 
 ### Description:
