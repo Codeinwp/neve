@@ -57,6 +57,27 @@ class Nav extends Abstract_Component {
 				'filter_neve_last_menu_setting_slug',
 			)
 		);
+		add_filter( 'nav_menu_submenu_css_class', [ $this, 'filter_menu_item_class' ], 10, 3 );
+	}
+
+	/**
+	 * Add open class on submenu if 'Expand the first level of dropdowns...' option is on.
+	 *
+	 * @param array $classes Submenu classes.
+	 * @param array $args Submenu args.
+	 * @param int   $depth Submenu depth.
+	 *
+	 * @return array
+	 */
+	public function filter_menu_item_class( $classes, $args, $depth ) {
+		$expand_dropdowns = get_theme_mod( $this->get_id() . '_' . self::EXPAND_DROPDOWNS, false );
+		if ( ! $expand_dropdowns ) {
+			return $classes;
+		}
+		if ( $depth === 0 ) {
+			$classes[] = 'dropdown-open';
+		}
+		return $classes;
 	}
 
 	/**
@@ -526,31 +547,31 @@ class Nav extends Abstract_Component {
 			],
 		];
 
-		if ( get_theme_mod( $this->get_id() . '_' . self::EXPAND_DROPDOWNS, false ) ) {
-			$selector    = '.header-menu-sidebar-inner  .builder-item--' . $this->get_id() . ' .primary-menu-ul.dropdowns-expanded > li ';
-			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . ' > .sub-menu',
-				Dynamic_Selector::KEY_RULES    => [
-					'max-height' => [
-						Dynamic_Selector::META_KEY    => $this->get_id() . '_' . self::EXPAND_DROPDOWNS,
-						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							return sprintf( 'max-height: unset;' );
-						},
-					],
-				],
-			];
-			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . ' > a > .caret-wrap,' . $selector . ' > .has-caret .caret',
-				Dynamic_Selector::KEY_RULES    => [
-					'display' => [
-						Dynamic_Selector::META_KEY    => $this->get_id() . '_' . self::EXPAND_DROPDOWNS,
-						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							return sprintf( 'display: none;' );
-						},
-					],
-				],
-			];
-		}
+		// if ( get_theme_mod( $this->get_id() . '_' . self::EXPAND_DROPDOWNS, false ) ) {
+		// $selector    = '.header-menu-sidebar-inner  .builder-item--' . $this->get_id() . ' .primary-menu-ul.dropdowns-expanded > li ';
+		// $css_array[] = [
+		// Dynamic_Selector::KEY_SELECTOR => $selector . ' > .sub-menu',
+		// Dynamic_Selector::KEY_RULES    => [
+		// 'max-height' => [
+		// Dynamic_Selector::META_KEY    => $this->get_id() . '_' . self::EXPAND_DROPDOWNS,
+		// Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+		// return sprintf( 'max-height: unset;' );
+		// },
+		// ],
+		// ],
+		// ];
+		// $css_array[] = [
+		// Dynamic_Selector::KEY_SELECTOR => $selector . ' > a > .caret-wrap,' . $selector . ' > .has-caret .caret',
+		// Dynamic_Selector::KEY_RULES    => [
+		// 'display' => [
+		// Dynamic_Selector::META_KEY    => $this->get_id() . '_' . self::EXPAND_DROPDOWNS,
+		// Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+		// return sprintf( 'display: none;' );
+		// },
+		// ],
+		// ],
+		// ];
+		// }
 
 		return parent::add_style( $css_array );
 	}
