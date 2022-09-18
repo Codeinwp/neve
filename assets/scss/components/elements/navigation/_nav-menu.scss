@@ -152,20 +152,5 @@
 				margin-left: 10px;
 			}
 		}
-
-		&.dropdowns-expanded {
-
-			> li > .sub-menu {
-				display: block;
-				padding-left: 10px;
-			}
-
-			> li > a {
-
-				.caret-wrap {
-					display: none;
-				}
-			}
-		}
 	}
 }
