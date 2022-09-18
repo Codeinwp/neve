@@ -95,7 +95,7 @@ class Form_Fields extends Base_Customizer {
 					'label'                 => esc_html__( 'Field Padding', 'neve' ),
 					'section'               => $this->section_id,
 					'priority'              => 15,
-					'units'                 => [ 'px', 'em' ],
+					'units'                 => [ 'px', 'em', 'rem' ],
 					'default'               => $default_padding,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
@@ -192,7 +192,7 @@ class Form_Fields extends Base_Customizer {
 					'label'                 => esc_html__( 'Border Width', 'neve' ),
 					'section'               => $this->section_id,
 					'priority'              => 18,
-					'units'                 => [ 'px', 'em' ],
+					'units'                 => [ 'px', 'em', 'rem' ],
 					'default'               => $default_width,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
@@ -245,7 +245,7 @@ class Form_Fields extends Base_Customizer {
 					'label'                 => esc_html__( 'Border Radius', 'neve' ),
 					'section'               => $this->section_id,
 					'priority'              => 19,
-					'units'                 => [ 'px', 'em' ],
+					'units'                 => [ 'px', 'em', 'rem' ],
 					'default'               => [
 						'top'    => '3',
 						'right'  => '3',

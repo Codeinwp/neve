@@ -427,7 +427,7 @@ export class CSSVariablesHandler {
 	}
 
 	validateSuffix(val) {
-		const valid = ['px', 'em', '%', 'vh', 'vw'];
+		const valid = ['px', 'em', 'rem', '%', 'vh', 'vw'];
 		if (!valid.includes(val)) {
 			return '';
 		}

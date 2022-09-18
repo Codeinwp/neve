@@ -165,6 +165,7 @@ trait Css_Vars {
 			Dynamic_Selector::META_KEY           => $mod_key_primary,
 			Dynamic_Selector::META_DEFAULT       => $default_primary,
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
+			Dynamic_Selector::META_SUFFIX => 'responsive_unit',
 			Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
 				$mod_key_primary = Config::MODS_BUTTON_PRIMARY_STYLE;
 				$default_primary = neve_get_button_appearance_default();

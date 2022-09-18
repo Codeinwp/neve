@@ -544,7 +544,7 @@ abstract class Abstract_Component implements Component {
 
 		$this->add_typography_controls();
 
-		do_action( 'hfg_component_settings', $this->get_id() );
+		do_action( 'hfg_component_settings', $this->get_id(), $this->section );
 	}
 
 	/**
