@@ -17,7 +17,7 @@ const SpacingComponent = ({ control }) => {
 		min: -300,
 		max: 300,
 		hideResponsiveButtons: false,
-		units: ['px', 'em', '%'],
+		units: ['px', 'em', 'rem', '%'],
 	};
 
 	const controlParams = control.params.input_attrs
@@ -68,6 +68,10 @@ const SpacingComponent = ({ control }) => {
 			updateControlValue(e.detail.value || defaultValue);
 		});
 	}, []);
+
+	const isRelativeUnit = ['em', 'rem'].includes(
+		value[currentDevice + '-unit']
+	);
 
 	const getButtons = () => {
 		const { units } = controlParams;
@@ -153,7 +157,7 @@ const SpacingComponent = ({ control }) => {
 			<SizingControl
 				min={min}
 				max={max}
-				step={value[currentDevice + '-unit'] === 'em' ? 0.1 : 1}
+				step={isRelativeUnit ? 0.1 : 1}
 				options={options}
 				defaults={defaultValue[currentDevice]}
 				value={value[currentDevice]}

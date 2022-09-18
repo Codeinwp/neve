@@ -71,6 +71,11 @@ class Layout_Container extends Base_Customizer {
 							'mobile'  => 748,
 							'tablet'  => 992,
 							'desktop' => 1170,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
 						],
 					],
 					'live_refresh_selector' => true,

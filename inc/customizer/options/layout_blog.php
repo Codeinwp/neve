@@ -162,7 +162,6 @@ class Layout_Blog extends Base_Customizer {
 						'items',
 					),
 					'input_attrs'     => [
-						'step'       => 1,
 						'min'        => 1,
 						'max'        => 4,
 						'defaultVal' => json_decode( $grid_layout_default, true ),
@@ -573,15 +572,19 @@ class Layout_Blog extends Base_Customizer {
 						),
 					),
 					'input_attrs'     => [
-						'step'       => 1,
-						'min'        => 20,
+						'min'        => self::RELATIVE_CSS_UNIT_SUPPORTED_MIN_VALUE,
 						'max'        => 50,
 						'defaultVal' => [
 							'mobile'  => 20,
 							'tablet'  => 20,
 							'desktop' => 20,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
 						],
-						'units'      => [ 'px' ],
+						'units'      => [ 'px', 'em', 'rem' ],
 					],
 					'priority'        => 74,
 					'active_callback' => function () {

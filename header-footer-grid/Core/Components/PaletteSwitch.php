@@ -405,6 +405,11 @@ class PaletteSwitch extends Abstract_Component {
 			'mobile'  => self::DEFAULT_ICON_SIZE,
 			'tablet'  => self::DEFAULT_ICON_SIZE,
 			'desktop' => self::DEFAULT_ICON_SIZE,
+			'suffix'  => [
+				'mobile'  => 'px',
+				'tablet'  => 'px',
+				'desktop' => 'px',
+			],
 		];
 
 		SettingsManager::get_instance()->add(
@@ -419,7 +424,6 @@ class PaletteSwitch extends Abstract_Component {
 				'default'               => $default_size_values,
 				'options'               => [
 					'input_attrs' => [
-						'step'       => 1,
 						'min'        => 8,
 						'max'        => 120,
 						'defaultVal' => $default_size_values,

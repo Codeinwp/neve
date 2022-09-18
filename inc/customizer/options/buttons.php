@@ -84,7 +84,7 @@ class Buttons extends Base_Customizer {
 					'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
 					'section'           => $this->section_id,
 					'input_attrs'       => [
-						'units' => [ 'px' ],
+						'units' => [ 'px', 'em', 'rem' ],
 						'min'   => 0,
 					],
 					'default'           => $defaults,

@@ -18,7 +18,29 @@ class Content_None extends Base_View {
 	 * Init function.
 	 */
 	public function init() {
+		add_filter( 'get_search_form', [ $this, 'add_instance_id' ] );
 		add_action( 'neve_do_content_none', array( $this, 'render_content_none' ) );
+	}
+
+	/**
+	 * Add input inside the HTML of search form to differentiate the instances.
+	 *
+	 * @param string $form Form HTML.
+	 *
+	 * @since   2.4.0
+	 * @access  public
+	 * @return string
+	 */
+	public function add_instance_id( $form ) {
+		$form = str_replace( 'search-submit', 'search-submit nv-submit', $form );
+
+		if ( ! isset( $_GET['form-instance'] ) ) {
+			return $form;
+		}
+
+		$component_id = sanitize_text_field( $_GET['form-instance'] );
+		$form         = str_replace( '</label>', '</label><input type="hidden" name="form-instance" value="' . esc_attr( $component_id ) . '">', $form );
+		return $form;
 	}
 
 	/**
