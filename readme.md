@@ -19,6 +19,11 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+#### [Version 3.4.0](https://github.com/Codeinwp/neve/compare/v3.3.7...v3.4.0) (2022-09-19)
+
+- [Feat] Add the possibility to search for options in Customizer - [Learn more](https://docs.themeisle.com/article/1716-how-to-search-for-settings-in-the-customizer)
+- [Feat] Show comments but hide reply form if the allow
+
 ##### [Version 3.3.7](https://github.com/Codeinwp/neve/compare/v3.3.6...v3.3.7) (2022-08-31)
 
 - [Feat] Add margin control for menu label
