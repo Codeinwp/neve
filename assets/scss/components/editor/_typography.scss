@@ -160,7 +160,7 @@ td {
 	font-family: Courier, monospace;
 }
 
-pre {
+pre:not(.CodeMirror-line) {
 	display: block;
 	padding: $spacing-lg;
 	background: var(--nv-light-bg);
