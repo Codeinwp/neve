@@ -14,7 +14,7 @@ use HFG\Core\Builder\Header as HeaderBuilder;
 
 $_id                   = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
 $style                 = component_setting( Nav::STYLE_ID, 'style-plain' );
-$additional_menu_class = apply_filters( 'neve_additional_menu_class', $additional_menu_class );
+$additional_menu_class = apply_filters( 'neve_additional_menu_class', ' ' );
 
 $container_classes = [ 'nav-menu-primary' ];
 if ( $style !== 'style-plain' ) {
