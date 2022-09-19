@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 15/08/22
+ * Updated on 19/09/22
  *
  * @package neve
  */
@@ -55,6 +55,7 @@ return array(
 	'Amethysta' => array( '400',),
 	'Amiko' => array( '400', '600', '700',),
 	'Amiri' => array( '400', '700', '400italic', '700italic',),
+	'Amiri Quran' => array( '400',),
 	'Amita' => array( '400', '700',),
 	'Anaheim' => array( '400',),
 	'Andada' => array(),
@@ -89,6 +90,7 @@ return array(
 	'Archivo Narrow' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Are You Serious' => array( '400',),
 	'Aref Ruqaa' => array( '400', '700',),
+	'Aref Ruqaa Ink' => array( '400', '700',),
 	'Arima' => array( '100', '200', '300', '400', '500', '600', '700',),
 	'Arima Madurai' => array( '100', '200', '300', '400', '500', '700', '800', '900',),
 	'Arimo' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
@@ -203,6 +205,7 @@ return array(
 	'Black Ops One' => array( '400',),
 	'Blaka' => array( '400',),
 	'Blaka Hollow' => array( '400',),
+	'Blaka Ink' => array( '400',),
 	'Blinker' => array( '100', '200', '300', '400', '600', '700', '800', '900',),
 	'Bodoni Moda' => array( '400', '500', '600', '700', '800', '900', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Bokor' => array( '400',),
@@ -224,6 +227,7 @@ return array(
 	'Bungee Inline' => array( '400',),
 	'Bungee Outline' => array( '400',),
 	'Bungee Shade' => array( '400',),
+	'Bungee Spice' => array( '400',),
 	'Butcherman' => array( '400',),
 	'Butterfly Kids' => array( '400',),
 	'Cabin' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
@@ -232,6 +236,7 @@ return array(
 	'Caesar Dressing' => array( '400',),
 	'Cagliostro' => array( '400',),
 	'Cairo' => array( '200', '300', '400', '500', '600', '700', '800', '900',),
+	'Cairo Play' => array( '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Caladea' => array( '400', '700', '400italic', '700italic',),
 	'Calistoga' => array( '400',),
 	'Calligraffitti' => array( '400',),
@@ -442,7 +447,7 @@ return array(
 	'Freehand' => array( '400',),
 	'Fresca' => array( '400',),
 	'Frijole' => array( '400',),
-	'Fruktur' => array( '400',),
+	'Fruktur' => array( '400', '400italic',),
 	'Fugaz One' => array( '400',),
 	'Fuggles' => array( '400',),
 	'Fuzzy Bubbles' => array( '400', '700',),
@@ -818,6 +823,7 @@ return array(
 	'My Soul' => array( '400',),
 	'Mystery Quest' => array( '400',),
 	'NTR' => array( '400',),
+	'Nabla' => array( '400',),
 	'Nanum Brush Script' => array( '400',),
 	'Nanum Gothic' => array( '400', '700', '800',),
 	'Nanum Gothic Coding' => array( '400', '700',),
@@ -841,6 +847,7 @@ return array(
 	'Notable' => array( '400',),
 	'Nothing You Could Do' => array( '400',),
 	'Noticia Text' => array( '400', '700', '400italic', '700italic',),
+	'Noto Color Emoji' => array( '400',),
 	'Noto Emoji' => array( '300', '400', '500', '600', '700',),
 	'Noto Kufi Arabic' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Music' => array( '400',),
@@ -1173,6 +1180,8 @@ return array(
 	'Redacted Script' => array( '300', '400', '700',),
 	'Redressed' => array( '400',),
 	'Reem Kufi' => array( '400', '500', '600', '700',),
+	'Reem Kufi Fun' => array( '400', '500', '600', '700',),
+	'Reem Kufi Ink' => array( '400',),
 	'Reenie Beanie' => array( '400',),
 	'Reggae One' => array( '400',),
 	'Revalia' => array( '400',),
