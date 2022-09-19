@@ -1,3 +1,9 @@
+##### [Version 3.4.1](https://github.com/Codeinwp/neve/compare/v3.4.0...v3.4.1) (2022-09-19)
+
+- [Fix] Missing variable notice
+- [Fix] Compatibility with PHP editor from custom layouts
+- [Fix] Customizer error when Neve Pro is installed but not updated
+
 #### [Version 3.4.0](https://github.com/Codeinwp/neve/compare/v3.3.7...v3.4.0) (2022-09-19)
 
 - [Feat] Add the possibility to search for options in Customizer - [Learn more](https://docs.themeisle.com/article/1716-how-to-search-for-settings-in-the-customizer)
