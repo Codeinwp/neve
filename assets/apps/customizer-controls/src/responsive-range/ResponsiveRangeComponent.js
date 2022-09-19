@@ -36,8 +36,20 @@ const ResponsiveRangeComponent = ({ control }) => {
 	}, []);
 
 	const { label } = control.params;
-	const { hideResponsive, units, defaultVal, step, min, max } =
+	const { hideResponsive, units, defaultVal, min, max } =
 		control.params.input_attrs;
+
+	const suffixValue = () => {
+		if (!units) {
+			return null;
+		}
+
+		return value.suffix && value.suffix[currentDevice]
+			? value.suffix[currentDevice]
+			: defaultVal.suffix[currentDevice];
+	};
+
+	const isRelativeUnit = () => ['em', 'rem'].includes(suffixValue());
 
 	const unitButtons = () => {
 		if (!units) {
@@ -53,12 +65,8 @@ const ResponsiveRangeComponent = ({ control }) => {
 		}
 
 		return units.map((unit, index) => {
-			const suffixValue =
-				value.suffix && value.suffix[currentDevice]
-					? value.suffix[currentDevice]
-					: defaultVal.suffix[currentDevice];
 			const buttonClass = classnames({
-				active: suffixValue === unit,
+				active: suffixValue() === unit,
 			});
 
 			return (
@@ -70,7 +78,7 @@ const ResponsiveRangeComponent = ({ control }) => {
 						const nextValue = { ...value };
 						nextValue.suffix = { ...nextValue.suffix };
 						nextValue.suffix[currentDevice] = unit;
-						if (unit !== 'em') {
+						if (!isRelativeUnit()) {
 							nextValue[currentDevice] = parseInt(
 								nextValue[currentDevice]
 							);
@@ -120,7 +128,7 @@ const ResponsiveRangeComponent = ({ control }) => {
 					value={displayValue}
 					min={min || 0}
 					max={max || 100}
-					step={step || 1}
+					step={isRelativeUnit() ? 0.1 : 1}
 					allowReset
 					onChange={(nextValue) => {
 						updateValues(nextValue);

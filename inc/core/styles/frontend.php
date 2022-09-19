@@ -990,7 +990,7 @@ class Frontend extends Generator {
 			'--avatarsize' => [
 				Dynamic_Selector::META_KEY           => $archive_avatar_size_meta_key,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
 				Dynamic_Selector::META_DEFAULT       => '{ "mobile": 20, "tablet": 20, "desktop": 20 }',
 			],
 		];
@@ -999,7 +999,7 @@ class Frontend extends Generator {
 			'--avatarsize' => [
 				Dynamic_Selector::META_KEY           => $single_avatar_size_meta_key,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
 				Dynamic_Selector::META_DEFAULT       => Mods::get( 'neve_author_avatar_size', '{ "mobile": 20, "tablet": 20, "desktop": 20 }' ),
 			],
 		];
@@ -1175,6 +1175,7 @@ class Frontend extends Generator {
 			'--padding' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_FORM_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
@@ -1195,7 +1196,7 @@ class Frontend extends Generator {
 			'--spacing' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_ELEMENTS_SPACING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
 			],
 		];
 
@@ -1266,6 +1267,7 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_KEY           => $this->get_cover_meta( $context, Config::MODS_COVER_PADDING, $allowed_context ),
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
+					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 					'directional-prop'                   => Config::CSS_PROP_PADDING,
 				],
 				'--justify'   => [
@@ -1330,6 +1332,7 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_KEY           => $this->get_cover_meta( $context, Config::MODS_COVER_BOXED_TITLE_PADDING, $allowed_context ),
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
+					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 					'directional-prop'                   => Config::CSS_PROP_PADDING,
 				],
 				'--bgcolor' => [

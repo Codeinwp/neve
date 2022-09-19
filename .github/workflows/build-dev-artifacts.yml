@@ -5,6 +5,9 @@ on:
     types: [ opened, synchronize, ready_for_review ]
     branches-ignore:
       - "update_dependencies"
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
+  cancel-in-progress: true
 jobs:
   dev-zip:
     name: Build ZIP and upload to s3

@@ -272,13 +272,17 @@ class SearchResponsive extends Abstract_Component {
 				],
 				'options'               => [
 					'input_attrs' => [
-						'step'       => 1,
 						'min'        => 10,
 						'max'        => 200,
 						'defaultVal' => [
 							'mobile'  => 40,
 							'tablet'  => 40,
 							'desktop' => 40,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
 						],
 						'units'      => [ 'px' ],
 					],
@@ -326,13 +330,17 @@ class SearchResponsive extends Abstract_Component {
 				],
 				'options'               => [
 					'input_attrs' => [
-						'step'       => 1,
 						'min'        => 10,
 						'max'        => 200,
 						'defaultVal' => [
 							'mobile'  => 14,
 							'tablet'  => 14,
 							'desktop' => 14,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
 						],
 						'units'      => [ 'px' ],
 					],

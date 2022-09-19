@@ -95,13 +95,17 @@ class Search extends Abstract_Component {
 				],
 				'options'               => [
 					'input_attrs' => [
-						'step'       => 1,
 						'min'        => 10,
 						'max'        => 200,
 						'defaultVal' => [
 							'mobile'  => 40,
 							'tablet'  => 40,
 							'desktop' => 40,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
 						],
 						'units'      => [ 'px' ],
 					],
@@ -149,13 +153,17 @@ class Search extends Abstract_Component {
 				],
 				'options'               => [
 					'input_attrs' => [
-						'step'       => 1,
 						'min'        => 10,
 						'max'        => 200,
 						'defaultVal' => [
 							'mobile'  => 14,
 							'tablet'  => 14,
 							'desktop' => 14,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
 						],
 						'units'      => [ 'px' ],
 					],
@@ -538,9 +546,22 @@ class Search extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
+		add_filter( 'get_search_form', [ $this, 'add_submit_button_classes' ] );
 		add_filter( 'nv_search_placeholder', [ $this, 'change_placeholder' ] );
 		Main::get_instance()->load( 'components/component-search' );
+		remove_filter( 'get_search_form', [ $this, 'add_submit_button_classes' ] );
 		remove_filter( 'nv_search_placeholder', [ $this, 'change_placeholder' ] );
+	}
+
+	/**
+	 * Add nv-submit class on submit button for search component.
+	 *
+	 * @param string $form Form HTML.
+	 *
+	 * @return string
+	 */
+	public function add_submit_button_classes( $form ) {
+		return str_replace( 'search-submit', 'search-submit nv-submit', $form );
 	}
 
 	/**

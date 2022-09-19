@@ -194,6 +194,11 @@ class SecondNav extends Abstract_Component {
 							'mobile'  => 20,
 							'tablet'  => 20,
 							'desktop' => 20,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
 						],
 					],
 				],
@@ -220,6 +225,11 @@ class SecondNav extends Abstract_Component {
 							'mobile'  => 25,
 							'tablet'  => 25,
 							'desktop' => 25,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
 						],
 					],
 				],

@@ -7,6 +7,9 @@ on:
 env:
   PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
   CYPRESS_INSTALL_BINARY: 0
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
+  cancel-in-progress: true
 jobs:
   phplint:
     name: PHP Lint

@@ -1,6 +1,6 @@
 <?php
 /**
- * Non Responsive Spacing Control. Handles data passing from args to JS.
+ * Form Token Field Control. Handles data passing from args to JS.
  *
  * @package Neve\Customizer\Controls\React
  */
@@ -8,55 +8,30 @@
 namespace Neve\Customizer\Controls\React;
 
 /**
- * Class Spacing
+ * Class Form_Token_Field
  *
  * @package Neve\Customizer\Controls\React
  */
-class Nr_Spacing extends \WP_Customize_Control {
+class Form_Token_Field extends \WP_Customize_Control {
 	/**
 	 * Control type.
 	 *
 	 * @var string
 	 */
-	public $type = 'neve_non_responsive_spacing';
-
+	public $type = 'neve_form_token_field';
 	/**
-	 * Min.
-	 *
-	 * @var int
-	 */
-	public $min = 0;
-
-	/**
-	 * Max.
-	 *
-	 * @var int
-	 */
-	public $max = 300;
-
-	/**
-	 * Units.
+	 * Additional arguments passed to JS.
 	 *
 	 * @var array
 	 */
-	public $units = [ 'px', 'em', 'rem', '%' ];
-
-	/**
-	 * Default value.
-	 *
-	 * @var array
-	 */
-	public $default = [];
+	public $choices = [];
 
 	/**
 	 * Send to JS.
 	 */
 	public function json() {
-		$json               = parent::json();
-		$json['min']        = $this->min;
-		$json['max']        = $this->max;
-		$json['units']      = $this->units;
-		$json['defaultVal'] = $this->default;
+		$json            = parent::json();
+		$json['choices'] = $this->choices;
 		return $json;
 	}
 

@@ -1,4 +1,4 @@
-/* global CustomEvent, NeveReactCustomize */
+/* global CustomEvent, NeveReactCustomize, MutationObserver */
 import './public-path.js';
 import { render } from '@wordpress/element';
 
@@ -16,6 +16,7 @@ import { ResponsiveRangeControl } from './responsive-range/Control';
 import { ColorControl } from './color/Control';
 import { PresetsSelectorControl } from './presets-selector/Control';
 import { MultiSelectControl } from './multiselect/Control';
+import { FormTokenFieldControl } from './form-token-field/Control';
 import { ResponsiveRadioButtonsControl } from './responsive-radio-buttons/Control';
 import { RadioImageControl } from './radio-image/Control';
 import { OrderingControl } from './ordering/Control';
@@ -31,11 +32,14 @@ import { LogoPaletteControl } from './logo-palette/Control';
 import { RepeaterControl } from './repeater/Control';
 import { RichTextControl } from './rich-text/Control';
 import { LinkControl } from './link/Control';
+import { GroupSelectControl } from './group-select/Control';
 
 import './style.scss';
 import Documentation from './documentation-section/Documentation.tsx';
 import Instructions from './builder-instructions/Instructions.tsx';
 import Upsells from './builder-upsell/Upsells.tsx';
+
+import MainSearch from './customizer-search/MainSearch.tsx';
 
 const { controlConstructor } = wp.customize;
 
@@ -52,6 +56,8 @@ controlConstructor.neve_responsive_range_control = ResponsiveRangeControl;
 controlConstructor.neve_color_control = ColorControl;
 controlConstructor.neve_presets_selector = PresetsSelectorControl;
 controlConstructor.neve_multiselect = MultiSelectControl;
+controlConstructor.neve_form_token_field = FormTokenFieldControl;
+controlConstructor.neve_group_select = GroupSelectControl;
 controlConstructor.neve_responsive_radio_buttons_control =
 	ResponsiveRadioButtonsControl;
 controlConstructor.neve_radio_image_control = RadioImageControl;
@@ -96,6 +102,63 @@ const initDocSection = () => {
 
 		render(<Documentation control={section} />, section.container[0]);
 	});
+};
+
+const initSearchCustomizer = () => {
+	// will remove the search icon if another plugin or WordPress add this feature
+	const callback = (mutationList, observer) => {
+		for (const mutation of mutationList) {
+			if (mutation.type === 'childList') {
+				const searchCount = document.querySelectorAll(
+					'#customize-info .accordion-section-title .dashicons-search'
+				).length;
+				if (searchCount > 1) {
+					observer.disconnect();
+					document.getElementById('neve-customize-search')?.remove();
+				}
+			}
+		}
+	};
+
+	const targetNodeMutation = document.querySelector(
+		'#customize-info .accordion-section-title'
+	);
+	const observer = new MutationObserver(callback);
+	const config = { attributes: false, childList: true, subtree: false };
+	observer.observe(targetNodeMutation, config);
+
+	const customizePreview = document.getElementById('customize-controls');
+	const mount = document.createElement('div');
+	customizePreview.appendChild(mount);
+
+	const title = document.querySelector(
+		'#customize-info .accordion-section-title'
+	);
+	const customizerPanels = document.getElementById(
+		'customize-theme-controls'
+	);
+	const titleSection = document.getElementById('customize-info');
+
+	const targetNode = document.createElement('div');
+	const targetFieldNode = document.createElement('div');
+	const targetSearchResultsNode = document.createElement('div');
+
+	targetNode.setAttribute('id', 'neve-customize-search');
+	targetFieldNode.setAttribute('id', 'neve-customize-search-field');
+	targetSearchResultsNode.setAttribute('id', 'neve-customize-search-results');
+
+	title.append(targetNode);
+	titleSection.append(targetFieldNode);
+	customizerPanels.after(targetSearchResultsNode);
+
+	render(
+		<MainSearch
+			search={targetFieldNode}
+			button={targetNode}
+			results={targetSearchResultsNode}
+		/>,
+		mount
+	);
 };
 
 const initCustomPagesFocus = () => {
@@ -234,6 +297,7 @@ window.wp.customize.bind('ready', () => {
 	checkHasElementorTemplates();
 	initDeviceSwitchers();
 	initBlogPageFocus();
+	initSearchCustomizer();
 });
 
 window.HFG = {

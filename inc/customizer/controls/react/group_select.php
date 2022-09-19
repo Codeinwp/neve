@@ -1,6 +1,6 @@
 <?php
 /**
- * Non Responsive Spacing Control. Handles data passing from args to JS.
+ * Group_Select Control. Handles data passing from args to JS.
  *
  * @package Neve\Customizer\Controls\React
  */
@@ -8,55 +8,37 @@
 namespace Neve\Customizer\Controls\React;
 
 /**
- * Class Spacing
+ * Class Group_Select
  *
  * @package Neve\Customizer\Controls\React
  */
-class Nr_Spacing extends \WP_Customize_Control {
+class Group_Select extends \WP_Customize_Control {
 	/**
 	 * Control type.
 	 *
 	 * @var string
 	 */
-	public $type = 'neve_non_responsive_spacing';
-
+	public $type = 'neve_group_select';
 	/**
-	 * Min.
-	 *
-	 * @var int
-	 */
-	public $min = 0;
-
-	/**
-	 * Max.
-	 *
-	 * @var int
-	 */
-	public $max = 300;
-
-	/**
-	 * Units.
+	 * Additional arguments passed to JS.
 	 *
 	 * @var array
 	 */
-	public $units = [ 'px', 'em', 'rem', '%' ];
-
+	public $options = [];
 	/**
-	 * Default value.
+	 * Mark controls as disabled.
 	 *
-	 * @var array
+	 * @var bool
 	 */
-	public $default = [];
+	public $disabled = false;
 
 	/**
 	 * Send to JS.
 	 */
 	public function json() {
-		$json               = parent::json();
-		$json['min']        = $this->min;
-		$json['max']        = $this->max;
-		$json['units']      = $this->units;
-		$json['defaultVal'] = $this->default;
+		$json             = parent::json();
+		$json['options']  = $this->options;
+		$json['disabled'] = $this->disabled;
 		return $json;
 	}
 

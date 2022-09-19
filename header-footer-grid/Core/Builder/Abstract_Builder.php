@@ -20,6 +20,7 @@ use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Traits\Core;
 use Neve\Core\Settings\Config;
+use Neve\Core\Styles\Css_Prop;
 use Neve\Core\Styles\Dynamic_Selector;
 use Neve\Core\Theme_Info;
 use Neve\Customizer\Controls\React\Instructions_Section;
@@ -379,15 +380,19 @@ abstract class Abstract_Builder implements Builder {
 					],
 					'options'               => [
 						'input_attrs' => [
-							'step'       => 1,
 							'min'        => 0,
 							'max'        => 700,
 							'defaultVal' => [
 								'mobile'  => 0,
 								'tablet'  => 0,
 								'desktop' => 0,
+								'suffix'  => [
+									'mobile'  => 'px',
+									'tablet'  => 'px',
+									'desktop' => 'px',
+								],
 							],
-							'units'      => [ 'px' ],
+							'units'      => [ 'px', 'em', 'rem' ],
 						],
 					],
 					'transport'             => 'postMessage',
@@ -418,13 +423,17 @@ abstract class Abstract_Builder implements Builder {
 					],
 					'options'               => [
 						'input_attrs' => [
-							'step'       => 1,
 							'min'        => 0,
 							'max'        => 50,
 							'defaultVal' => [
 								'mobile'  => 0,
 								'tablet'  => 0,
 								'desktop' => 0,
+								'suffix'  => [
+									'mobile'  => 'px',
+									'tablet'  => 'px',
+									'desktop' => 'px',
+								],
 							],
 							'units'      => [ 'px' ],
 						],
@@ -1143,13 +1152,16 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_height',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-					$value = (int) $value;
+					$value       = (int) $value;
+					$unit_suffix = Css_Prop::get_suffix_responsive( $meta, $device );
+
 					if ( $value > 0 ) {
-						return sprintf( '%s:%s;', $css_prop, $value . 'px' );
+						return sprintf( '%s:%s;', $css_prop, $value . $unit_suffix );
 					}
 
 					return '';
 				},
+				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
 				Dynamic_Selector::META_DEFAULT       => '{ desktop: 0, tablet: 0, mobile: 0 }',
 			];
 
@@ -2096,11 +2108,16 @@ abstract class Abstract_Builder implements Builder {
 					'input_attrs'     => [
 						'min'        => 1,
 						'max'        => 1000,
-						'units'      => [ 'px' ],
+						'units'      => [ 'px', 'em', 'rem' ],
 						'defaultVal' => [
 							'mobile'  => 360,
 							'tablet'  => 360,
 							'desktop' => 360,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
 						],
 					],
 				],
@@ -2112,7 +2129,7 @@ abstract class Abstract_Builder implements Builder {
 							width: {{value}}px;
 						}',
 				],
-				'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
+				'sanitize_callback'     => 'neve_sanitize_range_value',
 			]
 		);
 	}
@@ -2250,6 +2267,7 @@ abstract class Abstract_Builder implements Builder {
 					Config::CSS_PROP_WIDTH => [
 						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
 						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
+						Dynamic_Selector::META_SUFFIX  => 'responsive_suffix',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 				],
@@ -2262,6 +2280,7 @@ abstract class Abstract_Builder implements Builder {
 					Config::CSS_PROP_LEFT => [
 						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
 						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
+						Dynamic_Selector::META_SUFFIX  => 'responsive_suffix',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 				],
@@ -2274,6 +2293,7 @@ abstract class Abstract_Builder implements Builder {
 					Config::CSS_PROP_RIGHT => [
 						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
 						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
+						Dynamic_Selector::META_SUFFIX  => 'responsive_suffix',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 				],

@@ -5,6 +5,9 @@ on:
     branches-ignore:
       - 'master'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
+  cancel-in-progress: true
 jobs:
   npm:
     runs-on: ubuntu-latest
