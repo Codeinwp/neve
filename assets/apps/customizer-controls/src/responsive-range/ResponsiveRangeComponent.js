@@ -40,13 +40,20 @@ const ResponsiveRangeComponent = ({ control }) => {
 		control.params.input_attrs;
 
 	const suffixValue = () => {
+		const fallbackSuffix = null;
+
 		if (!units) {
-			return null;
+			return fallbackSuffix;
 		}
+
+		const defaultSuffix =
+			defaultVal.suffix && defaultVal.suffix[currentDevice]
+				? defaultVal.suffix[currentDevice]
+				: fallbackSuffix;
 
 		return value.suffix && value.suffix[currentDevice]
 			? value.suffix[currentDevice]
-			: defaultVal.suffix[currentDevice];
+			: defaultSuffix;
 	};
 
 	const isRelativeUnit = () => ['em', 'rem'].includes(suffixValue());
