@@ -371,7 +371,16 @@ class Header extends Abstract_Builder {
 				function ( $classes ) {
 					$classes .= ' nv-mobile-menu';
 					return $classes;
-				} 
+				}
+			);
+			add_filter(
+				'nav_menu_submenu_css_class',
+				function( $classes ) {
+					$classes[] = 'mobile-subitem';
+					return $classes;
+				},
+				5,
+				3 
 			);
 		}
 

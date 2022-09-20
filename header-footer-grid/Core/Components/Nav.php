@@ -77,6 +77,9 @@ class Nav extends Abstract_Component {
 		if ( ! $expand_dropdowns ) {
 			return $classes;
 		}
+		if ( ! in_array( 'mobile-subitem', $classes ) ) {
+			return $classes;
+		}
 		if ( $depth === 0 ) {
 			$classes[] = 'dropdown-open';
 		}
