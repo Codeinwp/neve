@@ -59,7 +59,27 @@ class Nav extends Abstract_Component {
 			)
 		);
 
-		add_filter( 'nav_menu_submenu_css_class', [ $this, 'filter_menu_item_class' ], 10, 3 );
+		add_action(
+			'neve_before_render_nav',
+			function ( $component_id ) {
+				if ( $this->get_id() !== $component_id ) {
+					return;
+				}
+				add_filter( 'nav_menu_submenu_css_class', [ $this, 'filter_menu_item_class' ], 10, 3 );
+			} 
+		);
+
+		add_action(
+			'neve_after_render_nav',
+			function ( $component_id ) {
+				if ( $this->get_id() !== $component_id ) {
+					return;
+				}
+				remove_filter( 'nav_menu_submenu_css_class', [ $this, 'filter_menu_item_class' ] );
+			}
+		);
+
+
 		add_action( 'init', [ $this, 'run_nav_init' ] );
 	}
 
@@ -73,6 +93,9 @@ class Nav extends Abstract_Component {
 	 * @return array
 	 */
 	public function filter_menu_item_class( $classes, $args, $depth ) {
+		if ( ! $this->is_component_active() ) {
+			return $classes;
+		}
 		$expand_dropdowns = get_theme_mod( $this->get_id() . '_' . self::EXPAND_DROPDOWNS, false );
 		if ( ! $expand_dropdowns ) {
 			return $classes;
