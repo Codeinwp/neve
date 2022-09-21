@@ -110,7 +110,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 
 			$caret_wrap_css = $caret_settings['side'] === 'right' ? 'margin-left:5px;' : 'margin-right:5px;';
 
-			if ( $is_sidebar_item ) {
+			if ( $is_sidebar_item && neve_is_new_skin() ) {
 				add_action( 'neve_after_header_wrapper_hook', [ $this, 'inline_style_for_sidebar' ], 9 );
 
 				if ( $item->url === '#' && ! self::$dropdowns_inline_js_enqueued ) {
