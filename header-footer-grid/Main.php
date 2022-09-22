@@ -165,7 +165,7 @@ class Main {
 	 * @param string $slug Template slug.
 	 * @param string $name Template variation.
 	 */
-	public function load( $slug, $name = '' ) {
+	public function load( $slug, $name = '', $device = '' ) {
 
 		$templates = array();
 		$name      = (string) $name;
@@ -177,7 +177,7 @@ class Main {
 		$located = '';
 
 		if ( count( self::$templates_location ) === 1 && count( $templates ) === 1 ) {
-			load_template( self::$templates_location[0] . $templates[0], false );
+			load_template( self::$templates_location[0] . $templates[0], false, $device );
 
 			return;
 		}
@@ -195,7 +195,7 @@ class Main {
 		}
 
 		if ( '' !== $located ) {
-			load_template( $located, false );
+			load_template( $located, false, $device );
 		}
 	}
 

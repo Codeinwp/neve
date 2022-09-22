@@ -24,12 +24,14 @@ if ( is_customize_preview() ) {
 }
 
 $item_classes = join( ' ', $item_classes );
-
 ?>
 <div class="<?php echo esc_attr( $item_classes ); ?>"
 		data-section="<?php echo esc_attr( current_component()->get_section_id() ); ?>"
 		data-item-id="<?php echo esc_attr( current_component()->get_id() ); ?>">
 	<?php
+	if( method_exists( current_component(), 'set_args') ){
+		current_component()->set_args($args);
+	}
 	current_component()->render_css();
 	current_component()->render_component();
 	?>

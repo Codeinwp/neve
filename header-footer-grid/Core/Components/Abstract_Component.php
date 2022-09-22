@@ -601,10 +601,10 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Render component markup.
 	 */
-	public function render() {
+	public function render( $device = '' ) {
 		self::$current_component           = $this->get_id();
 		Abstract_Builder::$current_builder = $this->get_builder_id();
-		Main::get_instance()->load( 'component-wrapper' );
+		Main::get_instance()->load( 'component-wrapper', '', $device );
 	}
 
 	/**
