@@ -11,7 +11,6 @@ const FormTokenFieldControl = ({
 	onChange,
 	value,
 }) => {
-	const [suggetions, setSuggestions] = useState([]);
 	const [allSuggested, setAllSuggested] = useState(choices);
 
 	const updateValue = (nextVal) => {
@@ -80,7 +79,6 @@ const FormTokenFieldControl = ({
 				)
 			);
 			setAllSuggested(updatedValue);
-			setSuggestions(suggestions);
 		});
 	};
 
