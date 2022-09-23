@@ -12,11 +12,13 @@ const FormTokenFieldControl = ({
 	value,
 }) => {
 	const [suggetions, setSuggestions] = useState([]);
+	const [allSuggested, setAllSuggested] = useState(choices);
+
 	const updateValue = (nextVal) => {
 		// Convert option labels into ids
 		const selectedOptionsArray = [];
 		for (const optionName of nextVal) {
-			const matchingPost = suggetions.find((option) => {
+			const matchingPost = allSuggested.find((option) => {
 				return option.label === optionName;
 			});
 			if (matchingPost !== undefined) {
@@ -30,20 +32,20 @@ const FormTokenFieldControl = ({
 	const getValueKeys = () => {
 		// Convert option ids into labels
 		const valueKeys = [];
-		// for (const optionId of value) {
-		// 	const wantedPost = suggetions.find((option) => {
-		// 		return option.id === optionId;
-		// 	});
-		// 	if (wantedPost === undefined || !wantedPost) {
-		// 		continue;
-		// 	}
-		// 	valueKeys.push(wantedPost.label);
-		// }
+		for (const optionId of value) {
+			const wantedPost = allSuggested.find((option) => {
+				return option.id === optionId;
+			});
+			if (wantedPost === undefined || !wantedPost) {
+				continue;
+			}
+			valueKeys.push(wantedPost.label);
+		}
 		return valueKeys;
 	};
 
 	const getOptionNames = () => {
-		return suggetions.map((option) => option.label);
+		return allSuggested.map((option) => option.label);
 	};
 
 	const hasSubArray = (master, sub) => {
@@ -52,7 +54,7 @@ const FormTokenFieldControl = ({
 
 	const validateInput = (newVal) => {
 		return hasSubArray(
-			suggetions.map((el) => el.label),
+			allSuggested.map((el) => el.label),
 			Array.isArray(newVal) ? newVal : [newVal]
 		);
 	};
@@ -60,18 +62,24 @@ const FormTokenFieldControl = ({
 	const MAX_TERMS_SUGGESTIONS = 20;
 	const DEFAULT_QUERY = {
 		per_page: MAX_TERMS_SUGGESTIONS,
-		orderby: 'date',
-		order: 'desc',
+		orderby: 'title',
+		order: 'asc',
 		_fields: 'id,title',
 		context: 'view',
 	};
 
 	const updateSuggestions = (nextVal) => {
 		if (choices.length > 0) {
-			setSuggestions(choices);
+			setAllSuggested(choices);
 			return;
 		}
 		fetchTerms({ search: nextVal }).then(function (suggestions) {
+			const updatedValue = allSuggested.concat(
+				suggestions.filter(
+					({ id }) => !allSuggested.find((item) => item.id === id)
+				)
+			);
+			setAllSuggested(updatedValue);
 			setSuggestions(suggestions);
 		});
 	};
@@ -105,8 +113,8 @@ const FormTokenFieldControl = ({
 				value={getValueKeys()}
 				suggestions={getOptionNames()}
 				maxSuggestions={MAX_TERMS_SUGGESTIONS}
-				// __experimentalExpandOnFocus={true}
-				// __experimentalValidateInput={validateInput}
+				__experimentalExpandOnFocus={true}
+				__experimentalValidateInput={validateInput}
 				onChange={updateValue}
 				onInputChange={updateSuggestions}
 			/>
