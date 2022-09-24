@@ -28,7 +28,6 @@ function neve_run() {
 			'custom_post_types_sidebar'     => true,
 			'meta_custom_fields'            => true,
 			'sparks'                        => true,
-			'advanced_search_component'     => true,
 			'advanced_search_component_new' => true,
 			'submenu_style'                 => true,
 		]
