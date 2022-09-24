@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 import { FormTokenField } from '@wordpress/components';
+import { useState } from '@wordpress/element';
+import apiFetch from '@wordpress/api-fetch';
+import { addQueryArgs } from '@wordpress/url';
 
 const FormTokenFieldControl = ({
 	label,
@@ -8,16 +11,29 @@ const FormTokenFieldControl = ({
 	onChange,
 	value,
 }) => {
+	const MAX_TERMS_SUGGESTIONS = 20;
+	const DEFAULT_QUERY = {
+		per_page: MAX_TERMS_SUGGESTIONS,
+		orderby: 'title',
+		order: 'asc',
+		_fields: 'id,title',
+		context: 'view',
+	};
+
+	const [suggestions, setSuggestions] = useState(
+		Array.isArray(choices) ? choices : value
+	);
+
 	const updateValue = (nextVal) => {
 		// Convert option labels into ids
 		const selectedOptionsArray = [];
 
 		for (const optionName of nextVal) {
-			const matchingPost = choices.find((option) => {
+			const matchingPost = suggestions.find((option) => {
 				return option.label === optionName;
 			});
 			if (matchingPost !== undefined) {
-				selectedOptionsArray.push(matchingPost.id);
+				selectedOptionsArray.push(matchingPost);
 			}
 		}
 
@@ -26,21 +42,34 @@ const FormTokenFieldControl = ({
 
 	const getValueKeys = () => {
 		// Convert option ids into labels
-		const valueKeys = [];
-		for (const optionId of value) {
-			const wantedPost = choices.find((option) => {
-				return option.id === optionId;
-			});
-			if (wantedPost === undefined || !wantedPost) {
-				continue;
+
+		// Keep compatibility with previous version
+		if (
+			suggestions.length !== 0 &&
+			value.length > 0 &&
+			typeof value[0] !== 'object'
+		) {
+			const valueKeys = [];
+			for (const optionId of value) {
+				const wantedPost = suggestions.find((option) => {
+					return option.id === optionId;
+				});
+				if (wantedPost === undefined || !wantedPost) {
+					continue;
+				}
+				valueKeys.push(wantedPost.label);
 			}
-			valueKeys.push(wantedPost.label);
+			return valueKeys;
 		}
-		return valueKeys;
+
+		return value.map((item) => item.label);
 	};
 
 	const getOptionNames = () => {
-		return choices.map((option) => option.label);
+		if (!Array.isArray(suggestions)) {
+			return [];
+		}
+		return suggestions.map((option) => option.label);
 	};
 
 	const hasSubArray = (master, sub) => {
@@ -49,9 +78,38 @@ const FormTokenFieldControl = ({
 
 	const validateInput = (newVal) => {
 		return hasSubArray(
-			choices.map((el) => el.label),
+			suggestions.map((el) => el.label),
 			Array.isArray(newVal) ? newVal : [newVal]
 		);
+	};
+
+	const updateSuggestions = (newVal) => {
+		if (typeof choices !== 'string') {
+			return;
+		}
+
+		const query = {
+			...DEFAULT_QUERY,
+			...{ post_title_starts_with: newVal },
+		};
+
+		const request = apiFetch({
+			path: addQueryArgs(`/wp/v2/${choices}`, query),
+		});
+
+		request.then((posts) => {
+			posts = posts.map((term) => {
+				return { id: term.id, label: term.title.rendered };
+			});
+
+			const ids = new Set(suggestions.map((item) => item.id));
+			const merged = [
+				...suggestions,
+				...posts.filter((item) => !ids.has(item.id)),
+			];
+
+			setSuggestions(merged);
+		});
 	};
 
 	return (
@@ -64,10 +122,11 @@ const FormTokenFieldControl = ({
 				label={description || ''}
 				value={getValueKeys()}
 				suggestions={getOptionNames()}
-				maxSuggestions={20}
+				maxSuggestions={MAX_TERMS_SUGGESTIONS}
 				__experimentalExpandOnFocus={true}
 				__experimentalValidateInput={validateInput}
 				onChange={updateValue}
+				onInputChange={updateSuggestions}
 			/>
 		</div>
 	);

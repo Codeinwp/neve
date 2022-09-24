@@ -41,6 +41,13 @@ require_once 'functions-template.php';
 require_once 'functions-migration.php';
 
 add_action(
+	'init',
+	function () {
+		( new HFG\Rest\Server() )->init();
+	}
+);
+
+add_action(
 	'neve_do_footer',
 	function () {
 		do_action( 'hfg_footer_render' );

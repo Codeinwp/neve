@@ -7,7 +7,7 @@ const FormTokenFieldComponent = ({ control }) => {
 	const { choices, label, description } = control.params;
 
 	const updateValue = (nextVal) => {
-		setValue(nextVal);
+		setValue(nextVal.map((item) => item.id));
 		control.setting.set(JSON.stringify(nextVal));
 	};
 

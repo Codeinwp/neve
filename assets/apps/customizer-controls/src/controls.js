@@ -32,7 +32,6 @@ import { LogoPaletteControl } from './logo-palette/Control';
 import { RepeaterControl } from './repeater/Control';
 import { RichTextControl } from './rich-text/Control';
 import { LinkControl } from './link/Control';
-import { GroupSelectControl } from './group-select/Control';
 
 import './style.scss';
 import Documentation from './documentation-section/Documentation.tsx';
@@ -57,7 +56,6 @@ controlConstructor.neve_color_control = ColorControl;
 controlConstructor.neve_presets_selector = PresetsSelectorControl;
 controlConstructor.neve_multiselect = MultiSelectControl;
 controlConstructor.neve_form_token_field = FormTokenFieldControl;
-controlConstructor.neve_group_select = GroupSelectControl;
 controlConstructor.neve_responsive_radio_buttons_control =
 	ResponsiveRadioButtonsControl;
 controlConstructor.neve_radio_image_control = RadioImageControl;
