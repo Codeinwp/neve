@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { FormTokenField } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { useState, useCallback } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 import { addQueryArgs } from '@wordpress/url';
+import { debounce } from 'lodash';
 
 const FormTokenFieldControl = ({
 	label,
@@ -11,12 +12,12 @@ const FormTokenFieldControl = ({
 	onChange,
 	value,
 }) => {
+	const REQUEST_DEBOUNCE_DELAY = 400;
 	const MAX_TERMS_SUGGESTIONS = 20;
 	const DEFAULT_QUERY = {
 		per_page: MAX_TERMS_SUGGESTIONS,
-		orderby: 'title',
 		order: 'asc',
-		_fields: 'id,title',
+		_fields: 'id,slug',
 		context: 'view',
 	};
 
@@ -99,7 +100,7 @@ const FormTokenFieldControl = ({
 
 		request.then((posts) => {
 			posts = posts.map((term) => {
-				return { id: term.id, label: term.title.rendered };
+				return { id: term.id, label: term.slug };
 			});
 
 			const ids = new Set(suggestions.map((item) => item.id));
@@ -111,6 +112,11 @@ const FormTokenFieldControl = ({
 			setSuggestions(merged);
 		});
 	};
+
+	const debouncedChangeHandler = useCallback(
+		debounce(updateSuggestions, REQUEST_DEBOUNCE_DELAY),
+		[]
+	);
 
 	return (
 		<div className="neve-white-background-control neve-form-token-field-control">
@@ -126,7 +132,7 @@ const FormTokenFieldControl = ({
 				__experimentalExpandOnFocus={true}
 				__experimentalValidateInput={validateInput}
 				onChange={updateValue}
-				onInputChange={updateSuggestions}
+				onInputChange={debouncedChangeHandler}
 			/>
 		</div>
 	);
