@@ -4,6 +4,9 @@
  *
  * @package HFG
  */
+
+use HFG\Rest\Server;
+
 $header_components = array(
 	'HFG\Core\Components\Logo',
 	'HFG\Core\Components\MenuIcon',
@@ -43,7 +46,7 @@ require_once 'functions-migration.php';
 add_action(
 	'init',
 	function () {
-		( new HFG\Rest\Server() )->init();
+		( new Server() )->init();
 	}
 );
 
