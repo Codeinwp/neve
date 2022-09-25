@@ -111,6 +111,8 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			$caret_wrap_css = $caret_settings['side'] === 'right' ? 'margin-left:5px;' : 'margin-right:5px;';
 
 			if ( $is_sidebar_item && neve_is_new_skin() ) {
+				$expand_dropdowns = apply_filters( 'neve_first_level_expanded', false );
+				$additional_class = $expand_dropdowns && $depth === 0 ? 'dropdown-open' : '';
 				add_action( 'neve_after_header_wrapper_hook', [ $this, 'inline_style_for_sidebar' ], 9 );
 
 				if ( $item->url === '#' && ! self::$dropdowns_inline_js_enqueued ) {
@@ -120,7 +122,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 				$args->before = '<div class="wrap">';
 				$args->after  = '</div>';
 
-				$caret  = '<button ' . $expanded . ' type="button" class="caret-wrap navbar-toggle ' . $item->menu_order . '" style="' . esc_attr( $caret_wrap_css ) . '">';
+				$caret  = '<button ' . $expanded . ' type="button" class="caret-wrap navbar-toggle ' . esc_attr( $item->menu_order ) . ' ' . esc_attr( $additional_class ) . '" style="' . esc_attr( $caret_wrap_css ) . '">';
 				$caret .= $caret_pictogram;
 				$caret .= '</button>';
 

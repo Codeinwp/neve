@@ -10,7 +10,11 @@
 
 namespace HFG;
 
-$_id = current_component()->get_id();
+$_id  = current_component()->get_id();
+$args = [];
+if ( isset( $args ) && ! empty( $args ) ) {
+	current_component()->set_args( $args );
+}
 
 $item_classes   = array();
 $item_classes[] = 'item--inner';

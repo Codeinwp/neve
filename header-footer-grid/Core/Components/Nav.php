@@ -34,6 +34,7 @@ class Nav extends Abstract_Component {
 	const SPACING                  = 'spacing';
 	const EXPAND_DROPDOWNS         = 'expand_dropdowns';
 	const DROPDOWNS_EXPANDED_CLASS = 'dropdowns-expanded';
+
 	/**
 	 * Nav constructor.
 	 *
@@ -65,8 +66,9 @@ class Nav extends Abstract_Component {
 				if ( $this->get_id() !== $component_id ) {
 					return;
 				}
+				add_filter( 'neve_first_level_expanded', [ $this, 'expanded_dropdown' ] );
 				add_filter( 'nav_menu_submenu_css_class', [ $this, 'filter_menu_item_class' ], 10, 3 );
-			} 
+			}
 		);
 
 		add_action(
@@ -75,12 +77,25 @@ class Nav extends Abstract_Component {
 				if ( $this->get_id() !== $component_id ) {
 					return;
 				}
+				remove_filter( 'neve_first_level_expanded', [ $this, 'expanded_dropdown' ] );
 				remove_filter( 'nav_menu_submenu_css_class', [ $this, 'filter_menu_item_class' ] );
 			}
 		);
 
 
 		add_action( 'init', [ $this, 'run_nav_init' ] );
+	}
+
+	/**
+	 * Function for expanded carets.
+	 *
+	 * @return bool
+	 */
+	public function expanded_dropdown() {
+		if ( ! $this->is_component_active() ) {
+			return false;
+		}
+		return (bool) get_theme_mod( $this->get_id() . '_' . self::EXPAND_DROPDOWNS, false );
 	}
 
 	/**
@@ -97,13 +112,10 @@ class Nav extends Abstract_Component {
 			return $classes;
 		}
 		$expand_dropdowns = get_theme_mod( $this->get_id() . '_' . self::EXPAND_DROPDOWNS, false );
-		if ( ! $expand_dropdowns ) {
+		if ( (bool) $expand_dropdowns === false ) {
 			return $classes;
 		}
-		if ( ! in_array( 'mobile-subitem', $classes ) ) {
-			return $classes;
-		}
-		if ( $depth === 0 ) {
+		if ( property_exists( $args, 'menu_class' ) && str_contains( $args->menu_class, 'menu-mobile' ) && $depth === 0 ) {
 			$classes[] = 'dropdown-open';
 		}
 		return $classes;
@@ -368,7 +380,7 @@ class Nav extends Abstract_Component {
 				'id'                 => self::EXPAND_DROPDOWNS,
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_GENERAL,
-				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'transport'          => 'refresh',
 				'sanitize_callback'  => 'absint',
 				'default'            => 0,
 				'label'              => __( 'Expand first level of dropdowns when menu is in mobile menu content.', 'neve' ),
@@ -416,7 +428,7 @@ class Nav extends Abstract_Component {
 	 */
 	public function render_component() {
 		do_action( 'neve_before_render_nav', $this->get_id() );
-		Main::get_instance()->load( 'components/component-nav' );
+		Main::get_instance()->load( 'components/component-nav', '', $this->args );
 		do_action( 'neve_after_render_nav', $this->get_id() );
 	}
 
