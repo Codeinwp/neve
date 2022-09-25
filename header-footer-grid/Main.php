@@ -16,6 +16,7 @@ use HFG\Core\Css_Generator;
 use HFG\Core\Customizer;
 use HFG\Core\Settings\Config;
 use HFG\Core\Settings\Manager;
+use HFG\Rest\Server;
 use HFG\Traits\Core;
 use PHP_CodeSniffer\Tokenizers\CSS;
 
@@ -123,6 +124,12 @@ class Main {
 		if ( ! neve_is_new_builder() ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_utils_scripts' ) );
 		}
+		add_action(
+			'init',
+			function () {
+				( new Server() )->init();
+			}
+		);
 	}
 
 	/**

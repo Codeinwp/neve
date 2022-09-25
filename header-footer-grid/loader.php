@@ -5,8 +5,6 @@
  * @package HFG
  */
 
-use HFG\Rest\Server;
-
 $header_components = array(
 	'HFG\Core\Components\Logo',
 	'HFG\Core\Components\MenuIcon',
@@ -42,13 +40,6 @@ add_theme_support(
 );
 require_once 'functions-template.php';
 require_once 'functions-migration.php';
-
-add_action(
-	'init',
-	function () {
-		( new Server() )->init();
-	}
-);
 
 add_action(
 	'neve_do_footer',
