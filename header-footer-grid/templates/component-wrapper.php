@@ -10,8 +10,7 @@
 
 namespace HFG;
 
-$_id  = current_component()->get_id();
-$args = [];
+$_id = current_component()->get_id();
 if ( isset( $args ) && ! empty( $args ) ) {
 	current_component()->set_args( $args );
 }
