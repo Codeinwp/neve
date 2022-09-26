@@ -22,12 +22,27 @@ class Server {
 	 * @return void
 	 */
 	public function init() {
-		$supported_post_types = apply_filters( 'neve_rest_enable_title_starts_with', [] );
-		if ( empty( $supported_post_types ) ) {
+		do_action( 'neve_before_enable_title_starts_with' );
+
+		$enable_title_starts_with = apply_filters( 'neve_rest_enable_title_starts_with', '__return_false' );
+		if ( ! $enable_title_starts_with ) {
 			return;
 		}
 
-		foreach ( $supported_post_types as $post_type ) {
+		$abailable_post_types = get_post_types(
+			[
+				'public'       => true,
+				'show_in_rest' => true,
+			],
+			'names',
+			'and'
+		);
+
+		if ( empty( $abailable_post_types ) ) {
+			return;
+		}
+
+		foreach ( $abailable_post_types as $post_type ) {
 			add_filter( 'rest_' . $post_type . '_query', array( $this, 'add_arg_to_rest_endpoint' ), 10, 2 );
 		}
 

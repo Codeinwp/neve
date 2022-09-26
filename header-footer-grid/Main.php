@@ -125,7 +125,7 @@ class Main {
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_utils_scripts' ) );
 		}
 		add_action(
-			'init',
+			'rest_api_init',
 			function () {
 				( new Server() )->init();
 			}
