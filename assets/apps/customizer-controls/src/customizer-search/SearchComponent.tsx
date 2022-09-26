@@ -110,6 +110,25 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 	) as Control[];
 
 	/**
+	 * This `useEffect()` is being used to bind into panel and section expand
+	 * to allow for search clear on transitions from other clickable elements.
+	 */
+	useEffect(() => {
+		window.wp.customize.state('expandedPanel').bind(() => {
+			clearField();
+			if (customizerPanels?.classList.contains('search-not-found')) {
+				customizerPanels?.classList.remove('search-not-found');
+			}
+		});
+		window.wp.customize.state('expandedSection').bind(() => {
+			clearField();
+			if (customizerPanels?.classList.contains('search-not-found')) {
+				customizerPanels?.classList.remove('search-not-found');
+			}
+		});
+	}, []);
+
+	/**
 	 * This `useEffect()` is being used to listen for the toggleEvent
 	 * from `SearchToggle` component.
 	 */
