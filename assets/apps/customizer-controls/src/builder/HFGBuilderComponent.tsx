@@ -78,6 +78,10 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 			.state('expandedPanel')
 			.bind((panel: Record<string, unknown>) => {
 				if (panel.id && panel.id === `hfg_${builder}` && isHidden) {
+					if (panel.id === `hfg_page_header`) {
+						setHidden(true);
+						return true;
+					}
 					setHidden(false);
 					return false;
 				}
@@ -151,10 +155,14 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 					}
 
 					if (
-						activeSection.id ===
-						'neve_pro_global_page_header_settings'
+						[
+							'neve_pro_global_page_header_settings',
+							'hfg_page_header_layout_top',
+							'hfg_page_header_layout_bottom',
+						].includes(activeSection.id)
 					) {
 						setMounted(true);
+						setHidden(false);
 					}
 				});
 		});
