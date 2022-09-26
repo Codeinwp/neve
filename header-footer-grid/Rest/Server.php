@@ -22,7 +22,7 @@ class Server {
 	 * @return void
 	 */
 	public function init() {
-		$supported_post_types = apply_filters( 'neve_search_by_title_post_types', [] );
+		$supported_post_types = apply_filters( 'neve_rest_enable_title_starts_with', [] );
 		if ( empty( $supported_post_types ) ) {
 			return;
 		}
