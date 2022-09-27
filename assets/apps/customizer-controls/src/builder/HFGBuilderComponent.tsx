@@ -142,18 +142,17 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 			window.wp.customize
 				.state('expandedSection')
 				.bind((activeSection: Record<string, string>) => {
-					if (!activeSection) {
-						return;
-					}
-
-					if (!activeSection.id) {
-						return;
-					}
-
+					const currentPanel = window.wp.customize
+						.state('expandedPanel')
+						.get();
 					if (
-						activeSection.id ===
-						'neve_pro_global_page_header_settings'
+						currentPanel.id &&
+						currentPanel.id === 'hfg_page_header'
 					) {
+						if (!activeSection) {
+							setMounted(false);
+							return;
+						}
 						setMounted(true);
 					}
 				});
