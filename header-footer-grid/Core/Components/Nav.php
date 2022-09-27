@@ -101,9 +101,9 @@ class Nav extends Abstract_Component {
 	/**
 	 * Add open class on submenu if 'Expand the first level of dropdowns...' option is on.
 	 *
-	 * @param array $classes Submenu classes.
-	 * @param array $args Submenu args.
-	 * @param int   $depth Submenu depth.
+	 * @param array     $classes Submenu classes.
+	 * @param \stdClass $args Submenu args.
+	 * @param int       $depth Submenu depth.
 	 *
 	 * @return array
 	 */
@@ -115,7 +115,7 @@ class Nav extends Abstract_Component {
 		if ( (bool) $expand_dropdowns === false ) {
 			return $classes;
 		}
-		if ( property_exists( $args, 'menu_class' ) && str_contains( $args->menu_class, 'menu-mobile' ) && $depth === 0 ) {
+		if ( property_exists( $args, 'menu_class' ) && strpos( $args->menu_class, 'menu-mobile' ) && $depth === 0 ) {
 			$classes[] = 'dropdown-open';
 		}
 		return $classes;

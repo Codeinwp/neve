@@ -164,7 +164,7 @@ class Main {
 	 *
 	 * @param string $slug Template slug.
 	 * @param string $name Template variation.
-	 * @param string $args Component arguments.
+	 * @param array  $args Component arguments.
 	 */
 	public function load( $slug, $name = '', $args = [] ) {
 
