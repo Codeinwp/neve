@@ -19,6 +19,16 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.4.2](https://github.com/Codeinwp/neve/compare/v3.4.1...v3.4.2) (2022-09-27)
+
+- [Fix] Starter content hero image
+- [Fix] Upside down menu caret in Safari
+- [Fix] Customizer search prevents settings expand when using the pencil buttons from the preview
+- [Fix] Search icon component input height not applying on submit button
+
+
+
+
 ##### [Version 3.4.1](https://github.com/Codeinwp/neve/compare/v3.4.0...v3.4.1) (2022-09-19)
 
 - [Fix] Missing variable notice
