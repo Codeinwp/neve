@@ -22,8 +22,6 @@ class Server {
 	 * @return void
 	 */
 	public function init() {
-		do_action( 'neve_before_enable_title_starts_with' );
-
 		$enable_title_starts_with = apply_filters( 'neve_rest_enable_title_starts_with', '__return_false' );
 		if ( ! $enable_title_starts_with ) {
 			return;
