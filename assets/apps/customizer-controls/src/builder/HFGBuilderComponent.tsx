@@ -143,6 +143,16 @@ const HFGBuilderComponent: React.FC<Props> = ({ control, portalMount }) => {
 				.state('expandedSection')
 				.bind((activeSection: Record<string, string>) => {
 					if (!activeSection) {
+						const currentPanel = window.wp.customize
+							.state('expandedPanel')
+							.get();
+						if (
+							currentPanel.id &&
+							currentPanel.id === 'hfg_page_header'
+						) {
+							setMounted(false);
+							setHidden(true);
+						}
 						return;
 					}
 
