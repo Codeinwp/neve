@@ -11,6 +11,8 @@
 
 namespace HFG\Traits;
 
+use HFG\Core\Settings\Manager as SettingsManager;
+
 /**
  * Trait Core
  *
@@ -131,5 +133,54 @@ trait Core {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Fuction to flatten the array recursively.
+	 *
+	 * @param array $array Input array.
+	 *
+	 * @return array
+	 */
+	private function flatten_array( $array ) {
+		static $flattened = [];
+		if ( is_array( $array ) && count( $array ) > 0 ) {
+			foreach ( $array as $member ) {
+				if ( ! is_array( $member ) ) {
+					$flattened[] = $member;
+				} else {
+					$this->flatten_array( $member );
+				}
+			}
+		}
+
+		return $flattened;
+	}
+
+	/**
+	 * Determine if a component is used inside a builder
+	 */
+	public function component_is_used( $component_name, $builder ) {
+		if ( ! in_array( $builder, [ 'header', 'footer', 'page_header' ] ) ) {
+			return false;
+		}
+
+		$builder_name = 'hfg_' . $builder . '_layout';
+		if ( neve_is_new_builder() ) {
+			$builder_name .= '_v2';
+		}
+
+		$mod_value         = json_decode( SettingsManager::get_instance()->get( $builder_name ), true );
+		$active_components = $this->flatten_array( $mod_value );
+
+		return count(
+			array_filter(
+				$active_components,
+				function ( $component ) use ( $component_name ) {
+					return str_contains( $component, $component_name );
+				} 
+			) 
+		) > 0;
+
 	}
 }
