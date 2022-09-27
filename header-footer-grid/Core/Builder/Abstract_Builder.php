@@ -1610,7 +1610,7 @@ abstract class Abstract_Builder implements Builder {
 				foreach ( $component_group['components'] as $component ) {
 					self::$current_component = $component;
 					$instance                = $this->builder_components[ $component ];
-					$instance->render();
+					$instance->render( $device );
 				}
 				echo '</div>';
 			}

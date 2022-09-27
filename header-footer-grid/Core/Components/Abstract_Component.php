@@ -307,6 +307,13 @@ abstract class Abstract_Component implements Component {
 	public $has_horizontal_alignment = false;
 
 	/**
+	 * Component arguments.
+	 *
+	 * @var array
+	 */
+	protected $args = [];
+
+	/**
 	 * Abstract_Component constructor.
 	 *
 	 * @param string $panel Builder panel.
@@ -327,6 +334,15 @@ abstract class Abstract_Component implements Component {
 			$this->set_property( 'section', $this->get_id() );
 		}
 		add_action( 'init', [ $this, 'define_settings' ] );
+	}
+
+	/**
+	 * Set component arguments.
+	 *
+	 * @param array $args Component arguments.
+	 */
+	public function set_args( $args ) {
+		$this->args = $args;
 	}
 
 	/**
@@ -600,11 +616,17 @@ abstract class Abstract_Component implements Component {
 
 	/**
 	 * Render component markup.
+	 *
+	 * @param string $device Current device.
 	 */
-	public function render() {
+	public function render( $device = '' ) {
+		$args = [];
+		if ( ! empty( $device ) && in_array( $device, [ 'desktop', 'tablet', 'mobile' ] ) ) {
+			$args['device'] = $device;
+		}
 		self::$current_component           = $this->get_id();
 		Abstract_Builder::$current_builder = $this->get_builder_id();
-		Main::get_instance()->load( 'component-wrapper' );
+		Main::get_instance()->load( 'component-wrapper', '', $args );
 	}
 
 	/**
@@ -1002,7 +1024,6 @@ abstract class Abstract_Component implements Component {
 			'desktop' => $old,
 		];
 	}
-
 
 	/**
 	 * Add horizontal alignment to component.
