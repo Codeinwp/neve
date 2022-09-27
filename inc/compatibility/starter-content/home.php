@@ -7,8 +7,8 @@
 return [
 	'post_type'    => 'page',
 	'post_title'   => _x( 'Home', 'Theme starter content', 'neve' ),
-	'post_content' => '<!-- wp:cover {"url":"' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/hero.jpg","dimRatio":0,"focalPoint":{"x":"0.50","y":"0.64"},"minHeight":700,"align":"full"} -->
-<div class="wp-block-cover alignfull" style="background-image:url(' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/hero.jpg);min-height:700px;background-position:50% 64%"><div class="wp-block-cover__inner-container"><!-- wp:spacer {"height":80} -->
+	'post_content' => '<!-- wp:cover {"url":"' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/hero.jpg","dimRatio":0,"focalPoint":{"x":0.5,"y":0.64},"minHeight":700,"isDark":false,"align":"full"} -->
+<div class="wp-block-cover alignfull is-light" style="min-height:700px"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-0 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/hero.jpg" style="object-position:50% 64%" data-object-fit="cover" data-object-position="50% 64%"/><div class="wp-block-cover__inner-container"><!-- wp:spacer {"height":"80px"} -->
 <div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
@@ -16,27 +16,31 @@ return [
 <h1 class="has-text-align-center has-text-color" style="color:#121212">Create and grow your <br>unique website today</h1>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":17},"color":{"text":"#121212"}}} -->
+<!-- wp:paragraph {"align":"center","style":{"color":{"text":"#121212"},"typography":{"fontSize":"17px"}}} -->
 <p class="has-text-align-center has-text-color" style="color:#121212;font-size:17px">Programmatically work but low hanging fruit so new economy cross-pollination. Quick sync new <br>economy onward and upward.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:buttons {"align":"center", "layout":{"type":"flex","justifyContent":"center"}} -->
-<div class="wp-block-buttons aligncenter"><!-- wp:button {"className":"is-style-primary"} -->
-<div class="wp-block-button is-style-primary"><a class="wp-block-button__link" href="#">LEARN MORE</a></div>
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-primary"} -->
+<div class="wp-block-button is-style-primary"><a class="wp-block-button__link wp-element-button" href="#">LEARN MORE</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-secondary"} -->
-<div class="wp-block-button is-style-secondary">
-<a class="wp-block-button__link" href="https://demosites.io/" target="_blank" rel="noreferrer noopener">See all demos</a></div> <!-- /wp:button --></div>
+<div class="wp-block-button is-style-secondary"><a class="wp-block-button__link wp-element-button" href="https://demosites.io/" target="_blank" rel="noreferrer noopener">See all demos</a></div>
+<!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
-<!-- wp:spacer {"height":80} -->
+<!-- wp:spacer {"height":"80px"} -->
 <div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:spacer {"height":80} -->
+<!-- wp:spacer {"height":"80px"} -->
 <div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer --></div></div>
+<!-- /wp:spacer -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 
 <!-- wp:spacer {"height":80} -->
