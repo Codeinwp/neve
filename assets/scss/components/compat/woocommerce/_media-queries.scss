@@ -2,6 +2,7 @@
 
 	@include notices--tablet-sm();
 	@include shop-loop--tablet-sm();
+	@include bc-count-wrap();
 }
 
 @media (min-width: #{$tablet}) {
