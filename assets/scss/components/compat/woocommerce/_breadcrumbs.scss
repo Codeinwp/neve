@@ -27,11 +27,12 @@
 	display: flex;
 	font-size: 14px;
 	justify-content: space-between;
+	flex-direction: column;
 }
 
 @mixin bc-count-wrap() {
 
 	.nv-bc-count-wrap {
-		flex-direction: column;
+		flex-direction: row;
 	}
 }
