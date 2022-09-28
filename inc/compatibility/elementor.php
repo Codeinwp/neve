@@ -31,6 +31,8 @@ class Elementor extends Page_Builder_Base {
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_front_end' ], 999, 3 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 100 );
 		add_action( 'wp_insert_post', array( $this, 'update_has_template_transient' ), 10, 2 );
+		add_action( 'wp', array( $this, 'update_elementor_templates' ) );
+		add_action( 'wp_insert_post', array( $this, 'clean_elementor_transients' ), 10, 2 );
 	}
 
 	/**
@@ -297,19 +299,67 @@ class Elementor extends Page_Builder_Base {
 	}
 
 	/**
+	 * Check if Elementor has a template on product archive or single product and store the result in a transient.
+	 */
+	public function update_elementor_templates() {
+		if ( class_exists( 'WooCommerce', false ) ) {
+			self::is_elementor_template( 'archive', 'product_archive' );
+			self::is_elementor_template( 'single', 'product' );
+		}
+	}
+
+	/**
+	 * Remove elementor template transients when a new template is added or deleted.
+	 *
+	 * This works only for product or shop template.
+	 *
+	 * @param  int      $post_id Current post id.
+	 * @param  \WP_Post $post WP_Post object.
+	 *
+	 * @return void
+	 */
+	public function clean_elementor_transients( $post_id, $post ) {
+		if ( $post->post_type !== 'elementor_library' ) {
+			return;
+		}
+
+		// Only delete transients if the user is adding or deleting a product_archive or a product template.
+		$template_type = get_post_meta( $post_id, '_elementor_template_type', true );
+		if ( ! in_array( $template_type, [ 'product', 'product-archive' ], true ) ) {
+			return;
+		}
+
+		$transient_name = 'neve_elementor_has_template_archive_product_archive';
+		if ( $template_type === 'product' ) {
+			$transient_name = 'neve_elementor_has_template_single_product';
+		}
+
+		delete_transient( $transient_name );
+	}
+
+	/**
 	 * Is the current page has an elementor template
 	 *
 	 * @param  string $location that location of the template such as single, archive etc.
 	 * @param  string $cond Template showing condition it can be product_archive, product etc.
 	 * @return bool
 	 */
-	public static function is_elementor_template( $location, $cond ) {
+	public static function is_elementor_template( $location, $cond, $force_refresh = false ) {
+		$transient_key        = 'neve_elementor_has_template_' . $location . '_' . $cond;
+		$transient_expiry_sec = HOUR_IN_SECONDS;
+		$cached_value         = get_transient( $transient_key ) == true; // cast transient (string) to bool
+		if ( $force_refresh !== true && $cached_value !== false ) {
+			return $cached_value;
+		}
+
 		if ( ! did_action( 'elementor_pro/init' ) ) {
 			return false;
 		}
+
 		if ( ! class_exists( '\ElementorPro\Plugin', false ) ) {
 			return false;
 		}
+
 		$conditions_manager = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'theme-builder' )->get_conditions_manager();
 
 		$documents = $conditions_manager->get_documents_for_location( $location );
@@ -318,10 +368,13 @@ class Elementor extends Page_Builder_Base {
 			$conditions = $conditions_manager->get_document_conditions( $document );
 			foreach ( $conditions as $condition ) {
 				if ( 'include' === $condition['type'] && $cond === $condition['name'] ) {
+					set_transient( $transient_key, 1, $transient_expiry_sec );
 					return true;
 				}
 			}
 		}
+
+		set_transient( $transient_key, 0, $transient_expiry_sec );
 		return false;
 	}
 
