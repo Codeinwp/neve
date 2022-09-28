@@ -3,6 +3,7 @@
 .woocommerce .woocommerce-breadcrumb {
 	color: var(--nv-text-color);
 	font-size: 14px;
+	white-space: nowrap;
 
 	a {
 		color: var(--nv-secondary-accent);
@@ -26,4 +27,8 @@
 	display: flex;
 	font-size: 14px;
 	justify-content: space-between;
+
+	@media (min-width: #{$tablet-sm}) {
+		flex-direction: column;
+	}
 }
