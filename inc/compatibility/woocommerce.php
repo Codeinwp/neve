@@ -259,21 +259,36 @@ class Woocommerce {
 		add_action( 'wp', [ $this, 'setup_form_buttons' ] );
 
 		if ( neve_is_new_skin() ) {
-			add_action(
-				'woocommerce_checkout_before_customer_details',
-				function () {
-					echo '<div class="nv-customer-details">';
-				},
-				0
-			);
-			add_action( 'woocommerce_checkout_after_customer_details', [ $this, 'close_div' ], PHP_INT_MAX );
-			add_action(
-				'woocommerce_checkout_before_order_review_heading',
-				function () {
-					echo '<div class="nv-order-review">';
-				}
-			);
-			add_action( 'woocommerce_checkout_after_order_review', [ $this, 'close_div' ] );
+
+			/**
+			 * Checkout page tweaks.
+			 */
+			$is_elementor = get_post_meta( get_the_id(), '_elementor_edit_mode', true ) === 'builder';
+			if ( ! $is_elementor ) {
+				add_action(
+					'woocommerce_before_checkout_form',
+					function () {
+						echo '<div class="nv-checkout-wrap">';
+					},
+					PHP_INT_MAX 
+				);
+				add_action( 'woocommerce_after_checkout_form', [ $this, 'close_div' ], PHP_INT_MIN );
+				add_action(
+					'woocommerce_checkout_before_customer_details',
+					function () {
+						echo '<div class="nv-customer-details">';
+					},
+					0
+				);
+				add_action( 'woocommerce_checkout_after_customer_details', [ $this, 'close_div' ], PHP_INT_MAX );
+				add_action(
+					'woocommerce_checkout_before_order_review_heading',
+					function () {
+						echo '<div class="nv-order-review">';
+					}
+				);
+				add_action( 'woocommerce_checkout_after_order_review', [ $this, 'close_div' ] );
+			}
 
 			add_action(
 				'woocommerce_before_single_product_summary',

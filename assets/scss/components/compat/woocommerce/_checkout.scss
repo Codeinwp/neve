@@ -33,7 +33,7 @@
 		float: none;
 	}
 
-	form.checkout {
+	.nv-checkout-wrap form.checkout {
 		display: grid;
 		grid-template-columns: 1fr;
 	}
@@ -152,7 +152,7 @@
 			margin-bottom: $spacing-xxl;
 		}
 
-		form.checkout {
+		.nv-checkout-wrap form.checkout {
 			grid-template-columns: 3fr 2fr;
 			grid-column-gap: $spacing-aired;
 		}
