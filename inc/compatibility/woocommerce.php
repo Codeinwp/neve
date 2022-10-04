@@ -254,7 +254,9 @@ class Woocommerce {
 		add_action( 'neve_bc_count', 'woocommerce_result_count' );
 
 		$this->edit_woocommerce_header();
-		$this->move_checkout_coupon();
+		if ( ! Elementor::is_elementor_checkout() ) {
+			$this->move_checkout_coupon();
+		}
 		$this->add_inline_selectors();
 		add_action( 'wp', [ $this, 'setup_form_buttons' ] );
 
@@ -263,14 +265,13 @@ class Woocommerce {
 			/**
 			 * Checkout page tweaks.
 			 */
-			$is_elementor = get_post_meta( get_the_id(), '_elementor_edit_mode', true ) === 'builder';
-			if ( ! $is_elementor ) {
+			if ( ! Elementor::is_elementor_checkout() ) {
 				add_action(
 					'woocommerce_before_checkout_form',
 					function () {
 						echo '<div class="nv-checkout-wrap">';
 					},
-					PHP_INT_MAX 
+					PHP_INT_MAX
 				);
 				add_action( 'woocommerce_after_checkout_form', [ $this, 'close_div' ], PHP_INT_MIN );
 				add_action(

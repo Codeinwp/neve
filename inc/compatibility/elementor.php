@@ -386,4 +386,47 @@ class Elementor extends Page_Builder_Base {
 		set_transient( $transient_key, 1, $transient_expiry_sec );
 		return true;
 	}
+
+	/**
+	 * Detect if current page has elementor checkout widget.
+	 *
+	 * @return bool
+	 */
+	public static function is_elementor_checkout() {
+		if ( ! defined( 'ELEMENTOR_VERSION' ) ) {
+			return false;
+		}
+
+		$page_id      = get_the_id();
+		$is_elementor = get_post_meta( $page_id, '_elementor_edit_mode', true ) === 'builder';
+		if ( ! $is_elementor ) {
+			return false;
+		}
+
+		$elementor_data = get_post_meta( $page_id, '_elementor_data', true );
+		if ( ! empty( $elementor_data ) && is_string( $elementor_data ) ) {
+			$elementor_data = json_decode( $elementor_data, true );
+		}
+
+		if ( empty( $elementor_data ) ) {
+			return false;
+		}
+
+		$has_checkout_widget = false;
+		array_walk_recursive(
+			$elementor_data,
+			function ( $value, $key ) use ( &$has_checkout_widget ) {
+				static $done = false;
+				if ( $done ) {
+					return;
+				}
+				if ( $key === 'widgetType' && $value === 'woocommerce-checkout-page' ) {
+					$has_checkout_widget = true;
+					$done                = true;
+				}
+			}
+		);
+
+		return $has_checkout_widget;
+	}
 }
