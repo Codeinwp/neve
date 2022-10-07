@@ -93,6 +93,10 @@ form.wp-block-search input.wp-block-search__input,
 	@extend %nv-form-fields;
 }
 
+form select {
+	background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCI+PHBhdGggZmlsbD0iIzYyNjI2MiIgZD0iTTE1IDhsLTQgNi00LTZoOHoiLz48L3N2Zz4=) right center / 18px no-repeat, var(--formfieldbgcolor);
+}
+
 form label,
 .wpforms-container .wpforms-field-label {
 
