@@ -172,7 +172,10 @@ class Woocommerce {
 		if ( array_key_exists( 'stripe', $payment_gateways ) && property_exists( $payment_gateways['stripe'], 'settings' ) && array_key_exists( 'payment_request_button_locations', $payment_gateways['stripe']->settings ) ) {
 			$button_locations = $payment_gateways['stripe']->settings['payment_request_button_locations'];
 			if ( in_array( 'product', $button_locations ) ) {
-				$css .= '.woocommerce.single .entry-summary > form.cart { display:block; }';
+				$css .= '
+				.woocommerce.single .entry-summary > form.cart { display:block; }
+				.woocommerce div.product form.cart .button { float: none; }
+				.sp-wl-wrap.sp-wl-product-wrap { margin-left: 0; margin-top: 5px;}';
 			}
 			if ( in_array( 'cart', $button_locations ) ) {
 				$css .= '.woocommerce .cart_totals .wc-proceed-to-checkout { display:block; }';
