@@ -241,6 +241,8 @@
 	}
 
 	.wc-proceed-to-checkout {
+		display: flex;
+		justify-content: flex-end;
 		--primarybtnpadding: 15px 40px;
 	}
 }
