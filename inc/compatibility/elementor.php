@@ -17,6 +17,8 @@ use Neve\Core\Dynamic_Css;
  */
 class Elementor extends Page_Builder_Base {
 
+	const TRANSIENT_EXPIRY_SEC = HOUR_IN_SECONDS;
+
 	/**
 	 * Init function.
 	 */
@@ -302,10 +304,8 @@ class Elementor extends Page_Builder_Base {
 	 * Check if Elementor has a template on product archive or single product and store the result in a transient.
 	 */
 	public function update_elementor_templates() {
-		if ( class_exists( 'WooCommerce', false ) ) {
-			self::is_elementor_template( 'archive', 'product_archive' );
-			self::is_elementor_template( 'single', 'product' );
-		}
+		self::has_template( 'shop' );
+		self::has_template( 'product' );
 	}
 
 	/**
@@ -329,53 +329,12 @@ class Elementor extends Page_Builder_Base {
 			return;
 		}
 
-		$transient_name = 'neve_elementor_has_template_archive_product_archive';
+		$transient_name = 'neve_elementor_has_template_shop_' . $post_id;
 		if ( $template_type === 'product' ) {
-			$transient_name = 'neve_elementor_has_template_single_product';
+			$transient_name = 'neve_elementor_has_template_product_' . $post_id;
 		}
 
 		delete_transient( $transient_name );
-	}
-
-	/**
-	 * Is the current page has an elementor template
-	 *
-	 * @param  string $location that location of the template such as single, archive etc.
-	 * @param  string $cond Template showing condition it can be product_archive, product etc.
-	 * @return bool
-	 */
-	public static function is_elementor_template( $location, $cond, $force_refresh = false ) {
-		$transient_key        = 'neve_elementor_has_template_' . $location . '_' . $cond;
-		$transient_expiry_sec = HOUR_IN_SECONDS;
-		$cached_value         = get_transient( $transient_key ) == true; // cast transient (string) to bool
-		if ( $force_refresh !== true && $cached_value !== false ) {
-			return $cached_value;
-		}
-
-		if ( ! did_action( 'elementor_pro/init' ) ) {
-			return false;
-		}
-
-		if ( ! class_exists( '\ElementorPro\Plugin', false ) ) {
-			return false;
-		}
-
-		$conditions_manager = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'theme-builder' )->get_conditions_manager();
-
-		$documents = $conditions_manager->get_documents_for_location( $location );
-
-		foreach ( $documents as $document ) {
-			$conditions = $conditions_manager->get_document_conditions( $document );
-			foreach ( $conditions as $condition ) {
-				if ( 'include' === $condition['type'] && $cond === $condition['name'] ) {
-					set_transient( $transient_key, 1, $transient_expiry_sec );
-					return true;
-				}
-			}
-		}
-
-		set_transient( $transient_key, 0, $transient_expiry_sec );
-		return false;
 	}
 
 	/**
@@ -401,7 +360,7 @@ class Elementor extends Page_Builder_Base {
 	 * The method was designed to use in customizer. ! Do not use it outside of the customizer.
 	 * The method works if only Elementor Pro is active.
 	 *
-	 * @param  string $elementor_template_type that is template type such as page,product-archive,product,kit etc.
+	 * @param  string $elementor_template_type that is template type such as shop, product etc.
 	 * @return bool
 	 */
 	public static function has_template( $elementor_template_type, $force_refresh = false ) {
@@ -409,34 +368,118 @@ class Elementor extends Page_Builder_Base {
 			return false;
 		}
 
-		$transient_key        = 'neve_elementor_has_template_' . $elementor_template_type;
-		$transient_expiry_sec = HOUR_IN_SECONDS;
-		$cached_value         = get_transient( $transient_key ) == true; // cast transient (string) to bool
+		if ( ! did_action( 'elementor_pro/init' ) ) {
+			return false;
+		}
 
+		$available_locations = [ 'shop', 'product' ];
+		if ( ! in_array( $elementor_template_type, $available_locations, true ) ) {
+			return false;
+		}
+
+		if ( ! class_exists( 'WooCommerce', false ) ) {
+			return false;
+		}
+
+		$id            = get_the_ID();
+		$transient_key = 'neve_elementor_has_template_' . $elementor_template_type . '_' . $id;
+		$cached_value  = get_transient( $transient_key ) == true; // cast transient (string) to bool
 		if ( $force_refresh !== true && $cached_value !== false ) {
 			return $cached_value;
 		}
 
-		$args = [
-			'post_type'              => 'elementor_library',
-			'post_status'            => 'publish',
-			'update_post_term_cache' => false,
-			'meta_key'               => '_elementor_template_type',
-			'meta_value'             => $elementor_template_type, //phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
-			'no_found_rows'          => true,
-			'posts_per_page'         => 1,
-			'fields'                 => 'ids',
-		];
+		set_transient( $transient_key, -1, self::TRANSIENT_EXPIRY_SEC );
 
-		$query = new \WP_Query( $args );
+		$conditions_to_check = [];
+		$search_in           = '';
+		switch ( $elementor_template_type ) {
+			case 'shop':
+				if ( ! is_shop() ) {
+					return false;
+				}
 
-		// if elementor template not found
-		if ( empty( $query->posts ) ) {
-			set_transient( $transient_key, 0, $transient_expiry_sec );
+
+				$conditions_to_check = [ 'product_archive/shop_page', 'product_archive' ];
+				$search_in           = 'archive';
+				break;
+
+			case 'product':
+				if ( ! is_product() ) {
+					return false;
+				}
+
+				$conditions_to_check = [ 'product', 'product/in_product_cat', 'product/in_product_tag', 'product/product_by_author' ];
+				$search_in           = 'single';
+				$product             = wc_get_product( $id );
+				if ( ! empty( $product ) ) {
+
+					// Get category conditions to check;
+					$product_categories = $product->get_category_ids();
+					if ( ! empty( $product_categories ) && is_array( $product_categories ) ) {
+						foreach ( $product_categories as $cat_id ) {
+							$conditions_to_check[] = 'product/in_product_cat/' . $cat_id;
+						}
+					}
+
+					// Will skip searching for "In Child Product categories" as it's pretty costly.
+
+					// Get category conditions to check;
+					$product_tags = $product->get_tag_ids();
+					if ( ! empty( $product_tags ) && is_array( $product_tags ) ) {
+						foreach ( $product_tags as $tag_id ) {
+							$conditions_to_check[] = 'product/in_product_tag/' . $tag_id;
+						}
+					}
+
+					// Get author conditions to check:
+					$author_id             = get_post_field( 'post_author', $id );
+					$conditions_to_check[] = 'product/product_by_author/' . $author_id;
+				}
+				break;
+		}
+
+		foreach ( $conditions_to_check as $condition ) {
+			if ( self::is_elementor_template( $search_in, $condition ) ) {
+				set_transient( $transient_key, 1, self::TRANSIENT_EXPIRY_SEC );
+				return true;
+			}
+		}
+
+		set_transient( $transient_key, 0, self::TRANSIENT_EXPIRY_SEC );
+		return false;
+	}
+
+	/**
+	 * Is the current page has an elementor template
+	 *
+	 * @param  string $location that location of the template such as single, archive etc.
+	 * @param  string $cond Template showing condition it can be product_archive, product etc.
+	 * @return bool
+	 */
+	public static function is_elementor_template( $location, $cond ) {
+		if ( ! class_exists( '\ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Cache', false ) ) {
 			return false;
 		}
 
-		set_transient( $transient_key, 1, $transient_expiry_sec );
-		return true;
+		$elementor_conditions_cache = new \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Cache();
+		$templates_conditions       = $elementor_conditions_cache->get_by_location( $location );
+		if ( empty( $templates_conditions ) ) {
+			return false;
+		}
+
+		// Flatten the templates => conditions array to search easier for conditions.
+		$flatten = [];
+		array_walk_recursive(
+			$templates_conditions,
+			function( $el ) use ( &$flatten ) {
+				$flatten[] = $el;
+			}
+		);
+
+		if ( in_array( 'include/' . $cond, $flatten ) ) {
+			return true;
+		}
+
+		return false;
 	}
 }
