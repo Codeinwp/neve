@@ -109,7 +109,7 @@
 	border-color: var(--formfieldbordercolor);
 	border-width: var(--formfieldborderwidth);
 	border-radius: var(--formfieldborderradius, 3px);
-	background-color: var(--formfieldbgcolor);
+	background: var(--formfieldbgcolor);
 	color: var(--formfieldcolor);
 	padding: var(--formfieldpadding);
 
