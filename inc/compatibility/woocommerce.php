@@ -156,31 +156,37 @@ class Woocommerce {
 			return;
 		}
 
-		if ( ! class_exists( 'WC_Payment_Gateways', false ) ) {
+		$payment_gateways = WC()->payment_gateways()->get_available_payment_gateways();
+		if ( empty( $payment_gateways ) ) {
 			return;
 		}
 
-		$wc_gateways      = new \WC_Payment_Gateways();
-		$payment_gateways = $wc_gateways->get_available_payment_gateways();
-		if ( empty( $payment_gateways ) ) {
+		if ( ! isset( $payment_gateways['stripe'] ) ) {
+			return;
+		}
+
+		if ( ! isset( $payment_gateways['stripe']->settings ) ) {
+			return;
+		}
+
+		if ( ! isset( $payment_gateways['stripe']->settings['payment_request_button_locations'] ) ) {
 			return;
 		}
 
 		$css = '';
 
 		// Inline style for stripe.
-		if ( array_key_exists( 'stripe', $payment_gateways ) && property_exists( $payment_gateways['stripe'], 'settings' ) && array_key_exists( 'payment_request_button_locations', $payment_gateways['stripe']->settings ) ) {
-			$button_locations = $payment_gateways['stripe']->settings['payment_request_button_locations'];
-			if ( in_array( 'product', $button_locations ) ) {
-				$css .= '
-				.woocommerce.single .entry-summary > form.cart { display:block; }
-				.woocommerce div.product form.cart .button { float: none; }
-				.sp-wl-wrap.sp-wl-product-wrap { margin-left: 0; margin-top: 5px;}';
-			}
-			if ( in_array( 'cart', $button_locations ) ) {
-				$css .= '.woocommerce .cart_totals .wc-proceed-to-checkout { display:block; }';
-			}
+		$button_locations = $payment_gateways['stripe']->settings['payment_request_button_locations'];
+		if ( in_array( 'product', $button_locations ) ) {
+			$css .= '
+			.woocommerce.single .entry-summary > form.cart { display:block; }
+			.woocommerce div.product form.cart .button { float: none; }
+			.sp-wl-wrap.sp-wl-product-wrap { margin-left: 0; margin-top: 5px;}';
 		}
+		if ( in_array( 'cart', $button_locations ) ) {
+			$css .= '.woocommerce .cart_totals .wc-proceed-to-checkout { display:block; }';
+		}
+
 
 		if ( empty( $css ) ) {
 			return;
