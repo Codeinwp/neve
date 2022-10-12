@@ -10,6 +10,7 @@ namespace Neve\Compatibility;
 
 use HFG\Core\Components\CartIcon;
 use HFG\Core\Magic_Tags;
+use Neve\Core\Dynamic_Css;
 use Neve\Core\Settings\Config;
 use Neve\Customizer\Defaults\Layout;
 use Neve\Views\Breadcrumbs;
@@ -107,6 +108,7 @@ class Woocommerce {
 		add_filter( 'body_class', array( $this, 'add_payment_method_class' ) );
 		add_action( 'wp', array( $this, 'register_hooks' ), 11 );
 		add_action( 'neve_react_controls_localization', array( $this, 'add_customizer_options' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'payment_style' ), 100 );
 	}
 
 	/**
@@ -144,6 +146,54 @@ class Woocommerce {
 		$options['elementor']['hasElementorShopTemplate']    = Elementor::has_template( 'product-archive' );
 		$options['elementor']['hasElementorProductTemplate'] = Elementor::has_template( 'product' );
 		return $options;
+	}
+
+	/**
+	 * Add inline style for payment methods.
+	 */
+	public function payment_style() {
+		if ( ! class_exists( 'WooCommerce', false ) ) {
+			return;
+		}
+
+		$payment_gateways = WC()->payment_gateways()->get_available_payment_gateways();
+		if ( empty( $payment_gateways ) ) {
+			return;
+		}
+
+		if ( ! isset( $payment_gateways['stripe'] ) ) {
+			return;
+		}
+
+		if ( ! isset( $payment_gateways['stripe']->settings ) ) {
+			return;
+		}
+
+		if ( ! isset( $payment_gateways['stripe']->settings['payment_request_button_locations'] ) ) {
+			return;
+		}
+
+		$css = '';
+
+		// Inline style for stripe.
+		$button_locations = $payment_gateways['stripe']->settings['payment_request_button_locations'];
+		if ( in_array( 'product', $button_locations ) ) {
+			$css .= '
+			.woocommerce.single .entry-summary > form.cart { display:block; }
+			.woocommerce div.product form.cart .button { float: none; }
+			.sp-wl-wrap.sp-wl-product-wrap { margin-left: 0; margin-top: 5px;}';
+		}
+		if ( in_array( 'cart', $button_locations ) ) {
+			$css .= '.woocommerce .cart_totals .wc-proceed-to-checkout { display:block; }';
+		}
+
+
+		if ( empty( $css ) ) {
+			return;
+		}
+
+		$css = Dynamic_Css::minify_css( $css );
+		wp_add_inline_style( 'neve-woocommerce', $css );
 	}
 
 	/**

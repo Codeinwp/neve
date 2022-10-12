@@ -9,6 +9,7 @@
 	@include cart--tablet();
 	@include account--tablet();
 	@include product--tablet();
+	@include bc-count-wrap();
 }
 
 @media (min-width: #{$laptop}) {
