@@ -1,3 +1,11 @@
+##### [Version 3.4.3](https://github.com/Codeinwp/neve/compare/v3.4.2...v3.4.3) (2022-10-12)
+
+- [Fix] Caret for select dropdown not appearing
+- [Fix] Adjusted the breadcrumbs and the text for the results display on mobile for WooCommerce
+- [Fix] Compatibility with WooCommerce Stripe Gateway plugin
+- Prepare Neve for WordPress 6.1
+- Update Google Fonts
+
 ##### [Version 3.4.2](https://github.com/Codeinwp/neve/compare/v3.4.1...v3.4.2) (2022-09-27)
 
 - [Fix] Starter content hero image
