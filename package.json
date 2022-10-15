@@ -92,6 +92,7 @@
 		"@typescript-eslint/eslint-plugin": "^4.19.0",
 		"@typescript-eslint/parser": "^4.19.0",
 		"@wordpress/api-fetch": "^5.2.3",
+		"@wordpress/block-editor": "^10.2.0",
 		"@wordpress/components": "^18.0.0",
 		"@wordpress/compose": "^5.0.3",
 		"@wordpress/data": "^6.1.1",

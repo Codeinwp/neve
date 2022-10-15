@@ -12,6 +12,7 @@ export { default as MultiSelect } from './Controls/MultiSelect';
 export { default as Toggle } from './Controls/Toggle';
 export { default as RadioImage } from './Controls/RadioImage';
 export { default as FormTokenFieldControl } from './Controls/FormTokenFieldControl';
+export { default as MetaFeaturedImage } from './Controls/MetaFeaturedImage';
 export { default as GroupSelectControl } from './Controls/GroupSelectControl';
 
 // UI Components
