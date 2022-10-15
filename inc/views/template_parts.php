@@ -225,7 +225,8 @@ class Template_Parts extends Base_View {
 			$neve_thumbnail_skip_lazy_added = true;
 		}
 
-		$markup = '<div class="nv-post-thumbnail-wrap">';
+		$post_image_wrap = apply_filters( 'neve_post_wrap_classes', [ 'nv-post-thumbnail-wrap' ] );
+		$markup          = '<div class="' . esc_attr( implode( ' ', $post_image_wrap ) ) . '">';
 
 		$markup .= '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '" rel="bookmark" title="' . the_title_attribute(
 			array(
