@@ -187,12 +187,11 @@ class Template_Parts extends Base_View {
 		}
 
 		if ( $layout === 'covers' ) {
-			$style = '';
+			$markup .= '<div class="cover-post">';
+			$markup .= '<div class="cover-overlay"></div>';
 			if ( in_array( 'thumbnail', $order, true ) ) {
-				$thumb  = get_the_post_thumbnail_url( $post_id );
-				$style .= ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
+				$markup .= $this->get_post_thumbnail( $post_id, true );
 			}
-			$markup .= '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
 			$markup .= '<div class="inner">';
 			$markup .= $this->get_ordered_content_parts( true, $post_id );
 			$markup .= '</div>';
@@ -208,9 +207,11 @@ class Template_Parts extends Base_View {
 	 * Render the post thumbnail.
 	 *
 	 * @param int | null $post_id Post id.
+	 * @param bool       $skip_link Flag to skip wrapping post image in a tag.
+	 *
 	 * @return string
 	 */
-	private function get_post_thumbnail( $post_id = null ) {
+	private function get_post_thumbnail( $post_id = null, $skip_link = false ) {
 		if ( ! has_post_thumbnail( $post_id ) ) {
 			return '';
 		}
@@ -228,11 +229,13 @@ class Template_Parts extends Base_View {
 		$post_image_wrap = apply_filters( 'neve_post_wrap_classes', [ 'nv-post-thumbnail-wrap' ] );
 		$markup          = '<div class="' . esc_attr( implode( ' ', $post_image_wrap ) ) . '">';
 
-		$markup .= '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '" rel="bookmark" title="' . the_title_attribute(
-			array(
-				'echo' => false,
-			)
-		) . '">';
+		if ( ! $skip_link ) {
+			$markup .= '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '" rel="bookmark" title="' . the_title_attribute(
+				array(
+					'echo' => false,
+				)
+			) . '">';
+		}
 
 		$pid     = $post_id ? $post_id : get_the_ID();
 		$markup .= get_the_post_thumbnail(
@@ -240,7 +243,9 @@ class Template_Parts extends Base_View {
 			'neve-blog',
 			array( 'class' => $image_class )
 		);
-		$markup .= '</a>';
+		if ( ! $skip_link ) {
+			$markup .= '</a>';
+		}
 		$markup .= '</div>';
 
 		return apply_filters( 'neve_blog_post_thumbnail_markup', $markup );

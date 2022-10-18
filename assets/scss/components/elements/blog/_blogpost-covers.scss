@@ -15,26 +15,28 @@ $overlay: rgba(0, 0, 0, 0.75);
 	}
 }
 
+.cover-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background: $overlay;
+	z-index: 1;
+}
+
 .cover-post {
 	box-shadow: var(--boxshadow, none);
 	position: relative;
-	background-size: cover;
-	display: flex;
-	background-position: center;
-	overflow: hidden;
 
-	&::after {
-		background: $overlay;
-		content: "";
+	.img-wrap {
 		position: absolute;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-	}
+		width: 100%;
+		height: 100%;
 
-	img {
-		--boxshadow: none;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
 	}
 
 	.inner {
