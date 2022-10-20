@@ -27,6 +27,7 @@ class Nav extends Abstract_Component {
 	const STYLE_ID                 = 'style';
 	const COLOR_ID                 = 'color';
 	const HOVER_COLOR_ID           = 'hover_color';
+	const HOVER_TEXT_COLOR_ID	   = 'hover_text_color';
 	const ACTIVE_COLOR_ID          = 'active_color';
 	const LAST_ITEM_ID             = 'neve_last_menu_item';
 	const NAV_MENU_ID              = 'nv-primary-navigation';
@@ -160,7 +161,7 @@ class Nav extends Abstract_Component {
 				'id'                 => self::STYLE_ID,
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_STYLE,
-				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'transport'          => 'refresh',
 				'sanitize_callback'  => 'wp_filter_nohtml_kses',
 				'default'            => 'style-plain',
 				'conditional_header' => true,
@@ -250,6 +251,32 @@ class Nav extends Abstract_Component {
 						$selector . ' li:not(.woocommerce-mini-cart-item) > a:after,' . $selector . ' li > .has-caret > a:after {
 							background-color: {{value}} !important;
 						}',
+				],
+			]
+		);
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::HOVER_TEXT_COLOR_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'neve_sanitize_colors',
+				'default'               => 'var(--nv-text-color)',
+				'label'                 => __( 'Items Hover Text Color', 'neve' ),
+				'type'                  => 'neve_color_control',
+				'section'               => $this->section,
+				'conditional_header'    => true,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar'   => [
+						'vars'     => '--hovertextcolor',
+						'selector' => '.builder-item--' . $this->get_id()
+					],
+				],
+				'options'               => [
+					'active_callback'		=> function() {
+						return Mods::get( $this->get_id() . '_' . self::STYLE_ID, 'style-plain' ) === 'style-full-height';
+					}
 				],
 			]
 		);
@@ -453,6 +480,10 @@ class Nav extends Abstract_Component {
 			'--hovercolor'  => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
+			],
+			'--hovertextcolor' => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_TEXT_COLOR_ID,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_TEXT_COLOR_ID ),
 			],
 			'--activecolor' => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,
