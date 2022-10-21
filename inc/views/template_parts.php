@@ -187,6 +187,10 @@ class Template_Parts extends Base_View {
 		}
 
 		if ( $layout === 'covers' ) {
+			if ( ! neve_is_new_skin() ) {
+				$markup .= $this->get_legacy_covers( $order, $post_id );
+				return $markup;
+			}
 			$markup .= '<div class="cover-post">';
 			$markup .= '<div class="cover-overlay"></div>';
 			if ( in_array( 'thumbnail', $order, true ) ) {
@@ -201,6 +205,29 @@ class Template_Parts extends Base_View {
 		}
 
 		return $this->get_ordered_content_parts( false, $post_id );
+	}
+
+	/**
+	 * Get html for cover layout in legacy mode.
+	 *
+	 * @param array $order Elements order.
+	 * @param int   $post_id Post id.
+	 *
+	 * @return string
+	 */
+	private function get_legacy_covers( $order, $post_id ) {
+		$style = '';
+		if ( in_array( 'thumbnail', $order, true ) ) {
+			$thumb  = get_the_post_thumbnail_url( $post_id );
+			$style .= ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
+		}
+		$markup  = '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
+		$markup .= '<div class="inner">';
+		$markup .= $this->get_ordered_content_parts( true, $post_id );
+		$markup .= '</div>';
+		$markup .= '</div>';
+
+		return $markup;
 	}
 
 	/**
