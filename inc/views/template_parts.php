@@ -226,7 +226,7 @@ class Template_Parts extends Base_View {
 			$neve_thumbnail_skip_lazy_added = true;
 		}
 
-		$post_image_wrap = apply_filters( 'neve_post_wrap_classes', [ 'nv-post-thumbnail-wrap' ] );
+		$post_image_wrap = apply_filters( 'neve_post_wrap_classes', [ 'nv-post-thumbnail-wrap', 'img-wrap' ] );
 		$markup          = '<div class="' . esc_attr( implode( ' ', $post_image_wrap ) ) . '">';
 
 		if ( ! $skip_link ) {
