@@ -148,68 +148,68 @@ class Post_Meta extends Base_View {
 					$markup      .= '</' . $tag . '>';
 					break;
 				case 'date':
-					$date_meta_classes = array(
-						'meta',
-						'date',
-						'posted-on',
-					);
-
-					$created           = get_the_time( 'U' );
-					$modified          = get_the_modified_time( 'U' );
-					$has_updated_time  = $created !== $modified;
-					$show_updated_time = get_theme_mod( 'neve_show_last_updated_date', false );
-					if ( is_singular( 'post' ) ) {
-						$show_updated_time = get_theme_mod( 'neve_single_post_show_last_updated_date', $show_updated_time );
-					}
-					if ( $show_updated_time && $has_updated_time ) {
-						$date_meta_classes[] = 'nv-show-updated';
-					}
-					$meta_content = str_replace( '{meta}', self::get_time_tags( $pid ), $format );
-					$markup      .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . ' ' . esc_attr( $element_class ) . '">';
-					$markup      .= $meta_content;
-					$markup      .= '</' . $tag . '>';
+					// $date_meta_classes = array(
+					// 'meta',
+					// 'date',
+					// 'posted-on',
+					// );
+					//
+					// $created           = get_the_time( 'U' );
+					// $modified          = get_the_modified_time( 'U' );
+					// $has_updated_time  = $created !== $modified;
+					// $show_updated_time = get_theme_mod( 'neve_show_last_updated_date', false );
+					// if ( is_singular( 'post' ) ) {
+					// $show_updated_time = get_theme_mod( 'neve_single_post_show_last_updated_date', $show_updated_time );
+					// }
+					// if ( $show_updated_time && $has_updated_time ) {
+					// $date_meta_classes[] = 'nv-show-updated';
+					// }
+					// $meta_content = str_replace( '{meta}', self::get_time_tags( $pid ), $format );
+					// $markup      .= '<' . $tag . ' class="' . esc_attr( implode( ' ', $date_meta_classes ) ) . ' ' . esc_attr( $element_class ) . '">';
+					// $markup      .= $meta_content;
+					// $markup      .= '</' . $tag . '>';
 					break;
 				case 'category':
-					if ( ! in_array( 'category', get_object_taxonomies( $post_type ) ) ) {
-						break;
-					}
-					$meta_content = str_replace( '{meta}', get_the_category_list( ', ', '', $pid ), $format );
-					$markup      .= '<' . $tag . ' class="meta category ' . esc_attr( $element_class ) . '">';
-					$markup      .= wp_kses_post( $meta_content );
-					$markup      .= '</' . $tag . '>';
+					// if ( ! in_array( 'category', get_object_taxonomies( $post_type ) ) ) {
+					// break;
+					// }
+					// $meta_content = str_replace( '{meta}', get_the_category_list( ', ', '', $pid ), $format );
+					// $markup      .= '<' . $tag . ' class="meta category ' . esc_attr( $element_class ) . '">';
+					// $markup      .= wp_kses_post( $meta_content );
+					// $markup      .= '</' . $tag . '>';
 					break;
 				case 'comments':
-					$comments = self::get_comments( $pid );
-					if ( empty( $comments ) ) {
-						break;
-					}
-					$meta_content = str_replace( '{meta}', $comments, $format );
-					$markup      .= '<' . $tag . ' class="meta comments ' . esc_attr( $element_class ) . '">';
-					$markup      .= wp_kses_post( $meta_content );
-					$markup      .= '</' . $tag . '>';
+					// $comments = self::get_comments( $pid );
+					// if ( empty( $comments ) ) {
+					// break;
+					// }
+					// $meta_content = str_replace( '{meta}', $comments, $format );
+					// $markup      .= '<' . $tag . ' class="meta comments ' . esc_attr( $element_class ) . '">';
+					// $markup      .= wp_kses_post( $meta_content );
+					// $markup      .= '</' . $tag . '>';
 					break;
 				case 'reading':
-					$allowed_context = apply_filters( 'neve_post_type_supported_list', [ 'post' ], 'block_editor' );
-					if ( ! in_array( $post_type, $allowed_context ) ) {
-						break;
-					}
-					$reading_time = apply_filters( 'neve_do_read_time', $pid );
-					if ( empty( $reading_time ) ) {
-						break;
-					}
-					$meta_content = str_replace( '{meta}', $reading_time, $format );
-					$markup      .= '<' . $tag . ' class="meta reading-time ' . esc_attr( $element_class ) . '">';
-					$markup      .= wp_kses_post( $meta_content );
-					$markup      .= '</' . $tag . '>';
+					// $allowed_context = apply_filters( 'neve_post_type_supported_list', [ 'post' ], 'block_editor' );
+					// if ( ! in_array( $post_type, $allowed_context ) ) {
+					// break;
+					// }
+					// $reading_time = apply_filters( 'neve_do_read_time', $pid );
+					// if ( empty( $reading_time ) ) {
+					// break;
+					// }
+					// $meta_content = str_replace( '{meta}', $reading_time, $format );
+					// $markup      .= '<' . $tag . ' class="meta reading-time ' . esc_attr( $element_class ) . '">';
+					// $markup      .= wp_kses_post( $meta_content );
+					// $markup      .= '</' . $tag . '>';
 					break;
 				case 'custom':
-					$custom_meta = apply_filters( 'neve_do_custom_meta', '', $meta, $tag, $pid );
-					if ( empty( $custom_meta ) ) {
-						break;
-					}
-					$markup .= '<' . $tag . ' class="meta custom ' . esc_attr( $element_class ) . '">';
-					$markup .= wp_kses_post( $custom_meta );
-					$markup .= '</' . $tag . '>';
+					// $custom_meta = apply_filters( 'neve_do_custom_meta', '', $meta, $tag, $pid );
+					// if ( empty( $custom_meta ) ) {
+					// break;
+					// }
+					// $markup .= '<' . $tag . ' class="meta custom ' . esc_attr( $element_class ) . '">';
+					// $markup .= wp_kses_post( $custom_meta );
+					// $markup .= '</' . $tag . '>';
 					break;
 				case 'default':
 				default:
@@ -275,7 +275,7 @@ class Post_Meta extends Base_View {
 		);
 		$display_avatar = apply_filters( 'neve_display_author_avatar', false );
 		$avatar_url     = get_avatar_url( $author_email, $gravatar_args );
-		$avatar_markup  = '<img class="photo" alt="' . get_the_author() . '" src="' . esc_url( $avatar_url ) . '" />&nbsp;';
+		$avatar_markup  = '<img class="photo" alt="' . esc_attr( $display_name ) . '" src="' . esc_url( $avatar_url ) . '" />&nbsp;';
 
 		$markup = '';
 		if ( $display_avatar ) {
