@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 import { initBlog } from './blog.js';
-import { neveResponsiveEmbeds } from './embeds.js';
 import { initNavigation, repositionDropdowns } from './navigation.js';
 import { HFG } from './hgf.js';
 
@@ -8,7 +7,6 @@ function run() {
 	window.HFG = new HFG();
 	initBlog();
 	initNavigation();
-	neveResponsiveEmbeds();
 }
 
 function onResizeDebouncedRun() {
@@ -27,7 +25,6 @@ window.addEventListener('load', () => {
  */
 let neveResizeTimeout;
 window.addEventListener('resize', () => {
-	neveResponsiveEmbeds();
 	clearTimeout(neveResizeTimeout);
 	neveResizeTimeout = setTimeout(onResizeDebouncedRun, 500);
 });
