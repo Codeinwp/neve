@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 import { initBlog } from './blog.js';
-import { neveResponsiveEmbeds } from "./embeds";
+import { neveResponsiveEmbeds } from './embeds.js';
 import { initNavigation, repositionDropdowns } from './navigation.js';
 import { HFG } from './hgf.js';
 
