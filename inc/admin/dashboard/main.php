@@ -324,6 +324,17 @@ class Main {
 			}
 		}
 
+		if ( get_option( 'templates_patterns_collection_pro_import' ) && ( 'valid' !== apply_filters( 'product_neve_license_status', false ) || ! is_plugin_active( $plugin_path ) ) ) {
+			$notifications['pro-tpc-import'] = [
+				'text'   => __( 'You are using a premium template without an active Neve Pro license.', 'neve' ),
+				'update' => [
+					'type' => 'tpc-import',
+					'slug' => 'pro-tpc-import',
+				],
+				'type'   => 'error',
+			];
+		}
+
 		$notifications = apply_filters( 'neve_dashboard_notifications', $notifications );
 
 		return $notifications;
