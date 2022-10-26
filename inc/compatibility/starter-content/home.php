@@ -26,7 +26,7 @@ return [
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-secondary"} -->
-<div class="wp-block-button is-style-secondary"><a class="wp-block-button__link wp-element-button" href="https://demosites.io/" target="_blank" rel="noreferrer noopener">See all demos</a></div>
+<div class="wp-block-button is-style-secondary"><a class="wp-block-button__link wp-element-button" href="https://demosites.io/" target="_blank" rel="noreferrer noopener">SEE ALL DEMOS</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
