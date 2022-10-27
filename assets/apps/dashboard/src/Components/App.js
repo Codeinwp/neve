@@ -1,5 +1,6 @@
 import Header from './Header';
 import Notifications from './Notifications';
+import Promotions from './Promotions';
 import TabsContent from './TabsContent';
 import Sidebar from './Sidebar';
 import Loading from './Loading';
@@ -28,6 +29,7 @@ const App = ({ setSettings, toast, currentTab, setTab }) => {
 				<div className="container content">
 					<div className="main">
 						{'starter-sites' !== currentTab && <Notifications />}
+						<Promotions />
 						<TabsContent currentTab={currentTab} setTab={setTab} />
 					</div>
 					{'starter-sites' !== currentTab && (

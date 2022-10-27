@@ -192,6 +192,7 @@ class Main {
 			'isRTL'                   => is_rtl(),
 			'isValidLicense'          => $this->has_valid_addons(),
 			'notifications'           => $this->get_notifications(),
+			'promotions'              => $this->get_promotions(),
 			'customizerShortcuts'     => $this->get_customizer_shortcuts(),
 			'plugins'                 => $this->get_useful_plugins(),
 			'featureData'             => $this->get_free_pro_features(),
@@ -327,6 +328,32 @@ class Main {
 		$notifications = apply_filters( 'neve_dashboard_notifications', $notifications );
 
 		return $notifications;
+	}
+
+	/**
+	 * Get the promotions for dashboard display.
+	 *
+	 * @return array
+	 */
+	public function get_promotions() {
+		$promotions = [];
+
+		/**
+		 * BF 2022 Promotion
+		 */
+		$start_date   = strtotime( '2022-11-21 00:00:00' );
+		$end_date     = strtotime( '2022-11-28 23:59:59' );
+		$current_time = strtotime( current_time( 'Y-m-d H:i:s' ) );
+		if ( $start_date <= $current_time && $current_time <= $end_date ) {
+			$days_left          = abs( round( ( $current_time - $end_date ) / 86400 ) );
+			$promotions['bf22'] = [
+				'url'      => 'https://bit.ly/neve-2022bf',
+				'timeLeft' => $days_left <= 1 ? 24 : $days_left,
+				'suffix'   => $days_left <= 1 ? 'H' : 'DAYS',
+			];
+		}
+
+		return $promotions;
 	}
 
 
