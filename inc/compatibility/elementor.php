@@ -18,7 +18,23 @@ use ElementorPro\Modules\ThemeBuilder\Module as ElementorPro_ThemeBuilder;
  */
 class Elementor extends Page_Builder_Base {
 	/**
-	 * Stores if the current page is overriden by Elementor or not (checks by ::is_elementor_template method) according to the location.
+	 * Stores Elementor templates meta
+	 *
+	 * @var array
+	 */
+	const ELEMENTOR_TEMPLATE_TYPES = [
+		'single_product'  => [
+			'location'            => 'single',
+			'condition_indicator' => 'product',
+		],
+		'product_archive' => [
+			'location'            => 'archive',
+			'condition_indicator' => 'product_archive',
+		],
+	];
+
+	/**
+	 * Stores if the current page is overriden by Elementor or not (checks by ::current_page_has_template method) according to the location.
 	 *
 	 * @var array
 	 */
@@ -303,11 +319,10 @@ class Elementor extends Page_Builder_Base {
 	}
 
 	/**
-	 * Check if the site has Elementor template as independent from current post ID.
+	 * Checks if the site has Elementor template as independent from current post ID.
 	 * The method was designed to use in customizer. ! Do not use it outside of the customizer.
-	 * The method works if only Elementor Pro is active.
 	 *
-	 * @param  string $elementor_template_type that is template type such as shop, product etc.
+	 * @param  string $elementor_template_type valid types: single_product|product_archive (keys of the self::ELEMENTOR_TEMPLATE_TYPES const array).
 	 * @return bool
 	 */
 	public static function has_template( $elementor_template_type ) {
@@ -315,24 +330,23 @@ class Elementor extends Page_Builder_Base {
 			return false;
 		}
 
-		if ( 'product' === $elementor_template_type ) {
-			$location      = 'single';
-			$has_indicator = 'product'; // represents second path of the Elementor condition
-		} elseif ( 'shop' === $elementor_template_type ) {
-			$location      = 'archive';
-			$has_indicator = 'product_archive'; // represents second path of the Elementor condition
-		} else {
+		if ( ! array_key_exists( $elementor_template_type, self::ELEMENTOR_TEMPLATE_TYPES ) ) {
 			return false;
 		}
+
+		$template_meta = self::ELEMENTOR_TEMPLATE_TYPES[ $elementor_template_type ];
+
+		$location      = $template_meta['location'];
+		$has_indicator = $template_meta['condition_indicator']; // represents second path of the Elementor condition
 
 		// TODO: implement class exists check here.
 
 		$templates = ElementorPro_ThemeBuilder::instance()->get_conditions_manager()->get_cache()->get_by_location( $location );
 
 		foreach ( $templates as $template_conditions_arr ) {
-			/** @var string $condition specifies the condition such as  include/product_archive OR exclude/product_archive/product_search OR include/product/in_product_cat/18 etc. */
-			foreach ( $template_conditions_arr  as $condition ) {
-				$condition_parts = explode( '/', $condition );
+			/** @var string $condition_path specifies the condition such as  include/product_archive OR exclude/product_archive/product_search OR include/product/in_product_cat/18 etc. */
+			foreach ( $template_conditions_arr  as $condition_path ) {
+				$condition_parts = explode( '/', $condition_path );
 
 				if ( ! ( count( $condition_parts ) > 0 ) ) {
 					continue;
@@ -352,18 +366,24 @@ class Elementor extends Page_Builder_Base {
 	}
 
 	/**
-	 * Is the current page has an elementor template
+	 * Is the current page has an elementor template. Looks if the an Elementor template is applied to the current page or not.
 	 *
-	 * @param  string $location that location of the template such as single, archive etc.
+	 * @param  string $elementor_template_type valid types: single_product|product_archive (keys of the self::ELEMENTOR_TEMPLATE_TYPES const array).
 	 * @return bool
 	 */
-	public static function is_elementor_template( $location ) {
+	public static function current_page_has_template( $elementor_template_type ) {
 		if ( ! class_exists( '\ElementorPro\Plugin', false ) ) {
 			return false;
 		}
 
+		if ( ! array_key_exists( $elementor_template_type, self::ELEMENTOR_TEMPLATE_TYPES ) ) {
+			return false;
+		}
+
 		// TODO: implement class exists check here.
-		if ( ! array_key_exists( $location, self::$cache_current_page_has_elementor_template ) ) {
+		if ( ! array_key_exists( $elementor_template_type, self::$cache_current_page_has_elementor_template ) ) {
+			$location = self::ELEMENTOR_TEMPLATE_TYPES[ $elementor_template_type ]['location'];
+
 			$templates = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_conditions_manager()->get_documents_for_location( $location );
 
 			self::$cache_current_page_has_elementor_template[ $location ] = ( count( $templates ) > 0 );
