@@ -17,8 +17,12 @@ use ElementorPro\Modules\ThemeBuilder\Module as ElementorPro_ThemeBuilder;
  * @package Neve\Compatibility
  */
 class Elementor extends Page_Builder_Base {
-
-	const TRANSIENT_EXPIRY_SEC = HOUR_IN_SECONDS;
+	/**
+	 * Stores if the current page is overriden by Elementor or not (checks by ::is_elementor_template method) according to the location.
+	 *
+	 * @var array
+	 */
+	private static $cache_current_page_has_elementor_template = [];
 
 	/**
 	 * Init function.
@@ -311,10 +315,6 @@ class Elementor extends Page_Builder_Base {
 			return false;
 		}
 
-		if ( ! did_action( 'elementor_pro/init' ) ) {
-			return false;
-		}
-
 		if ( 'product' === $elementor_template_type ) {
 			$location      = 'single';
 			$has_indicator = 'product'; // represents second path of the Elementor condition
@@ -358,8 +358,17 @@ class Elementor extends Page_Builder_Base {
 	 * @return bool
 	 */
 	public static function is_elementor_template( $location ) {
-		// ray(\ElementorPro\Modules\ThemeBuilder\Module::instance()->get_conditions_manager());
-		// ray(\ElementorPro\Modules\ThemeBuilder\Module::instance()->get_conditions_manager()->get_documents_for_location('single'));
-		return false;
+		if ( ! class_exists( '\ElementorPro\Plugin', false ) ) {
+			return false;
+		}
+
+		// TODO: implement class exists check here.
+		if ( ! array_key_exists( $location, self::$cache_current_page_has_elementor_template ) ) {
+			$templates = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_conditions_manager()->get_documents_for_location( $location );
+
+			self::$cache_current_page_has_elementor_template[ $location ] = ( count( $templates ) > 0 );
+		}
+
+		return self::$cache_current_page_has_elementor_template[ $location ];
 	}
 }

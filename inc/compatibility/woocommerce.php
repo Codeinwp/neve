@@ -190,10 +190,19 @@ class Woocommerce {
 			}
 		}
 
-		$is_shop_template    = Elementor::has_template( 'shop' );
-		$is_product_template = Elementor::has_template( 'product' );
+		return ! $this->is_current_page_elementor_template();
+	}
 
-		return ! ( $is_shop_template || $is_product_template );
+	/**
+	 * Is the current page Elementor template?
+	 *
+	 * @return bool
+	 */
+	private function is_current_page_elementor_template() {
+		$is_shop_template    = Elementor::is_elementor_template( 'archive' );
+		$is_product_template = Elementor::is_elementor_template( 'single' );
+
+		return ( $is_shop_template || $is_product_template );
 	}
 
 	/**
