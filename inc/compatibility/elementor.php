@@ -9,7 +9,6 @@
 namespace Neve\Compatibility;
 
 use Neve\Core\Dynamic_Css;
-use ElementorPro\Modules\ThemeBuilder\Module as ElementorPro_ThemeBuilder;
 
 /**
  * Class Elementor
@@ -39,6 +38,13 @@ class Elementor extends Page_Builder_Base {
 	 * @var array
 	 */
 	private static $cache_current_page_has_elementor_template = [];
+
+	/**
+	 * Stores Elementor Pro Conditions_Manager instance.
+	 *
+	 * @var false|\ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager
+	 */
+	private static $elementor_conditions_manager = false;
 
 	/**
 	 * Init function.
@@ -319,6 +325,29 @@ class Elementor extends Page_Builder_Base {
 	}
 
 	/**
+	 * Returns Condition_Manager instance of the Elementor Pro.
+	 *
+	 * @return false|\ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager
+	 */
+	private static function get_condition_manager() {
+		if ( self::$elementor_conditions_manager === false ) {
+			if ( ! method_exists( '\ElementorPro\Modules\ThemeBuilder\Module', 'instance' ) ) {
+				return false;
+			}
+
+			$theme_builder = \ElementorPro\Modules\ThemeBuilder\Module::instance();
+
+			if ( ! method_exists( $theme_builder, 'get_conditions_manager' ) ) {
+				return false;
+			}
+
+			self::$elementor_conditions_manager = $theme_builder->get_conditions_manager();
+		}
+
+		return self::$elementor_conditions_manager;
+	}
+
+	/**
 	 * Checks if the site has Elementor template as independent from current post ID.
 	 * The method was designed to use in customizer. ! Do not use it outside of the customizer.
 	 *
@@ -339,9 +368,25 @@ class Elementor extends Page_Builder_Base {
 		$location      = $template_meta['location'];
 		$has_indicator = $template_meta['condition_indicator']; // represents second path of the Elementor condition
 
-		// TODO: implement class exists check here.
+		/**
+		 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager $conditions_manager
+		 */
+		$conditions_manager = self::get_condition_manager();
 
-		$templates = ElementorPro_ThemeBuilder::instance()->get_conditions_manager()->get_cache()->get_by_location( $location );
+		if ( ! is_object( $conditions_manager ) || ! method_exists( $conditions_manager, 'get_cache' ) ) {
+			return false;
+		}
+
+		/**
+		 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Cache $instance_cond_cache
+		 */
+		$instance_cond_cache = $conditions_manager->get_cache();
+
+		if ( ! method_exists( $instance_cond_cache, 'get_by_location' ) ) {
+			return false;
+		}
+
+		$templates = $instance_cond_cache->get_by_location( $location );
 
 		foreach ( $templates as $template_conditions_arr ) {
 			/** @var string $condition_path specifies the condition such as  include/product_archive OR exclude/product_archive/product_search OR include/product/in_product_cat/18 etc. */
@@ -380,11 +425,19 @@ class Elementor extends Page_Builder_Base {
 			return false;
 		}
 
-		// TODO: implement class exists check here.
 		if ( ! array_key_exists( $elementor_template_type, self::$cache_current_page_has_elementor_template ) ) {
 			$location = self::ELEMENTOR_TEMPLATE_TYPES[ $elementor_template_type ]['location'];
 
-			$templates = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_conditions_manager()->get_documents_for_location( $location );
+			/**
+			 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager $conditions_manager
+			 */
+			$conditions_manager = self::get_condition_manager();
+
+			if ( ! is_object( $conditions_manager ) || ! method_exists( $conditions_manager, 'get_documents_for_location' ) ) {
+				return false;
+			}
+
+			$templates = $conditions_manager->get_documents_for_location( $location );
 
 			self::$cache_current_page_has_elementor_template[ $location ] = ( count( $templates ) > 0 );
 		}
