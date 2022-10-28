@@ -338,6 +338,10 @@ class Main {
 	public function get_promotions() {
 		$promotions = [];
 
+		if ( defined( 'NEVE_PRO_VERSION' ) ) {
+			return [];
+		}
+
 		/**
 		 * BF 2022 Promotion
 		 */
@@ -347,9 +351,9 @@ class Main {
 		if ( $start_date <= $current_time && $current_time <= $end_date ) {
 			$days_left          = abs( round( ( $current_time - $end_date ) / 86400 ) );
 			$promotions['bf22'] = [
-				'url'      => 'https://bit.ly/neve-2022bf',
-				'timeLeft' => $days_left <= 1 ? 24 : $days_left,
-				'suffix'   => $days_left <= 1 ? 'H' : 'DAYS',
+				'url'      => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'dashboard_notice', 'blackfriday' ),
+				'timeLeft' => $days_left <= 1 ? 'LESS THAN 24' : $days_left,
+				'suffix'   => $days_left <= 1 ? 'HOURS' : 'DAYS',
 			];
 		}
 
