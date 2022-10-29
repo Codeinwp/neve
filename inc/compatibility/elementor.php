@@ -393,7 +393,7 @@ class Elementor extends Page_Builder_Base {
 			foreach ( $template_conditions_arr  as $condition_path ) {
 				$condition_parts = explode( '/', $condition_path );
 
-				if ( ! ( count( $condition_parts ) > 0 ) ) {
+				if ( empty( $condition_parts ) ) {
 					continue;
 				}
 
@@ -413,7 +413,7 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Is the current page has an elementor template. Looks if the an Elementor template is applied to the current page or not.
 	 *
-	 * @param  string $elementor_template_type valid types: single_product|product_archive (keys of the self::ELEMENTOR_TEMPLATE_TYPES const array).
+	 * @param  string $elementor_template_type valid types: single_product|product_archive (keys of the self::ELEMENTOR_TEMPLATE_TYPES const array). To available params; see keys of the self::ELEMENTOR_TEMPLATE_TYPES array.
 	 * @return bool
 	 */
 	public static function is_elementor_template( $elementor_template_type ) {
@@ -425,9 +425,9 @@ class Elementor extends Page_Builder_Base {
 			return false;
 		}
 
-		if ( ! array_key_exists( $elementor_template_type, self::$cache_current_page_has_elementor_template ) ) {
-			$location = self::ELEMENTOR_TEMPLATE_TYPES[ $elementor_template_type ]['location'];
+		$location = self::ELEMENTOR_TEMPLATE_TYPES[ $elementor_template_type ]['location'];
 
+		if ( ! array_key_exists( $elementor_template_type, self::$cache_current_page_has_elementor_template ) ) {
 			/**
 			 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager $conditions_manager
 			 */
