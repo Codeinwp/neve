@@ -249,8 +249,8 @@ class Woocommerce {
 	 * @return bool
 	 */
 	private function is_current_page_elementor_template() {
-		$is_shop_template    = Elementor::current_page_has_template( 'product_archive' );
-		$is_product_template = Elementor::current_page_has_template( 'single_product' );
+		$is_shop_template    = Elementor::is_elementor_template( 'product_archive' );
+		$is_product_template = Elementor::is_elementor_template( 'single_product' );
 
 		return ( $is_shop_template || $is_product_template );
 	}

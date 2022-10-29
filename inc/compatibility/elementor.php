@@ -33,7 +33,7 @@ class Elementor extends Page_Builder_Base {
 	];
 
 	/**
-	 * Stores if the current page is overriden by Elementor or not (checks by ::current_page_has_template method) according to the location.
+	 * Stores if the current page is overriden by Elementor or not (checks by ::is_elementor_template method) according to the location.
 	 *
 	 * @var array
 	 */
@@ -416,7 +416,7 @@ class Elementor extends Page_Builder_Base {
 	 * @param  string $elementor_template_type valid types: single_product|product_archive (keys of the self::ELEMENTOR_TEMPLATE_TYPES const array).
 	 * @return bool
 	 */
-	public static function current_page_has_template( $elementor_template_type ) {
+	public static function is_elementor_template( $elementor_template_type ) {
 		if ( ! class_exists( '\ElementorPro\Plugin', false ) ) {
 			return false;
 		}
