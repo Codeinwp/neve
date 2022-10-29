@@ -11,6 +11,11 @@
 		}
 	}
 
+	.components-flex{
+	  flex-direction: row;
+	  gap: 0;
+	}
+
 	.components-base-control__field {
 		display: inherit;
 	}
@@ -177,9 +182,11 @@
 	}
 }
 
-.components-button.has-icon[aria-label^="Neve"] {
+.components-button.has-icon[aria-label^="Neve"]:not(.is-tertiary) {
 	background: #0073aa;
-
+	&:hover:not(:disabled){
+	  background: #1e1e1e;
+	}
 	svg * {
 		fill: #ffffff;
 	}

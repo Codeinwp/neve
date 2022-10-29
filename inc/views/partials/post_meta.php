@@ -275,7 +275,7 @@ class Post_Meta extends Base_View {
 		);
 		$display_avatar = apply_filters( 'neve_display_author_avatar', false );
 		$avatar_url     = get_avatar_url( $author_email, $gravatar_args );
-		$avatar_markup  = '<img class="photo" alt="' . get_the_author() . '" src="' . esc_url( $avatar_url ) . '" />&nbsp;';
+		$avatar_markup  = '<img class="photo" alt="' . esc_attr( $display_name ) . '" src="' . esc_url( $avatar_url ) . '" />&nbsp;';
 
 		$markup = '';
 		if ( $display_avatar ) {

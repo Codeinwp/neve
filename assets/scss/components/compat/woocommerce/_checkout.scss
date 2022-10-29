@@ -128,6 +128,16 @@
 				content: none;
 			}
 		}
+
+		fieldset {
+			border: 0;
+			padding: 0;
+			margin: 0;
+
+			.form-row {
+				padding: 1em;
+			}
+		}
 	}
 
 	.payment_methods {

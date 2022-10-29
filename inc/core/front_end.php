@@ -236,6 +236,7 @@ class Front_End {
 			'dailymotion.com',
 			'ted.com',
 			'vimeo.com',
+			'speakerdeck.com',
 		];
 		foreach ( $sources as $source ) {
 			if ( strpos( $url, $source ) !== false ) {
