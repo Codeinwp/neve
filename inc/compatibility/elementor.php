@@ -59,6 +59,7 @@ class Elementor extends Page_Builder_Base {
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_in_picker' ], 999, 3 );
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_front_end' ], 999, 3 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 100 );
+		$this->neve_pro_compatibility();
 	}
 
 	/**
@@ -443,5 +444,51 @@ class Elementor extends Page_Builder_Base {
 		}
 
 		return self::$cache_current_page_has_elementor_template[ $location ];
+	}
+
+	/**
+	 * Elementor - Neve Pro Compatibility
+	 * Suspense some WooCommerce modifications if an Elementor template is applied on the current page.
+	 * That gives full capability to Elementor and removes Neve Pro customizations.
+	 *
+	 * @return void
+	 */
+	public function neve_pro_compatibility() {
+		add_filter( 'neve_pro_run_wc_view', array( $this, 'conditionally_suspense_neve_pro_woo_customizations' ), 10, 2 );
+	}
+
+	/**
+	 * Conditionally suspense Woocommerce moditifications by Neve Pro if Elementor template applies to current page.
+	 *
+	 * @param  bool   $should_load Current loading status.
+	 * @param  string $class_name Fully class name that applies the Woo Modification.
+	 * @return bool
+	 */
+	public function conditionally_suspense_neve_pro_woo_customizations( $should_load, $class_name ) {
+		switch ( $class_name ) {
+			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Shop_Page':
+				$elementor_template_type = 'product_archive';
+				break;
+
+			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Shop_Product':
+				$elementor_template_type = 'product_archive';
+				break;
+
+			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Single_Product_Video':
+				$elementor_template_type = 'single_product';
+				break;
+
+			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Single_Product':
+				$elementor_template_type = 'single_product';
+				break;
+
+			default:
+				return $should_load;
+		}
+
+		// Does the current page is overridden by an Elementor template?
+		$elementor_overrides = self::is_elementor_template( $elementor_template_type );
+
+		return ! $elementor_overrides;
 	}
 }
