@@ -352,7 +352,7 @@ class Main {
 			$days_left          = abs( round( ( $current_time - $end_date ) / 86400 ) );
 			$promotions['bf22'] = [
 				'url'      => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'dashboard_notice', 'blackfriday' ),
-				'timeLeft' => $days_left <= 1 ? '24 HOURS' : $days_left . ' DAYS',
+				'timeLeft' => $days_left <= 1 ? 'LESS THAN 24 HOURS' : $days_left . ' DAYS',
 
 			];
 		}
