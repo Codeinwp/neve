@@ -43,7 +43,8 @@ const Promotion = ({ data, slug }) => {
 					<img alt={slug} src={promotions[slug]} />
 					<p className="promotion-content">
 						HURRY UP!{' '}
-						<span style={{ color: '#FFCB7C' }}>{timeLeft}</span> LEFT
+						<span style={{ color: '#FFCB7C' }}>{timeLeft}</span>{' '}
+						LEFT
 					</p>
 				</a>
 			</div>
