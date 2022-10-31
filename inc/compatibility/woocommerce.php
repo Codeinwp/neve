@@ -143,8 +143,8 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function add_customizer_options( $options ) {
-		$options['elementor']['hasElementorShopTemplate']    = Elementor::has_template( 'shop' );
-		$options['elementor']['hasElementorProductTemplate'] = Elementor::has_template( 'product' );
+		$options['elementor']['hasElementorShopTemplate']    = Elementor::has_template( 'product_archive' );
+		$options['elementor']['hasElementorProductTemplate'] = Elementor::has_template( 'single_product' );
 		return $options;
 	}
 
@@ -240,10 +240,19 @@ class Woocommerce {
 			}
 		}
 
-		$is_shop_template    = Elementor::has_template( 'shop' );
-		$is_product_template = Elementor::has_template( 'product' );
+		return ! $this->is_current_page_elementor_template();
+	}
 
-		return ! ( $is_shop_template || $is_product_template );
+	/**
+	 * Is the current page Elementor template?
+	 *
+	 * @return bool
+	 */
+	private function is_current_page_elementor_template() {
+		$is_shop_template    = Elementor::is_elementor_template( 'product_archive' );
+		$is_product_template = Elementor::is_elementor_template( 'single_product' );
+
+		return ( $is_shop_template || $is_product_template );
 	}
 
 	/**
