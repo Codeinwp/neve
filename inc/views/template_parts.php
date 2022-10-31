@@ -291,7 +291,7 @@ class Template_Parts extends Base_View {
 	 */
 	private function get_meta( $post_id = null ) {
 		$default       = wp_json_encode( [ 'author', 'date', 'comments' ] );
-		$default_value = Layout::get_meta_default_data( 'neve_post_meta_ordering', $default );
+		$default_value = neve_get_default_meta_value( 'neve_post_meta_ordering', $default );
 		$meta_order    = get_theme_mod( 'neve_blog_post_meta_fields', wp_json_encode( $default_value ) );
 
 		if ( ! is_array( $meta_order ) ) {

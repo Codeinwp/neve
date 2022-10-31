@@ -471,7 +471,7 @@ class Layout_Blog extends Base_Customizer {
 
 
 		$default       = wp_json_encode( [ 'author', 'date', 'comments' ] );
-		$default_value = Layout::get_meta_default_data( 'neve_post_meta_ordering', $default );
+		$default_value = neve_get_default_meta_value( 'neve_post_meta_ordering', $default );
 		$this->add_control(
 			new Control(
 				'neve_blog_post_meta_fields',

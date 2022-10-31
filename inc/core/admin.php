@@ -91,7 +91,7 @@ class Admin {
 			[
 				'shouldUseColorPickerFix' => (int) ( ! neve_is_using_wp_version( '5.8' ) ),
 				'customizerURL'           => esc_url( admin_url( 'customize.php' ) ),
-			] 
+			]
 		);
 		wp_register_style( 'neve-components', trailingslashit( NEVE_ASSETS_URL ) . 'apps/components/build/style-components.css', [ 'wp-components' ], $deps['version'] );
 		wp_add_inline_style( 'neve-components', Dynamic_Css::get_root_css() );
@@ -641,9 +641,6 @@ class Admin {
 	public function change_plugin_names( $plugins ) {
 		if ( array_key_exists( 'themeisle-companion/themeisle-companion.php', $plugins ) ) {
 			$plugins['themeisle-companion/themeisle-companion.php']['Name'] = 'Orbit Fox Companion by Neve theme';
-		}
-		if ( array_key_exists( 'otter-blocks/otter-blocks.php', $plugins ) ) {
-			$plugins['otter-blocks/otter-blocks.php']['Name'] = 'Gutenberg Blocks and Template Library by Neve theme';
 		}
 		if ( array_key_exists( 'otter-pro/otter-pro.php', $plugins ) ) {
 			$plugins['otter-pro/otter-pro.php']['Description'] = $plugins['otter-pro/otter-pro.php']['Description'] . ' It is part of Block Editor Booster from Neve.';

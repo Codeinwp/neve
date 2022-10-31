@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 19/09/22
+ * Updated on 10/10/22
  *
  * @package neve
  */
@@ -10,6 +10,7 @@ return array(
 	'Abhaya Libre' => array( '400', '500', '600', '700', '800',),
 	'Aboreto' => array( '400',),
 	'Abril Fatface' => array( '400',),
+	'Abyssinica SIL' => array( '400',),
 	'Aclonica' => array( '400',),
 	'Acme' => array( '400',),
 	'Actor' => array( '400',),
@@ -575,6 +576,7 @@ return array(
 	'Inria Serif' => array( '300', '400', '700', '300italic', '400italic', '700italic',),
 	'Inspiration' => array( '400',),
 	'Inter' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
+	'Inter Tight' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Irish Grover' => array( '400',),
 	'Island Moments' => array( '400',),
 	'Istok Web' => array( '400', '700', '400italic', '700italic',),
@@ -661,7 +663,7 @@ return array(
 	'Lalezar' => array( '400',),
 	'Lancelot' => array( '400',),
 	'Langar' => array( '400',),
-	'Lateef' => array( '400',),
+	'Lateef' => array( '200', '300', '400', '500', '600', '700', '800',),
 	'Lato' => array( '100', '300', '400', '700', '900', '100italic', '300italic', '400italic', '700italic', '900italic',),
 	'Lavishly Yours' => array( '400',),
 	'League Gothic' => array( '400',),

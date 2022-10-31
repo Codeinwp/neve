@@ -178,7 +178,7 @@ class Post_Layout extends Base_View {
 		 */
 
 		// Take the old control value and bring it to a form that can be used in a repeater.
-		$default_value = Layout::get_meta_default_data( 'neve_post_meta_ordering', wp_json_encode( [ 'author', 'date', 'comments' ] ) );
+		$default_value = neve_get_default_meta_value( 'neve_post_meta_ordering', wp_json_encode( [ 'author', 'date', 'comments' ] ) );
 
 		// We need to get the value of the meta on blogs and pass it as default for meta on single.
 		$default_value = get_theme_mod( 'neve_blog_post_meta_fields', wp_json_encode( $default_value ) );

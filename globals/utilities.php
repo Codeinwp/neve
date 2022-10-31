@@ -705,3 +705,63 @@ function neve_do_loop_hook( $position ) {
 	 */
 	do_action( "neve_loop_{$current_post_type}_{$position}" );
 }
+
+/**
+ * Get meta default data
+ *
+ * @param string $field Meta field name.
+ * @param string $default Default value.
+ *
+ * @return array
+ */
+function neve_get_default_meta_value( $field, $default ) {
+	$new_control_data = [];
+
+	$components = apply_filters(
+		'neve_meta_filter',
+		array(
+			'author'   => __( 'Author', 'neve' ),
+			'category' => __( 'Category', 'neve' ),
+			'date'     => __( 'Date', 'neve' ),
+			'comments' => __( 'Comments', 'neve' ),
+		)
+	);
+
+	$default_data = get_theme_mod( $field, $default );
+	if ( empty( $default_data ) ) {
+		return $new_control_data;
+	}
+
+	$default_data = json_decode( $default_data, true );
+	if ( ! is_array( $default_data ) ) {
+		return $new_control_data;
+	}
+
+	foreach ( $default_data as $meta_component ) {
+		if ( ! array_key_exists( $meta_component, $components ) ) {
+			continue;
+		}
+		$new_control_data[ $meta_component ] = (object) [
+			'slug'           => $meta_component,
+			'title'          => $components[ $meta_component ],
+			'visibility'     => 'yes',
+			'hide_on_mobile' => false,
+			'blocked'        => 'yes',
+		];
+	}
+
+	foreach ( $components as $component_id => $label ) {
+		if ( array_key_exists( $component_id, $new_control_data ) ) {
+			continue;
+		}
+		$new_control_data[ $component_id ] = (object) [
+			'slug'           => $component_id,
+			'title'          => $label,
+			'visibility'     => 'no',
+			'hide_on_mobile' => false,
+			'blocked'        => 'yes',
+		];
+	}
+
+	return array_values( $new_control_data );
+}
