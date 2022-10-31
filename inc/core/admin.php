@@ -10,6 +10,7 @@
 
 namespace Neve\Core;
 
+use Neve\Admin\Dashboard\Main;
 use Neve\Core\Settings\Mods_Migrator;
 
 /**
@@ -37,6 +38,12 @@ class Admin {
 	 * @var \WP_Theme
 	 */
 	private $theme_args;
+	/**
+	 * Dismiss bf notice key.
+	 *
+	 * @var string
+	 */
+	private $dismiss_bf_notice_key = 'neve_bf_notice_dismissed';
 
 	/**
 	 * Admin constructor.
@@ -61,6 +68,11 @@ class Admin {
 		if ( get_option( $this->dismiss_notice_key ) !== 'yes' ) {
 			add_action( 'admin_notices', [ $this, 'admin_notice' ], 0 );
 			add_action( 'wp_ajax_neve_dismiss_welcome_notice', [ $this, 'remove_notice' ] );
+		}
+
+		if ( get_option( $this->dismiss_bf_notice_key ) !== 'yes' ) {
+			add_action( 'admin_notices', [ $this, 'bf_notice' ] );
+			add_action( 'wp_ajax_neve_dismiss_bf_notice', [ $this, 'remove_bf_notice' ] );
 		}
 
 		add_action( 'admin_menu', [ $this, 'remove_background_submenu' ], 110 );
@@ -277,6 +289,42 @@ class Admin {
 	}
 
 	/**
+	 * Display Black friday notice.
+	 */
+	public function bf_notice() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		if ( ! Main::should_show_bf() ) {
+			return;
+		}
+
+		$this->dismiss_script();
+		echo '<div class="nv-bf-notice notice notice-info" style="position: relative">';
+		echo '<div class="notice-dismiss"></div>';
+		echo '<p>';
+		echo '<div style="display: inline-block; background: #0466CB; width: 24px; height: 24px; vertical-align: middle; border-radius: 2px;text-align: center;margin-right: 13px;">';
+		echo '<svg style="vertical-align: middle; fill: #fff;" width="14" height="14" viewBox="0 0 17 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M4.77822 10.2133V19.3287H0.118347V0.802224C0.118347 0.712594 0.145598 0.649854 0.200099 0.614002C0.254601 0.578149 0.354519 0.622964 0.499857 0.748446L12.1359 10.2133V1.04422H16.7958V19.5976C16.7958 19.7051 16.7685 19.7724 16.714 19.7992C16.6595 19.8261 16.5596 19.7768 16.4143 19.6514L4.77822 10.2133Z"/>
+				<rect x="0.118347" y="22.3334" width="16.6774" height="1.51613"/>
+				</svg>';
+		echo '</div>';
+		echo wp_kses_post(
+			sprintf(
+			// translators: %1$s - sale title, %2$s - license type, %3$s - number of licenses, %4$s - url
+				__( '%1$s - Save big with a %2$s of Neve Agency Plan. %3$s, for a limited time. %4$s', 'neve' ),
+				'<strong>' . __( 'Neve Black Friday Sale', 'neve' ) . '</strong>',
+				'<strong>' . __( 'Lifetime License', 'neve' ) . '</strong>',
+				'<strong>' . __( 'Only 100 licenses', 'neve' ) . '</strong>',
+				'<a href="' . tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'dashboard_notice_sitewide', 'blackfriday' ) . '" target="_blank" rel="external noreferrer noopener">' . __( 'Learn more', 'neve' ) . '</a>'
+			)
+		);
+		echo '</p>';
+		echo '</div>';
+	}
+
+	/**
 	 * Add notice.
 	 */
 	public function admin_notice() {
@@ -350,8 +398,7 @@ class Admin {
 			.ti-about-notice .notice-dismiss{
 				position: absolute;
 				z-index: 10;
-			    top: 10px;
-			    right: 10px;
+			    top: 2px;on in the top bar or
 			    padding: 10px 15px 10px 21px;
 			    font-size: 13px;
 			    line-height: 1.23076923;
@@ -360,8 +407,8 @@ class Admin {
 
 			.ti-about-notice .notice-dismiss:before{
 			    position: absolute;
-			    top: 8px;
-			    left: 0;
+			    top: 10px;
+			    right: 10px;
 			    transition: all .1s ease-in-out;
 			    background: none;
 			}
@@ -582,33 +629,45 @@ class Admin {
 	private function dismiss_script() {
 		?>
 		<script type="text/javascript">
-									function handleNoticeActions($) {
-										var actions = $('.nv-welcome-notice').find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
-										$.each(actions, function (index, actionButton) {
-											$(actionButton).on('click', function (e) {
-												e.preventDefault()
-												var redirect = $(this).attr('href')
-												$.post(
-													'<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
-													{
-														nonce: '<?php echo esc_attr( wp_create_nonce( 'remove_notice_confirmation' ) ); ?>',
-														action: 'neve_dismiss_welcome_notice',
-														success: function () {
-															if (typeof redirect !== 'undefined' && window.location.href !== redirect) {
-																window.location = redirect
-																return false
-															}
-															$('.nv-welcome-notice').fadeOut()
-														}
-													}
-												)
-											})
-										})
+			function handleNoticeActions($, notice) {
+				var actions = $(notice.class).find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
+				$.each(actions, function (index, actionButton) {
+					$(actionButton).on('click', function (e) {
+						e.preventDefault()
+						var redirect = $(this).attr('href')
+						$.post(
+							'<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
+							{
+								nonce: '<?php echo esc_attr( wp_create_nonce( 'remove_notice_confirmation' ) ); ?>',
+								action: notice.action,
+								success: function () {
+									if (typeof redirect !== 'undefined' && window.location.href !== redirect) {
+										window.location = redirect
+										return false
 									}
+									$(notice.class).fadeOut()
+								}
+							}
+						)
+					})
+				})
+			}
 
-									jQuery(document).ready(function () {
-										handleNoticeActions(jQuery)
-									})
+			jQuery(document).ready(function () {
+				var notices = [
+					{
+						class: '.nv-welcome-notice',
+						action: 'neve_dismiss_welcome_notice',
+					},
+					{
+						class: '.nv-bf-notice',
+						action: 'neve_dismiss_bf_notice',
+					}
+				];
+				jQuery.each( notices, function (index, notice) {
+					handleNoticeActions(jQuery, notice);
+				} )
+			})
 		</script>
 		<?php
 	}
@@ -632,6 +691,20 @@ class Admin {
 			return;
 		}
 		update_option( $this->dismiss_notice_key, 'yes' );
+		wp_die();
+	}
+
+	/**
+	 * Remove BF notice;
+	 */
+	public function remove_bf_notice() {
+		if ( ! isset( $_POST['nonce'] ) ) {
+			return;
+		}
+		if ( ! wp_verify_nonce( sanitize_text_field( $_POST['nonce'] ), 'remove_notice_confirmation' ) ) {
+			return;
+		}
+		update_option( $this->dismiss_bf_notice_key, 'yes' );
 		wp_die();
 	}
 
