@@ -3,7 +3,6 @@ import { __, sprintf } from '@wordpress/i18n';
 import { createInterpolateElement } from '@wordpress/element';
 
 const Promotion = ({ data }) => {
-
 	const { url, timeLeft } = data;
 	const css = `
 		.neve-bf-banner .promotion-link {
