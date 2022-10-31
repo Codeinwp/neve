@@ -11,6 +11,25 @@ const Upsells: React.FC<Props> = ({ control }) => {
 	const { params } = control;
 	const { title, url } = params;
 
+	if (window.NeveReactCustomize.bfDealData) {
+		const { link, bannerUrl } = window.NeveReactCustomize.bfDealData;
+
+		return (
+			<div className="upsell-inner">
+				<a
+					href={link}
+					target="_blank"
+					rel="external noreferrer noopener"
+				>
+					<img
+						src={bannerUrl}
+						alt={__('Black Friday deal for Neve!', 'neve')}
+					/>
+				</a>
+			</div>
+		);
+	}
+
 	return (
 		<div className="upsell-inner">
 			{title && (

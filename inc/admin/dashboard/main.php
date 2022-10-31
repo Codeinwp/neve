@@ -331,32 +331,43 @@ class Main {
 	}
 
 	/**
-	 * Get the data for BF deal banner.
+	 * Decide if the notice for BF should be displayed.
 	 *
-	 * @return array | false
+	 * @return bool
 	 */
-	public function bf_deal() {
+	public static function should_show_bf() {
 		if ( defined( 'NEVE_PRO_VERSION' ) ) {
 			return false;
 		}
 
-		/**
-		 * BF 2022 Promotion
-		 */
 		$start_date   = strtotime( '2022-11-21 00:00:00' );
 		$end_date     = strtotime( '2022-11-28 23:59:59' );
 		$current_time = strtotime( current_time( 'Y-m-d H:i:s' ) );
 		if ( $start_date <= $current_time && $current_time <= $end_date ) {
-			$days_left = abs( round( ( $current_time - $end_date ) / 86400 ) );
-			return [
-				'url'      => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'dashboard_notice', 'blackfriday' ),
-				'timeLeft' => $days_left <= 1 ? __( 'Less than 24 hours', 'neve' ) : $days_left . ' ' . __( 'days', 'neve' ),
-			];
+			return true;
 		}
 
 		return false;
 	}
 
+	/**
+	 * Get the data for BF deal banner.
+	 *
+	 * @return array | false
+	 */
+	public function bf_deal() {
+		if ( ! self::should_show_bf() ) {
+			return false;
+		}
+
+		$end_date     = strtotime( '2022-11-28 23:59:59' );
+		$current_time = strtotime( current_time( 'Y-m-d H:i:s' ) );
+		$days_left    = abs( round( ( $current_time - $end_date ) / 86400 ) );
+		return [
+			'url'      => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'dashboard_notice', 'blackfriday' ),
+			'timeLeft' => $days_left <= 1 ? __( 'Less than 24 hours', 'neve' ) : $days_left . ' ' . __( 'days', 'neve' ),
+		];
+	}
 
 	/**
 	 * Should branding notice be shown.
