@@ -59,7 +59,14 @@ class Elementor extends Page_Builder_Base {
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_in_picker' ], 999, 3 );
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_front_end' ], 999, 3 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 100 );
-		$this->neve_pro_compatibility();
+		/**
+		* Elementor - Neve Pro Compatibility
+		* add_filter call for "neve_pro_run_wc_view" hook.
+		*
+		* The callback, suspenses some WooCommerce modifications (especially customizer support) by Neve Pro if an Elementor template is applied on the current page.
+		* That gives full capability to Elementor and removes Neve Pro customizations.
+		*/
+		add_filter( 'neve_pro_run_wc_view', array( $this, 'conditionally_suspense_neve_pro_woo_customizations' ), 10, 2 );
 	}
 
 	/**
@@ -444,17 +451,6 @@ class Elementor extends Page_Builder_Base {
 		}
 
 		return self::$cache_cp_has_template[ $location ];
-	}
-
-	/**
-	 * Elementor - Neve Pro Compatibility
-	 * Suspense some WooCommerce modifications if an Elementor template is applied on the current page.
-	 * That gives full capability to Elementor and removes Neve Pro customizations.
-	 *
-	 * @return void
-	 */
-	public function neve_pro_compatibility() {
-		add_filter( 'neve_pro_run_wc_view', array( $this, 'conditionally_suspense_neve_pro_woo_customizations' ), 10, 2 );
 	}
 
 	/**
