@@ -338,20 +338,21 @@ class Elementor extends Page_Builder_Base {
 	 * @return false|\ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager
 	 */
 	private static function get_condition_manager() {
-		if ( self::$elementor_conditions_manager === false ) {
-			if ( ! method_exists( '\ElementorPro\Modules\ThemeBuilder\Module', 'instance' ) ) {
-				return false;
-			}
-
-			$theme_builder = \ElementorPro\Modules\ThemeBuilder\Module::instance();
-
-			if ( ! method_exists( $theme_builder, 'get_conditions_manager' ) ) {
-				return false;
-			}
-
-			self::$elementor_conditions_manager = $theme_builder->get_conditions_manager();
+		if ( self::$elementor_conditions_manager !== false ) {
+			return self::$elementor_conditions_manager;
 		}
 
+		if ( ! method_exists( '\ElementorPro\Modules\ThemeBuilder\Module', 'instance' ) ) {
+			return false;
+		}
+
+		$theme_builder = \ElementorPro\Modules\ThemeBuilder\Module::instance();
+
+		if ( ! method_exists( $theme_builder, 'get_conditions_manager' ) ) {
+			return false;
+		}
+
+		self::$elementor_conditions_manager = $theme_builder->get_conditions_manager();
 		return self::$elementor_conditions_manager;
 	}
 
