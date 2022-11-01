@@ -436,20 +436,22 @@ class Elementor extends Page_Builder_Base {
 
 		$location = self::ELEMENTOR_TEMPLATE_TYPES[ $elementor_template_type ]['location'];
 
-		if ( ! array_key_exists( $elementor_template_type, self::$cache_cp_has_template ) ) {
-			/**
-			 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager $conditions_manager
-			 */
-			$conditions_manager = self::get_condition_manager();
-
-			if ( ! is_object( $conditions_manager ) || ! method_exists( $conditions_manager, 'get_documents_for_location' ) ) {
-				return false;
-			}
-
-			$templates = $conditions_manager->get_documents_for_location( $location );
-
-			self::$cache_cp_has_template[ $location ] = ( count( $templates ) > 0 );
+		if ( array_key_exists( $elementor_template_type, self::$cache_cp_has_template ) ) {
+			return self::$cache_cp_has_template[ $location ];
 		}
+
+		/**
+		 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager $conditions_manager
+		 */
+		$conditions_manager = self::get_condition_manager();
+
+		if ( ! is_object( $conditions_manager ) || ! method_exists( $conditions_manager, 'get_documents_for_location' ) ) {
+			return false;
+		}
+
+		$templates = $conditions_manager->get_documents_for_location( $location );
+
+		self::$cache_cp_has_template[ $location ] = ( count( $templates ) > 0 );
 
 		return self::$cache_cp_has_template[ $location ];
 	}
