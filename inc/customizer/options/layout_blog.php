@@ -238,7 +238,12 @@ class Layout_Blog extends Base_Customizer {
 					'section'         => $this->section,
 					'label'           => esc_html__( 'Alternating layout', 'neve' ),
 					'active_callback' => function () {
-						return get_theme_mod( $this->section ) === 'default';
+						$is_list_layout = get_theme_mod( $this->section ) === 'default';
+						$has_image      = true;
+						if ( $is_list_layout ) {
+							$has_image = defined( 'NEVE_PRO_VERSION' ) ? get_theme_mod( 'neve_blog_list_image_position', 'left' ) !== 'no' : false;
+						}
+						return $is_list_layout && $has_image;
 					},
 				)
 			)
