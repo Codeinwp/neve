@@ -37,7 +37,7 @@ class Elementor extends Page_Builder_Base {
 	 *
 	 * @var array
 	 */
-	private static $cache_current_page_has_elementor_template = [];
+	private static $cache_cp_has_template = [];
 
 	/**
 	 * Stores Elementor Pro Conditions_Manager instance.
@@ -428,7 +428,7 @@ class Elementor extends Page_Builder_Base {
 
 		$location = self::ELEMENTOR_TEMPLATE_TYPES[ $elementor_template_type ]['location'];
 
-		if ( ! array_key_exists( $elementor_template_type, self::$cache_current_page_has_elementor_template ) ) {
+		if ( ! array_key_exists( $elementor_template_type, self::$cache_cp_has_template ) ) {
 			/**
 			 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager $conditions_manager
 			 */
@@ -440,10 +440,10 @@ class Elementor extends Page_Builder_Base {
 
 			$templates = $conditions_manager->get_documents_for_location( $location );
 
-			self::$cache_current_page_has_elementor_template[ $location ] = ( count( $templates ) > 0 );
+			self::$cache_cp_has_template[ $location ] = ( count( $templates ) > 0 );
 		}
 
-		return self::$cache_current_page_has_elementor_template[ $location ];
+		return self::$cache_cp_has_template[ $location ];
 	}
 
 	/**
