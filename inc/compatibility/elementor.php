@@ -66,7 +66,7 @@ class Elementor extends Page_Builder_Base {
 		* The callback, suspenses some WooCommerce modifications (especially customizer support) by Neve Pro if an Elementor template is applied on the current page.
 		* That gives full capability to Elementor and removes Neve Pro customizations.
 		*/
-		add_filter( 'neve_pro_run_wc_view', array( $this, 'conditionally_suspense_neve_pro_woo_customizations' ), 10, 2 );
+		add_filter( 'neve_pro_run_wc_view', array( $this, 'suspend_woo_customizations' ), 10, 2 );
 	}
 
 	/**
@@ -460,7 +460,7 @@ class Elementor extends Page_Builder_Base {
 	 * @param  string $class_name Fully class name that applies the Woo Modification.
 	 * @return bool
 	 */
-	public function conditionally_suspense_neve_pro_woo_customizations( $should_load, $class_name ) {
+	public function suspend_woo_customizations( $should_load, $class_name ) {
 		switch ( $class_name ) {
 			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Shop_Page':
 				$elementor_template_type = 'product_archive';
