@@ -261,8 +261,8 @@ class Template_Parts extends Base_View {
 			$neve_thumbnail_skip_lazy_added = true;
 		}
 
-		$post_image_wrap = apply_filters( 'neve_post_wrap_classes', [ 'nv-post-thumbnail-wrap', 'img-wrap' ] );
-		$markup          = '<div class="' . esc_attr( implode( ' ', $post_image_wrap ) ) . '">';
+		$image_wrap_classes = $this->get_image_wrap_classes();
+		$markup             = '<div class="' . esc_attr( $image_wrap_classes ) . '">';
 
 		if ( ! $skip_link ) {
 			$markup .= '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '" rel="bookmark" title="' . the_title_attribute(
@@ -284,6 +284,23 @@ class Template_Parts extends Base_View {
 		$markup .= '</div>';
 
 		return apply_filters( 'neve_blog_post_thumbnail_markup', $markup );
+	}
+
+	/**
+	 * Get css classes for post image wrap.
+	 *
+	 * @return string
+	 */
+	private function get_image_wrap_classes() {
+		$post_classes = [ 'nv-post-thumbnail-wrap', 'img-wrap' ];
+
+		if ( defined( 'NEVE_PRO_VERSION' ) ) {
+			$blog_image_hover = get_theme_mod( 'neve_blog_image_hover', 'none' );
+			if ( $blog_image_hover !== 'none' ) {
+				$post_classes[] = $blog_image_hover;
+			}
+		}
+		return esc_attr( implode( ' ', $post_classes ) );
 	}
 
 	/**
