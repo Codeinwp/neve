@@ -20,6 +20,7 @@ const Upsells: React.FC<Props> = ({ control }) => {
 					href={link}
 					target="_blank"
 					rel="external noreferrer noopener"
+					style={{ width: '100%', lineHeight: '0' }}
 				>
 					<img
 						src={bannerUrl}

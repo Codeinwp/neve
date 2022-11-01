@@ -8,6 +8,7 @@
 namespace Neve\Admin\Dashboard;
 
 use Neve\Core\Theme_Info;
+use Neve\Traits\Utils;
 /**
  * Class Main
  *
@@ -16,6 +17,7 @@ use Neve\Core\Theme_Info;
 class Main {
 
 	use Theme_Info;
+	use Utils;
 
 	/**
 	 * Changelog Handler.
@@ -331,32 +333,12 @@ class Main {
 	}
 
 	/**
-	 * Decide if the notice for BF should be displayed.
-	 *
-	 * @return bool
-	 */
-	public static function should_show_bf() {
-		if ( defined( 'NEVE_PRO_VERSION' ) ) {
-			return false;
-		}
-
-		$start_date   = strtotime( '2022-11-21 00:00:00' );
-		$end_date     = strtotime( '2022-11-28 23:59:59' );
-		$current_time = strtotime( current_time( 'Y-m-d H:i:s' ) );
-		if ( $start_date <= $current_time && $current_time <= $end_date ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
 	 * Get the data for BF deal banner.
 	 *
 	 * @return array | false
 	 */
 	public function bf_deal() {
-		if ( ! self::should_show_bf() ) {
+		if ( ! $this->should_show_bf() ) {
 			return false;
 		}
 

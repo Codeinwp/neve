@@ -8,8 +8,8 @@
 
 namespace Neve\Customizer;
 
-use Neve\Admin\Dashboard\Main;
 use Neve\Core\Factory;
+use Neve\Traits\Utils;
 
 /**
  * Main customizer handler.
@@ -17,6 +17,7 @@ use Neve\Core\Factory;
  * @package Neve\Customizer
  */
 class Loader {
+	use Utils;
 
 	/**
 	 * Customizer modules.
@@ -168,12 +169,12 @@ class Loader {
 	 * @return false|array
 	 */
 	private function get_bf_deal_data() {
-		if ( ! Main::should_show_bf() ) {
+		if ( ! $this->should_show_bf() ) {
 			return false;
 		}
 
 		return [
-			'bannerUrl' => get_template_directory_uri() . '/assets/img/bf-customize.png',
+			'bannerUrl' => get_template_directory_uri() . '/assets/img/bf-customize.svg',
 			'link'      => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'customizer_notice', 'blackfriday' ),
 		];
 	}

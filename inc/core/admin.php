@@ -10,8 +10,8 @@
 
 namespace Neve\Core;
 
-use Neve\Admin\Dashboard\Main;
 use Neve\Core\Settings\Mods_Migrator;
+use Neve\Traits\Utils;
 
 /**
  * Class Admin
@@ -19,6 +19,8 @@ use Neve\Core\Settings\Mods_Migrator;
  * @package Neve\Core
  */
 class Admin {
+	use Utils;
+
 	/**
 	 * Dismiss notice key.
 	 *
@@ -296,20 +298,24 @@ class Admin {
 			return;
 		}
 
-		if ( ! Main::should_show_bf() ) {
+		if ( ! $this->should_show_bf() ) {
 			return;
 		}
 
-		$this->dismiss_script();
-		echo '<div class="nv-bf-notice notice notice-info" style="position: relative">';
+		$css = '
+			.nv-bf-notice img {
+				vertical-align: middle;
+				margin-right: 13px;
+				width: 24px;
+			}
+		';
+
+		$this->dismiss_script( '.nv-bf-notice', 'neve_dismiss_bf_notice' );
+		echo '<div class="nv-bf-notice notice notice-info is-dismissible">';
 		echo '<div class="notice-dismiss"></div>';
+		echo '<style>' . wp_kses_post( $css ) . '</style>';
 		echo '<p>';
-		echo '<div style="display: inline-block; background: #0466CB; width: 24px; height: 24px; vertical-align: middle; border-radius: 2px;text-align: center;margin-right: 13px;">';
-		echo '<svg style="vertical-align: middle; fill: #fff;" width="14" height="14" viewBox="0 0 17 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M4.77822 10.2133V19.3287H0.118347V0.802224C0.118347 0.712594 0.145598 0.649854 0.200099 0.614002C0.254601 0.578149 0.354519 0.622964 0.499857 0.748446L12.1359 10.2133V1.04422H16.7958V19.5976C16.7958 19.7051 16.7685 19.7724 16.714 19.7992C16.6595 19.8261 16.5596 19.7768 16.4143 19.6514L4.77822 10.2133Z"/>
-				<rect x="0.118347" y="22.3334" width="16.6774" height="1.51613"/>
-				</svg>';
-		echo '</div>';
+		echo '<img src="' . esc_url( get_template_directory_uri() . '/assets/img/neve-logo.svg' ) . '" alt="' . esc_attr( __( 'Neve Theme Logo', 'neve' ) ) . '">';
 		echo wp_kses_post(
 			sprintf(
 			// translators: %1$s - sale title, %2$s - license type, %3$s - number of licenses, %4$s - url
@@ -398,7 +404,7 @@ class Admin {
 			.ti-about-notice .notice-dismiss{
 				position: absolute;
 				z-index: 10;
-			    top: 2px;on in the top bar or
+			    top: 2px;
 			    padding: 10px 15px 10px 21px;
 			    font-size: 13px;
 			    line-height: 1.23076923;
@@ -419,7 +425,7 @@ class Admin {
 		';
 
 		echo '<style>' . wp_kses_post( $style ) . '</style>';
-		$this->dismiss_script();
+		$this->dismiss_script( '.nv-welcome-notice', 'neve_dismiss_welcome_notice' );
 		echo '<div class="nv-welcome-notice updated notice ti-about-notice">';
 		echo '<div class="notice-dismiss"></div>';
 		$this->welcome_notice_content();
@@ -625,13 +631,18 @@ class Admin {
 
 	/**
 	 * Dismiss notice JS
+	 *
+	 * @param string $notice_class The container class of the notice.
+	 * @param string $notice_action The ajax function to execute.
 	 */
-	private function dismiss_script() {
+	private function dismiss_script( $notice_class, $notice_action ) {
 		?>
 		<script type="text/javascript">
 			function handleNoticeActions($, notice) {
 				var actions = $(notice.class).find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
+				console.log( actions )
 				$.each(actions, function (index, actionButton) {
+					console.log( actionButton );
 					$(actionButton).on('click', function (e) {
 						e.preventDefault()
 						var redirect = $(this).attr('href')
@@ -653,20 +664,12 @@ class Admin {
 				})
 			}
 
-			jQuery(document).ready(function () {
-				var notices = [
-					{
-						class: '.nv-welcome-notice',
-						action: 'neve_dismiss_welcome_notice',
-					},
-					{
-						class: '.nv-bf-notice',
-						action: 'neve_dismiss_bf_notice',
-					}
-				];
-				jQuery.each( notices, function (index, notice) {
-					handleNoticeActions(jQuery, notice);
-				} )
+			jQuery( function() {
+				var notice = {
+					class: '<?php echo wp_kses_post( $notice_class ); ?>',
+					action: '<?php echo wp_kses_post( $notice_action ); ?>',
+				};
+				handleNoticeActions(jQuery, notice);
 			})
 		</script>
 		<?php
