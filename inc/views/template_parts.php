@@ -85,7 +85,14 @@ class Template_Parts extends Base_View {
 			return;
 		}
 
+		$wrapper_classes = [];
+		if ( ! neve_is_new_skin() ) {
+			$wrapper_classes[] = 'row';
+		}
+		$wrapper_classes  = apply_filters( 'neve_posts_wrapper_class', $wrapper_classes );
 		$posts_to_exclude = [];
+
+		echo '<div class="' . esc_attr( join( ' ', $wrapper_classes ) ) . '">';
 		foreach ( $posts as $post ) {
 			$post_id            = is_array( $post ) && array_key_exists( 'ID', $post ) ? $post['ID'] : $post;
 			$posts_to_exclude[] = $post_id;
@@ -107,6 +114,7 @@ class Template_Parts extends Base_View {
 
 			remove_all_filters( 'excerpt_more' );
 		}
+		echo '</div>';
 		add_filter(
 			'nv_exclude_posts',
 			function () use ( $posts_to_exclude ) {
