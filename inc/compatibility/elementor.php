@@ -466,8 +466,11 @@ class Elementor extends Page_Builder_Base {
 	public function suspend_woo_customizations( $should_load, $class_name ) {
 		switch ( $class_name ) {
 			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Shop_Page':
-			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Shop_Product':
 				$elementor_template_type = 'product_archive';
+				break;
+
+			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Shop_Product':
+				$elementor_template_type = is_single() ? 'single_product' : 'product_archive'; // Sometimes shop_product is used inside of the single product as related products etc.
 				break;
 
 			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Single_Product_Video':
