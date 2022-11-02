@@ -7,12 +7,15 @@
 
 namespace Neve\Traits;
 
+use Neve\Core\Theme_Info;
+
 /**
  * Trait Utils
  *
  * @package Neve\Traits;
  */
 trait Utils {
+	use Theme_Info;
 
 	/**
 	 * Decide if the notice for BF should be displayed.
@@ -20,7 +23,7 @@ trait Utils {
 	 * @return bool
 	 */
 	public function should_show_bf() {
-		if ( defined( 'NEVE_PRO_VERSION' ) ) {
+		if ( $this->has_valid_addons() ) {
 			return false;
 		}
 
