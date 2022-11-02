@@ -7,7 +7,6 @@
 
 namespace Neve\Admin\Dashboard;
 
-use Neve\Core\Theme_Info;
 use Neve\Traits\Utils;
 /**
  * Class Main
@@ -16,7 +15,6 @@ use Neve\Traits\Utils;
  */
 class Main {
 
-	use Theme_Info;
 	use Utils;
 
 	/**
