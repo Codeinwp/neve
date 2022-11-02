@@ -315,7 +315,7 @@ class Admin {
 		echo '<div class="notice-dismiss"></div>';
 		echo '<style>' . wp_kses_post( $css ) . '</style>';
 		echo '<p>';
-		echo '<img src="' . esc_url( get_template_directory_uri() . '/assets/img/neve-logo.svg' ) . '" alt="' . esc_attr( __( 'Neve Theme Logo', 'neve' ) ) . '">';
+		echo '<img src="' . esc_url( get_template_directory_uri() . '/assets/img/dashboard/logo.svg' ) . '" alt="' . esc_attr( __( 'Neve Theme Logo', 'neve' ) ) . '">';
 		echo wp_kses_post(
 			sprintf(
 			// translators: %1$s - sale title, %2$s - license type, %3$s - number of licenses, %4$s - url
