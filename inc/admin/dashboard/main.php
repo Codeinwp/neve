@@ -14,7 +14,6 @@ use Neve\Traits\Utils;
  * @package Neve\Admin\Dashboard
  */
 class Main {
-
 	use Utils;
 
 	/**
