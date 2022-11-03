@@ -252,7 +252,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 			]
 		);
 		$default       = wp_json_encode( [ 'author', 'date', 'comments' ] );
-		$default_value = Layout::get_meta_default_data( 'neve_post_meta_ordering', $default );
+		$default_value = neve_get_default_meta_value( 'neve_post_meta_ordering', $default );
 		$default_value = get_theme_mod( 'neve_blog_post_meta_fields', wp_json_encode( $default_value ) );
 		$default_value = get_theme_mod( 'neve_single_post_meta_fields', $default_value );
 

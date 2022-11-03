@@ -7,15 +7,14 @@
 
 namespace Neve\Admin\Dashboard;
 
-use Neve\Core\Theme_Info;
+use Neve\Traits\Utils;
 /**
  * Class Main
  *
  * @package Neve\Admin\Dashboard
  */
 class Main {
-
-	use Theme_Info;
+	use Utils;
 
 	/**
 	 * Changelog Handler.
@@ -192,6 +191,7 @@ class Main {
 			'isRTL'                   => is_rtl(),
 			'isValidLicense'          => $this->has_valid_addons(),
 			'notifications'           => $this->get_notifications(),
+			'bfDeal'                  => $this->bf_deal(),
 			'customizerShortcuts'     => $this->get_customizer_shortcuts(),
 			'plugins'                 => $this->get_useful_plugins(),
 			'featureData'             => $this->get_free_pro_features(),
@@ -329,6 +329,24 @@ class Main {
 		return $notifications;
 	}
 
+	/**
+	 * Get the data for BF deal banner.
+	 *
+	 * @return array | false
+	 */
+	public function bf_deal() {
+		if ( ! $this->should_show_bf() ) {
+			return false;
+		}
+
+		$end_date     = strtotime( '2022-11-28 23:59:59' );
+		$current_time = strtotime( current_time( 'Y-m-d H:i:s' ) );
+		$days_left    = abs( round( ( $current_time - $end_date ) / 86400 ) );
+		return [
+			'url'      => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'dashboard_notice', 'blackfriday' ),
+			'timeLeft' => $days_left <= 1 ? __( 'Less than 24 hours', 'neve' ) : $days_left . ' ' . __( 'days', 'neve' ),
+		];
+	}
 
 	/**
 	 * Should branding notice be shown.
