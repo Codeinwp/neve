@@ -85,4 +85,4 @@ jobs:
           PERCY_PULL_REQUEST: ${{ needs.trigger_visual.outputs.pr_number }}
           PERCY_PARALLEL_NONCE: "${{ github.run_id }}-${{ needs.trigger_visual.outputs.commit_sha }}"
         run: |
-          cd e2e-tests && yarn run visual:test --  --browser chrome --record --parallel --group visual-diff
+          cd e2e-tests && yarn run visual:test --  --browser chrome --record --group visual-diff
