@@ -19,6 +19,20 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.4.4](https://github.com/Codeinwp/neve/compare/v3.4.3...v3.4.4) (2022-11-03)
+
+- [Fix] Fix possible warning message from nav_walker.php
+- [Fix] Speaker Deck block not responsive
+- [Fix] Deprecation warnings in PHP 8.1
+- [Fix] Visual issue for heading controls in customizer
+- [Fix] Customizer toggle control style in WP 6.1
+- Stop changing Otter plugin name
+- Update starter content theme mods & theme screenshot
+- Update Google Fonts
+
+
+
+
 ##### [Version 3.4.3](https://github.com/Codeinwp/neve/compare/v3.4.2...v3.4.3) (2022-10-12)
 
 - [Fix] Caret for select dropdown not appearing

@@ -58,6 +58,6 @@
 	color: #A0A5AA;
 }
 
-.customize-control-customizer-heading.expanded .accordion-expand-button:after {
+.customize-control.expanded .accordion-expand-button:after {
 	transform: rotate(180deg);
 }
