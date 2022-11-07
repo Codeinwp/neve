@@ -190,6 +190,7 @@ describe('Single post meta sidebar', function () {
 				'Post Navigation',
 			];
 			expect(el).to.contain(shouldContain[index]);
+			cy.openNeveSidebar();
 			if (index === 6) {
 				cy.get(el).parent().should('have.class', 'hidden');
 			} else {
