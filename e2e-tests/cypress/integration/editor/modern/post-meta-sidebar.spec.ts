@@ -175,6 +175,7 @@ describe('Single post meta sidebar', function () {
 		cy.loginWithRequest(postSetup.url);
 		cy.reload();
 		cy.get('#wp-admin-bar-edit a').click();
+		cy.openNeveSidebar();
 		cy.clearWelcome();
 		cy.get('.interface-complementary-area-header');
 
