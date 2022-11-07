@@ -103,6 +103,8 @@ describe('Single page sidebar', function () {
 		cy.get('.single-page-container').should('have.class', 'container').and('be.visible');
 		cy.get('#wp-admin-bar-edit a').click();
 
+		cy.openNeveSidebar();
+
 		cy.getControl('neve_meta_container').find('.components-button').contains('Full Width').click();
 		cy.updatePost();
 		cy.visit(pageSetup.url);
@@ -136,17 +138,23 @@ describe('Single page sidebar', function () {
 		cy.get('.nv-page-title').should('have.css', 'text-align').and('eq', 'center');
 		cy.get('#wp-admin-bar-edit a').click();
 
+		cy.openNeveSidebar();
+
 		cy.get('.neve_meta_title_alignment .nv-align-right').click();
 		cy.updatePost();
 		cy.visit(pageSetup.url);
 		cy.get('.nv-page-title').should('have.css', 'text-align').and('eq', 'right');
 		cy.get('#wp-admin-bar-edit a').click();
 
+		cy.openNeveSidebar();
+
 		cy.get('.neve_meta_title_alignment .nv-align-left').click();
 		cy.updatePost();
 		cy.visit(pageSetup.url);
 		cy.get('.nv-page-title').should('have.css', 'text-align').and('eq', 'left');
 		cy.get('#wp-admin-bar-edit a').click();
+
+		cy.openNeveSidebar();
 	});
 
 	it('Check author avatar not to exist for page', function () {
@@ -173,11 +181,15 @@ describe('Single page sidebar', function () {
 		cy.get('.hfg_header').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
 
+		cy.openNeveSidebar();
+
 		cy.activateCheckbox('.components-toggle-control__label', 'Disable Footer');
 		cy.updatePost();
 		cy.visit(pageSetup.url);
 		cy.get('footer.site-footer').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
+
+		cy.openNeveSidebar();
 
 		cy.activateCheckbox('.components-toggle-control__label', 'Disable Title');
 		cy.updatePost();
