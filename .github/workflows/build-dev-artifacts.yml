@@ -143,9 +143,9 @@ jobs:
             specs: "dashboard"
             envs: "default"
           ## Starter-sites specs needs one machine
-#          - machines: 1
-#            specs: "starter-sites"
-#            envs: "starter-sites"
+          - machines: 1
+            specs: "starter-sites"
+            envs: "starter-sites"
           ## Useful-plugins specs needs on machine
           - machines: 1
             specs: "useful-plugins"
