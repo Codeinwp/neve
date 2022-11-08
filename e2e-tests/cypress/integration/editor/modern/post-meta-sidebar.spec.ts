@@ -173,7 +173,6 @@ describe('Single post meta sidebar', function () {
 
 	it('Check post elements', function () {
 		cy.loginWithRequest(postSetup.url);
-		cy.reload();
 		cy.get('#wp-admin-bar-edit a').click();
 		cy.clearWelcome();
 		cy.openNeveSidebar();
@@ -190,11 +189,11 @@ describe('Single post meta sidebar', function () {
 				'Post Navigation',
 			];
 			expect(el).to.contain(shouldContain[index]);
-			//if (index === 6) {
-				//cy.get(el).parent().should('have.class', 'hidden');
-			//} else {
+			if (index === 6) {
+				cy.get(el).parent().should('have.class', 'hidden');
+			} else {
 				cy.get(el).parent().should('not.have.class', 'hidden');
-			//}
+			}
 		});
 
 		cy.toggleElements(false);
