@@ -102,7 +102,7 @@ describe('Single page sidebar', function () {
 		cy.visit(pageSetup.url);
 		cy.get('.single-page-container').should('have.class', 'container').and('be.visible');
 		cy.get('#wp-admin-bar-edit a').click();
-
+		cy.clearWelcome();
 		cy.openNeveSidebar();
 
 		cy.getControl('neve_meta_container').find('.components-button').contains('Full Width').click();
