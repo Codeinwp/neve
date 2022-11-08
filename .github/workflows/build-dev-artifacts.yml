@@ -148,7 +148,7 @@ jobs:
         with:
           node-version: 14.x
       - name: Install ${{ matrix.envs }} env for ${{ matrix.specs }} specs
-        run: bash ./bin/envs/init.sh ${{ matrix.envs }} latest no "$ZIP_URL"
+        run: bash ./bin/envs/init.sh ${{ matrix.envs }} 6.0.3 no "$ZIP_URL"
 
       - name: Run ${{ matrix.specs }} Cypress tests
         env:

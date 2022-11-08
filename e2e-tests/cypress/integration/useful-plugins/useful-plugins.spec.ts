@@ -22,3 +22,4 @@ describe('Useful Plugins Tab - Install Optimole Plugin', function () {
 			.and('be.enabled');
 	});
 });
+	
