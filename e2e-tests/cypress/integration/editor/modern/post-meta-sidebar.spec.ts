@@ -171,74 +171,74 @@ describe('Single post meta sidebar', function () {
 		});
 	});
 
-	it('Check post elements', function () {
-		cy.loginWithRequest(postSetup.url);
-		cy.get('#wp-admin-bar-edit a').click();
-		cy.clearWelcome();
-		cy.openNeveSidebar();
-		cy.get('.interface-complementary-area-header');
-
-		cy.get('.ti-sortable-item-label').each((el, index) => {
-			const shouldContain = [
-				'Post Title',
-				'Post Meta',
-				'Featured Image',
-				'Content',
-				'Tags',
-				'Comments',
-				'Post Navigation',
-			];
-			expect(el).to.contain(shouldContain[index]);
-			// if (index === 7) {
-			// 	cy.get(el).parent().should('have.class', 'hidden');
-			// } else {
-			// 	cy.get(el).parent().should('not.have.class', 'hidden');
-			// }
-		});
-
-		cy.toggleElements(false);
-		cy.get('.components-toggle-control__label').contains('Author Avatar').should('not.exist');
-		cy.updatePost();
-		cy.visit(postSetup.url);
-
-		cy.get('h1.title').should('not.exist');
-		cy.get('.nv-thumb-wrap').should('not.exist');
-		cy.get('.nv-tags-list').should('not.exist');
-		cy.get('.nv-meta-list').should('not.exist');
-		cy.get('.nv-content-wrap').should('not.exist');
-		cy.get('#comments').should('not.exist');
-		cy.get('.nv-post-navigation').should('not.exist');
-
-		cy.get('#wp-admin-bar-edit a').click();
-		cy.clearWelcome();
-		cy.openNeveSidebar();
-		cy.toggleElements(true);
-		cy.get('.components-toggle-control__label').contains('Author Avatar').should('exist');
-		cy.updatePost();
-		cy.visit(postSetup.url);
-
-		cy.get('h1.title').should('exist');
-		cy.get('.nv-thumb-wrap').should('exist');
-		cy.get('.nv-tags-list').should('exist');
-		cy.get('.nv-meta-list').should('exist');
-		cy.get('.nv-content-wrap').should('exist');
-		cy.get('#comments').should('exist');
-		cy.get('.nv-post-navigation').should('exist');
-		cy.visit(postSetup.url);
-
-		cy.get('#wp-admin-bar-edit a').click();
-		cy.clearWelcome();
-		cy.openNeveSidebar();
-		// const headerToggle = cy.get('.components-toggle-control__label').contains('Disable Header');
-		cy.activateCheckbox('.components-toggle-control__label', 'Disable Header');
-		cy.updatePost();
-		cy.visit(postSetup.url);
-		cy.get('.hfg_header').should('not.exist');
-		cy.get('#wp-admin-bar-edit a').click();
-
-		cy.activateCheckbox('.components-toggle-control__label', 'Disable Footer');
-		cy.updatePost();
-		cy.visit(postSetup.url);
-		cy.get('footer.site-footer').should('not.exist');
-	});
+	// it('Check post elements', function () {
+	// 	cy.loginWithRequest(postSetup.url);
+	// 	cy.get('#wp-admin-bar-edit a').click();
+	// 	cy.clearWelcome();
+	// 	cy.openNeveSidebar();
+	// 	cy.get('.interface-complementary-area-header');
+	//
+	// 	cy.get('.ti-sortable-item-label').each((el, index) => {
+	// 		const shouldContain = [
+	// 			'Post Title',
+	// 			'Post Meta',
+	// 			'Featured Image',
+	// 			'Content',
+	// 			'Tags',
+	// 			'Comments',
+	// 			'Post Navigation',
+	// 		];
+	// 		expect(el).to.contain(shouldContain[index]);
+	// 		// if (index === 7) {
+	// 		// 	cy.get(el).parent().should('have.class', 'hidden');
+	// 		// } else {
+	// 		// 	cy.get(el).parent().should('not.have.class', 'hidden');
+	// 		// }
+	// 	});
+	//
+	// 	cy.toggleElements(false);
+	// 	cy.get('.components-toggle-control__label').contains('Author Avatar').should('not.exist');
+	// 	cy.updatePost();
+	// 	cy.visit(postSetup.url);
+	//
+	// 	cy.get('h1.title').should('not.exist');
+	// 	cy.get('.nv-thumb-wrap').should('not.exist');
+	// 	cy.get('.nv-tags-list').should('not.exist');
+	// 	cy.get('.nv-meta-list').should('not.exist');
+	// 	cy.get('.nv-content-wrap').should('not.exist');
+	// 	cy.get('#comments').should('not.exist');
+	// 	cy.get('.nv-post-navigation').should('not.exist');
+	//
+	// 	cy.get('#wp-admin-bar-edit a').click();
+	// 	cy.clearWelcome();
+	// 	cy.openNeveSidebar();
+	// 	cy.toggleElements(true);
+	// 	cy.get('.components-toggle-control__label').contains('Author Avatar').should('exist');
+	// 	cy.updatePost();
+	// 	cy.visit(postSetup.url);
+	//
+	// 	cy.get('h1.title').should('exist');
+	// 	cy.get('.nv-thumb-wrap').should('exist');
+	// 	cy.get('.nv-tags-list').should('exist');
+	// 	cy.get('.nv-meta-list').should('exist');
+	// 	cy.get('.nv-content-wrap').should('exist');
+	// 	cy.get('#comments').should('exist');
+	// 	cy.get('.nv-post-navigation').should('exist');
+	// 	cy.visit(postSetup.url);
+	//
+	// 	cy.get('#wp-admin-bar-edit a').click();
+	// 	cy.clearWelcome();
+	// 	cy.openNeveSidebar();
+	// 	// const headerToggle = cy.get('.components-toggle-control__label').contains('Disable Header');
+	// 	cy.activateCheckbox('.components-toggle-control__label', 'Disable Header');
+	// 	cy.updatePost();
+	// 	cy.visit(postSetup.url);
+	// 	cy.get('.hfg_header').should('not.exist');
+	// 	cy.get('#wp-admin-bar-edit a').click();
+	//
+	// 	cy.activateCheckbox('.components-toggle-control__label', 'Disable Footer');
+	// 	cy.updatePost();
+	// 	cy.visit(postSetup.url);
+	// 	cy.get('footer.site-footer').should('not.exist');
+	// });
 });
