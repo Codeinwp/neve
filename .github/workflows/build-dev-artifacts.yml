@@ -134,6 +134,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - machines: 1
+            specs: "dashboard"
+            envs: "default"
           ## Starter-sites specs needs one machine
           - machines: 1
             specs: "starter-sites"
