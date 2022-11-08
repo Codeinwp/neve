@@ -72,7 +72,6 @@ describe('Single page sidebar', function () {
 			cy.updatePageOrPostByRequest(window.localStorage.getItem('postId'), 'pages', {
 				meta: {
 					neve_meta_sidebar: 'left',
-					neve_meta_content_width: 70,
 				},
 			}).then(() => {
 				cy.visit(pageSetup.url);
