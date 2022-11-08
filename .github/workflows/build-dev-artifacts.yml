@@ -131,60 +131,13 @@ jobs:
     name: E2E for ${{ matrix.specs }} on ${{ matrix.envs }}
     needs: dev-zip
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         include:
-          ## Amp specs needs just one machine
-          - machines: 1
-            specs: "amp"
-            envs: "amp"
-          ## Dashboard specs needs one machine
-          - machines: 1
-            specs: "dashboard"
-            envs: "default"
           ## Starter-sites specs needs one machine
           - machines: 1
             specs: "starter-sites"
             envs: "starter-sites"
-          ## Useful-plugins specs needs on machine
-          - machines: 1
-            specs: "useful-plugins"
-            envs: "useful-plugins"
-          ## Mega menu specs needs just one machine
-          - machines: 1
-            specs: "mega-menu"
-            envs: "mega-menu"
-          ## 2 machines for classic editor tests
-          - machines: 1
-            specs: "editor/classic"
-            envs: "classic-editor"
-          ## 2 machines for modern editor (Gutenberg)
-          - machines: 1
-            specs: "editor/modern"
-            envs: "default"
-          ## 6 machines for customizer tests
-          - machines: 1
-            specs: "customizer"
-            envs: "sample-data"
-          - machines: 2
-            specs: "customizer"
-            envs: "sample-data"
-          - machines: 3
-            specs: "customizer"
-            envs: "sample-data"
-          - machines: 4
-            specs: "customizer"
-            envs: "sample-data"
-          - machines: 5
-            specs: "customizer"
-            envs: "sample-data"
-          - machines: 6
-            specs: "customizer"
-            envs: "sample-data"
-          ## 1 machine for woocommerce tests
-          - machines: 1
-            specs: "woocommerce"
-            envs: "woo-sample"
     runs-on: ubuntu-latest
     env:
       ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
