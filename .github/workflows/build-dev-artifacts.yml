@@ -146,10 +146,6 @@ jobs:
           - machines: 1
             specs: "starter-sites"
             envs: "starter-sites"
-          ## Useful-plugins specs needs on machine
-          - machines: 1
-            specs: "useful-plugins"
-            envs: "useful-plugins"
           ## Mega menu specs needs just one machine
           - machines: 1
             specs: "mega-menu"
