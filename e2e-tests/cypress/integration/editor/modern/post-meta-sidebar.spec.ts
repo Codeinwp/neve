@@ -175,6 +175,9 @@ describe('Single post meta sidebar', function () {
 		cy.loginWithRequest(postSetup.url);
 		cy.reload();
 		cy.get('#wp-admin-bar-edit a').click();
+
+		cy.openNeveSidebar();
+
 		cy.clearWelcome();
 		cy.get('.interface-complementary-area-header');
 
@@ -210,6 +213,9 @@ describe('Single post meta sidebar', function () {
 		cy.get('.nv-post-navigation').should('not.exist');
 
 		cy.get('#wp-admin-bar-edit a').click();
+
+		cy.openNeveSidebar();
+
 		cy.toggleElements(true);
 		cy.get('.components-toggle-control__label').contains('Author Avatar').should('exist');
 		cy.updatePost();
@@ -225,12 +231,16 @@ describe('Single post meta sidebar', function () {
 		cy.visit(postSetup.url);
 
 		cy.get('#wp-admin-bar-edit a').click();
+
+		cy.openNeveSidebar();
 		// const headerToggle = cy.get('.components-toggle-control__label').contains('Disable Header');
 		cy.activateCheckbox('.components-toggle-control__label', 'Disable Header');
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('.hfg_header').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
+
+		cy.openNeveSidebar();
 
 		cy.activateCheckbox('.components-toggle-control__label', 'Disable Footer');
 		cy.updatePost();
