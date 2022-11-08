@@ -33,7 +33,7 @@ services:
       - 8080:80
     depends_on:
       - mysql
-    image: wordpress:6.0.3-php7.4-fpm
+    image: wordpress:latest
     volumes:
       - wpcore:/var/www/html
       - ./bin:/var/www/html/bin

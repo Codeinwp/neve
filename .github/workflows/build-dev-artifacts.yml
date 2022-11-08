@@ -187,7 +187,7 @@ jobs:
             envs: "woo-sample"
     runs-on: ubuntu-latest
     env:
-      ZIP_URL: "https://s3.amazonaws.com/downloads.themeisle.com/products/neve/3.4.3/neve.zip"
+      ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
     steps:
       - uses: actions/checkout@v2
       - name: Setup node 14
