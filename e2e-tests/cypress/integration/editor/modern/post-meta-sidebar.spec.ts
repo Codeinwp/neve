@@ -121,6 +121,7 @@ describe('Single post meta sidebar', function () {
 			.type('60', { force: true });
 
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(postSetup.url);
 
 		cy.get('.nv-single-post-wrap').should('have.css', 'max-width').and('eq', '60%');
@@ -199,6 +200,7 @@ describe('Single post meta sidebar', function () {
 		cy.toggleElements(false);
 		cy.get('.components-toggle-control__label').contains('Author Avatar').should('not.exist');
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(postSetup.url);
 
 		cy.get('h1.title').should('not.exist');
@@ -213,6 +215,7 @@ describe('Single post meta sidebar', function () {
 		cy.toggleElements(true);
 		cy.get('.components-toggle-control__label').contains('Author Avatar').should('exist');
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(postSetup.url);
 
 		cy.get('h1.title').should('exist');
@@ -228,12 +231,14 @@ describe('Single post meta sidebar', function () {
 		// const headerToggle = cy.get('.components-toggle-control__label').contains('Disable Header');
 		cy.activateCheckbox('.components-toggle-control__label', 'Disable Header');
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(postSetup.url);
 		cy.get('.hfg_header').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
 
 		cy.activateCheckbox('.components-toggle-control__label', 'Disable Footer');
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(postSetup.url);
 		cy.get('footer.site-footer').should('not.exist');
 	});

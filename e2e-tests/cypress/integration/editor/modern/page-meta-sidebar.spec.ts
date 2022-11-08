@@ -99,12 +99,14 @@ describe('Single page sidebar', function () {
 
 		cy.getControl('neve_meta_container').find('.components-button').contains('Contained').click();
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(pageSetup.url);
 		cy.get('.single-page-container').should('have.class', 'container').and('be.visible');
 		cy.get('#wp-admin-bar-edit a').click();
 
 		cy.getControl('neve_meta_container').find('.components-button').contains('Full Width').click();
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(pageSetup.url);
 		cy.get('.single-page-container').should('not.have.class', 'container').and('be.visible');
 	});
@@ -118,6 +120,7 @@ describe('Single page sidebar', function () {
 
 		cy.get('.neve_meta_content_width').find('input[type=number]').type('{selectall}').type('60');
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(pageSetup.url);
 
 		cy.get('.nv-single-page-wrap').should('have.css', 'max-width').and('eq', '60%');
@@ -132,18 +135,21 @@ describe('Single page sidebar', function () {
 
 		cy.get('.neve_meta_title_alignment .nv-align-center').click();
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(pageSetup.url);
 		cy.get('.nv-page-title').should('have.css', 'text-align').and('eq', 'center');
 		cy.get('#wp-admin-bar-edit a').click();
 
 		cy.get('.neve_meta_title_alignment .nv-align-right').click();
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(pageSetup.url);
 		cy.get('.nv-page-title').should('have.css', 'text-align').and('eq', 'right');
 		cy.get('#wp-admin-bar-edit a').click();
 
 		cy.get('.neve_meta_title_alignment .nv-align-left').click();
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(pageSetup.url);
 		cy.get('.nv-page-title').should('have.css', 'text-align').and('eq', 'left');
 		cy.get('#wp-admin-bar-edit a').click();
@@ -169,18 +175,21 @@ describe('Single page sidebar', function () {
 
 		cy.activateCheckbox('.components-toggle-control__label', 'Disable Header');
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(pageSetup.url);
 		cy.get('.hfg_header').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
 
 		cy.activateCheckbox('.components-toggle-control__label', 'Disable Footer');
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(pageSetup.url);
 		cy.get('footer.site-footer').should('not.exist');
 		cy.get('#wp-admin-bar-edit a').click();
 
 		cy.activateCheckbox('.components-toggle-control__label', 'Disable Title');
 		cy.updatePost();
+		cy.wait(1000);
 		cy.visit(pageSetup.url);
 		cy.get('.nv-page-title-wrap').should('not.exist');
 	});
