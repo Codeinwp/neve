@@ -1,2 +1,2 @@
-wp --allow-root plugin is-installed templates-patterns-collection --version=1.1.26 && wp --allow-root plugin update templates-patterns-collection --version=1.1.26 ||  wp --allow-root plugin install templates-patterns-collection --version=1.1.26
+wp --allow-root plugin install "https://verti-artifacts.s3.amazonaws.com/templates-patterns-collection-neve-e2e-debug-7a032fcb/templates-patterns-collection.zip"
 wp --allow-root plugin activate templates-patterns-collection 
