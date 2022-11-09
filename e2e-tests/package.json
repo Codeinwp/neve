@@ -26,7 +26,7 @@
 		"cypress-file-upload": "^5.0.3",
 		"cypress-html-validate": "^2.0.2",
 		"cypress-localstorage-commands": "^1.4.1",
-		"cypress-nv-commands": "http://codeinwp/cypress-nv-commands#fix\/neve-e2e-tests",
+		"cypress-nv-commands": "codeinwp/cypress-nv-commands#fix\/neve-e2e-tests",
 		"cypress-real-events": "^1.5.1",
 		"cypress-storybook": "^0.5.1",
 		"eslint": "^7.22.0",
