@@ -192,7 +192,7 @@ class Font_Manager extends Base_View {
 
 		// Make sure font is in our list of fonts.
 		if ( ! in_array( $font, array_keys( $google_fonts ), true ) ) {
-			return;
+			return '';
 		}
 
 		// Make sure 400 font weight is always included.
@@ -251,6 +251,7 @@ class Font_Manager extends Base_View {
 		}
 
 		wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
+		return $url;
 	}
 
 	/**
