@@ -182,7 +182,7 @@ class Font_Manager extends Base_View {
 	 * @param boolean $skip_enqueue flag to skip enqueue and return url.
 	 *
 	 * @since 1.1.38
-	 * @return void|string Will return the URL of the font if `$skip_enqueue` is `true`
+	 * @return string Will return the URL of the font if `$skip_enqueue` is `true`
 	 */
 	private function enqueue_google_font( $font, $weights = [], $skip_enqueue = false ) {
 		// Get list of all Google Fonts.
