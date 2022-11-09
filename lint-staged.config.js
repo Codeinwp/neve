@@ -3,7 +3,7 @@ module.exports = {
 		"composer run format-fix-exit ",
 		"composer run lint"
 	],
-	"/package.json": [
+	"package.json": [
 		"yarn run lint:package-json"
 	],
 	"/assets/apps/dashboard/src/**/*.js": [
