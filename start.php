@@ -5,7 +5,6 @@
  * @package Neve
  */
 
-
 /**
  * Run theme functionality
  */
