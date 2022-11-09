@@ -40,6 +40,9 @@ jobs:
       - name: Install Cypress Dependencies
         working-directory: ./e2e-tests
         run: yarn install --frozen-lockfile
+      - name: Install cypress-nv-commands custom build
+        working-directory: ./e2e-tests
+        run: yarn add -D codeinwp/cypress-nv-commands#fix\/neve-e2e-tests
       - name: Build source
         run: yarn run build
       - name: Run package check
