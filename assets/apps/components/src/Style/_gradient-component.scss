@@ -1,4 +1,10 @@
 .neve-color-component {
+  .components-popover {
+	position: fixed !important;
+  }
+  .components-popover .components-popover__content {
+	overflow: unset !important;
+  }
   .components-circular-option-picker {
 	min-width: 216px;
   }
@@ -24,8 +30,8 @@
 	top: auto !important;
 	bottom: auto !important;
 	left: 0 !important;
-	margin-left: 232px;
-	margin-top: -232px;
+	margin-left: 130px;
+	margin-top: -250px;
 	.components-popover__content {
 	  transform: translateX(0%);
 	}
