@@ -13,7 +13,6 @@ body & p {
 }
 
 .wp-block {
-	font-family: var(--bodyfontfamily);
 	// Group colors
 	&.has-text-color .wp-block {
 		color: inherit;
@@ -41,6 +40,7 @@ body & p {
 p {
 	margin-top: 0;
 	margin-bottom: $spacing-lg;
+	font-family: var(--bodyfontfamily);
 }
 
 h1,
