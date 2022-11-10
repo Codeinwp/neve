@@ -37,7 +37,7 @@ class Elementor extends Page_Builder_Base {
 	 *
 	 * @var array
 	 */
-	private static $cache_current_page_has_elementor_template = [];
+	private static $cache_cp_has_template = [];
 
 	/**
 	 * Stores Elementor Pro Conditions_Manager instance.
@@ -59,7 +59,14 @@ class Elementor extends Page_Builder_Base {
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_in_picker' ], 999, 3 );
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_front_end' ], 999, 3 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 100 );
-		$this->neve_pro_compatibility();
+		/**
+		* Elementor - Neve Pro Compatibility
+		* add_filter call for "neve_pro_run_wc_view" hook.
+		*
+		* The callback, suspenses some WooCommerce modifications (especially customizer support) by Neve Pro if an Elementor template is applied on the current page.
+		* That gives full capability to Elementor and removes Neve Pro customizations.
+		*/
+		add_filter( 'neve_pro_run_wc_view', array( $this, 'suspend_woo_customizations' ), 10, 2 );
 	}
 
 	/**
@@ -331,20 +338,21 @@ class Elementor extends Page_Builder_Base {
 	 * @return false|\ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager
 	 */
 	private static function get_condition_manager() {
-		if ( self::$elementor_conditions_manager === false ) {
-			if ( ! method_exists( '\ElementorPro\Modules\ThemeBuilder\Module', 'instance' ) ) {
-				return false;
-			}
-
-			$theme_builder = \ElementorPro\Modules\ThemeBuilder\Module::instance();
-
-			if ( ! method_exists( $theme_builder, 'get_conditions_manager' ) ) {
-				return false;
-			}
-
-			self::$elementor_conditions_manager = $theme_builder->get_conditions_manager();
+		if ( self::$elementor_conditions_manager !== false ) {
+			return self::$elementor_conditions_manager;
 		}
 
+		if ( ! method_exists( '\ElementorPro\Modules\ThemeBuilder\Module', 'instance' ) ) {
+			return false;
+		}
+
+		$theme_builder = \ElementorPro\Modules\ThemeBuilder\Module::instance();
+
+		if ( ! method_exists( $theme_builder, 'get_conditions_manager' ) ) {
+			return false;
+		}
+
+		self::$elementor_conditions_manager = $theme_builder->get_conditions_manager();
 		return self::$elementor_conditions_manager;
 	}
 
@@ -428,33 +436,24 @@ class Elementor extends Page_Builder_Base {
 
 		$location = self::ELEMENTOR_TEMPLATE_TYPES[ $elementor_template_type ]['location'];
 
-		if ( ! array_key_exists( $elementor_template_type, self::$cache_current_page_has_elementor_template ) ) {
-			/**
-			 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager $conditions_manager
-			 */
-			$conditions_manager = self::get_condition_manager();
-
-			if ( ! is_object( $conditions_manager ) || ! method_exists( $conditions_manager, 'get_documents_for_location' ) ) {
-				return false;
-			}
-
-			$templates = $conditions_manager->get_documents_for_location( $location );
-
-			self::$cache_current_page_has_elementor_template[ $location ] = ( count( $templates ) > 0 );
+		if ( array_key_exists( $elementor_template_type, self::$cache_cp_has_template ) ) {
+			return self::$cache_cp_has_template[ $location ];
 		}
 
-		return self::$cache_current_page_has_elementor_template[ $location ];
-	}
+		/**
+		 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager $conditions_manager
+		 */
+		$conditions_manager = self::get_condition_manager();
 
-	/**
-	 * Elementor - Neve Pro Compatibility
-	 * Suspense some WooCommerce modifications if an Elementor template is applied on the current page.
-	 * That gives full capability to Elementor and removes Neve Pro customizations.
-	 *
-	 * @return void
-	 */
-	public function neve_pro_compatibility() {
-		add_filter( 'neve_pro_run_wc_view', array( $this, 'conditionally_suspense_neve_pro_woo_customizations' ), 10, 2 );
+		if ( ! is_object( $conditions_manager ) || ! method_exists( $conditions_manager, 'get_documents_for_location' ) ) {
+			return false;
+		}
+
+		$templates = $conditions_manager->get_documents_for_location( $location );
+
+		self::$cache_cp_has_template[ $location ] = ( count( $templates ) > 0 );
+
+		return self::$cache_cp_has_template[ $location ];
 	}
 
 	/**
@@ -464,20 +463,17 @@ class Elementor extends Page_Builder_Base {
 	 * @param  string $class_name Fully class name that applies the Woo Modification.
 	 * @return bool
 	 */
-	public function conditionally_suspense_neve_pro_woo_customizations( $should_load, $class_name ) {
+	public function suspend_woo_customizations( $should_load, $class_name ) {
 		switch ( $class_name ) {
 			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Shop_Page':
 				$elementor_template_type = 'product_archive';
 				break;
 
 			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Shop_Product':
-				$elementor_template_type = 'product_archive';
+				$elementor_template_type = is_single() ? 'single_product' : 'product_archive'; // Sometimes shop_product is used inside of the single product as related products etc.
 				break;
 
 			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Single_Product_Video':
-				$elementor_template_type = 'single_product';
-				break;
-
 			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Single_Product':
 				$elementor_template_type = 'single_product';
 				break;

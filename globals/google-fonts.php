@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 10/10/22
+ * Updated on 31/10/22
  *
  * @package neve
  */
@@ -37,6 +37,7 @@ return array(
 	'Alice' => array( '400',),
 	'Alike' => array( '400',),
 	'Alike Angular' => array( '400',),
+	'Alkalami' => array( '400',),
 	'Allan' => array( '400', '700',),
 	'Allerta' => array( '400',),
 	'Allerta Stencil' => array( '400',),
@@ -854,7 +855,7 @@ return array(
 	'Noto Kufi Arabic' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Music' => array( '400',),
 	'Noto Naskh Arabic' => array( '400', '500', '600', '700',),
-	'Noto Nastaliq Urdu' => array( '400', '700',),
+	'Noto Nastaliq Urdu' => array( '400', '500', '600', '700',),
 	'Noto Rashi Hebrew' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Noto Sans Adlam' => array( '400', '500', '600', '700',),
@@ -888,6 +889,7 @@ return array(
 	'Noto Sans Egyptian Hieroglyphs' => array( '400',),
 	'Noto Sans Elbasan' => array( '400',),
 	'Noto Sans Elymaic' => array( '400',),
+	'Noto Sans Ethiopic' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Georgian' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Glagolitic' => array( '400',),
 	'Noto Sans Gothic' => array( '400',),
@@ -905,7 +907,7 @@ return array(
 	'Noto Sans Inscriptional Pahlavi' => array( '400',),
 	'Noto Sans Inscriptional Parthian' => array( '400',),
 	'Noto Sans JP' => array( '100', '300', '400', '500', '700', '900',),
-	'Noto Sans Javanese' => array( '400', '700',),
+	'Noto Sans Javanese' => array( '400', '500', '600', '700',),
 	'Noto Sans KR' => array( '100', '300', '400', '500', '700', '900',),
 	'Noto Sans Kaithi' => array( '400',),
 	'Noto Sans Kannada' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
@@ -955,7 +957,7 @@ return array(
 	'Noto Sans Old Sogdian' => array( '400',),
 	'Noto Sans Old South Arabian' => array( '400',),
 	'Noto Sans Old Turkic' => array( '400',),
-	'Noto Sans Oriya' => array( '100', '400', '700', '900',),
+	'Noto Sans Oriya' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Osage' => array( '400',),
 	'Noto Sans Osmanya' => array( '400',),
 	'Noto Sans Pahawh Hmong' => array( '400',),
