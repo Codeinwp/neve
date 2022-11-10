@@ -91,7 +91,7 @@ class Font_Manager extends Base_View {
 		$this->add_body_variants();
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_google_fonts' ), 200 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'register_google_fonts' ), 200 );
-		add_action( 'after_setup_theme', array( $this, 'do_editor_styles_google_fonts' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'do_editor_styles_google_fonts' ), 210 );
 		add_action( 'wp_print_styles', array( $this, 'load_external_fonts_locally' ), PHP_INT_MAX );
 	}
 
@@ -168,7 +168,6 @@ class Font_Manager extends Base_View {
 				array_push( $style_array, 'https:' . $url );
 			}
 		}
-
 		add_editor_style(
 			$style_array
 		);

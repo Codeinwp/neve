@@ -13,6 +13,7 @@ body & p {
 }
 
 .wp-block {
+	font-family: var(--bodyfontfamily);
 	// Group colors
 	&.has-text-color .wp-block {
 		color: inherit;
