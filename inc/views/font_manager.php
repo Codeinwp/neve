@@ -181,7 +181,6 @@ class Font_Manager extends Base_View {
 	 * @param boolean $skip_enqueue flag to skip enqueue and return url.
 	 *
 	 * @since 1.1.38
-	 * @return string Will return the URL of the font if `$skip_enqueue` is `true`
 	 */
 	private function enqueue_google_font( $font, $weights = [], $skip_enqueue = false ) {
 		// Get list of all Google Fonts.
@@ -191,7 +190,7 @@ class Font_Manager extends Base_View {
 
 		// Make sure font is in our list of fonts.
 		if ( ! in_array( $font, array_keys( $google_fonts ), true ) ) {
-			return '';
+			return;
 		}
 
 		// Make sure 400 font weight is always included.
@@ -250,7 +249,6 @@ class Font_Manager extends Base_View {
 		}
 
 		wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
-		return $url;
 	}
 
 	/**
