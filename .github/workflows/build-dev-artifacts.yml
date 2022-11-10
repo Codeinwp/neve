@@ -196,9 +196,6 @@ jobs:
           node-version: 14.x
       - name: Install ${{ matrix.envs }} env for ${{ matrix.specs }} specs
         run: bash ./bin/envs/init.sh ${{ matrix.envs }} latest no "$ZIP_URL"
-      - name: Install cypress-nv-commands custom build
-        working-directory: ./e2e-tests
-        run: yarn add -D codeinwp/cypress-nv-commands#fix\/neve-e2e-tests
       - name: Run ${{ matrix.specs }} Cypress tests
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
