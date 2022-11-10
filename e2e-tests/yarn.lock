@@ -4143,9 +4143,9 @@ cypress-localstorage-commands@^1.4.1:
   integrity sha512-rO8/hWu04o9w+gv8l70ew8QWBy3bGUiablQQzm4l3bWkGBVa4+kWXTuokrq6AZdO1/xv4rs4OBjN7sKDRl1JhQ==
 
 cypress-nv-commands@^1.0.26:
-  version "1.0.26"
-  resolved "https://registry.yarnpkg.com/cypress-nv-commands/-/cypress-nv-commands-1.0.26.tgz#f19567e459dd2e5c1d1e42ee1e10250f5346e74f"
-  integrity sha512-edZrY5TIRdFhvTrnKJXA9VuTWJBeVX50dWZdgU+gAVeB26N2dq4JvmZHKp4rVRGaqsiQkyEyeT2Bd7paSylkfg==
+  version "1.0.27"
+  resolved "https://registry.yarnpkg.com/cypress-nv-commands/-/cypress-nv-commands-1.0.27.tgz#77898b5dd10d4375a6effa57ba568fad228c26f3"
+  integrity sha512-obPShmtPaVhlqFvm/IrWgMbdAfewWiBqe459MaTvZ+ctkQDO9SBzVY5vussXMtXpxRQVJeaq55WiORhfyHnMew==
   dependencies:
     cypress-wait-for-stable-dom "^0.0.1"
 
