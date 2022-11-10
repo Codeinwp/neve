@@ -16,6 +16,20 @@ export const HFG = function () {
 	this.init();
 };
 
+const toggleAria = (elements, action) => {
+	elements.forEach(function (element) {
+		if (!element) {
+			return;
+		}
+		if (action === 'add') {
+			element.setAttribute('aria-hidden', 'true');
+		}
+		if (action === 'remove') {
+			element.removeAttribute('aria-hidden');
+		}
+	});
+};
+
 /**
  * Init mobile sidebar.
  *
@@ -62,6 +76,16 @@ HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
 	const buttonsContainer = document.querySelectorAll(TOGGLE_CLASS_CONTAINER);
 	removeClass(document.body, 'hiding-header-menu-sidebar');
 
+	/**
+	 * Elements to apply aria-hidden on
+	 */
+	const ariaShowOnToggle = document.querySelectorAll(
+		'#header-menu-sidebar, .hfg-ov'
+	);
+	const ariaHideOnToggle = document.querySelectorAll(
+		'.neve-skip-link, #content, .scroll-to-top, #site-footer, .header--row'
+	);
+
 	if (
 		(!NeveProperties.isCustomize &&
 			document.body.classList.contains('is-menu-sidebar')) ||
@@ -81,6 +105,12 @@ HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
 			}.bind(this),
 			1000
 		);
+
+		/**
+		 * Remove aria-hidden from elements outside the sidebar menu
+		 */
+		toggleAria(ariaHideOnToggle, 'remove');
+		toggleAria(ariaShowOnToggle, 'add');
 	} else {
 		addClass(document.body, 'is-menu-sidebar');
 		addClass(buttonsContainer, 'is-active');
@@ -98,5 +128,11 @@ HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
 				})
 			);
 		}
+
+		/**
+		 * Remove aria-hidden from elements outside the sidebar menu
+		 */
+		toggleAria(ariaShowOnToggle, 'remove');
+		toggleAria(ariaHideOnToggle, 'add');
 	}
 };
