@@ -41,6 +41,13 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	public static $dropdowns_inline_js_enqueued = false;
 
 	/**
+	 * Flag to check if the accessibility JS was already enqueued.
+	 *
+	 * @var bool
+	 */
+	public static $accessibility_menu_enqueued = false;
+
+	/**
 	 * Nav_Walker constructor.
 	 */
 	public function __construct() {
@@ -55,7 +62,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		if ( self::$add_mobile_caret_button_style ) {
 			return;
 		}
-		echo '<style>' . wp_kses_post( $this->get_mobile_submenu_style() ) . '</style>';
+		echo '<style>' . wp_kses_post( $this->get_mobile_submenu_and_accessibility_style() ) . '</style>';
 		self::$add_mobile_caret_button_style = true;
 	}
 
@@ -101,8 +108,8 @@ class Nav_Walker extends \Walker_Nav_Menu {
 
 
 		$is_sidebar_item = strpos( $args->menu_id, 'sidebar' ) !== false;
-		// We add tabindex 0 for sidebar in order for the caret to  be focusable.
-		$expanded = $is_sidebar_item ? 'tabindex="0"' : 'tabindex="-1"';
+		// We add tabindex 0 in order for the caret to  be focusable.
+		$expanded = 'tabindex="0"';
 
 		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 			if ( strpos( $title, 'menu-item-title-wrap' ) === false ) {
@@ -133,14 +140,14 @@ class Nav_Walker extends \Walker_Nav_Menu {
 					$args->after = $caret . $args->after;
 				}
 			} else {
-				$caret  = '<div role="none"' . $expanded . ' class="caret-wrap ' . $item->menu_order . '" style="' . esc_attr( $caret_wrap_css ) . '">';
+				$caret  = '<div role="button" aria-pressed="false" aria-label="' . __( 'Open Submenu', 'neve' ) . '" ' . $expanded . ' class="caret ' . $item->menu_order . '" style="' . esc_attr( $caret_wrap_css ) . '">';
 				$caret .= $caret_pictogram;
 				$caret .= '</div>';
 
 				if ( $caret_settings['side'] === 'left' ) {
-					$title = $caret . $title;
+					$args->before = $args->before . $caret;
 				} else {
-					$title .= $caret;
+					$args->after = $caret . $args->after;
 				}
 			}
 		}
@@ -172,14 +179,17 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	}
 
 	/**
-	 * Get mobile submenu inline styles
+	 * Get mobile submenu inline styles and accessibility
 	 */
-	public function get_mobile_submenu_style() {
+	public function get_mobile_submenu_and_accessibility_style() {
 		$mobile_button_caret_css  = '.header-menu-sidebar .nav-ul li .wrap { position:relative; padding: 15px 0; display: flex; align-items: center; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a { flex-grow: 1; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a .dd-title { width: var(--wrapdropdownwidth); }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap button { border: 0; z-index: 1; background: 0; }';
-		return Dynamic_Css::minify_css( $mobile_button_caret_css );
+		$accessibility_caret_css  = '.nav-ul:not(.menu-mobile) li { display: flex; align-items: center; }';
+		$accessibility_caret_css .= '.nav-ul li:focus-within .caret.active + .sub-menu { opacity: 1; visibility: visible; }';
+
+		return Dynamic_Css::minify_css( $mobile_button_caret_css . $accessibility_caret_css );
 	}
 
 	/**
@@ -197,6 +207,11 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
 		if ( ! is_object( $args ) ) {
 			return;
+		}
+
+		// Only enqueue accessibility js listeners if menu uses sub-menus.
+		if ( ! self::$accessibility_menu_enqueued && $args->walker->has_children ) {
+			$this->enqueue_accessibility_menu_js();
 		}
 
 		if ( ! self::$mega_menu_enqueued && isset( $item->classes ) && in_array( 'neve-mega-menu', $item->classes ) ) {
@@ -311,6 +326,42 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		return wp_page_menu( $fallback_args );
 	}
 
+	/**
+	 * Enqueue menu accessibility script
+	 */
+	public function enqueue_accessibility_menu_js() {
+		if ( self::$accessibility_menu_enqueued ) {
+			return;
+		}
+
+		$script = <<<'JS'
+var menuCarets = document.querySelectorAll(
+		'.nav-ul li > .caret'
+	);
+menuCarets.forEach( function (caretElem) {
+	caretElem.addEventListener( "keydown", (event) => {
+		if ( event.keyCode === 13 ) {
+			event.target.classList.toggle('active');
+		}
+	});
+	caretElem.parentElement.addEventListener( "focusout", (event) => {
+		// If focus is still in the element, do nothing
+		if ( caretElem.parentElement.contains(event.relatedTarget) ) {
+			return;
+		};
+		caretElem.classList.remove('active');
+	});
+} );
+JS;
+
+		$script_min_js = <<<'JSMIN'
+var menuCarets=document.querySelectorAll(".nav-ul li > .caret");menuCarets.forEach(function(t){t.addEventListener("keydown",e=>{13===e.keyCode&&e.target.classList.toggle("active")}),t.parentElement.addEventListener("focusout",e=>{t.parentElement.contains(e.relatedTarget)||t.classList.remove("active")})});
+JSMIN;
+
+
+		wp_add_inline_script( 'neve-script', ( NEVE_DEBUG ) ? $script : $script_min_js );
+		self::$accessibility_menu_enqueued = true;
+	}
 	/**
 	 * Enqueue mega menu style
 	 */

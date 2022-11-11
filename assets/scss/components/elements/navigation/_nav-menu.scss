@@ -29,9 +29,11 @@
 		min-height: var(--height);
 		color: var(--color);
 		position: relative;
+		width: 100%;
 	}
 
-	a:hover {
+	li:hover > a,
+	li:hover > .caret {
 		color: var(--hovercolor);
 	}
 
@@ -47,8 +49,7 @@
 			color: var(--activecolor);
 		}
 
-		&:hover > .sub-menu,
-		&:focus-within > .sub-menu {
+		&:hover > .sub-menu {
 
 			@extend %show-dropdown;
 		}
