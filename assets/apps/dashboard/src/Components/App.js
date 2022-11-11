@@ -1,5 +1,8 @@
+/* global neveDash */
+
 import Header from './Header';
 import Notifications from './Notifications';
+import Promotion from './Promotion';
 import TabsContent from './TabsContent';
 import Sidebar from './Sidebar';
 import Loading from './Loading';
@@ -21,6 +24,7 @@ const App = ({ setSettings, toast, currentTab, setTab }) => {
 	if (loading) {
 		return <Loading />;
 	}
+
 	return (
 		<Fragment>
 			<Header currentTab={currentTab} setTab={setTab} />
@@ -28,6 +32,9 @@ const App = ({ setSettings, toast, currentTab, setTab }) => {
 				<div className="container content">
 					<div className="main">
 						{'starter-sites' !== currentTab && <Notifications />}
+						{neveDash.bfDeal && (
+							<Promotion data={neveDash.bfDeal} />
+						)}
 						<TabsContent currentTab={currentTab} setTab={setTab} />
 					</div>
 					{'starter-sites' !== currentTab && (

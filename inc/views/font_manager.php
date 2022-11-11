@@ -91,6 +91,7 @@ class Font_Manager extends Base_View {
 		$this->add_body_variants();
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_google_fonts' ), 200 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'register_google_fonts' ), 200 );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'do_editor_styles_google_fonts' ), 210 );
 		add_action( 'wp_print_styles', array( $this, 'load_external_fonts_locally' ), PHP_INT_MAX );
 	}
 
@@ -151,14 +152,37 @@ class Font_Manager extends Base_View {
 	}
 
 	/**
+	 * Will register fonts for the editor preview (mobile|tablet)
+	 */
+	public function do_editor_styles_google_fonts() {
+		if ( empty( self::$font_families ) ) {
+			return;
+		}
+		add_theme_support( 'editor-styles' );
+		$style_array = array(
+			'editor-styles.css',
+		);
+		foreach ( self::$font_families as $font_family => $font_weights ) {
+			$url = $this->enqueue_google_font( $font_family, $font_weights, true );
+			if ( ! empty( $url ) ) {
+				array_push( $style_array, 'https:' . $url );
+			}
+		}
+		add_editor_style(
+			$style_array
+		);
+	}
+
+	/**
 	 * Enqueues a Google Font
 	 *
-	 * @param string $font font string.
-	 * @param array  $weights font weights.
+	 * @param string  $font font string.
+	 * @param array   $weights font weights.
+	 * @param boolean $skip_enqueue flag to skip enqueue and return url.
 	 *
 	 * @since 1.1.38
 	 */
-	private function enqueue_google_font( $font, $weights = [] ) {
+	private function enqueue_google_font( $font, $weights = [], $skip_enqueue = false ) {
 		// Get list of all Google Fonts.
 		$google_fonts = neve_get_google_fonts( true );
 
@@ -219,14 +243,18 @@ class Font_Manager extends Base_View {
 			$query_args['subset'] = urlencode( $subsets[ $locale ] );
 		}
 		$url = add_query_arg( $query_args, $base_url );
-		
+
+		if ( $skip_enqueue ) {
+			return $url;
+		}
+
 		wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
 	}
 
 	/**
 	 * Load Google Fonts locally.
 	 *
-	 * @return void 
+	 * @return void
 	 */
 	public function load_external_fonts_locally() {
 
@@ -253,22 +281,22 @@ class Font_Manager extends Base_View {
 		}
 
 		/**
-		 * Bail when in Elementor edit mode. 
-		 * 
+		 * Bail when in Elementor edit mode.
+		 *
 		 * We do this so that initial load of Elementor editor will not be slowed down by Neve Pro downloading Roboto fonts.
-		 */ 
+		 */
 		if ( class_exists( '\Elementor\Plugin' ) ) {
 			global $post;
-			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() || 
+			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ||
 				\Elementor\Plugin::$instance->preview->is_preview_mode()
 				) {
 				return;
-			}       
+			}
 		}
 
 		/**
 		 * Allow filtering for additional external font providers.
-		 * 
+		 *
 		 * The domains provided to this filter should be from services that link directly to a CSS file or else WPTT will not be able to download the fonts.
 		 */
 		$external_font_domains = apply_filters(
@@ -303,9 +331,9 @@ class Font_Manager extends Base_View {
 					$normalized_source = 'https://' . $parts['host'] . $parts['path'] . ( isset( $parts['query'] ) ? '?' . $parts['query'] : '' );
 					$external_fonts[]  = $normalized_source;
 					// Dequeue this handle since we are going to load the font locally
-					wp_dequeue_style( $style ); 
-				}           
-			}       
+					wp_dequeue_style( $style );
+				}
+			}
 		}
 
 		$external_fonts = array_unique( $external_fonts );

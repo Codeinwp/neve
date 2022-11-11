@@ -15,6 +15,7 @@ describe('Container Settings', function () {
 			setup.postTitle +
 			'".',
 		function () {
+			// test
 			cy.insertPost(setup.pageTitle, setup.content, 'page');
 			cy.get('.post-publish-panel__postpublish-header a')
 				.contains(setup.pageTitle)

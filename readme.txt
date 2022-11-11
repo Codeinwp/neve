@@ -2,7 +2,7 @@
 Contributors: themeisle
 Tags: blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
 Requires at least: 4.0
-Tested up to: 5.9
+Tested up to: 6.1
 Stable tag: trunk
 Requires PHP: 5.5.0
 License: GPLv2 or later
@@ -18,6 +18,20 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+
+##### [Version 3.4.4](https://github.com/Codeinwp/neve/compare/v3.4.3...v3.4.4) (2022-11-03)
+
+- [Fix] Fix possible warning message from nav_walker.php
+- [Fix] Speaker Deck block not responsive
+- [Fix] Deprecation warnings in PHP 8.1
+- [Fix] Visual issue for heading controls in customizer
+- [Fix] Customizer toggle control style in WP 6.1
+- Stop changing Otter plugin name
+- Update starter content theme mods & theme screenshot
+- Update Google Fonts
+
+
+
 
 ##### [Version 3.4.3](https://github.com/Codeinwp/neve/compare/v3.4.2...v3.4.3) (2022-10-12)
 
