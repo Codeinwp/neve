@@ -27,7 +27,7 @@ class Nav extends Abstract_Component {
 	const STYLE_ID                 = 'style';
 	const COLOR_ID                 = 'color';
 	const HOVER_COLOR_ID           = 'hover_color';
-	const HOVER_TEXT_COLOR_ID	   = 'hover_text_color';
+	const HOVER_TEXT_COLOR_ID      = 'hover_text_color';
 	const ACTIVE_COLOR_ID          = 'active_color';
 	const LAST_ITEM_ID             = 'neve_last_menu_item';
 	const NAV_MENU_ID              = 'nv-primary-navigation';
@@ -268,15 +268,15 @@ class Nav extends Abstract_Component {
 				'conditional_header'    => true,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
-					'cssVar'   => [
+					'cssVar' => [
 						'vars'     => '--hovertextcolor',
-						'selector' => '.builder-item--' . $this->get_id()
+						'selector' => '.builder-item--' . $this->get_id(),
 					],
 				],
 				'options'               => [
-					'active_callback'		=> function() {
+					'active_callback' => function() {
 						return Mods::get( $this->get_id() . '_' . self::STYLE_ID, 'style-plain' ) === 'style-full-height';
-					}
+					},
 				],
 			]
 		);
@@ -474,10 +474,10 @@ class Nav extends Abstract_Component {
 		$selector = '.builder-item--' . $this->get_id();
 
 		$rules = [
-			'--color'       => [
+			'--color'          => [
 				Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::COLOR_ID,
 			],
-			'--hovercolor'  => [
+			'--hovercolor'     => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
 			],
@@ -485,17 +485,17 @@ class Nav extends Abstract_Component {
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_TEXT_COLOR_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_TEXT_COLOR_ID ),
 			],
-			'--activecolor' => [
+			'--activecolor'    => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ACTIVE_COLOR_ID ),
 			],
-			'--spacing'     => [
+			'--spacing'        => [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
 				Dynamic_Selector::META_DEFAULT       => $this->get_default_for_responsive_from_intval( self::SPACING, 20 ),
 			],
-			'--height'      => [
+			'--height'         => [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ITEM_HEIGHT,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
