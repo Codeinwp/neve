@@ -262,7 +262,7 @@ class Nav extends Abstract_Component {
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'neve_sanitize_colors',
 				'default'               => 'var(--nv-text-color)',
-				'label'                 => __( 'Items Hover Text Color', 'neve' ),
+				'label'                 => __( 'Skin Mode Text Color', 'neve' ),
 				'type'                  => 'neve_color_control',
 				'section'               => $this->section,
 				'conditional_header'    => true,
