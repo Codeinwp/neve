@@ -163,6 +163,7 @@
     "build:metabox": "wp-scripts build assets/apps/metabox/src/index.js --output-path=assets/apps/metabox/build",
     "build:rollup": "rollup -c ./rollup.config.js",
     "build:grunt": "grunt build",
+	"test:e2e:playwright": "playwright test --config ./test/e2e/playwright.config.ts",
     "phpcbf": "composer run-script format || true ",
     "phpcs": "composer run-script phpcs",
     "git:add": "git add *.css assets/**/*.css assets/**/*.js",
