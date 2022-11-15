@@ -154,9 +154,3 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: yarn run test:e2e:playwright
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-         name: playwright-report
-         path: playwright-report/
-         retention-days: 30
