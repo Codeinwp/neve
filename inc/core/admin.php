@@ -10,6 +10,7 @@
 
 namespace Neve\Core;
 
+use Neve\Admin\Dashboard\Plugin_Helper;
 use Neve\Core\Settings\Mods_Migrator;
 use Neve\Traits\Utils;
 
@@ -93,9 +94,60 @@ class Admin {
 	}
 
 	/**
+	 * Get data specific to TPC plugin.
+	 *
+	 * @return array
+	 */
+	private function get_tpc_plugin_data() {
+		$plugin_helper = new Plugin_Helper();
+		$slug          = 'templates-patterns-collection';
+
+		$tpc_plugin_data['nonce']      = wp_create_nonce( 'wp_rest' );
+		$tpc_plugin_data['slug']       = $slug;
+		$tpc_plugin_data['cta']        = $plugin_helper->get_plugin_state( $slug );
+		$tpc_plugin_data['path']       = $plugin_helper->get_plugin_path( $slug );
+		$tpc_plugin_data['activate']   = $plugin_helper->get_plugin_action_link( $slug );
+		$tpc_plugin_data['deactivate'] = $plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
+		$tpc_plugin_data['version']    = ! empty( $tpc_plugin_data['version'] ) ? $plugin_helper->get_plugin_version( $slug, $tpc_plugin_data['version'] ) : '';
+		$tpc_plugin_data['adminURL']   = admin_url( 'themes.php?page=tiob-starter-sites' );
+		$tpc_plugin_data['pluginsURL'] = esc_url( admin_url( 'plugins.php' ) );
+		$tpc_plugin_data['ajaxURL']    = esc_url( admin_url( 'admin-ajax.php' ) );
+		$tpc_plugin_data['ajaxNonce']  = esc_attr( wp_create_nonce( 'remove_notice_confirmation' ) );
+
+		return $tpc_plugin_data;
+	}
+
+	/**
+	 * Maybe register the script required for the welcome notice.
+	 * The script has a component that replaces the "Try one of our ready to use Starter Sites" button.
+	 * The button installs/activates and/or dismisses the notice as required.
+	 */
+	private function maybe_register_notice_script_starter_sites() {
+		if ( get_option( $this->dismiss_notice_key, 'no' ) === 'yes' ) {
+			return;
+		}
+		$screen = get_current_screen();
+		if ( empty( $screen ) ) {
+			return;
+		}
+		if ( $screen->id !== 'dashboard' ) {
+			return;
+		}
+
+		$bundle_path  = get_template_directory_uri() . '/assets/apps/starter-sites/build/';
+		$dependencies = ( include get_template_directory() . '/assets/apps/starter-sites/build/notice.asset.php' );
+		wp_register_script( 'neve-ss-notice', $bundle_path . 'notice.js', $dependencies['dependencies'], $dependencies['version'], true );
+
+		wp_localize_script( 'neve-ss-notice', 'tpcPluginData', $this->get_tpc_plugin_data() );
+		wp_enqueue_script( 'neve-ss-notice' );
+	}
+
+	/**
 	 * Register script for react components.
 	 */
 	public function register_react_components() {
+		$this->maybe_register_notice_script_starter_sites();
+
 		$deps = include trailingslashit( NEVE_MAIN_DIR ) . 'assets/apps/components/build/components.asset.php';
 
 		wp_register_script( 'neve-components', trailingslashit( NEVE_ASSETS_URL ) . 'apps/components/build/components.js', $deps['dependencies'], $deps['version'], false );
@@ -489,7 +541,7 @@ class Admin {
 			esc_url( $this->get_notice_picture() )
 		);
 		$notice_sites_list = sprintf(
-			'<div><h3><span class="dashicons dashicons-images-alt2"></span> %1$s</h3><p>%2$s</p></div><div> <p>%3$s</p><p>%4$s</p> </div>',
+			'<div><h3><span class="dashicons dashicons-images-alt2"></span> %1$s</h3><p>%2$s</p></div><div> <p id="neve-ss-install">%3$s</p><p>%4$s</p> </div>',
 			__( 'Sites Library', 'neve' ),
 			// translators: %s - Theme name
 				sprintf( esc_html__( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), $name ),
@@ -587,7 +639,26 @@ class Admin {
 				padding:12px 36px;
 			}
 		}
+		@-webkit-keyframes spin {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+		#neve-ss-install button.is-loading {
+			color: #828282 !important;
+		}
+		#neve-ss-install button.is-loading .dashicon {
+			color: #646D82;
+			animation-name: spin;
+			animation-duration: 2000ms;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
 		';
+
 		echo sprintf(
 			$notice_template, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			$notice_header, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -640,9 +711,11 @@ class Admin {
 		<script type="text/javascript">
 			function handleNoticeActions($, notice) {
 				var actions = $(notice.class).find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
-				console.log( actions )
 				$.each(actions, function (index, actionButton) {
-					console.log( actionButton );
+					if ( actionButton.dataset && actionButton.dataset.isReact === "true" ) {
+						// skipping button as it will be handled by react.
+						return;
+					}
 					$(actionButton).on('click', function (e) {
 						e.preventDefault()
 						var redirect = $(this).attr('href')
