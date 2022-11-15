@@ -62,7 +62,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		if ( self::$add_mobile_caret_button_style ) {
 			return;
 		}
-		echo '<style>' . wp_kses_post( $this->get_mobile_submenu_and_accessibility_style() ) . '</style>';
+		echo '<style>' . $this->get_mobile_submenu_and_accessibility_style() . '</style>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		self::$add_mobile_caret_button_style = true;
 	}
 
@@ -186,7 +186,9 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a { flex-grow: 1; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a .dd-title { width: var(--wrapdropdownwidth); }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap button { border: 0; z-index: 1; background: 0; }';
-		$accessibility_caret_css  = '.nav-ul:not(.menu-mobile) li { display: flex; align-items: center; }';
+		$accessibility_caret_css  = '.nav-ul:not(.menu-mobile) li:not(.neve-mm-col):not(.neve-mega-menu) { display: table-row; }';
+		$accessibility_caret_css .= '.nav-ul:not(.menu-mobile) li > a { display: table-cell; }';
+		$accessibility_caret_css .= '.nav-ul:not(.menu-mobile) li > .caret { display: table-cell; padding: 0 .3em; vertical-align: middle; }';
 		$accessibility_caret_css .= '.nav-ul li:focus-within .caret.active + .sub-menu { opacity: 1; visibility: visible; }';
 
 		return Dynamic_Css::minify_css( $mobile_button_caret_css . $accessibility_caret_css );
