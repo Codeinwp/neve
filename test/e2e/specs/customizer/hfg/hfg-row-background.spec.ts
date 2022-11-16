@@ -1,6 +1,14 @@
 import { test, expect } from '@playwright/test';
+import { loadData, setCustomizeSettings } from '../../utils';
 
 test.describe('Header Row Background Control', function () {
+	test.beforeAll(async ({ request }) => {
+		await loadData('./data/row-background-setup.json').then(
+			async (results) => {
+				setCustomizeSettings(results, request);
+			}
+		);
+	});
 	test('Background image control on front end.', function () {
 
 	});
