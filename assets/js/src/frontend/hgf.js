@@ -16,17 +16,13 @@ export const HFG = function () {
 	this.init();
 };
 
-const toggleAria = (elements, action) => {
+const toggleAria = (elements, add = true) => {
 	elements.forEach(function (element) {
-		if (!element) {
+		if (!add) {
+			element.removeAttribute('aria-hidden');
 			return;
 		}
-		if (action === 'add') {
-			element.setAttribute('aria-hidden', 'true');
-		}
-		if (action === 'remove') {
-			element.removeAttribute('aria-hidden');
-		}
+		element.setAttribute('aria-hidden', 'true');
 	});
 };
 
@@ -109,8 +105,8 @@ HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
 		/**
 		 * Remove aria-hidden from elements outside the sidebar menu
 		 */
-		toggleAria(ariaHideOnToggle, 'remove');
-		toggleAria(ariaShowOnToggle, 'add');
+		toggleAria(ariaHideOnToggle, false);
+		toggleAria(ariaShowOnToggle);
 	} else {
 		addClass(document.body, 'is-menu-sidebar');
 		addClass(buttonsContainer, 'is-active');
@@ -132,7 +128,7 @@ HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
 		/**
 		 * Remove aria-hidden from elements outside the sidebar menu
 		 */
-		toggleAria(ariaShowOnToggle, 'remove');
-		toggleAria(ariaHideOnToggle, 'add');
+		toggleAria(ariaShowOnToggle, false);
+		toggleAria(ariaHideOnToggle);
 	}
 };
