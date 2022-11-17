@@ -9,6 +9,4 @@ const initStarterSiteTryButton = () => {
 	}
 };
 
-domReady(function () {
-	initStarterSiteTryButton();
-});
+domReady(initStarterSiteTryButton);
