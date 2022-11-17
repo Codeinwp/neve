@@ -541,10 +541,11 @@ class Admin {
 			esc_url( $this->get_notice_picture() )
 		);
 		$notice_sites_list = sprintf(
-			'<div><h3><span class="dashicons dashicons-images-alt2"></span> %1$s</h3><p>%2$s</p></div><div> <p id="neve-ss-install">%3$s</p><p>%4$s</p> </div>',
+			'<div><h3><span class="dashicons dashicons-images-alt2"></span> %1$s</h3><p>%2$s</p><p>%3$s</p></div><div> <p id="neve-ss-install">%4$s</p><p>%5$s</p> </div>',
 			__( 'Sites Library', 'neve' ),
 			// translators: %s - Theme name
-				sprintf( esc_html__( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added. Install the template patterns plugin to get started.', 'neve' ), $name ),
+				sprintf( esc_html__( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), $name ),
+			esc_html( __( 'Install the template patterns plugin to get started.', 'neve' ) ),
 			$ob_btn,
 			$options_page_btn
 		);
