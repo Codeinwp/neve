@@ -12,6 +12,7 @@ test.describe('Header Row Background Control', function () {
 
 	test('Background image control on front end.', async ({ page }) => {
 		await page.goto('/');
+		await page.reload();
 		const row = await page.locator(
 			'.header-main[data-show-on="desktop"] .header--row-inner'
 		);
