@@ -30,3 +30,25 @@ export const setCustomizeSettings = async (data, { request, baseURL }) => {
 	);
 	expect(response.ok()).toBeTruthy();
 };
+
+export const loginWithRequest = async (nextRoute = '/wp-admin', page) => {
+	let isLoggedIn = false;
+	await page
+		.context()
+		.cookies()
+		.then((cookies) => {
+			cookies.forEach((value) => {
+				if (value.name.includes('wordpress_logged_in_')) {
+					isLoggedIn = true;
+				}
+			});
+		});
+	if (!isLoggedIn) {
+		await page.goto('/');
+	}
+	await page.goto(nextRoute);
+};
+
+export const goToCustomizer = async (page) => {
+	await loginWithRequest('/wp-admin/customize.php', page);
+};
