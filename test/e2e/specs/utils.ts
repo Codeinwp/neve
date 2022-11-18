@@ -48,7 +48,3 @@ export const loginWithRequest = async (nextRoute = '/wp-admin', page) => {
 	}
 	await page.goto(nextRoute);
 };
-
-export const goToCustomizer = async (page) => {
-	await loginWithRequest('/wp-admin/customize.php', page);
-};

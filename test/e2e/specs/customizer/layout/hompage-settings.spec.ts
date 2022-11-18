@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { goToCustomizer } from "../../utils";
+import {loginWithRequest} from "../../utils";
 
 test.describe('Homepage-settings', function () {
 	test.beforeEach(async ({ page }) => {
-		await goToCustomizer(page);
+		await loginWithRequest('/wp-admin/customize.php', page);
 		await page
 			.locator('#accordion-panel-neve_layout > .accordion-section-title')
 			.click();
@@ -21,8 +21,32 @@ test.describe('Homepage-settings', function () {
 		await page
 			.locator('#_customize-input-page_on_front')
 			.selectOption({ label: 'Sample Page' });
-		await page.locator('#save').click();
+		await page.locator('#save').click({ force: true });
 		await page.goto('/');
-		await expect(page.locator('h1')).toHaveText('Sample Page');
+		await page.reload();
+		await expect(page.locator('.nv-page-title h1')).toHaveText(
+			'Sample Page'
+		);
+	});
+
+	test('Sets up a page to be the posts page', async ({ page }) => {
+		await page
+			.locator('#_customize-input-page_for_posts')
+			.selectOption({ label: 'Blog' });
+		await page.locator('#save').click({ force: true });
+		await page.goto('/blog');
+		await page.reload();
+		await expect(page.locator('.nv-page-title h1')).toHaveText('Blog');
+		await expect(page.locator('body')).not.toHaveClass(/home/);
+	});
+
+	test('Sets the homepage to be the latest posts', async ({ page }) => {
+		await page
+			.locator('#_customize-input-show_on_front-radio-posts')
+			.click();
+		await page.locator('#save').click({ force: true });
+		await page.goto('/');
+		await page.reload();
+		await expect(page.locator('body')).toHaveClass(/home/);
 	});
 });
