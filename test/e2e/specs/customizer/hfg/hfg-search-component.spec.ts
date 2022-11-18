@@ -23,7 +23,7 @@ export const checkSearchComponent = () => {
 		/**
 		 * Define constants used across all tests.
 		 */
-		test.beforeAll(async ({browser}) => {
+		test.beforeAll(async ({ browser }) => {
 			page = await browser.newPage();
 			await page.goto('/');
 			searchField = await page.locator('.nv-nav-search');
@@ -35,16 +35,22 @@ export const checkSearchComponent = () => {
 			);
 		});
 
-		test('Canvas Search Works on Front End.', async ({request, baseURL}) => {
+		test('Canvas Search Works on Front End.', async ({
+			request,
+			baseURL,
+		}) => {
 			const targetClose = page.locator('.close-responsive-search');
 
-			await setCustomizeSettings(customizerData, {request, baseURL});
+			await setCustomizeSettings(customizerData, { request, baseURL });
 			await page.reload();
 
 			await runActions(targetClose, 'canvas');
 		});
 
-		test('Minimal Search Works on Front End.', async ({request, baseURL}) => {
+		test('Minimal Search Works on Front End.', async ({
+			request,
+			baseURL,
+		}) => {
 			const targetClose = page.locator('.nav-clickaway-overlay');
 			const minimalData = JSON.parse(customizerData);
 
@@ -58,7 +64,10 @@ export const checkSearchComponent = () => {
 			await runActions(targetClose, 'minimal');
 		});
 
-		test('Floating Search Works on Front End', async ({request, baseURL}) => {
+		test('Floating Search Works on Front End', async ({
+			request,
+			baseURL,
+		}) => {
 			const targetClose = page.locator('.close-responsive-search');
 			const floatingData = JSON.parse(customizerData);
 
@@ -72,4 +81,4 @@ export const checkSearchComponent = () => {
 			await runActions(targetClose, 'floating');
 		});
 	});
-}
+};

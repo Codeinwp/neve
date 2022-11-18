@@ -20,6 +20,8 @@ const config: PlaywrightTestConfig = {
 		 */
 		timeout: 5000,
 	},
+	/* Run tests in files in parallel */
+	// fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
@@ -31,10 +33,11 @@ const config: PlaywrightTestConfig = {
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
 		browserName: 'chromium',
-		headless: true,
+		// headless: true,
 		ignoreHTTPSErrors: true,
 		baseURL: process.env.baseURL || 'http://localhost:8080',
-		trace: 'on-first-retry',
+		// trace: 'on-first-retry',
+		trace: 'on',
 		screenshot: 'only-on-failure',
 		video: 'on-first-retry',
 	},

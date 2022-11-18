@@ -6,7 +6,7 @@ describe('Single Post Check', function () {
 	});
 
 	it('Shows all options on customizer', function () {
-		cy.goToCustomizer();
+
 		cy.get('#accordion-panel-neve_layout > .accordion-section-title').click();
 		cy.get('#accordion-section-neve_single_post_layout > .accordion-section-title').click();
 
