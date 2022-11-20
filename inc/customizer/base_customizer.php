@@ -16,6 +16,7 @@ use Neve\Customizer\Types\Partial;
 use Neve\Customizer\Types\Section;
 use HFG\Traits\Core;
 use WP_Customize_Manager;
+use Neve\Core\Settings\Config;
 
 /**
  * Customizer module base.
@@ -90,7 +91,7 @@ abstract class Base_Customizer {
 			'admin_init',
 			function() {
 				$this->wpc->add_setting(
-					'neve_local_google_fonts',
+					Config::MODS_LOCAL_GOOGLE_FONTS_HOSTING,
 					[
 						'sanitize_callback' => 'rest_sanitize_boolean',
 						'default'           => false,

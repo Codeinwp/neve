@@ -305,11 +305,12 @@ const initTypographyExtraSection = () => {
 	}
 
 	const control = new wp.customize.controlConstructor.neve_toggle_control(
-		'test',
+		NeveReactCustomize.localGoogleFonts.key,
 		{
 			section: 'typography_extra_section',
-			label: __('Enable local fonts hosting.', 'neve'),
-			setting: 'neve_local_google_fonts',
+			label: __('Local fonts hosting', 'neve'),
+			setting: NeveReactCustomize.localGoogleFonts.key,
+			description: NeveReactCustomize.localGoogleFonts.learnMore,
 			priority: 5,
 		}
 	);
