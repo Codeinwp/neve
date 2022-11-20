@@ -13,6 +13,7 @@ namespace Neve\Customizer\Options;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Customizer\Base_Customizer;
+use Neve\Customizer\Controls\React\Typography_Extra_Section;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
 
@@ -30,6 +31,7 @@ class Typography extends Base_Customizer {
 		$this->controls_typography_general();
 		$this->controls_typography_headings();
 		$this->controls_typography_blog();
+		$this->section_extra();
 	}
 
 	/**
@@ -446,6 +448,24 @@ class Typography extends Base_Customizer {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Add section for extra inline controls
+	 *
+	 * @return void
+	 */
+	private function section_extra() {
+		$this->wpc->add_section(
+			new Typography_Extra_Section(
+				$this->wpc,
+				'typography_extra_section',
+				[
+					'priority' => PHP_INT_MAX,
+					'panel'    => 'neve_typography',
+				]
+			)
+		);
 	}
 }
 

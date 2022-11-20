@@ -286,6 +286,25 @@ const checkHasElementorTemplates = () => {
 	}
 };
 
+const initTypographyExtraSection = () => {
+	const node = document.querySelector(
+		'.control-section-typography_extra_section'
+	);
+
+	if (!node) {
+		return;
+	}
+
+	const slug = node.getAttribute('data-slug');
+	const section = wp.customize.section(slug);
+
+	if (!section) {
+		return;
+	}
+
+	render('WiP:test content', section.container[0]);
+};
+
 window.wp.customize.bind('ready', () => {
 	initDocSection();
 	initDynamicFields();
@@ -298,6 +317,7 @@ window.wp.customize.bind('ready', () => {
 	initDeviceSwitchers();
 	initBlogPageFocus();
 	initSearchCustomizer();
+	initTypographyExtraSection();
 });
 
 window.HFG = {
