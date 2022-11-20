@@ -16,7 +16,6 @@ use Neve\Customizer\Types\Partial;
 use Neve\Customizer\Types\Section;
 use HFG\Traits\Core;
 use WP_Customize_Manager;
-use Neve\Core\Settings\Config;
 
 /**
  * Customizer module base.
