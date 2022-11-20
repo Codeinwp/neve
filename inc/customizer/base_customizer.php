@@ -95,9 +95,9 @@ abstract class Base_Customizer {
 					[
 						'sanitize_callback' => 'rest_sanitize_boolean',
 						'default'           => false,
-					] 
+					]
 				);
-			} 
+			}
 		);
 	}
 

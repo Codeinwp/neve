@@ -139,7 +139,7 @@ class Loader {
 					'bundlePath'                    => get_template_directory_uri() . '/assets/apps/customizer-controls/build/',
 					'bfDealData'                    => $this->get_bf_deal_data(),
 					'localGoogleFonts'              => array(
-						'learnMore' => apply_filters( 'neve_external_link', 'https://docs.themeisle.com/article/1349-how-to-load-neve-fonts-locally#plugin', esc_html__( 'Learn more', 'neve' ) ),
+						'learnMore' => apply_filters( 'neve_external_link', 'https://docs.themeisle.com/article/1349-how-to-load-neve-fonts-locally', esc_html__( 'Learn more', 'neve' ) ),
 						'key'       => Config::MODS_LOCAL_GOOGLE_FONTS_HOSTING,
 					),
 				)
