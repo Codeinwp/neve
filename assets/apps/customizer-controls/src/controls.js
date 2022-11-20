@@ -38,8 +38,7 @@ import './style.scss';
 import Documentation from './documentation-section/Documentation.tsx';
 import Instructions from './builder-instructions/Instructions.tsx';
 import Upsells from './builder-upsell/Upsells.tsx';
-import GoogleLocalFont from './builder-local-google-fonts/Control';
-import { __ } from '@wordpress/i18n';
+import { initLocalGoogleFonts } from './typography-extra/LocalGoogleFonts';
 
 import MainSearch from './customizer-search/MainSearch.tsx';
 
@@ -288,36 +287,6 @@ const checkHasElementorTemplates = () => {
 	}
 };
 
-const initTypographyExtraSection = () => {
-	const node = document.querySelector(
-		'.control-section-typography_extra_section'
-	);
-
-	if (!node) {
-		return;
-	}
-
-	const slug = node.getAttribute('data-slug');
-	const section = wp.customize.section(slug);
-
-	if (!section) {
-		return;
-	}
-
-	const control = new wp.customize.controlConstructor.neve_toggle_control(
-		NeveReactCustomize.localGoogleFonts.key,
-		{
-			section: 'typography_extra_section',
-			label: __('Local fonts hosting', 'neve'),
-			setting: NeveReactCustomize.localGoogleFonts.key,
-			description: NeveReactCustomize.localGoogleFonts.learnMore,
-			priority: 5,
-		}
-	);
-
-	render(<GoogleLocalFont control={control} />, section.container[0]);
-};
-
 window.wp.customize.bind('ready', () => {
 	initDocSection();
 	initDynamicFields();
@@ -330,7 +299,7 @@ window.wp.customize.bind('ready', () => {
 	initDeviceSwitchers();
 	initBlogPageFocus();
 	initSearchCustomizer();
-	initTypographyExtraSection();
+	initLocalGoogleFonts();
 });
 
 window.HFG = {
