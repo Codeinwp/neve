@@ -85,6 +85,19 @@ abstract class Base_Customizer {
 	 */
 	public function init() {
 		add_action( 'customize_register', array( $this, 'register_controls_callback' ) );
+
+		add_action(
+			'admin_init',
+			function() {
+				$this->wpc->add_setting(
+					'neve_local_google_fonts',
+					[
+						'sanitize_callback' => 'rest_sanitize_boolean',
+						'default'           => false,
+					] 
+				);
+			} 
+		);
 	}
 
 	/**

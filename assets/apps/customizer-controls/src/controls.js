@@ -38,6 +38,8 @@ import './style.scss';
 import Documentation from './documentation-section/Documentation.tsx';
 import Instructions from './builder-instructions/Instructions.tsx';
 import Upsells from './builder-upsell/Upsells.tsx';
+import GoogleLocalFont from './builder-local-google-fonts/Control';
+import { __ } from '@wordpress/i18n';
 
 import MainSearch from './customizer-search/MainSearch.tsx';
 
@@ -302,7 +304,17 @@ const initTypographyExtraSection = () => {
 		return;
 	}
 
-	render('WiP:test content', section.container[0]);
+	const control = new wp.customize.controlConstructor.neve_toggle_control(
+		'test',
+		{
+			section: 'typography_extra_section',
+			label: __('Enable local fonts hosting.', 'neve'),
+			setting: 'neve_local_google_fonts',
+			priority: 5,
+		}
+	);
+
+	render(<GoogleLocalFont control={control} />, section.container[0]);
 };
 
 window.wp.customize.bind('ready', () => {
