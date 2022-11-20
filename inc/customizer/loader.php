@@ -48,6 +48,7 @@ class Loader {
 		$this->define_modules();
 		$this->load_modules();
 		add_action( 'customize_register', array( $this, 'change_pro_controls' ), PHP_INT_MAX );
+		add_action( 'customize_register', array( $this, 'register_setting_local_gf' ) );
 	}
 
 	/**
@@ -253,5 +254,21 @@ class Loader {
 	private function load_modules() {
 		$factory = new Factory( $this->customizer_modules );
 		$factory->load_modules();
+	}
+
+	/**
+	 * Register setting for "Toggle that enables local host of Google fonts"
+	 *
+	 * @param \WP_Customize_Manager $wp_customize \WP_Customize_Manager instance.
+	 * @return void
+	 */
+	public function register_setting_local_gf( $wp_customize ) {
+		$wp_customize->add_setting(
+			Config::MODS_LOCAL_GOOGLE_FONTS_HOSTING,
+			[
+				'sanitize_callback' => 'rest_sanitize_boolean',
+				'default'           => false,
+			]
+		);
 	}
 }
