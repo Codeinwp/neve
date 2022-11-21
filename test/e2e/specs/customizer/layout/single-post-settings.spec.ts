@@ -1,7 +1,8 @@
 import { test, expect, Page } from '@playwright/test';
-import { setCustomizeSettings, loginWithRequest, loadData } from '../../utils';
+import { setCustomizeSettings, loginWithRequest, loadData } from '../../../utils';
 
 export const checkSinglePost = () => {
+	test.describe.configure({ mode: 'serial' });
 	test.describe('Single Post Check', function () {
 		/**
 		 * Declare local variables.
@@ -12,7 +13,7 @@ export const checkSinglePost = () => {
 		test.beforeAll(async ({ browser }) => {
 			page = await browser.newPage();
 			customizerData = await loadData(
-				'./customizer/layout/data/single-post-settings.json'
+				'./fixtures/customizer/layout-setup-main.json'
 			);
 		});
 

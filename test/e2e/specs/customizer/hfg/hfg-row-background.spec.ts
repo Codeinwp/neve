@@ -1,16 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { loadData, setCustomizeSettings } from '../../utils';
+import { loadData, setCustomizeSettings } from '../../../utils';
 
 export const checkHeaderBackground = () => {
 	test.describe('Header Row Background Control', function () {
-		test.beforeAll(async ({ request, baseURL }) => {
-			await loadData(
-				'./customizer/hfg/data/row-background-setup.json'
-			).then(async (data) => {
-				await setCustomizeSettings(data, { request, baseURL });
-			});
-		});
-
 		test('Background image control on front end.', async ({ page }) => {
 			await page.goto('/');
 			await page.reload();

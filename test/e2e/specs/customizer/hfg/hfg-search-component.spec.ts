@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { loadData, setCustomizeSettings } from '../../utils';
+import { loadData, setCustomizeSettings } from '../../../utils';
 
 export const checkSearchComponent = () => {
 	test.describe('Search Icon Component', async () => {
@@ -31,7 +31,7 @@ export const checkSearchComponent = () => {
 				'.builder-item--header_search_responsive .menu-item-nav-search'
 			);
 			customizerData = await loadData(
-				'./customizer/hfg/data/search-component-setup.json'
+				'./fixtures/customizer/hfg-setup-main.json'
 			);
 		});
 
@@ -40,10 +40,7 @@ export const checkSearchComponent = () => {
 			baseURL,
 		}) => {
 			const targetClose = page.locator('.close-responsive-search');
-
-			await setCustomizeSettings(customizerData, { request, baseURL });
 			await page.reload();
-
 			await runActions(targetClose, 'canvas');
 		});
 

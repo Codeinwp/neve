@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { loginWithRequest } from '../../utils';
+import { loginWithRequest } from '../../../utils';
 
 export const checkHomepageSettings = () => {
 	test.describe('Homepage-settings', function () {
