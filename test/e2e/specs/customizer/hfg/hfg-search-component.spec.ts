@@ -2,7 +2,7 @@ import { test, expect, Page } from '@playwright/test';
 import { loadData, setCustomizeSettings } from '../../../utils';
 
 export const checkSearchComponent = () => {
-	test.describe('Search Icon Component', async () => {
+	test.describe.serial('Search Icon Component', async () => {
 		/**
 		 * Declare local variables.
 		 */
@@ -40,7 +40,15 @@ export const checkSearchComponent = () => {
 			baseURL,
 		}) => {
 			const targetClose = page.locator('.close-responsive-search');
+			const canvasData = JSON.parse(customizerData);
+
+			canvasData.header_search_responsive_open_type = 'canvas';
+			await setCustomizeSettings(JSON.stringify(canvasData), {
+				request,
+				baseURL,
+			});
 			await page.reload();
+
 			await runActions(targetClose, 'canvas');
 		});
 

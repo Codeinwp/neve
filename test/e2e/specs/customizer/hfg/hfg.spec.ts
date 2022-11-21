@@ -17,9 +17,9 @@ export const checkHFG = () => {
 		});
 
 		test.describe(checkCopyright);
-		// test.describe(checkPrimaryMenuMargin);
-		// test.describe(checkLogoPadding);
-		// test.describe(checkHeaderBackground);
-		// test.describe(checkSearchComponent);
+		test.describe(checkPrimaryMenuMargin);
+		test.describe(checkLogoPadding);
+		test.describe(checkHeaderBackground);
+		test.describe(checkSearchComponent);
 	});
 };

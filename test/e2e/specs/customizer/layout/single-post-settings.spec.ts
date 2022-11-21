@@ -2,7 +2,6 @@ import { test, expect, Page } from '@playwright/test';
 import { setCustomizeSettings, loginWithRequest, loadData } from '../../../utils';
 
 export const checkSinglePost = () => {
-	test.describe.configure({ mode: 'serial' });
 	test.describe('Single Post Check', function () {
 		/**
 		 * Declare local variables.
