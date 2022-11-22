@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { loginWithRequest } from '../../../utils';
 
 export const checkHomepageSettings = () => {
-	test.describe('Homepage-settings', function () {
+	test.describe.serial('Homepage-settings', function () {
 		test.beforeEach(async ({ page }) => {
 			await loginWithRequest('/wp-admin/customize.php', page);
 			await page
