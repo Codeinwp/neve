@@ -1,3 +1,11 @@
+##### [Version 3.4.5](https://github.com/Codeinwp/neve/compare/v3.4.4...v3.4.5) (2022-11-16)
+
+- [Fix] Typography breaks when switching viewports in Gutenberg Editor
+- [Fix] Gradient color option with WP 6.1
+- [Fix] Plugin path issues with Bedrock
+- [Fix] VoiceOver accessibility issue on iPhone
+- Update Google Fonts
+
 ##### [Version 3.4.4](https://github.com/Codeinwp/neve/compare/v3.4.3...v3.4.4) (2022-11-03)
 
 - [Fix] Fix possible warning message from nav_walker.php
