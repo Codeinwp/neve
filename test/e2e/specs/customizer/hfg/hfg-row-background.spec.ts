@@ -2,10 +2,20 @@ import { test, expect } from '@playwright/test';
 import { loadData, setCustomizeSettings } from '../../../utils';
 
 export const checkHeaderBackground = () => {
+	test.beforeAll(async ({ request, baseURL }) => {
+		await loadData(
+			'./fixtures/customizer/hfg/row-background-setup.json'
+		).then(async (data) => {
+			await setCustomizeSettings('hfgHeaderBackground', data, {
+				request,
+				baseURL,
+			});
+		});
+	});
+
 	test.describe('Header Row Background Control', function () {
 		test('Background image control on front end.', async ({ page }) => {
-			await page.goto('/');
-			await page.reload();
+			await page.goto('/?test_name=hfgHeaderBackground');
 			const row = await page.locator(
 				'.header-main[data-show-on="desktop"] .header--row-inner'
 			);

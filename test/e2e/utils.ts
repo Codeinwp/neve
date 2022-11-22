@@ -20,10 +20,10 @@ export const loadData = async (filePath) => {
  * @param root0.request
  * @param root0.baseURL
  */
-export const setCustomizeSettings = async (data, { request, baseURL }) => {
+export const setCustomizeSettings = async (testname, data, { request, baseURL }) => {
 	const customizerData = JSON.parse(data);
 	const response = await request.post(
-		baseURL + '/wp-json/wpthememods/v1/settings',
+		baseURL + '/wp-json/wpthememods/v1/settings/' + testname,
 		{
 			data: customizerData,
 		}

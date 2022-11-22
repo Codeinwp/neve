@@ -1,0 +1,16 @@
+{
+  "hfg_header_layout_main_background": {
+	"type": "image",
+	"imageUrl": "https://via.placeholder.com/1500x100",
+	"focusPoint": {
+	  "x": 0.5,
+	  "y": 0.5
+	},
+	"colorValue": "var(--nv-site-bg)",
+	"overlayColorValue": "",
+	"overlayOpacity": 50,
+	"fixed": true,
+	"useFeatured": true
+  },
+  "neve_ran_migrations": true
+}

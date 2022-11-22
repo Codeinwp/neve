@@ -32,7 +32,7 @@ const config: PlaywrightTestConfig = {
 	reporter: 'html',
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
-		browserName: 'chromium',
+		// browserName: 'chromium',
 		// headless: true,
 		ignoreHTTPSErrors: true,
 		baseURL: process.env.baseURL || 'http://localhost:8080',
