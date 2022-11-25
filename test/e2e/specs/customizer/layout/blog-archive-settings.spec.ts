@@ -1,16 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { loadData, setCustomizeSettings, createNewPost } from '../../../utils';
+import { loadData, setCustomizeSettings } from '../../../utils';
 
 let customizerData;
 
-test.beforeAll(async ({ request, baseURL }) => {
-	// await createNewPost({
-	// 	postType: 'post',
-	// 	title: 'Blog test post',
-	// 	content: 'Blog test post.',
-	// 	excerpt: '',
-	// 	showWelcomeGuide: false,
-	// });
+test.beforeAll(async () => {
 	customizerData = await loadData(
 		'./fixtures/customizer/layout/blog-archive-setting-setup.json'
 	);
@@ -18,13 +11,6 @@ test.beforeAll(async ({ request, baseURL }) => {
 
 test.describe('Blog/Archive 1 / Default Layout', () => {
 	test.beforeAll(async ({ request, baseURL }) => {
-		// await createNewPost({
-		// 	postType: 'post',
-		// 	title: 'Blog test post',
-		// 	content: 'Blog test post.',
-		// 	excerpt: '',
-		// 	showWelcomeGuide: false,
-		// });
 		const data = JSON.parse(customizerData);
 		await setCustomizeSettings(
 			'defaultLayout',
