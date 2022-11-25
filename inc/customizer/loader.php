@@ -141,7 +141,7 @@ class Loader {
 					'bfDealData'                    => $this->get_bf_deal_data(),
 					'localGoogleFonts'              => array(
 						'learnMore' => apply_filters( 'neve_external_link', 'https://docs.themeisle.com/article/1349-how-to-load-neve-fonts-locally', esc_html__( 'Learn more', 'neve' ) ),
-						'key'       => Config::MODS_LOCAL_GOOGLE_FONTS_HOSTING,
+						'key'       => Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING,
 					),
 				)
 			)
@@ -264,8 +264,9 @@ class Loader {
 	 */
 	public function register_setting_local_gf( $wp_customize ) {
 		$wp_customize->add_setting(
-			Config::MODS_LOCAL_GOOGLE_FONTS_HOSTING,
+			Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING,
 			[
+				'type'              => 'option',
 				'sanitize_callback' => 'rest_sanitize_boolean',
 				'default'           => false,
 			]

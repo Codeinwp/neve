@@ -84,7 +84,7 @@ class Config {
 	const MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE  = 'neve_single_post_avatar_size';
 	const MODS_SINGLE_POST_ELEMENTS_SPACING         = 'neve_single_post_elements_spacing';
 
-	const MODS_LOCAL_GOOGLE_FONTS_HOSTING = 'neve_local_google_fonts';
+	const OPTION_LOCAL_GOOGLE_FONTS_HOSTING = 'nv_pro_enable_local_fonts';
 
 	/**
 	 * This is only used in a dynamic context for all allowed post types

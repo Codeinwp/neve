@@ -258,7 +258,7 @@ class Font_Manager extends Base_View {
 	 */
 	public function load_external_fonts_locally() {
 
-		$toggle = Mods::get( Config::MODS_LOCAL_GOOGLE_FONTS_HOSTING, false );
+		$toggle = get_option( Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING, false );
 
 		/**
 		 * Filters whether the remote fonts should be hosted locally.
