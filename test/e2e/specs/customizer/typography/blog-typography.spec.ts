@@ -188,7 +188,7 @@ test.describe('Blog Typography', () => {
 			);
 		});
 
-		test(`Test blog typography for size, line height, and spacing on frontend on template comments  ( window ${deviceMap[device].width}/${deviceMap[device].height} )`, async ({
+		test(`Test blog typography for size, line height, and spacing on frontend on template comments on ${device}`, async ({
 			browser,
 		}) => {
 			const context = await browser.newContext({
