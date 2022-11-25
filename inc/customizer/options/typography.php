@@ -461,7 +461,7 @@ class Typography extends Base_Customizer {
 				$this->wpc,
 				'typography_extra_section',
 				[
-					'priority' => 50,
+					'priority' => 9999, // upsell priority(10000) - 1
 					'panel'    => 'neve_typography',
 				]
 			)
