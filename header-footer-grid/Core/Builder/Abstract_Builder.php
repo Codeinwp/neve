@@ -1227,14 +1227,17 @@ abstract class Abstract_Builder implements Builder {
 						'--bgimage'          => [
 							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
 							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-								$image = $this->get_row_featured_image( $value['imageUrl'], $value['useFeatured'], $meta );
+								$image_url    = array_key_exists( 'imageUrl', $value ) ? $value['imageUrl'] : '';
+								$use_featured = array_key_exists( 'useFeatured', $value ) ? $value['useFeatured'] : false;
+								$image        = $this->get_row_featured_image( $image_url, $use_featured, $meta );
 								return sprintf( '%s:%s;', $css_prop, $image );
 							},
 						],
 						'--bgposition'       => [
 							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
 							Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-								if ( ! $this->is_valid_focus_point( $value['focusPoint'] ) ) {
+								$focus_point = array_key_exists( 'focusPoint', $value ) ? $value['focusPoint'] : false;
+								if ( ! $this->is_valid_focus_point( $focus_point ) ) {
 									return '';
 								}
 

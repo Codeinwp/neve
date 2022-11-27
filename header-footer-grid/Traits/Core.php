@@ -113,7 +113,7 @@ trait Core {
 	/**
 	 * Checks that a focus point array is valid.
 	 *
-	 * @param array $input coordinates array [x=>number, y=>number].
+	 * @param array|false $input coordinates array [x=>number, y=>number].
 	 *
 	 * @return bool
 	 */
