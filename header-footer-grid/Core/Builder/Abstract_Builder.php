@@ -1042,9 +1042,12 @@ abstract class Abstract_Builder implements Builder {
 					Config::CSS_PROP_BACKGROUND_COLOR => [
 						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							$background = $value;
-							$style      = '';
-							$image      = $this->get_row_featured_image( $background['imageUrl'], $background['useFeatured'], $meta );
+							$background   = $value;
+							$style        = '';
+							$image_url    = array_key_exists( 'imageUrl', $background ) ? $background['imageUrl'] : '';
+							$use_featured = array_key_exists( 'useFeatured', $background ) ? $background['useFeatured'] : false;
+
+							$image = $this->get_row_featured_image( $image_url, $use_featured, $meta );
 
 							$style .= sprintf( 'background-image: %s;', wp_kses_post( $image ) );
 							$style .= 'background-size:cover;';
