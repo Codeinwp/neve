@@ -26,7 +26,7 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 									),
 									{
 										external_link: (
-											<ExternalLink href="https://neve.nolt.io">
+											<ExternalLink href="https://github.com/Codeinwp/neve/discussions">
 												#dumptext
 											</ExternalLink>
 										),
