@@ -133,7 +133,6 @@ jobs:
       fail-fast: true
       matrix:
         include:
-          ## 6 machines for customizer tests
           - machines: 1
             specs: "customizer"
             envs: "sample-data"
