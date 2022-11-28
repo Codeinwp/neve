@@ -8,6 +8,7 @@
 	z-index: $menu_sidebar_active_z_index;
 	visibility: hidden;
 	display: flex;
+	pointer-events: none;
 	transition: all 0.3s cubic-bezier(0.79, 0.14, 0.15, 0.86);
 	height: 100vh;
 
