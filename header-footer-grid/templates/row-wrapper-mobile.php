@@ -25,7 +25,7 @@ $close_classes    = 'close-sidebar-panel navbar-toggle-wrapper' . ( $close_conta
 $menu_icon_class = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active ' );
 ?>
 <div
-		id="header-menu-sidebar" class="a <?php echo esc_attr( join( ' ', $classes ) ); ?>"
+		id="header-menu-sidebar" class="hfg-pe <?php echo esc_attr( join( ' ', $classes ) ); ?>"
 		data-row-id="<?php echo esc_attr( $row_index ); ?>">
 	<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">
 		<div class="<?php echo esc_attr( $close_classes ); ?>">
@@ -77,4 +77,4 @@ $menu_icon_class = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active
 		</div>
 	</div>
 </div>
-<div class="header-menu-sidebar-overlay hfg-ov a"></div>
+<div class="header-menu-sidebar-overlay hfg-ov hfg-pe"></div>
