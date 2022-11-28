@@ -6,7 +6,7 @@ WP_ENV=$3
 WP_CACHED_ENV="${WP_SITE_PATH}wp-content/${WP_ENV}.sql"
 SKIP_CACHE=$4
 export NEVE_REPO_PATH=${NEVE_REPO_PATH:=/tmp/repo/neve}
-SITE_URL="${CYPRESS_BASE_URL:=http://localhost:8080}"
+SITE_URL="${BASE_URL:=http://localhost:8080}"
 
 
 init_environment(){
