@@ -149,5 +149,7 @@ jobs:
         run: bash ./bin/envs/init.sh ${{ matrix.envs }} latest no "$ZIP_URL"
       - name: Install dependencies
         run: yarn
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
       - name: Run Playwright tests
         run: yarn run test:e2e:playwright
