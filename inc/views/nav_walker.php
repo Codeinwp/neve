@@ -337,7 +337,6 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 
 		$script = <<<'JS'
-console.log( '--> ON <--' );
 var menuCarets = document.querySelectorAll(
 		'.nav-ul li > .caret'
 	);

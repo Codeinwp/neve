@@ -91,12 +91,15 @@ function openCarrets(e, caret) {
  * @param {Element} el
  * @return {boolean} If element is visible or not.
  */
-const isVis = (el) => {
-	const s = window.getComputedStyle(el, null);
-	if (!s || s.display === 'none') {
+const vis = (el) => {
+	if (el === document) {
+		return true;
+	}
+
+	if (window.getComputedStyle(el, null).display === 'none') {
 		return false;
 	}
-	return el === document || isVis(el.parentNode);
+	return vis(el.parentNode);
 };
 
 function getKeyboardFocusableElements(element = document) {
@@ -108,7 +111,7 @@ function getKeyboardFocusableElements(element = document) {
 		(el) =>
 			!el.hasAttribute('disabled') &&
 			!el.getAttribute('aria-hidden') &&
-			isVis(el)
+			vis(el)
 	);
 }
 
