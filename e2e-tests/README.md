@@ -52,3 +52,9 @@ Assuming that your local url is `https://neve.test`, navigate to `e2e-tests` fol
 ```bash
 baseURL=https://neve.test bash npx playwright test
 ```
+
+To run a specific test you can run the following command:
+```bash
+baseURL=https://neve.test bash npx playwright test path/to/your/file.spec.ts
+
+```
