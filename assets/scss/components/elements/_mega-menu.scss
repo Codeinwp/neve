@@ -4,6 +4,29 @@
 	max-width: 100%;
 }
 
+.nav-ul:not(.menu-mobile) .neve-mega-menu {
+
+	li > {
+
+		a {
+
+			* {
+				display: table-cell;
+				vertical-align: middle;
+			}
+
+			span {
+				padding: 0 8px;
+			}
+			display: table-cell;
+		}
+
+		.caret + a {
+			padding-left: 10px;
+		}
+	}
+}
+
 .neve-mega-menu {
 
 	.sub-menu .sub-menu {

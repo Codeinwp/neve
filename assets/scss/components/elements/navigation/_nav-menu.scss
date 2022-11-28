@@ -24,16 +24,15 @@
 	margin-left: calc(var(--spacing) / 2 * -1);
 
 	li > a {
-		display: flex;
-		align-items: center;
+		display: table-cell;
 		min-height: var(--height);
 		color: var(--color);
 		position: relative;
 		width: 100%;
 	}
 
-	li:hover > a,
-	li:hover > .caret {
+	> li:hover > a,
+	> li:hover > .caret {
 		color: var(--hovercolor);
 	}
 
@@ -56,8 +55,10 @@
 	}
 
 	.caret {
-		display: flex;
-		justify-content: center;
+		display: table-cell;
+		padding: 0 0.3em;
+		vertical-align: middle;
+		line-height: 0;
 
 		svg {
 			fill: currentColor;

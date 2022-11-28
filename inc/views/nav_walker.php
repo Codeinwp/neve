@@ -182,14 +182,14 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * Get mobile submenu inline styles and accessibility
 	 */
 	public function get_mobile_submenu_and_accessibility_style() {
-		$mobile_button_caret_css  = '.header-menu-sidebar .nav-ul li .wrap { position:relative; padding: 15px 0; display: flex; align-items: center; }';
+		$mobile_button_caret_css  = '.header-menu-sidebar .nav-ul li .wrap { position: relative; padding: 15px 0; display: flex; align-items: center; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a { flex-grow: 1; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a .dd-title { width: var(--wrapdropdownwidth); }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap button { border: 0; z-index: 1; background: 0; }';
 		$accessibility_caret_css  = '.nav-ul:not(.menu-mobile) li:not(.neve-mm-col):not(.neve-mega-menu) { display: table-row; }';
-		$accessibility_caret_css .= '.nav-ul:not(.menu-mobile) li > a { display: table-cell; }';
-		$accessibility_caret_css .= '.nav-ul:not(.menu-mobile) li > .caret { display: table-cell; padding: 0 .3em; vertical-align: middle; }';
+		$accessibility_caret_css .= '.nav-ul li span.caret { display: inline-block; width: calc( var(--smiconsize, 0.5em) * 1.5 ); }';
 		$accessibility_caret_css .= '.nav-ul li:focus-within .caret.active + .sub-menu { opacity: 1; visibility: visible; }';
+		$accessibility_caret_css .= '.nav-ul li:focus-within .caret.active + a + .sub-menu { opacity: 1; visibility: visible; display: grid; }';
 
 		return Dynamic_Css::minify_css( $mobile_button_caret_css . $accessibility_caret_css );
 	}
@@ -337,6 +337,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 
 		$script = <<<'JS'
+console.log( '--> ON <--' );
 var menuCarets = document.querySelectorAll(
 		'.nav-ul li > .caret'
 	);

@@ -1,31 +1,30 @@
-.style-border-bottom > ul > li >,
+.style-border-bottom > ul >,
 .sm-style-border-bottom .sub-menu {
 
-	a::after {
+	li::after {
 		bottom: 0;
 	}
 }
 
-
-.style-border-top > ul > li >,
+.style-border-top > ul >,
 .sm-style-border-top .sub-menu {
 
-	a::after {
+	li::after {
 		top: 0;
 	}
 }
 
 .sm-style .sub-menu,
-.m-style > ul > li > {
+.m-style > ul > {
 
-	a:hover {
+	li:hover {
 
 		&::after {
 			width: 100%;
 		}
 	}
 
-	a::after {
+	li::after {
 		position: absolute;
 		content: "";
 		margin: 0 auto;
@@ -40,10 +39,10 @@
 }
 
 
-.style-full-height > ul > li >,
+.style-full-height > ul >,
 .sm-style-full-height .sub-menu {
 
-	a:hover {
+	li:hover {
 		color: currentColor;
 
 		&,
@@ -57,7 +56,7 @@
 		}
 	}
 
-	a {
+	li {
 		z-index: 1;
 
 		&::after {
@@ -71,7 +70,7 @@
 	}
 }
 
-.sm-style-full-height .sub-menu a:hover {
+.sm-style-full-height .sub-menu li:hover {
 
 	&::after {
 		width: 100%;
