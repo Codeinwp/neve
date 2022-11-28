@@ -162,14 +162,8 @@
 		}
 	}
 
+	&.menu_sidebar_pull_right,
 	&.menu_sidebar_pull_left {
-
-		.header-menu-sidebar {
-			transform: translateX(0);
-		}
-	}
-
-	&.menu_sidebar_pull_right {
 
 		.header-menu-sidebar {
 			transform: translateX(0);
