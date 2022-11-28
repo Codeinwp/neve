@@ -15,7 +15,7 @@ use HFG\Core\Components\MenuIcon;
 
 $row_index        = current_row();
 $interaction_type = row_setting( Abstract_Builder::LAYOUT_SETTING );
-$classes          = [ 'header-menu-sidebar', 'menu-sidebar-panel', $interaction_type ];
+$classes          = [ 'header-menu-sidebar', 'menu-sidebar-panel', $interaction_type, 'hfg-pe' ];
 $is_contained     = in_array( $interaction_type, [ 'full_canvas', 'dropdown' ], true );
 $close_contained  = $interaction_type === 'dropdown';
 $inner_classes    = 'header-menu-sidebar-inner ' . ( $is_contained ? ' container' : '' );
@@ -25,7 +25,7 @@ $close_classes    = 'close-sidebar-panel navbar-toggle-wrapper' . ( $close_conta
 $menu_icon_class = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active ' );
 ?>
 <div
-		id="header-menu-sidebar" class="hfg-pe <?php echo esc_attr( join( ' ', $classes ) ); ?>"
+		id="header-menu-sidebar" class="<?php echo esc_attr( join( ' ', $classes ) ); ?>"
 		data-row-id="<?php echo esc_attr( $row_index ); ?>">
 	<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">
 		<div class="<?php echo esc_attr( $close_classes ); ?>">
