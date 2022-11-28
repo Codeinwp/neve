@@ -9,7 +9,7 @@ describe('Starter sites import', function () {
 		cy.findByRole('button', {
 			name: /import entire site/i,
 		}).click();
-		cy.findByRole('link', {
+		cy.findByRole('button', {
 			name: /view website/i,
 			timeout: 120000,
 		}).click();
