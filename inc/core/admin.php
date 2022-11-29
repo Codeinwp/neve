@@ -403,7 +403,8 @@ class Admin {
 			.ti-about-notice .notice-dismiss{
 				position: absolute;
 				z-index: 10;
-			    top: 2px;
+			    top: 10px;
+			    right: 10px;
 			    padding: 10px 15px 10px 21px;
 			    font-size: 13px;
 			    line-height: 1.23076923;
@@ -412,8 +413,8 @@ class Admin {
 
 			.ti-about-notice .notice-dismiss:before{
 			    position: absolute;
-			    top: 10px;
-			    right: 10px;
+			    top: 8px;
+			    left: 0;
 			    transition: all .1s ease-in-out;
 			    background: none;
 			}
@@ -424,7 +425,7 @@ class Admin {
 		';
 
 		echo '<style>' . wp_kses_post( $style ) . '</style>';
-		$this->dismiss_script( '.nv-welcome-notice', 'neve_dismiss_welcome_notice' );
+		$this->dismiss_script();
 		echo '<div class="nv-welcome-notice updated notice ti-about-notice">';
 		echo '<div class="notice-dismiss"></div>';
 		$this->welcome_notice_content();
@@ -650,20 +651,13 @@ class Admin {
 
 	/**
 	 * Dismiss notice JS
-	 *
-	 * @param string $notice_class The container class of the notice.
-	 * @param string $notice_action The ajax function to execute.
 	 */
-	private function dismiss_script( $notice_class, $notice_action ) {
+	private function dismiss_script() {
 		?>
 		<script type="text/javascript">
-			function handleNoticeActions($, notice) {
-				var actions = $(notice.class).find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
+			function handleNoticeActions($) {
+				var actions = $('.nv-welcome-notice').find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
 				$.each(actions, function (index, actionButton) {
-					if ( actionButton.dataset && actionButton.dataset.isReact === "true" ) {
-						// skipping button as it will be handled by react.
-						return;
-					}
 					$(actionButton).on('click', function (e) {
 						e.preventDefault()
 						var redirect = $(this).attr('href')
@@ -671,13 +665,13 @@ class Admin {
 							'<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
 							{
 								nonce: '<?php echo esc_attr( wp_create_nonce( 'remove_notice_confirmation' ) ); ?>',
-								action: notice.action,
+								action: 'neve_dismiss_welcome_notice',
 								success: function () {
 									if (typeof redirect !== 'undefined' && window.location.href !== redirect) {
 										window.location = redirect
 										return false
 									}
-									$(notice.class).fadeOut()
+									$('.nv-welcome-notice').fadeOut()
 								}
 							}
 						)
@@ -685,12 +679,8 @@ class Admin {
 				})
 			}
 
-			jQuery( function() {
-				var notice = {
-					class: '<?php echo wp_kses_post( $notice_class ); ?>',
-					action: '<?php echo wp_kses_post( $notice_action ); ?>',
-				};
-				handleNoticeActions(jQuery, notice);
+			jQuery(document).ready(function () {
+				handleNoticeActions(jQuery)
 			})
 		</script>
 		<?php
@@ -715,20 +705,6 @@ class Admin {
 			return;
 		}
 		update_option( $this->dismiss_notice_key, 'yes' );
-		wp_die();
-	}
-
-	/**
-	 * Remove BF notice;
-	 */
-	public function remove_bf_notice() {
-		if ( ! isset( $_POST['nonce'] ) ) {
-			return;
-		}
-		if ( ! wp_verify_nonce( sanitize_text_field( $_POST['nonce'] ), 'remove_notice_confirmation' ) ) {
-			return;
-		}
-		update_option( $this->dismiss_bf_notice_key, 'yes' );
 		wp_die();
 	}
 
