@@ -1,0 +1,20 @@
+// The toggle which activates local hosting of the Google fonts
+.control-section-typography_extra_section {
+  display: list-item !important;
+
+  .neve-white-background-control {
+    background: none !important;
+    padding: 15px 30px 0 30px;
+    position: relative;
+  }
+
+  label {
+    color: rgb(80, 87, 94);
+  }
+
+  .customize-control-description {
+    position: absolute;
+    right: 30px;
+    top: 6px;
+  }
+}

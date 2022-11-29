@@ -49,7 +49,7 @@
 		&,
 		span,
 		i {
-			color: var(--color) !important;
+			color: var(--hovertextcolor, var(--color)) !important;
 		}
 
 		&::after {
