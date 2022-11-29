@@ -68,6 +68,7 @@ assets/apps/dashboard/src
 assets/apps/customizer-controls/src
 assets/apps/metabox/src
 test-results
+playwright-report
 visual-regressions
 yarn.lock
 .ds_store
