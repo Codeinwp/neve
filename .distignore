@@ -60,9 +60,14 @@ inc/admin/onboarding/package-lock.json
 blackfire
 rollup.config.js
 docker-compose.ci.yml
+assets/apps/components/config
+assets/apps/components/README.md
+assets/apps/components/src
+assets/apps/starter-sites/src
 assets/apps/dashboard/src
 assets/apps/customizer-controls/src
 assets/apps/metabox/src
+test-results
 visual-regressions
 yarn.lock
 .ds_store
