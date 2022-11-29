@@ -1,4 +1,4 @@
-name: E2E tests on StoryBook 🚀
+Build and testname: E2E tests on StoryBook 🚀
 
 on:
   pull_request:
