@@ -1,5 +1,3 @@
-/* global neveDash */
-
 import Header from './Header';
 import Notifications from './Notifications';
 import TabsContent from './TabsContent';
@@ -23,7 +21,6 @@ const App = ({ setSettings, toast, currentTab, setTab }) => {
 	if (loading) {
 		return <Loading />;
 	}
-
 	return (
 		<Fragment>
 			<Header currentTab={currentTab} setTab={setTab} />
