@@ -23,8 +23,12 @@
 	margin-right: calc(var(--spacing) / 2 * -1);
 	margin-left: calc(var(--spacing) / 2 * -1);
 
-	li > a {
-		display: table-cell;
+	li > .wrap {
+		display: flex;
+		align-items: center;
+	}
+
+	li a {
 		min-height: var(--height);
 		color: var(--color);
 		position: relative;
@@ -54,17 +58,8 @@
 		}
 	}
 
-	.caret {
-		display: table-cell;
-		padding: 0 0.3em;
-		vertical-align: middle;
+	li .caret {
 		line-height: 0;
-
-		svg {
-			fill: currentColor;
-			width: 0.5em;
-			height: 0.5em;
-		}
 	}
 
 	.sub-menu {
@@ -79,8 +74,10 @@
 
 		li {
 			min-width: 150px;
+			width: 100%;
 		}
 
+		li > .wrap,
 		li > a {
 			padding: $spacing-xs $spacing-md;
 			white-space: nowrap;

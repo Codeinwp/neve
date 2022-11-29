@@ -1,30 +1,35 @@
-.style-border-bottom > ul >,
+.style-border-bottom > ul > li >,
 .sm-style-border-bottom .sub-menu {
 
-	li::after {
+	.wrap::after,
+	a::after {
 		bottom: 0;
 	}
 }
 
-.style-border-top > ul >,
+
+.style-border-top > ul > li >,
 .sm-style-border-top .sub-menu {
 
-	li::after {
+	.wrap::after,
+	a::after {
 		top: 0;
 	}
 }
 
 .sm-style .sub-menu,
-.m-style > ul > {
+.m-style > ul > li > {
 
-	li:hover {
+	.wrap:hover,
+	a:hover {
 
 		&::after {
 			width: 100%;
 		}
 	}
 
-	li::after {
+	.wrap::after,
+	a::after {
 		position: absolute;
 		content: "";
 		margin: 0 auto;
@@ -39,10 +44,23 @@
 }
 
 
-.style-full-height > ul >,
+.style-full-height > ul > li >,
 .sm-style-full-height .sub-menu {
 
-	li:hover {
+	.wrap {
+		z-index: 1;
+
+		&::after {
+			top: 0;
+			bottom: 0;
+			left: calc(var(--spacing) / 2 * -1);
+			right: calc(var(--spacing) / 2 * -1);
+			height: 100%;
+			z-index: -1;
+		}
+	}
+
+	a:hover {
 		color: currentColor;
 
 		&,
@@ -56,7 +74,7 @@
 		}
 	}
 
-	li {
+	a {
 		z-index: 1;
 
 		&::after {
@@ -70,7 +88,13 @@
 	}
 }
 
-.sm-style-full-height .sub-menu li:hover {
+.sm-style-full-height .sub-menu a:hover {
+
+	+ .caret svg {
+		color: var(--hovertextcolor);
+		position: relative;
+		z-index: 1;
+	}
 
 	&::after {
 		width: 100%;
