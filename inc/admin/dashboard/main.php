@@ -7,6 +7,7 @@
 
 namespace Neve\Admin\Dashboard;
 
+use Neve\Core\Theme_Info;
 /**
  * Class Main
  *
@@ -14,6 +15,7 @@ namespace Neve\Admin\Dashboard;
  */
 class Main {
 
+	use Theme_Info;
 	/**
 	 * Changelog Handler.
 	 *
