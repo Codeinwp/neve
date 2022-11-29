@@ -6,7 +6,7 @@ WP_ENV=$3
 WP_CACHED_ENV="${WP_SITE_PATH}wp-content/${WP_ENV}.sql"
 SKIP_CACHE=$4
 export NEVE_REPO_PATH=${NEVE_REPO_PATH:=/tmp/repo/neve}
-SITE_URL="${CYPRESS_BASE_URL:=http://localhost:8080}"
+SITE_URL="${BASE_URL:=http://localhost:8080}"
 
 
 init_environment(){
@@ -22,8 +22,8 @@ init_environment(){
 	wp --allow-root theme install --activate $NEVE_LOCATION
 	wp --allow-root option update fresh_site 0
   echo "Installing Theme API Plugin"
-  wp --allow-root plugin install https://github.com/Codeinwp/wp-thememods-api/archive/main.zip --force --activate
-  wp --allow-root plugin install https://gist.github.com/selul/2f5f76d423f9d44f7b5a927e17001c28/archive/ffe3a56894c9aed005e69268ad50dfb16b8177fb.zip --force --activate
+  wp --allow-root plugin install https://github.com/cristian-ungureanu/wp-thememods-api/archive/refs/heads/main.zip --force --activate
+  wp --allow-root plugin install https://gist.github.com/cristian-ungureanu/ecae7d531e8fdaeb6e18a745b9544bf5/archive/29884d432f14287c280ab884ebbadb4cf6506c43.zip --force --activate
 }
 
 

@@ -38,6 +38,7 @@ import './style.scss';
 import Documentation from './documentation-section/Documentation.tsx';
 import Instructions from './builder-instructions/Instructions.tsx';
 import Upsells from './builder-upsell/Upsells.tsx';
+import { initLocalGoogleFonts } from './typography-extra/LocalGoogleFonts';
 
 import MainSearch from './customizer-search/MainSearch.tsx';
 
@@ -298,6 +299,7 @@ window.wp.customize.bind('ready', () => {
 	initDeviceSwitchers();
 	initBlogPageFocus();
 	initSearchCustomizer();
+	initLocalGoogleFonts();
 });
 
 window.HFG = {

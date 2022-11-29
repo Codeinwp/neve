@@ -1828,6 +1828,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.16.0":
+  version "7.20.1"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.20.1.tgz#1148bb33ab252b165a06698fde7576092a78b4a9"
+  integrity sha512-mrzLkl6U9YLF8qpqI7TB82PESyEGjm/0Ly91jG575eVxMMlb8fYfOXFZIJ8XfLrJZQbm7dlKry2bJmXBUEkdFg==
+  dependencies:
+    regenerator-runtime "^0.13.10"
+
 "@babel/runtime@^7.4.5":
   version "7.14.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
@@ -2452,7 +2459,7 @@
     glob-to-regexp "^0.3.0"
 
 "@neve-wp/components@file:./assets/apps/components":
-  version "0.0.35"
+  version "0.0.38"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -2590,6 +2597,14 @@
   integrity sha512-kCkiN8scbCmSq+gwdJV0iLgHc0O/GTPY1/cffo9kECu1MvatLPh9E+qFhfRIktKfHEA6ZYvv6S1B4Wnv3bi3pA==
   dependencies:
     "@octokit/openapi-types" "^5.3.2"
+
+"@playwright/test@^1.27.1":
+  version "1.27.1"
+  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.27.1.tgz#9364d1e02021261211c8ff586d903faa79ce95c4"
+  integrity sha512-mrL2q0an/7tVqniQQF6RBL2saskjljXzqNcCOVMUjRIgE6Y38nCNaP+Dc2FBW06bcpD3tqIws/HT9qiMHbNU0A==
+  dependencies:
+    "@types/node" "*"
+    playwright-core "1.27.1"
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.4.2":
   version "0.4.3"
@@ -5551,6 +5566,14 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
     lodash "^4.17.21"
+
+"@wordpress/url@^3.23.0":
+  version "3.23.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/url/-/url-3.23.0.tgz#a3fe084d02b6f3b50f8052d4466b719b0a1fad1d"
+  integrity sha512-JBNrzSUg7+b4cpJQjDVTHAw8x77EcdLWOAxLlKqI37Pd2EHUZXWnlVU5EqbNLLhXVJ+/6QMzS3QqNILhjIiqdw==
+  dependencies:
+    "@babel/runtime" "^7.16.0"
+    remove-accents "^0.4.2"
 
 "@wordpress/viewport@^4.0.3":
   version "4.0.3"
@@ -16752,6 +16775,11 @@ pkg-up@^1.0.0:
   dependencies:
     find-up "^1.0.0"
 
+playwright-core@1.27.1:
+  version "1.27.1"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.27.1.tgz#840ef662e55a3ed759d8b5d3d00a5f885a7184f4"
+  integrity sha512-9EmeXDncC2Pmp/z+teoVYlvmPWUC6ejSSYZUln7YaP89Z6lpAaiaAnqroUt/BoLo8tn7WYShcfaCh+xofZa44Q==
+
 please-upgrade-node@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/please-upgrade-node/-/please-upgrade-node-3.2.0.tgz#aeddd3f994c933e4ad98b99d9a556efa0e2fe942"
@@ -18650,6 +18678,11 @@ regenerate@^1.4.0:
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.2.tgz#b9346d8827e8f5a32f7ba29637d398b69014848a"
   integrity sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==
 
+regenerator-runtime@^0.13.10:
+  version "0.13.11"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz#f6dca3e7ceec20590d07ada785636a90cdca17f9"
+  integrity sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==
+
 regenerator-runtime@^0.13.4, regenerator-runtime@^0.13.7:
   version "0.13.9"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz#8925742a98ffd90814988d7566ad30ca3b263b52"
@@ -18847,6 +18880,11 @@ rememo@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/rememo/-/rememo-3.0.0.tgz#06e8e76e108865cc1e9b73329db49f844eaf8392"
   integrity sha512-eWtut/7pqMRnSccbexb647iPjN7ir6Tmf4RG92ZVlykFEkHqGYy9tWnpHH3I+FS+WQ6lQ1i1iDgarYzGKgTcRQ==
+
+remove-accents@^0.4.2:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/remove-accents/-/remove-accents-0.4.3.tgz#c2c6fdcef51337746677eebc8c63c2c9a5cb9386"
+  integrity sha512-bwzzFccF6RgWWt+KrcEpCDMw9uCwz5GCdyo+r4p2hu6PhqtlEMOXEO0uPAw6XmVYAnODxHaqLanhUY1lqmsNFw==
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"

@@ -10,8 +10,8 @@
 
 namespace Neve\Core;
 
+use Neve\Admin\Dashboard\Plugin_Helper;
 use Neve\Core\Settings\Mods_Migrator;
-use Neve\Traits\Utils;
 
 /**
  * Class Admin
@@ -19,7 +19,6 @@ use Neve\Traits\Utils;
  * @package Neve\Core
  */
 class Admin {
-	use Utils;
 
 	/**
 	 * Dismiss notice key.
@@ -40,12 +39,6 @@ class Admin {
 	 * @var \WP_Theme
 	 */
 	private $theme_args;
-	/**
-	 * Dismiss bf notice key.
-	 *
-	 * @var string
-	 */
-	private $dismiss_bf_notice_key = 'neve_bf_notice_dismissed';
 
 	/**
 	 * Admin constructor.
@@ -72,11 +65,6 @@ class Admin {
 			add_action( 'wp_ajax_neve_dismiss_welcome_notice', [ $this, 'remove_notice' ] );
 		}
 
-		if ( get_option( $this->dismiss_bf_notice_key ) !== 'yes' ) {
-			add_action( 'admin_notices', [ $this, 'bf_notice' ] );
-			add_action( 'wp_ajax_neve_dismiss_bf_notice', [ $this, 'remove_bf_notice' ] );
-		}
-
 		add_action( 'admin_menu', [ $this, 'remove_background_submenu' ], 110 );
 		add_action( 'after_switch_theme', [ $this, 'get_previous_theme' ] );
 
@@ -93,9 +81,60 @@ class Admin {
 	}
 
 	/**
+	 * Get data specific to TPC plugin.
+	 *
+	 * @return array
+	 */
+	private function get_tpc_plugin_data() {
+		$plugin_helper = new Plugin_Helper();
+		$slug          = 'templates-patterns-collection';
+
+		$tpc_plugin_data['nonce']      = wp_create_nonce( 'wp_rest' );
+		$tpc_plugin_data['slug']       = $slug;
+		$tpc_plugin_data['cta']        = $plugin_helper->get_plugin_state( $slug );
+		$tpc_plugin_data['path']       = $plugin_helper->get_plugin_path( $slug );
+		$tpc_plugin_data['activate']   = $plugin_helper->get_plugin_action_link( $slug );
+		$tpc_plugin_data['deactivate'] = $plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
+		$tpc_plugin_data['version']    = ! empty( $tpc_plugin_data['version'] ) ? $plugin_helper->get_plugin_version( $slug, $tpc_plugin_data['version'] ) : '';
+		$tpc_plugin_data['adminURL']   = admin_url( 'themes.php?page=tiob-starter-sites' );
+		$tpc_plugin_data['pluginsURL'] = esc_url( admin_url( 'plugins.php' ) );
+		$tpc_plugin_data['ajaxURL']    = esc_url( admin_url( 'admin-ajax.php' ) );
+		$tpc_plugin_data['ajaxNonce']  = esc_attr( wp_create_nonce( 'remove_notice_confirmation' ) );
+
+		return $tpc_plugin_data;
+	}
+
+	/**
+	 * Maybe register the script required for the welcome notice.
+	 * The script has a component that replaces the "Try one of our ready to use Starter Sites" button.
+	 * The button installs/activates and/or dismisses the notice as required.
+	 */
+	private function maybe_register_notice_script_starter_sites() {
+		if ( get_option( $this->dismiss_notice_key, 'no' ) === 'yes' ) {
+			return;
+		}
+		$screen = get_current_screen();
+		if ( empty( $screen ) ) {
+			return;
+		}
+		if ( $screen->id !== 'dashboard' ) {
+			return;
+		}
+
+		$bundle_path  = get_template_directory_uri() . '/assets/apps/starter-sites/build/';
+		$dependencies = ( include get_template_directory() . '/assets/apps/starter-sites/build/notice.asset.php' );
+		wp_register_script( 'neve-ss-notice', $bundle_path . 'notice.js', $dependencies['dependencies'], $dependencies['version'], true );
+
+		wp_localize_script( 'neve-ss-notice', 'tpcPluginData', $this->get_tpc_plugin_data() );
+		wp_enqueue_script( 'neve-ss-notice' );
+	}
+
+	/**
 	 * Register script for react components.
 	 */
 	public function register_react_components() {
+		$this->maybe_register_notice_script_starter_sites();
+
 		$deps = include trailingslashit( NEVE_MAIN_DIR ) . 'assets/apps/components/build/components.asset.php';
 
 		wp_register_script( 'neve-components', trailingslashit( NEVE_ASSETS_URL ) . 'apps/components/build/components.js', $deps['dependencies'], $deps['version'], false );
@@ -291,46 +330,6 @@ class Admin {
 	}
 
 	/**
-	 * Display Black friday notice.
-	 */
-	public function bf_notice() {
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
-		}
-
-		if ( ! $this->should_show_bf() ) {
-			return;
-		}
-
-		$css = '
-			.nv-bf-notice img {
-				vertical-align: middle;
-				margin-right: 13px;
-				width: 24px;
-			}
-		';
-
-		$this->dismiss_script( '.nv-bf-notice', 'neve_dismiss_bf_notice' );
-		echo '<div class="nv-bf-notice notice notice-info is-dismissible">';
-		echo '<div class="notice-dismiss"></div>';
-		echo '<style>' . wp_kses_post( $css ) . '</style>';
-		echo '<p>';
-		echo '<img src="' . esc_url( get_template_directory_uri() . '/assets/img/dashboard/logo.svg' ) . '" alt="' . esc_attr( __( 'Neve Theme Logo', 'neve' ) ) . '">';
-		echo wp_kses_post(
-			sprintf(
-			// translators: %1$s - sale title, %2$s - license type, %3$s - number of licenses, %4$s - url
-				__( '%1$s - Save big with a %2$s of Neve Agency Plan. %3$s, for a limited time. %4$s', 'neve' ),
-				'<strong>' . __( 'Neve Black Friday Sale', 'neve' ) . '</strong>',
-				'<strong>' . __( 'Lifetime License', 'neve' ) . '</strong>',
-				'<strong>' . __( 'Only 100 licenses', 'neve' ) . '</strong>',
-				'<a href="' . tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'dashboard_notice_sitewide', 'blackfriday' ) . '" target="_blank" rel="external noreferrer noopener">' . __( 'Learn more', 'neve' ) . '</a>'
-			)
-		);
-		echo '</p>';
-		echo '</div>';
-	}
-
-	/**
 	 * Add notice.
 	 */
 	public function admin_notice() {
@@ -404,7 +403,8 @@ class Admin {
 			.ti-about-notice .notice-dismiss{
 				position: absolute;
 				z-index: 10;
-			    top: 2px;
+			    top: 10px;
+			    right: 10px;
 			    padding: 10px 15px 10px 21px;
 			    font-size: 13px;
 			    line-height: 1.23076923;
@@ -413,8 +413,8 @@ class Admin {
 
 			.ti-about-notice .notice-dismiss:before{
 			    position: absolute;
-			    top: 10px;
-			    right: 10px;
+			    top: 8px;
+			    left: 0;
 			    transition: all .1s ease-in-out;
 			    background: none;
 			}
@@ -425,7 +425,7 @@ class Admin {
 		';
 
 		echo '<style>' . wp_kses_post( $style ) . '</style>';
-		$this->dismiss_script( '.nv-welcome-notice', 'neve_dismiss_welcome_notice' );
+		$this->dismiss_script();
 		echo '<div class="nv-welcome-notice updated notice ti-about-notice">';
 		echo '<div class="notice-dismiss"></div>';
 		$this->welcome_notice_content();
@@ -489,10 +489,11 @@ class Admin {
 			esc_url( $this->get_notice_picture() )
 		);
 		$notice_sites_list = sprintf(
-			'<div><h3><span class="dashicons dashicons-images-alt2"></span> %1$s</h3><p>%2$s</p></div><div> <p>%3$s</p><p>%4$s</p> </div>',
+			'<div><h3><span class="dashicons dashicons-images-alt2"></span> %1$s</h3><p>%2$s</p><p>%3$s</p></div><div> <p id="neve-ss-install">%4$s</p><p>%5$s</p> </div>',
 			__( 'Sites Library', 'neve' ),
 			// translators: %s - Theme name
 				sprintf( esc_html__( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), $name ),
+			esc_html( __( 'Install the template patterns plugin to get started.', 'neve' ) ),
 			$ob_btn,
 			$options_page_btn
 		);
@@ -587,7 +588,26 @@ class Admin {
 				padding:12px 36px;
 			}
 		}
+		@-webkit-keyframes spin {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+		#neve-ss-install button.is-loading {
+			color: #828282 !important;
+		}
+		#neve-ss-install button.is-loading .dashicon {
+			color: #646D82;
+			animation-name: spin;
+			animation-duration: 2000ms;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
 		';
+
 		echo sprintf(
 			$notice_template, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			$notice_header, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -631,18 +651,13 @@ class Admin {
 
 	/**
 	 * Dismiss notice JS
-	 *
-	 * @param string $notice_class The container class of the notice.
-	 * @param string $notice_action The ajax function to execute.
 	 */
-	private function dismiss_script( $notice_class, $notice_action ) {
+	private function dismiss_script() {
 		?>
 		<script type="text/javascript">
-			function handleNoticeActions($, notice) {
-				var actions = $(notice.class).find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
-				console.log( actions )
+			function handleNoticeActions($) {
+				var actions = $('.nv-welcome-notice').find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
 				$.each(actions, function (index, actionButton) {
-					console.log( actionButton );
 					$(actionButton).on('click', function (e) {
 						e.preventDefault()
 						var redirect = $(this).attr('href')
@@ -650,13 +665,13 @@ class Admin {
 							'<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
 							{
 								nonce: '<?php echo esc_attr( wp_create_nonce( 'remove_notice_confirmation' ) ); ?>',
-								action: notice.action,
+								action: 'neve_dismiss_welcome_notice',
 								success: function () {
 									if (typeof redirect !== 'undefined' && window.location.href !== redirect) {
 										window.location = redirect
 										return false
 									}
-									$(notice.class).fadeOut()
+									$('.nv-welcome-notice').fadeOut()
 								}
 							}
 						)
@@ -664,12 +679,8 @@ class Admin {
 				})
 			}
 
-			jQuery( function() {
-				var notice = {
-					class: '<?php echo wp_kses_post( $notice_class ); ?>',
-					action: '<?php echo wp_kses_post( $notice_action ); ?>',
-				};
-				handleNoticeActions(jQuery, notice);
+			jQuery(document).ready(function () {
+				handleNoticeActions(jQuery)
 			})
 		</script>
 		<?php
@@ -694,20 +705,6 @@ class Admin {
 			return;
 		}
 		update_option( $this->dismiss_notice_key, 'yes' );
-		wp_die();
-	}
-
-	/**
-	 * Remove BF notice;
-	 */
-	public function remove_bf_notice() {
-		if ( ! isset( $_POST['nonce'] ) ) {
-			return;
-		}
-		if ( ! wp_verify_nonce( sanitize_text_field( $_POST['nonce'] ), 'remove_notice_confirmation' ) ) {
-			return;
-		}
-		update_option( $this->dismiss_bf_notice_key, 'yes' );
 		wp_die();
 	}
 

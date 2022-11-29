@@ -15,7 +15,7 @@ use HFG\Core\Components\MenuIcon;
 
 $row_index        = current_row();
 $interaction_type = row_setting( Abstract_Builder::LAYOUT_SETTING );
-$classes          = [ 'header-menu-sidebar', 'menu-sidebar-panel', $interaction_type ];
+$classes          = [ 'header-menu-sidebar', 'menu-sidebar-panel', $interaction_type, 'hfg-pe' ];
 $is_contained     = in_array( $interaction_type, [ 'full_canvas', 'dropdown' ], true );
 $close_contained  = $interaction_type === 'dropdown';
 $inner_classes    = 'header-menu-sidebar-inner ' . ( $is_contained ? ' container' : '' );
@@ -77,4 +77,4 @@ $menu_icon_class = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active
 		</div>
 	</div>
 </div>
-<div class="header-menu-sidebar-overlay hfg-ov"></div>
+<div class="header-menu-sidebar-overlay hfg-ov hfg-pe"></div>
