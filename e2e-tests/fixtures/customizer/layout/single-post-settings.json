@@ -1,0 +1,60 @@
+{
+  "hidden": { "neve_layout_single_post_elements_order": "[]", "neve_new_skin": "new" },
+  "enabled": {
+	"neve_layout_single_post_elements_order": "[\"post-navigation\",\"tags\",\"content\",\"comments\",\"title-meta\",\"thumbnail\"]"
+  },
+  "cover": {
+	"neve_ran_builder_migration": true,
+	"neve_migrated_builders": true,
+	"neve_migrated_hfg_colors": true,
+	"nav_menu_locations": {
+	  "primary": 176
+	},
+	"ti_prev_theme": "twentytwentyone",
+	"custom_css_post_id": -1,
+	"neve_post_header_layout": "cover",
+	"neve_post_cover_height": "{\"mobile\":400,\"tablet\":400,\"desktop\":505}",
+	"neve_post_cover_padding": {
+	  "mobile": {
+		"top": 40,
+		"right": 15,
+		"bottom": 40,
+		"left": 15
+	  },
+	  "tablet": {
+		"top": 60,
+		"right": 15,
+		"bottom": 60,
+		"left": 15
+	  },
+	  "desktop": {
+		"top": 60,
+		"right": 15,
+		"bottom": 60,
+		"left": 15
+	  },
+	  "mobile-unit": "px",
+	  "tablet-unit": "px",
+	  "desktop-unit": "px"
+	},
+	"neve_layout_single_post_elements_order": "[\"content\",\"tags\",\"comments\"]",
+	"neve_post_title_position": {
+	  "mobile": "bottom",
+	  "tablet": "bottom",
+	  "desktop": "middle"
+	},
+	"neve_post_title_alignment": {
+	  "mobile": "left",
+	  "tablet": "left",
+	  "desktop": "center"
+	},
+	"neve_post_cover_meta_before_title": false,
+	"neve_post_cover_background_color": "#c63535",
+	"neve_post_cover_text_color": "#ffffff",
+	"neve_post_cover_overlay_opacity": "{\"mobile\":0.5,\"tablet\":0.5,\"desktop\":0.6}",
+	"neve_post_cover_hide_thumbnail": false,
+	"neve_post_cover_blend_mode": "normal",
+	"neve_post_cover_title_boxed_layout": false,
+	"neve_new_skin": "new"
+  }
+}

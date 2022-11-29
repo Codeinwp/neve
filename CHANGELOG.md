@@ -1,3 +1,13 @@
+##### [Version 3.4.6](https://github.com/Codeinwp/neve/compare/v3.4.5...v3.4.6) (2022-11-29)
+
+- [Feat] Add toggle to enable local hosting for Google fonts
+- [Fix] PHP Warnings related to HFG Row BG on Legacy Skin
+- [Fix] Text color not configurable with menu skin mode 2
+- [Fix] Missing space on the Neve menu HTML
+- [Fix] Full Canvas Mobile Menu Overlaps Some HTML Content
+- Autoactivate TPC from the welcome notice
+- Change the dashboard link from Nolt to GitHub discussion
+
 ##### [Version 3.4.5](https://github.com/Codeinwp/neve/compare/v3.4.4...v3.4.5) (2022-11-16)
 
 - [Fix] Typography breaks when switching viewports in Gutenberg Editor
