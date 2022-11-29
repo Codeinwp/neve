@@ -140,6 +140,9 @@ class Nav_Walker extends \Walker_Nav_Menu {
 					$args->after = $caret . $args->after;
 				}
 			} else {
+				$args->before = '<div class="wrap">';
+				$args->after  = '</div>';
+
 				$caret  = '<div role="button" aria-pressed="false" aria-label="' . __( 'Open Submenu', 'neve' ) . '" ' . $expanded . ' class="caret ' . $item->menu_order . '" style="' . esc_attr( $caret_wrap_css ) . '">';
 				$caret .= $caret_pictogram;
 				$caret .= '</div>';
@@ -182,16 +185,26 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * Get mobile submenu inline styles and accessibility
 	 */
 	public function get_mobile_submenu_and_accessibility_style() {
+		/* Mobile button caret css. */
 		$mobile_button_caret_css  = '.header-menu-sidebar .nav-ul li .wrap { position: relative; padding: 15px 0; display: flex; align-items: center; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a { flex-grow: 1; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a .dd-title { width: var(--wrapdropdownwidth); }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap button { border: 0; z-index: 1; background: 0; }';
-		$accessibility_caret_css  = '.nav-ul:not(.menu-mobile) li:not(.neve-mm-col):not(.neve-mega-menu) { display: table-row; }';
-		$accessibility_caret_css .= '.nav-ul li span.caret { display: inline-block; width: calc( var(--smiconsize, 0.5em) * 1.5 ); }';
-		$accessibility_caret_css .= '.nav-ul li:focus-within .caret.active + .sub-menu { opacity: 1; visibility: visible; }';
-		$accessibility_caret_css .= '.nav-ul li:focus-within .caret.active + a + .sub-menu { opacity: 1; visibility: visible; display: grid; }';
+		/* Showing Menu Sidebar animation css. */
+		$sidebar_animation_css  = '.is-menu-sidebar .header-menu-sidebar { visibility: visible; }';
+		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_slide_left .header-menu-sidebar { transform: translate3d(0, 0, 0); left: 0; }';
+		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_slide_right .header-menu-sidebar { transform: translate3d(0, 0, 0); right: 0; }';
+		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_pull_left .header-menu-sidebar { transform: translateX(0); }';
+		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_pull_right .header-menu-sidebar { transform: translateX(0); }';
+		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_dropdown .header-menu-sidebar { height: auto; }';
+		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_dropdown .header-menu-sidebar-inner { max-height: 400px; padding: 20px 0; }';
+		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_full_canvas .header-menu-sidebar { opacity: 1; }';
+		/* Accessibility css. */
+		$accessibility_caret_css  = '.nav-ul li:focus-within .wrap:has(.caret.active) + .sub-menu { opacity: 1; visibility: visible; }';
+		$accessibility_caret_css .= '.nav-ul li.neve-mega-menu:focus-within .wrap:has(.caret.active) + .sub-menu { display: grid; }';
+		$accessibility_caret_css .= '.nav-ul li > .wrap { position: relative; }';
 
-		return Dynamic_Css::minify_css( $mobile_button_caret_css . $accessibility_caret_css );
+		return Dynamic_Css::minify_css( $sidebar_animation_css . $mobile_button_caret_css . $accessibility_caret_css );
 	}
 
 	/**
@@ -338,7 +351,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 
 		$script = <<<'JS'
 var menuCarets = document.querySelectorAll(
-		'.nav-ul li > .caret'
+		'.nav-ul li > .wrap > .caret'
 	);
 menuCarets.forEach( function (caretElem) {
 	caretElem.addEventListener( "keydown", (event) => {
@@ -346,9 +359,9 @@ menuCarets.forEach( function (caretElem) {
 			event.target.classList.toggle('active');
 		}
 	});
-	caretElem.parentElement.addEventListener( "focusout", (event) => {
+	caretElem.parentElement.parentElement.addEventListener( "focusout", (event) => {
 		// If focus is still in the element, do nothing
-		if ( caretElem.parentElement.contains(event.relatedTarget) ) {
+		if ( caretElem.parentElement.parentElement.contains(event.relatedTarget) ) {
 			return;
 		};
 		caretElem.classList.remove('active');
@@ -357,7 +370,7 @@ menuCarets.forEach( function (caretElem) {
 JS;
 
 		$script_min_js = <<<'JSMIN'
-var menuCarets=document.querySelectorAll(".nav-ul li > .caret");menuCarets.forEach(function(t){t.addEventListener("keydown",e=>{13===e.keyCode&&e.target.classList.toggle("active")}),t.parentElement.addEventListener("focusout",e=>{t.parentElement.contains(e.relatedTarget)||t.classList.remove("active")})});
+var menuCarets=document.querySelectorAll(".nav-ul li > .wrap > .caret");menuCarets.forEach(function(t){t.addEventListener("keydown",e=>{13===e.keyCode&&e.target.classList.toggle("active")}),t.parentElement.parentElement.addEventListener("focusout",e=>{t.parentElement.parentElement.contains(e.relatedTarget)||t.classList.remove("active")})});
 JSMIN;
 
 
