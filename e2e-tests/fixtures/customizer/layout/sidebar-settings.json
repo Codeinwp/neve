@@ -1,0 +1,30 @@
+{
+	"advanced": {
+		"custom_css_post_id": -1,
+		"nav_menu_locations": {
+			"primary": 176
+		},
+		"neve_ran_builder_migration": true,
+		"neve_migrated_builders": true,
+		"neve_migrated_hfg_colors": true,
+		"neve_advanced_layout_options": true,
+		"neve_blog_archive_sidebar_layout": "left",
+		"neve_single_post_sidebar_layout": "right",
+		"neve_other_pages_sidebar_layout": "left",
+		"neve_blog_archive_content_width": 20,
+		"neve_single_post_content_width": 70,
+		"neve_other_pages_content_width": 70,
+		"neve_new_skin": "new"
+	},
+	"site_wide": {
+		"custom_css_post_id": -1,
+		"nav_menu_locations": {
+			"primary": 176
+		},
+		"neve_migrated_hfg_colors": true,
+		"neve_default_sidebar_layout": "left",
+		"neve_sitewide_content_width": 50,
+		"neve_new_skin": "new",
+	    "neve_advanced_layout_options": "0"
+	}
+}

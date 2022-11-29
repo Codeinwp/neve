@@ -1,0 +1,25 @@
+{
+  "primary-menu_component_margin": {
+	"mobile": {
+	  "top": 0,
+	  "right": 0,
+	  "bottom": 0,
+	  "left": 0
+	},
+	"tablet": {
+	  "top": 0,
+	  "right": 0,
+	  "bottom": 0,
+	  "left": 0
+	},
+	"desktop": {
+	  "top": "3",
+	  "right": 0,
+	  "bottom": "-1",
+	  "left": 0
+	},
+	"mobile-unit": "px",
+	"tablet-unit": "px",
+	"desktop-unit": "px"
+  }
+}
