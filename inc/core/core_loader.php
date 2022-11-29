@@ -125,6 +125,7 @@ class Core_Loader {
 				'Compatibility\PWA',
 				'Compatibility\Web_Stories',
 				'Compatibility\Easy_Digital_Downloads',
+				'Compatibility\Fse',
 
 				'Admin\Metabox\Manager',
 				'Admin\Troubleshoot\Main',
