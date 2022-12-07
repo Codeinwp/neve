@@ -249,10 +249,30 @@ class Woocommerce {
 	 * @return bool
 	 */
 	private function is_current_page_elementor_template() {
-		$is_shop_template    = Elementor::is_elementor_template( 'product_archive' );
+		/**
+		 * Detect if there is a template in Elementor for the shop page.
+		 */
+		$is_shop_template = Elementor::is_elementor_template( 'product_archive' );
+
+		/**
+		 * Detect if there is a template in Elementor for the single product page.
+		 */
 		$is_product_template = Elementor::is_elementor_template( 'single_product' );
 
-		return ( $is_shop_template || $is_product_template );
+		/**
+		 * Detect if the checkout page is using the checkout widget.
+		 */
+		$is_elementor_checkout = false;
+		if ( is_checkout() ) {
+			$page_id        = get_the_ID();
+			$elementor_data = get_post_meta( $page_id, '_elementor_data', true );
+			if ( ! empty( $elementor_data ) && is_string( $elementor_data ) && str_contains( $elementor_data, 'woocommerce-checkout-page' ) ) {
+				$is_elementor_checkout = true;
+			}
+		}
+
+		// Prevent any modifications if any condition above are true.
+		return ( $is_shop_template || $is_product_template || $is_elementor_checkout );
 	}
 
 	/**

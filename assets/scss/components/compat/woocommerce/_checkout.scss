@@ -9,7 +9,7 @@
 	@extend %nv-form-fields;
 }
 
-.woocommerce-checkout {
+.woocommerce-checkout:not(.has-el-checkout-widget) {
 
 	label {
 
@@ -152,7 +152,7 @@
 
 @mixin checkout--laptop() {
 
-	.woocommerce-checkout {
+	.woocommerce-checkout:not(.has-el-checkout-widget) {
 
 		.woocommerce-NoticeGroup {
 			grid-column: 1 / 3;

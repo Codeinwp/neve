@@ -67,6 +67,24 @@ class Elementor extends Page_Builder_Base {
 		* That gives full capability to Elementor and removes Neve Pro customizations.
 		*/
 		add_filter( 'neve_pro_run_wc_view', array( $this, 'suspend_woo_customizations' ), 10, 2 );
+
+		add_action( 'elementor/widget/woocommerce-checkout-page/skins_init', array( $this, 'mark_checkout_widget' ) );
+	}
+
+	/**
+	 * Add a class on the body tag to mark the usage of the checkout widget, so we can avoid styling the page.
+	 */
+	public function mark_checkout_widget() {
+		add_action(
+			'body_class',
+			function ( $classes ) {
+				if ( in_array( 'has-el-checkout-widget', $classes ) ) {
+					return $classes;
+				}
+				$classes[] = 'has-el-checkout-widget';
+				return $classes;
+			}
+		);
 	}
 
 	/**
