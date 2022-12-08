@@ -12,7 +12,7 @@ services:
       MYSQL_PASSWORD: wordpress
   cli:
     privileged: true
-    image: wordpress:cli
+    image: cli-php7.4
     restart: always
     volumes:
       - wpcore:/var/www/html
@@ -27,7 +27,6 @@ services:
       - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_ROOT_PASSWORD=wordpress
       - WORDPRESS_DEBUG=1
-      - PHP_VERSION=7.4.32
   wordpress:
     privileged: true
     ports:
