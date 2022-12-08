@@ -9,7 +9,7 @@
 namespace Neve\Customizer;
 
 use Neve\Core\Factory;
-use Neve\Traits\Utils;
+use Neve\Core\Settings\Config;
 
 /**
  * Main customizer handler.
@@ -17,7 +17,6 @@ use Neve\Traits\Utils;
  * @package Neve\Customizer
  */
 class Loader {
-	use Utils;
 
 	/**
 	 * Customizer modules.
@@ -47,6 +46,7 @@ class Loader {
 		$this->define_modules();
 		$this->load_modules();
 		add_action( 'customize_register', array( $this, 'change_pro_controls' ), PHP_INT_MAX );
+		add_action( 'customize_register', array( $this, 'register_setting_local_gf' ) );
 	}
 
 	/**
@@ -136,7 +136,10 @@ class Loader {
 					'hideConditionalHeaderSelector' => ! neve_can_use_conditional_header(),
 					'dashUpdatesMessage'            => sprintf( 'Please %s to the latest version of Neve Pro to manage the conditional headers.', '<a href="' . esc_url( admin_url( 'update-core.php' ) ) . '">' . __( 'update', 'neve' ) . '</a>' ),
 					'bundlePath'                    => get_template_directory_uri() . '/assets/apps/customizer-controls/build/',
-					'bfDealData'                    => $this->get_bf_deal_data(),
+					'localGoogleFonts'              => array(
+						'learnMore' => apply_filters( 'neve_external_link', 'https://docs.themeisle.com/article/1349-how-to-load-neve-fonts-locally', esc_html__( 'Learn more', 'neve' ) ),
+						'key'       => Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING,
+					),
 				)
 			)
 		);
@@ -161,22 +164,6 @@ class Loader {
 				NEVE_VERSION
 			);
 		}
-	}
-
-	/**
-	 * Get Black Friday data.
-	 *
-	 * @return false|array
-	 */
-	private function get_bf_deal_data() {
-		if ( ! $this->should_show_bf() ) {
-			return false;
-		}
-
-		return [
-			'bannerUrl' => get_template_directory_uri() . '/assets/img/bf-customize.svg',
-			'link'      => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'customizer_notice', 'blackfriday' ),
-		];
 	}
 
 	/**
@@ -248,5 +235,22 @@ class Loader {
 	private function load_modules() {
 		$factory = new Factory( $this->customizer_modules );
 		$factory->load_modules();
+	}
+
+	/**
+	 * Register setting for "Toggle that enables local host of Google fonts"
+	 *
+	 * @param \WP_Customize_Manager $wp_customize \WP_Customize_Manager instance.
+	 * @return void
+	 */
+	public function register_setting_local_gf( $wp_customize ) {
+		$wp_customize->add_setting(
+			Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING,
+			[
+				'type'              => 'option',
+				'sanitize_callback' => 'rest_sanitize_boolean',
+				'default'           => false,
+			]
+		);
 	}
 }

@@ -23,6 +23,18 @@ namespace ElementorPro\Modules\ThemeBuilder\Classes {
          */
         public function do_location( $location ) {}
     }
+
+    class Conditions_Manager{
+        /**
+         * get_cache
+         *
+         * @return \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Cache
+         */
+        public function get_cache() {}
+    }
+
+    class Conditions_Cache {
+    }
 }
 
 namespace {

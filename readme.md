@@ -2,7 +2,7 @@
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
 **Tags:** blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar  
 **Requires at least:** 4.0  
-**Tested up to:** 5.9  
+**Tested up to:** 6.1  
 **Stable tag:** trunk  
 **Requires PHP:** 5.5.0  
 **License:** GPLv2 or later  
@@ -18,6 +18,44 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+
+##### [Version 3.4.7](https://github.com/Codeinwp/neve/compare/v3.4.6...v3.4.7) (2022-12-01)
+
+- [Fix] Customizer not working in some specific cases.
+- [Feat] Add toggle to enable local hosting for Google fonts
+- [Fix] PHP Warnings related to HFG Row BG on Legacy Skin
+- [Fix] Text color not configurable with menu skin mode 2
+- [Fix] Missing space on the Neve menu HTML
+- [Fix] Full Canvas Mobile Menu Overlaps Some HTML Content
+- Autoactivate TPC from the welcome notice
+- Change the dashboard link from Nolt to GitHub discussion
+
+
+
+
+##### [Version 3.4.6](https://github.com/Codeinwp/neve/compare/v3.4.5...v3.4.6) (2022-11-29)
+
+- [Feat] Add toggle to enable local hosting for Google fonts
+- [Fix] PHP Warnings related to HFG Row BG on Legacy Skin
+- [Fix] Text color not configurable with menu skin mode 2
+- [Fix] Missing space on the Neve menu HTML
+- [Fix] Full Canvas Mobile Menu Overlaps Some HTML Content
+- Autoactivate TPC from the welcome notice
+- Change the dashboard link from Nolt to GitHub discussion
+
+
+
+
+##### [Version 3.4.5](https://github.com/Codeinwp/neve/compare/v3.4.4...v3.4.5) (2022-11-16)
+
+- [Fix] Typography breaks when switching viewports in Gutenberg Editor
+- [Fix] Gradient color option with WP 6.1
+- [Fix] Plugin path issues with Bedrock
+- [Fix] VoiceOver accessibility issue on iPhone
+- Update Google Fonts
+
+
+
 
 ##### [Version 3.4.4](https://github.com/Codeinwp/neve/compare/v3.4.3...v3.4.4) (2022-11-03)
 

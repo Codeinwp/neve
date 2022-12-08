@@ -133,7 +133,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 					$args->after = $caret . $args->after;
 				}
 			} else {
-				$caret  = '<div role="none"' . $expanded . ' class="caret-wrap ' . $item->menu_order . '" style="' . esc_attr( $caret_wrap_css ) . '">';
+				$caret  = '<div role="none" ' . $expanded . ' class="caret-wrap ' . $item->menu_order . '" style="' . esc_attr( $caret_wrap_css ) . '">';
 				$caret .= $caret_pictogram;
 				$caret .= '</div>';
 

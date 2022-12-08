@@ -16,6 +16,35 @@ use Neve\Core\Dynamic_Css;
  * @package Neve\Compatibility
  */
 class Elementor extends Page_Builder_Base {
+	/**
+	 * Stores Elementor templates meta
+	 *
+	 * @var array
+	 */
+	const ELEMENTOR_TEMPLATE_TYPES = [
+		'single_product'  => [
+			'location'            => 'single',
+			'condition_indicator' => 'product',
+		],
+		'product_archive' => [
+			'location'            => 'archive',
+			'condition_indicator' => 'product_archive',
+		],
+	];
+
+	/**
+	 * Stores if the current page is overriden by Elementor or not (checks by ::is_elementor_template method) according to the location.
+	 *
+	 * @var array
+	 */
+	private static $cache_cp_has_template = [];
+
+	/**
+	 * Stores Elementor Pro Conditions_Manager instance.
+	 *
+	 * @var false|\ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager
+	 */
+	private static $elementor_conditions_manager = false;
 
 	/**
 	 * Init function.
@@ -30,7 +59,14 @@ class Elementor extends Page_Builder_Base {
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_in_picker' ], 999, 3 );
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_front_end' ], 999, 3 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 100 );
-		add_action( 'wp_insert_post', array( $this, 'update_has_template_transient' ), 10, 2 );
+		/**
+		* Elementor - Neve Pro Compatibility
+		* add_filter call for "neve_pro_run_wc_view" hook.
+		*
+		* The callback, suspenses some WooCommerce modifications (especially customizer support) by Neve Pro if an Elementor template is applied on the current page.
+		* That gives full capability to Elementor and removes Neve Pro customizations.
+		*/
+		add_filter( 'neve_pro_run_wc_view', array( $this, 'suspend_woo_customizations' ), 10, 2 );
 	}
 
 	/**
@@ -297,93 +333,158 @@ class Elementor extends Page_Builder_Base {
 	}
 
 	/**
-	 * Is the current page has an elementor template
+	 * Returns Condition_Manager instance of the Elementor Pro.
 	 *
-	 * @param  string $location that location of the template such as single, archive etc.
-	 * @param  string $cond Template showing condition it can be product_archive, product etc.
-	 * @return bool
+	 * @return false|\ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager
 	 */
-	public static function is_elementor_template( $location, $cond ) {
-		if ( ! did_action( 'elementor_pro/init' ) ) {
+	private static function get_condition_manager() {
+		if ( self::$elementor_conditions_manager !== false ) {
+			return self::$elementor_conditions_manager;
+		}
+
+		if ( ! method_exists( '\ElementorPro\Modules\ThemeBuilder\Module', 'instance' ) ) {
 			return false;
 		}
+
+		$theme_builder = \ElementorPro\Modules\ThemeBuilder\Module::instance();
+
+		if ( ! method_exists( $theme_builder, 'get_conditions_manager' ) ) {
+			return false;
+		}
+
+		self::$elementor_conditions_manager = $theme_builder->get_conditions_manager();
+		return self::$elementor_conditions_manager;
+	}
+
+	/**
+	 * Checks if the site has Elementor template as independent from current post ID.
+	 * The method was designed to use in customizer. ! Do not use it outside of the customizer.
+	 *
+	 * @param  string $elementor_template_type valid types: single_product|product_archive (keys of the self::ELEMENTOR_TEMPLATE_TYPES const array).
+	 * @return bool
+	 */
+	public static function has_template( $elementor_template_type ) {
 		if ( ! class_exists( '\ElementorPro\Plugin', false ) ) {
 			return false;
 		}
-		$conditions_manager = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'theme-builder' )->get_conditions_manager();
 
-		$documents = $conditions_manager->get_documents_for_location( $location );
+		if ( ! array_key_exists( $elementor_template_type, self::ELEMENTOR_TEMPLATE_TYPES ) ) {
+			return false;
+		}
 
-		foreach ( $documents as $document ) {
-			$conditions = $conditions_manager->get_document_conditions( $document );
-			foreach ( $conditions as $condition ) {
-				if ( 'include' === $condition['type'] && $cond === $condition['name'] ) {
+		$template_meta = self::ELEMENTOR_TEMPLATE_TYPES[ $elementor_template_type ];
+
+		$location      = $template_meta['location'];
+		$has_indicator = $template_meta['condition_indicator']; // represents second path of the Elementor condition
+
+		/**
+		 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager $conditions_manager
+		 */
+		$conditions_manager = self::get_condition_manager();
+
+		if ( ! is_object( $conditions_manager ) || ! method_exists( $conditions_manager, 'get_cache' ) ) {
+			return false;
+		}
+
+		/**
+		 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Cache $instance_cond_cache
+		 */
+		$instance_cond_cache = $conditions_manager->get_cache();
+
+		if ( ! method_exists( $instance_cond_cache, 'get_by_location' ) ) {
+			return false;
+		}
+
+		$templates = $instance_cond_cache->get_by_location( $location );
+
+		foreach ( $templates as $template_conditions_arr ) {
+			/** @var string $condition_path specifies the condition such as  include/product_archive OR exclude/product_archive/product_search OR include/product/in_product_cat/18 etc. */
+			foreach ( $template_conditions_arr  as $condition_path ) {
+				$condition_parts = explode( '/', $condition_path );
+
+				if ( empty( $condition_parts ) ) {
+					continue;
+				}
+
+				if ( $condition_parts[0] !== 'include' ) {
+					continue;
+				}
+
+				if ( $condition_parts[1] === $has_indicator ) {
 					return true;
 				}
 			}
 		}
+
 		return false;
 	}
 
 	/**
-	 * Update has_template transient value when a post updated or inserted.
+	 * Is the current page has an elementor template. Looks if the an Elementor template is applied to the current page or not.
 	 *
-	 * @param  int      $post_ID that post ID.
-	 * @param  \WP_Post $post that WP_Post object.
-	 * @return void
-	 */
-	public function update_has_template_transient( $post_ID, $post ) {
-		if ( $post->post_type !== 'elementor_library' ) {
-			return;
-		}
-
-		$template_type = get_post_meta( $post_ID, '_elementor_template_type', true );
-
-		// forcefully update has_template
-		$this->has_template( $template_type, true );
-	}
-
-	/**
-	 * Check if the site has Elementor template as independent from current post ID.
-	 * The method was designed to use in customizer. ! Do not use it outside of the customizer.
-	 * The method works if only Elementor Pro is active.
-	 *
-	 * @param  string $elementor_template_type that is template type such as page,product-archive,product,kit etc.
+	 * @param  string $elementor_template_type valid types: single_product|product_archive (keys of the self::ELEMENTOR_TEMPLATE_TYPES const array). To available params; see keys of the self::ELEMENTOR_TEMPLATE_TYPES array.
 	 * @return bool
 	 */
-	public static function has_template( $elementor_template_type, $force_refresh = false ) {
+	public static function is_elementor_template( $elementor_template_type ) {
 		if ( ! class_exists( '\ElementorPro\Plugin', false ) ) {
 			return false;
 		}
 
-		$transient_key        = 'neve_elementor_has_template_' . $elementor_template_type;
-		$transient_expiry_sec = HOUR_IN_SECONDS;
-		$cached_value         = get_transient( $transient_key ) == true; // cast transient (string) to bool
-
-		if ( $force_refresh !== true && $cached_value !== false ) {
-			return $cached_value;
-		}
-
-		$args = [
-			'post_type'              => 'elementor_library',
-			'post_status'            => 'publish',
-			'update_post_term_cache' => false,
-			'meta_key'               => '_elementor_template_type',
-			'meta_value'             => $elementor_template_type, //phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
-			'no_found_rows'          => true,
-			'posts_per_page'         => 1,
-			'fields'                 => 'ids',
-		];
-
-		$query = new \WP_Query( $args );
-
-		// if elementor template not found
-		if ( empty( $query->posts ) ) {
-			set_transient( $transient_key, 0, $transient_expiry_sec );
+		if ( ! array_key_exists( $elementor_template_type, self::ELEMENTOR_TEMPLATE_TYPES ) ) {
 			return false;
 		}
 
-		set_transient( $transient_key, 1, $transient_expiry_sec );
-		return true;
+		$location = self::ELEMENTOR_TEMPLATE_TYPES[ $elementor_template_type ]['location'];
+
+		if ( array_key_exists( $elementor_template_type, self::$cache_cp_has_template ) ) {
+			return self::$cache_cp_has_template[ $location ];
+		}
+
+		/**
+		 * @var \ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager $conditions_manager
+		 */
+		$conditions_manager = self::get_condition_manager();
+
+		if ( ! is_object( $conditions_manager ) || ! method_exists( $conditions_manager, 'get_documents_for_location' ) ) {
+			return false;
+		}
+
+		$templates = $conditions_manager->get_documents_for_location( $location );
+
+		self::$cache_cp_has_template[ $location ] = ( count( $templates ) > 0 );
+
+		return self::$cache_cp_has_template[ $location ];
+	}
+
+	/**
+	 * Conditionally suspense Woocommerce moditifications by Neve Pro if Elementor template applies to current page.
+	 *
+	 * @param  bool   $should_load Current loading status.
+	 * @param  string $class_name Fully class name that applies the Woo Modification.
+	 * @return bool
+	 */
+	public function suspend_woo_customizations( $should_load, $class_name ) {
+		switch ( $class_name ) {
+			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Shop_Page':
+				$elementor_template_type = 'product_archive';
+				break;
+
+			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Shop_Product':
+				$elementor_template_type = is_single() ? 'single_product' : 'product_archive'; // Sometimes shop_product is used inside of the single product as related products etc.
+				break;
+
+			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Single_Product_Video':
+			case 'Neve_Pro\Modules\Woocommerce_Booster\Views\Single_Product':
+				$elementor_template_type = 'single_product';
+				break;
+
+			default:
+				return $should_load;
+		}
+
+		// Does the current page is overridden by an Elementor template?
+		$elementor_overrides = self::is_elementor_template( $elementor_template_type );
+
+		return ! $elementor_overrides;
 	}
 }

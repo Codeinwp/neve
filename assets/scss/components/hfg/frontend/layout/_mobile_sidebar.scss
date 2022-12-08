@@ -162,14 +162,8 @@
 		}
 	}
 
+	&.menu_sidebar_pull_right,
 	&.menu_sidebar_pull_left {
-
-		.header-menu-sidebar {
-			transform: translateX(0);
-		}
-	}
-
-	&.menu_sidebar_pull_right {
 
 		.header-menu-sidebar {
 			transform: translateX(0);
@@ -214,14 +208,20 @@
 	transition: all 0.3s linear;
 	visibility: hidden;
 	opacity: 0;
-	pointer-events: none;
 
 	.is-menu-sidebar & {
 		visibility: visible;
 		opacity: 1;
-		pointer-events: unset;
 	}
 }
 
 //</editor-fold>
+
+.hfg-pe {
+	pointer-events: none;
+
+	.is-menu-sidebar & {
+		pointer-events: unset;
+	}
+}
 

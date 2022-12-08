@@ -20,3 +20,7 @@ assets/apps/*/build/*
 languages/neve.pot
 /e2e-tests/cypress/screenshots/
 logs.log
+/test-results/
+/playwright-report/
+/playwright/.cache/
+

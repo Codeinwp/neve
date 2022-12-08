@@ -258,6 +258,8 @@ class Font_Manager extends Base_View {
 	 */
 	public function load_external_fonts_locally() {
 
+		$toggle = get_option( Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING, false );
+
 		/**
 		 * Filters whether the remote fonts should be hosted locally.
 		 *
@@ -267,7 +269,7 @@ class Font_Manager extends Base_View {
 		 *
 		 * @since 2.11
 		 */
-		$should_enqueue_locally = apply_filters( 'neve_load_remote_fonts_locally', false );
+		$should_enqueue_locally = apply_filters( 'neve_load_remote_fonts_locally', $toggle );
 
 		if ( ! (bool) $should_enqueue_locally ) {
 			return;

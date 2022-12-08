@@ -1,0 +1,26 @@
+{
+  "logo_component_padding": {
+	"mobile": {
+	  "top": 10,
+	  "right": 0,
+	  "bottom": 10,
+	  "left": 0
+	},
+	"tablet": {
+	  "top": 10,
+	  "right": 0,
+	  "bottom": 10,
+	  "left": 0
+	},
+	"desktop": {
+	  "top": "11",
+	  "right": 0,
+	  "bottom": "9",
+	  "left": 0
+	},
+	"mobile-unit": "px",
+	"tablet-unit": "px",
+	"desktop-unit": "px"
+  },
+  "neve_ran_migrations": true
+}
