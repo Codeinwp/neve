@@ -27,13 +27,14 @@ services:
       - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_ROOT_PASSWORD=wordpress
       - WORDPRESS_DEBUG=1
+      - PHP_VERSION=7.4.32
   wordpress:
     privileged: true
     ports:
       - 8080:80
     depends_on:
       - mysql
-    image: wordpress:php7.4-fpm
+    image: wordpress:latest
     volumes:
       - wpcore:/var/www/html
       - ./bin:/var/www/html/bin
