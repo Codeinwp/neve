@@ -266,7 +266,7 @@ class Woocommerce {
 		if ( is_checkout() ) {
 			$page_id        = get_the_ID();
 			$elementor_data = get_post_meta( $page_id, '_elementor_data', true );
-			if ( ! empty( $elementor_data ) && is_string( $elementor_data ) && str_contains( $elementor_data, 'woocommerce-checkout-page' ) ) {
+			if ( ! empty( $elementor_data ) && is_string( $elementor_data ) && strpos( $elementor_data, 'woocommerce-checkout-page' ) !== false ) {
 				$is_elementor_checkout = true;
 			}
 		}
