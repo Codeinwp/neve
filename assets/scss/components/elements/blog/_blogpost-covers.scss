@@ -31,12 +31,12 @@ $overlay: rgba(0, 0, 0, 0.75);
 		position: absolute;
 		width: 100%;
 		height: 100%;
+	}
 
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 
 	.inner {
