@@ -4,22 +4,21 @@ import { untrailingSlashIt } from '../../utils/common';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 import { Button } from '@wordpress/components';
-import { withSelect } from '@wordpress/data';
 
-const StarterSitesUnavailable = ({ templatesPluginData }) => {
-	const { assets, tpcPath, tpcAdminURL, isOnboarding, pluginsURL } = neveDash;
-	const tpcRedirect = tpcAdminURL + (isOnboarding ? '&onboarding=yes' : '');
+const InstallActivate = ({ slug, pluginBasename, activateRedirect, pluginState, activateURL }) => {
+	const { pluginsURL } = neveDash;
+
 	const [installing, setInstalling] = useState(false);
 	const [activating, setActivating] = useState(false);
 	const [updating, setUpdating] = useState(false);
 	const [error, setError] = useState(false);
 	const [currentState, setCurrentState] = useState(
-		templatesPluginData?.cta || 'install'
+		pluginState
 	);
 	const installPlugin = () => {
 		setInstalling(true);
 		wp.updates.ajax('install-plugin', {
-			slug: 'templates-patterns-collection',
+			slug: slug,
 			success: () => {
 				activatePlugin();
 			},
@@ -43,7 +42,7 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
 		setInstalling(false);
 		setActivating(true);
 		setCurrentState('activate');
-		const activationURL = templatesPluginData?.activate || '';
+		const activationURL = activateURL;
 
 		if (!activationURL) {
 			window.location.href = pluginsURL;
@@ -53,7 +52,7 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
 
 		get(activationURL, true).then((r) => {
 			if (r.ok) {
-				window.location.href = tpcRedirect;
+				window.location.href = activateRedirect;
 			} else {
 				setError(__('Could not activate plugin.'));
 			}
@@ -63,10 +62,10 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
 	const updatePlugin = () => {
 		setUpdating(true);
 		wp.updates.ajax('update-plugin', {
-			slug: 'templates-patterns-collection',
-			plugin: untrailingSlashIt(tpcPath),
+			slug: slug,
+			plugin: untrailingSlashIt(pluginBasename),
 			success: () => {
-				window.location.href = tpcRedirect;
+				window.location.href = activateRedirect;
 			},
 			error: (e) => {
 				setError(
@@ -94,7 +93,7 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
 						: __('Install and Activate')}
 				</Button>
 			),
-			activate: templatesPluginData?.activate && (
+			activate: activateURL && (
 				<Button
 					disabled={activating}
 					isPrimary={!activating}
@@ -141,9 +140,4 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
 	);
 };
 
-export default withSelect((select) => {
-	const { getPlugins } = select('neve-dashboard');
-	return {
-		templatesPluginData: getPlugins()['templates-patterns-collection'],
-	};
-})(StarterSitesUnavailable);
+export default InstallActivate;
