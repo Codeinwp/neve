@@ -8,7 +8,8 @@ import { Button } from '@wordpress/components';
 const InstallActivate = ({
 	slug,
 	pluginBasename,
-	successCallback,
+	successActivation,
+	successUpdate,
 	pluginState,
 	activateURL,
 	description,
@@ -57,7 +58,7 @@ const InstallActivate = ({
 
 		get(activationURL, true).then((r) => {
 			if (r.ok) {
-				successCallback()
+				successActivation();
 			} else {
 				setError(__('Could not activate plugin.'));
 			}
@@ -69,7 +70,7 @@ const InstallActivate = ({
 		wp.updates.ajax('update-plugin', {
 			slug: slug,
 			plugin: untrailingSlashIt(pluginBasename),
-			success: () => successCallback(),
+			success: () => successUpdate(),
 			error: (e) => {
 				setError(
 					e.errorMessage

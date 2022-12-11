@@ -21,7 +21,10 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
 				<InstallActivate
 					slug={'templates-patterns-collection'}
 					pluginBasename={tpcPath}
-					successCallback={()=>{
+					successActivation={() => {
+						window.location.href = activateRedirect;
+					}}
+					successUpdate={() => {
 						window.location.href = activateRedirect;
 					}}
 					pluginState={currentState}
