@@ -132,15 +132,14 @@ const ModuleCard = ({
 						</Button>
 					) : (
 						<Fragment>
-							{required_actions &&
-								!manageableDependentPlugins && (
-									<span
-										className="required"
-										dangerouslySetInnerHTML={{
-											__html: required_actions,
-										}}
-									/>
-								)}
+							{required_actions && !manageableDependentPlugins && (
+								<span
+									className="required"
+									dangerouslySetInnerHTML={{
+										__html: required_actions,
+									}}
+								/>
+							)}
 							{loading && (
 								<Dashicon
 									size={18}
@@ -148,13 +147,13 @@ const ModuleCard = ({
 									className="is-loading"
 								/>
 							)}
-							{ manageableDependentPlugins &&
+							{manageableDependentPlugins &&
 								dependentPlugins.map((info) => (
 									<InstallActivate
 										key={info.slug}
 										slug={info.slug}
 										pluginBasename={info.pluginBasename}
-										successActivation={()=>{}}
+										successActivation={() => {}}
 										pluginState={info.pluginState}
 										activateURL={info.activateURL}
 										description={info.description}

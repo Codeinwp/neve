@@ -1,5 +1,4 @@
 /* global neveDash */
-import { __ } from '@wordpress/i18n';
 import InstallActivate from '../Plugin/InstallActivate';
 import { withSelect } from '@wordpress/data';
 

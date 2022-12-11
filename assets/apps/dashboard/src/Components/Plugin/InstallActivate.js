@@ -24,7 +24,7 @@ const InstallActivate = ({
 	const installPlugin = () => {
 		setInstalling(true);
 		wp.updates.ajax('install-plugin', {
-			slug: slug,
+			slug,
 			success: () => {
 				activatePlugin();
 			},
@@ -59,7 +59,7 @@ const InstallActivate = ({
 		get(activationURL, true).then((r) => {
 			if (r.ok) {
 				successActivation();
-                updatePluginState();
+				updatePluginState();
 			} else {
 				setError(__('Could not activate plugin.'));
 			}
@@ -69,12 +69,12 @@ const InstallActivate = ({
 	const updatePlugin = () => {
 		setUpdating(true);
 		wp.updates.ajax('update-plugin', {
-			slug: slug,
+			slug,
 			plugin: untrailingSlashIt(pluginBasename),
 			success: () => {
-                successUpdate();
-                updatePluginState();
-            },
+				successUpdate();
+				updatePluginState();
+			},
 			error: (e) => {
 				setError(
 					e.errorMessage
@@ -85,13 +85,15 @@ const InstallActivate = ({
 		});
 	};
 
-    // TODO: update the endpoint URL (generate it dynamically)
-    const updatePluginState = (successCallback=()=>{}) => {
-        get(`/wp-json/neve_pro/v1/plugin-state/${slug}`, false, true).then((r)=>{
-            setCurrentState(r.state);
-            successCallback(r.state);
-        });
-    }
+	// TODO: update the endpoint URL (generate it dynamically)
+	const updatePluginState = (successCallback = () => {}) => {
+		get(`/wp-json/neve_pro/v1/plugin-state/${slug}`, false, true).then(
+			(r) => {
+				setCurrentState(r.state);
+				successCallback(r.state);
+			}
+		);
+	};
 
 	const renderNoticeContent = () => {
 		const buttonMap = {
