@@ -7,6 +7,7 @@ import Toggle from './Options/Toggle';
 import MultiSelectOption from './Options/MultiSelect';
 import { changeOption } from '../utils/rest';
 import classnames from 'classnames';
+import InstallActivate from './Plugin/InstallActivate';
 
 import {
 	Button,
@@ -28,6 +29,7 @@ const ModuleCard = ({
 	tier,
 }) => {
 	const [loading, setLoading] = useState(false);
+
 	const {
 		nicename,
 		description,
@@ -37,6 +39,8 @@ const ModuleCard = ({
 		documentation,
 		// eslint-disable-next-line camelcase
 		required_actions,
+		manageableDependentPlugins,
+		dependentPlugins,
 	} = neveDash.modules[slug];
 	const { upgradeLinks } = neveDash;
 
@@ -128,14 +132,15 @@ const ModuleCard = ({
 						</Button>
 					) : (
 						<Fragment>
-							{required_actions && (
-								<span
-									className="required"
-									dangerouslySetInnerHTML={{
-										__html: required_actions,
-									}}
-								/>
-							)}
+							{required_actions &&
+								!manageableDependentPlugins && (
+									<span
+										className="required"
+										dangerouslySetInnerHTML={{
+											__html: required_actions,
+										}}
+									/>
+								)}
 							{loading && (
 								<Dashicon
 									size={18}
@@ -143,6 +148,20 @@ const ModuleCard = ({
 									className="is-loading"
 								/>
 							)}
+							{ manageableDependentPlugins &&
+								dependentPlugins.map((info) => (
+									<InstallActivate
+										key={info.slug}
+										slug={info.slug}
+										pluginBasename={info.pluginBasename}
+										successActivation={()=>{
+											alert(__('Plugin was activated', 'neve'));
+										}}
+										pluginState={info.pluginState}
+										activateURL={info.activateURL}
+										description={info.description}
+									/>
+								))}
 							{!required_actions &&
 								'block_editor_booster' !== slug && (
 									<ToggleControl
