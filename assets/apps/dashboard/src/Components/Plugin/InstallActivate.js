@@ -5,16 +5,21 @@ import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 import { Button } from '@wordpress/components';
 
-const InstallActivate = ({ slug, pluginBasename, activateRedirect, pluginState, activateURL }) => {
+const InstallActivate = ({
+	slug,
+	pluginBasename,
+	activateRedirect,
+	pluginState,
+	activateURL,
+	description,
+}) => {
 	const { pluginsURL } = neveDash;
 
 	const [installing, setInstalling] = useState(false);
 	const [activating, setActivating] = useState(false);
 	const [updating, setUpdating] = useState(false);
 	const [error, setError] = useState(false);
-	const [currentState, setCurrentState] = useState(
-		pluginState
-	);
+	const [currentState, setCurrentState] = useState(pluginState);
 	const installPlugin = () => {
 		setInstalling(true);
 		wp.updates.ajax('install-plugin', {
@@ -118,26 +123,16 @@ const InstallActivate = ({ slug, pluginBasename, activateRedirect, pluginState, 
 				</Button>
 			),
 		};
+
 		return (
 			<>
-				<h1>
-					{'deactivate' === currentState
-						? neveDash.strings.starterSitesUnavailableUpdate
-						: neveDash.strings.starterSitesUnavailableActive}
-				</h1>
-				<br />
+				{description}
 				{buttonMap[currentState]}
 			</>
 		);
 	};
 
-	return (
-		error ? (
-            <h1 className="error">{error}</h1>
-        ) : (
-            renderNoticeContent()
-        )
-	);
+	return error ? <h1 className="error">{error}</h1> : renderNoticeContent();
 };
 
 export default InstallActivate;
