@@ -154,9 +154,7 @@ const ModuleCard = ({
 										key={info.slug}
 										slug={info.slug}
 										pluginBasename={info.pluginBasename}
-										successActivation={()=>{
-											alert(__('Plugin was activated', 'neve'));
-										}}
+										successActivation={()=>{}}
 										pluginState={info.pluginState}
 										activateURL={info.activateURL}
 										description={info.description}
