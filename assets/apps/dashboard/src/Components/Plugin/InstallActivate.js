@@ -8,7 +8,7 @@ import { Button } from '@wordpress/components';
 const InstallActivate = ({
 	slug,
 	pluginBasename,
-	activateRedirect,
+	successCallback,
 	pluginState,
 	activateURL,
 	description,
@@ -57,7 +57,7 @@ const InstallActivate = ({
 
 		get(activationURL, true).then((r) => {
 			if (r.ok) {
-				window.location.href = activateRedirect;
+				successCallback()
 			} else {
 				setError(__('Could not activate plugin.'));
 			}
@@ -69,9 +69,7 @@ const InstallActivate = ({
 		wp.updates.ajax('update-plugin', {
 			slug: slug,
 			plugin: untrailingSlashIt(pluginBasename),
-			success: () => {
-				window.location.href = activateRedirect;
-			},
+			success: () => successCallback(),
 			error: (e) => {
 				setError(
 					e.errorMessage
