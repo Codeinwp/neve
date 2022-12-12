@@ -151,4 +151,32 @@
 	  }
 	}
   }
+
+  .dependent-plugins-container {
+	.heading {color:var(--wp-admin-theme-color)}
+
+	.plugins {
+		display:flex;
+		gap: 5px;
+
+		.plugin {
+			border: 1px dashed #ddd;
+			padding: 5px;
+
+			.installation {
+				min-width: 120px;
+				min-height: 29px;
+
+				.dashicons-yes-alt {
+					line-height: 29px;
+				}
+
+				.installed {
+					color: var(--e-context-success-color-dark);
+					line-height: 29px;
+				}
+			}
+		}
+	  }
+  }
 }

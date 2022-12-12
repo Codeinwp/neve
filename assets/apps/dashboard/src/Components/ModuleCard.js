@@ -147,18 +147,42 @@ const ModuleCard = ({
 									className="is-loading"
 								/>
 							)}
-							{manageableDependentPlugins &&
-								dependentPlugins.map((info) => (
-									<InstallActivate
-										key={info.slug}
-										slug={info.slug}
-										pluginBasename={info.pluginBasename}
-										successActivation={() => {}}
-										pluginState={info.pluginState}
-										activateURL={info.activateURL}
-										description={info.description}
-									/>
-								))}
+							{manageableDependentPlugins && (
+								<div className="dependent-plugins-container">
+									<strong className="heading">
+										{__('Required Plugins', 'neve')}
+									</strong>
+									<div className="plugins">
+										{dependentPlugins.map((info) => (
+											<div className="plugin">
+												<div>
+													<strong>{info.name}</strong>
+												</div>
+												<div className="installation">
+													<InstallActivate
+														key={info.slug}
+														slug={info.slug}
+														pluginBasename={
+															info.pluginBasename
+														}
+														smallButton={true}
+														successActivation={() => {}}
+														pluginState={
+															info.pluginState
+														}
+														activateURL={
+															info.activateURL
+														}
+														description={
+															info.description
+														}
+													/>
+												</div>
+											</div>
+										))}
+									</div>
+								</div>
+							)}
 							{!required_actions &&
 								'block_editor_booster' !== slug && (
 									<ToggleControl

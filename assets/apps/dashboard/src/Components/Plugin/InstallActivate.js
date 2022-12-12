@@ -3,12 +3,13 @@ import { get } from '../../utils/rest';
 import { untrailingSlashIt } from '../../utils/common';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
-import { Button } from '@wordpress/components';
+import { Button, Dashicon } from '@wordpress/components';
 
 const InstallActivate = ({
 	slug,
 	pluginBasename,
 	successActivation,
+	smallButton = false,
 	successUpdate,
 	pluginState,
 	activateURL,
@@ -101,6 +102,7 @@ const InstallActivate = ({
 				<Button
 					disabled={installing}
 					isPrimary={!installing}
+					isSmall={smallButton}
 					isSecondary={installing}
 					className={installing && 'is-loading'}
 					icon={installing && 'update'}
@@ -114,6 +116,7 @@ const InstallActivate = ({
 			activate: activateURL && (
 				<Button
 					disabled={activating}
+					isSmall={smallButton}
 					isPrimary={!activating}
 					isSecondary={activating}
 					className={activating && 'is-loading'}
@@ -124,16 +127,10 @@ const InstallActivate = ({
 				</Button>
 			),
 			deactivate: (
-				<Button
-					disabled={updating}
-					isPrimary={!updating}
-					isSecondary={updating}
-					className={updating && 'is-loading'}
-					icon={updating && 'update'}
-					onClick={updatePlugin}
-				>
-					{updating ? __('Updating') + '...' : __('Update')}
-				</Button>
+				<span className="installed">
+					<Dashicon size={14} icon="yes-alt" />
+					{__('Installed', 'neve')}
+				</span>
 			),
 		};
 
