@@ -154,13 +154,12 @@ const ModuleCard = ({
 									</strong>
 									<div className="plugins">
 										{dependentPlugins.map((info) => (
-											<div className="plugin">
+											<div key={info.slug} className="plugin">
 												<div>
 													<strong>{info.name}</strong>
 												</div>
 												<div className="installation">
 													<InstallActivate
-														key={info.slug}
 														slug={info.slug}
 														pluginBasename={
 															info.pluginBasename
