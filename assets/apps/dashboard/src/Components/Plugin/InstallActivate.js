@@ -15,7 +15,7 @@ const InstallActivate = ({
 	activateURL,
 	description,
 }) => {
-	const { pluginsURL } = neveDash;
+	const { getPluginStateBaseURL, pluginsURL } = neveDash;
 
 	const [installing, setInstalling] = useState(false);
 	const [activating, setActivating] = useState(false);
@@ -86,14 +86,11 @@ const InstallActivate = ({
 	// 	});
 	// };
 
-	// TODO: update the endpoint URL (generate it dynamically)
 	const updatePluginState = (successCallback = () => {}) => {
-		get(`/wp-json/neve_pro/v1/plugin-state/${slug}`, false, true).then(
-			(r) => {
-				setCurrentState(r.state);
-				successCallback(r.state);
-			}
-		);
+		get(`${getPluginStateBaseURL}${slug}`, false, true).then((r) => {
+			setCurrentState(r.state);
+			successCallback(r.state);
+		});
 	};
 
 	const renderNoticeContent = () => {

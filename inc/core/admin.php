@@ -256,6 +256,23 @@ class Admin {
 				},
 			)
 		);
+
+		register_rest_route(
+			'nv/v1/dashboard',
+			'/plugin-state/(?P<slug>[a-z0-9-]+)',
+			[
+				'methods'             => \WP_REST_Server::READABLE,
+				'callback'            => [ $this, 'get_plugin_state' ],
+				'permission_callback' => function() {
+					return ( current_user_can( 'install_plugins' ) && current_user_can( 'activate_plugins' ) );
+				},
+				'args'                => [
+					'slug' => [
+						'sanitize_callback' => 'sanitize_key',
+					],
+				],
+			]
+		);
 	}
 
 	/**
@@ -292,6 +309,25 @@ class Admin {
 		}
 
 		return new \WP_REST_Response( [ 'success' => $response ], 200 );
+	}
+
+	/**
+	 * Get any plugin's state.
+	 *
+	 * @param  \WP_REST_Request $request Request details.
+	 * @return \WP_REST_Request|\WP_Error
+	 */
+	public function get_plugin_state( \WP_REST_Request $request ) {
+		$slug = $request->get_param( 'slug' );
+
+		$state = ( new Plugin_Helper() )->get_plugin_state( $slug );
+
+		return rest_ensure_response(
+			[
+				'slug'  => $slug,
+				'state' => $state,
+			]
+		);
 	}
 
 	/**
