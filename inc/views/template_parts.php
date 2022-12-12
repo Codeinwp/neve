@@ -41,7 +41,34 @@ class Template_Parts extends Base_View {
 
 		wp_add_inline_style(
 			'neve-style',
-			'.nv-ft-post:not(.layout-covers){background:var(--nv-light-bg);margin-top:60px}.nv-ft-post h2{font-size:calc( var(--fontsize, var(--h2fontsize)) * 1.3)}.nv-ft-post .nv-meta-list{display:block}.nv-ft-post .non-grid-content{padding:32px}.nv-ft-post .wp-post-image{position:absolute;object-fit:cover;width:100%;height:100%}.nv-ft-post:not(.layout-covers) .nv-post-thumbnail-wrap{margin:0;position:relative;min-height:320px}'
+			'
+			.nv-ft-post {
+				margin-top:60px
+			}
+			.nv-ft-post .nv-ft-wrap:not(.layout-covers){
+				background:var(--nv-light-bg);
+			}
+			.nv-ft-post h2{
+				font-size:calc( var(--fontsize, var(--h2fontsize)) * 1.3)
+			}
+			.nv-ft-post .nv-meta-list{
+				display:block
+			}
+			.nv-ft-post .non-grid-content{
+				padding:32px
+			}
+			.nv-ft-post .wp-post-image{
+				position:absolute;
+				object-fit:cover;
+				width:100%;
+				height:100%
+			}
+			.nv-ft-post:not(.layout-covers) .nv-post-thumbnail-wrap{
+				margin:0;
+				position:relative;
+				min-height:320px
+			}
+			'
 		);
 	}
 
@@ -184,11 +211,13 @@ class Template_Parts extends Base_View {
 		$order             = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
 
 		if ( in_array( $layout, [ 'alternative', 'default' ], true ) || ( $is_featured_post && $featured_template === 'tp1' ) ) {
+			$markup .= '<div class="' . esc_attr( $layout ) . '-post nv-ft-wrap">';
 			if ( in_array( 'thumbnail', $order, true ) || ( $is_featured_post && $featured_template === 'tp1' ) ) {
 				$markup .= $this->get_post_thumbnail( $post_id );
 			}
 			$markup .= '<div class="non-grid-content ' . esc_attr( $layout ) . '-layout-content">';
 			$markup .= $this->get_ordered_content_parts( true, $post_id );
+			$markup .= '</div>';
 			$markup .= '</div>';
 
 			return $markup;
@@ -199,7 +228,7 @@ class Template_Parts extends Base_View {
 				$markup .= $this->get_legacy_covers( $order, $post_id );
 				return $markup;
 			}
-			$markup .= '<div class="cover-post">';
+			$markup .= '<div class="cover-post nv-ft-wrap">';
 			$markup .= '<div class="cover-overlay"></div>';
 			if ( in_array( 'thumbnail', $order, true ) ) {
 				$markup .= $this->get_post_thumbnail( $post_id, true );

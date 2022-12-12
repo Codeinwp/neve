@@ -4,6 +4,7 @@ $overlay: rgba(0, 0, 0, 0.75);
 .cover-post {
 	box-shadow: var(--boxshadow, none);
 	position: relative;
+	min-height: 300px;
 }
 
 .layout-covers {
@@ -20,7 +21,6 @@ $overlay: rgba(0, 0, 0, 0.75);
 		justify-content: flex-end;
 		z-index: 10;
 		color: var(--color, #fff);
-		min-height: 350px;
 		padding: 25px;
 	}
 
