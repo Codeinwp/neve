@@ -191,14 +191,10 @@ class Layout_Blog extends Base_Customizer {
 					},
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
-						'cssVar'   => [
+						'cssVar' => [
 							'vars'     => '--color',
-							'selector' => '.cover-post',
+							'selector' => '.neve-main',
 						],
-						'template' =>
-							'.cover-post .inner, .cover-post .inner a:not(.button), .cover-post .inner a:not(.button):hover, .cover-post .inner a:not(.button):focus, .cover-post .inner li {
-							color: {{value}};
-						}',
 					],
 				),
 				'Neve\Customizer\Controls\React\Color'

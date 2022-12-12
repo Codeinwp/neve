@@ -140,33 +140,30 @@ class Frontend extends Generator {
 	public function setup_blog_colors() {
 		if ( ! neve_is_new_skin() ) {
 			$this->setup_legacy_blog_colors();
-
 			return;
 		}
 
 		$layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
 		if ( $layout === 'covers' ) {
-			$this->_subscribers['.cover-post'] = [
+			$this->_subscribers['.neve-main'] = [
 				'--color' => 'neve_blog_covers_text_color',
 			];
 		}
 
-		$thumbnail_box_shadow_meta_name       = apply_filters( 'neve_thumbnail_box_shadow_meta_filter', 'neve_post_thumbnail_box_shadow' );
-		$this->_subscribers['.post .content'] = [
-			'--boxshadow' => [
-				Dynamic_Selector::META_KEY    => $thumbnail_box_shadow_meta_name,
-				Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-					if ( absint( $value ) === 0 ) {
-						return '';
-					}
+		$thumbnail_box_shadow_meta_name                  = apply_filters( 'neve_thumbnail_box_shadow_meta_filter', 'neve_post_thumbnail_box_shadow' );
+		$this->_subscribers['.neve-main']['--boxshadow'] = [
+			Dynamic_Selector::META_KEY    => $thumbnail_box_shadow_meta_name,
+			Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+				if ( absint( $value ) === 0 ) {
+					return '';
+				}
 
-					if ( ! array_key_exists( absint( $value ), $this->box_shadow_map ) ) {
-						return '';
-					}
+				if ( ! array_key_exists( absint( $value ), $this->box_shadow_map ) ) {
+					return '';
+				}
 
-					return sprintf( '%s:%s;', $css_prop, $this->box_shadow_map[ $value ] );
-				},
-			],
+				return sprintf( '%s:%s;', $css_prop, $this->box_shadow_map[ $value ] );
+			},
 		];
 	}
 

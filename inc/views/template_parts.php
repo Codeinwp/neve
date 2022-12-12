@@ -41,7 +41,7 @@ class Template_Parts extends Base_View {
 
 		wp_add_inline_style(
 			'neve-style',
-			'.nv-ft-post{background:var(--nv-light-bg);margin-top:60px}.nv-ft-post h2{font-size:calc( var(--fontsize, var(--h2fontsize)) * 1.3)}.nv-ft-post .nv-meta-list{display:block}.nv-ft-post .non-grid-content{padding:32px}.nv-ft-post .wp-post-image{position:absolute;object-fit:cover;width:100%;height:100%}.nv-ft-post:not(.layout-covers) .nv-post-thumbnail-wrap{margin:0;position:relative;min-height:320px}'
+			'.nv-ft-post:not(.layout-covers){background:var(--nv-light-bg);margin-top:60px}.nv-ft-post h2{font-size:calc( var(--fontsize, var(--h2fontsize)) * 1.3)}.nv-ft-post .nv-meta-list{display:block}.nv-ft-post .non-grid-content{padding:32px}.nv-ft-post .wp-post-image{position:absolute;object-fit:cover;width:100%;height:100%}.nv-ft-post:not(.layout-covers) .nv-post-thumbnail-wrap{margin:0;position:relative;min-height:320px}'
 		);
 	}
 
