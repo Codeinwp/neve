@@ -1,19 +1,18 @@
 /* global neveDash */
 import { get } from '../../utils/rest';
-import { untrailingSlashIt } from '../../utils/common';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 import { Button, Dashicon } from '@wordpress/components';
 
 const InstallActivate = ({
 	slug,
-	pluginBasename,
 	successActivation,
 	smallButton = false,
-	successUpdate,
 	pluginState,
 	activateURL,
 	description,
+	// pluginBasename,
+	// successUpdate,
 }) => {
 	const { getPluginStateBaseURL, pluginsURL } = neveDash;
 
