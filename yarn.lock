@@ -6023,7 +6023,7 @@ array-flatten@1.1.1:
 array-ify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/array-ify/-/array-ify-1.0.0.tgz#9e528762b4a9066ad163a6962a364418e9626ece"
-  integrity sha1-nlKHYrSpBmrRY6aWKjZEGOlibs4=
+  integrity sha512-c5AMf34bKdvPhQ7tBGhqkgKNUzMr4WUs+WDtC2ZUGOUncbxKMTvqxYctiseW3+L4bA8ec+GcZ6/A/FW4m8ukng==
 
 array-includes@^3.0.3, array-includes@^3.1.1, array-includes@^3.1.2:
   version "3.1.3"
@@ -8013,9 +8013,9 @@ conventional-changelog-angular@^5.0.0:
     q "^1.5.1"
 
 conventional-changelog-simple-preset@^1.0.15:
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/conventional-changelog-simple-preset/-/conventional-changelog-simple-preset-1.0.15.tgz#4a6430c52a169cd771020265d3831913a328d94b"
-  integrity sha512-GWQQqZB/1lFN59GhLM1qwyP3bMiBr3b/D0snD8Jesc5itZcxjl5Jrgb52rzZhOMDxomLtnnonFmsKPxECZvZ4g==
+  version "1.0.23"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-simple-preset/-/conventional-changelog-simple-preset-1.0.23.tgz#a0f2cd16ebb42e577c32f85f55273407b78e7878"
+  integrity sha512-jgz1QUv0dzzcGEYcVWCtRQKwC3etIShvWO5bujzAwHMAo2+428eA5Z3BrvT/ZM4m/uIK8jwh8gs2PTGFKa5f9g==
   dependencies:
     compare-func "^1.3.1"
     q "^1.5.1"
@@ -9165,7 +9165,7 @@ dot-case@^3.0.4:
 dot-prop@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-3.0.0.tgz#1b708af094a49c9a0e7dbcad790aba539dac1177"
-  integrity sha1-G3CK8JSknJoOfbyteQq6U52sEXc=
+  integrity sha512-k4ELWeEU3uCcwub7+dWydqQBRjAjkV9L33HjVRG5Xo2QybI6ja/v+4W73SRi8ubCqJz0l9XsTP1NbewfyqaSlw==
   dependencies:
     is-obj "^1.0.0"
 
