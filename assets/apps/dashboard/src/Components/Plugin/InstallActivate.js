@@ -19,7 +19,7 @@ const InstallActivate = ({
 
 	const [installing, setInstalling] = useState(false);
 	const [activating, setActivating] = useState(false);
-	const [updating, setUpdating] = useState(false);
+	// const [updating, setUpdating] = useState(false);
 	const [error, setError] = useState(false);
 	const [currentState, setCurrentState] = useState(pluginState);
 	const installPlugin = () => {
@@ -67,24 +67,24 @@ const InstallActivate = ({
 		});
 	};
 
-	const updatePlugin = () => {
-		setUpdating(true);
-		wp.updates.ajax('update-plugin', {
-			slug,
-			plugin: untrailingSlashIt(pluginBasename),
-			success: () => {
-				successUpdate();
-				updatePluginState();
-			},
-			error: (e) => {
-				setError(
-					e.errorMessage
-						? e.errorMessage
-						: __('Something went wrong while updating the plugin.')
-				);
-			},
-		});
-	};
+	// const updatePlugin = () => {
+	// 	setUpdating(true);
+	// 	wp.updates.ajax('update-plugin', {
+	// 		slug,
+	// 		plugin: untrailingSlashIt(pluginBasename),
+	// 		success: () => {
+	// 			successUpdate();
+	// 			updatePluginState();
+	// 		},
+	// 		error: (e) => {
+	// 			setError(
+	// 				e.errorMessage
+	// 					? e.errorMessage
+	// 					: __('Something went wrong while updating the plugin.')
+	// 			);
+	// 		},
+	// 	});
+	// };
 
 	// TODO: update the endpoint URL (generate it dynamically)
 	const updatePluginState = (successCallback = () => {}) => {
