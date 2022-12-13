@@ -3,10 +3,13 @@ import { get } from '../../utils/rest';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 import { Button, Dashicon } from '@wordpress/components';
+import { useEffect } from 'react';
 
 const InstallActivate = ({
+	name = '',
 	slug,
 	successActivation,
+	autoInstall = false,
 	smallButton = false,
 	pluginState,
 	activateURL,
@@ -58,8 +61,11 @@ const InstallActivate = ({
 
 		get(activationURL, true).then((r) => {
 			if (r.ok) {
-				successActivation();
-				updatePluginState();
+				const action = successActivation(setCurrentState);
+
+				if(action === 'updateState'){
+					updatePluginState();
+				}
 			} else {
 				setError(__('Could not activate plugin.'));
 			}
@@ -85,10 +91,15 @@ const InstallActivate = ({
 	// 	});
 	// };
 
-	const updatePluginState = (successCallback = () => {}) => {
+	useEffect(()=>{
+		if( autoInstall ) {
+			installPlugin();
+		}
+	}, [autoInstall]);
+
+	const updatePluginState = () => {
 		get(`${getPluginStateBaseURL}${slug}`, false, true).then((r) => {
 			setCurrentState(r.state);
-			successCallback(r.state);
 		});
 	};
 
@@ -104,6 +115,7 @@ const InstallActivate = ({
 					icon={installing && 'update'}
 					onClick={installPlugin}
 				>
+					{`${name} `}
 					{installing
 						? __('Installing') + '...'
 						: __('Install and Activate')}
@@ -119,12 +131,14 @@ const InstallActivate = ({
 					icon={activating && 'update'}
 					onClick={activatePlugin}
 				>
+					{`${name} `}
 					{activating ? __('Activating') + '...' : __('Activate')}
 				</Button>
 			),
 			deactivate: (
 				<span className="installed">
 					<Dashicon size={14} icon="yes-alt" />
+					{`${name} `}
 					{__('Installed', 'neve')}
 				</span>
 			),

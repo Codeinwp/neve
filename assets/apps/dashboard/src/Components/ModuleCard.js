@@ -7,7 +7,7 @@ import Toggle from './Options/Toggle';
 import MultiSelectOption from './Options/MultiSelect';
 import { changeOption } from '../utils/rest';
 import classnames from 'classnames';
-import InstallActivate from './Plugin/InstallActivate';
+import MultiInstallActivate from './Plugin/MultiInstallActivate';
 
 import {
 	Button,
@@ -40,6 +40,7 @@ const ModuleCard = ({
 		// eslint-disable-next-line camelcase
 		required_actions,
 		manageableDependentPlugins,
+		manageablePluginsCTA,
 		dependentPlugins,
 	} = neveDash.modules[slug];
 	const { upgradeLinks } = neveDash;
@@ -148,42 +149,13 @@ const ModuleCard = ({
 								/>
 							)}
 							{manageableDependentPlugins && (
-								<div className="dependent-plugins-container">
-									<strong className="heading">
-										{__('Required Plugins', 'neve')}
-									</strong>
-									<div className="plugins">
-										{dependentPlugins.map((info) => (
-											<div
-												key={info.slug}
-												className="plugin"
-											>
-												<div>
-													<strong>{info.name}</strong>
-												</div>
-												<div className="installation">
-													<InstallActivate
-														slug={info.slug}
-														pluginBasename={
-															info.pluginBasename
-														}
-														smallButton={true}
-														successActivation={() => {}}
-														pluginState={
-															info.pluginState
-														}
-														activateURL={
-															info.activateURL
-														}
-														description={
-															info.description
-														}
-													/>
-												</div>
-											</div>
-										))}
-									</div>
-								</div>
+								<MultiInstallActivate
+									plugins={
+										dependentPlugins
+									}
+
+									firstCTALabel={manageablePluginsCTA}
+								/>
 							)}
 							{!required_actions &&
 								'block_editor_booster' !== slug && (
