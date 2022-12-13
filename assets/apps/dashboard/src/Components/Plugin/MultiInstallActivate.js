@@ -24,7 +24,7 @@ const MultiInstallActivate = ({
 	const [CTALabel, setCTALabel] = useState(firstCTALabel);
 	const { name, slug, pluginState, activateURL } = plugins[pluginIndex];
 
-	return showCTA && ( <InstallActivate CTALabel={CTALabel} name={name} slug={slug} pluginState={pluginState} activateURL={activateURL} autoInstall={autoInstall} successActivation={
+	return showCTA && ['install', 'activate'].includes(pluginState) && ( <InstallActivate CTALabel={CTALabel} name={name} slug={slug} pluginState={pluginState} activateURL={activateURL} autoInstall={autoInstall} successActivation={
 		(setCurrentState)=>{
 			if((plugins.length-1)===pluginIndex) {
 				setShowCTA(false);
