@@ -63,7 +63,7 @@ const InstallActivate = ({
 			if (r.ok) {
 				const action = successActivation(setCurrentState);
 
-				if(action === 'updateState'){
+				if (action === 'updateState') {
 					updatePluginState();
 				}
 			} else {
@@ -91,8 +91,8 @@ const InstallActivate = ({
 	// 	});
 	// };
 
-	useEffect(()=>{
-		if( autoInstall ) {
+	useEffect(() => {
+		if (autoInstall) {
 			installPlugin();
 		}
 	}, [autoInstall]);

@@ -150,10 +150,7 @@ const ModuleCard = ({
 							)}
 							{manageableDependentPlugins && (
 								<MultiInstallActivate
-									plugins={
-										dependentPlugins
-									}
-
+									plugins={dependentPlugins}
 									firstCTALabel={manageablePluginsCTA}
 								/>
 							)}
