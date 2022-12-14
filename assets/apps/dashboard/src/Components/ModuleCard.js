@@ -40,7 +40,7 @@ const ModuleCard = ({
 		// eslint-disable-next-line camelcase
 		required_actions,
 		manageableDependentPlugins,
-		manageablePluginsCTA,
+		manageablePluginsLabels,
 		dependentPlugins,
 	} = neveDash.modules[slug];
 	const { upgradeLinks } = neveDash;
@@ -151,7 +151,7 @@ const ModuleCard = ({
 							{manageableDependentPlugins && (
 								<MultiInstallActivate
 									plugins={dependentPlugins}
-									firstCTALabel={manageablePluginsCTA}
+									buttonLabels={manageablePluginsLabels}
 								/>
 							)}
 							{!required_actions &&

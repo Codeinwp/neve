@@ -1,7 +1,7 @@
 import InstallActivate from './InstallActivate';
 import { useState, useEffect } from '@wordpress/element';
 
-const MultiInstallActivate = ({ plugins, firstCTALabel }) => {
+const MultiInstallActivate = ({ plugins, buttonLabels }) => {
 	// Sorts plugins as will be installed first, then will be activated ones.
 	const sortPlugins = () => {
 		plugins.sort((plugin1) =>
@@ -23,14 +23,13 @@ const MultiInstallActivate = ({ plugins, firstCTALabel }) => {
 	const [pluginIndex, setPluginIndex] = useState(0);
 	const [autoInstall, setAutoInstall] = useState(false);
 	const [showCTA, setShowCTA] = useState(installActivateNeeded);
-	const [CTALabel, setCTALabel] = useState(firstCTALabel);
 	const { name, slug, pluginState, activateURL } = plugins[pluginIndex];
 
 	return (
 		showCTA &&
 		['install', 'activate'].includes(pluginState) && (
 			<InstallActivate
-				CTALabel={CTALabel}
+				labels={buttonLabels}
 				name={name}
 				slug={slug}
 				pluginState={pluginState}
@@ -45,7 +44,6 @@ const MultiInstallActivate = ({ plugins, firstCTALabel }) => {
 					setPluginIndex(pluginIndex + 1);
 					setCurrentState(pluginState);
 					setAutoInstall(true);
-					setCTALabel('');
 				}}
 			/>
 		)

@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 
 const InstallActivate = ({
 	name = '',
+	labels = [],
 	slug,
 	successActivation,
 	autoInstall = false,
@@ -24,8 +25,33 @@ const InstallActivate = ({
 	// const [updating, setUpdating] = useState(false);
 	const [error, setError] = useState(false);
 	const [currentState, setCurrentState] = useState(pluginState);
+
+	const [buttonLabels, setButtonLabels] = useState({
+		firstLabel: labels.firstLabel ?? false,
+		installing: labels.installing ?? `${__('Installing', 'neve')}...`,
+		activating: labels.activating ?? `${__('Activating', 'neve')}...`,
+		installActivate:
+			labels.installActivate ?? `${__('Install and Activate', 'neve')}`,
+		activate: labels.activate ?? `${__('Activate', 'neve')}`,
+		installed: labels.installed ?? `${__('Installed', 'neve')}`,
+	});
+
+	const getLabel = (type) => {
+		if (buttonLabels.firstLabel) {
+			return buttonLabels.firstLabel;
+		}
+
+		return buttonLabels[type].replace('{plugin}', name);
+	};
+
+	const hideFirstLabel = () => {
+		buttonLabels.firstLabel = false;
+		setButtonLabels(buttonLabels);
+	};
+
 	const installPlugin = () => {
 		setInstalling(true);
+		hideFirstLabel();
 		wp.updates.ajax('install-plugin', {
 			slug,
 			success: () => {
@@ -51,6 +77,7 @@ const InstallActivate = ({
 		setInstalling(false);
 		setActivating(true);
 		setCurrentState('activate');
+		hideFirstLabel();
 		const activationURL = activateURL;
 
 		if (!activationURL) {
@@ -115,10 +142,9 @@ const InstallActivate = ({
 					icon={installing && 'update'}
 					onClick={installPlugin}
 				>
-					{`${name} `}
 					{installing
-						? __('Installing') + '...'
-						: __('Install and Activate')}
+						? getLabel('installing')
+						: getLabel('installActivate')}
 				</Button>
 			),
 			activate: activateURL && (
@@ -131,15 +157,13 @@ const InstallActivate = ({
 					icon={activating && 'update'}
 					onClick={activatePlugin}
 				>
-					{`${name} `}
-					{activating ? __('Activating') + '...' : __('Activate')}
+					{activating ? getLabel('activating') : getLabel('activate')}
 				</Button>
 			),
 			deactivate: (
 				<span className="installed">
 					<Dashicon size={14} icon="yes-alt" />
-					{`${name} `}
-					{__('Installed', 'neve')}
+					{getLabel('installed')}
 				</span>
 			),
 		};
