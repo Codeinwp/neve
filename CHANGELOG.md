@@ -1,3 +1,10 @@
+##### [Version 3.4.8](https://github.com/Codeinwp/neve/compare/v3.4.7...v3.4.8) (2022-12-14)
+
+- [Feat] Add better support for keyboard menu navigation
+- [Feat] Improve performance by conditionally loading the CSS for sidebar animation
+- [Fix] Change patterns registration hook
+- Update Google Fonts
+
 ##### [Version 3.4.7](https://github.com/Codeinwp/neve/compare/v3.4.6...v3.4.7) (2022-12-01)
 
 - [Fix] Customizer not working in some specific cases.
