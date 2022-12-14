@@ -23,15 +23,20 @@
 	margin-right: calc(var(--spacing) / 2 * -1);
 	margin-left: calc(var(--spacing) / 2 * -1);
 
-	li > a {
+	li > .wrap {
 		display: flex;
 		align-items: center;
+	}
+
+	li a {
 		min-height: var(--height);
 		color: var(--color);
 		position: relative;
+		width: 100%;
 	}
 
-	a:hover {
+	> li:hover > a,
+	> li:hover > .caret {
 		color: var(--hovercolor);
 	}
 
@@ -47,22 +52,14 @@
 			color: var(--activecolor);
 		}
 
-		&:hover > .sub-menu,
-		&:focus-within > .sub-menu {
+		&:hover > .sub-menu {
 
 			@extend %show-dropdown;
 		}
 	}
 
-	.caret {
-		display: flex;
-		justify-content: center;
-
-		svg {
-			fill: currentColor;
-			width: 0.5em;
-			height: 0.5em;
-		}
+	li .caret {
+		line-height: 0;
 	}
 
 	.sub-menu {
@@ -77,8 +74,10 @@
 
 		li {
 			min-width: 150px;
+			width: 100%;
 		}
 
+		li > .wrap,
 		li > a {
 			padding: $spacing-xs $spacing-md;
 			white-space: nowrap;
