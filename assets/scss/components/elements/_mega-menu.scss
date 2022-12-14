@@ -8,6 +8,7 @@
 
 	.sub-menu .sub-menu {
 		max-height: none;
+		width: 100%;
 	}
 
 	.neve-mm-col {
@@ -77,8 +78,7 @@
 		}
 
 		.neve-mega-menu:hover,
-		.neve-mega-menu:focus,
-		.neve-mega-menu:focus-within {
+		.neve-mega-menu:focus {
 
 			> .sub-menu {
 				display: flex;

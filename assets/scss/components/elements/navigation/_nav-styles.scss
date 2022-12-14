@@ -1,6 +1,7 @@
 .style-border-bottom > ul > li >,
 .sm-style-border-bottom .sub-menu {
 
+	.wrap::after,
 	a::after {
 		bottom: 0;
 	}
@@ -10,6 +11,7 @@
 .style-border-top > ul > li >,
 .sm-style-border-top .sub-menu {
 
+	.wrap::after,
 	a::after {
 		top: 0;
 	}
@@ -18,6 +20,7 @@
 .sm-style .sub-menu,
 .m-style > ul > li > {
 
+	.wrap:hover,
 	a:hover {
 
 		&::after {
@@ -25,6 +28,7 @@
 		}
 	}
 
+	.wrap::after,
 	a::after {
 		position: absolute;
 		content: "";
@@ -43,13 +47,26 @@
 .style-full-height > ul > li >,
 .sm-style-full-height .sub-menu {
 
+	.wrap {
+		z-index: 1;
+
+		&::after {
+			top: 0;
+			bottom: 0;
+			left: calc(var(--spacing) / 2 * -1);
+			right: calc(var(--spacing) / 2 * -1);
+			height: 100%;
+			z-index: -1;
+		}
+	}
+
 	a:hover {
 		color: currentColor;
 
 		&,
 		span,
 		i {
-			color: var(--hovertextcolor, var(--color)) !important;
+			color: var(--hovertextcolor, var(--color));
 		}
 
 		&::after {
@@ -72,6 +89,12 @@
 }
 
 .sm-style-full-height .sub-menu a:hover {
+
+	+ .caret svg {
+		color: var(--hovertextcolor);
+		position: relative;
+		z-index: 1;
+	}
 
 	&::after {
 		width: 100%;

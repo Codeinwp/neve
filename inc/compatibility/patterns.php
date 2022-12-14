@@ -37,7 +37,7 @@ class Patterns {
 	 * Register patterns bootstrap hook.
 	 */
 	public function init() {
-		add_action( 'admin_init', [ $this, 'define_patterns' ] );
+		add_action( 'init', [ $this, 'define_patterns' ] );
 	}
 
 	/**

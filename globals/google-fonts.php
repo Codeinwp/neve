@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 14/11/22
+ * Updated on 12/12/22
  *
  * @package neve
  */
@@ -281,7 +281,8 @@ return array(
 	'Chewy' => array( '400',),
 	'Chicle' => array( '400',),
 	'Chilanka' => array( '400',),
-	'Chivo' => array( '300', '400', '700', '900', '300italic', '400italic', '700italic', '900italic',),
+	'Chivo' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Chivo Mono' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Chonburi' => array( '400',),
 	'Cinzel' => array( '400', '500', '600', '700', '800', '900',),
 	'Cinzel Decorative' => array( '400', '700', '900',),
@@ -441,7 +442,7 @@ return array(
 	'Forum' => array( '400',),
 	'Fragment Mono' => array( '400', '400italic',),
 	'Francois One' => array( '400',),
-	'Frank Ruhl Libre' => array( '300', '400', '500', '700', '900',),
+	'Frank Ruhl Libre' => array( '300', '400', '500', '600', '700', '800', '900',),
 	'Fraunces' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Freckle Face' => array( '400',),
 	'Fredericka the Great' => array( '400',),
@@ -522,6 +523,7 @@ return array(
 	'Hanalei' => array( '400',),
 	'Hanalei Fill' => array( '400',),
 	'Handlee' => array( '400',),
+	'Hanken Grotesk' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Hanuman' => array( '100', '300', '400', '700', '900',),
 	'Happy Monkey' => array( '400',),
 	'Harmattan' => array( '400', '700',),
@@ -755,6 +757,7 @@ return array(
 	'Marmelad' => array( '400',),
 	'Martel' => array( '200', '300', '400', '600', '700', '800', '900',),
 	'Martel Sans' => array( '200', '300', '400', '600', '700', '800', '900',),
+	'Martian Mono' => array( '100', '200', '300', '400', '500', '600', '700', '800',),
 	'Marvel' => array( '400', '700', '400italic', '700italic',),
 	'Mate' => array( '400', '400italic',),
 	'Mate SC' => array( '400',),
@@ -1031,6 +1034,7 @@ return array(
 	'Noto Serif Lao' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Serif Malayalam' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Serif Myanmar' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
+	'Noto Serif NP Hmong' => array( '400', '500', '600', '700',),
 	'Noto Serif Nyiakeng Puachue Hmong' => array( '400', '500', '600', '700',),
 	'Noto Serif Oriya' => array( '400', '500', '600', '700',),
 	'Noto Serif SC' => array( '200', '300', '400', '500', '600', '700', '900',),
@@ -1220,11 +1224,13 @@ return array(
 	'Rowdies' => array( '300', '400', '700',),
 	'Rozha One' => array( '400',),
 	'Rubik' => array( '300', '400', '500', '600', '700', '800', '900', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Rubik 80s Fade' => array( '400',),
 	'Rubik Beastly' => array( '400',),
 	'Rubik Bubbles' => array( '400',),
 	'Rubik Burned' => array( '400',),
 	'Rubik Dirt' => array( '400',),
 	'Rubik Distressed' => array( '400',),
+	'Rubik Gemstones' => array( '400',),
 	'Rubik Glitch' => array( '400',),
 	'Rubik Iso' => array( '400',),
 	'Rubik Marker Hatch' => array( '400',),
@@ -1233,6 +1239,9 @@ return array(
 	'Rubik Mono One' => array( '400',),
 	'Rubik Moonrocks' => array( '400',),
 	'Rubik Puddles' => array( '400',),
+	'Rubik Spray Paint' => array( '400',),
+	'Rubik Storm' => array( '400',),
+	'Rubik Vinyl' => array( '400',),
 	'Rubik Wet Paint' => array( '400',),
 	'Ruda' => array( '400', '500', '600', '700', '800', '900',),
 	'Rufina' => array( '400', '700',),
@@ -1421,6 +1430,7 @@ return array(
 	'Ubuntu Mono' => array( '400', '700', '400italic', '700italic',),
 	'Uchen' => array( '400',),
 	'Ultra' => array( '400',),
+	'Unbounded' => array( '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Uncial Antiqua' => array( '400',),
 	'Underdog' => array( '400',),
 	'Unica One' => array( '400',),
