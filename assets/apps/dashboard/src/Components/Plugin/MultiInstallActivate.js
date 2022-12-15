@@ -23,17 +23,14 @@ const MultiInstallActivate = ({ plugins, buttonLabels }) => {
 	const [pluginIndex, setPluginIndex] = useState(0);
 	const [autoInstall, setAutoInstall] = useState(false);
 	const [showCTA, setShowCTA] = useState(installActivateNeeded);
-	const { name, slug, pluginState, activateURL } = plugins[pluginIndex];
+	const pluginData = plugins[pluginIndex];
 
 	return (
 		showCTA &&
-		['install', 'activate'].includes(pluginState) && (
+		['install', 'activate'].includes(pluginData.pluginState) && (
 			<InstallActivate
 				labels={buttonLabels}
-				name={name}
-				slug={slug}
-				pluginState={pluginState}
-				activateURL={activateURL}
+				pluginData={pluginData}
 				autoInstall={autoInstall}
 				successActivation={(setCurrentState) => {
 					if (plugins.length - 1 === pluginIndex) {
@@ -42,7 +39,7 @@ const MultiInstallActivate = ({ plugins, buttonLabels }) => {
 					}
 
 					setPluginIndex(pluginIndex + 1);
-					setCurrentState(pluginState);
+					setCurrentState(pluginData.pluginState);
 					setAutoInstall(true);
 				}}
 			/>

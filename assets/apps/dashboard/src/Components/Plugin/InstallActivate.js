@@ -6,16 +6,14 @@ import { Button, Dashicon } from '@wordpress/components';
 import { useEffect } from 'react';
 
 const InstallActivate = ({
-	name = '',
 	labels = {},
-	slug,
+	pluginData,
 	successActivation,
 	autoInstall = false,
 	smallButton = false,
-	pluginState,
-	activateURL,
 	description,
 }) => {
+	const { name, slug, pluginState, activateURL } = pluginData;
 	const { getPluginStateBaseURL, pluginsURL } = neveDash;
 
 	const [installing, setInstalling] = useState(false);

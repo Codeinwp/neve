@@ -18,16 +18,20 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
 			/>
 			<div className="content-wrap">
 				<InstallActivate
-					slug={'templates-patterns-collection'}
-					pluginBasename={tpcPath}
+					pluginData={
+						{
+							slug: 'templates-patterns-collection',
+							pluginBasename: tpcPath,
+							pluginState: currentState,
+							activateURL: templatesPluginData?.activate || ''
+						}
+					}
 					successActivation={() => {
 						window.location.href = activateRedirect;
 					}}
 					successUpdate={() => {
 						window.location.href = activateRedirect;
 					}}
-					pluginState={currentState}
-					activateURL={templatesPluginData?.activate || ''}
 					description={
 						<>
 							<h1>
