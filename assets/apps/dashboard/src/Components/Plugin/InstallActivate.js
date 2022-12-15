@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 const InstallActivate = ({
 	name = '',
-	labels = [],
+	labels = {},
 	slug,
 	successActivation,
 	autoInstall = false,
