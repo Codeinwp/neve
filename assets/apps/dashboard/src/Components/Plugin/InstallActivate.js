@@ -13,7 +13,7 @@ const InstallActivate = ({
 	smallButton = false,
 	description,
 }) => {
-	const { name, slug, pluginState, activateURL } = pluginData;
+	const { slug, pluginState, activateURL } = pluginData;
 	const { getPluginStateBaseURL, pluginsURL } = neveDash;
 
 	const [progress, setProgress] = useState(false);
@@ -31,12 +31,15 @@ const InstallActivate = ({
 		installed: labels.installed ?? __('Installed', 'neve'),
 	});
 
-	const getLabel = (type) => {
-		if (buttonLabels.firstLabel) {
-			return buttonLabels.firstLabel;
-		}
+	// set labels of the new plugin with overriding firstLabel as false.
+	useEffect(() => {
+		setButtonLabels({ ...labels, firstLabel: false });
+	}, [labels]);
 
-		return buttonLabels[type].replace('{plugin}', name);
+	const getLabel = (type) => {
+		return progress || !buttonLabels.firstLabel
+			? buttonLabels[type]
+			: buttonLabels.firstLabel;
 	};
 
 	const hideFirstLabel = () => {

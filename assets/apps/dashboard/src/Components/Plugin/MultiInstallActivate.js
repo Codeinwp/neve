@@ -29,7 +29,7 @@ const MultiInstallActivate = ({ plugins, buttonLabels }) => {
 		showCTA &&
 		['install', 'activate'].includes(pluginData.pluginState) && (
 			<InstallActivate
-				labels={buttonLabels}
+				labels={buttonLabels[pluginData.slug]}
 				pluginData={pluginData}
 				autoInstall={autoInstall}
 				successActivation={(setCurrentState) => {
