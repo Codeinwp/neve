@@ -222,7 +222,9 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$legacy_style = '';
 		if ( ! neve_is_new_skin() ) {
 			$legacy_style .= '.nav-ul li > .wrap a { width: 100%; justify-content: center; }';
+			$legacy_style .= '.nav-ul li > .wrap a span { padding: 7px 14px; }';
 			$legacy_style .= '.nav-ul li { display: block; }';
+			$legacy_style .= '.neve-mega-menu > .sub-menu .menu-item > a > span { padding: 0 14px; }';
 		}
 
 		/* Showing Menu Sidebar animation css. */
