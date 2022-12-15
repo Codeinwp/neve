@@ -118,14 +118,15 @@ class Nav_Walker extends \Walker_Nav_Menu {
 
 			$caret_wrap_css = $caret_settings['side'] === 'right' ? 'margin-left:5px;' : 'margin-right:5px;';
 
+			add_action( 'neve_after_header_wrapper_hook', [ $this, 'inline_style_for_sidebar' ], 9 );
+
+			if ( $item->url === '#' && ! self::$dropdowns_inline_js_enqueued ) {
+				$this->enqueue_hash_url_dropdowns_inline_js();
+			}
+
 			if ( $is_sidebar_item && neve_is_new_skin() ) {
 				$expand_dropdowns = apply_filters( 'neve_first_level_expanded', false );
 				$additional_class = $expand_dropdowns && $depth === 0 ? 'dropdown-open' : '';
-				add_action( 'neve_after_header_wrapper_hook', [ $this, 'inline_style_for_sidebar' ], 9 );
-
-				if ( $item->url === '#' && ! self::$dropdowns_inline_js_enqueued ) {
-					$this->enqueue_hash_url_dropdowns_inline_js();
-				}
 
 				$args->before = '<div class="wrap">';
 				$args->after  = '</div>';
@@ -201,7 +202,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		/* Accessibility css. */
 		$accessibility_caret_css  = '.nav-ul li:focus-within .wrap:has(.caret.active) + .sub-menu { opacity: 1; visibility: visible; }';
 		$accessibility_caret_css .= '.nav-ul li.neve-mega-menu:focus-within .wrap:has(.caret.active) + .sub-menu { display: grid; }';
-		$accessibility_caret_css .= '.nav-ul li > .wrap { position: relative; }';
+		$accessibility_caret_css .= '.nav-ul li > .wrap { display: flex; align-items: center; position: relative; }';
 
 		return Dynamic_Css::minify_css( $sidebar_animation_css . $mobile_button_caret_css . $accessibility_caret_css );
 	}
