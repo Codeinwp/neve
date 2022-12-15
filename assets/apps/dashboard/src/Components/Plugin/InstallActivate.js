@@ -16,8 +16,7 @@ const InstallActivate = ({
 	const { name, slug, pluginState, activateURL } = pluginData;
 	const { getPluginStateBaseURL, pluginsURL } = neveDash;
 
-	const [installing, setInstalling] = useState(false);
-	const [activating, setActivating] = useState(false);
+	const [progress, setProgress] = useState(false);
 	// const [updating, setUpdating] = useState(false);
 	const [error, setError] = useState(false);
 	const [currentState, setCurrentState] = useState(pluginState);
@@ -45,7 +44,7 @@ const InstallActivate = ({
 	};
 
 	const installPlugin = () => {
-		setInstalling(true);
+		setProgress('installing');
 		hideFirstLabel();
 		wp.updates.ajax('install-plugin', {
 			slug,
@@ -69,8 +68,7 @@ const InstallActivate = ({
 	};
 
 	const activatePlugin = () => {
-		setInstalling(false);
-		setActivating(true);
+		setProgress('activating');
 		setCurrentState('activate');
 		hideFirstLabel();
 		const activationURL = activateURL;
@@ -106,34 +104,38 @@ const InstallActivate = ({
 		});
 	};
 
+	const isProgress = (type) => progress === type;
+
 	const renderNoticeContent = () => {
 		const buttonMap = {
 			install: (
 				<Button
-					disabled={installing}
-					isPrimary={!installing}
+					disabled={progress}
+					isPrimary={!isProgress('installing')}
 					isSmall={smallButton}
-					isSecondary={installing}
-					className={installing && 'is-loading'}
-					icon={installing && 'update'}
+					isSecondary={isProgress('installing')}
+					className={isProgress('installing') && 'is-loading'}
+					icon={isProgress('installing') && 'update'}
 					onClick={installPlugin}
 				>
-					{installing
+					{isProgress('installing')
 						? getLabel('installing')
 						: getLabel('installActivate')}
 				</Button>
 			),
 			activate: activateURL && (
 				<Button
-					disabled={activating}
+					disabled={isProgress('activating')}
 					isSmall={smallButton}
-					isPrimary={!activating}
-					isSecondary={activating}
-					className={activating && 'is-loading'}
-					icon={activating && 'update'}
+					isPrimary={!isProgress('activating')}
+					isSecondary={isProgress('activating')}
+					className={isProgress('activating') && 'is-loading'}
+					icon={isProgress('activating') && 'update'}
 					onClick={activatePlugin}
 				>
-					{activating ? getLabel('activating') : getLabel('activate')}
+					{isProgress('activating')
+						? getLabel('activating')
+						: getLabel('activate')}
 				</Button>
 			),
 			deactivate: (
