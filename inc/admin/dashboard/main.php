@@ -239,8 +239,6 @@ class Main {
 			'getPluginStateBaseURL'   => esc_url( rest_url( '/nv/v1/dashboard/plugin-state/' ) ),
 		];
 
-		ray( esc_url( rest_url( '/nv/v1/dashboard/plugin-state/' ) ) );
-
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
 			$installed_plugins                     = get_plugins();
 			$is_otter_installed                    = array_key_exists( 'otter-pro/otter-pro.php', $installed_plugins );
