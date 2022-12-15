@@ -111,18 +111,18 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		// We add tabindex 0 in order for the caret to  be focusable.
 		$expanded = 'tabindex="0"';
 
+		// Register sidebar inline styles
+		add_action( 'neve_after_header_wrapper_hook', [ $this, 'inline_style_for_sidebar' ], 9 );
+		if ( $item->url === '#' && ! self::$dropdowns_inline_js_enqueued ) {
+			$this->enqueue_hash_url_dropdowns_inline_js();
+		}
+
 		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 			if ( strpos( $title, 'menu-item-title-wrap' ) === false ) {
 				$title = '<span class="menu-item-title-wrap dd-title">' . $title . '</span>';
 			}
 
 			$caret_wrap_css = $caret_settings['side'] === 'right' ? 'margin-left:5px;' : 'margin-right:5px;';
-
-			add_action( 'neve_after_header_wrapper_hook', [ $this, 'inline_style_for_sidebar' ], 9 );
-
-			if ( $item->url === '#' && ! self::$dropdowns_inline_js_enqueued ) {
-				$this->enqueue_hash_url_dropdowns_inline_js();
-			}
 
 			if ( $is_sidebar_item && neve_is_new_skin() ) {
 				$expand_dropdowns = apply_filters( 'neve_first_level_expanded', false );
