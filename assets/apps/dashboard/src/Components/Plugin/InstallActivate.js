@@ -29,9 +29,9 @@ const InstallActivate = ({
 		installing: labels.installing ?? `${__('Installing', 'neve')}...`,
 		activating: labels.activating ?? `${__('Activating', 'neve')}...`,
 		installActivate:
-			labels.installActivate ?? `${__('Install and Activate', 'neve')}`,
-		activate: labels.activate ?? `${__('Activate', 'neve')}`,
-		installed: labels.installed ?? `${__('Installed', 'neve')}`,
+			labels.installActivate ?? __('Install and Activate', 'neve'),
+		activate: labels.activate ?? __('Activate', 'neve'),
+		installed: labels.installed ?? __('Installed', 'neve'),
 	});
 
 	const getLabel = (type) => {
@@ -43,8 +43,7 @@ const InstallActivate = ({
 	};
 
 	const hideFirstLabel = () => {
-		buttonLabels.firstLabel = false;
-		setButtonLabels(buttonLabels);
+		setButtonLabels({ ...buttonLabels, firstLabel: false });
 	};
 
 	const installPlugin = () => {
@@ -60,11 +59,11 @@ const InstallActivate = ({
 					activatePlugin();
 				} else {
 					setError(
-						e.errorMessage
-							? e.errorMessage
-							: __(
-									'Something went wrong while installing the plugin.'
-							  )
+						e.errorMessage ||
+							__(
+								'Something went wrong while installing the plugin.',
+								'neve'
+							)
 					);
 				}
 			},
