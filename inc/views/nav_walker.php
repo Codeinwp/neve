@@ -27,6 +27,13 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	public static $mega_menu_enqueued = false;
 
 	/**
+	 * Flag used to add inline sidebar accessibility styles.
+	 *
+	 * @var bool
+	 */
+	public static $add_sidebar_accessibility_style = false;
+
+	/**
 	 * Flag used to add inline mobile submenu button styles.
 	 *
 	 * @var bool
@@ -56,13 +63,24 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	}
 
 	/**
-	 * Print inline styles if mobile submenu is used.
+	 * Print inline styles if sidebar is used.
 	 */
 	public function inline_style_for_sidebar() {
+		if ( self::$add_sidebar_accessibility_style ) {
+			return;
+		}
+		echo '<style>' . $this->get_sidebar_and_accessibility_style() . '</style>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		self::$add_sidebar_accessibility_style = true;
+	}
+
+	/**
+	 * Print inline styles if mobile submenu is used.
+	 */
+	public function inline_style_for_caret() {
 		if ( self::$add_mobile_caret_button_style ) {
 			return;
 		}
-		echo '<style>' . $this->get_mobile_submenu_and_accessibility_style() . '</style>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<style>' . $this->get_mobile_caret_style() . '</style>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		self::$add_mobile_caret_button_style = true;
 	}
 
@@ -118,13 +136,14 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 
 		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
+			add_action( 'neve_after_header_wrapper_hook', [ $this, 'inline_style_for_caret' ], 9 );
 			if ( strpos( $title, 'menu-item-title-wrap' ) === false ) {
 				$title = '<span class="menu-item-title-wrap dd-title">' . $title . '</span>';
 			}
 
 			$caret_wrap_css = $caret_settings['side'] === 'right' ? 'margin-left:5px;' : 'margin-right:5px;';
 
-			if ( $is_sidebar_item && neve_is_new_skin() ) {
+			if ( $is_sidebar_item ) {
 				$expand_dropdowns = apply_filters( 'neve_first_level_expanded', false );
 				$additional_class = $expand_dropdowns && $depth === 0 ? 'dropdown-open' : '';
 
@@ -183,14 +202,23 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	}
 
 	/**
-	 * Get mobile submenu inline styles and accessibility
+	 * Get mobile caret inline styles
 	 */
-	public function get_mobile_submenu_and_accessibility_style() {
+	public function get_mobile_caret_style() {
 		/* Mobile button caret css. */
 		$mobile_button_caret_css  = '.header-menu-sidebar .nav-ul li .wrap { position: relative; padding: 15px 0; display: flex; align-items: center; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a { flex-grow: 1; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a .dd-title { width: var(--wrapdropdownwidth); }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap button { border: 0; z-index: 1; background: 0; }';
+
+		return Dynamic_Css::minify_css( $mobile_button_caret_css );
+	}
+
+	/**
+	 * Get sidebar inline styles and accessibility
+	 */
+	public function get_sidebar_and_accessibility_style() {
+
 		/* Showing Menu Sidebar animation css. */
 		$sidebar_animation_css  = '.is-menu-sidebar .header-menu-sidebar { visibility: visible; }';
 		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_slide_left .header-menu-sidebar { transform: translate3d(0, 0, 0); left: 0; }';
@@ -204,7 +232,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$accessibility_caret_css .= '.nav-ul li.neve-mega-menu:focus-within .wrap:has(.caret.active) + .sub-menu { display: grid; }';
 		$accessibility_caret_css .= '.nav-ul li > .wrap { display: flex; align-items: center; position: relative; }';
 
-		return Dynamic_Css::minify_css( $sidebar_animation_css . $mobile_button_caret_css . $accessibility_caret_css );
+		return Dynamic_Css::minify_css( $sidebar_animation_css . $accessibility_caret_css );
 	}
 
 	/**
