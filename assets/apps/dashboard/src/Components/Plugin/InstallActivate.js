@@ -15,8 +15,6 @@ const InstallActivate = ({
 	pluginState,
 	activateURL,
 	description,
-	// pluginBasename,
-	// successUpdate,
 }) => {
 	const { getPluginStateBaseURL, pluginsURL } = neveDash;
 
@@ -94,29 +92,10 @@ const InstallActivate = ({
 					updatePluginState();
 				}
 			} else {
-				setError(__('Could not activate plugin.'));
+				setError(__('Could not activate plugin.', 'neve'));
 			}
 		});
 	};
-
-	// const updatePlugin = () => {
-	// 	setUpdating(true);
-	// 	wp.updates.ajax('update-plugin', {
-	// 		slug,
-	// 		plugin: untrailingSlashIt(pluginBasename),
-	// 		success: () => {
-	// 			successUpdate();
-	// 			updatePluginState();
-	// 		},
-	// 		error: (e) => {
-	// 			setError(
-	// 				e.errorMessage
-	// 					? e.errorMessage
-	// 					: __('Something went wrong while updating the plugin.')
-	// 			);
-	// 		},
-	// 	});
-	// };
 
 	useEffect(() => {
 		if (autoInstall) {
