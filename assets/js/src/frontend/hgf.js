@@ -5,15 +5,9 @@ import {
 	addClass,
 	removeClass,
 	NV_FOCUS_TRAP_START,
-	NV_FOCUS_TRAP_END,
 } from '../utils.js';
 
 const closeNavSelector = '.close-sidebar-panel .navbar-toggle';
-const sidebarClasses = [
-	'is-menu-sidebar',
-	'hiding-header-menu-sidebar',
-	'is-active',
-];
 
 export const HFG = function () {
 	this.options = {
@@ -76,7 +70,7 @@ HFG.prototype.init = function (skipSidebar = false) {
 HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
 	const TOGGLE_CLASS_CONTAINER = '.menu-mobile-toggle';
 	const buttonsContainer = document.querySelectorAll(TOGGLE_CLASS_CONTAINER);
-	removeClass(document.body, sidebarClasses[1]);
+	removeClass(document.body, 'hiding-header-menu-sidebar');
 
 	/**
 	 * Elements to apply aria-hidden on
@@ -90,20 +84,20 @@ HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
 
 	if (
 		(!NeveProperties.isCustomize &&
-			document.body.classList.contains(sidebarClasses[0])) ||
+			document.body.classList.contains('is-menu-sidebar')) ||
 		toggle === false
 	) {
 		const navClickaway = document.querySelector('.nav-clickaway-overlay');
 		if (navClickaway !== null) {
 			navClickaway.parentNode.removeChild(navClickaway);
 		}
-		addClass(document.body, sidebarClasses[1]);
-		removeClass(document.body, sidebarClasses[0]);
-		removeClass(buttonsContainer, sidebarClasses[2]);
+		addClass(document.body, 'hiding-header-menu-sidebar');
+		removeClass(document.body, 'is-menu-sidebar');
+		removeClass(buttonsContainer, 'is-active');
 		// Remove the hiding class after 1 second.
 		setTimeout(
 			function () {
-				removeClass(document.body, sidebarClasses[1]);
+				removeClass(document.body, 'hiding-header-menu-sidebar');
 			}.bind(this),
 			1000
 		);
@@ -113,11 +107,9 @@ HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
 		 */
 		toggleAria(ariaHideOnToggle, false);
 		toggleAria(ariaShowOnToggle);
-		// Remove focus trap when closing.
-		document.dispatchEvent(new CustomEvent(NV_FOCUS_TRAP_END));
 	} else {
-		addClass(document.body, sidebarClasses[0]);
-		addClass(buttonsContainer, sidebarClasses[2]);
+		addClass(document.body, 'is-menu-sidebar');
+		addClass(buttonsContainer, 'is-active');
 		if (target) {
 			document.dispatchEvent(
 				new CustomEvent(NV_FOCUS_TRAP_START, {
