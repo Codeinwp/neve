@@ -19,6 +19,11 @@ class Fse {
 	private $templates = [];
 
 	/**
+	 * @var bool[]
+	 */
+	private $conditions = [];
+
+	/**
 	 * Customizer Section.
 	 *
 	 * @var string
@@ -38,6 +43,13 @@ class Fse {
 			'page'       => __( 'Page', 'neve' ),
 			'single'     => __( 'Single', 'neve' ),
 		];
+
+		$this->conditions = [
+			'index' => $this->is_blog(),
+		];
+
+
+//		error_log( var_export( $this->conditions, true ) );
 	}
 
 	/**
@@ -51,7 +63,26 @@ class Fse {
 			add_action( 'after_setup_theme', [ $this, 'add_theme_support' ] );
 			add_filter( 'theme_file_path', [ $this, 'fix_file_path' ], 10, 2 );
 			add_action( 'admin_init', [ $this, 'squash_redirect' ] );
+//			add_filter( 'wp_redirect', [ $this, 'shortcircuit_redirect' ] );
+
+			add_action( 'wp_body_open', [ $this, 'handle_header' ], PHP_INT_MAX );
+			add_action( 'wp_footer', [ $this, 'handle_footer' ], PHP_INT_MIN );
 		}
+	}
+
+	public function shortcircuit_redirect($location) {
+
+		error_log( var_export ( $location, true ) );
+
+		return $location;
+	}
+
+	public function handle_header() {
+		do_action( 'neve_do_header' );
+	}
+
+	public function handle_footer() {
+		do_action( 'neve_do_footer' );
 	}
 
 	/**
@@ -183,6 +214,21 @@ class Fse {
 		$priority = 10;
 
 		foreach ( $this->templates as $slug => $label ) {
+			$wp_customize->add_setting( 'neve_fse_heading_' . $slug, array(
+				'sanitize_callback' => 'sanitize_text_field',
+			) );
+			$wp_customize->add_control( new \Neve\Customizer\Controls\Heading( $wp_customize, 'neve_fse_heading_' . $slug, array(
+				'section'          => $this->customize_section,
+				'active_callback'  => [ $this, 'is_enabled' ],
+				'class'            => 'fse-heading-' . $slug,
+				'priority'         => $priority,
+				'label'            => $label,
+				'accordion'        => true,
+				'controls_to_wrap' => 3,
+			) ) );
+
+			$priority ++;
+
 			$wp_customize->add_setting(
 				$this->get_option_slug_for_template( $slug ),
 				array(
@@ -197,7 +243,53 @@ class Fse {
 					'active_callback' => [ $this, 'is_enabled' ],
 					'section'         => $this->customize_section,
 					'priority'        => $priority,
-					'label'           => $label,
+					'label'           => __( 'Enable', 'neve' ),
+					'type'            => 'neve_toggle_control',
+				)
+			);
+
+			$priority ++;
+
+			$wp_customize->add_setting(
+				$this->get_option_slug_for_header( $slug ),
+				array(
+					'default'           => true,
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+				)
+			);
+
+			$wp_customize->add_control(
+				$this->get_option_slug_for_header( $slug ),
+				array(
+					'active_callback' => function () use ( $slug ) {
+						return $this->is_template_enabled( $slug );
+					},
+					'section'         => $this->customize_section,
+					'priority'        => $priority,
+					'label'           => __( 'Enable Header', 'neve' ),
+					'type'            => 'neve_toggle_control',
+				)
+			);
+
+			$priority ++;
+
+			$wp_customize->add_setting(
+				$this->get_option_slug_for_footer( $slug ),
+				array(
+					'default'           => true,
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+				)
+			);
+
+			$wp_customize->add_control(
+				$this->get_option_slug_for_footer( $slug ),
+				array(
+					'active_callback' => function () use ( $slug ) {
+						return $this->is_template_enabled( $slug );
+					},
+					'section'         => $this->customize_section,
+					'priority'        => $priority,
+					'label'           => __( 'Enable Footer', 'neve' ),
 					'type'            => 'neve_toggle_control',
 				)
 			);
@@ -252,6 +344,28 @@ class Fse {
 		return 'neve_fse_' . $template;
 	}
 
+	/**
+	 * Get the option ID for a template header.
+	 *
+	 * @param string $template the template slug.
+	 *
+	 * @return string
+	 */
+	private function get_option_slug_for_header( $template ) {
+		return 'neve_fse_header_' . $template;
+	}
+
+	/**
+	 * Get the option ID for a template footer.
+	 *
+	 * @param string $template the template slug.
+	 *
+	 * @return string
+	 */
+	private function get_option_slug_for_footer( $template ) {
+		return 'neve_fse_footer_' . $template;
+	}
+
 
 	/**
 	 * Is specific template enabled.
@@ -262,5 +376,32 @@ class Fse {
 	 */
 	private function is_template_enabled( $template ) {
 		return get_theme_mod( $this->get_option_slug_for_template( $template ), false );
+	}
+
+	/**
+	 * Is header enabled for template.
+	 *
+	 * @param string $template the template slug.
+	 *
+	 * @return bool
+	 */
+	public function is_header_enabled( $template ) {
+		return get_theme_mod( $this->get_option_slug_for_header( $template ), true );
+	}
+
+
+	/**
+	 * Is footer enabled for template.
+	 *
+	 * @param string $template the template slug.
+	 *
+	 * @return bool
+	 */
+	public function is_footer_enabled( $template ) {
+		return get_theme_mod( $this->get_option_slug_for_footer( $template ), true );
+	}
+
+	public function is_blog() {
+		return is_home() && ! is_front_page();
 	}
 }
