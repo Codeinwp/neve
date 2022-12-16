@@ -85,7 +85,7 @@ trait Layout {
 			return false;
 		}
 
-		$body_classes = apply_filters( 'body_class', [] );
+		$body_classes = apply_filters( 'body_class', [], [] ); // @see https://developer.wordpress.org/reference/hooks/body_class/
 		return is_array( $body_classes ) && in_array( 'neve-off-canvas', $body_classes );
 	}
 
