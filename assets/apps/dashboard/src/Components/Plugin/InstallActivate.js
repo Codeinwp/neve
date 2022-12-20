@@ -33,6 +33,10 @@ const InstallActivate = ({
 
 	// set labels of the new plugin with overriding firstLabel as false.
 	useEffect(() => {
+		if (!Object.keys(labels).length) {
+			return;
+		}
+
 		setButtonLabels({ ...labels, firstLabel: false });
 	}, [labels]);
 
