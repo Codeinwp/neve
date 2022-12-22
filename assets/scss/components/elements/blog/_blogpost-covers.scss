@@ -1,56 +1,50 @@
 @import "../../main/variables";
 $overlay: rgba(0, 0, 0, 0.75);
 
-.layout-covers {
-
-	.article-content-col,
-	.content,
-	.cover-post {
-		height: 100%;
-	}
-
-	.content {
-		border: 0;
-		padding-bottom: 0;
-	}
-}
-
 .cover-post {
 	box-shadow: var(--boxshadow, none);
 	position: relative;
-	background-size: cover;
-	display: flex;
-	background-position: center;
-	overflow: hidden;
+	min-height: 300px;
+}
 
-	&::after {
-		background: $overlay;
-		content: "";
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-	}
+.layout-covers {
 
-	img {
-		--boxshadow: none;
+	.content {
+		position: relative;
+		padding: 0;
 	}
 
 	.inner {
-		max-width: 100%;
-		min-height: 350px;
 		position: relative;
-		z-index: 10;
-		padding: 25px;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
+		z-index: 10;
 		color: var(--color, #fff);
-		flex-grow: 1;
-
-		a:not(.button) {
-			color: var(--color, #fff);
-		}
+		padding: 25px;
 	}
+
+	a:not(.button) {
+		color: var(--color, #fff);
+	}
+
+	.img-wrap {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+
+	img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.cover-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background: $overlay;
+	z-index: 1;
 }
