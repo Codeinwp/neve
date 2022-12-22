@@ -4,3 +4,4 @@
  */
 
 define( 'WP_DEFAULT_THEME', 'neve' );
+define( 'WP_PLUGIN_DIR', '/plugins' );
