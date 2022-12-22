@@ -152,4 +152,4 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
       - name: Run Playwright tests
-        run: yarn run test:e2e:playwright specs/tpc/tpc-notice-install.spec.ts
+        run: yarn run test:e2e:playwright
