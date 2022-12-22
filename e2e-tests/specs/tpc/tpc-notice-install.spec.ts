@@ -5,7 +5,10 @@ test('test', async ({ page }) => {
 	await loginWithRequest('/wp-admin/index.php', page);
 
 	if (page.url().includes('wp-login.php')) {
-		throw new Error('Not logged in');
+		//throw new Error('Not logged in');
+		await page.getByLabel('Username or Email Address').fill('admin');
+		await page.getByLabel('Password').fill('admin');
+		await page.getByRole('button', { name: 'Log In' }).click();
 	}
 
 	await expect(page).toHaveURL(/wp-admin\/index.php/);
