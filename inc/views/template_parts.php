@@ -41,7 +41,34 @@ class Template_Parts extends Base_View {
 
 		wp_add_inline_style(
 			'neve-style',
-			'.nv-ft-post{background:var(--nv-light-bg);margin-top:60px}.nv-ft-post h2{font-size:calc( var(--fontsize, var(--h2fontsize)) * 1.3)}.nv-ft-post .nv-meta-list{display:block}.nv-ft-post .non-grid-content{padding:32px}.nv-ft-post .wp-post-image{position:absolute;object-fit:cover;width:100%;height:100%}.nv-ft-post .nv-post-thumbnail-wrap{margin:0;position:relative;min-height:320px}'
+			'
+			.nv-ft-post {
+				margin-top:60px
+			}
+			.nv-ft-post .nv-ft-wrap:not(.layout-covers){
+				background:var(--nv-light-bg);
+			}
+			.nv-ft-post h2{
+				font-size:calc( var(--fontsize, var(--h2fontsize)) * 1.3)
+			}
+			.nv-ft-post .nv-meta-list{
+				display:block
+			}
+			.nv-ft-post .non-grid-content{
+				padding:32px
+			}
+			.nv-ft-post .wp-post-image{
+				position:absolute;
+				object-fit:cover;
+				width:100%;
+				height:100%
+			}
+			.nv-ft-post:not(.layout-covers) .nv-post-thumbnail-wrap{
+				margin:0;
+				position:relative;
+				min-height:320px
+			}
+			'
 		);
 	}
 
@@ -85,7 +112,14 @@ class Template_Parts extends Base_View {
 			return;
 		}
 
+		$wrapper_classes = [];
+		if ( ! neve_is_new_skin() ) {
+			$wrapper_classes[] = 'row';
+		}
+		$wrapper_classes  = apply_filters( 'neve_posts_wrapper_class', $wrapper_classes );
 		$posts_to_exclude = [];
+
+		echo '<div class="' . esc_attr( join( ' ', $wrapper_classes ) ) . '">';
 		foreach ( $posts as $post ) {
 			$post_id            = is_array( $post ) && array_key_exists( 'ID', $post ) ? $post['ID'] : $post;
 			$posts_to_exclude[] = $post_id;
@@ -107,6 +141,7 @@ class Template_Parts extends Base_View {
 
 			remove_all_filters( 'excerpt_more' );
 		}
+		echo '</div>';
 		add_filter(
 			'nv_exclude_posts',
 			function () use ( $posts_to_exclude ) {
@@ -176,23 +211,28 @@ class Template_Parts extends Base_View {
 		$order             = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
 
 		if ( in_array( $layout, [ 'alternative', 'default' ], true ) || ( $is_featured_post && $featured_template === 'tp1' ) ) {
+			$markup .= '<div class="' . esc_attr( $layout ) . '-post nv-ft-wrap">';
 			if ( in_array( 'thumbnail', $order, true ) || ( $is_featured_post && $featured_template === 'tp1' ) ) {
 				$markup .= $this->get_post_thumbnail( $post_id );
 			}
 			$markup .= '<div class="non-grid-content ' . esc_attr( $layout ) . '-layout-content">';
 			$markup .= $this->get_ordered_content_parts( true, $post_id );
 			$markup .= '</div>';
+			$markup .= '</div>';
 
 			return $markup;
 		}
 
 		if ( $layout === 'covers' ) {
-			$style = '';
-			if ( in_array( 'thumbnail', $order, true ) ) {
-				$thumb  = get_the_post_thumbnail_url( $post_id );
-				$style .= ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
+			if ( ! neve_is_new_skin() ) {
+				$markup .= $this->get_legacy_covers( $order, $post_id );
+				return $markup;
 			}
-			$markup .= '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
+			$markup .= '<div class="cover-post nv-ft-wrap">';
+			$markup .= '<div class="cover-overlay"></div>';
+			if ( in_array( 'thumbnail', $order, true ) ) {
+				$markup .= $this->get_post_thumbnail( $post_id, true );
+			}
 			$markup .= '<div class="inner">';
 			$markup .= $this->get_ordered_content_parts( true, $post_id );
 			$markup .= '</div>';
@@ -205,12 +245,37 @@ class Template_Parts extends Base_View {
 	}
 
 	/**
+	 * Get html for cover layout in legacy mode.
+	 *
+	 * @param array $order Elements order.
+	 * @param int   $post_id Post id.
+	 *
+	 * @return string
+	 */
+	private function get_legacy_covers( $order, $post_id ) {
+		$style = '';
+		if ( in_array( 'thumbnail', $order, true ) ) {
+			$thumb  = get_the_post_thumbnail_url( $post_id );
+			$style .= ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
+		}
+		$markup  = '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
+		$markup .= '<div class="inner">';
+		$markup .= $this->get_ordered_content_parts( true, $post_id );
+		$markup .= '</div>';
+		$markup .= '</div>';
+
+		return $markup;
+	}
+
+	/**
 	 * Render the post thumbnail.
 	 *
 	 * @param int | null $post_id Post id.
+	 * @param bool       $skip_link Flag to skip wrapping post image in a tag.
+	 *
 	 * @return string
 	 */
-	private function get_post_thumbnail( $post_id = null ) {
+	private function get_post_thumbnail( $post_id = null, $skip_link = false ) {
 		if ( ! has_post_thumbnail( $post_id ) ) {
 			return '';
 		}
@@ -225,13 +290,16 @@ class Template_Parts extends Base_View {
 			$neve_thumbnail_skip_lazy_added = true;
 		}
 
-		$markup = '<div class="nv-post-thumbnail-wrap">';
+		$image_wrap_classes = $this->get_image_wrap_classes();
+		$markup             = '<div class="' . esc_attr( $image_wrap_classes ) . '">';
 
-		$markup .= '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '" rel="bookmark" title="' . the_title_attribute(
-			array(
-				'echo' => false,
-			)
-		) . '">';
+		if ( ! $skip_link ) {
+			$markup .= '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '" rel="bookmark" title="' . the_title_attribute(
+				array(
+					'echo' => false,
+				)
+			) . '">';
+		}
 
 		$pid     = $post_id ? $post_id : get_the_ID();
 		$markup .= get_the_post_thumbnail(
@@ -239,10 +307,29 @@ class Template_Parts extends Base_View {
 			'neve-blog',
 			array( 'class' => $image_class )
 		);
-		$markup .= '</a>';
+		if ( ! $skip_link ) {
+			$markup .= '</a>';
+		}
 		$markup .= '</div>';
 
 		return apply_filters( 'neve_blog_post_thumbnail_markup', $markup );
+	}
+
+	/**
+	 * Get css classes for post image wrap.
+	 *
+	 * @return string
+	 */
+	private function get_image_wrap_classes() {
+		$post_classes = [ 'nv-post-thumbnail-wrap', 'img-wrap' ];
+
+		if ( defined( 'NEVE_PRO_VERSION' ) ) {
+			$blog_image_hover = get_theme_mod( 'neve_blog_image_hover', 'none' );
+			if ( $blog_image_hover !== 'none' ) {
+				$post_classes[] = $blog_image_hover;
+			}
+		}
+		return esc_attr( implode( ' ', $post_classes ) );
 	}
 
 	/**

@@ -221,12 +221,13 @@ test.describe('Blog/Archive 3 / Covers Layout', () => {
 			const element = await posts.nth(index);
 			await expect(element).toHaveClass(/layout-covers/);
 
-			const thumbnailWrap = await element.locator(
-				'.cover-post.nv-post-thumbnail-wrap'
+			const coverPost = await element.locator(
+				'.cover-post'
 			);
-			await expect(thumbnailWrap.count()).not.toEqual(0);
-			await expect(thumbnailWrap).toHaveCSS('backgound-image', /.*/);
-			await expect(thumbnailWrap).toHaveCSS(
+			await expect(
+				coverPost.locator('.nv-post-thumbnail-wrap').count()
+			).not.toEqual(0);
+			await expect(coverPost).toHaveCSS(
 				'box-shadow',
 				'rgba(0, 0, 0, 0.12) 0px 14px 28px 0px, rgba(0, 0, 0, 0.12) 0px 10px 10px 0px'
 			);
