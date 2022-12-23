@@ -235,6 +235,8 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_dropdown .header-menu-sidebar { height: auto; }';
 		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_dropdown .header-menu-sidebar-inner { max-height: 400px; padding: 20px 0; }';
 		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_full_canvas .header-menu-sidebar { opacity: 1; }';
+		$sidebar_animation_css .= '.header-menu-sidebar .menu-item-nav-search { pointer-events: none; }';
+		$sidebar_animation_css .= '.header-menu-sidebar .menu-item-nav-search .is-menu-sidebar & { pointer-events: unset; }';
 		/* Accessibility css. */
 		$accessibility_caret_css  = '.nav-ul li:focus-within .wrap:has(.caret.active) + .sub-menu { opacity: 1; visibility: visible; }';
 		$accessibility_caret_css .= '.nav-ul li.neve-mega-menu:focus-within .wrap:has(.caret.active) + .sub-menu { display: grid; }';
