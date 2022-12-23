@@ -1,7 +1,7 @@
 /* global neveDash */
 import { get } from '../../utils/rest';
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect, useMemo } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import { Button, Dashicon } from '@wordpress/components';
 
 const InstallActivate = ({
@@ -24,23 +24,33 @@ const InstallActivate = ({
 		installing: `${__('Installing', 'neve')}...`,
 		activating: `${__('Activating', 'neve')}...`,
 		installActivate: __('Install and Activate', 'neve'),
-		activate:  __('Activate', 'neve'),
+		activate: __('Activate', 'neve'),
 		installed: __('Installed', 'neve'),
 	});
 
-	const setCustomLabels = (labels) =>  {
+	const setCustomLabels = (customLabels) => {
 		setButtonLabels({
 			...buttonLabels,
-			...( labels.firstLabel !== false &&  { firstLabel: labels.firstLabel } ),
-			...( labels.installing &&  { installing: labels.installing } ),
-			...( labels.activating &&  { activating: labels.activating } ),
-			...( labels.installActivate &&  { installActivate: labels.installActivate } ),
-			...( labels.activate &&  { activate: labels.activate } ),
-			...( labels.installed &&  { installed: labels.installed } ),
+			...(customLabels.firstLabel !== false && {
+				firstLabel: customLabels.firstLabel,
+			}),
+			...(customLabels.installing && {
+				installing: customLabels.installing,
+			}),
+			...(customLabels.activating && {
+				activating: customLabels.activating,
+			}),
+			...(customLabels.installActivate && {
+				installActivate: customLabels.installActivate,
+			}),
+			...(customLabels.activate && { activate: customLabels.activate }),
+			...(customLabels.installed && {
+				installed: customLabels.installed,
+			}),
 		});
-	}
+	};
 
-	useEffect(()=>{
+	useEffect(() => {
 		setCustomLabels(labels);
 	}, [labels]);
 
@@ -105,11 +115,11 @@ const InstallActivate = ({
 
 	useEffect(() => {
 		if (autoInstall) {
-			if(currentState==='install') {
+			if (currentState === 'install') {
 				installPlugin();
 			}
 
-			if(currentState==='activate') {
+			if (currentState === 'activate') {
 				activatePlugin();
 			}
 		}
