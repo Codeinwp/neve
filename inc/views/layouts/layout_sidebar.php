@@ -114,7 +114,7 @@ class Layout_Sidebar extends Base_View {
 		$sidebar_setup    = [
 			'theme_mod'     => '',
 			'content_width' => '',
-			'sidebar_slug'  => 'blog-sidebar',
+			'sidebar_slug'  => neve_get_sidebar_name( 'blog-sidebar' ),
 		];
 
 		if ( class_exists( 'WooCommerce', false ) && ( is_woocommerce() || is_product() || is_cart() || is_checkout() || is_account_page() ) ) {
@@ -147,7 +147,7 @@ class Layout_Sidebar extends Base_View {
 				break;
 			case 'shop':
 				if ( class_exists( 'WooCommerce', false ) ) {
-					$sidebar_setup['sidebar_slug'] = 'shop-sidebar';
+					$sidebar_setup['sidebar_slug'] = neve_get_sidebar_name( 'shop-sidebar' );
 					if ( is_woocommerce() ) {
 						$sidebar_setup['theme_mod']     = 'neve_shop_archive_sidebar_layout';
 						$sidebar_setup['content_width'] = 'neve_shop_archive_content_width';
