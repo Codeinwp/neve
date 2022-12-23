@@ -1,3 +1,7 @@
+##### [Version 3.4.9](https://github.com/Codeinwp/neve/compare/v3.4.8...v3.4.9) (2022-12-15)
+
+- [Fix] Revert menu changes to fix regressions
+
 ##### [Version 3.4.8](https://github.com/Codeinwp/neve/compare/v3.4.7...v3.4.8) (2022-12-14)
 
 - [Feat] Add better support for keyboard menu navigation
