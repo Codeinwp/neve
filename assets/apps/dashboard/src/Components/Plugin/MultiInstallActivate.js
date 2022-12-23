@@ -2,11 +2,9 @@ import InstallActivate from './InstallActivate';
 import { useState, useEffect } from '@wordpress/element';
 
 const MultiInstallActivate = ({ plugins, buttonLabels }) => {
-	const installActivatePlugins = plugins.filter((p) => ['install', 'activate'].includes(p.pluginState));
-	console.log(installActivatePlugins)
+	plugins = plugins.filter((p) => ['install', 'activate'].includes(p.pluginState));
 
-	const installActivateNeeded = installActivatePlugins.length > 0;
-	console.log(installActivateNeeded);
+	const installActivateNeeded = plugins.length > 0;
 
 	const [pluginIndex, setPluginIndex] = useState(0);
 	const [autoInstall, setAutoInstall] = useState(false);

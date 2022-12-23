@@ -1,9 +1,8 @@
 /* global neveDash */
 import { get } from '../../utils/rest';
 import { __ } from '@wordpress/i18n';
-import { useState } from '@wordpress/element';
+import { useState, useEffect, useMemo } from '@wordpress/element';
 import { Button, Dashicon } from '@wordpress/components';
-import { useEffect } from 'react';
 
 const InstallActivate = ({
 	labels = {},
@@ -20,24 +19,29 @@ const InstallActivate = ({
 	// const [updating, setUpdating] = useState(false);
 	const [error, setError] = useState(false);
 	const [currentState, setCurrentState] = useState(pluginState);
-
 	const [buttonLabels, setButtonLabels] = useState({
-		firstLabel: labels.firstLabel ?? false,
-		installing: labels.installing ?? `${__('Installing', 'neve')}...`,
-		activating: labels.activating ?? `${__('Activating', 'neve')}...`,
-		installActivate:
-			labels.installActivate ?? __('Install and Activate', 'neve'),
-		activate: labels.activate ?? __('Activate', 'neve'),
-		installed: labels.installed ?? __('Installed', 'neve'),
+		firstLabel: false,
+		installing: `${__('Installing', 'neve')}...`,
+		activating: `${__('Activating', 'neve')}...`,
+		installActivate: __('Install and Activate', 'neve'),
+		activate:  __('Activate', 'neve'),
+		installed: __('Installed', 'neve'),
 	});
 
-	// set labels of the new plugin with overriding firstLabel as false.
-	useEffect(() => {
-		if (!Object.keys(labels).length) {
-			return;
-		}
+	const setCustomLabels = (labels) =>  {
+		setButtonLabels({
+			...buttonLabels,
+			...( labels.firstLabel !== false &&  { firstLabel: labels.firstLabel } ),
+			...( labels.installing &&  { installing: labels.installing } ),
+			...( labels.activating &&  { activating: labels.activating } ),
+			...( labels.installActivate &&  { installActivate: labels.installActivate } ),
+			...( labels.activate &&  { activate: labels.activate } ),
+			...( labels.installed &&  { installed: labels.installed } ),
+		});
+	}
 
-		setButtonLabels({ ...labels, firstLabel: false });
+	useEffect(()=>{
+		setCustomLabels(labels);
 	}, [labels]);
 
 	const getLabel = (type) => {
@@ -101,7 +105,13 @@ const InstallActivate = ({
 
 	useEffect(() => {
 		if (autoInstall) {
-			installPlugin();
+			if(currentState==='install') {
+				installPlugin();
+			}
+
+			if(currentState==='activate') {
+				activatePlugin();
+			}
 		}
 	}, [autoInstall]);
 
