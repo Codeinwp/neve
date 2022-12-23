@@ -779,7 +779,7 @@ function neve_get_sidebar_name( $fallback ) {
 		return $fallback;
 	}
 
-	$manager = new \Neve_Pro\Modules\Custom_Sidebars\Sidebars_Manager();
+	$manager    = new \Neve_Pro\Modules\Custom_Sidebars\Sidebars_Manager();
 	$sidebar_id = $manager->maybe_get_sidebar_that_matches();
-	return !empty( $sidebar_id ) && is_active_sidebar( $sidebar_id ) ? $sidebar_id : $fallback;
+	return ! empty( $sidebar_id ) && is_active_sidebar( $sidebar_id ) ? $sidebar_id : $fallback;
 }
