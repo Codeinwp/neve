@@ -150,6 +150,7 @@ const ModuleCard = ({
 							)}
 							{manageableDependentPlugins && (
 								<MultiInstallActivate
+									slug={slug}
 									plugins={dependentPlugins}
 									buttonLabels={manageablePluginsLabels}
 								/>
