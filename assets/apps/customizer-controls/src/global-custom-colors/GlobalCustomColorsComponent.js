@@ -9,7 +9,7 @@ const GlobalColorsComponent = ({ control }) => {
 		//State
 		setValues(nextValue);
 
-		//Customize
+		// //Customize
 		if (nextValue.flag) {
 			delete nextValue.flag;
 		} else {
@@ -17,21 +17,21 @@ const GlobalColorsComponent = ({ control }) => {
 		}
 		control.setting.set(nextValue);
 
-		//CSS Tag Update
-		const cssTag = document.querySelector('#nv-css-vars-inline-css');
-		const { activePalette, palettes } = nextValue;
-		const currentPalette = palettes[activePalette];
-		const { colors } = currentPalette;
+		// //CSS Tag Update
+		// const cssTag = document.querySelector('#nv-css-vars-inline-css');
+		// const { activePalette, palettes } = nextValue;
+		// const currentPalette = palettes[activePalette];
+		// const { colors } = currentPalette;
 
-		let style = ':root{';
+		// let style = ':root{';
 
-		Object.keys(colors).map((slug) => {
-			style += `--${slug}:${colors[slug]};`;
-			return false;
-		});
-		style += '}';
+		// Object.keys(colors).map((slug) => {
+		// 	style += `--${slug}:${colors[slug]};`;
+		// 	return false;
+		// });
+		// style += '}';
 
-		cssTag.innerHTML = style;
+		// cssTag.innerHTML = style;
 	};
 
 	return (

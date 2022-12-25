@@ -106,12 +106,23 @@ class Colors_Background extends Base_Customizer {
 			)
 		);
 
+		$default_custom_colors = [
+			'custom-1' => [
+				'label' => 'Custom 1',
+				'value' => '#ddd',
+			],
+			'custom-2' => [
+				'label' => 'Custom 2',
+				'value' => 'blue',
+			],
+		];
+
 		$this->add_control(
 			new Control(
 				'neve_global_custom_colors',
 				[
-					'sanitize_callback' => [ $this, 'sanitize_global_colors' ],
-					'default'           => neve_get_global_colors_default( true ),
+					'sanitize_callback' => [ $this, 'sanitize_global_custom_colors' ],
+					'default'           => $default_custom_colors,
 					'transport'         => 'postMessage',
 				],
 				[
@@ -119,7 +130,7 @@ class Colors_Background extends Base_Customizer {
 					'priority'              => 10,
 					'section'               => 'neve_colors_background_section',
 					'type'                  => 'neve_global_custom_colors',
-					'default_values'        => neve_get_global_colors_default(),
+					'default_values'        => $default_custom_colors,
 					'live_refresh_selector' => true,
 				],
 				'Neve\Customizer\Controls\React\Global_Custom_Colors'
@@ -148,6 +159,26 @@ class Colors_Background extends Base_Customizer {
 			foreach ( $args['colors'] as $key => $color_val ) {
 				$value['palettes'][ $slug ]['colors'][ $key ] = neve_sanitize_colors( $color_val );
 			}
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Sanitize Global Custom Colors Setting
+	 *
+	 * @param array $value recieved value.
+	 * @return array
+	 */
+	public function sanitize_global_custom_colors( $value ) {
+		// `flag` key is used to trigger setting change on deep state changes inside the palettes.
+		if ( isset( $value['flag'] ) ) {
+			unset( $value['flag'] );
+		}
+
+		foreach ( $value as $slug => $options ) {
+			$value[ $slug ]['label'] = sanitize_title( $options['label'] );
+			$value[ $slug ]['value'] = neve_sanitize_colors( $options['value'] );
 		}
 
 		return $value;
