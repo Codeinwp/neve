@@ -1,51 +1,38 @@
-import { Button } from '@wordpress/components';
+// import { Button } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { rotateLeft } from '@wordpress/icons';
 import { debounce } from 'lodash';
-import {
-	Accordion,
-	globalPaletteColors,
-	ColorControl,
-} from '@neve-wp/components';
+import { Accordion, ColorControl } from '@neve-wp/components';
 
 const PaletteColors = ({ values, defaults, save }) => {
-	const { palettes, activePalette } = values;
-	const palette = palettes[activePalette];
-	const { colors, allowDeletion } = palette;
+	const { palettes } = values;
+	const ACTIVE_PALETTE = 'customColors';
+	const palette = palettes[ACTIVE_PALETTE];
+	const { colors } = palette;
 
-	const defaultColors = defaults.palettes[activePalette]
-		? {
-				...defaults.palettes[activePalette].colors,
-		  }
-		: {};
+	// TODO: replace with the real data
+	const REGISTERED_CUSTOM_COLORS = [
+		{
+			'nv-custom-1': __('Custom Color #1', 'neve'),
+			'nv-custom-2': __('Custom Color #2', 'neve'),
+		},
+	];
 
 	const updateColorInPalette = (colorSlug, val) => {
 		const nextValues = { ...values };
-		if (nextValues.palettes[activePalette].colors[colorSlug] === val) {
+		if (nextValues.palettes[ACTIVE_PALETTE].colors[colorSlug] === val) {
 			return false;
 		}
-		nextValues.palettes[activePalette].colors[colorSlug] = val;
+		nextValues.palettes[ACTIVE_PALETTE].colors[colorSlug] = val;
 		save(nextValues);
 	};
-
-	const resetPalette = () => {
-		const nextValues = { ...values };
-		nextValues.palettes[activePalette].colors = defaultColors;
-		save(nextValues);
-	};
-
-	const paletteHasDefaultColors =
-		Object.keys(defaultColors).filter((colorKey) => {
-			return defaultColors[colorKey] !== colors[colorKey];
-		}).length < 1;
 
 	return (
 		<Accordion label={__('Custom Colors', 'neve')}>
 			<div className="color-array-wrap">
-				{globalPaletteColors.map((group, index) => {
+				{REGISTERED_CUSTOM_COLORS.map((group, index) => {
 					return (
-						<Fragment key={activePalette + '_' + index}>
+						<Fragment key={ACTIVE_PALETTE + '_' + index}>
 							{index > 0 && <hr />}
 							{Object.keys(group).map((slug) => {
 								return (
@@ -55,9 +42,9 @@ const PaletteColors = ({ values, defaults, save }) => {
 										label={group[slug]}
 										selectedColor={colors[slug]}
 										defaultValue={
-											defaults.palettes[activePalette]
+											defaults.palettes[ACTIVE_PALETTE]
 												? defaults.palettes[
-														activePalette
+														ACTIVE_PALETTE
 												  ].colors[slug]
 												: '#FFFFFF'
 										}
@@ -70,20 +57,6 @@ const PaletteColors = ({ values, defaults, save }) => {
 						</Fragment>
 					);
 				})}
-				{!allowDeletion && (
-					<>
-						<hr />
-						<Button
-							isLink
-							className="reset-palette"
-							onClick={resetPalette}
-							disabled={paletteHasDefaultColors}
-							icon={rotateLeft}
-						>
-							{__('Reset all to default', 'neve')}
-						</Button>
-					</>
-				)}
 			</div>
 		</Accordion>
 	);
