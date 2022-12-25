@@ -105,6 +105,26 @@ class Colors_Background extends Base_Customizer {
 				'Neve\Customizer\Controls\React\Global_Colors'
 			)
 		);
+
+		$this->add_control(
+			new Control(
+				'neve_global_custom_colors',
+				[
+					'sanitize_callback' => [ $this, 'sanitize_global_colors' ],
+					'default'           => neve_get_global_colors_default( true ),
+					'transport'         => 'postMessage',
+				],
+				[
+					'label'                 => __( 'Custom Colors', 'neve' ),
+					'priority'              => 10,
+					'section'               => 'neve_colors_background_section',
+					'type'                  => 'neve_global_custom_colors',
+					'default_values'        => neve_get_global_colors_default(),
+					'live_refresh_selector' => true,
+				],
+				'Neve\Customizer\Controls\React\Global_Custom_Colors'
+			)
+		);
 	}
 
 	/**

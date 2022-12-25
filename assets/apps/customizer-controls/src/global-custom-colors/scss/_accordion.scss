@@ -1,0 +1,37 @@
+.nv-accordion {
+  width: calc(100% + 24px);
+  color: #555d66;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  border-left: 4px solid #fff;
+  transition: .15s color ease-in-out, .15s background-color ease-in-out, .15s border-color ease-in-out;
+  font-size: 14px;
+  border-right: none;
+  padding: 10px 10px 11px 14px;
+  line-height: 1.55;
+  position: relative;
+  margin: 0 -12px;
+  cursor: pointer;
+
+  &:hover {
+	color: #0073aa;
+	background: #f3f3f5;
+	border-left-color: #0073aa;
+  }
+
+  &:focus, &:active {
+	outline: none;
+  }
+
+  h4 {
+	display: flex;
+	margin: 0;
+	align-items: center;
+  }
+
+  .dashicon, svg {
+	fill: #a0a5aa;
+	margin: 0 0 0 auto;
+  }
+}

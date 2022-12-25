@@ -1,0 +1,19 @@
+.add-palette-form {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+
+	.customize-control-title {
+		margin-top: 10px;
+	}
+
+	.actions {
+		display: flex;
+		margin-top: 10px;
+		button {
+			margin-right: 10px;
+			display: flex;
+			align-items: center;
+		}
+	}
+}

@@ -1,0 +1,47 @@
+@import "palette-selector";
+@import "palette-form";
+@import "accordion";
+
+
+.color-array-wrap {
+	background: #fff;
+	margin-top: 15px;
+  	margin: 0 -15px;
+	padding: 20px 15px 12px;
+	.neve-color-component {
+		margin-bottom: 14px;
+	}
+
+	hr {
+		margin: 10px -15px;
+		border-bottom: 0;
+	}
+	.add-custom-color {
+		text-decoration: none;
+		font-weight: 700;
+		font-size: 14px;
+		padding: 8px 0;
+
+		.dashicon {
+			margin-left: 10px;
+		}
+	}
+
+	.reset-palette {
+		color: #555D66;
+		text-decoration: none;
+		padding: 7px 0;
+		.dashicon {
+			color: #DCDCDC;
+		}
+	}
+}
+
+// Background Image Background and Padding
+#customize-control-background_image {
+	background-color: #fff;
+	padding: 15px;
+  	margin: 0 -15px;
+  	width: calc(100% + 30px);
+	box-sizing: border-box;
+}

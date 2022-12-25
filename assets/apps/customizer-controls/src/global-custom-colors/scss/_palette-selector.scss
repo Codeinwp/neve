@@ -1,0 +1,94 @@
+.neve-palettes-wrap {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.neve-global-color-palette {
+	position: relative;
+	height: 67px;
+	margin-bottom: 15px;
+	width: calc(50% - 5px);
+
+	&:hover .delete-palette {
+		display: flex;
+	}
+
+	&:nth-child(odd) {
+		margin-right: 10px;
+	}
+
+	.delete-palette {
+		right: 0;
+		top: 0;
+		position: absolute;
+		padding: 0 !important;
+		background-color: red !important;
+		color: #ffffff !important;
+		display: none;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: none;
+			color: red;
+			background-color: #ffffff;
+		}
+	}
+}
+
+.neve-global-color-palette-inner {
+	background-color: #fff;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	cursor: pointer;
+
+
+	&:focus {
+		outline: none;
+	}
+
+	&.active {
+		outline: 2px solid $wp-blue;
+	}
+
+
+	&:nth-child(even) {
+		margin-left: auto;
+	}
+
+	.title {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: rgba(0, 0, 0, 0.75);
+		color: #fff;
+		text-align: left;
+		font-weight: 600;
+		padding: 5px 10px;
+		font-size: 14px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.color {
+		display: inline-block;
+		width: 25%;
+		height: 100%;
+	}
+}
+
+.neve-global-colors-confirm-delete-modal {
+	.actions {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 20px;
+	}
+
+	button {
+		margin-left: 10px;
+	}
+}
