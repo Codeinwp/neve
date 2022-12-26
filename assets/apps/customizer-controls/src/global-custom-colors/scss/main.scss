@@ -10,4 +10,32 @@
 			padding-left: 3px;
 		}
 	}
+
+	.neve-color-component {
+		.customize-control-title {
+			flex-grow: 2;
+		}
+	}
+
+	.neve-color-component:hover {
+		.remove-custom-color-wrapper {
+			opacity: 1;
+			transition: all 0.5s;
+		}
+	}
+
+	.remove-custom-color-wrapper {
+		margin-right: 10px;
+		opacity: 0;
+
+		.dashicon {
+			cursor: pointer;
+		}
+	}
+}
+
+.remove-custom-color-btn-wrapper {
+	button {
+		margin: 0 4px;
+	}
 }

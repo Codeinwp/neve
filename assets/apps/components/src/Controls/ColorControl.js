@@ -25,6 +25,7 @@ const ColorControl = ({
 	defaultValue,
 	disableGlobal,
 	allowGradient,
+	children
 }) => {
 	let toggle = null;
 	const { shouldUseColorPickerFix } = window.nvComponents;
@@ -80,6 +81,7 @@ const ColorControl = ({
 					onChange={onChange}
 				/>
 			)}
+			{children}
 			<Dropdown
 				renderToggle={({ isOpen, onToggle }) => {
 					toggle = onToggle;

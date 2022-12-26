@@ -1,9 +1,20 @@
-import { Button, Dashicon } from '@wordpress/components';
+import {
+	ButtonGroup,
+	Button,
+	Dashicon,
+	Icon,
+	Modal,
+} from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { debounce } from 'lodash';
 import { Accordion, ColorControl } from '@neve-wp/components';
+import { useState } from '@wordpress/element';
 
 const PaletteColors = ({ values, save }) => {
+	const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+	const [willDelete, setWillDelete] = useState('');
+	const openDeleteModal = () => setDeleteModalOpen(true);
+	const closeDeleteModal = () => setDeleteModalOpen(false);
 	const addNewColor = () => {
 		const nextValues = { ...values };
 
@@ -44,6 +55,17 @@ const PaletteColors = ({ values, save }) => {
 		save(nextValues);
 	};
 
+	const deleteColor = () => {
+		if (!willDelete) {
+			return;
+		}
+
+		const nextValues = { ...values };
+		delete nextValues[willDelete];
+		save(nextValues);
+		closeDeleteModal();
+	};
+
 	return (
 		<>
 			<Accordion label={__('Custom Colors', 'neve')}>
@@ -66,7 +88,17 @@ const PaletteColors = ({ values, save }) => {
 										value
 									);
 								}, 100)}
-							/>
+							>
+								<div className="remove-custom-color-wrapper">
+									<Icon
+										onClick={() => {
+											setWillDelete(slug);
+											openDeleteModal();
+										}}
+										icon="trash"
+									/>
+								</div>
+							</ColorControl>
 						);
 					})}
 					<Button
@@ -79,6 +111,33 @@ const PaletteColors = ({ values, save }) => {
 						{__('Add Custom Color', 'neve')}
 						<Dashicon icon="plus-alt2" />
 					</Button>
+					{isDeleteModalOpen && (
+						<Modal
+							onRequestClose={closeDeleteModal}
+							title={__(
+								'Are you sure you want to delete a Custom Color?',
+								'neve'
+							)}
+						>
+							<p>
+								{__(
+									'If this color is currently used anywhere on your site, it will be switched to a default color.',
+									'neve'
+								)}
+							</p>
+							<ButtonGroup className="remove-custom-color-btn-wrapper">
+								<Button variant="primary" onClick={deleteColor}>
+									{__('Delete', 'neve')}
+								</Button>
+								<Button
+									variant="secondary"
+									onClick={closeDeleteModal}
+								>
+									{__('Cancel', 'neve')}
+								</Button>
+							</ButtonGroup>
+						</Modal>
+					)}
 				</div>
 			</Accordion>
 		</>
