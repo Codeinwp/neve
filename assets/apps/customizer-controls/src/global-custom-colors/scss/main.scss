@@ -35,6 +35,9 @@
 }
 
 .remove-custom-color-btn-wrapper {
+	display:flex;
+	justify-content: right;
+
 	button {
 		margin: 0 4px;
 	}
