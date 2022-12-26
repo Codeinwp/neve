@@ -18,18 +18,32 @@
 	}
 
 	.neve-color-component:hover {
-		.remove-custom-color-wrapper {
+		.action-icon-wrapper {
 			opacity: 1;
 			transition: all 0.5s;
 		}
 	}
 
-	.remove-custom-color-wrapper {
+	.action-icon-wrapper {
 		margin-right: 10px;
 		opacity: 0;
 
 		.dashicon {
 			cursor: pointer;
+		}
+	}
+
+	.custom-label-edit-wrapper {
+		display: inherit;
+		flex-grow: 2;
+		margin: 0;
+
+		div {
+			margin: 0;
+		}
+
+		button {
+			height: 30px;
 		}
 	}
 }

@@ -9,10 +9,12 @@ import { __ } from '@wordpress/i18n';
 import { debounce } from 'lodash';
 import { Accordion, ColorControl } from '@neve-wp/components';
 import { useState } from '@wordpress/element';
+import EditColorLabel from './EditColorLabel';
 
 const PaletteColors = ({ values, save }) => {
 	const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 	const [willDelete, setWillDelete] = useState('');
+	const [willEdit, setWillEdit] = useState('');
 	const openDeleteModal = () => setDeleteModalOpen(true);
 	const closeDeleteModal = () => setDeleteModalOpen(false);
 	const addNewColor = () => {
@@ -71,6 +73,19 @@ const PaletteColors = ({ values, save }) => {
 		closeDeleteModal();
 	};
 
+	const editLabel = (slug, newLabel) => {
+		const nextValues = { ...values };
+		if (nextValues[slug].label === newLabel) {
+			setWillEdit('');
+			return false;
+		}
+		nextValues[slug].label = newLabel;
+		save(nextValues);
+		setWillEdit('');
+	};
+
+	const editLabelCancel = () => setWillEdit('');
+
 	return (
 		<>
 			<Accordion label={__('Custom Colors', 'neve')}>
@@ -80,11 +95,13 @@ const PaletteColors = ({ values, save }) => {
 							return null;
 						}
 
+						const isEditing = willEdit === slug;
+
 						return (
 							<ColorControl
 								disableGlobal
 								key={slug}
-								label={values[slug].label}
+								label={!isEditing ? values[slug].label : null}
 								selectedColor={values[slug].val}
 								onChange={debounce((value) => {
 									updateColorInPalette(
@@ -94,7 +111,25 @@ const PaletteColors = ({ values, save }) => {
 									);
 								}, 100)}
 							>
-								<div className="remove-custom-color-wrapper">
+								{isEditing && (
+									<EditColorLabel
+										currentLabel={values[slug].label}
+										slug={slug}
+										save={editLabel}
+										cancel={editLabelCancel}
+									/>
+								)}
+								{!isEditing && (
+									<div className="action-icon-wrapper">
+										<Icon
+											onClick={() => {
+												setWillEdit(slug);
+											}}
+											icon="edit"
+										/>
+									</div>
+								)}
+								<div className="action-icon-wrapper">
 									<Icon
 										onClick={() => {
 											setWillDelete(slug);
