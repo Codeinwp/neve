@@ -442,7 +442,7 @@ function neve_get_global_colors_default( $migrated = false ) {
 		return [
 			'activePalette' => 'base',
 			'palettes'      => [
-				'base'         => [
+				'base'     => [
 					'name'          => __( 'Base', 'neve' ),
 					'allowDeletion' => false,
 					'colors'        => [
@@ -457,7 +457,7 @@ function neve_get_global_colors_default( $migrated = false ) {
 						'nv-c-2'              => '#be574b',
 					],
 				],
-				'darkMode'     => [
+				'darkMode' => [
 					'name'          => __( 'Dark Mode', 'neve' ),
 					'allowDeletion' => false,
 					'colors'        => [
@@ -471,11 +471,6 @@ function neve_get_global_colors_default( $migrated = false ) {
 						'nv-c-1'              => '#198754',
 						'nv-c-2'              => '#be574b',
 					],
-				],
-				'customColors' => [
-					'name'          => __( 'Custom', 'neve' ),
-					'allowDeletion' => false,
-					'colors'        => [],
 				],
 			],
 		];
