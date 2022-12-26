@@ -23,11 +23,15 @@ const PaletteColors = ({ values, save }) => {
 			return slug.substring(0, 7) === 'custom-';
 		});
 
-		customSlugs.sort();
+		const customSlugNumbers = customSlugs.map((slug) => {
+			return parseInt(slug.substring(7));
+		});
 
-		const lastSlug = customSlugs.at(-1);
-		const lastSlugNo = lastSlug.substring(7);
-		return parseInt(lastSlugNo) + 1;
+		customSlugNumbers.sort((a, b) => {
+			return a - b;
+		});
+
+		return customSlugNumbers.at(-1) + 1;
 	};
 
 	const updateColorInPalette = (colorSlug, label, val) => {

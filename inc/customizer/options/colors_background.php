@@ -177,7 +177,7 @@ class Colors_Background extends Base_Customizer {
 		}
 
 		foreach ( $value as $slug => $options ) {
-			$value[ $slug ]['label'] = sanitize_title( $options['label'] );
+			$value[ $slug ]['label'] = sanitize_text_field( $options['label'] );
 			$value[ $slug ]['value'] = neve_sanitize_colors( $options['value'] );
 		}
 
