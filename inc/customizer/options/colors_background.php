@@ -106,23 +106,12 @@ class Colors_Background extends Base_Customizer {
 			)
 		);
 
-		$default_custom_colors = [
-			'custom-1' => [
-				'label' => 'Custom 1',
-				'value' => '#ddd',
-			],
-			'custom-2' => [
-				'label' => 'Custom 2',
-				'value' => 'blue',
-			],
-		];
-
 		$this->add_control(
 			new Control(
 				'neve_global_custom_colors',
 				[
 					'sanitize_callback' => [ $this, 'sanitize_global_custom_colors' ],
-					'default'           => $default_custom_colors,
+					'default'           => [],
 					'transport'         => 'postMessage',
 				],
 				[
@@ -130,7 +119,7 @@ class Colors_Background extends Base_Customizer {
 					'priority'              => 10,
 					'section'               => 'neve_colors_background_section',
 					'type'                  => 'neve_global_custom_colors',
-					'default_values'        => $default_custom_colors,
+					'default_values'        => [],
 					'live_refresh_selector' => true,
 				],
 				'Neve\Customizer\Controls\React\Global_Custom_Colors'
@@ -177,7 +166,7 @@ class Colors_Background extends Base_Customizer {
 		}
 
 		foreach ( $value as $slug => $options ) {
-			$color = neve_sanitize_colors( $options['value'] );
+			$color = neve_sanitize_colors( $options['val'] );
 
 			if ( ! $color ) {
 				unset( $value[ $slug ] );
@@ -185,7 +174,7 @@ class Colors_Background extends Base_Customizer {
 			}
 
 			$value[ $slug ]['label'] = sanitize_text_field( $options['label'] );
-			$value[ $slug ]['value'] = $color;
+			$value[ $slug ]['val']   = $color;
 		}
 
 		return $value;

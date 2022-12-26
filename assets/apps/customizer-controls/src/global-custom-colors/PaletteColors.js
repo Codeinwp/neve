@@ -22,7 +22,7 @@ const PaletteColors = ({ values, save }) => {
 
 		nextValues[`custom-${newId}`] = {
 			label: `Custom ${newId}`,
-			value: '#fff',
+			val: '#fff',
 		};
 
 		save(nextValues);
@@ -30,7 +30,12 @@ const PaletteColors = ({ values, save }) => {
 
 	// Returns available slot number for new custom color (sorts slugs which starts with "custom-")
 	const newColorSlot = () => {
-		const customSlugs = Object.keys(values).filter((slug) => {
+		const slugs = Object.keys(values);
+		if (slugs.length === 0) {
+			return 1;
+		}
+
+		const customSlugs = slugs.filter((slug) => {
 			return slug.substring(0, 7) === 'custom-';
 		});
 
@@ -47,11 +52,11 @@ const PaletteColors = ({ values, save }) => {
 
 	const updateColorInPalette = (colorSlug, label, val) => {
 		const nextValues = { ...values };
-		if (nextValues[colorSlug].value === val) {
+		if (nextValues[colorSlug].val === val) {
 			return false;
 		}
 		nextValues[colorSlug].label = label;
-		nextValues[colorSlug].value = val;
+		nextValues[colorSlug].val = val;
 		save(nextValues);
 	};
 
@@ -80,7 +85,7 @@ const PaletteColors = ({ values, save }) => {
 								disableGlobal
 								key={slug}
 								label={values[slug].label}
-								selectedColor={values[slug].value}
+								selectedColor={values[slug].val}
 								onChange={debounce((value) => {
 									updateColorInPalette(
 										slug,

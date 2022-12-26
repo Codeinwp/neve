@@ -128,6 +128,10 @@ class Front_End {
 			),
 		];
 
+		// Add custom global colors
+		$global_custom_colors = Mods::get( Config::MODS_GLOBAL_CUSTOM_COLORS, [] );
+		$from_global_colors   = array_merge( $from_global_colors, $global_custom_colors );
+
 		foreach ( $from_global_colors as $slug => $args ) {
 			array_push(
 				$gutenberg_color_palette,
