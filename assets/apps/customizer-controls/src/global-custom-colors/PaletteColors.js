@@ -9,6 +9,7 @@ import { __ } from '@wordpress/i18n';
 import { debounce } from 'lodash';
 import { Accordion, ColorControl } from '@neve-wp/components';
 import { useState } from '@wordpress/element';
+import { cleanForSlug } from '@wordpress/url';
 import EditColorLabel from './EditColorLabel';
 
 const PaletteColors = ({ values, save }) => {
@@ -73,13 +74,23 @@ const PaletteColors = ({ values, save }) => {
 		closeDeleteModal();
 	};
 
+	// updates label&slug
 	const editLabel = (slug, newLabel) => {
 		const nextValues = { ...values };
 		if (nextValues[slug].label === newLabel) {
 			setWillEdit('');
 			return false;
 		}
-		nextValues[slug].label = newLabel;
+
+		// TODO: duplicate check can be added.
+
+		nextValues[cleanForSlug(newLabel)] = {
+			label: newLabel,
+			val: nextValues[slug].val,
+		};
+
+		delete nextValues[slug];
+
 		save(nextValues);
 		setWillEdit('');
 	};
