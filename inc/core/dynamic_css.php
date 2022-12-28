@@ -7,6 +7,8 @@ namespace Neve\Core;
 use Neve\Core\Styles\Frontend;
 use Neve\Core\Styles\Generator;
 use Neve\Core\Styles\Gutenberg;
+use Neve\Core\Settings\Mods;
+use Neve\Core\Settings\Config;
 
 class Dynamic_Css {
 	const FRONTEND_HANDLE = 'neve-style';
@@ -135,6 +137,21 @@ class Dynamic_Css {
 	}
 
 	/**
+	 * Get color values of the custom global colors
+	 *
+	 * @return string[] colors values HEX, RGB etc.
+	 */
+	private static function get_global_custom_colors() {
+		$colors = [];
+
+		foreach( Mods::get( Config::MODS_GLOBAL_CUSTOM_COLORS, [] ) as $slug=>$args ) {
+			$colors[$slug] = $args['val'];
+		}
+
+		return $colors;
+	}
+
+	/**
 	 * Returns CSS vars style.
 	 *
 	 * @return string
@@ -162,9 +179,11 @@ class Dynamic_Css {
 			return '';
 		}
 
+		$colors = array_merge( $palette[ 'colors' ], self::get_global_custom_colors() );
+
 		$css = '';
 
-		foreach ( $palette[ 'colors' ] as $slug => $color ) {
+		foreach ( $colors as $slug => $color ) {
 			$css .= '--' . $slug . ':' . $color . ';';
 		}
 
