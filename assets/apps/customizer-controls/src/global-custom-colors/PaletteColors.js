@@ -1,17 +1,11 @@
 /* global NeveReactCustomize */
-import {
-	ButtonGroup,
-	Button,
-	Dashicon,
-	Icon,
-	Modal,
-} from '@wordpress/components';
+import { ButtonGroup, Button, Icon, Modal } from '@wordpress/components';
 import { sprintf, __ } from '@wordpress/i18n';
 import { debounce } from 'lodash';
 import { Accordion, ColorControl } from '@neve-wp/components';
 import { useState, useEffect } from '@wordpress/element';
 import EditColorLabel from './EditColorLabel';
-import { warning } from '@wordpress/icons';
+import { warning, plus } from '@wordpress/icons';
 
 const PaletteColors = ({ values, save }) => {
 	const CUSTOM_COLOR_LIMIT = Number(
@@ -163,7 +157,7 @@ const PaletteColors = ({ values, save }) => {
 						variant="secondary"
 					>
 						{__('Add Custom Color', 'neve')}
-						<Dashicon icon="plus-alt2" />
+						<Icon icon={plus} />
 					</Button>
 					{isHitLimit && (
 						<div className="cc-limit-notice">
