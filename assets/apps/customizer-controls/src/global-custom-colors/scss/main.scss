@@ -46,6 +46,16 @@
 			height: 30px;
 		}
 	}
+
+	.cc-limit-notice {
+		display: flex;
+		align-items: center;
+
+		p {
+			margin: 0;
+			font-size: 12px;
+		}
+	}
 }
 
 .remove-custom-color-btn-wrapper {

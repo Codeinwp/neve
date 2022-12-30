@@ -20,6 +20,8 @@ use Neve\Customizer\Types\Section;
  * @package Neve\Customizer\Options
  */
 class Colors_Background extends Base_Customizer {
+	const CUSTOM_COLOR_LIMIT = 30;
+
 	/**
 	 * Function that should be extended to add customizer controls.
 	 *
@@ -163,6 +165,10 @@ class Colors_Background extends Base_Customizer {
 		// `flag` key is used to trigger setting change on deep state changes inside the palettes.
 		if ( isset( $value['flag'] ) ) {
 			unset( $value['flag'] );
+		}
+
+		if ( count( $value ) > self::CUSTOM_COLOR_LIMIT ) {
+			$value = array_slice( $value, 0, self::CUSTOM_COLOR_LIMIT );
 		}
 
 		foreach ( $value as $slug => $options ) {
