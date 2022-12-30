@@ -1,3 +1,4 @@
+/* global NeveReactCustomize */
 import {
 	ButtonGroup,
 	Button,
@@ -13,7 +14,9 @@ import EditColorLabel from './EditColorLabel';
 import { warning } from '@wordpress/icons';
 
 const PaletteColors = ({ values, save }) => {
-	const CUSTOM_COLOR_LIMIT = 30;
+	const CUSTOM_COLOR_LIMIT = Number(
+		NeveReactCustomize.allowedGlobalCustomColor
+	);
 
 	const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 	const [willDelete, setWillDelete] = useState('');
@@ -23,9 +26,8 @@ const PaletteColors = ({ values, save }) => {
 	const closeDeleteModal = () => setDeleteModalOpen(false);
 
 	useEffect(() => {
-		const { ...colors } = values;
-		delete colors.flag;
-		setHitlimit(Object.keys(colors).length >= CUSTOM_COLOR_LIMIT);
+		const slugs = Object.keys(values).filter((slug) => slug !== 'flag');
+		setHitlimit(slugs.length >= CUSTOM_COLOR_LIMIT);
 	}, [values]);
 
 	const addNewColor = () => {
