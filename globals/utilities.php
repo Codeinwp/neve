@@ -765,21 +765,3 @@ function neve_get_default_meta_value( $field, $default ) {
 
 	return array_values( $new_control_data );
 }
-
-/**
- * Get the name of the sidebar that needs to be rendered.
- *
- * @param string $fallback Fallback value to return.
- */
-function neve_get_sidebar_name( $fallback ) {
-	if ( ! get_option( 'nv_pro_custom_sidebars_status' ) ) {
-		return $fallback;
-	}
-	if ( ! class_exists( '\Neve_Pro\Modules\Custom_Sidebars\Sidebars_Manager', false ) ) {
-		return $fallback;
-	}
-
-	$manager    = new \Neve_Pro\Modules\Custom_Sidebars\Sidebars_Manager();
-	$sidebar_id = $manager->maybe_get_sidebar_that_matches();
-	return ! empty( $sidebar_id ) && is_active_sidebar( $sidebar_id ) ? $sidebar_id : $fallback;
-}
