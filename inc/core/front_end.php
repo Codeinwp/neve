@@ -513,8 +513,6 @@ class Front_End {
 			return $current_styles;
 		}
 
-		// TODO: maybe, execute that function only if the page use Gutenberg blocks.
-
 		foreach ( Mods::get( Config::MODS_GLOBAL_CUSTOM_COLORS, [] ) as $slug => $args ) {
 			$css_var         = sprintf( 'var(--%s) !important', $slug );
 			$current_styles .= sprintf( '.has-%s-color {color:%s} .has-%s-background-color {background-color:%s}', $slug, $css_var, $slug, $css_var );
