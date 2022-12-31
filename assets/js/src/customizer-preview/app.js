@@ -608,25 +608,6 @@ window.addEventListener('load', function () {
 							globalColorsCSS += '}';
 							cssTag.innerHTML = globalColorsCSS;
 							break;
-						case 'Neve\\Customizer\\Controls\\React\\Global_Custom_Colors':
-							const cssTagC = document.querySelector(
-								'#nv-css-vars-inline-css'
-							);
-
-							let globalCColorsCSS = ':root{';
-							Object.keys(newValue).map((slug) => {
-								globalCColorsCSS += `--${slug}:${newValue[slug].val};`;
-								if (typeof elementorFrontend !== 'undefined') {
-									globalCColorsCSS += `--e-global-color-${slug.replaceAll(
-										'-',
-										''
-									)}:${newValue[slug].val};`;
-								}
-								return false;
-							});
-							globalCColorsCSS += '}';
-							cssTagC.innerHTML = globalCColorsCSS;
-							break;
 					}
 				});
 			});

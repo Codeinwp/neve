@@ -114,7 +114,7 @@ class Colors_Background extends Base_Customizer {
 				[
 					'sanitize_callback' => [ $this, 'sanitize_global_custom_colors' ],
 					'default'           => [],
-					'transport'         => 'postMessage',
+					'transport'         => 'refresh',
 				],
 				[
 					'label'                 => __( 'Custom Colors', 'neve' ),
