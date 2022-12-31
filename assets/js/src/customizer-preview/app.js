@@ -609,7 +609,7 @@ window.addEventListener('load', function () {
 							cssTag.innerHTML = globalColorsCSS;
 							break;
 						case 'Neve\\Customizer\\Controls\\React\\Global_Custom_Colors':
-							const cCssTag = document.querySelector(
+							const cssTagC = document.querySelector(
 								'#nv-css-vars-inline-css'
 							);
 
@@ -625,7 +625,7 @@ window.addEventListener('load', function () {
 								return false;
 							});
 							globalCColorsCSS += '}';
-							cCssTag.innerHTML = globalCColorsCSS;
+							cssTagC.innerHTML = globalCColorsCSS;
 							break;
 					}
 				});

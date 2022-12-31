@@ -102,7 +102,7 @@ class Dynamic_Css {
 		wp_register_style( 'nv-css-vars', false );
 		wp_enqueue_style( 'nv-css-vars' );
 
-		$css = ':root{' . $this->get_css_vars(true) . '}';
+		$css = ':root{' . $this->get_css_vars() . '}';
 		$css .= apply_filters( 'neve_after_css_root', $css );
 		wp_add_inline_style( 'nv-css-vars', self::minify_css($css ) );
 	}
@@ -156,7 +156,7 @@ class Dynamic_Css {
 	 *
 	 * @return string
 	 */
-	private static function get_css_vars($supress_custom=false) {
+	private static function get_css_vars() {
 		$global_colors = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
 
 		if ( empty( $global_colors ) ) {
@@ -179,7 +179,7 @@ class Dynamic_Css {
 			return '';
 		}
 
-		$colors = ( $supress_custom === false ) ? array_merge( $palette[ 'colors' ], self::get_global_custom_colors() ) : $palette[ 'colors' ];
+		$colors = array_merge( $palette[ 'colors' ], self::get_global_custom_colors() );
 
 		$css = '';
 
