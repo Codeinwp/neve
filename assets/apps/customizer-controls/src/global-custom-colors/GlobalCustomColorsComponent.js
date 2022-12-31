@@ -16,22 +16,6 @@ const GlobalColorsComponent = ({ control }) => {
 			nextValue.flag = true;
 		}
 		control.setting.set(nextValue);
-
-		// //CSS Tag Update
-		// const cssTag = document.querySelector('#nv-css-vars-inline-css');
-		// const { activePalette, palettes } = nextValue;
-		// const currentPalette = palettes[activePalette];
-		// const { colors } = currentPalette;
-
-		// let style = ':root{';
-
-		// Object.keys(colors).map((slug) => {
-		// 	style += `--${slug}:${colors[slug]};`;
-		// 	return false;
-		// });
-		// style += '}';
-
-		// cssTag.innerHTML = style;
 	};
 
 	return (
