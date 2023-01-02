@@ -18,9 +18,9 @@ const PaletteColors = ({ values, save }) => {
 	const [isHitLimit, setHitlimit] = useState(false);
 	const openDeleteModal = () => setDeleteModalOpen(true);
 	const closeDeleteModal = () => setDeleteModalOpen(false);
+	const slugs = Object.keys(values).filter((slug) => slug !== 'flag');
 
 	useEffect(() => {
-		const slugs = Object.keys(values).filter((slug) => slug !== 'flag');
 		setHitlimit(slugs.length >= CUSTOM_COLOR_LIMIT);
 	}, [values]);
 
@@ -39,7 +39,6 @@ const PaletteColors = ({ values, save }) => {
 
 	// Returns available slot number for new custom color (sorts slugs which starts with "custom-")
 	const newColorSlot = () => {
-		const slugs = Object.keys(values);
 		if (slugs.length === 0) {
 			return 1;
 		}
@@ -97,7 +96,7 @@ const PaletteColors = ({ values, save }) => {
 		<>
 			<Accordion label={__('Custom Colors', 'neve')}>
 				<div className="color-array-wrap">
-					{Object.keys(values).map((slug) => {
+					{slugs.map((slug) => {
 						if (slug === 'flag') {
 							return null;
 						}
