@@ -7,21 +7,25 @@
 
 namespace Neve\Compatibility;
 
+use Neve\Core\Dynamic_Css;
+use Neve\Customizer\Loader;
+use WP_Admin_Bar;
+use WP_Customize_Manager;
+
 /**
  * Class Fse
  */
 class Fse {
+	/**
+	 * Theme mod used for main flag.
+	 */
+	const FSE_ENABLED_SLUG = 'neve_enable_fse_templates';
 	/**
 	 * Templates.
 	 *
 	 * @var array
 	 */
 	private $templates = [];
-
-	/**
-	 * @var bool[]
-	 */
-	private $conditions = [];
 
 	/**
 	 * Customizer Section.
@@ -41,48 +45,61 @@ class Fse {
 			'404'        => __( '404', 'neve' ),
 			'search'     => __( 'Search', 'neve' ),
 			'page'       => __( 'Page', 'neve' ),
-			'single'     => __( 'Single', 'neve' ),
+			'single'     => __( 'Single Post', 'neve' ),
 		];
-
-		$this->conditions = [
-			'index' => $this->is_blog(),
-		];
-
-
-//		error_log( var_export( $this->conditions, true ) );
 	}
 
 	/**
 	 * Init hooks.
 	 */
 	public function init() {
+		if ( ! class_exists( '\WP_Theme_JSON_Data', false ) ) {
+			return;
+		}
+
+		// Customizer.
 		add_action( 'customize_register', [ $this, 'add_controls' ] );
+		add_action( 'customize_controls_enqueue_scripts', [ $this, 'add_styles' ] );
+
+		// Remove site editor menu in admin bar and dashboard.
+		add_action( 'admin_bar_menu', [ $this, 'remove_admin_bar_menu' ], PHP_INT_MAX );
+		add_action( 'admin_menu', [ $this, 'remove_dashboard_menu' ], PHP_INT_MAX );
+
+		// Filter out block templates (they load by default).
 		add_filter( 'get_block_templates', [ $this, 'filter_templates' ], 10, 3 );
 
-		if ( $this->should_load() ) {
-			add_action( 'after_setup_theme', [ $this, 'add_theme_support' ] );
-			add_filter( 'theme_file_path', [ $this, 'fix_file_path' ], 10, 2 );
-			add_action( 'admin_init', [ $this, 'squash_redirect' ] );
-//			add_filter( 'wp_redirect', [ $this, 'shortcircuit_redirect' ] );
 
-			add_action( 'wp_body_open', [ $this, 'handle_header' ], PHP_INT_MAX );
-			add_action( 'wp_footer', [ $this, 'handle_footer' ], PHP_INT_MIN );
+		add_action( 'admin_init', [ $this, 'shortcircuit_redirect' ] );
+
+		// Theme header/footer
+		add_action( 'wp_body_open', [ $this, 'handle_header' ], PHP_INT_MAX );
+		add_action( 'wp_footer', [ $this, 'handle_footer' ], PHP_INT_MIN );
+
+	}
+
+	/**
+	 * Remove admin bar menu item.
+	 *
+	 * @param WP_Admin_Bar $wp_admin_bar the WP_Admin_Bar instance.
+	 *
+	 * @return void
+	 */
+	public function remove_admin_bar_menu( WP_Admin_Bar $wp_admin_bar ) {
+		if ( $this->is_enabled() ) {
+			return;
 		}
+		$wp_admin_bar->remove_node( 'site-editor' );
 	}
-
-	public function shortcircuit_redirect($location) {
-
-		error_log( var_export ( $location, true ) );
-
-		return $location;
-	}
-
-	public function handle_header() {
-		do_action( 'neve_do_header' );
-	}
-
-	public function handle_footer() {
-		do_action( 'neve_do_footer' );
+	/**
+	 * Remove dashboard menu item.
+	 *
+	 * @return void
+	 */
+	public function remove_dashboard_menu() {
+		if ( $this->is_enabled() ) {
+			return;
+		}
+		remove_submenu_page( 'themes.php', 'site-editor.php' );
 	}
 
 	/**
@@ -90,7 +107,11 @@ class Fse {
 	 *
 	 * @return void
 	 */
-	public function squash_redirect() {
+	public function shortcircuit_redirect() {
+		if ( ! $this->should_load( true ) ) {
+			return;
+		}
+
 		global $pagenow;
 
 		if ( $pagenow !== 'site-editor.php' ) {
@@ -126,6 +147,76 @@ class Fse {
 	}
 
 	/**
+	 * Set up the conditions to check if we're on a specific template.
+	 *
+	 * @return array
+	 */
+	public function get_template_conditions() {
+		return [
+			'index'      => $this->is_blog(),
+			'front-page' => $this->is_front_page(),
+			'archive'    => is_archive(),
+			'404'        => is_404(),
+			'search'     => is_search(),
+			'page'       => is_singular( 'page' ) && ! $this->is_front_page(),
+			'single'     => is_singular( 'post' ),
+		];
+	}
+
+	/**
+	 * Handle header.
+	 *
+	 * @return void
+	 */
+	public function handle_header() {
+		$this->handle_theme_part( 'header' );
+	}
+
+	/**
+	 * Handle footer.
+	 *
+	 * @return void
+	 */
+	public function handle_footer() {
+		$this->handle_theme_part( 'footer' );
+	}
+
+	/**
+	 * Handle theme part.
+	 *
+	 * @param string $part the theme part to handle - [header|footer].
+	 *
+	 * @return void
+	 */
+	public function handle_theme_part( $part ) {
+		if ( ! in_array( $part, [ 'header', 'footer' ], true ) ) {
+			return;
+		}
+
+		if ( ! $this->should_load() ) {
+			return;
+		}
+
+		$template = $this->get_template_slug();
+
+		if ( $template === null ) {
+			return;
+		}
+
+		if ( ! $this->is_template_enabled( $template ) ) {
+			return;
+		}
+
+		$option = $part === 'header' ? $this->get_option_slug_for_header( $template ) : $this->get_option_slug_for_footer( $template );
+
+		if ( get_theme_mod( $option, true ) !== true ) {
+			return;
+		}
+
+		do_action( 'neve_do_' . $part );
+	}
+
+	/**
 	 * Filters the array of queried block templates array after they've been fetched.
 	 *
 	 * @param \WP_Block_Template[] $query_result Array of found block templates.
@@ -144,6 +235,11 @@ class Fse {
 		foreach ( $query_result as $key => $template ) {
 			$enabled = $this->is_template_enabled( $template->slug );
 
+			// Page should not affect the front page.
+			if ( $template->slug === 'page' && $this->is_front_page() ) {
+				$enabled = false;
+			}
+
 			if ( $enabled ) {
 				continue;
 			}
@@ -155,36 +251,13 @@ class Fse {
 	}
 
 	/**
-	 * Add the block templates theme support.
-	 *
-	 * @return void
-	 */
-	public function add_theme_support() {
-		add_theme_support( 'block-templates' );
-	}
-
-	/**
-	 * @param string $path The file path.
-	 * @param string $file The file relative to the root of the theme.
-	 *
-	 * @return mixed|string
-	 */
-	public function fix_file_path( $path, $file ) {
-		if ( $file === 'templates/index.html' ) {
-			return get_template_directory() . '/templates/front-page.html';
-		}
-
-		return $path;
-	}
-
-	/**
 	 * Add customizer controls.
 	 *
-	 * @param \WP_Customize_Manager $wp_customize the customizer manager.
+	 * @param WP_Customize_Manager $wp_customize the customizer manager.
 	 *
 	 * @return void
 	 */
-	public function add_controls( $wp_customize ) {
+	public function add_controls( WP_Customize_Manager $wp_customize ) {
 		$wp_customize->add_section(
 			$this->customize_section,
 			array(
@@ -194,7 +267,7 @@ class Fse {
 		);
 
 		$wp_customize->add_setting(
-			'neve_enable_fse_templates',
+			self::FSE_ENABLED_SLUG,
 			array(
 				'default'           => false,
 				'sanitize_callback' => 'neve_sanitize_checkbox',
@@ -202,7 +275,7 @@ class Fse {
 		);
 
 		$wp_customize->add_control(
-			'neve_enable_fse_templates',
+			self::FSE_ENABLED_SLUG,
 			array(
 				'label'       => __( 'Enable FSE Templates', 'neve' ),
 				'description' => __( 'Enable this to use the FSE templates instead of the default ones.', 'neve' ),
@@ -214,18 +287,24 @@ class Fse {
 		$priority = 10;
 
 		foreach ( $this->templates as $slug => $label ) {
-			$wp_customize->add_setting( 'neve_fse_heading_' . $slug, array(
-				'sanitize_callback' => 'sanitize_text_field',
-			) );
-			$wp_customize->add_control( new \Neve\Customizer\Controls\Heading( $wp_customize, 'neve_fse_heading_' . $slug, array(
-				'section'          => $this->customize_section,
-				'active_callback'  => [ $this, 'is_enabled' ],
-				'class'            => 'fse-heading-' . $slug,
-				'priority'         => $priority,
-				'label'            => $label,
-				'accordion'        => true,
-				'controls_to_wrap' => 3,
-			) ) );
+			$wp_customize->add_setting(
+				'neve_fse_heading_' . $slug,
+				array(
+					'sanitize_callback' => 'sanitize_text_field',
+				)
+			);
+			$wp_customize->add_control(
+				new \Neve\Customizer\Controls\React\Heading(
+					$wp_customize,
+					'neve_fse_heading_' . $slug,
+					array(
+						'section'         => $this->customize_section,
+						'active_callback' => [ $this, 'is_enabled' ],
+						'priority'        => $priority,
+						'label'           => $label,
+					)
+				)
+			);
 
 			$priority ++;
 
@@ -262,11 +341,11 @@ class Fse {
 				$this->get_option_slug_for_header( $slug ),
 				array(
 					'active_callback' => function () use ( $slug ) {
-						return $this->is_template_enabled( $slug );
+						return $this->is_enabled() && $this->is_template_enabled( $slug );
 					},
 					'section'         => $this->customize_section,
 					'priority'        => $priority,
-					'label'           => __( 'Enable Header', 'neve' ),
+					'label'           => __( 'Header', 'neve' ),
 					'type'            => 'neve_toggle_control',
 				)
 			);
@@ -285,11 +364,11 @@ class Fse {
 				$this->get_option_slug_for_footer( $slug ),
 				array(
 					'active_callback' => function () use ( $slug ) {
-						return $this->is_template_enabled( $slug );
+						return $this->is_enabled() && $this->is_template_enabled( $slug );
 					},
 					'section'         => $this->customize_section,
 					'priority'        => $priority,
-					'label'           => __( 'Enable Footer', 'neve' ),
+					'label'           => __( 'Footer', 'neve' ),
 					'type'            => 'neve_toggle_control',
 				)
 			);
@@ -298,6 +377,26 @@ class Fse {
 		}
 	}
 
+	/**
+	 * Checks if template condition is met.
+	 *
+	 * @return string|null
+	 */
+	public function get_template_slug() {
+		foreach ( $this->get_template_conditions() as $slug => $condition ) {
+			if ( ! $condition ) {
+				continue;
+			}
+
+			if ( $slug === 'page' && $this->is_front_page() ) {
+				continue;
+			}
+
+			return $slug;
+		}
+
+		return null;
+	}
 
 	/**
 	 * Check if the FSE templates are enabled.
@@ -305,7 +404,7 @@ class Fse {
 	 * @return bool
 	 */
 	public function is_enabled() {
-		return get_theme_mod( 'neve_enable_fse_templates', false );
+		return get_theme_mod( self::FSE_ENABLED_SLUG, false );
 	}
 
 	/**
@@ -313,15 +412,18 @@ class Fse {
 	 *
 	 * @return bool
 	 */
-	public function should_load() {
+	private function should_load( $admin = false ) {
 		if ( ! $this->is_enabled() ) {
-
 			return false;
+		}
+
+		if ( $admin ) {
+			return true;
 		}
 
 		$status = array_map(
 			function ( $template ) {
-				return $this->is_template_enabled( $template );
+				return $this->is_template_enabled( $template ) && $this->get_template_slug() === $template;
 			},
 			array_keys( $this->templates )
 		);
@@ -366,7 +468,6 @@ class Fse {
 		return 'neve_fse_footer_' . $template;
 	}
 
-
 	/**
 	 * Is specific template enabled.
 	 *
@@ -379,29 +480,51 @@ class Fse {
 	}
 
 	/**
-	 * Is header enabled for template.
-	 *
-	 * @param string $template the template slug.
+	 * Check if the current page is blog.
 	 *
 	 * @return bool
 	 */
-	public function is_header_enabled( $template ) {
-		return get_theme_mod( $this->get_option_slug_for_header( $template ), true );
+	private function is_blog() {
+		return is_home() && ! is_front_page();
 	}
-
 
 	/**
-	 * Is footer enabled for template.
-	 *
-	 * @param string $template the template slug.
+	 * Check if current page is front page.
 	 *
 	 * @return bool
 	 */
-	public function is_footer_enabled( $template ) {
-		return get_theme_mod( $this->get_option_slug_for_footer( $template ), true );
+	private function is_front_page() {
+		return 'page' == get_option( 'show_on_front' ) && absint( get_option( 'page_on_front' ) ) === get_the_ID();
 	}
 
-	public function is_blog() {
-		return is_home() && ! is_front_page();
+	/**
+	 * Customizer inline styles.
+	 *
+	 * @return void
+	 */
+	public function add_styles() {
+		$css = '
+			#sub-accordion-section-neve_fse .customize-control-neve_toggle_control,
+			#sub-accordion-section-neve_fse .customize-control-neve_customizer_heading { margin: 0; }
+			#sub-accordion-section-neve_fse .customize-control-neve_customizer_heading  {margin-top: 10px;}
+			#sub-accordion-section-neve_fse [id*="neve_fse_header"] .neve-white-background-control,
+			#sub-accordion-section-neve_fse [id*="neve_fse_footer"] .neve-white-background-control {padding-left: 30px;}
+
+			#accordion-section-neve_fse h3:before {
+				content: "BETA";
+				background-color: #0065a6;
+				display: inline-flex;
+				margin-right: 5px;
+				border-radius: 3px;
+				color: #fff;
+				font-size: 11px;
+				font-weight: 500;
+				padding: 0 7px;
+				height: 100%;
+				line-height: 1.6;
+			}
+			';
+
+		wp_add_inline_style( Loader::CUSTOMIZER_STYLE_HANDLE, Dynamic_Css::minify_css( $css ) );
 	}
 }
