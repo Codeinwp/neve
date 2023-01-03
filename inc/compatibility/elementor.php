@@ -445,11 +445,11 @@ class Elementor extends Page_Builder_Base {
 		 */
 		$conditions_manager = self::get_condition_manager();
 
-		if ( ! is_object( $conditions_manager ) || ! method_exists( $conditions_manager, 'get_documents_for_location' ) ) {
+		if ( ! is_object( $conditions_manager ) || ! method_exists( $conditions_manager, 'get_location_templates' ) ) {
 			return false;
 		}
 
-		$templates = $conditions_manager->get_documents_for_location( $location );
+		$templates = $conditions_manager->get_location_templates( $location );
 
 		self::$cache_cp_has_template[ $location ] = ( count( $templates ) > 0 );
 
