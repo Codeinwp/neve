@@ -117,7 +117,7 @@ class Admin {
 		if ( empty( $screen ) ) {
 			return;
 		}
-		if ( $screen->id !== 'dashboard' ) {
+		if ( ! in_array( $screen->id, [ 'dashboard', 'themes' ], true ) ) {
 			return;
 		}
 
@@ -656,7 +656,7 @@ class Admin {
 		?>
 		<script type="text/javascript">
 			function handleNoticeActions($) {
-				var actions = $('.nv-welcome-notice').find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
+				var actions = $('.nv-welcome-notice').find('.notice-dismiss, .ti-return-dashboard, .options-page-btn')
 				$.each(actions, function (index, actionButton) {
 					$(actionButton).on('click', function (e) {
 						e.preventDefault()
