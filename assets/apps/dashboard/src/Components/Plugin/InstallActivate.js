@@ -2,7 +2,7 @@
 import { get } from '../../utils/rest';
 import { __ } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
-import { Button, Dashicon } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 
 const InstallActivate = ({
 	labels = {},
@@ -25,7 +25,6 @@ const InstallActivate = ({
 		activating: `${__('Activating', 'neve')}...`,
 		installActivate: __('Install and Activate', 'neve'),
 		activate: __('Activate', 'neve'),
-		installed: __('Installed', 'neve'),
 	});
 
 	const setCustomLabels = (customLabels) => {
@@ -44,9 +43,6 @@ const InstallActivate = ({
 				installActivate: customLabels.installActivate,
 			}),
 			...(customLabels.activate && { activate: customLabels.activate }),
-			...(customLabels.installed && {
-				installed: customLabels.installed,
-			}),
 		});
 	};
 
@@ -165,18 +161,13 @@ const InstallActivate = ({
 						: getLabel('activate')}
 				</Button>
 			),
-			deactivate: (
-				<span className="installed">
-					<Dashicon size={14} icon="yes-alt" />
-					{getLabel('installed')}
-				</span>
-			),
 		};
 
 		return (
 			<>
 				{description}
-				{buttonMap[currentState]}
+				{buttonMap.hasOwnProperty(currentState) &&
+					buttonMap[currentState]}
 			</>
 		);
 	};
