@@ -52,6 +52,8 @@ class Plugin_Helper {
 				return $slug . '/adblock-notify.php';
 			case 'feedzy-rss-feeds':
 				return $slug . '/feedzy-rss-feed.php';
+			case 'wp-cloudflare-page-cache':
+				return $slug . '/wp-cloudflare-super-page-cache.php';
 			default:
 				return $slug . '/' . $slug . '.php';
 		}
