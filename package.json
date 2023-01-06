@@ -156,8 +156,7 @@
 		"webpack-cli": "^4.9.0"
 	},
 	"scripts": {
-		"build": "npm-run-all build:* && npm run makepot",
-		"makepot": "bash ./bin/makepot.sh",
+		"build": "npm-run-all build:*",
 		"build:ui-components": "wp-scripts build assets/apps/components/src/components.js --output-path=assets/apps/components/build --env=nevePackage",
 		"build:customizer": "wp-scripts build assets/apps/customizer-controls/src/controls.js --output-path=assets/apps/customizer-controls/build",
 		"build:ss-notice": "wp-scripts build assets/apps/starter-sites/src/notice.js --output-path=assets/apps/starter-sites/build",
@@ -165,7 +164,8 @@
 		"build:metabox": "wp-scripts build assets/apps/metabox/src/index.js --output-path=assets/apps/metabox/build",
 		"build:rollup": "rollup -c ./rollup.config.js",
 		"build:grunt": "grunt build",
-	    "test:e2e:playwright": "playwright test --config e2e-tests/playwright.config.ts --reporter=list",
+	  	"build:makepot": "bash ./bin/makepot.sh",
+	  	"test:e2e:playwright": "playwright test --config e2e-tests/playwright.config.ts --reporter=list",
 	    "phpcbf": "composer run-script format || true ",
 		"phpcs": "composer run-script phpcs",
 		"git:add": "git add *.css assets/**/*.css assets/**/*.js",

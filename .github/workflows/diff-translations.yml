@@ -20,7 +20,9 @@ jobs:
         run: |
          cd neve-head
          ls languages/
-         npm run makepot
+         composer install --no-dev --prefer-dist --no-progress --no-suggest
+         yarn install --frozen-lockfile
+         yarn run build
          ls languages/
       - name: Checkout Ref Head
         uses: actions/checkout@v2
@@ -31,7 +33,9 @@ jobs:
         run: |
          cd neve-base
          ls languages/
-         npm run makepot
+         composer install --no-dev --prefer-dist --no-progress --no-suggest
+         yarn install --frozen-lockfile
+         yarn run build
          ls languages/
       - name: Find Comment
         uses: peter-evans/find-comment@v1
