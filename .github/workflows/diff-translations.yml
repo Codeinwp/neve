@@ -20,7 +20,7 @@ jobs:
         run: |
          cd neve-head
          ls languages/
-         npm run build:makepot
+         npm run makepot
          ls languages/
       - name: Checkout Ref Head
         uses: actions/checkout@v2
@@ -31,7 +31,7 @@ jobs:
         run: |
          cd neve-base
          ls languages/
-         npm run build:makepot
+         npm run makepot
          ls languages/
       - name: Find Comment
         uses: peter-evans/find-comment@v1

@@ -156,8 +156,8 @@
 		"webpack-cli": "^4.9.0"
 	},
 	"scripts": {
-		"build": "npm-run-all build:*",
-		"build:makepot": "docker run --user root --rm --volume  \"$(pwd):/var/www/html/neve\" wordpress:cli bash -c 'php -d memory_limit=1024M \"$(which wp)\" i18n make-pot ./neve/ ./neve/languages/neve.pot --headers={\\\"Last-Translator\\\":\\\"friends@themeisle.com\\\"\\,\\\"Project-Id-Version\\\":\\\"Neve\\\"\\,\\\"Report-Msgid-Bugs-To\\\":\\\"https://github.com/Codeinwp/neve/issues\\\"\\} --allow-root --exclude=dist,build,bundle,e2e-tests '",
+		"build": "npm-run-all build:* && npm run makepot",
+		"makepot": "bash ./bin/makepot.sh",
 		"build:ui-components": "wp-scripts build assets/apps/components/src/components.js --output-path=assets/apps/components/build --env=nevePackage",
 		"build:customizer": "wp-scripts build assets/apps/customizer-controls/src/controls.js --output-path=assets/apps/customizer-controls/build",
 		"build:ss-notice": "wp-scripts build assets/apps/starter-sites/src/notice.js --output-path=assets/apps/starter-sites/build",
