@@ -159,7 +159,7 @@ class Loader {
 		foreach ( $chunks as $index => $fonts_chunk ) {
 			wp_enqueue_style(
 				'neve-fonts-control-google-fonts-' . $index,
-				'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=Abc"',
+				'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=AbcTtheigrownfoxJumpsvlazydg"',
 				[],
 				NEVE_VERSION
 			);

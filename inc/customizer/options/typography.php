@@ -14,6 +14,7 @@ use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Controls\React\Typography_Extra_Section;
+use Neve\Customizer\Controls\React\Typography_Font_Pair_Section;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
 
@@ -27,11 +28,30 @@ class Typography extends Base_Customizer {
 	 * Add controls
 	 */
 	public function add_controls() {
+		$this->font_pairs();
 		$this->sections_typography();
 		$this->controls_typography_general();
 		$this->controls_typography_headings();
 		$this->controls_typography_blog();
 		$this->section_extra();
+	}
+
+	/**
+	 * Add section for font pair control
+	 *
+	 * @return void
+	 */
+	private function font_pairs() {
+		$this->wpc->add_section(
+			new Typography_Font_Pair_Section(
+				$this->wpc,
+				'typography_font_pair_section',
+				[
+					'priority' => 1,
+					'panel'    => 'neve_typography',
+				]
+			)
+		);
 	}
 
 	/**

@@ -1,0 +1,39 @@
+.control-section-typography_font_pair_section {
+  display: list-item !important;
+
+  .neve-font-pair-selector {
+	display: flex;
+	flex-direction: column;
+	padding: 14px;
+
+	button {
+		border: 1px solid transparent;
+		border-radius: 4px;
+		padding: 4px 8px;
+		margin-bottom: 8px;
+		display: flex;
+		flex-direction: column;
+		color: var(--nv-text-color);
+		background: var(--nv-site-bg);
+
+		&:hover, &focus {
+			border: 1px solid #333;
+			background: var(--nv-dark-bg);
+			color: var(--nv-text-dark-bg);
+			cursor: pointer;
+		}
+
+		.neve-font-preview {
+			font-size: 28px;
+			font-weight: 700;
+			text-align: left;
+			padding: 0 8px;
+
+			& + .neve-font-preview {
+				font-size: 18px;
+				font-weight: normal;
+			}
+		}
+	}
+  }
+}

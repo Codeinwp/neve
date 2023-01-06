@@ -41,6 +41,7 @@ import Upsells from './builder-upsell/Upsells.tsx';
 import { initLocalGoogleFonts } from './typography-extra/LocalGoogleFonts';
 
 import MainSearch from './customizer-search/MainSearch.tsx';
+import { FontPairControlInit } from './typography-font-pair/Control';
 
 const { controlConstructor } = wp.customize;
 
@@ -300,6 +301,7 @@ window.wp.customize.bind('ready', () => {
 	initBlogPageFocus();
 	initSearchCustomizer();
 	initLocalGoogleFonts();
+	FontPairControlInit();
 });
 
 window.HFG = {
