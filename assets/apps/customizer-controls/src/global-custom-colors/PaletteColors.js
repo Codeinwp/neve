@@ -173,7 +173,10 @@ const PaletteColors = ({ values, save }) => {
 										'neve'
 									),
 									CUSTOM_COLOR_LIMIT,
-									__('custom colors', 'neve')
+									__(
+										'Custom Colors',
+										'neve'
+									).toLocaleLowerCase()
 								)}
 							</p>
 						</div>
