@@ -22,7 +22,7 @@ class Plugin_Helper {
 	 */
 	public function get_plugin_state( $slug ) {
 		$plugin_link_suffix = $this->get_plugin_path( $slug );
-		if ( file_exists( NEVE_PLUGINS_DIR . $plugin_link_suffix ) ) {
+		if ( file_exists( WP_PLUGIN_DIR . '/' . $plugin_link_suffix ) ) {
 			return is_plugin_active( $plugin_link_suffix ) ? 'deactivate' : 'activate';
 		}
 
@@ -52,6 +52,8 @@ class Plugin_Helper {
 				return $slug . '/adblock-notify.php';
 			case 'feedzy-rss-feeds':
 				return $slug . '/feedzy-rss-feed.php';
+			case 'wp-cloudflare-page-cache':
+				return $slug . '/wp-cloudflare-super-page-cache.php';
 			default:
 				return $slug . '/' . $slug . '.php';
 		}
@@ -129,7 +131,7 @@ class Plugin_Helper {
 			return $default;
 		}
 
-		$plugin_data = get_plugin_data( NEVE_PLUGINS_DIR . $plugin_file );
+		$plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin_file );
 		if ( ! empty( $plugin_data ) && array_key_exists( 'Version', $plugin_data ) ) {
 			return $plugin_data['Version'];
 		}
