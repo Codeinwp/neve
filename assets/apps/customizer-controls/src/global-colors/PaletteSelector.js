@@ -75,12 +75,16 @@ const PaletteSelector = ({ values, save }) => {
 										isDismissible={false}
 										className="neve-global-colors-confirm-delete-modal"
 										title={sprintf(
-											// translators: %s - name of palette that will be deleted.
+											// translators: %s: Context which will be deleted.
 											__(
-												'Are you sure you want to delete the %s palette?',
+												'Are you sure you want to delete the %s?',
 												'neve'
 											),
-											palettes[willDelete].name
+											sprintf(
+												'%1$s %2$s',
+												palettes[willDelete].name,
+												__('palette', 'neve')
+											)
 										)}
 									>
 										<p>
