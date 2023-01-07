@@ -3,7 +3,7 @@ import { ButtonGroup, Button, Icon, Modal } from '@wordpress/components';
 import { sprintf, __ } from '@wordpress/i18n';
 import { debounce } from 'lodash';
 import { Accordion, ColorControl } from '@neve-wp/components';
-import { useState, useEffect } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import EditColorLabel from './EditColorLabel';
 import { warning, plus } from '@wordpress/icons';
 
@@ -15,14 +15,10 @@ const PaletteColors = ({ values, save }) => {
 	const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 	const [willDelete, setWillDelete] = useState('');
 	const [willEdit, setWillEdit] = useState('');
-	const [isHitLimit, setHitlimit] = useState(false);
 	const openDeleteModal = () => setDeleteModalOpen(true);
 	const closeDeleteModal = () => setDeleteModalOpen(false);
 	const slugs = Object.keys(values).filter((slug) => slug !== 'flag');
-
-	useEffect(() => {
-		setHitlimit(slugs.length >= CUSTOM_COLOR_LIMIT);
-	}, [values]);
+	const limitHit = slugs.length >= CUSTOM_COLOR_LIMIT;
 
 	const addNewColor = () => {
 		const nextValues = { ...values };
@@ -149,7 +145,7 @@ const PaletteColors = ({ values, save }) => {
 					})}
 					<Button
 						className="new-custom-color"
-						disabled={isHitLimit}
+						disabled={limitHit}
 						onClick={() => {
 							addNewColor();
 						}}
@@ -162,7 +158,7 @@ const PaletteColors = ({ values, save }) => {
 						)}
 						<Icon icon={plus} />
 					</Button>
-					{isHitLimit && (
+					{limitHit && (
 						<div className="cc-limit-notice">
 							<Icon icon={warning} />
 							<p>

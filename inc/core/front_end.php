@@ -13,6 +13,7 @@ namespace Neve\Core;
 use Neve\Compatibility\Starter_Content;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Core\Dynamic_Css;
 
 /**
  * Front end handler class.
@@ -515,7 +516,7 @@ class Front_End {
 
 		foreach ( Mods::get( Config::MODS_GLOBAL_CUSTOM_COLORS, [] ) as $slug => $args ) {
 			$css_var         = sprintf( 'var(--%s) !important', $slug );
-			$current_styles .= sprintf( '.has-%s-color {color:%s} .has-%s-background-color {background-color:%s}', $slug, $css_var, $slug, $css_var );
+			$current_styles .= Dynamic_CSS::minify_css( sprintf( '.has-%s-color {color:%s} .has-%s-background-color {background-color:%s}', $slug, $css_var, $slug, $css_var ) );
 		}
 
 		return $current_styles;
