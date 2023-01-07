@@ -12,11 +12,10 @@ const PaletteColors = ({ values, save }) => {
 		NeveReactCustomize.allowedGlobalCustomColor
 	);
 
-	const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 	const [willDelete, setWillDelete] = useState('');
 	const [willEdit, setWillEdit] = useState('');
-	const openDeleteModal = () => setDeleteModalOpen(true);
-	const closeDeleteModal = () => setDeleteModalOpen(false);
+	const isDeleteModalOpen = willDelete !== '';
+	const closeDeleteModal = () => setWillDelete('');
 	const slugs = Object.keys(values).filter((slug) => slug !== 'flag');
 	const limitHit = slugs.length >= CUSTOM_COLOR_LIMIT;
 
@@ -135,7 +134,6 @@ const PaletteColors = ({ values, save }) => {
 									<Icon
 										onClick={() => {
 											setWillDelete(slug);
-											openDeleteModal();
 										}}
 										icon="trash"
 									/>
