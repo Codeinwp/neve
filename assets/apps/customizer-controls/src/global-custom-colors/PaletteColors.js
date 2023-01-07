@@ -184,7 +184,10 @@ const PaletteColors = ({ values, save }) => {
 									'Are you sure you want to delete the %s?',
 									'neve'
 								),
-								`"${values[willDelete].label}"`
+								`"${values[willDelete].label}" ${__(
+									'Color',
+									'neve'
+								)}`
 							)}
 						>
 							<p>
