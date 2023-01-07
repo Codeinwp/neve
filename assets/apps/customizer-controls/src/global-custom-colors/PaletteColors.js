@@ -155,7 +155,11 @@ const PaletteColors = ({ values, save }) => {
 						}}
 						variant="secondary"
 					>
-						{__('Add Custom Color', 'neve')}
+						{sprintf(
+							// translators: %s: Context which will be added.
+							__('Add %s', 'neve'),
+							__('Custom Color', 'neve')
+						)}
 						<Icon icon={plus} />
 					</Button>
 					{isHitLimit && (
@@ -163,12 +167,13 @@ const PaletteColors = ({ values, save }) => {
 							<Icon icon={warning} />
 							<p>
 								{sprintf(
-									// translators: %d: Allowed maximum custom color
+									// translators: %d: Allowed maximum custom color %s: Context which will be added.
 									__(
-										'Maximum %d custom colors can be added.',
+										'Maximum %1$d %2$s can be added.',
 										'neve'
 									),
-									CUSTOM_COLOR_LIMIT
+									CUSTOM_COLOR_LIMIT,
+									__('custom colors', 'neve')
 								)}
 							</p>
 						</div>
@@ -176,9 +181,13 @@ const PaletteColors = ({ values, save }) => {
 					{isDeleteModalOpen && (
 						<Modal
 							onRequestClose={closeDeleteModal}
-							title={__(
-								'Are you sure you want to delete a Custom Color?',
-								'neve'
+							title={sprintf(
+								// translators: %s: Context which will be deleted.
+								__(
+									'Are you sure you want to delete the %s?',
+									'neve'
+								),
+								`"${values[willDelete].label}"`
 							)}
 						>
 							<p>
