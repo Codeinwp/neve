@@ -34,6 +34,9 @@ class Core_Loader {
 	public function __construct() {
 		add_action( 'after_switch_theme', [ $this, 'check_new_user' ] );
 		add_action( 'themeisle_ob_after_xml_import', [ $this, 'update_content_import_flag' ] );
+		add_filter( 'theme_file_path', [ $this, 'fix_fse_file_path' ], 0, 2 );
+		add_filter( 'get_block_templates', [ $this, 'drop_templates' ], 0, 3 );
+
 		$this->define_hooks();
 		$this->define_modules();
 		$this->load_modules();
@@ -71,10 +74,12 @@ class Core_Loader {
 
 		if ( ( $now - $install_time ) <= 60 ) {
 			update_option( 'neve_new_user', 'yes' );
+
 			return true;
 		}
 
 		update_option( 'neve_new_user', 'no' );
+
 		return false;
 	}
 
@@ -82,56 +87,59 @@ class Core_Loader {
 	 * Define the features that will be loaded.
 	 */
 	private function define_modules() {
-		$this->features = apply_filters(
-			'neve_filter_main_modules',
-			array(
-				'Customizer\Loader',
-				'Views\Tweaks',
-				'Views\Font_Manager',
-				'Views\Top_Bar',
-				'Views\Header',
-				'Views\Template_Parts',
-				'Views\Page_Header',
-				'Views\Post_Layout',
-				'Views\Page_Layout',
-				'Views\Cover_Header',
-				'Views\Product_Layout',
-				'Views\Content_None',
-				'Views\Content_404',
-				'Views\Breadcrumbs',
 
-				'Views\Layouts\Layout_Container',
-				'Views\Layouts\Layout_Sidebar',
+		$features = array(
+			'Customizer\Loader',
+			'Views\Tweaks',
+			'Views\Font_Manager',
+			'Views\Top_Bar',
+			'Views\Header',
+			'Views\Template_Parts',
+			'Views\Page_Header',
+			'Views\Post_Layout',
+			'Views\Page_Layout',
+			'Views\Cover_Header',
+			'Views\Product_Layout',
+			'Views\Content_None',
+			'Views\Content_404',
+			'Views\Breadcrumbs',
 
-				'Views\Partials\Post_Meta',
-				'Views\Partials\Excerpt',
-				'Views\Partials\Comments',
+			'Views\Layouts\Layout_Container',
+			'Views\Layouts\Layout_Sidebar',
 
-				'Views\Pluggable\Pagination',
-				'Views\Pluggable\Masonry',
-				'Views\Pluggable\Metabox_Settings',
+			'Views\Partials\Post_Meta',
+			'Views\Partials\Excerpt',
+			'Views\Partials\Comments',
 
-				'Core\Dynamic_Css',
+			'Views\Pluggable\Pagination',
+			'Views\Pluggable\Masonry',
+			'Views\Pluggable\Metabox_Settings',
 
-				'Compatibility\Generic',
-				'Compatibility\WooCommerce',
-				'Compatibility\Elementor',
-				'Compatibility\Header_Footer_Elementor',
-				'Compatibility\Amp',
-				'Compatibility\Header_Footer_Beaver',
-				'Compatibility\Beaver',
-				'Compatibility\Lifter',
-				'Compatibility\Patterns',
-				'Compatibility\PWA',
-				'Compatibility\Web_Stories',
-				'Compatibility\Easy_Digital_Downloads',
-				'Compatibility\Fse',
+			'Core\Dynamic_Css',
 
-				'Admin\Metabox\Manager',
-				'Admin\Troubleshoot\Main',
-				'Admin\Dashboard\Main',
-			)
+			'Compatibility\Generic',
+			'Compatibility\WooCommerce',
+			'Compatibility\Elementor',
+			'Compatibility\Header_Footer_Elementor',
+			'Compatibility\Amp',
+			'Compatibility\Header_Footer_Beaver',
+			'Compatibility\Beaver',
+			'Compatibility\Lifter',
+			'Compatibility\Patterns',
+			'Compatibility\PWA',
+			'Compatibility\Web_Stories',
+			'Compatibility\Easy_Digital_Downloads',
+
+			'Admin\Metabox\Manager',
+			'Admin\Troubleshoot\Main',
+			'Admin\Dashboard\Main',
 		);
+
+		if ( $this->is_fse_child_theme() ) {
+			$features[] = 'Compatibility\Fse';
+		}
+
+		$this->features = apply_filters( 'neve_filter_main_modules', $features );
 	}
 
 	/**
@@ -171,5 +179,68 @@ class Core_Loader {
 		add_action( 'wp_enqueue_scripts', array( $front_end, 'enqueue_scripts' ) );
 		add_action( 'after_setup_theme', array( $front_end, 'setup_theme' ) );
 		add_action( 'widgets_init', array( $front_end, 'register_sidebars' ) );
+	}
+
+	/**
+	 * Check if we're on a child theme, and it enables FSE.
+	 *
+	 * @return bool
+	 */
+	private function is_fse_child_theme() {
+		if ( ! is_child_theme() ) {
+			return false;
+		}
+
+		$theme_json = get_stylesheet_directory() . '/theme.json';
+
+		if ( ! file_exists( $theme_json ) ) {
+			return false;
+		}
+
+		if ( ! defined( 'NEVE_FSE_MODE' ) ) {
+			return false;
+		}
+
+		if ( NEVE_FSE_MODE !== true ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Adjusts the file path.
+	 * This is needed because the theme is FSE compatible only when the FSE toggle is enabled in customizer.
+	 *
+	 * @param string $path The file path.
+	 * @param string $file The file relative to the root of the theme.
+	 *
+	 * @return string
+	 */
+	public function fix_fse_file_path( $path, $file ) {
+		if ( $this->is_fse_child_theme() ) {
+			return $path;
+		}
+
+		if ( $file === 'templates/index.html' ) {
+			return get_template_directory() . '/templates/non-existent-file.html';
+		}
+
+		return $path;
+	}
+
+	/**
+	 * Filters the array of queried block templates array after they've been fetched.
+	 *
+	 * @param \WP_Block_Template[] $query_result Array of found block templates.
+	 * @param array                $query Arguments to retrieve templates.
+	 * @param string               $template_type wp_template or wp_template_part.
+	 */
+	public function drop_templates( $query_result, $query, $template_type ) {
+		if ( $this->is_fse_child_theme() ) {
+			return $query_result;
+		}
+
+		return [];
 	}
 }
