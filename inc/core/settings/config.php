@@ -86,6 +86,8 @@ class Config {
 
 	const OPTION_LOCAL_GOOGLE_FONTS_HOSTING = 'nv_pro_enable_local_fonts';
 
+	const MODS_TPOGRAPHY_FONT_PAIRS = 'neve_font_pairs';
+
 	/**
 	 * This is only used in a dynamic context for all allowed post types
 	 */
@@ -229,5 +231,63 @@ class Config {
 		self::CSS_SELECTOR_FORM_BUTTON                 => 'form input[type="submit"], form button:not(.search-submit)[type="submit"], form *[value*="ubmit"], #comments input[type="submit"]',
 		self::CSS_SELECTOR_FORM_BUTTON_HOVER           => 'form input[type="submit"]:hover, form button:not(.search-submit)[type="submit"]:hover, form *[value*="ubmit"]:hover, #comments input[type="submit"]:hover',
 		self::CSS_SELECTOR_FORM_SEARCH_INPUTS          => 'form.search-form input:read-write',
+	];
+
+	/**
+	 * The default Font pairings available for all instances.
+	 *
+	 * @var array[]
+	 */
+	public static $typography_default_pairs = [
+		[
+			'headingFont' => [
+				'font'       => 'Playfair Display',
+				'fontSource' => 'Google',
+			],
+			'bodyFont'    => [
+				'font'       => 'Source Sans Pro',
+				'fontSource' => 'Google',
+			],
+		],
+		[
+			'headingFont' => [
+				'font'       => 'Oswald',
+				'fontSource' => 'Google',
+			],
+			'bodyFont'    => [
+				'font'       => 'PT Sans',
+				'fontSource' => 'Google',
+			],
+		],
+		[
+			'headingFont' => [
+				'font'       => 'Source Serif Pro',
+				'fontSource' => 'Google',
+			],
+			'bodyFont'    => [
+				'font'       => 'Source Serif Pro',
+				'fontSource' => 'Google',
+			],
+		],
+		[
+			'headingFont' => [
+				'font'       => 'Inter',
+				'fontSource' => 'Google',
+			],
+			'bodyFont'    => [
+				'font'       => 'Inter',
+				'fontSource' => 'Google',
+			],
+		],
+		[
+			'headingFont' => [
+				'font'       => 'Bebas Neue',
+				'fontSource' => 'Google',
+			],
+			'bodyFont'    => [
+				'font'       => 'Inter',
+				'fontSource' => 'Google',
+			],
+		],
 	];
 }

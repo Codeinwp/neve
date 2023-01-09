@@ -1,33 +1,89 @@
 /* jshint esversion: 6 */
+import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { Tooltip } from '@wordpress/components';
-import React from 'react';
+import { useEffect, useState } from '@wordpress/element';
 
-export type FontPair = { bodyFont: string; headingFont: string };
+type Font = {
+	font: string;
+	fontSource: 'Google' | 'System';
+};
+
+export type FontPair = {
+	bodyFont: Font;
+	headingFont: Font;
+	selected?: boolean;
+};
 
 type Props = {
 	pairs: FontPair[];
 	onSelect: (data: FontPair) => void;
 };
 const FontPairSelector: React.FC<Props> = ({ pairs, onSelect }) => {
+	const [selected, setSelected] = useState(-1);
+
+	const resetFonts = () => {
+		window.document.dispatchEvent(
+			new window.CustomEvent('neve-changed-customizer-value', {
+				detail: {
+					value: { font: false, fontSource: 'System' },
+					id: 'neve_body_font_family',
+				},
+			})
+		);
+		window.document.dispatchEvent(
+			new window.CustomEvent('neve-changed-customizer-value', {
+				detail: {
+					value: { font: false, fontSource: 'System' },
+					id: 'neve_headings_font_family',
+				},
+			})
+		);
+	};
+	const updateSelected = () => {
+		const bodyFont = window.wp.customize
+			.control('neve_body_font_family')
+			.setting.get();
+		const headingFont = window.wp.customize
+			.control('neve_headings_font_family')
+			.setting.get();
+
+		const index = pairs.findIndex(
+			(item: FontPair) =>
+				item.headingFont.font === headingFont &&
+				item.bodyFont.font === bodyFont
+		);
+		setSelected(index);
+	};
+
+	useEffect(() => {
+		updateSelected();
+	}, []);
+
 	return (
 		<div className="neve-font-pair-selector">
 			{pairs.length > 0
 				? pairs.map((preset, index) => {
 						const { bodyFont, headingFont } = preset;
-						const label = __('test label');
+						const label = `${headingFont.font} & ${bodyFont.font}`;
 						return (
 							<Tooltip key={index} text={label}>
 								<button
+									className={
+										selected === index
+											? 'active dashicons-before dashicons-yes'
+											: undefined
+									}
 									onClick={(e) => {
 										e.preventDefault();
 										onSelect(preset);
+										setSelected(index);
 									}}
 								>
 									<span
 										className="neve-font-preview"
 										style={{
-											fontFamily: `${headingFont}, sans-serif`,
+											fontFamily: `${headingFont.font}, sans-serif`,
 										}}
 									>
 										The big brown fox
@@ -35,7 +91,7 @@ const FontPairSelector: React.FC<Props> = ({ pairs, onSelect }) => {
 									<span
 										className="neve-font-preview"
 										style={{
-											fontFamily: `${bodyFont}, sans-serif`,
+											fontFamily: `${bodyFont.font}, sans-serif`,
 										}}
 									>
 										Jumps over the lazy dog
@@ -45,6 +101,19 @@ const FontPairSelector: React.FC<Props> = ({ pairs, onSelect }) => {
 						);
 				  })
 				: null}
+			{pairs.length > 0 && (
+				<button
+					className="reset"
+					onClick={(e) => {
+						e.preventDefault();
+						resetFonts();
+						setSelected(-1);
+					}}
+				>
+					<span className="dashicons dashicons-image-rotate"></span>
+					{__('Reset to customiser defaults', 'neve')}
+				</button>
+			)}
 		</div>
 	);
 };

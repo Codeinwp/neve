@@ -9,8 +9,24 @@ type Props = {
 const FontPairComponent: React.FC<Props> = ({ control }) => {
 	const { pairs } = control.params;
 
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-	const handleClick = (preset: FontPair) => {};
+	const handleClick = (preset: FontPair) => {
+		window.document.dispatchEvent(
+			new window.CustomEvent('neve-changed-customizer-value', {
+				detail: {
+					value: preset.bodyFont,
+					id: 'neve_body_font_family',
+				},
+			})
+		);
+		window.document.dispatchEvent(
+			new window.CustomEvent('neve-changed-customizer-value', {
+				detail: {
+					value: preset.headingFont,
+					id: 'neve_headings_font_family',
+				},
+			})
+		);
+	};
 
 	return <FontPairSelector onSelect={handleClick} pairs={pairs} />;
 };
