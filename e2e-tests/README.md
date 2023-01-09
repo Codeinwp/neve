@@ -50,11 +50,11 @@ Currently, we only migrated the customizer tests for which you need the `sample-
 #### 3. Run the Playwright tests
 Assuming that your local url is `https://neve.test`, navigate to `e2e-tests` folder and run the following command:
 ```bash
-baseURL=https://neve.test bash npx playwright test
+baseURL=https://neve.test npx playwright test
 ```
 
 To run a specific test you can run the following command:
 ```bash
-baseURL=https://neve.test bash npx playwright test path/to/your/file.spec.ts
+baseURL=https://neve.test npx playwright test path/to/your/file.spec.ts
 
 ```

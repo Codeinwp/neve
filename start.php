@@ -30,6 +30,7 @@ function neve_run() {
 			'sparks'                    => true,
 			'advanced_search_component' => true,
 			'submenu_style'             => true,
+			'blog_hover_effects'        => true,
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
