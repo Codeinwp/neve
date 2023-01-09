@@ -34,8 +34,6 @@ class Core_Loader {
 	public function __construct() {
 		add_action( 'after_switch_theme', [ $this, 'check_new_user' ] );
 		add_action( 'themeisle_ob_after_xml_import', [ $this, 'update_content_import_flag' ] );
-		add_filter( 'theme_file_path', [ $this, 'fix_fse_file_path' ], 0, 2 );
-		add_filter( 'get_block_templates', [ $this, 'drop_templates' ], 0, 3 );
 
 		$this->define_hooks();
 		$this->define_modules();
@@ -206,41 +204,5 @@ class Core_Loader {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Adjusts the file path.
-	 * This is needed because the theme is FSE compatible only when the FSE toggle is enabled in customizer.
-	 *
-	 * @param string $path The file path.
-	 * @param string $file The file relative to the root of the theme.
-	 *
-	 * @return string
-	 */
-	public function fix_fse_file_path( $path, $file ) {
-		if ( $this->is_fse_child_theme() ) {
-			return $path;
-		}
-
-		if ( $file === 'templates/index.html' ) {
-			return get_template_directory() . '/templates/non-existent-file.html';
-		}
-
-		return $path;
-	}
-
-	/**
-	 * Filters the array of queried block templates array after they've been fetched.
-	 *
-	 * @param \WP_Block_Template[] $query_result Array of found block templates.
-	 * @param array                $query Arguments to retrieve templates.
-	 * @param string               $template_type wp_template or wp_template_part.
-	 */
-	public function drop_templates( $query_result, $query, $template_type ) {
-		if ( $this->is_fse_child_theme() ) {
-			return $query_result;
-		}
-
-		return [];
 	}
 }
