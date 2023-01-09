@@ -90,6 +90,7 @@ class Fse {
 		}
 		$wp_admin_bar->remove_node( 'site-editor' );
 	}
+
 	/**
 	 * Remove dashboard menu item.
 	 *
@@ -103,7 +104,8 @@ class Fse {
 	}
 
 	/**
-	 * TODO: Figure this out.
+	 * Shortcircuits the redirect to the site editor.
+	 * This is needed because the site editor sometimes breaks depending on what is enabled in the customizer Full Site Editing panel.
 	 *
 	 * @return void
 	 */
@@ -155,7 +157,7 @@ class Fse {
 		return [
 			'index'      => $this->is_blog(),
 			'front-page' => $this->is_front_page(),
-			'archive'    => is_archive(),
+			'archive'    => is_archive() && ! $this->is_blog(),
 			'404'        => is_404(),
 			'search'     => is_search(),
 			'page'       => is_singular( 'page' ) && ! $this->is_front_page(),
@@ -235,8 +237,14 @@ class Fse {
 		foreach ( $query_result as $key => $template ) {
 			$enabled = $this->is_template_enabled( $template->slug );
 
+
 			// Page should not affect the front page.
 			if ( $template->slug === 'page' && $this->is_front_page() ) {
+				$enabled = false;
+			}
+
+			// Don't pass through the index template if we're on archive.
+			if ( $template->slug === 'index' && ! $this->is_blog() ) {
 				$enabled = false;
 			}
 
@@ -388,7 +396,13 @@ class Fse {
 				continue;
 			}
 
+			// Page shouldn't pass through to front page.
 			if ( $slug === 'page' && $this->is_front_page() ) {
+				continue;
+			}
+
+			// We're on archive but not on index.
+			if ( $slug === 'archive' && $this->is_blog() ) {
 				continue;
 			}
 
