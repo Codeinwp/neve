@@ -1,23 +1,16 @@
 .neve-color-component {
-  .components-popover {
-	position: fixed !important;
-	.components-popover {
-	  position: absolute !important;
-	}
-  }
-  .components-popover .components-popover__content {
-	overflow: unset !important;
-  }
 
-  .components-custom-gradient-picker__gradient-bar {
-	position: relative;
-	border-radius: 24px;
-	z-index: 1;
-  }
-
-  .components-custom-gradient-picker__gradient-bar {
-	&:not(.has-gradient) {
-		opacity: 1;
+	.components-popover .components-popover__content {
+		overflow: unset !important;
 	}
-  }
+
+	.components-custom-gradient-picker__gradient-bar {
+		position: relative;
+		border-radius: 24px;
+		z-index: 1;
+
+		&:not(.has-gradient) {
+			opacity: 1;
+		}
+	}
 }
