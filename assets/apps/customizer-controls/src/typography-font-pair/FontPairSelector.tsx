@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { __ } from '@wordpress/i18n';
 import { Tooltip } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
@@ -14,11 +14,6 @@ export type FontPair = {
 	bodyFont: Font;
 	headingFont: Font;
 	selected?: boolean;
-};
-
-type FontStyle = {
-	fontFamily: string;
-	fontSize?: string;
 };
 
 type Props = {
@@ -89,10 +84,10 @@ const FontPairSelector: React.FC<Props> = ({
 				? pairs.map((preset, index) => {
 						const { bodyFont, headingFont } = preset;
 						const label = `${headingFont.font} & ${bodyFont.font}`;
-						const headingStyle: FontStyle = {
+						const headingStyle: CSSProperties = {
 							fontFamily: `${headingFont.font}, sans-serif`,
 						};
-						const bodyStyle: FontStyle = {
+						const bodyStyle: CSSProperties = {
 							fontFamily: `${bodyFont.font}, sans-serif`,
 						};
 
@@ -142,7 +137,7 @@ const FontPairSelector: React.FC<Props> = ({
 						setSelected(-1);
 					}}
 				>
-					<span className="dashicons dashicons-image-rotate"></span>
+					<span className="dashicons dashicons-image-rotate" />
 					{__('Reset all to default', 'neve')}
 				</button>
 			)}
