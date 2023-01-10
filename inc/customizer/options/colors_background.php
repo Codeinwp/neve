@@ -20,7 +20,8 @@ use Neve\Customizer\Types\Section;
  * @package Neve\Customizer\Options
  */
 class Colors_Background extends Base_Customizer {
-	const CUSTOM_COLOR_LIMIT = 30;
+	const CUSTOM_COLOR_LIMIT            = 30;
+	const CUSTOM_COLOR_LABEL_MAX_LENGTH = 16;
 
 	/**
 	 * Function that should be extended to add customizer controls.
@@ -179,7 +180,13 @@ class Colors_Background extends Base_Customizer {
 				continue;
 			}
 
-			$value[ $slug ]['label'] = sanitize_text_field( $options['label'] );
+			$label = sanitize_text_field( $options['label'] );
+
+			if ( strlen( $label ) > self::CUSTOM_COLOR_LABEL_MAX_LENGTH ) {
+				$label = substr( $label, 0, self::CUSTOM_COLOR_LABEL_MAX_LENGTH );
+			}
+
+			$value[ $slug ]['label'] = $label;
 			$value[ $slug ]['val']   = $color;
 		}
 

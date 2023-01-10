@@ -7,7 +7,7 @@ const EditColorLabel = ({ currentLabel, slug, save, cancel }) => {
 
 	return (
 		<div className="custom-label-edit-wrapper">
-			<TextControl onChange={setLabel} value={label} />
+			<TextControl onChange={setLabel} value={label} maxLength={16} />
 			<Button
 				onClick={() => {
 					save(slug, label);
