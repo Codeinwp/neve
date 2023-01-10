@@ -23,7 +23,6 @@ type FontStyle = {
 
 type Props = {
 	description: {
-		text: string;
 		link: string;
 	};
 	pairs: FontPair[];
@@ -78,11 +77,11 @@ const FontPairSelector: React.FC<Props> = ({
 
 	return (
 		<div className="neve-font-pair-selector">
-			{description && description.text && description.link && (
+			{description && (
 				<span
 					className="description"
 					dangerouslySetInnerHTML={{
-						__html: `${description.text} ${description.link}`,
+						__html: `${description}`,
 					}}
 				/>
 			)}
@@ -144,7 +143,7 @@ const FontPairSelector: React.FC<Props> = ({
 					}}
 				>
 					<span className="dashicons dashicons-image-rotate"></span>
-					{__('Reset to customiser defaults', 'neve')}
+					{__('Reset all to default', 'neve')}
 				</button>
 			)}
 		</div>
