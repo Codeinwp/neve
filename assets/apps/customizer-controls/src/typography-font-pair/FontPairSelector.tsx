@@ -7,6 +7,7 @@ import { useEffect, useState } from '@wordpress/element';
 type Font = {
 	font: string;
 	fontSource: 'Google' | 'System';
+	previewSize?: string;
 };
 
 export type FontPair = {
@@ -15,11 +16,24 @@ export type FontPair = {
 	selected?: boolean;
 };
 
+type FontStyle = {
+	fontFamily: string;
+	fontSize?: string;
+};
+
 type Props = {
+	description: {
+		text: string;
+		link: string;
+	};
 	pairs: FontPair[];
 	onSelect: (data: FontPair) => void;
 };
-const FontPairSelector: React.FC<Props> = ({ pairs, onSelect }) => {
+const FontPairSelector: React.FC<Props> = ({
+	description,
+	pairs,
+	onSelect,
+}) => {
 	const [selected, setSelected] = useState(-1);
 
 	const resetFonts = () => {
@@ -41,19 +55,21 @@ const FontPairSelector: React.FC<Props> = ({ pairs, onSelect }) => {
 		);
 	};
 	const updateSelected = () => {
-		const bodyFont = window.wp.customize
-			.control('neve_body_font_family')
-			.setting.get();
-		const headingFont = window.wp.customize
-			.control('neve_headings_font_family')
-			.setting.get();
+		window.wp.customize.bind('ready', () => {
+			const bodyFont = window.wp.customize
+				.control('neve_body_font_family')
+				.setting.get();
+			const headingFont = window.wp.customize
+				.control('neve_headings_font_family')
+				.setting.get();
 
-		const index = pairs.findIndex(
-			(item: FontPair) =>
-				item.headingFont.font === headingFont &&
-				item.bodyFont.font === bodyFont
-		);
-		setSelected(index);
+			const index = pairs.findIndex(
+				(item: FontPair) =>
+					item.headingFont.font === headingFont &&
+					item.bodyFont.font === bodyFont
+			);
+			setSelected(index);
+		});
 	};
 
 	useEffect(() => {
@@ -62,10 +78,31 @@ const FontPairSelector: React.FC<Props> = ({ pairs, onSelect }) => {
 
 	return (
 		<div className="neve-font-pair-selector">
+			{description && description.text && description.link && (
+				<span
+					className="description"
+					dangerouslySetInnerHTML={{
+						__html: `${description.text} ${description.link}`,
+					}}
+				/>
+			)}
 			{pairs.length > 0
 				? pairs.map((preset, index) => {
 						const { bodyFont, headingFont } = preset;
 						const label = `${headingFont.font} & ${bodyFont.font}`;
+						const headingStyle: FontStyle = {
+							fontFamily: `${headingFont.font}, sans-serif`,
+						};
+						const bodyStyle: FontStyle = {
+							fontFamily: `${bodyFont.font}, sans-serif`,
+						};
+
+						if (headingFont.previewSize) {
+							headingStyle.fontSize = headingFont.previewSize;
+						}
+						if (bodyFont.previewSize) {
+							bodyStyle.fontSize = bodyFont.previewSize;
+						}
 						return (
 							<Tooltip key={index} text={label}>
 								<button
@@ -82,17 +119,13 @@ const FontPairSelector: React.FC<Props> = ({ pairs, onSelect }) => {
 								>
 									<span
 										className="neve-font-preview"
-										style={{
-											fontFamily: `${headingFont.font}, sans-serif`,
-										}}
+										style={headingStyle}
 									>
 										The big brown fox
 									</span>
 									<span
 										className="neve-font-preview"
-										style={{
-											fontFamily: `${bodyFont.font}, sans-serif`,
-										}}
+										style={bodyStyle}
 									>
 										Jumps over the lazy dog
 									</span>

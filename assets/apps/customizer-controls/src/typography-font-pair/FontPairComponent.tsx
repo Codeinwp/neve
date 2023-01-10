@@ -7,7 +7,7 @@ type Props = {
 };
 
 const FontPairComponent: React.FC<Props> = ({ control }) => {
-	const { pairs } = control.params;
+	const { pairs, description } = control.params.input_attrs;
 
 	const handleClick = (preset: FontPair) => {
 		window.document.dispatchEvent(
@@ -28,7 +28,7 @@ const FontPairComponent: React.FC<Props> = ({ control }) => {
 		);
 	};
 
-	return <FontPairSelector onSelect={handleClick} pairs={pairs} />;
+	return <FontPairSelector description={description} onSelect={handleClick} pairs={pairs} />;
 };
 
 export default FontPairComponent;

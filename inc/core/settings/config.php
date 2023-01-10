@@ -236,43 +236,16 @@ class Config {
 	/**
 	 * The default Font pairings available for all instances.
 	 *
+	 * Default preview size for fonts is 24px for heading and 16px for body.
+	 *
 	 * @var array[]
 	 */
 	public static $typography_default_pairs = [
 		[
 			'headingFont' => [
-				'font'       => 'Playfair Display',
-				'fontSource' => 'Google',
-			],
-			'bodyFont'    => [
-				'font'       => 'Source Sans Pro',
-				'fontSource' => 'Google',
-			],
-		],
-		[
-			'headingFont' => [
-				'font'       => 'Oswald',
-				'fontSource' => 'Google',
-			],
-			'bodyFont'    => [
-				'font'       => 'PT Sans',
-				'fontSource' => 'Google',
-			],
-		],
-		[
-			'headingFont' => [
-				'font'       => 'Source Serif Pro',
-				'fontSource' => 'Google',
-			],
-			'bodyFont'    => [
-				'font'       => 'Source Serif Pro',
-				'fontSource' => 'Google',
-			],
-		],
-		[
-			'headingFont' => [
-				'font'       => 'Inter',
-				'fontSource' => 'Google',
+				'font'        => 'Inter',
+				'fontSource'  => 'Google',
+				'previewSize' => '25px',
 			],
 			'bodyFont'    => [
 				'font'       => 'Inter',
@@ -281,12 +254,102 @@ class Config {
 		],
 		[
 			'headingFont' => [
-				'font'       => 'Bebas Neue',
+				'font'        => 'Playfair Display',
+				'fontSource'  => 'Google',
+				'previewSize' => '27px',
+			],
+			'bodyFont'    => [
+				'font'        => 'Source Sans Pro',
+				'fontSource'  => 'Google',
+				'previewSize' => '18px',
+			],
+		],
+		[
+			'headingFont' => [
+				'font'       => 'Montserrat',
 				'fontSource' => 'Google',
 			],
 			'bodyFont'    => [
-				'font'       => 'Inter',
+				'font'       => 'Open Sans',
 				'fontSource' => 'Google',
+			],
+		],
+		[
+			'headingFont' => [
+				'font'       => 'Nunito',
+				'fontSource' => 'Google',
+			],
+			'bodyFont'    => [
+				'font'       => 'Lora',
+				'fontSource' => 'Google',
+			],
+		],
+		[
+			'headingFont' => [
+				'font'       => 'Lato',
+				'fontSource' => 'Google',
+			],
+			'bodyFont'    => [
+				'font'       => 'Karla',
+				'fontSource' => 'Google',
+			],
+		],
+		[
+			'headingFont' => [
+				'font'        => 'Outfit',
+				'fontSource'  => 'Google',
+				'previewSize' => '25px',
+			],
+			'bodyFont'    => [
+				'font'       => 'Spline Sans',
+				'fontSource' => 'Google',
+			],
+		],
+		[
+			'headingFont' => [
+				'font'        => 'Lora',
+				'fontSource'  => 'Google',
+				'previewSize' => '25px',
+			],
+			'bodyFont'    => [
+				'font'       => 'Ubuntu',
+				'fontSource' => 'Google',
+			],
+		],
+		[
+			'headingFont' => [
+				'font'        => 'Prata',
+				'fontSource'  => 'Google',
+				'previewSize' => '25px',
+			],
+			'bodyFont'    => [
+				'font'        => 'Hanken Grotesk',
+				'fontSource'  => 'Google',
+				'previewSize' => '17px',
+			],
+		],
+		[
+			'headingFont' => [
+				'font'        => 'Albert Sans',
+				'fontSource'  => 'Google',
+				'previewSize' => '25px',
+			],
+			'bodyFont'    => [
+				'font'        => 'Albert Sans',
+				'fontSource'  => 'Google',
+				'previewSize' => '17px',
+			],
+		],
+		[
+			'headingFont' => [
+				'font'        => 'Fraunces',
+				'fontSource'  => 'Google',
+				'previewSize' => '25px',
+			],
+			'bodyFont'    => [
+				'font'        => 'Hanken Grotesk',
+				'fontSource'  => 'Google',
+				'previewSize' => '17px',
 			],
 		],
 	];

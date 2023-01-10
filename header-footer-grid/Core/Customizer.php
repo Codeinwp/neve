@@ -248,7 +248,6 @@ class Customizer {
 		}
 		$wp_customize->register_section_type( '\Neve\Customizer\Controls\React\Instructions_Section' );
 		$wp_customize->register_section_type( '\Neve\Customizer\Controls\React\Typography_Extra_Section' );
-		$wp_customize->register_section_type( '\Neve\Customizer\Controls\React\Typography_Font_Pair_Section' );
 		$wp_customize->register_section_type( '\Neve\Customizer\Controls\React\Upsell_Section' );
 
 	}
