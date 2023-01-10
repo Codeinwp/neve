@@ -100,7 +100,7 @@ const TypefaceComponent = ({ control }) => {
 		},
 	};
 
-	if (!setVal) {
+	if (!setVal || typeof setVal === 'string') {
 		setVal = emptyValue;
 	}
 
