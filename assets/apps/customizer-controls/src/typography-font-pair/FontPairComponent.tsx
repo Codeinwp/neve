@@ -28,7 +28,13 @@ const FontPairComponent: React.FC<Props> = ({ control }) => {
 		);
 	};
 
-	return <FontPairSelector description={description} onSelect={handleClick} pairs={pairs} />;
+	return (
+		<FontPairSelector
+			description={description}
+			onSelect={handleClick}
+			pairs={pairs}
+		/>
+	);
 };
 
 export default FontPairComponent;
