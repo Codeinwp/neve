@@ -7,6 +7,7 @@ import Toggle from './Options/Toggle';
 import MultiSelectOption from './Options/MultiSelect';
 import { changeOption } from '../utils/rest';
 import classnames from 'classnames';
+import MultiInstallActivate from './Plugin/MultiInstallActivate';
 
 import {
 	Button,
@@ -28,6 +29,7 @@ const ModuleCard = ({
 	tier,
 }) => {
 	const [loading, setLoading] = useState(false);
+
 	const {
 		nicename,
 		description,
@@ -37,6 +39,9 @@ const ModuleCard = ({
 		documentation,
 		// eslint-disable-next-line camelcase
 		required_actions,
+		manageableDependentPlugins,
+		manageablePluginsLabels,
+		dependentPlugins,
 	} = neveDash.modules[slug];
 	const { upgradeLinks } = neveDash;
 
@@ -128,7 +133,7 @@ const ModuleCard = ({
 						</Button>
 					) : (
 						<Fragment>
-							{required_actions && (
+							{required_actions && !manageableDependentPlugins && (
 								<span
 									className="required"
 									dangerouslySetInnerHTML={{
@@ -141,6 +146,13 @@ const ModuleCard = ({
 									size={18}
 									icon="update"
 									className="is-loading"
+								/>
+							)}
+							{manageableDependentPlugins && (
+								<MultiInstallActivate
+									slug={slug}
+									plugins={dependentPlugins}
+									buttonLabels={manageablePluginsLabels}
 								/>
 							)}
 							{!required_actions &&
