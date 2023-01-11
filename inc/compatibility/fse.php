@@ -39,10 +39,10 @@ class Fse {
 	 */
 	public function __construct() {
 		$this->templates = [
-			'index'      => __( 'Index', 'neve' ),
+			'index'      => __( 'Blog', 'neve' ),
 			'front-page' => __( 'Front Page', 'neve' ),
 			'archive'    => __( 'Archive', 'neve' ),
-			'404'        => __( '404', 'neve' ),
+			'404'        => '404',
 			'search'     => __( 'Search', 'neve' ),
 			'page'       => __( 'Page', 'neve' ),
 			'single'     => __( 'Single Post', 'neve' ),
@@ -285,10 +285,9 @@ class Fse {
 		$wp_customize->add_control(
 			self::FSE_ENABLED_SLUG,
 			array(
-				'label'       => __( 'Enable FSE Templates', 'neve' ),
-				'description' => __( 'Enable this to use the FSE templates instead of the default ones.', 'neve' ),
-				'section'     => $this->customize_section,
-				'type'        => 'neve_toggle_control',
+				'label'   => __( 'Full Site Editing', 'neve' ),
+				'section' => $this->customize_section,
+				'type'    => 'neve_toggle_control',
 			)
 		);
 
@@ -330,7 +329,7 @@ class Fse {
 					'active_callback' => [ $this, 'is_enabled' ],
 					'section'         => $this->customize_section,
 					'priority'        => $priority,
-					'label'           => __( 'Enable', 'neve' ),
+					'label'           => __( 'Yes', 'neve' ),
 					'type'            => 'neve_toggle_control',
 				)
 			);
