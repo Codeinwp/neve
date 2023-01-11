@@ -100,8 +100,11 @@ const TypefaceComponent = ({ control }) => {
 		},
 	};
 
-	if (!setVal || typeof setVal === 'string') {
+	if (!setVal) {
 		setVal = emptyValue;
+	}
+	if (typeof setVal === 'string') {
+		setVal = defaultParams;
 	}
 
 	const controlParams = control.params.input_attrs
