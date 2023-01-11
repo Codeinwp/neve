@@ -18,6 +18,7 @@ export type FontPair = {
 
 type Props = {
 	description: {
+		text: string;
 		link: string;
 	};
 	pairs: FontPair[];
@@ -72,11 +73,11 @@ const FontPairSelector: React.FC<Props> = ({
 
 	return (
 		<div className="neve-font-pair-selector">
-			{description && (
+			{description && description.text && description.link && (
 				<span
 					className="description"
 					dangerouslySetInnerHTML={{
-						__html: `${description}`,
+						__html: `${description.text} ${description.link}`,
 					}}
 				/>
 			)}
@@ -107,6 +108,12 @@ const FontPairSelector: React.FC<Props> = ({
 									}
 									onClick={(e) => {
 										e.preventDefault();
+										// if already selected do a reset to default.
+										if (selected === index) {
+											resetFonts();
+											setSelected(-1);
+											return;
+										}
 										onSelect(preset);
 										setSelected(index);
 									}}

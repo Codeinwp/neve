@@ -64,9 +64,12 @@ class Typography extends Base_Customizer {
 				array(
 					'input_attrs' => array(
 						'pairs'       => $pairs,
-						'description' => apply_filters( 'neve_external_link', 'https://docs.themeisle.com/article/1340-neve-typography', esc_html__( 'Learn more', 'neve' ) ),
+						'description' => array(
+							'text' => __( 'Choose Font family presets for your Headings and Text.', 'neve' ),
+							'link' => apply_filters( 'neve_external_link', 'https://docs.themeisle.com/article/1340-neve-typography', esc_html__( 'Learn more', 'neve' ) ),
+						),
 					),
-					'label'       => esc_html__( 'Customize Fonts', 'neve' ),
+					'label'       => esc_html__( 'Font presets', 'neve' ),
 					'section'     => 'typography_font_pair_section',
 					'priority'    => 10,
 					'type'        => 'neve_font_pairings_control',
@@ -82,7 +85,7 @@ class Typography extends Base_Customizer {
 	private function sections_typography() {
 		$typography_sections = array(
 			'typography_font_pair_section' => array(
-				'title'    => __( 'Customize Fonts', 'neve' ),
+				'title'    => __( 'Font presets', 'neve' ),
 				'priority' => 15,
 			),
 			'neve_typography_general'      => array(
