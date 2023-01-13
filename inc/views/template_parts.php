@@ -85,6 +85,11 @@ class Template_Parts extends Base_View {
 			return;
 		}
 
+		// If the query is for a paged result and not for the first page don't display featured post.
+		if ( is_paged() ) {
+			return;
+		}
+
 		/**
 		 * Filters the content parts.
 		 *
