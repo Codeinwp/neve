@@ -26,6 +26,7 @@ class Config {
 	 */
 	const MODS_LINK_HOVER_COLOR           = 'neve_link_hover_color';
 	const MODS_GLOBAL_COLORS              = 'neve_global_colors';
+	const MODS_GLOBAL_CUSTOM_COLORS       = 'neve_global_custom_colors';
 	const MODS_TEXT_COLOR                 = 'neve_text_color';
 	const MODS_CONTAINER_WIDTH            = 'neve_container_width';
 	const MODS_SITEWIDE_CONTENT_WIDTH     = 'neve_sitewide_content_width';

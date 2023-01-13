@@ -4,7 +4,7 @@ import { ColorControl } from '@neve-wp/components';
 
 import { useState, useEffect } from '@wordpress/element';
 
-const ColorComponent = ({ control }) => {
+const ColorComponent = ({ control, children }) => {
 	const [value, setValue] = useState(control.setting.get());
 
 	const updateValues = (newVal) => {
@@ -29,7 +29,9 @@ const ColorComponent = ({ control }) => {
 				alphaDisabled={control.params.disableAlpha}
 				onChange={updateValues}
 				allowGradient={control.params.allowGradient}
-			/>
+			>
+				{children}
+			</ColorControl>
 		</div>
 	);
 };

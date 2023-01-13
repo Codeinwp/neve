@@ -20,6 +20,9 @@ use Neve\Customizer\Types\Section;
  * @package Neve\Customizer\Options
  */
 class Colors_Background extends Base_Customizer {
+	const CUSTOM_COLOR_LIMIT            = 30;
+	const CUSTOM_COLOR_LABEL_MAX_LENGTH = 16;
+
 	/**
 	 * Function that should be extended to add customizer controls.
 	 *
@@ -105,6 +108,26 @@ class Colors_Background extends Base_Customizer {
 				'Neve\Customizer\Controls\React\Global_Colors'
 			)
 		);
+
+		$this->add_control(
+			new Control(
+				'neve_global_custom_colors',
+				[
+					'sanitize_callback' => [ $this, 'sanitize_global_custom_colors' ],
+					'default'           => [],
+					'transport'         => 'refresh',
+				],
+				[
+					'label'                 => __( 'Custom Colors', 'neve' ),
+					'priority'              => 10,
+					'section'               => 'neve_colors_background_section',
+					'type'                  => 'neve_global_custom_colors',
+					'default_values'        => [],
+					'live_refresh_selector' => true,
+				],
+				'Neve\Customizer\Controls\React\Global_Custom_Colors'
+			)
+		);
 	}
 
 	/**
@@ -128,6 +151,43 @@ class Colors_Background extends Base_Customizer {
 			foreach ( $args['colors'] as $key => $color_val ) {
 				$value['palettes'][ $slug ]['colors'][ $key ] = neve_sanitize_colors( $color_val );
 			}
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Sanitize Global Custom Colors Setting
+	 *
+	 * @param array $value recieved value.
+	 * @return array
+	 */
+	public function sanitize_global_custom_colors( $value ) {
+		// `flag` key is used to trigger setting change on deep state changes inside the palettes.
+		if ( isset( $value['flag'] ) ) {
+			unset( $value['flag'] );
+		}
+
+		if ( count( $value ) > self::CUSTOM_COLOR_LIMIT ) {
+			$value = array_slice( $value, 0, self::CUSTOM_COLOR_LIMIT );
+		}
+
+		foreach ( $value as $slug => $options ) {
+			$color = neve_sanitize_colors( $options['val'] );
+
+			if ( ! $color ) {
+				unset( $value[ $slug ] );
+				continue;
+			}
+
+			$label = sanitize_text_field( $options['label'] );
+
+			if ( strlen( $label ) > self::CUSTOM_COLOR_LABEL_MAX_LENGTH ) {
+				$label = substr( $label, 0, self::CUSTOM_COLOR_LABEL_MAX_LENGTH );
+			}
+
+			$value[ $slug ]['label'] = $label;
+			$value[ $slug ]['val']   = $color;
 		}
 
 		return $value;
