@@ -95,13 +95,11 @@ const FontPairSelector: React.FC<Props> = ({
 		if (selected === -1) {
 			const selectedBody = getFont(bodyFont);
 			setPrevBody(selectedBody);
-			console.log(selectedBody);
 		}
 
 		if (selected === -1) {
 			const selectedHeading = getFont(headingFont);
 			setPrevHead(selectedHeading);
-			console.log(selectedHeading);
 		}
 
 		return { bodyFont, headingFont };
