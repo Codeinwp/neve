@@ -30,12 +30,23 @@ const FontPairSelector: React.FC<Props> = ({
 	onSelect,
 }) => {
 	const [selected, setSelected] = useState(-1);
+	const [prevBody, setPrevBody] = useState({
+		font: '',
+		fontSource: 'System',
+	});
+	const [prevHead, setPrevHead] = useState({
+		font: '',
+		fontSource: 'System',
+	});
 
 	const resetFonts = () => {
 		window.document.dispatchEvent(
 			new window.CustomEvent('neve-changed-customizer-value', {
 				detail: {
-					value: { font: false, fontSource: 'System' },
+					value:
+						prevBody.font !== ''
+							? prevBody
+							: { font: false, fontSource: 'System' },
 					id: 'neve_body_font_family',
 				},
 			})
@@ -43,20 +54,62 @@ const FontPairSelector: React.FC<Props> = ({
 		window.document.dispatchEvent(
 			new window.CustomEvent('neve-changed-customizer-value', {
 				detail: {
-					value: { font: false, fontSource: 'System' },
+					value:
+						prevHead.font !== ''
+							? prevHead
+							: { font: false, fontSource: 'System' },
 					id: 'neve_headings_font_family',
 				},
 			})
 		);
 	};
+
+	const getFont = (font: string) => {
+		const result = { font: '', fontSource: 'System' };
+		if (!font) {
+			return result;
+		}
+		// @ts-ignore
+		const availableFonts = NeveReactCustomize.fonts;
+		Object.keys(availableFonts).map((key) => {
+			const hasResults = availableFonts[key].filter((value: string) => {
+				return value.toLowerCase().includes(font.toLowerCase());
+			});
+			if (hasResults.length > 0) {
+				result.font = hasResults[0];
+				result.fontSource = key;
+			}
+			return key;
+		});
+		return result;
+	};
+
+	const checkSelectedFont = () => {
+		const bodyFont = window.wp.customize
+			.control('neve_body_font_family')
+			.setting.get();
+		const headingFont = window.wp.customize
+			.control('neve_headings_font_family')
+			.setting.get();
+
+		if (selected === -1) {
+			const selectedBody = getFont(bodyFont);
+			setPrevBody(selectedBody);
+			console.log(selectedBody);
+		}
+
+		if (selected === -1) {
+			const selectedHeading = getFont(headingFont);
+			setPrevHead(selectedHeading);
+			console.log(selectedHeading);
+		}
+
+		return { bodyFont, headingFont };
+	};
+
 	const updateSelected = () => {
 		window.wp.customize.bind('ready', () => {
-			const bodyFont = window.wp.customize
-				.control('neve_body_font_family')
-				.setting.get();
-			const headingFont = window.wp.customize
-				.control('neve_headings_font_family')
-				.setting.get();
+			const { bodyFont, headingFont } = checkSelectedFont();
 
 			const index = pairs.findIndex(
 				(item: FontPair) =>
@@ -93,9 +146,23 @@ const FontPairSelector: React.FC<Props> = ({
 						};
 
 						if (headingFont.previewSize) {
+							if (
+								parseInt(
+									headingFont.previewSize.replace('px', '')
+								) > 27
+							) {
+								headingStyle.textOverflow = 'ellipsis';
+							}
 							headingStyle.fontSize = headingFont.previewSize;
 						}
 						if (bodyFont.previewSize) {
+							if (
+								parseInt(
+									bodyFont.previewSize.replace('px', '')
+								) > 24
+							) {
+								bodyStyle.textOverflow = 'ellipsis';
+							}
 							bodyStyle.fontSize = bodyFont.previewSize;
 						}
 						return (
@@ -114,6 +181,7 @@ const FontPairSelector: React.FC<Props> = ({
 											setSelected(-1);
 											return;
 										}
+										checkSelectedFont();
 										onSelect(preset);
 										setSelected(index);
 									}}

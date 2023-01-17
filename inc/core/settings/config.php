@@ -256,7 +256,7 @@ class Config {
 			'headingFont' => [
 				'font'        => 'Playfair Display',
 				'fontSource'  => 'Google',
-				'previewSize' => '27px',
+				'previewSize' => '28px',
 			],
 			'bodyFont'    => [
 				'font'        => 'Source Sans Pro',
