@@ -237,15 +237,17 @@ class Fse {
 		foreach ( $query_result as $key => $template ) {
 			$enabled = $this->is_template_enabled( $template->slug );
 
+			// Still need to load all templates in admin.
+			if ( ! is_admin() ) {
+				// Page should not affect the front page.
+				if ( $template->slug === 'page' && $this->is_front_page() ) {
+					$enabled = false;
+				}
 
-			// Page should not affect the front page.
-			if ( $template->slug === 'page' && $this->is_front_page() ) {
-				$enabled = false;
-			}
-
-			// Don't pass through the index template if we're on archive.
-			if ( $template->slug === 'index' && ! $this->is_blog() ) {
-				$enabled = false;
+				// Don't pass through the index template if we're on archive.
+				if ( $template->slug === 'index' && ! $this->is_blog() ) {
+					$enabled = false;
+				}
 			}
 
 			if ( $enabled ) {
