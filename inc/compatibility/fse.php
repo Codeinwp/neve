@@ -20,6 +20,9 @@ class Fse {
 	 * Theme mod used for main flag.
 	 */
 	const FSE_ENABLED_SLUG = 'neve_enable_fse_templates';
+
+	const CUSTOMIZER_NOTIFICATION = 'site_editor_block_theme_notice';
+
 	/**
 	 * Templates.
 	 *
@@ -541,5 +544,13 @@ class Fse {
 			';
 
 		wp_add_inline_style( Loader::CUSTOMIZER_STYLE_HANDLE, Dynamic_Css::minify_css( $css ) );
+
+		$js = '
+		wp.customize.bind("ready", function() {
+			wp.customize.notifications.remove("site_editor_block_theme_notice");
+		});
+		';
+
+		wp_add_inline_script( 'react-controls', $js );
 	}
 }
