@@ -174,7 +174,34 @@ class Fse {
 	 * @return void
 	 */
 	public function handle_header() {
-		$this->handle_theme_part( 'header' );
+		$header_classes = apply_filters( 'nv_header_classes', 'header' );
+		?>
+
+		<div class="wrapper">
+		<?php do_action( 'neve_before_header_wrapper_hook' ); ?>
+
+		<header class="<?php echo esc_attr( $header_classes ); ?>" <?php echo ( neve_is_amp() ) ? 'next-page-hide' : ''; ?> >
+			<a class="neve-skip-link show-on-focus" href="#content">
+				<?php echo __( 'Skip to content', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			</a>
+			<?php
+			do_action( 'neve_before_header_hook' );
+
+			if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'header' ) === true ) {
+				$this->handle_theme_part( 'header' );
+			}
+
+			do_action( 'neve_after_header_hook' );
+			?>
+		</header>
+
+		<?php
+		do_action( 'neve_after_header_wrapper_hook' );
+		do_action( 'neve_before_primary' );
+		?>
+		<main id="content" class="neve-main">
+		<?php
+		do_action( 'neve_after_primary_start' );
 	}
 
 	/**
@@ -183,7 +210,20 @@ class Fse {
 	 * @return void
 	 */
 	public function handle_footer() {
-		$this->handle_theme_part( 'footer' );
+		do_action( 'neve_before_primary_end' );
+		?>
+		</main><!--/.neve-main-->
+		<?php
+		do_action( 'neve_after_primary' );
+
+		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'footer' ) === true ) {
+			do_action( 'neve_before_footer_hook' );
+			$this->handle_theme_part( 'footer' );
+			do_action( 'neve_after_footer_hook' );
+		}
+		?>
+		</div><!--/.wrapper-->
+		<?php
 	}
 
 	/**
