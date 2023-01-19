@@ -1,5 +1,6 @@
 .customize-control-neve_font_pairings_control {
   display: list-item !important;
+  color: red;
 
   .neve-font-pair-selector {
 	display: flex;
@@ -24,7 +25,7 @@
 		color: var(--nv-text-color);
 		background: var(--nv-site-bg);
 
-		&:hover, &focus {
+		&:hover, &:focus {
 			border: 2px solid #333;
 			background: var(--nv-dark-bg);
 			color: var(--nv-text-dark-bg);
@@ -72,12 +73,28 @@
 			padding: 0 8px;
 			white-space: nowrap;
 			overflow: hidden;
+			width: calc( 100% - 16px );
 
 			& + .neve-font-preview {
 				font-size: 16px;
 				font-weight: normal;
 			}
 		}
+	}
+  }
+}
+
+#customize-theme-controls #sub-accordion-section-typography_font_pair_section {
+  overflow-y: visible;
+}
+
+@media ( max-width: 1510px ) {
+  .neve-font-pair-selector {
+	button {
+	  .neve-font-preview {
+		max-width: 212px;
+		text-overflow: ellipsis;
+	  }
 	}
   }
 }
