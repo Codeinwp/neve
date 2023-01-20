@@ -163,7 +163,7 @@ class Fse {
 			'archive'    => is_post_type_archive( 'post' ) && ! $this->is_blog(),
 			'404'        => is_404(),
 			'search'     => is_search(),
-			'page'       => is_singular( 'page' ) && ! $this->is_front_page(),
+			'page'       => $this->is_single_page(),
 			'single'     => is_singular( 'post' ),
 		];
 	}
@@ -566,6 +566,21 @@ class Fse {
 	 */
 	private function is_front_page() {
 		return 'page' == get_option( 'show_on_front' ) && absint( get_option( 'page_on_front' ) ) === get_the_ID();
+	}
+
+	/**
+	 * Checks if single page.
+	 *
+	 * @return bool
+	 */
+	private function is_single_page() {
+		// Disable PHP page templates.
+		$page_template = get_page_template_slug( get_the_ID() );
+		if ( strpos( $page_template, '.php' ) !== false ) {
+			return false;
+		}
+
+		return is_singular( 'page' ) && ! $this->is_front_page();
 	}
 
 	/**
