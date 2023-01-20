@@ -177,8 +177,7 @@ class PaletteSwitch extends Abstract_Component {
 		if ( $auto_adjust ) {
 			$default_state = 'window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"';
 		}
-
-		return '!function(){"use strict";const e="data-neve-theme",t="neve_user_theme";function r(){let n=' . $default_state . ',r=localStorage.getItem(t);"dark"===r&&(n="dark"),"light"===r&&(n="light"),document.documentElement.setAttribute(e,n)}r();const a=document.getElementById("neve_body");function n(n){if(n.srcElement&&(n.srcElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.matches("a.palette-icon-wrapper")||n.srcElement.parentElement&&n.srcElement.parentElement.parentElement.parentElement.matches("a.palette-icon-wrapper"))){if(n.preventDefault(),"dark"===document.documentElement.getAttribute(e))return localStorage.setItem(t,"light"),void document.documentElement.setAttribute(e,"light");localStorage.setItem(t,"dark"),document.documentElement.setAttribute(e,"dark")}}a&&a.addEventListener("click",n,!1);}();';
+		return '!function(){const e="neve_user_theme",t="data-neve-theme";let n=' . $default_state . ';"dark"===localStorage.getItem(e)&&(n="dark"),document.documentElement.setAttribute(t,n);document.addEventListener("click",(n=>{n.target.matches(".palette-icon-wrapper, .palette-icon-wrapper *")&&(n=>{n.preventDefault();const a="light"===document.documentElement.getAttribute(t)?"dark":"light";document.documentElement.setAttribute(t,a),localStorage.setItem(e,a)})(n)}))}();';
 	}
 
 	/**

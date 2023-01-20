@@ -17,7 +17,7 @@ use Neve\Core\Settings\Config;
  * @package Neve\Customizer
  */
 class Loader {
-
+	const CUSTOMIZER_STYLE_HANDLE = 'neve-customizer-style';
 	/**
 	 * Customizer modules.
 	 *
@@ -94,10 +94,10 @@ class Loader {
 	 * Enqueue customizer controls script.
 	 */
 	public function enqueue_customizer_controls() {
-		wp_register_style( 'neve-customizer-style', NEVE_ASSETS_URL . 'css/customizer-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
-		wp_style_add_data( 'neve-customizer-style', 'rtl', 'replace' );
-		wp_style_add_data( 'neve-customizer-style', 'suffix', '.min' );
-		wp_enqueue_style( 'neve-customizer-style' );
+		wp_register_style( self::CUSTOMIZER_STYLE_HANDLE, NEVE_ASSETS_URL . 'css/customizer-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
+		wp_style_add_data( self::CUSTOMIZER_STYLE_HANDLE, 'rtl', 'replace' );
+		wp_style_add_data( self::CUSTOMIZER_STYLE_HANDLE, 'suffix', '.min' );
+		wp_enqueue_style( self::CUSTOMIZER_STYLE_HANDLE );
 
 		wp_enqueue_script(
 			'neve-customizer-controls',
