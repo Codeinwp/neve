@@ -9,6 +9,9 @@
 
 namespace Neve\Compatibility;
 
+use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
+
 /**
  * Class Bever
  *
@@ -157,6 +160,12 @@ class Beaver extends Page_Builder_Base {
 		}
 
 		$palette_colors = array_values( $palette['colors'] );
+
+		$global_custom_colors = Mods::get( Config::MODS_GLOBAL_CUSTOM_COLORS, [] );
+
+		foreach ( $global_custom_colors as $args ) {
+			$palette_colors[] = $args['val'];
+		}
 
 		foreach ( $palette_colors as $color ) {
 			if ( ! array_search( $color, $colors, true ) ) {

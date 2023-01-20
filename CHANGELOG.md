@@ -1,3 +1,9 @@
+##### [Version 3.4.10](https://github.com/Codeinwp/neve/compare/v3.4.9...v3.4.10) (2023-01-09)
+
+- [Fix] Installation of Super Page Cache for Cloudflare recommended plugin not working
+- [Fix] Make body_class hook signature similar to WP core one; props [@mi5t4n](https://github.com/mi5t4n) for contribution
+- [Fix] One click install for Cloud Templates & Patterns collection
+
 ##### [Version 3.4.9](https://github.com/Codeinwp/neve/compare/v3.4.8...v3.4.9) (2022-12-15)
 
 - [Fix] Revert menu changes to fix regressions

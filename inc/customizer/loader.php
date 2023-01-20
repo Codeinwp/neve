@@ -10,6 +10,7 @@ namespace Neve\Customizer;
 
 use Neve\Core\Factory;
 use Neve\Core\Settings\Config;
+use Neve\Customizer\Options\Colors_Background;
 
 /**
  * Main customizer handler.
@@ -141,6 +142,7 @@ class Loader {
 						'key'       => Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING,
 					),
 					'fontPairs'                     => get_theme_mod( Config::MODS_TPOGRAPHY_FONT_PAIRS, Config::$typography_default_pairs ),
+					'allowedGlobalCustomColor'      => Colors_Background::CUSTOM_COLOR_LIMIT,
 				)
 			)
 		);
