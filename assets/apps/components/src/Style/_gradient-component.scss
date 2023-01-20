@@ -1,7 +1,17 @@
-.neve-color-component {
+.customize-control .neve-color-component {
+	.components-popover {
+		position: fixed !important;
+		.components-custom-gradient-picker__inserter{
+		  z-index: 1;
+		}
+		.components-popover {
+			position: absolute !important;
+		}
+	}
 
 	.components-popover .components-popover__content {
 		overflow: unset !important;
+		max-height: fit-content !important;
 	}
 
 	.components-custom-gradient-picker__gradient-bar {
