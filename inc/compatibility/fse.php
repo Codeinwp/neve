@@ -160,7 +160,7 @@ class Fse {
 		return [
 			'index'      => $this->is_blog(),
 			'front-page' => $this->is_front_page(),
-			'archive'    => is_archive() && ! $this->is_blog(),
+			'archive'    => is_post_type_archive( 'post' ) && ! $this->is_blog(),
 			'404'        => is_404(),
 			'search'     => is_search(),
 			'page'       => is_singular( 'page' ) && ! $this->is_front_page(),
@@ -174,6 +174,12 @@ class Fse {
 	 * @return void
 	 */
 	public function handle_header() {
+		$template = $this->get_template_slug();
+
+		if ( ! $this->is_template_enabled( $template ) ) {
+			return;
+		}
+
 		$header_classes = apply_filters( 'nv_header_classes', 'header' );
 		?>
 
@@ -188,7 +194,7 @@ class Fse {
 			do_action( 'neve_before_header_hook' );
 
 			if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'header' ) === true ) {
-				$this->handle_theme_part( 'header' );
+				$this->handle_theme_part( 'header', $template );
 			}
 
 			do_action( 'neve_after_header_hook' );
@@ -210,6 +216,12 @@ class Fse {
 	 * @return void
 	 */
 	public function handle_footer() {
+		$template = $this->get_template_slug();
+
+		if ( ! $this->is_template_enabled( $template ) ) {
+			return;
+		}
+
 		do_action( 'neve_before_primary_end' );
 		?>
 		</main><!--/.neve-main-->
@@ -218,7 +230,7 @@ class Fse {
 
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'footer' ) === true ) {
 			do_action( 'neve_before_footer_hook' );
-			$this->handle_theme_part( 'footer' );
+			$this->handle_theme_part( 'footer', $template );
 			do_action( 'neve_after_footer_hook' );
 		}
 		?>
@@ -230,25 +242,16 @@ class Fse {
 	 * Handle theme part.
 	 *
 	 * @param string $part the theme part to handle - [header|footer].
+	 * @param string $template current template.
 	 *
 	 * @return void
 	 */
-	public function handle_theme_part( $part ) {
+	public function handle_theme_part( $part, $template ) {
 		if ( ! in_array( $part, [ 'header', 'footer' ], true ) ) {
 			return;
 		}
 
 		if ( ! $this->should_load() ) {
-			return;
-		}
-
-		$template = $this->get_template_slug();
-
-		if ( $template === null ) {
-			return;
-		}
-
-		if ( ! $this->is_template_enabled( $template ) ) {
 			return;
 		}
 
@@ -543,7 +546,7 @@ class Fse {
 	 * @return bool
 	 */
 	private function is_blog() {
-		return is_home() && ! is_front_page();
+		return is_post_type_archive( 'post' ) && is_home() && ! is_front_page();
 	}
 
 	/**
