@@ -281,10 +281,20 @@ class Fse {
 		}
 
 		foreach ( $query_result as $key => $template ) {
-			$enabled = $this->is_template_enabled( $template->slug );
+			// Skip if this is not defined by the theme itself. Allow all other templates to fall through.
+			if ( ! in_array( $template->slug, array_keys( $this->templates ) ) ) {
+				continue;
+			}
+
+			$enabled    = $this->is_template_enabled( $template->slug );
+			$conditions = $this->get_template_conditions();
+
 
 			// Still need to load all templates in admin.
 			if ( ! is_admin() ) {
+				if ( ! isset( $conditions[ $template->slug ] ) || $conditions[ $template->slug ] !== true ) {
+					$enabled = false;
+				}
 				// Page should not affect the front page.
 				if ( $template->slug === 'page' && $this->is_front_page() ) {
 					$enabled = false;
