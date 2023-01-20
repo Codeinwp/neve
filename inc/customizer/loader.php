@@ -10,6 +10,7 @@ namespace Neve\Customizer;
 
 use Neve\Core\Factory;
 use Neve\Core\Settings\Config;
+use Neve\Customizer\Options\Colors_Background;
 
 /**
  * Main customizer handler.
@@ -140,6 +141,8 @@ class Loader {
 						'learnMore' => apply_filters( 'neve_external_link', 'https://docs.themeisle.com/article/1349-how-to-load-neve-fonts-locally', esc_html__( 'Learn more', 'neve' ) ),
 						'key'       => Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING,
 					),
+					'fontPairs'                     => get_theme_mod( Config::MODS_TPOGRAPHY_FONT_PAIRS, Config::$typography_default_pairs ),
+					'allowedGlobalCustomColor'      => Colors_Background::CUSTOM_COLOR_LIMIT,
 				)
 			)
 		);
@@ -159,7 +162,7 @@ class Loader {
 		foreach ( $chunks as $index => $fonts_chunk ) {
 			wp_enqueue_style(
 				'neve-fonts-control-google-fonts-' . $index,
-				'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=Abc"',
+				'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=AbcTtheigrownfoxJumpsvlazydg"',
 				[],
 				NEVE_VERSION
 			);
