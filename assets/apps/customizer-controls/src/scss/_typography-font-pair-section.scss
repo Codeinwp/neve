@@ -1,0 +1,100 @@
+.customize-control-neve_font_pairings_control {
+  display: list-item !important;
+  color: red;
+
+  .neve-font-pair-selector {
+	display: flex;
+	flex-direction: column;
+	padding: 12px 6px;
+
+	.description {
+		padding: 0 0 24px;
+		margin-bottom: 12px;
+		border-bottom: 1px solid #DDD;
+	}
+
+	button {
+		border: 2px solid transparent;
+		border-radius: 4px;
+		padding: 4px 8px;
+		margin-bottom: 12px;
+		display: flex;
+		flex-direction: column;
+		height: 90px;
+		justify-content: space-evenly;
+		color: var(--nv-text-color);
+		background: var(--nv-site-bg);
+
+		&:hover, &:focus {
+			border: 2px solid #333;
+			background: var(--nv-dark-bg);
+			color: var(--nv-text-dark-bg);
+			cursor: pointer;
+		}
+
+		&.active {
+		  position: relative;
+		  border: 2px solid var(--wp-admin-theme-color);
+		  &::before {
+			content: "\f147";
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 27px;
+			height: 27px;
+			background-color: var(--wp-admin-theme-color);
+			color: #fff;
+			border-radius: 6px 0 0 0;
+		  }
+		}
+
+		&.reset {
+			border: none;
+			background: none;
+			height: auto;
+			flex-direction: row;
+			justify-content: center;
+			margin-top: 12px;
+			span {
+				margin-right: 12px;
+			}
+			&:hover, &focus {
+				color: var(--wp-admin-theme-color);
+			}
+		}
+
+		.neve-font-preview {
+			font-size: 24px;
+			font-weight: 700;
+			text-align: left;
+			padding: 0 8px;
+			white-space: nowrap;
+			overflow: hidden;
+			width: calc( 100% - 16px );
+
+			& + .neve-font-preview {
+				font-size: 16px;
+				font-weight: normal;
+			}
+		}
+	}
+  }
+}
+
+#customize-theme-controls #sub-accordion-section-typography_font_pair_section {
+  overflow-y: visible;
+}
+
+@media ( max-width: 1510px ) {
+  .neve-font-pair-selector {
+	button {
+	  .neve-font-preview {
+		max-width: 212px;
+		text-overflow: ellipsis;
+	  }
+	}
+  }
+}

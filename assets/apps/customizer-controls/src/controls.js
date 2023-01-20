@@ -42,6 +42,7 @@ import Upsells from './builder-upsell/Upsells.tsx';
 import { initLocalGoogleFonts } from './typography-extra/LocalGoogleFonts';
 
 import MainSearch from './customizer-search/MainSearch.tsx';
+import { FontPairControl } from './typography-font-pair/Control';
 
 const { controlConstructor } = wp.customize;
 
@@ -51,6 +52,7 @@ controlConstructor.neve_background_control = BackgroundControl;
 controlConstructor.neve_spacing = SpacingControl;
 controlConstructor.neve_typeface_control = TypefaceControl;
 controlConstructor.neve_font_family_control = FontFamilyControl;
+controlConstructor.neve_font_pairings_control = FontPairControl;
 controlConstructor.neve_radio_buttons_control = RadioButtonsControl;
 controlConstructor.neve_button_appearance = ButtonAppearanceControl;
 controlConstructor.neve_range_control = RangeControl;
