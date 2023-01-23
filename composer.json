@@ -15,9 +15,15 @@
 	"source": "https://github.com/Codeinwp/neve"
   },
   "require": {
-	"codeinwp/themeisle-sdk": "^3.2",
+	"codeinwp/themeisle-sdk": "dev-fix/php-8.2",
     "wptt/webfont-loader": "^1.1"
   },
+  "repositories": [
+	{
+		"type": "vcs",
+		"url": "https://github.com/Codeinwp/themeisle-sdk"
+	}
+],
   "autoload": {
 	"psr-4": {
 	  "HFG\\": "header-footer-grid/"
