@@ -1,7 +1,7 @@
 <?php
 /**
  * Index template.
- *
+ * 
  * @package Neve
  */
 
