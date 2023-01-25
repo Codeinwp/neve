@@ -1,7 +1,18 @@
-.neve-color-component {
+.customize-control .neve-color-component {
+	.components-popover {
+		position: fixed !important;
+		max-height: 430px;
+		.components-custom-gradient-picker__inserter{
+		  z-index: 1;
+		}
+		.components-popover {
+			position: absolute !important;
+		}
+	}
 
 	.components-popover .components-popover__content {
 		overflow: unset !important;
+		max-height: fit-content !important;
 	}
 
 	.components-custom-gradient-picker__gradient-bar {
@@ -13,4 +24,21 @@
 			opacity: 1;
 		}
 	}
+}
+
+/*
+ * Style fixes for color picker inside mega-menu.
+ */
+#nv-mm-app {
+  .modal {
+	.components-popover {
+	  max-height: 430px;
+	}
+
+	.components-color-picker {
+	  .components-select-control .components-input-control__container {
+		max-width: 100%;
+	  }
+	}
+  }
 }
