@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "513e7ec378e2c204bb709cac443cb03ff24378b1"
+                "reference": "afb39d8d2043687636988e8ddf0c49fd24a72fb0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/513e7ec378e2c204bb709cac443cb03ff24378b1",
-                "reference": "513e7ec378e2c204bb709cac443cb03ff24378b1",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/afb39d8d2043687636988e8ddf0c49fd24a72fb0",
+                "reference": "afb39d8d2043687636988e8ddf0c49fd24a72fb0",
                 "shasum": ""
             },
             "require-dev": {
@@ -52,9 +52,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeinwp/themeisle-sdk/issues",
-                "source": "https://github.com/Codeinwp/themeisle-sdk/tree/development"
+                "source": "https://github.com/Codeinwp/themeisle-sdk/tree/fix/php-8.2"
             },
-            "time": "2022-11-30T20:49:19+00:00"
+            "time": "2023-01-23T12:44:40+00:00"
         },
         {
             "name": "wptt/webfont-loader",
