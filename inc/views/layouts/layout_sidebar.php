@@ -126,7 +126,7 @@ class Layout_Sidebar extends Base_View {
 			$sidebar_setup['content_width'] = 'neve_sitewide_content_width';
 			$sidebar_setup['has_widgets']   = is_active_sidebar( $sidebar_setup['sidebar_slug'] );
 
-			return apply_filters( 'neve_sidebar_setup_filter', $sidebar_setup );
+			return apply_filters( 'neve_before_returning_sidebar_setup', $sidebar_setup );
 		}
 
 		switch ( $context ) {
@@ -165,7 +165,7 @@ class Layout_Sidebar extends Base_View {
 
 		$sidebar_setup['has_widgets'] = is_active_sidebar( $sidebar_setup['sidebar_slug'] );
 
-		$sidebar_setup = apply_filters( 'neve_sidebar_setup_filter', $sidebar_setup );
+		$sidebar_setup = apply_filters( 'neve_before_returning_sidebar_setup', apply_filters( 'neve_sidebar_setup_filter', $sidebar_setup ) );
 
 		add_filter(
 			'neve_' . $context . '_sidebar_setup',
