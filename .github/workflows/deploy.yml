@@ -76,4 +76,8 @@ jobs:
               echo "$STORE_JSON";
               curl -X POST -H 'Cache-Control: no-cache' -H "Content-Type: application/json" -H "x-themeisle-auth: $THEMEISLE_AUTH"  --data "$STORE_JSON" "$STORE_URL/wp-json/edd-so/v1/update_changelog/" > /dev/null
           fi
-
+      - name: WordPress Theme Deploy
+        uses: HardeepAsrani/action-wordpress-theme-deploy@primary
+        env:
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
