@@ -483,21 +483,32 @@ class Elementor extends Page_Builder_Base {
 	}
 
 	/**
-	 * Detect if the a page is using the checkout widget.
+	 * Detect if a page is using the checkout widget.
 	 */
 	public static function is_elementor_checkout() {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return false;
+		}
+		if ( ! function_exists( 'is_checkout' ) && ! is_checkout() ) {
+			return false;
+		}
 		if ( ! class_exists( '\ElementorPro\Plugin', false ) ) {
 			return false;
+		}
+		if ( array_key_exists( 'checkout', self::$cache_cp_has_template ) ) {
+			return self::$cache_cp_has_template['checkout'];
 		}
 
 		$is_elementor_checkout = false;
 		$page_id               = get_the_ID();
 		$elementor_data        = get_post_meta( $page_id, '_elementor_data', true );
-		if ( ! empty( $elementor_data ) && is_string( $elementor_data ) && strpos( $elementor_data, 'woocommerce-checkout-page' ) ) {
+		if ( ! empty( $elementor_data ) && is_string( $elementor_data ) && ( strpos( $elementor_data, 'woocommerce-checkout-page' ) !== false ) ) {
 			$is_elementor_checkout = true;
 		}
 
-		return $is_elementor_checkout;
+		self::$cache_cp_has_template['checkout'] = $is_elementor_checkout;
+
+		return self::$cache_cp_has_template['checkout'];
 	}
 
 	/**
