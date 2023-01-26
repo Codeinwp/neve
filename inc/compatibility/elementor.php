@@ -484,6 +484,8 @@ class Elementor extends Page_Builder_Base {
 
 	/**
 	 * Detect if a page is using the checkout widget.
+	 *
+	 * @return bool
 	 */
 	public static function is_elementor_checkout() {
 		if ( ! class_exists( 'WooCommerce' ) ) {
