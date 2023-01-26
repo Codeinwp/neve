@@ -1,0 +1,68 @@
+.customize-control-neve_global_custom_colors {
+	.new-custom-color {
+		width: 100%;
+		justify-content: center;
+
+		.dashicon {
+			font-size:14px;
+			width: 14px;
+			height: 14px;
+			padding-left: 3px;
+		}
+	}
+
+	.neve-color-component {
+		.customize-control-title {
+			flex-grow: 2;
+		}
+	}
+
+	.neve-color-component:hover {
+		.action-icon-wrapper {
+			opacity: 1;
+			transition: all 0.5s;
+		}
+	}
+
+	.action-icon-wrapper {
+		margin-right: 10px;
+		opacity: 0;
+
+		.dashicon {
+			cursor: pointer;
+		}
+	}
+
+	.custom-label-edit-wrapper {
+		display: inherit;
+		flex-grow: 2;
+		margin: 0;
+
+		div {
+			margin: 0;
+		}
+
+		button {
+			height: 30px;
+		}
+	}
+
+	.cc-limit-notice {
+		display: flex;
+		align-items: center;
+
+		p {
+			margin: 0;
+			font-size: 12px;
+		}
+	}
+}
+
+.remove-custom-color-btn-wrapper {
+	display:flex;
+	justify-content: right;
+
+	button {
+		margin: 0 4px;
+	}
+}

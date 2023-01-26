@@ -45,6 +45,29 @@ const TypefaceComponent = ({ control }) => {
 		});
 	}, []);
 
+	useEffect(() => {
+		document.addEventListener('neve-changed-customizer-value', (e) => {
+			if (!e.detail) return false;
+			if (e.detail.id !== control.id) return false;
+			if (
+				typeof e.detail.value !== 'object' ||
+				Array.isArray(e.detail.value) ||
+				e.detail.value === null
+			) {
+				return false;
+			}
+			if (
+				!Object.hasOwn(e.detail.value, 'font') ||
+				!Object.hasOwn(e.detail.value, 'fontSource')
+			) {
+				return false;
+			}
+
+			const { font, fontSource } = e.detail.value;
+			onChoseFont(fontSource, font);
+		});
+	}, []);
+
 	const maybeGetTypekitFont = (font) => {
 		const { typekitSlugs } = NeveReactCustomize;
 

@@ -10,6 +10,7 @@ namespace Neve\Customizer;
 
 use Neve\Core\Factory;
 use Neve\Core\Settings\Config;
+use Neve\Customizer\Options\Colors_Background;
 
 /**
  * Main customizer handler.
@@ -17,7 +18,7 @@ use Neve\Core\Settings\Config;
  * @package Neve\Customizer
  */
 class Loader {
-
+	const CUSTOMIZER_STYLE_HANDLE = 'neve-customizer-style';
 	/**
 	 * Customizer modules.
 	 *
@@ -94,10 +95,10 @@ class Loader {
 	 * Enqueue customizer controls script.
 	 */
 	public function enqueue_customizer_controls() {
-		wp_register_style( 'neve-customizer-style', NEVE_ASSETS_URL . 'css/customizer-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
-		wp_style_add_data( 'neve-customizer-style', 'rtl', 'replace' );
-		wp_style_add_data( 'neve-customizer-style', 'suffix', '.min' );
-		wp_enqueue_style( 'neve-customizer-style' );
+		wp_register_style( self::CUSTOMIZER_STYLE_HANDLE, NEVE_ASSETS_URL . 'css/customizer-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
+		wp_style_add_data( self::CUSTOMIZER_STYLE_HANDLE, 'rtl', 'replace' );
+		wp_style_add_data( self::CUSTOMIZER_STYLE_HANDLE, 'suffix', '.min' );
+		wp_enqueue_style( self::CUSTOMIZER_STYLE_HANDLE );
 
 		wp_enqueue_script(
 			'neve-customizer-controls',
@@ -140,6 +141,8 @@ class Loader {
 						'learnMore' => apply_filters( 'neve_external_link', 'https://docs.themeisle.com/article/1349-how-to-load-neve-fonts-locally', esc_html__( 'Learn more', 'neve' ) ),
 						'key'       => Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING,
 					),
+					'fontPairs'                     => get_theme_mod( Config::MODS_TPOGRAPHY_FONT_PAIRS, Config::$typography_default_pairs ),
+					'allowedGlobalCustomColor'      => Colors_Background::CUSTOM_COLOR_LIMIT,
 				)
 			)
 		);
@@ -159,7 +162,7 @@ class Loader {
 		foreach ( $chunks as $index => $fonts_chunk ) {
 			wp_enqueue_style(
 				'neve-fonts-control-google-fonts-' . $index,
-				'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=Abc"',
+				'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=AbcTtheigrownfoxJumpsvlazydg"',
 				[],
 				NEVE_VERSION
 			);
