@@ -250,7 +250,7 @@ class Post_Meta extends Base_View {
 	 * Get the author meta.
 	 *
 	 * @param int | null $post_id Post id.
-	 * @param bool       $show_before Show the 'by' sting before the author name.
+	 * @param bool       $show_before Show the 'by' string before the author name.
 	 *
 	 * @return string | false
 	 */
