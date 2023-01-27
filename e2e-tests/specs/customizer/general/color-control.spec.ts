@@ -1,15 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { loadData, setCustomizeSettings } from '../../../utils';
+import { setCustomizeSettings } from '../../../utils';
+import data from '../../../fixtures/customizer/general/color-control-setup.json';
 
 test.describe('Color Control', () => {
 	test.beforeAll(async ({ request, baseURL }) => {
-		await loadData(
-			'./fixtures/customizer/general/color-control-setup.json'
-		).then(async (data) => {
-			await setCustomizeSettings('colorControl', data, {
-				request,
-				baseURL,
-			});
+		await setCustomizeSettings('colorControl', data, {
+			request,
+			baseURL,
 		});
 	});
 

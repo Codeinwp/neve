@@ -133,8 +133,9 @@ jobs:
       fail-fast: true
       matrix:
         include:
-          - machines: 1
-            specs: "customizer"
+          - specs: "customizer"
+            envs: "sample-data"
+          - specs: "tpc"
             envs: "sample-data"
     runs-on: ubuntu-latest
     env:
@@ -152,4 +153,4 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
       - name: Run Playwright tests
-        run: yarn run test:e2e:playwright
+        run: yarn run test:playwright e2e-tests/specs/${{ matrix.specs }}

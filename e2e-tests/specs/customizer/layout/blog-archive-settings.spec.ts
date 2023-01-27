@@ -1,25 +1,13 @@
 import { test, expect } from '@playwright/test';
-import { loadData, setCustomizeSettings } from '../../../utils';
-
-let customizerData;
-
-test.beforeAll(async () => {
-	customizerData = await loadData(
-		'./fixtures/customizer/layout/blog-archive-setting-setup.json'
-	);
-});
+import { setCustomizeSettings } from '../../../utils';
+import data from '../../../fixtures/customizer/layout/blog-archive-setting-setup.json';
 
 test.describe('Blog/Archive 1 / Default Layout', () => {
 	test.beforeAll(async ({ request, baseURL }) => {
-		const data = JSON.parse(customizerData);
-		await setCustomizeSettings(
-			'defaultLayout',
-			JSON.stringify(data.archive1),
-			{
-				request,
-				baseURL,
-			}
-		);
+		await setCustomizeSettings('defaultLayout', data.archive1, {
+			request,
+			baseURL,
+		});
 	});
 
 	test('Tests Default Layout (List)', async ({ page }) => {
@@ -119,16 +107,13 @@ test.describe('Blog/Archive 1 / Default Layout', () => {
 	});
 
 	test('Alternative layout', async ({ page, request, baseURL }) => {
-		const data = JSON.parse(customizerData);
-		data.archive1.neve_blog_list_alternative_layout = true;
-		await setCustomizeSettings(
-			'alternativeLayout',
-			JSON.stringify(data.archive1),
-			{
-				request,
-				baseURL,
-			}
-		);
+		const alternativeLayoutData = Object.assign({}, data.archive1);
+		// @ts-ignore
+		alternativeLayoutData.neve_blog_list_alternative_layout = true;
+		await setCustomizeSettings('alternativeLayout', alternativeLayoutData, {
+			request,
+			baseURL,
+		});
 
 		await page.goto('/?test_name=alternativeLayout');
 		const posts = await page.locator('article.post');
@@ -162,15 +147,10 @@ test.describe('Blog/Archive 1 / Default Layout', () => {
 
 test.describe('Blog/Archive 2 / Grid Layout', () => {
 	test.beforeAll(async ({ request, baseURL }) => {
-		const data = JSON.parse(customizerData);
-		await setCustomizeSettings(
-			'gridLayout',
-			JSON.stringify(data.archive2),
-			{
-				request,
-				baseURL,
-			}
-		);
+		await setCustomizeSettings('gridLayout', data.archive2, {
+			request,
+			baseURL,
+		});
 	});
 
 	test('Grid layout', async ({ page }) => {
@@ -202,15 +182,10 @@ test.describe('Blog/Archive 2 / Grid Layout', () => {
 
 test.describe('Blog/Archive 3 / Covers Layout', () => {
 	test.beforeAll(async ({ request, baseURL }) => {
-		const data = JSON.parse(customizerData);
-		await setCustomizeSettings(
-			'coversLayout',
-			JSON.stringify(data.archive3),
-			{
-				request,
-				baseURL,
-			}
-		);
+		await setCustomizeSettings('coversLayout', data.archive3, {
+			request,
+			baseURL,
+		});
 	});
 
 	test('Covers layout', async ({ page }) => {
@@ -221,9 +196,7 @@ test.describe('Blog/Archive 3 / Covers Layout', () => {
 			const element = await posts.nth(index);
 			await expect(element).toHaveClass(/layout-covers/);
 
-			const coverPost = await element.locator(
-				'.cover-post'
-			);
+			const coverPost = await element.locator('.cover-post');
 			await expect(
 				coverPost.locator('.nv-post-thumbnail-wrap').count()
 			).not.toEqual(0);
