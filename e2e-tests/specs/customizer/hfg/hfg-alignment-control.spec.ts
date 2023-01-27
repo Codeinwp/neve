@@ -44,7 +44,7 @@ test.describe('Header Builder Alignment Control', function () {
 		request,
 		baseURL,
 	}) => {
-		await setCustomizeSettings('hfgLogoLeft', data.right, {
+		await setCustomizeSettings('hfgLogoLeft', data.left, {
 			request,
 			baseURL,
 		});
