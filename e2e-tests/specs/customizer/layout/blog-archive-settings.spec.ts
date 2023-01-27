@@ -238,7 +238,7 @@ test.describe('Blog/Archive 3 / Covers Layout', () => {
 	test('Masonry', async ({ page, request, baseURL }) => {
 		await setCustomizeSettings(
 			'masonry',
-			JSON.stringify({ neve_enable_masonry: true }),
+			{ neve_enable_masonry: true },
 			{
 				request,
 				baseURL,

@@ -3,12 +3,11 @@ import { setCustomizeSettings } from '../../../utils';
 import data from '../../../fixtures/customizer/layout/single-post-settings.json';
 
 test.describe('Single Post Check', function () {
-	/**
-	 * Declare local variables.
-	 */
-	let page: Page;
-
-	test('All page elements are hidden.', async ({ request, baseURL }) => {
+	test('All page elements are hidden.', async ({
+		page,
+		request,
+		baseURL,
+	}) => {
 		await setCustomizeSettings('layoutHiddenElements', data.hidden, {
 			request,
 			baseURL,
@@ -32,6 +31,7 @@ test.describe('Single Post Check', function () {
 	});
 
 	test('All elements enabled and reordered.', async ({
+		page,
 		request,
 		baseURL,
 	}) => {
@@ -58,7 +58,7 @@ test.describe('Single Post Check', function () {
 		}
 	});
 
-	test('Header Cover', async ({ request, baseURL }) => {
+	test('Header Cover', async ({ page, request, baseURL }) => {
 		await setCustomizeSettings('layoutHeaderCover', data.cover, {
 			request,
 			baseURL,
