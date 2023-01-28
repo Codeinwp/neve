@@ -21,7 +21,7 @@ use Neve\Core\Styles\Dynamic_Selector;
  *
  * @package HFG\Core\Components
  */
-class Search extends Abstract_Component {
+class Search extends Abstract_SearchComponent {
 
 	const COMPONENT_ID        = 'header_search';
 	const PLACEHOLDER_ID      = 'placeholder';
@@ -31,6 +31,13 @@ class Search extends Abstract_Component {
 	const FIELD_TEXT_COLOR    = 'field_text_color';
 	const FIELD_BORDER_WIDTH  = 'field_border_width';
 	const FIELD_BORDER_RADIUS = 'field_border_radius';
+
+	/**
+	 * Has support for the search button instead of icon?
+	 *
+	 * @var bool
+	 */
+	protected $has_button_support = true;
 
 	/**
 	 * Button constructor.

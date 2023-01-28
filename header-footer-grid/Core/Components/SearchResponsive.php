@@ -22,7 +22,7 @@ use Neve\Core\Styles\Dynamic_Selector;
  *
  * @package HFG\Core\Components
  */
-class SearchResponsive extends Abstract_Component {
+class SearchResponsive extends Abstract_SearchComponent {
 	use Core;
 
 	const COMPONENT_ID        = 'header_search_responsive';
