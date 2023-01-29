@@ -241,7 +241,7 @@ class Main {
 	 *
 	 * @param string $builder Builder name, if required.
 	 *
-	 * @return Abstract_Builder Builder array(s).
+	 * @return Abstract_Builder[]|Abstract_Builder Builder array(s).
 	 */
 	public function get_builder( $builder = '' ) {
 		if ( empty( $builder ) ) {
