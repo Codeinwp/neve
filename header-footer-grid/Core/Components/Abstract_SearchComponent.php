@@ -9,6 +9,7 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Components\Abstract_Component;
 use HFG\Core\Settings\Manager as SettingsManager;
+use function HFG\component_setting;
 
 /**
  * Class Abstract_SearchComponent
@@ -86,9 +87,16 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 				'options'            => [
 					'is_for'          => 'search_icon',
 					'show_labels'     => false,
-					'active_callback' => function() use ( $sm ) {
-						$action_type = $this->get_class_const( 'COMPONENT_ID' ) . '_' . self::ACTION_TYPE;
-						return ( ! $this->has_button_support ) || $sm->get( $action_type, 'icon' ) === 'icon';
+					'active_callback' => function() {
+						// if the component doesn't support buttons, only icons are supported.
+						if ( ! $this->has_button_support ) {
+							return true;
+						}
+
+						// button or icon
+						$action_type = component_setting( self::ACTION_TYPE, 'icon', $this->get_class_const( 'COMPONENT_ID' ) );
+
+						return 'icon' === $action_type;
 					},
 				],
 			]
@@ -106,9 +114,10 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 				'section'            => $this->section,
 				'conditional_header' => true,
 				'options'            => [
-					'active_callback' => function() use ( $sm ) {
-						$icon_type = $this->get_class_const( 'COMPONENT_ID' ) . '_' . self::ICON_TYPE;
-						return $sm->get( $icon_type, 'hfgs-icon-style-1' ) === 'hfgs-icon-custom';
+					'active_callback' => function() {
+						$icon_type = component_setting( self::ICON_TYPE, 'hfgs-icon-style-1', $this->get_class_const( 'COMPONENT_ID' ) );
+
+						return 'hfgs-icon-custom' === $icon_type;
 					},
 					'input_attrs'     => [
 						'rows' => 8,
