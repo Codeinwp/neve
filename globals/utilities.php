@@ -6,6 +6,7 @@
  * @package utilities.php
  */
 
+use HFG\Core\Components\Abstract_SearchComponent;
 use Neve_Pro\Modules\Header_Footer_Grid\Components\Icons;
 
 /**
@@ -207,19 +208,28 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '', $icon_custo
  */
 function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_ready = false ) {
 
+	$icon_type = \HFG\component_setting( Abstract_SearchComponent::ICON_TYPE );
+
+	// For the possibility of \HFG\current_component returning false.
+	if ( $icon_type === false ) {
+		$icon_type = Abstract_SearchComponent::DEFAULT_ICON;
+	}
+
+	$svg = Abstract_SearchComponent::render_icon( $icon_type, $size );
+
 	$amp_state = '';
 	if ( $amp_ready ) {
 		$amp_state = 'on="tap:AMP.setState({visible: !visible})" role="button"  ';
 	}
 	$start_tag = $is_link ? 'a aria-label="' . __( 'Search', 'neve' ) . '" href="#"' : 'span';
 	$end_tag   = $is_link ? 'a' : 'span';
-	$svg       = '<' . $start_tag . ' class="nv-icon nv-search" ' . $amp_state . '>
-				<svg width="' . $size . '" height="' . $size . '" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg>
+	$output    = '<' . $start_tag . ' class="nv-icon nv-search" ' . $amp_state . '>
+				' . $svg . '
 			</' . $end_tag . '>';
 	if ( $echo === false ) {
-		return $svg;
+		return $output;
 	}
-	echo $svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	return null;
 }
 
