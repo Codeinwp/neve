@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const TextareaComponent = ({ control }) => {
 	const defaultParams = {
-		rows: 10,
+		rows: 4,
 	};
 
 	const controlParams = control.params.input_attrs
