@@ -51,10 +51,15 @@ function render_components( $builder_name = '', $device = null ) {
  * @param string $builder_name The builder id.
  * @param null   $component_id The component id.
  *
- * @return Core\Components\Abstract_Component
+ * @return false|Core\Components\Abstract_Component
  */
 function current_component( $builder_name = '', $component_id = null ) {
 	$builder = get_builder( $builder_name );
+
+	// if returns array of Abstract_Builder instances.
+	if ( ! ( $builder instanceof Abstract_Builder ) ) {
+		return false;
+	}
 
 	return $builder->get_component( $component_id );
 }
