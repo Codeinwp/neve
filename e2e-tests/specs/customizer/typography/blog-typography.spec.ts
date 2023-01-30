@@ -1,5 +1,6 @@
-import { test, expect } from '@playwright/test';
-import { loadData, setCustomizeSettings } from '../../../utils';
+import { test, expect, Locator } from '@playwright/test';
+import { setCustomizeSettings } from '../../../utils';
+import data from '../../../fixtures/customizer/typography/blog-typography.json';
 
 const setupValues = {
 	textTransform: 'lowercase',
@@ -52,7 +53,7 @@ const deviceMap = {
 
 class BlogTypographyUtils {
 	async testTransformAndWeight(
-		elem,
+		elem: Locator,
 		transformMatcher: string,
 		weightMatcher: string
 	) {
@@ -64,7 +65,7 @@ class BlogTypographyUtils {
 	}
 
 	async testSizeLineHeightSpacing(
-		elem,
+		elem: Locator,
 		fontSizeMatcher: string,
 		lineHeightMatcher: string,
 		letterSpacingMatcher: string
@@ -85,11 +86,15 @@ class BlogTypographyUtils {
 	/**
 	 * Wrapper function to run testTransformAndWeight over multiple elements.
 	 *
-	 * @param elementsToCheck
-	 * @param functionName
-	 * @param device
+	 * @param {Locator[]} elementsToCheck
+	 * @param {string} functionName
+	 * @param {string} device
 	 */
-	async checkElementsWrapper(elementsToCheck, functionName, device = '') {
+	async checkElementsWrapper(
+		elementsToCheck: Locator[],
+		functionName: string,
+		device = ''
+	) {
 		for (const element of elementsToCheck) {
 			for (let index = 0; index < (await element.count()); index++) {
 				if (functionName === 'testTransformAndWeight') {
@@ -102,8 +107,11 @@ class BlogTypographyUtils {
 				if (functionName === 'testSizeLineHeightSpacing') {
 					await this.testSizeLineHeightSpacing(
 						element.nth(index),
+						// @ts-ignore
 						setupValues.fontSize[device],
+						// @ts-ignore
 						setupValues.lineHeight[device],
+						// @ts-ignore
 						setupValues.letterSpacing[device]
 					);
 				}
@@ -116,13 +124,9 @@ test.describe('Blog Typography', () => {
 	const typographyUtils = new BlogTypographyUtils();
 
 	test.beforeAll(async ({ request, baseURL }) => {
-		await loadData(
-			'./fixtures/customizer/typography/blog-typography.json'
-		).then(async (data) => {
-			await setCustomizeSettings('blogTypography', data, {
-				request,
-				baseURL,
-			});
+		await setCustomizeSettings('blogTypography', data, {
+			request,
+			baseURL,
 		});
 	});
 
@@ -162,12 +166,15 @@ test.describe('Blog Typography', () => {
 
 	// eslint-disable-next-line array-callback-return
 	Object.keys(deviceMap).map(async (device) => {
+		// @ts-ignore
 		test(`Test blog typography for size, line height, and spacing on frontend on home page ( window ${deviceMap[device].width}/${deviceMap[device].height} )`, async ({
 			browser,
 		}) => {
 			const context = await browser.newContext({
 				viewport: {
+					// @ts-ignore
 					width: deviceMap[device].width,
+					// @ts-ignore
 					height: deviceMap[device].height,
 				},
 			});
@@ -193,7 +200,9 @@ test.describe('Blog Typography', () => {
 		}) => {
 			const context = await browser.newContext({
 				viewport: {
+					// @ts-ignore
 					width: deviceMap[device].width,
+					// @ts-ignore
 					height: deviceMap[device].height,
 				},
 			});

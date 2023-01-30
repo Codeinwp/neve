@@ -1,28 +1,22 @@
 import { test, expect } from '@playwright/test';
 import {
-	loadData,
 	setCustomizeSettings,
 	loginWithRequest,
 	clearWelcome,
 } from '../../../utils';
-
+import data from '../../../fixtures/customizer/typography/font-family.json'
 const fonts = {
 	general: 'Arapey',
 	headings: 'Allerta Stencil',
 };
 
 test.describe('Font Family', () => {
-
 	const headingSelectors = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
 	test.beforeAll(async ({ request, baseURL }) => {
-		await loadData(
-			'./fixtures/customizer/typography/font-family.json'
-		).then(async (data) => {
-			await setCustomizeSettings('fontFamily', data, {
-				request,
-				baseURL,
-			});
+		await setCustomizeSettings('fontFamily', data, {
+			request,
+			baseURL,
 		});
 	});
 

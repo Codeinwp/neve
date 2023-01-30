@@ -9,6 +9,8 @@
 namespace Neve\Compatibility;
 
 use Neve\Core\Dynamic_Css;
+use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 
 /**
  * Class Elementor
@@ -47,12 +49,22 @@ class Elementor extends Page_Builder_Base {
 	private static $elementor_conditions_manager = false;
 
 	/**
+	 * Custom global colors theme mod value
+	 *
+	 * @var array|null
+	 */
+	private static $custom_global_colors = null;
+
+	/**
 	 * Init function.
 	 */
 	public function init() {
 		if ( ! defined( 'ELEMENTOR_VERSION' ) ) {
 			return;
 		}
+
+		self::$custom_global_colors = self::$custom_global_colors ?? Mods::get( Config::MODS_GLOBAL_CUSTOM_COLORS, [] );
+
 		add_action( 'neve_dynamic_style_output', array( $this, 'fix_links' ), 99, 2 );
 		add_action( 'wp', array( $this, 'add_theme_builder_hooks' ) );
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_set_page_template' ), 1 );
@@ -113,6 +125,11 @@ class Elementor extends Page_Builder_Base {
 			'nvc2'              => 'nv-c-2',
 		];
 
+		// introduce custom global colors
+		foreach ( array_keys( self::$custom_global_colors ) as $slug ) {
+			$rest_to_slugs[ str_replace( '-', '', $slug ) ] = $slug;
+		}
+
 		$rest_id = substr( $route, strrpos( $route, '/' ) + 1 );
 
 		if ( ! in_array( $rest_id, array_keys( $rest_to_slugs ), true ) ) {
@@ -156,6 +173,10 @@ class Elementor extends Page_Builder_Base {
 			'nv-c-1'              => __( 'Extra Color 1', 'neve' ),
 			'nv-c-2'              => __( 'Extra Color 2', 'neve' ),
 		];
+
+		foreach ( self::$custom_global_colors as $slug => $args ) {
+			$label_map[ $slug ] = $args['label'];
+		}
 
 		$colors = $this->get_current_palette_colors();
 		$data   = $response->get_data();
@@ -319,8 +340,13 @@ class Elementor extends Page_Builder_Base {
 		$active     = $customizer['activePalette'];
 		$palettes   = $customizer['palettes'];
 		$palette    = $palettes[ $active ];
+		$colors     = $palette['colors'];
 
-		return $palette['colors'];
+		foreach ( self::$custom_global_colors as $slug => $args ) {
+			$colors[ $slug ] = $args['val'];
+		}
+
+		return $colors;
 	}
 
 	/**

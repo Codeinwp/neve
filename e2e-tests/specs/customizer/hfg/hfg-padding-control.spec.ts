@@ -1,15 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { loadData, setCustomizeSettings } from '../../../utils';
+import { setCustomizeSettings } from '../../../utils';
+import data from '../../../fixtures/customizer/hfg/padding-control.json';
 
 test.beforeAll(async ({ request, baseURL }) => {
-	await loadData('./fixtures/customizer/hfg/padding-control.json').then(
-		async (data) => {
-			await setCustomizeSettings('hfgLogoPadding', data, {
-				request,
-				baseURL,
-			});
-		}
-	);
+	await setCustomizeSettings('hfgLogoPadding', data, {
+		request,
+		baseURL,
+	});
 });
 
 test.describe('Header Builder Padding Control', function () {
