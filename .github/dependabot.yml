@@ -6,7 +6,6 @@ updates:
   - package-ecosystem: "composer"
     directory: "/"
     target-branch: "development"
-    versioning-strategy: increase
     schedule:
       interval: "weekly"
     allow:
