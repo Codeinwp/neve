@@ -37,6 +37,7 @@ class SearchResponsive extends Abstract_SearchComponent {
 	const FIELD_TEXT_COLOR    = 'field_text_color';
 	const FIELD_BORDER_WIDTH  = 'field_border_width';
 	const FIELD_BORDER_RADIUS = 'field_border_radius';
+	const DEFAULT_ICON_SIZE   = 15;
 
 	/**
 	 * Button constructor.
@@ -150,14 +151,14 @@ class SearchResponsive extends Abstract_SearchComponent {
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'absint',
-				'default'               => 15,
+				'default'               => self::DEFAULT_ICON_SIZE,
 				'label'                 => __( 'Icon Size', 'neve' ),
 				'type'                  => 'Neve\Customizer\Controls\React\Range',
 				'options'               => [
 					'input_attrs' => [
 						'min'        => 10,
 						'max'        => 100,
-						'defaultVal' => 15,
+						'defaultVal' => self::DEFAULT_ICON_SIZE,
 					],
 				],
 				'live_refresh_selector' => true,
