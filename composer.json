@@ -10,6 +10,8 @@
 	  "homepage": "https://themeisle.com"
 	}
   ],
+	
+  "type": "wordpress-theme",
   "support": {
 	"issues": "https://github.com/Codeinwp/neve/issues",
 	"source": "https://github.com/Codeinwp/neve"
