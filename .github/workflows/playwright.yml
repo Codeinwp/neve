@@ -98,10 +98,10 @@ jobs:
 
       - name: Check if a comment was already made
         id: find-comment
-        uses: peter-evans/find-comment@v1
+        uses: peter-evans/find-comment@v2
         with:
           issue-number: ${{ steps.get-pr-number.outputs.num }}
-          comment-author: github-actions[bot]
+          comment-author: pirate-bot
           body-includes: Download [build]
 
       - name: Get comment body
@@ -113,17 +113,19 @@ jobs:
           echo "::set-output name=body::$body"
       - name: Create comment on PR with links to plugin builds
         if: ${{ steps.find-comment.outputs.comment-id == '' }}
-        uses: peter-evans/create-or-update-comment@v1
+        uses: peter-evans/create-or-update-comment@v2
         with:
           issue-number: ${{ steps.get-pr-number.outputs.num }}
+          token: ${{ secrets.BOT_TOKEN }}
           body: ${{ steps.get-comment-body.outputs.body }}
 
       - name: Update comment on PR with links to plugin builds
         if: ${{ steps.find-comment.outputs.comment-id != '' }}
-        uses: peter-evans/create-or-update-comment@v1
+        uses: peter-evans/create-or-update-comment@v2
         with:
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           edit-mode: replace
+          token: ${{ secrets.BOT_TOKEN }}
           body: ${{ steps.get-comment-body.outputs.body }}
 
   e2e:
