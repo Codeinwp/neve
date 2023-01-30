@@ -66,6 +66,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 				'tab'                => SettingsManager::TAB_STYLE,
 				'transport'          => 'refresh',
 				'label'              => __( 'Action Type', 'neve' ),
+				'sanitize_callback'  => 'sanitize_key',
 				'default'            => 'icon',
 				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'section'            => $this->section,
@@ -102,6 +103,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 				'transport'          => 'refresh',
 				'label'              => __( 'Icon Type', 'neve' ),
 				'default'            => self::DEFAULT_ICON,
+				'sanitize_callback ' => 'sanitize_key',
 				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'section'            => $this->section,
 				'conditional_header' => true,
@@ -132,6 +134,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 				'label'              => __( 'Custom SVG Content', 'neve' ),
 				'default'            => self::render_icon( self::DEFAULT_ICON, 15 ),
 				'type'               => '\Neve\Customizer\Controls\React\Textarea',
+				'sanitize_callback ' => 'neve_kses_svg',
 				'section'            => $this->section,
 				'conditional_header' => true,
 				'options'            => [
