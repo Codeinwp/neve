@@ -1,29 +1,17 @@
 import { test, expect } from '@playwright/test';
-import { loadData, setCustomizeSettings } from '../../../utils';
+import { setCustomizeSettings } from '../../../utils';
+import data from '../../../fixtures/customizer/hfg/alignment-control-setup.json';
 
 test.describe('Header Builder Alignment Control', function () {
-	let customizerData;
-
-	test.beforeAll(async () => {
-		customizerData = await loadData(
-			'./fixtures/customizer/hfg/alignment-control-setup.json'
-		);
-	});
-
 	test('Checks alignment for the Logo to Center', async ({
 		page,
 		request,
 		baseURL,
 	}) => {
-		const data = JSON.parse(customizerData);
-		await setCustomizeSettings(
-			'hfgLogoCenter',
-			JSON.stringify(data.center),
-			{
-				request,
-				baseURL,
-			}
-		);
+		await setCustomizeSettings('hfgLogoCenter', data.center, {
+			request,
+			baseURL,
+		});
 
 		await page.goto('/?test_name=hfgLogoCenter');
 		const siteLogo = await page.locator(
@@ -38,8 +26,7 @@ test.describe('Header Builder Alignment Control', function () {
 		request,
 		baseURL,
 	}) => {
-		const data = JSON.parse(customizerData);
-		await setCustomizeSettings('hfgLogoRight', JSON.stringify(data.right), {
+		await setCustomizeSettings('hfgLogoRight', data.right, {
 			request,
 			baseURL,
 		});
@@ -57,8 +44,7 @@ test.describe('Header Builder Alignment Control', function () {
 		request,
 		baseURL,
 	}) => {
-		const data = JSON.parse(customizerData);
-		await setCustomizeSettings('hfgLogoRight', JSON.stringify(data.right), {
+		await setCustomizeSettings('hfgLogoLeft', data.left, {
 			request,
 			baseURL,
 		});

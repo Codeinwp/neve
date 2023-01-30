@@ -1,15 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { loadData, setCustomizeSettings } from '../../../utils';
+import { setCustomizeSettings } from '../../../utils';
+import data from '../../../fixtures/customizer/form-fields/form-fields-setup.json';
 
 test.describe('Form fields', function () {
 	test.beforeAll(async ({ request, baseURL }) => {
-		await loadData(
-			'./fixtures/customizer/form-fields/form-fields-setup.json'
-		).then(async (data) => {
-			await setCustomizeSettings('formFieldsSearch', data, {
-				request,
-				baseURL,
-			});
+		await setCustomizeSettings('formFieldsSearch', data, {
+			request,
+			baseURL,
 		});
 	});
 
