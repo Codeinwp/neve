@@ -535,7 +535,7 @@ class Nav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . ' li:not(.woocommerce-mini-cart-item) > a:after,' . $selector . ' li > .has-caret > a:after',
+			Dynamic_Selector::KEY_SELECTOR => $selector . ' li:not(.woocommerce-mini-cart-item) > a:after,' . $selector . ' li > .has-caret > a:after, ' . $selector . ' li:not(.woocommerce-mini-cart-item) > .wrap:after',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,

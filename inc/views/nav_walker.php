@@ -164,7 +164,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 				$args->before = '<div class="wrap">';
 				$args->after  = '</div>';
 
-				$caret  = '<div role="button" aria-pressed="false" aria-label="' . __( 'Open Submenu', 'neve' ) . '" ' . $expanded . ' class="caret ' . $item->menu_order . '" style="' . esc_attr( $caret_wrap_css ) . '">';
+				$caret  = '<div role="button" aria-pressed="false" aria-label="' . __( 'Open Submenu', 'neve' ) . '" ' . $expanded . ' class="caret-wrap caret ' . $item->menu_order . '" style="' . esc_attr( $caret_wrap_css ) . '">';
 				$caret .= $caret_pictogram;
 				$caret .= '</div>';
 
@@ -222,9 +222,18 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$legacy_style = '';
 		if ( ! neve_is_new_skin() ) {
 			$legacy_style .= '.nav-ul li > .wrap a { width: 100%; justify-content: center; }';
-			$legacy_style .= '.nav-ul li > .wrap a span { padding: 7px 14px; }';
-			$legacy_style .= '.nav-ul li { display: block; }';
-			$legacy_style .= '.neve-mega-menu > .sub-menu .menu-item > a > span { padding: 0 14px; }';
+			$legacy_style .= '.caret-wrap.caret { padding: 0; }';
+			$legacy_style .= '.nav-ul li { display: block; padding-top: 9px; }';
+			$legacy_style .= '.nav-ul .sub-menu li { padding: 3px 0; }';
+			$legacy_style .= '.nav-ul:not(.menu-mobile) .sub-menu li > .wrap > a { justify-content: center; white-space: nowrap; padding: 7px 14px; }';
+			$legacy_style .= '.nav-ul:not(.menu-mobile) .neve-mega-menu > .sub-menu .menu-item > a > span { padding: 0 14px; }';
+			$legacy_style .= '.header-menu-sidebar .nav-ul li .wrap button { padding: 0; }';
+			$legacy_style .= '.header-menu-sidebar .nav-ul li .wrap { padding: 0 !important; }';
+			$legacy_style .= '.header-menu-sidebar .nav-ul li a .nv-icon { padding: 0 4px; }';
+			$legacy_style .= '.header-menu-sidebar-inner .nav-menu-primary .sub-menu { display: none; }';
+			$legacy_style .= '.header-menu-sidebar-inner .nav-ul .dropdown-open + .sub-menu, .header-menu-sidebar-inner .nav-ul .dropdown-open.sub-menu { display: block; }';
+			$legacy_style .= '.nav-ul li .menu-item-title-wrap { justify-content: var(--textalign); }';
+			$legacy_style .= '.header-menu-sidebar-inner .nav-ul li a { justify-content: var(--textalign) !important; }';
 		}
 
 		/* Showing Menu Sidebar animation css. */
@@ -238,10 +247,10 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$sidebar_animation_css .= '.header-menu-sidebar .menu-item-nav-search { pointer-events: none; }';
 		$sidebar_animation_css .= '.header-menu-sidebar .menu-item-nav-search .is-menu-sidebar & { pointer-events: unset; }';
 		/* Accessibility css. */
-		$accessibility_caret_css  = '.nav-ul li:focus-within .wrap:has(.caret.active) + .sub-menu { opacity: 1; visibility: visible; }';
+		$accessibility_caret_css  = '.nav-ul li:focus-within .wrap.active + .sub-menu { opacity: 1; visibility: visible; }';
 		$accessibility_caret_css .= '.nav-ul li.neve-mega-menu:focus-within .wrap:has(.caret.active) + .sub-menu { display: grid; }';
 		$accessibility_caret_css .= '.nav-ul li > .wrap { display: flex; align-items: center; position: relative; }';
-		$accessibility_caret_css .= '.nav-ul li { display: flex; }';
+		$accessibility_caret_css .= '.nav-ul:not(.menu-mobile):not(.neve-mega-menu) > li > a { padding-top: 1px }';
 
 		return Dynamic_Css::minify_css( $sidebar_animation_css . $accessibility_caret_css . $legacy_style );
 	}
@@ -395,7 +404,7 @@ var menuCarets = document.querySelectorAll(
 menuCarets.forEach( function (caretElem) {
 	caretElem.addEventListener( "keydown", (event) => {
 		if ( event.keyCode === 13 ) {
-			event.target.classList.toggle('active');
+			event.target.parentElement.classList.toggle('active');
 		}
 	});
 	caretElem.parentElement.parentElement.addEventListener( "focusout", (event) => {
@@ -403,13 +412,13 @@ menuCarets.forEach( function (caretElem) {
 		if ( caretElem.parentElement.parentElement.contains(event.relatedTarget) ) {
 			return;
 		};
-		caretElem.classList.remove('active');
+		caretElem.parentElement.classList.remove('active');
 	});
 } );
 JS;
 
 		$script_min_js = <<<'JSMIN'
-var menuCarets=document.querySelectorAll(".nav-ul li > .wrap > .caret");menuCarets.forEach(function(t){t.addEventListener("keydown",e=>{13===e.keyCode&&e.target.classList.toggle("active")}),t.parentElement.parentElement.addEventListener("focusout",e=>{t.parentElement.parentElement.contains(e.relatedTarget)||t.classList.remove("active")})});
+var menuCarets=document.querySelectorAll(".nav-ul li > .wrap > .caret");menuCarets.forEach((function(e){e.addEventListener("keydown",(e=>{13===e.keyCode&&e.target.parentElement.classList.toggle("active")})),e.parentElement.parentElement.addEventListener("focusout",(t=>{e.parentElement.parentElement.contains(t.relatedTarget)||e.parentElement.classList.remove("active")}))}));
 JSMIN;
 
 

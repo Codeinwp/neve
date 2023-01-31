@@ -60,6 +60,14 @@
 
 	li .caret {
 		line-height: 0;
+		justify-content: center;
+		display: flex;
+
+		svg {
+			fill: currentColor;
+			width: 0.5em;
+			height: 0.5em;
+		}
 	}
 
 	.sub-menu {

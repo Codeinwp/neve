@@ -83,7 +83,7 @@
 
 .style-border-top, .style-border-bottom {
   ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) {
-	&:hover > a:after {
+	&:hover > a:after, &:hover > .wrap:after {
 	  width: 100%;
 	}
   }
@@ -91,7 +91,7 @@
 
 .style-border-top, .style-border-bottom, .style-full-height {
   ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) {
-	> a:after {
+	> a:after, > .wrap:after {
 	  position: absolute;
 	  content: "";
 	  display: block;
@@ -101,12 +101,15 @@
 	  transition: opacity .3s ease, width .3s ease;
 	  right: 0;
 	  left: 0;
+	  top: 0;
 	  pointer-events: none;
 	}
   }
 }
 
 // Items in sidebar should stretch full width.
-.header-menu-sidebar-inner li:hover > a:after {
-  width: 100% !important;
+.header-menu-sidebar-inner {
+	li:hover > a:after, li:hover > .wrap:after {
+		width: 100% !important;
+	}
 }
