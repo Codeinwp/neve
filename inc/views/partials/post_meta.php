@@ -302,15 +302,17 @@ class Post_Meta extends Base_View {
 		/**
 		 * Filters the author post meta markup.
 		 *
-		 * @since 3.5.0
+		 * @since 3.5.2
 		 *
+		 * @param string $markup The HTML markup used to display the post meta author.
 		 * @param int | null $post_id Post id.
-		 * @param $show_before bool Show the 'by' sting before the author name.
-		 * @param bool $markup The HTML markup used to display the post meta author.
+		 * @param bool $show_before Show the 'by' sting before the author name.
 		 *
 		 * @return string
 		 */
-		return apply_filters( 'neve_filter_author_meta_markup', $post_id, $show_before, $markup );
+		$markup = apply_filters( 'neve_filter_author_meta_markup', $markup, $post_id, $show_before );
+
+		return wp_kses_post( $markup );
 	}
 
 	/**
