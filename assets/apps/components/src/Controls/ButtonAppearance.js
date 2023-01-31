@@ -13,6 +13,7 @@ const ButtonAppearance = ({
 	onChange,
 	noHover,
 	noShadow,
+	noBorder,
 	defaultVals,
 }) => {
 	const { type, borderRadius, borderWidth } = value;
@@ -49,7 +50,7 @@ const ButtonAppearance = ({
 				controls: {
 					background: __('Background', 'neve'),
 					text:
-						type === 'fill'
+						type === 'fill' || noBorder
 							? __('Text', 'neve')
 							: __('Text and Border', 'neve'),
 				},
@@ -59,7 +60,7 @@ const ButtonAppearance = ({
 				controls: {
 					backgroundHover: __('Background', 'neve'),
 					textHover:
-						type === 'fill'
+						type === 'fill' || noBorder
 							? __('Text', 'neve')
 							: __('Text and Border', 'neve'),
 				},
@@ -262,6 +263,10 @@ const ButtonAppearance = ({
 	};
 
 	const borderControls = () => {
+		if( noBorder ) {
+			return;
+		}
+
 		const directions = {
 			top: __('Top', 'neve'),
 			right: __('Right', 'neve'),

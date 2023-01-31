@@ -23,14 +23,7 @@ use Neve\Core\Styles\Dynamic_Selector;
  */
 class Search extends Abstract_SearchComponent {
 
-	const COMPONENT_ID        = 'header_search';
-	const PLACEHOLDER_ID      = 'placeholder';
-	const FIELD_HEIGHT        = 'field_height';
-	const FIELD_FONT_SIZE     = 'field_text_size';
-	const FIELD_BG            = 'field_background';
-	const FIELD_TEXT_COLOR    = 'field_text_color';
-	const FIELD_BORDER_WIDTH  = 'field_border_width';
-	const FIELD_BORDER_RADIUS = 'field_border_radius';
+	const COMPONENT_ID = 'header_search';
 
 	/**
 	 * Has support for the search button instead of icon?

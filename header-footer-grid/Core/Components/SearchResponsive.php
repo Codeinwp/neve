@@ -25,19 +25,12 @@ use Neve\Core\Styles\Dynamic_Selector;
 class SearchResponsive extends Abstract_SearchComponent {
 	use Core;
 
-	const COMPONENT_ID        = 'header_search_responsive';
-	const PLACEHOLDER_ID      = 'placeholder';
-	const SIZE_ID             = 'icon_size';
-	const COLOR_ID            = 'color';
-	const HOVER_COLOR_ID      = 'hover_color';
-	const OPEN_TYPE           = 'open_type';
-	const FIELD_HEIGHT        = 'field_height';
-	const FIELD_FONT_SIZE     = 'field_text_size';
-	const FIELD_BG            = 'field_background';
-	const FIELD_TEXT_COLOR    = 'field_text_color';
-	const FIELD_BORDER_WIDTH  = 'field_border_width';
-	const FIELD_BORDER_RADIUS = 'field_border_radius';
-	const DEFAULT_ICON_SIZE   = 15;
+	const COMPONENT_ID      = 'header_search_responsive';
+	const SIZE_ID           = 'icon_size';
+	const COLOR_ID          = 'color';
+	const HOVER_COLOR_ID    = 'hover_color';
+	const OPEN_TYPE         = 'open_type';
+	const DEFAULT_ICON_SIZE = 15;
 
 	/**
 	 * Button constructor.

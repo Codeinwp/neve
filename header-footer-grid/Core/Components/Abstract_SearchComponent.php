@@ -27,12 +27,38 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 	const BUTTON_APPEARANCE = 'button_appearance';
 	const BUTTON_TEXT       = 'button_text';
 
+	// Common constants which used by search form, search icon, advanced search form, advanced search icon
+	const PLACEHOLDER_ID      = 'placeholder';
+	const FIELD_HEIGHT        = 'field_height';
+	const FIELD_FONT_SIZE     = 'field_text_size';
+	const FIELD_BG            = 'field_background';
+	const FIELD_TEXT_COLOR    = 'field_text_color';
+	const FIELD_BORDER_WIDTH  = 'field_border_width';
+	const FIELD_BORDER_RADIUS = 'field_border_radius';
+
 	/**
 	 * Has support for the search button instead of icon?
 	 *
 	 * @var bool
 	 */
 	protected $has_button_support = false;
+
+	/**
+	 * Search Button HTML Selector
+	 *
+	 * @var string
+	 */
+	protected $button_selector = '';
+
+	/**
+	 * Abstract_SearchComponent constructor.
+	 *
+	 * @param string $panel Builder panel.
+	 */
+	public function __construct( $panel ) {
+		parent::__construct( $panel );
+		$this->set_property( 'button_selector', '.builder-item--' . $this->get_id() . ' .nv-text-btn' );
+	}
 
 	/**
 	 * Returns default button text
@@ -216,6 +242,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 				'options'            => [
 					'no_hover'        => true,
 					'no_shadow'       => true,
+					'no_border'       => true,
 					'default_vals'    => $default,
 					'active_callback' => function() {
 						// button or icon
@@ -243,31 +270,30 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 			return []; // sub classes returns legacy style already.
 		}
 
-		$id = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
+		$button_style_id = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
 
 		$rules = [
-			'--primarybtnbg'           => $id . '.background',
-			'--primarybtnhoverbg'      => $id . '.background',
-			'--primarybtncolor'        => $id . '.text',
-			'--primarybtnhovercolor'   => $id . '.text',
-			'--primarybtnborderradius' => [
-				Dynamic_Selector::META_KEY => $id . '.borderRadius',
-				'directional-prop'         => Config::CSS_PROP_BORDER_RADIUS,
-			],
-			'--primarybtnborderwidth'  => [
-				Dynamic_Selector::META_KEY => $id . '.borderWidth',
-				'directional-prop'         => Config::CSS_PROP_BORDER_WIDTH,
+			'--primarybtnbg'         => $button_style_id . '.background',
+			'--primarybtnhoverbg'    => $button_style_id . '.background',
+			'--primarybtncolor'      => $button_style_id . '.text',
+			'--primarybtnhovercolor' => $button_style_id . '.text',
+			'--formfieldborderwidth' => [
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_BORDER_WIDTH,
+				Dynamic_Selector::META_SUFFIX        => 'px',
+				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BORDER_WIDTH ),
+				'directional-prop'                   => Config::CSS_PROP_BORDER_WIDTH,
 			],
 		];
 
-		$value = SettingsManager::get_instance()->get( $id );
+		$value = SettingsManager::get_instance()->get( $button_style_id );
 
 		if ( isset( $value['type'] ) && $value['type'] !== 'outline' ) {
-			$rules ['--primarybtnborderwidth']['override'] = 0;
+			$rules ['--formfieldborderwidth']['override'] = 0;
 		}
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nv-text-btn',
+			Dynamic_Selector::KEY_SELECTOR => $this->button_selector,
 			Dynamic_Selector::KEY_RULES    => $rules,
 		];
 

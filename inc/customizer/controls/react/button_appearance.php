@@ -34,6 +34,13 @@ class Button_Appearance extends \WP_Customize_Control {
 	 */
 	public $no_shadow = false;
 	/**
+	 * Additional arguments passed to JS.
+	 * Disables border radius, border width
+	 *
+	 * @var bool
+	 */
+	public $no_border = false;
+	/**
 	 * Default values.
 	 *
 	 * @var array
@@ -47,6 +54,7 @@ class Button_Appearance extends \WP_Customize_Control {
 		$json                = parent::json();
 		$json['no_hover']    = $this->no_hover;
 		$json['no_shadow']   = $this->no_shadow;
+		$json['no_border']   = $this->no_border;
 		$json['defaultVals'] = $this->default_vals;
 		return $json;
 	}
