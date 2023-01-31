@@ -17,10 +17,11 @@ use function HFG\component_setting;
  * @package HFG\Core
  */
 abstract class Abstract_SearchComponent extends Abstract_Component {
-	const ACTION_TYPE     = 'action_type';
-	const ICON_TYPE       = 'icon_type';
-	const CUSTOM_ICON_SVG = 'c_icon_svg';
-	const DEFAULT_ICON    = 'hfgs-icon-style-1';
+	const ACTION_TYPE       = 'action_type';
+	const ICON_TYPE         = 'icon_type';
+	const CUSTOM_ICON_SVG   = 'c_icon_svg';
+	const DEFAULT_ICON      = 'hfgs-icon-style-1';
+	const BUTTON_APPEARANCE = 'button_appearance';
 
 	/**
 	 * Has support for the search button instead of icon?
@@ -141,12 +142,53 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 					'active_callback' => function() {
 						$icon_type = component_setting( self::ICON_TYPE, self::DEFAULT_ICON, $this->get_class_const( 'COMPONENT_ID' ) );
 
-						return 'hfgs-icon-custom' === $icon_type;
+						// button or icon
+						$action_type = component_setting( self::ACTION_TYPE, 'icon', $this->get_class_const( 'COMPONENT_ID' ) );
+
+						return 'icon' === $action_type && 'hfgs-icon-custom' === $icon_type;
 					},
 					'input_attrs'     => [
 						'rows' => 8,
 					],
 				],
+			]
+		);
+
+		$new_skin = neve_is_new_skin();
+		$mod_key  = self::BUTTON_APPEARANCE;
+		$default  = $new_skin ? [
+			'type'         => 'outline',
+			'borderRadius' => [
+				'top'    => 0,
+				'left'   => 0,
+				'bottom' => 0,
+				'right'  => 0,
+			],
+		] : [ 'type' => 'outline' ];
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => $mod_key,
+				'group'              => $this->get_id(),
+				'transport'          => 'postMessage',
+				'tab'                => SettingsManager::TAB_STYLE,
+				'sanitize_callback'  => 'neve_sanitize_button_appearance',
+				'default'            => $default,
+				'label'              => __( 'Appearance', 'neve' ),
+				'type'               => '\Neve\Customizer\Controls\React\Button_Appearance',
+				'section'            => $this->section,
+				'options'            => [
+					'no_hover'        => true,
+					'no_shadow'       => true,
+					'default_vals'    => $default,
+					'active_callback' => function() {
+						// button or icon
+						$action_type = component_setting( self::ACTION_TYPE, 'icon', $this->get_class_const( 'COMPONENT_ID' ) );
+
+						return 'button' === $action_type;
+					},
+				],
+				'conditional_header' => true,
 			]
 		);
 	}
