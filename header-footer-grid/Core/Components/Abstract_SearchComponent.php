@@ -183,7 +183,6 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 			[
 				'id'                 => self::BUTTON_TEXT,
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'                => SettingsManager::TAB_GENERAL,
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_STYLE,
 				'sanitize_callback'  => 'wp_filter_nohtml_kses',
