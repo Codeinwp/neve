@@ -18,7 +18,7 @@
 			grid-column: var(--thumbgridcolumn, 1);
 		}
 
-		.content {
+		.nv-ft-wrap {
 			display: grid;
 			grid-gap: 20px;
 			align-items: center;
@@ -28,14 +28,14 @@
 
 	.posts-wrapper > article {
 
-		&.has-post-thumbnail .content {
+		&.has-post-thumbnail .nv-ft-wrap {
 			grid-template-columns: var(--postcoltemplate, 35fr 65fr);
 		}
 
 		&.has-post-thumbnail.layout-alternative:nth-child(even) {
 			--thumbgridcolumn: 2;
 
-			.content {
+			.nv-ft-wrap {
 				grid-template-columns: var(--postcoltemplate, 65fr 35fr);
 			}
 		}

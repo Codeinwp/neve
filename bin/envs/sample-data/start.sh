@@ -1,4 +1,5 @@
 wp --allow-root plugin is-installed wordpress-importer && wp --allow-root plugin update wordpress-importer ||  wp --allow-root plugin install wordpress-importer
+wp --allow-root plugin install templates-patterns-collection
 ##Setup core content.
 wp --allow-root plugin activate wordpress-importer
 curl -O https://wpcom-themes.svn.automattic.com/demo/theme-unit-test-data.xml

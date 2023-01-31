@@ -21,6 +21,7 @@ import { ResponsiveRadioButtonsControl } from './responsive-radio-buttons/Contro
 import { RadioImageControl } from './radio-image/Control';
 import { OrderingControl } from './ordering/Control';
 import { GlobalColorsControl } from './global-colors/Control';
+import { GlobalCustomColorsControl } from './global-custom-colors/Control';
 import { NRSpacingControl } from './non-responsive-spacing/Control';
 import { InlineSelectControl } from './inline-select/Control';
 import { BuilderControl } from './builder/Control';
@@ -41,6 +42,7 @@ import Upsells from './builder-upsell/Upsells.tsx';
 import { initLocalGoogleFonts } from './typography-extra/LocalGoogleFonts';
 
 import MainSearch from './customizer-search/MainSearch.tsx';
+import { FontPairControl } from './typography-font-pair/Control';
 
 const { controlConstructor } = wp.customize;
 
@@ -50,6 +52,7 @@ controlConstructor.neve_background_control = BackgroundControl;
 controlConstructor.neve_spacing = SpacingControl;
 controlConstructor.neve_typeface_control = TypefaceControl;
 controlConstructor.neve_font_family_control = FontFamilyControl;
+controlConstructor.neve_font_pairings_control = FontPairControl;
 controlConstructor.neve_radio_buttons_control = RadioButtonsControl;
 controlConstructor.neve_button_appearance = ButtonAppearanceControl;
 controlConstructor.neve_range_control = RangeControl;
@@ -64,6 +67,7 @@ controlConstructor.neve_responsive_radio_buttons_control =
 controlConstructor.neve_radio_image_control = RadioImageControl;
 controlConstructor.neve_ordering_control = OrderingControl;
 controlConstructor.neve_global_colors = GlobalColorsControl;
+controlConstructor.neve_global_custom_colors = GlobalCustomColorsControl;
 controlConstructor.neve_non_responsive_spacing = NRSpacingControl;
 controlConstructor.neve_inline_select = InlineSelectControl;
 controlConstructor.neve_builder_control = BuilderControl;

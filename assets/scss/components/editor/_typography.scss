@@ -1,6 +1,7 @@
 @import "../main/global-colors";
 @import "../main/variables";
 
+main,
 body &,
 body & p {
 	color: var(--nv-text-color);

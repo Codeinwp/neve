@@ -19,6 +19,35 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.5.1](https://github.com/Codeinwp/neve/compare/v3.5.0...v3.5.1) (2023-01-30)
+
+- Update the tested up to version for Neve Pro
+
+
+
+
+#### [Version 3.5.0](https://github.com/Codeinwp/neve/compare/v3.4.10...v3.5.0) (2023-01-30)
+
+- [Feat] Custom global colors - [Learn more](https://docs.themeisle.com/article/1314-global-colors-in-neve#custom-color)
+- [Feat] Font pairs inside the typography section - [Learn more](https://docs.themeisle.com/article/1340-neve-typography#font-presets)
+- [Feat] Full Site Editing for Neve - [Learn more](https://docs.themeisle.com/article/1774-neve-fse)
+- [Fix] Display featured post only on the first page
+- [Fix] Issue with specific customizer settings imported
+- [Fix] Color picker issue on small screens
+- Update Google Fonts
+
+
+
+
+##### [Version 3.4.10](https://github.com/Codeinwp/neve/compare/v3.4.9...v3.4.10) (2023-01-09)
+
+- [Fix] Installation of Super Page Cache for Cloudflare recommended plugin not working
+- [Fix] Make body_class hook signature similar to WP core one; props [@mi5t4n](https://github.com/mi5t4n) for contribution
+- [Fix] One click install for Cloud Templates & Patterns collection
+
+
+
+
 ##### [Version 3.4.9](https://github.com/Codeinwp/neve/compare/v3.4.8...v3.4.9) (2022-12-15)
 
 - [Fix] Revert menu changes to fix regressions

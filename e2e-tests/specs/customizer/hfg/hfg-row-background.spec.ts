@@ -1,15 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { loadData, setCustomizeSettings } from '../../../utils';
+import { setCustomizeSettings } from '../../../utils';
+import data from '../../../fixtures/customizer/hfg/row-background-setup.json';
 
 test.beforeAll(async ({ request, baseURL }) => {
-	await loadData('./fixtures/customizer/hfg/row-background-setup.json').then(
-		async (data) => {
-			await setCustomizeSettings('hfgHeaderBackground', data, {
-				request,
-				baseURL,
-			});
-		}
-	);
+	await setCustomizeSettings('hfgHeaderBackground', data, {
+		request,
+		baseURL,
+	});
 });
 
 test.describe('Header Row Background Control', function () {

@@ -13,6 +13,7 @@ namespace Neve\Core;
 use Neve\Compatibility\Starter_Content;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Core\Dynamic_Css;
 
 /**
  * Front end handler class.
@@ -79,6 +80,7 @@ class Front_End {
 			add_filter( 'theme_mod_background_color', '__return_empty_string' );
 		}
 		$this->add_woo_support();
+		add_filter( 'neve_dynamic_style_output', array( $this, 'css_global_custom_colors' ), PHP_INT_MAX, 2 );
 	}
 
 	/**
@@ -128,6 +130,9 @@ class Front_End {
 			),
 		];
 
+		// Add custom global colors
+		$from_global_colors = array_merge( $from_global_colors, $this->get_global_custom_color_vars() );
+
 		foreach ( $from_global_colors as $slug => $args ) {
 			array_push(
 				$gutenberg_color_palette,
@@ -140,6 +145,23 @@ class Front_End {
 		}
 
 		return array_values( $gutenberg_color_palette );
+	}
+
+	/**
+	 * Returns global custom colors with css vars
+	 *
+	 * @return array[]
+	 */
+	private function get_global_custom_color_vars() {
+		$css_vars = [];
+		foreach ( Mods::get( Config::MODS_GLOBAL_CUSTOM_COLORS, [] ) as $slug => $args ) {
+			$css_vars[ $slug ] = [
+				'label' => $args['label'],
+				'val'   => sprintf( 'var(--%s)', $slug ),
+			];
+		}
+
+		return $css_vars;
 	}
 
 	/**
@@ -478,5 +500,25 @@ class Front_End {
 			'get_pro_cta'       => esc_html__( 'Get the PRO version!', 'neve' ),
 			'opens_new_tab_des' => esc_html__( '(opens in a new tab)', 'neve' ),
 		];
+	}
+
+	/**
+	 * Adds CSS rules to resolve .has-dynamicslug-color .has-dynamicslug-background-color classes.
+	 *
+	 * @param  string $current_styles Current dynamic style.
+	 * @param  string $context gutenberg|frontend Represents the type of the context.
+	 * @return string dynamic styles has resolving global custom colors
+	 */
+	public function css_global_custom_colors( $current_styles, $context ) {
+		if ( $context !== 'frontend' ) {
+			return $current_styles;
+		}
+
+		foreach ( Mods::get( Config::MODS_GLOBAL_CUSTOM_COLORS, [] ) as $slug => $args ) {
+			$css_var         = sprintf( 'var(--%s) !important', $slug );
+			$current_styles .= Dynamic_CSS::minify_css( sprintf( '.has-%s-color {color:%s} .has-%s-background-color {background-color:%s}', $slug, $css_var, $slug, $css_var ) );
+		}
+
+		return $current_styles;
 	}
 }

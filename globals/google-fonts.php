@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 12/12/22
+ * Updated on 30/01/23
  *
  * @package neve
  */
@@ -33,6 +33,7 @@ return array(
 	'Alegreya Sans SC' => array( '100', '300', '400', '500', '700', '800', '900', '100italic', '300italic', '400italic', '500italic', '700italic', '800italic', '900italic',),
 	'Aleo' => array( '300', '400', '700', '300italic', '400italic', '700italic',),
 	'Alex Brush' => array( '400',),
+	'Alexandria' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Alfa Slab One' => array( '400',),
 	'Alice' => array( '400',),
 	'Alike' => array( '400',),
@@ -102,8 +103,8 @@ return array(
 	'Artifika' => array( '400',),
 	'Arvo' => array( '400', '700', '400italic', '700italic',),
 	'Arya' => array( '400', '700',),
-	'Asap' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
-	'Asap Condensed' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
+	'Asap' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Asap Condensed' => array( '200', '300', '400', '500', '600', '700', '800', '900', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Asar' => array( '400',),
 	'Asset' => array( '400',),
 	'Assistant' => array( '200', '300', '400', '500', '600', '700', '800',),
@@ -421,7 +422,7 @@ return array(
 	'Felipa' => array( '400',),
 	'Fenix' => array( '400',),
 	'Festive' => array( '400',),
-	'Figtree' => array( '300', '400', '500', '600', '700', '800', '900',),
+	'Figtree' => array( '300', '400', '500', '600', '700', '800', '900', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Finger Paint' => array( '400',),
 	'Finlandica' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Fira Code' => array( '300', '400', '500', '600', '700',),
@@ -950,7 +951,8 @@ return array(
 	'Noto Sans Mro' => array( '400',),
 	'Noto Sans Multani' => array( '400',),
 	'Noto Sans Myanmar' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
-	'Noto Sans N Ko' => array( '400',),
+	'Noto Sans N Ko' => array(),
+	'Noto Sans NKo' => array( '400',),
 	'Noto Sans Nabataean' => array( '400',),
 	'Noto Sans New Tai Lue' => array( '400', '500', '600', '700',),
 	'Noto Sans Newa' => array( '400',),
@@ -1031,11 +1033,12 @@ return array(
 	'Noto Serif KR' => array( '200', '300', '400', '500', '600', '700', '900',),
 	'Noto Serif Kannada' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Serif Khmer' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
+	'Noto Serif Khojki' => array( '400', '500', '600', '700',),
 	'Noto Serif Lao' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Serif Malayalam' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Serif Myanmar' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Serif NP Hmong' => array( '400', '500', '600', '700',),
-	'Noto Serif Nyiakeng Puachue Hmong' => array( '400', '500', '600', '700',),
+	'Noto Serif Nyiakeng Puachue Hmong' => array(),
 	'Noto Serif Oriya' => array( '400', '500', '600', '700',),
 	'Noto Serif SC' => array( '200', '300', '400', '500', '600', '700', '900',),
 	'Noto Serif Sinhala' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
@@ -1097,6 +1100,7 @@ return array(
 	'PT Serif Caption' => array( '400', '400italic',),
 	'Pacifico' => array( '400',),
 	'Padauk' => array( '400', '700',),
+	'Padyakke Expanded One' => array( '400',),
 	'Palanquin' => array( '100', '200', '300', '400', '500', '600', '700',),
 	'Palanquin Dark' => array( '400', '500', '600', '700',),
 	'Palette Mosaic' => array(),
