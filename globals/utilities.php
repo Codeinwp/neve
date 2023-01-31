@@ -209,7 +209,6 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '', $icon_custo
 function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_ready = false ) {
 
 	$icon_type = \HFG\component_setting( Abstract_SearchComponent::ICON_TYPE );
-	$button    = \HFG\component_setting( Abstract_SearchComponent::BUTTON_APPEARANCE );
 
 	// For the possibility of \HFG\current_component returning false.
 	if ( $icon_type === false ) {
@@ -217,7 +216,7 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 	}
 
 	if ( $icon_type === 'hfgs-icon-custom' ) {
-		$svg = \HFG\component_setting( Abstract_SearchComponent::CUSTOM_ICON_SVG );
+		$svg = neve_kses_svg( \HFG\component_setting( Abstract_SearchComponent::CUSTOM_ICON_SVG ) );
 	} else {
 		$svg = Abstract_SearchComponent::render_icon( $icon_type, $size );
 	}

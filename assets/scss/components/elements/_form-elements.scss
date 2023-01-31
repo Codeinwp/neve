@@ -55,7 +55,7 @@
 
 	.nv-text-btn {
 		white-space: nowrap;
-		border-color: var(--formfieldbordercolor);
+		border-color: var(--formfieldbordercolor); // get inherit search input border
 	}
 
 	.search-field {

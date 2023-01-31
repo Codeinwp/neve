@@ -99,7 +99,7 @@ class MenuIcon extends Abstract_Component {
 	 *
 	 * @var string
 	 */
-	private $close_button = '.header-menu-sidebar .close-sidebar-panel .navbar-togglea';
+	private $close_button = '.header-menu-sidebar .close-sidebar-panel .navbar-toggle';
 
 	/**
 	 * MenuIcon constructor.
