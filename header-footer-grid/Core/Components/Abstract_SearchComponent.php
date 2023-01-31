@@ -246,13 +246,15 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 		$id = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
 
 		$rules = [
-			'--bgcolor'      => $id . '.background',
-			'--color'        => $id . '.text',
-			'--borderradius' => [
+			'--primarybtnbg'           => $id . '.background',
+			'--primarybtnhoverbg'      => $id . '.background',
+			'--primarybtncolor'        => $id . '.text',
+			'--primarybtnhovercolor'   => $id . '.text',
+			'--primarybtnborderradius' => [
 				Dynamic_Selector::META_KEY => $id . '.borderRadius',
 				'directional-prop'         => Config::CSS_PROP_BORDER_RADIUS,
 			],
-			'--borderwidth'  => [
+			'--primarybtnborderwidth'  => [
 				Dynamic_Selector::META_KEY => $id . '.borderWidth',
 				'directional-prop'         => Config::CSS_PROP_BORDER_WIDTH,
 			],
@@ -261,11 +263,11 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 		$value = SettingsManager::get_instance()->get( $id );
 
 		if ( isset( $value['type'] ) && $value['type'] !== 'outline' ) {
-			$rules ['--borderwidth']['override'] = 0;
+			$rules ['--primarybtnborderwidth']['override'] = 0;
 		}
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nv-text-btn',
 			Dynamic_Selector::KEY_RULES    => $rules,
 		];
 

@@ -54,12 +54,6 @@
 	}
 
 	.nv-text-btn {
-		--primarybtncolor: var(--color);
-		--primarybtnhovercolor: var(--color);
-		--primarybtnbg: var(--bgcolor, transparent);
-		--primarybtnhoverbg: var(--bgcolor, transparent);
-		--primarybtnborderwidth: var(--borderwidth, 1px);
-		--primarybtnborderradius: var(--borderradius, 0);
 		white-space: nowrap;
 	}
 
