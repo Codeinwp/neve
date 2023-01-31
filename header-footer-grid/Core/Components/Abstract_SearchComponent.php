@@ -9,6 +9,9 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Components\Abstract_Component;
 use HFG\Core\Settings\Manager as SettingsManager;
+use Neve\Core\Styles\Dynamic_Selector;
+use Neve\Core\Settings\Config;
+
 use function HFG\component_setting;
 
 /**
@@ -22,6 +25,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 	const CUSTOM_ICON_SVG   = 'c_icon_svg';
 	const DEFAULT_ICON      = 'hfgs-icon-style-1';
 	const BUTTON_APPEARANCE = 'button_appearance';
+	const BUTTON_TEXT       = 'button_text';
 
 	/**
 	 * Has support for the search button instead of icon?
@@ -29,6 +33,15 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 	 * @var bool
 	 */
 	protected $has_button_support = false;
+
+	/**
+	 * Returns default button text
+	 *
+	 * @return string
+	 */
+	public static function get_default_button_text() {
+		return __( 'Search', 'neve' ) . '!';
+	}
 
 	/**
 	 * Get available icons
@@ -104,7 +117,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 				'transport'          => 'refresh',
 				'label'              => __( 'Icon Type', 'neve' ),
 				'default'            => self::DEFAULT_ICON,
-				'sanitize_callback ' => 'sanitize_key',
+				'sanitize_callback ' => 'sanitize_text_field',
 				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'section'            => $this->section,
 				'conditional_header' => true,
@@ -168,9 +181,33 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
+				'id'                 => self::BUTTON_TEXT,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_STYLE,
+				'sanitize_callback'  => 'wp_filter_nohtml_kses',
+				'default'            => self::get_default_button_text(),
+				'label'              => __( 'Text', 'neve' ),
+				'type'               => 'text',
+				'section'            => $this->section,
+				'options'            => [
+					'active_callback' => function() {
+						// button or icon
+						$action_type = component_setting( self::ACTION_TYPE, 'icon', $this->get_class_const( 'COMPONENT_ID' ) );
+
+						return 'button' === $action_type;
+					},
+				],
+				'conditional_header' => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
 				'id'                 => $mod_key,
 				'group'              => $this->get_id(),
-				'transport'          => 'postMessage',
+				'transport'          => 'refresh', // TODO: implement live refresh
 				'tab'                => SettingsManager::TAB_STYLE,
 				'sanitize_callback'  => 'neve_sanitize_button_appearance',
 				'default'            => $default,
@@ -191,6 +228,49 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 				'conditional_header' => true,
 			]
 		);
+	}
+
+	/**
+	 * Method to add Component css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function add_style( array $css_array = array() ) {
+		if ( ! neve_is_new_skin() ) {
+			return []; // sub classes returns legacy style already.
+		}
+
+		$id = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
+
+		$rules = [
+			'--bgcolor'      => $id . '.background',
+			'--color'        => $id . '.text',
+			'--borderradius' => [
+				Dynamic_Selector::META_KEY => $id . '.borderRadius',
+				'directional-prop'         => Config::CSS_PROP_BORDER_RADIUS,
+			],
+			'--borderwidth'  => [
+				Dynamic_Selector::META_KEY => $id . '.borderWidth',
+				'directional-prop'         => Config::CSS_PROP_BORDER_WIDTH,
+			],
+		];
+
+		$value = SettingsManager::get_instance()->get( $id );
+
+		if ( isset( $value['type'] ) && $value['type'] !== 'outline' ) {
+			$rules ['--borderwidth']['override'] = 0;
+		}
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
+			Dynamic_Selector::KEY_RULES    => $rules,
+		];
+
+		return parent::add_style( $css_array );
 	}
 
 	/**

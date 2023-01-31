@@ -952,7 +952,7 @@ abstract class Abstract_Builder implements Builder {
 
 		$default_colors = $this->get_default_row_colors( $row_index );
 		$css_array[]    = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . ',' . $selector . ' a:not(.button),' . $selector . ' .navbar-toggle',
+			Dynamic_Selector::KEY_SELECTOR => $selector . ',' . $selector . ' a:not(.button),' . $selector . ' .navbar-togglea',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,

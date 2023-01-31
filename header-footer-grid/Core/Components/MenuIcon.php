@@ -99,7 +99,7 @@ class MenuIcon extends Abstract_Component {
 	 *
 	 * @var string
 	 */
-	private $close_button = '.header-menu-sidebar .close-sidebar-panel .navbar-toggle';
+	private $close_button = '.header-menu-sidebar .close-sidebar-panel .navbar-togglea';
 
 	/**
 	 * MenuIcon constructor.
@@ -114,7 +114,6 @@ class MenuIcon extends Abstract_Component {
 		$this->set_property( 'width', 1 );
 		$this->set_property( 'icon', 'menu' );
 		$this->set_property( 'section', self::COMPONENT_ID );
-		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() . ' .navbar-toggle' );
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'load_scripts' ] );
 
