@@ -1,22 +1,14 @@
 import { test, expect } from '@playwright/test';
-import { setCustomizeSettings, loadData } from '../../../utils';
+import { setCustomizeSettings } from '../../../utils';
+import data from '../../../fixtures/customizer/layout/sidebar-settings.json';
 
 test.describe('Sidebar/Content Settings', () => {
-	let customizerData;
-
-	test.beforeAll(async () => {
-		customizerData = await loadData(
-			'./fixtures/customizer/layout/sidebar-settings.json'
-		);
-	});
-
 	test('Sidebar site wide on front end.', async ({
 		page,
 		request,
 		baseURL,
 	}) => {
-		const data = JSON.stringify(JSON.parse(customizerData).site_wide);
-		await setCustomizeSettings('sidebarSitewide', data, {
+		await setCustomizeSettings('sidebarSitewide', data.site_wide, {
 			request,
 			baseURL,
 		});
@@ -71,8 +63,7 @@ test.describe('Sidebar/Content Settings', () => {
 		request,
 		baseURL,
 	}) => {
-		const data = JSON.stringify(JSON.parse(customizerData).advanced);
-		await setCustomizeSettings('sidebarAdvanced', data, {
+		await setCustomizeSettings('sidebarAdvanced', data.advanced, {
 			request,
 			baseURL,
 		});

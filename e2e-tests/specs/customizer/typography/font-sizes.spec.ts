@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 import {
-	loadData,
 	setCustomizeSettings,
 	loginWithRequest,
 	clearWelcome,
 } from '../../../utils';
+import data from '../../../fixtures/customizer/typography/font-size.json';
 
 const setup = {
 	fontSize: {
@@ -43,14 +43,10 @@ const deviceMap = {
 
 test.describe('Typography Control', () => {
 	test.beforeAll(async ({ request, baseURL }) => {
-		await loadData('./fixtures/customizer/typography/font-size.json').then(
-			async (data) => {
-				await setCustomizeSettings('fontSize', data, {
-					request,
-					baseURL,
-				});
-			}
-		);
+		await setCustomizeSettings('fontSize', data, {
+			request,
+			baseURL,
+		});
 	});
 
 	test('Test Typography on Front End', async ({ page }) => {
@@ -68,7 +64,9 @@ test.describe('Typography Control', () => {
 		}) => {
 			const context = await browser.newContext({
 				viewport: {
+					// @ts-ignore
 					width: deviceMap[device].width,
+					// @ts-ignore
 					height: deviceMap[device].height,
 				},
 			});
@@ -78,16 +76,19 @@ test.describe('Typography Control', () => {
 
 			await expect(bodySelector).toHaveCSS(
 				'font-size',
+				// @ts-ignore
 				setup.fontSize[device] + 'px'
 			);
 
 			await expect(bodySelector).toHaveCSS(
 				'line-height',
+				// @ts-ignore
 				setup.lineHeight[device] + 'px'
 			);
 
 			await expect(bodySelector).toHaveCSS(
 				'letter-spacing',
+				// @ts-ignore
 				setup.letterSpacing[device] + 'px'
 			);
 		});
@@ -122,10 +123,6 @@ test.describe('Typography Control', () => {
 				'font-size',
 				setup.fontSize.desktop + 'px'
 			);
-			// await expect(await pElements.nth(index)).toHaveCSS(
-			// 	'line-height',
-			// 	setup.lineHeight.desktop
-			// );
 			await expect(await pElements.nth(index)).toHaveCSS(
 				'letter-spacing',
 				setup.letterSpacing.desktop + 'px'

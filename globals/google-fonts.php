@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 16/01/23
+ * Updated on 30/01/23
  *
  * @package neve
  */
@@ -951,7 +951,8 @@ return array(
 	'Noto Sans Mro' => array( '400',),
 	'Noto Sans Multani' => array( '400',),
 	'Noto Sans Myanmar' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
-	'Noto Sans N Ko' => array( '400',),
+	'Noto Sans N Ko' => array(),
+	'Noto Sans NKo' => array( '400',),
 	'Noto Sans Nabataean' => array( '400',),
 	'Noto Sans New Tai Lue' => array( '400', '500', '600', '700',),
 	'Noto Sans Newa' => array( '400',),
@@ -1037,7 +1038,7 @@ return array(
 	'Noto Serif Malayalam' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Serif Myanmar' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Serif NP Hmong' => array( '400', '500', '600', '700',),
-	'Noto Serif Nyiakeng Puachue Hmong' => array( '400', '500', '600', '700',),
+	'Noto Serif Nyiakeng Puachue Hmong' => array(),
 	'Noto Serif Oriya' => array( '400', '500', '600', '700',),
 	'Noto Serif SC' => array( '200', '300', '400', '500', '600', '700', '900',),
 	'Noto Serif Sinhala' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
