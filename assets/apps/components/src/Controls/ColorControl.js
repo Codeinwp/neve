@@ -25,7 +25,7 @@ const ColorControl = ({
 	defaultValue,
 	disableGlobal,
 	allowGradient,
-	children
+	children,
 }) => {
 	let toggle = null;
 	const { shouldUseColorPickerFix } = window.nvComponents;

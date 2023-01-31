@@ -19,6 +19,10 @@ const ButtonAppearance = ({
 	const { type, borderRadius, borderWidth } = value;
 
 	const TypeControl = () => {
+		if (noBorder) {
+			return null;
+		}
+
 		const types = {
 			fill: {
 				label: 'fill',
@@ -263,7 +267,7 @@ const ButtonAppearance = ({
 	};
 
 	const borderControls = () => {
-		if( noBorder ) {
+		if (noBorder) {
 			return;
 		}
 

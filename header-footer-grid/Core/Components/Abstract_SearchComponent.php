@@ -236,7 +236,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 				'tab'                => SettingsManager::TAB_STYLE,
 				'sanitize_callback'  => 'neve_sanitize_button_appearance',
 				'default'            => $default,
-				'label'              => __( 'Appearance', 'neve' ),
+				'label'              => __( 'Button Appearance', 'neve' ),
 				'type'               => '\Neve\Customizer\Controls\React\Button_Appearance',
 				'section'            => $this->section,
 				'options'            => [
@@ -277,20 +277,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 			'--primarybtnhoverbg'    => $button_style_id . '.background',
 			'--primarybtncolor'      => $button_style_id . '.text',
 			'--primarybtnhovercolor' => $button_style_id . '.text',
-			'--formfieldborderwidth' => [
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_BORDER_WIDTH,
-				Dynamic_Selector::META_SUFFIX        => 'px',
-				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BORDER_WIDTH ),
-				'directional-prop'                   => Config::CSS_PROP_BORDER_WIDTH,
-			],
 		];
-
-		$value = SettingsManager::get_instance()->get( $button_style_id );
-
-		if ( isset( $value['type'] ) && $value['type'] !== 'outline' ) {
-			$rules ['--formfieldborderwidth']['override'] = 0;
-		}
 
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $this->button_selector,
