@@ -216,10 +216,12 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 	}
 
 	if ( $icon_type === 'hfgs-icon-custom' ) {
-		$svg = neve_kses_svg( \HFG\component_setting( Abstract_SearchComponent::CUSTOM_ICON_SVG ) );
+		$svg = \HFG\component_setting( Abstract_SearchComponent::CUSTOM_ICON_SVG );
 	} else {
 		$svg = Abstract_SearchComponent::render_icon( $icon_type, $size );
 	}
+
+	$svg = neve_kses_svg( $svg );
 
 	$amp_state = '';
 	if ( $amp_ready ) {
