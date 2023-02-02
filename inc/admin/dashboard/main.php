@@ -83,12 +83,6 @@ class Main {
 		add_action( 'admin_menu', [ $this, 'register' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
 		add_action( 'init', array( $this, 'register_settings' ) );
-
-		/**
-		 * Run dashboard upsells
-		 */
-		$upsells = new Upsells();
-		$upsells->init();
 	}
 
 	/**
