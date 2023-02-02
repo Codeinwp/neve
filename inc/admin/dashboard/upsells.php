@@ -20,6 +20,10 @@ class Upsells {
 	 * @return bool|void
 	 */
 	public function init() {
+		if ( ! function_exists( 'get_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
 		$is_sparks_active    = defined( 'SPARKS_WC_VERSION' );
 		$installed_plugins   = get_plugins();
 		$is_sparks_installed = array_key_exists( 'sparks-for-woocommerce/sparks-for-woocommerce.php', $installed_plugins );
