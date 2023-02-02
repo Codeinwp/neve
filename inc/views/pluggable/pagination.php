@@ -55,15 +55,9 @@ class Pagination extends Base_View {
 			return new \WP_REST_Response( '' );
 		}
 
-		$query_args = $request->get_body();
-		$args       = json_decode( $query_args, true );
-
-		$per_page = get_option( 'posts_per_page' );
-		if ( $per_page > 100 ) {
-			$per_page = 100;
-		}
-
-		$args['posts_per_page']      = $per_page;
+		$args                        = [];
+		$per_page                    = get_option( 'posts_per_page' );
+		$args['posts_per_page']      = $per_page > 100 ? 100 : $per_page;
 		$args['post_type']           = 'post';
 		$args['paged']               = $request['page_number'];
 		$args['ignore_sticky_posts'] = 1;
