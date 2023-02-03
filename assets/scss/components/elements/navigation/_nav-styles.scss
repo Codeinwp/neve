@@ -1,8 +1,7 @@
 .style-border-bottom > ul > li >,
 .sm-style-border-bottom .sub-menu {
 
-	.wrap::after,
-	a::after {
+	.wrap::after {
 		bottom: 0;
 	}
 }
@@ -11,8 +10,7 @@
 .style-border-top > ul > li >,
 .sm-style-border-top .sub-menu {
 
-	.wrap::after,
-	a::after {
+	.wrap::after {
 		top: 0;
 	}
 }
@@ -20,16 +18,14 @@
 .sm-style .sub-menu,
 .m-style > ul > li > {
 
-	.wrap:hover,
-	a:hover {
+	.wrap:hover {
 
 		&::after {
 			width: 100%;
 		}
 	}
 
-	.wrap::after,
-	a::after {
+	.wrap::after {
 		position: absolute;
 		content: "";
 		margin: 0 auto;

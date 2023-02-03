@@ -136,6 +136,9 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			$this->enqueue_hash_url_dropdowns_inline_js();
 		}
 
+		$args->before = '<div class="wrap">';
+		$args->after  = '</div>';
+
 		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 			add_action( 'neve_after_header_wrapper_hook', [ $this, 'inline_style_for_caret' ], 9 );
 			if ( strpos( $title, 'menu-item-title-wrap' ) === false ) {
@@ -148,9 +151,6 @@ class Nav_Walker extends \Walker_Nav_Menu {
 				$expand_dropdowns = apply_filters( 'neve_first_level_expanded', false );
 				$additional_class = $expand_dropdowns && $depth === 0 ? 'dropdown-open' : '';
 
-				$args->before = '<div class="wrap">';
-				$args->after  = '</div>';
-
 				$caret  = '<button ' . $expanded . ' type="button" class="caret-wrap navbar-toggle ' . esc_attr( $item->menu_order ) . ' ' . esc_attr( $additional_class ) . '" style="' . esc_attr( $caret_wrap_css ) . '">';
 				$caret .= $caret_pictogram;
 				$caret .= '</button>';
@@ -161,8 +161,6 @@ class Nav_Walker extends \Walker_Nav_Menu {
 					$args->after = $caret . $args->after;
 				}
 			} else {
-				$args->before = '<div class="wrap">';
-				$args->after  = '</div>';
 
 				$caret  = '<div role="button" aria-pressed="false" aria-label="' . __( 'Open Submenu', 'neve' ) . '" ' . $expanded . ' class="caret-wrap caret ' . $item->menu_order . '" style="' . esc_attr( $caret_wrap_css ) . '">';
 				$caret .= $caret_pictogram;
@@ -248,8 +246,8 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$sidebar_animation_css .= '.header-menu-sidebar .menu-item-nav-search .is-menu-sidebar & { pointer-events: unset; }';
 		/* Accessibility css. */
 		$accessibility_caret_css  = '.nav-ul li:focus-within .wrap.active + .sub-menu { opacity: 1; visibility: visible; }';
-		$accessibility_caret_css .= '.nav-ul li.neve-mega-menu:focus-within .wrap:has(.caret.active) + .sub-menu { display: grid; }';
-		$accessibility_caret_css .= '.nav-ul li > .wrap { display: flex; align-items: center; position: relative; }';
+		$accessibility_caret_css .= '.nav-ul li.neve-mega-menu:focus-within .wrap.active + .sub-menu { display: grid; }';
+		$accessibility_caret_css .= '.nav-ul li > .wrap { display: flex; align-items: center; position: relative; padding: 0 4px; }';
 		$accessibility_caret_css .= '.nav-ul:not(.menu-mobile):not(.neve-mega-menu) > li > a { padding-top: 1px }';
 
 		return Dynamic_Css::minify_css( $sidebar_animation_css . $accessibility_caret_css . $legacy_style );
