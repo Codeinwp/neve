@@ -89,9 +89,9 @@ function current_row( $builder_name = '' ) {
 /**
  * Get setting value of a certain component.
  *
- * @param string $id           Id of component setting.
- * @param mixed  $default      Default value, otherwise use the one when the setting was defined.
- * @param null   $component_id Component id.
+ * @param string      $id           Id of component setting.
+ * @param mixed       $default      Default value, otherwise use the one when the setting was defined.
+ * @param string|null $component_id Component id.
  *
  * @return mixed Component settings.
  */

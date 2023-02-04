@@ -6,8 +6,8 @@
  * @package utilities.php
  */
 
-use HFG\Core\Components\Abstract_SearchComponent;
 use Neve_Pro\Modules\Header_Footer_Grid\Components\Icons;
+use HFG\Core\Components\Utility\SearchIconButton;
 
 /**
  * Check if we're delivering AMP
@@ -208,17 +208,17 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '', $icon_custo
  */
 function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_ready = false ) {
 
-	$icon_type = \HFG\component_setting( Abstract_SearchComponent::ICON_TYPE );
+	$icon_type = \HFG\component_setting( SearchIconButton::ICON_TYPE );
 
 	// For the possibility of \HFG\current_component returning false.
 	if ( $icon_type === false ) {
-		$icon_type = Abstract_SearchComponent::DEFAULT_ICON;
+		$icon_type = SearchIconButton::DEFAULT_ICON;
 	}
 
-	if ( $icon_type === Abstract_SearchComponent::CUSTOM_ICON ) {
-		$svg = \HFG\component_setting( Abstract_SearchComponent::CUSTOM_ICON_SVG );
+	if ( $icon_type === SearchIconButton::CUSTOM_ICON ) {
+		$svg = \HFG\component_setting( SearchIconButton::CUSTOM_ICON_SVG );
 	} else {
-		$svg = Abstract_SearchComponent::render_icon( $icon_type, $size );
+		$svg = SearchIconButton::render_icon( $icon_type, $size );
 	}
 
 	$amp_state = '';

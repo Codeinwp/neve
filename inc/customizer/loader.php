@@ -8,7 +8,7 @@
 
 namespace Neve\Customizer;
 
-use HFG\Core\Components\Abstract_SearchComponent;
+use HFG\Core\Components\Utility\SearchIconButton;
 use Neve\Core\Factory;
 use Neve\Core\Settings\Config;
 use Neve\Customizer\Options\Colors_Background;
@@ -146,8 +146,8 @@ class Loader {
 					'allowedGlobalCustomColor'      => Colors_Background::CUSTOM_COLOR_LIMIT,
 					'constants'                     => [
 						'HFGSearch' => [
-							'defaultIconKey' => Abstract_SearchComponent::DEFAULT_ICON,
-							'customIconKey'  => Abstract_SearchComponent::CUSTOM_ICON,
+							'defaultIconKey' => SearchIconButton::DEFAULT_ICON,
+							'customIconKey'  => SearchIconButton::CUSTOM_ICON,
 						],
 					],
 				)

@@ -9,7 +9,7 @@
  */
 namespace HFG;
 
-use HFG\Core\Components\Search;
+use HFG\Core\Components\Utility\SearchIconButton;
 
 $component_styles_array = [];
 
@@ -27,8 +27,8 @@ if ( ! empty( $component_styles_array ) ) {
 
 $args = [];
 
-if ( component_setting( Search::ACTION_TYPE ) === 'button' ) {
-	$args['button_text'] = component_setting( Search::BUTTON_TEXT, Search::get_default_button_text() );
+if ( component_setting( SearchIconButton::ACTION_TYPE ) === 'button' ) {
+	$args['button_text'] = component_setting( SearchIconButton::BUTTON_TEXT, SearchIconButton::get_default_button_text() );
 }
 
 ?>
