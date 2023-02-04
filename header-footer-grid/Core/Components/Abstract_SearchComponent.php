@@ -150,17 +150,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 				'options'            => [
 					'is_for'          => 'search_icon',
 					'show_labels'     => false,
-					'active_callback' => function() {
-						// if the component doesn't support buttons, only icons are supported.
-						if ( ! $this->has_button_support ) {
-							return true;
-						}
-
-						// button or icon
-						$action_type = component_setting( self::ACTION_TYPE, 'icon', $this->get_class_const( 'COMPONENT_ID' ) );
-
-						return 'icon' === $action_type;
-					},
+					'active_callback' => [ $this, 'is_icon_mode_enabled' ],
 				],
 			]
 		);
@@ -181,10 +171,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 					'active_callback' => function() {
 						$icon_type = component_setting( self::ICON_TYPE, self::DEFAULT_ICON, $this->get_class_const( 'COMPONENT_ID' ) );
 
-						// button or icon
-						$action_type = component_setting( self::ACTION_TYPE, 'icon', $this->get_class_const( 'COMPONENT_ID' ) );
-
-						return 'icon' === $action_type && self::CUSTOM_ICON === $icon_type;
+						return $this->is_icon_mode_enabled() && self::CUSTOM_ICON === $icon_type;
 					},
 					'input_attrs'     => [
 						'rows' => 8,
@@ -217,12 +204,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 				'type'               => 'text',
 				'section'            => $this->section,
 				'options'            => [
-					'active_callback' => function() {
-						// button or icon
-						$action_type = component_setting( self::ACTION_TYPE, 'icon', $this->get_class_const( 'COMPONENT_ID' ) );
-
-						return 'button' === $action_type;
-					},
+					'active_callback' => [ $this, 'is_button_mode_enabled' ],
 				],
 				'conditional_header' => true,
 			]
@@ -244,12 +226,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 					'no_shadow'       => true,
 					'no_border'       => true,
 					'default_vals'    => $default,
-					'active_callback' => function() {
-						// button or icon
-						$action_type = component_setting( self::ACTION_TYPE, 'icon', $this->get_class_const( 'COMPONENT_ID' ) );
-
-						return 'button' === $action_type;
-					},
+					'active_callback' => [ $this, 'is_button_mode_enabled' ],
 				],
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
@@ -267,6 +244,39 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 	}
 
 	/**
+	 * Check if the "buton" style mode (a text based button is shown as search action) is enabled for the search component.
+	 *
+	 * @return bool
+	 */
+	public function is_button_mode_enabled() {
+		// if the component doesn't support buttons, only icons are supported.
+		if ( ! $this->has_button_support ) {
+			return false;
+		}
+
+		$action_type = component_setting( self::ACTION_TYPE, 'icon', $this->get_class_const( 'COMPONENT_ID' ) );
+
+		return 'button' === $action_type;
+	}
+
+	/**
+	 * Check if the "icon" style mode (an icon is shown as search action) is enabled for the search component.
+	 *
+	 * @return bool
+	 */
+	public function is_icon_mode_enabled() {
+		// if the component doesn't support buttons, only icons are supported.
+		if ( ! $this->has_button_support ) {
+			return true;
+		}
+
+		// button or icon
+		$action_type = component_setting( self::ACTION_TYPE, 'icon', $this->get_class_const( 'COMPONENT_ID' ) );
+
+		return 'icon' === $action_type;
+	}
+
+	/**
 	 * Method to add Component css styles.
 	 *
 	 * @param array $css_array An array containing css rules.
@@ -277,7 +287,11 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 	 */
 	public function add_style( array $css_array = array() ) {
 		if ( ! neve_is_new_skin() ) {
-			return []; // sub classes returns legacy style already.
+			return $css_array; // sub classes returns legacy style already.
+		}
+
+		if ( ! $this->is_button_mode_enabled() ) {
+			return $css_array;
 		}
 
 		$button_style_id = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
