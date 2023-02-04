@@ -1,17 +1,14 @@
-import { test, expect, Page } from '@playwright/test';
-import { loadData, setCustomizeSettings } from '../../../utils';
+import { test, expect, Page, Locator } from '@playwright/test';
+import { setCustomizeSettings } from '../../../utils';
+import data from '../../../fixtures/customizer/hfg/hfg-palette-switch-component.json';
 
 test.describe('Palette Switch component', function () {
 	let page: Page;
-	let customizerData;
-	let headerElements, count;
+	let headerElements: Locator, count: number;
 
 	test.beforeAll(async ({ browser, request, baseURL }) => {
 		page = await browser.newPage();
-		customizerData = await loadData(
-			'./fixtures/customizer/hfg/hfg-palette-switch-component.json'
-		);
-		await setCustomizeSettings('hfgPalletSwitch', customizerData, {
+		await setCustomizeSettings('hfgPalletSwitch', data, {
 			request,
 			baseURL,
 		});
@@ -68,28 +65,18 @@ test.describe('Palette Switch component', function () {
 		}
 	});
 
-	test('Removes color palette from website', async ({
-		request,
-		baseURL,
-	}) => {
-		const hfgData = JSON.parse(customizerData);
+	test('Removes color palette from website', async ({ request, baseURL }) => {
+		const hfgData = Object.assign({}, data);
 		hfgData.hfg_header_layout_v2 =
 			'{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[{"id":"header_search_responsive"}]},"main":{"left":[{"id":"logo"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"primary-menu"}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]}},"mobile":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"nav-icon"}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"sidebar":[{"id":"primary-menu"}]}}';
-		await setCustomizeSettings(
-			'hfgNoPalette',
-			JSON.stringify(hfgData),
-			{
-				request,
-				baseURL,
-			}
-		);
+		await setCustomizeSettings('hfgNoPalette', hfgData, {
+			request,
+			baseURL,
+		});
 		await page.goto('/test_name=hfgNoPalette');
 		await page.reload();
 		await expect(
-			await page
-				.locator('.builder-item--header_palette_switch')
-				.count()
+			await page.locator('.builder-item--header_palette_switch').count()
 		).toEqual(0);
 	});
 });
-

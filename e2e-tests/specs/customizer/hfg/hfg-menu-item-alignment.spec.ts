@@ -1,17 +1,14 @@
 import { test, expect } from '@playwright/test';
-import { loadData, setCustomizeSettings } from '../../../utils';
+import { setCustomizeSettings } from '../../../utils';
+import data from '../../../fixtures/customizer/hfg/menu-item-alignment-setup.json';
 
 test.describe('Menu item alignment', function () {
 	test.use({ viewport: { width: 600, height: 900 } });
 
 	test.beforeAll(async ({ request, baseURL }) => {
-		await loadData(
-			'./fixtures/customizer/hfg/menu-item-alignment-setup.json'
-		).then(async (data) => {
-			await setCustomizeSettings('hfgMenuItemAlignment', data, {
-				request,
-				baseURL,
-			});
+		await setCustomizeSettings('hfgMenuItemAlignment', data, {
+			request,
+			baseURL,
 		});
 	});
 
