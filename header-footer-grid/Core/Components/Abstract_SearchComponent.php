@@ -19,13 +19,14 @@ use function HFG\component_setting;
  * @package HFG\Core
  */
 abstract class Abstract_SearchComponent extends Abstract_Component {
-	const ACTION_TYPE       = 'action_type';
-	const ICON_TYPE         = 'icon_type';
-	const CUSTOM_ICON_SVG   = 'c_icon_svg';
-	const DEFAULT_ICON      = 'hfgs-icon-style-1';
-	const CUSTOM_ICON       = 'hfgs-icon-custom';
-	const BUTTON_APPEARANCE = 'button_appearance';
-	const BUTTON_TEXT       = 'button_text';
+	const ACTION_TYPE         = 'action_type';
+	const ICON_TYPE           = 'icon_type';
+	const CUSTOM_ICON_SVG     = 'c_icon_svg';
+	const DEFAULT_ICON        = 'hfgs-icon-style-1';
+	const CUSTOM_ICON         = 'hfgs-icon-custom';
+	const BUTTON_APPEARANCE   = 'button_appearance';
+	const BUTTON_TEXT         = 'button_text';
+	const DEFAULT_ACTION_TYPE = 'icon';
 
 	// Common constants which used by search form, search icon, advanced search form, advanced search icon
 	const PLACEHOLDER_ID      = 'placeholder';
@@ -107,17 +108,17 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 				'transport'          => 'refresh',
 				'label'              => __( 'Action Type', 'neve' ),
 				'sanitize_callback'  => 'sanitize_key',
-				'default'            => 'icon',
+				'default'            => self::DEFAULT_ACTION_TYPE,
 				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'section'            => $this->section,
 				'conditional_header' => true,
 				'options'            => [
 					'choices'     => [
-						'icon'   => [
+						self::DEFAULT_ACTION_TYPE => [
 							'tooltip' => __( 'Icon', 'neve' ),
 							'icon'    => 'text',
 						],
-						'button' => [
+						'button'                  => [
 							'tooltip' => __( 'Button', 'neve' ),
 							'icon'    => 'text',
 						],
@@ -244,7 +245,16 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 	}
 
 	/**
-	 * Check if the "buton" style mode (a text based button is shown as search action) is enabled for the search component.
+	 * Get search form action type
+	 *
+	 * @return string icon|button
+	 */
+	private function get_form_action_type() {
+		return component_setting( self::ACTION_TYPE, self::DEFAULT_ACTION_TYPE, $this->get_class_const( 'COMPONENT_ID' ) );
+	}
+
+	/**
+	 * Check if the "button" style mode (a text based button is shown as search action) is enabled for the search component.
 	 *
 	 * @return bool
 	 */
@@ -254,9 +264,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 			return false;
 		}
 
-		$action_type = component_setting( self::ACTION_TYPE, 'icon', $this->get_class_const( 'COMPONENT_ID' ) );
-
-		return 'button' === $action_type;
+		return 'button' === $this->get_form_action_type();
 	}
 
 	/**
@@ -270,10 +278,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 			return true;
 		}
 
-		// button or icon
-		$action_type = component_setting( self::ACTION_TYPE, 'icon', $this->get_class_const( 'COMPONENT_ID' ) );
-
-		return 'icon' === $action_type;
+		return 'icon' === $this->get_form_action_type();
 	}
 
 	/**
