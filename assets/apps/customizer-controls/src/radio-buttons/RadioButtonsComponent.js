@@ -1,4 +1,5 @@
 /*eslint camelcase: ["error", {allow: ["is_for","large_buttons","user_icon_style1","user_icon_style2","user_icon_style3","user_icon_style4","user_icon_style5",,"user_icon_style6","user_avatar"]}]*/
+/* global NeveReactCustomize */
 import PropTypes from 'prop-types';
 import { SVG, RadioIcons } from '@neve-wp/components';
 
@@ -206,7 +207,7 @@ const RadioButtonsComponent = ({ control }) => {
 				};
 			case 'search_icon':
 				return {
-					'hfgs-icon-style-1': {
+					[NeveReactCustomize.constants.HFGSearch.defaultIconKey]: {
 						tooltip: __('Icon Style 1', 'neve'),
 						icon: SVG.searchIcon1,
 					},
@@ -226,7 +227,7 @@ const RadioButtonsComponent = ({ control }) => {
 						tooltip: __('Icon Style 5', 'neve'),
 						icon: SVG.searchIcon5,
 					},
-					'hfgs-icon-custom': {
+					[NeveReactCustomize.constants.HFGSearch.customIconKey]: {
 						tooltip: __('Custom SVG', 'neve'),
 						icon: SVG.customSVG,
 					},

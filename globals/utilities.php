@@ -215,13 +215,11 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 		$icon_type = Abstract_SearchComponent::DEFAULT_ICON;
 	}
 
-	if ( $icon_type === 'hfgs-icon-custom' ) {
+	if ( $icon_type === Abstract_SearchComponent::CUSTOM_ICON ) {
 		$svg = \HFG\component_setting( Abstract_SearchComponent::CUSTOM_ICON_SVG );
 	} else {
 		$svg = Abstract_SearchComponent::render_icon( $icon_type, $size );
 	}
-
-	$svg = neve_kses_svg( $svg );
 
 	$amp_state = '';
 	if ( $amp_ready ) {
@@ -230,7 +228,7 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 	$start_tag = $is_link ? 'a aria-label="' . __( 'Search', 'neve' ) . '" href="#"' : 'span';
 	$end_tag   = $is_link ? 'a' : 'span';
 	$output    = '<' . $start_tag . ' class="nv-icon nv-search" ' . $amp_state . '>
-				' . $svg . '
+				' . neve_kses_svg( $svg ) . '
 			</' . $end_tag . '>';
 	if ( $echo === false ) {
 		return $output;

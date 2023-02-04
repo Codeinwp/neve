@@ -8,6 +8,7 @@
 
 namespace Neve\Customizer;
 
+use HFG\Core\Components\Abstract_SearchComponent;
 use Neve\Core\Factory;
 use Neve\Core\Settings\Config;
 use Neve\Customizer\Options\Colors_Background;
@@ -143,6 +144,12 @@ class Loader {
 					),
 					'fontPairs'                     => get_theme_mod( Config::MODS_TPOGRAPHY_FONT_PAIRS, Config::$typography_default_pairs ),
 					'allowedGlobalCustomColor'      => Colors_Background::CUSTOM_COLOR_LIMIT,
+					'constants'                     => [
+						'HFGSearch' => [
+							'defaultIconKey' => Abstract_SearchComponent::DEFAULT_ICON,
+							'customIconKey'  => Abstract_SearchComponent::CUSTOM_ICON,
+						],
+					],
 				)
 			)
 		);
