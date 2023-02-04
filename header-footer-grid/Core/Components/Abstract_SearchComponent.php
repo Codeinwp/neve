@@ -233,8 +233,10 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 				'live_refresh_css_prop' => [
 					'cssVar' => [
 						'vars'     => [
-							'--primarybtnbg'    => 'background',
-							'--primarybtncolor' => 'text',
+							'--primarybtnbg'         => 'background',
+							'--primarybtnhoverbg'    => 'background',
+							'--primarybtncolor'      => 'text',
+							'--primarybtnhovercolor' => 'text',
 						],
 						'selector' => $this->button_selector,
 					],
