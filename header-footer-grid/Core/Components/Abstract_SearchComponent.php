@@ -230,16 +230,16 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                 => $mod_key,
-				'group'              => $this->get_id(),
-				'transport'          => 'refresh', // TODO: implement live refresh
-				'tab'                => SettingsManager::TAB_STYLE,
-				'sanitize_callback'  => 'neve_sanitize_button_appearance',
-				'default'            => $default,
-				'label'              => __( 'Button Appearance', 'neve' ),
-				'type'               => '\Neve\Customizer\Controls\React\Button_Appearance',
-				'section'            => $this->section,
-				'options'            => [
+				'id'                    => $mod_key,
+				'group'                 => $this->get_id(),
+				'transport'             => 'postMessage',
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'sanitize_callback'     => 'neve_sanitize_button_appearance',
+				'default'               => $default,
+				'label'                 => __( 'Button Appearance', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Button_Appearance',
+				'section'               => $this->section,
+				'options'               => [
 					'no_hover'        => true,
 					'no_shadow'       => true,
 					'no_border'       => true,
@@ -251,7 +251,17 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 						return 'button' === $action_type;
 					},
 				],
-				'conditional_header' => true,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => [
+							'--primarybtnbg'    => 'background',
+							'--primarybtncolor' => 'text',
+						],
+						'selector' => $this->button_selector,
+					],
+				],
+				'conditional_header'    => true,
 			]
 		);
 	}
