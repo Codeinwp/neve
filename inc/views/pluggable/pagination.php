@@ -55,9 +55,24 @@ class Pagination extends Base_View {
 			return new \WP_REST_Response( '' );
 		}
 
-		$args                        = [];
-		$per_page                    = get_option( 'posts_per_page' );
-		$args['posts_per_page']      = $per_page > 100 ? 100 : $per_page;
+		$query_args = $request->get_body();
+		$args       = json_decode( $query_args, true );
+
+		$per_page = get_option( 'posts_per_page' );
+		if ( $per_page > 100 ) {
+			$per_page = 100;
+		}
+
+		/**
+		 * If homepage is set to 'A static page', there will be a parameter inside the query named 'pagename'.
+		 * That parameter is the title of the blog page and because of ot  the WP_Query will return 0 posts.
+		 * Here, we unset it. We can't reset the query because we can lose search parameters for example.
+		 */
+		if ( array_key_exists( 'pagename', $args ) ) {
+			unset( $args['pagename'] );
+		}
+
+		$args['posts_per_page']      = $per_page;
 		$args['post_type']           = 'post';
 		$args['paged']               = $request['page_number'];
 		$args['ignore_sticky_posts'] = 1;
