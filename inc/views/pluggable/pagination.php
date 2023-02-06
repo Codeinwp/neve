@@ -65,7 +65,7 @@ class Pagination extends Base_View {
 
 		/**
 		 * If homepage is set to 'A static page', there will be a parameter inside the query named 'pagename'.
-		 * That parameter is the title of the blog page and because of ot  the WP_Query will return 0 posts.
+		 * That parameter is the title of the blog page and because of it the WP_Query will return 0 posts.
 		 * Here, we unset it. We can't reset the query because we can lose search parameters for example.
 		 */
 		if ( array_key_exists( 'pagename', $args ) ) {
