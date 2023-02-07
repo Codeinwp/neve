@@ -56,10 +56,11 @@
 		}
 	}
 
-	a:hover {
+	.wrap:hover > a {
 		color: currentColor;
 
 		&,
+		+ .caret-wrap,
 		span,
 		i {
 			color: var(--hovertextcolor, var(--color)) !important;

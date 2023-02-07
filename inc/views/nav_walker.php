@@ -205,8 +205,8 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 */
 	public function get_mobile_caret_style() {
 		/* Mobile button caret css. */
-		$mobile_button_caret_css  = '.header-menu-sidebar .nav-ul li .wrap { position: relative; padding: 15px 0; display: flex; align-items: center; }';
-		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a { flex-grow: 1; }';
+		$mobile_button_caret_css  = '.header-menu-sidebar .nav-ul li .wrap { position: relative; padding: 15px 4px; display: flex; align-items: center; }';
+		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a { flex-grow: 1; display: flex; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a .dd-title { width: var(--wrapdropdownwidth); }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap button { border: 0; z-index: 1; background: 0; }';
 
@@ -224,11 +224,10 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			$legacy_style .= '.nav-ul li { display: block; padding-top: 9px; }';
 			$legacy_style .= '.nav-ul .sub-menu li { padding: 3px 0; }';
 			$legacy_style .= '.nav-ul:not(.menu-mobile) .sub-menu li > .wrap > a { justify-content: center; white-space: nowrap; padding: 7px 14px; }';
-			$legacy_style .= '.nav-ul:not(.menu-mobile) .neve-mega-menu > .sub-menu .menu-item > a > span { padding: 0 14px; }';
+			$legacy_style .= '.nav-ul:not(.menu-mobile) .neve-mega-menu > .sub-menu .menu-item > .wrap > a > span { padding: 0 14px; }';
 			$legacy_style .= '.header-menu-sidebar .nav-ul li .wrap button { padding: 0; }';
 			$legacy_style .= '.header-menu-sidebar .nav-ul li .wrap { padding: 0 !important; }';
 			$legacy_style .= '.header-menu-sidebar .nav-ul li a .nv-icon { padding: 0 4px; }';
-			$legacy_style .= '.header-menu-sidebar-inner .nav-menu-primary .sub-menu { display: none; }';
 			$legacy_style .= '.header-menu-sidebar-inner .nav-ul .dropdown-open + .sub-menu, .header-menu-sidebar-inner .nav-ul .dropdown-open.sub-menu { display: block; }';
 			$legacy_style .= '.nav-ul li .menu-item-title-wrap { justify-content: var(--textalign); }';
 			$legacy_style .= '.header-menu-sidebar-inner .nav-ul li a { justify-content: var(--textalign) !important; }';
@@ -248,7 +247,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$accessibility_caret_css  = '.nav-ul li:focus-within .wrap.active + .sub-menu { opacity: 1; visibility: visible; }';
 		$accessibility_caret_css .= '.nav-ul li.neve-mega-menu:focus-within .wrap.active + .sub-menu { display: grid; }';
 		$accessibility_caret_css .= '.nav-ul li > .wrap { display: flex; align-items: center; position: relative; padding: 0 4px; }';
-		$accessibility_caret_css .= '.nav-ul:not(.menu-mobile):not(.neve-mega-menu) > li > a { padding-top: 1px }';
+		$accessibility_caret_css .= '.nav-ul:not(.menu-mobile):not(.neve-mega-menu) > li > .wrap > a { padding-top: 1px }';
 
 		return Dynamic_Css::minify_css( $sidebar_animation_css . $accessibility_caret_css . $legacy_style );
 	}

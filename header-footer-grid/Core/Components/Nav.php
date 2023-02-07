@@ -220,7 +220,7 @@ class Nav extends Abstract_Component {
 						'selector' => '.builder-item--' . $this->get_id(),
 					],
 					'template' =>
-						$selector . ' li.current_page_item > a,' . $selector . ' li.current-menu-item > a {
+						$selector . ' li.current_page_item > .wrap > a,' . $selector . ' li.current-menu-item > .wrap > a {
 						color: {{value}} !important;
 					}',
 				],
@@ -245,10 +245,10 @@ class Nav extends Abstract_Component {
 						'selector' => '.builder-item--' . $this->get_id(),
 					],
 					'template' =>
-						'.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .nav-ul li:not(.woocommerce-mini-cart-item):hover > a {
+						'.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .nav-ul li:not(.woocommerce-mini-cart-item):hover > .wrap > a {
 							 color: {{value}} !important;
 						}' .
-						$selector . ' li:not(.woocommerce-mini-cart-item) > a:after,' . $selector . ' li > .has-caret > a:after {
+						$selector . ' li:not(.woocommerce-mini-cart-item) > .wrap:after,' . $selector . ' li > .has-caret > a:after {
 							background-color: {{value}} !important;
 						}',
 				],
@@ -525,7 +525,7 @@ class Nav extends Abstract_Component {
 		$selector = '.builder-item--' . $this->get_id() . ' .nav-menu-primary > .nav-ul ';
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item) > a,' . $selector . '.has-caret > a,' . $selector . ' .neve-mm-heading span,' . $selector . ' .has-caret',
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item) > .wrap > a,' . $selector . '.has-caret > a,' . $selector . ' .neve-mm-heading span,' . $selector . ' .has-caret',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
@@ -535,7 +535,7 @@ class Nav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . ' li:not(.woocommerce-mini-cart-item) > a:after,' . $selector . ' li > .has-caret > a:after, ' . $selector . ' li:not(.woocommerce-mini-cart-item) > .wrap:after',
+			Dynamic_Selector::KEY_SELECTOR => $selector . ' li:not(.woocommerce-mini-cart-item) > wrap:after,' . $selector . ' li > .has-caret > .wrap:after, ' . $selector . ' li:not(.woocommerce-mini-cart-item) > .wrap:after',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
@@ -545,7 +545,7 @@ class Nav extends Abstract_Component {
 		];
 		if ( SettingsManager::get_instance()->get( $this->get_id() . '_style' ) !== 'style-full-height' ) {
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . ' li:not(.woocommerce-mini-cart-item):hover > a,' . $selector . ' li:hover > .has-caret > a,' . $selector . ' li:hover > .has-caret',
+				Dynamic_Selector::KEY_SELECTOR => $selector . ' li:not(.woocommerce-mini-cart-item):hover > .wrap > a,' . $selector . ' li:hover > .has-caret > .wrap > a,' . $selector . ' li:hover > .has-caret',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_COLOR => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
@@ -564,7 +564,7 @@ class Nav extends Abstract_Component {
 			];
 		}
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > a,' . $selector . 'li.current_page_item > a,' . $selector . 'li.current_page_item > .has-caret > a',
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > .wrap > a,' . $selector . 'li.current_page_item > .wrap > a,' . $selector . 'li.current_page_item > .has-caret > a',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,

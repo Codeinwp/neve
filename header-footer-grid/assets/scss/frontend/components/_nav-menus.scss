@@ -1,6 +1,6 @@
 // Hover Styles
 .style-border-top, .style-border-bottom, .style-full-height {
-  ul:not(.max-mega-menu) > li:hover > a {
+  ul:not(.max-mega-menu) > li:hover > .wrap > a {
 	text-decoration: none;
   }
 

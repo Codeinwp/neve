@@ -35,8 +35,8 @@
 		width: 100%;
 	}
 
-	> li:hover > a,
-	> li:hover > .caret {
+	> li:hover > .wrap > a,
+	> li:hover > .wrap > .caret {
 		color: var(--hovercolor);
 	}
 
@@ -48,7 +48,7 @@
 		display: block;
 		position: relative;
 
-		&.current-menu-item > a:not([href*="#"]) {
+		&.current-menu-item > .wrap > a:not([href*="#"]) {
 			color: var(--activecolor);
 		}
 
@@ -85,8 +85,7 @@
 			width: 100%;
 		}
 
-		li > .wrap,
-		li > a {
+		li > .wrap {
 			padding: $spacing-xs $spacing-md;
 			white-space: nowrap;
 			display: flex;
@@ -120,7 +119,7 @@
 			width: 100%;
 		}
 
-		li:not([class*="block"]) > a {
+		li:not([class*="block"]) > .wrap > a {
 			padding: $spacing-sm 0;
 			white-space: unset;
 		}

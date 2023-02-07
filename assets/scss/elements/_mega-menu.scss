@@ -70,7 +70,7 @@
   text-align: center;
 }
 
-.neve-mm-heading > span, .neve-mm-heading > a {
+.neve-mm-heading > span, .neve-mm-heading > .wrap > a {
   font-size: 1.1em;
   cursor: pointer;
   display: flex;
@@ -108,21 +108,21 @@
   }
 
   .mobile-center {
-	.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+	.neve-mm-heading > .wrap > a, .neve-mm-heading > span, .neve-mm-description {
 	  text-align: center;
 	  justify-content: center;
 	}
   }
 
   .mobile-left {
-	.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+	.neve-mm-heading > .wrap > a, .neve-mm-heading > span, .neve-mm-description {
 	  text-align: left;
 	  justify-content: flex-start;
 	}
   }
 
   .mobile-right {
-	.neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+	.neve-mm-heading > .wrap > a, .neve-mm-heading > span, .neve-mm-description {
 	  text-align: right;
 	  justify-content: flex-end;
 	}
@@ -132,21 +132,21 @@
 @mixin mega-menu--tablet() {
   .header-menu-sidebar-inner {
 	.tablet-center {
-	  .neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+	  .neve-mm-heading > .wrap > a, .neve-mm-heading > span, .neve-mm-description {
 		text-align: center;
 		justify-content: center;
 	  }
 	}
 
 	.tablet-left {
-	  .neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+	  .neve-mm-heading > .wrap > a, .neve-mm-heading > span, .neve-mm-description {
 		text-align: left;
 		justify-content: flex-start;
 	  }
 	}
 
 	.tablet-right {
-	  .neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+	  .neve-mm-heading > .wrap > a, .neve-mm-heading > span, .neve-mm-description {
 		text-align: right;
 		justify-content: flex-end;
 	  }
@@ -229,21 +229,21 @@
 
   .header-menu-sidebar-inner {
 	.desktop-center {
-	  .neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+	  .neve-mm-heading > .wrap > a, .neve-mm-heading > span, .neve-mm-description {
 		text-align: center;
 		justify-content: center;
 	  }
 	}
 
 	.desktop-left {
-	  .neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+	  .neve-mm-heading > .wrap > a, .neve-mm-heading > span, .neve-mm-description {
 		text-align: left;
 		justify-content: flex-start;
 	  }
 	}
 
 	.desktop-right {
-	  .neve-mm-heading > a, .neve-mm-heading > span, .neve-mm-description {
+	  .neve-mm-heading > .wrap > a, .neve-mm-heading > span, .neve-mm-description {
 		text-align: right;
 		justify-content: flex-end;
 	  }
