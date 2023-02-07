@@ -28,7 +28,6 @@
 	  }
 	}
   }
-
   .nv-custom-palette-color {
 	height: 30px;
 	width: 30px;
@@ -42,6 +41,11 @@
 	  border: 3px solid #8FD7EE;
 	}
   }
+}
+
+.nv-custom-palette-inner {
+  max-height: 410px;
+  overflow: scroll;
 }
 
 .globa-color-popover {

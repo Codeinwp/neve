@@ -2,11 +2,24 @@ import { __ } from '@wordpress/i18n';
 import { Button, ExternalLink } from '@wordpress/components';
 import classnames from 'classnames';
 import { globalPaletteColors } from './common';
+import { useState } from '@wordpress/element';
 
 const CustomPalette = ({ title, onChange, activeColor }) => {
 	const focusGlobalColors = () => {
 		wp.customize.control('neve_global_colors').focus();
 	};
+
+	const globalCustomColorsControl = wp.customize.control(
+		'neve_global_custom_colors'
+	);
+	const customColorsState = useState({
+		...globalCustomColorsControl.setting.get(),
+	})[0];
+
+	const customColors = Object.entries(customColorsState)
+		.filter(([key]) => key !== 'flag')
+		.map(([key, value]) => ({ [key]: value.label }))
+		.reduce((acc, cur) => Object.assign(acc, cur), {});
 
 	return (
 		<div className="nv-custom-palette-wrap">
@@ -34,9 +47,10 @@ const CustomPalette = ({ title, onChange, activeColor }) => {
 			</div>
 			<div className="nv-custom-palette-inner">
 				{globalPaletteColors.map((group, index) => {
+					const colors = { ...group, ...customColors };
 					return (
 						<ul key={index}>
-							{Object.keys(group).map((slug) => {
+							{Object.keys(colors).map((slug) => {
 								const style = {
 									background: `var(--${slug})`,
 								};
@@ -49,7 +63,7 @@ const CustomPalette = ({ title, onChange, activeColor }) => {
 								]);
 
 								return (
-									<li title={group[slug]} key={slug}>
+									<li title={colors[slug]} key={slug}>
 										<a
 											href="#global-select"
 											onClick={(e) => {
@@ -61,7 +75,7 @@ const CustomPalette = ({ title, onChange, activeColor }) => {
 												style={style}
 												className={buttonClasses}
 											/>
-											<span>{group[slug]}</span>
+											<span>{colors[slug]}</span>
 										</a>
 									</li>
 								);
