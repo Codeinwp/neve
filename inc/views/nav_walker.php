@@ -205,7 +205,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 */
 	public function get_mobile_caret_style() {
 		/* Mobile button caret css. */
-		$mobile_button_caret_css  = '.header-menu-sidebar .nav-ul li .wrap { position: relative; padding: 15px 4px; display: flex; align-items: center; }';
+		$mobile_button_caret_css  = '.header-menu-sidebar .nav-ul li .wrap { padding: 0 4px; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a { flex-grow: 1; display: flex; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a .dd-title { width: var(--wrapdropdownwidth); }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap button { border: 0; z-index: 1; background: 0; }';
