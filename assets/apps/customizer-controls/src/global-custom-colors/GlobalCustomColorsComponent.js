@@ -18,26 +18,18 @@ const GlobalColorsComponent = ({ control }) => {
 		control.setting.set(nextValue);
 
 		//CSS Tag Update
-		let customColors = ':root{';
+		const cssTag = document.querySelector(
+			'#nv-custom-color-vars-inline-css'
+		);
+		let style = ':root{';
 		Object.keys(nextValue).map((slug) => {
 			if (slug !== 'flag') {
-				customColors += `--${slug}:${nextValue[slug].val};`;
+				style += `--${slug}:${nextValue[slug].val};`;
 			}
 			return false;
 		});
-		customColors += '}';
-
-		let styleElement = document.getElementById('nv-custom-colors-vars');
-		// Check if the CSS already exists
-		if (styleElement) {
-			styleElement.innerHTML = customColors;
-		} else {
-			// If the CSS doesn't exist, create a new style element and add it to the head
-			styleElement = document.createElement('style');
-			styleElement.id = 'nv-custom-colors-vars';
-			styleElement.innerHTML = customColors;
-			document.head.appendChild(styleElement);
-		}
+		style += '}';
+		cssTag.innerHTML = style;
 	};
 
 	return (

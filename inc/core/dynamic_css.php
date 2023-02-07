@@ -105,6 +105,19 @@ class Dynamic_Css {
 		$css = ':root{' . $this->get_css_vars() . '}';
 		$css .= apply_filters( 'neve_after_css_root', $css );
 		wp_add_inline_style( 'nv-css-vars', self::minify_css($css ) );
+
+		/**
+		 * Custom colors needs a separate style to prevent overwriting the main color for the pallets.
+		 */
+		wp_register_style( 'nv-custom-color-vars', false );
+		wp_enqueue_style( 'nv-custom-color-vars' );
+		$custom_colors = self::get_global_custom_colors();
+		$colors_css = '';
+		foreach ( $custom_colors as $slug => $color ) {
+			$colors_css .= '--' . $slug . ':' . $color . ';';
+		}
+		$css = ':root{' . esc_html( $colors_css ) . '}';
+		wp_add_inline_style( 'nv-custom-color-vars', self::minify_css($css ) );
 	}
 
 	/**
@@ -117,6 +130,17 @@ class Dynamic_Css {
 
 		$css .= self::get_css_vars();
 		$css .= self::get_fallback_font();
+
+		/**
+		 * We already have the style in customizer from add_customize_vars_tag method, no need to add it again.
+		 * We do need it on frontend.
+		 */
+		if ( ! is_customize_preview() ) {
+			$custom_colors = self::get_global_custom_colors();
+			foreach ($custom_colors as $slug => $color) {
+				$css .= '--' . $slug . ':' . $color . ';';
+			}
+		}
 
 		$css .= '}';
 
@@ -179,11 +203,9 @@ class Dynamic_Css {
 			return '';
 		}
 
-		$colors = array_merge( $palette[ 'colors' ], self::get_global_custom_colors() );
-
 		$css = '';
 
-		foreach ( $colors as $slug => $color ) {
+		foreach ( $palette[ 'colors' ] as $slug => $color ) {
 			$css .= '--' . $slug . ':' . $color . ';';
 		}
 
