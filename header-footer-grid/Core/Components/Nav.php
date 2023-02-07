@@ -545,7 +545,7 @@ class Nav extends Abstract_Component {
 		];
 		if ( SettingsManager::get_instance()->get( $this->get_id() . '_style' ) !== 'style-full-height' ) {
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . ' li:not(.woocommerce-mini-cart-item):hover > .wrap > a,' . $selector . ' li:hover > .has-caret > .wrap > a,' . $selector . ' li:hover > .has-caret',
+				Dynamic_Selector::KEY_SELECTOR => $selector . ' li:not(.woocommerce-mini-cart-item):hover > .wrap > a,' . $selector . ' li:not(.woocommerce-mini-cart-item):hover > .wrap > .caret-wrap,' . $selector . ' li:hover > .has-caret > .wrap > a,' . $selector . ' li:hover > .has-caret',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_COLOR => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
