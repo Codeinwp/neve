@@ -35,8 +35,8 @@
 		width: 100%;
 	}
 
-	> li:hover > .wrap > a,
-	> li:hover > .wrap > .caret {
+	li:hover > .wrap > a,
+	li:hover > .wrap > .caret {
 		color: var(--hovercolor);
 	}
 
