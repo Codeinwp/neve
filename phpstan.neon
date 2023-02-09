@@ -1,42 +1,42 @@
 parameters:
-    level: 5
-    paths:
-        - %currentWorkingDirectory%/functions.php
-        - %currentWorkingDirectory%/globals
-        - %currentWorkingDirectory%/inc
-        - %currentWorkingDirectory%/header-footer-grid/Core
-        - %currentWorkingDirectory%/header-footer-grid/loader.php
-        - %currentWorkingDirectory%/header-footer-grid/Main.php
-        - %currentWorkingDirectory%/header-footer-grid/functions-migration.php
-        - %currentWorkingDirectory%/header-footer-grid/functions-template.php
-    bootstrapFiles:
-        - %currentWorkingDirectory%/inc/core/styles/generator.php
-        - %currentWorkingDirectory%/inc/core/theme_info.php
-        - %currentWorkingDirectory%/vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/config.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/header-footer-elementor.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/yoast-wordpress-seo.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/rankmath.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/neve-pro.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/legacy-wp-core.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/breadcrumb-navxt.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/seopress.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/pwa.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/web-stories-wp.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/lifter-lms.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/bb-header-footer.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/elementor.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/elementor-pro.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/amp-wp.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/vip-go-mu-plugins.php
-        - %currentWorkingDirectory%/tests/php/static-analysis-stubs/easy-digital-downloads.php
-        - %currentWorkingDirectory%/vendor/wptt/webfont-loader/wptt-webfont-loader.php
-    dynamicConstantNames:
-        - NEVE_DEBUG
+	level: 5
+	paths:
+		- %currentWorkingDirectory%/functions.php
+		- %currentWorkingDirectory%/globals
+		- %currentWorkingDirectory%/inc
+		- %currentWorkingDirectory%/header-footer-grid/Core
+		- %currentWorkingDirectory%/header-footer-grid/loader.php
+		- %currentWorkingDirectory%/header-footer-grid/Main.php
+		- %currentWorkingDirectory%/header-footer-grid/functions-migration.php
+		- %currentWorkingDirectory%/header-footer-grid/functions-template.php
+	bootstrapFiles:
+		- %currentWorkingDirectory%/inc/core/styles/generator.php
+		- %currentWorkingDirectory%/inc/core/theme_info.php
+		- %currentWorkingDirectory%/vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/config.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/header-footer-elementor.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/yoast-wordpress-seo.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/rankmath.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/neve-pro.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/legacy-wp-core.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/breadcrumb-navxt.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/seopress.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/pwa.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/web-stories-wp.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/lifter-lms.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/bb-header-footer.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/elementor.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/elementor-pro.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/amp-wp.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/vip-go-mu-plugins.php
+		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/easy-digital-downloads.php
+		- %currentWorkingDirectory%/vendor/wptt/webfont-loader/wptt-webfont-loader.php
+	dynamicConstantNames:
+		- NEVE_DEBUG
 	reportUnmatchedIgnoredErrors: false
-    ignoreErrors:
-        - '#^Function apply_filters(_ref_array)? invoked with [34567] parameters, 2 required\.$#'
-        - '#Parameter \#2 \$default of function get_theme_mod expects#'
-        - '#Parameter \#2 \$args of method WP_Customize_Manager::add_setting\(\) expects#'
+	ignoreErrors:
+		- '#^Function apply_filters(_ref_array)? invoked with [34567] parameters, 2 required\.$#'
+		- '#Parameter \#2 \$default of function get_theme_mod expects#'
+		- '#Parameter \#2 \$args of method WP_Customize_Manager::add_setting\(\) expects#'
 includes:
-    - %currentWorkingDirectory%/vendor/szepeviktor/phpstan-wordpress/extension.neon
+	- %currentWorkingDirectory%/vendor/szepeviktor/phpstan-wordpress/extension.neon
