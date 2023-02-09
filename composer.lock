@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "15c9395b002e54b77b5fa9fb33bb5fc0",
+    "content-hash": "c666878551c8e649d4d6db2656724b77",
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
@@ -981,6 +981,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "wptt/webfont-loader": 20,
         "codeinwp/phpcs-ruleset": 20
     },
     "prefer-stable": true,
