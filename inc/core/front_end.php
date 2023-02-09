@@ -10,6 +10,7 @@
 
 namespace Neve\Core;
 
+use Neve\Compatibility\Elementor;
 use Neve\Compatibility\Starter_Content;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
@@ -334,7 +335,9 @@ class Front_End {
 			wp_register_style( 'neve-woocommerce', NEVE_ASSETS_URL . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 			wp_style_add_data( 'neve-woocommerce', 'rtl', 'replace' );
 			wp_style_add_data( 'neve-woocommerce', 'suffix', '.min' );
-			wp_enqueue_style( 'neve-woocommerce' );
+			if ( ! Elementor::is_elementor_checkout() ) {
+				wp_enqueue_style( 'neve-woocommerce' );
+			}
 		}
 
 		if ( class_exists( 'Easy_Digital_Downloads' ) ) {
