@@ -18,7 +18,7 @@
   },
   "require": {
 	"codeinwp/themeisle-sdk": "^3.2",
-    "wptt/webfont-loader": "master"
+    "wptt/webfont-loader": "dev-main"
   },
   "repositories": [
 	{
