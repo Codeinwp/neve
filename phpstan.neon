@@ -36,6 +36,6 @@ parameters:
     ignoreErrors:
         - '#^Function apply_filters(_ref_array)? invoked with [34567] parameters, 2 required\.$#'
         - '#Parameter \#2 \$default of function get_theme_mod expects#'
-        - '#Parameter \#2 \$args of method WP_Customize_Manager::add_setting() expects#'
+        - '#Parameter \#2 \$args of method WP_Customize_Manager::add_setting\(\) expects#'
 includes:
     - %currentWorkingDirectory%/vendor/szepeviktor/phpstan-wordpress/extension.neon
