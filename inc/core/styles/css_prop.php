@@ -377,7 +377,7 @@ class Css_Prop {
 		if ( strpos( $value, ',' ) !== false ) {
 			$value = explode( ',', $value );
 
-			$value = array_map( 'self::quote_font_family', $value );
+			$value = array_map( 'Neve\Core\Styles\CSS_Prop::quote_font_family', $value );
 
 			return join( ',', $value );
 		}
