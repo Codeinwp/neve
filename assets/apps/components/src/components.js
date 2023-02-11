@@ -13,7 +13,6 @@ export { default as Toggle } from './Controls/Toggle';
 export { default as RadioImage } from './Controls/RadioImage';
 export { default as FormTokenFieldControl } from './Controls/FormTokenFieldControl';
 export { default as GroupSelectControl } from './Controls/GroupSelectControl';
-export { default as Textarea } from './Controls/Textarea';
 
 // UI Components
 export { default as Accordion } from './UI/Accordion';

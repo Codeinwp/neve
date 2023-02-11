@@ -1,4 +1,4 @@
-import { Textarea } from '@neve-wp/components';
+import { TextareaControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import PropTypes from 'prop-types';
 
@@ -23,12 +23,20 @@ const TextareaComponent = ({ control }) => {
 	};
 
 	return (
-		<Textarea
-			value={value}
-			label={label}
-			onChange={updateValues}
-			rows={controlParams.rows}
-		/>
+		<div className="neve-white-background-control">
+			<div className="neve-control-header">
+				{label && (
+					<span className="customize-control-title">{label}</span>
+				)}
+			</div>
+			<div className="textarea-wrap">
+				<TextareaControl
+					rows={controlParams.rows}
+					value={value}
+					onChange={updateValues}
+				/>
+			</div>
+		</div>
 	);
 };
 
