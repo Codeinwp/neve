@@ -47,7 +47,11 @@ body:
     - type: dropdown
       id: existing
       attributes:
-          label: Is the issue you are reporting a regression (i.e., a previously working feature/functionality is now broken)?
+          label: Is the issue you are reporting a regression 
+          description: |
+            i.e, a previously working feature/functionality is now broken? 
+            By specifying whether or not your issue is a regression, it will help the development team to more effectively diagnose and resolve the problem.
+          
           multiple: true
           options:
               - 'Yes'
