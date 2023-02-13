@@ -1,6 +1,6 @@
 // Hover Styles
 .style-border-top, .style-border-bottom, .style-full-height {
-  ul:not(.max-mega-menu) > li:hover > a {
+  ul:not(.max-mega-menu) > li:hover > .wrap > a {
 	text-decoration: none;
   }
 
@@ -12,7 +12,8 @@
 }
 
 .style-border-bottom {
-  a:after {
+  a:after,
+  .wrap:after {
 	bottom: 0;
   }
 
@@ -26,7 +27,8 @@
 }
 
 .style-border-top {
-  a:after {
+  a:after,
+  .wrap:after {
 	top: 0;
   }
 
@@ -40,11 +42,11 @@
 }
 
 .style-full-height {
-  .sub-menu a:after {
+  .sub-menu a:after{
 	max-width: 100%;
   }
 
-  a {
+  .wrap, a {
 	position: relative;
 	align-items: center;
 	z-index: 1;
@@ -81,9 +83,9 @@
   width: 100%;
 }
 
-.style-border-top, .style-border-bottom {
+.style-border-top, .style-border-bottom, .style-full-height {
   ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) {
-	&:hover > a:after {
+	&:hover > a:after, &:hover > .wrap:after {
 	  width: 100%;
 	}
   }
@@ -91,7 +93,7 @@
 
 .style-border-top, .style-border-bottom, .style-full-height {
   ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) {
-	> a:after {
+	> a:after, > .wrap:after {
 	  position: absolute;
 	  content: "";
 	  display: block;
@@ -107,6 +109,8 @@
 }
 
 // Items in sidebar should stretch full width.
-.header-menu-sidebar-inner li:hover > a:after {
-  width: 100% !important;
+.header-menu-sidebar-inner {
+	li:hover > a:after, li:hover > .wrap:after {
+		width: 100% !important;
+	}
 }
