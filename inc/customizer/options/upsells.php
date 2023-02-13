@@ -155,7 +155,9 @@ class Upsells extends Base_Customizer {
 				[
 					'transport'         => 'postMessage',
 					'default'           => 'grid',
-					'sanitize_callback' => array( $this, 'sanitize_shop_layout' ),
+					'sanitize_callback' => function() {
+						return 'grid';
+					},
 				],
 				[
 					'label'    => esc_html__( 'Layout', 'neve' ),
@@ -182,7 +184,9 @@ class Upsells extends Base_Customizer {
 				'neve_add_to_cart_display',
 				[
 					'default'           => 'none',
-					'sanitize_callback' => [ $this, 'sanitize_add_to_cart_display' ],
+					'sanitize_callback' => function() {
+						return 'none';
+					},
 				],
 				[
 					'label'    => esc_html__( 'Add to Cart Button', 'neve' ),
@@ -234,7 +238,9 @@ class Upsells extends Base_Customizer {
 				'neve_category_card_layout',
 				[
 					'default'           => 'default',
-					'sanitize_callback' => [ $this, 'sanitize_category_card_layout' ],
+					'sanitize_callback' => function() {
+						return 'default';
+					},
 				],
 				[
 					'label'    => esc_html__( 'Layout', 'neve' ),
@@ -286,7 +292,9 @@ class Upsells extends Base_Customizer {
 				'neve_sale_tag_position',
 				[
 					'default'           => 'inside',
-					'sanitize_callback' => [ $this, 'sanitize_sale_tag_position' ],
+					'sanitize_callback' => function() {
+						return 'inside';
+					},
 				],
 				[
 					'label'         => esc_html__( 'Position', 'neve' ),
@@ -337,7 +345,9 @@ class Upsells extends Base_Customizer {
 				'neve_product_content_alignment',
 				[
 					'default'           => 'left',
-					'sanitize_callback' => array( $this, 'sanitize_product_content_alignment' ),
+					'sanitize_callback' => function() {
+						return 'left';
+					},
 				],
 				[
 					'label'    => esc_html__( 'Alignment', 'neve' ),
