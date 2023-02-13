@@ -55,7 +55,7 @@ body:
           multiple: false
           options:
               - 'No'
-              - 'Yes'
+              - 'Yes, this is a regression.'
       validations:
           required: true
  
