@@ -2,24 +2,34 @@ import { __ } from '@wordpress/i18n';
 import { Button, ExternalLink } from '@wordpress/components';
 import classnames from 'classnames';
 import { globalPaletteColors } from './common';
-import { useState } from '@wordpress/element';
+
+/**
+ * Function that gets the color from the global custom colors control and convert them to the Global colors format.
+ *
+ * @return {Object} customColors - An object with color keys and label values.
+ */
+const getCustomColors = () => {
+	const globalCustomColorsControl = wp.customize.control(
+		'neve_global_custom_colors'
+	);
+	const customColorsValue = { ...globalCustomColorsControl.setting.get() };
+	const customColors = {};
+	for (const key in customColorsValue) {
+		const data = customColorsValue[key];
+		if (key === 'flag') {
+			continue;
+		}
+		customColors[key] = data.label;
+	}
+	return customColors;
+};
 
 const CustomPalette = ({ title, onChange, activeColor }) => {
 	const focusGlobalColors = () => {
 		wp.customize.control('neve_global_colors').focus();
 	};
 
-	const globalCustomColorsControl = wp.customize.control(
-		'neve_global_custom_colors'
-	);
-	const customColorsState = useState({
-		...globalCustomColorsControl.setting.get(),
-	})[0];
-
-	const customColors = Object.entries(customColorsState)
-		.filter(([key]) => key !== 'flag')
-		.map(([key, value]) => ({ [key]: value.label }))
-		.reduce((acc, cur) => Object.assign(acc, cur), {});
+	const customColors = getCustomColors();
 
 	return (
 		<div className="nv-custom-palette-wrap">
