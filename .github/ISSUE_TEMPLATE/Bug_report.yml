@@ -54,8 +54,8 @@ body:
           
           multiple: false
           options:
-              - 'Yes'
               - 'No'
+              - 'Yes'
       validations:
           required: true
  
