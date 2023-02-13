@@ -85,15 +85,34 @@ function openCarrets(e, caret) {
 	createNavOverlay(document.querySelectorAll(`.${strings[0]}`), strings[0]);
 }
 
+/**
+ * Check that element is visible.
+ *
+ * @param {Element} el
+ * @return {boolean} If element is visible or not.
+ */
+const vis = (el) => {
+	if (el === document) {
+		return true;
+	}
+
+	if (window.getComputedStyle(el, null).display === 'none') {
+		return false;
+	}
+	return vis(el.parentNode);
+};
+
 function getKeyboardFocusableElements(element = document) {
-	focusTrapDetails.elements = [
+	return [
 		...element.querySelectorAll(
 			'a[href], button, input, textarea, select, details,[tabindex]:not([tabindex="-1"])'
 		),
 	].filter(
-		(el) => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden')
+		(el) =>
+			!el.hasAttribute('disabled') &&
+			!el.getAttribute('aria-hidden') &&
+			vis(el)
 	);
-	return focusTrapDetails.elements;
 }
 
 /**
@@ -120,9 +139,7 @@ document.addEventListener(NV_FOCUS_TRAP_END, function () {
 });
 
 function startFocusTrap(event) {
-	const elements =
-		focusTrapDetails.elements ||
-		getKeyboardFocusableElements(focusTrapDetails.container);
+	const elements = getKeyboardFocusableElements(focusTrapDetails.container);
 	const tabKey = event.keyCode === 9;
 	const shiftKey = event.shiftKey;
 	const escKey = event.keyCode === 27;

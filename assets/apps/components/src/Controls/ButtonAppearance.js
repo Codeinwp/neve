@@ -336,7 +336,11 @@ const ButtonAppearance = ({
 	return (
 		<div className="neve-button-appearance-control">
 			{label && <span className="customize-control-title">{label}</span>}
-			<div className="neve-white-background-control">
+			<div
+				className={`neve-white-background-control ${
+					type ? 'has-type' : ''
+				}`}
+			>
 				<span className="customize-control-title">
 					{__('Style', 'neve')}
 				</span>

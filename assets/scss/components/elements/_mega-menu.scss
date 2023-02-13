@@ -8,6 +8,7 @@
 
 	.sub-menu .sub-menu {
 		max-height: none;
+		width: 100%;
 	}
 
 	.neve-mm-col {
@@ -43,7 +44,7 @@
 }
 
 .neve-mm-heading > span,
-.neve-mm-heading > a {
+.neve-mm-heading > .wrap > a {
 	font-weight: 700;
 	text-transform: uppercase;
 	font-size: 1.1em;
@@ -77,8 +78,7 @@
 		}
 
 		.neve-mega-menu:hover,
-		.neve-mega-menu:focus,
-		.neve-mega-menu:focus-within {
+		.neve-mega-menu:focus {
 
 			> .sub-menu {
 				display: flex;
@@ -106,6 +106,7 @@
 
 			a {
 				white-space: normal;
+				display: flex;
 			}
 
 			li:not(.neve-mm-divider) {
