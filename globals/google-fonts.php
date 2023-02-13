@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 30/01/23
+ * Updated on 06/02/23
  *
  * @package neve
  */
@@ -15,7 +15,7 @@ return array(
 	'Acme' => array( '400',),
 	'Actor' => array( '400',),
 	'Adamina' => array( '400',),
-	'Advent Pro' => array( '100', '200', '300', '400', '500', '600', '700',),
+	'Advent Pro' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Aguafina Script' => array( '400',),
 	'Akaya Kanadaka' => array( '400',),
 	'Akaya Telivigala' => array( '400',),
@@ -127,9 +127,9 @@ return array(
 	'B612' => array( '400', '700', '400italic', '700italic',),
 	'B612 Mono' => array( '400', '700', '400italic', '700italic',),
 	'BIZ UDGothic' => array( '400', '700',),
-	'BIZ UDMincho' => array( '400',),
+	'BIZ UDMincho' => array( '400', '700',),
 	'BIZ UDPGothic' => array( '400', '700',),
-	'BIZ UDPMincho' => array( '400',),
+	'BIZ UDPMincho' => array( '400', '700',),
 	'Babylonica' => array( '400',),
 	'Bad Script' => array( '400',),
 	'Bahiana' => array( '400',),
@@ -984,6 +984,7 @@ return array(
 	'Noto Sans Sharada' => array( '400',),
 	'Noto Sans Shavian' => array( '400',),
 	'Noto Sans Siddham' => array( '400',),
+	'Noto Sans SignWriting' => array( '400',),
 	'Noto Sans Sinhala' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Sogdian' => array( '400',),
 	'Noto Sans Sora Sompeng' => array( '400', '500', '600', '700',),
@@ -1002,6 +1003,7 @@ return array(
 	'Noto Sans Takri' => array( '400',),
 	'Noto Sans Tamil' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Tamil Supplement' => array( '400',),
+	'Noto Sans Tangsa' => array( '400', '500', '600', '700',),
 	'Noto Sans Telugu' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Thaana' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Thai' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
@@ -1048,6 +1050,7 @@ return array(
 	'Noto Serif Telugu' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Serif Thai' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Serif Tibetan' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
+	'Noto Serif Toto' => array( '400', '500', '600', '700',),
 	'Noto Serif Yezidi' => array( '400', '500', '600', '700',),
 	'Noto Traditional Nushu' => array( '400',),
 	'Nova Cut' => array( '400',),
@@ -1330,6 +1333,11 @@ return array(
 	'Snowburst One' => array( '400',),
 	'Sofadi One' => array( '400',),
 	'Sofia' => array( '400',),
+	'Sofia Sans' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Sofia Sans Condensed' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Sofia Sans Extra Condensed' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Sofia Sans Semi Condensed' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Solitreo' => array( '400',),
 	'Solway' => array( '300', '400', '500', '700', '800',),
 	'Song Myung' => array( '400',),
 	'Sono' => array( '200', '300', '400', '500', '600', '700', '800',),
