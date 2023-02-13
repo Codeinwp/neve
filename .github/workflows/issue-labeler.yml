@@ -10,4 +10,5 @@ jobs:
     - uses: github/issue-labeler@master #May not be the latest version
       with:
         repo-token: "${{ secrets.BOT_TOKEN }}"
+        enable-versioned-regex: 0
         configuration-path: .github/labeler.yml
