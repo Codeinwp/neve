@@ -61,6 +61,6 @@ class Layout_Single_Page extends Base_Layout_Single {
 	 * @return bool
 	 */
 	public static function is_cover_layout() {
-		return get_theme_mod( 'neve_page_header_layout' ) === 'cover' && neve_is_new_skin();
+		return get_theme_mod( 'neve_page_header_layout' ) === 'cover';
 	}
 }

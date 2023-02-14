@@ -23,7 +23,7 @@ $cart_is_empty     = WC()->cart->get_cart_contents_count() === 0;
 $off_canvas_closing_button = '';
 $mini_cart_classes         = [ 'nv-nav-cart', 'widget' ];
 if ( $cart_style === 'off-canvas' ) {
-	$mini_cart_classes         = neve_is_new_skin() ? [ 'nv-nav-cart', 'cart-off-canvas', 'widget' ] : [ 'cart-off-canvas', 'col-sm-12' ];
+	$mini_cart_classes         = [ 'nv-nav-cart', 'cart-off-canvas', 'widget' ];
 	$off_canvas_closing_button = '<div class="cart-off-canvas-button-wrapper"><a href="#" class="nv-close-cart-sidebar button button-secondary secondary-default">' . __( 'Close', 'neve' ) . '</a></div>';
 }
 if ( (bool) $expand_enabled === false ) {

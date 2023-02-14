@@ -47,14 +47,11 @@ class Layout_Single_Post extends Base_Layout_Single {
 	public function add_controls() {
 		parent::add_controls();
 		$this->control_content_order();
-
-		if ( neve_is_new_skin() ) {
-			$this->add_subsections();
-			$this->header_layout();
-			$this->post_meta();
-			$this->comments();
-			add_action( 'customize_register', [ $this, 'adjust_headings' ], PHP_INT_MAX );
-		}
+		$this->add_subsections();
+		$this->header_layout();
+		$this->post_meta();
+		$this->comments();
+		add_action( 'customize_register', [ $this, 'adjust_headings' ], PHP_INT_MAX );
 	}
 
 	/**
@@ -192,49 +189,46 @@ class Layout_Single_Post extends Base_Layout_Single {
 			)
 		);
 
-		if ( neve_is_new_skin() ) {
-			$this->add_control(
-				new Control(
-					'neve_single_post_elements_spacing',
-					[
-						'sanitize_callback' => 'neve_sanitize_range_value',
-						'transport'         => $this->selective_refresh,
-						'default'           => '{"desktop":60,"tablet":60,"mobile":60}',
-					],
-					[
-						'label'                 => esc_html__( 'Spacing between elements', 'neve' ),
-						'section'               => $this->section,
-						'type'                  => 'neve_responsive_range_control',
-						'input_attrs'           => [
-							'max'        => 500,
-							'units'      => [ 'px', 'em', 'rem' ],
-							'defaultVal' => [
-								'mobile'  => 60,
-								'tablet'  => 60,
-								'desktop' => 60,
-								'suffix'  => [
-									'mobile'  => 'px',
-									'tablet'  => 'px',
-									'desktop' => 'px',
-								],
-							],
-						],
-						'priority'              => 105,
-						'live_refresh_selector' => true,
-						'live_refresh_css_prop' => [
-							'cssVar' => [
-								'responsive' => true,
-								'vars'       => '--spacing',
-								'selector'   => '.nv-single-post-wrap',
-								'suffix'     => 'px',
+		$this->add_control(
+			new Control(
+				'neve_single_post_elements_spacing',
+				[
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'transport'         => $this->selective_refresh,
+					'default'           => '{"desktop":60,"tablet":60,"mobile":60}',
+				],
+				[
+					'label'                 => esc_html__( 'Spacing between elements', 'neve' ),
+					'section'               => $this->section,
+					'type'                  => 'neve_responsive_range_control',
+					'input_attrs'           => [
+						'max'        => 500,
+						'units'      => [ 'px', 'em', 'rem' ],
+						'defaultVal' => [
+							'mobile'  => 60,
+							'tablet'  => 60,
+							'desktop' => 60,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
 							],
 						],
 					],
-					'\Neve\Customizer\Controls\React\Responsive_Range'
-				)
-			);
-
-		}
+					'priority'              => 105,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'responsive' => true,
+							'vars'       => '--spacing',
+							'selector'   => '.nv-single-post-wrap',
+							'suffix'     => 'px',
+						],
+					],
+				],
+				'\Neve\Customizer\Controls\React\Responsive_Range'
+			)
+		);
 	}
 
 	/**
@@ -507,7 +501,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 					return $this->element_is_enabled( 'comments' );
 				},
 				'active_callback'         => function() {
-					return $this->element_is_enabled( 'comments' ) && get_theme_mod( 'neve_comments_form_boxed_layout', neve_is_new_skin() );
+					return $this->element_is_enabled( 'comments' ) && get_theme_mod( 'neve_comments_form_boxed_layout', true );
 				},
 			]
 		);
@@ -585,7 +579,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 	 * @return bool
 	 */
 	public static function is_cover_layout() {
-		return get_theme_mod( 'neve_post_header_layout' ) === 'cover' && neve_is_new_skin();
+		return get_theme_mod( 'neve_post_header_layout' ) === 'cover';
 	}
 
 	/**

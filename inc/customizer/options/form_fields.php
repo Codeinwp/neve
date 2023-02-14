@@ -233,13 +233,7 @@ class Form_Fields extends Base_Customizer {
 				[
 					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
 					'transport'         => $this->selective_refresh,
-					'default'           => neve_is_new_skin() ? false : [
-						'top'    => '',
-						'right'  => '',
-						'left'   => '',
-						'bottom' => '',
-						'unit'   => 'px',
-					],
+					'default'           => false,
 				],
 				[
 					'label'                 => esc_html__( 'Border Radius', 'neve' ),

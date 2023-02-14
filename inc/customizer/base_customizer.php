@@ -390,30 +390,28 @@ abstract class Base_Customizer {
 			];
 		}
 
-		if ( neve_is_new_skin() ) {
-			$padding_live_refresh_settings = [
-				'cssVar' => array(
-					'vars'       => '--padding',
-					'selector'   => $settings['boxed_selector'],
-					'responsive' => true,
-				),
-			];
+		$padding_live_refresh_settings = [
+			'cssVar' => array(
+				'vars'       => '--padding',
+				'selector'   => $settings['boxed_selector'],
+				'responsive' => true,
+			),
+		];
 
-			$background_live_refresh_settings = [
+		$background_live_refresh_settings = [
+			'cssVar' => array(
+				'vars'     => '--bgcolor',
+				'selector' => $settings['boxed_selector'],
+			),
+		];
+
+		if ( $has_text_color ) {
+			$color_live_refresh_settings = [
 				'cssVar' => array(
-					'vars'     => '--bgcolor',
+					'vars'     => '--color',
 					'selector' => $settings['boxed_selector'],
 				),
 			];
-
-			if ( $has_text_color ) {
-				$color_live_refresh_settings = [
-					'cssVar' => array(
-						'vars'     => '--color',
-						'selector' => $settings['boxed_selector'],
-					),
-				];
-			}
 		}
 
 		$this->add_control(

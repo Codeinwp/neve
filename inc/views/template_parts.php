@@ -117,10 +117,7 @@ class Template_Parts extends Base_View {
 			return;
 		}
 
-		$wrapper_classes = [];
-		if ( ! neve_is_new_skin() ) {
-			$wrapper_classes[] = 'row';
-		}
+		$wrapper_classes  = [];
 		$wrapper_classes  = apply_filters( 'neve_posts_wrapper_class', $wrapper_classes );
 		$posts_to_exclude = [];
 
@@ -184,7 +181,7 @@ class Template_Parts extends Base_View {
 		$layout = $this->get_layout();
 		$class .= ' layout-' . $layout;
 		if ( in_array( $layout, [ 'grid', 'covers' ], true ) ) {
-			$class .= ' ' . $this->get_grid_columns_class();
+			$class .= ' ';
 		} else {
 			$class .= ' col-12 ';
 			if ( $post_id === null ) {
@@ -229,10 +226,6 @@ class Template_Parts extends Base_View {
 		}
 
 		if ( $layout === 'covers' ) {
-			if ( ! neve_is_new_skin() ) {
-				$markup .= $this->get_legacy_covers( $order, $post_id );
-				return $markup;
-			}
 			$markup .= '<div class="cover-post nv-ft-wrap">';
 			$markup .= '<div class="cover-overlay"></div>';
 			if ( in_array( 'thumbnail', $order, true ) ) {
@@ -247,29 +240,6 @@ class Template_Parts extends Base_View {
 		}
 
 		return $this->get_ordered_content_parts( false, $post_id );
-	}
-
-	/**
-	 * Get html for cover layout in legacy mode.
-	 *
-	 * @param array $order Elements order.
-	 * @param int   $post_id Post id.
-	 *
-	 * @return string
-	 */
-	private function get_legacy_covers( $order, $post_id ) {
-		$style = '';
-		if ( in_array( 'thumbnail', $order, true ) ) {
-			$thumb  = get_the_post_thumbnail_url( $post_id );
-			$style .= ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
-		}
-		$markup  = '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
-		$markup .= '<div class="inner">';
-		$markup .= $this->get_ordered_content_parts( true, $post_id );
-		$markup .= '</div>';
-		$markup .= '</div>';
-
-		return $markup;
 	}
 
 	/**
@@ -415,44 +385,6 @@ class Template_Parts extends Base_View {
 	}
 
 	/**
-	 * Get grid columns class.
-	 *
-	 * @return string
-	 */
-	private function get_grid_columns_class() {
-		if ( neve_is_new_skin() ) {
-			return '';
-		}
-
-		$classes    = '';
-		$columns    = get_theme_mod(
-			'neve_grid_layout',
-			wp_json_encode(
-				[
-					'desktop' => 1,
-					'tablet'  => 1,
-					'mobile'  => 1,
-				]
-			)
-		);
-		$columns    = json_decode( $columns, true );
-		$device_map = [
-			'desktop' => 'md',
-			'tablet'  => 'sm',
-			'mobile'  => '',
-		];
-
-		foreach ( $columns as $device => $column_number ) {
-			if ( $column_number === 0 || empty( $column_number ) ) {
-				$column_number = 1;
-			}
-			$classes .= ' col-' . ( $device !== 'mobile' ? $device_map[ $device ] . '-' : '' ) . ( 12 / absint( $column_number ) );
-		}
-
-		return $classes;
-	}
-
-	/**
 	 * Change link excerpt more.
 	 *
 	 * @param string     $moretag read more tag.
@@ -482,7 +414,7 @@ class Template_Parts extends Base_View {
 		$markup .= '</a>';
 
 		if ( ! empty( $read_more_args['classes'] ) ) {
-			$style  = neve_is_new_skin() ? '' : 'padding: 10px 0 0;';
+			$style  = '';
 			$markup = '<div class="read-more-wrapper" style="' . esc_attr( $style ) . '">' . $markup . '</div>';
 		}
 
