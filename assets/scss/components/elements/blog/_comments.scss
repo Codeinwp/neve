@@ -50,10 +50,6 @@
 			float: right;
 		}
 	}
-
-	.children .children {
-		padding-left: $spacing-sm;
-	}
 }
 
 .nv-comment-header {
@@ -109,9 +105,17 @@
 
 .nv-comments-list {
 	margin-bottom: $spacing-xxl;
+
+	.children {
+		padding-left: $spacing-sm;
+	}
 }
 
 @mixin comments--tablet() {
+
+	.nv-comments-list .children {
+		padding-left: $spacing-xl;
+	}
 
 	#comments {
 
@@ -121,10 +125,6 @@
 			> *:not(.comment-form-author):not(.comment-form-url):not(.comment-form-email) {
 				grid-column: 1/-1;
 			}
-		}
-
-		.children .children {
-			padding-left: $spacing-xl;
 		}
 	}
 }
