@@ -476,7 +476,7 @@ abstract class Base_Customizer {
 						'section'               => $settings['section'],
 						'priority'              => $settings['priority'],
 						'live_refresh_selector' => true,
-						'live_refresh_css_prop' => $color_live_refresh_settings, // @phpstan-ignore-line
+						'live_refresh_css_prop' => $color_live_refresh_settings,
 						'active_callback'       => array_key_exists( 'active_callback', $settings ) ? $settings['active_callback'] : false,
 					],
 					'Neve\Customizer\Controls\React\Color'
