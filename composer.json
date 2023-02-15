@@ -10,7 +10,7 @@
 	  "homepage": "https://themeisle.com"
 	}
   ],
-	
+
   "type": "wordpress-theme",
   "support": {
 	"issues": "https://github.com/Codeinwp/neve/issues",
@@ -18,8 +18,14 @@
   },
   "require": {
 	"codeinwp/themeisle-sdk": "^3.2",
-    "wptt/webfont-loader": "^1.1"
+    "wptt/webfont-loader": "dev-master"
   },
+  "repositories": [
+	{
+	  "type": "vcs",
+	  "url": "https://github.com/cristian-ungureanu/webfont-loader"
+	}
+  ],
   "autoload": {
 	"psr-4": {
 	  "HFG\\": "header-footer-grid/"
