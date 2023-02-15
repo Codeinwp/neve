@@ -297,7 +297,7 @@ class Upsells extends Base_Customizer {
 					},
 				],
 				[
-					'label'         => esc_html__( 'Position', 'neve' ),
+					'label'         => esc_html__( 'Style', 'neve' ),
 					'section'       => 'woocommerce_product_catalog',
 					'priority'      => 610,
 					'documentation' => [
