@@ -85,8 +85,7 @@
 
 	.menu-item-has-children {
 		&:hover > .sub-menu,
-		&:focus > .sub-menu,
-		&:focus-within > .sub-menu {
+		&:focus > .sub-menu {
 			display: block;
 			visibility: visible;
 			opacity: 1;
