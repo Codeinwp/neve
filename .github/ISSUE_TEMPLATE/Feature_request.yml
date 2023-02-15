@@ -5,7 +5,10 @@ body:
 - type: textarea
   attributes:
     label: What problem does this address?
-    description: Can you give us a little more insight into this feature request? We'd love to know if it's related to any problems or pain points you've been facing. If so, can you please let us know what the issue is in a clear and simple way? 
+    description: | 
+      Can you give us a little more insight into this feature request? We'd love to know if it's related to any problems or pain points you've been facing. 
+      If so, can you please let us know what the issue is in a clear and simple way? 
+      Tip: If this is related to a customer request, please add the Help Scout thread URL.
     placeholder: | 
      For example, something like "I find it tough when..." or "I get frustrated because..." would be great. 
   validations:
