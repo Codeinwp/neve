@@ -1,3 +1,16 @@
+##### [Version 3.5.2](https://github.com/Codeinwp/neve/compare/v3.5.1...v3.5.2) (2023-02-15)
+
+- [Feat] Add a filter for the author post meta
+- [Feat] Improve Accessibility. Use the tab switch to submenu items only if the arrow is clicked on focus 
+- [Fix] Layout issue with Elementor Pro checkout widget
+- [Fix] PHP 8.2 Support
+- [Fix] Vertical alignment for cover posts
+- [Fix] Missing padding inside the customizer for the button appearance control
+- [Fix] Infinite scroll for translated blogs
+- Update Google Fonts
+- Improve the development process
+- Improve performance by moving the menu sidebar opening behavior to inline styles
+
 ##### [Version 3.5.1](https://github.com/Codeinwp/neve/compare/v3.5.0...v3.5.1) (2023-01-30)
 
 - Update the tested up to version for Neve Pro
