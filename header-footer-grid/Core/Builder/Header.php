@@ -94,7 +94,7 @@ class Header extends Abstract_Builder {
 					),
 				),
 				'builderMigrated' => $migrated_hfg,
-				'hadOldBuilder'   => neve_had_old_hfb() && ! neve_is_new_skin(),
+				'hadOldBuilder'   => neve_had_old_hfb() && ( ! neve_is_new_skin() || neve_was_auto_migrated_to_new() ),
 			)
 		);
 

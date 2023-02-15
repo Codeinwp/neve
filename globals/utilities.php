@@ -496,6 +496,17 @@ function neve_is_new_skin() {
 }
 
 /**
+ * Checks if the instance was auto upgraded to the new skin.
+ * It is used to allow rollback for auto-upgraded instances.
+ *
+ * @return bool
+ * @since 3.6.x
+ */
+function neve_was_auto_migrated_to_new() {
+	return get_theme_mod( 'neve_auto_migrated_to_new_skin', false );
+}
+
+/**
  * Check that we can use conditional headers in PRO.
  *
  * @return bool

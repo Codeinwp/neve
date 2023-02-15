@@ -70,8 +70,6 @@ class Admin {
 
 		add_filter( 'all_plugins', array( $this, 'change_plugin_names' ) );
 
-		// add_filter( 'neve_skin_builder_rollback', '__return_true' );
-
 		$this->auto_update_skin_and_builder();
 
 		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
@@ -88,12 +86,11 @@ class Admin {
 	 * @return void
 	 */
 	private function auto_update_skin_and_builder() {
-
-		if ( apply_filters( 'neve_skin_builder_rollback', false ) ) {
-			set_theme_mod( 'neve_migrated_builders', false );
-			set_theme_mod( 'neve_new_skin', 'old' );
+		// If already on new skin bail.
+		if ( neve_was_auto_migrated_to_new() || get_theme_mod( 'neve_new_skin' ) === 'new' ) {
 			return;
 		}
+		set_theme_mod( 'neve_auto_migrated_to_new_skin', true );
 
 		$this->run_skin_and_builder_switches();
 
