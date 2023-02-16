@@ -1,3 +1,9 @@
+##### [Version 3.5.3](https://github.com/Codeinwp/neve/compare/v3.5.2...v3.5.3) (2023-02-16)
+
+- [Fix] Alternative Layout control not visible inside the customizer
+- [Fix] Menu item not aligned with caret
+- Better inform about the features for WooCommerce available in Neve PRO
+
 ##### [Version 3.5.2](https://github.com/Codeinwp/neve/compare/v3.5.1...v3.5.2) (2023-02-15)
 
 - [Feat] Add a filter for the author post meta
