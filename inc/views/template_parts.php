@@ -180,9 +180,7 @@ class Template_Parts extends Base_View {
 		}
 		$layout = $this->get_layout();
 		$class .= ' layout-' . $layout;
-		if ( in_array( $layout, [ 'grid', 'covers' ], true ) ) {
-			$class .= ' ';
-		} else {
+		if ( ! in_array( $layout, [ 'grid', 'covers' ], true ) ) {
 			$class .= ' col-12 ';
 			if ( $post_id === null ) {
 				$class .= ' nv-non-grid-article';
@@ -414,8 +412,7 @@ class Template_Parts extends Base_View {
 		$markup .= '</a>';
 
 		if ( ! empty( $read_more_args['classes'] ) ) {
-			$style  = '';
-			$markup = '<div class="read-more-wrapper" style="' . esc_attr( $style ) . '">' . $markup . '</div>';
+			$markup = '<div class="read-more-wrapper">' . $markup . '</div>';
 		}
 
 		$new_moretag .= $markup;

@@ -500,6 +500,7 @@ class Front_End {
 			'elem_description'  => esc_html__( 'Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click.', 'neve' ),
 			'get_pro_cta'       => esc_html__( 'Get the PRO version!', 'neve' ),
 			'opens_new_tab_des' => esc_html__( '(opens in a new tab)', 'neve' ),
+			'filter'            => __( 'Filter', 'neve' ),
 		];
 	}
 
