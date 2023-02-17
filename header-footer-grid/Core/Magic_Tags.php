@@ -95,16 +95,10 @@ class Magic_Tags {
 		}
 
 		// Define the regular expression to match http/https links containing magic tags
-		$regex = '/(https?:\/\/\{[^}]+\})/';
+		$regex = '/(https?:\/\/)(\{[^}]+\})/';
 
 		// Replace any matches with just the magic tag name
-		$input = preg_replace_callback(
-			$regex,
-			function( $matches ) {
-				return str_replace( [ 'https://', 'http://' ], '', $matches[1] );
-			},
-			$input
-		);
+		$input = preg_replace( $regex, '$2', $input );
 
 		return preg_replace_callback(
 			'/\\{\s?\b(?:' . self::$magic_tag_regex . ')\b\s?\\}/',
