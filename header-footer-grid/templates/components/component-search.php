@@ -27,7 +27,7 @@ if ( ! empty( $component_styles_array ) ) {
 
 $args = [];
 
-if ( component_setting( SearchIconButton::ACTION_TYPE ) === 'button' ) {
+if ( component_setting( SearchIconButton::BUTTON_APPEARANCE ) === 'text_button' ) {
 	$args['button_text'] = component_setting( SearchIconButton::BUTTON_TEXT, SearchIconButton::get_default_button_text() );
 }
 

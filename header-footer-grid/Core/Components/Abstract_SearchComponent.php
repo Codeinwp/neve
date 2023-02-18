@@ -26,11 +26,11 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 	const FIELD_BORDER_RADIUS = 'field_border_radius';
 
 	/**
-	 * Has support for the search button instead of icon?
+	 *  Has support for the text based button?
 	 *
 	 * @var bool
 	 */
-	protected $has_button_support = false;
+	protected $has_textbutton_support = false;
 
 	/**
 	 * Instance of SearchIconButton which responsible adding&rendering icon&buttons to the search component.
@@ -46,7 +46,7 @@ abstract class Abstract_SearchComponent extends Abstract_Component {
 	 */
 	public function __construct( $panel ) {
 		parent::__construct( $panel );
-		$this->search_icon_button_instance = new SearchIconButton( $this->section, $this->get_id(), $this->has_button_support );
+		$this->search_icon_button_instance = new SearchIconButton( $this->section, $this->get_id(), $this->has_textbutton_support );
 	}
 
 	/**

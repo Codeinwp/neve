@@ -26,11 +26,11 @@ class Search extends Abstract_SearchComponent {
 	const COMPONENT_ID = 'header_search';
 
 	/**
-	 * Has support for the search button instead of icon?
+	 *  Has support for the text based button?
 	 *
 	 * @var bool
 	 */
-	protected $has_button_support = true;
+	protected $has_textbutton_support = true;
 
 	/**
 	 * Button constructor.

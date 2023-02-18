@@ -14,14 +14,22 @@ use Neve\Core\Styles\Dynamic_Selector;
  * Class SearchIconButton
  */
 class SearchIconButton {
-	const ACTION_TYPE         = 'action_type';
-	const ICON_TYPE           = 'icon_type';
-	const CUSTOM_ICON_SVG     = 'c_icon_svg';
-	const DEFAULT_ICON        = 'hfgs-icon-style-1';
-	const CUSTOM_ICON         = 'hfgs-icon-custom';
-	const BUTTON_APPEARANCE   = 'button_appearance';
-	const BUTTON_TEXT         = 'button_text';
-	const DEFAULT_ACTION_TYPE = 'icon';
+	// Setting key which stores type of the search form button (icon_button|text_button)
+	const BUTTON_APPEARANCE = 'button_appearance';
+	// Setting key which stores icon style type
+	const ICON_TYPE = 'icon_type';
+	// Setting key which stores Custom SVG content
+	const CUSTOM_ICON_SVG = 'c_icon_svg';
+	// Default value for the Icon Type setting
+	const DEFAULT_ICON = 'hfgs-icon-style-1';
+	// Represents the "Custom SVG" icon type in the Icon Type settings.
+	const CUSTOM_ICON = 'hfgs-icon-custom';
+	// Setting key which stores styles of the text based button
+	const BUTTON_STYLE = 'button_style';
+	// Setting key which stores the content of the text based button
+	const BUTTON_TEXT = 'button_text';
+	// Default value for the Button Appereance setting
+	const DEFAULT_BUTTON_APPEARANCE = 'icon_button';
 
 	/**
 	 * Section name
@@ -38,11 +46,11 @@ class SearchIconButton {
 	private $component_id;
 
 	/**
-	 * If the component has button support or not (generally, search forms has button support.)
+	 * Has support for the text based button?
 	 *
 	 * @var bool
 	 */
-	private $has_button_support;
+	private $has_textbutton_support;
 
 	/**
 	 * Search Button HTML Selector
@@ -56,14 +64,14 @@ class SearchIconButton {
 	 *
 	 * @param  string $section Section name.
 	 * @param  string $component_id Component ID.
-	 * @param  bool   $has_button_support If the component has button support or only has icon support.
+	 * @param  bool   $has_textbutton_support If the component has text button support.
 	 * @return void
 	 */
-	public function __construct( $section, $component_id, $has_button_support ) {
-		$this->section            = $section;
-		$this->component_id       = $component_id;
-		$this->has_button_support = $has_button_support;
-		$this->button_selector    = '.builder-item--' . $this->component_id . ' .nv-text-btn';
+	public function __construct( $section, $component_id, $has_textbutton_support ) {
+		$this->section                = $section;
+		$this->component_id           = $component_id;
+		$this->has_textbutton_support = $has_textbutton_support;
+		$this->button_selector        = '.builder-item--' . $this->component_id . ' .nv-text-btn';
 	}
 
 	/**
@@ -72,12 +80,12 @@ class SearchIconButton {
 	 * @return void
 	 */
 	public function add_controls() {
-		$this->add_action_type_control();
+		$this->add_button_appearance_control();
 		$this->add_customize_icon_controls();
 	}
 
 	/**
-	 * Returns default button text
+	 * Returns default content of the text based button
 	 *
 	 * @return string
 	 */
@@ -110,31 +118,31 @@ class SearchIconButton {
 	 *
 	 * @return void
 	 */
-	private function add_action_type_control() {
-		if ( ! $this->has_button_support ) {
+	private function add_button_appearance_control() {
+		if ( ! $this->has_textbutton_support ) {
 			return;
 		}
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                 => self::ACTION_TYPE,
+				'id'                 => self::BUTTON_APPEARANCE,
 				'group'              => $this->component_id,
 				'tab'                => SettingsManager::TAB_STYLE,
 				'transport'          => 'refresh',
-				'label'              => __( 'Action Type', 'neve' ),
+				'label'              => __( 'Button Appearance', 'neve' ),
 				'sanitize_callback'  => 'sanitize_key',
-				'default'            => self::DEFAULT_ACTION_TYPE,
+				'default'            => self::DEFAULT_BUTTON_APPEARANCE,
 				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'section'            => $this->section,
 				'conditional_header' => true,
 				'options'            => [
 					'choices'     => [
-						self::DEFAULT_ACTION_TYPE => [
-							'tooltip' => __( 'Icon', 'neve' ),
+						self::DEFAULT_BUTTON_APPEARANCE => [
+							'tooltip' => __( 'Icon Button', 'neve' ),
 							'icon'    => 'text',
 						],
-						'button'                  => [
-							'tooltip' => __( 'Button', 'neve' ),
+						'text_button'                   => [
+							'tooltip' => __( 'Text Button', 'neve' ),
 							'icon'    => 'text',
 						],
 					],
@@ -157,7 +165,7 @@ class SearchIconButton {
 				'group'              => $this->component_id,
 				'tab'                => SettingsManager::TAB_STYLE,
 				'transport'          => 'refresh',
-				'label'              => __( 'Icon Type', 'neve' ),
+				'label'              => __( 'Icon', 'neve' ),
 				'default'            => self::DEFAULT_ICON,
 				'sanitize_callback ' => 'sanitize_text_field',
 				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
@@ -177,7 +185,7 @@ class SearchIconButton {
 				'group'              => $this->component_id,
 				'tab'                => SettingsManager::TAB_STYLE,
 				'transport'          => 'postMessage',
-				'label'              => __( 'Custom SVG Content', 'neve' ),
+				'label'              => __( 'Custom SVG', 'neve' ),
 				'default'            => '',
 				'type'               => '\Neve\Customizer\Controls\React\Textarea',
 				'sanitize_callback ' => 'neve_kses_svg',
@@ -197,7 +205,7 @@ class SearchIconButton {
 		);
 
 		$new_skin = neve_is_new_skin();
-		$mod_key  = self::BUTTON_APPEARANCE;
+		$mod_key  = self::BUTTON_STYLE;
 		$default  = $new_skin ? [
 			'type'         => 'outline',
 			'borderRadius' => [
@@ -262,40 +270,40 @@ class SearchIconButton {
 	}
 
 	/**
-	 * Get search form action type
+	 * Get search form button appereance (text button / icon button)
 	 *
-	 * @return string icon|button
+	 * @return string icon_button|text_button
 	 */
-	private function get_form_action_type() {
-		return component_setting( self::ACTION_TYPE, self::DEFAULT_ACTION_TYPE, $this->component_id );
+	private function get_form_button_appearance() {
+		return component_setting( self::BUTTON_APPEARANCE, self::DEFAULT_BUTTON_APPEARANCE, $this->component_id );
 	}
 
 	/**
-	 * Check if the "button" style mode (a text based button is shown as search action) is enabled for the search component.
+	 * Check if the "text_button" style mode (a text based button is shown as search action) is enabled for the search component.
 	 *
 	 * @return bool
 	 */
 	public function is_button_mode_enabled() {
-		// if the component doesn't support buttons, only icons are supported.
-		if ( ! $this->has_button_support ) {
+		// if the component doesn't support text buttons, only icons are supported.
+		if ( ! $this->has_textbutton_support ) {
 			return false;
 		}
 
-		return 'button' === $this->get_form_action_type();
+		return 'text_button' === $this->get_form_button_appearance();
 	}
 
 	/**
-	 * Check if the "icon" style mode (an icon is shown as search action) is enabled for the search component.
+	 * Check if the "icon_button" style mode (an icon is shown as search action) is enabled for the search component.
 	 *
 	 * @return bool
 	 */
 	public function is_icon_mode_enabled() {
-		// if the component doesn't support buttons, only icons are supported.
-		if ( ! $this->has_button_support ) {
+		// if the component doesn't support text buttons, only icons are supported.
+		if ( ! $this->has_textbutton_support ) {
 			return true;
 		}
 
-		return 'icon' === $this->get_form_action_type();
+		return 'icon_button' === $this->get_form_button_appearance();
 	}
 
 	/**
@@ -316,7 +324,7 @@ class SearchIconButton {
 			return $css_array;
 		}
 
-		$button_style_id = $this->component_id . '_' . self::BUTTON_APPEARANCE;
+		$button_style_id = $this->component_id . '_' . self::BUTTON_STYLE;
 
 		$rules = [
 			'--primarybtnbg'         => $button_style_id . '.background',
