@@ -2,6 +2,7 @@
 $overlay: rgba(0, 0, 0, 0.75);
 
 .cover-post {
+	display: flex;
 	box-shadow: var(--boxshadow, none);
 	position: relative;
 	min-height: 300px;

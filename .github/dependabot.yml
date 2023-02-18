@@ -9,4 +9,4 @@ updates:
     schedule:
       interval: "weekly"
     allow:
-      - dependency-name: "themeisle-sdk"
+      - dependency-name: "codeinwp/themeisle-sdk"

@@ -103,23 +103,23 @@
 	padding: 12px 15px;
 }
 
-li#customize-control-neve_checkout_page_layout .option.upsell {
+li.customize-control-neve_radio_image_control .option.upsell {
     position: relative;
 }
 
-li#customize-control-neve_checkout_page_layout .option.upsell label {
+li.customize-control-neve_radio_image_control .option.upsell label {
     pointer-events: none;
 }
 
-li#customize-control-neve_checkout_page_layout .option.upsell button {
+li.customize-control-neve_radio_image_control .option.upsell button {
     filter: saturate(0);
 }
 
-li#customize-control-neve_checkout_page_layout .option.upsell:hover .upsell-btn {
+li.customize-control-neve_radio_image_control .option.upsell:hover .upsell-btn {
     display:block;
 }
 
-li#customize-control-neve_checkout_page_layout .upsell-btn {
+li.customize-control-neve_radio_image_control .upsell-btn {
     pointer-events: all;
     position: absolute;
     top: 40%;
@@ -146,7 +146,7 @@ li#customize-control-neve_checkout_page_layout .upsell-btn {
     margin:0;
 }
 
-li#customize-control-neve_checkout_page_layout .option.upsell .dashicons-lock {
+li.customize-control-neve_radio_image_control .option.upsell .dashicons-lock {
     font-size:14px;
     position: absolute;
     top: 0;
