@@ -138,11 +138,11 @@ class SearchIconButton {
 				'options'            => [
 					'choices'     => [
 						self::DEFAULT_BUTTON_APPEARANCE => [
-							'tooltip' => __( 'Icon Button', 'neve' ),
+							'tooltip' => sprintf( '%s %s', __( 'Icon', 'neve' ), __( 'Button', 'neve' ) ),
 							'icon'    => 'text',
 						],
 						'text_button'                   => [
-							'tooltip' => __( 'Text Button', 'neve' ),
+							'tooltip' => sprintf( '%s %s', __( 'Text', 'neve' ), __( 'Button', 'neve' ) ),
 							'icon'    => 'text',
 						],
 					],
