@@ -36,9 +36,11 @@
 		border-bottom-left-radius: 0;
 		border-top-left-radius: 0;
 		border-left: 0;
+		border-color: var(--formfieldbordercolor);
 		position: relative;
 		height: var(--height);
 		overflow: hidden;
+		white-space: nowrap;
 
 		&::before {
 			content: "";
@@ -51,11 +53,6 @@
 			bottom: 0;
 			position: absolute;
 		}
-	}
-
-	.nv-text-btn {
-		white-space: nowrap;
-		border-color: var(--formfieldbordercolor); // get inherit search input border
 	}
 
 	.search-field {
