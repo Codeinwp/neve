@@ -386,7 +386,8 @@ abstract class Base_Customizer {
 				$template .= $settings['border_color_css_selector'] . '{ border-color: {{value}}; }';
 			}
 			$color_live_refresh_settings = [
-				'cssVar' => array(
+				'template' => $template,
+				'cssVar'   => array(
 					'vars'     => '--color',
 					'selector' => $settings['boxed_selector'],
 				),
