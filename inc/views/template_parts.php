@@ -117,8 +117,7 @@ class Template_Parts extends Base_View {
 			return;
 		}
 
-		$wrapper_classes  = [];
-		$wrapper_classes  = apply_filters( 'neve_posts_wrapper_class', $wrapper_classes );
+		$wrapper_classes  = apply_filters( 'neve_posts_wrapper_class', [] );
 		$posts_to_exclude = [];
 
 		echo '<div class="' . esc_attr( join( ' ', $wrapper_classes ) ) . '">';

@@ -87,7 +87,7 @@ class Admin {
 	 */
 	private function auto_update_skin_and_builder() {
 		// If already on new skin bail.
-		if ( neve_was_auto_migrated_to_new() || get_theme_mod( 'neve_new_skin' ) === 'new' ) {
+		if ( get_theme_mod( 'neve_new_skin' ) === 'new' || neve_was_auto_migrated_to_new() ) {
 			return;
 		}
 		set_theme_mod( 'neve_auto_migrated_to_new_skin', true );

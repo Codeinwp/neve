@@ -386,7 +386,10 @@ abstract class Base_Customizer {
 				$template .= $settings['border_color_css_selector'] . '{ border-color: {{value}}; }';
 			}
 			$color_live_refresh_settings = [
-				'template' => $template,
+				'cssVar' => array(
+					'vars'     => '--color',
+					'selector' => $settings['boxed_selector'],
+				),
 			];
 		}
 
@@ -404,15 +407,6 @@ abstract class Base_Customizer {
 				'selector' => $settings['boxed_selector'],
 			),
 		];
-
-		if ( $has_text_color ) {
-			$color_live_refresh_settings = [
-				'cssVar' => array(
-					'vars'     => '--color',
-					'selector' => $settings['boxed_selector'],
-				),
-			];
-		}
 
 		$this->add_control(
 			new Control(
