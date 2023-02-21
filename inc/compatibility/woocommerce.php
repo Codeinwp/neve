@@ -107,7 +107,7 @@ class Woocommerce {
 	public function init() {
 		add_filter( 'body_class', array( $this, 'add_payment_method_class' ) );
 		add_action( 'wp', array( $this, 'register_hooks' ), 11 );
-		add_action( 'neve_react_controls_localization', array( $this, 'add_customizer_options' ) );
+		add_filter( 'neve_react_controls_localization', array( $this, 'add_customizer_options' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'payment_style' ), 100 );
 	}
 
@@ -389,42 +389,36 @@ class Woocommerce {
 
 	/**
 	 * Set a flag that tells the plugin that woocommerce pages were created from their tool.
-	 *
-	 * @return bool
 	 */
 	public function set_update_woo_width_flag() {
 
 		if ( ! isset( $_GET['page'] ) ) {
-			return false;
+			return;
 		}
 
 		$current_page = sanitize_text_field( wp_unslash( $_GET['page'] ) );
 		if ( 'wc-status' !== $current_page && 'wc-setup' !== $current_page ) {
-			return false;
+			return;
 		}
 
 		if ( $current_page === 'wc-status' && ( ! isset( $_GET['action'] ) || ! isset( $_GET['_wpnonce'] ) || 'install_pages' !== sanitize_text_field( wp_unslash( $_GET['action'] ) ) ) ) {
-			return false;
+			return;
 		}
 
 		if ( $current_page === 'wc-setup' && ( ! isset( $_GET['step'] ) || 'payment' !== sanitize_text_field( wp_unslash( $_GET['step'] ) ) ) ) {
-			return false;
+			return;
 		}
 
 		update_option( 'neve_update_woo_width', 'yes' );
 		set_transient( 'woocommerce_shop_page_id', 'executed', 10 * MINUTE_IN_SECONDS );
-
-		return true;
 	}
 
 	/**
 	 * Update WooCommerce pages after the pages were created from their tool,
-	 *
-	 * @return bool
 	 */
 	public function update_woo_width() {
 		if ( get_option( 'neve_update_woo_width' ) !== 'yes' ) {
-			return false;
+			return;
 		}
 
 		$cart_id     = get_option( 'woocommerce_cart_page_id' );
@@ -440,8 +434,6 @@ class Woocommerce {
 			update_post_meta( $page_id, 'neve_meta_content_width', 100 );
 		}
 		update_option( 'neve_update_woo_width', false );
-
-		return true;
 	}
 
 	/**

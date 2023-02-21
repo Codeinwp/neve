@@ -394,9 +394,7 @@ class Manager {
 						$array[ $arguments['type'] ] = [];
 					}
 
-					if ( isset( $arguments['live_refresh_selector'] ) ) {
-						$args['selector'] = $arguments['live_refresh_selector'];
-					}
+					$args['selector'] = $arguments['live_refresh_selector'];
 
 					if ( isset( $arguments['live_refresh_css_prop'] ) ) {
 						$args['additional'] = $arguments['live_refresh_css_prop'];

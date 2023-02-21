@@ -978,7 +978,7 @@ class Frontend extends Generator {
 		list( $context, $allowed_context ) = $this->get_cpt_context();
 		$archive_avatar_size_meta_key      = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
 		$single_avatar_size_meta_key       = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
-		if ( in_array( $context, $allowed_context, true ) && neve_is_new_skin() && is_singular( $context ) || is_post_type_archive( $context ) ) {
+		if ( in_array( $context, $allowed_context, true ) && is_singular( $context ) || is_post_type_archive( $context ) ) {
 			$archive_avatar_size_meta_key = 'neve_' . $context . '_archive_author_avatar_size';
 			$single_avatar_size_meta_key  = 'neve_single_' . $context . '_avatar_size';
 		}

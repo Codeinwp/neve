@@ -130,7 +130,7 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 * @var string $title
+	 * @var string|null $title
 	 */
 	public $title;
 	/**
@@ -138,7 +138,7 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @since   1.0.1
 	 * @access  public
-	 * @var string $description
+	 * @var string|null $description
 	 */
 	public $description;
 
@@ -656,6 +656,7 @@ abstract class Abstract_Builder implements Builder {
 
 		$wp_customize->add_panel(
 			$this->panel,
+			/* @phpstan-ignore-next-line */
 			array(
 				'priority'       => 25,
 				'capability'     => 'edit_theme_options',
@@ -1593,7 +1594,7 @@ abstract class Abstract_Builder implements Builder {
 			self::$current_slot = $slot;
 
 			foreach ( $slot_data as $group_index => $component_group ) {
-				if ( ! isset( $component_group['components'] ) ) {
+				if ( empty( $component_group['components'] ) ) {
 					continue;
 				}
 				if ( count( $component_group['components'] ) > 1 ) {
@@ -1862,7 +1863,7 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @param string|null $id The id of the component.
 	 *
-	 * @return Abstract_Component
+	 * @return Abstract_Component|null
 	 * @since   1.0.0
 	 * @access  public
 	 */

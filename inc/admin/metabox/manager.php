@@ -201,23 +201,21 @@ final class Manager {
 
 	/**
 	 * Enqueue scripts and styles.
-	 *
-	 * @return bool
 	 */
 	public function enqueue() {
 
 		if ( $this->is_gutenberg_active() ) {
-			return false;
+			return;
 		}
 
 		$screen = get_current_screen();
 
 		if ( ! is_object( $screen ) ) {
-			return false;
+			return;
 		}
 
 		if ( $screen->base !== 'post' ) {
-			return false;
+			return;
 		}
 
 		wp_register_script( 'neve-metabox', NEVE_ASSETS_URL . 'js/build/all/metabox.js', array( 'jquery' ), NEVE_VERSION, true );
@@ -225,8 +223,6 @@ final class Manager {
 		wp_localize_script( 'neve-metabox', 'neveMetabox', $this->get_localization() );
 
 		wp_enqueue_script( 'neve-metabox' );
-
-		return true;
 	}
 
 	/**

@@ -24,7 +24,7 @@ class Typography extends \WP_Customize_Control {
 	 *
 	 * @var array|mixed
 	 */
-	public $input_attrs = [];
+	public $input_attrs = []; // @phpstan-ignore-line
 	/**
 	 * Refresh on reset flag.
 	 *

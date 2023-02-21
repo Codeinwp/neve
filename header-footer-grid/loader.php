@@ -54,5 +54,10 @@ add_action(
 	}
 );
 if ( version_compare( PHP_VERSION, '5.3.29' ) > 0 && class_exists( 'HFG\Main' ) ) {
-	add_action( 'after_setup_theme', 'HFG\Main::get_instance' );
+	add_action(
+		'after_setup_theme',
+		function() {
+			HFG\Main::get_instance();
+		} 
+	);
 }
