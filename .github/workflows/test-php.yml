@@ -118,4 +118,4 @@ jobs:
       - name: Install composer
         run: composer install --ignore-platform-reqs
       - name: PHPStan Static Analysis
-        run: composer phpstan -- --memory-limit=1G
+        run: composer phpstan -- --memory-limit=2G
