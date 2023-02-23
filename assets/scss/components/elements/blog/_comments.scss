@@ -106,12 +106,16 @@
 .nv-comments-list {
 	margin-bottom: $spacing-xxl;
 
-	.children li:not(.children) {
-		padding-left: $spacing-xl;
+	.children {
+		padding-left: $spacing-sm;
 	}
 }
 
 @mixin comments--tablet() {
+
+	.nv-comments-list .children {
+		padding-left: $spacing-xl;
+	}
 
 	#comments {
 
