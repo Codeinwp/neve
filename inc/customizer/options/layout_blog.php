@@ -236,8 +236,8 @@ class Layout_Blog extends Base_Customizer {
 					'active_callback' => function () {
 						$is_list_layout = get_theme_mod( $this->section ) === 'default';
 						$has_image      = true;
-						if ( $is_list_layout ) {
-							$has_image = defined( 'NEVE_PRO_VERSION' ) ? get_theme_mod( 'neve_blog_list_image_position', 'left' ) !== 'no' : false;
+						if ( $is_list_layout && defined( 'NEVE_PRO_VERSION' ) ) {
+							$has_image = get_theme_mod( 'neve_blog_list_image_position', 'left' ) !== 'no';
 						}
 						return $is_list_layout && $has_image;
 					},

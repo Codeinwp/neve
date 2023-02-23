@@ -79,5 +79,5 @@ jobs:
       - name: WordPress Theme Deploy
         uses: Codeinwp/action-wordpress-theme-deploy@primary
         env:
-          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_THEMEISLE_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.SVN_THEMEISLE_USERNAME }}
