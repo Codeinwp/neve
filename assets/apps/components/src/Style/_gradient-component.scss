@@ -29,8 +29,8 @@
  */
 #nv-mm-app {
   .modal {
-	.components-popover {
-	  max-height: 430px;
+	.components-popover__content {
+	  max-height: 430px!important;
 	}
 
 	.components-color-picker {

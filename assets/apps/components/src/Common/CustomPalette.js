@@ -9,10 +9,16 @@ import { globalPaletteColors } from './common';
  * @return {Object} customColors - An object with color keys and label values.
  */
 const getCustomColors = () => {
-	const globalCustomColorsControl = wp.customize.control(
-		'neve_global_custom_colors'
-	);
-	const customColorsValue = { ...globalCustomColorsControl.setting.get() };
+	let customColorsValue = {};
+
+	if (wp.customize) {
+		customColorsValue = wp.customize
+			.control('neve_global_custom_colors')
+			.setting.get();
+	} else if (window.nvMegaMenu && window.nvMegaMenu.globalCustomColors) {
+		customColorsValue = window.nvMegaMenu.globalCustomColors;
+	}
+
 	const customColors = {};
 	for (const key in customColorsValue) {
 		const data = customColorsValue[key];
