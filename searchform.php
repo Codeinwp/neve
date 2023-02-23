@@ -26,6 +26,7 @@ if ( function_exists( 'PLL' ) ) {
 }
 
 $has_text_button = isset( $args['button_text'] );
+$context         = array_key_exists( 'context', $args ) ? $args['context'] : false;
 ?>
 
 <form role="search"
@@ -48,7 +49,7 @@ $has_text_button = isset( $args['button_text'] );
 			<?php echo esc_html( $args['button_text'] ); ?>
 		<?php } else { ?>
 			<span class="nv-search-icon-wrap">
-				<?php neve_search_icon( false, true ); ?>
+				<?php neve_search_icon( false, true, 15, false, $context ); ?>
 			</span>
 		<?php } ?>
 	</button>

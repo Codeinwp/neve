@@ -199,20 +199,25 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '', $icon_custo
 /**
  * Search Icon
  *
- * @param bool $is_link should be wrapped in A tag.
- * @param bool $echo should be echoed.
- * @param int  $size icon size.
- * @param bool $amp_ready Should we add the AMP binding.
+ * @param bool         $is_link should be wrapped in A tag.
+ * @param bool         $echo should be echoed.
+ * @param int          $size icon size.
+ * @param bool         $amp_ready Should we add the AMP binding.
+ * @param false|string $context Represents where the search icon is being used.
  *
  * @return string|null
  */
-function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_ready = false ) {
+function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_ready = false, $context = false ) {
 
-	$icon_type = \HFG\component_setting( SearchIconButton::ICON_TYPE );
+	$icon_type = SearchIconButton::DEFAULT_ICON;
 
-	// For the possibility of \HFG\current_component returning false.
-	if ( $icon_type === false ) {
-		$icon_type = SearchIconButton::DEFAULT_ICON;
+	if ( $context === 'hfg' ) {
+		$hfg_icon_type = \HFG\component_setting( SearchIconButton::ICON_TYPE );
+
+		// For the possibility of \HFG\current_component returning false
+		if ( $hfg_icon_type !== false ) {
+			$icon_type = $hfg_icon_type;
+		}
 	}
 
 	if ( $icon_type === SearchIconButton::CUSTOM_ICON ) {

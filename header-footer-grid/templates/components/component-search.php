@@ -25,7 +25,9 @@ if ( ! empty( $component_styles_array ) ) {
 	$component_styles .= '" ';
 }
 
-$args = [];
+$args = [
+	'context' => 'hfg',
+];
 
 if ( component_setting( SearchIconButton::BUTTON_APPEARANCE ) === 'text_button' ) {
 	$args['button_text'] = component_setting( SearchIconButton::BUTTON_TEXT, SearchIconButton::get_default_button_text() );
