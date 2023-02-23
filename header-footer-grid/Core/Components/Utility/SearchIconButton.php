@@ -222,7 +222,7 @@ class SearchIconButton {
 				'group'              => $this->component_id,
 				'transport'          => 'post' . $this->component_id,
 				'tab'                => SettingsManager::TAB_STYLE,
-				'sanitize_callback'  => 'wp_filter_nohtml_kses',
+				'sanitize_callback'  => 'sanitize_text_field',
 				'default'            => self::get_default_button_text(),
 				'label'              => __( 'Text', 'neve' ),
 				'type'               => 'text',
