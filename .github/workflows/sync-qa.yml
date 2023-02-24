@@ -50,7 +50,7 @@ jobs:
           username: ${{ secrets.QA_FTP_USER }}
           password: ${{ secrets.QA_FTP_PASS }}
           port: 22
-          local-dir: $GITHUB_WORKSPACE/dist/neve/
+          local-dir: ./dist/neve/
           server-dir: ${{ secrets.QA_FTP_PATH }}
           dry-run: true
 #      - name: Authenticate
