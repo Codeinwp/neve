@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - development
-      - fix/qa_sync
       - "!master"
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
@@ -43,7 +42,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn run build
           yarn run dist
-      - name: Sync to QA
+      - name: Sync to QA server via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.QA_FTP_HOST }}

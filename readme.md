@@ -7,7 +7,7 @@
 **Requires PHP:** 5.5.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
-synced from new GHA
+
 Neve is a super fast, easily customizable, multi-purpose theme. Perfect for blogs, small business, startups, agencies, firms & e-commerce shops.
 
 ## Description ##
