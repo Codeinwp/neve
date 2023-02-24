@@ -179,7 +179,7 @@ class Typography extends Base_Customizer {
 					'priority'              => 11,
 					'section'               => 'neve_typography_general',
 					'input_attrs'           => array(
-						'size_units'             => [ 'px' ],
+						'size_units'             => [ 'px', 'em', 'rem' ],
 						'weight_default'         => 400,
 						'size_default'           => $defaults['fontSize'],
 						'line_height_default'    => $defaults['lineHeight'],
@@ -323,7 +323,7 @@ class Typography extends Base_Customizer {
 						'priority'              => $priority += 1,
 						'section'               => 'neve_typography_headings',
 						'input_attrs'           => array(
-							'size_units'             => [ 'em', 'px' ],
+							'size_units'             => [ 'em', 'px', 'rem' ],
 							'weight_default'         => $default_values['fontWeight'],
 							'size_default'           => $default_values['fontSize'],
 							'line_height_default'    => $default_values['lineHeight'],
@@ -469,7 +469,7 @@ class Typography extends Base_Customizer {
 						'refresh_on_reset'      => true,
 						'input_attrs'           => array(
 							'default_is_empty'       => true,
-							'size_units'             => [ 'em', 'px' ],
+							'size_units'             => [ 'em', 'px', 'rem' ],
 							'weight_default'         => 'none',
 							'size_default'           => array(
 								'suffix'  => array(

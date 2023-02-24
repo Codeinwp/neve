@@ -103,7 +103,7 @@ class Buttons extends Base_Customizer {
 					'label'                 => esc_html__( 'Button Text', 'neve' ),
 					'section'               => $this->section_id,
 					'input_attrs'           => array(
-						'size_units'             => [ 'px' ],
+						'size_units'             => [ 'px', 'em', 'rem' ],
 						'weight_default'         => 700,
 						'size_default'           => array(
 							'suffix'  => array(
