@@ -18,11 +18,15 @@
 
 	article {
 		display: flex;
+		gap: 20px;
+	}
+
+	.nv-comment-avatar {
+		flex-shrink: 0;
 	}
 
 	.avatar {
 		border-radius: 100%;
-		margin-right: $spacing-md;
 	}
 
 	.comment-content {
@@ -106,12 +110,16 @@
 .nv-comments-list {
 	margin-bottom: $spacing-xxl;
 
-	.children li:not(.children) {
-		padding-left: $spacing-xl;
+	.children {
+		padding-left: $spacing-sm;
 	}
 }
 
 @mixin comments--tablet() {
+
+	.nv-comments-list .children {
+		padding-left: $spacing-xl;
+	}
 
 	#comments {
 
