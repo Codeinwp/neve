@@ -29,7 +29,7 @@ $menu_icon_class  = apply_filters( 'neve_menu_icon_classes', 'hamburger is-activ
 		data-row-id="<?php echo esc_attr( $row_index ); ?>">
 	<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">
 		<?php
-		if ( $open_behavior !== 'dropdown' ) { 
+		if ( $open_behavior !== 'dropdown' ) {
 			?>
 			<div class="<?php echo esc_attr( $close_classes ); ?>">
 				<button type="button" class="<?php echo esc_attr( $menu_icon_class ); ?> navbar-toggle active" <?php echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -53,14 +53,12 @@ $menu_icon_class  = apply_filters( 'neve_menu_icon_classes', 'hamburger is-activ
 					}
 					?>
 					<span class="screen-reader-text">
-					<?php
-					esc_html_e( 'Navigation Menu', 'neve' );
-					?>
-						</span>
+					<?php esc_html_e( 'Navigation Menu', 'neve' ); ?>
+					</span>
 				</button>
 			</div>
 			<?php
-		} 
+		}
 		?>
 		<div id="header-menu-sidebar-inner" class="<?php echo esc_attr( $inner_classes ); ?>">
 			<?php
