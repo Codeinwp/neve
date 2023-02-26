@@ -166,7 +166,7 @@ class Button extends Abstract_Component {
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_GENERAL,
 				'section'            => $this->section,
-				'label'              => __( 'Open link in a new tab', 'default' ),
+				'label'              => __( 'Open link in a new tab', 'neve' ),
 				'type'               => 'Neve\Customizer\Controls\React\Responsive_Toggle',
 				'transport'          => 'postheader',
 				'sanitize_callback'  => 'rest_sanitize_boolean',
