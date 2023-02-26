@@ -200,6 +200,7 @@
 		"release": "npx semantic-release",
 		"dist": "bash ./bin/dist.sh",
 		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook"
+		"build-storybook": "build-storybook",
+		"composer:install": "COMPOSER=composer-dev.json composer install"
 	}
 }
