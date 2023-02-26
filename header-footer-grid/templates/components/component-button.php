@@ -25,14 +25,14 @@ $button_link = apply_filters( 'neve_translate_single_string', $button_link, Butt
 ?>
 <div class="component-wrap">
 	<a href="<?php echo esc_url( $button_link ); ?>" class="button button-primary"
+	<?php
+	if ( $open_new_tab ) {
+		?>
+		target="_blank" rel="noopener noreferrer"
 		<?php
-		if ( $open_new_tab ) {
-			?>
-			target="_blank" rel="noopener noreferrer"
-		<?php } ?>
-	>
-		<?php echo wp_kses_post( stripcslashes( $text ) ); ?>
-	</a>
+	}
+	?>
+	><?php echo wp_kses_post( stripcslashes( $text ) ); ?></a>
 </div>
 <?php
 
