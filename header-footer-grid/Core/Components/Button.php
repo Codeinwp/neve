@@ -29,6 +29,7 @@ class Button extends Abstract_Component {
 	const LINK_ID      = 'link_setting';
 	const TEXT_ID      = 'text_setting';
 	const STYLE_ID     = 'style_setting';
+	const OPEN_NEW_TAB = 'new_tab'; // the button is opened in a new browser tab?
 
 	/**
 	 * Default spacing value
@@ -156,6 +157,23 @@ class Button extends Abstract_Component {
 				'section'            => $this->section,
 				'use_dynamic_fields' => array( 'string' ),
 				'conditional_header' => $this->get_builder_id() === 'header',
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::OPEN_NEW_TAB,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'section'            => $this->section,
+				'label'              => __( 'Open as a new tab', 'neve' ),
+				'type'               => 'Neve\Customizer\Controls\React\Responsive_Toggle',
+				'transport'          => 'postheader',
+				'sanitize_callback'  => 'rest_sanitize_boolean',
+				'options'            => [
+					'hide_responsive' => true,
+				],
+				'conditional_header' => true,
 			]
 		);
 

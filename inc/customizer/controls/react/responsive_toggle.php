@@ -25,12 +25,21 @@ class Responsive_Toggle extends \WP_Customize_Control {
 	 * @var array
 	 */
 	public $excluded_devices = [];
+
+	/**
+	 * Hide Responsive capability?
+	 *
+	 * @var array
+	 */
+	public $hide_responsive = false;
+
 	/**
 	 * Send to JS.
 	 */
 	public function json() {
-		$json             = parent::json();
-		$json['excluded'] = $this->excluded_devices;
+		$json                   = parent::json();
+		$json['excluded']       = $this->excluded_devices;
+		$json['hideResponsive'] = $this->hide_responsive;
 		return $json;
 	}
 
