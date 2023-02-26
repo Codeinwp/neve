@@ -29,7 +29,7 @@ class Responsive_Toggle extends \WP_Customize_Control {
 	/**
 	 * Hide Responsive capability?
 	 *
-	 * @var array
+	 * @var bool
 	 */
 	public $hide_responsive = false;
 
