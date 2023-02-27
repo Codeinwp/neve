@@ -17,7 +17,7 @@ jobs:
       SSH_KEY: ${{ secrets.SSH_KEY }}
       SSH_PORT: ${{ secrets.SSH_PORT }}
       SSH_HOST: ${{ secrets.SSH_HOST }}
-      QA_ROOT: ${{ secrets.QA_ROOT }}
+      QA_DS_STAGING_ROOT: ${{ secrets.QA_DS_STAGING_ROOT }}
       PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
       CYPRESS_INSTALL_BINARY: 0
     steps:
@@ -42,40 +42,35 @@ jobs:
           yarn install --frozen-lockfile
           yarn run build
           yarn run dist
-      - name: Authenticate
+      - name: Sync to QA server via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          server: ${{ secrets.QA_FTP_HOST }}
+          username: ${{ secrets.QA_FTP_USER }}
+          password: ${{ secrets.QA_FTP_PASS }}
+          sftp_only: true
+          local_path: './dist/neve/*'
+          remote_path: ${{ secrets.QA_FTP_PATH }}
+      - name: Add SSH Key
         run: |
           mkdir $HOME/.ssh
           echo "$SSH_KEY" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
       - uses: chrnorm/deployment-action@releases/v1
-        name: Create deployment
+        name: Create deployment staging.demosites.io
         id: deployment
         with:
           token: ${{ secrets.BOT_TOKEN }}
-          target_url: http://qa-neve.themeisle.com/empty-site
+          target_url: https://staging.demosites.io/neve-3-gb/
           environment: staging
-      - name: Deploy to QA env
-        run: >
-          rsync -rc --delete --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i
-          $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT"
-          "$GITHUB_WORKSPACE/dist/neve/" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
-      - name: Rebuild Neve Reference
-        run: >
-          ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no
-          $SSH_USERNAME@$SSH_HOST "bash ~/reset-neve-qa.sh"
+      - name: Deploy to staging.demosites.io
+        run: |
+          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/" $SSH_USERNAME@$SSH_HOST:$QA_DS_STAGING_ROOT
       - name: Update deployment status (success)
         if: success()
         uses: chrnorm/deployment-status@releases/v1
         with:
           token: ${{ secrets.BOT_TOKEN }}
-          target_url: http://qa-neve.themeisle.com/empty-site
+          target_url: https://staging.demosites.io/neve-3-gb/
           state: success
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-      - name: Run staging demosites deploy
-        uses: pagely/action-deploy@v1
-        with:
-          PAGELY_DEPLOY_DEST: "/httpdocs/wp-content/themes/neve/"
-          PAGELY_INTEGRATION_SECRET: ${{secrets.PAGELY_INTEGRATION_SECRET}}
-          PAGELY_INTEGRATION_ID: ${{secrets.PAGELY_INTEGRATION_ID}}
-          PAGELY_APP_ID: ${{secrets.STG_DEMOSITES_PAGELY_APP_ID}}
-          PAGELY_WORKING_DIR: "${{github.workspace}}/dist/neve"
