@@ -94,10 +94,11 @@ class Magic_Tags {
 			return $input;
 		}
 
-		if ( strpos( $input, 'http://{current_single_url}' ) !== false || strpos( $input, 'https://{current_single_url}' ) !== false ) {
-			$input = str_replace( 'http://{current_single_url}', '{current_single_url}', $input );
-			$input = str_replace( 'https://{current_single_url}', '{current_single_url}', $input );
-		}
+		// Define the regular expression to match http/https links containing magic tags
+		$regex = '/(https?:\/\/)(\{[^}]+\})/';
+
+		// Replace any matches with just the magic tag name
+		$input = preg_replace( $regex, '$2', $input );
 
 		return preg_replace_callback(
 			'/\\{\s?\b(?:' . self::$magic_tag_regex . ')\b\s?\\}/',

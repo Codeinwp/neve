@@ -35,7 +35,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Install composer
-        run: composer install --ignore-platform-reqs --prefer-dist --no-progress --no-suggest
+        run: COMPOSER=composer-dev.json composer install --prefer-dist --no-progress --no-suggest
       - name: Run PHPCS
         run: composer run lint
 
@@ -74,7 +74,7 @@ jobs:
             restore-keys: |
               ${{ runner.os }}-composer-
         - name: Install composer
-          run: composer install --prefer-dist --no-progress --no-suggest --no-dev
+          run: COMPOSER=composer-dev.json composer install --prefer-dist --no-progress --no-suggest --no-dev
         - name: Run phpunit
           run: phpunit
 
@@ -116,6 +116,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Install composer
-        run: composer install --ignore-platform-reqs
+        run: COMPOSER=composer-dev.json composer install
       - name: PHPStan Static Analysis
         run: composer phpstan -- --memory-limit=2G
