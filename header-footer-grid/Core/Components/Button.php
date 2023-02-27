@@ -25,11 +25,14 @@ use Neve\Core\Styles\Dynamic_Selector;
  */
 class Button extends Abstract_Component {
 
-	const COMPONENT_ID = 'button_base';
-	const LINK_ID      = 'link_setting';
-	const TEXT_ID      = 'text_setting';
-	const STYLE_ID     = 'style_setting';
-	const OPEN_NEW_TAB = 'new_tab'; // the button is opened in a new browser tab?
+	const COMPONENT_ID         = 'button_base';
+	const LINK_ID              = 'link_setting';
+	const TEXT_ID              = 'text_setting';
+	const STYLE_ID             = 'style_setting';
+	const OPEN_NEW_TAB         = 'new_tab'; // the button is opened in a new browser tab?
+	const DEFAULT_OPEN_NEW_TAB = [
+		'desktop' => false,
+	];
 
 	/**
 	 * Default spacing value
@@ -173,6 +176,7 @@ class Button extends Abstract_Component {
 				'options'            => [
 					'hide_responsive' => true,
 				],
+				'default'            => self::DEFAULT_OPEN_NEW_TAB,
 				'conditional_header' => true,
 			]
 		);
