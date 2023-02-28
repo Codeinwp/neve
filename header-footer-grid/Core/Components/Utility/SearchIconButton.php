@@ -30,6 +30,8 @@ class SearchIconButton {
 	const BUTTON_TEXT = 'button_text';
 	// Default value for the Button Appereance setting
 	const DEFAULT_BUTTON_APPEARANCE = 'icon_button';
+	// Default value for the Custom SVG content
+	const DEFAULT_CUSTOM_ICON_SVG = '';
 
 	/**
 	 * Section name
@@ -186,7 +188,7 @@ class SearchIconButton {
 				'tab'                => SettingsManager::TAB_STYLE,
 				'transport'          => 'refresh',
 				'label'              => __( 'Custom SVG', 'neve' ),
-				'default'            => '',
+				'default'            => self::DEFAULT_CUSTOM_ICON_SVG,
 				'type'               => '\Neve\Customizer\Controls\React\Textarea',
 				'sanitize_callback'  => 'neve_kses_svg',
 				'section'            => $this->section,

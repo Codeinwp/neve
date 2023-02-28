@@ -212,7 +212,7 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 	$icon_type = SearchIconButton::DEFAULT_ICON;
 
 	if ( $context === 'hfg' ) {
-		$hfg_icon_type = \HFG\component_setting( SearchIconButton::ICON_TYPE );
+		$hfg_icon_type = \HFG\component_setting( SearchIconButton::ICON_TYPE, SearchIconButton::DEFAULT_ICON );
 
 		// For the possibility of \HFG\current_component returning false
 		if ( $hfg_icon_type !== false ) {
@@ -221,7 +221,7 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 	}
 
 	if ( $icon_type === SearchIconButton::CUSTOM_ICON ) {
-		$svg = \HFG\component_setting( SearchIconButton::CUSTOM_ICON_SVG );
+		$svg = \HFG\component_setting( SearchIconButton::CUSTOM_ICON_SVG, SearchIconButton::DEFAULT_CUSTOM_ICON_SVG );
 	} else {
 		$svg = SearchIconButton::render_icon( $icon_type, $size );
 	}
