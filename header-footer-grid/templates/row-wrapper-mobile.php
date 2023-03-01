@@ -11,7 +11,6 @@ namespace HFG;
 
 use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Builder\Header as HeaderBuilder;
-use HFG\Core\Components\MenuIcon;
 
 $row_index        = current_row();
 $interaction_type = row_setting( Abstract_Builder::LAYOUT_SETTING );
