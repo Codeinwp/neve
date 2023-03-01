@@ -3,10 +3,39 @@ import { Button, ExternalLink } from '@wordpress/components';
 import classnames from 'classnames';
 import { globalPaletteColors } from './common';
 
+/**
+ * Function that gets the color from the global custom colors control and convert them to the Global colors format.
+ *
+ * @return {Object} customColors - An object with color keys and label values.
+ */
+const getCustomColors = () => {
+	let customColorsValue = {};
+
+	if (wp.customize) {
+		customColorsValue = wp.customize
+			.control('neve_global_custom_colors')
+			.setting.get();
+	} else if (window.nvMegaMenu && window.nvMegaMenu.globalCustomColors) {
+		customColorsValue = window.nvMegaMenu.globalCustomColors;
+	}
+
+	const customColors = {};
+	for (const key in customColorsValue) {
+		const data = customColorsValue[key];
+		if (key === 'flag') {
+			continue;
+		}
+		customColors[key] = data.label;
+	}
+	return customColors;
+};
+
 const CustomPalette = ({ title, onChange, activeColor }) => {
 	const focusGlobalColors = () => {
 		wp.customize.control('neve_global_colors').focus();
 	};
+
+	const customColors = getCustomColors();
 
 	return (
 		<div className="nv-custom-palette-wrap">
@@ -34,9 +63,10 @@ const CustomPalette = ({ title, onChange, activeColor }) => {
 			</div>
 			<div className="nv-custom-palette-inner">
 				{globalPaletteColors.map((group, index) => {
+					const colors = { ...group, ...customColors };
 					return (
 						<ul key={index}>
-							{Object.keys(group).map((slug) => {
+							{Object.keys(colors).map((slug) => {
 								const style = {
 									background: `var(--${slug})`,
 								};
@@ -49,7 +79,7 @@ const CustomPalette = ({ title, onChange, activeColor }) => {
 								]);
 
 								return (
-									<li title={group[slug]} key={slug}>
+									<li title={colors[slug]} key={slug}>
 										<a
 											href="#global-select"
 											onClick={(e) => {
@@ -61,7 +91,7 @@ const CustomPalette = ({ title, onChange, activeColor }) => {
 												style={style}
 												className={buttonClasses}
 											/>
-											<span>{group[slug]}</span>
+											<span>{colors[slug]}</span>
 										</a>
 									</li>
 								);

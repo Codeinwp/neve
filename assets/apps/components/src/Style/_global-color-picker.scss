@@ -28,7 +28,6 @@
 	  }
 	}
   }
-
   .nv-custom-palette-color {
 	height: 30px;
 	width: 30px;
@@ -52,8 +51,7 @@
   .components-popover__content {
 	border: none;
 	border-radius: 5px !important;
-	overflow: auto !important;
-	max-height: max-content !important;
+	max-height: 430px!important;
   }
 }
 .global-color-picker {

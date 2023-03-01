@@ -49,8 +49,8 @@ jobs:
           args: --acl public-read --follow-symlinks --delete
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_AWS_KEY_ARTIFACTS }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_AWS_SECRET_ARTIFACTS }}
           AWS_REGION: 'us-west-1'     # optional: defaults to us-east-1
           SOURCE_DIR: 'artifact'      # optional: defaults to entire repository
           DEST_DIR: ${{ secrets.AWS_PRODUCTS_FOLDER }}/$BUILD_NAME/latest
@@ -60,8 +60,8 @@ jobs:
           args: --acl public-read --follow-symlinks --delete
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_AWS_KEY_ARTIFACTS }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_AWS_SECRET_ARTIFACTS }}
           AWS_REGION: 'us-west-1'     # optional: defaults to us-east-1
           SOURCE_DIR: 'artifact'      # optional: defaults to entire repository
           DEST_DIR: ${{ secrets.AWS_PRODUCTS_FOLDER }}/$BUILD_NAME/$BUILD_VERSION
