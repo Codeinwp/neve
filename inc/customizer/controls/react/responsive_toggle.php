@@ -25,14 +25,6 @@ class Responsive_Toggle extends \WP_Customize_Control {
 	 * @var array
 	 */
 	public $excluded_devices = [];
-
-	/**
-	 * Hide Responsive capability?
-	 *
-	 * @var bool
-	 */
-	public $hide_responsive = false;
-
 	/**
 	 * Send to JS.
 	 */
