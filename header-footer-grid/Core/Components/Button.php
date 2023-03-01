@@ -30,9 +30,7 @@ class Button extends Abstract_Component {
 	const TEXT_ID              = 'text_setting';
 	const STYLE_ID             = 'style_setting';
 	const OPEN_NEW_TAB         = 'new_tab'; // the button is opened in a new browser tab?
-	const DEFAULT_OPEN_NEW_TAB = [
-		'desktop' => false,
-	];
+	const DEFAULT_OPEN_NEW_TAB = false;
 
 	/**
 	 * Default spacing value
@@ -170,12 +168,9 @@ class Button extends Abstract_Component {
 				'tab'                => SettingsManager::TAB_GENERAL,
 				'section'            => $this->section,
 				'label'              => ucfirst( str_replace( [ '(', ')' ], '', __( '(opens in a new tab)', 'neve' ) ) ),
-				'type'               => 'Neve\Customizer\Controls\React\Responsive_Toggle',
+				'type'               => 'neve_toggle_control',
 				'transport'          => 'postheader',
-				'sanitize_callback'  => 'rest_sanitize_boolean',
-				'options'            => [
-					'hide_responsive' => true,
-				],
+				'sanitize_callback'  => 'absint',
 				'default'            => self::DEFAULT_OPEN_NEW_TAB,
 				'conditional_header' => true,
 			]

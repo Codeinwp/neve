@@ -12,10 +12,9 @@ namespace HFG;
 
 use HFG\Core\Components\Button;
 
-$text              = parse_dynamic_tags( component_setting( Button::TEXT_ID ) );
-$text              = apply_filters( 'neve_translate_single_string', $text, Button::TEXT_ID );
-$open_new_tab_resp = component_setting( Button::OPEN_NEW_TAB, Button::DEFAULT_OPEN_NEW_TAB );
-$open_new_tab      = array_key_exists( 'desktop', $open_new_tab_resp ) ? (bool) $open_new_tab_resp['desktop'] : false;
+$text         = parse_dynamic_tags( component_setting( Button::TEXT_ID ) );
+$text         = apply_filters( 'neve_translate_single_string', $text, Button::TEXT_ID );
+$open_new_tab = component_setting( Button::OPEN_NEW_TAB, Button::DEFAULT_OPEN_NEW_TAB );
 
 if ( empty( $text ) ) {
 	return;

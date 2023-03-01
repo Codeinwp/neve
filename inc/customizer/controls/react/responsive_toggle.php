@@ -37,9 +37,8 @@ class Responsive_Toggle extends \WP_Customize_Control {
 	 * Send to JS.
 	 */
 	public function json() {
-		$json                   = parent::json();
-		$json['excluded']       = $this->excluded_devices;
-		$json['hideResponsive'] = $this->hide_responsive;
+		$json             = parent::json();
+		$json['excluded'] = $this->excluded_devices;
 		return $json;
 	}
 
