@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 06/02/23
+ * Updated on 27/02/23
  *
  * @package neve
  */
@@ -288,6 +288,7 @@ return array(
 	'Cinzel' => array( '400', '500', '600', '700', '800', '900',),
 	'Cinzel Decorative' => array( '400', '700', '900',),
 	'Clicker Script' => array( '400',),
+	'Climate Crisis' => array( '400',),
 	'Coda' => array( '400', '800',),
 	'Coda Caption' => array( '800',),
 	'Codystar' => array( '300', '400',),
@@ -461,6 +462,7 @@ return array(
 	'Gabriela' => array( '400',),
 	'Gaegu' => array( '300', '400', '700',),
 	'Gafata' => array( '400',),
+	'Gajraj One' => array( '400',),
 	'Galada' => array( '400',),
 	'Galdeano' => array( '400',),
 	'Galindo' => array( '400',),
@@ -486,12 +488,14 @@ return array(
 	'Give You Glory' => array( '400',),
 	'Glass Antiqua' => array( '400',),
 	'Glegoo' => array( '400', '700',),
+	'Gloock' => array( '400',),
 	'Gloria Hallelujah' => array( '400',),
 	'Glory' => array( '100', '200', '300', '400', '500', '600', '700', '800', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic',),
 	'Gluten' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Goblin One' => array( '400',),
 	'Gochi Hand' => array( '400',),
 	'Goldman' => array( '400', '700',),
+	'Golos Text' => array( '400', '500', '600', '700', '800', '900',),
 	'Gorditas' => array( '400', '700',),
 	'Gothic A1' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Gotu' => array( '400',),
@@ -663,6 +667,7 @@ return array(
 	'Kumbh Sans' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Kurale' => array( '400',),
 	'La Belle Aurore' => array( '400',),
+	'Labrada' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Lacquer' => array( '400',),
 	'Laila' => array( '300', '400', '500', '600', '700',),
 	'Lakki Reddy' => array( '400',),
@@ -831,6 +836,7 @@ return array(
 	'Murecho' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'MuseoModerno' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'My Soul' => array( '400',),
+	'Mynerve' => array( '400',),
 	'Mystery Quest' => array( '400',),
 	'NTR' => array( '400',),
 	'Nabla' => array( '400',),
@@ -1127,6 +1133,7 @@ return array(
 	'Petit Formal Script' => array( '400',),
 	'Petrona' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Philosopher' => array( '400', '700', '400italic', '700italic',),
+	'Phudu' => array( '300', '400', '500', '600', '700', '800', '900',),
 	'Piazzolla' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Piedra' => array( '400',),
 	'Pinyon Script' => array( '400',),
@@ -1222,7 +1229,7 @@ return array(
 	'Rock 3D' => array(),
 	'Rock Salt' => array( '400',),
 	'RocknRoll One' => array( '400',),
-	'Rokkitt' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
+	'Rokkitt' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Romanesco' => array( '400',),
 	'Ropa Sans' => array( '400', '400italic',),
 	'Rosario' => array( '300', '400', '500', '600', '700', '300italic', '400italic', '500italic', '600italic', '700italic',),
@@ -1298,6 +1305,7 @@ return array(
 	'Shadows Into Light' => array( '400',),
 	'Shadows Into Light Two' => array( '400',),
 	'Shalimar' => array( '400',),
+	'Shantell Sans' => array( '300', '400', '500', '600', '700', '800', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic',),
 	'Shanti' => array( '400',),
 	'Share' => array( '400', '700', '400italic', '700italic',),
 	'Share Tech' => array( '400',),
