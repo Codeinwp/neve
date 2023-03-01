@@ -12,6 +12,7 @@ const GlobalColorsPicker = ({ onChange, activeColor, isGlobal }) => {
 
 	return (
 		<Dropdown
+			contentClassName={'global-colors-selector'}
 			renderToggle={({ isOpen, onToggle }) => (
 				<Button
 					onClick={onToggle}
