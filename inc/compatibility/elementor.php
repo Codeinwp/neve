@@ -426,14 +426,7 @@ class Elementor extends Page_Builder_Base {
 		foreach ( $templates as $template_conditions_arr ) {
 			/** @var string $condition_path specifies the condition such as  include/product_archive OR exclude/product_archive/product_search OR include/product/in_product_cat/18 etc. */
 			foreach ( $template_conditions_arr  as $condition_path ) {
-				/**
-				 * @var array|null $condition_parts array of the condition path parts. For example: [0] => include, [1] => product_archive.
-				 */
 				$condition_parts = explode( '/', $condition_path );
-
-				if ( empty( $condition_parts ) ) {
-					continue;
-				}
 
 				if ( $condition_parts[0] !== 'include' ) {
 					continue;

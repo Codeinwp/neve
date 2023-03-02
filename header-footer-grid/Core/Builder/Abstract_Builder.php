@@ -656,7 +656,7 @@ abstract class Abstract_Builder implements Builder {
 
 		$wp_customize->add_panel(
 			$this->panel,
-			/* @phpstan-ignore-next-line */
+			/* @phpstan-ignore-next-line The wordpress-stub os incorect, proper type should be string|array for `theme_supports` */
 			array(
 				'priority'       => 25,
 				'capability'     => 'edit_theme_options',

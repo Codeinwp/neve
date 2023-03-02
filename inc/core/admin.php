@@ -90,7 +90,7 @@ class Admin {
 		$tpc_plugin_data['path']       = $plugin_helper->get_plugin_path( $slug );
 		$tpc_plugin_data['activate']   = $plugin_helper->get_plugin_action_link( $slug );
 		$tpc_plugin_data['deactivate'] = $plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
-		$tpc_plugin_data['version']    = ! empty( $tpc_version ) ? $tpc_version : '';
+		$tpc_plugin_data['version']    = $tpc_version !== false ? $tpc_version : '';
 		$tpc_plugin_data['adminURL']   = admin_url( 'themes.php?page=tiob-starter-sites' );
 		$tpc_plugin_data['pluginsURL'] = esc_url( admin_url( 'plugins.php' ) );
 		$tpc_plugin_data['ajaxURL']    = esc_url( admin_url( 'admin-ajax.php' ) );
