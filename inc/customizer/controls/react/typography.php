@@ -43,7 +43,7 @@ class Typography extends \WP_Customize_Control {
 	 */
 	public function json() {
 		$json                        = parent::json();
-		$json['input_attrs']         = $this->input_attrs;
+		$json['input_attrs']         = wp_json_encode( $this->input_attrs );
 		$json['refresh_on_reset']    = $this->refresh_on_reset;
 		$json['font_family_control'] = $this->font_family_control;
 		return $json;
