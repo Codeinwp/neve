@@ -38,6 +38,11 @@ class PPOM {
 	 * Load hooks.
 	 */
 	private function load_hooks() {
+		/**
+		 * Neve has display:flex on the single product page, but PPOM has display:block on the same page. Prevent PPOM from overriding Neve's CSS.
+		 *
+		 * Issue: https://github.com/Codeinwp/woocommerce-product-addon/issues/106
+		*/
 		add_filter( 'ppom_sp_ac_force_css_display_block', '__return_false' );
 	}
 }
