@@ -1,7 +1,6 @@
 .customize-control .neve-color-component {
 	.components-popover {
 		position: fixed !important;
-		max-height: 430px;
 		.components-custom-gradient-picker__inserter{
 		  z-index: 1;
 		}
@@ -10,9 +9,8 @@
 		}
 	}
 
-	.components-popover .components-popover__content {
+	.components-popover:not(.global-colors-selector) .components-popover__content {
 		overflow: unset !important;
-		max-height: fit-content !important;
 	}
 
 	.components-custom-gradient-picker__gradient-bar {
@@ -31,8 +29,8 @@
  */
 #nv-mm-app {
   .modal {
-	.components-popover {
-	  max-height: 430px;
+	.components-popover__content {
+	  max-height: 430px!important;
 	}
 
 	.components-color-picker {

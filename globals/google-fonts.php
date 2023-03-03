@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 20/02/23
+ * Updated on 27/02/23
  *
  * @package neve
  */
@@ -288,6 +288,7 @@ return array(
 	'Cinzel' => array( '400', '500', '600', '700', '800', '900',),
 	'Cinzel Decorative' => array( '400', '700', '900',),
 	'Clicker Script' => array( '400',),
+	'Climate Crisis' => array( '400',),
 	'Coda' => array( '400', '800',),
 	'Coda Caption' => array( '800',),
 	'Codystar' => array( '300', '400',),
@@ -494,6 +495,7 @@ return array(
 	'Goblin One' => array( '400',),
 	'Gochi Hand' => array( '400',),
 	'Goldman' => array( '400', '700',),
+	'Golos Text' => array( '400', '500', '600', '700', '800', '900',),
 	'Gorditas' => array( '400', '700',),
 	'Gothic A1' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Gotu' => array( '400',),
@@ -1227,7 +1229,7 @@ return array(
 	'Rock 3D' => array(),
 	'Rock Salt' => array( '400',),
 	'RocknRoll One' => array( '400',),
-	'Rokkitt' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
+	'Rokkitt' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Romanesco' => array( '400',),
 	'Ropa Sans' => array( '400', '400italic',),
 	'Rosario' => array( '300', '400', '500', '600', '700', '300italic', '400italic', '500italic', '600italic', '700italic',),
