@@ -287,8 +287,10 @@ class Typography extends Base_Customizer {
 			)
 		);
 
-		$selectors = neve_get_headings_selectors();
-		$priority  = 20;
+		$selectors        = neve_get_headings_selectors();
+		$priority         = 20;
+		$controls_to_wrap = apply_filters( 'neve_customizer_heading_controls_to_wrap', 1 );
+
 		foreach ( [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] as $heading_id ) {
 			$this->add_control(
 				new Control(
@@ -303,7 +305,7 @@ class Typography extends Base_Customizer {
 						'priority'         => $priority += 1,
 						'class'            => esc_attr( 'advanced-sidebar-accordion-' . $heading_id ),
 						'accordion'        => true,
-						'controls_to_wrap' => 1,
+						'controls_to_wrap' => $controls_to_wrap,
 						'expanded'         => false,
 					),
 					'Neve\Customizer\Controls\React\Heading'
@@ -312,6 +314,11 @@ class Typography extends Base_Customizer {
 
 			$mod_key        = 'neve_' . $heading_id . '_typeface_general';
 			$default_values = Mods::get_alternative_mod_default( $mod_key );
+
+			$heading_control_priority = $priority += 2;
+
+			do_action( 'neve_customizer_typography_heading_before_control', $heading_id, $heading_control_priority );
+
 			$this->add_control(
 				new Control(
 					$mod_key,
@@ -320,7 +327,7 @@ class Typography extends Base_Customizer {
 						'default'   => $default_values,
 					],
 					[
-						'priority'              => $priority += 1,
+						'priority'              => $heading_control_priority,
 						'section'               => 'neve_typography_headings',
 						'input_attrs'           => array(
 							'size_units'             => [ 'em', 'px' ],
@@ -330,7 +337,7 @@ class Typography extends Base_Customizer {
 							'letter_spacing_default' => $default_values['letterSpacing'],
 						),
 						'type'                  => 'neve_typeface_control',
-						'font_family_control'   => 'neve_headings_font_family',
+						'font_family_control'   => apply_filters( 'neve_customizer_headings_font_family_control', 'neve_headings_font_family', $heading_id ),
 						'live_refresh_selector' => $selectors[ $heading_id ],
 						'live_refresh_css_prop' => [
 							'cssVar' => [
