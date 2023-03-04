@@ -28,7 +28,11 @@
 	.avatar {
 		border-radius: 100%;
 	}
-
+	
+	.comment-content {
+		flex-grow: 1;
+	}
+	
 	input:not([type="submit"]):not([type="checkbox"]) {
 		width: 100%;
 	}
