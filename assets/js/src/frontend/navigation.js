@@ -148,10 +148,13 @@ function startFocusTrap(event) {
 	const firstEl = elements[0];
 	if (escKey) {
 		event.preventDefault();
-		focusTrapDetails.container
-			.querySelector(focusTrapDetails.close)
-			.click();
 		focusTrapDetails.backFocus.focus();
+		const closeBtn =
+			focusTrapDetails.container.querySelector(focusTrapDetails.close) ||
+			focusTrapDetails.backFocus;
+		if (closeBtn) {
+			closeBtn.click();
+		}
 		document.dispatchEvent(new CustomEvent(NV_FOCUS_TRAP_END));
 	}
 	if (!shiftKey && tabKey && lastEl === activeEl) {
