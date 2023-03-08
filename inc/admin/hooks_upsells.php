@@ -34,7 +34,8 @@ class Hooks_Upsells {
 	 * @return bool
 	 */
 	public function should_load() {
-		return current_user_can( 'administrator' ) && ! defined( 'NEVE_PRO_VERSION' );
+		$should_load = current_user_can( 'administrator' ) && ! defined( 'NEVE_PRO_VERSION' );
+		return apply_filters( 'neve_hooks_upsell_should_load', $should_load );
 	}
 
 	/**
