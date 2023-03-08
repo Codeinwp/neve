@@ -310,7 +310,7 @@ class Typography extends Base_Customizer {
 				)
 			);
 
-			$heading_ff_mod_key = $this->heading_form_family_mod_key( $heading_id );
+			$heading_ff_mod_key = 'neve_headings_' . $heading_id . '_font_family';
 
 			/**
 			 * Headings font family
@@ -362,7 +362,7 @@ class Typography extends Base_Customizer {
 							'letter_spacing_default' => $default_values['letterSpacing'],
 						),
 						'type'                  => 'neve_typeface_control',
-						'font_family_control'   => $this->heading_form_family_mod_key( $heading_id ),
+						'font_family_control'   => $heading_ff_mod_key,
 						'live_refresh_selector' => $selectors[ $heading_id ],
 						'live_refresh_css_prop' => [
 							'cssVar' => [
@@ -547,16 +547,6 @@ class Typography extends Base_Customizer {
 				]
 			)
 		);
-	}
-
-	/**
-	 * Returns the mod key for the granular font family control.
-	 *
-	 * @param  string $heading_id like h1 or h2 or etc.
-	 * @return string   theme mod key which stores font family of the heading.
-	 */
-	private function heading_form_family_mod_key( $heading_id ) {
-		return 'neve_headings_' . $heading_id . '_font_family';
 	}
 }
 
