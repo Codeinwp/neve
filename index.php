@@ -17,9 +17,6 @@ $container_class = apply_filters( 'neve_container_class_filter', 'container', 'b
 get_header();
 
 $wrapper_classes = [ 'posts-wrapper' ];
-if ( ! neve_is_new_skin() ) {
-	$wrapper_classes[] = 'row';
-}
 $wrapper_classes = apply_filters( 'neve_posts_wrapper_class', $wrapper_classes );
 
 $load_before_after_hooks = get_theme_mod( 'neve_blog_archive_layout', 'grid' ) === 'default';

@@ -30,9 +30,7 @@ class Comments extends Base_View {
 	public function init() {
 		add_action( 'neve_do_comment_area', array( $this, 'render_comment_form' ) );
 		add_filter( 'comment_form_defaults', array( $this, 'leave_reply_title_tag' ) );
-		if ( neve_is_new_skin() ) {
-			add_filter( 'comment_form_fields', array( $this, 'move_textarea' ) );
-		}
+		add_filter( 'comment_form_fields', array( $this, 'move_textarea' ) );
 	}
 
 	/**
@@ -40,7 +38,7 @@ class Comments extends Base_View {
 	 */
 	public function render_comment_form() {
 		$display_form_first    = apply_filters( 'neve_show_comment_form_first', false );
-		$comment_form_settings = neve_is_new_skin() ? $this->get_sumbit_form_settings() : array();
+		$comment_form_settings = $this->get_sumbit_form_settings();
 
 		if ( $display_form_first ) {
 			comment_form( $comment_form_settings );
@@ -116,7 +114,7 @@ class Comments extends Base_View {
 		}
 
 		$boxed_layout = get_theme_mod( 'neve_comments_form_boxed_layout', true );
-		if ( $boxed_layout && neve_is_new_skin() ) {
+		if ( $boxed_layout ) {
 			$form_settings['class_container'] = 'comment-respond nv-is-boxed';
 		}
 
@@ -191,21 +189,12 @@ class Comments extends Base_View {
 				<li <?php comment_class(); ?> id="comment-item-<?php comment_ID(); ?>">
 					<article id="comment-<?php comment_ID(); ?>" class="nv-comment-article">
 						<?php
-						if ( neve_is_new_skin() ) {
-							echo '<div class="nv-comment-avatar">';
-							echo get_avatar( $comment, 50 );
-							echo '</div>';
-							echo '<div class="comment-content">';
-						}
+						echo '<div class="nv-comment-avatar">';
+						echo get_avatar( $comment, 50 );
+						echo '</div>';
+						echo '<div class="comment-content">';
 						?>
 						<div class="nv-comment-header">
-							<?php
-							if ( ! neve_is_new_skin() ) {
-								echo '<div class="nv-comment-avatar">';
-								echo get_avatar( $comment, 50 );
-								echo '</div>';
-							}
-							?>
 							<div class="comment-author vcard">
 								<span class="fn author"><?php echo get_comment_author_link(); ?></span>
 								<a href="<?php echo esc_url( get_comment_link() ); ?>">
@@ -220,18 +209,11 @@ class Comments extends Base_View {
 								</a>
 							</div>
 							<?php
-							if ( neve_is_new_skin() ) {
-									$this->render_edit_reply_link( $args, $depth );
-							}
+							$this->render_edit_reply_link( $args, $depth );
 							?>
 						</div>
 						<div class="nv-comment-content comment nv-content-wrap">
 							<?php comment_text(); ?>
-							<?php
-							if ( ! neve_is_new_skin() ) {
-								$this->render_edit_reply_link( $args, $depth );
-							}
-							?>
 							<?php if ( '0' === $comment->comment_approved ) { ?>
 								<p class="comment-awaiting-moderation">
 									<?php echo esc_html__( 'Comment awaiting moderation.', 'neve' ); ?>
@@ -239,9 +221,7 @@ class Comments extends Base_View {
 							<?php } ?>
 						</div>
 						<?php
-						if ( neve_is_new_skin() ) {
-							echo '</div>';
-						}
+						echo '</div>';
 						?>
 					</article>
 				</li>
@@ -328,7 +308,7 @@ class Comments extends Base_View {
 	 * @return array
 	 */
 	public function leave_reply_title_tag( $args ) {
-		$tag = neve_is_new_skin() ? 'h2' : 'h3';
+		$tag = 'h2';
 
 		$args['title_reply_before'] = '<' . $tag . ' id="reply-title" class="comment-reply-title">';
 		$args['title_reply_after']  = '</' . $tag . '>';

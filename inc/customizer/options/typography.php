@@ -239,7 +239,7 @@ class Typography extends Base_Customizer {
 							'new_tab' => true,
 						],
 					],
-					'live_refresh_selector' => neve_is_new_skin(),
+					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => '--nv-fallback-ff',
@@ -475,7 +475,7 @@ class Typography extends Base_Customizer {
 						'section'               => 'neve_typography_blog',
 						'type'                  => 'neve_typeface_control',
 						'font_family_control'   => $control_settings['font_family_control'],
-						'live_refresh_selector' => neve_is_new_skin() ? true : $control_settings['live_refresh_selector'],
+						'live_refresh_selector' => true,
 						'live_refresh_css_prop' => [
 							'cssVar' => [
 								'vars'     => [

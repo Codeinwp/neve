@@ -14,19 +14,6 @@ namespace Neve\Admin\Metabox;
  */
 class Main extends Controls_Base {
 
-	/**
-	 * Is new skin.
-	 *
-	 * @var bool
-	 */
-	private $new_skin;
-
-	/**
-	 * Main constructor.
-	 */
-	public function __construct() {
-		$this->new_skin = neve_is_new_skin();
-	}
 
 	/**
 	 * Add controls.
@@ -58,11 +45,7 @@ class Main extends Controls_Base {
 			)
 		);
 
-		$position_default = ( self::is_new_page() || self::is_checkout() ) ? 'full-width' : 'default';
-
-		if ( $this->new_skin ) {
-			$position_default = 'default';
-		}
+		$position_default = 'default';
 
 		$this->add_control(
 			new Controls\Radio(
@@ -142,13 +125,8 @@ class Main extends Controls_Base {
 	 * Add content width control.
 	 */
 	private function add_content_width() {
-
-		$enabled_default = ( self::is_new_page() || self::is_checkout() ) ? 'on' : 'off';
-		$width_default   = ( self::is_new_page() || self::is_checkout() ) ? 100 : 70;
-		if ( $this->new_skin ) {
-			$enabled_default = 'off';
-			$width_default   = self::is_post() ? 70 : 100;
-		}
+		$enabled_default = 'off';
+		$width_default   = self::is_post() ? 70 : 100;
 
 		$this->add_control(
 			new Controls\Checkbox(

@@ -32,17 +32,9 @@ class Layout_Sidebar extends Base_Customizer {
 	private $advanced_controls = [];
 
 	/**
-	 * New skin.
-	 *
-	 * @var boolean
-	 */
-	private $new_skin;
-
-	/**
 	 * Layout_Sidebar constructor.
 	 */
 	public function __construct() {
-		$this->new_skin = neve_is_new_skin();
 
 		$this->advanced_controls = [
 			'blog_archive' => __( 'Blog / Archive', 'neve' ),
@@ -150,7 +142,7 @@ class Layout_Sidebar extends Base_Customizer {
 				'neve_advanced_layout_options',
 				array(
 					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => $this->new_skin,
+					'default'           => true,
 				),
 				array(
 					'label'    => esc_html__( 'Enable Advanced Options', 'neve' ),
