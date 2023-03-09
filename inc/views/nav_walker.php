@@ -217,22 +217,6 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * Get sidebar inline styles and accessibility
 	 */
 	public function get_sidebar_and_accessibility_style() {
-		$legacy_style = '';
-		if ( ! neve_is_new_skin() ) {
-			$legacy_style .= '.nav-ul li > .wrap a { width: 100%; justify-content: center; }';
-			$legacy_style .= '.caret-wrap.caret { padding: 0; }';
-			$legacy_style .= '.nav-ul li { display: block; padding-top: 9px; }';
-			$legacy_style .= '.nav-ul .sub-menu li { padding: 3px 0; }';
-			$legacy_style .= '.nav-ul:not(.menu-mobile) .sub-menu li > .wrap > a { justify-content: center; white-space: nowrap; padding: 7px 14px; }';
-			$legacy_style .= '.nav-ul:not(.menu-mobile) .neve-mega-menu > .sub-menu .menu-item > .wrap > a > span { padding: 0 14px; }';
-			$legacy_style .= '.header-menu-sidebar .nav-ul li .wrap button { padding: 0; }';
-			$legacy_style .= '.header-menu-sidebar .nav-ul li .wrap { padding: 0 !important; }';
-			$legacy_style .= '.header-menu-sidebar .nav-ul li a .nv-icon { padding: 0 4px; }';
-			$legacy_style .= '.header-menu-sidebar-inner .nav-ul .dropdown-open + .sub-menu, .header-menu-sidebar-inner .nav-ul .dropdown-open.sub-menu { display: block; }';
-			$legacy_style .= '.nav-ul li .menu-item-title-wrap { justify-content: var(--textalign); }';
-			$legacy_style .= '.header-menu-sidebar-inner .nav-ul li a { justify-content: var(--textalign) !important; }';
-		}
-
 		/* Showing Menu Sidebar animation css. */
 		$sidebar_animation_css  = '.is-menu-sidebar .header-menu-sidebar { visibility: visible; }';
 		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_slide_left .header-menu-sidebar { transform: translate3d(0, 0, 0); left: 0; }';
@@ -249,7 +233,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$accessibility_caret_css .= '.nav-ul li > .wrap { display: flex; align-items: center; position: relative; padding: 0 4px; }';
 		$accessibility_caret_css .= '.nav-ul:not(.menu-mobile):not(.neve-mega-menu) > li > .wrap > a { padding-top: 1px }';
 
-		return Dynamic_Css::minify_css( $sidebar_animation_css . $accessibility_caret_css . $legacy_style );
+		return Dynamic_Css::minify_css( $sidebar_animation_css . $accessibility_caret_css );
 	}
 
 	/**
@@ -431,43 +415,6 @@ JSMIN;
 		}
 
 		wp_enqueue_style( 'neve-mega-menu' );
-
-		if ( ! neve_is_new_skin() ) {
-			// Fix for MegaMenu alignment
-			$script = <<<'JS'
-function megaMenuCalcEvent() {
-	var megaMenuDowns = document.querySelectorAll(
-		'.header--row-inner .neve-mega-menu > .sub-menu'
-	);
-	megaMenuDowns.forEach( function (dropDown) {
-	    var windowWidth = window.innerWidth;
-		dropDown.style.left = '0';
-		dropDown.style.right = '0';
-		dropDown.style.transform = 'none';
-
-		var bounding = dropDown.getBoundingClientRect();
-		var percentage = Math.round( Math.abs(bounding.left) / bounding.width * 100 );
-		if ( percentage > 100 ) {
-			var tmp = percentage - 100;
-			percentage = 100 - tmp;
-		}
-		if (bounding.left < 0) {
-			dropDown.style.transform = `translateX(${percentage}%)`;
-		}
-		if (bounding.left + bounding.width >= windowWidth) {
-		    percentage = Math.round( Math.abs(bounding.left + bounding.width - windowWidth) / bounding.width * 100 );
-		    percentage = percentage * -1;
-			dropDown.style.transform = `translateX(${percentage}%)`;
-		}
-	});
-}
-var menuCalcEvent = new Event('menuCalc');
-window.addEventListener('menuCalc', function (e) {
-	megaMenuCalcEvent();
-}, false);
-JS;
-			wp_add_inline_script( 'neve-script', $script );
-		}
 		self::$mega_menu_enqueued = true;
 	}
 

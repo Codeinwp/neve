@@ -438,55 +438,6 @@ add_filter( 'neve_external_link', 'neve_external_link', 10, 3 );
  * @return array
  */
 function neve_get_global_colors_default( $migrated = false ) {
-	if ( neve_is_new_skin() ) {
-		return [
-			'activePalette' => 'base',
-			'palettes'      => [
-				'base'     => [
-					'name'          => __( 'Base', 'neve' ),
-					'allowDeletion' => false,
-					'colors'        => [
-						'nv-primary-accent'   => '#2f5aae',
-						'nv-secondary-accent' => '#2f5aae',
-						'nv-site-bg'          => '#ffffff',
-						'nv-light-bg'         => '#f4f5f7',
-						'nv-dark-bg'          => '#121212',
-						'nv-text-color'       => '#272626',
-						'nv-text-dark-bg'     => '#ffffff',
-						'nv-c-1'              => '#9463ae',
-						'nv-c-2'              => '#be574b',
-					],
-				],
-				'darkMode' => [
-					'name'          => __( 'Dark Mode', 'neve' ),
-					'allowDeletion' => false,
-					'colors'        => [
-						'nv-primary-accent'   => '#00c2ff',
-						'nv-secondary-accent' => '#00c2ff',
-						'nv-site-bg'          => '#121212',
-						'nv-light-bg'         => '#1a1a1a',
-						'nv-dark-bg'          => '#000000',
-						'nv-text-color'       => '#ffffff',
-						'nv-text-dark-bg'     => '#ffffff',
-						'nv-c-1'              => '#198754',
-						'nv-c-2'              => '#be574b',
-					],
-				],
-			],
-		];
-	}
-
-	$old_link_color       = get_theme_mod( 'neve_link_color', '#0366d6' );
-	$old_link_hover_color = get_theme_mod( 'neve_link_hover_color', '#0e509a' );
-	$old_text_color       = get_theme_mod( 'neve_text_color', '#393939' );
-
-	// We use a static var to avoid calling get_theme_mod multiple times due to the filter used to alter the value.
-	static $old_bg_color;
-	if ( ! isset( $old_bg_color ) ) {
-		$old_bg_color = '#' . get_theme_mod( 'background_color', 'ffffff' );
-	}
-	add_filter( 'theme_mod_background_color', '__return_empty_string' );
-
 	return [
 		'activePalette' => 'base',
 		'palettes'      => [
@@ -494,30 +445,30 @@ function neve_get_global_colors_default( $migrated = false ) {
 				'name'          => __( 'Base', 'neve' ),
 				'allowDeletion' => false,
 				'colors'        => [
-					'nv-primary-accent'   => $migrated ? $old_link_color : '#0366d6',
-					'nv-secondary-accent' => $migrated ? $old_link_hover_color : '#0e509a',
-					'nv-site-bg'          => $migrated ? $old_bg_color : '#ffffff',
-					'nv-light-bg'         => '#ededed',
-					'nv-dark-bg'          => '#14171c',
-					'nv-text-color'       => $migrated ? $old_text_color : '#393939',
+					'nv-primary-accent'   => '#2f5aae',
+					'nv-secondary-accent' => '#2f5aae',
+					'nv-site-bg'          => '#ffffff',
+					'nv-light-bg'         => '#f4f5f7',
+					'nv-dark-bg'          => '#121212',
+					'nv-text-color'       => '#272626',
 					'nv-text-dark-bg'     => '#ffffff',
-					'nv-c-1'              => '#77b978',
-					'nv-c-2'              => '#f37262',
+					'nv-c-1'              => '#9463ae',
+					'nv-c-2'              => '#be574b',
 				],
 			],
 			'darkMode' => [
 				'name'          => __( 'Dark Mode', 'neve' ),
 				'allowDeletion' => false,
 				'colors'        => [
-					'nv-primary-accent'   => '#26bcdb',
-					'nv-secondary-accent' => '#1f90a6',
+					'nv-primary-accent'   => '#00c2ff',
+					'nv-secondary-accent' => '#00c2ff',
 					'nv-site-bg'          => '#121212',
 					'nv-light-bg'         => '#1a1a1a',
-					'nv-dark-bg'          => '#1a1a1a',
+					'nv-dark-bg'          => '#000000',
 					'nv-text-color'       => '#ffffff',
-					'nv-text-dark-bg'     => 'rgba(255, 255, 255, 0.81)',
-					'nv-c-1'              => '#77b978',
-					'nv-c-2'              => '#f37262',
+					'nv-text-dark-bg'     => '#ffffff',
+					'nv-c-1'              => '#198754',
+					'nv-c-2'              => '#be574b',
 				],
 			],
 		],
@@ -542,6 +493,17 @@ function neve_is_new_builder() {
  */
 function neve_is_new_skin() {
 	return get_theme_mod( 'neve_new_skin', 'new' ) !== 'old';
+}
+
+/**
+ * Checks if the instance was auto upgraded to the new skin.
+ * It is used to allow rollback for auto-upgraded instances.
+ *
+ * @return bool
+ * @since 3.6.x
+ */
+function neve_was_auto_migrated_to_new() {
+	return get_theme_mod( 'neve_auto_migrated_to_new_skin', false );
 }
 
 /**
