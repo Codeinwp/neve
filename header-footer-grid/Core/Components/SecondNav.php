@@ -83,7 +83,7 @@ class SecondNav extends Abstract_Component {
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'neve_sanitize_colors',
-				'default'               => neve_is_new_skin() ? '' : 'var(--nv-text-color)',
+				'default'               => '',
 				'label'                 => __( 'Items Color', 'neve' ),
 				'type'                  => 'neve_color_control',
 				'section'               => $this->section,
@@ -257,9 +257,6 @@ class SecondNav extends Abstract_Component {
 	 * @return array
 	 */
 	public function add_style( array $css_array = array() ) {
-		if ( ! neve_is_new_skin() ) {
-			return $this->add_legacy_style( $css_array );
-		}
 
 		$rules = [
 			'--color'       => [
@@ -290,106 +287,6 @@ class SecondNav extends Abstract_Component {
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
 			Dynamic_Selector::KEY_RULES    => $rules,
-		];
-
-		return parent::add_style( $css_array );
-	}
-
-
-	/**
-	 * Add legacy style.
-	 *
-	 * @param array $css_array the styles css array.
-	 *
-	 * @return array
-	 */
-	private function add_legacy_style( array $css_array ) {
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul#secondary-menu li > a',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul a:after',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
-				],
-			],
-		];
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-menu-secondary:not(.style-full-height) .nav-ul#secondary-menu li:hover > a',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul li:not(:last-child)',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_MARGIN_RIGHT => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						return sprintf( '%s:%s;', $css_prop, absint( $value ) . 'px' );
-					},
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height #secondary-menu.nav-ul > li > a:after',
-			Dynamic_Selector::KEY_RULES    => [
-				'position' => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						if ( $device !== Dynamic_Selector::DESKTOP ) {
-							return '';
-						}
-						$value = absint( $value );
-
-						return sprintf( 'left:%s;right:%s', - $value / 2 . 'px', - $value / 2 . 'px' );
-					},
-					Dynamic_Selector::META_DEFAULT       => $this->get_default_for_responsive_from_intval( self::SPACING, 20 ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul li:hover > a:after',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_WIDTH => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						return sprintf( 'width: calc(100%% + %s);', absint( $value ) . 'px' );
-					},
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul > li > a',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_MIN_HEIGHT => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ITEM_HEIGHT,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_DEFAULT       => $this->get_default_for_responsive_from_intval( self::ITEM_HEIGHT, 25 ),
-				],
-			],
 		];
 
 		return parent::add_style( $css_array );

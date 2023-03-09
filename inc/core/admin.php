@@ -70,14 +70,37 @@ class Admin {
 
 		add_filter( 'all_plugins', array( $this, 'change_plugin_names' ) );
 
-		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
+		$this->auto_update_skin_and_builder();
 
-		$this->run_skin_and_builder_switches();
+		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
 
 		add_filter( 'ti_tpc_theme_mods_pre_import', [ $this, 'migrate_theme_mods_for_new_skin' ] );
 
 		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
 		add_filter( 'neve_pro_react_controls_localization', [ $this, 'adapt_conditional_headers' ] );
+	}
+
+	/**
+	 * Automatic upgrade from legacy builder and skin on init.
+	 *
+	 * @return void
+	 */
+	private function auto_update_skin_and_builder() {
+		// If already on new skin bail.
+		if ( get_theme_mod( 'neve_new_skin' ) === 'new' || neve_was_auto_migrated_to_new() ) {
+			return;
+		}
+		set_theme_mod( 'neve_auto_migrated_to_new_skin', true );
+
+		$this->run_skin_and_builder_switches();
+
+		$migrator = new Builder_Migrator();
+		$response = $migrator->run();
+
+		if ( $response === true ) {
+			set_theme_mod( 'neve_migrated_builders', true );
+			set_theme_mod( 'neve_new_skin', 'new' );
+		}
 	}
 
 	/**
@@ -680,7 +703,7 @@ class Admin {
 			true
 		);
 
-		$path = neve_is_new_skin() ? 'gutenberg-editor-style' : 'gutenberg-editor-legacy-style';
+		$path = 'gutenberg-editor-style';
 
 		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/' . $path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 	}
