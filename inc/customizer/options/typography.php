@@ -279,6 +279,7 @@ class Typography extends Base_Customizer {
 						'cssVar' => [
 							'vars'     => '--headingsfontfamily',
 							'selector' => 'body',
+							'fallback' => 'var(--bodyfontfamily, var(--nv-fallback-ff))',
 						],
 						'type'   => 'svg-icon-size',
 					],
