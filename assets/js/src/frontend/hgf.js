@@ -8,7 +8,7 @@ import {
 	NV_FOCUS_TRAP_END,
 } from '../utils.js';
 
-const closeNavSelector = '.ffocus';
+const closeNavSelector = '.close-sidebar-panel .navbar-toggle';
 const sidebarClasses = [
 	'is-menu-sidebar',
 	'hiding-header-menu-sidebar',
@@ -126,7 +126,7 @@ HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
 							'header-menu-sidebar'
 						),
 						close: closeNavSelector,
-						firstFocus: closeNavSelector + ', .menu-item a',
+						firstFocus: closeNavSelector + ',.menu-item a',
 						backFocus: target,
 					},
 				})
