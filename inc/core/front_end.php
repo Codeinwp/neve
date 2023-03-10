@@ -336,6 +336,7 @@ class Front_End {
 				continue;
 			}
 
+			// If font family is inherit, do not add a style for this heading.
 			if ( $font_family === '' ) {
 				continue;
 			}

@@ -26,6 +26,8 @@ use Neve\Core\Traits\Theme_Mods;
 class Typography extends Base_Customizer {
 	use Theme_Mods;
 
+	const HEADINGS_FONT_FAMILY_SELECTORS = 'h1:not(.site-title), .single h1.entry-title, h2, h3, .woocommerce-checkout h3, h4, h5, h6';
+
 	/**
 	 * Add controls
 	 */
@@ -274,7 +276,7 @@ class Typography extends Base_Customizer {
 					'section'               => 'neve_typography_headings',
 					'priority'              => 10,
 					'type'                  => 'neve_font_family_control',
-					'live_refresh_selector' => apply_filters( 'neve_headings_font_family_selectors', 'h1:not(.site-title), .single h1.entry-title, h2, h3, .woocommerce-checkout h3, h4, h5, h6' ),
+					'live_refresh_selector' => apply_filters( 'neve_headings_font_family_selectors', self::HEADINGS_FONT_FAMILY_SELECTORS ),
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => '--headingsfontfamily',
@@ -330,7 +332,7 @@ class Typography extends Base_Customizer {
 						'section'               => 'neve_typography_headings',
 						'priority'              => $priority += 1,
 						'type'                  => 'neve_font_family_control',
-						'live_refresh_selector' => apply_filters( $mod_key_font_family . '_selectors', 'h1:not(.site-title), .single h1.entry-title, h2, h3, .woocommerce-checkout h3, h4, h5, h6' ),
+						'live_refresh_selector' => apply_filters( $mod_key_font_family . '_selectors', self::HEADINGS_FONT_FAMILY_SELECTORS ),
 						'live_refresh_css_prop' => [
 							'cssVar' => [
 								'vars'     => '--' . $heading_id . 'fontfamily',
