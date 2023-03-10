@@ -859,7 +859,7 @@ abstract class Abstract_Component implements Component {
 					'sanitize_callback'     => 'neve_sanitize_typography_control',
 					'options'               => [
 						'input_attrs'         => array(
-							'size_units'             => [ 'em', 'px' ],
+							'size_units'             => [ 'em', 'px', 'rem' ],
 							'weight_default'         => $this->typography_default['fontWeight'],
 							'size_default'           => $this->typography_default['fontSize'],
 							'line_height_default'    => $this->typography_default['lineHeight'],
