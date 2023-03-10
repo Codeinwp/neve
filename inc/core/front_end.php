@@ -329,11 +329,18 @@ class Front_End {
 		foreach ( neve_get_headings_selectors() as $heading_id => $heading_selector ) {
 			$font_family = get_theme_mod( $this->get_mod_key_heading_fontfamily( $heading_id ), '' ); // default value is empty string to be consistent with default customizer control value.
 
+			$css_var = sprintf( '--%1$sfontfamily', $heading_id );
+
+			if ( is_customize_preview() ) {
+				$style .= sprintf( '%s {font-family: var(%s, var(--headingsfontfamily)), var(--nv-fallback-ff);} ', $heading_id, $css_var ); // fallback values for the first page load on the customizer
+				continue;
+			}
+
 			if ( $font_family === '' ) {
 				continue;
 			}
 
-			$style .= sprintf( '%1$s {font-family: var(--%1$sfontfamily);}', $heading_id );
+			$style .= sprintf( '%s {font-family: var(%s);}', $heading_id, $css_var );
 		}
 
 		if ( empty( $style ) ) {
