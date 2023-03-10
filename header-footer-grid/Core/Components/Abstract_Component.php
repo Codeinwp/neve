@@ -630,118 +630,6 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
-	 * Add legacy style.
-	 *
-	 * @param array $css_array the styles css array.
-	 *
-	 * @return array
-	 */
-	private function add_legacy_style( array $css_array ) {
-		if ( $this->has_font_family_control || $this->has_typeface_control ) {
-			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $this->default_typography_selector,
-				Dynamic_Selector::KEY_RULES    => [
-					Config::CSS_PROP_FONT_FAMILY    => [
-						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FONT_FAMILY_ID,
-						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FONT_FAMILY_ID ),
-					],
-					Config::CSS_PROP_FONT_SIZE      => [
-						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
-						Dynamic_Selector::META_IS_RESPONSIVE => true,
-						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
-					],
-					Config::CSS_PROP_LINE_HEIGHT    => [
-						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.lineHeight',
-						Dynamic_Selector::META_IS_RESPONSIVE => true,
-						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'lineHeight' ),
-					],
-					Config::CSS_PROP_LETTER_SPACING => [
-						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.letterSpacing',
-						Dynamic_Selector::META_IS_RESPONSIVE => true,
-						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'letterSpacing' ),
-					],
-					Config::CSS_PROP_FONT_WEIGHT    => [
-						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontWeight',
-						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontWeight' ),
-					],
-					Config::CSS_PROP_TEXT_TRANSFORM => [
-						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.textTransform',
-						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'textTransform' ),
-					],
-				],
-			];
-			$css_array[] =
-				[
-					Dynamic_Selector::KEY_SELECTOR => $this->default_typography_selector . ' svg',
-					Dynamic_Selector::KEY_RULES    =>
-						[
-							Config::CSS_PROP_WIDTH  => [
-								Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
-								Dynamic_Selector::META_IS_RESPONSIVE => true,
-								Dynamic_Selector::META_SUFFIX => 'responsive_suffix',
-								Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
-							],
-							Config::CSS_PROP_HEIGHT => [
-								Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
-								Dynamic_Selector::META_IS_RESPONSIVE => true,
-								Dynamic_Selector::META_SUFFIX => 'responsive_suffix',
-								Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
-							],
-						],
-				];
-		}
-
-		$selector = '.builder-item--' . $this->get_id();
-
-		if ( $this->default_selector !== null ) {
-			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $this->default_selector,
-				Dynamic_Selector::KEY_RULES    => [
-					Config::CSS_PROP_PADDING => [
-						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::PADDING_ID,
-						Dynamic_Selector::META_IS_RESPONSIVE => true,
-						Dynamic_Selector::META_SUFFIX  => 'responsive_unit',
-						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::PADDING_ID ),
-					],
-				],
-			];
-			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector,
-				Dynamic_Selector::KEY_RULES    => [
-					Config::CSS_PROP_MARGIN => [
-						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::MARGIN_ID,
-						Dynamic_Selector::META_IS_RESPONSIVE => true,
-						Dynamic_Selector::META_SUFFIX  => 'responsive_unit',
-						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::MARGIN_ID ),
-					],
-				],
-			];
-
-			return $css_array;
-		}
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector,
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_PADDING => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::PADDING_ID,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::PADDING_ID ),
-				],
-				Config::CSS_PROP_MARGIN  => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::MARGIN_ID,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::MARGIN_ID ),
-				],
-			],
-		];
-
-		return $css_array;
-	}
-
-	/**
 	 * Method to add Component css styles.
 	 *
 	 * @param array $css_array An array containing css rules.
@@ -751,9 +639,6 @@ abstract class Abstract_Component implements Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		if ( ! neve_is_new_skin() ) {
-			return $this->add_legacy_style( $css_array );
-		}
 
 		$rules = [
 			'--padding' => [
@@ -946,7 +831,7 @@ abstract class Abstract_Component implements Component {
 					'transport'             => 'postMessage',
 					'priority'              => $priority + 2,
 					'type'                  => '\Neve\Customizer\Controls\React\Typography',
-					'live_refresh_selector' => neve_is_new_skin() ? true : $this->default_typography_selector,
+					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => [
@@ -1033,7 +918,7 @@ abstract class Abstract_Component implements Component {
 			return;
 		}
 
-		if ( neve_is_new_skin() && ! $this->has_horizontal_alignment ) {
+		if ( ! $this->has_horizontal_alignment ) {
 			return;
 		}
 

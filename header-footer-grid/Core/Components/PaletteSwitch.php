@@ -493,36 +493,14 @@ class PaletteSwitch extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		if ( neve_is_new_skin() ) {
-			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
-				Dynamic_Selector::KEY_RULES    => [
-					'--iconsize' => [
-						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
-						Dynamic_Selector::META_DEFAULT => '{ "mobile": "' . self::DEFAULT_ICON_SIZE . '", "tablet": "' . self::DEFAULT_ICON_SIZE . '", "desktop": "' . self::DEFAULT_ICON_SIZE . '" }',
-						Dynamic_Selector::META_SUFFIX  => 'px',
-						Dynamic_Selector::META_IS_RESPONSIVE => true,
-					],
-				],
-			];
-
-			return parent::add_style( $css_array );
-		}
-
-		$selector = '.builder-item--' . $this->get_id() . ' .toggle-palette a.toggle span.icon';
-
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector,
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_WIDTH  => [
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				'--iconsize' => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SIZE_ID,
 					Dynamic_Selector::META_DEFAULT       => '{ "mobile": "' . self::DEFAULT_ICON_SIZE . '", "tablet": "' . self::DEFAULT_ICON_SIZE . '", "desktop": "' . self::DEFAULT_ICON_SIZE . '" }',
-				],
-				Config::CSS_PROP_HEIGHT => [
+					Dynamic_Selector::META_SUFFIX        => 'px',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SIZE_ID,
-					Dynamic_Selector::META_DEFAULT       => '{ "mobile": "' . self::DEFAULT_ICON_SIZE . '", "tablet": "' . self::DEFAULT_ICON_SIZE . '", "desktop": "' . self::DEFAULT_ICON_SIZE . '" }',
 				],
 			],
 		];

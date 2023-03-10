@@ -229,77 +229,6 @@ class CartIcon extends Abstract_Component {
 	}
 
 	/**
-	 * Add legacy style.
-	 *
-	 * @param array $css_array css array.
-	 *
-	 * @return array
-	 */
-	private function add_legacy_style( $css_array ) {
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' span.nv-icon.nv-cart svg',
-			Dynamic_Selector::KEY_RULES    => [
-				\Neve\Core\Settings\Config::CSS_PROP_WIDTH => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SIZE_ID ),
-				],
-				\Neve\Core\Settings\Config::CSS_PROP_HEIGHT => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SIZE_ID ),
-				],
-				\Neve\Core\Settings\Config::CSS_PROP_FILL_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .cart-icon-label',
-			Dynamic_Selector::KEY_RULES    => [
-				\Neve\Core\Settings\Config::CSS_PROP_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ':hover span.nv-icon.nv-cart svg',
-			Dynamic_Selector::KEY_RULES    => [
-				\Neve\Core\Settings\Config::CSS_PROP_FILL_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ':hover .cart-icon-label',
-			Dynamic_Selector::KEY_RULES    => [
-				\Neve\Core\Settings\Config::CSS_PROP_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
-				],
-			],
-		];
-
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .cart-icon-label',
-			Dynamic_Selector::KEY_RULES    => [
-				\Neve\Core\Settings\Config::CSS_PROP_FONT_SIZE => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::LABEL_SIZE_ID,
-					Dynamic_Selector::META_SUFFIX  => 'px',
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::LABEL_SIZE_ID ),
-				],
-			],
-		];
-
-		return parent::add_style( $css_array );
-	}
-
-	/**
 	 * Method to add Component css styles.
 	 *
 	 * @param array $css_array An array containing css rules.
@@ -309,9 +238,6 @@ class CartIcon extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		if ( ! neve_is_new_skin() ) {
-			return $this->add_legacy_style( $css_array );
-		}
 
 		$rules = [
 			'--iconsize'   => [

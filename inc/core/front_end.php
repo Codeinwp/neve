@@ -77,9 +77,7 @@ class Front_End {
 
 		add_image_size( 'neve-blog', 930, 620, true );
 		add_filter( 'wp_nav_menu_args', array( $this, 'nav_walker' ), 1001 );
-		if ( neve_is_new_skin() ) {
-			add_filter( 'theme_mod_background_color', '__return_empty_string' );
-		}
+		add_filter( 'theme_mod_background_color', '__return_empty_string' );
 		$this->add_woo_support();
 		add_filter( 'neve_dynamic_style_output', array( $this, 'css_global_custom_colors' ), PHP_INT_MAX, 2 );
 	}
@@ -330,7 +328,7 @@ class Front_End {
 	 */
 	private function add_styles() {
 		if ( class_exists( 'WooCommerce', false ) ) {
-			$style_path = neve_is_new_skin() ? 'css/woocommerce' : 'css/woocommerce-legacy';
+			$style_path = 'css/woocommerce';
 
 			wp_register_style( 'neve-woocommerce', NEVE_ASSETS_URL . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 			wp_style_add_data( 'neve-woocommerce', 'rtl', 'replace' );
@@ -351,14 +349,14 @@ class Front_End {
 
 		}
 
-		$style_path = neve_is_new_skin() ? '/style-main-new' : '/assets/css/style-legacy';
+		$style_path = '/style-main-new';
 
 		wp_register_style( 'neve-style', get_template_directory_uri() . $style_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 		wp_style_add_data( 'neve-style', 'rtl', 'replace' );
 		wp_style_add_data( 'neve-style', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-style' );
 
-		$mm_path = neve_is_new_skin() ? 'mega-menu' : 'mega-menu-legacy';
+		$mm_path = 'mega-menu';
 
 		wp_register_style( 'neve-mega-menu', get_template_directory_uri() . '/assets/css/' . $mm_path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 		wp_style_add_data( 'neve-mega-menu', 'rtl', 'replace' );
@@ -502,6 +500,7 @@ class Front_End {
 			'elem_description'  => esc_html__( 'Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click.', 'neve' ),
 			'get_pro_cta'       => esc_html__( 'Get the PRO version!', 'neve' ),
 			'opens_new_tab_des' => esc_html__( '(opens in a new tab)', 'neve' ),
+			'filter'            => __( 'Filter', 'neve' ),
 		];
 	}
 

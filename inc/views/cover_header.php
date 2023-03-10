@@ -21,9 +21,6 @@ class Cover_Header extends Base_View {
 	 * Init function
 	 */
 	public function init() {
-		if ( ! neve_is_new_skin() ) {
-			return;
-		}
 		add_action( 'neve_after_header_wrapper_hook', [ $this, 'render_cover_header' ] );
 	}
 

@@ -211,9 +211,8 @@ class Mods {
 	 * @return string|array|int|false
 	 */
 	public static function get_alternative_mod_default( $key ) {
-		$new                    = neve_is_new_skin();
 		$headings_generic_setup = [
-			'fontWeight'    => $new ? '700' : '600',
+			'fontWeight'    => '700',
 			'textTransform' => 'none',
 			'letterSpacing' => [
 				'mobile'  => 0,
@@ -222,13 +221,13 @@ class Mods {
 			],
 		];
 		$headings_sufix         = [
-			'mobile'  => $new ? 'px' : 'em',
-			'tablet'  => $new ? 'px' : 'em',
-			'desktop' => $new ? 'px' : 'em',
+			'mobile'  => 'px',
+			'tablet'  => 'px',
+			'desktop' => 'px',
 		];
 		switch ( $key ) {
 			case Config::MODS_FONT_GENERAL:
-				return $new ? 'Arial, Helvetica, sans-serif' : false;
+				return 'Arial, Helvetica, sans-serif';
 			case Config::MODS_TYPEFACE_GENERAL:
 				return [
 					'fontSize'      => [
@@ -244,7 +243,7 @@ class Mods {
 					'lineHeight'    => [
 						'mobile'  => 1.6,
 						'tablet'  => 1.6,
-						'desktop' => $new ? 1.7 : 1.6,
+						'desktop' => 1.7,
 					],
 					'letterSpacing' => [
 						'mobile'  => 0,
@@ -259,15 +258,15 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '36' : '1.5',
-							'tablet'  => $new ? '38' : '1.5',
-							'desktop' => $new ? '40' : '2',
+							'mobile'  => '36',
+							'tablet'  => '38',
+							'desktop' => '40',
 							'suffix'  => $headings_sufix,
 						],
 						'lineHeight' => [
-							'mobile'  => $new ? 1.2 : 1.6,
-							'tablet'  => $new ? 1.2 : 1.6,
-							'desktop' => $new ? 1.1 : 1.6,
+							'mobile'  => 1.2,
+							'tablet'  => 1.2,
+							'desktop' => 1.1,
 						],
 					)
 				);
@@ -276,15 +275,15 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '28' : '1.3',
-							'tablet'  => $new ? '30' : '1.3',
-							'desktop' => $new ? '32' : '1.75',
+							'mobile'  => '28',
+							'tablet'  => '30',
+							'desktop' => '32',
 							'suffix'  => $headings_sufix,
 						],
 						'lineHeight' => [
-							'mobile'  => $new ? 1.3 : 1.6,
-							'tablet'  => $new ? 1.2 : 1.6,
-							'desktop' => $new ? 1.2 : 1.6,
+							'mobile'  => 1.3,
+							'tablet'  => 1.2,
+							'desktop' => 1.2,
 						],
 					)
 				);
@@ -293,15 +292,15 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '24' : '1.1',
-							'tablet'  => $new ? '26' : '1.1',
-							'desktop' => $new ? '28' : '1.5',
+							'mobile'  => '24',
+							'tablet'  => '26',
+							'desktop' => '28',
 							'suffix'  => $headings_sufix,
 						],
 						'lineHeight' => [
-							'mobile'  => $new ? 1.4 : 1.6,
-							'tablet'  => $new ? 1.4 : 1.6,
-							'desktop' => $new ? 1.4 : 1.6,
+							'mobile'  => 1.4,
+							'tablet'  => 1.4,
+							'desktop' => 1.4,
 						],
 					)
 				);
@@ -310,15 +309,15 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '20' : '1',
-							'tablet'  => $new ? '22' : '1',
-							'desktop' => $new ? '24' : '1.25',
+							'mobile'  => '20',
+							'tablet'  => '22',
+							'desktop' => '24',
 							'suffix'  => $headings_sufix,
 						],
 						'lineHeight' => [
 							'mobile'  => 1.6,
-							'tablet'  => $new ? 1.5 : 1.6,
-							'desktop' => $new ? 1.5 : 1.6,
+							'tablet'  => 1.5,
+							'desktop' => 1.5,
 						],
 					)
 				);
@@ -327,9 +326,9 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '16' : '0.75',
-							'tablet'  => $new ? '18' : '0.75',
-							'desktop' => $new ? '20' : '1',
+							'mobile'  => '16',
+							'tablet'  => '18',
+							'desktop' => '20',
 							'suffix'  => $headings_sufix,
 						],
 						'lineHeight' => [
@@ -344,9 +343,9 @@ class Mods {
 					$headings_generic_setup,
 					array(
 						'fontSize'   => [
-							'mobile'  => $new ? '14' : '0.75',
-							'tablet'  => $new ? '14' : '0.75',
-							'desktop' => $new ? '16' : '1',
+							'mobile'  => '14',
+							'tablet'  => '14',
+							'desktop' => '16',
 							'suffix'  => $headings_sufix,
 						],
 						'lineHeight' => [
@@ -357,16 +356,11 @@ class Mods {
 					)
 				);
 			case Config::MODS_BUTTON_PRIMARY_PADDING:
-				$device = $new ? [
+				$device = [
 					'top'    => 13,
 					'right'  => 15,
 					'bottom' => 13,
 					'left'   => 15,
-				] : [
-					'top'    => 8,
-					'right'  => 12,
-					'bottom' => 8,
-					'left'   => 12,
 				];
 
 				return [
@@ -379,18 +373,18 @@ class Mods {
 				];
 			case Config::MODS_FORM_FIELDS_PADDING:
 				return [
-					'top'    => $new ? 10 : 7,
-					'bottom' => $new ? 10 : 7,
+					'top'    => 10,
+					'bottom' => 10,
 					'left'   => 12,
 					'right'  => 12,
 					'unit'   => 'px',
 				];
 			case Config::MODS_FORM_FIELDS_BORDER_WIDTH:
 				return [
-					'top'    => $new ? 2 : 1,
-					'right'  => $new ? 2 : 1,
-					'left'   => $new ? 2 : 1,
-					'bottom' => $new ? 2 : 1,
+					'top'    => 2,
+					'right'  => 2,
+					'left'   => 2,
+					'bottom' => 2,
 					'unit'   => 'px',
 				];
 			default:

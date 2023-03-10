@@ -146,7 +146,7 @@ class Layout_Blog extends Base_Customizer {
 			)
 		);
 
-		$grid_layout_default = neve_is_new_skin() ? '{"desktop":3,"tablet":2,"mobile":1}' : '{"desktop":1,"tablet":1,"mobile":1}';
+		$grid_layout_default = '{"desktop":3,"tablet":2,"mobile":1}';
 
 		$this->add_control(
 			new Control(
