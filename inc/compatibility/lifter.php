@@ -115,7 +115,7 @@ class Lifter {
 					'theme_mod' => 'neve_default_sidebar_layout',
 					'side'      => $this->get_sidebar_position(),
 				];
-			} 
+			}
 		);
 	}
 
@@ -255,7 +255,7 @@ class Lifter {
 	 * Enqueue styles.
 	 */
 	public function load_styles() {
-		$path = neve_is_new_skin() ? 'lifter' : 'lifter-legacy';
+		$path = 'lifter';
 
 		wp_enqueue_style( 'neve-lifter', NEVE_ASSETS_URL . 'css/' . $path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 	}

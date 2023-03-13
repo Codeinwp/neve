@@ -41,14 +41,6 @@ module.exports = {
 		ext,
 		src: ['style-main-new.css'],
 	},
-	styleLegacy: {
-		options,
-		expand: true,
-		cwd: './assets/css',
-		dest: './assets/css',
-		ext,
-		src: ['style-legacy.css'],
-	},
 	woocommerce: {
 		options,
 		expand: true,
@@ -56,14 +48,6 @@ module.exports = {
 		dest: './assets/css/',
 		ext,
 		src: ['woocommerce.css'],
-	},
-	woocommerceLegacy: {
-		options,
-		expand: true,
-		cwd: './assets/css/',
-		dest: './assets/css/',
-		ext,
-		src: ['woocommerce-legacy.css'],
 	},
 	customizerStyle: {
 		options,
@@ -88,14 +72,6 @@ module.exports = {
 		dest: './assets/css/',
 		ext,
 		src: ['mega-menu.css'],
-	},
-	megaMenuLegacy: {
-		options,
-		expand: true,
-		cwd: './assets/css/',
-		dest: './assets/css/',
-		ext,
-		src: ['mega-menu-legacy.css'],
 	},
 	hfg: {
 		options,

@@ -142,10 +142,6 @@ trait Single_Post {
 	 * @return boolean
 	 */
 	public function is_valid_context( $context ) {
-		if ( ! neve_is_new_skin() ) {
-			return false;
-		}
-
 		return is_singular( $context ) || is_single();
 	}
 
