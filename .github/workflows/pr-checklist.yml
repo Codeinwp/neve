@@ -17,5 +17,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           requireChecklist: true
           onlyCheckBody: true
-          completedLabel: "test-checklist-completed"
-          incompleteLabel: "test-checklist-incomplete"
+          completedLabel: "pr-checklist-complete"
+          incompleteLabel: "pr-checklist-incomplete"
