@@ -1,3 +1,7 @@
+##### [Version 3.5.5](https://github.com/Codeinwp/neve/compare/v3.5.4...v3.5.5) (2023-03-13)
+
+- Removed legacy skin
+
 ##### [Version 3.5.4](https://github.com/Codeinwp/neve/compare/v3.5.3...v3.5.4) (2023-03-01)
 
 - [Feat] Allow custom colors to be selected inside the customizer
