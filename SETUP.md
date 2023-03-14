@@ -42,15 +42,15 @@ For Plugins the clonde folder should be under `wp-content/plugins/` and for Them
 
 ### Install Dependencies for PHP and JS
 
-In the cloned repository's directory, at the command line, run `COMPOSER=composer-dev.json composer install`. 
+In the cloned repository's directory, at the command line, run `yarn run composer:install`.
 This will install the development dependencies. If you want to install just the production dependencies, run `composer install`.
 
 The development dependencies include:
-	- PHPStan
-	- PHPUnit
-	- PHP_CodeSniffer
-	- WordPress Coding Standards
-	- WordPress PHPUnit Polyfills
+- PHPStan
+- PHPUnit
+- PHP_CodeSniffer
+- WordPress Coding Standards
+- WordPress PHPUnit Polyfills
 
 For the JS dependencies, run `yarn install --frozen-lockfile`.
 To watch for changes in the JS files, run `yarn dev`.

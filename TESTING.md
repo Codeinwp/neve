@@ -7,8 +7,8 @@ This document describes how to:
 
 If you're new to creating and running tests, this guide will walk you through how to do this.
 
-For those more experienced with creating and running tests, our tests are written in PHP using [Playwright](https://playwright.dev/)
-and [PHPUnit](https://phpunit.de/).
+For those more experienced with creating and running tests, our tests are written in TS for [Playwright](https://playwright.dev/) used for End-to-End testing,
+and in PHP for [PHPUnit](https://phpunit.de/).
 
 A PHPUnit guide for WordPress can be found [here](https://make.wordpress.org/core/handbook/testing/automated-testing/phpunit/).
 
@@ -24,7 +24,7 @@ If your work creates new functionality, write a test.
 
 If your work fixes existing functionality, check if a test exists. Either update that test, or create a new test if one doesn't exist.
 
-Tests are written in PHP using [Playwright](https://playwright.dev/) and [PHPUnit](https://phpunit.de/).
+Tests are written in TS using [Playwright](https://playwright.dev/) and PHP using [PHPUnit](https://phpunit.de/).
 
 ## Types of Test
 
@@ -51,6 +51,8 @@ To write an End-to-End test, create a new file under `e2e-tests/specs` with the 
 E.g. for `e2e-tests/specs/checkout.spec.test.js`, the test file should be `checkout.spec.test.js`.
 
 For more information on writing End-to-End tests, refer to the [Playwright documentation](https://playwright.dev/docs/test-intro).
+
+You can check End-to-End [README](./e2e-tests/README.md) for more details.
 
 ## Writing a WordPress Unit Test
 
@@ -152,7 +154,7 @@ False positives [can be excluded by configuring](https://phpstan.org/user-guide/
 
 ## Next Steps
 
-Once your test(s) are written and successfully run locally, submit your branch via a new [Pull Request](https://github.com/n7studios/media-library-organizer/compare).
+Once your test(s) are written and successfully run locally, submit your branch via a new **Pull Request**.
 
 It's best to create a Pull Request in draft mode, as this will trigger all tests to run as a GitHub Action, allowing you to
 double check all tests pass.

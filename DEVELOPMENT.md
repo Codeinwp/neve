@@ -12,7 +12,7 @@ If you haven't yet set up your local development environment with a WordPress Pl
 
 In your Git client / command line, create a new branch:
 - If this is for a new feature that does not have a GitHub Issue number, enter a short descriptive name for the branch, relative to what you're working on
-- If this is for a feature/bug that has a GitHub Issue number, enter issue-XXX, replacing XXX with the GitHub issue number
+- If this is for a feature/bug that has a GitHub Issue number, enter feat/issue_name or fix/issue_name, where issue_name is a descriptive name for the issue
 
 Once done, make sure you've switched to your new branch, and begin making the necessary code additions/changes/deletions.
 
