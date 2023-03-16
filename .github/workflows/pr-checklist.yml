@@ -3,6 +3,8 @@ name: Add labels to pull request based on checklist
 on:
   pull_request:
     types: [ opened, edited, synchronize ]
+  branches-ignore:
+    - 'master'
 
 permissions: write-all
 
