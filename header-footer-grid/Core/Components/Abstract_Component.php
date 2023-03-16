@@ -144,7 +144,7 @@ abstract class Abstract_Component implements Component {
 	 *
 	 * @since   1.0.1
 	 * @access  protected
-	 * @var string $description
+	 * @var string|null $description
 	 */
 	protected $description;
 	/**

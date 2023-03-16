@@ -93,18 +93,16 @@ class Breadcrumbs extends Base_View {
 	 * Render Breadcrumbs.
 	 *
 	 * @param string $html_tag Wrapper HTML tag.
-	 *
-	 * @return bool
 	 */
 	public function render_breadcrumbs( $html_tag ) {
 		if ( is_front_page() ) {
-			return false;
+			return;
 		}
 		if ( empty( $html_tag ) ) {
 			$html_tag = 'small';
 		}
 
-		return self::maybe_render_seo_breadcrumbs( $html_tag );
+		self::maybe_render_seo_breadcrumbs( $html_tag );
 	}
 
 

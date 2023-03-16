@@ -1,0 +1,23 @@
+name: Add labels to pull request based on checklist
+
+on:
+  pull_request:
+    types: [ opened, edited, synchronize ]
+  branches-ignore:
+    - 'master'
+
+permissions: write-all
+
+jobs:
+  add-labels:
+    runs-on: ubuntu-latest
+    name: Label PR based on checklist
+    steps:
+      - name: Check if checklist items are completed
+        uses: Codeinwp/gha-pr-check-helper@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          requireChecklist: true
+          onlyCheckBody: true
+          completedLabel: "pr-checklist-complete"
+          incompleteLabel: "pr-checklist-incomplete"

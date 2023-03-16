@@ -50,7 +50,7 @@ class Main {
 	 * @access  private
 	 * @var Manager $settings
 	 */
-	private $settings;
+	private $settings; // @phpstan-ignore-line - $settings is used in the trait.
 	/**
 	 * Cache is active filter result.
 	 *
@@ -77,7 +77,7 @@ class Main {
 	 * @since   2.7.0
 	 * @var Css_Generator Dynamic CSS generator.
 	 */
-	private $css_generator;
+	private $css_generator; // @phpstan-ignore-line - $css_generator is used in the trait.
 
 	/**
 	 * Main Instance
@@ -269,31 +269,6 @@ class Main {
 	 */
 	public function __wakeup() {
 		_doing_it_wrong( __FUNCTION__, '', '1.0.0' );
-	}
-
-
-	/**
-	 * Check if assets should be enqueued.
-	 *
-	 * @return bool
-	 */
-	private function should_enqueue_assets() {
-		$disabled_templates = array( 'elementor_canvas' );
-		$current_template   = get_page_template_slug();
-
-		if ( in_array( $current_template, $disabled_templates, true ) ) {
-			return false;
-		}
-		if ( is_singular() ) {
-			$id     = get_the_ID();
-			$header = get_post_meta( $id, 'neve_meta_disable_header', true );
-			$footer = get_post_meta( $id, 'neve_meta_disable_footer', true );
-			if ( $header === 'on' && $footer === 'on' ) {
-				return false;
-			}
-		}
-
-		return true;
 	}
 }
 
