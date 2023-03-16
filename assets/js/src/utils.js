@@ -1,7 +1,7 @@
 /* global IntersectionObserver,NodeList,XMLHttpRequest */
 
-export const NV_FOCUS_TRAP_START = 'nv-ftrap-start';
-export const NV_FOCUS_TRAP_END = 'nv-ftrap-end';
+export const NV_FOCUS_TRAP_START = 'ftrap-run';
+export const NV_FOCUS_TRAP_END = 'ftrap-end';
 /**
  * Foreach wrapper.
  *
