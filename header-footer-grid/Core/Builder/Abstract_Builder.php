@@ -1391,11 +1391,6 @@ abstract class Abstract_Builder implements Builder {
 
 			$slot_classes = [ 'hfg-slot', $slot ];
 
-			// This doesn't apply to new skin as `vertical-align` is always empty.
-			if ( isset( $slot_data[0]['vertical-align'] ) ) {
-				$slot_classes[] = $slot_data[0]['vertical-align'];
-			}
-
 			foreach ( $slot_data as $item ) {
 				if ( array_key_exists( 'components', $item ) && preg_grep( '/^divider/', $item['components'] ) ) {
 					$slot_classes[] = 'has-divider';
