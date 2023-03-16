@@ -26,12 +26,6 @@ class Admin {
 	 * @var string
 	 */
 	private $dismiss_notice_key = 'neve_notice_dismissed';
-	/**
-	 * Current theme name
-	 *
-	 * @var string $theme_name Theme name.
-	 */
-	private $theme_name;
 
 	/**
 	 * Theme Details
@@ -111,6 +105,7 @@ class Admin {
 	private function get_tpc_plugin_data() {
 		$plugin_helper = new Plugin_Helper();
 		$slug          = 'templates-patterns-collection';
+		$tpc_version   = $plugin_helper->get_plugin_version( $slug, false );
 
 		$tpc_plugin_data['nonce']      = wp_create_nonce( 'wp_rest' );
 		$tpc_plugin_data['slug']       = $slug;
@@ -118,7 +113,7 @@ class Admin {
 		$tpc_plugin_data['path']       = $plugin_helper->get_plugin_path( $slug );
 		$tpc_plugin_data['activate']   = $plugin_helper->get_plugin_action_link( $slug );
 		$tpc_plugin_data['deactivate'] = $plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
-		$tpc_plugin_data['version']    = ! empty( $tpc_plugin_data['version'] ) ? $plugin_helper->get_plugin_version( $slug, $tpc_plugin_data['version'] ) : '';
+		$tpc_plugin_data['version']    = $tpc_version !== false ? $tpc_version : '';
 		$tpc_plugin_data['adminURL']   = admin_url( 'themes.php?page=tiob-starter-sites' );
 		$tpc_plugin_data['pluginsURL'] = esc_url( admin_url( 'plugins.php' ) );
 		$tpc_plugin_data['ajaxURL']    = esc_url( admin_url( 'admin-ajax.php' ) );
