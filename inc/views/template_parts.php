@@ -8,6 +8,7 @@
 
 namespace Neve\Views;
 
+use Neve\Compatibility\WPML;
 use Neve\Customizer\Defaults\Layout;
 
 /**
@@ -107,6 +108,15 @@ class Template_Parts extends Base_View {
 					'post_status' => 'publish',
 				)
 			);
+
+			/**
+			 * Filters the featured posts.
+			 *
+			 * @since 3.5.0
+			 *
+			 * @param array $posts Array of posts.
+			 */
+			$posts = apply_filters( 'neve_filter_featured_posts', $posts );
 		}
 
 		if ( $target === 'sticky' ) {
