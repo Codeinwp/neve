@@ -231,3 +231,15 @@ export const scrollTo = async (page: Page, to: string | number) => {
 		window.scrollTo(0, y);
 	}, to);
 };
+
+/**
+ * Utility function to log out of the WordPress site.
+ *
+ * @param {Page} page - The Puppeteer Page object to operate on.
+ */
+export const logOut = async (page: Page) => {
+	await page.goto('/wp-login.php?action=logout');
+	await page.locator('a').click();
+
+	await page.waitForURL('**/wp-login.php**');
+};

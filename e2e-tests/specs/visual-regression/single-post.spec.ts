@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { scrollTo } from '../../utils';
+import { scrollTo, logOut } from '../../utils';
 
 test.describe('Single Post', () => {
 	test('Comments section', async ({ page }) => {
+		await logOut(page);
 		await page.goto('/template-comments');
 		await page.evaluate(() => {
 			// @ts-ignore
@@ -10,9 +11,11 @@ test.describe('Single Post', () => {
 		});
 
 		await scrollTo(page, 500);
+		await page.waitForTimeout(500);
 		await expect(page).toHaveScreenshot();
 
 		await scrollTo(page, 5100);
+		await page.waitForTimeout(500);
 		await expect(page).toHaveScreenshot();
 	});
 });
