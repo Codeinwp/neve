@@ -158,3 +158,9 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Run Playwright tests
         run: yarn run test:playwright e2e-tests/specs/${{ matrix.specs }}
+      - name: Upload trace file
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          path: ./test-results/**
+          retention-days: 1
