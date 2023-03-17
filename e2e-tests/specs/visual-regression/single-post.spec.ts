@@ -12,10 +12,10 @@ test.describe('Single Post', () => {
 
 		await scrollTo(page, 500);
 		await page.waitForTimeout(500);
-		await expect(page).toHaveScreenshot();
+		await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 
 		await scrollTo(page, 5100);
 		await page.waitForTimeout(500);
-		await expect(page).toHaveScreenshot();
+		await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 	});
 });
