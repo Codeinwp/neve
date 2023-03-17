@@ -16,7 +16,7 @@ jobs:
       - name: Check if checklist items are completed
         uses: Codeinwp/gha-pr-check-helper@master
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.BOT_TOKEN }}
           requireChecklist: true
           onlyCheckBody: true
           completedLabel: "pr-checklist-complete"
