@@ -62,12 +62,27 @@ class WPML {
 		foreach ( $posts as $post ) {
 			$original_post_id = apply_filters( 'wpml_object_id', $post['ID'], $post['post_type'], true, $current_language );
 			if ( $original_post_id !== $post['ID'] ) {
-				$original_post_ids[] = $original_post_id;
+				$original_post_ids = $this->add_to_array_unique( $original_post_ids, $original_post_id );
 				continue;
 			}
-			$original_post_ids[] = $post['ID'];
+			$original_post_ids = $this->add_to_array_unique( $original_post_ids, $post['ID'] );
 		}
 
 		return $original_post_ids;
+	}
+
+	/**
+	 * Add to array unique values.
+	 *
+	 * @param array $array The array to add to.
+	 * @param mixed $value The value to add.
+	 *
+	 * @return array
+	 */
+	private function add_to_array_unique( $array, $value ) {
+		if ( ! in_array( $value, $array, true ) ) {
+			$array[] = $value;
+		}
+		return $array;
 	}
 }
