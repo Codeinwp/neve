@@ -1,6 +1,6 @@
 // === Separators === //
 .wp-block-separator {
-	border-bottom: 0;
+	//border-bottom: 0;
 	border-top: 2px solid;
 
 	&.is-style-wide {
@@ -8,7 +8,7 @@
 	}
 
 	&.is-style-dots {
-		border-top: 4px dotted;
+		border-top: 4px dotted !important;
 
 		&::before {
 			content: none;
