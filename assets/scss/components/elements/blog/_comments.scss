@@ -88,9 +88,9 @@
 	@extend %nv-has-h4-typography;
 }
 
-//.comment-content {
-//	flex: 1;
-//}
+.comment-content {
+	flex: 1;
+}
 
 .comment-form {
 	display: grid;
