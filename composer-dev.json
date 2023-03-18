@@ -40,7 +40,7 @@
 	"phpcs": "phpcs --standard=phpcs.xml -s  --runtime-set testVersion 7.0-",
 	"lint": "composer run-script phpcs",
 	"phpcs-i": "phpcs -i",
-	"phpstan": "phpstan analyse",
+	"phpstan": "./vendor/bin/phpstan analyse --memory-limit=2G --configuration=phpstan.neon",
 	"post-install-cmd": [
 	  "[ ! -z \"$GITHUB_ACTIONS\" ] && yarn run bump-vendor || true"
 	],
@@ -54,7 +54,7 @@
 	"optimize-autoloader": true,
 	"platform-check": false,
 	"platform": {
-	  "php": "7.0"
+	  "php": "7.2"
 	},
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true
@@ -64,6 +64,10 @@
 	"installer-disable": "true"
   },
   "require-dev": {
-    "codeinwp/phpcs-ruleset": "dev-main"
+    "codeinwp/phpcs-ruleset": "dev-main",
+	"phpstan/phpstan": "1.8.7",
+	"szepeviktor/phpstan-wordpress": "^v1.1.7",
+	"php-stubs/woocommerce-stubs": "^7.4.0",
+	"php-stubs/wordpress-stubs": "^6.1"
   }
 }

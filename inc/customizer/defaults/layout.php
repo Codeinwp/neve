@@ -21,21 +21,13 @@ trait Layout {
 	 * @return string
 	 */
 	private function sidebar_layout_alignment_default( $control_id ) {
-		if ( neve_is_new_skin() ) {
-			$full_width = [
-				'neve_blog_archive_sidebar_layout',
-				'neve_other_pages_sidebar_layout',
-				'neve_single_product_sidebar_layout',
-			];
-			$full_width = apply_filters( 'neve_sidebar_layout_alignment_defaults', $full_width );
-			if ( in_array( $control_id, $full_width, true ) ) {
-				return 'full-width';
-			}
-
-			return 'right';
-		}
-
-		if ( $control_id === 'neve_single_product_sidebar_layout' ) {
+		$full_width = [
+			'neve_blog_archive_sidebar_layout',
+			'neve_other_pages_sidebar_layout',
+			'neve_single_product_sidebar_layout',
+		];
+		$full_width = apply_filters( 'neve_sidebar_layout_alignment_defaults', $full_width );
+		if ( in_array( $control_id, $full_width, true ) ) {
 			return 'full-width';
 		}
 
@@ -50,16 +42,14 @@ trait Layout {
 	 * @return int
 	 */
 	private function sidebar_layout_width_default( $control_id ) {
-		if ( neve_is_new_skin() ) {
-			$full_width = [
-				'neve_blog_archive_content_width',
-				'neve_other_pages_content_width',
-				'neve_single_product_content_width',
-			];
-			$full_width = apply_filters( 'neve_sidebar_full_width_defaults', $full_width );
-			if ( in_array( $control_id, $full_width, true ) ) {
-				return 100;
-			}
+		$full_width = [
+			'neve_blog_archive_content_width',
+			'neve_other_pages_content_width',
+			'neve_single_product_content_width',
+		];
+		$full_width = apply_filters( 'neve_sidebar_full_width_defaults', $full_width );
+		if ( in_array( $control_id, $full_width, true ) ) {
+			return 100;
 		}
 
 		// 70 is default on both new & old.
@@ -72,7 +62,7 @@ trait Layout {
 	 * @return string
 	 */
 	private function grid_columns_default() {
-		return neve_is_new_skin() ? '{"desktop":3,"tablet":2,"mobile":1}' : '{"desktop":1,"tablet":1,"mobile":1}';
+		return '{"desktop":3,"tablet":2,"mobile":1}';
 	}
 
 	/**

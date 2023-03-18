@@ -25,7 +25,7 @@ const ColorControl = ({
 	defaultValue,
 	disableGlobal,
 	allowGradient,
-	children
+	children,
 }) => {
 	let toggle = null;
 	const { shouldUseColorPickerFix } = window.nvComponents;
@@ -150,7 +150,6 @@ const ColorControl = ({
 										className="current-color-gradient"
 										style={{
 											background: selectedColor,
-											width: '100%',
 											height: '177px',
 											border: '1px solid #eee',
 											minWidth: '215px',

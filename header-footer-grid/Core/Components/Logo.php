@@ -513,9 +513,6 @@ JS;
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		if ( ! neve_is_new_skin() ) {
-			return $this->add_legacy_style( $css_array );
-		}
 
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
@@ -529,36 +526,6 @@ JS;
 				'--color'    => [
 					Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::COLOR_ID,
 				],
-			],
-		];
-
-		return parent::add_style( $css_array );
-	}
-
-	/**
-	 * Add legacy style.
-	 *
-	 * @param array $css_array css array.
-	 *
-	 * @return array
-	 */
-	private function add_legacy_style( $css_array ) {
-		$selector = '.builder-item--' . $this->get_id() . ' .site-logo img';
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector,
-			Dynamic_Selector::KEY_RULES    => [
-				\Neve\Core\Settings\Config::CSS_PROP_MAX_WIDTH => [
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::MAX_WIDTH,
-					Dynamic_Selector::META_DEFAULT       => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
-				],
-			],
-		];
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .brand .nv-title-tagline-wrap',
-			Dynamic_Selector::KEY_RULES    => [
-				\Neve\Core\Settings\Config::CSS_PROP_COLOR => $this->get_id() . '_' . self::COLOR_ID,
 			],
 		];
 

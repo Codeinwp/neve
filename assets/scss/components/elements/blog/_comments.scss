@@ -29,10 +29,6 @@
 		border-radius: 100%;
 	}
 
-	.comment-content {
-		flex-grow: 1;
-	}
-
 	input:not([type="submit"]):not([type="checkbox"]) {
 		width: 100%;
 	}
@@ -116,10 +112,6 @@
 }
 
 @mixin comments--tablet() {
-
-	.nv-comments-list .children {
-		padding-left: $spacing-xl;
-	}
 
 	#comments {
 

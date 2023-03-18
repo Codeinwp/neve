@@ -122,7 +122,7 @@ class Manager {
 			}
 			$arguments = self::$settings[ $id ];
 
-			if ( isset( $arguments['live_refresh_css_prop'] ) && isset( $arguments['live_refresh_css_prop']['cssVar'] ) && neve_is_new_skin() ) {
+			if ( isset( $arguments['live_refresh_css_prop'] ) && isset( $arguments['live_refresh_css_prop']['cssVar'] ) ) {
 				$transport = 'postMessage';
 			} else {
 				$transport = isset( $core_transports[ $arguments['transport'] ] ) ? $arguments['transport'] : $this->handle_transport( $arguments['transport'], $id );
@@ -394,9 +394,7 @@ class Manager {
 						$array[ $arguments['type'] ] = [];
 					}
 
-					if ( isset( $arguments['live_refresh_selector'] ) ) {
-						$args['selector'] = $arguments['live_refresh_selector'];
-					}
+					$args['selector'] = $arguments['live_refresh_selector'];
 
 					if ( isset( $arguments['live_refresh_css_prop'] ) ) {
 						$args['additional'] = $arguments['live_refresh_css_prop'];

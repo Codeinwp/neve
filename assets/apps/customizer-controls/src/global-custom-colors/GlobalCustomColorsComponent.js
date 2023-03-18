@@ -16,6 +16,20 @@ const GlobalColorsComponent = ({ control }) => {
 			nextValue.flag = true;
 		}
 		control.setting.set(nextValue);
+
+		//CSS Tag Update
+		const cssTag = document.querySelector(
+			'#nv-custom-color-vars-inline-css'
+		);
+		let style = ':root{';
+		Object.keys(nextValue).map((slug) => {
+			if (slug !== 'flag') {
+				style += `--${slug}:${nextValue[slug].val};`;
+			}
+			return false;
+		});
+		style += '}';
+		cssTag.innerHTML = style;
 	};
 
 	return (

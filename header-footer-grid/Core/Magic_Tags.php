@@ -437,6 +437,9 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function user_nicename() {
+		/**
+		 * @var \WP_User|null $current_user
+		 */
 		$current_user = wp_get_current_user();
 		if ( empty( $current_user ) ) {
 			return '';
@@ -450,6 +453,9 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function display_name() {
+		/**
+		 * @var \WP_User|null $current_user
+		 */
 		$current_user = wp_get_current_user();
 		if ( empty( $current_user ) ) {
 			return '';
@@ -463,6 +469,9 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function user_email() {
+		/**
+		 * @var \WP_User|null $current_user
+		 */
 		$current_user = wp_get_current_user();
 		if ( empty( $current_user ) ) {
 			return '';

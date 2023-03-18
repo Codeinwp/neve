@@ -21,3 +21,11 @@ jobs:
           from_branch: master
           target_branch: development
           github_token: ${{ secrets.BOT_TOKEN }}
+      - name: Merge development -> 3-6
+        if: ${{ steps.retrieve-branch-name.outputs.branch_name == 'development' }}
+        uses: Codeinwp/merge-branch@master
+        with:
+          type: now
+          from_branch: development
+          target_branch: new/3-6
+          github_token: ${{ secrets.BOT_TOKEN }}

@@ -96,7 +96,7 @@ class Pagination extends Base_View {
 		$query = new \WP_Query( $args );
 		if ( $query->have_posts() ) {
 			ob_start();
-			while ( $query->have_posts() ) {
+			while ( $query->have_posts() ) { // @phpstan-ignore-line impure WP function
 				$query->the_post();
 
 				/**
@@ -114,7 +114,7 @@ class Pagination extends Base_View {
 				 * @since 2.11 in the /index.php
 				 */
 				do_action( 'neve_loop_entry_after' );
-			}
+			} // @phpstan-ignore-next-line code is reachable
 			wp_reset_postdata();
 			$output = ob_get_contents();
 			ob_end_clean();
