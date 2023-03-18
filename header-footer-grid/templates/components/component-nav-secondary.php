@@ -30,6 +30,8 @@ $container_classes[] = 'nav-menu-secondary';
 				'container'      => 'ul',
 				'depth'          => - 1,
 				'fallback_cb'    => '__return_false',
+				'before'         => '<div class="wrap">',
+				'after'          => '</div>',
 			)
 		);
 		?>
