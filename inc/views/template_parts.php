@@ -112,9 +112,9 @@ class Template_Parts extends Base_View {
 			/**
 			 * Filters the featured posts.
 			 *
-			 * @since 3.5.0
+			 * @since 3.5.6
 			 *
-			 * @param array $posts Array of posts.
+			 * @param array $posts Array of posts. The return value can be an array of posts or an array of post IDs.
 			 */
 			$posts = apply_filters( 'neve_filter_featured_posts', $posts );
 		}

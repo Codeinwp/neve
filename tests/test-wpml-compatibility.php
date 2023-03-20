@@ -34,7 +34,8 @@ class TestWPMLCompatibility extends WP_UnitTestCase {
 			)
 		);
 		$filtered_posts = apply_filters( 'neve_filter_featured_posts', $posts );
-		$containsAllValues = ! array_diff( array_column( $posts, 'iD' ), $filtered_posts );
+		$containsAllValues = ! array_diff( array_column( $posts, 'ID' ), $filtered_posts );
+		$this->assertTrue( count( $filtered_posts ) === count( array_filter( $filtered_posts, 'is_numeric' ) ), 'The filtered array values are numeric. The returned array is of post IDs' );
 		$this->assertTrue( $containsAllValues, 'WPML compatibility should not filter posts' );
 
 		$original_post_id = $posts[0]['ID'];

@@ -54,7 +54,7 @@ class WPML {
 	 *
 	 * @param array $posts The posts to filter.
 	 *
-	 * @return array
+	 * @return array This returns an array of post id's. The filter also accepts an array of posts.
 	 */
 	final public function filter_posts_and_return_original( $posts ) {
 		$original_post_ids = array();
