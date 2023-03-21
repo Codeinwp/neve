@@ -85,3 +85,4 @@ composer-dev.lock
 SETUP.md
 DEVELOPMENT.md
 TESTING.md
+tsconfig.json
