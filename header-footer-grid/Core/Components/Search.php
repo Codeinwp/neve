@@ -133,7 +133,10 @@ class Search extends Abstract_SearchComponent {
 				'live_refresh_css_prop' => [
 					'cssVar'     => [
 						'responsive' => true,
-						'vars'       => '--formfieldfontsize',
+						'vars'       => [
+							'--formfieldfontsize',
+							'--btnfs',
+						],
 						'suffix'     => 'px',
 						'selector'   => '.builder-item--' . $this->get_id(),
 					],
@@ -413,11 +416,15 @@ class Search extends Abstract_SearchComponent {
 			],
 		];
 
+		// If button mode is enabled, get inherit the input font size for button font size. (That's here instead of hard-coded css to avoid size limit being exceeded)
+		if ( $this->search_icon_button_instance->is_button_mode_enabled() ) {
+			$rules['--btnfs'] = $rules['--formfieldfontsize'];
+		}
+
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
 			Dynamic_Selector::KEY_RULES    => $rules,
 		];
-
 
 		return parent::add_style( $css_array );
 	}
