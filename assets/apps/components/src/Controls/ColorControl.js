@@ -157,6 +157,7 @@ const ColorControl = ({
 									/>
 									<GradientPicker
 										value={gradient}
+										gradients={[]}
 										onChange={(currentGradient) => {
 											setGradient(currentGradient);
 											onChange(currentGradient);
