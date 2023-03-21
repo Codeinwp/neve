@@ -24,4 +24,4 @@ logs.log
 /playwright-report/
 /playwright/.cache/
 .phpunit.result.cache
-
+/playwright/.auth/
