@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { scrollTo, logOut } from '../../utils';
-import { forEach } from 'lodash';
 
 test.describe('Single Post', () => {
 	test('Check comments section', async ({ page }) => {
