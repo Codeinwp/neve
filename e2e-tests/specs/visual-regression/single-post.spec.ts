@@ -1,21 +1,26 @@
 import { test, expect } from '@playwright/test';
 import { scrollTo, logOut } from '../../utils';
+import { forEach } from 'lodash';
 
 test.describe('Single Post', () => {
-	test('Comments section', async ({ page }) => {
+	test('Check comments section', async ({ page }) => {
 		await logOut(page);
 		await page.goto('/template-comments');
-		await page.evaluate(() => {
-			// @ts-ignore
-			document.body.style.zoom = 0.7;
-		});
 
-		await scrollTo(page, 500);
-		await page.waitForTimeout(500);
-		await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+		const comments = await page.locator('#comments').boundingBox();
+		const multiLevelComments = await page
+			.locator('#comments .children')
+			.first()
+			.boundingBox();
+		const commentsForm = await page.locator('#respond').boundingBox();
 
-		await scrollTo(page, 5100);
-		await page.waitForTimeout(500);
-		await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+		for (const position of [comments, multiLevelComments, commentsForm]) {
+			if (!position) {
+				continue;
+			}
+			await scrollTo(page, position.y);
+			await page.waitForTimeout(500);
+			await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
+		}
 	});
 });
