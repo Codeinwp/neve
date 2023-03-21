@@ -1,3 +1,15 @@
+##### [Version 3.5.5](https://github.com/Codeinwp/neve/compare/v3.5.4...v3.5.5) (2023-03-13)
+
+- Removed legacy skin
+
+##### [Version 3.5.4](https://github.com/Codeinwp/neve/compare/v3.5.3...v3.5.4) (2023-03-01)
+
+- [Feat] Allow custom colors to be selected inside the customizer
+- [Fix] Proper indentation for comments
+- [Fix] Inconsistent space between avatar and text in comments
+- [Fix] Add margin-bottom for images with no caption
+- Update Google Fonts
+
 ##### [Version 3.5.3](https://github.com/Codeinwp/neve/compare/v3.5.2...v3.5.3) (2023-02-16)
 
 - [Fix] Alternative Layout control not visible inside the customizer

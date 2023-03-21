@@ -107,7 +107,7 @@ class Woocommerce {
 	public function init() {
 		add_filter( 'body_class', array( $this, 'add_payment_method_class' ) );
 		add_action( 'wp', array( $this, 'register_hooks' ), 11 );
-		add_action( 'neve_react_controls_localization', array( $this, 'add_customizer_options' ) );
+		add_filter( 'neve_react_controls_localization', array( $this, 'add_customizer_options' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'payment_style' ), 100 );
 	}
 
@@ -330,35 +330,33 @@ class Woocommerce {
 		$this->add_inline_selectors();
 		add_action( 'wp', [ $this, 'setup_form_buttons' ] );
 
-		if ( neve_is_new_skin() ) {
-			add_action(
-				'woocommerce_checkout_before_customer_details',
-				function () {
-					echo '<div class="nv-customer-details">';
-				},
-				0
-			);
-			add_action( 'woocommerce_checkout_after_customer_details', [ $this, 'close_div' ], PHP_INT_MAX );
-			add_action(
-				'woocommerce_checkout_before_order_review_heading',
-				function () {
-					echo '<div class="nv-order-review">';
-				}
-			);
-			add_action( 'woocommerce_checkout_after_order_review', [ $this, 'close_div' ] );
+		add_action(
+			'woocommerce_checkout_before_customer_details',
+			function () {
+				echo '<div class="nv-customer-details">';
+			},
+			0
+		);
+		add_action( 'woocommerce_checkout_after_customer_details', [ $this, 'close_div' ], PHP_INT_MAX );
+		add_action(
+			'woocommerce_checkout_before_order_review_heading',
+			function () {
+				echo '<div class="nv-order-review">';
+			}
+		);
+		add_action( 'woocommerce_checkout_after_order_review', [ $this, 'close_div' ] );
 
-			add_action(
-				'woocommerce_before_single_product_summary',
-				function () {
-					echo '<div class="nv-single-product-top">';
-				},
-				11
-			);
-			// here the priority should always be to close earlier than the Neve PRO performance module opening div
-			add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ], -100 );
-			// Change default for shop columns WooCommerce option.
-			add_filter( 'default_option_woocommerce_catalog_columns', [ $this, 'change_default_shop_cols' ] );
-		}
+		add_action(
+			'woocommerce_before_single_product_summary',
+			function () {
+				echo '<div class="nv-single-product-top">';
+			},
+			11
+		);
+		// here the priority should always be to close earlier than the Neve PRO performance module opening div
+		add_action( 'woocommerce_after_single_product_summary', [ $this, 'close_div' ], -100 );
+		// Change default for shop columns WooCommerce option.
+		add_filter( 'default_option_woocommerce_catalog_columns', [ $this, 'change_default_shop_cols' ] );
 	}
 
 	/**
@@ -389,42 +387,36 @@ class Woocommerce {
 
 	/**
 	 * Set a flag that tells the plugin that woocommerce pages were created from their tool.
-	 *
-	 * @return bool
 	 */
 	public function set_update_woo_width_flag() {
 
 		if ( ! isset( $_GET['page'] ) ) {
-			return false;
+			return;
 		}
 
 		$current_page = sanitize_text_field( wp_unslash( $_GET['page'] ) );
 		if ( 'wc-status' !== $current_page && 'wc-setup' !== $current_page ) {
-			return false;
+			return;
 		}
 
 		if ( $current_page === 'wc-status' && ( ! isset( $_GET['action'] ) || ! isset( $_GET['_wpnonce'] ) || 'install_pages' !== sanitize_text_field( wp_unslash( $_GET['action'] ) ) ) ) {
-			return false;
+			return;
 		}
 
 		if ( $current_page === 'wc-setup' && ( ! isset( $_GET['step'] ) || 'payment' !== sanitize_text_field( wp_unslash( $_GET['step'] ) ) ) ) {
-			return false;
+			return;
 		}
 
 		update_option( 'neve_update_woo_width', 'yes' );
 		set_transient( 'woocommerce_shop_page_id', 'executed', 10 * MINUTE_IN_SECONDS );
-
-		return true;
 	}
 
 	/**
 	 * Update WooCommerce pages after the pages were created from their tool,
-	 *
-	 * @return bool
 	 */
 	public function update_woo_width() {
 		if ( get_option( 'neve_update_woo_width' ) !== 'yes' ) {
-			return false;
+			return;
 		}
 
 		$cart_id     = get_option( 'woocommerce_cart_page_id' );
@@ -440,8 +432,6 @@ class Woocommerce {
 			update_post_meta( $page_id, 'neve_meta_content_width', 100 );
 		}
 		update_option( 'neve_update_woo_width', false );
-
-		return true;
 	}
 
 	/**
@@ -452,13 +442,7 @@ class Woocommerce {
 	 * @return mixed
 	 */
 	public function change_breadcrumbs_delimiter( $default ) {
-		if ( neve_is_new_skin() ) {
-			$default['delimiter'] = '<span class="nv-breadcrumb-delimiter">\</span>';
-
-			return $default;
-		}
-
-		$default['delimiter'] = '<span class="nv-breadcrumb-delimiter">&raquo;</span>';
+		$default['delimiter'] = '<span class="nv-breadcrumb-delimiter">\</span>';
 
 		return $default;
 	}
@@ -580,17 +564,9 @@ class Woocommerce {
 
 		$button_attrs = apply_filters( 'neve_woocommerce_sidebar_filter_btn_data_attrs', '' );
 
-
-		if ( neve_is_new_skin() ) {
-			echo '<a href="#" class="nv-sidebar-toggle" ' . wp_kses_post( $button_attrs ) . '>';
-			echo '<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M25 21.6667V1.66667C25 0.75 24.25 0 23.3333 0H1.66667C0.75 0 0 0.75 0 1.66667V21.6667C0 22.5833 0.75 23.3333 1.66667 23.3333H23.3333C24.25 23.3333 25 22.5833 25 21.6667ZM8.33333 13.3333H10C10.9167 13.3333 11.6667 14.0833 11.6667 15C11.6667 15.9167 10.9167 16.6667 10 16.6667H8.33333V19.1667C8.33333 19.6333 7.96667 20 7.5 20C7.03333 20 6.66667 19.6333 6.66667 19.1667V16.6667H5C4.08333 16.6667 3.33333 15.9167 3.33333 15C3.33333 14.0833 4.08333 13.3333 5 13.3333H6.66667V4.16667C6.66667 3.7 7.03333 3.33333 7.5 3.33333C7.96667 3.33333 8.33333 3.7 8.33333 4.16667V13.3333ZM15 10H16.6667V19.1667C16.6667 19.6333 17.0333 20 17.5 20C17.9667 20 18.3333 19.6333 18.3333 19.1667V10H20C20.9167 10 21.6667 9.25 21.6667 8.33333C21.6667 7.41667 20.9167 6.66667 20 6.66667H18.3333V4.16667C18.3333 3.7 17.9667 3.33333 17.5 3.33333C17.0333 3.33333 16.6667 3.7 16.6667 4.16667V6.66667H15C14.0833 6.66667 13.3333 7.41667 13.3333 8.33333C13.3333 9.25 14.0833 10 15 10Z" fill="currentColor"/></svg>';
-			echo '</a>';
-
-			return;
-		}
-
-		$button_text = apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) . '»' );
-		echo '<a href="#" class="nv-sidebar-toggle" ' . wp_kses_post( $button_attrs ) . '>' . esc_html( $button_text ) . '</a>';
+		echo '<a href="#" class="nv-sidebar-toggle" ' . wp_kses_post( $button_attrs ) . '>';
+		echo '<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M25 21.6667V1.66667C25 0.75 24.25 0 23.3333 0H1.66667C0.75 0 0 0.75 0 1.66667V21.6667C0 22.5833 0.75 23.3333 1.66667 23.3333H23.3333C24.25 23.3333 25 22.5833 25 21.6667ZM8.33333 13.3333H10C10.9167 13.3333 11.6667 14.0833 11.6667 15C11.6667 15.9167 10.9167 16.6667 10 16.6667H8.33333V19.1667C8.33333 19.6333 7.96667 20 7.5 20C7.03333 20 6.66667 19.6333 6.66667 19.1667V16.6667H5C4.08333 16.6667 3.33333 15.9167 3.33333 15C3.33333 14.0833 4.08333 13.3333 5 13.3333H6.66667V4.16667C6.66667 3.7 7.03333 3.33333 7.5 3.33333C7.96667 3.33333 8.33333 3.7 8.33333 4.16667V13.3333ZM15 10H16.6667V19.1667C16.6667 19.6333 17.0333 20 17.5 20C17.9667 20 18.3333 19.6333 18.3333 19.1667V10H20C20.9167 10 21.6667 9.25 21.6667 8.33333C21.6667 7.41667 20.9167 6.66667 20 6.66667H18.3333V4.16667C18.3333 3.7 17.9667 3.33333 17.5 3.33333C17.0333 3.33333 16.6667 3.7 16.6667 4.16667V6.66667H15C14.0833 6.66667 13.3333 7.41667 13.3333 8.33333C13.3333 9.25 14.0833 10 15 10Z" fill="currentColor"/></svg>';
+		echo '</a>';
 	}
 
 	/**
@@ -888,8 +864,7 @@ class Woocommerce {
 			return false;
 		}
 
-		$new_skin         = neve_is_new_skin();
-		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', $new_skin );
+		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', true );
 
 		$mod = 'neve_default_sidebar_layout';
 		if ( $advanced_options === true ) {
@@ -1033,63 +1008,9 @@ class Woocommerce {
 	}
 
 	/**
-	 * Setup legacy form buttons.
-	 *
-	 * @since 3.0.0
-	 */
-	private function setup_legacy_form_buttons() {
-		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
-		if ( $form_buttons_type === 'primary' ) {
-			add_filter(
-				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
-				array( $this, 'add_buttons_selectors' ),
-				10,
-				1
-			);
-			add_filter(
-				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_PADDING,
-				array( $this, 'add_buttons_padding_selectors' ),
-				10,
-				1
-			);
-			add_filter(
-				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
-				array( $this, 'add_buttons_hover_selectors' ),
-				10,
-				1
-			);
-
-			return;
-		}
-		add_filter(
-			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
-			array( $this, 'add_buttons_selectors' ),
-			10,
-			1
-		);
-		add_filter(
-			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_PADDING,
-			array( $this, 'add_buttons_padding_selectors' ),
-			10,
-			1
-		);
-		add_filter(
-			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
-			array( $this, 'add_buttons_hover_selectors' ),
-			10,
-			1
-		);
-	}
-
-	/**
 	 * Setup Form Buttons Type
 	 */
 	public function setup_form_buttons() {
-		if ( ! neve_is_new_skin() ) {
-			$this->setup_legacy_form_buttons();
-
-			return;
-		}
 		add_filter(
 			'neve_selectors_' . Config::CSS_SELECTOR_FORM_BUTTON,
 			function ( $selectors ) {

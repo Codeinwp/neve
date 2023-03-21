@@ -57,7 +57,7 @@ class Page_Header extends Base_View {
 			return;
 		}
 		$header_layout = get_theme_mod( 'neve_page_header_layout', 'normal' );
-		if ( $header_layout !== 'normal' && $context === 'single-page' ) {
+		if ( $header_layout !== 'normal' && in_array( $context, [ 'single-page', 'woo-page' ], true ) ) {
 			return;
 		}
 

@@ -515,9 +515,8 @@ CSS;
 			]
 		);
 
-		$new_skin = neve_is_new_skin();
-		$mod_key  = self::BUTTON_APPEARANCE;
-		$default  = $new_skin ? [
+		$mod_key = self::BUTTON_APPEARANCE;
+		$default = [
 			'type'         => 'outline',
 			'borderRadius' => [
 				'top'    => 0,
@@ -525,7 +524,7 @@ CSS;
 				'bottom' => 0,
 				'right'  => 0,
 			],
-		] : [ 'type' => 'outline' ];
+		];
 
 		SettingsManager::get_instance()->add(
 			[
@@ -572,37 +571,6 @@ CSS;
 		);
 	}
 
-
-	/**
-	 * Add legacy style.
-	 *
-	 * @param array $css_array css array.
-	 *
-	 * @return array
-	 */
-	private function add_legacy_style( $css_array ) {
-		$id          = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ', ' . $this->close_button,
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => $id . '.background',
-				Config::CSS_PROP_COLOR            => $id . '.text',
-				Config::CSS_PROP_BORDER_RADIUS    => $id . '.borderRadius',
-				Config::CSS_PROP_CUSTOM_BTN_TYPE  => $id . '.type',
-				Config::CSS_PROP_BORDER_WIDTH     => $id . '.borderWidth',
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .icon-bar, ' . $this->close_button . ' .icon-bar',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => $id . '.text',
-			],
-		];
-
-		return parent::add_style( $css_array );
-	}
-
 	/**
 	 * Add CSS style for the component.
 	 *
@@ -611,9 +579,6 @@ CSS;
 	 * @return array
 	 */
 	public function add_style( array $css_array = array() ) {
-		if ( ! neve_is_new_skin() ) {
-			return $this->add_legacy_style( $css_array );
-		}
 
 		$id = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
 

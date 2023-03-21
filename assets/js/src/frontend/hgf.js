@@ -49,7 +49,10 @@ HFG.prototype.init = function (skipSidebar = false) {
 		'.menu-mobile-toggle'
 	);
 	addEvent(menuMobileToggleButtons, 'click', (event) => {
-		this.toggleMenuSidebar(true, event.target);
+		this.toggleMenuSidebar(
+			!event.target.parentElement.classList.contains('is-active'),
+			event.target
+		);
 	});
 
 	/**
@@ -126,7 +129,7 @@ HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
 							'header-menu-sidebar'
 						),
 						close: closeNavSelector,
-						firstFocus: closeNavSelector,
+						firstFocus: closeNavSelector + ',.menu-item a',
 						backFocus: target,
 					},
 				})

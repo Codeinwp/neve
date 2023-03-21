@@ -26,12 +26,6 @@ class Admin {
 	 * @var string
 	 */
 	private $dismiss_notice_key = 'neve_notice_dismissed';
-	/**
-	 * Current theme name
-	 *
-	 * @var string $theme_name Theme name.
-	 */
-	private $theme_name;
 
 	/**
 	 * Theme Details
@@ -70,14 +64,37 @@ class Admin {
 
 		add_filter( 'all_plugins', array( $this, 'change_plugin_names' ) );
 
-		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
+		$this->auto_update_skin_and_builder();
 
-		$this->run_skin_and_builder_switches();
+		add_action( 'after_switch_theme', array( $this, 'migrate_options' ) );
 
 		add_filter( 'ti_tpc_theme_mods_pre_import', [ $this, 'migrate_theme_mods_for_new_skin' ] );
 
 		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
 		add_filter( 'neve_pro_react_controls_localization', [ $this, 'adapt_conditional_headers' ] );
+	}
+
+	/**
+	 * Automatic upgrade from legacy builder and skin on init.
+	 *
+	 * @return void
+	 */
+	private function auto_update_skin_and_builder() {
+		// If already on new skin bail.
+		if ( get_theme_mod( 'neve_new_skin' ) === 'new' || neve_was_auto_migrated_to_new() ) {
+			return;
+		}
+		set_theme_mod( 'neve_auto_migrated_to_new_skin', true );
+
+		$this->run_skin_and_builder_switches();
+
+		$migrator = new Builder_Migrator();
+		$response = $migrator->run();
+
+		if ( $response === true ) {
+			set_theme_mod( 'neve_migrated_builders', true );
+			set_theme_mod( 'neve_new_skin', 'new' );
+		}
 	}
 
 	/**
@@ -88,6 +105,7 @@ class Admin {
 	private function get_tpc_plugin_data() {
 		$plugin_helper = new Plugin_Helper();
 		$slug          = 'templates-patterns-collection';
+		$tpc_version   = $plugin_helper->get_plugin_version( $slug, false );
 
 		$tpc_plugin_data['nonce']      = wp_create_nonce( 'wp_rest' );
 		$tpc_plugin_data['slug']       = $slug;
@@ -95,7 +113,7 @@ class Admin {
 		$tpc_plugin_data['path']       = $plugin_helper->get_plugin_path( $slug );
 		$tpc_plugin_data['activate']   = $plugin_helper->get_plugin_action_link( $slug );
 		$tpc_plugin_data['deactivate'] = $plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
-		$tpc_plugin_data['version']    = ! empty( $tpc_plugin_data['version'] ) ? $plugin_helper->get_plugin_version( $slug, $tpc_plugin_data['version'] ) : '';
+		$tpc_plugin_data['version']    = $tpc_version !== false ? $tpc_version : '';
 		$tpc_plugin_data['adminURL']   = admin_url( 'themes.php?page=tiob-starter-sites' );
 		$tpc_plugin_data['pluginsURL'] = esc_url( admin_url( 'plugins.php' ) );
 		$tpc_plugin_data['ajaxURL']    = esc_url( admin_url( 'admin-ajax.php' ) );
@@ -680,7 +698,7 @@ class Admin {
 			true
 		);
 
-		$path = neve_is_new_skin() ? 'gutenberg-editor-style' : 'gutenberg-editor-legacy-style';
+		$path = 'gutenberg-editor-style';
 
 		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/' . $path . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 	}

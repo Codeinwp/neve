@@ -468,4 +468,4 @@ function neve_add_page_header_menu_classes( $args ) {
 	return $args;
 }
 
-add_filter( 'wp_nav_menu_args', 'neve_add_page_header_menu_classes', 10, 4 );
+add_filter( 'wp_nav_menu_args', 'neve_add_page_header_menu_classes', 10, 1 );

@@ -36,8 +36,8 @@ class Starter_Content {
 				$this,
 				'register_listener',
 			],
-			3,
-			99
+			99,
+			3
 		); // starter content does not provide means of adding post meta so we need to tweak it.
 
 		if ( ! is_customize_preview() ) {

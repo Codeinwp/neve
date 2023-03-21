@@ -59,20 +59,17 @@ class Product_Layout extends Base_View {
 	}
 	/**
 	 * Add out of stock label.
-	 *
-	 * @return bool
 	 */
 	public function out_of_stock_badge() {
 		global $product;
 		if ( $product->is_in_stock() ) {
-			return false;
+			return;
 		}
 		$out_of_stock_label = apply_filters( 'nv_out_of_stock_text', __( 'Out of stock', 'neve' ) );
 
 		echo '<div class="out-of-stock-badge">';
 		echo wp_kses_post( $out_of_stock_label );
 		echo '</div>';
-		return true;
 	}
 
 	/**
@@ -149,12 +146,12 @@ class Product_Layout extends Base_View {
 		}
 
 		echo '<ul class="products exclusive-products">';
-		add_filter( 'woocommerce_post_class', array( $this, 'prefix_post_class' ), 21, 2 );
-		while ( $loop->have_posts() ) {
+		add_filter( 'woocommerce_post_class', array( $this, 'prefix_post_class' ), 21 );
+		while ( $loop->have_posts() ) { // @phpstan-ignore-line impure WP function
 			$loop->the_post();
 			wc_get_template_part( 'content', 'product' );
 			$dots++;
-		}
+		} // @phpstan-ignore-next-line code is reachable
 		remove_filter( 'woocommerce_post_class', array( $this, 'prefix_post_class' ) );
 		wp_reset_postdata();
 		echo '</ul>';

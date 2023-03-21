@@ -80,3 +80,8 @@ assets/js/src
 lint-staged.config.js
 .stylelintrc.json
 phpstan.neon
+composer-dev.json
+composer-dev.lock
+SETUP.md
+DEVELOPMENT.md
+TESTING.md

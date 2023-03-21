@@ -179,18 +179,11 @@ class Search extends Abstract_SearchComponent {
 			]
 		);
 
-		$new_skin = neve_is_new_skin();
-
-		$per_device           = $new_skin ? [
+		$per_device           = [
 			'top'    => 2,
 			'right'  => 2,
 			'bottom' => 2,
 			'left'   => 2,
-		] : [
-			'top'    => 1,
-			'right'  => 1,
-			'bottom' => 1,
-			'left'   => 1,
 		];
 		$default_border_width = [
 			'desktop-unit' => 'px',
@@ -371,113 +364,6 @@ class Search extends Abstract_SearchComponent {
 	}
 
 	/**
-	 * Add legacy style.
-	 *
-	 * @param array $css_array css array.
-	 *
-	 * @return array
-	 */
-	private function add_legacy_style( $css_array ) {
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' input[type=submit],' . $this->default_selector . ' .nv-search-icon-wrap',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_WIDTH => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_FONT_SIZE,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'px',
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_FONT_SIZE ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' input[type=search]',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_HEIGHT           => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_HEIGHT,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_HEIGHT ),
-				],
-				Config::CSS_PROP_FONT_SIZE        => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_FONT_SIZE,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'px',
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_FONT_SIZE ),
-				],
-				Config::CSS_PROP_PADDING_RIGHT    => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_FONT_SIZE,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'px',
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_FONT_SIZE ),
-					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						$fs      = $value;
-						$style   = '';
-						$padding = $fs > 45 ? $fs : 45;
-						if ( ! empty( $fs ) ) {
-							$style = sprintf( 'padding-right:%spx;', $padding );
-						}
-
-						return $style;
-					},
-				],
-
-				Config::CSS_PROP_BORDER_WIDTH     => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_BORDER_WIDTH,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BORDER_WIDTH ),
-				],
-				Config::CSS_PROP_BORDER_RADIUS    => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_BORDER_RADIUS,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BORDER_RADIUS ),
-				],
-				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_BG,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BG ),
-				],
-				Config::CSS_PROP_BORDER_COLOR     => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_TEXT_COLOR,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_TEXT_COLOR ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' input[type=search],' . $this->default_selector . ' input::placeholder',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_TEXT_COLOR,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_TEXT_COLOR ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .nv-search-icon-wrap .nv-icon svg',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_FILL_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_TEXT_COLOR,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_TEXT_COLOR ),
-				],
-				Config::CSS_PROP_WIDTH      => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_FONT_SIZE,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'px',
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_FONT_SIZE ),
-				],
-				Config::CSS_PROP_HEIGHT     => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_FONT_SIZE,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'px',
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_FONT_SIZE ),
-				],
-			],
-		];
-
-		return parent::add_style( $css_array );
-	}
-
-	/**
 	 * Method to add Component css styles.
 	 *
 	 * @param array $css_array An array containing css rules.
@@ -487,9 +373,6 @@ class Search extends Abstract_SearchComponent {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		if ( ! neve_is_new_skin() ) {
-			return $this->add_legacy_style( $css_array );
-		}
 
 		$rules = [
 			'--height'                => [

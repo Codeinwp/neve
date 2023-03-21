@@ -94,10 +94,11 @@ class Magic_Tags {
 			return $input;
 		}
 
-		if ( strpos( $input, 'http://{current_single_url}' ) !== false || strpos( $input, 'https://{current_single_url}' ) !== false ) {
-			$input = str_replace( 'http://{current_single_url}', '{current_single_url}', $input );
-			$input = str_replace( 'https://{current_single_url}', '{current_single_url}', $input );
-		}
+		// Define the regular expression to match http/https links containing magic tags
+		$regex = '/(https?:\/\/)(\{[^}]+\})/';
+
+		// Replace any matches with just the magic tag name
+		$input = preg_replace( $regex, '$2', $input );
 
 		return preg_replace_callback(
 			'/\\{\s?\b(?:' . self::$magic_tag_regex . ')\b\s?\\}/',
@@ -436,6 +437,9 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function user_nicename() {
+		/**
+		 * @var \WP_User|null $current_user
+		 */
 		$current_user = wp_get_current_user();
 		if ( empty( $current_user ) ) {
 			return '';
@@ -449,6 +453,9 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function display_name() {
+		/**
+		 * @var \WP_User|null $current_user
+		 */
 		$current_user = wp_get_current_user();
 		if ( empty( $current_user ) ) {
 			return '';
@@ -462,6 +469,9 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function user_email() {
+		/**
+		 * @var \WP_User|null $current_user
+		 */
 		$current_user = wp_get_current_user();
 		if ( empty( $current_user ) ) {
 			return '';

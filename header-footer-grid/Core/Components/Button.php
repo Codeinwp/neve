@@ -25,10 +25,12 @@ use Neve\Core\Styles\Dynamic_Selector;
  */
 class Button extends Abstract_Component {
 
-	const COMPONENT_ID = 'button_base';
-	const LINK_ID      = 'link_setting';
-	const TEXT_ID      = 'text_setting';
-	const STYLE_ID     = 'style_setting';
+	const COMPONENT_ID         = 'button_base';
+	const LINK_ID              = 'link_setting';
+	const TEXT_ID              = 'text_setting';
+	const STYLE_ID             = 'style_setting';
+	const OPEN_NEW_TAB         = 'new_tab'; // the button is opened in a new browser tab?
+	const DEFAULT_OPEN_NEW_TAB = false;
 
 	/**
 	 * Default spacing value
@@ -66,12 +68,7 @@ class Button extends Abstract_Component {
 	 */
 	public function __construct( $panel ) {
 		parent::__construct( $panel );
-		if ( neve_is_new_skin() ) {
-			$this->default_selector = '.builder-item--' . $this->get_id();
-
-			return;
-		}
-		$this->default_selector = '.builder-item > .item--inner.builder-item--' . $this->get_id() . ' > .component-wrap > a.button.button-primary';
+		$this->default_selector = '.builder-item--' . $this->get_id();
 	}
 
 	/**
@@ -161,6 +158,21 @@ class Button extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
+				'id'                 => self::OPEN_NEW_TAB,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'section'            => $this->section,
+				'label'              => ucfirst( str_replace( [ '(', ')' ], '', __( '(opens in a new tab)', 'neve' ) ) ),
+				'type'               => 'neve_toggle_control',
+				'transport'          => 'postheader',
+				'sanitize_callback'  => 'absint',
+				'default'            => self::DEFAULT_OPEN_NEW_TAB,
+				'conditional_header' => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
 				'id'                    => self::STYLE_ID,
 				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                   => SettingsManager::TAB_STYLE,
@@ -201,44 +213,6 @@ class Button extends Abstract_Component {
 	}
 
 	/**
-	 * Add legacy style.
-	 *
-	 * @param array $css_array css array.
-	 *
-	 * @return array
-	 */
-	private function add_legacy_style( $css_array ) {
-		$id = $this->get_id() . '_' . self::STYLE_ID;
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector,
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND      => $id . '.background',
-				Config::CSS_PROP_COLOR           => $id . '.text',
-				Config::CSS_PROP_BORDER_RADIUS   => [
-					Dynamic_Selector::META_KEY => $id . '.borderRadius',
-				],
-				Config::CSS_PROP_CUSTOM_BTN_TYPE => [
-					Dynamic_Selector::META_KEY => $id . '.type',
-				],
-				Config::CSS_PROP_BORDER_WIDTH    => [
-					Dynamic_Selector::META_KEY => $id . '.borderWidth',
-				],
-			],
-		];
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ':hover',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND => $id . '.backgroundHover',
-				Config::CSS_PROP_COLOR      => $id . '.textHover',
-			],
-		];
-
-
-		return parent::add_style( $css_array );
-	}
-
-	/**
 	 * Method to add Component css styles.
 	 *
 	 * @param array $css_array An array containing css rules.
@@ -248,9 +222,6 @@ class Button extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		if ( ! neve_is_new_skin() ) {
-			return $this->add_legacy_style( $css_array );
-		}
 
 		$id    = $this->get_id() . '_' . self::STYLE_ID;
 		$value = get_theme_mod( $id );

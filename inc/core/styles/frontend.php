@@ -60,17 +60,6 @@ class Frontend extends Generator {
 	 * @return void
 	 */
 	private function setup_container() {
-		if ( ! neve_is_new_skin() ) {
-			$this->_subscribers['.container'] = [
-				Config::CSS_PROP_MAX_WIDTH => [
-					Dynamic_Selector::META_KEY           => Config::MODS_CONTAINER_WIDTH,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-			];
-
-			return;
-		}
-
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => ':root',
 			Dynamic_Selector::KEY_RULES    => $this->get_container_rules(),
@@ -105,43 +94,9 @@ class Frontend extends Generator {
 	}
 
 	/**
-	 * Setup legacy blog colors.
-	 */
-	private function setup_legacy_blog_colors() {
-		$this->_subscribers['.cover-post .inner, .cover-post .inner a:not(.button), .cover-post .inner a:not(.button):hover, .cover-post .inner a:not(.button):focus, .cover-post .inner li'] = [
-			Config::CSS_PROP_COLOR => [
-				Dynamic_Selector::META_KEY => 'neve_blog_covers_text_color',
-			],
-		];
-
-		$selector = get_theme_mod( 'neve_blog_archive_layout', 'grid' ) === 'covers' ? '.cover-post.nv-post-thumbnail-wrap' : '.nv-post-thumbnail-wrap img';
-
-		$this->_subscribers[ $selector ] = [
-			Config::CSS_PROP_BOX_SHADOW => [
-				Dynamic_Selector::META_KEY    => 'neve_post_thumbnail_box_shadow',
-				Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-					if ( absint( $value ) === 0 ) {
-						return '';
-					}
-
-					if ( ! array_key_exists( absint( $value ), $this->box_shadow_map ) ) {
-						return '';
-					}
-
-					return sprintf( '%s:%s;', $css_prop, $this->box_shadow_map[ $value ] );
-				},
-			],
-		];
-	}
-
-	/**
 	 * Add css for blog colors.
 	 */
 	public function setup_blog_colors() {
-		if ( ! neve_is_new_skin() ) {
-			$this->setup_legacy_blog_colors();
-			return;
-		}
 
 		$layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
 		if ( $layout === 'covers' ) {
@@ -171,11 +126,6 @@ class Frontend extends Generator {
 	 * Add css for blog typography.
 	 */
 	public function setup_blog_typography() {
-		if ( ! neve_is_new_skin() ) {
-			$this->setup_legacy_blog_typography();
-
-			return;
-		}
 
 		$archive_typography = [
 			Config::CSS_SELECTOR_ARCHIVE_POST_TITLE        => [
@@ -238,9 +188,6 @@ class Frontend extends Generator {
 	 * @since 3.0.0
 	 */
 	public function setup_blog_layout() {
-		if ( ! neve_is_new_skin() ) {
-			return false;
-		}
 
 		$this->_subscribers[':root'] = [
 			'--postwidth' => [
@@ -264,97 +211,9 @@ class Frontend extends Generator {
 	}
 
 	/**
-	 * Setups the legacy typography, used before 3.0.
-	 *
-	 * @since 3.0.0
-	 */
-	public function setup_legacy_typography() {
-		$this->_subscribers[ Config::CSS_SELECTOR_TYPEFACE_GENERAL ] = [
-			Config::CSS_PROP_FONT_SIZE      => [
-				Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.fontSize',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'px',
-			],
-			Config::CSS_PROP_LINE_HEIGHT    => [
-				Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.lineHeight',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => '',
-			],
-			Config::CSS_PROP_LETTER_SPACING => [
-				Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.letterSpacing',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-			],
-			Config::CSS_PROP_FONT_WEIGHT    => [
-				Dynamic_Selector::META_KEY => Config::MODS_TYPEFACE_GENERAL . '.fontWeight',
-				'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
-			],
-			Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_TYPEFACE_GENERAL . '.textTransform',
-			Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_GENERAL,
-		];
-		foreach ( neve_get_headings_selectors() as $id => $heading_selector
-		) {
-			$heading_mod                             = sprintf( 'neve_%s_typeface_general', $id );
-			$this->_subscribers[ $heading_selector ] = [
-				Config::CSS_PROP_FONT_SIZE      => [
-					Dynamic_Selector::META_KEY           => $heading_mod . '.fontSize',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'em',
-				],
-				Config::CSS_PROP_LINE_HEIGHT    => [
-					Dynamic_Selector::META_KEY           => $heading_mod . '.lineHeight',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => '',
-				],
-				Config::CSS_PROP_LETTER_SPACING => [
-					Dynamic_Selector::META_KEY           => $heading_mod . '.letterSpacing',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-				Config::CSS_PROP_FONT_WEIGHT    => [
-					Dynamic_Selector::META_KEY => $heading_mod . '.fontWeight',
-					'font'                     => 'mods_' . Config::MODS_FONT_HEADINGS,
-				],
-				Config::CSS_PROP_TEXT_TRANSFORM => $heading_mod . '.textTransform',
-				Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_HEADINGS,
-			];
-		}
-
-		// Legacy filters.
-		$extra_selectors_heading = apply_filters( 'neve_headings_font_family_selectors', '' );
-		if ( ! empty( $extra_selectors_heading ) ) {
-			$extra_selectors_heading                        = ltrim( $extra_selectors_heading, ', ' );
-			$this->_subscribers[ $extra_selectors_heading ] = [
-				Config::CSS_PROP_FONT_FAMILY => Config::MODS_FONT_HEADINGS,
-			];
-		}
-
-		$extra_selectors_body = apply_filters( 'neve_body_font_family_selectors', '' );
-
-		if ( ! empty( $extra_selectors_body ) ) {
-			$extra_selectors_body                        = ltrim( $extra_selectors_body, ', ' );
-			$this->_subscribers[ $extra_selectors_body ] = [
-				Config::CSS_PROP_LETTER_SPACING => [
-					Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.letterSpacing',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-				Config::CSS_PROP_FONT_WEIGHT    => [
-					Dynamic_Selector::META_KEY => Config::MODS_TYPEFACE_GENERAL . '.fontWeight',
-					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
-				],
-				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_TYPEFACE_GENERAL . '.textTransform',
-				Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_GENERAL,
-			];
-		}
-	}
-
-	/**
 	 * Setup typography subscribers.
 	 */
 	public function setup_typography() {
-		if ( ! neve_is_new_skin() ) {
-			$this->setup_legacy_typography();
-
-			return;
-		}
 		$rules                = $this->get_typography_rules();
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => ':root',
@@ -363,227 +222,9 @@ class Frontend extends Generator {
 	}
 
 	/**
-	 * Setup legacy button.
-	 */
-	private function setup_legacy_buttons() {
-		// Primary button config.
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
-					Dynamic_Selector::META_DEFAULT => 'var(--nv-primary-accent)',
-				],
-				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_PRIMARY_STYLE . '.text',
-				Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_BUTTON_PRIMARY_STYLE . '.borderRadius',
-				Config::CSS_PROP_CUSTOM_BTN_TYPE  => Config::MODS_BUTTON_PRIMARY_STYLE . '.type',
-				Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_BUTTON_PRIMARY_STYLE . '.borderWidth',
-			],
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			],
-		];
-
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_FONT_SIZE      => [
-					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.fontSize',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'em',
-				],
-				Config::CSS_PROP_LINE_HEIGHT    => [
-					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.lineHeight',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => '',
-				],
-				Config::CSS_PROP_LETTER_SPACING => [
-					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.letterSpacing',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-				Config::CSS_PROP_FONT_WEIGHT    => [
-					Dynamic_Selector::META_KEY => Config::MODS_BUTTON_TYPEFACE . '.fontWeight',
-					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
-				],
-				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_BUTTON_TYPEFACE . '.textTransform',
-			],
-		];
-
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
-				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
-			],
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			],
-		];
-
-		$secondary_rules = [
-			Dynamic_Selector::KEY_RULES   => [
-				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.background',
-					Dynamic_Selector::META_DEFAULT => 'rgba(0,0,0,0)',
-				],
-				Config::CSS_PROP_COLOR            => [
-					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.text',
-					Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
-				],
-				Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_BUTTON_SECONDARY_STYLE . '.borderRadius',
-				Config::CSS_PROP_CUSTOM_BTN_TYPE  => Config::MODS_BUTTON_SECONDARY_STYLE . '.type',
-				Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_BUTTON_SECONDARY_STYLE . '.borderWidth',
-			],
-			Dynamic_Selector::KEY_CONTEXT => [
-				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			],
-		];
-
-		$this->_subscribers [] = array_merge( [ Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL ], $secondary_rules );
-		$this->_subscribers [] = array_merge( [ Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_DEFAULT ], $secondary_rules );
-
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_FONT_SIZE      => [
-					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontSize',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'em',
-				],
-				Config::CSS_PROP_LINE_HEIGHT    => [
-					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.lineHeight',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => '',
-				],
-				Config::CSS_PROP_LETTER_SPACING => [
-					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.letterSpacing',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-				Config::CSS_PROP_FONT_WEIGHT    => [
-					Dynamic_Selector::META_KEY => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontWeight',
-					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
-				],
-				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.textTransform',
-			],
-		];
-
-		$secondary_rules_hover = [
-			Dynamic_Selector::KEY_RULES   => [
-				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.backgroundHover',
-					Dynamic_Selector::META_DEFAULT => 'rgba(0,0,0,0)',
-				],
-				Config::CSS_PROP_COLOR            => [
-					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.textHover',
-					Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
-				],
-			],
-			Dynamic_Selector::KEY_CONTEXT => [
-				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			],
-		];
-
-		$this->_subscribers[] = array_merge( $secondary_rules_hover, [ Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_HOVER ] );
-		$this->_subscribers[] = array_merge( $secondary_rules_hover, [ Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_DEFAULT_HOVER ] );
-
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_PADDING,
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_PADDING => [
-					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_PRIMARY_PADDING,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-			],
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			],
-		];
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_PADDING,
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_PADDING => [
-					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_SECONDARY_PADDING,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-			],
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			],
-		];
-
-		if ( ! class_exists( 'WooCommerce', false ) ) {
-			return;
-		}
-
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.woocommerce-mini-cart__buttons .button.checkout',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
-					Dynamic_Selector::META_DEFAULT => 'var(--nv-primary-accent)',
-				],
-				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_PRIMARY_STYLE . '.text',
-				Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_BUTTON_PRIMARY_STYLE . '.borderRadius',
-				Config::CSS_PROP_CUSTOM_BTN_TYPE  => Config::MODS_BUTTON_PRIMARY_STYLE . '.type',
-				Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_BUTTON_PRIMARY_STYLE . '.borderWidth',
-			],
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			],
-		];
-
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.woocommerce-mini-cart__buttons .button.checkout:hover',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
-				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
-			],
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			],
-		];
-
-		$this->_subscribers [] = [
-			Dynamic_Selector::KEY_SELECTOR => '.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout)',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_SECONDARY_STYLE . '.background',
-				Config::CSS_PROP_COLOR            => [
-					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.text',
-					Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
-				],
-				Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_BUTTON_SECONDARY_STYLE . '.borderRadius',
-				Config::CSS_PROP_CUSTOM_BTN_TYPE  => Config::MODS_BUTTON_SECONDARY_STYLE . '.type',
-				Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_BUTTON_SECONDARY_STYLE . '.borderWidth',
-			],
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			],
-		];
-
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_SECONDARY_STYLE . '.backgroundHover',
-				Config::CSS_PROP_COLOR            => [
-					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.textHover',
-					Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
-				],
-			],
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			],
-		];
-	}
-
-	/**
 	 * Setup button subscribers.
 	 */
 	public function setup_buttons() {
-		if ( ! neve_is_new_skin() ) {
-			$this->setup_legacy_buttons();
-
-			return;
-		}
 
 		$rules                = $this->get_button_rules();
 		$this->_subscribers[] = [
@@ -599,7 +240,7 @@ class Frontend extends Generator {
 	 * TODO: Better exclude classes when Woo is not present, i.e shop-sidebar class is added even when Woo is not used.
 	 */
 	public function setup_layout_subscribers() {
-		$is_advanced_on = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, neve_is_new_skin() );
+		$is_advanced_on = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, true );
 		if ( ! $is_advanced_on ) {
 
 			$this->_subscribers['#content .container .col, #content .container-fluid .col']                             = [
@@ -801,11 +442,6 @@ class Frontend extends Generator {
 	 * Adds form field styles
 	 */
 	private function setup_form_fields_style() {
-		if ( ! neve_is_new_skin() ) {
-			$this->setup_legacy_form_fields_style();
-
-			return;
-		}
 
 		$border_width_default  = array_fill_keys( Config::$directional_keys, '2' );
 		$border_radius_default = array_fill_keys( Config::$directional_keys, '3' );
@@ -970,15 +606,11 @@ class Frontend extends Generator {
 	 * Add css for blog meta.
 	 */
 	public function setup_blog_meta() {
-		if ( ! neve_is_new_skin() ) {
-			$this->setup_blog_meta_legacy();
-			return;
-		}
 
 		list( $context, $allowed_context ) = $this->get_cpt_context();
 		$archive_avatar_size_meta_key      = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
 		$single_avatar_size_meta_key       = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
-		if ( in_array( $context, $allowed_context, true ) && neve_is_new_skin() && is_singular( $context ) || is_post_type_archive( $context ) ) {
+		if ( in_array( $context, $allowed_context, true ) && is_singular( $context ) || is_post_type_archive( $context ) ) {
 			$archive_avatar_size_meta_key = 'neve_' . $context . '_archive_author_avatar_size';
 			$single_avatar_size_meta_key  = 'neve_single_' . $context . '_avatar_size';
 		}
@@ -1013,140 +645,9 @@ class Frontend extends Generator {
 	}
 
 	/**
-	 * Add css for blog meta.
-	 */
-	public function setup_blog_meta_legacy() {
-
-		$meta_key = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
-		if ( is_singular( 'post' ) ) {
-			$meta_key = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
-		}
-
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.nv-meta-list .meta.author img.photo',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_HEIGHT => [
-					Dynamic_Selector::META_KEY           => $meta_key,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-				Config::CSS_PROP_WIDTH  => [
-					Dynamic_Selector::META_KEY           => $meta_key,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-			],
-		];
-	}
-
-	/**
-	 * Setup legacy form field styles.
-	 */
-	private function setup_legacy_form_fields_style() {
-		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS ] = [
-			Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_FORM_FIELDS_BACKGROUND_COLOR,
-			Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_FORM_FIELDS_BORDER_WIDTH,
-			Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_FORM_FIELDS_BORDER_RADIUS,
-			Config::CSS_PROP_BORDER_COLOR     => Config::MODS_FORM_FIELDS_BORDER_COLOR,
-			Config::CSS_PROP_COLOR            => [
-				Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_COLOR,
-				Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
-			],
-			Config::CSS_PROP_PADDING          => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING,
-				Dynamic_Selector::META_IS_RESPONSIVE => false,
-			],
-			Config::CSS_PROP_TEXT_TRANSFORM   => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.textTransform',
-				Dynamic_Selector::META_IS_RESPONSIVE => false,
-				Dynamic_Selector::META_SUFFIX        => '',
-			],
-			Config::CSS_PROP_FONT_SIZE        => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontSize',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'px',
-			],
-			Config::CSS_PROP_LINE_HEIGHT      => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.lineHeight',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => '',
-			],
-			Config::CSS_PROP_LETTER_SPACING   => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_TYPEFACE . '.letterSpacing',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-			],
-			Config::CSS_PROP_FONT_WEIGHT      => [
-				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_TYPEFACE . '.fontWeight',
-			],
-			Config::CSS_PROP_FONT_FAMILY      => Config::MODS_FONT_GENERAL,
-		];
-
-		$this->_subscribers[ Config::CSS_SELECTOR_FORM_INPUTS_LABELS ] = [
-			Config::CSS_PROP_FONT_SIZE      => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontSize',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'px',
-			],
-			Config::CSS_PROP_LINE_HEIGHT    => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.lineHeight',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => '',
-			],
-			Config::CSS_PROP_LETTER_SPACING => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.letterSpacing',
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-			],
-			Config::CSS_PROP_FONT_WEIGHT    => [
-				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.fontWeight',
-			],
-			Config::CSS_PROP_TEXT_TRANSFORM => [
-				Dynamic_Selector::META_KEY => Config::MODS_FORM_FIELDS_LABELS_TYPEFACE . '.textTransform',
-			],
-		];
-
-		$this->_subscribers[ Config::CSS_SELECTOR_FORM_SEARCH_INPUTS ] = [
-			Config::CSS_PROP_PADDING_RIGHT => [
-				Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING . '.right',
-				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-					$value = absint( $value ) + 33;
-
-					return sprintf( '%s:%s !important;', $css_prop, $value . 'px' );
-				},
-				Dynamic_Selector::META_DEFAULT       => 12,
-				Dynamic_Selector::META_IS_RESPONSIVE => false,
-			],
-			Config::CSS_PROP_FONT_FAMILY   => Config::MODS_FONT_GENERAL,
-		];
-
-		/**
-		 * Form buttons.
-		 */
-		$form_buttons_type = get_theme_mod( 'neve_form_button_type', 'primary' );
-
-		if ( $form_buttons_type === 'primary' ) {
-			add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL, [ $this, 'add_form_buttons' ] );
-			add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_PADDING, [ $this, 'add_form_buttons' ] );
-			add_filter(
-				'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
-				[
-					$this,
-					'add_form_buttons_hover',
-				]
-			);
-
-			return;
-		}
-
-		add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL, [ $this, 'add_form_buttons' ] );
-		add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_PADDING, [ $this, 'add_form_buttons' ] );
-		add_filter( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER, [ $this, 'add_form_buttons_hover' ] );
-	}
-
-	/**
 	 * Add css for single post.
 	 */
 	private function setup_single_post_style() {
-		if ( ! neve_is_new_skin() ) {
-			return;
-		}
 
 		$boxed_comments_rules = [
 			'--padding' => [
@@ -1368,41 +869,5 @@ class Frontend extends Generator {
 			];
 		}
 
-	}
-
-	/**
-	 * Setup legacy blog typography.
-	 */
-	private function setup_legacy_blog_typography() {
-		$archive_typography = array(
-			Config::CSS_SELECTOR_ARCHIVE_POST_TITLE        => Config::MODS_TYPEFACE_ARCHIVE_POST_TITLE,
-			Config::CSS_SELECTOR_ARCHIVE_POST_EXCERPT      => Config::MODS_TYPEFACE_ARCHIVE_POST_EXCERPT,
-			Config::CSS_SELECTOR_ARCHIVE_POST_META         => Config::MODS_TYPEFACE_ARCHIVE_POST_META,
-			Config::CSS_SELECTOR_SINGLE_POST_TITLE         => Config::MODS_TYPEFACE_SINGLE_POST_TITLE,
-			Config::CSS_SELECTOR_SINGLE_POST_META          => Config::MODS_TYPEFACE_SINGLE_POST_META,
-			Config::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE => Config::MODS_TYPEFACE_SINGLE_POST_COMMENT_TITLE,
-		);
-		foreach ( $archive_typography as $selector => $mod ) {
-			$this->_subscribers[ $selector ] = [
-				Config::CSS_PROP_FONT_SIZE      => [
-					Dynamic_Selector::META_KEY           => $mod . '.fontSize',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'px',
-				],
-				Config::CSS_PROP_LINE_HEIGHT    => [
-					Dynamic_Selector::META_KEY           => $mod . '.lineHeight',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => '',
-				],
-				Config::CSS_PROP_LETTER_SPACING => [
-					Dynamic_Selector::META_KEY           => $mod . '.letterSpacing',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-				],
-				Config::CSS_PROP_FONT_WEIGHT    => [
-					Dynamic_Selector::META_KEY => $mod . '.fontWeight',
-				],
-				Config::CSS_PROP_TEXT_TRANSFORM => $mod . '.textTransform',
-			];
-		}
 	}
 }

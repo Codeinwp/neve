@@ -93,7 +93,7 @@ class Layout_Sidebar extends Base_View {
 		$theme_mod     = apply_filters( 'neve_sidebar_position', get_theme_mod( $theme_mod, $this->sidebar_layout_alignment_default( $theme_mod ) ) );
 
 		$layout       = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
-		$posts_layout = neve_is_new_skin() ? ' nv-blog-' . $layout : '';
+		$posts_layout = ' nv-blog-' . $layout;
 
 		$classes[] = $posts_layout;
 		$classes[] = 'nv-sidebar-' . $theme_mod;
@@ -109,8 +109,7 @@ class Layout_Sidebar extends Base_View {
 	 * @return array
 	 */
 	public function get_sidebar_setup( $context ) {
-		$new_skin         = neve_is_new_skin();
-		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', $new_skin );
+		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', true );
 		$sidebar_setup    = [
 			'theme_mod'     => '',
 			'content_width' => '',

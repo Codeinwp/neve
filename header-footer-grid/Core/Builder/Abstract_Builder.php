@@ -130,7 +130,7 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 * @var string $title
+	 * @var string|null $title
 	 */
 	public $title;
 	/**
@@ -138,7 +138,7 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @since   1.0.1
 	 * @access  public
-	 * @var string $description
+	 * @var string|null $description
 	 */
 	public $description;
 
@@ -656,6 +656,7 @@ abstract class Abstract_Builder implements Builder {
 
 		$wp_customize->add_panel(
 			$this->panel,
+			/* @phpstan-ignore-next-line The wordpress-stub os incorect, proper type should be string|array for `theme_supports` */
 			array(
 				'priority'       => 25,
 				'capability'     => 'edit_theme_options',
@@ -921,180 +922,6 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
-	 * Add legacy row styles.
-	 *
-	 * @param array  $css_array css array.
-	 * @param string $row_index row index.
-	 *
-	 * @return array
-	 */
-	private function add_legacy_row_styles( $css_array, $row_index ) {
-		$selector = $row_index === 'sidebar' ? '.header-menu-sidebar .header-menu-sidebar-bg' : '.' . $this->get_id() . '-' . $row_index . '-inner';
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector,
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_HEIGHT => [
-					Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_height',
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						$value = (int) $value;
-						if ( $value > 0 ) {
-							return sprintf( '%s:%s;', $css_prop, $value . 'px' );
-						}
-
-						return '';
-					},
-					Dynamic_Selector::META_DEFAULT       => '{ desktop: 0, tablet: 0, mobile: 0 }',
-				],
-			],
-		];
-
-		$default_colors = $this->get_default_row_colors( $row_index );
-		$css_array[]    = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . ',' . $selector . ' a:not(.button),' . $selector . ' .navbar-toggle',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
-					Dynamic_Selector::META_DEFAULT => $default_colors['text'],
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . ' .nv-icon svg,' . $selector . ' .nv-contact-list svg',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_FILL_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
-					Dynamic_Selector::META_DEFAULT => $default_colors['text'],
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . ' .icon-bar',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
-					Dynamic_Selector::META_DEFAULT => $default_colors['text'],
-				],
-			],
-		];
-
-		if ( $this->get_id() === 'header' ) {
-			$selector = '.hfg_header ' . $selector;
-		}
-
-		$default_color = '#ffffff';
-		if ( isset( $this->default_colors[ $this->get_id() ][ $row_index ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_index ] ) ) {
-			$default_color = $this->default_colors[ $this->get_id() ][ $row_index ];
-		}
-		$defaults      = $this->get_default_row_colors( $row_index );
-		$default_color = isset( $defaults['background'] ) ? $defaults['background'] : $default_color;
-
-		$background = get_theme_mod(
-			$this->control_id . '_' . $row_index . '_background',
-			[
-				'type'       => 'color',
-				'colorValue' => $default_color,
-			]
-		);
-
-		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
-			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . ' .nav-ul .sub-menu',
-				Dynamic_Selector::KEY_RULES    => [
-					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
-						Dynamic_Selector::META_DEFAULT => $default_color,
-					],
-				],
-			];
-			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector,
-				Dynamic_Selector::KEY_RULES    => [
-					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
-						Dynamic_Selector::META_DEFAULT => $default_color,
-					],
-				],
-			];
-		}
-
-		if ( $background['type'] === 'image' ) {
-			if ( $row_index !== 'sidebar' ) {
-				$css_array[] = [
-					Dynamic_Selector::KEY_SELECTOR => $selector . ' .nav-ul .sub-menu li,' . $selector . ' .nav-ul .sub-menu',
-					Dynamic_Selector::KEY_RULES    => [
-						Config::CSS_PROP_BACKGROUND_COLOR => [
-							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
-						],
-						Config::CSS_PROP_BORDER_COLOR     => [
-							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
-						],
-					],
-				];
-			}
-
-			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector,
-				Dynamic_Selector::KEY_RULES    => [
-					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
-						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							$background   = $value;
-							$style        = '';
-							$image_url    = array_key_exists( 'imageUrl', $background ) ? $background['imageUrl'] : '';
-							$use_featured = array_key_exists( 'useFeatured', $background ) ? $background['useFeatured'] : false;
-
-							$image = $this->get_row_featured_image( $image_url, $use_featured, $meta );
-
-							$style .= sprintf( 'background-image: %s;', wp_kses_post( $image ) );
-							$style .= 'background-size:cover;';
-
-							if ( ! empty( $background['focusPoint'] ) && ! empty( $background['focusPoint']['x'] ) && ! empty( $background['focusPoint']['y'] ) ) {
-								$style .= 'background-position:' . round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%;';
-							}
-
-							if ( isset( $background['fixed'] ) && $background['fixed'] === true ) {
-								$style .= 'background-attachment: fixed;';
-							}
-							$style .= 'background-color:transparent;';
-
-							return $style;
-						},
-					],
-				],
-			];
-
-			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . ':before',
-				Dynamic_Selector::KEY_RULES    => [
-					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
-						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
-							$background = $value;
-							$style      = '';
-							$opacity    = isset( $background['overlayOpacity'] ) ? $background['overlayOpacity'] : 50;
-							if ( ! empty( $background['overlayColorValue'] ) && ! empty( $opacity ) ) {
-								$style = sprintf( 'background-color:%s; opacity: %s; content: ""; position:absolute; top: 0; bottom:0; width:100%%;', $background['overlayColorValue'], ( $opacity / 100 ) );
-							}
-
-							return $style;
-						},
-					],
-				],
-			];
-		}
-
-		if ( $row_index === 'sidebar' ) {
-			$css_array = $this->add_sidebar_styles( $css_array );
-		}
-
-		return $css_array;
-	}
-
-	/**
 	 * Returns the featured image for the header row.
 	 *
 	 * @param string  $image_url The image URL.
@@ -1138,13 +965,7 @@ abstract class Abstract_Builder implements Builder {
 	 * @access  private
 	 */
 	private function add_row_style( $row_index, $css_array = array() ) {
-		if ( neve_is_new_builder() ) {
-			$css_array = $this->add_new_builder_styles( $css_array, $row_index );
-		}
-
-		if ( ! neve_is_new_skin() ) {
-			return $this->add_legacy_row_styles( $css_array, $row_index );
-		}
+		$css_array = $this->add_new_builder_styles( $css_array, $row_index );
 
 		$rules          = [];
 		$selector       = $row_index === 'sidebar' ? '.header-menu-sidebar-bg' : '.' . $this->get_id() . '-' . $row_index;
@@ -1493,10 +1314,8 @@ abstract class Abstract_Builder implements Builder {
 					$classes[] = 'has-nav';
 				}
 
-				$new_skin = neve_is_new_skin();
-
 				// We don't add align classes to primary menus as there's no align control in new skin.
-				if ( ! $new_skin || strpos( $component['id'], Nav::COMPONENT_ID ) === false ) {
+				if ( strpos( $component['id'], Nav::COMPONENT_ID ) === false ) {
 					foreach ( $align as $device_slug => $align_slug ) {
 						$alignment_is_mobile = in_array( $device_slug, [ 'tablet', 'mobile' ], true );
 						$is_header_sidebar   = $builder_id === 'header' && $row_index === 'sidebar';
@@ -1514,9 +1333,6 @@ abstract class Abstract_Builder implements Builder {
 						'classes'    => $classes,
 						'components' => [],
 					];
-					if ( $builder_id === 'footer' && ! empty( $vertical_align ) && ! $new_skin ) {
-						$render_buffer[ $slot ][ $render_index ]['vertical-align'] = 'hfg-item-v-' . $vertical_align;
-					}
 				}
 
 				// If the component is a divider, add a supplementary class
@@ -1575,11 +1391,6 @@ abstract class Abstract_Builder implements Builder {
 
 			$slot_classes = [ 'hfg-slot', $slot ];
 
-			// This doesn't apply to new skin as `vertical-align` is always empty.
-			if ( isset( $slot_data[0]['vertical-align'] ) ) {
-				$slot_classes[] = $slot_data[0]['vertical-align'];
-			}
-
 			foreach ( $slot_data as $item ) {
 				if ( array_key_exists( 'components', $item ) && preg_grep( '/^divider/', $item['components'] ) ) {
 					$slot_classes[] = 'has-divider';
@@ -1593,7 +1404,7 @@ abstract class Abstract_Builder implements Builder {
 			self::$current_slot = $slot;
 
 			foreach ( $slot_data as $group_index => $component_group ) {
-				if ( ! isset( $component_group['components'] ) ) {
+				if ( empty( $component_group['components'] ) ) {
 					continue;
 				}
 				if ( count( $component_group['components'] ) > 1 ) {
@@ -1862,7 +1673,7 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @param string|null $id The id of the component.
 	 *
-	 * @return Abstract_Component
+	 * @return Abstract_Component|null
 	 * @since   1.0.0
 	 * @access  public
 	 */
@@ -1959,7 +1770,7 @@ abstract class Abstract_Builder implements Builder {
 		$is_footer_bottom = $this->get_id() === 'footer' && $row_id === 'bottom';
 
 		// On the new skin, the bottom footer row should be dark by default.
-		if ( neve_is_new_skin() && $is_footer_bottom ) {
+		if ( $is_footer_bottom ) {
 			$bg_color_map = [
 				'background' => [
 					'dark-mode'  => 'var(--nv-site-bg)',

@@ -121,6 +121,8 @@ trait Single_Post {
 		 * Filters the list of available post types to use as context for custom post type meta settings.
 		 *
 		 * @param string[] $allowed_context An array of allowed post types for context. E.g. [ 'post', 'page' ].
+		 * @param int $priority The priority of the filter. Default 10.
+		 * @param int $accepted_args The number of arguments the filter accepts. Default 1.
 		 *
 		 * @since 3.1.0
 		 */
@@ -142,10 +144,6 @@ trait Single_Post {
 	 * @return boolean
 	 */
 	public function is_valid_context( $context ) {
-		if ( ! neve_is_new_skin() ) {
-			return false;
-		}
-
 		return is_singular( $context ) || is_single();
 	}
 

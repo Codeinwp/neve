@@ -16,6 +16,10 @@
 	> div:not(:last-child) {
 		margin-bottom: var(--spacing, $spacing-aired);
 	}
+
+	.wp-block-image {
+		margin-bottom: var(--img-m);
+	}
 }
 
 .nv-page-title-wrap {

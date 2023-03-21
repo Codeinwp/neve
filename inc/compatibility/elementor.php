@@ -65,7 +65,7 @@ class Elementor extends Page_Builder_Base {
 
 		self::$custom_global_colors = self::$custom_global_colors ?? Mods::get( Config::MODS_GLOBAL_CUSTOM_COLORS, [] );
 
-		add_action( 'neve_dynamic_style_output', array( $this, 'fix_links' ), 99, 2 );
+		add_filter( 'neve_dynamic_style_output', array( $this, 'fix_links' ), 99, 2 );
 		add_action( 'wp', array( $this, 'add_theme_builder_hooks' ) );
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_set_page_template' ), 1 );
 		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_in_picker' ], 999, 3 );
@@ -94,7 +94,7 @@ class Elementor extends Page_Builder_Base {
 		/**
 		 * Filters the css with base vars for elementor colors.
 		 *
-		 * @param array $css Single post page components.
+		 * @param string $css Single post page components.
 		 *
 		 * @since 3.1.0
 		 */
@@ -427,10 +427,6 @@ class Elementor extends Page_Builder_Base {
 			/** @var string $condition_path specifies the condition such as  include/product_archive OR exclude/product_archive/product_search OR include/product/in_product_cat/18 etc. */
 			foreach ( $template_conditions_arr  as $condition_path ) {
 				$condition_parts = explode( '/', $condition_path );
-
-				if ( empty( $condition_parts ) ) {
-					continue;
-				}
 
 				if ( $condition_parts[0] !== 'include' ) {
 					continue;

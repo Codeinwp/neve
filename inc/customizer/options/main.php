@@ -122,10 +122,8 @@ class Main extends Base_Customizer {
 	 */
 	protected function change_controls() {
 		$this->change_customizer_object( 'section', 'static_front_page', 'panel', 'neve_layout' );
-		if ( neve_is_new_skin() ) {
-			// Change default for shop columns WooCommerce option.
-			$this->change_customizer_object( 'setting', 'woocommerce_catalog_columns', 'default', 3 );
-		}
+		// Change default for shop columns WooCommerce option.
+		$this->change_customizer_object( 'setting', 'woocommerce_catalog_columns', 'default', 3 );
 	}
 
 	/**
