@@ -25,10 +25,12 @@ use Neve\Core\Styles\Dynamic_Selector;
  */
 class Button extends Abstract_Component {
 
-	const COMPONENT_ID = 'button_base';
-	const LINK_ID      = 'link_setting';
-	const TEXT_ID      = 'text_setting';
-	const STYLE_ID     = 'style_setting';
+	const COMPONENT_ID         = 'button_base';
+	const LINK_ID              = 'link_setting';
+	const TEXT_ID              = 'text_setting';
+	const STYLE_ID             = 'style_setting';
+	const OPEN_NEW_TAB         = 'new_tab'; // the button is opened in a new browser tab?
+	const DEFAULT_OPEN_NEW_TAB = false;
 
 	/**
 	 * Default spacing value
@@ -151,6 +153,21 @@ class Button extends Abstract_Component {
 				'section'            => $this->section,
 				'use_dynamic_fields' => array( 'string' ),
 				'conditional_header' => $this->get_builder_id() === 'header',
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::OPEN_NEW_TAB,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'section'            => $this->section,
+				'label'              => ucfirst( str_replace( [ '(', ')' ], '', __( '(opens in a new tab)', 'neve' ) ) ),
+				'type'               => 'neve_toggle_control',
+				'transport'          => 'postheader',
+				'sanitize_callback'  => 'absint',
+				'default'            => self::DEFAULT_OPEN_NEW_TAB,
+				'conditional_header' => true,
 			]
 		);
 
