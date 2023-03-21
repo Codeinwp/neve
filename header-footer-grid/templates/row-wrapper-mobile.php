@@ -21,41 +21,47 @@ $close_contained  = $interaction_type === 'dropdown';
 $inner_classes    = 'header-menu-sidebar-inner ' . ( $is_contained ? ' container' : '' );
 $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 $close_classes    = 'close-sidebar-panel navbar-toggle-wrapper' . ( $close_contained ? ' container' : '' );
-
-$menu_icon_class = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active ' );
+$submenu_style    = row_setting( 'layout', 'slide_left' );
+$menu_icon_class  = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active ' );
 ?>
 <div
 		id="header-menu-sidebar" class="<?php echo esc_attr( join( ' ', $classes ) ); ?>"
 		data-row-id="<?php echo esc_attr( $row_index ); ?>">
 	<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">
+		<?php
+		if ( $submenu_style !== 'dropdown' ) {
+			?>
 		<div class="<?php echo esc_attr( $close_classes ); ?>">
 			<button type="button" class="<?php echo esc_attr( $menu_icon_class ); ?> navbar-toggle active" <?php echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					value="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?>"
 					aria-label="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?> ">
-				<?php
-				if ( $menu_icon_class === 'hamburger is-active ' ) {
-					?>
+			<?php
+			if ( $menu_icon_class === 'hamburger is-active ' ) {
+				?>
 					<span class="bars">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</span>
-					<?php
-				} else {
-					?>
+				<?php
+			} else {
+				?>
 					<span class="hamburger-box">
 						<span class="hamburger-inner"></span>
 					</span>
-					<?php
-				}
-				?>
-				<span class="screen-reader-text">
 				<?php
-				esc_html_e( 'Navigation Menu', 'neve' );
-				?>
+			}
+			?>
+				<span class="screen-reader-text">
+			<?php
+			esc_html_e( 'Navigation Menu', 'neve' );
+			?>
 					</span>
 			</button>
 		</div>
+			<?php
+		}
+		?>
 		<div id="header-menu-sidebar-inner" class="<?php echo esc_attr( $inner_classes ); ?>">
 			<?php
 			/**
