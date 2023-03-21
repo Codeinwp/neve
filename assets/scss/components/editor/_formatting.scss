@@ -1,21 +1,3 @@
-// === Separators === //
-.wp-block {
-
-	.wp-block-separator {
-		max-width: 100% !important;
-	}
-}
-
-.wp-block-separator {
-	width: unset !important;
-	height: unset !important;
-	border-top: 2px solid;
-	border-bottom: 0;
-	opacity: 1;
-}
-
-@import "../main/separators";
-
 // === Buttons === //
 .wp-block-button {
 
