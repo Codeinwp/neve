@@ -139,6 +139,8 @@ jobs:
             envs: "sample-data"
           - specs: "tpc"
             envs: "sample-data"
+          - specs: "visual-regression"
+            envs: "sample-data"
     runs-on: ubuntu-latest
     env:
       ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
@@ -156,3 +158,9 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Run Playwright tests
         run: yarn run test:playwright e2e-tests/specs/${{ matrix.specs }}
+      - name: Upload trace file
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          path: ./test-results/**
+          retention-days: 1

@@ -1,9 +1,5 @@
 import { test, expect } from '@playwright/test';
-import {
-	setCustomizeSettings,
-	loginWithRequest,
-	clearWelcome,
-} from '../../../utils';
+import { setCustomizeSettings, clearWelcome } from '../../../utils';
 import data from '../../../fixtures/customizer/typography/font-size.json';
 
 const setup = {
@@ -95,10 +91,7 @@ test.describe('Typography Control', () => {
 	});
 
 	test('Test Typography inside the Editor', async ({ page }) => {
-		await loginWithRequest(
-			'/markup-html-tags-and-formatting/?test_name=fontSize',
-			page
-		);
+		await page.goto('/markup-html-tags-and-formatting/?test_name=fontSize');
 		const editPageLink = await page
 			.locator('#wp-admin-bar-edit > a')
 			.getAttribute('href');

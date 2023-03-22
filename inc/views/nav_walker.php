@@ -132,7 +132,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$expanded = 'tabindex="0"';
 
 		// Register sidebar inline styles
-		if ( $item->url === '#' && ! self::$dropdowns_inline_js_enqueued ) {
+		if ( $item->url === '#' && ! self::$dropdowns_inline_js_enqueued ) { // @phpstan-ignore-line url is defined on WP_Post object that is used as Menu Item.
 			$this->enqueue_hash_url_dropdowns_inline_js();
 		}
 
@@ -151,7 +151,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 				$expand_dropdowns = apply_filters( 'neve_first_level_expanded', false );
 				$additional_class = $expand_dropdowns && $depth === 0 ? 'dropdown-open' : '';
 
-				$caret  = '<button ' . $expanded . ' type="button" class="caret-wrap navbar-toggle ' . esc_attr( $item->menu_order ) . ' ' . esc_attr( $additional_class ) . '" style="' . esc_attr( $caret_wrap_css ) . '">';
+				$caret  = '<button ' . $expanded . ' type="button" class="caret-wrap navbar-toggle ' . esc_attr( (string) $item->menu_order ) . ' ' . esc_attr( $additional_class ) . '" style="' . esc_attr( $caret_wrap_css ) . '">';
 				$caret .= $caret_pictogram;
 				$caret .= '</button>';
 
@@ -326,7 +326,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 
 		if ( in_array( 'neve-mm-heading', $item->classes, true ) ) {
-			if ( $item->url === '#' ) {
+			if ( $item->url === '#' ) { // @phpstan-ignore-line url is defined on WP_Post object that is used as Menu Item.
 				add_filter(
 					'walker_nav_menu_start_el',
 					function ( $item_output, $nav_item, $depth, $args ) use ( $item ) {
@@ -338,7 +338,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 
 						$item_output .= $args->before;
 						$item_output .= '<span>';
-						$item_output .= $args->link_before . $nav_item->title . $args->link_after;
+						$item_output .= $args->link_before . $nav_item->title . $args->link_after; // @phpstan-ignore-line title is defined on WP_Post object that is used as Menu Item.
 						$item_output .= '</span>';
 						$item_output .= $args->after;
 

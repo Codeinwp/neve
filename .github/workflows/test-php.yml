@@ -118,4 +118,4 @@ jobs:
       - name: Install composer
         run: COMPOSER=composer-dev.json composer install
       - name: PHPStan Static Analysis
-        run: composer phpstan -- --memory-limit=512M
+        run: COMPOSER=composer-dev.json composer phpstan

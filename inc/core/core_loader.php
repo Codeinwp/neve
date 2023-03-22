@@ -49,13 +49,11 @@ class Core_Loader {
 
 	/**
 	 * Checks that the user is new.
-	 *
-	 * @return bool
 	 */
 	public function check_new_user() {
 		$new = get_option( 'neve_new_user' );
 		if ( $new === 'yes' ) {
-			return true;
+			return;
 		}
 
 		$install_time = get_option( 'neve_install' );
@@ -66,19 +64,17 @@ class Core_Loader {
 			update_option( 'neve_user_check_time', $now );
 		}
 
-		if ( empty( $install_time ) || empty( $now ) ) {
-			return false;
+		if ( empty( $install_time ) ) {
+			return;
 		}
 
 		if ( ( $now - $install_time ) <= 60 ) {
 			update_option( 'neve_new_user', 'yes' );
 
-			return true;
+			return;
 		}
 
 		update_option( 'neve_new_user', 'no' );
-
-		return false;
 	}
 
 	/**
@@ -131,6 +127,7 @@ class Core_Loader {
 			'Admin\Metabox\Manager',
 			'Admin\Troubleshoot\Main',
 			'Admin\Dashboard\Main',
+			'Admin\Hooks_Upsells',
 		);
 
 		if ( $this->is_fse_child_theme() ) {
