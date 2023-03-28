@@ -2,7 +2,7 @@ name: Add labels to pull request based on checklist
 
 on:
   pull_request:
-    types: [ opened, edited, synchronize ]
+    types: [ opened, edited, synchronize, labeled, unlabeled ]
     branches-ignore:
       - 'master'
 
