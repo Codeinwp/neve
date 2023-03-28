@@ -1,3 +1,13 @@
+##### [Version 3.5.6](https://github.com/Codeinwp/neve/compare/v3.5.5...v3.5.6) (2023-03-22)
+
+- [Feat] Add Open in new tab option for HFG button components
+- [Fix] Page title appears twice on WooCommerce pages
+- [Fix] The menu closing icon is duplicated with the slide-down style
+- [Fix] Incompatibility issue with Gutenberg plugin 15.2.0
+- [Fix] Reply button in comments not aligned correctly for short comments
+- Improve the presentation of Neve Pro Custom Layout module
+- Improve the development process
+
 ##### [Version 3.5.5](https://github.com/Codeinwp/neve/compare/v3.5.4...v3.5.5) (2023-03-13)
 
 - Removed legacy skin
