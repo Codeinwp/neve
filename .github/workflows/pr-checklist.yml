@@ -21,3 +21,4 @@ jobs:
           onlyCheckBody: true
           completedLabel: "pr-checklist-complete"
           incompleteLabel: "pr-checklist-incomplete"
+          skipLabel: "pr-checklist-skip"
