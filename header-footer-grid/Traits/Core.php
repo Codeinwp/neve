@@ -96,6 +96,45 @@ trait Core {
 	}
 
 	/**
+	 * Sanitize responsive control with units
+	 *
+	 * @param string $input Input.
+	 * @return string
+	 */
+	public function sanitize_responsive_int_w_units_json( $input ) {
+		$inputs   = json_decode( $input, true );
+		$filtered = array(
+			'mobile'  => 0,
+			'tablet'  => 0,
+			'desktop' => 0,
+			'suffix'  => array(
+				'mobile'  => 'px',
+				'tablet'  => 'px',
+				'desktop' => 'px',
+			),
+		);
+
+		if ( ! is_array( $inputs ) || empty( $inputs ) ) {
+			return wp_json_encode( $filtered );
+		}
+
+		foreach ( $inputs as $key => $value ) {
+			if ( isset( $filtered[ $key ] ) && is_numeric( $value ) ) {
+				$filtered[ $key ] = (int) $value;
+			}
+			if ( 'suffix' === $key ) {
+				foreach ( $value as $device => $suffix ) {
+					if ( isset( $filtered['suffix'][ $device ] ) ) {
+						$filtered['suffix'][ $device ] = in_array( $suffix, array( 'px', 'em', 'rem', '%' ), true ) ? $suffix : 'px';
+					}
+				}
+			}
+		}
+
+		return wp_json_encode( $filtered );
+	}
+
+	/**
 	 * Sanitize regular json.
 	 *
 	 * @param string $input Input.
