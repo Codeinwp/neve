@@ -20,7 +20,6 @@ test.describe('Search Form Component (Desktop)', async () => {
 			baseURL,
 		});
 		await page.goto('/?test_name=hfgSearchFormIcon');
-		await page.screenshot({ path: 'hfg-search-form-component.png' });
 		const searchFormInput = await page.locator(`${SEARCH_FORM_SELECTOR}  input.search-field`);
 		const searchFormBtn = await page.locator(`${SEARCH_FORM_SELECTOR} button.search-submit`);
 		const searchFormBtnIcon = await page.locator(`${SEARCH_FORM_SELECTOR} button.search-submit svg`);
