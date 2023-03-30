@@ -93,8 +93,19 @@ trait Core {
 
 			// Optional if a suffix is present. We sanitize the array of suffixes below.
 			if ( 'suffix' === $key && is_array( $value ) ) {
+				$default_suffix    = array(
+					'mobile'  => 'px',
+					'tablet'  => 'px',
+					'desktop' => 'px',
+				);
+				$sanitized_devices = array();
 				foreach ( $value as $device => $suffix ) {
 					$filtered['suffix'][ $device ] = in_array( $suffix, array( 'px', 'em', 'rem', '%' ), true ) ? $suffix : 'px';
+					$sanitized_devices[]           = $device;
+				}
+
+				if ( array_diff( array_keys( $default_suffix ), $sanitized_devices ) ) {
+					$filtered['suffix'] = array_merge( $default_suffix, $filtered['suffix'] );
 				}
 			}
 		}
