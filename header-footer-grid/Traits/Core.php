@@ -103,7 +103,6 @@ trait Core {
 						continue;
 					}
 
-					// Additionally; device check was added. (for key check I think we can leverage expected keys from $filtered since we expect 1-1 match for devices between suffix and input devices)
 					if ( ! array_key_exists( $device, $filtered ) ) {
 						continue;
 					}
