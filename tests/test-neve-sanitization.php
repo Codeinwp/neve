@@ -122,6 +122,16 @@ class TestSanitization extends WP_UnitTestCase {
 			],
 		];
 		$this->do_assertion_for_sanitize_responsive_int_json( $input_value, $expected_value );
+
+		// Test Invalid devices input with suffix.
+		$input_value = [
+			'mobile'  => 1,
+			'suffix'  => [
+				'mobile'  => 'rem',
+				'car'     => 'rem',
+			],
+		];
+		$this->do_assertion_for_sanitize_responsive_int_json( $input_value, $expected_value );
 	}
 
 	/**
