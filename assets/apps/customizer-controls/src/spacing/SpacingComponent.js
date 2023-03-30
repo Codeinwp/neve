@@ -26,11 +26,18 @@ const SpacingComponent = ({ control }) => {
 				...control.params.input_attrs,
 		  }
 		: defaultParams;
+	const { axis } = controlParams;
+
+	let deviceInitialValue = { top: 0, right: 0, bottom: 0, left: 0 };
+	if (axis) {
+		deviceInitialValue =
+			axis === 'vertical' ? { top: 0, bottom: 0 } : { right: 0, left: 0 };
+	}
 
 	const baseDefault = {
-		mobile: { top: 0, right: 0, bottom: 0, left: 0 },
-		tablet: { top: 0, right: 0, bottom: 0, left: 0 },
-		desktop: { top: 0, right: 0, bottom: 0, left: 0 },
+		mobile: deviceInitialValue,
+		tablet: deviceInitialValue,
+		desktop: deviceInitialValue,
 		'mobile-unit': 'px',
 		'tablet-unit': 'px',
 		'desktop-unit': 'px',
@@ -115,27 +122,31 @@ const SpacingComponent = ({ control }) => {
 		{
 			type: 'top',
 			label: __('Top', 'neve'),
-			value: value[currentDevice].top,
+			value: axis === 'horizontal' ? undefined : value[currentDevice].top,
+			disabled: axis === 'horizontal',
 		},
 		{
 			type: 'right',
 			label: __('Right', 'neve'),
-			value: value[currentDevice].right,
+			value: axis === 'vertical' ? undefined : value[currentDevice].right,
+			disabled: axis === 'vertical',
 		},
 		{
 			type: 'bottom',
 			label: __('Bottom', 'neve'),
-			value: value[currentDevice].bottom,
+			value:
+				axis === 'horizontal' ? undefined : value[currentDevice].bottom,
+			disabled: axis === 'horizontal',
 		},
 		{
 			type: 'left',
 			label: __('Left', 'neve'),
-			value: value[currentDevice].left,
+			value: axis === 'vertical' ? undefined : value[currentDevice].left,
+			disabled: axis === 'vertical',
 		},
 	];
-	const { hideResponsiveButtons } = controlParams;
+	const { min, max, hideResponsiveButtons } = controlParams;
 	const { label } = control.params;
-	const { min, max } = controlParams;
 	const wrapClasses = classnames([
 		'neve-white-background-control',
 		'neve-sizing',

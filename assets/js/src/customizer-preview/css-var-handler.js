@@ -406,12 +406,14 @@ export class CSSVariablesHandler {
 	}
 
 	isDirectionalValue(value) {
-		return (
+		const hasTopBottom =
 			typeof value.top !== 'undefined' &&
-			typeof value.right !== 'undefined' &&
-			typeof value.bottom !== 'undefined' &&
-			typeof value.left !== 'undefined'
-		);
+			typeof value.bottom !== 'undefined';
+		const hasLeftRight =
+			typeof value.left !== 'undefined' &&
+			typeof value.right !== 'undefined';
+		const hasAllProperties = hasTopBottom && hasLeftRight;
+		return hasAllProperties || hasTopBottom || hasLeftRight;
 	}
 
 	maybeParseJson(input) {
