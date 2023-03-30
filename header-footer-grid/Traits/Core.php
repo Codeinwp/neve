@@ -93,19 +93,22 @@ trait Core {
 
 			// Optional if a suffix is present. We sanitize the array of suffixes below.
 			if ( 'suffix' === $key && is_array( $value ) ) {
-				$default_suffix    = array(
+				$filtered['suffix'] = array(
 					'mobile'  => 'px',
 					'tablet'  => 'px',
 					'desktop' => 'px',
 				);
-				$sanitized_devices = array();
 				foreach ( $value as $device => $suffix ) {
-					$filtered['suffix'][ $device ] = in_array( $suffix, array( 'px', 'em', 'rem', '%' ), true ) ? $suffix : 'px';
-					$sanitized_devices[]           = $device;
-				}
+					if ( ! in_array( $suffix, array( 'px', 'em', 'rem', '%' ), true ) ) {
+						continue;
+					}
 
-				if ( array_diff( array_keys( $default_suffix ), $sanitized_devices ) ) {
-					$filtered['suffix'] = array_merge( $default_suffix, $filtered['suffix'] );
+					// Additionally; device check was added. (for key check I think we can leverage expected keys from $filtered since we expect 1-1 match for devices between suffix and input devices)
+					if ( ! array_key_exists( $device, $filtered ) ) {
+						continue;
+					}
+
+					$filtered['suffix'][ $device ] = $suffix;
 				}
 			}
 		}
