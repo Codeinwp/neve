@@ -20,7 +20,7 @@ use HFG\Core\Magic_Tags;
  *
  * @param string $builder_name The builder id. (header|footer|page_header etc.).
  *
- * @return Abstract_Builder instance, such as HFG\Core\Builder\Header|Neve_Pro\Modules\Header_Footer_Grid\Builder\Page_Header|HFG\Core\Builder\Footer
+ * @return Abstract_Builder[]|Abstract_Builder instance, such as HFG\Core\Builder\Header|Neve_Pro\Modules\Header_Footer_Grid\Builder\Page_Header|HFG\Core\Builder\Footer
  */
 function get_builder( $builder_name = '' ) {
 	return Main::get_instance()->get_builder( $builder_name );
@@ -51,10 +51,15 @@ function render_components( $builder_name = '', $device = null ) {
  * @param string $builder_name The builder id.
  * @param null   $component_id The component id.
  *
- * @return Core\Components\Abstract_Component|null
+ * @return false|Core\Components\Abstract_Component
  */
 function current_component( $builder_name = '', $component_id = null ) {
 	$builder = get_builder( $builder_name );
+
+	// if returns array of Abstract_Builder instances.
+	if ( ! ( $builder instanceof Abstract_Builder ) ) {
+		return false;
+	}
 
 	return $builder->get_component( $component_id );
 }
@@ -84,9 +89,9 @@ function current_row( $builder_name = '' ) {
 /**
  * Get setting value of a certain component.
  *
- * @param string $id           Id of component setting.
- * @param null   $default      Default value, otherwise use the one when the setting was defined.
- * @param null   $component_id Component id.
+ * @param string      $id           Id of component setting.
+ * @param mixed       $default      Default value, otherwise use the one when the setting was defined.
+ * @param string|null $component_id Component id.
  *
  * @return mixed Component settings.
  */

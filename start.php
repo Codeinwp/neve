@@ -31,6 +31,7 @@ function neve_run() {
 			'advanced_search_component' => true,
 			'submenu_style'             => true,
 			'blog_hover_effects'        => true,
+			'hfg_d_search_iconbutton'   => true, // Dynamic icon selection or a button for search components
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
