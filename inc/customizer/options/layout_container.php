@@ -28,6 +28,7 @@ class Layout_Container extends Base_Customizer {
 	public function add_controls() {
 		$this->section_container();
 		$this->control_container_width();
+		$this->control_vertical_spacing();
 		$this->control_container_style();
 	}
 
@@ -90,6 +91,43 @@ class Layout_Container extends Base_Customizer {
 					'priority'              => 25,
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
+			)
+		);
+	}
+
+	/**
+	 * Add vertical spacing control
+	 */
+	private function control_vertical_spacing() {
+		$this->add_control(
+			new Control(
+				'neve_content_vertical_spacing',
+				[
+					// 'default' => $defaults,
+																			'transport' => $this->selective_refresh,
+				],
+				[
+					'label'                 => __( 'Content Vertical Spacing', 'neve' ),
+					'sanitize_callback'     => [ $this, 'sanitize_spacing_array' ],
+					'section'               => 'neve_container',
+					'input_attrs'           => [
+						'units' => [ 'px', 'vh' ],
+						'axis'  => 'vertical',
+						'min'   => 0,
+					],
+					'priority'              => 26,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar'      => [
+							'vars'       => '--content-vspacing',
+							'selector'   => 'body.single .neve-main',
+							'responsive' => true,
+							'fallback'   => '',
+						],
+						'directional' => true,
+					],
+				],
+				'\Neve\Customizer\Controls\React\Spacing'
 			)
 		);
 	}
