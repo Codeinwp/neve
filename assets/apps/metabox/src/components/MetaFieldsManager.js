@@ -413,10 +413,12 @@ class MetaFieldsManager extends Component {
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
-		const showMetaElements = JSON.parse(
-			this.props.metaValue('neve_post_elements_order') ||
-				this.defaultSortables
-		).includes('meta');
+		const showMetaElements =
+			metaSidebar.isCoverLayout ||
+			JSON.parse(
+				this.props.metaValue('neve_post_elements_order') ||
+					this.defaultSortables
+			).includes('meta');
 		const postType = select('core/editor').getCurrentPostType();
 		return (
 			<div className="nv-option-category">
