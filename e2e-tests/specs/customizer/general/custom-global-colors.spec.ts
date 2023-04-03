@@ -34,7 +34,7 @@ test.describe('Custom Global Color Control', () => {
 		await clearWelcome(page);
 
 		await page.locator('.block-editor-rich-text__editable').first().click();
-		await page.waitForTimeout(100);
+		await page.locator('#tab-panel-0-styles').click();
 		await page
 			.locator('.block-editor-panel-color-gradient-settings__color-name')
 			.getByText('Text')
