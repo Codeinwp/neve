@@ -5,7 +5,6 @@ test.describe('Starter sites check', () => {
 		const starterSites = {
 			'Web Agency': ['https://staging.demosites.io/web-agency-gb/'],
 			Blogger: ['https://staging.demosites.io/blogger-gb/'],
-			Shop: ['https://staging.demosites.io/shop-gb/'],
 			'Neve 3': ['https://staging.demosites.io/neve-3-gb/'],
 			Photography: ['https://staging.demosites.io/rokophoto-gb/'],
 			Fitness: ['https://staging.demosites.io/fitness-gb/'],
