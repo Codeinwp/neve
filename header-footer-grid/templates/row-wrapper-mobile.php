@@ -15,10 +15,10 @@ use HFG\Core\Components\MenuIcon;
 
 $row_index        = current_row();
 $interaction_type = row_setting( Abstract_Builder::LAYOUT_SETTING );
-$classes          = [ 'header-menu-sidebar', 'menu-sidebar-panel', $interaction_type, 'hfg-pe' ];
+$classes          = [ 'header-menu-sidebar', 'tcb', 'menu-sidebar-panel', $interaction_type, 'hfg-pe' ];
 $is_contained     = in_array( $interaction_type, [ 'full_canvas', 'dropdown' ], true );
 $close_contained  = $interaction_type === 'dropdown';
-$inner_classes    = 'header-menu-sidebar-inner ' . ( $is_contained ? ' container' : '' );
+$inner_classes    = 'header-menu-sidebar-inner tcb ' . ( $is_contained ? ' container' : '' );
 $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 $close_classes    = 'close-sidebar-panel navbar-toggle-wrapper' . ( $close_contained ? ' container' : '' );
 $submenu_style    = row_setting( 'layout', 'slide_left' );
