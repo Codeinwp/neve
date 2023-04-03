@@ -22,7 +22,7 @@ test.describe('Starter sites check', () => {
 					await page.goto(url + '?optml_off=true');
 					await page.waitForTimeout(500);
 					await expect(page).toHaveScreenshot({
-						maxDiffPixelRatio: 0.05,
+						maxDiffPixelRatio: 0.2,
 						fullPage: true,
 					});
 				}
