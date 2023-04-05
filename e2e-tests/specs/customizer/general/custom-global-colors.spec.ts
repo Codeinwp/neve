@@ -68,7 +68,6 @@ test.describe('Custom Global Color Control', () => {
 
 	test('Check the color on frontend', async ({ page }) => {
 		await page.goto('/hello-world/?test_name=custom-global-colors');
-		await page.screenshot({ path: 'screenshot.png' });
 		await expect(
 			await page.locator('.nv-content-wrap p').first()
 		).toHaveClass(/has-custom-1-color/);
