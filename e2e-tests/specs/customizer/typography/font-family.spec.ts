@@ -1,10 +1,6 @@
 import { test, expect } from '@playwright/test';
-import {
-	setCustomizeSettings,
-	loginWithRequest,
-	clearWelcome,
-} from '../../../utils';
-import data from '../../../fixtures/customizer/typography/font-family.json'
+import { setCustomizeSettings, clearWelcome } from '../../../utils';
+import data from '../../../fixtures/customizer/typography/font-family.json';
 const fonts = {
 	general: 'Arapey',
 	headings: 'Allerta Stencil',
@@ -42,9 +38,8 @@ test.describe('Font Family', () => {
 	});
 
 	test('Test Font Family inside the Editor', async ({ page }) => {
-		await loginWithRequest(
-			'/markup-html-tags-and-formatting/?test_name=fontFamily',
-			page
+		await page.goto(
+			'/markup-html-tags-and-formatting/?test_name=fontFamily'
 		);
 		const editPageLink = await page
 			.locator('#wp-admin-bar-edit > a')
