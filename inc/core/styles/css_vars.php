@@ -7,6 +7,7 @@ namespace Neve\Core\Styles;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Core\Traits\Theme_Mods;
 
 /**
  * Trait Css_Vars
@@ -14,6 +15,8 @@ use Neve\Core\Settings\Mods;
  * @since 3.0.0
  */
 trait Css_Vars {
+	use Theme_Mods;
+
 	/**
 	 * Get container rules.
 	 *
@@ -276,9 +279,14 @@ trait Css_Vars {
 			],
 		];
 		foreach ( neve_get_headings_selectors() as $id => $heading_selector ) {
+
 			$composed_key = sprintf( 'neve_%s_typeface_general', $id );
 			$mod_key      = $composed_key;
 			$default      = Mods::get_alternative_mod_default( $composed_key );
+
+			$rules[ '--' . $id . 'fontfamily' ] = [
+				Dynamic_Selector::META_KEY           => $this->get_mod_key_heading_fontfamily( $id )
+			];
 
 			$rules[ '--' . $id . 'fontsize' ] = [
 				Dynamic_Selector::META_KEY           => $mod_key . '.fontSize',
