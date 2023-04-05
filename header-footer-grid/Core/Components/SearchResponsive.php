@@ -22,21 +22,15 @@ use Neve\Core\Styles\Dynamic_Selector;
  *
  * @package HFG\Core\Components
  */
-class SearchResponsive extends Abstract_Component {
+class SearchResponsive extends Abstract_SearchComponent {
 	use Core;
 
-	const COMPONENT_ID        = 'header_search_responsive';
-	const PLACEHOLDER_ID      = 'placeholder';
-	const SIZE_ID             = 'icon_size';
-	const COLOR_ID            = 'color';
-	const HOVER_COLOR_ID      = 'hover_color';
-	const OPEN_TYPE           = 'open_type';
-	const FIELD_HEIGHT        = 'field_height';
-	const FIELD_FONT_SIZE     = 'field_text_size';
-	const FIELD_BG            = 'field_background';
-	const FIELD_TEXT_COLOR    = 'field_text_color';
-	const FIELD_BORDER_WIDTH  = 'field_border_width';
-	const FIELD_BORDER_RADIUS = 'field_border_radius';
+	const COMPONENT_ID      = 'header_search_responsive';
+	const SIZE_ID           = 'icon_size';
+	const COLOR_ID          = 'color';
+	const HOVER_COLOR_ID    = 'hover_color';
+	const OPEN_TYPE         = 'open_type';
+	const DEFAULT_ICON_SIZE = 15;
 
 	/**
 	 * Button constructor.
@@ -150,14 +144,14 @@ class SearchResponsive extends Abstract_Component {
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'absint',
-				'default'               => 15,
+				'default'               => self::DEFAULT_ICON_SIZE,
 				'label'                 => __( 'Icon Size', 'neve' ),
 				'type'                  => 'Neve\Customizer\Controls\React\Range',
 				'options'               => [
 					'input_attrs' => [
 						'min'        => 10,
 						'max'        => 100,
-						'defaultVal' => 15,
+						'defaultVal' => self::DEFAULT_ICON_SIZE,
 					],
 				],
 				'live_refresh_selector' => true,
