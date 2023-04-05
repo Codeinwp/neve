@@ -121,6 +121,7 @@ class Core_Loader {
 			'Compatibility\Lifter',
 			'Compatibility\Patterns',
 			'Compatibility\PWA',
+			'Compatibility\PPOM',
 			'Compatibility\Web_Stories',
 			'Compatibility\Easy_Digital_Downloads',
 			'Compatibility\WPML',
