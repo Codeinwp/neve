@@ -2,9 +2,9 @@
 Contributors: themeisle
 Tags: blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
 Requires at least: 4.0
-Tested up to: 6.1
+Tested up to: 6.2
 Stable tag: trunk
-Requires PHP: 5.5.0
+Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,7 +62,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 ##### [Version 3.5.2](https://github.com/Codeinwp/neve/compare/v3.5.1...v3.5.2) (2023-02-15)
 
 - [Feat] Add a filter for the author post meta
-- [Feat] Improve Accessibility. Use the tab switch to submenu items only if the arrow is clicked on focus 
+- [Feat] Improve Accessibility. Use the tab switch to submenu items only if the arrow is clicked on focus
 - [Fix] Layout issue with Elementor Pro checkout widget
 - [Fix] PHP 8.2 Support
 - [Fix] Vertical alignment for cover posts
