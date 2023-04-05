@@ -123,6 +123,7 @@ class Core_Loader {
 			'Compatibility\PWA',
 			'Compatibility\Web_Stories',
 			'Compatibility\Easy_Digital_Downloads',
+			'Compatibility\WPML',
 
 			'Admin\Metabox\Manager',
 			'Admin\Troubleshoot\Main',
