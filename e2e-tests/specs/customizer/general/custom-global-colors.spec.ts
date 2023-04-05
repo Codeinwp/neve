@@ -4,9 +4,7 @@ import {
 	isIntersectingViewport,
 	savePost,
 	setCustomizeSettings,
-	visitAdminPage,
 } from '../../../utils';
-import { addQueryArgs } from '@wordpress/url';
 
 // Annotate entire file as serial.
 test.describe.configure({ mode: 'serial' });
@@ -30,15 +28,13 @@ test.describe('Custom Global Color Control', () => {
 			{ request, baseURL }
 		);
 
-		const query = addQueryArgs('', {
-			post: 1,
-			action: 'edit',
-			test_name: 'custom-global-colors',
-		}).slice(1);
-		await visitAdminPage(page, 'post.php', query);
+		await page.goto(
+			'/wp-admin/post.php?post=1&action=edit&test_name=custom-global-colors'
+		);
 		await clearWelcome(page);
 
 		await page.locator('.block-editor-rich-text__editable').first().click();
+		await page.locator('#tab-panel-0-styles').click();
 		await page
 			.locator('.block-editor-panel-color-gradient-settings__color-name')
 			.getByText('Text')
@@ -72,7 +68,6 @@ test.describe('Custom Global Color Control', () => {
 
 	test('Check the color on frontend', async ({ page }) => {
 		await page.goto('/hello-world/?test_name=custom-global-colors');
-		await page.screenshot({ path: 'screenshot.png' });
 		await expect(
 			await page.locator('.nv-content-wrap p').first()
 		).toHaveClass(/has-custom-1-color/);

@@ -1,0 +1,20 @@
+{
+    "hfg_header_layout_v2":"{\"desktop\":{\"top\":{\"left\":[{\"id\":\"header_search\"}],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]},\"main\":{\"left\":[{\"id\":\"logo\"}],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[{\"id\":\"header_search_responsive\"},{\"id\":\"button_base\"}]},\"bottom\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[{\"id\":\"primary-menu\"}]}},\"mobile\":{\"top\":{\"left\":[{\"id\":\"secondary-menu\"}],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[{\"id\":\"primary-menu_2\"}]},\"main\":{\"left\":[{\"id\":\"logo\",\"width\":8,\"x\":0}],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[{\"id\":\"nav-icon\",\"width\":4,\"x\":8}]},\"bottom\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]},\"sidebar\":[{\"id\":\"header_search\"},{\"id\":\"primary-menu\"},{\"id\":\"button_base\"}]}}",
+    "header_search_field_height":"{\"mobile\":45,\"tablet\":40,\"desktop\":57}",
+    "header_search_field_border_width":"{\"mobile\":{\"top\":\"2\",\"right\":\"2\",\"bottom\":\"2\",\"left\":\"2\"},\"tablet\":{\"top\":1,\"right\":1,\"bottom\":1,\"left\":1},\"desktop\":{\"top\":\"5\",\"right\":\"5\",\"bottom\":\"5\",\"left\":\"5\"},\"mobile-unit\":\"px\",\"tablet-unit\":\"px\",\"desktop-unit\":\"px\"}",
+    "header_search_field_text_color":"#0886c1",
+    "header_search_responsive_color":"var(--nv-primary-accent)",
+    "header_search_responsive_hover_color":"var(--nv-dark-bg)",
+    "header_search_responsive_field_height":"{\"mobile\":40,\"tablet\":40,\"desktop\":58}",
+    "header_search_responsive_field_text_size":"{\"mobile\":14,\"tablet\":14,\"desktop\":27}",
+    "header_search_responsive_field_border_width":"{\"mobile\":{\"top\":1,\"right\":1,\"bottom\":1,\"left\":1},\"tablet\":{\"top\":1,\"right\":1,\"bottom\":1,\"left\":1},\"desktop\":{\"top\":\"4\",\"right\":\"4\",\"bottom\":\"4\",\"left\":\"4\"},\"mobile-unit\":\"px\",\"tablet-unit\":\"px\",\"desktop-unit\":\"px\"}",
+    "header_search_responsive_field_text_color":"var(--nv-primary-accent)",
+    "header_search_field_text_size":"{\"mobile\":14,\"tablet\":14,\"desktop\":20}",
+    "header_search_button_appearance":"icon_button",
+    "header_search_button_style":"{\"borderRadius\":{\"top\":0,\"left\":0,\"bottom\":0,\"right\":0},\"borderWidth\":{\"top\":1,\"right\":1,\"bottom\":1,\"left\":1},\"useShadow\":false,\"shadowColor\":\"rgba(0,0,0,0.5)\",\"shadowProperties\":{\"blur\":5,\"width\":0,\"height\":0},\"useShadowHover\":false,\"shadowColorHover\":\"rgba(0,0,0,0.5)\",\"shadowPropertiesHover\":{\"blur\":5,\"width\":0,\"height\":0},\"type\":\"outline\",\"background\":\"#4dabee\",\"text\":\"#eeeeee\"}",
+    "header_search_field_border_radius":"{\"mobile\":{\"top\":2,\"right\":2,\"bottom\":2,\"left\":2},\"tablet\":{\"top\":2,\"right\":2,\"bottom\":2,\"left\":2},\"desktop\":{\"top\":\"4\",\"right\":\"4\",\"bottom\":\"4\",\"left\":\"4\"},\"mobile-unit\":\"px\",\"tablet-unit\":\"px\",\"desktop-unit\":\"px\"}",
+    "header_search_field_background":"#f8f8f8",
+    "header_search_button_text":"SeachText!",
+    "header_search_icon_type":"hfgs-icon-style-4",
+    "header_search_placeholder":"Sample search for..."
+}
