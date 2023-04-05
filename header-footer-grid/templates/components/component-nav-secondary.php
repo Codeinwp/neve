@@ -13,9 +13,11 @@ use HFG\Core\Components\SecondNav;
 
 $style = component_setting( SecondNav::STYLE_ID );
 
-$container_classes = [ $style ];
-
-$container_classes[] = 'nav-menu-secondary';
+$container_classes = [ 'nav-menu-secondary' ];
+if ( $style !== 'style-plain' ) {
+	$container_classes[] = $style;
+	$container_classes[] = 'm-style';
+}
 
 ?>
 <div class="nv-top-bar">
@@ -30,6 +32,8 @@ $container_classes[] = 'nav-menu-secondary';
 				'container'      => 'ul',
 				'depth'          => - 1,
 				'fallback_cb'    => '__return_false',
+				'before'         => '<div class="wrap">',
+				'after'          => '</div>',
 			)
 		);
 		?>

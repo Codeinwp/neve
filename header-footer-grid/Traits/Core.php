@@ -90,6 +90,26 @@ trait Core {
 			if ( isset( $filtered[ $key ] ) && is_numeric( $value ) ) {
 				$filtered[ $key ] = (int) $value;
 			}
+
+			// Optional if a suffix is present. We sanitize the array of suffixes below.
+			if ( 'suffix' === $key && is_array( $value ) ) {
+				$filtered['suffix'] = array(
+					'mobile'  => 'px',
+					'tablet'  => 'px',
+					'desktop' => 'px',
+				);
+				foreach ( $value as $device => $suffix ) {
+					if ( ! in_array( $suffix, array( 'px', 'em', 'rem', '%' ), true ) ) {
+						continue;
+					}
+
+					if ( ! array_key_exists( $device, $filtered ) ) {
+						continue;
+					}
+
+					$filtered['suffix'][ $device ] = $suffix;
+				}
+			}
 		}
 
 		return wp_json_encode( $filtered );
