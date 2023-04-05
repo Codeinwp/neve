@@ -52,6 +52,7 @@ class Frontend extends Generator {
 		$this->setup_form_fields_style();
 		$this->setup_header_style();
 		$this->setup_single_post_style();
+		$this->setup_content_vspacing();
 	}
 
 	/**
@@ -869,5 +870,21 @@ class Frontend extends Generator {
 			];
 		}
 
+	}
+
+	private function setup_content_vspacing() {
+		$rules = [
+			'--content-vspacing' => [
+				Dynamic_Selector::META_KEY           => Config::MODS_CONTENT_VSPACING,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+				'directional-prop'                   => Config::CSS_PROP_MARGIN,
+			],
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.single .neve-main, .page .neve-main',
+			'rules'     => $rules,
+		];
 	}
 }

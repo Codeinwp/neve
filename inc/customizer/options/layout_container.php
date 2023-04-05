@@ -28,6 +28,7 @@ class Layout_Container extends Base_Customizer {
 	public function add_controls() {
 		$this->section_container();
 		$this->control_container_width();
+		$this->control_vertical_spacing();
 		$this->control_container_style();
 	}
 
@@ -90,6 +91,76 @@ class Layout_Container extends Base_Customizer {
 					'priority'              => 25,
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
+			)
+		);
+	}
+
+	/**
+	 * Add vertical spacing control
+	 */
+	private function control_vertical_spacing() {
+		$this->add_control(
+			new Control(
+				'neve_content_vertical_spacing',
+				[
+					'default' => [
+						'mobile'       => [
+							'top'    => 60,
+							'bottom' => 60,
+						],
+						'tablet'       => [
+							'top'    => 60,
+							'bottom' => 60,
+						],
+						'desktop'      => [
+							'top'    => 60,
+							'bottom' => 60,
+						],
+						'mobile-unit'  => 'px',
+						'tablet-unit'  => 'px',
+						'desktop-unit' => 'px',
+					],
+					'transport' => $this->selective_refresh,
+				],
+				[
+					'label'                 => __( 'Content Vertical Spacing', 'neve' ),
+					'sanitize_callback'     => [ $this, 'sanitize_spacing_array' ],
+					'section'               => 'neve_container',
+					'input_attrs'           => [
+						'units' => [ 'px', 'vh' ],
+						'axis'  => 'vertical',
+						'min'   => 0,
+					],
+					'default' => [
+						'mobile'       => [
+							'top'    => 60,
+							'bottom' => 60,
+						],
+						'tablet'       => [
+							'top'    => 60,
+							'bottom' => 60,
+						],
+						'desktop'      => [
+							'top'    => 60,
+							'bottom' => 60,
+						],
+						'mobile-unit'  => 'px',
+						'tablet-unit'  => 'px',
+						'desktop-unit' => 'px',
+					],
+					'priority'              => 26,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar'      => [
+							'vars'       => '--content-vspacing',
+							'selector'   => 'body.single .neve-main, body.page .neve-main',
+							'responsive' => true,
+							'fallback'   => '',
+						],
+						'directional' => true,
+					],
+				],
+				'\Neve\Customizer\Controls\React\Spacing'
 			)
 		);
 	}

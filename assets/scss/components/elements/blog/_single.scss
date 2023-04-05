@@ -1,18 +1,12 @@
 @import "../../main/variables";
 
+.single, .page {
+  .neve-main {
+	margin: var(--content-vspacing, $spacing-aired 0 );
+  }
+}
+
 .nv-single-post-wrap {
-
-	> div {
-
-		&:first-child {
-			margin-top: $spacing-aired;
-		}
-
-		&:last-child {
-			padding-bottom: $spacing-lg;
-		}
-	}
-
 	> div:not(:last-child) {
 		margin-bottom: var(--spacing, $spacing-aired);
 	}
@@ -20,10 +14,6 @@
 	.wp-block-image {
 		margin-bottom: var(--img-m);
 	}
-}
-
-.nv-page-title-wrap {
-	margin-top: $spacing-aired;
 }
 
 .entry-header {

@@ -93,6 +93,7 @@ class Config {
 	 * This is only used in a dynamic context for all allowed post types
 	 */
 	const MODS_CONTENT_WIDTH                = 'content_width';
+	const MODS_CONTENT_VSPACING             = 'neve_content_vertical_spacing';
 	const MODS_COVER_HEIGHT                 = 'cover_height';
 	const MODS_COVER_PADDING                = 'cover_padding';
 	const MODS_COVER_BACKGROUND_COLOR       = 'cover_background_color';
