@@ -23,7 +23,6 @@ init_environment(){
 	wp --allow-root option update fresh_site 0
   echo "Installing Theme API Plugin"
   wp --allow-root plugin install https://github.com/cristian-ungureanu/wp-thememods-api/archive/refs/heads/main.zip --force --activate
-  wp --allow-root plugin install https://gist.github.com/cristian-ungureanu/ecae7d531e8fdaeb6e18a745b9544bf5/archive/29884d432f14287c280ab884ebbadb4cf6506c43.zip --force --activate
 }
 
 

@@ -2,7 +2,7 @@ name: Add labels to pull request based on checklist
 
 on:
   pull_request:
-    types: [ opened, edited, synchronize ]
+    types: [ opened, edited, synchronize, labeled, unlabeled ]
     branches-ignore:
       - 'master'
 
@@ -21,3 +21,4 @@ jobs:
           onlyCheckBody: true
           completedLabel: "pr-checklist-complete"
           incompleteLabel: "pr-checklist-incomplete"
+          skipLabel: "pr-checklist-skip"

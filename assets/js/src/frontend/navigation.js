@@ -126,11 +126,13 @@ function getKeyboardFocusableElements(element = document) {
 let focusTrapDetails = {};
 document.addEventListener(NV_FOCUS_TRAP_START, function (event) {
 	focusTrapDetails = event.detail;
-	setTimeout(() => {
-		focusTrapDetails.container
-			.querySelector(focusTrapDetails.firstFocus)
-			.focus();
-	}, 100);
+	setTimeout(
+		function (ft) {
+			ft.container.querySelector(ft.firstFocus).focus();
+		},
+		100,
+		focusTrapDetails
+	);
 	document.addEventListener('keydown', startFocusTrap);
 });
 document.addEventListener(NV_FOCUS_TRAP_END, function () {
@@ -148,10 +150,8 @@ function startFocusTrap(event) {
 	const firstEl = elements[0];
 	if (escKey) {
 		event.preventDefault();
-		focusTrapDetails.container
-			.querySelector(focusTrapDetails.close)
-			.click();
 		focusTrapDetails.backFocus.focus();
+		window.HFG.toggleMenuSidebar(false);
 		document.dispatchEvent(new CustomEvent(NV_FOCUS_TRAP_END));
 	}
 	if (!shiftKey && tabKey && lastEl === activeEl) {

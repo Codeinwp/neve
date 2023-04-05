@@ -209,3 +209,37 @@ export const savePost = async (page: Page) => {
 	await saveButton.click();
 	await page.waitForTimeout(2000);
 };
+
+/**
+ * Scroll to a specific location on the page.
+ *
+ * @param {Page} page - The Puppeteer Page object to operate on.
+ * @param {string|number} to - The location to scroll to. Accepts either 'top', 'bottom', or a numeric Y-coordinate.
+ */
+export const scrollTo = async (page: Page, to: string | number) => {
+	await page.evaluate((location) => {
+		let y = 0;
+		if (location === 'top') {
+			y = 0;
+		}
+		if (location === 'bottom') {
+			y = document.body.scrollHeight;
+		}
+		if (typeof location === 'number') {
+			y = location;
+		}
+		window.scrollTo(0, y);
+	}, to);
+};
+
+/**
+ * Utility function to log out of the WordPress site.
+ *
+ * @param {Page} page - The Puppeteer Page object to operate on.
+ */
+export const logOut = async (page: Page) => {
+	await page.goto('/wp-login.php?action=logout');
+	await page.locator('a').click();
+
+	await page.waitForURL('**/wp-login.php**');
+};

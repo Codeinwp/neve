@@ -127,6 +127,7 @@ class Core_Loader {
 			'Admin\Metabox\Manager',
 			'Admin\Troubleshoot\Main',
 			'Admin\Dashboard\Main',
+			'Admin\Hooks_Upsells',
 		);
 
 		if ( $this->is_fse_child_theme() ) {

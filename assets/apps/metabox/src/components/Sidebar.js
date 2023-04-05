@@ -10,7 +10,7 @@ import { withDispatch, withSelect, select, dispatch } from '@wordpress/data';
 import MetaFieldsManager from './MetaFieldsManager';
 const Sidebar = compose(
 	withDispatch((dispatchHandler) => {
-		dispatchHandler('core/keyboard-shortcuts').registerShortcut({
+		return dispatchHandler('core/keyboard-shortcuts').registerShortcut({
 			name: 'neve/open-meta-sidebar',
 			category: 'block',
 			description: __('Open Neve meta sidebar', 'neve'),
