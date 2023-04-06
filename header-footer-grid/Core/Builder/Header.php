@@ -186,6 +186,11 @@ class Header extends Abstract_Builder {
 			$global_settings_tabs->controls['style']['neve_transparent_header'] = [];
 		}
 
+		if ( $wp_customize->get_control( 'neve_transparent_min_height' ) !== null ) {
+			$wp_customize->get_control( 'neve_transparent_min_height' )->priority   = 10;
+			$global_settings_tabs->controls['style']['neve_transparent_min_height'] = [];
+		}
+
 		if ( $wp_customize->get_control( 'neve_transparent_only_on_home' ) !== null ) {
 			$wp_customize->get_control( 'neve_transparent_only_on_home' )->priority   = 10;
 			$global_settings_tabs->controls['style']['neve_transparent_only_on_home'] = [];
