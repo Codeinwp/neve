@@ -30,15 +30,16 @@
 		min-width: 45px;
 		z-index: 1;
 		--primarybtnborderwidth: var(--formfieldborderwidth);
-		--primarybtnbordercolor: var(--formfieldbordercolor);
 		--primarybtnborderradius: var(--formfieldborderradius);
 		--primarybtnpadding: var(--formfieldpadding);
 		border-bottom-left-radius: 0;
 		border-top-left-radius: 0;
 		border-left: 0;
+		border-color: var(--formfieldbordercolor);
 		position: relative;
 		height: var(--height);
 		overflow: hidden;
+		white-space: nowrap;
 
 		&::before {
 			content: "";

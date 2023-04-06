@@ -7,6 +7,7 @@
  */
 
 use Neve_Pro\Modules\Header_Footer_Grid\Components\Icons;
+use HFG\Core\Components\Utility\SearchIconButton;
 
 /**
  * Check if we're delivering AMP
@@ -198,14 +199,32 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '', $icon_custo
 /**
  * Search Icon
  *
- * @param bool $is_link should be wrapped in A tag.
- * @param bool $echo should be echoed.
- * @param int  $size icon size.
- * @param bool $amp_ready Should we add the AMP binding.
+ * @param bool         $is_link should be wrapped in A tag.
+ * @param bool         $echo should be echoed.
+ * @param int          $size icon size.
+ * @param bool         $amp_ready Should we add the AMP binding.
+ * @param false|string $context Represents where the search icon is being used.
  *
  * @return string|null
  */
-function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_ready = false ) {
+function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_ready = false, $context = false ) {
+
+	$icon_type = SearchIconButton::DEFAULT_ICON;
+
+	if ( $context === 'hfg' ) {
+		$hfg_icon_type = \HFG\component_setting( SearchIconButton::ICON_TYPE, SearchIconButton::DEFAULT_ICON );
+
+		// For the possibility of \HFG\current_component returning false
+		if ( $hfg_icon_type !== false ) {
+			$icon_type = $hfg_icon_type;
+		}
+	}
+
+	if ( $icon_type === SearchIconButton::CUSTOM_ICON ) {
+		$svg = \HFG\component_setting( SearchIconButton::CUSTOM_ICON_SVG, SearchIconButton::DEFAULT_CUSTOM_ICON_SVG );
+	} else {
+		$svg = SearchIconButton::render_icon( $icon_type, $size );
+	}
 
 	$amp_state = '';
 	if ( $amp_ready ) {
@@ -213,13 +232,13 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 	}
 	$start_tag = $is_link ? 'a aria-label="' . __( 'Search', 'neve' ) . '" href="#"' : 'span';
 	$end_tag   = $is_link ? 'a' : 'span';
-	$svg       = '<' . $start_tag . ' class="nv-icon nv-search" ' . $amp_state . '>
-				<svg width="' . $size . '" height="' . $size . '" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg>
+	$output    = '<' . $start_tag . ' class="nv-icon nv-search" ' . $amp_state . '>
+				' . neve_kses_svg( $svg ) . '
 			</' . $end_tag . '>';
 	if ( $echo === false ) {
-		return $svg;
+		return $output;
 	}
-	echo $svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	return null;
 }
 

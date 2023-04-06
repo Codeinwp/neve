@@ -21,16 +21,16 @@ use Neve\Core\Styles\Dynamic_Selector;
  *
  * @package HFG\Core\Components
  */
-class Search extends Abstract_Component {
+class Search extends Abstract_SearchComponent {
 
-	const COMPONENT_ID        = 'header_search';
-	const PLACEHOLDER_ID      = 'placeholder';
-	const FIELD_HEIGHT        = 'field_height';
-	const FIELD_FONT_SIZE     = 'field_text_size';
-	const FIELD_BG            = 'field_background';
-	const FIELD_TEXT_COLOR    = 'field_text_color';
-	const FIELD_BORDER_WIDTH  = 'field_border_width';
-	const FIELD_BORDER_RADIUS = 'field_border_radius';
+	const COMPONENT_ID = 'header_search';
+
+	/**
+	 *  Has support for the text based button?
+	 *
+	 * @var bool
+	 */
+	protected $has_textbutton_support = true;
 
 	/**
 	 * Button constructor.
@@ -133,7 +133,10 @@ class Search extends Abstract_Component {
 				'live_refresh_css_prop' => [
 					'cssVar'     => [
 						'responsive' => true,
-						'vars'       => '--formfieldfontsize',
+						'vars'       => [
+							'--formfieldfontsize',
+							'--btnfs',
+						],
 						'suffix'     => 'px',
 						'selector'   => '.builder-item--' . $this->get_id(),
 					],
@@ -413,11 +416,15 @@ class Search extends Abstract_Component {
 			],
 		];
 
+		// If button mode is enabled, get inherit the input font size for button font size. (That's here instead of hard-coded css to avoid size limit being exceeded)
+		if ( $this->search_icon_button_instance->is_button_mode_enabled() ) {
+			$rules['--btnfs'] = $rules['--formfieldfontsize'];
+		}
+
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id(),
 			Dynamic_Selector::KEY_RULES    => $rules,
 		];
-
 
 		return parent::add_style( $css_array );
 	}
