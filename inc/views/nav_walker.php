@@ -97,9 +97,6 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @return string
 	 */
 	public function add_caret( $title, $item, $args, $depth ) {
-		$args->before = '';
-		$args->after  = '';
-
 		if ( neve_is_amp() ) {
 			return $title;
 		}
@@ -115,6 +112,9 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		if ( ! isset( $item->classes ) || ! is_array( $item->classes ) ) {
 			return $title;
 		}
+
+		$args->before = '';
+		$args->after  = '';
 
 		$default_caret_settings = [
 			'side'      => is_rtl() ? 'left' : 'right',

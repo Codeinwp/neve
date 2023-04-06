@@ -8,10 +8,11 @@
 	}
 
 	&.is-style-dots {
-		border-top: 4px dotted;
 
 		&::before {
-			content: none;
+			content: "";
+			border-top: 4px dotted;
+			display: block;
 		}
 	}
 }

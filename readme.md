@@ -2,9 +2,9 @@
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
 **Tags:** blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar  
 **Requires at least:** 4.0  
-**Tested up to:** 6.1  
+**Tested up to:** 6.2  
 **Stable tag:** trunk  
-**Requires PHP:** 5.5.0  
+**Requires PHP:** 7.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -18,6 +18,20 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+
+##### [Version 3.5.7](https://github.com/Codeinwp/neve/compare/v3.5.6...v3.5.7) (2023-04-06)
+
+- [Feat] Dynamic Icon Selection and Optional Button for HFG Search Components
+- [Fix] Dot style separator not visible inside the editor
+- [Fix] Improve compatibility with WPML and Neve
+- [Fix] Gradient issue in WordPress 6.2
+- [Fix] Path for the logo inside the dashboard
+- [Fix] Active and hover colors of the secondary menu items
+- [Fix] Hover skin options for the secondary menu
+- Improve the compatibility with PPOM plugin
+
+
+
 
 ##### [Version 3.5.6](https://github.com/Codeinwp/neve/compare/v3.5.5...v3.5.6) (2023-03-22)
 
@@ -62,7 +76,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 ##### [Version 3.5.2](https://github.com/Codeinwp/neve/compare/v3.5.1...v3.5.2) (2023-02-15)
 
 - [Feat] Add a filter for the author post meta
-- [Feat] Improve Accessibility. Use the tab switch to submenu items only if the arrow is clicked on focus 
+- [Feat] Improve Accessibility. Use the tab switch to submenu items only if the arrow is clicked on focus
 - [Fix] Layout issue with Elementor Pro checkout widget
 - [Fix] PHP 8.2 Support
 - [Fix] Vertical alignment for cover posts

@@ -21,7 +21,7 @@ const Header = (props) => {
 				<span className="version">{neveDash.version}</span>
 				{!neveDash.whiteLabel && (
 					<img
-						src={neveDash.assets + '/logo.svg'}
+						src={neveDash.assets + 'logo.svg'}
 						alt={__('Neve Theme Logo', 'neve')}
 					/>
 				)}

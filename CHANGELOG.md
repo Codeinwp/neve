@@ -1,3 +1,14 @@
+##### [Version 3.5.7](https://github.com/Codeinwp/neve/compare/v3.5.6...v3.5.7) (2023-04-06)
+
+- [Feat] Dynamic Icon Selection and Optional Button for HFG Search Components
+- [Fix] Dot style separator not visible inside the editor
+- [Fix] Improve compatibility with WPML and Neve
+- [Fix] Gradient issue in WordPress 6.2
+- [Fix] Path for the logo inside the dashboard
+- [Fix] Active and hover colors of the secondary menu items
+- [Fix] Hover skin options for the secondary menu
+- Improve the compatibility with PPOM plugin
+
 ##### [Version 3.5.6](https://github.com/Codeinwp/neve/compare/v3.5.5...v3.5.6) (2023-03-22)
 
 - [Feat] Add Open in new tab option for HFG button components
