@@ -890,42 +890,45 @@ class Frontend extends Generator {
 			'selectors' => '.single .neve-main, .page .neve-main',
 			'rules'     => $rules,
 		];
-		//
-		// $post_inherits_vspace = Mods::get( Config::MODS_SINGLE_POST_VSPACING_INHERIT, 'inherit' ) === 'inherit';
-		// if ( ! $post_inherits_vspace ) {
-		// $default    = Mods::get( Config::MODS_CONTENT_VSPACING, $this->content_vspacing_default() );
-		// $post_rules = [
-		// '--content-vspacing' => [
-		// Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_CONTENT_VSPACING,
-		// Dynamic_Selector::META_IS_RESPONSIVE => true,
-		// Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
-		// Dynamic_Selector::META_DEFAULT       => $default,
-		// 'directional-prop'                   => Config::CSS_PROP_MARGIN,
-		// ],
-		// ];
-		//
-		// $this->_subscribers[] = [
-		// 'selectors' => '.single-post .neve-main',
-		// 'rules'     => $post_rules,
-		// ];
-		// }
-		//
-		// list( $context )      = $this->get_cpt_context();
-		// $post_inherits_vspace = Mods::get( 'neve_' . $context . '_' . Config::MODS_POST_TYPE_VSPACING_INHERIT, 'inherit' ) === 'inherit';
-		// if ( ! $post_inherits_vspace ) {
-		// $rules                = [
-		// '--content-vspacing' => [
-		// Dynamic_Selector::META_KEY           => 'neve_' . $context . '_' . Config::MODS_POST_TYPE_VSPACING,
-		// Dynamic_Selector::META_IS_RESPONSIVE => true,
-		// Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
-		// Dynamic_Selector::META_DEFAULT       => $this->content_vspacing_default(),
-		// 'directional-prop'                   => Config::CSS_PROP_MARGIN,
-		// ],
-		// ];
-		// $this->_subscribers[] = [
-		// 'selectors' => 'body.' . $context . ' .neve-main',
-		// 'rules'     => $rules,
-		// ];
-		// }
+
+		$post_inherits_vspace = Mods::get( Config::MODS_SINGLE_POST_VSPACING_INHERIT, 'inherit' ) === 'inherit';
+		if ( ! $post_inherits_vspace ) {
+			$default    = Mods::get( Config::MODS_CONTENT_VSPACING, $this->content_vspacing_default() );
+			$post_rules = [
+				'--content-vspacing' => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_CONTENT_VSPACING,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+					Dynamic_Selector::META_DEFAULT       => $default,
+					'directional-prop'                   => Config::CSS_PROP_DIRECTIONAL_ONE_AXIS,
+				],
+			];
+
+			$this->_subscribers[] = [
+				'selectors' => '.single-post .neve-main',
+				'rules'     => $post_rules,
+			];
+		}
+
+		list( $context )      = $this->get_cpt_context();
+		$post_inherits_vspace = Mods::get( 'neve_' . $context . '_' . Config::MODS_POST_TYPE_VSPACING_INHERIT, 'inherit' ) === 'inherit';
+		if ( ! $post_inherits_vspace ) {
+			$rules = [
+				'--content-vspacing' => [
+					Dynamic_Selector::META_KEY           => 'neve_' . $context . '_' . Config::MODS_POST_TYPE_VSPACING,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+					Dynamic_Selector::META_DEFAULT       => $this->content_vspacing_default(),
+					'directional-prop'                   => Config::CSS_PROP_DIRECTIONAL_ONE_AXIS,
+				],
+			];
+
+			$selectors = $context === 'page' ? '.' . $context : '.single-' . $context;
+
+			$this->_subscribers[] = [
+				'selectors' => $selectors . ' .neve-main',
+				'rules'     => $rules,
+			];
+		}
 	}
 }
