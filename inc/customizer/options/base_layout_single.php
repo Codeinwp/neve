@@ -89,6 +89,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 		$this->create_section();
 		$this->add_header_layout_subsection();
 		$this->add_header_layout_controls();
+		$this->content_vspacing();
 	}
 
 	/**
@@ -518,6 +519,99 @@ abstract class Base_Layout_Single extends Base_Customizer {
 					return $is_cover && get_theme_mod( 'neve_' . $this->post_type . '_cover_title_boxed_layout', false );
 				},
 			]
+		);
+	}
+
+	/**
+	 * Add content spacing control.
+	 */
+	private function content_vspacing() {
+
+		$this->add_control(
+			new Control(
+				'neve_' . $this->post_type . '_page_settings_heading',
+				[
+					'sanitize_callback' => 'sanitize_text_field',
+				],
+				[
+					'label'            => esc_html__( 'Page Settings', 'neve' ),
+					'section'          => $this->section,
+					'priority'         => 90,
+					'class'            => 'page-settings-accordion',
+					'expanded'         => false,
+					'accordion'        => true,
+					'controls_to_wrap' => 2,
+				],
+				'Neve\Customizer\Controls\Heading'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_' . $this->post_type . '_inherit_vspacing',
+				[
+					'sanitize_callback' => 'neve_sanitize_vspace_type',
+					'default'           => 'inherit',
+				],
+				[
+					'label'              => esc_html__( 'Content Vertical Spacing', 'neve' ),
+					'section'            => $this->section,
+					'priority'           => 95,
+					'choices'            => [
+						'inherit'  => [
+							'tooltip' => esc_html__( 'Inherit', 'neve' ),
+							'icon'    => 'text',
+						],
+						'specific' => [
+							'tooltip' => esc_html__( 'Custom', 'neve' ),
+							'icon'    => 'text',
+						],
+					],
+					'footer_description' => [
+						'inherit' => [
+							'template'         => esc_html__( 'Customize the default vertical spacing <ctaButton>here</ctaButton>.', 'neve' ),
+							'control_to_focus' => 'neve_content_vspacing',
+						],
+					],
+				],
+				'\Neve\Customizer\Controls\React\Radio_Buttons'
+			)
+		);
+
+		$default_value = get_theme_mod( 'neve_content_vspacing', $this->content_vspacing_default() );
+		$this->add_control(
+			new Control(
+				'neve_' . $this->post_type . '_content_vspacing',
+				[
+					'default'   => $default_value,
+					'transport' => $this->selective_refresh,
+				],
+				[
+					'label'                 => __( 'Custom Value', 'neve' ),
+					'sanitize_callback'     => [ $this, 'sanitize_spacing_array' ],
+					'section'               => $this->section,
+					'input_attrs'           => [
+						'units' => [ 'px', 'vh' ],
+						'axis'  => 'vertical',
+					],
+					'default'               => $default_value,
+					'priority'              => 100,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar'      => [
+							'vars'       => '--content-vspacing',
+							'selector'   => 'body.' . $this->post_type . ' .neve-main',
+							'responsive' => true,
+							'fallback'   => '',
+						],
+						'directional' => true,
+					],
+					'active_callback'       => function () {
+						return get_theme_mod( 'neve_' . $this->post_type . '_inherit_vspacing', 'inherit' ) === 'specific';
+					},
+				],
+				'\Neve\Customizer\Controls\React\Spacing'
+			)
 		);
 	}
 

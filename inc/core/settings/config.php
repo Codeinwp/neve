@@ -85,6 +85,13 @@ class Config {
 	const MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE  = 'neve_single_post_avatar_size';
 	const MODS_SINGLE_POST_ELEMENTS_SPACING         = 'neve_single_post_elements_spacing';
 
+	const MODS_CONTENT_VSPACING             = 'neve_content_vspacing';
+	const MODS_SINGLE_POST_VSPACING_INHERIT = 'neve_post_inherit_vspacing';
+	const MODS_SINGLE_POST_CONTENT_VSPACING = 'neve_post_content_vspacing';
+
+	const MODS_POST_TYPE_VSPACING_INHERIT = 'inherit_vspacing';
+	const MODS_POST_TYPE_VSPACING         = 'content_vspacing';
+
 	const OPTION_LOCAL_GOOGLE_FONTS_HOSTING = 'nv_pro_enable_local_fonts';
 
 	const MODS_TPOGRAPHY_FONT_PAIRS = 'neve_font_pairs';
@@ -93,7 +100,6 @@ class Config {
 	 * This is only used in a dynamic context for all allowed post types
 	 */
 	const MODS_CONTENT_WIDTH                = 'content_width';
-	const MODS_CONTENT_VSPACING             = 'neve_content_vertical_spacing';
 	const MODS_COVER_HEIGHT                 = 'cover_height';
 	const MODS_COVER_PADDING                = 'cover_padding';
 	const MODS_COVER_BACKGROUND_COLOR       = 'cover_background_color';
@@ -149,9 +155,9 @@ class Config {
 	const CSS_PROP_MIX_BLEND_MODE             = 'mix-blend-mode';
 	const CSS_PROP_OPACITY                    = 'opacity';
 	const CSS_PROP_GRID_TEMPLATE_COLS         = 'grid-template-columns';
-
-	const CSS_PROP_CUSTOM_BTN_TYPE           = 'btn-type';
-	const CSS_PROP_CUSTOM_FONT_WEIGHT_FAMILY = 'btn-type';
+	const CSS_PROP_DIRECTIONAL_ONE_AXIS       = 'directional-one-axis';
+	const CSS_PROP_CUSTOM_BTN_TYPE            = 'btn-type';
+	const CSS_PROP_CUSTOM_FONT_WEIGHT_FAMILY  = 'btn-type';
 
 	const CSS_SELECTOR_BTN_PRIMARY_NORMAL          = 'buttons_primary_normal';
 	const CSS_SELECTOR_BTN_PRIMARY_HOVER           = 'buttons_primary_hover';

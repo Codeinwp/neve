@@ -221,4 +221,29 @@ trait Single_Post {
 
 		return 'neve_' . $context . '_' . $meta;
 	}
+
+	/**
+	 * Get default values for content vertical spacing.
+	 *
+	 * @return array
+	 */
+	public function content_vspacing_default() {
+		return [
+			'mobile'       => [
+				'top'    => 0,
+				'bottom' => 0,
+			],
+			'tablet'       => [
+				'top'    => 0,
+				'bottom' => 0,
+			],
+			'desktop'      => [
+				'top'    => 0,
+				'bottom' => 0,
+			],
+			'mobile-unit'  => 'px',
+			'tablet-unit'  => 'px',
+			'desktop-unit' => 'px',
+		];
+	}
 }

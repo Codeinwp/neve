@@ -13,6 +13,7 @@ namespace Neve\Customizer\Options;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
+use Neve\Customizer\Defaults\Single_Post;
 
 /**
  * Class Layout_Container
@@ -20,6 +21,8 @@ use Neve\Customizer\Types\Section;
  * @package Neve\Customizer\Options
  */
 class Layout_Container extends Base_Customizer {
+	use Single_Post;
+
 	/**
 	 * Function that should be extended to add customizer controls.
 	 *
@@ -101,25 +104,9 @@ class Layout_Container extends Base_Customizer {
 	private function control_vertical_spacing() {
 		$this->add_control(
 			new Control(
-				'neve_content_vertical_spacing',
+				'neve_content_vspacing',
 				[
-					'default' => [
-						'mobile'       => [
-							'top'    => 60,
-							'bottom' => 60,
-						],
-						'tablet'       => [
-							'top'    => 60,
-							'bottom' => 60,
-						],
-						'desktop'      => [
-							'top'    => 60,
-							'bottom' => 60,
-						],
-						'mobile-unit'  => 'px',
-						'tablet-unit'  => 'px',
-						'desktop-unit' => 'px',
-					],
+					'default'   => $this->content_vspacing_default(),
 					'transport' => $this->selective_refresh,
 				],
 				[
@@ -129,25 +116,8 @@ class Layout_Container extends Base_Customizer {
 					'input_attrs'           => [
 						'units' => [ 'px', 'vh' ],
 						'axis'  => 'vertical',
-						'min'   => 0,
 					],
-					'default' => [
-						'mobile'       => [
-							'top'    => 60,
-							'bottom' => 60,
-						],
-						'tablet'       => [
-							'top'    => 60,
-							'bottom' => 60,
-						],
-						'desktop'      => [
-							'top'    => 60,
-							'bottom' => 60,
-						],
-						'mobile-unit'  => 'px',
-						'tablet-unit'  => 'px',
-						'desktop-unit' => 'px',
-					],
+					'default'               => $this->content_vspacing_default(),
 					'priority'              => 26,
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
