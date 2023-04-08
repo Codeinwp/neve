@@ -361,6 +361,7 @@ final class Manager {
 
 		$post_elements_default_order = $this->get_post_elements_default_order();
 		$show_avatar                 = $this->get_author_avatar_state();
+		$reading_time                = $this->get_reading_time_state();
 
 		$post_type_details = get_post_type_object( $post_type );
 		$post_type_label   = esc_html( $post_type_details->labels->singular_name );
@@ -368,17 +369,18 @@ final class Manager {
 		$localized_data = apply_filters(
 			'neve_meta_sidebar_localize_filter',
 			array(
-				'actions'              => array(
+				'actions'                 => array(
 					'neve_meta_content_width' => array(
 						'container' => $container,
 						'editor'    => $editor_width,
 						'content'   => $content_width,
 					),
 				),
-				'elementsDefaultOrder' => $post_elements_default_order,
-				'avatarDefaultState'   => $show_avatar,
-				'postTypeLabel'        => $post_type_label,
-				'isCoverLayout'        => Layout_Single_Post::is_cover_layout(),
+				'elementsDefaultOrder'    => $post_elements_default_order,
+				'avatarDefaultState'      => $show_avatar,
+				'readingTimeDefaultState' => $reading_time,
+				'postTypeLabel'           => $post_type_label,
+				'isCoverLayout'           => Layout_Single_Post::is_cover_layout(),
 			)
 		);
 		wp_localize_script(
@@ -431,5 +433,30 @@ final class Manager {
 	private function get_author_avatar_state() {
 		$show_avatar = get_theme_mod( 'neve_author_avatar', false );
 		return get_theme_mod( 'neve_single_post_author_avatar', $show_avatar );
+	}
+
+	/**
+	 * Get the value of Reading Time visibility from customizer.
+	 *
+	 * @return bool
+	 */
+	private function get_reading_time_state() {
+		$meta_fields = get_theme_mod( 'neve_single_post_meta_fields', self::get_default_single_post_meta_fields() );
+
+		if ( is_string( $meta_fields ) ) {
+			$meta_fields = json_decode( $meta_fields, true );
+		}
+
+		if ( ! is_array( $meta_fields ) ) {
+			return false;
+		}
+
+		foreach ( $meta_fields as $args ) {
+			if ( ! array_key_exists( 'slug', $args ) || ! array_key_exists( 'visibility', $args ) || $args['slug'] !== 'reading' ) {
+				continue;
+			}
+
+			return $args['visibility'] === 'yes';
+		}
 	}
 }
