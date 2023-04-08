@@ -458,5 +458,7 @@ final class Manager {
 
 			return $args['visibility'] === 'yes';
 		}
+
+		return false;
 	}
 }
