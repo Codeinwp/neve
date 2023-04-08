@@ -415,6 +415,7 @@ class MetaFieldsManager extends Component {
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
+		// If layout is set as "cover"; meta elements should be shown as hard-coded.
 		const showMetaElements =
 			metaSidebar.isCoverLayout ||
 			JSON.parse(
