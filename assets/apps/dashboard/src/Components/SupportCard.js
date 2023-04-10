@@ -2,14 +2,9 @@
 
 import { withSelect } from '@wordpress/data';
 import { Button } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
 const { proSupportURL, proSupportText } = neveDash;
 
-const SupportCard = ({ isVisible, license }) => {
-	if (!isVisible) {
-		return null;
-	}
-
+const SupportCard = ({ license }) => {
 	if (!license || !license.valid || 'valid' !== license.valid) {
 		return null;
 	}

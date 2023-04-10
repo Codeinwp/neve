@@ -13,9 +13,7 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 
 	return (
 		<div className="sidebar-wrap">
-			{!neveDash.whiteLabel && neveDash.pro && (
-				<SupportCard isVisible={'pro' === currentTab} />
-			)}
+			{!neveDash.whiteLabel && neveDash.pro && <SupportCard />}
 			{neveDash.pro && <LicenseCard isVisible={'pro' === currentTab} />}
 			{!neveDash.whiteLabel && (
 				<aside className="sidebar card">
