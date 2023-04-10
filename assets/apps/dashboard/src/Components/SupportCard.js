@@ -3,7 +3,7 @@
 import { withSelect } from '@wordpress/data';
 import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-const { proSupportURL } = neveDash;
+const { proSupportURL, proSupportText } = neveDash;
 
 const SupportCard = ({ isVisible, license }) => {
 	if (!isVisible) {
@@ -14,7 +14,7 @@ const SupportCard = ({ isVisible, license }) => {
 		return null;
 	}
 
-	if (!proSupportURL) {
+	if (!proSupportURL || !proSupportText) {
 		return null;
 	}
 
@@ -35,7 +35,7 @@ const SupportCard = ({ isVisible, license }) => {
 			href={proSupportURL}
 			target="_blank"
 		>
-			{__('Access our Premium Support', 'neve')}
+			{proSupportText}
 		</Button>
 	);
 };
