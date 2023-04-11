@@ -39,7 +39,11 @@
 
 	li:hover > .wrap > a,
 	li:hover > .wrap > .caret {
-		color: var(--hovercolor);
+		--color: var(--hovercolor);
+	}
+
+	.nv-active > .wrap {
+		--color: var(--activecolor);
 	}
 
 	> li {
@@ -49,10 +53,6 @@
 	li {
 		display: block;
 		position: relative;
-
-		&.current-menu-item > .wrap > a:not([href*="#"]) {
-			color: var(--activecolor);
-		}
 
 		&:hover > .sub-menu {
 
@@ -66,7 +66,7 @@
 		display: flex;
 
 		svg {
-			fill: currentColor;
+			fill: var(--color);
 			width: 0.5em;
 			height: 0.5em;
 		}

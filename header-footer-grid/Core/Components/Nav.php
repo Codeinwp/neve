@@ -69,6 +69,7 @@ class Nav extends Abstract_Component {
 				}
 				add_filter( 'neve_first_level_expanded', [ $this, 'expanded_dropdown' ] );
 				add_filter( 'nav_menu_submenu_css_class', [ $this, 'filter_menu_item_class' ], 10, 3 );
+				add_filter( 'nav_menu_css_class', [ $this, 'filter_active_item_classes' ], 10, 3 );
 			}
 		);
 
@@ -119,6 +120,25 @@ class Nav extends Abstract_Component {
 		if ( property_exists( $args, 'menu_class' ) && strpos( $args->menu_class, 'menu-mobile' ) && $depth === 0 ) {
 			$classes[] = 'dropdown-open';
 		}
+		return $classes;
+	}
+
+	/**
+	 * This method adds the "nv-active" class to both the active menu item and its parent, but excludes items that have anchors on links.
+	 *
+	 * @param array  $classes Element class names.
+	 * @param object $menu_item Current menu item.
+	 *
+	 * @return array
+	 */
+	public function filter_active_item_classes( $classes = array(), $menu_item = false ) {
+		if ( str_contains( $menu_item->url, '#' ) ) {
+			return $classes;
+		}
+		if ( in_array( 'current-menu-item', $classes, true ) || in_array( 'current-menu-ancestor', $classes, true ) ) {
+			$classes[] = 'nv-active';
+		}
+
 		return $classes;
 	}
 
