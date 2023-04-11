@@ -9,8 +9,21 @@
 		}
 	}
 
-	.components-popover:not(.global-colors-selector) .components-popover__content {
+	.neve-color-picker-dropdown > .components-popover__content {
 		overflow: unset !important;
+	    .components-popover__content {
+		  max-height: 450px!important;
+		}
+		> .components-spacer {
+		  position: sticky;
+		  z-index: 3;
+		  .components-angle-picker-control {
+			gap: calc(8px) !important;
+		  }
+		  .components-custom-gradient-picker > .components-custom-gradient-picker__ui-line {
+			gap: calc(8px) !important;
+		  }
+		}
 	}
 
 	.components-custom-gradient-picker__gradient-bar {
@@ -30,7 +43,7 @@
 #nv-mm-app {
   .modal {
 	.components-popover__content {
-	  max-height: 430px!important;
+	  max-height: 450px!important;
 	}
 
 	.components-color-picker {

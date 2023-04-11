@@ -17,9 +17,14 @@
 	}
 
 	.clear {
-		width: 100%;
+		width: calc(100% + 2px);
 		justify-content: center;
-		border-radius: 0;
+		position: fixed;
+		bottom: -18px;
+		left: -1px;
+		border-radius: 0 0 4px 4px;
+		box-shadow: 0 0 0 1px #ccc, 0 0.7px 1px rgba(0,0,0,.1), 0 1.2px 1.7px -0.2px rgba(0,0,0,.1), 0 2.3px 3.3px -0.5px rgba(0,0,0,.1);
+		z-index: 2;
 	}
 
 	> div {
