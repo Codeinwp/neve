@@ -124,7 +124,7 @@ class Nav extends Abstract_Component {
 	}
 
 	/**
-	 * This method adds the "nv-active" class to both the active menu item and its parent, but excludes items that have anchors on links.
+	 * This method adds the "nv-active" class to both the active menu item and its parent.
 	 *
 	 * @param array  $classes Element class names.
 	 * @param object $menu_item Current menu item.
@@ -132,9 +132,6 @@ class Nav extends Abstract_Component {
 	 * @return array
 	 */
 	public function filter_active_item_classes( $classes = array(), $menu_item = false ) {
-		if ( str_contains( $menu_item->url, '#' ) ) {
-			return $classes;
-		}
 		if ( in_array( 'current-menu-item', $classes, true ) || in_array( 'current-menu-ancestor', $classes, true ) ) {
 			$classes[] = 'nv-active';
 		}
