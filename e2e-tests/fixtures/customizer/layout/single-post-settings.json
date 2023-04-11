@@ -75,7 +75,7 @@
 	"neve_post_inherit_vspacing" : "specific",
 	"neve_content_vspacing": {
 	  "mobile": {
-		"top": 30,
+		"top": -30,
 		"bottom": 30
 	  },
 	  "tablet": {
@@ -111,7 +111,7 @@
   "vspacing_page" : {
 	"neve_content_vspacing": {
 	  "mobile": {
-		"top": 30,
+		"top": -30,
 		"bottom": 30
 	  },
 	  "tablet": {
