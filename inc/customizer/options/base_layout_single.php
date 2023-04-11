@@ -8,9 +8,11 @@
 namespace Neve\Customizer\Options;
 
 use Neve\Customizer\Base_Customizer;
+use Neve\Customizer\Defaults\Layout;
 use Neve\Customizer\Defaults\Single_Post;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
+use Neve\Core\Settings\Config;
 
 /**
  * Class Base_Layout_Single
@@ -18,8 +20,8 @@ use Neve\Customizer\Types\Section;
  * @package Neve\Customizer\Options
  */
 abstract class Base_Layout_Single extends Base_Customizer {
-
 	use Single_Post;
+	use Layout;
 	/**
 	 * Post type slug
 	 *
@@ -570,7 +572,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 					'footer_description' => [
 						'inherit' => [
 							'template'         => esc_html__( 'Customize the default vertical spacing <ctaButton>here</ctaButton>.', 'neve' ),
-							'control_to_focus' => 'neve_content_vspacing',
+							'control_to_focus' => Config::MODS_CONTENT_VSPACING,
 						],
 					],
 				],
@@ -578,7 +580,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 			)
 		);
 
-		$default_value = get_theme_mod( 'neve_content_vspacing', $this->content_vspacing_default() );
+		$default_value = get_theme_mod( Config::MODS_CONTENT_VSPACING, $this->content_vspacing_default() );
 		$this->add_control(
 			new Control(
 				'neve_' . $this->post_type . '_content_vspacing',
@@ -599,7 +601,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar'      => [
-							'vars'       => '--content-vspacing',
+							'vars'       => '--c-vspace',
 							'selector'   => 'body.' . $this->post_type . ' .neve-main',
 							'responsive' => true,
 							'fallback'   => '',

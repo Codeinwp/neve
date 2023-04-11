@@ -33,7 +33,7 @@ const testGlobalSettings = async (page: Page) => {
 		{ width: 375, height: 812 },
 		{
 			cssProperties: [
-				{ property: 'margin-top', value: '30px' },
+				{ property: 'margin-top', value: '-30px' },
 				{ property: 'margin-bottom', value: '30px' },
 			],
 		}

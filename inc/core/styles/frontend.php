@@ -877,7 +877,7 @@ class Frontend extends Generator {
 	 */
 	private function setup_content_vspacing() {
 		$rules = [
-			'--content-vspacing' => [
+			'--c-vspace' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_CONTENT_VSPACING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
@@ -895,7 +895,7 @@ class Frontend extends Generator {
 		if ( ! $post_inherits_vspace ) {
 			$default    = Mods::get( Config::MODS_CONTENT_VSPACING, $this->content_vspacing_default() );
 			$post_rules = [
-				'--content-vspacing' => [
+				'--c-vspace' => [
 					Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_CONTENT_VSPACING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
@@ -914,7 +914,7 @@ class Frontend extends Generator {
 		$post_inherits_vspace = Mods::get( 'neve_' . $context . '_' . Config::MODS_POST_TYPE_VSPACING_INHERIT, 'inherit' ) === 'inherit';
 		if ( ! $post_inherits_vspace ) {
 			$rules = [
-				'--content-vspacing' => [
+				'--c-vspace' => [
 					Dynamic_Selector::META_KEY           => 'neve_' . $context . '_' . Config::MODS_POST_TYPE_VSPACING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',

@@ -11,6 +11,7 @@
 namespace Neve\Customizer\Options;
 
 use HFG\Traits\Core;
+use Neve\Core\Settings\Config;
 use Neve\Customizer\Defaults\Layout;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Defaults\Single_Post;
@@ -246,7 +247,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 	private function content_vspacing() {
 		$this->add_control(
 			new Control(
-				'neve_post_inherit_vspacing',
+				Config::MODS_SINGLE_POST_VSPACING_INHERIT,
 				[
 					'sanitize_callback' => 'neve_sanitize_vspace_type',
 					'default'           => 'inherit',
@@ -268,7 +269,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 					'footer_description' => [
 						'inherit' => [
 							'template'         => esc_html__( 'Customize the default vertical spacing <ctaButton>here</ctaButton>.', 'neve' ),
-							'control_to_focus' => 'neve_content_vspacing',
+							'control_to_focus' => Config::MODS_CONTENT_VSPACING,
 						],
 					],
 				],
@@ -276,10 +277,10 @@ class Layout_Single_Post extends Base_Layout_Single {
 			)
 		);
 
-		$default_value = get_theme_mod( 'neve_content_vspacing', $this->content_vspacing_default() );
+		$default_value = get_theme_mod( Config::MODS_CONTENT_VSPACING, $this->content_vspacing_default() );
 		$this->add_control(
 			new Control(
-				'neve_post_content_vspacing',
+				Config::MODS_SINGLE_POST_CONTENT_VSPACING,
 				[
 					'default'   => $default_value,
 					'transport' => $this->selective_refresh,
@@ -297,7 +298,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar'      => [
-							'vars'       => '--content-vspacing',
+							'vars'       => '--c-vspace',
 							'selector'   => 'body.single-post .neve-main',
 							'responsive' => true,
 							'fallback'   => '',
@@ -305,7 +306,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 						'directional' => true,
 					],
 					'active_callback'       => function () {
-						return get_theme_mod( 'neve_post_inherit_vspacing', 'inherit' ) === 'specific';
+						return get_theme_mod( Config::MODS_SINGLE_POST_VSPACING_INHERIT, 'inherit' ) === 'specific';
 					},
 				],
 				'\Neve\Customizer\Controls\React\Spacing'

@@ -412,8 +412,7 @@ export class CSSVariablesHandler {
 		const hasLeftRight =
 			typeof value.left !== 'undefined' &&
 			typeof value.right !== 'undefined';
-		const hasAllProperties = hasTopBottom && hasLeftRight;
-		return hasAllProperties || hasTopBottom || hasLeftRight;
+		return hasTopBottom || hasLeftRight;
 	}
 
 	maybeParseJson(input) {

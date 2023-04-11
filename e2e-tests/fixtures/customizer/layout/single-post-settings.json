@@ -55,7 +55,7 @@
   "vspacing_global" : {
 	"neve_content_vspacing": {
 	  "mobile": {
-		"top": 30,
+		"top": -30,
 		"bottom": 30
 	  },
 	  "tablet": {

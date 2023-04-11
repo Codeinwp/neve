@@ -13,7 +13,8 @@ namespace Neve\Customizer\Options;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
-use Neve\Customizer\Defaults\Single_Post;
+use Neve\Customizer\Defaults\Layout;
+use Neve\Core\Settings\Config;
 
 /**
  * Class Layout_Container
@@ -21,7 +22,7 @@ use Neve\Customizer\Defaults\Single_Post;
  * @package Neve\Customizer\Options
  */
 class Layout_Container extends Base_Customizer {
-	use Single_Post;
+	use Layout;
 
 	/**
 	 * Function that should be extended to add customizer controls.
@@ -104,7 +105,7 @@ class Layout_Container extends Base_Customizer {
 	private function control_vertical_spacing() {
 		$this->add_control(
 			new Control(
-				'neve_content_vspacing',
+				Config::MODS_CONTENT_VSPACING,
 				[
 					'default'   => $this->content_vspacing_default(),
 					'transport' => $this->selective_refresh,
@@ -122,7 +123,7 @@ class Layout_Container extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar'      => [
-							'vars'       => '--content-vspacing',
+							'vars'       => '--c-vspace',
 							'selector'   => 'body.single .neve-main, body.page .neve-main',
 							'responsive' => true,
 							'fallback'   => '',
