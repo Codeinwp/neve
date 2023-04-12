@@ -34,7 +34,8 @@ $menu_icon_class  = apply_filters( 'neve_menu_icon_classes', 'hamburger is-activ
 		<div class="<?php echo esc_attr( $close_classes ); ?>">
 			<button type="button" class="<?php echo esc_attr( $menu_icon_class ); ?> navbar-toggle active" <?php echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					value="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?>"
-					aria-label="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?> ">
+					aria-label="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?> "
+					<?php echo MenuIcon::aria_expanded_behaviour(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 			<?php
 			if ( $menu_icon_class === 'hamburger is-active ' ) {
 				?>
@@ -83,4 +84,4 @@ $menu_icon_class  = apply_filters( 'neve_menu_icon_classes', 'hamburger is-activ
 		</div>
 	</div>
 </div>
-<div class="header-menu-sidebar-overlay hfg-ov hfg-pe"></div>
+<div class="header-menu-sidebar-overlay hfg-ov hfg-pe" <?php echo MenuIcon::aria_expanded_behaviour( true ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>></div>

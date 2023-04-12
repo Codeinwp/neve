@@ -632,4 +632,22 @@ CSS;
 	public function render_component() {
 		Main::get_instance()->load( 'components/component-menu-icon' );
 	}
+
+	/**
+	 * Static method to return the aria expanded behaviour for the menu buttons.
+	 * This will add the necessary attributes to the button to toggle the aria-expanded attribute and the onclick event.
+	 * It is added inline to not increase the JS file size. Will only be added when the menu item is rendered.
+	 *
+	 * @param boolean $only_click_attribute Flag to return only the click attribute.
+	 *
+	 * @return string
+	 */
+	public static function aria_expanded_behaviour( $only_click_attribute = false ) {
+		$script_action = <<<JS
+(function(){document.querySelectorAll('button.navbar-toggle').forEach(function(el) {el.setAttribute('aria-expanded', 'true' === el.getAttribute('aria-expanded') ? 'false' : 'true');})})()
+JS;
+
+		return ( $only_click_attribute ? '' : 'aria-expanded="false" ' ) . 'onclick="' . $script_action . '"';
+	}
+
 }
