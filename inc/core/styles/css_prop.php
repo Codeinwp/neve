@@ -334,12 +334,16 @@ class Css_Prop {
 
 		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
 
+			if ( str_contains( (string) $value['top'], 'calc' )  &&  str_contains( (string) $value['right'], 'calc' ) ) {
+				return $css_prop . ':' . $value['top'] . ' ' . $value['right'] . ';';
+			}
+
 			if ( neve_value_is_zero( $value['top'] ) && neve_value_is_zero( $value['right'] ) ) {
 				return '';
 			}
 
-			$top_suffix   = neve_value_is_zero( $value['top'] ) ? '' : $suffix;
-			$right_suffix = neve_value_is_zero( $value['right'] ) ? '' : $suffix;
+			$top_suffix   = neve_value_is_zero( $value['top'] ) || str_contains( (string) $value['top'], 'calc' ) ? '' : $suffix;
+			$right_suffix = neve_value_is_zero( $value['right'] ) || str_contains( (string) $value['right'], 'calc' ) ? '' : $suffix;
 
 			$template .= $value['top'] . $top_suffix . ' ' . $value['right'] . $right_suffix;
 
@@ -347,6 +351,11 @@ class Css_Prop {
 		}
 
 		foreach ( Config::$directional_keys as $direction ) {
+			if ( str_contains( (string) $value[$direction], 'calc' ) ) {
+				$template .= $value[$direction] . ' ';
+
+				continue;
+			}
 			if ( ! isset( $value[ $direction ] ) || neve_value_is_zero( $value[ $direction ] ) ) {
 				$template .= '0 ';
 
