@@ -77,8 +77,7 @@
 	margin-top: $spacing-md;
 }
 
-.nv-tags-list,
-.tagcloud {
+.nv-tags-list {
 
 	a {
 		margin: 0 $spacing-xs $spacing-xs 0;
@@ -89,22 +88,13 @@
 		border-radius: 4px;
 		background: var(--nv-primary-accent);
 		line-height: 1;
+		font-size: 0.75em !important;
 		display: inline-block;
 	}
 
 	span {
 		margin-right: $spacing-xs;
 	}
-}
-
-.nv-tags-list {
-	font-size: 0.75em;
-}
-
-.tagcloud {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
 }
 
 .page .nv-post-cover {
