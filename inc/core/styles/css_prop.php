@@ -334,7 +334,7 @@ class Css_Prop {
 
 		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
 
-			if ( str_contains( (string) $value['top'], 'calc' )  &&  str_contains( (string) $value['right'], 'calc' ) ) {
+			if ( self::has_calc( $value['top'] )  &&  self::has_calc( $value['right'] ) ) {
 				return $css_prop . ':' . $value['top'] . ' ' . $value['right'] . ';';
 			}
 
@@ -342,8 +342,8 @@ class Css_Prop {
 				return '';
 			}
 
-			$top_suffix   = neve_value_is_zero( $value['top'] ) || str_contains( (string) $value['top'], 'calc' ) ? '' : $suffix;
-			$right_suffix = neve_value_is_zero( $value['right'] ) || str_contains( (string) $value['right'], 'calc' ) ? '' : $suffix;
+			$top_suffix   = neve_value_is_zero( $value['top'] ) || self::has_calc( $value['top'] ) ? '' : $suffix;
+			$right_suffix = neve_value_is_zero( $value['right'] ) || self::has_calc( $value['right'] )  ? '' : $suffix;
 
 			$template .= $value['top'] . $top_suffix . ' ' . $value['right'] . $right_suffix;
 
@@ -351,16 +351,16 @@ class Css_Prop {
 		}
 
 		foreach ( Config::$directional_keys as $direction ) {
-			if ( str_contains( (string) $value[$direction], 'calc' ) ) {
+			if ( self::has_calc( $value[$direction] ) ) {
 				$template .= $value[$direction] . ' ';
-
 				continue;
 			}
+
 			if ( ! isset( $value[ $direction ] ) || neve_value_is_zero( $value[ $direction ] ) ) {
 				$template .= '0 ';
-
 				continue;
 			}
+
 			$template .= $value[ $direction ] . $suffix . ' ';
 		}
 
@@ -371,6 +371,17 @@ class Css_Prop {
 		$template = trim( $template ) . ';';
 
 		return $css_prop . ':' . $template . ';';
+	}
+
+	/**
+	 * Check if a value has calc value.
+	 *
+	 * @param string $value The value.
+	 *
+	 * @return bool
+	 */
+	public static function has_calc( $value ) {
+		return strpos( (string) $value, 'calc' ) !== false;
 	}
 
 	/**
