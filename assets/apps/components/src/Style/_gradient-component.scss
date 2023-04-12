@@ -54,6 +54,9 @@
 	}
 	.components-popover:not(.global-colors-selector) .components-popover__content {
 	  max-height: 520px!important;
+	  .components-base-control {
+		padding: 4px 0;
+	  }
 	}
 
 	.components-color-picker {
