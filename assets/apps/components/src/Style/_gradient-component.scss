@@ -63,3 +63,10 @@
 	}
   }
 }
+@media screen and (max-height: 900px) {
+  #nv-mm-app {
+	.modal .components-popover:not(.global-colors-selector) .components-popover__content {
+	  max-height: 420px!important;
+	}
+  }
+}
