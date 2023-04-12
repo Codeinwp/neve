@@ -1,15 +1,13 @@
-/* global neveDash */
-
 import { withSelect } from '@wordpress/data';
 import { Button } from '@wordpress/components';
-const { proSupportURL, proSupportText } = neveDash;
 
 const SupportCard = ({ license }) => {
 	if (!license || !license.valid || 'valid' !== license.valid) {
 		return null;
 	}
+	const { supportData } = license;
 
-	if (!proSupportURL || !proSupportText) {
+	if (!supportData.text || !supportData.url) {
 		return null;
 	}
 
@@ -27,10 +25,10 @@ const SupportCard = ({ license }) => {
 		<Button
 			style={buttonStyle}
 			variant="secondary"
-			href={proSupportURL}
+			href={supportData.url}
 			target="_blank"
 		>
-			{proSupportText}
+			{supportData.text}
 		</Button>
 	);
 };
