@@ -7,8 +7,6 @@ const SupportCard = ({ license }) => {
 	}
 	const { supportData } = license;
 
-	console.log( license );
-
 	if (!supportData || !supportData.text || !supportData.url) {
 		return null;
 	}
