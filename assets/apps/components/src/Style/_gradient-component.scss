@@ -9,8 +9,15 @@
 		}
 	}
 
+    .components-popover:not(.neve-color-picker-dropdown) {
+	  .components-base-control {
+		padding: 8px 0;
+	  }
+	}
+
 	.neve-color-picker-dropdown > .components-popover__content {
 		overflow: unset !important;
+		min-height: 420px;
 	    .components-popover__content {
 		  max-height: 450px!important;
 		}
