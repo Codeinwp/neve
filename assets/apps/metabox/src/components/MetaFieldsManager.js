@@ -36,7 +36,9 @@ class MetaFieldsManager extends Component {
 			neve_meta_author_avatar: metaSidebar.avatarDefaultState
 				? 'on'
 				: 'off',
-			neve_meta_reading_time: 'off',
+			neve_meta_reading_time: metaSidebar.readingTimeDefaultState
+				? 'on'
+				: 'off',
 			neve_post_elements_order: JSON.stringify([
 				'title',
 				'meta',
@@ -413,10 +415,13 @@ class MetaFieldsManager extends Component {
 		if ('elementor_header_footer' === template) {
 			return false;
 		}
-		const showMetaElements = JSON.parse(
-			this.props.metaValue('neve_post_elements_order') ||
-				this.defaultSortables
-		).includes('meta');
+		// If layout is set as "cover"; meta elements should be shown as hard-coded.
+		const showMetaElements =
+			metaSidebar.isCoverLayout ||
+			JSON.parse(
+				this.props.metaValue('neve_post_elements_order') ||
+					this.defaultSortables
+			).includes('meta');
 		const postType = select('core/editor').getCurrentPostType();
 		return (
 			<div className="nv-option-category">
@@ -540,10 +545,13 @@ class MetaFieldsManager extends Component {
 							<ToggleControl
 								label={__('Reading Time', 'neve')}
 								checked={
-									'on' ===
 									this.props.metaValue(
 										'neve_meta_reading_time'
 									)
+										? this.props.metaValue(
+												'neve_meta_reading_time'
+										  ) === 'on'
+										: metaSidebar.readingTimeDefaultState
 								}
 								onChange={(value) => {
 									this.updateValues(
