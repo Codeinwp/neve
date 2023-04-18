@@ -4,7 +4,7 @@
 .page {
 
 	.neve-main {
-		margin: var(--c-vspace);
+		margin: var(--c-vspace, var(--cg-vspace));
 	}
 }
 

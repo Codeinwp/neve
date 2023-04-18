@@ -123,7 +123,7 @@ class Layout_Container extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar'      => [
-							'vars'       => '--c-vspace',
+							'vars'       => '--cg-vspace',
 							'selector'   => 'body.single .neve-main, body.page .neve-main',
 							'responsive' => true,
 							'fallback'   => '',

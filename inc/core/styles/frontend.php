@@ -877,7 +877,7 @@ class Frontend extends Generator {
 	 */
 	private function setup_content_vspacing() {
 		$rules = [
-			'--c-vspace' => [
+			'--cg-vspace' => [
 				Dynamic_Selector::META_KEY           => Config::MODS_CONTENT_VSPACING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
