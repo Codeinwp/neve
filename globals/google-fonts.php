@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 27/02/23
+ * Updated on 17/04/23
  *
  * @package neve
  */
@@ -919,7 +919,7 @@ return array(
 	'Noto Sans Indic Siyaq Numbers' => array( '400',),
 	'Noto Sans Inscriptional Pahlavi' => array( '400',),
 	'Noto Sans Inscriptional Parthian' => array( '400',),
-	'Noto Sans JP' => array( '100', '300', '400', '500', '700', '900',),
+	'Noto Sans JP' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Javanese' => array( '400', '500', '600', '700',),
 	'Noto Sans KR' => array( '100', '300', '400', '500', '700', '900',),
 	'Noto Sans Kaithi' => array( '400',),
