@@ -85,8 +85,7 @@
 	margin-top: $spacing-md;
 }
 
-.nv-tags-list,
-.tagcloud {
+.nv-tags-list {
 
 	a {
 		margin: 0 $spacing-xs $spacing-xs 0;
@@ -104,11 +103,6 @@
 	span {
 		margin-right: $spacing-xs;
 	}
-}
-
-.tagcloud {
-	display: flex;
-	flex-wrap: wrap;
 }
 
 .page .nv-post-cover {
