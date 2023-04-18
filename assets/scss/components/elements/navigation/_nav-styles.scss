@@ -59,7 +59,7 @@
 	.wrap:hover {
 
 		svg {
-			color: var(--hovertextcolor, var(--color)) !important;
+			color: var(--hovertextcolor, var(--color));
 		}
 
 		> a {
