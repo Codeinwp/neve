@@ -13,6 +13,7 @@ namespace Neve\Customizer\Options;
 use HFG\Traits\Core;
 use Neve\Customizer\Defaults\Layout;
 use Neve\Customizer\Types\Control;
+use Neve\Customizer\Defaults\Single_Post;
 
 /**
  * Class Layout_Single_Post
@@ -22,6 +23,7 @@ use Neve\Customizer\Types\Control;
 class Layout_Single_Post extends Base_Layout_Single {
 	use Core;
 	use Layout;
+	use Single_Post;
 
 	/**
 	 * Returns the post type.
@@ -236,7 +238,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 	 */
 	private function post_meta() {
 
-		$components    = apply_filters(
+		$components = apply_filters(
 			'neve_meta_filter',
 			[
 				'author'   => __( 'Author', 'neve' ),
@@ -245,10 +247,8 @@ class Layout_Single_Post extends Base_Layout_Single {
 				'comments' => __( 'Comments', 'neve' ),
 			]
 		);
-		$default       = wp_json_encode( [ 'author', 'date', 'comments' ] );
-		$default_value = neve_get_default_meta_value( 'neve_post_meta_ordering', $default );
-		$default_value = get_theme_mod( 'neve_blog_post_meta_fields', wp_json_encode( $default_value ) );
-		$default_value = get_theme_mod( 'neve_single_post_meta_fields', $default_value );
+
+		$default_value = get_theme_mod( 'neve_single_post_meta_fields', self::get_default_single_post_meta_fields() );
 
 		$this->add_control(
 			new Control(
