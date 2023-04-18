@@ -86,7 +86,7 @@ class SecondNav extends Abstract_Component {
 				'id'                 => self::STYLE_ID,
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_STYLE,
-				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'transport'          => 'refresh',
 				'sanitize_callback'  => 'wp_filter_nohtml_kses',
 				'default'            => 'style-plain',
 				'conditional_header' => $this->get_builder_id() === 'header',
