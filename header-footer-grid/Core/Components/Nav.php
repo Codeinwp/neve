@@ -13,7 +13,6 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
-use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
 
