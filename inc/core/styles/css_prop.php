@@ -334,7 +334,7 @@ class Css_Prop {
 
 		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
 
-			if ( self::has_calc( $value['top'] )  &&  self::has_calc( $value['right'] ) ) {
+			if ( isset( $value['is_outline_button_padding'] ) ) {
 				return $css_prop . ':' . $value['top'] . ' ' . $value['right'] . ';';
 			}
 
@@ -342,8 +342,8 @@ class Css_Prop {
 				return '';
 			}
 
-			$top_suffix   = neve_value_is_zero( $value['top'] ) || self::has_calc( $value['top'] ) ? '' : $suffix;
-			$right_suffix = neve_value_is_zero( $value['right'] ) || self::has_calc( $value['right'] )  ? '' : $suffix;
+			$top_suffix   = neve_value_is_zero( $value['top'] ) ? '' : $suffix;
+			$right_suffix = neve_value_is_zero( $value['right'] ) ? '' : $suffix;
 
 			$template .= $value['top'] . $top_suffix . ' ' . $value['right'] . $right_suffix;
 
@@ -351,7 +351,7 @@ class Css_Prop {
 		}
 
 		foreach ( Config::$directional_keys as $direction ) {
-			if ( self::has_calc( $value[$direction] ) ) {
+			if ( isset( $value['is_outline_button_padding'] ) ) {
 				$template .= $value[$direction] . ' ';
 				continue;
 			}
@@ -371,17 +371,6 @@ class Css_Prop {
 		$template = trim( $template ) . ';';
 
 		return $css_prop . ':' . $template . ';';
-	}
-
-	/**
-	 * Check if a value has calc value.
-	 *
-	 * @param string $value The value.
-	 *
-	 * @return bool
-	 */
-	public static function has_calc( $value ) {
-		return strpos( (string) $value, 'calc' ) !== false;
 	}
 
 	/**
