@@ -69,7 +69,7 @@
 		"@emotion/core": "^11.0.0",
 		"@emotion/styled": "^11.3.0",
 		"@icon/dashicons": "^0.9.0-alpha.3",
-		"@playwright/test": "^1.27.1",
+		"@playwright/test": "^1.32.3",
 		"@rollup/plugin-commonjs": "^11.1.0",
 		"@rollup/plugin-multi-entry": "^4.0.0",
 		"@rollup/plugin-node-resolve": "^9.0.0",
