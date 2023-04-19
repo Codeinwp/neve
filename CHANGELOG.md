@@ -1,3 +1,10 @@
+##### [Version 3.5.8](https://github.com/Codeinwp/neve/compare/v3.5.7...v3.5.8) (2023-04-19)
+
+- [Fix] Tag cloud style when using classic widgets was different than the tag cloud block
+- [Fix] Visual issue for the color picker
+- Update Google Fonts
+- Support chages for Neve Pro
+
 ##### [Version 3.5.7](https://github.com/Codeinwp/neve/compare/v3.5.6...v3.5.7) (2023-04-06)
 
 - [Feat] Dynamic Icon Selection and Optional Button for HFG Search Components
