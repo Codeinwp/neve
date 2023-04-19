@@ -150,7 +150,33 @@ class MenuIcon extends Abstract_Component {
 	public function load_scripts() {
 		if ( $this->is_component_active() || is_customize_preview() ) {
 			wp_add_inline_style( 'neve-style', $this->toggle_style() );
+			wp_add_inline_script( 'neve-script', $this->toggle_script() );
 		}
+	}
+
+	/**
+	 * Get JS to use as inline script
+	 *
+	 * @return string
+	 */
+	public function toggle_script() {
+		// Add aria-expanded to toggle function to be used when the menu icon is used,
+		$script = <<<JS
+function toggleAriaClick() {
+    function toggleAriaExpanded(toggle = 'true') {
+        document.querySelectorAll('button.navbar-toggle').forEach(function(el) {el.setAttribute('aria-expanded', 'true' === el.getAttribute('aria-expanded') ? 'false' : toggle);})
+    }
+	toggleAriaExpanded();
+	if ( document.body.hasAttribute('data-ftrap-listener') ) {
+		return;
+	}
+	document.body.setAttribute('data-ftrap-listener', 'true');
+    document.addEventListener('ftrap-end', function() {
+        toggleAriaExpanded('false');
+    });
+}
+JS;
+		return $script;
 	}
 
 	/**
@@ -643,11 +669,7 @@ CSS;
 	 * @return string
 	 */
 	public static function aria_expanded_behaviour( $only_click_attribute = false ) {
-		$script_action = <<<JS
-(function(){document.querySelectorAll('button.navbar-toggle').forEach(function(el) {el.setAttribute('aria-expanded', 'true' === el.getAttribute('aria-expanded') ? 'false' : 'true');})})()
-JS;
-
-		return ( $only_click_attribute ? '' : 'aria-expanded="false" ' ) . 'onclick="' . $script_action . '"';
+		return ( $only_click_attribute ? '' : 'aria-expanded="false" ' ) . 'onclick="if(\'undefined\' !== typeof toggleAriaClick ) { toggleAriaClick() }"';
 	}
 
 }

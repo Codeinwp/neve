@@ -32,6 +32,18 @@ const runMenuARIATest = () => {
 		await expect(
 			page.getByRole('button', {name: 'Navigation Menu'})
 		).toHaveAttribute('aria-expanded', 'false');
+
+		// Open the menu from the button. Check ARIA attribute for expanded state is true when menu is open.
+		await page.getByRole('button', {name: 'Navigation Menu'}).click();
+		await expect(
+			page.getByRole('button', {name: 'Navigation Menu'})
+		).toHaveAttribute('aria-expanded', 'true');
+
+		// Close the menu from the escape key. Check ARIA attribute for expanded state is false when menu is closed.
+		await page.keyboard.press('Escape');
+		await expect(
+			page.getByRole('button', {name: 'Navigation Menu'})
+		).toHaveAttribute('aria-expanded', 'false');
 	});
 };
 
