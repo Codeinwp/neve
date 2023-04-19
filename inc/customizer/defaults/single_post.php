@@ -221,4 +221,24 @@ trait Single_Post {
 
 		return 'neve_' . $context . '_' . $meta;
 	}
+
+	/**
+	 * Returns default values for "neve_single_post_meta_fields" theme mod.
+	 *
+	 * @return string
+	 */
+	public static function get_default_single_post_meta_fields() {
+		/**
+		 * We replaced the old ordering control neve_post_meta_ordering with a repeater control named neve_single_post_meta_fields.
+		 * Because of that, we need to add some transformations:
+		 */
+
+		$default = wp_json_encode( [ 'author', 'date', 'comments' ] );
+
+		// Take the old control value and bring it to a form that can be used in a repeater.
+		$default_value = neve_get_default_meta_value( 'neve_post_meta_ordering', $default );
+
+		// We need to get the value of the meta on blogs.
+		return get_theme_mod( 'neve_blog_post_meta_fields', wp_json_encode( $default_value ) );
+	}
 }
