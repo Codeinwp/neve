@@ -56,5 +56,40 @@
 	"neve_post_cover_blend_mode": "normal",
 	"neve_post_cover_title_boxed_layout": false,
 	"neve_new_skin": "new"
+  },
+  "comments_section": {
+  	"neve_post_comment_section_title": "For {title} you have {comments_number} comment(s)",
+	"neve_comments_boxed_layout": true,
+	"neve_comments_boxed_padding": {
+	  "mobile": {
+		"top": 40,
+		"right": 15,
+		"bottom": 40,
+		"left": 15
+	  },
+	  "tablet": {
+		"top": 60,
+		"right": 10,
+		"bottom": 60,
+		"left": 10
+	  },
+	  "desktop": {
+		"top": 60,
+		"right": 15,
+		"bottom": 60,
+		"left": 15
+	  },
+	  "mobile-unit": "px",
+	  "tablet-unit": "px",
+	  "desktop-unit": "px"
+	},
+	"neve_comments_boxed_background_color": "#2782AB",
+	"neve_comments_boxed_text_color": "#ffffff"
+  },
+  "comments_form": {
+	"neve_post_comment_form_title": "Leave a comment in the box below",
+	"neve_post_comment_form_button_style": "secondary",
+	"neve_post_comment_form_button_text": "Submit your comment",
+	"neve_comments_form_boxed_layout": false
   }
 }

@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { setCustomizeSettings } from '../../../utils';
+import { setCustomizeSettings, testForViewport } from '../../../utils';
 import data from '../../../fixtures/customizer/layout/single-post-settings.json';
 
 test.describe('Single Post Check', function () {
@@ -77,5 +77,168 @@ test.describe('Single Post Check', function () {
 				'rgb(255, 255, 255)'
 			);
 		}
+	});
+
+	test('Comments', async ({ page, request, baseURL }) => {
+		await test.step('Comments section', async () => {
+			await setCustomizeSettings(
+				'commentsSection',
+				data.comments_section,
+				{
+					request,
+					baseURL,
+				}
+			);
+			// Test the default settings.
+			await page.goto('/template-comments');
+			const commentsTitleDefault = await page.locator('.comments-title');
+			const commentsWrapDefault = await page.locator('.nv-comments-wrap');
+			await expect(commentsTitleDefault).toHaveText(
+				'19 thoughts on “Template: Comments”'
+			);
+			await expect(commentsWrapDefault).not.toHaveClass('nv-is-boxed');
+			await testForViewport(
+				page,
+				'#comments .nv-comments-wrap',
+				{ width: 1536, height: 960 },
+				{
+					cssProperties: [
+						{ property: 'padding', value: '0px' },
+						{ property: 'color', value: 'rgb(39, 38, 38)' },
+						{
+							property: 'background-color',
+							value: 'rgba(0, 0, 0, 0)',
+						},
+					],
+				}
+			);
+
+			// Test the custom settings.
+			await page.goto('/template-comments/?test_name=commentsSection');
+			const commentsTitle = await page.locator('.comments-title');
+			const commentsWrap = await page.locator('.nv-comments-wrap');
+			await expect(commentsTitle).toHaveText(
+				'For Template: Comments you have 19 comment(s)'
+			);
+			await expect(commentsWrap).toHaveClass(/nv-is-boxed/);
+			await testForViewport(
+				page,
+				'.nv-comments-wrap.nv-is-boxed',
+				{ width: 1536, height: 960 },
+				{
+					cssProperties: [
+						{ property: 'padding', value: '60px 15px' },
+						{ property: 'color', value: 'rgb(255, 255, 255)' },
+						{
+							property: 'background-color',
+							value: 'rgb(39, 130, 171)',
+						},
+					],
+				}
+			);
+			await testForViewport(
+				page,
+				'.nv-comments-wrap.nv-is-boxed',
+				{ width: 768, height: 1024 },
+				{
+					cssProperties: [
+						{ property: 'padding', value: '60px 10px' },
+						{ property: 'color', value: 'rgb(255, 255, 255)' },
+						{
+							property: 'background-color',
+							value: 'rgb(39, 130, 171)',
+						},
+					],
+				}
+			);
+			await testForViewport(
+				page,
+				'.nv-comments-wrap.nv-is-boxed',
+				{ width: 375, height: 812 },
+				{
+					cssProperties: [
+						{ property: 'padding', value: '40px 15px' },
+						{ property: 'color', value: 'rgb(255, 255, 255)' },
+						{
+							property: 'background-color',
+							value: 'rgb(39, 130, 171)',
+						},
+					],
+				}
+			);
+		});
+
+		await test.step('Comments form', async () => {
+			await setCustomizeSettings('formSection', data.comments_form, {
+				request,
+				baseURL,
+			});
+
+			// Test the default settings.
+			await page.goto('/template-comments');
+			const formTitleDefault = await page.locator('#reply-title');
+			const respondFormDefault = await page.locator('#respond');
+			const submitButtonDefault = await page.locator('#submit');
+			await expect(formTitleDefault).toHaveText(/Leave a Reply/);
+			await expect(respondFormDefault).toHaveClass(/nv-is-boxed/);
+			await expect(submitButtonDefault).toHaveClass(/button-primary/);
+			await expect(submitButtonDefault).toHaveText(/Post Comment/);
+			await testForViewport(
+				page,
+				'#respond',
+				{ width: 1536, height: 960 },
+				{
+					cssProperties: [
+						{ property: 'padding', value: '40px' },
+						{ property: 'color', value: 'rgb(39, 38, 38)' },
+						{
+							property: 'background-color',
+							value: 'rgb(244, 245, 247)',
+						},
+					],
+				}
+			);
+			await testForViewport(
+				page,
+				'#respond',
+				{ width: 768, height: 1024 },
+				{
+					cssProperties: [
+						{ property: 'padding', value: '30px' },
+						{ property: 'color', value: 'rgb(39, 38, 38)' },
+						{
+							property: 'background-color',
+							value: 'rgb(244, 245, 247)',
+						},
+					],
+				}
+			);
+			await testForViewport(
+				page,
+				'#respond',
+				{ width: 375, height: 812 },
+				{
+					cssProperties: [
+						{ property: 'padding', value: '20px' },
+						{ property: 'color', value: 'rgb(39, 38, 38)' },
+						{
+							property: 'background-color',
+							value: 'rgb(244, 245, 247)',
+						},
+					],
+				}
+			);
+
+			await page.goto('/template-comments/?test_name=formSection');
+			const formTitle = await page.locator('#reply-title');
+			const respondForm = await page.locator('#respond');
+			const submitButton = await page.locator('#submit');
+			await expect(formTitle).toHaveText(
+				/Leave a comment in the box below/
+			);
+			await expect(respondForm).not.toHaveClass('nv-is-boxed');
+			await expect(submitButton).toHaveClass(/button-secondary/);
+			await expect(submitButton).toHaveText(/Submit your comment/);
+		});
 	});
 });
