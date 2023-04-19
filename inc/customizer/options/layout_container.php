@@ -28,7 +28,6 @@ class Layout_Container extends Base_Customizer {
 	public function add_controls() {
 		$this->section_container();
 		$this->control_container_width();
-		$this->control_vertical_spacing();
 		$this->control_container_style();
 	}
 
