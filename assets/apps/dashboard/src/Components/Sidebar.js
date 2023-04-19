@@ -1,5 +1,6 @@
 /* global neveDash */
 import { changeOption } from '../utils/rest';
+import SupportCard from './SupportCard';
 import LicenseCard from './LicenseCard';
 import { __ } from '@wordpress/i18n';
 import { ToggleControl, ExternalLink } from '@wordpress/components';
@@ -12,6 +13,7 @@ const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
 
 	return (
 		<div className="sidebar-wrap">
+			{!neveDash.whiteLabel && neveDash.pro && <SupportCard />}
 			{neveDash.pro && <LicenseCard isVisible={'pro' === currentTab} />}
 			{!neveDash.whiteLabel && (
 				<aside className="sidebar card">
