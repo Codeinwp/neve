@@ -9,8 +9,28 @@
 		}
 	}
 
-	.components-popover:not(.global-colors-selector) .components-popover__content {
+    .components-popover:not(.neve-color-picker-dropdown) {
+	  .components-base-control {
+		padding: 8px 0;
+	  }
+	}
+
+	.neve-color-picker-dropdown > .components-popover__content {
 		overflow: unset !important;
+		min-height: 420px;
+	    .components-popover__content {
+		  max-height: 450px!important;
+		}
+		> .components-spacer {
+		  position: sticky;
+		  z-index: 3;
+		  .components-angle-picker-control {
+			gap: calc(8px) !important;
+		  }
+		  .components-custom-gradient-picker > .components-custom-gradient-picker__ui-line {
+			gap: calc(8px) !important;
+		  }
+		}
 	}
 
 	.components-custom-gradient-picker__gradient-bar {
@@ -29,14 +49,27 @@
  */
 #nv-mm-app {
   .modal {
-	.components-popover__content {
-	  max-height: 430px!important;
+	.components-popover.global-colors-selector .components-popover__content {
+	  max-height: 420px!important;
+	}
+	.components-popover:not(.global-colors-selector) .components-popover__content {
+	  max-height: 520px!important;
+	  .components-base-control {
+		padding: 4px 0;
+	  }
 	}
 
 	.components-color-picker {
 	  .components-select-control .components-input-control__container {
 		max-width: 100%;
 	  }
+	}
+  }
+}
+@media screen and (max-height: 900px) {
+  #nv-mm-app {
+	.modal .components-popover:not(.global-colors-selector) .components-popover__content {
+	  max-height: 420px!important;
 	}
   }
 }
