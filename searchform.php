@@ -25,6 +25,8 @@ if ( function_exists( 'PLL' ) ) {
 	}
 }
 
+$has_text_button = isset( $args['button_text'] );
+$context         = array_key_exists( 'context', $args ) ? $args['context'] : false;
 ?>
 
 <form role="search"
@@ -41,11 +43,15 @@ if ( function_exists( 'PLL' ) ) {
 		value="<?php echo esc_attr( $value ); ?>"
 		name="s"/>
 	<button type="submit"
-			class="search-submit"
+			class="search-submit<?php echo $has_text_button ? ' nv-text-btn' : ''; ?>"
 			aria-label="<?php echo esc_attr( $aria_label ); ?>">
-		<span class="nv-search-icon-wrap">
-			<?php neve_search_icon( false, true ); ?>
-</span>
+		<?php if ( $has_text_button ) { ?>
+			<?php echo esc_html( $args['button_text'] ); ?>
+		<?php } else { ?>
+			<span class="nv-search-icon-wrap">
+				<?php neve_search_icon( false, true, 15, false, $context ); ?>
+			</span>
+		<?php } ?>
 	</button>
 	<?php
 	if ( array_key_exists( 'post_type', $args ) ) {

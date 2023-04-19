@@ -83,6 +83,11 @@ const ColorControl = ({
 			)}
 			{children}
 			<Dropdown
+				contentClassName={
+					'gradient' !== activePanel
+						? ''
+						: 'neve-color-picker-dropdown'
+				}
 				renderToggle={({ isOpen, onToggle }) => {
 					toggle = onToggle;
 					return (
@@ -157,6 +162,7 @@ const ColorControl = ({
 									/>
 									<GradientPicker
 										value={gradient}
+										gradients={[]}
 										onChange={(currentGradient) => {
 											setGradient(currentGradient);
 											onChange(currentGradient);

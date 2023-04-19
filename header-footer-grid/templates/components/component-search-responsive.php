@@ -13,6 +13,7 @@ use HFG\Core\Components\SearchResponsive;
 
 $component_styles_array = [];
 $open                   = component_setting( SearchResponsive::OPEN_TYPE );
+$size                   = component_setting( SearchResponsive::SIZE_ID, SearchResponsive::DEFAULT_ICON_SIZE );
 
 if ( current_row() === 'sidebar' ) {
 	$open = 'floating';
@@ -36,7 +37,7 @@ if ( neve_is_amp() ) {
 ?>
 <div class="nv-search-icon-component" <?php echo wp_kses_post( $component_styles ); ?>>
 	<div <?php echo $amp_class; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, Already escaped. ?> class="menu-item-nav-search <?php echo esc_attr( $open ); ?>">
-		<?php neve_search_icon( true, true, 15, ! empty( $amp_state ) ); ?>
+		<?php neve_search_icon( true, true, $size, ! empty( $amp_state ), 'hfg' ); ?>
 		<div class="nv-nav-search" aria-label="search">
 			<div class="form-wrap <?php echo $open === 'canvas' ? 'container responsive-search' : ''; ?>">
 				<?php get_search_form(); ?>

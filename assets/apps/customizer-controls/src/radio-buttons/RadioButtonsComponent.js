@@ -1,4 +1,5 @@
 /*eslint camelcase: ["error", {allow: ["is_for","large_buttons","user_icon_style1","user_icon_style2","user_icon_style3","user_icon_style4","user_icon_style5",,"user_icon_style6","user_avatar"]}]*/
+/* global NeveReactCustomize */
 import PropTypes from 'prop-types';
 import { SVG, RadioIcons } from '@neve-wp/components';
 
@@ -202,6 +203,33 @@ const RadioButtonsComponent = ({ control }) => {
 					'mc-icon-style-6': {
 						tooltip: __('Icon Style 6', 'neve'),
 						icon: SVG.mcIcon6,
+					},
+				};
+			case 'search_icon':
+				return {
+					[NeveReactCustomize.constants.HFGSearch.defaultIconKey]: {
+						tooltip: __('Icon Style 1', 'neve'),
+						icon: SVG.searchIcon1,
+					},
+					'hfgs-icon-style-2': {
+						tooltip: __('Icon Style 2', 'neve'),
+						icon: SVG.searchIcon2,
+					},
+					'hfgs-icon-style-3': {
+						tooltip: __('Icon Style 3', 'neve'),
+						icon: SVG.searchIcon3,
+					},
+					'hfgs-icon-style-4': {
+						tooltip: __('Icon Style 4', 'neve'),
+						icon: SVG.searchIcon4,
+					},
+					'hfgs-icon-style-5': {
+						tooltip: __('Icon Style 5', 'neve'),
+						icon: SVG.searchIcon5,
+					},
+					[NeveReactCustomize.constants.HFGSearch.customIconKey]: {
+						tooltip: __('Custom SVG', 'neve'),
+						icon: SVG.customSVG,
 					},
 				};
 		}
