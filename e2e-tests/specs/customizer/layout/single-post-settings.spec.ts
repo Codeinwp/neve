@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { setCustomizeSettings, testForViewport } from '../../../utils';
+import { setCustomizeSettings, testForViewport, checkElementsOrder } from '../../../utils';
 import data from '../../../fixtures/customizer/layout/single-post-settings.json';
 
 test.describe('Single Post Check', function () {
@@ -50,12 +50,7 @@ test.describe('Single Post Check', function () {
 		await page.goto(
 			'/template-comments/?test_name=layoutElementsReordered'
 		);
-		const postElements = await page.locator('.nv-single-post-wrap > *');
-		for (let i = 0; i < (await postElements.count()); i++) {
-			await expect(postElements.nth(i)).toHaveClass(
-				new RegExp(`${ORDER[i]}`)
-			);
-		}
+		await checkElementsOrder(page, '.nv-single-post-wrap', ORDER);
 	});
 
 	test('Header Cover', async ({ page, request, baseURL }) => {
@@ -240,5 +235,30 @@ test.describe('Single Post Check', function () {
 			await expect(submitButton).toHaveClass(/button-secondary/);
 			await expect(submitButton).toHaveText(/Submit your comment/);
 		});
+	});
+
+	test('Post Meta', async ({ page, request, baseURL }) => {
+		await setCustomizeSettings('metaOrder', data.post_meta, {
+			request,
+			baseURL,
+		});
+
+		await page.goto('/template-comments/?test_name=metaOrder');
+		await page.screenshot({ path: 'metaOrder.png' });
+		const metaOrder = ['category', 'date', 'comments', 'author'];
+		await checkElementsOrder(page, '.nv-meta-list', metaOrder);
+
+		const metaList = await page.locator('.nv-meta-list > *');
+		for (let i = 0; i < (await metaList.count()) - 1; i++) {
+			const content = await metaList
+				.nth(i)
+				.evaluate((li) =>
+					getComputedStyle(li, ':after').getPropertyValue('content')
+				);
+			await expect(content).toBe('"***"');
+		}
+
+		const authorAvatar = await page.locator('.nv-meta-list .author img');
+		await expect(await authorAvatar.count()).toBeGreaterThan(0);
 	});
 });

@@ -91,5 +91,10 @@
 	"neve_post_comment_form_button_style": "secondary",
 	"neve_post_comment_form_button_text": "Submit your comment",
 	"neve_comments_form_boxed_layout": false
+  },
+  "post_meta": {
+	"neve_single_post_meta_fields": "[{\"slug\":\"category\",\"title\":\"Category\",\"visibility\":\"yes\",\"hide_on_mobile\":false,\"blocked\":\"yes\"},{\"slug\":\"date\",\"title\":\"Date\",\"visibility\":\"yes\",\"hide_on_mobile\":false,\"blocked\":\"yes\"},{\"slug\":\"comments\",\"title\":\"Comments\",\"visibility\":\"yes\",\"hide_on_mobile\":false,\"blocked\":\"yes\"},{\"slug\":\"author\",\"title\":\"Author\",\"visibility\":\"yes\",\"hide_on_mobile\":false,\"blocked\":\"yes\"}]",
+	"neve_single_post_metadata_separator": "***",
+	"neve_single_post_author_avatar": true
   }
 }
