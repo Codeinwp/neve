@@ -1,5 +1,9 @@
-import { test, expect, Page } from '@playwright/test';
-import { setCustomizeSettings, testForViewport, checkElementsOrder } from '../../../utils';
+import { test, expect } from '@playwright/test';
+import {
+	setCustomizeSettings,
+	testForViewport,
+	checkElementsOrder,
+} from '../../../utils';
 import data from '../../../fixtures/customizer/layout/single-post-settings.json';
 
 test.describe('Single Post Check', function () {
