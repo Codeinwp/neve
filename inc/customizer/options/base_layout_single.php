@@ -593,8 +593,9 @@ abstract class Base_Layout_Single extends Base_Customizer {
 					'sanitize_callback'     => [ $this, 'sanitize_spacing_array' ],
 					'section'               => $this->section,
 					'input_attrs'           => [
-						'units' => [ 'px', 'vh' ],
-						'axis'  => 'vertical',
+						'units'     => [ 'px', 'vh' ],
+						'axis'      => 'vertical',
+						'dependsOn' => [ 'neve_' . $this->post_type . '_inherit_vspacing' => 'specific' ],
 					],
 					'default'               => $default_value,
 					'priority'              => 100,
@@ -608,9 +609,6 @@ abstract class Base_Layout_Single extends Base_Customizer {
 						],
 						'directional' => true,
 					],
-					'active_callback'       => function () {
-						return get_theme_mod( 'neve_' . $this->post_type . '_inherit_vspacing', 'inherit' ) === 'specific';
-					},
 				],
 				'\Neve\Customizer\Controls\React\Spacing'
 			)

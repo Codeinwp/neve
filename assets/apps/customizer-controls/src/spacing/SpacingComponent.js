@@ -26,7 +26,7 @@ const SpacingComponent = ({ control }) => {
 				...control.params.input_attrs,
 		  }
 		: defaultParams;
-	const { axis } = controlParams;
+	const { axis, dependsOn } = controlParams;
 
 	let deviceInitialValue = { top: 0, right: 0, bottom: 0, left: 0 };
 	if (axis) {
@@ -56,6 +56,16 @@ const SpacingComponent = ({ control }) => {
 	const [value, setValue] = useState(initialVal);
 	const [currentDevice, setCurrentDevice] = useState('desktop');
 
+	let defaultVisibility = true;
+	if (dependsOn) {
+		const dependentControl = Object.keys(dependsOn)[0];
+		const dependentValue = Object.values(dependsOn)[0];
+		defaultVisibility =
+			wp.customize.control(dependentControl).setting.get() ===
+			dependentValue;
+	}
+	const [visible, setVisible] = useState(defaultVisibility);
+
 	const updateValueForCurrentDevice = (valueForDevice) => {
 		const nextValue = { ...value };
 		nextValue[currentDevice] = valueForDevice;
@@ -67,6 +77,17 @@ const SpacingComponent = ({ control }) => {
 		control.setting.set(nextVal);
 	};
 
+	const updateVisibility = (dependencies) => {
+		const controlName = Object.keys(dependencies)[0];
+		const controlValue = Object.values(dependencies)[0];
+
+		wp.customize(controlName, (setting) => {
+			setting.bind((val) => {
+				setVisible(val === controlValue);
+			});
+		});
+	};
+
 	useEffect(() => {
 		document.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) return false;
@@ -74,7 +95,15 @@ const SpacingComponent = ({ control }) => {
 
 			updateControlValue(e.detail.value || defaultValue);
 		});
-	}, []);
+
+		if (dependsOn) {
+			updateVisibility(dependsOn);
+		}
+	}, [dependsOn, updateVisibility]);
+
+	if (dependsOn && visible === false) {
+		return;
+	}
 
 	const isRelativeUnit = ['em', 'rem'].includes(
 		value[currentDevice + '-unit']

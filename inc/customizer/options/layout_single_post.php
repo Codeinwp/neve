@@ -290,8 +290,9 @@ class Layout_Single_Post extends Base_Layout_Single {
 					'sanitize_callback'     => [ $this, 'sanitize_spacing_array' ],
 					'section'               => $this->section,
 					'input_attrs'           => [
-						'units' => [ 'px', 'vh' ],
-						'axis'  => 'vertical',
+						'units'     => [ 'px', 'vh' ],
+						'axis'      => 'vertical',
+						'dependsOn' => [ Config::MODS_SINGLE_POST_VSPACING_INHERIT => 'specific' ],
 					],
 					'default'               => $default_value,
 					'priority'              => 107,
@@ -299,15 +300,12 @@ class Layout_Single_Post extends Base_Layout_Single {
 					'live_refresh_css_prop' => [
 						'cssVar'      => [
 							'vars'       => '--c-vspace',
-							'selector'   => 'body.single-post .neve-main',
+							'selector'   => 'body.single:not(.single-product) .neve-main',
 							'responsive' => true,
 							'fallback'   => '',
 						],
 						'directional' => true,
 					],
-					'active_callback'       => function () {
-						return get_theme_mod( Config::MODS_SINGLE_POST_VSPACING_INHERIT, 'inherit' ) === 'specific';
-					},
 				],
 				'\Neve\Customizer\Controls\React\Spacing'
 			)

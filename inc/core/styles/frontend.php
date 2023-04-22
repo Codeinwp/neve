@@ -877,17 +877,17 @@ class Frontend extends Generator {
 	 */
 	private function setup_content_vspacing() {
 		$rules = [
-			'--cg-vspace' => [
-				Dynamic_Selector::META_KEY           => Config::MODS_CONTENT_VSPACING,
-				Dynamic_Selector::META_IS_RESPONSIVE => true,
-				Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
-				Dynamic_Selector::META_DEFAULT       => $this->content_vspacing_default(),
-				'directional-prop'                   => Config::CSS_PROP_DIRECTIONAL_ONE_AXIS,
+			'--c-vspace' => [
+				Dynamic_Selector::META_KEY              => Config::MODS_CONTENT_VSPACING,
+				Dynamic_Selector::META_IS_RESPONSIVE    => true,
+				Dynamic_Selector::META_SUFFIX           => 'responsive_unit',
+				Dynamic_Selector::META_DEFAULT          => $this->content_vspacing_default(),
+				Dynamic_Selector::META_DIRECTIONAL_PROP => Config::CSS_PROP_DIRECTIONAL_ONE_AXIS,
 			],
 		];
 
 		$this->_subscribers[] = [
-			'selectors' => '.single .neve-main, .page .neve-main',
+			'selectors' => '.single:not(.single-product), .page',
 			'rules'     => $rules,
 		];
 
@@ -898,14 +898,14 @@ class Frontend extends Generator {
 				'--c-vspace' => [
 					Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_CONTENT_VSPACING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 					Dynamic_Selector::META_DEFAULT       => $default,
-					'directional-prop'                   => Config::CSS_PROP_DIRECTIONAL_ONE_AXIS,
+					Dynamic_Selector::META_DIRECTIONAL_PROP => Config::CSS_PROP_DIRECTIONAL_ONE_AXIS,
 				],
 			];
 
 			$this->_subscribers[] = [
-				'selectors' => '.single-post .neve-main',
+				'selectors' => '.single:not(.single-product) .neve-main',
 				'rules'     => $post_rules,
 			];
 		}
@@ -917,7 +917,7 @@ class Frontend extends Generator {
 				'--c-vspace' => [
 					Dynamic_Selector::META_KEY           => 'neve_' . $context . '_' . Config::MODS_POST_TYPE_VSPACING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 					Dynamic_Selector::META_DEFAULT       => $this->content_vspacing_default(),
 					'directional-prop'                   => Config::CSS_PROP_DIRECTIONAL_ONE_AXIS,
 				],
