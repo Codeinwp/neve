@@ -176,7 +176,8 @@ function toggleAriaClick() {
     });
 }
 JS;
-		return $script;
+		// use Dynamic_Css class to minify the script, by removing the whitespace.
+		return Dynamic_Css::minify_css( $script );
 	}
 
 	/**
