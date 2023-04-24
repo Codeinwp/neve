@@ -42,8 +42,15 @@
 		--color: var(--hovercolor);
 	}
 
-	.nv-active > .wrap {
-		--color: var(--activecolor);
+	.nv-active {
+
+		> .wrap {
+			--color: var(--activecolor);
+
+			.caret {
+				color: var(--color);
+			}
+		}
 	}
 
 	> li {
@@ -66,8 +73,6 @@
 		display: flex;
 
 		svg {
-			color: var(--color);
-			fill: currentColor;
 			width: 0.5em;
 			height: 0.5em;
 		}
