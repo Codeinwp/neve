@@ -24,6 +24,12 @@ const OrderingComponent = ({ control }) => {
 		return [...enabledItems, ...disabledItems];
 	};
 
+	const [value, setValue] = useState(
+		normalizeValue(maybeParseJson(control.setting.get()))
+	);
+
+	const [isVisible, setVisible] = useState(false);
+
 	const updateValue = (newVal) => {
 		const dbValue = newVal
 			.filter((el) => el.visible === true)
@@ -32,13 +38,6 @@ const OrderingComponent = ({ control }) => {
 		setValue(newVal);
 		control.setting.set(JSON.stringify(dbValue));
 	};
-
-	// const [components, setComponents] = useState(control.params.components);
-	const [value, setValue] = useState(
-		normalizeValue(maybeParseJson(control.setting.get()))
-	);
-
-	const [isVisible, setVisible] = useState(false);
 
 	useEffect(() => {
 		window.wp.customize.bind('ready', () => {
