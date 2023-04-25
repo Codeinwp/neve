@@ -64,9 +64,12 @@ const OrderingComponent = ({ control }) => {
 							control.setting.get()
 						);
 						components.title = __('Title', 'neve');
-						components.price = __('Price', 'neve');
+						components.price = __('Product Price', 'neve');
 						if (val === 'inline') {
-							components.title = __('Title + Price', 'neve');
+							components.title =
+								__('Title', 'neve') +
+								' + ' +
+								__('Product Price', 'neve');
 							delete components.price;
 						}
 						updateValue(normalizeValue(controlVal));
