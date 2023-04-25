@@ -102,7 +102,7 @@ const SpacingComponent = ({ control }) => {
 	}, []);
 
 	if (dependsOn && visible === false) {
-		return;
+		return null;
 	}
 
 	const isRelativeUnit = ['em', 'rem'].includes(

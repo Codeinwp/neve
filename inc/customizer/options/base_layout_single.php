@@ -536,7 +536,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 					'sanitize_callback' => 'sanitize_text_field',
 				],
 				[
-					'label'            => esc_html__( 'Page Settings', 'neve' ),
+					'label'            => esc_html__( 'Page', 'neve' ) . ' ' . esc_html__( 'Settings', 'neve' ),
 					'section'          => $this->section,
 					'priority'         => 90,
 					'class'            => 'page-settings-accordion',
