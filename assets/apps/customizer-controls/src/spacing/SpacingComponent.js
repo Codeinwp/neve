@@ -99,7 +99,7 @@ const SpacingComponent = ({ control }) => {
 		if (dependsOn) {
 			updateVisibility(dependsOn);
 		}
-	}, [dependsOn, updateVisibility]);
+	}, []);
 
 	if (dependsOn && visible === false) {
 		return;
