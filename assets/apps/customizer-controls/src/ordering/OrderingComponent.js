@@ -24,12 +24,6 @@ const OrderingComponent = ({ control }) => {
 		return [...enabledItems, ...disabledItems];
 	};
 
-	const [value, setValue] = useState(
-		normalizeValue(maybeParseJson(control.setting.get()))
-	);
-
-	const [isVisible, setVisible] = useState(false);
-
 	const updateValue = (newVal) => {
 		const dbValue = newVal
 			.filter((el) => el.visible === true)
@@ -38,6 +32,13 @@ const OrderingComponent = ({ control }) => {
 		setValue(newVal);
 		control.setting.set(JSON.stringify(dbValue));
 	};
+
+	// const [components, setComponents] = useState(control.params.components);
+	const [value, setValue] = useState(
+		normalizeValue(maybeParseJson(control.setting.get()))
+	);
+
+	const [isVisible, setVisible] = useState(false);
 
 	useEffect(() => {
 		window.wp.customize.bind('ready', () => {
@@ -56,6 +57,23 @@ const OrderingComponent = ({ control }) => {
 						setVisible(true);
 					}
 				});
+
+			if (control.id === 'neve_layout_product_elements_order') {
+				wp.customize('neve_product_content_alignment', (setting) => {
+					setting.bind((val) => {
+						const controlVal = maybeParseJson(
+							control.setting.get()
+						);
+						components.title = __('Title', 'neve');
+						components.price = __('Price', 'neve');
+						if (val === 'inline') {
+							components.title = __('Title + Price', 'neve');
+							delete components.price;
+						}
+						updateValue(normalizeValue(controlVal));
+					});
+				});
+			}
 		});
 	}, []);
 
