@@ -80,6 +80,7 @@ class Nav extends Abstract_Component {
 				}
 				remove_filter( 'neve_first_level_expanded', [ $this, 'expanded_dropdown' ] );
 				remove_filter( 'nav_menu_submenu_css_class', [ $this, 'filter_menu_item_class' ] );
+				remove_filter( 'nav_menu_css_class', [ $this, 'filter_active_item_classes' ] );
 			}
 		);
 

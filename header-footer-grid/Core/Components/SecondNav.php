@@ -56,6 +56,15 @@ class SecondNav extends Abstract_Component {
 				add_filter( 'nav_menu_css_class', [ $this, 'filter_active_item_classes' ] );
 			}
 		);
+		add_action(
+			'neve_after_render_nav',
+			function ( $component_id ) {
+				if ( $this->get_id() !== $component_id ) {
+					return;
+				}
+				remove_filter( 'nav_menu_css_class', [ $this, 'filter_active_item_classes' ] );
+			}
+		);
 	}
 
 	/**
