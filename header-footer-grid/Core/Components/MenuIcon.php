@@ -164,7 +164,12 @@ class MenuIcon extends Abstract_Component {
 		$script = <<<JS
 function toggleAriaClick() {
     function toggleAriaExpanded(toggle = 'true') {
-        document.querySelectorAll('button.navbar-toggle').forEach(function(el) {el.setAttribute('aria-expanded', 'true' === el.getAttribute('aria-expanded') ? 'false' : toggle);})
+        document.querySelectorAll('button.navbar-toggle').forEach(function(el) {
+            if ( el.classList.contains('caret-wrap') ) {
+                return;
+            }
+            el.setAttribute('aria-expanded', 'true' === el.getAttribute('aria-expanded') ? 'false' : toggle);
+        });
     }
 	toggleAriaExpanded();
 	if ( document.body.hasAttribute('data-ftrap-listener') ) {
