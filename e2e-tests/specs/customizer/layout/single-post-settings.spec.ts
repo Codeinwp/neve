@@ -1,6 +1,82 @@
 import { test, expect, Page } from '@playwright/test';
-import { setCustomizeSettings } from '../../../utils';
+import { setCustomizeSettings, testForViewport } from '../../../utils';
 import data from '../../../fixtures/customizer/layout/single-post-settings.json';
+
+const testGlobalSettings = async (page: Page) => {
+	await testForViewport(
+		page,
+		'.neve-main',
+		{ width: 1536, height: 960 },
+		{
+			cssProperties: [
+				{ property: 'margin-top', value: '100px' },
+				{ property: 'margin-bottom', value: '100px' },
+			],
+		}
+	);
+
+	await testForViewport(
+		page,
+		'.neve-main',
+		{ width: 768, height: 1024 },
+		{
+			cssProperties: [
+				{ property: 'margin-top', value: '60px' },
+				{ property: 'margin-bottom', value: '60px' },
+			],
+		}
+	);
+
+	await testForViewport(
+		page,
+		'.neve-main',
+		{ width: 375, height: 812 },
+		{
+			cssProperties: [
+				{ property: 'margin-top', value: '-30px' },
+				{ property: 'margin-bottom', value: '30px' },
+			],
+		}
+	);
+};
+
+const testPostSettings = async (page: Page) => {
+	await testForViewport(
+		page,
+		'.neve-main',
+		{ width: 1536, height: 960 },
+		{
+			cssProperties: [
+				{ property: 'margin-top', value: '30px' },
+				{ property: 'margin-bottom', value: '40px' },
+			],
+		}
+	);
+
+	await testForViewport(
+		page,
+		'.neve-main',
+		{ width: 768, height: 1024 },
+		{
+			cssProperties: [
+				{ property: 'margin-top', value: '90px' },
+				{ property: 'margin-bottom', value: '100px' },
+			],
+		}
+	);
+
+	await testForViewport(
+		page,
+		'.neve-main',
+		{ width: 375, height: 812 },
+		{
+			cssProperties: [
+				{ property: 'margin-top', value: '80px' },
+				{ property: 'margin-bottom', value: '90px' },
+			],
+		}
+	);
+};
 
 test.describe('Single Post Check', function () {
 	test('All page elements are hidden.', async ({
@@ -77,5 +153,87 @@ test.describe('Single Post Check', function () {
 				'rgb(255, 255, 255)'
 			);
 		}
+	});
+
+	test('Content Vertical Spacing', async ({ page, request, baseURL }) => {
+		await test.step('Global Content Vertical Spacing', async () => {
+			await setCustomizeSettings(
+				'global-vspacing',
+				data.vspacing_global,
+				{
+					request,
+					baseURL,
+				}
+			);
+			const locations = [
+				'/hello-world/?test_name=global-vspacing',
+				'/page-a/?test_name=global-vspacing',
+			];
+			for (const url of locations) {
+				await page.goto(url);
+				await testGlobalSettings(page);
+			}
+		});
+
+		await test.step('Post Content Vertical Spacing', async () => {
+			await setCustomizeSettings('post-vspacing', data.vspacing_post, {
+				request,
+				baseURL,
+			});
+			await page.goto('/hello-world/?test_name=post-vspacing');
+
+			await testPostSettings(page);
+
+			await page.goto('/page-a/?test_name=post-vspacing');
+			await testGlobalSettings(page);
+		});
+
+		await test.step('Page Content Vertical Spacing', async () => {
+			await setCustomizeSettings('page-vspacing', data.vspacing_page, {
+				request,
+				baseURL,
+			});
+			await page.goto('/page-a/?test_name=page-vspacing');
+
+			await testForViewport(
+				page,
+				'.neve-main',
+				{ width: 1536, height: 960 },
+				{
+					cssProperties: [
+						{ property: 'margin-top', value: '-15px' },
+						{ property: 'margin-bottom', value: '-20px' },
+					],
+				}
+			);
+
+			await testForViewport(
+				page,
+				'.neve-main',
+				{ width: 768, height: 1024 },
+				{
+					cssProperties: [
+						{ property: 'margin-top', value: '-20px' },
+						{ property: 'margin-bottom', value: '-25px' },
+					],
+				}
+			);
+
+			await testForViewport(
+				page,
+				'.neve-main',
+				{ width: 375, height: 812 },
+				{
+					cssProperties: [
+						{ property: 'margin-top', value: '-5px' },
+						{ property: 'margin-bottom', value: '-10px' },
+					],
+				}
+			);
+
+			await page.goto('/hello-world/?test_name=post-vspacing');
+
+			await testPostSettings(page);
+		});
 	});
 });

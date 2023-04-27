@@ -5,8 +5,7 @@
 		"neve_post_thumbnail_box_shadow": 4,
 		"neve_post_content_ordering": "[\"thumbnail\",\"excerpt\",\"title-meta\"]",
 		"neve_post_meta_ordering": "[\"date\", \"author\", \"category\"]",
-		"neve_pagination_type": "number",
-		"neve_migrated_hfg_colors": true
+		"neve_pagination_type": "number"
 	},
 	"archive2": {
 		"neve_blog_archive_layout": "grid",

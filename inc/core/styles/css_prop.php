@@ -317,7 +317,9 @@ class Css_Prop {
 			return in_array( $key, Config::$directional_keys, true );
 		}, ARRAY_FILTER_USE_KEY );
 
-		if ( count( array_unique( $filtered ) ) === 1 ) {
+		$number_of_directions = $type === Config::CSS_PROP_DIRECTIONAL_ONE_AXIS ? 4 : count( array_unique( $filtered ) );
+
+		if ( $number_of_directions === 1 ) {
 
 			if ( neve_value_is_zero( $value['top'] ) ) {
 				$suffix = '';
@@ -332,7 +334,7 @@ class Css_Prop {
 			return $css_prop . ':' . $template . ';';
 		}
 
-		if ( count( array_unique( $filtered ) ) === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
+		if ( $number_of_directions === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
 
 			if ( neve_value_is_zero( $value['top'] ) && neve_value_is_zero( $value['right'] ) ) {
 				return '';

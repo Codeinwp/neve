@@ -13,6 +13,8 @@ namespace Neve\Customizer\Options;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
+use Neve\Customizer\Defaults\Layout;
+use Neve\Core\Settings\Config;
 
 /**
  * Class Layout_Container
@@ -20,6 +22,8 @@ use Neve\Customizer\Types\Section;
  * @package Neve\Customizer\Options
  */
 class Layout_Container extends Base_Customizer {
+	use Layout;
+
 	/**
 	 * Function that should be extended to add customizer controls.
 	 *
@@ -28,6 +32,7 @@ class Layout_Container extends Base_Customizer {
 	public function add_controls() {
 		$this->section_container();
 		$this->control_container_width();
+		$this->control_vertical_spacing();
 		$this->control_container_style();
 	}
 
@@ -90,6 +95,43 @@ class Layout_Container extends Base_Customizer {
 					'priority'              => 25,
 				],
 				'\Neve\Customizer\Controls\React\Responsive_Range'
+			)
+		);
+	}
+
+	/**
+	 * Add vertical spacing control
+	 */
+	private function control_vertical_spacing() {
+		$this->add_control(
+			new Control(
+				Config::MODS_CONTENT_VSPACING,
+				[
+					'default'   => $this->content_vspacing_default(),
+					'transport' => $this->selective_refresh,
+				],
+				[
+					'label'                 => __( 'Content Vertical Spacing', 'neve' ),
+					'sanitize_callback'     => [ $this, 'sanitize_spacing_array' ],
+					'section'               => 'neve_container',
+					'input_attrs'           => [
+						'units' => [ 'px', 'vh' ],
+						'axis'  => 'vertical',
+					],
+					'default'               => $this->content_vspacing_default(),
+					'priority'              => 26,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar'      => [
+							'vars'       => '--c-vspace',
+							'selector'   => 'body.single:not(.single-product), body.page',
+							'responsive' => true,
+							'fallback'   => '',
+						],
+						'directional' => true,
+					],
+				],
+				'\Neve\Customizer\Controls\React\Spacing'
 			)
 		);
 	}

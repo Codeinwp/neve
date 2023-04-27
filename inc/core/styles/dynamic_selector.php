@@ -20,14 +20,15 @@ class Dynamic_Selector {
 	const TABLET  = 'tablet';
 	const DESKTOP = 'desktop';
 
-	const META_IS_RESPONSIVE = 'is_responsive';
-	const META_SUFFIX        = 'suffix';
-	const META_KEY           = 'key';
-	const META_IMPORTANT     = 'important';
-	const META_DEFAULT       = 'default';
-	const META_DEVICE_ONLY   = 'device_only';
-	const META_FILTER        = 'filter';
-	const META_AS_JSON       = 'as_json';
+	const META_IS_RESPONSIVE    = 'is_responsive';
+	const META_SUFFIX           = 'suffix';
+	const META_KEY              = 'key';
+	const META_IMPORTANT        = 'important';
+	const META_DEFAULT          = 'default';
+	const META_DIRECTIONAL_PROP = 'directional-prop';
+	const META_DEVICE_ONLY      = 'device_only';
+	const META_FILTER           = 'filter';
+	const META_AS_JSON          = 'as_json';
 
 	const KEY_SELECTOR = 'selectors';
 	const KEY_RULES    = 'rules';
