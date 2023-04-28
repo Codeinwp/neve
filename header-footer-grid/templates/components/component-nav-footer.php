@@ -25,6 +25,12 @@ if ( $style !== 'style-plain' ) {
 		aria-label="<?php esc_attr_e( 'Footer Menu', 'neve' ); ?>">
 
 		<?php
+		$locations         = get_nav_menu_locations();
+		$has_menu_selected = true;
+		if ( ! isset( $locations['footer'] ) || ! $locations['footer'] ) {
+			$has_menu_selected = false;
+		}
+
 		wp_nav_menu(
 			array(
 				'theme_location' => 'footer',
@@ -32,8 +38,8 @@ if ( $style !== 'style-plain' ) {
 				'container'      => 'ul',
 				'menu_class'     => 'footer-menu nav-ul',
 				'menu_id'        => 'footer-menu',
-				'before'         => '<div class="wrap">',
-				'after'          => '</div>',
+				'before'         => $has_menu_selected ? '<div class="wrap">' : '',
+				'after'          => $has_menu_selected ? '</div>' : '',
 			)
 		);
 		?>
