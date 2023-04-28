@@ -336,6 +336,10 @@ class Css_Prop {
 
 		if ( $number_of_directions === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
 
+			if ( isset( $value['is_outline_button_padding'] ) ) {
+				return $css_prop . ':' . $value['top'] . ' ' . $value['right'] . ';';
+			}
+
 			if ( neve_value_is_zero( $value['top'] ) && neve_value_is_zero( $value['right'] ) ) {
 				return '';
 			}
@@ -349,11 +353,16 @@ class Css_Prop {
 		}
 
 		foreach ( Config::$directional_keys as $direction ) {
-			if ( ! isset( $value[ $direction ] ) || neve_value_is_zero( $value[ $direction ] ) ) {
-				$template .= '0 ';
-
+			if ( isset( $value['is_outline_button_padding'] ) ) {
+				$template .= $value[$direction] . ' ';
 				continue;
 			}
+
+			if ( ! isset( $value[ $direction ] ) || neve_value_is_zero( $value[ $direction ] ) ) {
+				$template .= '0 ';
+				continue;
+			}
+
 			$template .= $value[ $direction ] . $suffix . ' ';
 		}
 

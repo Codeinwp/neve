@@ -184,6 +184,7 @@ trait Css_Vars {
 					'primary'   => $value,
 					'secondary' => $value,
 				];
+
 				foreach ( $values as $btn_type => $appearance_values ) {
 					if ( ! isset( $appearance_values['type'] ) || $appearance_values['type'] !== 'outline' ) {
 						continue;
@@ -197,7 +198,11 @@ trait Css_Vars {
 						if(  ! is_numeric( $padding_value ) ){
 							continue;
 						}
-						$paddings[ $btn_type ][ $direction ] = $padding_value - $border_width[ $direction ];
+
+						$suffix_css_prop = $btn_type === 'primary' ? '--primarybtnpadding' : '--secondarybtnpadding';
+						$suffix =  Css_Prop::get_suffix( $meta, $device, $value, $suffix_css_prop );
+						$paddings[ $btn_type ][ 'is_outline_button_padding' ] = true;
+						$paddings[ $btn_type ][ $direction ]                  = 'calc(' . $padding_value . $suffix . ' - ' . $border_width[ $direction ] . 'px)';
 					}
 				}
 				$final_value_default   = Css_Prop::transform_directional_prop( $meta, $device, $value, '--btnpadding', Config::CSS_PROP_PADDING );
