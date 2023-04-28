@@ -1,0 +1,8 @@
+{
+  "hfg_footer_layout_v2": "{\"desktop\":{\"top\":{\"left\":[{\"id\":\"footer-menu\"}],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]},\"main\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]},\"bottom\":{\"left\":[],\"c-left\":[{\"id\":\"footer_copyright\"}],\"center\":[],\"c-right\":[],\"right\":[]}}}",
+  "footer-menu_style": "style-border-bottom",
+  "footer-menu_hover_color": "#3a88b8",
+  "footer-menu_color": "#d3a600",
+  "nav_menu_locations[footer]": 177
+
+}
