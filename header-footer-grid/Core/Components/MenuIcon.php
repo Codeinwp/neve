@@ -150,7 +150,39 @@ class MenuIcon extends Abstract_Component {
 	public function load_scripts() {
 		if ( $this->is_component_active() || is_customize_preview() ) {
 			wp_add_inline_style( 'neve-style', $this->toggle_style() );
+			wp_add_inline_script( 'neve-script', $this->toggle_script() );
 		}
+	}
+
+	/**
+	 * Get JS to use as inline script
+	 *
+	 * @return string
+	 */
+	public function toggle_script() {
+		// Add aria-expanded to toggle function to be used when the menu icon is used,
+		$script = <<<JS
+function toggleAriaClick() {
+    function toggleAriaExpanded(toggle = 'true') {
+        document.querySelectorAll('button.navbar-toggle').forEach(function(el) {
+            if ( el.classList.contains('caret-wrap') ) {
+                return;
+            }
+            el.setAttribute('aria-expanded', 'true' === el.getAttribute('aria-expanded') ? 'false' : toggle);
+        });
+    }
+	toggleAriaExpanded();
+	if ( document.body.hasAttribute('data-ftrap-listener') ) {
+		return;
+	}
+	document.body.setAttribute('data-ftrap-listener', 'true');
+    document.addEventListener('ftrap-end', function() {
+        toggleAriaExpanded('false');
+    });
+}
+JS;
+		// use Dynamic_Css class to minify the script, by removing the whitespace.
+		return Dynamic_Css::minify_css( $script );
 	}
 
 	/**
@@ -632,4 +664,18 @@ CSS;
 	public function render_component() {
 		Main::get_instance()->load( 'components/component-menu-icon' );
 	}
+
+	/**
+	 * Static method to return the aria expanded behaviour for the menu buttons.
+	 * This will add the necessary attributes to the button to toggle the aria-expanded attribute and the onclick event.
+	 * It is added inline to not increase the JS file size. Will only be added when the menu item is rendered.
+	 *
+	 * @param boolean $only_click_attribute Flag to return only the click attribute.
+	 *
+	 * @return string
+	 */
+	public static function aria_expanded_behaviour( $only_click_attribute = false ) {
+		return ( $only_click_attribute ? '' : 'aria-expanded="false" ' ) . 'onclick="if(\'undefined\' !== typeof toggleAriaClick ) { toggleAriaClick() }"';
+	}
+
 }
