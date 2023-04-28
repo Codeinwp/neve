@@ -282,3 +282,16 @@ export const testForViewport = async (
 		}
 	}
 };
+
+export const checkElementsOrder = async (
+	page: Page,
+	containerSelector: string,
+	expectedOrder: string[]
+) => {
+	const elements = await page.locator(containerSelector + ' > *');
+	for (let i = 0; i < (await elements.count()); i++) {
+		await expect(elements.nth(i)).toHaveClass(
+			new RegExp(`${expectedOrder[i]}`)
+		);
+	}
+};
