@@ -24,9 +24,14 @@ return [
 
 <!-- wp:columns {"verticalAlignment":"center"} -->
 <div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"50%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:image {"linkDestination":"none"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%">
+<!-- wp:image {"linkDestination":"none"} -->
 <figure class="wp-block-image "><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/card-05.jpg" alt="" /></figure>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:heading {"textAlign":"center","level":3,"textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">Buzz Website</h3>
@@ -48,9 +53,14 @@ return [
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center","width":"50%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:image {"linkDestination":"none"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%">
+<!-- wp:image {"linkDestination":"none"} -->
 <figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/card-01.jpg" alt="" /></figure>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:heading {"textAlign":"center","level":3,"textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">Branding for Chatoue</h3>
@@ -86,9 +96,14 @@ return [
 
 <!-- wp:columns {"verticalAlignment":"center"} -->
 <div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"50%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:image {"linkDestination":"none"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%">
+<!-- wp:image {"linkDestination":"none"} -->
 <figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/card-06.jpg" alt="" /></figure>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:heading {"textAlign":"center","level":3,"textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">IMB Internal Website</h3>
@@ -110,9 +125,14 @@ return [
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center","width":"50%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:image {"linkDestination":"none"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%">
+<!-- wp:image {"linkDestination":"none"} -->
 <figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/card-04.jpg" alt=""/></figure>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:heading {"textAlign":"center","level":3,"textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">Social App</h3>
@@ -148,6 +168,9 @@ return [
 <div class="wp-block-image is-style-rounded"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/team-03.jpg" alt="" width="80" height="80"/></figure></div>
 <!-- /wp:image -->
 
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:paragraph {"align":"center","textColor":"nv-text-dark-bg"} -->
 <p class="has-text-align-center has-nv-text-dark-bg-color has-text-color">“What is the point of being alive if you don’t at least <br>try to do something remarkable?”</p>

@@ -101,9 +101,14 @@ return [
 
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"className":"ticss-4ce656f1"} -->
-<div class="wp-block-column ticss-4ce656f1"><!-- wp:image {"width":48,"height":48,"className":"icon-style is-style-rounded"} -->
+<div class="wp-block-column ticss-4ce656f1">
+<!-- wp:image {"width":48,"height":48,"className":"icon-style is-style-rounded"} -->
 <figure class="wp-block-image icon-style is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-03.svg" alt="" width="48" height="48"/></figure>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:heading {"align":"left","level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
 <h3 class="has-text-align-left has-text-align-center has-neve-text-color-color has-text-color">Super Efficient</h3>
@@ -119,9 +124,14 @@ return [
 <!-- /wp:column -->
 
 <!-- wp:column {"className":"ticss-f6fc7494"} -->
-<div class="wp-block-column ticss-f6fc7494"><!-- wp:image {"width":48,"height":48,"className":"icon-style is-style-rounded"} -->
+<div class="wp-block-column ticss-f6fc7494">
+<!-- wp:image {"width":48,"height":48,"className":"icon-style is-style-rounded"} -->
 <figure class="wp-block-image icon-style is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-03.svg" alt="" width="48" height="48"/></figure>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:heading {"align":"left","level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
 <h3 class="has-text-align-left has-text-align-center has-neve-text-color-color has-text-color">Deeply Committed</h3>
@@ -137,9 +147,14 @@ return [
 <!-- /wp:column -->
 
 <!-- wp:column {"className":"ticss-a5b4df29"} -->
-<div class="wp-block-column ticss-a5b4df29"><!-- wp:image {"width":48,"height":48,"className":"icon-style is-style-rounded"} -->
+<div class="wp-block-column ticss-a5b4df29">
+<!-- wp:image {"width":48,"height":48,"className":"icon-style is-style-rounded"} -->
 <figure class="wp-block-image icon-style is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-03.svg" alt="" width="48" height="48"/></figure>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:heading {"align":"left","level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
 <h3 class="has-text-align-left has-text-align-center has-neve-text-color-color has-text-color">Highly Skilled</h3>
@@ -168,9 +183,14 @@ return [
 
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
+<div class="wp-block-column">
+<!-- wp:image {"align":"center","className":"is-style-default"} -->
 <div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/team-01.jpg" alt="" /></figure></div>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:heading {"align":"center","level":3,"textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">Keith Marshall</h3>
@@ -194,9 +214,14 @@ return [
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
+<div class="wp-block-column">
+<!-- wp:image {"align":"center","className":"is-style-default"} -->
 <div class="wp-block-image is-style-default"><figure class="aligncenter "><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/team-02.jpg" alt=""/></figure></div>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:heading {"align":"center","level":3,"textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">George Williams</h3>
@@ -220,9 +245,14 @@ return [
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
+<div class="wp-block-column">
+<!-- wp:image {"align":"center","className":"is-style-default"} -->
 <div class="wp-block-image is-style-default"><figure class="aligncenter "><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/team-03.jpg" alt="" /></figure></div>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:heading {"align":"center","level":3,"textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">Julia Castillo</h3>
