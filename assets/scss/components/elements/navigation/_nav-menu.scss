@@ -39,7 +39,7 @@
 
 	li:hover > .wrap > a,
 	li:hover > .wrap > .caret {
-		color: var(--hovercolor);
+		color: var(--hovercolor, var(--nv-primary-accent));
 	}
 
 	> li {
