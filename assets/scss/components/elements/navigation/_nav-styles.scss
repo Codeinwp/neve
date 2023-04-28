@@ -35,7 +35,7 @@
 		right: 0;
 		left: 0;
 		pointer-events: none;
-		background-color: var(--hovercolor, currentColor);
+		background-color: var(--hovercolor, var(--nv-primary-accent, currentColor));
 	}
 }
 

@@ -1,72 +1,58 @@
-// /* eslint-disable array-callback-return */
-// describe('Container Settings', function () {
-// 	const setup = {
-// 		pageTitle: 'Container on Page',
-// 		postTitle: 'Container on Post',
-// 		content: 'Container Test Content',
-// 		pageUrl: null,
-// 		postUrl: null,
-// 	};
-//
-// 	before(
-// 		'Create new page named "' +
-// 			setup.pageTitle +
-// 			'"and Create new post named "' +
-// 			setup.postTitle +
-// 			'".',
-// 		function () {
-// 			// test
-// 			cy.insertPost(setup.pageTitle, setup.content, 'page');
-// 			cy.get('.post-publish-panel__postpublish-header a')
-// 				.contains(setup.pageTitle)
-// 				.should('have.attr', 'href')
-// 				.then((href) => {
-// 					setup.pageUrl = href;
-// 				});
-//
-// 			cy.insertPost(setup.postTitle, setup.content, 'post', true);
-// 			cy.get('.post-publish-panel__postpublish-header a')
-// 				.contains(setup.postTitle)
-// 				.should('have.attr', 'href')
-// 				.then((href) => {
-// 					setup.postUrl = href;
-// 				});
-// 		},
-// 	);
-// 	context('Container width', function () {
-// 		before('Setup customizer container width.', function () {
-// 			cy.fixture('customizer/layout/container-setting-setup').then((containerSetup) => {
-// 				cy.setCustomizeSettings(containerSetup.width);
-// 			});
-// 		});
-//
-// 		it('Container width on front end.', function () {
-// 			cy.visit(setup.pageUrl);
-// 			cy.get('.single-page-container').as('container');
-// 			cy.get('@container').should('have.css', 'max-width').and('eq', '1200px');
-//
-// 			cy.viewport(768, 1024); //iPad
-// 			cy.get('@container').should('have.css', 'max-width').and('eq', '960px');
-//
-// 			cy.viewport(375, 812); //iPhoneX
-// 			cy.get('@container').should('have.css', 'max-width').and('eq', '680px');
-// 		});
-// 	});
-//
-// 	context('Container Style', function () {
-// 		before('Setup customizer container style.', function () {
-// 			cy.fixture('customizer/layout/container-setting-setup').then((containerSetup) => {
-// 				cy.setCustomizeSettings(containerSetup.style);
-// 			});
-// 		});
-//
-// 		it('Container style on front end.', function () {
-// 			cy.visit(setup.pageUrl);
-// 			cy.get('.single-page-container').as('container');
-// 			cy.get('@container').should('have.class', 'container-fluid');
-// 			cy.visit(setup.postUrl);
-// 			cy.get('.single-post-container').as('container');
-// 			cy.get('@container').should('have.class', 'container-fluid');
-// 		});
-// 	});
-// });
+import { test, expect } from '@playwright/test';
+import { setCustomizeSettings, testForViewport } from '../../../utils';
+import data from '../../../fixtures/customizer/layout/container-setting-setup.json';
+
+test.describe('Container Settings', () => {
+	test('Container settings', async ({ page, request, baseURL }) => {
+		await test.step('Container width', async () => {
+			await setCustomizeSettings('containerWidth', data.width, {
+				request,
+				baseURL,
+			});
+
+			await page.goto('/sample-page/?test_name=containerWidth');
+
+			await testForViewport(
+				page,
+				'.single-page-container',
+				{ width: 1536, height: 960 },
+				{
+					cssProperties: [{ property: 'max-width', value: '1200px' }],
+				}
+			);
+
+			await testForViewport(
+				page,
+				'.single-page-container',
+				{ width: 768, height: 1024 },
+				{
+					cssProperties: [{ property: 'max-width', value: '960px' }],
+				}
+			);
+
+			await testForViewport(
+				page,
+				'.single-page-container',
+				{ width: 375, height: 812 },
+				{
+					cssProperties: [{ property: 'max-width', value: '680px' }],
+				}
+			);
+		});
+
+		await test.step('Container style', async () => {
+			await setCustomizeSettings('containerStyle', data.style, {
+				request,
+				baseURL,
+			});
+
+			await page.goto('/sample-page/?test_name=containerStyle');
+			const pageContainer = await page.locator('.single-page-container');
+			await expect(pageContainer).toHaveClass(/container-fluid/);
+
+			await page.goto('/hello-world/?test_name=containerStyle');
+			const postContainer = await page.locator('.single-post-container');
+			await expect(postContainer).toHaveClass(/container-fluid/);
+		});
+	});
+});

@@ -6,7 +6,7 @@
 }
 
 .caret {
-	transition: transform 0.3s ease;
+ 	transition: 0.3s ease;
 }
 
 .dd-title {
@@ -75,7 +75,7 @@
 
 				.caret,
 				> a {
-					color: var(--hovercolor);
+					color: var(--hovercolor, var(--nv-primary-accent));
 				}
 			}
 		}

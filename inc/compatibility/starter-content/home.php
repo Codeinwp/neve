@@ -55,6 +55,10 @@ return [
 <div class="wp-block-image icon-style is-style-default"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-03.svg" alt="" width="48" height="48"/></figure></div>
 <!-- /wp:image -->
 
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
 <!-- wp:heading {"level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">Fixed Price Projects</h3>
 <!-- /wp:heading -->
@@ -69,9 +73,15 @@ return [
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"align":"center","width":48,"height":48,"className":"icon-style is-style-default"} -->
+<div class="wp-block-column">
+
+<!-- wp:image {"align":"center","width":48,"height":48,"className":"icon-style is-style-default"} -->
 <div class="wp-block-image icon-style is-style-default"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-02.svg" alt="" width="48" height="48"/></figure></div>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:heading {"level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">Receive on time</h3>
@@ -87,9 +97,14 @@ return [
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"align":"center","width":48,"height":48,"className":"icon-style is-style-rounded"} -->
+<div class="wp-block-column">
+<!-- wp:image {"align":"center","width":48,"height":48,"className":"icon-style is-style-rounded"} -->
 <div class="wp-block-image icon-style is-style-rounded"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-01.svg" alt="" width="48" height="48"/></figure></div>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:heading {"level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
 <h3 class="has-text-align-center has-neve-text-color-color has-text-color">Fast work turnaround</h3>
@@ -282,9 +297,14 @@ return [
 
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column "><!-- wp:image {"className":"is-style-rounded", "width":80,"height":80} -->
+<div class="wp-block-column ">
+<!-- wp:image {"className":"is-style-rounded", "width":80,"height":80} -->
 <figure class="wp-block-image is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/team-03.jpg" alt=""  width="80" height="80"/></figure>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:paragraph {"align":"left","textColor":"neve-text-color","fontSize":"normal"} -->
 <p class="has-text-align-left has-neve-text-color-color has-text-color has-normal-font-size">“What is the point of being alive if you don’t at least try to do something remarkable?”</p>
@@ -300,9 +320,14 @@ return [
 <!-- /wp:column -->
 
 <!-- wp:column {} -->
-<div class="wp-block-column "><!-- wp:image {"className":"is-style-rounded", "width":80,"height":80} -->
+<div class="wp-block-column ">
+<!-- wp:image {"className":"is-style-rounded", "width":80,"height":80} -->
 <figure class="wp-block-image  is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/team-01.jpg" alt="" width="80" height="80"/></figure>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:paragraph {"align":"left","textColor":"neve-text-color","fontSize":"normal"} -->
 <p class="has-text-align-left has-neve-text-color-color has-text-color has-normal-font-size">“What is the point of being alive if you don’t at least try to do something remarkable?”</p>
@@ -318,9 +343,14 @@ return [
 <!-- /wp:column -->
 
 <!-- wp:column {} -->
-<div class="wp-block-column"><!-- wp:image {"className":"is-style-rounded", "width":80,"height":80} -->
+<div class="wp-block-column">
+<!-- wp:image {"className":"is-style-rounded", "width":80,"height":80} -->
 <figure class="wp-block-image  is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/team-02.jpg" alt=""  width="80" height="80"/></figure>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:paragraph {"align":"left","textColor":"neve-text-color","fontSize":"normal"} -->
 <p class="has-text-align-left has-neve-text-color-color has-text-color has-normal-font-size">“What is the point of being alive if you don’t at least try to do something remarkable?”</p>

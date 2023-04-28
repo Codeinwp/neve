@@ -1,0 +1,45 @@
+{
+	"neve_button_appearance": {
+		"borderRadius": {
+			"top": "0",
+			"right": "0",
+			"bottom": "0",
+			"left": "0"
+		},
+		"borderWidth": {
+			"top": 1,
+			"right": 1,
+			"bottom": 1,
+			"left": 1
+		},
+		"type": "outline",
+		"background": "#ffffff",
+		"backgroundHover": "var(--nv-primary-accent)",
+		"text": "#04b118",
+		"textHover": "#ffffff"
+	},
+	"neve_button_typeface": {
+		"textTransform": "capitalize",
+		"flag": true,
+		"lineHeight": {
+			"suffix": {
+				"mobile": "em",
+				"tablet": "em",
+				"desktop": "em"
+			},
+			"mobile": 1.6,
+			"tablet": 1.6,
+			"desktop": 1.6
+		},
+		"fontSize": {
+			"suffix": {
+				"mobile": "px",
+				"tablet": "px",
+				"desktop": "px"
+			},
+			"mobile": "",
+			"tablet": "",
+			"desktop": "15"
+		}
+	}
+}
