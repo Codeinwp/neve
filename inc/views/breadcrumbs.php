@@ -95,7 +95,7 @@ class Breadcrumbs extends Base_View {
 	 * @param string $html_tag Wrapper HTML tag.
 	 */
 	public function render_breadcrumbs( $html_tag, $context = '' ) {
-		if ( is_front_page() && $context !== 'hfg' ) {
+		if ( $context !== 'hfg' && is_front_page() ) {
 			return;
 		}
 		if ( empty( $html_tag ) ) {
