@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import { Button, Icon } from '@wordpress/components';
 import { WPCustomizeControl } from '../@types/customizer-control';
@@ -36,7 +36,7 @@ const BannerUpsell: React.FC<Props> = ({ control }) => {
 			{textContent && (
 				<div className="neve-customizer-heading">
 					{useLogo && logoPath && (
-						<img src={logoPath} alt="Logo" className="logo" />
+						<img src={logoPath} alt="Neve" className="logo" />
 					)}
 					<span className="accordion-heading">{textContent}</span>
 					{url && (
