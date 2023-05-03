@@ -34,3 +34,70 @@ $upsell_blue: #0065A6 !default;
 	  }
 	}
 }
+
+#acordion-section-neve_hfg_header_upsell_section,
+#acordion-section-neve_hfg_footer_upsell_section,
+ul[id^=sub-accordion-panel-hfg_] .control-subsection.neve-upsell-banner,
+ul[id^=sub-accordion-section-hfg_] .customize-control.neve-upsell-banner {
+  display: block !important;
+  &.control-section.neve-upsell-banner,
+  &.customize-control.neve-upsell-banner {
+	.upsell-inner {
+	  bottom: 240px;
+	  z-index: 100;
+	}
+  }
+}
+
+.control-section.neve-upsell-banner,
+.customize-control.neve-upsell-banner {
+  .upsell-inner {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: calc(100% - clamp(300px, 18%, 600px) - 12px);
+	border: none;
+	.neve-customizer-heading {
+	  border: none;
+	  background-color: $upsell_blue;
+	  color: #fff;
+	  padding: 2px 12px;
+	  display: flex;
+	  align-items: center;
+	  justify-content: start;
+	  gap: 12px;
+	  font-weight: normal;
+	  height: auto;
+
+	  .accordion-heading {
+		padding: 8px 2px;
+	  }
+
+	  .logo {
+		width: 24px;
+		filter: grayscale(1) invert(1) brightness(10);
+	  }
+
+	  .components-button.is-primary {
+		margin: 6px 6px 6px 24px;
+		background-color: #fff;
+		color: $upsell_blue;
+		font-weight: bold;
+		&:hover {
+		  background-color: #4f94d4cc;
+		  color: #fff;
+		}
+	  }
+
+	  .nv-dismiss-upsell {
+		color: #fff;
+		margin-left: auto;
+		margin-right: 12px;
+		&:hover {
+		  color: #000;
+		}
+	  }
+	}
+  }
+}
+
