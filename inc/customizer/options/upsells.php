@@ -55,12 +55,7 @@ class Upsells extends Base_Customizer {
 	public static function remove_customizer_upsell_notice() {
 		check_ajax_referer( 'neve-upsell-banner-nonce', 'nonce' );
 
-		$id = isset( $_POST['id'] ) ? sanitize_text_field( $_POST['id'] ) : '';
-		if ( empty( $id ) ) {
-			wp_send_json( [] );
-		}
-
-		set_transient( 'upsell_dismiss_' . $id, true, 7 * DAY_IN_SECONDS );
+		set_transient( 'upsell_dismiss_banner_customizer', true, 7 * DAY_IN_SECONDS );
 		wp_send_json( [] );
 	}
 
@@ -526,52 +521,47 @@ class Upsells extends Base_Customizer {
 			];
 		}
 
-		foreach ( $upsells_banners as $id => $args ) {
-			if ( isset( $args['type'] ) && $args['type'] === 'section' ) {
-				$section_id   = 'neve_' . $id . '_upsell_section';
-				$is_dismissed = get_transient( 'upsell_dismiss_' . $section_id );
-				if ( $is_dismissed !== false ) {
+		$is_dismissed = get_transient( 'upsell_dismiss_banner_customizer' );
+		if ( $is_dismissed === false ) {
+			foreach ( $upsells_banners as $id => $args ) {
+				if ( isset( $args['type'] ) && $args['type'] === 'section' ) {
+					$section_id = 'neve_' . $id . '_upsell_section';
+					$this->add_section(
+						new Section(
+							$section_id,
+							array_merge(
+								$args,
+								[
+									'type'     => 'neve_upsell_banner_section',
+									'priority' => 10000,
+									'nonce'    => wp_create_nonce( 'neve-upsell-banner-nonce' ),
+									'url'      => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'panel-' . $args['panel'] ),
+								]
+							),
+							'\Neve\Customizer\Controls\React\Upsell_Banner_Section'
+						)
+					);
+
 					continue;
 				}
-				$this->add_section(
-					new Section(
-						$section_id,
+				$control_id = 'neve_' . $id . '_upsell_banner_control';
+				$this->add_control(
+					new Control(
+						$control_id,
+						[ 'sanitize_callback' => 'sanitize_text_field' ],
 						array_merge(
 							$args,
 							[
-								'type'     => 'neve_upsell_banner_section',
+								'type'     => 'neve_upsell_banner',
 								'priority' => 10000,
 								'nonce'    => wp_create_nonce( 'neve-upsell-banner-nonce' ),
-								'url'      => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'panel-' . $args['panel'] ),
+								'url'      => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'upsell-banner-customizer-section-' . $args['section'] ),
 							]
 						),
-						'\Neve\Customizer\Controls\React\Upsell_Banner_Section'
+						'\Neve\Customizer\Controls\React\Upsell_Banner'
 					)
 				);
-
-				continue;
 			}
-			$control_id   = 'neve_' . $id . '_upsell_banner_control';
-			$is_dismissed = get_transient( 'upsell_dismiss_' . $control_id );
-			if ( $is_dismissed !== false ) {
-				continue;
-			}
-			$this->add_control(
-				new Control(
-					$control_id,
-					[ 'sanitize_callback' => 'sanitize_text_field' ],
-					array_merge(
-						$args,
-						[
-							'type'     => 'neve_upsell_banner',
-							'priority' => 10000,
-							'nonce'    => wp_create_nonce( 'neve-upsell-banner-nonce' ),
-							'url'      => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'upsell-banner-customizer-section-' . $args['section'] ),
-						]
-					),
-					'\Neve\Customizer\Controls\React\Upsell_Banner'
-				)
-			);
 		}
 
 		foreach ( $upsells as $id => $args ) {
