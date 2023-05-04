@@ -63,7 +63,7 @@ class Upsell_Banner_Section extends \WP_Customize_Section {
 	/**
 	 * Upsell use logo.
 	 *
-	 * @var string
+	 * @var boolean
 	 */
 	public $use_logo = false;
 

@@ -63,7 +63,7 @@ class Upsell_Banner extends \WP_Customize_Control {
 	/**
 	 * Upsell use logo.
 	 *
-	 * @var string
+	 * @var boolean
 	 */
 	public $use_logo = false;
 
