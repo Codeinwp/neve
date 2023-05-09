@@ -2,11 +2,22 @@ import React, { useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import { Button, Icon } from '@wordpress/components';
 import { WPCustomizeControl } from '../@types/customizer-control';
+import { useEffect } from '@wordpress/element';
 
 type Props = {
 	control: WPCustomizeControl;
+	useHideBannerState: () => {
+		hide: boolean;
+		setHide: (hide: boolean) => void;
+	};
 };
 
+/**
+ * Dismiss upsell via an ajax call..
+ *
+ * @param {string} id
+ * @param {string} nonce
+ */
 const dismissUpsell = (id = '', nonce = '') => {
 	const formData = new FormData();
 	formData.append('action', 'neve_dismiss_customizer_upsell_notice');
@@ -17,6 +28,9 @@ const dismissUpsell = (id = '', nonce = '') => {
 		body: formData,
 	}).then((resp) => resp.json());
 };
+
+const UpsellEventName = 'neve_upsell_banner_hide';
+
 const BannerUpsell: React.FC<Props> = ({ control }) => {
 	const { params } = control;
 	const { title, text, buttonText, logoPath, useLogo, url, nonce, id } =
@@ -26,6 +40,27 @@ const BannerUpsell: React.FC<Props> = ({ control }) => {
 	const buttonTextDisplay = buttonText || __('Learn More', 'neve');
 
 	const [hide, setHide] = useState(false);
+
+	/**
+	 * Hide the upsell when the event is triggered.
+	 * This is used to synchronize hide events between multiple instances of the component.
+	 */
+	useEffect(() => {
+		const handleHide = (event: Event) => {
+			if (!event || !(event instanceof Event)) {
+				return;
+			}
+			if (event.type !== UpsellEventName) {
+				return;
+			}
+			setHide(true);
+		};
+		document.addEventListener(UpsellEventName, handleHide);
+
+		return () => {
+			document.removeEventListener(UpsellEventName, handleHide);
+		};
+	}, []);
 
 	if (hide) {
 		return null;
@@ -56,7 +91,7 @@ const BannerUpsell: React.FC<Props> = ({ control }) => {
 						className="nv-dismiss-upsell"
 						onClick={() => {
 							dismissUpsell(id, nonce);
-							setHide(true);
+							document.dispatchEvent(new Event(UpsellEventName));
 						}}
 						style={{ padding: 3 }}
 					>
