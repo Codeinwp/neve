@@ -6,10 +6,6 @@ import { useEffect } from '@wordpress/element';
 
 type Props = {
 	control: WPCustomizeControl;
-	useHideBannerState: () => {
-		hide: boolean;
-		setHide: (hide: boolean) => void;
-	};
 };
 
 /**
