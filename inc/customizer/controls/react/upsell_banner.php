@@ -92,7 +92,7 @@ class Upsell_Banner extends \WP_Customize_Control {
 		?>
 		<li id="customize-control-<?php echo esc_attr( $this->id ); ?>"
 			data-slug="<?php echo esc_attr( $this->id ); ?>"
-			class="customize-control customize-control-<?php echo esc_attr( $this->id ); ?>-control neve-upsell-banner">
+			class="customize-control customize-control-<?php echo esc_attr( $this->id ); ?>-control neve-upsell-banner" style="background: none;">
 		</li>
 		<?php
 	}

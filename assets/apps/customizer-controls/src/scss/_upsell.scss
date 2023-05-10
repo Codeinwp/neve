@@ -44,8 +44,14 @@ ul[id^=sub-accordion-section-hfg_] .customize-control.neve-upsell-banner {
   &.customize-control.neve-upsell-banner {
 	.upsell-inner {
 	  bottom: 240px;
-	  z-index: 100;
+	  z-index: 10;
 	}
+  }
+}
+
+@media (max-width: 960px){
+  .control-section.neve-upsell-banner .upsell-inner {
+	bottom: calc(240px + 2vh + 0.8em) !important;
   }
 }
 
