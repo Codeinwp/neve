@@ -8,6 +8,7 @@ import MultiSelectOption from './Options/MultiSelect';
 import { changeOption } from '../utils/rest';
 import classnames from 'classnames';
 import MultiInstallActivate from './Plugin/MultiInstallActivate';
+import { useEffect } from '@wordpress/element';
 
 import {
 	Button,
@@ -29,6 +30,16 @@ const ModuleCard = ({
 	tier,
 }) => {
 	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		document.body.dispatchEvent(
+			new CustomEvent('neveDashModuleCardLoaded', {
+				detail: {
+					slug,
+				},
+			})
+		);
+	}, []);
 
 	const {
 		nicename,
@@ -54,6 +65,7 @@ const ModuleCard = ({
 			const { label, options: optionGroup } = group;
 			return (
 				<Accordion
+					id={group?.id}
 					key={index}
 					title={label}
 					slug={slug}
@@ -120,7 +132,9 @@ const ModuleCard = ({
 	};
 
 	return (
-		<div className={classnames(['card', 'module-card', slug])}>
+		<div
+			className={classnames(['card', 'module-card', slug])}
+		>
 			<div className="card-header">
 				<h3 className="title">{nicename}</h3>
 				<div className="toggle-wrap">

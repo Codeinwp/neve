@@ -4,13 +4,13 @@ import { useState } from '@wordpress/element';
 import { Dashicon } from '@wordpress/components';
 
 const Accordion = (props) => {
-	const { isOpen, title, slug, children } = props;
+	const { isOpen, title, slug, children, id } = props;
 	const seen = slug ? window.localStorage.getItem(slug) === 'seen' : null;
 	const [open, setOpen] = useState(seen ? false : isOpen);
 	const classes = classnames(['accordion', { open, closed: !open }]);
 
 	return (
-		<div className={classes}>
+		<div className={classes} id={id}>
 			<button
 				aria-expanded={open}
 				className="accordion-header"
