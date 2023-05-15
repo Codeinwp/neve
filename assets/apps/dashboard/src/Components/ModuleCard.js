@@ -1,4 +1,4 @@
-/* global neveDash */
+/* global neveDash, CustomEvent */
 /*eslint camelcase: ["error", {allow: ["required_actions"]}]*/
 import Accordion from './Accordion';
 import InputForm from './Options/InputForm';
