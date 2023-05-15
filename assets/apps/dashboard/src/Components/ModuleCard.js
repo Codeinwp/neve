@@ -22,8 +22,6 @@ import { __ } from '@wordpress/i18n';
 
 const ReactPlaceholder = ({ slug }) => {
 	useEffect(() => {
-		console.log('Dispatch Event');
-
 		window.dispatchEvent(
 			new CustomEvent('neve-dashboard-react-placeholder', {
 				detail: {
