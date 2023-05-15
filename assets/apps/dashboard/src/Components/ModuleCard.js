@@ -16,9 +16,25 @@ import {
 	ExternalLink,
 } from '@wordpress/components';
 import { withSelect, withDispatch } from '@wordpress/data';
-import { Fragment, useState } from '@wordpress/element';
+import { Fragment, useState, useEffect } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
+
+const ReactPlaceholder = ({ slug }) => {
+	useEffect(() => {
+		console.log('Dispatch Event');
+
+		window.dispatchEvent(
+			new CustomEvent('neve-dashboard-react-placeholder', {
+				detail: {
+					slug,
+				},
+			})
+		);
+	}, []);
+
+	return <div id={slug} />;
+};
 
 const ModuleCard = ({
 	slug,
@@ -72,6 +88,7 @@ const ModuleCard = ({
 									choices,
 									depends_on: dependsOn,
 								} = optionGroup[optionSlug];
+
 								return (
 									<Fragment key={indexGroup}>
 										{'text' === type && (
@@ -107,6 +124,16 @@ const ModuleCard = ({
 												label={labelGroup}
 												slug={optionSlug}
 												choices={choices}
+											/>
+										)}
+										{(('react' === type &&
+											undefined === dependsOn) ||
+											('react' === type &&
+												isToggleEnabled(
+													dependsOn
+												))) && (
+											<ReactPlaceholder
+												slug={optionSlug}
 											/>
 										)}
 									</Fragment>
