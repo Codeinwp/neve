@@ -52,6 +52,7 @@ class Frontend extends Generator {
 		$this->setup_form_fields_style();
 		$this->setup_header_style();
 		$this->setup_single_post_style();
+		$this->setup_content_vspacing();
 	}
 
 	/**
@@ -869,5 +870,65 @@ class Frontend extends Generator {
 			];
 		}
 
+	}
+
+	/**
+	 * Add content vertical spacing rules.
+	 */
+	private function setup_content_vspacing() {
+		$rules = [
+			'--c-vspace' => [
+				Dynamic_Selector::META_KEY              => Config::MODS_CONTENT_VSPACING,
+				Dynamic_Selector::META_IS_RESPONSIVE    => true,
+				Dynamic_Selector::META_SUFFIX           => 'responsive_unit',
+				Dynamic_Selector::META_DEFAULT          => $this->content_vspacing_default(),
+				Dynamic_Selector::META_DIRECTIONAL_PROP => Config::CSS_PROP_DIRECTIONAL_ONE_AXIS,
+			],
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.single:not(.single-product), .page',
+			'rules'     => $rules,
+		];
+
+		$post_inherits_vspace = Mods::get( Config::MODS_SINGLE_POST_VSPACING_INHERIT, 'inherit' ) === 'inherit';
+		if ( ! $post_inherits_vspace ) {
+			$default    = Mods::get( Config::MODS_CONTENT_VSPACING, $this->content_vspacing_default() );
+			$post_rules = [
+				'--c-vspace' => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_POST_CONTENT_VSPACING,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+					Dynamic_Selector::META_DEFAULT       => $default,
+					Dynamic_Selector::META_DIRECTIONAL_PROP => Config::CSS_PROP_DIRECTIONAL_ONE_AXIS,
+				],
+			];
+
+			$this->_subscribers[] = [
+				'selectors' => '.single:not(.single-product) .neve-main',
+				'rules'     => $post_rules,
+			];
+		}
+
+		list( $context )      = $this->get_cpt_context();
+		$post_inherits_vspace = Mods::get( 'neve_' . $context . '_' . Config::MODS_POST_TYPE_VSPACING_INHERIT, 'inherit' ) === 'inherit';
+		if ( ! $post_inherits_vspace ) {
+			$rules = [
+				'--c-vspace' => [
+					Dynamic_Selector::META_KEY           => 'neve_' . $context . '_' . Config::MODS_POST_TYPE_VSPACING,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+					Dynamic_Selector::META_DEFAULT       => $this->content_vspacing_default(),
+					'directional-prop'                   => Config::CSS_PROP_DIRECTIONAL_ONE_AXIS,
+				],
+			];
+
+			$selectors = $context === 'page' ? '.' . $context : '.single-' . $context;
+
+			$this->_subscribers[] = [
+				'selectors' => $selectors . ' .neve-main',
+				'rules'     => $rules,
+			];
+		}
 	}
 }
