@@ -4,8 +4,13 @@ import PropTypes from 'prop-types';
 import { SVG, RadioIcons } from '@neve-wp/components';
 
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
+import {
+	useState,
+	useEffect,
+	createInterpolateElement,
+} from '@wordpress/element';
 import { code } from '@wordpress/icons';
+import { Button } from '@wordpress/components';
 
 const RadioButtonsComponent = ({ control }) => {
 	const [value, setValue] = useState(control.setting.get());
@@ -234,7 +239,8 @@ const RadioButtonsComponent = ({ control }) => {
 				};
 		}
 	};
-	const { label, large_buttons, showLabels } = control.params;
+	const { label, large_buttons, showLabels, footerDescription } =
+		control.params;
 
 	const options = getChoices();
 	if (custom) {
@@ -243,6 +249,41 @@ const RadioButtonsComponent = ({ control }) => {
 			icon: code,
 		};
 	}
+
+	const FooterDescriptionCTA = (props) => {
+		const { data, children } = props;
+		if (!data.control_to_focus) {
+			return null;
+		}
+
+		const controlName = data.control_to_focus;
+
+		const handleClick = () => {
+			const focusControl = wp.customize.control(controlName);
+			if (focusControl) {
+				focusControl.focus();
+			}
+		};
+
+		return (
+			<Button variant="link" onClick={handleClick}>
+				{children}
+			</Button>
+		);
+	};
+
+	const translatedString = footerDescription[value]
+		? createInterpolateElement(
+				footerDescription[value].template
+					.replace(/&lt;/g, '<')
+					.replace(/&gt;/g, '>'),
+				{
+					ctaButton: (
+						<FooterDescriptionCTA data={footerDescription[value]} />
+					),
+				}
+		  )
+		: '';
 
 	return (
 		<div className="neve-white-background-control">
@@ -255,6 +296,7 @@ const RadioButtonsComponent = ({ control }) => {
 				options={options}
 				onChange={updateValue}
 			/>
+			{footerDescription[value] && translatedString}
 		</div>
 	);
 };

@@ -8,10 +8,13 @@ const SingleSizingInput = ({
 	step,
 	onChange,
 	label,
+	disabled,
 }) => {
 	return (
 		<div className="nv-sizing-item">
 			<input
+				style={disabled ? { backgroundColor: '#dddddd' } : {}}
+				disabled={disabled}
 				type="number"
 				className={type ? type + '-input' : ''}
 				value={value}
@@ -39,6 +42,7 @@ SingleSizingInput.propTypes = {
 	max: PropTypes.number,
 	step: PropTypes.number,
 	onChange: PropTypes.func,
+	disabled: PropTypes.bool,
 };
 
 export default SingleSizingInput;

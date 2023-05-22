@@ -15,6 +15,7 @@ use Neve\Compatibility\Starter_Content;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Dynamic_Css;
+use Neve\Core\Traits\Theme_Mods;
 
 /**
  * Front end handler class.
@@ -22,6 +23,7 @@ use Neve\Core\Dynamic_Css;
  * @package Neve\Core
  */
 class Front_End {
+	use Theme_Mods;
 
 	/**
 	 * Theme setup.
@@ -313,14 +315,40 @@ class Front_End {
 		$primary_values   = get_theme_mod( Config::MODS_BUTTON_PRIMARY_STYLE, neve_get_button_appearance_default() );
 		$secondary_values = get_theme_mod( Config::MODS_BUTTON_SECONDARY_STYLE, neve_get_button_appearance_default( 'secondary' ) );
 
+		$style = '';
+
 		if (
 			( isset( $primary_values['useShadow'] ) && ! empty( $primary_values['useShadow'] ) ) ||
 			( isset( $primary_values['useShadowHover'] ) && ! empty( $primary_values['useShadowHover'] ) ) ||
 			( isset( $secondary_values['useShadow'] ) && ! empty( $secondary_values['useShadow'] ) ) ||
 			( isset( $secondary_values['useShadowHover'] ) && ! empty( $secondary_values['useShadowHover'] ) )
 		) {
-			wp_add_inline_style( 'neve-style', '.button.button-primary, .is-style-primary .wp-block-button__link {box-shadow: var(--primarybtnshadow, none);} .button.button-primary:hover, .is-style-primary .wp-block-button__link:hover {box-shadow: var(--primarybtnhovershadow, none);} .button.button-secondary, .is-style-secondary .wp-block-button__link {box-shadow: var(--secondarybtnshadow, none);} .button.button-secondary:hover, .is-style-secondary .wp-block-button__link:hover {box-shadow: var(--secondarybtnhovershadow, none);}' );
+			$style .= '.button.button-primary, .is-style-primary .wp-block-button__link {box-shadow: var(--primarybtnshadow, none);} .button.button-primary:hover, .is-style-primary .wp-block-button__link:hover {box-shadow: var(--primarybtnhovershadow, none);} .button.button-secondary, .is-style-secondary .wp-block-button__link {box-shadow: var(--secondarybtnshadow, none);} .button.button-secondary:hover, .is-style-secondary .wp-block-button__link:hover {box-shadow: var(--secondarybtnhovershadow, none);}';
 		}
+
+		foreach ( neve_get_headings_selectors() as $heading_id => $heading_selector ) {
+			$font_family = get_theme_mod( $this->get_mod_key_heading_fontfamily( $heading_id ), '' ); // default value is empty string to be consistent with default customizer control value.
+
+			$css_var = sprintf( '--%1$sfontfamily', $heading_id );
+
+			if ( is_customize_preview() ) {
+				$style .= sprintf( '%s {font-family: var(%s, var(--headingsfontfamily)), var(--nv-fallback-ff);} ', $heading_id, $css_var ); // fallback values for the first page load on the customizer
+				continue;
+			}
+
+			// If font family is inherit, do not add a style for this heading.
+			if ( $font_family === '' ) {
+				continue;
+			}
+
+			$style .= sprintf( '%s {font-family: var(%s);}', $heading_id, $css_var );
+		}
+
+		if ( empty( $style ) ) {
+			return;
+		}
+
+		wp_add_inline_style( 'neve-style', Dynamic_Css::minify_css( $style ) );
 	}
 
 	/**
