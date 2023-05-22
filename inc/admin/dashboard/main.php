@@ -207,7 +207,7 @@ class Main {
 				'header'                        => sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
 				'starterSitesCardDescription'   => sprintf( __( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), wp_kses_post( $theme_name ) ),
-				'starterSitesCardUpsellMessage' => esc_html__( 'Upgrade to the Pro version and get instant access to all Premium Starter Sites — including Expert Sites — and much more.', 'neve' ),
+				'starterSitesCardUpsellMessage' => esc_html__( 'Upgrade to our Business or Agency plans and get instant access to all premium Starter Sites, including Export Sites and much more.', 'neve' ),
 				/* translators: %s - Theme name */
 				'starterSitesTabDescription'    => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: 1 - Theme name, 2 - Cloud Templates & Patterns Collection */
