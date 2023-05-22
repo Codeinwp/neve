@@ -89,4 +89,29 @@ trait Layout {
 	public static function get_meta_default_data( $field, $default ) {
 		return neve_get_default_meta_value( $field, $default );
 	}
+
+	/**
+	 * Get default values for content vertical spacing.
+	 *
+	 * @return array
+	 */
+	public function content_vspacing_default() {
+		return [
+			'mobile'       => [
+				'top'    => 0,
+				'bottom' => 0,
+			],
+			'tablet'       => [
+				'top'    => 0,
+				'bottom' => 0,
+			],
+			'desktop'      => [
+				'top'    => 0,
+				'bottom' => 0,
+			],
+			'mobile-unit'  => 'px',
+			'tablet-unit'  => 'px',
+			'desktop-unit' => 'px',
+		];
+	}
 }
