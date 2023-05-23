@@ -11,10 +11,9 @@
 
 namespace HFG\Core\Components;
 
-use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
-use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
 
 /**
@@ -24,13 +23,14 @@ use Neve\Core\Styles\Dynamic_Selector;
  */
 class SecondNav extends Abstract_Component {
 
-	const COMPONENT_ID    = 'secondary-menu';
-	const STYLE_ID        = 'style';
-	const COLOR_ID        = 'color';
-	const HOVER_COLOR_ID  = 'hover_color';
-	const ACTIVE_COLOR_ID = 'active_color';
-	const ITEM_HEIGHT     = 'item_height';
-	const SPACING         = 'spacing';
+	const COMPONENT_ID        = 'secondary-menu';
+	const STYLE_ID            = 'style';
+	const COLOR_ID            = 'color';
+	const HOVER_COLOR_ID      = 'hover_color';
+	const HOVER_TEXT_COLOR_ID = 'hover_text_color';
+	const ACTIVE_COLOR_ID     = 'active_color';
+	const ITEM_HEIGHT         = 'item_height';
+	const SPACING             = 'spacing';
 
 	/**
 	 * Nav constructor.
@@ -47,6 +47,39 @@ class SecondNav extends Abstract_Component {
 		$this->set_property( 'has_font_family_control', true );
 		$this->set_property( 'has_typeface_control', true );
 		$this->set_property( 'default_typography_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() . ' .nav-ul li > a' );
+		add_action(
+			'neve_before_render_nav',
+			function ( $component_id ) {
+				if ( $this->get_id() !== $component_id ) {
+					return;
+				}
+				add_filter( 'nav_menu_css_class', [ $this, 'filter_active_item_classes' ] );
+			}
+		);
+		add_action(
+			'neve_after_render_nav',
+			function ( $component_id ) {
+				if ( $this->get_id() !== $component_id ) {
+					return;
+				}
+				remove_filter( 'nav_menu_css_class', [ $this, 'filter_active_item_classes' ] );
+			}
+		);
+	}
+
+	/**
+	 * This method adds the "nv-active" class to both the active menu item and its parent.
+	 *
+	 * @param array $classes Element class names.
+	 *
+	 * @return array
+	 */
+	public function filter_active_item_classes( $classes = array() ) {
+		if ( in_array( 'current-menu-item', $classes, true ) ) {
+			$classes[] = 'nv-active';
+		}
+
+		return $classes;
 	}
 
 	/**
@@ -62,7 +95,7 @@ class SecondNav extends Abstract_Component {
 				'id'                 => self::STYLE_ID,
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_STYLE,
-				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'transport'          => 'refresh',
 				'sanitize_callback'  => 'wp_filter_nohtml_kses',
 				'default'            => 'style-plain',
 				'conditional_header' => $this->get_builder_id() === 'header',
@@ -151,6 +184,33 @@ class SecondNav extends Abstract_Component {
 						'prop'     => 'color',
 						'fallback' => 'inherit',
 					],
+				],
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::HOVER_TEXT_COLOR_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'neve_sanitize_colors',
+				'default'               => 'var(--nv-text-color)',
+				'label'                 => __( 'Hover Skin Mode', 'neve' ) . ' ' . __( 'Color', 'neve' ),
+				'type'                  => 'neve_color_control',
+				'section'               => $this->section,
+				'conditional_header'    => true,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => '--hovertextcolor',
+						'selector' => '.builder-item--' . $this->get_id(),
+					],
+				],
+				'options'               => [
+					'active_callback' => function() {
+						return Mods::get( $this->get_id() . '_' . self::STYLE_ID, 'style-plain' ) === 'style-full-height';
+					},
 				],
 			]
 		);
@@ -246,7 +306,9 @@ class SecondNav extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
+		do_action( 'neve_before_render_nav', $this->get_id() );
 		Main::get_instance()->load( 'components/component-nav-secondary' );
+		do_action( 'neve_after_render_nav', $this->get_id() );
 	}
 
 	/**
@@ -259,24 +321,28 @@ class SecondNav extends Abstract_Component {
 	public function add_style( array $css_array = array() ) {
 
 		$rules = [
-			'--color'       => [
+			'--color'          => [
 				Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::COLOR_ID,
 			],
-			'--hovercolor'  => [
+			'--hovercolor'     => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
 			],
-			'--activecolor' => [
+			'--hovertextcolor' => [
+				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_TEXT_COLOR_ID,
+				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_TEXT_COLOR_ID ),
+			],
+			'--activecolor'    => [
 				Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,
 				Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ACTIVE_COLOR_ID ),
 			],
-			'--spacing'     => [
+			'--spacing'        => [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
 				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
 			],
-			'--height'      => [
+			'--height'         => [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ITEM_HEIGHT,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
