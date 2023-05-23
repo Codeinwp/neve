@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 24/04/23
+ * Updated on 22/05/23
  *
  * @package neve
  */
@@ -1442,6 +1442,9 @@ return array(
 	'The Nautigal' => array( '400', '700',),
 	'Tienne' => array( '400', '700', '900',),
 	'Tillana' => array( '400', '500', '600', '700', '800',),
+	'Tilt Neon' => array( '400',),
+	'Tilt Prism' => array( '400',),
+	'Tilt Warp' => array( '400',),
 	'Timmana' => array( '400',),
 	'Tinos' => array( '400', '700', '400italic', '700italic',),
 	'Tiro Bangla' => array( '400', '400italic',),
