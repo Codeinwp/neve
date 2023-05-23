@@ -12,6 +12,7 @@ namespace Neve\Core;
 
 use Neve\Admin\Dashboard\Plugin_Helper;
 use Neve\Core\Settings\Mods_Migrator;
+use Neve\Core\Theme_Info;
 
 /**
  * Class Admin
@@ -19,6 +20,7 @@ use Neve\Core\Settings\Mods_Migrator;
  * @package Neve\Core
  */
 class Admin {
+	use Theme_Info;
 
 	/**
 	 * Dismiss notice key.
@@ -57,6 +59,17 @@ class Admin {
 		if ( get_option( $this->dismiss_notice_key ) !== 'yes' ) {
 			add_action( 'admin_notices', [ $this, 'admin_notice' ], 0 );
 			add_action( 'wp_ajax_neve_dismiss_welcome_notice', [ $this, 'remove_notice' ] );
+		}
+
+		// load upsell dismiss only if neve pro is not active or license is invalid.
+		if ( ! $this->has_valid_addons() ) {
+			add_action(
+				'wp_ajax_neve_dismiss_customizer_upsell_notice',
+				[
+					'Neve\Customizer\Options\Upsells',
+					'remove_customizer_upsell_notice',
+				] 
+			);
 		}
 
 		add_action( 'admin_menu', [ $this, 'remove_background_submenu' ], 110 );
