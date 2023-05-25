@@ -76,7 +76,7 @@ const Start = (props) => {
 								href={neveDash.startSitesgetNeveProURL}
 								isSecondary
 							>
-								{__('Upgrade your plan', 'neve')}
+								{__('Upgrade', 'neve')}
 								<span className="components-visually-hidden">
 									{__('(opens in a new tab)', 'neve')}
 								</span>
