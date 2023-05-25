@@ -116,6 +116,7 @@ const SizingControl = ({
 						max={max}
 						min={min}
 						step={step}
+						disabled={i.disabled}
 					/>
 				);
 			})}

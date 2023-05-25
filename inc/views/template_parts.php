@@ -9,7 +9,10 @@
 namespace Neve\Views;
 
 use Neve\Compatibility\WPML;
+use Neve\Core\Dynamic_Css;
+use Neve\Core\Settings\Config;
 use Neve\Customizer\Defaults\Layout;
+use Neve_Pro\Modules\Blog_Pro\Dynamic_Style;
 
 /**
  * Class Template_Parts
@@ -26,10 +29,22 @@ class Template_Parts extends Base_View {
 	 */
 	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_featured_post_style' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_vertical_spacing_style' ) );
 		add_action( 'neve_do_featured_post', array( $this, 'render_featured_post' ) );
 		add_action( 'neve_blog_post_template_part_content', array( $this, 'render_post' ) );
 		add_filter( 'excerpt_more', array( $this, 'link_excerpt_more' ) );
 		add_filter( 'the_content_more_link', array( $this, 'link_excerpt_more' ) );
+	}
+
+	/**
+	 * Add vertical spacing inline style if the control has values.
+	 */
+	public function add_vertical_spacing_style() {
+		if ( ! get_theme_mod( Config::MODS_CONTENT_VSPACING ) ) {
+			return;
+		}
+		$inline_style = '.page .neve-main, .single:not(.single-product) .neve-main{ margin:var(--c-vspace) }';
+		wp_add_inline_style( 'neve-style', Dynamic_Css::minify_css( $inline_style ) );
 	}
 
 	/**

@@ -45,14 +45,22 @@ class Radio_Buttons extends \WP_Customize_Control {
 	public $show_labels = false;
 
 	/**
+	 * Footer description.
+	 *
+	 * @var string
+	 */
+	public $footer_description = '';
+
+	/**
 	 * Send to JS.
 	 */
 	public function json() {
-		$json                  = parent::json();
-		$json['choices']       = $this->choices;
-		$json['is_for']        = $this->is_for;
-		$json['large_buttons'] = $this->large_buttons;
-		$json['showLabels']    = $this->show_labels;
+		$json                      = parent::json();
+		$json['choices']           = $this->choices;
+		$json['is_for']            = $this->is_for;
+		$json['large_buttons']     = $this->large_buttons;
+		$json['showLabels']        = $this->show_labels;
+		$json['footerDescription'] = $this->footer_description;
 		return $json;
 	}
 

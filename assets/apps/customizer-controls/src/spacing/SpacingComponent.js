@@ -26,11 +26,18 @@ const SpacingComponent = ({ control }) => {
 				...control.params.input_attrs,
 		  }
 		: defaultParams;
+	const { axis, dependsOn } = controlParams;
+
+	let deviceInitialValue = { top: 0, right: 0, bottom: 0, left: 0 };
+	if (axis) {
+		deviceInitialValue =
+			axis === 'vertical' ? { top: 0, bottom: 0 } : { right: 0, left: 0 };
+	}
 
 	const baseDefault = {
-		mobile: { top: 0, right: 0, bottom: 0, left: 0 },
-		tablet: { top: 0, right: 0, bottom: 0, left: 0 },
-		desktop: { top: 0, right: 0, bottom: 0, left: 0 },
+		mobile: deviceInitialValue,
+		tablet: deviceInitialValue,
+		desktop: deviceInitialValue,
 		'mobile-unit': 'px',
 		'tablet-unit': 'px',
 		'desktop-unit': 'px',
@@ -49,6 +56,16 @@ const SpacingComponent = ({ control }) => {
 	const [value, setValue] = useState(initialVal);
 	const [currentDevice, setCurrentDevice] = useState('desktop');
 
+	let defaultVisibility = true;
+	if (dependsOn) {
+		const dependentControl = Object.keys(dependsOn)[0];
+		const dependentValue = Object.values(dependsOn)[0];
+		defaultVisibility =
+			wp.customize.control(dependentControl).setting.get() ===
+			dependentValue;
+	}
+	const [visible, setVisible] = useState(defaultVisibility);
+
 	const updateValueForCurrentDevice = (valueForDevice) => {
 		const nextValue = { ...value };
 		nextValue[currentDevice] = valueForDevice;
@@ -60,6 +77,17 @@ const SpacingComponent = ({ control }) => {
 		control.setting.set(nextVal);
 	};
 
+	const updateVisibility = (dependencies) => {
+		const controlName = Object.keys(dependencies)[0];
+		const controlValue = Object.values(dependencies)[0];
+
+		wp.customize(controlName, (setting) => {
+			setting.bind((val) => {
+				setVisible(val === controlValue);
+			});
+		});
+	};
+
 	useEffect(() => {
 		document.addEventListener('neve-changed-customizer-value', (e) => {
 			if (!e.detail) return false;
@@ -67,7 +95,15 @@ const SpacingComponent = ({ control }) => {
 
 			updateControlValue(e.detail.value || defaultValue);
 		});
+
+		if (dependsOn) {
+			updateVisibility(dependsOn);
+		}
 	}, []);
+
+	if (dependsOn && visible === false) {
+		return null;
+	}
 
 	const isRelativeUnit = ['em', 'rem'].includes(
 		value[currentDevice + '-unit']
@@ -115,27 +151,31 @@ const SpacingComponent = ({ control }) => {
 		{
 			type: 'top',
 			label: __('Top', 'neve'),
-			value: value[currentDevice].top,
+			value: axis === 'horizontal' ? undefined : value[currentDevice].top,
+			disabled: axis === 'horizontal',
 		},
 		{
 			type: 'right',
 			label: __('Right', 'neve'),
-			value: value[currentDevice].right,
+			value: axis === 'vertical' ? undefined : value[currentDevice].right,
+			disabled: axis === 'vertical',
 		},
 		{
 			type: 'bottom',
 			label: __('Bottom', 'neve'),
-			value: value[currentDevice].bottom,
+			value:
+				axis === 'horizontal' ? undefined : value[currentDevice].bottom,
+			disabled: axis === 'horizontal',
 		},
 		{
 			type: 'left',
 			label: __('Left', 'neve'),
-			value: value[currentDevice].left,
+			value: axis === 'vertical' ? undefined : value[currentDevice].left,
+			disabled: axis === 'vertical',
 		},
 	];
-	const { hideResponsiveButtons } = controlParams;
+	const { min, max, hideResponsiveButtons } = controlParams;
 	const { label } = control.params;
-	const { min, max } = controlParams;
 	const wrapClasses = classnames([
 		'neve-white-background-control',
 		'neve-sizing',

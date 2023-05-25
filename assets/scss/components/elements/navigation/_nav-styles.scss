@@ -56,18 +56,25 @@
 		}
 	}
 
-	.wrap:hover > a {
-		color: currentColor;
+	.wrap:hover {
 
-		&,
-		+ .caret-wrap,
-		span,
-		i {
-			color: var(--hovertextcolor, var(--color)) !important;
+		svg {
+			color: var(--hovertextcolor, var(--color));
 		}
 
-		&::after {
-			width: calc(100% + var(--spacing));
+		> a {
+			color: currentColor;
+
+			&,
+			+ .caret-wrap,
+			span,
+			i {
+				color: var(--hovertextcolor, var(--color)) !important;
+			}
+
+			&::after {
+				width: calc(100% + var(--spacing));
+			}
 		}
 	}
 
