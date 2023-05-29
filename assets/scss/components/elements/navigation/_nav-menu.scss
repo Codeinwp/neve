@@ -23,9 +23,8 @@
 	margin-right: calc(var(--spacing) / 2 * -1);
 	margin-left: calc(var(--spacing) / 2 * -1);
 
-	li > .wrap {
-		display: flex;
-		align-items: center;
+	> li {
+		margin: 0 calc(var(--spacing) / 2);
 	}
 
 	li a {
@@ -37,38 +36,48 @@
 		align-items: center;
 	}
 
-	li:hover > .wrap > a,
-	li:hover > .wrap > .caret {
-		color: var(--hovercolor);
-	}
+	.caret {
+		line-height: 0;
+		justify-content: center;
+		display: flex;
 
-	> li {
-		margin: 0 calc(var(--spacing) / 2);
+		svg {
+			width: 0.5em;
+			height: 0.5em;
+		}
 	}
 
 	li {
 		display: block;
 		position: relative;
 
-		&.current-menu-item > .wrap > a:not([href*="#"]) {
-			color: var(--activecolor);
+		> .wrap {
+			display: flex;
+			align-items: center;
 		}
 
-		&:hover > .sub-menu {
+		&.nv-active > .wrap {
 
-			@extend %show-dropdown;
+			.caret,
+			> a {
+				color: var(--activecolor);
+			}
 		}
-	}
 
-	li .caret {
-		line-height: 0;
-		justify-content: center;
-		display: flex;
+		&:hover {
 
-		svg {
-			fill: currentColor;
-			width: 0.5em;
-			height: 0.5em;
+			> .sub-menu {
+
+				@extend %show-dropdown;
+			}
+
+			> .wrap {
+
+				.caret,
+				> a {
+					color: var(--hovercolor, var(--nv-primary-accent));
+				}
+			}
 		}
 	}
 

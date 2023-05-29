@@ -177,7 +177,11 @@ const Typeface = (props) => {
 				label={__('Font Size', 'neve')}
 				default={defaultFS[currentDevice]}
 				value={fontSize[currentDevice]}
-				step={fontSize.suffix[currentDevice] === 'em' ? 0.1 : 1}
+				step={
+					['em', 'rem'].includes(fontSize.suffix[currentDevice])
+						? 0.1
+						: 1
+				}
 				units={fSUnit}
 				activeUnit={fontSize.suffix[currentDevice]}
 				hasResponsive

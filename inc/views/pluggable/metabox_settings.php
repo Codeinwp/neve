@@ -335,9 +335,14 @@ class Metabox_Settings {
 		$container       = $this->get_current_layout();
 		$container_class = $container === 'contained' ? ' .container ' : ' .container-fluid ';
 		// Add the `!important` if in customizer, so that the live refresh doesn't affect this.
-		$important = '';
+		$important    = '';
+		$hide_sidebar = '';
 		if ( is_customize_preview() ) {
 			$important = '!important';
+
+			if ( $sidebar_width === 0 ) {
+				$hide_sidebar = 'display: none;';
+			}
 		}
 		$max_width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
 		$extra_css = '';
@@ -370,7 +375,7 @@ class Metabox_Settings {
 			}
 			#content.neve-main > ' . esc_attr( $container_class ) . ' > .row > .col{ max-width: ' . absint( $meta_value ) . '%' . esc_attr( $important ) . '; }
 			body:not(.neve-off-canvas) #content.neve-main > ' . esc_attr( $container_class ) . ' > .row > .nv-sidebar-wrap,
-			body:not(.neve-off-canvas) #content.neve-main > ' . esc_attr( $container_class ) . ' > .row > .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width ) . '%' . esc_attr( $important ) . '; }
+			body:not(.neve-off-canvas) #content.neve-main > ' . esc_attr( $container_class ) . ' > .row > .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width ) . '%' . esc_attr( $important ) . '; ' . esc_attr( $hide_sidebar ) . ' }
 		}
 		';
 

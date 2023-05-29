@@ -4,14 +4,10 @@
 	"neve_layout_single_post_elements_order": "[\"post-navigation\",\"tags\",\"content\",\"comments\",\"title-meta\",\"thumbnail\"]"
   },
   "cover": {
-	"neve_ran_builder_migration": true,
-	"neve_migrated_builders": true,
 	"neve_migrated_hfg_colors": true,
 	"nav_menu_locations": {
 	  "primary": 176
 	},
-	"ti_prev_theme": "twentytwentyone",
-	"custom_css_post_id": -1,
 	"neve_post_header_layout": "cover",
 	"neve_post_cover_height": "{\"mobile\":400,\"tablet\":400,\"desktop\":505}",
 	"neve_post_cover_padding": {
@@ -54,7 +50,159 @@
 	"neve_post_cover_overlay_opacity": "{\"mobile\":0.5,\"tablet\":0.5,\"desktop\":0.6}",
 	"neve_post_cover_hide_thumbnail": false,
 	"neve_post_cover_blend_mode": "normal",
+	"neve_post_cover_title_boxed_layout": false
+  },
+  "vspacing_global" : {
+	"neve_content_vspacing": {
+	  "mobile": {
+		"top": -30,
+		"bottom": 30
+	  },
+	  "tablet": {
+		"top": 60,
+		"bottom": 60
+	  },
+	  "desktop": {
+		"top": 100,
+		"bottom": 100
+	  },
+	  "mobile-unit": "px",
+	  "tablet-unit": "px",
+	  "desktop-unit": "px"
+	}
+  },
+  "vspacing_post" : {
+	"neve_post_inherit_vspacing" : "specific",
+	"neve_content_vspacing": {
+	  "mobile": {
+		"top": -30,
+		"bottom": 30
+	  },
+	  "tablet": {
+		"top": 60,
+		"bottom": 60
+	  },
+	  "desktop": {
+		"top": 100,
+		"bottom": 100
+	  },
+	  "mobile-unit": "px",
+	  "tablet-unit": "px",
+	  "desktop-unit": "px"
+	},
+	"neve_post_content_vspacing" : {
+	  "mobile": {
+		"top": 80,
+		"bottom": 90
+	  },
+	  "tablet": {
+		"top": 90,
+		"bottom": 100
+	  },
+	  "desktop": {
+		"top": 30,
+		"bottom": 40
+	  },
+	  "mobile-unit": "px",
+	  "tablet-unit": "px",
+	  "desktop-unit": "px"
+	}
+  },
+  "vspacing_page" : {
+	"neve_content_vspacing": {
+	  "mobile": {
+		"top": -30,
+		"bottom": 30
+	  },
+	  "tablet": {
+		"top": 60,
+		"bottom": 60
+	  },
+	  "desktop": {
+		"top": 100,
+		"bottom": 100
+	  },
+	  "mobile-unit": "px",
+	  "tablet-unit": "px",
+	  "desktop-unit": "px"
+	},
+	"neve_post_inherit_vspacing" : "specific",
+	"neve_post_content_vspacing" : {
+	  "mobile": {
+		"top": 80,
+		"bottom": 90
+	  },
+	  "tablet": {
+		"top": 90,
+		"bottom": 100
+	  },
+	  "desktop": {
+		"top": 30,
+		"bottom": 40
+	  },
+	  "mobile-unit": "px",
+	  "tablet-unit": "px",
+	  "desktop-unit": "px"
+	},
+	"neve_page_inherit_vspacing" : "specific",
+	"neve_page_content_vspacing" : {
+	  "mobile": {
+		"top": -5,
+		"bottom": -10
+	  },
+	  "tablet": {
+		"top": -20,
+		"bottom": -25
+	  },
+	  "desktop": {
+		"top": -15,
+		"bottom": -20
+	  },
+	  "mobile-unit": "px",
+	  "tablet-unit": "px",
+	  "desktop-unit": "px"
+	},
 	"neve_post_cover_title_boxed_layout": false,
 	"neve_new_skin": "new"
+  },
+  "comments_section": {
+  	"neve_post_comment_section_title": "For {title} you have {comments_number} comment(s)",
+	"neve_comments_boxed_layout": true,
+	"neve_comments_boxed_padding": {
+	  "mobile": {
+		"top": 40,
+		"right": 15,
+		"bottom": 40,
+		"left": 15
+	  },
+	  "tablet": {
+		"top": 60,
+		"right": 10,
+		"bottom": 60,
+		"left": 10
+	  },
+	  "desktop": {
+		"top": 60,
+		"right": 15,
+		"bottom": 60,
+		"left": 15
+	  },
+	  "mobile-unit": "px",
+	  "tablet-unit": "px",
+	  "desktop-unit": "px"
+	},
+	"neve_comments_boxed_background_color": "#2782AB",
+	"neve_comments_boxed_text_color": "#ffffff"
+  },
+  "comments_form": {
+	"neve_post_comment_form_title": "Leave a comment in the box below",
+	"neve_post_comment_form_button_style": "secondary",
+	"neve_post_comment_form_button_text": "Submit your comment",
+	"neve_comments_form_boxed_layout": false
+  },
+  "post_meta": {
+	"neve_single_post_meta_fields": "[{\"slug\":\"category\",\"title\":\"Category\",\"visibility\":\"yes\",\"hide_on_mobile\":false,\"blocked\":\"yes\"},{\"slug\":\"date\",\"title\":\"Date\",\"visibility\":\"yes\",\"hide_on_mobile\":false,\"blocked\":\"yes\"},{\"slug\":\"comments\",\"title\":\"Comments\",\"visibility\":\"yes\",\"hide_on_mobile\":false,\"blocked\":\"yes\"},{\"slug\":\"author\",\"title\":\"Author\",\"visibility\":\"yes\",\"hide_on_mobile\":false,\"blocked\":\"yes\"}]",
+	"neve_single_post_metadata_separator": "***",
+	"neve_single_post_author_avatar": true
   }
 }

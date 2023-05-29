@@ -60,13 +60,17 @@ return [
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
-<!-- wp:separator {"className":"is-style-wide"} -->
-<hr class="wp-block-separator is-style-wide"/>
+<!-- wp:separator {"className":"has-text-color has-neve-text-color-color has-css-opacity has-neve-text-color-background-color has-background is-style-default"} -->
+<hr class="wp-block-separator has-text-color has-neve-text-color-color has-css-opacity has-neve-text-color-background-color has-background is-style-default"/>
 <!-- /wp:separator -->
 
 <!-- wp:image {"width":80,"height":80,"linkDestination":"none","className":"is-style-rounded"} -->
 <figure class="wp-block-image  is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/team-03.jpg" alt="" width="80" height="80"/></figure>
 <!-- /wp:image -->
+
+<!-- wp:spacer {"height":24} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
 <!-- wp:paragraph {"textColor":"neve-text-color"} -->
 <p class="has-neve-text-color-color has-text-color">“What is the point of being alive if you don’t at least try to do something remarkable?”</p>

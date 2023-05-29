@@ -22,7 +22,7 @@ class Breadcrumbs extends Base_View {
 	 * Module init.
 	 */
 	public function init() {
-		add_action( 'neve_pro_hfg_breadcrumb', array( $this, 'render_breadcrumbs' ) );
+		add_action( 'neve_pro_hfg_breadcrumb', array( $this, 'render_breadcrumbs' ), 10, 2 );
 		$this->load_theme_breadcrumbs();
 	}
 
@@ -94,8 +94,8 @@ class Breadcrumbs extends Base_View {
 	 *
 	 * @param string $html_tag Wrapper HTML tag.
 	 */
-	public function render_breadcrumbs( $html_tag ) {
-		if ( is_front_page() ) {
+	public function render_breadcrumbs( $html_tag, $context = '' ) {
+		if ( $context !== 'hfg' && is_front_page() ) {
 			return;
 		}
 		if ( empty( $html_tag ) ) {

@@ -1,6 +1,9 @@
 /* global upsellConfig */
 wp.customize.bind( 'ready', function () {
-	if ( typeof upsellConfig !== 'undefined' ) {
+	const hasBanner = document.getElementById(
+		'acordion-section-neve_hfg_header_upsell_section'
+	);
+	if (typeof upsellConfig !== 'undefined' && !hasBanner) {
 		const markup =
 			'<div class="nv-upsell"><div class="nv-upsell-content">' +
 			upsellConfig.text +

@@ -48,7 +48,7 @@ class Layout_Container extends Base_View {
 				return ( $this->get_container_class( 'neve_single_product_container_style' ) );
 			}
 
-			if ( is_shop() ) {
+			if ( is_shop() || is_product_category() ) {
 				return ( $this->get_container_class( 'neve_shop_archive_container_style' ) );
 			}
 		}

@@ -419,6 +419,17 @@ function neve_sanitize_button_type( $value ) {
 }
 
 /**
+ * Sanitize VSpacing type.
+ *
+ * @param string $value the control value.
+ *
+ * @return string
+ */
+function neve_sanitize_vspace_type( $value ) {
+	return ! in_array( $value, [ 'inherit', 'specific' ], true ) ? 'inherit' : $value;
+}
+
+/**
  * Sanitize font variants.
  *
  * @param string[] $value the incoming value.

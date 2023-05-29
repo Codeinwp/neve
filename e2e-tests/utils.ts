@@ -243,3 +243,55 @@ export const logOut = async (page: Page) => {
 
 	await page.waitForURL('**/wp-login.php**');
 };
+
+/**
+ * Function that tests the layout of a webpage using the Jest testing framework
+ *
+ * @param {Page} page - The `Page` object
+ * @param {string} selector - The CSS selector to locate the elements on the page
+ * @param {Object} viewPort - The size of the viewport as an object with properties `width` and `height`
+ * @param {number} viewPort.width - The width of the viewport
+ * @param {number} viewPort.height - The height of the viewport
+ * @param {Object} viewportData - The data for the test, containing an array of CSS properties to check
+ * @param {Object} viewportData.cssProperties - The array of CSS properties to check
+ */
+export const testForViewport = async (
+	page: Page,
+	selector: string,
+	viewPort: { width: number; height: number },
+	viewportData: {
+		cssProperties: {
+			property: string;
+			value: string;
+		}[];
+	}
+) => {
+	await page.setViewportSize(viewPort);
+	const elements = await page.locator(selector);
+	const count = await elements.count();
+	await expect(count).toBeGreaterThan(0);
+
+	for (let index = 0; index < (await elements.count()); index++) {
+		const element = await elements.nth(index);
+
+		for (const cssProperty of viewportData.cssProperties) {
+			await expect(element).toHaveCSS(
+				cssProperty.property,
+				cssProperty.value
+			);
+		}
+	}
+};
+
+export const checkElementsOrder = async (
+	page: Page,
+	containerSelector: string,
+	expectedOrder: string[]
+) => {
+	const elements = await page.locator(containerSelector + ' > *');
+	for (let i = 0; i < (await elements.count()); i++) {
+		await expect(elements.nth(i)).toHaveClass(
+			new RegExp(`${expectedOrder[i]}`)
+		);
+	}
+};

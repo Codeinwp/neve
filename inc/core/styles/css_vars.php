@@ -7,6 +7,7 @@ namespace Neve\Core\Styles;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Core\Traits\Theme_Mods;
 
 /**
  * Trait Css_Vars
@@ -14,6 +15,8 @@ use Neve\Core\Settings\Mods;
  * @since 3.0.0
  */
 trait Css_Vars {
+	use Theme_Mods;
+
 	/**
 	 * Get container rules.
 	 *
@@ -181,6 +184,7 @@ trait Css_Vars {
 					'primary'   => $value,
 					'secondary' => $value,
 				];
+
 				foreach ( $values as $btn_type => $appearance_values ) {
 					if ( ! isset( $appearance_values['type'] ) || $appearance_values['type'] !== 'outline' ) {
 						continue;
@@ -194,7 +198,11 @@ trait Css_Vars {
 						if(  ! is_numeric( $padding_value ) ){
 							continue;
 						}
-						$paddings[ $btn_type ][ $direction ] = $padding_value - $border_width[ $direction ];
+
+						$suffix_css_prop = $btn_type === 'primary' ? '--primarybtnpadding' : '--secondarybtnpadding';
+						$suffix =  Css_Prop::get_suffix( $meta, $device, $value, $suffix_css_prop );
+						$paddings[ $btn_type ][ 'is_outline_button_padding' ] = true;
+						$paddings[ $btn_type ][ $direction ]                  = 'calc(' . $padding_value . $suffix . ' - ' . $border_width[ $direction ] . 'px)';
 					}
 				}
 				$final_value_default   = Css_Prop::transform_directional_prop( $meta, $device, $value, '--btnpadding', Config::CSS_PROP_PADDING );
@@ -276,9 +284,14 @@ trait Css_Vars {
 			],
 		];
 		foreach ( neve_get_headings_selectors() as $id => $heading_selector ) {
+
 			$composed_key = sprintf( 'neve_%s_typeface_general', $id );
 			$mod_key      = $composed_key;
 			$default      = Mods::get_alternative_mod_default( $composed_key );
+
+			$rules[ '--' . $id . 'fontfamily' ] = [
+				Dynamic_Selector::META_KEY           => $this->get_mod_key_heading_fontfamily( $id )
+			];
 
 			$rules[ '--' . $id . 'fontsize' ] = [
 				Dynamic_Selector::META_KEY           => $mod_key . '.fontSize',

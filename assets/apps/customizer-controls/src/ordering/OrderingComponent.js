@@ -56,6 +56,26 @@ const OrderingComponent = ({ control }) => {
 						setVisible(true);
 					}
 				});
+
+			if (control.id === 'neve_layout_product_elements_order') {
+				wp.customize('neve_product_content_alignment', (setting) => {
+					setting.bind((val) => {
+						const controlVal = maybeParseJson(
+							control.setting.get()
+						);
+						components.title = __('Title', 'neve');
+						components.price = __('Product Price', 'neve');
+						if (val === 'inline') {
+							components.title =
+								__('Title', 'neve') +
+								' + ' +
+								__('Product Price', 'neve');
+							delete components.price;
+						}
+						updateValue(normalizeValue(controlVal));
+					});
+				});
+			}
 		});
 	}, []);
 
