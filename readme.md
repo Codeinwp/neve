@@ -19,6 +19,29 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+#### [Version 3.6.0](https://github.com/Codeinwp/neve/compare/v3.5.8...v3.6.0) (2023-05-29)
+
+- [Feat] Add relative CSS unit support for font size controls in the customizer
+- [Feat] Granular Heading Font Family Controls
+- [Feat] Manage top and bottom margins for pages and posts 
+- [Fix] Accessibility warning for the site title
+- [Fix] Hover Skin Mode not working for the Footer Menu
+- [Fix] Improve the accessibility of the mobile menu by adding an aria-expanded attribute
+- [Fix] Button padding is different when using the EM unit
+- [Fix] Missing margin between heading and content inside the starter content
+- [Fix] Customizer sidebar flickers when changing the container control to 100%
+- [Fix] Breadcrumbs not available on the frontend
+- [Fix] Highlight the parent menu item when a submenu is active
+- [Fix] Items Hover Color does not apply to the active menu item
+- [Fix] Updated font size for product tabs h2
+- Upsell banners in HFG
+- Improve the E2E test coverage
+- Update Google Fonts
+- Update Cloud Templates and Patterns collection banner image
+
+
+
+
 ##### [Version 3.5.8](https://github.com/Codeinwp/neve/compare/v3.5.7...v3.5.8) (2023-04-19)
 
 - [Fix] Tag cloud style when using classic widgets was different than the tag cloud block
