@@ -19,6 +19,14 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.6.1](https://github.com/Codeinwp/neve/compare/v3.6.0...v3.6.1) (2023-05-30)
+
+- [Fix] Solve compatibility check
+- Update SDK
+
+
+
+
 #### [Version 3.6.0](https://github.com/Codeinwp/neve/compare/v3.5.8...v3.6.0) (2023-05-29)
 
 - [Feat] Add relative CSS unit support for font size controls in the customizer
