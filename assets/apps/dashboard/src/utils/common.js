@@ -2,6 +2,7 @@
 import compareVersions from 'compare-versions';
 
 import StarterSitesUnavailable from '../Components/Content/StarterSitesUnavailable';
+import CustomLayoutsUnavailable from '../Components/Content/CustomLayoutsUnavailable';
 import Start from '../Components/Content/Start';
 import Pro from '../Components/Content/Pro';
 import Plugins from '../Components/Content/Plugins';
@@ -39,6 +40,10 @@ const tabs = {
 		label: __('Starter Sites', 'neve'),
 		render: () => <StarterSitesUnavailable />,
 	},
+	'custom-layouts': {
+		label: __('Custom Layouts', 'neve'),
+		render: (setTab) => <CustomLayoutsUnavailable setTab={setTab} />,
+	},
 	'free-pro': {
 		label: __('Free vs Pro', 'neve'),
 		render: () => <FreePro />,
@@ -70,6 +75,10 @@ const properTPC =
 
 if (activeTPC && properTPC) {
 	delete tabs['starter-sites'];
+}
+
+if (neveDash.pro || neveDash.hasOldPro) {
+	delete tabs['custom-layouts'];
 }
 
 if (neveDash.pro || neveDash.hasOldPro) {

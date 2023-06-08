@@ -147,10 +147,6 @@ class Main {
 		if ( empty( $theme['name'] ) || empty( $theme['slug'] ) ) {
 			return;
 		}
-		/* translators: %s - Theme name */
-		$page_title = sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme['name'] ) );
-		/* translators: %s - Theme name */
-		$menu_name = sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme['name'] ) );
 
 		$theme_page = ! empty( $theme['template'] ) ? $theme['template'] . '-welcome' : $theme['slug'] . '-welcome';
 
@@ -171,8 +167,10 @@ class Main {
 		// Add Dashboard submenu. Same slug as parent to allow renaming the automatic submenu that is added.
 		add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
 			$theme_page,
-			__( 'Dashboard', 'neve' ),
-			__( 'Dashboard', 'neve' ),
+			/* translators: %s - Theme name */
+			sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme['name'] ) ),
+			/* translators: %s - Theme name */
+			sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme['name'] ) ),
 			$capability,
 			$theme_page,
 			[ $this, 'render' ]
@@ -252,6 +250,7 @@ class Main {
 			'showFeedbackNotice'      => $this->should_show_feedback_notice(),
 			'allfeaturesNeveProURL'   => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'seeallfeatures', 'freevspropage' ),
 			'startSitesgetNeveProURL' => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'welcomestartersitescard', 'nevedashboard' ),
+			'customLayoutsNeveProURL' => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'customlayoutscard', 'nevedashboard' ),
 			'upgradeURL'              => apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'getpronow', 'freevspropage' ) ),
 			'supportURL'              => esc_url( 'https://wordpress.org/support/theme/neve/' ),
 			'docsURL'                 => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),

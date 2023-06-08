@@ -105,10 +105,15 @@ svg.is-loading, button.is-loading .dashicon {
   }
 }
 
-.columns.starter-sites {
+.columns.starter-sites,
+.columns.custom-layouts {
   position: relative;
   display: flex;
   flex-grow: 1;
+}
+
+.columns.custom-layouts {
+  justify-content: center;
 }
 
 .ss-background {
@@ -126,7 +131,8 @@ svg.is-loading, button.is-loading .dashicon {
   height: calc(100vh - 300px);
   flex-grow: 1;
 }
-.unavailable-starter-sites {
+.unavailable-starter-sites,
+.unavailable-custom-layouts {
 	width: 100%;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -137,4 +143,17 @@ svg.is-loading, button.is-loading .dashicon {
   h1 {
 	line-height: 1.6;
   }
+}
+
+.unavailable-custom-layouts {
+	width: auto;
+	h1, p {
+		margin: 0;
+	}
+	.content-wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 12px;
+	}
 }
