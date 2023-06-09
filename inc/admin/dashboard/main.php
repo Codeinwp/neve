@@ -184,6 +184,17 @@ class Main {
 			$capability,
 			'customize.php'
 		);
+
+		if ( ! defined( 'NEVE_PRO_VERSION' ) ) {
+			// Add Custom Layout submenu for upsell.
+			add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+				$theme_page,
+				__( 'Custom Layouts', 'neve' ),
+				__( 'Custom Layouts', 'neve' ),
+				$capability,
+				'admin.php?page=neve-welcome#custom-layouts'
+			);
+		}
 	}
 
 	/**
@@ -288,7 +299,7 @@ class Main {
 			'hasFileSystem'           => WP_Filesystem(),
 			'hidePluginsTab'          => apply_filters( 'neve_hide_useful_plugins', ! array_key_exists( 'useful_plugins', $old_about_config ) ),
 			'tpcPath'                 => defined( 'TIOB_PATH' ) ? TIOB_PATH . 'template-patterns-collection.php' : 'template-patterns-collection/template-patterns-collection.php',
-			'tpcAdminURL'             => admin_url( 'themes.php?page=tiob-starter-sites' ),
+			'tpcAdminURL'             => admin_url( 'admin.php?page=tiob-starter-sites' ),
 			'pluginsURL'              => esc_url( admin_url( 'plugins.php' ) ),
 			'getPluginStateBaseURL'   => esc_url( rest_url( '/nv/v1/dashboard/plugin-state/' ) ),
 		];
