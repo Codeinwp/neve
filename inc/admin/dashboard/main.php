@@ -154,6 +154,21 @@ class Main {
 		$priority   = apply_filters( 'neve_menu_priority', 59 );  // The position of the menu item, 60 is the position of the Appearance menu.
 		$capability = 'activate_plugins';
 
+		// Place a theme page in the Appearance menu, for older versions of Neve Pro or TPC. to maintain backwards compatibility.
+		if (
+			( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '2.6.1', '<=' ) ) ||
+			( defined( 'TIOB_VERSION' ) && version_compare( TIOB_VERSION, '1.1.38', '<=' ) )
+		) {
+			add_theme_page(
+				/* translators: %s - Theme name */
+				sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme['name'] ) ),
+				/* translators: %s - Theme name */
+				sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme['name'] ) ),
+				$capability,
+				'admin.php?page=neve-welcome'
+			);
+		}
+
 		add_menu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_menu_page
 			wp_kses_post( $theme['name'] ),
 			wp_kses_post( $theme['name'] ),
