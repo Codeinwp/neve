@@ -16,7 +16,7 @@ test.describe('Dashboard Notice', () => {
 
 		await Promise.all([
 			page.waitForNavigation({
-				url: /wp-admin\/themes.php\?page=tiob-starter-sites&onboarding=yes/,
+				url: /wp-admin\/admin.php\?page=tiob-starter-sites&onboarding=yes/,
 			}),
 			page.locator('button.install-now').click(),
 			expect(page.locator('button.install-now')).toContainText(
@@ -25,7 +25,7 @@ test.describe('Dashboard Notice', () => {
 		]);
 
 		await expect(page).toHaveURL(
-			/wp-admin\/themes.php\?page=tiob-starter-sites&onboarding=yes/
+			/wp-admin\/admin.php\?page=tiob-starter-sites&onboarding=yes/
 		);
 
 		await expect(page.locator('a.tab')).toContainText([
