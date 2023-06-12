@@ -34,14 +34,14 @@ const CustomLayoutsUnavailable = (props) => {
 					target="_blank"
 					rel="external noreferrer noopener"
 					href={customLayoutsNeveProURL}
-					isPrimary
+					variant="primary"
 				>
 					{__('Get Neve Pro Now', 'neve')}
 					<span className="components-visually-hidden">
 						{__('(opens in a new tab)', 'neve')}
 					</span>
 				</Button>
-				<Button isLink onClick={() => setTab('free-pro')}>
+				<Button variant="link" onClick={() => setTab('free-pro')}>
 					{__('Free vs Pro', 'neve')}
 				</Button>
 			</div>
