@@ -175,7 +175,7 @@ class CartIcon extends Abstract_Component {
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'neve_sanitize_colors',
 				'label'                 => __( 'Color', 'neve' ),
-				'type'                  => 'neve_color_control',
+				'type'                  => '\Neve\Customizer\Controls\React\Color',
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
@@ -194,6 +194,7 @@ class CartIcon extends Abstract_Component {
 						'fallback' => 'inherit',
 					],
 				],
+				'conditional_header'    => true,
 			]
 		);
 
@@ -205,7 +206,7 @@ class CartIcon extends Abstract_Component {
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'neve_sanitize_colors',
 				'label'                 => __( 'Hover Color', 'neve' ),
-				'type'                  => 'neve_color_control',
+				'type'                  => '\Neve\Customizer\Controls\React\Color',
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
@@ -224,6 +225,7 @@ class CartIcon extends Abstract_Component {
 						'fallback' => 'inherit',
 					],
 				],
+				'conditional_header'    => true,
 			]
 		);
 	}
