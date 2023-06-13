@@ -77,7 +77,11 @@ if (activeTPC && properTPC) {
 	delete tabs['starter-sites'];
 }
 
-if (neveDash.pro || neveDash.hasOldPro) {
+if (
+	(neveDash.pro || neveDash.hasOldPro) &&
+	neveDash.license &&
+	neveDash.license.valid === 'valid'
+) {
 	delete tabs['custom-layouts'];
 }
 

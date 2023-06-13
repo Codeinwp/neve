@@ -200,7 +200,7 @@ class Main {
 			'customize.php'
 		);
 
-		if ( ! defined( 'NEVE_PRO_VERSION' ) ) {
+		if ( ! defined( 'NEVE_PRO_VERSION' ) || 'valid' !== apply_filters( 'product_neve_license_status', false ) ) {
 			// Add Custom Layout submenu for upsell.
 			add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
 				$theme_page,
