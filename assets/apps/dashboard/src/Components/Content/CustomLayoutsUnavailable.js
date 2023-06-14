@@ -6,6 +6,18 @@ const CustomLayoutsUnavailable = (props) => {
 	const { setTab } = props;
 	const { customLayoutsNeveProURL, assets } = neveDash;
 
+	const hasPro = neveDash.pro || neveDash.hasOldPro;
+	const secondButtonMessage = hasPro
+		? __('Activate', 'neve')
+		: __('Free vs Pro', 'neve');
+	const navigateToFreeVsPro = () => {
+		setTab('free-pro');
+	};
+
+	const navigateToProActivate = () => {
+		setTab('pro');
+	};
+
 	return (
 		<div className="unavailable-custom-layouts">
 			<div
@@ -41,8 +53,13 @@ const CustomLayoutsUnavailable = (props) => {
 						{__('(opens in a new tab)', 'neve')}
 					</span>
 				</Button>
-				<Button variant="link" onClick={() => setTab('free-pro')}>
-					{__('Free vs Pro', 'neve')}
+				<Button
+					variant="link"
+					onClick={
+						hasPro ? navigateToProActivate : navigateToFreeVsPro
+					}
+				>
+					{secondButtonMessage}
 				</Button>
 			</div>
 		</div>
