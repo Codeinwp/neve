@@ -191,14 +191,7 @@ class Main {
 			[ $this, 'render' ]
 		);
 
-		// Add Customize submenu.
-		add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
-			$theme_page,
-			__( 'Customize', 'neve' ),
-			__( 'Customize', 'neve' ),
-			$capability,
-			'customize.php'
-		);
+		$this->copy_customizer_page( $theme_page, $capability );
 
 		if ( ! defined( 'NEVE_PRO_VERSION' ) || 'valid' !== apply_filters( 'product_neve_license_status', false ) ) {
 			// Add Custom Layout submenu for upsell.
@@ -210,6 +203,39 @@ class Main {
 				'admin.php?page=neve-welcome#custom-layouts'
 			);
 		}
+	}
+
+	/**
+	 * Copy the customizer page to the dashboard.
+	 *
+	 * @param string $theme_page The theme page slug.
+	 * @param string $capability The capability required to view the page.
+	 *
+	 * @return void
+	 */
+	private function copy_customizer_page( $theme_page, $capability ) {
+		global $submenu;
+		$customize_pos = array_search( 'customize', array_column( $submenu['themes.php'], 1 ) );
+		if ( false === $customize_pos ) {
+			return;
+		}
+		$themes_page_keys = array_keys( $submenu['themes.php'] );
+		if ( ! isset( $themes_page_keys[ $customize_pos ] ) ) {
+			return;
+		}
+		$customizer_menu_item = array_splice( $submenu['themes.php'], $customize_pos, 1 );
+		$customizer_menu_item = reset( $customizer_menu_item );
+		if ( empty( $customizer_menu_item ) ) {
+			return;
+		}
+
+		add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+			$theme_page,
+			$customizer_menu_item[0],
+			$customizer_menu_item[0],
+			$capability,
+			'customize.php'
+		);
 	}
 
 	/**
