@@ -1,9 +1,11 @@
 /* global neveDash */
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
+import {compose} from "@wordpress/compose";
+import {withDispatch, withSelect} from "@wordpress/data";
+import {useEffect} from "@wordpress/element";
 
-const CustomLayoutsUnavailable = (props) => {
-	const { setTab } = props;
+const CustomLayoutsUnavailable = ({ license, setTab }) => {
 	const { customLayoutsNeveProURL, assets } = neveDash;
 
 	const hasPro = neveDash.pro || neveDash.hasOldPro;
@@ -17,6 +19,13 @@ const CustomLayoutsUnavailable = (props) => {
 	const navigateToProActivate = () => {
 		setTab('pro');
 	};
+
+	useEffect(() => {
+		if (license && 'valid' === license.valid) {
+			setTab('pro');
+			window.location.href = 'edit.php?post_type=neve_custom_layouts';
+		}
+	}, [license]);
 
 	return (
 		<div className="unavailable-custom-layouts">
@@ -66,4 +75,11 @@ const CustomLayoutsUnavailable = (props) => {
 	);
 };
 
-export default CustomLayoutsUnavailable;
+export default compose(
+	withSelect((select) => {
+		const { getLicense } = select('neve-dashboard');
+		return {
+			license: getLicense(),
+		};
+	})
+)(CustomLayoutsUnavailable);
