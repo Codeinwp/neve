@@ -1,9 +1,9 @@
 /* global neveDash */
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
-import {compose} from "@wordpress/compose";
-import {withDispatch, withSelect} from "@wordpress/data";
-import {useEffect} from "@wordpress/element";
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
+import { useEffect } from '@wordpress/element';
 
 const CustomLayoutsUnavailable = ({ license, setTab }) => {
 	const { customLayoutsNeveProURL, assets } = neveDash;
