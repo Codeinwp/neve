@@ -6,12 +6,21 @@ import { __ } from '@wordpress/i18n';
 import { useEffect } from '@wordpress/element';
 
 const Header = (props) => {
-	useEffect(() => {
+	const setTabToCurrentHash = () => {
 		const hash = getTabHash();
 		if (null === hash) {
 			return;
 		}
 		props.setTab(hash);
+	};
+
+	useEffect(() => {
+		setTabToCurrentHash();
+		window.addEventListener('hashchange', setTabToCurrentHash);
+
+		return () => {
+			window.removeEventListener('hashchange', setTabToCurrentHash);
+		};
 	}, []);
 
 	const renderHead = () => {

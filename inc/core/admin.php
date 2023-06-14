@@ -68,7 +68,7 @@ class Admin {
 				[
 					'Neve\Customizer\Options\Upsells',
 					'remove_customizer_upsell_notice',
-				] 
+				]
 			);
 		}
 
@@ -127,7 +127,7 @@ class Admin {
 		$tpc_plugin_data['activate']   = $plugin_helper->get_plugin_action_link( $slug );
 		$tpc_plugin_data['deactivate'] = $plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
 		$tpc_plugin_data['version']    = $tpc_version !== false ? $tpc_version : '';
-		$tpc_plugin_data['adminURL']   = admin_url( 'themes.php?page=tiob-starter-sites' );
+		$tpc_plugin_data['adminURL']   = admin_url( 'admin.php?page=tiob-starter-sites' );
 		$tpc_plugin_data['pluginsURL'] = esc_url( admin_url( 'plugins.php' ) );
 		$tpc_plugin_data['ajaxURL']    = esc_url( admin_url( 'admin-ajax.php' ) );
 		$tpc_plugin_data['ajaxNonce']  = esc_attr( wp_create_nonce( 'remove_notice_confirmation' ) );
@@ -530,7 +530,7 @@ class Admin {
 				$name
 			)
 		);
-		$ob_btn_link = admin_url( defined( 'TIOB_PATH' ) ? 'themes.php?page=tiob-starter-sites&onboarding=yes' : 'themes.php?page=' . $theme_page . '&onboarding=yes#starter-sites' );
+		$ob_btn_link = admin_url( defined( 'TIOB_PATH' ) ? 'admin.php?page=tiob-starter-sites&onboarding=yes' : 'admin.php?page=' . $theme_page . '&onboarding=yes#starter-sites' );
 		$ob_btn      = sprintf(
 		/* translators: 1 - onboarding url, 2 - button text */
 			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
@@ -545,7 +545,7 @@ class Admin {
 		$options_page_btn = sprintf(
 		/* translators: 1 - options page url, 2 - button text */
 			'<a href="%1$s" class="options-page-btn">%2$s</a>',
-			esc_url( admin_url( 'themes.php?page=' . $theme_page ) ),
+			esc_url( admin_url( 'admin.php?page=' . $theme_page ) ),
 			esc_html__( 'or go to the theme settings', 'neve' )
 		);
 		$notice_picture    = sprintf(

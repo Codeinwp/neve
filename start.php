@@ -33,6 +33,7 @@ function neve_run() {
 			'blog_hover_effects'        => true,
 			'hfg_d_search_iconbutton'   => true, // Dynamic icon selection or a button for search components
 			'restrict_content'          => true,
+			'theme_dedicated_menu'      => true, // Theme uses the new menu location for settings and sub-pages.
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
