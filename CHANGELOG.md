@@ -1,3 +1,7 @@
+##### [Version 3.6.3](https://github.com/Codeinwp/neve/compare/v3.6.2...v3.6.3) (2023-06-15)
+
+- [Fix] Customizer link location
+
 ##### [Version 3.6.2](https://github.com/Codeinwp/neve/compare/v3.6.1...v3.6.2) (2023-06-15)
 
 - [Feat] Dedicated Settings page
