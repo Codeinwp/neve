@@ -19,6 +19,20 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.6.2](https://github.com/Codeinwp/neve/compare/v3.6.1...v3.6.2) (2023-06-15)
+
+- [Feat] Dedicated Settings page
+- [Fix] Header cart icon color with multiple headers
+- [Fix] Sidebar Gradient
+- [Fix] Toggle the aria-pressed ARIA for the menu caret
+- [Fix] Alignment for mobile nav when set to center
+- Added filter for welcome discount
+- Update Visual Regression base images
+- Update Google Fonts
+
+
+
+
 ##### [Version 3.6.1](https://github.com/Codeinwp/neve/compare/v3.6.0...v3.6.1) (2023-05-30)
 
 - [Fix] Solve compatibility check
