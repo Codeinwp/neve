@@ -209,6 +209,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a { flex-grow: 1; display: flex; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a .dd-title { width: var(--wrapdropdownwidth); }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap button { border: 0; z-index: 1; background: 0; }';
+		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li:not([class*=block]):not(.menu-item-has-children) > .wrap > a { padding-right: calc(1em + (18px*2));}';
 
 		return Dynamic_Css::minify_css( $mobile_button_caret_css );
 	}
@@ -386,6 +387,9 @@ menuCarets.forEach( function (caretElem) {
 	caretElem.addEventListener( "keydown", (event) => {
 		if ( event.keyCode === 13 ) {
 			event.target.parentElement.classList.toggle('active');
+            if ( event.target.getAttribute('aria-pressed') ) {
+				event.target.setAttribute('aria-pressed', 'true' === event.target.getAttribute('aria-pressed') ? 'false' : 'true');
+			}
 		}
 	});
 	caretElem.parentElement.parentElement.addEventListener( "focusout", (event) => {
@@ -394,12 +398,13 @@ menuCarets.forEach( function (caretElem) {
 			return;
 		};
 		caretElem.parentElement.classList.remove('active');
+        caretElem.setAttribute('aria-pressed', 'false');
 	});
 } );
 JS;
 
 		$script_min_js = <<<'JSMIN'
-var menuCarets=document.querySelectorAll(".nav-ul li > .wrap > .caret");menuCarets.forEach((function(e){e.addEventListener("keydown",(e=>{13===e.keyCode&&e.target.parentElement.classList.toggle("active")})),e.parentElement.parentElement.addEventListener("focusout",(t=>{e.parentElement.parentElement.contains(t.relatedTarget)||e.parentElement.classList.remove("active")}))}));
+var menuCarets=document.querySelectorAll(".nav-ul li > .wrap > .caret");menuCarets.forEach(function(e){e.addEventListener("keydown",e=>{13===e.keyCode&&(e.target.parentElement.classList.toggle("active"),e.target.getAttribute("aria-pressed")&&e.target.setAttribute("aria-pressed","true"===e.target.getAttribute("aria-pressed")?"false":"true"))}),e.parentElement.parentElement.addEventListener("focusout",t=>{!e.parentElement.parentElement.contains(t.relatedTarget)&&(e.parentElement.classList.remove("active"),e.setAttribute("aria-pressed","false"))})});
 JSMIN;
 
 

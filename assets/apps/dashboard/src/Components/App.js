@@ -30,9 +30,10 @@ const App = ({ setSettings, toast, currentTab, setTab }) => {
 						{'starter-sites' !== currentTab && <Notifications />}
 						<TabsContent currentTab={currentTab} setTab={setTab} />
 					</div>
-					{'starter-sites' !== currentTab && (
-						<Sidebar currentTab={currentTab} />
-					)}
+					{'starter-sites' !== currentTab &&
+						'custom-layouts' !== currentTab && (
+							<Sidebar currentTab={currentTab} />
+						)}
 				</div>
 			</div>
 			{toast && <Snackbar />}

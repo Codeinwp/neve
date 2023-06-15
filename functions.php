@@ -151,3 +151,16 @@ if ( neve_is_new_widget_editor() ) {
 }
 
 require_once get_template_directory() . '/header-footer-grid/loader.php';
+
+add_filter(
+	'neve_welcome_metadata',
+	function() {
+		return [
+			'is_enabled' => ! defined( 'NEVE_PRO_VERSION' ),
+			'pro_name'   => 'Neve Pro Addon',
+			'logo'       => get_template_directory_uri() . '/assets/img/dashboard/logo.svg',
+			'cta_link'   => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/?discount=LOYALUSER582&dvalue=50', 'neve-welcome', 'notice' ),
+		];
+	}
+);
+

@@ -529,6 +529,8 @@ class Front_End {
 			'get_pro_cta'       => esc_html__( 'Get the PRO version!', 'neve' ),
 			'opens_new_tab_des' => esc_html__( '(opens in a new tab)', 'neve' ),
 			'filter'            => __( 'Filter', 'neve' ),
+			/* translators: %s - Theme name */
+			'neve_options'      => __( '%s Options', 'neve' ),
 		];
 	}
 
