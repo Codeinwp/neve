@@ -227,7 +227,8 @@ class Main {
 		if ( ! isset( $themes_page_keys[ $customize_pos ] ) ) {
 			return;
 		}
-		$customizer_menu_item = array_splice( $submenu['themes.php'], $customize_pos, 1 );
+		$themes_menu          = $submenu['themes.php'];
+		$customizer_menu_item = array_splice( $themes_menu, $customize_pos, 1 );
 		$customizer_menu_item = reset( $customizer_menu_item );
 		if ( empty( $customizer_menu_item ) ) {
 			return;
