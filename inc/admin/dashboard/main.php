@@ -219,15 +219,22 @@ class Main {
 	 */
 	private function copy_customizer_page( $theme_page, $capability ) {
 		global $submenu;
-		$customize_pos = array_search( 'customize', array_column( $submenu['themes.php'], 1 ) );
+		if ( ! isset( $submenu['themes.php'] ) ) {
+			return;
+		}
+		$themes_menu = $submenu['themes.php'];
+		if ( empty( $themes_menu ) ) {
+			return;
+		}
+		$customize_pos = array_search( 'customize', array_column( $themes_menu, 1 ) );
 		if ( false === $customize_pos ) {
 			return;
 		}
-		$themes_page_keys = array_keys( $submenu['themes.php'] );
+		$themes_page_keys = array_keys( $themes_menu );
 		if ( ! isset( $themes_page_keys[ $customize_pos ] ) ) {
 			return;
 		}
-		$themes_menu          = $submenu['themes.php'];
+
 		$customizer_menu_item = array_splice( $themes_menu, $customize_pos, 1 );
 		$customizer_menu_item = reset( $customizer_menu_item );
 		if ( empty( $customizer_menu_item ) ) {
