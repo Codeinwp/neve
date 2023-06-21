@@ -84,6 +84,10 @@ class Main {
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
 		add_action( 'init', array( $this, 'register_settings' ) );
 
+		$theme = wp_get_theme();
+		if ( $theme['name'] !== 'Neve' ) {
+			return;
+		}
 		add_filter(
 			'neve_about_us_metadata',
 			function () {
