@@ -100,7 +100,10 @@ class Main {
 			return;
 		}
 
-		if ( $filtered_name !== 'Neve' ) {
+		// We check if the name is different from the filtered name,
+		// if it is, the whitelabel is in use and we should not add the about page.
+		// this check allows for child themes to use the about page.
+		if ( $filtered_name !== $theme->__get( 'Name' ) ) {
 			return;
 		}
 
