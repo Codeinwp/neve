@@ -83,14 +83,30 @@ class Main {
 		add_action( 'admin_menu', [ $this, 'register' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
 		add_action( 'init', array( $this, 'register_settings' ) );
+		add_action( 'init', array( $this, 'register_about_page' ), 1 );
+	}
 
-		$theme = wp_get_theme();
-		if ( $theme['name'] !== 'Neve' ) {
+	/**
+	 * Add the about page with respect to the white label settings.
+	 *
+	 * @return void
+	 */
+	public function register_about_page() {
+		$theme         = wp_get_theme();
+		$filtered_name = apply_filters( 'ti_wl_theme_name', $theme->__get( 'Name' ) );
+		$slug          = $theme->__get( 'stylesheet' );
+
+		if ( empty( $slug ) || empty( $filtered_name ) ) {
 			return;
 		}
+
+		if ( $filtered_name !== 'Neve' ) {
+			return;
+		}
+
 		add_filter(
 			'neve_about_us_metadata',
-			function () {
+			function () use ( $filtered_name ) {
 				return [
 					// Top-level page in the dashboard sidebar
 					'location'         => 'neve-welcome',
@@ -105,11 +121,10 @@ class Main {
 					'has_upgrade_menu' => ! defined( 'NEVE_PRO_VERSION' ),
 					// Upgrade menu item link & text
 					'upgrade_link'     => tsdk_utmify( esc_url( 'https://themeisle.com/themes/neve/upgrade/' ), 'aboutfilter', 'nevedashboard' ),
-					'upgrade_text'     => __( 'Upgrade', 'neve' ) . ' ' . $this->theme_args['name'],
+					'upgrade_text'     => __( 'Upgrade', 'neve' ) . ' ' . $filtered_name,
 				];
 			}
 		);
-
 	}
 
 	/**
