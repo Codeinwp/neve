@@ -675,6 +675,9 @@ CSS;
 	 * @return string
 	 */
 	public static function aria_expanded_behaviour( $only_click_attribute = false ) {
+		if ( neve_is_amp() ) {
+			return $only_click_attribute ? '' : 'aria-expanded="false"';
+		}
 		return ( $only_click_attribute ? '' : 'aria-expanded="false" ' ) . 'onclick="if(\'undefined\' !== typeof toggleAriaClick ) { toggleAriaClick() }"';
 	}
 

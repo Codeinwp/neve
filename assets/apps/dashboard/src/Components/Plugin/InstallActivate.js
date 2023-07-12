@@ -48,7 +48,7 @@ const InstallActivate = ({
 
 	useEffect(() => {
 		setCustomLabels(labels);
-	}, [labels]);
+	}, []);
 
 	const getLabel = (type) => {
 		return progress || !buttonLabels.firstLabel

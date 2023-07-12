@@ -83,10 +83,33 @@ class Main {
 		add_action( 'admin_menu', [ $this, 'register' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
 		add_action( 'init', array( $this, 'register_settings' ) );
+		add_action( 'init', array( $this, 'register_about_page' ), 1 );
+	}
+
+	/**
+	 * Add the about page with respect to the white label settings.
+	 *
+	 * @return void
+	 */
+	public function register_about_page() {
+		$theme         = wp_get_theme();
+		$filtered_name = apply_filters( 'ti_wl_theme_name', $theme->__get( 'Name' ) );
+		$slug          = $theme->__get( 'stylesheet' );
+
+		if ( empty( $slug ) || empty( $filtered_name ) ) {
+			return;
+		}
+
+		// We check if the name is different from the filtered name,
+		// if it is, the whitelabel is in use and we should not add the about page.
+		// this check allows for child themes to use the about page.
+		if ( $filtered_name !== $theme->__get( 'Name' ) ) {
+			return;
+		}
 
 		add_filter(
 			'neve_about_us_metadata',
-			function () {
+			function () use ( $filtered_name ) {
 				$product_pages = [];
 				if ( ! defined( 'OTTER_BLOCKS_VERSION' ) ) {
 					$product_pages[] = 'otter-page';
@@ -103,11 +126,10 @@ class Main {
 					'product_pages'    => $product_pages,
 					// Upgrade menu item link & text
 					'upgrade_link'     => tsdk_utmify( esc_url( 'https://themeisle.com/themes/neve/upgrade/' ), 'aboutfilter', 'nevedashboard' ),
-					'upgrade_text'     => __( 'Upgrade', 'neve' ) . ' ' . $this->theme_args['name'],
+					'upgrade_text'     => __( 'Upgrade', 'neve' ) . ' ' . $filtered_name,
 				];
 			}
 		);
-
 	}
 
 	/**
