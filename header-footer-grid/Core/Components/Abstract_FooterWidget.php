@@ -32,7 +32,7 @@ abstract class Abstract_FooterWidget extends Abstract_Component {
 	 * @access  public
 	 */
 	public function footer_widgets_show( $active, $section ) {
-		if ( strpos( $section->id, 'widgets-footer-' ) ) {
+		if ( isset( $section->id ) && strpos( $section->id, 'widgets-footer-' ) ) {
 			$active = true;
 		}
 
