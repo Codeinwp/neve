@@ -87,18 +87,20 @@ class Main {
 		add_filter(
 			'neve_about_us_metadata',
 			function () {
+				$product_pages = [];
+				if ( ! defined( 'OTTER_BLOCKS_VERSION' ) ) {
+					$product_pages[] = 'otter-page';
+				}
+
 				return [
 					// Top-level page in the dashboard sidebar
 					'location'         => 'neve-welcome',
 					// Logo to display on the page
 					'logo'             => get_template_directory_uri() . '/assets/img/dashboard/logo.svg',
-					// Menu displayed at the top of the page - optional
-					// 'page_menu'        => [
-					// [ 'text' => 'SDK GitHub Issues', 'url' => esc_url( 'https://github.com/codeinwp/themeisle-sdk/issues' ) ],
-					// [ 'text' => 'Themeisle', 'url' => esc_url( 'https://themeisle.com' ) ]
-					// ],
 					// Condition to show or hide the upgrade menu in the sidebar
 					'has_upgrade_menu' => ! defined( 'NEVE_PRO_VERSION' ),
+					// Add predefined product pages to the about page.
+					'product_pages'    => $product_pages,
 					// Upgrade menu item link & text
 					'upgrade_link'     => tsdk_utmify( esc_url( 'https://themeisle.com/themes/neve/upgrade/' ), 'aboutfilter', 'nevedashboard' ),
 					'upgrade_text'     => __( 'Upgrade', 'neve' ) . ' ' . $this->theme_args['name'],
