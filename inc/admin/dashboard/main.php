@@ -110,10 +110,6 @@ class Main {
 		add_filter(
 			'neve_about_us_metadata',
 			function () use ( $filtered_name ) {
-				$product_pages = [];
-				if ( ! defined( 'OTTER_BLOCKS_VERSION' ) ) {
-					$product_pages[] = 'otter-page';
-				}
 
 				return [
 					// Top-level page in the dashboard sidebar
@@ -123,7 +119,7 @@ class Main {
 					// Condition to show or hide the upgrade menu in the sidebar
 					'has_upgrade_menu' => ! defined( 'NEVE_PRO_VERSION' ),
 					// Add predefined product pages to the about page.
-					'product_pages'    => $product_pages,
+					'product_pages'    => [ 'otter-page' ],
 					// Upgrade menu item link & text
 					'upgrade_link'     => tsdk_utmify( esc_url( 'https://themeisle.com/themes/neve/upgrade/' ), 'aboutfilter', 'nevedashboard' ),
 					'upgrade_text'     => __( 'Upgrade', 'neve' ) . ' ' . $filtered_name,
