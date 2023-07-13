@@ -217,7 +217,7 @@ class Main {
 			[ $this, 'render' ]
 		);
 
-		$this->copy_customizer_page( $theme_page, $capability );
+		$this->copy_customizer_page( $theme_page );
 
 		if ( ! defined( 'NEVE_PRO_VERSION' ) || 'valid' !== apply_filters( 'product_neve_license_status', false ) ) {
 			// Add Custom Layout submenu for upsell.
@@ -235,11 +235,10 @@ class Main {
 	 * Copy the customizer page to the dashboard.
 	 *
 	 * @param string $theme_page The theme page slug.
-	 * @param string $capability The capability required to view the page.
 	 *
 	 * @return void
 	 */
-	private function copy_customizer_page( $theme_page, $capability ) {
+	private function copy_customizer_page( $theme_page ) {
 		global $submenu;
 		if ( ! isset( $submenu['themes.php'] ) ) {
 			return;
@@ -267,7 +266,7 @@ class Main {
 			$theme_page,
 			$customizer_menu_item[0],
 			$customizer_menu_item[0],
-			$capability,
+			'manage_options',
 			'customize.php'
 		);
 	}
