@@ -7,7 +7,7 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
-    - uses: github/issue-labeler@master #May not be the latest version
+    - uses: github/issue-labeler@master 
       with:
         repo-token: "${{ secrets.BOT_TOKEN }}"
         enable-versioned-regex: 0
