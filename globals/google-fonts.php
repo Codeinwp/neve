@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 12/06/23
+ * Updated on 10/07/23
  *
  * @package neve
  */
@@ -16,7 +16,9 @@ return array(
 	'Actor' => array( '400',),
 	'Adamina' => array( '400',),
 	'Advent Pro' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Agdasima' => array( '400', '700',),
 	'Aguafina Script' => array( '400',),
+	'Akatab' => array( '400', '500', '600', '700', '800', '900',),
 	'Akaya Kanadaka' => array( '400',),
 	'Akaya Telivigala' => array( '400',),
 	'Akronim' => array( '400',),
@@ -31,7 +33,7 @@ return array(
 	'Alegreya SC' => array( '400', '500', '700', '800', '900', '400italic', '500italic', '700italic', '800italic', '900italic',),
 	'Alegreya Sans' => array( '100', '300', '400', '500', '700', '800', '900', '100italic', '300italic', '400italic', '500italic', '700italic', '800italic', '900italic',),
 	'Alegreya Sans SC' => array( '100', '300', '400', '500', '700', '800', '900', '100italic', '300italic', '400italic', '500italic', '700italic', '800italic', '900italic',),
-	'Aleo' => array( '300', '400', '700', '300italic', '400italic', '700italic',),
+	'Aleo' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Alex Brush' => array( '400',),
 	'Alexandria' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Alfa Slab One' => array( '400',),
@@ -134,6 +136,7 @@ return array(
 	'BIZ UDPGothic' => array( '400', '700',),
 	'BIZ UDPMincho' => array( '400', '700',),
 	'Babylonica' => array( '400',),
+	'Bacasime Antique' => array( '400',),
 	'Bad Script' => array( '400',),
 	'Bagel Fat One' => array( '400',),
 	'Bahiana' => array( '400',),
@@ -178,6 +181,7 @@ return array(
 	'Be Vietnam Pro' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Beau Rivage' => array( '400',),
 	'Bebas Neue' => array( '400',),
+	'Belanosima' => array( '400', '600', '700',),
 	'Belgrano' => array( '400',),
 	'Bellefair' => array( '400',),
 	'Belleza' => array( '400',),
@@ -256,6 +260,7 @@ return array(
 	'Cantarell' => array( '400', '700', '400italic', '700italic',),
 	'Cantata One' => array( '400',),
 	'Cantora One' => array( '400',),
+	'Caprasimo' => array( '400',),
 	'Capriola' => array( '400',),
 	'Caramel' => array( '400',),
 	'Carattere' => array( '400',),
@@ -931,7 +936,7 @@ return array(
 	'Noto Sans Deseret' => array( '400',),
 	'Noto Sans Devanagari' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Display' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
-	'Noto Sans Duployan' => array( '400',),
+	'Noto Sans Duployan' => array( '400', '700',),
 	'Noto Sans Egyptian Hieroglyphs' => array( '400',),
 	'Noto Sans Elbasan' => array( '400',),
 	'Noto Sans Elymaic' => array( '400',),
@@ -1083,6 +1088,7 @@ return array(
 	'Noto Serif NP Hmong' => array( '400', '500', '600', '700',),
 	'Noto Serif Nyiakeng Puachue Hmong' => array(),
 	'Noto Serif Oriya' => array( '400', '500', '600', '700',),
+	'Noto Serif Ottoman Siyaq' => array( '400',),
 	'Noto Serif SC' => array( '200', '300', '400', '500', '600', '700', '900',),
 	'Noto Serif Sinhala' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Serif TC' => array( '200', '300', '400', '500', '600', '700', '900',),
@@ -1554,6 +1560,9 @@ return array(
 	'Yomogi' => array( '400',),
 	'Yrsa' => array( '300', '400', '500', '600', '700', '300italic', '400italic', '500italic', '600italic', '700italic',),
 	'Ysabeau' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Ysabeau Infant' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Ysabeau Office' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Ysabeau SC' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Yuji Boku' => array( '400',),
 	'Yuji Hentaigana Akari' => array(),
 	'Yuji Hentaigana Akebono' => array(),
