@@ -2,4 +2,7 @@ regression:
   - '(Yes, this is a regression)'
 
 customer report: 
-  - '(helpscout)'
+  - '(helpscout|wordpress.org/support)'
+
+doc-needed: 
+  - '(Yes, it requires documentation.)'

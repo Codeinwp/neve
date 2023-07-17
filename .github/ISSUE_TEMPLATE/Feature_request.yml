@@ -19,3 +19,16 @@ body:
     description: Can you please specify the desired feature or improvement and how it resolves the problem mentioned?
   validations:
     required: false
+- type: dropdown
+  id: doc-needed
+  attributes:
+      label: Will this feature require documentation? (Optional)
+      description: |
+        Does this feature require the creation or update of documentation? If you're unsure, feel free to skip this.
+      multiple: false
+      options:
+          - 'I dont know.'
+          - 'No.'
+          - 'Yes, it requires documentation.'
+  validations:
+      required: false
