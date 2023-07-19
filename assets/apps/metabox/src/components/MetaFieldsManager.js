@@ -183,11 +183,6 @@ class MetaFieldsManager extends Component {
 				) + 'px';
 		}
 
-		if (
-			document.contains(document.getElementById('neve-meta-editor-style'))
-		) {
-			document.getElementById('neve-meta-editor-style').remove();
-		}
 		const css =
 			'.wp-block:not([data-align="full"]) { max-width: ' +
 			('on' === isCustomContentWidth ? blocKWidth : blockWidthDefault) +
