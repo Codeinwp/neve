@@ -66,6 +66,7 @@ class MetaFieldsManager extends Component {
 		this.updateValues = this.updateValues.bind(this);
 		this.resetAll = this.resetAll.bind(this);
 		this.updateBlockWidth = this.updateBlockWidth.bind(this);
+		this.updateTitleVisibility = this.updateTitleVisibility.bind(this);
 	}
 
 	componentDidUpdate() {
@@ -91,6 +92,7 @@ class MetaFieldsManager extends Component {
 		}
 
 		this.updateBlockWidth();
+		this.updateTitleVisibility();
 	}
 
 	updateValues(id, value) {
@@ -124,12 +126,41 @@ class MetaFieldsManager extends Component {
 		});
 	}
 
+	addCSSToHead(css, styleID = 'neve-meta-editor-style') {
+		const head = document.head;
+		const hasStyle = document.getElementById(styleID);
+		if (hasStyle) {
+			hasStyle.innerHTML = css;
+			return false;
+		}
+		const style = document.createElement('style');
+		style.setAttribute('id', styleID);
+		style.innerHTML = css;
+		head.appendChild(style);
+	}
+
+	updateTitleVisibility() {
+		const title = this.props.metaValue('neve_meta_disable_title');
+		let titleOpacity = 1;
+		if ('on' === title) {
+			// make title less visible
+			titleOpacity = 0.5;
+		}
+
+		const css = 'h1.editor-post-title { opacity: ' + titleOpacity + '; }';
+
+		this.addCSSToHead(css, 'neve-meta-title-visibility-style');
+	}
 	updateBlockWidth() {
 		const isCustomContentWidth = this.props.metaValue(
 			'neve_meta_enable_content_width'
 		);
 		let containerType = this.props.metaValue('neve_meta_container');
-		if ('default' === containerType || '' === containerType) {
+		if (
+			'default' === containerType ||
+			'' === containerType ||
+			undefined === containerType
+		) {
 			containerType =
 				metaSidebar.actions.neve_meta_content_width.container;
 		}
@@ -162,11 +193,7 @@ class MetaFieldsManager extends Component {
 			('on' === isCustomContentWidth ? blocKWidth : blockWidthDefault) +
 			'; }';
 
-		const head = document.head;
-		const style = document.createElement('style');
-		style.setAttribute('id', 'neve-meta-editor-style');
-		style.innerHTML = css;
-		head.appendChild(style);
+		this.addCSSToHead(css);
 	}
 
 	renderPageLayoutGroup() {
