@@ -545,6 +545,8 @@ class Front_End {
 			'neve_30'                  => __( 'Neve 3.0', 'neve' ),
 			'switching_skin'           => __( 'Switching skin', 'neve' ),
 			'switch_skin'              => __( 'Switch Skin', 'neve' ),
+			'dismiss'                  => __( 'Dismiss', 'neve' ),
+			'rollback'                 => __( 'Roll Back', 'neve' ),
 		];
 	}
 
