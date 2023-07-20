@@ -209,7 +209,7 @@ class Metabox_Settings {
 
 		$editor_title_opacity = 1;
 		$tile_disabled        = $this->get_title_disabled();
-		if ( $tile_disabled ) {
+		if ( $tile_disabled === 'on' ) {
 			$editor_title_opacity = 0.5;
 		}
 
