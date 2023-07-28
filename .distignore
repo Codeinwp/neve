@@ -86,3 +86,4 @@ SETUP.md
 DEVELOPMENT.md
 TESTING.md
 tsconfig.json
+docs/*
