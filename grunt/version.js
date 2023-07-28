@@ -3,34 +3,39 @@
 module.exports = {
 	packageJson: {
 		options: {
-			prefix: '"version"\\:\\s+"'
+			prefix: '"version"\\:\\s+"',
+			prereleaseIdentifier: 'beta',
 		},
-		src: 'package.json'
+		src: 'package.json',
 	},
 	stylesheet: {
 		options: {
-			prefix: 'Version\\:\\s+'
+			prefix: 'Version\\:\\s+',
+			prereleaseIdentifier: 'beta',
 		},
-		src: 'style.css'
+		src: 'style.css',
 	},
 	scssStylesheet: {
 		options: {
-			prefix: 'Version\\:\\s+'
+			prefix: 'Version\\:\\s+',
+			prereleaseIdentifier: 'beta',
 		},
-		src: 'assets/scss/style.scss'
+		src: 'assets/scss/style.scss',
 	},
 	functions: {
 		options: {
-			prefix: 'NEVE_VERSION\', \''
+			prefix: "NEVE_VERSION', '",
+			prereleaseIdentifier: 'beta',
 		},
-		src: 'functions.php'
+		src: 'functions.php',
 	},
 	packageVersion: {
 		options: {
 			pkg: 'vendor/codeinwp/themeisle-sdk/composer.json',
 			release: 'patch',
-			prefix: '\\.*\\$themeisle_sdk_version\.*\\s=\.*\\s\''
+			prefix: '\\.*\\$themeisle_sdk_version.*\\s=.*\\s',
+			prereleaseIdentifier: 'beta',
 		},
-		src: 'vendor/codeinwp/themeisle-sdk/load.php'
-	}
+		src: 'vendor/codeinwp/themeisle-sdk/load.php',
+	},
 };
