@@ -33,7 +33,7 @@ module.exports = {
 		options: {
 			pkg: 'vendor/codeinwp/themeisle-sdk/composer.json',
 			release: 'patch',
-			prefix: '\\.*\\$themeisle_sdk_version.*\\s=.*\\s',
+			prefix: "\\.*\\$themeisle_sdk_version\\s+=\\s+'",
 			prereleaseIdentifier: 'beta',
 		},
 		src: 'vendor/codeinwp/themeisle-sdk/load.php',
