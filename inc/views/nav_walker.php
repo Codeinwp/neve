@@ -12,7 +12,6 @@ namespace Neve\Views;
 
 use HFG\Core\Components\Nav;
 use Neve\Core\Dynamic_Css;
-use function _PHPStan_bcbc46924\RingCentral\Psr7\str;
 
 /**
  * Class Nav_Walker
