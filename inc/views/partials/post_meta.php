@@ -263,6 +263,11 @@ class Post_Meta extends Base_View {
 		if ( ! isset( $current_post ) ) {
 			return false;
 		}
+		// we need to set the global post to the current post in order to allow other filters that hook into get_the_author_meta hooks access to the current post.
+		// we reset this at the end of the function.
+		$original_global_post = $post;
+		$post                 = $current_post; //phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		setup_postdata( $current_post );
 
 		$author_id      = $current_post->post_author;
 		$user_nicename  = get_the_author_meta( 'user_nicename', $author_id );
@@ -312,6 +317,8 @@ class Post_Meta extends Base_View {
 		 */
 		$markup = apply_filters( 'neve_filter_author_meta_markup', $markup, $post_id, $show_before );
 
+		$post = $original_global_post; //phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		wp_reset_postdata();
 		return wp_kses_post( $markup );
 	}
 
