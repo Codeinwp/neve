@@ -14,6 +14,13 @@
       <key name="neve_sale_tag_text"/>
       <key name="neve_metadata_separator"/>
       <key name="neve_read_more_text"/>
+
+      <key name="neve_post_comment_section_title"/>
+      <key name="neve_post_comment_form_title"/>
+      <key name="neve_post_comment_form_button_text"/>
+      <key name="nav-icon_menu_label"/>
+      <key name="header_search_button_text"/>
+      <key name="header_palette_switch_placeholder"/>
     </key>
   </admin-texts>
 </wpml-config>
