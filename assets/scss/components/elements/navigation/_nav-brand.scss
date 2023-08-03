@@ -26,7 +26,7 @@
 
 	h1,
 	p {
-		font-size: var(--titlefs);
+		font-size: var(--fs);
 		font-weight: var(--h1fontweight);
 		line-height: var(--bodylineheight);
 		letter-spacing: var(--bodyletterspacing);
@@ -36,6 +36,5 @@
 
 	small {
 		display: block;
-		font-size: var(--taglinefs, smaller);
 	}
 }

@@ -72,33 +72,6 @@ test.describe('Header Builder - Logo Component', function () {
 				cssProperties: [{ property: 'font-size', value: '65px' }],
 			}
 		);
-
-		await testForViewport(
-			page,
-			'.nv-title-tagline-wrap small',
-			{ width: 1536, height: 960 },
-			{
-				cssProperties: [{ property: 'font-size', value: '30px' }],
-			}
-		);
-
-		await testForViewport(
-			page,
-			'.nv-title-tagline-wrap small',
-			{ width: 768, height: 1024 },
-			{
-				cssProperties: [{ property: 'font-size', value: '14.4px' }],
-			}
-		);
-
-		await testForViewport(
-			page,
-			'.nv-title-tagline-wrap small',
-			{ width: 375, height: 812 },
-			{
-				cssProperties: [{ property: 'font-size', value: '46.4px' }],
-			}
-		);
 	});
 });
 
