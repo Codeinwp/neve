@@ -11,15 +11,15 @@
 		}
 	},
 	"right": {
-    "neve_ran_builder_migration": true,
-    "neve_migrated_builders": true,
-    "neve_migrated_hfg_colors": true,
-    "hfg_header_layout_v2": "{\"desktop\":{\"top\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]},\"main\":{\"left\":[{\"id\":\"logo\"}],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[{\"id\":\"primary-menu\"}]},\"bottom\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]}},\"mobile\":{\"top\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]},\"main\":{\"left\":[{\"id\":\"logo\"}],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[{\"id\":\"nav-icon\"}]},\"bottom\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]},\"sidebar\":[{\"id\":\"primary-menu\"}]}}",
-    "logo_component_align": {
-      "mobile": "left",
-      "tablet": "left",
-      "desktop": "right"
-    }
+		"neve_ran_builder_migration": true,
+		"neve_migrated_builders": true,
+		"neve_migrated_hfg_colors": true,
+		"hfg_header_layout_v2": "{\"desktop\":{\"top\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]},\"main\":{\"left\":[{\"id\":\"logo\"}],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[{\"id\":\"primary-menu\"}]},\"bottom\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]}},\"mobile\":{\"top\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]},\"main\":{\"left\":[{\"id\":\"logo\"}],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[{\"id\":\"nav-icon\"}]},\"bottom\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]},\"sidebar\":[{\"id\":\"primary-menu\"}]}}",
+		"logo_component_align": {
+		  "mobile": "left",
+		  "tablet": "left",
+		  "desktop": "right"
+		}
 	},
 	"left": {
 	  "neve_ran_builder_migration": true,
@@ -31,5 +31,11 @@
 		"tablet": "left",
 		"desktop": "left"
 	  }
+	},
+	"style": {
+		"blogdescription" : "Testing tagline",
+		"logo_title_font_size" : "{\"mobile\":65,\"tablet\":4.1,\"desktop\":3.5,\"suffix\":{\"mobile\":\"px\",\"desktop\":\"em\",\"tablet\":\"rem\"}}",
+		"logo_tagline_font_size" : "{\"mobile\":2.9,\"tablet\":0.9,\"desktop\":30,\"suffix\":{\"mobile\":\"rem\",\"desktop\":\"px\",\"tablet\":\"em\"}}",
+		"logo_color" : "#ff0000"
 	}
 }
