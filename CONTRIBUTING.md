@@ -125,6 +125,8 @@ This document describes the high level workflow used when working on a WordPress
 
 You're free to use your preferred IDE and Git client. We recommend PHPStorm or Visual Studio Code, and GitHub CLI.
 
+For specific FAQ about working with this WordPress Theme refer to the [FAQ](./docs/FAQ.md) section.
+
 ## Prerequisites
 
 If you haven't yet set up your local development environment with a WordPress Plugin repository installed, refer to the [Setup Guide](#setup-guide).
