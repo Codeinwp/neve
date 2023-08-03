@@ -2,7 +2,7 @@
 Contributors: themeisle
 Tags: blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
 Requires at least: 4.0
-Tested up to: 6.2
+Tested up to: 6.3
 Stable tag: trunk
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -71,7 +71,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 - [Feat] Add relative CSS unit support for font size controls in the customizer
 - [Feat] Granular Heading Font Family Controls
-- [Feat] Manage top and bottom margins for pages and posts 
+- [Feat] Manage top and bottom margins for pages and posts
 - [Fix] Accessibility warning for the site title
 - [Fix] Hover Skin Mode not working for the Footer Menu
 - [Fix] Improve the accessibility of the mobile menu by adding an aria-expanded attribute
