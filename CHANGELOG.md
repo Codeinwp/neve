@@ -1,3 +1,11 @@
+##### [Version 3.6.6](https://github.com/Codeinwp/neve/compare/v3.6.5...v3.6.6) (2023-08-03)
+
+- [Fix] Solve customizer permissions on multisite
+- [Fix] Add aria-label on the dropdown of the sidebar menu
+- [Fix] Incorrect author displayed on sticky posts with Feedzy Pro plugin
+- Introducing a new presentational tab dedicated to Otter within the About Us page of Neve Dashboard
+- Improve compatibility with WPML
+
 ##### [Version 3.6.5](https://github.com/Codeinwp/neve/compare/v3.6.4...v3.6.5) (2023-07-17)
 
 - [Fix] Deprecated notice in HFG Footer
