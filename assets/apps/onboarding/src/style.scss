@@ -1,0 +1,54 @@
+body{
+	background: #fff;
+}
+.ti-onboarding-header{
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 40px;
+	border-bottom: 1px solid #e5e5e5;
+	align-items: center;
+	div, a {
+		display: flex;
+	}
+}
+
+
+h1 {
+	font-size: 40px;
+	line-height: 54px;
+}
+
+p {
+	font-size: 18px;
+	line-height: 30.6px;
+	color: #848484;
+	font-weight: 300;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: calc(100vh - 60px); /* Subtract the header height (adjust if needed) */
+	&.narrow {
+		max-width: 559px;
+		margin: 0 auto;
+	}
+}
+
+.tab{
+	border: none;
+	border-radius: 999px;
+	padding: 8px 24px;
+	font-size: 20px;
+	font-weight: 700;
+	margin-right: 32px;
+	margin-top: 16px;
+	background: #F4F4F4;
+	cursor: pointer;
+	transition: 0.3s;
+	&.active, &:hover {
+		background: #151414;
+		color: #fff;
+	}
+}

@@ -7,6 +7,7 @@
 
 namespace Neve\Admin\Dashboard;
 
+use Neve\Admin\Onboarding\Ti_Onboarding;
 use Neve\Core\Theme_Info;
 /**
  * Class Main
@@ -84,6 +85,8 @@ class Main {
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
 		add_action( 'init', array( $this, 'register_settings' ) );
 		add_action( 'init', array( $this, 'register_about_page' ), 1 );
+
+		Ti_Onboarding::get_instance();
 	}
 
 	/**

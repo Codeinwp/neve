@@ -64,6 +64,7 @@ assets/apps/components/config
 assets/apps/components/README.md
 assets/apps/components/src
 assets/apps/starter-sites/src
+assets/apps/onboarding/src
 assets/apps/dashboard/src
 assets/apps/customizer-controls/src
 assets/apps/metabox/src
