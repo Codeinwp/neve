@@ -28,8 +28,9 @@ p {
 .container {
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	height: calc(100vh - 60px); /* Subtract the header height (adjust if needed) */
+	flex-direction: column;
+	height: calc(100vh - 65px); /* Subtract the header height (adjust if needed) */
+	padding: 0 50px;
 	&.narrow {
 		max-width: 559px;
 		margin: 0 auto;
@@ -51,4 +52,34 @@ p {
 		background: #151414;
 		color: #fff;
 	}
+}
+
+.search-container {
+	margin-top: 80px;
+}
+
+.search-form {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+input.search-input {
+	background-color: #f4f4f4;
+	border: none;
+	border-radius: 999px;
+	padding: 10px 16px 10px 46px;
+	width: 100%;
+	max-width: 275px;
+	line-height: 26px;
+}
+
+.search-button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	left: 12px;
+	top:12px;
+	line-height: 0;
 }

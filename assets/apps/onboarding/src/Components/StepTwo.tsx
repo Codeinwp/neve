@@ -1,31 +1,47 @@
 import React from 'react';
-import CategoryButtons from "./CategoryButtons";
+import { CATEGORIES } from '../utils/common';
+import CategoryButtons from './CategoryButtons';
+import Search from './Search';
+import { __ } from '@wordpress/i18n';
 
 interface StepTwoProps {
 	onNextStep: () => void;
 	onCategorySelect: (category: string) => void;
 	websiteType: string;
+	onSearchUpdate: (searchText: string) => void;
+	searchText: string;
 }
 
-const StepTwo: React.FC<StepTwoProps> = ({ websiteType, onCategorySelect }) => {
+const StepTwo: React.FC<StepTwoProps> = ({
+	onNextStep,
+	websiteType,
+	onCategorySelect,
+	onSearchUpdate,
+	searchText,
+}) => {
+	const handleSearchUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const newSearchText = e.target.value;
+		onSearchUpdate(newSearchText);
+	};
+
+	const handleSearchSubmit = (e: React.FormEvent) => {
+		e.preventDefault(); // Prevent the form from submitting
+	};
 
 	return (
-		<div>
-			<h2>Step 2: Review your selection</h2>
-			<p>You have selected: {websiteType}</p>
+		<>
+			<h1>{__('Choose a design', 'neve')}</h1>
+			<Search
+				onSubmit={handleSearchSubmit} // Prevents form submission
+				onChange={handleSearchUpdate}
+				searchText={searchText}
+			/>
 			<CategoryButtons
-				categories={[
-					'All',
-					'Business',
-					'Personal',
-					'Blogging',
-					'Portfolio',
-					'E-Shop',
-				]}
+				categories={CATEGORIES}
 				onCategorySelect={onCategorySelect}
 				selectedCategory={websiteType}
 			/>
-		</div>
+		</>
 	);
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import SVG from '../Common/svg';
+import SVG from '../utils/svg';
 
 import { __ } from '@wordpress/i18n';
 import { Tooltip } from '@wordpress/components';

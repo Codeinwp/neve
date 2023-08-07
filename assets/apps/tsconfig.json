@@ -19,7 +19,7 @@
 	/* List of folders to include type definitions from */
 	"typeRoots": [
 	  "./@types",
-	  "../../../../../node_modules/@types"
+	  "../../../../node_modules/@types"
 	],
 	/* allow import React instead of import * as React */
 	"allowSyntheticDefaultImports": true,
@@ -27,5 +27,5 @@
 	"esModuleInterop": true,
 	"resolveJsonModule": true,
   },
-  "exclude": ["../../../../../node_modules"]
+  "exclude": ["../../../../node_modules"]
 }

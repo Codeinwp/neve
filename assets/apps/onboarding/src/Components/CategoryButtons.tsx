@@ -1,7 +1,8 @@
 import React from 'react';
+import classnames from 'classnames';
 
 interface CategoryButtonsProps {
-	categories: string[];
+	categories: Record<string, string>;
 	selectedCategory?: string | null;
 	onCategorySelect: (category: string) => void;
 }
@@ -13,17 +14,23 @@ const CategoryButtons: React.FC<CategoryButtonsProps> = ({
 }) => {
 	return (
 		<div className="category-tabs">
-			{categories.map((category) => (
-				<button
-					className={`tab ${
-						category === selectedCategory ? 'active' : ''
-					}`}
-					key={category}
-					onClick={() => onCategorySelect(category)}
-				>
-					{category}
-				</button>
-			))}
+			{Object.keys(categories).map((key, index) => {
+				const classes = classnames([
+					'tab',
+					key,
+					{ active: key === selectedCategory },
+				]);
+
+				return (
+					<button
+						className={classes}
+						key={index}
+						onClick={() => onCategorySelect(key)}
+					>
+						{categories[key]}
+					</button>
+				);
+			})}
 		</div>
 	);
 };
