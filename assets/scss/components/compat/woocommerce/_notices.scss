@@ -1,6 +1,7 @@
 @import "../../main/variables";
 
-.woocommerce-NoticeGroup > ul {
+.woocommerce-error {
+	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 }
