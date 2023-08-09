@@ -2,7 +2,7 @@
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
 **Tags:** blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar  
 **Requires at least:** 4.0  
-**Tested up to:** 6.2  
+**Tested up to:** 6.3  
 **Stable tag:** trunk  
 **Requires PHP:** 7.0  
 **License:** GPLv2 or later  
@@ -18,6 +18,17 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+
+##### [Version 3.6.6](https://github.com/Codeinwp/neve/compare/v3.6.5...v3.6.6) (2023-08-03)
+
+- [Fix] Solve customizer permissions on multisite
+- [Fix] Add aria-label on the dropdown of the sidebar menu
+- [Fix] Incorrect author displayed on sticky posts with Feedzy Pro plugin
+- Introducing a new presentational tab dedicated to Otter within the About Us page of Neve Dashboard
+- Improve compatibility with WPML
+
+
+
 
 ##### [Version 3.6.5](https://github.com/Codeinwp/neve/compare/v3.6.4...v3.6.5) (2023-07-17)
 
@@ -71,7 +82,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 - [Feat] Add relative CSS unit support for font size controls in the customizer
 - [Feat] Granular Heading Font Family Controls
-- [Feat] Manage top and bottom margins for pages and posts 
+- [Feat] Manage top and bottom margins for pages and posts
 - [Fix] Accessibility warning for the site title
 - [Fix] Hover Skin Mode not working for the Footer Menu
 - [Fix] Improve the accessibility of the mobile menu by adding an aria-expanded attribute
