@@ -45,6 +45,7 @@ jobs:
           echo "$SSH_KEY" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
       - name: Deploy to server
+        if: steps.check_beta.outputs.has_beta == 'false'
         run: |
           rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/" $SSH_USERNAME@$SSH_HOST:$SSH_PATH
       - name: Upload Latest Version to S3
