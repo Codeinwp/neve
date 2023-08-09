@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - beta
 jobs:
   create_tag:
     runs-on: ubuntu-latest

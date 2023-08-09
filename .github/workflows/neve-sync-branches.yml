@@ -4,6 +4,7 @@ on:
     branches:
       - 'master'
       - 'development'
+      - 'beta'
 jobs:
   sync-branch:
     runs-on: ubuntu-latest
@@ -28,4 +29,12 @@ jobs:
           type: now
           from_branch: development
           target_branch: new/next
+          github_token: ${{ secrets.BOT_TOKEN }}
+      - name: Merge master -> beta
+        if: ${{ steps.retrieve-branch-name.outputs.branch_name == 'master' }}
+        uses: Codeinwp/merge-branch@master
+        with:
+          type: now
+          from_branch: master
+          target_branch: beta
           github_token: ${{ secrets.BOT_TOKEN }}
