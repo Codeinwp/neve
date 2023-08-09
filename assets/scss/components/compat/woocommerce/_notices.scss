@@ -1,8 +1,12 @@
 @import "../../main/variables";
 
-.woocommerce-error {
-	flex-direction: column;
-	align-items: flex-start;
+.woocommerce-NoticeGroup,
+.woocommerce-notices-wrapper {
+
+	> ul {
+		flex-direction: column;
+		align-items: flex-start;
+	}
 }
 
 .woocommerce-info,
