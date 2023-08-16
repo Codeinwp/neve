@@ -326,8 +326,10 @@ final class Manager {
 	 * Register the metabox sidebar.
 	 */
 	public function meta_sidebar_script_enqueue() {
-		global $post_type;
-		if ( ! in_array( $post_type, Supported_Post_Types::get( 'block_editor' ) ) ) {
+		global $post_type, $pagenow;
+
+		// $post_type returns "page" on widgets.php so we need to check if it's widget page separately.
+		if ( $pagenow === 'widgets.php' || ! in_array( $post_type, Supported_Post_Types::get( 'block_editor' ) ) ) {
 			return false;
 		}
 
