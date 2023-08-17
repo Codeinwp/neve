@@ -49,13 +49,16 @@ const Sidebar = compose(
 		}, [])
 	);
 
-	if ('elementor_canvas' === templateData.template) {
-		document.getElementById('neve-page-settings-notice').style.display =
-			'none';
+	const pageSettingsNotice = document.getElementById(
+		'neve-page-settings-notice'
+	);
+	if ('elementor_canvas' === templateData.template && pageSettingsNotice) {
+		pageSettingsNotice.style.display = 'none';
 		return false;
 	}
-	document.getElementById('neve-page-settings-notice').style.display =
-		'block';
+	if (pageSettingsNotice) {
+		pageSettingsNotice.style.display = 'block';
+	}
 	//translators: %s - Theme name
 	let sidebarLabel = sprintf(__('%s Options', 'neve'), __('Neve', 'neve'));
 	if (metaSidebar.whiteLabeled) {
