@@ -1,11 +1,12 @@
 <?php
 /**
- * Updated on 14/08/23
+ * Updated on 21/08/23
  *
  * @package neve
  */
 return array(
 	'ABeeZee' => array( '400', '400italic',),
+	'ADLaM Display' => array( '400',),
 	'Abel' => array( '400',),
 	'Abhaya Libre' => array( '400', '500', '600', '700', '800',),
 	'Aboreto' => array( '400',),
@@ -959,7 +960,7 @@ return array(
 	'Noto Sans Gujarati' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Gunjala Gondi' => array( '400',),
 	'Noto Sans Gurmukhi' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
-	'Noto Sans HK' => array( '100', '300', '400', '500', '700', '900',),
+	'Noto Sans HK' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Hanifi Rohingya' => array( '400', '500', '600', '700',),
 	'Noto Sans Hanunoo' => array( '400',),
 	'Noto Sans Hatran' => array( '400',),
@@ -970,7 +971,7 @@ return array(
 	'Noto Sans Inscriptional Parthian' => array( '400',),
 	'Noto Sans JP' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Javanese' => array( '400', '500', '600', '700',),
-	'Noto Sans KR' => array( '100', '300', '400', '500', '700', '900',),
+	'Noto Sans KR' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Kaithi' => array( '400',),
 	'Noto Sans Kannada' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Kayah Li' => array( '400', '500', '600', '700',),
@@ -1035,7 +1036,7 @@ return array(
 	'Noto Sans Psalter Pahlavi' => array( '400',),
 	'Noto Sans Rejang' => array( '400',),
 	'Noto Sans Runic' => array( '400',),
-	'Noto Sans SC' => array( '100', '300', '400', '500', '700', '900',),
+	'Noto Sans SC' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Samaritan' => array( '400',),
 	'Noto Sans Saurashtra' => array( '400',),
 	'Noto Sans Sharada' => array( '400',),
@@ -1052,7 +1053,7 @@ return array(
 	'Noto Sans Symbols 2' => array( '400',),
 	'Noto Sans Syriac' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Syriac Eastern' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
-	'Noto Sans TC' => array( '100', '300', '400', '500', '700', '900',),
+	'Noto Sans TC' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Tagalog' => array( '400',),
 	'Noto Sans Tagbanwa' => array( '400',),
 	'Noto Sans Tai Le' => array( '400',),
@@ -1560,6 +1561,7 @@ return array(
 	'Warnes' => array( '400',),
 	'Water Brush' => array( '400',),
 	'Waterfall' => array( '400',),
+	'Wavefont' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Wellfleet' => array( '400',),
 	'Wendy One' => array( '400',),
 	'Whisper' => array( '400',),
