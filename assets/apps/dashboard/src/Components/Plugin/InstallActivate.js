@@ -12,8 +12,13 @@ const InstallActivate = ({
 	smallButton = false,
 	description,
 }) => {
-	const { slug, pluginState, activateURL, pluginBasename } = pluginData;
-	const { getPluginStateBaseURL, pluginsURL, canInstallPlugins, canActivatePlugins } = neveDash;
+	const { slug, pluginState, activateURL } = pluginData;
+	const {
+		getPluginStateBaseURL,
+		pluginsURL,
+		canInstallPlugins,
+		canActivatePlugins,
+	} = neveDash;
 
 	const [progress, setProgress] = useState(false);
 	// const [updating, setUpdating] = useState(false);
