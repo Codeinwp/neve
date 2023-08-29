@@ -1,13 +1,15 @@
+/* global neveDash */
 import classnames from 'classnames';
 import { get } from '../utils/rest';
 
-import { __ } from '@wordpress/i18n';
-import { Button, Dashicon, ExternalLink } from '@wordpress/components';
+import { sprintf, __ } from '@wordpress/i18n';
+import { Button, Dashicon, ExternalLink, Tooltip } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { withDispatch } from '@wordpress/data';
 
 const Card = ({ slug, data, setPluginState }) => {
 	const { banner, name, description, version, author, url, premium } = data;
+	const { canInstallPlugins, canActivatePlugins } = neveDash;
 	const action = data.cta;
 	const [inProgress, setInProgress] = useState(false);
 
@@ -27,6 +29,98 @@ const Card = ({ slug, data, setPluginState }) => {
 		external: __('Learn More', 'neve'),
 	};
 
+	const ctaContent = () => {
+		if (action === 'external') {
+			return null;
+		}
+
+		const isButtonDisabled = () => {
+			if (inProgress) {
+				return true;
+			}
+			if (action === 'install') {
+				return !canInstallPlugins;
+			}
+			if (action === 'activate') {
+				return !canActivatePlugins;
+			}
+			return false;
+		};
+
+		return (
+			<Button
+				className="plugin-action"
+				isPrimary={['install', 'activate'].includes(action)}
+				isSecondary={'deactivate' === action}
+				disabled={isButtonDisabled()}
+				onClick={() => {
+					setInProgress(true);
+					if ('install' === action) {
+						installPlugin(slug).then((r) => {
+							if (!r.success) {
+								// Todo handle error with toasts?
+								setInProgress(false);
+								return false;
+							}
+							setInProgress(false);
+							setPluginState(slug, 'activate');
+						});
+						return false;
+					}
+					get(data[action], true).then((r) => {
+						if (!r.ok) {
+							// Todo handle error with toasts?
+							setInProgress(false);
+							return false;
+						}
+
+						if ('activate' === action) {
+							setPluginState(slug, 'deactivate');
+						} else {
+							setPluginState(slug, 'activate');
+						}
+						if ('templates-patterns-collection' === slug) {
+							window.location.reload();
+						}
+						setInProgress(false);
+					});
+				}}
+			>
+				{!inProgress && stringMap[action].static}
+				{inProgress && (
+					<span
+						style={{
+							display: 'flex',
+							alignItems: 'center',
+						}}
+					>
+						<Dashicon icon="update" />
+						{stringMap[action].progress + '...'}
+					</span>
+				)}
+			</Button>
+		);
+	};
+
+	const showTooltip =
+		(!canInstallPlugins && action === 'install') ||
+		(!canActivatePlugins && action === 'activate');
+
+	const wrappedButtonContent = showTooltip ? (
+		<Tooltip
+			text={sprintf(
+				// translators: %s: Plugin name.
+				__('Ask your admin to enable %s on your site', 'neve'),
+				name
+			)}
+			position="top center"
+		>
+			{ctaContent()}
+		</Tooltip>
+	) : (
+		ctaContent()
+	);
+
 	return (
 		<div className={classnames(['card', 'plugin', slug])}>
 			<div className="card-header">
@@ -42,61 +136,7 @@ const Card = ({ slug, data, setPluginState }) => {
 					{version && <span className="version">v{version} | </span>}
 					{author && <span className="author">{author}</span>}
 				</div>
-
-				{action !== 'external' && (
-					<Button
-						className="plugin-action"
-						isPrimary={['install', 'activate'].includes(action)}
-						isSecondary={'deactivate' === action}
-						disabled={inProgress}
-						onClick={() => {
-							setInProgress(true);
-							if ('install' === action) {
-								installPlugin(slug).then((r) => {
-									if (!r.success) {
-										// Todo handle error with toasts?
-										setInProgress(false);
-										return false;
-									}
-									setInProgress(false);
-									setPluginState(slug, 'activate');
-								});
-								return false;
-							}
-							get(data[action], true).then((r) => {
-								if (!r.ok) {
-									// Todo handle error with toasts?
-									setInProgress(false);
-									return false;
-								}
-
-								if ('activate' === action) {
-									setPluginState(slug, 'deactivate');
-								} else {
-									setPluginState(slug, 'activate');
-								}
-								if ('templates-patterns-collection' === slug) {
-									window.location.reload();
-								}
-								setInProgress(false);
-							});
-						}}
-					>
-						{!inProgress && stringMap[action].static}
-						{inProgress && (
-							<span
-								style={{
-									display: 'flex',
-									alignItems: 'center',
-								}}
-							>
-								<Dashicon icon="update" />
-								{stringMap[action].progress + '...'}
-							</span>
-						)}
-					</Button>
-				)}
-
+				{wrappedButtonContent}
 				{action === 'external' && (
 					<ExternalLink className="plugin-action" href={url}>
 						{stringMap[action]}

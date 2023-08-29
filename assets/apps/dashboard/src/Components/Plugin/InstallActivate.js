@@ -1,8 +1,8 @@
 /* global neveDash */
 import { get } from '../../utils/rest';
-import { __ } from '@wordpress/i18n';
+import { sprintf, __ } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
-import { Button } from '@wordpress/components';
+import { Button, Tooltip } from '@wordpress/components';
 
 const InstallActivate = ({
 	labels = {},
@@ -12,8 +12,8 @@ const InstallActivate = ({
 	smallButton = false,
 	description,
 }) => {
-	const { slug, pluginState, activateURL } = pluginData;
-	const { getPluginStateBaseURL, pluginsURL } = neveDash;
+	const { slug, pluginState, activateURL, pluginBasename } = pluginData;
+	const { getPluginStateBaseURL, pluginsURL, canInstallPlugins, canActivatePlugins } = neveDash;
 
 	const [progress, setProgress] = useState(false);
 	// const [updating, setUpdating] = useState(false);
@@ -129,11 +129,24 @@ const InstallActivate = ({
 
 	const isProgress = (type) => progress === type;
 
+	const isButtonDisabled = () => {
+		if (progress) {
+			return true;
+		}
+		if (isProgress('installing')) {
+			return !canInstallPlugins;
+		}
+		if (isProgress('activating')) {
+			return !canActivatePlugins;
+		}
+		return false;
+	};
+
 	const renderNoticeContent = () => {
 		const buttonMap = {
 			install: (
 				<Button
-					disabled={progress}
+					disabled={isButtonDisabled()}
 					isPrimary={!isProgress('installing')}
 					isSmall={smallButton}
 					isSecondary={isProgress('installing')}
@@ -148,7 +161,7 @@ const InstallActivate = ({
 			),
 			activate: activateURL && (
 				<Button
-					disabled={isProgress('activating')}
+					disabled={isButtonDisabled()}
 					isSmall={smallButton}
 					isPrimary={!isProgress('activating')}
 					isSecondary={isProgress('activating')}
@@ -163,11 +176,29 @@ const InstallActivate = ({
 			),
 		};
 
+		const showTooltip =
+			(!canInstallPlugins && isProgress('installing')) ||
+			(!canActivatePlugins && isProgress('activating'));
+
+		const wrappedButtonContent = showTooltip ? (
+			<Tooltip
+				text={sprintf(
+					// translators: %s: Plugin name.
+					__('Ask your admin to enable %s on your site', 'neve'),
+					'Cloud Templates & Patterns Collection'
+				)}
+				position="top center"
+			>
+				{buttonMap[currentState]}
+			</Tooltip>
+		) : (
+			buttonMap[currentState]
+		);
+
 		return (
 			<>
 				{description}
-				{buttonMap.hasOwnProperty(currentState) &&
-					buttonMap[currentState]}
+				{buttonMap.hasOwnProperty(currentState) && wrappedButtonContent}
 			</>
 		);
 	};

@@ -176,7 +176,7 @@ class Main {
 		}
 		$neve_icon  = apply_filters( 'neve_menu_icon', $icon );
 		$priority   = apply_filters( 'neve_menu_priority', 59 );  // The position of the menu item, 60 is the position of the Appearance menu.
-		$capability = 'activate_plugins';
+		$capability = 'manage_options';
 
 		// Place a theme page in the Appearance menu, for older versions of Neve Pro or TPC. to maintain backwards compatibility.
 		if (
@@ -374,6 +374,8 @@ class Main {
 			'tpcAdminURL'             => admin_url( 'admin.php?page=tiob-starter-sites' ),
 			'pluginsURL'              => esc_url( admin_url( 'plugins.php' ) ),
 			'getPluginStateBaseURL'   => esc_url( rest_url( '/nv/v1/dashboard/plugin-state/' ) ),
+			'canInstallPlugins'       => current_user_can( 'install_plugins' ),
+			'canActivatePlugins'      => current_user_can( 'activate_plugins' ),
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {

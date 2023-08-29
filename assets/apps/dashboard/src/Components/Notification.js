@@ -1,15 +1,16 @@
 /* global neveDash */
 import classnames from 'classnames';
 
-import { __ } from '@wordpress/i18n';
+import { sprintf, __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 import { external } from '@wordpress/icons';
-import { Button, Dashicon, Icon } from '@wordpress/components';
+import { Button, Dashicon, Icon, Tooltip } from '@wordpress/components';
 
 const Notification = ({ data, slug }) => {
 	// eslint-disable-next-line no-unused-vars
 	const [hidden, setHidden] = useState(false);
 	const { text, cta, type, update, url, targetBlank } = data;
+	const { canInstallPlugins } = neveDash;
 	const [inProgress, setInProgress] = useState(false);
 	const [done, setDone] = useState(false);
 	const [errorMessage, setErrorMessage] = useState(null);
@@ -112,6 +113,51 @@ const Notification = ({ data, slug }) => {
 		});
 	};
 
+	const ctaContent = () => {
+		if (!cta || done) {
+			return null;
+		}
+		return (
+			<Button
+				isSecondary
+				disabled={inProgress || !canInstallPlugins}
+				className={classnames({ 'is-loading': inProgress })}
+				onClick={() => {
+					if (update) {
+						updateEntity();
+					}
+				}}
+			>
+				{inProgress ? (
+					<span>
+						<Dashicon icon="update" />{' '}
+						{__('In Progress', 'neve') + '...'}{' '}
+					</span>
+				) : (
+					cta
+				)}
+			</Button>
+		);
+	};
+
+	const wrappedButtonContent = !canInstallPlugins ? (
+		<Tooltip
+			text={sprintf(
+				// translators: %s: Plugin and theme names.
+				__('Ask your admin to update %s on your site', 'neve'),
+				'Neve and Neve Pro'
+			)}
+			position="top center"
+			style={{
+				opacity: 1,
+			}}
+		>
+			{ctaContent()}
+		</Tooltip>
+	) : (
+		ctaContent()
+	);
+
 	const UpdateNotification = () => {
 		return (
 			<div className={classes}>
@@ -132,27 +178,7 @@ const Notification = ({ data, slug }) => {
 							)}
 					</p>
 				)}
-				{cta && !done && (
-					<Button
-						isSecondary
-						disabled={inProgress}
-						className={classnames({ 'is-loading': inProgress })}
-						onClick={() => {
-							if (update) {
-								updateEntity();
-							}
-						}}
-					>
-						{inProgress ? (
-							<span>
-								<Dashicon icon="update" />{' '}
-								{__('In Progress', 'neve') + '...'}{' '}
-							</span>
-						) : (
-							cta
-						)}
-					</Button>
-				)}
+				{wrappedButtonContent}
 			</div>
 		);
 	};

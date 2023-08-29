@@ -115,7 +115,7 @@ class Plugin_Helper {
 				'paged'         => '1',
 				'_wpnonce'      => wp_create_nonce( $action . '-plugin_' . $this->get_plugin_path( $slug ) ),
 			),
-			esc_url( network_admin_url( 'plugins.php' ) )
+			esc_url( 'plugins.php' )
 		);
 	}
 
