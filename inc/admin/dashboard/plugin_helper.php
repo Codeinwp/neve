@@ -137,4 +137,18 @@ class Plugin_Helper {
 		}
 		return $plugin_data['Version'];
 	}
+
+	/**
+	 * Check if current plugin is activated network-wide
+	 *
+	 * @param string $slug plugin slug.
+	 * @return bool
+	 */
+	public function get_is_network_wide( $slug ) {
+		if ( ! is_multisite() ) {
+			return false;
+		}
+		$plugin_file = $this->get_plugin_path( $slug );
+		return is_plugin_active_for_network( $plugin_file );
+	}
 }

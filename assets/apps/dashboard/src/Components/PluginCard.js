@@ -8,7 +8,16 @@ import { useState } from '@wordpress/element';
 import { withDispatch } from '@wordpress/data';
 
 const Card = ({ slug, data, setPluginState }) => {
-	const { banner, name, description, version, author, url, premium } = data;
+	const {
+		banner,
+		name,
+		description,
+		version,
+		author,
+		url,
+		premium,
+		network,
+	} = data;
 	const { canInstallPlugins, canActivatePlugins } = neveDash;
 	const action = data.cta;
 	const [inProgress, setInProgress] = useState(false);
@@ -38,13 +47,7 @@ const Card = ({ slug, data, setPluginState }) => {
 			if (inProgress) {
 				return true;
 			}
-			if (action === 'install') {
-				return !canInstallPlugins;
-			}
-			if (action === 'activate') {
-				return !canActivatePlugins;
-			}
-			return false;
+			return actionsAreDisabled;
 		};
 
 		return (
@@ -102,15 +105,17 @@ const Card = ({ slug, data, setPluginState }) => {
 		);
 	};
 
-	const showTooltip =
+	const actionsAreDisabled =
 		(!canInstallPlugins && action === 'install') ||
-		(!canActivatePlugins && action === 'activate');
+		(!canActivatePlugins && action === 'activate') ||
+		(network && action === 'deactivate') ||
+		false;
 
-	const wrappedButtonContent = showTooltip ? (
+	const wrappedButtonContent = actionsAreDisabled ? (
 		<Tooltip
 			text={sprintf(
 				// translators: %s: Plugin name.
-				__('Ask your admin to enable %s on your site', 'neve'),
+				__('Ask your admin to handle %s on your site', 'neve'),
 				name
 			)}
 			position="top center"

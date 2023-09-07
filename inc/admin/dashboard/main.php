@@ -638,6 +638,7 @@ class Main {
 				$available[ $slug ]['path']       = $this->plugin_helper->get_plugin_path( $slug );
 				$available[ $slug ]['activate']   = $this->plugin_helper->get_plugin_action_link( $slug );
 				$available[ $slug ]['deactivate'] = $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
+				$available[ $slug ]['network']    = $this->plugin_helper->get_is_network_wide( $slug );
 				$available[ $slug ]['version']    = ! empty( $available[ $slug ]['version'] ) ? $this->plugin_helper->get_plugin_version( $slug, $available[ $slug ]['version'] ) : '';
 			}
 
@@ -666,6 +667,7 @@ class Main {
 				'path'        => $this->plugin_helper->get_plugin_path( $slug ),
 				'activate'    => $this->plugin_helper->get_plugin_action_link( $slug ),
 				'deactivate'  => $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' ),
+				'network'     => $this->plugin_helper->get_is_network_wide( $slug ),
 			];
 		}
 
