@@ -12,14 +12,14 @@ const InstallActivate = ({
 	smallButton = false,
 	description,
 }) => {
-	const { slug, pluginState, activateURL } = pluginData;
+	const { slug, pluginState, activateURL, name } = pluginData;
 	const {
 		getPluginStateBaseURL,
 		pluginsURL,
 		canInstallPlugins,
 		canActivatePlugins,
+		isOtterProInstalled,
 	} = neveDash;
-
 	const [progress, setProgress] = useState(false);
 	// const [updating, setUpdating] = useState(false);
 	const [error, setError] = useState(false);
@@ -134,20 +134,22 @@ const InstallActivate = ({
 
 	const isProgress = (type) => progress === type;
 
-	const isButtonDisabled = () => {
-		if (progress) {
-			return true;
-		}
-		if (isProgress('installing')) {
-			return !canInstallPlugins;
-		}
-		if (isProgress('activating')) {
-			return !canActivatePlugins;
-		}
-		return false;
-	};
-
 	const renderNoticeContent = () => {
+		const actionsAreDisabled =
+			(pluginData.slug === 'otter-blocks' && !isOtterProInstalled) ||
+			(!canInstallPlugins && currentState === 'install') ||
+			(!canActivatePlugins && currentState === 'activate') ||
+			pluginData.slug === 'otter-blocks' ||
+			false;
+
+		const isButtonDisabled = () => {
+			if (progress) {
+				return true;
+			}
+
+			return actionsAreDisabled;
+		};
+
 		const buttonMap = {
 			install: (
 				<Button
@@ -181,16 +183,12 @@ const InstallActivate = ({
 			),
 		};
 
-		const showTooltip =
-			(!canInstallPlugins && isProgress('installing')) ||
-			(!canActivatePlugins && isProgress('activating'));
-
-		const wrappedButtonContent = showTooltip ? (
+		const wrappedButtonContent = actionsAreDisabled ? (
 			<Tooltip
 				text={sprintf(
 					// translators: %s: Plugin name.
 					__('Ask your admin to enable %s on your site', 'neve'),
-					'Cloud Templates & Patterns Collection'
+					name
 				)}
 				position="top center"
 			>

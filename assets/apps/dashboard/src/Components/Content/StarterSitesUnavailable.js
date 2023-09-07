@@ -17,6 +17,7 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
 			<div className="content-wrap">
 				<InstallActivate
 					pluginData={{
+						name: 'Cloud Templates & Patterns Collection',
 						slug: 'templates-patterns-collection',
 						pluginBasename: tpcPath,
 						pluginState: currentState,
