@@ -158,6 +158,7 @@ class Admin {
 
 		wp_localize_script( 'neve-ss-notice', 'tpcPluginData', $this->get_tpc_plugin_data() );
 		wp_enqueue_script( 'neve-ss-notice' );
+		wp_set_script_translations( 'neve-ss-notice', 'neve' );
 	}
 
 	/**
