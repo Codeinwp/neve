@@ -135,19 +135,40 @@ const InstallActivate = ({
 	const isProgress = (type) => progress === type;
 
 	const renderNoticeContent = () => {
-		const actionsAreDisabled =
-			(pluginData.slug === 'otter-blocks' && !isOtterProInstalled) ||
-			(!canInstallPlugins && currentState === 'install') ||
-			(!canActivatePlugins && currentState === 'activate') ||
-			pluginData.slug === 'otter-blocks' ||
-			false;
+		const isSuperAdmin = canInstallPlugins && canActivatePlugins;
+
+		const actionsAreDisabled = () => {
+			// Super admins can always perform actions
+			if (isSuperAdmin) {
+				return false;
+			}
+
+			// Prevent installing or activating plugins if not allowed
+			if (currentState === 'install' && !canInstallPlugins) {
+				return true;
+			}
+			if (currentState === 'activate' && !canActivatePlugins) {
+				return true;
+			}
+
+			// For non super admins, prevent installing specific plugins if Otter Pro is not installed
+			if (
+				(pluginData.slug === 'otter-blocks' ||
+					pluginData.slug === 'otter-pro') &&
+				!isOtterProInstalled
+			) {
+				return !canInstallPlugins;
+			}
+
+			return false;
+		};
 
 		const isButtonDisabled = () => {
 			if (progress) {
 				return true;
 			}
 
-			return actionsAreDisabled;
+			return actionsAreDisabled();
 		};
 
 		const buttonMap = {
