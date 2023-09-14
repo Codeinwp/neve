@@ -158,6 +158,7 @@ class Admin {
 
 		wp_localize_script( 'neve-ss-notice', 'tpcPluginData', $this->get_tpc_plugin_data() );
 		wp_enqueue_script( 'neve-ss-notice' );
+		wp_set_script_translations( 'neve-ss-notice', 'neve' );
 	}
 
 	/**
@@ -177,6 +178,7 @@ class Admin {
 				'customizerURL'           => esc_url( admin_url( 'customize.php' ) ),
 			]
 		);
+		wp_set_script_translations( 'neve-components', 'neve' );
 		wp_register_style( 'neve-components', trailingslashit( NEVE_ASSETS_URL ) . 'apps/components/build/style-components.css', [ 'wp-components' ], $deps['version'] );
 		wp_add_inline_style( 'neve-components', Dynamic_Css::get_root_css() );
 	}
