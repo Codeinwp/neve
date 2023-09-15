@@ -110,7 +110,8 @@
 
     &[disabled] {
       text-shadow: none;
-      opacity: .5;
+	  color: rgba( 54, 54, 54, .5 );
+	  border-color: rgba( 54, 54, 54, .5 );
     }
   }
 
