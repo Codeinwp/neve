@@ -1,12 +1,14 @@
 .card.module-card {
   padding: 0;
   .required {
-	a {
+	a, p {
 	  text-decoration: none;
 	  color: $warning;
 	  display: flex;
 	  align-content: center;
 	  line-height: 1.6;
+	  align-items: center;
+	  font-size: 13px;
 	  span {
 		display: flex;
 		align-content: center;

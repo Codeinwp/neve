@@ -115,7 +115,7 @@ class Plugin_Helper {
 				'paged'         => '1',
 				'_wpnonce'      => wp_create_nonce( $action . '-plugin_' . $this->get_plugin_path( $slug ) ),
 			),
-			esc_url( network_admin_url( 'plugins.php' ) )
+			esc_url( 'plugins.php' )
 		);
 	}
 
@@ -136,5 +136,19 @@ class Plugin_Helper {
 			return $default;
 		}
 		return $plugin_data['Version'];
+	}
+
+	/**
+	 * Check if current plugin is activated network-wide
+	 *
+	 * @param string $slug plugin slug.
+	 * @return bool
+	 */
+	public function get_is_network_wide( $slug ) {
+		if ( ! is_multisite() ) {
+			return false;
+		}
+		$plugin_file = $this->get_plugin_path( $slug );
+		return is_plugin_active_for_network( $plugin_file );
 	}
 }
