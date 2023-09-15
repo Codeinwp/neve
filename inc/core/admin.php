@@ -162,7 +162,7 @@ class Admin {
 	}
 
 	/**
-	 * Register script for react components.
+	 * Register the script for react components.
 	 */
 	public function register_react_components() {
 		$this->maybe_register_notice_script_starter_sites();
