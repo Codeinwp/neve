@@ -204,7 +204,7 @@ const InstallActivate = ({
 			),
 		};
 
-		const wrappedButtonContent = actionsAreDisabled ? (
+		const wrappedButtonContent = actionsAreDisabled() ? (
 			<Tooltip
 				text={sprintf(
 					// translators: %s: Plugin name.
