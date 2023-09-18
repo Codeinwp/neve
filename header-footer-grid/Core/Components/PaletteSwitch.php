@@ -174,10 +174,12 @@ class PaletteSwitch extends Abstract_Component {
 	public function toggle_script() {
 		$auto_adjust   = Mods::get( $this->get_id() . '_' . self::AUTO_ADJUST, 0 );
 		$default_state = '"light"';
+
 		if ( $auto_adjust ) {
 			$default_state = 'window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"';
 		}
-		return '!function() {const e = "neve_user_theme";const t = "data-neve-theme";let n = ' . ( ! $auto_adjust && ! is_customize_preview() ? 'localStorage.getItem(e);' : $default_state ) . ';document.documentElement.setAttribute(t, n);document.addEventListener("click", (n => {if (n.target.matches(".palette-icon-wrapper, .palette-icon-wrapper *")) {(n => {n.preventDefault();const a = "light" === document.documentElement.getAttribute(t) ? "dark" : "light";document.documentElement.setAttribute(t, a);localStorage.setItem(e, a);})(n);}}));}();';
+
+		return '!function() {const e = "neve_user_theme";const t = "data-neve-theme";let n = ' . ( ! $auto_adjust && ! is_customize_preview() ? 'localStorage.getItem(e) || ' . $default_state : $default_state ) . ';document.documentElement.setAttribute(t, n);document.addEventListener("click", (n => {if (n.target.matches(".palette-icon-wrapper, .palette-icon-wrapper *")) {(n => {n.preventDefault();const a = "light" === document.documentElement.getAttribute(t) ? "dark" : "light";document.documentElement.setAttribute(t, a);localStorage.setItem(e, a);})(n);}}));}();';
 	}
 
 	/**
