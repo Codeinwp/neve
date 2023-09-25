@@ -28,16 +28,18 @@ use WP_Post;
 class Logo extends Abstract_Component {
 
 
-	const COMPONENT_ID = 'logo';
-	const LOGO         = 'logo';
-	const CUSTOM_LOGO  = 'custom_logo';
-	const USE_SAME     = 'same_logo';
-	const DISPLAY      = 'display';
-	const MAX_WIDTH    = 'max_width';
-	const SHOW_TITLE   = 'show_title';
-	const SHOW_TAGLINE = 'show_tagline';
-	const DISABLE_LINK = 'disable_link';
-	const COLOR_ID     = 'color';
+	const COMPONENT_ID      = 'logo';
+	const LOGO              = 'logo';
+	const CUSTOM_LOGO       = 'custom_logo';
+	const USE_SAME          = 'same_logo';
+	const DISPLAY           = 'display';
+	const MAX_WIDTH         = 'max_width';
+	const SHOW_TITLE        = 'show_title';
+	const SHOW_TAGLINE      = 'show_tagline';
+	const DISABLE_LINK      = 'disable_link';
+	const COLOR_ID          = 'color';
+	const TITLE_FONT_SIZE   = 'title_font_size';
+	const TAGLINE_FONT_SIZE = 'tagline_font_size';
 
 	/**
 	 * Default spacing value
@@ -469,6 +471,51 @@ JS;
 				'conditional_header' => true,
 			]
 		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::TITLE_FONT_SIZE,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'     => 'neve_sanitize_range_value',
+				'default'               => '{ "mobile": "24", "tablet": "24", "desktop": "24" }',
+				'label'                 => __( 'Site Title', 'neve' ) . ' ' . __( 'Font Size', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'       => '--fs',
+						'selector'   => $this->default_selector . ' .brand .nv-title-tagline-wrap',
+						'responsive' => true,
+						'suffix'     => 'px',
+					],
+				],
+				'options'               => [
+					'hide_responsive_switches' => true,
+					'media_query'              => true,
+					'step'                     => 1,
+					'input_attrs'              => [
+						'min'        => 0,
+						'max'        => 100,
+						'units'      => [ 'px', 'em', 'rem' ],
+						'defaultVal' => [
+							'mobile'  => 24,
+							'tablet'  => 24,
+							'desktop' => 24,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
+						],
+					],
+				],
+				'section'               => $this->section,
+				'conditional_header'    => true,
+			]
+		);
+
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::COLOR_ID,
@@ -525,6 +572,12 @@ JS;
 				],
 				'--color'    => [
 					Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::COLOR_ID,
+				],
+				'--fs'       => [
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::TITLE_FONT_SIZE,
+					Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+					Dynamic_Selector::META_DEFAULT       => '{ "mobile": "24", "tablet": "24", "desktop": "24" }',
 				],
 			],
 		];

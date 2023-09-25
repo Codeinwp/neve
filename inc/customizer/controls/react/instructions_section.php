@@ -31,7 +31,6 @@ class Instructions_Section extends \WP_Customize_Section {
 		'description'     => '',
 		'image'           => '',
 		'quickLinks'      => [],
-		'hadOldBuilder'   => false,
 		'builderMigrated' => false,
 	];
 	/**
