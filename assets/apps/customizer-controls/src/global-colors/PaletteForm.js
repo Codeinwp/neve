@@ -50,7 +50,7 @@ const PaletteForm = ({ values, save, disabled }) => {
 					iconSize={16}
 					onClick={toggleAdding}
 				>
-					{__('Add Custom Palette')}
+					{__('Add Custom Palette', 'neve')}
 				</Button>
 			</div>
 		);

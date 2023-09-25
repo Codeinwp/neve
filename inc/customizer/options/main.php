@@ -30,7 +30,6 @@ class Main extends Base_Customizer {
 		$this->register_types();
 		$this->add_main_panels();
 		$this->change_controls();
-		$this->add_skin_switcher();
 	}
 
 	/**
@@ -124,57 +123,5 @@ class Main extends Base_Customizer {
 		$this->change_customizer_object( 'section', 'static_front_page', 'panel', 'neve_layout' );
 		// Change default for shop columns WooCommerce option.
 		$this->change_customizer_object( 'setting', 'woocommerce_catalog_columns', 'default', 3 );
-	}
-
-	/**
-	 * Add the skin switcher.
-	 *
-	 * @return void
-	 * @since 3.0.0
-	 */
-	private function add_skin_switcher() {
-		// If we started with the new skin this shouldn't show up at all.
-		if ( get_theme_mod( 'neve_had_old_skin' ) === false ) {
-			return;
-		}
-
-		// If we're not using the new builder. We don't show the switch & section.
-		if ( ! neve_is_new_builder() ) {
-			return;
-		}
-
-		// If the pro version exists but it's incompatible, we don't show the switch.
-		if ( defined( 'NEVE_PRO_VERSION' ) ) {
-			if ( ! neve_pro_has_support( 'skinv2' ) ) {
-				return;
-			}
-		}
-
-		$section = 'neve_style_section';
-
-		$this->add_section(
-			new Section(
-				$section,
-				[
-					'priority' => 201,
-					'title'    => esc_html__( 'Style', 'neve' ),
-				]
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_new_skin',
-				[
-					'transport'         => 'postMessage',
-					'sanitize_callback' => 'sanitize_text_field',
-					'default'           => 'new',
-				],
-				[
-					'type'    => 'neve_skin_switcher',
-					'section' => $section,
-				]
-			)
-		);
 	}
 }
