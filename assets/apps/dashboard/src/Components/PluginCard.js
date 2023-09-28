@@ -83,7 +83,8 @@ const Card = ({ slug, data, setPluginState }) => {
 							setPluginState(slug, 'activate');
 						}
 						if ('templates-patterns-collection' === slug) {
-							window.location.reload();
+							window.location.href =
+								neveDash.tpcAdminURL + '&onboarding=yes';
 						}
 						setInProgress(false);
 					});
