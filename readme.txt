@@ -19,6 +19,19 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+#### [Version 3.7.0](https://github.com/Codeinwp/neve/compare/v3.6.7...v3.7.0) (2023-09-25)
+
+- [Feat] Improve the UX by decreasing the opacity of the Editor Title if the disabled title toggle from Neve Options inside the editor is active
+- [Feat] New option for the Logo component to control the font size
+- [Fix] Images not loading in the mega menu with AMP enabled
+- [Fix] Missing text domain for a string
+- [Fix] Translations are not applying for some particular strings
+- [Fix] Access in the dashboard for admin users on multisite environments
+- Remove any remaining legacy skin code
+
+
+
+
 ##### [Version 3.6.7](https://github.com/Codeinwp/neve/compare/v3.6.6...v3.6.7) (2023-08-22)
 
 - [Fix] Addressed a json_decode issue in utilities.php that could potentially arise depending on the value from the database
