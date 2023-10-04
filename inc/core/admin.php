@@ -485,12 +485,13 @@ class Admin {
 				$name
 			)
 		);
-		$ob_btn_link = 'admin.php?page=' . $theme_page . '&onboarding=yes#starter-sites';
-		if ( admin_url( defined( 'TIOB_PATH' ) ) ) {
-			$ob_btn_link = 'admin.php?page=tiob-starter-sites';
+		$ob_btn_link = admin_url( 'admin.php?page=' . $theme_page . '&onboarding=yes#starter-sites' );
+		if ( defined( 'TIOB_PATH' ) ) {
+			$url_path = 'admin.php?page=tiob-starter-sites';
 			if ( current_user_can( 'install_plugins' ) ) {
-				$ob_btn_link .= '&onboarding=yes';
+				$url_path .= '&onboarding=yes';
 			}
+			$ob_btn_link = admin_url( $url_path );
 		}
 		$ob_btn = sprintf(
 		/* translators: 1 - onboarding url, 2 - button text */
