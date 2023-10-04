@@ -34,6 +34,7 @@ type TPCPluginData = {
 	pluginsURL: string;
 	ajaxURL: string;
 	ajaxNonce: string;
+	canInstall: boolean;
 };
 
 const get = async (route: string, useNonce = '') => {
@@ -67,7 +68,9 @@ const dismiss = async (route: string, action = '', useNonce = '') => {
 
 const SSTryButton: React.FC = () => {
 	const templatesPluginData = window.tpcPluginData as TPCPluginData;
-	const tpcRedirect = templatesPluginData.adminURL + '&onboarding=yes';
+	const tpcRedirect =
+		templatesPluginData.adminURL +
+		(templatesPluginData.canInstall ? '&onboarding=yes' : '');
 
 	const [installing, setInstalling] = useState(false);
 	const [activating, setActivating] = useState(false);

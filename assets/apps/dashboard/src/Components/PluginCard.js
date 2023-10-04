@@ -84,7 +84,10 @@ const Card = ({ slug, data, setPluginState }) => {
 						}
 						if ('templates-patterns-collection' === slug) {
 							window.location.href =
-								neveDash.tpcAdminURL + '&onboarding=yes';
+								neveDash.tpcAdminURL +
+								(neveDash.canInstallPlugins
+									? '&onboarding=yes'
+									: '');
 						}
 						setInProgress(false);
 					});
