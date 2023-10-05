@@ -19,6 +19,14 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.7.2](https://github.com/Codeinwp/neve/compare/v3.7.1...v3.7.2) (2023-10-05)
+
+### Bug Fixes
+- **Changelog Formatting**: Addressed PHP dashboard notices caused by the updated changelog format
+
+
+
+
 ##### [Version 3.7.1](https://github.com/Codeinwp/neve/compare/v3.7.0...v3.7.1) (2023-10-05)
 
 ### Improvements
