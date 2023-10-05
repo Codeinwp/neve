@@ -36,11 +36,11 @@ class Changelog_Handler {
 	}
 
 	/**
-	 * Return the releases changes array.
+	 * Parse the changelog file.
 	 *
 	 * @param string $changelog_path the changelog path.
 	 *
-	 * @return array $releases - changelog.
+	 * @return array
 	 */
 	private function parse_changelog( $changelog_path ) {
 		WP_Filesystem();
@@ -49,25 +49,53 @@ class Changelog_Handler {
 		if ( is_wp_error( $changelog ) ) {
 			$changelog = '';
 		}
-		$changelog     = explode( PHP_EOL, $changelog );
-		$releases      = [];
-		$release_count = 0;
+		$changelog       = explode( PHP_EOL, $changelog );
+		$releases        = [];
+		$release_count   = 0;
+		$current_section = ''; // Holds the current section ('Improvements', 'Bug Fixes', etc.)
 
 		foreach ( $changelog as $changelog_line ) {
 			if ( strpos( $changelog_line, '**Changes:**' ) !== false || empty( $changelog_line ) ) {
 				continue;
 			}
-			if ( substr( ltrim( $changelog_line ), 0, 3 ) === '###' ) {
-				$release_count ++;
-
+			if ( substr( ltrim( $changelog_line ), 0, 3 ) === '###' && ! preg_match( '/###\s?(New Features|Bug Fixes)/', $changelog_line ) ) {
+				// Extract version and date
 				preg_match( '/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/', $changelog_line, $found_v );
 				preg_match( '/[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}/', $changelog_line, $found_d );
-				$releases[ $release_count ] = array(
-					'version' => $found_v[0],
-					'date'    => $found_d[0],
-				);
+				if ( isset( $found_v[0] ) && isset( $found_d[0] ) ) {
+					$release_count++;
+					$releases[ $release_count ] = array(
+						'version' => $found_v[0],
+						'date'    => $found_d[0],
+					);
+				}
+
+				$current_section = '';
 				continue;
 			}
+
+			// Check for the new headers 'New Features', 'Bug Fixes', etc.
+			if ( preg_match( '/###\s?(New Features|Bug Fixes)/', $changelog_line, $section_matches ) ) {
+				$current_section = strtolower( $section_matches[1] );
+				continue;
+			}
+
+			// Extracting items based on the new changelog structure
+			if ( $current_section === 'bug fixes' ) {
+				$changelog_line                        = preg_replace( '/-\s?\*\*(.*?):\*\*/', '', $changelog_line );
+				$changelog_line                        = $this->parse_md_and_clean( $changelog_line );
+				$releases[ $release_count ]['fixes'][] = $changelog_line;
+				continue;
+			}
+
+			if ( $current_section === 'new features' ) {
+				$changelog_line                           = preg_replace( '/-\s?\*\*(.*?):\*\*/', '', $changelog_line );
+				$changelog_line                           = $this->parse_md_and_clean( $changelog_line );
+				$releases[ $release_count ]['features'][] = $changelog_line;
+				continue;
+			}
+
+			// Legacy structure handling for feats and fixes
 			if ( preg_match( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?(\b|(?=\[))/', $changelog_line ) ) {
 				$changelog_line                        = preg_replace( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?(\b|(?=\[))/', '', $changelog_line );
 				$releases[ $release_count ]['fixes'][] = $this->parse_md_and_clean( $changelog_line );
@@ -81,11 +109,12 @@ class Changelog_Handler {
 			}
 
 			$changelog_line = $this->parse_md_and_clean( $changelog_line );
-
 			if ( empty( $changelog_line ) ) {
 				continue;
 			}
-
+			if ( ! isset( $releases[ $release_count ]['tweaks'] ) ) {
+				$releases[ $release_count ]['tweaks'] = [];
+			}
 			$releases[ $release_count ]['tweaks'][] = $changelog_line;
 		}
 
@@ -93,7 +122,7 @@ class Changelog_Handler {
 	}
 
 	/**
-	 * Parse markdown links and cleanup string.
+	 * Parse markdown links, convert bold markers (**) to <b> tags, and cleanup string.
 	 *
 	 * @param string $string changelog line.
 	 *
@@ -114,6 +143,10 @@ class Changelog_Handler {
 			htmlspecialchars( $string )
 		);
 
+		// Convert bold markdown (**text**) to <b>text</b>.
+		$string = preg_replace( '/\*\*(.*?)\*\*/', '<b>$1</b>', $string );
+
 		return $string;
 	}
+
 }
