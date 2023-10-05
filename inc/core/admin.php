@@ -131,6 +131,7 @@ class Admin {
 		$tpc_plugin_data['pluginsURL'] = esc_url( admin_url( 'plugins.php' ) );
 		$tpc_plugin_data['ajaxURL']    = esc_url( admin_url( 'admin-ajax.php' ) );
 		$tpc_plugin_data['ajaxNonce']  = esc_attr( wp_create_nonce( 'remove_notice_confirmation' ) );
+		$tpc_plugin_data['canInstall'] = current_user_can( 'install_plugins' );
 
 		return $tpc_plugin_data;
 	}
@@ -484,8 +485,15 @@ class Admin {
 				$name
 			)
 		);
-		$ob_btn_link = admin_url( defined( 'TIOB_PATH' ) ? 'admin.php?page=tiob-starter-sites&onboarding=yes' : 'admin.php?page=' . $theme_page . '&onboarding=yes#starter-sites' );
-		$ob_btn      = sprintf(
+		$ob_btn_link = admin_url( 'admin.php?page=' . $theme_page . '&onboarding=yes#starter-sites' );
+		if ( defined( 'TIOB_PATH' ) ) {
+			$url_path = 'admin.php?page=tiob-starter-sites';
+			if ( current_user_can( 'install_plugins' ) ) {
+				$url_path .= '&onboarding=yes';
+			}
+			$ob_btn_link = admin_url( $url_path );
+		}
+		$ob_btn = sprintf(
 		/* translators: 1 - onboarding url, 2 - button text */
 			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
 			esc_url( $ob_btn_link ),

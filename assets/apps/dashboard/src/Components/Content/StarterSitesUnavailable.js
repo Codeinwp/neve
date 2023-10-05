@@ -3,9 +3,9 @@ import InstallActivate from '../Plugin/InstallActivate';
 import { withSelect } from '@wordpress/data';
 
 const StarterSitesUnavailable = ({ templatesPluginData }) => {
-	const { tpcPath, tpcAdminURL, isOnboarding, assets } = neveDash;
+	const { tpcPath, tpcAdminURL, canInstallPlugins, assets } = neveDash;
 	const activateRedirect =
-		tpcAdminURL + (isOnboarding ? '&onboarding=yes' : '');
+		tpcAdminURL + (canInstallPlugins ? '&onboarding=yes' : '');
 	const currentState = templatesPluginData?.cta || 'install';
 
 	return (
