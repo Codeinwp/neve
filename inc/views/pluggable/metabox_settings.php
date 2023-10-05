@@ -207,6 +207,11 @@ class Metabox_Settings {
 			$editor_width_normal = ( empty( $meta_value ) ? 100 : $meta_value ) . '%';
 		}
 
+		$editor_title_opacity = 1;
+		$tile_disabled        = $this->get_title_disabled();
+		if ( $tile_disabled === 'on' ) {
+			$editor_title_opacity = 0.5;
+		}
 
 		$style = sprintf(
 			'
@@ -224,8 +229,10 @@ class Metabox_Settings {
 			.wp-block[data-align="full"] {
 			    max-width: none;
 			}
+			h1.editor-post-title { opacity: %s; }
 			',
-			$editor_width_normal
+			$editor_width_normal,
+			$editor_title_opacity
 		);
 
 		$style = $this->add_button_shadow_styles( $style );
@@ -233,6 +240,19 @@ class Metabox_Settings {
 		wp_add_inline_style( 'neve-gutenberg-style', $style );
 
 
+	}
+
+	/**
+	 * Get the disabled title status.
+	 *
+	 * @return false|mixed Status of the title.
+	 */
+	public function get_title_disabled() {
+		$post_id = $this->get_post_id();
+		if ( $post_id === false ) {
+			return false;
+		}
+		return get_post_meta( $post_id, self::DISABLE_TITLE, true );
 	}
 
 	/**
