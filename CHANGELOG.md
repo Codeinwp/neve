@@ -1,3 +1,16 @@
+##### [Version 3.7.1](https://github.com/Codeinwp/neve/compare/v3.7.0...v3.7.1) (2023-10-05)
+
+### Improvements
+- **Google Fonts**: Updated the Google Fonts library
+- **Onboarding UX**: Enhanced the onboarding process for a smoother user experience.
+- **WooCommerce Compatibility Check**: Verified the compatibility with WooCommerce 8.1 to ensure there are no issues.
+- **Elementor Compatibility Check**: Verified the compatibility with Elementor 3.17 to ensure there are no issues.
+
+### Bug Fixes
+- **Accessibility Fix**: Addressed the accessibility issue flagged on PageSpeed Insights, which was triggered by the absence of the tagline alongside the site title in the aria-label attribute.
+- **Light Mode Logo Correction**: Fixed the issue of the dark-mode logo being displayed inappropriately during the first visit in light mode.
+- **Onboarding redirection**: Fixed the issue where users got redirected to the old onboarding if they were installing the Cloud Templates & Patterns collection plugin from the dashboard
+
 #### [Version 3.7.0](https://github.com/Codeinwp/neve/compare/v3.6.7...v3.7.0) (2023-09-25)
 
 - [Feat] Improve the UX by decreasing the opacity of the Editor Title if the disabled title toggle from Neve Options inside the editor is active
