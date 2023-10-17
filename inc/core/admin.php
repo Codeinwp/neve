@@ -85,6 +85,11 @@ class Admin {
 
 		add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
 		add_filter( 'neve_pro_react_controls_localization', [ $this, 'adapt_conditional_headers' ] );
+
+		$offer = new Limited_Offers();
+		if ( $offer->can_show_dashboard_banner() && $offer->is_active() ) {
+			$offer->load_dashboard_hooks();
+		}
 	}
 
 	/**

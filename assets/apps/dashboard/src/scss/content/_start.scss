@@ -48,3 +48,28 @@
 		}
 	}
 }
+
+@import url('https://fonts.cdnfonts.com/css/barlow');
+.nv-deal {
+	margin-bottom: 10px;
+	display: flex;
+
+	a {
+		position: relative;
+	}
+
+	.nv-urgency {
+		position: absolute;
+		top: 15px;
+		left: 19px;
+
+		color: #FFF;
+		font-family: Barlow, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", sans-serif;
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		letter-spacing: 0.3px;
+		text-transform: uppercase;
+	}
+}
