@@ -124,7 +124,9 @@ declare global {
 				linkDashboard?: string;
 				linkGlobal?: string;
 				linkCustomizer?: string;
-			}
+				customizerBannerAlt?: string;
+				bannerAlt?: string;
+			};
 		};
 		NeveProReactCustomize: undefined | StringObjectKeys;
 	}

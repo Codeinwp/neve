@@ -9,7 +9,7 @@ import { fetchOptions } from '../utils/rest';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import { useState, Fragment, useEffect } from '@wordpress/element';
-import Deal from "./Deal";
+import Deal from './Deal';
 
 const App = ({ setSettings, toast, currentTab, setTab }) => {
 	const [loading, setLoading] = useState(true);
@@ -28,11 +28,7 @@ const App = ({ setSettings, toast, currentTab, setTab }) => {
 			<div className="content-wrap">
 				<div className="container content">
 					<div className="main">
-						{
-							( 'start' === currentTab ) && (
-								<Deal />
-							)
-						}
+						{'start' === currentTab && <Deal />}
 						{'starter-sites' !== currentTab && <Notifications />}
 						<TabsContent currentTab={currentTab} setTab={setTab} />
 					</div>

@@ -27,25 +27,18 @@ class Limited_Offers {
 	private $active = '';
 
 	/**
-	 * The banner URL.
-	 *
-	 * @var string
-	 */
-	public $banner_url = '';
-
-	/**
-	 * The banner URL for customizer
-	 *
-	 * @var string
-	 */
-	public $customizer_banner_url = '';
-
-	/**
 	 * The key for WP Options to disable the dashboard notification.
 	 *
 	 * @var string
 	 */
 	public $wp_option_dismiss_notification_key_base = 'dismiss_themeisle_notice_event_';
+
+	/**
+	 * Offer Links
+	 *
+	 * @var array<string>
+	 */
+	public $offer_metadata = array();
 
 	/**
 	 * LimitedOffers constructor.
@@ -54,7 +47,6 @@ class Limited_Offers {
 		try {
 			if ( $this->is_deal_active( 'bf' ) ) {
 				$this->activate_bff();
-				add_filter( 'themeisle_products_deal_priority', [ $this, 'add_priority' ] );
 			}
 		} catch ( Exception $e ) {
 			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
@@ -69,8 +61,9 @@ class Limited_Offers {
 	 * @return void
 	 */
 	public function load_dashboard_hooks() {
+		add_filter( 'themeisle_products_deal_priority', array( $this, 'add_priority' ) );
 		add_action( 'admin_notices', array( $this, 'render_dashboard_banner' ) );
-		add_action( 'wp_ajax_dismiss_themeisle_bf_notice', array( $this, 'disable_notification_ajax' ) );
+		add_action( 'wp_ajax_dismiss_themeisle_event_notice_neve', array( $this, 'disable_notification_ajax' ) );
 	}
 
 	/**
@@ -88,9 +81,17 @@ class Limited_Offers {
 	 * @return void
 	 */
 	public function activate_bff() {
-		$this->active                = 'bf';
-		$this->banner_url            = get_template_directory_uri() . '/assets/img/dashboard/black-friday-banner.png'; // TODO: change this based on product.
-		$this->customizer_banner_url = get_template_directory_uri() . '/assets/img/dashboard/black-friday-customizer-banner.png';
+		$this->active = 'bf';
+
+		$this->offer_metadata = array(
+			'bannerUrl'           => get_template_directory_uri() . '/assets/img/dashboard/black-friday-banner.png',
+			'bannerAlt'           => 'Neve Black Friday Sale',
+			'customizerBannerUrl' => get_template_directory_uri() . '/assets/img/dashboard/black-friday-customizer-banner.png',
+			'customizerBannerAlt' => 'Neve Black Friday Sale',
+			'linkDashboard'       => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'blackfridayltd23', 'dashboard' ), // TODO: change this based on product.
+			'linkGlobal'          => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'blackfridayltd23', 'globalnotice' ),
+			'linkCustomizer'      => tsdk_utmify( 'https://themeisle.com/themes/neve/', 'blackfriday23', 'customizer' ),
+		);
 	}
 
 	/**
@@ -192,16 +193,14 @@ class Limited_Offers {
 	 * @return array Localized data.
 	 */
 	public function get_localized_data() {
-		return array(
-			'active'              => $this->is_active(),
-			'dealSlug'            => $this->get_active_deal(),
-			'remainingTime'       => $this->get_remaining_time_for_deal( $this->get_active_deal() ),
-			'urgencyText'         => 'Hurry Up! Only ' . $this->get_remaining_time_for_deal( $this->get_active_deal() ) . ' left',
-			'bannerUrl'           => $this->banner_url,
-			'customizerBannerUrl' => $this->customizer_banner_url,
-			'linkDashboard'       => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'blackfridayltd23', 'dashboard' ), // TODO: change this based on product.
-			'linkGlobal'          => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'blackfridayltd23', 'globalnotice' ),
-			'linkCustomizer'      => tsdk_utmify( 'https://themeisle.com/themes/neve/', 'blackfriday23', 'customizer' ),
+		return array_merge(
+			array(
+				'active'        => $this->is_active(),
+				'dealSlug'      => $this->get_active_deal(),
+				'remainingTime' => $this->get_remaining_time_for_deal( $this->get_active_deal() ),
+				'urgencyText'   => 'Hurry Up! Only ' . $this->get_remaining_time_for_deal( $this->get_active_deal() ) . ' left',
+			),
+			$this->offer_metadata
 		);
 	}
 
@@ -211,8 +210,8 @@ class Limited_Offers {
 	 * @return void
 	 */
 	public function disable_notification_ajax() {
-		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['nonce'] ), 'dismiss_themeisle_bf_notice' ) ) {
-			wp_die( esc_html( __( 'Invalid nonce! Refresh the page and try again.', 'neve' ) ) );
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['nonce'] ), 'dismiss_themeisle_event_notice_neve' ) ) {
+			wp_die( 'Invalid nonce! Refresh the page and try again.' );
 		}
 
 		// We record the time and the plugin of the dismissed notification.
@@ -226,6 +225,10 @@ class Limited_Offers {
 	 * @return void
 	 */
 	public function render_dashboard_banner() {
+
+		if ( ! $this->has_priority() ) {
+			return;
+		}
 
 		$message = 'Neve <strong>Black Friday Sale</strong> - Save big with a <strong>Lifetime License</strong> of Neve Agency Plan. <strong>Only 100 licenses</strong>, for a limited time!';
 
@@ -257,8 +260,8 @@ class Limited_Offers {
 			<span>
 				<?php echo wp_kses_post( $message ); ?>
 			</span>
-			<a href="<?php echo esc_url( tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'blackfridayltd23', 'dashboard' ) ); ?>" target="_blank" rel="external noreferrer noopener">
-				<?php esc_html_e( 'Learn more', 'neve' ); ?>
+			<a href="<?php echo esc_url( ! empty( $this->offer_metadata['linkGlobal'] ) ? $this->offer_metadata['linkGlobal'] : '' ); ?>" target="_blank" rel="external noreferrer noopener">
+				<?php esc_html( 'Learn more' ); ?>
 			</a>
 			<span class="themeisle-sale-error"></span>
 		</div>
@@ -273,8 +276,8 @@ class Limited_Offers {
 							'Content-Type': 'application/x-www-form-urlencoded'
 						},
 						body: new URLSearchParams({
-							action: 'dismiss_themeisle_bf_notice',
-							nonce: '<?php echo esc_attr( wp_create_nonce( 'dismiss_themeisle_bf_notice' ) ); ?>'
+							action: 'dismiss_themeisle_event_notice_neve',
+							nonce: '<?php echo esc_attr( wp_create_nonce( 'dismiss_themeisle_event_notice_neve' ) ); ?>'
 						})
 					})
 						.then(response => response.text())
@@ -302,7 +305,7 @@ class Limited_Offers {
 	 * @return bool
 	 */
 	public function can_show_dashboard_banner() {
-		return ! get_option( $this->wp_option_dismiss_notification_key_base . $this->active, false ) && $this->has_priority();
+		return ! get_option( $this->wp_option_dismiss_notification_key_base . $this->active, false );
 	}
 
 	/**
@@ -312,13 +315,8 @@ class Limited_Offers {
 	 * @return array Array enhanced with Neve priority.
 	 */
 	public function add_priority( $products ) {
-		if ( ! is_array( $products ) ) {
-			return [ 'neve' => 0 ];
-		}
-
-		$priority['neve'] = 0; // TODO: change this based on product.
-
-		return $priority;
+		$products['neve'] = 0; // TODO: change this based on product.
+		return $products;
 	}
 
 	/**
@@ -333,7 +331,7 @@ class Limited_Offers {
 			return true;
 		}
 
-		$highest_priority = array_search( max( $products ), $products );
+		$highest_priority = array_search( min( $products ), $products );
 		return 'neve' === $highest_priority; // TODO: change this based on product.
 	}
 }
