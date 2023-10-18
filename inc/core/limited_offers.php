@@ -88,7 +88,7 @@ class Limited_Offers {
 			'bannerAlt'           => 'Neve Black Friday Sale',
 			'customizerBannerUrl' => get_template_directory_uri() . '/assets/img/dashboard/black-friday-customizer-banner.png',
 			'customizerBannerAlt' => 'Neve Black Friday Sale',
-			'linkDashboard'       => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'blackfridayltd23', 'dashboard' ), // TODO: change this based on product.
+			'linkDashboard'       => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'blackfridayltd23', 'dashboard' ),
 			'linkGlobal'          => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'blackfridayltd23', 'globalnotice' ),
 			'linkCustomizer'      => tsdk_utmify( 'https://themeisle.com/themes/neve/', 'blackfriday23', 'customizer' ),
 		);
@@ -252,7 +252,6 @@ class Limited_Offers {
 		</style>
 		<div class="themeisle-sale notice notice-info is-dismissible">
 			<div class="notice-dismiss"></div>
-			<!--- TODO: change this based on product. -->
 			<svg width="24" height="24" viewBox="0 0 61 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 0.198486H61V59.9128H0.5V0.198486ZM25.0305 30.0698V44.2415H17.7858V15.4382C17.7858 15.2989 17.8281 15.2013 17.9129 15.1456C17.9976 15.0899 18.1529 15.1595 18.3789 15.3546L36.4696 30.0698V15.8145H43.7143V44.6596C43.7143 44.8268 43.672 44.9313 43.5872 44.9731C43.5025 45.0149 43.3472 44.9383 43.1212 44.7432L25.0305 30.0698ZM43.7143 48.9127H17.7858V51.2699H43.7143V48.9127Z" fill="#0073AA"/>
 			</svg>
@@ -309,18 +308,19 @@ class Limited_Offers {
 	}
 
 	/**
-	 * Add priority to the filter.
+	 * Add product priority to the filter.
 	 *
 	 * @param array $products Registered products.
 	 * @return array Array enhanced with Neve priority.
 	 */
 	public function add_priority( $products ) {
-		$products['neve'] = 0; // TODO: change this based on product.
+		$products['neve'] = 0;
 		return $products;
 	}
 
 	/**
 	 * Check if the current product has priority.
+	 * Use this for conditional rendering if you want to show the banner only for one product.
 	 *
 	 * @return bool True if the current product has priority.
 	 */
@@ -332,6 +332,6 @@ class Limited_Offers {
 		}
 
 		$highest_priority = array_search( min( $products ), $products );
-		return 'neve' === $highest_priority; // TODO: change this based on product.
+		return 'neve' === $highest_priority;
 	}
 }
