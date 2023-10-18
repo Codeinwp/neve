@@ -28,7 +28,7 @@ const App = ({ setSettings, toast, currentTab, setTab }) => {
 			<div className="content-wrap">
 				<div className="container content">
 					<div className="main">
-						{'start' === currentTab && <Deal />}
+						<Deal />
 						{'starter-sites' !== currentTab && <Notifications />}
 						<TabsContent currentTab={currentTab} setTab={setTab} />
 					</div>
