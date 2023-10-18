@@ -41,6 +41,18 @@ class Limited_Offers {
 	public $offer_metadata = array();
 
 	/**
+	 * Timeline for the offers.
+	 *
+	 * @var array[]
+	 */
+	public $timelines = array(
+		'bf' => array(
+			'start' => '2023-10-10 00:00:00',
+			'end'   => '2023-11-27 23:59:00',
+		), // TODO: Add the correct date.
+	);
+
+	/**
 	 * LimitedOffers constructor.
 	 */
 	public function __construct() {
@@ -112,18 +124,11 @@ class Limited_Offers {
 	 */
 	public function is_deal_active( $slug ) {
 
-		if ( empty( $slug ) ) {
+		if ( empty( $slug ) || ! array_key_exists( $slug, $this->timelines ) ) {
 			return false;
 		}
 
-		if ( 'bf' === $slug ) {
-			$start_date = '2023-10-10 00:00:00'; // TODO: Add the correct date after QA.
-			$end_date   = '2023-11-27 23:59:00';
-		} else {
-			return false;
-		}
-
-		return $this->check_date_range( $start_date, $end_date );
+		return $this->check_date_range( $this->timelines[ $slug ]['start'], $this->timelines[ $slug ]['end'] );
 	}
 
 	/**
@@ -133,18 +138,12 @@ class Limited_Offers {
 	 * @return string Remaining time for the deal.
 	 */
 	public function get_remaining_time_for_deal( $slug ) {
-		if ( empty( $slug ) ) {
-			return '';
-		}
-
-		if ( 'bf' === $slug ) {
-			$end_date = '2023-11-27 23:59:00';
-		} else {
+		if ( empty( $slug ) || ! array_key_exists( $slug, $this->timelines ) ) {
 			return '';
 		}
 
 		try {
-			$end_date     = new DateTime( $end_date, new DateTimeZone( 'GMT' ) );
+			$end_date     = new DateTime( $this->timelines[ $slug ]['end'], new DateTimeZone( 'GMT' ) );
 			$current_date = new DateTime( 'now', new DateTimeZone( 'GMT' ) );
 			$diff         = $end_date->diff( $current_date );
 
