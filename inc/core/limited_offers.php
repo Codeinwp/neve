@@ -74,7 +74,7 @@ class Limited_Offers {
 	 */
 	public function load_dashboard_hooks() {
 		add_filter( 'themeisle_products_deal_priority', array( $this, 'add_priority' ) );
-		add_action( 'admin_notices', array( $this, 'render_dashboard_banner' ) );
+		add_action( 'admin_notices', array( $this, 'render_notice' ) );
 		add_action( 'wp_ajax_dismiss_themeisle_event_notice_neve', array( $this, 'disable_notification_ajax' ) );
 	}
 
@@ -223,7 +223,7 @@ class Limited_Offers {
 	 *
 	 * @return void
 	 */
-	public function render_dashboard_banner() {
+	public function render_notice() {
 
 		if ( ! $this->has_priority() ) {
 			return;
@@ -257,10 +257,10 @@ class Limited_Offers {
 
 			<span>
 				<?php echo wp_kses_post( $message ); ?>
+				<a href="<?php echo esc_url( ! empty( $this->offer_metadata['linkGlobal'] ) ? $this->offer_metadata['linkGlobal'] : '' ); ?>" target="_blank" rel="external noreferrer noopener">
+					Learn more
+				</a>
 			</span>
-			<a href="<?php echo esc_url( ! empty( $this->offer_metadata['linkGlobal'] ) ? $this->offer_metadata['linkGlobal'] : '' ); ?>" target="_blank" rel="external noreferrer noopener">
-				<?php esc_html( 'Learn more' ); ?>
-			</a>
 			<span class="themeisle-sale-error"></span>
 		</div>
 		<script type="text/javascript">

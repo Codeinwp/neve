@@ -49,7 +49,6 @@
 	}
 }
 
-@import url('https://fonts.cdnfonts.com/css/barlow');
 .nv-deal {
 	margin-bottom: 10px;
 	display: flex;
@@ -58,13 +57,18 @@
 		position: relative;
 	}
 
+	img {
+		width: 100%;
+	}
+
 	.nv-urgency {
 		position: absolute;
-		top: 15px;
-		left: 19px;
+
+		top: 10%;
+		left: 2.7%;
 
 		color: #FFF;
-		font-family: Barlow, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", sans-serif;
+		font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", sans-serif;
 		font-size: 14px;
 		font-style: normal;
 		font-weight: 700;
@@ -73,3 +77,16 @@
 		text-transform: uppercase;
 	}
 }
+
+@media(max-width: 480px) {
+	.nv-deal .nv-urgency {
+		font-size: 7px;
+	}
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+	.nv-deal .nv-urgency {
+		font-size: 10px;
+	}
+}
+
