@@ -152,7 +152,7 @@ class Loader {
 							'customIconKey'  => SearchIconButton::CUSTOM_ICON,
 						],
 					],
-					'deal'                          => $offer->get_localized_data(),
+					'deal'                          => ! defined( 'NEVE_PRO_VERSION' ) ? $offer->get_localized_data() : array(),
 				)
 			)
 		);
