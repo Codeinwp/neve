@@ -7,7 +7,11 @@ const Deal = () => {
 
 	return (
 		<div className="nv-deal">
-			<a href={neveDash?.deal?.linkDashboard} target="_blank" rel="external noreferrer noopener">
+			<a
+				href={neveDash?.deal?.linkDashboard}
+				target="_blank"
+				rel="external noreferrer noopener"
+			>
 				<img
 					src={neveDash?.deal?.bannerUrl}
 					alt={neveDash?.deal?.bannerAlt}
