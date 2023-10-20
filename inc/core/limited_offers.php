@@ -102,7 +102,7 @@ class Limited_Offers {
 			'customizerBannerAlt' => 'Neve Black Friday Sale',
 			'linkDashboard'       => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'blackfridayltd23', 'dashboard' ),
 			'linkGlobal'          => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday', 'blackfridayltd23', 'globalnotice' ),
-			'linkCustomizer'      => tsdk_utmify( 'https://themeisle.com/themes/neve/', 'blackfriday23', 'customizer' ),
+			'linkCustomizer'      => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade', 'blackfriday23', 'customizer' ),
 		);
 	}
 
