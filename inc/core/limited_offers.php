@@ -238,6 +238,9 @@ class Limited_Offers {
 
 				display: flex;
 				align-items: center;
+
+				opacity: 1;
+				transition: opacity 0.8s ease-out;
 			}
 			.themeisle-sale svg {
 				margin-right: 15px;
@@ -247,6 +250,9 @@ class Limited_Offers {
 			}
 			.themeisle-sale-error {
 				color: red;
+			}
+			.themeisle-sale.hidden {
+				opacity: 0;
 			}
 		</style>
 		<div class="themeisle-sale notice notice-info is-dismissible">
@@ -285,7 +291,12 @@ class Limited_Offers {
 								return;
 							}
 
-							jQuery( '.themeisle-sale.notice' ).fadeOut()
+							document.querySelectorAll( '.themeisle-sale.notice' ).forEach( el => {
+								el.classList.add( 'hidden' );
+								setTimeout( () => {
+									el.remove();
+								}, 800 );
+							});
 						})
 						.catch(error => {
 							console.error( 'Error:', error );
