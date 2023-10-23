@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 02/10/23
+ * Updated on 23/10/23
  *
  * @package neve
  */
@@ -1211,6 +1211,7 @@ return array(
 	'Playfair' => array( '300', '400', '500', '600', '700', '800', '900', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Playfair Display' => array( '400', '500', '600', '700', '800', '900', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Playfair Display SC' => array( '400', '700', '900', '400italic', '700italic', '900italic',),
+	'Playpen Sans' => array( '100', '200', '300', '400', '500', '600', '700', '800',),
 	'Plus Jakarta Sans' => array( '200', '300', '400', '500', '600', '700', '800', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic',),
 	'Podkova' => array( '400', '500', '600', '700', '800',),
 	'Poiret One' => array( '400',),
@@ -1290,7 +1291,7 @@ return array(
 	'Risque' => array( '400',),
 	'Road Rage' => array( '400',),
 	'Roboto' => array( '100', '300', '400', '500', '700', '900', '100italic', '300italic', '400italic', '500italic', '700italic', '900italic',),
-	'Roboto Condensed' => array( '300', '400', '700', '300italic', '400italic', '700italic',),
+	'Roboto Condensed' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Roboto Flex' => array( '400',),
 	'Roboto Mono' => array( '100', '200', '300', '400', '500', '600', '700', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic',),
 	'Roboto Serif' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
@@ -1422,6 +1423,7 @@ return array(
 	'Sofia Sans Semi Condensed' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Solitreo' => array( '400',),
 	'Solway' => array( '300', '400', '500', '700', '800',),
+	'Sometype Mono' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Song Myung' => array( '400',),
 	'Sono' => array( '200', '300', '400', '500', '600', '700', '800',),
 	'Sonsie One' => array( '400',),
