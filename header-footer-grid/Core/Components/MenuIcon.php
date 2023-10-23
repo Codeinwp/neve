@@ -11,7 +11,6 @@
 
 namespace HFG\Core\Components;
 
-use HFG\Core\Script_Register;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Core\Dynamic_Css;
@@ -34,6 +33,7 @@ class MenuIcon extends Abstract_Component {
 	const QUICK_LINKS_ID    = 'quick-links';
 	const LABEL_MARGIN_ID   = 'label_margin';
 	const MENU_ICON         = 'menu_icon';
+	const SVG_MENU_ICON     = 'svg_menu_icon';
 
 	/**
 	 * Padding settings default values.
@@ -205,7 +205,7 @@ JS;
 	 */
 	private function get_menu_style( $menu_icon ) {
 		// We don't add any css for the default option.
-		if ( ! in_array( $menu_icon, [ 'arrow', 'donner', 'dots', 'minus', 'vortex', 'squeeze' ] ) ) {
+		if ( ! in_array( $menu_icon, [ 'arrow', 'donner', 'dots', 'minus', 'vortex', 'squeeze', 'svg' ] ) ) {
 			return '';
 		}
 
@@ -251,6 +251,17 @@ JS;
 				 bottom: -5px;
 			}
 CSS;
+
+		// SVG style
+		if ( $menu_icon === 'svg' ) {
+			$css .= <<<CSS
+				.hamburger-box.icon-svg {
+					width: 15px;
+					display:flex;
+					justify-content:center;
+				}
+CSS;
+		}
 
 		// Arrow style
 		if ( $menu_icon === 'arrow' ) {
@@ -538,10 +549,29 @@ CSS;
 						'minus'   => 'Minus',
 						'vortex'  => 'Vortex',
 						'squeeze' => 'Squeeze',
+						'svg'     => __( 'Custom SVG', 'neve' ),
 					],
 					'default' => 'default',
 				],
 				'section'               => $this->section,
+				'live_refresh_selector' => $this->default_selector,
+				'conditional_header'    => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::SVG_MENU_ICON,
+				'group'                 => $this->get_id(),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'refresh',
+				'sanitize_callback'     => array( $this, 'sanitize_svg' ),
+				'label'                 => __( 'Custom SVG', 'neve' ),
+				'type'                  => 'textarea',
+				'section'               => $this->section,
+				'options'               => [
+					'active_callback' => [ $this, 'svg_menu_icon_active_callback' ],
+				],
 				'live_refresh_selector' => $this->default_selector,
 				'conditional_header'    => true,
 			]
@@ -679,6 +709,27 @@ CSS;
 			return $only_click_attribute ? '' : 'aria-expanded="false"';
 		}
 		return ( $only_click_attribute ? '' : 'aria-expanded="false" ' ) . 'onclick="if(\'undefined\' !== typeof toggleAriaClick ) { toggleAriaClick() }"';
+	}
+
+	/**
+	 * Callback to check if the menu icon is set to svg.
+	 *
+	 * @return bool
+	 */
+	public function svg_menu_icon_active_callback() {
+		return Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' ) === 'svg';
+	}
+
+	/**
+	 * Sanitize SVG input.
+	 *
+	 * @param string $input The input to sanitize.
+	 *
+	 * @return string
+	 */
+	public function sanitize_svg( $input ) {
+		// TODO: sanitize svg.
+		return $input;
 	}
 
 }
