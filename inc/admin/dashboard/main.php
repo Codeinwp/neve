@@ -7,6 +7,7 @@
 
 namespace Neve\Admin\Dashboard;
 
+use Neve\Core\Limited_Offers;
 use Neve\Core\Theme_Info;
 /**
  * Class Main
@@ -315,6 +316,9 @@ class Main {
 	 * @return array
 	 */
 	private function get_localization() {
+
+		$offer = new Limited_Offers();
+
 		$old_about_config  = apply_filters( 'ti_about_config_filter', [ 'useful_plugins' => true ] );
 		$theme_name        = apply_filters( 'ti_wl_theme_name', $this->theme_args['name'] );
 		$plugin_name       = apply_filters( 'ti_wl_plugin_name', 'Neve Pro' );
@@ -376,6 +380,7 @@ class Main {
 			'getPluginStateBaseURL'   => esc_url( rest_url( '/nv/v1/dashboard/plugin-state/' ) ),
 			'canInstallPlugins'       => current_user_can( 'install_plugins' ),
 			'canActivatePlugins'      => current_user_can( 'activate_plugins' ),
+			'deal'                    => ! defined( 'NEVE_PRO_VERSION' ) ? $offer->get_localized_data() : array(),
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
