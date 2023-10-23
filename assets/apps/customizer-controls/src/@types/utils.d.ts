@@ -114,6 +114,19 @@ declare global {
 			nonce: string;
 			hideConditionalHeaderSelector: boolean;
 			dashUpdatesMessage: string;
+			deal?: {
+				active?: boolean;
+				dealSlug?: string;
+				urgencyText?: string;
+				remaningTime?: string;
+				bannerUrl?: string;
+				customizerBannerUrl?: string;
+				linkDashboard?: string;
+				linkGlobal?: string;
+				linkCustomizer?: string;
+				customizerBannerAlt?: string;
+				bannerAlt?: string;
+			};
 		};
 		NeveProReactCustomize: undefined | StringObjectKeys;
 	}
