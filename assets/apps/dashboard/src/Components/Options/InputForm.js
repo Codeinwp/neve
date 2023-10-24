@@ -42,6 +42,13 @@ const InputForm = ({
 						value={value}
 						onChange={(e) => {
 							setValue(e.target.value);
+							if (slug === 'typekit_id') {
+								window.nTrk?.add({
+									feature: 'typekit-fonts',
+									featureComponent: 'typekit-id',
+									featureValue: 'enabled',
+								});
+							}
 						}}
 					/>
 					<div className="actions">

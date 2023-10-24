@@ -22,6 +22,13 @@ const Select = ({
 						if (r.success) {
 							changeOption(slug, value);
 							setToast(true);
+							if (slug === 'typekit_loading_method') {
+								window.nTrk?.add({
+									feature: 'typekit-fonts',
+									featureComponent: 'loading-method',
+									featureValue: value,
+								});
+							}
 							return false;
 						}
 						setToast(false);
