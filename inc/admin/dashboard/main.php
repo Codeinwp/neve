@@ -317,8 +317,6 @@ class Main {
 	 * @return array
 	 */
 	private function get_localization() {
-		$license           = apply_filters( 'product_neve_license_key', 'free' );
-		$license_hash      = 'free' === $license ? 'free' : wp_hash( $license );
 		$old_about_config  = apply_filters( 'ti_about_config_filter', [ 'useful_plugins' => true ] );
 		$theme_name        = apply_filters( 'ti_wl_theme_name', $this->theme_args['name'] );
 		$plugin_name       = apply_filters( 'ti_wl_plugin_name', 'Neve Pro' );
@@ -342,9 +340,6 @@ class Main {
 			'supportURL'              => esc_url( 'https://wordpress.org/support/theme/neve/' ),
 			'docsURL'                 => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
 			'codexURL'                => esc_url( 'https://codex.nevewp.com/' ),
-			'canTrack'                => 'yes' === get_option( 'neve_logger_flag', false ) ? true : false,
-			'trackAPI'                => Tracker::$track_url,
-			'trackHash'               => $license_hash,
 			'strings'                 => [
 				'proTabTitle'                   => wp_kses_post( $plugin_name ),
 				/* translators: %s - Theme name */

@@ -8,6 +8,8 @@
  * @package Neve
  */
 
+use Neve\Core\Tracker;
+
 define( 'NEVE_VERSION', '3.7.2' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
@@ -163,4 +165,33 @@ add_filter(
 		];
 	}
 );
+
+add_action(
+	'init',
+	function () {
+		$license      = apply_filters( 'product_neve_license_key', 'free' );
+		$license_hash = 'free' === $license ? 'free' : wp_hash( $license );
+		$tracker_data = [
+			'canTrack'  => 'yes' === get_option( 'neve_logger_flag', false ) ? true : false,
+			'trackAPI'  => Tracker::$track_url,
+			'trackHash' => $license_hash,
+		];
+
+		add_filter(
+			'neve_dashboard_page_data',
+			function ( $localized_data ) use ( $tracker_data ) {
+				$localized_data['tracker'] = $tracker_data;
+				return $localized_data;
+			} 
+		);
+		add_filter(
+			'neve_react_controls_localization',
+			function ( $localized_data ) use ( $tracker_data ) {
+				$localized_data['tracker'] = $tracker_data;
+				return $localized_data;
+			} 
+		);
+	}
+);
+
 

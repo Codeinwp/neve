@@ -36,6 +36,12 @@ const ComponentsPopover: React.FC<Props> = ({
 		nextItems.push({ id: itemId });
 		updateLayout(rowId, slotId, nextItems);
 		setSidebarItems(sidebarItems.filter((i) => i.id !== itemId));
+		// @ts-ignore
+		window.nTrk?.add({
+			feature: builder + '_builder',
+			featureComponent: 'component-added',
+			featureValue: { rowId, slotId, itemId },
+		});
 		closePopup();
 	};
 

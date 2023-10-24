@@ -80,6 +80,15 @@ export class EventTrackingAccumulator {
 		 */
 		this.interval = null;
 
+		/**
+		 * @type {number} - The interval to send the events automatically.
+		 * @type {*|{}}
+		 */
+		this.trackData =
+			window?.neveDash?.tracker ||
+			window?.NeveReactCustomize?.tracker ||
+			{};
+
 		// When tab is closed, send all events.
 		window.addEventListener('beforeunload', async () => {
 			await this.sendAll();
@@ -135,8 +144,8 @@ export class EventTrackingAccumulator {
 			const response = await this.sendBulkTracking(
 				events.map((event) => ({
 					slug: 'neve',
-					site: window?.neveDash?.rootUrl ?? window.location.hostname,
-					license: window?.neveDash?.trackHash,
+					site: this.trackData?.rootUrl ?? window.location.hostname,
+					license: this.trackData?.trackHash,
 					data: event,
 				}))
 			);
@@ -192,7 +201,10 @@ export class EventTrackingAccumulator {
 	 * @return {boolean} - True if the user has given consent.
 	 */
 	hasConsent() {
-		return Boolean('1' === window?.neveDash?.canTrack);
+		return (
+			Boolean('1' === this.trackData?.canTrack) ||
+			Boolean(true === this.trackData?.canTrack)
+		);
 	}
 
 	/**
@@ -202,7 +214,7 @@ export class EventTrackingAccumulator {
 	 * @return {Promise<Response>} - Response from the server.
 	 */
 	sendBulkTracking(payload) {
-		return fetch(window.neveDash.trackAPI, {
+		return fetch(this.trackData?.trackAPI, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
