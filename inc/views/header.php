@@ -286,7 +286,7 @@ class Header extends Base_View {
 		Tracker::track(
 			array(
 				array(
-					'feature'          => 'mega-menu',
+					'feature'          => 'mega-menu-free',
 					'featureComponent' => 'is-active',
 					'featureValue'     => $has_mm,
 				),

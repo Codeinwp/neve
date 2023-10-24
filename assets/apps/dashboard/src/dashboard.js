@@ -6,6 +6,7 @@ import { render } from '@wordpress/element';
 import actions from './store/actions';
 import reducer from './store/reducer';
 import selectors from './store/selectors';
+import './tracking.js';
 
 registerStore('neve-dashboard', {
 	reducer,

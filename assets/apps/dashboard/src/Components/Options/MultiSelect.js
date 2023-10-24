@@ -19,6 +19,13 @@ const MultiSelectOption = ({
 				choices={choices}
 				currentValue={getOption(slug) || ['category']}
 				onChange={(value) => {
+					if (slug === 'featured_image_taxonomies') {
+						window.nTrk?.add({
+							feature: 'taxonomy-featured-image',
+							featureComponent: 'selected-taxonomies',
+							featureValue: value,
+						});
+					}
 					changeSetting(slug, value).then((r) => {
 						if (r.success) {
 							changeOption(slug, value);

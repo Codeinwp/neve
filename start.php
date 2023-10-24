@@ -34,6 +34,7 @@ function neve_run() {
 			'hfg_d_search_iconbutton'   => true, // Dynamic icon selection or a button for search components
 			'restrict_content'          => true,
 			'theme_dedicated_menu'      => true, // Theme uses the new menu location for settings and sub-pages.
+			'track'                     => true, // Track theme usage.
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
