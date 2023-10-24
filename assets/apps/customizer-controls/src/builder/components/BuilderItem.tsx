@@ -51,6 +51,12 @@ const BuilderItem: React.FC<Props> = (props) => {
 				return a.id < b.id ? -1 : 1;
 			})
 		);
+		// @ts-ignore
+		window.nTrk?.add({
+			feature: builder + '_builder',
+			featureComponent: 'component-removed',
+			featureValue: { row, slot, componentId },
+		});
 	};
 
 	const iconSize = 18;
