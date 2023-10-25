@@ -561,19 +561,17 @@ CSS;
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                    => self::SVG_MENU_ICON,
-				'group'                 => $this->get_id(),
-				'tab'                   => SettingsManager::TAB_STYLE,
-				'transport'             => 'refresh',
-				'sanitize_callback'     => array( $this, 'sanitize_svg' ),
-				'label'                 => __( 'Custom SVG', 'neve' ),
-				'type'                  => 'textarea',
-				'section'               => $this->section,
-				'options'               => [
+				'id'                => self::SVG_MENU_ICON,
+				'group'             => $this->get_id(),
+				'tab'               => SettingsManager::TAB_STYLE,
+				'transport'         => 'refresh',
+				'sanitize_callback' => [ $this, 'sanitize_svg_input' ],
+				'label'             => __( 'Custom SVG', 'neve' ),
+				'type'              => 'textarea',
+				'section'           => $this->section,
+				'options'           => [
 					'active_callback' => [ $this, 'svg_menu_icon_active_callback' ],
 				],
-				'live_refresh_selector' => $this->default_selector,
-				'conditional_header'    => true,
 			]
 		);
 
@@ -723,13 +721,81 @@ CSS;
 	/**
 	 * Sanitize SVG input.
 	 *
-	 * @param string $input The input to sanitize.
+	 * @param string $content The input to sanitize.
 	 *
 	 * @return string
 	 */
-	public function sanitize_svg( $input ) {
-		// TODO: sanitize svg.
-		return $input;
-	}
+	public function sanitize_svg_input( $content ) {
+		// Remove comments
+		$content = preg_replace( '/<!--(.*)-->/Uis', '', $content );
 
+		// Load the SVG content into a DOMDocument
+		$dom = new \DOMDocument();
+		// phpcs:ignore
+		@$dom->loadXML( $content );
+
+		// List of allowed SVG elements
+		$allowed_tags = [
+			'svg',
+			'circle',
+			'ellipse',
+			'line',
+			'polygon',
+			'polyline',
+			'rect',
+			'path',
+			'g',
+			'defs',
+			'use',
+			'style',
+			'text',
+			'symbol',
+			'desc',
+			'title',
+		];
+
+		// List of allowed SVG attributes (again, expand as needed)
+		$allowed_attrs = [
+			'id',
+			'class',
+			'viewBox',
+			'width',
+			'height',
+			'fill',
+			'stroke',
+			'stroke-width',
+			'stroke-linecap',
+			'stroke-linejoin',
+			'd',
+			'transform',
+			'x',
+			'y',
+			'r',
+			'cx',
+			'cy',
+		];
+
+		// Remove disallowed elements
+		foreach ( $dom->getElementsByTagName( '*' ) as $node ) {
+			// phpcs:disable
+			if ( ! in_array( $node->tagName, $allowed_tags ) ) {
+				$node->parentNode->removeChild( $node );
+				// phpcs:enable
+			} else {
+				// For allowed elements, remove any disallowed attributes
+				for ( $i = $node->attributes->length - 1; $i >= 0; $i-- ) {
+					$attr_name = $node->attributes->item( $i )->name;
+
+					if ( ! in_array( $attr_name, $allowed_attrs ) ) {
+						$node->removeAttribute( $attr_name );
+					}
+				}
+			}
+		}
+
+		// Save the cleaned SVG content
+		$sanitized_svg = $dom->saveXML();
+
+		return $sanitized_svg;
+	}
 }
