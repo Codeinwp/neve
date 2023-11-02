@@ -23,7 +23,7 @@ const Select = ({
 							changeOption(slug, value);
 							setToast(true);
 							if (slug === 'typekit_loading_method') {
-								window.nTrk?.add({
+								window.tiTrk?.with('neve').add({
 									feature: 'typekit-fonts',
 									featureComponent: 'loading-method',
 									featureValue: value,

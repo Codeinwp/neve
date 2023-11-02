@@ -37,7 +37,7 @@ const ComponentsPopover: React.FC<Props> = ({
 		updateLayout(rowId, slotId, nextItems);
 		setSidebarItems(sidebarItems.filter((i) => i.id !== itemId));
 		// @ts-ignore
-		window.nTrk?.add({
+		window.tiTrk?.with('neve').add({
 			feature: builder + '_builder',
 			featureComponent: 'component-added',
 			featureValue: { rowId, slotId, itemId },

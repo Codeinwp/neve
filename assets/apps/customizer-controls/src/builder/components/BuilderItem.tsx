@@ -52,7 +52,7 @@ const BuilderItem: React.FC<Props> = (props) => {
 			})
 		);
 		// @ts-ignore
-		window.nTrk?.add({
+		window.tiTrk?.with('neve').add({
 			feature: builder + '_builder',
 			featureComponent: 'component-removed',
 			featureValue: { row, slot, componentId },

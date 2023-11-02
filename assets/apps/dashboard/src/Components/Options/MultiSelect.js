@@ -20,7 +20,7 @@ const MultiSelectOption = ({
 				currentValue={getOption(slug) || ['category']}
 				onChange={(value) => {
 					if (slug === 'featured_image_taxonomies') {
-						window.nTrk?.add({
+						window.tiTrk?.with('neve').add({
 							feature: 'taxonomy-featured-image',
 							featureComponent: 'selected-taxonomies',
 							featureValue: value,
