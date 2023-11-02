@@ -177,6 +177,8 @@ const ComponentsPopover: React.FC<Props> = ({
 			position="top center"
 			className="items-popover"
 			onFocusOutside={closePopup}
+			// @ts-ignore
+			inline={true}
 		>
 			<div className="popover-header">
 				<Icon icon={search} />

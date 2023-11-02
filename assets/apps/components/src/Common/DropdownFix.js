@@ -145,6 +145,7 @@ export default function Dropdown(props) {
 						popoverProps ? popoverProps.className : undefined,
 						contentClassName
 					)}
+					inline={true}
 				>
 					{renderContent(args)}
 				</Popover>
