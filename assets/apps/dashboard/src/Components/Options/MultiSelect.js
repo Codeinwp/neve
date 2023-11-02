@@ -19,13 +19,11 @@ const MultiSelectOption = ({
 				choices={choices}
 				currentValue={getOption(slug) || ['category']}
 				onChange={(value) => {
-					if (slug === 'featured_image_taxonomies') {
-						window.tiTrk?.with('neve').add({
-							feature: 'taxonomy-featured-image',
-							featureComponent: 'selected-taxonomies',
-							featureValue: value,
-						});
-					}
+					window.tiTrk?.with('neve').add({
+						feature: 'module-settings',
+						featureComponent: slug,
+						featureValue: value,
+					});
 					changeSetting(slug, value).then((r) => {
 						if (r.success) {
 							changeOption(slug, value);
