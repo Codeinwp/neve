@@ -40,7 +40,7 @@ const ComponentsPopover: React.FC<Props> = ({
 		window.tiTrk?.with('neve').add({
 			feature: builder + '_builder',
 			featureComponent: 'component-added',
-			featureValue: { rowId, slotId, itemId },
+			featureValue: JSON.stringify({ rowId, slotId, itemId }),
 		});
 		closePopup();
 	};
