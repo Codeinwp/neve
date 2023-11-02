@@ -18,6 +18,11 @@ const Select = ({
 				label={label}
 				value={getOption(slug) || 'css'}
 				onChange={(value) => {
+					window.tiTrk?.with('neve').add({
+						feature: 'module-settings',
+						featureComponent: slug,
+						featureValue: value,
+					});
 					changeSetting(slug, value).then((r) => {
 						if (r.success) {
 							changeOption(slug, value);
