@@ -10,6 +10,7 @@ namespace Neve\Customizer;
 
 use HFG\Core\Components\Utility\SearchIconButton;
 use Neve\Core\Factory;
+use Neve\Core\Limited_Offers;
 use Neve\Core\Settings\Config;
 use Neve\Customizer\Options\Colors_Background;
 
@@ -112,6 +113,7 @@ class Loader {
 			true
 		);
 
+		$offer        = new Limited_Offers();
 		$bundle_path  = get_template_directory_uri() . '/assets/apps/customizer-controls/build/';
 		$dependencies = ( include get_template_directory() . '/assets/apps/customizer-controls/build/controls.asset.php' );
 		wp_register_script( 'react-controls', $bundle_path . 'controls.js', $dependencies['dependencies'], $dependencies['version'], true );
@@ -150,6 +152,7 @@ class Loader {
 							'customIconKey'  => SearchIconButton::CUSTOM_ICON,
 						],
 					],
+					'deal'                          => ! defined( 'NEVE_PRO_VERSION' ) ? $offer->get_localized_data() : array(),
 				)
 			)
 		);
