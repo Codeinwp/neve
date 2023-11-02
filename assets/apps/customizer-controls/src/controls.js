@@ -1,7 +1,6 @@
 /* global CustomEvent, NeveReactCustomize, MutationObserver */
 import './public-path.js';
 import { render } from '@wordpress/element';
-import '../../../js/src/tracking.js';
 
 import { init as initDynamicFields } from './dynamic-fields/index';
 import { ToggleControl } from './toggle/Control';
