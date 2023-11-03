@@ -19,7 +19,7 @@ const MultiSelectOption = ({
 				choices={choices}
 				currentValue={getOption(slug) || ['category']}
 				onChange={(value) => {
-					window.tiTrk?.with('neve').add({
+					window.tiTrk?.with('neve').set(slug, {
 						feature: 'module-settings',
 						featureComponent: slug,
 						featureValue: value,

@@ -18,7 +18,7 @@ const Select = ({
 				label={label}
 				value={getOption(slug) || 'css'}
 				onChange={(value) => {
-					window.tiTrk?.with('neve').add({
+					window.tiTrk?.with('neve').set(slug, {
 						feature: 'module-settings',
 						featureComponent: slug,
 						featureValue: value,
@@ -27,13 +27,6 @@ const Select = ({
 						if (r.success) {
 							changeOption(slug, value);
 							setToast(true);
-							if (slug === 'typekit_loading_method') {
-								window.tiTrk?.with('neve').add({
-									feature: 'typekit-fonts',
-									featureComponent: 'loading-method',
-									featureValue: value,
-								});
-							}
 							return false;
 						}
 						setToast(false);

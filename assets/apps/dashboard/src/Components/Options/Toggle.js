@@ -22,7 +22,7 @@ const Toggle = ({
 				label={label}
 				onChange={(value) => {
 					setLoading(true);
-					window.tiTrk?.with('neve').add({
+					window.tiTrk?.with('neve').set(slug, {
 						feature: 'module-settings',
 						featureComponent: slug,
 						featureValue: value,

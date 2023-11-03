@@ -37,10 +37,10 @@ const ComponentsPopover: React.FC<Props> = ({
 		updateLayout(rowId, slotId, nextItems);
 		setSidebarItems(sidebarItems.filter((i) => i.id !== itemId));
 		// @ts-ignore
-		window.tiTrk?.with('neve').add({
+		window.tiTrk?.with('neve').set(itemId, {
 			feature: builder + '_builder',
 			featureComponent: 'component-added',
-			featureValue: JSON.stringify({ rowId, slotId, itemId }),
+			featureValue: { rowId, slotId, itemId },
 		});
 		closePopup();
 	};
