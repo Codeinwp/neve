@@ -55,7 +55,7 @@ const BuilderItem: React.FC<Props> = (props) => {
 		window.tiTrk?.with('neve').set(componentId, {
 			feature: builder + '_builder',
 			featureComponent: 'component-removed',
-			featureValue: { row, slot, componentId },
+			featureValue: { row, slot, item: componentId },
 		});
 	};
 
