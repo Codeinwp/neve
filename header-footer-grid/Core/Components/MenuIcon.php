@@ -205,7 +205,7 @@ JS;
 	 */
 	private function get_menu_style( $menu_icon ) {
 		// We don't add any css for the default option.
-		if ( ! in_array( $menu_icon, [ 'arrow', 'donner', 'dots', 'minus', 'vortex', 'squeeze' ] ) ) {
+		if ( ! in_array( $menu_icon, [ 'arrow', 'donner', 'dots', 'minus', 'vortex', 'squeeze', 'svg' ] ) ) {
 			return '';
 		}
 
@@ -406,7 +406,16 @@ CSS;
 				}
 CSS;
 		}
-
+		// SVG style
+		if ( $menu_icon === 'svg' ) {
+			$css .= <<<CSS
+				.hamburger-box.icon-svg {
+					width: 15px;
+					display:flex;
+					justify-content:center;
+				}
+CSS;
+		}
 		// Squeeze style
 		if ( $menu_icon === 'squeeze' ) {
 			$css .= <<<CSS
