@@ -28,15 +28,22 @@
 
 	.posts-wrapper > article {
 
-		&.has-post-thumbnail .nv-ft-wrap {
-			grid-template-columns: var(--postcoltemplate, 35fr 65fr);
-		}
-
-		&.has-post-thumbnail.layout-alternative:nth-child(even) {
-			--thumbgridcolumn: 2;
+		&.has-post-thumbnail {
 
 			.nv-ft-wrap {
-				grid-template-columns: var(--postcoltemplate, 65fr 35fr);
+				grid-template-columns: var(--postcoltemplate, 35fr 65fr);
+
+				:only-child {
+					grid-column: 1 / -1;
+				}
+			}
+
+			&.layout-alternative:nth-child(even) {
+				--thumbgridcolumn: 2;
+
+				.nv-ft-wrap {
+					grid-template-columns: var(--postcoltemplate, 65fr 35fr);
+				}
 			}
 		}
 	}
