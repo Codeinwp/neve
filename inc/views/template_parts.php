@@ -210,6 +210,19 @@ class Template_Parts extends Base_View {
 				$class .= ' nv-non-grid-article';
 			}
 		}
+		
+		// Filter the Core classes if the structure is not standard.
+		$default_order         = array(
+			'thumbnail',
+			'title-meta',
+			'excerpt',
+		);
+		$order                 = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
+		$is_thumbnail_inactive = ! in_array( 'thumbnail', $order, true );
+
+		if ( $is_thumbnail_inactive ) {
+			$class = str_replace( 'has-post-thumbnail', '', $class );
+		}
 
 		$class .= ' ' . $additional;
 		return $class;
@@ -223,20 +236,21 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_article_inner_content( $post_id = null ) {
-		$markup            = '';
-		$layout            = $this->get_layout();
-		$is_featured_post  = $post_id !== null;
-		$featured_template = in_array( $layout, [ 'alternative', 'default', 'grid' ], true ) ? 'tp1' : 'tp2';
-		$default_order     = array(
+		$markup              = '';
+		$layout              = $this->get_layout();
+		$is_featured_post    = $post_id !== null;
+		$featured_template   = in_array( $layout, [ 'alternative', 'default', 'grid' ], true ) ? 'tp1' : 'tp2';
+		$default_order       = array(
 			'thumbnail',
 			'title-meta',
 			'excerpt',
 		);
-		$order             = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
+		$order               = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
+		$is_thumbnail_active = in_array( 'thumbnail', $order, true );
 
 		if ( in_array( $layout, [ 'alternative', 'default' ], true ) || ( $is_featured_post && $featured_template === 'tp1' ) ) {
 			$markup .= '<div class="' . esc_attr( $layout ) . '-post nv-ft-wrap">';
-			if ( in_array( 'thumbnail', $order, true ) || ( $is_featured_post && $featured_template === 'tp1' ) ) {
+			if ( $is_thumbnail_active || ( $is_featured_post && $featured_template === 'tp1' ) ) {
 				$markup .= $this->get_post_thumbnail( $post_id );
 			}
 			$markup .= '<div class="non-grid-content ' . esc_attr( $layout ) . '-layout-content">';
@@ -250,7 +264,7 @@ class Template_Parts extends Base_View {
 		if ( $layout === 'covers' ) {
 			$markup .= '<div class="cover-post nv-ft-wrap">';
 			$markup .= '<div class="cover-overlay"></div>';
-			if ( in_array( 'thumbnail', $order, true ) ) {
+			if ( $is_thumbnail_active ) {
 				$markup .= $this->get_post_thumbnail( $post_id, true );
 			}
 			$markup .= '<div class="inner">';
