@@ -145,6 +145,13 @@ class Template_Parts extends Base_View {
 		$wrapper_classes  = apply_filters( 'neve_posts_wrapper_class', [] );
 		$posts_to_exclude = [];
 
+		$default_ordered_components = array(
+			'thumbnail',
+			'title-meta',
+			'excerpt',
+		);
+		$ordered_components         = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_ordered_components ) ) );
+
 		echo '<div class="' . esc_attr( join( ' ', $wrapper_classes ) ) . '">';
 		foreach ( $posts as $post ) {
 			$post_id            = is_array( $post ) && array_key_exists( 'ID', $post ) ? $post['ID'] : $post;
@@ -160,8 +167,8 @@ class Template_Parts extends Base_View {
 			$has_thumbnail_class = apply_filters( 'neve_featured_has_post_thumbnail', '', $post_id );
 			$data                = [
 				'post_id'    => 'post-' . $post_id,
-				'post_class' => $this->post_class( $post_id, 'nv-ft-post ' . $has_thumbnail_class ),
-				'content'    => $this->get_article_inner_content( $post_id ),
+				'post_class' => $this->post_class( $post_id, 'nv-ft-post ' . $has_thumbnail_class, $ordered_components ),
+				'content'    => $this->get_article_inner_content( $ordered_components, $post_id ),
 			];
 			$this->get_view( 'archive-post', $data );
 
@@ -181,10 +188,18 @@ class Template_Parts extends Base_View {
 	 * Render the post.
 	 */
 	public function render_post() {
+
+		$default_ordered_components = array(
+			'thumbnail',
+			'title-meta',
+			'excerpt',
+		);
+		$ordered_components         = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_ordered_components ) ) );
+
 		$args = array(
 			'post_id'    => 'post-' . get_the_ID(),
-			'post_class' => $this->post_class(),
-			'content'    => $this->get_article_inner_content(),
+			'post_class' => $this->post_class( null, '', $ordered_components ),
+			'content'    => $this->get_article_inner_content( $ordered_components ),
 		);
 
 		$this->get_view( 'archive-post', $args );
@@ -193,10 +208,11 @@ class Template_Parts extends Base_View {
 	/**
 	 * Echo the post class.
 	 *
-	 * @param int | null $post_id Post id.
-	 * @param string     $additional Additional classes.
+	 * @param int | null   $post_id Post id.
+	 * @param string       $additional Additional classes.
+	 * @param array | null $ordered_components Ordered component to render.
 	 */
-	protected function post_class( $post_id = null, $additional = '' ) {
+	protected function post_class( $post_id = null, $additional = '', $ordered_components = null ) {
 		$class     = join( ' ', get_post_class( '', $post_id ) );
 		$post_type = get_post_type( $post_id );
 		if ( $post_type === 'neve_custom_layouts' ) {
@@ -211,15 +227,18 @@ class Template_Parts extends Base_View {
 			}
 		}
 		
-		// Filter the Core classes if the structure is not standard.
-		$default_order         = array(
-			'thumbnail',
-			'title-meta',
-			'excerpt',
-		);
-		$order                 = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
-		$is_thumbnail_inactive = ! in_array( 'thumbnail', $order, true );
+		if ( is_null( $ordered_components ) ) {
+			// Pull the default components if the caller didn't pass any.
+			$default_ordered_components = array(
+				'thumbnail',
+				'title-meta',
+				'excerpt',
+			);
+			$ordered_components         = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_ordered_components ) ) );
+		}
 
+		// Filter the Core classes for missing components.
+		$is_thumbnail_inactive = ! in_array( 'thumbnail', $ordered_components, true );
 		if ( $is_thumbnail_inactive ) {
 			$class = str_replace( 'has-post-thumbnail', '', $class );
 		}
@@ -231,22 +250,18 @@ class Template_Parts extends Base_View {
 	/**
 	 * Render inner content for <article>
 	 *
+	 * @param array      $ordered_components Ordered component to render.
 	 * @param int | null $post_id Post id.
 	 *
 	 * @return string
 	 */
-	private function get_article_inner_content( $post_id = null ) {
-		$markup              = '';
-		$layout              = $this->get_layout();
-		$is_featured_post    = $post_id !== null;
-		$featured_template   = in_array( $layout, [ 'alternative', 'default', 'grid' ], true ) ? 'tp1' : 'tp2';
-		$default_order       = array(
-			'thumbnail',
-			'title-meta',
-			'excerpt',
-		);
-		$order               = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
-		$is_thumbnail_active = in_array( 'thumbnail', $order, true );
+	private function get_article_inner_content( $ordered_components, $post_id = null ) {
+		$markup            = '';
+		$layout            = $this->get_layout();
+		$is_featured_post  = $post_id !== null;
+		$featured_template = in_array( $layout, [ 'alternative', 'default', 'grid' ], true ) ? 'tp1' : 'tp2';
+
+		$is_thumbnail_active = in_array( 'thumbnail', $ordered_components, true );
 
 		if ( in_array( $layout, [ 'alternative', 'default' ], true ) || ( $is_featured_post && $featured_template === 'tp1' ) ) {
 			$markup .= '<div class="' . esc_attr( $layout ) . '-post nv-ft-wrap">';
