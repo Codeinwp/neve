@@ -49,7 +49,7 @@ if ( $menu_icon !== 'default' ) {
 			<span class="hamburger-box <?php echo esc_attr( 'icon-' . $menu_icon ); ?>">
 				<?php
 				if ( $menu_icon === 'svg' ) {
-					echo $menu_svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo neve_kses_svg( $menu_svg ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				} else {
 					?>
 					<span class="hamburger-inner"></span>
