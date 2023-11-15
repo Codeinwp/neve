@@ -25,8 +25,8 @@ jobs:
          cd neve-head
          ls languages/
          composer install --no-dev --prefer-dist --no-progress --no-suggest
-         yarn install --frozen-lockfile
-         yarn run build
+         npm ci
+         npm run build
          ls languages/
       - name: Checkout Ref Head
         uses: actions/checkout@v2
@@ -38,8 +38,8 @@ jobs:
          cd neve-base
          ls languages/
          composer install --no-dev --prefer-dist --no-progress --no-suggest
-         yarn install --frozen-lockfile
-         yarn run build
+         npm ci
+         npm run build
          ls languages/
       - name: Find Comment
         uses: peter-evans/find-comment@v1

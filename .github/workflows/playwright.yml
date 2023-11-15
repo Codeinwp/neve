@@ -48,11 +48,11 @@ jobs:
       - name: Install composer deps
         run: composer install --no-dev --prefer-dist --no-progress --no-suggest
       - name: Install yarn deps
-        run: yarn install --frozen-lockfile
+        run: npm ci
       - name: Build files
-        run: yarn run build
+        run: npm run build
       - name: Create zip
-        run: yarn run dist
+        run: npm run dist
       - name: Retrieve branch name
         id: retrieve-branch-name
         run: echo "::set-output name=branch_name::$(REF=${GITHUB_HEAD_REF:-$GITHUB_REF} && echo ${REF#refs/heads/} | sed 's/\//-/g')"
@@ -161,7 +161,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
       - name: Run Playwright tests
-        run: yarn run test:playwright e2e-tests/specs/${{ matrix.specs }}
+        run: npm run test:playwright e2e-tests/specs/${{ matrix.specs }}
       - name: Upload trace file
         if: failure()
         uses: actions/upload-artifact@v3

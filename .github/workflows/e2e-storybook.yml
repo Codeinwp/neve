@@ -41,11 +41,11 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Build Cypress
         working-directory: ./e2e-tests
-        run:  yarn install --frozen-lockfile
+        run:  npm ci
       - name: Start Storybook
         run: |
-          yarn install --frozen-lockfile
-          yarn run build
+          npm ci
+          npm run build
           yarn storybook &
       - name: Run Storybook Cypress tests 🚀 -  ${{ matrix.container }}
         env:

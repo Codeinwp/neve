@@ -7,11 +7,11 @@ ZIP_URL=${4}
 
 if [ ! -n "$ZIP_URL" ]
 then
-	yarn install --frozen-lockfile
+	npm ci
 	# Install dependencies.
 	composer install --no-dev
-	yarn run build
-	yarn run dist
+	npm run build
+	npm run dist
 	ZIP_URL="/tmp/repo/neve/artifact/neve.zip"
 fi
 export DOCKER_FILE=docker-compose.ci.yml
