@@ -1,5 +1,5 @@
 /* global neveDash */
-import compareVersions from 'compare-versions';
+import { compareVersions } from 'compare-versions';
 
 import StarterSitesUnavailable from '../Components/Content/StarterSitesUnavailable';
 import CustomLayoutsUnavailable from '../Components/Content/CustomLayoutsUnavailable';

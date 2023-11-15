@@ -2,35 +2,50 @@
   "name": "header-footer-grid",
   "version": "1.0.0",
   "description": "Header Footer Grid for Customizer by ThemeIsle",
+  "category": "themes",
+  "author": "ThemeIsle <friends@themeisle.com>",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "wordpress-theme"
+  ],
+  "homepage": "https://github.com/Codeinwp/neve",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codeinwp/neve.git"
+  },
+  "theme": {
+    "textdomain": "neve"
+  },
+  "bugs": {
+    "url": "https://github.com/Codeinwp/neve/issues"
+  },
   "main": "index.js",
+  "devDependencies": {
+    "@babel/core": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "core-js": "^3.33.2",
+    "cssnano": "^6.0.1",
+    "eslint": "^8.53.0",
+    "eslint-config-standard": "^17.1.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "rollup": "^4.4.1",
+    "sass": "^1.69.5"
+  },
   "scripts": {
     "prefix:css": "yarn run minify:style & yarn run minify:customizer",
     "minify:style": ".\"/node_modules/.bin/postcss\" --use autoprefixer -b \"last 2 versions\" < assets/css/style.css | .\"/node_modules/.bin/postcss\" --use cssnano > assets/css/style.min.css",
     "minify:customizer": ".\"/node_modules/.bin/postcss\" --use autoprefixer -b \"last 2 versions\" < assets/css/admin/customizer/customizer.css | .\"/node_modules/.bin/postcss\" --use cssnano > assets/css/admin/customizer/customizer.min.css",
-    "watch:css": "./node_modules/.bin/node-sass --watch assets/scss -o assets/css --source-map true",
+    "watch:css": "sass --watch assets/scss:assets/css --source-map",
     "watch:rollup": "./node_modules/.bin/rollup -c --watch",
-    "build:css": "./node_modules/.bin/node-sass assets/scss -o assets/css",
+    "build:css": "sass assets/scss:assets/css --style=compressed",
     "build:rollup": "./node_modules/.bin/rollup -c && yarn run build:css && yarn run prefix:css",
     "dev": "npm-run-all --parallel watch:css watch:rollup",
     "build": "npm-run-all build:css build:rollup"
-  },
-  "author": "ThemeIsle <friends@themeisle.com>",
-  "license": "GPL-2.0+",
-  "devDependencies": {
-    "@babel/core": "^7.11.1",
-    "@babel/preset-env": "^7.11.0",
-    "core-js": "^3.6.5",
-    "cssnano": "^4.1.10",
-    "eslint": "^7.7.0",
-    "eslint-config-standard": "^14.1.1",
-    "node-sass": "^4.14.1",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^7.0.32",
-    "postcss-cli": "^7.1.1",
-    "rollup": "^1.32.1",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-uglify": "^6.0.4"
   }
 }
