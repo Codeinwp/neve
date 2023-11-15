@@ -32,10 +32,10 @@ jobs:
       - name: Release new version
         id: release
         run: |
-          npm ci
+          yarn install --frozen-lockfile
           composer install --prefer-dist --no-progress --no-suggest
-          npm run build
-          npm run release
+          yarn run build
+          yarn run release
         env:
           CI: true
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}

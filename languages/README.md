@@ -5,5 +5,5 @@ You can help getting Neve translated by using the [WordPress.org](https://transl
 ### How to generate the translation file? 
 
 You can run the following commands to build the translation file: 
-* `npm ci`
-* `npm run build:makepot`
+* `yarn install --frozen-lockfile`
+* `yarn run build:makepot`

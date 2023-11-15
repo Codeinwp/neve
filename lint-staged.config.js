@@ -4,32 +4,32 @@ module.exports = {
 		"composer run lint"
 	],
 	"package.json": [
-		"npm run lint:package-json"
+		"yarn run lint:package-json"
 	],
 	"/assets/apps/dashboard/src/**/*.js": [
-		"npm run format:dash",
-		"npm run lint:dash"
+		"yarn run format:dash",
+		"yarn run lint:dash"
 	],
 	"assets/apps/metabox/src/**/*.js": [
-		"npm run format:dash",
-		"npm run lint:metabox"
+		"yarn run format:dash",
+		"yarn run lint:metabox"
 	],
 	"assets/scss/components/**/*.scss": [
-		"npm run lint:scss --fix"
+		"yarn run lint:scss --fix"
 	],
 	"assets/js/src/**/*.js": () => [ // We ignore here the staged restriction.
-		"npm run format:global",
-		"npm run lint:global",
-		"npm run build:rollup",
-		"npm run size"
+		"yarn run format:global",
+		"yarn run lint:global",
+		"yarn run build:rollup",
+		"yarn run size"
 	],
 	"assets/scss/**/*.scss": () => [ // We ignore here the staged restriction.
-		"npm run build:grunt",
-		"npm run size"
+		"yarn run build:grunt",
+		"yarn run size"
 	],
 	"assets/apps/customizer-controls/src/**/*.js": [ // We ignore here the staged restriction.
-		"npm run format:customizer",
-		"npm run lint:customizer",
+		"yarn run format:customizer",
+		"yarn run lint:customizer",
 	],
 
 }

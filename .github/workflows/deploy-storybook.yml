@@ -28,9 +28,9 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install and Build 🔧
         run: |
-          npm ci
-          npm run build
-          npm run build-storybook
+          yarn install --frozen-lockfile
+          yarn run build
+          yarn run build-storybook
           cp ./.storybook/readme.md ./storybook-static/readme.md
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2

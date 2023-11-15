@@ -30,7 +30,7 @@ Currently, we only migrated the customizer tests for which you need the `sample-
 
 To run the Playwright tests, run the following command from the root folder:
 ```bash
-npm run test:playwright
+yarn run test:playwright
 ```
 ___
 ### Running Playwright tests on your chosen environment:

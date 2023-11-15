@@ -31,10 +31,10 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Build & create dist/artifact
         run: |
-          npm ci
+          yarn install --frozen-lockfile
           composer install --no-dev --prefer-dist --no-progress --no-suggest
-          npm run build
-          npm run dist
+          yarn run build
+          yarn run dist
       - name: Add SSH Key
         run: |
           mkdir $HOME/.ssh

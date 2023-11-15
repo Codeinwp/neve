@@ -39,9 +39,9 @@ jobs:
       - name: Build dist
         run: |
           composer install --no-dev --prefer-dist --no-progress --no-suggest
-          npm ci
-          npm run build
-          npm run dist
+          yarn install --frozen-lockfile
+          yarn run build
+          yarn run dist
       - name: Sync to QA server via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:

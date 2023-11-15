@@ -36,24 +36,24 @@ jobs:
       - name: Install Dependencies
         env:
           CYPRESS_INSTALL_BINARY: 0
-        run: npm ci
+        run: yarn install --frozen-lockfile
       - name: Install Cypress Dependencies
         working-directory: ./e2e-tests
-        run: npm ci
+        run: yarn install --frozen-lockfile
       - name: Build source
-        run: npm run build
+        run: yarn run build
       - name: Run package check
-        run: npm run lint:package-json
+        run: yarn run lint:package-json
       - name: Run dashboard check
-        run: npm run lint:dash
+        run: yarn run lint:dash
       - name: Run customizer check
-        run: npm run lint:customizer
+        run: yarn run lint:customizer
       - name: Run Stylelint on SCSS
-        run: npm run lint:scss
+        run: yarn run lint:scss
       - name: Run global JS check
-        run: npm run lint:global
+        run: yarn run lint:global
       - name: Run size check
         # WORKAROUND FOR SIZE-LIMIT JOB NUMBER
         env:
           CI_JOB_NUMBER: 1
-        run: npm run size
+        run: yarn run size
