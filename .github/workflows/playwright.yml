@@ -150,10 +150,10 @@ jobs:
       ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
     steps:
       - uses: actions/checkout@v3
-      - name: Setup node 16
+      - name: Setup node 18
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
       - name: Install ${{ matrix.envs }} env for ${{ matrix.specs }} specs
         run: bash ./bin/envs/init.sh ${{ matrix.envs }} latest no "$ZIP_URL"
       - name: Install dependencies
