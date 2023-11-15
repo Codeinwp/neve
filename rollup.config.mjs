@@ -67,7 +67,7 @@ Object.keys(all_coverage).forEach(function (item) {
 		output: {
 			file: item,
 			format: 'iife',
-			sourceMap: 'inline'
+			sourcemap: 'inline'
 		},
 		plugins: [
 			multi(),
