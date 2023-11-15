@@ -1,4 +1,4 @@
-/* global NeveProperties menuCalcEvent CustomEvent */
+/* global NeveProperties menuCalcEvent */
 /* jshint esversion: 6 */
 import {
 	toggleClass,
@@ -116,12 +116,12 @@ function getKeyboardFocusableElements(element = document) {
 }
 
 /**
- * @namespace
- * @property {Element}  container               - The container which traps the focus.
- * @property {string}  firstFocus       - The first element which will be focusable inside the container
- * @property {string}  close         - the close element, which will be clicked to close the trap
- * @property {Element}  backFocus      - The element that receives focus when we trap is released
- * @property {NodeList} elements      - The element that receives focus when we trap is released
+ * @namespace focusTrapDetails
+ * @property {Element}  container  - The container which traps the focus.
+ * @property {string}   firstFocus - The first element which will be focusable inside the container.
+ * @property {string}   close      - The close element, which will be clicked to close the trap.
+ * @property {Element}  backFocus  - The element that receives focus when the trap is released.
+ * @property {NodeList} elements   - The element that receives focus when the trap is released.
  */
 let focusTrapDetails = {};
 document.addEventListener(NV_FOCUS_TRAP_START, function (event) {

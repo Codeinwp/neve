@@ -5,8 +5,8 @@
 			width: 100%;
 			max-width: 100%;
 		} @else {
-			max-width: (100%/$items - 2);
-			width: (100%/$items - 2);
+			max-width: (100% / $items - 2);
+			width: (100% / $items - 2);
 		}
 	}
 }

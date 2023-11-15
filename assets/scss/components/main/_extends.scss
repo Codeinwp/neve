@@ -2,7 +2,7 @@
 %nv-button {
 	cursor: pointer;
 	box-sizing: border-box;
-	border-color: currentColor;
+	border-color: currentcolor;
 	text-align: center;
 	font-family: var(--bodyfontfamily), var(--nv-fallback-ff);
 }
@@ -14,8 +14,8 @@
 	background: var(--primarybtnbg);
 	color: var(--primarybtncolor);
 	border-style: solid;
-	border-color: currentColor;
-	fill: currentColor;
+	border-color: currentcolor;
+	fill: currentcolor;
 	border-width: var(--primarybtnborderwidth, 0);
 	border-radius: var(--primarybtnborderradius, 3px);
 	padding: var(--primarybtnpadding, 13px 15px);
@@ -50,7 +50,7 @@
 	box-sizing: border-box;
 
 	border-style: solid;
-	border-color: currentColor;
+	border-color: currentcolor;
 	border-width: var(--primarybtnborderwidth, 0);
 	border-radius: var(--primarybtnborderradius, 3px);
 	padding: var(--primarybtnpadding, 13px 15px);
@@ -69,8 +69,8 @@
 	background-color: var(--secondarybtnbg);
 	color: var(--secondarybtncolor);
 	border-style: solid;
-	border-color: currentColor;
-	fill: currentColor;
+	border-color: currentcolor;
+	fill: currentcolor;
 	border-width: var(--secondarybtnborderwidth, 0);
 	border-radius: var(--secondarybtnborderradius, 3px);
 	padding: var(--secondarybtnpadding, 7px 12px);
@@ -92,7 +92,7 @@
 	cursor: pointer;
 	border-radius: var(--secondarybtnborderradius, 3px);
 	border-style: solid;
-	border-color: currentColor;
+	border-color: currentcolor;
 	border-width: var(--secondarybtnborderwidth, 0);
 	padding: var(--secondarybtnpadding, 7px 12px);
 

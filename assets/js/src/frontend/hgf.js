@@ -1,4 +1,4 @@
-/* global NeveProperties CustomEvent */
+/* global NeveProperties */
 /* jshint esversion: 6 */
 import {
 	addEvent,

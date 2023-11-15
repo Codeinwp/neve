@@ -61,7 +61,7 @@ const RadioIcons = ({
 					/>
 					{showLabels && (
 						/* TODO: Add proper label id for this */
-						/* eslint-disable-next-line jsx-a11y/label-has-for */
+						/* eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control */
 						<label>{options[type].tooltip}</label>
 					)}
 				</span>

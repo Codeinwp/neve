@@ -1,4 +1,4 @@
-/* global neveDash, fetch */
+/* global neveDash */
 /*eslint import/no-unresolved: [2, { ignore: ['@wordpress/api'] }]*/
 import { __ } from '@wordpress/i18n';
 import { loadPromise, models } from '@wordpress/api';

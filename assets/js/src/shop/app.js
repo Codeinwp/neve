@@ -1,5 +1,4 @@
 /* jshint esversion: 6 */
-/* global CustomEvent */
 import { tns } from 'tiny-slider/src/tiny-slider';
 
 /**
