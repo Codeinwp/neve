@@ -1,8 +1,7 @@
-import babel from 'rollup-plugin-babel';
+import { babel } from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import {uglify} from 'rollup-plugin-uglify';
-import {terser} from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import multi from '@rollup/plugin-multi-entry';
 
 const ROLLUP_LEGACY = {
@@ -74,7 +73,7 @@ Object.keys(all_coverage).forEach(function (item) {
 			resolve(),
 			commonjs(),
 			babel(ROLLUP_LEGACY),
-			uglify()
+			terser()
 		]
 	});
 });
