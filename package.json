@@ -30,20 +30,23 @@
 			"gzip": false,
 			"running": false,
 			"limit": "7 KB",
-			"path": "assets/js/build/modern/frontend.js"
+			"path": "assets/js/build/modern/frontend.js",
+			"brotli": false
 		},
 		{
 			"gzip": false,
 			"running": false,
 			"limit": "33 KB",
-			"path": "assets/js/build/modern/shop.js"
+			"path": "assets/js/build/modern/shop.js",
+			"brotli": false
 		},
 		{
 			"gzip": false,
 			"running": false,
 			"webpack": false,
 			"limit": "38.1 KB",
-			"path": "style-main-new.min.css"
+			"path": "style-main-new.min.css",
+			"brotli": false
 		}
 	],
 	"simple-git-hooks": {
