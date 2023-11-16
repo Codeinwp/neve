@@ -34,10 +34,15 @@ const ROLLUP_MODERN = {
 				debug: true,
 				useBuiltIns: 'usage',
 				corejs: 3,
-				exclude: ['es.string.split', 'web.dom-collections.iterator'],
+				exclude: [
+					'es.string.split',
+					'web.dom-collections.iterator',
+					'@babel/plugin-transform-parameters',
+				],
 			},
 		],
 	],
+	babelHelpers: 'bundled',
 };
 const all_coverage = {
 		'assets/js/build/all/metabox.js': 'assets/js/src/metabox.js',
@@ -61,7 +66,7 @@ Object.keys(all_coverage).forEach(function (item) {
 		output: {
 			file: item,
 			format: 'iife',
-			sourcemap: 'inline',
+			sourcemap: process.env.ROLLUP_WATCH ? 'inline' : false,
 		},
 		plugins: [
 			multi(),
@@ -78,7 +83,7 @@ Object.keys(modern).forEach(function (item) {
 		output: {
 			file: item,
 			format: 'iife',
-			sourceMap: 'inline',
+			sourcemap: process.env.ROLLUP_WATCH ? 'inline' : false,
 		},
 		plugins: [
 			multi(),
