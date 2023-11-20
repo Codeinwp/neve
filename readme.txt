@@ -19,6 +19,17 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.7.3](https://github.com/Codeinwp/neve/compare/v3.7.2...v3.7.3) (2023-10-23)
+
+### New Features
+- **Black Friday Preparations**: Get ready for exciting Black Friday updates and offers!
+
+### Improvements
+- **Update Google Fonts**: Get the freshest updates from the public font library from Google.
+
+
+
+
 ##### [Version 3.7.2](https://github.com/Codeinwp/neve/compare/v3.7.1...v3.7.2) (2023-10-05)
 
 ### Bug Fixes
