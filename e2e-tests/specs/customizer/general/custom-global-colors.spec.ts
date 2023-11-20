@@ -36,7 +36,7 @@ test.describe('Custom Global Color Control', () => {
 		await page.locator('.block-editor-rich-text__editable').first().click();
 		// use Background color control to open the color picker, available since WP 6.1
 		await page.getByRole('button', { name: 'Background' }).click();
-		await page.getByRole('button', { name: 'Color: Custom 1' }).click();
+		await page.getByRole('button', { name: 'Custom 1' }).click();
 		await page
 			.locator('.block-editor-panel-color-gradient-settings__color-name')
 			.getByText('Text')
@@ -72,6 +72,6 @@ test.describe('Custom Global Color Control', () => {
 		await page.goto('/hello-world/?test_name=custom-global-colors');
 		await expect(
 			await page.locator('.nv-content-wrap p').first()
-		).toHaveClass(/has-custom-1-color/);
+		).toHaveClass(/has-custom-1-background-color/);
 	});
 });
