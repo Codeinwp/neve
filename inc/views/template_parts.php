@@ -184,7 +184,7 @@ class Template_Parts extends Base_View {
 
 		$args = array(
 			'post_id'    => 'post-' . get_the_ID(),
-			'post_class' => $this->post_class( null, '' ),
+			'post_class' => $this->post_class(),
 			'content'    => $this->get_article_inner_content(),
 		);
 
@@ -211,11 +211,9 @@ class Template_Parts extends Base_View {
 				$class .= ' nv-non-grid-article';
 			}
 		}
-
-		$ordered_components = $this->get_ordered_components();
-
+		
 		// Filter the Core classes for missing components.
-		$is_thumbnail_inactive = ! in_array( 'thumbnail', $ordered_components, true );
+		$is_thumbnail_inactive = ! in_array( 'thumbnail', $this->get_ordered_components(), true );
 		if ( $is_thumbnail_inactive ) {
 			$class = str_replace( 'has-post-thumbnail', '', $class );
 		}
@@ -457,18 +455,18 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_ordered_content_parts( $exclude_thumbnail = false, $post_id = null ) {
-		$markup = '';
-		$order  = $this->get_ordered_components( true );
+		$markup             = '';
+		$ordered_components = $this->get_ordered_components( true );
 
-		if ( $post_id !== null && in_array( 'thumbnail', $order, true ) ) {
-			$key = array_search( 'thumbnail', $order );
+		if ( $post_id !== null && in_array( 'thumbnail', $ordered_components, true ) ) {
+			$key = array_search( 'thumbnail', $ordered_components );
 			if ( $key !== false ) {
-				unset( $order[ $key ] );
+				unset( $ordered_components[ $key ] );
 			}
-			array_unshift( $order, 'thumbnail' );
+			array_unshift( $ordered_components, 'thumbnail' );
 		}
 
-		foreach ( $order as $content_bit ) {
+		foreach ( $ordered_components as $content_bit ) {
 			switch ( $content_bit ) {
 				case 'thumbnail':
 					if ( $exclude_thumbnail ) {
