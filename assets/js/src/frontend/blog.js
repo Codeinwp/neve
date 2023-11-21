@@ -64,9 +64,20 @@ const infiniteScroll = () => {
 };
 
 /**
+ * Flag to prevent multiple requests.
+ *
+ * @type {boolean}
+ */
+let canFetchPosts = true;
+
+/**
  * Request more posts
  */
 const requestMorePosts = () => {
+	if (!canFetchPosts) {
+		return;
+	}
+
 	const trigger = document.querySelector('.infinite-scroll-trigger');
 	if (trigger === null) {
 		return;
@@ -84,9 +95,17 @@ const requestMorePosts = () => {
 	const requestUrl = maybeParseUrlForCustomizer(url);
 	page++;
 
+	canFetchPosts = false;
+	const reset = setTimeout(() => {
+		canFetchPosts = true;
+	}, 1500);
+
 	httpGetAsync(
 		requestUrl,
 		(response) => {
+			clearTimeout(reset);
+			canFetchPosts = true;
+
 			blog.innerHTML += JSON.parse(response);
 			if (NeveProperties.masonryStatus !== 'enabled') {
 				return false;
