@@ -55,11 +55,11 @@ const infiniteScroll = () => {
 	isInView(document.querySelector('.infinite-scroll-trigger'), () => {
 		if (parent && parent.wp && parent.wp.customize) {
 			parent.wp.customize.requestChangesetUpdate().then(() => {
-				requestMorePosts();
+				requestMorePosts(true);
 			});
 			return false;
 		}
-		requestMorePosts();
+		requestMorePosts(true);
 	});
 };
 
@@ -71,10 +71,12 @@ const infiniteScroll = () => {
 let canFetchPosts = true;
 
 /**
- * Request more posts
+ * Request more posts.
+ *
+ * @param {boolean} waitForLoading Wait for the previous request to finish. Used to keep the order of the posts.
  */
-const requestMorePosts = () => {
-	if (!canFetchPosts) {
+const requestMorePosts = (waitForLoading = false) => {
+	if (waitForLoading && !canFetchPosts) {
 		return;
 	}
 
@@ -120,7 +122,7 @@ const requestMorePosts = () => {
 /**
  * Parse in the customizer context.
  *
- * @param {string} url
+ * @param {string} url URL to parse.
  * @return {*} Sanitized URL.
  */
 const maybeParseUrlForCustomizer = (url) => {
