@@ -5,7 +5,7 @@ test.describe('Checkout page check', () => {
 		await page.goto('/product/album/');
 		await page.locator('.single_add_to_cart_button').click();
 		await page.goto('/checkout/');
-		await page.locator('#place_order').click();
+		await page.getByRole('button', { name: 'Place Order' }).click();
 		await page.waitForTimeout(1000);
 		await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.2 });
 	});
