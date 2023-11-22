@@ -7,12 +7,19 @@ test.describe('Checkout page check', () => {
 		await page.goto('/checkout/');
 		await page.getByRole('button', { name: 'Place Order' }).click();
 		await page.waitForTimeout(1000);
-		await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.2 });
+		await page
+			.getByRole('heading', { name: 'Checkout' })
+			.scrollIntoViewIfNeeded();
+		await expect(page).toHaveScreenshot({
+			maxDiffPixelRatio: 0.2,
+		});
 	});
 
 	test('Check MyAccount errors', async ({ page }) => {
 		await page.goto('/my-account/edit-account/');
 		await page.locator('.woocommerce-Button').first().click();
-		await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.2 });
+		await expect(page).toHaveScreenshot({
+			maxDiffPixelRatio: 0.2,
+		});
 	});
 });
