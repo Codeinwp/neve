@@ -56,31 +56,19 @@ const infiniteScroll = () => {
 	isInView(document.querySelector(triggerSelector), () => {
 		if (parent && parent.wp && parent.wp.customize) {
 			parent.wp.customize.requestChangesetUpdate().then(() => {
-				requestMorePosts(true);
+				requestMorePosts();
 			});
 			return false;
 		}
-		requestMorePosts(true);
+		requestMorePosts();
 	});
 };
 
 /**
- * Flag to prevent multiple requests.
- *
- * @type {boolean}
- */
-let canFetchPosts = true;
-
-/**
  * Request more posts.
  *
- * @param {boolean} waitForLoading Wait for the previous request to finish. Used to keep the order of the posts.
  */
-const requestMorePosts = (waitForLoading = false) => {
-	if (waitForLoading && !canFetchPosts) {
-		return;
-	}
-
+const requestMorePosts = () => {
 	const doc = window.document;
 	const nP = window.NeveProperties;
 
@@ -103,18 +91,14 @@ const requestMorePosts = (waitForLoading = false) => {
 	const requestUrl = maybeParseUrlForCustomizer(url);
 	page++;
 
-	canFetchPosts = false;
-	const reset = setTimeout(() => {
-		canFetchPosts = true;
-	}, 1500);
+	// Create an empty div that will be replaced with the new posts. Used to keep the order of the posts.
+	const postsPlaceholder = doc.createElement('div');
+	blog.appendChild(postsPlaceholder);
 
 	httpGetAsync(
 		requestUrl,
 		(response) => {
-			clearTimeout(reset);
-			canFetchPosts = true;
-
-			blog.innerHTML += JSON.parse(response);
+			postsPlaceholder.outerHTML = JSON.parse(response);
 			if (nP.masonryStatus !== 'enabled') {
 				return false;
 			}
