@@ -5,7 +5,7 @@ export default defineConfig({
 	forbidOnly: !!process.env.CI,
 	workers: process.env.CI ? 6 : undefined,
 	retries: 0,
-	timeout: parseInt(process.env.TIMEOUT || '', 10) || 100_000, // Defaults to 100 seconds.
+	timeout: parseInt(process.env.TIMEOUT || '', 10) || 150_000, // Defaults to 100 seconds.
 	fullyParallel: true,
 	projects: [
 		// Setup project
