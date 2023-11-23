@@ -51,12 +51,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/cristian-ungureanu/webfont-loader.git",
+                "url": "https://github.com/Codeinwp/webfont-loader.git",
                 "reference": "0294f21a20549f0c5e79700399946583dfa496b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cristian-ungureanu/webfont-loader/zipball/0294f21a20549f0c5e79700399946583dfa496b0",
+                "url": "https://api.github.com/repos/Codeinwp/webfont-loader/zipball/0294f21a20549f0c5e79700399946583dfa496b0",
                 "reference": "0294f21a20549f0c5e79700399946583dfa496b0",
                 "shasum": ""
             },

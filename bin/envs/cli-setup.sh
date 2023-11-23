@@ -22,7 +22,7 @@ init_environment(){
 	wp --allow-root theme install --activate $NEVE_LOCATION
 	wp --allow-root option update fresh_site 0
   echo "Installing Theme API Plugin"
-  wp --allow-root plugin install https://github.com/cristian-ungureanu/wp-thememods-api/archive/refs/heads/main.zip --force --activate
+  wp --allow-root plugin install https://github.com/Codeinwp/wp-thememods-api/archive/refs/heads/main.zip --force --activate
 }
 
 
