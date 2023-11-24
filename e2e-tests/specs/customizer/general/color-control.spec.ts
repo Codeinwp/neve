@@ -11,7 +11,7 @@ test.describe('Color Control', () => {
 	});
 
 	test('Test Color Control - Front End', async ({ page }) => {
-		page.goto('/?test_name=colorControl');
+		await page.goto('/?test_name=colorControl');
 		await expect(
 			page.locator('.hide-on-mobile .header-main-inner')
 		).toHaveCSS('color', 'rgb(253, 143, 106)');
