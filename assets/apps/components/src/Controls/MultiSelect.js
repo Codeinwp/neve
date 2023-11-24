@@ -52,6 +52,9 @@ const MultiSelect = ({ choices, onChange, currentValue, label }) => {
 				<Dropdown
 					className="dd-toggle"
 					focusOnMount={false}
+					popoverProps={{
+						inline: true,
+					}}
 					renderToggle={({ isOpen, onToggle }) => (
 						<Button
 							isSmall
