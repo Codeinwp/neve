@@ -33,6 +33,9 @@ const GlobalColorsPicker = ({ onChange, activeColor, isGlobal }) => {
 					/>
 				</>
 			)}
+			popoverProps={{
+				inline: true,
+			}}
 		/>
 	);
 };

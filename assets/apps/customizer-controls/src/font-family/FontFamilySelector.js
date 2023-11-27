@@ -197,6 +197,7 @@ const FontFamilySelector = ({
 							setVisible(false);
 							setSearch('');
 						}}
+						inline={true}
 					>
 						{fonts ? getFontList() : __('In Progress', 'neve')}
 					</Popover>

@@ -51,6 +51,7 @@ const IconSelector = ({ label, value, onIconChoice, icons }) => {
 					onFocusOutside={() => {
 						setVisible(!visible);
 					}}
+					inline={true}
 				>
 					{
 						<Suspense fallback={<Spinner />}>
