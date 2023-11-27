@@ -88,6 +88,9 @@ const ColorControl = ({
 						? ''
 						: 'neve-color-picker-dropdown'
 				}
+				popoverProps={{
+					inline: true,
+				}}
 				renderToggle={({ isOpen, onToggle }) => {
 					toggle = onToggle;
 					return (
