@@ -4,6 +4,7 @@ import { httpGetAsync, isInView } from '../utils';
 let masonryContainer = null,
 	page = 2;
 const postWrapSelector = '.nv-index-posts .posts-wrapper';
+const triggerSelector = '.infinite-scroll-trigger';
 
 /**
  * Initialize blog JS.
@@ -32,9 +33,10 @@ const masonry = () => {
 	}
 
 	imagesLoaded(masonryContainer, () => {
+		const selector = `article.layout-${blogLayout}`;
 		window.nvMasonry = new Masonry(masonryContainer, {
-			itemSelector: `article.layout-${blogLayout}`,
-			columnWidth: `article.layout-${blogLayout}`,
+			itemSelector: selector,
+			columnWidth: selector,
 			percentPosition: true,
 		});
 	});
@@ -44,15 +46,14 @@ const masonry = () => {
  * Infinite scroll.
  */
 const infiniteScroll = () => {
-	if (NeveProperties.infScroll !== 'enabled') {
+	if (
+		NeveProperties.infScroll !== 'enabled' ||
+		document.querySelector(postWrapSelector) === null
+	) {
 		return;
 	}
 
-	if (document.querySelector(postWrapSelector) === null) {
-		return;
-	}
-
-	isInView(document.querySelector('.infinite-scroll-trigger'), () => {
+	isInView(document.querySelector(triggerSelector), () => {
 		if (parent && parent.wp && parent.wp.customize) {
 			parent.wp.customize.requestChangesetUpdate().then(() => {
 				requestMorePosts();
@@ -64,44 +65,54 @@ const infiniteScroll = () => {
 };
 
 /**
- * Request more posts
+ * Request more posts.
+ *
  */
 const requestMorePosts = () => {
-	const trigger = document.querySelector('.infinite-scroll-trigger');
+	const doc = window.document;
+	const nP = window.NeveProperties;
+
+	const trigger = doc.querySelector(triggerSelector);
 	if (trigger === null) {
 		return;
 	}
-	document.querySelector('.nv-loader').style.display = 'block';
-	if (page > NeveProperties.maxPages) {
+	const loader = doc.querySelector('.nv-loader');
+	loader.style.display = 'block';
+
+	if (page > nP.maxPages) {
 		trigger.parentNode.removeChild(trigger);
-		document.querySelector('.nv-loader').style.display = 'none';
+		loader.style.display = 'none';
 		return;
 	}
-	const blog = document.querySelector(postWrapSelector);
-	const lang = NeveProperties.lang;
-	const baseUrl = NeveProperties.endpoint + page;
+	const blog = doc.querySelector(postWrapSelector);
+	const lang = nP.lang;
+	const baseUrl = nP.endpoint + page;
 	const url = lang ? baseUrl + '/' + lang : baseUrl;
 	const requestUrl = maybeParseUrlForCustomizer(url);
 	page++;
 
+	// Create an empty div that will be replaced with the new posts. Used to keep the order of the posts.
+	const postsPlaceholder = doc.createElement('div');
+	blog.appendChild(postsPlaceholder);
+
 	httpGetAsync(
 		requestUrl,
 		(response) => {
-			blog.innerHTML += JSON.parse(response);
-			if (NeveProperties.masonryStatus !== 'enabled') {
+			postsPlaceholder.outerHTML = JSON.parse(response);
+			if (nP.masonryStatus !== 'enabled') {
 				return false;
 			}
 			window.nvMasonry.reloadItems();
 			window.nvMasonry.layout();
 		},
-		NeveProperties.query
+		nP.query
 	);
 };
 
 /**
  * Parse in the customizer context.
  *
- * @param {string} url
+ * @param {string} url URL to parse.
  * @return {*} Sanitized URL.
  */
 const maybeParseUrlForCustomizer = (url) => {
