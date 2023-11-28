@@ -34,7 +34,7 @@ function appendNewSubMenuPage(linkSelector, subMenuData) {
  */
 function autoHideModuleSubMenuPages() {
 	let clLinkElem = document.querySelector(
-		'a[href*="edit.php?post_type=neve_custom_layouts"]'
+		'.toplevel_page_neve-welcome a[href*="edit.php?post_type=neve_custom_layouts"]'
 	);
 
 	subscribe(() => {
@@ -46,7 +46,7 @@ function autoHideModuleSubMenuPages() {
 
 		if (isModuleEnabled && !clLinkElem) {
 			clLinkElem = appendNewSubMenuPage(
-				'.wp-submenu a[href*="customize.php"]',
+				'.toplevel_page_neve-welcome .wp-submenu a[href*="customize.php"]',
 				window?.neveDash?.moduleObserver?.customLayouts
 			);
 		} else if (!isModuleEnabled && clLinkElem) {
