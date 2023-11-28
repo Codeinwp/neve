@@ -72,8 +72,12 @@ class Pagination extends Base_View {
 			unset( $args['pagename'] );
 		}
 
-		$args['posts_per_page']      = $per_page;
-		$args['post_type']           = 'post';
+		$args['posts_per_page'] = $per_page;
+
+		if ( empty( $args['post_type'] ) ) {
+			$args['post_type'] = 'post';
+		}
+
 		$args['paged']               = $request['page_number'];
 		$args['ignore_sticky_posts'] = 1;
 		$args['post_status']         = 'publish';
