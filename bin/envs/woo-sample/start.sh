@@ -11,5 +11,3 @@ wp --allow-root import ./themeunittestdata.wordpress.xml --authors=skip  --skip=
 curl -O https://raw.githubusercontent.com/woocommerce/woocommerce/master/sample-data/sample_products.xml
 wp --allow-root import ./sample_products.xml --authors=skip --skip=image_resize
 
-#Enable Cash on delivery as default
-wp wc payment_gateway update cod --enabled=1 --user=admin
