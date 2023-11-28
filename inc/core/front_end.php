@@ -45,23 +45,27 @@ class Front_End {
 			'width'       => 200,
 		);
 
-		add_theme_support( 'title-tag' );
-		add_theme_support( 'post-thumbnails' );
-		add_theme_support( 'automatic-feed-links' );
-		add_theme_support( 'custom-logo', $logo_settings );
-		add_theme_support( 'html5', array( 'search-form' ) );
-		add_theme_support( 'customize-selective-refresh-widgets' );
-		add_theme_support( 'custom-background', [] );
 		add_theme_support( 'align-wide' );
+		add_theme_support( 'automatic-feed-links' );
+		add_theme_support( 'border' );
+		add_theme_support( 'custom-background', [] );
+		add_theme_support( 'custom-logo', $logo_settings );
+		add_theme_support( 'custom-spacing' );
+		add_theme_support( 'custom-units' );
+		add_theme_support( 'customize-selective-refresh-widgets' );
 		add_theme_support( 'editor-color-palette', $this->get_gutenberg_color_palette() );
-		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
+		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-parts' );
 		add_theme_support( 'header-footer-elementor' );
+		add_theme_support( 'html5', array( 'search-form' ) );
 		add_theme_support( 'lifterlms-sidebars' );
 		add_theme_support( 'lifterlms' );
+		add_theme_support( 'link-color' );
+		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'service_worker', true );
 		add_theme_support( 'starter-content', ( new Starter_Content() )->get() );
+		add_theme_support( 'title-tag' );
 		add_filter( 'script_loader_tag', array( $this, 'filter_script_loader_tag' ), 10, 2 );
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
