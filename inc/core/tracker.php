@@ -17,7 +17,7 @@ class Tracker {
 	 *
 	 * @var string
 	 */
-	public static $track_url = 'https://gentle-cove-mrsmydq0zy5o.ymirsites.com/wp-json/track/events/';
+	public static $track_url = 'https://api.themeisle.com/tracking/events';
 
 	/**
 	 * Send data to the server if the user has opted in.
