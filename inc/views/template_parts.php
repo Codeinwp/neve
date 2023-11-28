@@ -181,6 +181,7 @@ class Template_Parts extends Base_View {
 	 * Render the post.
 	 */
 	public function render_post() {
+
 		$args = array(
 			'post_id'    => 'post-' . get_the_ID(),
 			'post_class' => $this->post_class(),
@@ -210,6 +211,12 @@ class Template_Parts extends Base_View {
 				$class .= ' nv-non-grid-article';
 			}
 		}
+		
+		// Filter the Core classes for missing components.
+		$is_thumbnail_inactive = ! in_array( 'thumbnail', $this->get_ordered_components(), true );
+		if ( $is_thumbnail_inactive ) {
+			$class = str_replace( 'has-post-thumbnail', '', $class );
+		}
 
 		$class .= ' ' . $additional;
 		return $class;
@@ -227,16 +234,12 @@ class Template_Parts extends Base_View {
 		$layout            = $this->get_layout();
 		$is_featured_post  = $post_id !== null;
 		$featured_template = in_array( $layout, [ 'alternative', 'default', 'grid' ], true ) ? 'tp1' : 'tp2';
-		$default_order     = array(
-			'thumbnail',
-			'title-meta',
-			'excerpt',
-		);
-		$order             = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
+
+		$is_thumbnail_active = in_array( 'thumbnail', $this->get_ordered_components(), true );
 
 		if ( in_array( $layout, [ 'alternative', 'default' ], true ) || ( $is_featured_post && $featured_template === 'tp1' ) ) {
 			$markup .= '<div class="' . esc_attr( $layout ) . '-post nv-ft-wrap">';
-			if ( in_array( 'thumbnail', $order, true ) || ( $is_featured_post && $featured_template === 'tp1' ) ) {
+			if ( $is_thumbnail_active || ( $is_featured_post && $featured_template === 'tp1' ) ) {
 				$markup .= $this->get_post_thumbnail( $post_id );
 			}
 			$markup .= '<div class="non-grid-content ' . esc_attr( $layout ) . '-layout-content">';
@@ -250,7 +253,7 @@ class Template_Parts extends Base_View {
 		if ( $layout === 'covers' ) {
 			$markup .= '<div class="cover-post nv-ft-wrap">';
 			$markup .= '<div class="cover-overlay"></div>';
-			if ( in_array( 'thumbnail', $order, true ) ) {
+			if ( $is_thumbnail_active ) {
 				$markup .= $this->get_post_thumbnail( $post_id, true );
 			}
 			$markup .= '<div class="inner">';
@@ -452,24 +455,18 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_ordered_content_parts( $exclude_thumbnail = false, $post_id = null ) {
-		$markup        = '';
-		$default_order = array(
-			'thumbnail',
-			'title-meta',
-			'excerpt',
-		);
+		$markup             = '';
+		$ordered_components = $this->get_ordered_components( true );
 
-		$order = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) );
-		$order = json_decode( $order, true );
-		if ( $post_id !== null && in_array( 'thumbnail', $order, true ) ) {
-			$key = array_search( 'thumbnail', $order );
+		if ( $post_id !== null && in_array( 'thumbnail', $ordered_components, true ) ) {
+			$key = array_search( 'thumbnail', $ordered_components );
 			if ( $key !== false ) {
-				unset( $order[ $key ] );
+				unset( $ordered_components[ $key ] );
 			}
-			array_unshift( $order, 'thumbnail' );
+			array_unshift( $ordered_components, 'thumbnail' );
 		}
 
-		foreach ( $order as $content_bit ) {
+		foreach ( $ordered_components as $content_bit ) {
 			switch ( $content_bit ) {
 				case 'thumbnail':
 					if ( $exclude_thumbnail ) {
@@ -505,5 +502,22 @@ class Template_Parts extends Base_View {
 		}
 
 		return $markup;
+	}
+
+	/**
+	 * Get components (thumbnail, title, meta, excerpt) in the order they are set in the Customizer.
+	 *
+	 * @param bool $associative Whether to return an associative array or not.
+	 *
+	 * @return mixed
+	 */
+	public function get_ordered_components( $associative = false ) {
+		$default_ordered_components = array(
+			'thumbnail',
+			'title-meta',
+			'excerpt',
+		);
+
+		return json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_ordered_components ) ), $associative );
 	}
 }
