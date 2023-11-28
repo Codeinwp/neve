@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 23/10/23
+ * Updated on 27/11/23
  *
  * @package neve
  */
@@ -18,6 +18,7 @@ return array(
 	'Actor' => array( '400',),
 	'Adamina' => array( '400',),
 	'Advent Pro' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Agbalumo' => array( '400',),
 	'Agdasima' => array( '400', '700',),
 	'Aguafina Script' => array( '400',),
 	'Akatab' => array( '400', '500', '600', '700', '800', '900',),
@@ -207,7 +208,7 @@ return array(
 	'Bigshot One' => array( '400',),
 	'Bilbo' => array( '400',),
 	'Bilbo Swash Caps' => array( '400',),
-	'BioRhyme' => array( '200', '300', '400', '700', '800',),
+	'BioRhyme' => array( '200', '300', '400', '500', '600', '700', '800',),
 	'BioRhyme Expanded' => array( '200', '300', '400', '700', '800',),
 	'Birthstone' => array( '400',),
 	'Birthstone Bounce' => array( '400', '500',),
@@ -668,6 +669,7 @@ return array(
 	'Kaushan Script' => array( '400',),
 	'Kavivanar' => array( '400',),
 	'Kavoon' => array( '400',),
+	'Kay Pho Du' => array( '400', '500', '600', '700',),
 	'Kdam Thmor' => array(),
 	'Kdam Thmor Pro' => array( '400',),
 	'Keania One' => array( '400',),
@@ -747,6 +749,7 @@ return array(
 	'Lily Script One' => array( '400',),
 	'Limelight' => array( '400',),
 	'Linden Hill' => array( '400', '400italic',),
+	'Linefont' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Lisu Bosa' => array( '200', '300', '400', '500', '600', '700', '800', '900', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Literata' => array( '200', '300', '400', '500', '600', '700', '800', '900', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Liu Jian Mao Cao' => array( '400',),
@@ -978,6 +981,7 @@ return array(
 	'Noto Sans KR' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Sans Kaithi' => array( '400',),
 	'Noto Sans Kannada' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
+	'Noto Sans Kawi' => array( '400', '500', '600', '700',),
 	'Noto Sans Kayah Li' => array( '400', '500', '600', '700',),
 	'Noto Sans Kharoshthi' => array( '400',),
 	'Noto Sans Khmer' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
@@ -1108,6 +1112,7 @@ return array(
 	'Noto Serif Myanmar' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Noto Serif NP Hmong' => array( '400', '500', '600', '700',),
 	'Noto Serif Nyiakeng Puachue Hmong' => array(),
+	'Noto Serif Old Uyghur' => array( '400',),
 	'Noto Serif Oriya' => array( '400', '500', '600', '700',),
 	'Noto Serif Ottoman Siyaq' => array( '400',),
 	'Noto Serif SC' => array( '200', '300', '400', '500', '600', '700', '900',),
