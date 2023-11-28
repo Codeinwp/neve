@@ -35,6 +35,7 @@ class MenuIcon extends Abstract_Component {
 	const LABEL_MARGIN_ID   = 'label_margin';
 	const MENU_ICON         = 'menu_icon';
 	const SIZE_ID           = 'icon_size';
+	const MENU_SVG          = 'svg_menu_icon';
 
 	/**
 	 * Padding settings default values.

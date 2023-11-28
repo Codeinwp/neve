@@ -14,7 +14,7 @@ use HFG\Core\Components\MenuIcon;
 $item_attributes = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 $label           = component_setting( MenuIcon::TEXT_ID );
 $menu_icon       = component_setting( MenuIcon::MENU_ICON );
-$menu_svg        = component_setting( 'svg_menu_icon' );
+$menu_svg        = component_setting( MenuIcon::MENU_SVG );
 if ( $menu_icon === 'svg' && empty( $menu_svg ) ) {
 	$menu_icon = 'default';
 }
