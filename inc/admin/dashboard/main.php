@@ -391,6 +391,13 @@ class Main {
 			$data['isOtterProInstalled']           = $is_otter_installed;
 			$data['otterProInstall']               = $is_otter_installed ? esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=otter-pro%2Fotter-pro.php&plugin_status=all&paged=1&s' ), 'activate-plugin_otter-pro/otter-pro.php' ) ) : esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=install_otter_pro' ), 'install_otter_pro' ) );
 			$data['sparksInstallActivateEndpoint'] = $is_sparks_installed ? esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=sparks-for-woocommerce%2Fsparks-for-woocommerce.php&plugin_status=all&paged=1&s' ), 'activate-plugin_sparks-for-woocommerce/sparks-for-woocommerce.php' ) ) : esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=install_sparks' ), 'install_sparks' ) );
+			$data['moduleObserver']                = array(
+				'customLayouts' => array(
+					'labelSubMenu' => __( 'Custom Layouts', 'neve' ),
+					'linkSubMenu'  => 'edit.php?post_type=neve_custom_layouts',
+				),
+			);
+
 		}
 
 		if ( isset( $_GET['onboarding'] ) && $_GET['onboarding'] === 'yes' ) {
