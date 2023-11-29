@@ -1,3 +1,18 @@
+##### [Version 3.7.4](https://github.com/Codeinwp/neve/compare/v3.7.3...v3.7.4) (2023-11-29)
+
+### Bug Fixes
+**Header Footer Builder Layout Fix:** We updated the builder to work with the latest version of WordPress 6.4.
+**Related posts excerpt:** The excerpt from the related post will now correctly show the proper post excerpt.
+**Infinite scroll:** Properly load custom post-type posts on the archive page.
+**Infinite scroll post order:** The order is now preserved when loading posts for the infinite scroll.
+**Improved Gutenberg support:** More default Guttenberg block settings are now supported.
+**Blog list alignment:** The alignment now behaves correctly when the thumbnail is missing.
+
+### Improvements
+**Update Google Fonts:** Get the newest Google fonts from the public font library.
+**E2E testing:** Improved end-to-end testing.
+**SDK update:** The latest SDK is now available.
+
 ##### [Version 3.7.3](https://github.com/Codeinwp/neve/compare/v3.7.2...v3.7.3) (2023-10-23)
 
 ### New Features
