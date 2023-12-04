@@ -36,7 +36,7 @@ export const repositionDropdowns = () => {
 
 	const windowWidth = window.innerWidth;
 	dropDowns.forEach((dropDown) => {
-		const bounding = dropDown.getBoundingClientRect(),
+		let bounding = dropDown.getBoundingClientRect(),
 			rightDist = bounding.left;
 
 		if (rightDist < 0) {
@@ -47,6 +47,16 @@ export const repositionDropdowns = () => {
 		if (rightDist + bounding.width >= windowWidth) {
 			dropDown.style.right = isRTL ? 0 : '100%';
 			dropDown.style.left = 'auto';
+		}
+
+		bounding = dropDown.getBoundingClientRect();
+		rightDist = bounding.left;
+
+		if (rightDist < 0 || rightDist + bounding.width >= windowWidth) {
+			// Calculate how much should we offset the dropdown to make it fit.
+			dropDown.style.transform = `translateX(${isRTL ? '-' : ''}${
+				Math.abs(rightDist) + 20 // Difference + 20px padding.
+			}px)`;
 		}
 	});
 	if (typeof menuCalcEvent !== 'undefined') {
