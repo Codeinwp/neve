@@ -29,12 +29,14 @@ export const initNavigation = () => {
  */
 export const repositionDropdowns = () => {
 	const { isRTL } = NeveProperties;
-	const dropDowns =
-		document.querySelectorAll('.sub-menu, .minimal .nv-nav-search') || [];
+	const dropDowns = document.querySelectorAll(
+		'.sub-menu, .minimal .nv-nav-search'
+	);
 
 	if (dropDowns.length === 0) return;
 
 	const windowWidth = window.innerWidth;
+
 	dropDowns.forEach((dropDown) => {
 		let bounding = dropDown.getBoundingClientRect(),
 			rightDist = bounding.left;
@@ -49,14 +51,17 @@ export const repositionDropdowns = () => {
 			dropDown.style.left = 'auto';
 		}
 
+		// Recalculate bounding after we've made adjustments.
 		bounding = dropDown.getBoundingClientRect();
 		rightDist = bounding.left;
 
 		if (rightDist < 0 || rightDist + bounding.width >= windowWidth) {
 			// Calculate how much should we offset the dropdown to make it fit.
-			dropDown.style.transform = `translateX(${isRTL ? '-' : ''}${
-				Math.abs(rightDist) + 20 // Difference + 20px padding.
-			}px)`;
+			dropDown.style.transform =
+				'translateX(' +
+				(isRTL ? '-' : '') +
+				(Math.abs(rightDist) + 20) +
+				'px)';
 		}
 	});
 	if (typeof menuCalcEvent !== 'undefined') {
