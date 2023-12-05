@@ -186,15 +186,16 @@ function startFocusTrap(event) {
  * Handle searches.
  */
 function handleSearch() {
-	const navSearch = document.querySelectorAll('.nv-nav-search') || [],
-		navItem = document.querySelectorAll('.menu-item-nav-search') || [],
-		close = document.querySelectorAll('.close-responsive-search') || [];
+	const doc = window.document;
+	const navSearch = doc.querySelectorAll('.nv-nav-search') || [],
+		navItem = doc.querySelectorAll('.menu-item-nav-search') || [],
+		close = doc.querySelectorAll('.close-responsive-search') || [];
 	addEvent(navItem, 'click', (e, searchItem) => {
 		e.preventDefault();
 		e.stopPropagation();
 		toggleClass(searchItem, strings[1]);
 		createNavOverlay(searchItem, strings[1]);
-		document.dispatchEvent(
+		doc.dispatchEvent(
 			new CustomEvent(NV_FOCUS_TRAP_START, {
 				detail: {
 					container: searchItem.querySelector('.nv-nav-search'),
@@ -211,7 +212,7 @@ function handleSearch() {
 	addEvent(close, 'click', (e) => {
 		e.preventDefault();
 		removeClass(navItem, strings[1]);
-		const overlay = document.querySelector(`.${strings[2]}`);
+		const overlay = doc.querySelector(`.${strings[2]}`);
 		if (overlay === null) {
 			return;
 		}
