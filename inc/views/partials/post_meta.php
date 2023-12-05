@@ -318,7 +318,6 @@ class Post_Meta extends Base_View {
 		$markup = apply_filters( 'neve_filter_author_meta_markup', $markup, $post_id, $show_before );
 
 		$post = $original_global_post; //phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-		wp_reset_postdata();
 		return wp_kses_post( $markup );
 	}
 
