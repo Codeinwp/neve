@@ -286,7 +286,7 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$css        = '' . $subscriber;
 
 		$this->assertStringContainsString( ",.one-test-selector", $css );
-		$this->assertStringContainsString( \Neve\Core\Settings\Config::CSS_SELECTOR_BTN_PRIMARY_HOVER, $css );
+		$this->assertStringContainsString( \Neve\Core\Settings\Config::$css_selectors_map[\Neve\Core\Settings\Config::CSS_SELECTOR_BTN_PRIMARY_HOVER], $css );
 		$this->assertStringContainsString( "color: #fff", $css );
 	}
 }
