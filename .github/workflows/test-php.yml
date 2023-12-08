@@ -18,7 +18,7 @@ jobs:
       - name: Setup PHP version
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.1'
+          php-version: '7.4'
           extensions: simplexml
           tools: composer:v2.1
       - name: Checkout source code
@@ -54,7 +54,7 @@ jobs:
         - name: Setup PHP version
           uses: shivammathur/setup-php@v2
           with:
-            php-version: '7.1'
+            php-version: '7.4'
             extensions: simplexml, mysql
             tools: phpunit-polyfills
         - name: Checkout source code
