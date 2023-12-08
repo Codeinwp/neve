@@ -33,7 +33,7 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$css        = '';
 		$css        .= $subscriber;
 		$this->assertNotEmpty( $css );
-		$this->assertContains( "#ccc", $css );
+		$this->assertStringContainsString( "#ccc", $css );
 	}
 
 	public function test_css_generation_with_generic_rule() {
@@ -45,7 +45,7 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		] );
 		$css        = '';
 		$css        .= $subscriber;
-		$this->assertContains('--css-var-example', $css);
+		$this->assertStringContainsString('--css-var-example', $css);
 		$this->assertNotEmpty( $css );
 	}
 
@@ -64,8 +64,8 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$css        .= $subscriber;
 
 		$this->assertNotEmpty( $css );
-		$this->assertNotContains( "#bada55", $css );
-		$this->assertContains( "var(--nv-text-color)", $css );
+		$this->assertStringNotContainsString( "#bada55", $css );
+		$this->assertStringContainsString( "var(--nv-text-color)", $css );
 	}
 
 	public function test_css_generation_with_key() {
@@ -81,7 +81,7 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$css        .= $subscriber;
 
 		$this->assertNotEmpty( $css );
-		$this->assertContains( "#eee", $css );
+		$this->assertStringContainsString( "#eee", $css );
 	}
 
 	public function test_css_generation_with_suffix() {
@@ -98,7 +98,7 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$css        .= $subscriber;
 
 		$this->assertNotEmpty( $css );
-		$this->assertContains( "333em", $css );
+		$this->assertStringContainsString( "333em", $css );
 	}
 
 	public function test_css_generation_with_default() {
@@ -113,7 +113,7 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$css        = '';
 		$css        .= $subscriber;
 		$this->assertNotEmpty( $css );
-		$this->assertContains( "929", $css );
+		$this->assertStringContainsString( "929", $css );
 	}
 
 	public function test_css_generation_with_filter() {
@@ -132,7 +132,7 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$css        = '';
 		$css        .= $subscriber;
 		$this->assertNotEmpty( $css );
-		$this->assertContains( "box-shadow: 333px;", $css );
+		$this->assertStringContainsString( "box-shadow: 333px;", $css );
 	}
 
 	public function test_css_generation_on_breakpoints() {
@@ -149,7 +149,7 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$tablet_css  = '' . $subscriber->for_tablet();
 
 		$this->assertNotEmpty( $mobile_css );
-		$this->assertContains( "929", $mobile_css );
+		$this->assertStringContainsString( "929", $mobile_css );
 		$this->assertEmpty( $desktop_css );
 		$this->assertEmpty( $tablet_css );
 	}
@@ -172,9 +172,9 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$mobile_css  = '' . $subscriber;
 		$desktop_css = '' . $subscriber->for_desktop();
 		$tablet_css  = '' . $subscriber->for_tablet();
-		$this->assertContains( "10px;", $mobile_css );
-		$this->assertContains( "50px;", $desktop_css );
-		$this->assertContains( "300px;", $tablet_css );
+		$this->assertStringContainsString( "10px;", $mobile_css );
+		$this->assertStringContainsString( "50px;", $desktop_css );
+		$this->assertStringContainsString( "300px;", $tablet_css );
 	}
 
 	public function test_css_generation_with_responsiveness_encoded() {
@@ -194,9 +194,9 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$mobile_css  = '' . $subscriber;
 		$desktop_css = '' . $subscriber->for_desktop();
 		$tablet_css  = '' . $subscriber->for_tablet();
-		$this->assertContains( "10px;", $mobile_css );
-		$this->assertContains( "50px;", $desktop_css );
-		$this->assertContains( "300px;", $tablet_css );
+		$this->assertStringContainsString( "10px;", $mobile_css );
+		$this->assertStringContainsString( "50px;", $desktop_css );
+		$this->assertStringContainsString( "300px;", $tablet_css );
 	}
 
 	public function test_css_generation_with_responsiveness_no_devices() {
@@ -212,9 +212,9 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$mobile_css  = '' . $subscriber;
 		$desktop_css = '' . $subscriber->for_desktop();
 		$tablet_css  = '' . $subscriber->for_tablet();
-		$this->assertContains( "200px;", $mobile_css );
-		$this->assertContains( "200px;", $desktop_css );
-		$this->assertContains( "200px;", $tablet_css );
+		$this->assertStringContainsString( "200px;", $mobile_css );
+		$this->assertStringContainsString( "200px;", $desktop_css );
+		$this->assertStringContainsString( "200px;", $tablet_css );
 	}
 
 	public function test_css_generation_responsiveness_with_subkey() {
@@ -236,9 +236,9 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$mobile_css  = '' . $subscriber;
 		$desktop_css = '' . $subscriber->for_desktop();
 		$tablet_css  = '' . $subscriber->for_tablet();
-		$this->assertContains( "555px;", $mobile_css );
-		$this->assertContains( "666px;", $desktop_css );
-		$this->assertContains( "777px;", $tablet_css );
+		$this->assertStringContainsString( "555px;", $mobile_css );
+		$this->assertStringContainsString( "666px;", $desktop_css );
+		$this->assertStringContainsString( "777px;", $tablet_css );
 	}
 
 	public function test_css_generation_responsiveness_with_subkey_with_suffix() {
@@ -265,9 +265,9 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$mobile_css  = '' . $subscriber;
 		$desktop_css = '' . $subscriber->for_desktop();
 		$tablet_css  = '' . $subscriber->for_tablet();
-		$this->assertContains( "555em;", $mobile_css );
-		$this->assertContains( "666%;", $desktop_css );
-		$this->assertContains( "777px;", $tablet_css );
+		$this->assertStringContainsString( "555em;", $mobile_css );
+		$this->assertStringContainsString( "666%;", $desktop_css );
+		$this->assertStringContainsString( "777px;", $tablet_css );
 	}
 
 	public function test_css_generation_with_extra_selectors() {
@@ -285,8 +285,9 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		] );
 		$css        = '' . $subscriber;
 
-		$this->assertContains( ",.one-test-selector", $css );
-		$this->assertNotContains( \Neve\Core\Settings\Config::CSS_SELECTOR_BTN_PRIMARY_HOVER, $css );
-		$this->assertContains( "color: #fff", $css );
+		$this->assertStringContainsString( ",.one-test-selector", $css );
+		$this->assertStringNotContainsString( \Neve\Core\Settings\Config::CSS_SELECTOR_BTN_PRIMARY_HOVER, $css );
+		$this->assertStringContainsString( \Neve\Core\Settings\Config::$css_selectors_map[\Neve\Core\Settings\Config::CSS_SELECTOR_BTN_PRIMARY_HOVER], $css );
+		$this->assertStringContainsString( "color: #fff", $css );
 	}
 }
