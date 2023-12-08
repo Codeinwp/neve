@@ -64,7 +64,7 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$css        .= $subscriber;
 
 		$this->assertNotEmpty( $css );
-		$this->assertNotContains( "#bada55", $css );
+		$this->assertStringNotContainsString( "#bada55", $css );
 		$this->assertStringContainsString( "var(--nv-text-color)", $css );
 	}
 
@@ -285,8 +285,8 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		] );
 		$css        = '' . $subscriber;
 
-		$this->assertContains( ",.one-test-selector", $css );
+		$this->assertStringContainsString( ",.one-test-selector", $css );
 		$this->assertStringContainsString( \Neve\Core\Settings\Config::CSS_SELECTOR_BTN_PRIMARY_HOVER, $css );
-		$this->assertContains( "color: #fff", $css );
+		$this->assertStringContainsString( "color: #fff", $css );
 	}
 }
