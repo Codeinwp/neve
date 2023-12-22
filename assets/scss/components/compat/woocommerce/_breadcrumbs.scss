@@ -4,6 +4,13 @@
 	color: var(--nv-text-color);
 	font-size: 14px;
 	white-space: nowrap;
+	scrollbar-width: none; /* Firefox */
+	overflow-x: scroll;
+
+	&::-webkit-scrollbar {
+		display: none; /* Chrome, Safari, Opera*/
+	}
+
 
 	a {
 		color: var(--nv-secondary-accent);
