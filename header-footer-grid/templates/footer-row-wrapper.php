@@ -16,9 +16,15 @@ $row_index  = current_row();
 $device     = current_device();
 $section_id = get_builder()->get_property( 'control_id' ) . '_' . $row_index;
 
+$row_visibility = 'hide-on-desktop';
+if ( $device === 'desktop' ) {
+	$row_visibility = 'hide-on-mobile hide-on-tablet';
+}
+
 $row_classes = [
 	'footer--row',
 	'footer-' . $row_index,
+	$row_visibility,
 ];
 
 $row_classes[] = row_setting( Abstract_Builder::LAYOUT_SETTING );
