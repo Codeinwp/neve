@@ -166,6 +166,24 @@ class Loader {
 		wp_style_add_data( 'react-controls', 'rtl', 'replace' );
 		wp_enqueue_style( 'react-controls' );
 
+		// Automatically detect, register, and enqueue js chunk scripts with translations.
+		$build_path     = get_template_directory() . '/assets/apps/customizer-controls/build/';
+		$js_chunk_files = glob( $build_path . '*.js' );
+	  
+		foreach ( $js_chunk_files as $chunk_file ) {
+			if ( 'controls.js' === basename( $chunk_file ) ) {
+				continue;
+			}
+		
+			$chunk_handle = 'neve-customizer-chunk-' . basename( $chunk_file, '.js' );
+			wp_register_script( $chunk_handle, $bundle_path . basename( $chunk_file ), [], $dependencies['version'], true );
+			wp_enqueue_script( $chunk_handle );
+			
+			if ( function_exists( 'wp_set_script_translations' ) ) {
+				wp_set_script_translations( $chunk_handle, 'neve' );
+			}
+		}
+
 		$fonts  = neve_get_google_fonts();
 		$chunks = array_chunk( $fonts, absint( count( $fonts ) / 5 ) );
 
