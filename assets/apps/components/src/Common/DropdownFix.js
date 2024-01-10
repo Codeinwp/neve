@@ -28,7 +28,10 @@ function useObservableState(initialState, onStateChange) {
 }
 
 /**
- * This monitors all events across opened popver components
+ * This monitors all events across opened popover components
+ *
+ * @param {any} ref - The ref of the popover component.
+ * @param {any} callback - The callback function to execute.
  */
 function useOutsideClickHook(ref, callback) {
 	useEffect(() => {
