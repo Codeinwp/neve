@@ -111,7 +111,7 @@ class Footer extends Abstract_Builder {
 		add_filter(
 			'theme_mod_hfg_footer_layout_v2',
 			function ( $value ) {
-				if ( ! is_array( $value ) ) {
+				if ( is_string( $value ) ) {
 					$maybe_parse_json = json_decode( $value, true );
 					if ( ! empty( $maybe_parse_json['mobile'] ) ) {
 						return $value;
@@ -120,7 +120,7 @@ class Footer extends Abstract_Builder {
 					return wp_json_encode( $maybe_parse_json );
 				}
 				return $value;
-			} 
+			}
 		);
 
 		add_action( 'neve_after_slot_component', [ $this, 'add_footer_component' ], 10, 3 );
