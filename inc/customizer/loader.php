@@ -165,18 +165,11 @@ class Loader {
 		wp_register_style( 'react-controls', $bundle_path . 'style-controls.css', [ 'neve-components' ], $dependencies['version'] );
 		wp_style_add_data( 'react-controls', 'rtl', 'replace' );
 		wp_enqueue_style( 'react-controls' );
-
-		// Automatically detect, register, and enqueue js chunk scripts with translations.
-		$build_path     = get_template_directory() . '/assets/apps/customizer-controls/build/';
-		$js_chunk_files = glob( $build_path . '*.js' );
 	  
-		foreach ( $js_chunk_files as $chunk_file ) {
-			if ( 'controls.js' === basename( $chunk_file ) ) {
-				continue;
-			}
+		foreach ( $dependencies['chunks'] as $chunk_file ) {
 		
-			$chunk_handle = 'neve-customizer-chunk-' . basename( $chunk_file, '.js' );
-			wp_register_script( $chunk_handle, $bundle_path . basename( $chunk_file ), [], $dependencies['version'], true );
+			$chunk_handle = 'neve-customizer-chunk-' . $chunk_file;
+			wp_register_script( $chunk_handle, $bundle_path . $chunk_file, [], $dependencies['version'], true );
 			wp_enqueue_script( $chunk_handle );
 			
 			if ( function_exists( 'wp_set_script_translations' ) ) {
