@@ -165,15 +165,17 @@ class Loader {
 		wp_register_style( 'react-controls', $bundle_path . 'style-controls.css', [ 'neve-components' ], $dependencies['version'] );
 		wp_style_add_data( 'react-controls', 'rtl', 'replace' );
 		wp_enqueue_style( 'react-controls' );
-	  
-		foreach ( $dependencies['chunks'] as $chunk_file ) {
+
+		if ( isset( $dependencies['chunks'] ) ) {
+			foreach ( $dependencies['chunks'] as $chunk_file ) {
 		
-			$chunk_handle = 'neve-customizer-chunk-' . $chunk_file;
-			wp_register_script( $chunk_handle, $bundle_path . $chunk_file, [], $dependencies['version'], true );
-			wp_enqueue_script( $chunk_handle );
-			
-			if ( function_exists( 'wp_set_script_translations' ) ) {
-				wp_set_script_translations( $chunk_handle, 'neve' );
+				$chunk_handle = 'neve-customizer-chunk-' . $chunk_file;
+				wp_register_script( $chunk_handle, $bundle_path . $chunk_file, [], $dependencies['version'], true );
+				wp_enqueue_script( $chunk_handle );
+				
+				if ( function_exists( 'wp_set_script_translations' ) ) {
+					wp_set_script_translations( $chunk_handle, 'neve' );
+				}
 			}
 		}
 
