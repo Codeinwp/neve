@@ -38,13 +38,13 @@
     "sass": "^1.69.5"
   },
   "scripts": {
-    "prefix:css": "yarn run minify:style & yarn run minify:customizer",
+    "prefix:css": "npm run minify:style & npm run minify:customizer",
     "minify:style": ".\"/node_modules/.bin/postcss\" --use autoprefixer -b \"last 2 versions\" < assets/css/style.css | .\"/node_modules/.bin/postcss\" --use cssnano > assets/css/style.min.css",
     "minify:customizer": ".\"/node_modules/.bin/postcss\" --use autoprefixer -b \"last 2 versions\" < assets/css/admin/customizer/customizer.css | .\"/node_modules/.bin/postcss\" --use cssnano > assets/css/admin/customizer/customizer.min.css",
     "watch:css": "sass --watch assets/scss:assets/css --source-map",
     "watch:rollup": "./node_modules/.bin/rollup -c --watch",
     "build:css": "sass assets/scss:assets/css --style=compressed",
-    "build:rollup": "./node_modules/.bin/rollup -c && yarn run build:css && yarn run prefix:css",
+    "build:rollup": "./node_modules/.bin/rollup -c && npm run build:css && npm run prefix:css",
     "dev": "npm-run-all --parallel watch:css watch:rollup",
     "build": "npm-run-all build:css build:rollup"
   }
