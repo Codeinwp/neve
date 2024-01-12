@@ -3,7 +3,7 @@ name: NPM Tests
 on:
   push:
     branches-ignore:
-      - 'master'
+      - "master"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
@@ -23,16 +23,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Get npm cache directory path
+        id: npm-cache-dir-path
+        run: echo "::set-output name=dir::$(npm config get cache)"
       - uses: actions/cache@v2
-        id: yarn-cache
+        id: npm-cache
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.npm-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-npm-
       - name: Install Dependencies
         env:
           CYPRESS_INSTALL_BINARY: 0
