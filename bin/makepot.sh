@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-yarn dist
+npm run dist
 
 docker run \
   --user root \
