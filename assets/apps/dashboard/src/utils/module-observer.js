@@ -6,8 +6,8 @@ import { subscribe, select } from '@wordpress/data';
  * The page will be added after the parent container of the linkSelector.
  *
  * @param {string} linkSelector The link selector to determine the position of the added submenu page.
- * @param {Object} subMenuData The Sub Menu data to be added.
- * @return {HTMLAnchorElement} Custom Layouts menu page.
+ * @param {Object} subMenuData  The Sub Menu data to be added.
+ * @return {HTMLAnchorElement|void} Custom Layouts menu page.
  */
 function appendNewSubMenuPage(linkSelector, subMenuData) {
 	// Create and configure a new anchor element
