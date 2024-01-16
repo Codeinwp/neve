@@ -29,7 +29,7 @@
 		{
 			"gzip": false,
 			"running": false,
-			"limit": "7.15 KB",
+			"limit": "7 KB",
 			"path": "assets/js/build/modern/frontend.js",
 			"brotli": false
 		},
@@ -112,7 +112,7 @@
 		"@wordpress/keyboard-shortcuts": "^4.22.0",
 		"@wordpress/media-utils": "^4.36.0",
 		"@wordpress/plugins": "^6.13.0",
-		"@wordpress/scripts": "^26.16.0",
+		"@wordpress/scripts": "^26.19.0",
 		"@wordpress/stylelint-config": "^21.28.0",
 		"@wordpress/url": "^3.23.0",
 		"babel-loader": "^9.1.3",
