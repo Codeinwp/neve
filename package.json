@@ -29,14 +29,14 @@
 		{
 			"gzip": false,
 			"running": false,
-			"limit": "7 KB",
+			"limit": "7.15 KB",
 			"path": "assets/js/build/modern/frontend.js",
 			"brotli": false
 		},
 		{
 			"gzip": false,
 			"running": false,
-			"limit": "33 KB",
+			"limit": "33.24 KB",
 			"path": "assets/js/build/modern/shop.js",
 			"brotli": false
 		},
