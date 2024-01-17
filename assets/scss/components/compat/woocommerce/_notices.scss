@@ -79,20 +79,23 @@ $blockNotices: (
 	--primarybtnhoverbg: transparent;
 	--primarybtnbg: transparent;
 
-	.wc-block-components-notice-banner__content:has(.wc-forward, .showcoupon) {
-		display: inline-flex;
-		flex-basis: 100%;
-		flex-wrap: nowrap;
-		justify-content: space-between;
-		align-items: center;
-	}
+	.wc-block-components-notice-banner__content {
 
-	.wc-block-components-notice-banner__content:has(.wc-forward) {
-		flex-direction: row-reverse;
-	}
+		&:has(.wc-forward, .showcoupon) {
+			display: inline-flex;
+			flex-basis: 100%;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			align-items: center;
+		}
 
-	.wc-block-components-notice-banner__content:has(.showcoupon) {
-		flex-direction: row;
+		&:has(.wc-forward) {
+			flex-direction: row-reverse;
+		}
+
+		&:has(.showcoupon) {
+			flex-direction: row;
+		}
 	}
 }
 
@@ -111,8 +114,7 @@ $blockNotices: (
 			fill: $color;
 		}
 
-		a.wc-forward,
-		a.showcoupon {
+		a:is(.wc-forward, .showcoupon) {
 			background: var(--primarybtnbg) !important;
 			border: var(--primarybtnborderwidth, 0) solid currentColor !important;
 			border-radius: var(--primarybtnborderradius, 3px);
@@ -121,15 +123,15 @@ $blockNotices: (
 			text-decoration: none !important;
 			opacity: 1;
 			float: none;
+
+			&:hover {
+				background: var(--primarybtnhoverbg) !important;
+				color: var(--primarybtnhovercolor) !important;
+				border-color: var(--primarybtnhovercolor) !important;
+				opacity: 0.9;
+			}
 		}
 
-		a.wc-forward:hover,
-		a.showcoupon:hover {
-			background: var(--primarybtnhoverbg) !important;
-			color: var(--primarybtnhovercolor) !important;
-			border-color: var(--primarybtnhovercolor) !important;
-			opacity: 0.9;
-		}
 	}
 }
 
