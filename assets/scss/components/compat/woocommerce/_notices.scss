@@ -64,6 +64,75 @@ $notices: (
 	}
 }
 
+$blockNotices: (
+	"success": $success,
+	"error": $error,
+	"info": var(--nv-primary-accent),
+);
+
+.neve-main .wc-block-components-notice-banner {
+	--btnfs: $text-sm;
+	--primarybtnpadding: 10px 15px;
+	--primarybtnborderwidth: 3px;
+	--primarybtncolor: #fff;
+	--primarybtnhovercolor: #fff;
+	--primarybtnhoverbg: transparent;
+	--primarybtnbg: transparent;
+
+	.wc-block-components-notice-banner__content:has(.wc-forward, .showcoupon) {
+		display: inline-flex;
+		flex-basis: 100%;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.wc-block-components-notice-banner__content:has(.wc-forward) {
+		flex-direction: row-reverse;
+	}
+
+	.wc-block-components-notice-banner__content:has(.showcoupon) {
+		flex-direction: row;
+	}
+}
+
+@each $noticeName, $color in $blockNotices {
+	.neve-main .wc-block-components-notice-banner.is-#{$noticeName} {
+		border-radius: 3px;
+		background-color: $color;
+		border: 0;
+		color: #fff;
+		font-size: inherit;
+		line-height: inherit;
+		align-items: center;
+
+		svg {
+			background-color: #fff;
+			fill: $color;
+		}
+
+		a.wc-forward,
+		a.showcoupon {
+			background: var(--primarybtnbg) !important;
+			border: var(--primarybtnborderwidth, 0) solid currentColor !important;
+			border-radius: var(--primarybtnborderradius, 3px);
+			color: var(--primarybtncolor) !important;
+			padding: var(--primarybtnpadding, 13px 15px) !important;
+			text-decoration: none !important;
+			opacity: 1;
+			float: none;
+		}
+
+		a.wc-forward:hover,
+		a.showcoupon:hover {
+			background: var(--primarybtnhoverbg) !important;
+			color: var(--primarybtnhovercolor) !important;
+			border-color: var(--primarybtnhovercolor) !important;
+			opacity: 0.9;
+		}
+	}
+}
+
 .woocommerce .woocommerce-error {
 	padding-left: 3.5em;
 
