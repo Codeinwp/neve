@@ -204,6 +204,13 @@
   &:hover, &.has-popover {
 	.open-popover {
 	  opacity: .25;
-	}
+	}	
   }
+}
+
+/**
+ * Fix for the popover not being visible when it is inside a container with overflow.
+ */
+.rows-wrapper .vertical-rows .droppable-wrap.has-popover > .components-popover {
+	position: fixed !important;
 }
