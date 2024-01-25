@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 18/12/23
+ * Updated on 22/01/24
  *
  * @package neve
  */
@@ -18,6 +18,7 @@ return array(
 	'Actor' => array( '400',),
 	'Adamina' => array( '400',),
 	'Advent Pro' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Afacad' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Agbalumo' => array( '400',),
 	'Agdasima' => array( '400', '700',),
 	'Aguafina Script' => array( '400',),
@@ -660,6 +661,7 @@ return array(
 	'Kaisei Opti' => array( '400', '500', '700',),
 	'Kaisei Tokumin' => array( '400', '500', '700', '800',),
 	'Kalam' => array( '300', '400', '700',),
+	'Kalnia' => array( '100', '200', '300', '400', '500', '600', '700',),
 	'Kameron' => array( '400', '500', '600', '700',),
 	'Kanit' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Kantumruy' => array(),
@@ -1290,6 +1292,7 @@ return array(
 	'Reem Kufi Ink' => array( '400',),
 	'Reenie Beanie' => array( '400',),
 	'Reggae One' => array( '400',),
+	'Rethink Sans' => array( '400', '500', '600', '700', '800', '400italic', '500italic', '600italic', '700italic', '800italic',),
 	'Revalia' => array( '400',),
 	'Rhodium Libre' => array( '400',),
 	'Ribeye' => array( '400',),
