@@ -3,6 +3,7 @@ import {
 	SelectControl,
 	TextControl,
 	ToggleControl,
+	TextareaControl,
 } from '@wordpress/components';
 import IconSelector from './IconSelector';
 import { getIcons, ColorControl } from '@neve-wp/components';
@@ -68,6 +69,15 @@ const RepeaterItemContent = ({
 			case 'text':
 				return (
 					<TextControl
+						label={currentField.label}
+						value={value[index][key] || currentField.default}
+						onChange={(newData) => changeContent(key, newData)}
+						key={key + index}
+					/>
+				);
+			case 'textarea':
+				return (
+					<TextareaControl
 						label={currentField.label}
 						value={value[index][key] || currentField.default}
 						onChange={(newData) => changeContent(key, newData)}
