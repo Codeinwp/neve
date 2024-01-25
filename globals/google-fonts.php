@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 27/11/23
+ * Updated on 22/01/24
  *
  * @package neve
  */
@@ -18,6 +18,7 @@ return array(
 	'Actor' => array( '400',),
 	'Adamina' => array( '400',),
 	'Advent Pro' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Afacad' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Agbalumo' => array( '400',),
 	'Agdasima' => array( '400', '700',),
 	'Aguafina Script' => array( '400',),
@@ -565,6 +566,8 @@ return array(
 	'Happy Monkey' => array( '400',),
 	'Harmattan' => array( '400', '500', '600', '700',),
 	'Headland One' => array( '400',),
+	'Hedvig Letters Sans' => array( '400',),
+	'Hedvig Letters Serif' => array( '400',),
 	'Heebo' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Henny Penny' => array( '400',),
 	'Hepta Slab' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
@@ -658,6 +661,7 @@ return array(
 	'Kaisei Opti' => array( '400', '500', '700',),
 	'Kaisei Tokumin' => array( '400', '500', '700', '800',),
 	'Kalam' => array( '300', '400', '700',),
+	'Kalnia' => array( '100', '200', '300', '400', '500', '600', '700',),
 	'Kameron' => array( '400', '500', '600', '700',),
 	'Kanit' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Kantumruy' => array(),
@@ -899,7 +903,7 @@ return array(
 	'Nanum Gothic Coding' => array( '400', '700',),
 	'Nanum Myeongjo' => array( '400', '700', '800',),
 	'Nanum Pen Script' => array( '400',),
-	'Narnoor' => array( '400',),
+	'Narnoor' => array( '400', '500', '600', '700', '800',),
 	'Neonderthaw' => array( '400',),
 	'Nerko One' => array( '400',),
 	'Neucha' => array( '400',),
@@ -1288,6 +1292,7 @@ return array(
 	'Reem Kufi Ink' => array( '400',),
 	'Reenie Beanie' => array( '400',),
 	'Reggae One' => array( '400',),
+	'Rethink Sans' => array( '400', '500', '600', '700', '800', '400italic', '500italic', '600italic', '700italic', '800italic',),
 	'Revalia' => array( '400',),
 	'Rhodium Libre' => array( '400',),
 	'Ribeye' => array( '400',),
@@ -1316,13 +1321,18 @@ return array(
 	'Rubik' => array( '300', '400', '500', '600', '700', '800', '900', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Rubik 80s Fade' => array( '400',),
 	'Rubik Beastly' => array( '400',),
+	'Rubik Broken Fax' => array( '400',),
 	'Rubik Bubbles' => array( '400',),
 	'Rubik Burned' => array( '400',),
 	'Rubik Dirt' => array( '400',),
 	'Rubik Distressed' => array( '400',),
+	'Rubik Doodle Shadow' => array( '400',),
+	'Rubik Doodle Triangles' => array( '400',),
 	'Rubik Gemstones' => array( '400',),
 	'Rubik Glitch' => array( '400',),
 	'Rubik Iso' => array( '400',),
+	'Rubik Lines' => array( '400',),
+	'Rubik Maps' => array( '400',),
 	'Rubik Marker Hatch' => array( '400',),
 	'Rubik Maze' => array( '400',),
 	'Rubik Microbe' => array( '400',),
@@ -1330,6 +1340,7 @@ return array(
 	'Rubik Moonrocks' => array( '400',),
 	'Rubik Pixels' => array( '400',),
 	'Rubik Puddles' => array( '400',),
+	'Rubik Scribble' => array( '400',),
 	'Rubik Spray Paint' => array( '400',),
 	'Rubik Storm' => array( '400',),
 	'Rubik Vinyl' => array( '400',),
