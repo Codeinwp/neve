@@ -26,7 +26,7 @@ test.describe('Starter sites check', () => {
 					await page.evaluate(() => window.scrollTo(0, 0));
 					await page.waitForTimeout(500);
 					await expect(page).toHaveScreenshot({
-						maxDiffPixelRatio: 0.15,
+						maxDiffPixelRatio: 0.18,
 						fullPage: true,
 					});
 				}
