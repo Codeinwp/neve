@@ -21,12 +21,12 @@ test.describe('Starter sites check', () => {
 		for (const [name, urls] of Object.entries(starterSites)) {
 			await test.step(`Check ${name} starter site.`, async () => {
 				for (const url of urls) {
-					await page.goto(url + '?optml_off=true');
+					await page.goto(url + '?optml_off=true&onboarding=true');
 					await page.keyboard.press('End');
-					await page.keyboard.press('Home');
+					await page.evaluate(() => window.scrollTo(0, 0));
 					await page.waitForTimeout(500);
 					await expect(page).toHaveScreenshot({
-						maxDiffPixelRatio: 0.2,
+						maxDiffPixelRatio: 0.15,
 						fullPage: true,
 					});
 				}
