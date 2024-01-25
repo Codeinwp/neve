@@ -22,6 +22,8 @@ test.describe('Starter sites check', () => {
 			await test.step(`Check ${name} starter site.`, async () => {
 				for (const url of urls) {
 					await page.goto(url + '?optml_off=true');
+					await page.keyboard.press('End');
+					await page.keyboard.press('Home');
 					await page.waitForTimeout(500);
 					await expect(page).toHaveScreenshot({
 						maxDiffPixelRatio: 0.15,
