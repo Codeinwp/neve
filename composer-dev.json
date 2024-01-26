@@ -23,7 +23,7 @@
   "repositories": [
 	{
 	  "type": "vcs",
-	  "url": "https://github.com/cristian-ungureanu/webfont-loader"
+	  "url": "https://github.com/Codeinwp/webfont-loader"
 	}
   ],
   "autoload": {

@@ -1,5 +1,6 @@
 const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
 const config = require('@wordpress/scripts/config/webpack.config');
+const customPlugins = require('./custom-plugins');
 
 const plugins = [
 	...config.plugins.filter(
@@ -19,6 +20,7 @@ const plugins = [
 			}
 		},
 	}),
+	new customPlugins.ChunksNameAssetAppendPlugin(),
 ];
 
 module.exports = (env) => {

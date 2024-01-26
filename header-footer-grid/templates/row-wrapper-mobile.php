@@ -23,6 +23,12 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 $close_classes    = 'close-sidebar-panel navbar-toggle-wrapper' . ( $close_contained ? ' container' : '' );
 $submenu_style    = row_setting( 'layout', 'slide_left' );
 $menu_icon_class  = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active ' );
+
+$menu_icon = component_setting( MenuIcon::MENU_ICON );
+$menu_svg  = component_setting( MenuIcon::MENU_SVG );
+if ( $menu_icon === 'svg' && empty( $menu_svg ) ) {
+	$menu_icon = 'default';
+}
 ?>
 <div
 		id="header-menu-sidebar" class="<?php echo esc_attr( join( ' ', $classes ) ); ?>"
@@ -47,9 +53,17 @@ $menu_icon_class  = apply_filters( 'neve_menu_icon_classes', 'hamburger is-activ
 				<?php
 			} else {
 				?>
-					<span class="hamburger-box">
+				<span class="hamburger-box <?php echo esc_attr( 'icon-' . $menu_icon ); ?>">
+					<?php
+					if ( $menu_icon === 'svg' ) {
+						echo neve_kses_svg( $menu_svg ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					} else {
+						?>
 						<span class="hamburger-inner"></span>
-					</span>
+						<?php
+					}
+					?>
+				</span>
 				<?php
 			}
 			?>
