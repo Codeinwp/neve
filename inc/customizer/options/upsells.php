@@ -499,22 +499,22 @@ class Upsells extends Base_Customizer {
 
 		if ( class_exists( 'WooCommerce', false ) ) {
 			$upsells['product_catalog']       = [
-				'text'        => __( 'More product catalog options available in PRO', 'neve' ),
+				'text'        => __( 'More product catalog options available in PRO', 'neve' ) . ' (Business & Agency)',
 				'button_text' => __( 'Learn More', 'neve' ),
 				'section'     => 'woocommerce_product_catalog',
 			];
 			$upsells['woocommerce_checkout']  = [
-				'text'        => __( 'More checkout options available in PRO', 'neve' ),
+				'text'        => __( 'More checkout options available in PRO', 'neve' ) . ' (Business & Agency)',
 				'button_text' => __( 'Learn More', 'neve' ),
 				'section'     => 'woocommerce_checkout',
 			];
 			$upsells['single_product_layout'] = [
-				'text'        => __( 'More single product options available in PRO', 'neve' ),
+				'text'        => __( 'More single product options available in PRO', 'neve' ) . ' (Business & Agency)',
 				'button_text' => __( 'Learn More', 'neve' ),
 				'section'     => 'neve_single_product_layout',
 			];
 			$upsells['typography']            = [
-				'text'        => __( 'WooCommerce typography options available in PRO', 'neve' ),
+				'text'        => __( 'WooCommerce typography options available in PRO', 'neve' ) . ' (Business & Agency)',
 				'button_text' => __( 'Learn More', 'neve' ),
 				'panel'       => 'neve_typography',
 				'type'        => 'section',
