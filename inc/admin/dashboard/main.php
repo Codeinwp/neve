@@ -9,6 +9,8 @@ namespace Neve\Admin\Dashboard;
 
 use Neve\Core\Limited_Offers;
 use Neve\Core\Theme_Info;
+use Neve\Core\Tracker;
+
 /**
  * Class Main
  *
