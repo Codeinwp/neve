@@ -188,6 +188,20 @@ class Admin {
 			]
 		);
 		wp_set_script_translations( 'neve-components', 'neve' );
+
+		if ( isset( $deps['chunks'] ) ) {
+			foreach ( $deps['chunks'] as $chunk_file ) {
+		
+				$chunk_handle = 'neve-components-chunk-' . $chunk_file;
+				wp_register_script( $chunk_handle, trailingslashit( NEVE_ASSETS_URL ) . 'apps/components/build/' . $chunk_file, [], $deps['version'], true );
+				wp_enqueue_script( $chunk_handle );
+				
+				if ( function_exists( 'wp_set_script_translations' ) ) {
+					wp_set_script_translations( $chunk_handle, 'neve' );
+				}
+			}
+		}
+
 		wp_register_style( 'neve-components', trailingslashit( NEVE_ASSETS_URL ) . 'apps/components/build/style-components.css', [ 'wp-components' ], $deps['version'] );
 		wp_add_inline_style( 'neve-components', Dynamic_Css::get_root_css() );
 	}
