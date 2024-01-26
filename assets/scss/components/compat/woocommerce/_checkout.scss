@@ -144,7 +144,7 @@
 		border: 0 !important;
 	}
 
-	main button {
+	main button:not(.wc-block-components-button) {
 		width: 100%;
 	}
 }

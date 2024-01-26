@@ -1,3 +1,14 @@
+##### [Version 3.7.5](https://github.com/Codeinwp/neve/compare/v3.7.4...v3.7.5) (2023-12-22)
+
+### Bug Fixes
+- **Secondary menu** alignment on mobile
+- **WooCommerce 8.3** compatibility improvements
+- **WooCommerce** breadcrumbs on mobile
+
+### Improvements
+- **Update Google Fonts:** Get the newest Google fonts from the public font library.
+- **Updated dependencies** using the latest dependencies.
+
 ##### [Version 3.7.4](https://github.com/Codeinwp/neve/compare/v3.7.3...v3.7.4) (2023-11-29)
 
 ### Bug Fixes
