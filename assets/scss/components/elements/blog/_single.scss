@@ -110,6 +110,7 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
+	text-align: var(--textalign, center);
 
 	.nv-title-meta-wrap {
 		color: var(--color, var(--nv-text-dark-bg));
@@ -130,7 +131,6 @@
 	.container {
 		display: flex;
 		justify-content: var(--justify, center);
-		text-align: var(--textalign, center);
 	}
 }
 
