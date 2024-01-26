@@ -34,6 +34,8 @@ class MenuIcon extends Abstract_Component {
 	const QUICK_LINKS_ID    = 'quick-links';
 	const LABEL_MARGIN_ID   = 'label_margin';
 	const MENU_ICON         = 'menu_icon';
+	const SIZE_ID           = 'icon_size';
+	const MENU_SVG          = 'svg_menu_icon';
 
 	/**
 	 * Padding settings default values.
@@ -205,7 +207,7 @@ JS;
 	 */
 	private function get_menu_style( $menu_icon ) {
 		// We don't add any css for the default option.
-		if ( ! in_array( $menu_icon, [ 'arrow', 'donner', 'dots', 'minus', 'vortex', 'squeeze' ] ) ) {
+		if ( ! in_array( $menu_icon, [ 'arrow', 'donner', 'dots', 'minus', 'vortex', 'squeeze', 'svg' ] ) ) {
 			return '';
 		}
 
@@ -406,7 +408,18 @@ CSS;
 				}
 CSS;
 		}
-
+		// SVG style
+		if ( $menu_icon === 'svg' ) {
+			$menu_icon_size = Mods::get( $this->get_id() . '_' . self::SIZE_ID, '15' ) . 'px';
+			$css           .= <<<CSS
+				.hamburger-box.icon-svg {
+					width: 100%;
+					height: var(--menuiconsize, $menu_icon_size);
+					display:flex;
+					justify-content:center;
+				}
+CSS;
+		}
 		// Squeeze style
 		if ( $menu_icon === 'squeeze' ) {
 			$css .= <<<CSS
@@ -543,6 +556,43 @@ CSS;
 				],
 				'section'               => $this->section,
 				'live_refresh_selector' => $this->default_selector,
+				'conditional_header'    => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::SIZE_ID,
+				'group'                 => $this->get_id(),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'absint',
+				'default'               => 15,
+				'label'                 => __( 'Icon Size', 'neve' ),
+				'type'                  => 'Neve\Customizer\Controls\React\Range',
+				'options'               => [
+					'active_callback' => function () {
+						return Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' ) === 'svg';
+
+					},
+					'priority'        => 11,
+					'input_attrs'     => [
+						'min'        => 10,
+						'max'        => 100,
+						'defaultVal' => 15,
+					],
+				],
+				'live_refresh_selector' => $this->default_selector . ' span.icon-svg',
+				'live_refresh_css_prop' => [
+					'cssVar'  => [
+						'vars'     => '--menuiconsize',
+						'selector' => '.builder-item--' . $this->get_id(),
+						'suffix'   => 'px',
+					],
+					'type'    => 'svg-icon-size',
+					'default' => 15,
+				],
+				'section'               => $this->section,
 				'conditional_header'    => true,
 			]
 		);
