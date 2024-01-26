@@ -12,7 +12,8 @@ namespace HFG;
 use HFG\Core\Builder\Header as HeaderBuilder;
 use HFG\Core\Components\Logo;
 
-$_id = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
+$_id    = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
+$device = current_device( HeaderBuilder::BUILDER_NAME );
 
 $show_name     = component_setting( Logo::SHOW_TITLE );
 $show_desc     = component_setting( Logo::SHOW_TAGLINE );
@@ -26,7 +27,7 @@ $conditional_logo = json_decode( component_setting( Logo::LOGO, Logo::sanitize_l
 $custom_logo_id   = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $active_logo;
 
 $wrapper_tag = 'p';
-if ( get_option( 'show_on_front' ) === 'posts' && is_home() ) {
+if ( get_option( 'show_on_front' ) === 'posts' && is_home() && $device === 'desktop' ) {
 	$wrapper_tag = 'h1';
 }
 
