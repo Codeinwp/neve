@@ -46,9 +46,9 @@ class Limited_Offers {
 	 * @var array[]
 	 */
 	public $timelines = array(
-		'bf' => array(
-			'start' => '2023-11-20 00:00:00',
-			'end'   => '2023-11-27 23:59:00',
+		'bf_2024' => array(
+			'start' => '2023-11-20 00:00:00', // TODO: change this to the actual date.
+			'end'   => '2024-11-27 23:59:00',
 		),
 	);
 
@@ -57,7 +57,9 @@ class Limited_Offers {
 	 */
 	public function __construct() {
 		try {
-			if ( $this->is_deal_active( 'bf' ) ) {
+			$this->active = $this->get_first_active_deal();
+			
+			if ( false !== strpos( $this->active, 'bf' ) ) {
 				$this->activate_bff();
 			}
 		} catch ( Exception $e ) {
@@ -88,21 +90,35 @@ class Limited_Offers {
 	}
 
 	/**
+	 * Get the first active deal.
+	 * 
+	 * @return string First active deal.
+	 */
+	public function get_first_active_deal() {
+		// Return the first key for $timelines wich pass is_deal_active.
+		foreach ( $this->timelines as $key => $timeline ) {
+			if ( $this->is_deal_active( $key ) ) {
+				return $key;
+			}
+		}
+
+		return '';
+	}
+
+	/**
 	 * Activate the Black Friday deal.
 	 *
 	 * @return void
 	 */
 	public function activate_bff() {
-		$this->active = 'bf';
-
 		$this->offer_metadata = array(
 			'bannerUrl'           => get_template_directory_uri() . '/assets/img/dashboard/black-friday-banner.png',
 			'bannerAlt'           => 'Neve Black Friday Sale',
 			'customizerBannerUrl' => get_template_directory_uri() . '/assets/img/dashboard/black-friday-customizer-banner.png',
 			'customizerBannerAlt' => 'Neve Black Friday Sale',
-			'linkDashboard'       => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday/', 'blackfridayltd23', 'dashboard' ),
+			'linkDashboard'       => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday/', 'bfcm24', 'dashboard' ),
 			'linkGlobal'          => tsdk_utmify( 'https://themeisle.com/themes/neve/blackfriday/', 'blackfridayltd23', 'globalnotice' ),
-			'linkCustomizer'      => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade', 'blackfriday23', 'customizer' ),
+			'linkCustomizer'      => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade', 'blackfriday23', 'nevecustomizer' ),
 		);
 	}
 
