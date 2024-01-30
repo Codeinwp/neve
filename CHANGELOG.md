@@ -1,3 +1,8 @@
+##### [Version 3.8.1](https://github.com/Codeinwp/neve/compare/v3.8.0...v3.8.1) (2024-01-30)
+
+### Improvements
+- **Updated internal dependencies**
+
 #### [Version 3.8.0](https://github.com/Codeinwp/neve/compare/v3.7.5...v3.8.0) (2024-01-30)
 
 ### New Features
