@@ -127,6 +127,11 @@ function neve_hfg_footer_settings() {
 			'main'   => $empty_row,
 			'bottom' => $empty_row,
 		],
+		'mobile'  => [
+			'top'    => $empty_row,
+			'main'   => $empty_row,
+			'bottom' => $empty_row,
+		],
 	];
 
 	return [

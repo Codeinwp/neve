@@ -1,12 +1,14 @@
-import './style.scss';
-import App from './Components/App';
 import { registerStore } from '@wordpress/data';
 import { render } from '@wordpress/element';
+
+import './style.scss';
+import App from './Components/App';
 
 import actions from './store/actions';
 import reducer from './store/reducer';
 import selectors from './store/selectors';
 import './utils/module-observer';
+import './utils/survey';
 
 registerStore('neve-dashboard', {
 	reducer,

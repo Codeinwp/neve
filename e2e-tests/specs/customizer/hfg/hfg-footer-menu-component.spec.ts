@@ -22,10 +22,10 @@ test.describe('Footer Menu component', function () {
 	test('Check Footer Menu Style and Hover', async () => {
 		await page.goto('/?test_name=hfgFooterMenu');
 
-		await expect(page.locator('.nav-menu-footer')).toHaveClass(/style\-border\-bottom/);
+		await expect(page.locator('.footer--row[data-show-on="desktop"] .nav-menu-footer')).toHaveClass(/style\-border\-bottom/);
 
 		const footerMenuItems = await page
-			.locator('.footer-menu.nav-ul li .wrap a')
+			.locator('.footer--row[data-show-on="desktop"] .footer-menu.nav-ul li .wrap a')
 			.all();
 
 		for (const item of footerMenuItems) {

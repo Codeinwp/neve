@@ -81,10 +81,25 @@
 }
 
 .row.sidebar .row-inner {
-  width: 200px;
+  width: 210px;
 
   .droppable-wrap {
 	height: 100%;
+
+	max-height: 170px;
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+	
+	&::-webkit-scrollbar-track {
+		background: #D9D9D9;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: #888;
+	}
   }
 
   .droppable {
@@ -189,6 +204,13 @@
   &:hover, &.has-popover {
 	.open-popover {
 	  opacity: .25;
-	}
+	}	
   }
+}
+
+/**
+ * Fix for the popover not being visible when it is inside a container with overflow.
+ */
+.rows-wrapper .vertical-rows .droppable-wrap.has-popover > .components-popover {
+	position: fixed !important;
 }

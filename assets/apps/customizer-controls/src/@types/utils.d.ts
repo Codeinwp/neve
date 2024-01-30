@@ -104,6 +104,52 @@ type BuilderActions = {
 	updateSidebarItems: () => void;
 };
 
+type TrackingData = {
+	block?: string;
+	env?: string;
+	action?: string;
+	feature?: string;
+	groupID?: string;
+	featureComponent?: string;
+	featureValue?: string | number | Record<string, unknown>;
+	hasOpenAIKey?: boolean;
+	usedTheme?: string;
+};
+
+type EventResponse = {
+	error?: string;
+	success?: boolean;
+	response?: any;
+};
+
+type EventOptions = {
+	directSave?: boolean;
+	consent?: boolean;
+	refreshTimer?: boolean;
+	sendNow?: boolean;
+	ignoreLimit?: boolean;
+};
+
+type EventTrackingAccumulatorWithPlugin = {
+	add: (data: TrackingData, options?: EventOptions) => string;
+	set: (key: string, data: TrackingData, options?: EventOptions) => void;
+	base: EventTrackingAccumulator;
+};
+
+interface EventTrackingAccumulator {
+	subscribe(callback: (response: EventResponse) => void): () => void;
+	hasConsent(): boolean;
+	sendBulkTracking(payload: Array<TrackingData>): Promise<Response>;
+	trkMetadata(data: TrackingData): TrackingData;
+	with(pluginSlug: string): EventTrackingAccumulatorWithPlugin;
+	uploadEvents(): Promise<void>;
+	sendIfLimitReached(): Promise<void> | undefined;
+	start(): void;
+	stop(): void;
+	refreshTimer(): void;
+	clone(): EventTrackingAccumulator;
+}
+
 declare global {
 	interface Window {
 		wp: StringObjectKeys;
@@ -129,6 +175,7 @@ declare global {
 			};
 		};
 		NeveProReactCustomize: undefined | StringObjectKeys;
+		tiTrk?: EventTrackingAccumulator;
 	}
 }
 
