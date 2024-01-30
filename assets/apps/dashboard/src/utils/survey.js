@@ -7,8 +7,8 @@ import formbricks from '@formbricks/js';
  * Take the number of days since install and convert it to a category for NPS user profile.
  *
  * @param {number} number - Number to convert.
- * @param {number} scale - Scale to use.
- * @return {number} - Converted number.
+ * @param {number} scale  - Scale to use.
+ * @return {number|void} Converted number.
  */
 const convertToCategory = (number, scale = 1) => {
 	const normalizedNumber = Math.round(number / scale);
