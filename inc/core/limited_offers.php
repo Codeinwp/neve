@@ -120,6 +120,7 @@ class Limited_Offers {
 			'customizerBannerUrl'      => get_template_directory_uri() . '/assets/img/dashboard/black-friday-customizer-banner.png',
 			'customizerBannerAlt'      => 'Neve Black Friday Sale',
 			'customizerBannerStoreUrl' => esc_url_raw( $data['neve_customizer_url'] ),
+			'urgencyText'              => $data['urgency_text'],
 		);
 	}
 
