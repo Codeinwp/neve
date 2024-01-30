@@ -77,7 +77,8 @@ class Footer extends Abstract_Builder {
 			)
 		);
 		$this->devices = [
-			'desktop' => __( 'Footer', 'neve' ),
+			'desktop' => __( 'Desktop', 'neve' ),
+			'mobile'  => __( 'Mobile', 'neve' ),
 		];
 
 		/**
@@ -98,6 +99,27 @@ class Footer extends Abstract_Builder {
 				}
 
 				return $processed_params;
+			}
+		);
+
+		/**
+		 * Add mobile footer layout if not present using the same layout from desktop if mobile is empty.
+		 * This will apply from Neve 3.5.8 and offer backward compatibility for users that have not set a mobile footer layout.
+		 *
+		 * @since 3.5.8
+		 */
+		add_filter(
+			'theme_mod_hfg_footer_layout_v2',
+			function ( $value ) {
+				if ( is_string( $value ) ) {
+					$maybe_parse_json = json_decode( $value, true );
+					if ( ! empty( $maybe_parse_json['mobile'] ) ) {
+						return $value;
+					}
+					$maybe_parse_json['mobile'] = $maybe_parse_json['desktop'];
+					return wp_json_encode( $maybe_parse_json );
+				}
+				return $value;
 			}
 		);
 

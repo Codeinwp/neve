@@ -209,6 +209,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a { flex-grow: 1; display: flex; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a .dd-title { width: var(--wrapdropdownwidth); }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap button { border: 0; z-index: 1; background: 0; }';
+		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li:not([class*=block]):not(.menu-item-has-children) > .wrap > a { padding-right: calc(1em + (18px*2)); text-wrap: wrap; white-space: normal;}';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li.menu-item-has-children:not([class*=block])  > .wrap > a { margin-right: calc(-1em - (18px*2));}';
 
 		return Dynamic_Css::minify_css( $mobile_button_caret_css );
@@ -226,7 +227,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_dropdown .header-menu-sidebar { height: auto; }';
 		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_dropdown .header-menu-sidebar-inner { max-height: 400px; padding: 20px 0; }';
 		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_full_canvas .header-menu-sidebar { opacity: 1; }';
-		$sidebar_animation_css .= '.header-menu-sidebar .menu-item-nav-search { pointer-events: none; }';
+		$sidebar_animation_css .= '.header-menu-sidebar .menu-item-nav-search:not(.floating) { pointer-events: none; }';
 		$sidebar_animation_css .= '.header-menu-sidebar .menu-item-nav-search .is-menu-sidebar & { pointer-events: unset; }';
 		/* Accessibility css. */
 		$accessibility_caret_css  = '.nav-ul li:focus-within .wrap.active + .sub-menu { opacity: 1; visibility: visible; }';

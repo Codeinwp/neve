@@ -9,6 +9,8 @@ namespace Neve\Admin\Dashboard;
 
 use Neve\Core\Limited_Offers;
 use Neve\Core\Theme_Info;
+use Neve\Core\Tracker;
+
 /**
  * Class Main
  *
@@ -381,6 +383,8 @@ class Main {
 			'canInstallPlugins'       => current_user_can( 'install_plugins' ),
 			'canActivatePlugins'      => current_user_can( 'activate_plugins' ),
 			'deal'                    => ! defined( 'NEVE_PRO_VERSION' ) ? $offer->get_localized_data() : array(),
+			'rootUrl'                 => get_site_url(),
+			'daysSinceInstall'        => round( ( time() - get_option( 'neve_install', 0 ) ) / DAY_IN_SECONDS ),
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {

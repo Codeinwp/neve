@@ -8,6 +8,7 @@
 namespace Neve\Views;
 
 use HFG\Core\Components\Nav;
+use Neve\Core\Tracker;
 
 /**
  * Class Header
@@ -28,6 +29,7 @@ class Header extends Base_View {
 		add_filter( 'wp_nav_menu_items', array( $this, 'add_last_menu_item' ), 10, 2 );
 		add_filter( 'wp_page_menu', array( $this, 'add_fallback_last_menu_items' ), 10, 2 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'hide_last_menu_item_search_in_sidebar' ) );
+		add_action( 'wp_update_nav_menu', array( $this, 'track_mm_settings' ) );
 	}
 
 	/**
@@ -259,5 +261,36 @@ class Header extends Base_View {
 		$menu = str_replace( '</ul>', $items . '</ul>', $menu );
 
 		return $menu;
+	}
+
+	/**
+	 * Track if the mega menu is active.
+	 *
+	 * @param int $menu_id The menu id.
+	 *
+	 * @return void
+	 */
+	public function track_mm_settings( $menu_id ) {
+		$menu_items = wp_get_nav_menu_items( $menu_id );
+		if ( ! $menu_items ) {
+			return;
+		}
+		$has_mm = false;
+		foreach ( $menu_items as $menu_item ) {
+			if ( in_array( 'neve-mega-menu', $menu_item->classes, true ) ) {
+				$has_mm = true;
+				break;
+			}
+		}
+
+		Tracker::track(
+			array(
+				array(
+					'feature'          => 'mega-menu-free',
+					'featureComponent' => 'is-active',
+					'featureValue'     => $has_mm,
+				),
+			)
+		);
 	}
 }

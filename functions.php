@@ -164,3 +164,4 @@ add_filter(
 	}
 );
 
+add_filter( 'themeisle_sdk_enable_telemetry', '__return_true' );
