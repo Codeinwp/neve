@@ -11,11 +11,18 @@ const Upsells: React.FC<Props> = ({ control }) => {
 	const { params } = control;
 	const { title, url } = params;
 
-	if (window?.NeveReactCustomize?.deal?.active) {
+	if (
+		window?.NeveReactCustomize?.deal?.active &&
+		window?.NeveReactCustomize?.deal?.customizerBannerStoreUrl &&
+		window?.NeveReactCustomize?.deal?.customizerBannerUrl
+	) {
 		return (
 			<div className="upsell-inner">
 				<a
-					href={window?.NeveReactCustomize?.deal?.linkCustomizer}
+					href={
+						window?.NeveReactCustomize?.deal
+							?.customizerBannerStoreUrl
+					}
 					target="_blank"
 					rel="external noreferrer noopener"
 					style={{ width: '100%', lineHeight: '0' }}

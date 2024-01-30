@@ -167,9 +167,9 @@ declare global {
 				remaningTime?: string;
 				bannerUrl?: string;
 				customizerBannerUrl?: string;
-				linkDashboard?: string;
+				bannerStoreUrl?: string;
 				linkGlobal?: string;
-				linkCustomizer?: string;
+				customizerBannerStoreUrl?: string;
 				customizerBannerAlt?: string;
 				bannerAlt?: string;
 			};
