@@ -112,8 +112,8 @@ add_filter(
 
 		$compatibilities['NevePro'] = [
 			'basefile'  => defined( 'NEVE_PRO_BASEFILE' ) ? NEVE_PRO_BASEFILE : '',
-			'required'  => '2.3',
-			'tested_up' => '2.7',
+			'required'  => '2.4',
+			'tested_up' => '2.8',
 		];
 
 		return $compatibilities;
