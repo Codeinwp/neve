@@ -23,7 +23,13 @@ test.describe('Blog/Archive 1 / Default Layout', () => {
 		}
 	});
 
-	test('Post Content Order', async ({ page }) => {
+	test('Post Content Order', async ({ page, request, baseURL }) => {
+		// Make sure the default layout is set.
+		await setCustomizeSettings('defaultLayout', data.archive1, {
+			request,
+			baseURL,
+		});
+
 		await page.goto('/?test_name=defaultLayout');
 		const posts = await page.locator('article.post');
 
