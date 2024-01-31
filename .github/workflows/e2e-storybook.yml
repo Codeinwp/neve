@@ -4,13 +4,13 @@ on:
   pull_request:
     types: [opened, synchronize, ready_for_review]
     branches-ignore:
-      - 'update_dependencies'
+      - "update_dependencies"
     paths:
-      - '.storybook/**'
-      - 'e2e-tests/**'
-      - '.github/e2e-storybook.yml'
-      - 'package.json'
-      - 'stories/**'
+      - ".storybook/**"
+      - "e2e-tests/**"
+      - ".github/e2e-storybook.yml"
+      - "package.json"
+      - "stories/**"
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
   cancel-in-progress: true
@@ -25,23 +25,23 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
-      - name: Setup node 14
+      - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: 18.x
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Get npm cache directory path
+        id: npm-cache-dir-path
+        run: echo "::set-output name=dir::$(npm config get cache)"
       - uses: actions/cache@v2
-        id: yarn-cache
+        id: npm-cache
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.npm-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-npm-
       - name: Build Cypress
         working-directory: ./e2e-tests
-        run:  npm ci
+        run: npm ci
       - name: Start Storybook
         run: |
           npm ci

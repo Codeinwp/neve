@@ -47,7 +47,7 @@ jobs:
             ${{ runner.os }}-composer-
       - name: Install composer deps
         run: composer install --no-dev --prefer-dist --no-progress --no-suggest
-      - name: Install yarn deps
+      - name: Install NPM deps
         run: npm ci
       - name: Build files
         run: npm run build
