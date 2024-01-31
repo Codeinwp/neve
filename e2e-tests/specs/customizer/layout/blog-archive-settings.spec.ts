@@ -127,15 +127,9 @@ test.describe('Blog/Archive 1 / Default Layout', () => {
 					'.nv-post-thumbnail-wrap'
 				);
 				if (index % 2 === 0) {
-					await expect(thumbnail).toHaveCSS(
-						'grid-column',
-						'1 / auto'
-					);
+					await expect(thumbnail).toHaveCSS('grid-column', '1');
 				} else {
-					await expect(thumbnail).toHaveCSS(
-						'grid-column',
-						'2 / auto'
-					);
+					await expect(thumbnail).toHaveCSS('grid-column', '2');
 				}
 			}
 			await expect(await posts.nth(index)).toHaveClass(
