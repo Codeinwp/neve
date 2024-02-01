@@ -28,15 +28,6 @@ test.describe('Menu item description', function () {
 		await page.getByRole('button', { name: 'Add New Category' }).click();
 		await page.goto('wp-admin/nav-menus.php');
 
-		// await page.getByRole('button', { name: 'Screen Options ' }).click();
-		// await page.getByLabel('Description', { exact: true }).check();
-		// await page.getByRole('button', { name: 'Screen Options ' }).click();
-		// await page.getByRole('link', { name: 'Level 2. Sub item number 1 under Level 1.' }).scrollIntoViewIfNeeded();
-		// await page.getByRole('link', { name: 'Level 2. Sub item number 1 under Level 1.' }).click();
-		// await page.getByRole('textbox', { name: 'Description The description will be displayed in the menu if the active theme supports it.' }).click();
-		// await page.getByRole('textbox', { name: 'Description The description will be displayed in the menu if the active theme supports it.' }).fill('Product Description');
-		// await page.getByRole('button', { name: 'Save Menu' }).click();
-
 		await page
 			.getByRole('heading', {
 				name: 'Categories Press return or enter to open this section ',
