@@ -1,0 +1,4 @@
+{
+	"hfg_footer_layout_v2": "{\"desktop\":{\"top\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]},\"main\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]},\"bottom\":{\"left\":[],\"c-left\":[],\"center\":[{\"id\":\"footer_copyright\"}],\"c-right\":[],\"right\":[]}}, \"mobile\":{\"top\":{\"left\":[],\"c-left\":[],\"center\":[{\"id\":\"footer-menu\"}],\"c-right\":[],\"right\":[]},\"main\":{\"left\":[],\"c-left\":[],\"center\":[],\"c-right\":[],\"right\":[]},\"bottom\":{\"left\":[],\"c-left\":[],\"center\":[{\"id\":\"footer_copyright\"}],\"c-right\":[],\"right\":[]}}}",
+	"nav_menu_locations[footer]": 177
+}

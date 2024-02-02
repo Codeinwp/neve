@@ -51,6 +51,12 @@ const BuilderItem: React.FC<Props> = (props) => {
 				return a.id < b.id ? -1 : 1;
 			})
 		);
+
+		window.tiTrk?.with('neve').set(`${componentId}_removed`, {
+			feature: builder + '_builder',
+			featureComponent: 'component-removed',
+			featureValue: { row, slot, item: componentId },
+		});
 	};
 
 	const iconSize = 18;

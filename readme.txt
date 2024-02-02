@@ -19,6 +19,42 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.8.1](https://github.com/Codeinwp/neve/compare/v3.8.0...v3.8.1) (2024-01-30)
+
+### Improvements
+- **Updated internal dependencies**
+
+
+
+
+#### [Version 3.8.0](https://github.com/Codeinwp/neve/compare/v3.7.5...v3.8.0) (2024-01-30)
+
+### New Features
+- **Enable full HTML5 theme support**: All HTML5 theme support features are now enabled. 
+- **Added X (former Twitter) and Apple Music logo for Social Icons**: Updated the social icons list.
+- **Added mobile support for the footer in Header Footer Grid builder**: Now users can control and build the layout for the footer when viewed on mobile. 
+
+### Bug Fixes
+- **WooCommerce notices styles for v8.5**: Fixed a bug with the notice styles introduced by WooCommerce v8.5
+- **Single Post title alignment**: when using full width layout the alignment should work as expected now.
+- **Improve SEO site-title tag for homepage**: Improved SEO site-title tag on the homepage.
+- **Missing translations for the Customizer.**
+- **Sub-menu item long text**: Fixed the sub-menu item when text is too long, now it will wrap as expected.
+- **Fix the opening of Search Icon in Mobile Sidebar**
+- **Fix position of search input**: on minimal when space is restricted
+- **Scrollable mobile header builder droppable zone**: Previously when having too many items it would become hard to manage.
+
+### Improvements
+- **Add feature usage observer**
+- **Update internal dependencies**
+- **Support changes for Custom payment icons**
+- **Support changes for the Custom SVG menu icon**
+- **Add integration for Formbricks survey** inside the Dashboard.
+- **Update Google Fonts**:​ Get the newest Google fonts from the public font library.
+
+
+
+
 ##### [Version 3.7.5](https://github.com/Codeinwp/neve/compare/v3.7.4...v3.7.5) (2023-12-22)
 
 ### Bug Fixes
