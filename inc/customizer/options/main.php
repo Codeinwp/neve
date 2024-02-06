@@ -43,6 +43,7 @@ class Main extends Base_Customizer {
 		$this->register_type( 'Neve\Customizer\Controls\Heading', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Checkbox', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Upsell_Control', 'control' );
+		$this->register_type( 'Neve\Customizer\Controls\Upsells\Scroll_To_Top_Control', 'control' );
 	}
 
 	/**
