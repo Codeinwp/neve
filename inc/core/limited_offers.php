@@ -32,16 +32,16 @@ class Limited_Offers {
 	public $wp_option_dismiss_notification_key_base = 'dismiss_themeisle_notice_event_';
 
 	/**
-	 * Offer Links
+	 * Metadata for announcements.
 	 *
-	 * @var array<string>
+	 * @var array
 	 */
 	public $assets = array();
 
 	/**
 	 * Timeline for the offers.
 	 *
-	 * @var array[]
+	 * @var array
 	 */
 	public $announcements = array();
 
@@ -113,14 +113,17 @@ class Limited_Offers {
 	 * @return void
 	 */
 	public function prepare_black_friday_assets( $data ) {
-		$this->assets = array(
-			'bannerUrl'                => get_template_directory_uri() . '/assets/img/dashboard/black-friday-banner.png',
-			'bannerAlt'                => 'Neve Black Friday Sale',
-			'bannerStoreUrl'           => esc_url_raw( $data['neve_dashboard_url'] ),
-			'customizerBannerUrl'      => get_template_directory_uri() . '/assets/img/dashboard/black-friday-customizer-banner.png',
-			'customizerBannerAlt'      => 'Neve Black Friday Sale',
-			'customizerBannerStoreUrl' => esc_url_raw( $data['neve_customizer_url'] ),
-			'urgencyText'              => $data['urgency_text'],
+		$this->assets = array_merge(
+			$this->assets,
+			array(
+				'bannerUrl'                => get_template_directory_uri() . '/assets/img/dashboard/black-friday-banner.png',
+				'bannerAlt'                => 'Neve Black Friday Sale',
+				'bannerStoreUrl'           => esc_url_raw( $data['neve_dashboard_url'] ),
+				'customizerBannerUrl'      => get_template_directory_uri() . '/assets/img/dashboard/black-friday-customizer-banner.png',
+				'customizerBannerAlt'      => 'Neve Black Friday Sale',
+				'customizerBannerStoreUrl' => esc_url_raw( $data['neve_customizer_url'] ),
+				'urgencyText'              => $data['urgency_text'],
+			)
 		);
 	}
 
