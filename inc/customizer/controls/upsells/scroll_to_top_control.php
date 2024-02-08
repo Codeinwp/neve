@@ -82,7 +82,7 @@ class Scroll_To_Top_Control extends \WP_Customize_Control {
 				min-height: 30px;
 				gap: 16px;
 			}
-			.customize-control-neve-scroll-to-top-upselll .components-range-control__wrapper {
+			.customize-control-neve-scroll-to-top-upsell .components-range-control__wrapper {
 				display: block;
 				flex: 1 1 0%;
 				position: relative;
