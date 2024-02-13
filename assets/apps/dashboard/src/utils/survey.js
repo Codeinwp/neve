@@ -39,7 +39,7 @@ if ('undefined' !== typeof window && 'undefined' !== typeof window.neveDash) {
 				window.neveDash.daysSinceInstall
 			),
 			license_status: window.neveDash?.license?.valid,
-			pro_plugin_version: window.neveDash?.proPluginVersion
-		}
+			pro_plugin_version: window.neveDash?.proPluginVersion,
+		},
 	});
 }
