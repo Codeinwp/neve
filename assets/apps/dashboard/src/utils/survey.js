@@ -7,7 +7,7 @@ import formbricks from '@formbricks/js';
  * Take the number of days since install and convert it to a category for NPS user profile.
  *
  * @param {number} number - Number to convert.
- * @param {number} scale - Scale to use.
+ * @param {number} scale  - Scale to use.
  * @return {number} - Converted number.
  */
 const convertToCategory = (number, scale = 1) => {
@@ -34,10 +34,12 @@ if ('undefined' !== typeof window && 'undefined' !== typeof window.neveDash) {
 			(window.neveDash?.license?.key ??
 				window.neveDash?.rootUrl?.replace(/[^\w\d]*/g, '')),
 		attributes: {
-			plan: window.neveDash?.license?.type ?? 'free',
+			plan: window.neveDash?.pro ? window.neveDash?.license?.tier : 0,
 			days_since_install: convertToCategory(
 				window.neveDash.daysSinceInstall
 			),
-		},
+			license_status: window.neveDash?.license?.valid,
+			pro_plugin_version: window.neveDash?.proPluginVersion
+		}
 	});
 }
