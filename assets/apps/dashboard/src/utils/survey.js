@@ -38,8 +38,9 @@ if ('undefined' !== typeof window && 'undefined' !== typeof window.neveDash) {
 			days_since_install: convertToCategory(
 				window.neveDash.daysSinceInstall
 			),
-			license_status: window.neveDash?.license?.valid,
-			pro_plugin_version: window.neveDash?.proPluginVersion,
+			license_status: window.neveDash?.license?.valid ?? 'invalid',
+			free_version: window.neveDash?.version,
+			pro_version: window.neveDash?.proPluginVersion,
 		},
 	});
 }
