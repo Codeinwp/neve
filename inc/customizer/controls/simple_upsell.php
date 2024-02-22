@@ -48,18 +48,37 @@ class Simple_Upsell extends \WP_Customize_Control {
 	public $text = '';
 
 	/**
+	 * Additional CSS class.
+	 *
+	 * @since  3.8.0
+	 * @var string
+	 */
+	public $class = '';
+
+	/**
+	 * Use primary button class.
+	 *
+	 * @since  3.8.0
+	 * @var string
+	 */
+	public $use_primary = '';
+
+	/**
 	 * Render Method
 	 *
 	 * @return void
 	 */
 	public function render_content() {
+		$base_class   = 'nv-simple-upsell';
+		$class        = ( ! empty( $this->class ) ) ? $base_class . ' ' . $this->class : $base_class;
+		$button_class = ( ! empty( $this->use_primary ) ) ? 'button-primary' : 'button-secondary';
 		?>
-		<div class="nv-simple-upsell">
+		<div class="<?php echo esc_attr( $class ); ?>">
 			<?php if ( ! empty( $this->text ) ) { ?>
 				<p><?php echo esc_html( $this->text ); ?></p>
 			<?php } ?>
 			<?php if ( ! empty( $this->link ) && ! empty( $this->button_text ) ) { ?>
-				<a target="_blank" rel="external noreferrer noopener" href="<?php echo esc_url( $this->link ); ?>" class='button button-secondary'>
+				<a target="_blank" rel="external noreferrer noopener" href="<?php echo esc_url( $this->link ); ?>" class='button <?php echo esc_attr( $button_class ); ?>'>
 					<?php echo esc_html( $this->button_text ); ?>
 					<span class="components-visually-hidden"><?php echo esc_html__( '(opens in a new tab)', 'neve' ); ?></span>
 				</a>

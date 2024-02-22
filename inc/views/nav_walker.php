@@ -239,6 +239,17 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	}
 
 	/**
+	 * Check if item uses the Mega Menu.
+	 *
+	 * @param \WP_Post $item Item.
+	 *
+	 * @return bool
+	 */
+	private function uses_mega_menu( $item ) {
+		return isset( $item->classes ) && in_array( 'neve-mega-menu', $item->classes );
+	}
+
+	/**
 	 * Start_el
 	 *
 	 * @param string    $output Output.
@@ -260,7 +271,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			$this->enqueue_accessibility_menu_js();
 		}
 
-		if ( ! self::$mega_menu_enqueued && isset( $item->classes ) && in_array( 'neve-mega-menu', $item->classes ) ) {
+		if ( ! self::$mega_menu_enqueued && $this->uses_mega_menu( $item ) ) {
 			$this->enqueue_mega_menu_style();
 		}
 
@@ -306,7 +317,9 @@ class Nav_Walker extends \Walker_Nav_Menu {
 				if ( ! self::$mega_menu_enqueued ) {
 					$this->enqueue_mega_menu_style();
 				}
-				$output .= '<div class="neve-mm-description">' . esc_html( $item->description ) . '</div>';
+				if ( strpos( $output, 'neve-mega-menu' ) !== false ) {
+					$output .= '<div class="neve-mm-description">' . esc_html( $item->description ) . '</div>';
+				}
 			}
 		}
 		$output .= "</li>{$n}";

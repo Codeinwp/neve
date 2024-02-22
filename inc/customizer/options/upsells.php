@@ -417,6 +417,17 @@ class Upsells extends Base_Customizer {
 				'Neve\Customizer\Controls\React\Upsell_Section'
 			)
 		);
+
+		$this->add_section(
+			new Section(
+				'neve_scroll_to_top_upsell',
+				array(
+					'priority' => 80,
+					'title'    => esc_html__( 'Scroll To Top', 'neve' ),
+					'panel'    => 'neve_layout',
+				)
+			)
+		);
 	}
 
 	/**
@@ -435,6 +446,37 @@ class Upsells extends Base_Customizer {
 					'link'        => $this->upsell_url,
 				],
 				'Neve\Customizer\Controls\Simple_Upsell'
+			)
+		);
+
+
+		$this->add_control(
+			new Control(
+				'neve_scroll_to_top_cta_control',
+				[ 'sanitize_callback' => 'sanitize_text_field' ],
+				[
+					/* translators: Module name for the upsell. */
+					'text'        => sprintf( __( 'Unlock %s with the Pro version.', 'neve' ), __( 'Scroll To Top', 'neve' ) ),
+					'button_text' => esc_html__( 'Get the PRO version!', 'neve' ),
+					'section'     => 'neve_scroll_to_top_upsell',
+					'priority'    => PHP_INT_MIN,
+					'link'        => $this->upsell_url,
+					'class'       => 'column-layout',
+					'use_primary' => 'true',
+				],
+				'Neve\Customizer\Controls\Simple_Upsell'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_scroll_to_top_upsell_control',
+				[ 'sanitize_callback' => 'sanitize_text_field' ],
+				[
+					'section'  => 'neve_scroll_to_top_upsell',
+					'priority' => 2,
+				],
+				'Neve\Customizer\Controls\Upsells\Scroll_To_Top_Control'
 			)
 		);
 
@@ -499,22 +541,22 @@ class Upsells extends Base_Customizer {
 
 		if ( class_exists( 'WooCommerce', false ) ) {
 			$upsells['product_catalog']       = [
-				'text'        => __( 'More product catalog options available in PRO', 'neve' ),
+				'text'        => __( 'More product catalog options available in PRO', 'neve' ) . ' (Business & Agency)',
 				'button_text' => __( 'Learn More', 'neve' ),
 				'section'     => 'woocommerce_product_catalog',
 			];
 			$upsells['woocommerce_checkout']  = [
-				'text'        => __( 'More checkout options available in PRO', 'neve' ),
+				'text'        => __( 'More checkout options available in PRO', 'neve' ) . ' (Business & Agency)',
 				'button_text' => __( 'Learn More', 'neve' ),
 				'section'     => 'woocommerce_checkout',
 			];
 			$upsells['single_product_layout'] = [
-				'text'        => __( 'More single product options available in PRO', 'neve' ),
+				'text'        => __( 'More single product options available in PRO', 'neve' ) . ' (Business & Agency)',
 				'button_text' => __( 'Learn More', 'neve' ),
 				'section'     => 'neve_single_product_layout',
 			];
 			$upsells['typography']            = [
-				'text'        => __( 'WooCommerce typography options available in PRO', 'neve' ),
+				'text'        => __( 'WooCommerce typography options available in PRO', 'neve' ) . ' (Business & Agency)',
 				'button_text' => __( 'Learn More', 'neve' ),
 				'panel'       => 'neve_typography',
 				'type'        => 'section',

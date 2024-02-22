@@ -1,14 +1,18 @@
 /* global neveDash */
 
 const Deal = () => {
-	if (!Boolean(window.neveDash?.deal?.active)) {
+	if (
+		!Boolean(window.neveDash?.deal?.active) ||
+		!Boolean(neveDash?.deal?.bannerUrl) ||
+		!Boolean(neveDash?.deal?.bannerStoreUrl)
+	) {
 		return <></>;
 	}
 
 	return (
 		<div className="nv-deal">
 			<a
-				href={neveDash?.deal?.linkDashboard}
+				href={neveDash?.deal?.bannerStoreUrl}
 				target="_blank"
 				rel="external noreferrer noopener"
 			>

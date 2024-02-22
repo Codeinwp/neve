@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "736dac6b20e7c4fec7706baa4769f819",
+    "content-hash": "8350f1110e2296b94e8dfa1199e72b1d",
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.3.11",
+            "version": "3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "583c474d8b5a8d12592f4a78ab8fa335aaf42fc0"
+                "reference": "2209cdf402e8f97def8d699bb8447dc67585cc95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/583c474d8b5a8d12592f4a78ab8fa335aaf42fc0",
-                "reference": "583c474d8b5a8d12592f4a78ab8fa335aaf42fc0",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/2209cdf402e8f97def8d699bb8447dc67585cc95",
+                "reference": "2209cdf402e8f97def8d699bb8447dc67585cc95",
                 "shasum": ""
             },
             "require-dev": {
@@ -42,9 +42,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeinwp/themeisle-sdk/issues",
-                "source": "https://github.com/Codeinwp/themeisle-sdk/tree/v3.3.11"
+                "source": "https://github.com/Codeinwp/themeisle-sdk/tree/v3.3.13"
             },
-            "time": "2023-12-12T10:06:27+00:00"
+            "time": "2024-02-01T14:10:46+00:00"
         },
         {
             "name": "wptt/webfont-loader",
@@ -52,12 +52,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/webfont-loader.git",
-                "reference": "0294f21a20549f0c5e79700399946583dfa496b0"
+                "reference": "68c93e1dc8f6e438f93e81ebdf632e6243e43e0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/webfont-loader/zipball/0294f21a20549f0c5e79700399946583dfa496b0",
-                "reference": "0294f21a20549f0c5e79700399946583dfa496b0",
+                "url": "https://api.github.com/repos/Codeinwp/webfont-loader/zipball/68c93e1dc8f6e438f93e81ebdf632e6243e43e0f",
+                "reference": "68c93e1dc8f6e438f93e81ebdf632e6243e43e0f",
                 "shasum": ""
             },
             "require": {
@@ -100,7 +100,7 @@
                 "issues": "https://github.com/WPTT/font-loader/issues",
                 "source": "https://github.com/WPTT/font-loader"
             },
-            "time": "2023-02-03T11:14:21+00:00"
+            "time": "2024-02-21T09:17:13+00:00"
         }
     ],
     "packages-dev": [
