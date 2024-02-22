@@ -22,6 +22,7 @@ use Neve_Pro\Modules\Blog_Pro\Dynamic_Style;
 class Template_Parts extends Base_View {
 	use Layout;
 
+	private $disable_excerpt = false;
 	/**
 	 * Function that is run after instantiation.
 	 *
@@ -34,6 +35,25 @@ class Template_Parts extends Base_View {
 		add_action( 'neve_blog_post_template_part_content', array( $this, 'render_post' ) );
 		add_filter( 'excerpt_more', array( $this, 'link_excerpt_more' ) );
 		add_filter( 'the_content_more_link', array( $this, 'link_excerpt_more' ) );
+		add_filter( 'render_block_data', array( $this, 'temporary_disable_excerpt_more' ), -99, 3 );
+	}
+
+	/**
+	 * Checks if a query block has the excerpt more block added to avoid duplicate read more.
+	 *
+	 * @param array  $block_data Block data.
+	 * @param array $block_type Block type.
+	 * @param array  $attributes Block attributes.
+	 *
+	 * @return array
+	 */
+	public function temporary_disable_excerpt_more( $block_data, $block_type, $attributes ) {
+
+		if ( 'core/post-excerpt' === $block_type['blockName'] ) {
+			$this->disable_excerpt = true;
+		}
+		return $block_data;
+
 	}
 
 	/**
@@ -211,7 +231,7 @@ class Template_Parts extends Base_View {
 				$class .= ' nv-non-grid-article';
 			}
 		}
-		
+
 		// Filter the Core classes for missing components.
 		$is_thumbnail_inactive = ! in_array( 'thumbnail', $this->get_ordered_components(), true );
 		if ( $is_thumbnail_inactive ) {
@@ -417,6 +437,13 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	public function link_excerpt_more( $moretag, $post_id = null ) {
+
+
+		if ( $this->disable_excerpt ) {
+			$this->disable_excerpt = false;
+			return $moretag;
+		}
+
 		$new_moretag = '&hellip;&nbsp;';
 
 		if ( $moretag !== ' [&hellip;]' ) {
