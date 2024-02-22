@@ -22,6 +22,11 @@ use Neve_Pro\Modules\Blog_Pro\Dynamic_Style;
 class Template_Parts extends Base_View {
 	use Layout;
 
+	/**
+	 * Use to temporary disable excerpt functionality.
+	 *
+	 * @var bool
+	 */
 	private $disable_excerpt = false;
 	/**
 	 * Function that is run after instantiation.
@@ -41,9 +46,9 @@ class Template_Parts extends Base_View {
 	/**
 	 * Checks if a query block has the excerpt more block added to avoid duplicate read more.
 	 *
-	 * @param array  $block_data Block data.
+	 * @param array $block_data Block data.
 	 * @param array $block_type Block type.
-	 * @param array  $attributes Block attributes.
+	 * @param array $attributes Block attributes.
 	 *
 	 * @return array
 	 */
