@@ -19,6 +19,21 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.8.2](https://github.com/Codeinwp/neve/compare/v3.8.1...v3.8.2) (2024-02-22)
+
+### Bug Fixes:
+- **Improved Frombricks survey**
+- **Fix display of item description**: on regular menu items inside the navigation the description will not be shown now.
+
+### Improvements
+- **Updated internal dependencies**
+- **Update Google Fonts**​:​ Get the newest Google fonts from the public font library.
+- **Improved Upsell messaging**: Information should be more clear on what each features provides and where it can be found.
+- Updated support for future Black Friday campaigns.
+
+
+
+
 ##### [Version 3.8.1](https://github.com/Codeinwp/neve/compare/v3.8.0...v3.8.1) (2024-01-30)
 
 ### Improvements
