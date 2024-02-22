@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 22/01/24
+ * Updated on 19/02/24
  *
  * @package neve
  */
@@ -83,8 +83,10 @@ return array(
 	'Anek Tamil' => array( '100', '200', '300', '400', '500', '600', '700', '800',),
 	'Anek Telugu' => array( '100', '200', '300', '400', '500', '600', '700', '800',),
 	'Angkor' => array( '400',),
+	'Annapurna SIL' => array( '400', '700',),
 	'Annie Use Your Telescope' => array( '400',),
 	'Anonymous Pro' => array( '400', '700', '400italic', '700italic',),
+	'Anta' => array( '400',),
 	'Antic' => array( '400',),
 	'Antic Didone' => array( '400',),
 	'Antic Slab' => array( '400',),
@@ -631,6 +633,7 @@ return array(
 	'Italiana' => array( '400',),
 	'Italianno' => array( '400',),
 	'Itim' => array( '400',),
+	'Jacquarda Bastarda 9' => array( '400',),
 	'Jacques Francois' => array( '400',),
 	'Jacques Francois Shadow' => array( '400',),
 	'Jaldi' => array( '400', '700',),
@@ -690,6 +693,7 @@ return array(
 	'Knewave' => array( '400',),
 	'KoHo' => array( '200', '300', '400', '500', '600', '700', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic',),
 	'Kodchasan' => array( '200', '300', '400', '500', '600', '700', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic',),
+	'Kode Mono' => array( '400', '500', '600', '700',),
 	'Koh Santepheap' => array( '100', '300', '400', '700', '900',),
 	'Kolker Brush' => array( '400',),
 	'Konkhmer Sleokchher' => array( '400',),
@@ -841,6 +845,7 @@ return array(
 	'Metamorphous' => array( '400',),
 	'Metrophobic' => array( '400',),
 	'Michroma' => array( '400',),
+	'Micro 5' => array( '400',),
 	'Milonga' => array( '400',),
 	'Miltonian' => array( '400',),
 	'Miltonian Tattoo' => array( '400',),
@@ -898,6 +903,7 @@ return array(
 	'Mystery Quest' => array( '400',),
 	'NTR' => array( '400',),
 	'Nabla' => array( '400',),
+	'Namdhinggo' => array( '400', '500', '600', '700', '800',),
 	'Nanum Brush Script' => array( '400',),
 	'Nanum Gothic' => array( '400', '700', '800',),
 	'Nanum Gothic Coding' => array( '400', '700',),
@@ -1244,6 +1250,10 @@ return array(
 	'Prociono' => array( '400',),
 	'Prompt' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Prosto One' => array( '400',),
+	'Protest Guerrilla' => array( '400',),
+	'Protest Revolution' => array( '400',),
+	'Protest Riot' => array( '400',),
+	'Protest Strike' => array( '400',),
 	'Proza Libre' => array( '400', '500', '600', '700', '800', '400italic', '500italic', '600italic', '700italic', '800italic',),
 	'Public Sans' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Puppies Play' => array( '400',),
