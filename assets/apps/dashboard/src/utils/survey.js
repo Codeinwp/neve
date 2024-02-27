@@ -34,10 +34,13 @@ if ('undefined' !== typeof window && 'undefined' !== typeof window.neveDash) {
 			(window.neveDash?.license?.key ??
 				window.neveDash?.rootUrl?.replace(/[^\w\d]*/g, '')),
 		attributes: {
-			plan: window.neveDash?.license?.type ?? 'free',
+			plan: window.neveDash?.pro ? window.neveDash?.license?.tier : 0,
 			days_since_install: convertToCategory(
 				window.neveDash.daysSinceInstall
 			),
+			license_status: window.neveDash?.license?.valid ?? 'invalid',
+			free_version: window.neveDash?.version,
+			pro_version: window.neveDash?.proPluginVersion,
 		},
 	});
 }

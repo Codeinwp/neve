@@ -385,6 +385,7 @@ class Main {
 			'deal'                    => ! defined( 'NEVE_PRO_VERSION' ) ? $offer->get_localized_data() : array(),
 			'rootUrl'                 => get_site_url(),
 			'daysSinceInstall'        => round( ( time() - get_option( 'neve_install', 0 ) ) / DAY_IN_SECONDS ),
+			'proPluginVersion'        => defined( 'NEVE_PRO_VERSION' ) ? NEVE_PRO_VERSION : '',
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
