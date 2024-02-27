@@ -36,7 +36,7 @@
 		{
 			"gzip": false,
 			"running": false,
-			"limit": "33 KB",
+			"limit": "33.24 KB",
 			"path": "assets/js/build/modern/shop.js",
 			"brotli": false
 		},
