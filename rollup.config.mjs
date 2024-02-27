@@ -13,7 +13,9 @@ const ROLLUP_LEGACY = {
 			{
 				targets: {
 					browsers: [
-						'> 0.5%, last 2 versions, Firefox ESR, not dead',
+						'last 2 Chrome versions',
+						'last 2 Firefox versions',
+						'last 2 Safari versions',
 					],
 				},
 				useBuiltIns: 'usage',
@@ -90,7 +92,15 @@ Object.keys(modern).forEach(function (item) {
 			resolve(),
 			commonjs(),
 			babel(ROLLUP_MODERN),
-			terser(),
+			terser({
+				compress: {
+					passes: 2,
+				},
+				mangle: {
+					reserved: [ '__', '_n', '_nx', '_x' ],
+					properties: true
+				},
+			}),
 		],
 	});
 });
