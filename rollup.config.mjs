@@ -90,7 +90,14 @@ Object.keys(modern).forEach(function (item) {
 			resolve(),
 			commonjs(),
 			babel(ROLLUP_MODERN),
-			terser(),
+			terser({
+				compress: {
+					passes: 2,
+					unsafe_arrows: true,
+					ecma: 2022,
+					arrows: true,
+				},
+			}),
 		],
 	});
 });
