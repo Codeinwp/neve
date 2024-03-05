@@ -17,7 +17,8 @@ type Props = {
 
 const BuilderItem: React.FC<Props> = (props) => {
 	const { componentId, currentSection, slot, row, index } = props;
-	const { actions, builder, sidebarItems } = useContext(BuilderContext);
+	const { actions, builder, sidebarItems, device } =
+		useContext(BuilderContext);
 
 	const itemDetails =
 		window.NeveReactCustomize.HFG[builder].items[componentId];
@@ -52,11 +53,13 @@ const BuilderItem: React.FC<Props> = (props) => {
 			})
 		);
 
-		window.tiTrk?.with('neve').set(`${componentId}_removed`, {
-			feature: builder + '_builder',
-			featureComponent: 'component-removed',
-			featureValue: { row, slot, item: componentId },
-		});
+		window.tiTrk
+			?.with('neve')
+			.set(`${componentId}__${device}_${builder}_removed`, {
+				feature: builder + '_builder',
+				featureComponent: 'component-removed',
+				featureValue: { row, slot, item: componentId, device },
+			});
 	};
 
 	const iconSize = 18;
