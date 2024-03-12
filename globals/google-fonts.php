@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 19/02/24
+ * Updated on 11/03/24
  *
  * @package neve
  */
@@ -584,6 +584,7 @@ return array(
 	'Holtwood One SC' => array( '400',),
 	'Homemade Apple' => array( '400',),
 	'Homenaje' => array( '400',),
+	'Honk' => array( '400',),
 	'Hubballi' => array( '400',),
 	'Hurricane' => array( '400',),
 	'IBM Plex Mono' => array( '100', '200', '300', '400', '500', '600', '700', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic',),
@@ -1340,6 +1341,7 @@ return array(
 	'Rubik Doodle Triangles' => array( '400',),
 	'Rubik Gemstones' => array( '400',),
 	'Rubik Glitch' => array( '400',),
+	'Rubik Glitch Pop' => array( '400',),
 	'Rubik Iso' => array( '400',),
 	'Rubik Lines' => array( '400',),
 	'Rubik Maps' => array( '400',),
@@ -1429,6 +1431,7 @@ return array(
 	'Sintony' => array( '400', '700',),
 	'Sirin Stencil' => array( '400',),
 	'Six Caps' => array( '400',),
+	'Sixtyfour' => array( '400',),
 	'Skranji' => array( '400', '700',),
 	'Slabo 13px' => array( '400',),
 	'Slabo 27px' => array( '400',),
@@ -1605,6 +1608,7 @@ return array(
 	'Wix Madefor Display' => array( '400', '500', '600', '700', '800',),
 	'Wix Madefor Text' => array( '400', '500', '600', '700', '800', '400italic', '500italic', '600italic', '700italic', '800italic',),
 	'Work Sans' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Workbench' => array( '400',),
 	'Xanh Mono' => array( '400', '400italic',),
 	'Yaldevi' => array( '200', '300', '400', '500', '600', '700',),
 	'Yanone Kaffeesatz' => array( '200', '300', '400', '500', '600', '700',),
