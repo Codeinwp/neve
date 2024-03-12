@@ -25,7 +25,8 @@ const ComponentsPopover: React.FC<Props> = ({
 
 	const url = window.NeveReactCustomize.upsellComponentsLink;
 
-	const { builder, actions, sidebarItems } = useContext(BuilderContext);
+	const { builder, actions, sidebarItems, device } =
+		useContext(BuilderContext);
 	const { updateLayout, setSidebarItems } = actions;
 
 	const addItemToSlot = (itemId: string) => {
@@ -37,11 +38,19 @@ const ComponentsPopover: React.FC<Props> = ({
 		updateLayout(rowId, slotId, nextItems);
 		setSidebarItems(sidebarItems.filter((i) => i.id !== itemId));
 
-		window.tiTrk?.with('neve').set(`${itemId}_added`, {
-			feature: builder + '_builder',
-			featureComponent: 'component-added',
-			featureValue: { row: rowId, slot: slotId, item: itemId },
-		});
+		window.tiTrk
+			?.with('neve')
+			.set(`${itemId}__${device}_${builder}_added`, {
+				feature: builder + '_builder',
+				featureComponent: 'component-added',
+				featureValue: {
+					row: rowId,
+					slot: slotId,
+					item: itemId,
+					device,
+					trigger: 'popover',
+				},
+			});
 		closePopup();
 	};
 

@@ -19,7 +19,7 @@ type Props = {
 };
 
 const Slot: React.FC<Props> = ({ items, slotId, rowId, className }) => {
-	const { currentSection, builder, actions, dragging } =
+	const { currentSection, builder, actions, dragging, device } =
 		useContext(BuilderContext);
 	const { updateLayout, onDragStart } = actions;
 
@@ -44,6 +44,26 @@ const Slot: React.FC<Props> = ({ items, slotId, rowId, className }) => {
 					const nextState = newState.map((item) => {
 						return { id: item.id };
 					});
+
+					// Track the added components.
+					nextState
+						?.filter((item) => !items.some((i) => i.id === item.id))
+						?.forEach((item) => {
+							window.tiTrk
+								?.with('neve')
+								.set(`${item.id}__${device}_${builder}_added`, {
+									feature: builder + '_builder',
+									featureComponent: 'component-added',
+									featureValue: {
+										row: rowId,
+										slot: slotId,
+										item: item.id,
+										device,
+										trigger: 'drag-and-drop',
+									},
+								});
+						});
+
 					updateLayout(rowId, slotId, nextState);
 				}}
 			>
