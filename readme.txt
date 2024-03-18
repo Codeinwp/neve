@@ -19,6 +19,20 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.8.3](https://github.com/Codeinwp/neve/compare/v3.8.2...v3.8.3) (2024-03-12)
+
+### Bug Fixes:
+- **Fix excerpt more** filter interaction inside the Gutenberg when excerpt block is used.
+- **Fix mega menu** opening on tablet devices.
+
+### Improvements
+- **Updated internal dependencies**
+-  **Update Google Fonts**​:​ Get the newest Google fonts from the public font library.
+- **Feature usage tracking improvements** for Header/Footer Builder in the Customizer.
+
+
+
+
 ##### [Version 3.8.2](https://github.com/Codeinwp/neve/compare/v3.8.1...v3.8.2) (2024-02-22)
 
 ### Bug Fixes:
