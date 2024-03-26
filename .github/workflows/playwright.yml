@@ -137,7 +137,7 @@ jobs:
         include:
           - specs: "customizer"
             envs: "sample-data"
-          - specs: "tpc"
+          - specs: "admin"
             envs: "sample-data"
           - specs: "visual-regression"
             envs: "sample-data"
