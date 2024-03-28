@@ -8,7 +8,7 @@ import formbricks from '@formbricks/js';
  *
  * @param {number} number - Number to convert.
  * @param {number} scale  - Scale to use.
- * @return {number} - Converted number.
+ * @return {number|void} Converted number.
  */
 const convertToCategory = (number, scale = 1) => {
 	const normalizedNumber = Math.round(number / scale);

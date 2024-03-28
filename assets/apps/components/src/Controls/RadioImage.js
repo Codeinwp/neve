@@ -33,7 +33,7 @@ const RadioImage = ({ choices, onClick, value, label, documentation }) => {
 	return (
 		<>
 			{label && (
-				//eslint-disable-next-line jsx-a11y/label-has-for
+				/* eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control */
 				<label className="customize-control-title">{label}</label>
 			)}
 			<div className="neve-radio-image">
@@ -50,7 +50,7 @@ const RadioImage = ({ choices, onClick, value, label, documentation }) => {
 					]);
 					return (
 						<div className={divClass} key={index}>
-							{/*eslint-disable-next-line jsx-a11y/label-has-for */}
+							{/* eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control */}
 							<label data-option={choice} className={buttonClass}>
 								{upsellUrl && (
 									<span className="dashicons dashicons-lock" />
