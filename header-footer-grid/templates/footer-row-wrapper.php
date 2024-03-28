@@ -43,7 +43,7 @@ if ( is_customize_preview() ) {
 $row_wrapper_classes = join( ' ', $row_wrapper_classes );
 ?>
 <div class="<?php echo esc_attr( join( ' ', $row_classes ) ); ?>"
-	id="cb-row--footer-<?php echo esc_attr( $row_index ); ?>"
+	id="cb-row--footer-<?php echo esc_attr( $device ); ?>-<?php echo esc_attr( $row_index ); ?>"
 	data-row-id="<?php echo esc_attr( $row_index ); ?>" data-show-on="<?php echo esc_attr( $device ); ?>">
 	<div
 		class="footer--row-inner footer-<?php echo esc_attr( $row_index ); ?>-inner footer-content-wrap">

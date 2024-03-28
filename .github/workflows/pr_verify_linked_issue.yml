@@ -2,7 +2,7 @@ name: Verify PR
 
 on:
   pull_request:
-    types: [ edited, synchronize, opened, reopened ]
+    types: [edited, synchronize, opened, reopened]
     branches:
       - development
 
@@ -18,13 +18,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
         with:
-          quiet: 'true'
+          quiet: "true"
       - name: Find Comment
         uses: peter-evans/find-comment@v1
         id: find_coomment
         with:
           issue-number: ${{ github.event.pull_request.number }}
-          comment-author: 'pirate-bot'
+          comment-author: "pirate-bot"
           body-includes: No Linked Issue found
       - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v1
@@ -40,7 +40,7 @@ jobs:
         if: steps.verify_linked_issues.outputs.has_linked_issues == 'false'
         run: exit 1;
       - name: Delete comment
-        uses: jungwinter/comment@v1
+        uses: winterjung/comment@v1
         if: steps.verify_linked_issues.outputs.has_linked_issues == 'true' && steps.find_coomment.outputs.comment-id != ''
         with:
           type: delete

@@ -44,4 +44,16 @@ test.describe('Different Footer for Mobile vs Desktop', function () {
 			page.locator('.hfg_footer .nav-menu-footer')
 		).toBeVisible();
 	});
+
+	test('Check IDs are unique', async ({ page }) => {
+		await page.goto('/?test_name=hfgFooterMobile');
+
+		await expect(page.locator('#cb-row--footer-bottom')).toHaveCount(0);
+		await expect(
+			page.locator('#cb-row--footer-desktop-bottom')
+		).toHaveCount(1);
+		await expect(page.locator('#cb-row--footer-mobile-bottom')).toHaveCount(
+			1
+		);
+	});
 });
