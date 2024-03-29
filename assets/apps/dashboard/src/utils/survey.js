@@ -1,9 +1,4 @@
 /**
- * This file is used to initialize the FormBricks survey.
- */
-import formbricks from '@formbricks/js';
-
-/**
  * Take the number of days since install and convert it to a category for NPS user profile.
  *
  * @param {number} number - Number to convert.
@@ -26,21 +21,23 @@ const convertToCategory = (number, scale = 1) => {
 };
 
 if ('undefined' !== typeof window && 'undefined' !== typeof window.neveDash) {
-	formbricks.init({
-		environmentId: 'clr0ply35522h8up0bay2de4y',
-		apiHost: 'https://app.formbricks.com',
-		userId:
-			'neve_' +
-			(window.neveDash?.license?.key ??
-				window.neveDash?.rootUrl?.replace(/[^\w\d]*/g, '')),
-		attributes: {
-			plan: window.neveDash?.pro ? window.neveDash?.license?.tier : 0,
-			days_since_install: convertToCategory(
-				window.neveDash.daysSinceInstall
-			),
-			license_status: window.neveDash?.license?.valid ?? 'invalid',
-			free_version: window.neveDash?.version,
-			pro_version: window.neveDash?.proPluginVersion,
-		},
+	window.addEventListener('themeisle:survey:loaded', function () {
+		window?.tsdk_formbricks?.init?.({
+			environmentId: 'clr0ply35522h8up0bay2de4y',
+			apiHost: 'https://app.formbricks.com',
+			userId:
+				'neve_' +
+				(window.neveDash?.license?.key ??
+					window.neveDash?.rootUrl?.replace(/[^\w\d]*/g, '')),
+			attributes: {
+				plan: window.neveDash?.pro ? window.neveDash?.license?.tier : 0,
+				days_since_install: convertToCategory(
+					window.neveDash.daysSinceInstall
+				),
+				license_status: window.neveDash?.license?.valid ?? 'invalid',
+				free_version: window.neveDash?.version,
+				pro_version: window.neveDash?.proPluginVersion,
+			},
+		});
 	});
 }

@@ -299,7 +299,7 @@ class Main {
 
 		$build_path   = get_template_directory_uri() . '/assets/apps/dashboard/build/';
 		$dependencies = ( include get_template_directory() . '/assets/apps/dashboard/build/dashboard.asset.php' );
-
+		
 		wp_register_style( 'neve-dash-style', $build_path . 'style-dashboard.css', [ 'wp-components', 'neve-components' ], $dependencies['version'] );
 		wp_style_add_data( 'neve-dash-style', 'rtl', 'replace' );
 		wp_enqueue_style( 'neve-dash-style' );
@@ -310,6 +310,8 @@ class Main {
 		if ( function_exists( 'wp_set_script_translations' ) ) {
 			wp_set_script_translations( 'neve-dash-script', 'neve' );
 		}
+
+		do_action( 'themeisle_sdk_dependency_enqueue_script', 'survey' );
 	}
 
 	/**
