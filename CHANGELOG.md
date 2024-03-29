@@ -1,3 +1,12 @@
+##### [Version 3.8.4](https://github.com/Codeinwp/neve/compare/v3.8.3...v3.8.4) (2024-03-29)
+
+### Bug Fixes
+- Fix an issue with footer element IDs not being unique.
+
+### Improvements
+- Improved Formbricks
+- Updated internal dependencies
+
 ##### [Version 3.8.3](https://github.com/Codeinwp/neve/compare/v3.8.2...v3.8.3) (2024-03-12)
 
 ### Bug Fixes:

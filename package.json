@@ -1,7 +1,7 @@
 {
 	"name": "neve",
 	"nicename": "Neve",
-	"version": "3.8.3",
+	"version": "3.8.4",
 	"description": "Neve theme by ThemeIsle",
 	"category": "themes",
 	"author": "ThemeIsle <friends@themeisle.com>",
@@ -53,7 +53,6 @@
 		"pre-commit": "npx lint-staged"
 	},
 	"dependencies": {
-		"@formbricks/js": "^1.4.1",
 		"@neve-wp/components": "file:./assets/apps/components",
 		"array-move": "^4.0.0",
 		"classnames": "^2.2.6",
