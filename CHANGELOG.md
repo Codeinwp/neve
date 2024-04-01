@@ -1,3 +1,9 @@
+##### [Version 3.8.5](https://github.com/Codeinwp/neve/compare/v3.8.4...v3.8.5) (2024-04-01)
+
+### Improvements
+- **Updated internal dependencies**
+- **Update Google Fonts**​:​ Get the newest Google fonts from the public font library.
+
 ##### [Version 3.8.4](https://github.com/Codeinwp/neve/compare/v3.8.3...v3.8.4) (2024-03-29)
 
 ### Bug Fixes
