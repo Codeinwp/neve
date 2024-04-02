@@ -27,5 +27,11 @@ test.describe('Menu item alignment', function () {
 			.getByRole('link', {
 				name: 'Level 3b',
 			});
+
+		// Check that a toggle menu has proper padding.
+		const toggleItemLink = page.getByRole('link', {
+			name: 'About The Tests',
+		});
+		await expect(toggleItemLink).toHaveCSS('padding-right', '46px');
 	});
 });

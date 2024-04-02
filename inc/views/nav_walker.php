@@ -210,7 +210,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap a .dd-title { width: var(--wrapdropdownwidth); }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li .wrap button { border: 0; z-index: 1; background: 0; }';
 		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li:not([class*=block]):not(.menu-item-has-children) > .wrap > a { padding-right: calc(1em + (18px*2)); text-wrap: wrap; white-space: normal;}';
-		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li.menu-item-has-children:not([class*=block])  > .wrap > a { margin-right: calc(-1em - (18px*2));}';
+		$mobile_button_caret_css .= '.header-menu-sidebar .nav-ul li.menu-item-has-children:not([class*=block])  > .wrap > a { margin-right: calc(-1em - (18px*2)); padding-right: 46px;}';
 
 		return Dynamic_Css::minify_css( $mobile_button_caret_css );
 	}
