@@ -19,6 +19,16 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.8.6](https://github.com/Codeinwp/neve/compare/v3.8.5...v3.8.6) (2024-04-05)
+
+### Bug Fixes
+- **Fixed menu items** where long item names with a dropdown on the mobile were overlapping with the dropdown button.
+### Improvements
+- **Updated internal dependencies**
+
+
+
+
 ##### [Version 3.8.5](https://github.com/Codeinwp/neve/compare/v3.8.4...v3.8.5) (2024-04-01)
 
 ### Improvements
