@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 11/03/24
+ * Updated on 01/04/24
  *
  * @package neve
  */
@@ -793,6 +793,7 @@ return array(
 	'Macondo' => array( '400',),
 	'Macondo Swash Caps' => array( '400',),
 	'Mada' => array( '200', '300', '400', '500', '600', '700', '800', '900',),
+	'Madimi One' => array( '400',),
 	'Magra' => array( '400', '700',),
 	'Maiden Orange' => array( '400',),
 	'Maitree' => array( '200', '300', '400', '500', '600', '700',),
@@ -1154,6 +1155,7 @@ return array(
 	'Odor Mean Chey' => array( '400',),
 	'Offside' => array( '400',),
 	'Oi' => array( '400',),
+	'Ojuju' => array( '200', '300', '400', '500', '600', '700', '800',),
 	'Old Standard TT' => array( '400', '700', '400italic',),
 	'Oldenburg' => array( '400',),
 	'Ole' => array( '400',),
@@ -1297,6 +1299,7 @@ return array(
 	'Red Rose' => array( '300', '400', '500', '600', '700',),
 	'Redacted' => array( '400',),
 	'Redacted Script' => array( '300', '400', '700',),
+	'Reddit Mono' => array( '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Redressed' => array( '400',),
 	'Reem Kufi' => array( '400', '500', '600', '700',),
 	'Reem Kufi Fun' => array( '400', '500', '600', '700',),
@@ -1508,6 +1511,7 @@ return array(
 	'Syne' => array( '400', '500', '600', '700', '800',),
 	'Syne Mono' => array( '400',),
 	'Syne Tactile' => array( '400',),
+	'Tac One' => array( '400',),
 	'Tai Heritage Pro' => array( '400', '700',),
 	'Tajawal' => array( '200', '300', '400', '500', '700', '800', '900',),
 	'Tangerine' => array( '400', '700',),
@@ -1613,6 +1617,10 @@ return array(
 	'Yaldevi' => array( '200', '300', '400', '500', '600', '700',),
 	'Yanone Kaffeesatz' => array( '200', '300', '400', '500', '600', '700',),
 	'Yantramanav' => array( '100', '300', '400', '500', '700', '900',),
+	'Yarndings 12' => array( '400',),
+	'Yarndings 12 Charted' => array( '400',),
+	'Yarndings 20' => array( '400',),
+	'Yarndings 20 Charted' => array( '400',),
 	'Yatra One' => array( '400',),
 	'Yellowtail' => array( '400',),
 	'Yeon Sung' => array( '400',),
