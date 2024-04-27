@@ -1,3 +1,7 @@
+##### [Version 3.8.7](https://github.com/Codeinwp/neve/compare/v3.8.6...v3.8.7) (2024-04-27)
+
+- Updated assets
+
 ##### [Version 3.8.6](https://github.com/Codeinwp/neve/compare/v3.8.5...v3.8.6) (2024-04-05)
 
 ### Bug Fixes
