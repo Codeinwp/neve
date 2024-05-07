@@ -7,14 +7,14 @@ test('Checks the copyright in front-end', async ({ page }) => {
 		page.locator('.hfg_footer .footer--row[data-show-on="desktop"]')
 	).toHaveText('Neve | Powered by WordPress');
 	await expect(
-		page.locator(
-			'.hfg_footer .footer--row[data-show-on="desktop"] a:first-child'
-		)
+		page
+			.locator('.hfg_footer .footer--row[data-show-on="desktop"] a')
+			.nth(0)
 	).toHaveAttribute('href', 'https://themeisle.com/themes/neve/');
 	await expect(
-		page.locator(
-			'.hfg_footer .footer--row[data-show-on="desktop"] a:nth-child[1]'
-		)
+		page
+			.locator('.hfg_footer .footer--row[data-show-on="desktop"] a')
+			.nth(1)
 	).toHaveAttribute('href', 'https://wordpress.org');
 
 	// Check that the text is also present for the Mobile footer
@@ -23,13 +23,9 @@ test('Checks the copyright in front-end', async ({ page }) => {
 	).toHaveText('Neve | Powered by WordPress');
 
 	await expect(
-		page.locator(
-			'.hfg_footer .footer--row[data-show-on="mobile"] a:first-child'
-		)
+		page.locator('.hfg_footer .footer--row[data-show-on="mobile"] a').nth(0)
 	).toHaveAttribute('href', 'https://themeisle.com/themes/neve/');
 	await expect(
-		page.locator(
-			'.hfg_footer .footer--row[data-show-on="mobile"] a:nth-child[1]'
-		)
+		page.locator('.hfg_footer .footer--row[data-show-on="mobile"] a').nth(1)
 	).toHaveAttribute('href', 'https://wordpress.org');
 });
