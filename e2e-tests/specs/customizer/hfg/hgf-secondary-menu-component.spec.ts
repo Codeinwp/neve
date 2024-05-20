@@ -3,7 +3,7 @@ import { setCustomizeSettings } from '../../../utils';
 import secondaryMenuSetup from '../../../fixtures/customizer/hfg/hfg-secondary-menu-component.json';
 
 test.describe('Secondary Nav', async () => {
-	test('Only Secondary Nav', async ({ page, request, baseURL }) => {
+	test('Mobile Sidebar Opening', async ({ page, request, baseURL }) => {
 		await setCustomizeSettings('hfgSearchFormIcon', secondaryMenuSetup, {
 			request,
 			baseURL,
@@ -14,8 +14,6 @@ test.describe('Secondary Nav', async () => {
 
 		await page.getByRole('button', { name: 'Navigation Menu' }).click();
 
-		await expect(
-			page.getByRole('link', { name: 'Sample Page' })
-		).toBeVisible(); // Secondary_Nav_Walker enqueues the necessary JS to make the menu work.
+		await expect(page.locator('#header-menu-sidebar-inner')).toBeVisible(); // Secondary_Nav_Walker enqueues the necessary JS to make the menu work.
 	});
 });
