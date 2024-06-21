@@ -602,12 +602,15 @@ class Admin {
 		.nv-notice-column-container a.button.button-hero.button-primary{
 			margin:0px;
 			white-space: normal;
+			text-align: center;
+			line-height: 1.2;
+			padding: 12px 36px;
 		}
 		.nv-notice-column-container .nv-notice-column:not(.nv-notice-image) {
 			display: -ms-grid;
 			display: grid;
 			-ms-grid-rows: auto 100px;
-			grid-template-rows: auto auto;
+			grid-template-rows: auto 100px;
 		}
 		@media screen and (max-width: 1280px) {
 			.nv-notice-wrapper .nv-notice-column-container {
