@@ -14,7 +14,7 @@ namespace Neve\Compatibility;
  */
 class Starter_Content {
 	const HOME_SLUG       = 'home';
-	const BLOG_SLUG       = 'blog';
+	const BLOG_SLUG       = 'news';
 	const ABOUT_SLUG      = 'about';
 	const CONTACT         = 'contact';
 	const PORTOFOLIO_SLUG = 'portofolio';
@@ -134,6 +134,34 @@ class Starter_Content {
 				'object'    => 'page',
 				'object_id' => '{{' . self::BLOG_SLUG . '}}',
 			],
+			'page_contact'         => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::CONTACT . '}}',
+			],
+		];
+
+		$footer_nav_items = [
+			'home'         => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::HOME_SLUG . '}}',
+			],
+			'link_blog'    => [
+				'type'  => 'custom',
+				'title' => _x( 'Blog', 'Theme starter content', 'neve' ),
+				'url'   => home_url( self::HOME_SLUG ),
+			],
+			'link_about'   => [
+				'type'  => 'custom',
+				'title' => _x( 'About', 'Theme starter content', 'neve' ),
+				'url'   => home_url( self::ABOUT_SLUG ),
+			],
+			'link_contact' => [
+				'type'  => 'custom',
+				'title' => _x( 'Contact', 'Theme starter content', 'neve' ),
+				'url'   => home_url( self::CONTACT ),
+			],
 		];
 
 		$content = [
@@ -142,12 +170,15 @@ class Starter_Content {
 					'primary' => [
 						'items' => $nav_items,
 					],
+					'footer'  => [
+						'items' => $footer_nav_items,
+					],
 				],
 			'options'     => [
 				'page_on_front'  => '{{' . self::HOME_SLUG . '}}',
 				'page_for_posts' => '{{' . self::BLOG_SLUG . '}}',
 				'show_on_front'  => 'page',
-				'blogname'       => 'Web Agency Demo 1',
+				'blogname'       => 'Marketing Agency',
 			],
 			'theme_mods'  => require __DIR__ . '/starter-content/theme-mods.php',
 			'attachments' => array(
@@ -167,11 +198,10 @@ class Starter_Content {
 				self::BLOG_SLUG       => [
 					'post_name'  => self::BLOG_SLUG,
 					'post_type'  => 'page',
-					'post_title' => _x( 'Blog', 'Theme starter content', 'neve' ),
+					'post_title' => _x( 'News', 'Theme starter content', 'neve' ),
 				],
 			],
 		];
-
 
 		return apply_filters( 'neve_starter_content', $content );
 	}
