@@ -937,8 +937,6 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 == Resources ==
 * Neve Icons based on Font Awesome Icons licensed under CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/).
 
-* Other icons used are licensed under the Lucide ISC License (https://lucide.dev/license).
-
 All images are licensed under CC0.
 
 Screenshot resources:
