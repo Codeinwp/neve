@@ -7,7 +7,7 @@
 
 return [
 	'post_type'    => 'page',
-	'post_title'   => _x( 'About Us', 'Theme starter content', 'neve' ),
+	'post_title'   => _x( 'About', 'Theme starter content', 'neve' ),
 	'post_content' => '<!-- wp:cover {"overlayColor":"nv-site-bg","isUserOverlayColor":true,"minHeight":320,"align":"full"} -->
 <div class="wp-block-cover alignfull" style="min-height:320px"><span aria-hidden="true" class="wp-block-cover__background has-nv-site-bg-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-group" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)"><!-- wp:heading {"level":1,"textColor":"neve-text-color","className":"has-text-align-left"} -->

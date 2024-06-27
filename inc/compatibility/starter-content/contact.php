@@ -8,7 +8,7 @@
 return [
 	'post_type'    => 'page',
 	'post_name'    => 'contact',
-	'post_title'   => _x( 'Contact Us', 'Theme starter content', 'neve' ),
+	'post_title'   => _x( 'Contact', 'Theme starter content', 'neve' ),
 	'post_content' => '<!-- wp:cover {"overlayColor":"nv-site-bg","isUserOverlayColor":true,"minHeight":300,"align":"full","style":{"spacing":{"padding":{"right":"0","left":"0"}}}} -->
 <div class="wp-block-cover alignfull" style="padding-right:0;padding-left:0;min-height:300px"><span aria-hidden="true" class="wp-block-cover__background has-nv-site-bg-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-group" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)"><!-- wp:heading {"level":1,"textColor":"neve-text-color","className":"has-text-align-left"} -->

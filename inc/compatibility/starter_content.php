@@ -14,7 +14,7 @@ namespace Neve\Compatibility;
  */
 class Starter_Content {
 	const HOME_SLUG       = 'home';
-	const BLOG_SLUG       = 'news';
+	const BLOG_SLUG       = 'blog';
 	const ABOUT_SLUG      = 'about';
 	const CONTACT         = 'contact';
 	const PORTOFOLIO_SLUG = 'portofolio';
@@ -114,10 +114,10 @@ class Starter_Content {
 				'object'    => 'page',
 				'object_id' => '{{' . self::HOME_SLUG . '}}',
 			],
-			'page_about'           => [
-				'type'      => 'post_type',
-				'object'    => 'page',
-				'object_id' => '{{' . self::ABOUT_SLUG . '}}',
+			'link_about'           => [
+				'type'  => 'custom',
+				'title' => 'About Us',
+				'url'   => home_url( self::ABOUT_SLUG ),
 			],
 			'page_portofolio'      => [
 				'type'      => 'post_type',
@@ -129,15 +129,15 @@ class Starter_Content {
 				'object'    => 'page',
 				'object_id' => '{{' . self::PROJECT_DETAILS . '}}',
 			],
-			'page_blog'            => [
-				'type'      => 'post_type',
-				'object'    => 'page',
-				'object_id' => '{{' . self::BLOG_SLUG . '}}',
+			'link_blog'            => [
+				'type'  => 'custom',
+				'title' => 'News',
+				'url'   => home_url( self::BLOG_SLUG ),
 			],
-			'page_contact'         => [
-				'type'      => 'post_type',
-				'object'    => 'page',
-				'object_id' => '{{' . self::CONTACT . '}}',
+			'link_contact'         => [
+				'type'  => 'custom',
+				'title' => 'Contact Us',
+				'url'   => home_url( self::CONTACT ),
 			],
 		];
 
@@ -198,7 +198,7 @@ class Starter_Content {
 				self::BLOG_SLUG       => [
 					'post_name'  => self::BLOG_SLUG,
 					'post_type'  => 'page',
-					'post_title' => 'News',
+					'post_title' => 'Blog',
 				],
 			],
 		];
