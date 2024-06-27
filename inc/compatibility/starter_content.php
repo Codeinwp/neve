@@ -198,7 +198,7 @@ class Starter_Content {
 				self::BLOG_SLUG       => [
 					'post_name'  => self::BLOG_SLUG,
 					'post_type'  => 'page',
-					'post_title' => 'Blog',
+					'post_title' => _x( 'Blog', 'Theme starter content', 'neve' ),
 				],
 			],
 		];
