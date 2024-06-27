@@ -149,17 +149,17 @@ class Starter_Content {
 			],
 			'link_blog'    => [
 				'type'  => 'custom',
-				'title' => _x( 'Blog', 'Theme starter content', 'neve' ),
+				'title' => 'Blog',
 				'url'   => home_url( self::HOME_SLUG ),
 			],
 			'link_about'   => [
 				'type'  => 'custom',
-				'title' => _x( 'About', 'Theme starter content', 'neve' ),
+				'title' => 'About',
 				'url'   => home_url( self::ABOUT_SLUG ),
 			],
 			'link_contact' => [
 				'type'  => 'custom',
-				'title' => _x( 'Contact', 'Theme starter content', 'neve' ),
+				'title' => 'Contact',
 				'url'   => home_url( self::CONTACT ),
 			],
 		];
@@ -198,7 +198,7 @@ class Starter_Content {
 				self::BLOG_SLUG       => [
 					'post_name'  => self::BLOG_SLUG,
 					'post_type'  => 'page',
-					'post_title' => _x( 'News', 'Theme starter content', 'neve' ),
+					'post_title' => 'News',
 				],
 			],
 		];
