@@ -18,7 +18,7 @@ if ( $style !== 'style-plain' ) {
 	$container_classes[] = $style;
 	$container_classes[] = 'm-style';
 }
-
+$nav_num = ! empty( $args['nav_num'] ) ? (int) $args['nav_num'] : 0;
 ?>
 <div class="nv-top-bar">
 	<div role="navigation" class="menu-content <?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
@@ -28,7 +28,7 @@ if ( $style !== 'style-plain' ) {
 			array(
 				'theme_location' => 'top-bar',
 				'menu_class'     => 'nav-ul',
-				'menu_id'        => 'secondary-menu',
+				'menu_id'        => $nav_num > 1 ? "secondary-menu_$nav_num" : 'secondary-menu',
 				'container'      => 'ul',
 				'depth'          => - 1,
 				'fallback_cb'    => '__return_false',
