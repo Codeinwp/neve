@@ -597,9 +597,12 @@ class Admin {
 			grid-template-columns: 24% 32% 32%;
 			margin-bottom: 13px;
 		}
-		.nv-notice-column-container a.button.button-hero.button-secondary,
-		.nv-notice-column-container a.button.button-hero.button-primary{
-			margin:0px;
+		.nv-notice-column-container .button.button-hero:is( .button-primary, .button-secondary ) {
+			margin: 0px;
+			white-space: normal;
+			text-align: center;
+			line-height: 1.2;
+			padding: 12px 36px;
 		}
 		.nv-notice-column-container .nv-notice-column:not(.nv-notice-image) {
 			display: -ms-grid;
