@@ -48,7 +48,6 @@ vendor/codeinwp/ti-onboarding/assets/vue
 vendor/codeinwp/ti-about-page/assets/scss
 vendor/codeinwp/ti-about-page/assets/scss
 vendor/codeinwp/ti-onboarding/assets/scss
-vendor/codeinwp/themeisle-sdk/src/Modules/Dashboard_widget.php
 inc/admin/onboarding/assets/vue
 inc/admin/onboarding/node_modules
 inc/admin/onboarding/.eslintrc

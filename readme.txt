@@ -941,7 +941,7 @@ All images are licensed under CC0.
 
 Screenshot resources:
 
-* https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/
+* https://pxhere.com/en/photo/1456591
 
 Patterns resources:
 
