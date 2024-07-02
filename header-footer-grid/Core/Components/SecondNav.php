@@ -33,16 +33,6 @@ class SecondNav extends Abstract_Component {
 	const SPACING             = 'spacing';
 
 	/**
-	 * Secondary nav number
-	 *
-	 * @since   3.8.7
-	 * @access  private
-	 *
-	 * @var int $secondary_nav_num
-	 */
-	private $secondary_nav_num = 0;
-
-	/**
 	 * Nav constructor.
 	 *
 	 * @since   1.0.0
@@ -316,9 +306,8 @@ class SecondNav extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
-		$this->secondary_nav_num++;
 		do_action( 'neve_before_render_nav', $this->get_id() );
-		Main::get_instance()->load( 'components/component-nav-secondary', '', array( 'nav_num' => $this->secondary_nav_num ) );
+		Main::get_instance()->load( 'components/component-nav-secondary' );
 		do_action( 'neve_after_render_nav', $this->get_id() );
 	}
 

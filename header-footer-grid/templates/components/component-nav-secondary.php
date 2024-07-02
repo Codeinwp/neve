@@ -10,6 +10,7 @@
 namespace HFG;
 
 use HFG\Core\Components\SecondNav;
+use HFG\Core\Builder\Header as HeaderBuilder;
 
 $style = component_setting( SecondNav::STYLE_ID );
 
@@ -18,7 +19,7 @@ if ( $style !== 'style-plain' ) {
 	$container_classes[] = $style;
 	$container_classes[] = 'm-style';
 }
-$nav_num = ! empty( $args['nav_num'] ) ? (int) $args['nav_num'] : 0;
+$menu_id = SecondNav::COMPONENT_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
 ?>
 <div class="nv-top-bar">
 	<div role="navigation" class="menu-content <?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
@@ -28,7 +29,7 @@ $nav_num = ! empty( $args['nav_num'] ) ? (int) $args['nav_num'] : 0;
 			array(
 				'theme_location' => 'top-bar',
 				'menu_class'     => 'nav-ul',
-				'menu_id'        => $nav_num > 1 ? "secondary-menu_$nav_num" : 'secondary-menu',
+				'menu_id'        => $menu_id,
 				'container'      => 'ul',
 				'depth'          => - 1,
 				'fallback_cb'    => '__return_false',
