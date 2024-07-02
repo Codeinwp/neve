@@ -1,4 +1,4 @@
-/* global neveDash, CustomEvent */
+/* global neveDash */
 /*eslint camelcase: ["error", {allow: ["required_actions"]}]*/
 import Accordion from './Accordion';
 import InputForm from './Options/InputForm';
@@ -158,14 +158,15 @@ const ModuleCard = ({
 						</Button>
 					) : (
 						<Fragment>
-							{required_actions && !manageableDependentPlugins && (
-								<span
-									className="required"
-									dangerouslySetInnerHTML={{
-										__html: required_actions,
-									}}
-								/>
-							)}
+							{required_actions &&
+								!manageableDependentPlugins && (
+									<span
+										className="required"
+										dangerouslySetInnerHTML={{
+											__html: required_actions,
+										}}
+									/>
+								)}
 							{loading && (
 								<Dashicon
 									size={18}
