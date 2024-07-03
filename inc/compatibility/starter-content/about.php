@@ -8,34 +8,34 @@
 return [
 	'post_type'    => 'page',
 	'post_title'   => _x( 'About', 'Theme starter content', 'neve' ),
-	'post_content' => '<!-- wp:cover {"overlayColor":"nv-site-bg","minHeight":300,"align":"full"} -->
-<div class="wp-block-cover alignfull has-nv-site-bg-background-color has-background-dim" style="min-height:300px"><div class="wp-block-cover__inner-container"><!-- wp:group -->
-<div class="wp-block-group"><div class="wp-block-group__inner-container"><!-- wp:heading {"level":1,"className":"has-text-align-left","textColor":"neve-text-color"} -->
-<h1 class="has-text-align-left has-neve-text-color-color has-text-color">About Us</h1>
-<!-- /wp:heading --></div></div>
+	'post_content' => '<!-- wp:cover {"overlayColor":"nv-site-bg","isUserOverlayColor":true,"minHeight":320,"align":"full"} -->
+<div class="wp-block-cover alignfull" style="min-height:320px"><span aria-hidden="true" class="wp-block-cover__background has-nv-site-bg-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
+<div class="wp-block-group" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)"><!-- wp:heading {"level":1,"textColor":"neve-text-color","className":"has-text-align-left"} -->
+<h1 class="wp-block-heading has-text-align-left has-neve-text-color-color has-text-color">About Us</h1>
+<!-- /wp:heading --></div>
 <!-- /wp:group --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:cover {"overlayColor":"nv-light-bg","minHeight":600,"align":"full"} -->
-<div class="wp-block-cover alignfull has-nv-light-bg-background-color has-background-dim" style="min-height:600px"><div class="wp-block-cover__inner-container"><!-- wp:group -->
-<div class="wp-block-group"><div class="wp-block-group__inner-container"><!-- wp:spacer {"height":80} -->
+<!-- wp:cover {"overlayColor":"nv-light-bg","isUserOverlayColor":true,"minHeight":600,"align":"full"} -->
+<div class="wp-block-cover alignfull" style="min-height:600px"><span aria-hidden="true" class="wp-block-cover__background has-nv-light-bg-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group -->
+<div class="wp-block-group"><!-- wp:spacer {"height":"80px"} -->
 <div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:columns {"verticalAlignment":"center"} -->
-<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":50} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:image {} -->
-<figure class="wp-block-image size-large"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/card-06.jpg" alt=""/></figure>
+<!-- wp:columns {"verticalAlignment":"center","textColor":"neve-text-color"} -->
+<div class="wp-block-columns are-vertically-aligned-center has-neve-text-color-color has-text-color"><!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
+<div class="wp-block-column is-vertically-aligned-center" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30);flex-basis:50%"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","style":{"border":{"radius":"16px"}}} -->
+<figure class="wp-block-image size-full has-custom-border"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-10.jpg" alt="" style="border-radius:16px"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"center","width":50} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:heading {"textColor":"neve-text-color"} -->
-<h2 class="has-neve-text-color-color has-text-color">Our Story</h2>
+<!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"var:preset|spacing|30","right":"var:preset|spacing|30"}}}} -->
+<div class="wp-block-column is-vertically-aligned-center" style="padding-top:0;padding-right:var(--wp--preset--spacing--30);padding-bottom:0;padding-left:var(--wp--preset--spacing--30);flex-basis:50%"><!-- wp:heading {"textColor":"neve-text-color"} -->
+<h2 class="wp-block-heading has-neve-text-color-color has-text-color">Our Story</h2>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"textColor":"neve-text-color","fontSize":"medium"} -->
-<p class="has-neve-text-color-color has-text-color has-medium-font-size">Are there any leftovers in the kitchen? what are the expectations but technologically savvy.</p>
+<!-- wp:paragraph {"textColor":"neve-text-color"} -->
+<p class="has-neve-text-color-color has-text-color">Are there any leftovers in the kitchen? what are the expectations but technologically savvy.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"textColor":"neve-text-color"} -->
@@ -44,241 +44,313 @@ return [
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
-<!-- wp:spacer {"height":40} -->
+<!-- wp:spacer {"height":"40px"} -->
 <div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer --></div></div>
+<!-- /wp:spacer --></div>
 <!-- /wp:group --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:cover {"overlayColor":"nv-dark-bg","minHeight":600,"align":"full"} -->
-<div class="wp-block-cover alignfull has-nv-dark-bg-background-color has-background-dim" style="min-height:600px"><div class="wp-block-cover__inner-container"><!-- wp:group -->
-<div class="wp-block-group"><div class="wp-block-group__inner-container"><!-- wp:spacer {"height":80} -->
+<!-- wp:cover {"overlayColor":"nv-dark-bg","isUserOverlayColor":true,"minHeight":600,"align":"full"} -->
+<div class="wp-block-cover alignfull" style="min-height:600px"><span aria-hidden="true" class="wp-block-cover__background has-nv-dark-bg-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group -->
+<div class="wp-block-group"><!-- wp:spacer {"height":"80px"} -->
 <div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
 <!-- wp:columns {"verticalAlignment":"center"} -->
-<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":50} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:heading {"textColor":"nv-text-dark-bg"} -->
-<h2 class="has-nv-text-dark-bg-color has-text-color">We are driven by values</h2>
+<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
+<div class="wp-block-column is-vertically-aligned-center" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30);flex-basis:50%"><!-- wp:heading {"textColor":"nv-text-dark-bg"} -->
+<h2 class="wp-block-heading has-nv-text-dark-bg-color has-text-color">We are driven by values</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"nv-text-dark-bg"} -->
 <p class="has-nv-text-dark-bg-color has-text-color">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Line high touch client we need to have a Come to Jesus meeting with Phil about his attitude, so where the.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:spacer {"height":20} -->
+<!-- wp:spacer {"height":"20px"} -->
 <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-primary"} -->
-<div class="wp-block-button is-style-primary"><a class="wp-block-button__link" href="#">LET’S TALK</a></div>
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"left"},"fontSize":"small"} -->
+<div class="wp-block-buttons has-custom-font-size has-small-font-size"><!-- wp:button {"backgroundColor":"neve-link-color","textColor":"nv-text-dark-bg","style":{"typography":{"fontSize":"16px"},"elements":{"link":{"color":{"text":"var:preset|color|nv-text-dark-bg"}}}},"className":"is-style-default"} -->
+<div class="wp-block-button has-custom-font-size is-style-default" style="font-size:16px"><a class="wp-block-button__link has-nv-text-dark-bg-color has-neve-link-color-background-color has-text-color has-background has-link-color wp-element-button" href="' . esc_url( home_url( '/contact/' ) ) . '">Book a Call</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
-<!-- wp:spacer {"height":20} -->
+<!-- wp:spacer {"height":"20px"} -->
 <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"center","width":50} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:image {} -->
-<figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/card-02.jpg" alt="" /></figure>
+<!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
+<div class="wp-block-column is-vertically-aligned-center" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30);flex-basis:50%"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","style":{"border":{"radius":"16px"}}} -->
+<figure class="wp-block-image size-full has-custom-border"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-16.jpg" alt="" style="border-radius:16px"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
-<!-- wp:spacer {"height":40} -->
+<!-- wp:spacer {"height":"40px"} -->
 <div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer --></div></div>
+<!-- /wp:spacer --></div>
 <!-- /wp:group --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:cover {"overlayColor":"nv-site-bg","minHeight":420,"align":"full"} -->
-<div class="wp-block-cover alignfull has-nv-site-bg-background-color has-background-dim" style="min-height:420px"><div class="wp-block-cover__inner-container"><!-- wp:spacer {"height":80} -->
+<!-- wp:cover {"overlayColor":"nv-site-bg","isUserOverlayColor":true,"minHeight":420,"align":"full"} -->
+<div class="wp-block-cover alignfull" style="min-height:420px"><span aria-hidden="true" class="wp-block-cover__background has-nv-site-bg-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:spacer {"height":"80px"} -->
 <div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
 <!-- wp:columns -->
-<div class="wp-block-columns"><!-- wp:column {"className":"ticss-4ce656f1"} -->
-<div class="wp-block-column ticss-4ce656f1">
-<!-- wp:image {"width":48,"height":48,"className":"icon-style is-style-rounded"} -->
-<figure class="wp-block-image icon-style is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-03.svg" alt="" width="48" height="48"/></figure>
+<div class="wp-block-columns"><!-- wp:column {"style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}},"className":"ticss-4ce656f1"} -->
+<div class="wp-block-column ticss-4ce656f1" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","className":"icon-style is-style-default"} -->
+<figure class="wp-block-image size-full icon-style is-style-default"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-icon-1.png" alt=""/></figure>
 <!-- /wp:image -->
 
-<!-- wp:spacer {"height":24} -->
+<!-- wp:spacer {"height":"24px"} -->
 <div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:heading {"align":"left","level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
-<h3 class="has-text-align-left has-text-align-center has-neve-text-color-color has-text-color">Super Efficient</h3>
+<!-- wp:heading {"textAlign":"left","level":3,"textColor":"neve-text-color","className":"has-text-align-center"} -->
+<h3 class="wp-block-heading has-text-align-left has-text-align-center has-neve-text-color-color has-text-color">Results Oriented Growth</h3>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"left","textColor":"neve-text-color","style":{"typography":{"fontSize":15}}} -->
-<p class="has-text-align-left has-neve-text-color-color has-text-color" style="font-size:15px">Lorem ipsum dolor sit amet elit do, consectetur adipiscing, sed eiusmod tempor.</p>
+<!-- wp:paragraph {"align":"left","textColor":"neve-text-color"} -->
+<p class="has-text-align-left has-neve-text-color-color has-text-color">Lorem ipsum dolor sit amet elit do, consectetur adipiscing, sed eiusmod tempor line high touch client.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:spacer {"height":20} -->
+<!-- wp:spacer {"height":"20px"} -->
 <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"className":"ticss-f6fc7494"} -->
-<div class="wp-block-column ticss-f6fc7494">
-<!-- wp:image {"width":48,"height":48,"className":"icon-style is-style-rounded"} -->
-<figure class="wp-block-image icon-style is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-03.svg" alt="" width="48" height="48"/></figure>
+<!-- wp:column {"style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}},"className":"ticss-f6fc7494"} -->
+<div class="wp-block-column ticss-f6fc7494" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","className":"icon-style is-style-default"} -->
+<figure class="wp-block-image size-full icon-style is-style-default"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-icon-2.png" alt=""/></figure>
 <!-- /wp:image -->
 
-<!-- wp:spacer {"height":24} -->
+<!-- wp:spacer {"height":"24px"} -->
 <div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:heading {"align":"left","level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
-<h3 class="has-text-align-left has-text-align-center has-neve-text-color-color has-text-color">Deeply Committed</h3>
+<!-- wp:heading {"textAlign":"left","level":3,"textColor":"neve-text-color","className":"has-text-align-center"} -->
+<h3 class="wp-block-heading has-text-align-left has-text-align-center has-neve-text-color-color has-text-color">Client Collaboration</h3>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"left","textColor":"neve-text-color","style":{"typography":{"fontSize":15}}} -->
-<p class="has-text-align-left has-neve-text-color-color has-text-color" style="font-size:15px">Lorem ipsum dolor sit amet elit do, consectetur adipiscing, sed eiusmod tempor.</p>
+<!-- wp:paragraph {"align":"left","textColor":"neve-text-color"} -->
+<p class="has-text-align-left has-neve-text-color-color has-text-color">Lorem ipsum dolor sit amet elit do, consectetur adipiscing, sed eiusmod tempor line high touch client.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:spacer {"height":20} -->
+<!-- wp:spacer {"height":"20px"} -->
 <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"className":"ticss-a5b4df29"} -->
-<div class="wp-block-column ticss-a5b4df29">
-<!-- wp:image {"width":48,"height":48,"className":"icon-style is-style-rounded"} -->
-<figure class="wp-block-image icon-style is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/icon-03.svg" alt="" width="48" height="48"/></figure>
+<!-- wp:column {"style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}},"className":"ticss-a5b4df29"} -->
+<div class="wp-block-column ticss-a5b4df29" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","className":"icon-style is-style-default"} -->
+<figure class="wp-block-image size-full icon-style is-style-default"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-icon-3.1.png" alt=""/></figure>
 <!-- /wp:image -->
 
-<!-- wp:spacer {"height":24} -->
+<!-- wp:spacer {"height":"24px"} -->
 <div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:heading {"align":"left","level":3,"className":"has-text-align-center","textColor":"neve-text-color"} -->
-<h3 class="has-text-align-left has-text-align-center has-neve-text-color-color has-text-color">Highly Skilled</h3>
+<!-- wp:heading {"textAlign":"left","level":3,"textColor":"neve-text-color","className":"has-text-align-center"} -->
+<h3 class="wp-block-heading has-text-align-left has-text-align-center has-neve-text-color-color has-text-color">Data-Driven Creativity</h3>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"left","textColor":"neve-text-color","style":{"typography":{"fontSize":15}}} -->
-<p class="has-text-align-left has-neve-text-color-color has-text-color" style="font-size:15px">Lorem ipsum dolor sit amet elit do, consectetur adipiscing, sed eiusmod tempor.</p>
+<!-- wp:paragraph {"align":"left","textColor":"neve-text-color"} -->
+<p class="has-text-align-left has-neve-text-color-color has-text-color">Lorem ipsum dolor sit amet elit do, consectetur adipiscing, sed eiusmod tempor line high touch client.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:spacer {"height":20} -->
+<!-- wp:spacer {"height":"20px"} -->
 <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
-<!-- wp:spacer {"height":30} -->
+<!-- wp:spacer {"height":"30px"} -->
 <div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:cover {"overlayColor":"nv-light-bg","minHeight":600,"align":"full"} -->
-<div class="wp-block-cover alignfull has-nv-light-bg-background-color has-background-dim" style="min-height:600px"><div class="wp-block-cover__inner-container"><!-- wp:group -->
-<div class="wp-block-group"><div class="wp-block-group__inner-container"><!-- wp:spacer {"height":80} -->
+<!-- wp:cover {"overlayColor":"nv-light-bg","isUserOverlayColor":true,"minHeight":600,"align":"full"} -->
+<div class="wp-block-cover alignfull" style="min-height:600px"><span aria-hidden="true" class="wp-block-cover__background has-nv-light-bg-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group -->
+<div class="wp-block-group"><!-- wp:spacer {"height":"80px"} -->
 <div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
 <!-- wp:columns -->
-<div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column">
-<!-- wp:image {"align":"center","className":"is-style-default"} -->
-<div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/team-01.jpg" alt="" /></figure></div>
+<div class="wp-block-columns"><!-- wp:column {"width":"20%"} -->
+<div class="wp-block-column" style="flex-basis:20%"><!-- wp:group {"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
+<div class="wp-block-group"></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"60%"} -->
+<div class="wp-block-column" style="flex-basis:60%"><!-- wp:group {"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
+<div class="wp-block-group"><!-- wp:heading {"textAlign":"center","style":{"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}},"textColor":"neve-text-color"} -->
+<h2 class="wp-block-heading has-text-align-center has-neve-text-color-color has-text-color has-link-color">The team behind</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center","style":{"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}},"textColor":"neve-text-color"} -->
+<p class="has-text-align-center has-neve-text-color-color has-text-color has-link-color">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":"0px","style":{"layout":{"flexSize":"16px","selfStretch":"fixed"}}} -->
+<div style="height:0px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"20%"} -->
+<div class="wp-block-column" style="flex-basis:20%"><!-- wp:group {"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
+<div class="wp-block-group"></div>
+<!-- /wp:group --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column {"style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
+<div class="wp-block-column" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","align":"center","style":{"border":{"radius":"16px"}},"className":"is-style-default"} -->
+<figure class="wp-block-image aligncenter size-full has-custom-border is-style-default"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-06.jpg" alt="" style="border-radius:16px"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:spacer {"height":24} -->
+<!-- wp:spacer {"height":"24px"} -->
 <div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:heading {"align":"center","level":3,"textColor":"neve-text-color"} -->
-<h3 class="has-text-align-center has-neve-text-color-color has-text-color">Keith Marshall</h3>
+<!-- wp:heading {"textAlign":"center","level":3,"textColor":"neve-text-color"} -->
+<h3 class="wp-block-heading has-text-align-center has-neve-text-color-color has-text-color">John Marshall</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"align":"center","textColor":"neve-text-color"} -->
-<p class="has-text-align-center has-neve-text-color-color has-text-color">Designer</p>
+<p class="has-text-align-center has-neve-text-color-color has-text-color">Strategy</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:social-links {"align":"center"} -->
-<ul class="wp-block-social-links aligncenter"><!-- wp:social-link {"url":"#","service":"facebook"} /-->
+<!-- wp:social-links {"iconColor":"nv-text-dark-bg","iconColorValue":"var(\u002d\u002dnv-text-dark-bg)","iconBackgroundColor":"nv-dark-bg","iconBackgroundColorValue":"var(\u002d\u002dnv-dark-bg)","align":"center"} -->
+<ul class="wp-block-social-links aligncenter has-icon-color has-icon-background-color"><!-- wp:social-link {"url":"#","service":"facebook"} /-->
 
 <!-- wp:social-link {"url":"#","service":"twitter"} /-->
 
 <!-- wp:social-link {"url":"#","service":"linkedin"} /--></ul>
 <!-- /wp:social-links -->
 
-<!-- wp:spacer {"height":40} -->
+<!-- wp:spacer {"height":"40px"} -->
 <div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer --></div>
 <!-- /wp:column -->
 
-<!-- wp:column -->
-<div class="wp-block-column">
-<!-- wp:image {"align":"center","className":"is-style-default"} -->
-<div class="wp-block-image is-style-default"><figure class="aligncenter "><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/team-02.jpg" alt=""/></figure></div>
+<!-- wp:column {"style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
+<div class="wp-block-column" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","align":"center","style":{"border":{"radius":"16px"}},"className":"is-style-default"} -->
+<figure class="wp-block-image aligncenter size-full has-custom-border is-style-default"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-07.jpg" alt="" style="border-radius:16px"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:spacer {"height":24} -->
+<!-- wp:spacer {"height":"24px"} -->
 <div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:heading {"align":"center","level":3,"textColor":"neve-text-color"} -->
-<h3 class="has-text-align-center has-neve-text-color-color has-text-color">George Williams</h3>
+<!-- wp:heading {"textAlign":"center","level":3,"textColor":"neve-text-color"} -->
+<h3 class="wp-block-heading has-text-align-center has-neve-text-color-color has-text-color">Maria Williams</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"align":"center","textColor":"neve-text-color"} -->
-<p class="has-text-align-center has-neve-text-color-color has-text-color">Developer</p>
+<p class="has-text-align-center has-neve-text-color-color has-text-color">Marketing</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:social-links {"align":"center"} -->
-<ul class="wp-block-social-links aligncenter"><!-- wp:social-link {"url":"#","service":"facebook"} /-->
+<!-- wp:social-links {"iconColor":"nv-text-dark-bg","iconColorValue":"var(\u002d\u002dnv-text-dark-bg)","iconBackgroundColor":"nv-dark-bg","iconBackgroundColorValue":"var(\u002d\u002dnv-dark-bg)","align":"center"} -->
+<ul class="wp-block-social-links aligncenter has-icon-color has-icon-background-color"><!-- wp:social-link {"url":"#","service":"facebook"} /-->
 
 <!-- wp:social-link {"url":"#","service":"twitter"} /-->
 
 <!-- wp:social-link {"url":"#","service":"linkedin"} /--></ul>
 <!-- /wp:social-links -->
 
-<!-- wp:spacer {"height":40} -->
+<!-- wp:spacer {"height":"40px"} -->
 <div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer --></div>
 <!-- /wp:column -->
 
-<!-- wp:column -->
-<div class="wp-block-column">
-<!-- wp:image {"align":"center","className":"is-style-default"} -->
-<div class="wp-block-image is-style-default"><figure class="aligncenter "><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/team-03.jpg" alt="" /></figure></div>
+<!-- wp:column {"style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
+<div class="wp-block-column" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","align":"center","style":{"border":{"radius":"16px"}},"className":"is-style-default"} -->
+<figure class="wp-block-image aligncenter size-full has-custom-border is-style-default"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-05.jpg" alt="" style="border-radius:16px"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:spacer {"height":24} -->
+<!-- wp:spacer {"height":"24px"} -->
 <div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:heading {"align":"center","level":3,"textColor":"neve-text-color"} -->
-<h3 class="has-text-align-center has-neve-text-color-color has-text-color">Julia Castillo</h3>
+<!-- wp:heading {"textAlign":"center","level":3,"textColor":"neve-text-color"} -->
+<h3 class="wp-block-heading has-text-align-center has-neve-text-color-color has-text-color">Mark Spencer</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"align":"center","textColor":"neve-text-color"} -->
-<p class="has-text-align-center has-neve-text-color-color has-text-color">Client Service</p>
+<p class="has-text-align-center has-neve-text-color-color has-text-color">Copywriting</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:social-links {"align":"center"} -->
-<ul class="wp-block-social-links aligncenter"><!-- wp:social-link {"url":"#","service":"facebook"} /-->
+<!-- wp:social-links {"iconColor":"nv-text-dark-bg","iconColorValue":"var(\u002d\u002dnv-text-dark-bg)","iconBackgroundColor":"nv-dark-bg","iconBackgroundColorValue":"var(\u002d\u002dnv-dark-bg)","align":"center"} -->
+<ul class="wp-block-social-links aligncenter has-icon-color has-icon-background-color"><!-- wp:social-link {"url":"#","service":"facebook"} /-->
 
 <!-- wp:social-link {"url":"#","service":"twitter"} /-->
 
 <!-- wp:social-link {"url":"#","service":"linkedin"} /--></ul>
 <!-- /wp:social-links -->
 
-<!-- wp:spacer {"height":40} -->
+<!-- wp:spacer {"height":"40px"} -->
+<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
+<div class="wp-block-column" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","align":"center","style":{"border":{"radius":"16px"}},"className":"is-style-default"} -->
+<figure class="wp-block-image aligncenter size-full has-custom-border is-style-default"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-01.jpg" alt="" style="border-radius:16px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:spacer {"height":"24px"} -->
+<div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:heading {"textAlign":"center","level":3,"textColor":"neve-text-color"} -->
+<h3 class="wp-block-heading has-text-align-center has-neve-text-color-color has-text-color">Helen Castillo</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center","textColor":"neve-text-color"} -->
+<p class="has-text-align-center has-neve-text-color-color has-text-color">Public Relations</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:social-links {"iconColor":"nv-text-dark-bg","iconColorValue":"var(\u002d\u002dnv-text-dark-bg)","iconBackgroundColor":"nv-dark-bg","iconBackgroundColorValue":"var(\u002d\u002dnv-dark-bg)","align":"center"} -->
+<ul class="wp-block-social-links aligncenter has-icon-color has-icon-background-color"><!-- wp:social-link {"url":"#","service":"facebook"} /-->
+
+<!-- wp:social-link {"url":"#","service":"twitter"} /-->
+
+<!-- wp:social-link {"url":"#","service":"linkedin"} /--></ul>
+<!-- /wp:social-links -->
+
+<!-- wp:spacer {"height":"40px"} -->
 <div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
-<!-- wp:spacer {"height":40} -->
+<!-- wp:columns {"style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70","left":"var:preset|spacing|70","right":"var:preset|spacing|70"},"blockGap":"var:preset|spacing|40"},"border":{"radius":"24px"},"elements":{"link":{"color":{"text":"var:preset|color|nv-text-dark-bg"}}}},"backgroundColor":"neve-link-color","textColor":"nv-text-dark-bg"} -->
+<div class="wp-block-columns has-nv-text-dark-bg-color has-neve-link-color-background-color has-text-color has-background has-link-color" style="border-radius:24px;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)"><!-- wp:column {"width":"100%","style":{"spacing":{"blockGap":"var:preset|spacing|60"}}} -->
+<div class="wp-block-column" style="flex-basis:100%"><!-- wp:heading {"style":{"elements":{"link":{"color":{"text":"var:preset|color|nv-text-dark-bg"}}}},"textColor":"nv-text-dark-bg","fontSize":"huge"} -->
+<h2 class="wp-block-heading has-nv-text-dark-bg-color has-text-color has-link-color has-huge-font-size">Join our team!</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|nv-text-dark-bg"}}}},"textColor":"nv-text-dark-bg"} -->
+<p class="has-nv-text-dark-bg-color has-text-color has-link-color">Feeling inspired? <a href="#">Join the team</a></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"100%"} -->
+<div class="wp-block-column" style="flex-basis:100%"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|nv-text-dark-bg"}}}},"textColor":"nv-text-dark-bg","fontSize":"medium"} -->
+<p class="has-nv-text-dark-bg-color has-text-color has-link-color has-medium-font-size">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec fermentum ex. Vestibulum ante ipsum.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:spacer {"height":"40px"} -->
 <div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer --></div></div>
+<!-- /wp:spacer --></div>
 <!-- /wp:group --></div></div>
 <!-- /wp:cover -->',
 ];
