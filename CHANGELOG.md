@@ -1,3 +1,13 @@
+##### [Version 3.8.8](https://github.com/Codeinwp/neve/compare/v3.8.7...v3.8.8) (2024-07-03)
+
+- Fixed duplication of Bank Details on the WooCommerce Order-Received Page
+- Fixed text overlapping in Onboarding notice for multiple languages
+- Fixed schema issues in the footer
+- Fixed CSS syntax error causing W3C validation error
+- Updated Google Fonts
+- Updated the thumbnail for the default starter site
+- Added new default Marketing Agency starter site content
+
 ##### [Version 3.8.7](https://github.com/Codeinwp/neve/compare/v3.8.6...v3.8.7) (2024-04-27)
 
 - Updated assets
