@@ -178,7 +178,7 @@ return [
 <!-- wp:columns {"verticalAlignment":"center"} -->
 <div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-column is-vertically-aligned-center" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30);flex-basis:50%"><!-- wp:image {"lightbox":{"enabled":false},"sizeSlug":"full","linkDestination":"custom","style":{"border":{"radius":"16px"}}} -->
-<figure class="wp-block-image size-full has-custom-border"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-15.png" alt="" style="border-radius:16px"/></figure>
+<figure class="wp-block-image size-full has-custom-border"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-15.jpg" alt="" style="border-radius:16px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:spacer {"height":"24px"} -->
@@ -196,7 +196,7 @@ return [
 
 <!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-column is-vertically-aligned-center" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30);flex-basis:50%"><!-- wp:image {"lightbox":{"enabled":false},"sizeSlug":"full","linkDestination":"custom","style":{"border":{"radius":"16px"}}} -->
-<figure class="wp-block-image size-full has-custom-border"><a href="#"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-13.png" alt="" style="border-radius:16px"/></a></figure>
+<figure class="wp-block-image size-full has-custom-border"><a href="#"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-13.jpg" alt="" style="border-radius:16px"/></a></figure>
 <!-- /wp:image -->
 
 <!-- wp:spacer {"height":"24px"} -->
@@ -223,7 +223,7 @@ return [
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"className":"ticss-4ce656f1"} -->
 <div class="wp-block-column ticss-4ce656f1"><!-- wp:image {"width":"80px","height":"80px","sizeSlug":"full","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-full is-resized is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-04.png" alt="" style="width:80px;height:80px"/></figure>
+<figure class="wp-block-image aligncenter size-full is-resized is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-04.jpg" alt="" style="width:80px;height:80px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:spacer {"height":"24px"} -->
@@ -245,7 +245,7 @@ return [
 
 <!-- wp:column {"className":"ticss-f6fc7494"} -->
 <div class="wp-block-column ticss-f6fc7494"><!-- wp:image {"width":"80px","height":"80px","sizeSlug":"full","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-full is-resized is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-03.png" alt="" style="width:80px;height:80px"/></figure>
+<figure class="wp-block-image aligncenter size-full is-resized is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-03.jpg" alt="" style="width:80px;height:80px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:spacer {"height":"24px"} -->
@@ -267,7 +267,7 @@ return [
 
 <!-- wp:column {"className":"ticss-a5b4df29"} -->
 <div class="wp-block-column ticss-a5b4df29"><!-- wp:image {"width":"80px","height":"80px","sizeSlug":"full","linkDestination":"none","align":"center","className":"is-style-rounded"} -->
-<figure class="wp-block-image aligncenter size-full is-resized is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-02.png" alt="" style="width:80px;height:80px"/></figure>
+<figure class="wp-block-image aligncenter size-full is-resized is-style-rounded"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-02.jpg" alt="" style="width:80px;height:80px"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:spacer {"height":"24px"} -->
@@ -302,7 +302,7 @@ return [
 <!-- wp:columns {"verticalAlignment":"center"} -->
 <div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-column is-vertically-aligned-center" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30);flex-basis:50%"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","style":{"border":{"radius":"16px"}},"className":"is-style-default"} -->
-<figure class="wp-block-image size-full has-custom-border is-style-default"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-12.png" alt="" style="border-radius:16px"/></figure>
+<figure class="wp-block-image size-full has-custom-border is-style-default"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-12.jpg" alt="" style="border-radius:16px"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
@@ -350,7 +350,7 @@ return [
 
 <!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-column is-vertically-aligned-center" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30);flex-basis:50%"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","style":{"border":{"radius":"16px"}},"className":"is-style-default"} -->
-<figure class="wp-block-image size-full has-custom-border is-style-default"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-17.png" alt="" style="border-radius:16px"/></figure>
+<figure class="wp-block-image size-full has-custom-border is-style-default"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/starter-content/neve-marketing-agency-17.jpg" alt="" style="border-radius:16px"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
