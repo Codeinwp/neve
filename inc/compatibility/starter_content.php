@@ -114,10 +114,10 @@ class Starter_Content {
 				'object'    => 'page',
 				'object_id' => '{{' . self::HOME_SLUG . '}}',
 			],
-			'link_about'           => [
-				'type'  => 'custom',
-				'title' => 'About Us',
-				'url'   => home_url( self::ABOUT_SLUG ),
+			'page_about'           => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::ABOUT_SLUG . '}}',
 			],
 			'page_portofolio'      => [
 				'type'      => 'post_type',
@@ -129,15 +129,15 @@ class Starter_Content {
 				'object'    => 'page',
 				'object_id' => '{{' . self::PROJECT_DETAILS . '}}',
 			],
-			'link_blog'            => [
-				'type'  => 'custom',
-				'title' => 'News',
-				'url'   => home_url( self::BLOG_SLUG ),
+			'page_blog'            => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::BLOG_SLUG . '}}',
 			],
-			'link_contact'         => [
-				'type'  => 'custom',
-				'title' => 'Contact Us',
-				'url'   => home_url( self::CONTACT ),
+			'page_contact'         => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::CONTACT . '}}',
 			],
 		];
 
@@ -147,20 +147,20 @@ class Starter_Content {
 				'object'    => 'page',
 				'object_id' => '{{' . self::HOME_SLUG . '}}',
 			],
-			'link_blog'    => [
-				'type'  => 'custom',
-				'title' => 'Blog',
-				'url'   => home_url( self::HOME_SLUG ),
+			'page_blog'    => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::BLOG_SLUG . '}}',
 			],
-			'link_about'   => [
-				'type'  => 'custom',
-				'title' => 'About',
-				'url'   => home_url( self::ABOUT_SLUG ),
+			'page_about'   => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::ABOUT_SLUG . '}}',
 			],
-			'link_contact' => [
-				'type'  => 'custom',
-				'title' => 'Contact',
-				'url'   => home_url( self::CONTACT ),
+			'page_contact' => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::CONTACT . '}}',
 			],
 		];
 
