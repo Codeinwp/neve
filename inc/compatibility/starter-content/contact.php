@@ -148,21 +148,6 @@ return [
 <!-- /wp:social-links --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"right":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
-<div class="wp-block-column is-vertically-aligned-center" style="padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30);flex-basis:50%;"><!-- wp:themeisle-blocks/form {"id":"wp-block-themeisle-blocks-form-b0061c8f","optionName":"8e3c28cc41eef4a60477f9c4566338072ba8621f_b0061c8f","submitLabel":"Send Message","inputBorderRadius":{"top":"3px","left":"3px","right":"3px","bottom":"3px"},"submitBackgroundColor":"var(\u002d\u002dnv-primary-accent)","submitBackgroundColorHover":"var(\u002d\u002dnv-secondary-accent)"} -->
-<div id="wp-block-themeisle-blocks-form-b0061c8f" class="wp-block-themeisle-blocks-form" data-option-name="8e3c28cc41eef4a60477f9c4566338072ba8621f_b0061c8f"><form class="otter-form__container"><!-- wp:themeisle-blocks/form-input {"id":"wp-block-themeisle-blocks-form-input-334449d1","type":"email","label":"Email","isRequired":true} -->
-<div id="wp-block-themeisle-blocks-form-input-334449d1" class="wp-block-themeisle-blocks-form-input"><label for="wp-block-themeisle-blocks-form-input-334449d1-input" class="otter-form-input-label"><span class="otter-form-input-label__label">Email</span><span class="required">*</span></label><input type="email" id="wp-block-themeisle-blocks-form-input-334449d1-input" required class="otter-form-input"/></div>
-<!-- /wp:themeisle-blocks/form-input -->
-
-<!-- wp:themeisle-blocks/form-nonce {"formId":"wp-block-themeisle-blocks-form-b0061c8f"} /-->
-
-<!-- wp:themeisle-blocks/form-textarea {"id":"wp-block-themeisle-blocks-form-textarea-3a8375eb","label":"Message"} -->
-<div id="wp-block-themeisle-blocks-form-textarea-3a8375eb" class="wp-block-themeisle-blocks-form-textarea"><label for="wp-block-themeisle-blocks-form-textarea-3a8375eb-input" class="otter-form-textarea-label"><span class="otter-form-textarea-label__label">Message</span></label><textarea id="wp-block-themeisle-blocks-form-textarea-3a8375eb-input" rows="10" class="otter-form-textarea-input"></textarea></div>
-<!-- /wp:themeisle-blocks/form-textarea --><div class="wp-block-button"><button class="wp-block-button__link" type="submit">Send Message</button></div></form></div>
-<!-- /wp:themeisle-blocks/form --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
-
 <!-- wp:spacer {"height":"40px"} -->
 <div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer --></div>
