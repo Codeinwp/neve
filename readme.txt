@@ -19,6 +19,13 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.8.9](https://github.com/Codeinwp/neve/compare/v3.8.8...v3.8.9) (2024-07-04)
+
+- Fixed an issue with the permalinks of the new starter site menu items
+
+
+
+
 ##### [Version 3.8.8](https://github.com/Codeinwp/neve/compare/v3.8.7...v3.8.8) (2024-07-03)
 
 - Fixed duplication of Bank Details on the WooCommerce Order-Received Page
