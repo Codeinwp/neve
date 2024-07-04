@@ -12,14 +12,15 @@ namespace HFG;
 use HFG\Core\Components\SecondNav;
 use HFG\Core\Builder\Header as HeaderBuilder;
 
-$style = component_setting( SecondNav::STYLE_ID );
-
+$style             = component_setting( SecondNav::STYLE_ID );
+$device_class      = isset( $args ) && ! empty( $args ) ? $args['device'] : '';
 $container_classes = [ 'nav-menu-secondary' ];
+
 if ( $style !== 'style-plain' ) {
 	$container_classes[] = $style;
 	$container_classes[] = 'm-style';
 }
-$menu_id = SecondNav::COMPONENT_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
+$menu_id = SecondNav::COMPONENT_ID . '-' . $device_class . '-' . current_row( HeaderBuilder::BUILDER_NAME );
 ?>
 <div class="nv-top-bar">
 	<div role="navigation" class="menu-content <?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
