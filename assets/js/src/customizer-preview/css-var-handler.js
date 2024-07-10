@@ -1,4 +1,4 @@
-/* global _, Event */
+/* global _ */
 
 import { parseFontFamily } from './common.js';
 

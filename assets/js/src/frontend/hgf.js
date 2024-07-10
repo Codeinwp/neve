@@ -1,4 +1,4 @@
-/* global NeveProperties CustomEvent */
+/* global NeveProperties */
 /* jshint esversion: 6 */
 import {
 	addEvent,
@@ -8,6 +8,7 @@ import {
 	NV_FOCUS_TRAP_END,
 } from '../utils.js';
 
+const clickEvent = 'click';
 const closeNavSelector = '.close-sidebar-panel .navbar-toggle';
 const sidebarClasses = [
 	'is-menu-sidebar',
@@ -38,21 +39,25 @@ const toggleAria = (elements, add = true) => {
  * @param {boolean} skipSidebar
  */
 HFG.prototype.init = function (skipSidebar = false) {
-	const doc = window.document;
+	const doc = document;
 	if (skipSidebar === false) {
-		const closeButtons = doc.querySelectorAll(closeNavSelector);
-		addEvent(closeButtons, 'click', () => {
+		// Close buttons.
+		addEvent(doc.querySelectorAll(closeNavSelector), clickEvent, () => {
 			this.toggleMenuSidebar(false);
 		});
 	}
 
-	const menuMobileToggleButtons = doc.querySelectorAll('.menu-mobile-toggle');
-	addEvent(menuMobileToggleButtons, 'click', (event) => {
-		this.toggleMenuSidebar(
-			!event.target.parentElement.classList.contains('is-active'),
-			event.target
-		);
-	});
+	// Mobile menu toggle buttons.
+	addEvent(
+		doc.querySelectorAll('.menu-mobile-toggle'),
+		clickEvent,
+		(event) => {
+			this.toggleMenuSidebar(
+				!event.target.parentElement.classList.contains('is-active'),
+				event.target
+			);
+		}
+	);
 
 	/**
 	 * When click to outside of menu sidebar.
@@ -61,7 +66,7 @@ HFG.prototype.init = function (skipSidebar = false) {
 	if (overlay) {
 		addEvent(
 			overlay,
-			'click',
+			clickEvent,
 			function () {
 				this.toggleMenuSidebar(false);
 			}.bind(this)
@@ -76,8 +81,8 @@ HFG.prototype.init = function (skipSidebar = false) {
  * @param {Element} target
  */
 HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
-	const doc = window.document;
 	const TOGGLE_CLASS_CONTAINER = '.menu-mobile-toggle';
+	const doc = document;
 	const buttonsContainer = doc.querySelectorAll(TOGGLE_CLASS_CONTAINER);
 	removeClass(doc.body, sidebarClasses[1]);
 

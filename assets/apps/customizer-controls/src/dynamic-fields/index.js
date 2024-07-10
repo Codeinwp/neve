@@ -1,4 +1,4 @@
-/* global NeveReactCustomize, Event */
+/* global NeveReactCustomize */
 
 import DynamicFieldInserter from './dynamic-field-inserter.js';
 import { render } from '@wordpress/element';
@@ -6,7 +6,7 @@ import { render } from '@wordpress/element';
 /**
  * Initialize the dynamic tag buttons.
  *
- * @return {boolean}|{void}
+ * @return {boolean|void} - False if no controls are found.
  */
 export const init = () => {
 	const controls = NeveReactCustomize?.dynamicTags?.controls || false;

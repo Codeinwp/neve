@@ -42,7 +42,7 @@ const GroupSelectControl = ({
 	return (
 		<div className="neve-white-background-control neve-group-select-control">
 			{label && (
-				/* eslint-disable-next-line jsx-a11y/label-has-for */
+				/* eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control */
 				<label className="customize-control-title">{label}</label>
 			)}
 			<SelectControl

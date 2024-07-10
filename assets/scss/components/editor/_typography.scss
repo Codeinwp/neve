@@ -1,5 +1,6 @@
 @import "../main/global-colors";
 @import "../main/variables";
+@import "../main/tables";
 
 main,
 body &,
@@ -154,8 +155,6 @@ td {
 .wp-block-table figcaption {
 	font-size: $text-sm;
 }
-
-@import "../main/tables";
 
 // === Preformatted === //
 .wp-block-preformatted {

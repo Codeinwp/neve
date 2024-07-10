@@ -42,10 +42,10 @@
 	"phpcs-i": "phpcs -i",
 	"phpstan": "phpstan analyse",
 	"post-install-cmd": [
-	  "[ ! -z \"$GITHUB_ACTIONS\" ] && yarn run bump-vendor || true"
+	  "[ ! -z \"$GITHUB_ACTIONS\" ] && npm run bump-vendor || true"
 	],
 	"post-update-cmd": [
-	  "[ ! -z \"$GITHUB_ACTIONS\" ] && yarn run bump-vendor || true"
+	  "[ ! -z \"$GITHUB_ACTIONS\" ] && npm run bump-vendor || true"
 	]
   },
   "minimum-stability": "dev",

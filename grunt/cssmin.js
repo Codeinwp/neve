@@ -10,6 +10,10 @@ module.exports = {
 			1: {
 				specialComments: 0,
 			},
+			2: {
+				all: true,
+				specialComments: 0,
+			},
 		},
 	},
 	customizerStyle: {

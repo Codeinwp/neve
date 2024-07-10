@@ -70,6 +70,7 @@ test-results
 playwright-report
 visual-regressions
 yarn.lock
+package-lock.json
 .ds_store
 .storybook
 stories

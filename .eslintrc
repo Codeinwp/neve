@@ -14,7 +14,8 @@
 	  ],
 	  "rules": {
 		"@typescript-eslint/ban-ts-comment": "off",
-		"@wordpress/no-global-event-listener": "off"
+		"@wordpress/no-global-event-listener": "off",
+		"jsdoc/check-line-alignment": "off"
 	  },
 	  "settings": {
 		"import/parsers": {

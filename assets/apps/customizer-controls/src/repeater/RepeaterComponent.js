@@ -61,6 +61,8 @@ const RepeaterComponent = ({ control }) => {
 
 	const updateValue = (newVal) => {
 		setValue(newVal);
+
+		// INFO: The version react-sortablejs higher than 6.0.3 will modify the original `value` array. This will add new keys (selected, chosen) which will make the value to be rejected by sanitize_callback in `sanitize_social_icons_repeater` function.
 		control.setting.set(JSON.stringify(newVal));
 	};
 
