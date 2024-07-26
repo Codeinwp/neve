@@ -588,6 +588,10 @@ class Front_End {
 			return $file;
 		}
 
+		if ( is_file( $file ) ) {
+			return $file;
+		}
+
 		if ( strpos( $file, WP_LANG_DIR . '/plugins' ) !== false ) {
 			$file = str_replace( WP_LANG_DIR . '/plugins', WP_LANG_DIR . '/themes', $file );
 		}
