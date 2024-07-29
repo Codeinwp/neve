@@ -179,7 +179,7 @@ class Hooks_Upsells {
 						if ( 'woocommerce_before_shop_loop_item' === $hook_value ) {
 							$style = 'max-width: 200px;';
 						}
-						$upsell_url = tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'viewhooks' );
+						$upsell_url = tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'viewhooks' ), 'query' );
 						echo '<div class="nv-hook-wrapper nv-hook-upsell-wrapper">';
 						echo '<div class="nv-hook-placeholder">';
 						echo '<a href="' . esc_url( $upsell_url ) . '" title="' . esc_attr( $upsell_label ) . '" target="_blank">';
