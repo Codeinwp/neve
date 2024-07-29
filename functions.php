@@ -159,7 +159,7 @@ add_filter(
 			'is_enabled' => ! defined( 'NEVE_PRO_VERSION' ),
 			'pro_name'   => 'Neve Pro Addon',
 			'logo'       => get_template_directory_uri() . '/assets/img/dashboard/logo.svg',
-			'cta_link'   => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/?discount=LOYALUSER582&dvalue=50', 'neve-welcome', 'notice' ),
+			'cta_link'   => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/?discount=LOYALUSER582&dvalue=50', 'neve-welcome', 'notice' ), 'query' ),
 		];
 	}
 );
