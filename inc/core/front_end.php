@@ -573,4 +573,29 @@ class Front_End {
 
 		return $current_styles;
 	}
+
+	/**
+	 * Fix script translations language directory.
+	 *
+	 * @param string | false $file File path.
+	 * @param string         $handle Script handle.
+	 * @param string         $domain Script text domain.
+	 *
+	 * @return string | false
+	 */
+	public function fix_script_translation_files( $file, $handle, $domain ) {
+		if ( ! $file || $domain !== 'neve' ) {
+			return $file;
+		}
+
+		if ( is_file( $file ) ) {
+			return $file;
+		}
+
+		if ( strpos( $file, WP_LANG_DIR . '/plugins' ) !== false ) {
+			$file = str_replace( WP_LANG_DIR . '/plugins', WP_LANG_DIR . '/themes', $file );
+		}
+
+		return $file;
+	}
 }
