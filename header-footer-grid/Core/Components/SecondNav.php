@@ -307,7 +307,7 @@ class SecondNav extends Abstract_Component {
 	 */
 	public function render_component() {
 		do_action( 'neve_before_render_nav', $this->get_id() );
-		Main::get_instance()->load( 'components/component-nav-secondary' );
+		Main::get_instance()->load( 'components/component-nav-secondary', '', $this->args );
 		do_action( 'neve_after_render_nav', $this->get_id() );
 	}
 
