@@ -38,7 +38,7 @@ class Upsells extends Base_Customizer {
 			return;
 		}
 
-		$this->upsell_url = esc_url_raw( apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'learnmorebtn' ) ) ), 'query' );
+		$this->upsell_url = esc_url_raw( apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'learnmorebtn' ), 'query' ) ) );
 
 		parent::init();
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'localize_upsell' ) );
