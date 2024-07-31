@@ -19,6 +19,14 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.8.10](https://github.com/Codeinwp/neve/compare/v3.8.9...v3.8.10) (2024-07-31)
+
+- Fixed duplicate ID issue with secondary navigation menu
+- Fixed translations support on dashboard pages
+
+
+
+
 ##### [Version 3.8.9](https://github.com/Codeinwp/neve/compare/v3.8.8...v3.8.9) (2024-07-04)
 
 - Fixed an issue with the permalinks of the new starter site menu items
