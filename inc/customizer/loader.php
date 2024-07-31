@@ -130,7 +130,7 @@ class Loader {
 						'controls' => array(),
 						'options'  => array(),
 					),
-					'upsellComponentsLink'          => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'hfgcomponents' ),
+					'upsellComponentsLink'          => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'hfgcomponents' ), 'query' ),
 					'fonts'                         => array(
 						'System' => neve_get_standard_fonts(),
 						'Google' => neve_get_google_fonts(),
@@ -168,11 +168,11 @@ class Loader {
 
 		if ( isset( $dependencies['chunks'] ) ) {
 			foreach ( $dependencies['chunks'] as $chunk_file ) {
-		
+
 				$chunk_handle = 'neve-customizer-chunk-' . $chunk_file;
 				wp_register_script( $chunk_handle, $bundle_path . $chunk_file, [], $dependencies['version'], true );
 				wp_enqueue_script( $chunk_handle );
-				
+
 				if ( function_exists( 'wp_set_script_translations' ) ) {
 					wp_set_script_translations( $chunk_handle, 'neve' );
 				}
