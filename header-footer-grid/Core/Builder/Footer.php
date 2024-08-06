@@ -67,7 +67,7 @@ class Footer extends Abstract_Builder {
 					'footer_copyright_content'            => array(
 						'label' => esc_html__( 'Change Copyright', 'neve' ),
 						'icon'  => 'dashicons-nametag',
-						'url'   => $this->has_valid_addons() ? null : tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'copyright' ),
+						'url'   => $this->has_valid_addons() ? null : tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'copyright' ), 'query' ),
 					),
 					'hfg_footer_layout_bottom_background' => array(
 						'label' => esc_html__( 'Change Footer Color', 'neve' ),
@@ -156,7 +156,7 @@ class Footer extends Abstract_Builder {
 		$output .= sprintf(
 		/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
 			esc_html__( '%1$s | Powered by %2$s', 'neve' ),
-			wp_kses_post( '<p><a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
+			wp_kses_post( '<p><a href="' . tsdk_translate_link( 'https://themeisle.com/themes/neve/', 'path' ) . '" rel="nofollow">Neve</a>' ),
 			wp_kses_post( '<a href="https://wordpress.org" rel="nofollow">WordPress</a></p>' )
 		);
 		$output .= '</div></div></div></div>';

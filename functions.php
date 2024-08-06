@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '3.8.9' );
+define( 'NEVE_VERSION', '3.8.10' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 define( 'NEVE_MAIN_DIR', get_template_directory() . '/' );
@@ -159,7 +159,7 @@ add_filter(
 			'is_enabled' => ! defined( 'NEVE_PRO_VERSION' ),
 			'pro_name'   => 'Neve Pro Addon',
 			'logo'       => get_template_directory_uri() . '/assets/img/dashboard/logo.svg',
-			'cta_link'   => tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/?discount=LOYALUSER582&dvalue=50', 'neve-welcome', 'notice' ),
+			'cta_link'   => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/?discount=LOYALUSER582&dvalue=50', 'neve-welcome', 'notice' ), 'query' ),
 		];
 	}
 );

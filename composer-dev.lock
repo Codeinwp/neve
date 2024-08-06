@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5ff6006d935844c41896b3b9f0a56207",
+    "content-hash": "33a849a1bb965e64c9c96d8d6dd5b79b",
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.3.4",
+            "version": "3.3.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "871adb3e4617c408bb6a48f6cb8156b99c8de98a"
+                "reference": "ae9f1aae6e71677db5de1f579b2275be6fc838f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/871adb3e4617c408bb6a48f6cb8156b99c8de98a",
-                "reference": "871adb3e4617c408bb6a48f6cb8156b99c8de98a",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/ae9f1aae6e71677db5de1f579b2275be6fc838f4",
+                "reference": "ae9f1aae6e71677db5de1f579b2275be6fc838f4",
                 "shasum": ""
             },
             "require-dev": {
@@ -42,9 +42,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeinwp/themeisle-sdk/issues",
-                "source": "https://github.com/Codeinwp/themeisle-sdk/tree/v3.3.4"
+                "source": "https://github.com/Codeinwp/themeisle-sdk/tree/v3.3.27"
             },
-            "time": "2023-09-18T15:48:59+00:00"
+            "time": "2024-07-30T06:16:39+00:00"
         },
         {
             "name": "wptt/webfont-loader",
@@ -989,5 +989,5 @@
     "platform-overrides": {
         "php": "7.2"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
