@@ -162,6 +162,15 @@ class Breadcrumbs extends Base_View {
 			}
 		}
 
+		// Breadcrumb NavXT breadcrumbs
+		if ( function_exists( 'bcn_display' ) ) {
+			echo '<small class="neve-breadcrumbs-wrapper">';
+			bcn_display();
+			echo '</small>';
+
+			return true;
+		}
+
 		return false;
 	}
 

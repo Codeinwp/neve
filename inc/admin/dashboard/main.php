@@ -410,6 +410,13 @@ class Main {
 		if ( isset( $_GET['onboarding'] ) && $_GET['onboarding'] === 'yes' ) {
 			$data['isOnboarding'] = true;
 		}
+		$language            = get_user_locale();
+		$available_languages = [
+			'de_DE'        => 'de',
+			'de_DE_formal' => 'de',
+		];
+		$lang_code           = isset( $available_languages[ $language ] ) ? 'de' : 'en';
+		$data['lang']        = $lang_code;
 
 		return $data;
 	}
