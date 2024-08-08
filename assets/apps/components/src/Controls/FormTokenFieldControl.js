@@ -57,7 +57,7 @@ const FormTokenFieldControl = ({
 	return (
 		<div className="neve-white-background-control neve-form-token-field-control">
 			{label && (
-				/* eslint-disable-next-line jsx-a11y/label-has-for */
+				/* eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control */
 				<label className="customize-control-title">{label}</label>
 			)}
 			<FormTokenField
