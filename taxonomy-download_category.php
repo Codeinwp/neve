@@ -15,15 +15,16 @@ get_header();
 <div id= "nv-edd-download-archive-container" class="<?php echo esc_attr( $container_class ); ?>">
 
 		<div id="wrapper">
+			<?php
+				/**
+				 * Executes actions before the archive content.
+				 *
+				 * @since 3.0.0
+				 */
+				do_action( 'neve_before_download_archive' );
+			?>
 			<div id="nv-edd-grid-container">
 				<?php
-					/**
-					 * Executes actions before the post content.
-					 *
-					 * @since 3.0.0
-					 */
-					do_action( 'neve_before_download_archive' );
-					
 				if ( have_posts() ) {
 				
 					while ( have_posts() ) {
