@@ -34,6 +34,7 @@ if ('undefined' !== typeof window && 'undefined' !== typeof window.neveDash) {
 				days_since_install: convertToCategory(
 					window.neveDash.daysSinceInstall
 				),
+				language: window.neveDash.lang,
 				license_status: window.neveDash?.license?.valid ?? 'invalid',
 				free_version: window.neveDash?.version,
 				pro_version: window.neveDash?.proPluginVersion,
