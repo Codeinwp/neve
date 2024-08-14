@@ -53,11 +53,6 @@ module.exports = (env) => {
 		module: {
 			...config.module,
 			rules: [
-				{
-					test: /\.(tsx|ts|d.ts)?$/,
-					use: 'ts-loader',
-					exclude: /node_modules/,
-				},
 				...config.module.rules,
 			],
 		},

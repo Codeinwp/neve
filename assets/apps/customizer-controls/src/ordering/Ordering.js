@@ -95,7 +95,7 @@ const Ordering = ({
 	return (
 		<>
 			{label /* TODO: Add proper label id for this */ && (
-				/* eslint-disable-next-line jsx-a11y/label-has-for */
+				/* eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control */
 				<label className="customize-control-title">{label}</label>
 			)}
 			<ReactSortable
