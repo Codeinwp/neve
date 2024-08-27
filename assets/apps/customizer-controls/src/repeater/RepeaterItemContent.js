@@ -67,6 +67,12 @@ const RepeaterItemContent = ({
 
 		switch (currentField.type) {
 			case 'text':
+				if (
+					'page_name' === key &&
+					'messenger' !== value[index]?.social_network
+				) {
+					return;
+				}
 				return (
 					<TextControl
 						label={currentField.label}
