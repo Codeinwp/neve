@@ -220,6 +220,7 @@ export const FIELDS = {
 			whatsapp: 'WhatsApp',
 			sms: 'SMS',
 			vk: 'VKontakte'
+			messenger: 'Messenger'
 		}
 	},
 	display_desktop: {
