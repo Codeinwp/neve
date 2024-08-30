@@ -4,6 +4,7 @@ import {
 	TextControl,
 	ToggleControl,
 	TextareaControl,
+	ExternalLink,
 } from '@wordpress/components';
 import IconSelector from './IconSelector';
 import { getIcons, ColorControl } from '@neve-wp/components';
@@ -68,18 +69,26 @@ const RepeaterItemContent = ({
 		switch (currentField.type) {
 			case 'text':
 				if (
-					'page_name' === key &&
+					'fb_page_id' === key &&
 					'messenger' !== value[index]?.social_network
 				) {
 					return;
 				}
 				return (
-					<TextControl
-						label={currentField.label}
-						value={value[index][key] || currentField.default}
-						onChange={(newData) => changeContent(key, newData)}
-						key={key + index}
-					/>
+					<>
+						<TextControl
+							label={currentField.label}
+							value={value[index][key] || currentField.default}
+							onChange={(newData) => changeContent(key, newData)}
+							key={key + index}
+							help={currentField.help_text || ''}
+						/>
+						{currentField?.help_link && (
+							<ExternalLink href={currentField?.help_link?.link}>
+								{currentField?.help_link?.text}
+							</ExternalLink>
+						)}
+					</>
 				);
 			case 'textarea':
 				return (
