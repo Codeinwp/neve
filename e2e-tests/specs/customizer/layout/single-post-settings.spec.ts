@@ -142,7 +142,7 @@ test.describe('Single Post Check', function () {
 				'background-color',
 				'rgb(198, 53, 53)'
 			);
-			await expect(page.locator('.nv-title-meta-wrap')).toHaveCSS(
+			await expect(page.locator('.nv-post-cover .nv-title-meta-wrap').first()).toHaveCSS(
 				'color',
 				'rgb(255, 255, 255)'
 			);
