@@ -150,16 +150,3 @@ blockquote {
 		margin-right: calc(50% - 35vw);
 	}
 }
-
-.wp-lightbox-overlay {
-
-	figure {
-
-		img {
-			height: var(--wp--lightbox-image-height);
-			min-height: var(--wp--lightbox-image-height);
-			min-width: var(--wp--lightbox-image-width);
-			width: var(--wp--lightbox-image-width);
-		}
-	}
-}
