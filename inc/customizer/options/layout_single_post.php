@@ -658,7 +658,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 	 * @return bool
 	 */
 	public static function is_cover_layout() {
-		return get_theme_mod( 'neve_post_header_layout' ) === 'cover';
+		return class_exists( '\Neve_Pro\Admin\Custom_Layouts_Cpt' ) && get_theme_mod( 'neve_post_header_layout' ) === 'cover';
 	}
 
 	/**

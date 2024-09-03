@@ -232,6 +232,10 @@ class Post_Layout extends Base_View {
 			}
 		}
 
+		if ( ! class_exists( '\Neve_Pro\Admin\Custom_Layouts_Cpt' ) ) {
+			$content_order = array_unique( array_merge( array( 'title-meta' ), $content_order ) );
+		}
+
 		return apply_filters( 'neve_layout_single_post_elements_order', $content_order );
 	}
 }
