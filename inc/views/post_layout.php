@@ -232,7 +232,7 @@ class Post_Layout extends Base_View {
 			}
 		}
 
-		if ( ! class_exists( '\Neve_Pro\Admin\Custom_Layouts_Cpt' ) ) {
+		if ( ! Layout_Single_Post::is_cover_layout() ) {
 			$content_order = array_unique( array_merge( array( 'title-meta' ), $content_order ) );
 		}
 
