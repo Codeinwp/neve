@@ -455,7 +455,7 @@ class Template_Parts extends Base_View {
 			$new_moretag = '';
 		}
 
-		$read_more_args = (array) apply_filters(
+		$read_more_args = apply_filters(
 			'neve_read_more_args',
 			array(
 				'text'    => esc_html__( 'Read More', 'neve' ) . ' &raquo;',
