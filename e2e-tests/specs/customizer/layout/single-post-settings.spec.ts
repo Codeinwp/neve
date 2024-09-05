@@ -115,7 +115,6 @@ test.describe('Single Post Check', function () {
 			baseURL,
 		});
 		const ORDER = [
-			'entry-header',
 			'nv-post-navigation',
 			'nv-tags-list',
 			'nv-content-wrap',
