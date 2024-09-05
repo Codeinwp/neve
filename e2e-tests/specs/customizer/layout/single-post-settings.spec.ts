@@ -119,7 +119,7 @@ test.describe('Single Post Check', function () {
 			'nv-tags-list',
 			'nv-content-wrap',
 			'comments-area',
-			'entry-header'
+			'entry-header',
 			'nv-thumb-wrap',
 		];
 		await page.goto(
