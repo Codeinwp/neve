@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 12/08/24
+ * Updated on 07/10/24
  *
  * @package neve
  */
@@ -19,6 +19,7 @@ return array(
 	'Adamina' => array( '400',),
 	'Advent Pro' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Afacad' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
+	'Afacad Flux' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Agbalumo' => array( '400',),
 	'Agdasima' => array( '400', '700',),
 	'Aguafina Script' => array( '400',),
@@ -1514,6 +1515,7 @@ return array(
 	'Sirin Stencil' => array( '400',),
 	'Six Caps' => array( '400',),
 	'Sixtyfour' => array( '400',),
+	'Sixtyfour Convergence' => array( '400',),
 	'Skranji' => array( '400', '700',),
 	'Slabo 13px' => array( '400',),
 	'Slabo 27px' => array( '400',),
