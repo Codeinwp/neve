@@ -8,20 +8,21 @@
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.3.28",
+            "version": "3.3.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "cd35fd5356ba169b9a0419ba879764ffeb811b63"
+                "reference": "cc8da0623a1814d168baf7194eda1cba354bdc38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/cd35fd5356ba169b9a0419ba879764ffeb811b63",
-                "reference": "cd35fd5356ba169b9a0419ba879764ffeb811b63",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/cc8da0623a1814d168baf7194eda1cba354bdc38",
+                "reference": "cc8da0623a1814d168baf7194eda1cba354bdc38",
                 "shasum": ""
             },
             "require-dev": {
-                "codeinwp/phpcs-ruleset": "dev-main"
+                "codeinwp/phpcs-ruleset": "dev-main",
+                "yoast/phpunit-polyfills": "^2.0"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -42,9 +43,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeinwp/themeisle-sdk/issues",
-                "source": "https://github.com/Codeinwp/themeisle-sdk/tree/v3.3.28"
+                "source": "https://github.com/Codeinwp/themeisle-sdk/tree/v3.3.31"
             },
-            "time": "2024-08-09T08:54:15+00:00"
+            "time": "2024-10-14T13:13:47+00:00"
         },
         {
             "name": "wptt/webfont-loader",
