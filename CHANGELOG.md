@@ -1,3 +1,9 @@
+##### [Version 3.8.11](https://github.com/Codeinwp/neve/compare/v3.8.10...v3.8.11) (2024-08-14)
+
+- Fixed Breadcrumb NavXT integration
+- Fixed Neve and Easy Digital Downloads compatibility: Custom Layout on Download Archive was being misapplied for Tags & Taxonomy
+- Improved translations coverage
+
 ##### [Version 3.8.10](https://github.com/Codeinwp/neve/compare/v3.8.9...v3.8.10) (2024-07-31)
 
 - Fixed duplicate ID issue with secondary navigation menu
