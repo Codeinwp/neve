@@ -187,6 +187,15 @@ class Magic_Tags {
 	}
 
 	/**
+	 * Single Post Content.
+	 *
+	 * @return string
+	 */
+	public function current_single_content() {
+		return is_singular() ? get_the_content() : '';
+	}
+
+	/**
 	 * Single Post meta.
 	 *
 	 * @return string.
@@ -588,6 +597,10 @@ class Magic_Tags {
 					],
 					'current_single_excerpt' => [
 						'label' => __( 'Current Single Excerpt', 'neve' ),
+						'type'  => 'string',
+					],
+					'current_single_content' => [
+						'label' => __( 'Current Single Content', 'neve' ),
 						'type'  => 'string',
 					],
 					'current_single_url'     => [
