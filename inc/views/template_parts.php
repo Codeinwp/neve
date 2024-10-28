@@ -463,8 +463,15 @@ class Template_Parts extends Base_View {
 			)
 		);
 
-		$markup  = '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '"';
-		$markup .= ' class="' . esc_attr( $read_more_args['classes'] ) . '"';
+		// Return $new_moretag if 'text' key is not set in $read_more_args.
+		if ( ! isset( $read_more_args['text'] ) ) {
+			return $new_moretag;
+		}
+
+		$markup = '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '"';
+		if ( ! empty( $read_more_args['classes'] ) ) {
+			$markup .= ' class="' . esc_attr( $read_more_args['classes'] ) . '"';
+		}
 		$markup .= ' rel="bookmark">';
 		$markup .= esc_html( $read_more_args['text'] );
 		$markup .= '<span class="screen-reader-text">' . get_the_title( $post_id ) . '</span>';
