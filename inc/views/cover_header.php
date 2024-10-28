@@ -33,10 +33,6 @@ class Cover_Header extends Base_View {
 			return;
 		}
 
-		if ( ! class_exists( '\Neve_Pro\Admin\Custom_Layouts_Cpt' ) && get_post_type() !== $context ) {
-			return;
-		}
-
 		$header_layout = get_theme_mod( 'neve_' . $context . '_header_layout', 'normal' );
 		if ( $header_layout !== 'cover' ) {
 			return;
