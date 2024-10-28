@@ -89,7 +89,6 @@ test.describe('Single Post Check', function () {
 			baseURL,
 		});
 		const HIDDEN = [
-			'.entry-header',
 			'.nv-thumb-wrap',
 			'.entry-content',
 			'.nv-tags-list',

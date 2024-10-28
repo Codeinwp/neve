@@ -232,6 +232,11 @@ class Post_Layout extends Base_View {
 			}
 		}
 
+		list( $context ) = $this->get_cpt_context();
+		if ( ! Layout_Single_Post::is_cover_layout() && get_post_type() !== $context ) {
+			$content_order = array_unique( array_merge( array( 'title-meta' ), $content_order ) );
+		}
+
 		return apply_filters( 'neve_layout_single_post_elements_order', $content_order );
 	}
 }
