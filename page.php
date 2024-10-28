@@ -26,7 +26,7 @@ $context = class_exists( 'WooCommerce', false ) && ( is_cart() || is_checkout() 
 			/**
 			 * Executes the rendering function for the page header.
 			 *
-			 * @param string $context The displaying location context.
+			 * @param string $context the displaying location context.
 			 *
 			 * @since 1.0.7
 			 */
