@@ -8,5 +8,5 @@ curl -O https://raw.githubusercontent.com/WPTT/theme-unit-test/master/themeunitt
 wp --allow-root import ./themeunittestdata.wordpress.xml --authors=skip  --skip=image_resize
 
 #Setup content for woo
-curl -O https://raw.githubusercontent.com/woocommerce/woocommerce/master/sample-data/sample_products.xml
+curl -O https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/sample-data/sample_products.xml
 wp --allow-root import ./sample_products.xml --authors=skip --skip=image_resize

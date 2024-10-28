@@ -141,15 +141,15 @@ return array(
 	'neve_blog_archive_sidebar_layout'             => 'full-width',
 	'neve_blog_archive_content_width'              => 100,
 	'neve_body_font_family'                        => '',
-	'neve_headings_font_family'                    => '',
+	'neve_headings_font_family'                    => 'Libre Baskerville',
 	'neve_button_appearance'                       => 
 	array(
 		'borderRadius'          => 
 		array(
-			'top'    => '4',
-			'right'  => '4',
-			'bottom' => '4',
-			'left'   => '4',
+			'top'    => '100',
+			'right'  => '100',
+			'bottom' => '100',
+			'left'   => '100',
 		),
 		'borderWidth'           => 
 		array(
@@ -192,9 +192,9 @@ return array(
 		),
 		'lineHeight'    => 
 		array(
-			'mobile'  => '1.2',
-			'tablet'  => '1.3',
-			'desktop' => '1.3',
+			'mobile'  => '1.4',
+			'tablet'  => '1.6',
+			'desktop' => '1.6',
 			'suffix'  => 
 			array(
 				'mobile'  => 'em',
@@ -204,14 +204,14 @@ return array(
 		),
 		'fontSize'      => 
 		array(
-			'mobile'  => '39',
-			'tablet'  => '55',
-			'desktop' => 70,
+			'mobile'  => '1.5',
+			'tablet'  => '3.2',
+			'desktop' => '3.2',
 			'suffix'  => 
 			array(
-				'mobile'  => 'px',
-				'tablet'  => 'px',
-				'desktop' => 'px',
+				'mobile'  => 'em',
+				'tablet'  => 'em',
+				'desktop' => 'em',
 			),
 		),
 		'flag'          => true,
@@ -221,7 +221,7 @@ return array(
 	'neve_text_color'                              => '#2b2b2b',
 	'neve_h2_typeface_general'                     => 
 	array(
-		'fontWeight'    => '600',
+		'fontWeight'    => '500',
 		'textTransform' => 'none',
 		'letterSpacing' => 
 		array(
@@ -232,8 +232,8 @@ return array(
 		'lineHeight'    => 
 		array(
 			'mobile'  => '1.3',
-			'tablet'  => '1.3',
-			'desktop' => '1.3',
+			'tablet'  => '1.4',
+			'desktop' => '1.4',
 			'suffix'  => 
 			array(
 				'mobile'  => 'em',
@@ -243,21 +243,21 @@ return array(
 		),
 		'fontSize'      => 
 		array(
-			'mobile'  => '28',
-			'tablet'  => '34',
-			'desktop' => '46',
+			'mobile'  => '1.3',
+			'tablet'  => '2.3',
+			'desktop' => '2.3',
 			'suffix'  => 
 			array(
-				'mobile'  => 'px',
-				'tablet'  => 'px',
-				'desktop' => 'px',
+				'mobile'  => 'em',
+				'tablet'  => 'em',
+				'desktop' => 'em',
 			),
 		),
 		'flag'          => false,
 	),
 	'neve_h3_typeface_general'                     => 
 	array(
-		'fontWeight'    => '600',
+		'fontWeight'    => '500',
 		'textTransform' => 'none',
 		'letterSpacing' => 
 		array(
@@ -370,17 +370,17 @@ return array(
 	array(
 		'borderRadius'          => 
 		array(
-			'top'    => '4',
-			'right'  => '4',
-			'bottom' => '4',
-			'left'   => '4',
+			'top'    => '100',
+			'right'  => '100',
+			'bottom' => '100',
+			'left'   => '100',
 		),
 		'borderWidth'           => 
 		array(
-			'top'    => '2',
-			'right'  => '2',
-			'bottom' => '2',
-			'left'   => '2',
+			'top'    => '0',
+			'right'  => '0',
+			'bottom' => '0',
+			'left'   => '0',
 		),
 		'useShadow'             => false,
 		'shadowColor'           => 'rgba(0,0,0,0.5)',
@@ -409,24 +409,24 @@ return array(
 	array(
 		'mobile'       => 
 		array(
-			'top'    => '12',
-			'right'  => '24',
-			'bottom' => '12',
-			'left'   => '24',
+			'top'    => '14',
+			'right'  => '40',
+			'bottom' => '14',
+			'left'   => '40',
 		),
 		'tablet'       => 
 		array(
-			'top'    => '12',
-			'right'  => '24',
-			'bottom' => '12',
-			'left'   => '24',
+			'top'    => '14',
+			'right'  => '40',
+			'bottom' => '14',
+			'left'   => '40',
 		),
 		'desktop'      => 
 		array(
-			'top'    => '12',
-			'right'  => '24',
-			'bottom' => '12',
-			'left'   => '24',
+			'top'    => '14',
+			'right'  => '40',
+			'bottom' => '14',
+			'left'   => '40',
 		),
 		'mobile-unit'  => 'px',
 		'tablet-unit'  => 'px',
@@ -436,24 +436,24 @@ return array(
 	array(
 		'mobile'       => 
 		array(
-			'top'    => '12',
-			'right'  => '24',
-			'bottom' => '12',
-			'left'   => '24',
+			'top'    => '14',
+			'right'  => '40',
+			'bottom' => '14',
+			'left'   => '40',
 		),
 		'tablet'       => 
 		array(
-			'top'    => '12',
-			'right'  => '24',
-			'bottom' => '12',
-			'left'   => '24',
+			'top'    => '14',
+			'right'  => '40',
+			'bottom' => '14',
+			'left'   => '40',
 		),
 		'desktop'      => 
 		array(
-			'top'    => '12',
-			'right'  => '24',
-			'bottom' => '12',
-			'left'   => '24',
+			'top'    => '14',
+			'right'  => '40',
+			'bottom' => '14',
+			'left'   => '40',
 		),
 		'mobile-unit'  => 'px',
 		'tablet-unit'  => 'px',
@@ -579,15 +579,15 @@ return array(
 				'allowDeletion' => false,
 				'colors'        => 
 				array(
-					'nv-primary-accent'   => '#0065cb',
-					'nv-secondary-accent' => '#0057ad',
+					'nv-primary-accent'   => '#fc5f45',
+					'nv-secondary-accent' => '#38c695',
 					'nv-site-bg'          => '#ffffff',
-					'nv-light-bg'         => '#f8f8f8',
-					'nv-dark-bg'          => '#0d1821',
-					'nv-text-color'       => '#2c2c2c',
+					'nv-light-bg'         => '#f4f4f4',
+					'nv-dark-bg'          => '#14171c',
+					'nv-text-color'       => '#393939',
 					'nv-text-dark-bg'     => '#ffffff',
-					'nv-c-1'              => '#77b978',
-					'nv-c-2'              => '#f37262',
+					'nv-c-1'              => '#b27cf5',
+					'nv-c-2'              => '#feb960',
 				),
 			),
 			'darkMode' => 
@@ -596,8 +596,8 @@ return array(
 				'allowDeletion' => false,
 				'colors'        => 
 				array(
-					'nv-primary-accent'   => '#0065cb',
-					'nv-secondary-accent' => '#0057ad',
+					'nv-primary-accent'   => '#fc5f45',
+					'nv-secondary-accent' => '#38c695',
 					'nv-site-bg'          => '#0d1821',
 					'nv-light-bg'         => '#14232f',
 					'nv-dark-bg'          => '#070e13',
@@ -672,7 +672,7 @@ return array(
 			'tablet'  => 1.6,
 			'desktop' => 1.6,
 		),
-		'textTransform' => 'capitalize',
+		'textTransform' => 'uppercase',
 	),
 	'neve_secondary_button_typeface'               => 
 	array(
@@ -772,7 +772,7 @@ return array(
 		'tablet'  => 'center',
 		'mobile'  => 'center',
 	),
-	'hfg_footer_layout_v2'                         => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[],"c-left":[{"id":"footer_copyright"},{"id":"footer-menu"}],"center":[],"c-right":[],"right":[]}}}',
+	'hfg_footer_layout_v2'                         => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[],"c-left":[{"id":"footer_copyright"}],"center":[],"c-right":[],"right":[]}}}',
 	'neve_form_fields_spacing'                     => 4,
 	'neve_form_fields_background_color'            => 'var(--nv-site-bg)',
 	'footer_copyright_component_typeface'          => 
