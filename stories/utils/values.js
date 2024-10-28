@@ -219,7 +219,7 @@ export const FIELDS = {
 			reddit: 'Reddit',
 			whatsapp: 'WhatsApp',
 			sms: 'SMS',
-			vk: 'VKontakte'
+			vk: 'VKontakte',
 			messenger: 'Messenger'
 		}
 	},
