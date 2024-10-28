@@ -128,10 +128,7 @@ trait Single_Post {
 		 */
 		$allowed_context = apply_filters( 'neve_allowed_custom_post_types', $allowed, 10, 1 );
 		$context         = get_post_type();
-		if ( ! has_filter( 'neve_context_filter' ) && ! in_array( get_post_type(), $allowed_context, true ) ) {
-			$context = 'post';
-		}
-		$context = apply_filters( 'neve_context_filter', $context, 10, 1 );
+		$context         = apply_filters( 'neve_context_filter', $context, 10, 1 );
 
 		return [ $context, $allowed_context ];
 	}
