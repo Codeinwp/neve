@@ -7,7 +7,7 @@ ZIP_URL=${4}
 
 if [ ! -n "$ZIP_URL" ]
 then
-	yarn install --frozen-lockfile
+	yarn install
 	# Install dependencies.
 	composer install --no-dev
 	yarn run build
