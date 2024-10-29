@@ -36,6 +36,7 @@ class Template_Parts extends Base_View {
 	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_featured_post_style' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_vertical_spacing_style' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_lightbox_style' ) );
 		add_action( 'neve_do_featured_post', array( $this, 'render_featured_post' ) );
 		add_action( 'neve_blog_post_template_part_content', array( $this, 'render_post' ) );
 		add_filter( 'excerpt_more', array( $this, 'link_excerpt_more' ) );
@@ -463,8 +464,15 @@ class Template_Parts extends Base_View {
 			)
 		);
 
-		$markup  = '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '"';
-		$markup .= ' class="' . esc_attr( $read_more_args['classes'] ) . '"';
+		// Return $new_moretag if 'text' key is not set in $read_more_args.
+		if ( ! isset( $read_more_args['text'] ) ) {
+			return $new_moretag;
+		}
+
+		$markup = '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '"';
+		if ( ! empty( $read_more_args['classes'] ) ) {
+			$markup .= ' class="' . esc_attr( $read_more_args['classes'] ) . '"';
+		}
 		$markup .= ' rel="bookmark">';
 		$markup .= esc_html( $read_more_args['text'] );
 		$markup .= '<span class="screen-reader-text">' . get_the_title( $post_id ) . '</span>';
@@ -551,5 +559,34 @@ class Template_Parts extends Base_View {
 		);
 
 		return json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_ordered_components ) ), $associative );
+	}
+
+	/**
+	 * Add inline lightbox style if the post content includes an image block with lightbox.
+	 */
+	public function add_lightbox_style() {
+		global $post;
+		if ( ! has_block( 'core/image', $post ) ) {
+			return;
+		}
+		$blocks = parse_blocks( $post->post_content );
+		$blocks = array_filter(
+			$blocks,
+			function( $block ) {
+				return 'core/image' === $block['blockName'] && ! empty( $block['attrs']['lightbox']['enabled'] );
+			}
+		);
+		if ( empty( $blocks ) ) {
+			return;
+		}
+		$inline_style = '
+			.wp-lightbox-overlay figure img {
+				height: var(--wp--lightbox-image-height);
+				min-height: var(--wp--lightbox-image-height);
+				min-width: var(--wp--lightbox-image-width);
+				width: var(--wp--lightbox-image-width);
+			}
+		';
+		wp_add_inline_style( 'neve-style', Dynamic_Css::minify_css( $inline_style ) );
 	}
 }
