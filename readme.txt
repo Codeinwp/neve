@@ -19,6 +19,19 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.8.12](https://github.com/Codeinwp/neve/compare/v3.8.11...v3.8.12) (2024-10-29)
+
+- Added a new starter site
+- Fixed PHP warning in template_parts.php
+- Fixed compatibility issue with the TranslatePress plugin
+- Fixed the plugin install issue on a multisite installation
+- Fixed lightbox issue with alignment control
+- Added support for a new custom layout magic tag current_single_content [PRO]
+- Added support for Messenger social media sharing [PRO]
+
+
+
+
 ##### [Version 3.8.11](https://github.com/Codeinwp/neve/compare/v3.8.10...v3.8.11) (2024-08-14)
 
 - Fixed Breadcrumb NavXT integration
