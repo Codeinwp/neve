@@ -132,7 +132,7 @@
 
 		li:not([class*="block"]) > .wrap > a {
 			padding: $spacing-sm 0;
-			white-space: unset;
+			white-space: normal;
 		}
 
 		.caret svg {
