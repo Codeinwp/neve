@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 28/10/24
+ * Updated on 11/11/24
  *
  * @package neve
  */
@@ -402,6 +402,7 @@ return array(
 	'Dorsa' => array( '400',),
 	'Dosis' => array( '200', '300', '400', '500', '600', '700', '800',),
 	'DotGothic16' => array( '400',),
+	'Doto' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Dr Sugiyama' => array( '400',),
 	'Droid Sans' => array(),
 	'Droid Sans Mono' => array(),
@@ -418,6 +419,7 @@ return array(
 	'Edu AU VIC WA NT Dots' => array( '400', '500', '600', '700',),
 	'Edu AU VIC WA NT Guides' => array( '400', '500', '600', '700',),
 	'Edu AU VIC WA NT Hand' => array( '400', '500', '600', '700',),
+	'Edu AU VIC WA NT Pre' => array( '400', '500', '600', '700',),
 	'Edu NSW ACT Foundation' => array( '400', '500', '600', '700',),
 	'Edu QLD Beginner' => array( '400', '500', '600', '700',),
 	'Edu SA Beginner' => array( '400', '500', '600', '700',),
@@ -449,6 +451,7 @@ return array(
 	'Exo 2' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Expletus Sans' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Explora' => array( '400',),
+	'Faculty Glyphic' => array( '400',),
 	'Fahkwang' => array( '200', '300', '400', '500', '600', '700', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic',),
 	'Familjen Grotesk' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Fanwood Text' => array( '400', '400italic',),
@@ -500,6 +503,8 @@ return array(
 	'Fruktur' => array( '400', '400italic',),
 	'Fugaz One' => array( '400',),
 	'Fuggles' => array( '400',),
+	'Funnel Display' => array( '300', '400', '500', '600', '700', '800',),
+	'Funnel Sans' => array( '300', '400', '500', '600', '700', '800', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic',),
 	'Fustat' => array( '200', '300', '400', '500', '600', '700', '800',),
 	'Fuzzy Bubbles' => array( '400', '700',),
 	'GFS Didot' => array( '400',),
@@ -517,6 +522,8 @@ return array(
 	'Gantari' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Gasoek One' => array( '400',),
 	'Gayathri' => array( '100', '400', '700',),
+	'Geist' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
+	'Geist Mono' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Gelasio' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Gemunu Libre' => array( '200', '300', '400', '500', '600', '700', '800',),
 	'Genos' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
@@ -601,7 +608,9 @@ return array(
 	'Homemade Apple' => array( '400',),
 	'Homenaje' => array( '400',),
 	'Honk' => array( '400',),
+	'Host Grotesk' => array( '300', '400', '500', '600', '700', '800', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic',),
 	'Hubballi' => array( '400',),
+	'Hubot Sans' => array( '200', '300', '400', '500', '600', '700', '800', '900', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Hurricane' => array( '400',),
 	'IBM Plex Mono' => array( '100', '200', '300', '400', '500', '600', '700', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic',),
 	'IBM Plex Sans' => array( '100', '200', '300', '400', '500', '600', '700', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic',),
@@ -906,6 +915,7 @@ return array(
 	'Moirai One' => array( '400',),
 	'Molengo' => array( '400',),
 	'Molle' => array( '400italic',),
+	'Mona Sans' => array( '200', '300', '400', '500', '600', '700', '800', '900', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Monda' => array( '400', '500', '600', '700',),
 	'Monofett' => array( '400',),
 	'Monomaniac One' => array( '400',),
@@ -1562,6 +1572,7 @@ return array(
 	'Sonsie One' => array( '400',),
 	'Sora' => array( '100', '200', '300', '400', '500', '600', '700', '800',),
 	'Sorts Mill Goudy' => array( '400', '400italic',),
+	'Sour Gummy' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Source Code Pro' => array( '200', '300', '400', '500', '600', '700', '800', '900', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Source Sans 3' => array( '200', '300', '400', '500', '600', '700', '800', '900', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Source Sans Pro' => array(),
