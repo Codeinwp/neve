@@ -1,6 +1,10 @@
 /* global neveDash */
 
 const Deal = () => {
+	if (1 < neveDash?.license?.tier) {
+		return <></>;
+	}
+
 	if (
 		!Boolean(window.neveDash?.deal?.active) ||
 		!Boolean(neveDash?.deal?.bannerUrl) ||
