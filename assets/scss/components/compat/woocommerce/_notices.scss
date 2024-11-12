@@ -116,7 +116,7 @@ $blockNotices: (
 
 		a:is(.wc-forward, .showcoupon) {
 			background: var(--primarybtnbg) !important;
-			border: var(--primarybtnborderwidth, 0) solid currentColor !important;
+			border: var(--primarybtnborderwidth, 0) solid currentcolor !important;
 			border-radius: var(--primarybtnborderradius, 3px);
 			color: var(--primarybtncolor) !important;
 			padding: var(--primarybtnpadding, 13px 15px) !important;

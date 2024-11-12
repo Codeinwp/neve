@@ -1,4 +1,6 @@
 // === Separators === //
+@import "../main/separators";
+
 .wp-block {
 
 	.wp-block-separator {
@@ -13,8 +15,6 @@
 	border-bottom: 0;
 	opacity: 1;
 }
-
-@import "../main/separators";
 
 // === Buttons === //
 .wp-block-button {
