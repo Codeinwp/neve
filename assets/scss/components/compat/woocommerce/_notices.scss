@@ -25,10 +25,6 @@
 	--primarybtnhoverbg: transparent;
 	--primarybtnbg: transparent;
 
-	&::before {
-		display: none;
-	}
-
 	> a {
 
 		@extend %nv-button-primary-no-colors;
@@ -136,7 +132,6 @@ $blockNotices: (
 }
 
 .woocommerce .woocommerce-error {
-	padding-left: 3.5em;
 
 	li {
 		width: 100%;
