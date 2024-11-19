@@ -81,7 +81,6 @@ class Main {
 	 */
 	public function init() {
 
-		$this->setup_config();
 		add_action( 'init', [ $this, 'setup_config' ] );
 		add_action( 'admin_menu', [ $this, 'register' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
