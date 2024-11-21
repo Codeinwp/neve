@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.3.37",
+            "version": "3.3.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "73e9010fb4e30ad8835f00a0df802733f98c4094"
+                "reference": "f98e239211697760333913fc729f9403ce2bd1e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/73e9010fb4e30ad8835f00a0df802733f98c4094",
-                "reference": "73e9010fb4e30ad8835f00a0df802733f98c4094",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/f98e239211697760333913fc729f9403ce2bd1e2",
+                "reference": "f98e239211697760333913fc729f9403ce2bd1e2",
                 "shasum": ""
             },
             "require-dev": {
@@ -43,9 +43,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeinwp/themeisle-sdk/issues",
-                "source": "https://github.com/Codeinwp/themeisle-sdk/tree/v3.3.37"
+                "source": "https://github.com/Codeinwp/themeisle-sdk/tree/v3.3.39"
             },
-            "time": "2024-11-06T14:44:53+00:00"
+            "time": "2024-11-19T11:46:23+00:00"
         },
         {
             "name": "wptt/webfont-loader",
