@@ -1,3 +1,8 @@
+##### [Version 3.8.13](https://github.com/Codeinwp/neve/compare/v3.8.12...v3.8.13) (2024-11-12)
+
+- Fixed submenu text wrapping issue on mobile
+- Updated Google Fonts and dependencies
+
 ##### [Version 3.8.12](https://github.com/Codeinwp/neve/compare/v3.8.11...v3.8.12) (2024-10-29)
 
 - Added a new starter site
