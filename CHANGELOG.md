@@ -1,3 +1,8 @@
+##### [Version 3.8.14](https://github.com/Codeinwp/neve/compare/v3.8.13...v3.8.14) (2024-11-21)
+
+- Fixed compatibility issue with WordPress 6.7 that was throwing warnings on translations
+- Fixed WooCoomerce icon display issue on notices
+
 ##### [Version 3.8.13](https://github.com/Codeinwp/neve/compare/v3.8.12...v3.8.13) (2024-11-12)
 
 - Fixed submenu text wrapping issue on mobile
