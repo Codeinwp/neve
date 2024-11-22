@@ -33,12 +33,7 @@ test.describe('Custom Global Color Control', () => {
 		);
 		await clearWelcome(page);
 
-		const iframeElement = await page.waitForSelector('iframe');
-		const frame = await iframeElement.contentFrame();
-		if (frame) {
-			await frame.waitForSelector('.block-editor-rich-text__editable');
-			await frame.locator('.block-editor-rich-text__editable').first().click();
-		}
+		await page.locator('.block-editor-rich-text__editable').first().click();
 		// use Background color control to open the color picker, available since WP 6.1
 		await page.getByRole('button', { name: 'Background' }).click();
 		await page.getByRole('option', { name: 'Color: Custom 1' }).click();

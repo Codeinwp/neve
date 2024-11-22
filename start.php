@@ -53,14 +53,7 @@ function neve_run() {
 	}
 
 	$autoloader->register();
-}
 
-neve_run();
-
-/**
- * Load core modules.
- */
-function neve_core_loader() {
 	if ( class_exists( '\\Neve\\Core\\Core_Loader' ) ) {
 		new \Neve\Core\Core_Loader();
 	}
@@ -78,4 +71,5 @@ function neve_core_loader() {
 		\Neve_Pro\Core\Loader::instance();
 	}
 }
-add_action( 'after_setup_theme', 'neve_core_loader' );
+
+neve_run();
