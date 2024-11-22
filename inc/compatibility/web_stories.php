@@ -37,7 +37,7 @@ class Web_Stories {
 	 * Load hooks.
 	 */
 	private function load_hooks() {
-		add_action( 'init', array( $this, 'setup' ) );
+		$this->setup();
 		add_action( 'wp_body_open', array( $this, 'embed' ) );
 	}
 
