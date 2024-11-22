@@ -36,14 +36,7 @@ class Layout_Sidebar extends Base_Customizer {
 	 */
 	public function __construct() {
 
-		$this->advanced_controls = [
-			'blog_archive' => __( 'Blog / Archive', 'neve' ),
-			'single_post'  => __( 'Single Post', 'neve' ),
-		];
 
-		$this->add_woocommerce_controls();
-
-		$this->advanced_controls['other_pages'] = __( 'Others', 'neve' );
 	}
 
 	/**
@@ -190,6 +183,17 @@ class Layout_Sidebar extends Base_Customizer {
 		return $options;
 	}
 
+	public function get_advanced_controls() {
+		if ( empty( $this->advanced_controls ) ) {
+			$this->advanced_controls = [
+				'blog_archive' => __( 'Blog / Archive', 'neve' ),
+				'single_post'  => __( 'Single Post', 'neve' ),
+			];
+			$this->add_woocommerce_controls();
+			$this->advanced_controls['other_pages'] = __( 'Others', 'neve' );
+		}
+		return $this->advanced_controls;
+	}
 	/**
 	 * Advanced controls.
 	 */
@@ -203,8 +207,8 @@ class Layout_Sidebar extends Base_Customizer {
 		 *
 		 * @since 3.1.0
 		 */
-		$this->advanced_controls = apply_filters( 'neve_sidebar_controls_filter', $this->advanced_controls );
-		foreach ( $this->advanced_controls as $id => $heading_label ) {
+		$advanced_controls = apply_filters( 'neve_sidebar_controls_filter', $this->get_advanced_controls() );
+		foreach ( $advanced_controls as $id => $heading_label ) {
 			$heading_id = 'neve_' . $id . '_heading';
 			$layout_id  = 'neve_' . $id . '_sidebar_layout';
 			$width_id   = 'neve_' . $id . '_content_width';
