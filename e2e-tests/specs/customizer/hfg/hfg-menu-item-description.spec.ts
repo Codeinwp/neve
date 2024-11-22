@@ -28,36 +28,16 @@ test.describe('Menu item description', function () {
 		await page.getByRole('button', { name: 'Add New Category' }).click();
 		await page.goto('wp-admin/nav-menus.php');
 
-		await page.waitForSelector('.menu-name');
-		await page.locator('.menu-name').fill('My New Menu');
-		await page.getByLabel('Primary Menu').check();
-		await page.locator('#save_menu_footer ').click();
-
-		await page.locator('#add-category h3').click();
+		await page
+			.getByRole('heading', {
+				name: 'Categories Press return or enter to open this section ',
+			})
+			.click();
 		await page
 			.locator('#taxonomy-category-tabs')
 			.getByRole('link', { name: 'View All' })
 			.click();
 		await page.getByLabel('ADescriptionCat').check();
-
-		await Promise.all([
-			page.waitForResponse(
-				(res) =>
-					res.url().includes('wp-admin/admin-ajax.php') &&
-					res.status() === 200
-			),
-			page.getByRole('button', { name: 'Add to Menu' }).click(),
-		]);
-
-		await page.keyboard.press('End');
-		await page.waitForTimeout(500);
-
-		await page.locator('#add-post-type-page h3').click();
-		await page
-			.locator('#posttype-page-tabs')
-			.getByRole('link', { name: 'View All' })
-			.click();
-		await page.getByLabel('Sample Page').last().check();
 
 		await Promise.all([
 			page.waitForResponse(
