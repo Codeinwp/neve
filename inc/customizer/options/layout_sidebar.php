@@ -182,7 +182,11 @@ class Layout_Sidebar extends Base_Customizer {
 
 		return $options;
 	}
-
+	/**
+	 * Retrieve the advanced controls for the sidebar layout.
+	 *
+	 * @return array The array of advanced controls.
+	 */
 	public function get_advanced_controls() {
 		if ( empty( $this->advanced_controls ) ) {
 			$this->advanced_controls = [

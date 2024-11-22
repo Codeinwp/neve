@@ -35,6 +35,7 @@ test.describe('Custom Global Color Control', () => {
 
 		await page.locator('.block-editor-rich-text__editable').first().click();
 		// use Background color control to open the color picker, available since WP 6.1
+		await page.getByRole('tab', { name: 'Style' }).click();
 		await page.getByRole('button', { name: 'Background' }).click();
 		await page.getByRole('option', { name: 'Color: Custom 1' }).click();
 		await page
