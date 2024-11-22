@@ -18,7 +18,7 @@ test.describe('Single Post', () => {
 				continue;
 			}
 			await scrollTo(page, position.y);
-			await page.waitForTimeout(500);
+			await page.waitForTimeout(2000);
 			await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.01 });
 		}
 	});

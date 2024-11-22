@@ -24,7 +24,7 @@ test.describe('Starter sites check', () => {
 					await page.goto(url + '?optml_off=true&onboarding=true');
 					await page.keyboard.press('End');
 					await page.evaluate(() => window.scrollTo(0, 0));
-					await page.waitForTimeout(500);
+					await page.waitForTimeout(2000);
 					await expect(page).toHaveScreenshot({
 						maxDiffPixelRatio: 0.18,
 						fullPage: true,
