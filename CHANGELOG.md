@@ -1,3 +1,7 @@
+##### [Version 3.8.15](https://github.com/Codeinwp/neve/compare/v3.8.14...v3.8.15) (2024-11-22)
+
+ - Fixed issues from the latest release
+
 ##### [Version 3.8.14](https://github.com/Codeinwp/neve/compare/v3.8.13...v3.8.14) (2024-11-21)
 
 - Fixed compatibility issue with WordPress 6.7 that was throwing warnings on translations
