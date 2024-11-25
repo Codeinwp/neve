@@ -14,3 +14,6 @@
 #customize-theme-controls .customize-pane-child.accordion-section-content {
 	height: 100%;
 }
+#customize-theme-controls .accordion-section-title button.accordion-trigger {
+    max-height: fit-content;
+}
