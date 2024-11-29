@@ -167,10 +167,7 @@ abstract class Abstract_Builder implements Builder {
 	 * @access  protected
 	 * @var array $devices
 	 */
-	protected $devices = [
-		'desktop' => 'Desktop',
-		'mobile'  => 'Mobile',
-	];
+	protected $devices = [];
 
 	/**
 	 * Default colors for rows.
@@ -243,6 +240,11 @@ abstract class Abstract_Builder implements Builder {
 
 		add_filter( 'hfg_header_row_classes', [ $this, 'add_header_row_utility_classes' ], 10, 2 );
 		add_filter( 'hfg_page_header_row_classes', [ $this, 'add_header_row_utility_classes' ], 10, 2 );
+
+		$this->devices = [
+			'desktop' => __( 'Desktop', 'neve' ),
+			'mobile'  => __( 'Mobile', 'neve' ),
+		];
 	}
 
 	/**
