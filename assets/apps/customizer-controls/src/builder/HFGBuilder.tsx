@@ -73,9 +73,8 @@ const HFGBuilder: React.FC<Props> = ({
 			});
 	};
 
-	const [sidebarItems, setSidebarItems] = useState<ItemInterface[]>(
-		getSidebarItems()
-	);
+	const [sidebarItems, setSidebarItems] =
+		useState<ItemInterface[]>(getSidebarItems());
 
 	const updateSidebarItems = () => {
 		setSidebarItems([...getSidebarItems()]);

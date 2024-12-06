@@ -176,9 +176,9 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 	/**
 	 * Handle input field change.
 	 *
-	 * @param {Event} event
-	 * @param {Event.target} event.target
-	 * @param {string} event.target.value
+	 * @param {Event}        event              - The event.
+	 * @param {Event.target} event.target       - The input element.
+	 * @param {string}       event.target.value - The input value.
 	 * @return {void}
 	 */
 	const onInputChange = (event: { target: { value: string } }) => {

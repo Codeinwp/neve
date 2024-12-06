@@ -58,25 +58,25 @@ jobs:
       - name: Setup node 14
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 18.x
       - uses: actions/cache@v1
         with:
           path: ~/.cache/Cypress
           key: cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json') }}
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Get npm cache directory path
+        id: npm-cache-dir-path
+        run: echo "::set-output name=dir::$(npm config get cache)"
       - uses: actions/cache@v2
-        id: yarn-cache
+        id: npm-cache
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.npm-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-npm-
       - name: Install deps
         run: |
-          yarn install --frozen-lockfile
-          yarn run build
+          npm ci
+          npm run build
       - name: Run Visual Diff
         env:
           PERCY_PARALLEL_TOTAL: 4
@@ -85,4 +85,4 @@ jobs:
           PERCY_PULL_REQUEST: ${{ needs.trigger_visual.outputs.pr_number }}
           PERCY_PARALLEL_NONCE: "${{ github.run_id }}-${{ needs.trigger_visual.outputs.commit_sha }}"
         run: |
-          cd e2e-tests && yarn run visual:test --  --browser chrome --record --parallel --group visual-diff
+          cd e2e-tests && npm run visual:test --  --browser chrome --record --parallel --group visual-diff
