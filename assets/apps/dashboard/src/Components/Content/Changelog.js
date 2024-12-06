@@ -21,7 +21,7 @@ const Changelog = () => {
 							setShowForPro(false);
 						}}
 					>
-						Neve
+						{__('Neve', 'neve')}
 					</a>
 					<a
 						href="#show-for-pro"
@@ -30,7 +30,7 @@ const Changelog = () => {
 							setShowForPro(true);
 						}}
 					>
-						Neve Pro
+						{__('Neve Pro', 'neve')}
 					</a>
 				</div>
 			)}

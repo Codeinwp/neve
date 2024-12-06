@@ -1,6 +1,7 @@
 import React from 'react';
 import { Control } from './SearchComponent';
 import classnames from 'classnames';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Type SearchComponentProps
@@ -84,7 +85,9 @@ const SearchResults: React.FC<SearchResultsProps> = ({
 			{query !== '' && (
 				<ul id="customizer-search-results">
 					{matchResults.map((control) => {
-						if ('' === control.label) return '';
+						if ('' === control.label) {
+							return '';
+						}
 
 						let breadcrumbs = control.panelName;
 						if (breadcrumbs === null) {
@@ -118,8 +121,10 @@ const SearchResults: React.FC<SearchResultsProps> = ({
 								>
 									{getHighlightedText(label, query)}
 									<span className="screen-reader-text">
-										Press return or enter to open this
-										section
+										{__(
+											'Press return or enter to open this section',
+											'neve'
+										)}
 									</span>
 								</h3>
 								<span className="search-setting-path">
