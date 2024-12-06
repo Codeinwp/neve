@@ -13,8 +13,12 @@ namespace Neve\Compatibility;
  * @package Neve\Compatibility
  */
 class Starter_Content {
-	const HOME_SLUG = 'home';
-	const BLOG_SLUG = 'blog';
+	const HOME_SLUG       = 'home';
+	const BLOG_SLUG       = 'blog';
+	const ABOUT_SLUG      = 'about';
+	const CONTACT         = 'contact';
+	const PORTOFOLIO_SLUG = 'portofolio';
+	const PROJECT_DETAILS = 'project-details';
 
 
 	/**
@@ -105,15 +109,58 @@ class Starter_Content {
 	public function get() {
 
 		$nav_items = [
-			'home'      => [
+			'home'                 => [
 				'type'      => 'post_type',
 				'object'    => 'page',
 				'object_id' => '{{' . self::HOME_SLUG . '}}',
 			],
-			'page_blog' => [
+			'page_about'           => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::ABOUT_SLUG . '}}',
+			],
+			'page_portofolio'      => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::PORTOFOLIO_SLUG . '}}',
+			],
+			'page_project_details' => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::PROJECT_DETAILS . '}}',
+			],
+			'page_blog'            => [
 				'type'      => 'post_type',
 				'object'    => 'page',
 				'object_id' => '{{' . self::BLOG_SLUG . '}}',
+			],
+			'page_contact'         => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::CONTACT . '}}',
+			],
+		];
+
+		$footer_nav_items = [
+			'home'         => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::HOME_SLUG . '}}',
+			],
+			'page_blog'    => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::BLOG_SLUG . '}}',
+			],
+			'page_about'   => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::ABOUT_SLUG . '}}',
+			],
+			'page_contact' => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::CONTACT . '}}',
 			],
 		];
 
@@ -123,12 +170,15 @@ class Starter_Content {
 					'primary' => [
 						'items' => $nav_items,
 					],
+					'footer'  => [
+						'items' => $footer_nav_items,
+					],
 				],
 			'options'     => [
 				'page_on_front'  => '{{' . self::HOME_SLUG . '}}',
 				'page_for_posts' => '{{' . self::BLOG_SLUG . '}}',
 				'show_on_front'  => 'page',
-				'blogname'       => 'OnePage',
+				'blogname'       => 'Marketing Agency',
 			],
 			'theme_mods'  => require __DIR__ . '/starter-content/theme-mods.php',
 			'attachments' => array(
@@ -136,12 +186,16 @@ class Starter_Content {
 					'post_title'   => 'Featured Logo',
 					'post_content' => 'Attachment Description',
 					'post_excerpt' => 'Attachment Caption',
-					'file'         => 'assets/img/starter-content/logo.png',
+					'file'         => 'assets/img/starter-content/logo-agency.png',
 				),
 			),
 			'posts'       => [
-				self::HOME_SLUG => require __DIR__ . '/starter-content/home.php',
-				self::BLOG_SLUG => [
+				self::HOME_SLUG       => require __DIR__ . '/starter-content/home.php',
+				self::ABOUT_SLUG      => require __DIR__ . '/starter-content/about.php',
+				self::CONTACT         => require __DIR__ . '/starter-content/contact.php',
+				self::PORTOFOLIO_SLUG => require __DIR__ . '/starter-content/portofolio.php',
+				self::PROJECT_DETAILS => require __DIR__ . '/starter-content/project-details.php',
+				self::BLOG_SLUG       => [
 					'post_name'  => self::BLOG_SLUG,
 					'post_type'  => 'page',
 					'post_title' => _x( 'Blog', 'Theme starter content', 'neve' ),
