@@ -40,3 +40,4 @@ jobs:
         env:
           SVN_PASSWORD: ${{ secrets.SVN_THEMEISLE_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_THEMEISLE_USERNAME }}
+          VERSION: "3.8.16"
