@@ -320,7 +320,6 @@ test.describe('Single Post Check', function () {
 		});
 
 		await page.goto('/template-comments/?test_name=metaOrder');
-		await page.screenshot({ path: 'metaOrder.png' });
 		const metaOrder = ['category', 'date', 'comments', 'author'];
 		await checkElementsOrder(page, '.nv-meta-list', metaOrder);
 
