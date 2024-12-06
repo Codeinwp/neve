@@ -1,8 +1,8 @@
 name: Deploy
 on:
   push:
-    branches:
-      - master
+    tags:
+      - "*"
 jobs:
   deploy:
     name: Deploy to server
@@ -35,9 +35,49 @@ jobs:
           composer install --no-dev --prefer-dist --no-progress --no-suggest
           yarn run build
           yarn run dist
+      - name: Add SSH Key
+        run: |
+          mkdir $HOME/.ssh
+          echo "$SSH_KEY" > "$HOME/.ssh/key"
+          chmod 600 "$HOME/.ssh/key"
+      - name: Deploy to server
+        run: |
+          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/" $SSH_USERNAME@$SSH_HOST:$SSH_PATH
+      - name: Upload Latest Version to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_AWS_KEY_ARTIFACTS }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_AWS_SECRET_ARTIFACTS }}
+          AWS_REGION: 'us-west-1'     # optional: defaults to us-east-1
+          SOURCE_DIR: 'artifact'      # optional: defaults to entire repository
+          DEST_DIR: ${{ secrets.AWS_PRODUCTS_FOLDER }}/$BUILD_NAME/latest
+      - name: Upload Tagged Version to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_AWS_KEY_ARTIFACTS }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_AWS_SECRET_ARTIFACTS }}
+          AWS_REGION: 'us-west-1'     # optional: defaults to us-east-1
+          SOURCE_DIR: 'artifact'      # optional: defaults to entire repository
+          DEST_DIR: ${{ secrets.AWS_PRODUCTS_FOLDER }}/$BUILD_NAME/$BUILD_VERSION
+      - name: Send update to the store
+        env:
+          THEMEISLE_ID: ${{ secrets.THEMEISLE_ID }}
+          THEMEISLE_AUTH: ${{ secrets.THEMEISLE_AUTH }}
+          STORE_URL: ${{ secrets.STORE_URL }}
+        run: |
+          if [ ! -z "$THEMEISLE_ID" ]; then
+              STORE_JSON='{"version": "'$BUILD_VERSION'","id": "'$THEMEISLE_ID'","body": ""}';
+              echo "$STORE_JSON";
+              curl -X POST -H 'Cache-Control: no-cache' -H "Content-Type: application/json" -H "x-themeisle-auth: $THEMEISLE_AUTH"  --data "$STORE_JSON" "$STORE_URL/wp-json/edd-so/v1/update_changelog/" > /dev/null
+          fi
       - name: WordPress Theme Deploy
         uses: Codeinwp/action-wordpress-theme-deploy@primary
         env:
           SVN_PASSWORD: ${{ secrets.SVN_THEMEISLE_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_THEMEISLE_USERNAME }}
-          VERSION: "3.8.16"
