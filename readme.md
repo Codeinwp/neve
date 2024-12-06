@@ -19,6 +19,15 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.8.16](https://github.com/Codeinwp/neve/compare/v3.8.15...v3.8.16) (2024-12-06)
+
+- Added a NEW Online Course starter site [PRO]
+- Fixed issue with background color and text color
+- Fixed the customizer broken layout introduced by the LearnPress plugin
+
+
+
+
 ##### [Version 3.8.15](https://github.com/Codeinwp/neve/compare/v3.8.14...v3.8.15) (2024-11-22)
 
  - Fixed issues from the latest release
@@ -1009,8 +1018,6 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Resources ##
 * Neve Icons based on Font Awesome Icons licensed under CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/).
-
-* Other icons used are from the [Themeisle free icons library](https://themeisle.com/free-icons/), licensed under the GNU [General Public License](https://github.com/Codeinwp/themeisle-icons/blob/master/LICENSE) (GPL).
 
 All images are licensed under CC0.
 
