@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 11/11/24
+ * Updated on 09/12/24
  *
  * @package neve
  */
@@ -416,6 +416,7 @@ return array(
 	'Eater' => array( '400',),
 	'Economica' => array( '400', '700', '400italic', '700italic',),
 	'Eczar' => array( '400', '500', '600', '700', '800',),
+	'Edu AU VIC WA NT Arrows' => array( '400', '500', '600', '700',),
 	'Edu AU VIC WA NT Dots' => array( '400', '500', '600', '700',),
 	'Edu AU VIC WA NT Guides' => array( '400', '500', '600', '700',),
 	'Edu AU VIC WA NT Hand' => array( '400', '500', '600', '700',),
@@ -602,6 +603,7 @@ return array(
 	'Hind' => array( '300', '400', '500', '600', '700',),
 	'Hind Guntur' => array( '300', '400', '500', '600', '700',),
 	'Hind Madurai' => array( '300', '400', '500', '600', '700',),
+	'Hind Mysuru' => array( '300', '400', '500', '600', '700',),
 	'Hind Siliguri' => array( '300', '400', '500', '600', '700',),
 	'Hind Vadodara' => array( '300', '400', '500', '600', '700',),
 	'Holtwood One SC' => array( '400',),
@@ -928,6 +930,7 @@ return array(
 	'Montserrat' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Montserrat Alternates' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Montserrat Subrayada' => array( '400', '700',),
+	'Montserrat Underline' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Moo Lah Lah' => array( '400',),
 	'Mooli' => array( '400',),
 	'Moon Dance' => array( '400',),
@@ -1250,6 +1253,7 @@ return array(
 	'Pangolin' => array( '400',),
 	'Paprika' => array( '400',),
 	'Parisienne' => array( '400',),
+	'Parkinsans' => array( '300', '400', '500', '600', '700', '800',),
 	'Passero One' => array( '400',),
 	'Passion One' => array( '400', '700', '900',),
 	'Passions Conflict' => array( '400',),
@@ -1267,6 +1271,7 @@ return array(
 	'Petemoss' => array( '400',),
 	'Petit Formal Script' => array( '400',),
 	'Petrona' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Phetsarath' => array( '400', '700',),
 	'Philosopher' => array( '400', '700', '400italic', '700italic',),
 	'Phudu' => array( '300', '400', '500', '600', '700', '800', '900',),
 	'Piazzolla' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
@@ -1341,6 +1346,7 @@ return array(
 	'Poltawski Nowy' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Poly' => array( '400', '400italic',),
 	'Pompiere' => array( '400',),
+	'Ponnala' => array( '400',),
 	'Pontano Sans' => array( '300', '400', '500', '600', '700',),
 	'Poor Story' => array( '400',),
 	'Poppins' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
@@ -1759,7 +1765,7 @@ return array(
 	'ZCOOL KuaiLe' => array( '400',),
 	'ZCOOL QingKe HuangYou' => array( '400',),
 	'ZCOOL XiaoWei' => array( '400',),
-	'Zain' => array( '200', '300', '400', '700', '800', '900',),
+	'Zain' => array( '200', '300', '400', '700', '800', '900', '300italic', '400italic',),
 	'Zen Antique' => array( '400',),
 	'Zen Antique Soft' => array( '400',),
 	'Zen Dots' => array( '400',),
