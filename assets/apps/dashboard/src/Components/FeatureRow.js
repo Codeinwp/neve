@@ -97,11 +97,12 @@ const FeatureRow = ({ item }) => {
 												),
 												{
 													external_link: (
-														<ExternalLink
+														<a
 															href={docsLink}
+															target="external noreferrer noopener"
 														>
 															#dumptext
-														</ExternalLink>
+														</a>
 													),
 												}
 											)}
