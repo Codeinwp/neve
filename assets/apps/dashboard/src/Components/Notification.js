@@ -143,9 +143,14 @@ const Notification = ({ data, slug }) => {
 	const wrappedButtonContent = !canInstallPlugins ? (
 		<Tooltip
 			text={sprintf(
-				// translators: %s: Plugin and theme names.
+				// translators: %s: the plugin and theme to update (label: 'Neve and Neve Pro').
 				__('Ask your admin to update %s on your site', 'neve'),
-				'Neve and Neve Pro'
+				sprintf(
+					// translators: %1$s: theme name (Neve), %2$s: plugin name (Neve Pro).
+					__('%1$s and %2$s', 'neve'),
+					__('Neve', 'neve'),
+					__('Neve Pro', 'neve')
+				)
 			)}
 			position="top center"
 			style={{
@@ -173,7 +178,7 @@ const Notification = ({ data, slug }) => {
 						<Dashicon icon="no" />
 						{errorMessage ||
 							__(
-								'An error occured. Please reload the page and try again.',
+								'An error occurred. Please reload the page and try again.',
 								'neve'
 							)}
 					</p>
