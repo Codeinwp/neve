@@ -1,7 +1,7 @@
 import { registerStore } from '@wordpress/data';
 import { render } from '@wordpress/element';
 
-import './style.scss';
+import './style.css';
 import App from './Components/App';
 
 import actions from './store/actions';
