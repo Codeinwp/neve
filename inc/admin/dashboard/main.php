@@ -208,10 +208,8 @@ class Main {
 		// Add Dashboard submenu. Same slug as parent to allow renaming the automatic submenu that is added.
 		add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
 			$theme_page,
-			/* translators: %s - Theme name */
-			sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme['name'] ) ),
-			/* translators: %s - Theme name */
-			sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme['name'] ) ),
+			__( 'Dashboard', 'neve' ),
+			__( 'Dashboard', 'neve' ),
 			$capability,
 			$theme_page,
 			[ $this, 'render' ]
