@@ -19,6 +19,15 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.8.16](https://github.com/Codeinwp/neve/compare/v3.8.15...v3.8.16) (2024-12-06)
+
+- Added a NEW Online Course starter site [PRO]
+- Fixed issue with background color and text color
+- Fixed the customizer broken layout introduced by the LearnPress plugin
+
+
+
+
 ##### [Version 3.8.15](https://github.com/Codeinwp/neve/compare/v3.8.14...v3.8.15) (2024-11-22)
 
  - Fixed issues from the latest release

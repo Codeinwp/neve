@@ -6,7 +6,7 @@ on:
 jobs:
   deploy:
     name: Deploy to server
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
       SSH_KEY: ${{ secrets.SSH_KEY }}
