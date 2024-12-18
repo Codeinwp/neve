@@ -2,8 +2,7 @@ version: '3.3'
 
 services:
   mysql:
-    platform: linux/x86_64
-    image: mysql:5.7
+    image: mariadb:lts
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
