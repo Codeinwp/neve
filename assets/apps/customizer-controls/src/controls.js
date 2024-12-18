@@ -1,6 +1,7 @@
 /* global CustomEvent, NeveReactCustomize, MutationObserver */
 import './public-path.js';
 import { render } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 import { init as initDynamicFields } from './dynamic-fields/index';
 import { ToggleControl } from './toggle/Control';
@@ -297,8 +298,10 @@ const checkHasElementorTemplates = () => {
 					'neve-custom-elementor-shop-template',
 					{
 						type: 'warning',
-						message:
+						message: __(
 							'Some of the settings might not work as expected because you are using a custom shop template made in Elementor.',
+							'neve'
+						),
 					}
 				)
 			);
@@ -312,8 +315,10 @@ const checkHasElementorTemplates = () => {
 					'neve-custom-elementor-product-template',
 					{
 						type: 'warning',
-						message:
+						message: __(
 							'Some of the settings might not work as expected because you are using a custom product template made in Elementor.',
+							'neve'
+						),
 					}
 				)
 			);
