@@ -188,13 +188,13 @@ const FontPairSelector: React.FC<Props> = ({
 										className="neve-font-preview"
 										style={headingStyle}
 									>
-										The big brown fox
+										{__('The big brown fox', 'neve')}
 									</span>
 									<span
 										className="neve-font-preview"
 										style={bodyStyle}
 									>
-										Jumps over the lazy dog
+										{__('Jumps over the lazy dog', 'neve')}
 									</span>
 								</button>
 							</Tooltip>

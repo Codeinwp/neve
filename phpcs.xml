@@ -1,32 +1,33 @@
 <?xml version="1.0"?>
 <ruleset name="Themeisle">
-    <description>Themeisle rules for PHP_CodeSniffer.</description>
+	<description>Themeisle rules for PHP_CodeSniffer.</description>
 
-    <file>.</file>
+	<file>.</file>
 
-    <exclude-pattern>node_modules/*</exclude-pattern>
-    <exclude-pattern>dist/*</exclude-pattern>
-    <exclude-pattern>vendor/*</exclude-pattern>
-    <exclude-pattern>tests/*</exclude-pattern>
-    <exclude-pattern>*.min.js</exclude-pattern>
-    <exclude-pattern>*.min.css</exclude-pattern>
-    <exclude-pattern>*.js</exclude-pattern>
-    <exclude-pattern>*.css</exclude-pattern>
+	<exclude-pattern>node_modules/*</exclude-pattern>
+	<exclude-pattern>dist/*</exclude-pattern>
+	<exclude-pattern>vendor/*</exclude-pattern>
+	<exclude-pattern>tests/*</exclude-pattern>
+	<exclude-pattern>*.min.js</exclude-pattern>
+	<exclude-pattern>*.min.css</exclude-pattern>
+	<exclude-pattern>*.js</exclude-pattern>
+	<exclude-pattern>*.css</exclude-pattern>
 	<exclude-pattern>*.asset.php</exclude-pattern>
 	<exclude-pattern>globals/google-fonts.php</exclude-pattern>
 
-    <rule ref="Themeisle"/>
+	<rule ref="Themeisle" />
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="neve"/>
-				<element value="default"/>
+				<element value="neve" />
 			</property>
 		</properties>
 	</rule>
-    <rule ref="WPThemeReview" >
+	<rule ref="WPThemeReview">
 		<exclude name="WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound"></exclude>
-		<exclude name="WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_pattern"></exclude>
+		<exclude
+			name="WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_pattern"
+		></exclude>
 
 	</rule>
 	<rule ref="Wordpress-Core">
@@ -35,8 +36,8 @@
 	<rule ref="WPThemeReview.Templates.ReservedFileNamePrefix.ReservedTemplatePrefixFound">
 		<exclude-pattern>views/page-header.php</exclude-pattern>
 	</rule>
-	<arg name="extensions" value="php"/>
-	<arg value="sp"/>
+	<arg name="extensions" value="php" />
+	<arg value="sp" />
 	<arg name="basepath" value="./" />
-	<arg name="parallel" value="20"/>
+	<arg name="parallel" value="20" />
 </ruleset>
