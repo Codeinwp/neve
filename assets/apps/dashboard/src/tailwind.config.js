@@ -3,7 +3,9 @@ module.exports = {
 	content: ['assets/apps/dashboard/src/**/*.js'],
 	theme: {
 		extend: {
-			colors: {},
+			zIndex: {
+				max: 9999,
+			},
 		},
 	},
 };

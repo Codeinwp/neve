@@ -1,48 +1,58 @@
 /* global neveDash */
 import InstallActivate from '../Plugin/InstallActivate';
 import { withSelect } from '@wordpress/data';
+import Card from '../../Layout/Card';
+
+const BackgroundPlaceholder = () => (
+	<div
+		className="block absolute inset-0 bg-cover opacity-15 mx-auto max-w-[1300px]"
+		style={{
+			backgroundImage: `url(${neveDash.assets}starter.jpg)`,
+			height: 'calc: (100vh -100px)',
+			backgroundPosition: 'center -250px',
+		}}
+	/>
+);
 
 const StarterSitesUnavailable = ({ templatesPluginData }) => {
-	const { tpcPath, tpcAdminURL, canInstallPlugins, assets } = neveDash;
-	const activateRedirect =
-		tpcAdminURL + (canInstallPlugins ? '&onboarding=yes' : '');
+	const { tpcPath, tpcAdminURL, canInstallPlugins } = neveDash;
 	const currentState = templatesPluginData?.cta || 'install';
+	const activateRedirect = `${tpcAdminURL}${
+		canInstallPlugins ? '&onboarding=yes' : ''
+	}`;
+	const description = {
+		__html:
+			'deactivate' === currentState
+				? neveDash.strings.starterSitesUnavailableUpdate
+				: neveDash.strings.starterSitesUnavailableActive,
+	};
+
+	const redirectToStarterSites = () => {
+		window.location.href = activateRedirect;
+	};
 
 	return (
-		<div className="unavailable-starter-sites">
-			<div
-				className="ss-background"
-				style={{ backgroundImage: `url(${assets}/starter.jpg)` }}
-			/>
-			<div className="content-wrap">
+		<div className="relative h-full">
+			<BackgroundPlaceholder />
+
+			<Card className="z-50 relative flex flex-col justify-center items-center text-center max-w-3xl mx-auto">
+				<p
+					className="text-gray-800 text-base leading-relaxed mb-6 max-w-2xl mx-auto"
+					dangerouslySetInnerHTML={description}
+				/>
+
 				<InstallActivate
+					successUpdate={redirectToStarterSites}
+					successActivation={redirectToStarterSites}
 					pluginData={{
-						name: 'Cloud Templates & Patterns Collection',
+						name: 'Starter Sites & Templates',
 						slug: 'templates-patterns-collection',
 						pluginBasename: tpcPath,
 						pluginState: currentState,
 						activateURL: templatesPluginData?.activate || '',
 					}}
-					successActivation={() => {
-						window.location.href = activateRedirect;
-					}}
-					successUpdate={() => {
-						window.location.href = activateRedirect;
-					}}
-					description={
-						<>
-							<h1>
-								{'deactivate' === currentState
-									? neveDash.strings
-											.starterSitesUnavailableUpdate
-									: neveDash.strings
-											.starterSitesUnavailableActive}
-							</h1>
-							<br />
-						</>
-					}
 				/>
-			</div>
+			</Card>
 		</div>
 	);
 };

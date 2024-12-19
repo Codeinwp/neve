@@ -8,8 +8,9 @@ import { fetchOptions } from '../utils/rest';
 
 import { withDispatch, withSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
-import { useState, Fragment, useEffect } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import Deal from './Deal';
+import Container from '../Layout/Container';
 
 const App = ({ setSettings, toast, currentTab, setTab }) => {
 	const [loading, setLoading] = useState(true);
@@ -19,27 +20,32 @@ const App = ({ setSettings, toast, currentTab, setTab }) => {
 			setLoading(false);
 		});
 	}, []);
+
 	if (loading) {
 		return <Loading />;
 	}
+
 	return (
-		<Fragment>
-			<Header currentTab={currentTab} setTab={setTab} />
-			<div className="content-wrap">
-				<div className="container content">
-					<div className="main">
-						<Deal />
-						{'starter-sites' !== currentTab && <Notifications />}
-						<TabsContent currentTab={currentTab} setTab={setTab} />
-					</div>
-					{'starter-sites' !== currentTab &&
-						'custom-layouts' !== currentTab && (
-							<Sidebar currentTab={currentTab} />
-						)}
+		<div className="antialiased grow flex flex-col gap-6 h-full">
+			<Header />
+
+			{/*<Deal />*/}
+			{'starter-sites' !== currentTab && <Notifications />}
+
+			<Container className="flex flex-col md:flex-row gap-6 h-full grow">
+				<div className="grow">
+					<TabsContent currentTab={currentTab} setTab={setTab} />
 				</div>
-			</div>
+
+				{'starter-sites' !== currentTab && (
+					<div className="shrink-0 md:w-[350px]">
+						<Sidebar />
+					</div>
+				)}
+			</Container>
+
 			{toast && <Snackbar />}
-		</Fragment>
+		</div>
 	);
 };
 

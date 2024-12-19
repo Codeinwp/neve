@@ -2,8 +2,7 @@
 import compareVersions from 'compare-versions';
 
 import StarterSitesUnavailable from '../Components/Content/StarterSitesUnavailable';
-import CustomLayoutsUnavailable from '../Components/Content/CustomLayoutsUnavailable';
-import Start from '../Components/Content/Start';
+import Welcome from '../Components/Content/Welcome';
 import Pro from '../Components/Content/Pro';
 import Plugins from '../Components/Content/Plugins';
 import Help from '../Components/Content/Help';
@@ -34,15 +33,11 @@ const getTabHash = () => {
 const tabs = {
 	start: {
 		label: __('Welcome', 'neve'),
-		render: (setTab) => <Start setTab={setTab} />,
+		render: () => <Welcome />,
 	},
 	'starter-sites': {
 		label: __('Starter Sites', 'neve'),
 		render: () => <StarterSitesUnavailable />,
-	},
-	'custom-layouts': {
-		label: __('Custom Layouts', 'neve'),
-		render: (setTab) => <CustomLayoutsUnavailable setTab={setTab} />,
 	},
 	'free-pro': {
 		label: __('Free vs Pro', 'neve'),
@@ -52,12 +47,7 @@ const tabs = {
 		label: __('Plugins', 'neve'),
 		render: () => <Plugins />,
 	},
-	help: {
-		label: __('Help', 'neve'),
-		render: (setTab) => <Help setTab={setTab} />,
-	},
 	changelog: {
-		label: __('Changelog', 'neve'),
 		render: () => <Changelog />,
 	},
 };
@@ -74,7 +64,9 @@ const properTPC =
 	) === 1;
 
 if (activeTPC && properTPC) {
-	delete tabs['starter-sites'];
+	delete tabs['starter-sites']['render'];
+
+	tabs['starter-sites'].url = neveDash.tpcAdminURL;
 }
 
 if (

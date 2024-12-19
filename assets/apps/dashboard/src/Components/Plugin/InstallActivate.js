@@ -1,8 +1,17 @@
 /* global neveDash */
+import { useEffect, useState } from '@wordpress/element';
+import { __, sprintf } from '@wordpress/i18n';
+import { LucideLoaderCircle } from 'lucide-react';
 import { get } from '../../utils/rest';
-import { sprintf, __ } from '@wordpress/i18n';
-import { useState, useEffect } from '@wordpress/element';
-import { Button, Tooltip } from '@wordpress/components';
+import Button from '../Common/Button';
+import Notice from '../Common/Notice';
+import Tooltip from '../Common/Tooltip';
+import TransitionInOut from '../Common/TransitionInOut';
+
+const STATUS = {
+	INSTALLING: 'installing',
+	ACTIVATING: 'activating',
+};
 
 const InstallActivate = ({
 	labels = {},
@@ -21,8 +30,8 @@ const InstallActivate = ({
 		isOtterProInstalled,
 	} = neveDash;
 	const [progress, setProgress] = useState(false);
-	// const [updating, setUpdating] = useState(false);
-	const [error, setError] = useState(false);
+
+	const [error, setError] = useState('');
 	const [currentState, setCurrentState] = useState(pluginState);
 	const [buttonLabels, setButtonLabels] = useState({
 		firstLabel: false,
@@ -30,30 +39,8 @@ const InstallActivate = ({
 		activating: `${__('Activating', 'neve')}...`,
 		installActivate: __('Install and Activate', 'neve'),
 		activate: __('Activate', 'neve'),
+		...labels,
 	});
-
-	const setCustomLabels = (customLabels) => {
-		setButtonLabels({
-			...buttonLabels,
-			...(customLabels.firstLabel !== false && {
-				firstLabel: customLabels.firstLabel,
-			}),
-			...(customLabels.installing && {
-				installing: customLabels.installing,
-			}),
-			...(customLabels.activating && {
-				activating: customLabels.activating,
-			}),
-			...(customLabels.installActivate && {
-				installActivate: customLabels.installActivate,
-			}),
-			...(customLabels.activate && { activate: customLabels.activate }),
-		});
-	};
-
-	useEffect(() => {
-		setCustomLabels(labels);
-	}, []);
 
 	const getLabel = (type) => {
 		return progress || !buttonLabels.firstLabel
@@ -66,7 +53,8 @@ const InstallActivate = ({
 	};
 
 	const installPlugin = () => {
-		setProgress('installing');
+		setProgress(STATUS.INSTALLING);
+
 		hideFirstLabel();
 		wp.updates.ajax('install-plugin', {
 			slug,
@@ -90,7 +78,7 @@ const InstallActivate = ({
 	};
 
 	const activatePlugin = () => {
-		setProgress('activating');
+		setProgress(STATUS.ACTIVATING);
 		setCurrentState('activate');
 		hideFirstLabel();
 		const activationURL = activateURL;
@@ -132,8 +120,6 @@ const InstallActivate = ({
 		});
 	};
 
-	const isProgress = (type) => progress === type;
-
 	const renderNoticeContent = () => {
 		const isSuperAdmin = canInstallPlugins && canActivatePlugins;
 
@@ -171,63 +157,70 @@ const InstallActivate = ({
 			return actionsAreDisabled();
 		};
 
+		const installing = progress === STATUS.INSTALLING;
+		const activating = progress === STATUS.ACTIVATING;
+
 		const buttonMap = {
 			install: (
 				<Button
-					disabled={isButtonDisabled()}
-					isPrimary={!isProgress('installing')}
-					isSmall={smallButton}
-					isSecondary={isProgress('installing')}
-					className={isProgress('installing') && 'is-loading'}
-					icon={isProgress('installing') && 'update'}
+					disabled={isButtonDisabled() || installing}
+					isPrimary={!installing}
+					isSecondary={installing}
+					loading={installing}
 					onClick={installPlugin}
+					isSmall={smallButton}
 				>
-					{isProgress('installing')
-						? getLabel('installing')
+					{installing
+						? getLabel(STATUS.INSTALLING)
 						: getLabel('installActivate')}
 				</Button>
 			),
 			activate: activateURL && (
 				<Button
-					disabled={isButtonDisabled()}
-					isSmall={smallButton}
-					isPrimary={!isProgress('activating')}
-					isSecondary={isProgress('activating')}
-					className={isProgress('activating') && 'is-loading'}
-					icon={isProgress('activating') && 'update'}
+					disabled={isButtonDisabled() || activating}
+					isPrimary={!activating}
+					isSecondary={activating}
+					loading={activating}
 					onClick={activatePlugin}
+					isSmall={smallButton}
 				>
-					{isProgress('activating')
-						? getLabel('activating')
+					{activating
+						? getLabel(STATUS.ACTIVATING)
 						: getLabel('activate')}
 				</Button>
 			),
 		};
 
-		const wrappedButtonContent = actionsAreDisabled() ? (
-			<Tooltip
-				text={sprintf(
+		const WrappedButton = () => {
+			if (actionsAreDisabled()) {
+				const text = sprintf(
 					// translators: %s: Plugin name.
 					__('Ask your admin to enable %s on your site', 'neve'),
 					name
-				)}
-				position="top center"
-			>
-				{buttonMap[currentState]}
-			</Tooltip>
-		) : (
-			buttonMap[currentState]
-		);
+				);
+
+				return <Tooltip text={text}>{buttonMap[currentState]}</Tooltip>;
+			}
+
+			return buttonMap[currentState];
+		};
 
 		return (
 			<>
 				{description}
-				{buttonMap.hasOwnProperty(currentState) && wrappedButtonContent}
+				{!!buttonMap[currentState] && <WrappedButton />}
 			</>
 		);
 	};
 
-	return error ? <h1 className="error">{error}</h1> : renderNoticeContent();
+	return (
+		<>
+			<TransitionInOut show={!!error}>
+				{<Notice isError>{error}</Notice>}
+			</TransitionInOut>
+			{!error && renderNoticeContent()}
+		</>
+	);
 };
 
 export default InstallActivate;

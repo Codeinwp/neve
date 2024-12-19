@@ -334,28 +334,31 @@ class Main {
 			'notifications'           => $this->get_notifications(),
 			'customizerShortcuts'     => $this->get_customizer_shortcuts(),
 			'plugins'                 => $this->get_useful_plugins(),
+			'recommended_plugins'     => $this->get_recommended_plugins(),
+			'modules'                 => $this->get_modules(),
 			'featureData'             => $this->get_free_pro_features(),
 			'showFeedbackNotice'      => $this->should_show_feedback_notice(),
 			'allfeaturesNeveProURL'   => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'seeallfeatures', 'freevspropage' ), 'query' ),
 			'startSitesgetNeveProURL' => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'welcomestartersitescard', 'nevedashboard' ), 'query' ),
 			'customLayoutsNeveProURL' => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'customlayoutscard', 'nevedashboard' ), 'query' ),
 			'upgradeURL'              => apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'getpronow', 'freevspropage' ), 'query' ) ),
+			'upgradeURLModules'       => apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'getpronow', 'welcomepage' ), 'query' ) ),
 			'supportURL'              => esc_url( 'https://wordpress.org/support/theme/neve/' ),
 			'docsURL'                 => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
 			'codexURL'                => esc_url( 'https://codex.nevewp.com/' ),
 			'strings'                 => [
 				'proTabTitle'                   => wp_kses_post( $plugin_name ),
 				/* translators: %s - Theme name */
-				'header'                        => sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme_name ) ),
+				'header'                        => wp_kses_post( $theme_name ),
 				/* translators: %s - Theme name */
 				'starterSitesCardDescription'   => sprintf( __( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), wp_kses_post( $theme_name ) ),
 				'starterSitesCardUpsellMessage' => esc_html__( 'Upgrade to the Pro version and get instant access to all Premium Starter Sites — including Expert Sites — and much more.', 'neve' ),
 				/* translators: %s - Theme name */
 				'starterSitesTabDescription'    => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: 1 - Theme name, 2 - Cloud Templates & Patterns Collection */
-				'starterSitesUnavailableActive' => sprintf( __( 'In order to be able to import any starter sites for %1$s you would need to have the %2$s plugin active.', 'neve' ), wp_kses_post( $theme_name ), 'Cloud Templates & Patterns Collection' ),
+				'starterSitesUnavailableActive' => sprintf( __( 'In order to be able to import any starter sites for %1$s you would need to have the %2$s plugin active.', 'neve' ), wp_kses_post( $theme_name ), '<strong>Starter Sites & Templates by Neve</strong>' ),
 				/* translators: %s - Theme name */
-				'starterSitesUnavailableUpdate' => sprintf( __( 'In order to be able to import any starter sites for %1$s you would need to have the %2$s plugin updated to the latest version.', 'neve' ), wp_kses_post( $theme_name ), 'Cloud Templates & Patterns Collection' ),
+				'starterSitesUnavailableUpdate' => sprintf( __( 'In order to be able to import any starter sites for %1$s you would need to have the %2$s plugin updated to the latest version.', 'neve' ), wp_kses_post( $theme_name ), '<strong>Starter Sites & Templates by Neve</strong>' ),
 				/* translators: %s - Theme name */
 				'supportCardDescription'        => sprintf( __( 'We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
@@ -367,8 +370,8 @@ class Main {
 				/* translators: %1$s - Author link - Themeisle */
 				'licenseCardDescription'        => sprintf(
 				// translators: store name (Themeisle)
-					__( 'Enter your license from %1$s purchase history in order to get plugin updates', 'neve' ),
-					'<a target="_blank" rel="external noreferrer noopener" href="' . tsdk_translate_link( 'https://store.themeisle.com/', 'query' ) . '">ThemeIsle<span class="components-visually-hidden">' . esc_html__( '(opens in a new tab)', 'neve' ) . '</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" class="components-external-link__icon" role="img" aria-hidden="true" focusable="false" style="fill: #0073AA"><path d="M18.2 17c0 .7-.6 1.2-1.2 1.2H7c-.7 0-1.2-.6-1.2-1.2V7c0-.7.6-1.2 1.2-1.2h3.2V4.2H7C5.5 4.2 4.2 5.5 4.2 7v10c0 1.5 1.2 2.8 2.8 2.8h10c1.5 0 2.8-1.2 2.8-2.8v-3.6h-1.5V17zM14.9 3v1.5h3.7l-6.4 6.4 1.1 1.1 6.4-6.4v3.7h1.5V3h-6.3z"></path></svg></a>'
+					__( 'Enter your license from %1$s purchase history in order to get plugin updates', 'neve' ) . '.',
+					'<a class="text-blue-600 hover:text-blue-700 hover:underline inline-flex gap-1 items-center" target="_blank" rel="external noreferrer noopener" href="' . tsdk_translate_link( 'https://store.themeisle.com/', 'query' ) . '">Themeisle<span class="sr-only">' . esc_html__( '(opens in a new tab)', 'neve' ) . '</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>'
 				),
 			],
 			'changelog'               => $this->cl_handler->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
@@ -567,82 +570,143 @@ class Main {
 	private function get_free_pro_features() {
 		return [
 			[
-				'title'       => __( 'Header/Footer builder', 'neve' ),
-				'description' => __( 'Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO.', 'neve' ),
-				'inLite'      => true,
-				'docsLink'    => $this->get_doc_link( 'Header/Footer builder', 'https://docs.themeisle.com/category/1251-neve-header-builder' ),
+				'section' => __( 'Header Features', 'neve' ),
+				'items'   => [
+					[
+						'title'       => __( 'Advanced Header Components', 'neve' ),
+						'description' => __( 'Additional components for contact info, language switcher, and HTML sections', 'neve' ),
+					],
+					[
+						'title'       => __( 'Dynamic Headers', 'neve' ),
+						'description' => __( 'Sticky and transparent headers with per-page settings', 'neve' ),
+					],
+				],
 			],
 			[
-				'title'       => __( 'Page Builder Compatibility', 'neve' ),
-				'description' => __( 'Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders.', 'neve' ),
-				'inLite'      => true,
-				'docsLink'    => $this->get_doc_link( 'Page Builder Compatibility', 'https://docs.themeisle.com/article/946-neve-doc#pagebuilders' ),
+				'section' => __( 'Blog Features', 'neve' ),
+				'items'   => [
+					[
+						'title'       => __( 'Blog Layouts', 'neve' ),
+						'description' => __( 'Additional blog and archive page layouts with custom sorting options', 'neve' ),
+					],
+					[
+						'title'       => __( 'Advanced Blog Features', 'neve' ),
+						'description' => __( 'Reading time, social sharing, and related posts functionality', 'neve' ),
+					],
+				],
 			],
 			[
-				'title'       => __( 'Header Booster', 'neve' ),
-				'description' => __( 'Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more.', 'neve' ),
-				'inLite'      => false,
-				'docsLink'    => $this->get_doc_link( 'Header Booster', 'https://docs.themeisle.com/article/1057-header-booster-documentation' ),
+				'section' => __( 'WooCommerce Features', 'neve' ),
+				'items'   => [
+					[
+						'title'       => __( 'Shop Customization', 'neve' ),
+						'description' => __( 'Advanced product layouts, quick view, wishlist functionality', 'neve' ),
+					],
+				],
 			],
 			[
-				'title'       => __( 'Page Header Builder', 'neve' ),
-				'description' => __( 'The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder.', 'neve' ),
-				'inLite'      => false,
-				'docsLink'    => $this->get_doc_link( 'Page Header Builder', 'https://docs.themeisle.com/article/1262-neve-page-header' ),
-			],
-			[
-				'title'       => __( 'Custom Layouts', 'neve' ),
-				'description' => __( 'Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme.', 'neve' ),
-				'inLite'      => false,
-				'docsLink'    => $this->get_doc_link( 'Custom Layouts', 'https://docs.themeisle.com/article/1062-custom-layouts-module' ),
-			],
-			[
-				'title'       => __( 'Blog Booster', 'neve' ),
-				'description' => __( 'Give a huge boost to your entire blogging experience with features specially designed for increased user experience.', 'neve' ) . ' ' . __( 'Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more.', 'neve' ),
-				'inLite'      => false,
-				'docsLink'    => $this->get_doc_link( 'Blog Booster', 'https://docs.themeisle.com/article/1059-blog-booster-documentation' ),
-			],
-			[
-				'title'       => __( 'Elementor Booster', 'neve' ),
-				'description' => __( 'Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click.', 'neve' ),
-				'inLite'      => false,
-				'docsLink'    => $this->get_doc_link( 'Elementor Booster', 'https://docs.themeisle.com/article/1063-elementor-booster-module-documentation' ),
-			],
-			[
-				'title'       => __( 'WooCommerce Booster', 'neve' ),
-				'description' => __( 'Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration.', 'neve' ) . ' ' . __( 'Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more.', 'neve' ),
-				'inLite'      => false,
-				'docsLink'    => $this->get_doc_link( 'WooCommerce Booster', 'https://docs.themeisle.com/article/1058-woocommerce-booster-documentation' ),
-			],
-			[
-				'title'       => __( 'LifterLMS Booster', 'neve' ),
-				'description' => __( 'Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations.', 'neve' ),
-				'inLite'      => false,
-				'docsLink'    => $this->get_doc_link( 'LifterLMS Booster', 'https://docs.themeisle.com/article/1084-lifterlms-booster-documentation' ),
-			],
-			[
-				'title'       => __( 'Typekit(Adobe) Fonts', 'neve' ),
-				'description' => __( "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options.", 'neve' ),
-				'inLite'      => false,
-				'docsLink'    => $this->get_doc_link( 'Typekit(Adobe) Fonts', 'https://docs.themeisle.com/article/1085-typekit-fonts-documentation' ),
-			],
-			[
-				'title'       => __( 'White Label', 'neve' ),
-				'description' => __( "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own.", 'neve' ),
-				'inLite'      => false,
-				'docsLink'    => $this->get_doc_link( 'White Label', 'https://docs.themeisle.com/article/1061-white-label-module-documentation' ),
-			],
-			[
-				'title'       => __( 'Scroll To Top', 'neve' ),
-				'description' => __( 'Simple but effective module to help you navigate back to the top of the really long pages.', 'neve' ),
-				'inLite'      => false,
-				'docsLink'    => $this->get_doc_link( 'Scroll To Top', 'https://docs.themeisle.com/article/1060-scroll-to-top-module-documentation' ),
-			],
-			[
-				'title'          => __( 'See all PRO features', 'neve' ),
-				'presentational' => true,
+				'section' => __( 'Additional Features', 'neve' ),
+				'items'   => [
+					[
+						'title'       => __( 'Multilingual Support', 'neve' ),
+						'description' => __( 'Enhanced WPML, Weglot and Polylang compatibility', 'neve' ),
+					],
+					[
+						'title'       => __( 'White Label', 'neve' ),
+						'description' => __( 'Remove Neve branding for client websites', 'neve' ),
+					],
+				],
 			],
 		];
+	}
+
+	/**
+	 * Get modules.
+	 *
+	 * @return array[]
+	 */
+	private function get_modules() {
+		return array(
+			'hfg_module'             => array(
+				'nicename'    => __( 'Header Booster', 'neve' ),
+				'description' => __( 'Extend your header with more components and settings, build sticky/transparent headers or display them conditionally.', 'neve' ),
+			),
+			'woocommerce_booster'    => array(
+				'nicename'    => __( 'WooCommerce Booster', 'neve' ),
+				'description' => __( 'Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration.', 'neve' ),
+			),
+			'easy_digital_downloads' => array(
+				'nicename'    => __( 'Easy Digital Downloads Booster', 'neve' ),
+				'description' => __( 'Enhance your Easy Digital Downloads store with additional customization settings.', 'neve' ),
+			),
+			'blog_pro'               => array(
+				'nicename'    => __( 'Blog Booster', 'neve' ),
+				'description' => __( 'Give a huge boost to your entire blogging experience with features specially designed for increased user experience.', 'neve' ),
+			),
+			'post_type_enhancements' => array(
+				'nicename'    => __( 'Post types enhancements', 'neve' ),
+				'description' => __( 'Enable Neve post enhancements for custom post types.', 'neve' ),
+			),
+			'scroll_to_top'          => array(
+				'nicename'    => __( 'Scroll To Top', 'neve' ),
+				'description' => __( 'Simple but effective module to help you navigate back to the top of the really long pages.', 'neve' ),
+			),
+			'performance_features'   => array(
+				'nicename'    => __( 'Performance', 'neve' ),
+				'description' => __( 'Simple and effective optimizations options to enhance the performance of your site.', 'neve' ),
+			),
+			'block_editor_booster'   => array(
+				'nicename'    => __( 'Block Editor Booster', 'neve' ),
+				'description' => __( 'Do more with the Block Editor with Otter\'s additional blocks made specifically for Neve Pro.', 'neve' ),
+			),
+			'white_label'            => array(
+				'nicename'    => __( 'White Label', 'neve' ),
+				'description' => __( 'For any developer or agency out there building websites for their own clients, we\'ve made it easy to present Neve as your own and use your brand name instead.', 'neve' ),
+			),
+			'custom_layouts'         => array(
+				'nicename'    => __( 'Custom Layouts', 'neve' ),
+				'description' => __( 'Easily create custom headers and footers as well as adding your own custom code or content in any location across your site and display them conditionally.', 'neve' ),
+			),
+			'elementor_booster'      => array(
+				'nicename'    => __( 'Elementor Booster', 'neve' ),
+				'description' => __( 'Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click.', 'neve' ),
+			),
+			'lifterlms_booster'      => array(
+				'nicename'    => __( 'LifterLMS Booster', 'neve' ),
+				'description' => __( 'Boost your users learning process with cool new features designed to work smoothly with LifterLMS.', 'neve' ),
+			),
+			'typekit_fonts'          => array(
+				'nicename'    => __( 'Typekit Fonts', 'neve' ),
+				'description' => __( 'Easily embed Adobe Fonts in your WordPress website.', 'neve' ),
+			),
+			'custom_sidebars'        => array(
+				'nicename'    => __( 'Custom Sidebars', 'neve' ),
+				'description' => __( 'Easily create different set of widgets that can be shown throughout your website. Add display conditions to make the content of your sidebar relevant.', 'neve' ),
+			),
+			'access_restriction'     => array(
+				'nicename'    => __( 'Content restriction', 'neve' ),
+				'description' => __( 'Optionally restrict access to specific parts of your website to certain users, user roles, or require a password to access.', 'neve' ),
+			),
+		);
+	}
+
+	/**
+	 * Get the recommended plugins.
+	 *
+	 * @return array
+	 */
+	private function get_recommended_plugins() {
+		$plugins = [
+			'otter-blocks'                  => 'wp',
+			'templates-patterns-collection' => 'wp',
+			'optimole-wp'                   => 'wp',
+			'wp-cloudflare-page-cache'      => 'wp',
+			'feedzy-rss-feeds'              => 'wp',
+			'hyve'                          => 'ti',
+			'sparks'                        => 'ti',
+		];
+
+		return $plugins;
 	}
 
 	/**

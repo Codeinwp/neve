@@ -1,7 +1,16 @@
-import { withSelect } from '@wordpress/data';
+import { useSelect, withSelect } from '@wordpress/data';
 import { Button } from '@wordpress/components';
+import Link from './Common/Link';
+import { NEVE_STORE } from '../utils/constants';
 
-const SupportCard = ({ license }) => {
+const SupportCard = () => {
+	const { license } = useSelect((select) => {
+		const { getLicense } = select(NEVE_STORE);
+		return {
+			license: getLicense(),
+		};
+	});
+
 	if (!license || !license.valid || 'valid' !== license.valid) {
 		return null;
 	}
@@ -11,31 +20,14 @@ const SupportCard = ({ license }) => {
 		return null;
 	}
 
-	const buttonStyle = {
-		width: '100%',
-		justifyContent: 'center',
-		fontWeight: '700',
-		fontSize: '14px',
-		padding: '28px 0',
-		backgroundColor: '#ffffff',
-		marginBottom: '24px',
-	};
-
 	return (
-		<Button
-			style={buttonStyle}
-			variant="secondary"
-			href={supportData.url}
-			target="_blank"
-		>
-			{supportData.text}
-		</Button>
+		<Link
+			className="flex items-center justify-center bg-white hover:bg-blue-600 text-blue-600 hover:text-white hover:no-underline border border-blue-600 hover:border-transparent rounded font-semibold py-3 px-2"
+			url={supportData.url}
+			isExternal
+			text={supportData.text}
+		/>
 	);
 };
 
-export default withSelect((select) => {
-	const { getLicense } = select('neve-dashboard');
-	return {
-		license: getLicense(),
-	};
-})(SupportCard);
+export default SupportCard;

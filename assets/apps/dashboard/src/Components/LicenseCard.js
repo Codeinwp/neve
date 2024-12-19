@@ -1,22 +1,33 @@
 /* global neveDash */
-import { send, fetchOptions } from '../utils/rest';
+import { fetchOptions, send } from '../utils/rest';
 import Toast from './Toast';
-import classnames from 'classnames';
 
 import { __ } from '@wordpress/i18n';
-import { Button, Dashicon } from '@wordpress/components';
 import { Fragment, useState } from '@wordpress/element';
-import { withDispatch, withSelect } from '@wordpress/data';
-import { compose } from '@wordpress/compose';
+import { useDispatch, useSelect } from '@wordpress/data';
+import Card from '../Layout/Card';
+import { NEVE_STORE } from '../utils/constants';
+import Pill from './Common/Pill';
+import { LucideCircleCheck, LucideCircleX } from 'lucide-react';
+import Button from './Common/Button';
 
-const LicenseCard = ({ isVisible, setSettings, changeLicense, license }) => {
+const LicenseCard = () => {
 	const { proApi } = neveDash;
+
+	const { changeLicense, setSettings } = useDispatch(NEVE_STORE);
+
+	const { license } = useSelect((select) => {
+		const { getLicense } = select(NEVE_STORE);
+		return {
+			license: getLicense(),
+		};
+	});
+
 	const [key, setKey] = useState(
 		license && 'valid' === license.valid ? license.key || '' : ''
 	);
 	const [status, setStatus] = useState(false);
 
-	// const [ expiration, setExpiration ] = useState(license.expiration || '');
 	const [toast, setToast] = useState('');
 	const [toastType, setToastType] = useState('success');
 
@@ -24,9 +35,6 @@ const LicenseCard = ({ isVisible, setSettings, changeLicense, license }) => {
 	const { whiteLabel, strings } = neveDash;
 	const { licenseCardHeading, licenseCardDescription } = strings;
 
-	if (!isVisible) {
-		return null;
-	}
 	const toggleLicense = () => {
 		const toDo = 'valid' === valid ? 'deactivate' : 'activate';
 		setStatus('activate' === toDo ? 'activating' : 'deactivating');
@@ -49,23 +57,27 @@ const LicenseCard = ({ isVisible, setSettings, changeLicense, license }) => {
 	if (whiteLabel && whiteLabel.hideLicense) {
 		return null;
 	}
-	let statusLabel = '';
-	if (!status) {
-		if ('valid' === valid) {
-			statusLabel = __('Deactivate', 'neve');
-		} else {
-			statusLabel = __('Activate', 'neve');
+
+	const getStatusLabel = () => {
+		const statusLabelMap = {
+			activating: __('Activating', 'neve'),
+			deactivating: __('Deactivating', 'neve'),
+			activate: __('Activate', 'neve'),
+			deactivate: __('Deactivate', 'neve'),
+		};
+
+		if (!status) {
+			return 'valid' === valid
+				? __('Deactivate', 'neve')
+				: __('Activate', 'neve');
 		}
-	}
-	if ('activating' === status) {
-		statusLabel = __('Activating', 'neve');
-		statusLabel = __('Deactivating', 'neve');
-	}
+
+		return statusLabelMap[status];
+	};
 
 	return (
-		<aside className="sidebar card license">
-			<div className="sidebar-section">
-				{licenseCardHeading && <h4>{licenseCardHeading}</h4>}
+		<Card title={licenseCardHeading}>
+			<div className="grid gap-4">
 				{!whiteLabel && licenseCardDescription && (
 					<p
 						dangerouslySetInnerHTML={{
@@ -74,7 +86,7 @@ const LicenseCard = ({ isVisible, setSettings, changeLicense, license }) => {
 					/>
 				)}
 				<form
-					className="license-form"
+					className="flex gap-3 items-center"
 					onSubmit={(e) => {
 						e.preventDefault();
 						toggleLicense();
@@ -84,6 +96,7 @@ const LicenseCard = ({ isVisible, setSettings, changeLicense, license }) => {
 						type="text"
 						id="license-field"
 						name="license-field"
+						className="flex-grow rounded !border-gray-300 text-sm !py-1 !px-2"
 						disabled={'valid' === valid}
 						onChange={(e) => {
 							const keyToSet = e.target.value.replace(/\s+/g, '');
@@ -101,9 +114,9 @@ const LicenseCard = ({ isVisible, setSettings, changeLicense, license }) => {
 						isPrimary={'valid' !== valid}
 						isSecondary={'valid' === valid}
 						disabled={status || !key}
-						type="submit"
+						isSubmit
 					>
-						{statusLabel}
+						{getStatusLabel()}
 					</Button>
 				</form>
 				{toast && (
@@ -115,58 +128,43 @@ const LicenseCard = ({ isVisible, setSettings, changeLicense, license }) => {
 				)}
 				{'expired' === valid ||
 					('valid' === valid && (
-						<div className="license-footer">
-							<Fragment>
-								<span
-									className={classnames([
-										'status-icon',
-										'valid' === valid ? 'success' : 'error',
-									])}
-								>
-									<Dashicon
-										size={14}
-										icon={'valid' === valid ? 'yes' : 'no'}
-									/>
-								</span>
-								<span className="validity">
-									{'valid' === valid
-										? __('Valid', 'neve')
-										: __('Expired', 'neve')}
-								</span>
-								{expiration && (
-									<Fragment>
-										<span className="separator">-</span>
-										<span className="expires">
-											{('valid' === valid
-												? __('Expires', 'neve')
-												: __('Expired', 'neve')) +
-												' ' +
-												expiration}
-										</span>
-									</Fragment>
+						<div className="flex items-center gap-1">
+							<Pill
+								type={valid === 'valid' ? 'success' : 'warning'}
+								className="inline-flex items-center gap-1 px-2 py-1"
+							>
+								{valid === 'valid' ? (
+									<>
+										<LucideCircleCheck size={14} />
+										<span>{__('Valid', 'neve')}</span>
+									</>
+								) : (
+									<>
+										<LucideCircleX size={14} />
+										<span>{__('Expired', 'neve')}</span>
+									</>
 								)}
-							</Fragment>
+							</Pill>
+							{expiration && (
+								<>
+									<span className="space-x-1 ml-auto">
+										<span className="text-xs">
+											{'valid' === valid
+												? __('Expires', 'neve')
+												: __('Expired', 'neve')}
+										</span>
+
+										<span className="font-semibold text-xs">
+											{expiration}
+										</span>
+									</span>
+								</>
+							)}
 						</div>
 					))}
 			</div>
-		</aside>
+		</Card>
 	);
 };
 
-export default compose(
-	withDispatch((dispatch) => {
-		const { changeLicense, setSettings } = dispatch('neve-dashboard');
-		return {
-			setSettings: (object) => setSettings(object),
-			changeLicense: (data) => {
-				changeLicense(data);
-			},
-		};
-	}),
-	withSelect((select) => {
-		const { getLicense } = select('neve-dashboard');
-		return {
-			license: getLicense(),
-		};
-	})
-)(LicenseCard);
+export default LicenseCard;

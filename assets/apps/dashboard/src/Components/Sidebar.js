@@ -3,113 +3,111 @@ import { changeOption } from '../utils/rest';
 import SupportCard from './SupportCard';
 import LicenseCard from './LicenseCard';
 import { __ } from '@wordpress/i18n';
-import { ToggleControl, ExternalLink } from '@wordpress/components';
-import { createInterpolateElement, useState } from '@wordpress/element';
-import { withDispatch, withSelect } from '@wordpress/data';
-import { compose } from '@wordpress/compose';
+import { useState } from '@wordpress/element';
+import { useDispatch, useSelect } from '@wordpress/data';
+import {
+	NEVE_HAS_PRO,
+	NEVE_HIDE_PLUGINS,
+	NEVE_IS_WHITELABEL,
+	NEVE_STORE,
+} from '../utils/constants';
+import Card from '../Layout/Card';
+import Link from './Common/Link';
+import Toggle from './Common/Toggle';
+import PluginsCard from './PluginsCard';
 
-const Sidebar = ({ currentTab, setToast, loggerValue, setLogger }) => {
-	const [tracking, setTracking] = useState('yes' === loggerValue);
+const ReviewCard = () => (
+	<Card title={__('Leave us a review', 'neve')}>
+		<p className="text-gray-600 mb-4 text-sm">
+			{__(
+				'Are you are enjoying Neve? We would love to hear your feedback.',
+				'neve'
+			)}
+		</p>
+
+		<Link
+			isExternal
+			text={__('Submit a review', 'neve')}
+			url={'https://wordpress.org/support/theme/neve/reviews/#new-post'}
+		/>
+	</Card>
+);
+
+const ContributingCard = () => {
+	const loggerEnabled = useSelect((select) => {
+		const { getOption } = select(NEVE_STORE);
+
+		return getOption('neve_logger_flag');
+	});
+
+	const [tracking, setTracking] = useState('yes' === loggerEnabled);
+
+	const { setToast, setLogger } = useDispatch(NEVE_STORE);
+
+	const handleTrackingChange = (value) => {
+		setTracking(value);
+		changeOption(
+			'neve_logger_flag',
+			value ? 'yes' : 'no',
+			false,
+			false
+		).then((r) => {
+			if (!r.success) {
+				setToast(
+					__('Could not update option. Please try again.', 'neve')
+				);
+				setTracking(!value);
+				return false;
+			}
+			setLogger(value ? 'yes' : 'no');
+			setToast(__('Option Updated', 'neve'));
+		});
+	};
 
 	return (
-		<div className="sidebar-wrap">
-			{!neveDash.whiteLabel && neveDash.pro && <SupportCard />}
-			{neveDash.pro && <LicenseCard isVisible={'pro' === currentTab} />}
-			{!neveDash.whiteLabel && (
-				<aside className="sidebar card">
-					<div className="sidebar-section">
-						<h4>{__('Neve Community', 'neve')}</h4>
-						<p>
-							{typeof createInterpolateElement !== 'undefined' &&
-								createInterpolateElement(
-									__(
-										'Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our <external_link>public roadmap</external_link>.',
-										'neve'
-									),
-									{
-										external_link: (
-											<ExternalLink href="https://github.com/Codeinwp/neve/discussions">
-												#dumptext
-											</ExternalLink>
-										),
-									}
-								)}
-						</p>
-						<ExternalLink href="https://www.facebook.com/groups/648646435537266/">
-							{__('Join our Facebook Group', 'neve')}
-						</ExternalLink>
-					</div>
-					<hr />
-					<div className="sidebar-section">
-						<h4>{__('Leave us a review', 'neve')}</h4>
-						<p>
-							{__(
-								'Are you are enjoying Neve? We would love to hear your feedback.',
-								'neve'
-							)}
-						</p>
-						<ExternalLink href="https://wordpress.org/support/theme/neve/reviews/#new-post">
-							{__('Submit a review', 'neve')}
-						</ExternalLink>
-					</div>
-					<hr />
-					<div className="sidebar-section">
-						<h4>{__('Contributing', 'neve')}</h4>
-						<p>
-							{__(
-								'Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected.',
-								'neve'
-							)}
-							&nbsp;
-							<ExternalLink href="https://docs.themeisle.com/article/1122-neve-usage-tracking">
-								{__('What do we track?', 'neve')}
-							</ExternalLink>
-						</p>
-						<ToggleControl
-							checked={tracking}
-							label={__('Allow Anonymous Tracking', 'neve')}
-							onChange={(value) => {
-								setTracking(value);
-								changeOption(
-									'neve_logger_flag',
-									value ? 'yes' : 'no',
-									false,
-									false
-								).then((r) => {
-									if (!r.success) {
-										setToast(
-											__(
-												'Could not update option. Please try again.',
-												'neve'
-											)
-										);
-										setTracking(!value);
-										return false;
-									}
-									setLogger(value ? 'yes' : 'no');
-									setToast(__('Option Updated', 'neve'));
-								});
-							}}
-						/>
-					</div>
-				</aside>
+		<Card title={__('Contributing', 'neve')}>
+			<p className="text-gray-600 mb-4 text-sm">
+				{__(
+					'Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected.',
+					'neve'
+				)}
+			</p>
+
+			<Link
+				isExternal
+				text={__('What do we track?', 'neve')}
+				url={
+					'https://docs.themeisle.com/article/1122-neve-usage-tracking'
+				}
+			/>
+
+			<Toggle
+				className="mt-4"
+				onToggle={handleTrackingChange}
+				checked={tracking}
+				label={__('Allow Anonymous Tracking', 'neve')}
+			/>
+		</Card>
+	);
+};
+
+const Sidebar = () => {
+	return (
+		<div className="grid gap-6">
+			{NEVE_HAS_PRO && <LicenseCard />}
+
+			{!NEVE_IS_WHITELABEL && NEVE_HAS_PRO && <SupportCard />}
+
+			{!NEVE_IS_WHITELABEL && (
+				<>
+					<ReviewCard />
+					<ContributingCard />
+				</>
 			)}
+
+			{!NEVE_HIDE_PLUGINS && <PluginsCard />}
 		</div>
 	);
 };
 
-export default compose(
-	withDispatch((dispatch) => {
-		const { setToast, setLogger } = dispatch('neve-dashboard');
-		return {
-			setToast: (message) => setToast(message),
-			setLogger: (value) => setLogger(value),
-		};
-	}),
-	withSelect((select) => {
-		const { getOption } = select('neve-dashboard');
-		return {
-			loggerValue: getOption('neve_logger_flag'),
-		};
-	})
-)(Sidebar);
+export default Sidebar;

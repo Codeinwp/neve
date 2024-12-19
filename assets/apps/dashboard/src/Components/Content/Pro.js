@@ -4,7 +4,7 @@ import ModuleCard from '../ModuleCard';
 const Pro = () => {
 	const { modules, hasOldPro, strings } = neveDash;
 
-	if (hasOldPro) {
+	if (true) {
 		return (
 			<div className="col">
 				<div className="card">

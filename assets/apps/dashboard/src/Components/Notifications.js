@@ -1,5 +1,6 @@
 /* global neveDash */
-import Notification from './Notification';
+import Notification from './Common/Notification';
+import Container from '../Layout/Container';
 
 const Notifications = () => {
 	if (!neveDash.notifications) {
@@ -10,7 +11,7 @@ const Notifications = () => {
 	}
 
 	return (
-		<div className="notifications">
+		<Container className="grid gap-3">
 			{Object.keys(neveDash.notifications).map((slug, index) => {
 				return (
 					<Notification
@@ -20,7 +21,7 @@ const Notifications = () => {
 					/>
 				);
 			})}
-		</div>
+		</Container>
 	);
 };
 
