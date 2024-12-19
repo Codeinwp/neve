@@ -3,3 +3,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#wpcontent {
+	@apply pl-0 font-sans;
+}
+
+#wpbody-content > .notice, #wpbody-content > .error {
+	@apply hidden;
+}
+
+#wpcontent, #wpbody, #wpbody-content, #neve-dashboard {
+	@apply flex flex-col grow;
+}
+
+#wpwrap {
+	@apply min-h-full;
+}
+
+#wpwrap {
+	@apply bg-gray-50 relative;
+}
+
+#adminmenumain {
+	@apply shrink;
+}
+
+#neve-dashboard {
+	line-height: 1.5;
+}

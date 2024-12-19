@@ -1,9 +1,19 @@
 import { Snackbar } from '@wordpress/components';
-import { withDispatch, withSelect } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
-const GlobalSnackbar = ({ toast, setToast }) => {
+import { NEVE_STORE } from '../utils/constants';
+
+const GlobalSnackbar = () => {
+	const { setToast } = useDispatch(NEVE_STORE);
+
+	const { toast } = useSelect((select) => {
+		const { getToast } = select(NEVE_STORE);
+		return {
+			toast: getToast,
+		};
+	});
+
 	useEffect(() => {
 		setTimeout(() => {
 			setToast(null);
@@ -24,22 +34,9 @@ const GlobalSnackbar = ({ toast, setToast }) => {
 
 	return (
 		<div style={style}>
-			<Snackbar className="dash-notice">{renderToast}</Snackbar>
+			<Snackbar className="fixed bottom-5 ml-5">{renderToast}</Snackbar>
 		</div>
 	);
 };
 
-export default compose(
-	withDispatch((dispatch) => {
-		const { setToast } = dispatch('neve-dashboard');
-		return {
-			setToast: (message) => setToast(message),
-		};
-	}),
-	withSelect((select) => {
-		const { getToast } = select('neve-dashboard');
-		return {
-			toast: () => getToast(),
-		};
-	})
-)(GlobalSnackbar);
+export default GlobalSnackbar;

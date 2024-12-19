@@ -50,12 +50,14 @@
 		"pre-commit": "npx lint-staged"
 	},
 	"dependencies": {
+		"@headlessui/react": "^2.2.0",
 		"@neve-wp/components": "file:./assets/apps/components",
 		"array-move": "^3.0.1",
 		"classnames": "^2.2.6",
 		"eslint-plugin-prettier": "^3.3.1",
 		"fuse.js": "^6.4.1",
-		"prop-types": "^15.7.2",
+		"lucide-react": "^0.468.0",
+		"prop-types": "^15.8.1",
 		"react-sortablejs": "^6.0.0",
 		"react-visibility-sensor": "^5.1.1",
 		"sortablejs": "^1.13.0",
