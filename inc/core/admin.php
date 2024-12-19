@@ -502,7 +502,7 @@ class Admin {
 		);
 
 		$onboarding_notice_exit_btn = sprintf(
-			'<a href="%1$s" class=" ti-return-dashboard  button button-link button-hero install-now" >
+			'<a href="%1$s" class="ti-return-dashboard  button button-link button-hero" >
 				<span>%2$s</span>
 			</a>',
 			esc_url( admin_url( '?page=neve-welcome' ) ),
@@ -523,7 +523,9 @@ class Admin {
 			<h2 class="nv-notice-title">%2$s</h2>
 			<p class="about-description">%3$s</h3>
 			<div class="nv-notice-actions">
-				%4$s
+				<div id="neve-ss-install">
+					%4$s
+				</div>
 				%5$s
 			</div>
 			',
