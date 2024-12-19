@@ -88,7 +88,7 @@ const SSTryButton: React.FC = () => {
 		installing || activating ? 'is-loading' : '',
 	]);
 
-	let buttonLabel = __('Try one of our ready to use Starter Sites', 'neve');
+	let buttonLabel = __('Explore Templates and Start Building Now!', 'neve');
 	if (installing) {
 		buttonLabel = __('Installing', 'neve');
 	}
