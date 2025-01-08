@@ -1,10 +1,11 @@
+/* global neveDash */
 import { __ } from '@wordpress/i18n';
 import { LucidePanelsTopLeft } from 'lucide-react';
 import Card from '../../Layout/Card';
-import Link from '../Common/Link';
-import ModuleGridPlaceholder from './ModuleGridPlaceholder';
-import ModuleGrid from './ModuleGrid';
 import { NEVE_HAS_PRO, NEVE_HAS_VALID_PRO } from '../../utils/constants';
+import Link from '../Common/Link';
+import ModuleGrid from './ModuleGrid';
+import ModuleGridPlaceholder from './ModuleGridPlaceholder';
 
 export default () => {
 	return (

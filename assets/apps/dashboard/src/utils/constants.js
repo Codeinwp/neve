@@ -16,6 +16,12 @@ import {
 	LucideShield,
 	LucideShoppingCart,
 	LucideTypeOutline,
+	LucideToyBrick,
+	LucideLayoutTemplate,
+	LucideCreditCard,
+	LucideImage,
+	LucideTimer,
+	LucideRss,
 } from 'lucide-react';
 
 export const NEVE_STORE = 'neve-dashboard';
@@ -46,4 +52,15 @@ export const NEVE_MODULE_ICON_MAP = {
 	typekit_fonts: LucideTypeOutline,
 	custom_sidebars: LucidePanelRightDashed,
 	access_restriction: LucideShield,
+};
+
+export const NEVE_PLUGIN_ICON_MAP = {
+	'otter-blocks': LucideToyBrick,
+	'templates-patterns-collection': LucideLayoutTemplate,
+	'wp-full-stripe-free': LucideCreditCard,
+	'optimole-wp': LucideImage,
+	'wp-cloudflare-page-cache': LucideTimer,
+	'feedzy-rss-feeds': LucideRss,
+	// 'hyve'
+	// 'sparks'
 };

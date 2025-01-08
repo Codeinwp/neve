@@ -4,16 +4,26 @@ import TabsContent from './TabsContent';
 import Sidebar from './Sidebar';
 import Loading from './Loading';
 import Snackbar from './Snackbar';
+import Container from '../Layout/Container';
 import { fetchOptions } from '../utils/rest';
 
-import { withDispatch, withSelect } from '@wordpress/data';
-import { compose } from '@wordpress/compose';
+import { useDispatch, useSelect } from '@wordpress/data';
 import { useState, useEffect } from '@wordpress/element';
 import Deal from './Deal';
-import Container from '../Layout/Container';
 
-const App = ({ setSettings, toast, currentTab, setTab }) => {
+const App = () => {
 	const [loading, setLoading] = useState(true);
+
+	const { setSettings, setTab } = useDispatch('neve-dashboard');
+
+	const { toast, currentTab } = useSelect((select) => {
+		const { getToast, getTab } = select('neve-dashboard');
+		return {
+			toast: getToast(),
+			currentTab: getTab(),
+		};
+	});
+
 	useEffect(() => {
 		fetchOptions().then((r) => {
 			setSettings(r);
@@ -24,7 +34,6 @@ const App = ({ setSettings, toast, currentTab, setTab }) => {
 	if (loading) {
 		return <Loading />;
 	}
-
 	return (
 		<div className="antialiased grow flex flex-col gap-6 h-full">
 			<Header />
@@ -32,13 +41,13 @@ const App = ({ setSettings, toast, currentTab, setTab }) => {
 			{/*<Deal />*/}
 			{'starter-sites' !== currentTab && <Notifications />}
 
-			<Container className="flex flex-col md:flex-row gap-6 h-full grow">
+			<Container className="flex flex-col lg:flex-row gap-6 h-full grow">
 				<div className="grow">
 					<TabsContent currentTab={currentTab} setTab={setTab} />
 				</div>
 
 				{'starter-sites' !== currentTab && (
-					<div className="shrink-0 md:w-[350px]">
+					<div className="shrink-0 lg:w-[435px]">
 						<Sidebar />
 					</div>
 				)}
@@ -49,19 +58,4 @@ const App = ({ setSettings, toast, currentTab, setTab }) => {
 	);
 };
 
-export default compose(
-	withDispatch((dispatch) => {
-		const { setSettings, setTab } = dispatch('neve-dashboard');
-		return {
-			setSettings: (object) => setSettings(object),
-			setTab: (tab) => setTab(tab),
-		};
-	}),
-	withSelect((select) => {
-		const { getToast, getTab } = select('neve-dashboard');
-		return {
-			toast: getToast(),
-			currentTab: getTab(),
-		};
-	})
-)(App);
+export default App;

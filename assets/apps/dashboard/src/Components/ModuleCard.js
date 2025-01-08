@@ -229,7 +229,7 @@ const ModuleCard = ({
 			<div className="card-content">
 				<p className="card-description">
 					{description + ' '}
-					{documentation.url && (
+					{documentation?.url && (
 						<ExternalLink href={documentation.url}>
 							{__('Learn More', 'neve')}
 						</ExternalLink>
@@ -244,7 +244,7 @@ const ModuleCard = ({
 						))}
 					</div>
 				)}
-				{0 < options.length &&
+				{0 < options?.length &&
 					true === getModuleStatus(slug) &&
 					-1 < tier && (
 						<div className="module-options">

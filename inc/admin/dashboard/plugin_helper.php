@@ -54,6 +54,8 @@ class Plugin_Helper {
 				return $slug . '/feedzy-rss-feed.php';
 			case 'wp-cloudflare-page-cache':
 				return $slug . '/wp-cloudflare-super-page-cache.php';
+			case 'wp-full-stripe-free':
+				return $slug . '/wp-full-stripe.php';
 			default:
 				return $slug . '/' . $slug . '.php';
 		}

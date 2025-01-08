@@ -4,11 +4,11 @@ import compareVersions from 'compare-versions';
 import StarterSitesUnavailable from '../Components/Content/StarterSitesUnavailable';
 import Welcome from '../Components/Content/Welcome';
 import Pro from '../Components/Content/Pro';
-import Plugins from '../Components/Content/Plugins';
-import Help from '../Components/Content/Help';
+
 import Changelog from '../Components/Content/Changelog';
 import FreePro from '../Components/Content/FreePro';
 import { __ } from '@wordpress/i18n';
+import { NEVE_HAS_VALID_PRO } from './constants';
 
 const addUrlHash = (hash) => {
 	window.location.hash = hash;
@@ -43,9 +43,9 @@ const tabs = {
 		label: __('Free vs Pro', 'neve'),
 		render: () => <FreePro />,
 	},
-	plugins: {
-		label: __('Plugins', 'neve'),
-		render: () => <Plugins />,
+	settings: {
+		label: __('Settings', 'neve'),
+		render: () => <Pro hasPro={NEVE_HAS_VALID_PRO} />,
 	},
 	changelog: {
 		render: () => <Changelog />,
@@ -64,7 +64,7 @@ const properTPC =
 	) === 1;
 
 if (activeTPC && properTPC) {
-	delete tabs['starter-sites']['render'];
+	delete tabs['starter-sites'].render;
 
 	tabs['starter-sites'].url = neveDash.tpcAdminURL;
 }
@@ -78,8 +78,8 @@ if (
 }
 
 if (neveDash.pro || neveDash.hasOldPro) {
-	tabs.pro = {
-		label: neveDash.strings.proTabTitle,
+	tabs.settings = {
+		label: __('Settings', 'neve'),
 		render: () => <Pro />,
 	};
 	delete tabs['free-pro'];

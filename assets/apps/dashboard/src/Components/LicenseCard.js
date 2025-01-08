@@ -80,6 +80,7 @@ const LicenseCard = () => {
 			<div className="grid gap-4">
 				{!whiteLabel && licenseCardDescription && (
 					<p
+						className="text-sm"
 						dangerouslySetInnerHTML={{
 							__html: licenseCardDescription,
 						}}

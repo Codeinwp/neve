@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 #wpcontent {
-	@apply pl-0 font-sans;
+	@apply pl-0 font-sans min-h-[100vh];
 }
 
 #wpbody-content > .notice, #wpbody-content > .error {

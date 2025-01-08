@@ -37,7 +37,7 @@ const HeaderTopBar = ({ currentTab, setTab }) => {
 					<div className="flex items-center space-x-3">
 						{!NEVE_IS_WHITELABEL && (
 							<img
-								className="size-7"
+								className="size-7 rounded-sm"
 								src={neveDash.assets + 'logo.svg'}
 								alt={__('Neve Theme Logo', 'neve')}
 							/>

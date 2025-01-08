@@ -2,16 +2,24 @@
 import InstallActivate from '../Plugin/InstallActivate';
 import { withSelect } from '@wordpress/data';
 import Card from '../../Layout/Card';
+import Container from '../../Layout/Container';
+import { __ } from '@wordpress/i18n';
 
 const BackgroundPlaceholder = () => (
 	<div
-		className="block absolute inset-0 bg-cover opacity-15 mx-auto max-w-[1300px]"
-		style={{
-			backgroundImage: `url(${neveDash.assets}starter.jpg)`,
-			height: 'calc: (100vh -100px)',
-			backgroundPosition: 'center -250px',
-		}}
-	/>
+		className="block absolute overflow-hidden inset-0 bg-cover opacity-15 mx-auto max-w-[1300px]"
+		style={
+			{
+				// height: 'calc: (100vh -100px)',
+			}
+		}
+	>
+		<img
+			src={`${neveDash.assets}starter.jpg`}
+			// style={{ marginTop: '-350px' }}
+			alt={__('Starter Sites', 'neve')}
+		/>
+	</div>
 );
 
 const StarterSitesUnavailable = ({ templatesPluginData }) => {
@@ -32,7 +40,7 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
 	};
 
 	return (
-		<div className="relative h-full">
+		<Container className="relative min-h-full">
 			<BackgroundPlaceholder />
 
 			<Card className="z-50 relative flex flex-col justify-center items-center text-center max-w-3xl mx-auto">
@@ -53,7 +61,7 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
 					}}
 				/>
 			</Card>
-		</div>
+		</Container>
 	);
 };
 

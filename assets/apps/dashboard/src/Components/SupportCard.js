@@ -1,7 +1,6 @@
-import { useSelect, withSelect } from '@wordpress/data';
-import { Button } from '@wordpress/components';
-import Link from './Common/Link';
+import { useSelect } from '@wordpress/data';
 import { NEVE_STORE } from '../utils/constants';
+import Link from './Common/Link';
 
 const SupportCard = () => {
 	const { license } = useSelect((select) => {

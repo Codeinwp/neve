@@ -1,16 +1,13 @@
 /* global neveDash */
+import { CircleFadingArrowUp } from 'lucide-react';
+import Notice from '../Common/Notice';
 import ModuleCard from '../ModuleCard';
-
 const Pro = () => {
 	const { modules, hasOldPro, strings } = neveDash;
 
-	if (true) {
+	if (hasOldPro) {
 		return (
-			<div className="col">
-				<div className="card">
-					<h2>{strings.updateOldPro}</h2>
-				</div>
-			</div>
+			<Notice icon={CircleFadingArrowUp}>{strings.updateOldPro}</Notice>
 		);
 	}
 

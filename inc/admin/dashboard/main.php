@@ -59,14 +59,14 @@ class Main {
 	 *
 	 * @var string
 	 */
-	private $plugins_cache_key = 'neve_dash_useful_plugins';
+	private $plugins_cache_key = 'neve_dash_useful_plugins_v2';
 
 	/**
 	 * Plugins Cache Hash key.
 	 *
 	 * @var string
 	 */
-	private $plugins_cache_hash_key = 'neve_dash_useful_plugins_hash';
+	private $plugins_cache_hash_key = 'neve_dash_useful_plugins_hash_v2';
 
 	/**
 	 * Main constructor.
@@ -334,7 +334,7 @@ class Main {
 			'notifications'           => $this->get_notifications(),
 			'customizerShortcuts'     => $this->get_customizer_shortcuts(),
 			'plugins'                 => $this->get_useful_plugins(),
-			'recommended_plugins'     => $this->get_recommended_plugins(),
+			'plugins'                 => $this->get_recommended_plugins(),
 			'modules'                 => $this->get_modules(),
 			'featureData'             => $this->get_free_pro_features(),
 			'showFeedbackNotice'      => $this->should_show_feedback_notice(),
@@ -697,14 +697,63 @@ class Main {
 	 */
 	private function get_recommended_plugins() {
 		$plugins = [
-			'otter-blocks'                  => 'wp',
-			'templates-patterns-collection' => 'wp',
-			'optimole-wp'                   => 'wp',
-			'wp-cloudflare-page-cache'      => 'wp',
-			'feedzy-rss-feeds'              => 'wp',
-			'hyve'                          => 'ti',
-			'sparks'                        => 'ti',
+			'otter-blocks'                  => [
+				'title'       => __( 'Otter Blocks', 'neve' ),
+				'description' => __( 'Advanced blocks for modern WordPress editing', 'neve' ),
+			],
+			'templates-patterns-collection' => [
+				'title'       => __( 'Starter Sites', 'neve' ),
+				'description' => __( 'Import ready-made websites with a single click', 'neve' ),
+			],
+			'wp-full-stripe-free'           => [
+				'title'       => __( 'WP Full Pay', 'neve' ),
+				'description' => __( 'Simple ecommerce solution with Stripe integration', 'neve' ),
+			],
+			'optimole-wp'                   => [
+				'title'       => __( 'Optimole', 'neve' ),
+				'description' => __( 'Smart image optimization and CDN', 'neve' ),
+			],
+			'wp-cloudflare-page-cache'      => [
+				'title'       => __( 'Super Page Cache', 'neve' ),
+				'description' => __( 'Lightning-fast caching made simple', 'neve' ),
+			],
+			'feedzy-rss-feeds'              => [
+				'title'       => __( 'Feedzy', 'neve' ),
+				'description' => __( 'RSS feeds aggregator and content curator', 'neve' ),
+			],
+			// External ones.
+			// 'hyve'                          => [
+			// 'title' => __('Hyve', 'neve'),
+			// 'description' => __('AI chatbot for your website', 'neve')
+			// ],
+			// 'sparks'                        => [
+			// 'title' => __('Sparks', 'neve'),
+			// 'description' => __('WooCommerce enhancements', 'neve')
+			// ],
 		];
+
+		foreach ( $plugins as $slug => $args ) {
+
+			$action = $this->plugin_helper->get_plugin_state( $slug );
+
+			if ( $action === 'deactivate' ) {
+				unset( $plugins[ $slug ] );
+
+				continue;
+			}
+
+			$plugins[ $slug ] = array_merge(
+				[
+					'cta'        => $action,
+					'path'       => $this->plugin_helper->get_plugin_path( $slug ),
+					'activate'   => $this->plugin_helper->get_plugin_action_link( $slug ),
+					'deactivate' => $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' ),
+					'network'    => $this->plugin_helper->get_is_network_wide( $slug ),
+					'version'    => $this->plugin_helper->get_plugin_version( $slug, '0.0.0' ),
+				],
+				$args
+			);
+		}
 
 		return $plugins;
 	}

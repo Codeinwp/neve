@@ -1,3 +1,4 @@
+/* global neveDash */
 import { __ } from '@wordpress/i18n';
 import { LucideSettings } from 'lucide-react';
 import Card from '../../Layout/Card';
@@ -12,7 +13,7 @@ import Link from '../Common/Link';
 const ModuleCardPlaceholder = ({ slug, title, description }) => {
 	const CardIcon = NEVE_MODULE_ICON_MAP[slug] || LucideSettings;
 
-	const dummyToggle = (
+	const ProBadge = (
 		<Tooltip text={__('These features are available in Neve Pro.', 'neve')}>
 			<Pill type="secondary">{__('Pro', 'neve')}</Pill>
 		</Tooltip>
@@ -23,16 +24,18 @@ const ModuleCardPlaceholder = ({ slug, title, description }) => {
 			icon={<CardIcon size={18} />}
 			title={title}
 			className="bg-white p-6 rounded-lg shadow-sm"
-			afterTitle={dummyToggle}
+			afterTitle={ProBadge}
 		>
-			<p className="text-gray-600 text-sm">{description}</p>
+			<p className="text-gray-600 text-sm leading-relaxed">
+				{description}
+			</p>
 		</Card>
 	);
 };
 
 export default () => {
 	return (
-		<div className="grid xl:grid-cols-2 gap-6  mt-6">
+		<div className="grid xl:grid-cols-2 gap-6">
 			<div className="xl:col-span-2 flex items-center justify-between">
 				<h2 className="text-lg font-semibold">
 					{__('Neve Pro Modules', 'neve')}

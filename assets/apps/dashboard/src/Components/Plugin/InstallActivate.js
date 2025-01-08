@@ -1,7 +1,6 @@
 /* global neveDash */
 import { useEffect, useState } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
-import { LucideLoaderCircle } from 'lucide-react';
 import { get } from '../../utils/rest';
 import Button from '../Common/Button';
 import Notice from '../Common/Notice';
