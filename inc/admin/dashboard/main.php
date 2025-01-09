@@ -379,6 +379,7 @@ class Main {
 			'hidePluginsTab'          => apply_filters( 'neve_hide_useful_plugins', ! array_key_exists( 'useful_plugins', $old_about_config ) ),
 			'tpcPath'                 => defined( 'TIOB_PATH' ) ? TIOB_PATH . 'template-patterns-collection.php' : 'template-patterns-collection/template-patterns-collection.php',
 			'tpcAdminURL'             => admin_url( 'admin.php?page=tiob-starter-sites' ),
+			'tpcOnboardingURL'        => admin_url( 'admin.php?page=neve-onboarding' ),
 			'pluginsURL'              => esc_url( admin_url( 'plugins.php' ) ),
 			'getPluginStateBaseURL'   => esc_url( rest_url( '/nv/v1/dashboard/plugin-state/' ) ),
 			'canInstallPlugins'       => current_user_can( 'install_plugins' ),
