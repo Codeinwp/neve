@@ -5,12 +5,15 @@ import {
 	ToggleControl,
 	TextareaControl,
 	ExternalLink,
+	ButtonGroup,
+	Placeholder,
 } from '@wordpress/components';
 import IconSelector from './IconSelector';
 import { getIcons, ColorControl } from '@neve-wp/components';
 import PropTypes from 'prop-types';
 import { __ } from '@wordpress/i18n';
 import Range from '../range/Range';
+import { MediaUpload } from '@wordpress/media-utils';
 
 const RepeaterItemContent = ({
 	fields,
@@ -163,14 +166,97 @@ const RepeaterItemContent = ({
 						{...fields[key]}
 					/>
 				);
+			case 'switcher':
+				return <Switcher fieldId={key} currentField={currentField} />;
+			case 'media':
+				return (
+					<Placeholder
+						icon="format-image"
+						label={__('Custom Icon', 'neve')}
+					>
+						{!value[index][key] ? (
+							<>
+								<p>
+									{__(
+										'Select from the Media Library or upload a new image',
+										'neve'
+									)}
+								</p>
+								<MediaUpload
+									onSelect={(imageData) => {
+										changeContent(key, imageData.url);
+									}}
+									allowedTypes={['image']}
+									render={({ open }) => (
+										<Button isSecondary onClick={open}>
+											{__('Add Image', 'neve')}
+										</Button>
+									)}
+								/>
+							</>
+						) : (
+							<>
+								<img src={value[index][key]} alt="icon" />
+								<Button
+									disabled={!wp.media}
+									className="remove-image"
+									isDestructive
+									isSecondary
+									onClick={() => {
+										changeContent(key, '');
+									}}
+								>
+									{__('Remove Image', 'neve')}
+								</Button>
+							</>
+						)}
+					</Placeholder>
+				);
 		}
+	};
+
+	const Switcher = ({ fieldId, currentField }) => {
+		const selectedOption =
+			value[index][fieldId] || Object.keys(currentField.options)[0];
+
+		return (
+			<>
+				<ButtonGroup className="neve-background-type-control">
+					{Object.entries(currentField.options).map(
+						([optionKey, option]) => {
+							return (
+								<Button
+									key={optionKey}
+									isPrimary={optionKey === selectedOption}
+									isSecondary={optionKey !== selectedOption}
+									onClick={() => {
+										changeContent(fieldId, optionKey);
+									}}
+								>
+									{option.label}
+								</Button>
+							);
+						}
+					)}
+				</ButtonGroup>
+				{currentField.options?.[selectedOption]?.fields.map(
+					(componentId) => {
+						return toComponent(componentId, value[index]);
+					}
+				)}
+			</>
+		);
 	};
 
 	return (
 		<div className="nv-repeater-content">
-			{Object.entries(currentFields).map(([key]) => {
-				return toComponent(key, value[index]);
-			})}
+			{Object.entries(currentFields)
+				.filter(([, options]) => {
+					return !options?.parent;
+				})
+				.map(([key]) => {
+					return toComponent(key, value[index]);
+				})}
 			{value.length > 1 && !isBlocked && (
 				<Button
 					className="nv-repeater-remove-button"
