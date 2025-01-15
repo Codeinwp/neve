@@ -3,16 +3,11 @@ import compareVersions from 'compare-versions';
 
 import StarterSitesUnavailable from '../Components/Content/StarterSitesUnavailable';
 import Welcome from '../Components/Content/Welcome';
-import Pro from '../Components/Content/Pro';
-
-import Changelog from '../Components/Content/Changelog';
 import FreePro from '../Components/Content/FreePro';
-import { __ } from '@wordpress/i18n';
-import { NEVE_HAS_VALID_PRO } from './constants';
+import Settings from '../Components/Content/Settings';
+import Changelog from '../Components/Content/Changelog';
 
-const addUrlHash = (hash) => {
-	window.location.hash = hash;
-};
+import { __ } from '@wordpress/i18n';
 
 const getTabHash = () => {
 	let hash = window.location.hash;
@@ -45,7 +40,7 @@ const tabs = {
 	},
 	settings: {
 		label: __('Settings', 'neve'),
-		render: () => <Pro hasPro={NEVE_HAS_VALID_PRO} />,
+		render: () => <Settings />,
 	},
 	changelog: {
 		render: () => <Changelog />,
@@ -69,35 +64,15 @@ if (activeTPC && properTPC) {
 	tabs['starter-sites'].url = neveDash.tpcAdminURL;
 }
 
-if (
-	(neveDash.pro || neveDash.hasOldPro) &&
-	neveDash.license &&
-	neveDash.license.valid === 'valid'
-) {
-	delete tabs['custom-layouts'];
-}
-
 if (neveDash.pro || neveDash.hasOldPro) {
-	tabs.settings = {
-		label: __('Settings', 'neve'),
-		render: () => <Pro />,
-	};
 	delete tabs['free-pro'];
 }
 
 if (neveDash.whiteLabel) {
 	delete tabs.changelog;
-	delete tabs.plugins;
 	if (neveDash.whiteLabel.hideStarterSites) {
 		delete tabs['starter-sites'];
 	}
 }
 
-if (neveDash.hidePluginsTab) {
-	delete tabs.plugins;
-}
-
-const untrailingSlashIt = (str) => str.replace(/\/$/, '');
-const trailingSlashIt = (str) => untrailingSlashIt(str) + '/';
-
-export { addUrlHash, getTabHash, trailingSlashIt, untrailingSlashIt, tabs };
+export { getTabHash, tabs };

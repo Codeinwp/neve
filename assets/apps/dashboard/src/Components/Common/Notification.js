@@ -15,7 +15,7 @@ import Tooltip from './Tooltip';
 import TransitionInOut from './TransitionInOut';
 import { useEffect } from 'react';
 
-const Notification = ({ data, slug }) => {
+const Notification = ({ data }) => {
 	const [hidden, setHidden] = useState(false);
 	const { text, cta, type, update, url, targetBlank } = data;
 	const { canInstallPlugins } = neveDash;

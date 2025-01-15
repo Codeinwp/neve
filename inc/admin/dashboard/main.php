@@ -8,6 +8,7 @@
 namespace Neve\Admin\Dashboard;
 
 use Neve\Core\Limited_Offers;
+use Neve\Core\Settings\Config;
 use Neve\Core\Theme_Info;
 use Neve\Core\Tracker;
 
@@ -141,6 +142,16 @@ class Main {
 				'type'         => 'string',
 				'show_in_rest' => true,
 				'default'      => '',
+			]
+		);
+
+		register_setting(
+			'neve_settings',
+			Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING,
+			[
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => false,
 			]
 		);
 	}
@@ -333,7 +344,6 @@ class Main {
 			'isValidLicense'          => $this->has_valid_addons(),
 			'notifications'           => $this->get_notifications(),
 			'customizerShortcuts'     => $this->get_customizer_shortcuts(),
-			'plugins'                 => $this->get_useful_plugins(),
 			'plugins'                 => $this->get_recommended_plugins(),
 			'modules'                 => $this->get_modules(),
 			'featureData'             => $this->get_free_pro_features(),
@@ -721,26 +731,15 @@ class Main {
 				'title'       => __( 'Feedzy', 'neve' ),
 				'description' => __( 'RSS feeds aggregator and content curator', 'neve' ),
 			],
-			// External ones.
-			// 'hyve'                          => [
-			// 'title' => __('Hyve', 'neve'),
-			// 'description' => __('AI chatbot for your website', 'neve')
-			// ],
-			// 'sparks'                        => [
-			// 'title' => __('Sparks', 'neve'),
-			// 'description' => __('WooCommerce enhancements', 'neve')
-			// ],
+			'hyve-lite'                     => [
+				'title'       => __( 'Hyve', 'neve' ),
+				'description' => __( 'AI chatbot for your website', 'neve' ),
+			],
 		];
 
 		foreach ( $plugins as $slug => $args ) {
 
 			$action = $this->plugin_helper->get_plugin_state( $slug );
-
-			if ( $action === 'deactivate' ) {
-				unset( $plugins[ $slug ] );
-
-				continue;
-			}
 
 			$plugins[ $slug ] = array_merge(
 				[

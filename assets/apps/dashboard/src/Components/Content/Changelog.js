@@ -7,6 +7,7 @@ import { useState } from '@wordpress/element';
 import Card from '../../Layout/Card';
 import Button from '../Common/Button';
 import Pill from '../Common/Pill';
+import { TransitionWrapper } from '../Common/TransitionWrapper';
 
 const TAB_CHOICES = {
 	FREE: 'free',
@@ -112,7 +113,7 @@ const Changelog = () => {
 		activeTab === TAB_CHOICES.FREE ? changelog : changelogPro;
 
 	return (
-		<div className="grid gap-5">
+		<TransitionWrapper className="grid gap-5">
 			{changelogPro && (
 				<Card>
 					<div className="flex items-center justify-between">
@@ -165,7 +166,7 @@ const Changelog = () => {
 					</Button>
 				</div>
 			)}
-		</div>
+		</TransitionWrapper>
 	);
 };
 

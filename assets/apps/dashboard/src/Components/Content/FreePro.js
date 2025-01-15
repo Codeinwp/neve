@@ -13,42 +13,7 @@ import {
 import Card from '../../Layout/Card';
 import Tooltip from '../Common/Tooltip';
 import Button from '../Common/Button';
-
-const IntroCard = () => {
-	const upgradeList = [
-		__('Need advanced header/footer customization options', 'neve'),
-		__(
-			'Run an online store and want enhanced WooCommerce features',
-			'neve'
-		),
-		__('Build multilingual or RTL websites', 'neve'),
-		__('Create websites for clients and need white-labeling', 'neve'),
-	];
-
-	return (
-		<Card title={__('Understanding Neve Pro Features', 'neve')}>
-			<div className="text-gray-600 space-y-4">
-				<p className="text-sm">
-					{__(
-						"While Neve's free version includes everything you need to build a great website, Neve Pro adds advanced customization options and specific features for e-commerce, multilingual sites, and client projects. Here's a detailed comparison to help you decide if Pro is right for your needs.",
-						'neve'
-					)}
-				</p>
-				<div className="bg-blue-50 border-l-4 border-blue-600 p-4 text-sm">
-					<strong className="text-gray-900 mb-3 block">
-						{__('Considering an upgrade?', 'neve')}
-					</strong>
-					{__('Pro features are most helpful if you:', 'neve')}
-					<ul className="mt-2 space-y-1">
-						{upgradeList.map((item, index) => (
-							<li key={index}>• {item}</li>
-						))}
-					</ul>
-				</div>
-			</div>
-		</Card>
-	);
-};
+import { TransitionWrapper } from '../Common/TransitionWrapper';
 
 const FreeProCard = () => (
 	<Card className="!p-0">
@@ -122,14 +87,14 @@ const UpsellCard = () => {
 				<h3 className="text-lg font-semibold mb-4">
 					{__('Need help deciding?', 'neve')}
 				</h3>
-				<div className="space-y-4 mb-6 text-[13px] text-gray-600">
+				<div className="space-y-4 mb-6 text-gray-600">
 					<p>
 						{__(
 							'Our support team is happy to answer your questions about specific Pro features and help you determine if they match your needs.',
 							'neve'
 						)}
 					</p>
-					<div className="flex items-start space-x-2 text-[13px]">
+					<div className="flex items-start space-x-2">
 						<div className="bg-gray-100 px-3 py-1.5 rounded">
 							{__(
 								'Average response time: ~8 hours during business days',
@@ -166,8 +131,12 @@ const UpsellCard = () => {
 export default () => {
 	return (
 		<div className="grid gap-6">
-			<FreeProCard />
-			<UpsellCard />
+			<TransitionWrapper from="top">
+				<FreeProCard />
+			</TransitionWrapper>
+			<TransitionWrapper className="delay-150">
+				<UpsellCard />
+			</TransitionWrapper>
 		</div>
 	);
 };

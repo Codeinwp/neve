@@ -1,20 +1,17 @@
 /* global neveDash */
-import { addUrlHash, getTabHash, tabs } from '../utils/common';
 import cn from 'classnames';
+import { getTabHash, tabs } from '../utils/common';
 
-import { __ } from '@wordpress/i18n';
 import { Fragment, useEffect } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
-import { LucideBookOpen, LucideFileText } from 'lucide-react';
 import { useDispatch, useSelect } from '@wordpress/data';
-import {
-	NEVE_HAS_VALID_PRO,
-	NEVE_IS_WHITELABEL,
-	NEVE_STORE,
-} from '../utils/constants';
+import { LucideBookOpen, LucideFileText } from 'lucide-react';
+import useLicenseData from '../Hooks/useLicenseData';
 import Container from '../Layout/Container';
-import Pill from './Common/Pill';
+import { NEVE_IS_WHITELABEL, NEVE_STORE } from '../utils/constants';
 import Button from './Common/Button';
+import Pill from './Common/Pill';
 
 const HeaderTopBar = ({ currentTab, setTab }) => {
 	const NAV_BUTTONS = {
@@ -29,6 +26,8 @@ const HeaderTopBar = ({ currentTab, setTab }) => {
 			hide: NEVE_IS_WHITELABEL,
 		},
 	};
+
+	const { isLicenseValid } = useLicenseData();
 
 	return (
 		<div className="border-b border-gray-100">
@@ -46,7 +45,7 @@ const HeaderTopBar = ({ currentTab, setTab }) => {
 							{neveDash.strings.header}
 						</span>
 						<Pill type="secondary">
-							{NEVE_HAS_VALID_PRO
+							{isLicenseValid
 								? __('Pro', 'neve')
 								: __('Free', 'neve')}
 						</Pill>
@@ -78,16 +77,13 @@ const HeaderTopBar = ({ currentTab, setTab }) => {
 
 								return (
 									<Fragment key={slug}>
+										{index > 0 && (
+											<div className="w-px h-4 bg-gray-200 mx-3" />
+										)}
 										<Button isLink {...props}>
 											{icon}
 											<span>{label}</span>
 										</Button>
-
-										{index <
-											Object.keys(NAV_BUTTONS).length -
-												1 && (
-											<div className="w-px h-4 bg-gray-200 mx-3" />
-										)}
 									</Fragment>
 								);
 							}
@@ -104,45 +100,43 @@ const Navigation = ({ setTab, currentTab }) => {
 		<div className="border-b border-gray-200">
 			<Container>
 				<nav className="flex -mb-px">
-					{Object.entries(tabs).map(
-						([slug, { label, url, render }]) => {
-							if (!label) {
-								return null;
-							}
-							const itemClasses = cn([
-								'relative px-4 py-3 text-[13px] font-medium border-b-2',
-								{
-									'text-blue-600 border-blue-600':
-										currentTab === slug,
-									'border-transparent text-gray-600 hover:text-gray-900 transition-colors duration-150':
-										currentTab !== slug,
-								},
-							]);
-
-							const handleLinkClick = (e) => {
-								e.preventDefault();
-								setTab(slug);
-							};
-
-							const linkProps = {
-								href: url ? url : '#' + slug,
-							};
-
-							if (!url) {
-								linkProps.onClick = handleLinkClick;
-							}
-
-							return (
-								<a
-									{...linkProps}
-									key={slug}
-									className={itemClasses}
-								>
-									{label}
-								</a>
-							);
+					{Object.entries(tabs).map(([slug, { label, url }]) => {
+						if (!label) {
+							return null;
 						}
-					)}
+						const itemClasses = cn([
+							'relative px-4 py-3 font-medium border-b-2',
+							{
+								'text-blue-600 border-blue-600':
+									currentTab === slug,
+								'border-transparent text-gray-600 hover:text-gray-900 transition-colors duration-150':
+									currentTab !== slug,
+							},
+						]);
+
+						const handleLinkClick = (e) => {
+							e.preventDefault();
+							setTab(slug);
+						};
+
+						const linkProps = {
+							href: url ? url : '#' + slug,
+						};
+
+						if (!url) {
+							linkProps.onClick = handleLinkClick;
+						}
+
+						return (
+							<a
+								{...linkProps}
+								key={slug}
+								className={itemClasses}
+							>
+								{label}
+							</a>
+						);
+					})}
 				</nav>
 			</Container>
 		</div>
@@ -178,7 +172,7 @@ const Header = () => {
 
 	const handleTabSwitch = (slug) => {
 		setTab(slug);
-		addUrlHash(slug);
+		window.location.hash = slug;
 	};
 
 	return (

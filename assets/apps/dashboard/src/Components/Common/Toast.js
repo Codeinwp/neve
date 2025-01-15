@@ -7,9 +7,9 @@ import {
 	LucideCircleX,
 	LucideInfo,
 } from 'lucide-react';
-import TransitionInOut from './Common/TransitionInOut';
+import TransitionInOut from './TransitionInOut';
 
-const Toast = ({ message, dismiss, time, type = 'info' }) => {
+const Toast = ({ message, dismiss, time, type = 'info', className }) => {
 	const [show, setShow] = useState(false);
 
 	useEffect(() => {
@@ -23,7 +23,7 @@ const Toast = ({ message, dismiss, time, type = 'info' }) => {
 		}, timeBeforeHide);
 
 		const dismissTimeout = setTimeout(() => {
-			dismiss('');
+			if (dismiss) dismiss('');
 		}, timeBeforeDismiss);
 
 		return () => {
@@ -42,12 +42,12 @@ const Toast = ({ message, dismiss, time, type = 'info' }) => {
 	const classes = cn(
 		'px-2 py-1.5 flex items-center text-sm border rounded gap-2',
 		{
-			'border-sky-300 bg-sky-50 text-sky-800': type === 'info',
-			'border-red-300 bg-red-50 text-red-800': type === 'error',
-			'border-lime-300 bg-lime-50 text-lime-800': type === 'success',
-			'border-orange-300 bg-orange-50 text-orange-800':
-				type === 'warning',
-		}
+			'bg-sky-50 text-sky-800': type === 'info',
+			'bg-red-50 text-red-800': type === 'error',
+			'bg-lime-50 text-lime-800': type === 'success',
+			'bg-orange-50 text-orange-800': type === 'warning',
+		},
+		className
 	);
 
 	const ICON = iconMap[type];

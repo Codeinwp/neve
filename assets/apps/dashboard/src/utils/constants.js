@@ -2,26 +2,26 @@
 
 import {
 	LucideArrowUp,
+	LucideBriefcase,
+	LucideCreditCard,
 	LucideGalleryVertical,
 	LucideGauge,
 	LucideGraduationCap,
+	LucideImage,
+	LucideLayoutTemplate,
 	LucideNewspaper,
 	LucidePalette,
 	LucidePanelRightDashed,
 	LucidePanelTopDashed,
 	LucidePin,
+	LucideRss,
 	LucideScanBarcode,
 	LucideScroll,
-	LucideSettings,
 	LucideShield,
 	LucideShoppingCart,
-	LucideTypeOutline,
-	LucideToyBrick,
-	LucideLayoutTemplate,
-	LucideCreditCard,
-	LucideImage,
 	LucideTimer,
-	LucideRss,
+	LucideToyBrick,
+	LucideTypeOutline,
 } from 'lucide-react';
 
 export const NEVE_STORE = 'neve-dashboard';
@@ -32,7 +32,7 @@ export const NEVE_HAS_VALID_PRO =
 
 export const NEVE_HAS_PRO = neveDash.pro;
 
-export const NEVE_IS_WHITELABEL = neveDash.whiteLabel;
+export const NEVE_IS_WHITELABEL = !neveDash.modules.white_label;
 
 export const NEVE_HIDE_PLUGINS = neveDash.hidePluginsTab;
 
@@ -45,7 +45,7 @@ export const NEVE_MODULE_ICON_MAP = {
 	scroll_to_top: LucideArrowUp,
 	performance_features: LucideGauge,
 	block_editor_booster: LucideScroll,
-	white_label: LucideSettings,
+	white_label: LucideBriefcase,
 	custom_layouts: LucideGalleryVertical,
 	elementor_booster: LucidePalette,
 	lifterlms_booster: LucideGraduationCap,

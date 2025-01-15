@@ -6,7 +6,7 @@ const Button = (props) => {
 	const {
 		href,
 		onClick,
-		className,
+		className = '',
 		isSubmit,
 		isPrimary,
 		isSecondary,
@@ -17,20 +17,22 @@ const Button = (props) => {
 	} = props;
 
 	const classNames = cn([
-		'flex items-center px-3 py-2 transition-colors duration-150 rounded text-sm border gap-2',
+		'flex items-center px-3 py-2 transition-colors duration-150 text-sm border gap-2',
 		{
+			rounded: !className.includes('rounded'),
 			'border-transparent bg-blue-600 text-white hover:bg-blue-700 hover:text-white':
 				isPrimary,
 			'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white':
 				isSecondary,
 			'border-transparent text-gray-600 hover:text-gray-900': isLink,
-			'cursor-not-allowed opacity-50 pointer-events-none': disabled,
+			'cursor-not-allowed opacity-50': disabled,
 		},
 		className,
 	]);
 
 	const passedProps = {
 		className: classNames,
+		disabled,
 		onClick,
 	};
 

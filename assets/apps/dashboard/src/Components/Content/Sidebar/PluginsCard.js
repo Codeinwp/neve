@@ -1,16 +1,19 @@
 /* global neveDash */
-import usePluginActions from '../Hooks/usePluginActions';
-import Card from '../Layout/Card';
-import { NEVE_HIDE_PLUGINS, NEVE_PLUGIN_ICON_MAP } from '../utils/constants';
+import usePluginActions from '../../../Hooks/usePluginActions';
+import Card from '../../../Layout/Card';
+import {
+	NEVE_HIDE_PLUGINS,
+	NEVE_PLUGIN_ICON_MAP,
+} from '../../../utils/constants';
 
 import { useSelect } from '@wordpress/data';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import cn from 'classnames';
 import { LoaderCircle, LucidePuzzle } from 'lucide-react';
-import Pill from './Common/Pill';
-import TransitionInOut from './Common/TransitionInOut';
-import Toast from './Toast';
+import Pill from '../../Common/Pill';
+import Toast from '../../Common/Toast';
+import TransitionInOut from '../../Common/TransitionInOut';
 
 const PluginCard = ({ slug, data }) => {
 	const ICON = NEVE_PLUGIN_ICON_MAP[slug] || LucidePuzzle;

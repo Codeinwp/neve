@@ -1,25 +1,25 @@
-import Header from './Header';
-import Notifications from './Notifications';
-import TabsContent from './TabsContent';
-import Sidebar from './Sidebar';
-import Loading from './Loading';
-import Snackbar from './Snackbar';
 import Container from '../Layout/Container';
 import { fetchOptions } from '../utils/rest';
+import Sidebar from './Content/Sidebar/Sidebar';
+import Header from './Header';
+import Notifications from './Notifications';
+import SkeletonLoader from './SkeletonLoader';
+import Snackbar from './Snackbar';
 
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useState, useEffect } from '@wordpress/element';
-import Deal from './Deal';
+import { useEffect, useState } from '@wordpress/element';
+import { tabs } from '../utils/common';
+import { TransitionWrapper } from './Common/TransitionWrapper';
+import { NEVE_STORE } from '../utils/constants';
 
 const App = () => {
 	const [loading, setLoading] = useState(true);
 
-	const { setSettings, setTab } = useDispatch('neve-dashboard');
+	const { setSettings, setTab } = useDispatch(NEVE_STORE);
 
-	const { toast, currentTab } = useSelect((select) => {
-		const { getToast, getTab } = select('neve-dashboard');
+	const { currentTab } = useSelect((select) => {
+		const { getTab } = select(NEVE_STORE);
 		return {
-			toast: getToast(),
 			currentTab: getTab(),
 		};
 	});
@@ -32,7 +32,7 @@ const App = () => {
 	}, []);
 
 	if (loading) {
-		return <Loading />;
+		return <SkeletonLoader />;
 	}
 	return (
 		<div className="antialiased grow flex flex-col gap-6 h-full">
@@ -42,18 +42,16 @@ const App = () => {
 			{'starter-sites' !== currentTab && <Notifications />}
 
 			<Container className="flex flex-col lg:flex-row gap-6 h-full grow">
-				<div className="grow">
-					<TabsContent currentTab={currentTab} setTab={setTab} />
-				</div>
+				<div className="grow">{tabs[currentTab].render(setTab)}</div>
 
-				{'starter-sites' !== currentTab && (
-					<div className="shrink-0 lg:w-[435px]">
+				{!['starter-sites', 'settings'].includes(currentTab) && (
+					<TransitionWrapper className="shrink-0 lg:w-[435px]">
 						<Sidebar />
-					</div>
+					</TransitionWrapper>
 				)}
 			</Container>
 
-			{toast && <Snackbar />}
+			<Snackbar />
 		</div>
 	);
 };

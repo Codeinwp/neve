@@ -1,5 +1,4 @@
-/* global neveDash */
-import { changeOption } from '../utils/rest';
+import { changeOption } from '../../../utils/rest';
 import SupportCard from './SupportCard';
 import LicenseCard from './LicenseCard';
 import { __ } from '@wordpress/i18n';
@@ -10,11 +9,12 @@ import {
 	NEVE_HIDE_PLUGINS,
 	NEVE_IS_WHITELABEL,
 	NEVE_STORE,
-} from '../utils/constants';
-import Card from '../Layout/Card';
-import Link from './Common/Link';
-import Toggle from './Common/Toggle';
+} from '../../../utils/constants';
+import Card from '../../../Layout/Card';
+import Link from '../../Common/Link';
+import Toggle from '../../Common/Toggle';
 import PluginsCard from './PluginsCard';
+import { LucideLoaderCircle } from 'lucide-react';
 
 const ReviewCard = () => (
 	<Card title={__('Leave us a review', 'neve')}>
@@ -41,27 +41,34 @@ const ContributingCard = () => {
 	});
 
 	const [tracking, setTracking] = useState('yes' === loggerEnabled);
+	const [loading, setLoading] = useState(false);
 
 	const { setToast, setLogger } = useDispatch(NEVE_STORE);
 
 	const handleTrackingChange = (value) => {
+		setLoading(true);
 		setTracking(value);
-		changeOption(
-			'neve_logger_flag',
-			value ? 'yes' : 'no',
-			false,
-			false
-		).then((r) => {
-			if (!r.success) {
+		changeOption('neve_logger_flag', value ? 'yes' : 'no', false, false)
+			.then((r) => {
+				if (!r.success) {
+					setToast(
+						__('Could not update option. Please try again.', 'neve')
+					);
+					setTracking(!value);
+					return;
+				}
+				setLogger(value ? 'yes' : 'no');
+				setToast(__('Option Updated', 'neve'));
+			})
+			.catch(() => {
 				setToast(
 					__('Could not update option. Please try again.', 'neve')
 				);
 				setTracking(!value);
-				return false;
-			}
-			setLogger(value ? 'yes' : 'no');
-			setToast(__('Option Updated', 'neve'));
-		});
+			})
+			.finally(() => {
+				setLoading(false);
+			});
 	};
 
 	return (
@@ -85,7 +92,17 @@ const ContributingCard = () => {
 				className="mt-4"
 				onToggle={handleTrackingChange}
 				checked={tracking}
-				label={__('Allow Anonymous Tracking', 'neve')}
+				label={
+					<div className="flex items-center gap-3">
+						{__('Allow Anonymous Tracking', 'neve')}
+						{loading && (
+							<LucideLoaderCircle
+								size={18}
+								className="animate-spin"
+							/>
+						)}
+					</div>
+				}
 			/>
 		</Card>
 	);

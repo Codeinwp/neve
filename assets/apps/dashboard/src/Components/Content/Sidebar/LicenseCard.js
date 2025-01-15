@@ -1,31 +1,25 @@
 /* global neveDash */
-import { fetchOptions, send } from '../utils/rest';
-import Toast from './Toast';
+import { fetchOptions, send } from '../../../utils/rest';
+import Toast from '../../Common/Toast';
 
+import { useDispatch } from '@wordpress/data';
+import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { Fragment, useState } from '@wordpress/element';
-import { useDispatch, useSelect } from '@wordpress/data';
-import Card from '../Layout/Card';
-import { NEVE_STORE } from '../utils/constants';
-import Pill from './Common/Pill';
 import { LucideCircleCheck, LucideCircleX } from 'lucide-react';
-import Button from './Common/Button';
+import useLicenseData from '../../../Hooks/useLicenseData';
+import Card from '../../../Layout/Card';
+import { NEVE_STORE } from '../../../utils/constants';
+import Button from '../../Common/Button';
+import Pill from '../../Common/Pill';
 
 const LicenseCard = () => {
 	const { proApi } = neveDash;
 
 	const { changeLicense, setSettings } = useDispatch(NEVE_STORE);
 
-	const { license } = useSelect((select) => {
-		const { getLicense } = select(NEVE_STORE);
-		return {
-			license: getLicense(),
-		};
-	});
+	const { license, isLicenseValid } = useLicenseData();
 
-	const [key, setKey] = useState(
-		license && 'valid' === license.valid ? license.key || '' : ''
-	);
+	const [key, setKey] = useState(isLicenseValid ? license.key || '' : '');
 	const [status, setStatus] = useState(false);
 
 	const [toast, setToast] = useState('');
@@ -114,7 +108,7 @@ const LicenseCard = () => {
 					<Button
 						isPrimary={'valid' !== valid}
 						isSecondary={'valid' === valid}
-						disabled={status || !key}
+						disabled={!!status || !key}
 						isSubmit
 					>
 						{getStatusLabel()}

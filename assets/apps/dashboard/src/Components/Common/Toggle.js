@@ -1,7 +1,16 @@
-import { Switch, Label, Field } from '@headlessui/react';
+import { Switch, Label, Field, Description } from '@headlessui/react';
 import cn from 'classnames';
 
-export default ({ checked, onToggle, label, disabled = false, className }) => {
+export default ({
+	checked,
+	onToggle,
+	label,
+	disabled = false,
+	className,
+	labelBefore = false,
+	labelClassName = '',
+	description,
+}) => {
 	const switchClasses = cn(
 		'group inline-flex h-6 w-11 items-center rounded-full bg-gray-300 transition data-[checked]:bg-blue-600',
 		{
@@ -11,18 +20,41 @@ export default ({ checked, onToggle, label, disabled = false, className }) => {
 
 	const wrapClasses = cn('flex items-center gap-3', className);
 
-	return (
-		<Field className={wrapClasses}>
-			<Switch
-				checked={checked}
-				onChange={onToggle}
-				disabled={disabled}
-				className={switchClasses}
-			>
-				<span className="size-4 translate-x-1 rounded-full bg-white transition group-data-[checked]:translate-x-6" />
-			</Switch>
+	const labelClasses = cn(
+		{
+			'font-medium': !labelClassName.includes('font-'),
+			'text-sm': !labelClassName.includes('text-'),
+			'text-gray-600': !labelClassName.includes('text-'),
+		},
+		labelClassName
+	);
 
-			<Label className="text-sm text-gray-600">{label}</Label>
+	return (
+		<Field className="grid gap-2">
+			<div className={wrapClasses}>
+				{label && labelBefore && (
+					<Label className={labelClasses}>{label}</Label>
+				)}
+
+				<Switch
+					checked={checked}
+					onChange={onToggle}
+					disabled={disabled}
+					className={switchClasses}
+				>
+					<span className="size-4 translate-x-1 rounded-full bg-white transition group-data-[checked]:translate-x-6" />
+				</Switch>
+
+				{label && !labelBefore && (
+					<Label className={labelClasses}>{label}</Label>
+				)}
+			</div>
+
+			{description && (
+				<Description className="text-xs text-gray-600">
+					{description}
+				</Description>
+			)}
 		</Field>
 	);
 };

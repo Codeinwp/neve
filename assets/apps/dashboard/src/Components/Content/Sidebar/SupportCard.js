@@ -1,6 +1,6 @@
 import { useSelect } from '@wordpress/data';
-import { NEVE_STORE } from '../utils/constants';
-import Link from './Common/Link';
+import { NEVE_STORE } from '../../../utils/constants';
+import Link from '../../Common/Link';
 
 const SupportCard = () => {
 	const { license } = useSelect((select) => {

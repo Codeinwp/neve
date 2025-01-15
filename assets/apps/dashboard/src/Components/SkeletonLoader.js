@@ -1,9 +1,9 @@
-const Loading = () => (
+const SkeletonLoader = () => (
 	<div className="antialiased grow flex flex-col gap-6 h-full">
 		<header className="bg-white z-50">
 			<div>
 				<div className="border-b border-gray-100">
-					<div className="max-w-[90vw] lg:container mx-auto px-2 lg:px-6">
+					<div className="max-w-[90vw] w-full lg:container mx-auto px-2 lg:px-6">
 						<div className="flex items-center justify-between h-14">
 							<div className="flex items-center space-x-3">
 								<div className="size-7 bg-gray-200 rounded-sm" />
@@ -46,7 +46,7 @@ const Loading = () => (
 			</div>
 		</header>
 
-		<div className="max-w-[90vw] lg:container mx-auto px-2 lg:px-6 flex flex-col lg:flex-row gap-6 h-full grow">
+		<div className="max-w-[90vw] w-full lg:container mx-auto px-2 lg:px-6 flex flex-col lg:flex-row gap-6 h-full grow">
 			<div className="grow">
 				<div className="grid gap-6">
 					<div className="p-6 rounded-lg bg-white shadow-sm">
@@ -128,4 +128,4 @@ const Loading = () => (
 	</div>
 );
 
-export default Loading;
+export default SkeletonLoader;

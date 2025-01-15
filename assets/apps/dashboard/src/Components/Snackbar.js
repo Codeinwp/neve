@@ -1,40 +1,75 @@
-import { Snackbar } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { useState } from 'react';
 import { NEVE_STORE } from '../utils/constants';
+import Toast from './Common/Toast';
+
+const SingleToast = ({ message, type, onRemove }) => {
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			onRemove();
+		}, 3000);
+
+		return () => clearTimeout(timer);
+	}, [onRemove]);
+
+	return <Toast className="shadow-lg" type={type} message={message} />;
+};
 
 const GlobalSnackbar = () => {
+	const [toasts, setToasts] = useState([]);
 	const { setToast } = useDispatch(NEVE_STORE);
 
-	const { toast } = useSelect((select) => {
+	const toast = useSelect((select) => {
 		const { getToast } = select(NEVE_STORE);
-		return {
-			toast: getToast,
-		};
+		return getToast();
 	});
 
-	useEffect(() => {
-		setTimeout(() => {
-			setToast(null);
-		}, 3000);
-	}, []);
-
-	const message = toast();
-	const style = {
-		opacity: null === message ? 0 : 1,
+	const buildToast = (message) => {
+		if (message === false) {
+			return {
+				message: __(
+					'Could not Update Option. Please try again.',
+					'neve'
+				),
+				type: 'error',
+			};
+		}
+		if ('boolean' !== typeof message) {
+			return { message, type: 'success' };
+		}
+		return { message: __('Option Updated', 'neve'), type: 'success' };
 	};
-	let renderToast = __('Option Updated', 'neve');
-	if (message === false) {
-		renderToast = __('Could not Update Option. Please try again.', 'neve');
-	}
-	if ('boolean' !== typeof message) {
-		renderToast = toast();
-	}
+
+	useEffect(() => {
+		if (null === toast) {
+			return;
+		}
+
+		const newToast = {
+			id: Date.now(),
+			...buildToast(toast),
+		};
+
+		setToasts((prev) => [...prev, newToast]);
+		setToast(null);
+	}, [toast, setToast]);
+
+	const onRemove = (id) => {
+		setToasts((prev) => prev.filter((item) => item.id !== id));
+	};
 
 	return (
-		<div style={style}>
-			<Snackbar className="fixed bottom-5 ml-5">{renderToast}</Snackbar>
+		<div className="fixed bottom-5 ml-5 grid gap-2 z-max">
+			{toasts.map(({ id, message, type }) => (
+				<SingleToast
+					key={id}
+					message={message}
+					type={type}
+					onRemove={() => onRemove(id)}
+				/>
+			))}
 		</div>
 	);
 };
