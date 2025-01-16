@@ -288,7 +288,7 @@ export default () => {
 		<>
 			<div className="flex items-center justify-between mb-6">
 				<h1 className="text-lg font-semibold">
-					{__("White Label Settings", "neve")}
+					{__('White Label Settings', 'neve')}
 				</h1>
 
 				{showPlaceholder && (
@@ -298,7 +298,7 @@ export default () => {
 						onClick={() => setShowTierInfo(!showTierInfo)}
 					>
 						<LucideMessageCircleQuestion size={18} />
-						{__("Available in Agency Plan", "neve")}
+						{__('Available in Agency Plan', 'neve')}
 					</Button>
 				)}
 			</div>
@@ -307,12 +307,14 @@ export default () => {
 			{!showPlaceholder && !neveDash.whiteLabelData && (
 				<Notice icon={CircleFadingArrowUp}>
 					{__(
-						"Please reload this page in order to view the White Label Settings",
-						"neve"
+						'Please reload this page in order to view the White Label Settings',
+						'neve'
 					)}
 				</Notice>
 			)}
-			{!showPlaceholder && !!neveDash.whiteLabelData && <WhiteLabelSettings />}
+			{!showPlaceholder && !!neveDash.whiteLabelData && (
+				<WhiteLabelSettings />
+			)}
 		</>
 	);
 };
