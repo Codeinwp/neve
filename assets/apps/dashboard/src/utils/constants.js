@@ -2,6 +2,7 @@
 
 import {
 	LucideArrowUp,
+	LucideBotMessageSquare,
 	LucideBriefcase,
 	LucideCreditCard,
 	LucideGalleryVertical,
@@ -61,6 +62,6 @@ export const NEVE_PLUGIN_ICON_MAP = {
 	'optimole-wp': LucideImage,
 	'wp-cloudflare-page-cache': LucideTimer,
 	'feedzy-rss-feeds': LucideRss,
-	// 'hyve'
+	'hyve-lite': LucideBotMessageSquare,
 	// 'sparks'
 };

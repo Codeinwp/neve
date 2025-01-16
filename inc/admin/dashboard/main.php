@@ -731,11 +731,15 @@ class Main {
 				'title'       => __( 'Feedzy', 'neve' ),
 				'description' => __( 'RSS feeds aggregator and content curator', 'neve' ),
 			],
-			'hyve-lite'                     => [
+		];
+
+		if ( is_php_version_compatible( '8.1' ) ) {
+			$plugins['hyve-lite'] = [
 				'title'       => __( 'Hyve', 'neve' ),
 				'description' => __( 'AI chatbot for your website', 'neve' ),
-			],
-		];
+			];
+		}
+
 
 		foreach ( $plugins as $slug => $args ) {
 
