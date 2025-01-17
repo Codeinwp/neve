@@ -233,42 +233,6 @@ class Hooks_Upsells {
 		 * @return void
 		 */
 	public function register_custom_layout_upsell_page( $theme_page, $capability ) {
-		$labels = array(
-			'name'          => esc_html_x( 'Custom Layouts', 'advanced-hooks general name', 'neve' ),
-			'singular_name' => esc_html_x( 'Custom Layout', 'advanced-hooks singular name', 'neve' ),
-			'search_items'  => esc_html__( 'Search Custom Layouts', 'neve' ),
-			'all_items'     => esc_html__( 'Custom Layouts', 'neve' ),
-			'edit_item'     => esc_html__( 'Edit Custom Layout', 'neve' ),
-			'view_item'     => esc_html__( 'View Custom Layout', 'neve' ),
-			'add_new'       => esc_html__( 'Add New', 'neve' ),
-			'update_item'   => esc_html__( 'Update Custom Layout', 'neve' ),
-			'add_new_item'  => esc_html__( 'Add New', 'neve' ),
-			'new_item_name' => esc_html__( 'New Custom Layout Name', 'neve' ),
-		);
-
-		$args = array(
-			'labels'              => $labels,
-			'public'              => false,
-			'query_var'           => true,
-			'can_export'          => true,
-			'exclude_from_search' => true,
-			'show_in_rest'        => true,
-			'supports'            => array( 'title', 'editor', 'elementor' ),
-			'capability_type'     => 'custom_layout',
-			'show_ui'             => true,
-			'capabilities'        => array(
-				'edit_post'          => 'edit_custom_layout',
-				'edit_posts'         => 'edit_custom_layouts',
-				'edit_others_posts'  => 'edit_others_custom_layouts',
-				'publish_posts'      => 'publish_custom_layouts',
-				'read_post'          => 'read_custom_layout',
-				'read_private_posts' => 'read_private_custom_layouts',
-				'delete_post'        => 'delete_custom_layout',
-			),
-		);
-
-		// phpcs:ignore WPThemeReview.PluginTerritory.ForbiddenFunctions.plugin_territory_register_post_type
-		register_post_type( 'neve_custom_layouts', apply_filters( 'neve_custom_layouts_post_type_args', $args ) );
 		
 		// Add Custom Layout submenu for upsell.
 		// phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
@@ -277,7 +241,7 @@ class Hooks_Upsells {
 			__( 'Custom Layouts', 'neve' ),
 			__( 'Custom Layouts', 'neve' ),
 			$capability,
-			'edit.php?post_type=neve_custom_layouts'
+			'edit.php?post_type=neve_custom_layouts' // TODO: make a dummy page.
 		);
 	}
 
