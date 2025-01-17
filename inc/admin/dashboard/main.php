@@ -922,6 +922,9 @@ class Main {
 	 * @return void
 	 */
 	public function render_neve_header() {
+
+		$is_using_pro = defined( 'NEVE_PRO_VERSION' ) && 'valid' === apply_filters( 'product_neve_license_status', false );
+
 		?>
 		<style>
 			.nv-admin-header {
@@ -1000,7 +1003,7 @@ class Main {
 				<img src="<?php echo esc_url_raw( get_template_directory_uri() . '/assets/img/dashboard/logo.svg' ); ?>" alt="<?php esc_attr_e( 'Neve Logo', 'neve' ); ?>" />
 
 				<span class="nv-admin-title"><?php esc_html_e( 'Neve', 'neve' ); ?></span>
-				<span class="nv-admin-badge"><?php esc_html_e( 'Free', 'neve' ); ?></span>
+				<span class="nv-admin-badge"><?php echo $is_using_pro ? esc_html__( 'Pro', 'neve' ) : esc_html__( 'Free', 'neve' ); ?></span>
 
 				<span class="nv-admin-version"><?php echo esc_html( sprintf( 'v%s', NEVE_VERSION ) ); ?></span>
 			</div>
