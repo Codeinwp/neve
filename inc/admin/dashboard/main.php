@@ -824,7 +824,8 @@ class Main {
 	 */
 	public function render_custom_layout_header() {
 		$screen = get_current_screen();
-		if ( ! $screen || $screen->id !== 'edit-neve_custom_layouts' ) {
+		
+		if ( ! $screen || ! ( $screen->id === 'edit-neve_custom_layouts' || $screen->id === 'neve_page_neve-custom-layout-upsell' ) ) {
 			return;
 		}
 

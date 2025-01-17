@@ -241,7 +241,8 @@ class Hooks_Upsells {
 			__( 'Custom Layouts', 'neve' ),
 			__( 'Custom Layouts', 'neve' ),
 			$capability,
-			'edit.php?post_type=neve_custom_layouts' // TODO: make a dummy page.
+			'neve-custom-layout-upsell',
+			array( $this, 'render_custom_layout_page' )
 		);
 	}
 
@@ -454,6 +455,50 @@ class Hooks_Upsells {
 					</span>
 				</div>
 			</div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Renders the the upsell page for Custom Layouts.
+	 * 
+	 * @return void
+	 */
+	public function render_custom_layout_page() {
+		?>
+		<div class="wrap">
+			<div class="wp-list-table">
+				<table class="widefat posts">
+					<thead>
+						<tr>
+							<th scope="col" class="manage-column column-title column-primary"><?php echo esc_html__( 'Title', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Type', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Location', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Status', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Date', 'neve' ); ?></th>
+						</tr>
+					</thead>
+					<tbody id="the-list">
+						<tr>
+							<td colspan="5" class="column-primary">
+								<p class="description" style="text-align: center; padding: 20px;">
+									<?php echo esc_html__( 'Upgrade to Neve Pro to a Custom Layout.', 'neve' ); ?>
+								</p>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th scope="col" class="manage-column column-title column-primary"><?php echo esc_html__( 'Title', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Type', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Location', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Status', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Date', 'neve' ); ?></th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<?php $this->render_custom_layouts_upsell_modal(); ?>
 		</div>
 		<?php
 	}
