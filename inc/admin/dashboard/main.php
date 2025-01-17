@@ -57,6 +57,8 @@ class Main {
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
 		add_action( 'init', array( $this, 'register_settings' ) );
 		add_action( 'init', array( $this, 'register_about_page' ), 1 );
+		
+		add_action( 'admin_notices', array( $this, 'render_custom_layout_header' ) );
 	}
 
 	/**
@@ -196,18 +198,9 @@ class Main {
 			[ $this, 'render' ]
 		);
 
-		$this->copy_customizer_page( $theme_page );
+		do_action( 'neve_register_submenu_page', $theme_page, $capability );
 
-		if ( ! defined( 'NEVE_PRO_VERSION' ) || 'valid' !== apply_filters( 'product_neve_license_status', false ) ) {
-			// Add Custom Layout submenu for upsell.
-			add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
-				$theme_page,
-				__( 'Custom Layouts', 'neve' ),
-				__( 'Custom Layouts', 'neve' ),
-				$capability,
-				'admin.php?page=neve-welcome#custom-layouts'
-			);
-		}
+		$this->copy_customizer_page( $theme_page );
 	}
 
 	/**
@@ -823,4 +816,207 @@ class Main {
 		return $plugins;
 	}
 
+	/**
+	 * Renders the custom layout header section in the admin dashboard for Custom Layouts
+	 *
+	 * @access     public
+	 * @return     void
+	 */
+	public function render_custom_layout_header() {
+		$screen = get_current_screen();
+		if ( ! $screen || $screen->id !== 'edit-neve_custom_layouts' ) {
+			return;
+		}
+
+		$this->render_neve_header();
+
+		?>
+		<style>
+			/* Hide default page header. */
+			.wrap :is(h1.wp-heading-inline, .page-title-action) {
+				display: none;
+			}
+
+			.cl-header-container {
+				margin: 0 auto;
+				padding: 20px;
+				border: 1px solid #ddd;
+				border-radius: 8px;
+				background-color: white;
+				margin-top: 40px;
+				margin-right: 20px;
+			}
+
+			.cl-header-row {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 16px;
+			}
+
+			.cl-header-row h2 {
+				font-size: 24px;
+				margin: 0;
+				color: #333;
+			}
+
+			.cl-header-row .cl-header-actions {
+				display: flex;
+				gap: 10px;
+			}
+
+			.cl-header-row .cl-header-actions .cl-btn-action {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				line-height: 1;
+			}
+
+			.cl-header-row .cl-description {
+				margin-top: 10px;
+				font-size: 14px;
+				color: #555;
+				line-height: 1.6;
+			}
+		</style>
+
+		<div class="cl-header-container">
+			<div class="cl-header-row">
+				<h2><?php esc_html_e( 'Custom Layouts', 'neve' ); ?></h2>
+				<div class="cl-header-actions">
+					<button id="cl-open-modal" class="cl-btn-action button button-primary">
+						<span class="dashicons dashicons-plus-alt2"></span>
+						<?php esc_html_e( 'Add New Layout', 'neve' ); ?>
+					</button>
+					<a href="https://docs.themeisle.com/article/1062-custom-layouts-module" target="_blank" class="button cl-btn-action">
+						<span class="dashicons dashicons-welcome-learn-more"></span>
+						<?php esc_html_e( 'View Tutorial', 'neve' ); ?>
+					</a>
+				</div>
+			</div>
+			<p class="cl-description">
+				<?php esc_html_e( 'Design unique website sections without touching code. Create custom headers, footers, and content areas that match your vision.', 'neve' ); ?>
+			</p>
+		</div>
+
+		<script>
+			function openModal( event ) {
+				event.preventDefault();
+
+				document.dispatchEvent(
+					new window.CustomEvent( 'nv-open-cl-modal', { detail: {} } )
+				);
+			}
+
+			document.querySelector('#cl-open-modal')?.addEventListener('click', openModal);
+		</script>
+		<?php
+
+		do_action( 'neve_render_after_header_custom_layouts' );
+	}
+
+	/**
+	 * Renders the header section with Neve information and help actions.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function render_neve_header() {
+		?>
+		<style>
+			.nv-admin-header {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				background-color: #fff;
+				padding: 10px 20px;
+				margin-top: 40px;
+				margin-right: 20px;
+				border-radius: 8px;
+				border: 1px solid #ddd;
+			}
+
+			.nv-admin-header-left {
+				display: flex;
+				align-items: center;
+			}
+
+			.nv-admin-header-left img {
+				width: 32px;
+				height: 32px;
+				margin-right: 10px;
+			}
+
+			.nv-admin-header-left .nv-admin-title {
+				font-size: 18px;
+				font-weight: 600;
+				color: #333;
+			}
+
+			.nv-admin-header-left .nv-admin-badge {
+				font-size: 14px;
+				font-weight: 600;
+				background-color: rgb(244, 245, 246);
+				margin: 0 6px;
+				padding: 2px 6px;
+				border-radius: 4px;
+				vertical-align: middle;
+				text-transform: uppercase;
+			}
+
+			.nv-admin-header-left .nv-admin-version {
+				font-size: 14px;
+				color: #777;
+				margin-left: 8px;
+				vertical-align: middle;
+			}
+
+			.nv-admin-header-right {
+				display: flex;
+				align-items: center;
+				gap: 20px;
+			}
+
+			.nv-admin-header-right a {
+				color: #555;
+				text-decoration: none;
+				font-size: 14px;
+				display: inline-flex;
+				align-items: center;
+			}
+
+			.nv-admin-header-right a:hover {
+				color: #0073aa;
+			}
+
+			.nv-admin-header-right .dashicons {
+				margin-right: 4px;
+			}
+		</style>
+
+		<div class="nv-admin-header">
+			<div class="nv-admin-header-left">
+
+				<img src="<?php echo esc_url_raw( get_template_directory_uri() . '/assets/img/dashboard/logo.svg' ); ?>" alt="<?php esc_attr_e( 'Neve Logo', 'neve' ); ?>" />
+
+				<span class="nv-admin-title"><?php esc_html_e( 'Neve', 'neve' ); ?></span>
+				<span class="nv-admin-badge"><?php esc_html_e( 'Free', 'neve' ); ?></span>
+
+				<span class="nv-admin-version"><?php echo esc_html( sprintf( 'v%s', NEVE_VERSION ) ); ?></span>
+			</div>
+
+			<div class="nv-admin-header-right">
+				<a href="https://docs.themeisle.com/collection/1557-neve" target="_blank">
+					<span class="dashicons dashicons-book-alt"></span>
+					<?php esc_html_e( 'Documentation', 'neve' ); ?>
+				</a>
+				<span style="color: #ccc;">|</span>
+				<a href="https://github.com/Codeinwp/neve/blob/master/CHANGELOG.md" target="_blank">
+					<span class="dashicons dashicons-media-text"></span>
+					<?php esc_html_e( 'Changelog', 'neve' ); ?>
+				</a>
+			</div>
+		</div>
+		<?php
+	}
 }
