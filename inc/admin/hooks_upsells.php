@@ -270,9 +270,9 @@ class Hooks_Upsells {
 				left: 0;
 				width: 100%;
 				height: 100%;
-				z-index: 999999; /* on top of everything */
+				z-index: 80;
 				background: rgba(0, 0, 0, 0.5);
-				display: flex;            /* center the modal */
+				display: flex;
 				align-items: center;
 				justify-content: center;
 			}
@@ -345,10 +345,11 @@ class Hooks_Upsells {
 				align-items: flex-start;
 				flex: 0 0 48%; /* 2 columns in a row on large screens */
 				gap: 10px;
+				flex-grow: 1;
 			}
 			.cl-feature .dashicons {
 				font-size: 24px;
-				color: #0073aa; /* WP blue, for example */
+				color: #0073aa;
 				flex-shrink: 0;
 				margin-top: -2px;
 			}
@@ -390,12 +391,28 @@ class Hooks_Upsells {
 				text-align: center;
 				color: #444;
 			}
+
+			@media (max-width: 480px) {
+				.cl-quote {
+					display: none;
+				}
+
+				.cl-features {
+					max-height: 350px;
+					overflow-y: auto;
+					padding: 0 40px;
+				}
+
+				.cl-modal {
+					padding: 20px 0px;
+				}
+			}
 		</style>
 
 		<div class="cl-overlay">
 			<div class="cl-modal">
 				<div class="cl-modal-header">
-					<span class="dashicons dashicons-star-filled"></span>
+					<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>
 					<h2><?php echo esc_html__( 'Take Your Site to the Next Level', 'neve' ); ?></h2>
 				</div>
 
@@ -405,28 +422,28 @@ class Hooks_Upsells {
 
 				<div class="cl-features">
 					<div class="cl-feature">
-						<span class="dashicons dashicons-admin-appearance"></span>
+						<span class="dashicons dashicons-admin-appearance" aria-hidden="true"></span>
 						<div>
 							<h3><?php echo esc_html__( 'Build Without Code', 'neve' ); ?></h3>
 							<p><?php echo esc_html__( 'Create stunning headers, footers, and content sections with our visual drag & drop builder', 'neve' ); ?></p>
 						</div>
 					</div>
 					<div class="cl-feature">
-						<span class="dashicons dashicons-layout"></span>
+						<span class="dashicons dashicons-layout" aria-hidden="true"></span>
 						<div>
 							<h3><?php echo esc_html__( 'Smart Display Rules', 'neve' ); ?></h3>
 							<p><?php echo esc_html__( 'Show different layouts based on user roles, devices, or content types', 'neve' ); ?></p>
 						</div>
 					</div>
 					<div class="cl-feature">
-						<span class="dashicons dashicons-cart"></span>
+						<span class="dashicons dashicons-cart" aria-hidden="true"></span>
 						<div>
 							<h3><?php echo esc_html__( 'WooCommerce Ready', 'neve' ); ?></h3>
 							<p><?php echo esc_html__( 'Design custom shop pages, product layouts, and checkout experiences', 'neve' ); ?></p>
 						</div>
 					</div>
 					<div class="cl-feature">
-						<span class="dashicons dashicons-performance"></span>
+						<span class="dashicons dashicons-performance" aria-hidden="true"></span>
 						<div>
 							<h3><?php echo esc_html__( 'Optimized Performance', 'neve' ); ?></h3>
 							<p><?php echo esc_html__( 'All layouts are lightweight and load only where needed', 'neve' ); ?></p>

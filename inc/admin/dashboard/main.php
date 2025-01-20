@@ -879,6 +879,21 @@ class Main {
 				color: #555;
 				line-height: 1.6;
 			}
+
+			/* Hide text on small screens but keep it accessible to screen readers */
+			@media (max-width: 500px) {
+				.cl-header-btn-text {
+					position: absolute !important;
+					width: 1px !important;
+					height: 1px !important;
+					padding: 0 !important;
+					margin: -1px !important;
+					border: 0 !important;
+					clip: rect(0 0 0 0);
+					overflow: hidden;
+					white-space: nowrap; /* Prevent text wrapping inside the clipped area */
+				}
+			}
 		</style>
 
 		<div class="cl-header-container">
@@ -886,12 +901,16 @@ class Main {
 				<h2><?php esc_html_e( 'Custom Layouts', 'neve' ); ?></h2>
 				<div class="cl-header-actions">
 					<button id="cl-open-modal" class="cl-btn-action button button-primary">
-						<span class="dashicons dashicons-plus-alt2"></span>
-						<?php esc_html_e( 'Add New Layout', 'neve' ); ?>
+						<span class="dashicons dashicons-plus-alt2" aria-hidden="true"></span>
+						<span class="cl-header-btn-text">
+							<?php esc_html_e( 'Add New Layout', 'neve' ); ?>
+						</span>
 					</button>
 					<a href="https://docs.themeisle.com/article/1062-custom-layouts-module" target="_blank" class="button cl-btn-action">
-						<span class="dashicons dashicons-welcome-learn-more"></span>
-						<?php esc_html_e( 'View Tutorial', 'neve' ); ?>
+						<span class="dashicons dashicons-welcome-learn-more" aria-hidden="true"></span>
+						<span class="cl-header-btn-text">
+							<?php esc_html_e( 'View Tutorial', 'neve' ); ?>
+						</span>
 					</a>
 				</div>
 			</div>
@@ -938,8 +957,22 @@ class Main {
 				margin-right: 20px;
 				border-radius: 8px;
 				border: 1px solid #ddd;
+				gap: 10px;
+				flex-wrap: wrap;
 			}
 
+			@media (max-width: 450px) {
+				.nv-admin-header {
+					justify-content: center;
+					width: fit-content;
+				}
+			}
+
+			@media (min-width: 451px) {
+				.nv-admin-header-left {
+					flex-grow: 1;
+				}
+			}
 			.nv-admin-header-left {
 				display: flex;
 				align-items: center;
@@ -1011,12 +1044,12 @@ class Main {
 
 			<div class="nv-admin-header-right">
 				<a href="https://docs.themeisle.com/collection/1557-neve" target="_blank">
-					<span class="dashicons dashicons-book-alt"></span>
+					<span class="dashicons dashicons-book-alt" aria-hidden="true"></span>
 					<?php esc_html_e( 'Documentation', 'neve' ); ?>
 				</a>
 				<span style="color: #ccc;">|</span>
 				<a href="https://github.com/Codeinwp/neve/blob/master/CHANGELOG.md" target="_blank">
-					<span class="dashicons dashicons-media-text"></span>
+					<span class="dashicons dashicons-media-text" aria-hidden="true"></span>
 					<?php esc_html_e( 'Changelog', 'neve' ); ?>
 				</a>
 			</div>
