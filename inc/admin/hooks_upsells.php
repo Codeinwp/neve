@@ -34,27 +34,7 @@ class Hooks_Upsells {
 		/**
 		 * Add the Custom Layout page with upsell elements.
 		 */
-		add_action( 'neve_render_after_header_custom_layouts', array( $this, 'render_custom_layouts_upsell_modal' ) );
 		add_action( 'neve_register_submenu_page', array( $this, 'register_custom_layout_upsell_page' ), 10, 2 );
-	
-		add_filter(
-			'manage_neve_custom_layouts_posts_columns',
-			function( $columns ) {
-				unset( $columns['comments'] );
-				unset( $columns['author'] );
-
-				$date = $columns['date'];
-				unset( $columns['date'] );
-		
-				$columns['type']      = __( 'Type', 'neve' );
-				$columns['location']  = __( 'Location', 'neve' );
-				$columns['shortcode'] = __( 'Shortcode', 'neve' );
-				$columns['enabled']   = __( 'Status', 'neve' );
-				$columns['date']      = $date;
-			
-				return $columns;
-			} 
-		);
 	}
 
 	/**
@@ -477,7 +457,7 @@ class Hooks_Upsells {
 	}
 
 	/**
-	 * Renders the the upsell page for Custom Layouts.
+	 * Renders the the upsell page for Custom Layouts which contains a modal and small table behind overlay to match the real dashboard.
 	 * 
 	 * @return void
 	 */
@@ -488,6 +468,9 @@ class Hooks_Upsells {
 				<table class="widefat posts">
 					<thead>
 						<tr>
+							<td class="manage-column check-column">
+								<input type="checkbox" disabled />
+							</td>
 							<th scope="col" class="manage-column column-title column-primary"><?php echo esc_html__( 'Title', 'neve' ); ?></th>
 							<th scope="col" class="manage-column"><?php echo esc_html__( 'Type', 'neve' ); ?></th>
 							<th scope="col" class="manage-column"><?php echo esc_html__( 'Location', 'neve' ); ?></th>
@@ -497,15 +480,18 @@ class Hooks_Upsells {
 					</thead>
 					<tbody id="the-list">
 						<tr>
-							<td colspan="5" class="column-primary">
+							<td colspan="6" class="column-primary">
 								<p class="description" style="text-align: center; padding: 20px;">
-									<?php echo esc_html__( 'Upgrade to Neve Pro to a Custom Layout.', 'neve' ); ?>
+									<?php echo esc_html__( 'Upgrade to Neve Pro to create a Custom Layout.', 'neve' ); ?>
 								</p>
 							</td>
 						</tr>
 					</tbody>
 					<tfoot>
 						<tr>
+							<td class="manage-column check-column">
+								<input type="checkbox" disabled />
+							</td>
 							<th scope="col" class="manage-column column-title column-primary"><?php echo esc_html__( 'Title', 'neve' ); ?></th>
 							<th scope="col" class="manage-column"><?php echo esc_html__( 'Type', 'neve' ); ?></th>
 							<th scope="col" class="manage-column"><?php echo esc_html__( 'Location', 'neve' ); ?></th>
