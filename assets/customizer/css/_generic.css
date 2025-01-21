@@ -67,3 +67,27 @@
 	margin-right: 8px;
 	color: #2271b1;
 }
+
+#nv-starter-content-notice {
+	min-height: 200px;
+}
+
+#nv-starter-content-notice .nv-notice {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+#nv-starter-content-notice .nv-notice :is(p, h3) {
+	margin: 0;
+}
+
+#nv-starter-content-notice .nv-subtitle {
+	text-align: center;
+	color: #707070;
+}
+
+#nv-starter-content-notice .nv-notice-error {
+	text-align: center;
+	color: red;
+}
