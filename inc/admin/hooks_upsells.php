@@ -443,12 +443,12 @@ class Hooks_Upsells {
 				<div class="cl-quote">
 					<?php
 					echo esc_html__(
-						'“Neve Pro saved us countless hours of development time. We now manage our entire site layout without touching code.”',
+						'I’ve been using Neve by Themeisle for a few years now, and it’s proven to be the best theme I’ve ever built websites on. It’s lightweight, modern, fast, customizable, and works great with Woocommerce stores too.',
 						'neve'
 					);
 					?>
 					<span class="cl-quote-author">
-						— <?php echo esc_html__( 'Sarah W., Web Designer', 'neve' ); ?>
+						— <?php echo esc_html__( 'Ville Ekman', 'neve' ); ?>
 					</span>
 				</div>
 			</div>
@@ -463,6 +463,7 @@ class Hooks_Upsells {
 	 */
 	public function render_custom_layout_page() {
 		?>
+		<?php $this->render_custom_layouts_upsell_modal(); ?>
 		<div class="wrap">
 			<div class="wp-list-table">
 				<table class="widefat posts">
@@ -501,7 +502,6 @@ class Hooks_Upsells {
 					</tfoot>
 				</table>
 			</div>
-			<?php $this->render_custom_layouts_upsell_modal(); ?>
 		</div>
 		<?php
 	}
