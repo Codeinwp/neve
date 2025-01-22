@@ -483,20 +483,6 @@ class Upsells extends Base_Customizer {
 		$upsells         = [];
 		$upsells_banners = [];
 
-		$upsells_banners['blog_archive'] = [
-			'text'        => __( 'More blog layout customization options available in PRO', 'neve' ),
-			'button_text' => __( 'Learn More', 'neve' ),
-			'use_logo'    => true,
-			'section'     => 'neve_blog_archive_layout',
-		];
-		$upsells_banners['single_post']  = [
-			'text'        => __( 'More single post components available in PRO', 'neve' ),
-			'button_text' => __( 'Learn More', 'neve' ),
-			'use_logo'    => true,
-			'section'     => 'neve_single_post_layout',
-		];
-
-
 		$hfg_header                     = 'hfg_header';
 		$hfg_header_text                = __( 'Extend your header with more components and settings, build sticky/transparent headers or display them conditionally.', 'neve' );
 		$hfg_header_button              = __( 'Get the PRO version!', 'neve' );

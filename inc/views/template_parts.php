@@ -10,6 +10,7 @@ namespace Neve\Views;
 
 use Neve\Compatibility\WPML;
 use Neve\Core\Dynamic_Css;
+use Neve\Core\Migration_Flags;
 use Neve\Core\Settings\Config;
 use Neve\Customizer\Defaults\Layout;
 use Neve_Pro\Modules\Blog_Pro\Dynamic_Style;
@@ -385,7 +386,16 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_title( $post_id = null ) {
-		$markup = '<h2 class="blog-entry-title entry-title">';
+		$classes = [
+			'blog-entry-title',
+			'entry-title',
+		];
+
+		if ( Migration_Flags::is_new_user_after_v4() ) {
+			$classes[] = 'is-h4';
+		}
+
+		$markup = '<h2 class="' . esc_attr( join( ' ', $classes ) ) . '">';
 
 		$markup .= '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '" rel="bookmark">';
 		$markup .= get_the_title( $post_id );
@@ -459,7 +469,7 @@ class Template_Parts extends Base_View {
 		$read_more_args = apply_filters(
 			'neve_read_more_args',
 			array(
-				'text'    => esc_html__( 'Read More', 'neve' ) . ' &raquo;',
+				'text'    => Migration_Flags::is_new_user_after_v4() ? '' : esc_html__( 'Read More', 'neve' ) . ' &raquo;',
 				'classes' => '',
 			)
 		);

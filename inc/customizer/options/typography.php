@@ -407,22 +407,25 @@ class Typography extends Base_Customizer {
 		$controls = array(
 			'neve_archive_typography_post_title'         => array(
 				'label'                 => __( 'Post title', 'neve' ),
-				'category_label'        => __( 'Blog Archive', 'neve' ),
-				'priority'              => 10,
+				'category_label'        => __( 'Typography', 'neve' ),
+				'priority'              => 500,
 				'font_family_control'   => 'neve_headings_font_family',
 				'live_refresh_selector' => '.blog .blog-entry-title, .archive .blog-entry-title',
+				'section'               => 'neve_blog_archive_layout',
 			),
 			'neve_archive_typography_post_excerpt'       => array(
 				'label'                 => __( 'Post excerpt', 'neve' ),
-				'priority'              => 20,
+				'priority'              => 510,
 				'font_family_control'   => 'neve_body_font_family',
 				'live_refresh_selector' => '.blog .entry-summary, .archive .entry-summary, .blog .post-pages-links',
+				'section'               => 'neve_blog_archive_layout',
 			),
 			'neve_archive_typography_post_meta'          => array(
 				'label'                 => __( 'Post meta', 'neve' ),
-				'priority'              => 30,
+				'priority'              => 520,
 				'font_family_control'   => 'neve_body_font_family',
 				'live_refresh_selector' => '.blog .nv-meta-list li, .archive .nv-meta-list li',
+				'section'               => 'neve_blog_archive_layout',
 			),
 			'neve_single_post_typography_post_title'     => array(
 				'label'                 => __( 'Post title', 'neve' ),
@@ -448,7 +451,7 @@ class Typography extends Base_Customizer {
 		foreach ( $controls as $control_id => $control_settings ) {
 			$settings = array(
 				'label'            => $control_settings['label'],
-				'section'          => 'neve_typography_blog',
+				'section'          => isset( $control_settings['section'] ) ? $control_settings['section'] : 'neve_typography_blog',
 				'priority'         => $control_settings['priority'],
 				'class'            => esc_attr( 'typography-blog-' . $control_id ),
 				'accordion'        => true,
@@ -479,7 +482,7 @@ class Typography extends Base_Customizer {
 					],
 					[
 						'priority'              => $control_settings['priority'] += 1,
-						'section'               => 'neve_typography_blog',
+						'section'               => isset( $control_settings['section'] ) ? $control_settings['section'] : 'neve_typography_blog',
 						'type'                  => 'neve_typeface_control',
 						'font_family_control'   => $control_settings['font_family_control'],
 						'live_refresh_selector' => true,

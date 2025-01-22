@@ -1,4 +1,4 @@
-$excluded: ':not(#customize-control-neve_blog_archive_layout):not(.customize-control-customizer-heading)';
+$excluded: ':not(#customize-control-neve_blog_archive_layout):not(.customize-control-customizer-heading):not(#customize-control-neve_blog_archive_sidebar_layout):not(.customize-control-interface-tabs)';
 
 #customize-control-neve_blog_typography_shortcut {
 	background-color: transparent !important;
@@ -33,5 +33,9 @@ $excluded: ':not(#customize-control-neve_blog_archive_layout):not(.customize-con
 	.neve-white-background-control {
 		border: none !important;
 		padding: 0;
+	}
+
+	#customize-control-neve_blog_archive_layout {
+		margin-top: 15px;
 	}
 }

@@ -32,6 +32,8 @@
 	border: none;
 	padding: 0;
 	background: 0;
+	max-width: 70%;
+	margin: 0 auto;
 
 	&.active {
 	  outline: 2px solid $wp-blue;

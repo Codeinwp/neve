@@ -7,6 +7,8 @@
 
 namespace Neve\Customizer\Defaults;
 
+use Neve\Core\Migration_Flags;
+
 /**
  * Trait Layout
  *
@@ -108,6 +110,91 @@ trait Layout {
 			'desktop'      => [
 				'top'    => 0,
 				'bottom' => 0,
+			],
+			'mobile-unit'  => 'px',
+			'tablet-unit'  => 'px',
+			'desktop-unit' => 'px',
+		];
+	}
+
+	/**
+	 * Get defaults for users after v4.0.0
+	 *
+	 * @param string $id the control id.
+	 * @param mixed  $old_default the old default value.
+	 *
+	 * @since 4.0.0
+	 * @return mixed
+	 */
+	public function get_v4_defaults( $id, $old_default = false ) {
+		if ( ! Migration_Flags::is_new_user_after_v4() ) {
+			return $old_default;
+		}
+
+		$new_defaults = [
+			'neve_blog_items_border_radius'  => 8,
+			'neve_blog_content_padding'      => [
+				'mobile'       => [
+					'top'    => 25,
+					'right'  => 25,
+					'bottom' => 25,
+					'left'   => 25,
+				],
+				'tablet'       => [
+					'top'    => 25,
+					'right'  => 25,
+					'bottom' => 25,
+					'left'   => 25,
+				],
+				'desktop'      => [
+					'top'    => 25,
+					'right'  => 25,
+					'bottom' => 25,
+					'left'   => 25,
+				],
+				'mobile-unit'  => 'px',
+				'tablet-unit'  => 'px',
+				'desktop-unit' => 'px',
+			],
+			'neve_enable_card_style'         => true,
+			'neve_blog_grid_card_bg_color'   => 'var(--nv-site-bg)',
+			'neve_blog_grid_text_color'      => 'var(--nv-text-color)',
+			'neve_blog_card_shadow'          => 0.5,
+			'neve_blog_archive_aspect_ratio' => '4-3',
+			'neve_post_excerpt_length'       => 35,
+		];
+
+		if ( ! isset( $new_defaults[ $id ] ) ) {
+			return $old_default;
+		}
+
+		return $new_defaults[ $id ];
+	}
+
+	/**
+	 * Get the blog content padding default.
+	 *
+	 * @return array
+	 */
+	public function blog_archive_card_padding_default() {
+		return [
+			'mobile'       => [
+				'top'    => '',
+				'right'  => '',
+				'bottom' => '',
+				'left'   => '',
+			],
+			'tablet'       => [
+				'top'    => '',
+				'right'  => '',
+				'bottom' => '',
+				'left'   => '',
+			],
+			'desktop'      => [
+				'top'    => '',
+				'right'  => '',
+				'bottom' => '',
+				'left'   => '',
 			],
 			'mobile-unit'  => 'px',
 			'tablet-unit'  => 'px',

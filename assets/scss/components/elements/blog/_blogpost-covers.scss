@@ -3,12 +3,18 @@ $overlay: rgba(0, 0, 0, 0.75);
 
 .cover-post {
 	display: flex;
-	box-shadow: var(--boxshadow, none);
+	box-shadow: var(--cardboxshadow, var(--boxshadow, none));
 	position: relative;
 	min-height: 300px;
 }
 
 .layout-covers {
+
+	.article-content-col {
+		overflow: hidden;
+		border-radius: var(--borderradius);
+		box-shadow: var(--cardboxshadow);
+	}
 
 	.content {
 		position: relative;
@@ -22,11 +28,11 @@ $overlay: rgba(0, 0, 0, 0.75);
 		justify-content: flex-end;
 		z-index: 10;
 		color: var(--color, #fff);
-		padding: 25px;
+		padding: var(--padding, 25px);
 	}
 
 	a:not(.button) {
-		color: var(--color, #fff);
+		color: var(--cardcolor, var(--color, #fff));
 	}
 
 	.img-wrap {

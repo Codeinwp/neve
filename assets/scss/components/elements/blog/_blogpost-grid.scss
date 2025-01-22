@@ -2,3 +2,25 @@ body .layout-grid > .article-content-col,
 .layout-grid {
 	display: flex;
 }
+
+.layout-grid {
+
+	.article-content-col:has(.img-wrap:first-child) {
+		padding-top: 0 !important;
+	}
+
+
+	.article-content-col {
+		overflow: hidden;
+		border-radius: var(--borderradius);
+		padding: var(--padding, 0);
+		background: var(--cardbgcolor);
+		box-shadow: var(--cardboxshadow);
+		color: var(--cardcolor, inherit);
+	}
+
+	a {
+		--nv-primary-accent: var(--cardcolor, inherit);
+		--nv-text-color: var(--cardcolor, inherit);
+	}
+}

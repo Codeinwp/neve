@@ -104,7 +104,7 @@ abstract class Base_Layout_Single extends Base_Customizer {
 				[
 					'priority' => 40,
 					'title'    => $this->get_section_label(),
-					'panel'    => 'neve_layout',
+					'panel'    => $this->post_type === 'post' ? 'neve_blog' : 'neve_layout',
 				]
 			)
 		);

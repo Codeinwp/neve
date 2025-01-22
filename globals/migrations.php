@@ -5,6 +5,8 @@
  * @package migrations.php
  */
 
+use Neve\Core\Migration_Flags;
+
 /**
  * Get button default appearance.
  *
@@ -119,5 +121,16 @@ function neve_migrate_blog_columns() {
 	);
 }
 
+/**
+ * Run flag migrations.
+ *
+ * @return void
+ */
+function neve_run_migration_flags() {
+	$migrator = new Migration_Flags( NEVE_VERSION );
+	$migrator->run();
+}
+
 add_action( 'init', 'neve_migrate_blog_layout' );
 add_action( 'init', 'neve_migrate_blog_columns' );
+add_action( 'init', 'neve_run_migration_flags', PHP_INT_MIN );
