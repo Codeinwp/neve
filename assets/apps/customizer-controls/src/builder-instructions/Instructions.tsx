@@ -1,5 +1,5 @@
 import React from 'react';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 import { WPCustomizeControl } from '../@types/customizer-control';
 
@@ -10,7 +10,7 @@ type Props = {
 const Instructions: React.FC<Props> = ({ control }) => {
 	const { params, id } = control;
 	const { options } = params;
-	const { description, quickLinks, builderMigrated, hadOldBuilder } = options;
+	const { description, quickLinks } = options;
 
 	const linkKeys = Object.keys(quickLinks);
 
@@ -48,8 +48,13 @@ const Instructions: React.FC<Props> = ({ control }) => {
 					</span>
 					<ul className="quick-links">
 						{linkKeys.map((settingSlug, index) => {
-							const { label, icon, url } =
-								quickLinks[settingSlug];
+							const {
+								label,
+								icon,
+								url,
+								upsellDescription,
+								badge,
+							} = quickLinks[settingSlug];
 
 							return (
 								<li key={index}>
@@ -66,7 +71,28 @@ const Instructions: React.FC<Props> = ({ control }) => {
 									>
 										<span className={`dashicons ${icon}`} />
 										{label}
+										{url && badge && (
+											<span className="quick-links-badge">
+												{badge}
+											</span>
+										)}
 									</Button>
+									{url && upsellDescription && (
+										<div className="quick-links-upsell">
+											<p className="quick-links-description">
+												<div
+													dangerouslySetInnerHTML={{
+														// eslint-disable-next-line @wordpress/valid-sprintf
+														__html: sprintf(
+															upsellDescription,
+															`<a href="${url}" target="_blank" rel="noopener noreferrer">`,
+															'</a>'
+														),
+													}}
+												/>
+											</p>
+										</div>
+									)}
 								</li>
 							);
 						})}

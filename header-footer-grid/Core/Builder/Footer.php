@@ -65,9 +65,12 @@ class Footer extends Abstract_Builder {
 				),
 				'quickLinks'  => array(
 					'footer_copyright_content'            => array(
-						'label' => esc_html__( 'Change Copyright', 'neve' ),
-						'icon'  => 'dashicons-nametag',
-						'url'   => $this->has_valid_addons() ? null : tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'copyright' ), 'query' ),
+						'label'             => esc_html__( 'Change Copyright', 'neve' ),
+						'icon'              => 'dashicons-nametag',
+						'url'               => $this->has_valid_addons() ? null : tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'copyright' ), 'query' ),
+						'badge'             => esc_html__( 'Pro', 'neve' ),
+						/* translators: %1$s: opening anchor tag, %2$s: closing anchor tag */
+						'upsellDescription' => __( 'The Neve theme free version doesn\'t support copyright edits. Pro unlocks this and more—%1$sexplore%2$s it when you\'re ready!', 'neve' ),
 					),
 					'hfg_footer_layout_bottom_background' => array(
 						'label' => esc_html__( 'Change Footer Color', 'neve' ),
