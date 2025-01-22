@@ -93,6 +93,7 @@ class Upsells extends Base_Customizer {
 	public function add_controls() {
 		$this->wpc->register_section_type( '\Neve\Customizer\Controls\Simple_Upsell_Section' );
 		$this->wpc->register_section_type( '\Neve\Customizer\Controls\React\Upsell_Banner_Section' );
+		$this->wpc->register_section_type( '\Neve\Customizer\Controls\Upsells\Features_Upsell_Section' );
 		$this->wpc->register_control_type( '\Neve\Customizer\Controls\React\Upsell_Banner' );
 		$this->section_upsells();
 		$this->control_upsells();
@@ -518,16 +519,33 @@ class Upsells extends Base_Customizer {
 			];
 		}
 
-		$hfg_footer                     = 'hfg_footer';
-		$hfg_footer_text                = __( 'Neve PRO Features', 'neve' );
-		$hfg_footer_button              = __( 'Get the PRO version!', 'neve' );
-		$upsells_banners[ $hfg_footer ] = [
-			'text'        => $hfg_footer_text,
-			'button_text' => $hfg_footer_button,
-			'use_logo'    => true,
-			'panel'       => $hfg_footer,
-			'type'        => 'section',
-		];
+		$hfg_footer        = 'hfg_footer';
+		$hfg_footer_text   = __( 'Neve PRO Features', 'neve' );
+		$hfg_footer_button = __( 'Get the PRO version!', 'neve' );
+
+		$this->add_section(
+			new Section(
+				$hfg_footer,
+				[
+					'text'          => __( 'Extend your footer capabilities with more powerful customization options.', 'neve' ),
+					'button_text'   => __( 'Upgrade to unlock', 'neve' ),
+					'panel'         => $hfg_footer,
+					'type'          => 'section',
+					'type'          => 'neve_upsell_banner_section',
+					'priority'      => 10000,
+					'link'          => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'panel-' . $hfg_footer ), 'query' ),
+					'features_list' => array(
+						__( 'Copyright edits', 'neve' ),
+						__( 'Divider element', 'neve' ),
+						__( 'Payments & social icons', 'neve' ),
+						__( 'Custom layouts', 'neve' ),
+					),
+					'title'         => __( 'Unlock Full Potential', 'neve' ),
+				],
+				'\Neve\Customizer\Controls\Upsells\Features_Upsell_Section'
+			)
+		);
+
 		foreach ( [ 'top', 'main', 'bottom' ] as $section ) {
 			$section_id                     = $hfg_footer . '_layout_' . $section;
 			$upsells_banners[ $section_id ] = [

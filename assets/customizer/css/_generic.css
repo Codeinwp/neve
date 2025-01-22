@@ -17,3 +17,54 @@
 #customize-theme-controls .accordion-section-title button.accordion-trigger {
     max-height: fit-content;
 }
+
+.nv-upsell-feat-container {
+	padding: 16px;
+	font-family: sans-serif;
+	display: flex;
+	flex-direction: column;
+}
+
+.nv-upsell-feat-container a:is(.button-primary, .button-link) {
+	text-align: center;
+	font-size: 16px;
+}
+
+.nv-upsell-feat-container a.button-link {
+	text-decoration: none;
+	margin-top: 10px;
+}
+
+.nv-upsell-feat-heading {
+	color: #2e4a62;
+	font-size: 1.25rem;
+	margin-bottom: 8px;
+}
+
+.nv-upsell-feat-description {
+	font-size: 16px;
+	color: #455a69;
+	margin-top: 2px;
+	margin-bottom: 16px;
+}
+
+.nv-upsell-feat-list {
+	list-style: none;
+	margin: 0;
+	padding: 10px;
+	background-color: white;
+	border-radius: 10px;
+	margin-bottom: 16px;
+}
+
+.nv-upsell-feat-item {
+	display: flex;
+	font-size: 16px;
+	align-items: flex-end;
+	margin: 8px 0;
+}
+
+.nv-upsell-feat-lock-icon {
+	margin-right: 8px;
+	color: #2271b1;
+}
