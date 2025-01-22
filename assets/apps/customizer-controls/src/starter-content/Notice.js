@@ -35,10 +35,8 @@ const NoticeWrapper = () => {
 					setError(response.data.message);
 					return;
 				}
-				if (wp.customize.previewer) {
-					wp.customize.previewer.refresh();
-				}
 				wp.customize.notifications.remove(noticeId);
+				window.location.reload();
 			})
 			.catch((err) => {
 				setError(

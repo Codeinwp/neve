@@ -155,7 +155,7 @@ class Loader {
 					],
 					'deal'                          => ! defined( 'NEVE_PRO_VERSION' ) ? $offer->get_localized_data() : array(),
 					'starterContent'                => array(
-						'active'          => is_customize_preview() && current_theme_supports( 'starter-content' ) && get_option( 'fresh_site' ),
+						'active'          => (bool) get_option( 'fresh_site' ),
 						'nonce'           => wp_create_nonce( 'neve_dismiss_starter_content' ),
 						'dismissEndpoint' => admin_url( 'admin-ajax.php' ),
 						'labels'          => array(
