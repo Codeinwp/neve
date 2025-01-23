@@ -242,4 +242,30 @@ class Footer extends Abstract_Builder {
 			),
 		];
 	}
+
+	/**
+	 * Get upsell components.
+	 *
+	 * @return array
+	 */
+	protected function get_upsell_components() {
+		if ( $this->has_valid_addons() ) {
+			return [];
+		}
+
+		return [
+			[
+				'icon' => 'email',
+				'name' => __( 'Contact', 'neve' ),
+			],
+			[
+				'icon' => 'images-alt',
+				'name' => __( 'Payment icons', 'neve' ),
+			],
+			[
+				'icon' => 'share',
+				'name' => __( 'Social Icons', 'neve' ),
+			],
+		];
+	}
 }
