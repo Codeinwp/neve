@@ -7,6 +7,8 @@
 
 namespace Neve\Customizer\Controls;
 
+use Neve\Customizer\Traits\Features_Upsell;
+
 /**
  * Customizer section.
  *
@@ -14,6 +16,8 @@ namespace Neve\Customizer\Controls;
  * @see        WP_Customize_Section
  */
 class Simple_Upsell_Section extends \WP_Customize_Section {
+	use Features_Upsell;
+
 	/**
 	 * Type of this section.
 	 *
@@ -55,12 +59,12 @@ class Simple_Upsell_Section extends \WP_Customize_Section {
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
-		$json                  = parent::json();
+		$json                  = array_merge( parent::json(), $this->to_json_features() );
 		$json['button_text']   = $this->button_text;
 		$json['link']          = $this->link;
 		$json['text']          = $this->text;
 		$json['screen_reader'] = __( '(opens in a new tab)', 'neve' );
-
+	
 		return $json;
 	}
 
@@ -70,17 +74,21 @@ class Simple_Upsell_Section extends \WP_Customize_Section {
 	protected function render_template() {
 		?>
 		<li id="accordion-section-{{ data.id }}" class="control-section-{{ data.type }}">
-			<div class="nv-simple-upsell">
-				<# if( data.text ) { #>
-					<p>{{data.text}}</p>
-				<# } #>
-				<# if( data.link && data.button_text ) { #>
-					<a rel="external noreferrer noopener" target="_blank" href="{{data.link}}" class='button button-secondary'>
-						{{data.button_text}}
-						<span class="components-visually-hidden">{{data.screen_reader}}</span>
-					</a>
-				<# } #>
-			</div>
+			<# if ( data.features_list ) { #>
+				<?php $this->render_features_body_template(); ?>
+			<# } else { #>
+				<div class="nv-simple-upsell">
+					<# if( data.text ) { #>
+						<p>{{data.text}}</p>
+					<# } #>
+					<# if( data.link && data.button_text ) { #>
+						<a rel="external noreferrer noopener" target="_blank" href="{{data.link}}" class='button button-secondary'>
+							{{data.button_text}}
+							<span class="components-visually-hidden">{{data.screen_reader}}</span>
+						</a>
+					<# } #>
+				</div>
+			<# } #>
 		</li>
 		<?php
 	}

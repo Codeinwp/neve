@@ -7,6 +7,8 @@
 
 namespace Neve\Customizer\Controls;
 
+use Neve\Customizer\Traits\Features_Upsell;
+
 /**
  * Simple Upsell Control.
  *
@@ -14,6 +16,7 @@ namespace Neve\Customizer\Controls;
  * @access public
  */
 class Simple_Upsell extends \WP_Customize_Control {
+	use Features_Upsell;
 
 	/**
 	 * The type of customize control being rendered.
@@ -69,6 +72,12 @@ class Simple_Upsell extends \WP_Customize_Control {
 	 * @return void
 	 */
 	public function render_content() {
+
+		if ( ! empty( $this->features_list ) ) {
+			$this->render_features_body();
+			return;
+		}
+
 		$base_class   = 'nv-simple-upsell';
 		$class        = ( ! empty( $this->class ) ) ? $base_class . ' ' . $this->class : $base_class;
 		$button_class = ( ! empty( $this->use_primary ) ) ? 'button-primary' : 'button-secondary';
