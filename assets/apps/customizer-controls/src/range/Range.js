@@ -23,7 +23,7 @@ const Range = ({
 					value={
 						parseFloat(value) === 0 ? 0 : parseFloat(value) || ''
 					}
-					min={min < 0 ? min : 0}
+					min={min !== 0 ? min : 0}
 					max={max}
 					step={step}
 					allowReset

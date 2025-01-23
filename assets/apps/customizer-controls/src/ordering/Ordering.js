@@ -2,7 +2,16 @@ import { ReactSortable } from 'react-sortablejs';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { __ } from '@wordpress/i18n';
-import { Tooltip, Icon } from '@wordpress/components';
+import {
+	Tooltip,
+	Icon,
+	RangeControl,
+	ToggleControl,
+} from '@wordpress/components';
+import { useMemo, useState } from '@wordpress/element';
+import { useCallback, useEffect } from 'react';
+import ResponsiveRangeComponent from '../responsive-range/ResponsiveRangeComponent';
+import { RadioIcons } from '@neve-wp/components';
 
 const Handle = () => (
 	<Tooltip text={__('Drag to Reorder', 'neve')}>
@@ -19,33 +28,206 @@ const Handle = () => (
 );
 
 const Item = ({ item, onToggle, components, allowsToggle = true }) => {
-	const label = components[item.id];
+	const label = components[item.id]?.label || components[item.id];
+
+	const hasControls = useMemo(() => {
+		return (
+			!!components[item.id]?.controls &&
+			Object.keys(components[item.id].controls).length > 0
+		);
+	});
+
+	const [open, setOpen] = useState(false);
+
+	const toggleSubcontrols = (e) => {
+		e.preventDefault();
+		setOpen(!open);
+	};
+
 	return (
 		<div
-			className={classnames({
-				'neve-sortable-item': true,
-				'no-toggle': !allowsToggle,
+			className={classnames('neve-sortable-item', {
 				visible: item.visible,
 				disabled: !item.visible,
+				'no-toggle': !allowsToggle,
 			})}
 		>
-			{allowsToggle && (
-				<Tooltip text={__('Toggle Visibility', 'neve')}>
-					<button
-						aria-label={__('Toggle Visibility', 'neve')}
-						className="toggle"
-						onClick={(e) => {
-							e.preventDefault();
-							e.stopPropagation();
-							onToggle(item.id);
-						}}
-					>
-						<Icon icon="visibility" />
-					</button>
-				</Tooltip>
+			<div className="top-bar">
+				{allowsToggle && (
+					<Tooltip text={__('Toggle Visibility', 'neve')}>
+						<button
+							aria-label={__('Toggle Visibility', 'neve')}
+							className="toggle"
+							onClick={(e) => {
+								e.preventDefault();
+								e.stopPropagation();
+								onToggle(item.id);
+							}}
+						>
+							<Icon icon="visibility" />
+						</button>
+					</Tooltip>
+				)}
+				<span className="label">{label}</span>
+
+				{item.visible && (
+					<div className="actions">
+						{hasControls && (
+							<Tooltip text={__('Toggle Controls', 'neve')}>
+								<button
+									className="toggle-controls"
+									onClick={toggleSubcontrols}
+									aria-label={__('Toggle Controls', 'neve')}
+								>
+									<Icon
+										icon={
+											open
+												? 'arrow-up-alt2'
+												: 'arrow-down-alt2'
+										}
+									/>
+								</button>
+							</Tooltip>
+						)}
+
+						<Handle />
+					</div>
+				)}
+			</div>
+			{hasControls && open && item.visible && (
+				<div className={classnames('sortable-subcontrols', { open })}>
+					{Object.entries(components[item.id].controls).map(
+						([id, args]) => {
+							return (
+								<InnerControl key={id} id={id} args={args} />
+							);
+						}
+					)}
+				</div>
 			)}
-			<span className="label">{label}</span>
-			{item.visible && <Handle />}
+		</div>
+	);
+};
+
+const InnerControl = ({ id, args }) => {
+	const { label, type, attrs, initialValue, description } = args;
+
+	const defaultValue = wp.customize.value(id).get();
+
+	const [value, setValue] = useState(initialValue || defaultValue);
+
+	const [isActive, setActive] = useState(false);
+
+	useEffect(() => {
+		setActive(wp.customize.control(id).active());
+	}, []);
+
+	const updateStatus = useCallback((status) => {
+		setActive(status);
+	}, []);
+
+	useEffect(() => {
+		wp.customize.control(id).active.bind(updateStatus);
+
+		return () => {
+			wp.customize.control(id).active.unbind(updateStatus);
+		};
+	}, []);
+
+	const onChange = (nextVal) => {
+		wp.customize.value(id).set(nextVal);
+	};
+
+	const handleValueChangeWithPrevent = (e) => {
+		e.preventDefault();
+		handleValueChange(e.target.value);
+	};
+
+	const handleValueChange = (val) => {
+		setValue(val);
+		onChange(val);
+	};
+
+	if (!isActive) {
+		return null;
+	}
+
+	return (
+		<div id={`sub-control-${id}`}>
+			{!['toggle', 'responsive-range'].includes(type) && (
+				<>
+					{label && <span className="subcontrol-label">{label}</span>}
+					{description && (
+						<span className="subcontrol-description">
+							{description}
+						</span>
+					)}
+				</>
+			)}
+			<div>
+				{type === 'select' && (
+					<select
+						value={value}
+						onBlur={handleValueChangeWithPrevent}
+						onChange={handleValueChangeWithPrevent}
+					>
+						{Object.entries(args.choices).map(
+							([val, optionLabel]) => (
+								<option key={val} value={val}>
+									{optionLabel}
+								</option>
+							)
+						)}
+					</select>
+				)}
+				{type === 'range' && (
+					<RangeControl
+						resetFallbackValue={
+							attrs?.defaultVal === 0
+								? 0
+								: attrs?.defaultVal || ''
+						}
+						value={
+							parseFloat(value) === 0
+								? 0
+								: parseFloat(value) || ''
+						}
+						allowReset
+						onChange={handleValueChange}
+						step={attrs?.step || 1}
+						min={attrs?.min || 0}
+						max={attrs?.max || 100}
+					/>
+				)}
+				{type === 'text' && (
+					<input
+						type="text"
+						value={value}
+						onChange={handleValueChangeWithPrevent}
+					/>
+				)}
+				{type === 'toggle' && (
+					<ToggleControl
+						checked={value}
+						label={label}
+						help={description}
+						onChange={handleValueChange}
+					/>
+				)}
+				{type === 'responsive-range' && (
+					<ResponsiveRangeComponent
+						control={wp.customize.control(id)}
+					/>
+				)}
+				{type === 'button-group' && (
+					<RadioIcons
+						options={args.choices}
+						value={value}
+						onChange={handleValueChange}
+						showLabels
+					/>
+				)}
+			</div>
 		</div>
 	);
 };

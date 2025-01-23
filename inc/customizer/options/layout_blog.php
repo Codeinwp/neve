@@ -108,14 +108,9 @@ class Layout_Blog extends Base_Customizer {
 
 				'neve_post_content_ordering',
 				'neve_post_excerpt_length',
-				'neve_post_thumbnail_box_shadow',
-				'neve_blog_post_meta_fields',
-				'neve_metadata_separator',
-				'neve_author_avatar',
-				'neve_author_avatar_size',
-				'neve_show_last_updated_date',
 
-				'neve_blog_archive_aspect_ratio',
+				'neve_blog_post_meta_fields',
+				'neve_blog_content_padding',
 			],
 			'style'   => [
 
@@ -124,7 +119,6 @@ class Layout_Blog extends Base_Customizer {
 				'neve_blog_grid_text_color',
 				'neve_blog_card_shadow',
 				'neve_blog_covers_text_color',
-				'neve_blog_content_padding',
 				'neve_blog_items_border_radius',
 
 				'neve_archive_typography_post_title_accordion_wrap',
@@ -335,7 +329,7 @@ class Layout_Blog extends Base_Customizer {
 					'section'         => $this->section,
 					'type'            => 'neve_toggle_control',
 					'priority'        => 70,
-					'active_callback' => function() {
+					'active_callback' => function () {
 						return get_option( 'show_on_front' ) !== 'posts';
 					},
 				],
@@ -352,7 +346,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'type'            => 'neve_toggle_control',
-					'priority'        => 90,
+					'priority'        => 51,
 					'section'         => $this->section,
 					'label'           => esc_html__( 'Enable Masonry', 'neve' ),
 					'active_callback' => array( $this, 'should_show_masonry' ),
@@ -415,7 +409,7 @@ class Layout_Blog extends Base_Customizer {
 						'latest' => esc_html__( 'Latest Post', 'neve' ),
 						'sticky' => esc_html__( 'Sticky Post', 'neve' ),
 					],
-					'active_callback' => function() {
+					'active_callback' => function () {
 						return get_theme_mod( 'neve_enable_featured_post', false );
 					},
 				)
@@ -436,7 +430,7 @@ class Layout_Blog extends Base_Customizer {
 				array(
 					'label'     => esc_html__( 'Post Structure', 'neve' ),
 					'section'   => $this->section,
-					'priority'  => 100,
+					'priority'  => 60,
 					'class'     => 'blog-layout-ordering-content-accordion',
 					'accordion' => false,
 				),
@@ -450,10 +444,68 @@ class Layout_Blog extends Base_Customizer {
 			'excerpt',
 		);
 
+
+		$ar_choices = [
+			'original' => esc_html__( 'Original', 'neve' ),
+			'1-1'      => '1:1',
+			'4-3'      => '4:3',
+			'16-9'     => '16:9',
+			'2-1'      => '2:1',
+			'4-5'      => '4:5',
+			'3-4'      => '3:4',
+			'2-3'      => '2:3',
+		];
+
+		$excerpt_length_default = $this->get_v4_defaults( 'neve_post_excerpt_length', 25 );
+
 		$components = array(
-			'thumbnail'  => __( 'Thumbnail', 'neve' ),
-			'title-meta' => __( 'Title & Meta', 'neve' ),
-			'excerpt'    => __( 'Excerpt', 'neve' ),
+			'thumbnail'  => [
+				'label'    => __( 'Thumbnail', 'neve' ),
+				'controls' => [
+					'neve_blog_archive_aspect_ratio' => [
+						'label'   => esc_html__( 'Image Aspect Ratio', 'neve' ),
+						'type'    => 'select',
+						'choices' => $ar_choices,
+					],
+				],
+			],
+			'title-meta' => [
+				'label'    => __( 'Title & Meta', 'neve' ),
+				'controls' => [
+					'neve_metadata_separator'     => [
+						'label'       => esc_html__( 'Meta Separator', 'neve' ),
+						'description' => esc_html__( 'For special characters make sure to use Unicode. For example > can be displayed using \003E.', 'neve' ),
+						'type'        => 'text',
+					],
+					'neve_show_last_updated_date' => [
+						'label' => esc_html__( 'Show Last Updated Date', 'neve' ),
+						'type'  => 'toggle',
+					],
+					'neve_author_avatar'          => [
+						'label' => esc_html__( 'Show Author Avatar', 'neve' ),
+						'type'  => 'toggle',
+					],
+					'neve_author_avatar_size'     => [
+						'type'  => 'responsive-range',
+						'label' => esc_html__( 'Author Avatar Size', 'neve' ),
+					],
+				],
+			],
+			'excerpt'    => [
+				'label'    => __( 'Excerpt', 'neve' ),
+				'controls' => [
+					'neve_post_excerpt_length' => [
+						'label' => esc_html__( 'Excerpt Length', 'neve' ),
+						'type'  => 'range',
+						'attrs' => [
+							'min'        => 5,
+							'max'        => 300,
+							'defaultVal' => $excerpt_length_default,
+							'step'       => 5,
+						],
+					],
+				],
+			],
 		);
 
 		$this->add_control(
@@ -467,22 +519,11 @@ class Layout_Blog extends Base_Customizer {
 					'label'      => esc_html__( 'Post Content Order', 'neve' ),
 					'section'    => $this->section,
 					'components' => $components,
-					'priority'   => 110,
+					'priority'   => 65,
 				),
 				'Neve\Customizer\Controls\React\Ordering'
 			)
 		);
-
-		$ar_choices = [
-			'original' => esc_html__( 'Original', 'neve' ),
-			'1-1'      => '1:1',
-			'4-3'      => '4:3',
-			'16-9'     => '16:9',
-			'2-1'      => '2:1',
-			'4-5'      => '4:5',
-			'3-4'      => '3:4',
-			'2-3'      => '2:3',
-		];
 
 		$this->add_control(
 			new Control(
@@ -494,43 +535,138 @@ class Layout_Blog extends Base_Customizer {
 					},
 				],
 				[
-					'active_callback' => function () {
-						return $this->is_thumbnail_enabled() && get_theme_mod( $this->section, 'grid' ) !== 'covers';
-					},
-					'label'           => esc_html__( 'Image Aspect Ratio', 'neve' ),
 					'section'         => $this->section,
-					'priority'        => 120,
-					'type'            => 'select',
-					'choices'         => $ar_choices,
+					'type'            => 'hidden',
+					'active_callback' => function() {
+						return get_theme_mod( $this->section, 'grid' ) !== 'default' || get_theme_mod( 'neve_blog_list_image_position', 'left' ) !== 'no';
+					},
 				]
 			)
 		);
 
-		$excerpt_length_default = $this->get_v4_defaults( 'neve_post_excerpt_length', 25 );
 		$this->add_control(
 			new Control(
 				'neve_post_excerpt_length',
 				array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
+					'sanitize_callback' => 'absint',
 					'default'           => $excerpt_length_default,
 				),
 				array(
-					'label'           => esc_html__( 'Excerpt Length', 'neve' ),
-					'section'         => $this->section,
-					'type'            => 'neve_range_control',
-					'input_attrs'     => [
-						'min'        => 5,
-						'max'        => 300,
-						'defaultVal' => $excerpt_length_default,
-						'step'       => 5,
-					],
-					'priority'        => 130,
-					'active_callback' => [ $this, 'is_excerpt_enabled' ],
-
-				),
-				'Neve\Customizer\Controls\React\Range'
+					'section' => $this->section,
+					'type'    => 'hidden',
+				)
 			)
 		);
+
+
+
+		$this->add_control(
+			new Control(
+				'neve_metadata_separator',
+				array(
+					'sanitize_callback' => 'sanitize_text_field',
+					'default'           => esc_html( '/' ),
+				),
+				array(
+					'section' => $this->section,
+					'type'    => 'hidden',
+				)
+			)
+		);
+
+
+		$this->add_control(
+			new Control(
+				'neve_author_avatar',
+				array(
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => false,
+				),
+				array(
+					'label'   => esc_html__( 'Show Author Avatar', 'neve' ),
+					'section' => $this->section,
+					'type'    => 'hidden',
+				)
+			)
+		);
+
+
+		$this->add_control(
+			new Control(
+				'neve_author_avatar_size',
+				array(
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'default'           => '{ "mobile": 20, "tablet": 20, "desktop": 20 }',
+				),
+				array(
+					'label'           => esc_html__( 'Avatar Size', 'neve' ),
+					'type'            => 'hidden',
+					'section'         => $this->section,
+					'units'           => array(
+						'px',
+					),
+					'input_attr'      => array(
+						'mobile'  => array(
+							'min'          => 20,
+							'max'          => 50,
+							'default'      => 20,
+							'default_unit' => 'px',
+						),
+						'tablet'  => array(
+							'min'          => 20,
+							'max'          => 50,
+							'default'      => 20,
+							'default_unit' => 'px',
+						),
+						'desktop' => array(
+							'min'          => 20,
+							'max'          => 50,
+							'default'      => 20,
+							'default_unit' => 'px',
+						),
+					),
+					'input_attrs'     => [
+						'units'      => [ 'px', 'em', 'rem' ],
+						'min'        => self::RELATIVE_CSS_UNIT_SUPPORTED_MIN_VALUE,
+						'max'        => 50,
+						'defaultVal' => [
+							'mobile'  => 20,
+							'tablet'  => 20,
+							'desktop' => 20,
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
+						],
+					],
+					'priority'        => 170,
+					'active_callback' => function () {
+						return get_theme_mod( 'neve_author_avatar', false ) && $this->is_meta_enabled();
+					},
+					'responsive'      => true,
+				),
+				'Neve\Customizer\Controls\React\Responsive_Range'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_show_last_updated_date',
+				array(
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => false,
+				),
+				array(
+					'label'           => esc_html__( 'Use last updated date instead of the published one', 'neve' ),
+					'section'         => $this->section,
+					'type'            => 'hidden',
+					'priority'        => 180,
+					'active_callback' => [ $this, 'is_meta_enabled' ],
+				)
+			)
+		);
+
 	}
 
 	/**
@@ -565,120 +701,10 @@ class Layout_Blog extends Base_Customizer {
 						)
 					),
 					'allow_new_fields' => 'no',
-					'priority'         => 140,
+					'priority'         => 65,
 					'active_callback'  => [ $this, 'is_meta_enabled' ],
 				],
 				'\Neve\Customizer\Controls\React\Repeater'
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_metadata_separator',
-				array(
-					'sanitize_callback' => 'sanitize_text_field',
-					'default'           => esc_html( '/' ),
-				),
-				array(
-					'priority'        => 150,
-					'section'         => $this->section,
-					'label'           => esc_html__( 'Meta Separator', 'neve' ),
-					'description'     => esc_html__( 'For special characters make sure to use Unicode. For example > can be displayed using \003E.', 'neve' ),
-					'type'            => 'text',
-					'active_callback' => [ $this, 'is_meta_enabled' ],
-				)
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_author_avatar',
-				array(
-					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => false,
-				),
-				array(
-					'label'           => esc_html__( 'Show Author Avatar', 'neve' ),
-					'section'         => $this->section,
-					'type'            => 'neve_toggle_control',
-					'priority'        => 160,
-					'active_callback' => [ $this, 'is_meta_enabled' ],
-				)
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_author_avatar_size',
-				array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
-					'default'           => '{ "mobile": 20, "tablet": 20, "desktop": 20 }',
-				),
-				array(
-					'label'           => esc_html__( 'Avatar Size', 'neve' ),
-					'section'         => $this->section,
-					'units'           => array(
-						'px',
-					),
-					'input_attr'      => array(
-						'mobile'  => array(
-							'min'          => 20,
-							'max'          => 50,
-							'default'      => 20,
-							'default_unit' => 'px',
-						),
-						'tablet'  => array(
-							'min'          => 20,
-							'max'          => 50,
-							'default'      => 20,
-							'default_unit' => 'px',
-						),
-						'desktop' => array(
-							'min'          => 20,
-							'max'          => 50,
-							'default'      => 20,
-							'default_unit' => 'px',
-						),
-					),
-					'input_attrs'     => [
-						'min'        => self::RELATIVE_CSS_UNIT_SUPPORTED_MIN_VALUE,
-						'max'        => 50,
-						'defaultVal' => [
-							'mobile'  => 20,
-							'tablet'  => 20,
-							'desktop' => 20,
-							'suffix'  => [
-								'mobile'  => 'px',
-								'tablet'  => 'px',
-								'desktop' => 'px',
-							],
-						],
-						'units'      => [ 'px', 'em', 'rem' ],
-					],
-					'priority'        => 170,
-					'active_callback' => function () {
-						return get_theme_mod( 'neve_author_avatar', false ) && $this->is_meta_enabled();
-					},
-					'responsive'      => true,
-				),
-				'Neve\Customizer\Controls\React\Responsive_Range'
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_show_last_updated_date',
-				array(
-					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => false,
-				),
-				array(
-					'label'           => esc_html__( 'Use last updated date instead of the published one', 'neve' ),
-					'section'         => $this->section,
-					'type'            => 'neve_toggle_control',
-					'priority'        => 180,
-					'active_callback' => [ $this, 'is_meta_enabled' ],
-				)
 			)
 		);
 	}
@@ -891,7 +917,7 @@ class Layout_Blog extends Base_Customizer {
 						],
 						'fallback' => 0,
 						'template' =>
-							'body .cover-post, body .layout-grid .article-content-col .content {
+						'body .cover-post, body .layout-grid .article-content-col .content {
 							    border-radius: {{value}}px;
 					    	}',
 					],
@@ -913,7 +939,7 @@ class Layout_Blog extends Base_Customizer {
 				array(
 					'label'       => esc_html__( 'Content Padding', 'neve' ),
 					'section'     => $this->section,
-					'priority'    => 200,
+					'priority'    => 80,
 					'input_attrs' => array(
 						'units' => [ 'px', 'em', 'rem' ],
 						'min'   => 0,
@@ -971,7 +997,7 @@ class Layout_Blog extends Base_Customizer {
 							'selector' => '.posts-wrapper',
 						],
 						'template' =>
-							'.layout-grid .article-content-col .content {
+						'.layout-grid .article-content-col .content {
 							background: {{value}};
 						}',
 					],
@@ -1004,7 +1030,7 @@ class Layout_Blog extends Base_Customizer {
 							'selector' => '.posts-wrapper',
 						],
 						'template' =>
-							'.layout-grid .article-content-col .content, .layout-grid .article-content-col .content a:not(.button), .layout-grid .article-content-col .content li {
+						'.layout-grid .article-content-col .content, .layout-grid .article-content-col .content a:not(.button), .layout-grid .article-content-col .content li {
 							color: {{value}};
 						}',
 					],
@@ -1039,7 +1065,7 @@ class Layout_Blog extends Base_Customizer {
 					'live_refresh_css_prop' => [
 						'fallback' => 0,
 						'template' =>
-							'body .layout-grid .article-content-col .content {
+						'body .layout-grid .article-content-col .content {
 							    box-shadow: 0 0 calc({{value}}px * 4) 0 rgba(0,0,0,calc(0.1 + 0.{{value}}));
 					    	}',
 					],

@@ -13,6 +13,9 @@ $excluded: ':not(#customize-control-neve_blog_archive_layout):not(.customize-con
 }
 
 #sub-accordion-section-neve_blog_archive_layout {
+	.customize-control-hidden {
+		display: none !important;
+	}
 	.customize-control#{$excluded} {
 		margin-bottom: -1px !important;
 		background-color: #fff;

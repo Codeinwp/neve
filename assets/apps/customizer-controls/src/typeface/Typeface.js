@@ -289,11 +289,11 @@ const Typeface = (props) => {
 		<>
 			{label && <span className="customize-control-title">{label}</span>}
 			<div className="neve-typeface-control neve-white-background-control">
-				{renderTextTransform()}
-				{renderFontWeight()}
 				{renderFontSize()}
 				{renderLineHeight()}
 				{renderLetterSpacing()}
+				{renderTextTransform()}
+				{renderFontWeight()}
 			</div>
 		</>
 	);
