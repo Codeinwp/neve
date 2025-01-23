@@ -485,10 +485,14 @@ class Front_End {
 		$footer_sidebars = apply_filters(
 			'neve_footer_widget_areas_array',
 			array(
-				'footer-one-widgets'   => esc_html__( 'Footer One', 'neve' ),
-				'footer-two-widgets'   => esc_html__( 'Footer Two', 'neve' ),
-				'footer-three-widgets' => esc_html__( 'Footer Three', 'neve' ),
-				'footer-four-widgets'  => esc_html__( 'Footer Four', 'neve' ),
+				// translators: %d: the number of the widget.
+				'footer-one-widgets'   => sprintf( __( 'Widget Area %d', 'neve' ), 1 ),
+				// translators: %d: the number of the widget.
+				'footer-two-widgets'   => sprintf( __( 'Widget Area %d', 'neve' ), 2 ),
+				// translators: %d: the number of the widget.
+				'footer-three-widgets' => sprintf( __( 'Widget Area %d', 'neve' ), 3 ),
+				// translators: %d: the number of the widget.
+				'footer-four-widgets'  => sprintf( __( 'Widget Area %d', 'neve' ), 4 ),
 			)
 		);
 

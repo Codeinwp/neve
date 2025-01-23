@@ -28,7 +28,8 @@ class FooterWidgetThree extends Abstract_FooterWidget {
 	 * @access  public
 	 */
 	public function init() {
-		$this->set_property( 'label', __( 'Footer Three', 'neve' ) );
+		// translators: %d: the number of the widget.
+		$this->set_property( 'label', sprintf( __( 'Widget Area %d', 'neve' ), 3 ) );
 		$this->set_property( 'id', self::COMPONENT_ID );
 		$this->set_property( 'width', 3 );
 		$this->set_property( 'section', 'sidebar-widgets-footer-three-widgets' );
