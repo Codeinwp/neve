@@ -132,8 +132,8 @@ trait Layout {
 		}
 
 		$new_defaults = [
-			'neve_blog_items_border_radius'  => 8,
-			'neve_blog_content_padding'      => [
+			'neve_blog_items_border_radius'          => 8,
+			'neve_blog_content_padding'              => [
 				'mobile'       => [
 					'top'    => 25,
 					'right'  => 25,
@@ -156,12 +156,18 @@ trait Layout {
 				'tablet-unit'  => 'px',
 				'desktop-unit' => 'px',
 			],
-			'neve_enable_card_style'         => true,
-			'neve_blog_grid_card_bg_color'   => 'var(--nv-site-bg)',
-			'neve_blog_grid_text_color'      => 'var(--nv-text-color)',
-			'neve_blog_card_shadow'          => 0.5,
-			'neve_blog_archive_aspect_ratio' => '4-3',
-			'neve_post_excerpt_length'       => 35,
+			'neve_enable_card_style'                 => true,
+			'neve_blog_grid_card_bg_color'           => 'var(--nv-site-bg)',
+			'neve_blog_grid_text_color'              => 'var(--nv-text-color)',
+			'neve_blog_card_shadow'                  => 0.5,
+			'neve_blog_archive_aspect_ratio'         => '4-3',
+			'neve_post_excerpt_length'               => 35,
+			'neve_layout_single_post_elements_order' => [
+				'title-meta',
+				'content',
+				'tags',
+				'comments',
+			],
 		];
 
 		if ( ! isset( $new_defaults[ $id ] ) ) {

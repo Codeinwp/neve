@@ -96,14 +96,6 @@ trait Single_Post {
 			'comments',
 		];
 
-		if ( Layout_Single_Post::is_cover_layout() ) {
-			$default_components = [
-				'content',
-				'tags',
-				'comments',
-			];
-		}
-
 		return apply_filters( 'neve_single_post_elements_default_order', $default_components );
 	}
 

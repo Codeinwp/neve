@@ -44,15 +44,20 @@ class Migration_Flags {
 	 * Run the migrations.
 	 */
 	public function run() {
-		// It's the current version. We're skipping.
-		if ( $this->current_version === $this->last_version ) {
-			return;
-		}
-
 		// This exists since v4.0.0. If it's not set, we're dealing with a new user, but we don't know since what version.
 		if ( ! $this->last_version ) {
 			update_option( self::USER_SINCE_VERSION, $this->is_new_user_on_v4() ? $this->current_version : 'unknown' );
 		}
+
+		// Skip when there was no version before (no migration needed)
+		// Skip if the current version is lower than the last one.
+		if ( ! $this->last_version || $this->current_version <= $this->last_version ) {
+			return;
+		}
+
+
+		// Do migrations here.
+
 
 		$this->end_migration();
 	}

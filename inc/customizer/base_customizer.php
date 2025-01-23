@@ -351,7 +351,7 @@ abstract class Base_Customizer {
 				[
 					'label'           => esc_html__( 'Boxed layout', 'neve' ),
 					'section'         => $settings['section'],
-					'type'            => 'neve_toggle_control',
+					'type'            => $id === 'post_cover_title' ? 'hidden' : 'neve_toggle_control',
 					'priority'        => $settings['priority'],
 					'active_callback' => array_key_exists( 'toggle_active_callback', $settings ) ? $settings['toggle_active_callback'] : '__return_true',
 				],
@@ -419,6 +419,7 @@ abstract class Base_Customizer {
 				],
 				[
 					'label'                 => esc_html__( 'Section padding', 'neve' ),
+					'type'                  => $id === 'post_cover_title' ? 'hidden' : 'neve_spacing',
 					'section'               => $settings['section'],
 					'input_attrs'           => [
 						'units' => [ 'px', 'em', 'rem' ],

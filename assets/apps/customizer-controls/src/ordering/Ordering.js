@@ -10,8 +10,10 @@ import {
 } from '@wordpress/components';
 import { useMemo, useState } from '@wordpress/element';
 import { useCallback, useEffect } from 'react';
-import ResponsiveRangeComponent from '../responsive-range/ResponsiveRangeComponent';
 import { RadioIcons } from '@neve-wp/components';
+import ResponsiveRangeComponent from '../responsive-range/ResponsiveRangeComponent';
+import ResponsiveRadioButtonsComponent from '../responsive-radio-buttons/ResponsiveRadioButtonsComponent';
+import SpacingComponent from '../spacing/SpacingComponent';
 
 const Handle = () => (
 	<Tooltip text={__('Drag to Reorder', 'neve')}>
@@ -27,7 +29,13 @@ const Handle = () => (
 	</Tooltip>
 );
 
-const Item = ({ item, onToggle, components, allowsToggle = true }) => {
+const Item = ({
+	item,
+	onToggle,
+	components,
+	allowsToggle = true,
+	locked = false,
+}) => {
 	const label = components[item.id]?.label || components[item.id];
 
 	const hasControls = useMemo(() => {
@@ -35,7 +43,7 @@ const Item = ({ item, onToggle, components, allowsToggle = true }) => {
 			!!components[item.id]?.controls &&
 			Object.keys(components[item.id].controls).length > 0
 		);
-	});
+	}, []);
 
 	const [open, setOpen] = useState(false);
 
@@ -43,6 +51,36 @@ const Item = ({ item, onToggle, components, allowsToggle = true }) => {
 		e.preventDefault();
 		setOpen(!open);
 	};
+
+	const [activeControls, setActiveControls] = useState(false);
+
+	const checkSubcontrolsActive = () => {
+		if (!hasControls) return;
+
+		const hasActive =
+			Object.keys(components[item.id].controls)
+				.map((control) => {
+					return wp.customize.control(control).active();
+				})
+				.filter(Boolean).length > 0;
+
+		setActiveControls(hasActive);
+	};
+
+	useEffect(() => {
+		if (!hasControls) return;
+
+		checkSubcontrolsActive();
+
+		wp.customize.control.bind('change', checkSubcontrolsActive);
+
+		return () => {
+			wp.customize.control.unbind('change', checkSubcontrolsActive);
+		};
+	}, []);
+
+	if (hasControls) {
+	}
 
 	return (
 		<div
@@ -56,6 +94,7 @@ const Item = ({ item, onToggle, components, allowsToggle = true }) => {
 				{allowsToggle && (
 					<Tooltip text={__('Toggle Visibility', 'neve')}>
 						<button
+							disabled={locked}
 							aria-label={__('Toggle Visibility', 'neve')}
 							className="toggle"
 							onClick={(e) => {
@@ -72,7 +111,7 @@ const Item = ({ item, onToggle, components, allowsToggle = true }) => {
 
 				{item.visible && (
 					<div className="actions">
-						{hasControls && (
+						{activeControls && (
 							<Tooltip text={__('Toggle Controls', 'neve')}>
 								<button
 									className="toggle-controls"
@@ -90,11 +129,17 @@ const Item = ({ item, onToggle, components, allowsToggle = true }) => {
 							</Tooltip>
 						)}
 
-						<Handle />
+						{locked ? (
+							<button disabled>
+								<Icon icon="lock" />
+							</button>
+						) : (
+							<Handle />
+						)}
 					</div>
 				)}
 			</div>
-			{hasControls && open && item.visible && (
+			{activeControls && open && item.visible && (
 				<div className={classnames('sortable-subcontrols', { open })}>
 					{Object.entries(components[item.id].controls).map(
 						([id, args]) => {
@@ -110,7 +155,21 @@ const Item = ({ item, onToggle, components, allowsToggle = true }) => {
 };
 
 const InnerControl = ({ id, args }) => {
-	const { label, type, attrs, initialValue, description } = args;
+	const {
+		label: overrideLabel,
+		description: overrideDescription,
+		type,
+		attrs,
+		initialValue,
+	} = args;
+
+	const label =
+		overrideLabel || wp.customize?.control(id)?.params?.label || '';
+
+	const description =
+		overrideDescription ||
+		wp.customize?.control(id)?.params?.description ||
+		'';
 
 	const defaultValue = wp.customize.value(id).get();
 
@@ -154,7 +213,12 @@ const InnerControl = ({ id, args }) => {
 
 	return (
 		<div id={`sub-control-${id}`}>
-			{!['toggle', 'responsive-range'].includes(type) && (
+			{![
+				'toggle',
+				'responsive-range',
+				'responsive-button-group',
+				'responsive-spacing',
+			].includes(type) && (
 				<>
 					{label && <span className="subcontrol-label">{label}</span>}
 					{description && (
@@ -210,7 +274,13 @@ const InnerControl = ({ id, args }) => {
 					<ToggleControl
 						checked={value}
 						label={label}
-						help={description}
+						help={() => (
+							<span
+								dangerouslySetInnerHTML={{
+									__html: description,
+								}}
+							/>
+						)}
 						onChange={handleValueChange}
 					/>
 				)}
@@ -226,6 +296,14 @@ const InnerControl = ({ id, args }) => {
 						onChange={handleValueChange}
 						showLabels
 					/>
+				)}
+				{type === 'responsive-button-group' && (
+					<ResponsiveRadioButtonsComponent
+						control={wp.customize.control(id)}
+					/>
+				)}
+				{type === 'responsive-spacing' && (
+					<SpacingComponent control={wp.customize.control(id)} />
 				)}
 			</div>
 		</div>
@@ -245,6 +323,7 @@ const Ordering = ({
 	onUpdate,
 	value,
 	components,
+	locked = [],
 	allowsToggle = true,
 }) => {
 	const handleToggle = (item) => {
@@ -293,7 +372,8 @@ const Ordering = ({
 					})
 					.map((item, index) => (
 						<Item
-							key={'ordering-element-' + index}
+							locked={locked.includes(item.id)}
+							key={item.id}
 							item={item}
 							onToggle={handleToggle}
 							allowsToggle={allowsToggle}

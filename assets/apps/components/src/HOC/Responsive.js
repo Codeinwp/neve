@@ -8,12 +8,16 @@ const ResponsiveControl = (props) => {
 	const { onChange, excluded, controlLabel, hideResponsive, children } =
 		props;
 
+	const handleDeviceChange = (device) => {
+		onChange(checkExcludedTablet(device));
+	};
+
 	useEffect(() => {
-		window.wp.customize.bind('ready', () => {
-			window.wp.customize.previewedDevice.bind((newDevice) => {
-				onChange(checkExcludedTablet(newDevice));
-			});
-		});
+		wp.customize.state('previewedDevice').bind(handleDeviceChange);
+
+		return () => {
+			wp.customize.state('previewedDevice').unbind(handleDeviceChange);
+		};
 	}, []);
 
 	const checkExcludedTablet = (device) => {

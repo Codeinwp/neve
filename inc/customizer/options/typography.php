@@ -429,22 +429,25 @@ class Typography extends Base_Customizer {
 			),
 			'neve_single_post_typography_post_title'     => array(
 				'label'                 => __( 'Post title', 'neve' ),
-				'category_label'        => __( 'Single Post', 'neve' ),
-				'priority'              => 40,
+				'category_label'        => __( 'Typography', 'neve' ),
+				'priority'              => 500,
 				'font_family_control'   => 'neve_headings_font_family',
 				'live_refresh_selector' => '.single h1.entry-title',
+				'section'               => 'neve_single_post_layout',
 			),
 			'neve_single_post_typography_post_meta'      => array(
 				'label'                 => __( 'Post meta', 'neve' ),
-				'priority'              => 50,
+				'priority'              => 510,
 				'font_family_control'   => 'neve_body_font_family',
 				'live_refresh_selector' => '.single .nv-meta-list li',
+				'section'               => 'neve_single_post_layout',
 			),
 			'neve_single_post_typography_comments_title' => array(
 				'label'                 => __( 'Comments reply title', 'neve' ),
-				'priority'              => 60,
+				'priority'              => 520,
 				'font_family_control'   => 'neve_headings_font_family',
 				'live_refresh_selector' => '.single .comment-reply-title',
+				'section'               => 'neve_single_post_layout',
 			),
 		);
 
