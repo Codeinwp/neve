@@ -904,7 +904,7 @@ class Layout_Blog extends Base_Customizer {
 					'input_attrs'           => [
 						'min'        => 0,
 						'max'        => 100,
-						'defaultVal' => 0.5,
+						'defaultVal' => $this->get_v4_defaults( 'neve_blog_items_border_radius', 0 ),
 					],
 					'priority'              => 190,
 					'live_refresh_selector' => true,
