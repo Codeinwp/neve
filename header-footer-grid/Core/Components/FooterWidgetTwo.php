@@ -29,8 +29,7 @@ class FooterWidgetTwo extends Abstract_FooterWidget {
 	 * @access  public
 	 */
 	public function init() {
-		// translators: %d: the number of the widget.
-		$this->set_property( 'label', sprintf( __( 'Widget Area %d', 'neve' ), 2 ) );
+		$this->set_property( 'label', __( 'Footer Two', 'neve' ) );
 		$this->set_property( 'id', self::COMPONENT_ID );
 		$this->set_property( 'width', 3 );
 		$this->set_property( 'section', 'sidebar-widgets-footer-two-widgets' );
