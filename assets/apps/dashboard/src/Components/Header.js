@@ -23,11 +23,22 @@ const HeaderTopBar = ({ currentTab, setTab }) => {
 		changelog: {
 			label: __('Changelog', 'neve'),
 			icon: <LucideFileText className="mr-1.5" size={20} />,
-			hide: NEVE_IS_WHITELABEL,
 		},
 	};
 
 	const { isLicenseValid } = useLicenseData();
+
+	if (NEVE_IS_WHITELABEL) {
+		const hasWhiteLabelAgencyURL = !!neveDash.whiteLabel?.agencyURL;
+
+		NAV_BUTTONS.changelog.hide = true;
+
+		if (hasWhiteLabelAgencyURL) {
+			NAV_BUTTONS.help.url = neveDash.whiteLabel?.agencyURL;
+		} else {
+			NAV_BUTTONS.help.hide = true;
+		}
+	}
 
 	return (
 		<div className="border-b border-gray-100">

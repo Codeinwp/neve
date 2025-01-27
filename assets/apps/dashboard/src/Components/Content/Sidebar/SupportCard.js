@@ -1,5 +1,6 @@
+/* global neveDash */
 import { useSelect } from '@wordpress/data';
-import { NEVE_STORE } from '../../../utils/constants';
+import { NEVE_IS_WHITELABEL, NEVE_STORE } from '../../../utils/constants';
 import Link from '../../Common/Link';
 
 const SupportCard = () => {
@@ -19,10 +20,20 @@ const SupportCard = () => {
 		return null;
 	}
 
+	let supportUrl = supportData.url;
+
+	if (NEVE_IS_WHITELABEL) {
+		if (!neveDash.whiteLabel?.agencyURL) {
+			return null;
+		}
+
+		supportUrl = neveDash.whiteLabel.agencyURL;
+	}
+
 	return (
 		<Link
 			className="flex items-center justify-center bg-white hover:bg-blue-600 text-blue-600 hover:text-white hover:no-underline border border-blue-600 hover:border-transparent rounded font-semibold py-3 px-2"
-			url={supportData.url}
+			url={supportUrl}
 			isExternal
 			text={supportData.text}
 		/>

@@ -33,9 +33,11 @@ export const NEVE_HAS_VALID_PRO =
 
 export const NEVE_HAS_PRO = neveDash.pro;
 
-export const NEVE_IS_WHITELABEL = !neveDash.modules.white_label;
+export const NEVE_IS_WHITELABEL = !!neveDash.whiteLabel;
 
-export const NEVE_HIDE_PLUGINS = neveDash.hidePluginsTab;
+export const NEVE_SHOW_WHITELABEL = !!neveDash.modules.white_label;
+
+export const NEVE_HIDE_PLUGINS = neveDash.hidePluginsTab || NEVE_IS_WHITELABEL;
 
 export const NEVE_MODULE_ICON_MAP = {
 	hfg_module: LucidePanelTopDashed,

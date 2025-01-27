@@ -113,7 +113,7 @@ const Sidebar = () => {
 		<div className="grid gap-6">
 			{NEVE_HAS_PRO && <LicenseCard />}
 
-			{!NEVE_IS_WHITELABEL && NEVE_HAS_PRO && <SupportCard />}
+			{NEVE_HAS_PRO && <SupportCard />}
 
 			{!NEVE_IS_WHITELABEL && (
 				<>

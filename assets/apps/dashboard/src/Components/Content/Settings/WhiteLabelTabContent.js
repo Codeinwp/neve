@@ -261,13 +261,7 @@ const WhiteLabelSettings = () => {
 				);
 			})}
 			<div className="flex justify-end mt-6">
-				<Button
-					isSubmit
-					isPrimary
-					onClick={handleSubmit}
-					loading={loading}
-					disabled={loading}
-				>
+				<Button isSubmit isPrimary loading={loading} disabled={loading}>
 					{loading
 						? __('Saving', 'neve') + '...'
 						: __('Save', 'neve')}

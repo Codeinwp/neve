@@ -14,7 +14,7 @@ import { useSelect } from '@wordpress/data';
 import Card from '../../Layout/Card';
 import {
 	NEVE_HAS_PRO,
-	NEVE_IS_WHITELABEL,
+	NEVE_SHOW_WHITELABEL,
 	NEVE_STORE,
 } from '../../utils/constants';
 import Notice from '../Common/Notice';
@@ -59,8 +59,9 @@ const Menu = ({ tab, setTab }) => {
 	const menuItems = NAV_ITEMS.filter(({ id }) => {
 		if (id === 'manage-modules') return NEVE_HAS_PRO;
 
-		if (id === 'white-label')
-			return whiteLabelStatus && !NEVE_IS_WHITELABEL;
+		if (id === 'white-label') {
+			return whiteLabelStatus && NEVE_SHOW_WHITELABEL;
+		}
 
 		return true;
 	});
