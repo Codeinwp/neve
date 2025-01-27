@@ -48,7 +48,6 @@ trait Layout {
 			'neve_blog_archive_content_width',
 			'neve_other_pages_content_width',
 			'neve_single_product_content_width',
-			'neve_shop_archive_content_width',
 		];
 		$full_width = apply_filters( 'neve_sidebar_full_width_defaults', $full_width );
 		if ( in_array( $control_id, $full_width, true ) ) {
