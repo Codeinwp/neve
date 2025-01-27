@@ -276,8 +276,6 @@ export default () => {
 
 	const showPlaceholder = !isLicenseValid || licenseTier < 3;
 
-	const [showTierInfo, setShowTierInfo] = useState(false);
-
 	return (
 		<>
 			<div className="flex items-center justify-between mb-6">
@@ -287,9 +285,10 @@ export default () => {
 
 				{showPlaceholder && (
 					<Button
+						target="_blank"
 						className="!p-0"
 						isLink
-						onClick={() => setShowTierInfo(!showTierInfo)}
+						href={neveDash.upgradeURLModules}
 					>
 						<LucideMessageCircleQuestion size={18} />
 						{__('Available in Agency Plan', 'neve')}
