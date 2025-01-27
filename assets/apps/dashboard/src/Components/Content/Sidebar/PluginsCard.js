@@ -113,18 +113,25 @@ const PluginCard = ({ slug, data }) => {
 	);
 };
 
-const PluginsCard = () => {
+const PluginsCard = ({ grid = false }) => {
 	const { plugins } = neveDash;
 
 	if (NEVE_HIDE_PLUGINS || plugins.length < 1) {
 		return null;
 	}
 
+	const contentClasses = cn({
+		'space-y-3': !grid,
+		'grid gap-4 grid-cols-2': grid,
+	});
+
 	return (
-		<Card title={__('Recommended Plugins', 'neve')} className="space-y-3">
-			{Object.entries(plugins).map(([slug, args]) => (
-				<PluginCard key={slug} slug={slug} data={args} />
-			))}
+		<Card title={__('Recommended Plugins', 'neve')}>
+			<div className={contentClasses}>
+				{Object.entries(plugins).map(([slug, args]) => (
+					<PluginCard key={slug} slug={slug} data={args} />
+				))}
+			</div>
 		</Card>
 	);
 };

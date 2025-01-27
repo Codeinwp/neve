@@ -7,11 +7,13 @@ import { NEVE_HAS_PRO } from '../../utils/constants';
 import Link from '../Common/Link';
 import TransitionWrapper from '../Common/TransitionWrapper';
 import ModuleGrid from './ModuleGrid';
+import PluginsCard from './Sidebar/PluginsCard';
 
 export default () => (
 	<TransitionWrapper className="grid gap-6">
 		<CustomizerShortcutsCard />
 		{!NEVE_HAS_PRO && <ModuleGrid />}
+		{NEVE_HAS_PRO && <PluginsCard grid />}
 	</TransitionWrapper>
 );
 

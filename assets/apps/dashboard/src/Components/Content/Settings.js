@@ -60,7 +60,7 @@ const Menu = ({ tab, setTab }) => {
 		if (id === 'manage-modules') return NEVE_HAS_PRO;
 
 		if (id === 'white-label') {
-			return whiteLabelStatus && NEVE_SHOW_WHITELABEL;
+			return !NEVE_HAS_PRO || (whiteLabelStatus && NEVE_SHOW_WHITELABEL);
 		}
 
 		return true;
