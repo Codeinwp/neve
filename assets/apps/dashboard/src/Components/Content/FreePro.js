@@ -13,7 +13,7 @@ import {
 import Card from '../../Layout/Card';
 import Tooltip from '../Common/Tooltip';
 import Button from '../Common/Button';
-import { TransitionWrapper } from '../Common/TransitionWrapper';
+import TransitionWrapper from '../Common/TransitionWrapper';
 
 const FreeProCard = () => (
 	<Card className="!p-0">

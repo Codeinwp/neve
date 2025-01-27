@@ -1,7 +1,7 @@
 /* global neveDash */
 import cn from 'classnames';
 
-import { useState } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
 
 import {
@@ -13,7 +13,6 @@ import Card from '../../Layout/Card';
 import Button from './Button';
 import Tooltip from './Tooltip';
 import TransitionInOut from './TransitionInOut';
-import { useEffect } from 'react';
 
 const Notification = ({ data }) => {
 	const [hidden, setHidden] = useState(false);

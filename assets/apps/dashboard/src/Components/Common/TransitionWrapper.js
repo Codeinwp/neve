@@ -1,7 +1,7 @@
 import { Transition } from '@headlessui/react';
 import cn from 'classnames';
 
-export const TransitionWrapper = ({ children, from = 'bottom', className }) => {
+export default ({ children, from = 'bottom', className }) => {
 	const directionClasses = {
 		left: {
 			enterFrom: '-translate-x-2',

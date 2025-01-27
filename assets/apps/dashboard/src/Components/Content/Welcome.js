@@ -5,7 +5,7 @@ import { LucidePanelsTopLeft } from 'lucide-react';
 import Card from '../../Layout/Card';
 import { NEVE_HAS_PRO } from '../../utils/constants';
 import Link from '../Common/Link';
-import { TransitionWrapper } from '../Common/TransitionWrapper';
+import TransitionWrapper from '../Common/TransitionWrapper';
 import ModuleGrid from './ModuleGrid';
 
 export default () => (

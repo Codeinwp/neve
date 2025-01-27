@@ -1,10 +1,12 @@
 import { useDispatch, useSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
 import { LucideLoaderCircle } from 'lucide-react';
-import { useState } from 'react';
-import { NEVE_STORE } from '../../utils/constants';
-import { changeOption } from '../../utils/rest';
+
 import Toggle from '../Common/Toggle';
 import ControlWrap from './ControlWrap';
+
+import { NEVE_STORE } from '../../utils/constants';
+import { changeOption } from '../../utils/rest';
 
 export default ({
 	icon,

@@ -1,11 +1,12 @@
 /* global neveDash */
-import InstallActivate from '../Plugin/InstallActivate';
 import { withSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+
+import InstallActivate from '../Plugin/InstallActivate';
 import Card from '../../Layout/Card';
 import Container from '../../Layout/Container';
-import { __ } from '@wordpress/i18n';
-import { useState } from 'react';
-import { TransitionWrapper } from '../Common/TransitionWrapper';
+import TransitionWrapper from '../Common/TransitionWrapper';
 
 const BackgroundPlaceholder = () => {
 	const [show, setShow] = useState(false);

@@ -18,7 +18,7 @@ import {
 	NEVE_STORE,
 } from '../../utils/constants';
 import Notice from '../Common/Notice';
-import { TransitionWrapper } from '../Common/TransitionWrapper';
+import TransitionWrapper from '../Common/TransitionWrapper';
 import GeneralTabContent from './Settings/GeneralTabContent';
 import ManageModulesTabContent from './Settings/ManageModulesTabContent';
 import PerformanceTabContent from './Settings/PerformanceTabContent';

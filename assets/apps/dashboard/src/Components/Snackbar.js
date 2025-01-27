@@ -1,7 +1,6 @@
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { useState } from 'react';
 import { NEVE_STORE } from '../utils/constants';
 import Toast from './Common/Toast';
 

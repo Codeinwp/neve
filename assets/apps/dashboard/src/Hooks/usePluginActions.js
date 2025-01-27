@@ -1,9 +1,8 @@
 /* global neveDash */
 
-import { useState } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import { useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { useEffect } from 'react';
 
 const usePluginActions = (slug, activateAfterInstall = false) => {
 	const buttonLabelsMap = {

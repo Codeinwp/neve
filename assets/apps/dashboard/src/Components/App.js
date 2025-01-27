@@ -5,11 +5,11 @@ import Header from './Header';
 import Notifications from './Notifications';
 import SkeletonLoader from './SkeletonLoader';
 import Snackbar from './Snackbar';
+import TransitionWrapper from './Common/TransitionWrapper';
 
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
 import { tabs } from '../utils/common';
-import { TransitionWrapper } from './Common/TransitionWrapper';
 import { NEVE_STORE } from '../utils/constants';
 
 const App = () => {

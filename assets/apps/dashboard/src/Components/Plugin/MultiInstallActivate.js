@@ -1,8 +1,7 @@
 import InstallActivate from './InstallActivate';
-import { useState } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import { withDispatch } from '@wordpress/data';
-import { useEffect } from 'react';
 
 const MultiInstallActivate = ({
 	slug,

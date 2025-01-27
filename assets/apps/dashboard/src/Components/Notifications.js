@@ -1,7 +1,7 @@
 /* global neveDash */
 import Notification from './Common/Notification';
 import Container from '../Layout/Container';
-import { TransitionWrapper } from './Common/TransitionWrapper';
+import TransitionWrapper from './Common/TransitionWrapper';
 
 const Notifications = () => {
 	if (!neveDash.notifications) {

@@ -1,8 +1,8 @@
-import { useRef, useState } from '@wordpress/element';
+import { useRef, useState, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import cn from 'classnames';
 import { Check, ChevronDown } from 'lucide-react';
-import { useEffect } from 'react';
+
 const MultiSelect = ({ value, label, disabled, choices = {}, onChange }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
