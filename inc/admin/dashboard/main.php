@@ -636,7 +636,7 @@ class Main {
 	 * @return array[]
 	 */
 	private function get_modules() {
-		return array(
+		$plugins = array(
 			'hfg_module'             => array(
 				'nicename'    => __( 'Header Booster', 'neve' ),
 				'description' => __( 'Extend your header with more components and settings, build sticky/transparent headers or display them conditionally.', 'neve' ),
@@ -644,10 +644,12 @@ class Main {
 			'woocommerce_booster'    => array(
 				'nicename'    => __( 'WooCommerce Booster', 'neve' ),
 				'description' => __( 'Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration.', 'neve' ),
+				'condition'   => class_exists( 'WooCommerce' ),
 			),
 			'easy_digital_downloads' => array(
 				'nicename'    => __( 'Easy Digital Downloads Booster', 'neve' ),
 				'description' => __( 'Enhance your Easy Digital Downloads store with additional customization settings.', 'neve' ),
+				'condition'   => class_exists( 'Easy_Digital_Downloads' ),
 			),
 			'blog_pro'               => array(
 				'nicename'    => __( 'Blog Booster', 'neve' ),
@@ -680,10 +682,12 @@ class Main {
 			'elementor_booster'      => array(
 				'nicename'    => __( 'Elementor Booster', 'neve' ),
 				'description' => __( 'Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click.', 'neve' ),
+				'condition'   => defined( 'ELEMENTOR_VERSION' ),
 			),
 			'lifterlms_booster'      => array(
 				'nicename'    => __( 'LifterLMS Booster', 'neve' ),
 				'description' => __( 'Boost your users learning process with cool new features designed to work smoothly with LifterLMS.', 'neve' ),
+				'condition'   => class_exists( 'LifterLMS' ),
 			),
 			'typekit_fonts'          => array(
 				'nicename'    => __( 'Typekit Fonts', 'neve' ),
@@ -697,6 +701,13 @@ class Main {
 				'nicename'    => __( 'Content restriction', 'neve' ),
 				'description' => __( 'Optionally restrict access to specific parts of your website to certain users, user roles, or require a password to access.', 'neve' ),
 			),
+		);
+
+		return array_filter(
+			$plugins,
+			function ( $module ) {
+				return ! isset( $module['condition'] ) || $module['condition'] === true;
+			} 
 		);
 	}
 
