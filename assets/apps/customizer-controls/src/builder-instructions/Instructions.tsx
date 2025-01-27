@@ -1,5 +1,5 @@
 import React from 'react';
-import { __, sprintf } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 import { WPCustomizeControl } from '../@types/customizer-control';
 
@@ -82,12 +82,7 @@ const Instructions: React.FC<Props> = ({ control }) => {
 											<p className="quick-links-description">
 												<div
 													dangerouslySetInnerHTML={{
-														// eslint-disable-next-line @wordpress/valid-sprintf
-														__html: sprintf(
-															upsellDescription,
-															`<a href="${url}" target="_blank" rel="noopener noreferrer">`,
-															'</a>'
-														),
+														__html: upsellDescription,
 													}}
 												/>
 											</p>

@@ -54,6 +54,9 @@ class Footer extends Abstract_Builder {
 				)
 			)
 		);
+
+		$upgrade_url_copyright = tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'copyright' ), 'query' );
+
 		$this->set_property(
 			'instructions_array',
 			array(
@@ -67,10 +70,14 @@ class Footer extends Abstract_Builder {
 					'footer_copyright_content'            => array(
 						'label'             => esc_html__( 'Change Copyright', 'neve' ),
 						'icon'              => 'dashicons-nametag',
-						'url'               => $this->has_valid_addons() ? null : tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'copyright' ), 'query' ),
+						'url'               => $upgrade_url_copyright,
 						'badge'             => esc_html__( 'Pro', 'neve' ),
-						/* translators: %1$s: opening anchor tag, %2$s: closing anchor tag */
-						'upsellDescription' => __( 'The Neve theme free version doesn\'t support copyright edits. Pro unlocks this and more—%1$sexplore%2$s it when you\'re ready!', 'neve' ),
+						'upsellDescription' => sprintf(
+							/* translators: %1$s: opening anchor tag, %2$s: closing anchor tag */
+							__( 'The Neve theme free version doesn\'t support copyright edits. Pro unlocks this and more—%1$sexplore%2$s it when you\'re ready!', 'neve' ),
+							'<a href="' . esc_url_raw( $upgrade_url_copyright ) . '" target="_blank" rel="noopener noreferrer">',
+							'</a>'
+						),
 					),
 					'hfg_footer_layout_bottom_background' => array(
 						'label' => esc_html__( 'Change Footer Color', 'neve' ),
