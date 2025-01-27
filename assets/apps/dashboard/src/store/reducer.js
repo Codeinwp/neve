@@ -7,6 +7,7 @@ const initialState = {
 	toast: null,
 	currentTab: 'start',
 	license: neveDash.pro ? neveDash.license : {},
+	notifications: neveDash.notifications || {},
 };
 
 const hash = getTabHash();
