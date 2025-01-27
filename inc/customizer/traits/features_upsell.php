@@ -27,6 +27,13 @@ trait Features_Upsell {
 	public $title = '';
 
 	/**
+	 * Page section in comparison table.
+	 *
+	 * @var string $url_page_section The page section.
+	 */
+	public $url_page_section = '';
+
+	/**
 	 * Gather the parameters passed to client JavaScript via JSON for features list rendering.
 	 * 
 	 * @return array The array to be exported to the client as JSON.
@@ -68,7 +75,7 @@ trait Features_Upsell {
 					<?php echo esc_html( $this->button_text ); ?>
 				</a>
 
-				<a href="https://docs.themeisle.com/article/1176-what-is-the-difference-between-neve-and-neve-pro#pagefooter" class="button button-link" target="_blank" rel="noopener noreferrer">
+				<a href="<?php echo esc_url_raw( 'https://docs.themeisle.com/article/1176-what-is-the-difference-between-neve-and-neve-pro#' . $this->url_page_section ); ?>" class="button button-link" target="_blank" rel="noopener noreferrer">
 					<?php echo esc_html__( 'View features comparison', 'neve' ); ?> &rarr;
 				</a>
 			</div>

@@ -64,7 +64,7 @@ class Simple_Upsell_Section extends \WP_Customize_Section {
 		$json['link']          = $this->link;
 		$json['text']          = $this->text;
 		$json['screen_reader'] = __( '(opens in a new tab)', 'neve' );
-	
+
 		return $json;
 	}
 
