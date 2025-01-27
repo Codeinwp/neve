@@ -9,7 +9,7 @@ import { withSelect } from '@wordpress/data';
 
 const Start = (props) => {
 	const { setTab, tier } = props;
-	const { pro, whiteLabel, customizerShortcuts, tpcAdminURL } = neveDash;
+	const { pro, whiteLabel, customizerShortcuts, tpcOnboardingURL } = neveDash;
 	const starterSitesHidden = whiteLabel && whiteLabel.hideStarterSites;
 
 	const renderCustomizerLinks = () => {
@@ -65,7 +65,7 @@ const Start = (props) => {
 								{__('Go to Starter Sites', 'neve')}
 							</Button>
 						) : (
-							<Button href={tpcAdminURL} isPrimary>
+							<Button href={tpcOnboardingURL} isPrimary>
 								{__('Go to Starter Sites', 'neve')}
 							</Button>
 						)}
