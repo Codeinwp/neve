@@ -42,7 +42,15 @@ export default ({
 					disabled={disabled}
 					className={switchClasses}
 				>
-					<span className="size-4 translate-x-1 rounded-full bg-white transition group-data-[checked]:translate-x-6" />
+					<span
+						className={cn(
+							'size-4 rounded-full bg-white transition',
+							{
+								'translate-x-6 rtl:-translate-x-6': checked,
+								'translate-x-1 rtl:-translate-x-1': !checked,
+							}
+						)}
+					/>
 				</Switch>
 
 				{label && !labelBefore && (
