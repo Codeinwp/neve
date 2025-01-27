@@ -10,7 +10,7 @@ type Props = {
 const Instructions: React.FC<Props> = ({ control }) => {
 	const { params, id } = control;
 	const { options } = params;
-	const { description, quickLinks, builderMigrated, hadOldBuilder } = options;
+	const { description, quickLinks } = options;
 
 	const linkKeys = Object.keys(quickLinks);
 
@@ -48,8 +48,13 @@ const Instructions: React.FC<Props> = ({ control }) => {
 					</span>
 					<ul className="quick-links">
 						{linkKeys.map((settingSlug, index) => {
-							const { label, icon, url } =
-								quickLinks[settingSlug];
+							const {
+								label,
+								icon,
+								url,
+								upsellDescription,
+								badge,
+							} = quickLinks[settingSlug];
 
 							return (
 								<li key={index}>
@@ -66,7 +71,23 @@ const Instructions: React.FC<Props> = ({ control }) => {
 									>
 										<span className={`dashicons ${icon}`} />
 										{label}
+										{url && badge && (
+											<span className="quick-links-badge">
+												{badge}
+											</span>
+										)}
 									</Button>
+									{url && upsellDescription && (
+										<div className="quick-links-upsell">
+											<p className="quick-links-description">
+												<div
+													dangerouslySetInnerHTML={{
+														__html: upsellDescription,
+													}}
+												/>
+											</p>
+										</div>
+									)}
 								</li>
 							);
 						})}
