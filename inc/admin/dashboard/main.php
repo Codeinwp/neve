@@ -943,7 +943,14 @@ class Main {
 	 */
 	public function render_neve_header() {
 
-		$is_using_pro = defined( 'NEVE_PRO_VERSION' ) && 'valid' === apply_filters( 'product_neve_license_status', false );
+		$is_using_pro                 = defined( 'NEVE_PRO_VERSION' ) && 'valid' === apply_filters( 'product_neve_license_status', false );
+		$neve_dashboard_url           = add_query_arg(
+			array(
+				'page' => 'neve-welcome',
+			),
+			admin_url( 'admin.php' )
+		);
+		$neve_dashboard_changelog_url = $neve_dashboard_url . '#changelog';
 
 		?>
 		<style>
@@ -1034,7 +1041,9 @@ class Main {
 		<div class="nv-admin-header">
 			<div class="nv-admin-header-left">
 
-				<img src="<?php echo esc_url_raw( get_template_directory_uri() . '/assets/img/dashboard/logo.svg' ); ?>" alt="<?php esc_attr_e( 'Neve Logo', 'neve' ); ?>" />
+				<a href="<?php echo esc_url_raw( $neve_dashboard_url ); ?>">
+					<img src="<?php echo esc_url_raw( get_template_directory_uri() . '/assets/img/dashboard/logo.svg' ); ?>" alt="<?php esc_attr_e( 'Neve Logo', 'neve' ); ?>" />
+				</a>
 
 				<span class="nv-admin-title"><?php esc_html_e( 'Neve', 'neve' ); ?></span>
 				<span class="nv-admin-badge"><?php echo $is_using_pro ? esc_html__( 'Pro', 'neve' ) : esc_html__( 'Free', 'neve' ); ?></span>
@@ -1043,12 +1052,12 @@ class Main {
 			</div>
 
 			<div class="nv-admin-header-right">
-				<a href="https://docs.themeisle.com/collection/1557-neve" target="_blank">
+				<a href="https://docs.themeisle.com/article/946-neve-doc" target="_blank">
 					<span class="dashicons dashicons-book-alt" aria-hidden="true"></span>
 					<?php esc_html_e( 'Documentation', 'neve' ); ?>
 				</a>
 				<span style="color: #ccc;">|</span>
-				<a href="https://github.com/Codeinwp/neve/blob/master/CHANGELOG.md" target="_blank">
+				<a href="<?php echo esc_url_raw( $neve_dashboard_changelog_url ); ?>" target="_blank">
 					<span class="dashicons dashicons-media-text" aria-hidden="true"></span>
 					<?php esc_html_e( 'Changelog', 'neve' ); ?>
 				</a>
