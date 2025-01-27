@@ -762,62 +762,6 @@ class Main {
 	}
 
 	/**
-	 * Get the useful plugin data.
-	 *
-	 * @return array
-	 */
-	private function get_useful_plugins() {
-		$available    = get_transient( $this->plugins_cache_key );
-		$hash         = get_transient( $this->plugins_cache_hash_key );
-		$current_hash = substr( md5( wp_json_encode( $this->useful_plugins ) ), 0, 5 );
-
-		if ( $available !== false && $hash === $current_hash ) {
-			$available = json_decode( $available, true );
-			foreach ( $available as $slug => $args ) {
-				$available[ $slug ]['cta']        = ( $args['cta'] === 'external' ) ? 'external' : $this->plugin_helper->get_plugin_state( $slug );
-				$available[ $slug ]['path']       = $this->plugin_helper->get_plugin_path( $slug );
-				$available[ $slug ]['activate']   = $this->plugin_helper->get_plugin_action_link( $slug );
-				$available[ $slug ]['deactivate'] = $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
-				$available[ $slug ]['network']    = $this->plugin_helper->get_is_network_wide( $slug );
-				$available[ $slug ]['version']    = ! empty( $available[ $slug ]['version'] ) ? $this->plugin_helper->get_plugin_version( $slug, $available[ $slug ]['version'] ) : '';
-			}
-
-			return $available;
-		}
-
-		$data = [];
-		foreach ( $this->useful_plugins as $slug ) {
-
-			if ( array_key_exists( $slug, $this->get_external_plugins_data() ) ) {
-				$data[ $slug ] = $this->get_external_plugins_data()[ $slug ];
-				continue;
-			}
-
-			$current_plugin = $this->plugin_helper->get_plugin_details( $slug );
-			if ( $current_plugin instanceof \WP_Error ) {
-				continue;
-			}
-			$data[ $slug ] = [
-				'banner'      => $current_plugin->banners['low'],
-				'name'        => html_entity_decode( $current_plugin->name ),
-				'description' => html_entity_decode( $current_plugin->short_description ),
-				'version'     => $current_plugin->version,
-				'author'      => html_entity_decode( wp_strip_all_tags( $current_plugin->author ) ),
-				'cta'         => $this->plugin_helper->get_plugin_state( $slug ),
-				'path'        => $this->plugin_helper->get_plugin_path( $slug ),
-				'activate'    => $this->plugin_helper->get_plugin_action_link( $slug ),
-				'deactivate'  => $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' ),
-				'network'     => $this->plugin_helper->get_is_network_wide( $slug ),
-			];
-		}
-
-		set_transient( $this->plugins_cache_hash_key, $current_hash );
-		set_transient( $this->plugins_cache_key, wp_json_encode( $data ) );
-
-		return $data;
-	}
-
-	/**
 	 * Check if feedback notice should be shown after 14 days since activation.
 	 *
 	 * @return bool
