@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Instructions: React.FC<Props> = ({ control }) => {
-	const { params, id } = control;
+	const { params } = control;
 	const { options } = params;
 	const { description, quickLinks } = options;
 

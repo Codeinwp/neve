@@ -1,4 +1,4 @@
-/* global CustomEvent, NeveReactCustomize, MutationObserver */
+/* global NeveReactCustomize, MutationObserver */
 import './public-path.js';
 import { render } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';

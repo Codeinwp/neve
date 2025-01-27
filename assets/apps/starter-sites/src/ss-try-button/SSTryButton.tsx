@@ -3,6 +3,7 @@ import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 import classnames from 'classnames';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare let wp: any;
 
 declare global {
