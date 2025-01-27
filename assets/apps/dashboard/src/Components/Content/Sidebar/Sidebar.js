@@ -6,7 +6,6 @@ import { useState } from '@wordpress/element';
 import { useDispatch, useSelect } from '@wordpress/data';
 import {
 	NEVE_HAS_PRO,
-	NEVE_HIDE_PLUGINS,
 	NEVE_IS_WHITELABEL,
 	NEVE_STORE,
 } from '../../../utils/constants';
@@ -108,6 +107,25 @@ const ContributingCard = () => {
 	);
 };
 
+const CommunityCard = () => {
+	return (
+		<Card title={__('Join the Community', 'neve')}>
+			<p className="text-gray-600 mb-4 text-sm">
+				{__(
+					'Share opinions, ask questions and help each other on our Neve community!',
+					'neve'
+				)}
+			</p>
+
+			<Link
+				isExternal
+				text={__('Join our Facebook Group', 'neve')}
+				url={'https://www.facebook.com/groups/648646435537266/'}
+			/>
+		</Card>
+	);
+};
+
 const Sidebar = () => {
 	return (
 		<div className="grid gap-6">
@@ -115,14 +133,16 @@ const Sidebar = () => {
 
 			{NEVE_HAS_PRO && <SupportCard />}
 
+			{!NEVE_IS_WHITELABEL && <ReviewCard />}
+
+			{!NEVE_HAS_PRO && <PluginsCard />}
+
 			{!NEVE_IS_WHITELABEL && (
 				<>
-					<ReviewCard />
 					<ContributingCard />
+					<CommunityCard />
 				</>
 			)}
-
-			{!NEVE_HIDE_PLUGINS && <PluginsCard />}
 		</div>
 	);
 };
