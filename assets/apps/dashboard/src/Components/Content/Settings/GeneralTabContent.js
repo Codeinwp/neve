@@ -13,18 +13,11 @@ import { NEVE_HAS_VALID_PRO } from '../../../utils/constants';
 import TextControl from '../../Controls/TextControl';
 import ToggleControl from '../../Controls/ToggleControl';
 import OptionGroup from './OptionGroup';
+import ControlWrap from '../../Controls/ControlWrap';
+import Toggle from '../../Common/Toggle';
+import Select from '../../Common/Select';
 
 const DUMMY_SETTINGS_ARGS = {
-	typekit_id: {
-		icon: LucideType,
-		label: __('Embed Typekit', 'neve'),
-		type: 'text',
-		placeholder: __('Paste your Typekit code here', 'neve'),
-		description: __(
-			'Add your Typekit embed code here to use custom fonts.',
-			'neve'
-		),
-	},
 	enable_featured_image_taxonomy: {
 		icon: LucideImage,
 		label: __('Featured image for taxonomy', 'neve'),
@@ -38,6 +31,16 @@ const DUMMY_SETTINGS_ARGS = {
 		label: __('Enable Mega Menu', 'neve'),
 		description: __(
 			'Enable Mega menu fuctionality in the menu dashboard page.',
+			'neve'
+		),
+	},
+	typekit_id: {
+		icon: LucideType,
+		label: __('Embed Typekit', 'neve'),
+		type: 'text',
+		placeholder: __('Paste your Typekit code here', 'neve'),
+		description: __(
+			'Add your Typekit embed code here to use custom fonts.',
 			'neve'
 		),
 	},
@@ -78,24 +81,64 @@ if (NEVE_HAS_VALID_PRO) {
 	};
 }
 
-const EXCLUDED_MODULES = ['performance_features'];
+const AccessRestrictionDummySettings = () => {
+	const { icon, label, description } =
+		DUMMY_SETTINGS_ARGS.neve_access_restriction;
+
+	const contentTypes = [
+		__('Posts', 'neve'),
+		__('Pages', 'neve'),
+		__('Categories', 'neve'),
+	];
+
+	return (
+		<ControlWrap label={label} icon={icon} description={description} locked>
+			<div className="grid gap-4 grid-cols-2 xl:grid-cols-3">
+				{contentTypes.map((type) => (
+					<Toggle key={type} disabled label={type} />
+				))}
+			</div>
+
+			<div className="grid gap-4 grid-cols-2 xl:grid-cols-3 mt-4 pt-4 border-t border-gray-200">
+				<Select
+					disabled
+					label={`${__('For logged out users', 'neve')}:`}
+					value={'default'}
+					choices={{
+						default: __(
+							'Show default Wordpress login page',
+							'neve'
+						),
+					}}
+				/>
+			</div>
+		</ControlWrap>
+	);
+};
 
 const DummySettings = () => {
 	return (
 		<>
-			{Object.values(DUMMY_SETTINGS_ARGS).map((setting, idx) => {
-				if (!setting.type) {
-					return <ToggleControl key={idx} locked {...setting} />;
-				}
-				if (setting.type === 'text') {
-					return <TextControl key={idx} locked {...setting} />;
+			{Object.entries(DUMMY_SETTINGS_ARGS).map(([id, setting]) => {
+				if (id === 'neve_access_restriction') {
+					return <AccessRestrictionDummySettings />;
 				}
 
-				return <div key={idx}>{setting.label}</div>;
+				if (!setting.type) {
+					return <ToggleControl key={id} locked {...setting} />;
+				}
+				if (setting.type === 'text') {
+					return <TextControl key={id} locked {...setting} />;
+				}
+
+				return <div key={id}>{setting.label}</div>;
 			})}
 		</>
 	);
 };
+
+// Modules that should not be displayed in the general tab.
+const EXCLUDED_MODULES = ['performance_features'];
 
 const ProModuleSettings = () => {
 	const { modules } = neveDash;
@@ -146,7 +189,7 @@ export default () => {
 				{__('General Settings', 'neve')}
 			</h1>
 
-			<div className="">
+			<div>
 				{(isLicenseValid && <ProModuleSettings />) || <DummySettings />}
 			</div>
 		</>
