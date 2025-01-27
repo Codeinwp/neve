@@ -40,10 +40,14 @@ export default ({
 							<ListboxButton
 								className={cn(
 									'relative w-full rounded py-1.5 px-2 text-left',
-									'rounded border border-gray-300 hover:border-gray-500',
+									'rounded border border-gray-300',
 									'flex items-center gap-3 min-w-[200px]',
 									{
 										'bg-gray-100': disabled || loading,
+										'hover:border-gray-500':
+											!disabled && !loading,
+										'cursor-not-allowed text-gray-500':
+											disabled,
 									}
 								)}
 							>

@@ -14,18 +14,20 @@ const Button = (props) => {
 		children,
 		disabled,
 		loading,
+		target,
 	} = props;
 
 	const classNames = cn([
 		'flex items-center px-3 py-2 transition-colors duration-150 text-sm border gap-2',
 		{
 			rounded: !className.includes('rounded'),
-			'border-transparent bg-blue-600 text-white hover:bg-blue-700 hover:text-white':
-				isPrimary,
-			'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white':
-				isSecondary,
-			'border-transparent text-gray-600 hover:text-gray-900': isLink,
+			'border-transparent bg-blue-600 text-white': isPrimary,
+			'border-blue-600 text-blue-600': isSecondary,
+			'border-transparent text-gray-600': isLink,
 			'cursor-not-allowed opacity-50': disabled,
+			'hover:bg-blue-700 hover:text-white': !disabled && isPrimary,
+			'hover:bg-blue-600 hover:text-white': !disabled && isSecondary,
+			'hover:text-gray-900': !disabled && isLink,
 		},
 		className,
 	]);
@@ -44,10 +46,10 @@ const Button = (props) => {
 		passedProps.href = href;
 	}
 
-	if (props.target) {
-		passedProps.target = props.target;
+	if (target) {
+		passedProps.target = target;
 
-		if (props.target === '_blank') {
+		if (target === '_blank') {
 			passedProps.rel = 'noopener noreferrer';
 		}
 	}
