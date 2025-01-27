@@ -647,11 +647,12 @@ class Main {
 		$plugins = array(
 			'hfg_module'             => array(
 				'nicename'    => __( 'Header Booster', 'neve' ),
-				'description' => __( 'Extend your header with more components and settings, build sticky/transparent headers or display them conditionally.', 'neve' ),
+				'description' => __( 'Create unique sticky & transparent headers that adapt to scroll. Perfect for modern, immersive websites.', 'neve' ),
 			),
 			'woocommerce_booster'    => array(
 				'nicename'    => __( 'WooCommerce Booster', 'neve' ),
-				'description' => __( 'Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration.', 'neve' ),
+				'description' => __( 'Transform your store with quick-view popups, wishlist features, and optimized checkout flow. Boost sales instantly.', 'neve' ),
+				'byline'      => __( 'Boost conversion rates up to 15%', 'neve' ),
 				'condition'   => class_exists( 'WooCommerce' ),
 			),
 			'easy_digital_downloads' => array(
@@ -661,31 +662,31 @@ class Main {
 			),
 			'blog_pro'               => array(
 				'nicename'    => __( 'Blog Booster', 'neve' ),
-				'description' => __( 'Give a huge boost to your entire blogging experience with features specially designed for increased user experience.', 'neve' ),
+				'description' => __( 'Advanced layouts, reading time estimates, and social sharing to keep readers engaged longer.', 'neve' ),
 			),
 			'post_type_enhancements' => array(
 				'nicename'    => __( 'Post types enhancements', 'neve' ),
-				'description' => __( 'Enable Neve post enhancements for custom post types.', 'neve' ),
+				'description' => __( 'Extend Neve\'s powerful features to custom post types. Create unique layouts for portfolios, testimonials, and more.', 'neve' ),
 			),
 			'scroll_to_top'          => array(
 				'nicename'    => __( 'Scroll To Top', 'neve' ),
-				'description' => __( 'Simple but effective module to help you navigate back to the top of the really long pages.', 'neve' ),
+				'description' => __( 'Add a customizable scroll-to-top button that appears exactly when needed. Style it to match your brand.', 'neve' ),
 			),
 			'performance_features'   => array(
 				'nicename'    => __( 'Performance', 'neve' ),
-				'description' => __( 'Simple and effective optimizations options to enhance the performance of your site.', 'neve' ),
+				'description' => __( 'Optimize core vitals, enable lazy loading, and minify resources for lightning-fast load times.', 'neve' ),
 			),
 			'block_editor_booster'   => array(
 				'nicename'    => __( 'Block Editor Booster', 'neve' ),
-				'description' => __( 'Do more with the Block Editor with Otter\'s additional blocks made specifically for Neve Pro.', 'neve' ),
+				'description' => __( 'Advanced Gutenberg blocks designed specifically for Neve. Build faster with pre-styled patterns.', 'neve' ),
 			),
 			'white_label'            => array(
 				'nicename'    => __( 'White Label', 'neve' ),
-				'description' => __( 'For any developer or agency out there building websites for their own clients, we\'ve made it easy to present Neve as your own and use your brand name instead.', 'neve' ),
+				'description' => __( 'Rebrand Neve as your own. Change theme name, author, and links to match your agency identity.', 'neve' ),
 			),
 			'custom_layouts'         => array(
 				'nicename'    => __( 'Custom Layouts', 'neve' ),
-				'description' => __( 'Easily create custom headers and footers as well as adding your own custom code or content in any location across your site and display them conditionally.', 'neve' ),
+				'description' => __( 'Create conditional headers, footers, and content blocks. Perfect for custom landing pages and marketing campaigns.', 'neve' ),
 			),
 			'elementor_booster'      => array(
 				'nicename'    => __( 'Elementor Booster', 'neve' ),
@@ -694,20 +695,20 @@ class Main {
 			),
 			'lifterlms_booster'      => array(
 				'nicename'    => __( 'LifterLMS Booster', 'neve' ),
-				'description' => __( 'Boost your users learning process with cool new features designed to work smoothly with LifterLMS.', 'neve' ),
+				'description' => __( 'Enhanced course layouts, student dashboards, and learning features for your online education platform.', 'neve' ),
 				'condition'   => class_exists( 'LifterLMS' ),
 			),
 			'typekit_fonts'          => array(
 				'nicename'    => __( 'Typekit Fonts', 'neve' ),
-				'description' => __( 'Easily embed Adobe Fonts in your WordPress website.', 'neve' ),
+				'description' => __( 'Access premium Adobe fonts directly in your theme. Add professional typography to any element.', 'neve' ),
 			),
 			'custom_sidebars'        => array(
 				'nicename'    => __( 'Custom Sidebars', 'neve' ),
-				'description' => __( 'Easily create different set of widgets that can be shown throughout your website. Add display conditions to make the content of your sidebar relevant.', 'neve' ),
+				'description' => __( 'Create unique sidebar layouts for different sections. Show relevant content based on user context.', 'neve' ),
 			),
 			'access_restriction'     => array(
 				'nicename'    => __( 'Content restriction', 'neve' ),
-				'description' => __( 'Optionally restrict access to specific parts of your website to certain users, user roles, or require a password to access.', 'neve' ),
+				'description' => __( 'Create members-only content areas. Control access by user roles, logged-in status, or custom rules.', 'neve' ),
 			),
 		);
 
