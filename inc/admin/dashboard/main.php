@@ -559,50 +559,83 @@ class Main {
 	private function get_free_pro_features() {
 		return [
 			[
-				'section' => __( 'Header Features', 'neve' ),
+				'section' => __( 'Website Essentials', 'neve' ),
 				'items'   => [
 					[
-						'title'       => __( 'Advanced Header Components', 'neve' ),
-						'description' => __( 'Additional components for contact info, language switcher, and HTML sections', 'neve' ),
+						'title'       => __( 'Advanced Header Features', 'neve' ),
+						'description' => __( 'Full header settings control with sticky/transparent header, page-specific settings & mobile layouts.', 'neve' ),
 					],
 					[
-						'title'       => __( 'Dynamic Headers', 'neve' ),
-						'description' => __( 'Sticky and transparent headers with per-page settings', 'neve' ),
+						'title'       => __( 'Design Components', 'neve' ),
+						'description' => __( 'Social icons, payment icons, divider, footer copyright editor and 15+ header components.', 'neve' ),
+					],
+					[
+						'title'       => __( 'Custom Layouts', 'neve' ),
+						'description' => __( 'Add custom blocks or content using hooks for headers, footers, 404 pages, and more.', 'neve' ),
 					],
 				],
 			],
 			[
-				'section' => __( 'Blog Features', 'neve' ),
+				'section' => __( 'Page Builder Features', 'neve' ),
 				'items'   => [
 					[
-						'title'       => __( 'Blog Layouts', 'neve' ),
-						'description' => __( 'Additional blog and archive page layouts with custom sorting options', 'neve' ),
+						'title'       => __( 'Elementor Add-ons', 'neve' ),
+						'description' => __( 'Add engaging elements, protect content, and create dynamic layouts with our advanced toolkit.', 'neve' ),
 					],
+					[
+						'title'       => __( 'Otter Blocks PRO', 'neve' ),
+						'description' => __( 'Advanced Gutenberg blocks with animations & visibility controls.', 'neve' ),
+					],
+				],
+			],
+			[
+				'section' => __( 'Content & Blog Features', 'neve' ),
+				'items'   => [
 					[
 						'title'       => __( 'Advanced Blog Features', 'neve' ),
-						'description' => __( 'Reading time, social sharing, and related posts functionality', 'neve' ),
+						'description' => __( 'Multiple layouts, reading time estimates, social sharing & related posts.', 'neve' ),
 					],
-				],
-			],
-			[
-				'section' => __( 'WooCommerce Features', 'neve' ),
-				'items'   => [
 					[
-						'title'       => __( 'Shop Customization', 'neve' ),
-						'description' => __( 'Advanced product layouts, quick view, wishlist functionality', 'neve' ),
+						'title'       => __( 'Starter Sites', 'neve' ),
+						'description' => __( 'Access a growing library of beautiful, ready-to-use templates for every niche and industry.', 'neve' ),
 					],
-				],
-			],
-			[
-				'section' => __( 'Additional Features', 'neve' ),
-				'items'   => [
+					[
+						'title'       => __( 'Content Restriction', 'neve' ),
+						'description' => __( 'Restrict content access by user, role, or password—ideal for membership sites.', 'neve' ),
+					],
 					[
 						'title'       => __( 'Multilingual Support', 'neve' ),
-						'description' => __( 'Enhanced WPML, Weglot and Polylang compatibility', 'neve' ),
+						'description' => __( 'Seamlessly integrate with WPML, Weglot, and Polylang for enhanced multilingual capabilities.', 'neve' ),
+					],
+				],
+			],
+			[
+				'section' => __( 'Store Features', 'neve' ),
+				'items'   => [
+					[
+						'title'       => __( 'Product Experience', 'neve' ),
+						'description' => __( 'Quick view popup, features video & wishlist functionality.', 'neve' ),
+					],
+					[
+						'title'       => __( 'Shopping Enhancement', 'neve' ),
+						'description' => __( 'Product comparison, advance product review & variation swatches.', 'neve' ),
+					],
+					[
+						'title'       => __( 'Sales Features', 'neve' ),
+						'description' => __( 'Custom thank you pages & announcement bars.', 'neve' ),
+					],
+				],
+			],
+			[
+				'section' => __( 'Professional Features', 'neve' ),
+				'items'   => [
+					[
+						'title'       => __( 'Priority Support', 'neve' ),
+						'description' => __( 'Get fast and reliable assistance directly from our expert team.', 'neve' ),
 					],
 					[
 						'title'       => __( 'White Label', 'neve' ),
-						'description' => __( 'Remove Neve branding for client websites', 'neve' ),
+						'description' => __( 'Remove Neve branding and rebrand it as your own for client websites.', 'neve' ),
 					],
 				],
 			],
