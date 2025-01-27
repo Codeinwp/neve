@@ -387,6 +387,10 @@ class Hooks_Upsells {
 					padding: 20px 0px;
 				}
 			}
+
+			.wp-core-ui .notice {
+				display: none;
+			}
 		</style>
 
 		<div class="cl-overlay">
