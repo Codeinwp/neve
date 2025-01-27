@@ -40,36 +40,6 @@ class Main {
 	private $theme_args = [];
 
 	/**
-	 * Useful plugins array.
-	 *
-	 * @var array
-	 */
-	private $useful_plugins = [
-		'optimole-wp',
-		'wp-landing-kit',
-		'otter-blocks',
-		'wp-cloudflare-page-cache',
-		'templates-patterns-collection',
-		'themeisle-companion',
-		'translatepress-multilingual',
-		'amp',
-	];
-
-	/**
-	 * Plugins Cache key.
-	 *
-	 * @var string
-	 */
-	private $plugins_cache_key = 'neve_dash_useful_plugins_v2';
-
-	/**
-	 * Plugins Cache Hash key.
-	 *
-	 * @var string
-	 */
-	private $plugins_cache_hash_key = 'neve_dash_useful_plugins_hash_v2';
-
-	/**
 	 * Main constructor.
 	 */
 	public function __construct() {
