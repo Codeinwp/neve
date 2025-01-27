@@ -526,36 +526,44 @@ class Main {
 	private function get_customizer_shortcuts() {
 		return [
 			[
-				'text' => __( 'Upload Logo', 'neve' ),
-				'link' => add_query_arg( [ 'autofocus[control]' => 'custom_logo' ], admin_url( 'customize.php' ) ),
+				'text'        => __( 'Upload Logo', 'neve' ),
+				'description' => __( 'Recommended size: 200x100px', 'neve' ),
+				'link'        => add_query_arg( [ 'autofocus[control]' => 'custom_logo' ], admin_url( 'customize.php' ) ),
 			],
 			[
-				'text' => __( 'Set Colors', 'neve' ),
-				'link' => add_query_arg( [ 'autofocus[section]' => 'neve_colors_background_section' ], admin_url( 'customize.php' ) ),
+				'text'        => __( 'Set Colors', 'neve' ),
+				'description' => __( 'Brand colors & site palette', 'neve' ),
+				'link'        => add_query_arg( [ 'autofocus[section]' => 'neve_colors_background_section' ], admin_url( 'customize.php' ) ),
 			],
 			[
-				'text' => __( 'Customize Fonts', 'neve' ),
-				'link' => add_query_arg( [ 'autofocus[control]' => 'neve_headings_font_family' ], admin_url( 'customize.php' ) ),
+				'text'        => __( 'Customize Fonts', 'neve' ),
+				'description' => __( 'Typography & text styles', 'neve' ),
+				'link'        => add_query_arg( [ 'autofocus[control]' => 'neve_headings_font_family' ], admin_url( 'customize.php' ) ),
 			],
 			[
-				'text' => __( 'Layout Options', 'neve' ),
-				'link' => add_query_arg( [ 'autofocus[panel]' => 'neve_layout' ], admin_url( 'customize.php' ) ),
+				'text'        => __( 'Layout Options', 'neve' ),
+				'description' => __( 'Content structure & spacing', 'neve' ),
+				'link'        => add_query_arg( [ 'autofocus[panel]' => 'neve_layout' ], admin_url( 'customize.php' ) ),
 			],
 			[
-				'text' => __( 'Header Options', 'neve' ),
-				'link' => add_query_arg( [ 'autofocus[panel]' => 'hfg_header' ], admin_url( 'customize.php' ) ),
+				'text'        => __( 'Header Options', 'neve' ),
+				'description' => __( 'Navigation & branding setup', 'neve' ),
+				'link'        => add_query_arg( [ 'autofocus[panel]' => 'hfg_header' ], admin_url( 'customize.php' ) ),
 			],
 			[
-				'text' => __( 'Blog Layouts', 'neve' ),
-				'link' => add_query_arg( [ 'autofocus[section]' => 'neve_blog_archive_layout' ], admin_url( 'customize.php' ) ),
+				'text'        => __( 'Blog Layouts', 'neve' ),
+				'description' => __( 'Post display & formatting', 'neve' ),
+				'link'        => add_query_arg( [ 'autofocus[section]' => 'neve_blog_archive_layout' ], admin_url( 'customize.php' ) ),
 			],
 			[
-				'text' => __( 'Footer Options', 'neve' ),
-				'link' => add_query_arg( [ 'autofocus[panel]' => 'hfg_footer' ], admin_url( 'customize.php' ) ),
+				'text'        => __( 'Footer Options', 'neve' ),
+				'description' => __( 'Pro: Custom footer layouts', 'neve' ),
+				'link'        => add_query_arg( [ 'autofocus[panel]' => 'hfg_footer' ], admin_url( 'customize.php' ) ),
 			],
 			[
-				'text' => __( 'Content / Sidebar', 'neve' ),
-				'link' => add_query_arg( [ 'autofocus[section]' => 'neve_sidebar' ], admin_url( 'customize.php' ) ),
+				'text'        => __( 'Content / Sidebar', 'neve' ),
+				'description' => __( 'Widget areas & layout', 'neve' ),
+				'link'        => add_query_arg( [ 'autofocus[section]' => 'neve_sidebar' ], admin_url( 'customize.php' ) ),
 			],
 		];
 	}
@@ -707,7 +715,7 @@ class Main {
 			$plugins,
 			function ( $module ) {
 				return ! isset( $module['condition'] ) || $module['condition'] === true;
-			} 
+			}
 		);
 	}
 

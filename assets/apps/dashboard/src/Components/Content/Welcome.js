@@ -19,12 +19,19 @@ export default () => (
 
 const CustomizerShortcutsCard = () => (
 	<Card
-		title={__('Customizer quick links', 'neve')}
+		title={__('Essential Settings', 'neve')}
 		icon={<LucidePanelsTopLeft size={18} />}
 	>
 		<div className="grid grid-cols-2 gap-x-8 gap-y-4">
-			{neveDash.customizerShortcuts.map(({ text, link }) => (
-				<Link text={text} url={link} key={link} />
+			{neveDash.customizerShortcuts.map(({ text, link, description }) => (
+				<div key={link} className="grid gap-1">
+					<Link text={text} url={link} />
+					{description && (
+						<span className="text-gray-600 text-xs">
+							{description}
+						</span>
+					)}
+				</div>
 			))}
 		</div>
 	</Card>
