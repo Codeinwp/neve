@@ -2,7 +2,7 @@
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { LoaderCircle, LucideSettings } from 'lucide-react';
+import { LoaderCircle, LucideCheck, LucideSettings } from 'lucide-react';
 
 import useLicenseData from '../../Hooks/useLicenseData';
 import Card from '../../Layout/Card';
@@ -89,7 +89,7 @@ const ModuleToggle = ({ slug, moduleData }) => {
 };
 
 const ModuleCard = ({ moduleData, slug }) => {
-	const { nicename, description, documentation, hide } = moduleData;
+	const { nicename, description, documentation, hide, byline } = moduleData;
 	const CardIcon = NEVE_MODULE_ICON_MAP[slug] || LucideSettings;
 
 	if (hide) {
@@ -113,6 +113,13 @@ const ModuleCard = ({ moduleData, slug }) => {
 					/>
 				)}
 			</p>
+
+			{byline && (
+				<p className="text-gray-600 text-xs mt-2 flex items-center">
+					<LucideCheck size={14} className="mr-1 text-lime-500" />
+					<span>{byline}</span>
+				</p>
+			)}
 		</Card>
 	);
 };
