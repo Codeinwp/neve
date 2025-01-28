@@ -986,55 +986,61 @@ class Main {
 			}
 
 			.nv-admin-header-left img {
-				width: 32px;
-				height: 32px;
-				margin-right: 10px;
+				width: 1.75rem;
+				height: 1.75rem;
+				border-radius: 0.125rem;
 			}
 
 			.nv-admin-header-left .nv-admin-title {
-				font-size: 18px;
+				margin-left: 12px;
+				font-size: 0.875rem;
 				font-weight: 600;
-				color: #333;
+				color: rgb(17, 24, 39);
 			}
 
 			.nv-admin-header-left .nv-admin-badge {
-				font-size: 14px;
-				font-weight: 600;
-				background-color: rgb(244, 245, 246);
-				margin: 0 6px;
-				padding: 2px 6px;
-				border-radius: 4px;
+				font-size: 0.875rem;
+				font-weight: 500;
+				background-color: rgb(243, 244, 246);
+				padding: 0.125rem 0.365rem;
+				border-radius: 0.25rem;
 				vertical-align: middle;
 				text-transform: uppercase;
+
+				color: rgb(55, 65, 81);
+				margin-left: 12px;
 			}
 
 			.nv-admin-header-left .nv-admin-version {
-				font-size: 14px;
-				color: #777;
-				margin-left: 8px;
+				color: rgb(107, 114, 128);
+				margin-left: 12px;
 				vertical-align: middle;
+				font-weight: 500;
 			}
 
 			.nv-admin-header-right {
 				display: flex;
 				align-items: center;
-				gap: 20px;
+				gap: 30px;
 			}
 
 			.nv-admin-header-right a {
-				color: #555;
+				color: rgb(75, 85, 99);
 				text-decoration: none;
-				font-size: 14px;
+				font-size: 0.875rem;
 				display: inline-flex;
 				align-items: center;
+				gap: 0.5rem;
 			}
 
 			.nv-admin-header-right a:hover {
 				color: #0073aa;
 			}
 
-			.nv-admin-header-right .dashicons {
-				margin-right: 4px;
+			.nv-admin-header-separator {
+				width: 1px;
+				height: 1rem;
+				background-color: rgb(229, 231, 235);
 			}
 		</style>
 
@@ -1053,12 +1059,12 @@ class Main {
 
 			<div class="nv-admin-header-right">
 				<a href="https://docs.themeisle.com/article/946-neve-doc" target="_blank">
-					<span class="dashicons dashicons-book-alt" aria-hidden="true"></span>
+					<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
 					<?php esc_html_e( 'Documentation', 'neve' ); ?>
 				</a>
-				<span style="color: #ccc;">|</span>
+				<span class="nv-admin-header-separator"></span>
 				<a href="<?php echo esc_url_raw( $neve_dashboard_changelog_url ); ?>" target="_blank">
-					<span class="dashicons dashicons-media-text" aria-hidden="true"></span>
+					<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
 					<?php esc_html_e( 'Changelog', 'neve' ); ?>
 				</a>
 			</div>
