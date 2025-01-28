@@ -86,6 +86,8 @@ class Layout_Single_Post extends Base_Layout_Single {
 				'neve_post_comments_form_heading',
 				'neve_post_comment_form_title',
 				'neve_post_comment_form_button_style',
+
+				'neve_single_post_upsell_control_features',
 			],
 			'style'   => [
 				'neve_post_cover_background_color',
@@ -116,6 +118,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 				'neve_single_post_typography_comments_title_accordion_wrap',
 				'neve_single_post_typography_comments_title',
 
+				'neve_single_post_upsell_control_features',
 			],
 		];
 

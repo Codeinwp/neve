@@ -108,6 +108,8 @@ class Layout_Blog extends Base_Customizer {
 				'neve_post_excerpt_length',
 
 				'neve_blog_post_meta_fields',
+
+				'neve_blog_archive_upsell_control_features',
 			],
 			'style'   => [
 				'neve_blog_content_padding',
@@ -125,6 +127,8 @@ class Layout_Blog extends Base_Customizer {
 				'neve_archive_typography_post_excerpt',
 				'neve_archive_typography_post_meta_accordion_wrap',
 				'neve_archive_typography_post_meta',
+
+				'neve_blog_archive_upsell_control_features',
 			],
 		];
 

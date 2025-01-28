@@ -57,6 +57,8 @@ class Main {
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
 		add_action( 'init', array( $this, 'register_settings' ) );
 		add_action( 'init', array( $this, 'register_about_page' ), 1 );
+		
+		add_action( 'admin_notices', array( $this, 'render_custom_layout_header' ) );
 	}
 
 	/**
@@ -196,18 +198,9 @@ class Main {
 			[ $this, 'render' ]
 		);
 
-		$this->copy_customizer_page( $theme_page );
+		do_action( 'neve_register_submenu_page', $theme_page, $capability );
 
-		if ( ! defined( 'NEVE_PRO_VERSION' ) || 'valid' !== apply_filters( 'product_neve_license_status', false ) ) {
-			// Add Custom Layout submenu for upsell.
-			add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
-				$theme_page,
-				__( 'Custom Layouts', 'neve' ),
-				__( 'Custom Layouts', 'neve' ),
-				$capability,
-				'admin.php?page=neve-welcome#custom-layouts'
-			);
-		}
+		$this->copy_customizer_page( $theme_page );
 	}
 
 	/**
@@ -823,4 +816,257 @@ class Main {
 		return $plugins;
 	}
 
+	/**
+	 * Renders the custom layout header section in the admin dashboard for Custom Layouts
+	 *
+	 * @access     public
+	 * @return     void
+	 */
+	public function render_custom_layout_header() {
+		$screen = get_current_screen();
+		
+		if ( ! $screen || ! ( $screen->id === 'edit-neve_custom_layouts' || $screen->id === 'neve_page_neve-custom-layout-upsell' ) ) {
+			return;
+		}
+
+		$this->render_neve_header();
+
+		?>
+		<style>
+			/* Hide default page header. */
+			.wrap :is(h1.wp-heading-inline, .page-title-action) {
+				display: none;
+			}
+
+			.cl-header-container {
+				margin: 0 auto;
+				padding: 20px;
+				border: 1px solid #ddd;
+				border-radius: 8px;
+				background-color: white;
+				margin-top: 40px;
+				margin-right: 20px;
+			}
+
+			.cl-header-row {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 16px;
+			}
+
+			.cl-header-row h2 {
+				font-size: 24px;
+				margin: 0;
+				color: #333;
+			}
+
+			.cl-header-row .cl-header-actions {
+				display: flex;
+				gap: 10px;
+			}
+
+			.cl-header-row .cl-header-actions .cl-btn-action {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				line-height: 1;
+			}
+
+			.cl-header-row .cl-description {
+				margin-top: 10px;
+				font-size: 14px;
+				color: #555;
+				line-height: 1.6;
+			}
+
+			/* Hide text on small screens but keep it accessible to screen readers */
+			@media (max-width: 500px) {
+				.cl-header-btn-text {
+					position: absolute !important;
+					width: 1px !important;
+					height: 1px !important;
+					padding: 0 !important;
+					margin: -1px !important;
+					border: 0 !important;
+					clip: rect(0 0 0 0);
+					overflow: hidden;
+					white-space: nowrap; /* Prevent text wrapping inside the clipped area */
+				}
+			}
+		</style>
+
+		<div class="cl-header-container">
+			<div class="cl-header-row">
+				<h2><?php esc_html_e( 'Custom Layouts', 'neve' ); ?></h2>
+				<div class="cl-header-actions">
+					<button id="cl-open-modal" class="cl-btn-action button button-primary">
+						<span class="dashicons dashicons-plus-alt2" aria-hidden="true"></span>
+						<span class="cl-header-btn-text">
+							<?php esc_html_e( 'Add New Layout', 'neve' ); ?>
+						</span>
+					</button>
+					<a href="https://docs.themeisle.com/article/1062-custom-layouts-module" target="_blank" class="button cl-btn-action">
+						<span class="dashicons dashicons-welcome-learn-more" aria-hidden="true"></span>
+						<span class="cl-header-btn-text">
+							<?php esc_html_e( 'View Tutorial', 'neve' ); ?>
+						</span>
+					</a>
+				</div>
+			</div>
+			<p class="cl-description">
+				<?php esc_html_e( 'Design unique website sections without touching code. Create custom headers, footers, and content areas that match your vision.', 'neve' ); ?>
+			</p>
+		</div>
+
+		<script>
+			function openModal( event ) {
+				event.preventDefault();
+
+				document.dispatchEvent(
+					new window.CustomEvent( 'nv-open-cl-modal', { detail: {} } )
+				);
+			}
+
+			document.querySelector('#cl-open-modal')?.addEventListener('click', openModal);
+		</script>
+		<?php
+
+		do_action( 'neve_render_after_header_custom_layouts' );
+	}
+
+	/**
+	 * Renders the header section with Neve information and help actions.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function render_neve_header() {
+
+		$is_using_pro                 = defined( 'NEVE_PRO_VERSION' ) && 'valid' === apply_filters( 'product_neve_license_status', false );
+		$neve_dashboard_url           = add_query_arg(
+			array(
+				'page' => 'neve-welcome',
+			),
+			admin_url( 'admin.php' )
+		);
+		$neve_dashboard_changelog_url = $neve_dashboard_url . '#changelog';
+
+		?>
+		<style>
+			.nv-admin-header {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				background-color: #fff;
+				padding: 10px 20px;
+				margin-top: 40px;
+				margin-right: 20px;
+				border-radius: 8px;
+				border: 1px solid #ddd;
+				gap: 10px;
+				flex-wrap: wrap;
+			}
+
+			@media (max-width: 450px) {
+				.nv-admin-header {
+					justify-content: center;
+					width: fit-content;
+				}
+			}
+
+			@media (min-width: 451px) {
+				.nv-admin-header-left {
+					flex-grow: 1;
+				}
+			}
+			.nv-admin-header-left {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+			}
+
+			.nv-admin-header-left img {
+				width: 1.75rem;
+				height: 1.75rem;
+				border-radius: 0.125rem;
+			}
+
+			.nv-admin-header-left .nv-admin-title {
+				font-size: 0.875rem;
+				font-weight: 600;
+				color: rgb(17, 24, 39);
+			}
+
+			.nv-admin-header-left .nv-admin-badge {
+				font-size: 0.875rem;
+				font-weight: 500;
+				background-color: rgb(243, 244, 246);
+				padding: 0.125rem 0.365rem;
+				border-radius: 0.25rem;
+				vertical-align: middle;
+				text-transform: uppercase;
+
+				color: rgb(55, 65, 81);
+			}
+
+			.nv-admin-header-left .nv-admin-version {
+				color: rgb(107, 114, 128);
+				vertical-align: middle;
+				font-weight: 500;
+			}
+
+			.nv-admin-header-right {
+				display: flex;
+				align-items: center;
+				gap: 30px;
+			}
+
+			.nv-admin-header-right a {
+				color: rgb(75, 85, 99);
+				text-decoration: none;
+				font-size: 0.875rem;
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+			}
+
+			.nv-admin-header-right a:hover {
+				color: #0073aa;
+			}
+
+			.nv-admin-header-separator {
+				width: 1px;
+				height: 1rem;
+				background-color: rgb(229, 231, 235);
+			}
+		</style>
+
+		<div class="nv-admin-header">
+			<div class="nv-admin-header-left">
+
+				<a href="<?php echo esc_url_raw( $neve_dashboard_url ); ?>">
+					<img src="<?php echo esc_url_raw( get_template_directory_uri() . '/assets/img/dashboard/logo.svg' ); ?>" alt="<?php esc_attr_e( 'Neve Logo', 'neve' ); ?>" />
+				</a>
+
+				<span class="nv-admin-title"><?php esc_html_e( 'Neve', 'neve' ); ?></span>
+				<span class="nv-admin-badge"><?php echo $is_using_pro ? esc_html__( 'Pro', 'neve' ) : esc_html__( 'Free', 'neve' ); ?></span>
+
+				<span class="nv-admin-version"><?php echo esc_html( sprintf( 'v%s', NEVE_VERSION ) ); ?></span>
+			</div>
+
+			<div class="nv-admin-header-right">
+				<a href="https://docs.themeisle.com/article/946-neve-doc" target="_blank">
+					<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+					<?php esc_html_e( 'Documentation', 'neve' ); ?>
+				</a>
+				<span class="nv-admin-header-separator"></span>
+				<a href="<?php echo esc_url_raw( $neve_dashboard_changelog_url ); ?>" target="_blank">
+					<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+					<?php esc_html_e( 'Changelog', 'neve' ); ?>
+				</a>
+			</div>
+		</div>
+		<?php
+	}
 }
