@@ -1,14 +1,27 @@
 $gray: #bfbfbf;
+$gray-medium: #888;
+$gray-dark: #333;
+$gray-light: #f9f9f9;
 $icon: #0073aa;
+$icon-bright: #00a0d2;
+
+.items-list:has(.neve-sortable-item) {
+	display: grid;
+	gap: 10px;
+}
 
 .neve-sortable-item {
-	z-index: 99999999999;
 	border: 1px solid $gray;
+	border-radius: 5px;
+	background: #fff;
+
+	&.sortable-drag {
+		z-index: 99999999999;
+	}
 
 	.top-bar {
 		display: flex;
 		align-items: center;
-		background: #fff;
 		height: 40px;
 
 		button {
@@ -16,89 +29,122 @@ $icon: #0073aa;
 			background: transparent;
 			display: flex;
 			align-items: center;
-			cursor: pointer;
-			justify-content: center !important;
 			height: 100%;
+			transition: all 0.2s;
 
 			&[disabled] {
-				opacity: 0.5;
-				cursor: not-allowed;
+				opacity: 0.9; 
+				pointer-events: none;
 			}
 		}
-	}
 
-	&.no-toggle {
-		padding-left: 20px;
+		.separator {
+			height: 20px;
+			border-right: 1px solid $gray;
+		}
+
+
+		.handle, .locked {
+			margin-right: 10px;
+			padding: 0 3px;
+			fill: $gray-medium;
+			border-right: 1px solid $gray;	
+	
+			&:hover {
+				fill: $gray-dark;
+				background-color: $gray-light;
+			}
+		}
+
+
+		.handle {
+			cursor: move;
+		}
+
+		.locked {
+			cursor: not-allowed;
+		}
+	
+		.actions {
+			height: 100%;
+			display: flex;
+			align-items: center;
+			margin-left: auto;
+	
+			button {
+				cursor: pointer;
+				
+				&:hover {
+					color: $icon;
+					fill:	currentColor;
+				}
+			}
+		}
+
+		.label {
+			font-weight: 600;
+		}
 	}
 
 	&.disabled {
 		.toggle {
-			color: $gray;
+			color: $gray-medium;
 		}
 	}
 
-	&:not(:first-child) {
-		margin-top: -1px;
-	}
-
-	.label {
-		font-weight: 600;
-		font-size: 13px;
-		margin: 0 5px;
-	}
-
-	.actions {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		height: 100%;
-		margin-left: auto;
-
-		button:hover {
-			background-color: $icon;
-			color: #fff;
-			border-color: currentColor;
-		}
-
-		button {
-			border-left: 1px solid #ccc !important;
-			color: #bfbfbf;
-			width: 40px;
-		}
-
-		button[disabled] {
-			grid-column: 2;
-		}
-	}
-
-	.toggle {
-		padding: 0 10px;
-		color: $icon;
-		border-right: 1px solid #ccc !important;
-	}
-
-	.handle {
-		grid-column: 2;
-	}
 }
 
 .sortable-subcontrols {
-	padding: 10px;
 	display: grid;
-	gap: 15px;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows .5s;
+
+	.sortable-subcontrols-inner {
+		min-height: 0;
+		transition: visibility .5s;
+		visibility: hidden;
+		display: grid;
+		gap: 15px;
+		padding: 0 10px;
+		border-top: 1px solid #ccc;
+
+
+		> div:not(:last-child) {
+			border-bottom: 1px solid #ccc;
+			padding-bottom: 15px;
+		}
+	
+		> div:last-child {
+			padding-bottom: 15px;
+		}
+
+		> div:first-child {
+			padding-top: 10px;
+		}
+	}
+	
+	&.open {
+		grid-template-rows: 1fr;
+
+		.sortable-subcontrols-inner {
+			visibility: visible;
+		}
+	}
 
 	.neve-white-background-control {
 		margin: 0 !important;
 		padding: 0 !important;
 		background: transparent !important;
 	}
-
-	&.open {
-		border-top: 1px solid #ccc;
-	}
-
+	
 	.subcontrol-label, .components-toggle-control__label {
 		display: block;
 		font-weight: 600;
+	}
+
+	.components-toggle-control {
+		margin: 0;
 	}
 
 	.subcontrol-label {
@@ -115,14 +161,5 @@ $icon: #0073aa;
 		font-size: 12px;
 		margin-bottom: 5px;
 		color: #777;
-	}
-
-	> div:not(:last-child) {
-		border-bottom: 1px solid #ccc;
-		padding-bottom: 15px;
-	}
-
-	> div:last-child {
-		padding-bottom: 5px;
 	}
 }

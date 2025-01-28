@@ -8,9 +8,11 @@ import {
 	RangeControl,
 	ToggleControl,
 } from '@wordpress/components';
-import { useMemo, useState } from '@wordpress/element';
-import { useCallback, useEffect } from 'react';
+import { dragHandle, chevronDown, chevronUp, lock } from '@wordpress/icons';
+import { useMemo, useState, useCallback, useEffect } from '@wordpress/element';
 import { RadioIcons } from '@neve-wp/components';
+
+import { VisibilityIcon, HiddenIcon } from '../common';
 import ResponsiveRangeComponent from '../responsive-range/ResponsiveRangeComponent';
 import ResponsiveRadioButtonsComponent from '../responsive-radio-buttons/ResponsiveRadioButtonsComponent';
 import SpacingComponent from '../spacing/SpacingComponent';
@@ -24,7 +26,7 @@ const Handle = () => (
 				e.preventDefault();
 			}}
 		>
-			<Icon icon="menu" />
+			<Icon icon={dragHandle} size={18} />
 		</button>
 	</Tooltip>
 );
@@ -79,9 +81,6 @@ const Item = ({
 		};
 	}, []);
 
-	if (hasControls) {
-	}
-
 	return (
 		<div
 			className={classnames('neve-sortable-item', {
@@ -91,63 +90,73 @@ const Item = ({
 			})}
 		>
 			<div className="top-bar">
-				{allowsToggle && (
-					<Tooltip text={__('Toggle Visibility', 'neve')}>
-						<button
-							disabled={locked}
-							aria-label={__('Toggle Visibility', 'neve')}
-							className="toggle"
-							onClick={(e) => {
-								e.preventDefault();
-								e.stopPropagation();
-								onToggle(item.id);
-							}}
-						>
-							<Icon icon="visibility" />
-						</button>
-					</Tooltip>
+				{locked ? (
+					<button className="locked" disabled>
+						<Icon icon={lock} size={18} />
+					</button>
+				) : (
+					<Handle />
 				)}
 				<span className="label">{label}</span>
 
-				{item.visible && (
-					<div className="actions">
-						{activeControls && (
-							<Tooltip text={__('Toggle Controls', 'neve')}>
-								<button
-									className="toggle-controls"
-									onClick={toggleSubcontrols}
-									aria-label={__('Toggle Controls', 'neve')}
-								>
-									<Icon
-										icon={
-											open
-												? 'arrow-up-alt2'
-												: 'arrow-down-alt2'
-										}
-									/>
-								</button>
-							</Tooltip>
-						)}
-
-						{locked ? (
-							<button disabled>
-								<Icon icon="lock" />
+				<div className="actions">
+					{activeControls && (
+						<Tooltip text={__('Toggle Controls', 'neve')}>
+							<button
+								className="toggle-controls"
+								onClick={toggleSubcontrols}
+								aria-label={__('Toggle Controls', 'neve')}
+							>
+								<Icon
+									size={18}
+									icon={open ? chevronUp : chevronDown}
+								/>
 							</button>
-						) : (
-							<Handle />
+						</Tooltip>
+					)}
+
+					<span className="separator" />
+
+					{allowsToggle && (
+						<Tooltip text={__('Toggle Visibility', 'neve')}>
+							<button
+								disabled={locked}
+								aria-label={__('Toggle Visibility', 'neve')}
+								className="toggle"
+								onClick={(e) => {
+									e.preventDefault();
+									e.stopPropagation();
+									onToggle(item.id);
+								}}
+							>
+								<Icon
+									icon={
+										item.visible
+											? VisibilityIcon
+											: HiddenIcon
+									}
+									size={18}
+								/>
+							</button>
+						</Tooltip>
+					)}
+				</div>
+			</div>
+			{activeControls && (
+				<div className={classnames('sortable-subcontrols', { open })}>
+					<div className="sortable-subcontrols-inner">
+						{Object.entries(components[item.id].controls).map(
+							([id, args]) => {
+								return (
+									<InnerControl
+										key={id}
+										id={id}
+										args={args}
+									/>
+								);
+							}
 						)}
 					</div>
-				)}
-			</div>
-			{activeControls && open && item.visible && (
-				<div className={classnames('sortable-subcontrols', { open })}>
-					{Object.entries(components[item.id].controls).map(
-						([id, args]) => {
-							return (
-								<InnerControl key={id} id={id} args={args} />
-							);
-						}
-					)}
 				</div>
 			)}
 		</div>
@@ -274,13 +283,15 @@ const InnerControl = ({ id, args }) => {
 					<ToggleControl
 						checked={value}
 						label={label}
-						help={() => (
-							<span
-								dangerouslySetInnerHTML={{
-									__html: description,
-								}}
-							/>
-						)}
+						help={
+							description ? (
+								<span
+									dangerouslySetInnerHTML={{
+										__html: description,
+									}}
+								/>
+							) : null
+						}
 						onChange={handleValueChange}
 					/>
 				)}
@@ -370,7 +381,7 @@ const Ordering = ({
 					.filter((element) => {
 						return components.hasOwnProperty(element.id);
 					})
-					.map((item, index) => (
+					.map((item) => (
 						<Item
 							locked={locked.includes(item.id)}
 							key={item.id}

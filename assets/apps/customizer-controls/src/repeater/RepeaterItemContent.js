@@ -11,6 +11,7 @@ import { getIcons, ColorControl } from '@neve-wp/components';
 import PropTypes from 'prop-types';
 import { __ } from '@wordpress/i18n';
 import Range from '../range/Range';
+import classNames from 'classnames';
 
 const RepeaterItemContent = ({
 	fields,
@@ -19,6 +20,7 @@ const RepeaterItemContent = ({
 	index,
 	onContentChange,
 	onRemove,
+	expanded = false,
 }) => {
 	const isBlocked = value[index].blocked === 'yes';
 	const currentFields =
@@ -167,20 +169,28 @@ const RepeaterItemContent = ({
 	};
 
 	return (
-		<div className="nv-repeater-content">
-			{Object.entries(currentFields).map(([key]) => {
-				return toComponent(key, value[index]);
+		<div
+			className={classNames('sortable-subcontrols', {
+				open: expanded,
 			})}
-			{value.length > 1 && !isBlocked && (
-				<Button
-					className="nv-repeater-remove-button"
-					isDestructive
-					isLink
-					onClick={() => onRemove(index)}
-				>
-					{__('Remove', 'neve')}
-				</Button>
-			)}
+		>
+			<div className="sortable-subcontrols-inner">
+				{Object.entries(currentFields).map(([key]) => (
+					<div key={key}>{toComponent(key, value[index])}</div>
+				))}
+				{value.length > 1 && !isBlocked && (
+					<div>
+						<Button
+							className="nv-repeater-remove-button"
+							isDestructive
+							isLink
+							onClick={() => onRemove(index)}
+						>
+							{__('Remove', 'neve')}
+						</Button>
+					</div>
+				)}
+			</div>
 		</div>
 	);
 };
@@ -192,6 +202,7 @@ RepeaterItemContent.propTypes = {
 	index: PropTypes.number.isRequired,
 	onContentChange: PropTypes.func.isRequired,
 	onRemove: PropTypes.func.isRequired,
+	expanded: PropTypes.bool,
 };
 
 export default RepeaterItemContent;
