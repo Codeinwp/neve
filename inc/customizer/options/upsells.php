@@ -41,7 +41,6 @@ class Upsells extends Base_Customizer {
 		$this->upsell_url = esc_url_raw( apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'learnmorebtn' ), 'query' ) ) );
 
 		parent::init();
-		add_action( 'customize_controls_enqueue_scripts', array( $this, 'localize_upsell' ) );
 
 		add_filter( 'theme_mod_neve_checkout_page_layout', array( $this, 'override_neve_checkout_page_layout_theme_mod' ), 10, 1 );
 	}
@@ -67,22 +66,6 @@ class Upsells extends Base_Customizer {
 	 */
 	public function override_neve_checkout_page_layout_theme_mod( $value ) {
 		return 'standard';
-	}
-
-	/**
-	 * Localize upsell script and send strings.
-	 */
-	public function localize_upsell() {
-		wp_localize_script(
-			'neve-customizer-controls',
-			'upsellConfig',
-			array(
-				'button_url'    => esc_url_raw( apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'proheader' ), 'query' ) ) ),
-				'button_text'   => esc_html__( 'Get the PRO version!', 'neve' ),
-				'text'          => esc_html__( 'Extend your header with more components and settings, build sticky/transparent headers or display them conditionally.', 'neve' ),
-				'screen_reader' => esc_html__( '(opens in a new tab)', 'neve' ),
-			)
-		);
 	}
 
 	/**
