@@ -1,12 +1,10 @@
 /* global NeveReactCustomize fetch ajaxurl */
 
-import StarterContentNotice from './StarterContentNotice.js';
 import { render, useState } from '@wordpress/element';
-
-const noticeId = 'neve-starter-content';
 
 const NoticeWrapper = () => {
 	const [error, setError] = useState(null);
+	const [dismissed, setDismissed] = useState(false);
 
 	const handleKeep = () => {
 		setError(null);
@@ -14,7 +12,7 @@ const NoticeWrapper = () => {
 		if (wp.customize.previewer) {
 			wp.customize.previewer.refresh();
 		}
-		wp.customize.notifications.remove(noticeId);
+		setDismissed(true);
 	};
 
 	const handleRemove = () => {
@@ -35,7 +33,7 @@ const NoticeWrapper = () => {
 					setError(response.data.message);
 					return;
 				}
-				wp.customize.notifications.remove(noticeId);
+				setDismissed(true);
 				window.location.reload();
 			})
 			.catch((err) => {
@@ -46,13 +44,35 @@ const NoticeWrapper = () => {
 			});
 	};
 
+	const { labels } = window.NeveReactCustomize.starterContent;
+
+	if (dismissed) {
+		return null;
+	}
+
 	return (
-		<StarterContentNotice
-			onKeep={handleKeep}
-			onRemove={handleRemove}
-			error={error}
-			labels={window.NeveReactCustomize.starterContent.labels}
-		/>
+		<div id="nv-starter-content-notice">
+			<div className="nv-notice">
+				<h3>{labels.title}</h3>
+				<p>{labels.description}</p>
+				<button
+					type="button"
+					className="button button-primary"
+					onClick={handleKeep}
+				>
+					{labels.save}
+				</button>
+				<button
+					type="button"
+					className="button secondary"
+					onClick={handleRemove}
+				>
+					{labels.dismiss}
+				</button>
+				{error && <div className="nv-notice-error">{error}</div>}
+				<span className="nv-subtitle">{labels.info}</span>
+			</div>
+		</div>
 	);
 };
 
@@ -62,22 +82,13 @@ export const initStarterContentNotice = () => {
 	}
 
 	const renderNotice = () => {
-		const root = document.querySelector('#nv-starter-content-notice');
-		if (!root) {
-			return;
-		}
-		render(<NoticeWrapper />, root);
+		const titleSection = document.getElementById('customize-info');
+		const targetNode = document.createElement('div');
+
+		titleSection.append(targetNode);
+
+		render(<NoticeWrapper />, targetNode);
 	};
 
-	const notice = new wp.customize.Notification(noticeId, {
-		type: 'info',
-		message: '<div id="nv-starter-content-notice"></div>',
-		dismissible: true,
-	});
-
-	wp.customize.notifications.add(noticeId, notice);
-
-	wp.customize.notifications.bind('add', renderNotice);
-	wp.customize.notifications.bind('remove', renderNotice);
-	wp.customize.bind('pane-contents-reflowed', renderNotice);
+	wp.customize.bind('ready', renderNotice);
 };
