@@ -125,7 +125,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 		foreach ( $tab_slotting as $slug => $args ) {
 			$tab_slotting[ $slug ] = array_fill_keys( $args, [] );
 		}
-		// return;
+
 		$this->add_control(
 			new Control(
 				$this->section . '_tabs',
