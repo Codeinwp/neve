@@ -454,7 +454,7 @@ class Typography extends Base_Customizer {
 		foreach ( $controls as $control_id => $control_settings ) {
 			$settings = array(
 				'label'            => $control_settings['label'],
-				'section'          => isset( $control_settings['section'] ) ? $control_settings['section'] : 'neve_typography_blog',
+				'section'          => $control_settings['section'],
 				'priority'         => $control_settings['priority'],
 				'class'            => esc_attr( 'typography-blog-' . $control_id ),
 				'accordion'        => true,
@@ -485,7 +485,7 @@ class Typography extends Base_Customizer {
 					],
 					[
 						'priority'              => $control_settings['priority'] += 1,
-						'section'               => isset( $control_settings['section'] ) ? $control_settings['section'] : 'neve_typography_blog',
+						'section'               => $control_settings['section'],
 						'type'                  => 'neve_typeface_control',
 						'font_family_control'   => $control_settings['font_family_control'],
 						'live_refresh_selector' => true,

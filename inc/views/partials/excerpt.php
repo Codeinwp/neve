@@ -92,7 +92,7 @@ class Excerpt extends Base_View {
 	 * @return int
 	 */
 	private function get_excerpt_length() {
-		return round( absint( get_theme_mod( 'neve_post_excerpt_length', $this->get_v4_defaults( 'neve_post_excerpt_length', 25 ) ) ) );
+		return absint( round( get_theme_mod( 'neve_post_excerpt_length', $this->get_v4_defaults( 'neve_post_excerpt_length', 25 ) ) ) );
 	}
 
 	/**
