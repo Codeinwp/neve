@@ -235,9 +235,10 @@ const InnerControl = ({ id, args }) => {
 				<>
 					{label && <span className="subcontrol-label">{label}</span>}
 					{description && (
-						<span className="subcontrol-description">
-							{description}
-						</span>
+						<span
+							className="subcontrol-description"
+							dangerouslySetInnerHTML={{ __html: description }}
+						/>
 					)}
 				</>
 			)}
