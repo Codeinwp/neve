@@ -101,18 +101,16 @@ class Layout_Blog extends Base_Customizer {
 				'neve_enable_masonry',
 				Config::OPTION_POSTS_PER_PAGE,
 
-				'neve_featured_post_heading',
 				'neve_enable_featured_post',
 				'neve_featured_post_target',
-				'neve_blog_ordering_content_heading',
 
 				'neve_post_content_ordering',
 				'neve_post_excerpt_length',
 
 				'neve_blog_post_meta_fields',
-				'neve_blog_content_padding',
 			],
 			'style'   => [
+				'neve_blog_content_padding',
 
 				'neve_enable_card_style',
 				'neve_blog_grid_card_bg_color',
@@ -303,7 +301,7 @@ class Layout_Blog extends Base_Customizer {
 				Config::OPTION_POSTS_PER_PAGE,
 				[
 					'type'        => 'neve_range_control',
-					'priority'    => 60,
+					'priority'    => 52,
 					'section'     => $this->section,
 					'label'       => esc_html__( 'Posts per Page', 'neve' ),
 					'input_attrs' => [
@@ -346,7 +344,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'type'            => 'neve_toggle_control',
-					'priority'        => 51,
+					'priority'        => 55,
 					'section'         => $this->section,
 					'label'           => esc_html__( 'Enable Masonry', 'neve' ),
 					'active_callback' => array( $this, 'should_show_masonry' ),
@@ -359,23 +357,6 @@ class Layout_Blog extends Base_Customizer {
 	 * Add featured post controls.
 	 */
 	private function add_featured_post() {
-		$this->add_control(
-			new Control(
-				'neve_featured_post_heading',
-				[
-					'sanitize_callback' => 'sanitize_text_field',
-				],
-				[
-					'label'     => esc_html__( 'Featured Post', 'neve' ),
-					'section'   => $this->section,
-					'priority'  => 250,
-					'class'     => 'featured-post-accordion',
-					'accordion' => false,
-				],
-				'Neve\Customizer\Controls\Heading'
-			)
-		);
-
 		$this->add_control(
 			new Control(
 				'neve_enable_featured_post',
@@ -421,23 +402,6 @@ class Layout_Blog extends Base_Customizer {
 	 * Add post structure controls.
 	 */
 	private function add_post_structure() {
-		$this->add_control(
-			new Control(
-				'neve_blog_ordering_content_heading',
-				array(
-					'sanitize_callback' => 'sanitize_text_field',
-				),
-				array(
-					'label'     => esc_html__( 'Post Structure', 'neve' ),
-					'section'   => $this->section,
-					'priority'  => 60,
-					'class'     => 'blog-layout-ordering-content-accordion',
-					'accordion' => false,
-				),
-				'Neve\Customizer\Controls\Heading'
-			)
-		);
-
 		$order_default_components = array(
 			'thumbnail',
 			'title-meta',
@@ -961,7 +925,7 @@ class Layout_Blog extends Base_Customizer {
 					),
 					array(
 						'type'     => 'neve_toggle_control',
-						'priority' => 210,
+						'priority' => 0,
 						'section'  => $this->section,
 						'label'    => esc_html__( 'Enable Card Style', 'neve' ),
 					)

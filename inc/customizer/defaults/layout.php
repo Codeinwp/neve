@@ -168,6 +168,7 @@ trait Layout {
 				'tags',
 				'comments',
 			],
+			'neve_single_post_sidebar_layout'        => 'full-width',   
 		];
 
 		if ( ! isset( $new_defaults[ $id ] ) ) {

@@ -163,7 +163,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 				$layout_id,
 				array(
 					'sanitize_callback' => array( $this, 'sanitize_sidebar_layout' ),
-					'default'           => $this->sidebar_layout_alignment_default( $layout_id ),
+					'default'           => $this->get_v4_defaults( $layout_id, $this->sidebar_layout_alignment_default( $layout_id ) ),
 				),
 				array(
 					'label'       => __( 'Sidebar Layout', 'neve' ),
