@@ -1,20 +1,26 @@
 import { registerStore } from '@wordpress/data';
-import { render } from '@wordpress/element';
+import { render, StrictMode } from '@wordpress/element';
 
-import './style.scss';
+import './style.css';
 import App from './Components/App';
 
 import actions from './store/actions';
 import reducer from './store/reducer';
 import selectors from './store/selectors';
+import { NEVE_STORE } from './utils/constants';
+
 import './utils/module-observer';
 import './utils/survey';
 
-registerStore('neve-dashboard', {
+registerStore(NEVE_STORE, {
 	reducer,
 	actions,
 	selectors,
 });
 
-const Root = () => <App />;
+const Root = () => (
+	<StrictMode>
+		<App />
+	</StrictMode>
+);
 render(<Root />, document.getElementById('neve-dashboard'));

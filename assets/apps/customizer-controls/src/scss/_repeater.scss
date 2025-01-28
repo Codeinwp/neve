@@ -1,7 +1,89 @@
+$text-color: #50575e;
+
 .nv-repeater-options {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
   column-gap: 15px;
   height: 40px;
+}
+
+.neve-sortable-item {
+  .neve-background-type-control {
+    margin-bottom: 10px;
+  }
+
+  .neve-control-header {
+    margin: 0;
+  }
+
+  .icon-control {
+    height: 30px;
+    margin-bottom: 10px;
+
+    .add-icon-button {
+      height: 30px;
+      width: 53px;
+      justify-content: center;
+      margin-left: auto;
+      border: 1px solid #ccc;
+      color: $text-color;
+      box-shadow: none !important;
+    }
+
+    .icon-setter {
+      height: 30px;
+      width: 53px;
+      display: flex;
+      margin-left: auto;
+
+      .repeater-icon-preview {
+        height: inherit;
+        width: 70%;
+        justify-content: center;
+        color: #1e1e1e;
+        box-shadow: none;
+        padding: 0;
+        border: 1px solid #ccc;
+      }
+
+      .repeater-delete-icon {
+        height: inherit;
+        justify-content: center;
+        background-color: #ccc;
+        color: #fff;
+        box-shadow: none;
+        padding: 0;
+
+        > * {
+          /* The 'no' dashicon size */
+          height: 16px;
+          width: 16px;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .icons-popover-content {
+      max-height: 280px;
+
+      .icons-popover-header {
+        margin: 5px 10px;
+      }
+
+      .icons-container {
+        margin: 10px 10px 10px 10px;
+        display: grid;
+        grid-template-columns: repeat(5, 40px);
+        grid-template-rows: repeat(auto-fill, 40px);
+
+        .icon-button {
+          width: 40px;
+          height: 40px;
+          justify-content: center;
+          padding: 0;
+        }
+      }
+    }
+  }
 }

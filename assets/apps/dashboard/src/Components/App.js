@@ -1,61 +1,59 @@
+import Container from '../Layout/Container';
+import { fetchOptions } from '../utils/rest';
+import Sidebar from './Content/Sidebar/Sidebar';
 import Header from './Header';
 import Notifications from './Notifications';
-import TabsContent from './TabsContent';
-import Sidebar from './Sidebar';
-import Loading from './Loading';
+import SkeletonLoader from './SkeletonLoader';
 import Snackbar from './Snackbar';
-import { fetchOptions } from '../utils/rest';
+import TransitionWrapper from './Common/TransitionWrapper';
 
-import { withDispatch, withSelect } from '@wordpress/data';
-import { compose } from '@wordpress/compose';
-import { useState, Fragment, useEffect } from '@wordpress/element';
-import Deal from './Deal';
+import { useDispatch, useSelect } from '@wordpress/data';
+import { useEffect, useState } from '@wordpress/element';
+import { tabs } from '../utils/common';
+import { NEVE_STORE } from '../utils/constants';
 
-const App = ({ setSettings, toast, currentTab, setTab }) => {
+const App = () => {
 	const [loading, setLoading] = useState(true);
+
+	const { setSettings, setTab } = useDispatch(NEVE_STORE);
+
+	const { currentTab } = useSelect((select) => {
+		const { getTab } = select(NEVE_STORE);
+		return {
+			currentTab: getTab(),
+		};
+	});
+
 	useEffect(() => {
 		fetchOptions().then((r) => {
 			setSettings(r);
 			setLoading(false);
 		});
 	}, []);
+
 	if (loading) {
-		return <Loading />;
+		return <SkeletonLoader />;
 	}
 	return (
-		<Fragment>
-			<Header currentTab={currentTab} setTab={setTab} />
-			<div className="content-wrap">
-				<div className="container content">
-					<div className="main">
-						<Deal />
-						{'starter-sites' !== currentTab && <Notifications />}
-						<TabsContent currentTab={currentTab} setTab={setTab} />
-					</div>
-					{'starter-sites' !== currentTab &&
-						'custom-layouts' !== currentTab && (
-							<Sidebar currentTab={currentTab} />
-						)}
-				</div>
-			</div>
-			{toast && <Snackbar />}
-		</Fragment>
+		<div className="antialiased grow flex flex-col gap-6 h-full">
+			<Header />
+
+			{/*<Deal />*/}
+			{'starter-sites' !== currentTab && <Notifications />}
+
+			<Container className="flex flex-col lg:flex-row gap-6 h-full grow">
+				<div className="grow">{tabs[currentTab].render(setTab)}</div>
+
+				{!['starter-sites', 'settings'].includes(currentTab) && (
+					<TransitionWrapper className="shrink-0 lg:w-[435px]">
+						<Sidebar />
+					</TransitionWrapper>
+				)}
+			</Container>
+
+			<Snackbar />
+		</div>
 	);
 };
 
-export default compose(
-	withDispatch((dispatch) => {
-		const { setSettings, setTab } = dispatch('neve-dashboard');
-		return {
-			setSettings: (object) => setSettings(object),
-			setTab: (tab) => setTab(tab),
-		};
-	}),
-	withSelect((select) => {
-		const { getToast, getTab } = select('neve-dashboard');
-		return {
-			toast: getToast(),
-			currentTab: getTab(),
-		};
-	})
-)(App);
+export default App;

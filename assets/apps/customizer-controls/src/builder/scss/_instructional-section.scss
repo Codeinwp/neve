@@ -14,6 +14,27 @@
 	button {
 	  text-decoration: none;
 	}
+
+	.quick-links-badge {
+		text-transform: uppercase;
+		margin-left: 6px;
+		color: #3965e3;
+		background-color: #dee8fc;
+		padding: 2px 6px;
+		border-radius: 5px;
+		font-weight: 600;
+		font-size: 12px;
+	}
+
+	.quick-links-upsell {
+		background-color: #f9fafb;
+		padding: 20px 15px;
+
+		p {
+			margin: 0;
+			color: #4d5562;
+		}
+	}
   }
 
   .quick-links-wrap {

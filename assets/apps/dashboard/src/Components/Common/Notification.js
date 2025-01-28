@@ -1,26 +1,59 @@
 /* global neveDash */
-import classnames from 'classnames';
+import cn from 'classnames';
 
-import { sprintf, __ } from '@wordpress/i18n';
-import { useState } from '@wordpress/element';
-import { external } from '@wordpress/icons';
-import { Button, Dashicon, Icon, Tooltip } from '@wordpress/components';
+import { useState, useEffect } from '@wordpress/element';
+import { __, sprintf } from '@wordpress/i18n';
 
-const Notification = ({ data, slug }) => {
-	// eslint-disable-next-line no-unused-vars
+import {
+	LucideCircleCheck,
+	LucideCircleX,
+	LucideExternalLink,
+} from 'lucide-react';
+import Card from '../../Layout/Card';
+import Button from './Button';
+import Tooltip from './Tooltip';
+import TransitionInOut from './TransitionInOut';
+
+const Notification = ({ data }) => {
 	const [hidden, setHidden] = useState(false);
 	const { text, cta, type, update, url, targetBlank } = data;
 	const { canInstallPlugins } = neveDash;
 	const [inProgress, setInProgress] = useState(false);
 	const [done, setDone] = useState(false);
 	const [errorMessage, setErrorMessage] = useState(null);
-	const classes = classnames([
-		'notification',
-		slug,
-		type && !done ? type : '',
+
+	useEffect(() => {
+		let timeout;
+		if (done === 'done') {
+			timeout = setTimeout(() => {
+				setHidden(true);
+			}, 5000);
+		}
+
+		return () => {
+			clearTimeout(timeout);
+		};
+	}, [done]);
+
+	const classes = cn([
+		'text-white !p-3 rounded flex flex-col md:flex-row items-center justify-between gap-4',
 		{
-			'success hidden': 'done' === done,
-			error: 'error' === done,
+			'bg-blue-500': type === 'info' || (!type && !done),
+			'bg-amber-500': 'warning' === type && !done,
+			'bg-emerald-500': 'success' === type || 'done' === done,
+			'bg-red-500':
+				('error' === type && 'done' !== done) || 'error' === done,
+		},
+	]);
+
+	const buttonClasses = cn([
+		'bg-white border-white hover:opacity-90 text-blue-500 font-medium',
+		{
+			'!text-blue-600': type === 'info' || (!type && !done),
+			'!text-amber-600': 'warning' === type && !done,
+			'!text-emerald-600': 'success' === type || 'done' === done,
+			'!text-red-600':
+				('error' === type && 'done' !== done) || 'error' === done,
 		},
 	]);
 
@@ -119,23 +152,16 @@ const Notification = ({ data, slug }) => {
 		}
 		return (
 			<Button
-				isSecondary
 				disabled={inProgress || !canInstallPlugins}
-				className={classnames({ 'is-loading': inProgress })}
+				loading={inProgress}
+				className={buttonClasses}
 				onClick={() => {
 					if (update) {
 						updateEntity();
 					}
 				}}
 			>
-				{inProgress ? (
-					<span>
-						<Dashicon icon="update" />{' '}
-						{__('In Progress', 'neve') + '...'}{' '}
-					</span>
-				) : (
-					cta
-				)}
+				{inProgress ? null : cta}
 			</Button>
 		);
 	};
@@ -152,10 +178,6 @@ const Notification = ({ data, slug }) => {
 					__('Neve Pro', 'neve')
 				)
 			)}
-			position="top center"
-			style={{
-				opacity: 1,
-			}}
 		>
 			{ctaContent()}
 		</Tooltip>
@@ -165,17 +187,21 @@ const Notification = ({ data, slug }) => {
 
 	const UpdateNotification = () => {
 		return (
-			<div className={classes}>
-				{!done && <p>{text}</p>}
+			<>
+				{!done && (
+					<p className="text-sm font-medium leading-relaxed">
+						{text}
+					</p>
+				)}
 				{'done' === done && (
-					<p>
-						<Dashicon icon="yes" />
+					<p className="text-sm font-medium leading-relaxed">
+						<LucideCircleCheck className="size-5 mr-3 inline" />
 						{__('Done!', 'neve')}
 					</p>
 				)}
 				{'error' === done && (
-					<p>
-						<Dashicon icon="no" />
+					<p className="text-sm font-medium leading-relaxed">
+						<LucideCircleX className="size-5 mr-3 inline" />
 						{errorMessage ||
 							__(
 								'An error occurred. Please reload the page and try again.',
@@ -184,33 +210,38 @@ const Notification = ({ data, slug }) => {
 					</p>
 				)}
 				{wrappedButtonContent}
-			</div>
+			</>
 		);
 	};
 
-	const LinkNotification = () => {
-		return (
-			<div className={classes}>
-				<p dangerouslySetInnerHTML={{ __html: text }} />
-				{url && cta && (
-					<Button
-						isSecondary
-						target={targetBlank ? '_blank' : ''}
-						href={url}
-					>
-						{cta}
-						{targetBlank && <Icon size={20} icon={external} />}
-					</Button>
-				)}
-			</div>
-		);
-	};
+	const LinkNotification = () => (
+		<>
+			<p
+				className="text-sm font-medium leading-relaxed"
+				dangerouslySetInnerHTML={{ __html: text }}
+			/>
+			{url && cta && (
+				<Button
+					target={targetBlank ? '_blank' : ''}
+					className={buttonClasses}
+					href={url}
+				>
+					{cta}
+					{targetBlank && (
+						<LucideExternalLink size={18} className="ml-2" />
+					)}
+				</Button>
+			)}
+		</>
+	);
 
-	if (update) {
-		return <UpdateNotification />;
-	}
-
-	return <LinkNotification />;
+	return (
+		<TransitionInOut show={!hidden}>
+			<Card className={classes}>
+				{update ? <UpdateNotification /> : <LinkNotification />}
+			</Card>
+		</TransitionInOut>
+	);
 };
 
 export default Notification;

@@ -3,11 +3,9 @@
 module.exports = {
 	customizerStyle: {
 		options: {
-			separator: ''
+			separator: '',
 		},
-		src: [
-			'./assets/customizer/css/*.css'
-		],
-		dest: './assets/css/customizer-style.css'
+		src: ['./assets/customizer/css/*.css'],
+		dest: './assets/css/customizer-style.css',
 	},
 };
