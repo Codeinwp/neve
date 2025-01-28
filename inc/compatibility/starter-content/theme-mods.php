@@ -134,9 +134,7 @@ return array(
 		'fixed'             => false,
 		'useFeatured'       => false,
 	),
-	'neve_blog_items_border_radius'                => 8,
 	'neve_blog_archive_layout'                     => 'grid',
-	'neve_post_excerpt_length'                     => 35,
 	'neve_post_meta_ordering'                      => '["author","comments"]',
 	'neve_advanced_layout_options'                 => true,
 	'neve_blog_archive_sidebar_layout'             => 'full-width',
@@ -292,7 +290,6 @@ return array(
 		),
 		'flag'          => false,
 	),
-	'neve_single_post_sidebar_layout'              => 'full-width',
 	'neve_other_pages_sidebar_layout'              => 'full-width',
 	'neve_single_post_content_width'               => 70,
 	'neve_other_pages_content_width'               => 100,
@@ -839,4 +836,45 @@ return array(
 	'custom_logo'                                  => '{{featured-image-logo}}',
 	'logo_color'                                   => 'var(--nv-text-color)',
 	'neve_blog_post_meta_fields'                   => '[{"slug":"author","title":"' . __( 'Author', 'neve' ) . '","visibility":"yes","hide_on_mobile":"","blocked":"yes"},{"slug":"comments","title":"' . __( 'Comments', 'neve' ) . '","visibility":"yes","hide_on_mobile":"","blocked":"yes"},{"slug":"category","title":"' . __( 'Category', 'neve' ) . '","visibility":"yes","hide_on_mobile":"","blocked":"yes"},{"slug":"date","title":"' . __( 'Date', 'neve' ) . '","visibility":"no","hide_on_mobile":"","blocked":"yes"}]',
+	// V4 changes.
+	'neve_blog_items_border_radius'                => 8,
+	'neve_blog_content_padding'                    => [
+		'mobile'       => [
+			'top'    => 25,
+			'right'  => 25,
+			'bottom' => 25,
+			'left'   => 25,
+		],
+		'tablet'       => [
+			'top'    => 25,
+			'right'  => 25,
+			'bottom' => 25,
+			'left'   => 25,
+		],
+		'desktop'      => [
+			'top'    => 25,
+			'right'  => 25,
+			'bottom' => 25,
+			'left'   => 25,
+		],
+		'mobile-unit'  => 'px',
+		'tablet-unit'  => 'px',
+		'desktop-unit' => 'px',
+	],
+	'neve_enable_card_style'                       => true,
+	'neve_blog_grid_card_bg_color'                 => 'var(--nv-site-bg)',
+	'neve_blog_grid_text_color'                    => 'var(--nv-text-color)',
+	'neve_blog_card_shadow'                        => 0.5,
+	'neve_blog_archive_aspect_ratio'               => '4-3',
+	'neve_post_excerpt_length'                     => 35,
+	'neve_layout_single_post_elements_order'       => wp_json_encode(
+		[
+			'title-meta',
+			'content',
+			'tags',
+			'comments',
+		]
+	),
+	'neve_single_post_sidebar_layout'              => 'full-width',
+	'neve_archive_hide_title'                      => true,
 );

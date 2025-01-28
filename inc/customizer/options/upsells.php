@@ -41,7 +41,6 @@ class Upsells extends Base_Customizer {
 		$this->upsell_url = esc_url_raw( apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'learnmorebtn' ), 'query' ) ) );
 
 		parent::init();
-		add_action( 'customize_controls_enqueue_scripts', array( $this, 'localize_upsell' ) );
 
 		add_filter( 'theme_mod_neve_checkout_page_layout', array( $this, 'override_neve_checkout_page_layout_theme_mod' ), 10, 1 );
 	}
@@ -70,30 +69,12 @@ class Upsells extends Base_Customizer {
 	}
 
 	/**
-	 * Localize upsell script and send strings.
-	 */
-	public function localize_upsell() {
-		wp_localize_script(
-			'neve-customizer-controls',
-			'upsellConfig',
-			array(
-				'button_url'    => esc_url_raw( apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'proheader' ), 'query' ) ) ),
-				'button_text'   => esc_html__( 'Get the PRO version!', 'neve' ),
-				'text'          => esc_html__( 'Extend your header with more components and settings, build sticky/transparent headers or display them conditionally.', 'neve' ),
-				'screen_reader' => esc_html__( '(opens in a new tab)', 'neve' ),
-			)
-		);
-	}
-
-	/**
 	 * Function that should be extended to add customizer controls.
 	 *
 	 * @return void
 	 */
 	public function add_controls() {
 		$this->wpc->register_section_type( '\Neve\Customizer\Controls\Simple_Upsell_Section' );
-		$this->wpc->register_section_type( '\Neve\Customizer\Controls\React\Upsell_Banner_Section' );
-		$this->wpc->register_control_type( '\Neve\Customizer\Controls\React\Upsell_Banner' );
 		$this->section_upsells();
 		$this->control_upsells();
 		$this->checkout_locked_layout();
@@ -170,7 +151,7 @@ class Upsells extends Base_Customizer {
 				[
 					'transport'         => 'postMessage',
 					'default'           => 'grid',
-					'sanitize_callback' => function() {
+					'sanitize_callback' => function () {
 						return 'grid';
 					},
 				],
@@ -199,7 +180,7 @@ class Upsells extends Base_Customizer {
 				'neve_add_to_cart_display',
 				[
 					'default'           => 'none',
-					'sanitize_callback' => function() {
+					'sanitize_callback' => function () {
 						return 'none';
 					},
 				],
@@ -253,7 +234,7 @@ class Upsells extends Base_Customizer {
 				'neve_category_card_layout',
 				[
 					'default'           => 'default',
-					'sanitize_callback' => function() {
+					'sanitize_callback' => function () {
 						return 'default';
 					},
 				],
@@ -307,7 +288,7 @@ class Upsells extends Base_Customizer {
 				'neve_sale_tag_position',
 				[
 					'default'           => 'inside',
-					'sanitize_callback' => function() {
+					'sanitize_callback' => function () {
 						return 'inside';
 					},
 				],
@@ -357,7 +338,7 @@ class Upsells extends Base_Customizer {
 				'neve_product_content_alignment',
 				[
 					'default'           => 'left',
-					'sanitize_callback' => function() {
+					'sanitize_callback' => function () {
 						return 'left';
 					},
 				],
@@ -480,58 +461,8 @@ class Upsells extends Base_Customizer {
 			)
 		);
 
-		$upsells_banners = [];
-
-		$hfg_header        = 'hfg_header';
-		$hfg_header_text   = __( 'Extend your header with more components and settings, build sticky/transparent headers or display them conditionally.', 'neve' );
-		$hfg_header_button = __( 'Get the PRO version!', 'neve' );
-
-		foreach ( [ 'top', 'main', 'bottom', 'sidebar' ] as $section ) {
-			$section_id                     = $hfg_header . '_layout_' . $section;
-			$upsells_banners[ $section_id ] = [
-				'text'        => $hfg_header_text,
-				'button_text' => $hfg_header_button,
-				'use_logo'    => true,
-				'section'     => $section_id,
-			];
-		}
-
-		$hfg_footer        = 'hfg_footer';
-		$hfg_footer_text   = __( 'Neve PRO Features', 'neve' );
-		$hfg_footer_button = __( 'Get the PRO version!', 'neve' );
-
-		foreach ( [ 'top', 'main', 'bottom' ] as $section ) {
-			$section_id                     = $hfg_footer . '_layout_' . $section;
-			$upsells_banners[ $section_id ] = [
-				'text'        => $hfg_footer_text,
-				'button_text' => $hfg_footer_button,
-				'use_logo'    => true,
-				'section'     => $section_id,
-			];
-		}
-
-		$is_dismissed = get_transient( 'upsell_dismiss_banner_customizer' );
-		if ( $is_dismissed === false ) {
-			foreach ( $upsells_banners as $id => $args ) {
-				$control_id = 'neve_' . $id . '_upsell_banner_control';
-				$this->add_control(
-					new Control(
-						$control_id,
-						[ 'sanitize_callback' => 'sanitize_text_field' ],
-						array_merge(
-							$args,
-							[
-								'type'     => 'neve_upsell_banner',
-								'priority' => 10000,
-								'nonce'    => wp_create_nonce( 'neve-upsell-banner-nonce' ),
-								'url'      => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'upsell-banner-customizer-section-' . $args['section'] ), 'query' ),
-							]
-						),
-						'\Neve\Customizer\Controls\React\Upsell_Banner'
-					)
-				);
-			}
-		}
+		$hfg_header = 'hfg_header';
+		$hfg_footer = 'hfg_footer';
 
 		$this->add_control(
 			new Control(

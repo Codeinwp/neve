@@ -169,7 +169,7 @@ trait Layout {
 				'comments',
 			],
 			'neve_single_post_sidebar_layout'        => 'full-width',
-			'neve_archive_hide_title'                => true,   
+			'neve_archive_hide_title'                => true,
 		];
 
 		if ( ! isset( $new_defaults[ $id ] ) ) {
