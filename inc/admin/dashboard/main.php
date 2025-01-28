@@ -983,6 +983,7 @@ class Main {
 			.nv-admin-header-left {
 				display: flex;
 				align-items: center;
+				gap: 12px;
 			}
 
 			.nv-admin-header-left img {
@@ -992,7 +993,6 @@ class Main {
 			}
 
 			.nv-admin-header-left .nv-admin-title {
-				margin-left: 12px;
 				font-size: 0.875rem;
 				font-weight: 600;
 				color: rgb(17, 24, 39);
@@ -1008,12 +1008,10 @@ class Main {
 				text-transform: uppercase;
 
 				color: rgb(55, 65, 81);
-				margin-left: 12px;
 			}
 
 			.nv-admin-header-left .nv-admin-version {
 				color: rgb(107, 114, 128);
-				margin-left: 12px;
 				vertical-align: middle;
 				font-weight: 500;
 			}
