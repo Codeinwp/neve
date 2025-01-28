@@ -8,7 +8,7 @@ import {
 	RangeControl,
 	ToggleControl,
 } from '@wordpress/components';
-import { dragHandle, chevronDown, chevronUp, lock } from '@wordpress/icons';
+import { dragHandle, chevronDown, chevronUp } from '@wordpress/icons';
 import { useMemo, useState, useCallback, useEffect } from '@wordpress/element';
 import { RadioIcons } from '@neve-wp/components';
 
@@ -91,9 +91,13 @@ const Item = ({
 		>
 			<div className="top-bar">
 				{locked ? (
-					<button className="locked" disabled>
-						<Icon icon={lock} size={18} />
-					</button>
+					<Tooltip
+						text={__('Ordering locked for current layout', 'neve')}
+					>
+						<button className="locked" disabled>
+							<Icon icon={dragHandle} size={18} />
+						</button>
+					</Tooltip>
 				) : (
 					<Handle />
 				)}
