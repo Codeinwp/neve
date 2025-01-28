@@ -2,7 +2,20 @@ import { ReactSortable } from 'react-sortablejs';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { __ } from '@wordpress/i18n';
-import { Tooltip, Icon } from '@wordpress/components';
+import {
+	Tooltip,
+	Icon,
+	RangeControl,
+	ToggleControl,
+} from '@wordpress/components';
+import { dragHandle, chevronDown, chevronUp, lock } from '@wordpress/icons';
+import { useMemo, useState, useCallback, useEffect } from '@wordpress/element';
+import { RadioIcons } from '@neve-wp/components';
+
+import { VisibilityIcon, HiddenIcon } from '../common';
+import ResponsiveRangeComponent from '../responsive-range/ResponsiveRangeComponent';
+import ResponsiveRadioButtonsComponent from '../responsive-radio-buttons/ResponsiveRadioButtonsComponent';
+import SpacingComponent from '../spacing/SpacingComponent';
 
 const Handle = () => (
 	<Tooltip text={__('Drag to Reorder', 'neve')}>
@@ -13,39 +26,297 @@ const Handle = () => (
 				e.preventDefault();
 			}}
 		>
-			<Icon icon="menu" />
+			<Icon icon={dragHandle} size={18} />
 		</button>
 	</Tooltip>
 );
 
-const Item = ({ item, onToggle, components, allowsToggle = true }) => {
-	const label = components[item.id];
+const Item = ({
+	item,
+	onToggle,
+	components,
+	allowsToggle = true,
+	locked = false,
+}) => {
+	const label = components[item.id]?.label || components[item.id];
+
+	const hasControls = useMemo(() => {
+		return (
+			!!components[item.id]?.controls &&
+			Object.keys(components[item.id].controls).length > 0
+		);
+	}, []);
+
+	const [open, setOpen] = useState(false);
+
+	const toggleSubcontrols = (e) => {
+		e.preventDefault();
+		setOpen(!open);
+	};
+
+	const [activeControls, setActiveControls] = useState(false);
+
+	const checkSubcontrolsActive = () => {
+		if (!hasControls) return;
+
+		const hasActive =
+			Object.keys(components[item.id].controls)
+				.map((control) => {
+					return wp.customize.control(control).active();
+				})
+				.filter(Boolean).length > 0;
+
+		setActiveControls(hasActive);
+	};
+
+	useEffect(() => {
+		if (!hasControls) return;
+
+		checkSubcontrolsActive();
+
+		wp.customize.control.bind('change', checkSubcontrolsActive);
+
+		return () => {
+			wp.customize.control.unbind('change', checkSubcontrolsActive);
+		};
+	}, []);
+
 	return (
 		<div
-			className={classnames({
-				'neve-sortable-item': true,
-				'no-toggle': !allowsToggle,
+			className={classnames('neve-sortable-item', {
 				visible: item.visible,
 				disabled: !item.visible,
+				'no-toggle': !allowsToggle,
 			})}
 		>
-			{allowsToggle && (
-				<Tooltip text={__('Toggle Visibility', 'neve')}>
-					<button
-						aria-label={__('Toggle Visibility', 'neve')}
-						className="toggle"
-						onClick={(e) => {
-							e.preventDefault();
-							e.stopPropagation();
-							onToggle(item.id);
-						}}
-					>
-						<Icon icon="visibility" />
+			<div className="top-bar">
+				{locked ? (
+					<button className="locked" disabled>
+						<Icon icon={lock} size={18} />
 					</button>
-				</Tooltip>
+				) : (
+					<Handle />
+				)}
+				<span className="label">{label}</span>
+
+				<div className="actions">
+					{activeControls && (
+						<Tooltip text={__('Toggle Controls', 'neve')}>
+							<button
+								className="toggle-controls"
+								onClick={toggleSubcontrols}
+								aria-label={__('Toggle Controls', 'neve')}
+							>
+								<Icon
+									size={18}
+									icon={open ? chevronUp : chevronDown}
+								/>
+							</button>
+						</Tooltip>
+					)}
+
+					<span className="separator" />
+
+					{allowsToggle && (
+						<Tooltip text={__('Toggle Visibility', 'neve')}>
+							<button
+								disabled={locked}
+								aria-label={__('Toggle Visibility', 'neve')}
+								className="toggle"
+								onClick={(e) => {
+									e.preventDefault();
+									e.stopPropagation();
+									onToggle(item.id);
+								}}
+							>
+								<Icon
+									icon={
+										item.visible
+											? VisibilityIcon
+											: HiddenIcon
+									}
+									size={18}
+								/>
+							</button>
+						</Tooltip>
+					)}
+				</div>
+			</div>
+			{activeControls && (
+				<div className={classnames('sortable-subcontrols', { open })}>
+					<div className="sortable-subcontrols-inner">
+						{Object.entries(components[item.id].controls).map(
+							([id, args]) => {
+								return (
+									<InnerControl
+										key={id}
+										id={id}
+										args={args}
+									/>
+								);
+							}
+						)}
+					</div>
+				</div>
 			)}
-			<span className="label">{label}</span>
-			{item.visible && <Handle />}
+		</div>
+	);
+};
+
+const InnerControl = ({ id, args }) => {
+	const {
+		label: overrideLabel,
+		description: overrideDescription,
+		type,
+		attrs,
+		initialValue,
+	} = args;
+
+	const label =
+		overrideLabel || wp.customize?.control(id)?.params?.label || '';
+
+	const description =
+		overrideDescription ||
+		wp.customize?.control(id)?.params?.description ||
+		'';
+
+	const defaultValue = wp.customize.value(id).get();
+
+	const [value, setValue] = useState(initialValue || defaultValue);
+
+	const [isActive, setActive] = useState(false);
+
+	useEffect(() => {
+		setActive(wp.customize.control(id).active());
+	}, []);
+
+	const updateStatus = useCallback((status) => {
+		setActive(status);
+	}, []);
+
+	useEffect(() => {
+		wp.customize.control(id).active.bind(updateStatus);
+
+		return () => {
+			wp.customize.control(id).active.unbind(updateStatus);
+		};
+	}, []);
+
+	const onChange = (nextVal) => {
+		wp.customize.value(id).set(nextVal);
+	};
+
+	const handleValueChangeWithPrevent = (e) => {
+		e.preventDefault();
+		handleValueChange(e.target.value);
+	};
+
+	const handleValueChange = (val) => {
+		setValue(val);
+		onChange(val);
+	};
+
+	if (!isActive) {
+		return null;
+	}
+
+	return (
+		<div id={`sub-control-${id}`}>
+			{![
+				'toggle',
+				'responsive-range',
+				'responsive-button-group',
+				'responsive-spacing',
+			].includes(type) && (
+				<>
+					{label && <span className="subcontrol-label">{label}</span>}
+					{description && (
+						<span className="subcontrol-description">
+							{description}
+						</span>
+					)}
+				</>
+			)}
+			<div>
+				{type === 'select' && (
+					<select
+						value={value}
+						onBlur={handleValueChangeWithPrevent}
+						onChange={handleValueChangeWithPrevent}
+					>
+						{Object.entries(args.choices).map(
+							([val, optionLabel]) => (
+								<option key={val} value={val}>
+									{optionLabel}
+								</option>
+							)
+						)}
+					</select>
+				)}
+				{type === 'range' && (
+					<RangeControl
+						resetFallbackValue={
+							attrs?.defaultVal === 0
+								? 0
+								: attrs?.defaultVal || ''
+						}
+						value={
+							parseFloat(value) === 0
+								? 0
+								: parseFloat(value) || ''
+						}
+						allowReset
+						onChange={handleValueChange}
+						step={attrs?.step || 1}
+						min={attrs?.min || 0}
+						max={attrs?.max || 100}
+					/>
+				)}
+				{type === 'text' && (
+					<input
+						type="text"
+						value={value}
+						onChange={handleValueChangeWithPrevent}
+					/>
+				)}
+				{type === 'toggle' && (
+					<ToggleControl
+						checked={value}
+						label={label}
+						help={
+							description ? (
+								<span
+									dangerouslySetInnerHTML={{
+										__html: description,
+									}}
+								/>
+							) : null
+						}
+						onChange={handleValueChange}
+					/>
+				)}
+				{type === 'responsive-range' && (
+					<ResponsiveRangeComponent
+						control={wp.customize.control(id)}
+					/>
+				)}
+				{type === 'button-group' && (
+					<RadioIcons
+						options={args.choices}
+						value={value}
+						onChange={handleValueChange}
+						showLabels
+					/>
+				)}
+				{type === 'responsive-button-group' && (
+					<ResponsiveRadioButtonsComponent
+						control={wp.customize.control(id)}
+					/>
+				)}
+				{type === 'responsive-spacing' && (
+					<SpacingComponent control={wp.customize.control(id)} />
+				)}
+			</div>
 		</div>
 	);
 };
@@ -63,6 +334,7 @@ const Ordering = ({
 	onUpdate,
 	value,
 	components,
+	locked = [],
 	allowsToggle = true,
 }) => {
 	const handleToggle = (item) => {
@@ -109,9 +381,10 @@ const Ordering = ({
 					.filter((element) => {
 						return components.hasOwnProperty(element.id);
 					})
-					.map((item, index) => (
+					.map((item) => (
 						<Item
-							key={'ordering-element-' + index}
+							locked={locked.includes(item.id)}
+							key={item.id}
 							item={item}
 							onToggle={handleToggle}
 							allowsToggle={allowsToggle}

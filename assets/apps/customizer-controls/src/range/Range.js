@@ -20,8 +20,10 @@ const Range = ({
 			<div className="range-wrap">
 				<RangeControl
 					resetFallbackValue={defaultVal === 0 ? 0 : defaultVal || ''}
-					value={parseInt(value) === 0 ? 0 : value || ''}
-					min={min < 0 ? min : 0}
+					value={
+						parseFloat(value) === 0 ? 0 : parseFloat(value) || ''
+					}
+					min={min !== 0 ? min : 0}
 					max={max}
 					step={step}
 					allowReset

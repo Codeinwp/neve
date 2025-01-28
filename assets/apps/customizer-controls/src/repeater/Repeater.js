@@ -2,7 +2,6 @@ import '../scss/_repeater.scss';
 import RepeaterItem from './RepeaterItem';
 import PropTypes from 'prop-types';
 import { Button } from '@wordpress/components';
-import { useState } from '@wordpress/element';
 import { ReactSortable } from 'react-sortablejs';
 import { __ } from '@wordpress/i18n';
 
@@ -14,7 +13,6 @@ const Repeater = ({
 	onUpdate,
 	newItemFields,
 }) => {
-	const [sorting, setSorting] = useState(false);
 	const itemFields =
 		Object.keys(newItemFields).length > 0 ? newItemFields : fields;
 
@@ -101,7 +99,7 @@ const Repeater = ({
 			{label && <span className="customize-control-title">{label}</span>}
 
 			<ReactSortable
-				className="nv-repeater-items-container"
+				className="items-list"
 				list={value}
 				setList={(newItems, _, { dragging }) => {
 					if (!dragging) {
@@ -111,7 +109,7 @@ const Repeater = ({
 				}}
 				animation={300}
 				forceFallback={true}
-				handle=".nv-repeater-handle"
+				handle=".handle"
 			>
 				{value.map((val, index) => {
 					return (
@@ -121,40 +119,29 @@ const Repeater = ({
 							fields={fields}
 							value={value}
 							itemIndex={index}
+							key={'repeater-item-' + (val.slug || index)}
 							onToggle={handleToggle}
 							onContentChange={(newItemValue) =>
 								handleContentChange(index, newItemValue)
 							}
 							onRemove={handleRemove}
 							index={index}
-							sorting={sorting}
-							key={'repeater-item-' + index}
 						/>
 					);
 				})}
 			</ReactSortable>
-			<div className="nv-repeater-options">
-				{value.length > 1 && (
+			{allowNew === 'yes' && (
+				<div className="nv-repeater-options">
 					<Button
-						className="nv-repeater-reorder-button"
-						isLink
-						onClick={() => {
-							setSorting(!sorting);
-						}}
-					>
-						{sorting ? __('Done', 'neve') : __('Reorder', 'neve')}
-					</Button>
-				)}
-				{!sorting && allowNew === 'yes' && (
-					<Button
+						isSmall
 						isSecondary
 						onClick={handleAddItem}
 						className="nv-repeater-add-item-button"
 					>
 						{__('Add Item', 'neve')}
 					</Button>
-				)}
-			</div>
+				</div>
+			)}
 		</div>
 	);
 };

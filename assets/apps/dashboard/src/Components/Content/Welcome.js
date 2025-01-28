@@ -22,7 +22,7 @@ const CustomizerShortcutsCard = () => (
 		title={__('Essential Settings', 'neve')}
 		icon={<LucidePanelsTopLeft size={18} />}
 	>
-		<div className="grid grid-cols-2 gap-x-8 gap-y-4">
+		<div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
 			{neveDash.customizerShortcuts.map(({ text, link, description }) => (
 				<div key={link} className="grid gap-1">
 					<Link text={text} url={link} />

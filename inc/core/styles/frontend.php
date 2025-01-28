@@ -42,6 +42,7 @@ class Frontend extends Generator {
 		$this->_subscribers = [];
 		$this->setup_container();
 		$this->setup_blog_layout();
+		$this->setup_blog_card_style();
 		$this->setup_legacy_gutenberg_palette();
 		$this->setup_layout_subscribers();
 		$this->setup_buttons();
@@ -212,6 +213,103 @@ class Frontend extends Generator {
 	}
 
 	/**
+	 * Blog Card Styles
+	 */
+	public function setup_blog_card_style() {
+		$layout = Mods::get( 'neve_blog_archive_layout', 'grid' );
+
+		if ( $layout !== 'covers' ) {
+			$this->_subscribers['.nv-post-thumbnail-wrap img'] = [
+				'aspect-ratio' => [
+					'key'     => 'neve_blog_archive_aspect_ratio',
+					'default' => $this->get_v4_defaults( 'neve_blog_archive_aspect_ratio', 'original' ),
+					'filter'  => function ( $css_prop, $value, $meta, $device ) {
+						if ( $value === 'original' ) {
+							return '';
+						}
+						return sprintf( '%s: %s; object-fit: cover;', $css_prop, str_replace( '-', '/', $value ) );
+					},
+				],
+			];
+		}
+
+		$content_padding_default = $this->get_v4_defaults( 'neve_blog_content_padding', $this->blog_archive_card_padding_default() );
+
+		if ( $layout === 'grid' ) {
+			// Make sure image goes to edges
+			$this->_subscribers[] = [
+				'selectors'     => '.layout-grid .nv-post-thumbnail-wrap',
+				'rules'         => [
+					'margin' => [
+						'key'           => 'neve_blog_content_padding',
+						'default'       => $content_padding_default,
+						'is_responsive' => true,
+						'filter'        => function ( $css_prop, $value, $meta, $device ) {
+							$output = '';
+							$unit   = Css_Prop::get_unit_responsive( $meta, $device );
+
+							if ( isset( $value['right'] ) && ! empty( $value['right'] ) ) {
+								$output .= sprintf( 'margin-right:-%1$s%2$s;', $value['right'], $unit );
+							}
+							if ( isset( $value['left'] ) && ! empty( $value['left'] ) ) {
+								$output .= sprintf( 'margin-left:-%1$s%2$s;', $value['left'], $unit );
+							}
+
+							return $output;
+						},
+					],
+				],
+				'is_responsive' => true,
+			];
+		}
+
+		$rules = [
+			'--borderradius' => [
+				'key'     => 'neve_blog_items_border_radius',
+				'default' => $this->get_v4_defaults( 'neve_blog_items_border_radius', 0 ),
+				'filter'  => function ( $css_prop, $value, $meta, $device ) {
+					return sprintf( '%s:%spx;', $css_prop, $value );
+				},
+			],
+			'--padding'      => [
+				'key'              => 'neve_blog_content_padding',
+				'default'          => $content_padding_default,
+				'is_responsive'    => true,
+				'directional-prop' => 'padding',
+				'suffix'           => 'responsive_unit',
+			],
+		];
+
+		$card_style_enabled = get_theme_mod( 'neve_enable_card_style', $this->get_v4_defaults( 'neve_enable_card_style', false ) );
+
+		if ( $card_style_enabled ) {
+			$rules['--cardboxshadow'] = [
+				'key'     => 'neve_blog_card_shadow',
+				'default' => $this->get_v4_defaults( 'neve_blog_card_shadow', 0 ),
+				'filter'  => function ( $css_prop, $value, $meta, $device ) {
+					$blur    = $value * 4;
+					$opacity = 0.1 + $value / 10;
+
+					return sprintf( '%s:0 0 %spx 0 rgba(0,0,0,%s);', $css_prop, $blur, $opacity );
+				},
+			];
+
+			if ( $layout !== 'covers' ) {
+				$rules['--cardbgcolor'] = [
+					'key'     => 'neve_blog_grid_card_bg_color',
+					'default' => $this->get_v4_defaults( 'neve_blog_grid_card_bg_color', '#333333' ),
+				];
+				$rules['--cardcolor']   = [
+					'key'     => 'neve_blog_grid_text_color',
+					'default' => $this->get_v4_defaults( 'neve_blog_grid_text_color', '#ffffff' ),
+				];
+			}
+		}
+
+		$this->_subscribers['.nv-index-posts'] = $rules;
+	}
+
+	/**
 	 * Setup typography subscribers.
 	 */
 	public function setup_typography() {
@@ -326,9 +424,9 @@ class Frontend extends Generator {
 			],
 		];
 		// Single content width.
-		list( $context, $allowed_context ) = $this->get_cpt_context( [ 'post' ] );
-		$sidebar_content_width_meta        = $this->get_sidebar_content_width_meta( $context, $allowed_context );
-		$sidebar_layout_width_default      = $this->sidebar_layout_width_default( $sidebar_content_width_meta );
+		list($context, $allowed_context) = $this->get_cpt_context( [ 'post' ] );
+		$sidebar_content_width_meta      = $this->get_sidebar_content_width_meta( $context, $allowed_context );
+		$sidebar_layout_width_default    = $this->sidebar_layout_width_default( $sidebar_content_width_meta );
 		$this->_subscribers['.neve-main > .single-post-container .nv-single-post-wrap.col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => $sidebar_content_width_meta,
@@ -608,9 +706,9 @@ class Frontend extends Generator {
 	 */
 	public function setup_blog_meta() {
 
-		list( $context, $allowed_context ) = $this->get_cpt_context();
-		$archive_avatar_size_meta_key      = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
-		$single_avatar_size_meta_key       = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
+		list($context, $allowed_context) = $this->get_cpt_context();
+		$archive_avatar_size_meta_key    = Config::MODS_ARCHIVE_POST_META_AUTHOR_AVATAR_SIZE;
+		$single_avatar_size_meta_key     = Config::MODS_SINGLE_POST_META_AUTHOR_AVATAR_SIZE;
 		if ( in_array( $context, $allowed_context, true ) && is_singular( $context ) || is_post_type_archive( $context ) ) {
 			$archive_avatar_size_meta_key = 'neve_' . $context . '_archive_author_avatar_size';
 			$single_avatar_size_meta_key  = 'neve_single_' . $context . '_avatar_size';
@@ -735,7 +833,7 @@ class Frontend extends Generator {
 	 */
 	private function setup_header_style() {
 
-		list( $context, $allowed_context ) = $this->get_cpt_context();
+		list($context, $allowed_context) = $this->get_cpt_context();
 
 		$justify_map = [
 			'left'   => 'flex-start',
@@ -869,7 +967,6 @@ class Frontend extends Generator {
 				'rules'     => $overlay_rules,
 			];
 		}
-
 	}
 
 	/**
@@ -910,7 +1007,7 @@ class Frontend extends Generator {
 			];
 		}
 
-		list( $context )      = $this->get_cpt_context();
+		list($context)        = $this->get_cpt_context();
 		$post_inherits_vspace = Mods::get( 'neve_' . $context . '_' . Config::MODS_POST_TYPE_VSPACING_INHERIT, 'inherit' ) === 'inherit';
 		if ( ! $post_inherits_vspace ) {
 			$rules = [

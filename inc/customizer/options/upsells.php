@@ -479,7 +479,7 @@ class Upsells extends Base_Customizer {
 				'Neve\Customizer\Controls\Upsells\Scroll_To_Top_Control'
 			)
 		);
-		
+
 		$upsells_banners = [];
 
 		$hfg_header        = 'hfg_header';

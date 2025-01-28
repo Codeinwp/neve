@@ -8,6 +8,7 @@
 
 namespace Neve\Views\Partials;
 
+use Neve\Customizer\Defaults\Layout;
 use Neve\Views\Base_View;
 
 /**
@@ -16,6 +17,7 @@ use Neve\Views\Base_View;
  * @package Neve\Views\Partials
  */
 class Excerpt extends Base_View {
+	use Layout;
 	/**
 	 * Function that is run after instantiation.
 	 *
@@ -90,7 +92,7 @@ class Excerpt extends Base_View {
 	 * @return int
 	 */
 	private function get_excerpt_length() {
-		return absint( round( get_theme_mod( 'neve_post_excerpt_length', '25' ) ) );
+		return absint( round( get_theme_mod( 'neve_post_excerpt_length', $this->get_v4_defaults( 'neve_post_excerpt_length', 25 ) ) ) );
 	}
 
 	/**

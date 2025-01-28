@@ -8,10 +8,14 @@ const Notifications = () => {
 		return select('neve-dashboard').getNotifications();
 	});
 
+	if (Object.keys(notifications).length < 1) {
+		return null;
+	}
+
 	return (
 		<Container className="grid gap-3">
 			{Object.entries(notifications).map(([slug, data]) => (
-				<TransitionWrapper key={slug} from="top" className="delay-200">
+				<TransitionWrapper key={slug} from="top" className="delay-300">
 					<Notification slug={slug} data={data} />
 				</TransitionWrapper>
 			))}

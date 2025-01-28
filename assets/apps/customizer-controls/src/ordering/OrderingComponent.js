@@ -12,6 +12,8 @@ import { __ } from '@wordpress/i18n';
 const OrderingComponent = ({ control }) => {
 	const { section, components, label } = control.params;
 
+	const [lockedComponents, setLockedComponents] = useState([]);
+
 	const normalizeValue = (val) => {
 		const enabledItems = val.map((element) => {
 			return { id: element, visible: true };
@@ -31,11 +33,19 @@ const OrderingComponent = ({ control }) => {
 	const [isVisible, setVisible] = useState(false);
 
 	const updateValue = (newVal) => {
-		const dbValue = newVal
+		let nextVal = newVal.filter((el) => !lockedComponents.includes(el.id));
+		nextVal = [
+			...lockedComponents.map((el) => {
+				return { id: el, visible: true };
+			}),
+			...nextVal,
+		];
+
+		const dbValue = nextVal
 			.filter((el) => el.visible === true)
 			.map((el) => el.id);
 
-		setValue(newVal);
+		setValue(nextVal);
 		control.setting.set(JSON.stringify(dbValue));
 	};
 
@@ -86,14 +96,25 @@ const OrderingComponent = ({ control }) => {
 			return;
 		}
 
+		if (
+			window.wp.customize
+				.control('neve_' + matches[1] + '_header_layout')
+				.setting() === 'cover'
+		) {
+			setLockedComponents(['title-meta', 'thumbnail']);
+		}
+
 		window.wp.customize.control(
 			'neve_' + matches[1] + '_header_layout',
 			(customizeControl) => {
 				customizeControl.setting.bind((nextVal) => {
-					let newVal = maybeParseJson(control.setting.get());
+					const newVal = maybeParseJson(control.setting.get());
 					let titleMetaIndex, thumbnailIndex;
 					switch (nextVal) {
 						case 'cover':
+							setLockedComponents(['title-meta', 'thumbnail']);
+
+							// Moved title-meta & thumbnail to the start of the array.
 							titleMetaIndex = newVal.indexOf('title-meta');
 							if (titleMetaIndex !== -1) {
 								newVal.splice(titleMetaIndex, 1);
@@ -104,30 +125,12 @@ const OrderingComponent = ({ control }) => {
 								newVal.splice(thumbnailIndex, 1);
 							}
 
-							delete components['title-meta'];
-							delete components.thumbnail;
+							newVal.unshift('thumbnail');
+							newVal.unshift('title-meta');
+
 							break;
 						case 'normal':
-							if (!components['title-meta']) {
-								components['title-meta'] = __(
-									'Title & Meta',
-									'neve'
-								);
-							}
-							if (!components.thumbnail) {
-								components.thumbnail = __('Thumbnail', 'neve');
-							}
-
-							thumbnailIndex = newVal.indexOf('thumbnail');
-							if (thumbnailIndex === -1) {
-								newVal = ['thumbnail'].concat(newVal);
-							}
-
-							titleMetaIndex = newVal.indexOf('title-meta');
-							if (titleMetaIndex === -1) {
-								newVal = ['title-meta'].concat(newVal);
-							}
-
+							setLockedComponents([]);
 							break;
 					}
 					updateValue(normalizeValue(newVal));
@@ -144,6 +147,7 @@ const OrderingComponent = ({ control }) => {
 						label={label}
 						value={value}
 						components={components}
+						locked={lockedComponents}
 						onUpdate={updateValue}
 					/>
 				)}

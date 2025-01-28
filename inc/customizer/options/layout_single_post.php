@@ -13,6 +13,7 @@ namespace Neve\Customizer\Options;
 use HFG\Traits\Core;
 use Neve\Core\Settings\Config;
 use Neve\Customizer\Defaults\Layout;
+use Neve\Customizer\Defaults\Utils;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Defaults\Single_Post;
 
@@ -25,6 +26,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 	use Core;
 	use Layout;
 	use Single_Post;
+	use Utils;
 
 	/**
 	 * Returns the post type.
@@ -49,13 +51,158 @@ class Layout_Single_Post extends Base_Layout_Single {
 	 */
 	public function add_controls() {
 		parent::add_controls();
+		$this->add_tabs();
+		$this->add_sidebar_layout();
+
 		$this->control_content_order();
 		$this->content_vspacing();
 		$this->add_subsections();
 		$this->header_layout();
 		$this->post_meta();
 		$this->comments();
+
 		add_action( 'customize_register', [ $this, 'adjust_headings' ], PHP_INT_MAX );
+	}
+
+	/**
+	 * Adds the tabs for the single post layout.
+	 *
+	 * @return void
+	 */
+	private function add_tabs() {
+		$tab_slotting = [
+			'general' => [
+				'neve_single_post_sidebar_layout',
+				'neve_single_post_content_width',
+				'neve_post_header_layout',
+				'neve_post_page_elements_heading',
+				'neve_layout_single_post_elements_order',
+				'neve_single_post_meta_fields',
+
+				'neve_comments_heading',
+				'neve_post_comments_section_heading',
+				'neve_post_comment_section_title',
+
+				'neve_post_comments_form_heading',
+				'neve_post_comment_form_title',
+				'neve_post_comment_form_button_style',
+
+				'neve_single_post_upsell_control_features',
+			],
+			'style'   => [
+				'neve_post_cover_background_color',
+				'neve_post_cover_text_color',
+				'neve_post_cover_title_boxed_background_color',
+
+				'neve_post_page_settings_heading',
+				'neve_post_inherit_vspacing',
+				'neve_post_content_vspacing',
+
+				'neve_comments_heading',
+				'neve_post_comments_section_heading',
+				'neve_comments_boxed_layout',
+				'neve_comments_boxed_padding',
+				'neve_comments_boxed_background_color',
+				'neve_comments_boxed_text_color',
+
+				'neve_post_comments_form_heading',
+				'neve_comments_form_boxed_layout',
+				'neve_comments_form_boxed_padding',
+				'neve_comments_form_boxed_background_color',
+				'neve_comments_form_boxed_text_color',
+
+				'neve_single_post_typography_post_title_accordion_wrap',
+				'neve_single_post_typography_post_title',
+				'neve_single_post_typography_post_meta_accordion_wrap',
+				'neve_single_post_typography_post_meta',
+				'neve_single_post_typography_comments_title_accordion_wrap',
+				'neve_single_post_typography_comments_title',
+
+				'neve_single_post_upsell_control_features',
+			],
+		];
+
+		foreach ( $tab_slotting as $slug => $args ) {
+			$tab_slotting[ $slug ] = array_fill_keys( $args, [] );
+		}
+		// return;
+		$this->add_control(
+			new Control(
+				$this->section . '_tabs',
+				[
+					'transport' => 'refresh',
+				],
+				[
+					'priority' => -100,
+					'section'  => $this->section,
+					'tabs'     => [
+						'general' => [
+							'label' => __( 'General', 'neve' ),
+							'icon'  => 'layout',
+						],
+						'style'   => [
+							'label' => __( 'Design', 'neve' ),
+							'icon'  => 'admin-customizer',
+						],
+					],
+					'controls' => $tab_slotting,
+				],
+				'Neve\Customizer\Controls\Tabs'
+			)
+		);
+	}
+
+	/**
+	 * Adds Sidebar Layout controls.
+	 *
+	 * @return void
+	 */
+	private function add_sidebar_layout() {
+		$layout_id = 'neve_single_post_sidebar_layout';
+		$width_id  = 'neve_single_post_content_width';
+
+		$this->add_control(
+			new Control(
+				$layout_id,
+				array(
+					'sanitize_callback' => array( $this, 'sanitize_sidebar_layout' ),
+					'default'           => $this->get_v4_defaults( $layout_id, $this->sidebar_layout_alignment_default( $layout_id ) ),
+				),
+				array(
+					'label'       => __( 'Sidebar Layout', 'neve' ),
+					'description' => $this->get_sidebar_control_description( $layout_id ),
+					'section'     => $this->section,
+					'priority'    => 0,
+					'choices'     => $this->sidebar_layout_choices( $layout_id ),
+				),
+				'\Neve\Customizer\Controls\React\Radio_Image'
+			)
+		);
+
+		$width_default = $this->sidebar_layout_width_default( $width_id );
+
+		$this->add_control(
+			new Control(
+				$width_id,
+				array(
+					'sanitize_callback' => 'absint',
+					'transport'         => $this->selective_refresh,
+					'default'           => $width_default,
+				),
+				array(
+					'label'       => esc_html__( 'Content Width (%)', 'neve' ),
+					'section'     => $this->section,
+					'type'        => 'neve_range_control',
+					'input_attrs' => [
+						'min'        => 50,
+						'max'        => 100,
+						'defaultVal' => $width_default,
+					],
+					'priority'    => 1,
+				),
+				'Neve\Customizer\Controls\React\Range'
+			)
+		);
 	}
 
 	/**
@@ -74,12 +221,6 @@ class Layout_Single_Post extends Base_Layout_Single {
 				'title'            => esc_html__( 'Page', 'neve' ) . ' ' . esc_html__( 'Settings', 'neve' ),
 				'priority'         => 106,
 				'controls_to_wrap' => 2,
-				'expanded'         => false,
-			],
-			'meta'             => [
-				'title'            => esc_html__( 'Post Meta', 'neve' ),
-				'priority'         => 110,
-				'controls_to_wrap' => 5,
 				'expanded'         => false,
 			],
 			'comments_section' => [
@@ -115,7 +256,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 						'priority'         => $heading_data['priority'],
 						'class'            => $heading_id . '-accordion',
 						'expanded'         => $heading_data['expanded'],
-						'accordion'        => array_key_exists( 'accordion', $heading_data ) ? $heading_data['accordion'] : true,
+						'accordion'        => false,
 						'controls_to_wrap' => array_key_exists( 'controls_to_wrap', $heading_data ) ? $heading_data['controls_to_wrap'] : 0,
 						'active_callback'  => array_key_exists( 'active_callback', $heading_data ) ? $heading_data['active_callback'] : '__return_true',
 					],
@@ -139,7 +280,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 				[
 					'label'           => esc_html__( 'Display meta before title', 'neve' ),
 					'section'         => $this->section,
-					'type'            => 'neve_toggle_control',
+					'type'            => $this->is_post ? 'hidden' : 'neve_toggle_control',
 					'priority'        => 40,
 					'active_callback' => [ $this, 'is_cover_layout' ],
 				],
@@ -152,26 +293,87 @@ class Layout_Single_Post extends Base_Layout_Single {
 	 * Add content order control.
 	 */
 	private function control_content_order() {
-
 		$all_components = [
-			'title-meta'      => __( 'Title & Meta', 'neve' ),
-			'thumbnail'       => __( 'Thumbnail', 'neve' ),
-			'content'         => __( 'Content', 'neve' ),
-			'tags'            => __( 'Tags', 'neve' ),
-			'post-navigation' => __( 'Post navigation', 'neve' ),
-			'comments'        => __( 'Comments', 'neve' ),
+			'title-meta'      => [
+				'label'    => __( 'Title & Meta', 'neve' ),
+				'controls' => [
+					'neve_post_title_alignment'           => [
+						'type' => 'responsive-button-group',
+					],
+					'neve_post_title_position'            => [
+						'type' => 'responsive-button-group',
+					],
+					'neve_post_cover_container'           => [
+						'type'    => 'select',
+						'choices' => $this->get_container_width_choices(),
+					],
+					'neve_post_cover_meta_before_title'   => [
+						'type' => 'toggle',
+					],
+					'neve_single_post_metadata_separator' => [
+						'label' => __( 'Post meta separator', 'neve' ),
+						'type'  => 'text',
+					],
+					'neve_single_post_author_avatar'      => [
+						'type' => 'toggle',
+					],
+					'neve_single_post_avatar_size'        => [
+						'type' => 'responsive-range',
+					],
+					'neve_single_post_show_last_updated_date' => [
+						'type' => 'toggle',
+					],
+					'neve_post_cover_title_boxed_layout'  => [
+						'type' => 'toggle',
+					],
+					'neve_post_cover_title_boxed_padding' => [
+						'type' => 'responsive-spacing',
+					],
+				],
+			],
+			'thumbnail'       => [
+				'label'    => __( 'Thumbnail', 'neve' ),
+				'controls' => [
+					'neve_post_cover_height'          => [
+						'type' => 'responsive-range',
+					],
+					'neve_post_cover_padding'         => [
+						'type' => 'responsive-spacing',
+					],
+					'neve_post_cover_hide_thumbnail'  => [
+						'label' => __( 'Hide featured image', 'neve' ),
+						'type'  => 'toggle',
+					],
+					'neve_post_cover_blend_mode'      => [
+						'label'   => __( 'Blend mode', 'neve' ),
+						'type'    => 'select',
+						'choices' => $this->get_blend_mode_choices(),
+					],
+					'neve_post_cover_overlay_opacity' => [
+						'label' => __( 'Overlay opacity', 'neve' ),
+						'type'  => 'range',
+					],
+				],
+			],
+			'content'         => [
+				'label'    => __( 'Content', 'neve' ),
+				'controls' => [],
+			],
+			'tags'            => [
+				'label'    => __( 'Tags', 'neve' ),
+				'controls' => [],
+			],
+			'post-navigation' => [
+				'label'    => __( 'Post navigation', 'neve' ),
+				'controls' => [],
+			],
+			'comments'        => [
+				'label'    => __( 'Comments', 'neve' ),
+				'controls' => [],
+			],
 		];
 
-		if ( self::is_cover_layout() ) {
-			$all_components = [
-				'content'         => __( 'Content', 'neve' ),
-				'tags'            => __( 'Tags', 'neve' ),
-				'post-navigation' => __( 'Post navigation', 'neve' ),
-				'comments'        => __( 'Comments', 'neve' ),
-			];
-		}
-
-		$order_default_components = $this->post_ordering();
+		$order_default_components = $this->get_v4_defaults( 'neve_layout_single_post_elements_order', $this->post_ordering() );
 
 		/**
 		 * Filters the elements on the single post page.
@@ -210,7 +412,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 				[
 					'label'                 => esc_html__( 'Spacing between elements', 'neve' ),
 					'section'               => $this->section,
-					'type'                  => 'neve_responsive_range_control',
+					'type'                  => 'hidden',
 					'input_attrs'           => [
 						'max'        => 500,
 						'units'      => [ 'px', 'em', 'rem' ],
@@ -347,7 +549,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 					],
 					'components'       => $components,
 					'allow_new_fields' => 'no',
-					'priority'         => 115,
+					'priority'         => 105,
 				],
 				'\Neve\Customizer\Controls\React\Repeater'
 			)
@@ -366,7 +568,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 					'section'     => $this->section,
 					'label'       => esc_html__( 'Separator', 'neve' ),
 					'description' => esc_html__( 'For special characters make sure to use Unicode. For example > can be displayed using \003E.', 'neve' ),
-					'type'        => 'text',
+					'type'        => $this->is_post ? 'hidden' : 'text',
 				]
 			)
 		);
@@ -382,7 +584,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 				[
 					'label'    => esc_html__( 'Show Author Avatar', 'neve' ),
 					'section'  => $this->section,
-					'type'     => 'neve_toggle_control',
+					'type'     => $this->is_post ? 'hidden' : 'neve_toggle_control',
 					'priority' => 125,
 				]
 			)
@@ -399,6 +601,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 				[
 					'label'           => esc_html__( 'Avatar Size', 'neve' ),
 					'section'         => $this->section,
+					'type'            => $this->is_post ? 'hidden' : 'neve_responsive_range_control',
 					'units'           => [ 'px' ],
 					'input_attr'      => [
 						'mobile'  => [
@@ -455,7 +658,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 				[
 					'label'    => esc_html__( 'Use last updated date instead of the published one', 'neve' ),
 					'section'  => $this->section,
-					'type'     => 'neve_toggle_control',
+					'type'     => $this->is_post ? 'hidden' : 'neve_toggle_control',
 					'priority' => 135,
 				]
 			)
