@@ -22,10 +22,10 @@ jobs:
       CYPRESS_INSTALL_BINARY: 0
     steps:
       - uses: actions/checkout@master
-      - name: Setup node 14
+      - name: Setup node 16
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 16.x
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -49,7 +49,7 @@ jobs:
           username: ${{ secrets.QA_FTP_USER }}
           password: ${{ secrets.QA_FTP_PASS }}
           sftp_only: true
-          local_path: './dist/neve/*'
+          local_path: "./dist/neve/*"
           remote_path: ${{ secrets.QA_FTP_PATH }}
       - name: Add SSH Key
         run: |
