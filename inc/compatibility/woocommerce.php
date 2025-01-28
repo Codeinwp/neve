@@ -284,7 +284,7 @@ class Woocommerce {
 		add_action( 'admin_footer', array( $this, 'update_woo_width' ) );
 
 		// Wrap content.
-		if ( function_exists( 'elementor_theme_do_location' ) && ( elementor_theme_do_location( 'header' ) ) ) {
+		if ( function_exists( 'elementor_location_exits' ) && ( elementor_location_exits( 'header' ) ) ) {
 			add_action( 'woocommerce_before_main_content', array( $this, 'wrap_pages_start' ) );
 			add_action( 'woocommerce_after_main_content', array( $this, 'wrap_pages_end' ) );
 		} else {
