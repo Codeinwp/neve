@@ -65,6 +65,18 @@ class Starter_Content {
 		if ( get_post_type( $post_id ) !== 'page' ) {
 			return $value;
 		}
+
+		$post = get_post( $post_id );
+
+		if ( ! $post ) {
+			return $value;
+		}
+
+		if ( $post->post_name === self::BLOG_SLUG ) {
+			return $value;
+		}
+
+
 		if ( $meta_key === 'neve_meta_disable_title' ) {
 			return 'on';
 		}

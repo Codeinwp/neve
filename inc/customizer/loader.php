@@ -160,10 +160,10 @@ class Loader {
 						'dismissEndpoint' => admin_url( 'admin-ajax.php' ),
 						'labels'          => array(
 							'title'       => __( 'Welcome to your new site!', 'neve' ),
-							'description' => __( "We've added some started pages to help you get going quickly.", 'neve' ),
+							'description' => __( "We've added some starter pages to help you get going quickly.", 'neve' ),
 							'save'        => __( 'Keep these helpful pages', 'neve' ),
-							'dismiss'     => __( 'Start with a clean slate.', 'neve' ),
-							'info'        => __( "Don't worry - you can always add or remove pages later.", 'neve' ),
+							'dismiss'     => __( 'Start with a clean slate', 'neve' ),
+							'info'        => __( "Don't worry - you can always add or remove pages later", 'neve' ),
 							'error'       => __( 'An error occurred. Please reload the page and try again.', 'neve' ),
 						),
 					),
@@ -296,7 +296,7 @@ class Loader {
 
 	/**
 	 * Handle the starter content dismissal.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function dismiss_starter_content() {
@@ -304,7 +304,7 @@ class Loader {
 			wp_send_json_error(
 				array(
 					'message' => __( 'Invalid security token.', 'neve' ),
-				) 
+				)
 			);
 		}
 
@@ -312,7 +312,7 @@ class Loader {
 			wp_send_json_error(
 				array(
 					'message' => __( 'You do not have permission to perform this action.', 'neve' ),
-				) 
+				)
 			);
 		}
 
@@ -324,7 +324,7 @@ class Loader {
 		wp_send_json_error(
 			array(
 				'message' => __( 'An error occurred. Please reload the page and try again.', 'neve' ),
-			) 
+			)
 		);
 	}
 }

@@ -33,7 +33,7 @@ trait Layout {
 			return 'full-width';
 		}
 
-		return 'right';
+		return $this->get_v4_defaults( $control_id, 'right' );
 	}
 
 	/**
@@ -168,7 +168,8 @@ trait Layout {
 				'tags',
 				'comments',
 			],
-			'neve_single_post_sidebar_layout'        => 'full-width',   
+			'neve_single_post_sidebar_layout'        => 'full-width',
+			'neve_archive_hide_title'                => true,
 		];
 
 		if ( ! isset( $new_defaults[ $id ] ) ) {

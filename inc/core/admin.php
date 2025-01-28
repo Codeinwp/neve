@@ -60,17 +60,6 @@ class Admin {
 			add_action( 'wp_ajax_neve_dismiss_welcome_notice', [ $this, 'remove_notice' ] );
 		}
 
-		// load upsell dismiss only if neve pro is not active or license is invalid.
-		if ( ! $this->has_valid_addons() ) {
-			add_action(
-				'wp_ajax_neve_dismiss_customizer_upsell_notice',
-				[
-					'Neve\Customizer\Options\Upsells',
-					'remove_customizer_upsell_notice',
-				]
-			);
-		}
-
 		add_action( 'admin_menu', [ $this, 'remove_background_submenu' ], 110 );
 		add_action( 'after_switch_theme', [ $this, 'get_previous_theme' ] );
 
@@ -182,11 +171,11 @@ class Admin {
 
 		if ( isset( $deps['chunks'] ) ) {
 			foreach ( $deps['chunks'] as $chunk_file ) {
-		
+
 				$chunk_handle = 'neve-components-chunk-' . $chunk_file;
 				wp_register_script( $chunk_handle, trailingslashit( NEVE_ASSETS_URL ) . 'apps/components/build/' . $chunk_file, [], $deps['version'], true );
 				wp_enqueue_script( $chunk_handle );
-				
+
 				if ( function_exists( 'wp_set_script_translations' ) ) {
 					wp_set_script_translations( $chunk_handle, 'neve' );
 				}
@@ -485,7 +474,7 @@ class Admin {
 				</div>
 			</div>
 		';
-		
+
 		$ob_btn_link = admin_url( 'admin.php?page=' . $theme_page . '&onboarding=yes#starter-sites' );
 		if ( defined( 'TIOB_PATH' ) ) {
 			$url_path = 'admin.php?page=tiob-starter-sites';
@@ -535,12 +524,12 @@ class Admin {
 			$onboarding_starter_sites_btn,
 			$onboarding_notice_exit_btn
 		);
-		
+
 		$notice_picture = sprintf(
 			'<img src="%1$s"/>',
 			esc_url( $this->get_notice_picture() )
 		);
-		
+
 		$style = '
 		.nv-notice-wrapper .nv-notice-title {
 			font-size: 23px;

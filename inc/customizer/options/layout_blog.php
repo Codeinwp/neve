@@ -324,7 +324,7 @@ class Layout_Blog extends Base_Customizer {
 				'neve_archive_hide_title',
 				[
 					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => false,
+					'default'           => $this->get_v4_defaults( 'neve_archive_hide_title', false ),
 				],
 				[
 					'label'           => esc_html__( 'Disable Title', 'neve' ),
@@ -919,23 +919,21 @@ class Layout_Blog extends Base_Customizer {
 		);
 
 		// If this gets enabled, we remove the toggle.
-		if ( ! $this->is_card_style_enabled() ) {
-			$this->add_control(
-				new Control(
-					'neve_enable_card_style',
-					array(
-						'sanitize_callback' => 'neve_sanitize_checkbox',
-						'default'           => $this->get_v4_defaults( 'neve_enable_card_style', false ),
-					),
-					array(
-						'type'     => 'neve_toggle_control',
-						'priority' => 0,
-						'section'  => $this->section,
-						'label'    => esc_html__( 'Enable Card Style', 'neve' ),
-					)
+		$this->add_control(
+			new Control(
+				'neve_enable_card_style',
+				array(
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => $this->get_v4_defaults( 'neve_enable_card_style', false ),
+				),
+				array(
+					'type'     => $this->is_card_style_enabled() ? 'hidden' : 'neve_toggle_control',
+					'priority' => 0,
+					'section'  => $this->section,
+					'label'    => esc_html__( 'Enable Card Style', 'neve' ),
 				)
-			);
-		}
+			)
+		);
 
 
 		$card_bg_default = $this->get_v4_defaults( 'neve_blog_grid_card_bg_color', '#333333' );

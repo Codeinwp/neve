@@ -134,16 +134,14 @@ return array(
 		'fixed'             => false,
 		'useFeatured'       => false,
 	),
-	'neve_blog_items_border_radius'                => 8,
 	'neve_blog_archive_layout'                     => 'grid',
-	'neve_post_excerpt_length'                     => 30,
 	'neve_post_meta_ordering'                      => '["author","comments"]',
 	'neve_advanced_layout_options'                 => true,
 	'neve_blog_archive_sidebar_layout'             => 'full-width',
 	'neve_blog_archive_content_width'              => 100,
 	'neve_body_font_family'                        => '',
 	'neve_headings_font_family'                    => '',
-	'neve_button_appearance'                       => 
+	'neve_button_appearance'                       =>
 	array(
 		'borderRadius'          =>
 		array(
@@ -196,7 +194,7 @@ return array(
 			'mobile'  => '1.2',
 			'tablet'  => '1.3',
 			'desktop' => '1.3',
-			'suffix'  => 
+			'suffix'  =>
 			array(
 				'mobile'  => 'em',
 				'tablet'  => 'em',
@@ -208,7 +206,7 @@ return array(
 			'mobile'  => '39',
 			'tablet'  => '55',
 			'desktop' => 70,
-			'suffix'  => 
+			'suffix'  =>
 			array(
 				'mobile'  => 'px',
 				'tablet'  => 'px',
@@ -235,7 +233,7 @@ return array(
 			'mobile'  => '1.3',
 			'tablet'  => '1.3',
 			'desktop' => '1.3',
-			'suffix'  => 
+			'suffix'  =>
 			array(
 				'mobile'  => 'em',
 				'tablet'  => 'em',
@@ -247,7 +245,7 @@ return array(
 			'mobile'  => '28',
 			'tablet'  => '34',
 			'desktop' => '46',
-			'suffix'  => 
+			'suffix'  =>
 			array(
 				'mobile'  => 'px',
 				'tablet'  => 'px',
@@ -292,46 +290,9 @@ return array(
 		),
 		'flag'          => false,
 	),
-	'neve_single_post_sidebar_layout'              => 'full-width',
 	'neve_other_pages_sidebar_layout'              => 'full-width',
 	'neve_single_post_content_width'               => 70,
 	'neve_other_pages_content_width'               => 100,
-	'neve_typeface_general'                        =>
-	array(
-		'fontSize'      =>
-		array(
-			'suffix'  =>
-			array(
-				'mobile'  => 'px',
-				'tablet'  => 'px',
-				'desktop' => 'px',
-			),
-			'mobile'  => '16',
-			'tablet'  => 16,
-			'desktop' => '18',
-		),
-		'lineHeight'    =>
-		array(
-			'mobile'  => '1.7',
-			'tablet'  => '1.7',
-			'desktop' => 1.7,
-			'suffix'  =>
-			array(
-				'mobile'  => 'em',
-				'tablet'  => 'em',
-				'desktop' => 'em',
-			),
-		),
-		'letterSpacing' =>
-		array(
-			'mobile'  => 0,
-			'tablet'  => 0,
-			'desktop' => '0',
-		),
-		'fontWeight'    => '400',
-		'textTransform' => 'none',
-		'flag'          => true,
-	),
 	'primary-menu_color'                           => 'var(--nv-text-color)',
 	'primary-menu_active_color'                    => 'var(--nv-text-color)',
 	'primary-menu_hover_color'                     => 'var(--nv-secondary-accent)',
@@ -710,34 +671,6 @@ return array(
 		'bottom' => '0',
 		'unit'   => 'px',
 	),
-	'neve_archive_typography_post_title'           =>
-	array(
-		'fontSize'   =>
-		array(
-			'suffix'  =>
-			array(
-				'mobile'  => 'px',
-				'tablet'  => 'px',
-				'desktop' => 'px',
-			),
-			'mobile'  => '28',
-			'tablet'  => '32',
-			'desktop' => '32',
-		),
-		'flag'       => false,
-		'lineHeight' =>
-		array(
-			'suffix'  =>
-			array(
-				'mobile'  => 'em',
-				'tablet'  => 'em',
-				'desktop' => 'em',
-			),
-			'mobile'  => '',
-			'tablet'  => '',
-			'desktop' => '',
-		),
-	),
 	'neve_single_post_typography_post_title'       =>
 	array(
 		'fontSize'   =>
@@ -903,4 +836,45 @@ return array(
 	'custom_logo'                                  => '{{featured-image-logo}}',
 	'logo_color'                                   => 'var(--nv-text-color)',
 	'neve_blog_post_meta_fields'                   => '[{"slug":"author","title":"' . __( 'Author', 'neve' ) . '","visibility":"yes","hide_on_mobile":"","blocked":"yes"},{"slug":"comments","title":"' . __( 'Comments', 'neve' ) . '","visibility":"yes","hide_on_mobile":"","blocked":"yes"},{"slug":"category","title":"' . __( 'Category', 'neve' ) . '","visibility":"yes","hide_on_mobile":"","blocked":"yes"},{"slug":"date","title":"' . __( 'Date', 'neve' ) . '","visibility":"no","hide_on_mobile":"","blocked":"yes"}]',
+	// V4 changes.
+	'neve_blog_items_border_radius'                => 8,
+	'neve_blog_content_padding'                    => [
+		'mobile'       => [
+			'top'    => 25,
+			'right'  => 25,
+			'bottom' => 25,
+			'left'   => 25,
+		],
+		'tablet'       => [
+			'top'    => 25,
+			'right'  => 25,
+			'bottom' => 25,
+			'left'   => 25,
+		],
+		'desktop'      => [
+			'top'    => 25,
+			'right'  => 25,
+			'bottom' => 25,
+			'left'   => 25,
+		],
+		'mobile-unit'  => 'px',
+		'tablet-unit'  => 'px',
+		'desktop-unit' => 'px',
+	],
+	'neve_enable_card_style'                       => true,
+	'neve_blog_grid_card_bg_color'                 => 'var(--nv-site-bg)',
+	'neve_blog_grid_text_color'                    => 'var(--nv-text-color)',
+	'neve_blog_card_shadow'                        => 0.5,
+	'neve_blog_archive_aspect_ratio'               => '4-3',
+	'neve_post_excerpt_length'                     => 35,
+	'neve_layout_single_post_elements_order'       => wp_json_encode(
+		[
+			'title-meta',
+			'content',
+			'tags',
+			'comments',
+		]
+	),
+	'neve_single_post_sidebar_layout'              => 'full-width',
+	'neve_archive_hide_title'                      => true,
 );

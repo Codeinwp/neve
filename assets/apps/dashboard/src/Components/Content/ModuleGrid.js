@@ -10,6 +10,7 @@ import {
 	NEVE_HAS_PRO,
 	NEVE_MODULE_ICON_MAP,
 	NEVE_STORE,
+	NEVE_IS_WHITELABEL,
 } from '../../utils/constants';
 import Link from '../Common/Link';
 import Pill from '../Common/Pill';
@@ -130,7 +131,9 @@ const ModulesHeader = () => {
 	return (
 		<div className="flex items-center justify-between">
 			<h2 className="text-lg font-semibold">
-				{__('Neve Pro Modules', 'neve')}
+				{NEVE_IS_WHITELABEL
+					? __('Manage Modules', 'neve')
+					: __('Neve Pro Modules', 'neve')}
 			</h2>
 			{!isLicenseValid && (
 				<Link

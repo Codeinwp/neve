@@ -125,7 +125,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 		foreach ( $tab_slotting as $slug => $args ) {
 			$tab_slotting[ $slug ] = array_fill_keys( $args, [] );
 		}
-		// return;
+
 		$this->add_control(
 			new Control(
 				$this->section . '_tabs',
@@ -806,12 +806,15 @@ class Layout_Single_Post extends Base_Layout_Single {
 	public function element_is_enabled( $element ) {
 		$default_order = apply_filters(
 			'neve_single_post_elements_default_order',
-			array(
-				'title-meta',
-				'thumbnail',
-				'content',
-				'tags',
-				'comments',
+			$this->get_v4_defaults(
+				'neve_layout_single_post_elements_order',
+				array(
+					'title-meta',
+					'thumbnail',
+					'content',
+					'tags',
+					'comments',
+				)
 			)
 		);
 

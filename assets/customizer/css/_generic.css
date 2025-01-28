@@ -69,12 +69,16 @@
 }
 
 #nv-starter-content-notice {
-	min-height: 200px;
+	padding: 16px;
+	background: #f0f6fc;
+	border-left: 4px solid #2271b1;
+	margin: 12px;
 }
 
 #nv-starter-content-notice .nv-notice {
-	display: flex;
-	flex-direction: column;
+	max-width: 250px;
+	margin: 0 auto;
+	display: grid;
 	gap: 8px;
 }
 

@@ -40,7 +40,6 @@ import './style.scss';
 import Documentation from './documentation-section/Documentation.tsx';
 import Instructions from './builder-instructions/Instructions.tsx';
 import Upsells from './builder-upsell/Upsells.tsx';
-import BannerUpsell from './builder-upsell/BannerUpsell.tsx';
 import { initLocalGoogleFonts } from './typography-extra/LocalGoogleFonts';
 
 import MainSearch from './customizer-search/MainSearch.tsx';
@@ -216,34 +215,6 @@ const initUpsellSection = () => {
 		}
 
 		render(<Upsells control={section} />, section.container[0]);
-	});
-
-	const upsellBannerSections = document.querySelectorAll(
-		'.control-section.neve-upsell-banner'
-	);
-	upsellBannerSections.forEach((node) => {
-		const slug = node.getAttribute('data-slug');
-		const section = wp.customize.section(slug);
-
-		if (!section) {
-			return;
-		}
-
-		render(<BannerUpsell control={section} />, section.container[0]);
-	});
-
-	const upsellBannerControls = document.querySelectorAll(
-		'.customize-control.neve-upsell-banner'
-	);
-	upsellBannerControls.forEach((node) => {
-		const slug = node.getAttribute('data-slug');
-		const control = wp.customize.control(slug);
-
-		if (!control) {
-			return;
-		}
-
-		render(<BannerUpsell control={control} />, control.container[0]);
 	});
 };
 
