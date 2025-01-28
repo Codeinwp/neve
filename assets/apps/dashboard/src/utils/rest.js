@@ -12,18 +12,19 @@ export const fetchOptions = () => {
 };
 
 export const changeOption = (option, value, module = false, pro = true) => {
-	option = (pro ? 'nv_pro_' : '') + option + (module ? '_status' : '');
+	const actualOption =
+		(pro ? 'nv_pro_' : '') + option + (module ? '_status' : '');
 
 	const model = new models.Settings({
-		[option]: value,
+		[actualOption]: value,
 	});
 
 	return new Promise((resolve) => {
 		model.save().then((r) => {
-			if (!r || !r[option] === value) {
+			if (!r || !r[actualOption] === value) {
 				resolve({ success: false });
 			}
-			resolve(isValid(option, r));
+			resolve(isValid(actualOption, r));
 		});
 	});
 };

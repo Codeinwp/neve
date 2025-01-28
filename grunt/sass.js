@@ -1,7 +1,7 @@
 // jshint ignore: start
 // https://github.com/gruntjs/grunt-contrib-sass
 
-const sass = require('node-sass');
+const sass = require('sass');
 
 module.exports = {
 	style: {
