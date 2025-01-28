@@ -324,7 +324,7 @@ class Layout_Blog extends Base_Customizer {
 				'neve_archive_hide_title',
 				[
 					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => false,
+					'default'           => $this->get_v4_defaults( 'neve_archive_hide_title', false ),
 				],
 				[
 					'label'           => esc_html__( 'Disable Title', 'neve' ),

@@ -409,7 +409,7 @@ final class Manager {
 	 * @return string
 	 */
 	private function get_post_elements_default_order() {
-		$default_order = $this->post_ordering();
+		$default_order = $this->get_v4_defaults( 'neve_layout_single_post_elements_order', $this->post_ordering() );
 
 		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
 		if ( ! is_string( $content_order ) ) {
