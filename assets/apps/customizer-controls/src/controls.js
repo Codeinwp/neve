@@ -45,6 +45,7 @@ import { initLocalGoogleFonts } from './typography-extra/LocalGoogleFonts';
 
 import MainSearch from './customizer-search/MainSearch.tsx';
 import { FontPairControl } from './typography-font-pair/Control';
+import { initStarterContentNotice } from './starter-content/Notice.js';
 
 const { controlConstructor } = wp.customize;
 
@@ -326,6 +327,7 @@ const checkHasElementorTemplates = () => {
 };
 
 window.wp.customize.bind('ready', () => {
+	initStarterContentNotice();
 	initDocSection();
 	initDynamicFields();
 	initUpsellSection();

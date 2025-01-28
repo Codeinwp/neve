@@ -35,6 +35,7 @@ class Loader {
 		add_action( 'customize_preview_init', array( $this, 'enqueue_customizer_preview' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'set_featured_image' ) );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_customizer_controls' ) );
+		add_action( 'wp_ajax_neve_dismiss_starter_content', array( $this, 'dismiss_starter_content' ) );
 	}
 
 	/**
@@ -153,6 +154,19 @@ class Loader {
 						],
 					],
 					'deal'                          => ! defined( 'NEVE_PRO_VERSION' ) ? $offer->get_localized_data() : array(),
+					'starterContent'                => array(
+						'active'          => (bool) get_option( 'fresh_site' ),
+						'nonce'           => wp_create_nonce( 'neve_dismiss_starter_content' ),
+						'dismissEndpoint' => admin_url( 'admin-ajax.php' ),
+						'labels'          => array(
+							'title'       => __( 'Welcome to your new site!', 'neve' ),
+							'description' => __( "We've added some started pages to help you get going quickly.", 'neve' ),
+							'save'        => __( 'Keep these helpful pages', 'neve' ),
+							'dismiss'     => __( 'Start with a clean slate.', 'neve' ),
+							'info'        => __( "Don't worry - you can always add or remove pages later.", 'neve' ),
+							'error'       => __( 'An error occurred. Please reload the page and try again.', 'neve' ),
+						),
+					),
 				)
 			)
 		);
@@ -277,6 +291,40 @@ class Loader {
 				'sanitize_callback' => 'rest_sanitize_boolean',
 				'default'           => false,
 			]
+		);
+	}
+
+	/**
+	 * Handle the starter content dismissal.
+	 * 
+	 * @return void
+	 */
+	public function dismiss_starter_content() {
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_POST['nonce'] ), 'neve_dismiss_starter_content' ) ) {
+			wp_send_json_error(
+				array(
+					'message' => __( 'Invalid security token.', 'neve' ),
+				) 
+			);
+		}
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				array(
+					'message' => __( 'You do not have permission to perform this action.', 'neve' ),
+				) 
+			);
+		}
+
+		$result = update_option( 'fresh_site', '0' );
+		if ( $result ) {
+			wp_send_json_success();
+		}
+
+		wp_send_json_error(
+			array(
+				'message' => __( 'An error occurred. Please reload the page and try again.', 'neve' ),
+			) 
 		);
 	}
 }
