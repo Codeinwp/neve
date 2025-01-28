@@ -346,12 +346,15 @@ class Hooks_Upsells {
 
 			/* ----- ACTION BUTTONS ----- */
 			.cl-actions {
-				text-align: center;
+				display: flex;
+				justify-content: center;
+				gap: 20px;
 				margin-bottom: 20px;
 			}
 			.cl-actions .button {
-				margin: 0 10px;
 				text-decoration: none;
+				min-width: 120px;
+				text-align: center;
 			}
 
 			/* ----- QUOTE ----- */
