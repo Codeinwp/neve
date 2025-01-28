@@ -43,7 +43,7 @@ const HeaderTopBar = ({ currentTab, setTab }) => {
 	return (
 		<div className="border-b border-gray-100">
 			<Container>
-				<div className="flex items-center justify-between h-14">
+				<div className="flex flex-col gap-5 py-2 sm:flex-row items-center justify-between">
 					<div className="flex items-center space-x-3">
 						{!NEVE_IS_WHITELABEL && (
 							<img
@@ -110,7 +110,7 @@ const Navigation = ({ setTab, currentTab }) => {
 	return (
 		<div className="border-b border-gray-200">
 			<Container>
-				<nav className="flex -mb-px">
+				<nav className="flex -mb-px justify-center sm:justify-start">
 					{Object.entries(tabs).map(([slug, { label, url }]) => {
 						if (!label) {
 							return null;

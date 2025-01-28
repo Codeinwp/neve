@@ -122,7 +122,7 @@ const PluginsCard = ({ grid = false }) => {
 
 	const contentClasses = cn({
 		'space-y-3': !grid,
-		'grid gap-4 grid-cols-2': grid,
+		'grid gap-4 2xl:grid-cols-2': grid,
 	});
 
 	return (
