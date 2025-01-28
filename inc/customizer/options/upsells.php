@@ -479,34 +479,12 @@ class Upsells extends Base_Customizer {
 				'Neve\Customizer\Controls\Upsells\Scroll_To_Top_Control'
 			)
 		);
-
-		$upsells         = [];
+		
 		$upsells_banners = [];
 
-		$upsells_banners['blog_archive'] = [
-			'text'        => __( 'More blog layout customization options available in PRO', 'neve' ),
-			'button_text' => __( 'Learn More', 'neve' ),
-			'use_logo'    => true,
-			'section'     => 'neve_blog_archive_layout',
-		];
-		$upsells_banners['single_post']  = [
-			'text'        => __( 'More single post components available in PRO', 'neve' ),
-			'button_text' => __( 'Learn More', 'neve' ),
-			'use_logo'    => true,
-			'section'     => 'neve_single_post_layout',
-		];
-
-
-		$hfg_header                     = 'hfg_header';
-		$hfg_header_text                = __( 'Extend your header with more components and settings, build sticky/transparent headers or display them conditionally.', 'neve' );
-		$hfg_header_button              = __( 'Get the PRO version!', 'neve' );
-		$upsells_banners[ $hfg_header ] = [
-			'text'        => $hfg_header_text,
-			'button_text' => $hfg_header_button,
-			'use_logo'    => true,
-			'panel'       => $hfg_header,
-			'type'        => 'section',
-		];
+		$hfg_header        = 'hfg_header';
+		$hfg_header_text   = __( 'Extend your header with more components and settings, build sticky/transparent headers or display them conditionally.', 'neve' );
+		$hfg_header_button = __( 'Get the PRO version!', 'neve' );
 
 		foreach ( [ 'top', 'main', 'bottom', 'sidebar' ] as $section ) {
 			$section_id                     = $hfg_header . '_layout_' . $section;
@@ -518,16 +496,10 @@ class Upsells extends Base_Customizer {
 			];
 		}
 
-		$hfg_footer                     = 'hfg_footer';
-		$hfg_footer_text                = __( 'Neve PRO Features', 'neve' );
-		$hfg_footer_button              = __( 'Get the PRO version!', 'neve' );
-		$upsells_banners[ $hfg_footer ] = [
-			'text'        => $hfg_footer_text,
-			'button_text' => $hfg_footer_button,
-			'use_logo'    => true,
-			'panel'       => $hfg_footer,
-			'type'        => 'section',
-		];
+		$hfg_footer        = 'hfg_footer';
+		$hfg_footer_text   = __( 'Neve PRO Features', 'neve' );
+		$hfg_footer_button = __( 'Get the PRO version!', 'neve' );
+
 		foreach ( [ 'top', 'main', 'bottom' ] as $section ) {
 			$section_id                     = $hfg_footer . '_layout_' . $section;
 			$upsells_banners[ $section_id ] = [
@@ -538,54 +510,9 @@ class Upsells extends Base_Customizer {
 			];
 		}
 
-
-		if ( class_exists( 'WooCommerce', false ) ) {
-			$upsells['product_catalog']       = [
-				'text'        => __( 'More product catalog options available in PRO', 'neve' ) . ' (Business & Agency)',
-				'button_text' => __( 'Learn More', 'neve' ),
-				'section'     => 'woocommerce_product_catalog',
-			];
-			$upsells['woocommerce_checkout']  = [
-				'text'        => __( 'More checkout options available in PRO', 'neve' ) . ' (Business & Agency)',
-				'button_text' => __( 'Learn More', 'neve' ),
-				'section'     => 'woocommerce_checkout',
-			];
-			$upsells['single_product_layout'] = [
-				'text'        => __( 'More single product options available in PRO', 'neve' ) . ' (Business & Agency)',
-				'button_text' => __( 'Learn More', 'neve' ),
-				'section'     => 'neve_single_product_layout',
-			];
-			$upsells['typography']            = [
-				'text'        => __( 'WooCommerce typography options available in PRO', 'neve' ) . ' (Business & Agency)',
-				'button_text' => __( 'Learn More', 'neve' ),
-				'panel'       => 'neve_typography',
-				'type'        => 'section',
-			];
-		}
-
 		$is_dismissed = get_transient( 'upsell_dismiss_banner_customizer' );
 		if ( $is_dismissed === false ) {
 			foreach ( $upsells_banners as $id => $args ) {
-				if ( isset( $args['type'] ) && $args['type'] === 'section' ) {
-					$section_id = 'neve_' . $id . '_upsell_section';
-					$this->add_section(
-						new Section(
-							$section_id,
-							array_merge(
-								$args,
-								[
-									'type'     => 'neve_upsell_banner_section',
-									'priority' => 10000,
-									'nonce'    => wp_create_nonce( 'neve-upsell-banner-nonce' ),
-									'url'      => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'panel-' . $args['panel'] ), 'query' ),
-								]
-							),
-							'\Neve\Customizer\Controls\React\Upsell_Banner_Section'
-						)
-					);
-
-					continue;
-				}
 				$control_id = 'neve_' . $id . '_upsell_banner_control';
 				$this->add_control(
 					new Control(
@@ -606,39 +533,123 @@ class Upsells extends Base_Customizer {
 			}
 		}
 
-		foreach ( $upsells as $id => $args ) {
-			if ( isset( $args['type'] ) && $args['type'] === 'section' ) {
-				$this->add_section(
-					new Section(
-						'neve_' . $id . '_upsell_section',
-						array_merge(
-							$args,
-							[
-								'type'     => 'nv_simple_upsell_section',
-								'priority' => 10000,
-								'link'     => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'panel-' . $args['panel'] ), 'query' ),
-							]
-						),
-						'\Neve\Customizer\Controls\Simple_Upsell_Section'
+		$this->add_control(
+			new Control(
+				'neve_blog_archive_upsell_control_features',
+				[ 'sanitize_callback' => 'sanitize_text_field' ],
+				[
+					'text'             => __( 'Extend your blog/archive capabilities with more powerful customization options.', 'neve' ),
+					'button_text'      => __( 'Upgrade to unlock', 'neve' ),
+					'section'          => 'neve_blog_archive_layout',
+					'priority'         => 10000,
+					'link'             => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'section-neve_blog_archive_layout' ), 'query' ),
+					'features_list'    => array(
+						__( 'Image style', 'neve' ),
+						__( 'Content padding', 'neve' ),
+						__( 'Overlay color', 'neve' ),
+						__( 'Grid spacing', 'neve' ),
+					),
+					'title'            => __( 'Unlock Full Potential', 'neve' ),
+					'url_page_section' => 'blog',
+				],
+				'Neve\Customizer\Controls\Simple_Upsell'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_single_post_upsell_control_features',
+				[ 'sanitize_callback' => 'sanitize_text_field' ],
+				[
+					'text'             => __( 'Extend your single post capabilities with more powerful customization options.', 'neve' ),
+					'button_text'      => __( 'Upgrade to unlock', 'neve' ),
+					'section'          => 'neve_single_post_layout',
+					'priority'         => 10000,
+					'link'             => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'section-neve_single_post_layout' ), 'query' ),
+					'features_list'    => array(
+						__( 'Related post', 'neve' ),
+						__( 'Sharing icons', 'neve' ),
+						__( 'Author biography', 'neve' ),
+						__( 'Estimated reading time', 'neve' ),
+					),
+					'title'            => __( 'Unlock Full Potential', 'neve' ),
+					'url_page_section' => 'single',
+				],
+				'Neve\Customizer\Controls\Simple_Upsell'
+			)
+		);
+
+		if ( class_exists( 'WooCommerce', false ) ) {
+			$woocommerce_sections = array( 'woocommerce_product_catalog', 'woocommerce_checkout', 'neve_single_product_layout' );
+
+			foreach ( $woocommerce_sections as $woo_section ) {
+				$this->add_control(
+					new Control(
+						'neve_' . $woo_section . '_features_upsell',
+						[ 'sanitize_callback' => 'sanitize_text_field' ],
+						[
+							'text'             => __( 'Extend your single post capabilities with more powerful customization options.', 'neve' ),
+							'button_text'      => __( 'Upgrade to unlock', 'neve' ),
+							'section'          => $woo_section,
+							'priority'         => 10000,
+							'link'             => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'section-' . $woo_section ), 'query' ),
+							'features_list'    => array(
+								__( 'Quick view', 'neve' ),
+								__( 'Wishlist', 'neve' ),
+								__( 'Variations swatches', 'neve' ),
+								__( 'Comparison table', 'neve' ),
+							),
+							'title'            => __( 'Neve Pro Features', 'neve' ),
+							'url_page_section' => 'woocommerce',
+						],
+						'Neve\Customizer\Controls\Simple_Upsell'
 					)
 				);
-
-				return false;
 			}
-			$this->add_control(
-				new Control(
-					'neve_' . $id . '_upsell',
-					[ 'sanitize_callback' => 'sanitize_text_field' ],
-					array_merge(
-						$args,
-						[
-							'priority' => 10000,
-							'link'     => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'section-' . $args['section'] ), 'query' ),
-						]
-					),
-					'Neve\Customizer\Controls\Simple_Upsell'
-				)
-			);
 		}
+
+		$this->add_section(
+			new Section(
+				$hfg_footer,
+				[
+					'text'             => __( 'Extend your footer capabilities with more powerful customization options.', 'neve' ),
+					'button_text'      => __( 'Upgrade to unlock', 'neve' ),
+					'panel'            => $hfg_footer,
+					'priority'         => 10000,
+					'link'             => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'panel-' . $hfg_footer ), 'query' ),
+					'features_list'    => array(
+						__( 'Copyright edits', 'neve' ),
+						__( 'Divider element', 'neve' ),
+						__( 'Payments & social icons', 'neve' ),
+						__( 'Custom layouts', 'neve' ),
+					),
+					'title'            => __( 'Unlock Full Potential', 'neve' ),
+					'url_page_section' => 'pagefooter',
+				],
+				'\Neve\Customizer\Controls\Simple_Upsell_Section'
+			)
+		);
+
+		$this->add_section(
+			new Section(
+				'nv_header_section_upsell_features',
+				[
+					'text'             => __( 'Extend your header capabilities with more powerful customization options.', 'neve' ),
+					'button_text'      => __( 'Upgrade to unlock', 'neve' ),
+					'panel'            => $hfg_header,
+					'priority'         => 10000,
+					'link'             => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'panel-' . $hfg_header ), 'query' ),
+					'features_list'    => array(
+						__( 'Sticky header', 'neve' ),
+						__( 'Transparent header', 'neve' ),
+						__( 'Display rules', 'neve' ),
+						__( 'More components', 'neve' ),
+					),
+					'title'            => __( 'Unlock Full Potential', 'neve' ),
+					'url_page_section' => 'pageheader',
+				],
+				'\Neve\Customizer\Controls\Simple_Upsell_Section'
+			)
+		);
 	}
 }
