@@ -57,10 +57,7 @@ function autoHideModuleSubMenuPages() {
 }
 
 function run() {
-	// Run only on the Neve Pro tab.
-	if (window.location.hash === '#pro') {
-		autoHideModuleSubMenuPages();
-	}
+	autoHideModuleSubMenuPages();
 }
 
 if (document.readyState !== 'loading') {
