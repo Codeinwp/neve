@@ -491,7 +491,7 @@ class Main {
 		return [
 			[
 				'text'        => __( 'Upload Logo', 'neve' ),
-				'description' => __( 'Recommended size: 200x100px', 'neve' ),
+				'description' => __( 'Recommended size: 200x50px', 'neve' ),
 				'link'        => add_query_arg( [ 'autofocus[control]' => 'custom_logo' ], admin_url( 'customize.php' ) ),
 			],
 			[
