@@ -26,6 +26,15 @@ class Hooks_Upsells {
 
 		add_action( 'admin_bar_menu', array( $this, 'add_admin_bar_menu' ), 99 );
 		add_action( 'wp', array( $this, 'render_hook_placeholder' ) );
+
+		if ( 'valid' === apply_filters( 'product_neve_license_status', false ) ) {
+			return;
+		}
+
+		/**
+		 * Add the Custom Layout page with upsell elements.
+		 */
+		add_action( 'neve_register_submenu_page', array( $this, 'register_custom_layout_upsell_page' ), 10, 2 );
 	}
 
 	/**
@@ -194,4 +203,310 @@ class Hooks_Upsells {
 		}
 	}
 
+		/**
+		 * Registers a custom layout upsell page in the WordPress admin dashboard.
+		 *
+		 * @param string $theme_page  The slug name for the parent menu (or the file name of a standard WordPress admin page).
+		 * @param string $capability  The capability required for this menu to be displayed to the user.
+		 * @access public
+		 *
+		 * @return void
+		 */
+	public function register_custom_layout_upsell_page( $theme_page, $capability ) {
+		
+		// Add Custom Layout submenu for upsell.
+		// phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
+		add_submenu_page( 
+			$theme_page,
+			__( 'Custom Layouts', 'neve' ),
+			__( 'Custom Layouts', 'neve' ),
+			$capability,
+			'neve-custom-layout-upsell',
+			array( $this, 'render_custom_layout_page' )
+		);
+	}
+
+	/**
+	 * Renders the upsell modal for custom layouts feature.
+	 *
+	 * @return void
+	 */
+	public function render_custom_layouts_upsell_modal() {
+		?>
+		<style>
+			#wpcontent {
+				position: relative;
+			}
+
+			#wpbody {
+				min-height: 100vh;
+				position: static;
+			}
+
+			/* ----- OVERLAY ----- */
+			.cl-overlay {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 80;
+				background: rgba(0, 0, 0, 0.5);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			/* ----- MODAL ----- */
+			.cl-modal {
+				background: #fff;
+				width: 600px;
+				max-width: 90%;
+				padding: 40px;
+				border-radius: 8px;
+				position: relative;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+				font-family: inherit; /* match WP admin fonts */
+			}
+
+			/* ----- CLOSE BUTTON ----- */
+			.cl-close-button {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				font-size: 24px;
+				color: #aaa;
+				cursor: pointer;
+			}
+			.cl-close-button:hover {
+				color: #333;
+			}
+
+			/* ----- HEADER / TITLE ----- */
+			.cl-modal-header {
+				text-align: center;
+				margin-bottom: 16px;
+
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+			}
+			.cl-modal-header .dashicons-star-filled {
+				display: block;
+				font-size: 32px;
+				margin: 0 auto 8px;
+				color: black;
+			}
+			.cl-modal-header h2 {
+				margin: 0;
+				font-size: 22px;
+				line-height: 1.3;
+			}
+
+			/* ----- SUBTITLE ----- */
+			.cl-modal-subtitle {
+				text-align: center;
+				margin: 0 auto 20px;
+				color: #666;
+				font-size: 14px;
+				max-width: 80%;
+			}
+
+			/* ----- FEATURE GRID ----- */
+			.cl-features {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				gap: 20px;
+				margin-bottom: 40px;
+			}
+			.cl-feature {
+				display: flex;
+				align-items: flex-start;
+				flex: 0 0 48%; /* 2 columns in a row on large screens */
+				gap: 10px;
+				flex-grow: 1;
+			}
+			.cl-feature .dashicons {
+				font-size: 24px;
+				color: #0073aa;
+				flex-shrink: 0;
+				margin-top: -2px;
+			}
+			.cl-feature h3 {
+				margin: 0;
+				font-size: 16px;
+				line-height: 1.3;
+			}
+			.cl-feature p {
+				margin: 4px 0 0;
+				font-size: 13px;
+				color: #555;
+			}
+
+			/* ----- ACTION BUTTONS ----- */
+			.cl-actions {
+				text-align: center;
+				margin-bottom: 20px;
+			}
+			.cl-actions .button {
+				margin: 0 10px;
+				text-decoration: none;
+			}
+
+			/* ----- QUOTE ----- */
+			.cl-quote {
+				font-size: 14px;
+				font-style: italic;
+				color: #555;
+				text-align: center;
+				max-width: 80%;
+				margin: 0 auto;
+			}
+			.cl-quote-author {
+				font-style: normal;
+				display: block;
+				margin-top: 8px;
+				font-weight: 600;
+				text-align: center;
+				color: #444;
+			}
+
+			@media (max-width: 480px) {
+				.cl-quote {
+					display: none;
+				}
+
+				.cl-features {
+					max-height: 350px;
+					overflow-y: auto;
+					padding: 0 40px;
+				}
+
+				.cl-modal {
+					padding: 20px 0px;
+				}
+			}
+
+			.wp-core-ui .notice {
+				display: none;
+			}
+		</style>
+
+		<div class="cl-overlay">
+			<div class="cl-modal">
+				<div class="cl-modal-header">
+					<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>
+					<h2><?php echo esc_html__( 'Take Your Site to the Next Level', 'neve' ); ?></h2>
+				</div>
+
+				<p class="cl-modal-subtitle">
+					<?php echo esc_html__( 'Custom Layouts helps you create a unique website that stands out', 'neve' ); ?>
+				</p>
+
+				<div class="cl-features">
+					<div class="cl-feature">
+						<span class="dashicons dashicons-admin-appearance" aria-hidden="true"></span>
+						<div>
+							<h3><?php echo esc_html__( 'Build Without Code', 'neve' ); ?></h3>
+							<p><?php echo esc_html__( 'Create stunning headers, footers, and content sections with our visual drag & drop builder', 'neve' ); ?></p>
+						</div>
+					</div>
+					<div class="cl-feature">
+						<span class="dashicons dashicons-layout" aria-hidden="true"></span>
+						<div>
+							<h3><?php echo esc_html__( 'Smart Display Rules', 'neve' ); ?></h3>
+							<p><?php echo esc_html__( 'Show different layouts based on user roles, devices, or content types', 'neve' ); ?></p>
+						</div>
+					</div>
+					<div class="cl-feature">
+						<span class="dashicons dashicons-cart" aria-hidden="true"></span>
+						<div>
+							<h3><?php echo esc_html__( 'WooCommerce Ready', 'neve' ); ?></h3>
+							<p><?php echo esc_html__( 'Design custom shop pages, product layouts, and checkout experiences', 'neve' ); ?></p>
+						</div>
+					</div>
+					<div class="cl-feature">
+						<span class="dashicons dashicons-performance" aria-hidden="true"></span>
+						<div>
+							<h3><?php echo esc_html__( 'Optimized Performance', 'neve' ); ?></h3>
+							<p><?php echo esc_html__( 'All layouts are lightweight and load only where needed', 'neve' ); ?></p>
+						</div>
+					</div>
+				</div>
+
+				<div class="cl-actions">
+					<a class="button button-primary" href="<?php echo esc_url_raw( tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/pricing/', 'custom-layout-modal-upsell-pricing' ) ) ); ?>" target="_blank">
+						<?php echo esc_html__( 'Get Neve Pro', 'neve' ); ?>
+					</a>
+					<a class="button" href="<?php echo esc_url_raw( tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'custom-layout-modal-upsell-features' ) ) ); ?>" target="_blank">
+						<?php echo esc_html__( 'See All Features', 'neve' ); ?>
+					</a>
+				</div>
+
+				<div class="cl-quote">
+					<?php
+					echo esc_html__(
+						'I’ve been using Neve by Themeisle for a few years now, and it’s proven to be the best theme I’ve ever built websites on. It’s lightweight, modern, fast, customizable, and works great with Woocommerce stores too.',
+						'neve'
+					);
+					?>
+					<span class="cl-quote-author">
+						— <?php echo esc_html__( 'Ville Ekman', 'neve' ); ?>
+					</span>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Renders the the upsell page for Custom Layouts which contains a modal and small table behind overlay to match the real dashboard.
+	 * 
+	 * @return void
+	 */
+	public function render_custom_layout_page() {
+		?>
+		<?php $this->render_custom_layouts_upsell_modal(); ?>
+		<div class="wrap">
+			<div class="wp-list-table">
+				<table class="widefat posts">
+					<thead>
+						<tr>
+							<td class="manage-column check-column">
+								<input type="checkbox" disabled />
+							</td>
+							<th scope="col" class="manage-column column-title column-primary"><?php echo esc_html__( 'Title', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Type', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Location', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Status', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Date', 'neve' ); ?></th>
+						</tr>
+					</thead>
+					<tbody id="the-list">
+						<tr>
+							<td colspan="6" class="column-primary">
+								<p class="description" style="text-align: center; padding: 20px;">
+									<?php echo esc_html__( 'Upgrade to Neve Pro to create a Custom Layout.', 'neve' ); ?>
+								</p>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td class="manage-column check-column">
+								<input type="checkbox" disabled />
+							</td>
+							<th scope="col" class="manage-column column-title column-primary"><?php echo esc_html__( 'Title', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Type', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Location', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Status', 'neve' ); ?></th>
+							<th scope="col" class="manage-column"><?php echo esc_html__( 'Date', 'neve' ); ?></th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+		<?php
+	}
 }
