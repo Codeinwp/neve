@@ -47,7 +47,7 @@ const Notification = ({ data }) => {
 	]);
 
 	const buttonClasses = cn([
-		'bg-white border-white hover:opacity-90 text-blue-500 font-medium',
+		'bg-white border-white hover:opacity-90 text-blue-500 font-medium text-center',
 		{
 			'!text-blue-600': type === 'info' || (!type && !done),
 			'!text-amber-600': 'warning' === type && !done,

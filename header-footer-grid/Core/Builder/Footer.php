@@ -70,7 +70,7 @@ class Footer extends Abstract_Builder {
 					'footer_copyright_content'            => array(
 						'label'             => esc_html__( 'Change Copyright', 'neve' ),
 						'icon'              => 'dashicons-nametag',
-						'url'               => $upgrade_url_copyright,
+						'url'               => $this->has_valid_addons() ? null : $upgrade_url_copyright,
 						'badge'             => esc_html__( 'Pro', 'neve' ),
 						'upsellDescription' => sprintf(
 							/* translators: %1$s: opening anchor tag, %2$s: closing anchor tag */

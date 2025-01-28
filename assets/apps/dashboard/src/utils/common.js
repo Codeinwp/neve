@@ -61,7 +61,7 @@ const properTPC =
 if (activeTPC && properTPC) {
 	delete tabs['starter-sites'].render;
 
-	tabs['starter-sites'].url = neveDash.tpcAdminURL;
+	tabs['starter-sites'].url = neveDash.tpcOnboardingURL;
 }
 
 if (neveDash.pro || neveDash.hasOldPro) {
