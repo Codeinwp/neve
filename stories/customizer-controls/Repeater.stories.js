@@ -24,7 +24,13 @@ const Template = (args) => {
 
 	return (
 		<>
-			<Repeater {...args} value={value} onUpdate={setValue} />
+			<Repeater
+				{...args}
+				value={value}
+				onUpdate={setValue}
+				newItemFields={args?.newItemFields || {}}
+				allowNew={args.allowNew || false}
+			/>
 			<div className="value-previewer">
 				<strong>Components:</strong>
 				<pre>{JSON.stringify(value, null, ' ')}</pre>
@@ -36,7 +42,9 @@ const Template = (args) => {
 export const SocialIcons = Template.bind({});
 export const Contact = Template.bind({});
 export const Sharing = Template.bind({});
+export const AllowsAdding = Template.bind({});
 
 SocialIcons.args = { components: SOCIAL_ICONS_DEFAULT };
 Contact.args = { components: CONTACT_DEFAULT };
 Sharing.args = { components: SHARING_ICONS_DEFAULT };
+AllowsAdding.args = { components: SHARING_ICONS_DEFAULT, allowNew: 'yes' };

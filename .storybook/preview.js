@@ -16,7 +16,14 @@ window.NeveReactCustomize.HFG = BuildersData;
 
 const wpObject = {
 	customize: {
+		value: (id) => ({
+			get: () => {
+				console.log("GET VALUE", id);
+			},
+			set: () => {},
+		}),
 		bind: (event, callback) => {},
+		unbind: (event, callback) => {},
 		previewedDevice: (device) => {
 			const wrap = document.querySelector(".mock-customize");
 
@@ -84,6 +91,13 @@ const wpObject = {
 					},
 				};
 			}
+
+			return {
+				active: Object.assign(() => true, {
+					bind: (value) => true,
+					unbind: (value) => true,
+				}),
+			};
 		},
 	},
 };
