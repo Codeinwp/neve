@@ -42,7 +42,7 @@ class Template_Parts extends Base_View {
 		add_action( 'neve_blog_post_template_part_content', array( $this, 'render_post' ) );
 		add_filter( 'excerpt_more', array( $this, 'link_excerpt_more' ) );
 		add_filter( 'the_content_more_link', array( $this, 'link_excerpt_more' ) );
-		add_filter( 'render_block_data', array( $this, 'temporary_disable_excerpt_more' ), -99, 3 );
+		add_filter( 'render_block_data', array( $this, 'temporary_disable_excerpt_more' ), -99, 2 );
 	}
 
 	/**
@@ -50,17 +50,15 @@ class Template_Parts extends Base_View {
 	 *
 	 * @param array $block_data Block data.
 	 * @param array $block_type Block type.
-	 * @param array $attributes Block attributes.
 	 *
 	 * @return array
 	 */
-	public function temporary_disable_excerpt_more( $block_data, $block_type, $attributes ) {
+	public function temporary_disable_excerpt_more( $block_data, $block_type ) {
 
 		if ( 'core/post-excerpt' === $block_type['blockName'] ) {
 			$this->disable_excerpt = true;
 		}
 		return $block_data;
-
 	}
 
 	/**
