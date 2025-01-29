@@ -829,6 +829,8 @@ class Main {
 			return;
 		}
 
+		$is_white_label_active = apply_filters( 'neve_is_theme_whitelabeled', false ) || apply_filters( 'neve_is_plugin_whitelabeled', false );
+
 		$this->render_neve_header();
 
 		?>
@@ -906,12 +908,14 @@ class Main {
 							<?php esc_html_e( 'Add New Layout', 'neve' ); ?>
 						</span>
 					</button>
-					<a href="https://docs.themeisle.com/article/1062-custom-layouts-module" target="_blank" class="button cl-btn-action">
-						<span class="dashicons dashicons-welcome-learn-more" aria-hidden="true"></span>
-						<span class="cl-header-btn-text">
-							<?php esc_html_e( 'View Tutorial', 'neve' ); ?>
-						</span>
-					</a>
+					<?php if ( ! $is_white_label_active ) : ?>
+						<a href="https://docs.themeisle.com/article/1062-custom-layouts-module" target="_blank" class="button cl-btn-action">
+							<span class="dashicons dashicons-welcome-learn-more" aria-hidden="true"></span>
+							<span class="cl-header-btn-text">
+								<?php esc_html_e( 'View Tutorial', 'neve' ); ?>
+							</span>
+						</a>
+					<?php endif; ?>
 				</div>
 			</div>
 			<p class="cl-description">
@@ -942,6 +946,10 @@ class Main {
 	 * @return void
 	 */
 	public function render_neve_header() {
+
+		if ( apply_filters( 'neve_is_theme_whitelabeled', false ) || apply_filters( 'neve_is_plugin_whitelabeled', false ) ) {
+			return;
+		}
 
 		$is_using_pro                 = defined( 'NEVE_PRO_VERSION' ) && 'valid' === apply_filters( 'product_neve_license_status', false );
 		$neve_dashboard_url           = add_query_arg(
