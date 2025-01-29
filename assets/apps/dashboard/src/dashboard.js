@@ -4,6 +4,8 @@ import { render, StrictMode } from '@wordpress/element';
 import './style.css';
 import App from './Components/App';
 
+import maybeAddPolyFills from './wp-element-polyfill';
+
 import actions from './store/actions';
 import reducer from './store/reducer';
 import selectors from './store/selectors';
@@ -11,6 +13,8 @@ import { NEVE_STORE } from './utils/constants';
 
 import './utils/module-observer';
 import './utils/survey';
+
+maybeAddPolyFills();
 
 registerStore(NEVE_STORE, {
 	reducer,
