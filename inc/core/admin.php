@@ -576,7 +576,6 @@ class Admin {
 		.nv-notice-column-container img {
 			border: 1px solid #f3f4f5;
 			max-height: 300px;
-			width: fit-content;
 		}
 		.nv-notice-column-container {
 			display: flex;
