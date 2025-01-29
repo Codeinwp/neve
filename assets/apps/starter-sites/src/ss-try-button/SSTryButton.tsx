@@ -68,9 +68,7 @@ const dismiss = async (route: string, action = '', useNonce = '') => {
 
 const SSTryButton: React.FC = () => {
 	const templatesPluginData = window.tpcPluginData as TPCPluginData;
-	const tpcRedirect =
-		templatesPluginData.adminURL +
-		(templatesPluginData.canInstall ? '&onboarding=yes' : '');
+	const tpcRedirect = templatesPluginData.adminURL;
 
 	const [installing, setInstalling] = useState(false);
 	const [activating, setActivating] = useState(false);
