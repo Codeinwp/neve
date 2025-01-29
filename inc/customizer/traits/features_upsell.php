@@ -40,8 +40,9 @@ trait Features_Upsell {
 	 */
 	private function to_json_features() {
 		return array(
-			'features_list' => $this->features_list,
-			'title'         => $this->title,
+			'features_list'    => $this->features_list,
+			'title'            => $this->title,
+			'url_page_section' => $this->url_page_section,
 		);
 	}
 
@@ -113,7 +114,7 @@ trait Features_Upsell {
 				</a>
 			<# } #>
 
-			<a href="https://docs.themeisle.com/article/1176-what-is-the-difference-between-neve-and-neve-pro#pagefooter" class="button button-link" target="_blank" rel="noopener noreferrer">
+			<a href="https://docs.themeisle.com/article/1176-what-is-the-difference-between-neve-and-neve-pro#{{data.url_page_section}}" class="button button-link" target="_blank" rel="noopener noreferrer">
 				<?php echo esc_html__( 'View features comparison', 'neve' ); ?> &rarr;
 			</a>
 		</div>
