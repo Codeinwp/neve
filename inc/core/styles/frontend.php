@@ -277,6 +277,23 @@ class Frontend extends Generator {
 				'is_responsive'    => true,
 				'directional-prop' => 'padding',
 				'suffix'           => 'responsive_unit',
+				'filter'           => function ( $css_prop, $value, $meta, $device ) {
+					$output = '';
+					$unit   = Css_Prop::get_unit_responsive( $meta, $device );
+
+					$check = array_filter(
+						$value,
+						function ( $item ) {
+							return ! empty( $item ) || $item === '0';
+						} 
+					);
+
+					if ( empty( $check ) ) {
+								return '';
+					}
+
+					return sprintf( $css_prop . ':%1$s%5$s %2$s%5$s %3$s%5$s %4$s%5$s;', $value['top'], $value['right'], $value['bottom'], $value['left'], $unit );
+				},
 			],
 		];
 
