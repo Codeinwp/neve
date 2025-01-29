@@ -11,11 +11,13 @@ export default ({
 	afterTitle = null,
 	className,
 	children,
+	id = null,
 }) => {
 	const ICON = icon || LucideSettings;
 
 	return (
 		<div
+			id={id}
 			className={cn(
 				className,
 				'last:pb-0 pb-6 border-b last:border-0 first:mt-0 mt-6 grid gap-6'

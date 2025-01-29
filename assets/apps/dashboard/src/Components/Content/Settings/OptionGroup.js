@@ -99,6 +99,7 @@ export default ({ options, overrides = {}, module }) => {
 								description={optionData.description}
 								icon={optionData.icon}
 								locked={optionData.locked}
+								id={optionData.slug}
 							>
 								<ReactPlaceholder key={slug} slug={slug} />
 							</ControlWrap>

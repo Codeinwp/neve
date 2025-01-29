@@ -81,6 +81,7 @@ const AccessRestriction = ({ optionData }) => {
 			label={optionData.label}
 			icon={optionData.icon}
 			description={optionData.description}
+			id={'access-restriction'}
 			afterTitle={
 				saving ? (
 					<div className="flex items-center gap-3 text-sm">

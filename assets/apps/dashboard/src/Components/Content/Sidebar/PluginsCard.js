@@ -57,7 +57,10 @@ const PluginCard = ({ slug, data }) => {
 	};
 
 	return (
-		<div className="flex items-start p-3 bg-white rounded-lg border border-gray-100 hover:shadow-md transition-shadow ">
+		<div
+			className="flex items-start p-3 bg-white rounded-lg border border-gray-100 hover:shadow-md transition-shadow"
+			data-plugin={slug}
+		>
 			<div className="flex-grow">
 				<div className="flex gap-4 items-center">
 					<ICON className="size-6 text-blue-500" />

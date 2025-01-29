@@ -32,6 +32,7 @@ export default ({
 			description={description}
 			icon={icon}
 			locked={locked}
+			id={option}
 			afterTitle={
 				<form
 					disabled={loading || disabled || locked}

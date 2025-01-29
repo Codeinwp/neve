@@ -52,6 +52,7 @@ export default ({
 			label={label}
 			icon={icon}
 			locked={locked}
+			id={option}
 			afterTitle={
 				<Select
 					choices={choices}

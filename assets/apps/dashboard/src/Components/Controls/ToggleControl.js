@@ -57,6 +57,7 @@ export default ({
 			description={description}
 			icon={icon}
 			locked={locked}
+			id={option}
 			afterTitle={
 				<>
 					{loading && (

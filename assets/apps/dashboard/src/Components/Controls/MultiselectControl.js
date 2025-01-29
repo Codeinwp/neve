@@ -56,6 +56,7 @@ const MultiSelectControl = ({
 			description={description}
 			icon={icon}
 			locked={locked}
+			id={option}
 			afterTitle={
 				<>
 					{loading && (
