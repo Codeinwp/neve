@@ -31,11 +31,9 @@ const BackgroundPlaceholder = () => {
 };
 
 const StarterSitesUnavailable = ({ templatesPluginData }) => {
-	const { tpcPath, tpcAdminURL, canInstallPlugins } = neveDash;
+	const { tpcPath, tpcOnboardingURL } = neveDash;
 	const currentState = templatesPluginData?.cta || 'install';
-	const activateRedirect = `${tpcAdminURL}${
-		canInstallPlugins ? '&onboarding=yes' : ''
-	}`;
+	const activateRedirect = tpcOnboardingURL;
 	const description = {
 		__html:
 			'deactivate' === currentState

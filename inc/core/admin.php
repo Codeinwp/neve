@@ -115,7 +115,13 @@ class Admin {
 		$tpc_plugin_data['activate']   = $plugin_helper->get_plugin_action_link( $slug );
 		$tpc_plugin_data['deactivate'] = $plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
 		$tpc_plugin_data['version']    = $tpc_version !== false ? $tpc_version : '';
-		$tpc_plugin_data['adminURL']   = admin_url( 'admin.php?page=tiob-starter-sites' );
+		$tpc_plugin_data['adminURL']   = add_query_arg(
+			array(
+				'page' => 'neve-onboarding',
+				'show' => 'welcome',
+			),
+			admin_url( 'admin.php' )
+		);
 		$tpc_plugin_data['pluginsURL'] = esc_url( admin_url( 'plugins.php' ) );
 		$tpc_plugin_data['ajaxURL']    = esc_url( admin_url( 'admin-ajax.php' ) );
 		$tpc_plugin_data['ajaxNonce']  = esc_attr( wp_create_nonce( 'remove_notice_confirmation' ) );
@@ -477,11 +483,13 @@ class Admin {
 
 		$ob_btn_link = admin_url( 'admin.php?page=' . $theme_page . '&onboarding=yes#starter-sites' );
 		if ( defined( 'TIOB_PATH' ) ) {
-			$url_path = 'admin.php?page=tiob-starter-sites';
-			if ( current_user_can( 'install_plugins' ) ) {
-				$url_path .= '&onboarding=yes';
-			}
-			$ob_btn_link = admin_url( $url_path );
+			$ob_btn_link = add_query_arg(
+				array(
+					'page' => 'neve-onboarding',
+					'show' => 'welcome',
+				),
+				admin_url( 'admin.php' )
+			);
 		}
 
 		$onboarding_starter_sites_btn = sprintf(
