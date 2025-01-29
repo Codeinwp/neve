@@ -1,6 +1,13 @@
 import cn from 'classnames';
 
-export default ({ icon, title, children, afterTitle, className = '' }) => {
+export default ({
+	icon,
+	title,
+	children,
+	afterTitle,
+	className = '',
+	id = null,
+}) => {
 	const classes = cn(
 		[
 			'p-6 rounded-lg shadow-sm',
@@ -12,7 +19,7 @@ export default ({ icon, title, children, afterTitle, className = '' }) => {
 	);
 
 	return (
-		<div className={classes}>
+		<div className={classes} id={id}>
 			{(icon || title) && (
 				<div className="flex items-center mb-6 gap-3">
 					{icon && (

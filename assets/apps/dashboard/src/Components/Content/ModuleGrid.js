@@ -103,7 +103,7 @@ const ModuleCard = ({ moduleData, slug }) => {
 			title={nicename}
 			className="bg-white p-6 rounded-lg shadow-sm"
 			afterTitle={<ModuleToggle slug={slug} moduleData={moduleData} />}
-			data-module={slug}
+			id={`module-${slug}`}
 		>
 			<p className="text-gray-600 text-sm leading-relaxed">
 				{description}{' '}
