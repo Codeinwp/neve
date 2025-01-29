@@ -121,7 +121,7 @@ const DummySettings = () => {
 		<>
 			{Object.entries(DUMMY_SETTINGS_ARGS).map(([id, setting]) => {
 				if (id === 'neve_access_restriction') {
-					return <AccessRestrictionDummySettings />;
+					return <AccessRestrictionDummySettings key={id} />;
 				}
 
 				if (!setting.type) {

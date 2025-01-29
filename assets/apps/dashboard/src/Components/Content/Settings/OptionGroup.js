@@ -9,7 +9,11 @@ import AccessRestriction from './AccessRestriction';
 import ControlWrap from '../../Controls/ControlWrap';
 
 export default ({ options, overrides = {}, module }) => {
-	const { getProOption, getModuleStatus } = useSelect(NEVE_STORE);
+	const { getProOption, getModuleStatus } = useSelect((select) => {
+		const { getProOption: getOption, getModuleStatus: getModule } =
+			select(NEVE_STORE);
+		return { getProOption: getOption, getModuleStatus: getModule };
+	});
 
 	if (!getModuleStatus(module)) {
 		return null;

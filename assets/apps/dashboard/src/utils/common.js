@@ -9,22 +9,6 @@ import Changelog from '../Components/Content/Changelog';
 
 import { __ } from '@wordpress/i18n';
 
-const getTabHash = () => {
-	let hash = window.location.hash;
-
-	if ('string' !== typeof window.location.hash) {
-		return null;
-	}
-
-	hash = hash.substring(1);
-
-	if (!Object.keys(tabs).includes(hash)) {
-		return null;
-	}
-
-	return hash;
-};
-
 const tabs = {
 	start: {
 		label: __('Welcome', 'neve'),
@@ -74,5 +58,21 @@ if (neveDash.whiteLabel) {
 		delete tabs['starter-sites'];
 	}
 }
+
+const getTabHash = () => {
+	let hash = window.location.hash;
+
+	if ('string' !== typeof window.location.hash) {
+		return null;
+	}
+
+	hash = hash.substring(1);
+
+	if (!tabs[hash]?.render) {
+		return null;
+	}
+
+	return hash;
+};
 
 export { getTabHash, tabs };
