@@ -116,7 +116,11 @@ const PluginCard = ({ slug, data }) => {
 const PluginsCard = ({ grid = false }) => {
 	const { plugins } = neveDash;
 
-	if (NEVE_HIDE_PLUGINS || plugins.length < 1) {
+	const anyPluginsLeft = Object.values(plugins).some(
+		(plugin) => plugin.cta !== 'deactivate'
+	);
+
+	if (NEVE_HIDE_PLUGINS || !anyPluginsLeft) {
 		return null;
 	}
 
