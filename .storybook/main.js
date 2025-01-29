@@ -43,7 +43,6 @@ module.exports = {
 	webpackFinal: async (config) => {
 		// Find the DefinePlugin
 		const plugin = config.plugins.find((p) => {
-			console.log(p);
 			return p.definitions && p.definitions["process.env"];
 		});
 		// Add custom env variables
