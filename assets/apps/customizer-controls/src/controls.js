@@ -1,6 +1,7 @@
 /* global CustomEvent, NeveReactCustomize, MutationObserver */
 import './public-path.js';
 import { render } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 import { init as initDynamicFields } from './dynamic-fields/index';
 import { ToggleControl } from './toggle/Control';
@@ -39,11 +40,11 @@ import './style.scss';
 import Documentation from './documentation-section/Documentation.tsx';
 import Instructions from './builder-instructions/Instructions.tsx';
 import Upsells from './builder-upsell/Upsells.tsx';
-import BannerUpsell from './builder-upsell/BannerUpsell.tsx';
 import { initLocalGoogleFonts } from './typography-extra/LocalGoogleFonts';
 
 import MainSearch from './customizer-search/MainSearch.tsx';
 import { FontPairControl } from './typography-font-pair/Control';
+import { initStarterContentNotice } from './starter-content/Notice.js';
 
 const { controlConstructor } = wp.customize;
 
@@ -215,34 +216,6 @@ const initUpsellSection = () => {
 
 		render(<Upsells control={section} />, section.container[0]);
 	});
-
-	const upsellBannerSections = document.querySelectorAll(
-		'.control-section.neve-upsell-banner'
-	);
-	upsellBannerSections.forEach((node) => {
-		const slug = node.getAttribute('data-slug');
-		const section = wp.customize.section(slug);
-
-		if (!section) {
-			return;
-		}
-
-		render(<BannerUpsell control={section} />, section.container[0]);
-	});
-
-	const upsellBannerControls = document.querySelectorAll(
-		'.customize-control.neve-upsell-banner'
-	);
-	upsellBannerControls.forEach((node) => {
-		const slug = node.getAttribute('data-slug');
-		const control = wp.customize.control(slug);
-
-		if (!control) {
-			return;
-		}
-
-		render(<BannerUpsell control={control} />, control.container[0]);
-	});
 };
 
 const initQuickLinksSections = () => {
@@ -297,8 +270,10 @@ const checkHasElementorTemplates = () => {
 					'neve-custom-elementor-shop-template',
 					{
 						type: 'warning',
-						message:
+						message: __(
 							'Some of the settings might not work as expected because you are using a custom shop template made in Elementor.',
+							'neve'
+						),
 					}
 				)
 			);
@@ -312,8 +287,10 @@ const checkHasElementorTemplates = () => {
 					'neve-custom-elementor-product-template',
 					{
 						type: 'warning',
-						message:
+						message: __(
 							'Some of the settings might not work as expected because you are using a custom product template made in Elementor.',
+							'neve'
+						),
 					}
 				)
 			);
@@ -321,6 +298,7 @@ const checkHasElementorTemplates = () => {
 };
 
 window.wp.customize.bind('ready', () => {
+	initStarterContentNotice();
 	initDocSection();
 	initDynamicFields();
 	initUpsellSection();

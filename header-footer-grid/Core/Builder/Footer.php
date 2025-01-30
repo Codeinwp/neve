@@ -54,6 +54,9 @@ class Footer extends Abstract_Builder {
 				)
 			)
 		);
+
+		$upgrade_url_copyright = tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'copyright' ), 'query' );
+
 		$this->set_property(
 			'instructions_array',
 			array(
@@ -65,9 +68,16 @@ class Footer extends Abstract_Builder {
 				),
 				'quickLinks'  => array(
 					'footer_copyright_content'            => array(
-						'label' => esc_html__( 'Change Copyright', 'neve' ),
-						'icon'  => 'dashicons-nametag',
-						'url'   => $this->has_valid_addons() ? null : tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'copyright' ), 'query' ),
+						'label'             => esc_html__( 'Change Copyright', 'neve' ),
+						'icon'              => 'dashicons-nametag',
+						'url'               => $this->has_valid_addons() ? null : $upgrade_url_copyright,
+						'badge'             => esc_html__( 'Pro', 'neve' ),
+						'upsellDescription' => sprintf(
+							/* translators: %1$s: opening anchor tag, %2$s: closing anchor tag */
+							__( 'The Neve theme free version doesn\'t support copyright edits. Pro unlocks this and more—%1$sexplore%2$s it when you\'re ready!', 'neve' ),
+							'<a href="' . esc_url_raw( $upgrade_url_copyright ) . '" target="_blank" rel="noopener noreferrer">',
+							'</a>'
+						),
 					),
 					'hfg_footer_layout_bottom_background' => array(
 						'label' => esc_html__( 'Change Footer Color', 'neve' ),
@@ -230,6 +240,32 @@ class Footer extends Abstract_Builder {
 				'title'       => __( 'Footer Bottom', 'neve' ),
 				'description' => $this->get_property( 'description' ),
 			),
+		];
+	}
+
+	/**
+	 * Get upsell components.
+	 *
+	 * @return array
+	 */
+	protected function get_upsell_components() {
+		if ( $this->has_valid_addons() ) {
+			return [];
+		}
+
+		return [
+			[
+				'icon' => 'email',
+				'name' => __( 'Contact', 'neve' ),
+			],
+			[
+				'icon' => 'images-alt',
+				'name' => __( 'Payment icons', 'neve' ),
+			],
+			[
+				'icon' => 'share',
+				'name' => __( 'Social Icons', 'neve' ),
+			],
 		];
 	}
 }

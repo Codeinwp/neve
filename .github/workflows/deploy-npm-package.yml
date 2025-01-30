@@ -2,7 +2,7 @@ name: Build and Publish NPM Package 🚀
 on:
   push:
     paths:
-      - 'assets/apps/components/**'
+      - "assets/apps/components/**"
     branches:
       - development
 
@@ -12,7 +12,7 @@ jobs:
     if: github.actor != 'pirate-bot'
     strategy:
       matrix:
-        node-version: [ 14.x ]
+        node-version: [16.x]
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
@@ -41,4 +41,3 @@ jobs:
         with:
           github_token: ${{ secrets.BOT_TOKEN }}
           branch: ${{ github.ref }}
-

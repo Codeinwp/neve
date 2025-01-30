@@ -1,189 +1,89 @@
 $text-color: #50575e;
 
-.nv-repeater {
-  background-color: transparent;
-
-  .nv-repeater-items-container {
-	display: grid;
-	row-gap: 10px;
-  }
-}
-
-.nv-repeater-item {
-  &.sortable-chosen {
-	.components-tooltip {
-	  display: none;
-	}
-  }
-  .nv-repeater-item-header {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	border: 1px solid #ddd;
-	height: 40px;
-	background-color: #fff;
-
-	&.visibility-hidden > * > .dashicon,
-	&.visibility-hidden > .repeater-item-title,
-	&.visibility-hidden > * > .repeater-item-title {
-	  color: lighten($text-color, 25%);
-	}
-
-	.dashicon {
-	  color: $text-color;
-	  width: 30px;
-	  margin-left: auto;
-	}
-
-	.repeater-visibility-button {
-	  background-color: #fff;
-	  height: 100%;
-	  border: 0;
-	  border-right: 1px solid #ddd;
-	  cursor: pointer;
-	}
-
-	.nv-repeater-expand-button {
-	  display: flex;
-	  align-items: center;
-	  border: none;
-	  background-color: #FFFFFF;
-	  width: 100%;
-	  padding: 0;
-	  cursor: pointer;
-	}
-
-	.nv-repeater-handle {
-	  border: none;
-	  background-color: #fff;
-	  margin-left: auto;
-	  cursor: grabbing;
-
-	  .dashicon {
-		color: #bfbfbf;
-	  }
-	}
-
-	.repeater-item-title {
-	  display: flex;
-	  align-items: center;
-	  padding-left: 10px;
-	  color: $text-color;
-	  font-size: 14px;
-	  font-weight: 600;
-	  overflow: hidden;
-	  text-overflow: ellipsis;
-	  white-space: nowrap;
-	  max-width: 12vw;
-	}
-  }
-
-  .nv-repeater-content {
-	background-color: #fff;
-	padding: 10px 10px 10px 10px;
-	border: 1px solid #ddd;
-	border-top: 0;
-	display: grid;
-	row-gap: 10px;
-
-	.customize-control-title {
-	  font-size: 13px;
-	  line-height: 1.75;
-	  font-weight: unset;
-	}
-
-	.icon-control {
-	  height: 30px;
-	  margin-bottom: 0;
-
-	  .add-icon-button {
-		height: 30px;
-		width: 53px;
-		justify-content: center;
-		margin-left: auto;
-		border: 1px solid #ccc;
-		color: $text-color;
-		box-shadow: none !important;
-	  }
-
-	  .icon-setter {
-		height: 30px;
-		width: 53px;
-		display: flex;
-		margin-left: auto;
-
-		.repeater-icon-preview {
-		  height: inherit;
-		  width: 70%;
-		  justify-content: center;
-		  color: #1e1e1e;
-		  box-shadow: none;
-		  padding: 0;
-		  border: 1px solid #ccc;
-		}
-
-		.repeater-delete-icon {
-		  height: inherit;
-		  justify-content: center;
-		  background-color: #ccc;
-		  color: #fff;
-		  box-shadow: none;
-		  padding: 0;
-
-		  > * {  /* The 'no' dashicon size */
-			height: 16px;
-			width: 16px;
-			font-size: 16px;
-		  }
-		}
-	  }
-
-	  .icons-popover-content {
-		max-height: 280px;
-
-		.icons-popover-header {
-		  margin: 5px 10px;
-		}
-
-		.icons-container {
-		  margin: 10px 10px 10px 10px;
-		  display: grid;
-		  grid-template-columns: repeat(5, 40px);
-		  grid-template-rows: repeat(auto-fill, 40px);
-
-		  .icon-button {
-			width: 40px;
-			height: 40px;
-			justify-content: center;
-			padding: 0;
-		  }
-		}
-	  }
-	}
-
-	.nv-repeater-remove-button {
-	  width: max-content;
-	}
-  }
-
-  .neve-white-background-control {
-	margin: 0;
-  }
-}
-
 .nv-repeater-options {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
   column-gap: 15px;
   height: 40px;
+}
 
-  .nv-repeater-reorder-button {
-	padding: 0 10px 0 10px;
-	height: 40px;
+.neve-sortable-item {
+  .neve-background-type-control {
+    margin-bottom: 10px;
   }
 
-  .nv-repeater-add-item-button {
-	height: 40px;
+  .neve-control-header {
+    margin: 0;
+  }
+
+  .icon-control {
+    height: 30px;
+    margin-bottom: 10px;
+
+    .add-icon-button {
+      height: 30px;
+      width: 53px;
+      justify-content: center;
+      margin-left: auto;
+      border: 1px solid #ccc;
+      color: $text-color;
+      box-shadow: none !important;
+    }
+
+    .icon-setter {
+      height: 30px;
+      width: 53px;
+      display: flex;
+      margin-left: auto;
+
+      .repeater-icon-preview {
+        height: inherit;
+        width: 70%;
+        justify-content: center;
+        color: #1e1e1e;
+        box-shadow: none;
+        padding: 0;
+        border: 1px solid #ccc;
+      }
+
+      .repeater-delete-icon {
+        height: inherit;
+        justify-content: center;
+        background-color: #ccc;
+        color: #fff;
+        box-shadow: none;
+        padding: 0;
+
+        > * {
+          /* The 'no' dashicon size */
+          height: 16px;
+          width: 16px;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .icons-popover-content {
+      max-height: 280px;
+
+      .icons-popover-header {
+        margin: 5px 10px;
+      }
+
+      .icons-container {
+        margin: 10px 10px 10px 10px;
+        display: grid;
+        grid-template-columns: repeat(5, 40px);
+        grid-template-rows: repeat(auto-fill, 40px);
+
+        .icon-button {
+          width: 40px;
+          height: 40px;
+          justify-content: center;
+          padding: 0;
+        }
+      }
+    }
   }
 }

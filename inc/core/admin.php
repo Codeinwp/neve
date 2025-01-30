@@ -60,17 +60,6 @@ class Admin {
 			add_action( 'wp_ajax_neve_dismiss_welcome_notice', [ $this, 'remove_notice' ] );
 		}
 
-		// load upsell dismiss only if neve pro is not active or license is invalid.
-		if ( ! $this->has_valid_addons() ) {
-			add_action(
-				'wp_ajax_neve_dismiss_customizer_upsell_notice',
-				[
-					'Neve\Customizer\Options\Upsells',
-					'remove_customizer_upsell_notice',
-				]
-			);
-		}
-
 		add_action( 'admin_menu', [ $this, 'remove_background_submenu' ], 110 );
 		add_action( 'after_switch_theme', [ $this, 'get_previous_theme' ] );
 
@@ -126,7 +115,13 @@ class Admin {
 		$tpc_plugin_data['activate']   = $plugin_helper->get_plugin_action_link( $slug );
 		$tpc_plugin_data['deactivate'] = $plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
 		$tpc_plugin_data['version']    = $tpc_version !== false ? $tpc_version : '';
-		$tpc_plugin_data['adminURL']   = admin_url( 'admin.php?page=tiob-starter-sites' );
+		$tpc_plugin_data['adminURL']   = add_query_arg(
+			array(
+				'page' => 'neve-onboarding',
+				'show' => 'welcome',
+			),
+			admin_url( 'admin.php' )
+		);
 		$tpc_plugin_data['pluginsURL'] = esc_url( admin_url( 'plugins.php' ) );
 		$tpc_plugin_data['ajaxURL']    = esc_url( admin_url( 'admin-ajax.php' ) );
 		$tpc_plugin_data['ajaxNonce']  = esc_attr( wp_create_nonce( 'remove_notice_confirmation' ) );
@@ -182,11 +177,11 @@ class Admin {
 
 		if ( isset( $deps['chunks'] ) ) {
 			foreach ( $deps['chunks'] as $chunk_file ) {
-		
+
 				$chunk_handle = 'neve-components-chunk-' . $chunk_file;
 				wp_register_script( $chunk_handle, trailingslashit( NEVE_ASSETS_URL ) . 'apps/components/build/' . $chunk_file, [], $deps['version'], true );
 				wp_enqueue_script( $chunk_handle );
-				
+
 				if ( function_exists( 'wp_set_script_translations' ) ) {
 					wp_set_script_translations( $chunk_handle, 'neve' );
 				}
@@ -477,93 +472,89 @@ class Admin {
 		$theme_page = ! empty( $template ) ? $template . '-welcome' : $slug . '-welcome';
 
 		$notice_template = '
+			<style>%1$s</style>
 			<div class="nv-notice-wrapper">
-			%1$s
-			<hr/>
 				<div class="nv-notice-column-container">
 					<div class="nv-notice-column nv-notice-image">%2$s</div>
 					<div class="nv-notice-column nv-notice-starter-sites">%3$s</div>
-					<div class="nv-notice-column nv-notice-documentation">%4$s</div>
 				</div>
 			</div>
-			<style>%5$s</style>';
+		';
 
-		/* translators: 1 - notice title, 2 - notice message */
-		$notice_header = sprintf(
-			'<h2>%1$s</h2><p class="about-description">%2$s</p></hr>',
-			esc_html__( 'Congratulations!', 'neve' ),
-			sprintf(
-				/* translators: %s - theme name */
-				esc_html__( '%s is now installed and ready to use. We\'ve assembled some links to get you started.', 'neve' ),
-				$name
-			)
-		);
 		$ob_btn_link = admin_url( 'admin.php?page=' . $theme_page . '&onboarding=yes#starter-sites' );
 		if ( defined( 'TIOB_PATH' ) ) {
-			$url_path = 'admin.php?page=tiob-starter-sites';
-			if ( current_user_can( 'install_plugins' ) ) {
-				$url_path .= '&onboarding=yes';
-			}
-			$ob_btn_link = admin_url( $url_path );
+			$ob_btn_link = add_query_arg(
+				array(
+					'page' => 'neve-onboarding',
+					'show' => 'welcome',
+				),
+				admin_url( 'admin.php' )
+			);
 		}
-		$ob_btn = sprintf(
-		/* translators: 1 - onboarding url, 2 - button text */
+
+		$onboarding_starter_sites_btn = sprintf(
 			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
 			esc_url( $ob_btn_link ),
-			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) ) )
+			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( 'Explore Templates and Start Building Now!', 'neve' ) ) )
 		);
-		$ob_return_dashboard = sprintf(
-		/* translators: 1 - button text */
-			'<a href="' . esc_url( admin_url() ) . '" class=" ti-return-dashboard  button button-secondary button-hero install-now" ><span>%1$s</span></a>',
-			__( 'Return to your dashboard', 'neve' )
+
+		$onboarding_notice_exit_btn = sprintf(
+			'<a href="%1$s" class="ti-return-dashboard  button button-link button-hero" >
+				<span>%2$s</span>
+			</a>',
+			esc_url( admin_url( '?page=neve-welcome' ) ),
+			__( 'I want to build this website from scratch', 'neve' )
 		);
-		$options_page_btn = sprintf(
-		/* translators: 1 - options page url, 2 - button text */
-			'<a href="%1$s" class="options-page-btn">%2$s</a>',
-			esc_url( admin_url( 'admin.php?page=' . $theme_page ) ),
-			esc_html__( 'or go to the theme settings', 'neve' )
+
+		$onboarding_thank_you_label = sprintf(
+			// translators: %s: the name of the theme (Neve Theme).
+			__( 'Thanks for downloading %s', 'neve' ),
+			__( 'Neve Theme', 'neve' )
+		) . ' 🎉';
+		$onboarding_title_label     = __( 'Create a Unique Site, Your Way', 'neve' );
+		$onboarding_dashboard_label = __( 'Building your site shouldn\'t feel overwhelming. Choose a starter site, make it your own, and launch your website faster than ever before.', 'neve' );
+
+		$notice_starter_sites_container = sprintf(
+			'
+			<span class="nv-notice-thank-you">%1$s</span>
+			<h2 class="nv-notice-title">%2$s</h2>
+			<p class="about-description">%3$s</h3>
+			<div class="nv-notice-actions">
+				<div id="neve-ss-install">
+					%4$s
+				</div>
+				%5$s
+			</div>
+			',
+			$onboarding_thank_you_label,
+			$onboarding_title_label,
+			$onboarding_dashboard_label,
+			$onboarding_starter_sites_btn,
+			$onboarding_notice_exit_btn
 		);
-		$notice_picture    = sprintf(
-			'<picture>
-					<source srcset="about:blank" media="(max-width: 1024px)">
-					<img src="%1$s"/>
-				</picture>',
+
+		$notice_picture = sprintf(
+			'<img src="%1$s"/>',
 			esc_url( $this->get_notice_picture() )
 		);
-		$notice_sites_list = sprintf(
-			'<div><h3><span class="dashicons dashicons-images-alt2"></span> %1$s</h3><p>%2$s</p><p>%3$s</p></div><div> <p id="neve-ss-install">%4$s</p><p>%5$s</p> </div>',
-			__( 'Sites Library', 'neve' ),
-			// translators: %s - Theme name
-				sprintf( esc_html__( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), $name ),
-			esc_html( __( 'Install the template patterns plugin to get started.', 'neve' ) ),
-			$ob_btn,
-			$options_page_btn
-		);
-		$notice_documentation = sprintf(
-			'<div><h3><span class="dashicons dashicons-format-aside"></span> %1$s</h3><p>%2$s</p><a target="_blank" rel="external noopener noreferrer" href="%3$s"><span class="screen-reader-text">%4$s</span><svg xmlns="http://www.w3.org/2000/svg" focusable="false" role="img" viewBox="0 0 512 512" width="12" height="12" style="margin-right: 5px;"><path fill="currentColor" d="M432 320H400a16 16 0 0 0-16 16V448H64V128H208a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16H48A48 48 0 0 0 0 112V464a48 48 0 0 0 48 48H400a48 48 0 0 0 48-48V336A16 16 0 0 0 432 320ZM488 0h-128c-21.4 0-32 25.9-17 41l35.7 35.7L135 320.4a24 24 0 0 0 0 34L157.7 377a24 24 0 0 0 34 0L435.3 133.3 471 169c15 15 41 4.5 41-17V24A24 24 0 0 0 488 0Z"/></svg>%5$s</a></div><div> <p>%6$s</p></div>',
-			__( 'Documentation', 'neve' ),
-			// translators: %s - Theme name
-				sprintf( esc_html__( 'Need more details? Please check our full documentation for detailed information on how to use %s.', 'neve' ), $name ),
-			'https://docs.themeisle.com/article/946-neve-doc',
-			esc_html__( '(opens in a new tab)', 'neve' ),
-			esc_html__( 'Read full documentation', 'neve' ),
-			$ob_return_dashboard
-		);
+
 		$style = '
-		.nv-notice-wrapper h2{
+		.nv-notice-wrapper .nv-notice-title {
+			font-size: 23px;
+			font-weight: bold;
+			line-height: 1.5;
 			margin: 0;
-			font-size: 21px;
-			font-weight: 400;
-			line-height: 1.2;
+			padding: 9px 0 4px;
 		}
 		.nv-notice-wrapper p.about-description{
 			color: #72777c;
-			font-size: 16px;
-			margin: 0;
-			padding:0px;
+			font-size: 15px;
+			margin: 2px 0 5px;
+			padding: 0 2px;
+			line-height: 1.6;
 		}
 		.nv-notice-wrapper{
-			padding: 23px 10px 0;
+			padding: 23px 10px;
 			max-width: 1500px;
 		}
 		.nv-notice-wrapper hr {
@@ -581,56 +572,68 @@ class Admin {
 		}
 		.nv-notice-text p.ti-return-dashboard {
 			margin-top: 30px;
-	}
-		.nv-notice-column-container .nv-notice-column{
-			 padding-right: 40px;
 		}
-		.nv-notice-column-container img{
-			margin-top: 23px;
-			width: calc(100% - 40px);
+		.nv-notice-column-container img {
 			border: 1px solid #f3f4f5;
+			max-height: 300px;
 		}
 		.nv-notice-column-container {
-			display: -ms-grid;
-			display: grid;
-			-ms-grid-columns: 24% 32% 32%;
-			grid-template-columns: 24% 32% 32%;
-			margin-bottom: 13px;
+			display: flex;
+			flex-direction: row;
+			gap: 48px;
 		}
-		.nv-notice-column-container .button.button-hero:is( .button-primary, .button-secondary ) {
+		.nv-notice-column-container .button.button-hero:is( .button-primary, .button-link ) {
 			margin: 0px;
 			white-space: normal;
 			text-align: center;
 			line-height: 1.2;
 			padding: 12px 36px;
 		}
-		.nv-notice-column-container .nv-notice-column:not(.nv-notice-image) {
-			display: -ms-grid;
-			display: grid;
-			-ms-grid-rows: auto 100px;
-			grid-template-rows: auto 100px;
+		.nv-notice-column-container .button.button-hero:is( .button-primary ) {
+			background-color: rgb(69, 89, 217);
 		}
-		@media screen and (max-width: 1280px) {
-			.nv-notice-wrapper .nv-notice-column-container {
-				-ms-grid-columns: 50% 50%;
-				grid-template-columns: 50% 50%;
+		.nv-notice-column-container .button.button-hero:is( .button-link ) {
+			padding: 12px 7px;
+			color: #72777c;
+			text-decoration: none;
+		}
+		.nv-notice-column-container .nv-notice-column {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.nv-notice-actions {
+			display: flex;
+			flex-direction: row;
+			gap: 10px;
+			margin-top: 20px;
+		}
+		.nv-notice-starter-sites {
+			max-width: 750px;
+		}
+		.nv-notice-thank-you {
+			color:#3b5de6;
+			font-size:14px;
+			font-style:normal;
+			font-weight:400;
+			margin: 0;
+			padding: 9px 0 4px;
+		}
+		@media (max-width: 1200px) {
+			.nv-notice-column-container {
+				flex-direction: column-reverse;
+				gap: 10px;
+				text-align: center;
+				align-items: center;
 			}
-			.nv-notice-column-container a.button.button-hero.button-secondary,
-			.nv-notice-column-container a.button.button-hero.button-primary{
-				padding:6px 18px;
-			}
-			.nv-notice-wrapper .nv-notice-image {
-				display: none;
+			.nv-notice-column-container .nv-notice-column {
+				align-items: center;
 			}
 		}
-		@media screen and (max-width: 870px) {
-
-			.nv-notice-wrapper .nv-notice-column-container {
-				-ms-grid-columns: 100%;
-				grid-template-columns: 100%;
-			}
-			.nv-notice-column-container a.button.button-hero.button-primary{
-				padding:12px 36px;
+		@media (max-width: 480px) {
+			.nv-notice-actions {
+				flex-direction: column;
+				align-items: center;
 			}
 		}
 		@-webkit-keyframes spin {
@@ -651,15 +654,17 @@ class Admin {
 			animation-iteration-count: infinite;
 			animation-timing-function: linear;
 		}
+		.notice:has(.nv-notice-thank-you) {
+			border-left-width: 2px;
+			border-left-color: #c3c4c7;
+		}
 		';
 
 		echo sprintf(
 			$notice_template, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			$notice_header, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$style, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			$notice_picture, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			$notice_sites_list, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			$notice_documentation, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			$style // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$notice_starter_sites_container // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		);
 	}
 

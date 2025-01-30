@@ -116,10 +116,12 @@ final class Manager {
 	 * Register meta box to control layout on pages and posts.
 	 */
 	public function add() {
-		$post_type         = 'Neve';
+		$post_type_label   = 'Neve';
 		$post_type_from_db = get_post_type();
-		if ( $post_type_from_db ) {
-			$post_type = ucfirst( $post_type_from_db );
+		$post_type_object  = get_post_type_object( $post_type_from_db );
+		
+		if ( $post_type_object && isset( $post_type_object->labels->name ) ) {
+			$post_type_label = $post_type_object->labels->name;
 		}
 
 		add_meta_box(
@@ -127,7 +129,7 @@ final class Manager {
 			sprintf(
 			/* translators: %s - post type */
 				__( '%s Settings', 'neve' ),
-				$post_type
+				$post_type_label
 			),
 			array( $this, 'render_metabox' ),
 			array( 'post', 'page', 'product' ),
@@ -144,7 +146,7 @@ final class Manager {
 				sprintf(
 				/* translators: %s - post type */
 					__( '%s Settings', 'neve' ),
-					$post_type
+					$post_type_label
 				),
 				array( $this, 'render_metabox_notice' ),
 				Supported_Post_Types::get( 'block_editor' ),
@@ -407,7 +409,7 @@ final class Manager {
 	 * @return string
 	 */
 	private function get_post_elements_default_order() {
-		$default_order = $this->post_ordering();
+		$default_order = $this->get_v4_defaults( 'neve_layout_single_post_elements_order', $this->post_ordering() );
 
 		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
 		if ( ! is_string( $content_order ) ) {

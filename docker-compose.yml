@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   mysql:
-    image: mysql:5.7
+    image: mariadb:lts
     volumes:
     - ~/${WP_MYSQL_STASH:-WordPressDock}/wp-db/neve:/var/lib/mysql
     restart: always

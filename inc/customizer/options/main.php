@@ -55,6 +55,10 @@ class Main extends Base_Customizer {
 				'priority' => 25,
 				'title'    => __( 'Layout', 'neve' ),
 			),
+			'neve_blog'       => array(
+				'priority' => 25,
+				'title'    => __( 'Blog', 'neve' ),
+			),
 			'neve_typography' => array(
 				'priority' => 35,
 				'title'    => __( 'Typography', 'neve' ),

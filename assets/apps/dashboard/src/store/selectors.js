@@ -8,4 +8,21 @@ export default {
 	getLicense: (state) => state.license,
 	getToast: (state) => state.toast,
 	getTab: (state) => state.currentTab,
+	getNotifications: (state) => {
+		const shownNotifications = { ...state.notifications };
+
+		Object.entries(state.notifications).forEach(([slug, data]) => {
+			if (!data.dependentModule) {
+				return;
+			}
+
+			const option = `nv_pro_${data.dependentModule}_status`;
+
+			if (!state.settings[option]) {
+				delete shownNotifications[slug];
+			}
+		});
+
+		return shownNotifications;
+	},
 };

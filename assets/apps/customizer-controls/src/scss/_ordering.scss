@@ -1,53 +1,166 @@
 $gray: #bfbfbf;
+$gray-medium: #888;
+$gray-dark: #333;
+$gray-light: #f9f9f9;
 $icon: #0073aa;
+$icon-bright: #00a0d2;
+
+.items-list:has(.neve-sortable-item) {
+	display: grid;
+	gap: 10px;
+}
 
 .neve-sortable-item {
-  z-index: 99999999999;
-  display: flex;
-  align-items: center;
-  border: 1px solid $gray;
-  background: #fff;
-  height: 40px;
+	border: 1px solid $gray;
+	border-radius: 5px;
+	background: #fff;
 
-  &.no-toggle {
-	padding-left: 20px;
-  }
-
-  &.disabled {
-	.toggle {
-	  color: $gray;
+	&.sortable-drag {
+		z-index: 99999999999;
 	}
-  }
 
-  &:not(:first-child) {
-	margin-top: -1px;
-  }
+	.top-bar {
+		display: flex;
+		align-items: center;
+		height: 40px;
 
-  .label {
-	font-weight: 600;
-	font-size: 13px;
-	margin: 0 5px;
-  }
+		button {
+			border: none;
+			background: transparent;
+			display: flex;
+			align-items: center;
+			height: 100%;
+			transition: all 0.2s;
 
-  button {
-	background: transparent;
-	border: none;
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-	justify-content: center !important;
-	height: 100%;
-  }
+			&[disabled] {
+				opacity: 0.9; 
+				pointer-events: none;
+			}
+
+			&.locked svg {
+				opacity: .35;
+			}
+		}
+
+		.separator {
+			height: 20px;
+			border-right: 1px solid $gray;
+		}
 
 
-  .toggle {
-	padding: 0 20px;
-	color: $icon;
-  }
+		.handle, .locked {
+			margin-right: 10px;
+			padding: 0 3px;
+			fill: $gray-medium;
+			border-right: 1px solid $gray;	
+	
+			&:hover {
+				fill: $gray-dark;
+				background-color: $gray-light;
+			}
+		}
 
-  .handle {
-	margin-left: auto;
-	color: #bfbfbf;
-	width: 40px;
-  }
+
+		.handle {
+			cursor: move;
+		}
+
+	
+		.actions {
+			height: 100%;
+			display: flex;
+			align-items: center;
+			margin-left: auto;
+	
+			button {
+				cursor: pointer;
+				
+				&:hover {
+					color: $icon;
+					fill:	currentColor;
+				}
+			}
+		}
+
+		.label {
+			font-weight: 600;
+		}
+	}
+
+	&.disabled {
+		.toggle {
+			color: $gray-medium;
+		}
+	}
+
+}
+
+.sortable-subcontrols {
+	display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows .5s;
+
+	.sortable-subcontrols-inner {
+		min-height: 0;
+		transition: visibility .5s;
+		visibility: hidden;
+		display: grid;
+		gap: 15px;
+		padding: 0 10px;
+		border-top: 1px solid #ccc;
+
+
+		> div:not(:last-child) {
+			border-bottom: 1px solid #ccc;
+			padding-bottom: 15px;
+		}
+	
+		> div:last-child {
+			padding-bottom: 15px;
+		}
+
+		> div:first-child {
+			padding-top: 10px;
+		}
+	}
+	
+	&.open {
+		grid-template-rows: 1fr;
+
+		.sortable-subcontrols-inner {
+			visibility: visible;
+		}
+	}
+
+	.neve-white-background-control {
+		margin: 0 !important;
+		padding: 0 !important;
+		background: transparent !important;
+	}
+	
+	.subcontrol-label, .components-toggle-control__label {
+		display: block;
+		font-weight: 600;
+	}
+
+	.components-toggle-control {
+		margin: 0;
+	}
+
+	.subcontrol-label {
+		margin-bottom: 5px;
+	}
+
+	.customize-control-title {
+		font-size: 13px !important;
+	}
+
+	.subcontrol-description {
+		display: block;
+		line-height: 1.4;
+		font-size: 12px;
+		margin-bottom: 5px;
+		color: #777;
+	}
 }

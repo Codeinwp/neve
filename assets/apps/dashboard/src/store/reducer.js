@@ -4,10 +4,10 @@ import { getTabHash } from '../utils/common';
 const initialState = {
 	settings: {},
 	plugins: neveDash.plugins || {},
-	tier: neveDash.pro ? neveDash.license.tier : 0,
 	toast: null,
 	currentTab: 'start',
 	license: neveDash.pro ? neveDash.license : {},
+	notifications: neveDash.notifications || {},
 };
 
 const hash = getTabHash();

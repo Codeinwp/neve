@@ -10,8 +10,11 @@
 
 namespace Neve\Customizer\Options;
 
+use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Defaults\Layout;
+use Neve\Customizer\Defaults\Utils;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
 
@@ -22,6 +25,7 @@ use Neve\Customizer\Types\Section;
  */
 class Layout_Blog extends Base_Customizer {
 	use Layout;
+	use Utils;
 
 	/**
 	 * Holds the section name.
@@ -38,10 +42,10 @@ class Layout_Blog extends Base_Customizer {
 	public function add_controls() {
 		$this->section_blog();
 		$this->add_layout_controls();
-		$this->add_featured_post();
-		$this->add_content_ordering_controls();
+		$this->add_post_structure();
 		$this->add_post_meta_controls();
-		$this->add_typography_shortcut();
+		$this->add_featured_post();
+		$this->add_design_controls();
 
 		add_action( 'customize_register', [ $this, 'adapt_old_pro' ], PHP_INT_MAX );
 	}
@@ -80,6 +84,63 @@ class Layout_Blog extends Base_Customizer {
 	}
 
 	/**
+	 * Get the tab slotting for the controls.
+	 *
+	 * @return array
+	 */
+	private function get_tabs_slotting() {
+		$tab_slotting = [
+			'general' => [
+				'neve_blog_layout_heading',
+				'neve_blog_archive_sidebar_layout',
+				'neve_blog_archive_content_width',
+				$this->section,
+				'neve_grid_layout',
+				'neve_archive_hide_title',
+
+				'neve_enable_masonry',
+				Config::OPTION_POSTS_PER_PAGE,
+
+				'neve_enable_featured_post',
+				'neve_featured_post_target',
+
+				'neve_post_content_ordering',
+				'neve_post_excerpt_length',
+
+				'neve_blog_post_meta_fields',
+
+				'neve_blog_archive_upsell_control_features',
+			],
+			'style'   => [
+				'neve_blog_content_padding',
+
+				'neve_enable_card_style',
+				'neve_blog_grid_card_bg_color',
+				'neve_blog_grid_text_color',
+				'neve_blog_card_shadow',
+				'neve_blog_covers_text_color',
+				'neve_blog_items_border_radius',
+
+				'neve_archive_typography_post_title_accordion_wrap',
+				'neve_archive_typography_post_title',
+				'neve_archive_typography_post_excerpt_accordion_wrap',
+				'neve_archive_typography_post_excerpt',
+				'neve_archive_typography_post_meta_accordion_wrap',
+				'neve_archive_typography_post_meta',
+
+				'neve_blog_archive_upsell_control_features',
+			],
+		];
+
+		foreach ( $tab_slotting as $tab_key => $tab_data ) {
+			$tab_slotting[ $tab_key ] = array_fill_keys( $tab_data, [] );
+		}
+
+		return $tab_slotting;
+	}
+
+
+	/**
 	 * Add customize section
 	 */
 	private function section_blog() {
@@ -89,31 +150,84 @@ class Layout_Blog extends Base_Customizer {
 				array(
 					'priority' => 35,
 					'title'    => esc_html__( 'Blog / Archive', 'neve' ),
-					'panel'    => 'neve_layout',
+					'panel'    => 'neve_blog',
 				)
 			)
 		);
+		$this->add_control(
+			new Control(
+				$this->section . '_tabs',
+				[
+					'transport' => 'refresh',
+				],
+				[
+					'priority' => -100,
+					'section'  => $this->section,
+					'tabs'     => [
+						'general' => [
+							'label' => __( 'General', 'neve' ),
+							'icon'  => 'layout',
+						],
+						'style'   => [
+							'label' => __( 'Design', 'neve' ),
+							'icon'  => 'admin-customizer',
+						],
+					],
+					'controls' => $this->get_tabs_slotting(),
+				],
+				'Neve\Customizer\Controls\Tabs'
+			)
+		);
 	}
+
 
 	/**
 	 * Add blog layout controls.
 	 */
 	private function add_layout_controls() {
+		$layout_id = 'neve_blog_archive_sidebar_layout';
+		$width_id  = 'neve_blog_archive_content_width';
+
 		$this->add_control(
 			new Control(
-				'neve_blog_layout_heading',
+				$layout_id,
 				array(
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => array( $this, 'sanitize_sidebar_layout' ),
+					'default'           => $this->sidebar_layout_alignment_default( $layout_id ),
 				),
 				array(
-					'label'            => esc_html__( 'Blog Layout', 'neve' ),
-					'section'          => $this->section,
-					'priority'         => 10,
-					'class'            => 'blog-layout-accordion',
-					'accordion'        => true,
-					'controls_to_wrap' => 6,
+					'label'       => __( 'Sidebar Layout', 'neve' ),
+					'description' => $this->get_sidebar_control_description( $layout_id ),
+					'section'     => $this->section,
+					'priority'    => 10,
+					'choices'     => $this->sidebar_layout_choices( $layout_id ),
 				),
-				'Neve\Customizer\Controls\Heading'
+				'\Neve\Customizer\Controls\React\Radio_Image'
+			)
+		);
+
+		$width_default = $this->sidebar_layout_width_default( $width_id );
+
+		$this->add_control(
+			new Control(
+				$width_id,
+				array(
+					'sanitize_callback' => 'absint',
+					'transport'         => $this->selective_refresh,
+					'default'           => $width_default,
+				),
+				array(
+					'label'       => esc_html__( 'Content Width (%)', 'neve' ),
+					'section'     => $this->section,
+					'type'        => 'neve_range_control',
+					'input_attrs' => [
+						'min'        => 50,
+						'max'        => 100,
+						'defaultVal' => $width_default,
+					],
+					'priority'    => 20,
+				),
+				'Neve\Customizer\Controls\React\Range'
 			)
 		);
 
@@ -126,7 +240,8 @@ class Layout_Blog extends Base_Customizer {
 				],
 				[
 					'section'  => $this->section,
-					'priority' => 11,
+					'label'    => esc_html__( 'Post Cards Layout', 'neve' ),
+					'priority' => 30,
 					'choices'  => [
 						'default' => [
 							'name'  => __( 'List', 'neve' ),
@@ -166,38 +281,41 @@ class Layout_Blog extends Base_Customizer {
 						'max'        => 4,
 						'defaultVal' => json_decode( $grid_layout_default, true ),
 					],
-					'priority'        => 11,
+					'priority'        => 50,
 					'active_callback' => array( $this, 'is_column_layout' ),
 				),
 				'Neve\Customizer\Controls\React\Responsive_Range'
 			)
 		);
 
-		$this->add_control(
-			new Control(
-				'neve_blog_covers_text_color',
-				array(
-					'sanitize_callback' => 'neve_sanitize_colors',
-					'default'           => '#ffffff',
-					'transport'         => 'postMessage',
-				),
-				array(
-					'label'                 => esc_html__( 'Text Color', 'neve' ),
-					'section'               => $this->section,
-					'priority'              => 15,
-					'default'               => '#ffffff',
-					'active_callback'       => function () {
-						return get_theme_mod( $this->section ) === 'covers';
-					},
-					'live_refresh_selector' => true,
-					'live_refresh_css_prop' => [
-						'cssVar' => [
-							'vars'     => '--color',
-							'selector' => '.neve-main',
-						],
+		$posts_per_page = get_option( Config::OPTION_POSTS_PER_PAGE );
+
+		$this->wpc->add_setting(
+			Config::OPTION_POSTS_PER_PAGE,
+			[
+				'type'              => 'option',
+				'sanitize_callback' => 'absint',
+				'default'           => absint( $posts_per_page ),
+			]
+		);
+
+		$this->wpc->add_control(
+			new \Neve\Customizer\Controls\React\Range(
+				$this->wpc,
+				Config::OPTION_POSTS_PER_PAGE,
+				[
+					'type'        => 'neve_range_control',
+					'priority'    => 52,
+					'section'     => $this->section,
+					'label'       => esc_html__( 'Posts per Page', 'neve' ),
+					'input_attrs' => [
+						'min'        => 1,
+						'max'        => 100,
+						'defaultVal' => absint( $posts_per_page ),
 					],
-				),
-				'Neve\Customizer\Controls\React\Color'
+					'setting'     => Config::OPTION_POSTS_PER_PAGE,
+					'default'     => absint( $posts_per_page ),
+				]
 			)
 		);
 
@@ -206,42 +324,18 @@ class Layout_Blog extends Base_Customizer {
 				'neve_archive_hide_title',
 				[
 					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => false,
+					'default'           => $this->get_v4_defaults( 'neve_archive_hide_title', false ),
 				],
 				[
 					'label'           => esc_html__( 'Disable Title', 'neve' ),
 					'section'         => $this->section,
 					'type'            => 'neve_toggle_control',
-					'priority'        => 16,
-					'active_callback' => function() {
+					'priority'        => 70,
+					'active_callback' => function () {
 						return get_option( 'show_on_front' ) !== 'posts';
 					},
 				],
 				'Neve\Customizer\Controls\Checkbox'
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_blog_list_alternative_layout',
-				array(
-					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => false,
-				),
-				array(
-					'type'            => 'neve_toggle_control',
-					'priority'        => 17,
-					'section'         => $this->section,
-					'label'           => esc_html__( 'Alternating layout', 'neve' ),
-					'active_callback' => function () {
-						$is_list_layout = get_theme_mod( $this->section ) === 'default';
-						$has_image      = true;
-						if ( $is_list_layout && defined( 'NEVE_PRO_VERSION' ) ) {
-							$has_image = get_theme_mod( 'neve_blog_list_image_position', 'left' ) !== 'no';
-						}
-						return $is_list_layout && $has_image;
-					},
-				)
 			)
 		);
 
@@ -254,7 +348,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'type'            => 'neve_toggle_control',
-					'priority'        => 35,
+					'priority'        => 55,
 					'section'         => $this->section,
 					'label'           => esc_html__( 'Enable Masonry', 'neve' ),
 					'active_callback' => array( $this, 'should_show_masonry' ),
@@ -269,25 +363,6 @@ class Layout_Blog extends Base_Customizer {
 	private function add_featured_post() {
 		$this->add_control(
 			new Control(
-				'neve_featured_post_heading',
-				[
-					'sanitize_callback' => 'sanitize_text_field',
-				],
-				[
-					'label'            => esc_html__( 'Featured Post', 'neve' ),
-					'section'          => $this->section,
-					'priority'         => 40,
-					'class'            => 'featured-post-accordion',
-					'accordion'        => true,
-					'expanded'         => false,
-					'controls_to_wrap' => 2,
-				],
-				'Neve\Customizer\Controls\Heading'
-			)
-		);
-
-		$this->add_control(
-			new Control(
 				'neve_enable_featured_post',
 				[
 					'sanitize_callback' => 'neve_sanitize_checkbox',
@@ -297,7 +372,7 @@ class Layout_Blog extends Base_Customizer {
 					'label'    => esc_html__( 'Enable featured post section', 'neve' ),
 					'section'  => $this->section,
 					'type'     => 'neve_toggle_control',
-					'priority' => 41,
+					'priority' => 260,
 				],
 				'Neve\Customizer\Controls\Checkbox'
 			)
@@ -313,13 +388,13 @@ class Layout_Blog extends Base_Customizer {
 				array(
 					'label'           => esc_html__( 'Featured Post', 'neve' ),
 					'section'         => $this->section,
-					'priority'        => 42,
+					'priority'        => 270,
 					'type'            => 'select',
 					'choices'         => [
 						'latest' => esc_html__( 'Latest Post', 'neve' ),
 						'sticky' => esc_html__( 'Sticky Post', 'neve' ),
 					],
-					'active_callback' => function() {
+					'active_callback' => function () {
 						return get_theme_mod( 'neve_enable_featured_post', false );
 					},
 				)
@@ -328,59 +403,77 @@ class Layout_Blog extends Base_Customizer {
 	}
 
 	/**
-	 * Add content ordering and controls.
+	 * Add post structure controls.
 	 */
-	private function add_content_ordering_controls() {
-		$this->add_control(
-			new Control(
-				'neve_blog_ordering_content_heading',
-				array(
-					'sanitize_callback' => 'sanitize_text_field',
-				),
-				array(
-					'label'            => esc_html__( 'Ordering and Content', 'neve' ),
-					'section'          => $this->section,
-					'priority'         => 50,
-					'class'            => 'blog-layout-ordering-content-accordion',
-					'accordion'        => true,
-					'expanded'         => false,
-					'controls_to_wrap' => 4,
-				),
-				'Neve\Customizer\Controls\Heading'
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_pagination_type',
-				array(
-					'default'           => 'number',
-					'sanitize_callback' => array( $this, 'sanitize_pagination_type' ),
-				),
-				array(
-					'label'    => esc_html__( 'Post Pagination', 'neve' ),
-					'section'  => $this->section,
-					'priority' => 53,
-					'type'     => 'select',
-					'choices'  => array(
-						'number'   => esc_html__( 'Number', 'neve' ),
-						'infinite' => esc_html__( 'Infinite Scroll', 'neve' ),
-						'jump-to'  => esc_html__( 'Number', 'neve' ) . ' & ' . esc_html__( 'Search Field', 'neve' ),
-					),
-				)
-			)
-		);
-
+	private function add_post_structure() {
 		$order_default_components = array(
 			'thumbnail',
 			'title-meta',
 			'excerpt',
 		);
 
+
+		$ar_choices = [
+			'original' => esc_html__( 'Original', 'neve' ),
+			'1-1'      => '1:1',
+			'4-3'      => '4:3',
+			'16-9'     => '16:9',
+			'2-1'      => '2:1',
+			'4-5'      => '4:5',
+			'3-4'      => '3:4',
+			'2-3'      => '2:3',
+		];
+
+		$excerpt_length_default = $this->get_v4_defaults( 'neve_post_excerpt_length', 25 );
+
 		$components = array(
-			'thumbnail'  => __( 'Thumbnail', 'neve' ),
-			'title-meta' => __( 'Title & Meta', 'neve' ),
-			'excerpt'    => __( 'Excerpt', 'neve' ),
+			'thumbnail'  => [
+				'label'    => __( 'Thumbnail', 'neve' ),
+				'controls' => [
+					'neve_blog_archive_aspect_ratio' => [
+						'label'   => esc_html__( 'Image Aspect Ratio', 'neve' ),
+						'type'    => 'select',
+						'choices' => $ar_choices,
+					],
+				],
+			],
+			'title-meta' => [
+				'label'    => __( 'Title & Meta', 'neve' ),
+				'controls' => [
+					'neve_metadata_separator'     => [
+						'label'       => esc_html__( 'Meta Separator', 'neve' ),
+						'description' => esc_html__( 'For special characters make sure to use Unicode. For example > can be displayed using \003E.', 'neve' ),
+						'type'        => 'text',
+					],
+					'neve_show_last_updated_date' => [
+						'label' => esc_html__( 'Show Last Updated Date', 'neve' ),
+						'type'  => 'toggle',
+					],
+					'neve_author_avatar'          => [
+						'label' => esc_html__( 'Show Author Avatar', 'neve' ),
+						'type'  => 'toggle',
+					],
+					'neve_author_avatar_size'     => [
+						'type'  => 'responsive-range',
+						'label' => esc_html__( 'Author Avatar Size', 'neve' ),
+					],
+				],
+			],
+			'excerpt'    => [
+				'label'    => __( 'Excerpt', 'neve' ),
+				'controls' => [
+					'neve_post_excerpt_length' => [
+						'label' => esc_html__( 'Excerpt Length', 'neve' ),
+						'type'  => 'range',
+						'attrs' => [
+							'min'        => 5,
+							'max'        => 300,
+							'defaultVal' => $excerpt_length_default,
+							'step'       => 5,
+						],
+					],
+				],
+			],
 		);
 
 		$this->add_control(
@@ -394,7 +487,7 @@ class Layout_Blog extends Base_Customizer {
 					'label'      => esc_html__( 'Post Content Order', 'neve' ),
 					'section'    => $this->section,
 					'components' => $components,
-					'priority'   => 55,
+					'priority'   => 65,
 				),
 				'Neve\Customizer\Controls\React\Ordering'
 			)
@@ -402,109 +495,38 @@ class Layout_Blog extends Base_Customizer {
 
 		$this->add_control(
 			new Control(
+				'neve_blog_archive_aspect_ratio',
+				[
+					'default'           => $this->get_v4_defaults( 'neve_blog_archive_aspect_ratio', 'original' ),
+					'sanitize_callback' => function( $value ) use ( $ar_choices ) {
+						return array_key_exists( $value, $ar_choices ) ? $value : 'original';
+					},
+				],
+				[
+					'section'         => $this->section,
+					'type'            => 'hidden',
+					'active_callback' => function() {
+						return get_theme_mod( $this->section, 'grid' ) !== 'default' || get_theme_mod( 'neve_blog_list_image_position', 'left' ) !== 'no';
+					},
+				]
+			)
+		);
+
+		$this->add_control(
+			new Control(
 				'neve_post_excerpt_length',
 				array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
-					'default'           => 25,
-				),
-				array(
-					'label'       => esc_html__( 'Excerpt Length', 'neve' ),
-					'section'     => $this->section,
-					'type'        => 'neve_range_control',
-					'input_attrs' => [
-						'min'        => 5,
-						'max'        => 300,
-						'defaultVal' => 25,
-						'step'       => 5,
-					],
-					'priority'    => 58,
-				),
-				'Neve\Customizer\Controls\React\Range'
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_post_thumbnail_box_shadow',
-				array(
 					'sanitize_callback' => 'absint',
-					'default'           => 0,
+					'default'           => $excerpt_length_default,
 				),
 				array(
-					'label'       => esc_html__( 'Thumbnail Shadow', 'neve' ),
-					'section'     => $this->section,
-					'type'        => 'neve_range_control',
-					'step'        => 1,
-					'input_attrs' => [
-						'min'        => 0,
-						'max'        => 5,
-						'defaultVal' => 0,
-					],
-					'priority'    => 59,
-				),
-				'Neve\Customizer\Controls\React\Range'
-			)
-		);
-	}
-
-	/**
-	 * Add controls for post meta.
-	 */
-	private function add_post_meta_controls() {
-		$this->add_control(
-			new Control(
-				'neve_blog_post_meta_heading',
-				array(
-					'sanitize_callback' => 'sanitize_text_field',
-				),
-				array(
-					'label'            => esc_html__( 'Post Meta', 'neve' ),
-					'section'          => $this->section,
-					'priority'         => 70,
-					'class'            => 'blog-layout-post-meta-accordion',
-					'accordion'        => true,
-					'controls_to_wrap' => 5,
-					'expanded'         => false,
-				),
-				'Neve\Customizer\Controls\Heading'
+					'section' => $this->section,
+					'type'    => 'hidden',
+				)
 			)
 		);
 
 
-		$default       = wp_json_encode( [ 'author', 'date', 'comments' ] );
-		$default_value = neve_get_default_meta_value( 'neve_post_meta_ordering', $default );
-		$this->add_control(
-			new Control(
-				'neve_blog_post_meta_fields',
-				[
-					'sanitize_callback' => 'neve_sanitize_meta_repeater',
-					'default'           => wp_json_encode( $default_value ),
-				],
-				[
-					'label'            => esc_html__( 'Meta Order', 'neve' ),
-					'section'          => $this->section,
-					'fields'           => [
-						'hide_on_mobile' => [
-							'type'  => 'checkbox',
-							'label' => __( 'Hide on mobile', 'neve' ),
-						],
-					],
-					'components'       => apply_filters(
-						'neve_meta_filter',
-						array(
-							'author'   => __( 'Author', 'neve' ),
-							'category' => __( 'Category', 'neve' ),
-							'date'     => __( 'Date', 'neve' ),
-							'comments' => __( 'Comments', 'neve' ),
-						)
-					),
-					'allow_new_fields' => 'no',
-					'priority'         => 71,
-					'active_callback'  => [ $this, 'should_show_meta_order' ],
-				],
-				'\Neve\Customizer\Controls\React\Repeater'
-			)
-		);
 
 		$this->add_control(
 			new Control(
@@ -514,14 +536,12 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => esc_html( '/' ),
 				),
 				array(
-					'priority'    => 72,
-					'section'     => $this->section,
-					'label'       => esc_html__( 'Separator', 'neve' ),
-					'description' => esc_html__( 'For special characters make sure to use Unicode. For example > can be displayed using \003E.', 'neve' ),
-					'type'        => 'text',
+					'section' => $this->section,
+					'type'    => 'hidden',
 				)
 			)
 		);
+
 
 		$this->add_control(
 			new Control(
@@ -531,13 +551,13 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => false,
 				),
 				array(
-					'label'    => esc_html__( 'Show Author Avatar', 'neve' ),
-					'section'  => $this->section,
-					'type'     => 'neve_toggle_control',
-					'priority' => 73,
+					'label'   => esc_html__( 'Show Author Avatar', 'neve' ),
+					'section' => $this->section,
+					'type'    => 'hidden',
 				)
 			)
 		);
+
 
 		$this->add_control(
 			new Control(
@@ -548,6 +568,7 @@ class Layout_Blog extends Base_Customizer {
 				),
 				array(
 					'label'           => esc_html__( 'Avatar Size', 'neve' ),
+					'type'            => 'hidden',
 					'section'         => $this->section,
 					'units'           => array(
 						'px',
@@ -573,6 +594,7 @@ class Layout_Blog extends Base_Customizer {
 						),
 					),
 					'input_attrs'     => [
+						'units'      => [ 'px', 'em', 'rem' ],
 						'min'        => self::RELATIVE_CSS_UNIT_SUPPORTED_MIN_VALUE,
 						'max'        => 50,
 						'defaultVal' => [
@@ -585,11 +607,10 @@ class Layout_Blog extends Base_Customizer {
 								'desktop' => 'px',
 							],
 						],
-						'units'      => [ 'px', 'em', 'rem' ],
 					],
-					'priority'        => 74,
+					'priority'        => 170,
 					'active_callback' => function () {
-						return get_theme_mod( 'neve_author_avatar', false );
+						return get_theme_mod( 'neve_author_avatar', false ) && $this->is_meta_enabled();
 					},
 					'responsive'      => true,
 				),
@@ -605,11 +626,53 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => false,
 				),
 				array(
-					'label'    => esc_html__( 'Use last updated date instead of the published one', 'neve' ),
-					'section'  => $this->section,
-					'type'     => 'neve_toggle_control',
-					'priority' => 85,
+					'label'           => esc_html__( 'Use last updated date instead of the published one', 'neve' ),
+					'section'         => $this->section,
+					'type'            => 'hidden',
+					'priority'        => 180,
+					'active_callback' => [ $this, 'is_meta_enabled' ],
 				)
+			)
+		);
+
+	}
+
+	/**
+	 * Add controls for post meta.
+	 */
+	private function add_post_meta_controls() {
+		$default       = wp_json_encode( [ 'author', 'date', 'comments' ] );
+		$default_value = neve_get_default_meta_value( 'neve_post_meta_ordering', $default );
+		$this->add_control(
+			new Control(
+				'neve_blog_post_meta_fields',
+				[
+					'sanitize_callback' => 'neve_sanitize_meta_repeater',
+					'default'           => wp_json_encode( $default_value ),
+				],
+				[
+					'label'            => esc_html__( 'Post Meta Order', 'neve' ),
+					'section'          => $this->section,
+					'fields'           => [
+						'hide_on_mobile' => [
+							'type'  => 'checkbox',
+							'label' => __( 'Hide on mobile', 'neve' ),
+						],
+					],
+					'components'       => apply_filters(
+						'neve_meta_filter',
+						array(
+							'author'   => __( 'Author', 'neve' ),
+							'category' => __( 'Category', 'neve' ),
+							'date'     => __( 'Date', 'neve' ),
+							'comments' => __( 'Comments', 'neve' ),
+						)
+					),
+					'allow_new_fields' => 'no',
+					'priority'         => 65,
+					'active_callback'  => [ $this, 'is_meta_enabled' ],
+				],
+				'\Neve\Customizer\Controls\React\Repeater'
 			)
 		);
 	}
@@ -628,22 +691,6 @@ class Layout_Blog extends Base_Customizer {
 		}
 
 		return sanitize_text_field( $value );
-	}
-
-	/**
-	 * Sanitize the pagination type
-	 *
-	 * @param string $value value from the control.
-	 *
-	 * @return string
-	 */
-	public function sanitize_pagination_type( $value ) {
-		$allowed_values = array( 'number', 'infinite', 'jump-to' );
-		if ( ! in_array( $value, $allowed_values, true ) ) {
-			return 'number';
-		}
-
-		return esc_html( $value );
 	}
 
 	/**
@@ -688,11 +735,38 @@ class Layout_Blog extends Base_Customizer {
 	}
 
 	/**
-	 * Callback to show the meta order control.
+	 * Checks if the post meta is enabled.
 	 *
 	 * @return bool
 	 */
-	public function should_show_meta_order() {
+	public function is_meta_enabled() {
+		return in_array( 'title-meta', $this->get_post_elements_order(), true );
+	}
+
+	/**
+	 * Checks if the excerpt is enabled.
+	 *
+	 * @return bool
+	 */
+	public function is_excerpt_enabled() {
+		return in_array( 'excerpt', $this->get_post_elements_order(), true );
+	}
+
+	/**
+	 * Checks if the thumbnail is enabled.
+	 *
+	 * @return bool
+	 */
+	public function is_thumbnail_enabled() {
+		return in_array( 'thumbnail', $this->get_post_elements_order(), true );
+	}
+
+	/**
+	 * Get the post elements order.
+	 *
+	 * @return array
+	 */
+	private function get_post_elements_order() {
 		$default       = array(
 			'thumbnail',
 			'title-meta',
@@ -700,11 +774,8 @@ class Layout_Blog extends Base_Customizer {
 		);
 		$content_order = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default ) );
 		$content_order = json_decode( $content_order, true );
-		if ( ! in_array( 'title-meta', $content_order, true ) ) {
-			return false;
-		}
 
-		return true;
+		return is_array( $content_order ) ? $content_order : $default;
 	}
 
 	/**
@@ -717,6 +788,16 @@ class Layout_Blog extends Base_Customizer {
 
 		return in_array( $blog_layout, [ 'grid', 'covers' ], true );
 	}
+
+	/**
+	 * Checks if the layout is covers.
+	 *
+	 * @return bool
+	 */
+	public function is_covers_layout() {
+		return get_theme_mod( $this->section, 'grid' ) === 'covers';
+	}
+
 
 	/**
 	 * Callback to show masonry control.
@@ -743,29 +824,230 @@ class Layout_Blog extends Base_Customizer {
 		return true;
 	}
 
+
 	/**
-	 * Add typography shortcut.
+	 * Adds design tab controls.
 	 */
-	private function add_typography_shortcut() {
+	private function add_design_controls() {
 		$this->add_control(
 			new Control(
-				'neve_blog_typography_shortcut',
+				'neve_blog_covers_text_color',
 				array(
-					'sanitize_callback' => 'neve_sanitize_text_field',
+					'sanitize_callback' => 'neve_sanitize_colors',
+					'default'           => '#ffffff',
+					'transport'         => 'postMessage',
 				),
 				array(
-					'button_class'     => 'nv-top-bar-menu-shortcut',
-					'text_before'      => __( 'Customize Typography for the Archive page', 'neve' ),
-					'text_after'       => '.',
-					'button_text'      => __( 'here', 'neve' ),
-					'is_button'        => false,
-					'control_to_focus' => 'neve_archive_typography_post_title_accordion_wrap',
-					'shortcut'         => true,
-					'section'          => $this->section,
-					'priority'         => 1000,
+					'label'                 => esc_html__( 'Text Color', 'neve' ),
+					'section'               => $this->section,
+					'priority'              => 220,
+					'default'               => '#ffffff',
+					'active_callback'       => function () {
+						return get_theme_mod( $this->section ) === 'covers';
+					},
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'     => '--color',
+							'selector' => '.neve-main',
+						],
+					],
 				),
-				'\Neve\Customizer\Controls\Button'
+				'Neve\Customizer\Controls\React\Color'
 			)
 		);
+
+		$this->add_control(
+			new Control(
+				'neve_blog_items_border_radius',
+				[
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'transport'         => 'postMessage',
+					'default'           => $this->get_v4_defaults( 'neve_blog_items_border_radius', 0 ),
+				],
+				[
+					'label'                 => esc_html__( 'Border Radius', 'neve' ),
+					'section'               => $this->section,
+					'type'                  => 'neve_range_control',
+					'input_attrs'           => [
+						'min'        => 0,
+						'max'        => 100,
+						'defaultVal' => $this->get_v4_defaults( 'neve_blog_items_border_radius', 0 ),
+					],
+					'priority'              => 190,
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar'   => [
+							'vars'     => '--borderradius',
+							'suffix'   => 'px',
+							'fallback' => '0',
+							'selector' => '.posts-wrapper, .nv-ft-post',
+						],
+						'fallback' => 0,
+						'template' =>
+						'body .cover-post, body .layout-grid .article-content-col .content {
+							    border-radius: {{value}}px;
+					    	}',
+					],
+				],
+				'\Neve\Customizer\Controls\React\Range'
+			)
+		);
+
+		$content_padding_default = $this->get_v4_defaults( 'neve_blog_content_padding', $this->blog_archive_card_padding_default() );
+
+		$this->add_control(
+			new Control(
+				'neve_blog_content_padding',
+				array(
+					'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
+					'transport'         => 'refresh',
+					'default'           => $content_padding_default,
+				),
+				array(
+					'label'       => esc_html__( 'Content Padding', 'neve' ),
+					'section'     => $this->section,
+					'priority'    => 80,
+					'input_attrs' => array(
+						'units' => [ 'px', 'em', 'rem' ],
+						'min'   => 0,
+					),
+					'default'     => $content_padding_default,
+				),
+				'\Neve\Customizer\Controls\React\Spacing'
+			)
+		);
+
+		// If this gets enabled, we remove the toggle.
+		$this->add_control(
+			new Control(
+				'neve_enable_card_style',
+				array(
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => $this->get_v4_defaults( 'neve_enable_card_style', false ),
+				),
+				array(
+					'type'     => $this->is_card_style_enabled() ? 'hidden' : 'neve_toggle_control',
+					'priority' => 0,
+					'section'  => $this->section,
+					'label'    => esc_html__( 'Enable Card Style', 'neve' ),
+				)
+			)
+		);
+
+
+		$card_bg_default = $this->get_v4_defaults( 'neve_blog_grid_card_bg_color', '#333333' );
+		$this->add_control(
+			new Control(
+				'neve_blog_grid_card_bg_color',
+				array(
+					'sanitize_callback' => 'neve_sanitize_colors',
+					'default'           => $card_bg_default,
+					'transport'         => 'postMessage',
+				),
+				array(
+					'label'                 => esc_html__( 'Card Background Color', 'neve' ),
+					'section'               => $this->section,
+					'priority'              => 220,
+					'default'               => $card_bg_default,
+					'active_callback'       => function () {
+						return ( ! $this->is_covers_layout() && $this->is_card_style_enabled() );
+					},
+					'input_attrs'           => [
+						'allow_gradient' => true,
+					],
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar'   => [
+							'vars'     => '--cardbgcolor',
+							'selector' => '.posts-wrapper',
+						],
+						'template' =>
+						'.layout-grid .article-content-col .content {
+							background: {{value}};
+						}',
+					],
+				),
+				'Neve\Customizer\Controls\React\Color'
+			)
+		);
+
+		$card_text_default = $this->get_v4_defaults( 'neve_blog_grid_text_color', '#ffffff' );
+		$this->add_control(
+			new Control(
+				'neve_blog_grid_text_color',
+				array(
+					'sanitize_callback' => 'neve_sanitize_colors',
+					'default'           => $card_text_default,
+					'transport'         => 'postMessage',
+				),
+				array(
+					'label'                 => esc_html__( 'Text Color', 'neve' ),
+					'section'               => $this->section,
+					'priority'              => 230,
+					'default'               => $card_text_default,
+					'active_callback'       => function () {
+						return ( ! $this->is_covers_layout() && $this->is_card_style_enabled() );
+					},
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar'   => [
+							'vars'     => '--cardcolor',
+							'selector' => '.posts-wrapper',
+						],
+						'template' =>
+						'.layout-grid .article-content-col .content, .layout-grid .article-content-col .content a:not(.button), .layout-grid .article-content-col .content li {
+							color: {{value}};
+						}',
+					],
+				),
+				'Neve\Customizer\Controls\React\Color'
+			)
+		);
+
+
+		$shadow_default = $this->get_v4_defaults( 'neve_blog_card_shadow', 0 );
+		$this->add_control(
+			new Control(
+				'neve_blog_card_shadow',
+				[
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'transport'         => 'refresh',
+					'default'           => $shadow_default,
+				],
+				[
+					'label'                 => esc_html__( 'Card Box Shadow', 'neve' ),
+					'section'               => $this->section,
+					'type'                  => 'neve_range_control',
+					'input_attrs'           => [
+						'min'        => 0,
+						'max'        => 5,
+						'defaultVal' => $shadow_default,
+						'step'       => 0.1,
+					],
+					'priority'              => 240,
+					'active_callback'       => [ $this, 'is_card_style_enabled' ],
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'fallback' => 0,
+						'template' =>
+						'body .layout-grid .article-content-col .content {
+							    box-shadow: 0 0 calc({{value}}px * 4) 0 rgba(0,0,0,calc(0.1 + 0.{{value}}));
+					    	}',
+					],
+				],
+				'\Neve\Customizer\Controls\React\Range'
+			)
+		);
+	}
+
+	/**
+	 * Check if the card style is enabled.
+	 *
+	 * @return bool
+	 */
+	public function is_card_style_enabled() {
+		$card_style_default = $this->get_v4_defaults( 'neve_enable_card_style', false );
+		return Mods::get( 'neve_enable_card_style', $card_style_default ) === true;
 	}
 }

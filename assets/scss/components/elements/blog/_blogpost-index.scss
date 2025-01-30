@@ -24,6 +24,7 @@
 	}
 
 	img {
+		width: 100%;
 		box-shadow: var(--boxshadow, none);
 	}
 }
@@ -122,4 +123,17 @@ body:not(.nv-blog-default) {
 			padding: 0 calc(var(--gridspacing, 30px) / 2);
 		}
 	}
+}
+
+.layout-default {
+
+	.default-layout-content {
+		padding: var(--padding, 0);
+	}
+
+	overflow: hidden;
+	border-radius: var(--borderradius);
+	box-shadow: var(--cardboxshadow);
+	background: var(--cardbgcolor);
+	color: var(--cardcolor);
 }

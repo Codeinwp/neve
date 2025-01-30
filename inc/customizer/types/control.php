@@ -60,7 +60,7 @@ class Control {
 	public function __construct( $id, $setting_args, $control_args, $custom_control = null, $partial = null ) {
 		$this->id             = $id;
 		$this->setting_args   = $setting_args;
-		$this->control_args   = $control_args;
+		$this->control_args   = apply_filters( 'neve_customizer_control_args', $control_args, $id );
 		$this->custom_control = $custom_control;
 		$this->partial        = $partial;
 	}

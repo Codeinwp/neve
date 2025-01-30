@@ -8,6 +8,11 @@
 .blog-entry-title {
 
 	@extend %nv-has-h3-typography;
+
+	&.is-h4 {
+
+		@extend %nv-has-h4-typography;
+	}
 }
 
 // === Comment reply title === //

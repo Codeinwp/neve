@@ -68,9 +68,7 @@ const dismiss = async (route: string, action = '', useNonce = '') => {
 
 const SSTryButton: React.FC = () => {
 	const templatesPluginData = window.tpcPluginData as TPCPluginData;
-	const tpcRedirect =
-		templatesPluginData.adminURL +
-		(templatesPluginData.canInstall ? '&onboarding=yes' : '');
+	const tpcRedirect = templatesPluginData.adminURL;
 
 	const [installing, setInstalling] = useState(false);
 	const [activating, setActivating] = useState(false);
@@ -88,7 +86,7 @@ const SSTryButton: React.FC = () => {
 		installing || activating ? 'is-loading' : '',
 	]);
 
-	let buttonLabel = __('Try one of our ready to use Starter Sites', 'neve');
+	let buttonLabel = __('Explore Templates and Start Building Now!', 'neve');
 	if (installing) {
 		buttonLabel = __('Installing', 'neve');
 	}

@@ -70,7 +70,74 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 export const NoToggles = Template.bind({});
+export const WithSubcontrols = Template.bind({});
 NoToggles.args = {
 	customizeValue: ORDERING_NO_TOGGLES,
 	allowsToggle: false,
+};
+
+WithSubcontrols.args = {
+	customizeValue: ORDERING_NO_TOGGLES,
+	allowsToggle: true,
+	components: {
+		'title-meta': {
+			label: 'Title & Meta',
+			controls: {
+				neve_post_cover_container: {
+					type: 'select',
+					choices: {
+						contained: 'Contained',
+						'full-width': 'Full width',
+					},
+				},
+				neve_post_cover_meta_before_title: {
+					type: 'toggle',
+				},
+				neve_single_post_metadata_separator: {
+					label: 'Post meta separator',
+					type: 'text',
+				},
+			},
+		},
+		thumbnail: {
+			label: 'Thumbnail',
+			controls: {
+				neve_post_cover_hide_thumbnail: {
+					label: 'Hide featured image',
+					type: 'toggle',
+				},
+				neve_post_cover_blend_mode: {
+					label: 'Blend mode',
+					type: 'select',
+					choices: {
+						normal: 'Normal',
+						multiply: 'Multiply',
+						screen: 'Screen',
+						overlay: 'Overlay',
+						darken: 'Darken',
+						lighten: 'Lighten',
+						'color-dodge': 'Color Dodge',
+						saturation: 'Saturation',
+						color: 'Color',
+						difference: 'Difference',
+						exclusion: 'Exclusion',
+						hue: 'Hue',
+						luminosity: 'Luminosity',
+					},
+				},
+				neve_post_cover_overlay_opacity: {
+					label: 'Overlay opacity',
+					type: 'range',
+				},
+			},
+		},
+		content: {
+			label: 'Content',
+			controls: [],
+		},
+		tags: {
+			label: 'Tags',
+			controls: [],
+		},
+	},
 };

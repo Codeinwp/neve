@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Neve is a super fast, easily customizable, multi-purpose theme. Perfect for blogs, small business, startups, agencies, firms & e-commerce shops.
 
 == Description ==
-Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
+Neve is a next-generation, ultra-fast WordPress theme designed for top performance, SEO, and Core Web Vitals. Its lightweight codebase and small size ensure minimal overhead and lightning-fast load times. Fully compatible with the block editor, popular page builders (Elementor, Bricks, Oxygen etc), and WooCommerce, it’s perfect for blogs, small businesses, agencies, portfolios, and online stores. With responsive design, multilingual translations, and easy customization options, Neve empowers you to create a future-proof, high-ranking online presence. Discover everything Neve has to offer and explore our powerful premium version at https://themeisle.com/themes/neve/.
 
 == Copyright ==
 Neve WordPress theme, Copyright 2018 Themeisle

@@ -4,6 +4,9 @@
  *
  * @package Neve
  */
+
+use Neve\Core\Migration_Flags;
+
 $title_style = apply_filters( 'neve_title_alignment_style', '', 'normal' );
 if ( ! empty( $title_style ) ) {
 	$title_style = 'style="' . $title_style . '"';
@@ -16,7 +19,7 @@ $pid                 = $current_page instanceof WP_Post ? $current_page->ID : ge
 $specific_hide_title = get_post_meta( $pid, 'neve_meta_disable_title', true );
 
 if ( (int) get_option( 'page_for_posts' ) === $pid || is_archive() ) {
-	$hide_title = get_theme_mod( 'neve_archive_hide_title', false );
+	$hide_title = get_theme_mod( 'neve_archive_hide_title', Migration_Flags::is_new_user_after_v4() );
 }
 
 if ( ! empty( $specific_hide_title ) ) {
