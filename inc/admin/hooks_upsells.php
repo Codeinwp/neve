@@ -270,16 +270,22 @@ class Hooks_Upsells {
 			}
 
 			/* ----- CLOSE BUTTON ----- */
-			.cl-close-button {
+			.cl-modal-dismiss .cl-close-button {
 				position: absolute;
 				top: 10px;
 				right: 10px;
-				font-size: 24px;
-				color: #aaa;
 				cursor: pointer;
+				min-width: 30px;;
+				text-decoration: none;
 			}
-			.cl-close-button:hover {
+
+			.cl-modal-dismiss .cl-close-button:hover {
 				color: #333;
+			}
+
+			.cl-modal-dismiss .cl-close-button span {
+				color: black;
+				font-size: 2rem;
 			}
 
 			/* ----- HEADER / TITLE ----- */
@@ -398,6 +404,12 @@ class Hooks_Upsells {
 
 		<div class="cl-overlay">
 			<div class="cl-modal">
+				<div class="cl-modal-dismiss">
+					<button id="cl-close-modal" class="cl-close-button button button-link">
+						<span class="dashicons dashicons-no-alt" aria-hidden="true"></span>
+						<span class="screen-reader-text"><?php echo esc_html__( 'Close', 'neve' ); ?></span>
+					</button>
+				</div>
 				<div class="cl-modal-header">
 					<span class="dashicons dashicons-star-filled" aria-hidden="true"></span>
 					<h2><?php echo esc_html__( 'Take Your Site to the Next Level', 'neve' ); ?></h2>
@@ -460,6 +472,22 @@ class Hooks_Upsells {
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+			const overlay = document.querySelector('.cl-overlay');
+			if ( ! overlay ) {
+				return;
+			}
+
+			document.getElementById('cl-close-modal')?.addEventListener('click', function() {
+				overlay.style.display = 'none';
+			});
+
+			document.getElementById('cl-open-modal')?.addEventListener('click', function() {
+				overlay.style.display = 'flex';
+			});
+		});
+		</script>
 		<?php
 	}
 
