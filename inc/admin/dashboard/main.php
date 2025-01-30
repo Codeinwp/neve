@@ -743,6 +743,7 @@ class Main {
 			'wp-cloudflare-page-cache'      => [
 				'title'       => __( 'Super Page Cache', 'neve' ),
 				'description' => __( 'Lightning-fast caching made simple', 'neve' ),
+				'hide'        => defined( 'SPC_PRO_PATH' ),
 			],
 			'feedzy-rss-feeds'              => [
 				'title'       => __( 'Feedzy', 'neve' ),
@@ -759,6 +760,11 @@ class Main {
 
 
 		foreach ( $plugins as $slug => $args ) {
+
+			if ( isset( $args['hide'] ) && $args['hide'] === true ) {
+				unset( $plugins[ $slug ] );
+				continue;
+			}
 
 			$action = $this->plugin_helper->get_plugin_state( $slug );
 
