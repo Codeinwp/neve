@@ -1,3 +1,15 @@
+#### [Version 4.0.0](https://github.com/Codeinwp/neve/compare/v3.8.16...v4.0.0) (2025-01-30)
+
+- [Feat] Redesigned theme dashboard with a modern interface and intuitive organization for easier site customization
+- [Feat] Enhanced blog design and customization with new features and better-organized settings
+- [Feat] Reviewed and improved all starter sites in our library for better quality and performance
+- [Feat] New streamlined onboarding experience to help you build your site faster
+- [Feat] Restructured theme options for better clarity and ease of use
+- [Feat] Added informative notices to help identify starter content vs your content
+- Improved customizer ordering controls UX
+- Improved customizer performance
+- Update theme description to reflect current capabilities better
+
 ##### [Version 3.8.16](https://github.com/Codeinwp/neve/compare/v3.8.15...v3.8.16) (2024-12-06)
 
 - Added a NEW Online Course starter site [PRO]
