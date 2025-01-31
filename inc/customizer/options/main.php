@@ -53,7 +53,7 @@ class Main extends Base_Customizer {
 		$panels = array(
 			'neve_layout'     => array(
 				'priority' => 25,
-				'title'    => __( 'Layout', 'neve' ),
+				'title'    => __( 'Global', 'neve' ),
 			),
 			'neve_blog'       => array(
 				'priority' => 25,
