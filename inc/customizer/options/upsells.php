@@ -387,17 +387,19 @@ class Upsells extends Base_Customizer {
 	 */
 	private function section_upsells() {
 
-		$this->add_section(
-			new Section(
-				'neve_free_pro_upsell',
-				array(
-					'priority' => -100,
-					'title'    => esc_html__( 'Neve PRO Features', 'neve' ),
-					'url'      => $this->upsell_url,
-				),
-				'Neve\Customizer\Controls\React\Upsell_Section'
-			)
-		);
+		if ( ! (bool) get_option( 'fresh_site' ) ) {
+			$this->add_section(
+				new Section(
+					'neve_free_pro_upsell',
+					array(
+						'priority' => -100,
+						'title'    => esc_html__( 'Neve PRO Features', 'neve' ),
+						'url'      => $this->upsell_url,
+					),
+					'Neve\Customizer\Controls\React\Upsell_Section'
+				)
+			);
+		}
 
 		$this->add_section(
 			new Section(
