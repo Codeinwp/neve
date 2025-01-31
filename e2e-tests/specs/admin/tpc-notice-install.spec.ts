@@ -25,7 +25,9 @@ test.describe('Dashboard Notice', () => {
 		);
 
 		// Welcome screen
-		await expect(page.locator('h1')).toContainText('Choose a design');
+		await expect(page.locator('h1')).toContainText(
+			'What type of website are you creating?'
+		);
 
 		const categories = await page.locator('.ob-cat-wrap .cat');
 		await expect(categories).toContainText([
