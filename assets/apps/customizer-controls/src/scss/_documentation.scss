@@ -1,25 +1,32 @@
 .control-section.neve-documentation {
-  display: block !important;
-  margin-bottom: 0;
-  margin-top: -1px;
-  .documentation-inner {
-	display: flex;
-  }
-  .neve-customizer-heading {
-	padding: 7px 10px 7px 14px;
-	display: flex;
-	flex-grow: 1;
-	margin: auto;
-	letter-spacing: initial;
-	font-size: 14px;
-	font-weight: 600;
+	display: block !important;
+	margin-bottom: 0;
+	margin-top: -1px;
 
-	&:hover, &:focus-within {
-	  cursor: default;
+	.documentation-inner {
+		display: flex;
+	}
+	.neve-customizer-heading {
+		padding: 5px 15px 5px 18px;
+		display: flex;
+		flex-grow: 1;
+		margin: auto;
+		align-items: center;
+		justify-content: space-between;
+		letter-spacing: initial;
+		font-size: 14px;
+		font-weight: 600;
+		gap: 10px;
+		height: unset;
+
+		&:hover,
+		&:focus-within {
+			cursor: default;
+		}
 	}
 
 	.components-button {
-	  margin-left: auto;
+		height: auto;
+		padding: 9px 15px;
 	}
-  }
 }
