@@ -39,7 +39,7 @@ const App = () => {
 			<Header />
 
 			{/*<Deal />*/}
-			{'starter-sites' !== currentTab && <Notifications />}
+			{/* {'starter-sites' !== currentTab && <Notifications />} */}
 
 			<Container className="flex flex-col lg:flex-row gap-6 h-full grow">
 				<div className="grow">{tabs[currentTab].render(setTab)}</div>

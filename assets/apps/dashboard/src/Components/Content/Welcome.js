@@ -29,7 +29,7 @@ const CustomizerShortcutsCard = () => (
 			</Button>
 		}
 	>
-		<div className="grid sm:grid-cols-2 gap-6">
+		<div className="grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6">
 			{neveDash.customizerShortcuts.map(({ text, link, description }) => (
 				<a
 					href={link}
