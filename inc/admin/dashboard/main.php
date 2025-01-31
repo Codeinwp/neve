@@ -354,6 +354,7 @@ class Main {
 			'tpcPath'                 => defined( 'TIOB_PATH' ) ? TIOB_PATH . 'template-patterns-collection.php' : 'template-patterns-collection/template-patterns-collection.php',
 			'tpcAdminURL'             => admin_url( 'admin.php?page=tiob-starter-sites' ),
 			'tpcOnboardingURL'        => admin_url( 'admin.php?page=neve-onboarding' ),
+			'customizerURL'           => admin_url( 'customize.php' ),
 			'pluginsURL'              => esc_url( admin_url( 'plugins.php' ) ),
 			'getPluginStateBaseURL'   => esc_url( rest_url( '/nv/v1/dashboard/plugin-state/' ) ),
 			'canInstallPlugins'       => current_user_can( 'install_plugins' ),

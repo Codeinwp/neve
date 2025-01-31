@@ -4,10 +4,11 @@ import { LucidePanelsTopLeft } from 'lucide-react';
 
 import Card from '../../Layout/Card';
 import { NEVE_HAS_PRO } from '../../utils/constants';
-import Link from '../Common/Link';
+
 import TransitionWrapper from '../Common/TransitionWrapper';
 import ModuleGrid from './ModuleGrid';
 import PluginsCard from './Sidebar/PluginsCard';
+import Button from '../Common/Button';
 
 export default () => (
 	<TransitionWrapper className="grid gap-6">
@@ -19,19 +20,35 @@ export default () => (
 
 const CustomizerShortcutsCard = () => (
 	<Card
-		title={__('Essential Settings', 'neve')}
+		title={__('Get Started', 'neve')}
 		icon={<LucidePanelsTopLeft size={18} />}
+		className="border border-blue-300"
+		afterTitle={
+			<Button isPrimary href={neveDash.customizerURL}>
+				{__('Go to Customizer', 'neve')}
+			</Button>
+		}
 	>
-		<div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+		<div className="grid sm:grid-cols-2 gap-6">
 			{neveDash.customizerShortcuts.map(({ text, link, description }) => (
-				<div key={link} className="grid gap-1">
-					<Link text={text} url={link} />
+				<a
+					href={link}
+					key={link}
+					className="grid gap-1 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group"
+				>
+					<span
+						className={
+							'text-base text-blue-600 group-hover:text-blue-700 group-hover:underline'
+						}
+					>
+						{text}
+					</span>
 					{description && (
 						<span className="text-gray-600 text-xs">
 							{description}
 						</span>
 					)}
-				</div>
+				</a>
 			))}
 		</div>
 	</Card>
