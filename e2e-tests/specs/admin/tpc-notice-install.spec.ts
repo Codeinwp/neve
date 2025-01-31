@@ -25,17 +25,16 @@ test.describe('Dashboard Notice', () => {
 		);
 
 		// Welcome screen
-		await expect(page.locator('h1')).toContainText(
-			'What type of website are you creating?'
-		);
+		await expect(page.locator('h1')).toContainText('Choose a design');
 
 		const categories = await page.locator('.ob-cat-wrap .cat');
 		await expect(categories).toContainText([
 			'Business',
-			'Personal',
-			'Blogging',
-			'Portfolio',
-			'E-Shop',
+			'Education',
+			'eCommerce',
+			'News',
+			'Non-Profit',
+			'Health',
 		]);
 
 		await page.goto('/wp-admin/index.php');
