@@ -218,42 +218,6 @@ return array(
 	'neve_container_width'                         => '{"mobile":748,"tablet":992,"desktop":1170}',
 	'neve_default_container_style'                 => 'contained',
 	'neve_text_color'                              => '#2b2b2b',
-	'neve_h2_typeface_general'                     =>
-	array(
-		'fontWeight'    => '600',
-		'textTransform' => 'none',
-		'letterSpacing' =>
-		array(
-			'mobile'  => 0,
-			'tablet'  => 0,
-			'desktop' => 0,
-		),
-		'lineHeight'    =>
-		array(
-			'mobile'  => '1.3',
-			'tablet'  => '1.3',
-			'desktop' => '1.3',
-			'suffix'  =>
-			array(
-				'mobile'  => 'em',
-				'tablet'  => 'em',
-				'desktop' => 'em',
-			),
-		),
-		'fontSize'      =>
-		array(
-			'mobile'  => '28',
-			'tablet'  => '34',
-			'desktop' => '46',
-			'suffix'  =>
-			array(
-				'mobile'  => 'px',
-				'tablet'  => 'px',
-				'desktop' => 'px',
-			),
-		),
-		'flag'          => false,
-	),
 	'neve_h3_typeface_general'                     =>
 	array(
 		'fontWeight'    => '600',

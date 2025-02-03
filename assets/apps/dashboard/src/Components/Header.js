@@ -57,7 +57,7 @@ const HeaderTopBar = ({ currentTab, setTab }) => {
 						</span>
 						<Pill type="secondary">
 							{isLicenseValid
-								? __('Pro', 'neve')
+								? __('PRO', 'neve')
 								: __('Free', 'neve')}
 						</Pill>
 						<span className="text-gray-500 font-medium">

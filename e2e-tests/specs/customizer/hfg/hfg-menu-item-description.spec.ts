@@ -28,7 +28,10 @@ test.describe('Menu item description', function () {
 		await page.getByRole('button', { name: 'Add New Category' }).click();
 		await page.goto('wp-admin/nav-menus.php');
 
-		await page.getByRole('button', { name: 'Categories' }).click();
+		await page
+			.locator('.accordion-section-title')
+			.getByText('Categories')
+			.click();
 		await page
 			.locator('#taxonomy-category-tabs')
 			.getByRole('link', { name: 'View All' })

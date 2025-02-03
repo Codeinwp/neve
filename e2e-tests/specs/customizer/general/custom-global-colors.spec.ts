@@ -32,7 +32,14 @@ test.describe('Custom Global Color Control', () => {
 			'/wp-admin/post.php?post=1&action=edit&test_name=custom-global-colors'
 		);
 		await clearWelcome(page);
-		await page.frameLocator('[name="editor-canvas"]').locator('.block-editor-rich-text__editable').first().click();
+		await page.waitForSelector('.block-editor-rich-text__editable');
+		await page
+			.getByText(
+				'Welcome to WordPress. This is your first post. Edit or delete it, then start writing!'
+			)
+			.first()
+			.click({ force: true });
+		await page.locator('#tabs-1-styles').click();
 		await page.getByRole('button', { name: 'Background' }).click();
 		await page.getByRole('option', { name: 'Color: Custom 1' }).click();
 		await page
@@ -68,8 +75,11 @@ test.describe('Custom Global Color Control', () => {
 
 	test('Check the color on frontend', async ({ page }) => {
 		await page.goto('/hello-world/?test_name=custom-global-colors');
+
+		await page.waitForSelector('.nv-content-wrap > p');
+
 		await expect(
-			await page.locator('.nv-content-wrap p').first()
+			await page.locator('.nv-content-wrap > p').first()
 		).toHaveClass(/has-custom-1-background-color/);
 	});
 });
