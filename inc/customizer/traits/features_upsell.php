@@ -40,9 +40,9 @@ trait Features_Upsell {
 	 */
 	private function to_json_features() {
 		return array(
-			'features_list'    => $this->features_list,
-			'title'            => $this->title,
-			'url_page_section' => $this->url_page_section,
+			'features_list' => $this->features_list,
+			'title'         => $this->title,
+			'compare_url'   => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/pricing/#compare', $this->url_page_section ) ),
 		);
 	}
 
@@ -76,7 +76,7 @@ trait Features_Upsell {
 					<?php echo esc_html( $this->button_text ); ?>
 				</a>
 
-				<a href="<?php echo esc_url_raw( 'https://docs.themeisle.com/article/1176-what-is-the-difference-between-neve-and-neve-pro#' . $this->url_page_section ); ?>" class="button button-link" target="_blank" rel="noopener noreferrer">
+				<a href="<?php echo esc_url_raw( tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/pricing/#compare', $this->url_page_section ) ) ); ?>" class="button button-link" target="_blank" rel="noopener noreferrer">
 					<?php echo esc_html__( 'View features comparison', 'neve' ); ?> &rarr;
 				</a>
 			</div>
@@ -114,7 +114,7 @@ trait Features_Upsell {
 				</a>
 			<# } #>
 
-			<a href="https://docs.themeisle.com/article/1176-what-is-the-difference-between-neve-and-neve-pro#{{data.url_page_section}}" class="button button-link" target="_blank" rel="noopener noreferrer">
+			<a href="{{data.compare_url}}" class="button button-link" target="_blank" rel="noopener noreferrer">
 				<?php echo esc_html__( 'View features comparison', 'neve' ); ?> &rarr;
 			</a>
 		</div>
