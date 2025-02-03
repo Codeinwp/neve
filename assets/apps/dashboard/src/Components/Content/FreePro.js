@@ -23,8 +23,8 @@ const FreeProCard = () => (
 				<div className="w-20 text-center text-sm font-medium">
 					{__('Free', 'neve')}
 				</div>
-				<div className="w-20 text-center text-sm font-medium">
-					{__('Pro', 'neve')}
+				<div className="w-20 text-center text-sm font-medium capitalize">
+					{__('PRO', 'neve').toLowerCase()}
 				</div>
 			</div>
 		</div>

@@ -449,13 +449,10 @@ class Hooks_Upsells {
 
 				<div class="cl-quote">
 					<?php
-					echo esc_html__(
-						'I’ve been using Neve by Themeisle for a few years now, and it’s proven to be the best theme I’ve ever built websites on. It’s lightweight, modern, fast, customizable, and works great with Woocommerce stores too.',
-						'neve'
-					);
+					echo esc_html( 'I’ve been using Neve by Themeisle for a few years now, and it’s proven to be the best theme I’ve ever built websites on. It’s lightweight, modern, fast, customizable, and works great with Woocommerce stores too.' );
 					?>
 					<span class="cl-quote-author">
-						— <?php echo esc_html__( 'Ville Ekman', 'neve' ); ?>
+						— <?php echo esc_html( 'Ville Ekman' ); ?>
 					</span>
 				</div>
 			</div>

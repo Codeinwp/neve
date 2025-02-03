@@ -32,7 +32,7 @@ export default ({
 						<h3 className="text-base font-semibold">{label}</h3>
 						{locked && (
 							<Pill className="ml-2 !px-2 !py-1 text-xs bg-blue-100 text-blue-800 rounded">
-								{__('Pro', 'neve')}
+								{__('PRO', 'neve')}
 							</Pill>
 						)}
 					</div>

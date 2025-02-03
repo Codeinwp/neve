@@ -174,8 +174,8 @@ const Notification = ({ data }) => {
 				sprintf(
 					// translators: %1$s: theme name (Neve), %2$s: plugin name (Neve Pro).
 					__('%1$s and %2$s', 'neve'),
-					__('Neve', 'neve'),
-					__('Neve Pro', 'neve')
+					'Neve',
+					'Neve Pro'
 				)
 			)}
 		>
