@@ -207,7 +207,7 @@ export const savePost = async (page: Page) => {
 	await expect(saveButton).toBeVisible();
 	await expect(saveButton).toBeEnabled();
 	await saveButton.click();
-	await page.waitForTimeout(2000);
+	await page.waitForSelector('.components-snackbar');
 };
 
 /**
