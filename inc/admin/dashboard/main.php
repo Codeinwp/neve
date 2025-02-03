@@ -522,7 +522,7 @@ class Main {
 			],
 			[
 				'text'        => __( 'Footer Options', 'neve' ),
-				'description' => __( 'Pro: Custom footer layouts', 'neve' ),
+				'description' => __( 'PRO', 'neve' ) . ': ' . __( 'Custom footer layouts', 'neve' ),
 				'link'        => add_query_arg( [ 'autofocus[panel]' => 'hfg_footer' ], admin_url( 'customize.php' ) ),
 			],
 			[
@@ -577,7 +577,7 @@ class Main {
 						'description' => __( 'Add engaging elements, protect content, and create dynamic layouts with our advanced toolkit.', 'neve' ),
 					],
 					[
-						'title'       => __( 'Otter Blocks PRO', 'neve' ),
+						'title'       => 'Otter Blocks PRO',
 						'description' => __( 'Advanced Gutenberg blocks with animations & visibility controls.', 'neve' ),
 					],
 				],
@@ -726,7 +726,7 @@ class Main {
 	private function get_recommended_plugins() {
 		$plugins = [
 			'otter-blocks'                  => [
-				'title'       => __( 'Otter Blocks', 'neve' ),
+				'title'       => 'Otter Blocks',
 				'description' => __( 'Advanced blocks for modern WordPress editing', 'neve' ),
 			],
 			'templates-patterns-collection' => [
@@ -734,27 +734,27 @@ class Main {
 				'description' => __( 'Import ready-made websites with a single click', 'neve' ),
 			],
 			'wp-full-stripe-free'           => [
-				'title'       => __( 'WP Full Pay', 'neve' ),
+				'title'       => 'WP Full Pay',
 				'description' => __( 'Simple ecommerce solution with Stripe integration', 'neve' ),
 			],
 			'optimole-wp'                   => [
-				'title'       => __( 'Optimole', 'neve' ),
+				'title'       => 'Optimole',
 				'description' => __( 'Smart image optimization and CDN', 'neve' ),
 			],
 			'wp-cloudflare-page-cache'      => [
-				'title'       => __( 'Super Page Cache', 'neve' ),
+				'title'       => 'Super Page Cache',
 				'description' => __( 'Lightning-fast caching made simple', 'neve' ),
 				'hide'        => defined( 'SPC_PRO_PATH' ),
 			],
 			'feedzy-rss-feeds'              => [
-				'title'       => __( 'Feedzy', 'neve' ),
+				'title'       => 'Feedzy',
 				'description' => __( 'RSS feeds aggregator and content curator', 'neve' ),
 			],
 		];
 
 		if ( is_php_version_compatible( '8.1' ) ) {
 			$plugins['hyve-lite'] = [
-				'title'       => __( 'Hyve', 'neve' ),
+				'title'       => 'Hyve',
 				'description' => __( 'AI chatbot for your website', 'neve' ),
 			];
 		}
@@ -1065,7 +1065,7 @@ class Main {
 				</a>
 
 				<span class="nv-admin-title"><?php esc_html_e( 'Neve', 'neve' ); ?></span>
-				<span class="nv-admin-badge"><?php echo $is_using_pro ? esc_html__( 'Pro', 'neve' ) : esc_html__( 'Free', 'neve' ); ?></span>
+				<span class="nv-admin-badge"><?php echo $is_using_pro ? esc_html__( 'PRO', 'neve' ) : esc_html__( 'Free', 'neve' ); ?></span>
 
 				<span class="nv-admin-version"><?php echo esc_html( sprintf( 'v%s', NEVE_VERSION ) ); ?></span>
 			</div>

@@ -38,7 +38,7 @@ const ModuleToggle = ({ slug, moduleData }) => {
 				text={__('These features are available in Neve Pro.', 'neve')}
 			>
 				<Pill className="ml-2 !px-2 !py-1 text-xs bg-blue-100 text-blue-800 rounded">
-					{__('Pro', 'neve')}
+					{__('PRO', 'neve')}
 				</Pill>
 			</Tooltip>
 		);

@@ -71,7 +71,7 @@ class Footer extends Abstract_Builder {
 						'label'             => esc_html__( 'Change Copyright', 'neve' ),
 						'icon'              => 'dashicons-nametag',
 						'url'               => $this->has_valid_addons() ? null : $upgrade_url_copyright,
-						'badge'             => esc_html__( 'Pro', 'neve' ),
+						'badge'             => esc_html__( 'PRO', 'neve' ),
 						'upsellDescription' => sprintf(
 							/* translators: %1$s: opening anchor tag, %2$s: closing anchor tag */
 							__( 'The Neve theme free version doesn\'t support copyright edits. Pro unlocks this and more—%1$sexplore%2$s it when you\'re ready!', 'neve' ),
