@@ -19,6 +19,18 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 4.0.1](https://github.com/Codeinwp/neve/compare/v4.0.0...v4.0.1) (2025-02-03)
+
+- [Feat] Reorganised main customizer panels for better UX
+- [Fix] hide Super Page Cache plugin from dashboard if its pro version is installed
+- Improved UI/UX for the Get Started section in the dashboard page
+- Improved style of customizer sections
+- Updated starter content to use theme defaults for H2 typography
+- Updated Google Fonts and dependencies
+
+
+
+
 #### [Version 4.0.0](https://github.com/Codeinwp/neve/compare/v3.8.16...v4.0.0) (2025-01-30)
 
 - [Feat] Redesigned theme dashboard with a modern interface and intuitive organization for easier site customization
