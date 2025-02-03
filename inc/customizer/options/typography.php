@@ -89,6 +89,10 @@ class Typography extends Base_Customizer {
 	 */
 	private function sections_typography() {
 		$typography_sections = array(
+			'typography_globals_section'   => array(
+				'title'    => __( 'Global', 'neve' ),
+				'priority' => 10,
+			),
 			'typography_font_pair_section' => array(
 				'title'    => __( 'Font presets', 'neve' ),
 				'priority' => 15,

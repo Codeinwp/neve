@@ -32,10 +32,11 @@ test.describe('Dashboard Notice', () => {
 		const categories = await page.locator('.ob-cat-wrap .cat');
 		await expect(categories).toContainText([
 			'Business',
-			'Personal',
-			'Blogging',
-			'Portfolio',
-			'E-Shop',
+			'Education',
+			'eCommerce',
+			'News',
+			'Non-Profit',
+			'Health',
 		]);
 
 		await page.goto('/wp-admin/index.php');

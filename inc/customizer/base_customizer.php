@@ -85,6 +85,7 @@ abstract class Base_Customizer {
 	 */
 	public function init() {
 		add_action( 'customize_register', array( $this, 'register_controls_callback' ) );
+		add_action( 'customize_register', array( $this, 'after_controls_registered' ), PHP_INT_MAX );
 	}
 
 	/**
@@ -104,6 +105,11 @@ abstract class Base_Customizer {
 		$this->change_controls();
 		$this->register_partials();
 	}
+
+	/**
+	 * After all controls are registered.
+	 */
+	public function after_controls_registered() {}
 
 	/**
 	 * Function that should be extended to add customizer controls.
@@ -262,7 +268,6 @@ abstract class Base_Customizer {
 	 */
 	public function add_panel( Panel $panel ) {
 		array_push( $this->panels_to_register, $panel );
-
 	}
 
 	/**

@@ -44,6 +44,7 @@ class Colors_Background extends Base_Customizer {
 				array(
 					'priority' => 27,
 					'title'    => esc_html__( 'Colors & Background', 'neve' ),
+					'panel'    => 'neve_layout',
 				)
 			)
 		);

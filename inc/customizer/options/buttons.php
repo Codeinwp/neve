@@ -42,6 +42,7 @@ class Buttons extends Base_Customizer {
 				array(
 					'priority' => 40,
 					'title'    => esc_html__( 'Buttons', 'neve' ),
+					'panel'    => 'neve_layout',
 				)
 			)
 		);

@@ -32,7 +32,10 @@ test.describe('Custom Global Color Control', () => {
 			'/wp-admin/post.php?post=1&action=edit&test_name=custom-global-colors'
 		);
 		await clearWelcome(page);
-		await page.frameLocator('[name="editor-canvas"]').locator('.block-editor-rich-text__editable').first().click();
+		await page
+			.locator('.block-editor-rich-text__editable')
+			.first()
+			.click({ force: true });
 		await page.getByRole('button', { name: 'Background' }).click();
 		await page.getByRole('option', { name: 'Color: Custom 1' }).click();
 		await page
