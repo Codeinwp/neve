@@ -36,6 +36,7 @@ test.describe('Custom Global Color Control', () => {
 			.locator('.block-editor-rich-text__editable')
 			.first()
 			.click({ force: true });
+		await page.locator('#tabs-1-styles').click();
 		await page.getByRole('button', { name: 'Background' }).click();
 		await page.getByRole('option', { name: 'Color: Custom 1' }).click();
 		await page
