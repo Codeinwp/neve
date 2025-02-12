@@ -270,19 +270,22 @@ class Main {
 
 		$build_path   = get_template_directory_uri() . '/assets/apps/dashboard/build/';
 		$dependencies = ( include get_template_directory() . '/assets/apps/dashboard/build/dashboard.asset.php' );
+		$dash_data    = apply_filters( 'neve_dashboard_page_data', $this->get_localization() );
+
+		$this->register_survey( $dash_data );
 
 		wp_register_style( 'neve-dash-style', $build_path . 'style-dashboard.css', [ 'wp-components', 'neve-components' ], $dependencies['version'] );
 		wp_style_add_data( 'neve-dash-style', 'rtl', 'replace' );
 		wp_enqueue_style( 'neve-dash-style' );
 		wp_register_script( 'neve-dash-script', $build_path . 'dashboard.js', array_merge( $dependencies['dependencies'], [ 'updates' ] ), $dependencies['version'], true );
-		wp_localize_script( 'neve-dash-script', 'neveDash', apply_filters( 'neve_dashboard_page_data', $this->get_localization() ) );
+		wp_localize_script( 'neve-dash-script', 'neveDash', $dash_data );
 		wp_enqueue_script( 'neve-dash-script' );
 
 		if ( function_exists( 'wp_set_script_translations' ) ) {
 			wp_set_script_translations( 'neve-dash-script', 'neve' );
 		}
 
-		do_action( 'themeisle_sdk_dependency_enqueue_script', 'survey' );
+		do_action( 'themeisle_internal_page', 'neve', 'dashboard' );
 	}
 
 	/**
@@ -361,8 +364,6 @@ class Main {
 			'canActivatePlugins'      => current_user_can( 'activate_plugins' ),
 			'deal'                    => $offer->get_localized_data(),
 			'rootUrl'                 => get_site_url(),
-			'daysSinceInstall'        => round( ( time() - get_option( 'neve_install', 0 ) ) / DAY_IN_SECONDS ),
-			'proPluginVersion'        => defined( 'NEVE_PRO_VERSION' ) ? NEVE_PRO_VERSION : '',
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
@@ -1083,5 +1084,56 @@ class Main {
 			</div>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Register the survey.
+	 * 
+	 * @param array $dash_data The dashboard data.
+	 * 
+	 * @return void
+	 */
+	public function register_survey( $dash_data ) {
+		add_filter(
+			'themeisle-sdk/survey/neve',
+			function( $data, $page_slug ) use ( $dash_data ) {
+
+				$install_category    = 0;
+				$install_days_number = intval( ( time() - get_option( 'neve_install', time() ) ) / DAY_IN_SECONDS );
+				
+				if ( 1 < $install_days_number && 8 > $install_days_number ) {
+					$install_category = 7;
+				} elseif ( 8 <= $install_days_number && 31 > $install_days_number ) {
+					$install_category = 30;
+				} elseif ( 30 < $install_days_number && 90 > $install_days_number ) {
+					$install_category = 90;
+				} elseif ( 90 <= $install_days_number ) {
+					$install_category = 91;
+				}
+			
+				$data = array(
+					'environmentId' => 'clr0ply35522h8up0bay2de4y',
+					'attributes'    => array(
+						'plan'                => isset( $dash_data['license'], $dash_data['license']['tier'] ) ? $dash_data['license']['tier'] : 0,
+						'license_status'      => isset( $dash_data['license'], $dash_data['license']['valid'] ) ? $dash_data['license']['valid'] : 'invalid',
+						'days_since_install'  => $install_category,
+						'install_days_number' => $install_days_number,
+						'free_version'        => $dash_data['version'],
+					),
+				);
+
+				if ( isset( $dash_data['license'], $dash_data['license']['key'] ) ) {
+					$data['attributes']['license_key'] = apply_filters( 'themeisle_sdk_secret_masking', $dash_data['license']['key'] );
+				}
+
+				if ( defined( 'NEVE_PRO_VERSION' ) ) {
+					$data['attributes']['pro_version'] = NEVE_PRO_VERSION;
+				}
+
+				return $data;
+			},
+			10,
+			2 
+		);
 	}
 }
