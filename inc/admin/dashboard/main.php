@@ -1097,26 +1097,14 @@ class Main {
 		add_filter(
 			'themeisle-sdk/survey/neve',
 			function( $data, $page_slug ) use ( $dash_data ) {
-
-				$install_category    = 0;
-				$install_days_number = intval( ( time() - get_option( 'neve_install', time() ) ) / DAY_IN_SECONDS );
 				
-				if ( 1 < $install_days_number && 8 > $install_days_number ) {
-					$install_category = 7;
-				} elseif ( 8 <= $install_days_number && 31 > $install_days_number ) {
-					$install_category = 30;
-				} elseif ( 30 < $install_days_number && 90 > $install_days_number ) {
-					$install_category = 90;
-				} elseif ( 90 <= $install_days_number ) {
-					$install_category = 91;
-				}
+				$install_days_number = intval( ( time() - get_option( 'neve_install', time() ) ) / DAY_IN_SECONDS );
 			
 				$data = array(
 					'environmentId' => 'clr0ply35522h8up0bay2de4y',
 					'attributes'    => array(
 						'plan'                => isset( $dash_data['license'], $dash_data['license']['tier'] ) ? $dash_data['license']['tier'] : 0,
 						'license_status'      => isset( $dash_data['license'], $dash_data['license']['valid'] ) ? $dash_data['license']['valid'] : 'invalid',
-						'days_since_install'  => $install_category,
 						'install_days_number' => $install_days_number,
 						'free_version'        => $dash_data['version'],
 					),
