@@ -12,7 +12,6 @@ import selectors from './store/selectors';
 import { NEVE_STORE } from './utils/constants';
 
 import './utils/module-observer';
-import './utils/survey';
 
 maybeAddPolyFills();
 
