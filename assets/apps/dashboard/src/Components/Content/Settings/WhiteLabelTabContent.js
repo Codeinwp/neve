@@ -288,7 +288,7 @@ export default () => {
 						target="_blank"
 						className="!p-0"
 						isLink
-						href={neveDash.upgradeURLModules}
+						href={neveDash.upgradeWhiteLabelURL}
 					>
 						<LucideMessageCircleQuestion size={18} />
 						{__('Available in Agency Plan', 'neve')}
