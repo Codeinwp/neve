@@ -284,8 +284,13 @@ class Woocommerce {
 		add_action( 'admin_footer', array( $this, 'update_woo_width' ) );
 
 		// Wrap content.
-		add_action( 'neve_after_primary_start', array( $this, 'wrap_pages_start' ) );
-		add_action( 'neve_before_primary_end', array( $this, 'wrap_pages_end' ) );
+		if ( function_exists( 'elementor_location_exits' ) && ( elementor_location_exits( 'header' ) ) ) {
+			add_action( 'woocommerce_before_main_content', array( $this, 'wrap_pages_start' ) );
+			add_action( 'woocommerce_after_main_content', array( $this, 'wrap_pages_end' ) );
+		} else {
+			add_action( 'neve_after_primary_start', array( $this, 'wrap_pages_start' ) );
+			add_action( 'neve_before_primary_end', array( $this, 'wrap_pages_end' ) );
+		}
 
 		add_action( 'woocommerce_before_main_content', array( $this, 'wrap_main_content_start' ), 15 );
 		add_action( 'woocommerce_after_main_content', array( $this, 'close_div' ), 15 );
@@ -538,6 +543,10 @@ class Woocommerce {
 		if ( ! is_woocommerce() ) {
 			return;
 		}
+
+		if ( doing_action( 'woocommerce_before_main_content' ) ) {
+			echo '<main id="content" class="neve-main">';
+		}
 		echo '<div class="' . esc_attr( apply_filters( 'neve_container_class_filter', 'container' ) ) . ' shop-container">';
 		echo '<div class="row">';
 	}
@@ -551,6 +560,9 @@ class Woocommerce {
 		}
 		$this->close_div();
 		$this->close_div();
+		if ( doing_action( 'neve_before_primary_end' ) ) {
+			$this->close_div();
+		}
 	}
 
 	/**
