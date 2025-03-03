@@ -102,6 +102,13 @@ class Woocommerce {
 	private $sidebar_manager;
 
 	/**
+	 * Store elementor location flag.
+	 *
+	 * @var bool $is_elementor_location
+	 */
+	private $is_elementor_location = false;
+
+	/**
 	 * Initialize the module.
 	 */
 	public function init() {
@@ -283,22 +290,23 @@ class Woocommerce {
 		add_action( 'admin_init', array( $this, 'set_update_woo_width_flag' ), 9 );
 		add_action( 'admin_footer', array( $this, 'update_woo_width' ) );
 
+		// Handle shop sidebar.
+		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+
 		// Wrap content.
-		if ( function_exists( 'elementor_location_exits' ) && ( elementor_location_exits( 'header' ) ) ) {
+		$this->is_elementor_location = function_exists( 'elementor_location_exits' ) && elementor_location_exits( 'header', true );
+		if ( $this->is_elementor_location ) {
 			add_action( 'woocommerce_before_main_content', array( $this, 'wrap_pages_start' ) );
 			add_action( 'woocommerce_after_main_content', array( $this, 'wrap_pages_end' ) );
 		} else {
 			add_action( 'neve_after_primary_start', array( $this, 'wrap_pages_start' ) );
 			add_action( 'neve_before_primary_end', array( $this, 'wrap_pages_end' ) );
+			add_action( 'woocommerce_before_main_content', array( $this, 'shop_sidebar_left' ) );
+			add_action( 'woocommerce_sidebar', array( $this, 'shop_sidebar_right' ) );
 		}
 
 		add_action( 'woocommerce_before_main_content', array( $this, 'wrap_main_content_start' ), 15 );
 		add_action( 'woocommerce_after_main_content', array( $this, 'close_div' ), 15 );
-
-		// Handle shop sidebar.
-		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
-		add_action( 'woocommerce_before_main_content', array( $this, 'shop_sidebar_left' ) );
-		add_action( 'woocommerce_sidebar', array( $this, 'shop_sidebar_right' ) );
 
 		/**
 		 * Change product page sidebar default position
@@ -531,6 +539,9 @@ class Woocommerce {
 	 * Wrap main content start.
 	 */
 	public function wrap_main_content_start() {
+		if ( $this->is_elementor_location ) {
+			$this->shop_sidebar_left();
+		}
 		$before_shop_classes = apply_filters( 'neve_before_shop_classes', 'nv-index-posts nv-shop col' );
 		echo '<div class="' . esc_attr( $before_shop_classes ) . '">';
 		do_action( 'neve_before_shop_loop_content' );
@@ -559,6 +570,9 @@ class Woocommerce {
 			return;
 		}
 		$this->close_div();
+		if ( $this->is_elementor_location ) {
+			$this->shop_sidebar_right();
+		}
 		$this->close_div();
 		if ( doing_action( 'neve_before_primary_end' ) ) {
 			$this->close_div();
