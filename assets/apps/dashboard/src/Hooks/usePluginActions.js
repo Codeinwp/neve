@@ -148,11 +148,7 @@ const usePluginActions = (slug, activateAfterInstall = false) => {
 						setCurrentCTA('deactivate');
 
 						if (slug === 'templates-patterns-collection') {
-							window.location.href =
-								neveDash.tpcAdminURL +
-								(neveDash.canInstallPlugins
-									? '&onboarding=yes'
-									: '');
+							window.location.href = neveDash.tpcOnboardingURL;
 						}
 					}
 					break;
