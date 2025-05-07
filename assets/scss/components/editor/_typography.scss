@@ -97,17 +97,38 @@ ol {
 
 // === Quotes === //
 .wp-block-quote {
+	margin-top: $spacing-xl;
+	margin-bottom: $spacing-xl;
+	border: solid var(--nv-text-color);
+	border-width: 0 0 0 4px;
+	padding: 0 0 0 $spacing-md;
 
-	.wp-block-quote__citation {
-		font-size: $text-sm;
+
+	p {
+		margin-bottom: $spacing-xs;
+		font-size: $text-lg;
+		font-style: italic;
 	}
 
-	&.is-style-large {
+	.wp-block-quote__citation {
+		font-style: normal;
+		font-size: $text-sm !important;
+		font-weight: 600;
+	}
 
-		p {
-			font-size: $text-lg;
-			font-style: normal;
-		}
+	&.has-text-align-center {
+		border: 0;
+		padding: 0;
+	}
+
+	&.has-text-align-right {
+		border-width: 0 4px 0 0;
+		padding: 0 $spacing-md 0 0;
+	}
+
+	&.is-style-plain {
+		border: 0;
+		padding: 0;
 	}
 }
 
@@ -115,17 +136,23 @@ ol {
 .wp-block-pullquote {
 	margin-top: $spacing-lg;
 	margin-bottom: $spacing-lg;
-	border-top: 4px solid var(--nv-text-color);
-	border-bottom: 4px solid var(--nv-text-color);
+	border: solid var(--nv-text-color);
+	border-width: 4px 0;
 	padding: $spacing-lg $spacing-md;
 
 	p {
 		font-size: $text-xl !important;
 	}
 
-	&__citation {
-		font-size: $text-sm;
-		text-transform: none;
+	blockquote {
+		padding: 0;
+		border: 0;
+	}
+
+	cite {
+		font-style: normal;
+		font-size: $text-sm !important;
+		font-weight: 600;
 	}
 
 	&.is-style-solid-color {
