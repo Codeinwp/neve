@@ -29,6 +29,13 @@ class Upsells extends Base_Customizer {
 	private $upsell_url = '';
 
 	/**
+	 * Scroll to top upsell url
+	 *
+	 * @var string
+	 */
+	private $stt_upsell_url = '';
+
+	/**
 	 * Init function
 	 *
 	 * @return bool|void
@@ -38,8 +45,8 @@ class Upsells extends Base_Customizer {
 			return;
 		}
 
-		$this->upsell_url = esc_url_raw( apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'learnmorebtn' ), 'query' ) ) );
-
+		$this->upsell_url     = esc_url_raw( apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'learnmorebtn' ), 'query' ) ) );
+		$this->stt_upsell_url = esc_url_raw( apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'scrolltotop' ), 'query' ) ) );
 		parent::init();
 
 		add_filter( 'theme_mod_neve_checkout_page_layout', array( $this, 'override_neve_checkout_page_layout_theme_mod' ), 10, 1 );
@@ -407,8 +414,11 @@ class Upsells extends Base_Customizer {
 				array(
 					'priority' => 80,
 					'title'    => esc_html__( 'Scroll To Top', 'neve' ),
+					'cta'      => esc_html__( 'PRO', 'neve' ),
+					'url'      => $this->stt_upsell_url,
 					'panel'    => 'neve_layout',
-				)
+				),
+				'Neve\Customizer\Controls\React\Upsell_Section'
 			)
 		);
 	}
@@ -433,6 +443,11 @@ class Upsells extends Base_Customizer {
 		);
 
 
+		/*
+		 * Deactivated.
+		 * 
+		 * @since 4.1.0
+		 */
 		$this->add_control(
 			new Control(
 				'neve_scroll_to_top_cta_control',
@@ -448,18 +463,6 @@ class Upsells extends Base_Customizer {
 					'use_primary' => 'true',
 				],
 				'Neve\Customizer\Controls\Simple_Upsell'
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_scroll_to_top_upsell_control',
-				[ 'sanitize_callback' => 'sanitize_text_field' ],
-				[
-					'section'  => 'neve_scroll_to_top_upsell',
-					'priority' => 2,
-				],
-				'Neve\Customizer\Controls\Upsells\Scroll_To_Top_Control'
 			)
 		);
 
