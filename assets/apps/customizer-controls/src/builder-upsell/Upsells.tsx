@@ -12,31 +12,21 @@ const Upsells: React.FC<Props> = ({ control }) => {
 	const { title, url, cta } = params;
 
 	if (
-		window?.NeveReactCustomize?.deal?.active &&
-		window?.NeveReactCustomize?.deal?.customizerBannerStoreUrl &&
-		window?.NeveReactCustomize?.deal?.customizerBannerUrl
+		window?.NeveReactCustomize?.blackFriday?.saleUrl &&
+		window?.NeveReactCustomize?.blackFriday?.bannerSrc
 	) {
 		return (
 			<div className="upsell-inner">
 				<a
-					href={
-						window?.NeveReactCustomize?.deal
-							?.customizerBannerStoreUrl
-					}
+					href={window?.NeveReactCustomize?.blackFriday?.saleUrl}
 					target="_blank"
 					rel="external noreferrer noopener"
 					style={{ width: '100%', lineHeight: '0' }}
 				>
 					<img
-						src={
-							window?.NeveReactCustomize?.deal
-								?.customizerBannerUrl
-						}
-						alt={
-							window?.NeveReactCustomize?.deal
-								?.customizerBannerAlt
-						}
+						src={window?.NeveReactCustomize?.blackFriday?.bannerSrc}
 						style={{ width: '100%' }}
+						alt={window?.NeveReactCustomize?.blackFriday?.message}
 					/>
 				</a>
 			</div>
