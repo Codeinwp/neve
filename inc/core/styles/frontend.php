@@ -818,6 +818,19 @@ class Frontend extends Generator {
 			'selectors' => '.nv-single-post-wrap',
 			'rules'     => $spacing_rules,
 		];
+		
+		$this->_subscribers['.nv-thumb-wrap img'] = [
+			'aspect-ratio' => [
+				'key'     => 'neve_post_thumbnail_aspect_ratio',
+				'default' => 'original',
+				'filter'  => function ( $css_prop, $value, $meta, $device ) {
+					if ( $value === 'original' ) {
+						return '';
+					}
+					return sprintf( '%s: %s; object-fit: cover;', $css_prop, str_replace( '-', '/', $value ) );
+				},
+			],
+		];
 	}
 
 	/**
