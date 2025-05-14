@@ -19,6 +19,14 @@ class Font_Family extends \WP_Customize_Control {
 	 * @var string
 	 */
 	public $type = 'neve_font_family_control';
+
+	/**
+	 * The theme mod to be used for color.
+	 * 
+	 * @var string
+	 */
+	public $color_setting = '';
+
 	/**
 	 * Additional arguments passed to JS.
 	 *
@@ -29,8 +37,9 @@ class Font_Family extends \WP_Customize_Control {
 	 * Send to JS.
 	 */
 	public function json() {
-		$json                = parent::json();
-		$json['input_attrs'] = $this->input_attrs;
+		$json                  = parent::json();
+		$json['input_attrs']   = $this->input_attrs;
+		$json['color_setting'] = $this->color_setting;
 		return $json;
 	}
 
