@@ -59,18 +59,20 @@
 // === Quotes === //
 blockquote {
 	margin: $spacing-xl 0;
-	border-color: var(--nv-text-color);
-	border-style: solid;
+	border: solid var(--nv-text-color);
 	border-width: 0 0 0 4px;
 	padding: 0 0 0 $spacing-md;
 
 	p {
 		margin-bottom: $spacing-xs;
+		font-size: $text-lg;
+		font-style: italic;
 	}
 
 	cite {
 		font-style: normal;
 		font-size: $text-sm !important;
+		font-weight: 600;
 	}
 
 	&.has-text-align-center {
@@ -83,24 +85,17 @@ blockquote {
 		padding: 0 $spacing-md 0 0;
 	}
 
-	&.is-style-large {
+	&.is-style-plain {
 		border: 0;
 		padding: 0;
-
-		&.wp-block-quote > p {
-			margin-bottom: $spacing-md;
-			font-style: normal;
-			font-size: $text-lg;
-		}
 	}
 }
 
 // === Pull Quotes === //
 .wp-block-pullquote {
-	margin-top: $spacing-lg;
-	margin-bottom: $spacing-lg;
-	border-top: $base-border-strong;
-	border-bottom: $base-border-strong;
+	margin: $spacing-lg 0;
+	border: solid var(--nv-text-color);
+	border-width: 4px 0;
 	padding: $spacing-lg $spacing-md;
 
 	p {
@@ -108,9 +103,8 @@ blockquote {
 	}
 
 	blockquote {
-		padding-left: 0;
-		border-left: 0;
-		margin: 0;
+		padding: 0;
+		border: 0;
 	}
 
 	&.alignleft {
