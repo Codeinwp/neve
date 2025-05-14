@@ -1159,7 +1159,7 @@ class Main {
 		$config['message']  = sprintf( $message_template, '<strong>', $discount, '</strong>', $product_label );
 		$config['sale_url'] = add_query_arg(
 			$url_params,
-			tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/neve-bf', 'bfcm', 'otter' ) )
+			tsdk_translate_link( tsdk_utmify( 'https://themeisle.link/neve-bf', 'bfcm', 'neve' ) )
 		);
 
 		return $config;
