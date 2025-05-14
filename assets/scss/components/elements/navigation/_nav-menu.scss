@@ -136,8 +136,8 @@
 		}
 
 		.caret svg {
-			width: 1em;
-			height: 1em;
+			width: var(--smiconsize, 1em);
+			height: var(--smiconsize, 1em);
 		}
 
 		.caret-wrap {
