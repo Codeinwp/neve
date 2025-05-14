@@ -71,7 +71,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		if ( self::$add_sidebar_accessibility_style ) {
 			return;
 		}
-		echo '<style>' . $this->get_sidebar_and_accessibility_style() . '</style>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<style>' . $this->get_accessibility_style() . '</style>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		self::$add_sidebar_accessibility_style = true;
 	}
 
@@ -218,24 +218,14 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	/**
 	 * Get sidebar inline styles and accessibility
 	 */
-	public function get_sidebar_and_accessibility_style() {
-		/* Showing Menu Sidebar animation css. */
-		$sidebar_animation_css  = '.is-menu-sidebar .header-menu-sidebar { visibility: visible; }';
-		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_slide_left .header-menu-sidebar { transform: translate3d(0, 0, 0); left: 0; }';
-		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_slide_right .header-menu-sidebar { transform: translate3d(0, 0, 0); right: 0; }';
-		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_pull_right .header-menu-sidebar, .is-menu-sidebar.menu_sidebar_pull_left .header-menu-sidebar { transform: translateX(0); }';
-		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_dropdown .header-menu-sidebar { height: auto; }';
-		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_dropdown .header-menu-sidebar-inner { max-height: 400px; padding: 20px 0; }';
-		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_full_canvas .header-menu-sidebar { opacity: 1; }';
-		$sidebar_animation_css .= '.header-menu-sidebar .menu-item-nav-search:not(.floating) { pointer-events: none; }';
-		$sidebar_animation_css .= '.header-menu-sidebar .menu-item-nav-search .is-menu-sidebar { pointer-events: unset; }';
+	public function get_accessibility_style() {
 		/* Accessibility css. */
 		$accessibility_caret_css  = '.nav-ul li:focus-within .wrap.active + .sub-menu { opacity: 1; visibility: visible; }';
 		$accessibility_caret_css .= '.nav-ul li.neve-mega-menu:focus-within .wrap.active + .sub-menu { display: grid; }';
 		$accessibility_caret_css .= '.nav-ul li > .wrap { display: flex; align-items: center; position: relative; padding: 0 4px; }';
 		$accessibility_caret_css .= '.nav-ul:not(.menu-mobile):not(.neve-mega-menu) > li > .wrap > a { padding-top: 1px }';
 
-		return Dynamic_Css::minify_css( $sidebar_animation_css . $accessibility_caret_css );
+		return Dynamic_Css::minify_css( $accessibility_caret_css );
 	}
 
 	/**
