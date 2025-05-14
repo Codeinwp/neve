@@ -292,10 +292,35 @@ class Typography extends Base_Customizer {
 					'input_attrs'           => [
 						'default_is_inherit' => true,
 					],
+					'color_setting'         => Config::MODS_COLOR_HEADINGS,
 				),
 				'\Neve\Customizer\Controls\React\Font_Family'
 			)
 		);
+
+		$this->add_control(
+			new Control(
+				Config::MODS_COLOR_HEADINGS,
+				array(
+					'transport'         => $this->selective_refresh,
+					'sanitize_callback' => 'neve_sanitize_colors',
+					'default'           => 'var(--nv-text-color)',
+				),
+				array(
+					'section'               => 'neve_typography_headings',
+					'type'                  => 'hidden',
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar' => [
+							'vars'     => '--headingcolor',
+							'selector' => 'body',
+						],
+					],
+				)
+			)
+		);
+
+		
 
 		$selectors = neve_get_headings_selectors();
 		$priority  = 20;

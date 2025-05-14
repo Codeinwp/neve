@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { lazy, Suspense, useEffect, useState } from '@wordpress/element';
 import { Spinner } from '@wordpress/components';
 import { VariantSelector } from './VariantSelector';
+import ColorComponent from '../color/ColorComponent';
 
 const FontFamilySelector = lazy(() => import('./FontFamilySelector'));
 
@@ -100,6 +101,10 @@ const TypefaceComponent = ({ control }) => {
 		}
 	};
 
+	const hasColorControl =
+		!!control.params.color_setting &&
+		wp.customize.control(control.params.color_setting);
+
 	return (
 		<>
 			{control.params.label && (
@@ -122,7 +127,16 @@ const TypefaceComponent = ({ control }) => {
 								}
 								systemFonts={controlParams.system}
 								maybeGetTypekit={maybeGetTypekitFont}
-							/>
+							>
+								{hasColorControl && (
+									<ColorComponent
+										isCompound
+										control={wp.customize.control(
+											control.params.color_setting
+										)}
+									/>
+								)}
+							</FontFamilySelector>
 							{variants && (
 								<VariantSelector
 									setting={variants}
