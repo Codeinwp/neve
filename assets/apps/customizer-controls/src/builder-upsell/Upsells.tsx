@@ -9,7 +9,7 @@ type Props = {
 
 const Upsells: React.FC<Props> = ({ control }) => {
 	const { params } = control;
-	const { title, url } = params;
+	const { title, url, cta } = params;
 
 	if (
 		window?.NeveReactCustomize?.deal?.active &&
@@ -55,7 +55,7 @@ const Upsells: React.FC<Props> = ({ control }) => {
 							href={url}
 							isPrimary
 						>
-							{__('Learn More', 'neve')}
+							{cta || __('Learn More', 'neve')}
 							<span className="components-visually-hidden">
 								{__('(opens in a new tab)', 'neve')}
 							</span>
