@@ -14,6 +14,7 @@ const FontFamilySelector = ({
 	inheritDefault,
 	maybeGetTypekit,
 	systemFonts,
+	children,
 }) => {
 	const [visible, setVisible] = useState(false);
 	const [search, setSearch] = useState('');
@@ -169,40 +170,47 @@ const FontFamilySelector = ({
 			<span className="customize-control-title">
 				{__('Font Family', 'neve')}
 			</span>
-			<Button
-				className="font-family-selector-toggle"
-				isSecondary
-				onClick={() => {
-					setVisible(true);
-				}}
-			>
-				<span className="ff-name">
-					{selected ||
-						(inheritDefault
-							? __('Inherit', 'neve')
-							: __('Default', 'neve'))}
-				</span>
-				<span
-					className="ff-preview"
-					style={{
-						fontFamily: font || defaultFontface,
+			<div className="font-family-selector-content-wrap">
+				<Button
+					className="font-family-selector-toggle"
+					isSecondary
+					onClick={() => {
+						setVisible(true);
 					}}
 				>
-					Abc
-				</span>
-				{visible && (
-					<Popover
-						position="bottom left"
-						onFocusOutside={() => {
-							setVisible(false);
-							setSearch('');
+					<span className="ff-name">
+						{selected ||
+							(inheritDefault
+								? __('Inherit', 'neve')
+								: __('Default', 'neve'))}
+					</span>
+					<span
+						className="ff-preview"
+						style={{
+							fontFamily: font || defaultFontface,
 						}}
-						inline={true}
 					>
-						{fonts ? getFontList() : __('In Progress', 'neve')}
-					</Popover>
+						Abc
+					</span>
+					{visible && (
+						<Popover
+							position="bottom left"
+							className="neve-font-family-selector-popover"
+							onFocusOutside={() => {
+								setVisible(false);
+								setSearch('');
+							}}
+						>
+							{fonts ? getFontList() : __('In Progress', 'neve')}
+						</Popover>
+					)}
+				</Button>
+				{children && (
+					<div className="font-family-selector-children">
+						{children}
+					</div>
 				)}
-			</Button>
+			</div>
 		</div>
 	);
 };

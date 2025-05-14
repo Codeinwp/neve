@@ -1,4 +1,4 @@
-.neve-font-family-control {
+.neve-font-family-control, .neve-font-family-selector-popover {
 
 	.font-family-selector-toggle {
 		width: 100%;
@@ -87,6 +87,8 @@
 
 		.load-more {
 			padding: 10px 0;
+			display: flex;
+			justify-content: center;
 
 			svg {
 				fill: #0073aa;
@@ -147,5 +149,15 @@
 				}
 			}
 		}
+	}
+
+	.font-family-selector-content-wrap {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+	}
+
+	.neve-control-header {
+		margin: 0;
 	}
 }

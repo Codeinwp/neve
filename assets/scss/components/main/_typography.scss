@@ -27,6 +27,7 @@ h5,
 h6 {
 	margin-bottom: $spacing-lg;
 	font-family: var(--headingsfontfamily), var(--nv-fallback-ff);
+	color: var(--headingcolor, var(--nv-text-color));
 }
 
 p {
