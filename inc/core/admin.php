@@ -495,7 +495,7 @@ class Admin {
 		$onboarding_starter_sites_btn = sprintf(
 			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
 			esc_url( $ob_btn_link ),
-			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( 'Explore Templates and Start Building Now!', 'neve' ) ) )
+			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( "Let's Get Started with Starter Templates", 'neve' ) ) )
 		);
 
 		$onboarding_notice_exit_btn = sprintf(
@@ -506,27 +506,24 @@ class Admin {
 			__( 'I want to build this website from scratch', 'neve' )
 		);
 
-		$onboarding_thank_you_label = sprintf(
+		$onboarding_title_label = sprintf(
 			// translators: %s: the name of the theme (Neve Theme).
 			__( 'Thanks for downloading %s', 'neve' ),
 			__( 'Neve Theme', 'neve' )
 		) . ' 🎉';
-		$onboarding_title_label     = __( 'Create a Unique Site, Your Way', 'neve' );
-		$onboarding_dashboard_label = __( 'Building your site shouldn\'t feel overwhelming. Choose a starter site, make it your own, and launch your website faster than ever before.', 'neve' );
+		$onboarding_dashboard_label = __( 'Explore a vast library of pre-designed sites within Neve. Visit our constantly growing collection of demos to find the perfect starting point for your project.', 'neve' );
 
 		$notice_starter_sites_container = sprintf(
 			'
-			<span class="nv-notice-thank-you">%1$s</span>
-			<h2 class="nv-notice-title">%2$s</h2>
-			<p class="about-description">%3$s</h3>
+			<h2 class="nv-notice-title">%1$s</h2>
+			<p class="about-description">%2$s</h3>
 			<div class="nv-notice-actions">
 				<div id="neve-ss-install">
-					%4$s
+					%3$s
 				</div>
-				%5$s
+				%4$s
 			</div>
 			',
-			$onboarding_thank_you_label,
 			$onboarding_title_label,
 			$onboarding_dashboard_label,
 			$onboarding_starter_sites_btn,
@@ -537,6 +534,19 @@ class Admin {
 			'<img src="%1$s"/>',
 			esc_url( $this->get_notice_picture() )
 		);
+
+		$elementor_logo = '<img src="' . esc_url( get_template_directory_uri() ) . '/assets/img/elementor.svg" />';
+		$gutenberg_logo = '<img src="' . esc_url( get_template_directory_uri() ) . '/assets/img/gutenberg.svg" />';
+
+		$notice_picture .= '<div class="overlay">';
+		$notice_picture .= '<span>';
+		$notice_picture .= '<strong>30+</strong> ' . __( 'Starter Sites', 'neve' );
+		$notice_picture .= '</span>';
+		$notice_picture .= '<div class="builder-logos">';
+		$notice_picture .= '<div class="builder-logo">' . $elementor_logo . '</div>';
+		$notice_picture .= '<div class="builder-logo">' . $gutenberg_logo . '</div>';
+		$notice_picture .= '</div>';
+		$notice_picture .= '</div>';
 
 		$style = '
 		.nv-notice-wrapper .nv-notice-title {
@@ -574,8 +584,51 @@ class Admin {
 			margin-top: 30px;
 		}
 		.nv-notice-column-container img {
-			border: 1px solid #f3f4f5;
-			max-height: 300px;
+			max-height: 350px;
+		}
+		.nv-notice-image {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.nv-notice-image .overlay {
+			position: absolute;
+			bottom: 7px;
+			right: 15px;
+			background: rgba(0, 0, 0, 0.75);
+			color: white;
+			padding: 8px 8px 8px 16px;
+			border-radius: 50px;
+			font-weight: 500;
+			font-size: 14px;
+			backdrop-filter: blur(4px);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+			z-index: 2;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.nv-notice-image .overlay .builder-logos {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.nv-notice-image .overlay .builder-logo img {
+			width: 30px;
+			border-radius: 100%;
+			border: 2px solid #fff;
+			background: #fff;
+		}
+
+		.nv-notice-image .builder-logo {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 		.nv-notice-column-container {
 			display: flex;
@@ -585,17 +638,35 @@ class Admin {
 		.nv-notice-column-container .button.button-hero:is( .button-primary, .button-link ) {
 			margin: 0px;
 			white-space: normal;
-			text-align: center;
 			line-height: 1.2;
 			padding: 12px 36px;
+			text-align: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: all 0.2s ease-in-out;
 		}
+
 		.nv-notice-column-container .button.button-hero:is( .button-primary ) {
-			background-color: rgb(69, 89, 217);
+			background: linear-gradient(90deg, #4559d9 0%,#6475e4 100%);
+			border: 0;
+    	box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
 		}
+		
+		.nv-notice-column-container .button.button-hero:is( .button-primary ):hover {
+			box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
+    	transform: translateY(-1px);
+		}
+
 		.nv-notice-column-container .button.button-hero:is( .button-link ) {
 			padding: 12px 7px;
 			color: #72777c;
 			text-decoration: none;
+		}
+
+		.nv-notice-column-container .button.button-hero:is( .button-link ):hover {
+			color:#5d6165;
+			background: transparent;
 		}
 		.nv-notice-column-container .nv-notice-column {
 			display: flex;
@@ -611,23 +682,20 @@ class Admin {
 		.nv-notice-starter-sites {
 			max-width: 750px;
 		}
-		.nv-notice-thank-you {
-			color:#3b5de6;
-			font-size:14px;
-			font-style:normal;
-			font-weight:400;
-			margin: 0;
-			padding: 9px 0 4px;
-		}
 		@media (max-width: 1200px) {
 			.nv-notice-column-container {
-				flex-direction: column-reverse;
+				flex-direction: column;
 				gap: 10px;
 				text-align: center;
 				align-items: center;
 			}
 			.nv-notice-column-container .nv-notice-column {
 				align-items: center;
+			}
+
+			.nv-notice-actions {
+				display: grid;
+				gap: 10px;
 			}
 		}
 		@media (max-width: 480px) {
@@ -653,10 +721,6 @@ class Admin {
 			animation-duration: 2000ms;
 			animation-iteration-count: infinite;
 			animation-timing-function: linear;
-		}
-		.notice:has(.nv-notice-thank-you) {
-			border-left-width: 2px;
-			border-left-color: #c3c4c7;
 		}
 		';
 

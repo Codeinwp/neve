@@ -145,6 +145,8 @@ class Core_Loader {
 	 * @access  private
 	 */
 	private function load_modules() {
+		do_action( 'neve_before_modules_load' );
+
 		$factory = new Factory( $this->features );
 		$factory->load_modules();
 	}
