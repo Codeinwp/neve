@@ -33,6 +33,13 @@ class Upsell_Section extends \WP_Customize_Section {
 	public $url = '';
 
 	/**
+	 * Button text.
+	 * 
+	 * @var string
+	 */
+	public $cta = '';
+
+	/**
 	 * Gather the parameters passed to client JavaScript via JSON.
 	 *
 	 * @return array The array to be exported to the client as JSON.
@@ -41,6 +48,7 @@ class Upsell_Section extends \WP_Customize_Section {
 	public function json() {
 		$json        = parent::json();
 		$json['url'] = $this->url;
+		$json['cta'] = $this->cta;
 		return $json;
 	}
 
