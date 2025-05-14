@@ -1,36 +1,36 @@
 ul.page-numbers {
 	display: flex;
 	flex-wrap: wrap;
+	gap: $spacing-md;
+}
 
-	li {
-		margin-bottom: $spacing-sm;
-	}
+.page-numbers {
 
-	input[type="submit"] {
+	[type="submit"] {
 		all: unset;
 		cursor: pointer;
 	}
 
 	form {
 		display: flex;
+		gap: $spacing-xs;
 	}
 
 	.page-input {
 		line-height: 1;
-		margin-right: $spacing-xs;
 		padding: 8px 15px;
 		font-size: var(--bodyfontsize);
+		width: 75px;
 	}
 
 	a,
 	span,
 	input[type="submit"] {
 		line-height: 1;
-		margin-right: $spacing-md;
 		background: var(--nv-light-bg);
 		border-radius: 3px;
 		padding: 12px 15px;
-		color: var(--nv-text-color);
+		color: inherit;
 		display: block;
 	}
 
