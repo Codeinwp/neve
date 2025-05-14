@@ -210,6 +210,31 @@ class Elementor extends Page_Builder_Base {
 			return;
 		}
 
+		// Latest Elementor versions changed how they treat the theme locations.
+		// We need to rebuild the markup so we don't break the layout.
+		// @since 4.1
+		if ( ! $this->is_elementor_editor() ) {
+				add_action(
+					'elementor/theme/after_do_header',
+					function () {
+						do_action( 'neve_before_primary' );
+						echo '<main id="content" class="neve-main">';
+						do_action( 'neve_after_primary_start' );
+					},
+					PHP_INT_MAX
+				);
+			
+				add_action(
+					'elementor/theme/before_do_footer',
+					function () {
+						do_action( 'neve_before_primary_end' );
+						echo '</main><!--/.neve-main-->';
+						do_action( 'neve_after_primary' );
+					},
+					PHP_INT_MIN
+				);
+		}
+
 		// Override theme templates.
 		add_action( 'neve_do_top_bar', array( $this, 'do_header' ), 0 );
 		add_action( 'neve_do_header', array( $this, 'do_header' ), 0 );
@@ -539,5 +564,20 @@ class Elementor extends Page_Builder_Base {
 		$elementor_overrides = self::is_elementor_template( $elementor_template_type );
 
 		return ! $elementor_overrides;
+	}
+
+	/**
+	 * Check if Elementor Editor.
+	 *
+	 * @since  4.1
+	 *
+	 * @return bool
+	 */
+	private function is_elementor_editor() {
+		if ( ( isset( $_REQUEST['action'] ) && 'elementor' === $_REQUEST['action'] ) || isset( $_REQUEST['elementor-preview'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			return true;
+		}
+
+		return false;
 	}
 }
