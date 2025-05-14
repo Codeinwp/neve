@@ -43,8 +43,10 @@ function autoHideModuleSubMenuPages() {
 		 */
 		const isModuleEnabled =
 			select('neve-dashboard').getModuleStatus('custom_layouts');
+		const isValid =
+			select('neve-dashboard').getLicense()?.valid === 'valid';
 
-		if (isModuleEnabled && !clLinkElem) {
+		if (isModuleEnabled && isValid && !clLinkElem) {
 			clLinkElem = appendNewSubMenuPage(
 				'.toplevel_page_neve-welcome .wp-submenu a[href*="customize.php"]',
 				window?.neveDash?.moduleObserver?.customLayouts
