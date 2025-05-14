@@ -42,7 +42,7 @@ trait Features_Upsell {
 		return array(
 			'features_list' => $this->features_list,
 			'title'         => $this->title,
-			'compare_url'   => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/pricing/#compare', $this->url_page_section ) ),
+			'compare_url'   => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/#compare', $this->url_page_section ) ),
 		);
 	}
 
@@ -76,7 +76,7 @@ trait Features_Upsell {
 					<?php echo esc_html( $this->button_text ); ?>
 				</a>
 
-				<a href="<?php echo esc_url_raw( tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/pricing/#compare', $this->url_page_section ) ) ); ?>" class="button button-link" target="_blank" rel="noopener noreferrer">
+				<a href="<?php echo esc_url_raw( tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/#compare', $this->url_page_section ) ) ); ?>" class="button button-link" target="_blank" rel="noopener noreferrer">
 					<?php echo esc_html__( 'View features comparison', 'neve' ); ?> &rarr;
 				</a>
 			</div>
