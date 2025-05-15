@@ -132,9 +132,16 @@ class MenuIcon extends Abstract_Component {
 	 * @return mixed|string
 	 */
 	public function add_menu_icon_classes( $class = '', $icon = '' ) {
+		$values = [ 'donner', 'dots', 'wave', 'svg' ]; 
+
 		if ( empty( $icon ) ) {
 			$icon = Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' );
 		}
+
+		if ( ! in_array( $icon, $values, true ) ) {
+			$icon = 'default';
+		}
+
 		if ( $icon !== 'default' ) {
 			$add_class = 'hamburger--' . $icon;
 			if ( strpos( $class, $add_class ) === false ) {
@@ -207,110 +214,120 @@ JS;
 	 */
 	private function get_menu_style( $menu_icon ) {
 		// We don't add any css for the default option.
-		if ( ! in_array( $menu_icon, [ 'arrow', 'donner', 'dots', 'minus', 'vortex', 'squeeze', 'svg' ] ) ) {
+		if ( ! in_array( $menu_icon, [ 'donner', 'dots', 'wave', 'svg' ] ) ) {
 			return '';
 		}
 
 		// Basic styles for custom animations
 		$css = <<<CSS
 			.hamburger {
-				 transition-property: opacity, filter;
-				 transition-duration: 0.5s;
-				 transition-timing-function: linear;
+				transition-property: opacity, filter;
+				transition-duration: 0.5s;
+				transition-timing-function: linear;
 			}
-			.hamburger .hamburger-inner, .hamburger .hamburger-inner::before, .hamburger .hamburger-inner::after {
-				 background-color: currentColor;
-			}
-			.hamburger-box {
-				 width: 15px;
-				 height: 12px;
-				 display: inline-block;
-				 position: relative;
-			}
-			.hamburger-inner {
-				 display: block;
-				 top: 50%;
-				 margin-top: -1px;
-			}
-			.hamburger-inner, .hamburger-inner:before, .hamburger-inner:after {
-				 width: 15px;
-				 height: 2px;
-				 background-color: currentColor;
-				 border-radius: 2px;
-				 position: absolute;
-				 transition-property: transform;
-				 transition-duration: 0.5s;
-				 transition-timing-function: ease;
-			}
-			.hamburger-inner:before, .hamburger-inner:after {
-				 content: "";
-				 display: block;
-			}
-			.hamburger-inner:before {
-				 top: -5px;
-			}
-			.hamburger-inner:after {
-				 bottom: -5px;
-			}
-CSS;
 
-		// Arrow style
-		if ( $menu_icon === 'arrow' ) {
-			$css .= <<<CSS
-				.is-active .hamburger--arrow .hamburger-inner:before, .hamburger--arrow.is-active .hamburger-inner:before {
-					 transform: translate3d(-3px, 1px, 0) rotate(-45deg) scale(0.7, 1);
-				}
-				.is-active .hamburger--arrow .hamburger-inner:after, .hamburger--arrow.is-active .hamburger-inner:after {
-					 transform: translate3d(-3px, -1px, 0) rotate(45deg) scale(0.7, 1);
-				}
+			.hamburger .hamburger-inner, 
+			.hamburger .hamburger-inner::before, 
+			.hamburger .hamburger-inner::after {
+					background-color: currentColor;
+			}
+
+			.hamburger-box {
+					width: 15px;
+					height: 12px;
+					display: inline-block;
+					position: relative;
+			}
+
+			.hamburger-inner {
+					display: block;
+					top: 50%;
+					margin-top: -1px;
+			}
+
+			.hamburger-inner, 
+			.hamburger-inner:before, 
+			.hamburger-inner:after {
+					width: 15px;
+					height: 2px;
+					background-color: currentColor;
+					border-radius: 2px;
+					position: absolute;
+					transition-property: transform;
+					transition-duration: 0.5s;
+					transition-timing-function: ease;
+			}
+
+			.hamburger-inner:before, 
+			.hamburger-inner:after {
+					content: "";
+					display: block;
+			}
+
+			.hamburger-inner:before {
+					top: -5px;
+			}
+
+			.hamburger-inner:after {
+					bottom: -5px;
+			}
+
 CSS;
-		}
 
 		// Donner style
 		if ( $menu_icon === 'donner' ) {
 			$css .= <<<CSS
 				.hamburger--donner .hamburger-inner {
-					 transition-duration: 0.075s;
-					 transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+						transition-duration: 0.075s;
+						transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 				}
+
 				.hamburger--donner .hamburger-inner:before {
-					 width: 16px;
-					 left: -3px;
+						width: 16px;
+						left: -3px;
 				}
+
 				.hamburger--donner .hamburger-inner {
-					 width: 10px;
-					 left: 3px;
+						width: 10px;
+						left: 3px;
 				}
+
 				.hamburger--donner .hamburger-inner:after {
-					 width: 4px;
-					 left: 3px;
+						width: 4px;
+						left: 3px;
 				}
+
 				.hamburger--donner .hamburger-inner::before {
-					 transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+						transition: top 0.075s 0.12s ease, opacity 0.075s ease;
 				}
+
 				.hamburger--donner .hamburger-inner::after {
-					 transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+						transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 				}
+
 				.is-active .hamburger--donner .hamburger-inner, .hamburger--donner.is-active .hamburger-inner {
-					 transform: rotate(45deg);
-					 transition-delay: 0.12s;
-					 transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+						transform: rotate(45deg);
+						transition-delay: 0.12s;
+						transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
 				}
+
 				.is-active .hamburger--donner .hamburger-inner, .hamburger--donner.is-active .hamburger-inner,
 				.is-active .hamburger--donner .hamburger-inner:before, .hamburger--donner.is-active .hamburger-inner:before,
 				.is-active .hamburger--donner .hamburger-inner:after, .hamburger--donner.is-active .hamburger-inner:after {
-					 width: 15px;
-					 left: auto;
+						width: 15px;
+						left: auto;
 				}
+
 				.is-active .hamburger--donner .hamburger-inner::before, .hamburger--donner.is-active .hamburger-inner::before {
-					 top: 0;
-					 opacity: 0;
-					 transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+						top: 0;
+						opacity: 0;
+						transition: top 0.075s ease, opacity 0.075s 0.12s ease;
 				}
+
 				.is-active .hamburger--donner .hamburger-inner::after, .hamburger--donner.is-active .hamburger-inner::after {
-					 bottom: 0;
-					 transform: rotate(-90deg);
-					 transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+						bottom: 0;
+						transform: rotate(-90deg);
+						transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
 				}
 CSS;
 		}
@@ -319,95 +336,102 @@ CSS;
 		if ( $menu_icon === 'dots' ) {
 			$css .= <<<CSS
 				.hamburger--dots .hamburger-inner {
-					 left: 5px;
+						left: 5px;
 				}
+
 				.hamburger--dots .hamburger-inner, .hamburger--dots .hamburger-inner:before, .hamburger--dots .hamburger-inner:after {
-					 width: 4px;
-					 border-radius: 2px;
+						width: 3px;
+						height: 3px;
+						border-radius: 100%;
 				}
+
 				.hamburger--dots .hamburger-inner:before, .hamburger--dots .hamburger-inner:after {
-					 transition: bottom 0.08s 0s ease-out, top 0.08s 0s ease-out, opacity 0s linear;
+						transition: bottom 0.08s 0s ease-out, top 0.08s 0s ease-out, opacity 0s linear;
 				}
-				.is-active .hamburger--dots .hamburger-inner, .hamburger--dots.is-active .hamburger-inner {
-					 left: inherit;
+
+				.is-active .hamburger--dots .hamburger-inner, 
+				.hamburger--dots.is-active .hamburger-inner {
+						left: inherit;
 				}
+
 				.is-active .hamburger--dots .hamburger-inner, .hamburger--dots.is-active .hamburger-inner,
 				.is-active .hamburger--dots .hamburger-inner:before, .hamburger--dots.is-active .hamburger-inner:before,
 				.is-active .hamburger--dots .hamburger-inner:after, .hamburger--dots.is-active .hamburger-inner:after {
-					 width: 15px;
+						width: 15px;
+						border-radius: 0;
+						height: 2px;
 				}
+
 				.is-active .hamburger--dots .hamburger-inner:before, .hamburger--dots.is-active .hamburger-inner:before,
 				.is-active .hamburger--dots .hamburger-inner:after, .hamburger--dots.is-active .hamburger-inner:after {
-					 opacity: 0;
-					 transition: bottom 0.08s ease-out, top 0.08s ease-out, opacity 0s 0.08s linear;
+						opacity: 0;
+						transition: bottom 0.08s ease-out, top 0.08s ease-out, opacity 0s 0.08s linear;
 				}
+
 				.is-active .hamburger--dots .hamburger-inner:before, .hamburger--dots.is-active .hamburger-inner:before {
-					 top: 0;
+						top: 0;
 				}
+
 				.is-active .hamburger--dots .hamburger-inner:after, .hamburger--dots.is-active .hamburger-inner:after {
-					 bottom: 0;
+						bottom: 0;
 				}
 CSS;
 		}
 
-		// Minus style
-		if ( $menu_icon === 'minus' ) {
+		// Wave style
+		if ( $menu_icon === 'wave' ) {
 			$css .= <<<CSS
-				.hamburger--minus .hamburger-inner:before, .hamburger--minus .hamburger-inner:after {
-					 transition: bottom 0.08s 0s ease-out, top 0.08s 0s ease-out, opacity 0s linear;
+			.hamburger--wave .hamburger-inner {
+				transition-duration: 0.3s;
+				transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 				}
-				.is-active .hamburger--minus .hamburger-inner:before,
-				.hamburger--minus.is-active .hamburger-inner:before,
-				.is-active .hamburger--minus .hamburger-inner:after,
-				.hamburger--minus.is-active .hamburger-inner:after {
-					 opacity: 0;
-					 transition: bottom 0.08s ease-out, top 0.08s ease-out, opacity 0s 0.08s linear;
-				}
-				.is-active .hamburger--minus .hamburger-inner:before, .hamburger--minus.is-active .hamburger-inner:before {
-					 top: 0;
-				}
-				.is-active .hamburger--minus .hamburger-inner:after, .hamburger--minus.is-active .hamburger-inner:after {
-					 bottom: 0;
-				}
+
+			.hamburger--wave .hamburger-inner:before {
+				width: 8px;
+				left: 0;
+				transition: top 0.1s 0.34s ease-in, opacity 0.1s ease-in, width 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+			}
+
+			.hamburger--wave .hamburger-inner:after {
+				width: 8px;
+				left: auto;
+				right: 0;
+				transition: bottom 0.1s 0.34s ease-in, transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), width 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+			}
+			.is-active .hamburger--wave .hamburger-inner, 
+			.hamburger--wave.is-active .hamburger-inner {
+				transform: rotate(225deg);
+				transition-delay: 0.12s;
+				transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+			}
+
+			.is-active .hamburger--wave .hamburger-inner, 
+			.hamburger--wave.is-active .hamburger-inner,
+			.is-active .hamburger--wave .hamburger-inner:before, 
+			.hamburger--wave.is-active .hamburger-inner:before,
+			.is-active .hamburger--wave .hamburger-inner:after, 
+			.hamburger--wave.is-active .hamburger-inner:after {
+				width: 15px;
+				left: 0;
+				right: auto;
+			}
+
+			.is-active .hamburger--wave .hamburger-inner::before, 
+			.hamburger--wave.is-active .hamburger-inner::before {
+				top: 0;
+				opacity: 0;
+				transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out, width 0.2s ease-out;
+			}
+
+			.is-active .hamburger--wave .hamburger-inner::after, 
+			.hamburger--wave.is-active .hamburger-inner::after {
+				bottom: 0;
+				transform: rotate(-90deg);
+				transition: bottom 0.1s ease-out, transform 0.3s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.2s ease-out;
+			}
 CSS;
 		}
 
-		// Vortex style
-		if ( $menu_icon === 'vortex' ) {
-			$css .= <<<CSS
-				.hamburger--vortex .hamburger-inner {
-					 transition-duration: 0.2s;
-					 transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-				}
-				.hamburger--vortex .hamburger-inner:before, .hamburger--vortex .hamburger-inner:after {
-					 transition-duration: 0s;
-					 transition-delay: 0.1s;
-					 transition-timing-function: linear;
-				}
-				.hamburger--vortex .hamburger-inner:before {
-					 transition-property: top, opacity;
-				}
-				.hamburger--vortex .hamburger-inner::after {
-					 transition-property: bottom, transform;
-				}
-				.is-active .hamburger--vortex .hamburger-inner, .hamburger--vortex.is-active .hamburger-inner {
-					 transform: rotate(765deg);
-					 transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-				}
-				.is-active .hamburger--vortex .hamburger-inner:before, .hamburger--vortex.is-active .hamburger-inner:before,
-				.is-active .hamburger--vortex .hamburger-inner:after, .hamburger--vortex.is-active .hamburger-inner:after {
-					 transition-delay: 0s;
-				}
-				.is-active .hamburger--vortex .hamburger-inner:before, .hamburger--vortex.is-active .hamburger-inner:before {
-					 top: 0;
-					 opacity: 0;
-				}
-				.is-active .hamburger--vortex .hamburger-inner:after, .hamburger--vortex.is-active .hamburger-inner:after {
-					 bottom: 0;
-					 transform: rotate(90deg);
-				}
-CSS;
-		}
 		// SVG style
 		if ( $menu_icon === 'svg' ) {
 			$menu_icon_size = Mods::get( $this->get_id() . '_' . self::SIZE_ID, '15' ) . 'px';
@@ -420,36 +444,7 @@ CSS;
 				}
 CSS;
 		}
-		// Squeeze style
-		if ( $menu_icon === 'squeeze' ) {
-			$css .= <<<CSS
-				.hamburger--squeeze .hamburger-inner {
-					 transition-duration: 0.075s;
-					 transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-				}
-				.hamburger--squeeze .hamburger-inner::before {
-					 transition: top 0.075s 0.12s ease, opacity 0.075s ease;
-				}
-				.hamburger--squeeze .hamburger-inner::after {
-					 transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-				}
-				.is-active .hamburger--squeeze .hamburger-inner, .hamburger--squeeze.is-active .hamburger-inner {
-					 transform: rotate(45deg);
-					 transition-delay: 0.12s;
-					 transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-				}
-				.is-active .hamburger--squeeze .hamburger-inner::before, .hamburger--squeeze.is-active .hamburger-inner::before {
-					 top: 0;
-					 opacity: 0;
-					 transition: top 0.075s ease, opacity 0.075s 0.12s ease;
-				}
-				.is-active .hamburger--squeeze .hamburger-inner::after, .hamburger--squeeze.is-active .hamburger-inner::after {
-					 bottom: 0;
-					 transform: rotate(-90deg);
-					 transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
-				}
-CSS;
-		}
+
 		return $css;
 	}
 
@@ -545,12 +540,9 @@ CSS;
 				'options'               => [
 					'options' => [
 						'default' => __( 'Default', 'neve' ),
-						'arrow'   => __( 'Arrow', 'neve' ),
 						'donner'  => __( 'Donner', 'neve' ),
 						'dots'    => __( 'Dots', 'neve' ),
-						'minus'   => __( 'Minus', 'neve' ),
-						'vortex'  => __( 'Vortex', 'neve' ),
-						'squeeze' => __( 'Squeeze', 'neve' ),
+						'wave'    => __( 'Wave', 'neve' ),
 					],
 					'default' => 'default',
 				],
@@ -594,6 +586,27 @@ CSS;
 				],
 				'section'               => $this->section,
 				'conditional_header'    => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => $this->get_id() . '_open_behavior_shortcut',
+				'group'             => $this->get_id(),
+				'section'           => $this->section,
+				'tab'               => SettingsManager::TAB_STYLE,
+				'transport'         => 'postMessage',
+				'sanitize_callback' => 'esc_attr',
+				'type'              => '\Neve\Customizer\Controls\Button',
+				'options'           => [
+					'priority'         => 11,
+					'button_text'      => __( 'Open Behavior', 'neve' ),
+					'button_class'     => 'button_background',
+					'icon_class'       => 'edit',
+					'shortcut'         => true,
+					'is_button'        => false,
+					'control_to_focus' => 'hfg_header_layout_sidebar_layout',
+				],
 			]
 		);
 
