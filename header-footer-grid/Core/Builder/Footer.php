@@ -12,7 +12,9 @@
 namespace HFG\Core\Builder;
 
 use HFG\Main;
+use Neve\Core\Migration_Flags;
 use Neve\Core\Theme_Info;
+use WP_Customize_Manager;
 
 /**
  * Class Footer
@@ -55,7 +57,8 @@ class Footer extends Abstract_Builder {
 			)
 		);
 
-		$upgrade_url_copyright = tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'copyright' ), 'query' );
+		$user_after_v41        = Migration_Flags::is_new_user_after_v41();
+		$upgrade_url_copyright = tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', $user_after_v41 ? 'copyright_dynamiclinks' : 'copyright' ), 'query' );
 
 		$this->set_property(
 			'instructions_array',
@@ -68,16 +71,19 @@ class Footer extends Abstract_Builder {
 				),
 				'quickLinks'  => array(
 					'footer_copyright_content'            => array(
-						'label'             => esc_html__( 'Change Copyright', 'neve' ),
+						'label'             => $this->has_valid_addons() ? esc_html__( 'Change Copyright', 'neve' ) : esc_html__( 'Dynamic Copyright', 'neve' ),
 						'icon'              => 'dashicons-nametag',
 						'url'               => $this->has_valid_addons() ? null : $upgrade_url_copyright,
 						'badge'             => esc_html__( 'PRO', 'neve' ),
 						'upsellDescription' => sprintf(
+							$user_after_v41 
 							/* translators: %1$s: opening anchor tag, %2$s: closing anchor tag */
-							__( 'The Neve theme free version doesn\'t support copyright edits. Pro unlocks this and more—%1$sexplore%2$s it when you\'re ready!', 'neve' ),
+							? __( 'Personalize your site\'s footer text! Many users choose to keep our small "Powered by Neve" credit — thank you! %1$sUpgrade to Pro%2$s for dynamic tags, HTML formatting, and advanced styling controls.', 'neve' )
+							/* translators: %1$s: opening anchor tag, %2$s: closing anchor tag */
+							: __( 'The Neve theme free version doesn\'t support copyright edits. Pro unlocks this and more—%1$sexplore%2$s it when you\'re ready!', 'neve' ),
 							'<a href="' . esc_url_raw( $upgrade_url_copyright ) . '" target="_blank" rel="noopener noreferrer">',
 							'</a>'
-						),
+						), 
 					),
 					'hfg_footer_layout_bottom_background' => array(
 						'label' => esc_html__( 'Change Footer Color', 'neve' ),
@@ -136,6 +142,51 @@ class Footer extends Abstract_Builder {
 		add_action( 'neve_after_slot_component', [ $this, 'add_footer_component' ], 10, 3 );
 	}
 
+
+	/**
+	 * Called to register component controls.
+	 *
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 *
+	 * @return WP_Customize_Manager
+	 * @since   4.0.1
+	 * @access  public
+	 */
+	public function customize_register( WP_Customize_Manager $wp_customize ) {
+		if ( $this->has_valid_addons() || ! Migration_Flags::is_new_user_after_v41() ) {
+			return parent::customize_register( $wp_customize );
+		}
+
+		$wp_customize->add_section(
+			'neve_footer_copyright_section',
+			[
+				'title'    => __( 'Change Copyright', 'neve' ),
+				'priority' => 200,
+				'panel'    => 'hfg_footer',
+			]
+		);
+
+		$wp_customize->add_setting(
+			'footer_copyright_content',
+			[
+				'default'           => $this->get_copyright_default(),
+				'sanitize_callback' => 'wp_kses_post',
+			]
+		);
+
+		$wp_customize->add_control(
+			'footer_copyright_content',
+			[
+				'label'    => __( 'Text', 'neve' ),
+				'section'  => 'neve_footer_copyright_section',
+				'type'     => 'textarea',
+				'settings' => 'footer_copyright_content',
+			]
+		);
+		
+		return parent::customize_register( $wp_customize );
+	}
+
 	/**
 	 * Add footer component.
 	 *
@@ -162,15 +213,11 @@ class Footer extends Abstract_Builder {
 			return;
 		}
 
-		$output  = '<div class="builder-item cr"><div class="item--inner"><div class="component-wrap"><div>';
-		$output .= sprintf(
-		/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
-			esc_html__( '%1$s | Powered by %2$s', 'neve' ),
-			wp_kses_post( '<p><a href="' . tsdk_translate_link( 'https://themeisle.com/themes/neve/', 'path' ) . '" rel="nofollow">Neve</a>' ),
-			wp_kses_post( '<a href="https://wordpress.org" rel="nofollow">WordPress</a></p>' )
-		);
-		$output .= '</div></div></div></div>';
+		$value = get_theme_mod( 'footer_copyright_content', $this->get_copyright_default() );
 
+		$output  = '<div class="builder-item cr"><div class="item--inner"><div class="component-wrap"><div>';
+		$output .= wp_kses_post( $value );
+		$output .= '</div></div></div></div>';
 
 		echo wp_kses_post( $output );
 	}
@@ -267,5 +314,19 @@ class Footer extends Abstract_Builder {
 				'name' => __( 'Social Icons', 'neve' ),
 			],
 		];
+	}
+
+	/**
+	 * Get the default copyright text.
+	 * 
+	 * @return string
+	 */
+	private function get_copyright_default() {
+		return sprintf(
+		/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
+			__( '%1$s | Powered by %2$s', 'neve' ),
+			'<p><a href="' . tsdk_translate_link( 'https://themeisle.com/themes/neve/', 'path' ) . '" rel="nofollow">Neve</a>',
+			'<a href="https://wordpress.org" rel="nofollow">WordPress</a></p>'
+		);
 	}
 }

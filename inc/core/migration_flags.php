@@ -26,6 +26,12 @@ class Migration_Flags {
 	 * @var string
 	 */
 	private $current_version;
+	/**
+	 * User since version in semver format.
+	 *
+	 * @var string
+	 */
+	private $user_since;
 
 	const NEVE_VERSION_OPTION = 'neve_version';
 	const USER_SINCE_VERSION  = 'neve_user_since';
@@ -37,6 +43,7 @@ class Migration_Flags {
 	 */
 	public function __construct( $current_version ) {
 		$this->last_version    = get_option( self::NEVE_VERSION_OPTION );
+		$this->user_since      = get_option( self::USER_SINCE_VERSION );
 		$this->current_version = $current_version;
 	}
 
@@ -45,19 +52,25 @@ class Migration_Flags {
 	 */
 	public function run() {
 		// This exists since v4.0.0. If it's not set, we're dealing with a new user, but we don't know since what version.
-		if ( ! $this->last_version ) {
-			update_option( self::USER_SINCE_VERSION, $this->is_new_user_on_v4() ? $this->current_version : 'unknown' );
-		}
+		if ( ! $this->last_version && ! $this->user_since ) {
+			update_option( self::USER_SINCE_VERSION, $this->is_new_user() ? $this->current_version : 'unknown' );
 
-		// Skip when there was no version before (no migration needed)
-		// Skip if the current version is lower than the last one.
-		if ( ! $this->last_version || $this->current_version <= $this->last_version ) {
+			$this->end_migration();
+
 			return;
 		}
 
+		// We didn't set the user_since version when initially implemented, but we have the last version.
+		if ( ! $this->last_version && $this->user_since ) {
+			update_option( self::USER_SINCE_VERSION, $this->user_since );
+		}
+
+		// Skip if the current version is lower than the last one
+		if ( version_compare( $this->current_version, $this->last_version, '<=' ) ) {
+			return;
+		}
 
 		// Do migrations here.
-
 
 		$this->end_migration();
 	}
@@ -67,12 +80,14 @@ class Migration_Flags {
 	 *
 	 * @return bool
 	 */
-	private function is_new_user_on_v4() {
+	private function is_new_user() {
 		$all_mods = get_theme_mods();
 
 		$mods = [
 			'hfg_header_layout',
+			'hfg_header_layout_v2',
 			'hfg_footer_layout',
+			'hfg_footer_layout_v2',
 			'neve_blog_archive_layout',
 			'neve_headings_font_family',
 			'neve_body_font_family',
@@ -126,5 +141,12 @@ class Migration_Flags {
 	 */
 	public static function is_new_user_after_v4() {
 		return self::is_new_user_after( '3.8.16' );
+	}
+
+	/**
+	 * Checks if the user is new after v4.1.
+	 */
+	public static function is_new_user_after_v41() {
+		return self::is_new_user_after( '4.0.1' );
 	}
 }
