@@ -162,7 +162,7 @@ class Footer extends Abstract_Builder {
 			return;
 		}
 
-		$output  = '<div class="builder-item"><div class="item--inner"><div class="component-wrap"><div>';
+		$output  = '<div class="builder-item cr"><div class="item--inner"><div class="component-wrap"><div>';
 		$output .= sprintf(
 		/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
 			esc_html__( '%1$s | Powered by %2$s', 'neve' ),

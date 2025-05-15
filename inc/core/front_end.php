@@ -349,6 +349,7 @@ class Front_End {
 		}
 
 		$style .= $this->get_mobile_menu_styles();
+		$style .= $this->get_static_footer_styles();
 
 		wp_add_inline_style( 'neve-style', Dynamic_Css::minify_css( $style ) );
 	}
@@ -370,6 +371,24 @@ class Front_End {
 		$sidebar_animation_css .= '.header-menu-sidebar .menu-item-nav-search .is-menu-sidebar { pointer-events: unset; }';
 
 		return $sidebar_animation_css;
+	}
+
+	/**
+	 * Get static footer styles.
+	 * 
+	 * @return string
+	 */
+	private function get_static_footer_styles() {
+		if ( defined( 'NEVE_PRO_VERSION' ) ) {
+			return '';
+		}
+		
+		return '@media screen and (max-width: 960px) {
+			.builder-item.cr .item--inner {
+				--textalign: center;
+    		--justify: center;
+			}
+		}';
 	}
 
 	/**
