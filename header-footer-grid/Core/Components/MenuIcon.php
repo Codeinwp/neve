@@ -538,13 +538,14 @@ CSS;
 				'type'                  => 'Neve\Customizer\Controls\React\Inline_Select',
 				'default'               => 'default',
 				'options'               => [
-					'options' => [
+					'priority' => 10,
+					'options'  => [
 						'default' => __( 'Default', 'neve' ),
 						'donner'  => __( 'Donner', 'neve' ),
 						'dots'    => __( 'Dots', 'neve' ),
 						'wave'    => __( 'Wave', 'neve' ),
 					],
-					'default' => 'default',
+					'default'  => 'default',
 				],
 				'section'               => $this->section,
 				'live_refresh_selector' => $this->default_selector,
@@ -567,7 +568,7 @@ CSS;
 						return Mods::get( $this->get_id() . '_' . self::MENU_ICON, 'default' ) === 'svg';
 
 					},
-					'priority'        => 11,
+					'priority'        => 20,
 					'input_attrs'     => [
 						'min'        => 10,
 						'max'        => 100,
@@ -599,7 +600,7 @@ CSS;
 				'sanitize_callback' => 'esc_attr',
 				'type'              => '\Neve\Customizer\Controls\Button',
 				'options'           => [
-					'priority'         => 11,
+					'priority'         => 25,
 					'button_text'      => __( 'Open Behavior', 'neve' ),
 					'button_class'     => 'button_background',
 					'icon_class'       => 'edit',
@@ -633,6 +634,7 @@ CSS;
 				'type'                  => '\Neve\Customizer\Controls\React\Button_Appearance',
 				'section'               => $this->section,
 				'options'               => [
+					'priority'     => 30,
 					'no_hover'     => true,
 					'no_shadow'    => true,
 					'default_vals' => $default,
