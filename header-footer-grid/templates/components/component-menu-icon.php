@@ -15,6 +15,9 @@ $item_attributes = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 $label           = component_setting( MenuIcon::TEXT_ID );
 $menu_icon       = component_setting( MenuIcon::MENU_ICON );
 $menu_svg        = component_setting( MenuIcon::MENU_SVG );
+if ( ! in_array( $menu_icon, [ 'donner', 'dots', 'svg', 'wave' ], true ) ) {
+	$menu_icon = 'default';
+}
 if ( $menu_icon === 'svg' && empty( $menu_svg ) ) {
 	$menu_icon = 'default';
 }
