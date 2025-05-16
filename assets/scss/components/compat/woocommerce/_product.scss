@@ -4,7 +4,7 @@
 
 .nv-single-product-top {
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 	position: relative;
 }
 
@@ -224,10 +224,8 @@
 @mixin product--tablet() {
 
 	.nv-single-product-top {
-
-		.summary {
-			margin-left: 4%;
-		}
+		gap: 4%;
+		flex-direction: row;
 	}
 
 	body.single-product .neve-main > .container > .row {
