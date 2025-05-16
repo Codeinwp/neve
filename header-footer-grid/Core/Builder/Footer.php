@@ -60,6 +60,25 @@ class Footer extends Abstract_Builder {
 		$user_after_v41        = Migration_Flags::is_new_user_after_v41();
 		$upgrade_url_copyright = tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', $user_after_v41 ? 'copyright_dynamiclinks' : 'copyright' ), 'query' );
 
+		$copyright_quicklink_config = [
+			'label'             => esc_html__( 'Change Copyright', 'neve' ),
+			'icon'              => 'dashicons-nametag',
+			'upsellDescription' => sprintf(
+				$user_after_v41 
+				/* translators: %1$s: opening anchor tag, %2$s: closing anchor tag */
+				? __( 'Personalize your site\'s footer text! Many users choose to keep our small "Powered by Neve" credit — thank you! %1$sUpgrade to Pro%2$s for dynamic tags, HTML formatting, and advanced styling controls.', 'neve' )
+				/* translators: %1$s: opening anchor tag, %2$s: closing anchor tag */
+				: __( 'The Neve theme free version doesn\'t support copyright edits. Pro unlocks this and more—%1$sexplore%2$s it when you\'re ready!', 'neve' ),
+				'<a href="' . esc_url_raw( $upgrade_url_copyright ) . '" target="_blank" rel="noopener noreferrer">',
+				'</a>'
+			),
+		];
+
+		if ( ! $user_after_v41 ) {
+			$copyright_quicklink_config['url']   = $this->has_valid_addons() ? null : $upgrade_url_copyright;
+			$copyright_quicklink_config['badge'] = esc_html__( 'PRO', 'neve' );
+		}
+
 		$this->set_property(
 			'instructions_array',
 			array(
@@ -70,21 +89,7 @@ class Footer extends Abstract_Builder {
 					'+'
 				),
 				'quickLinks'  => array(
-					'footer_copyright_content'            => array(
-						'label'             => $this->has_valid_addons() ? esc_html__( 'Change Copyright', 'neve' ) : esc_html__( 'Dynamic Copyright', 'neve' ),
-						'icon'              => 'dashicons-nametag',
-						'url'               => $this->has_valid_addons() ? null : $upgrade_url_copyright,
-						'badge'             => esc_html__( 'PRO', 'neve' ),
-						'upsellDescription' => sprintf(
-							$user_after_v41 
-							/* translators: %1$s: opening anchor tag, %2$s: closing anchor tag */
-							? __( 'Personalize your site\'s footer text! Many users choose to keep our small "Powered by Neve" credit — thank you! %1$sUpgrade to Pro%2$s for dynamic tags, HTML formatting, and advanced styling controls.', 'neve' )
-							/* translators: %1$s: opening anchor tag, %2$s: closing anchor tag */
-							: __( 'The Neve theme free version doesn\'t support copyright edits. Pro unlocks this and more—%1$sexplore%2$s it when you\'re ready!', 'neve' ),
-							'<a href="' . esc_url_raw( $upgrade_url_copyright ) . '" target="_blank" rel="noopener noreferrer">',
-							'</a>'
-						), 
-					),
+					'footer_copyright_content'            => $copyright_quicklink_config,
 					'hfg_footer_layout_bottom_background' => array(
 						'label' => esc_html__( 'Change Footer Color', 'neve' ),
 						'icon'  => 'dashicons-admin-appearance',
