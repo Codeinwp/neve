@@ -745,6 +745,8 @@ abstract class Abstract_Component implements Component {
 			Dynamic_Selector::KEY_RULES    => $rules,
 		];
 
+		$css_array = apply_filters( 'neve_hfg_component_style', $css_array, $this->get_id() );
+
 		return $css_array;
 	}
 
