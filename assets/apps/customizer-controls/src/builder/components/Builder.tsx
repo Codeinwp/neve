@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { BuilderContentInterface, RowTypes } from '../../@types/utils';
 import Row from './Row';
 import ResponsiveSwitches from './ResponsiveSwitches';
 import classnames from 'classnames';
-import { useContext, useEffect } from '@wordpress/element';
+import { useContext, useEffect, useState } from '@wordpress/element';
 import BuilderContext from '../BuilderContext';
+import { __ } from '@wordpress/i18n';
+import { Button } from '@wordpress/components';
 
 type Props = {
 	value: BuilderContentInterface;
@@ -17,8 +19,37 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 	const { rows } = window.NeveReactCustomize.HFG[builder];
 	const items = { ...value[device] };
 
+	const getOverlayState = useCallback(() => {
+		if (device === 'desktop') {
+			return false;
+		}
+
+		if (builder !== 'footer') {
+			return false;
+		}
+
+		if (Object.keys(items).length === 0) {
+			return true;
+		}
+
+		return Object.keys(items).every((row) => {
+			const sections = Object.keys(items[row]);
+			return sections.every(
+				(section) =>
+					Array.isArray(items[row][section]) &&
+					items[row][section].length === 0
+			);
+		});
+	}, [builder, device]);
+
+	const [mobileOverlay, setMobileOverlay] = useState(getOverlayState());
+	const [mobileOverlayDismissed, setMobileOverlayDismissed] = useState(false);
 	const preview: HTMLElement | null =
 		document.querySelector('#customize-preview');
+
+	useEffect(() => {
+		setMobileOverlay(getOverlayState());
+	}, [device, builder, items]);
 
 	// Remove preview offset.
 	useEffect(() => {
@@ -92,6 +123,26 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 		<div className={builderClasses}>
 			<ResponsiveSwitches device={device} />
 			<div className="rows-wrapper">
+				{mobileOverlay && !mobileOverlayDismissed && (
+					<div className="mobile-overlay">
+						<p>
+							{__(
+								'By default, the mobile footer inherits the desktop components. Click the button below to enable a custom mobile footer.',
+								'neve'
+							)}
+						</p>
+
+						<Button
+							isSecondary
+							onClick={() => {
+								setMobileOverlayDismissed(true);
+							}}
+						>
+							{__('Enable', 'neve-pro-addon')}
+						</Button>
+					</div>
+				)}
+
 				{rows.sidebar && device !== 'desktop' && (
 					<div className="vertical-rows">
 						<Row rowId="sidebar" items={items.sidebar} />
