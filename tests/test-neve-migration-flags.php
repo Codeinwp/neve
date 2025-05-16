@@ -44,7 +44,7 @@ class TestNeveMigrationFlags extends WP_UnitTestCase {
 		remove_theme_mods();
 		$migration_flags = new Migration_Flags('4.0.0' );
 		$reflection = new ReflectionClass($migration_flags);
-		$method = $reflection->getMethod('is_new_user_on_v4');
+		$method = $reflection->getMethod('is_new_user');
 		$method->setAccessible(true);
 		$migration_flags->run();
 		$this->assertTrue( $method->invoke($migration_flags) );
@@ -54,7 +54,7 @@ class TestNeveMigrationFlags extends WP_UnitTestCase {
 		set_theme_mod( 'hfg_header_layout', 'layout' );
 		$migration_flags = new Migration_Flags('4.0.0' );
 		$reflection = new ReflectionClass($migration_flags);
-		$method = $reflection->getMethod('is_new_user_on_v4');
+		$method = $reflection->getMethod('is_new_user');
 		$method->setAccessible(true);
 		$migration_flags->run();
 		$this->assertFalse( $method->invoke($migration_flags) );

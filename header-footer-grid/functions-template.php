@@ -257,3 +257,53 @@ function parse_dynamic_tags( $string ) {
 }
 
 
+/**
+ * Check if the footer builder is empty.
+ * 
+ * @param string $device The device type (mobile or desktop).
+ * @return bool
+ */
+function is_footer_builder_empty( $device = 'mobile' ) {
+	if ( ! in_array( $device, [ 'mobile', 'desktop' ] ) ) {
+		return false;
+	}
+
+	$data = get_theme_mod( 'hfg_footer_layout_v2', wp_json_encode( neve_hfg_footer_settings() ['builder'] ) );
+
+	if ( empty( $data ) ) {
+		return true;
+	}
+
+	return is_builder_empty_for_device( $data, $device );
+}
+
+/**
+ * Check if the builder data is empty.
+ * 
+ * @param string $data The builder data.
+ * @param string $device The device type (mobile or desktop).
+ * @return bool
+ */
+function is_builder_empty_for_device( $data, $device ) {
+	$decoded = json_decode( $data, true );
+
+	if ( ! is_array( $decoded ) ) {
+		return true;
+	}
+
+	if ( empty( $decoded[ $device ] ) ) {
+		return true;
+	}
+
+	foreach ( $decoded[ $device ] as $row => $slots ) {
+		foreach ( $slots as $slot => $components ) {
+			if ( ! empty( $components ) ) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
+
