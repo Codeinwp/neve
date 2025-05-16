@@ -77,7 +77,7 @@ const Instructions: React.FC<Props> = ({ control }) => {
 											</span>
 										)}
 									</Button>
-									{url && upsellDescription && (
+									{upsellDescription && (
 										<div className="quick-links-upsell">
 											<p className="quick-links-description">
 												<div

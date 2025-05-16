@@ -555,7 +555,7 @@ class Upsells extends Base_Customizer {
 					'priority'         => 10000,
 					'link'             => $this->get_upgrade_url( 'panel-' . $hfg_footer ),
 					'features_list'    => array(
-						__( 'Copyright edits', 'neve' ),
+						__( 'Dynamic copyright', 'neve' ),
 						__( 'Divider element', 'neve' ),
 						__( 'Payments & social icons', 'neve' ),
 						__( 'Custom layouts', 'neve' ),
