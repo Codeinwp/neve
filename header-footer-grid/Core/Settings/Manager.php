@@ -109,7 +109,7 @@ class Manager {
 	 *
 	 * @return \WP_Customize_Manager Customizer object.
 	 */
-	public function load( $group = null, \WP_Customize_Manager $customize_manager ) {
+	public function load( $group, \WP_Customize_Manager $customize_manager ) {
 		static $core_transports = [
 			'refresh'     => true,
 			'postMessage' => true,
