@@ -15,6 +15,17 @@ namespace ElementorPro\Modules\ThemeBuilder\Classes {
          */
         public function register_all_core_location() {}
         
+
+        /**
+         * register_location
+         * 
+         * @param  string $location
+         * @param  array  $args
+         * 
+         * @return void
+         */
+        public function register_location( $location, $args = [] ) {}
+        
         /**
          * do_location
          *
