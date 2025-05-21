@@ -79,6 +79,33 @@ class Elementor extends Page_Builder_Base {
 		* That gives full capability to Elementor and removes Neve Pro customizations.
 		*/
 		add_filter( 'neve_pro_run_wc_view', array( $this, 'suspend_woo_customizations' ), 10, 2 );
+		add_action( 'elementor/theme/register_locations', array( $this, 'register_elementor_locations' ) );
+	}
+
+	/**
+	 * Register Elementor locations.
+	 * 
+	 * @since 4.1 
+	 * 
+	 * @see https://developers.elementor.com/docs/themes/migrating-themes-with-hooks/
+	 * 
+	 * @param \ElementorPro\Modules\ThemeBuilder\Classes\Locations_Manager $elementor_theme_manager Elementor object.
+	 */
+	public function register_elementor_locations( $elementor_theme_manager ) {
+		$elementor_theme_manager->register_location(
+			'header',
+			[
+				'hook'         => 'neve_do_header',
+				'remove_hooks' => [ 'hfg_header_render' ],
+			]
+		);
+		$elementor_theme_manager->register_location(
+			'footer',
+			[
+				'hook'         => 'neve_do_footer',
+				'remove_hooks' => [ 'hfg_footer_render' ],
+			]
+		);
 	}
 
 	/**
@@ -208,31 +235,6 @@ class Elementor extends Page_Builder_Base {
 
 		if ( ! function_exists( 'elementor_theme_do_location' ) ) {
 			return;
-		}
-
-		// Latest Elementor versions changed how they treat the theme locations.
-		// We need to rebuild the markup so we don't break the layout.
-		// @since 4.1
-		if ( ! $this->is_elementor_editor() ) {
-				add_action(
-					'elementor/theme/after_do_header',
-					function () {
-						do_action( 'neve_before_primary' );
-						echo '<main id="content" class="neve-main">';
-						do_action( 'neve_after_primary_start' );
-					},
-					PHP_INT_MAX
-				);
-			
-				add_action(
-					'elementor/theme/before_do_footer',
-					function () {
-						do_action( 'neve_before_primary_end' );
-						echo '</main><!--/.neve-main-->';
-						do_action( 'neve_after_primary' );
-					},
-					PHP_INT_MIN
-				);
 		}
 
 		// Override theme templates.
