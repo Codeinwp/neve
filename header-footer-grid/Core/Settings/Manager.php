@@ -104,12 +104,12 @@ class Manager {
 	/**
 	 * Load settings/control group in customizer.
 	 *
-	 * @param string|null                $group Group to load.
-	 * @param \WP_Customize_Manager|null $customize_manager Manager object.
+	 * @param string|null           $group Group to load.
+	 * @param \WP_Customize_Manager $customize_manager Manager object.
 	 *
 	 * @return \WP_Customize_Manager Customizer object.
 	 */
-	public function load( $group = null, \WP_Customize_Manager $customize_manager = null ) {
+	public function load( $group, \WP_Customize_Manager $customize_manager ) {
 		static $core_transports = [
 			'refresh'     => true,
 			'postMessage' => true,
