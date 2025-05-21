@@ -210,6 +210,11 @@ class Woocommerce {
 			return null;
 		}
 
+		// @phpstan-ignore-next-line it seems WC()->session might be null in some contexts
+		if ( empty( WC()->session ) ) {
+			return null;
+		}
+
 		$payment_method = WC()->session->get( 'chosen_payment_method' );
 		if ( ! $payment_method ) {
 			// If payment method is null, see if there is only one option;
