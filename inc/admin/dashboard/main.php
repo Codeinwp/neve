@@ -365,6 +365,7 @@ class Main {
 			'canActivatePlugins'      => current_user_can( 'activate_plugins' ),
 			'deal'                    => $offer->get_localized_data(),
 			'rootUrl'                 => get_site_url(),
+			'sparksActive'            => defined( 'SPARKS_WC_VERSION' ) ? 'yes' : 'no',
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
