@@ -567,19 +567,4 @@ class Elementor extends Page_Builder_Base {
 
 		return ! $elementor_overrides;
 	}
-
-	/**
-	 * Check if Elementor Editor.
-	 *
-	 * @since  4.1
-	 *
-	 * @return bool
-	 */
-	private function is_elementor_editor() {
-		if ( ( isset( $_REQUEST['action'] ) && 'elementor' === $_REQUEST['action'] ) || isset( $_REQUEST['elementor-preview'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			return true;
-		}
-
-		return false;
-	}
 }
