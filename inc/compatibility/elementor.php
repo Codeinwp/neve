@@ -79,6 +79,33 @@ class Elementor extends Page_Builder_Base {
 		* That gives full capability to Elementor and removes Neve Pro customizations.
 		*/
 		add_filter( 'neve_pro_run_wc_view', array( $this, 'suspend_woo_customizations' ), 10, 2 );
+		add_action( 'elementor/theme/register_locations', array( $this, 'register_elementor_locations' ) );
+	}
+
+	/**
+	 * Register Elementor locations.
+	 * 
+	 * @since 4.1 
+	 * 
+	 * @see https://developers.elementor.com/docs/themes/migrating-themes-with-hooks/
+	 * 
+	 * @param \ElementorPro\Modules\ThemeBuilder\Classes\Locations_Manager $elementor_theme_manager Elementor object.
+	 */
+	public function register_elementor_locations( $elementor_theme_manager ) {
+		$elementor_theme_manager->register_location(
+			'header',
+			[
+				'hook'         => 'neve_do_header',
+				'remove_hooks' => [ 'hfg_header_render' ],
+			]
+		);
+		$elementor_theme_manager->register_location(
+			'footer',
+			[
+				'hook'         => 'neve_do_footer',
+				'remove_hooks' => [ 'hfg_footer_render' ],
+			]
+		);
 	}
 
 	/**
@@ -539,5 +566,20 @@ class Elementor extends Page_Builder_Base {
 		$elementor_overrides = self::is_elementor_template( $elementor_template_type );
 
 		return ! $elementor_overrides;
+	}
+
+	/**
+	 * Check if Elementor Editor.
+	 *
+	 * @since  4.1
+	 *
+	 * @return bool
+	 */
+	private function is_elementor_editor() {
+		if ( ( isset( $_REQUEST['action'] ) && 'elementor' === $_REQUEST['action'] ) || isset( $_REQUEST['elementor-preview'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			return true;
+		}
+
+		return false;
 	}
 }
