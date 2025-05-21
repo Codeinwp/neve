@@ -8,6 +8,7 @@ import {
 	LucideGauge,
 	LucidePuzzle,
 	LucideSettings,
+	LucideShoppingCart,
 } from 'lucide-react';
 
 import { useSelect } from '@wordpress/data';
@@ -41,6 +42,11 @@ const NAV_ITEMS = [
 		icon: LucideBriefcase,
 	},
 	{
+		id: 'sparks',
+		label: 'Sparks',
+		icon: LucideShoppingCart,
+	},
+	{
 		id: 'manage-modules',
 		label: __('Manage Modules', 'neve'),
 		icon: LucidePuzzle,
@@ -57,14 +63,36 @@ const Menu = ({ tab, setTab }) => {
 	});
 
 	const menuItems = NAV_ITEMS.filter(({ id }) => {
-		if (id === 'manage-modules') return NEVE_HAS_PRO;
-
 		if (id === 'white-label') {
 			return !NEVE_HAS_PRO || (whiteLabelStatus && NEVE_SHOW_WHITELABEL);
 		}
 
+		if (id === 'sparks') {
+			return neveDash.sparksActive === 'yes';
+		}
+
 		return true;
 	});
+
+	const handleTabClick = (id) => {
+		if (id === 'sparks') {
+			const link = document.querySelector([
+				'#adminmenu [href*="page=sparks"]',
+			]);
+
+			if (!link) return;
+
+			const href = link ? link.getAttribute('href') : '';
+
+			if (!href) return;
+
+			window.location.href = href;
+
+			return;
+		}
+
+		setTab(id);
+	};
 
 	return (
 		<Card className="!p-0 overflow-hidden">
@@ -83,7 +111,7 @@ const Menu = ({ tab, setTab }) => {
 						<button
 							key={id}
 							className={classes}
-							onClick={() => setTab(id)}
+							onClick={() => handleTabClick(id)}
 						>
 							<Icon className="w-5 h-5 mr-3" />
 							<span className="font-medium">{label}</span>
