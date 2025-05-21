@@ -186,10 +186,10 @@ class Footer extends Abstract_Builder {
 		$wp_customize->add_control(
 			'footer_copyright_content',
 			[
-				'label'    => __( 'Text', 'neve' ),
-				'section'  => 'neve_footer_copyright_section',
-				'type'     => 'textarea',
-				'settings' => 'footer_copyright_content',
+				'label'   => __( 'Text', 'neve' ),
+				'section' => 'neve_footer_copyright_section',
+				'type'    => 'textarea',
+				'setting' => 'footer_copyright_content',
 			]
 		);
 		

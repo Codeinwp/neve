@@ -25,7 +25,7 @@ test.describe('Menu item description', function () {
 		await page
 			.getByRole('textbox', { name: 'Description' })
 			.fill('Some Description for the category');
-		await page.getByRole('button', { name: 'Add New Category' }).click();
+		await page.getByRole('button', { name: 'Add Category' }).click();
 		await page.goto('wp-admin/nav-menus.php');
 
 		await page

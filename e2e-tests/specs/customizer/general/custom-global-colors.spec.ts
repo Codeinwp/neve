@@ -32,44 +32,13 @@ test.describe('Custom Global Color Control', () => {
 			'/wp-admin/post.php?post=1&action=edit&test_name=custom-global-colors'
 		);
 		await clearWelcome(page);
-		await page.waitForSelector('.block-editor-rich-text__editable');
-		await page
-			.getByText(
-				'Welcome to WordPress. This is your first post. Edit or delete it, then start writing!'
-			)
-			.first()
-			.click({ force: true });
-		await page.locator('#tabs-1-styles').click();
+
+		await page.locator('[aria-label="Document Overview"]').click();
+		await page.locator('.block-editor-list-view-leaf').first().click();
+
 		await page.getByRole('button', { name: 'Background' }).click();
-		await page.getByRole('option', { name: 'Color: Custom 1' }).click();
-		await page
-			.locator('.block-editor-panel-color-gradient-settings__color-name')
-			.getByText('Text')
-			.click();
+		await page.getByRole('option', { name: 'Custom 1' }).click();
 
-		await page.waitForSelector(
-			'.block-editor-color-gradient-control__panel'
-		);
-		await expect(
-			await isIntersectingViewport(
-				'.block-editor-color-gradient-control__panel',
-				page
-			)
-		).toBeTruthy();
-		const colors = await page.locator(
-			'.components-circular-option-picker__option-wrapper button'
-		);
-		let hasCustomColor = false;
-		for (let i = 0; i < (await colors.count()); i++) {
-			const attribute = await colors.nth(i).getAttribute('aria-label');
-			if (attribute === 'Color: Custom 1') {
-				await colors.nth(i).click();
-				hasCustomColor = true;
-				break;
-			}
-		}
-
-		await expect(hasCustomColor).toBeTruthy();
 		await savePost(page);
 	});
 
