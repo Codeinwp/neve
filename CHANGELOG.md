@@ -1,3 +1,8 @@
+##### [Version 4.1.1](https://github.com/Codeinwp/neve/compare/v4.1.0...v4.1.1) (2025-05-22)
+
+- [Fix] Tested up to notice appearing when used with Pro version above 4.1
+- [Fix] Clicking the dots in the top right of the editor throws an error
+
 #### [Version 4.1.0](https://github.com/Codeinwp/neve/compare/v4.0.1...v4.1.0) (2025-05-22)
 
 - [Feat] Style WordPress core login block
