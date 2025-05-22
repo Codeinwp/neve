@@ -19,6 +19,39 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+#### [Version 4.1.0](https://github.com/Codeinwp/neve/compare/v4.0.1...v4.1.0) (2025-05-22)
+
+- [Feat] Style WordPress core login block
+- [Feat] Improved WooCommerce My Account page styling
+- [Feat] Adds color setting for headings
+- [Feat] Adds image size options to single post thumbnail
+- [Feat] Improve footer builder UX
+- [Feat] Mobile footer inherits desktop components by default if layout is empty
+- [Feat] Sparks integration improvements
+- [Feat] Rework Menu Icon component options
+- [Feat] Improve styling and UX for onboarding notice
+- [Fix] Mobile navigation sidebar not working when no Navigation menu is added in header
+- [Fix] Starter sites broken link redirection
+- [Fix] Blog pagination page number input styling
+- [Fix] Quote block styling inconsistency between editor & frontend
+- [Fix] Navigation dropdown caret icon size control not working on mobile/tablet
+- [Fix] License card UI
+- [Fix] Gallery for WooCommerce plugin conflict
+- [Fix] Center Footer Copyright position on mobile
+- [Fix] Edge-case in WooCommerce checkout when session is not set and throwing a fatal error
+- [Fix] Elementor Pro Header & Footer builder breaking theme markup
+- [Fix] Deprecated notice when using PHP 8.4
+- [Fix] Edge-case where modal is going off-screen in the dashboard
+- [Fix] Starter content issue causing footer builder problems and missing components on mobile
+- Improve WooCommerce single product layout styling
+- Adds shortcut to clarify header background controls
+- Adds description to the Neve editor options panel to clarify that settings override customizer options
+- Small customizer UX improvements
+- Update dependencies
+
+
+
+
 ##### [Version 4.0.1](https://github.com/Codeinwp/neve/compare/v4.0.0...v4.0.1) (2025-02-03)
 
 - [Feat] Reorganised main customizer panels for better UX
