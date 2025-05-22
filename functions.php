@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '4.0.1' );
+define( 'NEVE_VERSION', '4.1.0' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 define( 'NEVE_MAIN_DIR', get_template_directory() . '/' );
@@ -113,7 +113,7 @@ add_filter(
 		$compatibilities['NevePro'] = [
 			'basefile'  => defined( 'NEVE_PRO_BASEFILE' ) ? NEVE_PRO_BASEFILE : '',
 			'required'  => '2.9',
-			'tested_up' => '3.0',
+			'tested_up' => '3.1',
 		];
 
 		return $compatibilities;
