@@ -33,15 +33,6 @@ jobs:
           yarn install --frozen-lockfile
           yarn run build
           yarn run dist
-      - name: Sync to QA server via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        with:
-          server: ${{ secrets.QA_FTP_HOST }}
-          username: ${{ secrets.QA_FTP_USER }}
-          password: ${{ secrets.QA_FTP_PASS }}
-          sftp_only: true
-          local_path: "./dist/neve/*"
-          remote_path: ${{ secrets.QA_FTP_PATH }}
       - name: Add SSH Key
         run: |
           mkdir $HOME/.ssh
