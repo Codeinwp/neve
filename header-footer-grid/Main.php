@@ -211,9 +211,6 @@ class Main {
 	 * @access  public
 	 */
 	public function inline_styles( $subscribers ) {
-		if ( is_customize_preview() ) {
-			return $subscribers;
-		}
 		$css_array = [];
 		/**
 		 * An instance of Abstract_Builder.

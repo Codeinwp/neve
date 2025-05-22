@@ -31,6 +31,7 @@
 		line-height: var(--bodylineheight);
 		letter-spacing: var(--bodyletterspacing);
 		text-transform: var(--texttransform, var(--bodytexttransform));
+		color: inherit;
 		margin: 0;
 	}
 

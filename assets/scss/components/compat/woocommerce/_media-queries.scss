@@ -7,7 +7,6 @@
 @media (min-width: #{$tablet}) {
 
 	@include cart--tablet();
-	@include account--tablet();
 	@include product--tablet();
 	@include bc-count-wrap();
 }

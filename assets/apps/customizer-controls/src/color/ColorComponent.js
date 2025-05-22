@@ -4,7 +4,7 @@ import { ColorControl } from '@neve-wp/components';
 
 import { useState, useEffect } from '@wordpress/element';
 
-const ColorComponent = ({ control, children }) => {
+const ColorComponent = ({ control, children, isCompound = false }) => {
 	const [value, setValue] = useState(control.setting.get());
 
 	const updateValues = (newVal) => {
@@ -20,8 +20,13 @@ const ColorComponent = ({ control, children }) => {
 		});
 	}, []);
 
+	const wrapClasses = [
+		isCompound ? '' : 'neve-white-background-control',
+		'neve-color-control',
+	];
+
 	return (
-		<div className="neve-white-background-control neve-color-control">
+		<div className={wrapClasses.join(' ')}>
 			<ColorControl
 				label={control.params.label}
 				selectedColor={value}

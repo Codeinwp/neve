@@ -26,6 +26,9 @@ $menu_icon_class  = apply_filters( 'neve_menu_icon_classes', 'hamburger is-activ
 
 $menu_icon = component_setting( MenuIcon::MENU_ICON );
 $menu_svg  = component_setting( MenuIcon::MENU_SVG );
+if ( ! in_array( $menu_icon, [ 'donner', 'dots', 'svg', 'wave' ], true ) ) {
+	$menu_icon = 'default';
+}
 if ( $menu_icon === 'svg' && empty( $menu_svg ) ) {
 	$menu_icon = 'default';
 }

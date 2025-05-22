@@ -532,6 +532,32 @@ abstract class Abstract_Builder implements Builder {
 			]
 		);
 
+		if ( $this->get_id() === 'header' && $row_id !== 'sidebar' ) {
+			SettingsManager::get_instance()->add(
+				[
+					'id'                => 'global_header_background_shortcut',
+					'group'             => $row_setting_id,
+					'section'           => $row_setting_id,
+					'tab'               => 'style',
+					'transport'         => 'postMessage',
+					'sanitize_callback' => 'esc_attr',
+					'type'              => '\Neve\Customizer\Controls\Button',
+					'options'           => [
+						'button_text'      => esc_html__( 'Background', 'neve' ),
+						'active_callback'  => function() {
+							return ! get_theme_mod( 'neve_pro_global_header_settings_advanced_style', true );
+						},
+						'button_class'     => 'button_background',
+						'icon_class'       => 'edit',
+						'shortcut'         => true,
+						'is_button'        => false,
+						'control_to_focus' => 'neve_pro_global_header_settings_background',
+					],
+				]
+			);
+		}
+
+
 		do_action( 'hfg_row_settings', $this->get_id(), $row_id, $row_setting_id );
 	}
 

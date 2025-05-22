@@ -752,6 +752,12 @@ class MetaFieldsManager extends Component {
 	render() {
 		return (
 			<>
+				<PanelBody initialOpen>
+					<p style={{ marginBottom: 0 }}>
+						{__('Override customizer site-wide settings', 'neve')}.
+					</p>
+				</PanelBody>
+
 				{this.renderPageLayoutGroup()}
 				{this.renderPageTitleGroup()}
 				{this.renderElementsGroup()}

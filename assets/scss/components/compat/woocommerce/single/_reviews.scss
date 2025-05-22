@@ -54,6 +54,7 @@
 		line-height: var(--h2lineheight);
 		letter-spacing: var(--h2letterspacing);
 		text-transform: var(--h2texttransform);
+		color: var(--headingcolor, inherit);
 		margin-bottom: $spacing-lg;
 		display: block;
 	}

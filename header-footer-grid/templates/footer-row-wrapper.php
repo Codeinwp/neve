@@ -16,16 +16,25 @@ $row_index  = current_row();
 $device     = current_device();
 $section_id = get_builder()->get_property( 'control_id' ) . '_' . $row_index;
 
-$row_visibility = 'hide-on-desktop';
-if ( $device === 'desktop' ) {
-	$row_visibility = 'hide-on-mobile hide-on-tablet';
-}
-
 $row_classes = [
 	'footer--row',
 	'footer-' . $row_index,
-	$row_visibility,
 ];
+
+$mobile_empty = is_footer_builder_empty( 'mobile' );
+
+if ( $device === 'mobile' && $mobile_empty ) {
+	return;
+}
+
+if ( $device === 'desktop' && ! $mobile_empty ) { 
+	$row_classes[] = 'hide-on-mobile hide-on-tablet';
+}
+
+if ( $device === 'mobile' ) {
+	$row_classes[] = 'hide-on-desktop';
+}
+	
 
 $row_classes[] = row_setting( Abstract_Builder::LAYOUT_SETTING );
 $row_classes   = apply_filters( 'hfg_footer_row_classes', $row_classes, $row_index );

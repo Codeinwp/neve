@@ -2,6 +2,27 @@
 
 .rows-wrapper {
   display: flex;
+	position: relative;
+
+	.mobile-overlay {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		backdrop-filter: blur(5px);
+		background-color: rgba(237, 237, 237, .5);
+		z-index: 1000;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		p {
+			font-size: 16px;
+			max-width: 500px;
+			text-align: center;
+		}
+	}
 
   .vertical-rows {
 	margin-right: 10px;

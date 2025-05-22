@@ -293,6 +293,17 @@ class Layout_Single_Post extends Base_Layout_Single {
 	 * Add content order control.
 	 */
 	private function control_content_order() {
+		$ar_choices = [
+			'original' => esc_html__( 'Original', 'neve' ),
+			'1-1'      => '1:1',
+			'4-3'      => '4:3',
+			'16-9'     => '16:9',
+			'2-1'      => '2:1',
+			'4-5'      => '4:5',
+			'3-4'      => '3:4',
+			'2-3'      => '2:3',
+		];
+
 		$all_components = [
 			'title-meta'      => [
 				'label'    => __( 'Title & Meta', 'neve' ),
@@ -334,22 +345,32 @@ class Layout_Single_Post extends Base_Layout_Single {
 			'thumbnail'       => [
 				'label'    => __( 'Thumbnail', 'neve' ),
 				'controls' => [
-					'neve_post_cover_height'          => [
+					'neve_post_thumbnail_size'         => [
+						'label'   => esc_html__( 'Image Size', 'neve' ),
+						'type'    => 'select',
+						'choices' => $this->get_image_size_as_choices(),
+					],
+					'neve_post_thumbnail_aspect_ratio' => [
+						'label'   => esc_html__( 'Image Aspect Ratio', 'neve' ),
+						'type'    => 'select',
+						'choices' => $ar_choices,
+					],
+					'neve_post_cover_height'           => [
 						'type' => 'responsive-range',
 					],
-					'neve_post_cover_padding'         => [
+					'neve_post_cover_padding'          => [
 						'type' => 'responsive-spacing',
 					],
-					'neve_post_cover_hide_thumbnail'  => [
+					'neve_post_cover_hide_thumbnail'   => [
 						'label' => __( 'Hide featured image', 'neve' ),
 						'type'  => 'toggle',
 					],
-					'neve_post_cover_blend_mode'      => [
+					'neve_post_cover_blend_mode'       => [
 						'label'   => __( 'Blend mode', 'neve' ),
 						'type'    => 'select',
 						'choices' => $this->get_blend_mode_choices(),
 					],
-					'neve_post_cover_overlay_opacity' => [
+					'neve_post_cover_overlay_opacity'  => [
 						'label' => __( 'Overlay opacity', 'neve' ),
 						'type'  => 'range',
 					],
@@ -383,6 +404,44 @@ class Layout_Single_Post extends Base_Layout_Single {
 		 * @since 2.11.4
 		 */
 		$components = apply_filters( 'neve_single_post_elements', $all_components );
+
+		$this->add_control(
+			new Control(
+				'neve_post_thumbnail_size',
+				[
+					'default'           => 'neve-blog',
+					'sanitize_callback' => function( $value ) {
+						return array_key_exists( $value, $this->get_image_size_as_choices() ) ? $value : 'neve-blog';
+					},
+				],
+				[
+					'section'         => $this->section,
+					'type'            => 'hidden',
+					'active_callback' => function() {
+						return ! $this->is_cover_layout();
+					},
+				]
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_thumbnail_aspect_ratio',
+				[
+					'default'           => 'original',
+					'sanitize_callback' => function( $value ) use ( $ar_choices ) {
+						return array_key_exists( $value, $ar_choices ) ? $value : 'original';
+					},
+				],
+				[
+					'section'         => $this->section,
+					'type'            => 'hidden',
+					'active_callback' => function() {
+						return ! $this->is_cover_layout();
+					},
+				]
+			)
+		);
 
 		$this->add_control(
 			new Control(
@@ -877,5 +936,31 @@ class Layout_Single_Post extends Base_Layout_Single {
 			return false;
 		}
 		return get_theme_mod( 'neve_post_cover_title_boxed_layout', false );
+	}
+
+	/** 
+	 * Get the image size as choices.
+	 * 
+	 * @return array
+	 */
+	private function get_image_size_as_choices() {
+
+		$image_size_values = get_intermediate_image_sizes(); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.get_intermediate_image_sizes_get_intermediate_image_sizes
+
+		// Needed in VIP environment to at least provide the blog image size.
+		if ( ! in_array( 'neve-blog', $image_size_values, true ) ) {
+			array_push( $image_size_values, 'neve-blog' );
+		}
+
+		array_push( $image_size_values, 'full' );
+		
+		$image_size_choices = array_map(
+			function( $value ) {
+				return ucwords( str_replace( [ '-', '_' ], ' ', $value ) );
+			},
+			array_combine( $image_size_values, $image_size_values )
+		);
+
+		return $image_size_choices;
 	}
 }

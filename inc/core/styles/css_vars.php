@@ -282,6 +282,9 @@ trait Css_Vars {
 			'--headingsfontfamily' => [
 				Dynamic_Selector::META_KEY => Config::MODS_FONT_HEADINGS,
 			],
+			'--headingcolor' => [
+				Dynamic_Selector::META_KEY => Config::MODS_COLOR_HEADINGS,
+			]
 		];
 		foreach ( neve_get_headings_selectors() as $id => $heading_selector ) {
 

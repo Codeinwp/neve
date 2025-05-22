@@ -38,6 +38,7 @@ function neve_run() {
 			'menu_icon_svg'             => true,
 			'custom_payment_icons'      => true,
 			'nested_ordering_control'   => true,
+			'component_style_filter'    => true, // @see Abstract_Component->add_style() method.
 		]
 	);
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';

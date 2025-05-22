@@ -348,11 +348,47 @@ class Front_End {
 			$style .= sprintf( '%s {font-family: var(%s);}', $heading_id, $css_var );
 		}
 
-		if ( empty( $style ) ) {
-			return;
-		}
+		$style .= $this->get_mobile_menu_styles();
+		$style .= $this->get_static_footer_styles();
 
 		wp_add_inline_style( 'neve-style', Dynamic_Css::minify_css( $style ) );
+	}
+
+	/**
+	 * Showing Menu Sidebar animation css.
+	 * 
+	 * @return string
+	 */
+	private function get_mobile_menu_styles() {
+		$sidebar_animation_css  = '.is-menu-sidebar .header-menu-sidebar { visibility: visible; }';
+		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_slide_left .header-menu-sidebar { transform: translate3d(0, 0, 0); left: 0; }';
+		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_slide_right .header-menu-sidebar { transform: translate3d(0, 0, 0); right: 0; }';
+		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_pull_right .header-menu-sidebar, .is-menu-sidebar.menu_sidebar_pull_left .header-menu-sidebar { transform: translateX(0); }';
+		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_dropdown .header-menu-sidebar { height: auto; }';
+		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_dropdown .header-menu-sidebar-inner { max-height: 400px; padding: 20px 0; }';
+		$sidebar_animation_css .= '.is-menu-sidebar.menu_sidebar_full_canvas .header-menu-sidebar { opacity: 1; }';
+		$sidebar_animation_css .= '.header-menu-sidebar .menu-item-nav-search:not(.floating) { pointer-events: none; }';
+		$sidebar_animation_css .= '.header-menu-sidebar .menu-item-nav-search .is-menu-sidebar { pointer-events: unset; }';
+
+		return $sidebar_animation_css;
+	}
+
+	/**
+	 * Get static footer styles.
+	 * 
+	 * @return string
+	 */
+	private function get_static_footer_styles() {
+		if ( defined( 'NEVE_PRO_VERSION' ) ) {
+			return '';
+		}
+		
+		return '@media screen and (max-width: 960px) {
+			.builder-item.cr .item--inner {
+				--textalign: center;
+    		--justify: center;
+			}
+		}';
 	}
 
 	/**
