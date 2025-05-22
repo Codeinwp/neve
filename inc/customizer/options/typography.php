@@ -304,7 +304,7 @@ class Typography extends Base_Customizer {
 				array(
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'neve_sanitize_colors',
-					'default'           => 'var(--nv-text-color)',
+					'default'           => '',
 				),
 				array(
 					'section'               => 'neve_typography_headings',
