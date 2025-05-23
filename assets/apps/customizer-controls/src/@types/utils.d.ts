@@ -160,18 +160,10 @@ declare global {
 			nonce: string;
 			hideConditionalHeaderSelector: boolean;
 			dashUpdatesMessage: string;
-			deal?: {
-				active?: boolean;
-				dealSlug?: string;
-				urgencyText?: string;
-				remaningTime?: string;
-				bannerUrl?: string;
-				customizerBannerUrl?: string;
-				bannerStoreUrl?: string;
-				linkGlobal?: string;
-				customizerBannerStoreUrl?: string;
-				customizerBannerAlt?: string;
-				bannerAlt?: string;
+			blackFriday?: {
+				saleUrl: string;
+				bannerSrc: string;
+				message: string;
 			};
 		};
 		NeveProReactCustomize: undefined | StringObjectKeys;

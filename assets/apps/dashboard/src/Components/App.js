@@ -28,6 +28,7 @@ const App = () => {
 		fetchOptions().then((r) => {
 			setSettings(r);
 			setLoading(false);
+			window.tsdk_reposition_notice();
 		});
 	}, []);
 
@@ -38,9 +39,9 @@ const App = () => {
 		<div className="antialiased grow flex flex-col gap-6 h-full">
 			<Header />
 
-			{/*<Deal />*/}
 			{'starter-sites' !== currentTab && <Notifications />}
 
+			<div id="tsdk_banner"></div>
 			<Container className="flex flex-col lg:flex-row gap-6 h-full grow">
 				<div className="grow">{tabs[currentTab].render(setTab)}</div>
 
