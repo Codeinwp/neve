@@ -40,3 +40,15 @@ $devicemap : 'tablet', 'mobile', 'desktop';
 	}
   }
 }
+
+#tsdk_banner:has(.themeisle-sale) {
+	margin: 0 auto;
+	padding: 0 1.5rem;
+	width: 100%;
+	max-width: 1535px;
+
+	.notice.themeisle-sale {
+		margin: 0;
+	}
+}
+

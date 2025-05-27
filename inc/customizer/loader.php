@@ -9,8 +9,8 @@
 namespace Neve\Customizer;
 
 use HFG\Core\Components\Utility\SearchIconButton;
+use Neve\Admin\Dashboard\Main;
 use Neve\Core\Factory;
-use Neve\Core\Limited_Offers;
 use Neve\Core\Settings\Config;
 use Neve\Customizer\Options\Colors_Background;
 
@@ -113,8 +113,7 @@ class Loader {
 			NEVE_VERSION,
 			true
 		);
-
-		$offer        = new Limited_Offers();
+		 
 		$bundle_path  = get_template_directory_uri() . '/assets/apps/customizer-controls/build/';
 		$dependencies = ( include get_template_directory() . '/assets/apps/customizer-controls/build/controls.asset.php' );
 		wp_register_script( 'react-controls', $bundle_path . 'controls.js', $dependencies['dependencies'], $dependencies['version'], true );
@@ -153,7 +152,6 @@ class Loader {
 							'customIconKey'  => SearchIconButton::CUSTOM_ICON,
 						],
 					],
-					'deal'                          => ! defined( 'NEVE_PRO_VERSION' ) ? $offer->get_localized_data() : array(),
 					'starterContent'                => array(
 						'active'          => (bool) get_option( 'fresh_site' ),
 						'nonce'           => wp_create_nonce( 'neve_dismiss_starter_content' ),
@@ -167,6 +165,7 @@ class Loader {
 							'error'       => __( 'An error occurred. Please reload the page and try again.', 'neve' ),
 						),
 					),
+					'blackFriday'                   => $this->get_black_friday_data(),
 				)
 			)
 		);
@@ -325,6 +324,32 @@ class Loader {
 			array(
 				'message' => __( 'An error occurred. Please reload the page and try again.', 'neve' ),
 			)
+		);
+	}
+
+	/**
+	 * Get the data for Black Friday sale.
+	 * 
+	 * @return array The data.
+	 */
+	public function get_black_friday_data() {
+		$is_white_label_active = apply_filters( 'neve_is_theme_whitelabeled', false ) || apply_filters( 'neve_is_plugin_whitelabeled', false );
+
+		if ( $is_white_label_active ) {
+			return array();
+		}
+
+		$is_black_friday = apply_filters( 'themeisle_sdk_is_black_friday_sale', false );
+		if ( ! $is_black_friday ) {
+			return array();
+		}
+
+		$data = Main::get_black_friday_data();
+		
+		return array(
+			'saleUrl'   => $data['sale_url'],
+			'message'   => $data['message'],
+			'bannerSrc' => get_template_directory_uri() . '/assets/img/dashboard/black-friday-customizer-banner.png',
 		);
 	}
 }
