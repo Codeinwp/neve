@@ -15,7 +15,7 @@ jobs:
         node-version: [16.x]
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@4
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
       - name: Setup node ${{ matrix.node-version }} 🔧
