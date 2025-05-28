@@ -66,7 +66,7 @@ const ColorControl = ({
 		{ 'allows-global': !disableGlobal },
 	]);
 
-	const [gradient, setGradient] = useState(selectedColor || defaultGradient);
+	const [gradient, setGradient] = useState(selectedColor);
 	const isGradient = (value) => {
 		return value && value.toLowerCase().indexOf('gradient') !== -1;
 	};
@@ -166,7 +166,7 @@ const ColorControl = ({
 										}}
 									/>
 									<GradientPicker
-										value={gradient}
+										value={gradient || defaultGradient}
 										gradients={[]}
 										onChange={(currentGradient) => {
 											setGradient(currentGradient);
