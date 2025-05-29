@@ -52,9 +52,11 @@ const ColorControl = ({
 	};
 
 	const isGlobal = selectedColor && selectedColor.indexOf('var') > -1;
+	const defaultGradient = 'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)';
 
 	const handleClear = () => {
 		onChange(defaultValue || '');
+		setGradient(defaultValue || defaultGradient);
 		toggle();
 	};
 
@@ -157,14 +159,14 @@ const ColorControl = ({
 									<div
 										className="current-color-gradient"
 										style={{
-											background: selectedColor,
+											background: selectedColor || defaultGradient,
 											height: '177px',
 											border: '1px solid #eee',
 											minWidth: '215px',
 										}}
 									/>
 									<GradientPicker
-										value={gradient}
+										value={gradient || defaultGradient}
 										gradients={[]}
 										onChange={(currentGradient) => {
 											setGradient(currentGradient);
