@@ -1,3 +1,8 @@
+##### [Version 4.1.2](https://github.com/Codeinwp/neve/compare/v4.1.1...v4.1.2) (2025-05-30)
+
+- Fixed styling options of the Menu Icon
+- Updated dependencies
+
 ##### [Version 4.1.1](https://github.com/Codeinwp/neve/compare/v4.1.0...v4.1.1) (2025-05-22)
 
 - [Fix] Tested up to notice appearing when used with Pro version above 4.1
