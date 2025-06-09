@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 26/05/25
+ * Updated on 09/06/25
  *
  * @package neve
  */
@@ -60,6 +60,7 @@ return array(
 	'Alumni Sans Collegiate One' => array( '400', '400italic',),
 	'Alumni Sans Inline One' => array( '400', '400italic',),
 	'Alumni Sans Pinstripe' => array( '400', '400italic',),
+	'Alumni Sans SC' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Amarante' => array( '400',),
 	'Amaranth' => array( '400', '700', '400italic', '700italic',),
 	'Amatic SC' => array( '400', '700',),
@@ -122,6 +123,7 @@ return array(
 	'Asar' => array( '400',),
 	'Asset' => array( '400',),
 	'Assistant' => array( '200', '300', '400', '500', '600', '700', '800',),
+	'Asta Sans' => array( '300', '400', '500', '600', '700', '800',),
 	'Astloch' => array( '400', '700',),
 	'Asul' => array( '400', '700',),
 	'Athiti' => array( '200', '300', '400', '500', '600', '700',),
@@ -429,11 +431,17 @@ return array(
 	'Edu AU VIC WA NT Guides' => array( '400', '500', '600', '700',),
 	'Edu AU VIC WA NT Hand' => array( '400', '500', '600', '700',),
 	'Edu AU VIC WA NT Pre' => array( '400', '500', '600', '700',),
+	'Edu NSW ACT Cursive' => array( '400', '500', '600', '700',),
 	'Edu NSW ACT Foundation' => array( '400', '500', '600', '700',),
+	'Edu NSW ACT Hand Pre' => array( '400', '500', '600', '700',),
 	'Edu QLD Beginner' => array( '400', '500', '600', '700',),
+	'Edu QLD Hand' => array( '400', '500', '600', '700',),
 	'Edu SA Beginner' => array( '400', '500', '600', '700',),
+	'Edu SA Hand' => array( '400', '500', '600', '700',),
 	'Edu TAS Beginner' => array( '400', '500', '600', '700',),
 	'Edu VIC WA NT Beginner' => array( '400', '500', '600', '700',),
+	'Edu VIC WA NT Hand' => array( '400', '500', '600', '700',),
+	'Edu VIC WA NT Hand Pre' => array( '400', '500', '600', '700',),
 	'El Messiri' => array( '400', '500', '600', '700',),
 	'Electrolize' => array( '400',),
 	'Elsie' => array( '400', '900',),
@@ -1524,6 +1532,7 @@ return array(
 	'Sarpanch' => array( '400', '500', '600', '700', '800', '900',),
 	'Sassy Frass' => array( '400',),
 	'Satisfy' => array( '400',),
+	'Savate' => array( '200', '300', '400', '500', '600', '700', '800', '900', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Sawarabi Gothic' => array( '400',),
 	'Sawarabi Mincho' => array( '400',),
 	'Scada' => array( '400', '700', '400italic', '700italic',),
