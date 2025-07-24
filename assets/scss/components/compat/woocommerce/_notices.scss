@@ -13,10 +13,10 @@
 .woocommerce-error,
 .woocommerce-message {
 	display: flex;
-	align-items: center;
-	flex-direction: column-reverse;
-	text-align: center;
-	padding: 15px;
+	align-items: start;
+	flex-direction: column;
+	text-align: start;
+	padding: 15px 15px 15px 45px;
 	--btnfs: $text-sm;
 	--primarybtnpadding: 10px 15px;
 	--primarybtnborderwidth: 3px;
@@ -36,6 +36,7 @@
 		margin-top: $spacing-sm;
 		white-space: normal;
 		margin-left: auto;
+		text-align: center;
 	}
 }
 
@@ -144,10 +145,9 @@ $blockNotices: (
 	.woocommerce-info,
 	.woocommerce-error,
 	.woocommerce-message {
-		flex-direction: row-reverse;
-		justify-content: flex-end;
 		text-align: left;
 		padding-left: $spacing-aired;
+		align-items: center;
 
 		a,
 		.button {
@@ -160,9 +160,27 @@ $blockNotices: (
 		&::before {
 			display: flex;
 			top: 0;
-			align-items: center;
 			height: 100%;
 			color: #fff;
+		}
+	}
+
+	.woocommerce-info,
+	.woocommerce-message {
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+
+		&::before {
+			align-items: center;
+		}
+	}
+
+	.woocommerce-error {
+		flex-direction: column-reverse;
+
+		&::before {
+			align-items: start;
+			padding-top: 15px;
 		}
 	}
 }
