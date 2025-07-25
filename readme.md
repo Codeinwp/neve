@@ -19,6 +19,14 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 4.1.3](https://github.com/Codeinwp/neve/compare/v4.1.2...v4.1.3) (2025-07-25)
+
+- Fixed broken notice layout on checkout page
+- Updated dependencies
+
+
+
+
 ##### [Version 4.1.2](https://github.com/Codeinwp/neve/compare/v4.1.1...v4.1.2) (2025-05-30)
 
 - Fixed styling options of the Menu Icon
