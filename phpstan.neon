@@ -1,5 +1,5 @@
 parameters:
-	level: 5
+	level: 6
 	paths:
 		- %currentWorkingDirectory%/functions.php
 		- %currentWorkingDirectory%/globals
@@ -12,8 +12,8 @@ parameters:
 	bootstrapFiles:
 		- %currentWorkingDirectory%/inc/core/styles/generator.php
 		- %currentWorkingDirectory%/inc/core/theme_info.php
-		- %currentWorkingDirectory%/vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
 		- %currentWorkingDirectory%/vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+		- %currentWorkingDirectory%/vendor/php-stubs/woocommerce-stubs/woocommerce-packages-stubs.php
 		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/config.php
 		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/header-footer-elementor.php
 		- %currentWorkingDirectory%/tests/php/static-analysis-stubs/yoast-wordpress-seo.php
@@ -41,3 +41,4 @@ parameters:
 		- '#Parameter \#2 \$args of method WP_Customize_Manager::add_setting\(\) expects#'
 includes:
 	- %currentWorkingDirectory%/vendor/szepeviktor/phpstan-wordpress/extension.neon
+	- %currentWorkingDirectory%/phpstan-baseline.neon

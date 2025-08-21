@@ -327,7 +327,7 @@ class Manager {
 	 *
 	 * @param array $arguments Component arguments.
 	 *
-	 * @return bool;
+	 * @return bool
 	 */
 	public function add( $arguments = array() ) {
 
