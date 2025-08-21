@@ -79,6 +79,7 @@ assets/js/src
 lint-staged.config.js
 .stylelintrc.json
 phpstan.neon
+phpstan-baseline.neon
 composer-dev.json
 composer-dev.lock
 SETUP.md

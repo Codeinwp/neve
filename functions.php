@@ -44,11 +44,10 @@ if ( version_compare( PHP_VERSION, '7.0' ) < 0 ) {
 	);
 }
 /**
- * A list of files to check for existance before bootstraping.
+ * A list of files to check for existence before bootstrapping.
  *
- * @var array Files to check for existance.
+ * @var non-falsy-string[] Files to check for existence.
  */
-
 $_files_to_check = defined( 'NEVE_IGNORE_SOURCE_CHECK' ) ? [] : [
 	NEVE_MAIN_DIR . 'vendor/autoload.php',
 	NEVE_MAIN_DIR . 'style-main-new.css',
