@@ -48,10 +48,11 @@ const LicenseCard = () => {
 		);
 	};
 
-	if (whiteLabel && whiteLabel.hideLicense) {
+	if (whiteLabel && whiteLabel.hideLicense && 'valid' === valid) {
 		return null;
 	}
 
+	const isValid = 'valid' === valid;
 	const isOrWasValid = ['valid', 'active_expired', 'expired'].includes(valid);
 
 	const getStatusLabel = () => {
@@ -63,7 +64,7 @@ const LicenseCard = () => {
 		};
 
 		if (!status) {
-			return isOrWasValid
+			return isValid
 				? __('Deactivate', 'neve')
 				: __('Activate', 'neve');
 		}
@@ -94,13 +95,13 @@ const LicenseCard = () => {
 						id="license-field"
 						name="license-field"
 						className="flex-grow rounded !border-gray-300 text-sm !py-1 !px-2"
-						disabled={isOrWasValid}
+						disabled={isValid}
 						onChange={(e) => {
 							const keyToSet = e.target.value.replace(/\s+/g, '');
 							setKey(keyToSet);
 						}}
 						value={
-							isOrWasValid
+							isValid
 								? '******************************' +
 								  key.slice(-5)
 								: key
