@@ -28,9 +28,10 @@ const LicenseCard = () => {
 	const { valid, expiration } = license;
 	const { whiteLabel, strings } = neveDash;
 	const { licenseCardHeading, licenseCardDescription } = strings;
+	const isValid = 'valid' === valid;
 
 	const toggleLicense = () => {
-		const toDo = 'valid' === valid ? 'deactivate' : 'activate';
+		const toDo = isValid ? 'deactivate' : 'activate';
 		setStatus('activate' === toDo ? 'activating' : 'deactivating');
 		send(proApi + '/toggle_license', { key, action: toDo }).then(
 			(response) => {
@@ -48,7 +49,7 @@ const LicenseCard = () => {
 		);
 	};
 
-	if (whiteLabel && whiteLabel.hideLicense) {
+	if (whiteLabel && whiteLabel.hideLicense && isValid) {
 		return null;
 	}
 
@@ -63,9 +64,7 @@ const LicenseCard = () => {
 		};
 
 		if (!status) {
-			return isOrWasValid
-				? __('Deactivate', 'neve')
-				: __('Activate', 'neve');
+			return isValid ? __('Deactivate', 'neve') : __('Activate', 'neve');
 		}
 
 		return statusLabelMap[status];
@@ -94,13 +93,13 @@ const LicenseCard = () => {
 						id="license-field"
 						name="license-field"
 						className="flex-grow rounded !border-gray-300 text-sm !py-1 !px-2"
-						disabled={isOrWasValid}
+						disabled={isValid}
 						onChange={(e) => {
 							const keyToSet = e.target.value.replace(/\s+/g, '');
 							setKey(keyToSet);
 						}}
 						value={
-							isOrWasValid
+							isValid
 								? '******************************' +
 								  key.slice(-5)
 								: key
@@ -108,8 +107,8 @@ const LicenseCard = () => {
 						placeholder={__('Enter License Key', 'neve')}
 					/>
 					<Button
-						isPrimary={'valid' !== valid}
-						isSecondary={'valid' === valid}
+						isPrimary={!isValid}
+						isSecondary={isValid}
 						disabled={!!status || !key}
 						isSubmit
 					>
@@ -126,10 +125,10 @@ const LicenseCard = () => {
 				{isOrWasValid && (
 					<div className="flex items-center gap-1">
 						<Pill
-							type={valid === 'valid' ? 'success' : 'warning'}
+							type={isValid ? 'success' : 'warning'}
 							className="inline-flex items-center gap-1 px-2 py-1"
 						>
-							{valid === 'valid' ? (
+							{isValid ? (
 								<>
 									<LucideCircleCheck size={14} />
 									<span>{__('Valid', 'neve')}</span>
@@ -145,7 +144,7 @@ const LicenseCard = () => {
 							<>
 								<span className="space-x-1 ml-auto">
 									<span className="text-xs">
-										{'valid' === valid
+										{isValid
 											? __('Expires', 'neve')
 											: __('Expired', 'neve')}
 									</span>
