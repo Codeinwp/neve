@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '4.1.2' );
+define( 'NEVE_VERSION', '4.1.3' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 define( 'NEVE_MAIN_DIR', get_template_directory() . '/' );
@@ -44,11 +44,10 @@ if ( version_compare( PHP_VERSION, '7.0' ) < 0 ) {
 	);
 }
 /**
- * A list of files to check for existance before bootstraping.
+ * A list of files to check for existence before bootstrapping.
  *
- * @var array Files to check for existance.
+ * @var non-falsy-string[] Files to check for existence.
  */
-
 $_files_to_check = defined( 'NEVE_IGNORE_SOURCE_CHECK' ) ? [] : [
 	NEVE_MAIN_DIR . 'vendor/autoload.php',
 	NEVE_MAIN_DIR . 'style-main-new.css',
