@@ -688,7 +688,7 @@ class Frontend extends Generator {
 		];
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON ]['border-color']       = [
 			'key'      => 'neve_form_button_type',
-			'override' => 'var(--secondarybtnhovercolor)',
+			'override' => 'var(--secondarybtncolor)',
 		];
 		$this->_subscribers[ Config::CSS_SELECTOR_FORM_BUTTON_HOVER ]['border-color'] = [
 			'key'      => 'neve_form_button_type',
