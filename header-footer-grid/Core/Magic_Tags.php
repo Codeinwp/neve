@@ -202,7 +202,7 @@ class Magic_Tags {
 	/**
 	 * Single Post meta.
 	 *
-	 * @return string.
+	 * @return string
 	 */
 	public function current_post_meta() {
 		ob_start();
@@ -216,7 +216,7 @@ class Magic_Tags {
 	/**
 	 * Meta author.
 	 *
-	 * @return string.
+	 * @return string
 	 */
 	public function meta_author() {
 		return '<span class="nv-dynamic-author-meta">' . Post_Meta::neve_get_author_meta() . '</span>';
@@ -225,7 +225,7 @@ class Magic_Tags {
 	/**
 	 * Meta date.
 	 *
-	 * @return string.
+	 * @return string
 	 */
 	public function meta_date() {
 		ob_start();
@@ -239,7 +239,7 @@ class Magic_Tags {
 	/**
 	 * Meta category.
 	 *
-	 * @return string.
+	 * @return string
 	 */
 	public function meta_category() {
 		return get_the_category_list( ', ', '', get_the_ID() );
@@ -248,7 +248,7 @@ class Magic_Tags {
 	/**
 	 * Meta comments.
 	 *
-	 * @return string.
+	 * @return string
 	 */
 	public function meta_comments() {
 		$comments = Post_Meta::get_comments();
@@ -258,7 +258,7 @@ class Magic_Tags {
 	/**
 	 * Meta time.
 	 *
-	 * @return string.
+	 * @return string
 	 */
 	public function meta_time_to_read() {
 		return apply_filters( 'neve_do_read_time', '' );
