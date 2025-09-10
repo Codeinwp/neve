@@ -20,6 +20,10 @@ jobs:
         with:
           node-version: 16.x
           cache: "yarn"
+      
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
       - name: Build & create dist/artifact
         run: |
           yarn install --frozen-lockfile
@@ -58,15 +62,12 @@ jobs:
           DEST_DIR: ${{ secrets.AWS_PRODUCTS_FOLDER }}/$BUILD_NAME/$BUILD_VERSION
       - name: Send update to the store
         env:
-          THEMEISLE_ID: ${{ secrets.THEMEISLE_ID }}
-          THEMEISLE_AUTH: ${{ secrets.THEMEISLE_AUTH }}
-          STORE_URL: ${{ secrets.STORE_URL }}
-        run: |
-          if [ ! -z "$THEMEISLE_ID" ]; then
-              STORE_JSON='{"version": "'$BUILD_VERSION'","id": "'$THEMEISLE_ID'","body": ""}';
-              echo "$STORE_JSON";
-              curl -X POST -H 'Cache-Control: no-cache' -H "Content-Type: application/json" -H "x-themeisle-auth: $THEMEISLE_AUTH"  --data "$STORE_JSON" "$STORE_URL/wp-json/edd-so/v1/update_changelog/" > /dev/null
-          fi
+          PRODUCT_ID: ${{ secrets.THEMEISLE_ID }}
+          AUTH_TOKEN: ${{ secrets.THEMEISLE_AUTH }}
+          STORE_URL: ${{ secrets.THEMEISLE_STORE_URL }}
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+          BUILD_VERSION: ${{ steps.get_version.outputs.VERSION }}
+        uses: Codeinwp/action-store-release@main
       - name: WordPress Theme Deploy
         uses: Codeinwp/action-wordpress-theme-deploy@primary
         env:
