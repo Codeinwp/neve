@@ -19,6 +19,15 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 4.1.4](https://github.com/Codeinwp/neve/compare/v4.1.3...v4.1.4) (2025-09-10)
+
+- Fixed border color not working properly for Secondary Buttons
+- Fixed the issue related to changing the license key after White Module was enabled [PRO]
+- Updated dependencies
+
+
+
+
 ##### [Version 4.1.3](https://github.com/Codeinwp/neve/compare/v4.1.2...v4.1.3) (2025-07-25)
 
 - Fixed broken notice layout on checkout page
