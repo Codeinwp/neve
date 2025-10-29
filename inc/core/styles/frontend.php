@@ -1083,7 +1083,7 @@ class Frontend extends Generator {
 	/**
 	 * Get scroll to top CSS variables rules.
 	 *
-	 * @return array
+	 * @return array<string, array<string, mixed>>
 	 */
 	private function get_scroll_to_top_rules() {
 		$rules = [

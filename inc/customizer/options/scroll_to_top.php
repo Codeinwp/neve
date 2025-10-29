@@ -28,6 +28,8 @@ class Scroll_To_Top extends Base_Customizer {
 
 	/**
 	 * Base initialization.
+	 * 
+	 * @return void
 	 */
 	public function init() {
 		parent::init();
@@ -36,6 +38,8 @@ class Scroll_To_Top extends Base_Customizer {
 
 	/**
 	 * Live refresh for scroll to top controls.
+	 * 
+	 * @return void
 	 */
 	public function live_refresh_scripts() {
 		if ( ! is_customize_preview() ) {
@@ -94,9 +98,10 @@ class Scroll_To_Top extends Base_Customizer {
 
 	/**
 	 * Register customizer section for the module
+	 *
+	 * @return void
 	 */
 	private function scroll_to_top_section() {
-
 		$this->add_section(
 			new Section(
 				'neve_scroll_to_top',
@@ -112,9 +117,10 @@ class Scroll_To_Top extends Base_Customizer {
 
 	/**
 	 * Register option toggle in customizer
+	 * 
+	 * @return void
 	 */
 	private function scroll_to_top_options() {
-
 		$this->add_control(
 			new Control(
 				'neve_scroll_to_top_status',
@@ -321,9 +327,10 @@ class Scroll_To_Top extends Base_Customizer {
 
 	/**
 	 * Add style controls for Scroll to top module.
+	 * 
+	 * @return void
 	 */
 	private function scroll_to_top_style_controls() {
-
 		$this->add_control(
 			new Control(
 				'neve_scroll_to_top_style',
@@ -642,6 +649,8 @@ class Scroll_To_Top extends Base_Customizer {
 
 	/**
 	 * Active callback for controls that are available only if scroll to top is an image
+	 * 
+	 * @return bool
 	 */
 	public function is_image_type_control() {
 		if ( ! $this->is_module_enabled() ) {
@@ -653,6 +662,8 @@ class Scroll_To_Top extends Base_Customizer {
 
 	/**
 	 * Active callback for controls that are available only if scroll to top is an icon
+	 *
+	 * @return bool
 	 */
 	public function is_icon_type_control() {
 		if ( ! $this->is_module_enabled() ) {
@@ -696,6 +707,8 @@ class Scroll_To_Top extends Base_Customizer {
 
 	/**
 	 * Check if Scroll to Top is enabled.
+	 *
+	 * @return bool
 	 */
 	public static function is_enabled() {
 		// Check old option first for backward compatibility.
@@ -717,6 +730,8 @@ class Scroll_To_Top extends Base_Customizer {
 
 	/**
 	 * Active callback for scroll to top controls.
+	 *
+	 * @return bool
 	 */
 	public function is_module_enabled() {
 		return self::is_enabled();

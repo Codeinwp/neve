@@ -29,13 +29,6 @@ class Upsells extends Base_Customizer {
 	private $upsell_url = '';
 
 	/**
-	 * Scroll to top upsell url
-	 *
-	 * @var string
-	 */
-	private $stt_upsell_url = '';
-
-	/**
 	 * Init function
 	 *
 	 * @return bool|void
@@ -45,8 +38,7 @@ class Upsells extends Base_Customizer {
 			return;
 		}
 
-		$this->stt_upsell_url = esc_url_raw( apply_filters( 'neve_upgrade_link_from_child_theme_filter', $this->get_upgrade_url( 'scrolltotop' ) ) );
-		$this->upsell_url     = esc_url_raw( apply_filters( 'neve_upgrade_link_from_child_theme_filter', $this->get_upgrade_url( 'learnmorebtn' ) ) );
+		$this->upsell_url = esc_url_raw( apply_filters( 'neve_upgrade_link_from_child_theme_filter', $this->get_upgrade_url( 'learnmorebtn' ) ) );
 
 		parent::init();
 

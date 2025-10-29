@@ -27,14 +27,16 @@ class Scroll_To_Top extends Base_View {
 
 	/**
 	 * Scroll to top amp observer.
+	 * 
+	 * @return void
 	 */
 	public function scroll_to_top_amp() {
 		if ( ! Scroll_To_Top_Options::is_enabled() ) {
-			return false;
+			return;
 		}
 
 		if ( ! neve_is_amp() ) {
-			return false;
+			return;
 		}
 
 		echo '<amp-position-observer on="enter:hideAnim.start; exit:showAnim.start" layout="nodisplay"></amp-position-observer>';
@@ -81,11 +83,12 @@ class Scroll_To_Top extends Base_View {
 		    </script>
 		  </amp-animation>
 		';
-		return true;
 	}
 
 	/**
 	 * Enqueue module scripts
+	 *
+	 * @return void
 	 */
 	public function enqueue_scripts() {
 		if ( ! Scroll_To_Top_Options::is_enabled() ) {
@@ -114,7 +117,7 @@ class Scroll_To_Top extends Base_View {
 	/**
 	 * Send offset to the JS object
 	 *
-	 * @return array
+	 * @return array<string, mixed>
 	 */
 	private function localize_scroll() {
 		return array(
@@ -124,10 +127,12 @@ class Scroll_To_Top extends Base_View {
 
 	/**
 	 * Display scroll to top button
+	 * 
+	 * @return void
 	 */
 	public function render_button() {
 		if ( ! Scroll_To_Top_Options::is_enabled() ) {
-			return false;
+			return;
 		}
 
 		$position       = get_theme_mod( 'neve_scroll_to_top_side', 'right' );
@@ -161,8 +166,6 @@ class Scroll_To_Top extends Base_View {
 		}
 		
 		echo '</button>';
-
-		return true;
 	}
 
 	/**
