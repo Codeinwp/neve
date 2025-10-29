@@ -128,7 +128,7 @@ test.describe('Logo Component palette', function () {
 
 		await expect(await siteLogo.getAttribute('src')).toBe(logos[1]?.url);
 
-		await page.locator('.icon > svg > path').click();
+		await page.getByRole('link', { name: 'Palette Switch' }).click();
 
 		await expect(await siteLogo.getAttribute('src')).toBe(logos[0]?.url);
 	});
