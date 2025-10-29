@@ -72,13 +72,13 @@ const LicenseCard = () => {
 
 	const getPlanLabel = () => {
 		const planLabel = {
-			1: __( 'Personal', 'neve' ),
-			2: __( 'Business', 'neve' ),
-			3: __( 'Agency', 'neve' ),
+			1: __('Personal', 'neve'),
+			2: __('Business', 'neve'),
+			3: __('Agency', 'neve'),
 		};
 
 		return planLabel[tier] || null;
-	}
+	};
 	const planLabel = getPlanLabel();
 
 	return (
@@ -135,7 +135,11 @@ const LicenseCard = () => {
 				)}
 				{isOrWasValid && (
 					<div className="flex items-center gap-1">
-						{planLabel && <p className='px-1.5 py-0.5 rounded text-white bg-blue-600'>{planLabel}</p>}
+						{planLabel && (
+							<p className="px-1.5 py-0.5 rounded text-white bg-blue-600">
+								{planLabel}
+							</p>
+						)}
 						<Pill
 							type={isValid ? 'success' : 'warning'}
 							className="inline-flex items-center gap-1 px-2 py-1"
