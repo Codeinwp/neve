@@ -408,20 +408,6 @@ class Upsells extends Base_Customizer {
 				)
 			);
 		}
-
-		$this->add_section(
-			new Section(
-				'neve_scroll_to_top_upsell',
-				array(
-					'priority' => 80,
-					'title'    => esc_html__( 'Scroll To Top', 'neve' ),
-					'cta'      => esc_html__( 'PRO', 'neve' ),
-					'url'      => $this->stt_upsell_url,
-					'panel'    => 'neve_layout',
-				),
-				'Neve\Customizer\Controls\React\Upsell_Section'
-			)
-		);
 	}
 
 	/**
@@ -438,30 +424,6 @@ class Upsells extends Base_Customizer {
 					'section'     => 'neve_free_pro_upsell',
 					'priority'    => PHP_INT_MIN,
 					'link'        => $this->upsell_url,
-				],
-				'Neve\Customizer\Controls\Simple_Upsell'
-			)
-		);
-
-
-		/*
-		 * Deactivated.
-		 * 
-		 * @since 4.1.0
-		 */
-		$this->add_control(
-			new Control(
-				'neve_scroll_to_top_cta_control',
-				[ 'sanitize_callback' => 'sanitize_text_field' ],
-				[
-					/* translators: Module name for the upsell. */
-					'text'        => sprintf( __( 'Unlock %s with the Pro version.', 'neve' ), __( 'Scroll To Top', 'neve' ) ),
-					'button_text' => esc_html__( 'Get the PRO version!', 'neve' ),
-					'section'     => 'neve_scroll_to_top_upsell',
-					'priority'    => PHP_INT_MIN,
-					'link'        => $this->get_upgrade_url( 'scrolltotop' ),
-					'class'       => 'column-layout',
-					'use_primary' => 'true',
 				],
 				'Neve\Customizer\Controls\Simple_Upsell'
 			)

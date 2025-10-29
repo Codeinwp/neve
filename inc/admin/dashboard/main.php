@@ -667,10 +667,6 @@ class Main {
 				'nicename'    => __( 'Post types enhancements', 'neve' ),
 				'description' => __( 'Extend Neve\'s powerful features to custom post types. Create unique layouts for portfolios, testimonials, and more.', 'neve' ),
 			),
-			'scroll_to_top'          => array(
-				'nicename'    => __( 'Scroll To Top', 'neve' ),
-				'description' => __( 'Add a customizable scroll-to-top button that appears exactly when needed. Style it to match your brand.', 'neve' ),
-			),
 			'performance_features'   => array(
 				'nicename'    => __( 'Performance', 'neve' ),
 				'description' => __( 'Optimize core vitals, enable lazy loading, and minify resources for lightning-fast load times.', 'neve' ),

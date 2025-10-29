@@ -9,8 +9,10 @@ namespace Neve\Core\Styles;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Core\Styles\Css_Prop;
 use Neve\Customizer\Defaults\Layout;
 use Neve\Customizer\Defaults\Single_Post;
+use Neve\Customizer\Options\Scroll_To_Top;
 
 /**
  * Class Generator for Frontend.
@@ -54,6 +56,7 @@ class Frontend extends Generator {
 		$this->setup_header_style();
 		$this->setup_single_post_style();
 		$this->setup_content_vspacing();
+		$this->setup_scroll_to_top();
 	}
 
 	/**
@@ -1057,5 +1060,109 @@ class Frontend extends Generator {
 				'rules'     => $rules,
 			];
 		}
+	}
+
+	/**
+	 * Setup scroll to top styles.
+	 *
+	 * @return void
+	 */
+	private function setup_scroll_to_top() {
+		if ( ! Scroll_To_Top::is_enabled() ) {
+			return;
+		}
+
+		// Add CSS variables to root
+		$rules                = $this->get_scroll_to_top_rules();
+		$this->_subscribers[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.scroll-to-top',
+			Dynamic_Selector::KEY_RULES    => $rules,
+		];
+	}
+
+	/**
+	 * Get scroll to top CSS variables rules.
+	 *
+	 * @return array
+	 */
+	private function get_scroll_to_top_rules() {
+		$rules = [
+			'--color'        => [
+				Dynamic_Selector::META_KEY     => 'neve_scroll_to_top_icon_color',
+				Dynamic_Selector::META_DEFAULT => empty( Mods::get( 'neve_scroll_to_top_icon_color', 'var(--nv-text-dark-bg)' ) ) ? 'transparent' : 'var(--nv-text-dark-bg)',
+			],
+			'--padding'      => [
+				Dynamic_Selector::META_KEY           => 'neve_scroll_to_top_padding',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+				'directional-prop'                   => Config::CSS_PROP_PADDING,
+				Dynamic_Selector::META_DEFAULT       => array(
+					'desktop'      => array(
+						'top'    => 8,
+						'right'  => 10,
+						'bottom' => 8,
+						'left'   => 10,
+					),
+					'tablet'       => array(
+						'top'    => 8,
+						'right'  => 10,
+						'bottom' => 8,
+						'left'   => 10,
+					),
+					'mobile'       => array(
+						'top'    => 8,
+						'right'  => 10,
+						'bottom' => 8,
+						'left'   => 10,
+					),
+					'desktop-unit' => 'px',
+					'tablet-unit'  => 'px',
+					'mobile-unit'  => 'px',
+				),
+			],
+			'--borderradius' => [
+				Dynamic_Selector::META_KEY     => 'neve_scroll_to_top_border_radius',
+				Dynamic_Selector::META_DEFAULT => 3,
+				Dynamic_Selector::META_SUFFIX  => 'px',
+			],
+			'--bgcolor'      => [
+				Dynamic_Selector::META_KEY     => 'neve_scroll_to_top_background_color',
+				Dynamic_Selector::META_DEFAULT => empty( Mods::get( 'neve_scroll_to_top_background_color', 'var(--nv-primary-accent)' ) ) ? 'transparent' : 'var(--nv-primary-accent)',
+			],
+			'--hovercolor'   => [
+				Dynamic_Selector::META_KEY     => 'neve_scroll_to_top_icon_hover_color',
+				Dynamic_Selector::META_DEFAULT => empty( Mods::get( 'neve_scroll_to_top_icon_hover_color', 'var(--nv-text-dark-bg)' ) ) ? 'transparent' : 'var(--nv-text-dark-bg)',
+			],
+			'--hoverbgcolor' => [
+				Dynamic_Selector::META_KEY     => 'neve_scroll_to_top_background_hover_color',
+				Dynamic_Selector::META_DEFAULT => empty( Mods::get( 'neve_scroll_to_top_background_hover_color', 'var(--nv-primary-accent)' ) ) ? 'transparent' : 'var(--nv-primary-accent)',
+			],
+			'--size'         => [
+				Dynamic_Selector::META_KEY           => 'neve_scroll_to_top_icon_size',
+				Dynamic_Selector::META_DEFAULT       => '{ "mobile": "16", "tablet": "16", "desktop": "16" }',
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+					$value = (int) $value;
+					if ( $value > 0 ) {
+						$unit_suffix = Css_Prop::get_suffix_responsive( $meta, $device );
+						return sprintf( '%s:%s;', $css_prop, $value . $unit_suffix );
+					}
+					return '';
+				},
+			],
+		];
+
+		$type = Mods::get( 'neve_scroll_to_top_type', 'icon' );
+
+		if ( $type === 'image' ) {
+			$rules['--bgimage'] = [
+				Dynamic_Selector::META_KEY    => 'neve_scroll_to_top_image',
+				Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+					return sprintf( '--bgimage:url(%s);', wp_get_attachment_url( $value ) );
+				},
+			];
+		}
+
+		return $rules;
 	}
 }
