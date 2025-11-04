@@ -1,7 +1,7 @@
 /* global neveDash */
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import {
-	NEVE_AVAIABLE_MODULES_ICON_MAP,
+	NEVE_AVAILABLE_MODULES_ICON_MAP,
 	NEVE_STORE,
 } from '../../utils/constants';
 import { ArrowRight, LoaderCircle, LucideSettings } from 'lucide-react';
@@ -42,8 +42,10 @@ const ModuleToggle = ({
 	const { api } = neveDash;
 	const { title } = moduleData;
 	const toastMessage = {
-		installing: __('Installing Orbix Fox Plugin', 'neve'),
-		activating: __('Activating Orbix Fox Plugin', 'neve'),
+		//translators: %s - Plugin name
+		installing: sprintf(__('Installing %s', 'neve'), 'Orbit Fox Plugin'),
+		//translators: %s - Plugin name
+		activating: sprintf(__('Activating %s', 'neve'), 'Orbit Fox Plugin'),
 	};
 
 	const handleToggle = async (value) => {
@@ -117,7 +119,7 @@ const AvailableModuleCard = ({
 	setIsInstalled,
 }) => {
 	const { title, description } = moduleData;
-	const CardIcon = NEVE_AVAIABLE_MODULES_ICON_MAP[slug] || LucideSettings;
+	const CardIcon = NEVE_AVAILABLE_MODULES_ICON_MAP[slug] || LucideSettings;
 
 	return (
 		<Card
@@ -152,7 +154,7 @@ const AvailableModuleCard = ({
 					className="flex mt-2 text-blue-600 gap-2 align-middle"
 					href="admin.php?page=obfx_companion"
 				>
-					{__('Go to Settings to Edit')}
+					{__('Go to Settings to Edit', 'neve')}
 					<ArrowRight size={18} />
 				</a>
 			)}

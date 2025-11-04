@@ -367,7 +367,7 @@ class Main {
 			'api'                     => esc_url( rest_url( '/nv/v1/dashboard/' ) ),
 			'availableModules'        => $this->get_available_modules(),
 			'orbitFox'                => array(
-				'isInstalled'   => file_exists( ABSPATH . 'wp-content/plugins/themeisle-companion/themeisle-companion.php' ),
+				'isInstalled'   => file_exists( WP_PLUGIN_DIR . '/themeisle-companion/themeisle-companion.php' ),
 				'isActive'      => class_exists( 'Orbit_Fox' ),
 				'activationUrl' => $this->plugin_helper->get_plugin_action_link( 'themeisle-companion' ),
 				'data'          => class_exists( 'Orbit_Fox' ) ? get_option( 'obfx_data' ) : array(),

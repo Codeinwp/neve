@@ -71,7 +71,7 @@ export const NEVE_PLUGIN_ICON_MAP = {
 	// 'sparks'
 };
 
-export const NEVE_AVAIABLE_MODULES_ICON_MAP = {
+export const NEVE_AVAILABLE_MODULES_ICON_MAP = {
 	'login-customizer': LucideLock,
 	'custom-fonts': LucideType,
 	'policy-notice': LucideShield,

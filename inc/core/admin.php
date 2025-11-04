@@ -329,8 +329,19 @@ class Admin {
 				'methods'             => \WP_REST_Server::EDITABLE,
 				'callback'            => [ $this, 'activate_module' ],
 				'permission_callback' => function() {
-					return ( current_user_can( 'manage_options' ) );
+					return current_user_can( 'manage_options' );
 				},
+				'args'                => array(
+					'slug'  => array(
+						'required'          => true,
+						'sanitize_callback' => 'sanitize_key',
+					),
+					'value' => array(
+						'required'          => true,
+						'sanitize_callback' => 'rest_sanitize_boolean',
+						'validate_callback' => 'rest_validate_request_arg',
+					),
+				),
 			]
 		);
 	}
@@ -365,7 +376,7 @@ class Admin {
 		$slug = $request->get_param( 'slug' );
 
 		if ( empty( $slug ) ) {
-			wp_send_json_error( array( 'message' => __( 'Missing plugin slug.', 'neve' ) ) );
+			return;
 		}
 
 		$plugin_helper = new Plugin_Helper();
@@ -412,7 +423,7 @@ class Admin {
 				global $wp_filesystem;
 
 				$status = [
-					'message' => __( 'Unable to connect to the filesystem. Please confirm your credentials.', 'neve' ),
+					'message' => __( 'Invalid plugin information.', 'neve' ),
 				];
 
 				if ( $wp_filesystem instanceof \WP_Filesystem_Base && $wp_filesystem->errors->has_errors() ) {
@@ -448,6 +459,11 @@ class Admin {
 
 		$settings = new \Orbit_Fox_Global_Settings();
 		$modules  = $settings::$instance->module_objects;
+
+		if ( ! isset( $modules[ $module_slug ] ) ) {
+			wp_send_json_error( __( 'Invalid module slug.', 'neve' ) );
+		}
+
 		$response = $modules[ $module_slug ]->set_status( 'active', $module_value );
 
 		wp_send_json_success( __( 'Module status changed.', 'neve' ) );
