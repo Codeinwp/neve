@@ -462,7 +462,7 @@ class Front_End {
 		}
 
 		if ( class_exists( 'WooCommerce', false ) && is_woocommerce() ) {
-			wp_register_script( 'neve-shop-script', NEVE_ASSETS_URL . 'js/build/modern/shop.js', array(), NEVE_VERSION, true );
+			wp_register_script( 'neve-shop-script', NEVE_ASSETS_URL . 'js/build/modern/shop.js', array( 'jquery' ), NEVE_VERSION, true );
 			wp_enqueue_script( 'neve-shop-script' );
 			wp_script_add_data( 'neve-shop-script', 'async', true );
 		}

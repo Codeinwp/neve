@@ -35,7 +35,7 @@
 		{
 			"gzip": false,
 			"running": false,
-			"limit": "34.1 KB",
+			"limit": "33 KB",
 			"path": "assets/js/build/modern/shop.js"
 		},
 		{

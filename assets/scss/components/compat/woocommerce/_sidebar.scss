@@ -57,7 +57,7 @@
 	}
 }
 
-body:not(.sp-slider-gallery) {
+body:not(.sp-ct-enabled) {
 
 	.tns-ovh {
 		display: flex;
@@ -69,12 +69,12 @@ body:not(.sp-slider-gallery) {
 		overflow: hidden;
 	}
 
+	.tns-visually-hidden {
+		display: none;
+	}
+
 	/* Make WooCommerce gallery vertical on desktop */
 	@media (min-width: 992px) {
-
-		.tns-visually-hidden {
-			display: none;
-		}
 
 		div.product {
 
@@ -92,7 +92,7 @@ body:not(.sp-slider-gallery) {
 					flex-direction: column;
 					position: relative;
 
-					.neve-slider-control {
+					.dashicons {
 						position: absolute;
 						z-index: 1;
 						color: var(--nv-text-color);
