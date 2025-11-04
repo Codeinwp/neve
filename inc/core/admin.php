@@ -303,6 +303,36 @@ class Admin {
 				],
 			]
 		);
+
+		register_rest_route(
+			'nv/v1/dashboard',
+			'/activate-plugin',
+			array(
+				'methods'             => \WP_REST_Server::EDITABLE,
+				'callback'            => [ $this, 'activate_plugin' ],
+				'permission_callback' => function() {
+					return ( current_user_can( 'install_plugins' ) && current_user_can( 'activate_plugins' ) );
+				},
+				'args'                => array(
+					'slug' => array(
+						'required'          => true,
+						'sanitize_callback' => 'sanitize_key',
+					),
+				),
+			)
+		);
+
+		register_rest_route(
+			'nv/v1/dashboard',
+			'/activate-module',
+			[
+				'methods'             => \WP_REST_Server::EDITABLE,
+				'callback'            => [ $this, 'activate_module' ],
+				'permission_callback' => function() {
+					return ( current_user_can( 'manage_options' ) );
+				},
+			]
+		);
 	}
 
 	/**
@@ -322,6 +352,105 @@ class Admin {
 				'state' => $state,
 			]
 		);
+	}
+
+	/**
+	 * Activate a plugin via REST API.
+	 *
+	 * @param \WP_REST_Request<array<string, mixed>> $request Request details.
+	 *
+	 * @return void
+	 */
+	public function activate_plugin( $request ) {
+		$slug = $request->get_param( 'slug' );
+
+		if ( empty( $slug ) ) {
+			wp_send_json_error( array( 'message' => __( 'Missing plugin slug.', 'neve' ) ) );
+		}
+
+		$plugin_helper = new Plugin_Helper();
+		$path          = $plugin_helper->get_plugin_path( $slug );
+
+		if ( ! file_exists( WP_PLUGIN_DIR . '/' . $path ) ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+			require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+
+			/** @var object|\WP_Error $api */
+			$api = plugins_api(
+				'plugin_information',
+				array(
+
+					'slug'   => $slug,
+					'fields' => array( 'sections' => false ),
+				)
+			);
+
+			if ( is_wp_error( $api ) ) {
+				wp_send_json_error( array( 'message' => $api->get_error_message() ) );
+			}
+
+			if ( ! isset( $api->download_link ) ) {
+				wp_send_json_error( array( 'message' => __( 'Invalid plugin information.', 'neve' ) ) );
+			}
+
+			$skin     = new \WP_Ajax_Upgrader_Skin();
+			$upgrader = new \Plugin_Upgrader( $skin );
+			$result   = $upgrader->install( $api->download_link );
+
+			if ( is_wp_error( $result ) ) {
+				wp_send_json_error( array( 'message' => $result->get_error_message() ) );
+			}
+
+			if ( $skin->get_errors()->has_errors() && is_wp_error( $skin->result ) ) {
+				if ( 'folder_exists' !== $skin->result->get_error_code() ) {
+					wp_send_json_error( array( 'message' => $skin->result->get_error_message() ) );
+				}
+			}
+
+			if ( ! $result ) {
+				global $wp_filesystem;
+
+				$status = [
+					'message' => __( 'Unable to connect to the filesystem. Please confirm your credentials.', 'neve' ),
+				];
+
+				if ( $wp_filesystem instanceof \WP_Filesystem_Base && $wp_filesystem->errors->has_errors() ) {
+					$status['message'] = esc_html( $wp_filesystem->errors->get_error_message() );
+				}
+
+				wp_send_json_error( $status );
+			}
+		}
+
+		$result = activate_plugin( $path );
+
+		if ( is_wp_error( $result ) ) {
+			wp_send_json_error( array( 'message' => $result->get_error_message() ) );
+		}
+
+		wp_send_json_success( array( 'message' => __( 'Plugin activated successfully.', 'neve' ) ) );
+	}
+
+	/**
+	 * Activate Orbit Fox module.
+	 *
+	 * @param  \WP_REST_Request<array<string, mixed>> $request Request details.
+	 * @return void
+	 */
+	public function activate_module( $request ) {
+		$module_slug  = $request->get_param( 'slug' );
+		$module_value = $request->get_param( 'value' );
+
+		if ( ! class_exists( 'Orbit_Fox_Global_Settings' ) ) {
+			wp_send_json_error( __( 'Orbit Fox is not installed or activated.', 'neve' ) );
+		}
+
+		$settings = new \Orbit_Fox_Global_Settings();
+		$modules  = $settings::$instance->module_objects;
+		$response = $modules[ $module_slug ]->set_status( 'active', $module_value );
+
+		wp_send_json_success( __( 'Module status changed.', 'neve' ) );
 	}
 
 	/**

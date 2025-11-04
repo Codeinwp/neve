@@ -10,9 +10,11 @@ import {
 	LucideGraduationCap,
 	LucideImage,
 	LucideLayoutTemplate,
+	LucideLock,
 	LucideNewspaper,
 	LucidePalette,
 	LucidePanelRightDashed,
+	LucidePanelsTopLeft,
 	LucidePanelTopDashed,
 	LucidePin,
 	LucideRss,
@@ -22,6 +24,7 @@ import {
 	LucideShoppingCart,
 	LucideTimer,
 	LucideToyBrick,
+	LucideType,
 	LucideTypeOutline,
 } from 'lucide-react';
 
@@ -66,4 +69,11 @@ export const NEVE_PLUGIN_ICON_MAP = {
 	'feedzy-rss-feeds': LucideRss,
 	'hyve-lite': LucideBotMessageSquare,
 	// 'sparks'
+};
+
+export const NEVE_AVAIABLE_MODULES_ICON_MAP = {
+	'login-customizer': LucideLock,
+	'custom-fonts': LucideType,
+	'policy-notice': LucideShield,
+	'post-duplicator': LucidePanelsTopLeft,
 };

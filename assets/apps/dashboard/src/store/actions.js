@@ -50,4 +50,10 @@ export default {
 			payload: loggerStatus,
 		};
 	},
+	setObfxModuleStatus(slug, value) {
+		return {
+			type: 'SET_OBFX_MODULE_STATUS',
+			payload: { slug, value },
+		};
+	},
 };
