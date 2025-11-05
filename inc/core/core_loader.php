@@ -97,6 +97,7 @@ class Core_Loader {
 			'Views\Content_None',
 			'Views\Content_404',
 			'Views\Breadcrumbs',
+			'Views\Style_Book',
 
 			'Views\Layouts\Layout_Container',
 			'Views\Layouts\Layout_Sidebar',

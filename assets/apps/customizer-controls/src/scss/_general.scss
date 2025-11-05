@@ -157,3 +157,42 @@
 		width: 100%;
 	}
 }
+
+// Style Book button styles
+#customize-header-actions {
+	#neve-style-book {
+		display: block;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 48px;
+		width: 45px;
+		margin-top: 0 !important;
+		padding: 0;
+		background: #f0f0f1;
+		border: none;
+		border-radius: 0;
+		border-top: 4px solid #f0f0f1;
+		border-right: 1px solid #dcdcde;
+		color: #3c434a;
+		fill: #3c434a;
+		stroke: #3c434a;
+		text-align: center;
+		cursor: pointer;
+		transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out, background 0.15s ease-in-out;
+
+		.dashicons {
+			font-size: 22px;
+			line-height: 1.2;
+			width: 22px;
+			height: 22px;
+		}
+
+		&:hover,
+		&:focus {
+			color: #0073aa;
+			border-top-color: #0073aa;
+			background: #fff;
+		}
+	}
+}

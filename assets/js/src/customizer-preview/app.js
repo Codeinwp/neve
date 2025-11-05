@@ -91,6 +91,128 @@ wp.customize.bind('preview-ready', function () {
 			selector + '{font-family: ' + parsedFontFamily + ' ;}'
 		);
 	});
+
+	// Handle Style Book toggle
+	wp.customize.preview.bind('neve-toggle-style-book', function (isOpen) {
+		const styleBookContent = document.getElementById('nv-sb-container');
+
+		if (!styleBookContent) {
+			return;
+		}
+
+		// If state is explicitly passed, use it; otherwise toggle current state
+		const shouldOpen =
+			typeof isOpen === 'boolean'
+				? isOpen
+				: styleBookContent.style.display === 'none';
+
+		if (shouldOpen) {
+			styleBookContent.style.display = 'block';
+			document.body.classList.add('nv-sb-open');
+		} else {
+			styleBookContent.style.display = 'none';
+			document.body.classList.remove('nv-sb-open');
+		}
+	});
+
+	// Handle Style Book state restoration
+	wp.customize.preview.bind(
+		'neve-restore-style-book-state',
+		function (isOpen) {
+			const styleBookContent = document.getElementById('nv-sb-container');
+
+			if (!styleBookContent) {
+				return;
+			}
+
+			if (isOpen) {
+				styleBookContent.style.display = 'block';
+				document.body.classList.add('nv-sb-open');
+			}
+		}
+	);
+
+	// Handle Style Book close button
+	document.addEventListener('click', function (e) {
+		if (
+			e.target.closest('.neve-style-book-close') ||
+			e.target.closest('.nv-sb-close-btn')
+		) {
+			const styleBookContent = document.getElementById('nv-sb-container');
+			if (styleBookContent) {
+				styleBookContent.style.display = 'none';
+				document.body.classList.remove('nv-sb-open');
+				// Notify customizer controls about state change
+				wp.customize.preview.send(
+					'neve-style-book-state-changed',
+					false
+				);
+			}
+		}
+
+		// Close when clicking outside the modal
+		if (e.target.classList.contains('neve-style-book-overlay')) {
+			const styleBookContent = document.getElementById('nv-sb-container');
+			if (styleBookContent) {
+				styleBookContent.style.display = 'none';
+				document.body.classList.remove('nv-sb-open');
+				// Notify customizer controls about state change
+				wp.customize.preview.send(
+					'neve-style-book-state-changed',
+					false
+				);
+			}
+		}
+	});
+
+	// Handle Style Book clickable items navigation
+	document.addEventListener('click', function (e) {
+		// Handle click on any Style Book builder-item-focus element
+		const styleBookItem = e.target.closest(
+			'#nv-sb-container .builder-item-focus'
+		);
+
+		if (styleBookItem) {
+			e.preventDefault();
+			e.stopPropagation();
+
+			const sectionId = styleBookItem.getAttribute('data-section');
+
+			if (
+				sectionId &&
+				window.parent &&
+				window.parent.wp &&
+				window.parent.wp.customize
+			) {
+				try {
+					// Try to focus as a control first (for specific accordion controls)
+					const control =
+						window.parent.wp.customize.control(sectionId);
+					if (control && typeof control.focus === 'function') {
+						control.focus();
+					} else {
+						// Fall back to section focus if control doesn't exist
+						const section =
+							window.parent.wp.customize.section(sectionId);
+						if (section && typeof section.focus === 'function') {
+							section.focus();
+						}
+					}
+				} catch (error) {
+					// Fallback: Try to expand the section if focusing fails
+					try {
+						const section =
+							window.parent.wp.customize.section(sectionId);
+						if (section && section.expanded) {
+							section.expanded(true);
+						}
+					} catch (fallbackError) {
+						// Silent fallback - navigation failed
+					}
+				}
+			}
+		}
+	});
 });
 
 /**
