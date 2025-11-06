@@ -29,6 +29,11 @@ const tabs = {
 	changelog: {
 		render: () => <Changelog />,
 	},
+	'get-neve-pro': {
+		label: __('Get Neve Pro', 'neve'),
+		url: neveDash.upgradeURLModules,
+		external: true,
+	},
 };
 
 const { plugins } = neveDash;
@@ -52,6 +57,11 @@ if (neveDash.pro || neveDash.hasOldPro) {
 	delete tabs['free-pro'];
 }
 
+// Only show "Get Neve Pro" tab for users without valid licenses
+if (neveDash.pro && neveDash.license && 'valid' === neveDash.license.valid) {
+	delete tabs['get-neve-pro'];
+}
+
 if (neveDash.whiteLabel) {
 	delete tabs.changelog;
 	if (neveDash.whiteLabel.hideStarterSites) {
@@ -68,7 +78,7 @@ const getTabHash = () => {
 
 	hash = hash.substring(1);
 
-	if (!tabs[hash]?.render) {
+	if (!tabs[hash]?.render && !tabs[hash]?.url) {
 		return null;
 	}
 
