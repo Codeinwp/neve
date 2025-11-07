@@ -45,6 +45,8 @@ jobs:
         uses: Codeinwp/action-i18n-string-reviewer@main
         with:
           fail-on-changes: 'true'
+          openrouter-key: ${{ secrets.OPEN_ROUTER_API_KEY }}
+          openrouter-model: 'google/gemini-2.5-flash-lite-preview-09-2025'
           base-pot-file: 'neve-base/languages/neve.pot'
           target-pot-file: 'neve-head/languages/neve.pot'
           github-token: ${{ secrets.BOT_TOKEN }}
