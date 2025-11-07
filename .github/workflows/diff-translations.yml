@@ -12,30 +12,30 @@ jobs:
   translation:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Ref Base
+      - name: Checkout Base Branch
         uses: actions/checkout@v4
         with:
-          path: neve-head
+          ref: ${{ github.base_ref }}
+          path: neve-base
       - name: Setup node 16
         uses: actions/setup-node@v4
         with:
           node-version: 16.x
-      - name: FRESH Makepot BASE
+      - name: Build POT for Base Branch
         run: |
-          cd neve-head
+          cd neve-base
           ls languages/
           composer install --no-dev --prefer-dist --no-progress --no-suggest
           yarn install --frozen-lockfile
           yarn run build
           ls languages/
-      - name: Checkout Ref Head
-        uses: actions/checkout@v2
+      - name: Checkout PR Branch (Head)
+        uses: actions/checkout@v4
         with:
-          ref: development
-          path: neve-base
-      - name: FRESH Makepot HEAD
+          path: neve-head
+      - name: Build POT for PR Branch
         run: |
-          cd neve-base
+          cd neve-head
           ls languages/
           composer install --no-dev --prefer-dist --no-progress --no-suggest
           yarn install --frozen-lockfile
