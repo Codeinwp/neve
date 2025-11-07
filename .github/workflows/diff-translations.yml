@@ -41,7 +41,6 @@ jobs:
           yarn install --frozen-lockfile
           yarn run build
           ls languages/
-           - name: Compare POT files
       - name: Compare POT files
         uses: Codeinwp/action-i18n-string-reviewer@main
         with:
