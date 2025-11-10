@@ -43,9 +43,9 @@ const ModuleToggle = ({
 	const { title } = moduleData;
 	const toastMessage = {
 		//translators: %s - Plugin name
-		installing: sprintf(__('Installing %s', 'neve'), 'Orbit Fox Plugin'),
+		installing: sprintf(__('Installing', 'neve'), 'Orbit Fox Plugin'),
 		//translators: %s - Plugin name
-		activating: sprintf(__('Activating %s', 'neve'), 'Orbit Fox Plugin'),
+		activating: sprintf(__('Activating', 'neve'), 'Orbit Fox Plugin'),
 	};
 
 	const handleToggle = async (value) => {
@@ -90,7 +90,7 @@ const ModuleToggle = ({
 			);
 		} catch (error) {
 			setToast(
-				__('Something went wrong while activating the module.', 'neve')
+				__('Something went wrong. Please reload the page and try again.', 'neve')
 			);
 		} finally {
 			setLoading(false);
@@ -154,7 +154,7 @@ const AvailableModuleCard = ({
 					className="flex mt-2 text-blue-600 gap-2 align-middle"
 					href="admin.php?page=obfx_companion"
 				>
-					{__('Go to Settings to Edit', 'neve')}
+					{__('Settings', 'neve')}
 					<ArrowRight size={18} />
 				</a>
 			)}
