@@ -315,6 +315,10 @@ class Footer extends Abstract_Builder {
 				'name' => __( 'Contact', 'neve' ),
 			],
 			[
+				'icon' => 'images-alt',
+				'name' => __( 'Payment icons', 'neve' ),
+			],
+			[
 				'icon' => 'nametag',
 				'name' => __( 'Copyright', 'neve' ),
 			],
