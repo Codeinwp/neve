@@ -549,16 +549,32 @@ class Header extends Abstract_Builder {
 
 		return [
 			[
+				'icon' => 'code-standards',
+				'name' => __( 'Advanced Search Form', 'neve' ),
+			],
+			[
+				'icon' => 'email',
+				'name' => __( 'Contact', 'neve' ),
+			],
+			[
 				'icon' => 'welcome-write-blog',
 				'name' => __( 'HTML', 'neve' ) . ' 2',
 			],
 			[
 				'icon' => 'embed-generic',
-				'name' => __( 'Custom Layouts', 'neve' ),
+				'name' => __( 'Custom Layout', 'neve' ),
+			],
+			[
+				'icon' => 'minus',
+				'name' => __( 'Divider', 'neve' ),
 			],
 			[
 				'icon' => 'share',
 				'name' => __( 'Social Icons', 'neve' ),
+			],
+			[
+				'icon' => 'welcome-widgets-menus',
+				'name' => __( 'Widget Area', 'neve' ),
 			],
 		];
 	}
