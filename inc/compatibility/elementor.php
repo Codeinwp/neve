@@ -572,10 +572,10 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Allow Post Content widget to be shown in the panel for neve_custom_layouts post type.
 	 *
-	 * @param array $data The original data that needs to be saved.
-	 * @param int   $post_id The ID of the post for which the data is being saved.
+	 * @param array<string, mixed> $data The original data that needs to be saved.
+	 * @param int                  $post_id The ID of the post for which the data is being saved.
 	 *
-	 * @return array The modified data with the additional configuration.
+	 * @return array<string, mixed> The modified data with the additional configuration.
 	 */
 	public function elementor_document_config( $data, $post_id ) {
 		if ( 'neve_custom_layouts' === get_post_type( $post_id ) ) {
