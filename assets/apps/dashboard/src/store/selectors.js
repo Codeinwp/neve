@@ -25,4 +25,15 @@ export default {
 
 		return shownNotifications;
 	},
+	getObfxModuleStatus: (state, slug) => {
+		if (!state.obfxModuleStatus) {
+			return false;
+		}
+
+		if (state.obfxModuleStatus[slug]) {
+			return state.obfxModuleStatus[slug]?.active || false;
+		}
+
+		return false;
+	},
 };

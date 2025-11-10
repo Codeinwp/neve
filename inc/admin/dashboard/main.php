@@ -364,6 +364,14 @@ class Main {
 			'canActivatePlugins'      => current_user_can( 'activate_plugins' ),
 			'rootUrl'                 => get_site_url(),
 			'sparksActive'            => defined( 'SPARKS_WC_VERSION' ) ? 'yes' : 'no',
+			'api'                     => esc_url( rest_url( '/nv/v1/dashboard/' ) ),
+			'availableModules'        => $this->get_available_modules(),
+			'orbitFox'                => array(
+				'isInstalled'   => file_exists( WP_PLUGIN_DIR . '/themeisle-companion/themeisle-companion.php' ),
+				'isActive'      => class_exists( 'Orbit_Fox' ),
+				'activationUrl' => $this->plugin_helper->get_plugin_action_link( 'themeisle-companion' ),
+				'data'          => class_exists( 'Orbit_Fox' ) ? get_option( 'obfx_data' ) : array(),
+			),
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
@@ -852,6 +860,34 @@ class Main {
 		);
 
 		return $plugins;
+	}
+
+	/**
+	 * Get available modules.
+	 *
+	 * @return array<mixed>
+	 */
+	private function get_available_modules() {
+		$modules = array(
+			'login-customizer' => array(
+				'title'       => __( 'Login Customizer', 'neve' ),
+				'description' => __( 'Customize your WordPress login page with branding and styling options.', 'neve' ),
+			),
+			'custom-fonts'     => array(
+				'title'       => __( 'Custom Fonts/Scripts', 'neve' ),
+				'description' => __( 'Add custom fonts and scripts to your website easily.', 'neve' ),
+			),
+			'policy-notice'    => array(
+				'title'       => __( 'Cookie Notice', 'neve' ),
+				'description' => __( 'Display a customizable cookie consent notice for GDPR compliance.', 'neve' ),
+			),
+			'post-duplicator'  => array(
+				'title'       => __( 'Duplicate Page', 'neve' ),
+				'description' => __( 'Quickly duplicate posts, pages, and custom post types.', 'neve' ),
+			),
+		);
+
+		return apply_filters( 'neve_available_modules', $modules );
 	}
 
 	/**
