@@ -8,6 +8,7 @@ const initialState = {
 	currentTab: 'start',
 	license: neveDash.pro ? neveDash.license : {},
 	notifications: neveDash.notifications || {},
+	obfxModuleStatus: neveDash.orbitFox?.data?.module_status || {},
 };
 
 const hash = getTabHash();
@@ -71,6 +72,16 @@ const reducer = (state = initialState, action) => {
 				settings: {
 					...state.settings,
 					neve_logger_flag: action.payload,
+				},
+			};
+		case 'SET_OBFX_MODULE_STATUS':
+			return {
+				...state,
+				obfxModuleStatus: {
+					...state.obfxModuleStatus,
+					[action.payload.slug]: {
+						active: action.payload.value,
+					},
 				},
 			};
 	}
