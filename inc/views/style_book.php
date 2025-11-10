@@ -71,7 +71,7 @@ class Style_Book extends Base_View {
 		?>
 			<div id="nv-sb-container" style="display:none;">
 				<!-- Close button in top left -->
-				<div class="nv-sb-close-btn" role="button" tabindex="0" aria-label="<?php esc_attr_e( 'Close Style Book', 'neve' ); ?>">
+				<div class="nv-sb-close-btn" role="button" tabindex="0" aria-label="<?php esc_attr_e( 'Close', 'neve' ); ?>">
 					<span class="dashicons dashicons-no-alt"></span>
 				</div>
 
