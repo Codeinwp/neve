@@ -1,5 +1,5 @@
 /* global neveDash */
-import { __, sprintf } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import {
 	NEVE_AVAILABLE_MODULES_ICON_MAP,
 	NEVE_STORE,
@@ -42,10 +42,8 @@ const ModuleToggle = ({
 	const { api } = neveDash;
 	const { title } = moduleData;
 	const toastMessage = {
-		//translators: %s - Plugin name
-		installing: sprintf(__('Installing', 'neve'), 'Orbit Fox Plugin'),
-		//translators: %s - Plugin name
-		activating: sprintf(__('Activating', 'neve'), 'Orbit Fox Plugin'),
+		installing: __('Installing', 'neve'),
+		activating: __('Activating', 'neve'),
 	};
 
 	const handleToggle = async (value) => {
@@ -90,7 +88,10 @@ const ModuleToggle = ({
 			);
 		} catch (error) {
 			setToast(
-				__('Something went wrong. Please reload the page and try again.', 'neve')
+				__(
+					'Something went wrong. Please reload the page and try again.',
+					'neve'
+				)
 			);
 		} finally {
 			setLoading(false);

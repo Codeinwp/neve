@@ -466,7 +466,7 @@ class Admin {
 
 		$response = $modules[ $module_slug ]->set_status( 'active', $module_value );
 
-		wp_send_json_success( $module_value ? __( 'Module Activated', 'neve' ) : __( 'Module Deactivated', 'neve' ) );
+		wp_send_json_success( $module_value ? __( 'Module Activated', 'neve' ) : __( 'Module Deactivated.', 'neve' ) );
 	}
 
 	/**
