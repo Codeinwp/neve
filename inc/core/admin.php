@@ -402,7 +402,7 @@ class Admin {
 			}
 
 			if ( ! isset( $api->download_link ) ) {
-				wp_send_json_error( array( 'message' => __( 'Invalid plugin information.', 'neve' ) ) );
+				wp_send_json_error( array( 'message' => __( 'Invalid action', 'neve' ) ) );
 			}
 
 			$skin     = new \WP_Ajax_Upgrader_Skin();
@@ -461,12 +461,12 @@ class Admin {
 		$modules  = $settings::$instance->module_objects;
 
 		if ( ! isset( $modules[ $module_slug ] ) ) {
-			wp_send_json_error( __( 'Invalid module slug.', 'neve' ) );
+			wp_send_json_error( __( 'Invalid action', 'neve' ) );
 		}
 
 		$response = $modules[ $module_slug ]->set_status( 'active', $module_value );
 
-		wp_send_json_success( __( 'Module status changed.', 'neve' ) );
+		wp_send_json_success( $module_value ? __( 'Module Activated', 'neve' ) : __( 'Module Deactivated.', 'neve' ) );
 	}
 
 	/**
