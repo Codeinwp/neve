@@ -550,7 +550,7 @@ class Header extends Abstract_Builder {
 		return [
 			[
 				'icon' => 'code-standards',
-				'name' => __( 'Advanced Search Form', 'neve' ),
+				'name' => __( 'Search Form', 'neve' ),
 			],
 			[
 				'icon' => 'email',
@@ -562,11 +562,11 @@ class Header extends Abstract_Builder {
 			],
 			[
 				'icon' => 'embed-generic',
-				'name' => __( 'Custom Layout', 'neve' ),
+				'name' => __( 'Custom Layouts', 'neve' ),
 			],
 			[
 				'icon' => 'minus',
-				'name' => __( 'Divider', 'neve' ),
+				'name' => __( 'Divider Element', 'neve' ),
 			],
 			[
 				'icon' => 'share',

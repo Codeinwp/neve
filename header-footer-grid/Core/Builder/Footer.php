@@ -324,7 +324,7 @@ class Footer extends Abstract_Builder {
 			],
 			[
 				'icon' => 'welcome-widgets-menus',
-				'name' => __( 'Widgets Area', 'neve' ),
+				'name' => __( 'Widget Area', 'neve' ),
 			],
 			[
 				'icon' => 'share',

@@ -127,7 +127,11 @@ const ComponentsPopover: React.FC<Props> = ({
 
 		let noComponents = null;
 
-		if (themeItems.length === 0 && boosterItems.length === 0 && filteredUpsells.length === 0) {
+		if (
+			themeItems.length === 0 &&
+			boosterItems.length === 0 &&
+			filteredUpsells.length === 0
+		) {
 			noComponents = (
 				<div className="no-components">
 					<span>
