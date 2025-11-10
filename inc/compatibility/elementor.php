@@ -80,6 +80,7 @@ class Elementor extends Page_Builder_Base {
 		*/
 		add_filter( 'neve_pro_run_wc_view', array( $this, 'suspend_woo_customizations' ), 10, 2 );
 		add_action( 'elementor/theme/register_locations', array( $this, 'register_elementor_locations' ) );
+		add_filter( 'elementor/document/config', array( $this, 'elementor_document_config' ), 10, 2 );
 	}
 
 	/**
@@ -566,5 +567,27 @@ class Elementor extends Page_Builder_Base {
 		$elementor_overrides = self::is_elementor_template( $elementor_template_type );
 
 		return ! $elementor_overrides;
+	}
+
+	/**
+	 * Allow Post Content widget to be shown in the panel for neve_custom_layouts post type.
+	 *
+	 * @param array $data The original data that needs to be saved.
+	 * @param int   $post_id The ID of the post for which the data is being saved.
+	 *
+	 * @return array The modified data with the additional configuration.
+	 */
+	public function elementor_document_config( $data, $post_id ) {
+		if ( 'neve_custom_layouts' === get_post_type( $post_id ) ) {
+			$data['panel'] = array(
+				'widgets_settings' => array(
+					'theme-post-content' => array(
+						'show_in_panel' => true,
+					),
+				),
+			);
+		}
+
+		return $data;
 	}
 }
