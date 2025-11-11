@@ -573,6 +573,14 @@ class Header extends Abstract_Builder {
 				'name' => __( 'Social Icons', 'neve' ),
 			],
 			[
+				'icon' => 'menu',
+				'name' => __( 'Primary Menu', 'neve' ),
+			],
+			[
+				'icon' => 'admin-links',
+				'name' => __( 'Button', 'neve' ),
+			],
+			[
 				'icon' => 'welcome-widgets-menus',
 				'name' => __( 'Widget Area', 'neve' ),
 			],
