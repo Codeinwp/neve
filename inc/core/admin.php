@@ -423,7 +423,7 @@ class Admin {
 				global $wp_filesystem;
 
 				$status = [
-					'message' => __( 'Invalid plugin information.', 'neve' ),
+					'message' => __( 'Invalid action', 'neve' ),
 				];
 
 				if ( $wp_filesystem instanceof \WP_Filesystem_Base && $wp_filesystem->errors->has_errors() ) {
@@ -440,7 +440,7 @@ class Admin {
 			wp_send_json_error( array( 'message' => $result->get_error_message() ) );
 		}
 
-		wp_send_json_success( array( 'message' => __( 'Plugin activated successfully.', 'neve' ) ) );
+		wp_send_json_success( array( 'message' => __( 'Module Activated', 'neve' ) ) );
 	}
 
 	/**
@@ -454,7 +454,7 @@ class Admin {
 		$module_value = $request->get_param( 'value' );
 
 		if ( ! class_exists( 'Orbit_Fox_Global_Settings' ) ) {
-			wp_send_json_error( __( 'Orbit Fox is not installed or activated.', 'neve' ) );
+			wp_send_json_error( __( 'Invalid action', 'neve' ) );
 		}
 
 		$settings = new \Orbit_Fox_Global_Settings();
