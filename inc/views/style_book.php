@@ -123,7 +123,7 @@ class Style_Book extends Base_View {
 
 							<div>
 								<p class="builder-item-focus" data-section="neve_typography_general" style="font-size: 1.1rem; margin: 0 0 20px 0;">
-									<?php esc_html_e( 'Neve is a next-generation, ultra-fast WordPress theme designed for top performance, SEO, and Core Web Vitals. Its lightweight codebase and small size ensure minimal overhead and lightning-fast load times. Fully compatible with the block editor, popular page builders (Elementor, Bricks, Oxygen etc), and WooCommerce, it\'s perfect for blogs, small businesses, agencies, portfolios, and online stores. With responsive design, multilingual translations, and easy customization options, Neve empowers you to create a future-proof, high-ranking online presence. Discover everything Neve has to offer and explore our powerful premium version at', 'neve' ); ?> <a href="#" class="builder-item-focus" data-section="typography_globals_section"><?php esc_html_e( 'https://themeisle.com/themes/neve/', 'neve' ); ?></a>.
+									<?php echo esc_html( wp_get_theme()->get( 'Description' ) ); ?>
 								</p>
 
 								<p class="builder-item-focus" data-section="neve_typography_general" style="margin: 0 0 15px 0;">
