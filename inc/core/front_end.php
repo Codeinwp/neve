@@ -590,6 +590,9 @@ class Front_End {
 			'switch_skin'              => __( 'Switch Skin', 'neve' ),
 			'dismiss'                  => __( 'Dismiss', 'neve' ),
 			'rollback'                 => __( 'Roll Back', 'neve' ),
+			'scroll_to_top_desc'       => __( 'Add a customizable scroll-to-top button that appears exactly when needed. Style it to match your brand.', 'neve' ),
+			/* translators: %s - Module name for the upsell */
+			'upsell'                   => __( 'Unlock %s with the Pro version.', 'neve' ),
 		];
 	}
 
