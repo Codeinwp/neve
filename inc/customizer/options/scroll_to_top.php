@@ -129,7 +129,7 @@ class Scroll_To_Top extends Base_Customizer {
 					'default'           => '1',
 				),
 				array(
-					'label'    => esc_html__( 'Enable Scroll to Top', 'neve' ),
+					'label'    => esc_html__( 'Enable', 'neve' ),
 					'section'  => 'neve_scroll_to_top',
 					'type'     => 'neve_toggle_control',
 					'priority' => 5,
@@ -217,7 +217,7 @@ class Scroll_To_Top extends Base_Customizer {
 					'default'           => 'stt-icon-style-1',
 				),
 				array(
-					'label'           => esc_html__( 'Scroll to Top Icon', 'neve' ),
+					'label'           => esc_html__( 'Icon', 'neve' ),
 					'section'         => 'neve_scroll_to_top',
 					'priority'        => 35,
 					'active_callback' => array( $this, 'is_icon_type_control' ),
@@ -282,7 +282,6 @@ class Scroll_To_Top extends Base_Customizer {
 				),
 				array(
 					'label'           => esc_html__( 'Offset (px)', 'neve' ),
-					'description'     => esc_html__( 'Show button when page is scrolled x pixels.', 'neve' ),
 					'section'         => 'neve_scroll_to_top',
 					'step'            => 1,
 					'input_attr'      => array(
@@ -538,7 +537,7 @@ class Scroll_To_Top extends Base_Customizer {
 					'sanitize_callback' => 'sanitize_text_field',
 				),
 				array(
-					'label'            => esc_html__( 'Colors', 'neve' ),
+					'label'            => esc_html__( 'Color', 'neve' ),
 					'section'          => 'neve_scroll_to_top',
 					'priority'         => 110,
 					'class'            => 'scroll-top-colors-accordion',

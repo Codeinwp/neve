@@ -147,7 +147,7 @@ class Scroll_To_Top extends Base_View {
 
 		$amp = neve_is_amp() ? 'on="tap:neve_body.scrollTo(duration=200)"' : '';
 
-		echo '<button tabindex="0"' . esc_attr( $amp ) . ' id="scroll-to-top" class="scroll-to-top ' . esc_attr( $extra_class ) . '" aria-label="' . esc_attr__( 'Scroll to Top', 'neve' ) . '">';
+		echo '<button tabindex="0"' . esc_attr( $amp ) . ' id="scroll-to-top" class="scroll-to-top ' . esc_attr( $extra_class ) . '" aria-label="' . esc_attr__( 'Scroll To Top', 'neve' ) . '">';
 		
 		if ( $type === 'icon' ) {
 			echo $this->get_icon_svg( $icon ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
