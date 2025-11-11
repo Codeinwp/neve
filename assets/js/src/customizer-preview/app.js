@@ -167,6 +167,12 @@ wp.customize.bind('preview-ready', function () {
 
 	// Handle Style Book clickable items navigation
 	document.addEventListener('click', function (e) {
+		// Skip navigation if clicking inside form fields (input, textarea, select)
+		if (e.target.matches('input, textarea, select')) {
+			e.stopPropagation();
+			return;
+		}
+
 		// Handle click on any Style Book builder-item-focus element
 		const styleBookItem = e.target.closest(
 			'#nv-sb-container .builder-item-focus'

@@ -150,16 +150,16 @@ class Style_Book extends Base_View {
 					<!-- Form Elements Section -->
 						<div class="nv-sb-section">
 							<h2 class="nv-sb-section-title"><?php esc_html_e( 'Form Fields', 'neve' ); ?></h2>
-							<form class="nv-sb-form builder-item-focus" data-section="neve_form_fields_section">
-								<div class="nv-sb-form-group">
+							<form class="nv-sb-form">
+								<div class="nv-sb-form-group builder-item-focus" data-section="neve_form_fields_section">
 									<label for="text-input"><?php esc_html_e( 'Input Text', 'neve' ); ?></label>
 									<input type="text" id="text-input" placeholder="<?php esc_attr_e( 'Placeholder', 'neve' ); ?>">
 								</div>
-								<div class="nv-sb-form-group">
+								<div class="nv-sb-form-group builder-item-focus" data-section="neve_form_fields_section">
 									<label for="textarea"><?php esc_html_e( 'Textarea', 'neve' ); ?></label>
 									<textarea id="textarea" placeholder="<?php esc_attr_e( 'Placeholder', 'neve' ); ?>"></textarea>
 								</div>
-								<div class="nv-sb-form-group">
+								<div class="nv-sb-form-group builder-item-focus" data-section="neve_form_fields_section">
 									<label for="select"><?php esc_html_e( 'Dropdown', 'neve' ); ?></label>
 									<select id="select">
 										<option>
