@@ -124,7 +124,7 @@ test.describe( 'Scroll to top', function () {
 
 		await expect( scrollToTopImage ).toHaveCSS(
 			'background-image',
-			/image.png/
+			/spectacles.gif/
 		);
 
 		await setCustomizeSettings( 'stt-icon-check2', data.general, {
