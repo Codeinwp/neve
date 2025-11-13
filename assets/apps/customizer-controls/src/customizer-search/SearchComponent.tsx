@@ -200,7 +200,9 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 				<span className="nv-search-wrap">
 					<input
 						type="text"
-						placeholder={ __('Search', 'neve') + ' ' + __('Settings', 'neve') }
+						placeholder={
+							__('Search', 'neve') + ' ' + __('Settings', 'neve')
+						}
 						id="nv-customizer-search-input"
 						className="nv-customizer-search-input"
 						value={search}
