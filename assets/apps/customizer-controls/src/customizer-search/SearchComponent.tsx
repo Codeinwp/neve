@@ -60,7 +60,6 @@ declare global {
  * Type SearchComponentProps
  */
 type SearchComponentProps = {
-	isOpened: boolean;
 	search: string;
 	setSearch: (value: string) => void;
 	matchResults: Control[];
@@ -75,7 +74,6 @@ type SearchComponentProps = {
  * @class
  */
 const SearchComponent: React.FC<SearchComponentProps> = ({
-	isOpened,
 	search,
 	setSearch,
 	matchResults,
@@ -127,24 +125,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 			}
 		});
 	}, []);
-
-	/**
-	 * This `useEffect()` is being used to listen for the toggleEvent
-	 * from `SearchToggle` component.
-	 */
-	useEffect(() => {
-		if (isOpened) {
-			document
-				.getElementById('neve-customize-search-field')
-				?.classList.add('visible');
-			document.getElementById('nv-customizer-search-input')?.focus();
-		} else {
-			document
-				.getElementById('neve-customize-search-field')
-				?.classList.remove('visible');
-			clearField();
-		}
-	}, [isOpened]);
 
 	useEffect(() => {
 		if (search === '') {
@@ -217,15 +197,10 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 	return (
 		<>
 			<span className="accordion-section">
-				<span className="search-input">
-					{__('Search', 'neve') +
-						' ' +
-						__('Settings', 'neve').toLowerCase()}
-				</span>
 				<span className="nv-search-wrap">
 					<input
 						type="text"
-						placeholder={__('Search', 'neve')}
+						placeholder={ __('Search', 'neve') + ' ' + __('Settings', 'neve') }
 						id="nv-customizer-search-input"
 						className="nv-customizer-search-input"
 						value={search}
