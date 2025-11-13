@@ -57,11 +57,6 @@ if (neveDash.pro || neveDash.hasOldPro) {
 	delete tabs['free-pro'];
 }
 
-// Only show "Get Neve Pro" tab for users without valid licenses
-if (neveDash.pro && neveDash.license && 'valid' === neveDash.license.valid) {
-	delete tabs['get-neve-pro'];
-}
-
 if (neveDash.whiteLabel) {
 	delete tabs.changelog;
 	if (neveDash.whiteLabel.hideStarterSites) {

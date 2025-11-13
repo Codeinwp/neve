@@ -111,12 +111,18 @@ const HeaderTopBar = ({ currentTab, setTab }) => {
 };
 
 const Navigation = ({ setTab, currentTab }) => {
+	const { isLicenseValid } = useLicenseData();
+
 	return (
 		<div className="border-b border-gray-200">
 			<Container>
 				<nav className="flex -mb-px justify-center sm:justify-start">
 					{Object.entries(tabs).map(([slug, { label, url }]) => {
 						if (!label) {
+							return null;
+						}
+						// Hide "Get Neve Pro" tab for users with valid licenses
+						if (slug === 'get-neve-pro' && isLicenseValid) {
 							return null;
 						}
 						const itemClasses = cn([
