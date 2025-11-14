@@ -82,7 +82,7 @@ class Style_Book extends Base_View {
 
 						<div class="nv-sb-color-grid">
 							<?php foreach ( $colors as $color_var => $color_data ) : ?>
-							<div class="nv-sb-color-swatch builder-item-focus" data-section="<?php echo esc_attr( $color_data['section'] ); ?>">
+							<div class="nv-sb-color-swatch builder-item-focus" data-section="<?php echo esc_attr( $color_data['section'] ); ?>" data-control="neve-color-slug-<?php echo esc_attr( $color_var ); ?>">
 								<div class="nv-sb-color-box" style="background: var(--<?php echo esc_attr( $color_var ); ?>);"></div>
 								<div class="nv-sb-color-info">
 									<div class="nv-sb-color-name"><?php echo esc_html( $color_data['name'] ); ?></div>
@@ -99,25 +99,25 @@ class Style_Book extends Base_View {
 						<div class="nv-sb-typography-grid">
 							<div>
 								<div class="nv-sb-type-sample">
-									<?php
-									$headings = [
-										1 => 'neve_h1_accordion_wrap',
-										2 => 'neve_h2_accordion_wrap',
-										3 => 'neve_h3_accordion_wrap',
-										4 => 'neve_h4_accordion_wrap',
-										5 => 'neve_h5_accordion_wrap',
-										6 => 'neve_h6_accordion_wrap',
-									];
+								<?php
+								$headings = [
+									1 => 'neve_h1_accordion_wrap',
+									2 => 'neve_h2_accordion_wrap',
+									3 => 'neve_h3_accordion_wrap',
+									4 => 'neve_h4_accordion_wrap',
+									5 => 'neve_h5_accordion_wrap',
+									6 => 'neve_h6_accordion_wrap',
+								];
 
-									foreach ( $headings as $level => $section ) : 
+								foreach ( $headings as $level => $control_id ) : 
+									?>
+									<h<?php echo (int) $level; ?> class="builder-item-focus" data-section="<?php echo esc_attr( $control_id ); ?>" data-control="<?php echo esc_attr( $control_id ); ?>">
+										<?php 
+										/* translators: %d: heading level number */
+										echo sprintf( esc_html__( 'Heading %d', 'neve' ), (int) $level ); 
 										?>
-										<h<?php echo (int) $level; ?> class="builder-item-focus" data-section="<?php echo esc_attr( $section ); ?>">
-											<?php 
-											/* translators: %d: heading level number (1-6) */
-											echo sprintf( esc_html__( 'Heading %d', 'neve' ), (int) $level ); 
-											?>
-										</h<?php echo (int) $level; ?>>
-									<?php endforeach; ?>
+									</h<?php echo (int) $level; ?>>
+								<?php endforeach; ?>
 								</div>
 							</div>
 
@@ -138,10 +138,10 @@ class Style_Book extends Base_View {
 						<h2 class="nv-sb-section-title"><?php esc_html_e( 'Buttons', 'neve' ); ?></h2>
 
 						<div class="nv-sb-button-group">
-							<button class="nv-sb-btn-primary builder-item-focus" data-section="neve_buttons_section">
+							<button class="nv-sb-btn-primary builder-item-focus" data-section="neve_buttons_section" data-control="neve_button_appearance_heading">
 								<?php esc_html_e( 'Primary Button', 'neve' ); ?>
 							</button>
-							<button class="nv-sb-btn-secondary builder-item-focus" data-section="neve_buttons_section">
+							<button class="nv-sb-btn-secondary builder-item-focus" data-section="neve_buttons_section" data-control="neve_secondary_button_appearance_heading">
 								<?php esc_html_e( 'Secondary Button', 'neve' ); ?>
 							</button>
 						</div>

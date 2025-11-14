@@ -52,6 +52,7 @@ const PaletteColors = ({ values, defaults, save }) => {
 									<ColorControl
 										disableGlobal
 										key={slug}
+										slug={slug}
 										label={group[slug]}
 										selectedColor={colors[slug]}
 										defaultValue={
