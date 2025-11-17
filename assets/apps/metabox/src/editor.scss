@@ -99,14 +99,44 @@
 			flex-basis: 20%;
 			cursor: move;
 
-			.components-button {
-				color: #bfbfbf;
+			// Enhanced custom handle button styling
+			.ti-sortable-handle-btn {
+				width: 32px;
+				height: 32px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border: 1px solid #d5dadf;
+				background: #f6f7f7;
+				border-radius: 4px;
+				color: #6c6c6c;
+				cursor: move;
+				padding: 0;
+				transition: background .15s ease, box-shadow .15s ease, color .15s ease;
+			}
 
-				&:hover, &:focus {
-					color: #bfbfbf;
-					box-shadow: none;
-				  	background: none;
-				}
+			.ti-sortable-handle-btn:hover {
+				background: #ebedef;
+				color: #444444;
+			}
+
+			.ti-sortable-handle-btn:focus {
+				outline: none;
+				background: #ffffff;
+				box-shadow: 0 0 0 2px #2271b1;
+				color: #1e1e1e;
+			}
+
+			&.keyboard-active .ti-sortable-handle-btn {
+				background: #2271b1;
+				color: #ffffff;
+				box-shadow: 0 0 0 2px #2271b1;
+				border-color: #2271b1;
+			}
+
+			.ti-sortable-handle-btn .dashicons {
+				font-size: 18px;
+				line-height: 1;
 			}
 		}
 
