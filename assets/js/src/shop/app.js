@@ -20,7 +20,8 @@ import { tns } from 'tiny-slider/src/tiny-slider';
 
 		if (
 			$body.hasClass('single-product') &&
-			!$body.hasClass('sp-ct-enabled')
+			!$body.hasClass('sp-ct-enabled') &&
+			!$body.hasClass('nv-left-gallery')
 		) {
 			handleGallerySlider();
 		}
