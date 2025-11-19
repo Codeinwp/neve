@@ -57,7 +57,7 @@
 	}
 }
 
-body:not(.nv-left-gallery, .sp-slider-gallery) {
+body:not(.nv-left-gallery):not(.sp-slider-gallery):not([class^="related-products-columns-"]) {
 
 	.tns-ovh {
 		display: flex;

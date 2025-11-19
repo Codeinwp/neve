@@ -1,5 +1,6 @@
 /* jshint esversion: 6 */
 /* global jQuery, CustomEvent */
+/* global  neveShopSlider */
 import { tns } from 'tiny-slider/src/tiny-slider';
 
 (function ($) {
@@ -19,9 +20,8 @@ import { tns } from 'tiny-slider/src/tiny-slider';
 		}
 
 		if (
-			$body.hasClass('single-product') &&
-			!$body.hasClass('sp-ct-enabled') &&
-			!$body.hasClass('nv-left-gallery')
+			'1' !== neveShopSlider.isSparkActive &&
+			$body.hasClass('single-product')
 		) {
 			handleGallerySlider();
 		}
