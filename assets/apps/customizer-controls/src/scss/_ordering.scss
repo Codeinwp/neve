@@ -58,6 +58,16 @@ $icon-bright: #00a0d2;
 				fill: $gray-dark;
 				background-color: $gray-light;
 			}
+
+			&:focus {
+				outline: 2px solid $icon;
+				outline-offset: -2px;
+			}
+
+			&.keyboard-active {
+				background-color: $icon-bright;
+				fill: #fff;
+			}
 		}
 
 
