@@ -25,7 +25,7 @@ const LicenseCard = () => {
 	const [toast, setToast] = useState('');
 	const [toastType, setToastType] = useState('success');
 
-	const { valid, expiration } = license;
+	const { valid, expiration, tier } = license;
 	const { whiteLabel, strings } = neveDash;
 	const { licenseCardHeading, licenseCardDescription } = strings;
 	const isValid = 'valid' === valid;
@@ -69,6 +69,17 @@ const LicenseCard = () => {
 
 		return statusLabelMap[status];
 	};
+
+	const getPlanLabel = () => {
+		const planLabel = {
+			1: __('Personal', 'neve'),
+			2: __('Business', 'neve'),
+			3: __('Agency', 'neve'),
+		};
+
+		return planLabel[tier] || null;
+	};
+	const planLabel = getPlanLabel();
 
 	return (
 		<Card title={licenseCardHeading}>
@@ -124,6 +135,11 @@ const LicenseCard = () => {
 				)}
 				{isOrWasValid && (
 					<div className="flex items-center gap-1">
+						{planLabel && (
+							<p className="px-1.5 py-0.5 rounded text-white bg-blue-600">
+								{planLabel}
+							</p>
+						)}
 						<Pill
 							type={isValid ? 'success' : 'warning'}
 							className="inline-flex items-center gap-1 px-2 py-1"
