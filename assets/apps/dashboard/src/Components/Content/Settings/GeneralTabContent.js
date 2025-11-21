@@ -7,6 +7,7 @@ import {
 	LucideMonitorDown,
 	LucideTags,
 	LucideType,
+	LucideExternalLink,
 } from 'lucide-react';
 import useLicenseData from '../../../Hooks/useLicenseData';
 import { NEVE_HAS_VALID_PRO } from '../../../utils/constants';
@@ -16,6 +17,7 @@ import OptionGroup from './OptionGroup';
 import ControlWrap from '../../Controls/ControlWrap';
 import Toggle from '../../Common/Toggle';
 import Select from '../../Common/Select';
+import Button from '../../Common/Button';
 
 const DUMMY_SETTINGS_ARGS = {
 	enable_featured_image_taxonomy: {
@@ -185,9 +187,22 @@ export default () => {
 
 	return (
 		<>
-			<h1 className="text-lg font-semibold mb-6">
-				{__('General Settings', 'neve')}
-			</h1>
+			<div className="flex items-center justify-between mb-6">
+				<h1 className="text-lg font-semibold">
+					{__('General Settings', 'neve')}
+				</h1>
+
+				{!isLicenseValid && (
+					<Button
+						isPrimary
+						href={neveDash.upgradeURLModules}
+						target="_blank"
+					>
+						{__('Get Neve Pro', 'neve')}
+						<LucideExternalLink size={16} className="shrink-0" />
+					</Button>
+				)}
+			</div>
 
 			<div>
 				{(isLicenseValid && <ProModuleSettings />) || <DummySettings />}
