@@ -93,6 +93,7 @@ class Font_Manager extends Base_View {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'register_google_fonts' ), 200 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'do_editor_styles_google_fonts' ), 210 );
 		add_action( 'wp_print_styles', array( $this, 'load_external_fonts_locally' ), PHP_INT_MAX );
+		add_filter( 'style_loader_tag', array( $this, 'add_rel_preload' ), 10, 2 );
 	}
 
 	/**
@@ -249,6 +250,46 @@ class Font_Manager extends Base_View {
 		}
 
 		wp_enqueue_style( 'neve-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), NEVE_VERSION );
+	}
+
+	/**
+	 * Add onload, rel and as attributes for Google Font stylesheets.
+	 * Implements lazy loading with preload for better performance.
+	 *
+	 * @param string $html   Current html code.
+	 * @param string $handle Current script handle.
+	 *
+	 * @return string
+	 */
+	public function add_rel_preload( $html, $handle ) {
+		if ( is_admin() ) {
+			return $html;
+		}
+
+		$preload_enabled = get_theme_mod( Config::MODS_PRELOAD_FONTS, false );
+
+		/**
+		 * Filters whether fonts should be preloaded.
+		 *
+		 * @param bool $preload_enabled Whether fonts should be preloaded. Default value is false.
+		 *
+		 * @since 3.9.0
+		 */
+		$should_preload = apply_filters( 'neve_preload_fonts', $preload_enabled );
+
+		if ( ! (bool) $should_preload ) {
+			return $html;
+		}
+
+		// Only preload Google Font stylesheets
+		if ( strpos( $handle, 'neve-google-font-' ) === 0 ) {
+			// Lazy load with JS, but also add noscript in case no JS
+			$no_script = '<noscript>' . $html . '</noscript>';
+			// Add onload, rel="preload", as="style", and put together with noscript
+			$html = str_replace( 'rel=\'stylesheet\'', 'rel="preload" as="style" onload="this.rel=\'stylesheet\';"', $html ) . $no_script;
+		}
+
+		return $html;
 	}
 
 	/**
