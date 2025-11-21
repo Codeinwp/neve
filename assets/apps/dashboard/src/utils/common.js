@@ -29,6 +29,11 @@ const tabs = {
 	changelog: {
 		render: () => <Changelog />,
 	},
+	'get-neve-pro': {
+		label: __('Get Neve Pro', 'neve'),
+		url: neveDash.upgradeURLModules,
+		external: true,
+	},
 };
 
 const { plugins } = neveDash;
@@ -68,7 +73,7 @@ const getTabHash = () => {
 
 	hash = hash.substring(1);
 
-	if (!tabs[hash]?.render) {
+	if (!tabs[hash]?.render && !tabs[hash]?.url) {
 		return null;
 	}
 
