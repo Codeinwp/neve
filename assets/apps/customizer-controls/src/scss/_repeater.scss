@@ -17,6 +17,18 @@ $text-color: #50575e;
     margin: 0;
   }
 
+  .handle {
+    &:focus {
+      outline: 2px solid #0073aa;
+      outline-offset: -2px;
+    }
+
+    &.keyboard-active {
+      background-color: #00a0d2;
+      fill: #fff;
+    }
+  }
+
   .icon-control {
     height: 30px;
     margin-bottom: 10px;
