@@ -465,9 +465,16 @@ class Front_End {
 		}
 
 		if ( class_exists( 'WooCommerce', false ) && is_woocommerce() ) {
-			wp_register_script( 'neve-shop-script', NEVE_ASSETS_URL . 'js/build/modern/shop.js', array(), NEVE_VERSION, true );
+			wp_register_script( 'neve-shop-script', NEVE_ASSETS_URL . 'js/build/modern/shop.js', array( 'jquery', 'wc-single-product' ), NEVE_VERSION, true );
 			wp_enqueue_script( 'neve-shop-script' );
 			wp_script_add_data( 'neve-shop-script', 'async', true );
+			wp_localize_script(
+				'neve-shop-script',
+				'neveShopSlider',
+				array(
+					'isSparkActive' => is_plugin_active( 'sparks-for-woocommerce/sparks-for-woocommerce.php' ),
+				)
+			);
 		}
 
 		if ( $this->should_load_comments_reply() ) {
