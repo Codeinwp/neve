@@ -80,6 +80,16 @@ const ComponentsPopover: React.FC<Props> = ({
 		});
 	};
 
+	const getFilteredUpsells = () => {
+		if (!searchQuery) {
+			return upsells;
+		}
+
+		return upsells.filter(({ name }) => {
+			return name.toLowerCase().includes(searchQuery);
+		});
+	};
+
 	const renderItem = (item: ItemInterface, idx: number) => {
 		if (!item.id) {
 			return null;
@@ -113,10 +123,15 @@ const ComponentsPopover: React.FC<Props> = ({
 	const renderItems = () => {
 		const themeItems = getSidebarItems();
 		const boosterItems = getSidebarItems(true);
+		const filteredUpsells = getFilteredUpsells();
 
 		let noComponents = null;
 
-		if (themeItems.length === 0 && boosterItems.length === 0) {
+		if (
+			themeItems.length === 0 &&
+			boosterItems.length === 0 &&
+			filteredUpsells.length === 0
+		) {
 			noComponents = (
 				<div className="no-components">
 					<span>
@@ -156,13 +171,13 @@ const ComponentsPopover: React.FC<Props> = ({
 						)}
 					</>
 				)}
-				{boosterItems.length < 1 && upsells.length > 0 && (
+				{boosterItems.length < 1 && filteredUpsells.length > 0 && (
 					<>
 						<h4>
 							{__('PRO', 'neve')} {__('Components', 'neve')}
 						</h4>
 						<div className="items-popover-list upsell-list">
-							{upsells.map(({ name, icon }, idx) => {
+							{filteredUpsells.map(({ name, icon }, idx) => {
 								return renderUpsell(idx, icon, name);
 							})}
 						</div>
