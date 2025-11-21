@@ -87,7 +87,7 @@ test.describe('Style Book Modal', () => {
 		await expect(iframe.locator('.nv-sb-btn-primary')).toBeVisible();
 
 		// Verify form has clickable class
-		const group = page.locator('.nv-sb-form-group');
+		const group = iframe.locator('.nv-sb-form-group');
 		await expect(group).toHaveClass(/builder-item-focus/);
 	});
 
