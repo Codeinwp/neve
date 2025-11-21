@@ -1,0 +1,28 @@
+{
+  "general": {
+    "neve_scroll_to_top_side": "left",
+    "neve_scroll_to_top_label": "Go up",
+    "neve_scroll_to_top_offset": 100,
+    "neve_scroll_to_top_padding": {
+      "desktop": { "top": 10, "right": 12, "bottom": 10, "left": 12 },
+      "tablet": { "top": 6, "right": 8, "bottom": 6, "left": 8 },
+      "mobile": { "top": 10, "right": 12, "bottom": 10, "left": 12 },
+      "desktop-unit": "px",
+      "tablet-unit": "px",
+      "mobile-unit": "px"
+    },
+    "neve_scroll_to_top_border_radius": 100,
+    "neve_scroll_to_top_icon_color": "#ff0000",
+    "neve_scroll_to_top_icon_hover_color": "#ff0000",
+    "neve_scroll_to_top_background_color": "#ffffff",
+    "neve_scroll_to_top_background_hover_color": "#ffffff",
+    "neve_scroll_to_top_type": "icon",
+    "neve_scroll_to_top_image": 0,
+    "neve_scroll_to_top_on_mobile": false
+  },
+  "icon-check": {
+    "neve_scroll_to_top_side": "left",
+    "neve_scroll_to_top_icon_size": "{ \"mobile\": \"100\", \"tablet\": \"50\", \"desktop\": \"100\" }",
+    "neve_scroll_to_top_on_mobile": false
+  }
+}
