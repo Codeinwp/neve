@@ -168,6 +168,59 @@ const initSearchCustomizer = () => {
 	);
 };
 
+const initStyleBookButton = () => {
+	const headerContainer = document.getElementById('customize-header-actions');
+
+	if (!headerContainer) {
+		return;
+	}
+
+	// Initialize the Style Book state if it doesn't exist
+	if (!wp.customize.state.has('neveStyleBookOpen')) {
+		wp.customize.state.create('neveStyleBookOpen', false);
+	}
+
+	// Create the Style Book button
+	const button = document.createElement('button');
+	button.name = 'neve-style-book';
+	button.id = 'neve-style-book';
+	button.className = 'button-secondary button';
+	button.title = __('Style Book', 'neve');
+	button.innerHTML = `
+		<i class="dashicons dashicons-admin-appearance"></i>
+		<span class="screen-reader-text">${__('Style Book', 'neve')}</span>
+	`;
+
+	// Add click handler
+	button.addEventListener('click', (e) => {
+		e.preventDefault();
+
+		// Toggle the state in customizer
+		const currentState = wp.customize.state('neveStyleBookOpen').get();
+		const newState = !currentState;
+		wp.customize.state('neveStyleBookOpen').set(newState);
+
+		// Send message to preview
+		wp.customize.previewer.send('neve-toggle-style-book', newState);
+	});
+
+	// Append to header container
+	headerContainer.appendChild(button);
+
+	// Restore state when preview is ready
+	wp.customize.previewer.bind('ready', () => {
+		const currentState = wp.customize.state('neveStyleBookOpen').get();
+		if (currentState) {
+			wp.customize.previewer.send('neve-restore-style-book-state', true);
+		}
+	});
+
+	// Listen for state changes from preview
+	wp.customize.previewer.bind('neve-style-book-state-changed', (newState) => {
+		wp.customize.state('neveStyleBookOpen').set(newState);
+	});
+};
+
 const initCustomPagesFocus = () => {
 	const { sectionsFocus } = window.NeveReactCustomize;
 	if (sectionsFocus !== undefined) {
@@ -355,6 +408,7 @@ window.wp.customize.bind('ready', () => {
 	initBlogPageFocus();
 	initSearchCustomizer();
 	initLocalGoogleFonts();
+	initStyleBookButton();
 	previewScrollToTopChanges();
 });
 
