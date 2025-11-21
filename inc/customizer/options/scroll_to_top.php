@@ -711,20 +711,26 @@ class Scroll_To_Top extends Base_Customizer {
 	 */
 	public static function is_enabled() {
 		// Check old option first for backward compatibility.
-		$old_value = get_option( 'nv_pro_scroll_to_top_status', null );
+		$old_value  = get_option( 'nv_pro_scroll_to_top_status', null );
+		$is_enabled = false;
 
 		if ( null !== $old_value ) {
 			// Option exists — use it and migrate to the new theme_mod for future.
-			$value = $old_value === '1';
+			$is_enabled = $old_value === '1';
 
 			set_theme_mod( 'neve_scroll_to_top_status', $old_value );
 			delete_option( 'nv_pro_scroll_to_top_status' );
-
-			return $value;
+		} else {
+			// Otherwise, use the new theme_mod.
+			$is_enabled = get_theme_mod( 'neve_scroll_to_top_status', '1' ) === '1';
 		}
 
-		// Otherwise, use the new theme_mod.
-		return get_theme_mod( 'neve_scroll_to_top_status', '1' ) === '1';
+		/**
+		 * Filter to allow conditional loading of the scroll to top feature.
+		 *
+		 * @param bool $is_enabled Whether the scroll to top feature is enabled.
+		 */
+		return apply_filters( 'neve_scroll_to_top_is_enabled', $is_enabled );
 	}
 
 	/**
