@@ -20,7 +20,7 @@ const initLocalGoogleFonts = () => {
 		return;
 	}
 
-	const toggleControl =
+	const localFontsToggle =
 		new wp.customize.controlConstructor.neve_toggle_control(
 			NeveReactCustomize.localGoogleFonts.key,
 			{
@@ -32,7 +32,24 @@ const initLocalGoogleFonts = () => {
 			}
 		);
 
-	render(<ToggleComponent control={toggleControl} />, section.container[0]);
+	const preloadFontsToggle =
+		new wp.customize.controlConstructor.neve_toggle_control(
+			NeveReactCustomize.preloadFonts.key,
+			{
+				section: section.id,
+				label: __('Preload fonts', 'neve'),
+				setting: NeveReactCustomize.preloadFonts.key,
+				priority: 6,
+			}
+		);
+
+	render(
+		<>
+			<ToggleComponent control={preloadFontsToggle} />
+			<ToggleComponent control={localFontsToggle} />
+		</>,
+		section.container[0]
+	);
 };
 
 export { initLocalGoogleFonts };

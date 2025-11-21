@@ -94,6 +94,7 @@ class Config {
 	const MODS_POST_TYPE_VSPACING         = 'content_vspacing';
 
 	const OPTION_LOCAL_GOOGLE_FONTS_HOSTING = 'nv_pro_enable_local_fonts';
+	const MODS_PRELOAD_FONTS                = 'neve_preload_fonts';
 	const OPTION_POSTS_PER_PAGE             = 'posts_per_page';
 
 	const MODS_TPOGRAPHY_FONT_PAIRS = 'neve_font_pairs';
