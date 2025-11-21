@@ -684,10 +684,6 @@ class Main {
 					'url' => 'https://docs.themeisle.com/article/1505-neve-post-type-enhancements-module?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=postenhancements&utm_content=neve',
 				),
 			),
-			'scroll_to_top'          => array(
-				'nicename'    => __( 'Scroll To Top', 'neve' ),
-				'description' => __( 'Add a customizable scroll-to-top button that appears exactly when needed. Style it to match your brand.', 'neve' ),
-			),
 			'performance_features'   => array(
 				'nicename'      => __( 'Performance', 'neve' ),
 				'description'   => __( 'Optimize core vitals, enable lazy loading, and minify resources for lightning-fast load times.', 'neve' ),

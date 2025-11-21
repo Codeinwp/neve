@@ -25,6 +25,26 @@ function handleResponsiveRadioButtons(args, nextValue) {
 	});
 }
 
+window.wp.customize.bind('ready', () => {
+	previewScrollToTopChanges();
+});
+
+/**
+ * Preview scroll to top changes made in customizer.
+ */
+function previewScrollToTopChanges() {
+	wp.customize.preview.bind('nv-opened-stt', (show) => {
+		if (show) {
+			const scrollToTopBtn = document.querySelector('#scroll-to-top');
+			if (!scrollToTopBtn) {
+				return;
+			}
+			scrollToTopBtn.style.visibility = 'visible';
+			scrollToTopBtn.style.opacity = '1';
+		}
+	});
+}
+
 /**
  * Run JS on preview-ready.
  */

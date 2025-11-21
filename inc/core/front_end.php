@@ -16,6 +16,7 @@ use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Dynamic_Css;
 use Neve\Core\Traits\Theme_Mods;
+use Neve\Customizer\Options\Scroll_To_Top;
 
 /**
  * Front end handler class.
@@ -86,6 +87,8 @@ class Front_End {
 		add_filter( 'theme_mod_background_color', '__return_empty_string' );
 		$this->add_woo_support();
 		add_filter( 'neve_dynamic_style_output', array( $this, 'css_global_custom_colors' ), PHP_INT_MAX, 2 );
+
+		add_filter( 'neve_dynamic_style_output', array( $this, 'css_scroll_to_top' ), 99, 2 );
 	}
 
 	/**
@@ -587,6 +590,9 @@ class Front_End {
 			'switch_skin'              => __( 'Switch Skin', 'neve' ),
 			'dismiss'                  => __( 'Dismiss', 'neve' ),
 			'rollback'                 => __( 'Roll Back', 'neve' ),
+			'scroll_to_top_desc'       => __( 'Add a customizable scroll-to-top button that appears exactly when needed. Style it to match your brand.', 'neve' ),
+			/* translators: %s - Module name for the upsell */
+			'upsell'                   => __( 'Unlock %s with the Pro version.', 'neve' ),
 		];
 	}
 
@@ -608,6 +614,89 @@ class Front_End {
 		}
 
 		return $current_styles;
+	}
+
+	/**
+	 * Add module css.
+	 *
+	 * @param string $css Current CSS style.
+	 * @param string $context Current context.
+	 *
+	 * @return string Altered CSS.
+	 */
+	public function css_scroll_to_top( $css, $context = 'frontend' ) {
+		if ( ! Scroll_To_Top::is_enabled() ) {
+			return $css;
+		}
+
+		if ( $context !== 'frontend' ) {
+			return $css;
+		}
+
+		$scroll_to_top_css = '.scroll-to-top {' . ( is_rtl() ? 'left: 20px;' : 'right: 20px;' ) . '
+			border: none;
+			position: fixed;
+			bottom: 30px;
+			display: none;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+			align-items: center;
+			justify-content: center;
+			z-index: 999;
+		}
+		@supports (-webkit-overflow-scrolling: touch) {
+			.scroll-to-top {
+				bottom: 74px;
+			}
+		}
+		.scroll-to-top.image {
+			background-position: center;
+		}
+		.scroll-to-top .scroll-to-top-image {
+			width: 100%;
+		    height: 100%;
+		}
+		.scroll-to-top .scroll-to-top-label {
+			margin: 0;
+			padding: 5px;
+		}
+		.scroll-to-top:hover {
+			text-decoration: none;
+		}
+		.scroll-to-top.scroll-to-top-left {' . ( is_rtl() ? 'right: 20px; left: unset;' : 'left: 20px; right: unset;' ) . '}
+		.scroll-to-top.scroll-show-mobile {
+		  display: flex;
+		}
+		@media (min-width: 960px) {
+			.scroll-to-top {
+				display: flex;
+			}
+		}';
+
+		$scroll_to_top_css .= '.scroll-to-top {
+			color: var(--color);
+			padding: var(--padding);
+			border-radius: var(--borderradius);
+			background: var(--bgcolor);  
+		}
+
+		.scroll-to-top:hover, .scroll-to-top:focus {
+			color: var(--hovercolor);
+			background: var(--hoverbgcolor);
+		}
+
+		.scroll-to-top-icon, .scroll-to-top.image .scroll-to-top-image {
+			width: var(--size);
+			height: var(--size);
+		}
+
+		.scroll-to-top-image {
+			background-image: var(--bgimage);
+			background-size: cover;
+		}';
+
+		return $css . $scroll_to_top_css;
 	}
 
 	/**
