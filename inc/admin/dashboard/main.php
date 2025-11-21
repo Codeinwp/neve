@@ -653,8 +653,11 @@ class Main {
 	private function get_modules() {
 		$plugins = array(
 			'hfg_module'             => array(
-				'nicename'    => __( 'Header Booster', 'neve' ),
-				'description' => __( 'Create unique sticky & transparent headers that adapt to scroll. Perfect for modern, immersive websites.', 'neve' ),
+				'nicename'      => __( 'Header Booster', 'neve' ),
+				'description'   => __( 'Create unique sticky & transparent headers that adapt to scroll. Perfect for modern, immersive websites.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1057-header-booster-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=headerbooster&utm_content=neve',
+				),
 			),
 			'woocommerce_booster'    => array(
 				'nicename'    => __( 'WooCommerce Booster', 'neve' ),
@@ -668,32 +671,46 @@ class Main {
 				'condition'   => class_exists( 'Easy_Digital_Downloads' ),
 			),
 			'blog_pro'               => array(
-				'nicename'    => __( 'Blog Booster', 'neve' ),
-				'description' => __( 'Advanced layouts, reading time estimates, and social sharing to keep readers engaged longer.', 'neve' ),
+				'nicename'      => __( 'Blog Booster', 'neve' ),
+				'description'   => __( 'Advanced layouts, reading time estimates, and social sharing to keep readers engaged longer.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1059-blog-booster-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=blogbooster&utm_content=neve',
+				),
 			),
 			'post_type_enhancements' => array(
-				'nicename'    => __( 'Post types enhancements', 'neve' ),
-				'description' => __( 'Extend Neve\'s powerful features to custom post types. Create unique layouts for portfolios, testimonials, and more.', 'neve' ),
-			),
-			'scroll_to_top'          => array(
-				'nicename'    => __( 'Scroll To Top', 'neve' ),
-				'description' => __( 'Add a customizable scroll-to-top button that appears exactly when needed. Style it to match your brand.', 'neve' ),
+				'nicename'      => __( 'Post types enhancements', 'neve' ),
+				'description'   => __( 'Extend Neve\'s powerful features to custom post types. Create unique layouts for portfolios, testimonials, and more.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1505-neve-post-type-enhancements-module?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=postenhancements&utm_content=neve',
+				),
 			),
 			'performance_features'   => array(
-				'nicename'    => __( 'Performance', 'neve' ),
-				'description' => __( 'Optimize core vitals, enable lazy loading, and minify resources for lightning-fast load times.', 'neve' ),
+				'nicename'      => __( 'Performance', 'neve' ),
+				'description'   => __( 'Optimize core vitals, enable lazy loading, and minify resources for lightning-fast load times.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1366-performance-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=performancemodule&utm_content=neve',
+				),
 			),
 			'block_editor_booster'   => array(
-				'nicename'    => __( 'Block Editor Booster', 'neve' ),
-				'description' => __( 'Advanced Gutenberg blocks designed specifically for Neve. Build faster with pre-styled patterns.', 'neve' ),
+				'nicename'      => __( 'Block Editor Booster', 'neve' ),
+				'description'   => __( 'Advanced Gutenberg blocks designed specifically for Neve. Build faster with pre-styled patterns.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1473-neve-block-editor-booster-module?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=blockeditorbooster&utm_content=neve',
+				),
 			),
 			'white_label'            => array(
-				'nicename'    => __( 'White Label', 'neve' ),
-				'description' => __( 'Rebrand Neve as your own. Change theme name, author, and links to match your agency identity.', 'neve' ),
+				'nicename'      => __( 'White Label', 'neve' ),
+				'description'   => __( 'Rebrand Neve as your own. Change theme name, author, and links to match your agency identity.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1061-white-label-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=whitelabel&utm_content=neve',
+				),
 			),
 			'custom_layouts'         => array(
-				'nicename'    => __( 'Custom Layouts', 'neve' ),
-				'description' => __( 'Create conditional headers, footers, and content blocks. Perfect for custom landing pages and marketing campaigns.', 'neve' ),
+				'nicename'      => __( 'Custom Layouts', 'neve' ),
+				'description'   => __( 'Create conditional headers, footers, and content blocks. Perfect for custom landing pages and marketing campaigns.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1062-custom-layouts-module?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=customlayouts&utm_content=neve',
+				),
 			),
 			'elementor_booster'      => array(
 				'nicename'    => __( 'Elementor Booster', 'neve' ),
@@ -706,16 +723,25 @@ class Main {
 				'condition'   => class_exists( 'LifterLMS' ),
 			),
 			'typekit_fonts'          => array(
-				'nicename'    => __( 'Typekit Fonts', 'neve' ),
-				'description' => __( 'Access premium Adobe fonts directly in your theme. Add professional typography to any element.', 'neve' ),
+				'nicename'      => __( 'Typekit Fonts', 'neve' ),
+				'description'   => __( 'Access premium Adobe fonts directly in your theme. Add professional typography to any element.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1085-typekit-fonts-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=typekitfonts&utm_content=neve',
+				),
 			),
 			'custom_sidebars'        => array(
-				'nicename'    => __( 'Custom Sidebars', 'neve' ),
-				'description' => __( 'Create unique sidebar layouts for different sections. Show relevant content based on user context.', 'neve' ),
+				'nicename'      => __( 'Custom Sidebars', 'neve' ),
+				'description'   => __( 'Create unique sidebar layouts for different sections. Show relevant content based on user context.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1770-custom-sidebars-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=customsidebars&utm_content=neve',
+				),
 			),
 			'access_restriction'     => array(
-				'nicename'    => __( 'Content restriction', 'neve' ),
-				'description' => __( 'Create members-only content areas. Control access by user roles, logged-in status, or custom rules.', 'neve' ),
+				'nicename'      => __( 'Content restriction', 'neve' ),
+				'description'   => __( 'Create members-only content areas. Control access by user roles, logged-in status, or custom rules.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1863-content-restriction-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=contentrestriction&utm_content=neve',
+				),
 			),
 		);
 

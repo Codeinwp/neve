@@ -9,27 +9,42 @@ import {
 	ToggleControl,
 } from '@wordpress/components';
 import { dragHandle, chevronDown, chevronUp } from '@wordpress/icons';
-import { useMemo, useState, useCallback, useEffect } from '@wordpress/element';
+import {
+	useMemo,
+	useState,
+	useCallback,
+	useEffect,
+	useRef,
+} from '@wordpress/element';
 import { RadioIcons } from '@neve-wp/components';
 
 import { VisibilityIcon, HiddenIcon } from '../common';
+import useKeyboardSorting from '../common/useKeyboardSorting';
 import ResponsiveRangeComponent from '../responsive-range/ResponsiveRangeComponent';
 import ResponsiveRadioButtonsComponent from '../responsive-radio-buttons/ResponsiveRadioButtonsComponent';
 import SpacingComponent from '../spacing/SpacingComponent';
 
-const Handle = () => (
-	<Tooltip text={__('Drag to Reorder', 'neve')}>
-		<button
-			aria-label={__('Drag to Reorder', 'neve')}
-			className="handle"
-			onClick={(e) => {
-				e.preventDefault();
-			}}
-		>
-			<Icon icon={dragHandle} size={18} />
-		</button>
-	</Tooltip>
-);
+const Handle = ({ handleRef, onKeyDown, onBlur, isActive }) => {
+	return (
+		<Tooltip text={__('Drag to Reorder', 'neve')}>
+			<button
+				ref={handleRef}
+				aria-label={__('Drag to Reorder', 'neve')}
+				className={classnames('handle', {
+					'keyboard-active': isActive,
+				})}
+				onClick={(e) => {
+					e.preventDefault();
+				}}
+				onKeyDown={onKeyDown}
+				onBlur={onBlur}
+				tabIndex={0}
+			>
+				<Icon icon={dragHandle} size={18} />
+			</button>
+		</Tooltip>
+	);
+};
 
 const Item = ({
 	item,
@@ -37,8 +52,21 @@ const Item = ({
 	components,
 	allowsToggle = true,
 	locked = false,
+	itemIndex,
+	totalItems,
+	onMove,
+	isKeyboardActive,
+	onKeyboardActiveChange,
 }) => {
 	const label = components[item.id]?.label || components[item.id];
+
+	const { handleRef, handleKeyDown, handleBlur } = useKeyboardSorting(
+		itemIndex,
+		totalItems,
+		onMove,
+		isKeyboardActive,
+		onKeyboardActiveChange
+	);
 
 	const hasControls = useMemo(() => {
 		return (
@@ -99,7 +127,12 @@ const Item = ({
 						</button>
 					</Tooltip>
 				) : (
-					<Handle />
+					<Handle
+						handleRef={handleRef}
+						onKeyDown={handleKeyDown}
+						onBlur={handleBlur}
+						isActive={isKeyboardActive}
+					/>
 				)}
 				<span className="label">{label}</span>
 
@@ -330,6 +363,13 @@ Item.propTypes = {
 	item: PropTypes.object.isRequired,
 	onToggle: PropTypes.func.isRequired,
 	allowsToggle: PropTypes.bool.isRequired,
+	itemIndex: PropTypes.number.isRequired,
+	totalItems: PropTypes.number.isRequired,
+	onMove: PropTypes.func.isRequired,
+	components: PropTypes.object.isRequired,
+	locked: PropTypes.bool,
+	isKeyboardActive: PropTypes.bool.isRequired,
+	onKeyboardActiveChange: PropTypes.func.isRequired,
 	className: PropTypes.string,
 	disabled: PropTypes.bool,
 };
@@ -342,6 +382,9 @@ const Ordering = ({
 	locked = [],
 	allowsToggle = true,
 }) => {
+	// Track active item by stable id, not by index or object reference.
+	const activeItemIdRef = useRef(null);
+	const [, forceUpdate] = useState({});
 	const handleToggle = (item) => {
 		const newValue = value.map((e) => {
 			if (e.id === item) {
@@ -365,6 +408,13 @@ const Ordering = ({
 		onUpdate(updatedValue);
 	};
 
+	const handleMove = (fromIndex, toIndex) => {
+		const newValue = [...value];
+		const [movedItem] = newValue.splice(fromIndex, 1);
+		newValue.splice(toIndex, 0, movedItem);
+		// Active id persists because item.id does not change.
+		handleChange(newValue);
+	};
 	value = value.filter((element) => {
 		return components.hasOwnProperty(element.id);
 	});
@@ -386,7 +436,7 @@ const Ordering = ({
 					.filter((element) => {
 						return components.hasOwnProperty(element.id);
 					})
-					.map((item) => (
+					.map((item, index) => (
 						<Item
 							locked={locked.includes(item.id)}
 							key={item.id}
@@ -394,6 +444,18 @@ const Ordering = ({
 							onToggle={handleToggle}
 							allowsToggle={allowsToggle}
 							components={components}
+							itemIndex={index}
+							totalItems={value.length}
+							onMove={handleMove}
+							isKeyboardActive={
+								activeItemIdRef.current === item.id
+							}
+							onKeyboardActiveChange={(active) => {
+								activeItemIdRef.current = active
+									? item.id
+									: null;
+								forceUpdate({});
+							}}
 						/>
 					))}
 			</ReactSortable>

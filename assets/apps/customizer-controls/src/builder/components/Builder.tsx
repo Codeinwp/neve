@@ -138,7 +138,7 @@ const Builder: React.FC<Props> = ({ value, hidden, portalMount }) => {
 								setMobileOverlayDismissed(true);
 							}}
 						>
-							{__('Enable', 'neve-pro-addon')}
+							{__('Enable', 'neve')}
 						</Button>
 					</div>
 				)}

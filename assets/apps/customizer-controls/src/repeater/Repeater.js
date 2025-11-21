@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Button } from '@wordpress/components';
 import { ReactSortable } from 'react-sortablejs';
 import { __ } from '@wordpress/i18n';
+import { useRef, useState } from '@wordpress/element';
 
 const Repeater = ({
 	label,
@@ -15,6 +16,20 @@ const Repeater = ({
 }) => {
 	const itemFields =
 		Object.keys(newItemFields).length > 0 ? newItemFields : fields;
+	// Track active item by a stable key (slug or generated) independent of index.
+	const activeItemKeyRef = useRef(null);
+	const [, forceUpdate] = useState({});
+
+	// Ensure each existing item has a stable internal key for keyboard tracking (preserved across moves).
+	value.forEach((obj) => {
+		if (!obj.__kbKey) {
+			obj.__kbKey =
+				obj.slug ||
+				'kb-' +
+					Date.now().toString(36) +
+					Math.random().toString(36).slice(2, 8);
+		}
+	});
 
 	const handleToggle = (index) => {
 		const newValue = [...value];
@@ -56,6 +71,12 @@ const Repeater = ({
 			newItem[field] = itemFields[field].default;
 		}
 
+		// Assign stable key before pushing so initial activation works.
+		newItem.__kbKey =
+			newItem.slug ||
+			'kb-' +
+				Date.now().toString(36) +
+				Math.random().toString(36).slice(2, 8);
 		newValue.push(newItem);
 		onUpdate(newValue);
 	};
@@ -72,18 +93,24 @@ const Repeater = ({
 		onUpdate(newValue);
 	};
 
+	const handleMove = (fromIndex, toIndex) => {
+		const newValue = [...value];
+		const [movedItem] = newValue.splice(fromIndex, 1);
+		newValue.splice(toIndex, 0, movedItem);
+		setList(newValue);
+	};
 	const setList = (l) => {
+		const allowed = [
+			...Object.keys(itemFields),
+			'title',
+			'visibility',
+			'blocked',
+			'slug',
+			'__kbKey', // preserve stable keyboard key
+		];
 		const final = l.map((i) => {
 			Object.keys(i).forEach((k) => {
-				if (
-					![
-						...Object.keys(itemFields),
-						'title',
-						'visibility',
-						'blocked',
-						'slug',
-					].includes(k)
-				) {
+				if (!allowed.includes(k)) {
 					delete i[k];
 				}
 			});
@@ -112,6 +139,7 @@ const Repeater = ({
 				handle=".handle"
 			>
 				{value.map((val, index) => {
+					const reactKey = val.__kbKey;
 					return (
 						<RepeaterItem
 							className="nv-repeater-item"
@@ -119,13 +147,24 @@ const Repeater = ({
 							fields={fields}
 							value={value}
 							itemIndex={index}
-							key={'repeater-item-' + (val.slug || index)}
+							key={'repeater-item-' + reactKey}
 							onToggle={handleToggle}
 							onContentChange={(newItemValue) =>
 								handleContentChange(index, newItemValue)
 							}
 							onRemove={handleRemove}
 							index={index}
+							totalItems={value.length}
+							onMove={handleMove}
+							isKeyboardActive={
+								activeItemKeyRef.current === val.__kbKey
+							}
+							onKeyboardActiveChange={(active) => {
+								activeItemKeyRef.current = active
+									? val.__kbKey
+									: null;
+								forceUpdate({});
+							}}
 						/>
 					);
 				})}

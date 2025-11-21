@@ -83,6 +83,7 @@ class Loader {
 				'Customizer\Options\Layout_Single_Page',
 				'Customizer\Options\Layout_Single_Product',
 				'Customizer\Options\Layout_Sidebar',
+				'Customizer\Options\Scroll_To_Top',
 				'Customizer\Options\Typography',
 				'Customizer\Options\Colors_Background',
 				'Customizer\Options\Checkout',
@@ -143,6 +144,9 @@ class Loader {
 					'localGoogleFonts'              => array(
 						'learnMore' => apply_filters( 'neve_external_link', 'https://docs.themeisle.com/article/1349-how-to-load-neve-fonts-locally', esc_html__( 'Learn more', 'neve' ) ),
 						'key'       => Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING,
+					),
+					'preloadFonts'                  => array(
+						'key' => Config::MODS_PRELOAD_FONTS,
 					),
 					'fontPairs'                     => get_theme_mod( Config::MODS_TPOGRAPHY_FONT_PAIRS, Config::$typography_default_pairs ),
 					'allowedGlobalCustomColor'      => Colors_Background::CUSTOM_COLOR_LIMIT,
@@ -288,6 +292,14 @@ class Loader {
 			[
 				'type'              => 'option',
 				'sanitize_callback' => 'rest_sanitize_boolean',
+				'default'           => false,
+			]
+		);
+
+		$wp_customize->add_setting(
+			Config::MODS_PRELOAD_FONTS,
+			[
+				'sanitize_callback' => 'neve_sanitize_checkbox',
 				'default'           => false,
 			]
 		);

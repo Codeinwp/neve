@@ -319,6 +319,18 @@ class Footer extends Abstract_Builder {
 				'name' => __( 'Payment icons', 'neve' ),
 			],
 			[
+				'icon' => 'nametag',
+				'name' => __( 'Copyright', 'neve' ),
+			],
+			[
+				'icon' => 'embed-generic',
+				'name' => __( 'Custom Layouts', 'neve' ),
+			],
+			[
+				'icon' => 'welcome-widgets-menus',
+				'name' => __( 'Widget Area', 'neve' ),
+			],
+			[
 				'icon' => 'share',
 				'name' => __( 'Social Icons', 'neve' ),
 			],
