@@ -87,7 +87,8 @@ test.describe('Style Book Modal', () => {
 		await expect(iframe.locator('.nv-sb-btn-primary')).toBeVisible();
 
 		// Verify form has clickable class
-		await expect(iframe.locator('.nv-sb-form')).toHaveClass(/builder-item-focus/);
+		const group = page.locator('.nv-sb-form-group');
+		await expect(group).toHaveClass(/builder-item-focus/);
 	});
 
 	test('should display buttons with proper styling', async ({ page }) => {
