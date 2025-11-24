@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 17/11/25
+ * Updated on 24/11/25
  *
  * @package neve
  */
@@ -150,6 +150,9 @@ return array(
 	'Azeret Mono' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'B612' => array( '400', '700', '400italic', '700italic',),
 	'B612 Mono' => array( '400', '700', '400italic', '700italic',),
+	'BBH Sans Bartle' => array( '400',),
+	'BBH Sans Bogle' => array( '400',),
+	'BBH Sans Hegarty' => array( '400',),
 	'BIZ UDGothic' => array( '400', '700',),
 	'BIZ UDMincho' => array( '400', '700',),
 	'BIZ UDPGothic' => array( '400', '700',),
@@ -473,6 +476,7 @@ return array(
 	'Edu VIC WA NT Hand Pre' => array( '400', '500', '600', '700',),
 	'El Messiri' => array( '400', '500', '600', '700',),
 	'Electrolize' => array( '400',),
+	'Elms Sans' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Elsie' => array( '400', '900',),
 	'Elsie Swash Caps' => array( '400', '900',),
 	'Emblema One' => array( '400',),
@@ -603,6 +607,7 @@ return array(
 	'Goldman' => array( '400', '700',),
 	'Golos Text' => array( '400', '500', '600', '700', '800', '900',),
 	'Google Sans Code' => array( '300', '400', '500', '600', '700', '800', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic',),
+	'Google Sans Flex' => array( '400',),
 	'Gorditas' => array( '400', '700',),
 	'Gothic A1' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Gotu' => array( '400',),
@@ -782,6 +787,7 @@ return array(
 	'Kdam Thmor' => array(),
 	'Kdam Thmor Pro' => array( '400',),
 	'Keania One' => array( '400',),
+	'Kedebideri' => array( '400', '500', '600', '700', '800', '900',),
 	'Kelly Slab' => array( '400',),
 	'Kenia' => array( '400',),
 	'Khand' => array( '300', '400', '500', '600', '700',),
@@ -857,7 +863,7 @@ return array(
 	'Libre Barcode 39 Extended Text' => array( '400',),
 	'Libre Barcode 39 Text' => array( '400',),
 	'Libre Barcode EAN13 Text' => array( '400',),
-	'Libre Baskerville' => array( '400', '700', '400italic',),
+	'Libre Baskerville' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Libre Bodoni' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Libre Caslon Display' => array( '400',),
 	'Libre Caslon Text' => array( '400', '700', '400italic',),
@@ -1657,6 +1663,7 @@ return array(
 	'Scheherazade New' => array( '400', '500', '600', '700',),
 	'Schibsted Grotesk' => array( '400', '500', '600', '700', '800', '900', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Schoolbell' => array( '400',),
+	'Science Gothic' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Scope One' => array( '400',),
 	'Seaweed Script' => array( '400',),
 	'Secular One' => array( '400',),
@@ -1752,6 +1759,9 @@ return array(
 	'Sriracha' => array( '400',),
 	'Srisakdi' => array( '400', '700',),
 	'Staatliches' => array( '400',),
+	'Stack Sans Headline' => array( '200', '300', '400', '500', '600', '700',),
+	'Stack Sans Notch' => array( '200', '300', '400', '500', '600', '700',),
+	'Stack Sans Text' => array( '200', '300', '400', '500', '600', '700',),
 	'Stalemate' => array( '400',),
 	'Stalinist One' => array( '400',),
 	'Stardos Stencil' => array( '400', '700',),
