@@ -509,7 +509,7 @@ class Admin {
 			return new \WP_REST_Response(
 				[
 					'success' => false,
-					'message' => __( 'Invalid progress data', 'neve' ),
+					'message' => 'Invalid progress data',
 				],
 				400
 			);
@@ -522,7 +522,7 @@ class Admin {
 				return new \WP_REST_Response(
 					[
 						'success' => false,
-						'message' => __( 'Invalid progress structure', 'neve' ),
+						'message' => 'Invalid progress structure',
 					],
 					400
 				);
@@ -534,7 +534,7 @@ class Admin {
 					return new \WP_REST_Response(
 						[
 							'success' => false,
-							'message' => __( 'Progress values must be boolean', 'neve' ),
+							'message' => 'Progress values must be boolean',
 						],
 						400
 					);
@@ -548,7 +548,7 @@ class Admin {
 		return new \WP_REST_Response(
 			[
 				'success' => true,
-				'message' => __( 'Progress saved', 'neve' ),
+				'message' => 'Progress saved',
 			],
 			200
 		);

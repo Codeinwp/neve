@@ -41,6 +41,12 @@ const initializeStepState = (
 	});
 };
 
+const { plugins } = neveDash;
+
+const activeTPC =
+	plugins['templates-patterns-collection'] &&
+	plugins['templates-patterns-collection'].cta === 'deactivate';
+
 const LaunchProgress = () => {
 	// Get checks from neveDash
 	const checks = neveDash.launchProgress || {};
@@ -131,7 +137,11 @@ const LaunchProgress = () => {
 					</div>
 					<Button
 						isPrimary
-						href={neveDash.tpcOnboardingURL}
+						href={
+							activeTPC
+								? neveDash.tpcOnboardingURL
+								: neveDash.launchProgressUrls.starterSites
+						}
 						className="shrink-0 whitespace-nowrap"
 					>
 						{__('Starter Sites', 'neve')}
@@ -439,7 +449,12 @@ const contentSteps = [
 		completed: false,
 	},
 	{
-		title: __('Add About & Contact Pages', 'neve'),
+		title:
+			__('About', 'neve') +
+			' & ' +
+			__('Contact', 'neve') +
+			' ' +
+			__('Pages', 'neve'),
 		description: __(
 			'Create essential pages so visitors can learn about you and get in touch',
 			'neve'
@@ -448,7 +463,7 @@ const contentSteps = [
 		completed: false,
 	},
 	{
-		title: __('Create Navigation Menu', 'neve'),
+		title: __('Navigation Menu', 'neve'),
 		description: __(
 			'Make it easy for visitors to find their way around your website',
 			'neve'
@@ -457,7 +472,7 @@ const contentSteps = [
 		completed: false,
 	},
 	{
-		title: __('Configure Footer', 'neve'),
+		title: __('Footer', 'neve'),
 		description: __(
 			'Add copyright info, social links, and contact details to your footer',
 			'neve'

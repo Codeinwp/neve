@@ -410,13 +410,26 @@ class Main {
 			'savedProgress' => $launch_progress_data['savedProgress'],
 		];
 
+		$screen = get_current_screen();
+		if ( ! isset( $screen->id ) ) {
+			return $data;
+		}
+
+		$theme      = $this->theme_args;
+		$theme_page = ! empty( $theme['template'] ) ? $theme['template'] . '-welcome' : $theme['slug'] . '-welcome';
+
+		// Check if front page exists
+		$page_on_front = get_option( 'page_on_front' );
+		$homepage_url  = $page_on_front ? admin_url( 'post.php?post=' . $page_on_front . '&action=edit' ) : admin_url( 'edit.php?post_type=page' );
+
 		// Launch Progress step URLs
 		$data['launchProgressUrls'] = [
+			'starterSites'  => admin_url( 'admin.php?page=' . $theme_page . '#starter-sites' ),
 			'siteIdentity'  => add_query_arg( [ 'autofocus[section]' => 'title_tagline' ], admin_url( 'customize.php' ) ),
 			'logo'          => add_query_arg( [ 'autofocus[control]' => 'custom_logo' ], admin_url( 'customize.php' ) ),
 			'colors'        => add_query_arg( [ 'autofocus[section]' => 'neve_colors_background_section' ], admin_url( 'customize.php' ) ),
 			'favicon'       => add_query_arg( [ 'autofocus[control]' => 'site_icon' ], admin_url( 'customize.php' ) ),
-			'homepage'      => admin_url( 'post.php?post=' . get_option( 'page_on_front' ) . '&action=edit' ),
+			'homepage'      => $homepage_url,
 			'pages'         => admin_url( 'edit.php?post_type=page' ),
 			'menus'         => admin_url( 'nav-menus.php' ),
 			'footer'        => add_query_arg( [ 'autofocus[panel]' => 'hfg_footer' ], admin_url( 'customize.php' ) ),
