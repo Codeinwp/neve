@@ -125,7 +125,10 @@ const LaunchProgress = () => {
 								⚡
 							</span>
 							<h3 className="font-semibold text-gray-900 text-base">
-								{__('Want to skip the setup?', 'neve')}
+								{__(
+									'Import ready-made websites with a single click',
+									'neve'
+								)}
 							</h3>
 						</div>
 						<p className="text-sm text-gray-700 leading-relaxed">
@@ -163,7 +166,7 @@ const LaunchProgress = () => {
 								🎉
 							</span>
 							{__(
-								'Import ready-made websites with a single click',
+								'Congratulations! Your Website is Ready for Launch!',
 								'neve'
 							)}
 						</h2>
