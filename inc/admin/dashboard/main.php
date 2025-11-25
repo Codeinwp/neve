@@ -424,6 +424,7 @@ class Main {
 
 		// Launch Progress step URLs
 		$data['launchProgressUrls'] = [
+			'upgradeURL'    => apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'getpronow', 'launchprogress' ) ) ),
 			'starterSites'  => admin_url( 'admin.php?page=' . $theme_page . '#starter-sites' ),
 			'siteIdentity'  => add_query_arg( [ 'autofocus[section]' => 'title_tagline' ], admin_url( 'customize.php' ) ),
 			'logo'          => add_query_arg( [ 'autofocus[control]' => 'custom_logo' ], admin_url( 'customize.php' ) ),

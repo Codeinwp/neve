@@ -163,7 +163,7 @@ const LaunchProgress = () => {
 								🎉
 							</span>
 							{__(
-								'Congratulations! Your Website is Ready for Launch!',
+								'Import ready-made websites with a single click',
 								'neve'
 							)}
 						</h2>
@@ -175,7 +175,7 @@ const LaunchProgress = () => {
 						</p>
 						{!neveDash.isValidLicense && (
 							<a
-								href={neveDash.upgradeURL}
+								href={neveDash.launchProgressUrls.upgradeURL}
 								target="_blank"
 								rel="noopener noreferrer"
 								className="inline-block bg-white text-blue-600 hover:bg-blue-50 font-semibold px-6 py-2 rounded shadow-md hover:shadow-lg transition-all"
