@@ -402,6 +402,44 @@ class Main {
 		$lang_code           = isset( $available_languages[ $language ] ) ? 'de' : 'en';
 		$data['lang']        = $lang_code;
 
+		// Launch Progress checks
+		$launch_progress_data       = $this->get_launch_progress_checks();
+		$data['showLaunchProgress'] = $launch_progress_data['showLaunchProgress'];
+		$data['launchProgress']     = [
+			'autoDetected'  => $launch_progress_data['autoDetected'],
+			'savedProgress' => $launch_progress_data['savedProgress'],
+		];
+
+		$screen = get_current_screen();
+		if ( ! isset( $screen->id ) ) {
+			return $data;
+		}
+
+		$theme      = $this->theme_args;
+		$theme_page = ! empty( $theme['template'] ) ? $theme['template'] . '-welcome' : $theme['slug'] . '-welcome';
+
+		// Check if front page exists
+		$page_on_front = get_option( 'page_on_front' );
+		$homepage_url  = $page_on_front ? admin_url( 'post.php?post=' . $page_on_front . '&action=edit' ) : admin_url( 'edit.php?post_type=page' );
+
+		// Launch Progress step URLs
+		$data['launchProgressUrls'] = [
+			'upgradeURL'    => apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'getpronow', 'launchprogress' ) ) ),
+			'starterSites'  => admin_url( 'admin.php?page=' . $theme_page . '#starter-sites' ),
+			'siteIdentity'  => add_query_arg( [ 'autofocus[section]' => 'title_tagline' ], admin_url( 'customize.php' ) ),
+			'logo'          => add_query_arg( [ 'autofocus[control]' => 'custom_logo' ], admin_url( 'customize.php' ) ),
+			'colors'        => add_query_arg( [ 'autofocus[section]' => 'neve_colors_background_section' ], admin_url( 'customize.php' ) ),
+			'favicon'       => add_query_arg( [ 'autofocus[control]' => 'site_icon' ], admin_url( 'customize.php' ) ),
+			'homepage'      => $homepage_url,
+			'pages'         => admin_url( 'edit.php?post_type=page' ),
+			'menus'         => admin_url( 'nav-menus.php' ),
+			'footer'        => add_query_arg( [ 'autofocus[panel]' => 'hfg_footer' ], admin_url( 'customize.php' ) ),
+			'permalinks'    => admin_url( 'options-permalink.php' ),
+			'plugins'       => admin_url( 'plugin-install.php?s=seo&tab=search' ),
+			'speedTest'     => 'https://pagespeed.web.dev/analysis?url=' . urlencode( get_site_url() ),
+			'privacyPolicy' => admin_url( 'options-privacy.php' ),
+		];
+
 		return $data;
 	}
 
@@ -539,6 +577,66 @@ class Main {
 				'description' => __( 'Widget areas & layout', 'neve' ),
 				'link'        => add_query_arg( [ 'autofocus[section]' => 'neve_sidebar' ], admin_url( 'customize.php' ) ),
 			],
+		];
+	}
+
+	/**
+	 * Get launch progress checks.
+	 *
+	 * @return array{
+	 *     showLaunchProgress: bool,
+	 *     autoDetected: array{
+	 *         hasLogo: bool,
+	 *         hasFavicon: bool,
+	 *         hasCustomPermalink: bool,
+	 *         hasSeoPlugin: bool,
+	 *         hasPrivacyPage: bool
+	 *     },
+	 *     savedProgress: array<string, array<int, bool>>
+	 * }
+	 */
+	private function get_launch_progress_checks() {
+		// Check if we should show the Launch Progress tab
+		$show_launch_progress = get_option( \Neve\Core\Admin::$launch_progress_option );
+		if ( false === $show_launch_progress ) {
+			$install_time = get_option( 'neve_install' );
+			if ( ! empty( $install_time ) ) {
+				$one_week_ago         = time() - WEEK_IN_SECONDS;
+				$show_launch_progress = ( intval( $install_time ) > $one_week_ago ) ? 'yes' : 'no';
+				update_option( \Neve\Core\Admin::$launch_progress_option, $show_launch_progress, false );
+			} else {
+				$show_launch_progress = 'no';
+			}
+		}
+
+		$has_logo            = (bool) get_theme_mod( 'custom_logo' );
+		$has_favicon         = (bool) get_site_icon_url();
+		$permalink_structure = get_option( 'permalink_structure' );
+
+		// Check if SEO plugin is active (Yoast, RankMath, or AIOSEO)
+		$has_seo_plugin = (
+			class_exists( 'WPSEO_Options' ) || // Yoast SEO
+			class_exists( 'RankMath' ) || // RankMath
+			function_exists( 'aioseo' ) // All in One SEO
+		);
+
+		// Check if privacy policy page exists
+		$privacy_page_id  = (int) get_option( 'wp_page_for_privacy_policy' );
+		$has_privacy_page = $privacy_page_id > 0 && get_post_status( $privacy_page_id ) === 'publish';
+
+		// Get saved progress from option
+		$saved_progress = get_option( 'neve_launch_progress', [] );
+
+		return [
+			'showLaunchProgress' => ( $show_launch_progress === 'yes' ),
+			'autoDetected'       => [
+				'hasLogo'            => $has_logo,
+				'hasFavicon'         => $has_favicon,
+				'hasCustomPermalink' => ! empty( $permalink_structure ),
+				'hasSeoPlugin'       => $has_seo_plugin,
+				'hasPrivacyPage'     => $has_privacy_page,
+			],
+			'savedProgress'      => $saved_progress,
 		];
 	}
 
