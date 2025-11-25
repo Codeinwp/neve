@@ -45,7 +45,9 @@ const App = () => {
 			<Container className="flex flex-col lg:flex-row gap-6 h-full grow">
 				<div className="grow">{tabs[currentTab].render(setTab)}</div>
 
-				{!['starter-sites', 'settings'].includes(currentTab) && (
+				{!['starter-sites', 'settings', 'launch-progress'].includes(
+					currentTab
+				) && (
 					<TransitionWrapper className="shrink-0 lg:w-[435px]">
 						<Sidebar />
 					</TransitionWrapper>
