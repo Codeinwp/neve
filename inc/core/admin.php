@@ -23,6 +23,13 @@ class Admin {
 	use Theme_Info;
 
 	/**
+	 * Launch progress option key.
+	 *
+	 * @var string
+	 */
+	public static $launch_progress_option = 'neve_show_launch_progress';
+
+	/**
 	 * Dismiss notice key.
 	 *
 	 * @var string
@@ -324,6 +331,26 @@ class Admin {
 
 		register_rest_route(
 			'nv/v1/dashboard',
+			'/launch-progress',
+			[
+				'methods'             => \WP_REST_Server::EDITABLE,
+				'callback'            => [ $this, 'save_launch_progress' ],
+				'permission_callback' => function() {
+					return current_user_can( 'manage_options' );
+				},
+				'args'                => array(
+					'progress' => array(
+						'required'          => true,
+						'sanitize_callback' => function( $value ) {
+							return is_array( $value ) ? $value : [];
+						},
+					),
+				),
+			]
+		);
+
+		register_rest_route(
+			'nv/v1/dashboard',
 			'/activate-module',
 			[
 				'methods'             => \WP_REST_Server::EDITABLE,
@@ -467,6 +494,64 @@ class Admin {
 		$response = $modules[ $module_slug ]->set_status( 'active', $module_value );
 
 		wp_send_json_success( $module_value ? __( 'Module Activated', 'neve' ) : __( 'Module Deactivated.', 'neve' ) );
+	}
+
+	/**
+	 * Save launch progress state.
+	 *
+	 * @param \WP_REST_Request<array<string, mixed>> $request The request object.
+	 * @return \WP_REST_Response
+	 */
+	public function save_launch_progress( $request ) {
+		$progress = $request->get_param( 'progress' );
+
+		if ( ! is_array( $progress ) ) {
+			return new \WP_REST_Response(
+				[
+					'success' => false,
+					'message' => __( 'Invalid progress data', 'neve' ),
+				],
+				400
+			);
+		}
+
+		// Validate progress structure
+		$valid_keys = [ 'identity', 'content', 'performance' ];
+		foreach ( $valid_keys as $key ) {
+			if ( ! isset( $progress[ $key ] ) || ! is_array( $progress[ $key ] ) ) {
+				return new \WP_REST_Response(
+					[
+						'success' => false,
+						'message' => __( 'Invalid progress structure', 'neve' ),
+					],
+					400
+				);
+			}
+
+			// Validate all values are booleans
+			foreach ( $progress[ $key ] as $value ) {
+				if ( ! is_bool( $value ) ) {
+					return new \WP_REST_Response(
+						[
+							'success' => false,
+							'message' => __( 'Progress values must be boolean', 'neve' ),
+						],
+						400
+					);
+				}
+			}
+		}
+
+		// Save to option
+		update_option( 'neve_launch_progress', $progress, false );
+
+		return new \WP_REST_Response(
+			[
+				'success' => true,
+				'message' => __( 'Progress saved', 'neve' ),
+			],
+			200
+		);
 	}
 
 	/**
