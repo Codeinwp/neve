@@ -53,7 +53,6 @@ const LaunchProgress = () => {
 	const autoDetected = checks.autoDetected || {};
 	const savedProgress = checks.savedProgress || {};
 
-	// State to track completion for all steps
 	const [stepsState, setStepsState] = useState({
 		identity: initializeStepState(
 			identitySteps,
@@ -80,6 +79,11 @@ const LaunchProgress = () => {
 	// Save progress whenever it changes
 	useEffect(() => {
 		const timeoutId = setTimeout(() => {
+			// Update neveDash object to keep it in sync
+			if (neveDash.launchProgress) {
+				neveDash.launchProgress.savedProgress = stepsState;
+			}
+
 			apiFetch({
 				path: '/nv/v1/dashboard/launch-progress',
 				method: 'POST',
