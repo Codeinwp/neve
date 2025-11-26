@@ -19,6 +19,13 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 4.2.1](https://github.com/Codeinwp/neve/compare/v4.2.0...v4.2.1) (2025-11-26)
+
+- Fixed redundant compatibility notice appearing in plugin screen
+
+
+
+
 #### [Version 4.2.0](https://github.com/Codeinwp/neve/compare/v4.1.4...v4.2.0) (2025-11-26)
 
 New Features
