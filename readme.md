@@ -19,6 +19,42 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+#### [Version 4.2.0](https://github.com/Codeinwp/neve/compare/v4.1.4...v4.2.0) (2025-11-26)
+
+New Features
+
+- Moved Scroll to Top module to the Free version
+- New Style Book option in Customizer to visualize and easily access global site styling
+- Added Guided Setup for new users to help optimize a fresh website
+- Added option for pre-loading local fonts
+- Integrated installation of Login Customizer, Cookie Notice, Duplicate Page, and Custom Fonts/Scripts modules
+- New Maintenance and Coming Soon custom layouts [PRO]
+- Admin Dashboard Customizer module to personalize the WordPress admin experience (Menu, Admin Bar, Custom Pages) [Agency]
+- Included premium WP Landing Kit wordpress plugin [Agency]
+
+Enhancements
+
+- Added conditional logic for the Scroll to Top button
+- Added controls for number of products and columns in WooCommerce Upsells section
+- Infinite Scroll logic updated to load posts from the same category
+- Add option to display Page Header on Search Results page
+- Mobile product gallery automatically switches to horizontal slider
+- Added support for Featured Image block inside Custom Layouts
+- Made Pro components visible in Header/Footer builder inserter
+- Displaying plan name next to license key in dashboard
+- Added direct documentation links to dashboard modules
+- Improved Global Header Settings and Custom Layouts conditional logic dropdown styling
+- Improve Customizer Search placement and UI
+- Added Elementor Post Content widget in Single Post Custom Layout
+
+Bug Fixes
+
+- Sortable items in Customizer are now accessible via keyboard
+- Fixed issue with Custom Post Type layout options not applying to taxonomy archives
+
+
+
+
 ##### [Version 4.1.4](https://github.com/Codeinwp/neve/compare/v4.1.3...v4.1.4) (2025-09-10)
 
 - Fixed border color not working properly for Secondary Buttons
