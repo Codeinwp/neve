@@ -841,6 +841,13 @@ class Main {
 					'url' => 'https://docs.themeisle.com/article/1863-content-restriction-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=contentrestriction&utm_content=neve',
 				),
 			),
+			'dashboard_customizer'   => array(
+				'nicename'      => __( 'WP Dashboard Customizer', 'neve' ),
+				'description'   => __( 'Create or modify the WordPress dashboard. Customize the admin pages, admin menu, and admin bar.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/2408-wp-dashboard-customizer-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=dashboardcustomizer&utm_content=neve',
+				),
+			),
 		);
 
 		return array_filter(
