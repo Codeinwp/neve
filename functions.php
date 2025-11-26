@@ -164,3 +164,48 @@ add_filter(
 );
 
 add_filter( 'themeisle_sdk_enable_telemetry', '__return_true' );
+add_filter(
+	'themeisle_sdk_labels',
+	function ( $labels ) {
+		if ( isset( $labels['about_us'] ) ) {
+			$labels['about_us'] = array_merge(
+				$labels['about_us'],
+				array(
+					'title'      => __( 'About Us', 'neve' ),
+					'heroHeader' => __( 'Our Story', 'neve' ),
+				)
+			);
+		}
+		if ( isset( $labels['dashboard_widget'] ) ) {
+			$labels['dashboard_widget'] = array_merge(
+				$labels['dashboard_widget'],
+				array(
+					'title'   => __( 'WordPress Guides/Tutorials', 'neve' ),
+					/* translators: %s: product name */
+					'popular' => __( 'Popular %s', 'neve' ),
+					'install' => __( 'Install', 'neve' ),
+					/* translators: %s: product name */
+					'powered' => __( 'Powered by %s', 'neve' ),
+				)
+			);
+		}
+		if ( isset( $labels['compatibilities'] ) ) {    
+			$labels['compatibilities'] = array_merge(
+				$labels['compatibilities'],
+				array(
+					/* translators: %s: product name, %s: requirement name %s: update link start, %s: update link end, %s: requirement name %s: requirement type(theme/plugin) */
+					'notice'        => __( '%1$s requires a newer version of %2$s. Please %3$supdate%4$s %5$s %6$s to the latest version.', 'neve' ),
+					/* translators: %s: product name, %s: requirement name %s: update link start, %s: update link end, %s: requirement name %s: requirement type(theme/plugin) */
+					'notice2'       => __( '%1$s update requires a newer version of %2$s. Please %3$supdate%4$s %5$s %6$s.', 'neve' ),
+					/* translators: $1: Bold start, $2: Bold end, $3: theme name, $4: plugin name */
+					'notice_theme'  => __( '%1$sWarning:%2$s This theme has not been tested with your current version of %1$s%3$s%2$s. Please update %3$s plugin.', 'neve' ),
+					/* translators: $1: Bold start, $2: Bold end, $3: Product name, $4: product type(theme/plugin) */
+					'notice_plugin' => __( '%1$sWarning:%2$s This plugin has not been tested with your current version of %1$s%3$s%2$s. Please update %3$s %4$s.', 'neve' ), 
+					'theme'         => __( 'theme', 'neve' ), 
+					'plugin'        => __( 'plugin', 'neve' ),
+				)
+			);
+		}
+		return $labels;
+	}
+);
