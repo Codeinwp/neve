@@ -25,6 +25,26 @@ function handleResponsiveRadioButtons(args, nextValue) {
 	});
 }
 
+window.wp.customize.bind('ready', () => {
+	previewScrollToTopChanges();
+});
+
+/**
+ * Preview scroll to top changes made in customizer.
+ */
+function previewScrollToTopChanges() {
+	wp.customize.preview.bind('nv-opened-stt', (show) => {
+		if (show) {
+			const scrollToTopBtn = document.querySelector('#scroll-to-top');
+			if (!scrollToTopBtn) {
+				return;
+			}
+			scrollToTopBtn.style.visibility = 'visible';
+			scrollToTopBtn.style.opacity = '1';
+		}
+	});
+}
+
 /**
  * Run JS on preview-ready.
  */
@@ -90,6 +110,217 @@ wp.customize.bind('preview-ready', function () {
 			data.controlId,
 			selector + '{font-family: ' + parsedFontFamily + ' ;}'
 		);
+	});
+
+	// Handle Style Book toggle
+	wp.customize.preview.bind('neve-toggle-style-book', function (isOpen) {
+		const styleBookContent = document.getElementById('nv-sb-container');
+
+		if (!styleBookContent) {
+			return;
+		}
+
+		// If state is explicitly passed, use it; otherwise toggle current state
+		const shouldOpen =
+			typeof isOpen === 'boolean'
+				? isOpen
+				: styleBookContent.style.display === 'none';
+
+		if (shouldOpen) {
+			styleBookContent.style.display = 'block';
+			document.body.classList.add('nv-sb-open');
+		} else {
+			styleBookContent.style.display = 'none';
+			document.body.classList.remove('nv-sb-open');
+		}
+	});
+
+	// Handle Style Book state restoration
+	wp.customize.preview.bind(
+		'neve-restore-style-book-state',
+		function (isOpen) {
+			const styleBookContent = document.getElementById('nv-sb-container');
+
+			if (!styleBookContent) {
+				return;
+			}
+
+			if (isOpen) {
+				styleBookContent.style.display = 'block';
+				document.body.classList.add('nv-sb-open');
+			}
+		}
+	);
+
+	// Handle Style Book close button
+	document.addEventListener('click', function (e) {
+		if (
+			e.target.closest('.neve-style-book-close') ||
+			e.target.closest('.nv-sb-close-btn')
+		) {
+			const styleBookContent = document.getElementById('nv-sb-container');
+			if (styleBookContent) {
+				styleBookContent.style.display = 'none';
+				document.body.classList.remove('nv-sb-open');
+				// Notify customizer controls about state change
+				wp.customize.preview.send(
+					'neve-style-book-state-changed',
+					false
+				);
+			}
+		}
+
+		// Close when clicking outside the modal
+		if (e.target.classList.contains('neve-style-book-overlay')) {
+			const styleBookContent = document.getElementById('nv-sb-container');
+			if (styleBookContent) {
+				styleBookContent.style.display = 'none';
+				document.body.classList.remove('nv-sb-open');
+				// Notify customizer controls about state change
+				wp.customize.preview.send(
+					'neve-style-book-state-changed',
+					false
+				);
+			}
+		}
+	});
+
+	// Handle Style Book clickable items navigation
+	document.addEventListener('click', function (e) {
+		// Skip navigation if clicking inside form fields (input, textarea, select)
+		if (e.target.matches('input, textarea, select')) {
+			e.stopPropagation();
+			return;
+		}
+
+		// Handle click on any Style Book builder-item-focus element
+		const styleBookItem = e.target.closest(
+			'#nv-sb-container .builder-item-focus'
+		);
+
+		if (styleBookItem) {
+			e.preventDefault();
+			e.stopPropagation();
+
+			// Prioritize data-control if it exists, otherwise use data-section
+			const controlId = styleBookItem.getAttribute('data-control');
+			const sectionId = styleBookItem.getAttribute('data-section');
+
+			if (
+				window.parent &&
+				window.parent.wp &&
+				window.parent.wp.customize
+			) {
+				try {
+					// If data-control is specified, handle the control
+					if (controlId) {
+						// Check if this is a color control (starts with neve-color-slug-)
+						if (controlId.startsWith('neve-color-slug-')) {
+							// Color controls don't have a control object, just find by class
+							const section =
+								window.parent.wp.customize.section(sectionId);
+							if (
+								section &&
+								typeof section.focus === 'function'
+							) {
+								section.focus();
+
+								setTimeout(() => {
+									const colorControl =
+										window.parent.document.querySelector(
+											'.' + controlId
+										);
+									if (colorControl) {
+										const colorButton =
+											colorControl.querySelector(
+												'.components-button'
+											);
+										if (colorButton) {
+											colorButton.click();
+										}
+									}
+								}, 100);
+							}
+							return;
+						}
+
+						// Regular controls (accordions, buttons, etc.)
+						const control =
+							window.parent.wp.customize.control(controlId);
+
+						// Try to focus if the control has a focus method
+						if (control && typeof control.focus === 'function') {
+							control.focus();
+						}
+
+						// Handle accordion expansion after focusing
+						setTimeout(() => {
+							const controlElement =
+								window.parent.document.getElementById(
+									'customize-control-' + controlId
+								);
+							if (controlElement) {
+								// Close all other expanded accordions in the same section
+								const section =
+									controlElement.closest('.control-section');
+								if (section) {
+									section
+										.querySelectorAll(
+											'.customize-control.expanded'
+										)
+										.forEach((accordion) => {
+											if (
+												accordion.id !==
+												'customize-control-' + controlId
+											) {
+												accordion.classList.remove(
+													'expanded'
+												);
+											}
+										});
+								}
+
+								// Expand the target accordion if not already expanded
+								if (
+									!controlElement.classList.contains(
+										'expanded'
+									)
+								) {
+									const heading =
+										controlElement.querySelector(
+											'.neve-customizer-heading'
+										);
+									if (heading) {
+										heading.click();
+									}
+								}
+							}
+						}, 100);
+						return;
+					} // If data-section is specified or control focus failed, focus on section
+					if (sectionId) {
+						const section =
+							window.parent.wp.customize.section(sectionId);
+						if (section && typeof section.focus === 'function') {
+							section.focus();
+						}
+					}
+				} catch (error) {
+					// Fallback: Try to expand the section if focusing fails
+					try {
+						if (sectionId) {
+							const section =
+								window.parent.wp.customize.section(sectionId);
+							if (section && section.expanded) {
+								section.expanded(true);
+							}
+						}
+					} catch (fallbackError) {
+						// Silent fallback - navigation failed
+					}
+				}
+			}
+		}
 	});
 });
 

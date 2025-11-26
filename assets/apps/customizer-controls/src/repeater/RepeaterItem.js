@@ -7,21 +7,30 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import { VisibilityIcon, HiddenIcon } from '../common';
+import useKeyboardSorting from '../common/useKeyboardSorting';
 import RepeaterItemContent from './RepeaterItemContent';
 
-const Handle = () => (
-	<Tooltip text={__('Drag to Reorder', 'neve')}>
-		<button
-			aria-label={__('Drag to Reorder', 'neve')}
-			className="handle"
-			onClick={(e) => {
-				e.preventDefault();
-			}}
-		>
-			<Icon icon={dragHandle} size={18} />
-		</button>
-	</Tooltip>
-);
+const Handle = ({ handleRef, onKeyDown, onBlur, isActive }) => {
+	return (
+		<Tooltip text={__('Drag to Reorder', 'neve')}>
+			<button
+				ref={handleRef}
+				aria-label={__('Drag to Reorder', 'neve')}
+				className={classnames('handle', {
+					'keyboard-active': isActive,
+				})}
+				onClick={(e) => {
+					e.preventDefault();
+				}}
+				onKeyDown={onKeyDown}
+				onBlur={onBlur}
+				tabIndex={0}
+			>
+				<Icon icon={dragHandle} size={18} />
+			</button>
+		</Tooltip>
+	);
+};
 
 const RepeaterItem = ({
 	fields,
@@ -31,8 +40,20 @@ const RepeaterItem = ({
 	onToggle,
 	onContentChange,
 	onRemove,
+	totalItems,
+	onMove,
+	isKeyboardActive,
+	onKeyboardActiveChange,
 }) => {
 	const [expanded, setExpanded] = useState(false);
+
+	const { handleRef, handleKeyDown, handleBlur } = useKeyboardSorting(
+		itemIndex,
+		totalItems,
+		onMove,
+		isKeyboardActive,
+		onKeyboardActiveChange
+	);
 
 	const itemLabel = () => {
 		let label = __('Item', 'neve');
@@ -60,7 +81,12 @@ const RepeaterItem = ({
 			})}
 		>
 			<div className="top-bar">
-				<Handle />
+				<Handle
+					handleRef={handleRef}
+					onKeyDown={handleKeyDown}
+					onBlur={handleBlur}
+					isActive={isKeyboardActive}
+				/>
 				{itemLabel()}
 
 				<div className="actions">
@@ -122,6 +148,10 @@ RepeaterItem.propTypes = {
 	onToggle: PropTypes.func.isRequired,
 	onContentChange: PropTypes.func.isRequired,
 	onRemove: PropTypes.func.isRequired,
+	totalItems: PropTypes.number.isRequired,
+	onMove: PropTypes.func.isRequired,
+	isKeyboardActive: PropTypes.bool.isRequired,
+	onKeyboardActiveChange: PropTypes.func.isRequired,
 };
 
 export default RepeaterItem;

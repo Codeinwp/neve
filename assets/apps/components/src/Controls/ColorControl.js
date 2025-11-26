@@ -19,6 +19,7 @@ import classnames from 'classnames';
 const ColorPickerFix = lazy(() => import('../Common/ColorPickerFix'));
 
 const ColorControl = ({
+	slug = null,
 	label,
 	selectedColor,
 	onChange,
@@ -52,7 +53,8 @@ const ColorControl = ({
 	};
 
 	const isGlobal = selectedColor && selectedColor.indexOf('var') > -1;
-	const defaultGradient = 'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)';
+	const defaultGradient =
+		'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)';
 
 	const handleClear = () => {
 		onChange(defaultValue || '');
@@ -63,7 +65,10 @@ const ColorControl = ({
 	const wrapClasses = classnames([
 		'neve-control-header',
 		'neve-color-component',
-		{ 'allows-global': !disableGlobal },
+		{
+			'allows-global': !disableGlobal,
+			[`neve-color-slug-${slug}`]: !!slug,
+		},
 	]);
 
 	const [gradient, setGradient] = useState(selectedColor);
@@ -159,7 +164,9 @@ const ColorControl = ({
 									<div
 										className="current-color-gradient"
 										style={{
-											background: selectedColor || defaultGradient,
+											background:
+												selectedColor ||
+												defaultGradient,
 											height: '177px',
 											border: '1px solid #eee',
 											minWidth: '215px',

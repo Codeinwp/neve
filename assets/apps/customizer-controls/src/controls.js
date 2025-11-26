@@ -168,6 +168,59 @@ const initSearchCustomizer = () => {
 	);
 };
 
+const initStyleBookButton = () => {
+	const headerContainer = document.getElementById('customize-header-actions');
+
+	if (!headerContainer) {
+		return;
+	}
+
+	// Initialize the Style Book state if it doesn't exist
+	if (!wp.customize.state.has('neveStyleBookOpen')) {
+		wp.customize.state.create('neveStyleBookOpen', false);
+	}
+
+	// Create the Style Book button
+	const button = document.createElement('button');
+	button.name = 'neve-style-book';
+	button.id = 'neve-style-book';
+	button.className = 'button-secondary button';
+	button.title = __('Style Book', 'neve');
+	button.innerHTML = `
+		<i class="dashicons dashicons-admin-appearance"></i>
+		<span class="screen-reader-text">${__('Style Book', 'neve')}</span>
+	`;
+
+	// Add click handler
+	button.addEventListener('click', (e) => {
+		e.preventDefault();
+
+		// Toggle the state in customizer
+		const currentState = wp.customize.state('neveStyleBookOpen').get();
+		const newState = !currentState;
+		wp.customize.state('neveStyleBookOpen').set(newState);
+
+		// Send message to preview
+		wp.customize.previewer.send('neve-toggle-style-book', newState);
+	});
+
+	// Append to header container
+	headerContainer.appendChild(button);
+
+	// Restore state when preview is ready
+	wp.customize.previewer.bind('ready', () => {
+		const currentState = wp.customize.state('neveStyleBookOpen').get();
+		if (currentState) {
+			wp.customize.previewer.send('neve-restore-style-book-state', true);
+		}
+	});
+
+	// Listen for state changes from preview
+	wp.customize.previewer.bind('neve-style-book-state-changed', (newState) => {
+		wp.customize.state('neveStyleBookOpen').set(newState);
+	});
+};
+
 const initCustomPagesFocus = () => {
 	const { sectionsFocus } = window.NeveReactCustomize;
 	if (sectionsFocus !== undefined) {
@@ -297,6 +350,50 @@ const checkHasElementorTemplates = () => {
 	}
 };
 
+/**
+ * Find the Scroll to top button within the customizer preview.
+ */
+function findScrollToTopBtn() {
+	const iframeElement = document.querySelector('#customize-preview iframe');
+
+	if (!iframeElement) {
+		return;
+	}
+
+	const scrollToTopBtn =
+		iframeElement.contentWindow.document.querySelector('#scroll-to-top');
+
+	return scrollToTopBtn;
+}
+
+/**
+ * Show the Scroll to Top button as soon as the user enters the section in Customizer.
+ */
+function previewScrollToTopChanges() {
+	wp.customize.section('neve_scroll_to_top', (section) => {
+		section.expanded.bind((isExpanded) => {
+			const scrollToTopBtn = findScrollToTopBtn();
+
+			if (!scrollToTopBtn) {
+				return;
+			}
+
+			// If Scroll to top customizer section is expanded
+			if (isExpanded) {
+				wp.customize.previewer.bind('ready', () => {
+					wp.customize.previewer.send('nv-opened-stt', true);
+				});
+				scrollToTopBtn.style.visibility = 'visible';
+				scrollToTopBtn.style.opacity = '1';
+			} else {
+				// Hide the button when we leave the section
+				scrollToTopBtn.style.visibility = 'hidden';
+				scrollToTopBtn.style.opacity = '0';
+			}
+		});
+	});
+}
+
 window.wp.customize.bind('ready', () => {
 	initStarterContentNotice();
 	initDocSection();
@@ -311,6 +408,8 @@ window.wp.customize.bind('ready', () => {
 	initBlogPageFocus();
 	initSearchCustomizer();
 	initLocalGoogleFonts();
+	initStyleBookButton();
+	previewScrollToTopChanges();
 });
 
 window.HFG = {

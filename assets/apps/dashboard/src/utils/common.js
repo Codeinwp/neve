@@ -6,6 +6,7 @@ import Welcome from '../Components/Content/Welcome';
 import FreePro from '../Components/Content/FreePro';
 import Settings from '../Components/Content/Settings';
 import Changelog from '../Components/Content/Changelog';
+import LaunchProgress from '../Components/Content/LaunchProgress';
 
 import { __ } from '@wordpress/i18n';
 
@@ -18,6 +19,10 @@ const tabs = {
 		label: __('Starter Sites', 'neve'),
 		render: () => <StarterSitesUnavailable />,
 	},
+	'launch-progress': {
+		label: __('Launch Progress', 'neve'),
+		render: () => <LaunchProgress />,
+	},
 	'free-pro': {
 		label: __('Free vs Pro', 'neve'),
 		render: () => <FreePro />,
@@ -29,7 +34,17 @@ const tabs = {
 	changelog: {
 		render: () => <Changelog />,
 	},
+	'get-neve-pro': {
+		label: __('Get Neve Pro', 'neve'),
+		url: neveDash.upgradeURLModules,
+		external: true,
+	},
 };
+
+// Conditionally remove launch-progress tab if not a new user
+if (Boolean(neveDash.showLaunchProgress) === false) {
+	delete tabs['launch-progress'];
+}
 
 const { plugins } = neveDash;
 const activeTPC =
@@ -68,7 +83,7 @@ const getTabHash = () => {
 
 	hash = hash.substring(1);
 
-	if (!tabs[hash]?.render) {
+	if (!tabs[hash]?.render && !tabs[hash]?.url) {
 		return null;
 	}
 

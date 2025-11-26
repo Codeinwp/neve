@@ -6,7 +6,11 @@ import { Fragment, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { useDispatch, useSelect } from '@wordpress/data';
-import { LucideBookOpen, LucideFileText } from 'lucide-react';
+import {
+	LucideBookOpen,
+	LucideFileText,
+	LucideExternalLink,
+} from 'lucide-react';
 import useLicenseData from '../Hooks/useLicenseData';
 import Container from '../Layout/Container';
 import { NEVE_IS_WHITELABEL, NEVE_STORE } from '../utils/constants';
@@ -107,6 +111,8 @@ const HeaderTopBar = ({ currentTab, setTab }) => {
 };
 
 const Navigation = ({ setTab, currentTab }) => {
+	const { isLicenseValid } = useLicenseData();
+
 	return (
 		<div className="border-b border-gray-200">
 			<Container>
@@ -115,13 +121,22 @@ const Navigation = ({ setTab, currentTab }) => {
 						if (!label) {
 							return null;
 						}
+						// Hide "Get Neve Pro" tab for users with valid licenses
+						if (slug === 'get-neve-pro' && isLicenseValid) {
+							return null;
+						}
 						const itemClasses = cn([
 							'relative px-4 py-3 font-medium border-b-2',
 							{
 								'text-blue-600 border-blue-600':
-									currentTab === slug,
+									currentTab === slug &&
+									slug !== 'get-neve-pro',
 								'border-transparent text-gray-600 hover:text-gray-900 transition-colors duration-150':
-									currentTab !== slug,
+									currentTab !== slug &&
+									slug !== 'get-neve-pro',
+								'border-transparent text-blue-600 transition-colors duration-150':
+									currentTab !== slug &&
+									slug === 'get-neve-pro',
 							},
 						]);
 
@@ -136,6 +151,9 @@ const Navigation = ({ setTab, currentTab }) => {
 
 						if (!url) {
 							linkProps.onClick = handleLinkClick;
+						} else {
+							linkProps.target = '_blank';
+							linkProps.rel = 'noopener noreferrer';
 						}
 
 						return (
@@ -144,7 +162,15 @@ const Navigation = ({ setTab, currentTab }) => {
 								key={slug}
 								className={itemClasses}
 							>
-								{label}
+								<span className="flex items-center gap-1">
+									{label}
+									{url && (
+										<LucideExternalLink
+											size={14}
+											className="opacity-60"
+										/>
+									)}
+								</span>
 							</a>
 						);
 					})}

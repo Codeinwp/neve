@@ -2,7 +2,12 @@
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { LoaderCircle, LucideCheck, LucideSettings } from 'lucide-react';
+import {
+	LoaderCircle,
+	LucideCheck,
+	LucideSettings,
+	LucideExternalLink,
+} from 'lucide-react';
 
 import useLicenseData from '../../Hooks/useLicenseData';
 import Card from '../../Layout/Card';
@@ -137,12 +142,14 @@ const ModulesHeader = () => {
 					: __('Neve Pro Modules', 'neve')}
 			</h2>
 			{!isLicenseValid && (
-				<Link
-					className="text-sm font-medium"
-					text={__('Get Neve Pro', 'neve')}
-					url={neveDash.upgradeURLModules}
-					isExternal
-				/>
+				<Button
+					isPrimary
+					href={neveDash.upgradeURLModules}
+					target="_blank"
+				>
+					{__('Get Neve Pro', 'neve')}
+					<LucideExternalLink size={16} className="shrink-0" />
+				</Button>
 			)}
 		</div>
 	);

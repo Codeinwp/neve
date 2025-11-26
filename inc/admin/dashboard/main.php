@@ -364,6 +364,14 @@ class Main {
 			'canActivatePlugins'      => current_user_can( 'activate_plugins' ),
 			'rootUrl'                 => get_site_url(),
 			'sparksActive'            => defined( 'SPARKS_WC_VERSION' ) ? 'yes' : 'no',
+			'api'                     => esc_url( rest_url( '/nv/v1/dashboard/' ) ),
+			'availableModules'        => $this->get_available_modules(),
+			'orbitFox'                => array(
+				'isInstalled'   => file_exists( WP_PLUGIN_DIR . '/themeisle-companion/themeisle-companion.php' ),
+				'isActive'      => class_exists( 'Orbit_Fox' ),
+				'activationUrl' => $this->plugin_helper->get_plugin_action_link( 'themeisle-companion' ),
+				'data'          => class_exists( 'Orbit_Fox' ) ? get_option( 'obfx_data' ) : array(),
+			),
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
@@ -393,6 +401,44 @@ class Main {
 		];
 		$lang_code           = isset( $available_languages[ $language ] ) ? 'de' : 'en';
 		$data['lang']        = $lang_code;
+
+		// Launch Progress checks
+		$launch_progress_data       = $this->get_launch_progress_checks();
+		$data['showLaunchProgress'] = $launch_progress_data['showLaunchProgress'];
+		$data['launchProgress']     = [
+			'autoDetected'  => $launch_progress_data['autoDetected'],
+			'savedProgress' => $launch_progress_data['savedProgress'],
+		];
+
+		$screen = get_current_screen();
+		if ( ! isset( $screen->id ) ) {
+			return $data;
+		}
+
+		$theme      = $this->theme_args;
+		$theme_page = ! empty( $theme['template'] ) ? $theme['template'] . '-welcome' : $theme['slug'] . '-welcome';
+
+		// Check if front page exists
+		$page_on_front = get_option( 'page_on_front' );
+		$homepage_url  = $page_on_front ? admin_url( 'post.php?post=' . $page_on_front . '&action=edit' ) : admin_url( 'edit.php?post_type=page' );
+
+		// Launch Progress step URLs
+		$data['launchProgressUrls'] = [
+			'upgradeURL'    => apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'getpronow', 'launchprogress' ) ) ),
+			'starterSites'  => admin_url( 'admin.php?page=' . $theme_page . '#starter-sites' ),
+			'siteIdentity'  => add_query_arg( [ 'autofocus[section]' => 'title_tagline' ], admin_url( 'customize.php' ) ),
+			'logo'          => add_query_arg( [ 'autofocus[control]' => 'custom_logo' ], admin_url( 'customize.php' ) ),
+			'colors'        => add_query_arg( [ 'autofocus[section]' => 'neve_colors_background_section' ], admin_url( 'customize.php' ) ),
+			'favicon'       => add_query_arg( [ 'autofocus[control]' => 'site_icon' ], admin_url( 'customize.php' ) ),
+			'homepage'      => $homepage_url,
+			'pages'         => admin_url( 'edit.php?post_type=page' ),
+			'menus'         => admin_url( 'nav-menus.php' ),
+			'footer'        => add_query_arg( [ 'autofocus[panel]' => 'hfg_footer' ], admin_url( 'customize.php' ) ),
+			'permalinks'    => admin_url( 'options-permalink.php' ),
+			'plugins'       => admin_url( 'plugin-install.php?s=seo&tab=search' ),
+			'speedTest'     => 'https://pagespeed.web.dev/analysis?url=' . urlencode( get_site_url() ),
+			'privacyPolicy' => admin_url( 'options-privacy.php' ),
+		];
 
 		return $data;
 	}
@@ -535,6 +581,66 @@ class Main {
 	}
 
 	/**
+	 * Get launch progress checks.
+	 *
+	 * @return array{
+	 *     showLaunchProgress: bool,
+	 *     autoDetected: array{
+	 *         hasLogo: bool,
+	 *         hasFavicon: bool,
+	 *         hasCustomPermalink: bool,
+	 *         hasSeoPlugin: bool,
+	 *         hasPrivacyPage: bool
+	 *     },
+	 *     savedProgress: array<string, array<int, bool>>
+	 * }
+	 */
+	private function get_launch_progress_checks() {
+		// Check if we should show the Launch Progress tab
+		$show_launch_progress = get_option( \Neve\Core\Admin::$launch_progress_option );
+		if ( false === $show_launch_progress ) {
+			$install_time = get_option( 'neve_install' );
+			if ( ! empty( $install_time ) ) {
+				$one_week_ago         = time() - WEEK_IN_SECONDS;
+				$show_launch_progress = ( intval( $install_time ) > $one_week_ago ) ? 'yes' : 'no';
+				update_option( \Neve\Core\Admin::$launch_progress_option, $show_launch_progress, false );
+			} else {
+				$show_launch_progress = 'no';
+			}
+		}
+
+		$has_logo            = (bool) get_theme_mod( 'custom_logo' );
+		$has_favicon         = (bool) get_site_icon_url();
+		$permalink_structure = get_option( 'permalink_structure' );
+
+		// Check if SEO plugin is active (Yoast, RankMath, or AIOSEO)
+		$has_seo_plugin = (
+			class_exists( 'WPSEO_Options' ) || // Yoast SEO
+			class_exists( 'RankMath' ) || // RankMath
+			function_exists( 'aioseo' ) // All in One SEO
+		);
+
+		// Check if privacy policy page exists
+		$privacy_page_id  = (int) get_option( 'wp_page_for_privacy_policy' );
+		$has_privacy_page = $privacy_page_id > 0 && get_post_status( $privacy_page_id ) === 'publish';
+
+		// Get saved progress from option
+		$saved_progress = get_option( 'neve_launch_progress', [] );
+
+		return [
+			'showLaunchProgress' => ( $show_launch_progress === 'yes' ),
+			'autoDetected'       => [
+				'hasLogo'            => $has_logo,
+				'hasFavicon'         => $has_favicon,
+				'hasCustomPermalink' => ! empty( $permalink_structure ),
+				'hasSeoPlugin'       => $has_seo_plugin,
+				'hasPrivacyPage'     => $has_privacy_page,
+			],
+			'savedProgress'      => $saved_progress,
+		];
+	}
+
+	/**
 	 * Get doc link.
 	 *
 	 * @param string $utm_term utm term to use for doc link.
@@ -645,8 +751,11 @@ class Main {
 	private function get_modules() {
 		$plugins = array(
 			'hfg_module'             => array(
-				'nicename'    => __( 'Header Booster', 'neve' ),
-				'description' => __( 'Create unique sticky & transparent headers that adapt to scroll. Perfect for modern, immersive websites.', 'neve' ),
+				'nicename'      => __( 'Header Booster', 'neve' ),
+				'description'   => __( 'Create unique sticky & transparent headers that adapt to scroll. Perfect for modern, immersive websites.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1057-header-booster-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=headerbooster&utm_content=neve',
+				),
 			),
 			'woocommerce_booster'    => array(
 				'nicename'    => __( 'WooCommerce Booster', 'neve' ),
@@ -660,32 +769,46 @@ class Main {
 				'condition'   => class_exists( 'Easy_Digital_Downloads' ),
 			),
 			'blog_pro'               => array(
-				'nicename'    => __( 'Blog Booster', 'neve' ),
-				'description' => __( 'Advanced layouts, reading time estimates, and social sharing to keep readers engaged longer.', 'neve' ),
+				'nicename'      => __( 'Blog Booster', 'neve' ),
+				'description'   => __( 'Advanced layouts, reading time estimates, and social sharing to keep readers engaged longer.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1059-blog-booster-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=blogbooster&utm_content=neve',
+				),
 			),
 			'post_type_enhancements' => array(
-				'nicename'    => __( 'Post types enhancements', 'neve' ),
-				'description' => __( 'Extend Neve\'s powerful features to custom post types. Create unique layouts for portfolios, testimonials, and more.', 'neve' ),
-			),
-			'scroll_to_top'          => array(
-				'nicename'    => __( 'Scroll To Top', 'neve' ),
-				'description' => __( 'Add a customizable scroll-to-top button that appears exactly when needed. Style it to match your brand.', 'neve' ),
+				'nicename'      => __( 'Post types enhancements', 'neve' ),
+				'description'   => __( 'Extend Neve\'s powerful features to custom post types. Create unique layouts for portfolios, testimonials, and more.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1505-neve-post-type-enhancements-module?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=postenhancements&utm_content=neve',
+				),
 			),
 			'performance_features'   => array(
-				'nicename'    => __( 'Performance', 'neve' ),
-				'description' => __( 'Optimize core vitals, enable lazy loading, and minify resources for lightning-fast load times.', 'neve' ),
+				'nicename'      => __( 'Performance', 'neve' ),
+				'description'   => __( 'Optimize core vitals, enable lazy loading, and minify resources for lightning-fast load times.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1366-performance-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=performancemodule&utm_content=neve',
+				),
 			),
 			'block_editor_booster'   => array(
-				'nicename'    => __( 'Block Editor Booster', 'neve' ),
-				'description' => __( 'Advanced Gutenberg blocks designed specifically for Neve. Build faster with pre-styled patterns.', 'neve' ),
+				'nicename'      => __( 'Block Editor Booster', 'neve' ),
+				'description'   => __( 'Advanced Gutenberg blocks designed specifically for Neve. Build faster with pre-styled patterns.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1473-neve-block-editor-booster-module?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=blockeditorbooster&utm_content=neve',
+				),
 			),
 			'white_label'            => array(
-				'nicename'    => __( 'White Label', 'neve' ),
-				'description' => __( 'Rebrand Neve as your own. Change theme name, author, and links to match your agency identity.', 'neve' ),
+				'nicename'      => __( 'White Label', 'neve' ),
+				'description'   => __( 'Rebrand Neve as your own. Change theme name, author, and links to match your agency identity.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1061-white-label-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=whitelabel&utm_content=neve',
+				),
 			),
 			'custom_layouts'         => array(
-				'nicename'    => __( 'Custom Layouts', 'neve' ),
-				'description' => __( 'Create conditional headers, footers, and content blocks. Perfect for custom landing pages and marketing campaigns.', 'neve' ),
+				'nicename'      => __( 'Custom Layouts', 'neve' ),
+				'description'   => __( 'Create conditional headers, footers, and content blocks. Perfect for custom landing pages and marketing campaigns.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1062-custom-layouts-module?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=customlayouts&utm_content=neve',
+				),
 			),
 			'elementor_booster'      => array(
 				'nicename'    => __( 'Elementor Booster', 'neve' ),
@@ -698,16 +821,32 @@ class Main {
 				'condition'   => class_exists( 'LifterLMS' ),
 			),
 			'typekit_fonts'          => array(
-				'nicename'    => __( 'Typekit Fonts', 'neve' ),
-				'description' => __( 'Access premium Adobe fonts directly in your theme. Add professional typography to any element.', 'neve' ),
+				'nicename'      => __( 'Typekit Fonts', 'neve' ),
+				'description'   => __( 'Access premium Adobe fonts directly in your theme. Add professional typography to any element.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1085-typekit-fonts-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=typekitfonts&utm_content=neve',
+				),
 			),
 			'custom_sidebars'        => array(
-				'nicename'    => __( 'Custom Sidebars', 'neve' ),
-				'description' => __( 'Create unique sidebar layouts for different sections. Show relevant content based on user context.', 'neve' ),
+				'nicename'      => __( 'Custom Sidebars', 'neve' ),
+				'description'   => __( 'Create unique sidebar layouts for different sections. Show relevant content based on user context.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1770-custom-sidebars-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=customsidebars&utm_content=neve',
+				),
 			),
 			'access_restriction'     => array(
-				'nicename'    => __( 'Content restriction', 'neve' ),
-				'description' => __( 'Create members-only content areas. Control access by user roles, logged-in status, or custom rules.', 'neve' ),
+				'nicename'      => __( 'Content restriction', 'neve' ),
+				'description'   => __( 'Create members-only content areas. Control access by user roles, logged-in status, or custom rules.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/1863-content-restriction-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=contentrestriction&utm_content=neve',
+				),
+			),
+			'dashboard_customizer'   => array(
+				'nicename'      => __( 'WP Dashboard Customizer', 'neve' ),
+				'description'   => __( 'Create or modify the WordPress dashboard. Customize the admin pages, admin menu, and admin bar.', 'neve' ),
+				'documentation' => array(
+					'url' => 'https://docs.themeisle.com/article/2408-wp-dashboard-customizer-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=dashboardcustomizer&utm_content=neve',
+				),
 			),
 		);
 
@@ -822,6 +961,34 @@ class Main {
 		);
 
 		return $plugins;
+	}
+
+	/**
+	 * Get available modules.
+	 *
+	 * @return array<mixed>
+	 */
+	private function get_available_modules() {
+		$modules = array(
+			'login-customizer' => array(
+				'title'       => __( 'Login Customizer', 'neve' ),
+				'description' => __( 'Customize your WordPress login page with branding and styling options.', 'neve' ),
+			),
+			'custom-fonts'     => array(
+				'title'       => __( 'Custom Fonts/Scripts', 'neve' ),
+				'description' => __( 'Add custom fonts and scripts to your website easily.', 'neve' ),
+			),
+			'policy-notice'    => array(
+				'title'       => __( 'Cookie Notice', 'neve' ),
+				'description' => __( 'Display a customizable cookie consent notice for GDPR compliance.', 'neve' ),
+			),
+			'post-duplicator'  => array(
+				'title'       => __( 'Duplicate Page', 'neve' ),
+				'description' => __( 'Quickly duplicate posts, pages, and custom post types.', 'neve' ),
+			),
+		);
+
+		return apply_filters( 'neve_available_modules', $modules );
 	}
 
 	/**

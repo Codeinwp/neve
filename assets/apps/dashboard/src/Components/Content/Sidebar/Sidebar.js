@@ -1,3 +1,4 @@
+/* global neveDash */
 import { changeOption } from '../../../utils/rest';
 import SupportCard from './SupportCard';
 import LicenseCard from './LicenseCard';
@@ -12,8 +13,9 @@ import {
 import Card from '../../../Layout/Card';
 import Link from '../../Common/Link';
 import Toggle from '../../Common/Toggle';
+import Button from '../../Common/Button';
 import PluginsCard from './PluginsCard';
-import { LucideLoaderCircle } from 'lucide-react';
+import { LucideLoaderCircle, ArrowRight, BookOpen } from 'lucide-react';
 
 const ReviewCard = () => (
 	<Card title={__('Leave us a review', 'neve')}>
@@ -107,6 +109,54 @@ const ContributingCard = () => {
 	);
 };
 
+const UpsellCard = () => {
+	return (
+		<Card>
+			<div className="max-w-2xl mx-auto">
+				<h3 className="text-lg font-semibold mb-4">
+					{__('Need help deciding?', 'neve')}
+				</h3>
+				<div className="space-y-4 mb-6 text-gray-600">
+					<p>
+						{__(
+							'Our support team is happy to answer your questions about specific Pro features and help you determine if they match your needs.',
+							'neve'
+						)}
+					</p>
+					<div className="flex items-start space-x-2">
+						<div className="bg-gray-100 px-3 py-1.5 rounded">
+							{__(
+								'Average response time: ~8 hours during business days',
+								'neve'
+							)}
+						</div>
+					</div>
+				</div>
+				<div className="flex gap-4">
+					<Button
+						isPrimary
+						href={neveDash.upgradeURL}
+						target="_blank"
+						className="gap-"
+					>
+						{__('View Pro Plans', 'neve')}
+						<ArrowRight className="ml-2" size={16} />
+					</Button>
+					<Button
+						isLink
+						href="https://themeisle.com/contact"
+						target="_blank"
+						className="!border-gray-300"
+					>
+						{__('Contact Support', 'neve')}
+						<BookOpen className="ml-2" size={16} />
+					</Button>
+				</div>
+			</div>
+		</Card>
+	);
+};
+
 const CommunityCard = () => {
 	return (
 		<Card title={__('Join the Community', 'neve')}>
@@ -127,11 +177,20 @@ const CommunityCard = () => {
 };
 
 const Sidebar = () => {
+	const { currentTab } = useSelect((select) => {
+		const { getTab } = select(NEVE_STORE);
+		return {
+			currentTab: getTab(),
+		};
+	});
+
 	return (
 		<div className="grid gap-6">
 			{NEVE_HAS_PRO && <LicenseCard />}
 
 			{NEVE_HAS_PRO && <SupportCard />}
+
+			{currentTab === 'free-pro' && <UpsellCard />}
 
 			{!NEVE_IS_WHITELABEL && <ReviewCard />}
 

@@ -1,3 +1,6 @@
+@import "components/main/variables";
+@import "components/main/extends";
+
 /* Customize Preview */
 .edit-row-action {
   top: 0;
@@ -78,9 +81,6 @@
     .customize-partial-edit-shortcut {
       display: none;
     }
-
-    .builder-item-focus {
-    }
   }
 
   .footer--row {
@@ -117,4 +117,490 @@
 	  bottom:0 !important;
 	  top:unset !important;
 	}
+}
+
+/* Prevent body scroll when Style Book is open */
+body.nv-sb-open {
+  overflow: hidden;
+}
+
+/* Style Book Modal */
+#nv-sb-container {
+  margin: 0 auto;
+  padding: 40px 20px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999999;
+  overflow: scroll;
+  background: gray;
+}
+
+/* Close button in top right */
+.nv-sb-close-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000000;
+  transition: background-color 0.2s ease;
+
+  .dashicons {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    color: white;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  &:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+    background: rgba(0, 0, 0, 0.9);
+  }
+}
+
+.nv-sb-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin: 0 auto;
+  max-width: 956px;
+  margin-bottom: 30px;
+}
+
+.nv-sb-two-col-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.nv-sb-section {
+  background: var(--nv-light-bg);
+  padding: 35px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.nv-sb-section.nv-sb-full-section {
+  padding: 40px;
+}
+
+.nv-sb-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--nv-text-color);
+}
+
+/* Style Book - Generic clickable items */
+#nv-sb-container .builder-item-focus {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    outline: 1px solid #0073aa;
+    outline-offset: -1px;
+  }
+}
+
+/* Color Palette */
+.nv-sb-color-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.nv-sb-color-swatch {
+  border-radius: 6px;
+  box-shadow: 0px 2px 4px color-mix(in srgb, var(--nv-text-color) 20%, transparent);
+  background: var(--nv-light-bg);
+}
+
+.nv-sb-color-box {
+  height: 70px;
+  border-radius: 6px 6px 0 0;
+}
+
+.nv-sb-color-info {
+  padding: 10px;
+}
+
+.nv-sb-color-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 3px;
+}
+
+/* Typography */
+.nv-sb-typography-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  overflow: hidden; /* Prevent grid overflow */
+}
+
+.nv-sb-type-sample {
+  margin-bottom: 30px;
+  overflow: hidden; /* Prevent heading overflow */
+}
+
+.nv-sb-alphabet {
+  line-height: 1.8;
+  word-wrap: break-word;
+  word-break: break-all; /* Break long character sequences */
+  overflow-wrap: break-word;
+  margin: 20px 0;
+  overflow: hidden; /* Prevent alphabet overflow */
+}
+
+/* Typography text content */
+.nv-sb-typography-grid p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 1.6;
+  overflow: hidden; /* Prevent paragraph overflow */
+}
+
+/* Heading elements in typography */
+.nv-sb-type-sample h1,
+.nv-sb-type-sample h2,
+.nv-sb-type-sample h3,
+.nv-sb-type-sample h4,
+.nv-sb-type-sample h5,
+.nv-sb-type-sample h6 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Buttons */
+.nv-sb-button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+	.nv-sb-btn-primary {
+		@extend %nv-button-primary;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		text-decoration: none;
+		display: inline-block;
+	}
+
+	.nv-sb-btn-secondary {
+		@extend %nv-button-secondary;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		text-decoration: none;
+		display: inline-block;
+	}
+
+/* Form Elements */
+.nv-sb-form-container {
+  max-width: 600px;
+}
+
+.nv-sb-form-group {
+  margin-bottom: 20px;
+  position: relative;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(0, 115, 170, 0.05);
+    outline: 1px solid #0073aa;
+    outline-offset: -1px;
+  }
+
+  > label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="url"],
+  input[type="tel"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    font-family: inherit;
+    /* Let theme styles handle colors, padding, borders, etc. */
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  select {
+    cursor: pointer;
+    /* Let theme handle select styling */
+  }
+}
+
+.nv-sb-checkbox-group,
+.nv-sb-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nv-sb-checkbox-label,
+.nv-sb-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: normal !important;
+  margin-bottom: 0 !important;
+  cursor: pointer;
+  padding: 8px 0;
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: auto !important;
+    margin: 0;
+    /* Let theme handle input styling */
+  }
+}
+
+
+/* Full Width Section */
+.nv-sb-full-section {
+  grid-column: 1 / -1;
+}
+
+/* Responsive */
+/* Large tablets and small desktops */
+@media (max-width: 1024px) {
+  #nv-sb-container {
+    padding: 30px 15px;
+  }
+
+  .nv-sb-grid {
+    gap: 25px;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .nv-sb-section {
+    padding: 25px;
+  }
+
+  .nv-sb-section.nv-sb-full-section {
+    padding: 30px;
+  }
+
+  .nv-sb-typography-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* Large tablets and small desktops */
+@media (max-width: 840px) {
+  .nv-sb-color-grid {
+    gap: 10px;
+  }
+
+  .nv-sb-typography-grid {
+    gap: 25px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  #nv-sb-container {
+    padding: 20px 10px;
+  }
+
+  .nv-sb-grid {
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .nv-sb-two-col-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .nv-sb-section {
+    padding: 20px;
+  }
+
+  .nv-sb-section.nv-sb-full-section {
+    padding: 25px;
+  }
+
+  .nv-sb-section-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+
+  .nv-sb-color-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .nv-sb-color-box {
+    height: 55px;
+  }
+
+  .nv-sb-color-info {
+    padding: 6px;
+  }
+
+  .nv-sb-color-name {
+    font-size: 0.8rem;
+  }
+
+  .nv-sb-button-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Small tablets and large phones */
+@media (max-width: 600px) {
+  .nv-sb-color-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .nv-sb-color-box {
+    height: 45px;
+  }
+
+  .nv-sb-color-info {
+    padding: 5px;
+  }
+
+  .nv-sb-color-name {
+    font-size: 0.75rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .nv-sb-close-btn {
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+
+    .dashicons {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .nv-sb-section {
+    padding: 15px;
+  }
+
+  .nv-sb-section.nv-sb-full-section {
+    padding: 20px;
+  }
+
+  .nv-sb-section-title {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  .nv-sb-color-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .nv-sb-color-box {
+    height: 50px;
+  }
+
+  .nv-sb-color-info {
+    padding: 8px;
+  }
+
+  .nv-sb-color-name {
+    font-size: 0.8rem;
+  }
+
+  .nv-sb-typography-grid {
+    gap: 15px;
+    overflow: visible; /* Allow content to flow naturally on mobile */
+  }
+
+  /* Allow headings to wrap on mobile */
+  .nv-sb-type-sample h1,
+  .nv-sb-type-sample h2,
+  .nv-sb-type-sample h3,
+  .nv-sb-type-sample h4,
+  .nv-sb-type-sample h5,
+  .nv-sb-type-sample h6 {
+    white-space: normal;
+    text-overflow: unset;
+  }
+
+  .nv-sb-alphabet {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin: 15px 0;
+    word-break: break-word; /* More aggressive breaking on mobile */
+  }
+
+  .nv-sb-btn-primary,
+  .nv-sb-btn-secondary {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  /* Form Elements on Mobile */
+  .nv-sb-form-group {
+    padding: 12px;
+    margin-bottom: 15px;
+
+    > label {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+
+    textarea {
+      min-height: 80px;
+    }
+  }
+
+  .nv-sb-checkbox-group,
+  .nv-sb-radio-group {
+    gap: 8px;
+  }
+
+  .nv-sb-checkbox-label,
+  .nv-sb-radio-label {
+    padding: 6px 0;
+    font-size: 0.9rem;
+  }
 }

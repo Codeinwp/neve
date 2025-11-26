@@ -1,5 +1,11 @@
+import AvailableModule from '../AvailableModule';
 import ModuleGrid from '../ModuleGrid';
 
 export default () => {
-	return <ModuleGrid />;
+	return (
+		<>
+			<AvailableModule />
+			<ModuleGrid />
+		</>
+	);
 };
