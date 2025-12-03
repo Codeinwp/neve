@@ -44,7 +44,7 @@ const Repeater = ({
 		for (const [field] of Object.entries(itemFields)) {
 			newItem.visibility = 'yes';
 
-			if (typeof value[0][field] === 'boolean') {
+			if (typeof value[0]?.[field] === 'boolean') {
 				newItem[field] = true;
 				if (field === 'hide_on_mobile') {
 					newItem[field] = false;
