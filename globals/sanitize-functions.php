@@ -346,6 +346,7 @@ function neve_sanitize_meta_repeater( $value ) {
 		'field',
 		'format',
 		'fallback',
+		'__kbKey',
 	];
 
 	if ( empty( $value ) ) {
