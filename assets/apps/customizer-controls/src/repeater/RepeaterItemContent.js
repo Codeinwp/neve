@@ -169,7 +169,40 @@ const RepeaterItemContent = ({
 					/>
 				);
 			case 'switcher':
-				return <Switcher fieldId={key} currentField={currentField} />;
+				const selectedOption =
+					value[index][key] || Object.keys(currentField.options)[0];
+
+				return (
+					<>
+						<ButtonGroup className="neve-background-type-control">
+							{Object.entries(currentField.options).map(
+								([optionKey, option]) => {
+									return (
+										<Button
+											key={optionKey}
+											isPrimary={
+												optionKey === selectedOption
+											}
+											isSecondary={
+												optionKey !== selectedOption
+											}
+											onClick={() => {
+												changeContent(key, optionKey);
+											}}
+										>
+											{option.label}
+										</Button>
+									);
+								}
+							)}
+						</ButtonGroup>
+						{currentField.options?.[selectedOption]?.fields.map(
+							(componentId) => {
+								return toComponent(componentId, value[index]);
+							}
+						)}
+					</>
+				);
 			case 'media':
 				return (
 					<Placeholder
@@ -215,39 +248,6 @@ const RepeaterItemContent = ({
 					</Placeholder>
 				);
 		}
-	};
-
-	const Switcher = ({ fieldId, currentField }) => {
-		const selectedOption =
-			value[index][fieldId] || Object.keys(currentField.options)[0];
-
-		return (
-			<>
-				<ButtonGroup className="neve-background-type-control">
-					{Object.entries(currentField.options).map(
-						([optionKey, option]) => {
-							return (
-								<Button
-									key={optionKey}
-									isPrimary={optionKey === selectedOption}
-									isSecondary={optionKey !== selectedOption}
-									onClick={() => {
-										changeContent(fieldId, optionKey);
-									}}
-								>
-									{option.label}
-								</Button>
-							);
-						}
-					)}
-				</ButtonGroup>
-				{currentField.options?.[selectedOption]?.fields.map(
-					(componentId) => {
-						return toComponent(componentId, value[index]);
-					}
-				)}
-			</>
-		);
 	};
 
 	return (
