@@ -119,7 +119,8 @@ Use this as a fast entry point before deeper grep/search.
 | `views/` | Additional PHP view templates used by theme rendering | You are tracking frontend HTML generation |
 | `page-templates/` | Assignable WordPress page templates | You are changing template-level page layouts |
 | `woocommerce/` | WooCommerce template overrides | WooCommerce-only frontend markup/styles need changes |
-| `tests/php/` | PHPUnit tests and test helpers/stubs | You are adding/regressing PHP unit coverage |
+| `tests/` | PHPUnit tests and PHP test helpers | You are adding or updating PHP unit test coverage |
+| `tests/php/` | PHP static-analysis stubs (e.g. for Psalm/PHPStan) | You need or are adjusting PHP static-analysis support |
 | `e2e-tests/specs/` | Playwright end-to-end specs | Validating editor/admin/frontend behavior end-to-end |
 | `stories/` | Storybook stories and local UI playground assets | You need isolated component UI verification |
 | `docs/` | Project docs and contributor references | You need implementation conventions or team guidance |
