@@ -51,7 +51,7 @@ yarn run format:scss
 ```bash
 # PHP unit tests
 ./vendor/bin/phpunit
-./vendor/bin/phpunit tests/php/unit/class-api-test.php   # Single test file
+./vendor/bin/phpunit tests/test-neve.php                 # Single test file
 
 # E2E tests (Playwright, requires WordPress environment)
 yarn run test:playwright
