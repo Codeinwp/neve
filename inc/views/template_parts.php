@@ -473,7 +473,7 @@ class Template_Parts extends Base_View {
 		);
 
 		// Return $new_moretag if 'text' key is not set in $read_more_args.
-		if ( ! isset( $read_more_args['text'] ) ) {
+		if ( ! isset( $read_more_args['text'] ) || empty( $read_more_args['text'] ) ) {
 			return $new_moretag;
 		}
 

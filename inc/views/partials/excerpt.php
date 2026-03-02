@@ -48,7 +48,7 @@ class Excerpt extends Base_View {
 		$length = $this->get_excerpt_length();
 
 		$output  = '';
-		$output .= '<div class="excerpt-wrap entry-summary">';
+		$output .= '<div class="excerpt-wrap entry-summary" tabindex="0">';
 		$output .= $this->get_excerpt( $length, $post_id );
 		$output .= '</div>';
 
