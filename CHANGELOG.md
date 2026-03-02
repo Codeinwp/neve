@@ -1,3 +1,8 @@
+##### [Version 4.2.2](https://github.com/Codeinwp/neve/compare/v4.2.1...v4.2.2) (2025-12-18)
+
+- Fixed issue with single product page gallery layout
+- Fixed issue with social icons component
+
 ##### [Version 4.2.1](https://github.com/Codeinwp/neve/compare/v4.2.0...v4.2.1) (2025-11-26)
 
 - Fixed redundant compatibility notice appearing in plugin screen
