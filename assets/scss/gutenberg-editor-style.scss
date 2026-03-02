@@ -8,6 +8,7 @@
   &, > * {
 	background-color: var(--nv-site-bg);
 	color: var(--nv-text-color);
+  z-index: 99999;
   }
 
   .wp-block {
