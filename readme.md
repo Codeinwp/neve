@@ -19,6 +19,17 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 4.2.3](https://github.com/Codeinwp/neve/compare/v4.2.2...v4.2.3) (2026-03-09)
+
+- Fixed compatibility with Gutenberg v22.6.0
+- Improved keyboard navigation between posts
+- Fixed PHP deprecated notice
+- Fixed alignment for add-to-cart spinner
+- Enhanced security
+
+
+
+
 ##### [Version 4.2.2](https://github.com/Codeinwp/neve/compare/v4.2.1...v4.2.2) (2025-12-18)
 
 - Fixed issue with single product page gallery layout
