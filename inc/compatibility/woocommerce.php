@@ -907,7 +907,7 @@ class Woocommerce {
 	 * Move the coupon field and message info after the order table.
 	 */
 	public function move_coupon() {
-		wc_enqueue_js( '$( $( ".woocommerce-checkout div.woocommerce-info, .checkout_coupon, .woocommerce-form-login" ).detach() ).appendTo( "#neve-checkout-coupon" );' );
+		wp_add_inline_script( 'neve-script', 'jQuery( jQuery( ".woocommerce-checkout div.woocommerce-info, .checkout_coupon, .woocommerce-form-login" ).detach() ).appendTo( "#neve-checkout-coupon" );' );
 	}
 
 	/**
