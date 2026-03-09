@@ -56,13 +56,9 @@ class Pagination extends Base_View {
 		}
 
 		$page_number = absint( $request['page_number'] );
-		if ( $page_number > 100 ) {
-			return new \WP_REST_Response( '' );
-		}
-
-		$query_args = $request->get_body();
-		$args       = json_decode( $query_args, true );
-		$per_page   = get_option( 'posts_per_page' );
+		$query_args  = $request->get_body();
+		$args        = json_decode( $query_args, true );
+		$per_page    = get_option( 'posts_per_page' );
 		if ( $per_page > 100 ) {
 			$per_page = 100;
 		}
@@ -344,10 +340,11 @@ class Pagination extends Base_View {
 			$sanitized['s'] = sanitize_text_field( $sanitized['s'] );
 		}
 		if ( isset( $sanitized['order'] ) ) {
-			$sanitized['order'] = in_array( strtoupper( $sanitized['order'] ), array( 'ASC', 'DESC' ), true ) ? $sanitized['order'] : 'DESC';
+			$order_upper        = is_string( $sanitized['order'] ) ? strtoupper( $sanitized['order'] ) : '';
+			$sanitized['order'] = in_array( $order_upper, array( 'ASC', 'DESC' ), true ) ? $order_upper : 'DESC';
 		}
 		if ( isset( $sanitized['orderby'] ) ) {
-			$safe_orderby         = array( 'date', 'title', 'author', 'modified', 'comment_count', 'rand' );
+			$safe_orderby         = array( 'date', 'title', 'author', 'modified', 'comment_count' );
 			$sanitized['orderby'] = in_array( $sanitized['orderby'], $safe_orderby, true ) ? $sanitized['orderby'] : 'date';
 		}
 		if ( isset( $sanitized['author'] ) ) {
@@ -366,7 +363,7 @@ class Pagination extends Base_View {
 			$sanitized['day'] = absint( $sanitized['day'] );
 		}
 
-		$post_type     = ! empty( $args['post_type'] ) ? $args['post_type'] : 'post';
+		$post_type     = ( ! empty( $args['post_type'] ) && is_string( $args['post_type'] ) ) ? sanitize_key( $args['post_type'] ) : 'post';
 		$post_type_obj = get_post_type_object( $post_type );
 
 		// Only allow if post type exists and is publicly queryable.
