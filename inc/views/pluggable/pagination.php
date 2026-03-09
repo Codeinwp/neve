@@ -55,13 +55,14 @@ class Pagination extends Base_View {
 			return new \WP_REST_Response( '' );
 		}
 
-		$query_args = $request->get_body();
-		$args       = json_decode( $query_args, true );
-
-		$per_page = get_option( 'posts_per_page' );
+		$page_number = absint( $request['page_number'] );
+		$query_args  = $request->get_body();
+		$args        = json_decode( $query_args, true );
+		$per_page    = get_option( 'posts_per_page' );
 		if ( $per_page > 100 ) {
 			$per_page = 100;
 		}
+		$args = $this->sanitize_infinite_scroll_query_args( is_array( $args ) ? $args : array() );
 
 		/**
 		 * If homepage is set to 'A static page', there will be a parameter inside the query named 'pagename'.
@@ -73,24 +74,17 @@ class Pagination extends Base_View {
 		}
 
 		$args['posts_per_page'] = $per_page;
-
-		if ( empty( $args['post_type'] ) ) {
-			$args['post_type'] = 'post';
-		}
-
-		$args['paged']               = $request['page_number'];
-		$args['ignore_sticky_posts'] = 1;
-		$args['post_status']         = 'publish';
+		$args['paged']          = $page_number;
 
 		if ( ! empty( $request['lang'] ) ) {
 			if ( defined( 'POLYLANG_VERSION' ) ) {
-				$args['lang'] = $request['lang'];
+				$args['lang'] = sanitize_text_field( $request['lang'] );
 			}
 
 			if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
 				global $sitepress;
 				if ( gettype( $sitepress ) === 'object' && method_exists( $sitepress, 'switch_lang' ) ) {
-					$sitepress->switch_lang( $request['lang'] );
+					$sitepress->switch_lang( sanitize_text_field( $request['lang'] ) );
 				}
 			}
 		}
@@ -300,6 +294,109 @@ class Pagination extends Base_View {
 		previous_post_link( $prev_format, $prev_link );
 		next_post_link( $next_format, $next_link );
 		echo '</div>';
+	}
+
+	/**
+	 * Sanitize query arguments for infinite scroll to prevent query manipulation.
+	 *
+	 * This method implements a strict allowlist approach to prevent:
+	 * - Expensive database queries (DoS risk via meta_query, tax_query, etc.)
+	 * - Exposure of unintended content types
+	 * - Manipulation of query parameters by anonymous users
+	 *
+	 * @param array<string, mixed> $args Raw query arguments from client request.
+	 *
+	 * @return array<string, mixed> Sanitized query arguments safe for WP_Query.
+	 */
+	private function sanitize_infinite_scroll_query_args( $args ) {
+		// Define allowlist of safe query parameters for public infinite scroll.
+		$allowed_keys = array(
+			'category_name',
+			'tag',
+			's',
+			'order',
+			'orderby',
+			'author',
+			'author_name',
+			'year',
+			'monthnum',
+			'day',
+		);
+
+		$sanitized = array();
+		foreach ( $allowed_keys as $key ) {
+			if ( isset( $args[ $key ] ) ) {
+				$sanitized[ $key ] = $args[ $key ];
+			}
+		}
+
+		if ( isset( $sanitized['category_name'] ) ) {
+			$sanitized['category_name'] = sanitize_text_field( $sanitized['category_name'] );
+		}
+		if ( isset( $sanitized['tag'] ) ) {
+			$sanitized['tag'] = sanitize_text_field( $sanitized['tag'] );
+		}
+		if ( isset( $sanitized['s'] ) ) {
+			$sanitized['s'] = sanitize_text_field( $sanitized['s'] );
+		}
+		if ( isset( $sanitized['order'] ) ) {
+			$order_upper        = is_string( $sanitized['order'] ) ? strtoupper( $sanitized['order'] ) : '';
+			$sanitized['order'] = in_array( $order_upper, array( 'ASC', 'DESC' ), true ) ? $order_upper : 'DESC';
+		}
+		if ( isset( $sanitized['orderby'] ) ) {
+			$safe_orderby         = array( 'date', 'title', 'author', 'modified', 'comment_count' );
+			$sanitized['orderby'] = in_array( $sanitized['orderby'], $safe_orderby, true ) ? $sanitized['orderby'] : 'date';
+		}
+		if ( isset( $sanitized['author'] ) ) {
+			$sanitized['author'] = absint( $sanitized['author'] );
+		}
+		if ( isset( $sanitized['author_name'] ) ) {
+			$sanitized['author_name'] = sanitize_user( $sanitized['author_name'] );
+		}
+		if ( isset( $sanitized['year'] ) ) {
+			$sanitized['year'] = absint( $sanitized['year'] );
+		}
+		if ( isset( $sanitized['monthnum'] ) ) {
+			$sanitized['monthnum'] = absint( $sanitized['monthnum'] );
+		}
+		if ( isset( $sanitized['day'] ) ) {
+			$sanitized['day'] = absint( $sanitized['day'] );
+		}
+
+		$post_type     = ( ! empty( $args['post_type'] ) && is_string( $args['post_type'] ) ) ? sanitize_key( $args['post_type'] ) : 'post';
+		$post_type_obj = get_post_type_object( $post_type );
+
+		// Only allow if post type exists and is publicly queryable.
+		if ( $post_type_obj && $post_type_obj->publicly_queryable ) {
+			$sanitized['post_type'] = $post_type;
+		} else {
+			$sanitized['post_type'] = 'post';
+		}
+
+		// Explicitly unset dangerous query args that could be smuggled in.
+		$dangerous_keys = array_flip(
+			array(
+				'meta_query',
+				'meta_key',
+				'meta_value',
+				'meta_value_num',
+				'meta_compare',
+				'tax_query',
+				'fields',
+				'post__in',
+				'post__not_in',
+				'post_parent',
+				'post_parent__in',
+				'post_parent__not_in',
+			)
+		);
+		$sanitized      = array_diff_key( $sanitized, $dangerous_keys );
+
+		// Force safe defaults for core query behavior.
+		$sanitized['post_status']         = 'publish';
+		$sanitized['ignore_sticky_posts'] = 1;
+
+		return $sanitized;
 	}
 
 	/**
