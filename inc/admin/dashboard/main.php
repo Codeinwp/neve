@@ -1301,30 +1301,38 @@ class Main {
 	 */
 	public static function get_black_friday_data( $default = array() ) {
 		$config = $default;
-
-		// translators: %1$s - HTML tag, %2$s - discount, %3$s - HTML tag, %4$s - product name.
-		$message_template = __( 'Our biggest sale of the year: %1$sup to %2$s OFF%3$s on %4$s. Don\'t miss this limited-time offer.', 'neve' );
-		$product_label    = __( 'Neve', 'neve' );
-		$discount         = '70%';
-
-		$plan   = apply_filters( 'product_neve_license_plan', 0 );
+		
+		$message   = __( 'Custom layouts, WooCommerce tools, starter sites. What you\'ve been doing manually, Neve Pro handles for you. Exclusively for existing Neve users.', 'neve' );
+		$cta_label = __( 'Get Neve Pro', 'neve' );
+		
+		$plan   = apply_filters( 'product_neve_license_plan', false );
 		$is_pro = 0 < $plan;
+		
+		$license_status      = apply_filters( 'product_neve_license_status', false );
+		$has_valid_license   = 'valid' === $license_status;
+		$has_expired_license = 'expired' === $license_status || 'active_exired' === $license_status;
 
-		if ( $is_pro ) {
-			// translators: %1$s - HTML tag, %2$s - discount, %3$s - HTML tag, %4$s - product name.
-			$message_template = __( 'Get %1$sup to %2$s off%3$s when you upgrade your %4$s plan or renew early.', 'neve' );
-			$product_label    = __( 'Neve Pro', 'neve' );
-			$discount         = '30%';
+		if ( $has_valid_license ) {
+			// translators: %1$s - the discount percentage for the upgrade, %2$s - the discount percentage for the renewal.
+			$message   = sprintf( __( 'Upgrade your Neve Pro plan: %1$s off this week. Already on the plan you need? Renew early and save up to %2$s.', 'neve' ), '30%', '20%' );
+			$cta_label = __( 'See your options', 'neve' );
+		} elseif ( $has_expired_license ) {
+			$message   = __( 'Your Neve Pro features are still here, just locked. Renew at a reduced rate this week and pick up right where you left off.', 'neve' );
+			$cta_label = __( 'Reactivate now', 'neve' );
+		} else {
+			// translators: %s - the discount percentage for the upgrade.
+			$config['title'] = sprintf( __( 'Neve Pro: %s off this week', 'neve' ), '60%' );
 		}
 		
-		$product_label = sprintf( '<strong>%s</strong>', $product_label );
-		$url_params    = array(
+		$url_params = array(
 			'utm_term' => $is_pro ? 'plan-' . $plan : 'free',
 			'lkey'     => apply_filters( 'product_neve_license_key', false ),
+			'expired'  => $has_expired_license ? '1' : false,
 		);
 		
-		$config['message']  = sprintf( $message_template, '<strong>', $discount, '</strong>', $product_label );
-		$config['sale_url'] = add_query_arg(
+		$config['message']   = $message;
+		$config['cta_label'] = $cta_label;
+		$config['sale_url']  = add_query_arg(
 			$url_params,
 			tsdk_translate_link( tsdk_utmify( 'https://themeisle.link/neve-bf', 'bfcm', 'neve' ) )
 		);
