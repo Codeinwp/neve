@@ -1310,7 +1310,7 @@ class Main {
 		
 		$license_status      = apply_filters( 'product_neve_license_status', false );
 		$has_valid_license   = 'valid' === $license_status;
-		$has_expired_license = 'expired' === $license_status || 'active_exired' === $license_status;
+		$has_expired_license = 'expired' === $license_status || 'active-expired' === $license_status;
 
 		if ( $has_valid_license ) {
 			// translators: %1$s - the discount percentage for the upgrade, %2$s - the discount percentage for the renewal.
