@@ -1312,6 +1312,8 @@ class Main {
 		$has_valid_license   = 'valid' === $license_status;
 		$has_expired_license = 'expired' === $license_status || 'active-expired' === $license_status;
 
+		$neve_pro_product_slug = defined( 'NEVE_PRO_BASEFILE' ) ? basename( dirname( NEVE_PRO_BASEFILE ) ) : '';
+
 		if ( $has_valid_license ) {
 			// translators: %1$s - the discount percentage for the upgrade, %2$s - the discount percentage for the renewal.
 			$message   = sprintf( __( 'Upgrade your Neve Pro plan: %1$s off this week. Already on the plan you need? Renew early and save up to %2$s.', 'neve' ), '30%', '20%' );
@@ -1322,6 +1324,15 @@ class Main {
 		} else {
 			// translators: %s - the discount percentage for the upgrade.
 			$config['title'] = sprintf( __( 'Neve Pro: %s off this week', 'neve' ), '60%' );
+		}
+
+		if ( $has_valid_license || $has_expired_license ) {
+			// translators: %s is the discount percentage.
+			$config['plugin_meta_message'] = sprintf( __( 'Black Friday Sale - up to %s off', 'neve' ), '30%' );
+			$config['plugin_meta_targets'] = array( $neve_pro_product_slug );
+		} else {
+			// translators: %s is the discount percentage.
+			$config['plugin_meta_message'] = sprintf( __( 'Black Friday Sale - %s off', 'neve' ), '60%' );
 		}
 		
 		$url_params = array(
