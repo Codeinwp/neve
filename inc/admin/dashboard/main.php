@@ -1333,6 +1333,9 @@ class Main {
 		} else {
 			// translators: %s is the discount percentage.
 			$config['plugin_meta_message'] = sprintf( __( 'Black Friday Sale - %s off', 'neve' ), '60%' );
+
+			// translators: %s is the discount percentage.
+			$config['upgrade_menu_text'] = sprintf( __( 'BF Sale - %s off', 'neve' ), '60%' );
 		}
 		
 		$url_params = array(
