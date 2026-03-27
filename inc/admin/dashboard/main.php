@@ -56,7 +56,7 @@ class Main {
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
 		add_action( 'init', array( $this, 'register_settings' ) );
 		add_action( 'init', array( $this, 'register_about_page' ), 1 );
-		
+
 		add_action( 'admin_notices', array( $this, 'render_custom_layout_header' ) );
 	}
 
@@ -999,7 +999,7 @@ class Main {
 	 */
 	public function render_custom_layout_header() {
 		$screen = get_current_screen();
-		
+
 		if ( ! $screen || ! ( $screen->id === 'edit-neve_custom_layouts' || $screen->id === 'neve_page_neve-custom-layout-upsell' ) ) {
 			return;
 		}
@@ -1255,18 +1255,18 @@ class Main {
 
 	/**
 	 * Register the survey.
-	 * 
+	 *
 	 * @param array $dash_data The dashboard data.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function register_survey( $dash_data ) {
 		add_filter(
 			'themeisle-sdk/survey/neve',
 			function( $data, $page_slug ) use ( $dash_data ) {
-				
+
 				$install_days_number = intval( ( time() - get_option( 'neve_install', time() ) ) / DAY_IN_SECONDS );
-			
+
 				$data = array(
 					'environmentId' => 'clr0ply35522h8up0bay2de4y',
 					'attributes'    => array(
@@ -1288,26 +1288,26 @@ class Main {
 				return $data;
 			},
 			10,
-			2 
+			2
 		);
 	}
 
 	/**
 	 * Get the Black Friday config settings.
-	 * 
+	 *
 	 * @param array $default Optional. The default values.
-	 * 
+	 *
 	 * @return array The data.
 	 */
 	public static function get_black_friday_data( $default = array() ) {
 		$config = $default;
-		
+
 		$message   = __( 'Custom layouts, WooCommerce tools, starter sites. What you\'ve been doing manually, Neve Pro handles for you. Exclusively for existing Neve users.', 'neve' );
 		$cta_label = __( 'Get Neve Pro', 'neve' );
-		
+
 		$plan   = apply_filters( 'product_neve_license_plan', false );
 		$is_pro = 0 < $plan;
-		
+
 		$license_status      = apply_filters( 'product_neve_license_status', false );
 		$has_valid_license   = 'valid' === $license_status;
 		$has_expired_license = 'expired' === $license_status || 'active-expired' === $license_status;
@@ -1315,35 +1315,37 @@ class Main {
 		$neve_pro_product_slug = defined( 'NEVE_PRO_BASEFILE' ) ? basename( dirname( NEVE_PRO_BASEFILE ) ) : '';
 
 		if ( $has_valid_license ) {
+			// translators: %s is the discount percentage.
+			$config['plugin_meta_message'] = sprintf( __( 'Black Friday Sale - up to %s off', 'neve' ), '30%' );
 			// translators: %1$s - the discount percentage for the upgrade, %2$s - the discount percentage for the renewal.
 			$message   = sprintf( __( 'Upgrade your Neve Pro plan: %1$s off this week. Already on the plan you need? Renew early and save up to %2$s.', 'neve' ), '30%', '20%' );
 			$cta_label = __( 'See your options', 'neve' );
 		} elseif ( $has_expired_license ) {
-			$message   = __( 'Your Neve Pro features are still here, just locked. Renew at a reduced rate this week and pick up right where you left off.', 'neve' );
-			$cta_label = __( 'Reactivate now', 'neve' );
+			// translators: %s is the discount percentage.
+			$config['plugin_meta_message'] = sprintf( __( 'Black Friday Sale - %s off', 'neve' ), '50%' );
+			// translators: %s is the discount percentage.
+			$config['upgrade_menu_text'] = sprintf( __( 'BF Sale - %s off', 'neve' ), '50%' );
+			$message                     = __( 'Your Neve Pro features are still here, just locked. Renew at a reduced rate this week and pick up right where you left off.', 'neve' );
+			$cta_label                   = __( 'Reactivate now', 'neve' );
 		} else {
+			// translators: %s is the discount percentage.
+			$config['plugin_meta_message'] = sprintf( __( 'Black Friday Sale - %s off', 'neve' ), '60%' );
+			// translators: %s is the discount percentage.
+			$config['upgrade_menu_text'] = sprintf( __( 'BF Sale - %s off', 'neve' ), '60%' );
 			// translators: %s - the discount percentage for the upgrade.
 			$config['title'] = sprintf( __( 'Neve Pro: %s off this week', 'neve' ), '60%' );
 		}
 
 		if ( $has_valid_license || $has_expired_license ) {
-			// translators: %s is the discount percentage.
-			$config['plugin_meta_message'] = sprintf( __( 'Black Friday Sale - up to %s off', 'neve' ), '30%' );
 			$config['plugin_meta_targets'] = array( $neve_pro_product_slug );
-		} else {
-			// translators: %s is the discount percentage.
-			$config['plugin_meta_message'] = sprintf( __( 'Black Friday Sale - %s off', 'neve' ), '60%' );
-
-			// translators: %s is the discount percentage.
-			$config['upgrade_menu_text'] = sprintf( __( 'BF Sale - %s off', 'neve' ), '60%' );
 		}
-		
+
 		$url_params = array(
 			'utm_term' => $is_pro ? 'plan-' . $plan : 'free',
 			'lkey'     => apply_filters( 'product_neve_license_key', false ),
 			'expired'  => $has_expired_license ? '1' : false,
 		);
-		
+
 		$config['message']   = $message;
 		$config['cta_label'] = $cta_label;
 		$config['sale_url']  = add_query_arg(
@@ -1356,9 +1358,9 @@ class Main {
 
 	/**
 	 * Add the Black Friday data.
-	 * 
+	 *
 	 * @param array $configs An array of configurations.
-	 * 
+	 *
 	 * @return array The configurations.
 	 */
 	public function add_black_friday_data( $configs ) {
