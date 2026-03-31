@@ -135,10 +135,15 @@ class Pagination extends Base_View {
 		global $wp_query;
 		$max_pages = $wp_query->max_num_pages;
 
+		$query = $wp_query->query;
+
+		if ( is_tax() ) {
+			$query['post_type'] = get_post_type();
+		}
 		$data['infScroll'] = 'enabled';
 		$data['maxPages']  = $max_pages;
 		$data['endpoint']  = rest_url( 'nv/v1/posts/page/' );
-		$data['query']     = wp_json_encode( $wp_query->query );
+		$data['query']     = wp_json_encode( $query );
 		$data['lang']      = get_locale();
 
 		// WPML language parameter
@@ -300,7 +305,7 @@ class Pagination extends Base_View {
 	 * Sanitize query arguments for infinite scroll to prevent query manipulation.
 	 *
 	 * This method implements a strict allowlist approach to prevent:
-	 * - Expensive database queries (DoS risk via meta_query, tax_query, etc.)
+	 * - Expensive database queries (DoS risk via meta_query,fields etc.)
 	 * - Exposure of unintended content types
 	 * - Manipulation of query parameters by anonymous users
 	 *
@@ -363,6 +368,18 @@ class Pagination extends Base_View {
 			$sanitized['day'] = absint( $sanitized['day'] );
 		}
 
+		foreach ( $args as $key => $value ) {
+			if ( taxonomy_exists( $key ) ) {
+				$sanitized['tax_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+					array(
+						'taxonomy' => $key,
+						'field'    => 'slug',
+						'terms'    => sanitize_text_field( $value ),
+					),
+				);
+			}
+		}
+
 		$post_type     = ( ! empty( $args['post_type'] ) && is_string( $args['post_type'] ) ) ? sanitize_key( $args['post_type'] ) : 'post';
 		$post_type_obj = get_post_type_object( $post_type );
 
@@ -381,7 +398,6 @@ class Pagination extends Base_View {
 				'meta_value',
 				'meta_value_num',
 				'meta_compare',
-				'tax_query',
 				'fields',
 				'post__in',
 				'post__not_in',
