@@ -25,6 +25,7 @@
 	line-height: var(--btnlineheight, 1.6);
 	letter-spacing: var(--btnletterspacing, var(--bodyletterspacing));
 	text-transform: var(--btntexttransform, none);
+	box-shadow: var(--primarybtnshadow, none);
 }
 
 %nv-button-primary-hover {
