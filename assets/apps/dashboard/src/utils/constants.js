@@ -68,6 +68,7 @@ export const NEVE_PLUGIN_ICON_MAP = {
 	'wp-cloudflare-page-cache': LucideTimer,
 	'feedzy-rss-feeds': LucideRss,
 	'hyve-lite': LucideBotMessageSquare,
+	'learning-management-system': LucideGraduationCap,
 	// 'sparks'
 };
 

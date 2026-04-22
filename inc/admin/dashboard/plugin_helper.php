@@ -56,6 +56,8 @@ class Plugin_Helper {
 				return $slug . '/wp-cloudflare-super-page-cache.php';
 			case 'wp-full-stripe-free':
 				return $slug . '/wp-full-stripe.php';
+			case 'learning-management-system':
+				return $slug . '/lms.php';
 			default:
 				return $slug . '/' . $slug . '.php';
 		}

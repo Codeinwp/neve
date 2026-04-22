@@ -890,6 +890,10 @@ class Main {
 				'title'       => 'Feedzy',
 				'description' => __( 'RSS feeds aggregator and content curator', 'neve' ),
 			],
+			'learning-management-system'    => [
+				'title'       => 'Masteriyo',
+				'description' => __( 'LMS plugin to create and sell online courses', 'neve' ),
+			],
 		];
 
 		if ( is_php_version_compatible( '8.1' ) ) {
