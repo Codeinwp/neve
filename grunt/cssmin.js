@@ -51,6 +51,9 @@ module.exports = {
 			'assets/css/easy-digital-downloads-rtl.min.css': [
 				'assets/css/easy-digital-downloads-rtl.css',
 			],
+			'assets/css/wp7.min.css': [
+				'assets/css/wp7.css',
+			],
 		},
 	},
 };

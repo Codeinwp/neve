@@ -36,6 +36,7 @@ class Loader {
 		add_action( 'wp_enqueue_scripts', array( $this, 'set_featured_image' ) );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_customizer_controls' ) );
 		add_action( 'wp_ajax_neve_dismiss_starter_content', array( $this, 'dismiss_starter_content' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
 	}
 
 	/**
@@ -363,5 +364,23 @@ class Loader {
 			'message'   => $data['message'],
 			'bannerSrc' => get_template_directory_uri() . '/assets/img/dashboard/black-friday-customizer-banner.png',
 		);
+	}
+
+	/**
+	 * Enqueue admin styles.
+	 *
+	 * @return void
+	 */
+	public function enqueue_admin_styles() {
+		global $wp_version;
+
+		if ( version_compare( $wp_version, '6.9.4', '>' ) ) {
+			wp_enqueue_style(
+				'neve-admin-styles',
+				NEVE_ASSETS_URL . 'css/wp7' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css',
+				array(),
+				NEVE_VERSION
+			);
+		}
 	}
 }

@@ -22,6 +22,7 @@ module.exports = {
 					'assets/scss/gutenberg-editor-style.scss',
 				'assets/css/easy-digital-downloads.css':
 					'assets/scss/easy-digital-downloads.scss',
+				'assets/css/wp7.css': 'assets/scss/wp7.scss',
 			},
 		],
 	},
