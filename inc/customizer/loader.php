@@ -372,9 +372,16 @@ class Loader {
 	 * @return void
 	 */
 	public function enqueue_admin_styles() {
-		global $wp_version;
+		$screen = get_current_screen();
+		if ( ! $screen ) {
+			return;
+		}
 
-		if ( version_compare( $wp_version, '6.9.4', '>' ) ) {
+		if ( $screen->id !== 'customize' && false === strpos( $screen->id, 'neve' ) ) {
+			return;
+		}
+
+		if ( is_wp_version_compatible( '7.0' ) ) {
 			wp_enqueue_style(
 				'neve-admin-styles',
 				NEVE_ASSETS_URL . 'css/wp7' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css',
