@@ -20,7 +20,7 @@ const ResponsiveToggleComponent = ({ control }) => {
 			control.setting.set(
 				val && typeof val === 'object'
 					? val
-					: { desktop: false, mobile: false }
+					: { desktop: false, tablet: false, mobile: false }
 			);
 		});
 	}, []);
