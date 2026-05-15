@@ -15,7 +15,13 @@ const ResponsiveToggleComponent = ({ control }) => {
 			if (e.detail.id !== control.id) {
 				return false;
 			}
-			setValue(e.detail.value);
+			const val = e.detail.value;
+			setValue(val);
+			control.setting.set(
+				val && typeof val === 'object'
+					? val
+					: { desktop: false, tablet: false, mobile: false }
+			);
 		});
 	}, []);
 
