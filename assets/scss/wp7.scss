@@ -2,13 +2,21 @@
     min-height: 40px;
 }
 
-.wp-core-ui .button .dashicons,
-.wp-core-ui .button-primary .dashicons,
-.wp-core-ui .button-secondary .dashicons {
-    line-height: 1;
-}
+.neve_page_neve-custom-layout-upsell, .post-type-neve_custom_layouts {
+    .cl-modal, .cl-header-container {
+        .button {
+            .dashicons {
+                line-height: 1;
+            }
+            &.button-link {
+                border: none;
+            }
+        }
+    }
 
-.wp-core-ui .button-link,
-.wp-core-ui .button.button-link {
-    border: none;
+    .type-neve_custom_layouts {
+        button .dashicons {
+            line-height: 1;
+        }
+    }
 }
