@@ -135,10 +135,18 @@ class Pagination extends Base_View {
 		global $wp_query;
 		$max_pages = $wp_query->max_num_pages;
 
+		$query = $wp_query->query;
+
+		if ( is_tax() ) {
+			$post_type = get_post_type();
+			if ( $post_type ) {
+				$query['post_type'] = $post_type;
+			}
+		}
 		$data['infScroll'] = 'enabled';
 		$data['maxPages']  = $max_pages;
 		$data['endpoint']  = rest_url( 'nv/v1/posts/page/' );
-		$data['query']     = wp_json_encode( $wp_query->query );
+		$data['query']     = wp_json_encode( $query );
 		$data['lang']      = get_locale();
 
 		// WPML language parameter
@@ -300,7 +308,7 @@ class Pagination extends Base_View {
 	 * Sanitize query arguments for infinite scroll to prevent query manipulation.
 	 *
 	 * This method implements a strict allowlist approach to prevent:
-	 * - Expensive database queries (DoS risk via meta_query, tax_query, etc.)
+	 * - Expensive database queries (DoS risk via meta_query, fields etc.)
 	 * - Exposure of unintended content types
 	 * - Manipulation of query parameters by anonymous users
 	 *
@@ -371,6 +379,59 @@ class Pagination extends Base_View {
 			$sanitized['post_type'] = $post_type;
 		} else {
 			$sanitized['post_type'] = 'post';
+			$post_type              = 'post';
+		}
+
+		// Build an allowlist of taxonomies that are both publicly queryable and registered to the resolved post type.
+		$allowed_taxonomies     = array_filter(
+			get_object_taxonomies( $post_type, 'objects' ),
+			function ( $tax_obj ) {
+				return ! empty( $tax_obj->publicly_queryable );
+			}
+		);
+		$allowed_taxonomy_names = array_keys( $allowed_taxonomies );
+
+		$tax_queries = array();
+		foreach ( $args as $key => $value ) {
+			if ( ! in_array( $key, $allowed_taxonomy_names, true ) ) {
+				continue;
+			}
+
+			$terms = array();
+			if ( is_array( $value ) ) {
+				foreach ( $value as $maybe_term ) {
+					if ( is_scalar( $maybe_term ) ) {
+						$sanitized_term = sanitize_title( (string) $maybe_term );
+						if ( $sanitized_term !== '' ) {
+							$terms[] = $sanitized_term;
+						}
+					}
+				}
+			} elseif ( is_scalar( $value ) ) {
+				$sanitized_term = sanitize_title( (string) $value );
+				if ( $sanitized_term !== '' ) {
+					$terms[] = $sanitized_term;
+				}
+			}
+
+			if ( empty( $terms ) ) {
+				continue;
+			}
+
+			$tax_queries[] = array(
+				'taxonomy' => $key,
+				'field'    => 'slug',
+				'terms'    => $terms,
+			);
+		}
+
+		if ( ! empty( $tax_queries ) ) {
+			$sanitized['tax_query'] = array_merge( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+				array(
+					'relation' => 'AND',
+				),
+				$tax_queries
+			);
 		}
 
 		// Explicitly unset dangerous query args that could be smuggled in.
@@ -381,7 +442,6 @@ class Pagination extends Base_View {
 				'meta_value',
 				'meta_value_num',
 				'meta_compare',
-				'tax_query',
 				'fields',
 				'post__in',
 				'post__not_in',
