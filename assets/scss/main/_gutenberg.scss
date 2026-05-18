@@ -16,11 +16,25 @@
 body {
   &.nv-sidebar-left,
   &.nv-sidebar-right {
-	  .alignfull, .alignwide {
-		max-width: 100%;
-		margin-left: auto;
-		margin-right: auto;
-	  }
+    .alignfull,
+    .alignwide {
+      width: 100%;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.wp-block-column,
+.is-layout-constrained:not(.alignfull):not(.alignwide),
+[class*="wp-block-"]:has(> [class*="wp-block-"]):not(.alignfull):not(.alignwide) {
+  .alignfull,
+  .alignwide {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
