@@ -93,7 +93,7 @@ const SizingControl = ({
 					key="link-icon"
 					icon={linked ? 'admin-links' : 'editor-unlink'}
 					onClick={toggleLinked}
-					className={classnames([{ active: linked }, 'link'])}
+					className={classnames([{ active: linked }, 'link button'])}
 				/>
 			</Tooltip>
 		);

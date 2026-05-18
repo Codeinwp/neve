@@ -37,6 +37,9 @@
       border: 1px solid $input-borders !important;
       padding: 0;
       min-width: unset;
+      color: #000;
+      display: inline-flex;
+      align-items: center;
     }
 
     &.active, &.active:hover, &.active:focus:enabled {

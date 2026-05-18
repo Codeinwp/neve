@@ -1057,6 +1057,12 @@ class Main {
 				line-height: 1.6;
 			}
 
+			.neve_page_neve-custom-layout-upsell .cl-btn-action .dashicons,
+			.post-type-neve_custom_layouts .cl-btn-action .dashicons,
+			.post-type-neve_custom_layouts .cl-copy-button .dashicons {
+				line-height: 1;
+			}
+
 			/* Hide text on small screens but keep it accessible to screen readers */
 			@media (max-width: 500px) {
 				.cl-header-btn-text {
