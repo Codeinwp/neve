@@ -288,6 +288,14 @@ class Hooks_Upsells {
 				font-size: 2rem;
 			}
 
+			.neve_page_neve-custom-layout-upsell .cl-modal-dismiss .cl-close-button {
+				border: none;
+			}
+
+			.neve_page_neve-custom-layout-upsell .cl-modal-dismiss .cl-close-button span {
+				line-height: 1;
+			}
+
 			/* ----- HEADER / TITLE ----- */
 			.cl-modal-header {
 				text-align: center;
