@@ -47,8 +47,6 @@
 
 .nv-sidebar-left,
 .nv-sidebar-right,
-.wp-block-column,
-.is-layout-constrained:not(.alignfull):not(.alignwide),
 [class*="wp-block-"]:has(> [class*="wp-block-"]):not(.alignfull):not(.alignwide) {
 
 	.alignfull,
