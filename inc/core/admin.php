@@ -770,7 +770,7 @@ class Admin {
 
 		$notice_picture .= '<div class="overlay">';
 		$notice_picture .= '<span>';
-		$notice_picture .= '<strong>30+</strong> ' . __( 'Starter Sites', 'neve' );
+		$notice_picture .= '<strong>100+</strong> ' . __( 'Starter Sites', 'neve' );
 		$notice_picture .= '</span>';
 		$notice_picture .= '<div class="builder-logos">';
 		$notice_picture .= '<div class="builder-logo">' . $elementor_logo . '</div>';
