@@ -1,3 +1,13 @@
+##### [Version 4.2.4](https://github.com/Codeinwp/neve/compare/v4.2.3...v4.2.4) (2026-05-21)
+
+- 100+ NEW Starter Sites
+- Fixed button shadow options not applying in the customizer when you first add the Button component
+- Ensured compatibility with PPOM plugin popup button
+- Fixed infinite scroll displaying incorrect posts in Archive page of CPT
+- Fixed issue where disabling Sticky header option was not possible when using multiple headers
+- Improved compatibility with WP 7.0
+- Updated dependencies
+
 ##### [Version 4.2.3](https://github.com/Codeinwp/neve/compare/v4.2.2...v4.2.3) (2026-03-09)
 
 - Fixed compatibility with Gutenberg v22.6.0
