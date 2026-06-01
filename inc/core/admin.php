@@ -686,7 +686,7 @@ class Admin {
 
 		echo '<style>' . wp_kses_post( $style ) . '</style>';
 		$this->dismiss_script();
-		echo '<div class="nv-welcome-notice updated notice ti-about-notice">';
+		echo '<div class="nv-welcome-notice notice ti-about-notice">';
 		echo '<div class="notice-dismiss"></div>';
 		$this->welcome_notice_content();
 		echo '</div>';
