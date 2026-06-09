@@ -6,6 +6,14 @@
  */
 return array(
 	'logo_show_tagline'                            => 0,
+	'hfg_header_layout_v2'                         => '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"primary-menu"},{"id":"button_base"}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]}},"mobile":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"nav-icon"}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"sidebar":[{"id":"primary-menu"},{"id":"button_base"}]}}',
+	'hfg_header_layout_main_height'                => '{"mobile":60,"tablet":70,"desktop":80,"suffix":{"mobile":"px","tablet":"px","desktop":"px"}}',
+	'hfg_header_layout_main_bottom_border'         => '{"mobile":1,"tablet":1,"desktop":1,"suffix":{"mobile":"px","tablet":"px","desktop":"px"}}',
+	'hfg_header_layout_main_border_color'          => 'var(--nv-c-1)',
+	'hfg_header_layout_main_layout'                => 'layout-full-contained',
+	'button_base_text_setting'                     => 'Get Started',
+	'button_base_link_setting'                     => home_url( '/contact/' ),
+	'button_base_new_tab'                          => 0,
 	'nav-icon_button_appearance'                   =>
 	array(
 		'borderRadius'          =>
@@ -139,8 +147,8 @@ return array(
 	'neve_advanced_layout_options'                 => true,
 	'neve_blog_archive_sidebar_layout'             => 'full-width',
 	'neve_blog_archive_content_width'              => 100,
-	'neve_body_font_family'                        => '',
-	'neve_headings_font_family'                    => '',
+	'neve_body_font_family'                        => 'Nunito Sans',
+	'neve_headings_font_family'                    => 'Bricolage Grotesque',
 	'neve_button_appearance'                       =>
 	array(
 		'borderRadius'          =>
@@ -286,11 +294,11 @@ return array(
 			'tablet'  => 0,
 			'desktop' => 0,
 		),
-		'fontWeight'    => '600',
-		'textTransform' => 'uppercase',
+		'fontWeight'    => '500',
+		'textTransform' => 'none',
 	),
-	'neve_link_color'                              => '#2b2b2b',
-	'neve_link_hover_color'                        => '#727272',
+	'neve_link_color'                              => '#2563eb',
+	'neve_link_hover_color'                        => '#1d4ed8',
 	'neve_secondary_button_appearance'             =>
 	array(
 		'borderRadius'          =>
@@ -505,15 +513,15 @@ return array(
 				'allowDeletion' => false,
 				'colors'        =>
 				array(
-					'nv-primary-accent'   => '#0065cb',
-					'nv-secondary-accent' => '#0057ad',
+					'nv-primary-accent'   => '#2563eb',
+					'nv-secondary-accent' => '#1d4ed8',
 					'nv-site-bg'          => '#ffffff',
-					'nv-light-bg'         => '#f8f8f8',
-					'nv-dark-bg'          => '#0d1821',
-					'nv-text-color'       => '#2c2c2c',
+					'nv-light-bg'         => '#f1f5f9',
+					'nv-dark-bg'          => '#111827',
+					'nv-text-color'       => '#1f2937',
 					'nv-text-dark-bg'     => '#ffffff',
-					'nv-c-1'              => '#77b978',
-					'nv-c-2'              => '#f37262',
+					'nv-c-1'              => '#e5e7eb',
+					'nv-c-2'              => '#6b7280',
 				),
 			),
 			'darkMode' =>
@@ -665,6 +673,7 @@ return array(
 	),
 	'neve_had_old_skin'                            => false,
 	'footer_copyright_color'                       => 'var(--nv-text-dark-bg)',
+	'footer_copyright_content'                     => '&copy; ' . gmdate( 'Y' ) . ' Folio. All rights reserved.',
 	'footer_copyright_component_align'             =>
 	array(
 		'desktop' => 'center',
@@ -721,7 +730,7 @@ return array(
 	'neve_post_cover_title_boxed_background_color' => 'var(--nv-dark-bg)',
 	'neve_enable_masonry'                          => false,
 	'neve_post_thumbnail_box_shadow'               => 0,
-	'primary-menu_style'                           => 'style-border-top',
+	'primary-menu_style'                           => 'style-plain',
 	'neve_post_cover_background_color'             => 'var(--nv-secondary-accent)',
 	'neve_post_cover_padding'                      =>
 	array(
@@ -797,7 +806,7 @@ return array(
 		'mobile'  => 'left',
 	),
 	'hfg_footer_layout_bottom_columns_number'      => 2,
-	'custom_logo'                                  => '{{featured-image-logo}}',
+	'custom_logo'                                  => 0,
 	'logo_color'                                   => 'var(--nv-text-color)',
 	'neve_blog_post_meta_fields'                   => '[{"slug":"author","title":"' . __( 'Author', 'neve' ) . '","visibility":"yes","hide_on_mobile":"","blocked":"yes"},{"slug":"comments","title":"' . __( 'Comments', 'neve' ) . '","visibility":"yes","hide_on_mobile":"","blocked":"yes"},{"slug":"category","title":"' . __( 'Category', 'neve' ) . '","visibility":"yes","hide_on_mobile":"","blocked":"yes"},{"slug":"date","title":"' . __( 'Date', 'neve' ) . '","visibility":"no","hide_on_mobile":"","blocked":"yes"}]',
 	// V4 changes.

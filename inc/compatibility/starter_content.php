@@ -13,12 +13,12 @@ namespace Neve\Compatibility;
  * @package Neve\Compatibility
  */
 class Starter_Content {
-	const HOME_SLUG       = 'home';
-	const BLOG_SLUG       = 'blog';
-	const ABOUT_SLUG      = 'about';
-	const CONTACT         = 'contact';
-	const PORTOFOLIO_SLUG = 'portofolio';
-	const PROJECT_DETAILS = 'project-details';
+	const HOME_SLUG     = 'home';
+	const BLOG_SLUG     = 'blog';
+	const ABOUT_SLUG    = 'about';
+	const CONTACT       = 'contact';
+	const SERVICES_SLUG = 'services';
+	const WORK_SLUG     = 'work';
 
 
 	/**
@@ -80,6 +80,9 @@ class Starter_Content {
 		if ( $meta_key === 'neve_meta_disable_title' ) {
 			return 'on';
 		}
+		if ( $meta_key === 'neve_meta_container' ) {
+			return 'full-width';
+		}
 		if ( $meta_key === 'neve_meta_enable_content_width' ) {
 			return 'on';
 		}
@@ -107,9 +110,34 @@ class Starter_Content {
 			return;
 		}
 		if ( $post->post_type === 'page' ) {
+			$draft_slug = get_post_meta( $post_ID, '_customize_draft_post_name', true );
 			update_post_meta( $post_ID, 'neve_meta_disable_title', 'on' );
 			update_post_meta( $post_ID, 'neve_meta_enable_content_width', 'on' );
 			update_post_meta( $post_ID, 'neve_meta_content_width', '100' );
+			// Full-bleed sections need a full-width page container (blog stays the contained posts list).
+			if ( $draft_slug !== self::BLOG_SLUG ) {
+				update_post_meta( $post_ID, 'neve_meta_container', 'full-width' );
+			}
+		}
+
+		// Apply the Folio polish layer (core "Additional CSS") once, when the home page is imported.
+		if ( get_post_meta( $post_ID, '_customize_draft_post_name', true ) === self::HOME_SLUG ) {
+			$this->apply_starter_custom_css();
+		}
+	}
+
+	/**
+	 * Apply the starter content polish layer as core custom CSS.
+	 *
+	 * Scoped under .folio-* classes, so it only affects the starter pages.
+	 */
+	private function apply_starter_custom_css() {
+		if ( ! function_exists( 'wp_update_custom_css_post' ) ) {
+			return;
+		}
+		$css = require __DIR__ . '/starter-content/custom-css.php';
+		if ( ! empty( $css ) ) {
+			wp_update_custom_css_post( $css );
 		}
 	}
 
@@ -121,35 +149,41 @@ class Starter_Content {
 	public function get() {
 
 		$nav_items = [
-			'home'                 => [
+			'home'          => [
 				'type'      => 'post_type',
 				'object'    => 'page',
 				'object_id' => '{{' . self::HOME_SLUG . '}}',
+				'title'     => _x( 'Home', 'Theme starter content', 'neve' ),
 			],
-			'page_about'           => [
+			'page_about'    => [
 				'type'      => 'post_type',
 				'object'    => 'page',
 				'object_id' => '{{' . self::ABOUT_SLUG . '}}',
+				'title'     => _x( 'About', 'Theme starter content', 'neve' ),
 			],
-			'page_portofolio'      => [
+			'page_services' => [
 				'type'      => 'post_type',
 				'object'    => 'page',
-				'object_id' => '{{' . self::PORTOFOLIO_SLUG . '}}',
+				'object_id' => '{{' . self::SERVICES_SLUG . '}}',
+				'title'     => _x( 'Services', 'Theme starter content', 'neve' ),
 			],
-			'page_project_details' => [
+			'page_work'     => [
 				'type'      => 'post_type',
 				'object'    => 'page',
-				'object_id' => '{{' . self::PROJECT_DETAILS . '}}',
+				'object_id' => '{{' . self::WORK_SLUG . '}}',
+				'title'     => _x( 'Work', 'Theme starter content', 'neve' ),
 			],
-			'page_blog'            => [
+			'page_blog'     => [
 				'type'      => 'post_type',
 				'object'    => 'page',
 				'object_id' => '{{' . self::BLOG_SLUG . '}}',
+				'title'     => _x( 'Blog', 'Theme starter content', 'neve' ),
 			],
-			'page_contact'         => [
+			'page_contact'  => [
 				'type'      => 'post_type',
 				'object'    => 'page',
 				'object_id' => '{{' . self::CONTACT . '}}',
+				'title'     => _x( 'Contact', 'Theme starter content', 'neve' ),
 			],
 		];
 
@@ -163,6 +197,11 @@ class Starter_Content {
 				'type'      => 'post_type',
 				'object'    => 'page',
 				'object_id' => '{{' . self::BLOG_SLUG . '}}',
+			],
+			'page_work'    => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::WORK_SLUG . '}}',
 			],
 			'page_about'   => [
 				'type'      => 'post_type',
@@ -190,7 +229,7 @@ class Starter_Content {
 				'page_on_front'  => '{{' . self::HOME_SLUG . '}}',
 				'page_for_posts' => '{{' . self::BLOG_SLUG . '}}',
 				'show_on_front'  => 'page',
-				'blogname'       => 'Marketing Agency',
+				'blogname'       => 'Folio',
 			],
 			'theme_mods'  => require __DIR__ . '/starter-content/theme-mods.php',
 			'attachments' => array(
@@ -202,16 +241,12 @@ class Starter_Content {
 				),
 			),
 			'posts'       => [
-				self::HOME_SLUG       => require __DIR__ . '/starter-content/home.php',
-				self::ABOUT_SLUG      => require __DIR__ . '/starter-content/about.php',
-				self::CONTACT         => require __DIR__ . '/starter-content/contact.php',
-				self::PORTOFOLIO_SLUG => require __DIR__ . '/starter-content/portofolio.php',
-				self::PROJECT_DETAILS => require __DIR__ . '/starter-content/project-details.php',
-				self::BLOG_SLUG       => [
-					'post_name'  => self::BLOG_SLUG,
-					'post_type'  => 'page',
-					'post_title' => _x( 'Blog', 'Theme starter content', 'neve' ),
-				],
+				self::HOME_SLUG     => require __DIR__ . '/starter-content/home.php',
+				self::ABOUT_SLUG    => require __DIR__ . '/starter-content/about.php',
+				self::SERVICES_SLUG => require __DIR__ . '/starter-content/services.php',
+				self::WORK_SLUG     => require __DIR__ . '/starter-content/work.php',
+				self::CONTACT       => require __DIR__ . '/starter-content/contact.php',
+				self::BLOG_SLUG     => require __DIR__ . '/starter-content/blog.php',
 			],
 		];
 
