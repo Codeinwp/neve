@@ -72,7 +72,11 @@ class Starter_Content {
 			return $value;
 		}
 
-		if ( $post->post_name === self::BLOG_SLUG ) {
+		// Customizer starter-content drafts have no post_name yet; the slug lives in the draft meta.
+		$draft_slug = get_post_meta( $post_id, '_customize_draft_post_name', true );
+		$slug       = '' !== $draft_slug ? $draft_slug : $post->post_name;
+
+		if ( $slug === self::BLOG_SLUG ) {
 			return $value;
 		}
 
@@ -105,12 +109,11 @@ class Starter_Content {
 		if ( $update ) {
 			return;
 		}
-		$is_from_starter_content = ! empty( get_post_meta( $post_ID, '_customize_draft_post_name', true ) );
-		if ( ! $is_from_starter_content ) {
+		$draft_slug = get_post_meta( $post_ID, '_customize_draft_post_name', true );
+		if ( empty( $draft_slug ) ) {
 			return;
 		}
 		if ( $post->post_type === 'page' ) {
-			$draft_slug = get_post_meta( $post_ID, '_customize_draft_post_name', true );
 			update_post_meta( $post_ID, 'neve_meta_disable_title', 'on' );
 			update_post_meta( $post_ID, 'neve_meta_enable_content_width', 'on' );
 			update_post_meta( $post_ID, 'neve_meta_content_width', '100' );
@@ -121,7 +124,7 @@ class Starter_Content {
 		}
 
 		// Apply the Folio polish layer (core "Additional CSS") once, when the home page is imported.
-		if ( get_post_meta( $post_ID, '_customize_draft_post_name', true ) === self::HOME_SLUG ) {
+		if ( $draft_slug === self::HOME_SLUG ) {
 			$this->apply_starter_custom_css();
 		}
 	}
@@ -134,13 +137,20 @@ class Starter_Content {
 	 * @return void
 	 */
 	private function apply_starter_custom_css() {
-		if ( ! function_exists( 'wp_update_custom_css_post' ) ) {
+		if ( ! function_exists( 'wp_update_custom_css_post' ) || ! function_exists( 'wp_get_custom_css' ) ) {
 			return;
 		}
 		$css = require __DIR__ . '/starter-content/custom-css.php';
-		if ( ! empty( $css ) ) {
-			wp_update_custom_css_post( $css );
+		if ( empty( $css ) ) {
+			return;
 		}
+		$existing = (string) wp_get_custom_css();
+		// Idempotent and non-destructive: append once, never overwrite the user's own Additional CSS.
+		if ( false !== strpos( $existing, 'folio-hero-media' ) ) {
+			return;
+		}
+		$combined = '' === trim( $existing ) ? $css : $existing . "\n\n" . $css;
+		wp_update_custom_css_post( $combined );
 	}
 
 	/**
@@ -235,14 +245,6 @@ class Starter_Content {
 				'blogname'       => 'Folio',
 			],
 			'theme_mods'  => require __DIR__ . '/starter-content/theme-mods.php',
-			'attachments' => array(
-				'featured-image-logo' => array(
-					'post_title'   => 'Featured Logo',
-					'post_content' => 'Attachment Description',
-					'post_excerpt' => 'Attachment Caption',
-					'file'         => 'assets/img/starter-content/logo-agency.png',
-				),
-			),
 			'posts'       => [
 				self::HOME_SLUG     => require __DIR__ . '/starter-content/home.php',
 				self::ABOUT_SLUG    => require __DIR__ . '/starter-content/about.php',

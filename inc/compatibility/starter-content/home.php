@@ -66,13 +66,13 @@ $post_content = <<<'HTML'
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:cover {"url":"{{theme_uri}}assets/img/starter-content/folio-code.jpeg","dimRatio":25,"customOverlayColor":"#111827","minHeight":300,"contentPosition":"bottom left","style":{"spacing":{"padding":{"top":"18px","right":"18px","bottom":"18px","left":"18px"}}}} -->
+<!-- wp:cover {"url":"{{theme_uri}}assets/img/starter-content/folio-code.jpeg","dimRatio":30,"customOverlayColor":"#111827","minHeight":300,"contentPosition":"bottom left","style":{"spacing":{"padding":{"top":"18px","right":"18px","bottom":"18px","left":"18px"}}}} -->
 <div class="wp-block-cover has-background-dim-30 has-background-dim has-custom-content-position is-position-bottom-left" style="padding-top:18px;padding-right:18px;padding-bottom:18px;padding-left:18px;background-color:#111827;min-height:300px"><img class="wp-block-cover__image-background" alt="" src="{{theme_uri}}assets/img/starter-content/folio-code.jpeg" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"textColor":"nv-text-dark-bg","style":{"typography":{"fontSize":"15px","fontWeight":"700"}}} -->
 <p class="has-nv-text-dark-bg-color has-text-color" style="font-size:15px;font-weight:700">Web Design</p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:cover {"url":"{{theme_uri}}assets/img/starter-content/folio-process.jpeg","dimRatio":25,"customOverlayColor":"#111827","minHeight":300,"contentPosition":"bottom left","style":{"spacing":{"padding":{"top":"18px","right":"18px","bottom":"18px","left":"18px"}}}} -->
+<!-- wp:cover {"url":"{{theme_uri}}assets/img/starter-content/folio-process.jpeg","dimRatio":30,"customOverlayColor":"#111827","minHeight":300,"contentPosition":"bottom left","style":{"spacing":{"padding":{"top":"18px","right":"18px","bottom":"18px","left":"18px"}}}} -->
 <div class="wp-block-cover has-background-dim-30 has-background-dim has-custom-content-position is-position-bottom-left" style="padding-top:18px;padding-right:18px;padding-bottom:18px;padding-left:18px;background-color:#111827;min-height:300px"><img class="wp-block-cover__image-background" alt="" src="{{theme_uri}}assets/img/starter-content/folio-process.jpeg" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"textColor":"nv-text-dark-bg","style":{"typography":{"fontSize":"15px","fontWeight":"700"}}} -->
 <p class="has-nv-text-dark-bg-color has-text-color" style="font-size:15px;font-weight:700">Photography</p>
 <!-- /wp:paragraph --></div></div>
