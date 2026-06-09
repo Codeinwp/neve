@@ -93,18 +93,22 @@ $post_content = <<<'HTML'
 <!-- wp:column {"verticalAlignment":"top","width":"60%"} -->
 <div class="wp-block-column is-vertically-aligned-top" style="flex-basis:60%"><!-- wp:group {"className":"folio-card","style":{"border":{"color":"#E5E7EB","width":"1px","radius":"14px"},"spacing":{"padding":{"top":"36px","right":"36px","bottom":"36px","left":"36px"},"blockGap":"20px"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group folio-card has-border-color" style="border-color:#E5E7EB;border-width:1px;border-radius:14px;padding-top:36px;padding-right:36px;padding-bottom:36px;padding-left:36px"><!-- wp:heading {"level":3,"textColor":"neve-text-color","style":{"typography":{"fontSize":"24px","fontWeight":"700"}}} -->
-<h3 class="wp-block-heading has-neve-text-color-color has-text-color" style="font-size:24px;font-weight:700">Send us a message</h3>
+<h3 class="wp-block-heading has-neve-text-color-color has-text-color" style="font-size:24px;font-weight:700">Prefer to email?</h3>
 <!-- /wp:heading -->
 
-<!-- wp:html -->
-<form class="folio-form" action="#" method="post">
-<input type="text" name="name" placeholder="Your name" style="display:block;width:100%;border:1px solid #E5E7EB;border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:15px;color:#1F2937;background:#FFFFFF;box-sizing:border-box"/>
-<input type="email" name="email" placeholder="your@email.com" style="display:block;width:100%;border:1px solid #E5E7EB;border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:15px;color:#1F2937;background:#FFFFFF;box-sizing:border-box"/>
-<input type="text" name="subject" placeholder="Subject" style="display:block;width:100%;border:1px solid #E5E7EB;border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:15px;color:#1F2937;background:#FFFFFF;box-sizing:border-box"/>
-<textarea name="message" rows="6" placeholder="Tell us about your project..." style="display:block;width:100%;border:1px solid #E5E7EB;border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:15px;color:#1F2937;background:#FFFFFF;box-sizing:border-box;resize:vertical"></textarea>
-<button type="submit" style="background:#2563EB;color:#fff;border:none;border-radius:8px;padding:12px 24px;font-size:15px;font-weight:600;cursor:pointer">Send Message</button>
-</form>
-<!-- /wp:html --></div>
+<!-- wp:paragraph {"textColor":"nv-c-2","style":{"typography":{"fontSize":"16px","lineHeight":"1.7"}}} -->
+<p class="has-nv-c-2-color has-text-color" style="font-size:16px;line-height:1.7">Tell us about your project and we’ll get back to you within one business day. We read every message that comes in.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontSize":"22px","fontWeight":"700"}}} -->
+<p class="has-link-color" style="font-size:22px;font-weight:700"><a href="mailto:hello@folio.com" style="color:#2563EB">hello@folio.com</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"6px"}}}} -->
+<div class="wp-block-buttons" style="margin-top:6px"><!-- wp:button {"backgroundColor":"neve-link-color","textColor":"nv-text-dark-bg","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"14px","right":"28px","bottom":"14px","left":"28px"}},"elements":{"link":{"color":{"text":"var:preset|color|nv-text-dark-bg"}}}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-nv-text-dark-bg-color has-neve-link-color-background-color has-text-color has-background has-link-color" href="mailto:hello@folio.com" style="border-radius:8px;padding-top:14px;padding-right:28px;padding-bottom:14px;padding-left:28px">Email Us</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
 <!-- /wp:group --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
