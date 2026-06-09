@@ -130,8 +130,10 @@ class Starter_Content {
 	 * Apply the starter content polish layer as core custom CSS.
 	 *
 	 * Scoped under .folio-* classes, so it only affects the starter pages.
+	 *
+	 * @return void
 	 */
-	private function apply_starter_custom_css(): void {
+	private function apply_starter_custom_css() {
 		if ( ! function_exists( 'wp_update_custom_css_post' ) ) {
 			return;
 		}
@@ -165,13 +167,14 @@ class Starter_Content {
 				'type'      => 'post_type',
 				'object'    => 'page',
 				'object_id' => '{{' . self::SERVICES_SLUG . '}}',
-				'title'     => _x( 'Services', 'Theme starter content', 'neve' ),
+				// Intentionally untranslated demo labels so the renamed pages add no new POT strings.
+				'title'     => 'Services',
 			],
 			'page_work'     => [
 				'type'      => 'post_type',
 				'object'    => 'page',
 				'object_id' => '{{' . self::WORK_SLUG . '}}',
-				'title'     => _x( 'Work', 'Theme starter content', 'neve' ),
+				'title'     => 'Work',
 			],
 			'page_blog'     => [
 				'type'      => 'post_type',
