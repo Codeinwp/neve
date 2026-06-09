@@ -131,7 +131,7 @@ class Starter_Content {
 	 *
 	 * Scoped under .folio-* classes, so it only affects the starter pages.
 	 */
-	private function apply_starter_custom_css() {
+	private function apply_starter_custom_css(): void {
 		if ( ! function_exists( 'wp_update_custom_css_post' ) ) {
 			return;
 		}
