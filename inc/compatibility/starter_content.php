@@ -45,6 +45,11 @@ class Starter_Content {
 		// (core stages the auto-drafts on mere customizer open).
 		add_action( 'customize_save_after', [ $this, 'after_publish' ], 100 );
 
+		// The wp.org theme preview (wp-themes.com) serves starter content virtually and
+		// never publishes, and the fresh-site Customizer preview renders before publish —
+		// inline the polish layer there so both match the published result.
+		add_action( 'wp_enqueue_scripts', [ $this, 'preview_css' ], 20 );
+
 		if ( ! is_customize_preview() ) {
 			return;
 		}
@@ -84,11 +89,13 @@ class Starter_Content {
 			return $value;
 		}
 
-		// Only style our own starter drafts: the slug lives in the draft meta, and pages a
-		// user creates in the Customizer (or pre-existing ones) must not inherit these.
+		// Only style our own starter pages. Customizer drafts carry the slug in the draft
+		// meta (post_name is empty); the wp.org theme preview (wp-themes.com) serves the
+		// starter posts virtually with no meta at all, so fall back to post_name there.
 		$draft_slug = get_post_meta( $post_id, '_customize_draft_post_name', true );
+		$slug       = '' !== $draft_slug ? $draft_slug : get_post_field( 'post_name', $post_id );
 
-		if ( ! $this->is_starter_page_slug( $draft_slug ) || self::BLOG_SLUG === $draft_slug ) {
+		if ( ! $this->is_starter_page_slug( $slug ) || self::BLOG_SLUG === $slug ) {
 			return $value;
 		}
 
@@ -136,6 +143,22 @@ class Starter_Content {
 			if ( $draft_slug !== self::BLOG_SLUG ) {
 				update_post_meta( $post_ID, 'neve_meta_container', 'full-width' );
 			}
+		}
+	}
+
+	/**
+	 * Inline the starter polish CSS while the content renders without a publish.
+	 *
+	 * Active only while the class is constructed (fresh sites, plus the wp.org theme
+	 * preview which filters fresh_site to true). Published sites get the same CSS via
+	 * after_publish() and never construct this class again.
+	 *
+	 * @return void
+	 */
+	public function preview_css() {
+		$css = require __DIR__ . '/starter-content/custom-css.php';
+		if ( ! empty( $css ) ) {
+			wp_add_inline_style( 'neve-style', $css );
 		}
 	}
 
