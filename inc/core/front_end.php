@@ -69,6 +69,9 @@ class Front_End {
 			// Core only consumes starter content on fresh sites; skip building it elsewhere.
 			add_theme_support( 'starter-content', ( new Starter_Content() )->get() );
 		}
+		// Keep the starter pages' inline SVG icons KSES-safe for the life of the site,
+		// so later edits by users without unfiltered_html don't strip and invalidate them.
+		add_filter( 'wp_kses_allowed_html', array( Starter_Content::class, 'allow_starter_svg' ), 10, 2 );
 		add_theme_support( 'title-tag' );
 		add_filter( 'script_loader_tag', array( $this, 'filter_script_loader_tag' ), 10, 2 );
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );

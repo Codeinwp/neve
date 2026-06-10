@@ -40,9 +40,10 @@ class Starter_Content {
 			3
 		); // starter content does not provide means of adding post meta so we need to tweak it.
 
-		// Starter pages carry inline SVG icons; without this, users lacking the
-		// unfiltered_html capability (e.g. multisite admins) get them KSES-stripped on import.
-		add_filter( 'wp_kses_allowed_html', [ $this, 'allow_starter_svg' ], 10, 2 );
+		// Site-wide side effects (custom CSS, permalinks) must only run when the
+		// starter content is actually published, never on the customize.php preview
+		// (core stages the auto-drafts on mere customizer open).
+		add_action( 'customize_save_after', [ $this, 'after_publish' ], 100 );
 
 		if ( ! is_customize_preview() ) {
 			return;
@@ -83,21 +84,30 @@ class Starter_Content {
 			return $value;
 		}
 
-		$post = get_post( $post_id );
-
-		if ( ! $post ) {
-			return $value;
-		}
-
-		// Customizer starter-content drafts have no post_name yet; the slug lives in the draft meta.
+		// Only style our own starter drafts: the slug lives in the draft meta, and pages a
+		// user creates in the Customizer (or pre-existing ones) must not inherit these.
 		$draft_slug = get_post_meta( $post_id, '_customize_draft_post_name', true );
-		$slug       = '' !== $draft_slug ? $draft_slug : $post->post_name;
 
-		if ( $slug === self::BLOG_SLUG ) {
+		if ( ! $this->is_starter_page_slug( $draft_slug ) || self::BLOG_SLUG === $draft_slug ) {
 			return $value;
 		}
 
 		return $handled[ $meta_key ];
+	}
+
+	/**
+	 * Whether a draft slug belongs to one of our starter pages.
+	 *
+	 * @param mixed $slug Candidate slug.
+	 *
+	 * @return bool
+	 */
+	private function is_starter_page_slug( $slug ) {
+		return in_array(
+			$slug,
+			[ self::HOME_SLUG, self::BLOG_SLUG, self::ABOUT_SLUG, self::CONTACT, self::SERVICES_SLUG, self::WORK_SLUG ],
+			true
+		);
 	}
 
 
@@ -113,7 +123,9 @@ class Starter_Content {
 			return;
 		}
 		$draft_slug = get_post_meta( $post_ID, '_customize_draft_post_name', true );
-		if ( empty( $draft_slug ) ) {
+		// Only touch our own starter drafts — pages a user adds inside the Customizer
+		// carry the same draft meta and must be left alone.
+		if ( ! $this->is_starter_page_slug( $draft_slug ) ) {
 			return;
 		}
 		if ( $post->post_type === 'page' ) {
@@ -125,26 +137,60 @@ class Starter_Content {
 				update_post_meta( $post_ID, 'neve_meta_container', 'full-width' );
 			}
 		}
+	}
 
-		// One-time setup when the home page is imported.
-		if ( $draft_slug === self::HOME_SLUG ) {
-			$this->apply_starter_custom_css();
-			$this->maybe_enable_pretty_permalinks();
+	/**
+	 * Run the one-time site setup after the starter content is actually published.
+	 *
+	 * Hooked on customize_save_after: the post metas above attach to auto-drafts (garbage
+	 * collected if the changeset is abandoned), but custom CSS and permalinks are live,
+	 * site-wide state and may only change once the user commits the starter content.
+	 *
+	 * @return void
+	 */
+	public function after_publish() {
+		if ( ! $this->get_published_starter_page( self::HOME_SLUG ) ) {
+			return;
 		}
+		$this->apply_starter_custom_css();
+		$this->maybe_enable_pretty_permalinks();
+	}
+
+	/**
+	 * Fetch a published starter page by slug.
+	 *
+	 * @param string $slug Page slug.
+	 *
+	 * @return \WP_Post|null
+	 */
+	private function get_published_starter_page( $slug ) {
+		$pages = get_posts(
+			array(
+				'post_type'   => 'page',
+				'name'        => $slug,
+				'post_status' => 'publish',
+				'numberposts' => 1,
+			)
+		);
+
+		return empty( $pages ) ? null : $pages[0];
 	}
 
 	/**
 	 * Allow the inline SVG icons used by the starter pages through KSES.
 	 *
-	 * Only registered on fresh sites (see constructor). Shape elements and
-	 * presentation attributes only — no scripts, hrefs, or event handlers.
+	 * Registered unconditionally (see Front_End::setup_theme): the imported pages keep
+	 * their inline icons for the life of the site, so a later edit by a user without
+	 * unfiltered_html (multisite admins, editors) must not strip them and invalidate the
+	 * blocks. Shape elements and presentation attributes only — no scripts, hrefs, or
+	 * event handlers. Existing entries from other plugins are merged, not replaced.
 	 *
-	 * @param array<string, array<string, bool>> $tags Allowed tags.
-	 * @param string                             $context KSES context.
+	 * @param array<string, mixed> $tags Allowed tags.
+	 * @param string               $context KSES context.
 	 *
-	 * @return array<string, array<string, bool>>
+	 * @return array<string, mixed>
 	 */
-	public function allow_starter_svg( $tags, $context ) {
+	public static function allow_starter_svg( $tags, $context ) {
 		if ( 'post' !== $context ) {
 			return $tags;
 		}
@@ -157,36 +203,43 @@ class Starter_Content {
 			'stroke-linejoin' => true,
 		);
 
-		$tags['svg']    = array_merge(
-			$presentation,
-			array(
-				'width'       => true,
-				'height'      => true,
-				'viewbox'     => true,
-				'xmlns'       => true,
-				'aria-hidden' => true,
-				'focusable'   => true,
-			)
+		$allow = array(
+			'svg'    => array_merge(
+				$presentation,
+				array(
+					'width'       => true,
+					'height'      => true,
+					'viewbox'     => true,
+					'xmlns'       => true,
+					'aria-hidden' => true,
+					'focusable'   => true,
+				)
+			),
+			'path'   => array_merge( $presentation, array( 'd' => true ) ),
+			'circle' => array_merge(
+				$presentation,
+				array(
+					'cx' => true,
+					'cy' => true,
+					'r'  => true,
+				)
+			),
+			'rect'   => array_merge(
+				$presentation,
+				array(
+					'x'      => true,
+					'y'      => true,
+					'width'  => true,
+					'height' => true,
+					'rx'     => true,
+				)
+			),
 		);
-		$tags['path']   = array_merge( $presentation, array( 'd' => true ) );
-		$tags['circle'] = array_merge(
-			$presentation,
-			array(
-				'cx' => true,
-				'cy' => true,
-				'r'  => true,
-			)
-		);
-		$tags['rect']   = array_merge(
-			$presentation,
-			array(
-				'x'      => true,
-				'y'      => true,
-				'width'  => true,
-				'height' => true,
-				'rx'     => true,
-			)
-		);
+
+		foreach ( $allow as $tag => $attributes ) {
+			$existing     = isset( $tags[ $tag ] ) && is_array( $tags[ $tag ] ) ? $tags[ $tag ] : array();
+			$tags[ $tag ] = array_merge( $existing, $attributes );
+		}
 
 		return $tags;
 	}
@@ -205,7 +258,6 @@ class Starter_Content {
 			return;
 		}
 		if ( ! function_exists( 'got_url_rewrite' ) ) {
-			// The import can run from the front-end preview request, where admin includes are absent.
 			require_once ABSPATH . 'wp-admin/includes/misc.php';
 		}
 		if ( ! got_url_rewrite() ) {
@@ -218,6 +270,22 @@ class Starter_Content {
 		$wp_rewrite->set_permalink_structure( '/%postname%/' );
 		// Lazy flush: rules regenerate on the next request (flush_rewrite_rules is plugin territory).
 		update_option( 'rewrite_rules', '' );
+
+		// Verify a pretty URL actually resolves, like the core installer does. A definitive
+		// 404 (e.g. Apache without .htaccess rules) reverts; loopback errors are inconclusive.
+		$probe = $this->get_published_starter_page( self::ABOUT_SLUG );
+		if ( null === $probe ) {
+			return;
+		}
+		$response = wp_remote_head( get_permalink( $probe ), array( 'timeout' => 3 ) );
+		if ( is_wp_error( $response ) ) {
+			return;
+		}
+		$code = (int) wp_remote_retrieve_response_code( $response );
+		if ( $code >= 400 ) {
+			$wp_rewrite->set_permalink_structure( '' );
+			update_option( 'rewrite_rules', '' );
+		}
 	}
 
 	/**
