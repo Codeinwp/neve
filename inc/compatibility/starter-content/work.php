@@ -218,7 +218,7 @@ $post_content = str_replace( '$arrow', $arrow, $post_content );
 return [
 	'post_type'    => 'page',
 	'post_name'    => 'work',
-	'post_title'   => 'Work',
+	'post_title'   => _x( 'Work', 'Theme starter content', 'neve' ),
 	'post_content' => str_replace(
 		[ '{{theme_uri}}', '{{home_url}}' ],
 		[ trailingslashit( get_template_directory_uri() ), trailingslashit( home_url() ) ],

@@ -360,7 +360,7 @@ HTML;
 return [
 	'post_type'    => 'page',
 	'post_name'    => 'services',
-	'post_title'   => 'Services',
+	'post_title'   => _x( 'Services', 'Theme starter content', 'neve' ),
 	'post_content' => str_replace(
 		[ '{{theme_uri}}', '{{home_url}}' ],
 		[ trailingslashit( get_template_directory_uri() ), trailingslashit( home_url() ) ],

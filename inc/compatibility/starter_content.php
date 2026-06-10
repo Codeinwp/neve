@@ -359,14 +359,15 @@ class Starter_Content {
 				'type'      => 'post_type',
 				'object'    => 'page',
 				'object_id' => '{{' . self::SERVICES_SLUG . '}}',
-				// Intentionally untranslated demo labels so the renamed pages add no new POT strings.
-				'title'     => 'Services',
+				// "Services"/"Work" reuse msgids that already exist in the POT with this
+				// context (from the previous starter content), so no new strings are added.
+				'title'     => _x( 'Services', 'Theme starter content', 'neve' ),
 			],
 			'page_work'     => [
 				'type'      => 'post_type',
 				'object'    => 'page',
 				'object_id' => '{{' . self::WORK_SLUG . '}}',
-				'title'     => 'Work',
+				'title'     => _x( 'Work', 'Theme starter content', 'neve' ),
 			],
 			'page_blog'     => [
 				'type'      => 'post_type',
