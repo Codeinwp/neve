@@ -426,12 +426,17 @@ class Starter_Content {
 				'page_for_posts' => '{{' . self::BLOG_SLUG . '}}',
 				'show_on_front'  => 'page',
 				'blogname'       => 'Default',
+				'site_icon'      => '{{default-icon}}',
 			],
 			'theme_mods'  => require __DIR__ . '/starter-content/theme-mods.php',
 			'attachments' => [
 				'default-logo' => [
 					'post_title' => 'Default Logo',
 					'file'       => 'assets/img/starter-content/default-logo.png',
+				],
+				'default-icon' => [
+					'post_title' => 'Default Icon',
+					'file'       => 'assets/img/starter-content/default-icon.png',
 				],
 			],
 			'posts'       => [
