@@ -36,7 +36,7 @@ $post_content = <<<'HTML'
 <!-- /wp:group -->
 
 <!-- wp:paragraph {"textColor":"nv-c-2","style":{"typography":{"fontSize":"15px"}}} -->
-<p class="has-nv-c-2-color has-text-color" style="font-size:15px">hello@folio.com</p>
+<p class="has-nv-c-2-color has-text-color" style="font-size:15px">hello@example.com</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -101,12 +101,12 @@ $post_content = <<<'HTML'
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"typography":{"fontSize":"22px","fontWeight":"700"}}} -->
-<p class="has-link-color" style="font-size:22px;font-weight:700"><a href="mailto:hello@folio.com" style="color:#2563EB">hello@folio.com</a></p>
+<p class="has-link-color" style="font-size:22px;font-weight:700"><a href="mailto:hello@example.com" style="color:#2563EB">hello@example.com</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"style":{"spacing":{"margin":{"top":"6px"}}}} -->
 <div class="wp-block-buttons" style="margin-top:6px"><!-- wp:button {"backgroundColor":"neve-link-color","textColor":"nv-text-dark-bg","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"14px","right":"28px","bottom":"14px","left":"28px"}},"elements":{"link":{"color":{"text":"var:preset|color|nv-text-dark-bg"}}}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-nv-text-dark-bg-color has-neve-link-color-background-color has-text-color has-background has-link-color" href="mailto:hello@folio.com" style="border-radius:8px;padding-top:14px;padding-right:28px;padding-bottom:14px;padding-left:28px">Email Us</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link has-nv-text-dark-bg-color has-neve-link-color-background-color has-text-color has-background has-link-color" href="mailto:hello@example.com" style="border-radius:8px;padding-top:14px;padding-right:28px;padding-bottom:14px;padding-left:28px">Email Us</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>
@@ -160,8 +160,8 @@ $post_content = <<<'HTML'
 <div class="wp-block-button"><a class="wp-block-button__link has-neve-link-color-color has-nv-site-bg-background-color has-text-color has-background has-link-color" href="{{home_url}}work/" style="border-radius:8px;padding-top:14px;padding-right:30px;padding-bottom:14px;padding-left:30px">View Our Work</a></div>
 <!-- /wp:button -->
 
-<!-- wp:button {"textColor":"nv-text-dark-bg","className":"is-style-outline","style":{"border":{"radius":"8px","color":"#ffffff","width":"1px"},"spacing":{"padding":{"top":"14px","right":"30px","bottom":"14px","left":"30px"}},"elements":{"link":{"color":{"text":"var:preset|color|nv-text-dark-bg"}}}}} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-nv-text-dark-bg-color has-text-color has-border-color has-link-color" href="{{home_url}}services/" style="border-color:#ffffff;border-width:1px;border-radius:8px;padding-top:14px;padding-right:30px;padding-bottom:14px;padding-left:30px">Our Services</a></div>
+<!-- wp:button {"textColor":"nv-text-dark-bg","className":"is-style-outline folio-btn-outline","style":{"border":{"radius":"8px","color":"#ffffff","width":"1px"},"spacing":{"padding":{"top":"14px","right":"30px","bottom":"14px","left":"30px"}},"elements":{"link":{"color":{"text":"var:preset|color|nv-text-dark-bg"}}}}} -->
+<div class="wp-block-button is-style-outline folio-btn-outline"><a class="wp-block-button__link has-nv-text-dark-bg-color has-text-color has-border-color has-link-color" href="{{home_url}}services/" style="border-color:#ffffff;border-width:1px;border-radius:8px;padding-top:14px;padding-right:30px;padding-bottom:14px;padding-left:30px">Our Services</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->

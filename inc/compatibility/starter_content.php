@@ -412,7 +412,7 @@ class Starter_Content {
 		];
 
 		$content = [
-			'nav_menus'  =>
+			'nav_menus'   =>
 				[
 					'primary' => [
 						'items' => $nav_items,
@@ -421,14 +421,20 @@ class Starter_Content {
 						'items' => $footer_nav_items,
 					],
 				],
-			'options'    => [
+			'options'     => [
 				'page_on_front'  => '{{' . self::HOME_SLUG . '}}',
 				'page_for_posts' => '{{' . self::BLOG_SLUG . '}}',
 				'show_on_front'  => 'page',
-				'blogname'       => 'Folio',
+				'blogname'       => 'Default',
 			],
-			'theme_mods' => require __DIR__ . '/starter-content/theme-mods.php',
-			'posts'      => [
+			'theme_mods'  => require __DIR__ . '/starter-content/theme-mods.php',
+			'attachments' => [
+				'default-logo' => [
+					'post_title' => 'Default Logo',
+					'file'       => 'assets/img/starter-content/default-logo.png',
+				],
+			],
+			'posts'       => [
 				self::HOME_SLUG     => require __DIR__ . '/starter-content/home.php',
 				self::ABOUT_SLUG    => require __DIR__ . '/starter-content/about.php',
 				self::SERVICES_SLUG => require __DIR__ . '/starter-content/services.php',

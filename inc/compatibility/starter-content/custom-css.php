@@ -1,6 +1,6 @@
 <?php
 /**
- * Folio starter content polish layer.
+ * Default starter content polish layer.
  *
  * Applied as core "Additional CSS" (wp_custom_css) on import. Every rule is scoped
  * under a .folio-* class added to core blocks, so it only affects the starter pages
@@ -10,7 +10,7 @@
  */
 
 return <<<'CSS'
-/* ---- Folio starter content ---- */
+/* ---- Default starter content ---- */
 
 /* Section rhythm helpers */
 .folio-eyebrow{margin-bottom:14px}
@@ -29,6 +29,10 @@ return <<<'CSS'
 /* Star rating row */
 .folio-stars{display:inline-flex;gap:3px;color:var(--nv-c-3,#F59E0B);line-height:1}
 .folio-stars svg{width:18px;height:18px;display:block}
+
+/* Outline buttons: core's transparent-background outline rule loses the cascade on some
+   WP versions (e.g. 6.9) and the default dark button background shows through. */
+.folio-btn-outline .wp-block-button__link{background-color:transparent}
 
 /* Tag pills */
 .folio-pills .wp-block-button__link{font-size:13px}

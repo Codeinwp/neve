@@ -24,8 +24,8 @@ $post_content = <<<'HTML'
 <div class="wp-block-button"><a class="wp-block-button__link has-nv-text-dark-bg-color has-neve-link-color-background-color has-text-color has-background has-link-color" href="{{home_url}}work/" style="border-radius:8px;padding-top:14px;padding-right:28px;padding-bottom:14px;padding-left:28px">View Our Work</a></div>
 <!-- /wp:button -->
 
-<!-- wp:button {"textColor":"neve-text-color","className":"is-style-outline","style":{"border":{"radius":"8px","color":"#E5E7EB","width":"1px"},"spacing":{"padding":{"top":"14px","right":"28px","bottom":"14px","left":"28px"}},"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}}} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-neve-text-color-color has-text-color has-border-color has-link-color" href="{{home_url}}contact/" style="border-color:#E5E7EB;border-width:1px;border-radius:8px;padding-top:14px;padding-right:28px;padding-bottom:14px;padding-left:28px">Get in Touch</a></div>
+<!-- wp:button {"textColor":"neve-text-color","className":"is-style-outline folio-btn-outline","style":{"border":{"radius":"8px","color":"#E5E7EB","width":"1px"},"spacing":{"padding":{"top":"14px","right":"28px","bottom":"14px","left":"28px"}},"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}}} -->
+<div class="wp-block-button is-style-outline folio-btn-outline"><a class="wp-block-button__link has-neve-text-color-color has-text-color has-border-color has-link-color" href="{{home_url}}contact/" style="border-color:#E5E7EB;border-width:1px;border-radius:8px;padding-top:14px;padding-right:28px;padding-bottom:14px;padding-left:28px">Get in Touch</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
@@ -363,7 +363,7 @@ $post_content = <<<'HTML'
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"textColor":"neve-text-color","style":{"typography":{"fontSize":"16px","lineHeight":"1.7"}}} -->
-<p class="has-neve-text-color-color has-text-color" style="font-size:16px;line-height:1.7">Folio reworked our entire online presence. Their team understood our goals early and delivered what we asked for on time.</p>
+<p class="has-neve-text-color-color has-text-color" style="font-size:16px;line-height:1.7">The Default team reworked our entire online presence. They understood our goals early and delivered what we asked for on time.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"className":"folio-author","style":{"spacing":{"blockGap":"14px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
@@ -391,7 +391,7 @@ $post_content = <<<'HTML'
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"textColor":"neve-text-color","style":{"typography":{"fontSize":"16px","lineHeight":"1.7"}}} -->
-<p class="has-neve-text-color-color has-text-color" style="font-size:16px;line-height:1.7">Working with Folio was straightforward. They are responsive, creative, and genuinely invested in our success.</p>
+<p class="has-neve-text-color-color has-text-color" style="font-size:16px;line-height:1.7">Working with Default was straightforward. They are responsive, creative, and genuinely invested in our success.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"className":"folio-author","style":{"spacing":{"blockGap":"14px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
@@ -419,7 +419,7 @@ $post_content = <<<'HTML'
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"textColor":"neve-text-color","style":{"typography":{"fontSize":"16px","lineHeight":"1.7"}}} -->
-<p class="has-neve-text-color-color has-text-color" style="font-size:16px;line-height:1.7">Reliable service from start to finish. Folio paid close attention to detail at every stage of the project.</p>
+<p class="has-neve-text-color-color has-text-color" style="font-size:16px;line-height:1.7">Reliable service from start to finish. Default paid close attention to detail at every stage of the project.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"className":"folio-author","style":{"spacing":{"blockGap":"14px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
@@ -456,8 +456,8 @@ $post_content = <<<'HTML'
 <div class="wp-block-button"><a class="wp-block-button__link has-neve-link-color-color has-nv-site-bg-background-color has-text-color has-background has-link-color" href="{{home_url}}contact/" style="border-radius:8px;padding-top:14px;padding-right:30px;padding-bottom:14px;padding-left:30px">Start a Project</a></div>
 <!-- /wp:button -->
 
-<!-- wp:button {"textColor":"nv-text-dark-bg","className":"is-style-outline","style":{"border":{"radius":"8px","color":"#ffffff","width":"1px"},"spacing":{"padding":{"top":"14px","right":"30px","bottom":"14px","left":"30px"}},"elements":{"link":{"color":{"text":"var:preset|color|nv-text-dark-bg"}}}}} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-nv-text-dark-bg-color has-text-color has-border-color has-link-color" href="{{home_url}}work/" style="border-color:#ffffff;border-width:1px;border-radius:8px;padding-top:14px;padding-right:30px;padding-bottom:14px;padding-left:30px">View Our Work</a></div>
+<!-- wp:button {"textColor":"nv-text-dark-bg","className":"is-style-outline folio-btn-outline","style":{"border":{"radius":"8px","color":"#ffffff","width":"1px"},"spacing":{"padding":{"top":"14px","right":"30px","bottom":"14px","left":"30px"}},"elements":{"link":{"color":{"text":"var:preset|color|nv-text-dark-bg"}}}}} -->
+<div class="wp-block-button is-style-outline folio-btn-outline"><a class="wp-block-button__link has-nv-text-dark-bg-color has-text-color has-border-color has-link-color" href="{{home_url}}work/" style="border-color:#ffffff;border-width:1px;border-radius:8px;padding-top:14px;padding-right:30px;padding-bottom:14px;padding-left:30px">View Our Work</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->
