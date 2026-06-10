@@ -65,7 +65,10 @@ class Front_End {
 		add_theme_support( 'link-color' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'service_worker', true );
-		add_theme_support( 'starter-content', ( new Starter_Content() )->get() );
+		if ( get_option( 'fresh_site' ) ) {
+			// Core only consumes starter content on fresh sites; skip building it elsewhere.
+			add_theme_support( 'starter-content', ( new Starter_Content() )->get() );
+		}
 		add_theme_support( 'title-tag' );
 		add_filter( 'script_loader_tag', array( $this, 'filter_script_loader_tag' ), 10, 2 );
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );

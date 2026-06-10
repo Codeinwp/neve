@@ -40,6 +40,10 @@ class Starter_Content {
 			3
 		); // starter content does not provide means of adding post meta so we need to tweak it.
 
+		// Starter pages carry inline SVG icons; without this, users lacking the
+		// unfiltered_html capability (e.g. multisite admins) get them KSES-stripped on import.
+		add_filter( 'wp_kses_allowed_html', [ $this, 'allow_starter_svg' ], 10, 2 );
+
 		if ( ! is_customize_preview() ) {
 			return;
 		}
@@ -62,6 +66,19 @@ class Starter_Content {
 	 * @return string Meta value.
 	 */
 	public function starter_meta( $value, $post_id, $meta_key ) {
+		$handled = array(
+			'neve_meta_disable_title'        => 'on',
+			'neve_meta_container'            => 'full-width',
+			'neve_meta_enable_content_width' => 'on',
+			'neve_meta_content_width'        => '100',
+		);
+
+		// Bail for every other key. This also prevents recursion: the draft-slug read
+		// below re-enters this filter with the '_customize_draft_post_name' key.
+		if ( ! isset( $handled[ $meta_key ] ) ) {
+			return $value;
+		}
+
 		if ( get_post_type( $post_id ) !== 'page' ) {
 			return $value;
 		}
@@ -80,21 +97,7 @@ class Starter_Content {
 			return $value;
 		}
 
-
-		if ( $meta_key === 'neve_meta_disable_title' ) {
-			return 'on';
-		}
-		if ( $meta_key === 'neve_meta_container' ) {
-			return 'full-width';
-		}
-		if ( $meta_key === 'neve_meta_enable_content_width' ) {
-			return 'on';
-		}
-		if ( $meta_key === 'neve_meta_content_width' ) {
-			return '100';
-		}
-
-		return $value;
+		return $handled[ $meta_key ];
 	}
 
 
@@ -123,10 +126,98 @@ class Starter_Content {
 			}
 		}
 
-		// Apply the Folio polish layer (core "Additional CSS") once, when the home page is imported.
+		// One-time setup when the home page is imported.
 		if ( $draft_slug === self::HOME_SLUG ) {
 			$this->apply_starter_custom_css();
+			$this->maybe_enable_pretty_permalinks();
 		}
+	}
+
+	/**
+	 * Allow the inline SVG icons used by the starter pages through KSES.
+	 *
+	 * Only registered on fresh sites (see constructor). Shape elements and
+	 * presentation attributes only — no scripts, hrefs, or event handlers.
+	 *
+	 * @param array<string, array<string, bool>> $tags Allowed tags.
+	 * @param string                             $context KSES context.
+	 *
+	 * @return array<string, array<string, bool>>
+	 */
+	public function allow_starter_svg( $tags, $context ) {
+		if ( 'post' !== $context ) {
+			return $tags;
+		}
+
+		$presentation = array(
+			'fill'            => true,
+			'stroke'          => true,
+			'stroke-width'    => true,
+			'stroke-linecap'  => true,
+			'stroke-linejoin' => true,
+		);
+
+		$tags['svg']    = array_merge(
+			$presentation,
+			array(
+				'width'       => true,
+				'height'      => true,
+				'viewbox'     => true,
+				'xmlns'       => true,
+				'aria-hidden' => true,
+				'focusable'   => true,
+			)
+		);
+		$tags['path']   = array_merge( $presentation, array( 'd' => true ) );
+		$tags['circle'] = array_merge(
+			$presentation,
+			array(
+				'cx' => true,
+				'cy' => true,
+				'r'  => true,
+			)
+		);
+		$tags['rect']   = array_merge(
+			$presentation,
+			array(
+				'x'      => true,
+				'y'      => true,
+				'width'  => true,
+				'height' => true,
+				'rx'     => true,
+			)
+		);
+
+		return $tags;
+	}
+
+	/**
+	 * Enable pretty permalinks on import when the server supports them.
+	 *
+	 * The starter pages cross-link via path URLs (/work/, /contact/, ...), which 404
+	 * under plain permalinks. Mirrors the core installer behavior: only act when no
+	 * structure is set and URL rewriting is available.
+	 *
+	 * @return void
+	 */
+	private function maybe_enable_pretty_permalinks() {
+		if ( get_option( 'permalink_structure' ) ) {
+			return;
+		}
+		if ( ! function_exists( 'got_url_rewrite' ) ) {
+			// The import can run from the front-end preview request, where admin includes are absent.
+			require_once ABSPATH . 'wp-admin/includes/misc.php';
+		}
+		if ( ! got_url_rewrite() ) {
+			return;
+		}
+		global $wp_rewrite;
+		if ( ! $wp_rewrite instanceof \WP_Rewrite ) {
+			return;
+		}
+		$wp_rewrite->set_permalink_structure( '/%postname%/' );
+		// Lazy flush: rules regenerate on the next request (flush_rewrite_rules is plugin territory).
+		update_option( 'rewrite_rules', '' );
 	}
 
 	/**
@@ -229,7 +320,7 @@ class Starter_Content {
 		];
 
 		$content = [
-			'nav_menus'   =>
+			'nav_menus'  =>
 				[
 					'primary' => [
 						'items' => $nav_items,
@@ -238,14 +329,14 @@ class Starter_Content {
 						'items' => $footer_nav_items,
 					],
 				],
-			'options'     => [
+			'options'    => [
 				'page_on_front'  => '{{' . self::HOME_SLUG . '}}',
 				'page_for_posts' => '{{' . self::BLOG_SLUG . '}}',
 				'show_on_front'  => 'page',
 				'blogname'       => 'Folio',
 			],
-			'theme_mods'  => require __DIR__ . '/starter-content/theme-mods.php',
-			'posts'       => [
+			'theme_mods' => require __DIR__ . '/starter-content/theme-mods.php',
+			'posts'      => [
 				self::HOME_SLUG     => require __DIR__ . '/starter-content/home.php',
 				self::ABOUT_SLUG    => require __DIR__ . '/starter-content/about.php',
 				self::SERVICES_SLUG => require __DIR__ . '/starter-content/services.php',
