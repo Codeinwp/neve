@@ -64,8 +64,11 @@ return <<<'CSS'
 .folio-team-member{text-align:center}
 .folio-team-member .folio-avatar{width:62px;height:62px;font-size:20px;margin-left:auto;margin-right:auto}
 
-/* Testimonial author row: keep avatar + name vertically centered */
+/* Testimonial author row: keep avatar + name vertically centered. Classic themes put
+   the nested stack's blockGap on the inner-container, so the name/role paragraphs keep
+   their default margins and overflow the avatar height — reset them. */
 .folio-author > .wp-block-group__inner-container,.folio-author.is-layout-flex{align-items:center}
+.folio-author p{margin:0}
 
 /* Stats */
 .folio-stat-num{line-height:1}
@@ -88,4 +91,26 @@ return <<<'CSS'
 
 /* Generic image rounding inside starter pages */
 .folio-round img{border-radius:16px}
+
+/* ---- Block editor only ---- */
+/* The editor renders core/html previews in a sandboxed iframe whose box stretches
+   to the available width, which breaks flex rows (squeezed labels) and centering.
+   Size the starter icon/avatar blocks to their actual content. Scoped to preview
+   mode via :has() so the HTML-edit textarea stays full width; core/html saves
+   without a wrapper element, so these rules are inert on the front end. */
+.folio-rating .wp-block-html:has(.components-sandbox){flex:0 0 102px;max-width:102px}
+.folio-author .wp-block-html:has(.components-sandbox){flex:0 0 46px;max-width:46px}
+.folio-team-member .wp-block-html:has(.components-sandbox){flex:0 0 auto;width:46px;max-width:46px}
+.folio-card-center .wp-block-html:has(.components-sandbox){width:30px;max-width:30px;margin-left:auto;margin-right:auto}
+.folio-project .wp-block-html:has(.components-sandbox){flex:0 0 20px;max-width:20px}
+.folio-check .wp-block-html:has(.components-sandbox){flex:0 0 18px;max-width:18px}
+.folio-chip .wp-block-html:has(.components-sandbox){flex:0 0 44px;max-width:44px}
+/* The classic-editor canvas gives every block auto side margins (default content
+   width), which centers fit-content items inside flex rows — pin ours back left.
+   Element+class selectors out-rank the canvas default; .wp-block is editor-only. */
+.folio-author > div.wp-block,
+.folio-rating > div.wp-block,.folio-rating > p.wp-block,
+.folio-check > div.wp-block,.folio-check > p.wp-block,
+.folio-chip > div.wp-block,.folio-chip > p.wp-block,
+.folio-project div.wp-block,.folio-project p.wp-block{margin-left:0;margin-right:0}
 CSS;

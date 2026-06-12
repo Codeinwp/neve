@@ -37,8 +37,8 @@ $post_content = <<<'HTML'
 
 <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"16px","top":"14px"}}}} -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#2563EB"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -49,8 +49,8 @@ $post_content = <<<'HTML'
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#2563EB"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -63,8 +63,8 @@ $post_content = <<<'HTML'
 
 <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"16px","top":"14px"},"margin":{"top":"14px"}}}} -->
 <div class="wp-block-columns" style="margin-top:14px"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#2563EB"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -75,8 +75,8 @@ $post_content = <<<'HTML'
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#2563EB"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -123,8 +123,8 @@ $post_content = <<<'HTML'
 
 <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"16px","top":"14px"}}}} -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#06B6D4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -135,8 +135,8 @@ $post_content = <<<'HTML'
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#06B6D4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -149,8 +149,8 @@ $post_content = <<<'HTML'
 
 <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"16px","top":"14px"},"margin":{"top":"14px"}}}} -->
 <div class="wp-block-columns" style="margin-top:14px"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#06B6D4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -161,8 +161,8 @@ $post_content = <<<'HTML'
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#06B6D4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -197,8 +197,8 @@ $post_content = <<<'HTML'
 
 <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"16px","top":"14px"}}}} -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#F59E0B"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -209,8 +209,8 @@ $post_content = <<<'HTML'
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#F59E0B"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -223,8 +223,8 @@ $post_content = <<<'HTML'
 
 <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"16px","top":"14px"},"margin":{"top":"14px"}}}} -->
 <div class="wp-block-columns" style="margin-top:14px"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#F59E0B"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -235,8 +235,8 @@ $post_content = <<<'HTML'
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#F59E0B"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -283,8 +283,8 @@ $post_content = <<<'HTML'
 
 <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"16px","top":"14px"}}}} -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#7C3AED"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -295,8 +295,8 @@ $post_content = <<<'HTML'
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#7C3AED"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -309,8 +309,8 @@ $post_content = <<<'HTML'
 
 <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"16px","top":"14px"},"margin":{"top":"14px"}}}} -->
 <div class="wp-block-columns" style="margin-top:14px"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#7C3AED"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 
@@ -321,8 +321,8 @@ $post_content = <<<'HTML'
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-check","style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-check"><!-- wp:html -->
 <span class="folio-icon" style="color:#7C3AED"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
 <!-- /wp:html -->
 

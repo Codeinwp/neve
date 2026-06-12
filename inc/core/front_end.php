@@ -72,6 +72,9 @@ class Front_End {
 		// Keep the starter pages' inline SVG icons KSES-safe for the life of the site,
 		// so later edits by users without unfiltered_html don't strip and invalidate them.
 		add_filter( 'wp_kses_allowed_html', array( Starter_Content::class, 'allow_starter_svg' ), 10, 2 );
+		// Core never loads "Additional CSS" in the block editor; mirror the starter
+		// polish there so the starter pages match the front end while editing.
+		add_filter( 'block_editor_settings_all', array( Starter_Content::class, 'editor_css' ) );
 		add_theme_support( 'title-tag' );
 		add_filter( 'script_loader_tag', array( $this, 'filter_script_loader_tag' ), 10, 2 );
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );

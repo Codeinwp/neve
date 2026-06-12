@@ -163,6 +163,38 @@ class Starter_Content {
 	}
 
 	/**
+	 * Mirror the starter polish CSS inside the block editor canvas.
+	 *
+	 * Core never loads "Additional CSS" (wp_custom_css) in the post editor, so without
+	 * this the starter pages render misaligned there (uncentered avatars, unstyled
+	 * cards) while looking fine on the front end. Every rule is scoped to .folio-*
+	 * classes, so the styles are inert for content that does not use them.
+	 *
+	 * Hooked unconditionally (the class is only constructed on fresh sites, but the
+	 * pages outlive the fresh_site flag), gated on the polish layer actually being
+	 * active: either the site is still fresh, or the published Additional CSS carries
+	 * the starter marker. If the user deletes the Additional CSS, the editor follows.
+	 *
+	 * @param array $settings Block editor settings.
+	 *
+	 * @return array
+	 */
+	public static function editor_css( $settings ) {
+		$active = get_option( 'fresh_site' ) || false !== strpos( (string) wp_get_custom_css(), 'folio-' );
+		if ( ! $active || ! is_array( $settings ) ) {
+			return $settings;
+		}
+		$css = require __DIR__ . '/starter-content/custom-css.php';
+		if ( ! empty( $css ) ) {
+			if ( ! isset( $settings['styles'] ) || ! is_array( $settings['styles'] ) ) {
+				$settings['styles'] = array();
+			}
+			$settings['styles'][] = array( 'css' => $css );
+		}
+		return $settings;
+	}
+
+	/**
 	 * Run the one-time site setup after the starter content is actually published.
 	 *
 	 * Hooked on customize_save_after: the post metas above attach to auto-drafts (garbage

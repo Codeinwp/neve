@@ -25,8 +25,8 @@ $post_content = <<<'HTML'
 <div class="wp-block-columns are-vertically-aligned-top"><!-- wp:column {"verticalAlignment":"top","width":"40%"} -->
 <div class="wp-block-column is-vertically-aligned-top" style="flex-basis:40%"><!-- wp:group {"style":{"spacing":{"blockGap":"28px"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"6px"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"12px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-group"><!-- wp:group {"className":"folio-chip","style":{"spacing":{"blockGap":"12px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-chip"><!-- wp:html -->
 <span class="folio-contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 12l8.5-5.5"/></svg></span>
 <!-- /wp:html -->
 
@@ -41,8 +41,8 @@ $post_content = <<<'HTML'
 <!-- /wp:group -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"6px"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"12px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-group"><!-- wp:group {"className":"folio-chip","style":{"spacing":{"blockGap":"12px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-chip"><!-- wp:html -->
 <span class="folio-contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.7 2 2 0 0 1 5 3.5z"/></svg></span>
 <!-- /wp:html -->
 
@@ -57,8 +57,8 @@ $post_content = <<<'HTML'
 <!-- /wp:group -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"6px"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"12px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-group"><!-- wp:group {"className":"folio-chip","style":{"spacing":{"blockGap":"12px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-chip"><!-- wp:html -->
 <span class="folio-contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 0 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
 <!-- /wp:html -->
 
@@ -73,8 +73,8 @@ $post_content = <<<'HTML'
 <!-- /wp:group -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"6px"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"12px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:html -->
+<div class="wp-block-group"><!-- wp:group {"className":"folio-chip","style":{"spacing":{"blockGap":"12px"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group folio-chip"><!-- wp:html -->
 <span class="folio-contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
 <!-- /wp:html -->
 
