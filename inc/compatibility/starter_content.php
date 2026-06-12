@@ -175,13 +175,13 @@ class Starter_Content {
 	 * active: either the site is still fresh, or the published Additional CSS carries
 	 * the starter marker. If the user deletes the Additional CSS, the editor follows.
 	 *
-	 * @param array $settings Block editor settings.
+	 * @param array<string, mixed> $settings Block editor settings.
 	 *
-	 * @return array
+	 * @return array<string, mixed>
 	 */
 	public static function editor_css( $settings ) {
 		$active = get_option( 'fresh_site' ) || false !== strpos( (string) wp_get_custom_css(), 'folio-' );
-		if ( ! $active || ! is_array( $settings ) ) {
+		if ( ! $active ) {
 			return $settings;
 		}
 		$css = require __DIR__ . '/starter-content/custom-css.php';
