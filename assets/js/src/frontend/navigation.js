@@ -19,6 +19,7 @@ export const initNavigation = () => {
 	handleMobileDropdowns();
 	handleSearch();
 	handleMiniCartPosition();
+	handleMiniCartMobileToggle();
 	window.HFG.initSearch = function () {
 		handleSearch();
 		handleMobileDropdowns();
@@ -224,19 +225,95 @@ function handleSearch() {
  * Handle the mini cart position in nav.
  */
 function handleMiniCartPosition() {
-	const item = document.querySelector('.header--row .menu-item-nav-cart');
-	if (item === null) {
+	const items = document.querySelectorAll('.header--row .menu-item-nav-cart');
+	if (items.length === 0) {
 		return;
 	}
-	const miniCart = item.querySelector('.nv-nav-cart:not(.cart-off-canvas)');
 
-	if (miniCart !== null) {
-		miniCart.style.left =
-			item.getBoundingClientRect().left < 350 ? 0 : null;
-	}
+	const isMobile = window.matchMedia('(max-width: 959px)').matches;
+	const sideSpacing = 2 * 16;
+
+	items.forEach((item) => {
+		const miniCart = item.querySelector(
+			'.nv-nav-cart:not(.cart-off-canvas)'
+		);
+
+		if (miniCart === null) {
+			return;
+		}
+
+		miniCart.style.left = '';
+		miniCart.style.right = '';
+
+		if (isMobile) {
+			const cartWidth = Math.min(360, window.innerWidth - sideSpacing);
+			const itemOffset = item.getBoundingClientRect().left;
+
+			miniCart.style.width = `${cartWidth}px`;
+			miniCart.style.maxWidth = `calc(100vw - ${sideSpacing}px)`;
+			miniCart.style.left = `${
+				(window.innerWidth - cartWidth) / 2 - itemOffset
+			}px`;
+			miniCart.style.right = 'auto';
+			return;
+		}
+
+		miniCart.style.width = '';
+		miniCart.style.maxWidth = '';
+		miniCart.style.left = item.getBoundingClientRect().left < 350 ? 0 : '';
+	});
 }
 
 window.addEventListener('resize', handleMiniCartPosition);
+
+/**
+ * Toggle the dropdown mini cart on tap for mobile.
+ *
+ * On desktop the dropdown mini cart opens on hover. Touch devices have no
+ * hover, so without this the cart icon would just follow its link to the cart
+ * page. Below the laptop breakpoint we toggle a `cart-dropdown-open` class on
+ * tap instead; the dropdown's appearance is reused from the desktop styles
+ * (see the woocommerce nav-cart styles), so customers can preview the cart and
+ * keep shopping. It closes on a second tap or when tapping outside of it.
+ */
+function handleMiniCartMobileToggle() {
+	const carts = document.querySelectorAll('.responsive-nav-cart.dropdown');
+	if (carts.length === 0) {
+		return;
+	}
+
+	// Mirrors the $laptop (960px) breakpoint where the hover dropdown applies.
+	const isMobile = () => window.matchMedia('(max-width: 959px)').matches;
+
+	carts.forEach((cart) => {
+		const openButton = cart.querySelector('.cart-icon-wrapper');
+		if (openButton === null) {
+			return;
+		}
+		openButton.addEventListener('click', function (e) {
+			if (!isMobile() || cart.classList.contains('cart-is-empty')) {
+				return;
+			}
+			e.preventDefault();
+			cart.classList.toggle('cart-dropdown-open');
+		});
+	});
+
+	// Close an open dropdown when tapping outside of it.
+	document.addEventListener('click', function (e) {
+		if (!isMobile()) {
+			return;
+		}
+		carts.forEach((cart) => {
+			if (
+				cart.classList.contains('cart-dropdown-open') &&
+				!cart.contains(e.target)
+			) {
+				cart.classList.remove('cart-dropdown-open');
+			}
+		});
+	});
+}
 
 /**
  * Create an overlay to allow closing.

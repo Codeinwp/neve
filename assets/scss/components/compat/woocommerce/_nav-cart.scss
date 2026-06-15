@@ -165,6 +165,23 @@ $cart-width: 360px;
 	}
 }
 
+// Mobile: tapping the cart icon toggles `cart-dropdown-open` (see
+// navigation.js). The dropdown appearance is already defined above, so we only
+// need to reveal it here — reusing the same element and styles as the desktop.
+@media (max-width: 959px) {
+
+	.responsive-nav-cart.dropdown .nv-nav-cart:not(.cart-off-canvas) {
+		width: min(#{$cart-width}, calc(100vw - #{2 * $spacing-md}));
+		max-width: calc(100vw - #{2 * $spacing-md});
+	}
+
+	.responsive-nav-cart.dropdown.cart-dropdown-open .nv-nav-cart {
+		display: block;
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
 @mixin nav-cart--laptop() {
 
 	.nv-nav-cart {
