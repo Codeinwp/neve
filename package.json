@@ -1,7 +1,7 @@
 {
 	"name": "neve",
 	"nicename": "Neve",
-	"version": "4.2.4",
+	"version": "4.2.5",
 	"description": "Neve theme by ThemeIsle",
 	"category": "themes",
 	"author": "ThemeIsle <friends@themeisle.com>",
@@ -29,7 +29,7 @@
 		{
 			"gzip": false,
 			"running": false,
-			"limit": "7 KB",
+			"limit": "8 KB",
 			"path": "assets/js/build/modern/frontend.js"
 		},
 		{

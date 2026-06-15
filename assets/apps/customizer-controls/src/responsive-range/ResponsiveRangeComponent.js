@@ -36,7 +36,7 @@ const ResponsiveRangeComponent = ({ control }) => {
 	}, []);
 
 	const { label } = control.params;
-	const { hideResponsive, units, defaultVal, min, max } =
+	const { hideResponsive, units, defaultVal, min, max, unitsMax } =
 		control.params.input_attrs;
 
 	const suffixValue = () => {
@@ -57,6 +57,16 @@ const ResponsiveRangeComponent = ({ control }) => {
 	};
 
 	const isRelativeUnit = () => ['em', 'rem'].includes(suffixValue());
+
+	// Allow a different max per unit (e.g. 1200 for px but 100 for %).
+	const maxForUnit = (unit) => {
+		if (unitsMax && unit && unitsMax[unit] !== undefined) {
+			return unitsMax[unit];
+		}
+		return max || 100;
+	};
+
+	const currentMax = () => maxForUnit(suffixValue());
 
 	const unitButtons = () => {
 		if (!units) {
@@ -89,6 +99,12 @@ const ResponsiveRangeComponent = ({ control }) => {
 							nextValue[currentDevice] = parseInt(
 								nextValue[currentDevice]
 							);
+						}
+						// Clamp the value to the new unit's max (e.g. when
+						// switching from px to %, 600 becomes 100).
+						const unitMax = maxForUnit(unit);
+						if (nextValue[currentDevice] > unitMax) {
+							nextValue[currentDevice] = unitMax;
 						}
 						setValue(nextValue);
 						control.setting.set(JSON.stringify(nextValue));
@@ -134,7 +150,7 @@ const ResponsiveRangeComponent = ({ control }) => {
 				<RangeControl
 					value={displayValue}
 					min={min || 0}
-					max={max || 100}
+					max={currentMax()}
 					step={isRelativeUnit() ? 0.1 : 1}
 					allowReset
 					onChange={(nextValue) => {
