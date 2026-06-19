@@ -90,6 +90,7 @@ ul,
 ol {
 	padding-left: $spacing-md;
 	margin: $spacing-lg 0;
+	font-family: var(--bodyfontfamily);
 
 	li {
 		margin-top: $spacing-xs;
@@ -172,6 +173,7 @@ ol {
 th,
 td {
 	border: 0;
+	font-family: var(--bodyfontfamily);
 
 	// Allow align inside editor but make sure cells are left-aligned default
 	&:not([class*="has-text-align"]) {
