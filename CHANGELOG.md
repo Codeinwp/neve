@@ -1,3 +1,10 @@
+##### [Version 4.2.6](https://github.com/Codeinwp/neve/compare/v4.2.5...v4.2.6) (2026-06-22)
+
+- Responsive Controls and UI Enhancements
+- Navigation and Mini Cart Improvements
+- Gutenberg Block and Sidebar Compatibility
+- Google Fonts Library Updates
+
 ##### [Version 4.2.5](https://github.com/Codeinwp/neve/compare/v4.2.4...v4.2.5) (2026-06-12)
 
 - Added New Starter site content
