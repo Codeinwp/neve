@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 15/06/26
+ * Updated on 22/06/26
  *
  * @package neve
  */
@@ -165,6 +165,7 @@ return array(
 	'BIZ UDMincho' => array( '400', '700',),
 	'BIZ UDPGothic' => array( '400', '700',),
 	'BIZ UDPMincho' => array( '400', '700',),
+	'BJCree' => array( '400', '500', '600', '700',),
 	'Babylonica' => array( '400',),
 	'Bacasime Antique' => array( '400',),
 	'Bad Script' => array( '400',),
@@ -434,6 +435,7 @@ return array(
 	'Dangrek' => array( '400',),
 	'Darker Grotesque' => array( '300', '400', '500', '600', '700', '800', '900',),
 	'Darumadrop One' => array( '400',),
+	'Datatype' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'David Libre' => array( '400', '500', '700',),
 	'Dawning of a New Day' => array( '400',),
 	'Days One' => array( '400',),
@@ -736,6 +738,8 @@ return array(
 	'Intel One Mono' => array( '300', '400', '500', '600', '700', '300italic', '400italic', '500italic', '600italic', '700italic',),
 	'Inter' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Inter Tight' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Iosevka Charon' => array( '300', '400', '500', '700', '300italic', '400italic', '500italic', '700italic',),
+	'Iosevka Charon Mono' => array( '300', '400', '500', '700', '300italic', '400italic', '500italic', '700italic',),
 	'Irish Grover' => array( '400',),
 	'Island Moments' => array( '400',),
 	'Istok Web' => array( '400', '700', '400italic', '700italic',),
@@ -1489,6 +1493,8 @@ return array(
 	'Playwrite NO' => array( '100', '200', '300', '400',),
 	'Playwrite NO Guides' => array( '400',),
 	'Playwrite NZ' => array( '100', '200', '300', '400',),
+	'Playwrite NZ Basic' => array( '100', '200', '300', '400',),
+	'Playwrite NZ Basic Guides' => array( '400',),
 	'Playwrite NZ Guides' => array( '400',),
 	'Playwrite PE' => array( '100', '200', '300', '400',),
 	'Playwrite PE Guides' => array( '400',),
@@ -1659,7 +1665,8 @@ return array(
 	'Ruthie' => array( '400',),
 	'Ruwudu' => array( '400', '500', '600', '700',),
 	'Rye' => array( '400',),
-	'STIX Two Math' => array(),
+	'SN Pro' => array( '200', '300', '400', '500', '600', '700', '800', '900', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'STIX Two Math' => array( '400',),
 	'STIX Two Text' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'SUSE' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'SUSE Mono' => array( '100', '200', '300', '400', '500', '600', '700', '800', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic',),
