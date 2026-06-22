@@ -283,14 +283,26 @@ class Header extends Base_View {
 			}
 		}
 
-		Tracker::track(
-			array(
+		// Cache the active state and only send when it changes or the refresh window has elapsed.
+		// `wp_update_nav_menu` fires multiple times per save and the value is near-static per site,
+		// so sending unconditionally floods the tracking pipeline with duplicate readings.
+		$last  = get_option( 'neve_mm_active_state', null );
+		$now   = $has_mm ? 'yes' : 'no';
+		$stale = ! get_transient( 'neve_mm_tracked' );
+
+		if ( $now !== $last || $stale ) {
+			update_option( 'neve_mm_active_state', $now );
+			set_transient( 'neve_mm_tracked', 1, MONTH_IN_SECONDS );
+
+			Tracker::track(
 				array(
-					'feature'          => 'mega-menu-free',
-					'featureComponent' => 'is-active',
-					'featureValue'     => $has_mm,
-				),
-			)
-		);
+					array(
+						'feature'          => 'mega-menu-free',
+						'featureComponent' => 'is-active',
+						'featureValue'     => $has_mm,
+					),
+				)
+			);
+		}
 	}
 }

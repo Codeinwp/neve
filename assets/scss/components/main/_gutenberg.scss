@@ -46,10 +46,11 @@
 }
 
 .nv-sidebar-left,
-.nv-sidebar-right {
+.nv-sidebar-right,
+[class*="wp-block-"]:has(> [class*="wp-block-"]):not(.alignfull):not(.alignwide) {
 
-	.alignfull,
-	.alignwide {
+	:is(.alignfull, .alignwide) {
+		width: 100%;
 		max-width: 100%;
 		margin-left: auto;
 		margin-right: auto;

@@ -4,6 +4,7 @@
 .editor-styles-wrapper {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: var(--bodyfontfamily);
 
   &, > *:not(.block-canvas-cover) {
 	background-color: var(--nv-site-bg);
