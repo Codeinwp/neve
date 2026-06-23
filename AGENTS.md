@@ -49,9 +49,15 @@ yarn run format:scss
 ## Testing
 
 ```bash
-# PHP unit tests
-./vendor/bin/phpunit
-./vendor/bin/phpunit tests/test-neve.php                 # Single test file
+# PHP unit tests. Prerequisites: MySQL, the WordPress test suite, and the PHPUnit
+# Polyfills. Neither PHPUnit nor the Polyfills are composer deps here: GitHub-hosted
+# runners ship PHPUnit preinstalled globally, and setup-php adds the Polyfills
+# (tools: phpunit-polyfills). copilot-setup-steps.yml installs both. Install the suite once:
+bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1
+# On macOS the suite installs under $TMPDIR; export WP_TESTS_DIR so PHPUnit finds it:
+#   export WP_TESTS_DIR="$TMPDIR/wordpress-tests-lib"
+phpunit                                                   # phpunit is NOT a composer dep here; use the global one (CI/copilot-setup provide it)
+phpunit tests/test-neve.php                               # Single test file
 
 # E2E tests (Playwright, requires WordPress environment)
 yarn run test:playwright
