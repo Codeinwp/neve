@@ -18,6 +18,7 @@ class Starter_Content {
 	const ABOUT_SLUG    = 'about';
 	const CONTACT       = 'contact';
 	const SERVICES_SLUG = 'services';
+	const PRICING_SLUG  = 'pricing';
 	const WORK_SLUG     = 'work';
 
 
@@ -112,7 +113,7 @@ class Starter_Content {
 	private function is_starter_page_slug( $slug ) {
 		return in_array(
 			$slug,
-			[ self::HOME_SLUG, self::BLOG_SLUG, self::ABOUT_SLUG, self::CONTACT, self::SERVICES_SLUG, self::WORK_SLUG ],
+			[ self::HOME_SLUG, self::BLOG_SLUG, self::ABOUT_SLUG, self::CONTACT, self::SERVICES_SLUG, self::PRICING_SLUG, self::WORK_SLUG ],
 			true
 		);
 	}
@@ -395,6 +396,12 @@ class Starter_Content {
 				// context (from the previous starter content), so no new strings are added.
 				'title'     => _x( 'Services', 'Theme starter content', 'neve' ),
 			],
+			'page_pricing'  => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::PRICING_SLUG . '}}',
+				'title'     => _x( 'Pricing', 'Theme starter content', 'neve' ),
+			],
 			'page_work'     => [
 				'type'      => 'post_type',
 				'object'    => 'page',
@@ -436,6 +443,11 @@ class Starter_Content {
 				'object'    => 'page',
 				'object_id' => '{{' . self::ABOUT_SLUG . '}}',
 			],
+			'page_pricing' => [
+				'type'      => 'post_type',
+				'object'    => 'page',
+				'object_id' => '{{' . self::PRICING_SLUG . '}}',
+			],
 			'page_contact' => [
 				'type'      => 'post_type',
 				'object'    => 'page',
@@ -475,6 +487,7 @@ class Starter_Content {
 				self::HOME_SLUG     => require __DIR__ . '/starter-content/home.php',
 				self::ABOUT_SLUG    => require __DIR__ . '/starter-content/about.php',
 				self::SERVICES_SLUG => require __DIR__ . '/starter-content/services.php',
+				self::PRICING_SLUG  => require __DIR__ . '/starter-content/pricing.php',
 				self::WORK_SLUG     => require __DIR__ . '/starter-content/work.php',
 				self::CONTACT       => require __DIR__ . '/starter-content/contact.php',
 				self::BLOG_SLUG     => require __DIR__ . '/starter-content/blog.php',
