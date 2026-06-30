@@ -219,6 +219,156 @@ $post_content = <<<'HTML'
 <!-- /wp:group -->
 
 <!-- wp:group {"align":"full","backgroundColor":"nv-light-bg","style":{"spacing":{"padding":{"top":"96px","bottom":"96px","left":"24px","right":"24px"}}},"layout":{"type":"constrained","contentSize":"1160px"}} -->
+<div class="wp-block-group alignfull has-nv-light-bg-background-color has-background" style="padding-top:96px;padding-right:24px;padding-bottom:96px;padding-left:24px"><!-- wp:paragraph {"align":"center","textColor":"nv-c-2","className":"folio-eyebrow","style":{"typography":{"fontSize":"12px","letterSpacing":"2px","textTransform":"uppercase","fontWeight":"600"},"spacing":{"margin":{"bottom":"14px"}}}} -->
+<p class="has-text-align-center has-nv-c-2-color has-text-color folio-eyebrow" style="margin-bottom:14px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase">Our Process</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"textAlign":"center","textColor":"neve-text-color","style":{"typography":{"fontSize":"44px","fontWeight":"800","letterSpacing":"-0.5px"}}} -->
+<h2 class="wp-block-heading has-text-align-center has-neve-text-color-color has-text-color" style="font-size:44px;font-weight:800;letter-spacing:-0.5px">How we work</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center","textColor":"nv-c-2","style":{"typography":{"fontSize":"17px"},"spacing":{"margin":{"top":"12px","bottom":"48px"}}}} -->
+<p class="has-text-align-center has-nv-c-2-color has-text-color" style="margin-top:12px;margin-bottom:48px;font-size:17px">A clear, collaborative process that turns ideas into results.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"24px","top":"24px"}}}} -->
+<div class="wp-block-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-step","style":{"border":{"color":"#E5E7EB","width":"1px","radius":"14px"},"spacing":{"padding":{"top":"30px","right":"26px","bottom":"30px","left":"26px"},"blockGap":"10px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group folio-step has-border-color" style="border-color:#E5E7EB;border-width:1px;border-radius:14px;padding-top:30px;padding-right:26px;padding-bottom:30px;padding-left:26px"><!-- wp:paragraph {"className":"folio-step-num"} -->
+<p class="folio-step-num">01</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"textColor":"neve-text-color","style":{"typography":{"fontSize":"19px","fontWeight":"700"}}} -->
+<h3 class="wp-block-heading has-neve-text-color-color has-text-color" style="font-size:19px;font-weight:700">Discover</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"nv-c-2","style":{"typography":{"fontSize":"15px","lineHeight":"1.65"}}} -->
+<p class="has-nv-c-2-color has-text-color" style="font-size:15px;line-height:1.65">We listen, ask the right questions, and map your goals, audience, and opportunities.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-step","style":{"border":{"color":"#E5E7EB","width":"1px","radius":"14px"},"spacing":{"padding":{"top":"30px","right":"26px","bottom":"30px","left":"26px"},"blockGap":"10px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group folio-step has-border-color" style="border-color:#E5E7EB;border-width:1px;border-radius:14px;padding-top:30px;padding-right:26px;padding-bottom:30px;padding-left:26px"><!-- wp:paragraph {"className":"folio-step-num"} -->
+<p class="folio-step-num">02</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"textColor":"neve-text-color","style":{"typography":{"fontSize":"19px","fontWeight":"700"}}} -->
+<h3 class="wp-block-heading has-neve-text-color-color has-text-color" style="font-size:19px;font-weight:700">Design</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"nv-c-2","style":{"typography":{"fontSize":"15px","lineHeight":"1.65"}}} -->
+<p class="has-nv-c-2-color has-text-color" style="font-size:15px;line-height:1.65">We craft wireframes and polished designs, refined together until every detail feels right.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-step","style":{"border":{"color":"#E5E7EB","width":"1px","radius":"14px"},"spacing":{"padding":{"top":"30px","right":"26px","bottom":"30px","left":"26px"},"blockGap":"10px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group folio-step has-border-color" style="border-color:#E5E7EB;border-width:1px;border-radius:14px;padding-top:30px;padding-right:26px;padding-bottom:30px;padding-left:26px"><!-- wp:paragraph {"className":"folio-step-num"} -->
+<p class="folio-step-num">03</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"textColor":"neve-text-color","style":{"typography":{"fontSize":"19px","fontWeight":"700"}}} -->
+<h3 class="wp-block-heading has-neve-text-color-color has-text-color" style="font-size:19px;font-weight:700">Build</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"nv-c-2","style":{"typography":{"fontSize":"15px","lineHeight":"1.65"}}} -->
+<p class="has-nv-c-2-color has-text-color" style="font-size:15px;line-height:1.65">We develop with clean, fast, responsive code, keeping you in the loop at every milestone.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"className":"folio-step","style":{"border":{"color":"#E5E7EB","width":"1px","radius":"14px"},"spacing":{"padding":{"top":"30px","right":"26px","bottom":"30px","left":"26px"},"blockGap":"10px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group folio-step has-border-color" style="border-color:#E5E7EB;border-width:1px;border-radius:14px;padding-top:30px;padding-right:26px;padding-bottom:30px;padding-left:26px"><!-- wp:paragraph {"className":"folio-step-num"} -->
+<p class="folio-step-num">04</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"textColor":"neve-text-color","style":{"typography":{"fontSize":"19px","fontWeight":"700"}}} -->
+<h3 class="wp-block-heading has-neve-text-color-color has-text-color" style="font-size:19px;font-weight:700">Launch</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"nv-c-2","style":{"typography":{"fontSize":"15px","lineHeight":"1.65"}}} -->
+<p class="has-nv-c-2-color has-text-color" style="font-size:15px;line-height:1.65">We deploy, test thoroughly, and provide ongoing support so your project keeps growing.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","backgroundColor":"nv-site-bg","style":{"spacing":{"padding":{"top":"96px","bottom":"96px","left":"24px","right":"24px"}}},"layout":{"type":"constrained","contentSize":"1160px"}} -->
+<div class="wp-block-group alignfull has-nv-site-bg-background-color has-background" style="padding-top:96px;padding-right:24px;padding-bottom:96px;padding-left:24px"><!-- wp:paragraph {"align":"center","textColor":"nv-c-2","className":"folio-eyebrow","style":{"typography":{"fontSize":"12px","letterSpacing":"2px","textTransform":"uppercase","fontWeight":"600"},"spacing":{"margin":{"bottom":"14px"}}}} -->
+<p class="has-text-align-center has-nv-c-2-color has-text-color folio-eyebrow" style="margin-bottom:14px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase">Pricing</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"textAlign":"center","textColor":"neve-text-color","style":{"typography":{"fontSize":"44px","fontWeight":"800","letterSpacing":"-0.5px"}}} -->
+<h2 class="wp-block-heading has-text-align-center has-neve-text-color-color has-text-color" style="font-size:44px;font-weight:800;letter-spacing:-0.5px">Plans that scale with you</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center","textColor":"nv-c-2","style":{"typography":{"fontSize":"17px"},"spacing":{"margin":{"top":"12px","bottom":"48px"}}}} -->
+<p class="has-text-align-center has-nv-c-2-color has-text-color" style="margin-top:12px;margin-bottom:48px;font-size:17px">Straightforward pricing for every stage. See the full breakdown on our pricing page.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"24px","top":"24px"}}}} -->
+<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center"} -->
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:group {"className":"folio-card","style":{"border":{"color":"#E5E7EB","width":"1px","radius":"14px"},"spacing":{"padding":{"top":"30px","right":"28px","bottom":"30px","left":"28px"},"blockGap":"8px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group folio-card has-border-color" style="border-color:#E5E7EB;border-width:1px;border-radius:14px;padding-top:30px;padding-right:28px;padding-bottom:30px;padding-left:28px"><!-- wp:heading {"level":3,"textColor":"neve-text-color","style":{"typography":{"fontSize":"18px","fontWeight":"700"}}} -->
+<h3 class="wp-block-heading has-neve-text-color-color has-text-color" style="font-size:18px;font-weight:700">Starter</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"neve-text-color","style":{"typography":{"fontSize":"30px","fontWeight":"800","letterSpacing":"-0.5px"},"spacing":{"margin":{"top":"6px","bottom":"6px"}}}} -->
+<p class="has-neve-text-color-color has-text-color" style="margin-top:6px;margin-bottom:6px;font-size:30px;font-weight:800;letter-spacing:-0.5px">$19<span style="font-size:15px;font-weight:600;color:#6B7280"> /mo</span></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"textColor":"nv-c-2","style":{"typography":{"fontSize":"14px","lineHeight":"1.6"}}} -->
+<p class="has-nv-c-2-color has-text-color" style="font-size:14px;line-height:1.6">For small projects getting started online.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"verticalAlignment":"center"} -->
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:group {"className":"folio-card folio-pricing-featured","style":{"border":{"color":"#2563EB","width":"2px","radius":"14px"},"spacing":{"padding":{"top":"36px","right":"28px","bottom":"36px","left":"28px"},"blockGap":"8px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group folio-card folio-pricing-featured has-border-color" style="border-color:#2563EB;border-width:2px;border-radius:14px;padding-top:36px;padding-right:28px;padding-bottom:36px;padding-left:28px"><!-- wp:heading {"level":3,"textColor":"neve-text-color","style":{"typography":{"fontSize":"18px","fontWeight":"700"}}} -->
+<h3 class="wp-block-heading has-neve-text-color-color has-text-color" style="font-size:18px;font-weight:700">Professional</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"neve-text-color","style":{"typography":{"fontSize":"30px","fontWeight":"800","letterSpacing":"-0.5px"},"spacing":{"margin":{"top":"6px","bottom":"6px"}}}} -->
+<p class="has-neve-text-color-color has-text-color" style="margin-top:6px;margin-bottom:6px;font-size:30px;font-weight:800;letter-spacing:-0.5px">$49<span style="font-size:15px;font-weight:600;color:#6B7280"> /mo</span></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"textColor":"nv-c-2","style":{"typography":{"fontSize":"14px","lineHeight":"1.6"}}} -->
+<p class="has-nv-c-2-color has-text-color" style="font-size:14px;line-height:1.6">For growing businesses that need more power.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"verticalAlignment":"center"} -->
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:group {"className":"folio-card","style":{"border":{"color":"#E5E7EB","width":"1px","radius":"14px"},"spacing":{"padding":{"top":"30px","right":"28px","bottom":"30px","left":"28px"},"blockGap":"8px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group folio-card has-border-color" style="border-color:#E5E7EB;border-width:1px;border-radius:14px;padding-top:30px;padding-right:28px;padding-bottom:30px;padding-left:28px"><!-- wp:heading {"level":3,"textColor":"neve-text-color","style":{"typography":{"fontSize":"18px","fontWeight":"700"}}} -->
+<h3 class="wp-block-heading has-neve-text-color-color has-text-color" style="font-size:18px;font-weight:700">Enterprise</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"neve-text-color","style":{"typography":{"fontSize":"30px","fontWeight":"800","letterSpacing":"-0.5px"},"spacing":{"margin":{"top":"6px","bottom":"6px"}}}} -->
+<p class="has-neve-text-color-color has-text-color" style="margin-top:6px;margin-bottom:6px;font-size:30px;font-weight:800;letter-spacing:-0.5px">Custom</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"textColor":"nv-c-2","style":{"typography":{"fontSize":"14px","lineHeight":"1.6"}}} -->
+<p class="has-nv-c-2-color has-text-color" style="font-size:14px;line-height:1.6">For large-scale projects with custom needs.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"44px"}}}} -->
+<div class="wp-block-buttons" style="margin-top:44px"><!-- wp:button {"backgroundColor":"neve-link-color","textColor":"nv-text-dark-bg","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"14px","right":"30px","bottom":"14px","left":"30px"}},"elements":{"link":{"color":{"text":"var:preset|color|nv-text-dark-bg"}}}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-nv-text-dark-bg-color has-neve-link-color-background-color has-text-color has-background has-link-color" href="{{home_url}}pricing/" style="border-radius:8px;padding-top:14px;padding-right:30px;padding-bottom:14px;padding-left:30px">Compare all plans</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","backgroundColor":"nv-light-bg","style":{"spacing":{"padding":{"top":"96px","bottom":"96px","left":"24px","right":"24px"}}},"layout":{"type":"constrained","contentSize":"1160px"}} -->
 <div class="wp-block-group alignfull has-nv-light-bg-background-color has-background" style="padding-top:96px;padding-right:24px;padding-bottom:96px;padding-left:24px"><!-- wp:heading {"textAlign":"center","textColor":"neve-text-color","style":{"typography":{"fontSize":"44px","fontWeight":"800","letterSpacing":"-0.5px"}}} -->
 <h2 class="wp-block-heading has-text-align-center has-neve-text-color-color has-text-color" style="font-size:44px;font-weight:800;letter-spacing:-0.5px">Selected projects</h2>
 <!-- /wp:heading -->
