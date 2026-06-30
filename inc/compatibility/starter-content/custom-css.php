@@ -92,6 +92,27 @@ return <<<'CSS'
 /* Generic image rounding inside starter pages */
 .folio-round img{border-radius:16px}
 
+/* Hero pills: icon + label */
+.folio-pills .wp-block-button__link{display:inline-flex;align-items:center;gap:6px}
+.folio-pills .folio-pill-ico{display:inline-flex;line-height:0;color:var(--nv-c-2,#6B7280)}
+.folio-pills .folio-pill-ico svg{display:block}
+
+/* Brand strip: icon + name, with thin column dividers */
+.folio-brand-ico{display:inline-flex;line-height:0;color:var(--nv-text-color,#111827);opacity:.55;flex:0 0 auto}
+.folio-brand-ico svg{display:block}
+.folio-brand .wp-block-column + .wp-block-column{border-left:1px solid rgba(107,114,128,.16)}
+@media(max-width:782px){.folio-brand .wp-block-column + .wp-block-column{border-left:none}}
+
+/* Process steps */
+.folio-step{height:auto;background:var(--nv-site-bg,#fff);transition:transform .2s ease,box-shadow .2s ease;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.folio-step:hover{transform:translateY(-4px);box-shadow:0 22px 48px rgba(15,23,42,.10)}
+.folio-step-num{display:block;font-size:30px;font-weight:800;color:var(--nv-primary-accent,#2563EB);line-height:1;margin-bottom:4px}
+@media(min-width:783px){.folio-step{height:100%}}
+
+/* Pricing cards */
+.folio-pricing-featured{box-shadow:0 24px 50px rgba(37,99,235,.18)}
+.folio-pricing-featured .folio-btn-outline .wp-block-button__link{border-color:rgba(255,255,255,.5)}
+
 /* ---- Block editor only ---- */
 /* The editor renders core/html previews in a sandboxed iframe whose box stretches
    to the available width, which breaks flex rows (squeezed labels) and centering.
