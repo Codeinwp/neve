@@ -19,6 +19,14 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 4.2.7](https://github.com/Codeinwp/neve/compare/v4.2.6...v4.2.7) (2026-06-30)
+
+- Updated Starter Site
+- Updated dependencies
+
+
+
+
 ##### [Version 4.2.6](https://github.com/Codeinwp/neve/compare/v4.2.5...v4.2.6) (2026-06-22)
 
 - Responsive Controls and UI Enhancements
