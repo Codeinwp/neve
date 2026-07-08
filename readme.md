@@ -19,6 +19,13 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 4.2.8](https://github.com/Codeinwp/neve/compare/v4.2.7...v4.2.8) (2026-07-08)
+
+- Fixed issue with alignment styles of wide full-width blocks
+
+
+
+
 ##### [Version 4.2.7](https://github.com/Codeinwp/neve/compare/v4.2.6...v4.2.7) (2026-06-30)
 
 - Updated Starter Site
