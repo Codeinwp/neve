@@ -21,6 +21,10 @@ class Starter_Content {
 	const PRICING_SLUG  = 'pricing';
 	const WORK_SLUG     = 'work';
 
+	/**
+	 * Option name for the one-time migration that repoints already-published starter pages.
+	 */
+	const IMAGES_MIGRATED_OPTION = 'neve_starter_content_migrated';
 
 	/**
 	 * Run the hooks and filters.
@@ -210,6 +214,7 @@ class Starter_Content {
 		}
 		$this->apply_starter_custom_css();
 		$this->maybe_enable_pretty_permalinks();
+		$this->sync_content_images();
 	}
 
 	/**
@@ -230,6 +235,208 @@ class Starter_Content {
 		);
 
 		return empty( $pages ) ? null : $pages[0];
+	}
+
+	/**
+	 * Fetch a starter page by slug.
+	 *
+	 * @param string $slug Starter page slug.
+	 *
+	 * @return \WP_Post|null
+	 */
+	private function get_marked_starter_page( $slug ) {
+		$pages = get_posts(
+			array(
+				'post_type'   => 'page',
+				'post_status' => 'publish',
+				'numberposts' => 1,
+				'name'        => $slug,
+			)
+		);
+
+		return empty( $pages ) ? null : $pages[0];
+	}
+
+	/**
+	 * Get the starter content image attachments, keyed by their content-image symbol.
+	 *
+	 * @return array<string, array{post_title: string, post_name: string, file: string}>
+	 */
+	private function get_content_image_attachments() {
+		return [
+			'folio-design'    => [
+				'post_title' => 'Folio Design',
+				'post_name'  => 'folio-design',
+				'file'       => 'assets/img/starter-content/folio-design.jpeg',
+			],
+			'folio-code'      => [
+				'post_title' => 'Folio Code',
+				'post_name'  => 'folio-code',
+				'file'       => 'assets/img/starter-content/folio-code.jpeg',
+			],
+			'folio-process'   => [
+				'post_title' => 'Folio Process',
+				'post_name'  => 'folio-process',
+				'file'       => 'assets/img/starter-content/folio-process.jpeg',
+			],
+			'folio-dashboard' => [
+				'post_title' => 'Folio Dashboard',
+				'post_name'  => 'folio-dashboard',
+				'file'       => 'assets/img/starter-content/folio-dashboard.jpeg',
+			],
+			'folio-hero'      => [
+				'post_title' => 'Folio Hero',
+				'post_name'  => 'folio-hero',
+				'file'       => 'assets/img/starter-content/folio-hero.jpeg',
+			],
+		];
+	}
+
+	/**
+	 * Get starter content attachment, if not exists import it.
+	 *
+	 * @param array{post_title: string, post_name: string, file: string} $definition Attachment definition.
+	 *
+	 * @return int|null Attachment ID, or null if it doesn't exist and couldn't be imported.
+	 */
+	private function get_or_import_attachment( $definition ) {
+		$existing = get_posts(
+			array(
+				'post_type'      => 'attachment',
+				'post_status'    => 'inherit',
+				'posts_per_page' => 1,
+				'meta_key'       => '_customize_draft_post_name',
+				'meta_value'     => $definition['post_name'], // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+			)
+		);
+		if ( ! empty( $existing ) ) {
+			$attached_file = get_attached_file( $existing[0]->ID );
+			if ( $attached_file && file_exists( $attached_file ) ) {
+				return $existing[0]->ID;
+			}
+		}
+
+		$file_path = get_template_directory() . '/' . $definition['file'];
+		if ( ! file_exists( $file_path ) ) {
+			return null;
+		}
+
+		if ( ! function_exists( 'media_handle_sideload' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/image.php';
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			require_once ABSPATH . 'wp-admin/includes/media.php';
+		}
+
+		$temp_file_name = wp_tempnam( wp_basename( $file_path ) );
+		if ( ! $temp_file_name || ! copy( $file_path, $temp_file_name ) ) {
+			return null;
+		}
+
+		$file_array = array(
+			'name'     => wp_basename( $file_path ),
+			'tmp_name' => $temp_file_name,
+		);
+
+		$attachment_id = media_handle_sideload( $file_array, 0, null, array( 'post_title' => $definition['post_title'] ) );
+		if ( is_wp_error( $attachment_id ) ) {
+			return null;
+		}
+
+		update_post_meta( $attachment_id, '_customize_draft_post_name', $definition['post_name'] );
+		update_post_meta( $attachment_id, '_starter_content_theme', get_stylesheet() );
+
+		return $attachment_id;
+	}
+
+	/**
+	 * Migrate a starter page's content images from the legacy theme asset URLs to the
+	 * Media Library attachments that were sideloaded for them.
+	 *
+	 * @param \WP_Post $page Published starter page.
+	 *
+	 * @return bool True if all content images were successfully migrated, false if any were missing.
+	 */
+	private function migrate_page_content_images( $page ) {
+		$theme_uri    = trailingslashit( get_template_directory_uri() );
+		$content      = $page->post_content;
+		$changed      = false;
+		$fully_synced = true;
+		
+
+		foreach ( $this->get_content_image_attachments() as $definition ) {
+			$old_url = $theme_uri . $definition['file'];
+			if ( false === strpos( $content, $old_url ) ) {
+				continue;
+			}
+
+			$attachment_id = $this->get_or_import_attachment( $definition );
+			if ( ! $attachment_id ) {
+				$fully_synced = false;
+				continue;
+			}
+
+			$new_url = wp_get_attachment_url( $attachment_id );
+			if ( ! $new_url ) {
+				$fully_synced = false;
+				continue;
+			}
+
+			$content = str_replace( $old_url, $new_url, $content );
+			$changed = true;
+		}
+
+		if ( $changed ) {
+			wp_update_post(
+				array(
+					'ID'           => $page->ID,
+					'post_content' => $content,
+				)
+			);
+		}
+
+		return $fully_synced;
+	}
+
+	/**
+	 * Sync content images for every currently published starter page right after publish.
+	 *
+	 * @return void
+	 */
+	private function sync_content_images() {
+		foreach ( [ self::HOME_SLUG, self::ABOUT_SLUG, self::SERVICES_SLUG, self::WORK_SLUG ] as $slug ) {
+			$page = $this->get_published_starter_page( $slug );
+			if ( $page ) {
+				$this->migrate_page_content_images( $page );
+			}
+		}
+	}
+
+	/**
+	 * Migrate the legacy starter content images to the Media Library, if they haven't been already.
+	 *
+	 * @return void
+	 */
+	public static function migrate_legacy_content_images() {
+		if ( get_option( self::IMAGES_MIGRATED_OPTION ) ) {
+			return;
+		}
+
+		$instance     = new self();
+		$fully_synced = true;
+
+		foreach ( [ self::HOME_SLUG, self::ABOUT_SLUG, self::SERVICES_SLUG, self::WORK_SLUG ] as $slug ) {
+			$page = $instance->get_marked_starter_page( $slug );
+			if ( ! $page ) {
+				continue;
+			}
+			if ( ! $instance->migrate_page_content_images( $page ) ) {
+				$fully_synced = false;
+			}
+		}
+
+		if ( $fully_synced ) {
+			update_option( self::IMAGES_MIGRATED_OPTION, 1 );
+		}
 	}
 
 	/**
@@ -473,16 +680,19 @@ class Starter_Content {
 				'site_icon'      => '{{default-icon}}',
 			],
 			'theme_mods'  => require __DIR__ . '/starter-content/theme-mods.php',
-			'attachments' => [
-				'default-logo' => [
-					'post_title' => 'Default Logo',
-					'file'       => 'assets/img/starter-content/default-logo.png',
+			'attachments' => array_merge(
+				[
+					'default-logo' => [
+						'post_title' => 'Default Logo',
+						'file'       => 'assets/img/starter-content/default-logo.png',
+					],
+					'default-icon' => [
+						'post_title' => 'Default Icon',
+						'file'       => 'assets/img/starter-content/default-icon.png',
+					],
 				],
-				'default-icon' => [
-					'post_title' => 'Default Icon',
-					'file'       => 'assets/img/starter-content/default-icon.png',
-				],
-			],
+				$this->get_content_image_attachments()
+			),
 			'posts'       => [
 				self::HOME_SLUG     => require __DIR__ . '/starter-content/home.php',
 				self::ABOUT_SLUG    => require __DIR__ . '/starter-content/about.php',

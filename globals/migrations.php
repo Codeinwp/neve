@@ -5,6 +5,7 @@
  * @package migrations.php
  */
 
+use Neve\Compatibility\Starter_Content;
 use Neve\Core\Migration_Flags;
 
 /**
@@ -134,3 +135,4 @@ function neve_run_migration_flags() {
 add_action( 'init', 'neve_migrate_blog_layout' );
 add_action( 'init', 'neve_migrate_blog_columns' );
 add_action( 'init', 'neve_run_migration_flags', PHP_INT_MIN );
+add_action( 'init', [ Starter_Content::class, 'migrate_legacy_content_images' ] );
