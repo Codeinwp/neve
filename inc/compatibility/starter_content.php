@@ -238,26 +238,6 @@ class Starter_Content {
 	}
 
 	/**
-	 * Fetch a starter page by slug.
-	 *
-	 * @param string $slug Starter page slug.
-	 *
-	 * @return \WP_Post|null
-	 */
-	private function get_marked_starter_page( $slug ) {
-		$pages = get_posts(
-			array(
-				'post_type'   => 'page',
-				'post_status' => 'publish',
-				'numberposts' => 1,
-				'name'        => $slug,
-			)
-		);
-
-		return empty( $pages ) ? null : $pages[0];
-	}
-
-	/**
 	 * Get the starter content image attachments, keyed by their content-image symbol.
 	 *
 	 * @return array<string, array{post_title: string, post_name: string, file: string}>
@@ -361,7 +341,6 @@ class Starter_Content {
 		$content      = $page->post_content;
 		$changed      = false;
 		$fully_synced = true;
-		
 
 		foreach ( $this->get_content_image_attachments() as $definition ) {
 			$old_url = $theme_uri . $definition['file'];
@@ -425,7 +404,7 @@ class Starter_Content {
 		$fully_synced = true;
 
 		foreach ( [ self::HOME_SLUG, self::ABOUT_SLUG, self::SERVICES_SLUG, self::WORK_SLUG ] as $slug ) {
-			$page = $instance->get_marked_starter_page( $slug );
+			$page = $instance->get_published_starter_page( $slug );
 			if ( ! $page ) {
 				continue;
 			}
@@ -680,19 +659,16 @@ class Starter_Content {
 				'site_icon'      => '{{default-icon}}',
 			],
 			'theme_mods'  => require __DIR__ . '/starter-content/theme-mods.php',
-			'attachments' => array_merge(
-				[
-					'default-logo' => [
-						'post_title' => 'Default Logo',
-						'file'       => 'assets/img/starter-content/default-logo.png',
-					],
-					'default-icon' => [
-						'post_title' => 'Default Icon',
-						'file'       => 'assets/img/starter-content/default-icon.png',
-					],
+			'attachments' => [
+				'default-logo' => [
+					'post_title' => 'Default Logo',
+					'file'       => 'assets/img/starter-content/default-logo.png',
 				],
-				$this->get_content_image_attachments()
-			),
+				'default-icon' => [
+					'post_title' => 'Default Icon',
+					'file'       => 'assets/img/starter-content/default-icon.png',
+				],
+			],
 			'posts'       => [
 				self::HOME_SLUG     => require __DIR__ . '/starter-content/home.php',
 				self::ABOUT_SLUG    => require __DIR__ . '/starter-content/about.php',
