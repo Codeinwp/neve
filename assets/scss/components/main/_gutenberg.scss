@@ -45,13 +45,17 @@
 	margin-right: calc(50% - 49vw);
 }
 
-.nv-sidebar-left :is(.alignfull, .alignwide),
-.nv-sidebar-right :is(.alignfull, .alignwide),
-.wp-block-themeisle-blocks-advanced-column :is(.alignfull, .alignwide):not(.wp-block-columns) {
-	width: 100%;
-	max-width: 100%;
-	margin-left: auto;
-	margin-right: auto;
+.nv-sidebar-left,
+.nv-sidebar-right,
+.wp-block-themeisle-blocks-advanced-columns:not(.has-1-columns),
+.wp-block-columns:has(.alignfull, .alignwide) {
+
+	:is(.alignfull, .alignwide) {
+		width: 100%;
+		max-width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 
 // === Quotes === //
