@@ -248,8 +248,9 @@ class Logo extends Abstract_Component {
 		$variants_json = wp_json_encode( $variants );
 
 		$script = <<<JS
-	var html = document.documentElement;
-	var theme = html.getAttribute('data-neve-theme') || 'light';
+	;(function () {
+	var htmlEl = document.documentElement;
+	var theme = htmlEl.getAttribute('data-neve-theme') || 'light';
 	var variants = {$variants_json};
 
 	function setCurrentTheme( theme ) {
@@ -283,16 +284,18 @@ class Logo extends Abstract_Component {
 
 	var observer = new MutationObserver(function(mutations) {
 		mutations.forEach(function(mutation) {
-			if (mutation.type == 'attributes') {
-				theme = html.getAttribute('data-neve-theme');
+			if (mutation.type == 'attributes' && mutation.attributeName === 'data-neve-theme') {
+				theme = htmlEl.getAttribute('data-neve-theme');
 				setCurrentTheme(theme);
 			};
 		});
 	});
 
-	observer.observe(html, {
-		attributes: true
+	observer.observe(htmlEl, {
+		attributes: true,
+		attributeFilter: ['data-neve-theme']
 	});
+	})();
 JS;
 		return $script;
 	}
