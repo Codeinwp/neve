@@ -75,7 +75,7 @@ class Excerpt extends Base_View {
 			return apply_filters( 'the_content', get_the_content( null, false, $post_id ) );
 		}
 
-		if ( has_excerpt() ) {
+		if ( has_excerpt( $post_id ) ) {
 			$excerpt_more = apply_filters( 'excerpt_more', ' [&hellip;]' );
 			$content      = wp_trim_words( get_the_excerpt( $post_id ), $length, $excerpt_more );
 
