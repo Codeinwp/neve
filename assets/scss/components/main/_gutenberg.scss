@@ -35,6 +35,11 @@
 	max-width: 100vw;
 	margin-left: calc(50% - 50vw);
 	margin-right: calc(50% - 50vw);
+	padding: 0 7.5px;
+}
+
+.wp-block-image.alignfull {
+	padding: 0;
 }
 
 .alignwide {
