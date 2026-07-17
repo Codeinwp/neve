@@ -47,6 +47,7 @@ const masonry = () => {
  */
 const infiniteScroll = () => {
 	if (
+		typeof NeveProperties === 'undefined' ||
 		NeveProperties.infScroll !== 'enabled' ||
 		document.querySelector(postWrapSelector) === null
 	) {
