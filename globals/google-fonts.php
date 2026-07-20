@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 22/06/26
+ * Updated on 20/07/26
  *
  * @package neve
  */
@@ -598,6 +598,7 @@ return array(
 	'Gayathri' => array( '100', '400', '700',),
 	'Geist' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Geist Mono' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Geist Pixel' => array( '400',),
 	'Gelasio' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Gemunu Libre' => array( '200', '300', '400', '500', '600', '700', '800',),
 	'Genos' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
@@ -1036,6 +1037,7 @@ return array(
 	'Montaga' => array( '400',),
 	'Montagu Slab' => array( '100', '200', '300', '400', '500', '600', '700',),
 	'MonteCarlo' => array( '400',),
+	'Montenegrin Gothic One' => array( '400',),
 	'Montez' => array( '400',),
 	'Montserrat' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Montserrat Alternates' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
@@ -1976,6 +1978,8 @@ return array(
 	'Yuji Mai' => array( '400',),
 	'Yuji Syuku' => array( '400',),
 	'Yusei Magic' => array( '400',),
+	'Yuyu' => array( '400',),
+	'Yuyu Short' => array( '400',),
 	'ZCOOL KuaiLe' => array( '400',),
 	'ZCOOL QingKe HuangYou' => array( '400',),
 	'ZCOOL XiaoWei' => array( '400',),
