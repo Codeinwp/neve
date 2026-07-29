@@ -19,6 +19,14 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 4.2.10](https://github.com/Codeinwp/neve/compare/v4.2.9...v4.2.10) (2026-07-29)
+
+- Fixed the Related Products slider staying a plain grid on products that have no gallery images.
+- Updated dependencies
+
+
+
+
 ##### [Version 4.2.9](https://github.com/Codeinwp/neve/compare/v4.2.8...v4.2.9) (2026-07-22)
 
 - Fixed a JavaScript conflict with third-party scripts that could stop the site logo from switching correctly between light and dark color palettes.
