@@ -19,6 +19,18 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 4.2.9](https://github.com/Codeinwp/neve/compare/v4.2.8...v4.2.9) (2026-07-22)
+
+- Fixed a JavaScript conflict with third-party scripts that could stop the site logo from switching correctly between light and dark color palettes.
+- Fixed an error that could prevent the mobile menu from opening when certain optimization plugins delay the loading of scripts.
+- Fixed an issue where posts with manually written excerpts ignored the excerpt length setting and were missing the Read More link on blog and archive pages.
+- Fixed an issue where menu items with quotes in their titles could break the mobile submenu toggle button.
+- Fixed full-width images displaying with a small gap on each side instead of stretching edge to edge.
+- Updated dependencies
+
+
+
+
 ##### [Version 4.2.8](https://github.com/Codeinwp/neve/compare/v4.2.7...v4.2.8) (2026-07-08)
 
 - Fixed issue with alignment styles of wide full-width blocks

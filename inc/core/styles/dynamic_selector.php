@@ -29,6 +29,7 @@ class Dynamic_Selector {
 	const META_DEVICE_ONLY      = 'device_only';
 	const META_FILTER           = 'filter';
 	const META_AS_JSON          = 'as_json';
+	const META_IS_EMPTY         = 'is_empty';
 
 	const KEY_SELECTOR = 'selectors';
 	const KEY_RULES    = 'rules';
@@ -174,6 +175,10 @@ class Dynamic_Selector {
 		$default = isset( $meta[ self::META_DEFAULT ] ) ? $meta[ self::META_DEFAULT ] : false;
 		$value   = Mods::get( $key, $default );
 
+		// Only check whether the value is empty when the meta has the is_empty flag set to true.
+		if ( isset( $meta[ self::META_IS_EMPTY ] ) && $meta[ self::META_IS_EMPTY ] && empty( $value ) ) {
+			return $default;
+		}
 
 		if ( $value === false || $value === null || $value === '' ) {
 			return $default;
