@@ -92,7 +92,8 @@ HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
 	);
 
 	if (
-		(!NeveProperties.isCustomize &&
+		((typeof NeveProperties === 'undefined' ||
+			!NeveProperties.isCustomize) &&
 			doc.body.classList.contains(sidebarClasses[0])) ||
 		toggle === false
 	) {

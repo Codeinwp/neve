@@ -10,7 +10,10 @@ const triggerSelector = '.infinite-scroll-trigger';
  * Initialize blog JS.
  */
 export const initBlog = () => {
-	if (document.querySelector('.blog.nv-index-posts') === null) {
+	if (
+		document.querySelector('.blog.nv-index-posts') === null ||
+		typeof NeveProperties === 'undefined'
+	) {
 		return false;
 	}
 	masonry();
