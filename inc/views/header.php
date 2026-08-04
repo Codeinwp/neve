@@ -166,6 +166,10 @@ class Header extends Base_View {
 			return '';
 		}
 
+		if ( ! isset( WC()->cart ) || ! WC()->cart instanceof \WC_Cart ) { // @phpstan-ignore-line
+			return '';
+		}
+
 		$tag   = 'li';
 		$class = 'menu-item-nav-cart';
 		if ( $responsive === true ) {
