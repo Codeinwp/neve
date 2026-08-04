@@ -510,6 +510,11 @@ class Magic_Tags {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			return '';
 		}
+
+		if ( ! WC()->cart instanceof \WC_Cart ) { // @phpstan-ignore-line
+			return '';
+		}
+
 		return '<span class="nv-cart-icon-total-plain">' . WC()->cart->get_cart_contents_total() . '</span>';
 	}
 
@@ -531,6 +536,11 @@ class Magic_Tags {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			return '';
 		}
+
+		if ( ! WC()->cart instanceof \WC_Cart ) { // @phpstan-ignore-line
+			return '';
+		}
+
 		return '<span class="nv-cart-icon-total-currency">' . WC()->cart->get_cart_total() . '</span>';
 	}
 
