@@ -28,7 +28,7 @@ if ( ! class_exists( 'WooCommerce', false ) ) {
 
 if ( ! class_exists( 'WC_Cart', false ) ) {
 	/**
-	 * Stand-in for the cart, carrying just the contents count.
+	 * Stand-in for the cart, carrying just the contents count and totals.
 	 */
 	class WC_Cart {
 		/**
@@ -39,12 +39,21 @@ if ( ! class_exists( 'WC_Cart', false ) ) {
 		private $count;
 
 		/**
+		 * Cart total, unformatted.
+		 *
+		 * @var string
+		 */
+		private $total;
+
+		/**
 		 * Constructor.
 		 *
-		 * @param int $count number of items in the cart.
+		 * @param int    $count number of items in the cart.
+		 * @param string $total cart total, unformatted.
 		 */
-		public function __construct( $count = 0 ) {
+		public function __construct( $count = 0, $total = '0' ) {
 			$this->count = $count;
+			$this->total = $total;
 		}
 
 		/**
@@ -54,6 +63,24 @@ if ( ! class_exists( 'WC_Cart', false ) ) {
 		 */
 		public function get_cart_contents_count() {
 			return $this->count;
+		}
+
+		/**
+		 * Cart contents total, unformatted.
+		 *
+		 * @return string
+		 */
+		public function get_cart_contents_total() {
+			return $this->total;
+		}
+
+		/**
+		 * Cart total, formatted with the currency symbol.
+		 *
+		 * @return string
+		 */
+		public function get_cart_total() {
+			return '$' . $this->total;
 		}
 	}
 }
@@ -88,7 +115,7 @@ if ( ! function_exists( 'WC' ) ) {
 	 *
 	 * @return \WooCommerce
 	 */
-	function WC() { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid
+	function WC() {
 		static $instance = null;
 
 		if ( $instance === null ) {

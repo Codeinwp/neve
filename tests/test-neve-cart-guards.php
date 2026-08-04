@@ -1,7 +1,7 @@
 <?php
 /**
- * Tests for the cart markup guards: the legacy primary-navigation cart item and
- * the header/footer builder cart icon component.
+ * Tests for the cart markup guards: the legacy primary-navigation cart item, the
+ * header/footer builder cart icon component and the cart total magic tags.
  *
  * Both entry points live in one test case on purpose. The null-cart scenario has
  * to declare a global `WooCommerce` class, which cannot be undeclared afterwards,
@@ -142,5 +142,47 @@ class TestNeveCartGuards extends WP_UnitTestCase {
 		$this->assertStringContainsString( 'cart-icon-wrapper', $output );
 		$this->assertMatchesRegularExpression( '/class="cart-count">\s*3\s*</', $output, 'The cart contents count is rendered.' );
 		$this->assertStringNotContainsString( 'cart-is-empty', $output );
+	}
+
+	/**
+	 * The cart total magic tags resolve to nothing when the WooCommerce cart
+	 * object is not available.
+	 */
+	public function test_cart_magic_tags_are_empty_when_cart_object_is_missing() {
+		$this->skip_unless_cart_is_stubbable();
+		$this->require_wc_stubs();
+
+		$magic_tags = \HFG\Core\Magic_Tags::get_instance();
+
+		$this->assertNull( WC()->cart, 'The stub must expose a null cart to reproduce the crash.' );
+		$this->assertSame( '', $magic_tags->cart_total() );
+		$this->assertSame( '', $magic_tags->cart_total_currency_symbol() );
+		$this->assertSame( '', $magic_tags->do_magic_tags( '{cart_total}' ) );
+		$this->assertSame( '', $magic_tags->do_magic_tags( '{cart_total_currency_symbol}' ) );
+	}
+
+	/**
+	 * The cart total magic tags resolve to the totals when WooCommerce is active
+	 * and the cart holds items.
+	 */
+	public function test_cart_magic_tags_render_when_cart_has_items() {
+		$this->skip_unless_cart_is_stubbable();
+		$this->require_wc_stubs();
+
+		$magic_tags    = \HFG\Core\Magic_Tags::get_instance();
+		$previous_cart = WC()->cart;
+		WC()->cart     = new WC_Cart( 3, '42' );
+
+		try {
+			$total          = $magic_tags->cart_total();
+			$total_currency = $magic_tags->cart_total_currency_symbol();
+			$parsed_total   = $magic_tags->do_magic_tags( '{cart_total}' );
+		} finally {
+			WC()->cart = $previous_cart;
+		}
+
+		$this->assertSame( '<span class="nv-cart-icon-total-plain">42</span>', $total );
+		$this->assertSame( '<span class="nv-cart-icon-total-currency">$42</span>', $total_currency );
+		$this->assertStringContainsString( '42', $parsed_total );
 	}
 }
