@@ -158,4 +158,84 @@ class TestNeveFileGuards extends WP_UnitTestCase {
 		$this->assertIsArray( $fonts );
 		$this->assertNotEmpty( $fonts );
 	}
+
+	/**
+	 * Enqueue the customizer controls with a given font list in place.
+	 *
+	 * neve_get_google_fonts() runs its result through this filter, so it can
+	 * stand in for the list the helper would return, including the empty list
+	 * a missing globals/google-fonts.php now produces.
+	 *
+	 * @param array $fonts Font list to return.
+	 */
+	private function enqueue_controls_with_fonts( array $fonts ) {
+		$filter = function () use ( $fonts ) {
+			return $fonts;
+		};
+
+		add_filter( 'neve_google_fonts_array', $filter );
+
+		try {
+			( new \Neve\Customizer\Loader() )->enqueue_customizer_controls();
+		} finally {
+			remove_filter( 'neve_google_fonts_array', $filter );
+		}
+	}
+
+	/**
+	 * The missing-file case reaches array_chunk() with a zero length.
+	 *
+	 * A missing globals/google-fonts.php resolves to an empty list, and
+	 * array_chunk() raises a ValueError for any length below 1 on PHP 8, so
+	 * opening the customizer fataled even though the include itself was safe.
+	 */
+	public function testCustomizerControlsSurviveMissingFontFile() {
+		$this->enqueue_controls_with_fonts( array() );
+
+		$this->assertFalse(
+			wp_style_is( 'neve-fonts-control-google-fonts-0', 'enqueued' ),
+			'No font chunk should be enqueued when the font list is empty.'
+		);
+	}
+
+	/**
+	 * Integer division floors to zero below five entries, so a short but
+	 * perfectly valid list hit the same ValueError.
+	 *
+	 * @dataProvider provideShortFontLists
+	 *
+	 * @param array $fonts Font list shorter than one chunk.
+	 */
+	public function testCustomizerControlsSurviveShortFontList( array $fonts ) {
+		$this->enqueue_controls_with_fonts( $fonts );
+
+		$this->assertTrue(
+			wp_style_is( 'neve-fonts-control-google-fonts-0', 'enqueued' ),
+			'A short list should still enqueue its fonts.'
+		);
+	}
+
+	/**
+	 * Font lists that floor to a zero chunk length.
+	 *
+	 * @return array
+	 */
+	public function provideShortFontLists() {
+		return array(
+			'one font'    => array( array( 'Roboto' ) ),
+			'four fonts'  => array( array( 'Roboto', 'Lato', 'Inter', 'Arvo' ) ),
+		);
+	}
+
+	/**
+	 * A list long enough to chunk normally is unaffected.
+	 */
+	public function testCustomizerControlsChunkLongFontList() {
+		$this->enqueue_controls_with_fonts(
+			array( 'Roboto', 'Lato', 'Inter', 'Arvo', 'Rubik', 'Cabin', 'Karla', 'Oxygen', 'Muli', 'Nunito' )
+		);
+
+		$this->assertTrue( wp_style_is( 'neve-fonts-control-google-fonts-0', 'enqueued' ) );
+		$this->assertTrue( wp_style_is( 'neve-fonts-control-google-fonts-4', 'enqueued' ) );
+	}
 }

@@ -262,7 +262,7 @@ class Customizer {
 	public function template() {
 		$rows_template = Config::get_path() . '/templates/rows.php';
 
-		if ( is_readable( $rows_template ) ) {
+		if ( is_file( $rows_template ) && is_readable( $rows_template ) ) {
 			require_once $rows_template;
 		}
 		?>

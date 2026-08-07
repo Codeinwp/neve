@@ -186,8 +186,11 @@ class TestNeveAutoloader extends WP_UnitTestCase {
 		};
 		spl_autoload_register( $fallback );
 
-		$this->assertTrue( class_exists( '\\Neve_Fixture\\Late_Widget' ) );
-
-		spl_autoload_unregister( $fallback );
+		try {
+ 			$this->assertTrue( class_exists( '\\Neve_Fixture\\Late_Widget' ) );
+ 		} finally {
+ 			spl_autoload_unregister( $fallback );
+ 			spl_autoload_unregister( array( $autoloader, 'load_class' ) );
+ 		}
 	}
 }

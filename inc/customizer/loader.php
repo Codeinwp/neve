@@ -196,8 +196,13 @@ class Loader {
 			}
 		}
 
-		$fonts  = neve_get_google_fonts();
-		$chunks = array_chunk( $fonts, absint( count( $fonts ) / 5 ) );
+		$fonts = neve_get_google_fonts();
+
+		if ( empty( $fonts ) ) {
+			return;
+		}
+
+		$chunks = array_chunk( $fonts, max( 1, absint( count( $fonts ) / 5 ) ) );
 
 		foreach ( $chunks as $index => $fonts_chunk ) {
 			wp_enqueue_style(
