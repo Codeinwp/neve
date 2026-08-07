@@ -31,9 +31,9 @@ class TestNevePluginNames extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Any other non-array value is passed through untouched.
+	 * Any non-array value is normalized to an empty array.
 	 */
-	public function test_non_array_plugin_list_is_passed_through() {
+	public function test_non_array_plugin_list_is_normalized() {
 		$this->assertSame( array(), $this->change_plugin_names( '' ) );
 		$this->assertSame( array(), $this->change_plugin_names( false ) );
 		$this->assertSame( array(), $this->change_plugin_names( null ) );
