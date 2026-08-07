@@ -390,6 +390,45 @@ function neve_get_standard_fonts( $with_variants = false ) {
 }
 
 /**
+ * Include a PHP file that returns an array, tolerating its absence.
+ *
+ * @param string  $path     Absolute path to the file.
+ * @param mixed[] $fallback Value to return when the file cannot be used.
+ *
+ * @return mixed[]
+ */
+function neve_require_array( $path, $fallback = array() ) {
+	if ( ! is_file( $path ) || ! is_readable( $path ) ) {
+		return $fallback;
+	}
+
+	$value = include $path;
+
+	return is_array( $value ) ? $value : $fallback;
+}
+
+/**
+ * Get asset meta from a generated asset file.
+ *
+ * @param string $path Absolute path to the generated asset file.
+ *
+ * @return mixed[]
+ */
+function neve_get_asset_meta( $path ) {
+	$meta = neve_require_array( $path );
+
+	if ( ! isset( $meta['dependencies'] ) || ! is_array( $meta['dependencies'] ) ) {
+		$meta['dependencies'] = array();
+	}
+
+	if ( ! isset( $meta['version'] ) ) {
+		$meta['version'] = NEVE_VERSION;
+	}
+
+	return $meta;
+}
+
+/**
  * Get all google fonts
  *
  * @param bool $with_variants should fetch variants.
@@ -397,7 +436,7 @@ function neve_get_standard_fonts( $with_variants = false ) {
  * @return array
  */
 function neve_get_google_fonts( $with_variants = false ) {
-	$fonts = ( include NEVE_MAIN_DIR . 'globals/google-fonts.php' );
+	$fonts = neve_require_array( NEVE_MAIN_DIR . 'globals/google-fonts.php' );
 
 	if ( $with_variants ) {
 		return apply_filters( 'neve_google_fonts_with_variants_array', $fonts );

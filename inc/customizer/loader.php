@@ -116,7 +116,7 @@ class Loader {
 		);
 		 
 		$bundle_path  = get_template_directory_uri() . '/assets/apps/customizer-controls/build/';
-		$dependencies = ( include get_template_directory() . '/assets/apps/customizer-controls/build/controls.asset.php' );
+		$dependencies = neve_get_asset_meta( get_template_directory() . '/assets/apps/customizer-controls/build/controls.asset.php' );
 		wp_register_script( 'react-controls', $bundle_path . 'controls.js', $dependencies['dependencies'], $dependencies['version'], true );
 		wp_localize_script(
 			'react-controls',
