@@ -153,7 +153,7 @@ test.describe(
 				'footer-menu-mobile-top',
 			]);
 
-			// Changing a postfooter-menu setting refreshes the component partial.
+			// Changing a footer-menu setting refreshes the component partial.
 			await page.evaluate(() => {
 				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				(window as any).wp
