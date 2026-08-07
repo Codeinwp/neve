@@ -17,18 +17,18 @@ test.describe('Menu item alignment', function () {
 		await page.locator('.mobile-left .navbar-toggle').click();
 		await expect(
 			page.locator(
-				'#nv-primary-navigation-sidebar .menu-item-title-wrap:has-text("About The Tests")'
+				'#nv-primary-navigation-mobile-sidebar .menu-item-title-wrap:has-text("About The Tests")'
 			)
 		).toHaveCSS('text-align', 'left');
 
 		await page
 			.locator(
-				'#nv-primary-navigation-sidebar > .menu-item-1643 > .wrap > .caret-wrap'
+				'#nv-primary-navigation-mobile-sidebar > .menu-item-1643 > .wrap > .caret-wrap'
 			)
 			.click();
 		await expect(
 			page.locator(
-				'#nv-primary-navigation-sidebar .menu-item-title-wrap:has-text("Level 2")'
+				'#nv-primary-navigation-mobile-sidebar .menu-item-title-wrap:has-text("Level 2")'
 			)
 		).toHaveCSS('text-align', 'left');
 	});

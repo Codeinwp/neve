@@ -24,7 +24,7 @@ if ( $style !== 'style-plain' ) {
 }
 $container_classes = apply_filters( 'neve_additional_menu_container_class', $container_classes );
 
-$menu_id = Nav::NAV_MENU_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
+$menu_id = Nav::get_menu_id();
 ?>
 <div class="nv-nav-wrap">
 	<div role="navigation" class="<?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
