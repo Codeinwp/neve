@@ -1,7 +1,9 @@
 import { test, expect, Page, Locator, Frame } from '@playwright/test';
 import { loginWithRequest, setCustomizeSettings } from '../../../utils';
-import data from '../../../fixtures/customizer/hfg/footer-menu-both-devices-setup.json';
+import data from '../../../fixtures/customizer/hfg/footer-menu-setup.json';
 import menuData from '../../../fixtures/customizer/hfg/footer-menu-both-devices-setup.json';
+
+const PREVIEW_FRAME = 'iframe[name="customize-preview-0"]';
 
 /**
  * Collect the ids of every footer menu list in a document.
@@ -48,7 +50,6 @@ test.describe('Footer Menu component', function () {
 		}
 	});
 });
-
 
 test.describe(
 	'Footer Menu component in both desktop and mobile layouts',
