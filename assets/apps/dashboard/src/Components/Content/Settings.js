@@ -13,6 +13,7 @@ import {
 
 import { useSelect } from '@wordpress/data';
 import Card from '../../Layout/Card';
+import PerformancePlugins from './Settings/PerformancePlugins';
 import {
 	NEVE_HAS_PRO,
 	NEVE_SHOW_WHITELABEL,
@@ -139,28 +140,36 @@ const Settings = () => {
 			<div className="shrink-0 w-full lg:w-[300px]">
 				<Menu tab={tab} setTab={setTab} />
 			</div>
-			<Card className="grow">
-				{tab === 'general' && (
-					<TransitionWrapper>
-						<GeneralTabContent />
-					</TransitionWrapper>
-				)}
+			<div className="grow flex flex-col gap-6">
+				<Card>
+					{tab === 'general' && (
+						<TransitionWrapper>
+							<GeneralTabContent />
+						</TransitionWrapper>
+					)}
+					{tab === 'performance' && (
+						<TransitionWrapper>
+							<PerformanceTabContent />
+						</TransitionWrapper>
+					)}
+					{tab === 'white-label' && (
+						<TransitionWrapper>
+							<WhiteLabelTabContent />
+						</TransitionWrapper>
+					)}
+					{tab === 'manage-modules' && (
+						<TransitionWrapper>
+							<ManageModulesTabContent />
+						</TransitionWrapper>
+					)}
+				</Card>
+
 				{tab === 'performance' && (
 					<TransitionWrapper>
-						<PerformanceTabContent />
+						<PerformancePlugins />
 					</TransitionWrapper>
 				)}
-				{tab === 'white-label' && (
-					<TransitionWrapper>
-						<WhiteLabelTabContent />
-					</TransitionWrapper>
-				)}
-				{tab === 'manage-modules' && (
-					<TransitionWrapper>
-						<ManageModulesTabContent />
-					</TransitionWrapper>
-				)}
-			</Card>
+			</div>
 		</div>
 	);
 };
