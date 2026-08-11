@@ -147,6 +147,11 @@ class TestNeveContentOrdering extends WP_UnitTestCase {
 		// An array is accepted and normalized back to a JSON string.
 		$this->assertSame( wp_json_encode( array( 'excerpt', 'thumbnail' ) ), $layout_blog->sanitize_post_content_ordering( array( 'excerpt', 'thumbnail' ) ) );
 
+		// Associative, sparse and JSON object input is reindexed - the ordering control needs a JSON list.
+		$this->assertSame( wp_json_encode( array( 'excerpt', 'thumbnail' ) ), $layout_blog->sanitize_post_content_ordering( array( 'a' => 'excerpt', 'b' => 'thumbnail' ) ) );
+		$this->assertSame( wp_json_encode( array( 'excerpt', 'thumbnail' ) ), $layout_blog->sanitize_post_content_ordering( array( 2 => 'excerpt', 5 => 'thumbnail' ) ) );
+		$this->assertSame( wp_json_encode( array( 'excerpt', 'thumbnail' ) ), $layout_blog->sanitize_post_content_ordering( '{"a":"excerpt","b":"thumbnail"}' ) );
+
 		// Unknown components, broken JSON and scalars fall back to the defaults.
 		$this->assertSame( $encoded, $layout_blog->sanitize_post_content_ordering( wp_json_encode( array( 'thumbnail', 'evil' ) ) ) );
 		$this->assertSame( $encoded, $layout_blog->sanitize_post_content_ordering( array( 'thumbnail', 'evil' ) ) );

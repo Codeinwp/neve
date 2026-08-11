@@ -735,7 +735,7 @@ class Layout_Blog extends Base_Customizer {
 			}
 		}
 
-		return is_string( $value ) ? $value : wp_json_encode( $decoded );
+		return wp_json_encode( array_values( $decoded ) );
 	}
 
 	/**
