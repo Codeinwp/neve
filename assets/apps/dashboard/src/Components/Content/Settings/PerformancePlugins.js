@@ -1,6 +1,6 @@
 /* global neveDash */
 import { useSelect } from '@wordpress/data';
-import { useState } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import cn from 'classnames';
 import { LoaderCircle, LucidePuzzle, LucideRocket } from 'lucide-react';
@@ -34,6 +34,18 @@ const PluginCard = ({ slug }) => {
 	const isPluginActive = useSelect(
 		(select) => select(NEVE_STORE).getPlugins()[slug]?.cta === 'deactivate'
 	);
+
+	useEffect(() => {
+		if (!success) {
+			return;
+		}
+
+		const timeoutId = window.setTimeout(() => {
+			setSuccess(false);
+		}, 1500);
+
+		return () => window.clearTimeout(timeoutId);
+	}, [success]);
 
 	if (isPluginActive && !success) {
 		return null;
@@ -107,7 +119,7 @@ const PluginCard = ({ slug }) => {
 };
 
 const PerformancePlugins = () => {
-	const plugins = neveDash.plugins || {};
+	const plugins = useSelect((select) => select(NEVE_STORE).getPlugins(), []);
 
 	// A promoted plugin can be absent entirely, e.g. Super Page Cache is dropped when SPC Pro is installed.
 	const availableSlugs = PROMOTED_SLUGS.filter(
