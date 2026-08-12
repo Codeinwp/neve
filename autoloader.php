@@ -151,7 +151,6 @@ class Autoloader {
 			return true;
 		}
 
-		clearstatcache( true, $file );
 		if ( ! is_file( $file ) || ! is_readable( $file ) ) {
 			return false;
 		}
