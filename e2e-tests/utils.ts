@@ -267,12 +267,13 @@ export const testForViewport = async (
 	}
 ) => {
 	await page.setViewportSize(viewPort);
-	const elements = await page.locator(selector);
-	const count = await elements.count();
-	await expect(count).toBeGreaterThan(0);
+	const elements = page.locator(selector);
+	// Retrying assertion: lets layout settle after the resize.
+	await expect(elements).not.toHaveCount(0);
 
-	for (let index = 0; index < (await elements.count()); index++) {
-		const element = await elements.nth(index);
+	const count = await elements.count();
+	for (let index = 0; index < count; index++) {
+		const element = elements.nth(index);
 
 		for (const cssProperty of viewportData.cssProperties) {
 			await expect(element).toHaveCSS(
@@ -288,8 +289,12 @@ export const checkElementsOrder = async (
 	containerSelector: string,
 	expectedOrder: string[]
 ) => {
-	const elements = await page.locator(containerSelector + ' > *');
-	for (let i = 0; i < (await elements.count()); i++) {
+	const elements = page.locator(containerSelector + ' > *');
+	// Without this the loop below silently passes on an empty container.
+	await expect(elements).not.toHaveCount(0);
+
+	const count = await elements.count();
+	for (let i = 0; i < count; i++) {
 		await expect(elements.nth(i)).toHaveClass(
 			new RegExp(`${expectedOrder[i]}`)
 		);

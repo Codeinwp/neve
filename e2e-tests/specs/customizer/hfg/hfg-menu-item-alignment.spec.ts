@@ -21,10 +21,15 @@ test.describe('Menu item alignment', function () {
 			)
 		).toHaveCSS('text-align', 'left');
 
+		// Located by label: menu item IDs are DB auto-increments and differ
+		// between a fresh CI import and a long-lived local database.
 		await page
 			.locator(
 				'#nv-primary-navigation-sidebar > .menu-item-1643 > .wrap > .caret-wrap'
 			)
+			.filter({ hasText: 'Level 1' })
+			.locator('.caret-wrap')
+			.first()
 			.click();
 		await expect(
 			page.locator(

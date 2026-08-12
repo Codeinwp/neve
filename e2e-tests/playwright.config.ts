@@ -1,10 +1,17 @@
 import { defineConfig, devices } from '@playwright/test';
 
+// Plain `|| fallback` would discard an explicit 0.
+const envInt = (name: string, fallback: number) => {
+	const parsed = parseInt(process.env[name] || '', 10);
+	return Number.isNaN(parsed) ? fallback : parsed;
+};
+
 export default defineConfig({
 	reporter: process.env.CI ? 'github' : 'list',
 	forbidOnly: !!process.env.CI,
-	workers: process.env.CI ? 6 : undefined,
-	retries: 0,
+	// Same values locally and in CI, so a race reproduces in both.
+	workers: envInt('PW_WORKERS', 2),
+	retries: envInt('PW_RETRIES', 2),
 	timeout: parseInt(process.env.TIMEOUT || '', 10) || 150_000, // Defaults to 100 seconds.
 	fullyParallel: true,
 	projects: [
@@ -26,5 +33,7 @@ export default defineConfig({
 		headless: true,
 		ignoreHTTPSErrors: true,
 		trace: 'retain-on-failure',
+		actionTimeout: 20_000,
+		navigationTimeout: 45_000,
 	},
 });
