@@ -358,6 +358,7 @@ class Font_Manager extends Base_View {
 		}
 
 		$external_fonts = array();
+		$handles        = array();
 
 		foreach ( $enqueued_styles as $style ) {
 
@@ -373,8 +374,7 @@ class Font_Manager extends Base_View {
 					*/
 					$normalized_source = 'https://' . $parts['host'] . $parts['path'] . ( isset( $parts['query'] ) ? '?' . $parts['query'] : '' );
 					$external_fonts[]  = $normalized_source;
-					// Dequeue this handle since we are going to load the font locally
-					wp_dequeue_style( $style );
+					$handles[]         = $style;
 				}
 			}
 		}
@@ -382,6 +382,19 @@ class Font_Manager extends Base_View {
 		$external_fonts = array_unique( $external_fonts );
 
 		require_once $wptt_vendor_file;
+
+		/**
+		 * The vendor file was readable at the top of this method, but confirm it
+		 * actually declared the loader before dequeuing anything.
+		 */
+		if ( ! function_exists( 'wptt_get_webfont_styles' ) ) {
+			return;
+		}
+
+		// Dequeue these handles since we are going to load the fonts locally.
+		foreach ( array_unique( $handles ) as $handle ) {
+			wp_dequeue_style( $handle );
+		}
 
 		foreach ( $external_fonts as $font_link ) {
 			wp_add_inline_style( 'neve-style', wptt_get_webfont_styles( $font_link ) );

@@ -277,6 +277,10 @@ class CartIcon extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
+		if ( ! class_exists( 'WooCommerce', false ) || ! WC()->cart instanceof \WC_Cart ) { // @phpstan-ignore-line
+			return;
+		}
+
 		Main::get_instance()->load( 'components/component-cart-icon' );
 	}
 

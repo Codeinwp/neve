@@ -270,7 +270,7 @@ class Main {
 		}
 
 		$build_path   = get_template_directory_uri() . '/assets/apps/dashboard/build/';
-		$dependencies = ( include get_template_directory() . '/assets/apps/dashboard/build/dashboard.asset.php' );
+		$dependencies = neve_get_asset_meta( get_template_directory() . '/assets/apps/dashboard/build/dashboard.asset.php' );
 		$dash_data    = apply_filters( 'neve_dashboard_page_data', $this->get_localization() );
 
 		$this->register_survey( $dash_data );

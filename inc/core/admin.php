@@ -1054,8 +1054,16 @@ class Admin {
 
 	/**
 	 * Change Orbit Fox and Otter plugin names to make clear where they are from.
+	 *
+	 * @param array<string, array<string, mixed>>|mixed $plugins the plugin list.
+	 *
+	 * @return array<string, array<string, mixed>> the plugin list with changed names.
 	 */
 	public function change_plugin_names( $plugins ) {
+		if ( ! is_array( $plugins ) ) {
+			$plugins = [];
+		}
+
 		if ( array_key_exists( 'themeisle-companion/themeisle-companion.php', $plugins ) ) {
 			$plugins['themeisle-companion/themeisle-companion.php']['Name'] = 'Orbit Fox Companion by Neve theme';
 		}

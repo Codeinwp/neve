@@ -260,7 +260,11 @@ class Customizer {
 	 * @access  public
 	 */
 	public function template() {
-		require_once Config::get_path() . '/templates/rows.php';
+		$rows_template = Config::get_path() . '/templates/rows.php';
+
+		if ( is_file( $rows_template ) && is_readable( $rows_template ) ) {
+			require_once $rows_template;
+		}
 		?>
 		<script type="text/html" id="tmpl-hfg--builder-panel">
 			<div class="hfg--customize-builder">
