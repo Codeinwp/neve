@@ -117,17 +117,18 @@ class Autoloader {
 			return false;
 		}
 
+		// replace the namespace prefix with the base directory,
+		// replace namespace separators with directory separators
+		// in the relative class name, append with .php
+		$class         = $prefix . $relative_class;
+		$relative_path = strtolower( str_replace( '\\', '/', $relative_class ) );
+
 		// look through base directories for this namespace prefix
 		foreach ( $this->prefixes[ $prefix ] as $base_dir ) {
-
-			// replace the namespace prefix with the base directory,
-			// replace namespace separators with directory separators
-			// in the relative class name, append with .php
-			$relative_class = strtolower( str_replace( '\\', '/', $relative_class ) );
-			$file           = $base_dir . $relative_class . '.php';
+			$file = $base_dir . $relative_path . '.php';
 
 			// if the mapped file exists, require it
-			if ( $this->require_file( $file ) ) {
+			if ( $this->require_file( $file, $class ) ) {
 				// yes, we're done
 				return $file;
 			}
@@ -140,12 +141,35 @@ class Autoloader {
 	/**
 	 * If a file exists, require it from the file system.
 	 *
-	 * @param string $file The file to require.
+	 * @param string $file  The file to require.
+	 * @param string $class The fully-qualified name being loaded.
 	 *
-	 * @return bool True if the file exists, false if not.
+	 * @return bool True if the file was readable and required, false if not.
 	 */
-	protected function require_file( $file ) {
-			require $file;
+	protected function require_file( $file, $class ) {
+		if ( $this->is_declared( $class ) ) {
 			return true;
+		}
+
+		if ( ! is_file( $file ) || ! is_readable( $file ) ) {
+			return false;
+		}
+
+		include_once $file;
+
+		return $this->is_declared( $class );
+	}
+
+	/**
+	 * Check if a class, interface or trait is declared.
+	 *
+	 * @param string $class The fully-qualified name.
+	 *
+	 * @return bool
+	 */
+	protected function is_declared( $class ) {
+		return class_exists( $class, false )
+			|| interface_exists( $class, false )
+			|| trait_exists( $class, false );
 	}
 }
