@@ -36,8 +36,33 @@ test.describe('Custom Global Color Control', () => {
 		await page.locator('[aria-label="Document Overview"]').click();
 		await page.locator('.block-editor-list-view-leaf').first().click();
 
+		// Selecting a palette colour toggles it, so a block still coloured by a
+		// previous run would be cleared here instead of set. Start from a known state.
+		await page.evaluate(() => {
+			const { data } = window.wp;
+			const clientId = data
+				.select('core/block-editor')
+				.getSelectedBlockClientId();
+			data.dispatch('core/block-editor').updateBlockAttributes(clientId, {
+				backgroundColor: undefined,
+			});
+		});
+		await page.waitForFunction(
+			() =>
+				!window.wp.data.select('core/block-editor').getSelectedBlock()
+					?.attributes?.backgroundColor
+		);
+
 		await page.getByRole('button', { name: 'Background' }).click();
 		await page.getByRole('option', { name: 'Custom 1' }).click();
+
+		// savePost() only waits for a snackbar, so without this the test would
+		// happily save the colour removed rather than applied.
+		await page.waitForFunction(
+			() =>
+				window.wp.data.select('core/block-editor').getSelectedBlock()
+					?.attributes?.backgroundColor === 'custom-1'
+		);
 
 		await savePost(page);
 	});

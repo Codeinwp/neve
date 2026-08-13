@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { setCustomizeSettings, scrollTo, visitAdminPage }  from '../../../utils';
+import { setCustomizeSettings, scrollTo } from '../../../utils';
 import data from '../../../fixtures/customizer/scroll-to-top/scroll-to-top-setup.json';
 
 test.describe( 'Scroll to top', function () {
@@ -99,15 +99,20 @@ test.describe( 'Scroll to top', function () {
 	} ) {
 		const iconTypeData = Object.assign( {}, data.general );
 
-		// Get the id of the first image to be able to apply it.
-		await visitAdminPage( page, 'upload.php', '' );
-		await page.locator( '.attachment' ).first().click();
-		const urlString = page.url();
-		const url = new URL( urlString );
-		const imageId = url.searchParams.get( 'item' ) || '';
+		// Queried instead of taking the first attachment in the media grid: the
+		// newest sample-data attachment is a video, and the set differs between
+		// a fresh CI import and a long-lived local database.
+		const mediaResponse = await request.get(
+			baseURL +
+				'/wp-json/wp/v2/media?media_type=image&per_page=1&orderby=id&order=asc'
+		);
+		expect( mediaResponse.ok() ).toBeTruthy();
+
+		const [ attachment ] = await mediaResponse.json();
+		expect( attachment ).toBeTruthy();
 
 		iconTypeData.neve_scroll_to_top_type = 'image';
-		iconTypeData.neve_scroll_to_top_image = parseInt( imageId );
+		iconTypeData.neve_scroll_to_top_image = attachment.id;
 
 		await setCustomizeSettings( 'stt-icon-check', iconTypeData, {
 			request,
@@ -117,14 +122,16 @@ test.describe( 'Scroll to top', function () {
 		await page.goto( '/hello-world/?test_name=stt-icon-check' );
 		await scrollTo( page, 'bottom' );
 
-		const scrollToTopImage = await page.locator(
+		const scrollToTopImage = page.locator(
 			'#scroll-to-top .scroll-to-top-image'
 		);
-		await expect( await scrollToTopImage.count() ).toBeGreaterThan( 0 );
+		await expect( scrollToTopImage ).not.toHaveCount( 0 );
 
+		// Asserted against the image we selected above. The theme renders it with
+		// wp_get_attachment_url(), so this is the full URL, unsized.
 		await expect( scrollToTopImage ).toHaveCSS(
 			'background-image',
-			/spectacles.gif/
+			`url("${ attachment.source_url }")`
 		);
 
 		await setCustomizeSettings( 'stt-icon-check2', data.general, {

@@ -8,11 +8,13 @@ test.describe('Style Book Modal', () => {
 		// Wait for customizer to fully load
 		await page.waitForSelector('.wp-full-overlay-sidebar', { state: 'visible' });
 
-		// Wait a bit more for all scripts to initialize
-		await page.waitForTimeout(1000);
+		// The controls bundle injects this button at runtime, so wait for it
+		// rather than sleeping a fixed interval and hoping it arrived.
+		const styleBookButton = page.locator('#neve-style-book');
+		await styleBookButton.waitFor({ state: 'visible' });
 
 		// Open Style Book for all tests
-		await page.getByRole('button', { name: ' Style Book' }).click();
+		await styleBookButton.click();
 
 		// Wait for Style Book to appear in the iframe
 		await page
