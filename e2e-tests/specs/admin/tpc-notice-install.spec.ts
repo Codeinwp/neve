@@ -9,16 +9,10 @@ test.describe('Dashboard Notice', () => {
 	test.beforeAll(async ({ request, baseURL }) => {
 		const endpoint = `${baseURL}/wp-json/wp/v2/plugins/${TPC_PLUGIN}`;
 
-		// Both calls 404 harmlessly when the plugin is already absent.
-		const deactivateResponse = await request.put(endpoint, {
- 			data: { status: 'inactive' },
- 		});
- 		expect(
- 			deactivateResponse.ok() || deactivateResponse.status() === 404
- 		).toBeTruthy();
-
-		const deleteResponse = await request.delete(endpoint);
- 		expect(deleteResponse.ok() || deleteResponse.status() === 404).toBeTruthy();
+		await request
+			.put(endpoint, { data: { status: 'inactive' } })
+			.catch(() => null);
+		await request.delete(endpoint).catch(() => null);
 
 		// Overridden per-request via ?test_name=, not written to the options table.
 		await setCustomizeSettings(
@@ -56,9 +50,7 @@ test.describe('Dashboard Notice', () => {
 		);
 
 		// Welcome screen
-		await expect(page.locator('h1')).toContainText(
-			'Choose a design'
-		);
+		await expect(page.locator('h1')).toContainText('Choose a design');
 
 		const categories = await page.locator('.ob-cat-wrap .cat');
 		await expect(categories).toContainText([

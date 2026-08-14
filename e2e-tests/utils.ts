@@ -158,9 +158,13 @@ export const clearWelcome = async (page: Page) => {
 	// The editor registers its stores asynchronously, so selecting one straight
 	// after navigation returns undefined and the guard below would throw.
 	await page
-		.waitForFunction(() => !!window.wp?.data?.select('core/edit-post'), null, {
-			timeout: 15_000,
-		})
+		.waitForFunction(
+			() => !!window.wp?.data?.select('core/edit-post'),
+			null,
+			{
+				timeout: 15_000,
+			}
+		)
 		.catch(() => {
 			// Nothing to clear if the editor never came up; let the test report that.
 		});
