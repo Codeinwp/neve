@@ -39,6 +39,13 @@ final class Manager {
 	private $control_classes;
 
 	/**
+	 * Meta keys registered for the block editor sidebar.
+	 *
+	 * @var array<string>
+	 */
+	private $registered_meta_keys = array();
+
+	/**
 	 * Init function
 	 */
 	public function init() {
@@ -53,6 +60,7 @@ final class Manager {
 		 */
 		add_action( 'init', array( $this, 'neve_register_meta' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'meta_sidebar_script_enqueue' ) );
+		add_filter( 'is_protected_meta', array( $this, 'protect_sidebar_meta' ), 10, 2 );
 	}
 
 	/**
@@ -331,7 +339,25 @@ final class Manager {
 				$control['id'],
 				$meta_settings
 			);
+
+			$this->registered_meta_keys[] = $control['id'];
 		}
+	}
+
+	/**
+	 * Mark the meta data as protected.
+	 *
+	 * @param bool   $is_protected whether the key is protected.
+	 * @param string $meta_key the meta key.
+	 *
+	 * @return bool
+	 */
+	public function protect_sidebar_meta( $is_protected, $meta_key ) {
+		if ( in_array( $meta_key, $this->registered_meta_keys, true ) ) {
+			return true;
+		}
+
+		return $is_protected;
 	}
 
 	/**
