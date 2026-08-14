@@ -39,9 +39,9 @@ final class Manager {
 	private $control_classes;
 
 	/**
-	 * Meta keys registered for the block editor sidebar.
+	 * Meta keys registered for the block editor sidebar, keyed by meta key.
 	 *
-	 * @var array<string>
+	 * @var array<string, bool>
 	 */
 	private $registered_meta_keys = array();
 
@@ -60,7 +60,7 @@ final class Manager {
 		 */
 		add_action( 'init', array( $this, 'neve_register_meta' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'meta_sidebar_script_enqueue' ) );
-		add_filter( 'is_protected_meta', array( $this, 'protect_sidebar_meta' ), 10, 2 );
+		add_filter( 'is_protected_meta', array( $this, 'protect_post_sidebar_meta' ), 10, 3 );
 	}
 
 	/**
@@ -340,7 +340,7 @@ final class Manager {
 				$meta_settings
 			);
 
-			$this->registered_meta_keys[] = $control['id'];
+			$this->registered_meta_keys[ $control['id'] ] = true;
 		}
 	}
 
@@ -349,11 +349,16 @@ final class Manager {
 	 *
 	 * @param bool   $is_protected whether the key is protected.
 	 * @param string $meta_key the meta key.
+	 * @param string $meta_type the type of meta object this key belongs to.
 	 *
 	 * @return bool
 	 */
-	public function protect_sidebar_meta( $is_protected, $meta_key ) {
-		if ( in_array( $meta_key, $this->registered_meta_keys, true ) ) {
+	public function protect_post_sidebar_meta( $is_protected, $meta_key, $meta_type ) {
+		if (
+			$meta_type === 'post' &&
+			isset( $this->registered_meta_keys[ $meta_key ] ) &&
+			$this->registered_meta_keys[ $meta_key ]
+			) {
 			return true;
 		}
 

@@ -18,6 +18,13 @@ class TestNeveMetaboxMeta extends WP_UnitTestCase {
 	private $page_id;
 
 	/**
+	 * REST server in place before the test replaced it.
+	 *
+	 * @var WP_REST_Server|null
+	 */
+	private $previous_rest_server;
+
+	/**
 	 * Setup.
 	 */
 	public function setUp(): void {
@@ -26,6 +33,8 @@ class TestNeveMetaboxMeta extends WP_UnitTestCase {
 		global $wp_rest_server;
 
 		require_once ABSPATH . 'wp-admin/includes/post.php';
+
+		$this->previous_rest_server = $wp_rest_server;
 
 		// The test case unregisters every meta key on teardown.
 		$manager = new \Neve\Admin\Metabox\Manager();
@@ -53,7 +62,7 @@ class TestNeveMetaboxMeta extends WP_UnitTestCase {
 	public function tearDown(): void {
 		global $wp_rest_server;
 
-		$wp_rest_server = null;
+		$wp_rest_server = $this->previous_rest_server;
 		$_POST          = array();
 
 		parent::tearDown();
