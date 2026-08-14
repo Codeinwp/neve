@@ -35,9 +35,18 @@ test.describe('Custom Global Color Control', () => {
 
 		await page.waitForFunction(() =>
 			(
-				window.wp.data.select('core/block-editor').getSettings()
-					.colors || []
+				window.wp?.data?.select('core/block-editor')?.getSettings()
+					?.colors || []
 			).some((color: { slug: string }) => color.slug === 'custom-1')
+		);
+
+		// Wait for the parsed block list too, so the update below has a target.
+		await page.waitForFunction(
+			() =>
+				(
+					window.wp?.data?.select('core/block-editor')?.getBlocks() ||
+					[]
+				).length > 0
 		);
 
 		// Clicking the palette swatch toggles, so a block left coloured by a
@@ -52,7 +61,7 @@ test.describe('Custom Global Color Control', () => {
 		});
 		await page.waitForFunction(
 			() =>
-				window.wp.data.select('core/block-editor').getBlocks()[0]
+				window.wp?.data?.select('core/block-editor')?.getBlocks()?.[0]
 					?.attributes?.backgroundColor === 'custom-1'
 		);
 

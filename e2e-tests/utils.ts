@@ -302,11 +302,12 @@ export const checkElementsOrder = async (
 	expectedOrder: string[]
 ) => {
 	const elements = page.locator(containerSelector + ' > *');
-	// Without this the loop below silently passes on an empty container.
-	await expect(elements).not.toHaveCount(0);
+	// Exact count, so extra or missing children are reported as such rather than
+	// as a confusing class mismatch part-way through the loop — or, when the
+	// container is empty, not reported at all.
+	await expect(elements).toHaveCount(expectedOrder.length);
 
-	const count = await elements.count();
-	for (let i = 0; i < count; i++) {
+	for (let i = 0; i < expectedOrder.length; i++) {
 		await expect(elements.nth(i)).toHaveClass(
 			new RegExp(`${expectedOrder[i]}`)
 		);
