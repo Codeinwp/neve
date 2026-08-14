@@ -10,8 +10,15 @@ test.describe('Dashboard Notice', () => {
 		const endpoint = `${baseURL}/wp-json/wp/v2/plugins/${TPC_PLUGIN}`;
 
 		// Both calls 404 harmlessly when the plugin is already absent.
-		await request.put(endpoint, { data: { status: 'inactive' } });
-		await request.delete(endpoint);
+		const deactivateResponse = await request.put(endpoint, {
+ 			data: { status: 'inactive' },
+ 		});
+ 		expect(
+ 			deactivateResponse.ok() || deactivateResponse.status() === 404
+ 		).toBeTruthy();
+
+		const deleteResponse = await request.delete(endpoint);
+ 		expect(deleteResponse.ok() || deleteResponse.status() === 404).toBeTruthy();
 
 		// Overridden per-request via ?test_name=, not written to the options table.
 		await setCustomizeSettings(

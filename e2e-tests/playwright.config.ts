@@ -12,7 +12,7 @@ export default defineConfig({
 	// Same values locally and in CI, so a race reproduces in both.
 	workers: envInt('PW_WORKERS', 2),
 	retries: envInt('PW_RETRIES', 2),
-	timeout: parseInt(process.env.TIMEOUT || '', 10) || 150_000, // Defaults to 100 seconds.
+	timeout: envInt('TIMEOUT', 150_000), // Defaults to 100 seconds.
 	fullyParallel: true,
 	projects: [
 		// Setup project

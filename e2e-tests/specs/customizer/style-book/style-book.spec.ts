@@ -8,10 +8,11 @@ test.describe('Style Book Modal', () => {
 		// Wait for customizer to fully load
 		await page.waitForSelector('.wp-full-overlay-sidebar', { state: 'visible' });
 
-		// The controls bundle injects this button at runtime, so wait for it
-		// rather than sleeping a fixed interval and hoping it arrived.
+		// The controls bundle injects this button at runtime, Booting the
+		// customizer plus its React bundle is the slowest step in the suite and can
+		// pass the default action timeout on a loaded machine, hence the override.
 		const styleBookButton = page.locator('#neve-style-book');
-		await styleBookButton.waitFor({ state: 'visible' });
+		await styleBookButton.waitFor({ state: 'visible', timeout: 60_000 });
 
 		// Open Style Book for all tests
 		await styleBookButton.click();

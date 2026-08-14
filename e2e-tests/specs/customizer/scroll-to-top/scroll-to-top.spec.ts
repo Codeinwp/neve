@@ -129,9 +129,13 @@ test.describe( 'Scroll to top', function () {
 
 		// Asserted against the image we selected above. The theme renders it with
 		// wp_get_attachment_url(), so this is the full URL, unsized.
+		const escapedUrl = attachment.source_url.replace(
+			/[.*+?^${}()|[\]\\]/g,
+			'\\$&'
+		);
 		await expect( scrollToTopImage ).toHaveCSS(
 			'background-image',
-			`url("${ attachment.source_url }")`
+			new RegExp( `url\\(["']?${ escapedUrl }["']?\\)` )
 		);
 
 		await setCustomizeSettings( 'stt-icon-check2', data.general, {

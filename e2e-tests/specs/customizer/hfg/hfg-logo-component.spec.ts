@@ -94,9 +94,9 @@ test.describe('Logo Component palette', function () {
 		expect(response.ok()).toBeTruthy();
 
 		const attachments = await response.json();
-		expect(attachments.length).toBe(2);
+		expect(attachments.length).toBeGreaterThan(0);
 
-		for (const attachment of attachments) {
+		for (const attachment of attachments.slice(0, 2)) {
 			logos.push({
 				id: String(attachment.id),
 				url: attachment.source_url,

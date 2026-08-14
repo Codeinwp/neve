@@ -155,16 +155,24 @@ export async function getPageError(page: Page) {
  * @param {Page} page - A playwright Page object representing the web page
  */
 export const clearWelcome = async (page: Page) => {
+	// The editor registers its stores asynchronously, so selecting one straight
+	// after navigation returns undefined and the guard below would throw.
+	await page
+		.waitForFunction(() => !!window.wp?.data?.select('core/edit-post'), null, {
+			timeout: 15_000,
+		})
+		.catch(() => {
+			// Nothing to clear if the editor never came up; let the test report that.
+		});
+
 	await page.evaluate(() => {
-		// eslint-disable-next-line no-unused-expressions
-		window.wp &&
-			window.wp.data &&
-			window.wp.data
-				.select('core/edit-post')
-				.isFeatureActive('welcomeGuide') &&
+		const editPost = window.wp?.data?.select('core/edit-post');
+
+		if (editPost?.isFeatureActive?.('welcomeGuide')) {
 			window.wp.data
 				.dispatch('core/edit-post')
 				.toggleFeature('welcomeGuide');
+		}
 	});
 };
 
@@ -268,7 +276,7 @@ export const testForViewport = async (
 ) => {
 	await page.setViewportSize(viewPort);
 	const elements = page.locator(selector);
-	// Retrying assertion: lets layout settle after the resize.
+	// Retrying assertion: lets the layout settle after the resize.
 	await expect(elements).not.toHaveCount(0);
 
 	const count = await elements.count();
