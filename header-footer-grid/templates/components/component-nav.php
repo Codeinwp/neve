@@ -31,6 +31,7 @@ $menu_id = Nav::NAV_MENU_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
 			aria-label="<?php esc_attr_e( 'Primary Menu', 'neve' ); ?>">
 
 		<?php
+		$has_nav_walker = class_exists( '\Neve\Views\Nav_Walker' );
 		echo wp_nav_menu(
 			[
 				'theme_location' => 'primary',
@@ -38,8 +39,8 @@ $menu_id = Nav::NAV_MENU_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
 				'component_id'   => $_id,
 				'menu_class'     => 'primary-menu-ul nav-ul' . $additional_menu_class,
 				'container'      => 'ul',
-				'walker'         => class_exists( '\Neve\Views\Nav_Walker' ) ? '\Neve\Views\Nav_Walker' : '',
-				'fallback_cb'    => class_exists( '\Neve\Views\Nav_Walker' ) ? '\Neve\Views\Nav_Walker::fallback' : '',
+				'walker'         => $has_nav_walker ? '\Neve\Views\Nav_Walker' : '',
+				'fallback_cb'    => $has_nav_walker ? '\Neve\Views\Nav_Walker::fallback' : 'wp_page_menu',
 				'echo'           => false,
 			]
 		);
