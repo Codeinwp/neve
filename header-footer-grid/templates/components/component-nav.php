@@ -38,8 +38,8 @@ $menu_id = Nav::NAV_MENU_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
 				'component_id'   => $_id,
 				'menu_class'     => 'primary-menu-ul nav-ul' . $additional_menu_class,
 				'container'      => 'ul',
-				'walker'         => '\Neve\Views\Nav_Walker',
-				'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',
+				'walker'         => class_exists( '\Neve\Views\Nav_Walker' ) ? '\Neve\Views\Nav_Walker' : '',
+				'fallback_cb'    => class_exists( '\Neve\Views\Nav_Walker' ) ? '\Neve\Views\Nav_Walker::fallback' : '',
 				'echo'           => false,
 			]
 		);
