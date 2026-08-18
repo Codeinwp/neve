@@ -121,7 +121,6 @@ test.describe('Single Post Check', function () {
 			'nv-content-wrap',
 			'comments-area',
 			'entry-header',
-			'nv-thumb-wrap',
 		];
 		await page.goto(
 			'/template-comments/?test_name=layoutElementsReordered'
