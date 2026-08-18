@@ -1,9 +1,5 @@
 import { test, expect, APIRequestContext, Page } from '@playwright/test';
-import {
-	setCustomizeSettings,
-	testForViewport,
-	visitAdminPage,
-} from '../../../utils';
+import { setCustomizeSettings, testForViewport } from '../../../utils';
 import data from '../../../fixtures/customizer/hfg/hfg-logo-component.json';
 
 interface TestOptions {
@@ -87,23 +83,24 @@ test.describe('Logo Component palette', function () {
 
 	test.beforeAll(async ({ browser, request, baseURL }) => {
 		page = await browser.newPage();
-		await visitAdminPage(page, 'upload.php', '');
-		await page.waitForSelector('.attachment');
-		const imageLocators = await page.locator('.attachment').count();
 
-		for (let i = 0; i < Math.min(imageLocators, 2); i++) {
-			const imageLocator = await page.locator(
-				`.attachment:nth-child(${i + 1})`
-			);
-			await imageLocator.click();
-			const urlString = page.url();
-			const url = new URL(urlString);
-			const imageId = url.searchParams.get('item') || '';
-			const imageUrl = await page
-				.locator('#attachment-details-two-column-copy-link')
-				.getAttribute('value');
-			logos.push({ id: imageId, url: imageUrl });
-			await page.goBack(); // Go back to the previous page to select the next image
+		// Queried instead of walked through the media grid: the newest sample-data
+		// attachment is a video, and grid order differs between environments.
+		// orderby=id keeps the pick stable for a given database.
+		const response = await request.get(
+			baseURL +
+				'/wp-json/wp/v2/media?media_type=image&per_page=2&orderby=id&order=asc'
+		);
+		expect(response.ok()).toBeTruthy();
+
+		const attachments = await response.json();
+		expect(attachments.length).toBeGreaterThan(0);
+
+		for (const attachment of attachments.slice(0, 2)) {
+			logos.push({
+				id: String(attachment.id),
+				url: attachment.source_url,
+			});
 		}
 
 		const { palette } = data;
