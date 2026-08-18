@@ -11,6 +11,7 @@ import ToggleControl from '../../Controls/ToggleControl';
 import Button from '../../Common/Button';
 import useLicenseData from '../../../Hooks/useLicenseData';
 import OptionGroup from './OptionGroup';
+import PerformancePlugins from './PerformancePlugins';
 
 const LOCAL_HOSTING_OPTION = 'enable_local_fonts';
 
@@ -115,6 +116,8 @@ export default () => {
 
 				{(isLicenseValid && <ProModuleSettings />) || <DummySettings />}
 			</div>
+
+			<PerformancePlugins />
 		</>
 	);
 };

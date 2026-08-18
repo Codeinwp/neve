@@ -13,7 +13,6 @@ import {
 
 import { useSelect } from '@wordpress/data';
 import Card from '../../Layout/Card';
-import PerformancePlugins from './Settings/PerformancePlugins';
 import {
 	NEVE_HAS_PRO,
 	NEVE_SHOW_WHITELABEL,
@@ -163,12 +162,6 @@ const Settings = () => {
 						</TransitionWrapper>
 					)}
 				</Card>
-
-				{tab === 'performance' && (
-					<TransitionWrapper>
-						<PerformancePlugins />
-					</TransitionWrapper>
-				)}
 			</div>
 		</div>
 	);

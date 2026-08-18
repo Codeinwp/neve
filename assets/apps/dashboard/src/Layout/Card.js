@@ -7,12 +7,14 @@ export default ({
 	afterTitle,
 	className = '',
 	id = null,
+	flat = false,
 }) => {
+	// `flat` keeps the header styling but drops the box, for cards nested inside another one.
 	const classes = cn(
 		[
-			'p-6 rounded-lg shadow-sm',
 			{
-				'bg-white': !className.includes('bg-'),
+				'p-6 rounded-lg shadow-sm': !flat,
+				'bg-white': !flat && !className.includes('bg-'),
 			},
 		],
 		className

@@ -132,6 +132,8 @@ const PerformancePlugins = () => {
 
 	return (
 		<Card
+			flat
+			className="mt-6 pt-6 border-t border-gray-200"
 			icon={<LucideRocket size={18} />}
 			title={__('Recommended Plugins', 'neve')}
 		>
