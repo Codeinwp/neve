@@ -1,3 +1,10 @@
+##### [Version 4.2.11](https://github.com/Codeinwp/neve/compare/v4.2.10...v4.2.11) (2026-08-12)
+
+- Fixed a fatal error on the header cart icon and cart magic tags when WooCommerce was active but its cart object was not available, such as during REST or cron requests.
+- Fixed wide and full-width blocks nested in sidebars or column blocks losing their side spacing.
+- Fixed a crash on the Plugins screen when the installed plugin list was not available.
+- Improved stability by preventing fatal errors when a theme class file is missing or unreadable.
+
 ##### [Version 4.2.10](https://github.com/Codeinwp/neve/compare/v4.2.9...v4.2.10) (2026-07-29)
 
 - Fixed the Related Products slider staying a plain grid on products that have no gallery images.

@@ -116,7 +116,7 @@ class Loader {
 		);
 		 
 		$bundle_path  = get_template_directory_uri() . '/assets/apps/customizer-controls/build/';
-		$dependencies = ( include get_template_directory() . '/assets/apps/customizer-controls/build/controls.asset.php' );
+		$dependencies = neve_get_asset_meta( get_template_directory() . '/assets/apps/customizer-controls/build/controls.asset.php' );
 		wp_register_script( 'react-controls', $bundle_path . 'controls.js', $dependencies['dependencies'], $dependencies['version'], true );
 		wp_localize_script(
 			'react-controls',
@@ -196,8 +196,13 @@ class Loader {
 			}
 		}
 
-		$fonts  = neve_get_google_fonts();
-		$chunks = array_chunk( $fonts, absint( count( $fonts ) / 5 ) );
+		$fonts = neve_get_google_fonts();
+
+		if ( empty( $fonts ) ) {
+			return;
+		}
+
+		$chunks = array_chunk( $fonts, max( 1, absint( count( $fonts ) / 5 ) ) );
 
 		foreach ( $chunks as $index => $fonts_chunk ) {
 			wp_enqueue_style(

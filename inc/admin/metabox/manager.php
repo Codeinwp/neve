@@ -347,7 +347,7 @@ final class Manager {
 			return false;
 		}
 
-		$dependencies = ( include get_template_directory() . '/assets/apps/metabox/build/index.asset.php' );
+		$dependencies = neve_get_asset_meta( get_template_directory() . '/assets/apps/metabox/build/index.asset.php' );
 
 		wp_enqueue_script(
 			'neve-meta-sidebar',

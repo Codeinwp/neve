@@ -17,18 +17,21 @@ test.describe('Menu item alignment', function () {
 		await page.locator('.mobile-left .navbar-toggle').click();
 		await expect(
 			page.locator(
-				'#nv-primary-navigation-mobile-sidebar .menu-item-title-wrap:has-text("About The Tests")'
+				'#nv-primary-navigation-sidebar .menu-item-title-wrap:has-text("About The Tests")'
 			)
 		).toHaveCSS('text-align', 'left');
 
+		// Located by label: menu item IDs are DB auto-increments and differ
+		// between a fresh CI import and a long-lived local database.
 		await page
-			.locator(
-				'#nv-primary-navigation-mobile-sidebar > .menu-item-1643 > .wrap > .caret-wrap'
-			)
+			.locator('#nv-primary-navigation-sidebar > li.menu-item-has-children')
+			.filter({ hasText: 'Level 1' })
+			.locator('.caret-wrap')
+			.first()
 			.click();
 		await expect(
 			page.locator(
-				'#nv-primary-navigation-mobile-sidebar .menu-item-title-wrap:has-text("Level 2")'
+				'#nv-primary-navigation-sidebar .menu-item-title-wrap:has-text("Level 2")'
 			)
 		).toHaveCSS('text-align', 'left');
 	});
