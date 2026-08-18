@@ -723,7 +723,11 @@ class Layout_Blog extends Base_Customizer {
 			return wp_json_encode( $allowed );
 		}
 
-		$decoded = json_decode( $value, true );
+		$decoded = is_string( $value ) ? json_decode( $value, true ) : $value;
+
+		if ( ! is_array( $decoded ) || empty( $decoded ) ) {
+			return wp_json_encode( $allowed );
+		}
 
 		foreach ( $decoded as $val ) {
 			if ( ! in_array( $val, $allowed, true ) ) {
@@ -731,7 +735,7 @@ class Layout_Blog extends Base_Customizer {
 			}
 		}
 
-		return $value;
+		return wp_json_encode( array_values( $decoded ) );
 	}
 
 	/**
@@ -773,7 +777,10 @@ class Layout_Blog extends Base_Customizer {
 			'excerpt',
 		);
 		$content_order = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default ) );
-		$content_order = json_decode( $content_order, true );
+
+		if ( is_string( $content_order ) ) {
+			$content_order = json_decode( $content_order, true );
+		}
 
 		return is_array( $content_order ) ? $content_order : $default;
 	}

@@ -150,5 +150,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
+          name: traces-${{ matrix.specs }}-${{ matrix.envs }}
           path: ./test-results/**
+          if-no-files-found: ignore
           retention-days: 1
