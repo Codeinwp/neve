@@ -41,6 +41,10 @@ class Dynamic_Css {
 		$desktop_css = '';
 		$tablet_css = '';
 		foreach ( $classes as $class ) {
+			if ( ! class_exists( $class ) ) {
+				continue;
+			}
+
 			$object = new $class();
 			$object->init();
 			$mobile_css .= $object->get_style( 'mobile' );
@@ -68,14 +72,21 @@ class Dynamic_Css {
 			$this->legacy_style();
 		}
 
-		$this->generator = $is_for_gutenberg ? new Gutenberg() : new Frontend();
-		$_subscribers = $this->generator->get();
+		$generator_class = $is_for_gutenberg ? Gutenberg::class : Frontend::class;
+		$generated_css = '';
 
-		$_subscribers = array_merge( $_subscribers, apply_filters( 'neve_style_subscribers', [] ) );
+		if ( class_exists( $generator_class ) ) {
+			$this->generator = new $generator_class();
+			$_subscribers = $this->generator->get();
 
-		$this->generator->set( $_subscribers );
+			$_subscribers = array_merge( $_subscribers, apply_filters( 'neve_style_subscribers', [] ) );
 
-		$style = apply_filters( 'neve_dynamic_style_output', $this->generator->generate(), $is_for_gutenberg ? 'gutenberg' : 'frontend' );
+			$this->generator->set( $_subscribers );
+
+			$generated_css = $this->generator->generate();
+		}
+
+		$style = apply_filters( 'neve_dynamic_style_output', $generated_css, $is_for_gutenberg ? 'gutenberg' : 'frontend' );
 
 		$style .= self::get_root_css();
 

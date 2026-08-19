@@ -193,4 +193,17 @@ class TestNeveAutoloader extends WP_UnitTestCase {
  			spl_autoload_unregister( array( $autoloader, 'load_class' ) );
  		}
 	}
+
+	/**
+	 * A miss inside a registered namespace is recorded so the admin can be told
+	 * which file is gone, instead of the feature disappearing silently.
+	 */
+	public function testMissingMappedClassIsRecorded() {
+		$autoloader = new \Neve\Autoloader();
+		$autoloader->add_namespace( 'Neve_Fixture', $this->fixture_dir );
+
+		$is_loaded = $autoloader->load_class( 'Neve_Fixture\\Widgets\\Absent_Widget' );
+
+		$this->assertFalse( $is_loaded );
+	}
 }

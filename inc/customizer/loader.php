@@ -281,6 +281,9 @@ class Loader {
 	 * @return void
 	 */
 	private function load_modules() {
+		if ( ! class_exists( Factory::class ) ) {
+			return;
+		}
 		$factory = new Factory( $this->customizer_modules );
 		$factory->load_modules();
 	}

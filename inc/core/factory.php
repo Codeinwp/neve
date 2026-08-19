@@ -51,7 +51,7 @@ class Factory {
 	public function load_modules() {
 		foreach ( $this->modules as $module_name ) {
 			$module = $this->build( $module_name );
-			if ( $module !== null ) {
+			if ( $module !== null && method_exists( $module, 'init' ) ) {
 				$module->init();
 			}
 		}
