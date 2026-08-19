@@ -5,8 +5,11 @@
 	visibility: visible;
 }
 
+// Scoped to the properties that actually animate (icon flip, hover color);
+// a bare `transition: 0.3s ease` means `all` and would animate the focus
+// outline in from 0, hiding it for the first frames.
 .caret {
-	transition: 0.3s ease;
+	transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .dd-title {

@@ -1,3 +1,15 @@
+// Keyboard focus visibility (accessibility-ready criterion 3) relies on
+// the browser-default focus ring: the defaults are two-tone so they stay
+// visible on any background the customizer can produce. No rule needed —
+// what matters is that nothing suppresses the ring (no `outline: none`,
+// no `transition: all` animating it in from zero).
+
+// Programmatic focus targets (e.g. the skip-link destination #content)
+// are not interactive; a ring around the whole main area is noise.
+[tabindex="-1"]:focus-visible {
+	outline: none;
+}
+
 .show-on-focus {
 	position: absolute;
 	width: 1px;

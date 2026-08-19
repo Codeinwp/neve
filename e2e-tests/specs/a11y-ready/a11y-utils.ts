@@ -78,18 +78,15 @@ export async function collectAccessibleNames(
 /**
  * §5.8 / review row "Visible focus outline is browser default or 2px solid
  * with 3:1 contrast". Focuses the element and asserts a real focus
- * indicator: a browser-default ring ('auto'), an outline of >= 2px, or a
- * box-shadow that appears on focus.
+ * indicator to the reviewer's bar: a browser-default ring ('auto') or an
+ * outline of >= 2px. A box-shadow glow deliberately does NOT count — the
+ * review measured against outlines.
  */
 export async function expectVisibleFocusIndicator(
 	page: Page,
 	target: Locator,
 	label: string
 ) {
-	const before = await target.evaluate((el) => {
-		const cs = getComputedStyle(el);
-		return { boxShadow: cs.boxShadow, outlineStyle: cs.outlineStyle };
-	});
 	await target.focus();
 	await expect(target, `${label}: element must be focusable`).toBeFocused();
 	const after = await target.evaluate((el) => {
@@ -97,20 +94,16 @@ export async function expectVisibleFocusIndicator(
 		return {
 			outlineStyle: cs.outlineStyle,
 			outlineWidth: parseFloat(cs.outlineWidth || '0'),
-			boxShadow: cs.boxShadow,
 		};
 	});
 	const hasOutline =
 		after.outlineStyle === 'auto' ||
 		(after.outlineStyle !== 'none' && after.outlineWidth >= 2);
-	const hasShadow =
-		after.boxShadow !== 'none' && after.boxShadow !== before.boxShadow;
 	expect(
-		hasOutline || hasShadow,
+		hasOutline,
 		`${label}: focused element must show a visible focus indicator ` +
-			`(browser default or >=2px outline, or a focus box-shadow). ` +
-			`Got outline: ${after.outlineStyle} ${after.outlineWidth}px, ` +
-			`box-shadow: ${after.boxShadow}`
+			`(browser default ring or >=2px outline). ` +
+			`Got outline: ${after.outlineStyle} ${after.outlineWidth}px`
 	).toBeTruthy();
 }
 
