@@ -10,13 +10,13 @@ return array(
 	'content'    => '<!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {} -->
-<figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-6.jpg" alt="" /></figure>
+<figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-6.jpg" alt="Orange light bulb on a teal background" /></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center"} -->
 <div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading -->
-<h2>The quick brown fox jumps over the lazy dog"</h2>
+<h2>The quick brown fox jumps over the lazy dog</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -25,7 +25,7 @@ return array(
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-primary"} -->
-<div class="wp-block-button is-style-primary"><a class="wp-block-button__link">This is Primary Button</a></div>
+<div class="wp-block-button is-style-primary"><a class="wp-block-button__link" href="#">This is Primary Button</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:column --></div>
