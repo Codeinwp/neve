@@ -45,7 +45,6 @@ class Generator {
 			if ( ! $echo ) {
 				return '';
 			}
-			echo '';
 			return;
 		}
 
