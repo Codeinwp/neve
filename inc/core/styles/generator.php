@@ -42,7 +42,11 @@ class Generator {
 	 */
 	public function generate( $echo = false ) {
 		if ( ! class_exists( Dynamic_Selector::class ) ) {
-			return '';
+			if ( ! $echo ) {
+				return '';
+			}
+			echo '';
+			return;
 		}
 
 		$desktop_css = '';

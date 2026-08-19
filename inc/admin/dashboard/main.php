@@ -75,7 +75,14 @@ class Main {
 	 */
 	private function get_plugin_actions( $slug ) {
 		if ( null === $this->plugin_helper ) {
-			return array();
+			return [
+				'cta'        => 'install',
+				'path'       => '',
+				'activate'   => '',
+				'deactivate' => '',
+				'network'    => false,
+				'version'    => '0.0.0',
+			];
 		}
 
 		return [

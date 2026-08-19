@@ -51,8 +51,21 @@ class Factory {
 	public function load_modules() {
 		foreach ( $this->modules as $module_name ) {
 			$module = $this->build( $module_name );
-			if ( $module !== null && method_exists( $module, 'init' ) ) {
+			if ( $module === null ) {
+				continue;
+			}
+			if ( method_exists( $module, 'init' ) ) {
 				$module->init();
+				continue;
+			}
+
+			$message = sprintf(
+				'Module "%s" was built but does not implement an init() method.',
+				$this->namespace . $module_name
+			);
+			if ( function_exists( '_doing_it_wrong' ) ) {
+				_doing_it_wrong( __METHOD__, esc_html( $message ), '1.0.0' );
+				continue;
 			}
 		}
 	}
