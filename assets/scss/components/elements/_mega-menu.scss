@@ -76,15 +76,16 @@
 			}
 		}
 
-		.neve-mega-menu:hover,
-		.neve-mega-menu:focus {
-
-			> .sub-menu {
-				display: flex;
-				opacity: 1;
-				visibility: visible;
-				pointer-events: all;
-			}
+		// :focus-within (not the never-matching li:focus) covers keyboard
+		// focus; .dropdown-open is the JS/assistive-tech open state. One
+		// rule so the three open paths can never drift apart.
+		.neve-mega-menu:hover > .sub-menu,
+		.neve-mega-menu:focus-within > .sub-menu,
+		.neve-mega-menu > .sub-menu.dropdown-open {
+			display: flex;
+			opacity: 1;
+			visibility: visible;
+			pointer-events: all;
 		}
 
 		.neve-mega-menu {

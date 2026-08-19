@@ -51,9 +51,12 @@
 		display: block;
 		position: relative;
 
+		// position/padding were previously inline CSS from Nav_Walker.
 		> .wrap {
 			display: flex;
 			align-items: center;
+			position: relative;
+			padding: 0 4px;
 		}
 
 		&.nv-active > .wrap {
@@ -110,9 +113,29 @@
 	}
 }
 
+// Explicit rule (not @extend, which hoists the selector to the top of the
+// file) placed after .nav-ul so the open state wins over the base
+// `.nav-ul .sub-menu` hidden state on source order. This is the single
+// open state used by mouse, keyboard and assistive tech.
 .sub-menu.dropdown-open {
+	opacity: 1;
+	visibility: visible;
+}
 
-	@extend %show-dropdown;
+// The submenu toggles are native buttons; strip UA button styling so they
+// render exactly like the previous inline element.
+.nav-ul button.caret-wrap {
+	background: none;
+	border: 0;
+	padding: 0;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+}
+
+// Previously inline CSS from Nav_Walker::get_accessibility_style().
+.nav-ul:not(.menu-mobile):not(.neve-mega-menu) > li > .wrap > a {
+	padding-top: 1px;
 }
 
 // === Inside Sidebar === //

@@ -85,20 +85,110 @@ function handleScrollLinks() {
 }
 
 /**
- * Handle dropdowns on mobile devices.
+ * Handle submenu dropdown toggles (desktop and mobile).
+ *
+ * The toggles are native buttons, so click covers mouse, Enter, Space and
+ * assistive-technology activation with a single code path and a single
+ * open state (`dropdown-open`), mirrored to aria-expanded.
  */
+let openCaretCount = 0;
+
 function handleMobileDropdowns() {
-	const carets = document.querySelectorAll('.caret-wrap');
-	addEvent(carets, 'click', openCarrets);
+	// Per-element guard: re-inits (e.g. customizer partial refreshes) must
+	// bind new carets without stacking listeners on surviving ones.
+	document
+		.querySelectorAll('.caret-wrap:not([data-nv-bound])')
+		.forEach((caret) => {
+			caret.dataset.nvBound = '1';
+			caret.addEventListener('click', (e) => toggleCaret(e, caret));
+		});
+	// Sidebar carets can render pre-expanded (neve_first_level_expanded).
+	openCaretCount = openCarets().length;
+	// Document-level guard is on <body> so a second bundle (customizer
+	// preview) cannot double-register the handlers below.
+	if (document.body.dataset.nvCaretKeys) {
+		return;
+	}
+	document.body.dataset.nvCaretKeys = '1';
+	// Escape closes the open submenu and returns focus to its toggle.
+	// stopImmediatePropagation keeps the sidebar focus trap (also a
+	// document keydown listener) from closing the whole menu on the same
+	// press; the next Escape reaches it.
+	document.addEventListener('keydown', (event) => {
+		if (event.key !== 'Escape' || openCaretCount === 0) {
+			return;
+		}
+		const openCaret = openCarets().find((caret) =>
+			caret.closest('li').contains(event.target)
+		);
+		if (!openCaret) {
+			return;
+		}
+		event.preventDefault();
+		event.stopImmediatePropagation();
+		setCaretState(openCaret, false);
+		openCaret.focus();
+	});
+	// Close a desktop submenu when keyboard focus leaves its menu item.
+	// Sidebar toggles (.navbar-toggle) are exempt to keep the sidebar's
+	// tap-to-toggle behavior and the neve_first_level_expanded default.
+	document.addEventListener('focusout', (event) => {
+		if (openCaretCount === 0) {
+			return;
+		}
+		openCarets().forEach((caret) => {
+			if (
+				!caret.classList.contains('navbar-toggle') &&
+				!caret.closest('li').contains(event.relatedTarget)
+			) {
+				setCaretState(caret, false);
+			}
+		});
+	});
 }
 
-function openCarrets(e, caret) {
+function openCarets() {
+	return [...document.querySelectorAll(`.caret-wrap.${strings[0]}`)];
+}
+
+function toggleCaret(e, caret) {
 	e.preventDefault();
 	e.stopPropagation();
+	const open = !caret.classList.contains(strings[0]);
+	setCaretState(caret, open);
+	if (open) {
+		createNavOverlay(
+			document.querySelectorAll(`.${strings[0]}`),
+			strings[0]
+		);
+	}
+}
+
+function setCaretState(caret, open) {
+	if (caret.classList.contains(strings[0]) === open) {
+		return;
+	}
+	openCaretCount += open ? 1 : -1;
 	const subMenu = caret.parentNode.parentNode.querySelector('.sub-menu');
-	toggleClass(caret, strings[0]);
-	toggleClass(subMenu, strings[0]);
-	createNavOverlay(document.querySelectorAll(`.${strings[0]}`), strings[0]);
+	const applyClass = open ? addClass : removeClass;
+	applyClass(caret, strings[0]);
+	if (subMenu !== null) {
+		applyClass(subMenu, strings[0]);
+	}
+	caret.setAttribute('aria-expanded', open ? 'true' : 'false');
+	if (!open && openCaretCount === 0) {
+		removeNavOverlay();
+	}
+}
+
+/**
+ * Remove the click-away overlay if present.
+ */
+function removeNavOverlay() {
+	const overlay = document.querySelector(`.${strings[2]}`);
+	if (overlay !== null) {
+		overlay.parentNode.removeChild(overlay);
+	}
 }
 
 /**
@@ -213,11 +303,7 @@ function handleSearch() {
 	addEvent(close, 'click', (e) => {
 		e.preventDefault();
 		removeClass(navItem, strings[1]);
-		const overlay = doc.querySelector(`.${strings[2]}`);
-		if (overlay === null) {
-			return;
-		}
-		overlay.parentNode.removeChild(overlay);
+		removeNavOverlay();
 	});
 }
 
@@ -333,7 +419,10 @@ function createNavOverlay(item, classToRemove) {
 	primaryNav.parentNode.insertBefore(navClickaway, primaryNav);
 
 	navClickaway.addEventListener('click', () => {
+		// setCaretState owns class + aria + count for toggles; removeClass
+		// covers the non-caret users of the overlay (header search).
+		openCarets().forEach((caret) => setCaretState(caret, false));
 		removeClass(item, classToRemove);
-		navClickaway.parentNode.removeChild(navClickaway);
+		removeNavOverlay();
 	});
 }

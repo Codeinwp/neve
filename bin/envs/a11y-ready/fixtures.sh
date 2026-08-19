@@ -21,10 +21,10 @@ echo "== a11y-ready fixtures =="
 $WP_CMD menu delete "A11y Test" 2>/dev/null || true
 MENU_ID=$($WP_CMD menu create "A11y Test" --porcelain)
 HOME_URL=$($WP_CMD option get siteurl)
-P1=$($WP_CMD menu item add-custom "$MENU_ID" "Products" "$HOME_URL/" --porcelain)
+P1=$($WP_CMD menu item add-custom "$MENU_ID" "Products" "$HOME_URL/?fixture=products" --porcelain)
 $WP_CMD menu item add-custom "$MENU_ID" "Product Alpha" "$HOME_URL/?fixture=alpha" --parent-id="$P1" --porcelain
 $WP_CMD menu item add-custom "$MENU_ID" "Product Beta" "$HOME_URL/?fixture=beta" --parent-id="$P1" --porcelain
-P2=$($WP_CMD menu item add-custom "$MENU_ID" "Company" "$HOME_URL/" --porcelain)
+P2=$($WP_CMD menu item add-custom "$MENU_ID" "Company" "$HOME_URL/?fixture=company" --porcelain)
 $WP_CMD menu item add-custom "$MENU_ID" "About Us" "$HOME_URL/?fixture=about" --parent-id="$P2" --porcelain
 $WP_CMD menu item add-custom "$MENU_ID" "Contact" "$HOME_URL/?fixture=contact" --parent-id="$P2" --porcelain
 $WP_CMD menu item add-custom "$MENU_ID" "Plain Item" "$HOME_URL/?fixture=plain" --porcelain
