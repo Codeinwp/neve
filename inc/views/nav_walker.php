@@ -114,7 +114,11 @@ class Nav_Walker extends \Walker_Nav_Menu {
 				$title = '<span class="menu-item-title-wrap dd-title">' . $title . '</span>';
 			}
 
-			$caret_wrap_css = $caret_settings['side'] === 'right' ? 'margin-left:5px;' : 'margin-right:5px;';
+			// The button is a 24px minimum touch target (WCAG 2.5.8); the
+			// negative margin keeps the icon's original 5px visual gap to
+			// the label. The outer side must NOT be pulled back in — the
+			// neighbouring item would overlap (obscure) the touch target.
+			$caret_wrap_css = $caret_settings['side'] === 'right' ? 'margin-left:-3px;' : 'margin-right:-3px;';
 
 			/* translators: %s: menu item title */
 			$toggle_aria_label = sprintf( __( '%s submenu', 'neve' ), wp_strip_all_tags( $item->title ) ); // @phpstan-ignore-line title is defined on WP_Post object that is used as Menu Item.

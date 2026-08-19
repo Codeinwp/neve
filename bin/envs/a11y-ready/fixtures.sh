@@ -86,4 +86,63 @@ done
 # Low per-page count so the blog paginates (pagination link-text criterion).
 $WP_CMD option update posts_per_page 3
 
+# ------------------------------------------------------------------
+# 5. W3 showcase page: every element the color/contrast workstream
+#    touches, on one page, for before/after comparison.
+# ------------------------------------------------------------------
+OLD_W3=$($WP_CMD post list --post_type=page --name=a11y-w3-showcase --field=ID | head -1)
+if [ -n "$OLD_W3" ]; then
+	$WP_CMD post delete "$OLD_W3" --force
+fi
+$WP_CMD eval '
+// Raw form markup needs unfiltered_html, which anonymous CLI lacks.
+$admins = get_users( array( "role" => "administrator", "number" => 1, "fields" => "ID" ) );
+if ( ! empty( $admins ) ) {
+	wp_set_current_user( $admins[0] );
+}
+$home = esc_url( home_url( "/" ) );
+$cat  = esc_url( home_url( "/category/a11y-cat/" ) );
+$content = <<<HTML
+<!-- wp:paragraph --><p>Fixture page showing every element the W3 color/contrast workstream changes. Compare this page before and after W3 lands.</p><!-- /wp:paragraph -->
+
+<!-- wp:heading --><h2>Content links and hover</h2><!-- /wp:heading -->
+<!-- wp:paragraph --><p>Plain inline link: <a href="{$home}">hover me — today the color does not change</a> (secondary accent equals primary accent).</p><!-- /wp:paragraph -->
+<!-- wp:paragraph --><p>Link with a class attribute (escapes the current underline rule): <a class="fixture-classed-link" href="{$home}">classed link — not underlined today</a>.</p><!-- /wp:paragraph -->
+
+<!-- wp:heading --><h2>Buttons</h2><!-- /wp:heading -->
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-primary"} --><div class="wp-block-button is-style-primary"><a class="wp-block-button__link wp-element-button" href="{$home}">Neve primary — hover me</a></div><!-- /wp:button --><!-- wp:button {"className":"is-style-secondary"} --><div class="wp-block-button is-style-secondary"><a class="wp-block-button__link wp-element-button" href="{$home}">Neve secondary — hover me</a></div><!-- /wp:button --><!-- wp:button --><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="{$home}">Default block button (core-styled)</a></div><!-- /wp:button --></div>
+<!-- /wp:buttons -->
+<!-- wp:paragraph --><p>Neve primary should darken its background on hover; Neve secondary should fill with the light background. The default variation is styled by WordPress core, not the theme.</p><!-- /wp:paragraph -->
+
+<!-- wp:heading --><h2>Form fields: borders, placeholder, search button</h2><!-- /wp:heading -->
+<!-- wp:search {"label":"Search this site","buttonText":"Search"} /-->
+<!-- wp:html -->
+<form action="#" method="get">
+<p><label for="w3-text">Text field</label><br /><input type="text" id="w3-text" name="w3-text" placeholder="Placeholder rendered at 50% opacity" /></p>
+<p><label for="w3-email">Email field</label><br /><input type="email" id="w3-email" name="w3-email" placeholder="you@example.com" /></p>
+<p><label for="w3-select">Select</label><br /><select id="w3-select" name="w3-select"><option>Option one</option><option>Option two</option></select></p>
+<p><label for="w3-textarea">Textarea</label><br /><textarea id="w3-textarea" name="w3-textarea" rows="3" placeholder="Border contrast sample"></textarea></p>
+<p><input type="submit" value="Submit button" /></p>
+</form>
+<!-- /wp:html -->
+
+<!-- wp:heading --><h2>Palette colors on white</h2><!-- /wp:heading -->
+<!-- wp:paragraph {"textColor":"nv-c-1"} --><p class="has-nv-c-1-color has-text-color">nv-c-1 purple text — currently below 4.5:1 on white.</p><!-- /wp:paragraph -->
+<!-- wp:paragraph {"textColor":"nv-c-2"} --><p class="has-nv-c-2-color has-text-color">nv-c-2 red text — currently below 4.5:1 on white.</p><!-- /wp:paragraph -->
+<!-- wp:paragraph --><p class="has-neve-link-hover-color-color has-text-color">Secondary accent (the hover color) as text — today identical to the primary accent.</p><!-- /wp:paragraph -->
+
+<!-- wp:heading --><h2>Pagination</h2><!-- /wp:heading -->
+<!-- wp:paragraph --><p>Pagination renders on the <a href="{$home}">blog page</a> and the <a href="{$cat}">A11y Cat archive</a>: no hover/focus style and ambiguous link names today.</p><!-- /wp:paragraph -->
+HTML;
+$id = wp_insert_post( array(
+	"post_title"   => "A11y W3 Showcase",
+	"post_name"    => "a11y-w3-showcase",
+	"post_type"    => "page",
+	"post_status"  => "publish",
+	"post_content" => $content,
+) );
+echo $id . "\n";
+'
+
 echo "== a11y-ready fixtures done =="

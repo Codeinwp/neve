@@ -43,7 +43,9 @@ button {
 
 ::placeholder {
 	color: inherit;
-	opacity: 0.5;
+	// 0.7 of the default text color blends to ~5.6:1 on the site
+	// background (0.5 blended to 3.1:1, below the 4.5:1 text minimum).
+	opacity: 0.7;
 }
 
 select {

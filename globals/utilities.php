@@ -511,14 +511,19 @@ function neve_get_global_colors_default( $migrated = false ) {
 				'allowDeletion' => false,
 				'colors'        => [
 					'nv-primary-accent'   => '#2f5aae',
-					'nv-secondary-accent' => '#2f5aae',
+					// Hover accent: darker than the primary so hover states
+					// are perceivable; 8.9:1 on the site background.
+					'nv-secondary-accent' => '#24478c',
 					'nv-site-bg'          => '#ffffff',
 					'nv-light-bg'         => '#f4f5f7',
 					'nv-dark-bg'          => '#121212',
 					'nv-text-color'       => '#272626',
 					'nv-text-dark-bg'     => '#ffffff',
-					'nv-c-1'              => '#9463ae',
-					'nv-c-2'              => '#be574b',
+					// >= 4.5:1 on both nv-site-bg and nv-light-bg (the old
+					// values sat at exactly 4.51:1 on white and failed on
+					// the light background).
+					'nv-c-1'              => '#824c9e',
+					'nv-c-2'              => '#a4423a',
 				],
 			],
 			'darkMode' => [
@@ -526,14 +531,18 @@ function neve_get_global_colors_default( $migrated = false ) {
 				'allowDeletion' => false,
 				'colors'        => [
 					'nv-primary-accent'   => '#00c2ff',
-					'nv-secondary-accent' => '#00c2ff',
+					// Hover accent: lighter than the primary; 11.5:1 on the
+					// dark site background.
+					'nv-secondary-accent' => '#66d9ff',
 					'nv-site-bg'          => '#121212',
 					'nv-light-bg'         => '#1a1a1a',
 					'nv-dark-bg'          => '#000000',
 					'nv-text-color'       => '#ffffff',
 					'nv-text-dark-bg'     => '#ffffff',
-					'nv-c-1'              => '#198754',
-					'nv-c-2'              => '#be574b',
+					// >= 4.5:1 on the dark site background (old values were
+					// 4.1:1 and 4.2:1).
+					'nv-c-1'              => '#1fa869',
+					'nv-c-2'              => '#cd6d61',
 				],
 			],
 		],

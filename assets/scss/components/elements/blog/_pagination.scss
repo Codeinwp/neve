@@ -42,4 +42,11 @@ ul.page-numbers {
 		background: var(--nv-primary-accent);
 		color: var(--nv-text-dark-bg);
 	}
+
+	// Hover/focus need a visible, non-color-only state.
+	a:hover,
+	a:focus {
+		text-decoration: underline;
+		color: var(--nv-secondary-accent);
+	}
 }
