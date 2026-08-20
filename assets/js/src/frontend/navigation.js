@@ -33,40 +33,46 @@ export const repositionDropdowns = () => {
 		'.sub-menu, .minimal .nv-nav-search'
 	);
 
-	if (dropDowns.length === 0) return;
+	if (!dropDowns.length) return;
 
 	const windowWidth = window.innerWidth;
 
+	// How far a dropdown runs past the viewport: negative past the left edge,
+	// positive past the right edge, zero when it fits.
+	const getOverflow = (bounding) => {
+		if (bounding.left < 0) {
+			return bounding.left;
+		}
+
+		return bounding.right > windowWidth ? bounding.right - windowWidth : 0;
+	};
+
 	dropDowns.forEach((dropDown) => {
 		const style = dropDown.style;
-		// Nested flyouts open sideways, first level dropdowns open under the parent item.
-		const edge = dropDown.matches('.sub-menu .sub-menu') ? '100%' : 0;
-		let bounding = dropDown.getBoundingClientRect();
 
-		if (bounding.left < 0) {
-			// Overflows the left edge, so open towards the right.
-			style.left = edge;
-			style.right = 'auto';
-		} else if (bounding.right >= windowWidth) {
-			// Overflows the right edge, so open towards the left.
-			style.right = edge;
-			style.left = 'auto';
+		// Drop what an earlier pass applied, so the dropdown is measured where
+		// the stylesheet puts it and stale offsets do not pile up.
+		style.right = style.left = style.transform = '';
+
+		let overflow = getOverflow(dropDown.getBoundingClientRect());
+
+		if (!overflow) {
+			return;
 		}
 
-		// Recalculate bounding after we've made adjustments.
-		bounding = dropDown.getBoundingClientRect();
+		const edge = dropDown.matches('.sub-menu .sub-menu') ? '100%' : '0px';
+
+		style.right = overflow < 0 ? 'auto' : edge;
+		style.left = overflow < 0 ? edge : 'auto';
 
 		// Wider than the space on the side it opens towards, offset it to fit.
-		let offset = 0;
+		overflow = getOverflow(dropDown.getBoundingClientRect());
 
-		if (bounding.left < 0) {
-			offset = 20 - bounding.left;
-		} else if (bounding.right >= windowWidth) {
-			offset = windowWidth - bounding.right - 20;
-		}
-
-		if (offset) {
-			style.transform = 'translateX(' + offset + 'px)';
+		if (overflow) {
+			style.transform =
+				'translateX(' +
+				(overflow < 0 ? 20 - overflow : -overflow - 20) +
+				'px)';
 		}
 	});
 	if (typeof menuCalcEvent !== 'undefined') {

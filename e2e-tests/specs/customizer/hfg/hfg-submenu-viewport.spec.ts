@@ -48,6 +48,14 @@ const getInlineStyles = async (page: Page, selector: string) => {
 	}, selector);
 };
 
+const reposition = async (page: Page) => {
+	await page.setViewportSize({
+		width: VIEWPORT.width - 1,
+		height: VIEWPORT.height,
+	});
+	await page.setViewportSize(VIEWPORT);
+};
+
 const getBox = async (page: Page, selector: string) => {
 	return await page.evaluate((element: string) => {
 		const node = document.querySelector(element);
@@ -145,13 +153,13 @@ test.describe('Submenu viewport repositioning', function () {
 			VIEWPORT.width
 		);
 
-		// The resize handler repositions the dropdowns, debounced by 500ms.
-		await page.setViewportSize({
-			width: VIEWPORT.width - 1,
-			height: VIEWPORT.height,
-		});
-		await page.setViewportSize(VIEWPORT);
-		await page.waitForTimeout(1000);
+		await reposition(page);
+		await page.waitForFunction((selector) => {
+			const dropdown = document.querySelector(
+				selector
+			) as HTMLElement | null;
+			return dropdown !== null && dropdown.style.right !== '';
+		}, LAST_ITEM + ' > .sub-menu');
 	});
 
 	test('Keeps the hovered dropdown under its parent item', async ({
