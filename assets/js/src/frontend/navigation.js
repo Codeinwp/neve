@@ -1,4 +1,4 @@
-/* global NeveProperties menuCalcEvent CustomEvent */
+/* global menuCalcEvent CustomEvent */
 /* jshint esversion: 6 */
 import {
 	toggleClass,
@@ -29,7 +29,6 @@ export const initNavigation = () => {
  * Reposition drop downs in case they go off screen.
  */
 export const repositionDropdowns = () => {
-	const { isRTL } = NeveProperties;
 	const dropDowns = document.querySelectorAll(
 		'.sub-menu, .minimal .nv-nav-search'
 	);
@@ -39,30 +38,35 @@ export const repositionDropdowns = () => {
 	const windowWidth = window.innerWidth;
 
 	dropDowns.forEach((dropDown) => {
-		let bounding = dropDown.getBoundingClientRect(),
-			rightDist = bounding.left;
+		const style = dropDown.style;
+		// Nested flyouts open sideways, first level dropdowns open under the parent item.
+		const edge = dropDown.matches('.sub-menu .sub-menu') ? '100%' : 0;
+		let bounding = dropDown.getBoundingClientRect();
 
-		if (rightDist < 0) {
-			dropDown.style.right = isRTL ? '-100%' : 'auto';
-			dropDown.style.left = isRTL ? 'auto' : 0;
-		}
-
-		if (rightDist + bounding.width >= windowWidth) {
-			dropDown.style.right = isRTL ? 0 : '100%';
-			dropDown.style.left = 'auto';
+		if (bounding.left < 0) {
+			// Overflows the left edge, so open towards the right.
+			style.left = edge;
+			style.right = 'auto';
+		} else if (bounding.right >= windowWidth) {
+			// Overflows the right edge, so open towards the left.
+			style.right = edge;
+			style.left = 'auto';
 		}
 
 		// Recalculate bounding after we've made adjustments.
 		bounding = dropDown.getBoundingClientRect();
-		rightDist = bounding.left;
 
-		if (rightDist < 0 || rightDist + bounding.width >= windowWidth) {
-			// Calculate how much should we offset the dropdown to make it fit.
-			dropDown.style.transform =
-				'translateX(' +
-				(isRTL ? '-' : '') +
-				(Math.abs(rightDist) + 20) +
-				'px)';
+		// Wider than the space on the side it opens towards, offset it to fit.
+		let offset = 0;
+
+		if (bounding.left < 0) {
+			offset = 20 - bounding.left;
+		} else if (bounding.right >= windowWidth) {
+			offset = windowWidth - bounding.right - 20;
+		}
+
+		if (offset) {
+			style.transform = 'translateX(' + offset + 'px)';
 		}
 	});
 	if (typeof menuCalcEvent !== 'undefined') {
