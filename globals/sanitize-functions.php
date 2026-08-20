@@ -182,7 +182,7 @@ function neve_sanitize_background( $value ) {
 	$value['overlayColorValue'] = neve_sanitize_colors( isset( $value['overlayColorValue'] ) ? $value['overlayColorValue'] : '' );
 
 
-	$value['overlayOpacity'] = (int) $value['overlayOpacity'];
+	$value['overlayOpacity'] = isset( $value['overlayOpacity'] ) ? (int) $value['overlayOpacity'] : 0;
 	if ( $value['overlayOpacity'] > 100 || $value['overlayOpacity'] < 0 ) {
 		$value['overlayOpacity'] = 50;
 	}
