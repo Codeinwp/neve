@@ -12,11 +12,17 @@
 /**
  * Function to sanitize alpha color.
  *
- * @param string $value Hex or RGBA color.
+ * @param mixed $value Hex or RGBA color.
  *
  * @return string
  */
 function neve_sanitize_colors( $value ) {
+	if ( ! is_string( $value ) && ! is_numeric( $value ) ) {
+		return '';
+	}
+
+	$value = (string) $value;
+
 	$is_var = ( strpos( $value, 'var' ) !== false );
 
 	if ( $is_var ) {
@@ -31,19 +37,25 @@ function neve_sanitize_colors( $value ) {
 	$mode = ( false === strpos( $value, 'rgba' ) ) ? 'hex' : 'rgba';
 	if ( 'rgba' === $mode ) {
 		return neve_sanitize_rgba( $value );
-	} else {
-		return sanitize_hex_color( $value );
 	}
+
+	$hex_color = sanitize_hex_color( $value );
+
+	return null === $hex_color ? '' : $hex_color;
 }
 
 /**
  * Sanitize rgba color.
  *
- * @param string $value Color in rgba format.
+ * @param mixed $value Color in rgba format.
  *
  * @return string
  */
 function neve_sanitize_rgba( $value ) {
+	if ( ! is_string( $value ) ) {
+		return 'rgba(0,0,0,0)';
+	}
+
 	$red   = 'rgba(0,0,0,0)';
 	$green = 'rgba(0,0,0,0)';
 	$blue  = 'rgba(0,0,0,0)';
@@ -165,9 +177,9 @@ function neve_sanitize_background( $value ) {
 	}
 
 
-	$value['imageUrl']          = esc_url( $value['imageUrl'] );
-	$value['colorValue']        = neve_sanitize_colors( $value['colorValue'] );
-	$value['overlayColorValue'] = neve_sanitize_colors( $value['overlayColorValue'] );
+	$value['imageUrl']          = esc_url( isset( $value['imageUrl'] ) ? $value['imageUrl'] : '' );
+	$value['colorValue']        = neve_sanitize_colors( isset( $value['colorValue'] ) ? $value['colorValue'] : '' );
+	$value['overlayColorValue'] = neve_sanitize_colors( isset( $value['overlayColorValue'] ) ? $value['overlayColorValue'] : '' );
 
 
 	$value['overlayOpacity'] = (int) $value['overlayOpacity'];

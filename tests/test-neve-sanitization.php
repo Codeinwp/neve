@@ -135,6 +135,29 @@ class TestSanitization extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Test that color sanitization does not fatal on array or non-string values.
+	 */
+	public function test_sanitize_colors_with_non_string_values() {
+		$this->assertSame( '', neve_sanitize_colors( [ '#ffffff', '#000000' ] ) );
+		$this->assertSame( '', neve_sanitize_colors( [ 'mobile' => '#ffffff' ] ) );
+		$this->assertSame( '', neve_sanitize_colors( [] ) );
+
+		// Other non-color values are rejected too.
+		$this->assertSame( '', neve_sanitize_colors( null ) );
+		$this->assertSame( '', neve_sanitize_colors( true ) );
+		$this->assertSame( '', neve_sanitize_colors( new stdClass() ) );
+
+		// Invalid strings return an empty string, never null.
+		$this->assertSame( '', neve_sanitize_colors( 'not-a-color' ) );
+		$this->assertSame( '', neve_sanitize_colors( '' ) );
+
+		// Valid values keep working as before.
+		$this->assertSame( '#ff0000', neve_sanitize_colors( '#ff0000' ) );
+		$this->assertSame( 'rgba(255,0,0,1)', neve_sanitize_colors( 'rgba(255, 0, 0, 1)' ) );
+		$this->assertSame( 'var(--nv-primary-accent)', neve_sanitize_colors( 'var(--nv-primary-accent)' ) );
+	}
+
+	/**
 	 * Private reusable function for the assertion of sanitize responsive int json.
 	 *
 	 * @param array  $input_value Input value.
