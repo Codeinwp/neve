@@ -21,19 +21,25 @@ function neve_is_css_var( $value ) {
 		return false;
 	}
 
+	$value = trim( $value );
+
+	if ( $value === '' || strlen( $value ) > 200 ) {
+		return false;
+	}
+
 	$hex      = '#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})';
 	$color_fn = '(?:rgb|rgba|hsl|hsla)\(\s*[0-9a-z.,%\/\s-]+\)';
 	$keyword  = '[a-z]+(?:-[a-z]+)*';
 	$fallback = '(?:(?P>nv_var)|' . $hex . '|' . $color_fn . '|' . $keyword . ')';
 	$pattern  = '/^(?P<nv_var>var\(\s*--[a-z0-9_-]+\s*(?:,\s*' . $fallback . '\s*)?\))$/i';
 
-	return (bool) preg_match( $pattern, trim( $value ) );
+	return (bool) preg_match( $pattern, $value );
 }
 
 /**
- * Function to sanitize alpha color.
+ * Sanitize a color control value.
  *
- * @param mixed $value Hex or RGBA color.
+ * @param mixed $value Color value: CSS variable, gradient, rgba() or hex.
  *
  * @return string
  */
@@ -196,18 +202,17 @@ function neve_sanitize_background( $value ) {
 	}
 
 
-	$value['imageUrl']          = esc_url( isset( $value['imageUrl'] ) ? $value['imageUrl'] : '' );
-	$value['colorValue']        = neve_sanitize_colors( isset( $value['colorValue'] ) ? $value['colorValue'] : '' );
-	$value['overlayColorValue'] = neve_sanitize_colors( isset( $value['overlayColorValue'] ) ? $value['overlayColorValue'] : '' );
+	$value['imageUrl']          = esc_url( $value['imageUrl'] ?? '' );
+	$value['colorValue']        = neve_sanitize_colors( $value['colorValue'] ?? '' );
+	$value['overlayColorValue'] = neve_sanitize_colors( $value['overlayColorValue'] ?? '' );
 
-
-	$value['overlayOpacity'] = isset( $value['overlayOpacity'] ) ? (int) $value['overlayOpacity'] : 0;
+	$value['overlayOpacity'] = (int) ( $value['overlayOpacity'] ?? 0 );
 	if ( $value['overlayOpacity'] > 100 || $value['overlayOpacity'] < 0 ) {
 		$value['overlayOpacity'] = 50;
 	}
 
-	$value['fixed']       = (bool) $value['fixed'];
-	$value['useFeatured'] = (bool) $value['useFeatured'];
+	$value['fixed']       = (bool) ( $value['fixed'] ?? false );
+	$value['useFeatured'] = (bool) ( $value['useFeatured'] ?? false );
 
 	return $value;
 }
