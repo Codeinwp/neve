@@ -15,7 +15,7 @@ use HFG\Core\Builder\Header as HeaderBuilder;
 $_component = current_component( HeaderBuilder::BUILDER_NAME );
 
 // Bail when the current component cannot be resolved on the current builder.
-if ( ! $_component instanceof Core\Components\Abstract_Component ) {
+if ( ! $_component instanceof \HFG\Core\Components\Abstract_Component ) {
 	return;
 }
 
