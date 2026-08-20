@@ -22,6 +22,7 @@ use Neve\Core\Settings\Config;
 use Neve\Core\Styles\Dynamic_Selector;
 use Neve\Views\Font_Manager;
 use WP_Customize_Manager;
+use WP_Customize_Partial;
 
 /**
  * Class Abstract_Component
@@ -617,16 +618,37 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Render component markup.
 	 *
-	 * @param string $device Current device.
+	 * @param string|WP_Customize_Partial $device            Current device.
+	 * @param array<string, mixed>        $container_context Placement context, when rendering a partial.
 	 */
-	public function render( $device = '' ) {
+	public function render( $device = '', $container_context = array() ) {
+		$is_partial_render = $device instanceof WP_Customize_Partial;
+		$previous_device   = Abstract_Builder::$current_device;
+		$previous_row      = Abstract_Builder::$current_row;
+
+		if ( $is_partial_render ) {
+			$device = isset( $container_context['device'] ) ? (string) $container_context['device'] : '';
+
+			if ( $device !== '' ) {
+				Abstract_Builder::$current_device = $device;
+			}
+			if ( isset( $container_context['row'] ) && $container_context['row'] !== '' ) {
+				Abstract_Builder::$current_row = (string) $container_context['row'];
+			}
+		}
+
 		$args = [];
-		if ( ! empty( $device ) && in_array( $device, [ 'desktop', 'tablet', 'mobile' ] ) ) {
+		if ( ! empty( $device ) && in_array( $device, [ 'desktop', 'tablet', 'mobile' ], true ) ) {
 			$args['device'] = $device;
 		}
 		self::$current_component           = $this->get_id();
 		Abstract_Builder::$current_builder = $this->get_builder_id();
 		Main::get_instance()->load( 'component-wrapper', '', $args );
+
+		if ( $is_partial_render ) {
+			Abstract_Builder::$current_device = $previous_device;
+			Abstract_Builder::$current_row    = $previous_row;
+		}
 	}
 
 	/**
