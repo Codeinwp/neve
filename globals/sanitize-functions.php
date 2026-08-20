@@ -10,6 +10,27 @@
  */
 
 /**
+ * Check whether a value is a well formed CSS variable expression.
+ *
+ * @param mixed $value Value to check.
+ *
+ * @return bool
+ */
+function neve_is_css_var( $value ) {
+	if ( ! is_string( $value ) ) {
+		return false;
+	}
+
+	$hex      = '#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})';
+	$color_fn = '(?:rgb|rgba|hsl|hsla)\(\s*[0-9a-z.,%\/\s-]+\)';
+	$keyword  = '[a-z]+(?:-[a-z]+)*';
+	$fallback = '(?:(?P>nv_var)|' . $hex . '|' . $color_fn . '|' . $keyword . ')';
+	$pattern  = '/^(?P<nv_var>var\(\s*--[a-z0-9_-]+\s*(?:,\s*' . $fallback . '\s*)?\))$/i';
+
+	return (bool) preg_match( $pattern, trim( $value ) );
+}
+
+/**
  * Function to sanitize alpha color.
  *
  * @param mixed $value Hex or RGBA color.
@@ -23,10 +44,8 @@ function neve_sanitize_colors( $value ) {
 
 	$value = (string) $value;
 
-	$is_var = ( strpos( $value, 'var' ) !== false );
-
-	if ( $is_var ) {
-		return sanitize_text_field( $value );
+	if ( neve_is_css_var( $value ) ) {
+		return trim( $value );
 	}
 
 	if ( false !== strpos( $value, 'gradient' ) ) {
