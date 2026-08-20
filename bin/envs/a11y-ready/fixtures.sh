@@ -29,6 +29,12 @@ $WP_CMD menu item add-custom "$MENU_ID" "About Us" "$HOME_URL/?fixture=about" --
 $WP_CMD menu item add-custom "$MENU_ID" "Contact" "$HOME_URL/?fixture=contact" --parent-id="$P2" --porcelain
 $WP_CMD menu item add-custom "$MENU_ID" "Plain Item" "$HOME_URL/?fixture=plain" --porcelain
 $WP_CMD menu location assign "$MENU_ID" primary
+# Footer location too: duplicate-id bug (neve#4557) only renders when a
+# footer menu exists — without it the landmark/duplicate-id tests are vacuous.
+# The footer BUILDER must also contain the footer-menu component, on desktop
+# and mobile (two renders of the component = the duplicate-id case).
+$WP_CMD menu location assign "$MENU_ID" footer
+$WP_CMD theme mod set hfg_footer_layout_v2 '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[],"c-left":[{"id":"footer_copyright"},{"id":"footer-menu"}],"center":[],"c-right":[],"right":[]}},"mobile":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[],"c-left":[{"id":"footer_copyright"},{"id":"footer-menu"}],"center":[],"c-right":[],"right":[]}}}'
 
 # ------------------------------------------------------------------
 # 2. Post with open comments + an inline content link (focus/underline tests)
@@ -85,6 +91,17 @@ for i in 1 2 3 4; do
 done
 # Low per-page count so the blog paginates (pagination link-text criterion).
 $WP_CMD option update posts_per_page 3
+
+# Featured images on the archive posts — without them no thumbnails render
+# and the thumbnail-link tests (title attr, accessible name) are vacuous.
+for i in 1 2 3; do
+	SLUG="a11y-cat-post-$i"
+	PID=$($WP_CMD post list --post_type=post --name="$SLUG" --field=ID | head -1)
+	if [ -n "$PID" ] && [ -z "$($WP_CMD post meta get "$PID" _thumbnail_id 2>/dev/null)" ]; then
+		THEME_DIR=$($WP_CMD eval "echo get_template_directory();")
+		$WP_CMD media import "$THEME_DIR/assets/img/patterns/neve-patterns-$((i + 9)).jpg" --post_id="$PID" --featured_image --porcelain
+	fi
+done
 
 # ------------------------------------------------------------------
 # 5. W3 showcase page: every element the color/contrast workstream
