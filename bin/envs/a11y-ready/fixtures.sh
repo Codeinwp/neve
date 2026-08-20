@@ -38,7 +38,12 @@ $WP_CMD menu location assign "$MENU_ID" footer
 # top of the defaults — otherwise those components never render and their
 # landmark/state/focus coverage is vacuous.
 $WP_CMD menu location assign "$MENU_ID" top-bar
-$WP_CMD theme mod set hfg_header_layout_v2 '{"desktop":{"top":{"left":[{"id":"secondary-menu"}],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"primary-menu"},{"id":"header_search_responsive"},{"id":"header_palette_switch"}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]}},"mobile":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"nav-icon"},{"id":"header_search_responsive"}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"sidebar":[{"id":"primary-menu"}]}}' 
+# Button component with open-in-new-tab on: the "(opens in a new tab)"
+# announcement test is vacuous without a rendered _blank button.
+$WP_CMD theme mod set button_base_text_setting 'Fixture Button'
+$WP_CMD theme mod set button_base_link_setting "$HOME_URL/?fixture=button"
+$WP_CMD theme mod set button_base_new_tab 1
+$WP_CMD theme mod set hfg_header_layout_v2 '{"desktop":{"top":{"left":[{"id":"secondary-menu"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"button_base"}]},"main":{"left":[{"id":"logo"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"primary-menu"},{"id":"header_search_responsive"},{"id":"header_palette_switch"}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]}},"mobile":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[{"id":"logo"}],"c-left":[],"center":[],"c-right":[],"right":[{"id":"nav-icon"},{"id":"header_search_responsive"}]},"bottom":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"sidebar":[{"id":"primary-menu"}]}}' 
 $WP_CMD theme mod set hfg_footer_layout_v2 '{"desktop":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[],"c-left":[{"id":"footer_copyright"},{"id":"footer-menu"}],"center":[],"c-right":[],"right":[]}},"mobile":{"top":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"main":{"left":[],"c-left":[],"center":[],"c-right":[],"right":[]},"bottom":{"left":[],"c-left":[{"id":"footer_copyright"},{"id":"footer-menu"}],"center":[],"c-right":[],"right":[]}}}'
 
 # ------------------------------------------------------------------

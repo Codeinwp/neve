@@ -32,7 +32,11 @@ $button_link = apply_filters( 'neve_translate_single_string', $button_link, Butt
 		<?php
 	}
 	?>
-	><?php echo wp_kses_post( stripcslashes( $text ) ); ?></a>
+	><?php echo wp_kses_post( stripcslashes( $text ) ); ?><?php
+	if ( $open_new_tab ) {
+		echo '<span class="screen-reader-text"> ' . esc_html__( '(opens in a new tab)', 'neve' ) . '</span>';
+	}
+	?></a>
 </div>
 <?php
 

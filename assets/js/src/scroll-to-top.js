@@ -17,9 +17,14 @@ function scrollTopSafe(to) {
 }
 
 function runScroll() {
+	const reducedMotion = window.matchMedia(
+		'(prefers-reduced-motion: reduce)'
+	).matches;
 	const smoothScrollFeature =
 		'scrollBehavior' in document.documentElement.style;
-	if (!smoothScrollFeature) {
+	if (reducedMotion) {
+		window.scrollTo(0, 0);
+	} else if (!smoothScrollFeature) {
 		scrollTopSafe(0);
 	} else {
 		window.scrollTo({

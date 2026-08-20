@@ -39,8 +39,8 @@ test('scroll-to-top jumps instantly under prefers-reduced-motion', async ({
 	page,
 	request,
 }) => {
-	// a11y.md §8: the theme has no prefers-reduced-motion handling and
-	// scroll-to-top always animates (assets/js/src/scroll-to-top.js:27).
+	// a11y.md §8: scroll-to-top must honor prefers-reduced-motion
+	// (assets/js/src/scroll-to-top.js runScroll guard).
 	await page.emulateMedia({ reducedMotion: 'reduce' });
 	const url = await getPermalink(request, 'posts', 'a11y-comment-test');
 	await page.goto(url);
