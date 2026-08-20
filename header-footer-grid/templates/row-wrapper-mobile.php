@@ -42,8 +42,7 @@ if ( $menu_icon === 'svg' && empty( $menu_svg ) ) {
 			?>
 		<div class="<?php echo esc_attr( $close_classes ); ?>">
 			<button type="button" class="<?php echo esc_attr( $menu_icon_class ); ?> navbar-toggle active" <?php echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					value="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?>"
-					aria-label="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?> "
+					<?php // The screen-reader-text span inside is the single naming source. ?>
 					<?php echo MenuIcon::aria_expanded_behaviour(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 			<?php
 			if ( $menu_icon_class === 'hamburger is-active ' ) {

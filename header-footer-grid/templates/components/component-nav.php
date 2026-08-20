@@ -25,10 +25,15 @@ if ( $style !== 'style-plain' ) {
 $container_classes = apply_filters( 'neve_additional_menu_container_class', $container_classes );
 
 $menu_id = Nav::NAV_MENU_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
+
+// Desktop and mobile rows both render this landmark; duplicated landmarks
+// need unique accessible names.
+$device_label   = $device_class === 'mobile' ? __( 'Mobile', 'neve' ) : __( 'Desktop', 'neve' );
+$landmark_label = __( 'Primary Menu', 'neve' ) . ' (' . $device_label . ')';
 ?>
 <div class="nv-nav-wrap">
 	<div role="navigation" class="<?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
-			aria-label="<?php esc_attr_e( 'Primary Menu', 'neve' ); ?>">
+			aria-label="<?php echo esc_attr( $landmark_label ); ?>">
 
 		<?php
 		echo wp_nav_menu(

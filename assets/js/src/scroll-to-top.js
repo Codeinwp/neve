@@ -31,7 +31,9 @@ function runScroll() {
 	const scrollButton = document.getElementById('scroll-to-top');
 	if (content) {
 		scrollButton.blur();
-		content.focus();
+		// preventScroll: #content became focusable (skip-link target) and a
+		// plain focus() cancels the smooth scroll above mid-flight.
+		content.focus({ preventScroll: true });
 	}
 }
 function scrollToTop() {
@@ -42,12 +44,6 @@ function scrollToTop() {
 
 	element.addEventListener('click', function () {
 		runScroll();
-	});
-
-	element.addEventListener('keydown', function (event) {
-		if (event.key === 'Enter') {
-			runScroll();
-		}
 	});
 
 	window.addEventListener('scroll', function () {

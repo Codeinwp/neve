@@ -11,7 +11,13 @@ namespace HFG;
 
 use HFG\Core\Components\NavFooter;
 
-$style = component_setting( NavFooter::STYLE_ID, 'style-plain' );
+$style  = component_setting( NavFooter::STYLE_ID, 'style-plain' );
+$device = current_device( 'footer' );
+
+// Desktop and mobile rows both render this component: the landmark name
+// and the menu id must be unique per render (neve#4557).
+$device_label   = $device === 'mobile' ? __( 'Mobile', 'neve' ) : __( 'Desktop', 'neve' );
+$landmark_label = __( 'Footer Menu', 'neve' ) . ' (' . $device_label . ')';
 
 $container_classes = [ 'nav-menu-footer' ];
 if ( $style !== 'style-plain' ) {
@@ -22,7 +28,7 @@ if ( $style !== 'style-plain' ) {
 ?>
 <div class="component-wrap">
 	<div role="navigation" class="<?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
-		aria-label="<?php esc_attr_e( 'Footer Menu', 'neve' ); ?>">
+		aria-label="<?php echo esc_attr( $landmark_label ); ?>">
 
 		<?php
 		$locations         = get_nav_menu_locations();
@@ -37,7 +43,7 @@ if ( $style !== 'style-plain' ) {
 				'depth'          => 1,
 				'container'      => 'ul',
 				'menu_class'     => 'footer-menu nav-ul',
-				'menu_id'        => 'footer-menu',
+				'menu_id'        => 'footer-menu-' . esc_attr( $device ),
 				'before'         => $has_menu_selected ? '<div class="wrap">' : '',
 				'after'          => $has_menu_selected ? '</div>' : '',
 			)

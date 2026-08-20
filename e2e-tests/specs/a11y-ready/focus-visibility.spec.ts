@@ -40,9 +40,10 @@ test('search form controls have a visible focus indicator (404 page)', async ({
 	page,
 }) => {
 	await page.goto('/a11y-this-page-does-not-exist/');
-	const input = page.locator('.search-form input[type=search]').first();
+	// main-scoped: the header search component has its own hidden form.
+	const input = page.locator('main .search-form input[type=search]').first();
 	const button = page
-		.locator('.search-form [type=submit], .search-form button')
+		.locator('main .search-form [type=submit], main .search-form button')
 		.first();
 	await expectVisibleFocusIndicator(page, input, 'search input');
 	await expectVisibleFocusIndicator(page, button, 'search submit button');

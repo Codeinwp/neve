@@ -15,13 +15,18 @@ test('skip link is first, visible on focus, and moves focus into main', async ({
 
 	const skipLink = page.locator('.neve-skip-link');
 	await expect(skipLink, 'first Tab must land on the skip link').toBeFocused();
-	await expect(skipLink, 'skip link must be visible while focused').toBeVisible();
+	await expect(
+		skipLink,
+		'skip link must be visible while focused'
+	).toBeVisible();
 
 	await page.keyboard.press('Enter');
 	const focusInMain = await page.evaluate(() => {
 		const main = document.getElementById('content');
 		const active = document.activeElement;
-		return Boolean(main && active && (active === main || main.contains(active)));
+		return Boolean(
+			main && active && (active === main || main.contains(active))
+		);
 	});
 	expect(
 		focusInMain,
@@ -41,7 +46,10 @@ test('scroll-to-top jumps instantly under prefers-reduced-motion', async ({
 	await page.goto(url);
 
 	const stt = page.locator('#scroll-to-top');
-	test.skip((await stt.count()) === 0, 'scroll-to-top is disabled on this environment');
+	test.skip(
+		(await stt.count()) === 0,
+		'scroll-to-top is disabled on this environment'
+	);
 
 	await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
 	await page.waitForTimeout(300);
@@ -54,6 +62,27 @@ test('scroll-to-top jumps instantly under prefers-reduced-motion', async ({
 		scrollY,
 		'with reduced motion, the scroll must be instant (no smooth animation)'
 	).toBe(0);
+});
+
+test('scroll-to-top actually returns to the top and focuses content', async ({
+	page,
+}) => {
+	// Regression guard: #content becoming focusable (skip-link target) once
+	// made the button's focus() cancel its own smooth scroll mid-flight.
+	await page.goto('/');
+	const stt = page.locator('#scroll-to-top');
+	test.skip(
+		(await stt.count()) === 0,
+		'scroll-to-top is disabled on this environment'
+	);
+	await page.evaluate(() => window.scrollTo(0, 1500));
+	await page.waitForTimeout(300);
+	await stt.click();
+	await page.waitForFunction(() => window.scrollY < 80, null, {
+		timeout: 3000,
+	});
+	const focusedId = await page.evaluate(() => document.activeElement?.id);
+	expect(focusedId, 'focus must move to the content region').toBe('content');
 });
 
 test('links opening new tabs carry a warning and rel=noopener', async ({
@@ -85,7 +114,9 @@ test('links opening new tabs carry a warning and rel=noopener', async ({
 		);
 		expect(
 			offenders,
-			`${url}: target=_blank links must warn screen reader users and set rel=noopener:\n${offenders.join('\n')}`
+			`${url}: target=_blank links must warn screen reader users and set rel=noopener:\n${offenders.join(
+				'\n'
+			)}`
 		).toHaveLength(0);
 	}
 });

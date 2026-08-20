@@ -42,7 +42,7 @@ if ( is_customize_preview() ) {
 $row_wrapper_classes = join( ' ', $row_wrapper_classes );
 ?>
 
-<nav class="<?php echo esc_attr( join( ' ', $row_classes ) ); ?> header--row"
+<div class="<?php echo esc_attr( join( ' ', $row_classes ) ); ?> header--row"
 	data-row-id="<?php echo esc_attr( $row_index ); ?>" data-show-on="<?php echo esc_attr( $device ); ?>">
 
 	<div
@@ -60,5 +60,5 @@ $row_wrapper_classes = join( ' ', $row_wrapper_classes );
 			</div>
 		</div>
 	</div>
-</nav>
+</div>
 

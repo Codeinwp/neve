@@ -11,7 +11,9 @@ import { getPermalink } from './a11y-utils';
  */
 
 async function expectVisibleSearchLabel(page, context: string) {
-	const input = page.locator('.search-form input[type=search]').first();
+	// Scope to the content-area form: the header search component adds its
+	// own (visually hidden) form earlier in the DOM.
+	const input = page.locator('main .search-form input[type=search]').first();
 	await expect(input, `${context}: search input must exist`).toBeVisible();
 
 	const inputId = await input.getAttribute('id');

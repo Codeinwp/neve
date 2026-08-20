@@ -27,18 +27,24 @@ if ( function_exists( 'PLL' ) ) {
 
 $has_text_button = isset( $args['button_text'] );
 $context         = array_key_exists( 'context', $args ) ? $args['context'] : false;
+
+// The label is always associated with the input; contexts that need a
+// visible, persistent label (404 / no-results pages) pass visible_label.
+$visible_label = ! empty( $args['visible_label'] );
+$input_id      = wp_unique_id( 'nv-search-input-' );
+if ( $visible_label ) {
+	$form_classes[] = 'nv-search-labeled';
+}
 ?>
 
 <form role="search"
 	method="get"
 	class="<?php echo esc_attr( implode( ' ', $form_classes ) ); ?>"
 	action="<?php echo esc_url( $home_url ); ?>">
-	<label>
-		<span class="screen-reader-text"><?php echo esc_html__( 'Search for...', 'neve' ); ?></span>
-	</label>
+	<label for="<?php echo esc_attr( $input_id ); ?>"<?php echo $visible_label ? '' : ' class="screen-reader-text"'; ?>><?php echo esc_html__( 'Search for...', 'neve' ); ?></label>
 	<input type="search"
+		id="<?php echo esc_attr( $input_id ); ?>"
 		class="search-field"
-		aria-label="<?php echo esc_attr__( 'Search', 'neve' ); ?>"
 		placeholder="<?php echo esc_attr( $placeholder ); ?>"
 		value="<?php echo esc_attr( $value ); ?>"
 		name="s"/>

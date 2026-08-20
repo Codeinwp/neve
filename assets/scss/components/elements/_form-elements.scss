@@ -7,6 +7,17 @@
 	margin: 0 !important;
 }
 
+// Forms with a visible, persistent label (404 / no-results pages): the
+// label sits on its own line above the field.
+.search-form.nv-search-labeled {
+	flex-wrap: wrap;
+
+	label {
+		flex-basis: 100%;
+		margin-bottom: 8px;
+	}
+}
+
 .search-form {
 	display: flex;
 	max-width: 100%;

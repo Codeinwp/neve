@@ -45,12 +45,18 @@ if ( $show_desc ) {
 $title_tagline .= '</div>';
 
 
-$aria_label = trim( get_bloginfo( 'name' ) . ' ' . get_bloginfo( 'description' ) );
+// A label is only needed when no visible title names the brand (the
+// 'default' display drops the title when an image is set); otherwise it
+// would override the visible text.
+$main_logo_set     = ! empty( $conditional_logo['light'] ) || ! empty( $active_logo );
+$has_visible_title = $show_name && ( ! $main_logo_set || $display_order !== 'default' );
+$aria_label        = trim( get_bloginfo( 'name' ) . ' ' . get_bloginfo( 'description' ) );
+$label_attr        = $has_visible_title ? '' : ' aria-label="' . esc_attr( $aria_label ) . '"';
 if ( $is_not_link ) {
-	$start_tag = '<span class="brand" aria-label="' . esc_attr( $aria_label ) . '">';
+	$start_tag = '<span class="brand"' . $label_attr . '>';
 	$end_tag   = '</span>';
 } else {
-	$start_tag = '<a class="brand" href="' . esc_url( home_url( '/' ) ) . '" aria-label="' . esc_attr( $aria_label ) . '" rel="home">';
+	$start_tag = '<a class="brand" href="' . esc_url( home_url( '/' ) ) . '"' . $label_attr . ' rel="home">';
 	$end_tag   = '</a>';
 }
 

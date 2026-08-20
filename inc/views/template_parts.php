@@ -319,9 +319,13 @@ class Template_Parts extends Base_View {
 		$markup             = '<div class="' . esc_attr( $image_wrap_classes ) . '">';
 
 		if ( ! $skip_link ) {
-			$markup .= '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '" rel="bookmark" title="' . the_title_attribute(
+			// No title attribute — screen readers announce it on top of the
+			// link name (double announcement). The accessible name is the
+			// destination post's title instead.
+			$markup .= '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '" rel="bookmark" aria-label="' . the_title_attribute(
 				array(
 					'echo' => false,
+					'post' => $post_id,
 				)
 			) . '">';
 		}

@@ -281,10 +281,12 @@ function handleSearch() {
 	const navSearch = doc.querySelectorAll('.nv-nav-search') || [],
 		navItem = doc.querySelectorAll('.menu-item-nav-search') || [],
 		close = doc.querySelectorAll('.close-responsive-search') || [];
+	syncSearchAria();
 	addEvent(navItem, 'click', (e, searchItem) => {
 		e.preventDefault();
 		e.stopPropagation();
 		toggleClass(searchItem, strings[1]);
+		syncSearchAria();
 		createNavOverlay(searchItem, strings[1]);
 		doc.dispatchEvent(
 			new CustomEvent(NV_FOCUS_TRAP_START, {
@@ -303,7 +305,23 @@ function handleSearch() {
 	addEvent(close, 'click', (e) => {
 		e.preventDefault();
 		removeClass(navItem, strings[1]);
+		syncSearchAria();
 		removeNavOverlay();
+	});
+}
+
+/**
+ * Mirror the search dropdown open state onto its trigger button.
+ */
+function syncSearchAria() {
+	document.querySelectorAll('.menu-item-nav-search').forEach((item) => {
+		const trigger = item.querySelector('.nv-search,.nv-nav-search-icon');
+		if (trigger) {
+			trigger.setAttribute(
+				'aria-expanded',
+				String(item.classList.contains(strings[1]))
+			);
+		}
 	});
 }
 
@@ -423,6 +441,7 @@ function createNavOverlay(item, classToRemove) {
 		// covers the non-caret users of the overlay (header search).
 		openCarets().forEach((caret) => setCaretState(caret, false));
 		removeClass(item, classToRemove);
+		syncSearchAria();
 		removeNavOverlay();
 	});
 }
