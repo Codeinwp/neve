@@ -127,7 +127,7 @@ class MetaFieldsManager extends Component {
 	}
 
 	/**
-	 * Documents the editor styles have to be added to.
+	 * Documents the editor styles need to be added to.
 	 *
 	 * Since the block editor renders inside an iframe, styles added to the
 	 * top document alone don't reach the content. Older setups without the
