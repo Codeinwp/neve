@@ -33,7 +33,7 @@ class TestElementorCompatibility extends WP_UnitTestCase {
 
 		$custom_colors = new ReflectionProperty( $elementor, 'custom_global_colors' );
 		$custom_colors->setAccessible( true );
-		$custom_colors->setValue( null, [] );
+		$custom_colors->setValue( $elementor, [] );
 
 		return $elementor;
 	}
