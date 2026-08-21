@@ -826,7 +826,7 @@ abstract class Abstract_Builder implements Builder {
 	public function render() {
 		$layout                = $this->get_layout_data();
 		self::$current_builder = $this->get_id();
-		if ( is_customize_preview() ) {
+		if ( is_customize_preview() && class_exists( Css_Generator::class ) ) {
 			$style     = $this->add_style( [] );
 			$generator = new Css_Generator();
 			$generator->set( $style );
