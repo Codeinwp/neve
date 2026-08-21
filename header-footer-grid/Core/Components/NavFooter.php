@@ -124,7 +124,7 @@ class NavFooter extends Abstract_Component {
 						'fallback' => 'inherit',
 					],
 					[
-						'selector' => '.builder-item--' . $this->get_id() . ' .nav-menu-footer:not(.style-full-height) #footer-menu li:hover > a',
+						'selector' => '.builder-item--' . $this->get_id() . ' .nav-menu-footer:not(.style-full-height) .footer-menu li:hover > a',
 						'prop'     => 'color',
 						'fallback' => 'inherit',
 					],
