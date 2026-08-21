@@ -134,12 +134,16 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Filter rest responses to add Neve Palette Colors to pages using Elementor.
 	 *
-	 * @param \WP_REST_Response $response request response.
-	 * @param array             $handler request handler.
-	 * @param \WP_REST_Request  $request rest request.
-	 * @return \WP_REST_Response
+	 * @param \WP_REST_Response|\WP_Error $response request response.
+	 * @param array                       $handler request handler.
+	 * @param \WP_REST_Request            $request rest request.
+	 * @return \WP_REST_Response|\WP_Error
 	 */
 	public function alter_global_colors_front_end( $response, $handler, \WP_REST_Request $request ) {
+		if ( is_wp_error( $response ) ) {
+			return $response;
+		}
+
 		$route         = $request->get_route();
 		$rest_to_slugs = [
 			'nvprimaryaccent'   => 'nv-primary-accent',
@@ -178,12 +182,16 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Filter rest responses to add Neve Palette Colors to Elementor.
 	 *
-	 * @param \WP_REST_Response $response request response.
-	 * @param array             $handler request handler.
-	 * @param \WP_REST_Request  $request rest request.
-	 * @return \WP_REST_Response
+	 * @param \WP_REST_Response|\WP_Error $response request response.
+	 * @param array                       $handler request handler.
+	 * @param \WP_REST_Request            $request rest request.
+	 * @return \WP_REST_Response|\WP_Error
 	 */
 	public function alter_global_colors_in_picker( $response, $handler, \WP_REST_Request $request ) {
+		if ( is_wp_error( $response ) ) {
+			return $response;
+		}
+
 		$route = $request->get_route();
 
 		if ( $route !== '/elementor/v1/globals' ) {
