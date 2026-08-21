@@ -41,6 +41,13 @@ class Generator {
 	 * @return string|void Css output.
 	 */
 	public function generate( $echo = false ) {
+		if ( ! class_exists( Dynamic_Selector::class ) ) {
+			if ( ! $echo ) {
+				return '';
+			}
+			return;
+		}
+
 		$desktop_css = '';
 		$tablet_css  = '';
 		$all_css     = '';
