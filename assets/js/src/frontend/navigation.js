@@ -257,7 +257,14 @@ function startFocusTrap(event) {
 	if (escKey) {
 		event.preventDefault();
 		focusTrapDetails.backFocus.focus();
-		window.HFG.toggleMenuSidebar(false);
+		// Containers other than the menu sidebar (header search) pass
+		// their own close routine; closing the sidebar would leave them
+		// open.
+		if (typeof focusTrapDetails.onClose === 'function') {
+			focusTrapDetails.onClose();
+		} else {
+			window.HFG.toggleMenuSidebar(false);
+		}
 		document.dispatchEvent(new CustomEvent(NV_FOCUS_TRAP_END));
 	}
 	if (!shiftKey && tabKey && lastEl === activeEl) {
@@ -282,11 +289,24 @@ function handleSearch() {
 		navItem = doc.querySelectorAll('.menu-item-nav-search') || [],
 		close = doc.querySelectorAll('.close-responsive-search') || [];
 	syncSearchAria();
+	const closeSearch = () => {
+		removeClass(navItem, strings[1]);
+		syncSearchAria();
+		removeNavOverlay();
+		doc.dispatchEvent(new CustomEvent(NV_FOCUS_TRAP_END));
+	};
 	addEvent(navItem, 'click', (e, searchItem) => {
 		e.preventDefault();
 		e.stopPropagation();
 		toggleClass(searchItem, strings[1]);
 		syncSearchAria();
+		if (!searchItem.classList.contains(strings[1])) {
+			// Second activation of the trigger closes the panel: end the
+			// trap too, or a stale trap keeps eating Tab and Escape.
+			removeNavOverlay();
+			doc.dispatchEvent(new CustomEvent(NV_FOCUS_TRAP_END));
+			return;
+		}
 		createNavOverlay(searchItem, strings[1]);
 		doc.dispatchEvent(
 			new CustomEvent(NV_FOCUS_TRAP_START, {
@@ -294,7 +314,14 @@ function handleSearch() {
 					container: searchItem.querySelector('.nv-nav-search'),
 					close: '.close-responsive-search',
 					firstFocus: '.search-field',
-					backFocus: searchItem,
+					// Escape focuses backFocus: must be the trigger
+					// button — the wrapper div is not focusable and
+					// would drop focus to <body>.
+					backFocus:
+						searchItem.querySelector(
+							'.nv-search,.nv-nav-search-icon'
+						) || searchItem,
+					onClose: closeSearch,
 				},
 			})
 		);
@@ -304,9 +331,13 @@ function handleSearch() {
 	});
 	addEvent(close, 'click', (e) => {
 		e.preventDefault();
-		removeClass(navItem, strings[1]);
-		syncSearchAria();
-		removeNavOverlay();
+		const item = e.target.closest('.menu-item-nav-search');
+		closeSearch();
+		const trigger =
+			item && item.querySelector('.nv-search,.nv-nav-search-icon');
+		if (trigger) {
+			trigger.focus();
+		}
 	});
 }
 
@@ -443,5 +474,8 @@ function createNavOverlay(item, classToRemove) {
 		removeClass(item, classToRemove);
 		syncSearchAria();
 		removeNavOverlay();
+		// The search panel may have an active focus trap; a no-op when
+		// none is running.
+		document.dispatchEvent(new CustomEvent(NV_FOCUS_TRAP_END));
 	});
 }

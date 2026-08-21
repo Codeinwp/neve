@@ -76,11 +76,10 @@
 			}
 		}
 
-		// :focus-within (not the never-matching li:focus) covers keyboard
-		// focus; .dropdown-open is the JS/assistive-tech open state. One
-		// rule so the three open paths can never drift apart.
+		// .dropdown-open is the JS/assistive-tech open state (the toggle
+		// button). No :focus-within here: it would keep the panel painted
+		// after Escape/toggle-close while focus is still on the toggle.
 		.neve-mega-menu:hover > .sub-menu,
-		.neve-mega-menu:focus-within > .sub-menu,
 		.neve-mega-menu > .sub-menu.dropdown-open {
 			display: flex;
 			opacity: 1;
