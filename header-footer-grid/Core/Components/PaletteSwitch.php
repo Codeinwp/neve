@@ -157,6 +157,10 @@ class PaletteSwitch extends Abstract_Component {
 			cursor: pointer;
 			display: flex;
 			align-items: center;
+			justify-content: center;
+			/* WCAG 2.5.8: 24x24 minimum target regardless of icon size. */
+			min-width: 24px;
+			min-height: 24px;
 		}
 		.toggle-palette .icon {
 			display: flex;

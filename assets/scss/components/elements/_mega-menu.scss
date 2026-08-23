@@ -92,7 +92,10 @@
 		}
 
 		.neve-mega-menu .neve-mm-col > .sub-menu {
-			visibility: visible;
+			// inherit, not visible: the column lists must follow the
+			// panel's hidden state or their links stay tabbable (and
+			// focusable off-screen) while the mega menu is closed.
+			visibility: inherit;
 			position: relative;
 			left: initial;
 			right: initial;

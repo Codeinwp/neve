@@ -193,7 +193,10 @@ $cart-width: 360px;
 		&:hover,
 		&:focus-within {
 
-			.nv-nav-cart {
+			// The off-canvas drawer is a dialog: it must open on
+			// activation only, never because the icon received focus
+			// (WCAG 3.2.1) — its open state is .cart-open.
+			.nv-nav-cart:not(.cart-off-canvas) {
 				opacity: 1;
 				visibility: visible;
 			}
