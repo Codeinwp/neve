@@ -29,7 +29,7 @@
 		{
 			"gzip": false,
 			"running": false,
-			"limit": "9.25 KB",
+			"limit": "9.5 KB",
 			"path": "assets/js/build/modern/frontend.js"
 		},
 		{

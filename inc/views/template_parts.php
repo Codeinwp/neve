@@ -322,12 +322,7 @@ class Template_Parts extends Base_View {
 			// No title attribute — screen readers announce it on top of the
 			// link name (double announcement). The accessible name is the
 			// destination post's title instead.
-			$markup .= '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '" rel="bookmark" aria-label="' . the_title_attribute(
-				array(
-					'echo' => false,
-					'post' => $post_id,
-				)
-			) . '">';
+			$markup .= '<a href="' . esc_url( get_the_permalink( $post_id ) ) . '" rel="bookmark" aria-label="' . esc_attr( wp_strip_all_tags( get_the_title( $post_id ?? 0 ) ) ) . '">';
 		}
 
 		$pid     = $post_id ? $post_id : get_the_ID();
