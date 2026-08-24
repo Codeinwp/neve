@@ -130,6 +130,8 @@ jobs:
             envs: "a11y-ready"
     #          - specs: "woo-visual-regression"
     #            envs: "woo-sample"
+          - specs: "editor"
+            envs: "sample-data"
     runs-on: ubuntu-22.04
     env:
       ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
@@ -156,5 +158,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
+          name: traces-${{ matrix.specs }}-${{ matrix.envs }}
           path: ./test-results/**
+          if-no-files-found: ignore
           retention-days: 1

@@ -265,14 +265,16 @@ test.describe('Blog/Archive 3 / Covers Layout', () => {
 
 test.describe('Blog/Archive 4 / Default Layout', () => {
 	test.beforeAll(async ({ request, baseURL }) => {
-		await setCustomizeSettings('defaultLayout', data.archive4, {
+		// Distinct scoped name: sharing 'defaultLayout' with Archive 1 meant
+		// whichever beforeAll ran last decided both describes' settings.
+		await setCustomizeSettings('defaultLayoutNoThumbnail', data.archive4, {
 			request,
 			baseURL,
 		});
 	});
 
 	test('Tests If Post Thumbnail Class Is Removed', async ({ page }) => {
-		await page.goto('/?test_name=defaultLayout');
+		await page.goto('/?test_name=defaultLayoutNoThumbnail');
 
 		await page.waitForSelector('article.post');
 
