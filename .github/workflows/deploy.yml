@@ -38,6 +38,8 @@ jobs:
       - name: Deploy to server
         run: |
           rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/" $SSH_USERNAME@$SSH_HOST:$SSH_PATH
+      - name: Generate file checksums
+        uses: Codeinwp/action-release-checksums@main
       - name: Upload Latest Version to S3
         uses: jakejarvis/s3-sync-action@master
         with:
