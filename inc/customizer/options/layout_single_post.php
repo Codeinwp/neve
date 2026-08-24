@@ -878,7 +878,14 @@ class Layout_Single_Post extends Base_Layout_Single {
 		);
 
 		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
-		$content_order = json_decode( $content_order, true );
+		if ( is_string( $content_order ) ) {
+			$content_order = json_decode( $content_order, true );
+		}
+
+		if ( ! is_array( $content_order ) ) {
+			$content_order = $default_order;
+		}
+
 		if ( ! in_array( $element, $content_order, true ) ) {
 			return false;
 		}
@@ -906,7 +913,11 @@ class Layout_Single_Post extends Base_Layout_Single {
 			return wp_json_encode( $allowed );
 		}
 
-		$decoded = json_decode( $value, true );
+		$decoded = is_string( $value ) ? json_decode( $value, true ) : $value;
+
+		if ( ! is_array( $decoded ) || empty( $decoded ) ) {
+			return wp_json_encode( $allowed );
+		}
 
 		foreach ( $decoded as $val ) {
 			if ( ! in_array( $val, $allowed, true ) ) {
@@ -914,7 +925,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 			}
 		}
 
-		return $value;
+		return wp_json_encode( array_values( $decoded ) );
 	}
 
 	/**
