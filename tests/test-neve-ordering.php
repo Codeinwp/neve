@@ -90,11 +90,12 @@ class TestNeveOrdering extends WP_UnitTestCase {
 		};
 		add_filter( 'theme_mod_neve_post_content_ordering', $filter );
 
-		$components = $this->get_ordered_components( true );
-
-		remove_filter( 'theme_mod_neve_post_content_ordering', $filter );
-
-		$this->assertSame( $order, $components );
+		try {
+ 			$components = $this->get_ordered_components( true );
+ 			$this->assertSame( $order, $components );
+ 		} finally {
+ 			remove_filter( 'theme_mod_neve_post_content_ordering', $filter );
+ 		}
 	}
 
 	/**
@@ -107,6 +108,7 @@ class TestNeveOrdering extends WP_UnitTestCase {
 	public function test_blog_invalid_mod_falls_back_to_defaults( $mod ) {
 		set_theme_mod( 'neve_post_content_ordering', $mod );
 
+		$this->assertSame( $this->blog_defaults, $this->get_ordered_components() );
 		$this->assertSame( $this->blog_defaults, $this->get_ordered_components( true ) );
 	}
 
@@ -361,9 +363,11 @@ class TestNeveOrdering extends WP_UnitTestCase {
 			return $value;
 		}, 10, 3 );
 
-		$this->assertSame( array( 'tags', 'content' ), $metabox->filter_post_elements( $fallback ) );
-
-		remove_filter( 'get_post_metadata', $array_meta, 10 );
+		try {
+ 			$this->assertSame( array( 'tags', 'content' ), $metabox->filter_post_elements( $fallback ) );
+ 		} finally {
+ 			remove_filter( 'get_post_metadata', $array_meta, 10 );
+ 		}
 
 		// Broken JSON falls back to the order passed in by the customizer.
 		update_post_meta( $post_id, 'neve_post_elements_order', '[content,' );
