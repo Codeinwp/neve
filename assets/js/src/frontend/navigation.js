@@ -139,6 +139,25 @@ function handleMobileDropdowns() {
 		setCaretState(openCaret, false);
 		openCaret.focus();
 	});
+	// WCAG 1.4.13: submenus revealed by pure CSS :hover must also be
+	// dismissable without moving the pointer. Escape sets a body class
+	// the stylesheet uses to hide :hover submenus; the pointer leaving
+	// the hovered item re-arms hover for the next one.
+	document.addEventListener('keydown', (event) => {
+		if (event.key !== 'Escape') {
+			return;
+		}
+		const hovered = document.querySelector('.menu-item-has-children:hover');
+		if (!hovered) {
+			return;
+		}
+		document.body.classList.add('nv-hover-off');
+		hovered.addEventListener(
+			'mouseleave',
+			() => document.body.classList.remove('nv-hover-off'),
+			{ once: true }
+		);
+	});
 	// Close a desktop submenu when keyboard focus leaves its menu item.
 	// Sidebar toggles (.navbar-toggle) are exempt to keep the sidebar's
 	// tap-to-toggle behavior and the neve_first_level_expanded default.

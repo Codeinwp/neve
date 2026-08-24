@@ -112,6 +112,48 @@ test.describe('Desktop primary nav submenu toggles', () => {
 		await expect(toggle).toBeFocused();
 	});
 
+	test('Escape dismisses a hover-opened submenu without moving the pointer (WCAG 1.4.13)', async ({
+		page,
+	}) => {
+		const item = page
+			.locator('.primary-menu-ul.menu-desktop > .menu-item-has-children')
+			.first();
+		const submenu = item.locator('> .sub-menu');
+
+		// Hover-open; poll computed opacity (fade animations mid-sample).
+		await item.hover();
+		await expect
+			.poll(() =>
+				submenu.evaluate((el) => {
+					const cs = getComputedStyle(el);
+					return cs.visibility === 'visible' && parseFloat(cs.opacity) > 0.9;
+				})
+			)
+			.toBe(true);
+
+		// Escape with the pointer still on the item must dismiss it…
+		await page.keyboard.press('Escape');
+		await expect
+			.poll(() =>
+				submenu.evaluate(
+					(el) => getComputedStyle(el).visibility === 'hidden'
+				)
+			)
+			.toBe(true);
+
+		// …and hover must re-arm after the pointer leaves the item.
+		await page.mouse.move(10, 700);
+		await item.hover();
+		await expect
+			.poll(() =>
+				submenu.evaluate((el) => {
+					const cs = getComputedStyle(el);
+					return cs.visibility === 'visible' && parseFloat(cs.opacity) > 0.9;
+				})
+			)
+			.toBe(true);
+	});
+
 	test('synthesized click opens the submenu visibly (screen reader activation path)', async ({
 		page,
 	}) => {
