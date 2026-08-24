@@ -10,9 +10,16 @@
 
 namespace HFG;
 
-$_id = current_component()->get_id();
+$_component = current_component();
+
+// Bail when the current component cannot be resolved on the current builder.
+if ( ! $_component instanceof Core\Components\Abstract_Component ) {
+	return;
+}
+
+$_id = $_component->get_id();
 if ( isset( $args ) && ! empty( $args ) ) {
-	current_component()->set_args( $args );
+	$_component->set_args( $args );
 }
 
 $item_classes   = array();
@@ -44,11 +51,11 @@ if ( is_customize_preview() ) {
 
 ?>
 <div class="<?php echo esc_attr( $item_classes ); ?>"
-		data-section="<?php echo esc_attr( current_component()->get_section_id() ); ?>"
-		data-item-id="<?php echo esc_attr( current_component()->get_id() ); ?>"<?php echo empty( $placement_context ) ? '' : ' data-customize-partial-placement-context="' . esc_attr( wp_json_encode( $placement_context ) ) . '"'; ?>>
+		data-section="<?php echo esc_attr( $_component->get_section_id() ); ?>"
+		data-item-id="<?php echo esc_attr( $_component->get_id() ); ?>"<?php echo empty( $placement_context ) ? '' : ' data-customize-partial-placement-context="' . esc_attr( wp_json_encode( $placement_context ) ) . '"'; ?>>
 	<?php
-	current_component()->render_css();
-	current_component()->render_component();
+	$_component->render_css();
+	$_component->render_component();
 	?>
 	<?php if ( is_customize_preview() ) { ?>
 		<span class="item--preview-name">
