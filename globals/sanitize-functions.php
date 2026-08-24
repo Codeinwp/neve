@@ -10,17 +10,48 @@
  */
 
 /**
- * Function to sanitize alpha color.
+ * Check whether a value is a well formed CSS variable expression.
  *
- * @param string $value Hex or RGBA color.
+ * @param mixed $value Value to check.
+ *
+ * @return bool
+ */
+function neve_is_css_var( $value ) {
+	if ( ! is_string( $value ) ) {
+		return false;
+	}
+
+	$value = trim( $value );
+
+	if ( $value === '' || strlen( $value ) > 200 ) {
+		return false;
+	}
+
+	$hex      = '#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})';
+	$color_fn = '(?:rgb|rgba|hsl|hsla)\(\s*[0-9a-z.,%\/\s-]+\)';
+	$keyword  = '[a-z]+(?:-[a-z]+)*';
+	$fallback = '(?:(?P>nv_var)|' . $hex . '|' . $color_fn . '|' . $keyword . ')';
+	$pattern  = '/^(?P<nv_var>var\(\s*--[a-z0-9_-]+\s*(?:,\s*' . $fallback . '\s*)?\))$/i';
+
+	return (bool) preg_match( $pattern, $value );
+}
+
+/**
+ * Sanitize a color control value.
+ *
+ * @param mixed $value Color value: CSS variable, gradient, rgba() or hex.
  *
  * @return string
  */
 function neve_sanitize_colors( $value ) {
-	$is_var = ( strpos( $value, 'var' ) !== false );
+	if ( ! is_string( $value ) && ! is_numeric( $value ) ) {
+		return '';
+	}
 
-	if ( $is_var ) {
-		return sanitize_text_field( $value );
+	$value = (string) $value;
+
+	if ( neve_is_css_var( $value ) ) {
+		return trim( $value );
 	}
 
 	if ( false !== strpos( $value, 'gradient' ) ) {
@@ -31,19 +62,25 @@ function neve_sanitize_colors( $value ) {
 	$mode = ( false === strpos( $value, 'rgba' ) ) ? 'hex' : 'rgba';
 	if ( 'rgba' === $mode ) {
 		return neve_sanitize_rgba( $value );
-	} else {
-		return sanitize_hex_color( $value );
 	}
+
+	$hex_color = sanitize_hex_color( $value );
+
+	return null === $hex_color ? '' : $hex_color;
 }
 
 /**
  * Sanitize rgba color.
  *
- * @param string $value Color in rgba format.
+ * @param mixed $value Color in rgba format.
  *
  * @return string
  */
 function neve_sanitize_rgba( $value ) {
+	if ( ! is_string( $value ) ) {
+		return 'rgba(0,0,0,0)';
+	}
+
 	$red   = 'rgba(0,0,0,0)';
 	$green = 'rgba(0,0,0,0)';
 	$blue  = 'rgba(0,0,0,0)';
@@ -165,18 +202,17 @@ function neve_sanitize_background( $value ) {
 	}
 
 
-	$value['imageUrl']          = esc_url( $value['imageUrl'] );
-	$value['colorValue']        = neve_sanitize_colors( $value['colorValue'] );
-	$value['overlayColorValue'] = neve_sanitize_colors( $value['overlayColorValue'] );
+	$value['imageUrl']          = esc_url( $value['imageUrl'] ?? '' );
+	$value['colorValue']        = neve_sanitize_colors( $value['colorValue'] ?? '' );
+	$value['overlayColorValue'] = neve_sanitize_colors( $value['overlayColorValue'] ?? '' );
 
-
-	$value['overlayOpacity'] = (int) $value['overlayOpacity'];
+	$value['overlayOpacity'] = (int) ( $value['overlayOpacity'] ?? 0 );
 	if ( $value['overlayOpacity'] > 100 || $value['overlayOpacity'] < 0 ) {
 		$value['overlayOpacity'] = 50;
 	}
 
-	$value['fixed']       = (bool) $value['fixed'];
-	$value['useFeatured'] = (bool) $value['useFeatured'];
+	$value['fixed']       = (bool) ( $value['fixed'] ?? false );
+	$value['useFeatured'] = (bool) ( $value['useFeatured'] ?? false );
 
 	return $value;
 }
