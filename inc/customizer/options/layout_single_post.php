@@ -915,7 +915,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 
 		$decoded = is_string( $value ) ? json_decode( $value, true ) : $value;
 
-		if ( ! is_array( $decoded ) || empty( $decoded ) ) {
+		if ( ! is_array( $decoded ) ) {
 			return wp_json_encode( $allowed );
 		}
 
