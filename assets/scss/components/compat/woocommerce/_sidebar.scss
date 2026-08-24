@@ -13,6 +13,11 @@
 	background-color: var(--nv-site-bg);
 	transform: translateX(-100%);
 
+	// Full-height slide-in — snap for reduced-motion users.
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
+
 	&.sidebar-open {
 		transform: translateX(0);
 	}

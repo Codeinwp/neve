@@ -27,11 +27,54 @@
 	}
 }
 
+// Core's clip pattern — the legacy left: -10000px variant can force
+// horizontal scroll in RTL and never reveals focusable elements (core
+// and plugins put skip links on this class expecting :focus to show).
 .screen-reader-text {
-	position: absolute;
-	left: -10000px;
-	top: auto;
-	width: 1px;
+	border: 0;
+	clip-path: inset(50%);
 	height: 1px;
+	width: 1px;
+	margin: -1px;
 	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	word-wrap: normal !important;
+
+	&:focus {
+		background-color: var(--nv-site-bg);
+		clip-path: none;
+		color: var(--nv-text-color);
+		display: block;
+		height: auto;
+		width: auto;
+		left: 5px;
+		top: 5px;
+		line-height: normal;
+		padding: $spacing-xs $spacing-sm;
+		text-decoration: none;
+		z-index: 100000;
+	}
+}
+
+// Escape dismisses hover-revealed submenus (WCAG 1.4.13) — navigation.js
+// sets the class while the pointer stays on the item. Keyboard-opened
+// panels (.dropdown-open) are unaffected; !important outranks the pro
+// submenu animations' inline :hover rules too.
+.nv-hover-off li:hover > .sub-menu:not(.dropdown-open) {
+	opacity: 0 !important;
+	visibility: hidden !important;
+}
+
+// Sliding panels and the page shift they cause are significant motion;
+// show/hide instantly for users who ask the OS for reduced motion
+// (opacity-only fades elsewhere are left alone).
+@media (prefers-reduced-motion: reduce) {
+
+	.wrapper,
+	.tcb,
+	.header-menu-sidebar,
+	.hfg-ov {
+		transition: none !important;
+	}
 }

@@ -29,7 +29,7 @@
 		{
 			"gzip": false,
 			"running": false,
-			"limit": "9.5 KB",
+			"limit": "9.75 KB",
 			"path": "assets/js/build/modern/frontend.js"
 		},
 		{
@@ -42,7 +42,7 @@
 			"gzip": false,
 			"running": false,
 			"webpack": false,
-			"limit": "40 KB",
+			"limit": "40.5 KB",
 			"path": "style-main-new.min.css"
 		}
 	],
