@@ -1710,6 +1710,10 @@ abstract class Abstract_Builder implements Builder {
 			$id = ( self::$current_component === null ) ? Abstract_Component::$current_component : self::$current_component;
 		}
 
+		if ( $id === null || ! isset( $this->builder_components[ $id ] ) ) {
+			return null;
+		}
+
 		return $this->builder_components[ $id ];
 	}
 

@@ -12,8 +12,15 @@ namespace HFG;
 use HFG\Core\Components\Nav;
 use HFG\Core\Builder\Header as HeaderBuilder;
 
+$_component = current_component( HeaderBuilder::BUILDER_NAME );
+
+// Bail when the current component cannot be resolved on the current builder.
+if ( ! $_component instanceof \HFG\Core\Components\Abstract_Component ) {
+	return;
+}
+
 $device_class          = isset( $args ) && ! empty( $args ) ? $args['device'] : '';
-$_id                   = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
+$_id                   = $_component->get_id();
 $style                 = component_setting( Nav::STYLE_ID, 'style-plain' );
 $additional_menu_class = apply_filters( 'neve_additional_menu_class', ' menu-' . $device_class );
 
