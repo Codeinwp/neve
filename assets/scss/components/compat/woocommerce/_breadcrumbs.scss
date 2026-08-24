@@ -14,6 +14,9 @@
 
 	a {
 		color: var(--nv-secondary-accent);
+		// Color alone can't distinguish these links from the crumb text
+		// (owner palettes rarely reach the 3:1 link-vs-text contrast).
+		text-decoration: underline;
 	}
 
 	.nv-breadcrumb-delimiter {
