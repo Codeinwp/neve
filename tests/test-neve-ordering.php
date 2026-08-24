@@ -95,7 +95,7 @@ class TestNeveOrdering extends WP_UnitTestCase {
 			$this->assertSame( $order, $components );
 		} finally {
 			remove_filter( 'theme_mod_neve_post_content_ordering', $filter );
- 		}
+		}
 	}
 
 	/**
@@ -274,11 +274,11 @@ class TestNeveOrdering extends WP_UnitTestCase {
 		add_filter( 'theme_mod_neve_layout_single_post_elements_order', $filter );
 
 		try {
- 			$content_order = $this->get_content_order();
+			$content_order = $this->get_content_order();
 			$enabled       = $this->element_is_enabled( 'content' );
- 		} finally {
- 			remove_filter( 'theme_mod_neve_layout_single_post_elements_order', $filter );
- 		}
+		} finally {
+			remove_filter( 'theme_mod_neve_layout_single_post_elements_order', $filter );
+		}
 
 		$this->assertSame( $order, $content_order );
 		$this->assertTrue( $enabled );
@@ -357,19 +357,20 @@ class TestNeveOrdering extends WP_UnitTestCase {
 		// An array valued meta - only reachable when the meta was written before the
 		// registered sanitize_text_field callback was in place - is returned as is
 		// instead of fataling.
-		add_filter( 'get_post_metadata', $array_meta = function ( $value, $object_id, $meta_key ) use ( $post_id ) {
+		$array_meta = function ( $value, $object_id, $meta_key ) use ( $post_id ) {
 			if ( $object_id === $post_id && $meta_key === 'neve_post_elements_order' ) {
 				return array( array( 'tags', 'content' ) );
 			}
 
 			return $value;
-		}, 10, 3 );
+		};
+		add_filter( 'get_post_metadata', $array_meta, 10, 3 );
 
 		try {
 			$this->assertSame( array( 'tags', 'content' ), $metabox->filter_post_elements( $fallback ) );
 		} finally {
 			remove_filter( 'get_post_metadata', $array_meta, 10 );
- 		}
+		}
 
 		// Broken JSON falls back to the order passed in by the customizer.
 		update_post_meta( $post_id, 'neve_post_elements_order', '[content,' );
