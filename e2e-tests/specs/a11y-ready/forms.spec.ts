@@ -38,7 +38,9 @@ async function expectVisibleSearchLabel(page, context: string) {
 		const target =
 			el.querySelector('.screen-reader-text') !== null &&
 			(el.textContent || '').trim() ===
-				(el.querySelector('.screen-reader-text')?.textContent || '').trim();
+				(
+					el.querySelector('.screen-reader-text')?.textContent || ''
+				).trim();
 		return el.classList.contains('screen-reader-text') || target;
 	});
 	expect(
@@ -87,6 +89,17 @@ test('decorative SVGs inside labelled search controls are aria-hidden', async ({
 	);
 	expect(
 		unhidden,
-		`decorative icons must carry aria-hidden="true": ${unhidden.join(' | ')}`
+		`decorative icons must carry aria-hidden="true": ${unhidden.join(
+			' | '
+		)}`
 	).toHaveLength(0);
+});
+
+test('search panel wrappers carry no stray aria-label', async ({ page }) => {
+	// aria-label is prohibited on role-less generic divs — the search
+	// form inside is the real role="search" landmark. Covers the theme's
+	// responsive search and, when pro is active, the advanced search.
+	await page.goto('/');
+	const labelled = await page.locator('.nv-nav-search[aria-label]').count();
+	expect(labelled, '.nv-nav-search must not carry an aria-label').toBe(0);
 });

@@ -27,9 +27,17 @@ $container_classes = apply_filters( 'neve_additional_menu_container_class', $con
 $menu_id = Nav::NAV_MENU_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
 
 // Desktop and mobile rows both render this landmark; duplicated landmarks
-// need unique accessible names.
+// need unique accessible names. Pro allows extra instances (ids like
+// primary-menu_2) — number those the way the customizer labels them
+// ("Primary Menu 1"), and keep the <ul> id unique when two instances
+// share one row.
+$instance_suffix = '';
+if ( preg_match( '/_(\d+)$/', (string) $_id, $nav_instance ) && (int) $nav_instance[1] > 1 ) {
+	$instance_suffix = ' ' . ( (int) $nav_instance[1] - 1 );
+	$menu_id        .= '-' . (int) $nav_instance[1];
+}
 $device_label   = $device_class === 'mobile' ? __( 'Mobile', 'neve' ) : __( 'Desktop', 'neve' );
-$landmark_label = __( 'Primary Menu', 'neve' ) . ' (' . $device_label . ')';
+$landmark_label = __( 'Primary Menu', 'neve' ) . $instance_suffix . ' (' . $device_label . ')';
 ?>
 <div class="nv-nav-wrap">
 	<div role="navigation" class="<?php echo esc_attr( join( ' ', $container_classes ) ); ?>"

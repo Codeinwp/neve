@@ -1,9 +1,5 @@
 import { test, expect } from '@playwright/test';
-import {
-	collectAccessibleNames,
-	desktopSubmenuToggles,
-	submenuFor,
-} from './a11y-utils';
+import { desktopSubmenuToggles, submenuFor } from './a11y-utils';
 
 /**
  * Criterion 4: Controls with Accessible Names, Roles, and States — a11y.md §5.3.
@@ -43,18 +39,31 @@ test.describe('Desktop primary nav submenu toggles', () => {
 	});
 
 	test('toggles have unique accessible names', async ({ page }) => {
-		const names = await collectAccessibleNames(
-			page,
-			'.header--row .caret-wrap'
+		// Uniqueness applies WITHIN each navigation landmark: pro can
+		// render the same menu in several (uniquely labelled) navs, which
+		// legitimately repeats toggle names across landmarks.
+		const perNav = await page.$$eval(
+			'.header--row [role="navigation"], .header--row nav',
+			(navs) =>
+				navs.map((nav) =>
+					Array.from(nav.querySelectorAll('.caret-wrap')).map(
+						(el) =>
+							el.getAttribute('aria-label') ||
+							(el.textContent || '').trim()
+					)
+				)
 		);
-		expect(names.length).toBeGreaterThanOrEqual(2);
-		for (const name of names) {
+		const all = perNav.flat();
+		expect(all.length).toBeGreaterThanOrEqual(2);
+		for (const name of all) {
 			expect(name, 'toggle must have a non-empty accessible name').not.toBe('');
 		}
-		expect(
-			new Set(names).size,
-			`toggle names must be unique, got: ${JSON.stringify(names)}`
-		).toBe(names.length);
+		for (const names of perNav) {
+			expect(
+				new Set(names).size,
+				`toggle names must be unique within their nav, got: ${JSON.stringify(names)}`
+			).toBe(names.length);
+		}
 	});
 
 	test('Enter opens and closes the submenu, and updates aria-expanded', async ({

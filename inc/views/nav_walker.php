@@ -211,14 +211,23 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			$this->enqueue_mega_menu_style();
 		}
 
-		if ( isset( $item->title ) && $item->title === 'divider' ) {
+		// Dividers by legacy title convention or by the pro mega menu's
+		// contentType (it sets the class on the item object): both are
+		// decoration. aria-hidden, NOT role="presentation" — axe's `list`
+		// rule rejects presentational children inside a real <ul>, while
+		// hidden nodes are excluded from the list semantics entirely.
+		// Returning early keeps the <li> empty.
+		$is_divider = ( isset( $item->title ) && $item->title === 'divider' ) ||
+			( isset( $item->classes ) && in_array( 'neve-mm-divider', (array) $item->classes, true ) );
+
+		if ( $is_divider ) {
 			$classes = [ 'neve-mm-divider' ];
 
 			if ( isset( $item->classes ) ) {
 				$classes = array_merge( $classes, $item->classes );
 			}
 
-			$output .= '<li role="presentation" class="' . esc_attr( join( ' ', $classes ) ) . '">';
+			$output .= '<li aria-hidden="true" class="' . esc_attr( join( ' ', array_unique( $classes ) ) ) . '">';
 
 			return;
 		}
