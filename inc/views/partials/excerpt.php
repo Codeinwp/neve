@@ -102,15 +102,27 @@ class Excerpt extends Base_View {
 	 */
 	private function trim_words_keep_html( $text, $num_words, $more = '...' ) {
 		$num_words = (int) $num_words;
+		$trimmed   = $this->trim_markup( $text, $num_words, $more );
 
+		return apply_filters( 'wp_trim_words', $trimmed, $num_words, $more, $text );
+	}
+
+	/**
+	 * Trim a text to a number of words, leaving the markup around them in place.
+	 *
+	 * @param string $text      HTML content to trim.
+	 * @param int    $num_words Maximum number of words.
+	 * @param string $more      String to append when the content is trimmed.
+	 *
+	 * @return string
+	 */
+	private function trim_markup( $text, $num_words, $more ) {
 		if ( $num_words <= 0 || '' === $text ) {
 			return '';
 		}
 
-		// `wp_get_word_count_type()` is WP 6.2+; older installs read the same core string.
-		$count_type = function_exists( 'wp_get_word_count_type' )
-			? wp_get_word_count_type()
-			: _x( 'words', 'Word count type. Do not translate!', 'default' ); // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Core string, not a theme one.
+		// `wp_get_word_count_type()` is WP 6.2+; older installs count words.
+		$count_type = function_exists( 'wp_get_word_count_type' ) ? wp_get_word_count_type() : 'words';
 
 		// Some locales budget characters rather than words, as `wp_trim_words()` does.
 		$count_chars = 0 === strpos( $count_type, 'characters' )
@@ -127,69 +139,23 @@ class Excerpt extends Base_View {
 			return wp_trim_words( $text, $num_words, $more );
 		}
 
-		$void_tags = array(
-			'area',
-			'base',
-			'br',
-			'col',
-			'embed',
-			'hr',
-			'img',
-			'input',
-			'link',
-			'meta',
-			'param',
-			'source',
-			'track',
-			'wbr',
-		);
-
 		$output    = '';
-		$open_tags = array();
 		$remaining = $num_words;
-		$trimmed   = false;
-		// Whitespace is held back until a word or tag follows it, so the cut does not
-		// leave a trailing space inside a closed tag or in front of `$more`.
-		$pending = '';
+		$cut       = false;
+
+		// Markup and whitespace are held back until a kept word follows them, so a
+		// tag opened right at the cut does not leave an empty element behind.
+		$pending      = '';
+		$pending_cost = 0;
 
 		foreach ( $tokens as $token ) {
-			// Comments carry no words, and their contents must not be counted as any.
-			if ( 0 === strpos( $token, '<!--' ) ) {
-				$output .= $pending . $token;
-				$pending = '';
+			// Tokens are split on this same pattern, so a match is one of the tags.
+			if ( preg_match( '#^<[^>]*>$#', $token ) ) {
+				$pending .= $token;
 
 				continue;
 			}
 
-			// If this is an HTML tag, handle it differently.
-			if ( preg_match( '#^<\s*(/?)\s*([a-zA-Z0-9]+)(?:\s[^>]*)?\s*(/?)>$#s', $token, $matches ) ) {
-				$output .= $pending . $token;
-				$pending = '';
-
-				$tag             = strtolower( $matches[2] );
-				$is_closing      = '/' === $matches[1];
-				$is_self_closing = '/' === $matches[3];
-
-				if ( in_array( $tag, $void_tags, true ) || $is_self_closing ) {
-					continue;
-				}
-
-				if ( $is_closing ) {
-					$index = array_search( $tag, $open_tags, true );
-
-					if ( false !== $index ) {
-						$open_tags = array_slice( $open_tags, $index + 1 );
-					}
-
-					continue;
-				}
-
-				array_unshift( $open_tags, $tag );
-
-				continue;
-			}
-
-			// If this is a text, split it into words and add them to the output.
 			$parts = preg_split(
 				'/(\s+)/u',
 				$token,
@@ -198,66 +164,55 @@ class Excerpt extends Base_View {
 			);
 
 			if ( ! is_array( $parts ) ) {
-				$output .= $pending . $token;
-				$pending = '';
+				$output      .= $pending . $token;
+				$pending      = '';
+				$pending_cost = 0;
 
 				continue;
 			}
 
 			foreach ( $parts as $part ) {
 				if ( '' === trim( $part ) ) {
-					$pending .= $part;
+					// Core collapses each run of whitespace to a single space.
+					$pending      .= $count_chars ? ' ' : $part;
+					$pending_cost += $count_chars ? 1 : 0;
 
 					continue;
 				}
 
+				$remaining -= $pending_cost;
+
 				if ( $remaining <= 0 ) {
-					$trimmed = true;
+					$cut = true;
 					break;
 				}
 
-				// Character locales spend the budget per character, so a single run
-				// of text can be cut part way through.
-				if ( $count_chars ) {
-					$chars = $this->split_characters( $part );
+				$chars = $count_chars ? $this->split_characters( $part ) : array( $part );
 
-					if ( count( $chars ) > $remaining ) {
-						$output   .= $pending . implode( '', array_slice( $chars, 0, $remaining ) );
-						$pending   = '';
-						$remaining = 0;
-						$trimmed   = true;
-						break;
-					}
-
-					$output    .= $pending . $part;
-					$pending    = '';
-					$remaining -= count( $chars );
-
-					continue;
+				// Character locales can cut part way through a run of text.
+				if ( count( $chars ) > $remaining ) {
+					$output .= $pending . implode( '', array_slice( $chars, 0, $remaining ) );
+					$cut     = true;
+					break;
 				}
 
-				$output .= $pending . $part;
-				$pending = '';
-				$remaining--;
+				$output      .= $pending . $part;
+				$pending      = '';
+				$pending_cost = 0;
+				$remaining   -= count( $chars );
 			}
 
-			if ( $trimmed ) {
+			if ( $cut ) {
 				break;
 			}
 		}
 
-		if ( ! $trimmed ) {
+		if ( ! $cut ) {
 			return $text;
 		}
 
 		// Close any tags that are still open so the resulting HTML remains valid.
-		foreach ( $open_tags as $tag ) {
-			$output .= '</' . $tag . '>';
-		}
-
-		$output .= $more;
-
-		return $output;
+		return force_balance_tags( $output ) . $more;
 	}
 
 	/**

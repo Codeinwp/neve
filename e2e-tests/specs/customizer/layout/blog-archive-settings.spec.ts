@@ -320,10 +320,12 @@ test.describe('Blog/Archive / Excerpt markup', () => {
 		const stale = await request.get(
 			baseURL + `/wp-json/wp/v2/posts?slug=${POST_SLUG}&status=any`
 		);
+		expect(stale.ok()).toBeTruthy();
 		for (const post of await stale.json()) {
-			await request.delete(
+			const staleDeleteResponse = await request.delete(
 				baseURL + `/wp-json/wp/v2/posts/${post.id}?force=true`
 			);
+			expect(staleDeleteResponse.ok()).toBeTruthy();
 		}
 
 		const response = await request.post(baseURL + '/wp-json/wp/v2/posts', {
