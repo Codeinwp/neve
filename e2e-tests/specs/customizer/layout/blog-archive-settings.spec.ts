@@ -3,6 +3,7 @@ import { setCustomizeSettings } from '../../../utils';
 import data from '../../../fixtures/customizer/layout/blog-archive-setting-setup.json';
 
 const SEARCH_TERM = 'nvexcerpthtmlfixture';
+const POST_SLUG = 'nv-excerpt-html-fixture';
 const LINK_HREF = 'https://example.com/neve-excerpt-link';
 const EXCERPT = `Neve <strong>keeps</strong> this <a href="${LINK_HREF}">excerpt link</a> visible while trimming the rest sentinelword away.`;
 
@@ -300,6 +301,8 @@ test.describe('Blog/Archive 4 / Default Layout', () => {
 });
 
 test.describe('Blog/Archive / Excerpt markup', () => {
+	test.describe.configure({ mode: 'serial' });
+
 	let postId: number;
 
 	test.beforeAll(async ({ request, baseURL }) => {
@@ -312,9 +315,21 @@ test.describe('Blog/Archive / Excerpt markup', () => {
 			baseURL,
 		});
 
+		// A run killed before afterAll leaves the post behind; drop it by slug so
+		// the search page has exactly one result either way.
+		const stale = await request.get(
+			baseURL + `/wp-json/wp/v2/posts?slug=${POST_SLUG}&status=any`
+		);
+		for (const post of await stale.json()) {
+			await request.delete(
+				baseURL + `/wp-json/wp/v2/posts/${post.id}?force=true`
+			);
+		}
+
 		const response = await request.post(baseURL + '/wp-json/wp/v2/posts', {
 			data: {
 				title: `Excerpt markup ${SEARCH_TERM}`,
+				slug: POST_SLUG,
 				content: `Body copy for ${SEARCH_TERM}.`,
 				excerpt: EXCERPT,
 				status: 'publish',
@@ -329,9 +344,10 @@ test.describe('Blog/Archive / Excerpt markup', () => {
 
 	test.afterAll(async ({ request, baseURL }) => {
 		if (postId) {
-			await request.delete(
+			const deleteResponse = await request.delete(
 				baseURL + `/wp-json/wp/v2/posts/${postId}?force=true`
 			);
+			expect(deleteResponse.ok()).toBeTruthy();
 		}
 	});
 
