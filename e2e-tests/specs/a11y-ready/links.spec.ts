@@ -18,11 +18,32 @@ test('inline links in post content are underlined', async ({
 	const url = await getPermalink(request, 'posts', 'a11y-comment-test');
 	await page.goto(url);
 	const link = page.locator('.entry-content p a').first();
-	await expect(link, 'fixture post must contain an inline link').toBeVisible();
+	await expect(
+		link,
+		'fixture post must contain an inline link'
+	).toBeVisible();
 	const decoration = await link.evaluate(
 		(el) => getComputedStyle(el).textDecorationLine
 	);
-	expect(decoration, 'content links must be underlined').toContain('underline');
+	expect(decoration, 'content links must be underlined').toContain(
+		'underline'
+	);
+});
+
+test('footer copyright links are underlined (WCAG 1.4.1)', async ({ page }) => {
+	await page.goto('/');
+	const link = page.locator('.builder-item--footer_copyright a').first();
+	expect(
+		await link.count(),
+		'footer copyright must contain a link (Neve / WordPress credits)'
+	).toBe(1);
+	const decoration = await link.evaluate(
+		(el) => getComputedStyle(el).textDecorationLine
+	);
+	expect(
+		decoration,
+		'copyright links sit inside a sentence and must not rely on color alone'
+	).toContain('underline');
 });
 
 test('content links change on hover with a non-color-only distinction', async ({
@@ -88,12 +109,16 @@ test('pagination links have unambiguous accessible names and a hover/focus style
 	const link = page.locator('a.page-numbers').first();
 	const before = await link.evaluate((el) => {
 		const cs = getComputedStyle(el);
-		return cs.textDecorationLine + '|' + cs.backgroundColor + '|' + cs.color;
+		return (
+			cs.textDecorationLine + '|' + cs.backgroundColor + '|' + cs.color
+		);
 	});
 	await link.hover();
 	const after = await link.evaluate((el) => {
 		const cs = getComputedStyle(el);
-		return cs.textDecorationLine + '|' + cs.backgroundColor + '|' + cs.color;
+		return (
+			cs.textDecorationLine + '|' + cs.backgroundColor + '|' + cs.color
+		);
 	});
 	expect(
 		after !== before,
@@ -113,7 +138,9 @@ test('featured-image links do not duplicate their announcement via title attribu
 	);
 	expect(
 		titled,
-		`thumbnail links must not carry a title attribute: ${JSON.stringify(titled)}`
+		`thumbnail links must not carry a title attribute: ${JSON.stringify(
+			titled
+		)}`
 	).toHaveLength(0);
 });
 

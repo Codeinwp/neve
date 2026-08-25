@@ -2,6 +2,11 @@
 	position: relative;
 	z-index: 11;
 
+	// Links inside the copyright text must not rely on color alone (WCAG 1.4.1).
+	.builder-item--footer_copyright a {
+		text-decoration: underline;
+	}
+
 	.item--inner {
 		width: 100%;
 
