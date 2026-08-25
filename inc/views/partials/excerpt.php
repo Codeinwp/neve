@@ -112,13 +112,9 @@ class Excerpt extends Base_View {
 			? wp_get_word_count_type()
 			: _x( 'words', 'Word count type. Do not translate!', 'default' ); // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Core string, not a theme one.
 
-		// Locales counting characters are left to core, markup and all.
-		if (
-			0 === strpos( $count_type, 'characters' )
-			&& preg_match( '/^utf\-?8$/i', get_option( 'blog_charset' ) )
-		) {
-			return wp_trim_words( $text, $num_words, $more );
-		}
+		// Some locales budget characters rather than words, as `wp_trim_words()` does.
+		$count_chars = 0 === strpos( $count_type, 'characters' )
+			&& 1 === preg_match( '/^utf\-?8$/i', get_option( 'blog_charset' ) );
 
 		$tokens = preg_split(
 			'/(<[^>]*>)/',
@@ -220,6 +216,26 @@ class Excerpt extends Base_View {
 					break;
 				}
 
+				// Character locales spend the budget per character, so a single run
+				// of text can be cut part way through.
+				if ( $count_chars ) {
+					$chars = $this->split_characters( $part );
+
+					if ( count( $chars ) > $remaining ) {
+						$output   .= $pending . implode( '', array_slice( $chars, 0, $remaining ) );
+						$pending   = '';
+						$remaining = 0;
+						$trimmed   = true;
+						break;
+					}
+
+					$output    .= $pending . $part;
+					$pending    = '';
+					$remaining -= count( $chars );
+
+					continue;
+				}
+
 				$output .= $pending . $part;
 				$pending = '';
 				$remaining--;
@@ -242,6 +258,21 @@ class Excerpt extends Base_View {
 		$output .= $more;
 
 		return $output;
+	}
+
+	/**
+	 * Split a string into its characters.
+	 *
+	 * @param string $text Text to split.
+	 *
+	 * @return string[]
+	 */
+	private function split_characters( $text ) {
+		if ( ! preg_match_all( '/./u', $text, $matches ) ) {
+			return array();
+		}
+
+		return $matches[0];
 	}
 
 	/**

@@ -12,6 +12,11 @@ const excerptHtmlSettings = {
 	neve_post_content_ordering: '["title-meta","excerpt"]',
 };
 
+const excerptHtmlCutSettings = {
+	...excerptHtmlSettings,
+	neve_post_excerpt_length: 4,
+};
+
 test.describe('Blog/Archive 1 / Default Layout', () => {
 	test.beforeAll(async ({ request, baseURL }) => {
 		await setCustomizeSettings('defaultLayout', data.archive1, {
@@ -302,6 +307,10 @@ test.describe('Blog/Archive / Excerpt markup', () => {
 			request,
 			baseURL,
 		});
+		await setCustomizeSettings('excerptHtmlCut', excerptHtmlCutSettings, {
+			request,
+			baseURL,
+		});
 
 		const response = await request.post(baseURL + '/wp-json/wp/v2/posts', {
 			data: {
@@ -342,6 +351,27 @@ test.describe('Blog/Archive / Excerpt markup', () => {
 		expect(text).toContain('trimming');
 		expect(text).not.toContain('sentinelword');
 		// Markup is rendered, not printed as escaped text.
+		expect(text).not.toContain('<a ');
+	});
+
+	test('Trimming inside a link closes the link', async ({ page }) => {
+		await page.goto(`/?s=${SEARCH_TERM}&test_name=excerptHtmlCut`);
+
+		const excerpt = page.locator('article.post .excerpt-wrap');
+		await expect(excerpt).toHaveCount(1);
+
+		// Word 4 is the first half of the link text and word 5 is past the cut, so
+		// only an anchor closed by the trim can render as a link at all.
+		const link = excerpt.locator(`a[href="${LINK_HREF}"]`);
+		await expect(link).toBeVisible();
+		await expect(link).toHaveText('excerpt');
+		// The read more marker follows the link instead of being swallowed by it.
+		await expect(link).not.toContainText('…');
+		await expect(excerpt.locator('strong')).toHaveText('keeps');
+
+		const text = await excerpt.innerText();
+		expect(text).toContain('…');
+		expect(text).not.toContain('visible');
 		expect(text).not.toContain('<a ');
 	});
 });
