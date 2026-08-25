@@ -77,7 +77,7 @@ class Excerpt extends Base_View {
 
 		if ( has_excerpt( $post_id ) ) {
 			$excerpt_more = apply_filters( 'excerpt_more', ' [&hellip;]' );
-			$content      = wp_trim_words( get_the_excerpt( $post_id ), $length, $excerpt_more );
+			$content      = $this->trim_words_keep_html( get_the_excerpt( $post_id ), $length, $excerpt_more );
 
 			return apply_filters( 'the_excerpt', $content );
 		}
@@ -87,6 +87,161 @@ class Excerpt extends Base_View {
 		remove_filter( 'excerpt_length', array( $this, 'change_excerpt_length' ), 10 );
 
 		return apply_filters( 'the_excerpt', $content );
+	}
+
+	/**
+	 * Trim words while preserving HTML markup.
+	 *
+	 * Similar to wp_trim_words(), but preserves HTML tags.
+	 *
+	 * @param string $text      HTML content to trim.
+	 * @param int    $num_words Maximum number of words.
+	 * @param string $more      String to append when the content is trimmed.
+	 *
+	 * @return string
+	 */
+	private function trim_words_keep_html( $text, $num_words, $more = '...' ) {
+		$num_words = (int) $num_words;
+
+		if ( $num_words <= 0 || '' === $text ) {
+			return '';
+		}
+
+		// `wp_get_word_count_type()` is WP 6.2+; older installs read the same core string.
+		$count_type = function_exists( 'wp_get_word_count_type' )
+			? wp_get_word_count_type()
+			: _x( 'words', 'Word count type. Do not translate!', 'default' ); // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- Core string, not a theme one.
+
+		// Locales counting characters are left to core, markup and all.
+		if (
+			0 === strpos( $count_type, 'characters' )
+			&& preg_match( '/^utf\-?8$/i', get_option( 'blog_charset' ) )
+		) {
+			return wp_trim_words( $text, $num_words, $more );
+		}
+
+		$tokens = preg_split(
+			'/(<[^>]*>)/',
+			$text,
+			-1,
+			PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY
+		);
+
+		if ( ! is_array( $tokens ) ) {
+			return wp_trim_words( $text, $num_words, $more );
+		}
+
+		$void_tags = array(
+			'area',
+			'base',
+			'br',
+			'col',
+			'embed',
+			'hr',
+			'img',
+			'input',
+			'link',
+			'meta',
+			'param',
+			'source',
+			'track',
+			'wbr',
+		);
+
+		$output    = '';
+		$open_tags = array();
+		$remaining = $num_words;
+		$trimmed   = false;
+		// Whitespace is held back until a word or tag follows it, so the cut does not
+		// leave a trailing space inside a closed tag or in front of `$more`.
+		$pending = '';
+
+		foreach ( $tokens as $token ) {
+			// Comments carry no words, and their contents must not be counted as any.
+			if ( 0 === strpos( $token, '<!--' ) ) {
+				$output .= $pending . $token;
+				$pending = '';
+
+				continue;
+			}
+
+			// If this is an HTML tag, handle it differently.
+			if ( preg_match( '#^<\s*(/?)\s*([a-zA-Z0-9]+)(?:\s[^>]*)?\s*(/?)>$#s', $token, $matches ) ) {
+				$output .= $pending . $token;
+				$pending = '';
+
+				$tag             = strtolower( $matches[2] );
+				$is_closing      = '/' === $matches[1];
+				$is_self_closing = '/' === $matches[3];
+
+				if ( in_array( $tag, $void_tags, true ) || $is_self_closing ) {
+					continue;
+				}
+
+				if ( $is_closing ) {
+					$index = array_search( $tag, $open_tags, true );
+
+					if ( false !== $index ) {
+						$open_tags = array_slice( $open_tags, $index + 1 );
+					}
+
+					continue;
+				}
+
+				array_unshift( $open_tags, $tag );
+
+				continue;
+			}
+
+			// If this is a text, split it into words and add them to the output.
+			$parts = preg_split(
+				'/(\s+)/u',
+				$token,
+				-1,
+				PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY
+			);
+
+			if ( ! is_array( $parts ) ) {
+				$output .= $pending . $token;
+				$pending = '';
+
+				continue;
+			}
+
+			foreach ( $parts as $part ) {
+				if ( '' === trim( $part ) ) {
+					$pending .= $part;
+
+					continue;
+				}
+
+				if ( $remaining <= 0 ) {
+					$trimmed = true;
+					break;
+				}
+
+				$output .= $pending . $part;
+				$pending = '';
+				$remaining--;
+			}
+
+			if ( $trimmed ) {
+				break;
+			}
+		}
+
+		if ( ! $trimmed ) {
+			return $text;
+		}
+
+		// Close any tags that are still open so the resulting HTML remains valid.
+		foreach ( $open_tags as $tag ) {
+			$output .= '</' . $tag . '>';
+		}
+
+		$output .= $more;
+
+		return $output;
 	}
 
 	/**
