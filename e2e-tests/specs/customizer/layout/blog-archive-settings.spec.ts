@@ -2,6 +2,22 @@ import { test, expect } from '@playwright/test';
 import { setCustomizeSettings } from '../../../utils';
 import data from '../../../fixtures/customizer/layout/blog-archive-setting-setup.json';
 
+const SEARCH_TERM = 'nvexcerpthtmlfixture';
+const POST_SLUG = 'nv-excerpt-html-fixture';
+const LINK_HREF = 'https://example.com/neve-excerpt-link';
+const EXCERPT = `Neve <strong>keeps</strong> this <a href="${LINK_HREF}">excerpt link</a> visible while trimming the rest sentinelword away.`;
+
+const excerptHtmlSettings = {
+	neve_blog_archive_layout: 'default',
+	neve_post_excerpt_length: 8,
+	neve_post_content_ordering: '["title-meta","excerpt"]',
+};
+
+const excerptHtmlCutSettings = {
+	...excerptHtmlSettings,
+	neve_post_excerpt_length: 4,
+};
+
 test.describe('Blog/Archive 1 / Default Layout', () => {
 	test.beforeAll(async ({ request, baseURL }) => {
 		await setCustomizeSettings('defaultLayout', data.archive1, {
@@ -281,5 +297,99 @@ test.describe('Blog/Archive 4 / Default Layout', () => {
 		expect(
 			await page.locator('article.post.has-post-thumbnail').count()
 		).toEqual(0);
+	});
+});
+
+test.describe('Blog/Archive / Excerpt markup', () => {
+	test.describe.configure({ mode: 'serial' });
+
+	let postId: number;
+
+	test.beforeAll(async ({ request, baseURL }) => {
+		await setCustomizeSettings('excerptHtml', excerptHtmlSettings, {
+			request,
+			baseURL,
+		});
+		await setCustomizeSettings('excerptHtmlCut', excerptHtmlCutSettings, {
+			request,
+			baseURL,
+		});
+
+		// A run killed before afterAll leaves the post behind; drop it by slug so
+		// the search page has exactly one result either way.
+		const stale = await request.get(
+			baseURL + `/wp-json/wp/v2/posts?slug=${POST_SLUG}&status=any`
+		);
+		expect(stale.ok()).toBeTruthy();
+		for (const post of await stale.json()) {
+			const staleDeleteResponse = await request.delete(
+				baseURL + `/wp-json/wp/v2/posts/${post.id}?force=true`
+			);
+			expect(staleDeleteResponse.ok()).toBeTruthy();
+		}
+
+		const response = await request.post(baseURL + '/wp-json/wp/v2/posts', {
+			data: {
+				title: `Excerpt markup ${SEARCH_TERM}`,
+				slug: POST_SLUG,
+				content: `Body copy for ${SEARCH_TERM}.`,
+				excerpt: EXCERPT,
+				status: 'publish',
+				// Dated far back so the post lands on the last archive page and
+				// leaves the other archive specs alone.
+				date: '2001-01-01T00:00:00',
+			},
+		});
+		expect(response.ok()).toBeTruthy();
+		postId = (await response.json()).id;
+	});
+
+	test.afterAll(async ({ request, baseURL }) => {
+		if (postId) {
+			const deleteResponse = await request.delete(
+				baseURL + `/wp-json/wp/v2/posts/${postId}?force=true`
+			);
+			expect(deleteResponse.ok()).toBeTruthy();
+		}
+	});
+
+	test('Trimming the excerpt keeps its HTML', async ({ page }) => {
+		await page.goto(`/?s=${SEARCH_TERM}&test_name=excerptHtml`);
+
+		const excerpt = page.locator('article.post .excerpt-wrap');
+		await expect(excerpt).toHaveCount(1);
+
+		const link = excerpt.locator(`a[href="${LINK_HREF}"]`);
+		await expect(link).toBeVisible();
+		await expect(link).toHaveText('excerpt link');
+		await expect(excerpt.locator('strong')).toHaveText('keeps');
+
+		const text = await excerpt.innerText();
+		// The trim still happens: the last kept word is in, the next one is out.
+		expect(text).toContain('trimming');
+		expect(text).not.toContain('sentinelword');
+		// Markup is rendered, not printed as escaped text.
+		expect(text).not.toContain('<a ');
+	});
+
+	test('Trimming inside a link closes the link', async ({ page }) => {
+		await page.goto(`/?s=${SEARCH_TERM}&test_name=excerptHtmlCut`);
+
+		const excerpt = page.locator('article.post .excerpt-wrap');
+		await expect(excerpt).toHaveCount(1);
+
+		// Word 4 is the first half of the link text and word 5 is past the cut, so
+		// only an anchor closed by the trim can render as a link at all.
+		const link = excerpt.locator(`a[href="${LINK_HREF}"]`);
+		await expect(link).toBeVisible();
+		await expect(link).toHaveText('excerpt');
+		// The read more marker follows the link instead of being swallowed by it.
+		await expect(link).not.toContainText('…');
+		await expect(excerpt.locator('strong')).toHaveText('keeps');
+
+		const text = await excerpt.innerText();
+		expect(text).toContain('…');
+		expect(text).not.toContain('visible');
+		expect(text).not.toContain('<a ');
 	});
 });
