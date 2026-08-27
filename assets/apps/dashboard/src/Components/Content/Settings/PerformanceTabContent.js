@@ -115,9 +115,9 @@ export default () => {
 				/>
 
 				{(isLicenseValid && <ProModuleSettings />) || <DummySettings />}
-			</div>
 
-			<PerformancePlugins />
+				<PerformancePlugins />
+			</div>
 		</>
 	);
 };

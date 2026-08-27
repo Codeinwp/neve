@@ -1,5 +1,4 @@
 /* global neveDash */
-import { useSelect } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import cn from 'classnames';
@@ -8,20 +7,22 @@ import { LoaderCircle, LucidePuzzle, LucideRocket } from 'lucide-react';
 import Pill from '../../Common/Pill';
 import Toast from '../../Common/Toast';
 import TransitionInOut from '../../Common/TransitionInOut';
-import Card from '../../../Layout/Card';
+import ControlWrap from '../../Controls/ControlWrap';
 import usePluginActions from '../../../Hooks/usePluginActions';
 import {
 	NEVE_HIDE_PLUGINS,
 	NEVE_PLUGIN_ICON_MAP,
-	NEVE_STORE,
 } from '../../../utils/constants';
 
 const PROMOTED_SLUGS = ['optimole-wp', 'wp-cloudflare-page-cache'];
 
-const PluginCard = ({ slug }) => {
+// How long the "Active" pill stays up before the card removes itself.
+const ACTIVE_PILL_TIMEOUT = 1500;
+
+const PluginCard = ({ slug, data, onDismiss }) => {
 	const ICON = NEVE_PLUGIN_ICON_MAP[slug] || LucidePuzzle;
 	// Titles and descriptions are already localized in inc/admin/dashboard/main.php.
-	const { title, description } = neveDash.plugins[slug];
+	const { title, description } = data;
 
 	const [error, setError] = useState(null);
 	const [success, setSuccess] = useState(false);
@@ -31,25 +32,19 @@ const PluginCard = ({ slug }) => {
 		true
 	);
 
-	const isPluginActive = useSelect(
-		(select) => select(NEVE_STORE).getPlugins()[slug]?.cta === 'deactivate'
-	);
-
 	useEffect(() => {
 		if (!success) {
 			return;
 		}
 
+		// Only `success` belongs in the deps: onDismiss is recreated on every
+		// parent render and would restart a countdown already in progress.
 		const timeoutId = window.setTimeout(() => {
-			setSuccess(false);
-		}, 1500);
+			onDismiss(slug);
+		}, ACTIVE_PILL_TIMEOUT);
 
 		return () => window.clearTimeout(timeoutId);
 	}, [success]);
-
-	if (isPluginActive && !success) {
-		return null;
-	}
 
 	const handleClick = async () => {
 		setError(null);
@@ -77,7 +72,7 @@ const PluginCard = ({ slug }) => {
 		>
 			<div className="flex gap-3 items-center">
 				<ICON className="size-6 text-blue-500 shrink-0" />
-				<h3 className="text-sm font-medium text-gray-900">{title}</h3>
+				<h4 className="text-sm font-medium text-gray-900">{title}</h4>
 
 				{success && (
 					<div className="ml-auto">
@@ -119,34 +114,47 @@ const PluginCard = ({ slug }) => {
 };
 
 const PerformancePlugins = () => {
-	const plugins = useSelect((select) => select(NEVE_STORE).getPlugins(), []);
+	// Snapshot: a card leaves this list when it asks to, not when the store
+	// changes, so the "Active" pill outlives the activation request.
+	const [visibleSlugs, setVisibleSlugs] = useState(() =>
+		PROMOTED_SLUGS.filter((slug) => {
+			// Super Page Cache is dropped server side when SPC Pro is
+			// installed, so a promoted slug can be missing entirely.
+			const plugin = neveDash.plugins[slug];
 
-	// A promoted plugin can be absent entirely, e.g. Super Page Cache is dropped when SPC Pro is installed.
-	const availableSlugs = PROMOTED_SLUGS.filter(
-		(slug) => plugins[slug] && plugins[slug].cta !== 'deactivate'
+			return plugin && plugin.cta !== 'deactivate';
+		})
 	);
 
-	if (NEVE_HIDE_PLUGINS || availableSlugs.length < 1) {
+	if (NEVE_HIDE_PLUGINS || visibleSlugs.length < 1) {
 		return null;
 	}
 
+	const handleDismiss = (dismissed) =>
+		setVisibleSlugs((current) =>
+			current.filter((slug) => slug !== dismissed)
+		);
+
 	return (
-		<Card
-			flat
-			className="mt-6 pt-6 border-t border-gray-200"
-			icon={<LucideRocket size={18} />}
-			title={__('Recommended Plugins', 'neve')}
+		<ControlWrap
+			label={__('Recommended Plugins', 'neve')}
+			icon={LucideRocket}
 		>
 			<div
 				className={cn('grid gap-4', {
-					'md:grid-cols-2': availableSlugs.length > 1,
+					'md:grid-cols-2': visibleSlugs.length > 1,
 				})}
 			>
-				{availableSlugs.map((slug) => (
-					<PluginCard key={slug} slug={slug} />
+				{visibleSlugs.map((slug) => (
+					<PluginCard
+						key={slug}
+						slug={slug}
+						data={neveDash.plugins[slug]}
+						onDismiss={handleDismiss}
+					/>
 				))}
 			</div>
-		</Card>
+		</ControlWrap>
 	);
 };
 
