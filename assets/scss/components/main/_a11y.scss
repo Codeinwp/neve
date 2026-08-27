@@ -32,6 +32,7 @@
 // and plugins put skip links on this class expecting :focus to show).
 .screen-reader-text {
 	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
 	clip-path: inset(50%);
 	height: 1px;
 	width: 1px;
@@ -43,6 +44,7 @@
 
 	&:focus {
 		background-color: var(--nv-site-bg);
+		clip: auto !important;
 		clip-path: none;
 		color: var(--nv-text-color);
 		display: block;

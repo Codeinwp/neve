@@ -32,11 +32,16 @@ test('inline links in post content are underlined', async ({
 
 test('footer copyright links are underlined (WCAG 1.4.1)', async ({ page }) => {
 	await page.goto('/');
-	const link = page.locator('.builder-item--footer_copyright a').first();
+	// Free theme renders the credit as .builder-item.cr; Pro replaces it
+	// with the footer_copyright component.
+	const links = page.locator(
+		'.builder-item--footer_copyright a, .builder-item.cr a'
+	);
 	expect(
-		await link.count(),
+		await links.count(),
 		'footer copyright must contain a link (Neve / WordPress credits)'
-	).toBe(1);
+	).toBeGreaterThan(0);
+	const link = links.first();
 	const decoration = await link.evaluate(
 		(el) => getComputedStyle(el).textDecorationLine
 	);

@@ -42,7 +42,7 @@
 			"gzip": false,
 			"running": false,
 			"webpack": false,
-			"limit": "40.5 KB",
+			"limit": "40.6 KB",
 			"path": "style-main-new.min.css"
 		}
 	],
