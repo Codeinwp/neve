@@ -21,6 +21,13 @@ init_environment(){
 	echo "Installing Neve theme from $NEVE_LOCATION"
 	wp --allow-root theme install --activate $NEVE_LOCATION
 	wp --allow-root option update fresh_site 0
+
+	# Activating Neve remaps widgets by sidebar id, and 'blog-sidebar' does not
+	# match the previous theme's, so the default widgets can be left unassigned.
+	if [ "$(wp --allow-root widget list blog-sidebar --format=count)" = "0" ]; then
+		echo "Populating blog-sidebar"
+		wp --allow-root widget add block blog-sidebar --content='<!-- wp:search /-->'
+	fi
   echo "Installing Theme API Plugin"
   wp --allow-root plugin install https://github.com/codeinwp/wp-thememods-api/archive/refs/heads/main.zip --force --activate
 }
