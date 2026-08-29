@@ -90,6 +90,7 @@ const PluginCard = ({ slug, data, onDismiss }) => {
 
 			{!success && (
 				<button
+					type="button"
 					onClick={handleClick}
 					disabled={loading}
 					className={cn(
@@ -120,7 +121,7 @@ const PerformancePlugins = () => {
 		PROMOTED_SLUGS.filter((slug) => {
 			// Super Page Cache is dropped server side when SPC Pro is
 			// installed, so a promoted slug can be missing entirely.
-			const plugin = neveDash.plugins[slug];
+			const plugin = neveDash.plugins?.[slug];
 
 			return plugin && plugin.cta !== 'deactivate';
 		})
