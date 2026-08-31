@@ -454,10 +454,13 @@ final class Manager {
 		$default_order = $this->get_v4_defaults( 'neve_layout_single_post_elements_order', $this->post_ordering() );
 
 		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
-		if ( ! is_string( $content_order ) ) {
-			$content_order = wp_json_encode( $default_order );
+		if ( is_string( $content_order ) ) {
+			$content_order = json_decode( $content_order, true );
 		}
-		$content_order = json_decode( $content_order, true );
+
+		if ( ! is_array( $content_order ) ) {
+			$content_order = $default_order;
+		}
 		if ( empty( $content_order ) ) {
 			return wp_json_encode( $content_order );
 		}
