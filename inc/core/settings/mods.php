@@ -200,7 +200,13 @@ class Mods {
 	 * @return mixed
 	 */
 	public static function to_json( $key, $default = false, $as_array = true ) {
-		return json_decode( self::get( $key, $default ), $as_array );
+		$value = self::get( $key, $default );
+
+		if ( is_array( $value ) ) {
+			$value = wp_json_encode( $value );
+		}
+
+		return json_decode( $value, $as_array );
 	}
 
 	/**
