@@ -264,6 +264,11 @@ class Admin {
 		if ( ! neve_is_new_skin() ) {
 			return $theme_mods;
 		}
+
+		if ( ! class_exists( Mods_Migrator::class ) ) {
+			return $theme_mods;
+		}
+
 		$migrator = new Mods_Migrator( $theme_mods );
 
 		return $migrator->get_migrated_mods();
