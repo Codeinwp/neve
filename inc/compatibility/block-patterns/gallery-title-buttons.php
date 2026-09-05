@@ -19,7 +19,7 @@ return array(
 <!-- wp:column {"width":33.33} -->
 <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:buttons {"align":"right"} -->
 <div class="wp-block-buttons alignright"><!-- wp:button {"className":"is-style-primary"} -->
-<div class="wp-block-button is-style-primary"><a class="wp-block-button__link">This is primary button</a></div>
+<div class="wp-block-button is-style-primary"><a class="wp-block-button__link" href="#">This is primary button</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 </div>
@@ -27,7 +27,7 @@ return array(
 <!-- /wp:columns -->
 
 <!-- wp:gallery {"ids":[],"columns":4} -->
-<figure class="wp-block-gallery columns-4 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-22.jpg" alt="" data-full-url="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-22.jpg" data-link="#"/></figure></li><li class="blocks-gallery-item"><figure><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-20.jpg" alt="" data-full-url="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-20.jpg" data-link="#"/></figure></li><li class="blocks-gallery-item"><figure><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-21.jpg" alt="" data-full-url="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-21.jpg" data-link="#"/></figure></li><li class="blocks-gallery-item"><figure><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-19.jpg" alt="" data-full-url="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-19.jpg" data-link="#"/></figure></li></ul></figure>
+<figure class="wp-block-gallery columns-4 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-22.jpg" alt="Gallery image" data-full-url="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-22.jpg" data-link="#"/></figure></li><li class="blocks-gallery-item"><figure><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-20.jpg" alt="Gallery image" data-full-url="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-20.jpg" data-link="#"/></figure></li><li class="blocks-gallery-item"><figure><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-21.jpg" alt="Gallery image" data-full-url="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-21.jpg" data-link="#"/></figure></li><li class="blocks-gallery-item"><figure><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-19.jpg" alt="Gallery image" data-full-url="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-19.jpg" data-link="#"/></figure></li></ul></figure>
 <!-- /wp:gallery --></div></div>
 <!-- /wp:group -->',
 	'categories' => array( 'gallery' ),

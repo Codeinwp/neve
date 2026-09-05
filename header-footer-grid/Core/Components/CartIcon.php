@@ -300,6 +300,14 @@ class CartIcon extends Abstract_Component {
 			return false;
 		}
 
+		// The status filter only reflects the module toggle; the booster
+		// itself refuses to load without Sparks, taking the off-canvas
+		// assets (and its Customizer controls) with it. Without this the
+		// saved mods keep rendering markup for a feature that cannot run.
+		if ( ! defined( 'SPARKS_WC_VERSION' ) ) {
+			return false;
+		}
+
 		return true;
 	}
 }

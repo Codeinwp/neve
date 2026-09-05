@@ -24,8 +24,10 @@ class Secondary_Nav_Walker extends Nav_Walker {
 
 	/**
 	 * Secondary_Nav_Walker constructor.
+	 *
+	 * Intentionally empty: it must NOT call the parent constructor, which
+	 * would register the nav_menu_item_* filters a second time.
 	 */
 	public function __construct() {
-		add_action( 'neve_after_header_wrapper_hook', [ $this, 'inline_style_for_sidebar' ], 9 );
 	}
 }

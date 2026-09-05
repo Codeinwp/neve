@@ -401,7 +401,9 @@ class Post_Meta extends Base_View {
 		/* translators: %s: number of comments */
 		$comments = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'neve' ), $comments_number );
 
-		return '<a href="' . esc_url( get_comments_link( $post_id ) ) . '">' . esc_html( $comments ) . '</a>';
+		// SR-only post context so "1 Comment" links are distinguishable in a
+		// links list (review: identical names, different destinations).
+		return '<a href="' . esc_url( get_comments_link( $post_id ) ) . '">' . esc_html( $comments ) . '<span class="screen-reader-text">, ' . esc_html( get_the_title( $post_id ) ) . '</span></a>';
 	}
 
 	/**

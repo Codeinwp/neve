@@ -172,8 +172,10 @@
 	  }
 	}
 
+	// li:focus never matches (focus is on the link/toggle inside); the
+	// keyboard open state is the toggle's .dropdown-open class.
 	.neve-mega-menu:hover > .sub-menu,
-	.neve-mega-menu:focus > .sub-menu {
+	.neve-mega-menu > .sub-menu.dropdown-open {
 	  opacity: 1;
 	  visibility: visible;
 	  pointer-events: all;

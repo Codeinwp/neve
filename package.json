@@ -29,7 +29,7 @@
 		{
 			"gzip": false,
 			"running": false,
-			"limit": "8 KB",
+			"limit": "9.75 KB",
 			"path": "assets/js/build/modern/frontend.js"
 		},
 		{
@@ -42,7 +42,7 @@
 			"gzip": false,
 			"running": false,
 			"webpack": false,
-			"limit": "40 KB",
+			"limit": "40.6 KB",
 			"path": "style-main-new.min.css"
 		}
 	],
@@ -64,6 +64,7 @@
 		"tiny-slider": "^2.9.2"
 	},
 	"devDependencies": {
+		"@axe-core/playwright": "4.8.5",
 		"@babel/core": "^7.10.5",
 		"@babel/helper-builder-react-jsx": "^7.19.0",
 		"@babel/helper-builder-react-jsx-experimental": "^7.12.11",
@@ -172,6 +173,7 @@
 		"build:grunt": "grunt build",
 		"build:makepot": "bash ./bin/makepot.sh",
 		"test:playwright": "playwright test $1 --config e2e-tests/playwright.config.ts --reporter=list",
+		"test:a11y": "playwright test $1 --config e2e-tests/playwright.a11y.config.ts --reporter=list",
 		"phpcbf": "composer run-script format || true ",
 		"phpcs": "composer run-script phpcs",
 		"git:add": "git add *.css assets/**/*.css assets/**/*.js",

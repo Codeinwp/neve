@@ -586,7 +586,7 @@ class Frontend extends Generator {
 				],
 				'--formfieldbordercolor'   => [
 					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_COLOR,
-					Dynamic_Selector::META_DEFAULT => '#dddddd',
+					Dynamic_Selector::META_DEFAULT => '#8c8c8c',
 				],
 				'--formfieldcolor'         => [
 					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_COLOR,
