@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 22/06/26
+ * Updated on 31/08/26
  *
  * @package neve
  */
@@ -130,6 +130,7 @@ return array(
 	'Arya' => array( '400', '700',),
 	'Asap' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Asap Condensed' => array( '200', '300', '400', '500', '600', '700', '800', '900', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Asap Sharp' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Asar' => array( '400',),
 	'Asimovian' => array( '400',),
 	'Asset' => array( '400',),
@@ -307,6 +308,7 @@ return array(
 	'Butcherman' => array( '400',),
 	'Butterfly Kids' => array( '400',),
 	'Bytesized' => array( '400',),
+	'Caacupe One' => array( '400',),
 	'Cabin' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Cabin Condensed' => array( '400', '500', '600', '700',),
 	'Cabin Sketch' => array( '400', '700',),
@@ -598,6 +600,7 @@ return array(
 	'Gayathri' => array( '100', '400', '700',),
 	'Geist' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Geist Mono' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Geist Pixel' => array( '400',),
 	'Gelasio' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Gemunu Libre' => array( '200', '300', '400', '500', '600', '700', '800',),
 	'Genos' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
@@ -1036,6 +1039,7 @@ return array(
 	'Montaga' => array( '400',),
 	'Montagu Slab' => array( '100', '200', '300', '400', '500', '600', '700',),
 	'MonteCarlo' => array( '400',),
+	'Montenegrin Gothic One' => array( '400',),
 	'Montez' => array( '400',),
 	'Montserrat' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Montserrat Alternates' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
@@ -1702,6 +1706,7 @@ return array(
 	'Schoolbell' => array( '400',),
 	'Science Gothic' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Scope One' => array( '400',),
+	'Scoutie Sans' => array( '200', '300', '400', '500', '600', '700', '800', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic',),
 	'Seaweed Script' => array( '400',),
 	'Secular One' => array( '400',),
 	'Sedan' => array( '400', '400italic',),
@@ -1907,6 +1912,7 @@ return array(
 	'Updock' => array( '400',),
 	'Urbanist' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'VT323' => array( '400',),
+	'Valley Sans' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Vampiro One' => array( '400',),
 	'Varela' => array( '400',),
 	'Varela Round' => array( '400',),
@@ -1976,6 +1982,8 @@ return array(
 	'Yuji Mai' => array( '400',),
 	'Yuji Syuku' => array( '400',),
 	'Yusei Magic' => array( '400',),
+	'Yuyu' => array( '400',),
+	'Yuyu Short' => array( '400',),
 	'ZCOOL KuaiLe' => array( '400',),
 	'ZCOOL QingKe HuangYou' => array( '400',),
 	'ZCOOL XiaoWei' => array( '400',),
