@@ -101,8 +101,6 @@ function handleScrollLinks() {
  * assistive-technology activation with a single code path and a single
  * open state (`dropdown-open`), mirrored to aria-expanded.
  */
-let openCaretCount = 0;
-
 function handleMobileDropdowns() {
 	// Per-element guard: re-inits (e.g. customizer partial refreshes) must
 	// bind new carets without stacking listeners on surviving ones.
@@ -112,37 +110,20 @@ function handleMobileDropdowns() {
 			caret.dataset.nvBound = '1';
 			caret.addEventListener('click', (e) => toggleCaret(e, caret));
 		});
-	// Sidebar carets can render pre-expanded (neve_first_level_expanded).
-	openCaretCount = openCarets().length;
 	// Document-level guard is on <body> so a second bundle (customizer
-	// preview) cannot double-register the handlers below.
+	// preview) cannot double-register the handlers below. The handlers read
+	// open state from the DOM, never from module state, so they stay
+	// correct for carets a later bundle instance bound.
 	if (document.body.dataset.nvCaretKeys) {
 		return;
 	}
 	document.body.dataset.nvCaretKeys = '1';
-	// Escape closes the open submenu and returns focus to its toggle.
-	// stopImmediatePropagation keeps the sidebar focus trap (also a
-	// document keydown listener) from closing the whole menu on the same
-	// press; the next Escape reaches it.
-	document.addEventListener('keydown', (event) => {
-		if (event.key !== 'Escape' || openCaretCount === 0) {
-			return;
-		}
-		const openCaret = openCarets().find((caret) =>
-			caret.closest('li').contains(event.target)
-		);
-		if (!openCaret) {
-			return;
-		}
-		event.preventDefault();
-		event.stopImmediatePropagation();
-		setCaretState(openCaret, false);
-		openCaret.focus();
-	});
 	// WCAG 1.4.13: submenus revealed by pure CSS :hover must also be
 	// dismissable without moving the pointer. Escape sets a body class
 	// the stylesheet uses to hide :hover submenus; the pointer leaving
-	// the hovered item re-arms hover for the next one.
+	// the hovered item re-arms hover for the next one. Registered before
+	// the caret handler so its stopImmediatePropagation cannot starve
+	// this one when a submenu is keyboard-open and hovered at once.
 	document.addEventListener('keydown', (event) => {
 		if (event.key !== 'Escape') {
 			return;
@@ -158,11 +139,30 @@ function handleMobileDropdowns() {
 			{ once: true }
 		);
 	});
+	// Escape closes the open submenu and returns focus to its toggle.
+	// stopImmediatePropagation keeps the sidebar focus trap (also a
+	// document keydown listener, registered later) from closing the whole
+	// menu on the same press; the next Escape reaches it.
+	document.addEventListener('keydown', (event) => {
+		if (event.key !== 'Escape' || openCarets().length === 0) {
+			return;
+		}
+		const openCaret = openCarets().find((caret) =>
+			caret.closest('li').contains(event.target)
+		);
+		if (!openCaret) {
+			return;
+		}
+		event.preventDefault();
+		event.stopImmediatePropagation();
+		setCaretState(openCaret, false);
+		openCaret.focus();
+	});
 	// Close a desktop submenu when keyboard focus leaves its menu item.
 	// Sidebar toggles (.navbar-toggle) are exempt to keep the sidebar's
 	// tap-to-toggle behavior and the neve_first_level_expanded default.
 	document.addEventListener('focusout', (event) => {
-		if (openCaretCount === 0) {
+		if (openCarets().length === 0) {
 			return;
 		}
 		openCarets().forEach((caret) => {
@@ -197,7 +197,6 @@ function setCaretState(caret, open) {
 	if (caret.classList.contains(strings[0]) === open) {
 		return;
 	}
-	openCaretCount += open ? 1 : -1;
 	const subMenu = caret.parentNode.parentNode.querySelector('.sub-menu');
 	const applyClass = open ? addClass : removeClass;
 	applyClass(caret, strings[0]);
@@ -205,7 +204,7 @@ function setCaretState(caret, open) {
 		applyClass(subMenu, strings[0]);
 	}
 	caret.setAttribute('aria-expanded', open ? 'true' : 'false');
-	if (!open && openCaretCount === 0) {
+	if (!open && openCarets().length === 0) {
 		removeNavOverlay();
 	}
 }
