@@ -48,10 +48,10 @@ function render_components( $builder_name = '', $device = null ) {
 /**
  * Returns the current component.
  *
- * @param string $builder_name The builder id.
- * @param null   $component_id The component id.
+ * @param string      $builder_name The builder id.
+ * @param string|null $component_id The component id.
  *
- * @return false|Core\Components\Abstract_Component
+ * @return false|null|Core\Components\Abstract_Component
  */
 function current_component( $builder_name = '', $component_id = null ) {
 	$builder = get_builder( $builder_name );

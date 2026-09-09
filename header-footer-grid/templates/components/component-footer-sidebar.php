@@ -10,7 +10,14 @@
 
 namespace HFG;
 
-$_id = current_component()->get_id();
+$_component = current_component();
+
+// Bail when the current component cannot be resolved on the current builder.
+if ( ! $_component instanceof Core\Components\Abstract_Component ) {
+	return;
+}
+
+$_id = $_component->get_id();
 
 if ( is_active_sidebar( $_id ) ) {
 	?>
@@ -20,7 +27,7 @@ if ( is_active_sidebar( $_id ) ) {
 <?php } elseif ( current_user_can( 'edit_theme_options' ) ) { ?>
 	<div class="widget-area">
 		<section id="placeholder-widget-text" class="widget widget_text">
-			<h4 class="widget-title"><?php echo esc_html( current_component()->get_property( 'label' ) ); ?></h4>
+			<h4 class="widget-title"><?php echo esc_html( $_component->get_property( 'label' ) ); ?></h4>
 			<div class="textwidget">
 				<?php
 				echo sprintf(
@@ -34,7 +41,7 @@ if ( is_active_sidebar( $_id ) ) {
 							esc_url( admin_url( 'customize.php?autofocus[section]=sidebar-widgets-footer-' . $_id ) ),
 							/* translators: %1$s - &rarr; symbol %2$s - &rarr; symbol %3$s - &rarr; symbol */
 							sprintf( __( 'Appearance %1$s Customize %2$s Footer %3$s', 'neve' ), '&rarr;', '&rarr;', '&rarr;' ), //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-							esc_attr( current_component()->get_property( 'label' ) )
+							esc_attr( $_component->get_property( 'label' ) )
 						)
 					)
 				);

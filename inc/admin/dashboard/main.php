@@ -22,13 +22,13 @@ class Main {
 	/**
 	 * Changelog Handler.
 	 *
-	 * @var Changelog_Handler
+	 * @var Changelog_Handler|null
 	 */
 	private $cl_handler;
 	/**
 	 * Plugin Helper instance.
 	 *
-	 * @var Plugin_Helper
+	 * @var Plugin_Helper|null
 	 */
 	private $plugin_helper;
 	/**
@@ -42,8 +42,57 @@ class Main {
 	 * Main constructor.
 	 */
 	public function __construct() {
-		$this->plugin_helper = new Plugin_Helper();
-		$this->cl_handler    = new Changelog_Handler();
+		if ( class_exists( Plugin_Helper::class ) ) {
+			$this->plugin_helper = new Plugin_Helper();
+		}
+
+		if ( class_exists( Changelog_Handler::class ) ) {
+			$this->cl_handler = new Changelog_Handler();
+		}
+	}
+
+	/**
+	 * Read a changelog through the handler, if there is one.
+	 *
+	 * @param string $path Absolute path to the changelog file.
+	 *
+	 * @return mixed[]
+	 */
+	private function get_changelog( $path ) {
+		if ( null === $this->cl_handler ) {
+			return array();
+		}
+
+		return $this->cl_handler->get_changelog( $path );
+	}
+
+	/**
+	 * Plugin action data for a recommended plugin card.
+	 *
+	 * @param string $slug Plugin slug.
+	 *
+	 * @return array<string, mixed>
+	 */
+	private function get_plugin_actions( $slug ) {
+		if ( null === $this->plugin_helper ) {
+			return [
+				'cta'        => 'install',
+				'path'       => '',
+				'activate'   => '',
+				'deactivate' => '',
+				'network'    => false,
+				'version'    => '0.0.0',
+			];
+		}
+
+		return [
+			'cta'        => $this->plugin_helper->get_plugin_state( $slug ),
+			'path'       => $this->plugin_helper->get_plugin_path( $slug ),
+			'activate'   => $this->plugin_helper->get_plugin_action_link( $slug ),
+			'deactivate' => $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' ),
+			'network'    => $this->plugin_helper->get_is_network_wide( $slug ),
+			'version'    => $this->plugin_helper->get_plugin_version( $slug, '0.0.0' ),
+		];
 	}
 
 	/**
@@ -350,7 +399,7 @@ class Main {
 					'<a class="text-blue-600 hover:text-blue-700 hover:underline inline-flex gap-1 items-center" target="_blank" rel="external noreferrer noopener" href="' . tsdk_translate_link( 'https://store.themeisle.com/', 'query' ) . '">Themeisle<span class="sr-only">' . esc_html__( '(opens in a new tab)', 'neve' ) . '</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>'
 				),
 			],
-			'changelog'               => $this->cl_handler->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
+			'changelog'               => $this->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
 			'onboarding'              => [],
 			'hasFileSystem'           => WP_Filesystem(),
 			'hidePluginsTab'          => apply_filters( 'neve_hide_useful_plugins', ! array_key_exists( 'useful_plugins', $old_about_config ) ),
@@ -369,7 +418,7 @@ class Main {
 			'orbitFox'                => array(
 				'isInstalled'   => file_exists( WP_PLUGIN_DIR . '/themeisle-companion/themeisle-companion.php' ),
 				'isActive'      => class_exists( 'Orbit_Fox' ),
-				'activationUrl' => $this->plugin_helper->get_plugin_action_link( 'themeisle-companion' ),
+				'activationUrl' => null === $this->plugin_helper ? '' : $this->plugin_helper->get_plugin_action_link( 'themeisle-companion' ),
 				'data'          => class_exists( 'Orbit_Fox' ) ? get_option( 'obfx_data' ) : array(),
 			),
 		];
@@ -378,7 +427,7 @@ class Main {
 			$installed_plugins                     = get_plugins();
 			$is_otter_installed                    = array_key_exists( 'otter-pro/otter-pro.php', $installed_plugins );
 			$is_sparks_installed                   = array_key_exists( 'sparks-for-woocommerce/sparks-for-woocommerce.php', $installed_plugins );
-			$data['changelogPro']                  = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
+			$data['changelogPro']                  = $this->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
 			$data['isOtterProInstalled']           = $is_otter_installed;
 			$data['otterProInstall']               = $is_otter_installed ? esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=otter-pro%2Fotter-pro.php&plugin_status=all&paged=1&s' ), 'activate-plugin_otter-pro/otter-pro.php' ) ) : esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=install_otter_pro' ), 'install_otter_pro' ) );
 			$data['sparksInstallActivateEndpoint'] = $is_sparks_installed ? esc_url( wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=sparks-for-woocommerce%2Fsparks-for-woocommerce.php&plugin_status=all&paged=1&s' ), 'activate-plugin_sparks-for-woocommerce/sparks-for-woocommerce.php' ) ) : esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=install_sparks' ), 'install_sparks' ) );
@@ -907,19 +956,7 @@ class Main {
 				continue;
 			}
 
-			$action = $this->plugin_helper->get_plugin_state( $slug );
-
-			$plugins[ $slug ] = array_merge(
-				[
-					'cta'        => $action,
-					'path'       => $this->plugin_helper->get_plugin_path( $slug ),
-					'activate'   => $this->plugin_helper->get_plugin_action_link( $slug ),
-					'deactivate' => $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' ),
-					'network'    => $this->plugin_helper->get_is_network_wide( $slug ),
-					'version'    => $this->plugin_helper->get_plugin_version( $slug, '0.0.0' ),
-				],
-				$args
-			);
+			$plugins[ $slug ] = array_merge( $this->get_plugin_actions( $slug ), $args );
 		}
 
 		return $plugins;

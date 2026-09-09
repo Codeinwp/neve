@@ -127,6 +127,9 @@ function neve_migrate_blog_columns() {
  * @return void
  */
 function neve_run_migration_flags() {
+	if ( ! class_exists( Migration_Flags::class ) ) {
+		return;
+	}
 	$migrator = new Migration_Flags( NEVE_VERSION );
 	$migrator->run();
 }

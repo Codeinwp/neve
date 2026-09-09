@@ -124,6 +124,10 @@ class Mods_Migrator {
 	 * @return void
 	 */
 	private function attempt_builders_migration() {
+		if ( ! class_exists( Builder_Migrator::class ) ) {
+			return;
+		}
+
 		$hfg_migrator = new Builder_Migrator();
 
 		foreach ( $this->builder_map as $builder ) {

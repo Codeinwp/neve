@@ -1,12 +1,9 @@
-
 version: 2
 updates:
-
-  # Maintain dependencies for Composer
-  - package-ecosystem: "composer"
-    directory: "/"
-    target-branch: "development"
-    schedule:
-      interval: "weekly"
-    allow:
-      - dependency-name: "codeinwp/themeisle-sdk"
+- package-ecosystem: composer
+  directory: "/"
+  target-branch: development
+  schedule:
+    interval: daily
+  allow:
+  - dependency-name: codeinwp/themeisle-sdk

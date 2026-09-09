@@ -149,6 +149,10 @@ class Core_Loader {
 	private function load_modules() {
 		do_action( 'neve_before_modules_load' );
 
+		if ( ! class_exists( Factory::class ) ) {
+			return;
+		}
+
 		$factory = new Factory( $this->features );
 		$factory->load_modules();
 	}
@@ -164,10 +168,9 @@ class Core_Loader {
 		if ( is_customize_preview() ) {
 			Mods::$no_cache = true;
 		}
-		$admin = new Admin();
-		add_action( 'init', array( $admin, 'load_site_import' ), 20 );
-		add_action( 'admin_enqueue_scripts', array( $admin, 'register_react_components' ), 0 );
-		add_action( 'ti-about-after-sidebar-content', array( $admin, 'render_logger_toggle' ) );
+		if ( class_exists( Admin::class ) ) {
+			$this->load_admin_hooks();
+		}
 
 		$key_lite = str_replace( '-', '_', basename( get_template_directory() ) );
 		add_filter(
@@ -176,6 +179,34 @@ class Core_Loader {
 				return [ 'mods' => array_filter( get_theme_mods() ) ];
 			}
 		);
+
+		if ( class_exists( Front_End::class ) ) {
+			$this->load_front_end_hooks();
+		}
+	}
+
+	/**
+	 * Load admin hooks.
+	 *
+	 * @access   private
+	 *
+	 * @return void
+	 */
+	private function load_admin_hooks() {
+		$admin = new Admin();
+		add_action( 'init', array( $admin, 'load_site_import' ), 20 );
+		add_action( 'admin_enqueue_scripts', array( $admin, 'register_react_components' ), 0 );
+		add_action( 'ti-about-after-sidebar-content', array( $admin, 'render_logger_toggle' ) );
+	}
+
+	/**
+	 * Load front end hooks.
+	 *
+	 * @access   private
+	 *
+	 * @return void
+	 */
+	private function load_front_end_hooks() {
 		$front_end = new Front_End();
 		add_action( 'wp_enqueue_scripts', array( $front_end, 'enqueue_scripts' ) );
 		add_action( 'after_setup_theme', array( $front_end, 'setup_theme' ) );

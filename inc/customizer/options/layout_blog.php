@@ -816,7 +816,15 @@ class Layout_Blog extends Base_Customizer {
 			return false;
 		}
 
-		$columns = json_decode( get_theme_mod( 'neve_grid_layout', $this->grid_columns_default() ), true );
+		$columns = get_theme_mod( 'neve_grid_layout', $this->grid_columns_default() );
+		if ( is_string( $columns ) ) {
+			$columns = json_decode( $columns, true );
+		}
+
+		if ( ! is_array( $columns ) ) {
+			return false;
+		}
+
 		$columns = array_filter(
 			array_values( $columns ),
 			function ( $value ) {

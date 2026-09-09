@@ -11,7 +11,7 @@ test.describe('Menu item alignment', function () {
 			.click();
 
 		const firstLevelItem = page
-			.locator('#nv-primary-navigation-sidebar')
+			.locator('#nv-primary-navigation-mobile-sidebar')
 			.getByRole('link', {
 				name: 'Page Markup And Formatting',
 			});
@@ -23,7 +23,7 @@ test.describe('Menu item alignment', function () {
 		await page.getByRole('button', { name: 'Toggle Level 2' }).click();
 
 		const secondLevelItem = page
-			.locator('#nv-primary-navigation-sidebar')
+			.locator('#nv-primary-navigation-mobile-sidebar')
 			.getByRole('link', {
 				name: 'Level 3b',
 			});

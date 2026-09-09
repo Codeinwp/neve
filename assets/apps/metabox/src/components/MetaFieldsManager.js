@@ -126,17 +126,39 @@ class MetaFieldsManager extends Component {
 		});
 	}
 
-	addCSSToHead(css, styleID = 'neve-meta-editor-style') {
-		const head = document.head;
-		const hasStyle = document.getElementById(styleID);
-		if (hasStyle) {
-			hasStyle.innerHTML = css;
-			return false;
+	/**
+	 * Documents the editor styles need to be added to.
+	 *
+	 * Since the block editor renders inside an iframe, styles added to the
+	 * top document alone don't reach the content. Older setups without the
+	 * iframe keep working through the top document.
+	 *
+	 * @return {Document[]} Target documents.
+	 */
+	getStyleTargets() {
+		const targets = [document];
+		const canvas = document.querySelector('iframe[name="editor-canvas"]');
+		const canvasDocument = canvas && canvas.contentDocument;
+
+		if (canvasDocument && canvasDocument.head) {
+			targets.push(canvasDocument);
 		}
-		const style = document.createElement('style');
-		style.setAttribute('id', styleID);
-		style.innerHTML = css;
-		head.appendChild(style);
+
+		return targets;
+	}
+
+	addCSSToHead(css, styleID = 'neve-meta-editor-style') {
+		this.getStyleTargets().forEach((doc) => {
+			const hasStyle = doc.getElementById(styleID);
+			if (hasStyle) {
+				hasStyle.innerHTML = css;
+				return;
+			}
+			const style = doc.createElement('style');
+			style.setAttribute('id', styleID);
+			style.innerHTML = css;
+			doc.head.appendChild(style);
+		});
 	}
 
 	updateTitleVisibility() {

@@ -1,4 +1,4 @@
-/* global NeveProperties menuCalcEvent CustomEvent */
+/* global menuCalcEvent CustomEvent */
 /* jshint esversion: 6 */
 import {
 	toggleClass,
@@ -29,39 +29,49 @@ export const initNavigation = () => {
  * Reposition drop downs in case they go off screen.
  */
 export const repositionDropdowns = () => {
-	const { isRTL } = NeveProperties;
 	const dropDowns = document.querySelectorAll(
 		'.sub-menu, .minimal .nv-nav-search'
 	);
 
-	if (dropDowns.length === 0) return;
+	if (!dropDowns.length) return;
 
 	const windowWidth = window.innerWidth;
 
+	// How far a dropdown runs past the viewport: negative past the left edge,
+	// positive past the right edge, zero when it fits.
+	const getOverflow = (bounding) => {
+		if (bounding.left < 0) {
+			return bounding.left;
+		}
+
+		return bounding.right > windowWidth ? bounding.right - windowWidth : 0;
+	};
+
 	dropDowns.forEach((dropDown) => {
-		let bounding = dropDown.getBoundingClientRect(),
-			rightDist = bounding.left;
+		const style = dropDown.style;
 
-		if (rightDist < 0) {
-			dropDown.style.right = isRTL ? '-100%' : 'auto';
-			dropDown.style.left = isRTL ? 'auto' : 0;
+		// Drop what an earlier pass applied, so the dropdown is measured where
+		// the stylesheet puts it and stale offsets do not pile up.
+		style.right = style.left = style.transform = '';
+
+		let overflow = getOverflow(dropDown.getBoundingClientRect());
+
+		if (!overflow) {
+			return;
 		}
 
-		if (rightDist + bounding.width >= windowWidth) {
-			dropDown.style.right = isRTL ? 0 : '100%';
-			dropDown.style.left = 'auto';
-		}
+		const edge = dropDown.matches('.sub-menu .sub-menu') ? '100%' : '0px';
 
-		// Recalculate bounding after we've made adjustments.
-		bounding = dropDown.getBoundingClientRect();
-		rightDist = bounding.left;
+		style.right = overflow < 0 ? 'auto' : edge;
+		style.left = overflow < 0 ? edge : 'auto';
 
-		if (rightDist < 0 || rightDist + bounding.width >= windowWidth) {
-			// Calculate how much should we offset the dropdown to make it fit.
-			dropDown.style.transform =
+		// Wider than the space on the side it opens towards, offset it to fit.
+		overflow = getOverflow(dropDown.getBoundingClientRect());
+
+		if (overflow) {
+			style.transform =
 				'translateX(' +
-				(isRTL ? '-' : '') +
-				(Math.abs(rightDist) + 20) +
+				(overflow < 0 ? 20 - overflow : -overflow - 20) +
 				'px)';
 		}
 	});

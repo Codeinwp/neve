@@ -4,7 +4,7 @@ describe( 'Starter Sites VR - {{site}}', () => {
     	let frontpage = "{{site}}"
 	    cy.visit(frontpage );
 		cy.captureDocument();
-        cy.get( '#nv-primary-navigation-main' ).then( $headerMenu => {
+        cy.get( '[id^="nv-primary-navigation"]' ).then( $headerMenu => {
             [ ...$headerMenu.find( '.menu-item a' ) ].forEach( $url => {
             	let url = $url.href;
             	if(url.includes("#")){
@@ -13,8 +13,11 @@ describe( 'Starter Sites VR - {{site}}', () => {
             	if(frontpage.replace(/\/*$/, "") === url.replace(/\/*$/, "")){
             		return;
 	            }
+            	if(pages.includes(url)){
+            		return;
+	            }
 
-                pages.push( $url.href );
+                pages.push( url );
             } );
         } );
     } );
