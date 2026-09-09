@@ -158,6 +158,22 @@ class TestSanitization extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Logo data can already be decoded when it reaches the sanitizer.
+	 */
+	public function test_logo_json_sanitizer_accepts_array_input() {
+		$input = array(
+			'light' => 12,
+			'dark'  => 34,
+			'same'  => false,
+		);
+
+		$this->assertSame(
+			wp_json_encode( $input ),
+			\HFG\Core\Components\Logo::sanitize_logo_json( $input )
+		);
+	}
+
+	/**
 	 * Test that only well formed CSS variable expressions are treated as CSS variables.
 	 */
 	public function test_is_css_var() {
