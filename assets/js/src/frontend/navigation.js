@@ -1,15 +1,26 @@
-/* global menuCalcEvent CustomEvent */
+/* global menuCalcEvent getComputedStyle */
 /* jshint esversion: 6 */
 import {
 	toggleClass,
 	removeClass,
 	addClass,
 	addEvent,
+	qs,
+	qsa,
+	emit,
+	on,
+	has,
+	prevent,
+	rect,
 	NV_FOCUS_TRAP_START,
 	NV_FOCUS_TRAP_END,
 } from '../utils.js';
 
 const strings = ['dropdown-open', 'active', 'nav-clickaway-overlay'];
+
+// Mirrors the $laptop (960px) breakpoint where the hover dropdown applies.
+const isMobile = () => window.matchMedia('(max-width: 959px)').matches;
+
 /**
  * Initialize nav logic.
  */
@@ -20,7 +31,7 @@ export const initNavigation = () => {
 	handleSearch();
 	handleMiniCartPosition();
 	handleMiniCartMobileToggle();
-	window.HFG.initSearch = function () {
+	window.HFG.initSearch = () => {
 		handleSearch();
 		handleMobileDropdowns();
 	};
@@ -29,9 +40,7 @@ export const initNavigation = () => {
  * Reposition drop downs in case they go off screen.
  */
 export const repositionDropdowns = () => {
-	const dropDowns = document.querySelectorAll(
-		'.sub-menu, .minimal .nv-nav-search'
-	);
+	const dropDowns = qsa('.sub-menu, .minimal .nv-nav-search');
 
 	if (!dropDowns.length) return;
 
@@ -54,7 +63,7 @@ export const repositionDropdowns = () => {
 		// the stylesheet puts it and stale offsets do not pile up.
 		style.right = style.left = style.transform = '';
 
-		let overflow = getOverflow(dropDown.getBoundingClientRect());
+		let overflow = getOverflow(rect(dropDown));
 
 		if (!overflow) {
 			return;
@@ -66,7 +75,7 @@ export const repositionDropdowns = () => {
 		style.left = overflow < 0 ? edge : 'auto';
 
 		// Wider than the space on the side it opens towards, offset it to fit.
-		overflow = getOverflow(dropDown.getBoundingClientRect());
+		overflow = getOverflow(rect(dropDown));
 
 		if (overflow) {
 			style.transform =
@@ -87,7 +96,7 @@ export const repositionDropdowns = () => {
  * we close the sidebar if is open.
  */
 function handleScrollLinks() {
-	document.addEventListener('click', function (event) {
+	on(document, 'click', (event) => {
 		if (event.target.hash && event.target.hash.includes('#')) {
 			window.HFG.toggleMenuSidebar(false);
 		}
@@ -102,48 +111,45 @@ function handleScrollLinks() {
  * open state (`dropdown-open`), mirrored to aria-expanded.
  */
 function handleMobileDropdowns() {
+	const body = document.body;
 	// Per-element guard: re-inits (e.g. customizer partial refreshes) must
 	// bind new carets without stacking listeners on surviving ones.
-	document
-		.querySelectorAll('.caret-wrap:not([data-nv-bound])')
-		.forEach((caret) => {
-			caret.dataset.nvBound = '1';
-			caret.addEventListener('click', (e) => toggleCaret(e, caret));
-		});
+	qsa('.caret-wrap:not([data-nv-bound])').forEach((caret) => {
+		caret.dataset.nvBound = '1';
+		on(caret, 'click', (e) => toggleCaret(e, caret));
+	});
 	// Document-level guard is on <body> so a second bundle (customizer
 	// preview) cannot double-register the handlers below. The handlers read
 	// open state from the DOM, never from module state, so they stay
 	// correct for carets a later bundle instance bound.
-	if (document.body.dataset.nvCaretKeys) {
+	if (body.dataset.nvCaretKeys) {
 		return;
 	}
-	document.body.dataset.nvCaretKeys = '1';
+	body.dataset.nvCaretKeys = '1';
 	// WCAG 1.4.13: submenus revealed by pure CSS :hover must also be
 	// dismissable without moving the pointer. Escape sets a body class
 	// the stylesheet uses to hide :hover submenus; the pointer leaving
 	// the hovered item re-arms hover for the next one. Registered before
 	// the caret handler so its stopImmediatePropagation cannot starve
 	// this one when a submenu is keyboard-open and hovered at once.
-	document.addEventListener('keydown', (event) => {
+	on(document, 'keydown', (event) => {
 		if (event.key !== 'Escape') {
 			return;
 		}
-		const hovered = document.querySelector('.menu-item-has-children:hover');
+		const hovered = qs('.menu-item-has-children:hover');
 		if (!hovered) {
 			return;
 		}
-		document.body.classList.add('nv-hover-off');
-		hovered.addEventListener(
-			'mouseleave',
-			() => document.body.classList.remove('nv-hover-off'),
-			{ once: true }
-		);
+		addClass(body, 'nv-hover-off');
+		on(hovered, 'mouseleave', () => removeClass(body, 'nv-hover-off'), {
+			once: true,
+		});
 	});
 	// Escape closes the open submenu and returns focus to its toggle.
 	// stopImmediatePropagation keeps the sidebar focus trap (also a
 	// document keydown listener, registered later) from closing the whole
 	// menu on the same press; the next Escape reaches it.
-	document.addEventListener('keydown', (event) => {
+	on(document, 'keydown', (event) => {
 		if (event.key !== 'Escape' || openCarets().length === 0) {
 			return;
 		}
@@ -153,7 +159,7 @@ function handleMobileDropdowns() {
 		if (!openCaret) {
 			return;
 		}
-		event.preventDefault();
+		prevent(event);
 		event.stopImmediatePropagation();
 		setCaretState(openCaret, false);
 		openCaret.focus();
@@ -161,13 +167,13 @@ function handleMobileDropdowns() {
 	// Close a desktop submenu when keyboard focus leaves its menu item.
 	// Sidebar toggles (.navbar-toggle) are exempt to keep the sidebar's
 	// tap-to-toggle behavior and the neve_first_level_expanded default.
-	document.addEventListener('focusout', (event) => {
+	on(document, 'focusout', (event) => {
 		if (openCarets().length === 0) {
 			return;
 		}
 		openCarets().forEach((caret) => {
 			if (
-				!caret.classList.contains('navbar-toggle') &&
+				!has(caret, 'navbar-toggle') &&
 				!caret.closest('li').contains(event.relatedTarget)
 			) {
 				setCaretState(caret, false);
@@ -177,33 +183,30 @@ function handleMobileDropdowns() {
 }
 
 function openCarets() {
-	return [...document.querySelectorAll(`.caret-wrap.${strings[0]}`)];
+	return [...qsa('.caret-wrap.' + strings[0])];
 }
 
 function toggleCaret(e, caret) {
-	e.preventDefault();
+	prevent(e);
 	e.stopPropagation();
-	const open = !caret.classList.contains(strings[0]);
+	const open = !has(caret, strings[0]);
 	setCaretState(caret, open);
 	if (open) {
-		createNavOverlay(
-			document.querySelectorAll(`.${strings[0]}`),
-			strings[0]
-		);
+		createNavOverlay(qsa('.' + strings[0]), strings[0]);
 	}
 }
 
 function setCaretState(caret, open) {
-	if (caret.classList.contains(strings[0]) === open) {
+	if (has(caret, strings[0]) === open) {
 		return;
 	}
-	const subMenu = caret.parentNode.parentNode.querySelector('.sub-menu');
+	const subMenu = qs('.sub-menu', caret.parentNode.parentNode);
 	const applyClass = open ? addClass : removeClass;
 	applyClass(caret, strings[0]);
 	if (subMenu !== null) {
 		applyClass(subMenu, strings[0]);
 	}
-	caret.setAttribute('aria-expanded', open ? 'true' : 'false');
+	caret.setAttribute('aria-expanded', String(open));
 	if (!open && openCarets().length === 0) {
 		removeNavOverlay();
 	}
@@ -213,9 +216,9 @@ function setCaretState(caret, open) {
  * Remove the click-away overlay if present.
  */
 function removeNavOverlay() {
-	const overlay = document.querySelector(`.${strings[2]}`);
+	const overlay = qs('.' + strings[2]);
 	if (overlay !== null) {
-		overlay.parentNode.removeChild(overlay);
+		overlay.remove();
 	}
 }
 
@@ -230,16 +233,17 @@ const vis = (el) => {
 		return true;
 	}
 
-	if (window.getComputedStyle(el, null).display === 'none') {
+	if (getComputedStyle(el).display === 'none') {
 		return false;
 	}
 	return vis(el.parentNode);
 };
 
-function getKeyboardFocusableElements(element = document) {
+function getKeyboardFocusableElements(element) {
 	return [
-		...element.querySelectorAll(
-			'a[href], button, input, textarea, select, details,[tabindex]:not([tabindex="-1"])'
+		...qsa(
+			'a[href],button,input,textarea,select,details,[tabindex]:not([tabindex="-1"])',
+			element
 		),
 	].filter(
 		(el) =>
@@ -258,18 +262,18 @@ function getKeyboardFocusableElements(element = document) {
  * @property {NodeList} elements      - The element that receives focus when we trap is released
  */
 let focusTrapDetails = {};
-document.addEventListener(NV_FOCUS_TRAP_START, function (event) {
+on(document, NV_FOCUS_TRAP_START, (event) => {
 	focusTrapDetails = event.detail;
 	setTimeout(
-		function (ft) {
-			ft.container.querySelector(ft.firstFocus).focus();
+		(ft) => {
+			qs(ft.firstFocus, ft.container).focus();
 		},
 		100,
 		focusTrapDetails
 	);
-	document.addEventListener('keydown', startFocusTrap);
+	on(document, 'keydown', startFocusTrap);
 });
-document.addEventListener(NV_FOCUS_TRAP_END, function () {
+on(document, NV_FOCUS_TRAP_END, () => {
 	focusTrapDetails = {};
 	document.removeEventListener('keydown', startFocusTrap);
 });
@@ -283,7 +287,7 @@ function startFocusTrap(event) {
 	const lastEl = elements[elements.length - 1];
 	const firstEl = elements[0];
 	if (escKey) {
-		event.preventDefault();
+		prevent(event);
 		focusTrapDetails.backFocus.focus();
 		// Containers other than the menu sidebar (header search) pass
 		// their own close routine; closing the sidebar would leave them
@@ -293,18 +297,18 @@ function startFocusTrap(event) {
 		} else {
 			window.HFG.toggleMenuSidebar(false);
 		}
-		document.dispatchEvent(new CustomEvent(NV_FOCUS_TRAP_END));
+		emit(NV_FOCUS_TRAP_END);
 	}
 	if (!shiftKey && tabKey && lastEl === activeEl) {
-		event.preventDefault();
+		prevent(event);
 		firstEl.focus();
 	}
 	if (shiftKey && tabKey && firstEl === activeEl) {
-		event.preventDefault();
+		prevent(event);
 		lastEl.focus();
 	}
 	if (tabKey && firstEl === lastEl) {
-		event.preventDefault();
+		prevent(event);
 	}
 }
 
@@ -312,57 +316,49 @@ function startFocusTrap(event) {
  * Handle searches.
  */
 function handleSearch() {
-	const doc = window.document;
-	const navSearch = doc.querySelectorAll('.nv-nav-search') || [],
-		navItem = doc.querySelectorAll('.menu-item-nav-search') || [],
-		close = doc.querySelectorAll('.close-responsive-search') || [];
+	const navSearch = qsa('.nv-nav-search'),
+		navItem = qsa('.menu-item-nav-search'),
+		close = qsa('.close-responsive-search');
 	syncSearchAria();
 	const closeSearch = () => {
 		removeClass(navItem, strings[1]);
 		syncSearchAria();
 		removeNavOverlay();
-		doc.dispatchEvent(new CustomEvent(NV_FOCUS_TRAP_END));
+		emit(NV_FOCUS_TRAP_END);
 	};
 	addEvent(navItem, 'click', (e, searchItem) => {
-		e.preventDefault();
+		prevent(e);
 		e.stopPropagation();
 		toggleClass(searchItem, strings[1]);
 		syncSearchAria();
-		if (!searchItem.classList.contains(strings[1])) {
+		if (!has(searchItem, strings[1])) {
 			// Second activation of the trigger closes the panel: end the
 			// trap too, or a stale trap keeps eating Tab and Escape.
 			removeNavOverlay();
-			doc.dispatchEvent(new CustomEvent(NV_FOCUS_TRAP_END));
+			emit(NV_FOCUS_TRAP_END);
 			return;
 		}
 		createNavOverlay(searchItem, strings[1]);
-		doc.dispatchEvent(
-			new CustomEvent(NV_FOCUS_TRAP_START, {
-				detail: {
-					container: searchItem.querySelector('.nv-nav-search'),
-					close: '.close-responsive-search',
-					firstFocus: '.search-field',
-					// Escape focuses backFocus: must be the trigger
-					// button — the wrapper div is not focusable and
-					// would drop focus to <body>.
-					backFocus:
-						searchItem.querySelector(
-							'.nv-search,.nv-nav-search-icon'
-						) || searchItem,
-					onClose: closeSearch,
-				},
-			})
-		);
+		emit(NV_FOCUS_TRAP_START, {
+			container: qs('.nv-nav-search', searchItem),
+			close: '.close-responsive-search',
+			firstFocus: '.search-field',
+			// Escape focuses backFocus: must be the trigger
+			// button — the wrapper div is not focusable and
+			// would drop focus to <body>.
+			backFocus:
+				qs('.nv-search,.nv-nav-search-icon', searchItem) || searchItem,
+			onClose: closeSearch,
+		});
 	});
 	addEvent(navSearch, 'click', (e) => {
 		e.stopPropagation();
 	});
 	addEvent(close, 'click', (e) => {
-		e.preventDefault();
+		prevent(e);
 		const item = e.target.closest('.menu-item-nav-search');
 		closeSearch();
-		const trigger =
-			item && item.querySelector('.nv-search,.nv-nav-search-icon');
+		const trigger = item && qs('.nv-search,.nv-nav-search-icon', item);
 		if (trigger) {
 			trigger.focus();
 		}
@@ -373,12 +369,12 @@ function handleSearch() {
  * Mirror the search dropdown open state onto its trigger button.
  */
 function syncSearchAria() {
-	document.querySelectorAll('.menu-item-nav-search').forEach((item) => {
-		const trigger = item.querySelector('.nv-search,.nv-nav-search-icon');
+	qsa('.menu-item-nav-search').forEach((item) => {
+		const trigger = qs('.nv-search,.nv-nav-search-icon', item);
 		if (trigger) {
 			trigger.setAttribute(
 				'aria-expanded',
-				String(item.classList.contains(strings[1]))
+				String(has(item, strings[1]))
 			);
 		}
 	});
@@ -388,46 +384,44 @@ function syncSearchAria() {
  * Handle the mini cart position in nav.
  */
 function handleMiniCartPosition() {
-	const items = document.querySelectorAll('.header--row .menu-item-nav-cart');
+	const items = qsa('.header--row .menu-item-nav-cart');
 	if (items.length === 0) {
 		return;
 	}
 
-	const isMobile = window.matchMedia('(max-width: 959px)').matches;
+	const mobile = isMobile();
 	const sideSpacing = 2 * 16;
 
 	items.forEach((item) => {
-		const miniCart = item.querySelector(
-			'.nv-nav-cart:not(.cart-off-canvas)'
-		);
+		const miniCart = qs('.nv-nav-cart:not(.cart-off-canvas)', item);
 
 		if (miniCart === null) {
 			return;
 		}
 
-		miniCart.style.left = '';
-		miniCart.style.right = '';
+		const style = miniCart.style;
+		style.left = '';
+		style.right = '';
 
-		if (isMobile) {
+		if (mobile) {
 			const cartWidth = Math.min(360, window.innerWidth - sideSpacing);
-			const itemOffset = item.getBoundingClientRect().left;
+			const itemOffset = rect(item).left;
 
-			miniCart.style.width = `${cartWidth}px`;
-			miniCart.style.maxWidth = `calc(100vw - ${sideSpacing}px)`;
-			miniCart.style.left = `${
-				(window.innerWidth - cartWidth) / 2 - itemOffset
-			}px`;
-			miniCart.style.right = 'auto';
+			style.width = cartWidth + 'px';
+			style.maxWidth = 'calc(100vw - ' + sideSpacing + 'px)';
+			style.left =
+				(window.innerWidth - cartWidth) / 2 - itemOffset + 'px';
+			style.right = 'auto';
 			return;
 		}
 
-		miniCart.style.width = '';
-		miniCart.style.maxWidth = '';
-		miniCart.style.left = item.getBoundingClientRect().left < 350 ? 0 : '';
+		style.width = '';
+		style.maxWidth = '';
+		style.left = rect(item).left < 350 ? 0 : '';
 	});
 }
 
-window.addEventListener('resize', handleMiniCartPosition);
+on(window, 'resize', handleMiniCartPosition);
 
 /**
  * Toggle the dropdown mini cart on tap for mobile.
@@ -440,39 +434,33 @@ window.addEventListener('resize', handleMiniCartPosition);
  * keep shopping. It closes on a second tap or when tapping outside of it.
  */
 function handleMiniCartMobileToggle() {
-	const carts = document.querySelectorAll('.responsive-nav-cart.dropdown');
+	const carts = qsa('.responsive-nav-cart.dropdown');
 	if (carts.length === 0) {
 		return;
 	}
 
-	// Mirrors the $laptop (960px) breakpoint where the hover dropdown applies.
-	const isMobile = () => window.matchMedia('(max-width: 959px)').matches;
-
 	carts.forEach((cart) => {
-		const openButton = cart.querySelector('.cart-icon-wrapper');
+		const openButton = qs('.cart-icon-wrapper', cart);
 		if (openButton === null) {
 			return;
 		}
-		openButton.addEventListener('click', function (e) {
-			if (!isMobile() || cart.classList.contains('cart-is-empty')) {
+		on(openButton, 'click', (e) => {
+			if (!isMobile() || has(cart, 'cart-is-empty')) {
 				return;
 			}
-			e.preventDefault();
+			prevent(e);
 			cart.classList.toggle('cart-dropdown-open');
 		});
 	});
 
 	// Close an open dropdown when tapping outside of it.
-	document.addEventListener('click', function (e) {
+	on(document, 'click', (e) => {
 		if (!isMobile()) {
 			return;
 		}
 		carts.forEach((cart) => {
-			if (
-				cart.classList.contains('cart-dropdown-open') &&
-				!cart.contains(e.target)
-			) {
-				cart.classList.remove('cart-dropdown-open');
+			if (has(cart, 'cart-dropdown-open') && !cart.contains(e.target)) {
+				removeClass(cart, 'cart-dropdown-open');
 			}
 		});
 	});
@@ -485,17 +473,17 @@ function handleMiniCartMobileToggle() {
  * @param {string} classToRemove
  */
 function createNavOverlay(item, classToRemove) {
-	let navClickaway = document.querySelector(`.${strings[2]}`);
+	let navClickaway = qs('.' + strings[2]);
 	if (navClickaway !== null) {
-		navClickaway.parentNode.removeChild(navClickaway);
+		navClickaway.remove();
 	}
 	navClickaway = document.createElement('div');
 	addClass(navClickaway, strings[2]);
 
-	const primaryNav = document.querySelector('header.header');
+	const primaryNav = qs('header.header');
 	primaryNav.parentNode.insertBefore(navClickaway, primaryNav);
 
-	navClickaway.addEventListener('click', () => {
+	on(navClickaway, 'click', () => {
 		// setCaretState owns class + aria + count for toggles; removeClass
 		// covers the non-caret users of the overlay (header search).
 		openCarets().forEach((caret) => setCaretState(caret, false));
@@ -504,6 +492,6 @@ function createNavOverlay(item, classToRemove) {
 		removeNavOverlay();
 		// The search panel may have an active focus trap; a no-op when
 		// none is running.
-		document.dispatchEvent(new CustomEvent(NV_FOCUS_TRAP_END));
+		emit(NV_FOCUS_TRAP_END);
 	});
 }
