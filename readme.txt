@@ -131,7 +131,7 @@ New Features
 - Integrated installation of Login Customizer, Cookie Notice, Duplicate Page, and Custom Fonts/Scripts modules
 - New Maintenance and Coming Soon custom layouts [PRO]
 - Admin Dashboard Customizer module to personalize the WordPress admin experience (Menu, Admin Bar, Custom Pages) [Agency]
-- Included premium WP Landing Kit wordpress plugin [Agency]
+- Included premium WP Landing Kit WordPress plugin [Agency]
 
 Enhancements
 

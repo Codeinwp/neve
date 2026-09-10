@@ -16,9 +16,12 @@ const runMenuARIATest = (deviceType = 'mobile') => {
 		).toHaveAttribute('aria-expanded', 'true');
 
 		// Close the menu from the overlay. Check ARIA attribute for expanded state is false when menu is closed.
+		// The overlay spans the viewport and the open sidebar covers its centre, so
+		// a real click there lands on a menu link and navigates away. Dispatching
+		// hits the same handler without depending on which side the sidebar is on.
 		await page
 			.locator('.header-menu-sidebar-overlay')
-			.click({ force: true });
+			.dispatchEvent('click');
 		await expect(
 			page.getByRole('button', { name: 'Navigation Menu' })
 		).toHaveAttribute('aria-expanded', 'false');

@@ -140,6 +140,6 @@ $desktop: map-get($gl-devices-list, desktop);
 	grid-template-columns: 1fr auto 1fr;
 }
 
-.hfg_header.site-header {
+.hfg_header.site-header:not(.neve-transparent-header) {
 	box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
 }

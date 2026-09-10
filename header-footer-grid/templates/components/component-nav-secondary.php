@@ -36,7 +36,7 @@ $menu_id = SecondNav::COMPONENT_ID . '-' . $device_class . '-' . current_row( He
 				'fallback_cb'    => '__return_false',
 				'before'         => '<div class="wrap">',
 				'after'          => '</div>',
-				'walker'         => '\Neve\Views\Secondary_Nav_Walker',
+				'walker'         => class_exists( '\Neve\Views\Secondary_Nav_Walker' ) ? '\Neve\Views\Secondary_Nav_Walker' : '',
 			)
 		);
 		?>

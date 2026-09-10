@@ -303,12 +303,18 @@ JS;
 	/**
 	 * Sanitize the logo json
 	 *
-	 * @param string $input A json data for the logo component.
+	 * @param mixed $input A json data for the logo component.
 	 *
 	 * @return string
 	 */
 	public static function sanitize_logo_json( $input ) {
-		$inputs = json_decode( $input, true );
+		if ( is_array( $input ) ) {
+			$inputs = $input;
+			$input  = wp_json_encode( $input );
+		} else {
+			$inputs = is_string( $input ) ? json_decode( $input, true ) : null;
+		}
+
 		if ( is_array( $inputs ) && ! empty( $inputs ) && ! empty( $input ) ) {
 			return $input;
 		}

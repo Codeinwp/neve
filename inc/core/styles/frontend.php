@@ -376,6 +376,9 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
 						$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
+						if ( ! isset( $width[ $device ] ) || ! is_numeric( $width[ $device ] ) || ( $device === Dynamic_Selector::DESKTOP && ! is_numeric( $value ) ) ) {
+							return '';
+						}
 						if ( $device === Dynamic_Selector::DESKTOP ) {
 							return sprintf( 'max-width:%spx', round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) );
 						}
@@ -463,6 +466,9 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
 					$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
+					if ( ! isset( $width[ $device ] ) || ! is_numeric( $width[ $device ] ) || ( $device === Dynamic_Selector::DESKTOP && ! is_numeric( $value ) ) ) {
+						return '';
+					}
 					$value = $device !== Dynamic_Selector::DESKTOP ? ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) : round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING );
 
 					return sprintf( 'max-width:%spx', $value );
@@ -530,6 +536,9 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
 					$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
+					if ( ! isset( $width[ $device ] ) || ! is_numeric( $width[ $device ] ) || ( $device === Dynamic_Selector::DESKTOP && ! is_numeric( $value ) ) ) {
+						return '';
+					}
 					$value = $device !== Dynamic_Selector::DESKTOP ? ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) : round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING );
 
 					return sprintf( 'max-width:%spx', $value );
