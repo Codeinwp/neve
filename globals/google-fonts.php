@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 22/06/26
+ * Updated on 07/09/26
  *
  * @package neve
  */
@@ -608,6 +608,7 @@ return array(
 	'Geo' => array( '400', '400italic',),
 	'Geologica' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Geom' => array( '300', '400', '500', '600', '700', '800', '900', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Geomini' => array( '200', '300', '400', '500', '600', '700', '800',),
 	'Georama' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Geostar' => array( '400',),
 	'Geostar Fill' => array( '400',),
@@ -678,6 +679,7 @@ return array(
 	'Hepta Slab' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Herr Von Muellerhoff' => array( '400',),
 	'Hi Melody' => array( '400',),
+	'Hibur Mono' => array( '400',),
 	'Hina Mincho' => array( '400',),
 	'Hind' => array( '300', '400', '500', '600', '700',),
 	'Hind Guntur' => array( '300', '400', '500', '600', '700',),
