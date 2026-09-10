@@ -22,7 +22,6 @@ class Patterns {
 		'dark-header-centered-content',
 		'two-columns-image-text',
 		'three-columns-images-text',
-		'three-columns-images-text',
 		'three-columns-images-texts-content',
 		'four-columns-team-members',
 		'two-columns-centered-content',

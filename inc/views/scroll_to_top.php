@@ -20,7 +20,7 @@ class Scroll_To_Top extends Base_View {
 	 * Add hooks for the front end.
 	 */
 	public function init() {
-		add_action( 'neve_after_primary', array( $this, 'render_button' ) );
+		add_action( 'neve_after_footer_hook', array( $this, 'render_button' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'neve_before_header_hook', array( $this, 'scroll_to_top_amp' ) );
 	}
@@ -147,7 +147,7 @@ class Scroll_To_Top extends Base_View {
 
 		$amp = neve_is_amp() ? 'on="tap:neve_body.scrollTo(duration=200)"' : '';
 
-		echo '<button tabindex="0"' . esc_attr( $amp ) . ' id="scroll-to-top" class="scroll-to-top ' . esc_attr( $extra_class ) . '" aria-label="' . esc_attr__( 'Scroll To Top', 'neve' ) . '">';
+		echo '<button' . esc_attr( $amp ) . ' id="scroll-to-top" class="scroll-to-top ' . esc_attr( $extra_class ) . '" aria-label="' . esc_attr__( 'Scroll To Top', 'neve' ) . '">';
 		
 		if ( $type === 'icon' ) {
 			echo $this->get_icon_svg( $icon ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

@@ -22,17 +22,6 @@
 		background-size: cover;
 		background-attachment: var(--bgattachment);
 
-		&::before {
-			display: block;
-			width: 100%;
-			top: 0;
-			bottom: 0;
-			position: absolute;
-			content: "";
-			background-color: var(--overlaycolor);
-			opacity: var(--bgoverlayopacity);
-		}
-
 		.header--row,
 		.header--row-inner {
 			background: none;
@@ -100,17 +89,22 @@ $desktop: map-get($gl-devices-list, desktop);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: var(--bgattachment);
+}
 
-	&::before {
-		display: block;
-		width: 100%;
-		top: 0;
-		bottom: 0;
-		position: absolute;
-		content: "";
-		background-color: var(--overlaycolor);
-		opacity: var(--bgoverlayopacity);
-	}
+// Shared background-overlay pseudo element for globally-styled headers,
+// builder row inners and the mobile sidebar background — one compiled
+// rule instead of identical duplicated bodies.
+#header-grid.global-styled:not(.neve-transparent-header)::before,
+[class*="row-inner"]::before,
+.header-menu-sidebar-bg::before {
+	display: block;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	content: "";
+	background-color: var(--overlaycolor);
+	opacity: var(--bgoverlayopacity);
 }
 
 [class*="row-inner"]:not(.footer--row-inner) {

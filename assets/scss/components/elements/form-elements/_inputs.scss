@@ -20,17 +20,14 @@ textarea {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	outline: none;
 	resize: vertical;
 }
 
 input:read-write,
 select,
-textarea,
-[tabindex="-1"] {
+textarea {
 
 	&:focus {
-		outline: 0;
 		box-shadow: 0 0 3px 0 var(--nv-secondary-accent);
 		--formfieldbordercolor: var(--nv-secondary-accent);
 	}
@@ -46,7 +43,9 @@ button {
 
 ::placeholder {
 	color: inherit;
-	opacity: 0.5;
+	// 0.7 of the default text color blends to ~5.6:1 on the site
+	// background (0.5 blended to 3.1:1, below the 4.5:1 text minimum).
+	opacity: 0.7;
 }
 
 select {

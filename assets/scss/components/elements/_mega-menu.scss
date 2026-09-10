@@ -76,15 +76,15 @@
 			}
 		}
 
-		.neve-mega-menu:hover,
-		.neve-mega-menu:focus {
-
-			> .sub-menu {
-				display: flex;
-				opacity: 1;
-				visibility: visible;
-				pointer-events: all;
-			}
+		// .dropdown-open is the JS/assistive-tech open state (the toggle
+		// button). No :focus-within here: it would keep the panel painted
+		// after Escape/toggle-close while focus is still on the toggle.
+		.neve-mega-menu:hover > .sub-menu,
+		.neve-mega-menu > .sub-menu.dropdown-open {
+			display: flex;
+			opacity: 1;
+			visibility: visible;
+			pointer-events: all;
 		}
 
 		.neve-mega-menu {
@@ -92,7 +92,10 @@
 		}
 
 		.neve-mega-menu .neve-mm-col > .sub-menu {
-			visibility: visible;
+			// inherit, not visible: the column lists must follow the
+			// panel's hidden state or their links stay tabbable (and
+			// focusable off-screen) while the mega menu is closed.
+			visibility: inherit;
 			position: relative;
 			left: initial;
 			right: initial;

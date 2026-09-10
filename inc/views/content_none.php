@@ -79,7 +79,7 @@ class Content_None extends Base_View {
 		esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'neve' );
 		echo '</p>';
 		echo '<div class="nv-seach-form-wrap">';
-		get_search_form();
+		get_search_form( array( 'visible_label' => true ) );
 		echo '</div>';
 	}
 }

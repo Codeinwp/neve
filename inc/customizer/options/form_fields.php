@@ -286,14 +286,14 @@ class Form_Fields extends Base_Customizer {
 				Config::MODS_FORM_FIELDS_BORDER_COLOR,
 				[
 					'sanitize_callback' => 'neve_sanitize_colors',
-					'default'           => '#dddddd',
+					'default'           => '#8c8c8c',
 					'transport'         => $this->selective_refresh,
 				],
 				[
 					'label'                 => esc_html__( 'Border Color', 'neve' ),
 					'section'               => $this->section_id,
 					'priority'              => 20,
-					'default'               => '#dddddd',
+					'default'               => '#8c8c8c',
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'cssVar'   => [

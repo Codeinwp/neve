@@ -43,7 +43,10 @@
 .style-full-height > ul > li >,
 .sm-style-full-height .sub-menu {
 
-	.wrap {
+	// .wrap and plain links share the exact same hover-overlay geometry —
+	// one nested list keeps the compiled CSS to a single rule.
+	.wrap,
+	a {
 		z-index: 1;
 
 		&::after {
@@ -78,18 +81,6 @@
 		}
 	}
 
-	a {
-		z-index: 1;
-
-		&::after {
-			top: 0;
-			bottom: 0;
-			left: calc(var(--spacing) / 2 * -1);
-			right: calc(var(--spacing) / 2 * -1);
-			height: 100%;
-			z-index: -1;
-		}
-	}
 }
 
 .sm-style-full-height .sub-menu a:hover {

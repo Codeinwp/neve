@@ -10,19 +10,19 @@ return array(
 	'content'    => '<!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {} -->
-<figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-12.jpg" alt="" /></figure>
+<figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-12.jpg" alt="Person taking notes at a desk" /></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {} -->
-<figure class="wp-block-image "><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-17.jpg" alt="" /></figure>
+<figure class="wp-block-image "><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-17.jpg" alt="Phone, earphones and a notebook titled Creative Mess" /></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center"} -->
-<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading {"level":3} -->
-<h3>The quick brown fox jumps over the lazy dog"</h3>
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading -->
+<h2>The quick brown fox jumps over the lazy dog</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->

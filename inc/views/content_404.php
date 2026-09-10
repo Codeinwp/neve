@@ -33,11 +33,12 @@ class Content_404 extends Base_View {
 		echo '<div class="nv-index-posts blog col">';
 
 		echo '<div class="col-12 nv-content-none-wrap">';
+		echo '<h1>' . esc_html__( 'Page not found', 'neve' ) . '</h1>';
 		echo '<p>';
 		esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'neve' );
 		echo '</p>';
 		echo '<div class="nv-seach-form-wrap">';
-		get_search_form();
+		get_search_form( array( 'visible_label' => true ) );
 		echo '</div>';
 		echo '</div>';
 

@@ -66,6 +66,11 @@ class Layout_Sidebar extends Base_View {
 			return;
 		}
 
+		global $wp_registered_sidebars;
+		$sidebar_label = isset( $wp_registered_sidebars[ $sidebar_setup['sidebar_slug'] ]['name'] )
+			? $wp_registered_sidebars[ $sidebar_setup['sidebar_slug'] ]['name']
+			: $sidebar_setup['sidebar_slug'];
+
 		$args = array(
 			'wrap_classes' => 'nv-' . $position . ' ' . $sidebar_setup['sidebar_slug'] . ' ' . $class_hide_sidebar_conditionally,
 			'data_attrs'   => apply_filters( 'neve_sidebar_data_attrs', '', $sidebar_setup['sidebar_slug'] ),
@@ -73,6 +78,7 @@ class Layout_Sidebar extends Base_View {
 			'slug'         => $sidebar_setup['sidebar_slug'],
 			'context'      => $context,
 			'position'     => $position,
+			'label'        => $sidebar_label,
 		);
 
 		$this->get_view( 'sidebar', $args );
