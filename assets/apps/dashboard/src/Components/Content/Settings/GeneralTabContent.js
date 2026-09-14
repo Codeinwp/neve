@@ -108,7 +108,7 @@ const AccessRestrictionDummySettings = () => {
 					value={'default'}
 					choices={{
 						default: __(
-							'Show default Wordpress login page',
+							'Show default WordPress login page',
 							'neve'
 						),
 					}}
