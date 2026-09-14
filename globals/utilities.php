@@ -439,7 +439,9 @@ function neve_get_google_fonts( $with_variants = false ) {
 	$fonts = neve_require_array( NEVE_MAIN_DIR . 'globals/google-fonts.php' );
 
 	if ( $with_variants ) {
-		return apply_filters( 'neve_google_fonts_with_variants_array', $fonts );
+		$fonts = apply_filters( 'neve_google_fonts_with_variants_array', $fonts );
+
+		return is_array( $fonts ) ? $fonts : array();
 	}
 
 	return apply_filters( 'neve_google_fonts_array', array_keys( $fonts ) );

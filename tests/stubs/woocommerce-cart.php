@@ -158,3 +158,30 @@ if ( ! function_exists( 'is_checkout' ) ) {
 		return false;
 	}
 }
+
+if ( ! function_exists( 'is_shop' ) ) {
+	/**
+	 * Stand-in for the shop page conditional.
+	 *
+	 * The `WooCommerce` class above stays declared for the rest of the run, so any code
+	 * gated on `class_exists( 'WooCommerce' )` reaches this too.
+	 *
+	 * @return bool
+	 */
+	function is_shop() {
+		return false;
+	}
+}
+
+if ( ! function_exists( 'wc_get_page_id' ) ) {
+	/**
+	 * Stand-in for the WooCommerce page id lookup.
+	 *
+	 * @param string $page the page slug.
+	 *
+	 * @return int
+	 */
+	function wc_get_page_id( $page ) {
+		return -1;
+	}
+}

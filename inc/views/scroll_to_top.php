@@ -31,7 +31,7 @@ class Scroll_To_Top extends Base_View {
 	 * @return void
 	 */
 	public function scroll_to_top_amp() {
-		if ( ! Scroll_To_Top_Options::is_enabled() ) {
+		if ( ! $this->is_enabled() ) {
 			return;
 		}
 
@@ -91,7 +91,7 @@ class Scroll_To_Top extends Base_View {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
-		if ( ! Scroll_To_Top_Options::is_enabled() ) {
+		if ( ! $this->is_enabled() ) {
 			return;
 		}
 
@@ -131,7 +131,7 @@ class Scroll_To_Top extends Base_View {
 	 * @return void
 	 */
 	public function render_button() {
-		if ( ! Scroll_To_Top_Options::is_enabled() ) {
+		if ( ! $this->is_enabled() ) {
 			return;
 		}
 
@@ -166,6 +166,26 @@ class Scroll_To_Top extends Base_View {
 		}
 		
 		echo '</button>';
+	}
+
+	/**
+	 * Check whether the scroll-to-top feature is available and enabled.
+	 *
+	 * @return bool
+	 */
+	private function is_enabled() {
+		$options_class = $this->get_options_class();
+
+		return class_exists( $options_class ) && $options_class::is_enabled();
+	}
+
+	/**
+	 * Get the scroll-to-top options class.
+	 *
+	 * @return class-string
+	 */
+	protected function get_options_class() {
+		return Scroll_To_Top_Options::class;
 	}
 
 	/**

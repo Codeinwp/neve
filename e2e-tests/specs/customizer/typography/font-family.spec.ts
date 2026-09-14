@@ -21,15 +21,18 @@ test.describe('Font Family', () => {
 			'/markup-html-tags-and-formatting/?test_name=fontFamily'
 		);
 
-		await expect(await page.locator('body')).toHaveCSS(
+		await expect(page.locator('body')).toHaveCSS(
 			'font-family',
 			new RegExp(`${fonts.general}`)
 		);
 
 		for (const heading of headingSelectors) {
-			const headings = await page.locator(heading);
-			for (let index = 0; index < (await headings.count()); index++) {
-				await expect(await headings.nth(index)).toHaveCSS(
+			const headings = page.locator(heading);
+			await expect(headings).not.toHaveCount(0);
+
+			const count = await headings.count();
+			for (let index = 0; index < count; index++) {
+				await expect(headings.nth(index)).toHaveCSS(
 					'font-family',
 					new RegExp(`${fonts.headings}`)
 				);

@@ -556,7 +556,11 @@ class Metabox_Settings {
 			return $elements_order;
 		}
 
-		return json_decode( $meta_elements_order, true );
+		if ( is_string( $meta_elements_order ) ) {
+			$meta_elements_order = json_decode( $meta_elements_order, true );
+		}
+
+		return is_array( $meta_elements_order ) ? $meta_elements_order : $elements_order;
 	}
 
 	/**

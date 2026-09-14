@@ -19,6 +19,13 @@ if ( $style !== 'style-plain' ) {
 	$container_classes[] = 'm-style';
 }
 
+$menu_id = NavFooter::COMPONENT_ID;
+$device  = current_device();
+$row     = current_row();
+if ( ! empty( $device ) && ! empty( $row ) ) {
+	$menu_id .= '-' . $device . '-' . $row;
+}
+
 ?>
 <div class="component-wrap">
 	<div role="navigation" class="<?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
@@ -37,7 +44,7 @@ if ( $style !== 'style-plain' ) {
 				'depth'          => 1,
 				'container'      => 'ul',
 				'menu_class'     => 'footer-menu nav-ul',
-				'menu_id'        => 'footer-menu',
+				'menu_id'        => $menu_id,
 				'before'         => $has_menu_selected ? '<div class="wrap">' : '',
 				'after'          => $has_menu_selected ? '</div>' : '',
 			)

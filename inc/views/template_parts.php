@@ -566,7 +566,13 @@ class Template_Parts extends Base_View {
 			'excerpt',
 		);
 
-		return json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_ordered_components ) ), $associative );
+		$content_order = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_ordered_components ) );
+
+		if ( is_string( $content_order ) ) {
+			$content_order = json_decode( $content_order, $associative );
+		}
+
+		return is_array( $content_order ) ? $content_order : $default_ordered_components;
 	}
 
 	/**

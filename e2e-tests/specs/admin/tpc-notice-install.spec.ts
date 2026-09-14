@@ -1,11 +1,36 @@
 import { test, expect } from '@playwright/test';
-import { visitAdminPage } from '../../utils';
+import { setCustomizeSettings, visitAdminPage } from '../../utils';
+
+const TPC_PLUGIN =
+	'templates-patterns-collection/templates-patterns-collection';
+const TEST_NAME = 'tpcNotice';
 
 test.describe('Dashboard Notice', () => {
+	test.beforeAll(async ({ request, baseURL }) => {
+		const endpoint = `${baseURL}/wp-json/wp/v2/plugins/${TPC_PLUGIN}`;
+
+		await request
+			.put(endpoint, { data: { status: 'inactive' } })
+			.catch(() => null);
+		await request.delete(endpoint).catch(() => null);
+
+		// Overridden per-request via ?test_name=, not written to the options table.
+		await setCustomizeSettings(
+			TEST_NAME,
+			{
+				options: {
+					neve_notice_dismissed: 'no',
+					neve_install: Math.floor(Date.now() / 1000),
+				},
+			},
+			{ request, baseURL }
+		);
+	});
+
 	test('Starter Sites Plugin install from Dashboard Notice', async ({
 		page,
 	}) => {
-		await visitAdminPage(page, 'index.php', '');
+		await visitAdminPage(page, 'index.php', `test_name=${TEST_NAME}`);
 
 		await expect(page).toHaveURL(/wp-admin\/index.php/);
 
@@ -25,9 +50,7 @@ test.describe('Dashboard Notice', () => {
 		);
 
 		// Welcome screen
-		await expect(page.locator('h1')).toContainText(
-			'Choose a design'
-		);
+		await expect(page.locator('h1')).toContainText('Choose a design');
 
 		const categories = await page.locator('.ob-cat-wrap .cat');
 		await expect(categories).toContainText([

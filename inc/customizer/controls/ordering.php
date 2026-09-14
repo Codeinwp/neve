@@ -127,7 +127,7 @@ class Ordering extends \WP_Customize_Control {
 		if ( empty( $value ) ) {
 			return ' enabled';
 		}
-		$value = json_decode( $value, true );
+		$value = is_string( $value ) ? json_decode( $value, true ) : $value;
 
 		if ( ! is_array( $value ) ) {
 			$value = array();

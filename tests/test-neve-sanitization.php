@@ -135,6 +135,104 @@ class TestSanitization extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Test that color sanitization does not fatal on array or non-string values.
+	 */
+	public function test_sanitize_colors_with_non_string_values() {
+		$this->assertSame( '', neve_sanitize_colors( [ '#ffffff', '#000000' ] ) );
+		$this->assertSame( '', neve_sanitize_colors( [ 'mobile' => '#ffffff' ] ) );
+		$this->assertSame( '', neve_sanitize_colors( [] ) );
+
+		// Other non-color values are rejected too.
+		$this->assertSame( '', neve_sanitize_colors( null ) );
+		$this->assertSame( '', neve_sanitize_colors( true ) );
+		$this->assertSame( '', neve_sanitize_colors( new stdClass() ) );
+
+		// Invalid strings return an empty string, never null.
+		$this->assertSame( '', neve_sanitize_colors( 'not-a-color' ) );
+		$this->assertSame( '', neve_sanitize_colors( '' ) );
+
+		// Valid values keep working as before.
+		$this->assertSame( '#ff0000', neve_sanitize_colors( '#ff0000' ) );
+		$this->assertSame( 'rgba(255,0,0,1)', neve_sanitize_colors( 'rgba(255, 0, 0, 1)' ) );
+		$this->assertSame( 'var(--nv-primary-accent)', neve_sanitize_colors( 'var(--nv-primary-accent)' ) );
+	}
+
+	/**
+	 * Logo data can already be decoded when it reaches the sanitizer.
+	 */
+	public function test_logo_json_sanitizer_accepts_array_input() {
+		$input = array(
+			'light' => 12,
+			'dark'  => 34,
+			'same'  => false,
+		);
+
+		$this->assertSame(
+			wp_json_encode( $input ),
+			\HFG\Core\Components\Logo::sanitize_logo_json( $input )
+		);
+	}
+
+	/**
+	 * Test that only well formed CSS variable expressions are treated as CSS variables.
+	 */
+	public function test_is_css_var() {
+		$valid = [
+			'var(--nv-primary-accent)',
+			'var(--nv-c-1,#E5E7EB)',
+			'var(--nv-c-1, #e5e7eb)',
+			'var( --nv-site-bg , #fff )',
+			'var(--secondarybtnbg, transparent)',
+			'var(--x, rgba(0,0,0,.5))',
+			'var(--x, hsl(120 50% 50%))',
+			'var(--x, var(--y, #fff))',
+		];
+
+		foreach ( $valid as $value ) {
+			$this->assertTrue( neve_is_css_var( $value ), $value . ' should be a CSS var' );
+		}
+
+		$invalid = [
+			'avatar',
+			'varsity',
+			'#var',
+			'var',
+			'var()',
+			'var(--)',
+			'var(--x',
+			'var(--x))',
+			'var(--x);color:red',
+			'var(--x)}body{background:red}',
+			'var(--x, url(evil.css))',
+			'var(--x, "quoted")',
+			'linear-gradient(var(--a), var(--b))',
+			'',
+			[ 'var(--x)' ],
+			null,
+		];
+
+		foreach ( $invalid as $value ) {
+			$this->assertFalse( neve_is_css_var( $value ), var_export( $value, true ) . ' should not be a CSS var' );
+		}
+	}
+
+	/**
+	 * Test that color sanitization does not pass off arbitrary strings as CSS variables.
+	 */
+	public function test_sanitize_colors_rejects_fake_css_vars() {
+		// Strings that merely contain "var" are not CSS variables.
+		$this->assertSame( '', neve_sanitize_colors( 'avatar' ) );
+		$this->assertSame( '', neve_sanitize_colors( 'var(--x);color:red' ) );
+		$this->assertSame( '', neve_sanitize_colors( 'var(--x)}body{background:red}' ) );
+		$this->assertSame( '', neve_sanitize_colors( 'var(--x, url(evil.css))' ) );
+
+		// Well formed CSS variables pass through untouched.
+		$this->assertSame( 'var(--nv-site-bg)', neve_sanitize_colors( 'var(--nv-site-bg)' ) );
+		$this->assertSame( 'var(--nv-c-1, #e5e7eb)', neve_sanitize_colors( ' var(--nv-c-1, #e5e7eb) ' ) );
+		$this->assertSame( 'var(--x, var(--y, #fff))', neve_sanitize_colors( 'var(--x, var(--y, #fff))' ) );
+	}
+
+	/**
 	 * Private reusable function for the assertion of sanitize responsive int json.
 	 *
 	 * @param array  $input_value Input value.

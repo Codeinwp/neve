@@ -193,4 +193,37 @@ class TestNeveAutoloader extends WP_UnitTestCase {
  			spl_autoload_unregister( array( $autoloader, 'load_class' ) );
  		}
 	}
+
+	/**
+	 * A miss inside a registered namespace resolves to false rather than
+	 * requiring a file that is not there. The caller is what has to guard; the
+	 * autoloader only reports.
+	 */
+	public function testMissingMappedClassResolvesToFalse() {
+		$autoloader = new \Neve\Autoloader();
+		$autoloader->add_namespace( 'Neve_Fixture', $this->fixture_dir );
+
+		$this->assertFalse( $autoloader->load_class( 'Neve_Fixture\\Widgets\\Absent_Widget' ) );
+		$this->assertFalse( class_exists( 'Neve_Fixture\\Widgets\\Absent_Widget', false ) );
+	}
+
+	/**
+	 * A miss must not be remembered. The file can appear later in the same
+	 * request, and a cached negative would keep the class unreachable.
+	 */
+	public function testMissIsNotCachedAgainstALaterFile() {
+		$autoloader = new \Neve\Autoloader();
+		$autoloader->add_namespace( 'Neve_Fixture', $this->fixture_dir );
+
+		$this->assertFalse( $autoloader->load_class( 'Neve_Fixture\\Widgets\\Deferred_Widget' ) );
+
+		mkdir( $this->fixture_dir . 'widgets/', 0777, true );
+		file_put_contents(
+			$this->fixture_dir . 'widgets/deferred_widget.php',
+			'<?php namespace Neve_Fixture\\Widgets; class Deferred_Widget {}'
+		);
+
+		$this->assertNotFalse( $autoloader->load_class( 'Neve_Fixture\\Widgets\\Deferred_Widget' ) );
+		$this->assertTrue( class_exists( 'Neve_Fixture\\Widgets\\Deferred_Widget', false ) );
+	}
 }

@@ -33,11 +33,37 @@ test.describe('Custom Global Color Control', () => {
 		);
 		await clearWelcome(page);
 
-		await page.locator('[aria-label="Document Overview"]').click();
-		await page.locator('.block-editor-list-view-leaf').first().click();
+		await page.waitForFunction(() =>
+			(
+				window.wp?.data?.select('core/block-editor')?.getSettings()
+					?.colors || []
+			).some((color: { slug: string }) => color.slug === 'custom-1')
+		);
 
-		await page.getByRole('button', { name: 'Background' }).click();
-		await page.getByRole('option', { name: 'Custom 1' }).click();
+		// Wait for the parsed block list too, so the update below has a target.
+		await page.waitForFunction(
+			() =>
+				(
+					window.wp?.data?.select('core/block-editor')?.getBlocks() ||
+					[]
+				).length > 0
+		);
+
+		// Clicking the palette swatch toggles, so a block left coloured by a
+		// previous run would be cleared rather than set.
+		await page.evaluate(() => {
+			const { data } = window.wp;
+			const [block] = data.select('core/block-editor').getBlocks();
+			data.dispatch('core/block-editor').updateBlockAttributes(
+				block.clientId,
+				{ backgroundColor: 'custom-1' }
+			);
+		});
+		await page.waitForFunction(
+			() =>
+				window.wp?.data?.select('core/block-editor')?.getBlocks()?.[0]
+					?.attributes?.backgroundColor === 'custom-1'
+		);
 
 		await savePost(page);
 	});

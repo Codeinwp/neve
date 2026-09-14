@@ -90,4 +90,23 @@ class TestNeveModsManager extends WP_UnitTestCase {
 		$mod_value = \Neve\Core\Settings\Mods::to_json( 'test_mod4' );
 		$this->assertEquals( $mod_value, [ 'subkey' => 3 ] );
 	}
+
+	/**
+	 * Test an already-decoded responsive value.
+	 */
+	public function test_to_json_accepts_array_value() {
+		$value = array(
+			'mobile'  => 14,
+			'tablet'  => 16,
+			'desktop' => 18,
+		);
+
+		\Neve\Core\Settings\Mods::set( 'test_mod_array', $value );
+
+		$this->assertSame( $value, \Neve\Core\Settings\Mods::to_json( 'test_mod_array' ) );
+		$this->assertEquals(
+			json_decode( wp_json_encode( $value ) ),
+			\Neve\Core\Settings\Mods::to_json( 'test_mod_array', false, false )
+		);
+	}
 }

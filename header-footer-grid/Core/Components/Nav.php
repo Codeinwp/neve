@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Builder\Header;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Core\Settings\Mods;
@@ -34,6 +35,27 @@ class Nav extends Abstract_Component {
 	const SPACING                  = 'spacing';
 	const EXPAND_DROPDOWNS         = 'expand_dropdowns';
 	const DROPDOWNS_EXPANDED_CLASS = 'dropdowns-expanded';
+
+	/**
+	 * Build the menu id for the placement currently being rendered.
+	 *
+	 * @return string
+	 */
+	public static function get_menu_id() {
+		$menu_id = self::NAV_MENU_ID;
+
+		$parts = [
+			\HFG\current_device( Header::BUILDER_NAME ),
+			\HFG\current_row( Header::BUILDER_NAME ),
+		];
+		foreach ( $parts as $part ) {
+			if ( ! empty( $part ) ) {
+				$menu_id .= '-' . $part;
+			}
+		}
+
+		return $menu_id;
+	}
 
 	/**
 	 * Nav constructor.

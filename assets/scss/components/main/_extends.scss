@@ -124,9 +124,9 @@
 
 %nv-form-labels {
 	font-weight: var(--formlabelfontweight, var(--bodyfontweight));
-	text-transform: var(--formlabeltexttransform);
-	letter-spacing: var(--formlabelletterspacing);
-	line-height: var(--formlabellineheight);
+	text-transform: var(--formlabeltexttransform, none);
+	letter-spacing: var(--formlabelletterspacing, normal);
+	line-height: var(--formlabellineheight, var(--bodylineheight));
 	font-size: var(--formlabelfontsize, var(--bodyfontsize));
 }
 

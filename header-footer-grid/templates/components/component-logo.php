@@ -12,7 +12,14 @@ namespace HFG;
 use HFG\Core\Builder\Header as HeaderBuilder;
 use HFG\Core\Components\Logo;
 
-$_id    = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
+$_component = current_component( HeaderBuilder::BUILDER_NAME );
+
+// Bail when the current component cannot be resolved on the current builder.
+if ( ! $_component instanceof \HFG\Core\Components\Abstract_Component ) {
+	return;
+}
+
+$_id    = $_component->get_id();
 $device = current_device( HeaderBuilder::BUILDER_NAME );
 
 $show_name     = component_setting( Logo::SHOW_TITLE );

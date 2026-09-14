@@ -160,6 +160,28 @@ class TestNeveFileGuards extends WP_UnitTestCase {
 	}
 
 	/**
+	 * A third-party filter must not replace the variant catalog with a scalar.
+	 */
+	public function testGoogleFontVariantsRejectNonArrayFilterResults() {
+		$previous_families = \Neve\Views\Font_Manager::$font_families;
+		\Neve\Views\Font_Manager::$font_families = array(
+			'Roboto' => array( '400' ),
+		);
+
+		add_filter( 'neve_google_fonts_with_variants_array', '__return_false' );
+
+		try {
+			$this->assertSame( array(), neve_get_google_fonts( true ) );
+			( new \Neve\Views\Font_Manager() )->register_google_fonts();
+			$this->assertFalse( wp_style_is( 'neve-google-font-roboto', 'enqueued' ) );
+		} finally {
+			remove_filter( 'neve_google_fonts_with_variants_array', '__return_false' );
+			\Neve\Views\Font_Manager::$font_families = $previous_families;
+			wp_dequeue_style( 'neve-google-font-roboto' );
+		}
+	}
+
+	/**
 	 * Enqueue the customizer controls with a given font list in place.
 	 *
 	 * neve_get_google_fonts() runs its result through this filter, so it can

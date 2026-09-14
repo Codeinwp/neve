@@ -214,10 +214,13 @@ class Post_Layout extends Base_View {
 		$default_order = $this->get_v4_defaults( 'neve_layout_single_post_elements_order', $this->post_ordering() );
 
 		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
-		if ( ! is_string( $content_order ) ) {
-			$content_order = wp_json_encode( $default_order );
+		if ( is_string( $content_order ) ) {
+			$content_order = json_decode( $content_order, true );
 		}
-		$content_order = json_decode( $content_order, true );
+
+		if ( ! is_array( $content_order ) ) {
+			$content_order = $default_order;
+		}
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
 			$title_key = array_search( 'title-meta', $content_order, true );
 			if ( $title_key !== false ) {

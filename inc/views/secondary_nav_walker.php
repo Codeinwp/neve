@@ -10,6 +10,11 @@
 
 namespace Neve\Views;
 
+// Bail when the parent walker file is missing, so extending it cannot fatal.
+if ( ! class_exists( 'Neve\Views\Nav_Walker' ) ) {
+	return;
+}
+
 /**
  * Class Secondary_Nav_Walker
  *
