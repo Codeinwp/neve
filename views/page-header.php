@@ -39,4 +39,8 @@ if ( ! $hide_title ) {
 	</div><!--.nv-page-title-->
 </div> <!--.nv-page-title-wrap-->
 	<?php
+} else {
+	// Hiding the title must not remove the page's H1: screen-reader users
+	// navigate by headings (accessibility-ready criterion 6).
+	echo '<h1 class="screen-reader-text">' . wp_kses_post( html_entity_decode( $args['string'] ) ) . '</h1>';
 }

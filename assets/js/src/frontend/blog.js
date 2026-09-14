@@ -1,5 +1,5 @@
 /* global NeveProperties,_wpCustomizeSettings,parent,Masonry,imagesLoaded */
-import { httpGetAsync, isInView } from '../utils';
+import { httpGetAsync, isInView, qs } from '../utils';
 
 let masonryContainer = null,
 	page = 2;
@@ -11,7 +11,7 @@ const triggerSelector = '.infinite-scroll-trigger';
  */
 export const initBlog = () => {
 	if (
-		document.querySelector('.blog.nv-index-posts') === null ||
+		qs('.blog.nv-index-posts') === null ||
 		typeof NeveProperties === 'undefined'
 	) {
 		return false;
@@ -29,14 +29,14 @@ const masonry = () => {
 	if (masonryStatus !== 'enabled' || masonryColumns < 2) {
 		return;
 	}
-	masonryContainer = document.querySelector(postWrapSelector);
+	masonryContainer = qs(postWrapSelector);
 
 	if (masonryContainer === null) {
 		return;
 	}
 
 	imagesLoaded(masonryContainer, () => {
-		const selector = `article.layout-${blogLayout}`;
+		const selector = 'article.layout-' + blogLayout;
 		window.nvMasonry = new Masonry(masonryContainer, {
 			itemSelector: selector,
 			columnWidth: selector,
@@ -51,12 +51,12 @@ const masonry = () => {
 const infiniteScroll = () => {
 	if (
 		NeveProperties.infScroll !== 'enabled' ||
-		document.querySelector(postWrapSelector) === null
+		qs(postWrapSelector) === null
 	) {
 		return;
 	}
 
-	isInView(document.querySelector(triggerSelector), () => {
+	isInView(qs(triggerSelector), () => {
 		if (parent && parent.wp && parent.wp.customize) {
 			parent.wp.customize.requestChangesetUpdate().then(() => {
 				requestMorePosts();
@@ -72,22 +72,21 @@ const infiniteScroll = () => {
  *
  */
 const requestMorePosts = () => {
-	const doc = window.document;
 	const nP = window.NeveProperties;
 
-	const trigger = doc.querySelector(triggerSelector);
+	const trigger = qs(triggerSelector);
 	if (trigger === null) {
 		return;
 	}
-	const loader = doc.querySelector('.nv-loader');
+	const loader = qs('.nv-loader');
 	loader.style.display = 'block';
 
 	if (page > nP.maxPages) {
-		trigger.parentNode.removeChild(trigger);
+		trigger.remove();
 		loader.style.display = 'none';
 		return;
 	}
-	const blog = doc.querySelector(postWrapSelector);
+	const blog = qs(postWrapSelector);
 	const lang = nP.lang;
 	const baseUrl = nP.endpoint + page;
 	const url = lang ? baseUrl + '/' + lang : baseUrl;
@@ -95,7 +94,7 @@ const requestMorePosts = () => {
 	page++;
 
 	// Create an empty div that will be replaced with the new posts. Used to keep the order of the posts.
-	const postsPlaceholder = doc.createElement('div');
+	const postsPlaceholder = document.createElement('div');
 	blog.appendChild(postsPlaceholder);
 
 	httpGetAsync(

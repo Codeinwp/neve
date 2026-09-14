@@ -2,6 +2,13 @@
 	position: relative;
 	z-index: 11;
 
+	// Links inside the copyright text must not rely on color alone (WCAG 1.4.1).
+	// .cr is the free-theme credit block; footer_copyright is the Pro component.
+	.builder-item--footer_copyright a,
+	.builder-item.cr a {
+		text-decoration: underline;
+	}
+
 	.item--inner {
 		width: 100%;
 
