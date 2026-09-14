@@ -66,4 +66,5 @@ jobs:
         uses: Codeinwp/action-wordpress-theme-deploy@primary
         env:
           SVN_PASSWORD: ${{ secrets.SVN_THEMEISLE_PASSWORD }}
+          VERSION: "4.2.12"
           SVN_USERNAME: ${{ secrets.SVN_THEMEISLE_USERNAME }}
