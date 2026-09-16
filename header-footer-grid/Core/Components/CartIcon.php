@@ -94,9 +94,66 @@ class CartIcon extends Abstract_Component {
 	 * @return void
 	 */
 	public function load_scripts() {
-		if ( $this->is_component_active() ) {
-			wp_add_inline_script( 'neve-script', $this->toggle_cart_is_empty() );
+		if ( ! $this->is_component_active() ) {
+			return;
 		}
+
+		wp_add_inline_script( 'neve-script', $this->toggle_cart_is_empty() );
+
+		if ( self::should_load_pro_features() && \HFG\component_setting( self::MINI_CART_STYLE, 'dropdown', self::COMPONENT_ID ) === 'off-canvas' ) {
+			wp_add_inline_script( 'neve-script', $this->cart_drawer_script() );
+		}
+	}
+
+	/**
+	 * Inline script that keeps the off-canvas drawer inert while parked.
+	 *
+	 * The drawer is a modal dialog, so it has to stay out of the tab order
+	 * and the accessibility tree until it is actually open. The markup does
+	 * not ship inert: the attribute is only safe on an element once
+	 * something is guaranteed to take it off again, and the booster that
+	 * slides the drawer in ships separately from the theme, so no
+	 * particular version of it can be assumed. Driving inert from the class
+	 * the booster already toggles keeps the two in step whatever version is
+	 * installed — the drawer is never left visible but unusable — and with
+	 * no JS at all it behaves exactly as it always has.
+	 *
+	 * This rides along with the component rather than the main bundle so it
+	 * only reaches the small number of sites actually using the drawer.
+	 *
+	 * @return string
+	 */
+	public function cart_drawer_script() {
+		return '
+			(function(){
+				var sync = function( drawer ) {
+					var open = drawer.classList.contains( "cart-open" );
+					drawer.toggleAttribute( "inert", ! open );
+					var wrap = drawer.closest( ".responsive-nav-cart" );
+					var opener = wrap ? wrap.querySelector( ".cart-icon-wrapper" ) : null;
+					if ( opener && opener.hasAttribute( "aria-expanded" ) ) {
+						opener.setAttribute( "aria-expanded", open ? "true" : "false" );
+					}
+				};
+				var watch = function() {
+					document.querySelectorAll( ".cart-off-canvas" ).forEach( function( drawer ) {
+						if ( drawer.dataset.nvDrawerWatched ) {
+							return;
+						}
+						drawer.dataset.nvDrawerWatched = "1";
+						sync( drawer );
+						new MutationObserver( function() {
+							sync( drawer );
+						} ).observe( drawer, { attributes: true, attributeFilter: [ "class" ] } );
+					} );
+				};
+				watch();
+				document.addEventListener( "DOMContentLoaded", watch );
+				if ( window.jQuery ) {
+					window.jQuery( document.body ).on( "wc_fragments_refreshed wc_fragments_loaded added_to_cart", watch );
+				}
+			})();
+		';
 	}
 
 	/**
