@@ -172,4 +172,36 @@ $id = wp_insert_post( array(
 echo $id . "\n";
 '
 
+# ------------------------------------------------------------------
+# 6. Hidden-title pages (hidden-title H1 fallback, page-header.php)
+#    Hiding the title must not cost the page its H1. A page that brings
+#    its own H1 in the content must not get a second one; a page that
+#    does not must get the screen-reader-text fallback.
+# ------------------------------------------------------------------
+OLD_HT_H1=$($WP_CMD post list --post_type=page --name=a11y-hidden-title-h1 --field=ID | head -1)
+if [ -n "$OLD_HT_H1" ]; then
+	$WP_CMD post delete "$OLD_HT_H1" --force
+fi
+HT_H1_ID=$($WP_CMD post create \
+	--post_title="A11y Hidden Title With H1" \
+	--post_name="a11y-hidden-title-h1" \
+	--post_type=page \
+	--post_status=publish \
+	--post_content='<!-- wp:heading {"level":1} --><h1 class="wp-block-heading">Landing page hero heading</h1><!-- /wp:heading --><!-- wp:paragraph --><p>Fixture page: the title is hidden and the content supplies its own H1, so the template must not add a second one.</p><!-- /wp:paragraph -->' \
+	--porcelain)
+$WP_CMD post meta update "$HT_H1_ID" neve_meta_disable_title on
+
+OLD_HT_NO_H1=$($WP_CMD post list --post_type=page --name=a11y-hidden-title-no-h1 --field=ID | head -1)
+if [ -n "$OLD_HT_NO_H1" ]; then
+	$WP_CMD post delete "$OLD_HT_NO_H1" --force
+fi
+HT_NO_H1_ID=$($WP_CMD post create \
+	--post_title="A11y Hidden Title Without H1" \
+	--post_name="a11y-hidden-title-no-h1" \
+	--post_type=page \
+	--post_status=publish \
+	--post_content='<!-- wp:paragraph --><p>Fixture page: the title is hidden and the content brings no H1, so the template must render the screen-reader-text fallback.</p><!-- /wp:paragraph --><!-- wp:heading --><h2>A second-level heading only</h2><!-- /wp:heading -->' \
+	--porcelain)
+$WP_CMD post meta update "$HT_NO_H1_ID" neve_meta_disable_title on
+
 echo "== a11y-ready fixtures done =="

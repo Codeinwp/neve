@@ -53,6 +53,46 @@ test('exactly one H1 on the category archive', async ({ page, request }) => {
 	).toHaveLength(1);
 });
 
+test('hidden title keeps the content H1 and adds no second one', async ({
+	page,
+	request,
+}) => {
+	// Hiding the title must not cost the page its H1 (criterion 6), but a
+	// page that already supplies one in its content must not end up with two.
+	await page.goto(await getPermalink(request, 'pages', 'a11y-hidden-title-h1'));
+	const h1s = await page.$$eval('h1', (els) =>
+		els.map((el) => (el.textContent || '').trim().substring(0, 60))
+	);
+	expect(
+		h1s,
+		`content already provides the H1, so no fallback is expected, got: ${JSON.stringify(h1s)}`
+	).toHaveLength(1);
+	expect(
+		await page.locator('h1.screen-reader-text').count(),
+		'the screen-reader fallback must not render when the content has an H1'
+	).toBe(0);
+});
+
+test('hidden title falls back to a screen-reader H1 when the content has none', async ({
+	page,
+	request,
+}) => {
+	await page.goto(
+		await getPermalink(request, 'pages', 'a11y-hidden-title-no-h1')
+	);
+	const h1s = await page.$$eval('h1', (els) =>
+		els.map((el) => (el.textContent || '').trim().substring(0, 60))
+	);
+	expect(
+		h1s,
+		`a hidden title still needs exactly one H1, got: ${JSON.stringify(h1s)}`
+	).toHaveLength(1);
+	expect(
+		await page.locator('h1.screen-reader-text').count(),
+		'without a content H1 the only H1 must be the screen-reader fallback'
+	).toBe(1);
+});
+
 const duplicateIdPages: PageDef[] = [
 	{ name: 'front page', path: () => '/' },
 	{ name: '404 page', path: () => '/a11y-this-page-does-not-exist/' },
