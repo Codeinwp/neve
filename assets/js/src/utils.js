@@ -1,7 +1,75 @@
-/* global IntersectionObserver,NodeList,XMLHttpRequest */
+/* global IntersectionObserver,NodeList,XMLHttpRequest,CustomEvent */
 
 export const NV_FOCUS_TRAP_START = 'ftrap-run';
 export const NV_FOCUS_TRAP_END = 'ftrap-end';
+
+/**
+ * Scoped querySelector shorthand.
+ *
+ * Member expressions like document.querySelector cannot be mangled by the
+ * minifier — routing every call through these helpers is a real byte win
+ * on the size-budgeted frontend bundle.
+ *
+ * @param {string}  selector
+ * @param {Element} scope
+ * @return {Element|null} First match.
+ */
+export const qs = (selector, scope = document) => scope.querySelector(selector);
+
+/**
+ * Scoped querySelectorAll shorthand. Returns the live NodeList so the
+ * class/event helpers below keep receiving what they always did.
+ *
+ * @param {string}  selector
+ * @param {Element} scope
+ * @return {NodeList} Matches.
+ */
+export const qsa = (selector, scope = document) =>
+	scope.querySelectorAll(selector);
+
+/**
+ * Dispatch a CustomEvent on document.
+ *
+ * @param {string} name
+ * @param {Object} detail
+ */
+export const emit = (name, detail) =>
+	document.dispatchEvent(new CustomEvent(name, { detail }));
+
+/**
+ * addEventListener shorthand (single element).
+ *
+ * @param {EventTarget} el
+ * @param {string}      event
+ * @param {Function}    handler
+ * @param {Object}      opts
+ */
+export const on = (el, event, handler, opts) =>
+	el.addEventListener(event, handler, opts);
+
+/**
+ * classList.contains shorthand.
+ *
+ * @param {Element} el
+ * @param {string}  className
+ * @return {boolean} Whether the element has the class.
+ */
+export const has = (el, className) => el.classList.contains(className);
+
+/**
+ * preventDefault shorthand.
+ *
+ * @param {Event} e
+ */
+export const prevent = (e) => e.preventDefault();
+
+/**
+ * getBoundingClientRect shorthand.
+ *
+ * @param {Element} el
+ * @return {DOMRect} Bounding rect.
+ */
+export const rect = (el) => el.getBoundingClientRect();
 /**
  * Foreach wrapper.
  *
@@ -23,8 +91,7 @@ export const neveEach = function (iterable, callback) {
 export const httpGetAsync = (theUrl, callback, params) => {
 	const xmlHttp = new XMLHttpRequest();
 	xmlHttp.onload = () => {
-		if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
-			callback(xmlHttp.response);
+		if (xmlHttp.status === 200) callback(xmlHttp.response);
 	};
 	xmlHttp.onerror = () => {};
 	xmlHttp.open('POST', theUrl, true);
