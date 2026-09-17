@@ -228,7 +228,7 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 
 	$amp_state = '';
 	if ( $amp_ready ) {
-		$amp_state = 'on="tap:AMP.setState({visible: !visible})" role="button"  ';
+		$amp_state = 'on="tap:AMP.setState({visible: !visible})"' . ( $is_link ? '' : ' role="button"' ) . ' ';
 	}
 	// The icon is decorative — the wrapping control carries the name.
 	if ( strpos( $svg, 'aria-hidden' ) === false ) {
@@ -236,7 +236,7 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 	}
 	// The trigger opens/closes the search dropdown: a real button with
 	// the disclosure state, not a hash link.
-	$start_tag = $is_link ? 'button type="button" aria-label="' . __( 'Search', 'neve' ) . '" aria-expanded="false"' : 'span';
+	$start_tag = $is_link ? 'button type="button" aria-label="' . esc_attr__( 'Search', 'neve' ) . '" aria-expanded="false"' : 'span';
 	$end_tag   = $is_link ? 'button' : 'span';
 	$output    = '<' . $start_tag . ' class="nv-icon nv-search" ' . $amp_state . '>
 				' . neve_kses_svg( $svg ) . '
