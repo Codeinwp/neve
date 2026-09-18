@@ -116,6 +116,10 @@ class Main {
 	 * @return array<string, string|string[]>
 	 */
 	public function get_ai_connect_metadata() {
+		if ( apply_filters( 'neve_is_theme_whitelabeled', false ) || apply_filters( 'neve_is_plugin_whitelabeled', false ) ) {
+			return [];
+		}
+
 		return [
 			'name'         => 'Neve',
 			'notice_cases' => [
