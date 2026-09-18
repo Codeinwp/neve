@@ -19,27 +19,30 @@ use Neve\Customizer\Types\Section;
 class Header_Footer_Visibility extends Base_Customizer {
 
 	/**
-	 * The parts that can be turned off, with the panel that holds the toggle.
-	 *
-	 * @var array<string, string>
-	 */
-	private $parts = array(
-		'header' => 'hfg_header',
-		'footer' => 'hfg_footer',
-	);
-
-	/**
 	 * Add customizer sections and controls.
 	 */
 	public function add_controls() {
-		foreach ( $this->parts as $part => $panel ) {
+		$parts = array(
+			'header' => array(
+				'panel' => 'hfg_header',
+				'title' => esc_html__( 'Header Visibility', 'neve' ),
+				'label' => esc_html__( 'Disable Header Globally', 'neve' ),
+			),
+			'footer' => array(
+				'panel' => 'hfg_footer',
+				'title' => esc_html__( 'Footer Visibility', 'neve' ),
+				'label' => esc_html__( 'Disable Footer Globally', 'neve' ),
+			),
+		);
+
+		foreach ( $parts as $part => $args ) {
 			$this->add_section(
 				new Section(
 					'neve_' . $part . '_visibility',
 					array(
 						'priority' => 5,
-						'title'    => $part === 'header' ? esc_html__( 'Header Visibility', 'neve' ) : esc_html__( 'Footer Visibility', 'neve' ),
-						'panel'    => $panel,
+						'title'    => $args['title'],
+						'panel'    => $args['panel'],
 					)
 				)
 			);
@@ -53,7 +56,7 @@ class Header_Footer_Visibility extends Base_Customizer {
 						'transport'         => 'refresh',
 					),
 					array(
-						'label'    => $part === 'header' ? esc_html__( 'Disable Header Globally', 'neve' ) : esc_html__( 'Disable Footer Globally', 'neve' ),
+						'label'    => $args['label'],
 						'section'  => 'neve_' . $part . '_visibility',
 						'type'     => 'neve_toggle_control',
 						'priority' => 5,

@@ -16,12 +16,10 @@ test.describe( 'Global header and footer visibility', function () {
 			hfg_header: {
 				section: 'neve_header_visibility',
 				control: 'neve_disable_header',
-				label: 'Disable Header Globally',
 			},
 			hfg_footer: {
 				section: 'neve_footer_visibility',
 				control: 'neve_disable_footer',
-				label: 'Disable Footer Globally',
 			},
 		};
 
@@ -34,7 +32,11 @@ test.describe( 'Global header and footer visibility', function () {
 			await section.locator( 'h3' ).click();
 			const control = page.locator( `#customize-control-${item.control}` );
 			await expect( control ).toBeVisible();
-			await expect( control ).toContainText( item.label );
+
+			// Assert on the structure. The label text is translated.
+			await expect(
+				control.locator( 'input[type="checkbox"]' )
+			).toHaveCount( 1 );
 
 			await page.goto( '/wp-admin/customize.php' );
 			await page.waitForSelector( '#customize-theme-controls' );

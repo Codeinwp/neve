@@ -473,7 +473,10 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	 * Without this rule the sections register, render and stay invisible.
 	 */
 	public function test_the_sections_are_whitelisted_in_the_builder_panel_styles() {
-		$scss = file_get_contents( get_theme_file_path( 'assets/apps/customizer-controls/src/scss/_general.scss' ) );
+		$path = get_theme_file_path( 'assets/apps/customizer-controls/src/scss/_general.scss' );
+		$this->assertFileExists( $path );
+
+		$scss = file_get_contents( $path );
 
 		$panels = array(
 			'hfg_header' => 'neve_header_visibility',
