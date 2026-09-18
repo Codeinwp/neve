@@ -79,17 +79,7 @@ do_action( 'neve_body_start_after' );
 		<?php echo __( 'Skip to content', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	</a>
 
-	<?php
-	/**
-	 * Filters the content parts.
-	 *
-	 * @since 1.0.9
-	 *
-	 * @param bool   $status Whether the component should be displayed or not.
-	 * @param string $context The context name.
-	 */
-	if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'header' ) === true ) {
-		?>
+	<?php if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'header' ) === true ) { ?>
 	<header class="<?php echo esc_attr( $header_classes ); ?>" <?php echo ( neve_is_amp() ) ? 'next-page-hide' : ''; ?> >
 		<?php
 		/**

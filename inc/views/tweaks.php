@@ -23,9 +23,8 @@ class Tweaks extends Base_View {
 	/**
 	 * Hide the header or the footer when they are turned off for the whole site.
 	 *
-	 * This runs after the post meta filter. A post can still turn the parts off on its
-	 * own, but it cannot turn them back on, because the metabox writes 'off' by default
-	 * and that value does not tell an untouched post from a deliberate one.
+	 * Runs after the post meta filter, because the metabox writes 'off' by default and
+	 * that value cannot tell an untouched post from a deliberate one.
 	 *
 	 * @param bool   $status Whether the part is rendered or not.
 	 * @param string $context The part name.
