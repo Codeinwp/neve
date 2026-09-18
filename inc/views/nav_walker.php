@@ -152,7 +152,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 				$additional_class = $expand_dropdowns && $depth === 0 ? 'dropdown-open' : '';
 
 				// Not wp_filter_nohtml_kses(): a plugin can widen wp_kses_allowed_html and keep the <span> (#4623).
-				$toggle_aria_label = __( 'Toggle', 'neve' ) . ' ' . wp_strip_all_tags( $title );
+				$toggle_aria_label = __( 'Toggle', 'neve' ) . ' ' . trim( wp_strip_all_tags( $title, true ) );
 				$caret             = '<button ' . $expanded . ' type="button" class="caret-wrap navbar-toggle ' . esc_attr( (string) $item->menu_order ) . ' ' . esc_attr( $additional_class ) . '" style="' . esc_attr( $caret_wrap_css ) . '"  aria-label="' . esc_attr( $toggle_aria_label ) . '">';
 				$caret            .= $caret_pictogram;
 				$caret            .= '</button>';
