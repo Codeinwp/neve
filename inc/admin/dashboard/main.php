@@ -128,9 +128,9 @@ class Main {
 				__( 'set page layouts', 'neve' ),
 			],
 			'prompts'      => [
-				__( 'Show me how my Neve site is set up right now: colors, fonts, layout and what is in the header.', 'neve' ),
-				__( 'Change my headings font to Poppins and set the primary accent color to #0055ff.', 'neve' ),
-				__( 'Move the search icon to the right side of my main header row and put the secondary menu in the top row.', 'neve' ),
+				__( 'Change my Neve headings font to Poppins and my accent color to #0055ff.', 'neve' ),
+				__( 'Move the search icon to the right of my header and put the secondary menu in the top row.', 'neve' ),
+				__( 'Make my Contact page full width with no sidebar and hide its title.', 'neve' ),
 			],
 			'abilities'    => [
 				'neve/site-get-state',
