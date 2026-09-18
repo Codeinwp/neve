@@ -23,14 +23,14 @@ test.describe( 'Global header and footer visibility', function () {
 			},
 		};
 
-		for ( const [panel, item] of Object.entries( panels )) {
-			await page.click( `#accordion-panel-${panel} h3` );
+		for ( const [ panel, item ] of Object.entries( panels ) ) {
+			await page.click( `#accordion-panel-${ panel } h3` );
 
-			const section = page.locator( `#accordion-section-${item.section}` );
+			const section = page.locator( `#accordion-section-${ item.section }` );
 			await expect( section ).toBeVisible();
 
 			await section.locator( 'h3' ).click();
-			const control = page.locator( `#customize-control-${item.control}` );
+			const control = page.locator( `#customize-control-${ item.control }` );
 			await expect( control ).toBeVisible();
 
 			// Assert on the structure. The label text is translated.
