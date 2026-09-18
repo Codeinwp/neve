@@ -1,7 +1,7 @@
 import { test, expect, devices } from "@playwright/test";
 
 test.use({
-	...devices["iPhone 13"],
+	...devices["Pixel 5"],
 });
 
 /**
@@ -10,7 +10,7 @@ test.use({
  * Regression test for #4623.
  */
 test("mobile dropdown toggle aria-label is plain text", async ({ page }) => {
-	await page.goto("/?device=iPhone13");
+	await page.goto("/?device=pixel5");
 	await page.getByRole("button", { name: "Navigation Menu" }).click();
 
 	const toggles = page.locator(
