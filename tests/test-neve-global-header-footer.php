@@ -11,10 +11,21 @@
 class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 
 	/**
+	 * Customizer manager in place before the test replaced it.
+	 *
+	 * @var WP_Customize_Manager|null
+	 */
+	private $previous_customizer;
+
+	/**
 	 * Setup.
 	 */
 	public function setUp(): void {
 		parent::setUp();
+
+		// The test case restores the hooks and rolls back the database, but it leaves
+		// this global alone.
+		$this->previous_customizer = isset( $GLOBALS['wp_customize'] ) ? $GLOBALS['wp_customize'] : null;
 
 		// Another test in the suite declares the WooCommerce class; the theme then
 		// calls the conditional tags that come with it.
@@ -28,6 +39,12 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	 * Teardown.
 	 */
 	public function tearDown(): void {
+		if ( $this->previous_customizer === null ) {
+			unset( $GLOBALS['wp_customize'] );
+		} else {
+			$GLOBALS['wp_customize'] = $this->previous_customizer;
+		}
+
 		unset( $GLOBALS['neve_tests_is_amp'] );
 		remove_theme_mod( 'neve_disable_header' );
 		remove_theme_mod( 'neve_disable_footer' );
