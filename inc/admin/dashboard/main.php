@@ -105,8 +105,41 @@ class Main {
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
 		add_action( 'init', array( $this, 'register_settings' ) );
 		add_action( 'init', array( $this, 'register_about_page' ), 1 );
+		add_filter( 'neve_ai_connect_metadata', array( $this, 'get_ai_connect_metadata' ) );
 
 		add_action( 'admin_notices', array( $this, 'render_custom_layout_header' ) );
+	}
+
+	/**
+	 * Get the data for the SDK "Connect your AI agent" module.
+	 *
+	 * @return array<string, string|string[]>
+	 */
+	public function get_ai_connect_metadata() {
+		return [
+			'name'         => 'Neve',
+			'notice_cases' => [
+				__( 'change your colors and fonts', 'neve' ),
+				__( 'rearrange your header', 'neve' ),
+				__( 'set page layouts', 'neve' ),
+			],
+			'prompts'      => [
+				__( 'Show me how my Neve site is set up right now: colors, fonts, layout and what is in the header.', 'neve' ),
+				__( 'Change my headings font to Poppins and set the primary accent color to #0055ff.', 'neve' ),
+				__( 'Move the search icon to the right side of my main header row and put the secondary menu in the top row.', 'neve' ),
+			],
+			'abilities'    => [
+				'neve/site-get-state',
+				'neve/header-list-components',
+				'neve/appearance-update',
+				'neve/appearance-apply-preset',
+				'neve/header-configure',
+				'neve/footer-configure',
+				'neve/site-set-performance',
+				'neve/site-set-theme-mod',
+				'neve/page-layout-update',
+			],
+		];
 	}
 
 	/**
