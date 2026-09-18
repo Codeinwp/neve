@@ -40,7 +40,8 @@ class TestNeveNavWalkerAriaLabel extends WP_UnitTestCase {
 		);
 
 		$permissive = static function ( $allowed_html ) {
-			return array_merge_recursive( $allowed_html, array( 'span' => array( 'class' => true ) ) );
+			$allowed_html['span']['class'] = true;
+			return $allowed_html;
 		};
 		add_filter( 'wp_kses_allowed_html', $permissive, PHP_INT_MAX );
 
