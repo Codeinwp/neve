@@ -255,7 +255,7 @@ class Page_Layout_Update extends Abstract_Ability {
 			}
 			// The meta key only exists while the Neve Pro Blog Booster module runs.
 			if ( ! registered_meta_key_exists( 'post', self::READING_TIME_META ) ) {
-				return $this->error( 'pro_required', __( 'The "reading_time" field requires the Neve Pro Blog Booster module.', 'neve' ), 403 );
+				return self::pro_required_error( __( 'The "reading_time" field requires the Neve Pro Blog Booster module.', 'neve' ), 'reading_time' );
 			}
 			$changes[ self::READING_TIME_META ] = 'default' === $input['reading_time'] ? null : $input['reading_time'];
 		}

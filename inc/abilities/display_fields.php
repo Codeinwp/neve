@@ -366,11 +366,10 @@ class Display_Fields {
 		foreach ( $input as $name => $value ) {
 			if ( ! isset( $fields[ $name ] ) ) {
 				if ( in_array( $name, self::PRO_FIELDS[ $group ], true ) ) {
-					return new WP_Error(
-						'neve_ability_pro_required',
+					return Abstract_Ability::pro_required_error(
 						/* translators: %s: input field name */
 						sprintf( __( 'The "%s" field requires Neve Pro.', 'neve' ), $group . '.' . $name ),
-						array( 'status' => 403 )
+						$name
 					);
 				}
 
@@ -459,11 +458,10 @@ class Display_Fields {
 
 				foreach ( $value as $item ) {
 					if ( in_array( $item, $pro, true ) && ! defined( 'NEVE_PRO_VERSION' ) ) {
-						return new WP_Error(
-							'neve_ability_pro_required',
+						return Abstract_Ability::pro_required_error(
 							/* translators: 1: element name, 2: input field name */
 							sprintf( __( 'The "%1$s" element in "%2$s" requires Neve Pro.', 'neve' ), $item, $path ),
-							array( 'status' => 403 )
+							$item
 						);
 					}
 					if ( ! in_array( $item, $field['choices'], true ) && ! in_array( $item, $pro, true ) ) {

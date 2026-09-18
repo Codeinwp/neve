@@ -172,6 +172,29 @@ abstract class Abstract_Ability {
 	}
 
 	/**
+	 * Build the "requires Neve Pro" error, carrying the upgrade link both in
+	 * the message and in the error data.
+	 *
+	 * @param string $message Human readable message, without the link.
+	 * @param string $area    Gated field or element, used as the UTM campaign.
+	 * @return WP_Error
+	 */
+	public static function pro_required_error( $message, $area ) {
+		$area        = trim( (string) preg_replace( '/[^a-z0-9]+/', '-', strtolower( (string) $area ) ), '-' );
+		$upgrade_url = tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', $area, 'mcp' ) );
+
+		return new WP_Error(
+			'neve_ability_pro_required',
+			/* translators: 1: error message, 2: upgrade URL */
+			sprintf( __( '%1$s Upgrade: %2$s', 'neve' ), $message, $upgrade_url ),
+			array(
+				'status'      => 403,
+				'upgrade_url' => $upgrade_url,
+			)
+		);
+	}
+
+	/**
 	 * Build a structured validation payload for clients that collapse WP_Error
 	 * details into a generic transport error.
 	 *
@@ -274,14 +297,13 @@ abstract class Abstract_Ability {
 		}
 
 		if ( ! is_array( $result ) ) {
-			return $this->error(
-				'pro_required',
+			return self::pro_required_error(
 				sprintf(
 					/* translators: %s: input field name */
 					__( 'The "%s" field requires Neve Pro.', 'neve' ),
 					$field
 				),
-				403
+				$field
 			);
 		}
 
