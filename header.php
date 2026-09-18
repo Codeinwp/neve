@@ -75,12 +75,23 @@ do_action( 'neve_body_start_after' );
 	do_action( 'neve_before_header_wrapper_hook' );
 	?>
 
-	<header class="<?php echo esc_attr( $header_classes ); ?>" <?php echo ( neve_is_amp() ) ? 'next-page-hide' : ''; ?> >
-		<a class="neve-skip-link show-on-focus" href="#content" >
-			<?php echo __( 'Skip to content', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-		</a>
-		<?php
+	<a class="neve-skip-link show-on-focus" href="#content" >
+		<?php echo __( 'Skip to content', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	</a>
 
+	<?php
+	/**
+	 * Filters the content parts.
+	 *
+	 * @since 1.0.9
+	 *
+	 * @param bool   $status Whether the component should be displayed or not.
+	 * @param string $context The context name.
+	 */
+	if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'header' ) === true ) {
+		?>
+	<header class="<?php echo esc_attr( $header_classes ); ?>" <?php echo ( neve_is_amp() ) ? 'next-page-hide' : ''; ?> >
+		<?php
 		/**
 		 * Executes actions before the header ( navigation ) area.
 		 *
@@ -88,9 +99,7 @@ do_action( 'neve_body_start_after' );
 		 */
 		do_action( 'neve_before_header_hook' );
 
-		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'header' ) === true ) {
-			do_action( 'neve_do_header' );
-		}
+		do_action( 'neve_do_header' );
 
 		/**
 		 * Executes actions after the header ( navigation ) area.
@@ -100,6 +109,9 @@ do_action( 'neve_body_start_after' );
 		do_action( 'neve_after_header_hook' );
 		?>
 	</header>
+		<?php
+	}
+	?>
 
 	<?php
 	/**
