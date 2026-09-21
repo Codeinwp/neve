@@ -542,4 +542,23 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 		$this->assertStringContainsString( 'id="showAnim"', $without_header );
 		$this->assertStringContainsString( 'id="hideAnim"', $without_header );
 	}
+
+	/**
+	 * The AMP position observer watches an element that scrolls out of view.
+	 *
+	 * Left without a target it watches its own parent, which is the page wrapper. The
+	 * wrapper is never out of the viewport, so the animation that shows the button
+	 * never starts.
+	 */
+	public function test_amp_scroll_to_top_observer_watches_an_element_that_scrolls_away() {
+		$GLOBALS['neve_tests_is_amp'] = true;
+		$scroll_to_top                = new \Neve\Views\Scroll_To_Top();
+		$scroll_to_top->init();
+
+		set_theme_mod( 'neve_disable_header', true );
+		$markup = $this->render_header();
+
+		$this->assertStringContainsString( 'id="nv-scroll-to-top-anchor"', $markup );
+		$this->assertStringContainsString( 'target="nv-scroll-to-top-anchor"', $markup );
+	}
 }

@@ -41,7 +41,10 @@ class Scroll_To_Top extends Base_View {
 			return;
 		}
 
-		echo '<amp-position-observer on="enter:hideAnim.start; exit:showAnim.start" layout="nodisplay"></amp-position-observer>';
+		// The observer watches its own parent unless it is given a target. Its parent here is
+		// the page wrapper, which is never out of the viewport, so it watches this anchor instead.
+		echo '<div id="nv-scroll-to-top-anchor"></div>';
+		echo '<amp-position-observer target="nv-scroll-to-top-anchor" on="enter:hideAnim.start; exit:showAnim.start" layout="nodisplay"></amp-position-observer>';
 
 		// We use 2 `amp-animation` elements to trigger the visibility of the button. The first one is for making the button visible
 		echo '
