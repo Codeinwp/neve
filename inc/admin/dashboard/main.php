@@ -121,28 +121,18 @@ class Main {
 		}
 
 		return [
-			'name'         => 'Neve',
-			'notice_cases' => [
+			'name'           => 'Neve',
+			'notice_cases'   => [
 				__( 'change your colors and fonts', 'neve' ),
 				__( 'rearrange your header', 'neve' ),
 				__( 'set page layouts', 'neve' ),
 			],
-			'prompts'      => [
+			'prompts'        => [
 				__( 'Change my Neve headings font to Poppins and my accent color to #0055ff.', 'neve' ),
 				__( 'Move the search icon to the right of my header and put the secondary menu in the top row.', 'neve' ),
 				__( 'Make my Contact page full width with no sidebar and hide its title.', 'neve' ),
 			],
-			'abilities'    => [
-				'neve/site-get-state',
-				'neve/header-list-components',
-				'neve/appearance-update',
-				'neve/appearance-apply-preset',
-				'neve/header-configure',
-				'neve/footer-configure',
-				'neve/site-set-performance',
-				'neve/site-set-theme-mod',
-				'neve/page-layout-update',
-			],
+			'ability_prefix' => 'neve',
 		];
 	}
 
