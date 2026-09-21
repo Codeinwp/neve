@@ -149,7 +149,7 @@ class Site_Set_Performance extends Abstract_Ability {
 		}
 
 		if ( empty( $updated ) ) {
-			return $this->error( 'no_changes', __( 'No performance options were provided.', 'neve' ) );
+			return $this->error( 'no_changes', __( 'No recognized settings were provided.', 'neve' ) );
 		}
 
 		return array( 'updated' => $updated );

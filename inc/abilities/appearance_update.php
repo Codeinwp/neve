@@ -322,7 +322,7 @@ class Appearance_Update extends Abstract_Ability {
 		}
 
 		if ( empty( $updated ) ) {
-			return $this->error( 'no_changes', __( 'No recognized appearance settings were provided.', 'neve' ) );
+			return $this->error( 'no_changes', __( 'No recognized settings were provided.', 'neve' ) );
 		}
 
 		return array(
@@ -531,47 +531,25 @@ class Appearance_Update extends Abstract_Ability {
 			if ( isset( $cfg['radius'] ) ) {
 				$appearance['borderRadius'] = $cfg['radius'];
 			}
-			if ( isset( $cfg['background'] ) ) {
-				if ( $this->is_supported_color_value( $cfg['background'] ) ) {
-					$appearance['background'] = trim( $cfg['background'] );
-				} else {
-					$warnings[] = sprintf(
-						/* translators: %s: button group */
-						__( 'Skipped %s button background: use a CSS color or a Neve palette var like var(--nv-primary-accent).', 'neve' ),
-						$group
-					);
+			// Input path (below buttons.<group>) => appearance key, value.
+			$colors = array(
+				'background'       => array( 'background', isset( $cfg['background'] ) ? $cfg['background'] : null ),
+				'text'             => array( 'text', isset( $cfg['text'] ) ? $cfg['text'] : null ),
+				'hover.background' => array( 'backgroundHover', isset( $cfg['hover']['background'] ) ? $cfg['hover']['background'] : null ),
+				'hover.text'       => array( 'textHover', isset( $cfg['hover']['text'] ) ? $cfg['hover']['text'] : null ),
+			);
+			foreach ( $colors as $path => $color ) {
+				list( $key, $value ) = $color;
+				if ( null === $value ) {
+					continue;
 				}
-			}
-			if ( isset( $cfg['text'] ) ) {
-				if ( $this->is_supported_color_value( $cfg['text'] ) ) {
-					$appearance['text'] = trim( $cfg['text'] );
+				if ( $this->is_supported_color_value( $value ) ) {
+					$appearance[ $key ] = trim( $value );
 				} else {
 					$warnings[] = sprintf(
-						/* translators: %s: button group */
-						__( 'Skipped %s button text color: use a CSS color or a Neve palette var like var(--nv-primary-accent).', 'neve' ),
-						$group
-					);
-				}
-			}
-			if ( isset( $cfg['hover']['background'] ) ) {
-				if ( $this->is_supported_color_value( $cfg['hover']['background'] ) ) {
-					$appearance['backgroundHover'] = trim( $cfg['hover']['background'] );
-				} else {
-					$warnings[] = sprintf(
-						/* translators: %s: button group */
-						__( 'Skipped %s button hover background: use a CSS color or a Neve palette var like var(--nv-primary-accent).', 'neve' ),
-						$group
-					);
-				}
-			}
-			if ( isset( $cfg['hover']['text'] ) ) {
-				if ( $this->is_supported_color_value( $cfg['hover']['text'] ) ) {
-					$appearance['textHover'] = trim( $cfg['hover']['text'] );
-				} else {
-					$warnings[] = sprintf(
-						/* translators: %s: button group */
-						__( 'Skipped %s button hover text color: use a CSS color or a Neve palette var like var(--nv-primary-accent).', 'neve' ),
-						$group
+						/* translators: %s: input field path, e.g. buttons.primary.background */
+						__( 'Skipped "%s": use a CSS color or a Neve palette var like var(--nv-primary-accent).', 'neve' ),
+						'buttons.' . $group . '.' . $path
 					);
 				}
 			}

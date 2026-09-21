@@ -211,7 +211,7 @@ class Page_Layout_Update extends Abstract_Ability {
 		}
 
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {
-			return $this->error( 'forbidden', __( 'You are not allowed to edit this post.', 'neve' ), 403 );
+			return $this->error( 'forbidden', __( 'You do not have permission to perform this action.', 'neve' ), 403 );
 		}
 
 		if ( ! in_array( $post->post_type, $this->get_supported_post_types(), true ) ) {

@@ -188,7 +188,7 @@ class Appearance_Apply_Preset extends Abstract_Ability {
 	 */
 	private function apply_header_preset( $label ) {
 		if ( ! class_exists( '\HFG\Main' ) ) {
-			return $this->error( 'hfg_unavailable', __( 'The header builder is not available.', 'neve' ), 501 );
+			return $this->error( 'hfg_unavailable', __( 'The header/footer builder is not available.', 'neve' ), 501 );
 		}
 
 		$builder = \HFG\Main::get_instance()->get_builder( 'header' );
@@ -197,7 +197,7 @@ class Appearance_Apply_Preset extends Abstract_Ability {
 		// presets. note_preset_drift() makes it observable if that ever breaks.
 		if ( ! is_object( $builder ) || ! method_exists( $builder, 'get_header_presets' ) ) {
 			$this->note_preset_drift( 'get_header_presets() is missing on the header builder' );
-			return $this->error( 'presets_unavailable', __( 'Header presets are not available.', 'neve' ), 501 );
+			return $this->error( 'presets_unavailable', __( 'No header presets found', 'neve' ), 501 );
 		}
 
 		try {
@@ -206,7 +206,7 @@ class Appearance_Apply_Preset extends Abstract_Ability {
 			$presets = $method->invoke( $builder );
 		} catch ( \ReflectionException $e ) {
 			$this->note_preset_drift( 'reflection failed: ' . $e->getMessage() );
-			return $this->error( 'presets_unavailable', __( 'Could not read header presets.', 'neve' ), 501 );
+			return $this->error( 'presets_unavailable', __( 'No header presets found', 'neve' ), 501 );
 		}
 
 		$setup = '';

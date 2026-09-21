@@ -158,7 +158,7 @@ class Footer_Configure extends Abstract_Ability {
 	protected function run( array $input ) {
 		$builder = $this->get_builder( 'footer' );
 		if ( null === $builder ) {
-			return $this->error( 'hfg_unavailable', __( 'The footer builder is not available.', 'neve' ), 501 );
+			return $this->error( 'hfg_unavailable', __( 'The header/footer builder is not available.', 'neve' ), 501 );
 		}
 
 		$warnings = array();
@@ -183,7 +183,7 @@ class Footer_Configure extends Abstract_Ability {
 				if ( ! in_array( $entry['component'], $valid, true ) ) {
 					$warnings[] = sprintf(
 						/* translators: %s: component id */
-						__( 'Unknown footer component "%s"; skipped.', 'neve' ),
+						__( 'Unknown component "%s"; skipped.', 'neve' ),
 						$entry['component']
 					);
 					continue;
