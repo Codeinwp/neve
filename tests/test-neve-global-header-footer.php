@@ -519,4 +519,27 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 		$this->assertStringContainsString( 'nvAmpWooSidebarExpanded', $without_header );
 		$this->assertStringContainsString( 'nvAmpMenuExpanded', $without_header );
 	}
+
+	/**
+	 * The AMP scroll to top animations outlive a disabled header.
+	 *
+	 * The button is hidden until an animation shows it, so it never appears when the
+	 * animations are gone.
+	 */
+	public function test_amp_scroll_to_top_animations_survive_a_disabled_header() {
+		$GLOBALS['neve_tests_is_amp'] = true;
+		$scroll_to_top                = new \Neve\Views\Scroll_To_Top();
+		$scroll_to_top->init();
+
+		$with_header = $this->render_header();
+		$this->assertStringContainsString( '<header', $with_header );
+		$this->assertStringContainsString( 'id="showAnim"', $with_header );
+
+		set_theme_mod( 'neve_disable_header', true );
+		$without_header = $this->render_header();
+
+		$this->assertStringNotContainsString( '<header', $without_header );
+		$this->assertStringContainsString( 'id="showAnim"', $without_header );
+		$this->assertStringContainsString( 'id="hideAnim"', $without_header );
+	}
 }

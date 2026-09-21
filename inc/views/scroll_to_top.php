@@ -22,7 +22,9 @@ class Scroll_To_Top extends Base_View {
 	public function init() {
 		add_action( 'neve_after_primary', array( $this, 'render_button' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_action( 'neve_before_header_hook', array( $this, 'scroll_to_top_amp' ) );
+		// Printed outside the header, because the button is hidden until one of these
+		// animations shows it, and the button stays on the page when the header is turned off.
+		add_action( 'neve_before_header_wrapper_hook', array( $this, 'scroll_to_top_amp' ) );
 	}
 
 	/**
