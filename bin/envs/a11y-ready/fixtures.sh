@@ -62,6 +62,36 @@ POST_ID=$($WP_CMD post create \
 	--porcelain)
 $WP_CMD comment create --comment_post_ID="$POST_ID" --comment_content="An approved fixture comment so the comment list renders." --comment_author="Fixture Tester" --comment_author_email=fixture@example.com --comment_approved=1 --porcelain
 
+# QA-review comment fixtures (Rodica, Codeinwp/neve-pro-addon#3240).
+$WP_CMD eval '
+$post = get_page_by_path( "a11y-comment-test", OBJECT, "post" );
+if ( $post && ! get_comments( array( "post_id" => $post->ID, "author_email" => "depth@example.com", "count" => true ) ) ) {
+	$mk = function( $args ) use ( $post ) {
+		return wp_insert_comment( array_merge( array(
+			"comment_post_ID"      => $post->ID,
+			"comment_approved"     => 1,
+			"comment_author_email" => "depth@example.com",
+			"comment_content"      => "Fixture comment.",
+		), $args ) );
+	};
+	$p = 0;
+	foreach ( range( 1, 4 ) as $d ) {
+		$p = $mk( array( "comment_author" => "Depth Tester $d", "comment_content" => "Nested reply at depth $d for the reflow check.", "comment_parent" => $p, "comment_date" => "2026-09-01 10:0$d:00" ) );
+	}
+	$mk( array( "comment_author" => "John Γιάννης Doe Κάποιος", "comment_content" => "Deepest reply, long author name — the header must wrap instead of pushing the Reply link off a 320px viewport.", "comment_parent" => $p, "comment_date" => "2026-09-01 10:05:00" ) );
+	$mk( array( "comment_author" => "Table Poster", "comment_content" => "<table><tr><th>First column</th><th>Second column</th><th>Third column</th></tr><tr><td>Alpha</td><td>Beta</td><td>Gamma</td></tr></table>", "comment_date" => "2026-09-01 11:00:00" ) );
+	foreach ( range( 1, 3 ) as $i ) {
+		$mk( array( "comment_author" => "Jane Doe", "comment_content" => "Jane comment $i.", "comment_date" => "2026-09-02 11:1$i:00" ) );
+	}
+	$mk( array( "comment_author" => "Alice Same", "comment_content" => "Same minute one.", "comment_date" => "2026-09-03 08:12:10" ) );
+	$mk( array( "comment_author" => "Bob Same", "comment_content" => "Same minute two.", "comment_date" => "2026-09-03 08:12:40" ) );
+}
+'
+$WP_CMD term create category "Samename" --slug=samename-cat 2>/dev/null || true
+$WP_CMD term create post_tag "Samename" --slug=samename 2>/dev/null || true
+$WP_CMD post term add "$POST_ID" category samename-cat
+$WP_CMD post term add "$POST_ID" post_tag samename
+
 # ------------------------------------------------------------------
 # 3. Page containing ALL Neve block patterns (pattern criteria tests)
 # ------------------------------------------------------------------
