@@ -171,11 +171,10 @@ class Pagination extends Base_View {
 		}
 
 		$paginate_args = array(
-			'type'               => 'list',
-			// Gives every numeric link an accessible name of "Page N" —
-			// visually it still reads "N" (review: two links named "2"
-			// pointed to different URLs).
-			'before_page_number' => '<span class="screen-reader-text">' . esc_html__( 'Page', 'neve' ) . ' </span>',
+			'type'              => 'list',
+			// SR-only suffix: keeps numeric links descriptive while the
+			// accessible name still starts with the visible number.
+			'after_page_number' => '<span class="screen-reader-text"> (' . esc_html__( 'Page', 'neve' ) . ')</span>',
 		);
 		if ( $this->has_jump_to() ) {
 			$paginate_args['format'] = '?paged=%#%';

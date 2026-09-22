@@ -23,7 +23,7 @@ return <<<'CSS'
 .folio-hero-media .wp-block-cover:nth-child(2){transform:translateY(-16px);z-index:3;margin:0 -26px}
 .folio-hero-media .wp-block-cover:nth-child(3){transform:rotate(7deg) translateY(10px);z-index:2}
 @media(max-width:782px){
-  .folio-hero-media .wp-block-cover{width:150px;transform:none !important;margin:6px !important}
+  .folio-hero-media .wp-block-cover{width:clamp(84px,27vw,150px);min-height:clamp(150px,46vw,252px);transform:none !important;margin:6px !important}
 }
 
 /* Star rating row */
