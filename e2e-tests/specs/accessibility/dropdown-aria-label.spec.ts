@@ -21,7 +21,7 @@ test("mobile dropdown toggle aria-label is plain text", async ({ page }) => {
 	for (const label of await toggles.evaluateAll((buttons) =>
 		buttons.map((b) => b.getAttribute("aria-label") || "")
 	)) {
-		expect(label).toMatch(/^Toggle \S/);
+		expect(label).toMatch(/^\S.* submenu$/);
 		expect(label).not.toContain("<");
 	}
 });

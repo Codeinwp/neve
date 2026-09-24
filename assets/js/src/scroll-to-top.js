@@ -17,9 +17,14 @@ function scrollTopSafe(to) {
 }
 
 function runScroll() {
+	const reducedMotion = window.matchMedia(
+		'(prefers-reduced-motion: reduce)'
+	).matches;
 	const smoothScrollFeature =
 		'scrollBehavior' in document.documentElement.style;
-	if (!smoothScrollFeature) {
+	if (reducedMotion) {
+		window.scrollTo(0, 0);
+	} else if (!smoothScrollFeature) {
 		scrollTopSafe(0);
 	} else {
 		window.scrollTo({
@@ -31,7 +36,9 @@ function runScroll() {
 	const scrollButton = document.getElementById('scroll-to-top');
 	if (content) {
 		scrollButton.blur();
-		content.focus();
+		// preventScroll: #content became focusable (skip-link target) and a
+		// plain focus() cancels the smooth scroll above mid-flight.
+		content.focus({ preventScroll: true });
 	}
 }
 function scrollToTop() {
@@ -42,12 +49,6 @@ function scrollToTop() {
 
 	element.addEventListener('click', function () {
 		runScroll();
-	});
-
-	element.addEventListener('keydown', function (event) {
-		if (event.key === 'Enter') {
-			runScroll();
-		}
 	});
 
 	window.addEventListener('scroll', function () {

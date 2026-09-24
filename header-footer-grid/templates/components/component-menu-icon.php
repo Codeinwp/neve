@@ -28,11 +28,13 @@ if ( $menu_icon !== 'default' ) {
 ?>
 <div class="menu-mobile-toggle item-button navbar-toggle-wrapper">
 	<button type="button" class="<?php echo esc_attr( $class ); ?> navbar-toggle"
-			value="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?>"
 		<?php
 		echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// One naming source: the visible label when set, aria-label otherwise.
+		if ( empty( $label ) ) {
+			echo ' aria-label="' . esc_attr__( 'Navigation Menu', 'neve' ) . '"';
+		}
 		?>
-			aria-label="<?php esc_attr_e( 'Navigation Menu', 'neve' ); ?> "
 			<?php echo MenuIcon::aria_expanded_behaviour(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 		<?php
 		if ( ! empty( $label ) ) {

@@ -1,9 +1,8 @@
 === Neve ===
 Contributors: themeisle
-Tags: blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
+Tags: blog, block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-menu, featured-image-header, featured-images, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
 Requires at least: 5.5
-Tested up to: 6.4
-Stable tag: trunk
+Tested up to: 7.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -18,6 +17,13 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+
+##### [Version 4.2.13](https://github.com/Codeinwp/neve/compare/v4.2.12...v4.2.13) (2026-09-24)
+
+- Improved Neve accessibility with keyboard-ready menus, stronger contrast, and better page reflow.
+
+
+
 
 ##### [Version 4.2.12](https://github.com/Codeinwp/neve/compare/v4.2.11...v4.2.12) (2026-09-14)
 

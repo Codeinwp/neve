@@ -71,7 +71,7 @@ class TestNeveNavWalkerAriaLabel extends WP_UnitTestCase {
 			remove_filter( 'wp_kses_allowed_html', $permissive, PHP_INT_MAX );
 		}
 
-		$this->assertStringContainsString( 'aria-label="Toggle Shop"', $html );
+		$this->assertStringContainsString( 'aria-label="Shop submenu"', $html );
 	}
 
 	/**
@@ -82,6 +82,6 @@ class TestNeveNavWalkerAriaLabel extends WP_UnitTestCase {
 	public function test_toggle_aria_label_keeps_a_title_with_a_lone_less_than() {
 		$html = $this->render_sidebar_menu( 'Kids <12' );
 
-		$this->assertStringContainsString( 'aria-label="Toggle Kids &lt;12"', $html );
+		$this->assertStringContainsString( 'aria-label="Kids &lt;12 submenu"', $html );
 	}
 }

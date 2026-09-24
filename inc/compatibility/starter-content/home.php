@@ -24,8 +24,8 @@ $post_content = <<<'HTML'
 <div class="wp-block-button"><a class="wp-block-button__link has-nv-text-dark-bg-color has-neve-link-color-background-color has-text-color has-background has-link-color" href="{{home_url}}work/" style="border-radius:8px;padding-top:14px;padding-right:28px;padding-bottom:14px;padding-left:28px">View Our Work</a></div>
 <!-- /wp:button -->
 
-<!-- wp:button {"textColor":"neve-text-color","className":"is-style-outline folio-btn-outline","style":{"border":{"radius":"8px","color":"#E5E7EB","width":"1px"},"spacing":{"padding":{"top":"14px","right":"28px","bottom":"14px","left":"28px"}},"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}}} -->
-<div class="wp-block-button is-style-outline folio-btn-outline"><a class="wp-block-button__link has-neve-text-color-color has-text-color has-border-color has-link-color" href="{{home_url}}contact/" style="border-color:#E5E7EB;border-width:1px;border-radius:8px;padding-top:14px;padding-right:28px;padding-bottom:14px;padding-left:28px">Get in Touch</a></div>
+<!-- wp:button {"textColor":"neve-text-color","borderColor":"nv-c-2","className":"is-style-outline folio-btn-outline","style":{"border":{"radius":"8px","width":"1px"},"spacing":{"padding":{"top":"14px","right":"28px","bottom":"14px","left":"28px"}},"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}}} -->
+<div class="wp-block-button is-style-outline folio-btn-outline"><a class="wp-block-button__link has-neve-text-color-color has-text-color has-link-color has-border-color has-nv-c-2-border-color wp-element-button" href="{{home_url}}contact/" style="border-width:1px;border-radius:8px;padding-top:14px;padding-right:28px;padding-bottom:14px;padding-left:28px">Get in Touch</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
@@ -40,20 +40,20 @@ $post_content = <<<'HTML'
 <!-- /wp:group -->
 
 <!-- wp:buttons {"className":"folio-pills","style":{"spacing":{"margin":{"top":"22px"},"blockGap":"10px"}}} -->
-<div class="wp-block-buttons folio-pills" style="margin-top:22px"><!-- wp:button {"textColor":"neve-text-color","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"7px","right":"16px","bottom":"7px","left":"16px"}},"color":{"background":"#F1F5F9"},"typography":{"fontSize":"13px"},"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}}} -->
-<div class="wp-block-button has-custom-font-size" style="font-size:13px"><a class="wp-block-button__link has-neve-text-color-color has-text-color has-background has-link-color" href="#" style="border-radius:999px;background-color:#F1F5F9;padding-top:7px;padding-right:16px;padding-bottom:7px;padding-left:16px">Business</a></div>
+<div class="wp-block-buttons folio-pills" style="margin-top:22px"><!-- wp:button {"textColor":"neve-text-color","borderColor":"nv-c-2","style":{"border":{"radius":"999px","width":"1px"},"spacing":{"padding":{"top":"7px","right":"16px","bottom":"7px","left":"16px"}},"color":{"background":"#F1F5F9"},"typography":{"fontSize":"13px"},"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}}} -->
+<div class="wp-block-button has-custom-font-size"><a class="wp-block-button__link has-neve-text-color-color has-text-color has-background has-link-color has-border-color has-nv-c-2-border-color has-custom-font-size wp-element-button" style="border-width:1px;border-radius:999px;background-color:#F1F5F9;padding-top:7px;padding-right:16px;padding-bottom:7px;padding-left:16px;font-size:13px">Business</a></div>
 <!-- /wp:button -->
 
-<!-- wp:button {"textColor":"neve-text-color","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"7px","right":"16px","bottom":"7px","left":"16px"}},"color":{"background":"#F1F5F9"},"typography":{"fontSize":"13px"},"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}}} -->
-<div class="wp-block-button has-custom-font-size" style="font-size:13px"><a class="wp-block-button__link has-neve-text-color-color has-text-color has-background has-link-color" href="#" style="border-radius:999px;background-color:#F1F5F9;padding-top:7px;padding-right:16px;padding-bottom:7px;padding-left:16px">Portfolio</a></div>
+<!-- wp:button {"textColor":"neve-text-color","borderColor":"nv-c-2","style":{"border":{"radius":"999px","width":"1px"},"spacing":{"padding":{"top":"7px","right":"16px","bottom":"7px","left":"16px"}},"color":{"background":"#F1F5F9"},"typography":{"fontSize":"13px"},"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}}} -->
+<div class="wp-block-button has-custom-font-size"><a class="wp-block-button__link has-neve-text-color-color has-text-color has-background has-link-color has-border-color has-nv-c-2-border-color has-custom-font-size wp-element-button" style="border-width:1px;border-radius:999px;background-color:#F1F5F9;padding-top:7px;padding-right:16px;padding-bottom:7px;padding-left:16px;font-size:13px">Portfolio</a></div>
 <!-- /wp:button -->
 
-<!-- wp:button {"textColor":"neve-text-color","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"7px","right":"16px","bottom":"7px","left":"16px"}},"color":{"background":"#F1F5F9"},"typography":{"fontSize":"13px"},"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}}} -->
-<div class="wp-block-button has-custom-font-size" style="font-size:13px"><a class="wp-block-button__link has-neve-text-color-color has-text-color has-background has-link-color" href="#" style="border-radius:999px;background-color:#F1F5F9;padding-top:7px;padding-right:16px;padding-bottom:7px;padding-left:16px">Blog</a></div>
+<!-- wp:button {"textColor":"neve-text-color","borderColor":"nv-c-2","style":{"border":{"radius":"999px","width":"1px"},"spacing":{"padding":{"top":"7px","right":"16px","bottom":"7px","left":"16px"}},"color":{"background":"#F1F5F9"},"typography":{"fontSize":"13px"},"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}}} -->
+<div class="wp-block-button has-custom-font-size"><a class="wp-block-button__link has-neve-text-color-color has-text-color has-background has-link-color has-border-color has-nv-c-2-border-color has-custom-font-size wp-element-button" style="border-width:1px;border-radius:999px;background-color:#F1F5F9;padding-top:7px;padding-right:16px;padding-bottom:7px;padding-left:16px;font-size:13px">Blog</a></div>
 <!-- /wp:button -->
 
-<!-- wp:button {"textColor":"neve-text-color","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"7px","right":"16px","bottom":"7px","left":"16px"}},"color":{"background":"#F1F5F9"},"typography":{"fontSize":"13px"},"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}}} -->
-<div class="wp-block-button has-custom-font-size" style="font-size:13px"><a class="wp-block-button__link has-neve-text-color-color has-text-color has-background has-link-color" href="#" style="border-radius:999px;background-color:#F1F5F9;padding-top:7px;padding-right:16px;padding-bottom:7px;padding-left:16px">Shop</a></div>
+<!-- wp:button {"textColor":"neve-text-color","borderColor":"nv-c-2","style":{"border":{"radius":"999px","width":"1px"},"spacing":{"padding":{"top":"7px","right":"16px","bottom":"7px","left":"16px"}},"color":{"background":"#F1F5F9"},"typography":{"fontSize":"13px"},"elements":{"link":{"color":{"text":"var:preset|color|neve-text-color"}}}}} -->
+<div class="wp-block-button has-custom-font-size"><a class="wp-block-button__link has-neve-text-color-color has-text-color has-background has-link-color has-border-color has-nv-c-2-border-color has-custom-font-size wp-element-button" style="border-width:1px;border-radius:999px;background-color:#F1F5F9;padding-top:7px;padding-right:16px;padding-bottom:7px;padding-left:16px;font-size:13px">Shop</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:column -->
@@ -459,8 +459,8 @@ $post_content = <<<'HTML'
 <h3 class="wp-block-heading has-text-align-center folio-stat-num has-nv-text-dark-bg-color has-text-color" style="font-size:48px;font-weight:800">500+</h3>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"center","textColor":"nv-c-2","style":{"typography":{"fontSize":"15px"}}} -->
-<p class="has-text-align-center has-nv-c-2-color has-text-color" style="font-size:15px">Projects Completed</p>
+<!-- wp:paragraph {"align":"center","textColor":"nv-c-1","style":{"typography":{"fontSize":"15px"}}} -->
+<p class="has-text-align-center has-nv-c-1-color has-text-color" style="font-size:15px">Projects Completed</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -469,8 +469,8 @@ $post_content = <<<'HTML'
 <h3 class="wp-block-heading has-text-align-center folio-stat-num has-nv-text-dark-bg-color has-text-color" style="font-size:48px;font-weight:800">98%</h3>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"center","textColor":"nv-c-2","style":{"typography":{"fontSize":"15px"}}} -->
-<p class="has-text-align-center has-nv-c-2-color has-text-color" style="font-size:15px">Client Satisfaction</p>
+<!-- wp:paragraph {"align":"center","textColor":"nv-c-1","style":{"typography":{"fontSize":"15px"}}} -->
+<p class="has-text-align-center has-nv-c-1-color has-text-color" style="font-size:15px">Client Satisfaction</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -479,8 +479,8 @@ $post_content = <<<'HTML'
 <h3 class="wp-block-heading has-text-align-center folio-stat-num has-nv-text-dark-bg-color has-text-color" style="font-size:48px;font-weight:800">12</h3>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"center","textColor":"nv-c-2","style":{"typography":{"fontSize":"15px"}}} -->
-<p class="has-text-align-center has-nv-c-2-color has-text-color" style="font-size:15px">Years Experience</p>
+<!-- wp:paragraph {"align":"center","textColor":"nv-c-1","style":{"typography":{"fontSize":"15px"}}} -->
+<p class="has-text-align-center has-nv-c-1-color has-text-color" style="font-size:15px">Years Experience</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -489,8 +489,8 @@ $post_content = <<<'HTML'
 <h3 class="wp-block-heading has-text-align-center folio-stat-num has-nv-text-dark-bg-color has-text-color" style="font-size:48px;font-weight:800">50+</h3>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"center","textColor":"nv-c-2","style":{"typography":{"fontSize":"15px"}}} -->
-<p class="has-text-align-center has-nv-c-2-color has-text-color" style="font-size:15px">Team Members</p>
+<!-- wp:paragraph {"align":"center","textColor":"nv-c-1","style":{"typography":{"fontSize":"15px"}}} -->
+<p class="has-text-align-center has-nv-c-1-color has-text-color" style="font-size:15px">Team Members</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>

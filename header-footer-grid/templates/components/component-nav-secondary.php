@@ -21,10 +21,15 @@ if ( $style !== 'style-plain' ) {
 	$container_classes[] = 'm-style';
 }
 $menu_id = SecondNav::COMPONENT_ID . '-' . $device_class . '-' . current_row( HeaderBuilder::BUILDER_NAME );
+
+// Desktop and mobile rows both render this landmark; duplicated landmarks
+// need unique accessible names.
+$device_label   = $device_class === 'mobile' ? __( 'Mobile', 'neve' ) : __( 'Desktop', 'neve' );
+$landmark_label = __( 'Secondary Menu', 'neve' ) . ' (' . $device_label . ')';
 ?>
 <div class="nv-top-bar">
 	<div role="navigation" class="menu-content <?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
-		aria-label="<?php esc_attr_e( 'Secondary Menu', 'neve' ); ?>">
+		aria-label="<?php echo esc_attr( $landmark_label ); ?>">
 		<?php
 		wp_nav_menu(
 			array(
