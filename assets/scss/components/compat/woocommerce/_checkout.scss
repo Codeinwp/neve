@@ -174,7 +174,6 @@
 	.select2-container {
 
 		&.select2-container--open {
-			outline: 0;
 			box-shadow: 0 0 3px 0 var(--nv-secondary-accent);
 			--formfieldbordercolor: var(--nv-secondary-accent);
 		}

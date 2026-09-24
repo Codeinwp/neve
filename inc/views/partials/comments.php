@@ -197,7 +197,11 @@ class Comments extends Base_View {
 						<div class="nv-comment-header">
 							<div class="comment-author vcard">
 								<span class="fn author"><?php echo get_comment_author_link(); ?></span>
-								<a href="<?php echo esc_url( get_comment_link() ); ?>">
+								<?php
+								/* translators: 1: comment date, 2: comment time, 3: comment author */
+								$permalink_label = sprintf( __( '%1$s at %2$s (comment by %3$s)', 'neve' ), get_comment_date(), get_comment_time(), get_comment_author() );
+								?>
+								<a href="<?php echo esc_url( get_comment_link() ); ?>" aria-label="<?php echo esc_attr( $permalink_label ); ?>">
 									<time class="entry-date published"
 											datetime="<?php echo esc_attr( get_comment_time( 'c' ) ); ?>"
 											content="<?php echo esc_attr( get_comment_time( 'Y-m-d' ) ); ?>">
@@ -245,16 +249,24 @@ class Comments extends Base_View {
 		<div class="edit-reply">
 			<?php edit_comment_link( '(' . esc_html__( 'Edit', 'neve' ) . ')' ); ?>
 			<?php
+			$reply_label = sprintf(
+				/* translators: 1: comment author, 2: comment date, 3: comment time */
+				__( 'Reply to %1$s (%2$s at %3$s)', 'neve' ),
+				get_comment_author(),
+				get_comment_date(),
+				get_comment_time()
+			);
 			comment_reply_link(
 				array_merge(
 					$args,
 					array(
-						'reply_text' => esc_html__( 'Reply', 'neve' ),
-						'add_below'  => 'comment',
-						'depth'      => $depth,
-						'max_depth'  => $args['max_depth'],
-						'before'     => '<span class="nv-reply-link">',
-						'after'      => '</span>',
+						'reply_text'    => esc_html__( 'Reply', 'neve' ),
+						'reply_to_text' => str_replace( '%', '%%', $reply_label ),
+						'add_below'     => 'comment',
+						'depth'         => $depth,
+						'max_depth'     => $args['max_depth'],
+						'before'        => '<span class="nv-reply-link">',
+						'after'         => '</span>',
 					)
 				)
 			);
