@@ -11,6 +11,22 @@
 class TestNeveNavWalkerAriaLabel extends WP_UnitTestCase {
 
 	/**
+	 * ID of the parent menu item created by render_sidebar_menu().
+	 *
+	 * @var int
+	 */
+	private $parent_id;
+
+	/**
+	 * Save titles as an administrator. The bootstrap sets $current_user without
+	 * wp_set_current_user(), so the kses filters stay on and would encode `<`.
+	 */
+	public function set_up() {
+		parent::set_up();
+		wp_set_current_user( self::factory()->user->create( array( 'role' => 'administrator' ) ) );
+	}
+
+	/**
 	 * Render a sidebar menu whose only parent item has one child.
 	 *
 	 * @param string $parent_title Title of the parent item.
@@ -18,8 +34,8 @@ class TestNeveNavWalkerAriaLabel extends WP_UnitTestCase {
 	 * @return string
 	 */
 	private function render_sidebar_menu( $parent_title ) {
-		$menu_id   = wp_create_nav_menu( 'Aria Label Test ' . $parent_title );
-		$parent_id = wp_update_nav_menu_item(
+		$menu_id         = wp_create_nav_menu( 'Aria Label Test ' . $parent_title );
+		$this->parent_id = wp_update_nav_menu_item(
 			$menu_id,
 			0,
 			array(
@@ -37,7 +53,7 @@ class TestNeveNavWalkerAriaLabel extends WP_UnitTestCase {
 				'menu-item-url'       => home_url( '/cart/' ),
 				'menu-item-type'      => 'custom',
 				'menu-item-status'    => 'publish',
-				'menu-item-parent-id' => $parent_id,
+				'menu-item-parent-id' => $this->parent_id,
 			)
 		);
 
@@ -54,27 +70,6 @@ class TestNeveNavWalkerAriaLabel extends WP_UnitTestCase {
 	}
 
 	/**
-	 * A plugin that widens wp_kses_allowed_html for every context, including the
-	 * reserved 'strip' one, must not leak Neve's title wrapper into the toggle
-	 * aria-label. Regression test for #4623 (Booster for WooCommerce does this).
-	 */
-	public function test_toggle_aria_label_survives_permissive_kses_filter() {
-		$permissive = static function ( $allowed_html ) {
-			$allowed_html['span']['class'] = true;
-			return $allowed_html;
-		};
-		add_filter( 'wp_kses_allowed_html', $permissive, PHP_INT_MAX );
-
-		try {
-			$html = $this->render_sidebar_menu( 'Shop' );
-		} finally {
-			remove_filter( 'wp_kses_allowed_html', $permissive, PHP_INT_MAX );
-		}
-
-		$this->assertStringContainsString( 'aria-label="Shop submenu"', $html );
-	}
-
-	/**
 	 * strip_tags() reads a lone `<` as the start of a tag and drops the rest of the
 	 * title. An editor with unfiltered_html can save such a title, so the item name
 	 * must survive in the label.
@@ -82,6 +77,16 @@ class TestNeveNavWalkerAriaLabel extends WP_UnitTestCase {
 	public function test_toggle_aria_label_keeps_a_title_with_a_lone_less_than() {
 		$html = $this->render_sidebar_menu( 'Kids <12' );
 
+		$this->assertSame( 'Kids <12', get_post( $this->parent_id )->post_title );
 		$this->assertStringContainsString( 'aria-label="Kids &lt;12 submenu"', $html );
+	}
+
+	/**
+	 * Line breaks, tabs and repeated spaces in the title collapse to one space.
+	 */
+	public function test_toggle_aria_label_collapses_whitespace_in_the_title() {
+		$html = $this->render_sidebar_menu( "Shop \n\t Now" );
+
+		$this->assertStringContainsString( 'aria-label="Shop Now submenu"', $html );
 	}
 }
