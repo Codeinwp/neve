@@ -179,8 +179,8 @@ $post_content = <<<'HTML'
 <h2 class="wp-block-heading has-text-align-center has-nv-text-dark-bg-color has-text-color" style="font-size:40px;font-weight:800;letter-spacing:-0.5px">Want to work with us?</h2>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"center","textColor":"nv-c-2","style":{"typography":{"fontSize":"18px","lineHeight":"1.7"},"spacing":{"margin":{"top":"16px","bottom":"32px"}}}} -->
-<p class="has-text-align-center has-nv-c-2-color has-text-color" style="margin-top:16px;margin-bottom:32px;font-size:18px;line-height:1.7">We’re always looking for new challenges and new people to collaborate with.</p>
+<!-- wp:paragraph {"align":"center","textColor":"nv-c-1","style":{"typography":{"fontSize":"18px","lineHeight":"1.7"},"spacing":{"margin":{"top":"16px","bottom":"32px"}}}} -->
+<p class="has-text-align-center has-nv-c-1-color has-text-color" style="margin-top:16px;margin-bottom:32px;font-size:18px;line-height:1.7">We’re always looking for new challenges and new people to collaborate with.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"blockGap":"14px"}}} -->

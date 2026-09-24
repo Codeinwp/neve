@@ -173,10 +173,15 @@ class Post_Meta extends Base_View {
 					if ( ! in_array( 'category', get_object_taxonomies( $post_type ) ) ) {
 						break;
 					}
-					$meta_content = str_replace( '{meta}', get_the_category_list( ', ', '', $pid ), $format );
-					$markup      .= '<' . $tag . ' class="meta category ' . esc_attr( $element_class ) . '">';
-					$markup      .= wp_kses_post( $meta_content );
-					$markup      .= '</' . $tag . '>';
+					$category_list = str_replace(
+						'</a>',
+						'<span class="screen-reader-text"> ' . esc_html__( '(category)', 'neve' ) . '</span></a>',
+						get_the_category_list( ', ', '', $pid )
+					);
+					$meta_content  = str_replace( '{meta}', $category_list, $format );
+					$markup       .= '<' . $tag . ' class="meta category ' . esc_attr( $element_class ) . '">';
+					$markup       .= wp_kses_post( $meta_content );
+					$markup       .= '</' . $tag . '>';
 					break;
 				case 'comments':
 					$comments = self::get_comments( $pid );
@@ -401,7 +406,7 @@ class Post_Meta extends Base_View {
 		/* translators: %s: number of comments */
 		$comments = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'neve' ), $comments_number );
 
-		return '<a href="' . esc_url( get_comments_link( $post_id ) ) . '">' . esc_html( $comments ) . '</a>';
+		return '<a href="' . esc_url( get_comments_link( $post_id ) ) . '">' . esc_html( $comments ) . '<span class="screen-reader-text">, ' . esc_html( get_the_title( $post_id ) ) . '</span></a>';
 	}
 
 	/**
@@ -417,7 +422,7 @@ class Post_Meta extends Base_View {
 		foreach ( $tags as $tag ) {
 			$tag_link = get_tag_link( $tag->term_id );
 			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . ' rel="tag">';
-			$html    .= esc_html( $tag->name ) . '</a>';
+			$html    .= esc_html( $tag->name ) . '<span class="screen-reader-text"> ' . esc_html__( '(tag)', 'neve' ) . '</span></a>';
 		}
 		$html .= ' </div> ';
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
