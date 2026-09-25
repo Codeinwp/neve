@@ -44,9 +44,9 @@ class TestElementorCompatibility extends WP_UnitTestCase {
 	private function get_elementor_compat( $custom_global_colors = [] ) {
 		$elementor = new \Neve\Compatibility\Elementor();
 
-		$custom_colors = new ReflectionProperty( $elementor, 'custom_global_colors' );
+		$custom_colors = new ReflectionProperty( \Neve\Compatibility\Elementor::class, 'custom_global_colors' );
 		$custom_colors->setAccessible( true );
-		$custom_colors->setValue( $elementor, $custom_global_colors );
+		$custom_colors->setValue( null, $custom_global_colors );
 
 		return $elementor;
 	}
