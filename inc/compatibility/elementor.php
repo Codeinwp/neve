@@ -140,11 +140,17 @@ class Elementor extends Page_Builder_Base {
 	 * @return \WP_REST_Response|\WP_Error
 	 */
 	public function alter_global_colors_front_end( $response, $handler, \WP_REST_Request $request ) {
-		if ( is_wp_error( $response ) ) {
+		$route = $request->get_route();
+
+		// Elementor never knows Neve IDs, so not-found is expected on the colors route.
+		$is_color_not_found = is_wp_error( $response )
+			&& 'global_not_found' === $response->get_error_code()
+			&& 0 === strpos( $route, '/elementor/v1/globals/colors/' );
+
+		if ( is_wp_error( $response ) && ! $is_color_not_found ) {
 			return $response;
 		}
 
-		$route         = $request->get_route();
 		$rest_to_slugs = [
 			'nvprimaryaccent'   => 'nv-primary-accent',
 			'nvsecondaryaccent' => 'nv-secondary-accent',
