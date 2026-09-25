@@ -24,11 +24,20 @@ class TestElementorCompatibility extends WP_UnitTestCase {
 	 * Reset the static custom colors so they don't leak into other tests.
 	 */
 	public function tearDown(): void {
-		$custom_colors = new ReflectionProperty( \Neve\Compatibility\Elementor::class, 'custom_global_colors' );
-		$custom_colors->setAccessible( true );
-		$custom_colors->setValue( null, null );
+		$this->set_custom_global_colors( null );
 
 		parent::tearDown();
+	}
+
+	/**
+	 * Set the static custom global colors on the compatibility class.
+	 *
+	 * @param array<string, array{label: string, val: string}>|null $colors Custom global colors, or null for the unloaded default.
+	 */
+	private function set_custom_global_colors( ?array $colors ): void {
+		$custom_colors = new ReflectionProperty( \Neve\Compatibility\Elementor::class, 'custom_global_colors' );
+		$custom_colors->setAccessible( true );
+		$custom_colors->setValue( null, $colors );
 	}
 
 	/**
@@ -37,16 +46,14 @@ class TestElementorCompatibility extends WP_UnitTestCase {
 	 * Avoids ::init(), which needs ELEMENTOR_VERSION defined and would leak that
 	 * constant plus its hooks into the rest of the suite.
 	 *
-	 * @param array $custom_global_colors Custom global colors theme mod value.
+	 * @param array<string, array{label: string, val: string}> $custom_global_colors Custom global colors theme mod value.
 	 *
 	 * @return \Neve\Compatibility\Elementor
 	 */
-	private function get_elementor_compat( $custom_global_colors = [] ) {
+	private function get_elementor_compat( array $custom_global_colors = [] ) {
 		$elementor = new \Neve\Compatibility\Elementor();
 
-		$custom_colors = new ReflectionProperty( \Neve\Compatibility\Elementor::class, 'custom_global_colors' );
-		$custom_colors->setAccessible( true );
-		$custom_colors->setValue( null, $custom_global_colors );
+		$this->set_custom_global_colors( $custom_global_colors );
 
 		return $elementor;
 	}
@@ -161,6 +168,17 @@ class TestElementorCompatibility extends WP_UnitTestCase {
 	public function test_global_colors_front_end_passes_through_not_found_for_unknown_color() {
 		$elementor = $this->get_elementor_compat();
 		$request   = new WP_REST_Request( 'GET', self::GLOBALS_ROUTE . '/colors/primary' );
+		$error     = $this->get_global_not_found_error();
+
+		$this->assertSame( $error, $elementor->alter_global_colors_front_end( $error, [], $request ) );
+	}
+
+	/**
+	 * Elementor's not-found error on a non-color route should be passed through for a Neve ID.
+	 */
+	public function test_global_colors_front_end_passes_through_not_found_on_typography_route() {
+		$elementor = $this->get_elementor_compat();
+		$request   = new WP_REST_Request( 'GET', self::GLOBALS_ROUTE . '/typography/nvprimaryaccent' );
 		$error     = $this->get_global_not_found_error();
 
 		$this->assertSame( $error, $elementor->alter_global_colors_front_end( $error, [], $request ) );
