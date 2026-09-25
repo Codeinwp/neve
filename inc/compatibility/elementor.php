@@ -140,7 +140,8 @@ class Elementor extends Page_Builder_Base {
 	 * @return \WP_REST_Response|\WP_Error
 	 */
 	public function alter_global_colors_front_end( $response, $handler, \WP_REST_Request $request ) {
-		if ( is_wp_error( $response ) ) {
+		// Elementor never knows Neve IDs, so not-found is expected here.
+		if ( is_wp_error( $response ) && 'global_not_found' !== $response->get_error_code() ) {
 			return $response;
 		}
 
