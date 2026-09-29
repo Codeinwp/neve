@@ -69,7 +69,7 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 	 * {@inheritDoc}
 	 */
 	protected function get_description() {
-		return __( 'Read or write a single allowlisted Neve theme setting (the long tail not covered by the higher-level abilities, e.g. scroll-to-top and form-field styling). Use action "get" to read and "set" to write.', 'neve' );
+		return __( 'Read or write a single allowlisted Neve theme setting not covered by the other abilities, e.g. scroll-to-top or form-field styling.', 'neve' );
 	}
 
 	/**
@@ -110,7 +110,7 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 				'action' => array(
 					'type'        => 'string',
 					'enum'        => array( 'get', 'set' ),
-					'description' => 'Whether to read or write the setting.',
+					'description' => 'Whether to read ("get") or write ("set") the setting.',
 				),
 				'key'    => array(
 					'type'        => 'string',

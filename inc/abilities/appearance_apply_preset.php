@@ -95,7 +95,7 @@ class Appearance_Apply_Preset extends Abstract_Ability {
 	 * {@inheritDoc}
 	 */
 	protected function get_description() {
-		return __( 'Apply a whole-state preset: a font pairing and/or a header layout preset. This replaces the affected settings rather than merging them.', 'neve' );
+		return __( 'Apply a font pairing and/or header layout preset. Replaces the affected settings instead of merging.', 'neve' );
 	}
 
 	/**

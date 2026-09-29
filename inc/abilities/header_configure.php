@@ -36,7 +36,8 @@ class Header_Configure extends Abstract_Ability {
 	 * {@inheritDoc}
 	 */
 	protected function get_description() {
-		return __( 'Place or remove header components, style rows, and toggle sticky/transparent header. Validate component ids with header-list-components first. Use dry_run to preview without saving.', 'neve' );
+		/* translators: Keep "header-list-components" untranslated; it is an ability name. */
+		return __( 'Place or remove header components, style rows and toggle sticky/transparent header. Get component ids from header-list-components first.', 'neve' );
 	}
 
 	/**

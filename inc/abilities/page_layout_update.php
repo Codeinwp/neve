@@ -65,7 +65,7 @@ class Page_Layout_Update extends Abstract_Ability {
 	 * {@inheritDoc}
 	 */
 	protected function get_description() {
-		return __( 'Read or edit the Neve layout settings of a single post, page or product: container, sidebar, content width, title alignment and hidden header/title/featured image/footer. Send only post_id to read the current settings. Use "default" to fall back to the Customizer setting. Use dry_run to preview.', 'neve' );
+		return __( 'Read or edit the Neve layout settings of a post, page or product: container, sidebar, content width, title alignment and hidden elements.', 'neve' );
 	}
 
 	/**
@@ -115,18 +115,19 @@ class Page_Layout_Update extends Abstract_Ability {
 			'post_id' => array(
 				'type'        => 'integer',
 				'minimum'     => 1,
-				'description' => 'The post, page or product ID.',
+				'description' => 'The post, page or product ID. Send only this to read the current settings.',
 			),
 		);
 
 		foreach ( self::ENUM_FIELDS as $name => $config ) {
 			$properties[ $name ] = array(
-				'type' => 'string',
-				'enum' => $config[1],
+				'type'        => 'string',
+				'enum'        => $config[1],
+				'description' => '"default" falls back to the Customizer setting.',
 			);
 		}
 
-		$properties['author_avatar']['description'] = 'Show the author avatar in the post meta (posts only).';
+		$properties['author_avatar']['description'] = 'Show the author avatar in the post meta (posts only). "default" falls back to the Customizer setting.';
 
 		$properties['content_width_enabled'] = array(
 			'type'        => 'boolean',
@@ -146,7 +147,7 @@ class Page_Layout_Update extends Abstract_Ability {
 		$properties['reading_time'] = array(
 			'type'        => 'string',
 			'enum'        => array( 'default', 'on', 'off' ),
-			'description' => 'Show the estimated reading time in the post meta. Requires the Neve Pro Blog Booster module.',
+			'description' => 'Show the estimated reading time in the post meta. Requires the Neve Pro Blog Booster module. "default" falls back to the Customizer setting.',
 		);
 		$properties['dry_run']      = array(
 			'type'        => 'boolean',
