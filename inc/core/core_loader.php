@@ -132,6 +132,8 @@ class Core_Loader {
 			'Admin\Troubleshoot\Main',
 			'Admin\Dashboard\Main',
 			'Admin\Hooks_Upsells',
+
+			'Abilities\Loader',
 		);
 
 		if ( $this->is_fse_child_theme() ) {
