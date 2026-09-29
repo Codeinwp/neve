@@ -7,19 +7,32 @@
 	margin: 0 !important;
 }
 
+// Forms with a visible, persistent label (404 / no-results pages): the
+// label sits on its own line above the field.
+.search-form.nv-search-labeled {
+	flex-wrap: wrap;
+
+	label {
+		flex-basis: 100%;
+		margin-bottom: 8px;
+	}
+}
+
 .search-form {
 	display: flex;
 	max-width: 100%;
 	line-height: 1;
 	--primarybtnbg: var(--formfieldbgcolor);
 	--primarybtnhoverbg: var(--formfieldbgcolor);
-	--primarybtncolor: var(--formfieldbordercolor);
-	--primarybtnhovercolor: var(--formfieldbordercolor);
+	// The button label must meet text contrast; the border color is a
+	// non-text color and was near-invisible as text.
+	--primarybtncolor: var(--formfieldcolor);
+	--primarybtnhovercolor: var(--formfieldcolor);
 
 	svg {
 		fill: var(--formfieldcolor);
 		width: var(--formfieldfontsize);
-		opacity: 0.5;
+		opacity: 0.7;
 		height: auto;
 	}
 

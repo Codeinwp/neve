@@ -7,10 +7,14 @@
 
 return array(
 	'title'      => __( 'Four columns with team members', 'neve' ),
-	'content'    => '<!-- wp:columns -->
+	'content'    => '<!-- wp:heading {"textAlign":"center"} -->
+<h2 class="has-text-align-center">Meet our team</h2>
+<!-- /wp:heading -->
+
+<!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
-<div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-3.jpg" alt="" /></figure></div>
+<div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-3.jpg" alt="Portrait of Tim Jerris" /></figure></div>
 <!-- /wp:image -->
 
 <!-- wp:heading {"textAlign":"center","level":3} -->
@@ -36,7 +40,7 @@ return array(
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
-<div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-4.jpg" alt="" /></figure></div>
+<div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-4.jpg" alt="Portrait of Erica Browser" /></figure></div>
 <!-- /wp:image -->
 
 <!-- wp:heading {"textAlign":"center","level":3} -->
@@ -62,7 +66,7 @@ return array(
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
-<div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-2.jpg" alt="" /></figure></div>
+<div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-2.jpg" alt="Portrait of Jack Nolston" /></figure></div>
 <!-- /wp:image -->
 
 <!-- wp:heading {"textAlign":"center","level":3} -->
@@ -88,7 +92,7 @@ return array(
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"align":"center","className":"is-style-default"} -->
-<div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-1.jpg" alt="" /></figure></div>
+<div class="wp-block-image is-style-default"><figure class="aligncenter"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-1.jpg" alt="Portrait of Jane Austin" /></figure></div>
 <!-- /wp:image -->
 
 <!-- wp:heading {"textAlign":"center","level":3} -->

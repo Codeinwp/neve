@@ -1,9 +1,12 @@
-/* global NeveProperties CustomEvent */
+/* global NeveProperties */
 /* jshint esversion: 6 */
 import {
 	addEvent,
 	addClass,
 	removeClass,
+	qs,
+	qsa,
+	emit,
 	NV_FOCUS_TRAP_START,
 	NV_FOCUS_TRAP_END,
 } from '../utils.js';
@@ -16,21 +19,15 @@ const sidebarClasses = [
 ];
 
 export const HFG = function () {
-	this.options = {
-		menuToggleDuration: 300,
-	};
 	this.init();
 };
 
-const toggleAria = (elements, add = true) => {
-	elements.forEach(function (element) {
-		if (!add) {
-			element.removeAttribute('aria-hidden');
-			return;
-		}
-		element.setAttribute('aria-hidden', 'true');
-	});
-};
+const toggleAria = (elements, add = true) =>
+	elements.forEach((element) =>
+		add
+			? element.setAttribute('aria-hidden', 'true')
+			: element.removeAttribute('aria-hidden')
+	);
 
 /**
  * Init mobile sidebar.
@@ -38,15 +35,14 @@ const toggleAria = (elements, add = true) => {
  * @param {boolean} skipSidebar
  */
 HFG.prototype.init = function (skipSidebar = false) {
-	const doc = window.document;
 	if (skipSidebar === false) {
-		const closeButtons = doc.querySelectorAll(closeNavSelector);
+		const closeButtons = qsa(closeNavSelector);
 		addEvent(closeButtons, 'click', () => {
 			this.toggleMenuSidebar(false);
 		});
 	}
 
-	const menuMobileToggleButtons = doc.querySelectorAll('.menu-mobile-toggle');
+	const menuMobileToggleButtons = qsa('.menu-mobile-toggle');
 	addEvent(menuMobileToggleButtons, 'click', (event) => {
 		this.toggleMenuSidebar(
 			!event.target.parentElement.classList.contains('is-active'),
@@ -57,15 +53,9 @@ HFG.prototype.init = function (skipSidebar = false) {
 	/**
 	 * When click to outside of menu sidebar.
 	 */
-	const overlay = doc.querySelector('.header-menu-sidebar-overlay');
+	const overlay = qs('.header-menu-sidebar-overlay');
 	if (overlay) {
-		addEvent(
-			overlay,
-			'click',
-			function () {
-				this.toggleMenuSidebar(false);
-			}.bind(this)
-		);
+		addEvent(overlay, 'click', () => this.toggleMenuSidebar(false));
 	}
 };
 
@@ -76,41 +66,35 @@ HFG.prototype.init = function (skipSidebar = false) {
  * @param {Element} target
  */
 HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
-	const doc = window.document;
-	const TOGGLE_CLASS_CONTAINER = '.menu-mobile-toggle';
-	const buttonsContainer = doc.querySelectorAll(TOGGLE_CLASS_CONTAINER);
-	removeClass(doc.body, sidebarClasses[1]);
+	const body = document.body;
+	const buttonsContainer = qsa('.menu-mobile-toggle');
+	removeClass(body, sidebarClasses[1]);
 
 	/**
 	 * Elements to apply aria-hidden on
 	 */
-	const ariaShowOnToggle = doc.querySelectorAll(
-		'#header-menu-sidebar, .hfg-ov'
-	);
-	const ariaHideOnToggle = doc.querySelectorAll(
+	const ariaShowOnToggle = qsa('#header-menu-sidebar, .hfg-ov');
+	const ariaHideOnToggle = qsa(
 		'.neve-skip-link, #content, .scroll-to-top, #site-footer, .header--row'
 	);
 
 	if (
 		((typeof NeveProperties === 'undefined' ||
 			!NeveProperties.isCustomize) &&
-			doc.body.classList.contains(sidebarClasses[0])) ||
+			body.classList.contains(sidebarClasses[0])) ||
 		toggle === false
 	) {
-		const navClickaway = doc.querySelector('.nav-clickaway-overlay');
+		const navClickaway = qs('.nav-clickaway-overlay');
 		if (navClickaway !== null) {
-			navClickaway.parentNode.removeChild(navClickaway);
+			navClickaway.remove();
 		}
-		addClass(doc.body, sidebarClasses[1]);
-		removeClass(doc.body, sidebarClasses[0]);
+		addClass(body, sidebarClasses[1]);
+		removeClass(body, sidebarClasses[0]);
 		removeClass(buttonsContainer, sidebarClasses[2]);
 		// Remove the hiding class after 1 second.
-		setTimeout(
-			function () {
-				removeClass(doc.body, sidebarClasses[1]);
-			}.bind(this),
-			1000
-		);
+		setTimeout(function () {
+			removeClass(body, sidebarClasses[1]);
+		}, 1000);
 
 		/**
 		 * Remove aria-hidden from elements outside the sidebar menu
@@ -118,21 +102,17 @@ HFG.prototype.toggleMenuSidebar = function (toggle, target = null) {
 		toggleAria(ariaHideOnToggle, false);
 		toggleAria(ariaShowOnToggle);
 		// Remove focus trap when closing.
-		doc.dispatchEvent(new CustomEvent(NV_FOCUS_TRAP_END));
+		emit(NV_FOCUS_TRAP_END);
 	} else {
-		addClass(doc.body, sidebarClasses[0]);
+		addClass(body, sidebarClasses[0]);
 		addClass(buttonsContainer, sidebarClasses[2]);
 		if (target) {
-			doc.dispatchEvent(
-				new CustomEvent(NV_FOCUS_TRAP_START, {
-					detail: {
-						container: doc.getElementById('header-menu-sidebar'),
-						close: closeNavSelector,
-						firstFocus: closeNavSelector + ',.menu-item a',
-						backFocus: target,
-					},
-				})
-			);
+			emit(NV_FOCUS_TRAP_START, {
+				container: document.getElementById('header-menu-sidebar'),
+				close: closeNavSelector,
+				firstFocus: closeNavSelector + ',.menu-item a',
+				backFocus: target,
+			});
 		}
 
 		/**

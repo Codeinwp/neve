@@ -10,11 +10,11 @@ return array(
 	'content'    => '<!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {} -->
-<figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-10.jpg" alt="" /></figure>
+<figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-10.jpg" alt="Pink desserts arranged on a pink card" /></figure>
 <!-- /wp:image -->
 
-<!-- wp:heading {"level":3} -->
-<h3>Heading three</h3>
+<!-- wp:heading -->
+<h2>Heading two</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -23,7 +23,7 @@ return array(
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-primary"} -->
-<div class="wp-block-button is-style-primary"><a class="wp-block-button__link">LEARN MORE</a></div>
+<div class="wp-block-button is-style-primary"><a class="wp-block-button__link" href="#">LEARN MORE</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
@@ -34,11 +34,11 @@ return array(
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {} -->
-<figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-6.jpg" alt=""/></figure>
+<figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-6.jpg" alt="Orange light bulb on a teal background"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:heading {"level":3} -->
-<h3>Heading three</h3>
+<!-- wp:heading -->
+<h2>Heading two</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -47,7 +47,7 @@ return array(
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-primary"} -->
-<div class="wp-block-button is-style-primary"><a class="wp-block-button__link">LEARN MORE</a></div>
+<div class="wp-block-button is-style-primary"><a class="wp-block-button__link" href="#">DISCOVER MORE</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
@@ -58,11 +58,11 @@ return array(
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {} -->
-<figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-11.jpg" alt="" /></figure>
+<figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-11.jpg" alt="Rose quartz stone on a pink card" /></figure>
 <!-- /wp:image -->
 
-<!-- wp:heading {"level":3} -->
-<h3>Heading three</h3>
+<!-- wp:heading -->
+<h2>Heading two</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -71,7 +71,7 @@ return array(
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-primary"} -->
-<div class="wp-block-button is-style-primary"><a class="wp-block-button__link">LEARN MORE</a></div>
+<div class="wp-block-button is-style-primary"><a class="wp-block-button__link" href="#">READ MORE</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 

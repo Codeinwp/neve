@@ -41,9 +41,20 @@ a {
 	cursor: pointer;
 	text-decoration: var(--linkdeco);
 
+	// Hover pairs the accent shift with a non-color cue: underlined text
+	// links drop their underline. Focus keeps the underline — the W2
+	// focus ring is its visible indicator.
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+// Button-like links manage their own text color per state; forcing the
+// accent onto them breaks contrast (e.g. dark accent on a dark button).
+a:not([class*="button"]) {
+
 	&:hover,
 	&:focus {
-		opacity: 0.9;
 		color: var(--nv-secondary-accent);
 	}
 }
@@ -54,6 +65,16 @@ a {
 .nv-comment-content {
 
 	a:not([class]) {
+		--linkdeco: underline;
+	}
+}
+
+// Classed links in prose need the same non-color distinction; button-like
+// and block-component links keep their own affordance.
+.entry-content,
+.nv-comment-content {
+
+	a[class]:not([class*="button"]):not([class*="wp-block"]) {
 		--linkdeco: underline;
 	}
 }

@@ -170,7 +170,12 @@ class Pagination extends Base_View {
 			return;
 		}
 
-		$paginate_args = array( 'type' => 'list' );
+		$paginate_args = array(
+			'type'              => 'list',
+			// SR-only suffix: keeps numeric links descriptive while the
+			// accessible name still starts with the visible number.
+			'after_page_number' => '<span class="screen-reader-text"> (' . esc_html__( 'Page', 'neve' ) . ')</span>',
+		);
 		if ( $this->has_jump_to() ) {
 			$paginate_args['format'] = '?paged=%#%';
 		}
@@ -257,9 +262,9 @@ class Pagination extends Base_View {
 			);
 		}
 
-		echo $this->has_infinite_scroll() ? '<div style="display: none;">' : '';
+		echo $this->has_infinite_scroll() ? '<div style="display: none;">' : '<nav class="nv-posts-pagination" aria-label="' . esc_attr__( 'Posts pagination', 'neve' ) . '">';
 		echo wp_kses( $links, $allowed_tags );
-		echo $this->has_infinite_scroll() ? '</div>' : '';
+		echo $this->has_infinite_scroll() ? '</div>' : '</nav>';
 
 		if ( $this->has_infinite_scroll() ) {
 			echo wp_kses_post( '<div class="load-more-posts"><span class="nv-loader" style="display: none;"></span><span class="infinite-scroll-trigger"></span></div>' );
