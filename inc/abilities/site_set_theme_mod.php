@@ -154,7 +154,12 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 		$key    = isset( $input['key'] ) ? $input['key'] : '';
 
 		if ( ! in_array( $key, $this->allowlist(), true ) ) {
-			return $this->validation_issue( 'key_not_allowed', __( 'That theme setting is not reachable through this ability.', 'neve' ), 'key' );
+			return $this->validation_issue(
+				'key_not_allowed',
+				/* translators: %s: input field name */
+				sprintf( __( 'Invalid value for "%s".', 'neve' ), 'key' ),
+				'key'
+			);
 		}
 
 		if ( 'set' === $action ) {

@@ -113,7 +113,7 @@ class Header_List_Components extends Abstract_Ability {
 		$builder = \HFG\Main::get_instance()->get_builder( $builder_id );
 
 		if ( ! is_object( $builder ) ) {
-			return $this->error( 'invalid_builder', __( 'Unknown builder.', 'neve' ) );
+			return $this->invalid_value( 'builder', 'invalid_builder' );
 		}
 
 		$layout = $builder->get_layout_data();

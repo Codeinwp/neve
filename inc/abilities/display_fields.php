@@ -459,8 +459,8 @@ class Display_Fields {
 				foreach ( $value as $item ) {
 					if ( in_array( $item, $pro, true ) && ! defined( 'NEVE_PRO_VERSION' ) ) {
 						return Abstract_Ability::pro_required_error(
-							/* translators: 1: element name, 2: input field name */
-							sprintf( __( 'The "%1$s" element in "%2$s" requires Neve Pro.', 'neve' ), $item, $path ),
+							/* translators: %s: input field name */
+							sprintf( __( 'The "%s" field requires Neve Pro.', 'neve' ), $path . '.' . $item ),
 							$item
 						);
 					}

@@ -255,7 +255,11 @@ class Page_Layout_Update extends Abstract_Ability {
 			}
 			// The meta key only exists while the Neve Pro Blog Booster module runs.
 			if ( ! registered_meta_key_exists( 'post', self::READING_TIME_META ) ) {
-				return self::pro_required_error( __( 'The "reading_time" field requires the Neve Pro Blog Booster module.', 'neve' ), 'reading_time' );
+				return self::pro_required_error(
+					/* translators: %s: input field name */
+					sprintf( __( 'The "%s" field requires Neve Pro.', 'neve' ), 'reading_time' ),
+					'reading_time'
+				);
 			}
 			$changes[ self::READING_TIME_META ] = 'default' === $input['reading_time'] ? null : $input['reading_time'];
 		}
@@ -285,23 +289,6 @@ class Page_Layout_Update extends Abstract_Ability {
 			'dry_run'   => $dry_run,
 			'updated'   => array_keys( $changes ),
 			'layout'    => $layout,
-		);
-	}
-
-	/**
-	 * Build an invalid value error.
-	 *
-	 * @param string $field Input field name.
-	 * @return \WP_Error
-	 */
-	private function invalid_value( $field ) {
-		return $this->error(
-			'invalid_value',
-			sprintf(
-				/* translators: %s: input field name */
-				__( 'Invalid value for "%s".', 'neve' ),
-				$field
-			)
 		);
 	}
 
