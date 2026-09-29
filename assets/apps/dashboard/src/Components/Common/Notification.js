@@ -8,19 +8,38 @@ import {
 	LucideCircleCheck,
 	LucideCircleX,
 	LucideExternalLink,
+	LucideX,
 } from 'lucide-react';
 import Card from '../../Layout/Card';
 import Button from './Button';
 import Tooltip from './Tooltip';
 import TransitionInOut from './TransitionInOut';
+import { openAiConnect, dismissAiConnect } from '../../utils/ai-connect';
 
 const Notification = ({ data }) => {
 	const [hidden, setHidden] = useState(false);
-	const { text, cta, type, update, url, targetBlank } = data;
+	const { text, cta, type, update, url, targetBlank, aiConnect } = data;
 	const { canInstallPlugins } = neveDash;
 	const [inProgress, setInProgress] = useState(false);
 	const [done, setDone] = useState(false);
 	const [errorMessage, setErrorMessage] = useState(null);
+
+	// Once the connector is enabled from the SDK modal the invitation is answered.
+	useEffect(() => {
+		if (!aiConnect) {
+			return undefined;
+		}
+		const onEnabled = () => setHidden(true);
+		document.addEventListener(
+			'themeisle-sdk-ai-connect-enabled',
+			onEnabled
+		);
+		return () =>
+			document.removeEventListener(
+				'themeisle-sdk-ai-connect-enabled',
+				onEnabled
+			);
+	}, [aiConnect]);
 
 	useEffect(() => {
 		let timeout;
@@ -235,11 +254,43 @@ const Notification = ({ data }) => {
 		</>
 	);
 
+	// The SDK's AI Connect invitation: the button opens the SDK modal and the X
+	// records the dismissal with the SDK, both through the SDK's own notice node.
+	const AiConnectNotification = () => (
+		<>
+			<p
+				className="text-sm font-medium leading-relaxed"
+				dangerouslySetInnerHTML={{ __html: text }}
+			/>
+			<div className="flex items-center gap-2 shrink-0">
+				<Button className={buttonClasses} onClick={openAiConnect}>
+					{cta}
+				</Button>
+				<button
+					type="button"
+					className="text-white/80 hover:text-white p-1 rounded"
+					aria-label={__('Dismiss', 'neve')}
+					onClick={() => {
+						dismissAiConnect();
+						setHidden(true);
+					}}
+				>
+					<LucideX size={18} />
+				</button>
+			</div>
+		</>
+	);
+
+	const content = () => {
+		if (aiConnect) {
+			return <AiConnectNotification />;
+		}
+		return update ? <UpdateNotification /> : <LinkNotification />;
+	};
+
 	return (
 		<TransitionInOut show={!hidden}>
-			<Card className={classes}>
-				{update ? <UpdateNotification /> : <LinkNotification />}
-			</Card>
+			<Card className={classes}>{content()}</Card>
 		</TransitionInOut>
 	);
 };
