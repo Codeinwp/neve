@@ -284,7 +284,7 @@ class Appearance_Update extends Abstract_Ability {
 		if ( isset( $input['identity'] ) && is_array( $input['identity'] ) ) {
 			$needs_options = isset( $input['identity']['blogname'] ) || isset( $input['identity']['blogdescription'] );
 			if ( $needs_options && ! current_user_can( 'manage_options' ) ) {
-				return $this->error( 'forbidden', __( 'Changing the site title or tagline requires the manage_options capability.', 'neve' ), 403 );
+				return $this->error( 'forbidden', __( 'You do not have permission to perform this action.', 'neve' ), 403 );
 			}
 		}
 

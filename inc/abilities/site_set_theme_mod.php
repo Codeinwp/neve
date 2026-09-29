@@ -164,7 +164,12 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 
 		if ( 'set' === $action ) {
 			if ( ! array_key_exists( 'value', $input ) ) {
-				return $this->validation_issue( 'missing_value', __( 'A value is required when setting a theme setting.', 'neve' ), 'value' );
+				return $this->validation_issue(
+					'missing_value',
+					/* translators: %s: input field name */
+					sprintf( __( 'Invalid value for "%s".', 'neve' ), 'value' ),
+					'value'
+				);
 			}
 
 			set_theme_mod( $key, $this->sanitize_value( $input['value'] ) );
