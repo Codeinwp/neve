@@ -18,6 +18,14 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 4.2.14](https://github.com/Codeinwp/neve/compare/v4.2.13...v4.2.14) (2026-09-29)
+
+- Fixed Elementor pages losing Neve palette colors after CSS regeneration.
+- Added AI agent support: let AI assistants read and change your Neve settings.
+
+
+
+
 ##### [Version 4.2.13](https://github.com/Codeinwp/neve/compare/v4.2.12...v4.2.13) (2026-09-24)
 
 - Improved Neve accessibility with keyboard-ready menus, stronger contrast, and better page reflow.
