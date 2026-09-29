@@ -30,7 +30,10 @@ const Notification = ({ data }) => {
 			return undefined;
 		}
 		const onEnabled = () => setHidden(true);
-		document.addEventListener('themeisle-sdk-ai-connect-enabled', onEnabled);
+		document.addEventListener(
+			'themeisle-sdk-ai-connect-enabled',
+			onEnabled
+		);
 		return () =>
 			document.removeEventListener(
 				'themeisle-sdk-ai-connect-enabled',
