@@ -53,7 +53,7 @@ class Site_Get_State extends Abstract_Ability {
 	 * {@inheritDoc}
 	 */
 	protected function get_description() {
-		return __( 'Return a grounding snapshot of the Neve site: color palette, typography, layout, active modules, license tier and integrations. Heavy sections (header, footer, blog, single, shop) are opt-in via the "sections" argument. Read this first to understand the site before making changes.', 'neve' );
+		return __( 'Return a grounding snapshot of the Neve site: color palette, typography, layout, active modules, license tier and integrations. Read this first to understand the site before making changes.', 'neve' );
 	}
 
 	/**

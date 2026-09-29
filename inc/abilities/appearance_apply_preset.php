@@ -95,7 +95,7 @@ class Appearance_Apply_Preset extends Abstract_Ability {
 	 * {@inheritDoc}
 	 */
 	protected function get_description() {
-		return __( 'Apply a whole-state preset: a font pairing and/or a header layout preset. This replaces the affected settings rather than merging them.', 'neve' );
+		return __( 'Apply a font pairing and/or header layout preset. Replaces the affected settings instead of merging.', 'neve' );
 	}
 
 	/**
@@ -171,7 +171,7 @@ class Appearance_Apply_Preset extends Abstract_Ability {
 		}
 
 		if ( empty( $applied ) ) {
-			return $this->error( 'no_preset', __( 'Provide a font_pair and/or header_preset to apply.', 'neve' ) );
+			return $this->error( 'no_preset', __( 'No recognized settings were provided.', 'neve' ) );
 		}
 
 		return array(
@@ -197,7 +197,7 @@ class Appearance_Apply_Preset extends Abstract_Ability {
 		// presets. note_preset_drift() makes it observable if that ever breaks.
 		if ( ! is_object( $builder ) || ! method_exists( $builder, 'get_header_presets' ) ) {
 			$this->note_preset_drift( 'get_header_presets() is missing on the header builder' );
-			return $this->error( 'presets_unavailable', __( 'No header presets found', 'neve' ), 501 );
+			return $this->error( 'presets_unavailable', __( 'No header presets found.', 'neve' ), 501 );
 		}
 
 		try {
@@ -206,7 +206,7 @@ class Appearance_Apply_Preset extends Abstract_Ability {
 			$presets = $method->invoke( $builder );
 		} catch ( \ReflectionException $e ) {
 			$this->note_preset_drift( 'reflection failed: ' . $e->getMessage() );
-			return $this->error( 'presets_unavailable', __( 'No header presets found', 'neve' ), 501 );
+			return $this->error( 'presets_unavailable', __( 'No header presets found.', 'neve' ), 501 );
 		}
 
 		$setup = '';
@@ -219,13 +219,13 @@ class Appearance_Apply_Preset extends Abstract_Ability {
 
 		if ( '' === $setup ) {
 			$this->note_preset_drift( 'preset label not found: ' . $label );
-			return $this->error( 'unknown_preset', __( 'Unknown header preset.', 'neve' ) );
+			return $this->invalid_value( 'header_preset', 'unknown_preset' );
 		}
 
 		$mods = json_decode( $setup, true );
 		if ( ! is_array( $mods ) ) {
 			$this->note_preset_drift( 'preset setup did not decode to an array for: ' . $label );
-			return $this->error( 'invalid_preset', __( 'The header preset could not be decoded.', 'neve' ), 500 );
+			return $this->error( 'invalid_preset', __( 'No header presets found.', 'neve' ), 500 );
 		}
 
 		$affected = array();

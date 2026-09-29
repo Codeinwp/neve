@@ -521,7 +521,7 @@ return array(
 					'nv-text-color'       => '#1f2937',
 					'nv-text-dark-bg'     => '#ffffff',
 					'nv-c-1'              => '#e5e7eb',
-					'nv-c-2'              => '#6b7280',
+					'nv-c-2'              => '#5b6472',
 				),
 			),
 			'darkMode' =>
@@ -797,7 +797,7 @@ return array(
 		'bottom' => '2',
 		'unit'   => 'px',
 	),
-	'neve_form_fields_border_color'                => 'var(--nv-light-bg)',
+	'neve_form_fields_border_color'                => 'var(--nv-c-2)',
 	'neve_input_text_color'                        => 'var(--nv-text-color)',
 	'footer-menu_component_align'                  =>
 	array(

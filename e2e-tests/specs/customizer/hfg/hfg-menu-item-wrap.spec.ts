@@ -7,7 +7,7 @@ test.describe('Menu item alignment', function () {
 		await page.goto('/');
 		await page.getByRole('button', { name: 'Navigation Menu' }).click();
 		await page
-			.getByRole('button', { name: 'Toggle About The Tests' })
+			.getByRole('button', { name: 'About The Tests submenu' })
 			.click();
 
 		const firstLevelItem = page
@@ -18,9 +18,9 @@ test.describe('Menu item alignment', function () {
 		await firstLevelItem.isVisible();
 		await expect(firstLevelItem).toHaveCSS('white-space', 'normal');
 
-		await page.getByRole('button', { name: 'Toggle Level 1' }).click();
+		await page.getByRole('button', { name: 'Level 1 submenu' }).click();
 
-		await page.getByRole('button', { name: 'Toggle Level 2' }).click();
+		await page.getByRole('button', { name: 'Level 2 submenu' }).click();
 
 		const secondLevelItem = page
 			.locator('#nv-primary-navigation-mobile-sidebar')

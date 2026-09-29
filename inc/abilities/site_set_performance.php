@@ -49,7 +49,7 @@ class Site_Set_Performance extends Abstract_Ability {
 	 * {@inheritDoc}
 	 */
 	protected function get_description() {
-		return __( 'Toggle Neve performance optimizations: remove emoji scripts, remove oEmbed scripts, locally host Google fonts, and lazy-render off-screen content. Send only the keys you want to change.', 'neve' );
+		return __( 'Toggle Neve performance optimizations: remove emoji scripts, remove oEmbed scripts, locally host Google fonts, and lazy-render off-screen content.', 'neve' );
 	}
 
 	/**

@@ -172,6 +172,24 @@ abstract class Abstract_Ability {
 	}
 
 	/**
+	 * Build an invalid value error.
+	 *
+	 * @param string $field Input field name.
+	 * @param string $code  Short error code (namespaced automatically).
+	 * @return WP_Error
+	 */
+	protected function invalid_value( $field, $code = 'invalid_value' ) {
+		return $this->error(
+			$code,
+			sprintf(
+				/* translators: %s: input field name */
+				__( 'Invalid value for "%s".', 'neve' ),
+				$field
+			)
+		);
+	}
+
+	/**
 	 * Build the "requires Neve Pro" error, carrying the upgrade link both in
 	 * the message and in the error data.
 	 *
@@ -185,8 +203,7 @@ abstract class Abstract_Ability {
 
 		return new WP_Error(
 			'neve_ability_pro_required',
-			/* translators: 1: error message, 2: upgrade URL */
-			sprintf( __( '%1$s Upgrade: %2$s', 'neve' ), $message, $upgrade_url ),
+			sprintf( '%1$s %2$s: %3$s', $message, __( 'Upgrade', 'neve' ), $upgrade_url ),
 			array(
 				'status'      => 403,
 				'upgrade_url' => $upgrade_url,

@@ -19,9 +19,11 @@ function neve_get_button_appearance_default( $button = 'button' ) {
 		return [
 			'type'                  => 'outline',
 			'background'            => '',
-			'backgroundHover'       => '',
+			// The fill appearing is the unmissable hover cue; the darker
+			// text/border shift alone is easy to miss.
+			'backgroundHover'       => 'var(--nv-light-bg)',
 			'text'                  => 'var(--nv-primary-accent)',
-			'textHover'             => 'var(--nv-primary-accent)',
+			'textHover'             => 'var(--nv-secondary-accent)',
 			'borderRadius'          => [
 				'top'    => 3,
 				'right'  => 3,
@@ -54,7 +56,7 @@ function neve_get_button_appearance_default( $button = 'button' ) {
 	return [
 		'type'                  => 'fill',
 		'background'            => 'var(--nv-primary-accent)',
-		'backgroundHover'       => 'var(--nv-primary-accent)',
+		'backgroundHover'       => 'var(--nv-secondary-accent)',
 		'text'                  => '#fff',
 		'textHover'             => '#fff',
 		'borderRadius'          => [

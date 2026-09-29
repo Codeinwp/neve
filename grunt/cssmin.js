@@ -10,6 +10,13 @@ module.exports = {
 			1: {
 				specialComments: 0,
 			},
+			// Cascade-aware merging of duplicate/adjacent rules only —
+			// shorthand rewriting and rule restructuring stay OFF so the
+			// output is the same CSS, deduplicated.
+			2: {
+				mergeIntoShorthands: false,
+				restructureRules: true,
+			},
 		},
 	},
 	customizerStyle: {

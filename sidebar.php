@@ -10,7 +10,7 @@ if ( ! is_active_sidebar( 'blog-sidebar' ) ) {
 } ?>
 
 <div class="nv-blog-sidebar">
-	<aside id="secondary" class="blog-sidebar" role="complementary">
+	<aside id="secondary-blog-sidebar" class="blog-sidebar" role="complementary" aria-label="<?php esc_attr_e( 'Sidebar', 'neve' ); ?>">
 		<?php dynamic_sidebar( 'blog-sidebar' ); ?>
 	</aside>
 </div>

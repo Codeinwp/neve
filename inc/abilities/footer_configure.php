@@ -37,7 +37,8 @@ class Footer_Configure extends Abstract_Ability {
 	 * {@inheritDoc}
 	 */
 	protected function get_description() {
-		return __( 'Place or remove footer components, style rows, and edit the copyright (Pro). Validate component ids with header-list-components (builder=footer). Use dry_run to preview without saving.', 'neve' );
+		/* translators: Keep "header-list-components" and "builder=footer" untranslated; they are an ability name and a parameter. */
+		return __( 'Place or remove footer components, style rows and edit the copyright (Pro). Get component ids from header-list-components (builder=footer).', 'neve' );
 	}
 
 	/**
@@ -216,7 +217,11 @@ class Footer_Configure extends Abstract_Ability {
 				return $applied;
 			}
 			if ( ! $this->layout_has_component( $layout, 'footer_copyright' ) ) {
-				$warnings[] = __( 'Copyright text was saved, but the Copyright footer component is not placed. Add footer_copyright to a footer row to render it.', 'neve' );
+				$warnings[] = sprintf(
+					/* translators: %s: component id */
+					__( 'Copyright saved, but it won\'t show until %s is placed in a footer row.', 'neve' ),
+					'footer_copyright'
+				);
 			}
 		}
 

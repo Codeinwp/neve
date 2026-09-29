@@ -69,7 +69,7 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 	 * {@inheritDoc}
 	 */
 	protected function get_description() {
-		return __( 'Read or write a single allowlisted Neve theme setting (the long tail not covered by the higher-level abilities, e.g. scroll-to-top and form-field styling). Use action "get" to read and "set" to write.', 'neve' );
+		return __( 'Read or write a single allowlisted Neve theme setting not covered by the other abilities, e.g. scroll-to-top or form-field styling.', 'neve' );
 	}
 
 	/**
@@ -110,7 +110,7 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 				'action' => array(
 					'type'        => 'string',
 					'enum'        => array( 'get', 'set' ),
-					'description' => 'Whether to read or write the setting.',
+					'description' => 'Whether to read ("get") or write ("set") the setting.',
 				),
 				'key'    => array(
 					'type'        => 'string',
@@ -154,12 +154,22 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 		$key    = isset( $input['key'] ) ? $input['key'] : '';
 
 		if ( ! in_array( $key, $this->allowlist(), true ) ) {
-			return $this->validation_issue( 'key_not_allowed', __( 'That theme setting is not reachable through this ability.', 'neve' ), 'key' );
+			return $this->validation_issue(
+				'key_not_allowed',
+				/* translators: %s: input field name */
+				sprintf( __( 'Invalid value for "%s".', 'neve' ), 'key' ),
+				'key'
+			);
 		}
 
 		if ( 'set' === $action ) {
 			if ( ! array_key_exists( 'value', $input ) ) {
-				return $this->validation_issue( 'missing_value', __( 'A value is required when setting a theme setting.', 'neve' ), 'value' );
+				return $this->validation_issue(
+					'missing_value',
+					/* translators: %s: input field name */
+					sprintf( __( 'Invalid value for "%s".', 'neve' ), 'value' ),
+					'value'
+				);
 			}
 
 			set_theme_mod( $key, $this->sanitize_value( $input['value'] ) );

@@ -40,7 +40,8 @@ class Header_List_Components extends Abstract_Ability {
 	 * {@inheritDoc}
 	 */
 	protected function get_description() {
-		return __( 'List the available header or footer builder components, their rows/slots, and where each component is currently placed. Use this as the source of truth for valid component ids before calling header-configure or footer-configure.', 'neve' );
+		/* translators: Keep "header-configure" and "footer-configure" untranslated; they are ability names. */
+		return __( 'List the header or footer builder components, their rows/slots and current placement. Call this before header-configure or footer-configure to get valid component ids.', 'neve' );
 	}
 
 	/**
@@ -113,7 +114,7 @@ class Header_List_Components extends Abstract_Ability {
 		$builder = \HFG\Main::get_instance()->get_builder( $builder_id );
 
 		if ( ! is_object( $builder ) ) {
-			return $this->error( 'invalid_builder', __( 'Unknown builder.', 'neve' ) );
+			return $this->invalid_value( 'builder', 'invalid_builder' );
 		}
 
 		$layout = $builder->get_layout_data();

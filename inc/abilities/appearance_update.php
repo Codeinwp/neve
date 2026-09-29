@@ -72,7 +72,7 @@ class Appearance_Update extends Abstract_Ability {
 	 * {@inheritDoc}
 	 */
 	protected function get_description() {
-		return __( 'Partial-merge update of the global look: colors/palette, typography, layout, buttons, site identity, and the blog archive, single post and WooCommerce shop display settings. Send only the keys you want to change; existing values are preserved.', 'neve' );
+		return __( 'Partial update of the global look: colors, typography, layout, buttons, site identity, and blog, single post and shop display settings. Only the keys you send are changed.', 'neve' );
 	}
 
 	/**
@@ -284,7 +284,7 @@ class Appearance_Update extends Abstract_Ability {
 		if ( isset( $input['identity'] ) && is_array( $input['identity'] ) ) {
 			$needs_options = isset( $input['identity']['blogname'] ) || isset( $input['identity']['blogdescription'] );
 			if ( $needs_options && ! current_user_can( 'manage_options' ) ) {
-				return $this->error( 'forbidden', __( 'Changing the site title or tagline requires the manage_options capability.', 'neve' ), 403 );
+				return $this->error( 'forbidden', __( 'You do not have permission to perform this action.', 'neve' ), 403 );
 			}
 		}
 
@@ -381,7 +381,7 @@ class Appearance_Update extends Abstract_Ability {
 			if ( ! isset( $global['palettes'][ $active ]['colors'] ) ) {
 				$warnings[] = sprintf(
 					/* translators: %s: active palette name */
-					__( 'The active palette "%s" has no editable colors; no colors were changed.', 'neve' ),
+					__( 'Palette "%s" has no editable colors; colors unchanged.', 'neve' ),
 					$active
 				);
 			} else {
@@ -547,9 +547,10 @@ class Appearance_Update extends Abstract_Ability {
 					$appearance[ $key ] = trim( $value );
 				} else {
 					$warnings[] = sprintf(
-						/* translators: %s: input field path, e.g. buttons.primary.background */
-						__( 'Skipped "%s": use a CSS color or a Neve palette var like var(--nv-primary-accent).', 'neve' ),
-						'buttons.' . $group . '.' . $path
+						/* translators: 1: input field path, e.g. buttons.primary.background, 2: example CSS variable */
+						__( 'Skipped "%1$s": use a CSS color or a Neve palette var like %2$s.', 'neve' ),
+						'buttons.' . $group . '.' . $path,
+						'var(--nv-primary-accent)'
 					);
 				}
 			}
@@ -610,7 +611,11 @@ class Appearance_Update extends Abstract_Ability {
 				set_theme_mod( 'custom_logo', $id );
 				$updated[] = 'custom_logo';
 			} else {
-				$warnings[] = __( 'logo_media_id does not reference an existing media item; logo unchanged.', 'neve' );
+				$warnings[] = sprintf(
+					/* translators: %s: input field name */
+					__( '%s does not reference an existing media item; logo unchanged.', 'neve' ),
+					'logo_media_id'
+				);
 			}
 		}
 

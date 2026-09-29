@@ -1,0 +1,82 @@
+# Accessibility Statement
+
+Neve aims to be usable by everyone, regardless of ability or the
+technology used to browse the web. The theme targets the WordPress.org
+accessibility-ready guidelines and the Web Content Accessibility
+Guidelines (WCAG) 2.2 at level AA for everything the theme renders:
+navigation, headers and footers built with the header/footer builder,
+forms, archives, comments, and WooCommerce storefront templates.
+
+Accessibility is treated as a shipping requirement, not an add-on: an
+automated accessibility test suite gates every change in continuous
+integration, and interactive components (menus, dialogs, disclosures)
+are built on native elements with the appropriate ARIA states.
+
+# Quick Information
+
+Accessibility audit completed: Yes
+Most recent audit date: 2026-08-25
+Tested to standard and conformance level: WCAG 2.2 AA (partially supports)
+Audited by: Themeisle (internal), with an independent WordPress.org
+accessibility-ready review in progress (Themes Trac #285870)
+
+# Testing Tools and Methodology
+
+- Automated: an axe-core scan (WCAG 2.0/2.1/2.2 A and AA rule sets)
+  and a Playwright end-to-end accessibility suite run in continuous
+  integration on every change, covering keyboard operation of menus and
+  disclosures, focus visibility and order, landmark and heading
+  structure, form labeling, and duplicate-id regressions across the
+  page types a reviewer tests (front page, posts, archives, search,
+  404, shop).
+- Manual: keyboard-only passes; reflow checks at 320 px-equivalent
+  (400% zoom) and 200% zoom; WCAG 1.4.12 text-spacing overrides;
+  operating-system reduced-motion verification; contrast checks of the
+  default palette.
+- Assistive technology: VoiceOver (macOS) and NVDA (Windows) passes on
+  navigation, forms, and commerce flows before accessibility-affecting
+  releases.
+
+# Screen Reader Text Class
+
+The theme ships the standard WordPress `.screen-reader-text` class for
+content that should be announced by assistive technology without being
+painted on screen. It uses the WordPress core clip pattern
+(`clip-path: inset(50%)` with `word-wrap: normal`), and focusable
+elements carrying the class become visible when they receive keyboard
+focus. Theme and child-theme authors can add the class to any element
+that needs a spoken-only label.
+
+# Accessibility Features
+
+- A "Skip to content" link is the first focusable element and moves
+  focus to the main content area.
+- All menus are fully keyboard operable: submenu toggles are native
+  buttons with `aria-expanded` and unique accessible names, submenus
+  open with Enter/Space and close with Escape (focus returns to the
+  toggle), and hover-opened submenus can also be dismissed with Escape
+  without moving the pointer.
+- Focus is always visible: the theme never suppresses the focus
+  indicator, and interactive controls keep a minimum 24×24 px target.
+- Landmarks (banner, navigation, main, contentinfo) are unique and
+  labeled; repeated navigation landmarks carry distinguishing names.
+- Default colors meet WCAG AA contrast, links in content are
+  underlined (not distinguished by color alone), and every page type
+  provides a top-level heading.
+- Users who set "reduce motion" in their operating system get instant
+  transitions instead of sliding panels, animated submenus, or smooth
+  scrolling.
+- The mobile menu and modal surfaces trap focus while open and close
+  with Escape.
+
+# Accessibility Help Contact
+
+For help using the theme with assistive technology, post in the Neve
+support forum: https://wordpress.org/support/theme/neve/ — or contact
+Themeisle support: https://themeisle.com/contact/
+
+# Where to Report Issues
+
+Accessibility problems can be reported (and tracked) on the theme's
+GitHub repository: https://github.com/Codeinwp/neve/issues — or in the
+support forum above. Reports are triaged like functional bugs.
