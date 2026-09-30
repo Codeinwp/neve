@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Locator, Page } from '@playwright/test';
 import { desktopSubmenuToggles, submenuFor } from './a11y-utils';
 
 /**
@@ -12,6 +12,65 @@ import { desktopSubmenuToggles, submenuFor } from './a11y-utils';
  * Fixture: "A11y Test" menu with "Products" and "Company" dropdown parents
  * (bin/envs/a11y-ready/fixtures.sh).
  */
+
+type ButtonDecoration = { borderRadius: string; boxShadow: string };
+
+/**
+ * Simulate a customized global button radius and shadow for this
+ * page only, so no theme mod leaks into other specs.
+ *
+ * @param {Page} page Current page.
+ */
+async function applyDecoratedButtonStyles(page: Page): Promise<void> {
+	await page.addStyleTag({
+		content:
+			'body { --primarybtnborderradius: 50px; --primarybtnshadow: 0 0 0 4px rgb(255, 0, 0); }',
+	});
+}
+
+async function buttonDecoration(target: Locator): Promise<ButtonDecoration> {
+	return target.evaluate((el: Element): ButtonDecoration => {
+		const style = getComputedStyle(el);
+		return {
+			borderRadius: style.borderTopLeftRadius,
+			boxShadow: style.boxShadow,
+		};
+	});
+}
+
+/**
+ * Precondition: the injected variables do reach a plain native button.
+ *
+ * @param {Page} page Current page.
+ */
+async function expectGenericButtonDecorated(page: Page): Promise<void> {
+	const decoration = await page.evaluate((): ButtonDecoration => {
+		const probe = document.createElement('button');
+		document.body.appendChild(probe);
+		const style = getComputedStyle(probe);
+		const result = {
+			borderRadius: style.borderTopLeftRadius,
+			boxShadow: style.boxShadow,
+		};
+		probe.remove();
+		return result;
+	});
+	expect(decoration.borderRadius).toBe('50px');
+	expect(decoration.boxShadow).not.toBe('none');
+}
+
+async function expectUndecoratedToggles(toggles: Locator): Promise<void> {
+	const count = await toggles.count();
+	expect(count, 'fixture menu must render dropdown toggles').toBeGreaterThan(
+		0
+	);
+	for (let i = 0; i < count; i++) {
+		expect(
+			await buttonDecoration(toggles.nth(i)),
+			'submenu toggle must not inherit global button radius/shadow'
+		).toEqual({ borderRadius: '0px', boxShadow: 'none' });
+	}
+}
 
 test.describe('Desktop primary nav submenu toggles', () => {
 	test.beforeEach(async ({ page }) => {
@@ -200,6 +259,14 @@ test.describe('Desktop primary nav submenu toggles', () => {
 			'click after keyboard-open must close the submenu (single state)'
 		).toBeHidden();
 		await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+	});
+
+	test('toggles ignore global button radius and shadow', async ({
+		page,
+	}) => {
+		await applyDecoratedButtonStyles(page);
+		await expectGenericButtonDecorated(page);
+		await expectUndecoratedToggles(desktopSubmenuToggles(page));
 	});
 });
 

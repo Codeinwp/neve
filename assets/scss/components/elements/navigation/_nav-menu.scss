@@ -125,14 +125,16 @@
 	visibility: visible;
 }
 
-// The submenu toggles are native buttons; strip UA button styling so they
-// render exactly like the previous inline element. The 24px minimum is
-// the WCAG 2.5.8 touch-target size — the walker's inline negative margins
-// cancel it out visually. Sidebar carets override this with their own
-// larger padding/margin pair.
+// The submenu toggles are native buttons; strip UA and global button
+// styling so they render exactly like the previous inline element. The
+// 24px minimum is the WCAG 2.5.8 touch-target size — the walker's inline
+// negative margins cancel it out visually. Sidebar carets override this
+// with their own larger padding/margin pair.
 .nav-ul button.caret-wrap {
 	background: none;
 	border: 0;
+	border-radius: 0;
+	box-shadow: none;
 	padding: 0;
 	color: inherit;
 	font: inherit;
