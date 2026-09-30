@@ -51,7 +51,11 @@ a {
 
 // Button-like links manage their own text color per state; forcing the
 // accent onto them breaks contrast (e.g. dark accent on a dark button).
-a:not([class*="button"]) {
+// The exclusion sits in :where() so it adds no specificity: this rule must
+// stay at (0,1,1), the same as plain `a:hover`, or it outranks the single-
+// class hover rules of header components (.cart-icon-wrapper,
+// .my-account-wrapper, .wl-icon-wrapper) and clobbers their --hovercolor.
+a:where(:not([class*="button"])) {
 
 	&:hover,
 	&:focus {
