@@ -18,6 +18,14 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 4.2.15](https://github.com/Codeinwp/neve/compare/v4.2.14...v4.2.15) (2026-10-01)
+
+- Fixed menu caret buttons showing a rounded background and shadow instead of the plain arrow.
+- Fixed header cart, My Account, and Wishlist icons ignoring their configured hover color.
+
+
+
+
 ##### [Version 4.2.14](https://github.com/Codeinwp/neve/compare/v4.2.13...v4.2.14) (2026-09-29)
 
 - Fixed Elementor pages losing Neve palette colors after CSS regeneration.
