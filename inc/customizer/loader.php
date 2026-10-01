@@ -84,6 +84,7 @@ class Loader {
 				'Customizer\Options\Layout_Single_Product',
 				'Customizer\Options\Layout_Sidebar',
 				'Customizer\Options\Scroll_To_Top',
+				'Customizer\Options\Header_Footer_Visibility',
 				'Customizer\Options\Typography',
 				'Customizer\Options\Colors_Background',
 				'Customizer\Options\Checkout',
