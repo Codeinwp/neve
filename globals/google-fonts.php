@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 28/09/26
+ * Updated on 05/10/26
  *
  * @package neve
  */
@@ -377,6 +377,7 @@ return array(
 	'Chonburi' => array( '400',),
 	'Cinzel' => array( '400', '500', '600', '700', '800', '900',),
 	'Cinzel Decorative' => array( '400', '700', '900',),
+	'Clarity City' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Clicker Script' => array( '400',),
 	'Climate Crisis' => array( '400',),
 	'Coda' => array( '400', '800',),
@@ -747,6 +748,7 @@ return array(
 	'Iosevka Charon Mono' => array( '300', '400', '500', '700', '300italic', '400italic', '500italic', '700italic',),
 	'Irish Grover' => array( '400',),
 	'Island Moments' => array( '400',),
+	'Isometra' => array( '400',),
 	'Istok Web' => array( '400', '700', '400italic', '700italic',),
 	'Italiana' => array( '400',),
 	'Italianno' => array( '400',),
@@ -843,6 +845,7 @@ return array(
 	'Koulen' => array( '400',),
 	'Kranky' => array( '400',),
 	'Kreon' => array( '300', '400', '500', '600', '700',),
+	'Kripa' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Kristi' => array( '400',),
 	'Krona One' => array( '400',),
 	'Krub' => array( '200', '300', '400', '500', '600', '700', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic',),
@@ -898,6 +901,7 @@ return array(
 	'Libre Barcode EAN13 Text' => array( '400',),
 	'Libre Baskerville' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Libre Bodoni' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
+	'Libre Caslon Condensed' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Libre Caslon Display' => array( '400',),
 	'Libre Caslon Text' => array( '400', '700', '400italic',),
 	'Libre Franklin' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
