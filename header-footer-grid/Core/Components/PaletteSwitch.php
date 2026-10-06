@@ -151,6 +151,8 @@ class PaletteSwitch extends Abstract_Component {
 		$css = '.toggle-palette .toggle {
 			background: none;
 			border: 0;
+			border-radius: 0;
+			box-shadow: none;
 			padding: 0;
 			font: inherit;
 			color: inherit;
