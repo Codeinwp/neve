@@ -259,7 +259,17 @@ class Header extends Abstract_Builder {
 			);
 		}
 
-		$wp_customize->add_setting( self::DISABLE_HEADER, $this->get_disable_header_setting_args() );
+		$setting_args = $this->get_disable_header_setting_args();
+
+		// Theme Check reads the sanitize_callback key from the add_setting() call itself.
+		$wp_customize->add_setting(
+			self::DISABLE_HEADER,
+			[
+				'default'           => $setting_args['default'],
+				'transport'         => $setting_args['transport'],
+				'sanitize_callback' => $setting_args['sanitize_callback'],
+			]
+		);
 		$wp_customize->add_control( self::DISABLE_HEADER, $this->get_disable_header_control_args() );
 	}
 
