@@ -39,6 +39,7 @@ class Header extends Abstract_Builder {
 	const BACKGROUND_HEADING = 'background_heading';
 	const ADVANCED_STYLE     = 'advanced_style';
 	const BACKGROUND_SETTING = 'background';
+	const DISABLE_HEADER     = 'neve_disable_header';
 
 	/**
 	 * Default color for global header background
@@ -111,6 +112,8 @@ class Header extends Abstract_Builder {
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
 		if ( ! neve_is_new_builder() ) {
+			$this->customize_legacy_global_header( $wp_customize );
+
 			return parent::customize_register( $wp_customize );
 		}
 
@@ -207,6 +210,55 @@ class Header extends Abstract_Builder {
 	}
 
 	/**
+	 * Arguments of the toggle that hides the header on every page.
+	 *
+	 * @return array{label: string, description: string, section: string, type: string, priority: int}
+	 */
+	private function get_disable_header_control_args() {
+		return [
+			'label'       => esc_html__( 'Disable Header', 'neve' ),
+			'description' => esc_html__( 'Hides the header on every page, including headers added by page builders.', 'neve' ),
+			'section'     => 'neve_pro_global_header_settings',
+			'type'        => 'neve_toggle_control',
+			'priority'    => 5,
+		];
+	}
+
+	/**
+	 * Registers the header toggle for the legacy builder.
+	 *
+	 * The legacy builder has no global header settings tabs, so the toggle is a plain control
+	 * and any Neve Pro controls in the section keep showing as before.
+	 *
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 *
+	 * @return void
+	 */
+	private function customize_legacy_global_header( WP_Customize_Manager $wp_customize ) {
+		if ( $wp_customize->get_section( 'neve_pro_global_header_settings' ) === null ) {
+			$wp_customize->add_section(
+				'neve_pro_global_header_settings',
+				[
+					'title'    => __( 'Global Header Settings', 'neve' ),
+					'priority' => 200,
+					'panel'    => 'hfg_header',
+				]
+			);
+		}
+
+		$wp_customize->add_setting(
+			self::DISABLE_HEADER,
+			[
+				'default'           => false,
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'neve_sanitize_checkbox',
+			]
+		);
+
+		$wp_customize->add_control( self::DISABLE_HEADER, $this->get_disable_header_control_args() );
+	}
+
+	/**
 	 * Registers controls for global header background
 	 */
 	private function customize_global_header() {
@@ -214,20 +266,18 @@ class Header extends Abstract_Builder {
 
 		// Not a conditional header setting: it hides every header layout at once.
 		SettingsManager::get_instance()->add(
-			[
-				'id'                => 'neve_disable_header',
-				'noformat'          => true,
-				'group'             => $section_id,
-				'label'             => esc_html__( 'Disable Header', 'neve' ),
-				'description'       => esc_html__( 'Hides the header on every page, including headers added by page builders.', 'neve' ),
-				'section'           => $section_id,
-				'tab'               => 'general',
-				'priority'          => 5,
-				'type'              => 'neve_toggle_control',
-				'transport'         => 'refresh',
-				'sanitize_callback' => 'neve_sanitize_checkbox',
-				'default'           => false,
-			]
+			array_merge(
+				$this->get_disable_header_control_args(),
+				[
+					'id'                => self::DISABLE_HEADER,
+					'noformat'          => true,
+					'group'             => $section_id,
+					'tab'               => 'general',
+					'transport'         => 'refresh',
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => false,
+				]
+			)
 		);
 
 		SettingsManager::get_instance()->add(

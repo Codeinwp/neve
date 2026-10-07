@@ -48,6 +48,7 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 		unset( $GLOBALS['neve_tests_is_amp'] );
 		remove_theme_mod( 'neve_disable_header' );
 		remove_theme_mod( 'neve_disable_footer' );
+		remove_theme_mod( 'neve_migrated_builders' );
 
 		parent::tearDown();
 	}
@@ -494,6 +495,53 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 		$tabs = $wp_customize->get_control( 'neve_pro_global_header_settings_tabs' );
 		$this->assertSame( array( 'general', 'style' ), array_keys( $tabs->tabs ) );
 		$this->assertArrayHasKey( 'neve_disable_header', $tabs->controls['general'] );
+	}
+
+	/**
+	 * Sites still on the legacy builder keep both toggles.
+	 *
+	 * The legacy builder has no global header settings tabs, so the header toggle is a plain control there.
+	 */
+	public function test_the_toggles_stay_on_the_legacy_builder() {
+		set_theme_mod( 'neve_migrated_builders', false );
+
+		$wp_customize = $this->register_customizer();
+
+		$this->assert_toggle_setting( $wp_customize, 'neve_disable_header' );
+		$this->assert_toggle_setting( $wp_customize, 'neve_disable_footer' );
+
+		$section = $wp_customize->get_section( 'neve_pro_global_header_settings' );
+		$this->assertNotNull( $section );
+		$this->assertSame( 'hfg_header', $section->panel );
+		$this->assertSame( 'neve_pro_global_header_settings', $wp_customize->get_control( 'neve_disable_header' )->section );
+		$this->assertNull( $wp_customize->get_control( 'neve_pro_global_header_settings_tabs' ) );
+	}
+
+	/**
+	 * On the legacy builder, a global header settings section that Neve Pro registered first is kept.
+	 */
+	public function test_the_legacy_builder_keeps_an_existing_global_header_section() {
+		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
+
+		set_theme_mod( 'neve_migrated_builders', false );
+
+		global $wp_customize;
+		$wp_customize = new WP_Customize_Manager();
+		$wp_customize->add_section(
+			'neve_pro_global_header_settings',
+			array(
+				'title'    => 'Registered first',
+				'priority' => 100,
+				'panel'    => 'hfg_header',
+			)
+		);
+
+		\HFG\Main::get_instance()->get_builder( 'header' )->customize_register( $wp_customize );
+
+		$section = $wp_customize->get_section( 'neve_pro_global_header_settings' );
+		$this->assertSame( 'Registered first', $section->title );
+		$this->assertSame( 100, $section->priority );
+		$this->assertSame( 'neve_pro_global_header_settings', $wp_customize->get_control( 'neve_disable_header' )->section );
 	}
 
 	/**
