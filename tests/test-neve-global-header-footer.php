@@ -547,7 +547,7 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	/**
 	 * Sites that started before 4.0.1 and sites that started after it.
 	 *
-	 * @return array
+	 * @return array<string, array{string, bool}>
 	 */
 	public function provide_user_since_versions() {
 		return array(

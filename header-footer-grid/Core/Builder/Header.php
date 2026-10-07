@@ -210,6 +210,19 @@ class Header extends Abstract_Builder {
 	}
 
 	/**
+	 * Arguments of the setting behind the toggle that hides the header on every page.
+	 *
+	 * @return array{default: false, transport: string, sanitize_callback: string}
+	 */
+	private function get_disable_header_setting_args() {
+		return [
+			'default'           => false,
+			'transport'         => 'refresh',
+			'sanitize_callback' => 'neve_sanitize_checkbox',
+		];
+	}
+
+	/**
 	 * Arguments of the toggle that hides the header on every page.
 	 *
 	 * @return array{label: string, description: string, section: string, type: string, priority: int}
@@ -246,15 +259,7 @@ class Header extends Abstract_Builder {
 			);
 		}
 
-		$wp_customize->add_setting(
-			self::DISABLE_HEADER,
-			[
-				'default'           => false,
-				'transport'         => 'refresh',
-				'sanitize_callback' => 'neve_sanitize_checkbox',
-			]
-		);
-
+		$wp_customize->add_setting( self::DISABLE_HEADER, $this->get_disable_header_setting_args() );
 		$wp_customize->add_control( self::DISABLE_HEADER, $this->get_disable_header_control_args() );
 	}
 
@@ -267,15 +272,13 @@ class Header extends Abstract_Builder {
 		// Not a conditional header setting: it hides every header layout at once.
 		SettingsManager::get_instance()->add(
 			array_merge(
+				$this->get_disable_header_setting_args(),
 				$this->get_disable_header_control_args(),
 				[
-					'id'                => self::DISABLE_HEADER,
-					'noformat'          => true,
-					'group'             => $section_id,
-					'tab'               => 'general',
-					'transport'         => 'refresh',
-					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => false,
+					'id'       => self::DISABLE_HEADER,
+					'noformat' => true,
+					'group'    => $section_id,
+					'tab'      => 'general',
 				]
 			)
 		);
