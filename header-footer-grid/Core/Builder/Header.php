@@ -212,6 +212,24 @@ class Header extends Abstract_Builder {
 	private function customize_global_header() {
 		$section_id = 'neve_pro_global_header_settings';
 
+		// Not a conditional header setting: it hides every header layout at once.
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => 'neve_disable_header',
+				'noformat'          => true,
+				'group'             => $section_id,
+				'label'             => esc_html__( 'Disable Header', 'neve' ),
+				'description'       => esc_html__( 'Hides the header on every page, including headers added by page builders.', 'neve' ),
+				'section'           => $section_id,
+				'tab'               => 'general',
+				'priority'          => 5,
+				'type'              => 'neve_toggle_control',
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'neve_sanitize_checkbox',
+				'default'           => false,
+			]
+		);
+
 		SettingsManager::get_instance()->add(
 			[
 				'id'        => self::BACKGROUND_HEADING,

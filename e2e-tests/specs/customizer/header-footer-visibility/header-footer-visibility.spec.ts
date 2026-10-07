@@ -14,11 +14,11 @@ test.describe( 'Global header and footer visibility', function () {
 
 		const panels = {
 			hfg_header: {
-				section: 'neve_header_visibility',
+				section: 'neve_pro_global_header_settings',
 				control: 'neve_disable_header',
 			},
 			hfg_footer: {
-				section: 'neve_footer_visibility',
+				section: 'neve_global_footer_settings',
 				control: 'neve_disable_footer',
 			},
 		};

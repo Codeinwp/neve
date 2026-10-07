@@ -434,9 +434,13 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	*/
 
 	/**
-	 * The toggles survive a full customizer cycle, with every other module registering too.
+	 * Run a full customizer cycle, with every other module registering too.
+	 *
+	 * The builders hook into customize_register only in the admin, so they are called directly.
+	 *
+	 * @return WP_Customize_Manager
 	 */
-	public function test_the_toggles_survive_a_full_customizer_cycle() {
+	private function register_customizer() {
 		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
 
 		global $wp_customize;
@@ -446,29 +450,90 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 		$loader->init();
 		do_action( 'customize_register', $wp_customize );
 
-		$parts = array(
-			'header' => 'hfg_header',
-			'footer' => 'hfg_footer',
-		);
-
-		foreach ( $parts as $part => $panel ) {
-			$section = $wp_customize->get_section( 'neve_' . $part . '_visibility' );
-			$control = $wp_customize->get_control( 'neve_disable_' . $part );
-
-			$this->assertNotNull( $section, 'The ' . $part . ' section is missing.' );
-			$this->assertNotNull( $control, 'The ' . $part . ' toggle is missing.' );
-			$this->assertSame( $panel, $section->panel );
-			$this->assertSame( 'neve_' . $part . '_visibility', $control->section );
-
-			$setting = $wp_customize->get_setting( 'neve_disable_' . $part );
-			$this->assertFalse( $setting->default );
-			$this->assertTrue( $setting->sanitize( 'on' ) );
-			$this->assertFalse( $setting->sanitize( '' ) );
+		foreach ( array( 'header', 'footer' ) as $builder ) {
+			\HFG\Main::get_instance()->get_builder( $builder )->customize_register( $wp_customize );
 		}
+
+		return $wp_customize;
 	}
 
 	/**
-	 * The builder panels hide every section by default, so the toggles have to be named in the styles.
+	 * Assert that a toggle saves a boolean and starts off.
+	 *
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 * @param string               $id           The setting id.
+	 *
+	 * @return void
+	 */
+	private function assert_toggle_setting( $wp_customize, $id ) {
+		$control = $wp_customize->get_control( $id );
+		$this->assertNotNull( $control, 'The ' . $id . ' toggle is missing.' );
+		$this->assertSame( 'neve_toggle_control', $control->type );
+
+		$setting = $wp_customize->get_setting( $id );
+		$this->assertFalse( $setting->default );
+		$this->assertSame( 'refresh', $setting->transport );
+		$this->assertTrue( $setting->sanitize( 'on' ) );
+		$this->assertFalse( $setting->sanitize( '' ) );
+	}
+
+	/**
+	 * The header toggle opens the general tab of the global header settings.
+	 */
+	public function test_the_header_toggle_sits_in_the_global_header_settings() {
+		$wp_customize = $this->register_customizer();
+
+		$this->assert_toggle_setting( $wp_customize, 'neve_disable_header' );
+
+		$section = $wp_customize->get_section( 'neve_pro_global_header_settings' );
+		$this->assertNotNull( $section );
+		$this->assertSame( 'hfg_header', $section->panel );
+		$this->assertSame( 'neve_pro_global_header_settings', $wp_customize->get_control( 'neve_disable_header' )->section );
+
+		// The tabs only show the controls they list, and the first tab is the one that opens.
+		$tabs = $wp_customize->get_control( 'neve_pro_global_header_settings_tabs' );
+		$this->assertSame( array( 'general', 'style' ), array_keys( $tabs->tabs ) );
+		$this->assertArrayHasKey( 'neve_disable_header', $tabs->controls['general'] );
+	}
+
+	/**
+	 * Sites that started before 4.0.1 and sites that started after it.
+	 *
+	 * @return array
+	 */
+	public function provide_user_since_versions() {
+		return array(
+			'older site, no copyright section' => array( 'unknown', false ),
+			'newer site, copyright section'    => array( '4.2.0', true ),
+		);
+	}
+
+	/**
+	 * The footer toggle gets its own global settings section, with or without the copyright section.
+	 *
+	 * @dataProvider provide_user_since_versions
+	 *
+	 * @param string $user_since    The version the site started on.
+	 * @param bool   $has_copyright Whether the copyright section registers.
+	 */
+	public function test_the_footer_toggle_sits_in_the_global_footer_settings( $user_since, $has_copyright ) {
+		update_option( \Neve\Core\Migration_Flags::USER_SINCE_VERSION, $user_since );
+
+		$wp_customize = $this->register_customizer();
+
+		$this->assert_toggle_setting( $wp_customize, 'neve_disable_footer' );
+
+		$section = $wp_customize->get_section( 'neve_global_footer_settings' );
+		$this->assertNotNull( $section );
+		$this->assertSame( 'hfg_footer', $section->panel );
+		$this->assertSame( 'neve_global_footer_settings', $wp_customize->get_control( 'neve_disable_footer' )->section );
+
+		// The copyright section sits right above it on newer sites.
+		$this->assertSame( $has_copyright, $wp_customize->get_section( 'neve_footer_copyright_section' ) !== null );
+	}
+
+	/**
+	 * The builder panels hide every section by default, so the toggles' sections have to be named in the styles.
 	 *
 	 * Without this rule the sections register, render and stay invisible.
 	 */
@@ -479,8 +544,8 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 		$scss = file_get_contents( $path );
 
 		$panels = array(
-			'hfg_header' => 'neve_header_visibility',
-			'hfg_footer' => 'neve_footer_visibility',
+			'hfg_header' => 'neve_pro_global_header_settings',
+			'hfg_footer' => 'neve_global_footer_settings',
 		);
 
 		foreach ( $panels as $panel => $section ) {
