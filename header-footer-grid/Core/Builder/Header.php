@@ -214,7 +214,7 @@ class Header extends Abstract_Builder {
 	 *
 	 * @return array{default: false, transport: string, sanitize_callback: string}
 	 */
-	private function get_disable_header_setting_args() {
+	private function get_disable_header_setting_args(): array {
 		return [
 			'default'           => false,
 			'transport'         => 'refresh',
@@ -227,7 +227,7 @@ class Header extends Abstract_Builder {
 	 *
 	 * @return array{label: string, description: string, section: string, type: string, priority: int}
 	 */
-	private function get_disable_header_control_args() {
+	private function get_disable_header_control_args(): array {
 		return [
 			'label'       => esc_html__( 'Disable Header', 'neve' ),
 			'description' => esc_html__( 'Hides the header on every page, including headers added by page builders.', 'neve' ),
