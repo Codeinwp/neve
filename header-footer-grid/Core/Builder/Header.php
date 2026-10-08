@@ -225,15 +225,14 @@ class Header extends Abstract_Builder {
 	/**
 	 * Arguments of the toggle that hides the header on every page.
 	 *
-	 * @return array{label: string, description: string, section: string, type: string, priority: int}
+	 * @return array{label: string, section: string, type: string, priority: int}
 	 */
 	private function get_disable_header_control_args(): array {
 		return [
-			'label'       => esc_html__( 'Disable Header', 'neve' ),
-			'description' => esc_html__( 'Hides the header on every page, including headers added by page builders.', 'neve' ),
-			'section'     => 'neve_pro_global_header_settings',
-			'type'        => 'neve_toggle_control',
-			'priority'    => 5,
+			'label'    => esc_html__( 'Disable Header', 'neve' ),
+			'section'  => 'neve_pro_global_header_settings',
+			'type'     => 'neve_toggle_control',
+			'priority' => 5,
 		];
 	}
 

@@ -199,7 +199,7 @@ class Footer extends Abstract_Builder {
 	}
 
 	/**
-	 * Registers the global footer settings, the counterpart of the global header settings.
+	 * Registers the footer options section, the counterpart of the global header settings.
 	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
@@ -209,7 +209,7 @@ class Footer extends Abstract_Builder {
 		$wp_customize->add_section(
 			'neve_global_footer_settings',
 			[
-				'title'    => __( 'Global Footer Settings', 'neve' ),
+				'title'    => __( 'Footer Options', 'neve' ),
 				'priority' => 201,
 				'panel'    => 'hfg_footer',
 			]
@@ -227,11 +227,10 @@ class Footer extends Abstract_Builder {
 		$wp_customize->add_control(
 			'neve_disable_footer',
 			[
-				'label'       => esc_html__( 'Disable Footer', 'neve' ),
-				'description' => esc_html__( 'Hides the footer on every page, including footers added by page builders.', 'neve' ),
-				'section'     => 'neve_global_footer_settings',
-				'type'        => 'neve_toggle_control',
-				'priority'    => 5,
+				'label'    => esc_html__( 'Disable Footer', 'neve' ),
+				'section'  => 'neve_global_footer_settings',
+				'type'     => 'neve_toggle_control',
+				'priority' => 5,
 			]
 		);
 	}
