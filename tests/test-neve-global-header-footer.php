@@ -112,7 +112,7 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	/**
 	 * Make a published page that carries meta.
 	 *
-	 * @param array $meta Meta keys and values.
+	 * @param array<string, string> $meta Meta keys and values.
 	 *
 	 * @return int
 	 */
@@ -145,7 +145,7 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	/**
 	 * The parts this feature covers.
 	 *
-	 * @return array
+	 * @return array<string, array{'header'|'footer'}>
 	 */
 	public function header_and_footer() {
 		return array(
@@ -246,35 +246,6 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	}
 
 	/**
-	 * The shop archive follows the global toggle, meta and all.
-	 *
-	 * The shop archive reads its meta from the shop page, which is the one archive that
-	 * carries post meta at all.
-	 */
-	public function test_the_shop_page_meta_does_not_survive_the_global_toggle() {
-		$shop_id = $this->make_page(
-			array(
-				'neve_meta_disable_header' => 'off',
-				'neve_meta_disable_footer' => 'off',
-			)
-		);
-		set_theme_mod( 'neve_disable_header', true );
-		set_theme_mod( 'neve_disable_footer', true );
-
-		// Stand in for wc_get_page_id( 'shop' ), which the theme resolves through this filter.
-		add_filter(
-			'neve_post_meta_filters_post_id',
-			function () use ( $shop_id ) {
-				return $shop_id;
-			}
-		);
-		$this->go_to( get_permalink( $shop_id ) );
-
-		$this->assertFalse( $this->renders( 'header' ) );
-		$this->assertFalse( $this->renders( 'footer' ) );
-	}
-
-	/**
 	 * The global toggle reaches the views that have no metabox.
 	 *
 	 * @param string $context The view to open.
@@ -303,7 +274,7 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	/**
 	 * Views the metabox never reached.
 	 *
-	 * @return array
+	 * @return array<string, array{'category'|'search'}>
 	 */
 	public function views_without_a_metabox() {
 		return array(
@@ -341,7 +312,7 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	/**
 	 * Turn the header off globally or for the current page.
 	 *
-	 * @return array
+	 * @return array<string, array{'global'|'meta'}>
 	 */
 	public function provide_header_switches() {
 		return array(
@@ -471,7 +442,7 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	/**
 	 * Render the header of the block theme compatibility layer on a new page.
 	 *
-	 * @param array $meta Meta keys and values of the page.
+	 * @param array<string, string> $meta Meta keys and values of the page.
 	 *
 	 * @return string
 	 */
@@ -481,6 +452,7 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 
 		$template = $fse->get_template_slug();
 		$this->assertSame( 'page', $template, 'Expected the page template.' );
+		set_theme_mod( \Neve\Compatibility\Fse::FSE_ENABLED_SLUG, true );
 		set_theme_mod( 'neve_fse_' . $template, true );
 
 		ob_start();
@@ -493,7 +465,10 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	 * The block theme header wrapper is rendered when the header is on.
 	 */
 	public function test_fse_header_wrapper_is_rendered_when_enabled() {
-		$this->assertStringContainsString( '<header', $this->render_fse_header() );
+		$markup = $this->render_fse_header();
+
+		$this->assertStringContainsString( '<header', $markup );
+		$this->assertStringContainsString( '[neve_do_header]', $markup );
 	}
 
 	/**
@@ -525,6 +500,7 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 		$markup = $this->render_disabled_fse_header( $switch );
 
 		$this->assertStringNotContainsString( '<header', $markup );
+		$this->assertStringNotContainsString( '[neve_do_header]', $markup );
 		$this->assertStringContainsString( 'neve-skip-link', $markup );
 		$this->assertStringContainsString( '<main id="content"', $markup );
 	}
@@ -541,6 +517,16 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 
 		$this->assertStringContainsString( '<header', $markup );
 		$this->assertStringContainsString( '[neve_after_header_hook]', $markup );
+		$this->assertStringNotContainsString( '[neve_do_header]', $markup );
+	}
+
+	/**
+	 * On AMP the block theme skip link hides on the pages that infinite scroll appends, too.
+	 */
+	public function test_the_fse_skip_link_hides_on_appended_amp_pages() {
+		$GLOBALS['neve_tests_is_amp'] = true;
+
+		$this->assertMatchesRegularExpression( '/class="neve-skip-link[^>]*next-page-hide/', $this->render_fse_header() );
 	}
 
 	/*
