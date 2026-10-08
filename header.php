@@ -122,7 +122,7 @@ do_action( 'neve_body_start_after' );
 	do_action( 'neve_before_primary' );
 	?>
 
-	<main id="content" class="neve-main">
+	<main id="content" class="neve-main" tabindex="-1">
 
 <?php
 /**

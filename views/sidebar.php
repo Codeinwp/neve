@@ -9,7 +9,7 @@
 ?>
 <div class="nv-sidebar-wrap col-sm-12 <?php echo esc_attr( $args['wrap_classes'] ); ?>" <?php echo wp_kses_post( $args['data_attrs'] ); ?>>
 	<?php echo ( $args['close_button'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-	<aside id="secondary" role="complementary">
+	<aside id="secondary-<?php echo esc_attr( $args['position'] ); ?>" role="complementary" aria-label="<?php echo esc_attr( $args['label'] ); ?>">
 		<?php
 		/**
 		 * Executes actions before the sidebar content.

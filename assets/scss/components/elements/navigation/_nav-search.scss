@@ -25,9 +25,21 @@
 	}
 }
 
+// The triggers are native buttons now; strip UA button styling.
+button.nv-search,
+button.nv-nav-search-icon {
+	background: none;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	padding: 0;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+}
+
 .menu-item-nav-search {
 	cursor: pointer;
-	outline: 0;
 
 	.nv-icon:hover {
 		color: var(--hovercolor);

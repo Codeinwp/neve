@@ -22,9 +22,20 @@ $cart_is_empty     = WC()->cart->get_cart_contents_count() === 0;
 
 $off_canvas_closing_button = '';
 $mini_cart_classes         = [ 'nv-nav-cart', 'widget' ];
+$mini_cart_attributes      = '';
+$opener_attributes         = '';
 if ( $cart_style === 'off-canvas' ) {
 	$mini_cart_classes         = [ 'nv-nav-cart', 'cart-off-canvas', 'widget' ];
-	$off_canvas_closing_button = '<div class="cart-off-canvas-button-wrapper"><a href="#" class="nv-close-cart-sidebar button button-secondary secondary-default">' . __( 'Close', 'neve' ) . '</a></div>';
+	$off_canvas_closing_button = '<div class="cart-off-canvas-button-wrapper"><button type="button" class="nv-close-cart-sidebar button button-secondary secondary-default">' . __( 'Close', 'neve' ) . '</button></div>';
+	// The drawer is a modal dialog. It deliberately does NOT ship inert
+	// from here: inert is only safe on an element once something is
+	// guaranteed to take it off again, and the booster that slides this
+	// drawer in ships separately from the theme. CartIcon::cart_drawer_script()
+	// stamps inert on while the drawer is parked and lifts it the moment the
+	// booster opens it, so the drawer is never left visible-but-unusable on an
+	// older booster, and degrades to its long-standing behaviour with no JS.
+	$mini_cart_attributes = ' role="dialog" aria-modal="true" aria-label="' . esc_attr__( 'Cart', 'neve' ) . '"';
+	$opener_attributes    = ' aria-haspopup="dialog" aria-expanded="false"';
 }
 if ( (bool) $expand_enabled === false ) {
 	$mini_cart_classes[] = 'expand-disable';
@@ -38,7 +49,7 @@ if ( (bool) $expand_enabled === false ) {
 	echo $cart_is_empty ? ' cart-is-empty' : '';
 	?>
 	">
-		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="cart-icon-wrapper">
+		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="cart-icon-wrapper"<?php echo $opener_attributes; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, Static markup, values escaped above. ?>>
 			<?php
 			if ( ! empty( $cart_label ) ) {
 				echo '<span class="cart-icon-label inherit-ff">';
@@ -56,7 +67,7 @@ if ( (bool) $expand_enabled === false ) {
 			<?php do_action( 'neve_cart_icon_after_cart_total' ); ?>
 		</a>
 		<?php if ( $cart_style !== 'link' && ! is_cart() && ! is_checkout() ) { ?>
-		<div class="<?php echo esc_attr( implode( ' ', $mini_cart_classes ) ); ?>">
+		<div class="<?php echo esc_attr( implode( ' ', $mini_cart_classes ) ); ?>"<?php echo $mini_cart_attributes; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, Static markup, values escaped above. ?>>
 
 			<?php
 			/**

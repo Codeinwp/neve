@@ -2,6 +2,7 @@
 
 .nv-comment-content {
 	margin-bottom: 0 !important;
+	overflow-x: auto;
 
 	> *:last-child {
 		margin-bottom: 0;
@@ -59,6 +60,8 @@
 
 	.vcard {
 		display: grid;
+		min-width: 0;
+		overflow-wrap: anywhere;
 
 		a {
 			color: var(--color, var(--nv-text-color));
@@ -90,6 +93,7 @@
 
 .comment-content {
 	flex: 1;
+	min-width: 0;
 }
 
 .comment-form {

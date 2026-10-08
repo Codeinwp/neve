@@ -28,7 +28,7 @@ test.describe('Palette Switch component', function () {
 			);
 		}
 
-		await page.getByRole('link', { name: 'Palette Switch' }).click();
+		await page.getByRole('button', { name: 'Palette Switch' }).click();
 
 		for (let i = 0; i < count; i++) {
 			await expect(headerElements.nth(i)).toHaveCSS(

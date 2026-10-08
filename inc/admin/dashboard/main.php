@@ -105,8 +105,35 @@ class Main {
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
 		add_action( 'init', array( $this, 'register_settings' ) );
 		add_action( 'init', array( $this, 'register_about_page' ), 1 );
+		add_filter( 'neve_ai_connect_metadata', array( $this, 'get_ai_connect_metadata' ) );
 
 		add_action( 'admin_notices', array( $this, 'render_custom_layout_header' ) );
+	}
+
+	/**
+	 * Get the data for the SDK "Connect your AI agent" module.
+	 *
+	 * @return array<string, string|string[]>
+	 */
+	public function get_ai_connect_metadata() {
+		if ( apply_filters( 'neve_is_theme_whitelabeled', false ) || apply_filters( 'neve_is_plugin_whitelabeled', false ) ) {
+			return [];
+		}
+
+		return [
+			'name'           => 'Neve',
+			'notice_cases'   => [
+				__( 'change your colors and fonts', 'neve' ),
+				__( 'rearrange your header', 'neve' ),
+				__( 'set page layouts', 'neve' ),
+			],
+			'prompts'        => [
+				__( 'Change my Neve headings font to Poppins and my accent color to #0055ff.', 'neve' ),
+				__( 'Move the search icon to the right of my header and put the secondary menu in the top row.', 'neve' ),
+				__( 'Make my Contact page full width with no sidebar and hide its title.', 'neve' ),
+			],
+			'ability_prefix' => 'neve',
+		];
 	}
 
 	/**

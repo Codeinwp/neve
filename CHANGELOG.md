@@ -1,3 +1,22 @@
+##### [Version 4.2.16](https://github.com/Codeinwp/neve/compare/v4.2.15...v4.2.16) (2026-10-07)
+
+- Improves mobile dropdown labels to keep text after less-than signs.
+- Fixes header search and palette icons showing button boxes.
+
+##### [Version 4.2.15](https://github.com/Codeinwp/neve/compare/v4.2.14...v4.2.15) (2026-10-01)
+
+- Fixed menu caret buttons showing a rounded background and shadow instead of the plain arrow.
+- Fixed header cart, My Account, and Wishlist icons ignoring their configured hover color.
+
+##### [Version 4.2.14](https://github.com/Codeinwp/neve/compare/v4.2.13...v4.2.14) (2026-09-29)
+
+- Fixed Elementor pages losing Neve palette colors after CSS regeneration.
+- Added AI agent support: let AI assistants read and change your Neve settings.
+
+##### [Version 4.2.13](https://github.com/Codeinwp/neve/compare/v4.2.12...v4.2.13) (2026-09-24)
+
+- Improved Neve accessibility with keyboard-ready menus, stronger contrast, and better page reflow.
+
 ##### [Version 4.2.12](https://github.com/Codeinwp/neve/compare/v4.2.11...v4.2.12) (2026-09-14)
 
 - Fixed archive pages crashing when post content order data is stored as an array.

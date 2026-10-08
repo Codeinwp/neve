@@ -165,20 +165,21 @@ $cart-width: 360px;
 	}
 }
 
-// Mobile: tapping the cart icon toggles `cart-dropdown-open` (see
-// navigation.js). The dropdown appearance is already defined above, so we only
-// need to reveal it here — reusing the same element and styles as the desktop.
+// `cart-dropdown-open` reveals the dropdown at every width: mobile taps
+// toggle it (see navigation.js) and the pro booster's auto-expand adds it
+// after an AJAX add — the base .nv-nav-cart is display:none, so inline
+// visibility/opacity alone can never reveal it.
+.responsive-nav-cart.dropdown.cart-dropdown-open .nv-nav-cart {
+	display: block;
+	opacity: 1;
+	visibility: visible;
+}
+
 @media (max-width: 959px) {
 
 	.responsive-nav-cart.dropdown .nv-nav-cart:not(.cart-off-canvas) {
 		width: min(#{$cart-width}, calc(100vw - #{2 * $spacing-md}));
 		max-width: calc(100vw - #{2 * $spacing-md});
-	}
-
-	.responsive-nav-cart.dropdown.cart-dropdown-open .nv-nav-cart {
-		display: block;
-		opacity: 1;
-		visibility: visible;
 	}
 }
 
@@ -193,7 +194,10 @@ $cart-width: 360px;
 		&:hover,
 		&:focus-within {
 
-			.nv-nav-cart {
+			// The off-canvas drawer is a dialog: it must open on
+			// activation only, never because the icon received focus
+			// (WCAG 3.2.1) — its open state is .cart-open.
+			.nv-nav-cart:not(.cart-off-canvas) {
 				opacity: 1;
 				visibility: visible;
 			}

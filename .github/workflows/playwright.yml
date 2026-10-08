@@ -126,6 +126,8 @@ jobs:
             envs: "sample-data"
           - specs: "accessibility"
             envs: "sample-data"
+          - specs: "a11y-ready"
+            envs: "a11y-ready"
     #          - specs: "woo-visual-regression"
     #            envs: "woo-sample"
           - specs: "editor"
@@ -147,7 +149,11 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
       - name: Run Playwright tests
+        if: matrix.specs != 'a11y-ready'
         run: yarn run test:playwright e2e-tests/specs/${{ matrix.specs }}
+      - name: Run a11y acceptance tests
+        if: matrix.specs == 'a11y-ready'
+        run: yarn run test:a11y
       - name: Upload trace file
         if: failure()
         uses: actions/upload-artifact@v4
