@@ -335,6 +335,12 @@ class Amp {
 			return false;
 		}
 
+		// The infinite scroll wraps the footer and replaces the pagination, so without
+		// the footer the page keeps its regular pagination.
+		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'footer' ) !== true ) {
+			return false;
+		}
+
 		$has_pagination = ! empty( get_the_posts_pagination() );
 		if ( ! $has_pagination ) {
 			return false;

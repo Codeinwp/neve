@@ -190,15 +190,25 @@ class Fse {
 			<?php echo __( 'Skip to content', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</a>
 
-		<?php if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'header' ) === true ) { ?>
-		<header class="<?php echo esc_attr( $header_classes ); ?>" <?php echo ( neve_is_amp() ) ? 'next-page-hide' : ''; ?> >
-			<?php
-			do_action( 'neve_before_header_hook' );
+		<?php
+		$has_header = apply_filters( 'neve_filter_toggle_content_parts', true, 'header' ) === true;
 
+		// The hooks around the header run even when it is off, so what they add (such as the
+		// Neve Pro page header) stays. The wrapper is printed only when it has something to wrap.
+		ob_start();
+		do_action( 'neve_before_header_hook' );
+
+		if ( $has_header ) {
 			$this->handle_theme_part( 'header', $template );
+		}
 
-			do_action( 'neve_after_header_hook' );
+		do_action( 'neve_after_header_hook' );
+		$header_markup = (string) ob_get_clean();
+
+		if ( $has_header || trim( $header_markup ) !== '' ) {
 			?>
+		<header class="<?php echo esc_attr( $header_classes ); ?>" <?php echo ( neve_is_amp() ) ? 'next-page-hide' : ''; ?> >
+			<?php echo $header_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Printed by the header hooks and the header template part, which escape their own output. ?>
 		</header>
 			<?php
 		}

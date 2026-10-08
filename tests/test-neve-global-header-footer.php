@@ -329,16 +329,75 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	}
 
 	/**
-	 * A disabled header leaves no empty wrapper behind and runs none of its hooks.
+	 * Leave nothing hooked right before and right after the header, the way a site without Neve Pro is.
+	 *
+	 * @return void
 	 */
-	public function test_disabled_header_leaves_no_wrapper_or_hooks_behind() {
-		set_theme_mod( 'neve_disable_header', true );
+	private function unhook_around_the_header() {
+		remove_all_actions( 'neve_before_header_hook' );
+		remove_all_actions( 'neve_after_header_hook' );
+	}
+
+	/**
+	 * Turn the header off globally or for the current page.
+	 *
+	 * @return array
+	 */
+	public function provide_header_switches() {
+		return array(
+			'global toggle' => array( 'global' ),
+			'page meta'     => array( 'meta' ),
+		);
+	}
+
+	/**
+	 * Turn the header off.
+	 *
+	 * @param string $switch Either global or meta.
+	 *
+	 * @return void
+	 */
+	private function disable_header( $switch ) {
+		if ( $switch === 'global' ) {
+			set_theme_mod( 'neve_disable_header', true );
+
+			return;
+		}
+
+		$this->go_to( get_permalink( $this->make_page( array( 'neve_meta_disable_header' => 'on' ) ) ) );
+	}
+
+	/**
+	 * A disabled header with nothing hooked around it leaves no empty wrapper behind.
+	 *
+	 * @dataProvider provide_header_switches
+	 *
+	 * @param string $switch Either global or meta.
+	 */
+	public function test_disabled_header_leaves_no_empty_wrapper_behind( $switch ) {
+		$this->unhook_around_the_header();
+		$this->disable_header( $switch );
 		$markup = $this->render_header();
 
 		$this->assertStringNotContainsString( '<header', $markup );
 		$this->assertStringNotContainsString( '[neve_do_header]', $markup );
-		$this->assertStringNotContainsString( '[neve_before_header_hook]', $markup );
-		$this->assertStringNotContainsString( '[neve_after_header_hook]', $markup );
+	}
+
+	/**
+	 * A disabled header keeps what other code prints around it, such as the Neve Pro page header.
+	 *
+	 * @dataProvider provide_header_switches
+	 *
+	 * @param string $switch Either global or meta.
+	 */
+	public function test_disabled_header_keeps_content_hooked_around_it( $switch ) {
+		$this->disable_header( $switch );
+		$markup = $this->render_header();
+
+		$this->assertStringContainsString( '<header', $markup );
+		$this->assertStringContainsString( '[neve_before_header_hook]', $markup );
+		$this->assertStringContainsString( '[neve_after_header_hook]', $markup );
+		$this->assertStringNotContainsString( '[neve_do_header]', $markup );
 	}
 
 	/**
@@ -353,15 +412,6 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 		$this->assertStringContainsString( '<main id="content"', $markup );
 		$this->assertStringContainsString( '[neve_before_header_wrapper_hook]', $markup );
 		$this->assertStringContainsString( '[neve_after_header_wrapper_hook]', $markup );
-	}
-
-	/**
-	 * The post meta removes the wrapper as well, the way the global toggle does.
-	 */
-	public function test_post_meta_also_removes_the_header_wrapper() {
-		$this->go_to( get_permalink( $this->make_page( array( 'neve_meta_disable_header' => 'on' ) ) ) );
-
-		$this->assertStringNotContainsString( '<header', $this->render_header() );
 	}
 
 	/**
@@ -417,15 +467,27 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	}
 
 	/**
-	 * A disabled header leaves no wrapper behind in the block theme template either.
+	 * A disabled header leaves no empty wrapper behind in the block theme template either.
 	 */
 	public function test_fse_disabled_header_leaves_no_wrapper_behind() {
+		$this->unhook_around_the_header();
 		set_theme_mod( 'neve_disable_header', true );
 		$markup = $this->render_fse_header();
 
 		$this->assertStringNotContainsString( '<header', $markup );
 		$this->assertStringContainsString( 'neve-skip-link', $markup );
 		$this->assertStringContainsString( '<main id="content"', $markup );
+	}
+
+	/**
+	 * A disabled header keeps what other code prints around it in the block theme template too.
+	 */
+	public function test_fse_disabled_header_keeps_content_hooked_around_it() {
+		set_theme_mod( 'neve_disable_header', true );
+		$markup = $this->render_fse_header();
+
+		$this->assertStringContainsString( '<header', $markup );
+		$this->assertStringContainsString( '[neve_after_header_hook]', $markup );
 	}
 
 	/*
@@ -617,6 +679,7 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	 * sidebar, which is still on the page when the header is gone.
 	 */
 	public function test_amp_states_survive_a_disabled_header() {
+		$this->unhook_around_the_header();
 		$GLOBALS['neve_tests_is_amp'] = true;
 		$amp                          = new \Neve\Compatibility\Amp();
 		$amp->register_hooks();
@@ -640,6 +703,7 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	 * animations are gone.
 	 */
 	public function test_amp_scroll_to_top_animations_survive_a_disabled_header() {
+		$this->unhook_around_the_header();
 		$GLOBALS['neve_tests_is_amp'] = true;
 		$scroll_to_top                = new \Neve\Views\Scroll_To_Top();
 		$scroll_to_top->init();
@@ -673,5 +737,28 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 
 		$this->assertStringContainsString( 'id="nv-scroll-to-top-anchor"', $markup );
 		$this->assertStringContainsString( 'target="nv-scroll-to-top-anchor"', $markup );
+	}
+
+	/**
+	 * The AMP infinite scroll steps aside when the footer is off.
+	 *
+	 * It wraps the footer and replaces the pagination, so a page without the footer
+	 * keeps its regular pagination instead of losing both.
+	 */
+	public function test_amp_infinite_scroll_steps_aside_without_the_footer() {
+		update_option( 'posts_per_page', 1 );
+		$post_ids = self::factory()->post->create_many( 3 );
+		set_theme_mod( 'neve_pagination_type', 'infinite' );
+		set_theme_mod( 'neve_default_sidebar_layout', 'full-width' );
+
+		$this->go_to( home_url( '/' ) );
+		$GLOBALS['post'] = get_post( $post_ids[0] );
+		$amp             = new \Neve\Compatibility\Amp();
+
+		$this->assertTrue( $amp->should_display_infinite_scroll() );
+
+		set_theme_mod( 'neve_disable_footer', true );
+
+		$this->assertFalse( $amp->should_display_infinite_scroll() );
 	}
 }
