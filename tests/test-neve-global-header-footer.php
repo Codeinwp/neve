@@ -401,6 +401,34 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Hooks that print only whitespace do not bring the empty wrapper back.
+	 */
+	public function test_whitespace_around_a_disabled_header_leaves_no_wrapper() {
+		$this->unhook_around_the_header();
+		add_action(
+			'neve_after_header_hook',
+			function () {
+				echo "\n\t  \n";
+			}
+		);
+		set_theme_mod( 'neve_disable_header', true );
+
+		$this->assertStringNotContainsString( '<header', $this->render_header() );
+	}
+
+	/**
+	 * On AMP the skip link hides on the pages that infinite scroll appends, as it did inside the header.
+	 */
+	public function test_the_skip_link_hides_on_appended_amp_pages() {
+		$this->assertDoesNotMatchRegularExpression( '/class="neve-skip-link[^>]*next-page-hide/', $this->render_header() );
+
+		$GLOBALS['neve_tests_is_amp'] = true;
+		set_theme_mod( 'neve_disable_header', true );
+
+		$this->assertMatchesRegularExpression( '/class="neve-skip-link[^>]*next-page-hide/', $this->render_header() );
+	}
+
+	/**
 	 * A disabled header keeps the skip link, the page skeleton and the wrapper hooks.
 	 */
 	public function test_disabled_header_keeps_the_skip_link_and_the_skeleton() {
@@ -441,13 +469,15 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	*/
 
 	/**
-	 * Render the header of the block theme compatibility layer.
+	 * Render the header of the block theme compatibility layer on a new page.
+	 *
+	 * @param array $meta Meta keys and values of the page.
 	 *
 	 * @return string
 	 */
-	private function render_fse_header() {
+	private function render_fse_header( $meta = array() ) {
 		$fse = new \Neve\Compatibility\Fse();
-		$this->go_to( get_permalink( $this->make_page() ) );
+		$this->go_to( get_permalink( $this->make_page( $meta ) ) );
 
 		$template = $fse->get_template_slug();
 		$this->assertSame( 'page', $template, 'Expected the page template.' );
@@ -467,12 +497,32 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 	}
 
 	/**
-	 * A disabled header leaves no empty wrapper behind in the block theme template either.
+	 * Render the block theme header with the header turned off globally or for the page.
+	 *
+	 * @param string $switch Either global or meta.
+	 *
+	 * @return string
 	 */
-	public function test_fse_disabled_header_leaves_no_wrapper_behind() {
+	private function render_disabled_fse_header( $switch ) {
+		if ( $switch === 'global' ) {
+			set_theme_mod( 'neve_disable_header', true );
+
+			return $this->render_fse_header();
+		}
+
+		return $this->render_fse_header( array( 'neve_meta_disable_header' => 'on' ) );
+	}
+
+	/**
+	 * A disabled header leaves no empty wrapper behind in the block theme template either.
+	 *
+	 * @dataProvider provide_header_switches
+	 *
+	 * @param string $switch Either global or meta.
+	 */
+	public function test_fse_disabled_header_leaves_no_wrapper_behind( $switch ) {
 		$this->unhook_around_the_header();
-		set_theme_mod( 'neve_disable_header', true );
-		$markup = $this->render_fse_header();
+		$markup = $this->render_disabled_fse_header( $switch );
 
 		$this->assertStringNotContainsString( '<header', $markup );
 		$this->assertStringContainsString( 'neve-skip-link', $markup );
@@ -481,10 +531,13 @@ class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
 
 	/**
 	 * A disabled header keeps what other code prints around it in the block theme template too.
+	 *
+	 * @dataProvider provide_header_switches
+	 *
+	 * @param string $switch Either global or meta.
 	 */
-	public function test_fse_disabled_header_keeps_content_hooked_around_it() {
-		set_theme_mod( 'neve_disable_header', true );
-		$markup = $this->render_fse_header();
+	public function test_fse_disabled_header_keeps_content_hooked_around_it( $switch ) {
+		$markup = $this->render_disabled_fse_header( $switch );
 
 		$this->assertStringContainsString( '<header', $markup );
 		$this->assertStringContainsString( '[neve_after_header_hook]', $markup );

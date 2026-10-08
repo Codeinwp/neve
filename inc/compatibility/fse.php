@@ -186,7 +186,7 @@ class Fse {
 		<div class="wrapper">
 		<?php do_action( 'neve_before_header_wrapper_hook' ); ?>
 
-		<a class="neve-skip-link show-on-focus" href="#content">
+		<a class="neve-skip-link show-on-focus" href="#content" <?php echo ( neve_is_amp() ) ? 'next-page-hide' : ''; ?>>
 			<?php echo __( 'Skip to content', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</a>
 
