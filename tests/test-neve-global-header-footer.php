@@ -1,0 +1,803 @@
+<?php
+/**
+ * Tests for the global header and footer visibility toggles.
+ *
+ * @package neve
+ */
+
+/**
+ * Class TestNeveGlobalHeaderFooter
+ */
+class TestNeveGlobalHeaderFooter extends WP_UnitTestCase {
+
+	/**
+	 * Customizer manager in place before the test replaced it.
+	 *
+	 * @var WP_Customize_Manager|null
+	 */
+	private $previous_customizer;
+
+	/**
+	 * Setup.
+	 */
+	public function setUp(): void {
+		parent::setUp();
+
+		// The test case restores the hooks and rolls back the database, but it leaves
+		// this global alone.
+		$this->previous_customizer = isset( $GLOBALS['wp_customize'] ) ? $GLOBALS['wp_customize'] : null;
+
+		// Another test in the suite declares the WooCommerce class; the theme then
+		// calls the conditional tags that come with it.
+		require_once __DIR__ . '/stubs/woocommerce-cart.php';
+		require_once __DIR__ . '/stubs/amp.php';
+
+		$this->mark_header_and_footer_hooks();
+	}
+
+	/**
+	 * Teardown.
+	 */
+	public function tearDown(): void {
+		if ( $this->previous_customizer === null ) {
+			unset( $GLOBALS['wp_customize'] );
+		} else {
+			$GLOBALS['wp_customize'] = $this->previous_customizer;
+		}
+
+		unset( $GLOBALS['neve_tests_is_amp'] );
+		remove_theme_mod( 'neve_disable_header' );
+		remove_theme_mod( 'neve_disable_footer' );
+		remove_theme_mod( 'neve_migrated_builders' );
+
+		parent::tearDown();
+	}
+
+	/**
+	 * Print a marker on each header and footer hook, so the tests can tell which ones ran.
+	 *
+	 * @return void
+	 */
+	private function mark_header_and_footer_hooks() {
+		$hooks = array(
+			'neve_before_header_wrapper_hook',
+			'neve_before_header_hook',
+			'neve_do_header',
+			'neve_after_header_hook',
+			'neve_after_header_wrapper_hook',
+			'neve_before_footer_hook',
+			'neve_do_footer',
+			'neve_after_footer_hook',
+		);
+
+		foreach ( $hooks as $hook ) {
+			add_action(
+				$hook,
+				function () use ( $hook ) {
+					echo '[' . esc_html( $hook ) . ']';
+				}
+			);
+		}
+	}
+
+	/**
+	 * Render the theme header.
+	 *
+	 * @return string
+	 */
+	private function render_header() {
+		// Keep the markup under test free of whatever plugins print in the head.
+		remove_all_actions( 'wp_head' );
+
+		ob_start();
+		load_template( get_theme_file_path( 'header.php' ), false );
+
+		return (string) ob_get_clean();
+	}
+
+	/**
+	 * Render the theme footer.
+	 *
+	 * @return string
+	 */
+	private function render_footer() {
+		remove_all_actions( 'wp_footer' );
+
+		ob_start();
+		load_template( get_theme_file_path( 'footer.php' ), false );
+
+		return (string) ob_get_clean();
+	}
+
+	/**
+	 * Make a published page that carries meta.
+	 *
+	 * @param array<string, string> $meta Meta keys and values.
+	 *
+	 * @return int
+	 */
+	private function make_page( $meta = array() ) {
+		$page_id = self::factory()->post->create(
+			array(
+				'post_type'   => 'page',
+				'post_status' => 'publish',
+			)
+		);
+
+		foreach ( $meta as $key => $value ) {
+			update_post_meta( $page_id, $key, $value );
+		}
+
+		return $page_id;
+	}
+
+	/**
+	 * Whether the part is rendered.
+	 *
+	 * @param string $context The part name.
+	 *
+	 * @return bool
+	 */
+	private function renders( $context ) {
+		return apply_filters( 'neve_filter_toggle_content_parts', true, $context );
+	}
+
+	/**
+	 * The parts this feature covers.
+	 *
+	 * @return array<string, array{'header'|'footer'}>
+	 */
+	public function header_and_footer() {
+		return array(
+			'header' => array( 'header' ),
+			'footer' => array( 'footer' ),
+		);
+	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| What the toggle decides
+	|--------------------------------------------------------------------------
+	*/
+
+	/**
+	 * The header and the footer are rendered when no global toggle is set.
+	 */
+	public function test_header_and_footer_render_by_default() {
+		$this->assertTrue( $this->renders( 'header' ) );
+		$this->assertTrue( $this->renders( 'footer' ) );
+	}
+
+	/**
+	 * Each toggle hides its own part and leaves the other one alone.
+	 *
+	 * @param string $part The part name.
+	 *
+	 * @dataProvider header_and_footer
+	 */
+	public function test_each_toggle_hides_only_its_own_part( $part ) {
+		$other = $part === 'header' ? 'footer' : 'header';
+		set_theme_mod( 'neve_disable_' . $part, true );
+
+		$this->assertFalse( $this->renders( $part ) );
+		$this->assertTrue( $this->renders( $other ) );
+	}
+
+	/**
+	 * The toggles leave every other content part alone.
+	 */
+	public function test_other_content_parts_are_untouched() {
+		set_theme_mod( 'neve_disable_header', true );
+		set_theme_mod( 'neve_disable_footer', true );
+
+		$this->assertTrue( $this->renders( 'title' ) );
+		$this->assertTrue( $this->renders( 'featured-image' ) );
+		$this->assertFalse( apply_filters( 'neve_filter_toggle_content_parts', false, 'sidebar' ) );
+	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| The toggle against the post meta
+	|--------------------------------------------------------------------------
+	*/
+
+	/**
+	 * The global toggle wins over a page that carries the default meta value.
+	 *
+	 * The metabox stores 'off' both for an untouched page and for one that was turned on
+	 * and off again, so 'off' must not count as a deliberate opt in.
+	 *
+	 * @param string $part The part name.
+	 *
+	 * @dataProvider header_and_footer
+	 */
+	public function test_global_toggle_wins_over_an_off_meta_value( $part ) {
+		set_theme_mod( 'neve_disable_' . $part, true );
+		$this->go_to( get_permalink( $this->make_page( array( 'neve_meta_disable_' . $part => 'off' ) ) ) );
+
+		$this->assertFalse( $this->renders( $part ) );
+	}
+
+	/**
+	 * A single page still turns the parts off on its own.
+	 *
+	 * @param string $part The part name.
+	 *
+	 * @dataProvider header_and_footer
+	 */
+	public function test_post_meta_still_disables_a_part_on_its_own( $part ) {
+		$this->go_to( get_permalink( $this->make_page( array( 'neve_meta_disable_' . $part => 'on' ) ) ) );
+
+		$this->assertFalse( $this->renders( $part ) );
+	}
+
+	/**
+	 * Meta on one page does not leak to another.
+	 */
+	public function test_meta_does_not_leak_between_pages() {
+		$with_meta = $this->make_page( array( 'neve_meta_disable_header' => 'on' ) );
+		$plain     = $this->make_page();
+
+		$this->go_to( get_permalink( $with_meta ) );
+		$this->assertFalse( $this->renders( 'header' ) );
+
+		$this->go_to( get_permalink( $plain ) );
+		$this->assertTrue( $this->renders( 'header' ) );
+	}
+
+	/**
+	 * The global toggle reaches the views that have no metabox.
+	 *
+	 * @param string $context The view to open.
+	 *
+	 * @dataProvider views_without_a_metabox
+	 */
+	public function test_global_toggle_reaches_views_without_a_metabox( $context ) {
+		$post_id = self::factory()->post->create( array( 'post_status' => 'publish' ) );
+
+		if ( $context === 'category' ) {
+			$category_id = self::factory()->category->create();
+			wp_set_post_categories( $post_id, array( $category_id ) );
+			$url = get_category_link( $category_id );
+		} else {
+			$url = home_url( '/?s=neve' );
+		}
+
+		set_theme_mod( 'neve_disable_header', true );
+		$this->go_to( $url );
+
+		// Guard the fixture: the assertion only means something in the right view.
+		$this->assertFalse( is_singular(), 'The metabox covers singular views, this must not be one.' );
+		$this->assertFalse( $this->renders( 'header' ) );
+	}
+
+	/**
+	 * Views the metabox never reached.
+	 *
+	 * @return array<string, array{'category'|'search'}>
+	 */
+	public function views_without_a_metabox() {
+		return array(
+			'category archive' => array( 'category' ),
+			'search results'   => array( 'search' ),
+		);
+	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| The markup
+	|--------------------------------------------------------------------------
+	*/
+
+	/**
+	 * The header wrapper is rendered when the header is on.
+	 */
+	public function test_header_wrapper_is_rendered_when_enabled() {
+		$markup = $this->render_header();
+
+		$this->assertStringContainsString( '<header', $markup );
+		$this->assertStringContainsString( '[neve_do_header]', $markup );
+	}
+
+	/**
+	 * Leave nothing hooked right before and right after the header, the way a site without Neve Pro is.
+	 *
+	 * @return void
+	 */
+	private function unhook_around_the_header() {
+		remove_all_actions( 'neve_before_header_hook' );
+		remove_all_actions( 'neve_after_header_hook' );
+	}
+
+	/**
+	 * Turn the header off globally or for the current page.
+	 *
+	 * @return array<string, array{'global'|'meta'}>
+	 */
+	public function provide_header_switches() {
+		return array(
+			'global toggle' => array( 'global' ),
+			'page meta'     => array( 'meta' ),
+		);
+	}
+
+	/**
+	 * Turn the header off.
+	 *
+	 * @param string $switch Either global or meta.
+	 *
+	 * @return void
+	 */
+	private function disable_header( $switch ) {
+		if ( $switch === 'global' ) {
+			set_theme_mod( 'neve_disable_header', true );
+
+			return;
+		}
+
+		$this->go_to( get_permalink( $this->make_page( array( 'neve_meta_disable_header' => 'on' ) ) ) );
+	}
+
+	/**
+	 * A disabled header with nothing hooked around it leaves no empty wrapper behind.
+	 *
+	 * @dataProvider provide_header_switches
+	 *
+	 * @param string $switch Either global or meta.
+	 */
+	public function test_disabled_header_leaves_no_empty_wrapper_behind( $switch ) {
+		$this->unhook_around_the_header();
+		$this->disable_header( $switch );
+		$markup = $this->render_header();
+
+		$this->assertStringNotContainsString( '<header', $markup );
+		$this->assertStringNotContainsString( '[neve_do_header]', $markup );
+	}
+
+	/**
+	 * A disabled header keeps what other code prints around it, such as the Neve Pro page header.
+	 *
+	 * @dataProvider provide_header_switches
+	 *
+	 * @param string $switch Either global or meta.
+	 */
+	public function test_disabled_header_keeps_content_hooked_around_it( $switch ) {
+		$this->disable_header( $switch );
+		$markup = $this->render_header();
+
+		$this->assertStringContainsString( '<header', $markup );
+		$this->assertStringContainsString( '[neve_before_header_hook]', $markup );
+		$this->assertStringContainsString( '[neve_after_header_hook]', $markup );
+		$this->assertStringNotContainsString( '[neve_do_header]', $markup );
+	}
+
+	/**
+	 * Hooks that print only whitespace do not bring the empty wrapper back.
+	 */
+	public function test_whitespace_around_a_disabled_header_leaves_no_wrapper() {
+		$this->unhook_around_the_header();
+		add_action(
+			'neve_after_header_hook',
+			function () {
+				echo "\n\t  \n";
+			}
+		);
+		set_theme_mod( 'neve_disable_header', true );
+
+		$this->assertStringNotContainsString( '<header', $this->render_header() );
+	}
+
+	/**
+	 * On AMP the skip link hides on the pages that infinite scroll appends, as it did inside the header.
+	 */
+	public function test_the_skip_link_hides_on_appended_amp_pages() {
+		$this->assertDoesNotMatchRegularExpression( '/class="neve-skip-link[^>]*next-page-hide/', $this->render_header() );
+
+		$GLOBALS['neve_tests_is_amp'] = true;
+		set_theme_mod( 'neve_disable_header', true );
+
+		$this->assertMatchesRegularExpression( '/class="neve-skip-link[^>]*next-page-hide/', $this->render_header() );
+	}
+
+	/**
+	 * A disabled header keeps the skip link, the page skeleton and the wrapper hooks.
+	 */
+	public function test_disabled_header_keeps_the_skip_link_and_the_skeleton() {
+		set_theme_mod( 'neve_disable_header', true );
+		$markup = $this->render_header();
+
+		$this->assertStringContainsString( 'neve-skip-link', $markup );
+		$this->assertStringContainsString( '<div class="wrapper">', $markup );
+		$this->assertStringContainsString( '<main id="content"', $markup );
+		$this->assertStringContainsString( '[neve_before_header_wrapper_hook]', $markup );
+		$this->assertStringContainsString( '[neve_after_header_wrapper_hook]', $markup );
+	}
+
+	/**
+	 * The footer is rendered when it is on.
+	 */
+	public function test_footer_is_rendered_when_enabled() {
+		$this->assertStringContainsString( '[neve_do_footer]', $this->render_footer() );
+	}
+
+	/**
+	 * A disabled footer runs no footer hooks and still closes the page.
+	 */
+	public function test_disabled_footer_runs_no_hooks_and_closes_the_page() {
+		set_theme_mod( 'neve_disable_footer', true );
+		$markup = $this->render_footer();
+
+		$this->assertStringNotContainsString( '[neve_do_footer]', $markup );
+		$this->assertStringNotContainsString( '[neve_before_footer_hook]', $markup );
+		$this->assertStringContainsString( '</main>', $markup );
+		$this->assertStringContainsString( '</body>', $markup );
+	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| The block theme template
+	|--------------------------------------------------------------------------
+	*/
+
+	/**
+	 * Render the header of the block theme compatibility layer on a new page.
+	 *
+	 * @param array<string, string> $meta Meta keys and values of the page.
+	 *
+	 * @return string
+	 */
+	private function render_fse_header( $meta = array() ) {
+		$fse = new \Neve\Compatibility\Fse();
+		$this->go_to( get_permalink( $this->make_page( $meta ) ) );
+
+		$template = $fse->get_template_slug();
+		$this->assertSame( 'page', $template, 'Expected the page template.' );
+		set_theme_mod( \Neve\Compatibility\Fse::FSE_ENABLED_SLUG, true );
+		set_theme_mod( 'neve_fse_' . $template, true );
+
+		ob_start();
+		$fse->handle_header();
+
+		return (string) ob_get_clean();
+	}
+
+	/**
+	 * The block theme header wrapper is rendered when the header is on.
+	 */
+	public function test_fse_header_wrapper_is_rendered_when_enabled() {
+		$markup = $this->render_fse_header();
+
+		$this->assertStringContainsString( '<header', $markup );
+		$this->assertStringContainsString( '[neve_do_header]', $markup );
+	}
+
+	/**
+	 * Render the block theme header with the header turned off globally or for the page.
+	 *
+	 * @param string $switch Either global or meta.
+	 *
+	 * @return string
+	 */
+	private function render_disabled_fse_header( $switch ) {
+		if ( $switch === 'global' ) {
+			set_theme_mod( 'neve_disable_header', true );
+
+			return $this->render_fse_header();
+		}
+
+		return $this->render_fse_header( array( 'neve_meta_disable_header' => 'on' ) );
+	}
+
+	/**
+	 * A disabled header leaves no empty wrapper behind in the block theme template either.
+	 *
+	 * @dataProvider provide_header_switches
+	 *
+	 * @param string $switch Either global or meta.
+	 */
+	public function test_fse_disabled_header_leaves_no_wrapper_behind( $switch ) {
+		$this->unhook_around_the_header();
+		$markup = $this->render_disabled_fse_header( $switch );
+
+		$this->assertStringNotContainsString( '<header', $markup );
+		$this->assertStringNotContainsString( '[neve_do_header]', $markup );
+		$this->assertStringContainsString( 'neve-skip-link', $markup );
+		$this->assertStringContainsString( '<main id="content"', $markup );
+	}
+
+	/**
+	 * A disabled header keeps what other code prints around it in the block theme template too.
+	 *
+	 * @dataProvider provide_header_switches
+	 *
+	 * @param string $switch Either global or meta.
+	 */
+	public function test_fse_disabled_header_keeps_content_hooked_around_it( $switch ) {
+		$markup = $this->render_disabled_fse_header( $switch );
+
+		$this->assertStringContainsString( '<header', $markup );
+		$this->assertStringContainsString( '[neve_after_header_hook]', $markup );
+		$this->assertStringNotContainsString( '[neve_do_header]', $markup );
+	}
+
+	/**
+	 * On AMP the block theme skip link hides on the pages that infinite scroll appends, too.
+	 */
+	public function test_the_fse_skip_link_hides_on_appended_amp_pages() {
+		$GLOBALS['neve_tests_is_amp'] = true;
+
+		$this->assertMatchesRegularExpression( '/class="neve-skip-link[^>]*next-page-hide/', $this->render_fse_header() );
+	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| The customizer controls
+	|--------------------------------------------------------------------------
+	*/
+
+	/**
+	 * Run a full customizer cycle, with every other module registering too.
+	 *
+	 * The builders hook into customize_register only in the admin, so they are called directly.
+	 *
+	 * @return WP_Customize_Manager
+	 */
+	private function register_customizer() {
+		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
+
+		global $wp_customize;
+		$wp_customize = new WP_Customize_Manager();
+
+		$loader = new \Neve\Customizer\Loader();
+		$loader->init();
+		do_action( 'customize_register', $wp_customize );
+
+		foreach ( array( 'header', 'footer' ) as $builder ) {
+			\HFG\Main::get_instance()->get_builder( $builder )->customize_register( $wp_customize );
+		}
+
+		return $wp_customize;
+	}
+
+	/**
+	 * Assert that a toggle saves a boolean and starts off.
+	 *
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 * @param string               $id           The setting id.
+	 *
+	 * @return void
+	 */
+	private function assert_toggle_setting( $wp_customize, $id ) {
+		$control = $wp_customize->get_control( $id );
+		$this->assertNotNull( $control, 'The ' . $id . ' toggle is missing.' );
+		$this->assertSame( 'neve_toggle_control', $control->type );
+
+		$setting = $wp_customize->get_setting( $id );
+		$this->assertFalse( $setting->default );
+		$this->assertSame( 'refresh', $setting->transport );
+		$this->assertTrue( $setting->sanitize( 'on' ) );
+		$this->assertFalse( $setting->sanitize( '' ) );
+	}
+
+	/**
+	 * The header toggle opens the general tab of the global header settings.
+	 */
+	public function test_the_header_toggle_sits_in_the_global_header_settings() {
+		$wp_customize = $this->register_customizer();
+
+		$this->assert_toggle_setting( $wp_customize, 'neve_disable_header' );
+
+		$section = $wp_customize->get_section( 'neve_pro_global_header_settings' );
+		$this->assertNotNull( $section );
+		$this->assertSame( 'hfg_header', $section->panel );
+		$this->assertSame( 'neve_pro_global_header_settings', $wp_customize->get_control( 'neve_disable_header' )->section );
+
+		// The tabs only show the controls they list, and the first tab is the one that opens.
+		$tabs = $wp_customize->get_control( 'neve_pro_global_header_settings_tabs' );
+		$this->assertSame( array( 'general', 'style' ), array_keys( $tabs->tabs ) );
+		$this->assertArrayHasKey( 'neve_disable_header', $tabs->controls['general'] );
+	}
+
+	/**
+	 * Sites still on the legacy builder keep both toggles.
+	 *
+	 * The legacy builder has no global header settings tabs, so the header toggle is a plain control there.
+	 */
+	public function test_the_toggles_stay_on_the_legacy_builder() {
+		set_theme_mod( 'neve_migrated_builders', false );
+
+		$wp_customize = $this->register_customizer();
+
+		$this->assert_toggle_setting( $wp_customize, 'neve_disable_header' );
+		$this->assert_toggle_setting( $wp_customize, 'neve_disable_footer' );
+
+		$section = $wp_customize->get_section( 'neve_pro_global_header_settings' );
+		$this->assertNotNull( $section );
+		$this->assertSame( 'hfg_header', $section->panel );
+		$this->assertSame( 'neve_pro_global_header_settings', $wp_customize->get_control( 'neve_disable_header' )->section );
+		$this->assertNull( $wp_customize->get_control( 'neve_pro_global_header_settings_tabs' ) );
+	}
+
+	/**
+	 * On the legacy builder, a global header settings section that Neve Pro registered first is kept.
+	 */
+	public function test_the_legacy_builder_keeps_an_existing_global_header_section() {
+		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
+
+		set_theme_mod( 'neve_migrated_builders', false );
+
+		global $wp_customize;
+		$wp_customize = new WP_Customize_Manager();
+		$wp_customize->add_section(
+			'neve_pro_global_header_settings',
+			array(
+				'title'    => 'Registered first',
+				'priority' => 100,
+				'panel'    => 'hfg_header',
+			)
+		);
+
+		\HFG\Main::get_instance()->get_builder( 'header' )->customize_register( $wp_customize );
+
+		$section = $wp_customize->get_section( 'neve_pro_global_header_settings' );
+		$this->assertSame( 'Registered first', $section->title );
+		$this->assertSame( 100, $section->priority );
+		$this->assertSame( 'neve_pro_global_header_settings', $wp_customize->get_control( 'neve_disable_header' )->section );
+	}
+
+	/**
+	 * Sites that started before 4.0.1 and sites that started after it.
+	 *
+	 * @return array<string, array{string, bool}>
+	 */
+	public function provide_user_since_versions() {
+		return array(
+			'older site, no copyright section' => array( 'unknown', false ),
+			'newer site, copyright section'    => array( '4.2.0', true ),
+		);
+	}
+
+	/**
+	 * The footer toggle gets its own global settings section, with or without the copyright section.
+	 *
+	 * @dataProvider provide_user_since_versions
+	 *
+	 * @param string $user_since    The version the site started on.
+	 * @param bool   $has_copyright Whether the copyright section registers.
+	 */
+	public function test_the_footer_toggle_sits_in_the_global_footer_settings( $user_since, $has_copyright ) {
+		update_option( \Neve\Core\Migration_Flags::USER_SINCE_VERSION, $user_since );
+
+		$wp_customize = $this->register_customizer();
+
+		$this->assert_toggle_setting( $wp_customize, 'neve_disable_footer' );
+
+		$section = $wp_customize->get_section( 'neve_global_footer_settings' );
+		$this->assertNotNull( $section );
+		$this->assertSame( 'hfg_footer', $section->panel );
+		$this->assertSame( 'neve_global_footer_settings', $wp_customize->get_control( 'neve_disable_footer' )->section );
+
+		// The copyright section sits right above it on newer sites.
+		$this->assertSame( $has_copyright, $wp_customize->get_section( 'neve_footer_copyright_section' ) !== null );
+	}
+
+	/**
+	 * The builder panels hide every section by default, so the toggles' sections have to be named in the styles.
+	 *
+	 * Without this rule the sections register, render and stay invisible.
+	 */
+	public function test_the_sections_are_whitelisted_in_the_builder_panel_styles() {
+		$path = get_theme_file_path( 'assets/apps/customizer-controls/src/scss/_general.scss' );
+		$this->assertFileExists( $path );
+
+		$scss = file_get_contents( $path );
+
+		$panels = array(
+			'hfg_header' => 'neve_pro_global_header_settings',
+			'hfg_footer' => 'neve_global_footer_settings',
+		);
+
+		foreach ( $panels as $panel => $section ) {
+			$this->assertStringContainsString(
+				'#sub-accordion-panel-' . $panel . ' #accordion-section-' . $section,
+				(string) $scss,
+				'Sections in the builder panels stay hidden unless this rule names them.'
+			);
+		}
+	}
+	/*
+	|--------------------------------------------------------------------------
+	| Other plugins that render into the header
+	|--------------------------------------------------------------------------
+	*/
+
+	/**
+	 * The AMP state elements outlive a disabled header.
+	 *
+	 * They are printed around the header but one of them drives the WooCommerce shop
+	 * sidebar, which is still on the page when the header is gone.
+	 */
+	public function test_amp_states_survive_a_disabled_header() {
+		$this->unhook_around_the_header();
+		$GLOBALS['neve_tests_is_amp'] = true;
+		$amp                          = new \Neve\Compatibility\Amp();
+		$amp->register_hooks();
+
+		$with_header = $this->render_header();
+		$this->assertStringContainsString( '<header', $with_header );
+		$this->assertStringContainsString( 'nvAmpWooSidebarExpanded', $with_header );
+
+		set_theme_mod( 'neve_disable_header', true );
+		$without_header = $this->render_header();
+
+		$this->assertStringNotContainsString( '<header', $without_header );
+		$this->assertStringContainsString( 'nvAmpWooSidebarExpanded', $without_header );
+		$this->assertStringContainsString( 'nvAmpMenuExpanded', $without_header );
+	}
+
+	/**
+	 * The AMP scroll to top animations outlive a disabled header.
+	 *
+	 * The button is hidden until an animation shows it, so it never appears when the
+	 * animations are gone.
+	 */
+	public function test_amp_scroll_to_top_animations_survive_a_disabled_header() {
+		$this->unhook_around_the_header();
+		$GLOBALS['neve_tests_is_amp'] = true;
+		$scroll_to_top                = new \Neve\Views\Scroll_To_Top();
+		$scroll_to_top->init();
+
+		$with_header = $this->render_header();
+		$this->assertStringContainsString( '<header', $with_header );
+		$this->assertStringContainsString( 'id="showAnim"', $with_header );
+
+		set_theme_mod( 'neve_disable_header', true );
+		$without_header = $this->render_header();
+
+		$this->assertStringNotContainsString( '<header', $without_header );
+		$this->assertStringContainsString( 'id="showAnim"', $without_header );
+		$this->assertStringContainsString( 'id="hideAnim"', $without_header );
+	}
+
+	/**
+	 * The AMP position observer watches an element that scrolls out of view.
+	 *
+	 * Left without a target it watches its own parent, which is the page wrapper. The
+	 * wrapper is never out of the viewport, so the animation that shows the button
+	 * never starts.
+	 */
+	public function test_amp_scroll_to_top_observer_watches_an_element_that_scrolls_away() {
+		$GLOBALS['neve_tests_is_amp'] = true;
+		$scroll_to_top                = new \Neve\Views\Scroll_To_Top();
+		$scroll_to_top->init();
+
+		set_theme_mod( 'neve_disable_header', true );
+		$markup = $this->render_header();
+
+		$this->assertStringContainsString( 'id="nv-scroll-to-top-anchor"', $markup );
+		$this->assertStringContainsString( 'target="nv-scroll-to-top-anchor"', $markup );
+	}
+
+	/**
+	 * The AMP infinite scroll steps aside when the footer is off.
+	 *
+	 * It wraps the footer and replaces the pagination, so a page without the footer
+	 * keeps its regular pagination instead of losing both.
+	 */
+	public function test_amp_infinite_scroll_steps_aside_without_the_footer() {
+		update_option( 'posts_per_page', 1 );
+		$post_ids = self::factory()->post->create_many( 3 );
+		set_theme_mod( 'neve_pagination_type', 'infinite' );
+		set_theme_mod( 'neve_default_sidebar_layout', 'full-width' );
+
+		$this->go_to( home_url( '/' ) );
+		$GLOBALS['post'] = get_post( $post_ids[0] );
+		$amp             = new \Neve\Compatibility\Amp();
+
+		$this->assertTrue( $amp->should_display_infinite_scroll() );
+
+		set_theme_mod( 'neve_disable_footer', true );
+
+		$this->assertFalse( $amp->should_display_infinite_scroll() );
+	}
+}

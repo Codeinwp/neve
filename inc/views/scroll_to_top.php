@@ -22,7 +22,9 @@ class Scroll_To_Top extends Base_View {
 	public function init() {
 		add_action( 'wp_footer', array( $this, 'render_button' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_action( 'neve_before_header_hook', array( $this, 'scroll_to_top_amp' ) );
+		// Printed outside the header, because the button is hidden until one of these
+		// animations shows it, and the button stays on the page when the header is turned off.
+		add_action( 'neve_before_header_wrapper_hook', array( $this, 'scroll_to_top_amp' ) );
 	}
 
 	/**
@@ -39,7 +41,10 @@ class Scroll_To_Top extends Base_View {
 			return;
 		}
 
-		echo '<amp-position-observer on="enter:hideAnim.start; exit:showAnim.start" layout="nodisplay"></amp-position-observer>';
+		// The observer watches its own parent unless it is given a target. Its parent here is
+		// the page wrapper, which is never out of the viewport, so it watches this anchor instead.
+		echo '<div id="nv-scroll-to-top-anchor"></div>';
+		echo '<amp-position-observer target="nv-scroll-to-top-anchor" on="enter:hideAnim.start; exit:showAnim.start" layout="nodisplay"></amp-position-observer>';
 
 		// We use 2 `amp-animation` elements to trigger the visibility of the button. The first one is for making the button visible
 		echo '

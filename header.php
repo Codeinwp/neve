@@ -75,31 +75,45 @@ do_action( 'neve_body_start_after' );
 	do_action( 'neve_before_header_wrapper_hook' );
 	?>
 
-	<header class="<?php echo esc_attr( $header_classes ); ?>" <?php echo ( neve_is_amp() ) ? 'next-page-hide' : ''; ?> >
-		<a class="neve-skip-link show-on-focus" href="#content" >
-			<?php echo __( 'Skip to content', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-		</a>
-		<?php
+	<a class="neve-skip-link show-on-focus" href="#content" <?php echo ( neve_is_amp() ) ? 'next-page-hide' : ''; ?>>
+		<?php echo __( 'Skip to content', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	</a>
 
-		/**
-		 * Executes actions before the header ( navigation ) area.
-		 *
-		 * @since 1.0.0
-		 */
-		do_action( 'neve_before_header_hook' );
+	<?php
+	$neve_has_header = apply_filters( 'neve_filter_toggle_content_parts', true, 'header' ) === true;
 
-		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'header' ) === true ) {
-			do_action( 'neve_do_header' );
-		}
+	// The hooks around the header run even when it is off, so what they add (such as the
+	// Neve Pro page header) stays. The wrapper is printed only when it has something to wrap.
+	ob_start();
 
-		/**
-		 * Executes actions after the header ( navigation ) area.
-		 *
-		 * @since 1.0.0
-		 */
-		do_action( 'neve_after_header_hook' );
+	/**
+	 * Executes actions before the header ( navigation ) area.
+	 *
+	 * @since 1.0.0
+	 */
+	do_action( 'neve_before_header_hook' );
+
+	if ( $neve_has_header ) {
+		do_action( 'neve_do_header' );
+	}
+
+	/**
+	 * Executes actions after the header ( navigation ) area.
+	 *
+	 * @since 1.0.0
+	 */
+	do_action( 'neve_after_header_hook' );
+
+	$neve_header_markup = (string) ob_get_clean();
+
+	if ( $neve_has_header || trim( $neve_header_markup ) !== '' ) {
 		?>
+	<header class="<?php echo esc_attr( $header_classes ); ?>" <?php echo ( neve_is_amp() ) ? 'next-page-hide' : ''; ?> >
+		<?php echo $neve_header_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Printed by the header hooks, which escape their own output. ?>
 	</header>
+		<?php
+	}
+	?>
 
 	<?php
 	/**

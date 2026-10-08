@@ -162,6 +162,8 @@ class Footer extends Abstract_Builder {
 	 * @access  public
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
+		$this->customize_global_footer( $wp_customize );
+
 		if ( $this->has_valid_addons() || ! Migration_Flags::is_new_user_after_v41() ) {
 			return parent::customize_register( $wp_customize );
 		}
@@ -192,8 +194,45 @@ class Footer extends Abstract_Builder {
 				'setting' => 'footer_copyright_content',
 			]
 		);
-		
+
 		return parent::customize_register( $wp_customize );
+	}
+
+	/**
+	 * Registers the footer options section, the counterpart of the global header settings.
+	 *
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 *
+	 * @return void
+	 */
+	private function customize_global_footer( WP_Customize_Manager $wp_customize ) {
+		$wp_customize->add_section(
+			'neve_global_footer_settings',
+			[
+				'title'    => __( 'Footer Options', 'neve' ),
+				'priority' => 201,
+				'panel'    => 'hfg_footer',
+			]
+		);
+
+		$wp_customize->add_setting(
+			'neve_disable_footer',
+			[
+				'default'           => false,
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'neve_sanitize_checkbox',
+			]
+		);
+
+		$wp_customize->add_control(
+			'neve_disable_footer',
+			[
+				'label'    => esc_html__( 'Disable Footer', 'neve' ),
+				'section'  => 'neve_global_footer_settings',
+				'type'     => 'neve_toggle_control',
+				'priority' => 5,
+			]
+		);
 	}
 
 	/**

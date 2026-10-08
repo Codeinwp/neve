@@ -12,7 +12,14 @@ ul[id^="sub-accordion-panel-hfg_"] {
   }
 
   #accordion-section-neve_header_presets,
-  #accordion-section-neve_footer_copyright_section {
+  #accordion-section-neve_footer_copyright_section,
+  #accordion-section-neve_global_footer_settings {
 	  margin-top: 20px;
+  }
+
+  // Only some sites get the copyright section; when it is there, the two form one group.
+  #accordion-section-neve_footer_copyright_section
+  + #accordion-section-neve_global_footer_settings {
+	  margin-top: 0;
   }
 }
