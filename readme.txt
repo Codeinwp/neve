@@ -1,9 +1,8 @@
 === Neve ===
 Contributors: themeisle
-Tags: blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
+Tags: blog, block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-menu, featured-image-header, featured-images, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
 Requires at least: 5.5
-Tested up to: 6.4
-Stable tag: trunk
+Tested up to: 7.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -18,6 +17,37 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+
+##### [Version 4.2.16](https://github.com/Codeinwp/neve/compare/v4.2.15...v4.2.16) (2026-10-07)
+
+- Improves mobile dropdown labels to keep text after less-than signs.
+- Fixes header search and palette icons showing button boxes.
+
+
+
+
+##### [Version 4.2.15](https://github.com/Codeinwp/neve/compare/v4.2.14...v4.2.15) (2026-10-01)
+
+- Fixed menu caret buttons showing a rounded background and shadow instead of the plain arrow.
+- Fixed header cart, My Account, and Wishlist icons ignoring their configured hover color.
+
+
+
+
+##### [Version 4.2.14](https://github.com/Codeinwp/neve/compare/v4.2.13...v4.2.14) (2026-09-29)
+
+- Fixed Elementor pages losing Neve palette colors after CSS regeneration.
+- Added AI agent support: let AI assistants read and change your Neve settings.
+
+
+
+
+##### [Version 4.2.13](https://github.com/Codeinwp/neve/compare/v4.2.12...v4.2.13) (2026-09-24)
+
+- Improved Neve accessibility with keyboard-ready menus, stronger contrast, and better page reflow.
+
+
+
 
 ##### [Version 4.2.12](https://github.com/Codeinwp/neve/compare/v4.2.11...v4.2.12) (2026-09-14)
 

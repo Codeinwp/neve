@@ -23,7 +23,7 @@ return <<<'CSS'
 .folio-hero-media .wp-block-cover:nth-child(2){transform:translateY(-16px);z-index:3;margin:0 -26px}
 .folio-hero-media .wp-block-cover:nth-child(3){transform:rotate(7deg) translateY(10px);z-index:2}
 @media(max-width:782px){
-  .folio-hero-media .wp-block-cover{width:150px;transform:none !important;margin:6px !important}
+  .folio-hero-media .wp-block-cover{width:clamp(84px,27vw,150px);min-height:clamp(150px,46vw,252px);transform:none !important;margin:6px !important}
 }
 
 /* Star rating row */
@@ -82,7 +82,7 @@ return <<<'CSS'
 .folio-faq details{background:var(--nv-site-bg,#fff);border:1px solid var(--nv-c-1,#E5E7EB);border-radius:12px;padding:18px 22px;margin-bottom:14px}
 .folio-faq summary{cursor:pointer;font-weight:600;list-style:none}
 .folio-faq summary::-webkit-details-marker{display:none}
-.folio-faq summary::after{content:"+";float:right;font-size:20px;line-height:1;color:var(--nv-c-2,#6B7280)}
+.folio-faq summary::after{content:"+";float:right;font-size:20px;line-height:1;color:var(--nv-c-2,#5b6472)}
 .folio-faq details[open] summary::after{content:"\2013"}
 .folio-faq details[open] summary{margin-bottom:10px}
 

@@ -19,7 +19,7 @@ return array(
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"align":"center","width":80,"height":80} -->
-<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/otter-blocks-img-03.png" alt="" width="80" height="80"/></figure></div>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/otter-blocks-img-03.png" alt="Photo of Jason Stobbard" width="80" height="80"/></figure></div>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"align":"center"} -->
@@ -33,7 +33,7 @@ return array(
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"align":"center","width":80,"height":80} -->
-<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/otter-blocks-img-02.png" alt=""  width="80" height="80"/></figure></div>
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/otter-blocks-img-02.png" alt="Photo of Jane Austin"  width="80" height="80"/></figure></div>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"align":"center"} -->
@@ -47,7 +47,7 @@ return array(
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"align":"center","width":80,"height":80} -->
-<div class="wp-block-image"><figure class="aligncenter  is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/otter-blocks-img-03.png" alt="" width="80" height="80"/></figure></div>
+<div class="wp-block-image"><figure class="aligncenter  is-resized"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/otter-blocks-img-03.png" alt="Photo of Jason Stobbard" width="80" height="80"/></figure></div>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"align":"center"} -->

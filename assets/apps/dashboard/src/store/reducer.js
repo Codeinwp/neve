@@ -1,5 +1,6 @@
 /* global neveDash  */
 import { getTabHash } from '../utils/common';
+import { withAiConnectNotice } from '../utils/ai-connect';
 
 const initialState = {
 	settings: {},
@@ -7,7 +8,8 @@ const initialState = {
 	toast: null,
 	currentTab: 'start',
 	license: neveDash.pro ? neveDash.license : {},
-	notifications: neveDash.notifications || {},
+	// The SDK's "Connect your AI agent" notice is shown as a notification.
+	notifications: withAiConnectNotice(neveDash.notifications || {}),
 	obfxModuleStatus: neveDash.orbitFox?.data?.module_status || {},
 };
 
