@@ -5,5 +5,9 @@ updates:
   target-branch: development
   schedule:
     interval: daily
+  cooldown:
+    default-days: 7
+    exclude:
+    - codeinwp/themeisle-sdk
   allow:
   - dependency-name: codeinwp/themeisle-sdk
