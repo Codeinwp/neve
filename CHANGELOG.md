@@ -1,3 +1,8 @@
+##### [Version 4.2.16](https://github.com/Codeinwp/neve/compare/v4.2.15...v4.2.16) (2026-10-07)
+
+- Improves mobile dropdown labels to keep text after less-than signs.
+- Fixes header search and palette icons showing button boxes.
+
 ##### [Version 4.2.15](https://github.com/Codeinwp/neve/compare/v4.2.14...v4.2.15) (2026-10-01)
 
 - Fixed menu caret buttons showing a rounded background and shadow instead of the plain arrow.
