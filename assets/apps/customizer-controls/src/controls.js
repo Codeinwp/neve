@@ -316,9 +316,8 @@ const bindDataAttrQuickLinks = () => {
 };
 const checkHasElementorTemplates = () => {
 	if (NeveReactCustomize.elementor.hasElementorShopTemplate) {
-		window.wp.customize
-			.section('woocommerce_product_catalog')
-			.notifications.add(
+		window.wp.customize.section('woocommerce_product_catalog', (section) =>
+			section.notifications.add(
 				new window.wp.customize.Notification(
 					'neve-custom-elementor-shop-template',
 					{
@@ -329,13 +328,13 @@ const checkHasElementorTemplates = () => {
 						),
 					}
 				)
-			);
+			)
+		);
 	}
 
 	if (NeveReactCustomize.elementor.hasElementorProductTemplate) {
-		window.wp.customize
-			.section('neve_single_product_layout')
-			.notifications.add(
+		window.wp.customize.section('neve_single_product_layout', (section) =>
+			section.notifications.add(
 				new window.wp.customize.Notification(
 					'neve-custom-elementor-product-template',
 					{
@@ -346,7 +345,8 @@ const checkHasElementorTemplates = () => {
 						),
 					}
 				)
-			);
+			)
+		);
 	}
 };
 
