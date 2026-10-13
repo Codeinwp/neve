@@ -105,36 +105,39 @@ test.describe('Elementor WooCommerce template notices', () => {
 		expect(notificationErrors).toEqual([]);
 	});
 
-	test('shows the Elementor template warning once the section is registered', async ({
-		page,
-	}) => {
-		await openCustomizer(page);
-		await expect(page.locator('#neve-style-book')).toBeVisible({
-			timeout: 60_000,
-		});
+	const warnings = [
+		[SHOP_SECTION, 'neve-custom-elementor-shop-template'],
+		[PRODUCT_SECTION, 'neve-custom-elementor-product-template'],
+	] as const;
 
-		await page.evaluate((product) => {
-			const { wp } = window as unknown as CustomizeWindow;
-			wp.customize.section.add(
-				new wp.customize.Section(product, {
-					params: { title: 'Single Product' },
-				})
-			);
-		}, PRODUCT_SECTION);
+	for (const [sectionId, code] of warnings) {
+		test(`shows the ${code} warning once ${sectionId} is registered`, async ({
+			page,
+		}) => {
+			await openCustomizer(page);
+			await expect(page.locator('#neve-style-book')).toBeVisible({
+				timeout: 60_000,
+			});
 
-		// The section callback resolves through a jQuery Deferred, which is async.
-		await expect
-			.poll(() =>
-				page.evaluate(
-					(product) =>
-						(window as unknown as CustomizeWindow).wp.customize
-							.section(product)
-							?.notifications.has(
-								'neve-custom-elementor-product-template'
-							) ?? false,
-					PRODUCT_SECTION
+			await page.evaluate((id) => {
+				const { wp } = window as unknown as CustomizeWindow;
+				wp.customize.section.add(
+					new wp.customize.Section(id, { params: { title: id } })
+				);
+			}, sectionId);
+
+			// The section callback resolves through a jQuery Deferred, which is async.
+			await expect
+				.poll(() =>
+					page.evaluate(
+						([id, notification]) =>
+							(window as unknown as CustomizeWindow).wp.customize
+								.section(id)
+								?.notifications.has(notification) ?? false,
+						[sectionId, code] as const
+					)
 				)
-			)
-			.toBe(true);
-	});
+				.toBe(true);
+		});
+	}
 });
