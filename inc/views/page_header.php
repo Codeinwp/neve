@@ -8,6 +8,8 @@
 
 namespace Neve\Views;
 
+use Neve\Core\Migration_Flags;
+
 /**
  * Class Page_Header
  *
@@ -24,6 +26,22 @@ class Page_Header extends Base_View {
 		'class'      => '',
 		'wrap-class' => '',
 	);
+
+	const H1_PLACEHOLDER = '<!-- neve-fallback-h1 -->';
+
+	/**
+	 * Fallback H1 markup awaiting the buffer decision.
+	 *
+	 * @var string
+	 */
+	private $deferred_h1 = '';
+
+	/**
+	 * Output-buffer level of the main-area buffer, 0 when not buffering.
+	 *
+	 * @var int
+	 */
+	private $buffer_level = 0;
 
 	/**
 	 * Function that is run after instantiation.
@@ -43,6 +61,9 @@ class Page_Header extends Base_View {
 		$header_hook = get_theme_mod( 'neve_enable_featured_post', false ) && is_home() ? 'neve_do_featured_post' : 'neve_page_header';
 		add_action( $header_hook, array( $this, 'render_page_header' ), 9 );
 		add_filter( 'get_the_archive_title', array( $this, 'filter_archive_title' ) );
+		if ( $this->is_title_hidden() ) {
+			add_action( 'neve_after_primary_start', array( $this, 'start_h1_buffer' ), 0 );
+		}
 	}
 
 	/**
@@ -64,6 +85,115 @@ class Page_Header extends Base_View {
 		$title_args['category_description'] = $this->get_archive_description();
 
 		$this->get_view( 'page-header', $title_args );
+	}
+
+	/**
+	 * Whether the page title is hidden for the current request.
+	 *
+	 * @return bool
+	 */
+	public function is_title_hidden() {
+		$hide_title = get_theme_mod( 'neve_page_hide_title', false );
+
+		$current_page = get_queried_object();
+		$pid          = $current_page instanceof \WP_Post ? $current_page->ID : get_the_ID();
+
+		if ( (int) get_option( 'page_for_posts' ) === $pid || is_archive() ) {
+			$hide_title = get_theme_mod( 'neve_archive_hide_title', Migration_Flags::is_new_user_after_v4() );
+		}
+
+		$specific_hide_title = get_post_meta( $pid, 'neve_meta_disable_title', true );
+		if ( ! empty( $specific_hide_title ) ) {
+			$hide_title = $specific_hide_title === 'on';
+		}
+
+		return (bool) $hide_title;
+	}
+
+	/**
+	 * Buffer the main area so the screen-reader H1 fallback can be decided
+	 * after every H1 source (content, patterns, builders, custom layouts) rendered.
+	 *
+	 * @return void
+	 */
+	public function start_h1_buffer() {
+		if ( $this->buffer_level > 0 ) {
+			return;
+		}
+		ob_start( array( $this, 'filter_h1_buffer' ) );
+		$this->buffer_level = ob_get_level();
+		add_action( 'neve_before_primary_end', array( $this, 'resolve_fallback_h1' ), 0 );
+		add_action( 'wp_footer', array( $this, 'resolve_fallback_h1' ), 0 );
+	}
+
+	/**
+	 * Output the fallback H1, or its placeholder while buffering.
+	 *
+	 * @param string $title Hidden title text.
+	 *
+	 * @return void
+	 */
+	public function fallback_h1( $title ) {
+		$h1 = '<h1 class="screen-reader-text">' . $title . '</h1>';
+		if ( $this->buffer_level === 0 ) {
+			// Not buffering (template without the main-area hooks): fall back to the content scan.
+			$content_has_h1 = is_singular() && self::markup_has_h1( (string) get_post_field( 'post_content', get_queried_object_id() ) );
+			if ( ! $content_has_h1 ) {
+				echo wp_kses_post( $h1 );
+			}
+			return;
+		}
+		$this->deferred_h1 = wp_kses_post( $h1 );
+		echo wp_kses_post( self::H1_PLACEHOLDER );
+	}
+
+	/**
+	 * Flush the buffer; filter_h1_buffer() resolves the placeholder on the way out.
+	 *
+	 * @return void
+	 */
+	public function resolve_fallback_h1() {
+		if ( $this->buffer_level === 0 ) {
+			return;
+		}
+		// A later buffer is still open; closing now would eat its output.
+		if ( ob_get_level() !== $this->buffer_level ) {
+			return;
+		}
+		$this->buffer_level = 0;
+		ob_end_flush();
+	}
+
+	/**
+	 * Output-buffer callback: keep the fallback H1 only when no other H1 rendered.
+	 *
+	 * @param string $markup Buffered main-area markup.
+	 *
+	 * @return string
+	 */
+	public function filter_h1_buffer( $markup ) {
+		$replacement        = self::markup_has_h1( $markup ) ? '' : $this->deferred_h1;
+		$this->deferred_h1  = '';
+		$this->buffer_level = 0;
+
+		return str_replace( self::H1_PLACEHOLDER, $replacement, $markup );
+	}
+
+	/**
+	 * Whether markup contains an H1, ignoring script/template/noscript blocks.
+	 *
+	 * @param string $markup Rendered HTML.
+	 *
+	 * @return bool
+	 */
+	public static function markup_has_h1( $markup ) {
+		$stripped = preg_replace( '#<(script|template|noscript)\b[^>]*>.*?</\1\s*>#is', '', (string) $markup );
+		// On a PCRE limit error keep the original markup rather than scanning nothing.
+		if ( null === $stripped ) {
+			$stripped = (string) $markup;
+		}
+
+		return (bool) preg_match( '/<h1[\s>]/i', $stripped );
 	}
 
 	/**
