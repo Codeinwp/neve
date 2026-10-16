@@ -217,13 +217,14 @@ class TestNeveLocalFontPreviews extends WP_UnitTestCase {
 	/**
 	 * Run the selected-font enqueue, optionally from inside the Customizer controls.
 	 *
-	 * @param bool $in_controls Whether core is enqueueing the Customizer controls.
+	 * @param bool         $in_controls Whether core is enqueueing the Customizer controls.
+	 * @param list<string> $weights     Weights selected for Roboto Slab.
 	 */
-	private function register_selected_fonts( bool $in_controls ): void {
+	private function register_selected_fonts( bool $in_controls, array $weights = array( '400' ) ): void {
 		$families = Font_Manager::$font_families;
 
 		Font_Manager::$font_families = array(
-			'Roboto Slab' => array( '400' ),
+			'Roboto Slab' => $weights,
 			'Lato'        => array( '400' ),
 		);
 
@@ -252,6 +253,18 @@ class TestNeveLocalFontPreviews extends WP_UnitTestCase {
 
 		$this->assertFalse( wp_style_is( 'neve-google-font-roboto-slab', 'enqueued' ) );
 		$this->assertTrue( wp_style_is( 'neve-google-font-lato', 'enqueued' ) );
+	}
+
+	/**
+	 * A selected weight missing from the cache keeps the remote stylesheet.
+	 */
+	public function testCustomizerKeepsRemoteFontForUncachedWeight(): void {
+		update_option( Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING, true );
+		$this->cache_downloaded_font();
+
+		$this->register_selected_fonts( true, array( '700' ) );
+
+		$this->assertTrue( wp_style_is( 'neve-google-font-roboto-slab', 'enqueued' ) );
 	}
 
 	/**

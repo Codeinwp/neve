@@ -231,13 +231,13 @@ class Loader {
 
 		$local_faces = Font_Manager::get_downloaded_font_faces();
 
-		if ( empty( $local_faces['families'] ) ) {
+		if ( empty( $local_faces['variants'] ) ) {
 			return $fonts;
 		}
 
 		wp_add_inline_style( 'react-controls', $local_faces['css'] );
 
-		return array_values( array_diff( $fonts, $local_faces['families'] ) );
+		return array_values( array_diff( $fonts, array_keys( $local_faces['variants'] ) ) );
 	}
 
 	/**

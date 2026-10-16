@@ -147,10 +147,12 @@ class Font_Manager extends Base_View {
 	 * Register the fonts that are selected in customizer.
 	 */
 	public function register_google_fonts() {
-		$local_families = $this->get_customizer_local_families();
+		$local_variants = $this->get_customizer_local_variants();
 
 		foreach ( self::$font_families as $font_family => $font_weights ) {
-			if ( in_array( $font_family, $local_families, true ) ) {
+			$required = array_merge( $font_weights, array( '400' ) );
+
+			if ( isset( $local_variants[ $font_family ] ) && ! array_diff( $required, $local_variants[ $font_family ] ) ) {
 				continue;
 			}
 
@@ -159,18 +161,18 @@ class Font_Manager extends Base_View {
 	}
 
 	/**
-	 * Get the families the Customizer controls already load from the local font cache.
+	 * Get the font variants the Customizer controls already load from the local font cache.
 	 *
 	 * Core fires the block editor hooks inside the controls for the widgets editor.
 	 *
-	 * @return list<string>
+	 * @return array<string, list<string>> Font family => variants such as '700' or '400italic'.
 	 */
-	private function get_customizer_local_families(): array {
+	private function get_customizer_local_variants(): array {
 		if ( ! doing_action( 'customize_controls_enqueue_scripts' ) || ! self::should_load_fonts_locally() ) {
 			return array();
 		}
 
-		return self::get_downloaded_font_faces()['families'];
+		return self::get_downloaded_font_faces()['variants'];
 	}
 
 	/**
@@ -423,12 +425,12 @@ class Font_Manager extends Base_View {
 	 *
 	 * Only reads the existing cache, so nothing is downloaded outside the frontend.
 	 *
-	 * @return array{css: string, families: list<string>}
+	 * @return array{css: string, variants: array<string, list<string>>} Variants keyed by font family.
 	 */
 	public static function get_downloaded_font_faces(): array {
 		$faces = array(
 			'css'      => '',
-			'families' => array(),
+			'variants' => array(),
 		);
 
 		if ( ! self::require_webfont_loader() ) {
@@ -456,15 +458,42 @@ class Font_Manager extends Base_View {
 		foreach ( $stylesheets as $stylesheet ) {
 			$css = (string) $wp_filesystem->get_contents( $stylesheet );
 
-			preg_match_all( '/font-family:\s*[\'"]?([^;\'"]+)/', $css, $matches );
-
 			$faces['css']     .= $css;
-			$faces['families'] = array_merge( $faces['families'], array_map( 'trim', $matches[1] ) );
+			$faces['variants'] = array_merge_recursive( $faces['variants'], self::get_font_face_variants( $css ) );
 		}
 
-		$faces['families'] = array_values( array_unique( $faces['families'] ) );
+		$faces['variants'] = array_map(
+			function ( array $variants ): array {
+				return array_values( array_unique( $variants ) );
+			},
+			$faces['variants']
+		);
 
 		return $faces;
+	}
+
+	/**
+	 * Get the variants each @font-face rule in a stylesheet declares.
+	 *
+	 * @param string $css Stylesheet contents.
+	 *
+	 * @return array<string, list<string>> Font family => variants such as '700' or '400italic'.
+	 */
+	private static function get_font_face_variants( string $css ): array {
+		$variants = array();
+
+		foreach ( explode( '@font-face', $css ) as $face ) {
+			if ( ! preg_match( '/font-family:\s*[\'"]?([^;\'"]+)/', $face, $family ) ) {
+				continue;
+			}
+
+			$weight = preg_match( '/font-weight:\s*(\d+)/', $face, $matches ) ? $matches[1] : '400';
+			$italic = preg_match( '/font-style:\s*italic/', $face ) ? 'italic' : '';
+
+			$variants[ trim( $family[1] ) ][] = $weight . $italic;
+		}
+
+		return $variants;
 	}
 
 	/**
