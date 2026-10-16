@@ -27,13 +27,16 @@ class TestNeveLocalFontPreviews extends WP_UnitTestCase {
 	private $cached_css = "@font-face {\n  font-family: 'Roboto Slab';\n  font-style: normal;\n  font-weight: 400;\n  src: url(http://example.org/wp-content/fonts/roboto-slab/abc.woff2) format('woff2');\n}\n";
 
 	/**
-	 * Point the webfont loader at an empty temporary folder.
+	 * Point the webfont loader at a fresh temporary folder.
 	 */
 	public function set_up(): void {
 		parent::set_up();
 
-		$this->base_path = get_temp_dir() . 'neve-local-font-previews';
-		mkdir( $this->base_path . '/fonts', 0777, true );
+		$this->base_path = get_temp_dir() . uniqid( 'neve-local-font-previews-', true );
+
+		if ( ! wp_mkdir_p( $this->base_path . '/fonts' ) ) {
+			$this->fail( 'Could not create the fonts fixture folder.' );
+		}
 
 		add_filter( 'wptt_get_local_fonts_base_path', array( $this, 'get_base_path' ) );
 		$GLOBALS['wp_styles'] = null;
