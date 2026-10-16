@@ -147,9 +147,30 @@ class Font_Manager extends Base_View {
 	 * Register the fonts that are selected in customizer.
 	 */
 	public function register_google_fonts() {
+		$local_families = $this->get_customizer_local_families();
+
 		foreach ( self::$font_families as $font_family => $font_weights ) {
+			if ( in_array( $font_family, $local_families, true ) ) {
+				continue;
+			}
+
 			$this->enqueue_google_font( $font_family, $font_weights );
 		}
+	}
+
+	/**
+	 * Get the families the Customizer controls already load from the local font cache.
+	 *
+	 * Core fires the block editor hooks inside the controls for the widgets editor.
+	 *
+	 * @return list<string>
+	 */
+	private function get_customizer_local_families(): array {
+		if ( ! doing_action( 'customize_controls_enqueue_scripts' ) || ! self::should_load_fonts_locally() ) {
+			return array();
+		}
+
+		return self::get_downloaded_font_faces()['families'];
 	}
 
 	/**

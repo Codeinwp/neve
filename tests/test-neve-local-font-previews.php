@@ -6,6 +6,7 @@
  */
 
 use Neve\Core\Settings\Config;
+use Neve\Views\Font_Manager;
 
 /**
  * Class TestNeveLocalFontPreviews
@@ -211,6 +212,58 @@ class TestNeveLocalFontPreviews extends WP_UnitTestCase {
 
 		$this->assertSame( '', $this->get_controls_inline_css() );
 		$this->assertStringContainsString( 'Roboto Slab', $urls );
+	}
+
+	/**
+	 * Run the selected-font enqueue, optionally from inside the Customizer controls.
+	 *
+	 * @param bool $in_controls Whether core is enqueueing the Customizer controls.
+	 */
+	private function register_selected_fonts( bool $in_controls ): void {
+		$families = Font_Manager::$font_families;
+
+		Font_Manager::$font_families = array(
+			'Roboto Slab' => array( '400' ),
+			'Lato'        => array( '400' ),
+		);
+
+		if ( $in_controls ) {
+			$GLOBALS['wp_current_filter'][] = 'customize_controls_enqueue_scripts';
+		}
+
+		try {
+			( new Font_Manager() )->register_google_fonts();
+		} finally {
+			if ( $in_controls ) {
+				array_pop( $GLOBALS['wp_current_filter'] );
+			}
+			Font_Manager::$font_families = $families;
+		}
+	}
+
+	/**
+	 * The Customizer widgets editor does not request cached fonts from Google.
+	 */
+	public function testCustomizerSkipsRemoteSelectedFontsWhenCached(): void {
+		update_option( Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING, true );
+		$this->cache_downloaded_font();
+
+		$this->register_selected_fonts( true );
+
+		$this->assertFalse( wp_style_is( 'neve-google-font-roboto-slab', 'enqueued' ) );
+		$this->assertTrue( wp_style_is( 'neve-google-font-lato', 'enqueued' ) );
+	}
+
+	/**
+	 * Outside the Customizer controls the selected fonts are still enqueued.
+	 */
+	public function testSelectedFontsStayEnqueuedOutsideCustomizer(): void {
+		update_option( Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING, true );
+		$this->cache_downloaded_font();
+
+		$this->register_selected_fonts( false );
+
+		$this->assertTrue( wp_style_is( 'neve-google-font-roboto-slab', 'enqueued' ) );
 	}
 
 	/**
