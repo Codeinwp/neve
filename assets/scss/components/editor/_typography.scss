@@ -52,21 +52,25 @@ h5,
 h6 {
 	margin-bottom: $spacing-lg;
 	margin-top: 0;
-
-	&.wp-block,
-	& {
-		font-family: var(--headingsfontfamily, var(--bodyfontfamily));
-		color: var(--headingcolor, inherit);
-	}
 }
 
 $headings: [h1,h2,h3,h4,h5,h6];
 
-@each $heading in $headings {
-	#{$heading} {
+// Matches front-end element specificity so block styles can override it.
+@at-root :where(.editor-styles-wrapper) {
 
-		&.wp-block,
-		& {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--headingsfontfamily, var(--bodyfontfamily));
+		color: var(--headingcolor, inherit);
+	}
+
+	@each $heading in $headings {
+		#{$heading} {
 			font-size: var(--#{$heading}fontsize);
 			font-weight: var(--#{$heading}fontweight);
 			line-height: var(--#{$heading}lineheight);
@@ -209,7 +213,7 @@ pre:not(.CodeMirror-line) {
 
 
 // === Links === //
-a:not(.wp-block-button__link) {
+@at-root :where(.editor-styles-wrapper) a:where(:not(.wp-block-button__link)) {
 	color: var(--nv-primary-accent);
 
 	&:hover {
