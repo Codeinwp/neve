@@ -125,7 +125,7 @@ class TestNeveMetaboxContentWidth extends WP_UnitTestCase {
 	public function test_non_numeric_width_does_not_break_contained_editor(): void {
 		$styles = $this->render_editor_styles( 'contained', 'abc' );
 
-		$this->assertMatchesRegularExpression( '/max-width: \d+px;/', $styles );
+		$this->assertMatchesRegularExpression( '/max-width: [1-9]\d*px;/', $styles );
 	}
 
 	/**
