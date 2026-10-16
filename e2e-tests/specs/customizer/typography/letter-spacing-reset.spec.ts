@@ -5,7 +5,14 @@ import data from '../../../fixtures/customizer/typography/letter-spacing-reset.j
 type Device = 'desktop' | 'tablet' | 'mobile';
 
 type CustomizeWindow = Window & {
-	wp: { customize: { previewedDevice: (device: Device) => void } };
+	wp: {
+		customize: {
+			(id: string): {
+				get: () => { letterSpacing: Record<Device, string | number> };
+			};
+			previewedDevice: (device: Device) => void;
+		};
+	};
 };
 
 /**
@@ -72,6 +79,28 @@ test.describe('Typeface number controls reset state', function () {
 		await reset.click();
 		await expect(input).toHaveValue('0');
 		await expect(reset).toHaveCount(0);
+	});
+
+	test('Negative letter spacing can be typed from zero', async ({ page }) => {
+		const control = await openControl(
+			page,
+			'neve_typography_general',
+			'neve_typeface_general'
+		);
+		const input = control.locator('.letter-spacing input');
+
+		await expect(input).toHaveValue('0');
+		await input.selectText();
+		await page.keyboard.type('-1');
+
+		await expect(input).toHaveValue('-1');
+		const stored = await page.evaluate(
+			() =>
+				(window as unknown as CustomizeWindow).wp
+					.customize('neve_typeface_general')
+					.get().letterSpacing.desktop
+		);
+		expect(stored).toBe('-1');
 	});
 
 	test('Untouched empty defaults have no reset', async ({ page }) => {
