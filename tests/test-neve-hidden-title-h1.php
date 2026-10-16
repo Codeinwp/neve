@@ -23,8 +23,10 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 	 */
 	public function set_up() {
 		parent::set_up();
-		// unfiltered_html: fixtures with script tags and HTML comments must survive saving.
+		// Fixtures with script tags and HTML comments must survive saving; the bootstrap
+		// assigns user 1 directly, so wp_set_current_user() alone leaves kses on.
 		wp_set_current_user( 1 );
+		kses_remove_filters();
 		if ( class_exists( 'WooCommerce', false ) && ! function_exists( 'is_woocommerce' ) ) {
 			function is_woocommerce() {
 				return false;
@@ -40,6 +42,7 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 			remove_action( $hook[0], $hook[1], $hook[2] );
 		}
 		$this->hooked = array();
+		kses_init_filters();
 		parent::tear_down();
 	}
 
@@ -109,13 +112,14 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 	/**
 	 * Render the page body and return the markup.
 	 *
-	 * @param int $id Page ID.
+	 * @param int  $id         Page ID.
+	 * @param bool $theme_body See fire_page_hooks().
 	 *
 	 * @return string
 	 */
-	private function render_page( $id ) {
+	private function render_page( $id, $theme_body = true ) {
 		ob_start();
-		$this->fire_page_hooks( $id );
+		$this->fire_page_hooks( $id, $theme_body );
 
 		return ob_get_clean();
 	}
@@ -162,10 +166,8 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 	 */
 	public function test_buffer_starts_on_wp_body_open_without_theme_hook() {
 		$this->echo_on( 'neve_before_content', '<h1>Layout heading</h1>' );
-		$id = $this->visit_page( '<p>Body only</p>' );
-		ob_start();
-		$this->fire_page_hooks( $id, false );
-		$markup = ob_get_clean();
+		$id     = $this->visit_page( '<p>Body only</p>' );
+		$markup = $this->render_page( $id, false );
 
 		$this->assert_single_foreign_h1( $markup );
 	}
@@ -185,7 +187,7 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 		ob_start();
 		$level = ob_get_level();
 		$this->fire_page_hooks( $id );
-		$this->assertGreaterThan( $level, ob_get_level(), 'the stray and page-body buffers are still open after the hooks' );
+		$this->assertSame( $level + 2, ob_get_level(), 'the stray and page-body buffers are both still open after the hooks' );
 		while ( ob_get_level() > $level ) {
 			ob_end_flush();
 		}
