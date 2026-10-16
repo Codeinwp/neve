@@ -20,6 +20,13 @@ class TestNeveLocalFontPreviews extends WP_UnitTestCase {
 	private $base_path;
 
 	/**
+	 * Filesystem instance to restore after each test.
+	 *
+	 * @var WP_Filesystem_Base|null
+	 */
+	private $wp_filesystem;
+
+	/**
 	 * Cached stylesheet a frontend visit would have downloaded.
 	 *
 	 * @var string
@@ -40,6 +47,7 @@ class TestNeveLocalFontPreviews extends WP_UnitTestCase {
 
 		add_filter( 'wptt_get_local_fonts_base_path', array( $this, 'get_base_path' ) );
 		$GLOBALS['wp_styles'] = null;
+		$this->wp_filesystem  = $GLOBALS['wp_filesystem'] ?? null;
 	}
 
 	/**
@@ -54,6 +62,8 @@ class TestNeveLocalFontPreviews extends WP_UnitTestCase {
 
 		remove_filter( 'wptt_get_local_fonts_base_path', array( $this, 'get_base_path' ) );
 		remove_filter( 'neve_load_remote_fonts_locally', '__return_true' );
+		remove_filter( 'filesystem_method', '__return_false' );
+		$GLOBALS['wp_filesystem'] = $this->wp_filesystem;
 		delete_option( Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING );
 		wp_clear_scheduled_hook( 'delete_fonts_folder' );
 		$GLOBALS['wp_styles'] = null;
@@ -147,6 +157,22 @@ class TestNeveLocalFontPreviews extends WP_UnitTestCase {
 	 */
 	public function testRemotePreviewsWhenLocalHostingOff(): void {
 		$this->cache_downloaded_font();
+
+		$urls = implode( "\n", $this->enqueue_controls() );
+
+		$this->assertSame( '', $this->get_controls_inline_css() );
+		$this->assertStringContainsString( 'Roboto Slab', $urls );
+	}
+
+	/**
+	 * The controls still load when no filesystem method is available.
+	 */
+	public function testRemotePreviewsWithoutFilesystem(): void {
+		update_option( Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING, true );
+		$this->cache_downloaded_font();
+
+		$GLOBALS['wp_filesystem'] = null;
+		add_filter( 'filesystem_method', '__return_false' );
 
 		$urls = implode( "\n", $this->enqueue_controls() );
 

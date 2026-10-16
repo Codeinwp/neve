@@ -414,12 +414,21 @@ class Font_Manager extends Base_View {
 			return $faces;
 		}
 
-		// The loader sets up $wp_filesystem while resolving the folder.
-		$stylesheets = glob( ( new \WPTT_WebFont_Loader() )->get_fonts_folder() . '/*.css' );
-
 		global $wp_filesystem;
 
-		if ( empty( $stylesheets ) || ! $wp_filesystem instanceof \WP_Filesystem_Base ) {
+		// The loader dereferences $wp_filesystem without checking it was set up.
+		if ( ! $wp_filesystem ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			WP_Filesystem();
+		}
+
+		if ( ! $wp_filesystem instanceof \WP_Filesystem_Base ) {
+			return $faces;
+		}
+
+		$stylesheets = glob( ( new \WPTT_WebFont_Loader() )->get_fonts_folder() . '/*.css' );
+
+		if ( empty( $stylesheets ) ) {
 			return $faces;
 		}
 
