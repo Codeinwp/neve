@@ -19,6 +19,7 @@ test.describe('Classic cart coupon error notice', function () {
 				status: 'publish',
 			},
 		});
+		expect(product.ok()).toBe(true);
 		productId = (await product.json()).id;
 
 		const page = await request.post('/wp-json/wp/v2/pages', {
@@ -28,6 +29,7 @@ test.describe('Classic cart coupon error notice', function () {
 				status: 'publish',
 			},
 		});
+		expect(page.ok()).toBe(true);
 		const pageData: { id: number; link: string } = await page.json();
 		pageId = pageData.id;
 		cartPath = new URL(pageData.link).pathname;
@@ -58,8 +60,12 @@ test.describe('Classic cart coupon error notice', function () {
 
 			// One pass: WooCommerce scrolls to the notice between reads.
 			const boxes: CouponBoxes = await coupon.evaluate((el) => {
-				const measure = (node: Element | null): Box => {
-					const rect = (node as Element).getBoundingClientRect();
+				const measure = (selector: string | null): Box => {
+					const node = selector ? el.querySelector(selector) : el;
+					if (!node) {
+						throw new Error(`Missing ${selector} in .coupon`);
+					}
+					const rect = node.getBoundingClientRect();
 					return {
 						top: rect.top,
 						bottom: rect.bottom,
@@ -67,12 +73,10 @@ test.describe('Classic cart coupon error notice', function () {
 					};
 				};
 				return {
-					coupon: measure(el),
-					input: measure(el.querySelector('#coupon_code')),
-					button: measure(
-						el.querySelector('button[name="apply_coupon"]')
-					),
-					notice: measure(el.querySelector('.coupon-error-notice')),
+					coupon: measure(null),
+					input: measure('#coupon_code'),
+					button: measure('button[name="apply_coupon"]'),
+					notice: measure('.coupon-error-notice'),
 				};
 			});
 
