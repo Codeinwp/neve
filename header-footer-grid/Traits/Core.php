@@ -55,7 +55,7 @@ trait Core {
 	/**
 	 * Sanitize regular json.
 	 *
-	 * @param string|array<string, mixed> $input JSON string, or the already-decoded array.
+	 * @param mixed $input JSON string, decoded array, or any other value.
 	 *
 	 * @return string
 	 */
@@ -75,7 +75,7 @@ trait Core {
 	/**
 	 * Sanitize responsive control
 	 *
-	 * @param string|array<string, mixed> $input JSON string, or the already-decoded array.
+	 * @param mixed $input JSON string, decoded array, or any other value.
 	 * @return string
 	 */
 	public function sanitize_responsive_int_json( $input ) {
