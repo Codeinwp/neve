@@ -47,6 +47,19 @@ const previewDevice = (page: Page, device: Device): Promise<void> =>
 		(window as unknown as CustomizeWindow).wp.customize.previewedDevice(d);
 	}, device);
 
+/**
+ * Read the body typeface desktop letter spacing from the Customizer setting.
+ *
+ * @param {Page} page Playwright page.
+ */
+const storedDesktopLetterSpacing = (page: Page): Promise<string | number> =>
+	page.evaluate(
+		() =>
+			(window as unknown as CustomizeWindow).wp
+				.customize('neve_typeface_general')
+				.get().letterSpacing.desktop
+	);
+
 test.describe('Typeface number controls reset state', function () {
 	test.beforeAll(async ({ request, baseURL }) => {
 		await setCustomizeSettings('letterSpacingReset', data, {
@@ -94,13 +107,28 @@ test.describe('Typeface number controls reset state', function () {
 		await page.keyboard.type('-1');
 
 		await expect(input).toHaveValue('-1');
-		const stored = await page.evaluate(
-			() =>
-				(window as unknown as CustomizeWindow).wp
-					.customize('neve_typeface_general')
-					.get().letterSpacing.desktop
+		expect(await storedDesktopLetterSpacing(page)).toBe('-1');
+	});
+
+	test('Cleared letter spacing saves 0 and shows it on blur', async ({
+		page,
+	}) => {
+		const control = await openControl(
+			page,
+			'neve_typography_general',
+			'neve_typeface_general'
 		);
-		expect(stored).toBe('-1');
+		const input = control.locator('.letter-spacing input');
+
+		await input.fill('1');
+		await input.selectText();
+		await page.keyboard.press('Backspace');
+
+		await expect(input).toHaveValue('');
+		expect(await storedDesktopLetterSpacing(page)).toBe(0);
+
+		await input.blur();
+		await expect(input).toHaveValue('0');
 	});
 
 	test('Untouched empty defaults have no reset', async ({ page }) => {
