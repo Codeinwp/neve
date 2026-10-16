@@ -11,6 +11,10 @@ const openEditorCanvas = async (page: Page): Promise<Frame> => {
 	await page.waitForFunction(() =>
 		window.wp?.data?.select('core/block-editor')
 	);
+	await page
+		.frameLocator('iframe[name="editor-canvas"]')
+		.locator('.is-root-container')
+		.waitFor();
 
 	const canvas = page.frame({ name: 'editor-canvas' });
 	if (!canvas) {
@@ -103,23 +107,14 @@ test.describe('Editor block style overrides', () => {
 
 		const editor = page.frameLocator('iframe[name="editor-canvas"]');
 
-		await expect(editor.locator(`h2.${STYLE_CLASS}`)).toHaveCSS(
-			'color',
-			STYLE_COLOR
-		);
-		await expect(editor.locator(`h2.${STYLE_CLASS}`)).toHaveCSS(
-			'font-size',
-			STYLE_FONT_SIZE
-		);
-		await expect(editor.locator(`p.${STYLE_CLASS}`)).toHaveCSS(
-			'color',
-			STYLE_COLOR
-		);
-		await expect(editor.locator(`p.${STYLE_CLASS}`)).toHaveCSS(
-			'font-size',
-			STYLE_FONT_SIZE
-		);
-		await expect(editor.locator(`p.${STYLE_CLASS} a`)).toHaveCSS(
+		const styledHeading = editor.locator(`h2.${STYLE_CLASS}`);
+		const styledParagraph = editor.locator(`p.${STYLE_CLASS}`);
+
+		await expect(styledHeading).toHaveCSS('color', STYLE_COLOR);
+		await expect(styledHeading).toHaveCSS('font-size', STYLE_FONT_SIZE);
+		await expect(styledParagraph).toHaveCSS('color', STYLE_COLOR);
+		await expect(styledParagraph).toHaveCSS('font-size', STYLE_FONT_SIZE);
+		await expect(styledParagraph.locator('a')).toHaveCSS(
 			'color',
 			STYLE_COLOR
 		);
