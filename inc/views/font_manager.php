@@ -416,13 +416,13 @@ class Font_Manager extends Base_View {
 
 		global $wp_filesystem;
 
-		// The loader dereferences $wp_filesystem without checking it was set up.
+		// The loader uses $wp_filesystem without checking it was set up or connected.
 		if ( ! $wp_filesystem ) {
 			require_once ABSPATH . 'wp-admin/includes/file.php';
 			WP_Filesystem();
 		}
 
-		if ( ! $wp_filesystem instanceof \WP_Filesystem_Base ) {
+		if ( ! $wp_filesystem instanceof \WP_Filesystem_Base || $wp_filesystem->errors->has_errors() ) {
 			return $faces;
 		}
 

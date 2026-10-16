@@ -27,6 +27,13 @@ class TestNeveLocalFontPreviews extends WP_UnitTestCase {
 	private $wp_filesystem;
 
 	/**
+	 * Filesystem method WordPress resolves to in the current test.
+	 *
+	 * @var string
+	 */
+	private $filesystem_method = '';
+
+	/**
 	 * Cached stylesheet a frontend visit would have downloaded.
 	 *
 	 * @var string
@@ -62,7 +69,7 @@ class TestNeveLocalFontPreviews extends WP_UnitTestCase {
 
 		remove_filter( 'wptt_get_local_fonts_base_path', array( $this, 'get_base_path' ) );
 		remove_filter( 'neve_load_remote_fonts_locally', '__return_true' );
-		remove_filter( 'filesystem_method', '__return_false' );
+		remove_filter( 'filesystem_method', array( $this, 'get_filesystem_method' ) );
 		$GLOBALS['wp_filesystem'] = $this->wp_filesystem;
 		delete_option( Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING );
 		wp_clear_scheduled_hook( 'delete_fonts_folder' );
@@ -165,14 +172,40 @@ class TestNeveLocalFontPreviews extends WP_UnitTestCase {
 	}
 
 	/**
-	 * The controls still load when no filesystem method is available.
+	 * Filesystem method forced for the current test.
+	 *
+	 * @return string
 	 */
-	public function testRemotePreviewsWithoutFilesystem(): void {
+	public function get_filesystem_method(): string {
+		return $this->filesystem_method;
+	}
+
+	/**
+	 * Filesystem methods that leave no usable filesystem.
+	 *
+	 * @return array{'no method': array{0: ''}, 'ftp without credentials': array{0: 'ftpext'}}
+	 */
+	public function provideUnusableFilesystems(): array {
+		return array(
+			'no method'               => array( '' ),
+			'ftp without credentials' => array( 'ftpext' ),
+		);
+	}
+
+	/**
+	 * The controls still load when the filesystem cannot be set up.
+	 *
+	 * @dataProvider provideUnusableFilesystems
+	 *
+	 * @param string $method Filesystem method WordPress resolves to.
+	 */
+	public function testRemotePreviewsWithoutFilesystem( string $method ): void {
 		update_option( Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING, true );
 		$this->cache_downloaded_font();
 
 		$GLOBALS['wp_filesystem'] = null;
-		add_filter( 'filesystem_method', '__return_false' );
+		$this->filesystem_method  = $method;
+		add_filter( 'filesystem_method', array( $this, 'get_filesystem_method' ) );
 
 		$urls = implode( "\n", $this->enqueue_controls() );
 
