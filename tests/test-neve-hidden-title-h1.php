@@ -19,7 +19,7 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 
 	/**
 	 * The cart-guard stubs declare a WooCommerce class but not is_woocommerce(),
-	 * which the compat layer calls on the main-area hooks used here.
+	 * which the compat layer calls on the body hooks used here.
 	 */
 	public function set_up() {
 		parent::set_up();
@@ -81,14 +81,15 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Render the page body the way header.php, page.php and footer.php do.
+	 * Fire the body hooks in the order header.php, page.php and footer.php do.
 	 *
-	 * @param int $id Page ID.
-	 *
-	 * @return string
+	 * @param int  $id         Page ID.
+	 * @param bool $theme_body Fire the theme's own body-start hook; false mimics a template with only wp_body_open.
 	 */
-	private function render_page( $id ) {
-		ob_start();
+	private function fire_page_hooks( $id, $theme_body = true ) {
+		if ( $theme_body ) {
+			do_action( 'neve_body_start_after' );
+		}
 		do_action( 'wp_body_open' );
 		do_action( 'neve_after_header_hook' );
 		do_action( 'neve_after_primary_start' );
@@ -102,6 +103,19 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 		remove_action( 'wp_footer', 'the_block_template_skip_link' );
 		remove_action( 'wp_footer', 'wp_print_footer_scripts', 20 );
 		do_action( 'wp_footer' );
+		do_action( 'neve_body_end_before' );
+	}
+
+	/**
+	 * Render the page body and return the markup.
+	 *
+	 * @param int $id Page ID.
+	 *
+	 * @return string
+	 */
+	private function render_page( $id ) {
+		ob_start();
+		$this->fire_page_hooks( $id );
 
 		return ob_get_clean();
 	}
@@ -134,12 +148,51 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 	public function test_fallback_renders_once_in_title_position() {
 		$this->echo_on( 'neve_before_content', '<p class="before">before</p>' );
 		$this->echo_on( 'neve_after_content', '<p class="after">after</p>' );
-		$id     = $this->visit_page( '<p>Body only</p>' );
+		// The noscript H1 is not a heading; the base content scan would wrongly count it.
+		$id     = $this->visit_page( '<!-- wp:html --><p>Body only</p><noscript><h1>Hidden</h1></noscript><!-- /wp:html -->' );
 		$markup = $this->render_page( $id );
 
-		$this->assertSame( 1, $this->count_h1( $markup ) );
+		$this->assertSame( 1, substr_count( $markup, '<h1 class="screen-reader-text">' ) );
 		$this->assertStringNotContainsString( \Neve\Views\Page_Header::H1_PLACEHOLDER, $markup );
 		$this->assertMatchesRegularExpression( '#<h1 class="screen-reader-text">Fixture page</h1>.*class="before".*Body only.*class="after"#s', $markup );
+	}
+
+	/**
+	 * A template without the theme's body-start hook still buffers from wp_body_open.
+	 */
+	public function test_buffer_starts_on_wp_body_open_without_theme_hook() {
+		$this->echo_on( 'neve_before_content', '<h1>Layout heading</h1>' );
+		$id = $this->visit_page( '<p>Body only</p>' );
+		ob_start();
+		$this->fire_page_hooks( $id, false );
+		$markup = ob_get_clean();
+
+		$this->assert_single_foreign_h1( $markup );
+	}
+
+	/**
+	 * A buffer opened after ours and left open must not be closed by us; the
+	 * placeholder is still resolved when the outer buffers flush.
+	 */
+	public function test_stray_open_buffer_is_left_alone() {
+		$stray = function () {
+			ob_start();
+		};
+		add_action( 'wp_body_open', $stray, 5 );
+		$this->hooked[] = array( 'wp_body_open', $stray, 5 );
+
+		$id = $this->visit_page( '<p>Body only</p>' );
+		ob_start();
+		$level = ob_get_level();
+		$this->fire_page_hooks( $id );
+		$this->assertGreaterThan( $level, ob_get_level(), 'the stray and page-body buffers are still open after the hooks' );
+		while ( ob_get_level() > $level ) {
+			ob_end_flush();
+		}
+		$markup = ob_get_clean();
+
+		$this->assertSame( 1, substr_count( $markup, '<h1 class="screen-reader-text">' ) );
+		$this->assertStringNotContainsString( \Neve\Views\Page_Header::H1_PLACEHOLDER, $markup );
 	}
 
 	/**
@@ -160,43 +213,31 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 	}
 
 	/**
-	 * An H1 hooked after the page header (custom layouts) suppresses the fallback.
+	 * Hooks a custom layout can render an H1 on, with the priority used in the test.
+	 *
+	 * @return array<string, array{0: string, 1: int}>
 	 */
-	public function test_hooked_h1_after_header_suppresses_fallback() {
-		$this->echo_on( 'neve_before_content', '<h1>Layout heading</h1>' );
-		$id     = $this->visit_page( '<p>Body only</p>' );
-		$markup = $this->render_page( $id );
-
-		$this->assert_single_foreign_h1( $markup );
+	public function hook_provider() {
+		return array(
+			'body start'        => array( 'neve_body_start_after', 10 ),
+			'after header'      => array( 'neve_after_header_hook', 10 ),
+			'before the header' => array( 'neve_after_primary_start', 5 ),
+			'before content'    => array( 'neve_before_content', 10 ),
+			'before footer'     => array( 'neve_before_footer_hook', 10 ),
+			'body end'          => array( 'neve_body_end_before', 10 ),
+		);
 	}
 
 	/**
-	 * An H1 hooked before the page header (blog-page layouts) suppresses the fallback.
+	 * An H1 rendered on any body hook suppresses the fallback.
+	 *
+	 * @dataProvider hook_provider
+	 *
+	 * @param string $hook     Action the H1 is echoed on.
+	 * @param int    $priority Priority of the echo.
 	 */
-	public function test_hooked_h1_before_header_suppresses_fallback() {
-		$this->echo_on( 'neve_after_primary_start', '<h1>Early layout heading</h1>', 5 );
-		$id     = $this->visit_page( '<p>Body only</p>' );
-		$markup = $this->render_page( $id );
-
-		$this->assert_single_foreign_h1( $markup );
-	}
-
-	/**
-	 * An H1 in a header custom layout suppresses the fallback.
-	 */
-	public function test_header_hook_h1_suppresses_fallback() {
-		$this->echo_on( 'neve_after_header_hook', '<h1>Header layout heading</h1>' );
-		$id     = $this->visit_page( '<p>Body only</p>' );
-		$markup = $this->render_page( $id );
-
-		$this->assert_single_foreign_h1( $markup );
-	}
-
-	/**
-	 * An H1 in a footer custom layout suppresses the fallback.
-	 */
-	public function test_footer_hook_h1_suppresses_fallback() {
-		$this->echo_on( 'neve_before_footer_hook', '<h1>Footer layout heading</h1>' );
+	public function test_hooked_h1_suppresses_fallback( $hook, $priority ) {
+		$this->echo_on( $hook, '<h1>Layout heading</h1>', $priority );
 		$id     = $this->visit_page( '<p>Body only</p>' );
 		$markup = $this->render_page( $id );
 
@@ -237,7 +278,7 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Without wp_body_open the content scan still decides the fallback.
+	 * Without the body hooks the content scan still decides the fallback.
 	 */
 	public function test_unbuffered_path_keeps_content_scan() {
 		$view = new \Neve\Views\Page_Header();

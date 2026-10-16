@@ -37,7 +37,7 @@ class Page_Header extends Base_View {
 	private $deferred_h1 = '';
 
 	/**
-	 * Output-buffer level of the main-area buffer, 0 when not buffering.
+	 * Output-buffer level of the page-body buffer, 0 when not buffering.
 	 *
 	 * @var int
 	 */
@@ -62,6 +62,8 @@ class Page_Header extends Base_View {
 		add_action( $header_hook, array( $this, 'render_page_header' ), 9 );
 		add_filter( 'get_the_archive_title', array( $this, 'filter_archive_title' ) );
 		if ( $this->is_title_hidden() ) {
+			// The theme's first body hook fires before wp_body_open; the latter covers other templates.
+			add_action( 'neve_body_start_after', array( $this, 'start_h1_buffer' ), PHP_INT_MIN );
 			add_action( 'wp_body_open', array( $this, 'start_h1_buffer' ), 0 );
 		}
 	}
@@ -122,7 +124,8 @@ class Page_Header extends Base_View {
 		}
 		ob_start( array( $this, 'filter_h1_buffer' ) );
 		$this->buffer_level = ob_get_level();
-		add_action( 'wp_footer', array( $this, 'resolve_fallback_h1' ), PHP_INT_MAX );
+		// Last theme hook in the body; if it never fires, PHP runs the callback at shutdown.
+		add_action( 'neve_body_end_before', array( $this, 'resolve_fallback_h1' ), PHP_INT_MAX );
 	}
 
 	/**
@@ -135,7 +138,7 @@ class Page_Header extends Base_View {
 	public function fallback_h1( $title ) {
 		$h1 = '<h1 class="screen-reader-text">' . $title . '</h1>';
 		if ( $this->buffer_level === 0 ) {
-			// Not buffering (template without wp_body_open): fall back to the content scan.
+			// Not buffering (template without the body hooks): fall back to the content scan.
 			$content_has_h1 = is_singular() && self::markup_has_h1( (string) get_post_field( 'post_content', get_queried_object_id() ) );
 			if ( ! $content_has_h1 ) {
 				echo wp_kses_post( $h1 );
@@ -166,7 +169,7 @@ class Page_Header extends Base_View {
 	/**
 	 * Output-buffer callback: keep the fallback H1 only when no other H1 rendered.
 	 *
-	 * @param string $markup Buffered main-area markup.
+	 * @param string $markup Buffered page-body markup.
 	 *
 	 * @return string
 	 */
