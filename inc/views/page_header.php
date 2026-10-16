@@ -62,7 +62,7 @@ class Page_Header extends Base_View {
 		add_action( $header_hook, array( $this, 'render_page_header' ), 9 );
 		add_filter( 'get_the_archive_title', array( $this, 'filter_archive_title' ) );
 		if ( $this->is_title_hidden() ) {
-			add_action( 'neve_after_primary_start', array( $this, 'start_h1_buffer' ), 0 );
+			add_action( 'wp_body_open', array( $this, 'start_h1_buffer' ), 0 );
 		}
 	}
 
@@ -111,8 +111,8 @@ class Page_Header extends Base_View {
 	}
 
 	/**
-	 * Buffer the main area so the screen-reader H1 fallback can be decided
-	 * after every H1 source (content, patterns, builders, custom layouts) rendered.
+	 * Buffer the page body so the screen-reader H1 fallback can be decided after
+	 * every H1 source (content, patterns, builders, header/footer/custom layouts) rendered.
 	 *
 	 * @return void
 	 */
@@ -122,8 +122,7 @@ class Page_Header extends Base_View {
 		}
 		ob_start( array( $this, 'filter_h1_buffer' ) );
 		$this->buffer_level = ob_get_level();
-		add_action( 'neve_before_primary_end', array( $this, 'resolve_fallback_h1' ), 0 );
-		add_action( 'wp_footer', array( $this, 'resolve_fallback_h1' ), 0 );
+		add_action( 'wp_footer', array( $this, 'resolve_fallback_h1' ), PHP_INT_MAX );
 	}
 
 	/**
@@ -136,7 +135,7 @@ class Page_Header extends Base_View {
 	public function fallback_h1( $title ) {
 		$h1 = '<h1 class="screen-reader-text">' . $title . '</h1>';
 		if ( $this->buffer_level === 0 ) {
-			// Not buffering (template without the main-area hooks): fall back to the content scan.
+			// Not buffering (template without wp_body_open): fall back to the content scan.
 			$content_has_h1 = is_singular() && self::markup_has_h1( (string) get_post_field( 'post_content', get_queried_object_id() ) );
 			if ( ! $content_has_h1 ) {
 				echo wp_kses_post( $h1 );
@@ -180,14 +179,19 @@ class Page_Header extends Base_View {
 	}
 
 	/**
-	 * Whether markup contains an H1, ignoring script/template/noscript blocks.
+	 * Whether markup contains an H1, ignoring comments and script/template/noscript blocks.
 	 *
 	 * @param string $markup Rendered HTML.
 	 *
 	 * @return bool
 	 */
 	public static function markup_has_h1( $markup ) {
-		$stripped = preg_replace( '#<(script|template|noscript)\b[^>]*>.*?</\1\s*>#is', '', (string) $markup );
+		// Scripts first: a lone "<!--" inside one must not open a comment that swallows real markup.
+		$stripped = preg_replace(
+			array( '#<(script|template|noscript)\b[^>]*>.*?</\1\s*>#is', '#<!--.*?-->#s' ),
+			'',
+			(string) $markup
+		);
 		// On a PCRE limit error keep the original markup rather than scanning nothing.
 		if ( null === $stripped ) {
 			$stripped = (string) $markup;
