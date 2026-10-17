@@ -13,6 +13,7 @@ use Neve\Admin\Dashboard\Main;
 use Neve\Core\Factory;
 use Neve\Core\Settings\Config;
 use Neve\Customizer\Options\Colors_Background;
+use Neve\Views\Font_Manager;
 
 /**
  * Main customizer handler.
@@ -196,7 +197,7 @@ class Loader {
 			}
 		}
 
-		$fonts = neve_get_google_fonts();
+		$fonts = $this->get_remote_preview_fonts();
 
 		if ( empty( $fonts ) ) {
 			return;
@@ -212,6 +213,31 @@ class Loader {
 				NEVE_VERSION
 			);
 		}
+	}
+
+	/**
+	 * Get the Google fonts whose control previews load remotely.
+	 *
+	 * When fonts are hosted locally, the already downloaded faces are inlined instead.
+	 *
+	 * @return string[]
+	 */
+	private function get_remote_preview_fonts(): array {
+		$fonts = neve_get_google_fonts();
+
+		if ( ! Font_Manager::should_load_fonts_locally() ) {
+			return $fonts;
+		}
+
+		$local_faces = Font_Manager::get_downloaded_font_faces();
+
+		if ( empty( $local_faces['variants'] ) ) {
+			return $fonts;
+		}
+
+		wp_add_inline_style( 'react-controls', $local_faces['css'] );
+
+		return array_values( array_diff( $fonts, array_keys( $local_faces['variants'] ) ) );
 	}
 
 	/**
