@@ -1,0 +1,26 @@
+{
+	"neve_typeface_general": {
+		"fontSize": {
+			"suffix": {
+				"mobile": "px",
+				"tablet": "px",
+				"desktop": "px"
+			},
+			"mobile": 15,
+			"tablet": 16,
+			"desktop": 16
+		},
+		"lineHeight": {
+			"mobile": 1.6,
+			"tablet": 1.6,
+			"desktop": 1.7
+		},
+		"letterSpacing": {
+			"mobile": 0,
+			"tablet": "0",
+			"desktop": 0
+		},
+		"fontWeight": "400",
+		"textTransform": "none"
+	}
+}
