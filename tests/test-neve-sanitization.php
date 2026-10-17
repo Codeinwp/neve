@@ -135,6 +135,44 @@ class TestSanitization extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Responsive sanitizer accepts the decoded array and non-string input (neve#4651).
+	 */
+	public function test_sanitize_responsive_int_json_with_native_array_and_non_string_values() {
+		$default = '{"mobile":0,"tablet":0,"desktop":0}';
+		$array   = [
+			'mobile'  => '1',
+			'tablet'  => 2,
+			'desktop' => '3',
+			'suffix'  => [
+				'mobile'  => 'em',
+				'tablet'  => 'px',
+				'desktop' => 'rem',
+			],
+		];
+
+		$this->assertSame(
+			'{"mobile":1,"tablet":2,"desktop":3,"suffix":{"mobile":"em","tablet":"px","desktop":"rem"}}',
+			$this->sanitization->sanitize_responsive_int_json( $array )
+		);
+		$this->assertSame( $default, $this->sanitization->sanitize_responsive_int_json( [] ) );
+		$this->assertSame( $default, $this->sanitization->sanitize_responsive_int_json( null ) );
+		$this->assertSame( $default, $this->sanitization->sanitize_responsive_int_json( 12 ) );
+		$this->assertSame( $default, $this->sanitization->sanitize_responsive_int_json( false ) );
+	}
+
+	/**
+	 * Plain JSON sanitizer accepts the decoded array and non-string input.
+	 */
+	public function test_sanitize_json_with_native_array_and_non_string_values() {
+		$this->assertSame( '{"a":1}', $this->sanitization->sanitize_json( '{"a":1}' ) );
+		$this->assertSame( '{"a":1}', $this->sanitization->sanitize_json( [ 'a' => 1 ] ) );
+		$this->assertSame( '', $this->sanitization->sanitize_json( [] ) );
+		$this->assertSame( '', $this->sanitization->sanitize_json( null ) );
+		$this->assertSame( '', $this->sanitization->sanitize_json( 12 ) );
+		$this->assertSame( '', $this->sanitization->sanitize_json( 'not json' ) );
+	}
+
+	/**
 	 * Test that color sanitization does not fatal on array or non-string values.
 	 */
 	public function test_sanitize_colors_with_non_string_values() {
