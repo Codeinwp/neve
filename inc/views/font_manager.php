@@ -147,9 +147,32 @@ class Font_Manager extends Base_View {
 	 * Register the fonts that are selected in customizer.
 	 */
 	public function register_google_fonts() {
+		$local_variants = $this->get_customizer_local_variants();
+
 		foreach ( self::$font_families as $font_family => $font_weights ) {
+			$required = array_merge( $font_weights, array( '400' ) );
+
+			if ( isset( $local_variants[ $font_family ] ) && ! array_diff( $required, $local_variants[ $font_family ] ) ) {
+				continue;
+			}
+
 			$this->enqueue_google_font( $font_family, $font_weights );
 		}
+	}
+
+	/**
+	 * Get the font variants the Customizer controls already load from the local font cache.
+	 *
+	 * Core fires the block editor hooks inside the controls for the widgets editor.
+	 *
+	 * @return array<string, list<string>> Font family => variants such as '700' or '400italic'.
+	 */
+	private function get_customizer_local_variants(): array {
+		if ( ! doing_action( 'customize_controls_enqueue_scripts' ) || ! self::should_load_fonts_locally() ) {
+			return array();
+		}
+
+		return self::get_downloaded_font_faces()['variants'];
 	}
 
 	/**
@@ -298,28 +321,13 @@ class Font_Manager extends Base_View {
 	 * @return void
 	 */
 	public function load_external_fonts_locally() {
-
-		$toggle = get_option( Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING, false );
-
-		/**
-		 * Filters whether the remote fonts should be hosted locally.
-		 *
-		 * This filter applies for both Google Fonts and Typekit Fonts if the Typekit module is used.
-		 *
-		 * @param bool $should_enqueue_locally Whether the Google Fonts should be hosted locally. Default value is false.
-		 *
-		 * @since 2.11
-		 */
-		$should_enqueue_locally = apply_filters( 'neve_load_remote_fonts_locally', $toggle );
-
-		if ( ! (bool) $should_enqueue_locally ) {
+		if ( ! self::should_load_fonts_locally() ) {
 			return;
 		}
 
 		$is_admin_context = is_admin() || is_customize_preview();
-		$wptt_vendor_file = trailingslashit( get_template_directory() ) . 'vendor/wptt/webfont-loader/wptt-webfont-loader.php';
 
-		if ( $is_admin_context || ! is_readable( $wptt_vendor_file ) ) {
+		if ( $is_admin_context || ! self::require_webfont_loader() ) {
 			return;
 		}
 
@@ -381,16 +389,6 @@ class Font_Manager extends Base_View {
 
 		$external_fonts = array_unique( $external_fonts );
 
-		require_once $wptt_vendor_file;
-
-		/**
-		 * The vendor file was readable at the top of this method, but confirm it
-		 * actually declared the loader before dequeuing anything.
-		 */
-		if ( ! function_exists( 'wptt_get_webfont_styles' ) ) {
-			return;
-		}
-
 		// Dequeue these handles since we are going to load the fonts locally.
 		foreach ( array_unique( $handles ) as $handle ) {
 			wp_dequeue_style( $handle );
@@ -402,4 +400,116 @@ class Font_Manager extends Base_View {
 
 	}
 
+	/**
+	 * Whether remote fonts should be hosted locally.
+	 *
+	 * @return bool
+	 */
+	public static function should_load_fonts_locally(): bool {
+		$toggle = get_option( Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING, false );
+
+		/**
+		 * Filters whether the remote fonts should be hosted locally.
+		 *
+		 * This filter applies for both Google Fonts and Typekit Fonts if the Typekit module is used.
+		 *
+		 * @param bool $should_enqueue_locally Whether the Google Fonts should be hosted locally. Default value is false.
+		 *
+		 * @since 2.11
+		 */
+		return (bool) apply_filters( 'neve_load_remote_fonts_locally', $toggle );
+	}
+
+	/**
+	 * Get the font faces already downloaded for local hosting.
+	 *
+	 * Only reads the existing cache, so nothing is downloaded outside the frontend.
+	 *
+	 * @return array{css: string, variants: array<string, list<string>>} Variants keyed by font family.
+	 */
+	public static function get_downloaded_font_faces(): array {
+		$faces = array(
+			'css'      => '',
+			'variants' => array(),
+		);
+
+		if ( ! self::require_webfont_loader() ) {
+			return $faces;
+		}
+
+		global $wp_filesystem;
+
+		// The loader uses $wp_filesystem without checking it was set up or connected.
+		if ( ! $wp_filesystem ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			WP_Filesystem();
+		}
+
+		if ( ! $wp_filesystem instanceof \WP_Filesystem_Base || $wp_filesystem->errors->has_errors() ) {
+			return $faces;
+		}
+
+		$stylesheets = glob( ( new \WPTT_WebFont_Loader() )->get_fonts_folder() . '/*.css' );
+
+		if ( empty( $stylesheets ) ) {
+			return $faces;
+		}
+
+		foreach ( $stylesheets as $stylesheet ) {
+			$css = (string) $wp_filesystem->get_contents( $stylesheet );
+
+			$faces['css']     .= $css;
+			$faces['variants'] = array_merge_recursive( $faces['variants'], self::get_font_face_variants( $css ) );
+		}
+
+		$faces['variants'] = array_map(
+			function ( array $variants ): array {
+				return array_values( array_unique( $variants ) );
+			},
+			$faces['variants']
+		);
+
+		return $faces;
+	}
+
+	/**
+	 * Get the variants each @font-face rule in a stylesheet declares.
+	 *
+	 * @param string $css Stylesheet contents.
+	 *
+	 * @return array<string, list<string>> Font family => variants such as '700' or '400italic'.
+	 */
+	private static function get_font_face_variants( string $css ): array {
+		$variants = array();
+
+		foreach ( explode( '@font-face', $css ) as $face ) {
+			if ( ! preg_match( '/font-family:\s*[\'"]?([^;\'"]+)/', $face, $family ) ) {
+				continue;
+			}
+
+			$weight = preg_match( '/font-weight:\s*(\d+)/', $face, $matches ) ? $matches[1] : '400';
+			$italic = preg_match( '/font-style:\s*italic/', $face ) ? 'italic' : '';
+
+			$variants[ trim( $family[1] ) ][] = $weight . $italic;
+		}
+
+		return $variants;
+	}
+
+	/**
+	 * Load the bundled webfont loader.
+	 *
+	 * @return bool Whether the loader is available.
+	 */
+	private static function require_webfont_loader(): bool {
+		$file = trailingslashit( get_template_directory() ) . 'vendor/wptt/webfont-loader/wptt-webfont-loader.php';
+
+		if ( ! is_readable( $file ) ) {
+			return false;
+		}
+
+		require_once $file;
+
+		return class_exists( '\WPTT_WebFont_Loader' ) && function_exists( 'wptt_get_webfont_styles' );
+	}
 }
