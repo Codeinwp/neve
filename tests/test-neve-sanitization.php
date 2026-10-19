@@ -233,6 +233,74 @@ class TestSanitization extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Gradient picker output is kept; anything beyond a single gradient function is rejected.
+	 */
+	public function test_sanitize_colors_gradients(): void {
+		$valid = [
+			'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)',
+			'radial-gradient(rgb(6,147,227) 0%,rgb(155,81,224) 100%)',
+			'radial-gradient(circle at center, #fff 0%, #000 100%)',
+			'conic-gradient(from 90deg, red, blue)',
+			'repeating-linear-gradient(45deg, #FFF 0 10px, transparent 10px 20px)',
+			'linear-gradient(var(--nv-primary-accent), var(--nv_c-1, #fff))',
+			'linear-gradient(hsl(120 50% 50% / .5), transparent)',
+		];
+
+		foreach ( $valid as $value ) {
+			$this->assertSame( $value, neve_sanitize_colors( $value ), $value . ' should be kept' );
+		}
+
+		$this->assertSame( 'linear-gradient(red, blue)', neve_sanitize_colors( ' linear-gradient(red, blue) ' ) );
+
+		$invalid = [
+			'linear-gradient(red,blue)</style><script>alert(1)</script>',
+			'linear-gradient(red,blue);}body{display:none',
+			'linear-gradient(red,blue),url(//example.com/t.png)',
+			'linear-gradient(red,blue))',
+			'linear-gradient(red,"blue")',
+			'x gradient',
+			'notagradient(red, blue)',
+			'linear-gradient',
+		];
+
+		foreach ( $invalid as $value ) {
+			$this->assertSame( '', neve_sanitize_colors( $value ), $value . ' should be rejected' );
+		}
+	}
+
+	/**
+	 * Color slugs that are not CSS identifiers are dropped from both color settings.
+	 */
+	public function test_global_color_slugs_must_be_css_identifiers(): void {
+		$colors_background = new \Neve\Customizer\Options\Colors_Background();
+
+		$global = neve_get_global_colors_default();
+		$global['palettes']['base']['colors']['x:red}</style><script>alert(1)</script>'] = '#ffffff';
+
+		$sanitized = $colors_background->sanitize_global_colors( $global );
+
+		$this->assertSame(
+			array_keys( neve_get_global_colors_default()['palettes']['base']['colors'] ),
+			array_keys( $sanitized['palettes']['base']['colors'] )
+		);
+
+		$custom = $colors_background->sanitize_global_custom_colors(
+			[
+				'custom-1'                                  => [
+					'label' => 'Kept',
+					'val'   => '#ffffff',
+				],
+				'custom-2:red}</style><script>alert(1)<'    => [
+					'label' => 'Dropped',
+					'val'   => '#000000',
+				],
+			]
+		);
+
+		$this->assertSame( [ 'custom-1' ], array_keys( $custom ) );
+	}
+
+	/**
 	 * Private reusable function for the assertion of sanitize responsive int json.
 	 *
 	 * @param array  $input_value Input value.
