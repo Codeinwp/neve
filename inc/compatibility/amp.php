@@ -24,7 +24,7 @@ class Amp {
 		if ( ! neve_is_amp() ) {
 			return;
 		}
-		add_filter( 'neve_caret_wrap_filter', array( $this, 'amp_dropdowns' ), 10, 2 );
+		add_filter( 'neve_caret_wrap_filter', array( $this, 'amp_dropdowns' ), 10, 3 );
 		add_filter(
 			'neve_woocommerce_sidebar_filter_btn_data_attrs',
 			array(
@@ -150,7 +150,7 @@ class Amp {
 
 		$item_output = '<div class="has-caret amp">' . $item_output . $caret . '</div>';
 		// Filter that is used for AMP proper event integration.
-		$item_output = apply_filters( 'neve_caret_wrap_filter', $item_output, $item->menu_order );
+		$item_output = apply_filters( 'neve_caret_wrap_filter', $item_output, $item->menu_order, $item );
 
 		return $item_output;
 	}
@@ -251,12 +251,13 @@ class Amp {
 	/**
 	 * Implement AMP integration on drop-downs.
 	 *
-	 * @param string $output the output.
-	 * @param string $id menu item order.
+	 * @param string        $output the output.
+	 * @param string        $id menu item order.
+	 * @param \WP_Post|null $item menu item that owns the drop-down.
 	 *
 	 * @return mixed
 	 */
-	public function amp_dropdowns( $output, $id ) {
+	public function amp_dropdowns( $output, $id, $item = null ) {
 
 		// Generate a unique id for drop-down items.
 		$state = 'neveMenuItemExpanded' . $id;
@@ -272,6 +273,9 @@ class Amp {
 		$amp_caret .= '<div class="caret-wrap amp-caret-wrap"';
 		$amp_caret .= ' on="tap:AMP.setState( { ' . $state . ': ! ' . $state . ' } )"';
 		$amp_caret .= ' role="button" ';
+		if ( $item !== null ) {
+			$amp_caret .= ' aria-label="' . esc_attr( \Neve\Views\Nav_Walker::get_submenu_toggle_label( $item ) ) . '"';
+		}
 		$amp_caret .= ' aria-expanded="false" ';
 		$amp_caret .= ' [aria-expanded]="' . $state . ' ? \'true\' : \'false\'">' . $caret . '</div>';
 

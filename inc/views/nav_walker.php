@@ -120,9 +120,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			// neighbouring item would overlap (obscure) the touch target.
 			$caret_wrap_css = $caret_settings['side'] === 'right' ? 'margin-left:-3px;' : 'margin-right:-3px;';
 
-			// wp_pre_kses_less_than() first, so strip_tags() does not read a title like "Kids <12" as a tag.
-			/* translators: %s: menu item title */
-			$toggle_aria_label = sprintf( __( '%s submenu', 'neve' ), wp_strip_all_tags( wp_pre_kses_less_than( $item->title ), true ) ); // @phpstan-ignore-line title is defined on WP_Post object that is used as Menu Item.
+			$toggle_aria_label = self::get_submenu_toggle_label( $item );
 
 			$is_sidebar_item = strpos( $args->menu_id, 'sidebar' ) !== false;
 			$is_expanded     = $is_sidebar_item && apply_filters( 'neve_first_level_expanded', false ) && $depth === 0;
@@ -142,6 +140,25 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 
 		return $title;
+	}
+
+	/**
+	 * Accessible name of the toggle that opens an item's submenu.
+	 *
+	 * @param \WP_Post $item menu item object.
+	 *
+	 * @return string Plain text; escape for the output context.
+	 */
+	public static function get_submenu_toggle_label( $item ): string {
+		// wp_pre_kses_less_than() first, so strip_tags() does not read a title like "Kids <12" as a tag.
+		$title = wp_strip_all_tags( wp_pre_kses_less_than( $item->title ?? '' ), true ); // @phpstan-ignore-line title is defined on WP_Post object that is used as Menu Item.
+
+		if ( $title === '' ) {
+			return __( 'Submenu', 'neve' );
+		}
+
+		/* translators: %s: menu item title */
+		return sprintf( __( '%s submenu', 'neve' ), $title );
 	}
 
 	/**
