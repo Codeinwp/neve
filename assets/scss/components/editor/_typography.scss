@@ -1,8 +1,10 @@
 @import "../main/global-colors";
 @import "../main/variables";
 
+// In the iframed editor the wrapper is the body itself.
 main,
 body &,
+&:is(body),
 body & p {
 	color: var(--nv-text-color);
 	font-size: var(--bodyfontsize);

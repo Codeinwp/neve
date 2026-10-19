@@ -1,12 +1,14 @@
 import { test, expect, Frame, Page } from '@playwright/test';
-import { clearWelcome } from '../../utils';
+import { clearWelcome, setCustomizeSettings } from '../../utils';
 
 const STYLE_CLASS = 'is-style-nv';
 const STYLE_COLOR = 'rgb(1, 2, 3)';
 const STYLE_FONT_SIZE = '37px';
+const TEST_NAME = 'block-style-overrides';
+const BODY_FONT_SIZE = { mobile: '19', tablet: '19', desktop: '19' };
 
 const openEditorCanvas = async (page: Page): Promise<Frame> => {
-	await page.goto('wp-admin/post-new.php');
+	await page.goto(`wp-admin/post-new.php?test_name=${TEST_NAME}`);
 	await clearWelcome(page);
 	await page.waitForFunction(() =>
 		window.wp?.data?.select('core/block-editor')
@@ -100,7 +102,14 @@ const resolveVariable = (
 test.describe('Editor block style overrides', () => {
 	test('Single-class block styles override theme heading, paragraph and link defaults', async ({
 		page,
+		request,
+		baseURL,
 	}) => {
+		await setCustomizeSettings(
+			TEST_NAME,
+			{ neve_typeface_general: { fontSize: BODY_FONT_SIZE } },
+			{ request, baseURL }
+		);
 		const canvas = await openEditorCanvas(page);
 		await insertFixtureBlocks(page);
 		await prependBlockStyle(canvas);
