@@ -183,4 +183,32 @@ class TestElementorCompatibility extends WP_UnitTestCase {
 
 		$this->assertSame( $error, $elementor->alter_global_colors_front_end( $error, [], $request ) );
 	}
+
+	/**
+	 * A stored custom color with HTML reaches the Elementor palette inline style without tags.
+	 */
+	public function test_enqueue_strips_html_from_palette_style(): void {
+		$previous_styles      = $GLOBALS['wp_styles'] ?? null;
+		$GLOBALS['wp_styles'] = new WP_Styles();
+
+		try {
+			wp_register_style( 'neve-style', false );
+
+			$this->get_elementor_compat(
+				[
+					'custom-1' => [
+						'label' => 'Custom',
+						'val'   => 'linear-gradient(red,blue)</style><script>alert(1)</script>',
+					],
+				]
+			)->enqueue();
+
+			$inline = implode( '', (array) wp_styles()->get_data( 'neve-style', 'after' ) );
+
+			$this->assertStringContainsString( '--e-global-color-custom1:linear-gradient(red,blue)', $inline );
+			$this->assertStringNotContainsString( '<', $inline );
+		} finally {
+			$GLOBALS['wp_styles'] = $previous_styles;
+		}
+	}
 }

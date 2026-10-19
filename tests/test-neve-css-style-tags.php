@@ -62,7 +62,9 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 		Mods::$no_cache                        = false;
 
 		remove_theme_mod( 'custom_html_color' );
+		remove_theme_mod( 'hfg_header_layout_main_background' );
 		remove_theme_mod( Config::MODS_GLOBAL_CUSTOM_COLORS );
+		remove_theme_mod( Config::MODS_GLOBAL_COLORS );
 
 		parent::tear_down();
 	}
@@ -115,5 +117,48 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 		$this->assertStringContainsString( '--custom-1:linear-gradient(red,blue)', $inline );
 		$this->assertStringNotContainsString( '<', $inline );
 		$this->assertStringContainsString( '.alignfull > [class*="__inner-container"]', $inline );
+	}
+
+	/**
+	 * A stored palette color with HTML reaches the Customizer CSS vars tag without tags.
+	 */
+	public function test_customizer_css_vars_tag_strips_html(): void {
+		$GLOBALS['wp_styles'] = new WP_Styles();
+
+		$global = neve_get_global_colors_default();
+		$global['palettes'][ $global['activePalette'] ]['colors']['nv-primary-accent'] = self::PAYLOAD;
+		set_theme_mod( Config::MODS_GLOBAL_COLORS, $global );
+
+		( new Dynamic_Css() )->add_customize_vars_tag();
+
+		$inline = implode( '', (array) wp_styles()->get_data( 'nv-css-vars', 'after' ) );
+
+		$this->assertStringContainsString( '--nv-primary-accent:linear-gradient(red,blue)', $inline );
+		$this->assertStringNotContainsString( '<', $inline );
+	}
+
+	/**
+	 * A stored row background with HTML is printed without tags in the Customizer preview.
+	 */
+	public function test_builder_css_strips_html_in_customizer_preview(): void {
+		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
+
+		$GLOBALS['wp_customize'] = new WP_Customize_Manager();
+		$GLOBALS['wp_customize']->start_previewing_theme();
+
+		set_theme_mod(
+			'hfg_header_layout_main_background',
+			[
+				'type'       => 'color',
+				'colorValue' => self::PAYLOAD,
+			]
+		);
+
+		ob_start();
+		Main::get_instance()->get_builder( 'header' )->render();
+		$output = (string) ob_get_clean();
+
+		$this->assertStringContainsString( '--bgcolor: linear-gradient(red,blue);', $output );
+		$this->assertStringNotContainsString( '<script', $output );
 	}
 }
