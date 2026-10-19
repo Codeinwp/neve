@@ -258,6 +258,56 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 	}
 
 	/**
+	 * A script larger than pcre.backtrack_limit (1 MB by default) must still be
+	 * skipped: the regex scan gave up there and counted the literal H1 inside it.
+	 */
+	public function test_large_inert_script_keeps_fallback() {
+		$json   = '{"html":"<h1>Not a real heading</h1>","pad":"' . str_repeat( 'x', 1200000 ) . '"}';
+		$script = '<script type="application/json">' . $json . '</script>';
+
+		$this->assertFalse( \Neve\Views\Page_Header::markup_has_h1( $script ) );
+		$this->assertTrue( \Neve\Views\Page_Header::markup_has_h1( $script . '<h1>Real heading</h1>' ) );
+
+		$id     = $this->visit_page( '<!-- wp:html -->' . $script . '<!-- /wp:html -->' );
+		$markup = $this->render_page( $id );
+
+		$this->assertStringContainsString( '<h1 class="screen-reader-text">Fixture page</h1>', $markup );
+	}
+
+	/**
+	 * Raw-text and comment edge cases the scanner has to get right.
+	 *
+	 * @dataProvider markup_provider
+	 *
+	 * @param string $markup   HTML.
+	 * @param bool   $expected Whether it holds a real H1.
+	 */
+	public function test_markup_has_h1( $markup, $expected ) {
+		$this->assertSame( $expected, \Neve\Views\Page_Header::markup_has_h1( $markup ) );
+	}
+
+	/**
+	 * @return array<string, array{0: string, 1: bool}>
+	 */
+	public function markup_provider() {
+		return array(
+			'plain h1'                  => array( '<h1>Title</h1>', true ),
+			'h1 with attributes'        => array( '<H1 class="x">Title</H1>', true ),
+			'h10 is not h1'             => array( '<h10>Nope</h10>', false ),
+			'h1 after a comment'        => array( '<!-- note --><h1>Title</h1>', true ),
+			'h1 in unterminated comment' => array( '<!-- <h1>Title</h1>', false ),
+			'h1 in mixed-case script'   => array( '<SCRIPT><h1>x</h1></Script ><p>y</p>', false ),
+			'h1 in template'            => array( '<template id="t"><h1>x</h1></template>', false ),
+			'h1 in noscript'            => array( '<noscript><h1>x</h1></noscript>', false ),
+			'h1 in unterminated script' => array( '<script><h1>x</h1>', false ),
+			'script closer in a string' => array( '<script>var a = "</scripts>";</script><h1>Title</h1>', true ),
+			'h1 after script with lone comment opener' => array( '<script>var s = "<!--";</script><h1>Title</h1>', true ),
+			'script inside a comment'   => array( '<!-- <script> --><h1>Title</h1>', true ),
+			'stray angle bracket'       => array( '<<h1>Title</h1>', true ),
+		);
+	}
+
+	/**
 	 * An H1 inside an HTML comment is not a heading, so the fallback stays.
 	 */
 	public function test_h1_inside_comment_does_not_count() {

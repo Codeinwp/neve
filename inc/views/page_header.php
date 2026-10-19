@@ -189,18 +189,62 @@ class Page_Header extends Base_View {
 	 * @return bool
 	 */
 	public static function markup_has_h1( $markup ) {
-		// Scripts first: a lone "<!--" inside one must not open a comment that swallows real markup.
-		$stripped = preg_replace(
-			array( '#<(script|template|noscript)\b[^>]*>.*?</\1\s*>#is', '#<!--.*?-->#s' ),
-			'',
-			(string) $markup
-		);
-		// On a PCRE limit error keep the original markup rather than scanning nothing.
-		if ( null === $stripped ) {
-			$stripped = (string) $markup;
+		// A single left-to-right pass: a regex over the whole body hits pcre.backtrack_limit
+		// on a large inline script (around 1 MB), and a failed scan must not miscount an H1.
+		$markup = (string) $markup;
+		$offset = strpos( $markup, '<' );
+		while ( false !== $offset ) {
+			if ( '<!--' === substr( $markup, $offset, 4 ) ) {
+				$close = strpos( $markup, '-->', $offset + 4 );
+				if ( false === $close ) {
+					return false;
+				}
+				$offset = $close + 3;
+			} elseif ( preg_match( '#\G<([a-z][a-z0-9]*)(?=[\s/>])#i', $markup, $match, 0, $offset ) ) {
+				$tag = strtolower( $match[1] );
+				if ( 'h1' === $tag ) {
+					return true;
+				}
+				$offset += strlen( $match[0] );
+				if ( in_array( $tag, array( 'script', 'template', 'noscript' ), true ) ) {
+					$offset = self::find_closing_tag( $markup, $tag, $offset );
+					if ( false === $offset ) {
+						return false;
+					}
+				}
+			} else {
+				$offset ++;
+			}
+			$offset = strpos( $markup, '<', $offset );
 		}
 
-		return (bool) preg_match( '/<h1[\s>]/i', $stripped );
+		return false;
+	}
+
+	/**
+	 * Offset just past the closing tag of an element, or false when it never closes.
+	 *
+	 * @param string $markup Rendered HTML.
+	 * @param string $tag    Lower-case tag name.
+	 * @param int    $offset Where to start looking.
+	 *
+	 * @return int|false
+	 */
+	private static function find_closing_tag( $markup, $tag, $offset ) {
+		$needle = '</' . $tag;
+		$pos    = stripos( $markup, $needle, $offset );
+		while ( false !== $pos ) {
+			$end = $pos + strlen( $needle );
+			while ( isset( $markup[ $end ] ) && ctype_space( $markup[ $end ] ) ) {
+				$end ++;
+			}
+			if ( isset( $markup[ $end ] ) && '>' === $markup[ $end ] ) {
+				return $end + 1;
+			}
+			$pos = stripos( $markup, $needle, $end );
+		}
+
+		return false;
 	}
 
 	/**
