@@ -1,8 +1,10 @@
 @import "../main/global-colors";
 @import "../main/variables";
 
+// In the iframed editor the wrapper is the body itself.
 main,
 body &,
+&:is(body),
 body & p {
 	color: var(--nv-text-color);
 	font-size: var(--bodyfontsize);
@@ -52,21 +54,30 @@ h5,
 h6 {
 	margin-bottom: $spacing-lg;
 	margin-top: 0;
-
-	&.wp-block,
-	& {
-		font-family: var(--headingsfontfamily, var(--bodyfontfamily));
-		color: var(--headingcolor, inherit);
-	}
 }
 
 $headings: [h1,h2,h3,h4,h5,h6];
 
-@each $heading in $headings {
-	#{$heading} {
+// One class still outranks these; the html prefix ties core's editor reset.
+// WP 5.5-5.8 core heading styles are (0,1,1); those body classes outrank them.
+@at-root html :where(.editor-styles-wrapper),
+.branch-5-5 .editor-styles-wrapper,
+.branch-5-6 .editor-styles-wrapper,
+.branch-5-7 .editor-styles-wrapper,
+.branch-5-8 .editor-styles-wrapper {
 
-		&.wp-block,
-		& {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--headingsfontfamily, var(--bodyfontfamily));
+		color: var(--headingcolor, inherit);
+	}
+
+	@each $heading in $headings {
+		#{$heading} {
 			font-size: var(--#{$heading}fontsize);
 			font-weight: var(--#{$heading}fontweight);
 			line-height: var(--#{$heading}lineheight);
@@ -209,8 +220,14 @@ pre:not(.CodeMirror-line) {
 
 
 // === Links === //
-a:not(.wp-block-button__link) {
+@at-root html :where(.editor-styles-wrapper) a:where(:not(.wp-block-button__link)) {
 	color: var(--nv-primary-accent);
+
+	// wp-admin's common.css loads in the editor and colours these at (0,1,1).
+	&:focus,
+	&:active {
+		color: var(--nv-primary-accent);
+	}
 
 	&:hover {
 		color: var(--nv-secondary-accent);
