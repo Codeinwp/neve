@@ -56,8 +56,8 @@ h6 {
 
 $headings: [h1,h2,h3,h4,h5,h6];
 
-// Matches front-end element specificity so block styles can override it.
-@at-root :where(.editor-styles-wrapper) {
+// One class still outranks these; the html prefix ties core's editor reset.
+@at-root html :where(.editor-styles-wrapper) {
 
 	h1,
 	h2,
@@ -213,7 +213,7 @@ pre:not(.CodeMirror-line) {
 
 
 // === Links === //
-@at-root :where(.editor-styles-wrapper) a:where(:not(.wp-block-button__link)) {
+@at-root html :where(.editor-styles-wrapper) a:where(:not(.wp-block-button__link)) {
 	color: var(--nv-primary-accent);
 
 	&:hover {
