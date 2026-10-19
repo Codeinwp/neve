@@ -196,7 +196,7 @@ class Admin {
 		}
 
 		wp_register_style( 'neve-components', trailingslashit( NEVE_ASSETS_URL ) . 'apps/components/build/style-components.css', [ 'wp-components' ], $deps['version'] );
-		wp_add_inline_style( 'neve-components', Dynamic_Css::get_root_css() );
+		wp_add_inline_style( 'neve-components', wp_strip_all_tags( Dynamic_Css::get_root_css() ) );
 	}
 
 	/**

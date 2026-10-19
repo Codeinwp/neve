@@ -90,7 +90,7 @@ class Dynamic_Css {
 
 		$style .= self::get_root_css();
 
-		$style = self::minify_css( $style );
+		$style = wp_strip_all_tags( self::minify_css( $style ) );
 
 		wp_add_inline_style( $is_for_gutenberg ? self::GUTENBERG_HANDLE : self::FRONTEND_HANDLE, $style );
 	}
@@ -115,7 +115,7 @@ class Dynamic_Css {
 
 		$css = ':root{' . $this->get_css_vars() . '}';
 		$css .= apply_filters( 'neve_after_css_root', $css );
-		wp_add_inline_style( 'nv-css-vars', self::minify_css($css ) );
+		wp_add_inline_style( 'nv-css-vars', wp_strip_all_tags( self::minify_css($css ) ) );
 
 		/**
 		 * Custom colors needs a separate style to prevent overwriting the main color for the pallets.
