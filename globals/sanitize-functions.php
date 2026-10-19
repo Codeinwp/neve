@@ -37,6 +37,18 @@ function neve_is_css_var( $value ) {
 }
 
 /**
+ * Check whether a value is a single CSS gradient function.
+ *
+ * @param string $value Value to check.
+ *
+ * @return bool
+ */
+function neve_is_css_gradient( string $value ): bool {
+	// Recursion keeps parentheses balanced, so nothing can follow the closing one.
+	return (bool) preg_match( '/^(?:repeating-)?(?:linear|radial|conic)-gradient(\((?:[a-z0-9#%.,\s\/_-]|(?1))*\))$/i', trim( $value ) );
+}
+
+/**
  * Sanitize a color control value.
  *
  * @param mixed $value Color value: CSS variable, gradient, rgba() or hex.
@@ -54,8 +66,8 @@ function neve_sanitize_colors( $value ) {
 		return trim( $value );
 	}
 
-	if ( false !== strpos( $value, 'gradient' ) ) {
-		return $value;
+	if ( neve_is_css_gradient( $value ) ) {
+		return trim( $value );
 	}
 
 	// Is this an rgba color or a hex?
