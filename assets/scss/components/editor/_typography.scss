@@ -223,6 +223,12 @@ pre:not(.CodeMirror-line) {
 @at-root html :where(.editor-styles-wrapper) a:where(:not(.wp-block-button__link)) {
 	color: var(--nv-primary-accent);
 
+	// wp-admin's common.css loads in the editor and colours these at (0,1,1).
+	&:focus,
+	&:active {
+		color: var(--nv-primary-accent);
+	}
+
 	&:hover {
 		color: var(--nv-secondary-accent);
 		text-decoration: none;
