@@ -57,7 +57,9 @@ h6 {
 $headings: [h1,h2,h3,h4,h5,h6];
 
 // One class still outranks these; the html prefix ties core's editor reset.
-@at-root html :where(.editor-styles-wrapper) {
+// WP 5.8's reset is (0,1,1), so only its body class gets a stronger selector.
+@at-root html :where(.editor-styles-wrapper),
+.branch-5-8 .editor-styles-wrapper {
 
 	h1,
 	h2,
