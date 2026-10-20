@@ -6,6 +6,13 @@ import { __ } from '@wordpress/i18n';
 import { mapValues } from 'lodash';
 import { Button, Tooltip } from '@wordpress/components';
 
+/**
+ * @param {string|number|null|undefined} value Control value or default.
+ * @return {boolean} Whether the value is unset.
+ */
+const isEmptyValue = (value) =>
+	value === '' || value === null || value === undefined;
+
 const SizingControl = ({
 	noLinking,
 	options,
@@ -61,8 +68,11 @@ const SizingControl = ({
 
 	const hasSetValues = () => {
 		if (typeof defaults !== 'object') {
-			// eslint-disable-next-line eqeqeq
-			return parseFloat(defaults) != parseFloat(options[0].value);
+			const current = options[0].value;
+			if (isEmptyValue(defaults) || isEmptyValue(current)) {
+				return isEmptyValue(defaults) !== isEmptyValue(current);
+			}
+			return parseFloat(defaults) !== parseFloat(current);
 		}
 		return (
 			options.filter(

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState } from '@wordpress/element';
 
 const SingleSizingInput = ({
 	type,
@@ -10,6 +11,9 @@ const SingleSizingInput = ({
 	label,
 	disabled,
 }) => {
+	// Partial input like "-" reads as empty; rendering 0 would erase it.
+	const [isEmptyInput, setIsEmptyInput] = useState(false);
+
 	return (
 		<div className="nv-sizing-item">
 			<input
@@ -17,13 +21,15 @@ const SingleSizingInput = ({
 				disabled={disabled}
 				type="number"
 				className={type ? type + '-input' : ''}
-				value={value}
+				value={isEmptyInput ? '' : value}
 				min={min}
 				max={max}
 				step={step}
-				onChange={(e) =>
-					onChange(type, e.target.value === '' ? 0 : e.target.value)
-				}
+				onChange={(e) => {
+					setIsEmptyInput(e.target.value === '');
+					onChange(type, e.target.value === '' ? 0 : e.target.value);
+				}}
+				onBlur={() => setIsEmptyInput(false)}
 			/>
 			{label && (
 				<label className="label" htmlFor={type + '-input'}>
