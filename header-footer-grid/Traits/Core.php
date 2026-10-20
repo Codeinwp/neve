@@ -55,12 +55,16 @@ trait Core {
 	/**
 	 * Sanitize regular json.
 	 *
-	 * @param string $input Input.
+	 * @param mixed $input JSON string, decoded array, or any other value.
 	 *
 	 * @return string
 	 */
 	public function sanitize_json( $input ) {
-		$inputs = json_decode( $input, true );
+		if ( is_array( $input ) ) {
+			return empty( $input ) ? '' : (string) wp_json_encode( $input );
+		}
+
+		$inputs = is_string( $input ) ? json_decode( $input, true ) : null;
 		if ( is_array( $inputs ) && ! empty( $inputs ) ) {
 			return $input;
 		}
@@ -71,11 +75,12 @@ trait Core {
 	/**
 	 * Sanitize responsive control
 	 *
-	 * @param string $input Input.
+	 * @param mixed $input JSON string, decoded array, or any other value.
 	 * @return string
 	 */
 	public function sanitize_responsive_int_json( $input ) {
-		$inputs   = json_decode( $input, true );
+		// Pro conditional headers return the stored value decoded, so arrays reach the sanitizer.
+		$inputs   = is_array( $input ) ? $input : ( is_string( $input ) ? json_decode( $input, true ) : null );
 		$filtered = array(
 			'mobile'  => 0,
 			'tablet'  => 0,
