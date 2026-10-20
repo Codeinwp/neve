@@ -314,9 +314,11 @@ final class Manager {
 			]
 		);
 		foreach ( $meta_sidebar_controls as $control ) {
-			$type = 'string';
+			$type              = 'string';
+			$sanitize_callback = 'sanitize_text_field';
 			if ( $control['type'] === 'range' ) {
-				$type = 'integer';
+				$type              = 'integer';
+				$sanitize_callback = 'absint';
 			}
 
 			$post_type = '';
@@ -328,7 +330,7 @@ final class Manager {
 				'show_in_rest'      => true,
 				'type'              => $type,
 				'single'            => true,
-				'sanitize_callback' => 'sanitize_text_field',
+				'sanitize_callback' => $sanitize_callback,
 				'auth_callback'     => function () {
 					return current_user_can( 'edit_posts' );
 				},
