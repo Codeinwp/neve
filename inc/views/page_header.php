@@ -234,10 +234,8 @@ class Page_Header extends Base_View {
 		$needle = '</' . $tag;
 		$pos    = stripos( $markup, $needle, $offset );
 		while ( false !== $pos ) {
-			$end = $pos + strlen( $needle );
-			while ( isset( $markup[ $end ] ) && ctype_space( $markup[ $end ] ) ) {
-				$end ++;
-			}
+			$end  = $pos + strlen( $needle );
+			$end += strspn( $markup, " \t\n\f\r", $end );
 			if ( isset( $markup[ $end ] ) && '>' === $markup[ $end ] ) {
 				return $end + 1;
 			}
