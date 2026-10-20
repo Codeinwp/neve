@@ -83,7 +83,8 @@ const getTabHash = () => {
 
 	hash = hash.substring(1);
 
-	if (!tabs[hash]?.render && !tabs[hash]?.url) {
+	// Tabs with only a `url` are links (e.g. Starter Sites once the plugin is active), not content.
+	if (!tabs[hash]?.render) {
 		return null;
 	}
 
