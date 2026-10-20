@@ -193,6 +193,8 @@ class Page_Header extends Base_View {
 		// on a large inline script (around 1 MB), and a failed scan must not miscount an H1.
 		$markup = (string) $markup;
 		$offset = strpos( $markup, '<' );
+		// Open <template> elements: their contents are parsed as markup but never rendered.
+		$inert = 0;
 		while ( false !== $offset ) {
 			if ( '<!--' === substr( $markup, $offset, 4 ) ) {
 				$close = strpos( $markup, '-->', $offset + 4 );
@@ -200,13 +202,15 @@ class Page_Header extends Base_View {
 					return false;
 				}
 				$offset = $close + 3;
-			} elseif ( preg_match( '#\G<([a-z][a-z0-9]*)(?=[\s/>])#i', $markup, $match, 0, $offset ) ) {
-				$tag = strtolower( $match[1] );
-				if ( 'h1' === $tag ) {
-					return true;
-				}
+			} elseif ( preg_match( '#\G<(/?)([a-z][a-z0-9]*)(?=[\s/>])#i', $markup, $match, 0, $offset ) ) {
+				$closing = '' !== $match[1];
+				$tag     = strtolower( $match[2] );
 				$offset += strlen( $match[0] );
-				if ( in_array( $tag, array( 'script', 'template', 'noscript' ), true ) ) {
+				if ( 'template' === $tag ) {
+					$inert = $closing ? max( 0, $inert - 1 ) : $inert + 1;
+				} elseif ( 'h1' === $tag && ! $closing && 0 === $inert ) {
+					return true;
+				} elseif ( ! $closing && in_array( $tag, array( 'script', 'noscript' ), true ) ) {
 					$offset = self::find_closing_tag( $markup, $tag, $offset );
 					if ( false === $offset ) {
 						return false;
@@ -222,7 +226,7 @@ class Page_Header extends Base_View {
 	}
 
 	/**
-	 * Offset just past the closing tag of an element, or false when it never closes.
+	 * Offset just past the closing tag of a raw-text element, or false when it never closes.
 	 *
 	 * @param string $markup Rendered HTML.
 	 * @param string $tag    Lower-case tag name.
