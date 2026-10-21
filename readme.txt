@@ -18,6 +18,24 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 4.2.17](https://github.com/Codeinwp/neve/compare/v4.2.16...v4.2.17) (2026-10-21)
+
+- Fixed Customizer freezing when WooCommerce is inactive
+- Fixed Customizer font previews using local fonts when hosted locally
+- Fixed cart coupon errors sharing the controls row
+- Fixed Customizer colors accepting HTML inside gradient values
+- Fixed block styles overriding theme defaults in the editor
+- Fixed Customizer error when saving responsive header settings
+- Fixed letter spacing control handling
+- Fixed the imported content width metadata
+- Fixed blank Neve dashboard when link opened Starter Sites tab
+- Added global Customizer toggles to disable header and footer
+- Fixed AMP submenu toggle accessibility
+- Updated dependencies
+
+
+
+
 ##### [Version 4.2.16](https://github.com/Codeinwp/neve/compare/v4.2.15...v4.2.16) (2026-10-07)
 
 - Improves mobile dropdown labels to keep text after less-than signs.
