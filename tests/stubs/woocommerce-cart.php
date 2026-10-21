@@ -185,3 +185,36 @@ if ( ! function_exists( 'wc_get_page_id' ) ) {
 		return -1;
 	}
 }
+
+if ( ! function_exists( 'is_woocommerce' ) ) {
+	/**
+	 * Stand-in for the WooCommerce page conditional tag.
+	 *
+	 * @return bool
+	 */
+	function is_woocommerce() {
+		return false;
+	}
+}
+
+if ( ! function_exists( 'is_product' ) ) {
+	/**
+	 * Stand-in for the single product conditional tag.
+	 *
+	 * @return bool
+	 */
+	function is_product() {
+		return false;
+	}
+}
+
+if ( ! function_exists( 'is_account_page' ) ) {
+	/**
+	 * Stand-in for the account page conditional tag.
+	 *
+	 * @return bool
+	 */
+	function is_account_page() {
+		return false;
+	}
+}
