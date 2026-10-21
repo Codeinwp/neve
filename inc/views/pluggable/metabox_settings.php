@@ -258,7 +258,7 @@ class Metabox_Settings {
 	/**
 	 * Get content width, if any.
 	 *
-	 * @return int|bool Content width.
+	 * @return int|false Content width.
 	 */
 	public function get_content_width() {
 		$post_id = $this->get_post_id();
@@ -273,7 +273,7 @@ class Metabox_Settings {
 			return false;
 		}
 
-		return get_post_meta( $post_id, self::CONTENT_WIDTH, true );
+		return absint( get_post_meta( $post_id, self::CONTENT_WIDTH, true ) );
 
 	}
 

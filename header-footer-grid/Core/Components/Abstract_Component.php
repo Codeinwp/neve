@@ -361,7 +361,7 @@ abstract class Abstract_Component implements Component {
 		$css_array = $this->add_style( $css_array );
 		$generator = new Css_Generator();
 		$generator->set( $css_array );
-		$style = $generator->generate();
+		$style = wp_strip_all_tags( $generator->generate() );
 
 		echo '<style type="text/css" id="' . esc_attr( $this->get_id() ) . '-style">' . $style . '</style>';  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		self::$should_show_css = false;

@@ -830,7 +830,7 @@ abstract class Abstract_Builder implements Builder {
 			$style     = $this->add_style( [] );
 			$generator = new Css_Generator();
 			$generator->set( $style );
-			$style = $generator->generate();
+			$style = wp_strip_all_tags( $generator->generate() );
 			echo '<style type="text/css" id="' . esc_attr( $this->get_id() ) . '-style">' . $style . '</style>';// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		foreach ( $layout as $device_name => $device ) {

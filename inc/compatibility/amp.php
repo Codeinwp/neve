@@ -24,7 +24,7 @@ class Amp {
 		if ( ! neve_is_amp() ) {
 			return;
 		}
-		add_filter( 'neve_caret_wrap_filter', array( $this, 'amp_dropdowns' ), 10, 2 );
+		add_filter( 'neve_caret_wrap_filter', array( $this, 'amp_dropdowns' ), 10, 3 );
 		add_filter(
 			'neve_woocommerce_sidebar_filter_btn_data_attrs',
 			array(
@@ -44,7 +44,9 @@ class Amp {
 		add_filter( 'walker_nav_menu_start_el', array( $this, 'wrap_content' ), 10, 4 );
 		add_filter( 'neve_sidebar_data_attrs', array( $this, 'add_woo_sidebar_attrs' ), 10, 2 );
 		add_filter( 'neve_search_menu_item_filter', array( $this, 'add_search_menu_item_attrs' ), 10, 2 );
-		add_action( 'neve_after_header_hook', array( $this, 'render_amp_states' ) );
+		// Printed outside the header, because one of the states drives the shop sidebar,
+		// which is on the page even when the header is turned off.
+		add_action( 'neve_after_header_wrapper_hook', array( $this, 'render_amp_states' ) );
 		add_filter( 'neve_nav_toggle_data_attrs', array( $this, 'add_nav_toggle_attrs' ) );
 		add_action( 'wp_head', array( $this, 'inline_styles' ) );
 
@@ -150,7 +152,7 @@ class Amp {
 
 		$item_output = '<div class="has-caret amp">' . $item_output . $caret . '</div>';
 		// Filter that is used for AMP proper event integration.
-		$item_output = apply_filters( 'neve_caret_wrap_filter', $item_output, $item->menu_order );
+		$item_output = apply_filters( 'neve_caret_wrap_filter', $item_output, $item->menu_order, $item );
 
 		return $item_output;
 	}
@@ -251,12 +253,13 @@ class Amp {
 	/**
 	 * Implement AMP integration on drop-downs.
 	 *
-	 * @param string $output the output.
-	 * @param string $id menu item order.
+	 * @param string        $output the output.
+	 * @param string        $id menu item order.
+	 * @param \WP_Post|null $item menu item that owns the drop-down.
 	 *
 	 * @return mixed
 	 */
-	public function amp_dropdowns( $output, $id ) {
+	public function amp_dropdowns( $output, $id, $item = null ) {
 
 		// Generate a unique id for drop-down items.
 		$state = 'neveMenuItemExpanded' . $id;
@@ -272,6 +275,9 @@ class Amp {
 		$amp_caret .= '<div class="caret-wrap amp-caret-wrap"';
 		$amp_caret .= ' on="tap:AMP.setState( { ' . $state . ': ! ' . $state . ' } )"';
 		$amp_caret .= ' role="button" ';
+		if ( $item !== null ) {
+			$amp_caret .= ' aria-label="' . esc_attr( \Neve\Views\Nav_Walker::get_submenu_toggle_label( $item ) ) . '"';
+		}
 		$amp_caret .= ' aria-expanded="false" ';
 		$amp_caret .= ' [aria-expanded]="' . $state . ' ? \'true\' : \'false\'">' . $caret . '</div>';
 
@@ -330,6 +336,12 @@ class Amp {
 
 		$pagination_type = get_theme_mod( 'neve_pagination_type', 'number' );
 		if ( $pagination_type !== 'infinite' ) {
+			return false;
+		}
+
+		// The infinite scroll wraps the footer and replaces the pagination, so without
+		// the footer the page keeps its regular pagination.
+		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'footer' ) !== true ) {
 			return false;
 		}
 

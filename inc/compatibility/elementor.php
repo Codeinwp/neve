@@ -127,7 +127,7 @@ class Elementor extends Page_Builder_Base {
 		 * @since 3.1.0
 		 */
 		$css = apply_filters( 'neve_elementor_colors', $css );
-		$css = Dynamic_Css::minify_css( $css );
+		$css = wp_strip_all_tags( Dynamic_Css::minify_css( $css ) );
 		wp_add_inline_style( 'neve-style', $css );
 	}
 

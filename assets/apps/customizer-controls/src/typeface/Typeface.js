@@ -260,11 +260,7 @@ const Typeface = (props) => {
 				label={__('Letter Spacing', 'neve')}
 				step={0.1}
 				default={defaultLS[currentDevice]}
-				value={
-					letterSpacing && letterSpacing[currentDevice]
-						? letterSpacing[currentDevice]
-						: ''
-				}
+				value={letterSpacing[currentDevice] ?? ''}
 				max={20}
 				min={-5}
 				units={['px']}
