@@ -410,6 +410,48 @@ function neve_sanitize_meta_repeater( $value ) {
 }
 
 /**
+ * Sanitize the social icons repeater control.
+ *
+ * Unknown properties are dropped and items with a network that core can't render are removed.
+ *
+ * @param string|array<int, mixed> $value Control input.
+ *
+ * @return string
+ */
+function neve_sanitize_social_icons( $value ) {
+	$decoded = is_string( $value ) ? json_decode( $value, true ) : $value;
+
+	if ( ! is_array( $decoded ) ) {
+		return wp_json_encode( [] );
+	}
+
+	$networks        = \HFG\Core\Components\SocialIcons::get_networks();
+	$sanitized_value = [];
+
+	foreach ( $decoded as $item ) {
+		if ( ! is_array( $item ) || ! isset( $item['network'] ) || ! is_string( $item['network'] ) || ! isset( $networks[ $item['network'] ] ) ) {
+			continue;
+		}
+
+		$sanitized_item = [
+			'title'      => isset( $item['title'] ) && is_string( $item['title'] ) ? sanitize_text_field( $item['title'] ) : '',
+			'network'    => $item['network'],
+			'url'        => isset( $item['url'] ) && is_string( $item['url'] ) ? esc_url_raw( $item['url'] ) : '',
+			'visibility' => isset( $item['visibility'] ) && $item['visibility'] === 'no' ? 'no' : 'yes',
+		];
+
+		// The repeater control stores this key to keep keyboard sorting stable.
+		if ( isset( $item['__kbKey'] ) && is_string( $item['__kbKey'] ) ) {
+			$sanitized_item['__kbKey'] = sanitize_text_field( $item['__kbKey'] );
+		}
+
+		$sanitized_value[] = $sanitized_item;
+	}
+
+	return wp_json_encode( $sanitized_value );
+}
+
+/**
  * Sanitize blend mode option.
  *
  * @param string $input Control input.

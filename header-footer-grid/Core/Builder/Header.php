@@ -569,10 +569,6 @@ class Header extends Abstract_Builder {
 				'name' => __( 'Divider element', 'neve' ),
 			],
 			[
-				'icon' => 'share',
-				'name' => __( 'Social Icons', 'neve' ),
-			],
-			[
 				'icon' => 'menu',
 				'name' => __( 'Primary Menu', 'neve' ),
 			],
