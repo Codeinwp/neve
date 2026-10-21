@@ -277,7 +277,6 @@ class Post_Meta extends Base_View {
 		$author_id      = $current_post->post_author;
 		$user_nicename  = get_the_author_meta( 'user_nicename', $author_id );
 		$display_name   = get_the_author_meta( 'display_name', $author_id );
-		$author_email   = get_the_author_meta( 'user_email', $author_id );
 		$gravatar_args  = apply_filters(
 			'neve_gravatar_args',
 			array(
@@ -285,8 +284,9 @@ class Post_Meta extends Base_View {
 			)
 		);
 		$display_avatar = apply_filters( 'neve_display_author_avatar', false );
-		$avatar_url     = get_avatar_url( $author_email, $gravatar_args );
-		$avatar_markup  = '<img class="photo" alt="' . esc_attr( $display_name ) . '" src="' . esc_url( $avatar_url ) . '" />&nbsp;';
+		// Pass the user ID, not the email, so avatar filters can resolve the author.
+		$avatar_url    = get_avatar_url( (int) $author_id, $gravatar_args );
+		$avatar_markup = '<img class="photo" alt="' . esc_attr( $display_name ) . '" src="' . esc_url( $avatar_url ) . '" />&nbsp;';
 
 		$markup = '';
 		if ( $display_avatar ) {
