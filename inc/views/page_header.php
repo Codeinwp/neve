@@ -30,6 +30,13 @@ class Page_Header extends Base_View {
 	const H1_PLACEHOLDER = '<!-- neve-fallback-h1 -->';
 
 	/**
+	 * Elements whose contents browsers never parse as tags.
+	 *
+	 * @var list<string>
+	 */
+	const RAW_TEXT_TAGS = array( 'script', 'style', 'noscript', 'textarea', 'title', 'xmp', 'iframe', 'noembed', 'noframes' );
+
+	/**
 	 * Fallback H1 markup awaiting the buffer decision.
 	 *
 	 * @var string
@@ -182,7 +189,7 @@ class Page_Header extends Base_View {
 	}
 
 	/**
-	 * Whether markup contains an H1, ignoring comments, script/template/noscript blocks and attribute text.
+	 * Whether markup contains an H1, ignoring comments, raw-text elements, templates and attribute text.
 	 *
 	 * @param string $markup Rendered HTML.
 	 *
@@ -216,7 +223,7 @@ class Page_Header extends Base_View {
 				}
 				if ( 'template' === $tag ) {
 					$inert = $closing ? max( 0, $inert - 1 ) : $inert + 1;
-				} elseif ( ! $closing && in_array( $tag, array( 'script', 'noscript' ), true ) ) {
+				} elseif ( ! $closing && in_array( $tag, self::RAW_TEXT_TAGS, true ) ) {
 					$offset = self::find_closing_tag( $markup, $tag, $offset );
 					if ( false === $offset ) {
 						return false;
