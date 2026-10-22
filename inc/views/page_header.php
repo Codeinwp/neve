@@ -202,7 +202,7 @@ class Page_Header extends Base_View {
 					return false;
 				}
 				$offset = $close + 3;
-			} elseif ( preg_match( '#\G<(/?)([a-z][a-z0-9]*)(?=[\s/>])#i', $markup, $match, 0, $offset ) ) {
+			} elseif ( preg_match( '#\G<(/?)([a-z][^\s/>]*)#i', $markup, $match, 0, $offset ) ) {
 				$closing = '' !== $match[1];
 				$tag     = strtolower( $match[2] );
 				if ( 'h1' === $tag && ! $closing && 0 === $inert ) {
