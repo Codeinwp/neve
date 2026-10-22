@@ -205,13 +205,14 @@ class Page_Header extends Base_View {
 			} elseif ( preg_match( '#\G<(/?)([a-z][^\s/>]*)#i', $markup, $match, 0, $offset ) ) {
 				$closing = '' !== $match[1];
 				$tag     = strtolower( $match[2] );
-				if ( 'h1' === $tag && ! $closing && 0 === $inert ) {
-					return true;
-				}
-				// Skip the attributes: quoted values may hold literal tag text.
+				// Skip the attributes: quoted values may hold literal tag text. A tag cut off
+				// by the end of input is dropped by browsers, so it counts for nothing.
 				$offset = self::find_tag_end( $markup, $offset + strlen( $match[0] ) );
 				if ( false === $offset ) {
 					return false;
+				}
+				if ( 'h1' === $tag && ! $closing && 0 === $inert ) {
+					return true;
 				}
 				if ( 'template' === $tag ) {
 					$inert = $closing ? max( 0, $inert - 1 ) : $inert + 1;

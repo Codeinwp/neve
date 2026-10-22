@@ -309,6 +309,8 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 			'script opener in attribute'           => array( '<div data-tpl="<script>"><h1>Title</h1>', true ),
 			'comment opener in attribute'          => array( '<div title="<!--"><h1>Title</h1>', true ),
 			'unterminated tag'                     => array( '<div data-tpl="<h1>Title', false ),
+			'h1 opener at end of input'            => array( '<p>a</p><h1', false ),
+			'h1 with unterminated attribute'       => array( '<p>a</p><h1 class="x', false ),
 			'h1 text in custom element attribute'  => array( '<my-widget data-tpl="<h1>x</h1>"><p>y</p></my-widget>', false ),
 			'template opener in custom element attribute' => array( '<my-widget data-tpl="<template>"><h1>Title</h1>', true ),
 			'h1 in noscript'            => array( '<noscript><h1>x</h1></noscript>', false ),
