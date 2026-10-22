@@ -182,7 +182,7 @@ class Page_Header extends Base_View {
 	}
 
 	/**
-	 * Whether markup contains an H1, ignoring comments and script/template/noscript blocks.
+	 * Whether markup contains an H1, ignoring comments, script/template/noscript blocks and attribute text.
 	 *
 	 * @param string $markup Rendered HTML.
 	 *
@@ -205,11 +205,16 @@ class Page_Header extends Base_View {
 			} elseif ( preg_match( '#\G<(/?)([a-z][a-z0-9]*)(?=[\s/>])#i', $markup, $match, 0, $offset ) ) {
 				$closing = '' !== $match[1];
 				$tag     = strtolower( $match[2] );
-				$offset += strlen( $match[0] );
+				if ( 'h1' === $tag && ! $closing && 0 === $inert ) {
+					return true;
+				}
+				// Skip the attributes: quoted values may hold literal tag text.
+				$offset = self::find_tag_end( $markup, $offset + strlen( $match[0] ) );
+				if ( false === $offset ) {
+					return false;
+				}
 				if ( 'template' === $tag ) {
 					$inert = $closing ? max( 0, $inert - 1 ) : $inert + 1;
-				} elseif ( 'h1' === $tag && ! $closing && 0 === $inert ) {
-					return true;
 				} elseif ( ! $closing && in_array( $tag, array( 'script', 'noscript' ), true ) ) {
 					$offset = self::find_closing_tag( $markup, $tag, $offset );
 					if ( false === $offset ) {
@@ -220,6 +225,41 @@ class Page_Header extends Base_View {
 				$offset ++;
 			}
 			$offset = strpos( $markup, '<', $offset );
+		}
+
+		return false;
+	}
+
+	/**
+	 * Offset just past a tag's ">", or false when the tag never ends.
+	 *
+	 * @param string $markup Rendered HTML.
+	 * @param int    $offset Position right after the tag name.
+	 *
+	 * @return int|false
+	 */
+	private static function find_tag_end( $markup, $offset ) {
+		$length = strlen( $markup );
+		while ( $offset < $length ) {
+			$offset += strcspn( $markup, '>"\'', $offset );
+			if ( $offset >= $length ) {
+				return false;
+			}
+			if ( '>' === $markup[ $offset ] ) {
+				return $offset + 1;
+			}
+			// A quote opens a value only after "="; elsewhere it is part of an unquoted name or value.
+			$prev = $offset;
+			do {
+				$prev --;
+			} while ( $prev >= 0 && false !== strpos( " \t\n\f\r", $markup[ $prev ] ) );
+			if ( $prev >= 0 && '=' === $markup[ $prev ] ) {
+				$offset = strpos( $markup, $markup[ $offset ], $offset + 1 );
+				if ( false === $offset ) {
+					return false;
+				}
+			}
+			$offset ++;
 		}
 
 		return false;
