@@ -317,6 +317,8 @@ class TestNeveHiddenTitleH1 extends WP_UnitTestCase {
 			'h1 in textarea'            => array( '<textarea><h1>x</h1></textarea><p>y</p>', false ),
 			'h1 in style'               => array( '<style>/* <h1> */ h1 { color: red; }</style><p>y</p>', false ),
 			'h1 in title'               => array( '<title><h1>x</h1></title><p>y</p>', false ),
+			'h1 after self-closing svg title' => array( '<svg><title/></svg><h1>Title</h1>', true ),
+			'h1 breaks out of svg style'      => array( '<svg><style><h1>Title</h1></style></svg>', true ),
 			'h1 in unterminated script' => array( '<script><h1>x</h1>', false ),
 			'script closer in a string' => array( '<script>var a = "</scripts>";</script><h1>Title</h1>', true ),
 			'h1 after script with lone comment opener' => array( '<script>var s = "<!--";</script><h1>Title</h1>', true ),

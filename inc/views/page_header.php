@@ -202,6 +202,10 @@ class Page_Header extends Base_View {
 		$offset = strpos( $markup, '<' );
 		// Open <template> elements: their contents are parsed as markup but never rendered.
 		$inert = 0;
+		// Open <svg>/<math> elements: no raw-text or template rules apply inside, tags can
+		// self-close, and an <h1> breaks out as real HTML. <foreignObject> restores HTML rules.
+		$foreign = 0;
+		$island  = 0;
 		while ( false !== $offset ) {
 			if ( '<!--' === substr( $markup, $offset, 4 ) ) {
 				$close = strpos( $markup, '-->', $offset + 4 );
@@ -221,9 +225,24 @@ class Page_Header extends Base_View {
 				if ( 'h1' === $tag && ! $closing && 0 === $inert ) {
 					return true;
 				}
-				if ( 'template' === $tag ) {
+				$self_closing = '/' === $markup[ $offset - 2 ];
+				$html_rules   = 0 === $foreign || $island > 0;
+				if ( 'svg' === $tag || 'math' === $tag ) {
+					if ( $closing ) {
+						$foreign = max( 0, $foreign - 1 );
+						$island  = 0 === $foreign ? 0 : $island;
+					} elseif ( ! $self_closing ) {
+						$foreign ++;
+					}
+				} elseif ( 'foreignobject' === $tag && $foreign > 0 ) {
+					if ( $closing ) {
+						$island = max( 0, $island - 1 );
+					} elseif ( ! $self_closing ) {
+						$island ++;
+					}
+				} elseif ( 'template' === $tag && $html_rules ) {
 					$inert = $closing ? max( 0, $inert - 1 ) : $inert + 1;
-				} elseif ( ! $closing && in_array( $tag, self::RAW_TEXT_TAGS, true ) ) {
+				} elseif ( ! $closing && $html_rules && in_array( $tag, self::RAW_TEXT_TAGS, true ) ) {
 					$offset = self::find_closing_tag( $markup, $tag, $offset );
 					if ( false === $offset ) {
 						return false;
