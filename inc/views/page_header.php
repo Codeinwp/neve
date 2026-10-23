@@ -235,13 +235,15 @@ class Page_Header extends Base_View {
 				$self_closing = '/' === $markup[ $offset - 2 ];
 				$innermost    = end( $context );
 				$html_rules   = false === $innermost || in_array( $innermost, self::INTEGRATION_POINT_TAGS, true );
-				$is_context   = 'svg' === $tag || 'math' === $tag || ( ! $html_rules && in_array( $tag, self::INTEGRATION_POINT_TAGS, true ) );
+				$is_foreign   = 'svg' === $tag || 'math' === $tag;
+				$is_context   = $is_foreign || in_array( $tag, self::INTEGRATION_POINT_TAGS, true );
 				if ( $is_context && $closing ) {
 					$open = array_search( $tag, array_reverse( $context, true ), true );
 					if ( false !== $open ) {
 						$context = array_slice( $context, 0, $open );
 					}
-				} elseif ( $is_context && ! $self_closing ) {
+				} elseif ( $is_context && ! $self_closing && ( $is_foreign || ! $html_rules ) ) {
+					// An integration point only counts inside foreign content; in HTML, <title> is raw text.
 					$context[] = $tag;
 				} elseif ( 'template' === $tag && $html_rules ) {
 					$inert = $closing ? max( 0, $inert - 1 ) : $inert + 1;
