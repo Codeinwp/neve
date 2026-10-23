@@ -37,6 +37,13 @@ class Page_Header extends Base_View {
 	const RAW_TEXT_TAGS = array( 'script', 'style', 'noscript', 'textarea', 'title', 'xmp', 'iframe', 'noembed', 'noframes' );
 
 	/**
+	 * SVG and MathML elements whose contents are parsed with the HTML rules again.
+	 *
+	 * @var list<string>
+	 */
+	const INTEGRATION_POINT_TAGS = array( 'foreignobject', 'desc', 'title', 'mi', 'mo', 'mn', 'ms', 'mtext' );
+
+	/**
 	 * Fallback H1 markup awaiting the buffer decision.
 	 *
 	 * @var string
@@ -202,10 +209,10 @@ class Page_Header extends Base_View {
 		$offset = strpos( $markup, '<' );
 		// Open <template> elements: their contents are parsed as markup but never rendered.
 		$inert = 0;
-		// Open <svg>/<math> elements: no raw-text or template rules apply inside, tags can
-		// self-close, and an <h1> breaks out as real HTML. <foreignObject> restores HTML rules.
-		$foreign = 0;
-		$island  = 0;
+		// Open <svg>/<math> elements and their integration points, innermost last. In foreign
+		// content no raw-text or template rules apply, tags can self-close, and an <h1> breaks
+		// out as real HTML; an integration point restores the HTML rules.
+		$context = array();
 		while ( false !== $offset ) {
 			if ( '<!--' === substr( $markup, $offset, 4 ) ) {
 				$close = strpos( $markup, '-->', $offset + 4 );
@@ -226,20 +233,16 @@ class Page_Header extends Base_View {
 					return true;
 				}
 				$self_closing = '/' === $markup[ $offset - 2 ];
-				$html_rules   = 0 === $foreign || $island > 0;
-				if ( 'svg' === $tag || 'math' === $tag ) {
-					if ( $closing ) {
-						$foreign = max( 0, $foreign - 1 );
-						$island  = 0 === $foreign ? 0 : $island;
-					} elseif ( ! $self_closing ) {
-						$foreign ++;
+				$innermost    = end( $context );
+				$html_rules   = false === $innermost || in_array( $innermost, self::INTEGRATION_POINT_TAGS, true );
+				$is_context   = 'svg' === $tag || 'math' === $tag || ( ! $html_rules && in_array( $tag, self::INTEGRATION_POINT_TAGS, true ) );
+				if ( $is_context && $closing ) {
+					$open = array_search( $tag, array_reverse( $context, true ), true );
+					if ( false !== $open ) {
+						$context = array_slice( $context, 0, $open );
 					}
-				} elseif ( 'foreignobject' === $tag && $foreign > 0 ) {
-					if ( $closing ) {
-						$island = max( 0, $island - 1 );
-					} elseif ( ! $self_closing ) {
-						$island ++;
-					}
+				} elseif ( $is_context && ! $self_closing ) {
+					$context[] = $tag;
 				} elseif ( 'template' === $tag && $html_rules ) {
 					$inert = $closing ? max( 0, $inert - 1 ) : $inert + 1;
 				} elseif ( ! $closing && $html_rules && in_array( $tag, self::RAW_TEXT_TAGS, true ) ) {
@@ -305,10 +308,10 @@ class Page_Header extends Base_View {
 		$needle = '</' . $tag;
 		$pos    = stripos( $markup, $needle, $offset );
 		while ( false !== $pos ) {
-			$end  = $pos + strlen( $needle );
-			$end += strspn( $markup, " \t\n\f\r", $end );
-			if ( isset( $markup[ $end ] ) && '>' === $markup[ $end ] ) {
-				return $end + 1;
+			$end = $pos + strlen( $needle );
+			// Browsers close the element even when the end tag carries attributes or a stray slash.
+			if ( isset( $markup[ $end ] ) && false !== strpos( " \t\n\f\r/>", $markup[ $end ] ) ) {
+				return self::find_tag_end( $markup, $end );
 			}
 			$pos = stripos( $markup, $needle, $end );
 		}
