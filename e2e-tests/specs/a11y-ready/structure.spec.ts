@@ -73,6 +73,25 @@ test('hidden title keeps the content H1 and adds no second one', async ({
 	).toBe(0);
 });
 
+test('hidden title sees an H1 that only exists in rendered output', async ({
+	page,
+	request,
+}) => {
+	// The H1 comes from a synced pattern, so it is absent from post_content
+	// and only appears once the page renders (neve#4652).
+	await page.goto(
+		await getPermalink(request, 'pages', 'a11y-hidden-title-pattern-h1')
+	);
+	const h1s = await page.$$eval('h1', (els) =>
+		els.map((el) => (el.textContent || '').trim().substring(0, 60))
+	);
+	expect(
+		h1s,
+		`the pattern provides the H1, so no fallback is expected, got: ${JSON.stringify(h1s)}`
+	).toHaveLength(1);
+	expect(await page.locator('h1.screen-reader-text').count()).toBe(0);
+});
+
 test('hidden title falls back to a screen-reader H1 when the content has none', async ({
 	page,
 	request,
