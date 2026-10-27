@@ -1380,7 +1380,7 @@ class Main {
 
 		$license_status      = apply_filters( 'product_neve_license_status', false );
 		$has_valid_license   = 'valid' === $license_status;
-		$has_expired_license = 'expired' === $license_status || 'active-expired' === $license_status;
+		$has_expired_license = in_array( $license_status, array( 'expired', 'active_expired', 'active-expired' ), true );
 
 		$neve_pro_product_slug = defined( 'NEVE_PRO_BASEFILE' ) ? basename( dirname( NEVE_PRO_BASEFILE ) ) : '';
 
