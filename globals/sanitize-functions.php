@@ -86,21 +86,19 @@ function neve_sanitize_colors( $value ) {
  *
  * @param mixed $value Color in rgba format.
  *
- * @return string
+ * @return string Normalized rgba() color, or '' when the color is incomplete.
  */
 function neve_sanitize_rgba( $value ) {
 	if ( ! is_string( $value ) ) {
 		return 'rgba(0,0,0,0)';
 	}
 
-	$red   = 'rgba(0,0,0,0)';
-	$green = 'rgba(0,0,0,0)';
-	$blue  = 'rgba(0,0,0,0)';
-	$alpha = 'rgba(0,0,0,0)';   // If empty or an array return transparent
+	$parts = sscanf( str_replace( ' ', '', $value ), 'rgba(%d,%d,%d,%f)' );
+	if ( ! is_array( $parts ) || in_array( null, $parts, true ) || ! is_finite( $parts[3] ) ) {
+		return '';
+	}
 
-	// By now we know the string is formatted as an rgba color so we need to further sanitize it.
-	$value = str_replace( ' ', '', $value );
-	sscanf( $value, 'rgba(%d,%d,%d,%f)', $red, $green, $blue, $alpha );
+	list( $red, $green, $blue, $alpha ) = $parts;
 
 	return 'rgba(' . $red . ',' . $green . ',' . $blue . ',' . $alpha . ')';
 }
