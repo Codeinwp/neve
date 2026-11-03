@@ -389,7 +389,8 @@ class Appearance_Update extends Abstract_Ability {
 					if ( ! isset( self::COLOR_MAP[ $friendly ] ) ) {
 						continue;
 					}
-					if ( ! is_string( $value ) || ! preg_match( '/^#[0-9a-fA-F]{6}$/', $value ) ) {
+					$hex = is_string( $value ) ? trim( $value ) : '';
+					if ( ! preg_match( '/^#[0-9a-fA-F]{6}$/', $hex ) ) {
 						$warnings[] = sprintf(
 							/* translators: %s: color key */
 							__( 'Skipped "%s": palette entries must be 6-digit hex colors.', 'neve' ),
@@ -399,7 +400,7 @@ class Appearance_Update extends Abstract_Ability {
 					}
 					$slot = self::COLOR_MAP[ $friendly ];
 
-					$global['palettes'][ $active ]['colors'][ $slot ] = $value;
+					$global['palettes'][ $active ]['colors'][ $slot ] = $hex;
 					$updated[]                                        = 'neve_global_colors.' . $slot;
 				}
 			}
