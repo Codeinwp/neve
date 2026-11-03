@@ -95,7 +95,7 @@ class Css_Prop {
 				$mode   = ( false === strpos( $value, 'rgba' ) ) ? 'hex' : 'rgba';
 				$is_var = ( strpos( $value, 'var' ) !== false );
 
-				if ( $mode === 'hex' && ! $is_var ) {
+				if ( $mode === 'hex' && ! $is_var && ! neve_is_css_function_color( $value ) ) {
 					$value = strpos( $value, "#" ) === 0 ? $value : '#' . $value;
 				}
 

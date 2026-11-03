@@ -49,9 +49,20 @@ function neve_is_css_gradient( string $value ): bool {
 }
 
 /**
+ * Check whether a value is a single rgb(), rgba(), hsl() or hsla() color.
+ *
+ * @param string $value Value to check.
+ *
+ * @return bool
+ */
+function neve_is_css_function_color( string $value ): bool {
+	return (bool) preg_match( '/^(?:rgb|rgba|hsl|hsla)\(\s*[-0-9.% ,]+\)$/', trim( $value ) );
+}
+
+/**
  * Sanitize a color control value.
  *
- * @param mixed $value Color value: CSS variable, gradient, rgba() or hex.
+ * @param mixed $value Color value: CSS variable, gradient, rgb(), rgba(), hsl(), hsla() or hex.
  *
  * @return string
  */
@@ -67,6 +78,11 @@ function neve_sanitize_colors( $value ) {
 	}
 
 	if ( neve_is_css_gradient( $value ) ) {
+		return trim( $value );
+	}
+
+	// Before the rgba parser, which only reads rgba(int,int,int,float).
+	if ( neve_is_css_function_color( $value ) ) {
 		return trim( $value );
 	}
 
