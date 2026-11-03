@@ -57,9 +57,10 @@ class TestNeveLegacyPaletteColors extends WP_UnitTestCase {
 	 */
 	public function function_color_provider(): array {
 		return [
-			'rgb'  => [ 'rgb(255, 0, 0)' ],
-			'hsl'  => [ 'hsl(0, 100%, 50%)' ],
-			'hsla' => [ 'hsla(0, 100%, 50%, 0.5)' ],
+			'rgb'           => [ 'rgb(255, 0, 0)' ],
+			'rgba percents' => [ 'rgba(100%, 0%, 0%, 50%)' ],
+			'hsl'           => [ 'hsl(0, 100%, 50%)' ],
+			'hsla'          => [ 'hsla(0, 100%, 50%, 0.5)' ],
 		];
 	}
 

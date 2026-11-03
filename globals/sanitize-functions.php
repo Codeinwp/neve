@@ -81,14 +81,15 @@ function neve_sanitize_colors( $value ) {
 		return trim( $value );
 	}
 
+	// Before the rgba parser, which only reads rgba(int,int,int,float).
+	if ( neve_is_css_function_color( $value ) ) {
+		return trim( $value );
+	}
+
 	// Is this an rgba color or a hex?
 	$mode = ( false === strpos( $value, 'rgba' ) ) ? 'hex' : 'rgba';
 	if ( 'rgba' === $mode ) {
 		return neve_sanitize_rgba( $value );
-	}
-
-	if ( neve_is_css_function_color( $value ) ) {
-		return trim( $value );
 	}
 
 	$hex_color = sanitize_hex_color( $value );

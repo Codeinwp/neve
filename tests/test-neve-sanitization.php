@@ -191,7 +191,7 @@ class TestSanitization extends WP_UnitTestCase {
 
 		// Valid values keep working as before.
 		$this->assertSame( '#ff0000', neve_sanitize_colors( '#ff0000' ) );
-		$this->assertSame( 'rgba(255,0,0,1)', neve_sanitize_colors( 'rgba(255, 0, 0, 1)' ) );
+		$this->assertSame( 'rgba(255, 0, 0, 1)', neve_sanitize_colors( 'rgba(255, 0, 0, 1)' ) );
 		$this->assertSame( 'var(--nv-primary-accent)', neve_sanitize_colors( 'var(--nv-primary-accent)' ) );
 	}
 
@@ -313,6 +313,10 @@ class TestSanitization extends WP_UnitTestCase {
 		$valid = [
 			'rgb(255, 0, 0)',
 			'rgb(10%,20%,30%)',
+			'rgba(10%, 20%, 30%, 0.5)',
+			'rgba(255, 0, 0, 50%)',
+			'rgba(1,2,3)',
+			'rgba(255,0,0,.5)',
 			'hsl(120, 50%, 50%)',
 			'hsla(120, 50%, 50%, 0.5)',
 		];
@@ -323,7 +327,7 @@ class TestSanitization extends WP_UnitTestCase {
 		}
 
 		$this->assertSame( 'rgb(1,2,3)', neve_sanitize_colors( " rgb(1,2,3)\n" ) );
-		$this->assertSame( 'rgba(255,0,0,0.5)', neve_sanitize_colors( 'rgba(255, 0, 0, .5)' ) );
+		$this->assertSame( 'rgba(1,2,3,0.5)', neve_sanitize_colors( 'rgba(1,2,3,.5);}body{display:none' ) );
 
 		$invalid = [
 			'rgb(1,2,3);}body{display:none',
