@@ -58,7 +58,7 @@ class TestNeveAppearanceUpdateAbility extends WP_UnitTestCase {
 					'set' => array(
 						'primary_accent'   => '   ',
 						'secondary_accent' => ' #12345 ',
-						'site_background'  => '#000000',
+						'site_background'  => '#000000 ',
 					),
 				),
 			)
