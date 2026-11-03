@@ -47,6 +47,29 @@ class TestNeveAppearanceUpdateAbility extends WP_UnitTestCase {
 	}
 
 	/**
+	 * HEX colors padded with Unicode spaces are saved without them.
+	 */
+	public function test_unicode_space_padded_hex_palette_colors_are_saved_trimmed(): void {
+		$result = ( new Appearance_Update() )->execute(
+			array(
+				'colors' => array(
+					'set' => array(
+						'primary_accent'  => "\xC2\xA0#abcdef\xC2\xA0",
+						'site_background' => "\xE2\x80\xAF#00a1B2 ",
+					),
+				),
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertSame( array(), $result['warnings'] );
+
+		$colors = $this->get_active_palette_colors();
+		$this->assertSame( '#abcdef', $colors['nv-primary-accent'] );
+		$this->assertSame( '#00a1B2', $colors['nv-site-bg'] );
+	}
+
+	/**
 	 * Whitespace-only and invalid padded values are still rejected.
 	 */
 	public function test_blank_and_invalid_padded_palette_colors_are_rejected(): void {
