@@ -1,5 +1,6 @@
 /* global neveDash */
 import { changeOption } from '../../../utils/rest';
+import { docsURL } from '../../../utils/docs';
 import SupportCard from './SupportCard';
 import LicenseCard from './LicenseCard';
 import { __ } from '@wordpress/i18n';
@@ -84,9 +85,11 @@ const ContributingCard = () => {
 			<Link
 				isExternal
 				text={__('What do we track?', 'neve')}
-				url={
-					'https://docs.themeisle.com/article/1122-neve-usage-tracking'
-				}
+				url={docsURL(
+					'https://docs.themeisle.com/neve/neve-usage-tracking',
+					'usage-tracking',
+					'welcomepage'
+				)}
 			/>
 
 			<Toggle

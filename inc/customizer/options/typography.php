@@ -71,7 +71,7 @@ class Typography extends Base_Customizer {
 						'pairs'       => $pairs,
 						'description' => array(
 							'text' => __( 'Choose Font family presets for your Headings and Text.', 'neve' ),
-							'link' => apply_filters( 'neve_external_link', 'https://docs.themeisle.com/article/1340-neve-typography', esc_html__( 'Learn more', 'neve' ) ),
+							'link' => apply_filters( 'neve_external_link', tsdk_utmify( 'https://docs.themeisle.com/neve/neve-typography', 'typography', 'customizer' ), esc_html__( 'Learn more', 'neve' ) ),
 						),
 					),
 					'label'       => esc_html__( 'Font presets', 'neve' ),
@@ -244,7 +244,7 @@ class Typography extends Base_Customizer {
 						'system' => true,
 						'link'   => [
 							'string'  => __( 'Learn more about fallback fonts', 'neve' ),
-							'url'     => esc_url( 'https://docs.themeisle.com/article/1319-fallback-fonts' ),
+							'url'     => esc_url( tsdk_utmify( 'https://docs.themeisle.com/neve/fallback-fonts', 'fallback-fonts', 'customizer' ) ),
 							'new_tab' => true,
 						],
 					],
