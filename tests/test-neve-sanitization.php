@@ -307,6 +307,42 @@ class TestSanitization extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Standalone rgb(), hsl() and hsla() colors are kept; anything around them is rejected.
+	 */
+	public function test_sanitize_colors_keeps_function_colors(): void {
+		$valid = [
+			'rgb(255, 0, 0)',
+			'rgb(10%,20%,30%)',
+			'hsl(120, 50%, 50%)',
+			'hsla(120, 50%, 50%, 0.5)',
+		];
+
+		foreach ( $valid as $value ) {
+			$this->assertTrue( neve_is_css_function_color( $value ), $value . ' should be a function color' );
+			$this->assertSame( $value, neve_sanitize_colors( $value ), $value . ' should be kept' );
+		}
+
+		$this->assertSame( 'rgb(1,2,3)', neve_sanitize_colors( " rgb(1,2,3)\n" ) );
+		$this->assertSame( 'rgba(255,0,0,0.5)', neve_sanitize_colors( 'rgba(255, 0, 0, .5)' ) );
+
+		$invalid = [
+			'rgb(1,2,3);}body{display:none',
+			'rgb(1,2,3)),url(//example.com/t.png)',
+			'rgb(1,2,3)</style><script>alert(1)</script>',
+			'rgb(var(--x),2,3)',
+			'rgb(1,2,3',
+			'#rgb(1,2,3)',
+			'hsl(120deg, 50%, 50%)',
+			'lab(50% 40 59)',
+		];
+
+		foreach ( $invalid as $value ) {
+			$this->assertFalse( neve_is_css_function_color( $value ), $value . ' should not be a function color' );
+			$this->assertSame( '', neve_sanitize_colors( $value ), $value . ' should be rejected' );
+		}
+	}
+
+	/**
 	 * Color slugs that are not CSS identifiers are dropped from both color settings.
 	 */
 	public function test_global_color_slugs_must_be_css_identifiers(): void {

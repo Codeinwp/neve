@@ -585,7 +585,7 @@ class Appearance_Update extends Abstract_Ability {
 			return true;
 		}
 
-		if ( preg_match( '/^(?:rgb|rgba|hsl|hsla)\(\s*[-0-9.% ,]+\)$/', $value ) ) {
+		if ( neve_is_css_function_color( $value ) ) {
 			return true;
 		}
 
