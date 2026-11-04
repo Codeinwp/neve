@@ -106,6 +106,7 @@ class Main {
 		add_action( 'init', array( $this, 'register_settings' ) );
 		add_action( 'init', array( $this, 'register_about_page' ), 1 );
 		add_filter( 'neve_ai_connect_metadata', array( $this, 'get_ai_connect_metadata' ) );
+		add_filter( 'neve_support_hub_metadata', array( $this, 'get_support_hub_metadata' ) );
 
 		add_action( 'admin_notices', array( $this, 'render_custom_layout_header' ) );
 	}
@@ -133,6 +134,35 @@ class Main {
 				__( 'Make my Contact page full width with no sidebar and hide its title.', 'neve' ),
 			],
 			'ability_prefix' => 'neve',
+		];
+	}
+
+	/**
+	 * Get the data for the SDK Support Hub: one Help button on the Neve dashboard
+	 * and the feedback window on the Add Themes screen. The dashboard already fires
+	 * `themeisle_internal_page`, so no `pages` list is needed.
+	 *
+	 * @return array<string, bool|array<int, array<string, string>>>
+	 */
+	public function get_support_hub_metadata() {
+		if ( apply_filters( 'neve_is_theme_whitelabeled', false ) || apply_filters( 'neve_is_plugin_whitelabeled', false ) ) {
+			return [];
+		}
+
+		return [
+			'is_pro' => defined( 'NEVE_PRO_VERSION' ) && 'valid' === apply_filters( 'product_neve_license_status', false ),
+			'links'  => [
+				[
+					'icon' => 'book-alt',
+					'text' => __( 'Documentation', 'neve' ),
+					'url'  => 'https://docs.themeisle.com/neve/neve-doc',
+				],
+				[
+					'icon' => 'groups',
+					'text' => __( 'Community Forum', 'neve' ),
+					'url'  => 'https://wordpress.org/support/theme/neve/',
+				],
+			],
 		];
 	}
 
@@ -1380,7 +1410,7 @@ class Main {
 
 		$license_status      = apply_filters( 'product_neve_license_status', false );
 		$has_valid_license   = 'valid' === $license_status;
-		$has_expired_license = 'expired' === $license_status || 'active-expired' === $license_status;
+		$has_expired_license = in_array( $license_status, array( 'expired', 'active_expired', 'active-expired' ), true );
 
 		$neve_pro_product_slug = defined( 'NEVE_PRO_BASEFILE' ) ? basename( dirname( NEVE_PRO_BASEFILE ) ) : '';
 

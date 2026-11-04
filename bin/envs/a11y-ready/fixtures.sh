@@ -234,4 +234,25 @@ HT_NO_H1_ID=$($WP_CMD post create \
 	--porcelain)
 $WP_CMD post meta update "$HT_NO_H1_ID" neve_meta_disable_title on
 
+# A synced pattern's H1 is not in the page's post_content, only in the
+# rendered output; the fallback decision must see it (neve#4652).
+OLD_HT_PATTERN=$($WP_CMD post list --post_type=page --name=a11y-hidden-title-pattern-h1 --field=ID | head -1)
+if [ -n "$OLD_HT_PATTERN" ]; then
+	$WP_CMD post delete "$OLD_HT_PATTERN" --force
+fi
+HT_PATTERN_BLOCK_ID=$($WP_CMD post create \
+	--post_title="A11y Pattern With H1" \
+	--post_type=wp_block \
+	--post_status=publish \
+	--post_content='<!-- wp:heading {"level":1} --><h1 class="wp-block-heading">Synced pattern heading</h1><!-- /wp:heading -->' \
+	--porcelain)
+HT_PATTERN_ID=$($WP_CMD post create \
+	--post_title="A11y Hidden Title With Pattern H1" \
+	--post_name="a11y-hidden-title-pattern-h1" \
+	--post_type=page \
+	--post_status=publish \
+	--post_content="<!-- wp:block {\"ref\":$HT_PATTERN_BLOCK_ID} /--><!-- wp:paragraph --><p>Fixture page: the title is hidden and a synced pattern supplies the H1.</p><!-- /wp:paragraph -->" \
+	--porcelain)
+$WP_CMD post meta update "$HT_PATTERN_ID" neve_meta_disable_title on
+
 echo "== a11y-ready fixtures done =="

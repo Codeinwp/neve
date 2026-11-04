@@ -8,6 +8,8 @@
 
 namespace Neve\Views;
 
+use Neve\Core\Migration_Flags;
+
 /**
  * Class Page_Header
  *
@@ -24,6 +26,36 @@ class Page_Header extends Base_View {
 		'class'      => '',
 		'wrap-class' => '',
 	);
+
+	const H1_PLACEHOLDER = '<!-- neve-fallback-h1 -->';
+
+	/**
+	 * Elements whose contents browsers never parse as tags.
+	 *
+	 * @var list<string>
+	 */
+	const RAW_TEXT_TAGS = array( 'script', 'style', 'noscript', 'textarea', 'title', 'xmp', 'iframe', 'noembed', 'noframes' );
+
+	/**
+	 * SVG and MathML elements whose contents are parsed with the HTML rules again.
+	 *
+	 * @var list<string>
+	 */
+	const INTEGRATION_POINT_TAGS = array( 'foreignobject', 'desc', 'title', 'mi', 'mo', 'mn', 'ms', 'mtext' );
+
+	/**
+	 * Fallback H1 markup awaiting the buffer decision.
+	 *
+	 * @var string
+	 */
+	private $deferred_h1 = '';
+
+	/**
+	 * Output-buffer level of the page-body buffer, 0 when not buffering.
+	 *
+	 * @var int
+	 */
+	private $buffer_level = 0;
 
 	/**
 	 * Function that is run after instantiation.
@@ -43,6 +75,11 @@ class Page_Header extends Base_View {
 		$header_hook = get_theme_mod( 'neve_enable_featured_post', false ) && is_home() ? 'neve_do_featured_post' : 'neve_page_header';
 		add_action( $header_hook, array( $this, 'render_page_header' ), 9 );
 		add_filter( 'get_the_archive_title', array( $this, 'filter_archive_title' ) );
+		if ( $this->is_title_hidden() ) {
+			// The theme's first body hook fires before wp_body_open; the latter covers other templates.
+			add_action( 'neve_body_start_after', array( $this, 'start_h1_buffer' ), PHP_INT_MIN );
+			add_action( 'wp_body_open', array( $this, 'start_h1_buffer' ), 0 );
+		}
 	}
 
 	/**
@@ -64,6 +101,224 @@ class Page_Header extends Base_View {
 		$title_args['category_description'] = $this->get_archive_description();
 
 		$this->get_view( 'page-header', $title_args );
+	}
+
+	/**
+	 * Whether the page title is hidden for the current request.
+	 *
+	 * @return bool
+	 */
+	public function is_title_hidden() {
+		$hide_title = get_theme_mod( 'neve_page_hide_title', false );
+
+		$current_page = get_queried_object();
+		$pid          = $current_page instanceof \WP_Post ? $current_page->ID : get_the_ID();
+
+		if ( (int) get_option( 'page_for_posts' ) === $pid || is_archive() ) {
+			$hide_title = get_theme_mod( 'neve_archive_hide_title', Migration_Flags::is_new_user_after_v4() );
+		}
+
+		$specific_hide_title = get_post_meta( $pid, 'neve_meta_disable_title', true );
+		if ( ! empty( $specific_hide_title ) ) {
+			$hide_title = $specific_hide_title === 'on';
+		}
+
+		return (bool) $hide_title;
+	}
+
+	/**
+	 * Buffer the page body so the screen-reader H1 fallback can be decided after
+	 * every H1 source (content, patterns, builders, header/footer/custom layouts) rendered.
+	 *
+	 * @return void
+	 */
+	public function start_h1_buffer() {
+		if ( $this->buffer_level > 0 ) {
+			return;
+		}
+		ob_start( array( $this, 'filter_h1_buffer' ) );
+		$this->buffer_level = ob_get_level();
+		// Last theme hook in the body; if it never fires, PHP runs the callback at shutdown.
+		add_action( 'neve_body_end_before', array( $this, 'resolve_fallback_h1' ), PHP_INT_MAX );
+	}
+
+	/**
+	 * Output the fallback H1, or its placeholder while buffering.
+	 *
+	 * @param string $title Hidden title text.
+	 *
+	 * @return void
+	 */
+	public function fallback_h1( $title ) {
+		$h1 = '<h1 class="screen-reader-text">' . $title . '</h1>';
+		if ( $this->buffer_level === 0 ) {
+			// Not buffering (template without the body hooks): fall back to the content scan.
+			$content_has_h1 = is_singular() && self::markup_has_h1( (string) get_post_field( 'post_content', get_queried_object_id() ) );
+			if ( ! $content_has_h1 ) {
+				echo wp_kses_post( $h1 );
+			}
+			return;
+		}
+		$this->deferred_h1 = wp_kses_post( $h1 );
+		echo wp_kses_post( self::H1_PLACEHOLDER );
+	}
+
+	/**
+	 * Flush the buffer; filter_h1_buffer() resolves the placeholder on the way out.
+	 *
+	 * @return void
+	 */
+	public function resolve_fallback_h1() {
+		if ( $this->buffer_level === 0 ) {
+			return;
+		}
+		// A later buffer is still open; closing now would eat its output.
+		if ( ob_get_level() !== $this->buffer_level ) {
+			return;
+		}
+		$this->buffer_level = 0;
+		ob_end_flush();
+	}
+
+	/**
+	 * Output-buffer callback: keep the fallback H1 only when no other H1 rendered.
+	 *
+	 * @param string $markup Buffered page-body markup.
+	 *
+	 * @return string
+	 */
+	public function filter_h1_buffer( $markup ) {
+		$replacement        = self::markup_has_h1( $markup ) ? '' : $this->deferred_h1;
+		$this->deferred_h1  = '';
+		$this->buffer_level = 0;
+
+		return str_replace( self::H1_PLACEHOLDER, $replacement, $markup );
+	}
+
+	/**
+	 * Whether markup contains an H1, ignoring comments, raw-text elements, templates and attribute text.
+	 *
+	 * @param string $markup Rendered HTML.
+	 *
+	 * @return bool
+	 */
+	public static function markup_has_h1( $markup ) {
+		// A single left-to-right pass: a regex over the whole body hits pcre.backtrack_limit
+		// on a large inline script (around 1 MB), and a failed scan must not miscount an H1.
+		$markup = (string) $markup;
+		$offset = strpos( $markup, '<' );
+		// Open <template> elements: their contents are parsed as markup but never rendered.
+		$inert = 0;
+		// Open <svg>/<math> elements and their integration points, innermost last. In foreign
+		// content no raw-text or template rules apply, tags can self-close, and an <h1> breaks
+		// out as real HTML; an integration point restores the HTML rules.
+		$context = array();
+		while ( false !== $offset ) {
+			if ( '<!--' === substr( $markup, $offset, 4 ) ) {
+				$close = strpos( $markup, '-->', $offset + 4 );
+				if ( false === $close ) {
+					return false;
+				}
+				$offset = $close + 3;
+			} elseif ( preg_match( '#\G<(/?)([a-z][^\s/>]*)#i', $markup, $match, 0, $offset ) ) {
+				$closing = '' !== $match[1];
+				$tag     = strtolower( $match[2] );
+				// Skip the attributes: quoted values may hold literal tag text. A tag cut off
+				// by the end of input is dropped by browsers, so it counts for nothing.
+				$offset = self::find_tag_end( $markup, $offset + strlen( $match[0] ) );
+				if ( false === $offset ) {
+					return false;
+				}
+				if ( 'h1' === $tag && ! $closing && 0 === $inert ) {
+					return true;
+				}
+				$self_closing = '/' === $markup[ $offset - 2 ];
+				$innermost    = end( $context );
+				$html_rules   = false === $innermost || in_array( $innermost, self::INTEGRATION_POINT_TAGS, true );
+				$is_foreign   = 'svg' === $tag || 'math' === $tag;
+				$is_context   = $is_foreign || in_array( $tag, self::INTEGRATION_POINT_TAGS, true );
+				if ( $is_context && $closing ) {
+					$open = array_search( $tag, array_reverse( $context, true ), true );
+					if ( false !== $open ) {
+						$context = array_slice( $context, 0, $open );
+					}
+				} elseif ( $is_context && ! $self_closing && ( $is_foreign || ! $html_rules ) ) {
+					// An integration point only counts inside foreign content; in HTML, <title> is raw text.
+					$context[] = $tag;
+				} elseif ( 'template' === $tag && $html_rules ) {
+					$inert = $closing ? max( 0, $inert - 1 ) : $inert + 1;
+				} elseif ( ! $closing && $html_rules && in_array( $tag, self::RAW_TEXT_TAGS, true ) ) {
+					$offset = self::find_closing_tag( $markup, $tag, $offset );
+					if ( false === $offset ) {
+						return false;
+					}
+				}
+			} else {
+				$offset ++;
+			}
+			$offset = strpos( $markup, '<', $offset );
+		}
+
+		return false;
+	}
+
+	/**
+	 * Offset just past a tag's ">", or false when the tag never ends.
+	 *
+	 * @param string $markup Rendered HTML.
+	 * @param int    $offset Position right after the tag name.
+	 *
+	 * @return int|false
+	 */
+	private static function find_tag_end( $markup, $offset ) {
+		$length = strlen( $markup );
+		while ( $offset < $length ) {
+			$offset += strcspn( $markup, '>"\'', $offset );
+			if ( $offset >= $length ) {
+				return false;
+			}
+			if ( '>' === $markup[ $offset ] ) {
+				return $offset + 1;
+			}
+			// A quote opens a value only after "="; elsewhere it is part of an unquoted name or value.
+			$prev = $offset;
+			do {
+				$prev --;
+			} while ( $prev >= 0 && false !== strpos( " \t\n\f\r", $markup[ $prev ] ) );
+			if ( $prev >= 0 && '=' === $markup[ $prev ] ) {
+				$offset = strpos( $markup, $markup[ $offset ], $offset + 1 );
+				if ( false === $offset ) {
+					return false;
+				}
+			}
+			$offset ++;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Offset just past the closing tag of a raw-text element, or false when it never closes.
+	 *
+	 * @param string $markup Rendered HTML.
+	 * @param string $tag    Lower-case tag name.
+	 * @param int    $offset Where to start looking.
+	 *
+	 * @return int|false
+	 */
+	private static function find_closing_tag( $markup, $tag, $offset ) {
+		$needle = '</' . $tag;
+		$pos    = stripos( $markup, $needle, $offset );
+		while ( false !== $pos ) {
+			$end = $pos + strlen( $needle );
+			// Browsers close the element even when the end tag carries attributes or a stray slash.
+			if ( isset( $markup[ $end ] ) && false !== strpos( " \t\n\f\r/>", $markup[ $end ] ) ) {
+				return self::find_tag_end( $markup, $end );
+			}
+			$pos = stripos( $markup, $needle, $end );
+		}
+
+		return false;
 	}
 
 	/**
