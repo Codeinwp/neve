@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 05/10/26
+ * Updated on 02/11/26
  *
  * @package neve
  */
@@ -339,7 +339,7 @@ return array(
 	'Carter One' => array( '400',),
 	'Cascadia Code' => array( '200', '300', '400', '500', '600', '700', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic',),
 	'Cascadia Mono' => array( '200', '300', '400', '500', '600', '700', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic',),
-	'Castoro' => array( '400', '400italic',),
+	'Castoro' => array( '400', '500', '600', '700', '400italic', '500italic', '600italic', '700italic',),
 	'Castoro Titling' => array( '400',),
 	'Catamaran' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Caudex' => array( '400', '700', '400italic', '700italic',),
@@ -1602,6 +1602,13 @@ return array(
 	'Red Rose' => array( '300', '400', '500', '600', '700',),
 	'Redacted' => array( '400',),
 	'Redacted Script' => array( '300', '400', '700',),
+	'Redaction' => array( '400', '700', '400italic',),
+	'Redaction 10' => array( '400', '700', '400italic',),
+	'Redaction 100' => array( '400', '700', '400italic',),
+	'Redaction 20' => array( '400', '700', '400italic',),
+	'Redaction 35' => array( '400', '700', '400italic',),
+	'Redaction 50' => array( '400', '700', '400italic',),
+	'Redaction 70' => array( '400', '700', '400italic',),
 	'Reddit Mono' => array( '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Reddit Sans' => array( '200', '300', '400', '500', '600', '700', '800', '900', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Reddit Sans Condensed' => array( '200', '300', '400', '500', '600', '700', '800', '900',),
@@ -1870,7 +1877,8 @@ return array(
 	'Tilt Warp' => array( '400',),
 	'Timmana' => array( '400',),
 	'Tinos' => array( '400', '700', '400italic', '700italic',),
-	'Tiny5' => array( '400',),
+	'Tiny5' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Tiny5 Duo' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Tiro Bangla' => array( '400', '400italic',),
 	'Tiro Devanagari Hindi' => array( '400', '400italic',),
 	'Tiro Devanagari Marathi' => array( '400', '400italic',),
@@ -1963,6 +1971,7 @@ return array(
 	'Work Sans' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Workbench' => array( '400',),
 	'Xanh Mono' => array( '400', '400italic',),
+	'Xmind' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Yaldevi' => array( '200', '300', '400', '500', '600', '700',),
 	'Yanone Kaffeesatz' => array( '200', '300', '400', '500', '600', '700',),
 	'Yantramanav' => array( '100', '300', '400', '500', '700', '900',),
