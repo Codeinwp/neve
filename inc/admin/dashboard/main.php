@@ -426,7 +426,7 @@ class Main {
 			'upgradeURLModules'       => apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'getpronow', 'welcomepage' ) ) ),
 			'upgradeWhiteLabelURL'    => apply_filters( 'neve_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/neve/upgrade/', 'whitelabel', 'settingspage' ) ) ),
 			'supportURL'              => esc_url( 'https://wordpress.org/support/theme/neve/' ),
-			'docsURL'                 => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
+			'docsURL'                 => esc_url_raw( tsdk_utmify( 'https://docs.themeisle.com/neve/neve-doc', 'documentation', 'welcomepage' ) ),
 			'codexURL'                => esc_url( 'https://codex.nevewp.com/' ),
 			'strings'                 => [
 				'proTabTitle'                   => wp_kses_post( $plugin_name ),
@@ -860,7 +860,7 @@ class Main {
 				'nicename'      => __( 'Header Booster', 'neve' ),
 				'description'   => __( 'Create unique sticky & transparent headers that adapt to scroll. Perfect for modern, immersive websites.', 'neve' ),
 				'documentation' => array(
-					'url' => 'https://docs.themeisle.com/article/1057-header-booster-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=headerbooster&utm_content=neve',
+					'url' => tsdk_utmify( 'https://docs.themeisle.com/neve/header-booster-documentation', 'headerbooster', 'welcomepage' ),
 				),
 			),
 			'woocommerce_booster'    => array(
@@ -878,42 +878,42 @@ class Main {
 				'nicename'      => __( 'Blog Booster', 'neve' ),
 				'description'   => __( 'Advanced layouts, reading time estimates, and social sharing to keep readers engaged longer.', 'neve' ),
 				'documentation' => array(
-					'url' => 'https://docs.themeisle.com/article/1059-blog-booster-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=blogbooster&utm_content=neve',
+					'url' => tsdk_utmify( 'https://docs.themeisle.com/neve/blog-booster-documentation', 'blogbooster', 'welcomepage' ),
 				),
 			),
 			'post_type_enhancements' => array(
 				'nicename'      => __( 'Post types enhancements', 'neve' ),
 				'description'   => __( 'Extend Neve\'s powerful features to custom post types. Create unique layouts for portfolios, testimonials, and more.', 'neve' ),
 				'documentation' => array(
-					'url' => 'https://docs.themeisle.com/article/1505-neve-post-type-enhancements-module?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=postenhancements&utm_content=neve',
+					'url' => tsdk_utmify( 'https://docs.themeisle.com/neve/neve-post-type-enhancements-module', 'postenhancements', 'welcomepage' ),
 				),
 			),
 			'performance_features'   => array(
 				'nicename'      => __( 'Performance', 'neve' ),
 				'description'   => __( 'Optimize core vitals, enable lazy loading, and minify resources for lightning-fast load times.', 'neve' ),
 				'documentation' => array(
-					'url' => 'https://docs.themeisle.com/article/1366-performance-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=performancemodule&utm_content=neve',
+					'url' => tsdk_utmify( 'https://docs.themeisle.com/neve/performance-module-documentation', 'performancemodule', 'welcomepage' ),
 				),
 			),
 			'block_editor_booster'   => array(
 				'nicename'      => __( 'Block Editor Booster', 'neve' ),
 				'description'   => __( 'Advanced Gutenberg blocks designed specifically for Neve. Build faster with pre-styled patterns.', 'neve' ),
 				'documentation' => array(
-					'url' => 'https://docs.themeisle.com/article/1473-neve-block-editor-booster-module?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=blockeditorbooster&utm_content=neve',
+					'url' => tsdk_utmify( 'https://docs.themeisle.com/neve/neve-block-editor-booster-module', 'blockeditorbooster', 'welcomepage' ),
 				),
 			),
 			'white_label'            => array(
 				'nicename'      => __( 'White Label', 'neve' ),
 				'description'   => __( 'Rebrand Neve as your own. Change theme name, author, and links to match your agency identity.', 'neve' ),
 				'documentation' => array(
-					'url' => 'https://docs.themeisle.com/article/1061-white-label-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=whitelabel&utm_content=neve',
+					'url' => tsdk_utmify( 'https://docs.themeisle.com/neve/white-label-module-documentation', 'whitelabel', 'welcomepage' ),
 				),
 			),
 			'custom_layouts'         => array(
 				'nicename'      => __( 'Custom Layouts', 'neve' ),
 				'description'   => __( 'Create conditional headers, footers, and content blocks. Perfect for custom landing pages and marketing campaigns.', 'neve' ),
 				'documentation' => array(
-					'url' => 'https://docs.themeisle.com/article/1062-custom-layouts-module?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=customlayouts&utm_content=neve',
+					'url' => tsdk_utmify( 'https://docs.themeisle.com/neve/custom-layouts-module', 'customlayouts', 'welcomepage' ),
 				),
 			),
 			'elementor_booster'      => array(
@@ -930,28 +930,28 @@ class Main {
 				'nicename'      => __( 'Typekit Fonts', 'neve' ),
 				'description'   => __( 'Access premium Adobe fonts directly in your theme. Add professional typography to any element.', 'neve' ),
 				'documentation' => array(
-					'url' => 'https://docs.themeisle.com/article/1085-typekit-fonts-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=typekitfonts&utm_content=neve',
+					'url' => tsdk_utmify( 'https://docs.themeisle.com/neve/typekit-fonts-documentation', 'typekitfonts', 'welcomepage' ),
 				),
 			),
 			'custom_sidebars'        => array(
 				'nicename'      => __( 'Custom Sidebars', 'neve' ),
 				'description'   => __( 'Create unique sidebar layouts for different sections. Show relevant content based on user context.', 'neve' ),
 				'documentation' => array(
-					'url' => 'https://docs.themeisle.com/article/1770-custom-sidebars-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=customsidebars&utm_content=neve',
+					'url' => tsdk_utmify( 'https://docs.themeisle.com/neve/custom-sidebars-module-documentation', 'customsidebars', 'welcomepage' ),
 				),
 			),
 			'access_restriction'     => array(
 				'nicename'      => __( 'Content restriction', 'neve' ),
 				'description'   => __( 'Create members-only content areas. Control access by user roles, logged-in status, or custom rules.', 'neve' ),
 				'documentation' => array(
-					'url' => 'https://docs.themeisle.com/article/1863-content-restriction-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=contentrestriction&utm_content=neve',
+					'url' => tsdk_utmify( 'https://docs.themeisle.com/neve/content-restriction-module-documentation', 'contentrestriction', 'welcomepage' ),
 				),
 			),
 			'dashboard_customizer'   => array(
 				'nicename'      => __( 'WP Dashboard Customizer', 'neve' ),
 				'description'   => __( 'Create or modify the WordPress dashboard. Customize the admin pages, admin menu, and admin bar.', 'neve' ),
 				'documentation' => array(
-					'url' => 'https://docs.themeisle.com/article/2408-wp-dashboard-customizer-module-documentation?utm_source=wpadmin&utm_medium=welcomepage&utm_campaign=dashboardcustomizer&utm_content=neve',
+					'url' => tsdk_utmify( 'https://docs.themeisle.com/neve/wp-dashboard-customizer-module-documentation', 'dashboardcustomizer', 'welcomepage' ),
 				),
 			),
 		);
@@ -1184,7 +1184,7 @@ class Main {
 						</span>
 					</button>
 					<?php if ( ! $is_white_label_active ) : ?>
-						<a href="https://docs.themeisle.com/article/1062-custom-layouts-module" target="_blank" class="button cl-btn-action">
+						<a href="<?php echo esc_url( tsdk_utmify( 'https://docs.themeisle.com/neve/custom-layouts-module', 'customlayouts', 'customlayoutspage' ) ); ?>" target="_blank" class="button cl-btn-action">
 							<span class="dashicons dashicons-welcome-learn-more" aria-hidden="true"></span>
 							<span class="cl-header-btn-text">
 								<?php esc_html_e( 'View Tutorial', 'neve' ); ?>
@@ -1339,7 +1339,7 @@ class Main {
 			</div>
 
 			<div class="nv-admin-header-right">
-				<a href="https://docs.themeisle.com/article/946-neve-doc" target="_blank">
+				<a href="<?php echo esc_url( tsdk_utmify( 'https://docs.themeisle.com/neve/neve-doc', 'documentation', 'customlayoutspage' ) ); ?>" target="_blank">
 					<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
 					<?php esc_html_e( 'Documentation', 'neve' ); ?>
 				</a>
