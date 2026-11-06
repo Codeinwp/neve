@@ -179,11 +179,12 @@ trait Builder_Configure {
 	 */
 	protected function apply_row_style( $builder_id, $row, array $style ) {
 		$prefix   = 'hfg_' . $builder_id . '_layout_' . $row;
+		$builder  = $this->get_builder( $builder_id );
 		$mods     = array();
 		$affected = array();
 
-		if ( isset( $style['height'] ) ) {
-			$mods[ $prefix . '_height' ] = wp_json_encode( map_deep( $style['height'], 'sanitize_text_field' ) );
+		if ( isset( $style['height'] ) && null !== $builder ) {
+			$mods[ $prefix . '_height' ] = $builder->sanitize_responsive_int_json( map_deep( $style['height'], 'sanitize_text_field' ) );
 		}
 		if ( isset( $style['background'] ) ) {
 			$mods[ $prefix . '_background' ] = map_deep( $style['background'], 'sanitize_text_field' );

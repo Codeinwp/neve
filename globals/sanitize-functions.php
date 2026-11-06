@@ -60,6 +60,35 @@ function neve_is_css_function_color( string $value ): bool {
 }
 
 /**
+ * Whether a value can close the CSS declaration it is printed in.
+ *
+ * JSON strings and arrays are checked value by value, so their own braces do not count.
+ *
+ * @param mixed $value Stored or incoming value.
+ *
+ * @return bool
+ */
+function neve_closes_css_declaration( $value ): bool {
+	if ( is_string( $value ) ) {
+		$decoded = json_decode( $value, true );
+
+		return is_array( $decoded ) ? neve_closes_css_declaration( $decoded ) : (bool) preg_match( '/[;{}<>]/', $value );
+	}
+
+	if ( ! is_array( $value ) ) {
+		return false;
+	}
+
+	foreach ( $value as $item ) {
+		if ( neve_closes_css_declaration( $item ) ) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/**
  * Sanitize a color control value.
  *
  * @param mixed $value Color value: CSS variable, gradient, rgb(), rgba(), hsl(), hsla() or hex.
