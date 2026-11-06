@@ -244,7 +244,7 @@ class Typography extends Base_Customizer {
 						'system' => true,
 						'link'   => [
 							'string'  => __( 'Learn more about fallback fonts', 'neve' ),
-							'url'     => esc_url( tsdk_utmify( 'https://docs.themeisle.com/neve/fallback-fonts', 'fallback-fonts', 'customizer' ) ),
+							'url'     => esc_url_raw( tsdk_utmify( 'https://docs.themeisle.com/neve/fallback-fonts', 'fallback-fonts', 'customizer' ) ),
 							'new_tab' => true,
 						],
 					],
