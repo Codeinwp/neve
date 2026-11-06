@@ -983,6 +983,28 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 * Print a row color variable; a stored color that can close its declaration is sanitized first.
+	 *
+	 * @param string $css_prop CSS variable.
+	 * @param mixed  $value    Stored color.
+	 *
+	 * @return string
+	 */
+	public function row_color_rule( $css_prop, $value ) {
+		if ( ! is_string( $value ) ) {
+			return '';
+		}
+
+		// The printed style is stripped of HTML as a whole; strip it here first so only CSS is checked.
+		$value = wp_strip_all_tags( $value );
+		if ( neve_closes_css_declaration( $value ) ) {
+			$value = neve_sanitize_colors( $value );
+		}
+
+		return '' !== $value ? sprintf( ' %s: %s;', $css_prop, $value ) : '';
+	}
+
+	/**
 	 * Method to generate css array for each row.
 	 *
 	 * @param string $row_index The row index.
@@ -1033,12 +1055,14 @@ abstract class Abstract_Builder implements Builder {
 			$rules['--rowbcolor'] = [
 				Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::BORDER_COLOR,
 				Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+				Dynamic_Selector::META_FILTER  => [ $this, 'row_color_rule' ],
 			];
 		}
 
 		$rules['--color'] = [
 			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
 			Dynamic_Selector::META_DEFAULT => $default_colors['text'],
+			Dynamic_Selector::META_FILTER  => [ $this, 'row_color_rule' ],
 		];
 
 		// Exclude the following rules for the header when the global header background is active.
@@ -1061,6 +1085,7 @@ abstract class Abstract_Builder implements Builder {
 						'--bgcolor' => [
 							Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
 							Dynamic_Selector::META_DEFAULT => $default_color,
+							Dynamic_Selector::META_FILTER  => [ $this, 'row_color_rule' ],
 						],
 					]
 				);
@@ -1071,7 +1096,8 @@ abstract class Abstract_Builder implements Builder {
 					$rules,
 					[
 						'--overlaycolor'     => [
-							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
+							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
+							Dynamic_Selector::META_FILTER => [ $this, 'row_color_rule' ],
 						],
 						'--bgimage'          => [
 							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',

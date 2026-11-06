@@ -1,0 +1,303 @@
+<?php
+/**
+ * Tests for sanitizing color and background theme mods written by the abilities.
+ *
+ * @package Neve
+ */
+
+use Neve\Abilities\Footer_Configure;
+use Neve\Abilities\Header_Configure;
+use Neve\Abilities\Site_Set_Theme_Mod;
+
+/**
+ * Class TestNeveAbilityStyleMods
+ */
+class TestNeveAbilityStyleMods extends WP_UnitTestCase {
+
+	const INJECTED_CSS = 'rgba(1,2,3,1);}body{background:lime}/*';
+	const HEADER_TEXT  = 'hfg_header_layout_main_new_text_color';
+	const HEADER_BG    = 'hfg_header_layout_main_background';
+	const FOOTER_TEXT  = 'hfg_footer_layout_main_new_text_color';
+	const SIDEBAR_BG   = 'hfg_header_layout_sidebar_background';
+	const SIDEBAR_TEXT  = 'hfg_header_layout_sidebar_new_text_color';
+	const SIDEBAR_WIDTH = 'hfg_header_layout_sidebar_width';
+	const HEADER_HEIGHT = 'hfg_header_layout_main_height';
+	const FORM_PADDING  = 'neve_form_fields_padding';
+
+	/**
+	 * Theme mods snapshot restored after each test.
+	 *
+	 * @var array<string, mixed>|false
+	 */
+	private $theme_mods;
+
+	/**
+	 * Snapshot the theme mods the abilities rewrite.
+	 */
+	public function setUp(): void {
+		parent::setUp();
+
+		wp_set_current_user( 1 );
+		$this->theme_mods = get_theme_mods();
+	}
+
+	/**
+	 * Restore the theme mods.
+	 */
+	public function tearDown(): void {
+		update_option( 'theme_mods_' . get_option( 'stylesheet' ), $this->theme_mods );
+
+		parent::tearDown();
+	}
+
+	/**
+	 * Header row colors are sanitized and an invalid background is not saved.
+	 */
+	public function test_header_configure_sanitizes_row_style(): void {
+		set_theme_mod( self::HEADER_BG, 'previous' );
+
+		( new Header_Configure() )->execute(
+			array(
+				'row_style' => array(
+					array(
+						'row'        => 'main',
+						'text_color' => self::INJECTED_CSS,
+						'background' => 'not-a-background',
+					),
+				),
+			)
+		);
+
+		$this->assertSame( 'rgba(1,2,3,1)', get_theme_mod( self::HEADER_TEXT ) );
+		$this->assertSame( 'previous', get_theme_mod( self::HEADER_BG ) );
+	}
+
+	/**
+	 * Header row background colors are sanitized.
+	 */
+	public function test_header_configure_sanitizes_row_background(): void {
+		( new Header_Configure() )->execute(
+			array(
+				'row_style' => array(
+					array(
+						'row'        => 'main',
+						'background' => array(
+							'type'       => 'color',
+							'colorValue' => self::INJECTED_CSS,
+						),
+					),
+				),
+			)
+		);
+
+		$background = get_theme_mod( self::HEADER_BG );
+		$this->assertIsArray( $background );
+		$this->assertSame( 'rgba(1,2,3,1)', $background['colorValue'] );
+	}
+
+	/**
+	 * Footer row colors are sanitized.
+	 */
+	public function test_footer_configure_sanitizes_row_style(): void {
+		( new Footer_Configure() )->execute(
+			array(
+				'row_style' => array(
+					array(
+						'row'        => 'main',
+						'text_color' => self::INJECTED_CSS,
+					),
+				),
+			)
+		);
+
+		$this->assertSame( 'rgba(1,2,3,1)', get_theme_mod( self::FOOTER_TEXT ) );
+	}
+
+	/**
+	 * A background that is not a background object is rejected and the stored value kept.
+	 */
+	public function test_site_set_theme_mod_rejects_invalid_background(): void {
+		set_theme_mod( self::SIDEBAR_BG, 'previous' );
+
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => self::SIDEBAR_BG,
+				'value'  => 'not-a-background',
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertFalse( $result['success'] );
+		$this->assertSame( 'value', $result['error']['field'] );
+		$this->assertSame( 'previous', get_theme_mod( self::SIDEBAR_BG ) );
+	}
+
+	/**
+	 * A row height suffix that would close its CSS declaration is replaced by an allowed unit.
+	 */
+	public function test_header_configure_sanitizes_row_height(): void {
+		( new Header_Configure() )->execute(
+			array(
+				'row_style' => array(
+					array(
+						'row'    => 'main',
+						'height' => array(
+							'desktop' => 80,
+							'suffix'  => array( 'desktop' => 'px;}body{background:lime}/*' ),
+						),
+					),
+				),
+			)
+		);
+
+		$height = json_decode( get_theme_mod( self::HEADER_HEIGHT ), true );
+		$this->assertSame( 80, $height['desktop'] );
+		$this->assertSame( 'px', $height['suffix']['desktop'] );
+	}
+
+	/**
+	 * A background with an invalid nested color keeps the stored background.
+	 */
+	public function test_header_configure_keeps_background_on_invalid_nested_color(): void {
+		$background = array(
+			'type'       => 'color',
+			'colorValue' => '#123456',
+		);
+		set_theme_mod( self::HEADER_BG, $background );
+
+		( new Header_Configure() )->execute(
+			array(
+				'row_style' => array(
+					array(
+						'row'        => 'main',
+						'background' => array(
+							'type'       => 'color',
+							'colorValue' => 'notacolor',
+						),
+					),
+				),
+			)
+		);
+
+		$this->assertSame( $background, get_theme_mod( self::HEADER_BG ) );
+	}
+
+	/**
+	 * The sidebar width goes through its range sanitizer.
+	 */
+	public function test_site_set_theme_mod_sanitizes_sidebar_width(): void {
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => self::SIDEBAR_WIDTH,
+				'value'  => '360;}body{background:lime}/*',
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertTrue( $result['success'] );
+		$this->assertSame( 360.0, get_theme_mod( self::SIDEBAR_WIDTH ) );
+	}
+
+	/**
+	 * A spacing value that would close its CSS declaration is rejected and the stored value kept.
+	 */
+	public function test_site_set_theme_mod_rejects_injected_spacing(): void {
+		set_theme_mod( self::FORM_PADDING, 'previous' );
+
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => self::FORM_PADDING,
+				'value'  => array(
+					'top'    => '10;}body{background:lime}/*',
+					'right'  => '10',
+					'bottom' => '10',
+					'left'   => '10',
+				),
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertFalse( $result['success'] );
+		$this->assertSame( 'invalid_value', $result['error']['code'] );
+		$this->assertSame( 'previous', get_theme_mod( self::FORM_PADDING ) );
+	}
+
+	/**
+	 * An invalid row color keeps the stored color.
+	 */
+	public function test_header_configure_keeps_color_on_invalid_value(): void {
+		set_theme_mod( self::HEADER_TEXT, '#ff0000' );
+
+		( new Header_Configure() )->execute(
+			array(
+				'row_style' => array(
+					array(
+						'row'        => 'main',
+						'text_color' => 'notacolor',
+					),
+				),
+			)
+		);
+
+		$this->assertSame( '#ff0000', get_theme_mod( self::HEADER_TEXT ) );
+	}
+
+	/**
+	 * An invalid color is rejected and the stored color kept.
+	 */
+	public function test_site_set_theme_mod_rejects_invalid_color(): void {
+		set_theme_mod( self::SIDEBAR_TEXT, '#ff0000' );
+
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => self::SIDEBAR_TEXT,
+				'value'  => 'notacolor',
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertFalse( $result['success'] );
+		$this->assertSame( 'invalid_value', $result['error']['code'] );
+		$this->assertSame( '#ff0000', get_theme_mod( self::SIDEBAR_TEXT ) );
+	}
+
+	/**
+	 * An empty color clears the stored color.
+	 */
+	public function test_site_set_theme_mod_clears_color_with_empty_value(): void {
+		set_theme_mod( self::SIDEBAR_TEXT, '#ff0000' );
+
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => self::SIDEBAR_TEXT,
+				'value'  => '',
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertTrue( $result['success'] );
+		$this->assertSame( '', get_theme_mod( self::SIDEBAR_TEXT ) );
+	}
+
+	/**
+	 * Color settings are sanitized.
+	 */
+	public function test_site_set_theme_mod_sanitizes_colors(): void {
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => self::SIDEBAR_TEXT,
+				'value'  => self::INJECTED_CSS,
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertTrue( $result['success'] );
+		$this->assertSame( 'rgba(1,2,3,1)', get_theme_mod( self::SIDEBAR_TEXT ) );
+	}
+}

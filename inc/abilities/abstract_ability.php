@@ -237,6 +237,48 @@ abstract class Abstract_Ability {
 	}
 
 	/**
+	 * Run a background or color theme mod value through Neve's sanitizer for that kind of setting.
+	 *
+	 * @param string $key   Theme mod key.
+	 * @param mixed  $value Incoming value.
+	 * @return mixed Sanitized value; null when it is not a valid background or color, or can close its CSS declaration. An empty color stays empty.
+	 */
+	protected function sanitize_style_mod( string $key, $value ) {
+		if ( preg_match( '/_background$/', $key ) ) {
+			return $this->sanitize_background_mod( $value );
+		}
+
+		if ( preg_match( '/_color$/', $key ) ) {
+			$color = neve_sanitize_colors( $value );
+
+			return '' === $color && '' !== $value ? null : $color;
+		}
+
+		return neve_closes_css_declaration( $value ) ? null : $value;
+	}
+
+	/**
+	 * Sanitize a background theme mod value.
+	 *
+	 * @param mixed $value Incoming background.
+	 * @return array<string, mixed>|null Sanitized background; null when it, or a non-empty color in it, is invalid.
+	 */
+	private function sanitize_background_mod( $value ) {
+		$background = neve_sanitize_background( $value );
+		if ( is_wp_error( $background ) ) {
+			return null;
+		}
+
+		foreach ( array( 'colorValue', 'overlayColorValue' ) as $field ) {
+			if ( ! empty( $value[ $field ] ) && '' === $background[ $field ] ) {
+				return null;
+			}
+		}
+
+		return $background;
+	}
+
+	/**
 	 * Build a structured non-validation error payload for clients that collapse
 	 * WP_Error details into a generic transport error.
 	 *
