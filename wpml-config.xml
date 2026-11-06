@@ -18,6 +18,8 @@
       <key name="neve_post_comment_section_title"/>
       <key name="neve_post_comment_form_title"/>
       <key name="neve_post_comment_form_button_text"/>
+      <key name="neve_post_navigation_previous_label"/>
+      <key name="neve_post_navigation_next_label"/>
       <key name="nav-icon_menu_label"/>
       <key name="header_search_button_text"/>
       <key name="header_palette_switch_placeholder"/>

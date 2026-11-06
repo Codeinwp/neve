@@ -386,7 +386,16 @@ class Layout_Single_Post extends Base_Layout_Single {
 			],
 			'post-navigation' => [
 				'label'    => __( 'Post navigation', 'neve' ),
-				'controls' => [],
+				'controls' => [
+					'neve_post_navigation_previous_label' => [
+						'label' => __( 'Previous post label', 'neve' ),
+						'type'  => 'text',
+					],
+					'neve_post_navigation_next_label'     => [
+						'label' => __( 'Next post label', 'neve' ),
+						'type'  => 'text',
+					],
+				],
 			],
 			'comments'        => [
 				'label'    => __( 'Comments', 'neve' ),
@@ -442,6 +451,23 @@ class Layout_Single_Post extends Base_Layout_Single {
 				]
 			)
 		);
+
+		foreach ( [ 'neve_post_navigation_previous_label', 'neve_post_navigation_next_label' ] as $nav_label_control ) {
+			$this->add_control(
+				new Control(
+					$nav_label_control,
+					[
+						'sanitize_callback' => 'sanitize_text_field',
+						'default'           => '',
+					],
+					[
+						'section'     => $this->section,
+						'description' => esc_html__( 'Leave this field empty for default behavior.', 'neve' ),
+						'type'        => 'hidden',
+					]
+				)
+			);
+		}
 
 		$this->add_control(
 			new Control(
