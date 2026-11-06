@@ -35,6 +35,7 @@ class PaletteSwitch extends Abstract_Component {
 	const TOGGLE_CUSTOM_ID  = 'toggle_icon_custom';
 	const PLACEHOLDER_ID    = 'placeholder';
 	const AUTO_ADJUST       = 'auto_adjust_color';
+	const DEFAULT_PALETTE   = 'default_palette';
 	const SIZE_ID           = 'icon_size';
 	const DEFAULT_ICON_SIZE = 16;
 
@@ -185,13 +186,46 @@ class PaletteSwitch extends Abstract_Component {
 	 */
 	public function toggle_script() {
 		$auto_adjust   = Mods::get( $this->get_id() . '_' . self::AUTO_ADJUST, 0 );
-		$default_state = '"light"';
+		$default_state = '"' . $this->get_default_palette() . '"';
 
 		if ( $auto_adjust ) {
 			$default_state = 'window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"';
 		}
 
 		return '!function() {const e = "neve_user_theme";const t = "data-neve-theme";const s = function(){document.querySelectorAll(".palette-icon-wrapper").forEach(function(el){el.setAttribute("aria-pressed", "dark" === document.documentElement.getAttribute(t) ? "true" : "false");});};let n = ' . ( ! $auto_adjust && ! is_customize_preview() ? 'localStorage.getItem(e) || ' . $default_state : $default_state ) . ';document.documentElement.setAttribute(t, n);document.addEventListener("DOMContentLoaded", function(){s();if (window.wp && window.wp.customize && window.wp.customize.selectiveRefresh) {window.wp.customize.selectiveRefresh.bind("partial-content-rendered", s);}});document.addEventListener("click", (n => {if (n.target.matches(".palette-icon-wrapper, .palette-icon-wrapper *")) {(n => {n.preventDefault();const a = "light" === document.documentElement.getAttribute(t) ? "dark" : "light";document.documentElement.setAttribute(t, a);localStorage.setItem(e, a);s();})(n);}}));}();';
+	}
+
+	/**
+	 * Get the palette used for visitors without a stored preference.
+	 *
+	 * @return string Either 'light' or 'dark'.
+	 */
+	public function get_default_palette() {
+		$default_palette = Mods::get( $this->get_id() . '_' . self::DEFAULT_PALETTE, 'light' );
+
+		/**
+		 * Filters the palette shown to first-time visitors when automatic color scheme is off.
+		 *
+		 * @param string $default_palette Either 'light' or 'dark'.
+		 */
+		$default_palette = apply_filters( 'neve_palette_switch_default_state', $default_palette );
+
+		return $this->sanitize_default_palette( $default_palette );
+	}
+
+	/**
+	 * Sanitize the default palette value.
+	 *
+	 * @param string $value Value of the control.
+	 *
+	 * @return string
+	 */
+	public function sanitize_default_palette( $value ) {
+		if ( ! in_array( $value, array( 'light', 'dark' ), true ) ) {
+			return 'light';
+		}
+
+		return $value;
 	}
 
 	/**
@@ -491,6 +525,32 @@ class PaletteSwitch extends Abstract_Component {
 				/* translators: %s: Link to Learn More page. */
 				'description'        => sprintf( __( 'Adjust default color scheme based on the user device preferences. %1$sLearn More%2$s.', 'neve' ), '<a target="_blank" rel="external noreferrer noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">', '<span class="components-visually-hidden">(opens in a new tab)</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="components-external-link__icon css-6wogo1-StyledIcon etxm6pv0" role="img" aria-hidden="true" focusable="false"><path d="M18.2 17c0 .7-.6 1.2-1.2 1.2H7c-.7 0-1.2-.6-1.2-1.2V7c0-.7.6-1.2 1.2-1.2h3.2V4.2H7C5.5 4.2 4.2 5.5 4.2 7v10c0 1.5 1.2 2.8 2.8 2.8h10c1.5 0 2.8-1.2 2.8-2.8v-3.6h-1.5V17zM14.9 3v1.5h3.7l-6.4 6.4 1.1 1.1 6.4-6.4v3.7h1.5V3h-6.3z"></path></svg></a>' ),
 				'type'               => 'neve_toggle_control',
+				'section'            => $this->section,
+				'conditional_header' => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::DEFAULT_PALETTE,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'refresh',
+				'sanitize_callback'  => [ $this, 'sanitize_default_palette' ],
+				'default'            => 'light',
+				'label'              => __( 'Default Palette', 'neve' ),
+				'description'        => __( 'Palette shown to visitors who have not picked one yet.', 'neve' ),
+				'type'               => 'Neve\Customizer\Controls\React\Inline_Select',
+				'options'            => [
+					'options'         => [
+						'light' => __( 'Light Palette', 'neve' ),
+						'dark'  => __( 'Dark Palette', 'neve' ),
+					],
+					'default'         => 'light',
+					'active_callback' => function () {
+						return ! Mods::get( $this->get_id() . '_' . self::AUTO_ADJUST, 0 );
+					},
+				],
 				'section'            => $this->section,
 				'conditional_header' => true,
 			]
