@@ -179,19 +179,27 @@ trait Builder_Configure {
 	 */
 	protected function apply_row_style( $builder_id, $row, array $style ) {
 		$prefix   = 'hfg_' . $builder_id . '_layout_' . $row;
+		$mods     = array();
 		$affected = array();
 
 		if ( isset( $style['height'] ) ) {
-			set_theme_mod( $prefix . '_height', wp_json_encode( map_deep( $style['height'], 'sanitize_text_field' ) ) );
-			$affected[] = $prefix . '_height';
+			$mods[ $prefix . '_height' ] = wp_json_encode( map_deep( $style['height'], 'sanitize_text_field' ) );
 		}
 		if ( isset( $style['background'] ) ) {
-			set_theme_mod( $prefix . '_background', map_deep( $style['background'], 'sanitize_text_field' ) );
-			$affected[] = $prefix . '_background';
+			$mods[ $prefix . '_background' ] = map_deep( $style['background'], 'sanitize_text_field' );
 		}
 		if ( isset( $style['text_color'] ) ) {
-			set_theme_mod( $prefix . '_new_text_color', sanitize_text_field( $style['text_color'] ) );
-			$affected[] = $prefix . '_new_text_color';
+			$mods[ $prefix . '_new_text_color' ] = sanitize_text_field( $style['text_color'] );
+		}
+
+		foreach ( $mods as $key => $value ) {
+			$value = $this->sanitize_style_mod( $key, $value );
+			if ( null === $value ) {
+				continue;
+			}
+
+			set_theme_mod( $key, $value );
+			$affected[] = $key;
 		}
 
 		return $affected;

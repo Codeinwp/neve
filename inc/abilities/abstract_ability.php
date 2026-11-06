@@ -237,6 +237,29 @@ abstract class Abstract_Ability {
 	}
 
 	/**
+	 * Run a background or color theme mod value through Neve's sanitizer for that kind of setting.
+	 *
+	 * @param string $key   Theme mod key.
+	 * @param mixed  $value Incoming value.
+	 * @return mixed Sanitized value; null when it is not a valid background or color. An empty color stays empty.
+	 */
+	protected function sanitize_style_mod( string $key, $value ) {
+		if ( preg_match( '/_background$/', $key ) ) {
+			$background = neve_sanitize_background( $value );
+
+			return is_wp_error( $background ) ? null : $background;
+		}
+
+		if ( preg_match( '/_color$/', $key ) ) {
+			$color = neve_sanitize_colors( $value );
+
+			return '' === $color && '' !== $value ? null : $color;
+		}
+
+		return $value;
+	}
+
+	/**
 	 * Build a structured non-validation error payload for clients that collapse
 	 * WP_Error details into a generic transport error.
 	 *
