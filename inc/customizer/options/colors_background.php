@@ -99,7 +99,7 @@ class Colors_Background extends Base_Customizer {
 					'default_values'        => neve_get_global_colors_default(),
 					'input_attrs'           => [
 						'link' => [
-							'url'     => esc_url( 'https://docs.themeisle.com/article/1314-global-colors-in-neve' ),
+							'url'     => esc_url_raw( tsdk_utmify( 'https://docs.themeisle.com/neve/global-colors-in-neve', 'global-colors', 'customizer' ) ),
 							'string'  => esc_html__( 'How the color system works', 'neve' ),
 							'new_tab' => true,
 						],

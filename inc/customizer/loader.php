@@ -143,7 +143,7 @@ class Loader {
 					'dashUpdatesMessage'            => sprintf( 'Please %s to the latest version of Neve Pro to manage the conditional headers.', '<a href="' . esc_url( admin_url( 'update-core.php' ) ) . '">' . __( 'update', 'neve' ) . '</a>' ),
 					'bundlePath'                    => get_template_directory_uri() . '/assets/apps/customizer-controls/build/',
 					'localGoogleFonts'              => array(
-						'learnMore' => apply_filters( 'neve_external_link', 'https://docs.themeisle.com/article/1349-how-to-load-neve-fonts-locally', esc_html__( 'Learn more', 'neve' ) ),
+						'learnMore' => apply_filters( 'neve_external_link', tsdk_utmify( 'https://docs.themeisle.com/neve/how-to-load-neve-fonts-locally', 'load-fonts-locally', 'customizer' ), esc_html__( 'Learn more', 'neve' ) ),
 						'key'       => Config::OPTION_LOCAL_GOOGLE_FONTS_HOSTING,
 					),
 					'preloadFonts'                  => array(

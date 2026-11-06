@@ -52,7 +52,7 @@ class Form_Fields extends Base_Customizer {
 				[
 					'priority'           => 45,
 					'description_hidden' => true,
-					'description'        => __( 'Customize the general design of the form elements across the site.', 'neve' ) . ' ' . neve_external_link( 'https://docs.themeisle.com/article/1341-neve-form-fields', 'Learn More' ),
+					'description'        => __( 'Customize the general design of the form elements across the site.', 'neve' ) . ' ' . neve_external_link( tsdk_utmify( 'https://docs.themeisle.com/neve/neve-form-fields', 'form-fields', 'customizer' ), 'Learn More' ),
 					'title'              => esc_html__( 'Form Fields', 'neve' ),
 					'panel'              => 'neve_layout',
 				]

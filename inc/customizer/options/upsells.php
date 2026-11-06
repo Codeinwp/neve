@@ -297,7 +297,7 @@ class Upsells extends Base_Customizer {
 					'section'       => 'woocommerce_product_catalog',
 					'priority'      => 610,
 					'documentation' => [
-						'link' => 'https://docs.themeisle.com/article/1058-woocommerce-booster-documentation#sale-tag',
+						'link' => tsdk_utmify( 'https://docs.themeisle.com/neve/woocommerce-booster-documentation#customize-the-shop-page', 'sale-tag', 'customizer' ),
 					],
 					'choices'       => [
 						'inside'  => [
