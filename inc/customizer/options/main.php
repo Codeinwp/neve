@@ -115,7 +115,7 @@ class Main extends Base_Customizer {
 				[
 					'priority' => 10000,
 					'title'    => esc_html__( 'Neve', 'neve' ),
-					'url'      => tsdk_utmify( 'https://docs.themeisle.com/article/946-neve-doc', 'docsbtn' ),
+					'url'      => tsdk_utmify( 'https://docs.themeisle.com/neve/neve-doc', 'docsbtn', 'customizer' ),
 				]
 			)
 		);
