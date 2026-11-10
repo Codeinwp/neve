@@ -46,28 +46,36 @@ trait Css_Vars {
 
 		$rules = [
 			'--primarybtnbg'             => [
-				Dynamic_Selector::META_KEY => $mod_key_primary . '.background',
+				Dynamic_Selector::META_KEY    => $mod_key_primary . '.background',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
 			],
 			'--secondarybtnbg'           => [
-				Dynamic_Selector::META_KEY => $mod_key_secondary . '.background',
+				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.background',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
 			],
 			'--primarybtnhoverbg'        => [
-				Dynamic_Selector::META_KEY => $mod_key_primary . '.backgroundHover',
+				Dynamic_Selector::META_KEY    => $mod_key_primary . '.backgroundHover',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
 			],
 			'--secondarybtnhoverbg'      => [
-				Dynamic_Selector::META_KEY => $mod_key_secondary . '.backgroundHover',
+				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.backgroundHover',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
 			],
 			'--primarybtncolor'          => [
-				Dynamic_Selector::META_KEY => $mod_key_primary . '.text',
+				Dynamic_Selector::META_KEY    => $mod_key_primary . '.text',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
 			],
 			'--secondarybtncolor'        => [
-				Dynamic_Selector::META_KEY => $mod_key_secondary . '.text',
+				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.text',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
 			],
 			'--primarybtnhovercolor'     => [
-				Dynamic_Selector::META_KEY => $mod_key_primary . '.textHover',
+				Dynamic_Selector::META_KEY    => $mod_key_primary . '.textHover',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
 			],
 			'--secondarybtnhovercolor'   => [
-				Dynamic_Selector::META_KEY => $mod_key_secondary . '.textHover',
+				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.textHover',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
 			],
 			'--primarybtnborderradius'   => [
 				Dynamic_Selector::META_KEY    => $mod_key_primary . '.borderRadius',
@@ -95,7 +103,7 @@ trait Css_Vars {
 					$width  = intval($primary_values['shadowProperties']['width']);
 					$height = intval($primary_values['shadowProperties']['height']);
 
-					return sprintf( '%s:%s;', $css_prop, sprintf('%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+					return neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blur );
 				}
 			];
 		}
@@ -110,7 +118,7 @@ trait Css_Vars {
 					$width  = intval($primary_values['shadowPropertiesHover']['width']);
 					$height = intval($primary_values['shadowPropertiesHover']['height']);
 
-					return sprintf( '%s:%s;', $css_prop, sprintf('%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+					return neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blur );
 				}
 			];
 		}
@@ -125,7 +133,7 @@ trait Css_Vars {
 					$width  = intval($secondary_values['shadowProperties']['width']);
 					$height = intval($secondary_values['shadowProperties']['height']);
 
-					return sprintf( '%s:%s;', $css_prop, sprintf('%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+					return neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blur );
 				}
 			];
 		}
@@ -140,7 +148,7 @@ trait Css_Vars {
 					$width  = intval($secondary_values['shadowPropertiesHover']['width']);
 					$height = intval($secondary_values['shadowPropertiesHover']['height']);
 
-					return sprintf( '%s:%s;', $css_prop, sprintf('%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+					return neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blur );
 				}
 			];
 		}

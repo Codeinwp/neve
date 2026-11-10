@@ -680,8 +680,14 @@ CSS;
 		$id = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
 
 		$rules = [
-			'--bgcolor'      => $id . '.background',
-			'--color'        => $id . '.text',
+			'--bgcolor'      => [
+				Dynamic_Selector::META_KEY    => $id . '.background',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
+			],
+			'--color'        => [
+				Dynamic_Selector::META_KEY    => $id . '.text',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
+			],
 			'--borderradius' => [
 				Dynamic_Selector::META_KEY => $id . '.borderRadius',
 				'directional-prop'         => Config::CSS_PROP_BORDER_RADIUS,

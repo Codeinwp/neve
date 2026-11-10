@@ -277,12 +277,57 @@ function neve_sanitize_background( $value ) {
 /**
  * Sanitize the button appearance control.
  *
- * @param array $value the control value.
+ * @param mixed $value The control value.
  *
- * @return array
+ * @return array<string, mixed>
  */
 function neve_sanitize_button_appearance( $value ) {
+	if ( ! is_array( $value ) ) {
+		return array();
+	}
+
+	$color_fields = array( 'background', 'backgroundHover', 'text', 'textHover', 'shadowColor', 'shadowColorHover' );
+	foreach ( $color_fields as $field ) {
+		if ( array_key_exists( $field, $value ) ) {
+			$value[ $field ] = neve_sanitize_colors( $value[ $field ] );
+		}
+	}
+
 	return $value;
+}
+
+/**
+ * Format a sanitized color as a CSS custom-property rule.
+ *
+ * @param string $css_prop CSS custom property.
+ * @param mixed  $value    Stored color value.
+ *
+ * @return string
+ */
+function neve_sanitize_color_css_rule( $css_prop, $value ) {
+	$color = neve_sanitize_colors( $value );
+
+	return '' === $color ? '' : sprintf( ' %s: %s;', $css_prop, $color );
+}
+
+/**
+ * Format a sanitized button shadow as a CSS custom-property rule.
+ *
+ * @param string $css_prop CSS custom property.
+ * @param mixed  $value    Stored shadow color.
+ * @param int    $width    Horizontal offset.
+ * @param int    $height   Vertical offset.
+ * @param int    $blur     Blur radius.
+ *
+ * @return string
+ */
+function neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blur ) {
+	$color = neve_sanitize_colors( $value );
+	if ( '' === $color ) {
+		$color = 'none';
+	}
+
+	return sprintf( '%1$s:%2$dpx %3$dpx %4$dpx %5$s;', $css_prop, $width, $height, $blur, $color );
 }
 
 /**

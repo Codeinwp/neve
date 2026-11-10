@@ -329,10 +329,22 @@ class SearchIconButton {
 		$button_style_id = $this->component_id . '_' . self::BUTTON_STYLE;
 
 		$rules = [
-			'--primarybtnbg'         => $button_style_id . '.background',
-			'--primarybtnhoverbg'    => $button_style_id . '.background',
-			'--primarybtncolor'      => $button_style_id . '.text',
-			'--primarybtnhovercolor' => $button_style_id . '.text',
+			'--primarybtnbg'         => [
+				Dynamic_Selector::META_KEY    => $button_style_id . '.background',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
+			],
+			'--primarybtnhoverbg'    => [
+				Dynamic_Selector::META_KEY    => $button_style_id . '.background',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
+			],
+			'--primarybtncolor'      => [
+				Dynamic_Selector::META_KEY    => $button_style_id . '.text',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
+			],
+			'--primarybtnhovercolor' => [
+				Dynamic_Selector::META_KEY    => $button_style_id . '.text',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
+			],
 		];
 
 		$css_array[] = [

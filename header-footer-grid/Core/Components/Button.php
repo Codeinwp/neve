@@ -230,18 +230,22 @@ class Button extends Abstract_Component {
 			'--primarybtnbg'           => [
 				Dynamic_Selector::META_KEY     => $id . '.background',
 				Dynamic_Selector::META_DEFAULT => 'var(--nv-primary-accent)',
+				Dynamic_Selector::META_FILTER  => 'neve_sanitize_color_css_rule',
 			],
 			'--primarybtncolor'        => [
 				Dynamic_Selector::META_KEY     => $id . '.text',
 				Dynamic_Selector::META_DEFAULT => '#fff',
+				Dynamic_Selector::META_FILTER  => 'neve_sanitize_color_css_rule',
 			],
 			'--primarybtnhoverbg'      => [
 				Dynamic_Selector::META_KEY     => $id . '.backgroundHover',
 				Dynamic_Selector::META_DEFAULT => 'var(--nv-primary-accent)',
+				Dynamic_Selector::META_FILTER  => 'neve_sanitize_color_css_rule',
 			],
 			'--primarybtnhovercolor'   => [
 				Dynamic_Selector::META_KEY     => $id . '.textHover',
 				Dynamic_Selector::META_DEFAULT => '#fff',
+				Dynamic_Selector::META_FILTER  => 'neve_sanitize_color_css_rule',
 			],
 			'--primarybtnborderradius' => [
 				Dynamic_Selector::META_KEY => $id . '.borderRadius',
@@ -268,7 +272,7 @@ class Button extends Abstract_Component {
 				$width  = intval( $button_values['shadowProperties']['width'] );
 				$height = intval( $button_values['shadowProperties']['height'] );
 
-				return sprintf( '%s:%s;', $css_prop, sprintf( '%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+				return neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blur );
 			},
 		];
 		$rules['--primarybtnhovershadow'] = [
@@ -282,7 +286,7 @@ class Button extends Abstract_Component {
 				$width  = intval( $button_values['shadowPropertiesHover']['width'] );
 				$height = intval( $button_values['shadowPropertiesHover']['height'] );
 
-				return sprintf( '%s:%s;', $css_prop, sprintf( '%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+				return neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blur );
 			},
 		];
 
