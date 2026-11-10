@@ -206,7 +206,7 @@ function neve_sanitize_range_value( $input ) {
  * @return string
  */
 function neve_sanitize_css_unit( $unit ) {
-	if ( ! is_string( $unit ) || ! in_array( $unit, array( 'px', 'em', 'rem', 'vh', '%' ), true ) ) {
+	if ( ! is_string( $unit ) || ! in_array( $unit, array( 'px', 'em', 'rem', 'vh', '%', '—' ), true ) ) {
 		return 'px';
 	}
 
@@ -375,7 +375,9 @@ function neve_sanitize_color_css_rule( $css_prop, $value ) {
  */
 function neve_sanitize_directional_css_rule( $css_prop, $value, $meta, $device ) {
 	$sanitized = array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), 0 );
-	if ( is_array( $value ) ) {
+	if ( is_numeric( $value ) ) {
+		$sanitized = array_fill_keys( array_keys( $sanitized ), (float) $value );
+	} elseif ( is_array( $value ) ) {
 		foreach ( array_keys( $sanitized ) as $direction ) {
 			if ( isset( $value[ $direction ] ) && is_numeric( $value[ $direction ] ) ) {
 				$sanitized[ $direction ] = (float) $value[ $direction ];

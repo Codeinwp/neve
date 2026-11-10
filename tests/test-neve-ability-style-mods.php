@@ -26,6 +26,7 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 	const SIDEBAR_WIDTH = 'hfg_header_layout_sidebar_width';
 	const HEADER_HEIGHT = 'hfg_header_layout_main_height';
 	const FORM_PADDING  = 'neve_form_fields_padding';
+	const LINE_HEIGHT   = 1.5;
 
 	/**
 	 * Theme mods snapshot restored after each test.
@@ -254,18 +255,65 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 				set_theme_mod( 'hfg_header_layout_sidebar_layout', $layout );
 				$builder  = \HFG\Main::get_instance()->get_builder( 'header' );
 				$selector = new Dynamic_Selector( $builder->add_style( array() ) );
-				$css      = (string) $selector->for_mobile() . (string) $selector->for_tablet() . (string) $selector->for_desktop();
+				$css_by_device = array(
+					'mobile'  => (string) $selector->for_mobile(),
+					'tablet'  => (string) $selector->for_tablet(),
+					'desktop' => (string) $selector->for_desktop(),
+				);
 
-				$this->assertStringNotContainsString( 'background:lime', $css );
-				$this->assertStringContainsString( 'width: 360px;', $css );
-				if ( 'pull_left' === $layout ) {
-					$this->assertStringContainsString( 'left: 360px;', $css );
-				}
-				if ( 'pull_right' === $layout ) {
-					$this->assertStringContainsString( 'right: 360px;', $css );
+				foreach ( $css_by_device as $css ) {
+					$this->assertStringNotContainsString( 'background:lime', $css );
+					$this->assertStringContainsString( 'width: 360px;', $css );
+					if ( 'pull_left' === $layout ) {
+						$this->assertStringContainsString( 'left: 360px;', $css );
+					}
+					if ( 'pull_right' === $layout ) {
+						$this->assertStringContainsString( 'right: 360px;', $css );
+					}
 				}
 			}
 		}
+	}
+
+	/**
+	 * Responsive line heights remain unitless when configured without a unit.
+	 */
+	public function test_unitless_line_height_is_preserved(): void {
+		$devices = array( 'mobile', 'tablet', 'desktop' );
+		set_theme_mod(
+			'neve_typeface_general',
+			array(
+				'lineHeight' => array(
+					'mobile'  => self::LINE_HEIGHT,
+					'tablet'  => self::LINE_HEIGHT,
+					'desktop' => self::LINE_HEIGHT,
+					'suffix'  => array_fill_keys( $devices, '—' ),
+				),
+			)
+		);
+
+		$css = (string) ( new Frontend() )->generate();
+
+		$this->assertSame( count( $devices ), substr_count( $css, '--bodylineheight: ' . self::LINE_HEIGHT . ';' ) );
+		$this->assertStringNotContainsString( '--bodylineheight: ' . self::LINE_HEIGHT . 'px;', $css );
+	}
+
+	/**
+	 * Legacy scalar directional settings expand across all directions.
+	 */
+	public function test_scalar_directional_values_are_preserved(): void {
+		set_theme_mod( 'neve_form_fields_padding', 12 );
+		set_theme_mod( 'neve_form_fields_border_width', 2 );
+		set_theme_mod( 'neve_form_fields_border_radius', 3 );
+		set_theme_mod( 'neve_scroll_to_top_padding', 4 );
+		set_theme_mod( 'neve_scroll_to_top_status', '1' );
+
+		$css = (string) ( new Frontend() )->generate();
+
+		$this->assertStringContainsString( '--formfieldpadding:12px;', $css );
+		$this->assertStringContainsString( '--formfieldborderwidth:2px;', $css );
+		$this->assertStringContainsString( '--formfieldborderradius:3px;', $css );
+		$this->assertSame( 3, substr_count( $css, '--padding:4px;' ) );
 	}
 
 	/**
@@ -413,6 +461,7 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		$this->assertStringContainsString( '--formfieldborderwidth:2px;', $css );
 		$this->assertStringContainsString( '--formfieldborderradius:0;', $css );
 		$this->assertStringContainsString( '--formfieldpadding:2px;', $css );
+		$this->assertStringContainsString( '--padding:2px;', $css );
 		$this->assertStringContainsString( '--borderradius: 3px;', $css );
 		$this->assertStringContainsString( '--hoverbgcolor: rgba(1,2,3,1);', $css );
 	}

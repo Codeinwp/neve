@@ -35,7 +35,9 @@ class Css_Prop {
 			$suffix = $all_value['unit'];
 		}
 
-		return neve_sanitize_css_unit( $suffix );
+		$suffix = neve_sanitize_css_unit( $suffix );
+
+		return '—' === $suffix ? '' : $suffix;
 	}
 
 	/**
@@ -59,7 +61,9 @@ class Css_Prop {
 
 		$suffix = isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) && is_string( $all_value['suffix'] ) ? $all_value['suffix'] : 'px' );
 
-		return neve_sanitize_css_unit( $suffix );
+		$suffix = neve_sanitize_css_unit( $suffix );
+
+		return '—' === $suffix ? '' : $suffix;
 	}
 
 	/**
