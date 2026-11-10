@@ -417,19 +417,26 @@ class Appearance_Update extends Abstract_Ability {
 	 */
 	private function apply_typography( array $typography, array &$updated ) {
 		if ( isset( $typography['body_font'] ) ) {
-			set_theme_mod( 'neve_body_font_family', sanitize_text_field( $typography['body_font'] ) );
-			$updated[] = 'neve_body_font_family';
+			$font = neve_sanitize_font_family( $typography['body_font'] );
+			if ( '' !== $font || '' === $typography['body_font'] ) {
+				set_theme_mod( 'neve_body_font_family', $font );
+				$updated[] = 'neve_body_font_family';
+			}
 		}
 		if ( isset( $typography['headings_font'] ) ) {
-			set_theme_mod( 'neve_headings_font_family', sanitize_text_field( $typography['headings_font'] ) );
-			$updated[] = 'neve_headings_font_family';
+			$font = neve_sanitize_font_family( $typography['headings_font'] );
+			if ( '' !== $font || '' === $typography['headings_font'] ) {
+				set_theme_mod( 'neve_headings_font_family', $font );
+				$updated[] = 'neve_headings_font_family';
+			}
 		}
 
 		if ( isset( $typography['element'] ) && is_array( $typography['element'] ) && isset( $typography['element']['target'] ) ) {
 			$target = $typography['element']['target'];
 			$mod    = 'body' === $target ? 'neve_typeface_general' : 'neve_' . $target . '_typeface_general';
 
-			$current = get_theme_mod( $mod, array() );
+			$default = \Neve\Core\Settings\Mods::get_alternative_mod_default( $mod );
+			$current = get_theme_mod( $mod, is_array( $default ) ? $default : array() );
 			$current = is_array( $current ) ? $current : array();
 
 			$props = $typography['element'];
@@ -437,7 +444,7 @@ class Appearance_Update extends Abstract_Ability {
 
 			// Deep-merge so a partial update (e.g. only fontSize.desktop) keeps the
 			// other breakpoints/sub-values instead of replacing the whole sub-object.
-			$merged = $this->rec_wp_parse_args( $props, $current );
+			$merged = neve_sanitize_typography_control( $this->rec_wp_parse_args( $props, $current ) );
 			set_theme_mod( $mod, $merged );
 			$updated[] = $mod;
 		}

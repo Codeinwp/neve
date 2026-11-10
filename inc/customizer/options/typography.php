@@ -138,7 +138,7 @@ class Typography extends Base_Customizer {
 				Config::MODS_FONT_GENERAL,
 				[
 					'transport'         => $this->selective_refresh,
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'neve_sanitize_font_family',
 					'default'           => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 				],
 				array(
@@ -181,8 +181,9 @@ class Typography extends Base_Customizer {
 			new Control(
 				Config::MODS_TYPEFACE_GENERAL,
 				[
-					'transport' => $this->selective_refresh,
-					'default'   => $defaults,
+					'transport'         => $this->selective_refresh,
+					'default'           => $defaults,
+					'sanitize_callback' => 'neve_sanitize_typography_control',
 				],
 				[
 					'priority'              => 11,
@@ -232,7 +233,7 @@ class Typography extends Base_Customizer {
 				'neve_fallback_font_family',
 				[
 					'transport'         => $this->selective_refresh,
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'neve_sanitize_font_family',
 					'default'           => 'Arial, Helvetica, sans-serif',
 				],
 				[
@@ -274,7 +275,7 @@ class Typography extends Base_Customizer {
 				'neve_headings_font_family',
 				array(
 					'transport'         => $this->selective_refresh,
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'neve_sanitize_font_family',
 				),
 				array(
 					'section'               => 'neve_typography_headings',
@@ -355,7 +356,7 @@ class Typography extends Base_Customizer {
 					$mod_key_font_family,
 					array(
 						'transport'         => $this->selective_refresh,
-						'sanitize_callback' => 'sanitize_text_field',
+						'sanitize_callback' => 'neve_sanitize_font_family',
 					),
 					array(
 						'section'               => 'neve_typography_headings',
@@ -384,8 +385,9 @@ class Typography extends Base_Customizer {
 				new Control(
 					$mod_key,
 					[
-						'transport' => $this->selective_refresh,
-						'default'   => $default_values,
+						'transport'         => $this->selective_refresh,
+						'default'           => $default_values,
+						'sanitize_callback' => 'neve_sanitize_typography_control',
 					],
 					[
 						'priority'              => $priority += 2,
@@ -510,7 +512,8 @@ class Typography extends Base_Customizer {
 				new Control(
 					$control_id,
 					[
-						'transport' => $this->selective_refresh,
+						'transport'         => $this->selective_refresh,
+						'sanitize_callback' => 'neve_sanitize_typography_control',
 					],
 					[
 						'priority'              => $control_settings['priority'] += 1,

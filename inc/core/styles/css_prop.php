@@ -77,6 +77,13 @@ class Css_Prop {
 	 * @return string
 	 */
 	public static function transform( $css_prop, $value, $meta, $device ) {
+		if ( isset( $meta[ Dynamic_Selector::META_KEY ] ) && preg_match( '/\.(?:fontSize|lineHeight|letterSpacing)$/', $meta[ Dynamic_Selector::META_KEY ] ) ) {
+			if ( ! is_numeric( $value ) ) {
+				return '';
+			}
+			$value = (float) $value;
+		}
+
 		//If we have a custom filter, let's call it.
 		if ( isset( $meta['filter'] ) ) {
 			if ( is_callable( $meta['filter'] ) ) {
@@ -192,6 +199,9 @@ class Css_Prop {
 			//Line height uses an awkward format saved, and we can't define it as responsive because we would need to use the suffix part.
 			case Config::CSS_PROP_LINE_HEIGHT:
 			case Config::CSS_PROP_FONT_SIZE:
+				if ( ! is_numeric( $value ) ) {
+					return '';
+				}
 
 				$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'em';
 				// We consider the provided suffix as default, in case that we have a responsive setting with responsive suffix.
@@ -199,11 +209,13 @@ class Css_Prop {
 					$all_value = Mods::get( $meta['key'] );
 					$suffix    = isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : $suffix );
 				}
+				$suffix = neve_sanitize_css_unit( $suffix );
+				$suffix = '—' === $suffix ? '' : $suffix;
 
-				return sprintf( ' %s: %s%s;', $css_prop, $value, $suffix );
+				return sprintf( ' %s: %s%s;', $css_prop, (float) $value, $suffix );
 			//Letter spacing has a legacy value of non-responsive which we need to take into consideration.
 			case Config::CSS_PROP_LETTER_SPACING:
-				return sprintf( ' %s: %spx;', $css_prop, $value );
+				return is_numeric( $value ) ? sprintf( ' %s: %spx;', $css_prop, (float) $value ) : '';
 			case Config::CSS_PROP_CUSTOM_BTN_TYPE:
 				if ( $value !== 'outline' ) {
 					return 'border:none;';
@@ -218,7 +230,11 @@ class Css_Prop {
 
 				return sprintf( ' %s: %s;', $css_prop, intval( $value ) );
 			case Config::CSS_PROP_FONT_FAMILY:
+				$value = neve_sanitize_font_family( $value );
 				if ( $value === 'default' ) {
+					return '';
+				}
+				if ( '' === $value ) {
 					return '';
 				}
 				Font_Manager::add_google_font( $value );
@@ -231,9 +247,13 @@ class Css_Prop {
 			case Config::CSS_PROP_GRID_TEMPLATE_COLS:
 				return sprintf( ' %s: %s;', $css_prop, $value );
 			default:
-				$is_font_family_var = strpos( strtolower( $css_prop ), 'fontfamily' ) > - 1;
+				$is_font_family_var = false !== strpos( strtolower( $css_prop ), 'fontfamily' );
 
 				if ( $is_font_family_var ) {
+					$value = neve_sanitize_font_family( $value );
+					if ( '' === $value ) {
+						return '';
+					}
 					Font_Manager::add_google_font( $value );
 
 					$value = self::format_font_family_value( $value );

@@ -65,6 +65,27 @@ class TestNeveRowColorCss extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Stored image overlay colors are sanitized when printed.
+	 */
+	public function test_injected_row_overlay_color_is_printed_sanitized(): void {
+		set_theme_mod(
+			'hfg_header_layout_main_background',
+			array(
+				'type'              => 'image',
+				'imageUrl'          => '',
+				'focusPoint'        => array( 'x' => 0.5, 'y' => 0.5 ),
+				'overlayColorValue' => self::INJECTED_CSS,
+				'useFeatured'       => false,
+			)
+		);
+
+		$css = $this->header_css();
+
+		$this->assertStringNotContainsString( 'background:lime', $css );
+		$this->assertStringContainsString( '--overlaycolor: rgba(1,2,3,1);', $css );
+	}
+
+	/**
 	 * Render the header builder's dynamic CSS.
 	 *
 	 * @return string

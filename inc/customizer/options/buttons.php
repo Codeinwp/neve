@@ -91,7 +91,8 @@ class Buttons extends Base_Customizer {
 			new Control(
 				Config::MODS_BUTTON_TYPEFACE,
 				[
-					'transport' => $this->selective_refresh,
+					'transport'         => $this->selective_refresh,
+					'sanitize_callback' => 'neve_sanitize_typography_control',
 				],
 				[
 					'label'                 => esc_html__( 'Button Text', 'neve' ),

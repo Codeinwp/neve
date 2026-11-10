@@ -128,11 +128,31 @@ trait Core {
 	 * @return array
 	 */
 	public function sanitize_spacing_array( $input ) {
-		if ( is_array( $input ) ) {
-			return $input;
+		if ( ! is_array( $input ) ) {
+			return array();
 		}
 
-		return array();
+		foreach ( array( 'top', 'right', 'bottom', 'left' ) as $direction ) {
+			if ( isset( $input[ $direction ] ) && ! is_numeric( $input[ $direction ] ) ) {
+				unset( $input[ $direction ] );
+			}
+		}
+
+		foreach ( array( 'mobile', 'tablet', 'desktop' ) as $device ) {
+			if ( isset( $input[ $device ] ) ) {
+				$input[ $device ] = $this->sanitize_spacing_array( $input[ $device ] );
+			}
+			$unit_key = $device . '-unit';
+			if ( isset( $input[ $unit_key ] ) ) {
+				$input[ $unit_key ] = neve_sanitize_css_unit( $input[ $unit_key ] );
+			}
+		}
+
+		if ( isset( $input['unit'] ) ) {
+			$input['unit'] = neve_sanitize_css_unit( $input['unit'] );
+		}
+
+		return $input;
 	}
 
 	/**

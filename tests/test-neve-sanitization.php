@@ -196,6 +196,24 @@ class TestSanitization extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Optional typography controls retain their supported inherited weight.
+	 */
+	public function test_typography_sanitizer_keeps_inherited_font_weight() {
+		$value = array(
+			'fontWeight'    => 'none',
+			'textTransform' => 'none',
+			'fontSize'      => array(),
+			'lineHeight'    => array(),
+			'letterSpacing' => array(),
+		);
+
+		$this->assertSame( $value, neve_sanitize_typography_control( $value ) );
+
+		unset( $value['fontWeight'] );
+		$this->assertArrayNotHasKey( 'fontWeight', neve_sanitize_typography_control( $value ) );
+	}
+
+	/**
 	 * Logo data can already be decoded when it reaches the sanitizer.
 	 */
 	public function test_logo_json_sanitizer_accepts_array_input() {
@@ -330,6 +348,8 @@ class TestSanitization extends WP_UnitTestCase {
 		$this->assertSame( 'rgba(1,2,3,0.5)', neve_sanitize_colors( 'rgba(1,2,3,.5);}body{display:none' ) );
 
 		$invalid = [
+			'rgb(,)',
+			'rgba(1,)',
 			'rgb(1,2,3);}body{display:none',
 			'rgb(1,2,3)),url(//example.com/t.png)',
 			'rgb(1,2,3)</style><script>alert(1)</script>',

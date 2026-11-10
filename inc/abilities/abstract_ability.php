@@ -248,6 +248,12 @@ abstract class Abstract_Ability {
 			return $this->sanitize_background_mod( $value );
 		}
 
+		if ( preg_match( '/_new_text_color$/', $key ) ) {
+			$color = neve_sanitize_row_text_color( $value );
+
+			return '' === $color && '' !== $value ? null : $color;
+		}
+
 		if ( preg_match( '/_color$/', $key ) ) {
 			$color = neve_sanitize_colors( $value );
 
@@ -270,7 +276,10 @@ abstract class Abstract_Ability {
 		}
 
 		foreach ( array( 'colorValue', 'overlayColorValue' ) as $field ) {
-			if ( ! empty( $value[ $field ] ) && '' === $background[ $field ] ) {
+			if ( ! array_key_exists( $field, $value ) ) {
+				continue;
+			}
+			if ( ! is_string( $value[ $field ] ) || ( '' !== $value[ $field ] && '' === $background[ $field ] ) ) {
 				return null;
 			}
 		}

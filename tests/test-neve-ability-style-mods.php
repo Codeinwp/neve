@@ -7,6 +7,7 @@
 
 use Neve\Abilities\Footer_Configure;
 use Neve\Abilities\Header_Configure;
+use Neve\Abilities\Appearance_Update;
 use Neve\Abilities\Site_Set_Theme_Mod;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
@@ -61,6 +62,7 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 	 */
 	public function test_header_configure_sanitizes_row_style(): void {
 		set_theme_mod( self::HEADER_BG, 'previous' );
+		set_theme_mod( self::HEADER_TEXT, '#123456' );
 
 		( new Header_Configure() )->execute(
 			array(
@@ -105,6 +107,8 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 	 * Footer row colors are sanitized.
 	 */
 	public function test_footer_configure_sanitizes_row_style(): void {
+		set_theme_mod( self::FOOTER_TEXT, '#123456' );
+
 		( new Footer_Configure() )->execute(
 			array(
 				'row_style' => array(
@@ -187,6 +191,49 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		);
 
 		$this->assertSame( $background, get_theme_mod( self::HEADER_BG ) );
+	}
+
+	/**
+	 * Invalid nested background color types keep the stored background.
+	 */
+	public function test_header_configure_keeps_background_on_invalid_nested_color_types(): void {
+		$background = array(
+			'type'              => 'image',
+			'colorValue'        => '#123456',
+			'overlayColorValue' => '#654321',
+			'imageUrl'          => '',
+			'focusPoint'        => array( 'x' => 0.5, 'y' => 0.5 ),
+			'useFeatured'       => false,
+		);
+
+		$invalid_values = array(
+			'colorValue'        => array( 'notacolor', array() ),
+			'overlayColorValue' => array( 'notacolor', array() ),
+			'imageUrl'          => array( array() ),
+			'focusPoint'        => array( 'not-an-array' ),
+			'overlayOpacity'    => array( array() ),
+		);
+
+		foreach ( $invalid_values as $field => $invalid_values_for_field ) {
+			foreach ( $invalid_values_for_field as $invalid ) {
+				set_theme_mod( self::HEADER_BG, $background );
+				$candidate           = $background;
+				$candidate[ $field ] = $invalid;
+
+				( new Header_Configure() )->execute(
+					array(
+						'row_style' => array(
+							array(
+								'row'        => 'main',
+								'background' => $candidate,
+							),
+						),
+					)
+				);
+
+				$this->assertSame( $background, get_theme_mod( self::HEADER_BG ) );
+			}
+		}
 	}
 
 	/**
@@ -362,6 +409,190 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Named row text colors remain supported by both ability paths.
+	 */
+	public function test_abilities_accept_named_row_text_colors(): void {
+		( new Header_Configure() )->execute(
+			array(
+				'row_style' => array(
+					array(
+						'row'        => 'main',
+						'text_color' => 'red',
+					),
+				),
+			)
+		);
+		$this->assertSame( 'red', get_theme_mod( self::HEADER_TEXT ) );
+
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => self::SIDEBAR_TEXT,
+				'value'  => 'red',
+			)
+		);
+		$this->assertIsArray( $result );
+		$this->assertTrue( $result['success'] );
+		$this->assertSame( 'red', get_theme_mod( self::SIDEBAR_TEXT ) );
+	}
+
+	/**
+	 * Malformed functional colors are rejected and keep the stored color.
+	 */
+	public function test_site_set_theme_mod_rejects_malformed_function_color(): void {
+		set_theme_mod( self::SIDEBAR_TEXT, '#123456' );
+
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => self::SIDEBAR_TEXT,
+				'value'  => 'rgb(,)',
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertFalse( $result['success'] );
+		$this->assertSame( '#123456', get_theme_mod( self::SIDEBAR_TEXT ) );
+	}
+
+	/**
+	 * Typography and font-family values are sanitized on write and output.
+	 */
+	public function test_typography_values_are_sanitized_on_write_and_output(): void {
+		set_theme_mod( 'neve_body_font_family', 'Arial' );
+		$result = ( new Appearance_Update() )->execute(
+			array(
+				'typography' => array(
+					'body_font' => 'Arial;}body{background:lime}/*',
+					'element'   => array(
+						'target'   => 'body',
+						'fontSize' => array(
+							'desktop' => '10;}body{background:lime}/*',
+							'suffix'  => array( 'desktop' => 'px;}body{background:lime}/*' ),
+						),
+					),
+				),
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertSame( 'Arial', get_theme_mod( 'neve_body_font_family' ) );
+		$typeface = get_theme_mod( 'neve_typeface_general' );
+		$this->assertArrayNotHasKey( 'desktop', $typeface['fontSize'] );
+		$this->assertSame( 'px', $typeface['fontSize']['suffix']['desktop'] );
+
+		set_theme_mod( 'neve_body_font_family', 'Arial;}body{background:lime}/*' );
+		set_theme_mod(
+			'neve_typeface_general',
+			array(
+				'fontSize' => array(
+					'desktop' => '10;}body{background:lime}/*',
+					'suffix'  => array( 'desktop' => 'px;}body{background:lime}/*' ),
+				),
+			)
+		);
+		$css = (string) ( new Frontend() )->generate();
+		$this->assertStringNotContainsString( 'background:lime', $css );
+	}
+
+	/**
+	 * Partial typography updates retain the target's defaults.
+	 */
+	public function test_partial_typography_updates_retain_defaults(): void {
+		$targets = array(
+			'body' => array( 'neve_typeface_general', '400' ),
+			'h1'   => array( 'neve_h1_typeface_general', '700' ),
+		);
+
+		foreach ( $targets as $target => $expected ) {
+			remove_theme_mod( $expected[0] );
+			$result = ( new Appearance_Update() )->execute(
+				array(
+					'typography' => array(
+						'element' => array(
+							'target'   => $target,
+							'fontSize' => array( 'desktop' => 24 ),
+						),
+					),
+				)
+			);
+
+			$this->assertIsArray( $result );
+			$typeface = get_theme_mod( $expected[0] );
+			$this->assertSame( $expected[1], $typeface['fontWeight'] );
+			$this->assertSame( 24, $typeface['fontSize']['desktop'] );
+			$this->assertArrayHasKey( 'mobile', $typeface['fontSize'] );
+		}
+	}
+
+	/**
+	 * Empty font families remain valid reset values for the ability.
+	 */
+	public function test_typography_font_families_can_be_cleared(): void {
+		set_theme_mod( 'neve_body_font_family', 'Arial' );
+		set_theme_mod( 'neve_headings_font_family', 'Georgia' );
+
+		$result = ( new Appearance_Update() )->execute(
+			array(
+				'typography' => array(
+					'body_font'     => '',
+					'headings_font' => '',
+				),
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertSame( '', get_theme_mod( 'neve_body_font_family' ) );
+		$this->assertSame( '', get_theme_mod( 'neve_headings_font_family' ) );
+	}
+
+	/**
+	 * Previously stored fallback fonts are sanitized at their CSS sink.
+	 */
+	public function test_stored_fallback_font_is_sanitized_when_css_is_generated(): void {
+		set_theme_mod( 'neve_fallback_font_family', 'Arial;}body{background:lime}/*' );
+
+		$css = \Neve\Core\Dynamic_Css::get_fallback_font();
+
+		$this->assertSame( '--nv-fallback-ff:Arial, Helvetica, sans-serif;', $css );
+		$this->assertStringNotContainsString( 'background:lime', $css );
+	}
+
+	/**
+	 * Stored header component spacing is sanitized at every directional sink.
+	 */
+	public function test_stored_header_component_spacing_is_sanitized(): void {
+		$invalid = array(
+			'mobile'       => array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), '5;}body{background:lime}/*' ),
+			'tablet'       => array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), '5;}body{background:lime}/*' ),
+			'desktop'      => array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), '5;}body{background:lime}/*' ),
+			'mobile-unit'  => self::INJECTED_CSS,
+			'tablet-unit'  => self::INJECTED_CSS,
+			'desktop-unit' => self::INJECTED_CSS,
+		);
+		$mods    = array(
+			'primary-menu_component_padding',
+			'primary-menu_component_margin',
+			'header_search_field_border_width',
+			'header_search_field_border_radius',
+			'header_search_responsive_field_border_width',
+			'header_search_responsive_field_border_radius',
+			'header_menu_icon_label_margin',
+		);
+		foreach ( $mods as $mod ) {
+			set_theme_mod( $mod, $invalid );
+		}
+
+		$builder = \HFG\Main::get_instance()->get_builder( 'header' );
+		foreach ( array( 'mobile', 'tablet', 'desktop' ) as $device ) {
+			$selector = new Dynamic_Selector( $builder->add_style( array() ) );
+			$method   = 'for_' . $device;
+			$css      = (string) $selector->$method();
+			$this->assertStringNotContainsString( 'background:lime', $css );
+		}
+	}
+
+	/**
 	 * An invalid color is rejected and the stored color kept.
 	 */
 	public function test_site_set_theme_mod_rejects_invalid_color(): void {
@@ -452,6 +683,21 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		set_theme_mod( 'neve_scroll_to_top_border_radius', '3;}body{background:lime}/*' );
 		set_theme_mod( 'neve_scroll_to_top_status', '1' );
 
+		$responsive_directional = array(
+			'mobile'       => $invalid_directional,
+			'tablet'       => $invalid_directional,
+			'desktop'      => $invalid_directional,
+			'mobile-unit'  => self::INJECTED_CSS,
+			'tablet-unit'  => self::INJECTED_CSS,
+			'desktop-unit' => self::INJECTED_CSS,
+		);
+		foreach ( array( 'neve_comments_boxed_padding', 'neve_comments_form_boxed_padding', 'neve_post_cover_padding', 'neve_post_cover_title_boxed_padding', 'neve_post_content_vspacing' ) as $mod ) {
+			set_theme_mod( $mod, $responsive_directional );
+		}
+		set_theme_mod( 'neve_post_inherit_vspacing', 'individual' );
+		$post_id = self::factory()->post->create();
+		$this->go_to( get_permalink( $post_id ) );
+
 		$css = (string) ( new Frontend() )->generate();
 
 		$this->assertStringNotContainsString( 'background:lime', $css );
@@ -465,4 +711,5 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		$this->assertStringContainsString( '--borderradius: 3px;', $css );
 		$this->assertStringContainsString( '--hoverbgcolor: rgba(1,2,3,1);', $css );
 	}
+
 }

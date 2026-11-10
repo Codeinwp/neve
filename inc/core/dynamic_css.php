@@ -166,7 +166,9 @@ class Dynamic_Css {
 	 * @return string
 	 */
 	public static function get_fallback_font() {
-		$fallback = get_theme_mod( 'neve_fallback_font_family', 'Arial, Helvetica, sans-serif' );
+		$default  = 'Arial, Helvetica, sans-serif';
+		$fallback = neve_sanitize_font_family( get_theme_mod( 'neve_fallback_font_family', $default ) );
+		$fallback = '' === $fallback ? $default : $fallback;
 
 		return '--nv-fallback-ff:' . $fallback . ';';
 	}

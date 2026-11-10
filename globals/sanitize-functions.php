@@ -56,7 +56,9 @@ function neve_is_css_gradient( string $value ): bool {
  * @return bool
  */
 function neve_is_css_function_color( string $value ): bool {
-	return (bool) preg_match( '/^(?:rgb|rgba|hsl|hsla)\(\s*[-0-9.% ,]+\)$/', trim( $value ) );
+	$component = '[+-]?(?:\d+(?:\.\d*)?|\.\d+)%?';
+
+	return (bool) preg_match( '/^(?:rgb|rgba|hsl|hsla)\(\s*' . $component . '(?:\s*,\s*' . $component . '){2,3}\s*\)$/', trim( $value ) );
 }
 
 /**
@@ -118,12 +120,68 @@ function neve_sanitize_colors( $value ) {
 	// Is this an rgba color or a hex?
 	$mode = ( false === strpos( $value, 'rgba' ) ) ? 'hex' : 'rgba';
 	if ( 'rgba' === $mode ) {
-		return neve_sanitize_rgba( $value );
+		$component = '[+-]?(?:\d+(?:\.\d*)?|\.\d+)%?';
+		if ( ! preg_match( '/^rgba\(\s*' . $component . '(?:\s*,\s*' . $component . '){2,3}\s*\)/', trim( $value ), $match ) ) {
+			return '';
+		}
+
+		return neve_sanitize_rgba( $match[0] );
 	}
 
 	$hex_color = sanitize_hex_color( $value );
 
 	return null === $hex_color ? '' : $hex_color;
+}
+
+/**
+ * Sanitize row text colors, which historically allow CSS named colors.
+ *
+ * @param mixed $value Row text color.
+ *
+ * @return string
+ */
+function neve_sanitize_row_text_color( $value ) {
+	if ( ! is_string( $value ) ) {
+		return '';
+	}
+
+	if ( '' === $value ) {
+		return '';
+	}
+
+	$color = neve_sanitize_colors( $value );
+	if ( '' !== $color ) {
+		return $color;
+	}
+
+	if ( neve_closes_css_declaration( $value ) ) {
+		return '';
+	}
+
+	$named_colors = explode(
+		' ',
+		'aliceblue antiquewhite aqua aquamarine azure beige bisque black blanchedalmond blue blueviolet brown burlywood cadetblue chartreuse chocolate coral cornflowerblue cornsilk crimson cyan darkblue darkcyan darkgoldenrod darkgray darkgreen darkgrey darkkhaki darkmagenta darkolivegreen darkorange darkorchid darkred darksalmon darkseagreen darkslateblue darkslategray darkslategrey darkturquoise darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue firebrick floralwhite forestgreen fuchsia gainsboro ghostwhite gold goldenrod gray green greenyellow grey honeydew hotpink indianred indigo ivory khaki lavender lavenderblush lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow lightgray lightgreen lightgrey lightpink lightsalmon lightseagreen lightskyblue lightslategray lightslategrey lightsteelblue lightyellow lime limegreen linen magenta maroon mediumaquamarine mediumblue mediumorchid mediumpurple mediumseagreen mediumslateblue mediumspringgreen mediumturquoise mediumvioletred midnightblue mintcream mistyrose moccasin navajowhite navy oldlace olive olivedrab orange orangered orchid palegoldenrod palegreen paleturquoise palevioletred papayawhip peachpuff peru pink plum powderblue purple rebeccapurple red rosybrown royalblue saddlebrown salmon sandybrown seagreen seashell sienna silver skyblue slateblue slategray slategrey snow springgreen steelblue tan teal thistle tomato turquoise violet wheat white whitesmoke yellow yellowgreen currentcolor transparent'
+	);
+	$sanitized    = strtolower( sanitize_text_field( $value ) );
+
+	return in_array( $sanitized, $named_colors, true ) ? $sanitized : '';
+}
+
+/**
+ * Sanitize a font family before it is stored or printed in CSS.
+ *
+ * @param mixed $value Font family value.
+ *
+ * @return string
+ */
+function neve_sanitize_font_family( $value ) {
+	if ( ! is_string( $value ) ) {
+		return '';
+	}
+
+	$value = sanitize_text_field( $value );
+
+	return neve_closes_css_declaration( $value ) ? '' : $value;
 }
 
 /**
@@ -260,6 +318,20 @@ function neve_sanitize_background( $value ) {
 	}
 
 	if ( ! isset( $value['type'] ) || ! in_array( $value['type'], array( 'image', 'color' ), true ) ) {
+		return new WP_Error();
+	}
+
+	foreach ( array( 'imageUrl', 'colorValue', 'overlayColorValue' ) as $string_field ) {
+		if ( array_key_exists( $string_field, $value ) && ! is_string( $value[ $string_field ] ) ) {
+			return new WP_Error();
+		}
+	}
+
+	if ( isset( $value['focusPoint'] ) && ! is_array( $value['focusPoint'] ) ) {
+		return new WP_Error();
+	}
+
+	if ( isset( $value['overlayOpacity'] ) && ! is_numeric( $value['overlayOpacity'] ) ) {
 		return new WP_Error();
 	}
 
@@ -466,11 +538,15 @@ function neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blu
 /**
  * Sanitize the typography control.
  *
- * @param array $value the control value.
+ * @param mixed $value The control value.
  *
  * @return array
  */
 function neve_sanitize_typography_control( $value ) {
+	if ( ! is_array( $value ) ) {
+		return array();
+	}
+
 	$keys = [
 		'lineHeight',
 		'letterSpacing',
@@ -487,18 +563,33 @@ function neve_sanitize_typography_control( $value ) {
 	}
 
 	// Font Weight.
-	if ( ! in_array( $value['fontWeight'], [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], true ) ) {
+	if ( isset( $value['fontWeight'] ) && ! in_array( $value['fontWeight'], [ 'none', '100', '200', '300', '400', '500', '600', '700', '800', '900' ], true ) ) {
 		$value['fontWeight'] = '300';
 	}
 	// Text Transform.
-	if ( ! in_array( $value['textTransform'], [ 'none', 'uppercase', 'lowercase', 'capitalize' ], true ) ) {
+	if ( ! isset( $value['textTransform'] ) || ! in_array( $value['textTransform'], [ 'none', 'uppercase', 'lowercase', 'capitalize' ], true ) ) {
 		$value['textTransform'] = 'none';
 	}
 
-	// Make sure we deal with arrays.
+	// Keep only numeric responsive values and allowlisted units.
 	foreach ( [ 'letterSpacing', 'lineHeight', 'fontSize' ] as $value_type ) {
-		if ( ! is_array( $value[ $value_type ] ) ) {
+		if ( ! isset( $value[ $value_type ] ) || ! is_array( $value[ $value_type ] ) ) {
 			$value[ $value_type ] = [];
+			continue;
+		}
+
+		foreach ( array( 'mobile', 'tablet', 'desktop' ) as $device ) {
+			if ( isset( $value[ $value_type ][ $device ] ) && ! is_numeric( $value[ $value_type ][ $device ] ) ) {
+				unset( $value[ $value_type ][ $device ] );
+			}
+		}
+
+		if ( isset( $value[ $value_type ]['suffix'] ) ) {
+			if ( is_array( $value[ $value_type ]['suffix'] ) ) {
+				$value[ $value_type ]['suffix'] = array_map( 'neve_sanitize_css_unit', $value[ $value_type ]['suffix'] );
+			} else {
+				$value[ $value_type ]['suffix'] = neve_sanitize_css_unit( $value[ $value_type ]['suffix'] );
+			}
 		}
 	}
 

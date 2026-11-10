@@ -721,6 +721,7 @@ CSS;
 					Dynamic_Selector::META_DEFAULT       => $this->default_label_margin_value,
 					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 					'directional-prop'                   => Config::CSS_PROP_MARGIN,
+					Dynamic_Selector::META_FILTER        => 'neve_sanitize_directional_css_rule',
 				],
 			],
 		];

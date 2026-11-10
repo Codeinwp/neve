@@ -669,6 +669,7 @@ abstract class Abstract_Component implements Component {
 				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::PADDING_ID ),
 				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
+				Dynamic_Selector::META_FILTER        => 'neve_sanitize_directional_css_rule',
 			],
 			'--margin'  => [
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::MARGIN_ID,
@@ -676,6 +677,7 @@ abstract class Abstract_Component implements Component {
 				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::MARGIN_ID ),
 				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 				'directional-prop'                   => Config::CSS_PROP_MARGIN,
+				Dynamic_Selector::META_FILTER        => 'neve_sanitize_directional_css_rule',
 			],
 		];
 
@@ -829,7 +831,7 @@ abstract class Abstract_Component implements Component {
 					'transport'             => 'postMessage',
 					'priority'              => $priority + 1,
 					'type'                  => '\Neve\Customizer\Controls\React\Font_Family',
-					'sanitize_callback'     => 'sanitize_text_field',
+					'sanitize_callback'     => 'neve_sanitize_font_family',
 					'live_refresh_selector' => $this->default_typography_selector,
 					'live_refresh_css_prop' => array(
 						'cssVar' => [

@@ -788,6 +788,7 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_KEY           => Config::MODS_POST_COMMENTS_PADDING,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
+				Dynamic_Selector::META_FILTER        => 'neve_sanitize_directional_css_rule',
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
 			'--bgcolor' => [
@@ -809,6 +810,7 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 				Dynamic_Selector::META_DEFAULT       => $this->padding_default(),
+				Dynamic_Selector::META_FILTER        => 'neve_sanitize_directional_css_rule',
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 			],
 			'--bgcolor' => [
@@ -913,6 +915,7 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
 					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+					Dynamic_Selector::META_FILTER        => 'neve_sanitize_directional_css_rule',
 					'directional-prop'                   => Config::CSS_PROP_PADDING,
 				],
 				'--justify'   => [
@@ -978,6 +981,7 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_DEFAULT       => $this->padding_default( 'cover' ),
 					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+					Dynamic_Selector::META_FILTER        => 'neve_sanitize_directional_css_rule',
 					'directional-prop'                   => Config::CSS_PROP_PADDING,
 				],
 				'--bgcolor' => [
@@ -1045,6 +1049,7 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 					Dynamic_Selector::META_DEFAULT       => $default,
+					Dynamic_Selector::META_FILTER        => 'neve_sanitize_directional_css_rule',
 					Dynamic_Selector::META_DIRECTIONAL_PROP => Config::CSS_PROP_DIRECTIONAL_ONE_AXIS,
 				],
 			];
@@ -1064,6 +1069,7 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 					Dynamic_Selector::META_DEFAULT       => $this->content_vspacing_default(),
+					Dynamic_Selector::META_FILTER        => 'neve_sanitize_directional_css_rule',
 					'directional-prop'                   => Config::CSS_PROP_DIRECTIONAL_ONE_AXIS,
 				],
 			];

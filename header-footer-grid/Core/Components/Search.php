@@ -390,6 +390,7 @@ class Search extends Abstract_SearchComponent {
 				Dynamic_Selector::META_SUFFIX        => 'px',
 			],
 			'--formfieldborderwidth'  => [
+				Dynamic_Selector::META_FILTER        => 'neve_sanitize_directional_css_rule',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_BORDER_WIDTH,
 				Dynamic_Selector::META_SUFFIX        => 'px',
@@ -397,6 +398,7 @@ class Search extends Abstract_SearchComponent {
 				'directional-prop'                   => Config::CSS_PROP_BORDER_WIDTH,
 			],
 			'--formfieldborderradius' => [
+				Dynamic_Selector::META_FILTER        => 'neve_sanitize_directional_css_rule',
 				Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_BORDER_RADIUS,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_BORDER_RADIUS ),

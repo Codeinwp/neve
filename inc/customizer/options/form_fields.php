@@ -389,7 +389,8 @@ class Form_Fields extends Base_Customizer {
 			new Control(
 				Config::MODS_FORM_FIELDS_TYPEFACE,
 				[
-					'transport' => $this->selective_refresh,
+					'transport'         => $this->selective_refresh,
+					'sanitize_callback' => 'neve_sanitize_typography_control',
 				],
 				[
 					'priority'              => 32,
@@ -491,7 +492,8 @@ class Form_Fields extends Base_Customizer {
 			new Control(
 				Config::MODS_FORM_FIELDS_LABELS_TYPEFACE,
 				[
-					'transport' => $this->selective_refresh,
+					'transport'         => $this->selective_refresh,
+					'sanitize_callback' => 'neve_sanitize_typography_control',
 				],
 				[
 					'priority'              => 52,
