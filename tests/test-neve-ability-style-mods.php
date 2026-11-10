@@ -9,6 +9,7 @@ use Neve\Abilities\Footer_Configure;
 use Neve\Abilities\Header_Configure;
 use Neve\Abilities\Site_Set_Theme_Mod;
 use Neve\Core\Settings\Mods;
+use Neve\Core\Styles\Dynamic_Selector;
 use Neve\Core\Styles\Frontend;
 
 /**
@@ -231,6 +232,43 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Previously stored sidebar width values and units are sanitized when CSS is generated.
+	 */
+	public function test_stored_sidebar_width_is_sanitized_when_css_is_generated(): void {
+		$devices = array( 'mobile', 'tablet', 'desktop' );
+		$width   = '360;}body{background:lime}/*';
+		foreach ( array( self::INJECTED_CSS, array_fill_keys( $devices, self::INJECTED_CSS ) ) as $suffix ) {
+			set_theme_mod(
+				self::SIDEBAR_WIDTH,
+				wp_json_encode(
+					array(
+						'mobile'  => $width,
+						'tablet'  => $width,
+						'desktop' => $width,
+						'suffix'  => $suffix,
+					)
+				)
+			);
+
+			foreach ( array( 'slide_left', 'pull_left', 'pull_right' ) as $layout ) {
+				set_theme_mod( 'hfg_header_layout_sidebar_layout', $layout );
+				$builder  = \HFG\Main::get_instance()->get_builder( 'header' );
+				$selector = new Dynamic_Selector( $builder->add_style( array() ) );
+				$css      = (string) $selector->for_mobile() . (string) $selector->for_tablet() . (string) $selector->for_desktop();
+
+				$this->assertStringNotContainsString( 'background:lime', $css );
+				$this->assertStringContainsString( 'width: 360px;', $css );
+				if ( 'pull_left' === $layout ) {
+					$this->assertStringContainsString( 'left: 360px;', $css );
+				}
+				if ( 'pull_right' === $layout ) {
+					$this->assertStringContainsString( 'right: 360px;', $css );
+				}
+			}
+		}
+	}
+
+	/**
 	 * A spacing value that would close its CSS declaration is rejected and the stored value kept.
 	 */
 	public function test_site_set_theme_mod_rejects_injected_spacing(): void {
@@ -334,7 +372,7 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 	/**
 	 * Previously stored ability color settings are sanitized when CSS is generated.
 	 */
-	public function test_stored_ability_colors_are_sanitized_when_css_is_generated(): void {
+	public function test_stored_ability_styles_are_sanitized_when_css_is_generated(): void {
 		$color_mods = array(
 			'neve_form_fields_background_color',
 			'neve_form_fields_border_color',
@@ -347,6 +385,23 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		foreach ( $color_mods as $mod ) {
 			set_theme_mod( $mod, self::INJECTED_CSS );
 		}
+		$directional = array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), 2 );
+		$directional['unit'] = self::INJECTED_CSS;
+		$invalid_directional = array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), '2;}body{background:lime}/*' );
+		$invalid_directional['unit'] = 'px';
+		set_theme_mod( 'neve_form_fields_border_width', $directional );
+		set_theme_mod( 'neve_form_fields_border_radius', $invalid_directional );
+		set_theme_mod( 'neve_form_fields_padding', $directional );
+		$scroll_padding = array(
+			'mobile'       => $directional,
+			'tablet'       => $directional,
+			'desktop'      => $directional,
+			'mobile-unit'  => self::INJECTED_CSS,
+			'tablet-unit'  => self::INJECTED_CSS,
+			'desktop-unit' => self::INJECTED_CSS,
+		);
+		set_theme_mod( 'neve_scroll_to_top_padding', $scroll_padding );
+		set_theme_mod( 'neve_scroll_to_top_border_radius', '3;}body{background:lime}/*' );
 		set_theme_mod( 'neve_scroll_to_top_status', '1' );
 
 		$css = (string) ( new Frontend() )->generate();
@@ -355,6 +410,10 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		$this->assertStringContainsString( '--formfieldbgcolor: rgba(1,2,3,1);', $css );
 		$this->assertStringContainsString( '--formfieldbordercolor: rgba(1,2,3,1);', $css );
 		$this->assertStringContainsString( '--formfieldcolor: rgba(1,2,3,1);', $css );
+		$this->assertStringContainsString( '--formfieldborderwidth:2px;', $css );
+		$this->assertStringContainsString( '--formfieldborderradius:0;', $css );
+		$this->assertStringContainsString( '--formfieldpadding:2px;', $css );
+		$this->assertStringContainsString( '--borderradius: 3px;', $css );
 		$this->assertStringContainsString( '--hoverbgcolor: rgba(1,2,3,1);', $css );
 	}
 }

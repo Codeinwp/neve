@@ -363,13 +363,73 @@ function neve_sanitize_color_css_rule( $css_prop, $value ) {
 }
 
 /**
+ * Format sanitized directional dimensions as a CSS custom-property rule.
+ *
+ * @param string $css_prop CSS custom property.
+ * @param mixed  $value    Stored directional dimensions.
+ * @param array  $meta     Dynamic selector metadata.
+ * @param string $device   Current responsive device.
+ * @phpstan-param array{directional-prop: string, key: string, suffix?: string, is_responsive?: bool} $meta
+ *
+ * @return string
+ */
+function neve_sanitize_directional_css_rule( $css_prop, $value, $meta, $device ) {
+	$sanitized = array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), 0 );
+	if ( is_array( $value ) ) {
+		foreach ( array_keys( $sanitized ) as $direction ) {
+			if ( isset( $value[ $direction ] ) && is_numeric( $value[ $direction ] ) ) {
+				$sanitized[ $direction ] = (float) $value[ $direction ];
+			}
+		}
+		if ( isset( $value['unit'] ) ) {
+			$sanitized['unit'] = neve_sanitize_css_unit( $value['unit'] );
+		}
+	}
+
+	return \Neve\Core\Styles\Css_Prop::transform_directional_prop( $meta, $device, $sanitized, $css_prop, $meta['directional-prop'] );
+}
+
+/**
+ * Format a sanitized numeric value as a CSS custom-property rule.
+ *
+ * @param string $css_prop CSS custom property.
+ * @param mixed  $value    Stored numeric value.
+ * @param array  $meta     Dynamic selector metadata.
+ * @phpstan-param array{suffix?: string} $meta
+ *
+ * @return string
+ */
+function neve_sanitize_numeric_css_rule( $css_prop, $value, $meta ) {
+	$suffix = isset( $meta['suffix'] ) ? $meta['suffix'] : '';
+
+	return sprintf( ' %s: %d%s;', $css_prop, absint( $value ), $suffix );
+}
+
+/**
+ * Format a sanitized responsive range as a CSS rule.
+ *
+ * @param string $css_prop CSS property.
+ * @param mixed  $value    Stored range value for the current device.
+ * @param array  $meta     Dynamic selector metadata.
+ * @param string $device   Current responsive device.
+ * @phpstan-param array{key: string, default?: mixed, as_json?: mixed} $meta
+ *
+ * @return string
+ */
+function neve_sanitize_responsive_range_css_rule( $css_prop, $value, $meta, $device ) {
+	$suffix = \Neve\Core\Styles\Css_Prop::get_suffix_responsive( $meta, $device );
+
+	return sprintf( '%s: %s%s;', $css_prop, (float) $value, $suffix );
+}
+
+/**
  * Format sanitized button dimensions as a CSS custom-property rule.
  *
  * @param string $css_prop CSS custom property.
  * @param mixed  $value    Stored directional dimensions.
  * @param array  $meta     Dynamic selector metadata.
  * @param string $device   Current responsive device.
- * @phpstan-param array{directional-prop: string, override?: int|string} $meta
+ * @phpstan-param array{directional-prop: string, key: string, override?: int|string} $meta
  *
  * @return string
  */
@@ -378,13 +438,7 @@ function neve_sanitize_button_dimension_css_rule( $css_prop, $value, $meta, $dev
 		return sprintf( '%s:%d;', $css_prop, absint( $meta['override'] ) );
 	}
 
-	return \Neve\Core\Styles\Css_Prop::transform_directional_prop(
-		$meta,
-		$device,
-		neve_sanitize_button_dimension( $value ),
-		$css_prop,
-		$meta['directional-prop']
-	);
+	return neve_sanitize_directional_css_rule( $css_prop, neve_sanitize_button_dimension( $value ), $meta, $device );
 }
 
 /**

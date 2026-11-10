@@ -581,12 +581,14 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_WIDTH,
 					Dynamic_Selector::META_SUFFIX  => 'px',
 					Dynamic_Selector::META_DEFAULT => $border_width_default,
+					Dynamic_Selector::META_FILTER  => 'neve_sanitize_directional_css_rule',
 					'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
 				],
 				'--formfieldborderradius'  => [
 					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_RADIUS,
 					Dynamic_Selector::META_SUFFIX  => 'px',
 					Dynamic_Selector::META_DEFAULT => $border_radius_default,
+					Dynamic_Selector::META_FILTER  => 'neve_sanitize_directional_css_rule',
 					'directional-prop'             => Config::CSS_PROP_BORDER_RADIUS,
 				],
 				'--formfieldbgcolor'       => [
@@ -609,6 +611,7 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_DEFAULT       => Mods::get_alternative_mod_default( Config::MODS_FORM_FIELDS_PADDING ),
 					Dynamic_Selector::META_SUFFIX        => 'px',
 					Dynamic_Selector::META_IS_RESPONSIVE => false,
+					Dynamic_Selector::META_FILTER        => 'neve_sanitize_directional_css_rule',
 					'directional-prop'                   => Config::CSS_PROP_PADDING,
 				],
 				'--formfieldtexttransform' => [
@@ -1108,6 +1111,7 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_KEY           => 'neve_scroll_to_top_padding',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+				Dynamic_Selector::META_FILTER        => 'neve_sanitize_directional_css_rule',
 				'directional-prop'                   => Config::CSS_PROP_PADDING,
 				Dynamic_Selector::META_DEFAULT       => array(
 					'desktop'      => array(
@@ -1137,6 +1141,7 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_KEY     => 'neve_scroll_to_top_border_radius',
 				Dynamic_Selector::META_DEFAULT => 3,
 				Dynamic_Selector::META_SUFFIX  => 'px',
+				Dynamic_Selector::META_FILTER  => 'neve_sanitize_numeric_css_rule',
 			],
 			'--bgcolor'      => [
 				Dynamic_Selector::META_KEY     => 'neve_scroll_to_top_background_color',

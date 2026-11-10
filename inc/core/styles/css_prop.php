@@ -35,7 +35,7 @@ class Css_Prop {
 			$suffix = $all_value['unit'];
 		}
 
-		return $suffix;
+		return neve_sanitize_css_unit( $suffix );
 	}
 
 	/**
@@ -57,7 +57,9 @@ class Css_Prop {
 			}
 		}
 
-		return isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) && is_string( $all_value['suffix'] ) ? $all_value['suffix'] : 'px' );;
+		$suffix = isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) && is_string( $all_value['suffix'] ) ? $all_value['suffix'] : 'px' );
+
+		return neve_sanitize_css_unit( $suffix );
 	}
 
 	/**
@@ -259,13 +261,17 @@ class Css_Prop {
 
 		// If not responsive, most controls use 'unit' key inside value.
 		if ( ! isset( $meta['is_responsive'] ) || $meta['is_responsive'] === false ) {
-			$suffix = isset( $value['unit'] ) ? $value['unit'] : $suffix;
+			$suffix = isset( $value['unit'] ) ? neve_sanitize_css_unit( $value['unit'] ) : $suffix;
 		}
 
 		// If responsive, try to find the suffix.
 		if ( isset( $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) && $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) {
 			$all_value = Mods::get( $meta['key'] );
-			$suffix    = isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : $suffix );
+			if ( isset( $all_value['suffix'][ $device ] ) ) {
+				$suffix = neve_sanitize_css_unit( $all_value['suffix'][ $device ] );
+			} elseif ( isset( $all_value['suffix'] ) ) {
+				$suffix = neve_sanitize_css_unit( $all_value['suffix'] );
+			}
 		}
 
 		if ( $suffix === 'responsive_unit' ) {

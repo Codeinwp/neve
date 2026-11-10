@@ -2144,6 +2144,7 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
 						Dynamic_Selector::META_SUFFIX  => 'responsive_suffix',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_FILTER  => 'neve_sanitize_responsive_range_css_rule',
 					],
 				],
 			];
@@ -2157,6 +2158,7 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
 						Dynamic_Selector::META_SUFFIX  => 'responsive_suffix',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_FILTER  => 'neve_sanitize_responsive_range_css_rule',
 					],
 				],
 			];
@@ -2170,6 +2172,7 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
 						Dynamic_Selector::META_SUFFIX  => 'responsive_suffix',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_FILTER  => 'neve_sanitize_responsive_range_css_rule',
 					],
 				],
 			];
