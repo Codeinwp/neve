@@ -73,7 +73,8 @@ that needs a spoken-only label.
 
 For help using the theme with assistive technology, post in the Neve
 support forum: https://wordpress.org/support/theme/neve/ — or contact
-Themeisle support: https://themeisle.com/contact/
+Themeisle support from the Help button on the Neve dashboard (Neve in
+the WordPress admin menu).
 
 # Where to Report Issues
 
