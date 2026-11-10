@@ -78,14 +78,16 @@ trait Css_Vars {
 				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
 			],
 			'--primarybtnborderradius'   => [
-				Dynamic_Selector::META_KEY    => $mod_key_primary . '.borderRadius',
-				Dynamic_Selector::META_SUFFIX => 'px',
-				'directional-prop'            => Config::CSS_PROP_BORDER_RADIUS,
+				Dynamic_Selector::META_KEY     => $mod_key_primary . '.borderRadius',
+				Dynamic_Selector::META_SUFFIX  => 'px',
+				Dynamic_Selector::META_FILTER  => 'neve_sanitize_button_dimension_css_rule',
+				'directional-prop'             => Config::CSS_PROP_BORDER_RADIUS,
 			],
 			'--secondarybtnborderradius' => [
-				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.borderRadius',
-				Dynamic_Selector::META_SUFFIX => 'px',
-				'directional-prop'            => Config::CSS_PROP_BORDER_RADIUS,
+				Dynamic_Selector::META_KEY     => $mod_key_secondary . '.borderRadius',
+				Dynamic_Selector::META_SUFFIX  => 'px',
+				Dynamic_Selector::META_FILTER  => 'neve_sanitize_button_dimension_css_rule',
+				'directional-prop'             => Config::CSS_PROP_BORDER_RADIUS,
 			],
 		];
 
@@ -156,16 +158,18 @@ trait Css_Vars {
 		// Border Width
 		if ( isset( $primary_values['type'] ) && $primary_values['type'] === 'outline' ) {
 			$rules['--primarybtnborderwidth'] = [
-				Dynamic_Selector::META_KEY    => $mod_key_primary . '.borderWidth',
-				Dynamic_Selector::META_SUFFIX => 'px',
-				'directional-prop'            => Config::CSS_PROP_BORDER_WIDTH,
+				Dynamic_Selector::META_KEY     => $mod_key_primary . '.borderWidth',
+				Dynamic_Selector::META_SUFFIX  => 'px',
+				Dynamic_Selector::META_FILTER  => 'neve_sanitize_button_dimension_css_rule',
+				'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
 			];
 		}
 		if ( isset( $secondary_values['type'] ) && $secondary_values['type'] === 'outline' ) {
 			$rules['--secondarybtnborderwidth'] = [
-				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.borderWidth',
-				Dynamic_Selector::META_SUFFIX => 'px',
-				'directional-prop'            => Config::CSS_PROP_BORDER_WIDTH,
+				Dynamic_Selector::META_KEY     => $mod_key_secondary . '.borderWidth',
+				Dynamic_Selector::META_SUFFIX  => 'px',
+				Dynamic_Selector::META_FILTER  => 'neve_sanitize_button_dimension_css_rule',
+				'directional-prop'             => Config::CSS_PROP_BORDER_WIDTH,
 			];
 		}
 
@@ -197,7 +201,7 @@ trait Css_Vars {
 					if ( ! isset( $appearance_values['type'] ) || $appearance_values['type'] !== 'outline' ) {
 						continue;
 					}
-					$border_width = $appearance_values['borderWidth'];
+					$border_width = neve_sanitize_button_dimension( $appearance_values['borderWidth'] );
 
 					foreach ( $paddings[ $btn_type ] as $direction => $padding_value ) {
 						if ( ! isset( $border_width[ $direction ] ) || absint( $border_width[ $direction ] ) === 0 ) {

@@ -689,12 +689,14 @@ CSS;
 				Dynamic_Selector::META_FILTER => 'neve_sanitize_color_css_rule',
 			],
 			'--borderradius' => [
-				Dynamic_Selector::META_KEY => $id . '.borderRadius',
-				'directional-prop'         => Config::CSS_PROP_BORDER_RADIUS,
+				Dynamic_Selector::META_KEY    => $id . '.borderRadius',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_button_dimension_css_rule',
+				'directional-prop'            => Config::CSS_PROP_BORDER_RADIUS,
 			],
 			'--borderwidth'  => [
-				Dynamic_Selector::META_KEY => $id . '.borderWidth',
-				'directional-prop'         => Config::CSS_PROP_BORDER_WIDTH,
+				Dynamic_Selector::META_KEY    => $id . '.borderWidth',
+				Dynamic_Selector::META_FILTER => 'neve_sanitize_button_dimension_css_rule',
+				'directional-prop'            => Config::CSS_PROP_BORDER_WIDTH,
 			],
 		];
 

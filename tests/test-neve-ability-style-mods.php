@@ -8,6 +8,8 @@
 use Neve\Abilities\Footer_Configure;
 use Neve\Abilities\Header_Configure;
 use Neve\Abilities\Site_Set_Theme_Mod;
+use Neve\Core\Settings\Mods;
+use Neve\Core\Styles\Frontend;
 
 /**
  * Class TestNeveAbilityStyleMods
@@ -39,6 +41,7 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 
 		wp_set_current_user( 1 );
 		$this->theme_mods = get_theme_mods();
+		Mods::$no_cache   = true;
 	}
 
 	/**
@@ -46,6 +49,7 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 	 */
 	public function tearDown(): void {
 		update_option( 'theme_mods_' . get_option( 'stylesheet' ), $this->theme_mods );
+		Mods::$no_cache = false;
 
 		parent::tearDown();
 	}
@@ -201,6 +205,32 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Responsive sidebar width units are restricted to safe CSS unit strings.
+	 */
+	public function test_site_set_theme_mod_sanitizes_sidebar_width_units(): void {
+		$width = 360;
+		foreach ( array( self::INJECTED_CSS, array( 'mobile' => self::INJECTED_CSS ) ) as $suffix ) {
+			$result = ( new Site_Set_Theme_Mod() )->execute(
+				array(
+					'action' => 'set',
+					'key'    => self::SIDEBAR_WIDTH,
+					'value'  => array(
+						'mobile'  => $width,
+						'tablet'  => $width,
+						'desktop' => $width,
+						'suffix'  => $suffix,
+					),
+				)
+			);
+
+			$this->assertIsArray( $result );
+			$this->assertTrue( $result['success'] );
+			$stored = json_decode( get_theme_mod( self::SIDEBAR_WIDTH ), true );
+			$this->assertSame( 'px', is_array( $stored['suffix'] ) ? $stored['suffix']['mobile'] : $stored['suffix'] );
+		}
+	}
+
+	/**
 	 * A spacing value that would close its CSS declaration is rejected and the stored value kept.
 	 */
 	public function test_site_set_theme_mod_rejects_injected_spacing(): void {
@@ -299,5 +329,32 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		$this->assertIsArray( $result );
 		$this->assertTrue( $result['success'] );
 		$this->assertSame( 'rgba(1,2,3,1)', get_theme_mod( self::SIDEBAR_TEXT ) );
+	}
+
+	/**
+	 * Previously stored ability color settings are sanitized when CSS is generated.
+	 */
+	public function test_stored_ability_colors_are_sanitized_when_css_is_generated(): void {
+		$color_mods = array(
+			'neve_form_fields_background_color',
+			'neve_form_fields_border_color',
+			'neve_input_text_color',
+			'neve_scroll_to_top_icon_color',
+			'neve_scroll_to_top_icon_hover_color',
+			'neve_scroll_to_top_background_color',
+			'neve_scroll_to_top_background_hover_color',
+		);
+		foreach ( $color_mods as $mod ) {
+			set_theme_mod( $mod, self::INJECTED_CSS );
+		}
+		set_theme_mod( 'neve_scroll_to_top_status', '1' );
+
+		$css = (string) ( new Frontend() )->generate();
+
+		$this->assertStringNotContainsString( 'background:lime', $css );
+		$this->assertStringContainsString( '--formfieldbgcolor: rgba(1,2,3,1);', $css );
+		$this->assertStringContainsString( '--formfieldbordercolor: rgba(1,2,3,1);', $css );
+		$this->assertStringContainsString( '--formfieldcolor: rgba(1,2,3,1);', $css );
+		$this->assertStringContainsString( '--hoverbgcolor: rgba(1,2,3,1);', $css );
 	}
 }

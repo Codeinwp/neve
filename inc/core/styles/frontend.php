@@ -592,14 +592,17 @@ class Frontend extends Generator {
 				'--formfieldbgcolor'       => [
 					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BACKGROUND_COLOR,
 					Dynamic_Selector::META_DEFAULT => 'var(--nv-site-bg)',
+					Dynamic_Selector::META_FILTER  => 'neve_sanitize_color_css_rule',
 				],
 				'--formfieldbordercolor'   => [
 					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_BORDER_COLOR,
 					Dynamic_Selector::META_DEFAULT => '#8c8c8c',
+					Dynamic_Selector::META_FILTER  => 'neve_sanitize_color_css_rule',
 				],
 				'--formfieldcolor'         => [
 					Dynamic_Selector::META_KEY     => Config::MODS_FORM_FIELDS_COLOR,
 					Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
+					Dynamic_Selector::META_FILTER  => 'neve_sanitize_color_css_rule',
 				],
 				'--formfieldpadding'       => [
 					Dynamic_Selector::META_KEY           => Config::MODS_FORM_FIELDS_PADDING,
@@ -1099,6 +1102,7 @@ class Frontend extends Generator {
 			'--color'        => [
 				Dynamic_Selector::META_KEY     => 'neve_scroll_to_top_icon_color',
 				Dynamic_Selector::META_DEFAULT => empty( Mods::get( 'neve_scroll_to_top_icon_color', 'var(--nv-text-dark-bg)' ) ) ? 'transparent' : 'var(--nv-text-dark-bg)',
+				Dynamic_Selector::META_FILTER  => 'neve_sanitize_color_css_rule',
 			],
 			'--padding'      => [
 				Dynamic_Selector::META_KEY           => 'neve_scroll_to_top_padding',
@@ -1137,14 +1141,17 @@ class Frontend extends Generator {
 			'--bgcolor'      => [
 				Dynamic_Selector::META_KEY     => 'neve_scroll_to_top_background_color',
 				Dynamic_Selector::META_DEFAULT => empty( Mods::get( 'neve_scroll_to_top_background_color', 'var(--nv-primary-accent)' ) ) ? 'transparent' : 'var(--nv-primary-accent)',
+				Dynamic_Selector::META_FILTER  => 'neve_sanitize_color_css_rule',
 			],
 			'--hovercolor'   => [
 				Dynamic_Selector::META_KEY     => 'neve_scroll_to_top_icon_hover_color',
 				Dynamic_Selector::META_DEFAULT => empty( Mods::get( 'neve_scroll_to_top_icon_hover_color', 'var(--nv-text-dark-bg)' ) ) ? 'transparent' : 'var(--nv-text-dark-bg)',
+				Dynamic_Selector::META_FILTER  => 'neve_sanitize_color_css_rule',
 			],
 			'--hoverbgcolor' => [
 				Dynamic_Selector::META_KEY     => 'neve_scroll_to_top_background_hover_color',
 				Dynamic_Selector::META_DEFAULT => empty( Mods::get( 'neve_scroll_to_top_background_hover_color', 'var(--nv-primary-accent)' ) ) ? 'transparent' : 'var(--nv-primary-accent)',
+				Dynamic_Selector::META_FILTER  => 'neve_sanitize_color_css_rule',
 			],
 			'--size'         => [
 				Dynamic_Selector::META_KEY           => 'neve_scroll_to_top_icon_size',

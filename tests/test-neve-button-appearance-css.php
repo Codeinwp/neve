@@ -59,9 +59,14 @@ class TestNeveButtonAppearanceCss extends WP_UnitTestCase {
 		foreach ( $this->color_fields() as $field ) {
 			$this->assertSame( 'rgba(1,2,3,1)', $appearance[ $field ] );
 		}
-		$this->assertSame( 'fill', $appearance['type'] );
+		foreach ( array( 'borderRadius', 'borderWidth' ) as $field ) {
+			$this->assertSame( array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), 0 ), $appearance[ $field ] );
+		}
+		$this->assertSame( 'outline', $appearance['type'] );
 		$this->assertSame( array(), neve_sanitize_button_appearance( 'invalid' ) );
 		$this->assertSame( '', neve_sanitize_color_css_rule( '--color', 'invalid' ) );
+		$this->assertSame( ' --color: transparent;', neve_sanitize_color_css_rule( '--color', 'transparent' ) );
+		$this->assertSame( array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), 8 ), neve_sanitize_button_dimension( 8 ) );
 		$this->assertSame( '--shadow:0px 0px 0px none;', neve_sanitize_shadow_css_rule( '--shadow', 'invalid', 0, 0, 0 ) );
 	}
 
@@ -79,6 +84,8 @@ class TestNeveButtonAppearanceCss extends WP_UnitTestCase {
 		$this->assertStringNotContainsString( 'background:lime', $css );
 		$this->assertStringContainsString( '--primarybtnbg: rgba(1,2,3,1);', $css );
 		$this->assertStringContainsString( '--secondarybtnhovershadow:0px 0px 5px rgba(1,2,3,1);', $css );
+		$this->assertStringContainsString( '--primarybtnborderradius:0;', $css );
+		$this->assertStringContainsString( '--primarybtnborderwidth:0;', $css );
 	}
 
 	/**
@@ -105,6 +112,7 @@ class TestNeveButtonAppearanceCss extends WP_UnitTestCase {
 		$this->assertStringContainsString( '--bgcolor: rgba(1,2,3,1);', $css );
 		$this->assertStringContainsString( '--primarybtnbg: rgba(1,2,3,1);', $css );
 		$this->assertStringContainsString( '--primarybtnhovershadow:0px 0px 5px rgba(1,2,3,1);', $css );
+		$this->assertStringContainsString( '--primarybtnborderradius:0;', $css );
 	}
 
 	/**
@@ -117,6 +125,10 @@ class TestNeveButtonAppearanceCss extends WP_UnitTestCase {
 		foreach ( $this->color_fields() as $field ) {
 			$appearance[ $field ] = self::INJECTED_CSS;
 		}
+		foreach ( array( 'borderRadius', 'borderWidth' ) as $field ) {
+			$appearance[ $field ] = array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), '10;}body{background:lime}/*' );
+		}
+		$appearance['type']           = 'outline';
 		$appearance['useShadow']      = true;
 		$appearance['useShadowHover'] = true;
 

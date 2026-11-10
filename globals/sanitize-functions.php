@@ -188,7 +188,29 @@ function neve_sanitize_range_value( $input ) {
 	$range_value['desktop'] = isset( $range_value['desktop'] ) && is_numeric( $range_value['desktop'] ) ? floatval( $range_value['desktop'] ) : '';
 	$range_value['tablet']  = isset( $range_value['tablet'] ) && is_numeric( $range_value['tablet'] ) ? floatval( $range_value['tablet'] ) : '';
 	$range_value['mobile']  = isset( $range_value['mobile'] ) && is_numeric( $range_value['mobile'] ) ? floatval( $range_value['mobile'] ) : '';
+	if ( isset( $range_value['suffix'] ) ) {
+		if ( is_array( $range_value['suffix'] ) ) {
+			$range_value['suffix'] = array_map( 'neve_sanitize_css_unit', $range_value['suffix'] );
+		} else {
+			$range_value['suffix'] = neve_sanitize_css_unit( $range_value['suffix'] );
+		}
+	}
 	return wp_json_encode( $range_value );
+}
+
+/**
+ * Sanitize a CSS unit stored by a responsive range control.
+ *
+ * @param mixed $unit CSS unit.
+ *
+ * @return string
+ */
+function neve_sanitize_css_unit( $unit ) {
+	if ( ! is_string( $unit ) || ! in_array( $unit, array( 'px', 'em', 'rem', 'vh', '%' ), true ) ) {
+		return 'px';
+	}
+
+	return $unit;
 }
 
 /**
@@ -292,8 +314,38 @@ function neve_sanitize_button_appearance( $value ) {
 			$value[ $field ] = neve_sanitize_colors( $value[ $field ] );
 		}
 	}
+	foreach ( array( 'borderRadius', 'borderWidth' ) as $field ) {
+		if ( array_key_exists( $field, $value ) ) {
+			$value[ $field ] = neve_sanitize_button_dimension( $value[ $field ] );
+		}
+	}
 
 	return $value;
+}
+
+/**
+ * Sanitize the directional dimensions stored by a button appearance control.
+ *
+ * @param mixed $value Stored directional dimensions.
+ *
+ * @return array{top: int, right: int, bottom: int, left: int}
+ */
+function neve_sanitize_button_dimension( $value ) {
+	$sanitized = array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), 0 );
+	if ( is_numeric( $value ) ) {
+		return array_fill_keys( array_keys( $sanitized ), absint( $value ) );
+	}
+	if ( ! is_array( $value ) ) {
+		return $sanitized;
+	}
+
+	foreach ( array_keys( $sanitized ) as $direction ) {
+		if ( isset( $value[ $direction ] ) && is_numeric( $value[ $direction ] ) ) {
+			$sanitized[ $direction ] = absint( $value[ $direction ] );
+		}
+	}
+
+	return $sanitized;
 }
 
 /**
@@ -305,9 +357,34 @@ function neve_sanitize_button_appearance( $value ) {
  * @return string
  */
 function neve_sanitize_color_css_rule( $css_prop, $value ) {
-	$color = neve_sanitize_colors( $value );
+	$color = 'transparent' === $value ? $value : neve_sanitize_colors( $value );
 
 	return '' === $color ? '' : sprintf( ' %s: %s;', $css_prop, $color );
+}
+
+/**
+ * Format sanitized button dimensions as a CSS custom-property rule.
+ *
+ * @param string $css_prop CSS custom property.
+ * @param mixed  $value    Stored directional dimensions.
+ * @param array  $meta     Dynamic selector metadata.
+ * @param string $device   Current responsive device.
+ * @phpstan-param array{directional-prop: string, override?: int|string} $meta
+ *
+ * @return string
+ */
+function neve_sanitize_button_dimension_css_rule( $css_prop, $value, $meta, $device ) {
+	if ( isset( $meta['override'] ) ) {
+		return sprintf( '%s:%d;', $css_prop, absint( $meta['override'] ) );
+	}
+
+	return \Neve\Core\Styles\Css_Prop::transform_directional_prop(
+		$meta,
+		$device,
+		neve_sanitize_button_dimension( $value ),
+		$css_prop,
+		$meta['directional-prop']
+	);
 }
 
 /**
