@@ -81,8 +81,8 @@ function neve_closes_css_declaration( $value ): bool {
 		return false;
 	}
 
-	foreach ( $value as $item ) {
-		if ( neve_closes_css_declaration( $item ) ) {
+	foreach ( $value as $key => $item ) {
+		if ( ( is_string( $key ) && (bool) preg_match( '/[;{}<>]/', $key ) ) || neve_closes_css_declaration( $item ) ) {
 			return true;
 		}
 	}
@@ -178,6 +178,9 @@ function neve_sanitize_font_family( $value ) {
 	if ( ! is_string( $value ) ) {
 		return '';
 	}
+	if ( (bool) preg_match( '/[;{}<>]/', $value ) ) {
+		return '';
+	}
 
 	$value = sanitize_text_field( $value );
 
@@ -247,11 +250,7 @@ function neve_sanitize_range_value( $input ) {
 	$range_value['tablet']  = isset( $range_value['tablet'] ) && is_numeric( $range_value['tablet'] ) ? floatval( $range_value['tablet'] ) : '';
 	$range_value['mobile']  = isset( $range_value['mobile'] ) && is_numeric( $range_value['mobile'] ) ? floatval( $range_value['mobile'] ) : '';
 	if ( isset( $range_value['suffix'] ) ) {
-		if ( is_array( $range_value['suffix'] ) ) {
-			$range_value['suffix'] = array_map( 'neve_sanitize_css_unit', $range_value['suffix'] );
-		} else {
-			$range_value['suffix'] = neve_sanitize_css_unit( $range_value['suffix'] );
-		}
+		$range_value['suffix'] = neve_sanitize_css_suffix( $range_value['suffix'] );
 	}
 	return wp_json_encode( $range_value );
 }
@@ -269,6 +268,17 @@ function neve_sanitize_css_unit( $unit ) {
 	}
 
 	return $unit;
+}
+
+/**
+ * Sanitize a scalar or responsive CSS suffix.
+ *
+ * @param mixed $suffix CSS suffix value.
+ *
+ * @return string|array<array-key, string>
+ */
+function neve_sanitize_css_suffix( $suffix ) {
+	return is_array( $suffix ) ? array_map( 'neve_sanitize_css_unit', $suffix ) : neve_sanitize_css_unit( $suffix );
 }
 
 /**
@@ -383,7 +393,7 @@ function neve_sanitize_button_appearance( $value ) {
 	$color_fields = array( 'background', 'backgroundHover', 'text', 'textHover', 'shadowColor', 'shadowColorHover' );
 	foreach ( $color_fields as $field ) {
 		if ( array_key_exists( $field, $value ) ) {
-			$value[ $field ] = neve_sanitize_colors( $value[ $field ] );
+			$value[ $field ] = 'transparent' === $value[ $field ] ? 'transparent' : neve_sanitize_colors( $value[ $field ] );
 		}
 	}
 	foreach ( array( 'borderRadius', 'borderWidth' ) as $field ) {
@@ -391,8 +401,36 @@ function neve_sanitize_button_appearance( $value ) {
 			$value[ $field ] = neve_sanitize_button_dimension( $value[ $field ] );
 		}
 	}
+	foreach ( array( 'shadowProperties', 'shadowPropertiesHover' ) as $field ) {
+		if ( array_key_exists( $field, $value ) ) {
+			$value[ $field ] = neve_sanitize_button_shadow_properties( $value[ $field ] );
+		}
+	}
 
 	return $value;
+}
+
+/**
+ * Sanitize button shadow offsets and blur.
+ *
+ * @param mixed $value Stored shadow properties.
+ *
+ * @return array{blur: int, width: int, height: int}
+ */
+function neve_sanitize_button_shadow_properties( $value ) {
+	$sanitized = array_fill_keys( array( 'blur', 'width', 'height' ), 0 );
+	if ( ! is_array( $value ) ) {
+		return $sanitized;
+	}
+
+	foreach ( array_keys( $sanitized ) as $property ) {
+		if ( isset( $value[ $property ] ) && is_numeric( $value[ $property ] ) ) {
+			$sanitized[ $property ] = (int) $value[ $property ];
+		}
+	}
+	$sanitized['blur'] = abs( $sanitized['blur'] );
+
+	return $sanitized;
 }
 
 /**
@@ -435,6 +473,25 @@ function neve_sanitize_color_css_rule( $css_prop, $value ) {
 }
 
 /**
+ * Format a sanitized font family as a CSS custom-property rule.
+ *
+ * @param string $css_prop CSS custom property.
+ * @param mixed  $value    Stored font family.
+ *
+ * @return string
+ */
+function neve_sanitize_font_family_css_rule( $css_prop, $value ) {
+	$font_family = neve_sanitize_font_family( $value );
+	if ( '' === $font_family ) {
+		return '';
+	}
+
+	\Neve\Views\Font_Manager::add_google_font( $font_family );
+
+	return sprintf( ' %s: %s;', $css_prop, \Neve\Core\Styles\Css_Prop::format_font_family_value( $font_family ) );
+}
+
+/**
  * Format sanitized directional dimensions as a CSS custom-property rule.
  *
  * @param string $css_prop CSS custom property.
@@ -446,21 +503,40 @@ function neve_sanitize_color_css_rule( $css_prop, $value ) {
  * @return string
  */
 function neve_sanitize_directional_css_rule( $css_prop, $value, $meta, $device ) {
-	$sanitized = array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), 0 );
-	if ( is_numeric( $value ) ) {
-		$sanitized = array_fill_keys( array_keys( $sanitized ), (float) $value );
-	} elseif ( is_array( $value ) ) {
-		foreach ( array_keys( $sanitized ) as $direction ) {
-			if ( isset( $value[ $direction ] ) && is_numeric( $value[ $direction ] ) ) {
-				$sanitized[ $direction ] = (float) $value[ $direction ];
-			}
-		}
-		if ( isset( $value['unit'] ) ) {
-			$sanitized['unit'] = neve_sanitize_css_unit( $value['unit'] );
-		}
+	$sanitized = neve_sanitize_directional_value( $value );
+	if ( empty( array_filter( $sanitized, 'is_numeric' ) ) ) {
+		return '';
 	}
 
 	return \Neve\Core\Styles\Css_Prop::transform_directional_prop( $meta, $device, $sanitized, $css_prop, $meta['directional-prop'] );
+}
+
+/**
+ * Sanitize directional values before formatting them as CSS.
+ *
+ * @param mixed $value Stored directional dimensions.
+ *
+ * @return array<string, float|string>
+ */
+function neve_sanitize_directional_value( $value ) {
+	$sanitized = array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), '' );
+	if ( is_numeric( $value ) ) {
+		return array_fill_keys( array_keys( $sanitized ), (float) $value );
+	}
+	if ( ! is_array( $value ) ) {
+		return $sanitized;
+	}
+
+	foreach ( array_keys( $sanitized ) as $direction ) {
+		if ( isset( $value[ $direction ] ) && is_numeric( $value[ $direction ] ) ) {
+			$sanitized[ $direction ] = (float) $value[ $direction ];
+		}
+	}
+	if ( isset( $value['unit'] ) ) {
+		$sanitized['unit'] = neve_sanitize_css_unit( $value['unit'] );
+	}
+
+	return $sanitized;
 }
 
 /**
@@ -536,11 +612,26 @@ function neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blu
 }
 
 /**
+ * Format a button shadow after normalizing its stored properties.
+ *
+ * @param string $css_prop   CSS custom property.
+ * @param mixed  $value      Stored shadow color.
+ * @param mixed  $properties Stored shadow properties.
+ *
+ * @return string
+ */
+function neve_sanitize_button_shadow_css_rule( $css_prop, $value, $properties ) {
+	$properties = neve_sanitize_button_shadow_properties( $properties );
+
+	return neve_sanitize_shadow_css_rule( $css_prop, $value, $properties['width'], $properties['height'], $properties['blur'] );
+}
+
+/**
  * Sanitize the typography control.
  *
  * @param mixed $value The control value.
  *
- * @return array
+ * @return array{}|array{fontWeight?: string|null, textTransform: string, fontSize: array<array-key, mixed>, lineHeight: array<array-key, mixed>, letterSpacing: array<array-key, mixed>}
  */
 function neve_sanitize_typography_control( $value ) {
 	if ( ! is_array( $value ) ) {
@@ -585,11 +676,7 @@ function neve_sanitize_typography_control( $value ) {
 		}
 
 		if ( isset( $value[ $value_type ]['suffix'] ) ) {
-			if ( is_array( $value[ $value_type ]['suffix'] ) ) {
-				$value[ $value_type ]['suffix'] = array_map( 'neve_sanitize_css_unit', $value[ $value_type ]['suffix'] );
-			} else {
-				$value[ $value_type ]['suffix'] = neve_sanitize_css_unit( $value[ $value_type ]['suffix'] );
-			}
+			$value[ $value_type ]['suffix'] = neve_sanitize_css_suffix( $value[ $value_type ]['suffix'] );
 		}
 	}
 

@@ -731,6 +731,7 @@ abstract class Abstract_Component implements Component {
 						'--inheritedff' => [
 							Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FONT_FAMILY_ID,
 							Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FONT_FAMILY_ID ),
+							Dynamic_Selector::META_FILTER  => 'neve_sanitize_font_family_css_rule',
 						],
 						'--inheritedfw' => [
 							Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontWeight',

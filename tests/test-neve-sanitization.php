@@ -214,6 +214,34 @@ class TestSanitization extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Blank spacing remains blank instead of overriding inherited spacing with zero.
+	 */
+	public function test_directional_css_sanitizer_keeps_blank_spacing() {
+		$value = array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), '' );
+		$meta  = array(
+			'key'              => 'blank_spacing',
+			'suffix'           => 'px',
+			'directional-prop' => \Neve\Core\Settings\Config::CSS_PROP_PADDING,
+		);
+
+		$this->assertSame( '', neve_sanitize_directional_css_rule( '--padding', $value, $meta, 'desktop' ) );
+	}
+
+	/**
+	 * Declaration checks inspect JSON object keys as well as values.
+	 */
+	public function test_css_declaration_check_inspects_json_keys() {
+		$this->assertTrue( neve_closes_css_declaration( '{"x\\";}}body{background:lime}/*":0}' ) );
+	}
+
+	/**
+	 * Valid font families remain available to component custom properties.
+	 */
+	public function test_font_family_css_rule_preserves_valid_fonts() {
+		$this->assertSame( ' --inheritedff: Arial;', neve_sanitize_font_family_css_rule( '--inheritedff', 'Arial' ) );
+	}
+
+	/**
 	 * Logo data can already be decoded when it reaches the sanitizer.
 	 */
 	public function test_logo_json_sanitizer_accepts_array_input() {

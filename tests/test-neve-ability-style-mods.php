@@ -27,6 +27,7 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 	const SIDEBAR_WIDTH = 'hfg_header_layout_sidebar_width';
 	const HEADER_HEIGHT = 'hfg_header_layout_main_height';
 	const FORM_PADDING  = 'neve_form_fields_padding';
+	const NAV_BUTTON    = 'nav-icon_button_appearance';
 	const LINE_HEIGHT   = 1.5;
 
 	/**
@@ -481,14 +482,26 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		$this->assertArrayNotHasKey( 'desktop', $typeface['fontSize'] );
 		$this->assertSame( 'px', $typeface['fontSize']['suffix']['desktop'] );
 
-		set_theme_mod( 'neve_body_font_family', 'Arial;}body{background:lime}/*' );
+		$json_font = '{"x\\";}}body{background:lime}/*":0}';
+		( new Appearance_Update() )->execute(
+			array(
+				'typography' => array( 'body_font' => $json_font ),
+			)
+		);
+		$this->assertSame( 'Arial', get_theme_mod( 'neve_body_font_family' ) );
+
+		set_theme_mod( 'neve_body_font_family', $json_font );
 		set_theme_mod(
 			'neve_typeface_general',
 			array(
-				'fontSize' => array(
+				'fontSize'      => array(
 					'desktop' => '10;}body{background:lime}/*',
 					'suffix'  => array( 'desktop' => 'px;}body{background:lime}/*' ),
 				),
+				'lineHeight'    => array( 'desktop' => '10;}body{background:lime}/*' ),
+				'letterSpacing' => array( 'desktop' => '10;}body{background:lime}/*' ),
+				'fontWeight'    => '10;}body{background:lime}/*',
+				'textTransform' => 'none;}body{background:lime}/*',
 			)
 		);
 		$css = (string) ( new Frontend() )->generate();
@@ -582,6 +595,7 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		foreach ( $mods as $mod ) {
 			set_theme_mod( $mod, $invalid );
 		}
+		set_theme_mod( 'primary-menu_component_font_family', 'Arial;}body{background:lime}/*' );
 
 		$builder = \HFG\Main::get_instance()->get_builder( 'header' );
 		foreach ( array( 'mobile', 'tablet', 'desktop' ) as $device ) {
@@ -610,6 +624,42 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		$this->assertFalse( $result['success'] );
 		$this->assertSame( 'invalid_value', $result['error']['code'] );
 		$this->assertSame( '#ff0000', get_theme_mod( self::SIDEBAR_TEXT ) );
+	}
+
+	/**
+	 * Invalid button appearance colors keep the stored appearance.
+	 */
+	public function test_site_set_theme_mod_rejects_invalid_button_appearance_color(): void {
+		$stored = array(
+			'background' => '#123456',
+			'text'       => '#ffffff',
+		);
+		set_theme_mod( self::NAV_BUTTON, $stored );
+
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => self::NAV_BUTTON,
+				'value'  => array( 'background' => 'notacolor' ),
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertFalse( $result['success'] );
+		$this->assertSame( 'invalid_value', $result['error']['code'] );
+		$this->assertSame( $stored, get_theme_mod( self::NAV_BUTTON ) );
+
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => self::NAV_BUTTON,
+				'value'  => array( 'background' => 'transparent' ),
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertTrue( $result['success'] );
+		$this->assertSame( 'transparent', get_theme_mod( self::NAV_BUTTON )['background'] );
 	}
 
 	/**
@@ -691,7 +741,7 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 			'tablet-unit'  => self::INJECTED_CSS,
 			'desktop-unit' => self::INJECTED_CSS,
 		);
-		foreach ( array( 'neve_comments_boxed_padding', 'neve_comments_form_boxed_padding', 'neve_post_cover_padding', 'neve_post_cover_title_boxed_padding', 'neve_post_content_vspacing' ) as $mod ) {
+		foreach ( array( 'neve_content_vspacing', 'neve_blog_content_padding', 'neve_comments_boxed_padding', 'neve_comments_form_boxed_padding', 'neve_post_cover_padding', 'neve_post_cover_title_boxed_padding', 'neve_post_content_vspacing' ) as $mod ) {
 			set_theme_mod( $mod, $responsive_directional );
 		}
 		set_theme_mod( 'neve_post_inherit_vspacing', 'individual' );
@@ -705,7 +755,7 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		$this->assertStringContainsString( '--formfieldbordercolor: rgba(1,2,3,1);', $css );
 		$this->assertStringContainsString( '--formfieldcolor: rgba(1,2,3,1);', $css );
 		$this->assertStringContainsString( '--formfieldborderwidth:2px;', $css );
-		$this->assertStringContainsString( '--formfieldborderradius:0;', $css );
+		$this->assertStringNotContainsString( '--formfieldborderradius:', $css );
 		$this->assertStringContainsString( '--formfieldpadding:2px;', $css );
 		$this->assertStringContainsString( '--padding:2px;', $css );
 		$this->assertStringContainsString( '--borderradius: 3px;', $css );

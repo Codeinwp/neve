@@ -62,6 +62,9 @@ class TestNeveButtonAppearanceCss extends WP_UnitTestCase {
 		foreach ( array( 'borderRadius', 'borderWidth' ) as $field ) {
 			$this->assertSame( array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), 0 ), $appearance[ $field ] );
 		}
+		foreach ( array( 'shadowProperties', 'shadowPropertiesHover' ) as $field ) {
+			$this->assertSame( array( 'blur' => 5, 'width' => 0, 'height' => 0 ), $appearance[ $field ] );
+		}
 		$this->assertSame( 'outline', $appearance['type'] );
 		$this->assertSame( array(), neve_sanitize_button_appearance( 'invalid' ) );
 		$this->assertSame( '', neve_sanitize_color_css_rule( '--color', 'invalid' ) );
@@ -89,6 +92,71 @@ class TestNeveButtonAppearanceCss extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Malformed stored button shadows and padding are normalized before output.
+	 */
+	public function test_global_button_css_handles_malformed_stored_structures(): void {
+		$appearance                          = neve_get_button_appearance_default();
+		$appearance['useShadow']             = true;
+		$appearance['useShadowHover']        = true;
+		$appearance['shadowProperties']      = 'invalid';
+		$appearance['shadowPropertiesHover'] = array( 'blur' => self::INJECTED_CSS );
+		set_theme_mod( 'neve_button_appearance', $appearance );
+		set_theme_mod( 'neve_secondary_button_appearance', $appearance );
+		set_theme_mod(
+			'neve_button_padding',
+			array(
+				'mobile'       => array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), self::INJECTED_CSS ),
+				'tablet'       => array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), self::INJECTED_CSS ),
+				'desktop'      => array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), self::INJECTED_CSS ),
+				'mobile-unit'  => self::INJECTED_CSS,
+				'tablet-unit'  => self::INJECTED_CSS,
+				'desktop-unit' => self::INJECTED_CSS,
+			)
+		);
+
+		$rules = ( new NeveButtonRulesWrapperForTest() )->get_button_rules();
+		$css   = (string) new Dynamic_Selector( array( ':root' => $rules ) );
+
+		$this->assertStringNotContainsString( 'background:lime', $css );
+		$this->assertStringContainsString( '--primarybtnshadow:0px 0px 0px', $css );
+		$this->assertStringContainsString( '--secondarybtnhovershadow:0px 0px 0px', $css );
+		$this->assertStringNotContainsString( '--btnpadding:', $css );
+	}
+
+	/**
+	 * The Customizer setting sanitizes button padding before storage.
+	 */
+	public function test_button_padding_customizer_setting_sanitizes_input(): void {
+		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
+
+		$wp_customize = new WP_Customize_Manager();
+		( new \Neve\Customizer\Options\Buttons() )->register_controls_callback( $wp_customize );
+		$setting = $wp_customize->get_setting( 'neve_button_padding' );
+
+		$this->assertNotNull( $setting );
+		$input = array(
+			'mobile'       => array_fill_keys( array( 'top', 'right', 'bottom', 'left' ), self::INJECTED_CSS ),
+			'tablet'       => array( 'top' => 12, 'right' => self::INJECTED_CSS ),
+			'desktop'      => array( 'top' => 10, 'right' => 20, 'bottom' => 30, 'left' => 40 ),
+			'mobile-unit'  => self::INJECTED_CSS,
+			'tablet-unit'  => 'em',
+			'desktop-unit' => 'px',
+		);
+
+		$this->assertSame(
+			array(
+				'mobile'       => array(),
+				'tablet'       => array( 'top' => 12 ),
+				'desktop'      => array( 'top' => 10, 'right' => 20, 'bottom' => 30, 'left' => 40 ),
+				'mobile-unit'  => 'px',
+				'tablet-unit'  => 'em',
+				'desktop-unit' => 'px',
+			),
+			$setting->sanitize( $input )
+		);
+	}
+
+	/**
 	 * Previously stored component colors are sanitized when header CSS is generated.
 	 */
 	public function test_header_component_css_sanitizes_stored_colors(): void {
@@ -113,6 +181,28 @@ class TestNeveButtonAppearanceCss extends WP_UnitTestCase {
 		$this->assertStringContainsString( '--primarybtnbg: rgba(1,2,3,1);', $css );
 		$this->assertStringContainsString( '--primarybtnhovershadow:0px 0px 5px rgba(1,2,3,1);', $css );
 		$this->assertStringContainsString( '--primarybtnborderradius:0;', $css );
+	}
+
+	/**
+	 * Malformed stored component shadows are normalized before output.
+	 */
+	public function test_header_component_css_handles_malformed_stored_shadow(): void {
+		$appearance                     = neve_get_button_appearance_default();
+		$appearance['useShadow']        = true;
+		$appearance['shadowProperties'] = 'invalid';
+		set_theme_mod( 'button_base_style_setting', $appearance );
+
+		$builder = \HFG\Main::get_instance()->get_builder( 'header' );
+		$styles  = $builder->add_style( array() );
+		foreach ( $builder->get_components() as $component ) {
+			if ( 'button_base' === $component->get_id() ) {
+				$styles = $component->add_style( $styles );
+			}
+		}
+
+		$css = (string) new Dynamic_Selector( $styles );
+
+		$this->assertStringContainsString( '--primarybtnshadow:0px 0px 0px', $css );
 	}
 
 	/**

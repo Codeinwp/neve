@@ -71,17 +71,17 @@ class Buttons extends Base_Customizer {
 			new Control(
 				$mod_key,
 				array(
-					'default' => $defaults,
+					'default'           => $defaults,
+					'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
 				),
 				array(
-					'label'             => __( 'Padding', 'neve' ),
-					'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
-					'section'           => $this->section_id,
-					'input_attrs'       => [
+					'label'       => __( 'Padding', 'neve' ),
+					'section'     => $this->section_id,
+					'input_attrs' => [
 						'units' => [ 'px', 'em', 'rem' ],
 						'min'   => 0,
 					],
-					'default'           => $defaults,
+					'default'     => $defaults,
 				),
 				'\Neve\Customizer\Controls\React\Spacing'
 			)

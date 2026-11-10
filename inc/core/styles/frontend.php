@@ -251,11 +251,11 @@ class Frontend extends Generator {
 							$output = '';
 							$unit   = Css_Prop::get_unit_responsive( $meta, $device );
 
-							if ( isset( $value['right'] ) && ! empty( $value['right'] ) ) {
-								$output .= sprintf( 'margin-right:-%1$s%2$s;', $value['right'], $unit );
+							if ( isset( $value['right'] ) && is_numeric( $value['right'] ) && ! empty( $value['right'] ) ) {
+								$output .= sprintf( 'margin-right:-%1$s%2$s;', (float) $value['right'], $unit );
 							}
-							if ( isset( $value['left'] ) && ! empty( $value['left'] ) ) {
-								$output .= sprintf( 'margin-left:-%1$s%2$s;', $value['left'], $unit );
+							if ( isset( $value['left'] ) && is_numeric( $value['left'] ) && ! empty( $value['left'] ) ) {
+								$output .= sprintf( 'margin-left:-%1$s%2$s;', (float) $value['left'], $unit );
 							}
 
 							return $output;
@@ -275,28 +275,12 @@ class Frontend extends Generator {
 				},
 			],
 			'--padding'      => [
-				'key'              => 'neve_blog_content_padding',
-				'default'          => $content_padding_default,
-				'is_responsive'    => true,
-				'directional-prop' => 'padding',
-				'suffix'           => 'responsive_unit',
-				'filter'           => function ( $css_prop, $value, $meta, $device ) {
-					$output = '';
-					$unit   = Css_Prop::get_unit_responsive( $meta, $device );
-
-					$check = array_filter(
-						$value,
-						function ( $item ) {
-							return ! empty( $item ) || $item === '0';
-						} 
-					);
-
-					if ( empty( $check ) ) {
-								return '';
-					}
-
-					return sprintf( $css_prop . ':%1$s%5$s %2$s%5$s %3$s%5$s %4$s%5$s;', $value['top'], $value['right'], $value['bottom'], $value['left'], $unit );
-				},
+				Dynamic_Selector::META_KEY              => 'neve_blog_content_padding',
+				Dynamic_Selector::META_DEFAULT          => $content_padding_default,
+				Dynamic_Selector::META_IS_RESPONSIVE    => true,
+				Dynamic_Selector::META_DIRECTIONAL_PROP => 'padding',
+				Dynamic_Selector::META_SUFFIX           => 'responsive_unit',
+				Dynamic_Selector::META_FILTER           => 'neve_sanitize_directional_css_rule',
 			],
 		];
 
@@ -1031,6 +1015,7 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_IS_RESPONSIVE    => true,
 				Dynamic_Selector::META_SUFFIX           => 'responsive_unit',
 				Dynamic_Selector::META_DEFAULT          => $this->content_vspacing_default(),
+				Dynamic_Selector::META_FILTER           => 'neve_sanitize_directional_css_rule',
 				Dynamic_Selector::META_DIRECTIONAL_PROP => Config::CSS_PROP_DIRECTIONAL_ONE_AXIS,
 			],
 		];

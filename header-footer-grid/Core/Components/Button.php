@@ -270,11 +270,8 @@ class Button extends Abstract_Component {
 				if ( ! isset( $button_values['useShadow'] ) || empty( $button_values['useShadow'] ) ) {
 					return sprintf( '%s:%s;', $css_prop, 'none' );
 				}
-				$blur   = intval( $button_values['shadowProperties']['blur'] );
-				$width  = intval( $button_values['shadowProperties']['width'] );
-				$height = intval( $button_values['shadowProperties']['height'] );
 
-				return neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blur );
+				return neve_sanitize_button_shadow_css_rule( $css_prop, $value, $button_values['shadowProperties'] ?? array() );
 			},
 		];
 		$rules['--primarybtnhovershadow'] = [
@@ -284,11 +281,8 @@ class Button extends Abstract_Component {
 				if ( ! isset( $button_values['useShadowHover'] ) || empty( $button_values['useShadowHover'] ) ) {
 					return sprintf( '%s:%s;', $css_prop, 'none' );
 				}
-				$blur   = intval( $button_values['shadowPropertiesHover']['blur'] );
-				$width  = intval( $button_values['shadowPropertiesHover']['width'] );
-				$height = intval( $button_values['shadowPropertiesHover']['height'] );
 
-				return neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blur );
+				return neve_sanitize_button_shadow_css_rule( $css_prop, $value, $button_values['shadowPropertiesHover'] ?? array() );
 			},
 		];
 

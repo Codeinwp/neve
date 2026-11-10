@@ -98,60 +98,44 @@ trait Css_Vars {
 		// Button Shadow Primary
 		if ( isset( $primary_values['useShadow'] ) && ! empty( $primary_values['useShadow'] ) ) {
 			$rules['--primarybtnshadow'] = [
-				Dynamic_Selector::META_KEY    => $mod_key_primary . '.shadowColor',
-				Dynamic_Selector::META_DEFAULT       => 'none',
-				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ($primary_values) {
-					$blur   = intval($primary_values['shadowProperties']['blur']);
-					$width  = intval($primary_values['shadowProperties']['width']);
-					$height = intval($primary_values['shadowProperties']['height']);
-
-					return neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blur );
-				}
+				Dynamic_Selector::META_KEY     => $mod_key_primary . '.shadowColor',
+				Dynamic_Selector::META_DEFAULT => 'none',
+				Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $primary_values ) {
+					return neve_sanitize_button_shadow_css_rule( $css_prop, $value, $primary_values['shadowProperties'] ?? array() );
+				},
 			];
 		}
 
 		// Button Shadow Primary Hover
 		if ( isset( $primary_values['useShadowHover'] ) && ! empty( $primary_values['useShadowHover'] ) ) {
 			$rules['--primarybtnhovershadow'] = [
-				Dynamic_Selector::META_KEY    => $mod_key_primary . '.shadowColorHover',
-				Dynamic_Selector::META_DEFAULT       => 'none',
-				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ($primary_values) {
-					$blur   = intval($primary_values['shadowPropertiesHover']['blur']);
-					$width  = intval($primary_values['shadowPropertiesHover']['width']);
-					$height = intval($primary_values['shadowPropertiesHover']['height']);
-
-					return neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blur );
-				}
+				Dynamic_Selector::META_KEY     => $mod_key_primary . '.shadowColorHover',
+				Dynamic_Selector::META_DEFAULT => 'none',
+				Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $primary_values ) {
+					return neve_sanitize_button_shadow_css_rule( $css_prop, $value, $primary_values['shadowPropertiesHover'] ?? array() );
+				},
 			];
 		}
 
 		// Button Shadow Secondary
 		if ( isset( $secondary_values['useShadow'] ) && ! empty( $secondary_values['useShadow'] ) ) {
 			$rules['--secondarybtnshadow'] = [
-				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.shadowColor',
-				Dynamic_Selector::META_DEFAULT       => 'none',
-				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ($secondary_values) {
-					$blur   = intval($secondary_values['shadowProperties']['blur']);
-					$width  = intval($secondary_values['shadowProperties']['width']);
-					$height = intval($secondary_values['shadowProperties']['height']);
-
-					return neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blur );
-				}
+				Dynamic_Selector::META_KEY     => $mod_key_secondary . '.shadowColor',
+				Dynamic_Selector::META_DEFAULT => 'none',
+				Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $secondary_values ) {
+					return neve_sanitize_button_shadow_css_rule( $css_prop, $value, $secondary_values['shadowProperties'] ?? array() );
+				},
 			];
 		}
 
 		// Button Shadow Secondary Hover
 		if ( isset( $secondary_values['useShadowHover'] ) && ! empty( $secondary_values['useShadowHover'] ) ) {
 			$rules['--secondarybtnhovershadow'] = [
-				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.shadowColorHover',
-				Dynamic_Selector::META_DEFAULT       => 'none',
-				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ($secondary_values) {
-					$blur   = intval($secondary_values['shadowPropertiesHover']['blur']);
-					$width  = intval($secondary_values['shadowPropertiesHover']['width']);
-					$height = intval($secondary_values['shadowPropertiesHover']['height']);
-
-					return neve_sanitize_shadow_css_rule( $css_prop, $value, $width, $height, $blur );
-				}
+				Dynamic_Selector::META_KEY     => $mod_key_secondary . '.shadowColorHover',
+				Dynamic_Selector::META_DEFAULT => 'none',
+				Dynamic_Selector::META_FILTER  => function ( $css_prop, $value, $meta, $device ) use ( $secondary_values ) {
+					return neve_sanitize_button_shadow_css_rule( $css_prop, $value, $secondary_values['shadowPropertiesHover'] ?? array() );
+				},
 			];
 		}
 
@@ -173,15 +157,20 @@ trait Css_Vars {
 			];
 		}
 
-		$mod_key_primary       = Config::MODS_BUTTON_PRIMARY_PADDING;
-		$default_primary       = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_PADDING );
+		$mod_key_primary = Config::MODS_BUTTON_PRIMARY_PADDING;
+		$default_primary = Mods::get_alternative_mod_default( Config::MODS_BUTTON_PRIMARY_PADDING );
 
 		$rules['--btnpadding'] = [
 			Dynamic_Selector::META_KEY           => $mod_key_primary,
 			Dynamic_Selector::META_DEFAULT       => $default_primary,
 			Dynamic_Selector::META_IS_RESPONSIVE => true,
-			Dynamic_Selector::META_SUFFIX => 'responsive_unit',
+			Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
 			Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+				$value = neve_sanitize_directional_value( $value );
+				if ( empty( array_filter( $value, 'is_numeric' ) ) ) {
+					return '';
+				}
+
 				$mod_key_primary = Config::MODS_BUTTON_PRIMARY_STYLE;
 				$default_primary = neve_get_button_appearance_default();
 
@@ -201,18 +190,18 @@ trait Css_Vars {
 					if ( ! isset( $appearance_values['type'] ) || $appearance_values['type'] !== 'outline' ) {
 						continue;
 					}
-					$border_width = neve_sanitize_button_dimension( $appearance_values['borderWidth'] );
+					$border_width = neve_sanitize_button_dimension( $appearance_values['borderWidth'] ?? array() );
 
 					foreach ( $paddings[ $btn_type ] as $direction => $padding_value ) {
 						if ( ! isset( $border_width[ $direction ] ) || absint( $border_width[ $direction ] ) === 0 ) {
 							continue;
 						}
-						if(  ! is_numeric( $padding_value ) ){
+						if ( ! is_numeric( $padding_value ) ) {
 							continue;
 						}
 
 						$suffix_css_prop = $btn_type === 'primary' ? '--primarybtnpadding' : '--secondarybtnpadding';
-						$suffix =  Css_Prop::get_suffix( $meta, $device, $value, $suffix_css_prop );
+						$suffix          = Css_Prop::get_suffix( $meta, $device, $value, $suffix_css_prop );
 						$paddings[ $btn_type ][ 'is_outline_button_padding' ] = true;
 						$paddings[ $btn_type ][ $direction ]                  = 'calc(' . $padding_value . $suffix . ' - ' . $border_width[ $direction ] . 'px)';
 					}

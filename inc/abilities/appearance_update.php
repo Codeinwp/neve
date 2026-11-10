@@ -416,18 +416,18 @@ class Appearance_Update extends Abstract_Ability {
 	 * @return void
 	 */
 	private function apply_typography( array $typography, array &$updated ) {
-		if ( isset( $typography['body_font'] ) ) {
-			$font = neve_sanitize_font_family( $typography['body_font'] );
-			if ( '' !== $font || '' === $typography['body_font'] ) {
-				set_theme_mod( 'neve_body_font_family', $font );
-				$updated[] = 'neve_body_font_family';
+		$font_mods = array(
+			'body_font'     => 'neve_body_font_family',
+			'headings_font' => 'neve_headings_font_family',
+		);
+		foreach ( $font_mods as $input_key => $mod ) {
+			if ( ! isset( $typography[ $input_key ] ) ) {
+				continue;
 			}
-		}
-		if ( isset( $typography['headings_font'] ) ) {
-			$font = neve_sanitize_font_family( $typography['headings_font'] );
-			if ( '' !== $font || '' === $typography['headings_font'] ) {
-				set_theme_mod( 'neve_headings_font_family', $font );
-				$updated[] = 'neve_headings_font_family';
+			$font = neve_sanitize_font_family( $typography[ $input_key ] );
+			if ( '' !== $font || '' === $typography[ $input_key ] ) {
+				set_theme_mod( $mod, $font );
+				$updated[] = $mod;
 			}
 		}
 

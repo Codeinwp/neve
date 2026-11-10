@@ -107,12 +107,12 @@ class Layout_Container extends Base_Customizer {
 			new Control(
 				Config::MODS_CONTENT_VSPACING,
 				[
-					'default'   => $this->content_vspacing_default(),
-					'transport' => $this->selective_refresh,
+					'default'           => $this->content_vspacing_default(),
+					'transport'         => $this->selective_refresh,
+					'sanitize_callback' => [ $this, 'sanitize_spacing_array' ],
 				],
 				[
 					'label'                 => __( 'Content Vertical Spacing', 'neve' ),
-					'sanitize_callback'     => [ $this, 'sanitize_spacing_array' ],
 					'section'               => 'neve_container',
 					'input_attrs'           => [
 						'units' => [ 'px', 'vh' ],

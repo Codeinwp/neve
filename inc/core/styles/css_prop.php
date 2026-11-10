@@ -77,11 +77,17 @@ class Css_Prop {
 	 * @return string
 	 */
 	public static function transform( $css_prop, $value, $meta, $device ) {
-		if ( isset( $meta[ Dynamic_Selector::META_KEY ] ) && preg_match( '/\.(?:fontSize|lineHeight|letterSpacing)$/', $meta[ Dynamic_Selector::META_KEY ] ) ) {
-			if ( ! is_numeric( $value ) ) {
+		if ( isset( $meta[ Dynamic_Selector::META_KEY ] ) && preg_match( '/\.(fontSize|lineHeight|letterSpacing|fontWeight|textTransform)$/', $meta[ Dynamic_Selector::META_KEY ], $matches ) ) {
+			if ( in_array( $matches[1], array( 'fontSize', 'lineHeight', 'letterSpacing' ), true ) ) {
+				if ( ! is_numeric( $value ) ) {
+					return '';
+				}
+				$value = (float) $value;
+			} elseif ( 'fontWeight' === $matches[1] && ! in_array( $value, array( 'none', '100', '200', '300', '400', '500', '600', '700', '800', '900' ), true ) ) {
+				return '';
+			} elseif ( 'textTransform' === $matches[1] && ! in_array( $value, array( 'none', 'uppercase', 'lowercase', 'capitalize' ), true ) ) {
 				return '';
 			}
-			$value = (float) $value;
 		}
 
 		//If we have a custom filter, let's call it.

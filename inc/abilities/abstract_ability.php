@@ -248,6 +248,10 @@ abstract class Abstract_Ability {
 			return $this->sanitize_background_mod( $value );
 		}
 
+		if ( preg_match( '/_button_appearance$/', $key ) ) {
+			return $this->sanitize_button_appearance_mod( $value );
+		}
+
 		if ( preg_match( '/_new_text_color$/', $key ) ) {
 			$color = neve_sanitize_row_text_color( $value );
 
@@ -261,6 +265,27 @@ abstract class Abstract_Ability {
 		}
 
 		return neve_closes_css_declaration( $value ) ? null : $value;
+	}
+
+	/**
+	 * Sanitize a button appearance theme mod value.
+	 *
+	 * @param mixed $value Incoming button appearance.
+	 * @return array<string, mixed>|null Sanitized appearance; null when a non-empty color is invalid.
+	 */
+	private function sanitize_button_appearance_mod( $value ) {
+		if ( ! is_array( $value ) ) {
+			return null;
+		}
+
+		$appearance = neve_sanitize_button_appearance( $value );
+		foreach ( array( 'background', 'backgroundHover', 'text', 'textHover', 'shadowColor', 'shadowColorHover' ) as $field ) {
+			if ( array_key_exists( $field, $value ) && '' !== $value[ $field ] && '' === $appearance[ $field ] ) {
+				return null;
+			}
+		}
+
+		return neve_closes_css_declaration( $appearance ) ? null : $appearance;
 	}
 
 	/**
