@@ -133,7 +133,9 @@ function neve_is_css_gradient_prelude( string $type, string $value ): bool {
 		$circle_radius   = '(?:0+(?:\.0+)?|\.0+|' . $unsigned_number . '(?:px|em|rem|vw|vh|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q))';
 		$ellipse_radius  = '(?:0+(?:\.0+)?|\.0+|' . $unsigned_number . '(?:%|px|em|rem|vw|vh|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q))';
 		$size            = '(?:' . $extent . '|' . $circle_radius . '|' . $ellipse_radius . '\s+' . $ellipse_radius . ')';
-		$shape_size      = '(?:circle(?:\s+(?:' . $extent . '|' . $circle_radius . '))?|ellipse(?:\s+(?:' . $extent . '|' . $ellipse_radius . '\s+' . $ellipse_radius . '))?)';
+		$circle          = '(?:circle(?:\s+(?:' . $extent . '|' . $circle_radius . '))?|(?:' . $extent . '|' . $circle_radius . ')\s+circle)';
+		$ellipse         = '(?:ellipse(?:\s+(?:' . $extent . '|' . $ellipse_radius . '\s+' . $ellipse_radius . '))?|(?:' . $extent . '|' . $ellipse_radius . '\s+' . $ellipse_radius . ')\s+ellipse)';
+		$shape_size      = '(?:' . $circle . '|' . $ellipse . ')';
 
 		return (bool) preg_match( '/^(?:(?:' . $shape_size . '|' . $size . ')(?:\s+at\s+' . $position . ')?|at\s+' . $position . ')$/i', $value );
 	}
@@ -185,7 +187,8 @@ function neve_is_css_gradient_function_color( string $value ): bool {
 	$component  = $number . '%?';
 	$alpha      = $number . '%?';
 	$hue        = $number . '(?:deg|grad|rad|turn)?';
-	$rgb        = '(?:rgb|rgba)\(\s*' . $component . '(?:\s*,\s*' . $component . '){2}(?:\s*,\s*' . $alpha . ')?\s*\)';
+	$rgb_legacy = '(?:' . $number . '(?:\s*,\s*' . $number . '){2}|' . $number . '%(?:\s*,\s*' . $number . '%){2})';
+	$rgb        = '(?:rgb|rgba)\(\s*' . $rgb_legacy . '(?:\s*,\s*' . $alpha . ')?\s*\)';
 	$rgb_modern = '(?:rgb|rgba)\(\s*' . $component . '\s+' . $component . '\s+' . $component . '(?:\s*\/\s*' . $alpha . ')?\s*\)';
 	$hsl        = '(?:hsl|hsla)\(\s*' . $hue . '\s*,\s*' . $number . '%\s*,\s*' . $number . '%(?:\s*,\s*' . $alpha . ')?\s*\)';
 	$hsl_modern = '(?:hsl|hsla)\(\s*' . $hue . '\s+' . $number . '%\s+' . $number . '%(?:\s*\/\s*' . $alpha . ')?\s*\)';
