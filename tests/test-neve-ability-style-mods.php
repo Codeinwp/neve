@@ -651,6 +651,9 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 			'conic-gradient(red 10px, blue)',
 			'linear-gradient(rgb(1 / 2 / 3), blue)',
 			'radial-gradient(circle 10px 20px, red, blue)',
+			'radial-gradient(at left 10px center, red, blue)',
+			'linear-gradient(1.deg, red, blue)',
+			'linear-gradient(rgb(1.,2,3), blue)',
 		);
 		foreach ( $invalid_colors as $invalid_color ) {
 			$result = ( new Site_Set_Theme_Mod() )->execute(

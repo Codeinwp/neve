@@ -113,13 +113,13 @@ function neve_is_css_gradient( string $value ): bool {
  */
 function neve_is_css_gradient_prelude( string $type, string $value ): bool {
 	$value      = trim( $value );
-	$number     = '[+-]?(?:\d+(?:\.\d*)?|\.\d+)';
-	$zero       = '[+-]?(?:0+(?:\.0*)?|\.0+)';
+	$number     = '[+-]?(?:\d+(?:\.\d+)?|\.\d+)';
+	$zero       = '[+-]?(?:0+(?:\.0+)?|\.0+)';
 	$angle      = '(?:' . $zero . '|' . $number . '(?:deg|grad|rad|turn))';
 	$dimension  = '(?:' . $zero . '|' . $number . '(?:%|px|em|rem|vw|vh|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q))';
-	$horizontal = '(?:left|right)(?:\s+' . $dimension . ')?';
-	$vertical   = '(?:top|bottom)(?:\s+' . $dimension . ')?';
-	$position   = '(?:center|' . $dimension . '(?:\s+' . $dimension . ')?|' . $horizontal . '(?:\s+(?:' . $vertical . '|center))?|' . $vertical . '(?:\s+(?:' . $horizontal . '|center))?)';
+	$horizontal = '(?:left|center|right)';
+	$vertical   = '(?:top|center|bottom)';
+	$position   = '(?:(?:left|center|right|top|bottom|' . $dimension . ')|(?:' . $horizontal . '\s+' . $vertical . '|' . $vertical . '\s+' . $horizontal . ')|(?:' . $horizontal . '|' . $dimension . ')\s+(?:' . $vertical . '|' . $dimension . ')|(?:left|right)\s+' . $dimension . '\s+(?:top|bottom)\s+' . $dimension . '|(?:top|bottom)\s+' . $dimension . '\s+(?:left|right)\s+' . $dimension . ')';
 
 	if ( 'linear' === strtolower( $type ) ) {
 		$direction = '(?:(?:left|right)(?:\s+(?:top|bottom))?|(?:top|bottom)(?:\s+(?:left|right))?)';
@@ -128,11 +128,11 @@ function neve_is_css_gradient_prelude( string $type, string $value ): bool {
 	}
 
 	if ( 'radial' === strtolower( $type ) ) {
-		$unsigned_number = '(?:\d+(?:\.\d*)?|\.\d+)';
+		$unsigned_number = '(?:\d+(?:\.\d+)?|\.\d+)';
 		$extent          = '(?:closest-side|closest-corner|farthest-side|farthest-corner)';
-		$circle_radius   = '(?:0+(?:\.0*)?|\.0+|' . $unsigned_number . '(?:px|em|rem|vw|vh|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q))';
-		$ellipse_radius  = '(?:0+(?:\.0*)?|\.0+|' . $unsigned_number . '(?:%|px|em|rem|vw|vh|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q))';
-		$size            = '(?:' . $extent . '|' . $ellipse_radius . '(?:\s+' . $ellipse_radius . ')?)';
+		$circle_radius   = '(?:0+(?:\.0+)?|\.0+|' . $unsigned_number . '(?:px|em|rem|vw|vh|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q))';
+		$ellipse_radius  = '(?:0+(?:\.0+)?|\.0+|' . $unsigned_number . '(?:%|px|em|rem|vw|vh|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q))';
+		$size            = '(?:' . $extent . '|' . $circle_radius . '|' . $ellipse_radius . '\s+' . $ellipse_radius . ')';
 		$shape_size      = '(?:circle(?:\s+(?:' . $extent . '|' . $circle_radius . '))?|ellipse(?:\s+(?:' . $extent . '|' . $ellipse_radius . '\s+' . $ellipse_radius . '))?)';
 
 		return (bool) preg_match( '/^(?:(?:' . $shape_size . '|' . $size . ')(?:\s+at\s+' . $position . ')?|at\s+' . $position . ')$/i', $value );
@@ -181,7 +181,7 @@ function neve_is_css_gradient_stop( string $value, string $type ): bool {
  * @return bool
  */
 function neve_is_css_gradient_function_color( string $value ): bool {
-	$number     = '[+-]?(?:\d+(?:\.\d*)?|\.\d+)';
+	$number     = '[+-]?(?:\d+(?:\.\d+)?|\.\d+)';
 	$component  = $number . '%?';
 	$alpha      = $number . '%?';
 	$hue        = $number . '(?:deg|grad|rad|turn)?';
@@ -207,8 +207,8 @@ function neve_gradient_stop_has_valid_positions( string $value, string $type ): 
 		return true;
 	}
 
-	$number    = '[+-]?(?:\d+(?:\.\d*)?|\.\d+)';
-	$zero      = '[+-]?(?:0+(?:\.0*)?|\.0+)';
+	$number    = '[+-]?(?:\d+(?:\.\d+)?|\.\d+)';
+	$zero      = '[+-]?(?:0+(?:\.0+)?|\.0+)';
 	$dimension = 'conic' === strtolower( $type )
 		? '(?:' . $zero . '|' . $number . '(?:%|deg|grad|rad|turn))'
 		: '(?:' . $zero . '|' . $number . '(?:%|px|em|rem|vw|vh|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q))';
