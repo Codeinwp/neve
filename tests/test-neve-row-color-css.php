@@ -101,6 +101,22 @@ class TestNeveRowColorCss extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Valid modern stored gradients remain present in generated CSS.
+	 */
+	public function test_modern_stored_gradient_is_printed(): void {
+		$gradient = 'linear-gradient(hwb(30 40% 20%), color-mix(in oklab, red 40%, blue) min(20%, 100px))';
+		set_theme_mod(
+			'hfg_header_layout_main_background',
+			array(
+				'type'       => 'color',
+				'colorValue' => $gradient,
+			)
+		);
+
+		$this->assertStringContainsString( '--bgcolor: ' . $gradient . ';', $this->header_css() );
+	}
+
+	/**
 	 * Render the header builder's dynamic CSS.
 	 *
 	 * @return string

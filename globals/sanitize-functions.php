@@ -67,7 +67,20 @@ function neve_is_css_var( $value ) {
 		return false;
 	}
 
-	return neve_is_css_var( $fallback ) || '' !== neve_sanitize_row_text_color( $fallback );
+	if ( neve_closes_css_declaration( $fallback ) ) {
+		return false;
+	}
+
+	if ( neve_is_css_var( $fallback ) || (bool) preg_match( '/^#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i', $fallback ) ) {
+		return true;
+	}
+
+	if ( neve_is_css_function_color( $fallback ) ) {
+		return true;
+	}
+
+	return (bool) preg_match( '/^[a-z]+(?:-[a-z]+)*$/i', $fallback )
+		&& '' !== neve_sanitize_row_text_color( $fallback );
 }
 
 /**
@@ -84,7 +97,7 @@ function neve_is_css_gradient( string $value ): bool {
 	}
 
 	$body = $matches[2];
-	if ( '' === trim( $body ) || ! preg_match( '/^[a-z0-9#%.,\s\/_()\-]+$/i', $body ) ) {
+	if ( '' === trim( $body ) || ! preg_match( '/^[a-z0-9#%.,\s\/_()+\-]+$/i', $body ) ) {
 		return false;
 	}
 
@@ -128,10 +141,19 @@ function neve_is_css_gradient( string $value ): bool {
 		return false;
 	}
 
-	foreach ( $arguments as $argument ) {
-		if ( ! neve_is_css_gradient_stop( $argument, $matches[1] ) ) {
+	$previous_was_stop = false;
+	$last_index        = count( $arguments ) - 1;
+	foreach ( $arguments as $index => $argument ) {
+		if ( neve_is_css_gradient_stop( $argument, $matches[1] ) ) {
+			$previous_was_stop = true;
+			continue;
+		}
+
+		if ( ! $previous_was_stop || $index === $last_index || ! neve_is_css_gradient_hint( $argument, $matches[1] ) ) {
 			return false;
 		}
+
+		$previous_was_stop = false;
 	}
 
 	return true;
@@ -143,16 +165,142 @@ function neve_is_css_gradient( string $value ): bool {
  * @return array<string, string>
  */
 function neve_css_gradient_patterns(): array {
-	$number          = '[+-]?(?:\d+(?:\.\d+)?|\.\d+)';
-	$unsigned_number = '(?:\d+(?:\.\d+)?|\.\d+)';
-	$zero            = '[+-]?(?:0+(?:\.0+)?|\.0+)';
+	$number             = '[+-]?(?:\d+(?:\.\d+)?|\.\d+)';
+	$unsigned_number    = '(?:\d+(?:\.\d+)?|\.\d+)';
+	$zero               = '[+-]?(?:0+(?:\.0+)?|\.0+)';
+	$length_units       = 'px|em|rem|vw|vh|vi|vb|vmin|vmax|svw|svh|svi|svb|svmin|svmax|lvw|lvh|lvi|lvb|lvmin|lvmax|dvw|dvh|dvi|dvb|dvmin|dvmax|cqw|cqh|cqi|cqb|cqmin|cqmax|ch|ex|cap|ic|lh|rlh|cm|mm|in|pt|pc|q';
+	$length_unit        = '(?:' . $length_units . ')';
+	$absolute_length    = '(?:' . $zero . '|' . $number . $length_unit . ')';
+	$length             = '(?:' . $absolute_length . '|' . $number . '%)';
+	$nonnegative_length = '(?:\+?(?:0+(?:\.0+)?|\.0+)|\+?' . $unsigned_number . '(?:%|' . $length_units . '))';
+	$calc_length        = 'calc\(\s*' . $length . '(?:\s+[+-]\s+' . $length . ')+\s*\)';
 
 	return array(
-		'number'          => $number,
-		'unsigned_number' => $unsigned_number,
-		'zero'            => $zero,
-		'length'          => '(?:' . $zero . '|' . $number . '(?:%|px|em|rem|vw|vh|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q))',
+		'number'             => $number,
+		'unsigned_number'    => $unsigned_number,
+		'zero'               => $zero,
+		'length_unit'        => $length_unit,
+		'absolute_length'    => $absolute_length,
+		'simple_length'      => $length,
+		'nonnegative_length' => $nonnegative_length,
+		'length'             => '(?:' . $length . '|' . $calc_length . ')',
 	);
+}
+
+/**
+ * Split a CSS value on a delimiter that is outside parentheses.
+ *
+ * @param string $value     Value to split.
+ * @param string $delimiter Single-character delimiter.
+ *
+ * @return array<int, string>|false
+ */
+function neve_css_split_top_level( string $value, string $delimiter = ',' ) {
+	$parts   = array();
+	$current = '';
+	$depth   = 0;
+	$length  = strlen( $value );
+
+	for ( $index = 0; $index < $length; $index++ ) {
+		$character = $value[ $index ];
+		if ( '(' === $character ) {
+			$depth++;
+		} elseif ( ')' === $character ) {
+			$depth--;
+			if ( $depth < 0 ) {
+				return false;
+			}
+		}
+
+		if ( $delimiter === $character && 0 === $depth ) {
+			$parts[] = trim( $current );
+			$current = '';
+			continue;
+		}
+
+		$current .= $character;
+	}
+
+	if ( 0 !== $depth ) {
+		return false;
+	}
+
+	$parts[] = trim( $current );
+
+	return $parts;
+}
+
+/**
+ * Read a leading CSS function and the suffix after its balanced closing parenthesis.
+ *
+ * @param string $value Value beginning with a CSS function.
+ *
+ * @return array{name: string, value: string, body: string, suffix: string}|false
+ */
+function neve_css_leading_function( string $value ) {
+	if ( ! preg_match( '/^([a-z][a-z0-9-]*)\(/i', $value, $matches ) ) {
+		return false;
+	}
+
+	$depth  = 0;
+	$length = strlen( $value );
+	$start  = strlen( $matches[1] );
+	for ( $index = $start; $index < $length; $index++ ) {
+		$character = $value[ $index ];
+		if ( '(' === $character ) {
+			$depth++;
+		} elseif ( ')' === $character ) {
+			$depth--;
+			if ( 0 === $depth ) {
+				return array(
+					'name'   => strtolower( $matches[1] ),
+					'value'  => substr( $value, 0, $index + 1 ),
+					'body'   => substr( $value, $start + 1, $index - $start - 1 ),
+					'suffix' => substr( $value, $index + 1 ),
+				);
+			}
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Get the supported CSS color interpolation method pattern.
+ *
+ * @return string
+ */
+function neve_css_gradient_interpolation_pattern(): string {
+	$rectangular = '(?:srgb|srgb-linear|display-p3|a98-rgb|prophoto-rgb|rec2020|lab|oklab|xyz|xyz-d50|xyz-d65)';
+	$polar       = '(?:hsl|hwb|lch|oklch)(?:\s+(?:shorter|longer|increasing|decreasing)\s+hue)?';
+	$custom      = '--[a-z0-9_-]+';
+
+	return 'in\s+(?:' . $rectangular . '|' . $polar . '|' . $custom . ')';
+}
+
+/**
+ * Match a gradient prelude with an optional color interpolation method.
+ *
+ * @param string $value         Prelude value.
+ * @param string $base_pattern  Direction, shape or position pattern.
+ * @param string $interpolation Color interpolation pattern.
+ *
+ * @return bool
+ */
+function neve_css_gradient_matches_prelude( string $value, string $base_pattern, string $interpolation ): bool {
+	if ( preg_match( '/^' . $base_pattern . '$/i', $value ) || preg_match( '/^' . $interpolation . '$/i', $value ) ) {
+		return true;
+	}
+
+	if ( preg_match( '/^(' . $interpolation . ')\s+(.+)$/i', $value, $matches ) ) {
+		return (bool) preg_match( '/^' . $base_pattern . '$/i', $matches[2] );
+	}
+
+	if ( preg_match( '/^(.+)\s+(' . $interpolation . ')$/i', $value, $matches ) ) {
+		return (bool) preg_match( '/^' . $base_pattern . '$/i', $matches[1] );
+	}
+
+	return false;
 }
 
 /**
@@ -164,36 +312,41 @@ function neve_css_gradient_patterns(): array {
  * @return bool
  */
 function neve_is_css_gradient_prelude( string $type, string $value ): bool {
-	$patterns   = neve_css_gradient_patterns();
-	$value      = trim( $value );
-	$number     = $patterns['number'];
-	$zero       = $patterns['zero'];
-	$angle      = '(?:' . $zero . '|' . $number . '(?:deg|grad|rad|turn))';
-	$dimension  = $patterns['length'];
-	$horizontal = '(?:left|center|right)';
-	$vertical   = '(?:top|center|bottom)';
-	$position   = '(?:(?:left|center|right|top|bottom|' . $dimension . ')|(?:' . $horizontal . '\s+' . $vertical . '|' . $vertical . '\s+' . $horizontal . ')|(?:' . $horizontal . '|' . $dimension . ')\s+(?:' . $vertical . '|' . $dimension . ')|(?:left|right)\s+' . $dimension . '\s+(?:top|bottom)\s+' . $dimension . '|(?:top|bottom)\s+' . $dimension . '\s+(?:left|right)\s+' . $dimension . ')';
+	$patterns      = neve_css_gradient_patterns();
+	$value         = trim( $value );
+	$number        = $patterns['number'];
+	$zero          = $patterns['zero'];
+	$angle         = '(?:' . $zero . '|' . $number . '(?:deg|grad|rad|turn))';
+	$dimension     = $patterns['simple_length'];
+	$horizontal    = '(?:left|center|right)';
+	$vertical      = '(?:top|center|bottom)';
+	$position      = '(?:(?:left|center|right|top|bottom|' . $dimension . ')|(?:' . $horizontal . '\s+' . $vertical . '|' . $vertical . '\s+' . $horizontal . ')|(?:' . $horizontal . '|' . $dimension . ')\s+(?:' . $vertical . '|' . $dimension . ')|(?:left|right)\s+' . $dimension . '\s+' . $vertical . '|' . $vertical . '\s+(?:left|right)\s+' . $dimension . '|(?:top|bottom)\s+' . $dimension . '\s+' . $horizontal . '|' . $horizontal . '\s+(?:top|bottom)\s+' . $dimension . '|(?:left|right)\s+' . $dimension . '\s+(?:top|bottom)\s+' . $dimension . '|(?:top|bottom)\s+' . $dimension . '\s+(?:left|right)\s+' . $dimension . ')';
+	$interpolation = neve_css_gradient_interpolation_pattern();
 
 	if ( 'linear' === strtolower( $type ) ) {
 		$direction = '(?:(?:left|right)(?:\s+(?:top|bottom))?|(?:top|bottom)(?:\s+(?:left|right))?)';
+		$base      = '(?:' . $angle . '|to\s+' . $direction . ')';
 
-		return (bool) preg_match( '/^(?:' . $angle . '|to\s+' . $direction . ')$/i', $value );
+		return neve_css_gradient_matches_prelude( $value, $base, $interpolation );
 	}
 
 	if ( 'radial' === strtolower( $type ) ) {
 		$unsigned_number = $patterns['unsigned_number'];
 		$extent          = '(?:closest-side|closest-corner|farthest-side|farthest-corner)';
-		$circle_radius   = '(?:0+(?:\.0+)?|\.0+|' . $unsigned_number . '(?:px|em|rem|vw|vh|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q))';
-		$ellipse_radius  = '(?:0+(?:\.0+)?|\.0+|' . $unsigned_number . '(?:%|px|em|rem|vw|vh|vmin|vmax|ch|ex|cm|mm|in|pt|pc|q))';
+		$circle_radius   = '(?:\+?(?:0+(?:\.0+)?|\.0+)|\+?' . $unsigned_number . $patterns['length_unit'] . ')';
+		$ellipse_radius  = $patterns['nonnegative_length'];
 		$size            = '(?:' . $extent . '|' . $circle_radius . '|' . $ellipse_radius . '\s+' . $ellipse_radius . ')';
 		$circle          = '(?:circle(?:\s+(?:' . $extent . '|' . $circle_radius . '))?|(?:' . $extent . '|' . $circle_radius . ')\s+circle)';
 		$ellipse         = '(?:ellipse(?:\s+(?:' . $extent . '|' . $ellipse_radius . '\s+' . $ellipse_radius . '))?|(?:' . $extent . '|' . $ellipse_radius . '\s+' . $ellipse_radius . ')\s+ellipse)';
 		$shape_size      = '(?:' . $circle . '|' . $ellipse . ')';
+		$base            = '(?:(?:' . $shape_size . '|' . $size . ')(?:\s+at\s+' . $position . ')?|at\s+' . $position . ')';
 
-		return (bool) preg_match( '/^(?:(?:' . $shape_size . '|' . $size . ')(?:\s+at\s+' . $position . ')?|at\s+' . $position . ')$/i', $value );
+		return neve_css_gradient_matches_prelude( $value, $base, $interpolation );
 	}
 
-	return (bool) preg_match( '/^(?:from\s+' . $angle . ')(?:\s+at\s+' . $position . ')?$|^at\s+' . $position . '$/i', $value );
+	$base = '(?:(?:from\s+' . $angle . ')(?:\s+at\s+' . $position . ')?|at\s+' . $position . ')';
+
+	return neve_css_gradient_matches_prelude( $value, $base, $interpolation );
 }
 
 /**
@@ -210,14 +363,13 @@ function neve_is_css_gradient_stop( string $value, string $type ): bool {
 		return neve_gradient_stop_has_valid_positions( substr( $value, strlen( $matches[0] ) ), $type );
 	}
 
-	if ( preg_match( '/^((?:var|rgb|rgba|hsl|hsla)(\((?:[a-z0-9#%.,\s\/_-]|(?2))*\)))(?=\s|$)/i', $value, $matches ) ) {
-		if ( 0 === stripos( $matches[1], 'var(' ) ) {
-			$is_color = neve_is_css_var( $matches[1] );
-		} else {
-			$is_color = neve_is_css_gradient_function_color( $matches[1] );
-		}
+	$function = neve_css_leading_function( $value );
+	if ( false !== $function && ( '' === $function['suffix'] || preg_match( '/^\s/', $function['suffix'] ) ) ) {
+		$is_color = 'var' === $function['name']
+			? neve_is_css_var( $function['value'] )
+			: neve_is_css_gradient_function_color( $function['value'] );
 
-		return $is_color && neve_gradient_stop_has_valid_positions( substr( $value, strlen( $matches[1] ) ), $type );
+		return $is_color && neve_gradient_stop_has_valid_positions( $function['suffix'], $type );
 	}
 
 	if ( ! preg_match( '/^([a-z]+(?:-[a-z]+)*)(?=\s|$)/i', $value, $matches ) ) {
@@ -236,6 +388,11 @@ function neve_is_css_gradient_stop( string $value, string $type ): bool {
  * @return bool
  */
 function neve_is_css_gradient_function_color( string $value ): bool {
+	$function = neve_css_leading_function( trim( $value ) );
+	if ( false === $function || '' !== trim( $function['suffix'] ) ) {
+		return false;
+	}
+
 	$patterns   = neve_css_gradient_patterns();
 	$number     = $patterns['number'];
 	$component  = $number . '%?';
@@ -247,7 +404,102 @@ function neve_is_css_gradient_function_color( string $value ): bool {
 	$hsl        = '(?:hsl|hsla)\(\s*' . $hue . '\s*,\s*' . $number . '%\s*,\s*' . $number . '%(?:\s*,\s*' . $alpha . ')?\s*\)';
 	$hsl_modern = '(?:hsl|hsla)\(\s*' . $hue . '\s+' . $number . '%\s+' . $number . '%(?:\s*\/\s*' . $alpha . ')?\s*\)';
 
-	return (bool) preg_match( '/^(?:' . $rgb . '|' . $rgb_modern . '|' . $hsl . '|' . $hsl_modern . ')$/i', $value );
+	if ( (bool) preg_match( '/^(?:' . $rgb . '|' . $rgb_modern . '|' . $hsl . '|' . $hsl_modern . ')$/i', $value ) ) {
+		return true;
+	}
+
+	$none_percentage   = '(?:none|' . $number . '%)';
+	$none_component    = '(?:none|' . $component . ')';
+	$none_hue          = '(?:none|' . $hue . ')';
+	$optional_alpha    = '(?:\s*\/\s*' . $none_component . ')?';
+	$modern_components = '\s+' . $none_component . '\s+' . $none_component . '\s+' . $none_component . $optional_alpha . '\s*';
+
+	switch ( $function['name'] ) {
+		case 'hwb':
+			return (bool) preg_match( '/^\s*' . $none_hue . '\s+' . $none_percentage . '\s+' . $none_percentage . $optional_alpha . '\s*$/i', $function['body'] );
+		case 'lab':
+		case 'oklab':
+			return (bool) preg_match( '/^\s*' . $none_component . '\s+' . $none_component . '\s+' . $none_component . $optional_alpha . '\s*$/i', $function['body'] );
+		case 'lch':
+		case 'oklch':
+			return (bool) preg_match( '/^\s*' . $none_component . '\s+' . $none_component . '\s+' . $none_hue . $optional_alpha . '\s*$/i', $function['body'] );
+		case 'color':
+			$space = '(?:srgb|srgb-linear|display-p3|a98-rgb|prophoto-rgb|rec2020|xyz|xyz-d50|xyz-d65|--[a-z0-9_-]+)';
+
+			return (bool) preg_match( '/^\s*' . $space . $modern_components . '$/i', $function['body'] );
+		case 'device-cmyk':
+			return (bool) preg_match( '/^\s*' . $none_component . '(?:\s+' . $none_component . '){3}' . $optional_alpha . '\s*$/i', $function['body'] );
+		case 'color-mix':
+			return neve_is_css_color_mix( $function['body'] );
+		case 'light-dark':
+			$colors = neve_css_split_top_level( $function['body'] );
+
+			return false !== $colors && 2 === count( $colors )
+				&& neve_is_css_gradient_color( $colors[0] )
+				&& neve_is_css_gradient_color( $colors[1] );
+		default:
+			return false;
+	}
+}
+
+/**
+ * Check a complete color value used by another color function.
+ *
+ * @param string $value Color value.
+ *
+ * @return bool
+ */
+function neve_is_css_gradient_color( string $value ): bool {
+	$value = trim( $value );
+	if ( (bool) preg_match( '/^#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i', $value ) ) {
+		return true;
+	}
+
+	if ( neve_is_css_var( $value ) || neve_is_css_gradient_function_color( $value ) ) {
+		return true;
+	}
+
+	return (bool) preg_match( '/^[a-z]+(?:-[a-z]+)*$/i', $value )
+		&& '' !== neve_sanitize_row_text_color( $value );
+}
+
+/**
+ * Check a color-mix() body.
+ *
+ * @param string $value Function body.
+ *
+ * @return bool
+ */
+function neve_is_css_color_mix( string $value ): bool {
+	$arguments = neve_css_split_top_level( $value );
+	if ( false === $arguments || 3 !== count( $arguments ) ) {
+		return false;
+	}
+
+	if ( ! preg_match( '/^' . neve_css_gradient_interpolation_pattern() . '$/i', $arguments[0] ) ) {
+		return false;
+	}
+
+	$weights = array();
+	foreach ( array_slice( $arguments, 1 ) as $color_stop ) {
+		if ( neve_is_css_gradient_color( $color_stop ) ) {
+			$weights[] = null;
+			continue;
+		}
+
+		if ( ! preg_match( '/^(.*\S)\s+(' . neve_css_gradient_patterns()['number'] . '%)$/', $color_stop, $matches )
+			|| ! neve_is_css_gradient_color( $matches[1] ) ) {
+			return false;
+		}
+
+		$weight = (float) substr( $matches[2], 0, -1 );
+		if ( $weight < 0 || $weight > 100 ) {
+			return false;
+		}
+		$weights[] = $weight;
+	}
+
+	return null === $weights[0] || null === $weights[1] || 0.0 !== $weights[0] + $weights[1];
 }
 
 /**
@@ -264,14 +516,311 @@ function neve_gradient_stop_has_valid_positions( string $value, string $type ): 
 		return true;
 	}
 
-	$patterns  = neve_css_gradient_patterns();
-	$number    = $patterns['number'];
-	$zero      = $patterns['zero'];
-	$dimension = 'conic' === strtolower( $type )
-		? '(?:' . $zero . '|' . $number . '(?:%|deg|grad|rad|turn))'
-		: $patterns['length'];
+	$positions = neve_css_split_top_level_whitespace( $value );
+	if ( false === $positions || count( $positions ) > 2 ) {
+		return false;
+	}
 
-	return (bool) preg_match( '/^' . $dimension . '(?:\s+' . $dimension . ')?$/i', $value );
+	foreach ( $positions as $position ) {
+		if ( ! neve_is_css_gradient_dimension( $position, $type ) ) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+/**
+ * Check a color transition hint between two gradient stops.
+ *
+ * @param string $value Transition hint.
+ * @param string $type  Gradient type.
+ *
+ * @return bool
+ */
+function neve_is_css_gradient_hint( string $value, string $type ): bool {
+	return neve_is_css_gradient_dimension( trim( $value ), $type );
+}
+
+/**
+ * Split a CSS value on whitespace that is outside parentheses.
+ *
+ * @param string $value Value to split.
+ *
+ * @return array<int, string>|false
+ */
+function neve_css_split_top_level_whitespace( string $value ) {
+	$parts   = array();
+	$current = '';
+	$depth   = 0;
+	$length  = strlen( $value );
+
+	for ( $index = 0; $index < $length; $index++ ) {
+		$character = $value[ $index ];
+		if ( '(' === $character ) {
+			$depth++;
+		} elseif ( ')' === $character ) {
+			$depth--;
+			if ( $depth < 0 ) {
+				return false;
+			}
+		}
+
+		if ( 0 === $depth && ctype_space( $character ) ) {
+			if ( '' !== $current ) {
+				$parts[] = $current;
+				$current = '';
+			}
+			continue;
+		}
+
+		$current .= $character;
+	}
+
+	if ( 0 !== $depth ) {
+		return false;
+	}
+
+	if ( '' !== $current ) {
+		$parts[] = $current;
+	}
+
+	return $parts;
+}
+
+/**
+ * Check a gradient stop dimension, including supported CSS math functions.
+ *
+ * @param string $value Dimension value.
+ * @param string $type  Gradient type.
+ *
+ * @return bool
+ */
+function neve_is_css_gradient_dimension( string $value, string $type ): bool {
+	$patterns = neve_css_gradient_patterns();
+	$number   = $patterns['number'];
+	$zero     = $patterns['zero'];
+	$direct   = 'conic' === strtolower( $type )
+		? '(?:' . $zero . '|' . $number . '(?:%|deg|grad|rad|turn))'
+		: $patterns['simple_length'];
+
+	if ( (bool) preg_match( '/^' . $direct . '$/i', trim( $value ) ) ) {
+		return true;
+	}
+
+	return neve_is_css_gradient_math_function( trim( $value ), $type );
+}
+
+/**
+ * Check a calc(), min(), max(), clamp() or var() dimension.
+ *
+ * @param string $value CSS function.
+ * @param string $type  Gradient type.
+ *
+ * @return bool
+ */
+function neve_is_css_gradient_math_function( string $value, string $type ): bool {
+	$value_type = neve_css_gradient_math_function_type( $value, $type );
+
+	return false !== $value_type && 'number' !== $value_type;
+}
+
+/**
+ * Get the result type of a CSS math function.
+ *
+ * @param string $value CSS function.
+ * @param string $type  Gradient type.
+ *
+ * @return string|false
+ */
+function neve_css_gradient_math_function_type( string $value, string $type ) {
+	$function = neve_css_leading_function( $value );
+	if ( false === $function || '' !== trim( $function['suffix'] ) ) {
+		return false;
+	}
+
+	if ( 'var' === $function['name'] ) {
+		$arguments = neve_css_split_top_level( $function['body'] );
+		if ( false === $arguments || count( $arguments ) > 2 || ! preg_match( '/^\s*--[a-z0-9_-]+\s*$/i', $arguments[0] ) ) {
+			return false;
+		}
+
+		if ( 2 === count( $arguments ) ) {
+			$fallback_type = neve_css_gradient_math_expression_type( $arguments[1], $type );
+			if ( false === $fallback_type || 'number' === $fallback_type ) {
+				return false;
+			}
+		}
+
+		return 'unknown';
+	}
+
+	if ( ! in_array( $function['name'], array( 'calc', 'min', 'max', 'clamp' ), true ) ) {
+		return false;
+	}
+
+	$arguments = neve_css_split_top_level( $function['body'] );
+	if ( false === $arguments || in_array( '', $arguments, true ) ) {
+		return false;
+	}
+
+	if ( ( 'calc' === $function['name'] && 1 !== count( $arguments ) )
+		|| ( 'clamp' === $function['name'] && 3 !== count( $arguments ) ) ) {
+		return false;
+	}
+
+	$result_type = false;
+	foreach ( $arguments as $argument ) {
+		$argument_type = neve_css_gradient_math_expression_type( $argument, $type );
+		if ( false === $argument_type ) {
+			return false;
+		}
+
+		if ( false === $result_type || 'unknown' === $result_type ) {
+			$result_type = $argument_type;
+			continue;
+		}
+
+		if ( 'unknown' !== $argument_type && $argument_type !== $result_type ) {
+			return false;
+		}
+	}
+
+	return $result_type;
+}
+
+/**
+ * Check an arithmetic expression inside a CSS math function.
+ *
+ * @param string $value Expression.
+ * @param string $type  Gradient type.
+ *
+ * @return bool
+ */
+function neve_is_css_gradient_math_expression( string $value, string $type ): bool {
+	return false !== neve_css_gradient_math_expression_type( $value, $type );
+}
+
+/**
+ * Get the result type of an arithmetic expression inside a CSS math function.
+ *
+ * @param string $value Expression.
+ * @param string $type  Gradient type.
+ *
+ * @return string|false
+ */
+function neve_css_gradient_math_expression_type( string $value, string $type ) {
+	$value = trim( $value );
+	if ( '' === $value ) {
+		return false;
+	}
+
+	$operands  = array();
+	$operators = array();
+	$current   = '';
+	$depth     = 0;
+	$length    = strlen( $value );
+	for ( $index = 0; $index < $length; $index++ ) {
+		$character = $value[ $index ];
+		if ( '(' === $character ) {
+			$depth++;
+		} elseif ( ')' === $character ) {
+			$depth--;
+			if ( $depth < 0 ) {
+				return false;
+			}
+		}
+
+		if ( 0 === $depth && in_array( $character, array( '+', '-', '/' ), true ) ) {
+			$trimmed = trim( $current );
+			if ( '' === $trimmed ) {
+				$current .= $character;
+				continue;
+			}
+			if ( in_array( $character, array( '+', '-' ), true )
+				&& ( ! ctype_space( $value[ $index - 1 ] ) || $index + 1 >= $length || ! ctype_space( $value[ $index + 1 ] ) ) ) {
+				return false;
+			}
+			$operands[]  = $trimmed;
+			$operators[] = $character;
+			$current     = '';
+			continue;
+		}
+
+		$current .= $character;
+	}
+
+	if ( 0 !== $depth || '' === trim( $current ) ) {
+		return false;
+	}
+	$operands[] = trim( $current );
+
+	$result_type = neve_css_gradient_math_operand_type( $operands[0], $type );
+	if ( false === $result_type ) {
+		return false;
+	}
+
+	foreach ( $operators as $index => $operator ) {
+		$operand_type = neve_css_gradient_math_operand_type( $operands[ $index + 1 ], $type );
+		if ( false === $operand_type ) {
+			return false;
+		}
+
+		if ( '/' === $operator ) {
+			if ( 'dimension' === $operand_type ) {
+				if ( 'dimension' !== $result_type && 'unknown' !== $result_type ) {
+					return false;
+				}
+				$result_type = 'number';
+			} elseif ( 'number' !== $operand_type && 'unknown' !== $operand_type ) {
+				return false;
+			}
+			continue;
+		}
+
+		if ( 'unknown' === $result_type ) {
+			$result_type = $operand_type;
+			continue;
+		}
+
+		if ( 'unknown' !== $operand_type && $operand_type !== $result_type ) {
+			return false;
+		}
+	}
+
+	return $result_type;
+}
+
+/**
+ * Get the result type of one operand inside a CSS math expression.
+ *
+ * @param string $value Operand.
+ * @param string $type  Gradient type.
+ *
+ * @return string|false
+ */
+function neve_css_gradient_math_operand_type( string $value, string $type ) {
+	$value    = trim( $value );
+	$patterns = neve_css_gradient_patterns();
+	$number   = $patterns['number'];
+	$zero     = $patterns['zero'];
+	$direct   = 'conic' === strtolower( $type )
+		? '(?:' . $zero . '|' . $number . '(?:%|deg|grad|rad|turn))'
+		: $patterns['simple_length'];
+
+	if ( (bool) preg_match( '/^' . $number . '$/i', $value ) ) {
+		return 'number';
+	}
+
+	if ( (bool) preg_match( '/^' . $direct . '$/i', $value ) ) {
+		return 'dimension';
+	}
+
+	if ( strlen( $value ) > 2 && '(' === $value[0] && ')' === $value[ strlen( $value ) - 1 ] ) {
+		return neve_css_gradient_math_expression_type( substr( $value, 1, -1 ), $type );
+	}
+
+	return neve_css_gradient_math_function_type( $value, $type );
 }
 
 /**
@@ -339,6 +888,10 @@ function neve_sanitize_colors( $value ) {
 	// Before the rgba parser, which only reads rgba(int,int,int,float).
 	if ( neve_is_css_function_color( $value ) ) {
 		return trim( $value );
+	}
+
+	if ( preg_match( '/^#(?:[0-9a-f]{4}|[0-9a-f]{8})$/i', trim( $value ), $match ) ) {
+		return $match[0];
 	}
 
 	// Is this an rgba color or a hex?

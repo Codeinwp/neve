@@ -191,6 +191,8 @@ class TestSanitization extends WP_UnitTestCase {
 
 		// Valid values keep working as before.
 		$this->assertSame( '#ff0000', neve_sanitize_colors( '#ff0000' ) );
+		$this->assertSame( '#0008', neve_sanitize_colors( '#0008' ) );
+		$this->assertSame( '#11223344', neve_sanitize_colors( ' #11223344 ' ) );
 		$this->assertSame( 'rgba(255, 0, 0, 1)', neve_sanitize_colors( 'rgba(255, 0, 0, 1)' ) );
 		$this->assertSame( 'var(--nv-primary-accent)', neve_sanitize_colors( 'var(--nv-primary-accent)' ) );
 	}
@@ -268,6 +270,8 @@ class TestSanitization extends WP_UnitTestCase {
 		$valid = [
 			'var(--nv-primary-accent)',
 			'var(--nv-c-1,#E5E7EB)',
+			'var(--nv-c-1, #0008)',
+			'var(--nv-c-1, #11223344)',
 			'var(--nv-c-1, #e5e7eb)',
 			'var( --nv-site-bg , #fff )',
 			'var(--secondarybtnbg, transparent)',
@@ -294,6 +298,10 @@ class TestSanitization extends WP_UnitTestCase {
 			'var(--x, url(evil.css))',
 			'var(--x, "quoted")',
 			'var(--c5-missing,rgb(foo))',
+			'var(--x, rgba(1,2,3,1)junk)',
+			'var(--x, rgba(1,2,3,1);}body{background:lime}/*)',
+			'var(--x, rgba(1,2,3,1)/*(*/);}body{background:lime}/*)',
+			'var(--x, rgba(1,2,3,1)</style><script>alert(1)</script>)',
 			'linear-gradient(var(--a), var(--b))',
 			'',
 			[ 'var(--x)' ],
@@ -331,12 +339,38 @@ class TestSanitization extends WP_UnitTestCase {
 			'radial-gradient(circle at center, #fff 0%, #000 100%)',
 			'radial-gradient(at center top, red, blue)',
 			'radial-gradient(at left 10px top 20px, red, blue)',
+			'radial-gradient(circle at left 10px top, red, blue)',
+			'radial-gradient(circle at top left 10px, red, blue)',
+			'radial-gradient(at left 10px center, red, blue)',
 			'radial-gradient(5em circle at top left, yellow, blue)',
 			'radial-gradient(circle closest-side, red, blue)',
 			'conic-gradient(from 90deg, red, blue)',
 			'repeating-linear-gradient(45deg, #FFF 0 10px, transparent 10px 20px)',
 			'linear-gradient(var(--nv-primary-accent), var(--nv_c-1, #fff))',
 			'linear-gradient(hsl(120 50% 50% / .5), transparent)',
+			'linear-gradient(red 0%, 50%, blue 100%)',
+			'radial-gradient(red 0%, 25px, blue 100%)',
+			'conic-gradient(red 0deg, 25%, blue 180deg)',
+			'linear-gradient(in oklab, red, blue)',
+			'linear-gradient(in oklch longer hue to right, red, blue)',
+			'linear-gradient(to right in oklab, red, blue)',
+			'radial-gradient(in display-p3 circle at center, red, blue)',
+			'conic-gradient(in hsl longer hue from 45deg at center, red, blue)',
+			'linear-gradient(red calc(10% - 1px), blue)',
+			'linear-gradient(red calc(10% + 1px), blue)',
+			'linear-gradient(hwb(30 40% 20%), blue)',
+			'linear-gradient(lab(50% 20 30 / .5), oklch(60% .2 120))',
+			'linear-gradient(color(display-p3 1 0 0), device-cmyk(0 1 1 0))',
+			'linear-gradient(color-mix(in oklab, red 40%, blue), light-dark(white, black))',
+			'linear-gradient(red min(20%, 100px), blue)',
+			'linear-gradient(red max(10%, 2rem), blue)',
+			'linear-gradient(red clamp(10%, 20vw, 50%), blue)',
+			'linear-gradient(red calc(var(--stop) - 1px), blue)',
+			'linear-gradient(red min(calc(20% - 1px), var(--stop, 10%)), blue)',
+			'linear-gradient(red 10dvh, blue)',
+			'linear-gradient(red calc(100% - 1lh), blue)',
+			'radial-gradient(ellipse 10cqw 20cqh, red, blue)',
+			'radial-gradient(circle +10px, red, blue)',
 		];
 
 		foreach ( $valid as $value ) {
@@ -359,12 +393,36 @@ class TestSanitization extends WP_UnitTestCase {
 			'radial-gradient(circle 10px 20px, red, blue)',
 			'radial-gradient(circle -10px, red, blue)',
 			'radial-gradient(at left right, red, blue)',
-			'radial-gradient(at left 10px center, red, blue)',
 			'radial-gradient(10%, red, blue)',
+			'radial-gradient(ellipse -10px 20px, red, blue)',
 			'linear-gradient(1.deg, red, blue)',
 			'linear-gradient(rgb(1.,2,3), blue)',
 			'linear-gradient(rgb(255, 0%, 0), blue)',
 			'linear-gradient(var(--c5-missing,rgb(foo)),#fff)',
+			'linear-gradient(50%, red, blue)',
+			'linear-gradient(red, 50%)',
+			'linear-gradient(red, 50%, 60%, blue)',
+			'linear-gradient(red, 50% 60%, blue)',
+			'conic-gradient(red, 10px, blue)',
+			'linear-gradient(in banana, red, blue)',
+			'linear-gradient(red calc(foo - 1px), blue)',
+			'linear-gradient(red calc(10% - ), blue)',
+			'linear-gradient(hwb(30 40%), blue)',
+			'linear-gradient(lab(50% 20), blue)',
+			'linear-gradient(color(display-p3 1 0), blue)',
+			'linear-gradient(color-mix(in banana, red, blue), white)',
+			'linear-gradient(color-mix(in oklab, red, url(foo)), white)',
+			'linear-gradient(red min(20%, foo), blue)',
+			'linear-gradient(red clamp(10%, 20%), blue)',
+			'linear-gradient(red calc(var(bad) - 1px), blue)',
+			'linear-gradient(red calc(10%-1px), blue)',
+			'linear-gradient(red calc(1px + 2), blue)',
+			'linear-gradient(red calc(1px + 0), blue)',
+			'linear-gradient(red min(10%, 2), blue)',
+			'linear-gradient(red var(--stop, 2), blue)',
+			'linear-gradient(color-mix(in oklab, red -10%, blue), white)',
+			'linear-gradient(color-mix(in oklab, red 110%, blue), white)',
+			'linear-gradient(color-mix(in oklab, red 0%, blue 0%), white)',
 			'linear-gradient(red,blue)</style><script>alert(1)</script>',
 			'linear-gradient(red,blue);}body{display:none',
 			'linear-gradient(red,blue),url(//example.com/t.png)',
@@ -381,7 +439,7 @@ class TestSanitization extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Standalone rgb(), hsl() and hsla() colors are kept; anything around them is rejected.
+	 * Standalone CSS function colors are kept; anything around them is rejected.
 	 */
 	public function test_sanitize_colors_keeps_function_colors(): void {
 		$valid = [
@@ -394,6 +452,11 @@ class TestSanitization extends WP_UnitTestCase {
 			'hsl(120, 50%, 50%)',
 			'hsl(120deg, 50%, 50%)',
 			'hsla(120, 50%, 50%, 0.5)',
+			'hwb(30 40% 20%)',
+			'lab(50% 40 59)',
+			'oklch(60% .2 120)',
+			'color(display-p3 1 0 0)',
+			'color-mix(in oklab, red 40%, blue)',
 		];
 
 		foreach ( $valid as $value ) {
@@ -417,7 +480,6 @@ class TestSanitization extends WP_UnitTestCase {
 			'hsl(120, 50, 50)',
 			'rgb(1,2,3',
 			'#rgb(1,2,3)',
-			'lab(50% 40 59)',
 		];
 
 		foreach ( $invalid as $value ) {

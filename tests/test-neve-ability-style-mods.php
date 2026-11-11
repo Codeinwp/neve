@@ -478,6 +478,29 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Alpha-hex button colors accepted by the ability remain available to CSS output.
+	 */
+	public function test_appearance_update_renders_alpha_hex_button_colors(): void {
+		$result = ( new Appearance_Update() )->execute(
+			array(
+				'buttons' => array(
+					'primary' => array(
+						'background' => '#0008',
+						'hover'      => array( 'background' => '#11223344' ),
+					),
+				),
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$stored = get_theme_mod( 'neve_button_appearance' );
+		$this->assertSame( '#0008', $stored['background'] );
+		$this->assertSame( '#11223344', $stored['backgroundHover'] );
+		$this->assertSame( ' --primarybtnbg: #0008;', neve_sanitize_color_css_rule( '--primarybtnbg', $stored['background'] ) );
+		$this->assertSame( ' --primarybtnhoverbg: #11223344;', neve_sanitize_color_css_rule( '--primarybtnhoverbg', $stored['backgroundHover'] ) );
+	}
+
+	/**
 	 * Typography and font-family values are sanitized on write and output.
 	 */
 	public function test_typography_values_are_sanitized_on_write_and_output(): void {
@@ -672,7 +695,7 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 			'conic-gradient(red 10px, blue)',
 			'linear-gradient(rgb(1 / 2 / 3), blue)',
 			'radial-gradient(circle 10px 20px, red, blue)',
-			'radial-gradient(at left 10px center, red, blue)',
+			'radial-gradient(ellipse -10px 20px, red, blue)',
 			'linear-gradient(1.deg, red, blue)',
 			'linear-gradient(rgb(1.,2,3), blue)',
 			'linear-gradient(rgb(255, 0%, 0), blue)',
@@ -693,6 +716,24 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 			$this->assertSame( 'invalid_value', $result['error']['code'] );
 			$this->assertSame( '#ff0000', get_theme_mod( self::SIDEBAR_TEXT ) );
 		}
+	}
+
+	/**
+	 * Modern gradient colors and computed stops remain valid ability values.
+	 */
+	public function test_site_set_theme_mod_keeps_modern_gradient_color(): void {
+		$gradient = 'linear-gradient(hwb(30 40% 20%), color-mix(in oklab, red 40%, blue) min(20%, 100px))';
+		$result   = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => self::SIDEBAR_TEXT,
+				'value'  => $gradient,
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertTrue( $result['success'] );
+		$this->assertSame( $gradient, get_theme_mod( self::SIDEBAR_TEXT ) );
 	}
 
 	/**
