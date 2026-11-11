@@ -328,6 +328,7 @@ class TestSanitization extends WP_UnitTestCase {
 			'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)',
 			'radial-gradient(rgb(6,147,227) 0%,rgb(155,81,224) 100%)',
 			'radial-gradient(circle at center, #fff 0%, #000 100%)',
+			'radial-gradient(circle closest-side, red, blue)',
 			'conic-gradient(from 90deg, red, blue)',
 			'repeating-linear-gradient(45deg, #FFF 0 10px, transparent 10px 20px)',
 			'linear-gradient(var(--nv-primary-accent), var(--nv_c-1, #fff))',
@@ -341,6 +342,10 @@ class TestSanitization extends WP_UnitTestCase {
 		$this->assertSame( 'linear-gradient(red, blue)', neve_sanitize_colors( ' linear-gradient(red, blue) ' ) );
 
 		$invalid = [
+			'linear-gradient()',
+			'linear-gradient(foo)',
+			'linear-gradient(red)',
+			'linear-gradient(foo, red, blue)',
 			'linear-gradient(red,blue)</style><script>alert(1)</script>',
 			'linear-gradient(red,blue);}body{display:none',
 			'linear-gradient(red,blue),url(//example.com/t.png)',

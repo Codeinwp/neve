@@ -640,18 +640,20 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 	public function test_site_set_theme_mod_rejects_invalid_color(): void {
 		set_theme_mod( self::SIDEBAR_TEXT, '#ff0000' );
 
-		$result = ( new Site_Set_Theme_Mod() )->execute(
-			array(
-				'action' => 'set',
-				'key'    => self::SIDEBAR_TEXT,
-				'value'  => 'notacolor',
-			)
-		);
+		foreach ( array( 'notacolor', 'linear-gradient()', 'linear-gradient(foo)' ) as $invalid_color ) {
+			$result = ( new Site_Set_Theme_Mod() )->execute(
+				array(
+					'action' => 'set',
+					'key'    => self::SIDEBAR_TEXT,
+					'value'  => $invalid_color,
+				)
+			);
 
-		$this->assertIsArray( $result );
-		$this->assertFalse( $result['success'] );
-		$this->assertSame( 'invalid_value', $result['error']['code'] );
-		$this->assertSame( '#ff0000', get_theme_mod( self::SIDEBAR_TEXT ) );
+			$this->assertIsArray( $result );
+			$this->assertFalse( $result['success'] );
+			$this->assertSame( 'invalid_value', $result['error']['code'] );
+			$this->assertSame( '#ff0000', get_theme_mod( self::SIDEBAR_TEXT ) );
+		}
 	}
 
 	/**

@@ -44,8 +44,122 @@ function neve_is_css_var( $value ) {
  * @return bool
  */
 function neve_is_css_gradient( string $value ): bool {
-	// Recursion keeps parentheses balanced, so nothing can follow the closing one.
-	return (bool) preg_match( '/^(?:repeating-)?(?:linear|radial|conic)-gradient(\((?:[a-z0-9#%.,\s\/_-]|(?1))*\))$/i', trim( $value ) );
+	$value = trim( $value );
+	if ( ! preg_match( '/^(?:repeating-)?(linear|radial|conic)-gradient\((.*)\)$/iD', $value, $matches ) ) {
+		return false;
+	}
+
+	$body = $matches[2];
+	if ( '' === trim( $body ) || ! preg_match( '/^[a-z0-9#%.,\s\/_()\-]+$/i', $body ) ) {
+		return false;
+	}
+
+	$arguments = array();
+	$current   = '';
+	$depth     = 0;
+	$length    = strlen( $body );
+	for ( $index = 0; $index < $length; $index++ ) {
+		$character = $body[ $index ];
+		if ( '(' === $character ) {
+			$depth++;
+		} elseif ( ')' === $character ) {
+			$depth--;
+			if ( $depth < 0 ) {
+				return false;
+			}
+		}
+
+		if ( ',' === $character && 0 === $depth ) {
+			$arguments[] = trim( $current );
+			$current     = '';
+			continue;
+		}
+
+		$current .= $character;
+	}
+
+	if ( 0 !== $depth ) {
+		return false;
+	}
+	$arguments[] = trim( $current );
+
+	if ( ! neve_gradient_stop_starts_with_color( $arguments[0] ) ) {
+		if ( ! neve_is_css_gradient_prelude( $matches[1], $arguments[0] ) ) {
+			return false;
+		}
+		array_shift( $arguments );
+	}
+
+	if ( count( $arguments ) < 2 ) {
+		return false;
+	}
+
+	foreach ( $arguments as $argument ) {
+		if ( ! neve_gradient_stop_starts_with_color( $argument ) ) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+/**
+ * Check whether a gradient's optional first argument is a supported prelude.
+ *
+ * @param string $type  Gradient type.
+ * @param string $value Prelude value.
+ *
+ * @return bool
+ */
+function neve_is_css_gradient_prelude( string $type, string $value ): bool {
+	$value     = trim( $value );
+	$number    = '[+-]?(?:\d+(?:\.\d*)?|\.\d+)';
+	$angle     = $number . '(?:deg|grad|rad|turn)';
+	$dimension = $number . '(?:%|[a-z]+)?';
+	$position  = '(?:center|left|right|top|bottom|' . $dimension . ')';
+
+	if ( 'linear' === strtolower( $type ) ) {
+		return (bool) preg_match( '/^(?:' . $angle . '|to\s+(?:left|right|top|bottom)(?:\s+(?:left|right|top|bottom))?)$/i', $value );
+	}
+
+	if ( 'radial' === strtolower( $type ) ) {
+		$size = '(?:closest-side|closest-corner|farthest-side|farthest-corner|' . $dimension . '(?:\s+' . $dimension . ')?)';
+
+		return (bool) preg_match( '/^(?:(?:(?:circle|ellipse)(?:\s+' . $size . ')?|' . $size . ')(?:\s+at\s+' . $position . '(?:\s+' . $position . ')?)?|at\s+' . $position . '(?:\s+' . $position . ')?)$/i', $value );
+	}
+
+	return (bool) preg_match( '/^(?:from\s+' . $angle . ')(?:\s+at\s+' . $position . '(?:\s+' . $position . ')?)?$|^at\s+' . $position . '(?:\s+' . $position . ')?$/i', $value );
+}
+
+/**
+ * Check whether a gradient stop begins with a supported color value.
+ *
+ * @param string $value Gradient stop.
+ *
+ * @return bool
+ */
+function neve_gradient_stop_starts_with_color( string $value ): bool {
+	$value = trim( $value );
+	if ( preg_match( '/^#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})(?=\s|$)/i', $value ) ) {
+		return true;
+	}
+
+	if ( preg_match( '/^((?:var|rgb|rgba|hsl|hsla)(\((?:[a-z0-9#%.,\s\/_-]|(?2))*\)))(?=\s|$)/i', $value, $matches ) ) {
+		if ( 0 === stripos( $matches[1], 'var(' ) ) {
+			return neve_is_css_var( $matches[1] );
+		}
+
+		$component = '[+-]?(?:\d+(?:\.\d*)?|\.\d+)%?';
+
+		return neve_is_css_function_color( $matches[1] )
+			|| (bool) preg_match( '/^(?:rgb|rgba|hsl|hsla)\(\s*' . $component . '(?:[\s,\/]+' . $component . '){2,3}\s*\)$/i', $matches[1] );
+	}
+
+	if ( ! preg_match( '/^([a-z]+(?:-[a-z]+)*)(?=\s|$)/i', $value, $matches ) ) {
+		return false;
+	}
+
+	return '' !== neve_sanitize_row_text_color( $matches[1] );
 }
 
 /**
