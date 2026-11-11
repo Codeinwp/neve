@@ -179,7 +179,9 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_KEY => $args['mod'] . '.fontWeight',
 					'font'                     => 'mods_' . $args['font'],
 				],
-				'--texttransform' => $args['mod'] . '.textTransform',
+				'--texttransform' => [
+					Dynamic_Selector::META_KEY => $args['mod'] . '.textTransform',
+				],
 			];
 		}
 	}

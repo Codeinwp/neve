@@ -491,6 +491,7 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		$this->assertSame( 'Arial', get_theme_mod( 'neve_body_font_family' ) );
 
 		set_theme_mod( 'neve_body_font_family', $json_font );
+		set_theme_mod( 'neve_archive_typography_post_title', array( 'textTransform' => self::INJECTED_CSS ) );
 		set_theme_mod(
 			'neve_typeface_general',
 			array(
@@ -506,6 +507,33 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		);
 		$css = (string) ( new Frontend() )->generate();
 		$this->assertStringNotContainsString( 'background:lime', $css );
+	}
+
+	/**
+	 * Stored keyword font weights render and survive partial updates.
+	 */
+	public function test_keyword_font_weight_survives_partial_typography_update(): void {
+		$typeface               = Mods::get_alternative_mod_default( 'neve_typeface_general' );
+		$typeface               = is_array( $typeface ) ? $typeface : array();
+		$typeface['fontWeight'] = 'bold';
+		set_theme_mod( 'neve_typeface_general', $typeface );
+
+		$css = (string) ( new Frontend() )->generate();
+		$this->assertStringContainsString( '--bodyfontweight: bold;', $css );
+
+		$result = ( new Appearance_Update() )->execute(
+			array(
+				'typography' => array(
+					'element' => array(
+						'target'   => 'body',
+						'fontSize' => array( 'desktop' => 24 ),
+					),
+				),
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertSame( 'bold', get_theme_mod( 'neve_typeface_general' )['fontWeight'] );
 	}
 
 	/**
@@ -653,6 +681,18 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 			array(
 				'action' => 'set',
 				'key'    => self::NAV_BUTTON,
+				'value'  => 'text_button',
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertFalse( $result['success'] );
+		$this->assertSame( $stored, get_theme_mod( self::NAV_BUTTON ) );
+
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => self::NAV_BUTTON,
 				'value'  => array( 'background' => 'transparent' ),
 			)
 		);
@@ -660,6 +700,33 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 		$this->assertIsArray( $result );
 		$this->assertTrue( $result['success'] );
 		$this->assertSame( 'transparent', get_theme_mod( self::NAV_BUTTON )['background'] );
+	}
+
+	/**
+	 * Scalar button mode settings keep the generic allowlisted write path.
+	 */
+	public function test_site_set_theme_mod_accepts_scalar_button_appearance_mode(): void {
+		$allow_search_button = static function ( $allowlist ) {
+			$allowlist[] = 'header_search_button_appearance';
+
+			return $allowlist;
+		};
+		add_filter( 'neve_abilities_theme_mod_allowlist', $allow_search_button );
+		try {
+			$result = ( new Site_Set_Theme_Mod() )->execute(
+				array(
+					'action' => 'set',
+					'key'    => 'header_search_button_appearance',
+					'value'  => 'text_button',
+				)
+			);
+		} finally {
+			remove_filter( 'neve_abilities_theme_mod_allowlist', $allow_search_button );
+		}
+
+		$this->assertIsArray( $result );
+		$this->assertTrue( $result['success'] );
+		$this->assertSame( 'text_button', get_theme_mod( 'header_search_button_appearance' ) );
 	}
 
 	/**

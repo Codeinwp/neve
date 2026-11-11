@@ -208,6 +208,10 @@ class TestSanitization extends WP_UnitTestCase {
 		);
 
 		$this->assertSame( $value, neve_sanitize_typography_control( $value ) );
+		foreach ( array( 'normal', 'bold', 'bolder', 'lighter' ) as $font_weight ) {
+			$value['fontWeight'] = $font_weight;
+			$this->assertSame( $font_weight, neve_sanitize_typography_control( $value )['fontWeight'] );
+		}
 
 		unset( $value['fontWeight'] );
 		$this->assertArrayNotHasKey( 'fontWeight', neve_sanitize_typography_control( $value ) );

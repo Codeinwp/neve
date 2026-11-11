@@ -654,7 +654,7 @@ function neve_sanitize_typography_control( $value ) {
 	}
 
 	// Font Weight.
-	if ( isset( $value['fontWeight'] ) && ! in_array( $value['fontWeight'], [ 'none', '100', '200', '300', '400', '500', '600', '700', '800', '900' ], true ) ) {
+	if ( isset( $value['fontWeight'] ) && ! in_array( $value['fontWeight'], [ 'none', 'normal', 'bold', 'bolder', 'lighter', '100', '200', '300', '400', '500', '600', '700', '800', '900' ], true ) ) {
 		$value['fontWeight'] = '300';
 	}
 	// Text Transform.

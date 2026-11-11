@@ -249,7 +249,12 @@ abstract class Abstract_Ability {
 		}
 
 		if ( preg_match( '/_button_appearance$/', $key ) ) {
-			return $this->sanitize_button_appearance_mod( $value );
+			if ( is_array( $value ) ) {
+				return $this->sanitize_button_appearance_mod( $value );
+			}
+			if ( 'header_search_button_appearance' !== $key ) {
+				return null;
+			}
 		}
 
 		if ( preg_match( '/_new_text_color$/', $key ) ) {

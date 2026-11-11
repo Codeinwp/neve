@@ -83,7 +83,7 @@ class Css_Prop {
 					return '';
 				}
 				$value = (float) $value;
-			} elseif ( 'fontWeight' === $matches[1] && ! in_array( $value, array( 'none', '100', '200', '300', '400', '500', '600', '700', '800', '900' ), true ) ) {
+			} elseif ( 'fontWeight' === $matches[1] && ! in_array( $value, array( 'none', 'normal', 'bold', 'bolder', 'lighter', '100', '200', '300', '400', '500', '600', '700', '800', '900' ), true ) ) {
 				return '';
 			} elseif ( 'textTransform' === $matches[1] && ! in_array( $value, array( 'none', 'uppercase', 'lowercase', 'capitalize' ), true ) ) {
 				return '';
