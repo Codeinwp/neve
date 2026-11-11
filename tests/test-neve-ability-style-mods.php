@@ -443,17 +443,38 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 	public function test_site_set_theme_mod_rejects_malformed_function_color(): void {
 		set_theme_mod( self::SIDEBAR_TEXT, '#123456' );
 
-		$result = ( new Site_Set_Theme_Mod() )->execute(
+		foreach ( array( 'rgb(,)', 'rgb(255, 0%, 0)', 'rgb(10%,0,0)', 'hsl(0,0,0)', 'hsl(120, 50, 50)' ) as $invalid_color ) {
+			$result = ( new Site_Set_Theme_Mod() )->execute(
+				array(
+					'action' => 'set',
+					'key'    => self::SIDEBAR_TEXT,
+					'value'  => $invalid_color,
+				)
+			);
+
+			$this->assertIsArray( $result );
+			$this->assertFalse( $result['success'] );
+			$this->assertSame( '#123456', get_theme_mod( self::SIDEBAR_TEXT ) );
+		}
+	}
+
+	/**
+	 * Invalid Appearance Update button colors keep the stored appearance.
+	 */
+	public function test_appearance_update_rejects_invalid_button_hex_color(): void {
+		$stored = array( 'background' => '#123456' );
+		set_theme_mod( 'neve_button_appearance', $stored );
+
+		$result = ( new Appearance_Update() )->execute(
 			array(
-				'action' => 'set',
-				'key'    => self::SIDEBAR_TEXT,
-				'value'  => 'rgb(,)',
+				'buttons' => array(
+					'primary' => array( 'background' => '#12345' ),
+				),
 			)
 		);
 
-		$this->assertIsArray( $result );
-		$this->assertFalse( $result['success'] );
-		$this->assertSame( '#123456', get_theme_mod( self::SIDEBAR_TEXT ) );
+		$this->assertWPError( $result );
+		$this->assertSame( $stored, get_theme_mod( 'neve_button_appearance' ) );
 	}
 
 	/**
@@ -655,6 +676,8 @@ class TestNeveAbilityStyleMods extends WP_UnitTestCase {
 			'linear-gradient(1.deg, red, blue)',
 			'linear-gradient(rgb(1.,2,3), blue)',
 			'linear-gradient(rgb(255, 0%, 0), blue)',
+			'var(--c5-missing,rgb(foo))',
+			'linear-gradient(var(--c5-missing,rgb(foo)),#fff)',
 		);
 		foreach ( $invalid_colors as $invalid_color ) {
 			$result = ( new Site_Set_Theme_Mod() )->execute(

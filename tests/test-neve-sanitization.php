@@ -293,6 +293,7 @@ class TestSanitization extends WP_UnitTestCase {
 			'var(--x)}body{background:red}',
 			'var(--x, url(evil.css))',
 			'var(--x, "quoted")',
+			'var(--c5-missing,rgb(foo))',
 			'linear-gradient(var(--a), var(--b))',
 			'',
 			[ 'var(--x)' ],
@@ -363,6 +364,7 @@ class TestSanitization extends WP_UnitTestCase {
 			'linear-gradient(1.deg, red, blue)',
 			'linear-gradient(rgb(1.,2,3), blue)',
 			'linear-gradient(rgb(255, 0%, 0), blue)',
+			'linear-gradient(var(--c5-missing,rgb(foo)),#fff)',
 			'linear-gradient(red,blue)</style><script>alert(1)</script>',
 			'linear-gradient(red,blue);}body{display:none',
 			'linear-gradient(red,blue),url(//example.com/t.png)',
@@ -390,6 +392,7 @@ class TestSanitization extends WP_UnitTestCase {
 			'rgba(1,2,3)',
 			'rgba(255,0,0,.5)',
 			'hsl(120, 50%, 50%)',
+			'hsl(120deg, 50%, 50%)',
 			'hsla(120, 50%, 50%, 0.5)',
 		];
 
@@ -408,9 +411,12 @@ class TestSanitization extends WP_UnitTestCase {
 			'rgb(1,2,3)),url(//example.com/t.png)',
 			'rgb(1,2,3)</style><script>alert(1)</script>',
 			'rgb(var(--x),2,3)',
+			'rgb(255, 0%, 0)',
+			'rgb(10%,0,0)',
+			'hsl(0,0,0)',
+			'hsl(120, 50, 50)',
 			'rgb(1,2,3',
 			'#rgb(1,2,3)',
-			'hsl(120deg, 50%, 50%)',
 			'lab(50% 40 59)',
 		];
 

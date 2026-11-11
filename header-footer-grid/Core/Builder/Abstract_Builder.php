@@ -983,7 +983,7 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
-	 * Print a row color variable; a stored color that can close its declaration is sanitized first.
+	 * Print a row color variable after validating the stored value.
 	 *
 	 * @param string $css_prop CSS variable.
 	 * @param mixed  $value    Stored color.
@@ -996,10 +996,7 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		// The printed style is stripped of HTML as a whole; strip it here first so only CSS is checked.
-		$value = wp_strip_all_tags( $value );
-		if ( neve_closes_css_declaration( $value ) ) {
-			$value = neve_sanitize_colors( $value );
-		}
+		$value = neve_sanitize_row_text_color( wp_strip_all_tags( $value ) );
 
 		return '' !== $value ? sprintf( ' %s: %s;', $css_prop, $value ) : '';
 	}

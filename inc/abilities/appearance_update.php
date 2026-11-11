@@ -588,7 +588,7 @@ class Appearance_Update extends Abstract_Ability {
 			return false;
 		}
 
-		if ( preg_match( '/^#[0-9a-fA-F]{3,8}$/', $value ) ) {
+		if ( preg_match( '/^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/', $value ) ) {
 			return true;
 		}
 

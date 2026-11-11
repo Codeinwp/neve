@@ -86,6 +86,21 @@ class TestNeveRowColorCss extends WP_UnitTestCase {
 	}
 
 	/**
+	 * A malformed legacy row color is omitted from generated CSS.
+	 */
+	public function test_malformed_stored_row_color_is_not_printed(): void {
+		set_theme_mod(
+			'hfg_header_layout_main_background',
+			array(
+				'type'       => 'color',
+				'colorValue' => 'linear-gradient()',
+			)
+		);
+
+		$this->assertSame( 0, preg_match( '/\.header-main\{[^}]*--bgcolor:/s', $this->header_css() ) );
+	}
+
+	/**
 	 * Render the header builder's dynamic CSS.
 	 *
 	 * @return string
