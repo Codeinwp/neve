@@ -1,6 +1,6 @@
 <?php
 /**
- * Updated on 02/11/26
+ * Updated on 16/11/26
  *
  * @package neve
  */
@@ -23,6 +23,7 @@ return array(
 	'Afacad Flux' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900',),
 	'Agbalumo' => array( '400',),
 	'Agdasima' => array( '400', '700',),
+	'Agrave Pro' => array( '100', '200', '300', '400', '500', '600', '700',),
 	'Agu Display' => array( '400',),
 	'Aguafina Script' => array( '400',),
 	'Akatab' => array( '400', '500', '600', '700', '800', '900',),
@@ -553,6 +554,7 @@ return array(
 	'Fira Sans' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Fira Sans Condensed' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
 	'Fira Sans Extra Condensed' => array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', '400italic', '500italic', '600italic', '700italic', '800italic', '900italic',),
+	'Firjar' => array( '100', '200', '300', '400', '500', '600', '700', '800',),
 	'Fjalla One' => array( '400',),
 	'Fjord One' => array( '400',),
 	'Flamenco' => array( '300', '400',),
