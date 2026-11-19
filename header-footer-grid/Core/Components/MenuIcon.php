@@ -153,9 +153,9 @@ class MenuIcon extends Abstract_Component {
 	}
 
 	/**
-	 * Icon of the first menu icon in the header layout, which the sidebar close button mirrors.
+	 * Icon the sidebar close button mirrors: the first registered menu icon that is in the header layout.
 	 *
-	 * Only an icon in the layout enqueues its styles, so an unused one must not decide the close button markup.
+	 * Registration order puts the core icon first. Only an icon in the layout enqueues its styles, so an unused one must not decide the close button markup.
 	 *
 	 * @return array{icon: 'default'|'donner'|'dots'|'wave'|'svg', svg: string}
 	 */
