@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Builder\Header as HeaderBuilder;
 use HFG\Core\Script_Register;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
@@ -149,6 +150,43 @@ class MenuIcon extends Abstract_Component {
 			}
 		}
 		return $class;
+	}
+
+	/**
+	 * Icon of the first menu icon in the header layout, which the sidebar close button mirrors.
+	 *
+	 * Only an icon in the layout enqueues its styles, so an unused one must not decide the close button markup.
+	 *
+	 * @return array{icon: 'default'|'donner'|'dots'|'wave'|'svg', svg: string}
+	 */
+	public static function get_close_button_icon(): array {
+		$default = [
+			'icon' => 'default',
+			'svg'  => '',
+		];
+		$header  = Main::get_instance()->get_builder( HeaderBuilder::BUILDER_NAME );
+		if ( ! $header instanceof HeaderBuilder ) {
+			return $default;
+		}
+
+		foreach ( $header->get_components() as $component ) {
+			if ( ! $component instanceof self || ! $header->is_component_active( $component->get_id() ) ) {
+				continue;
+			}
+
+			$icon = Mods::get( $component->get_id() . '_' . self::MENU_ICON, 'default' );
+			$svg  = (string) Mods::get( $component->get_id() . '_' . self::MENU_SVG, '' );
+			if ( ! in_array( $icon, [ 'donner', 'dots', 'wave', 'svg' ], true ) || ( $icon === 'svg' && $svg === '' ) ) {
+				return $default;
+			}
+
+			return [
+				'icon' => $icon,
+				'svg'  => $svg,
+			];
+		}
+
+		return $default;
 	}
 
 	/**
