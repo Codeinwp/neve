@@ -116,24 +116,28 @@ class TestNeveHfgMenuIconCloseButton extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Place components in the mobile main row and drop the cached layout.
+	 * Place components in the main rows and drop the cached layout.
 	 *
-	 * @param list<string> $component_ids Components in the row.
+	 * @param list<string> $component_ids         Components in the mobile row.
+	 * @param list<string> $desktop_component_ids Components in the desktop row.
 	 */
-	private function set_mobile_layout( array $component_ids ): void {
-		$slot = array_map(
-			function ( string $id ): array {
-				return [ 'id' => $id ];
-			},
-			$component_ids
-		);
+	private function set_mobile_layout( array $component_ids, array $desktop_component_ids = [] ): void {
+		$to_slot = function ( array $ids ): array {
+			return array_map(
+				function ( string $id ): array {
+					return [ 'id' => $id ];
+				},
+				$ids
+			);
+		};
 		set_theme_mod( 'neve_migrated_builders', true );
 		set_theme_mod(
 			'hfg_header_layout_v2',
 			wp_json_encode(
 				[
-					'mobile' => [
-						'main'    => [ 'right' => $slot ],
+					'desktop' => [ 'main' => [ 'right' => $to_slot( $desktop_component_ids ) ] ],
+					'mobile'  => [
+						'main'    => [ 'right' => $to_slot( $component_ids ) ],
 						'sidebar' => [],
 					],
 				]
@@ -234,5 +238,50 @@ class TestNeveHfgMenuIconCloseButton extends WP_UnitTestCase {
 		$this->assertStringContainsString( 'hamburger--dots', $button );
 		$this->assertStringContainsString( 'hamburger-box icon-dots', $button );
 		$this->assertStringNotContainsString( 'hamburger--wave', $button );
+	}
+
+	/**
+	 * With both menu icons in the mobile header, the close button follows the one rendered first.
+	 */
+	public function test_close_button_follows_first_rendered_mobile_menu_icon(): void {
+		$this->register_additional_menu_icon();
+		set_theme_mod( 'nav-icon_menu_icon', 'default' );
+		set_theme_mod( 'nav-icon_2_menu_icon', 'wave' );
+		$this->set_mobile_layout( [ 'nav-icon_2', 'logo', 'nav-icon' ] );
+
+		$button = $this->close_button( $this->render_sidebar( 'nav-icon' ) );
+
+		$this->assertStringContainsString( 'hamburger--wave', $button );
+		$this->assertStringContainsString( 'hamburger-box icon-wave', $button );
+		$this->assertStringNotContainsString( 'class="bars"', $button );
+	}
+
+	/**
+	 * A menu icon placed only in the desktop header does not override the mobile one.
+	 */
+	public function test_close_button_prefers_mobile_menu_icon_over_desktop_only_icon(): void {
+		$this->register_additional_menu_icon();
+		set_theme_mod( 'nav-icon_menu_icon', 'default' );
+		set_theme_mod( 'nav-icon_2_menu_icon', 'dots' );
+		$this->set_mobile_layout( [ 'logo', 'nav-icon_2' ], [ 'nav-icon' ] );
+
+		$button = $this->close_button( $this->render_sidebar( 'nav-icon_2' ) );
+
+		$this->assertStringContainsString( 'hamburger--dots', $button );
+		$this->assertStringContainsString( 'hamburger-box icon-dots', $button );
+		$this->assertStringNotContainsString( 'class="bars"', $button );
+	}
+
+	/**
+	 * Without a menu icon in the mobile header, the close button follows one in the desktop header.
+	 */
+	public function test_close_button_falls_back_to_desktop_menu_icon(): void {
+		set_theme_mod( 'nav-icon_menu_icon', 'wave' );
+		$this->set_mobile_layout( [ 'logo' ], [ 'nav-icon' ] );
+
+		$button = $this->close_button( $this->render_sidebar( 'logo' ) );
+
+		$this->assertStringContainsString( 'hamburger--wave', $button );
+		$this->assertStringContainsString( 'hamburger-box icon-wave', $button );
 	}
 }

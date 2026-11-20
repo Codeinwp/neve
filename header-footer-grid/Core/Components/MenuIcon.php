@@ -153,9 +153,9 @@ class MenuIcon extends Abstract_Component {
 	}
 
 	/**
-	 * Icon the sidebar close button mirrors: the first registered menu icon that is in the header layout.
+	 * Icon the sidebar close button mirrors: the first menu icon rendered in the mobile header, else the first registered one in the layout.
 	 *
-	 * Registration order puts the core icon first. Only an icon in the layout enqueues its styles, so an unused one must not decide the close button markup.
+	 * Only an icon in the layout enqueues its styles, so an unused one must not decide the close button markup.
 	 *
 	 * @return array{icon: 'default'|'donner'|'dots'|'wave'|'svg', svg: string}
 	 */
@@ -169,8 +169,10 @@ class MenuIcon extends Abstract_Component {
 			return $default;
 		}
 
-		foreach ( $header->get_components() as $component ) {
-			if ( ! $component instanceof self || ! $header->is_component_active( $component->get_id() ) ) {
+		$candidates = array_merge( self::get_mobile_component_ids( $header ), array_keys( $header->get_components() ) );
+		foreach ( $candidates as $component_id ) {
+			$component = $header->get_component( $component_id );
+			if ( ! $component instanceof self || ! $header->is_component_active( $component_id ) ) {
 				continue;
 			}
 
@@ -187,6 +189,31 @@ class MenuIcon extends Abstract_Component {
 		}
 
 		return $default;
+	}
+
+	/**
+	 * Component ids of the mobile header rows, in render order.
+	 *
+	 * @param HeaderBuilder $header Header builder.
+	 *
+	 * @return list<string>
+	 */
+	private static function get_mobile_component_ids( HeaderBuilder $header ): array {
+		$layout = $header->get_layout_data();
+		$rows   = isset( $layout['mobile'] ) && is_array( $layout['mobile'] ) ? $layout['mobile'] : [];
+		unset( $rows['sidebar'] );
+
+		$ids = [];
+		array_walk_recursive(
+			$rows,
+			function ( $value, $key ) use ( &$ids ) {
+				if ( $key === 'id' && is_string( $value ) ) {
+					$ids[] = $value;
+				}
+			}
+		);
+
+		return $ids;
 	}
 
 	/**
