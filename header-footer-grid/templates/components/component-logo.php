@@ -30,7 +30,7 @@ $main_logo     = get_theme_mod( 'custom_logo' );
 $custom_logo   = component_setting( Logo::CUSTOM_LOGO, $main_logo );
 
 $active_logo      = $_id === 'logo' ? $main_logo : $custom_logo;
-$conditional_logo = json_decode( component_setting( Logo::LOGO, Logo::sanitize_logo_json( $active_logo ) ), true );
+$conditional_logo = Logo::decode_logo_json( component_setting( Logo::LOGO, Logo::sanitize_logo_json( $active_logo ) ) );
 $custom_logo_id   = isset( $conditional_logo['light'] ) ? $conditional_logo['light'] : $active_logo;
 
 $wrapper_tag = 'p';
