@@ -37,7 +37,9 @@ jobs:
           chmod 600 "$HOME/.ssh/key"
       - name: Deploy to server
         run: |
-          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/" $SSH_USERNAME@$SSH_HOST:$SSH_PATH
+          # Create new files and folders group-writable (the server's umask is 022), so the
+          # deploy user can still update them if the server later changes their owner.
+          rsync -rc --chmod=Dg+w,Fg+w --rsync-path="umask 002 && rsync" --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/" $SSH_USERNAME@$SSH_HOST:$SSH_PATH
       - name: Generate file checksums
         uses: Codeinwp/action-release-checksums@main
       - name: Upload Latest Version to S3

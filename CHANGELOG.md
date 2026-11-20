@@ -1,3 +1,7 @@
+##### [Version 4.2.19](https://github.com/Codeinwp/neve/compare/v4.2.18...v4.2.19) (2026-11-06)
+
+- Updated dependencies
+
 ##### [Version 4.2.18](https://github.com/Codeinwp/neve/compare/v4.2.17...v4.2.18) (2026-11-04)
 
 - Fixed duplicate H1 headings on pages with hidden titles
