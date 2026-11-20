@@ -21,6 +21,9 @@ class TestNeveRowTextColor extends WP_UnitTestCase {
 
 	const TOUCHED_MODS = array(
 		'hfg_header_layout_main_new_text_color',
+		'hfg_header_layout_main_height',
+		'hfg_header_layout_main_background',
+		'hfg_footer_layout_bottom_vertical_align',
 		'hfg_footer_layout_main_new_text_color',
 		'hfg_footer_layout_main_background',
 		'hfg_header_layout_sidebar_new_text_color',
@@ -110,6 +113,61 @@ class TestNeveRowTextColor extends WP_UnitTestCase {
 	}
 
 	/**
+	 * A stored row background or overlay color that is not a color prints the default or nothing.
+	 */
+	public function test_row_background_colors_output_prints_only_colors(): void {
+		set_theme_mod(
+			'hfg_header_layout_main_background',
+			[
+				'type'       => 'color',
+				'colorValue' => self::PAYLOAD,
+			]
+		);
+		$css = $this->get_frontend_css();
+
+		$this->assertStringNotContainsString( 'lime', $css );
+		$this->assertMatchesRegularExpression( '/\.header-main\{[^}]*--bgcolor: var\(--nv-site-bg\);/', $css );
+
+		set_theme_mod(
+			'hfg_header_layout_main_background',
+			[
+				'type'              => 'image',
+				'imageUrl'          => 'https://example.com/a.png',
+				'overlayColorValue' => self::PAYLOAD,
+			]
+		);
+		$css = $this->get_frontend_css();
+
+		$this->assertStringNotContainsString( 'lime', $css );
+		$this->assertStringNotContainsString( '--overlaycolor', $css );
+	}
+
+	/**
+	 * The footer row vertical alignment accepts and prints only its choices.
+	 */
+	public function test_row_vertical_align_accepts_only_choices(): void {
+		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
+
+		$manager = new WP_Customize_Manager();
+		Main::get_instance()->get_builder( 'footer' )->customize_register( $manager );
+
+		$setting = $manager->get_setting( 'hfg_footer_layout_bottom_vertical_align' );
+		$this->assertInstanceOf( WP_Customize_Setting::class, $setting );
+		$this->assertSame( 'flex-start', $setting->sanitize( 'top;}body{background:lime}/*' ) );
+		$this->assertSame( 'center', $setting->sanitize( 'center' ) );
+
+		set_theme_mod( 'hfg_footer_layout_bottom_vertical_align', 'top;}body{background:lime}/*' );
+		$css = $this->get_frontend_css();
+
+		$this->assertStringNotContainsString( 'lime', $css );
+		$this->assertStringContainsString( '--valign: flex-start;', $css );
+
+		set_theme_mod( 'hfg_footer_layout_bottom_vertical_align', 'flex-end' );
+
+		$this->assertStringContainsString( '--valign: flex-end;', $this->get_frontend_css() );
+	}
+
+	/**
 	 * The configure abilities skip a row text color that is not a color and keep valid ones.
 	 */
 	public function test_configure_abilities_sanitize_row_style_colors(): void {
@@ -146,6 +204,67 @@ class TestNeveRowTextColor extends WP_UnitTestCase {
 		$background = get_theme_mod( 'hfg_footer_layout_main_background' );
 		$this->assertIsArray( $background );
 		$this->assertSame( '', $background['colorValue'] );
+	}
+
+	/**
+	 * The configure abilities report each row style field they did not save.
+	 */
+	public function test_configure_abilities_warn_about_skipped_row_style_fields(): void {
+		$result = ( new Header_Configure() )->execute(
+			array(
+				'row_style' => array(
+					array(
+						'row'        => 'main',
+						'text_color' => 'red',
+					),
+				),
+			)
+		);
+		$this->assertSame( array( 'Invalid value for "row_style.main.text_color".' ), $result['warnings'] );
+
+		$result = ( new Footer_Configure() )->execute(
+			array(
+				'row_style' => array(
+					array(
+						'row'        => 'main',
+						'text_color' => '#abcdef',
+						'background' => array( 'type' => 'gradient' ),
+					),
+				),
+			)
+		);
+		$this->assertSame( array( 'Invalid value for "row_style.main.background".' ), $result['warnings'] );
+		$this->assertSame( '#abcdef', get_theme_mod( 'hfg_footer_layout_main_new_text_color' ) );
+	}
+
+	/**
+	 * The configure abilities save a row height the way its Customizer setting does.
+	 */
+	public function test_configure_abilities_sanitize_row_height(): void {
+		( new Header_Configure() )->execute(
+			array(
+				'row_style' => array(
+					array(
+						'row'    => 'main',
+						'height' => array(
+							'mobile'  => 20,
+							'desktop' => '80',
+							'suffix'  => array(
+								'mobile'  => 'px;}body{background:lime}/*',
+								'desktop' => 'em',
+							),
+						),
+					),
+				),
+			)
+		);
+
+		$height = json_decode( get_theme_mod( 'hfg_header_layout_main_height' ), true );
+		$this->assertSame( 20, $height['mobile'] );
+		$this->assertSame( 80, $height['desktop'] );
+		$this->assertSame( 'px', $height['suffix']['mobile'] );
+		$this->assertSame( 'em', $height['suffix']['desktop'] );
+		$this->assertStringNotContainsString( 'lime', $this->get_frontend_css() );
 	}
 
 	/**

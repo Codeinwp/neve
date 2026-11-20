@@ -10,6 +10,8 @@
 
 namespace Neve\Abilities;
 
+use HFG\Core\Builder\Abstract_Builder;
+
 /**
  * Trait Builder_Configure
  *
@@ -28,7 +30,7 @@ trait Builder_Configure {
 	 * Fetch the live builder instance.
 	 *
 	 * @param string $builder_id "header" or "footer".
-	 * @return object|null
+	 * @return Abstract_Builder|null
 	 */
 	protected function get_builder( $builder_id ) {
 		if ( ! class_exists( '\HFG\Main' ) ) {
@@ -37,7 +39,7 @@ trait Builder_Configure {
 
 		$builder = \HFG\Main::get_instance()->get_builder( $builder_id );
 
-		return is_object( $builder ) ? $builder : null;
+		return $builder instanceof Abstract_Builder ? $builder : null;
 	}
 
 	/**
@@ -172,18 +174,17 @@ trait Builder_Configure {
 	/**
 	 * Apply per-row style settings (height / background / text color).
 	 *
-	 * @param string       $builder_id Builder id.
-	 * @param string       $row        Row key.
-	 * @param array<mixed> $style      Style block.
-	 * @return string[] Affected theme_mod keys.
+	 * @param Abstract_Builder $builder The builder instance.
+	 * @param string           $row     Row key.
+	 * @param array<mixed>     $style   Style block.
+	 * @return list<string> Warnings for fields that were not saved.
 	 */
-	protected function apply_row_style( $builder_id, $row, array $style ) {
-		$prefix   = 'hfg_' . $builder_id . '_layout_' . $row;
-		$affected = array();
+	protected function apply_row_style( Abstract_Builder $builder, $row, array $style ) {
+		$prefix   = 'hfg_' . $builder->get_id() . '_layout_' . $row;
+		$warnings = array();
 
 		if ( isset( $style['height'] ) ) {
-			set_theme_mod( $prefix . '_height', wp_json_encode( map_deep( $style['height'], 'sanitize_text_field' ) ) );
-			$affected[] = $prefix . '_height';
+			set_theme_mod( $prefix . '_height', $builder->sanitize_responsive_int_json( $style['height'] ) );
 		}
 		$style_mods = array(
 			'background' => $prefix . '_background',
@@ -196,14 +197,18 @@ trait Builder_Configure {
 
 			$value = $this->sanitize_style_mod( $key, map_deep( $style[ $field ], 'sanitize_text_field' ) );
 			if ( null === $value ) {
+				$warnings[] = sprintf(
+					/* translators: %s: input field name */
+					__( 'Invalid value for "%s".', 'neve' ),
+					'row_style.' . $row . '.' . $field
+				);
 				continue;
 			}
 
 			set_theme_mod( $key, $value );
-			$affected[] = $key;
 		}
 
-		return $affected;
+		return $warnings;
 	}
 
 	/**

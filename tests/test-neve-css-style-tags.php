@@ -138,7 +138,7 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 	}
 
 	/**
-	 * A stored row background with HTML is printed without tags in the Customizer preview.
+	 * A stored row background with HTML prints the default color in the Customizer preview.
 	 */
 	public function test_builder_css_strips_html_in_customizer_preview(): void {
 		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
@@ -158,7 +158,7 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 		Main::get_instance()->get_builder( 'header' )->render();
 		$output = (string) ob_get_clean();
 
-		$this->assertStringContainsString( '--bgcolor: linear-gradient(red,blue);', $output );
+		$this->assertMatchesRegularExpression( '/\.header-main\{[^}]*--bgcolor: var\(--nv-site-bg\);/', $output );
 		$this->assertStringNotContainsString( '<script', $output );
 	}
 }
