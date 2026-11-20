@@ -36,7 +36,7 @@ class TestNeveHfgMenuIconCloseButton extends WP_UnitTestCase {
 	/**
 	 * Builder properties overwritten by the tests.
 	 */
-	const BUILDER_PROPERTIES = [ 'builder_components', 'layout_data', 'active_components' ];
+	const BUILDER_PROPERTIES = [ 'builder_components', 'layout_data', 'active_components', 'layout_control_id' ];
 
 	/**
 	 * Static render state and builder properties to restore.
@@ -130,20 +130,29 @@ class TestNeveHfgMenuIconCloseButton extends WP_UnitTestCase {
 				$ids
 			);
 		};
-		set_theme_mod( 'neve_migrated_builders', true );
-		set_theme_mod(
-			'hfg_header_layout_v2',
-			wp_json_encode(
-				[
-					'desktop' => [ 'main' => [ 'right' => $to_slot( $desktop_component_ids ) ] ],
-					'mobile'  => [
-						'main'    => [ 'right' => $to_slot( $component_ids ) ],
-						'sidebar' => [],
-					],
-				]
-			)
+		$this->set_header_layout(
+			[
+				'desktop' => [ 'main' => [ 'right' => $to_slot( $desktop_component_ids ) ] ],
+				'mobile'  => [
+					'main'    => [ 'right' => $to_slot( $component_ids ) ],
+					'sidebar' => [],
+				],
+			]
 		);
+	}
 
+	/**
+	 * Save a header layout for the given builder version and drop the cached layout.
+	 *
+	 * @param array<string, array<string, mixed>> $layout        Layout data per device.
+	 * @param bool                                $is_new_builder Whether the layout uses the new builder format.
+	 */
+	private function set_header_layout( array $layout, bool $is_new_builder = true ): void {
+		$control_id = 'hfg_header_layout' . ( $is_new_builder ? '_v2' : '' );
+		set_theme_mod( 'neve_migrated_builders', $is_new_builder );
+		set_theme_mod( $control_id, wp_json_encode( $layout ) );
+
+		$this->builder_property( 'layout_control_id' )->setValue( $this->header_builder(), $control_id );
 		$this->builder_property( 'layout_data' )->setValue( $this->header_builder(), [] );
 		$this->builder_property( 'active_components' )->setValue( $this->header_builder(), [] );
 	}
@@ -269,6 +278,65 @@ class TestNeveHfgMenuIconCloseButton extends WP_UnitTestCase {
 
 		$this->assertStringContainsString( 'hamburger--dots', $button );
 		$this->assertStringContainsString( 'hamburger-box icon-dots', $button );
+		$this->assertStringNotContainsString( 'class="bars"', $button );
+	}
+
+	/**
+	 * Slots are walked in render order, not in the order the layout was saved.
+	 */
+	public function test_close_button_follows_slot_render_order(): void {
+		$this->register_additional_menu_icon();
+		set_theme_mod( 'nav-icon_menu_icon', 'default' );
+		set_theme_mod( 'nav-icon_2_menu_icon', 'wave' );
+		$this->set_header_layout(
+			[
+				'mobile' => [
+					'main'    => [
+						'right' => [ [ 'id' => 'nav-icon' ] ],
+						'left'  => [ [ 'id' => 'nav-icon_2' ] ],
+					],
+					'sidebar' => [],
+				],
+			]
+		);
+
+		$button = $this->close_button( $this->render_sidebar( 'nav-icon' ) );
+
+		$this->assertStringContainsString( 'hamburger-box icon-wave', $button );
+		$this->assertStringNotContainsString( 'class="bars"', $button );
+	}
+
+	/**
+	 * Legacy rows render by column position, so a saved list order that differs is ignored.
+	 */
+	public function test_close_button_follows_legacy_column_order(): void {
+		$this->register_additional_menu_icon();
+		set_theme_mod( 'nav-icon_menu_icon', 'default' );
+		set_theme_mod( 'nav-icon_2_menu_icon', 'wave' );
+		$this->set_header_layout(
+			[
+				'mobile' => [
+					'main'    => [
+						[
+							'id'    => 'nav-icon',
+							'x'     => 8,
+							'width' => 4,
+						],
+						[
+							'id'    => 'nav-icon_2',
+							'x'     => 0,
+							'width' => 4,
+						],
+					],
+					'sidebar' => [],
+				],
+			],
+			false
+		);
+
+		$button = $this->close_button( $this->render_sidebar( 'nav-icon' ) );
+
+		$this->assertStringContainsString( 'hamburger-box icon-wave', $button );
 		$this->assertStringNotContainsString( 'class="bars"', $button );
 	}
 

@@ -169,7 +169,7 @@ class MenuIcon extends Abstract_Component {
 			return $default;
 		}
 
-		$candidates = array_merge( self::get_mobile_component_ids( $header ), array_keys( $header->get_components() ) );
+		$candidates = array_merge( $header->get_device_component_ids( 'mobile' ), array_keys( $header->get_components() ) );
 		foreach ( $candidates as $component_id ) {
 			$component = $header->get_component( $component_id );
 			if ( ! $component instanceof self || ! $header->is_component_active( $component_id ) ) {
@@ -189,31 +189,6 @@ class MenuIcon extends Abstract_Component {
 		}
 
 		return $default;
-	}
-
-	/**
-	 * Component ids of the mobile header rows, in render order.
-	 *
-	 * @param HeaderBuilder $header Header builder.
-	 *
-	 * @return list<string>
-	 */
-	private static function get_mobile_component_ids( HeaderBuilder $header ): array {
-		$layout = $header->get_layout_data();
-		$rows   = isset( $layout['mobile'] ) && is_array( $layout['mobile'] ) ? $layout['mobile'] : [];
-		unset( $rows['sidebar'] );
-
-		$ids = [];
-		array_walk_recursive(
-			$rows,
-			function ( $value, $key ) use ( &$ids ) {
-				if ( $key === 'id' && is_string( $value ) ) {
-					$ids[] = $value;
-				}
-			}
-		);
-
-		return $ids;
 	}
 
 	/**
