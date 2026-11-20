@@ -172,7 +172,17 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 				);
 			}
 
-			set_theme_mod( $key, $this->sanitize_value( $input['value'] ) );
+			$value = $this->sanitize_style_mod( $key, $this->sanitize_value( $input['value'] ) );
+			if ( null === $value ) {
+				return $this->validation_issue(
+					'invalid_value',
+					/* translators: %s: input field name */
+					sprintf( __( 'Invalid value for "%s".', 'neve' ), 'value' ),
+					'value'
+				);
+			}
+
+			set_theme_mod( $key, $value );
 		}
 
 		return array(

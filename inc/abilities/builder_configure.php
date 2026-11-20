@@ -185,13 +185,22 @@ trait Builder_Configure {
 			set_theme_mod( $prefix . '_height', wp_json_encode( map_deep( $style['height'], 'sanitize_text_field' ) ) );
 			$affected[] = $prefix . '_height';
 		}
-		if ( isset( $style['background'] ) ) {
-			set_theme_mod( $prefix . '_background', map_deep( $style['background'], 'sanitize_text_field' ) );
-			$affected[] = $prefix . '_background';
-		}
-		if ( isset( $style['text_color'] ) ) {
-			set_theme_mod( $prefix . '_new_text_color', sanitize_text_field( $style['text_color'] ) );
-			$affected[] = $prefix . '_new_text_color';
+		$style_mods = array(
+			'background' => $prefix . '_background',
+			'text_color' => $prefix . '_new_text_color',
+		);
+		foreach ( $style_mods as $field => $key ) {
+			if ( ! isset( $style[ $field ] ) ) {
+				continue;
+			}
+
+			$value = $this->sanitize_style_mod( $key, map_deep( $style[ $field ], 'sanitize_text_field' ) );
+			if ( null === $value ) {
+				continue;
+			}
+
+			set_theme_mod( $key, $value );
+			$affected[] = $key;
 		}
 
 		return $affected;

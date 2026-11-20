@@ -527,7 +527,7 @@ abstract class Abstract_Builder implements Builder {
 					],
 					'partial' => $row_id === 'sidebar' ? 'hfg_header_layout_partial' : $row_setting_id . '_partial',
 				],
-				'sanitize_callback'     => 'wp_filter_nohtml_kses',
+				'sanitize_callback'     => 'neve_sanitize_colors',
 				'default'               => $default_colors['text'],
 			]
 		);
@@ -1039,6 +1039,12 @@ abstract class Abstract_Builder implements Builder {
 		$rules['--color'] = [
 			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
 			Dynamic_Selector::META_DEFAULT => $default_colors['text'],
+			// Stored values can bypass the setting sanitizer, so they could still close the declaration.
+			Dynamic_Selector::META_FILTER  => function ( $css_prop, $value ) use ( $default_colors ) {
+				$color = neve_sanitize_colors( $value );
+
+				return sprintf( ' %s: %s;', $css_prop, '' === $color ? $default_colors['text'] : $color );
+			},
 		];
 
 		// Exclude the following rules for the header when the global header background is active.
