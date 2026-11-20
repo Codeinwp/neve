@@ -140,6 +140,10 @@ trait Schema_Helpers {
 				'right'  => array( 'type' => 'number' ),
 				'bottom' => array( 'type' => 'number' ),
 				'left'   => array( 'type' => 'number' ),
+				'unit'   => array(
+					'type' => 'string',
+					'enum' => array( 'px', 'em', 'rem', '%' ),
+				),
 			),
 		);
 	}

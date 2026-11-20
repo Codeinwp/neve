@@ -1,6 +1,6 @@
 <?php
 /**
- * Tests for the font values of the appearance-update ability.
+ * Tests for the CSS value validation of the appearance-update ability.
  *
  * @package neve
  */
@@ -21,6 +21,7 @@ class TestNeveAppearanceUpdateFonts extends WP_UnitTestCase {
 		'neve_typeface_general',
 		'neve_h2_typeface_general',
 		'neve_button_typeface',
+		'neve_button_appearance',
 	);
 
 	/**
@@ -145,6 +146,27 @@ class TestNeveAppearanceUpdateFonts extends WP_UnitTestCase {
 		$this->assertFalse( get_theme_mod( 'neve_body_font_family' ) );
 		$this->assertFalse( get_theme_mod( 'neve_headings_font_family' ) );
 		$this->assertStringNotContainsString( 'lime', $this->get_frontend_css() );
+	}
+
+	/**
+	 * A button radius unit outside the CSS units is rejected; a valid one is saved.
+	 */
+	public function test_button_radius_unit_accepts_only_css_units(): void {
+		$radius = array(
+			'top'    => 3,
+			'right'  => 3,
+			'bottom' => 3,
+			'left'   => 3,
+		);
+
+		$result = $this->run_ability( array( 'buttons' => array( 'primary' => array( 'radius' => $radius + array( 'unit' => 'px' . self::PAYLOAD ) ) ) ) );
+		$this->assertInstanceOf( WP_Error::class, $result );
+		$this->assertFalse( get_theme_mod( 'neve_button_appearance' ) );
+		$this->assertStringNotContainsString( 'lime', $this->get_frontend_css() );
+
+		$result = $this->run_ability( array( 'buttons' => array( 'primary' => array( 'radius' => $radius + array( 'unit' => 'em' ) ) ) ) );
+		$this->assertIsArray( $result );
+		$this->assertSame( 'em', get_theme_mod( 'neve_button_appearance' )['borderRadius']['unit'] );
 	}
 
 	/**

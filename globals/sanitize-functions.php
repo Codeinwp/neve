@@ -246,13 +246,72 @@ function neve_sanitize_background( $value ) {
 }
 
 /**
+ * Sanitize the values of a CSS dimension array: sides, responsive sizes and their units.
+ *
+ * Nested arrays are sanitized recursively; any other value is kept only when it is a number,
+ * a boolean, empty, or a plain word or unit (`px`, `auto`), and is otherwise cleared.
+ *
+ * @param array<mixed> $value Dimension array.
+ *
+ * @return array<mixed>
+ */
+function neve_sanitize_css_dimensions( array $value ) {
+	foreach ( $value as $key => $item ) {
+		if ( is_array( $item ) ) {
+			$value[ $key ] = neve_sanitize_css_dimensions( $item );
+			continue;
+		}
+
+		if ( is_string( $item ) && ! is_numeric( $item ) && ! preg_match( '/^[a-z%-]*$/i', $item ) ) {
+			$value[ $key ] = '';
+		}
+	}
+
+	return $value;
+}
+
+/**
+ * Sanitize a font family name, rejecting anything that could close its CSS declaration.
+ *
+ * @param mixed $value Font family.
+ *
+ * @return string The sanitized font family, or '' when it is not a font family name.
+ */
+function neve_sanitize_font_family( $value ) {
+	if ( ! is_string( $value ) ) {
+		return '';
+	}
+
+	// Checked after sanitize_text_field(), which turns a lone `<` into `&lt;`.
+	$value = sanitize_text_field( $value );
+
+	return preg_match( '/[;{}()<>]|\/\*/', $value ) ? '' : $value;
+}
+
+/**
  * Sanitize the button appearance control.
  *
- * @param array $value the control value.
+ * @param mixed $value the control value.
  *
- * @return array
+ * @return mixed The sanitized array; any other value is returned unchanged.
  */
 function neve_sanitize_button_appearance( $value ) {
+	if ( ! is_array( $value ) ) {
+		return $value;
+	}
+
+	foreach ( [ 'background', 'backgroundHover', 'text', 'textHover', 'shadowColor', 'shadowColorHover' ] as $color ) {
+		if ( isset( $value[ $color ] ) ) {
+			$value[ $color ] = neve_sanitize_colors( $value[ $color ] );
+		}
+	}
+
+	foreach ( [ 'borderRadius', 'borderWidth', 'shadowProperties', 'shadowPropertiesHover' ] as $dimension ) {
+		if ( isset( $value[ $dimension ] ) && is_array( $value[ $dimension ] ) ) {
+			$value[ $dimension ] = neve_sanitize_css_dimensions( $value[ $dimension ] );
+		}
+	}
+
 	return $value;
 }
 
@@ -290,9 +349,7 @@ function neve_sanitize_typography_control( $value ) {
 
 	// Make sure we deal with arrays.
 	foreach ( [ 'letterSpacing', 'lineHeight', 'fontSize' ] as $value_type ) {
-		if ( ! is_array( $value[ $value_type ] ) ) {
-			$value[ $value_type ] = [];
-		}
+		$value[ $value_type ] = is_array( $value[ $value_type ] ) ? neve_sanitize_css_dimensions( $value[ $value_type ] ) : [];
 	}
 
 	return $value;

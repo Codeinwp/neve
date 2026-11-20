@@ -121,15 +121,15 @@ trait Core {
 	}
 
 	/**
-	 * Sanitize regular json.
+	 * Sanitize a spacing array's sides and units.
 	 *
-	 * @param string $input Input.
+	 * @param mixed $input Input.
 	 *
-	 * @return array
+	 * @return array<mixed>
 	 */
 	public function sanitize_spacing_array( $input ) {
 		if ( is_array( $input ) ) {
-			return $input;
+			return neve_sanitize_css_dimensions( $input );
 		}
 
 		return array();
