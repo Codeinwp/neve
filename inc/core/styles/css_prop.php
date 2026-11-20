@@ -61,14 +61,14 @@ class Css_Prop {
 	}
 
 	/**
-	 * Keep a stored CSS unit only when it is letters or `%`, so it cannot close its declaration.
+	 * Keep a stored CSS unit only when it is letters, `%` or the `—` "no unit" choice, so it cannot close its declaration.
 	 *
 	 * @param mixed $unit Stored unit.
 	 *
 	 * @return string
 	 */
 	private static function css_unit( $unit ) {
-		return is_string( $unit ) && preg_match( '/^[a-z%]*$/i', $unit ) ? $unit : 'px';
+		return is_string( $unit ) && preg_match( '/^(?:[a-z%]*|—)$/iu', $unit ) ? $unit : 'px';
 	}
 
 	/**

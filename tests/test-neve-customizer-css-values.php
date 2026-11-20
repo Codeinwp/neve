@@ -8,6 +8,7 @@
 use HFG\Main;
 use Neve\Core\Dynamic_Css;
 use Neve\Core\Settings\Mods;
+use Neve\Core\Styles\Css_Prop;
 
 /**
  * Class TestNeveCustomizerCssValues
@@ -23,6 +24,7 @@ class TestNeveCustomizerCssValues extends WP_UnitTestCase {
 		'primary-menu_component_margin',
 		'primary-menu_component_font_family',
 		'neve_button_appearance',
+		'neve_test_css_unit',
 	);
 
 	/**
@@ -184,6 +186,51 @@ class TestNeveCustomizerCssValues extends WP_UnitTestCase {
 
 		$this->assertStringNotContainsString( 'lime', $css );
 		$this->assertStringContainsString( '--primarybtnborderradius:3px;', $css );
+	}
+
+	/**
+	 * The typeface control's "No unit" line height choice is saved and printed without a unit.
+	 */
+	public function test_no_unit_line_height_is_kept(): void {
+		$value = $this->save(
+			'primary-menu_component_typeface',
+			array(
+				'fontWeight'    => '400',
+				'textTransform' => 'none',
+				'lineHeight'    => array(
+					'mobile'  => '1.6',
+					'tablet'  => '1.6',
+					'desktop' => '1.6',
+					'suffix'  => array(
+						'mobile'  => '—',
+						'tablet'  => '—',
+						'desktop' => '—',
+					),
+				),
+				'letterSpacing' => array(),
+				'fontSize'      => array(),
+			)
+		);
+
+		$this->assertSame( '—', $value['lineHeight']['suffix']['mobile'] );
+
+		$css = $this->get_frontend_css();
+		$this->assertStringContainsString( '--lineheight:1.6;', str_replace( ' ', '', $css ) );
+		$this->assertStringNotContainsString( '--lineheight:1.6px', str_replace( ' ', '', $css ) );
+	}
+
+	/**
+	 * The responsive unit getters print a stored unit that is not a CSS unit as px.
+	 */
+	public function test_responsive_unit_getters_reject_stored_units(): void {
+		set_theme_mod( 'neve_test_css_unit', array( 'desktop-unit' => 'px;}body{background:lime}/*' ) );
+		$this->assertSame( 'px', Css_Prop::get_unit_responsive( array( 'key' => 'neve_test_css_unit' ), 'desktop' ) );
+
+		set_theme_mod( 'neve_test_css_unit', array( 'suffix' => array( 'desktop' => 'px;}body{background:lime}/*' ) ) );
+		$this->assertSame( 'px', Css_Prop::get_suffix_responsive( array( 'key' => 'neve_test_css_unit' ), 'desktop' ) );
+
+		set_theme_mod( 'neve_test_css_unit', array( 'suffix' => array( 'desktop' => 'em' ) ) );
+		$this->assertSame( 'em', Css_Prop::get_suffix_responsive( array( 'key' => 'neve_test_css_unit' ), 'desktop' ) );
 	}
 
 	/**

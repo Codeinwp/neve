@@ -249,7 +249,7 @@ function neve_sanitize_background( $value ) {
  * Sanitize the values of a CSS dimension array: sides, responsive sizes and their units.
  *
  * Nested arrays are sanitized recursively; any other value is kept only when it is a number,
- * a boolean, empty, or a plain word or unit (`px`, `auto`), and is otherwise cleared.
+ * a boolean, empty, a plain word or unit (`px`, `auto`) or the controls' `—` "no unit" choice, and is otherwise cleared.
  *
  * @param array<mixed> $value Dimension array.
  *
@@ -262,7 +262,7 @@ function neve_sanitize_css_dimensions( array $value ) {
 			continue;
 		}
 
-		if ( is_string( $item ) && ! is_numeric( $item ) && ! preg_match( '/^[a-z%-]*$/i', $item ) ) {
+		if ( is_string( $item ) && ! is_numeric( $item ) && ! preg_match( '/^(?:[a-z%-]*|—)$/iu', $item ) ) {
 			$value[ $key ] = '';
 		}
 	}
