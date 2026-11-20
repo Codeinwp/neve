@@ -31,15 +31,24 @@ trait Schema_Helpers {
 				'fontSize'      => $this->responsive_value_schema( 'Font size per device', true ),
 				'lineHeight'    => $this->responsive_value_schema( 'Line height per device', false ),
 				'letterSpacing' => $this->responsive_value_schema( 'Letter spacing per device', false ),
-				'fontWeight'    => array(
-					'type' => 'string',
-					'enum' => array( 'none', '100', '200', '300', '400', '500', '600', '700', '800', '900' ),
-				),
+				'fontWeight'    => $this->font_weight_schema(),
 				'textTransform' => array(
 					'type' => 'string',
 					'enum' => array( 'none', 'capitalize', 'uppercase', 'lowercase' ),
 				),
 			),
+		);
+	}
+
+	/**
+	 * Font weight schema; 'none' is the typeface control's default and reset value.
+	 *
+	 * @return array{type: 'string', enum: list<string>}
+	 */
+	protected function font_weight_schema() {
+		return array(
+			'type' => 'string',
+			'enum' => array( 'none', '100', '200', '300', '400', '500', '600', '700', '800', '900' ),
 		);
 	}
 

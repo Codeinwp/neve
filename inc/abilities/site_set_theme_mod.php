@@ -52,6 +52,11 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 	);
 
 	/**
+	 * Allowlisted keys that hold text or markup rather than CSS values.
+	 */
+	const TEXT_KEYS = array( 'nav-icon_svg_menu_icon', 'nav-icon_menu_label' );
+
+	/**
 	 * {@inheritDoc}
 	 */
 	protected function get_id() {
@@ -172,7 +177,10 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 				);
 			}
 
-			$value = $this->sanitize_style_mod( $key, $this->sanitize_value( $input['value'] ) );
+			$value = $this->sanitize_value( $input['value'] );
+			if ( ! in_array( $key, self::TEXT_KEYS, true ) ) {
+				$value = $this->sanitize_style_mod( $key, $value );
+			}
 			if ( null === $value ) {
 				return $this->validation_issue(
 					'invalid_value',

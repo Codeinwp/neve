@@ -29,6 +29,15 @@ class TestNeveRowTextColor extends WP_UnitTestCase {
 		'hfg_header_layout_sidebar_new_text_color',
 		'hfg_header_layout_sidebar_background',
 		'neve_form_fields_border_color',
+		'nav-icon_button_appearance',
+		'nav-icon_menu_label',
+		'neve_scroll_to_top_border_radius',
+		'neve_scroll_to_top_padding',
+		'neve_form_fields_padding',
+		'neve_form_fields_spacing',
+		'neve_form_fields_border_width',
+		'neve_form_fields_border_radius',
+		'hfg_header_layout_sidebar_width',
 	);
 
 	/**
@@ -314,6 +323,61 @@ class TestNeveRowTextColor extends WP_UnitTestCase {
 		);
 		$this->assertFalse( $result['success'] );
 		$this->assertFalse( get_theme_mod( 'hfg_header_layout_sidebar_background' ) );
+	}
+
+	/**
+	 * The set-theme-mod ability rejects nested or dimension values that could close their CSS declaration.
+	 */
+	public function test_set_theme_mod_ability_rejects_values_that_close_css(): void {
+		$ability  = new Site_Set_Theme_Mod();
+		$payloads = array(
+			'nav-icon_button_appearance'       => array(
+				'type'       => 'fill',
+				'background' => self::PAYLOAD,
+				'text'       => '#fff',
+			),
+			'neve_scroll_to_top_border_radius' => '3;}body{background:lime}/*',
+			'neve_scroll_to_top_padding'       => array( 'top' => self::PAYLOAD ),
+			'neve_form_fields_padding'         => array( 'desktop' => array( 'top' => self::PAYLOAD ) ),
+			'neve_form_fields_spacing'         => self::PAYLOAD,
+			'neve_form_fields_border_width'    => array( 'top' => self::PAYLOAD ),
+			'neve_form_fields_border_radius'   => array( 'top' => self::PAYLOAD ),
+			'hfg_header_layout_sidebar_width'  => '{"mobile":"360;}body{background:lime}/*"}',
+		);
+
+		foreach ( $payloads as $key => $value ) {
+			$result = $ability->execute(
+				array(
+					'action' => 'set',
+					'key'    => $key,
+					'value'  => $value,
+				)
+			);
+			$this->assertFalse( $result['success'], $key );
+			$this->assertFalse( get_theme_mod( $key ), $key );
+		}
+		$this->assertStringNotContainsString( 'lime', $this->get_frontend_css() );
+
+		$valid = array(
+			'hfg_header_layout_sidebar_width' => '{"mobile":360,"tablet":360,"desktop":360}',
+			'nav-icon_button_appearance'      => array(
+				'type'       => 'fill',
+				'background' => '#222222',
+				'text'       => '#ffffff',
+			),
+			'nav-icon_menu_label'             => 'Menu; more',
+		);
+		foreach ( $valid as $key => $value ) {
+			$result = $ability->execute(
+				array(
+					'action' => 'set',
+					'key'    => $key,
+					'value'  => $value,
+				)
+			);
+			$this->assertTrue( $result['success'], $key );
+			$this->assertSame( $value, get_theme_mod( $key ), $key );
+		}
 	}
 
 	/**

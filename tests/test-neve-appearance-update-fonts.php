@@ -120,6 +120,34 @@ class TestNeveAppearanceUpdateFonts extends WP_UnitTestCase {
 	}
 
 	/**
+	 * The typeface control's 'none' weight resets a weight and is saved.
+	 */
+	public function test_font_weight_none_is_saved(): void {
+		$result = $this->run_ability(
+			array(
+				'typography' => array( 'element' => array( 'target' => 'body', 'fontWeight' => 'none' ) ),
+				'buttons'    => array( 'primary' => array( 'fontWeight' => 'none' ) ),
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertSame( 'none', get_theme_mod( 'neve_typeface_general' )['fontWeight'] );
+		$this->assertSame( 'none', get_theme_mod( 'neve_button_typeface' )['fontWeight'] );
+	}
+
+	/**
+	 * A font family that saving would escape into an entity with a semicolon is rejected.
+	 */
+	public function test_font_families_reject_text_escaped_to_entities(): void {
+		$this->assertInstanceOf( WP_Error::class, $this->run_ability( array( 'typography' => array( 'body_font' => 'x<background:lime' ) ) ) );
+		$this->assertInstanceOf( WP_Error::class, $this->run_ability( array( 'typography' => array( 'headings_font' => 'x<background:lime' ) ) ) );
+
+		$this->assertFalse( get_theme_mod( 'neve_body_font_family' ) );
+		$this->assertFalse( get_theme_mod( 'neve_headings_font_family' ) );
+		$this->assertStringNotContainsString( 'lime', $this->get_frontend_css() );
+	}
+
+	/**
 	 * Run the ability through the Abilities API, which validates the input schema.
 	 *
 	 * @param array<string, mixed> $input Ability input.
