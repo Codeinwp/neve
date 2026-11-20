@@ -45,6 +45,7 @@ abstract class Abstract_Builder implements Builder {
 	const TEXT_COLOR         = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
 	const WIDTH              = 'width';
+	const RENDER_SLOTS       = [ 'left', 'c-left', 'center', 'c-right', 'right' ];
 	const CONTENT_ALIGNMENT  = 'content_alignment';
 	const VERTICAL_ALIGN     = 'vertical_align';
 	/**
@@ -1281,13 +1282,7 @@ abstract class Abstract_Builder implements Builder {
 			$data = [ 'sidebar' => $data ];
 		}
 
-		$render_buffer = [
-			'left'    => [],
-			'c-left'  => [],
-			'center'  => [],
-			'c-right' => [],
-			'right'   => [],
-		];
+		$render_buffer = array_fill_keys( self::RENDER_SLOTS, [] );
 
 		$slot            = null;
 		$component_index = null;
@@ -1490,16 +1485,7 @@ abstract class Abstract_Builder implements Builder {
 		$max_columns = 12;
 		$last_item   = null;
 
-		usort(
-			$data,
-			function ( $item1, $item2 ) {
-				if ( $item1['x'] === $item2['x'] ) {
-					return 0;
-				}
-
-				return $item1['x'] < $item2['x'] ? - 1 : 1;
-			}
-		);
+		usort( $data, [ self::class, 'compare_legacy_position' ] );
 
 		$collection    = new \CachingIterator(
 			new \ArrayIterator(
@@ -1715,6 +1701,54 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		return $this->builder_components[ $id ];
+	}
+
+	/**
+	 * Component ids of a device's rows in render order, without the sidebar row.
+	 *
+	 * @param string $device Device id.
+	 *
+	 * @return list<string>
+	 */
+	public function get_device_component_ids( string $device ): array {
+		$layout = $this->get_layout_data();
+		$ids    = [];
+		foreach ( array_keys( $this->get_rows() ) as $row_index ) {
+			$row = isset( $layout[ $device ][ $row_index ] ) && is_array( $layout[ $device ][ $row_index ] ) ? $layout[ $device ][ $row_index ] : [];
+			if ( $row_index === 'sidebar' || empty( $row ) ) {
+				continue;
+			}
+
+			if ( ! neve_is_new_builder() ) {
+				usort( $row, [ self::class, 'compare_legacy_position' ] );
+				$ids = array_merge( $ids, array_column( $row, 'id' ) );
+				continue;
+			}
+
+			foreach ( self::RENDER_SLOTS as $slot ) {
+				if ( isset( $row[ $slot ] ) && is_array( $row[ $slot ] ) ) {
+					$ids = array_merge( $ids, array_column( $row[ $slot ], 'id' ) );
+				}
+			}
+		}
+
+		return $ids;
+	}
+
+	/**
+	 * Orders legacy builder items by their column position.
+	 *
+	 * @param array{x: int} $item1 First item.
+	 * @param array{x: int} $item2 Second item.
+	 *
+	 * @return int
+	 */
+	private static function compare_legacy_position( array $item1, array $item2 ): int {
+		if ( $item1['x'] === $item2['x'] ) {
+			return 0;
+		}
+
+		return $item1['x'] < $item2['x'] ? - 1 : 1;
 	}
 
 	/**
