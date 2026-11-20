@@ -379,6 +379,54 @@ class TestSanitization extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Incomplete or non-finite rgba() colors are rejected; complete ones are normalized.
+	 */
+	public function test_sanitize_colors_rejects_incomplete_rgba(): void {
+		$invalid = [
+			'rgba(1,2,3)',
+			'rgba(1,2)',
+			'rgba(',
+			'rgba',
+			'xrgba(1,2,3,4)',
+			'rgba(1.5,2,3,1)',
+			'rgba(1,2,3,1e999)',
+		];
+
+		foreach ( $invalid as $value ) {
+			$this->assertSame( '', neve_sanitize_colors( $value ), $value . ' should be rejected' );
+		}
+
+		$this->assertSame( 'rgba(255,0,0,1)', neve_sanitize_colors( 'rgba( 255, 0, 0, 1 )' ) );
+		$this->assertSame( 'rgba(1,2,3,0.5)', neve_sanitize_colors( 'rgba(1,2,3,.5)' ) );
+		$this->assertSame( 'rgba(0,0,0,0)', neve_sanitize_colors( 'rgba(0,0,0,0)' ) );
+	}
+
+	/**
+	 * A rejected rgba() border color falls back to the row's default border color.
+	 */
+	public function test_incomplete_rgba_border_color_uses_default(): void {
+		$key = 'hfg_header_layout_main_border_color';
+		set_theme_mod( $key, neve_sanitize_colors( 'rgba(1,2,3)' ) );
+
+		try {
+			$css = (string) new \Neve\Core\Styles\Dynamic_Selector(
+				[
+					'.header-main' => [
+						'--rowbcolor' => [
+							\Neve\Core\Styles\Dynamic_Selector::META_KEY => $key,
+							\Neve\Core\Styles\Dynamic_Selector::META_DEFAULT => 'var(--nv-light-bg)',
+						],
+					],
+				]
+			);
+		} finally {
+			\Neve\Core\Settings\Mods::set( $key, null );
+		}
+
+		$this->assertStringContainsString( '--rowbcolor: var(--nv-light-bg);', $css );
+	}
+
+	/**
 	 * Private reusable function for the assertion of sanitize responsive int json.
 	 *
 	 * @param array  $input_value Input value.
