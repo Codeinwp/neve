@@ -69,6 +69,8 @@ class TestWPMLCompatibility extends WP_UnitTestCase {
 
 		$expected = [
 			\HFG\Core\Components\CustomHtml::COMPONENT_ID . '_' . \HFG\Core\Components\CustomHtml::CONTENT_ID,
+			// Legacy top bar text, the Custom HTML default on migrated sites.
+			'neve_top_bar_content',
 			'footer_copyright_content',
 			\HFG\Core\Components\Button::COMPONENT_ID . '_' . \HFG\Core\Components\Button::TEXT_ID,
 			\HFG\Core\Components\Button::COMPONENT_ID . '_' . \HFG\Core\Components\Button::LINK_ID,
