@@ -454,8 +454,8 @@ class TestSanitization extends WP_UnitTestCase {
 	public function test_row_text_color_sanitizer_rejects_malformed_colors(): void {
 		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
 		$wp_customize = new \WP_Customize_Manager();
-		\HFG\Core\Builder\Header::get_instance()->customize_register( $wp_customize );
-		\HFG\Core\Builder\Footer::get_instance()->customize_register( $wp_customize );
+		\HFG\Main::get_instance()->get_builder( 'header' )->customize_register( $wp_customize );
+		\HFG\Main::get_instance()->get_builder( 'footer' )->customize_register( $wp_customize );
 
 		$header_setting = $wp_customize->get_setting( 'hfg_header_layout_main_new_text_color' );
 		$footer_setting = $wp_customize->get_setting( 'hfg_footer_layout_bottom_new_text_color' );
@@ -478,6 +478,7 @@ class TestSanitization extends WP_UnitTestCase {
 	 * Switching to a child theme drops malformed colors and backgrounds.
 	 */
 	public function test_child_theme_migration_drops_malformed_colors(): void {
+		$parent_mods = get_option( 'theme_mods_neve' );
 		update_option( 'theme_switched', 'neve' );
 		update_option(
 			'theme_mods_neve',
@@ -487,18 +488,28 @@ class TestSanitization extends WP_UnitTestCase {
 				'neve_valid_color'                      => '#ffffff',
 			)
 		);
+		// The migration copies the parent's mods into the active child theme's.
+		$child_theme = static function (): string {
+			return 'neve-child-migration-test';
+		};
+		add_filter( 'pre_option_stylesheet', $child_theme );
 
-		( new \Neve\Core\Admin() )->migrate_options();
+		try {
+			( new \Neve\Core\Admin() )->migrate_options();
 
-		$this->assertEmpty( get_theme_mod( 'neve_scroll_to_top_icon_color' ) );
-		$this->assertEmpty( get_theme_mod( 'hfg_header_layout_main_new_text_color' ) );
-		$this->assertSame( '#ffffff', get_theme_mod( 'neve_valid_color' ) );
-
-		remove_theme_mod( 'neve_scroll_to_top_icon_color' );
-		remove_theme_mod( 'hfg_header_layout_main_new_text_color' );
-		remove_theme_mod( 'neve_valid_color' );
-		delete_option( 'theme_switched' );
-		delete_option( 'theme_mods_neve' );
+			$this->assertFalse( get_theme_mod( 'neve_scroll_to_top_icon_color' ) );
+			$this->assertFalse( get_theme_mod( 'hfg_header_layout_main_new_text_color' ) );
+			$this->assertSame( '#ffffff', get_theme_mod( 'neve_valid_color' ) );
+		} finally {
+			remove_filter( 'pre_option_stylesheet', $child_theme );
+			delete_option( 'theme_mods_neve-child-migration-test' );
+			delete_option( 'theme_switched' );
+			if ( false === $parent_mods ) {
+				delete_option( 'theme_mods_neve' );
+			} else {
+				update_option( 'theme_mods_neve', $parent_mods );
+			}
+		}
 	}
 
 	/**

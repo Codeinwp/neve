@@ -170,8 +170,8 @@ class TestNeveAbilityColorInputs extends WP_UnitTestCase {
 					)
 				);
 
-				$this->assertFalse( $result['success'] );
-				$this->assertSame( 'no_changes', $result['error']['code'] );
+				$this->assertWPError( $result );
+				$this->assertSame( 'neve_ability_no_changes', $result->get_error_code() );
 				$this->assertFalse( get_theme_mod( $mod ) );
 			}
 		}
