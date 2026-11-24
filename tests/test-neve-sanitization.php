@@ -395,6 +395,8 @@ class TestSanitization extends WP_UnitTestCase {
 			'rgb(-)',
 			'rgb(1.2.3,4,5)',
 			'hsl(1 2 3 4)',
+			'var(--missing,rgb(1.2.3,4,5))',
+			'linear-gradient(rgb(1.2.3,4,5),#fff)',
 		];
 
 		foreach ( $invalid as $value ) {
@@ -408,6 +410,7 @@ class TestSanitization extends WP_UnitTestCase {
 			'rgba(0,0,0,0)',
 			'rgb(-1,0,0)',
 			'rgb(255 0 0)',
+			'rgb(1 2 3 / 50%)',
 		];
 
 		foreach ( $valid as $value ) {
@@ -443,6 +446,59 @@ class TestSanitization extends WP_UnitTestCase {
 		}
 
 		$this->assertStringContainsString( '--rowbcolor: var(--nv-light-bg);', $css );
+	}
+
+	/**
+	 * Header and footer row text color settings sanitize with neve_sanitize_colors.
+	 */
+	public function test_row_text_color_sanitizer_rejects_malformed_colors(): void {
+		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
+		$wp_customize = new \WP_Customize_Manager();
+		\HFG\Core\Builder\Header::get_instance()->customize_register( $wp_customize );
+		\HFG\Core\Builder\Footer::get_instance()->customize_register( $wp_customize );
+
+		$header_setting = $wp_customize->get_setting( 'hfg_header_layout_main_new_text_color' );
+		$footer_setting = $wp_customize->get_setting( 'hfg_footer_layout_bottom_new_text_color' );
+
+		$this->assertNotNull( $header_setting );
+		$this->assertNotNull( $footer_setting );
+
+		$malformed = [
+			'rgb(1.2.3,4,5)',
+			'#222;}body{background:lime}/*',
+		];
+
+		foreach ( $malformed as $value ) {
+			$this->assertSame( '', $header_setting->sanitize( $value ) );
+			$this->assertSame( '', $footer_setting->sanitize( $value ) );
+		}
+	}
+
+	/**
+	 * Switching to a child theme drops malformed colors and backgrounds.
+	 */
+	public function test_child_theme_migration_drops_malformed_colors(): void {
+		update_option( 'theme_switched', 'neve' );
+		update_option(
+			'theme_mods_neve',
+			array(
+				'neve_scroll_to_top_icon_color'         => 'rgb(1.2.3,4,5)',
+				'hfg_header_layout_main_new_text_color' => '#222;}body{background:lime}/*',
+				'neve_valid_color'                      => '#ffffff',
+			)
+		);
+
+		( new \Neve\Core\Admin() )->migrate_options();
+
+		$this->assertEmpty( get_theme_mod( 'neve_scroll_to_top_icon_color' ) );
+		$this->assertEmpty( get_theme_mod( 'hfg_header_layout_main_new_text_color' ) );
+		$this->assertSame( '#ffffff', get_theme_mod( 'neve_valid_color' ) );
+
+		remove_theme_mod( 'neve_scroll_to_top_icon_color' );
+		remove_theme_mod( 'hfg_header_layout_main_new_text_color' );
+		remove_theme_mod( 'neve_valid_color' );
+		delete_option( 'theme_switched' );
+		delete_option( 'theme_mods_neve' );
 	}
 
 	/**

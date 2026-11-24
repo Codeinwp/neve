@@ -5,6 +5,7 @@
  * @package neve
  */
 
+use Neve\Abilities\Appearance_Update;
 use Neve\Abilities\Footer_Configure;
 use Neve\Abilities\Header_Configure;
 use Neve\Abilities\Site_Set_Theme_Mod;
@@ -26,6 +27,8 @@ class TestNeveAbilityColorInputs extends WP_UnitTestCase {
 		'hfg_header_layout_main_new_text_color',
 		'hfg_footer_layout_bottom_new_text_color',
 		'nav-icon_button_appearance',
+		'neve_button_appearance',
+		'neve_secondary_button_appearance',
 	);
 
 	/**
@@ -106,6 +109,72 @@ class TestNeveAbilityColorInputs extends WP_UnitTestCase {
 		$this->assertFalse( $result['success'] );
 		$this->assertSame( 'invalid_value', $result['error']['code'] );
 		$this->assertFalse( get_theme_mod( 'nav-icon_button_appearance' ) );
+	}
+
+	public function test_set_theme_mod_rejects_non_array_button_appearance(): void {
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => 'nav-icon_button_appearance',
+				'value'  => 'fill',
+			)
+		);
+
+		$this->assertFalse( $result['success'] );
+		$this->assertSame( 'invalid_value', $result['error']['code'] );
+		$this->assertFalse( get_theme_mod( 'nav-icon_button_appearance' ) );
+	}
+
+	public function test_set_theme_mod_rejects_button_appearance_with_array_color_field(): void {
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => 'nav-icon_button_appearance',
+				'value'  => array(
+					'type'       => 'fill',
+					'background' => array( '#fff' ),
+				),
+			)
+		);
+
+		$this->assertFalse( $result['success'] );
+		$this->assertSame( 'invalid_value', $result['error']['code'] );
+		$this->assertFalse( get_theme_mod( 'nav-icon_button_appearance' ) );
+	}
+
+	public function test_appearance_update_rejects_malformed_hex_button_colors(): void {
+		$ability = new Appearance_Update();
+		$fields  = array(
+			'primary'   => array(
+				array( 'background' => '#12345' ),
+				array( 'text' => '#12345' ),
+				array( 'hover' => array( 'background' => '#12345' ) ),
+				array( 'hover' => array( 'text' => '#12345' ) ),
+			),
+			'secondary' => array(
+				array( 'background' => '#12345' ),
+				array( 'text' => '#12345' ),
+				array( 'hover' => array( 'background' => '#12345' ) ),
+				array( 'hover' => array( 'text' => '#12345' ) ),
+			),
+		);
+
+		foreach ( $fields as $group => $cases ) {
+			$mod = 'primary' === $group ? 'neve_button_appearance' : 'neve_secondary_button_appearance';
+			foreach ( $cases as $case ) {
+				$result = $ability->execute(
+					array(
+						'buttons' => array(
+							$group => $case,
+						),
+					)
+				);
+
+				$this->assertFalse( $result['success'] );
+				$this->assertSame( 'no_changes', $result['error']['code'] );
+				$this->assertFalse( get_theme_mod( $mod ) );
+			}
+		}
 	}
 
 	public function test_set_theme_mod_saves_valid_button_appearance(): void {

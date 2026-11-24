@@ -200,11 +200,11 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 	}
 
 	/**
-	 * Sanitize a value for its setting: colors and backgrounds as the Customizer does, the rest as text.
+	 * Sanitize a value for its setting: colors, backgrounds and button appearances as the Customizer does, the rest as text.
 	 *
 	 * @param string $key   The allowlisted theme_mod key.
 	 * @param mixed  $value The incoming value.
-	 * @return mixed Sanitized value, or null when a color or background is invalid.
+	 * @return mixed Sanitized value, or null when a color, background or button appearance is invalid.
 	 */
 	private function sanitize_setting( $key, $value ) {
 		if ( '_color' === substr( $key, -6 ) ) {

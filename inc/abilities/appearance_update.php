@@ -588,19 +588,7 @@ class Appearance_Update extends Abstract_Ability {
 			return false;
 		}
 
-		if ( preg_match( '/^#[0-9a-fA-F]{3,8}$/', $value ) ) {
-			return true;
-		}
-
-		if ( neve_is_css_function_color( $value ) ) {
-			return true;
-		}
-
-		if ( preg_match( '/^var\(--nv-[a-z0-9-]+\)$/i', $value ) ) {
-			return true;
-		}
-
-		return false;
+		return '' !== neve_sanitize_colors( $value );
 	}
 
 	/**

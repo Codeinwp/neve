@@ -10,6 +10,17 @@
  */
 
 /**
+ * Component grammar for rgb(), rgba(), hsl() and hsla() argument lists.
+ *
+ * @return string
+ */
+function neve_get_css_function_color_args(): string {
+	$number = '-?(?:\d+(?:\.\d*)?|\.\d+)%?';
+
+	return "{$number}\s*,\s*{$number}\s*,\s*{$number}(?:\s*,\s*{$number})?|{$number}\s+{$number}\s+{$number}(?:\s*\/\s*{$number})?";
+}
+
+/**
  * Check whether a value is a well formed CSS variable expression.
  *
  * @param mixed $value Value to check.
@@ -28,7 +39,7 @@ function neve_is_css_var( $value ) {
 	}
 
 	$hex      = '#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})';
-	$color_fn = '(?:rgb|rgba|hsl|hsla)\(\s*[0-9a-z.,%\/\s-]+\)';
+	$color_fn = '(?:rgb|rgba|hsl|hsla)\(\s*(?:' . neve_get_css_function_color_args() . ')\s*\)';
 	$keyword  = '[a-z]+(?:-[a-z]+)*';
 	$fallback = '(?:(?P>nv_var)|' . $hex . '|' . $color_fn . '|' . $keyword . ')';
 	$pattern  = '/^(?P<nv_var>var\(\s*--[a-z0-9_-]+\s*(?:,\s*' . $fallback . '\s*)?\))$/i';
@@ -45,7 +56,19 @@ function neve_is_css_var( $value ) {
  */
 function neve_is_css_gradient( string $value ): bool {
 	// Recursion keeps parentheses balanced, so nothing can follow the closing one.
-	return (bool) preg_match( '/^(?:repeating-)?(?:linear|radial|conic)-gradient(\((?:[a-z0-9#%.,\s\/_-]|(?1))*\))$/i', trim( $value ) );
+	if ( ! preg_match( '/^(?:repeating-)?(?:linear|radial|conic)-gradient(\((?:[a-z0-9#%.,\s\/_-]|(?1))*\))$/i', trim( $value ) ) ) {
+		return false;
+	}
+
+	if ( preg_match_all( '/(?:rgb|rgba|hsl|hsla)\([^)]*\)/i', $value, $matches ) ) {
+		foreach ( $matches[0] as $color_fn ) {
+			if ( ! neve_is_css_function_color( $color_fn ) ) {
+				return false;
+			}
+		}
+	}
+
+	return true;
 }
 
 /**
@@ -56,11 +79,7 @@ function neve_is_css_gradient( string $value ): bool {
  * @return bool
  */
 function neve_is_css_function_color( string $value ): bool {
-	$number = '-?(?:\d+(?:\.\d*)?|\.\d+)%?';
-	// Three or four comma-separated components, or three space-separated ones.
-	$args = "{$number}\s*,\s*{$number}\s*,\s*{$number}(?:\s*,\s*{$number})?|{$number}\s+{$number}\s+{$number}";
-
-	return (bool) preg_match( '/^(?:rgb|rgba|hsl|hsla)\(\s*(?:' . $args . ')\s*\)$/', trim( $value ) );
+	return (bool) preg_match( '/^(?:rgb|rgba|hsl|hsla)\(\s*(?:' . neve_get_css_function_color_args() . ')\s*\)$/i', trim( $value ) );
 }
 
 /**

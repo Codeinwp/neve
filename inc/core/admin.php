@@ -1094,6 +1094,22 @@ class Admin {
 		if ( ! empty( $neve_mods ) ) {
 
 			foreach ( $neve_mods as $neve_mod_k => $neve_mod_v ) {
+				if ( '_color' === substr( $neve_mod_k, -6 ) ) {
+					$clean = neve_sanitize_colors( $neve_mod_v );
+					if ( '' === $clean && '' !== $neve_mod_v ) {
+						continue;
+					}
+					$neve_mod_v = $clean;
+				} elseif ( '_background' === substr( $neve_mod_k, -11 ) ) {
+					$clean = neve_sanitize_background( $neve_mod_v );
+					if ( is_wp_error( $clean ) ) {
+						continue;
+					}
+					$neve_mod_v = $clean;
+				} elseif ( false !== strpos( $neve_mod_k, 'button_appearance' ) ) {
+					$neve_mod_v = neve_sanitize_button_appearance( $neve_mod_v );
+				}
+
 				set_theme_mod( $neve_mod_k, $neve_mod_v );
 			}
 		}
