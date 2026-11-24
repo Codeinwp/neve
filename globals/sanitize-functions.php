@@ -56,7 +56,11 @@ function neve_is_css_gradient( string $value ): bool {
  * @return bool
  */
 function neve_is_css_function_color( string $value ): bool {
-	return (bool) preg_match( '/^(?:rgb|rgba|hsl|hsla)\(\s*[-0-9.% ,]+\)$/', trim( $value ) );
+	$number = '-?(?:\d+(?:\.\d*)?|\.\d+)%?';
+	// Three or four comma-separated components, or three space-separated ones.
+	$args = "{$number}\s*,\s*{$number}\s*,\s*{$number}(?:\s*,\s*{$number})?|{$number}\s+{$number}\s+{$number}";
+
+	return (bool) preg_match( '/^(?:rgb|rgba|hsl|hsla)\(\s*(?:' . $args . ')\s*\)$/', trim( $value ) );
 }
 
 /**

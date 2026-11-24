@@ -379,26 +379,40 @@ class TestSanitization extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Incomplete or non-finite rgba() colors are rejected; complete ones are normalized.
+	 * Incomplete, malformed or non-finite function colors are rejected; complete ones are kept.
 	 */
 	public function test_sanitize_colors_rejects_incomplete_rgba(): void {
 		$invalid = [
-			'rgba(1,2,3)',
 			'rgba(1,2)',
 			'rgba(',
 			'rgba',
 			'xrgba(1,2,3,4)',
-			'rgba(1.5,2,3,1)',
 			'rgba(1,2,3,1e999)',
+			'rgb(1,2,3,4,5)',
+			'rgba(1,,2,3)',
+			'rgb(1)',
+			'rgb(,,)',
+			'rgb(-)',
+			'rgb(1.2.3,4,5)',
+			'hsl(1 2 3 4)',
 		];
 
 		foreach ( $invalid as $value ) {
+			$this->assertFalse( neve_is_css_function_color( $value ), $value . ' should not be a function color' );
 			$this->assertSame( '', neve_sanitize_colors( $value ), $value . ' should be rejected' );
 		}
 
-		$this->assertSame( 'rgba(255,0,0,1)', neve_sanitize_colors( 'rgba( 255, 0, 0, 1 )' ) );
-		$this->assertSame( 'rgba(1,2,3,0.5)', neve_sanitize_colors( 'rgba(1,2,3,.5)' ) );
-		$this->assertSame( 'rgba(0,0,0,0)', neve_sanitize_colors( 'rgba(0,0,0,0)' ) );
+		$valid = [
+			'rgba(255, 0, 0, 1)',
+			'rgba(1.5,2,3,1)',
+			'rgba(0,0,0,0)',
+			'rgb(-1,0,0)',
+			'rgb(255 0 0)',
+		];
+
+		foreach ( $valid as $value ) {
+			$this->assertSame( $value, neve_sanitize_colors( $value ), $value . ' should be kept' );
+		}
 	}
 
 	/**
@@ -406,7 +420,10 @@ class TestSanitization extends WP_UnitTestCase {
 	 */
 	public function test_incomplete_rgba_border_color_uses_default(): void {
 		$key = 'hfg_header_layout_main_border_color';
-		set_theme_mod( $key, neve_sanitize_colors( 'rgba(1,2,3)' ) );
+		set_theme_mod( $key, neve_sanitize_colors( 'rgba(1,2)' ) );
+		// Read the saved mod, not a value cached by an earlier test.
+		$no_cache = \Neve\Core\Settings\Mods::$no_cache;
+		\Neve\Core\Settings\Mods::$no_cache = true;
 
 		try {
 			$css = (string) new \Neve\Core\Styles\Dynamic_Selector(
@@ -420,6 +437,8 @@ class TestSanitization extends WP_UnitTestCase {
 				]
 			);
 		} finally {
+			\Neve\Core\Settings\Mods::$no_cache = $no_cache;
+			remove_theme_mod( $key );
 			\Neve\Core\Settings\Mods::set( $key, null );
 		}
 
