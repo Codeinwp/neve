@@ -46,4 +46,49 @@ class TestWPMLCompatibility extends WP_UnitTestCase {
 		$filtered_posts = apply_filters( 'neve_filter_featured_posts', $posts );
 		$this->assertEquals( $original_post_id, reset($filtered_posts ), 'WPML compatibility should filter posts' );
 	}
+
+	/**
+	 * Theme mod keys registered for translation in wpml-config.xml.
+	 *
+	 * @return list<string>
+	 */
+	private function get_wpml_theme_mod_keys(): array {
+		$config = simplexml_load_file( get_template_directory() . '/wpml-config.xml' );
+		$this->assertNotFalse( $config, 'wpml-config.xml should be valid XML' );
+
+		$keys = [];
+		foreach ( $config->xpath( '/wpml-config/admin-texts/key[@name="theme_mods_neve"]/key' ) as $key ) {
+			$keys[] = (string) $key['name'];
+		}
+
+		return $keys;
+	}
+
+	public function test_wpml_config_lists_free_text_theme_mods(): void {
+		$keys = $this->get_wpml_theme_mod_keys();
+
+		$expected = [
+			\HFG\Core\Components\CustomHtml::COMPONENT_ID . '_' . \HFG\Core\Components\CustomHtml::CONTENT_ID,
+			'footer_copyright_content',
+			\HFG\Core\Components\Button::COMPONENT_ID . '_' . \HFG\Core\Components\Button::TEXT_ID,
+			\HFG\Core\Components\Button::COMPONENT_ID . '_' . \HFG\Core\Components\Button::LINK_ID,
+			\HFG\Core\Components\Search::COMPONENT_ID . '_' . \HFG\Core\Components\Search::PLACEHOLDER_ID,
+			\HFG\Core\Components\Search::COMPONENT_ID . '_' . \HFG\Core\Components\Utility\SearchIconButton::BUTTON_TEXT,
+			\HFG\Core\Components\SearchResponsive::COMPONENT_ID . '_' . \HFG\Core\Components\SearchResponsive::PLACEHOLDER_ID,
+			'neve_metadata_separator',
+			'neve_single_post_metadata_separator',
+			'neve_scroll_to_top_label',
+		];
+
+		foreach ( $expected as $key ) {
+			$this->assertContains( $key, $keys, "wpml-config.xml should register the {$key} theme mod" );
+		}
+	}
+
+	public function test_wpml_config_omits_theme_mods_the_theme_never_reads(): void {
+		$keys = $this->get_wpml_theme_mod_keys();
+
+		$this->assertNotContains( 'neve_footer_text', $keys );
+		$this->assertNotContains( 'neve_read_more_text', $keys );
+	}
 }

@@ -9,11 +9,9 @@
   </custom-fields>
   <admin-texts>
     <key name="theme_mods_neve">
-      <key name="neve_footer_text"/>
       <key name="neve_exclusive_products_title"/>
       <key name="neve_sale_tag_text"/>
       <key name="neve_metadata_separator"/>
-      <key name="neve_read_more_text"/>
 
       <key name="neve_post_comment_section_title"/>
       <key name="neve_post_comment_form_title"/>
@@ -21,6 +19,15 @@
       <key name="nav-icon_menu_label"/>
       <key name="header_search_button_text"/>
       <key name="header_palette_switch_placeholder"/>
+
+      <key name="custom_html_content"/>
+      <key name="footer_copyright_content"/>
+      <key name="button_base_text_setting"/>
+      <key name="button_base_link_setting"/>
+      <key name="header_search_placeholder"/>
+      <key name="header_search_responsive_placeholder"/>
+      <key name="neve_single_post_metadata_separator"/>
+      <key name="neve_scroll_to_top_label"/>
     </key>
   </admin-texts>
 </wpml-config>
