@@ -60,9 +60,10 @@ function neve_is_css_gradient( string $value ): bool {
 		return false;
 	}
 
-	if ( preg_match_all( '/(?:rgb|rgba|hsl|hsla)\([^)]*\)/i', $value, $matches ) ) {
-		foreach ( $matches[0] as $color_fn ) {
-			if ( ! neve_is_css_function_color( $color_fn ) ) {
+	// A function color stop may only be followed by its positions before the next stop.
+	if ( preg_match_all( '/((?:rgb|rgba|hsl|hsla)\([^)]*\))([^,)]*)/i', $value, $matches, PREG_SET_ORDER ) ) {
+		foreach ( $matches as $match ) {
+			if ( ! neve_is_css_function_color( $match[1] ) || ! preg_match( '/^(?:\s*-?[\d.]+[a-z%]*)*+\s*$/i', $match[2] ) ) {
 				return false;
 			}
 		}
@@ -77,6 +78,29 @@ function neve_is_css_gradient( string $value ): bool {
 	}
 
 	return true;
+}
+
+/**
+ * Keep the palette colors that are valid colors under a CSS-safe slug.
+ *
+ * @param mixed $colors Map of palette slug to color.
+ *
+ * @return array<string, string> Sanitized colors by slug; invalid entries are left out.
+ */
+function neve_sanitize_palette_colors( $colors ) {
+	if ( ! is_array( $colors ) ) {
+		return [];
+	}
+
+	$clean = [];
+	foreach ( $colors as $slug => $color ) {
+		$color = neve_sanitize_colors( $color );
+		if ( '' !== $color && sanitize_key( (string) $slug ) === $slug ) {
+			$clean[ $slug ] = $color;
+		}
+	}
+
+	return $clean;
 }
 
 /**

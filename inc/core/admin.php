@@ -1107,7 +1107,8 @@ class Admin {
 						continue;
 					}
 					$neve_mod_v = $clean;
-				} elseif ( false !== strpos( $neve_mod_k, 'button_appearance' ) ) {
+				} elseif ( false !== strpos( $neve_mod_k, 'button_appearance' ) && ( is_array( $neve_mod_v ) || is_array( json_decode( (string) $neve_mod_v, true ) ) ) ) {
+					// Search components store their icon/text mode as a plain string under the same suffix.
 					$neve_mod_v = neve_sanitize_button_appearance( $neve_mod_v );
 				} elseif ( 'neve_global_colors' === $neve_mod_k ) {
 					$neve_mod_v = ( new Colors_Background() )->sanitize_global_colors( $neve_mod_v );

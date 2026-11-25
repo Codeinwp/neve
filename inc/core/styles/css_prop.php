@@ -263,6 +263,28 @@ class Css_Prop {
 	}
 
 	/**
+	 * Build a button box-shadow declaration from its stored color and offsets.
+	 *
+	 * @param string $css_prop   CSS property.
+	 * @param mixed  $color      Stored shadow color.
+	 * @param mixed  $properties Stored shadow offsets (`blur`, `width`, `height`).
+	 *
+	 * @return string The declaration, with `none` when the color is not a color.
+	 */
+	public static function box_shadow( $css_prop, $color, $properties ) {
+		$color = self::sanitize_color_var( $color );
+		if ( '' === $color ) {
+			return sprintf( '%s:%s;', $css_prop, 'none' );
+		}
+
+		$blur   = intval( $properties['blur'] ?? 0 );
+		$width  = intval( $properties['width'] ?? 0 );
+		$height = intval( $properties['height'] ?? 0 );
+
+		return sprintf( '%s:%s;', $css_prop, sprintf( '%spx %spx %spx %s;', $width, $height, $blur, $color ) );
+	}
+
+	/**
 	 * Sanitize the value of a color custom property.
 	 *
 	 * @param mixed $value Stored value.

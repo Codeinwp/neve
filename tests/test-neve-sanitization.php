@@ -398,6 +398,7 @@ class TestSanitization extends WP_UnitTestCase {
 			'var(--missing,rgb(1.2.3,4,5))',
 			'linear-gradient(rgb(1.2.3,4,5),#fff)',
 			'linear-gradient(#12345,#fff)',
+			'linear-gradient(rgb(1,2,3)extra,#fff)',
 		];
 
 		foreach ( $invalid as $value ) {
@@ -412,6 +413,7 @@ class TestSanitization extends WP_UnitTestCase {
 			'rgb(-1,0,0)',
 			'rgb(255 0 0)',
 			'rgb(1 2 3 / 50%)',
+			'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)',
 		];
 
 		foreach ( $valid as $value ) {
@@ -487,6 +489,7 @@ class TestSanitization extends WP_UnitTestCase {
 				'neve_scroll_to_top_icon_color'         => 'rgb(1.2.3,4,5)',
 				'hfg_header_layout_main_new_text_color' => '#222;}body{background:lime}/*',
 				'neve_valid_color'                      => '#ffffff',
+				'header_search_button_appearance'       => 'text_button',
 				'neve_global_colors'                    => array(
 					'activePalette' => 'base',
 					'palettes'      => array(
@@ -523,6 +526,7 @@ class TestSanitization extends WP_UnitTestCase {
 			$this->assertFalse( get_theme_mod( 'neve_scroll_to_top_icon_color' ) );
 			$this->assertFalse( get_theme_mod( 'hfg_header_layout_main_new_text_color' ) );
 			$this->assertSame( '#ffffff', get_theme_mod( 'neve_valid_color' ) );
+			$this->assertSame( 'text_button', get_theme_mod( 'header_search_button_appearance' ) );
 
 			$palette = get_theme_mod( 'neve_global_colors' )['palettes']['base']['colors'];
 			$this->assertSame( '', $palette['nv-primary-accent'] );

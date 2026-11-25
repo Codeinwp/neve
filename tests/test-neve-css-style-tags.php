@@ -168,4 +168,68 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 		$this->assertStringNotContainsString( 'linear-gradient(red,blue)', $output );
 		$this->assertStringNotContainsString( '<script', $output );
 	}
+
+	/**
+	 * Stored button shadow colors are printed sanitized, or as `none` when they are not colors.
+	 */
+	public function test_button_shadow_prints_only_sanitized_colors(): void {
+		$shadow = [
+			'blur'   => 5,
+			'width'  => 0,
+			'height' => 0,
+		];
+		set_theme_mod(
+			Config::MODS_BUTTON_PRIMARY_STYLE,
+			[
+				'useShadow'        => true,
+				'shadowColor'      => 'rgba(0,0,0,.5);}body{display:none}',
+				'shadowProperties' => $shadow,
+			]
+		);
+		set_theme_mod(
+			Config::MODS_BUTTON_SECONDARY_STYLE,
+			[
+				'useShadow'        => true,
+				'shadowColor'      => 'rgb(1.2.3,4,5)',
+				'shadowProperties' => $shadow,
+			]
+		);
+
+		try {
+			$css = ( new \Neve\Core\Styles\Frontend() )->generate();
+		} finally {
+			remove_theme_mod( Config::MODS_BUTTON_PRIMARY_STYLE );
+			remove_theme_mod( Config::MODS_BUTTON_SECONDARY_STYLE );
+		}
+
+		$this->assertStringContainsString( '--primarybtnshadow:0px 0px 5px rgba(0,0,0,0.5);', $css );
+		$this->assertStringContainsString( '--secondarybtnshadow:none;', $css );
+		$this->assertStringNotContainsString( 'display:none', $css );
+		$this->assertStringNotContainsString( 'rgb(1.2.3', $css );
+	}
+
+	/**
+	 * Stored palette colors that are not colors are left out of the palette switch CSS.
+	 */
+	public function test_palette_switch_css_omits_malformed_palette_colors(): void {
+		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
+
+		$GLOBALS['wp_customize'] = new WP_Customize_Manager();
+		$GLOBALS['wp_customize']->start_previewing_theme();
+
+		$global = neve_get_global_colors_default();
+		$global['palettes']['base']['colors']['nv-primary-accent']     = self::PAYLOAD;
+		$global['palettes']['darkMode']['colors']['nv-primary-accent'] = 'rgb(1.2.3,4,5)';
+		set_theme_mod( Config::MODS_GLOBAL_COLORS, $global );
+
+		$component = Main::get_instance()->get_builder( 'header' )->get_component( 'header_palette_switch' );
+		$this->assertInstanceOf( Abstract_Component::class, $component );
+
+		$css = $component->toggle_css( '' );
+
+		$this->assertStringNotContainsString( '--nv-primary-accent:', $css );
+		$this->assertStringContainsString( '--nv-secondary-accent:', $css );
+		$this->assertStringNotContainsString( 'linear-gradient(red,blue)', $css );
+		$this->assertStringNotContainsString( 'rgb(1.2.3', $css );
+	}
 }
