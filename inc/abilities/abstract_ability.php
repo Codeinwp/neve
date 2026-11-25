@@ -237,6 +237,53 @@ abstract class Abstract_Ability {
 	}
 
 	/**
+	 * Sanitize a theme mod printed as CSS: colors and backgrounds the way their Customizer settings do.
+	 *
+	 * @param string $key   Theme mod key.
+	 * @param mixed  $value Incoming value.
+	 * @return mixed The sanitized value. Null when a non-empty color or a background is invalid, or any other value could close its CSS declaration.
+	 */
+	protected function sanitize_style_mod( string $key, $value ) {
+		if ( '_background' === substr( $key, -11 ) ) {
+			$background = neve_sanitize_background( $value );
+
+			return is_wp_error( $background ) ? null : $background;
+		}
+
+		if ( '_color' === substr( $key, -6 ) ) {
+			$color = neve_sanitize_colors( $value );
+
+			return '' === $color && '' !== $value ? null : $color;
+		}
+
+		return $this->closes_css_declaration( $value ) ? null : $value;
+	}
+
+	/**
+	 * Whether a value, or any value nested in it or in its JSON, could close a CSS declaration.
+	 *
+	 * @param mixed $value Incoming value.
+	 * @return bool
+	 */
+	private function closes_css_declaration( $value ) {
+		if ( is_string( $value ) ) {
+			$decoded = json_decode( $value, true );
+
+			return is_array( $decoded ) ? $this->closes_css_declaration( $decoded ) : (bool) preg_match( '/[;{}<>]|\/\*/', $value );
+		}
+
+		if ( is_array( $value ) ) {
+			foreach ( $value as $item ) {
+				if ( $this->closes_css_declaration( $item ) ) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Build a structured non-validation error payload for clients that collapse
 	 * WP_Error details into a generic transport error.
 	 *

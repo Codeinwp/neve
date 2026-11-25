@@ -35,7 +35,7 @@ class Css_Prop {
 			$suffix = $all_value['unit'];
 		}
 
-		return $suffix;
+		return self::css_unit( $suffix );
 	}
 
 	/**
@@ -57,7 +57,18 @@ class Css_Prop {
 			}
 		}
 
-		return isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) && is_string( $all_value['suffix'] ) ? $all_value['suffix'] : 'px' );;
+		return self::css_unit( isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) && is_string( $all_value['suffix'] ) ? $all_value['suffix'] : 'px' ) );
+	}
+
+	/**
+	 * Keep a stored CSS unit only when it is letters, `%` or the `—` "no unit" choice, so it cannot close its declaration.
+	 *
+	 * @param mixed $unit Stored unit.
+	 *
+	 * @return string
+	 */
+	private static function css_unit( $unit ) {
+		return is_string( $unit ) && preg_match( '/^(?:[a-z%]*|—)$/iu', $unit ) ? $unit : 'px';
 	}
 
 	/**
@@ -282,7 +293,7 @@ class Css_Prop {
 			Font_Manager::add_google_font( $font, strval( $value ) );
 		}
 
-		return $suffix === '—' ? '' : $suffix;
+		return $suffix === '—' ? '' : self::css_unit( $suffix );
 	}
 
 	/**

@@ -206,7 +206,7 @@ class Footer_Configure extends Abstract_Ability {
 		if ( ! $dry_run && ! empty( $input['row_style'] ) && is_array( $input['row_style'] ) ) {
 			foreach ( $input['row_style'] as $style ) {
 				if ( isset( $style['row'] ) ) {
-					$this->apply_row_style( 'footer', $style['row'], $style );
+					$warnings = array_merge( $warnings, $this->apply_row_style( $builder, $style['row'], $style ) );
 				}
 			}
 		}

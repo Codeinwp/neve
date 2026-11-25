@@ -35,6 +35,11 @@ class Appearance_Update extends Abstract_Ability {
 	);
 
 	/**
+	 * Font family names without the characters that could close their CSS declaration.
+	 */
+	const FONT_FAMILY_PATTERN = '^[^;{}()/<]*$';
+
+	/**
 	 * Container style contexts mapped to their theme_mods.
 	 */
 	const CONTAINER_STYLE_MAP = array(
@@ -117,10 +122,12 @@ class Appearance_Update extends Abstract_Ability {
 						'body_font'     => array(
 							'type'        => 'string',
 							'description' => 'Body font family name.',
+							'pattern'     => self::FONT_FAMILY_PATTERN,
 						),
 						'headings_font' => array(
 							'type'        => 'string',
 							'description' => 'Headings font family name.',
+							'pattern'     => self::FONT_FAMILY_PATTERN,
 						),
 						'element'       => array(
 							'type'        => 'object',
@@ -133,7 +140,7 @@ class Appearance_Update extends Abstract_Ability {
 								'fontSize'      => $this->responsive_value_schema( 'Font size per device' ),
 								'lineHeight'    => $this->responsive_value_schema( 'Line height per device', false ),
 								'letterSpacing' => $this->responsive_value_schema( 'Letter spacing per device', false ),
-								'fontWeight'    => array( 'type' => 'string' ),
+								'fontWeight'    => $this->font_weight_schema(),
 								'textTransform' => array(
 									'type' => 'string',
 									'enum' => array( 'none', 'capitalize', 'uppercase', 'lowercase' ),
@@ -236,7 +243,7 @@ class Appearance_Update extends Abstract_Ability {
 					),
 				),
 				'fontSize'      => $this->responsive_value_schema( 'Font size per device.' ),
-				'fontWeight'    => array( 'type' => 'string' ),
+				'fontWeight'    => $this->font_weight_schema(),
 				'textTransform' => array(
 					'type' => 'string',
 					'enum' => array( 'none', 'capitalize', 'uppercase', 'lowercase' ),
