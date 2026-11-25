@@ -94,7 +94,7 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 	}
 
 	/**
-	 * A stored custom color with HTML reaches the frontend inline style without tags.
+	 * A stored custom color with HTML is left out of the frontend inline style; a clean gradient is kept.
 	 */
 	public function test_frontend_inline_style_strips_html(): void {
 		$GLOBALS['wp_styles'] = new WP_Styles();
@@ -107,6 +107,10 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 					'label' => 'Custom',
 					'val'   => self::PAYLOAD,
 				],
+				'custom-2' => [
+					'label' => 'Gradient',
+					'val'   => 'linear-gradient(red,blue)',
+				],
 			]
 		);
 
@@ -114,26 +118,29 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 
 		$inline = implode( '', (array) wp_styles()->get_data( Dynamic_Css::FRONTEND_HANDLE, 'after' ) );
 
-		$this->assertStringContainsString( '--custom-1:linear-gradient(red,blue)', $inline );
+		$this->assertStringNotContainsString( '--custom-1:', $inline );
+		$this->assertStringContainsString( '--custom-2:linear-gradient(red,blue)', $inline );
 		$this->assertStringNotContainsString( '<', $inline );
 		$this->assertStringContainsString( '.alignfull > [class*="__inner-container"]', $inline );
 	}
 
 	/**
-	 * A stored palette color with HTML reaches the Customizer CSS vars tag without tags.
+	 * A stored palette color with HTML is left out of the Customizer CSS vars tag; a clean gradient is kept.
 	 */
 	public function test_customizer_css_vars_tag_strips_html(): void {
 		$GLOBALS['wp_styles'] = new WP_Styles();
 
 		$global = neve_get_global_colors_default();
-		$global['palettes'][ $global['activePalette'] ]['colors']['nv-primary-accent'] = self::PAYLOAD;
+		$global['palettes'][ $global['activePalette'] ]['colors']['nv-primary-accent']   = self::PAYLOAD;
+		$global['palettes'][ $global['activePalette'] ]['colors']['nv-secondary-accent'] = 'linear-gradient(red,blue)';
 		set_theme_mod( Config::MODS_GLOBAL_COLORS, $global );
 
 		( new Dynamic_Css() )->add_customize_vars_tag();
 
 		$inline = implode( '', (array) wp_styles()->get_data( 'nv-css-vars', 'after' ) );
 
-		$this->assertStringContainsString( '--nv-primary-accent:linear-gradient(red,blue)', $inline );
+		$this->assertStringNotContainsString( '--nv-primary-accent:', $inline );
+		$this->assertStringContainsString( '--nv-secondary-accent:linear-gradient(red,blue)', $inline );
 		$this->assertStringNotContainsString( '<', $inline );
 	}
 

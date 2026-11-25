@@ -177,6 +177,25 @@ class TestNeveAbilityColorInputs extends WP_UnitTestCase {
 		}
 	}
 
+	public function test_appearance_update_stores_sanitized_button_colors(): void {
+		$ability = new Appearance_Update();
+		$color   = 'rgba(1,2,3,.5);}body{display:none}';
+		$fields  = array(
+			'background'      => array( 'background' => $color ),
+			'text'            => array( 'text' => $color ),
+			'backgroundHover' => array( 'hover' => array( 'background' => $color ) ),
+			'textHover'       => array( 'hover' => array( 'text' => $color ) ),
+		);
+
+		foreach ( array( 'primary' => 'neve_button_appearance', 'secondary' => 'neve_secondary_button_appearance' ) as $group => $mod ) {
+			foreach ( $fields as $field => $input ) {
+				$ability->execute( array( 'buttons' => array( $group => $input ) ) );
+
+				$this->assertSame( 'rgba(1,2,3,0.5)', get_theme_mod( $mod )[ $field ], "{$group} {$field}" );
+			}
+		}
+	}
+
 	public function test_set_theme_mod_saves_valid_button_appearance(): void {
 		$result = ( new Site_Set_Theme_Mod() )->execute(
 			array(
@@ -218,6 +237,15 @@ class TestNeveAbilityColorInputs extends WP_UnitTestCase {
 		$this->assertSame( 'rgba(0,0,0,0.5)', $appearance['textHover'] );
 		$this->assertSame( '', $appearance['shadowColor'] );
 		$this->assertSame( 'var(--nv-text-color)', $appearance['shadowColorHover'] );
+	}
+
+	public function test_button_appearance_sanitizer_decodes_json_strings(): void {
+		$appearance = neve_sanitize_button_appearance( '{"type":"fill","background":"rgb(1.2.3,4,5)","text":"#ffffff"}' );
+
+		$this->assertSame( 'fill', $appearance['type'] );
+		$this->assertSame( '', $appearance['background'] );
+		$this->assertSame( '#ffffff', $appearance['text'] );
+		$this->assertSame( '', neve_sanitize_button_appearance( 'fill' ) );
 	}
 
 	public function test_set_theme_mod_rejects_background_with_malformed_color(): void {

@@ -68,6 +68,14 @@ function neve_is_css_gradient( string $value ): bool {
 		}
 	}
 
+	if ( preg_match_all( '/#[0-9a-z]*/i', $value, $matches ) ) {
+		foreach ( $matches[0] as $hex ) {
+			if ( ! preg_match( '/^#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i', $hex ) ) {
+				return false;
+			}
+		}
+	}
+
 	return true;
 }
 
@@ -314,11 +322,15 @@ function neve_sanitize_font_family( $value ) {
  *
  * @param mixed $value the control value.
  *
- * @return mixed The value with every color field sanitized ('' when invalid); non-array values unchanged.
+ * @return array<string, mixed>|string The value with every color field sanitized ('' when invalid), or '' when it is not an array or JSON object.
  */
 function neve_sanitize_button_appearance( $value ) {
+	if ( is_string( $value ) ) {
+		$value = json_decode( $value, true );
+	}
+
 	if ( ! is_array( $value ) ) {
-		return $value;
+		return '';
 	}
 
 	foreach ( array( 'background', 'text', 'backgroundHover', 'textHover', 'shadowColor', 'shadowColorHover' ) as $field ) {

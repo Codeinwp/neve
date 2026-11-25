@@ -397,6 +397,7 @@ class TestSanitization extends WP_UnitTestCase {
 			'hsl(1 2 3 4)',
 			'var(--missing,rgb(1.2.3,4,5))',
 			'linear-gradient(rgb(1.2.3,4,5),#fff)',
+			'linear-gradient(#12345,#fff)',
 		];
 
 		foreach ( $invalid as $value ) {
@@ -486,6 +487,28 @@ class TestSanitization extends WP_UnitTestCase {
 				'neve_scroll_to_top_icon_color'         => 'rgb(1.2.3,4,5)',
 				'hfg_header_layout_main_new_text_color' => '#222;}body{background:lime}/*',
 				'neve_valid_color'                      => '#ffffff',
+				'neve_global_colors'                    => array(
+					'activePalette' => 'base',
+					'palettes'      => array(
+						'base' => array(
+							'name'   => 'Base',
+							'colors' => array(
+								'nv-primary-accent'   => 'rgb(1.2.3,4,5)',
+								'nv-secondary-accent' => '#2f5aae',
+							),
+						),
+					),
+				),
+				'neve_global_custom_colors'             => array(
+					'custom-bad'  => array(
+						'label' => 'Bad',
+						'val'   => 'rgb(1.2.3,4,5)',
+					),
+					'custom-good' => array(
+						'label' => 'Good',
+						'val'   => '#123456',
+					),
+				),
 			)
 		);
 		// The migration copies the parent's mods into the active child theme's.
@@ -500,6 +523,11 @@ class TestSanitization extends WP_UnitTestCase {
 			$this->assertFalse( get_theme_mod( 'neve_scroll_to_top_icon_color' ) );
 			$this->assertFalse( get_theme_mod( 'hfg_header_layout_main_new_text_color' ) );
 			$this->assertSame( '#ffffff', get_theme_mod( 'neve_valid_color' ) );
+
+			$palette = get_theme_mod( 'neve_global_colors' )['palettes']['base']['colors'];
+			$this->assertSame( '', $palette['nv-primary-accent'] );
+			$this->assertSame( '#2f5aae', $palette['nv-secondary-accent'] );
+			$this->assertSame( array( 'custom-good' ), array_keys( get_theme_mod( 'neve_global_custom_colors' ) ) );
 		} finally {
 			remove_filter( 'pre_option_stylesheet', $child_theme );
 			delete_option( 'theme_mods_neve-child-migration-test' );
@@ -510,6 +538,59 @@ class TestSanitization extends WP_UnitTestCase {
 				update_option( 'theme_mods_neve', $parent_mods );
 			}
 		}
+	}
+
+	/**
+	 * Stored palette and custom colors that fail the color check are left out of the root CSS.
+	 */
+	public function test_root_css_omits_malformed_palette_colors(): void {
+		set_theme_mod(
+			'neve_global_colors',
+			array(
+				'activePalette' => 'base',
+				'palettes'      => array(
+					'base' => array(
+						'name'   => 'Base',
+						'colors' => array(
+							'nv-primary-accent'   => 'rgb(1.2.3,4,5)',
+							'nv-text-color'       => '#222;}body{display:none}',
+							'nv-secondary-accent' => '#2f5aae',
+						),
+					),
+				),
+			)
+		);
+		set_theme_mod(
+			'neve_global_custom_colors',
+			array(
+				'custom-bad'  => array(
+					'label' => 'Bad',
+					'val'   => 'rgb(1.2.3,4,5)',
+				),
+				'custom-good' => array(
+					'label' => 'Good',
+					'val'   => '#123456',
+				),
+			)
+		);
+		$no_cache                           = \Neve\Core\Settings\Mods::$no_cache;
+		\Neve\Core\Settings\Mods::$no_cache = true;
+
+		try {
+			$css = \Neve\Core\Dynamic_Css::get_root_css();
+		} finally {
+			\Neve\Core\Settings\Mods::$no_cache = $no_cache;
+			remove_theme_mod( 'neve_global_colors' );
+			remove_theme_mod( 'neve_global_custom_colors' );
+			\Neve\Core\Settings\Mods::set( 'neve_global_custom_colors', null );
+		}
+
+		$this->assertStringNotContainsString( 'rgb(1.2.3', $css );
+		$this->assertStringNotContainsString( 'display:none', $css );
+		$this->assertStringNotContainsString( '--nv-primary-accent', $css );
+		$this->assertStringContainsString( '--nv-secondary-accent:#2f5aae', $css );
+		$this->assertStringContainsString( '--custom-good:#123456', $css );
+		$this->assertStringNotContainsString( '--custom-bad', $css );
 	}
 
 	/**
