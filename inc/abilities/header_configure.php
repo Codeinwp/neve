@@ -214,7 +214,7 @@ class Header_Configure extends Abstract_Ability {
 				if ( ! isset( $style['row'] ) ) {
 					continue;
 				}
-				$this->apply_row_style( 'header', $style['row'], $style );
+				$warnings = array_merge( $warnings, $this->apply_row_style( $builder, $style['row'], $style ) );
 			}
 		}
 
