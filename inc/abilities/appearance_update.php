@@ -550,8 +550,9 @@ class Appearance_Update extends Abstract_Ability {
 				if ( null === $value ) {
 					continue;
 				}
-				if ( $this->is_supported_color_value( $value ) ) {
-					$appearance[ $key ] = trim( $value );
+				$sanitized = $this->sanitize_color_input( $value );
+				if ( null !== $sanitized && '' !== $sanitized ) {
+					$appearance[ $key ] = $sanitized;
 				} else {
 					$warnings[] = sprintf(
 						/* translators: 1: input field path, e.g. buttons.primary.background, 2: example CSS variable */
@@ -567,40 +568,6 @@ class Appearance_Update extends Abstract_Ability {
 				$updated[] = $mods['appearance'];
 			}
 		}
-	}
-
-	/**
-	 * Accept the CSS color formats Neve commonly uses for style consumers.
-	 *
-	 * Palette definitions remain hex-only; this helper is for fields that
-	 * consume colors, such as button appearance settings.
-	 *
-	 * @param mixed $value Candidate color value.
-	 * @return bool
-	 */
-	private function is_supported_color_value( $value ) {
-		if ( ! is_string( $value ) ) {
-			return false;
-		}
-
-		$value = trim( $value );
-		if ( '' === $value ) {
-			return false;
-		}
-
-		if ( preg_match( '/^#[0-9a-fA-F]{3,8}$/', $value ) ) {
-			return true;
-		}
-
-		if ( neve_is_css_function_color( $value ) ) {
-			return true;
-		}
-
-		if ( preg_match( '/^var\(--nv-[a-z0-9-]+\)$/i', $value ) ) {
-			return true;
-		}
-
-		return false;
 	}
 
 	/**
