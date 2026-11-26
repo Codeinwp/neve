@@ -1095,29 +1095,60 @@ class Admin {
 		if ( ! empty( $neve_mods ) ) {
 
 			foreach ( $neve_mods as $neve_mod_k => $neve_mod_v ) {
-				if ( '_color' === substr( $neve_mod_k, -6 ) ) {
-					$clean = neve_sanitize_colors( $neve_mod_v );
-					if ( '' === $clean && '' !== $neve_mod_v ) {
-						continue;
-					}
-					$neve_mod_v = $clean;
-				} elseif ( '_background' === substr( $neve_mod_k, -11 ) ) {
-					$clean = neve_sanitize_background( $neve_mod_v );
-					if ( is_wp_error( $clean ) ) {
-						continue;
-					}
-					$neve_mod_v = $clean;
-				} elseif ( false !== strpos( $neve_mod_k, 'button_appearance' ) && ( is_array( $neve_mod_v ) || is_array( json_decode( (string) $neve_mod_v, true ) ) ) ) {
-					// Search components store their icon/text mode as a plain string under the same suffix.
-					$neve_mod_v = neve_sanitize_button_appearance( $neve_mod_v );
-				} elseif ( 'neve_global_colors' === $neve_mod_k ) {
-					$neve_mod_v = ( new Colors_Background() )->sanitize_global_colors( $neve_mod_v );
-				} elseif ( 'neve_global_custom_colors' === $neve_mod_k ) {
-					$neve_mod_v = is_array( $neve_mod_v ) ? ( new Colors_Background() )->sanitize_global_custom_colors( $neve_mod_v ) : array();
+				$neve_mod_v = $this->sanitize_migrated_mod( (string) $neve_mod_k, $neve_mod_v );
+				if ( is_wp_error( $neve_mod_v ) ) {
+					continue;
 				}
 
 				set_theme_mod( $neve_mod_k, $neve_mod_v );
 			}
 		}
+	}
+
+	/**
+	 * Sanitize a parent theme mod before copying it to the child theme.
+	 *
+	 * @param string $key   Theme mod key.
+	 * @param mixed  $value Stored value.
+	 * @return mixed|\WP_Error The value to copy, or a WP_Error for a malformed color or background.
+	 */
+	private function sanitize_migrated_mod( string $key, $value ) {
+		if ( preg_match( '/(?:_color|_background)$/', $key ) ) {
+			return $this->sanitize_migrated_color_mod( $key, $value );
+		}
+
+		if ( false !== strpos( $key, 'button_appearance' ) && ( is_array( $value ) || is_array( json_decode( (string) $value, true ) ) ) ) {
+			// Search components store their icon/text mode as a plain string under the same suffix.
+			return neve_sanitize_button_appearance( $value );
+		}
+
+		if ( 'neve_global_colors' === $key ) {
+			return ( new Colors_Background() )->sanitize_global_colors( $value );
+		}
+
+		if ( 'neve_global_custom_colors' === $key ) {
+			return is_array( $value ) ? ( new Colors_Background() )->sanitize_global_custom_colors( $value ) : array();
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Sanitize a `_color` or `_background` theme mod for the child theme.
+	 *
+	 * Each check runs only on the value shape it validates, so toggles that share the suffix (`1`, `'1'`) are copied as they are.
+	 *
+	 * @param string $key   Theme mod key ending in `_color` or `_background`.
+	 * @param mixed  $value Stored value.
+	 * @return mixed|\WP_Error The value to copy, or a WP_Error when it is malformed.
+	 */
+	private function sanitize_migrated_color_mod( string $key, $value ) {
+		if ( '_color' === substr( $key, -6 ) && is_string( $value ) && ! is_numeric( $value ) ) {
+			$clean = neve_sanitize_colors( $value );
+
+			return '' === $clean && '' !== $value ? new \WP_Error( 'neve_invalid_color' ) : $clean;
+		}
+
+		return '_background' === substr( $key, -11 ) && is_array( $value ) ? neve_sanitize_background( $value ) : $value;
 	}
 }

@@ -490,6 +490,8 @@ class TestSanitization extends WP_UnitTestCase {
 				'hfg_header_layout_main_new_text_color' => '#222;}body{background:lime}/*',
 				'neve_valid_color'                      => '#ffffff',
 				'header_search_button_appearance'       => 'text_button',
+				'header_palette_switch_auto_adjust_color' => 1,
+				'footer_palette_switch_auto_adjust_color' => '1',
 				'neve_global_colors'                    => array(
 					'activePalette' => 'base',
 					'palettes'      => array(
@@ -527,6 +529,8 @@ class TestSanitization extends WP_UnitTestCase {
 			$this->assertFalse( get_theme_mod( 'hfg_header_layout_main_new_text_color' ) );
 			$this->assertSame( '#ffffff', get_theme_mod( 'neve_valid_color' ) );
 			$this->assertSame( 'text_button', get_theme_mod( 'header_search_button_appearance' ) );
+			$this->assertSame( 1, get_theme_mod( 'header_palette_switch_auto_adjust_color' ) );
+			$this->assertSame( '1', get_theme_mod( 'footer_palette_switch_auto_adjust_color' ) );
 
 			$palette = get_theme_mod( 'neve_global_colors' )['palettes']['base']['colors'];
 			$this->assertSame( '', $palette['nv-primary-accent'] );
