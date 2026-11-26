@@ -35,6 +35,11 @@ class Appearance_Update extends Abstract_Ability {
 	);
 
 	/**
+	 * Font family names without the characters that could close their CSS declaration.
+	 */
+	const FONT_FAMILY_PATTERN = '^[^;{}()/<]*$';
+
+	/**
 	 * Container style contexts mapped to their theme_mods.
 	 */
 	const CONTAINER_STYLE_MAP = array(
@@ -117,10 +122,12 @@ class Appearance_Update extends Abstract_Ability {
 						'body_font'     => array(
 							'type'        => 'string',
 							'description' => 'Body font family name.',
+							'pattern'     => self::FONT_FAMILY_PATTERN,
 						),
 						'headings_font' => array(
 							'type'        => 'string',
 							'description' => 'Headings font family name.',
+							'pattern'     => self::FONT_FAMILY_PATTERN,
 						),
 						'element'       => array(
 							'type'        => 'object',
@@ -133,7 +140,7 @@ class Appearance_Update extends Abstract_Ability {
 								'fontSize'      => $this->responsive_value_schema( 'Font size per device' ),
 								'lineHeight'    => $this->responsive_value_schema( 'Line height per device', false ),
 								'letterSpacing' => $this->responsive_value_schema( 'Letter spacing per device', false ),
-								'fontWeight'    => array( 'type' => 'string' ),
+								'fontWeight'    => $this->font_weight_schema(),
 								'textTransform' => array(
 									'type' => 'string',
 									'enum' => array( 'none', 'capitalize', 'uppercase', 'lowercase' ),
@@ -236,7 +243,7 @@ class Appearance_Update extends Abstract_Ability {
 					),
 				),
 				'fontSize'      => $this->responsive_value_schema( 'Font size per device.' ),
-				'fontWeight'    => array( 'type' => 'string' ),
+				'fontWeight'    => $this->font_weight_schema(),
 				'textTransform' => array(
 					'type' => 'string',
 					'enum' => array( 'none', 'capitalize', 'uppercase', 'lowercase' ),
@@ -543,8 +550,9 @@ class Appearance_Update extends Abstract_Ability {
 				if ( null === $value ) {
 					continue;
 				}
-				if ( $this->is_supported_color_value( $value ) ) {
-					$appearance[ $key ] = trim( $value );
+				$sanitized = $this->sanitize_color_input( $value );
+				if ( null !== $sanitized && '' !== $sanitized ) {
+					$appearance[ $key ] = $sanitized;
 				} else {
 					$warnings[] = sprintf(
 						/* translators: 1: input field path, e.g. buttons.primary.background, 2: example CSS variable */
@@ -560,40 +568,6 @@ class Appearance_Update extends Abstract_Ability {
 				$updated[] = $mods['appearance'];
 			}
 		}
-	}
-
-	/**
-	 * Accept the CSS color formats Neve commonly uses for style consumers.
-	 *
-	 * Palette definitions remain hex-only; this helper is for fields that
-	 * consume colors, such as button appearance settings.
-	 *
-	 * @param mixed $value Candidate color value.
-	 * @return bool
-	 */
-	private function is_supported_color_value( $value ) {
-		if ( ! is_string( $value ) ) {
-			return false;
-		}
-
-		$value = trim( $value );
-		if ( '' === $value ) {
-			return false;
-		}
-
-		if ( preg_match( '/^#[0-9a-fA-F]{3,8}$/', $value ) ) {
-			return true;
-		}
-
-		if ( neve_is_css_function_color( $value ) ) {
-			return true;
-		}
-
-		if ( preg_match( '/^var\(--nv-[a-z0-9-]+\)$/i', $value ) ) {
-			return true;
-		}
-
-		return false;
 	}
 
 	/**

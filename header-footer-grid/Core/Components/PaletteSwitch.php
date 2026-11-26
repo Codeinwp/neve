@@ -218,6 +218,9 @@ class PaletteSwitch extends Abstract_Component {
 			$palette_dark = $defined_palettes[ $active_dark ];
 		}
 
+		$palette_light['colors'] = neve_sanitize_palette_colors( $palette_light['colors'] ?? [] );
+		$palette_dark['colors']  = neve_sanitize_palette_colors( $palette_dark['colors'] ?? [] );
+
 		return [ $palette_light, $palette_dark ];
 	}
 

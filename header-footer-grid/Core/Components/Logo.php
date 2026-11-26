@@ -153,7 +153,7 @@ class Logo extends Abstract_Component {
 	 * @return string
 	 */
 	public function update_logo_theme_mod( $value, $old_value ) {
-		$conditional_main          = json_decode( Mods::get( self::COMPONENT_ID . '_' . self::LOGO, self::sanitize_logo_json( $old_value ) ), true );
+		$conditional_main          = self::decode_logo_json( Mods::get( self::COMPONENT_ID . '_' . self::LOGO, self::sanitize_logo_json( $old_value ) ) );
 		$conditional_main['light'] = $value;
 		if ( $conditional_main['same'] ) {
 			$conditional_main['dark'] = $value;
@@ -212,7 +212,7 @@ class Logo extends Abstract_Component {
 	 */
 	public function filter_logo_variants( $variants ) {
 		$main_logo          = get_theme_mod( 'custom_logo' );
-		$conditional_main   = json_decode( Mods::get( self::COMPONENT_ID . '_' . self::LOGO, self::sanitize_logo_json( $main_logo ) ), true );
+		$conditional_main   = self::decode_logo_json( Mods::get( self::COMPONENT_ID . '_' . self::LOGO, self::sanitize_logo_json( $main_logo ) ) );
 		$logo_main_light_id = $main_logo;
 		$logo_main_dark_id  = $logo_main_light_id;
 		$logo_main_same     = true;
@@ -326,6 +326,21 @@ JS;
 				'same'  => true,
 			)
 		);
+	}
+
+	/**
+	 * Decode the stored logo palette, which may be a JSON string or an already decoded array.
+	 *
+	 * @param mixed $value Stored logo palette value.
+	 *
+	 * @return array<array-key, mixed>
+	 */
+	public static function decode_logo_json( $value ): array {
+		if ( is_string( $value ) ) {
+			$value = json_decode( $value, true );
+		}
+
+		return is_array( $value ) ? $value : array();
 	}
 
 	/**
