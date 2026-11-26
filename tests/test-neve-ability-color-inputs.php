@@ -25,6 +25,7 @@ class TestNeveAbilityColorInputs extends WP_UnitTestCase {
 		'hfg_header_layout_main_background',
 		'hfg_header_layout_main_new_text_color',
 		'hfg_footer_layout_bottom_new_text_color',
+		'nav-icon_button_appearance',
 	);
 
 	/**
@@ -74,6 +75,80 @@ class TestNeveAbilityColorInputs extends WP_UnitTestCase {
 		);
 		$this->assertTrue( $result['success'] );
 		$this->assertSame( '', get_theme_mod( 'neve_scroll_to_top_icon_color' ) );
+	}
+
+	public function test_set_theme_mod_rejects_non_string_color(): void {
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => 'neve_scroll_to_top_icon_color',
+				'value'  => array( '#fff' ),
+			)
+		);
+
+		$this->assertFalse( $result['success'] );
+		$this->assertSame( 'invalid_value', $result['error']['code'] );
+		$this->assertFalse( get_theme_mod( 'neve_scroll_to_top_icon_color' ) );
+	}
+
+	public function test_set_theme_mod_rejects_button_appearance_with_malformed_color(): void {
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => 'nav-icon_button_appearance',
+				'value'  => array(
+					'type'       => 'fill',
+					'background' => self::MALFORMED_COLOR,
+				),
+			)
+		);
+
+		$this->assertFalse( $result['success'] );
+		$this->assertSame( 'invalid_value', $result['error']['code'] );
+		$this->assertFalse( get_theme_mod( 'nav-icon_button_appearance' ) );
+	}
+
+	public function test_set_theme_mod_saves_valid_button_appearance(): void {
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => 'nav-icon_button_appearance',
+				'value'  => array(
+					'type'       => 'fill',
+					'background' => 'var(--nv-primary-accent)',
+					'text'       => '#ffffff',
+					'textHover'  => '',
+				),
+			)
+		);
+
+		$this->assertTrue( $result['success'] );
+		$appearance = get_theme_mod( 'nav-icon_button_appearance' );
+		$this->assertSame( 'var(--nv-primary-accent)', $appearance['background'] );
+		$this->assertSame( '#ffffff', $appearance['text'] );
+		$this->assertSame( '', $appearance['textHover'] );
+	}
+
+	public function test_button_appearance_sanitizer_blanks_malformed_colors(): void {
+		$appearance = neve_sanitize_button_appearance(
+			array(
+				'type'             => 'fill',
+				'background'       => self::MALFORMED_COLOR,
+				'text'             => '#ffffff',
+				'backgroundHover'  => 'red;}body{display:none',
+				'textHover'        => 'rgba(0,0,0,0.5)',
+				'shadowColor'      => self::MALFORMED_COLOR,
+				'shadowColorHover' => 'var(--nv-text-color)',
+			)
+		);
+
+		$this->assertSame( 'fill', $appearance['type'] );
+		$this->assertSame( '', $appearance['background'] );
+		$this->assertSame( '#ffffff', $appearance['text'] );
+		$this->assertSame( '', $appearance['backgroundHover'] );
+		$this->assertSame( 'rgba(0,0,0,0.5)', $appearance['textHover'] );
+		$this->assertSame( '', $appearance['shadowColor'] );
+		$this->assertSame( 'var(--nv-text-color)', $appearance['shadowColorHover'] );
 	}
 
 	public function test_set_theme_mod_rejects_background_with_malformed_color(): void {

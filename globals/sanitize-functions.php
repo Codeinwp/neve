@@ -295,16 +295,16 @@ function neve_sanitize_font_family( $value ) {
  *
  * @param mixed $value the control value.
  *
- * @return mixed The sanitized array; any other value is returned unchanged.
+ * @return mixed The value with every color field sanitized ('' when invalid); non-array values unchanged.
  */
 function neve_sanitize_button_appearance( $value ) {
 	if ( ! is_array( $value ) ) {
 		return $value;
 	}
 
-	foreach ( [ 'background', 'backgroundHover', 'text', 'textHover', 'shadowColor', 'shadowColorHover' ] as $color ) {
-		if ( isset( $value[ $color ] ) ) {
-			$value[ $color ] = neve_sanitize_colors( $value[ $color ] );
+	foreach ( array( 'background', 'text', 'backgroundHover', 'textHover', 'shadowColor', 'shadowColorHover' ) as $field ) {
+		if ( isset( $value[ $field ] ) ) {
+			$value[ $field ] = neve_sanitize_colors( $value[ $field ] );
 		}
 	}
 

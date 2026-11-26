@@ -310,16 +310,44 @@ abstract class Abstract_Ability {
 			return null;
 		}
 
-		$value = map_deep( $value, 'sanitize_text_field' );
-		foreach ( array( 'colorValue', 'overlayColorValue' ) as $field ) {
-			if ( isset( $value[ $field ] ) && null === $this->sanitize_color_input( $value[ $field ] ) ) {
-				return null;
+		$value      = map_deep( $value, 'sanitize_text_field' );
+		$background = neve_sanitize_background( $value );
+
+		return is_wp_error( $background ) || $this->blanks_sent_field( $value, $background ) ? null : $background;
+	}
+
+	/**
+	 * Sanitize a button appearance sent to an ability the way the Customizer button control does.
+	 *
+	 * @param mixed $value Incoming button appearance.
+	 * @return array<string, mixed>|null Sanitized appearance, or null when a color is invalid.
+	 */
+	protected function sanitize_button_appearance_input( $value ) {
+		if ( ! is_array( $value ) ) {
+			return null;
+		}
+
+		$value      = map_deep( $value, 'sanitize_text_field' );
+		$appearance = neve_sanitize_button_appearance( $value );
+
+		return $this->blanks_sent_field( $value, $appearance ) ? null : $appearance;
+	}
+
+	/**
+	 * Whether sanitizing emptied a field that was sent with a value, i.e. the sanitizer rejected it.
+	 *
+	 * @param array<string, mixed> $sent      Value as sent.
+	 * @param array<string, mixed> $sanitized Value after the Customizer sanitizer.
+	 * @return bool
+	 */
+	private function blanks_sent_field( array $sent, array $sanitized ) {
+		foreach ( $sanitized as $field => $field_value ) {
+			if ( '' === $field_value && isset( $sent[ $field ] ) && '' !== $sent[ $field ] ) {
+				return true;
 			}
 		}
 
-		$background = neve_sanitize_background( $value );
-
-		return is_wp_error( $background ) ? null : $background;
+		return false;
 	}
 
 	/**

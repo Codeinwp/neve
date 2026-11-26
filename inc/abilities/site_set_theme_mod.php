@@ -215,6 +215,10 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 			return $this->sanitize_background_input( $value );
 		}
 
+		if ( '_button_appearance' === substr( $key, -18 ) ) {
+			return $this->sanitize_button_appearance_input( $value );
+		}
+
 		return $this->sanitize_value( $value );
 	}
 
