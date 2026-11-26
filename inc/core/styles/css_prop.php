@@ -368,7 +368,7 @@ class Css_Prop {
 			return '';
 		}
 
-		// A blank or missing side is 0. Dropped, it would shift the shorthand or widen the other sides to all four.
+		// Once any side is set, a blank or missing side is 0. Dropped, it would shift the shorthand or widen the other sides to all four.
 		$set_sides = array_filter(
 			array_intersect_key( $value, array_flip( Config::$directional_keys ) ),
 			function ( $side ) {
@@ -447,7 +447,7 @@ class Css_Prop {
 	}
 
 	/**
-	 * Outline button padding keeps a `calc()` side as it is and gives a plain nonzero number its unit.
+	 * Outline button padding gives a plain nonzero number its unit and keeps every other side as it is: zero, `calc()`, `var()` or a value that already has a unit.
 	 *
 	 * @param string|int|float $side   Side value.
 	 * @param string           $suffix Unit.

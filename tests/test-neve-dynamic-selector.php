@@ -292,7 +292,7 @@ class TestDynamicSelector extends WP_UnitTestCase {
 	}
 
 	/**
-	 * A blank or missing side of a directional value is 0, so the other sides keep their position.
+	 * Once any side of a directional value is set, a blank or missing side is 0, so the other sides keep their position.
 	 *
 	 * @dataProvider directional_blank_sides_provider
 	 *
