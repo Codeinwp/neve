@@ -1465,18 +1465,6 @@ parameters:
 			path: inc/admin/dashboard/changelog_handler.php
 
 		-
-			message: '#^Method Neve\\Admin\\Dashboard\\Main\:\:add_black_friday_data\(\) has parameter \$configs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: inc/admin/dashboard/main.php
-
-		-
-			message: '#^Method Neve\\Admin\\Dashboard\\Main\:\:add_black_friday_data\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: inc/admin/dashboard/main.php
-
-		-
 			message: '#^Method Neve\\Admin\\Dashboard\\Main\:\:enqueue\(\) has no return type specified\.$#'
 			identifier: missingType.return
 			count: 1
