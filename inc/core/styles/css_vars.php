@@ -91,11 +91,7 @@ trait Css_Vars {
 				Dynamic_Selector::META_KEY    => $mod_key_primary . '.shadowColor',
 				Dynamic_Selector::META_DEFAULT       => 'none',
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ($primary_values) {
-					$blur   = intval($primary_values['shadowProperties']['blur']);
-					$width  = intval($primary_values['shadowProperties']['width']);
-					$height = intval($primary_values['shadowProperties']['height']);
-
-					return sprintf( '%s:%s;', $css_prop, sprintf('%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+					return Css_Prop::box_shadow( $css_prop, $value, $primary_values['shadowProperties'] );
 				}
 			];
 		}
@@ -106,11 +102,7 @@ trait Css_Vars {
 				Dynamic_Selector::META_KEY    => $mod_key_primary . '.shadowColorHover',
 				Dynamic_Selector::META_DEFAULT       => 'none',
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ($primary_values) {
-					$blur   = intval($primary_values['shadowPropertiesHover']['blur']);
-					$width  = intval($primary_values['shadowPropertiesHover']['width']);
-					$height = intval($primary_values['shadowPropertiesHover']['height']);
-
-					return sprintf( '%s:%s;', $css_prop, sprintf('%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+					return Css_Prop::box_shadow( $css_prop, $value, $primary_values['shadowPropertiesHover'] );
 				}
 			];
 		}
@@ -121,11 +113,7 @@ trait Css_Vars {
 				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.shadowColor',
 				Dynamic_Selector::META_DEFAULT       => 'none',
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ($secondary_values) {
-					$blur   = intval($secondary_values['shadowProperties']['blur']);
-					$width  = intval($secondary_values['shadowProperties']['width']);
-					$height = intval($secondary_values['shadowProperties']['height']);
-
-					return sprintf( '%s:%s;', $css_prop, sprintf('%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+					return Css_Prop::box_shadow( $css_prop, $value, $secondary_values['shadowProperties'] );
 				}
 			];
 		}
@@ -136,11 +124,7 @@ trait Css_Vars {
 				Dynamic_Selector::META_KEY    => $mod_key_secondary . '.shadowColorHover',
 				Dynamic_Selector::META_DEFAULT       => 'none',
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) use ($secondary_values) {
-					$blur   = intval($secondary_values['shadowPropertiesHover']['blur']);
-					$width  = intval($secondary_values['shadowPropertiesHover']['width']);
-					$height = intval($secondary_values['shadowPropertiesHover']['height']);
-
-					return sprintf( '%s:%s;', $css_prop, sprintf('%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+					return Css_Prop::box_shadow( $css_prop, $value, $secondary_values['shadowPropertiesHover'] );
 				}
 			];
 		}

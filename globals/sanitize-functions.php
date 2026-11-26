@@ -10,6 +10,17 @@
  */
 
 /**
+ * Component grammar for rgb(), rgba(), hsl() and hsla() argument lists.
+ *
+ * @return string
+ */
+function neve_get_css_function_color_args(): string {
+	$number = '-?(?:\d+(?:\.\d*)?|\.\d+)%?';
+
+	return "{$number}\s*,\s*{$number}\s*,\s*{$number}(?:\s*,\s*{$number})?|{$number}\s+{$number}\s+{$number}(?:\s*\/\s*{$number})?";
+}
+
+/**
  * Check whether a value is a well formed CSS variable expression.
  *
  * @param mixed $value Value to check.
@@ -28,7 +39,7 @@ function neve_is_css_var( $value ) {
 	}
 
 	$hex      = '#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})';
-	$color_fn = '(?:rgb|rgba|hsl|hsla)\(\s*[0-9a-z.,%\/\s-]+\)';
+	$color_fn = '(?:rgb|rgba|hsl|hsla)\(\s*(?:' . neve_get_css_function_color_args() . ')\s*\)';
 	$keyword  = '[a-z]+(?:-[a-z]+)*';
 	$fallback = '(?:(?P>nv_var)|' . $hex . '|' . $color_fn . '|' . $keyword . ')';
 	$pattern  = '/^(?P<nv_var>var\(\s*--[a-z0-9_-]+\s*(?:,\s*' . $fallback . '\s*)?\))$/i';
@@ -45,7 +56,51 @@ function neve_is_css_var( $value ) {
  */
 function neve_is_css_gradient( string $value ): bool {
 	// Recursion keeps parentheses balanced, so nothing can follow the closing one.
-	return (bool) preg_match( '/^(?:repeating-)?(?:linear|radial|conic)-gradient(\((?:[a-z0-9#%.,\s\/_-]|(?1))*\))$/i', trim( $value ) );
+	if ( ! preg_match( '/^(?:repeating-)?(?:linear|radial|conic)-gradient(\((?:[a-z0-9#%.,\s\/_-]|(?1))*\))$/i', trim( $value ) ) ) {
+		return false;
+	}
+
+	// A function color stop may only be followed by its positions before the next stop.
+	if ( preg_match_all( '/((?:rgb|rgba|hsl|hsla)\([^)]*\))([^,)]*)/i', $value, $matches, PREG_SET_ORDER ) ) {
+		foreach ( $matches as $match ) {
+			if ( ! neve_is_css_function_color( $match[1] ) || ! preg_match( '/^(?:\s*-?[\d.]+[a-z%]*)*+\s*$/i', $match[2] ) ) {
+				return false;
+			}
+		}
+	}
+
+	if ( preg_match_all( '/#[0-9a-z]*/i', $value, $matches ) ) {
+		foreach ( $matches[0] as $hex ) {
+			if ( ! preg_match( '/^#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i', $hex ) ) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
+/**
+ * Keep the palette colors that are valid colors under a CSS-safe slug.
+ *
+ * @param mixed $colors Map of palette slug to color.
+ *
+ * @return array<string, string> Sanitized colors by slug; invalid entries are left out.
+ */
+function neve_sanitize_palette_colors( $colors ) {
+	if ( ! is_array( $colors ) ) {
+		return [];
+	}
+
+	$clean = [];
+	foreach ( $colors as $slug => $color ) {
+		$color = neve_sanitize_colors( $color );
+		if ( '' !== $color && sanitize_key( (string) $slug ) === $slug ) {
+			$clean[ $slug ] = $color;
+		}
+	}
+
+	return $clean;
 }
 
 /**
@@ -56,7 +111,7 @@ function neve_is_css_gradient( string $value ): bool {
  * @return bool
  */
 function neve_is_css_function_color( string $value ): bool {
-	return (bool) preg_match( '/^(?:rgb|rgba|hsl|hsla)\(\s*[-0-9.% ,]+\)$/', trim( $value ) );
+	return (bool) preg_match( '/^(?:rgb|rgba|hsl|hsla)\(\s*(?:' . neve_get_css_function_color_args() . ')\s*\)$/i', trim( $value ) );
 }
 
 /**
@@ -244,13 +299,76 @@ function neve_sanitize_background( $value ) {
 }
 
 /**
+ * Sanitize the values of a CSS dimension array: sides, responsive sizes and their units.
+ *
+ * Nested arrays are sanitized recursively; any other value is kept only when it is a number,
+ * a boolean, empty, a plain word or unit (`px`, `auto`) or the controls' `—` "no unit" choice, and is otherwise cleared.
+ *
+ * @param array<mixed> $value Dimension array.
+ *
+ * @return array<mixed>
+ */
+function neve_sanitize_css_dimensions( array $value ) {
+	foreach ( $value as $key => $item ) {
+		if ( is_array( $item ) ) {
+			$value[ $key ] = neve_sanitize_css_dimensions( $item );
+			continue;
+		}
+
+		if ( is_string( $item ) && ! is_numeric( $item ) && ! preg_match( '/^(?:[a-z%-]*|—)$/iu', $item ) ) {
+			$value[ $key ] = '';
+		}
+	}
+
+	return $value;
+}
+
+/**
+ * Sanitize a font family name, rejecting anything that could close its CSS declaration.
+ *
+ * @param mixed $value Font family.
+ *
+ * @return string The sanitized font family, or '' when it is not a font family name.
+ */
+function neve_sanitize_font_family( $value ) {
+	if ( ! is_string( $value ) ) {
+		return '';
+	}
+
+	// Checked after sanitize_text_field(), which turns a lone `<` into `&lt;`.
+	$value = sanitize_text_field( $value );
+
+	return preg_match( '/[;{}()<>]|\/\*/', $value ) ? '' : $value;
+}
+
+/**
  * Sanitize the button appearance control.
  *
- * @param array $value the control value.
+ * @param mixed $value the control value.
  *
- * @return array
+ * @return array<string, mixed>|string The value with every color field sanitized ('' when invalid), or '' when it is not an array or JSON object.
  */
 function neve_sanitize_button_appearance( $value ) {
+	if ( is_string( $value ) ) {
+		$value = json_decode( $value, true );
+	}
+
+	if ( ! is_array( $value ) ) {
+		return '';
+	}
+
+	foreach ( array( 'background', 'text', 'backgroundHover', 'textHover', 'shadowColor', 'shadowColorHover' ) as $field ) {
+		if ( isset( $value[ $field ] ) ) {
+			$value[ $field ] = neve_sanitize_colors( $value[ $field ] );
+		}
+	}
+
+	foreach ( [ 'borderRadius', 'borderWidth', 'shadowProperties', 'shadowPropertiesHover' ] as $dimension ) {
+		if ( isset( $value[ $dimension ] ) && is_array( $value[ $dimension ] ) ) {
+			$value[ $dimension ] = neve_sanitize_css_dimensions( $value[ $dimension ] );
+		}
+	}
+
 	return $value;
 }
 
@@ -288,9 +406,7 @@ function neve_sanitize_typography_control( $value ) {
 
 	// Make sure we deal with arrays.
 	foreach ( [ 'letterSpacing', 'lineHeight', 'fontSize' ] as $value_type ) {
-		if ( ! is_array( $value[ $value_type ] ) ) {
-			$value[ $value_type ] = [];
-		}
+		$value[ $value_type ] = is_array( $value[ $value_type ] ) ? neve_sanitize_css_dimensions( $value[ $value_type ] ) : [];
 	}
 
 	return $value;

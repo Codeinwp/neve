@@ -237,6 +237,120 @@ abstract class Abstract_Ability {
 	}
 
 	/**
+	 * Sanitize a theme mod printed as CSS: colors, backgrounds and button appearances the way their Customizer settings do.
+	 *
+	 * @param string $key   Theme mod key.
+	 * @param mixed  $value Incoming value.
+	 * @return mixed The sanitized value. Null when a non-empty color, a background or a button appearance is invalid, or any other value could close its CSS declaration.
+	 */
+	protected function sanitize_style_mod( string $key, $value ) {
+		if ( '_background' === substr( $key, -11 ) ) {
+			return $this->sanitize_background_input( $value );
+		}
+
+		if ( '_color' === substr( $key, -6 ) ) {
+			return $this->sanitize_color_input( $value );
+		}
+
+		if ( '_button_appearance' === substr( $key, -18 ) ) {
+			$value = $this->sanitize_button_appearance_input( $value );
+		}
+
+		return null === $value || $this->closes_css_declaration( $value ) ? null : $value;
+	}
+
+	/**
+	 * Whether a value, or any value nested in it or in its JSON, could close a CSS declaration.
+	 *
+	 * @param mixed $value Incoming value.
+	 * @return bool
+	 */
+	private function closes_css_declaration( $value ) {
+		if ( is_string( $value ) ) {
+			$decoded = json_decode( $value, true );
+
+			return is_array( $decoded ) ? $this->closes_css_declaration( $decoded ) : (bool) preg_match( '/[;{}<>]|\/\*/', $value );
+		}
+
+		if ( is_array( $value ) ) {
+			foreach ( $value as $item ) {
+				if ( $this->closes_css_declaration( $item ) ) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Sanitize a color sent to an ability the way the Customizer color controls do.
+	 *
+	 * @param mixed $value Incoming color.
+	 * @return string|null Sanitized color ('' clears it), or null when a non-empty value is not a valid color.
+	 */
+	protected function sanitize_color_input( $value ) {
+		if ( ! is_string( $value ) ) {
+			return null;
+		}
+
+		$color = neve_sanitize_colors( $value );
+
+		return ( '' === $color && '' !== trim( $value ) ) ? null : $color;
+	}
+
+	/**
+	 * Sanitize a builder background sent to an ability the way the Customizer background control does.
+	 *
+	 * @param mixed $value Incoming background.
+	 * @return array<string, mixed>|null Sanitized background, or null when it is invalid.
+	 */
+	protected function sanitize_background_input( $value ) {
+		if ( ! is_array( $value ) ) {
+			return null;
+		}
+
+		$value      = map_deep( $value, 'sanitize_text_field' );
+		$background = neve_sanitize_background( $value );
+
+		return is_wp_error( $background ) || $this->blanks_sent_field( $value, $background ) ? null : $background;
+	}
+
+	/**
+	 * Sanitize a button appearance sent to an ability the way the Customizer button control does.
+	 *
+	 * @param mixed $value Incoming button appearance.
+	 * @return array<string, mixed>|null Sanitized appearance, or null when a color is invalid.
+	 */
+	protected function sanitize_button_appearance_input( $value ) {
+		if ( ! is_array( $value ) ) {
+			return null;
+		}
+
+		$value      = map_deep( $value, 'sanitize_text_field' );
+		$appearance = neve_sanitize_button_appearance( $value );
+
+		return $this->blanks_sent_field( $value, $appearance ) ? null : $appearance;
+	}
+
+	/**
+	 * Whether sanitizing emptied a field that was sent with a value, i.e. the sanitizer rejected it.
+	 *
+	 * @param array<string, mixed> $sent      Value as sent.
+	 * @param array<string, mixed> $sanitized Value after the Customizer sanitizer.
+	 * @return bool
+	 */
+	private function blanks_sent_field( array $sent, array $sanitized ) {
+		foreach ( $sanitized as $field => $field_value ) {
+			if ( '' === $field_value && isset( $sent[ $field ] ) && '' !== $sent[ $field ] ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Build a structured non-validation error payload for clients that collapse
 	 * WP_Error details into a generic transport error.
 	 *
