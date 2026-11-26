@@ -31,6 +31,7 @@ class Main extends Base_Customizer {
 		$this->register_types();
 		$this->add_main_panels();
 		$this->change_controls();
+		$this->add_homepage_link();
 	}
 
 	/**
@@ -132,6 +133,40 @@ class Main extends Base_Customizer {
 	}
 
 	/**
+	 * Add a link to edit or create the homepage in the Homepage Settings section.
+	 *
+	 * @return void
+	 */
+	private function add_homepage_link() {
+		if ( ! current_user_can( 'edit_pages' ) ) {
+			return;
+		}
+
+		$front_page_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_on_front' ) : 0;
+		$edit_link     = $front_page_id ? get_edit_post_link( $front_page_id, 'raw' ) : null;
+
+		$this->add_control(
+			new Control(
+				'neve_homepage_link',
+				[
+					'sanitize_callback' => 'sanitize_text_field',
+				],
+				[
+					'section'     => 'static_front_page',
+					'priority'    => 100,
+					// plain __() since React escapes these, esc_html__ would show entities in translations
+					'label'       => $edit_link ? __( 'Edit homepage', 'neve' ) : __( 'Create a homepage', 'neve' ),
+					'description' => $edit_link
+						? __( 'Use the Options panel in the page editor to change the container, sidebar and title of your homepage.', 'neve' )
+						: __( 'Create a page and start from one of the homepage patterns. Then select it above as your static homepage.', 'neve' ),
+					'url'         => $edit_link ? $edit_link : admin_url( 'post-new.php?post_type=page' ),
+				],
+				'Neve\Customizer\Controls\React\Link_Control'
+			)
+		);
+	}
+
+	/**
 	 * Change controls
 	 */
 	protected function change_controls() {
@@ -160,5 +195,17 @@ class Main extends Base_Customizer {
 		foreach ( $panels as $panel_id => $panel_priority ) {
 			$this->change_customizer_object( 'panel', $panel_id, 'priority', $panel_priority );
 		}
+
+		// core hides Homepage Settings on sites with no pages, which would also hide the "Create a homepage" link
+		$this->change_customizer_object( 'section', 'static_front_page', 'active_callback', [ $this, 'is_static_front_page_active' ] );
+	}
+
+	/**
+	 * Keep Homepage Settings visible for users who can create the homepage.
+	 *
+	 * @return bool
+	 */
+	public function is_static_front_page_active() {
+		return current_user_can( 'edit_pages' ) || $this->wpc->has_published_pages();
 	}
 }

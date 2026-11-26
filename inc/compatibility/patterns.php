@@ -30,6 +30,8 @@ class Patterns {
 		'gallery-grid-buttons',
 		'gallery-title-buttons',
 		'light-header-left-aligned-content',
+		'homepage-business',
+		'homepage-simple',
 	];
 
 	/**
@@ -46,6 +48,10 @@ class Patterns {
 		if ( ! function_exists( 'register_block_pattern' ) ) {
 			return;
 		}
+
+		// phpcs:ignore WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_pattern_category
+		register_block_pattern_category( 'neve', [ 'label' => __( 'Neve', 'neve' ) ] );
+
 		foreach ( $this->patterns as $pattern ) {
 			$pattern_args = neve_require_array( __DIR__ . '/block-patterns/' . $pattern . '.php' );
 
@@ -54,6 +60,9 @@ class Patterns {
 			if ( empty( $pattern_args ) ) {
 				continue;
 			}
+
+			// group every bundled pattern under one Neve category in the inserter
+			$pattern_args['categories'][] = 'neve';
 
 			register_block_pattern( 'neve/' . $pattern, $pattern_args );
 		}
