@@ -292,14 +292,17 @@ class Pagination extends Base_View {
 		$prev_format = '<div class="previous">%link</div>';
 		$next_format = '<div class="next">%link</div>';
 
+		$prev_label = get_theme_mod( 'neve_post_navigation_previous_label', '' );
+		$next_label = get_theme_mod( 'neve_post_navigation_next_label', '' );
+
 		$prev_link = sprintf(
 			'<span class="nav-direction">%1$s</span><span>%2$s</span>',
-			esc_html__( 'previous', 'neve' ),
+			empty( $prev_label ) ? esc_html__( 'previous', 'neve' ) : esc_html( $prev_label ),
 			'%title'
 		);
 		$next_link = sprintf(
 			'<span class="nav-direction">%1$s</span><span>%2$s</span>',
-			esc_html__( 'next', 'neve' ),
+			empty( $next_label ) ? esc_html__( 'next', 'neve' ) : esc_html( $next_label ),
 			'%title'
 		);
 
