@@ -1459,12 +1459,19 @@ class Main {
 	/**
 	 * Add the Black Friday data.
 	 *
-	 * @param array $configs An array of configurations.
+	 * @param array<string, array<string, mixed>> $configs An array of configurations.
 	 *
-	 * @return array The configurations.
+	 * @return array<string, array<string, mixed>> The configurations.
 	 */
 	public function add_black_friday_data( $configs ) {
-		$configs['neve'] = self::get_black_friday_data( $configs['default'] );
+		// An earlier filter may drop the 'default' entry; fall back to an empty base so
+		// get_black_friday_data() still builds Neve's Black Friday data.
+		$config = array();
+		if ( isset( $configs['default'] ) && ! empty( $configs['default'] ) ) {
+			$config = $configs['default'];
+		}
+
+		$configs['neve'] = self::get_black_friday_data( $config );
 
 		return $configs;
 	}

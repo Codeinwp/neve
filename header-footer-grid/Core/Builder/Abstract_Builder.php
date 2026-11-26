@@ -45,6 +45,7 @@ abstract class Abstract_Builder implements Builder {
 	const TEXT_COLOR         = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
 	const WIDTH              = 'width';
+	const RENDER_SLOTS       = [ 'left', 'c-left', 'center', 'c-right', 'right' ];
 	const CONTENT_ALIGNMENT  = 'content_alignment';
 	const VERTICAL_ALIGN     = 'vertical_align';
 	/**
@@ -527,7 +528,7 @@ abstract class Abstract_Builder implements Builder {
 					],
 					'partial' => $row_id === 'sidebar' ? 'hfg_header_layout_partial' : $row_setting_id . '_partial',
 				],
-				'sanitize_callback'     => 'wp_filter_nohtml_kses',
+				'sanitize_callback'     => 'neve_sanitize_colors',
 				'default'               => $default_colors['text'],
 			]
 		);
@@ -1039,6 +1040,7 @@ abstract class Abstract_Builder implements Builder {
 		$rules['--color'] = [
 			Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
 			Dynamic_Selector::META_DEFAULT => $default_colors['text'],
+			Dynamic_Selector::META_FILTER  => $this->sanitized_color_rule( $default_colors['text'] ),
 		];
 
 		// Exclude the following rules for the header when the global header background is active.
@@ -1061,6 +1063,7 @@ abstract class Abstract_Builder implements Builder {
 						'--bgcolor' => [
 							Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background.colorValue',
 							Dynamic_Selector::META_DEFAULT => $default_color,
+							Dynamic_Selector::META_FILTER  => $this->sanitized_color_rule( $default_color ),
 						],
 					]
 				);
@@ -1071,7 +1074,8 @@ abstract class Abstract_Builder implements Builder {
 					$rules,
 					[
 						'--overlaycolor'     => [
-							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
+							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background.overlayColorValue',
+							Dynamic_Selector::META_FILTER => $this->sanitized_color_rule( '' ),
 						],
 						'--bgimage'          => [
 							Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
@@ -1281,13 +1285,7 @@ abstract class Abstract_Builder implements Builder {
 			$data = [ 'sidebar' => $data ];
 		}
 
-		$render_buffer = [
-			'left'    => [],
-			'c-left'  => [],
-			'center'  => [],
-			'c-right' => [],
-			'right'   => [],
-		];
+		$render_buffer = array_fill_keys( self::RENDER_SLOTS, [] );
 
 		$slot            = null;
 		$component_index = null;
@@ -1490,16 +1488,7 @@ abstract class Abstract_Builder implements Builder {
 		$max_columns = 12;
 		$last_item   = null;
 
-		usort(
-			$data,
-			function ( $item1, $item2 ) {
-				if ( $item1['x'] === $item2['x'] ) {
-					return 0;
-				}
-
-				return $item1['x'] < $item2['x'] ? - 1 : 1;
-			}
-		);
+		usort( $data, [ self::class, 'compare_legacy_position' ] );
 
 		$collection    = new \CachingIterator(
 			new \ArrayIterator(
@@ -1715,6 +1704,54 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		return $this->builder_components[ $id ];
+	}
+
+	/**
+	 * Component ids of a device's rows in render order, without the sidebar row.
+	 *
+	 * @param string $device Device id.
+	 *
+	 * @return list<string>
+	 */
+	public function get_device_component_ids( string $device ): array {
+		$layout = $this->get_layout_data();
+		$ids    = [];
+		foreach ( array_keys( $this->get_rows() ) as $row_index ) {
+			$row = isset( $layout[ $device ][ $row_index ] ) && is_array( $layout[ $device ][ $row_index ] ) ? $layout[ $device ][ $row_index ] : [];
+			if ( $row_index === 'sidebar' || empty( $row ) ) {
+				continue;
+			}
+
+			if ( ! neve_is_new_builder() ) {
+				usort( $row, [ self::class, 'compare_legacy_position' ] );
+				$ids = array_merge( $ids, array_column( $row, 'id' ) );
+				continue;
+			}
+
+			foreach ( self::RENDER_SLOTS as $slot ) {
+				if ( isset( $row[ $slot ] ) && is_array( $row[ $slot ] ) ) {
+					$ids = array_merge( $ids, array_column( $row[ $slot ], 'id' ) );
+				}
+			}
+		}
+
+		return $ids;
+	}
+
+	/**
+	 * Orders legacy builder items by their column position.
+	 *
+	 * @param array{x: int} $item1 First item.
+	 * @param array{x: int} $item2 Second item.
+	 *
+	 * @return int
+	 */
+	private static function compare_legacy_position( array $item1, array $item2 ): int {
+		if ( $item1['x'] === $item2['x'] ) {
+			return 0;
+		}
+
+		return $item1['x'] < $item2['x'] ? - 1 : 1;
 	}
 
 	/**
@@ -2054,7 +2091,7 @@ abstract class Abstract_Builder implements Builder {
 				'group'                 => $row_setting_id,
 				'tab'                   => SettingsManager::TAB_LAYOUT,
 				'transport'             => 'postMessage',
-				'sanitize_callback'     => 'wp_filter_nohtml_kses',
+				'sanitize_callback'     => [ $this, 'sanitize_vertical_align' ],
 				'default'               => 'flex-start',
 				'section'               => $row_setting_id,
 				'label'                 => __( 'Vertical Alignment', 'neve' ),
@@ -2072,6 +2109,35 @@ abstract class Abstract_Builder implements Builder {
 				],
 			]
 		);
+	}
+
+	/**
+	 * Sanitize a row vertical alignment.
+	 *
+	 * @param mixed $value Incoming or stored value.
+	 *
+	 * @return 'flex-start'|'center'|'flex-end'
+	 */
+	public function sanitize_vertical_align( $value ) {
+		return in_array( $value, [ 'center', 'flex-end' ], true ) ? $value : 'flex-start';
+	}
+
+	/**
+	 * Build a CSS rule filter that prints only valid colors.
+	 *
+	 * Stored values can bypass the setting sanitizer, so they could still close the declaration.
+	 *
+	 * @param string $fallback Color printed when the stored one is invalid; '' prints no rule.
+	 *
+	 * @return callable(string, mixed): string
+	 */
+	private function sanitized_color_rule( $fallback ) {
+		return function ( $css_prop, $value ) use ( $fallback ) {
+			$color = neve_sanitize_colors( $value );
+			$color = '' === $color ? $fallback : $color;
+
+			return '' === $color ? '' : sprintf( ' %s: %s;', $css_prop, $color );
+		};
 	}
 
 	/**
@@ -2274,6 +2340,9 @@ abstract class Abstract_Builder implements Builder {
 				'--valign'                          => [
 					Dynamic_Selector::META_KEY     => $mods_prefix . self::VERTICAL_ALIGN,
 					Dynamic_Selector::META_DEFAULT => 'flex-start',
+					Dynamic_Selector::META_FILTER  => function ( $css_prop, $value ) {
+						return sprintf( ' %s: %s;', $css_prop, $this->sanitize_vertical_align( $value ) );
+					},
 				],
 			],
 		];

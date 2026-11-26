@@ -16,6 +16,7 @@ use HFG\Main;
 use Neve\Core\Dynamic_Css;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Core\Styles\Css_Prop;
 use Neve\Core\Styles\Dynamic_Selector;
 
 /**
@@ -264,11 +265,7 @@ class Button extends Abstract_Component {
 				if ( ! isset( $button_values['useShadow'] ) || empty( $button_values['useShadow'] ) ) {
 					return sprintf( '%s:%s;', $css_prop, 'none' );
 				}
-				$blur   = intval( $button_values['shadowProperties']['blur'] );
-				$width  = intval( $button_values['shadowProperties']['width'] );
-				$height = intval( $button_values['shadowProperties']['height'] );
-
-				return sprintf( '%s:%s;', $css_prop, sprintf( '%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+				return Css_Prop::box_shadow( $css_prop, $value, $button_values['shadowProperties'] );
 			},
 		];
 		$rules['--primarybtnhovershadow'] = [
@@ -278,11 +275,7 @@ class Button extends Abstract_Component {
 				if ( ! isset( $button_values['useShadowHover'] ) || empty( $button_values['useShadowHover'] ) ) {
 					return sprintf( '%s:%s;', $css_prop, 'none' );
 				}
-				$blur   = intval( $button_values['shadowPropertiesHover']['blur'] );
-				$width  = intval( $button_values['shadowPropertiesHover']['width'] );
-				$height = intval( $button_values['shadowPropertiesHover']['height'] );
-
-				return sprintf( '%s:%s;', $css_prop, sprintf( '%spx %spx %spx %s;', $width, $height, $blur, $value ) );
+				return Css_Prop::box_shadow( $css_prop, $value, $button_values['shadowPropertiesHover'] );
 			},
 		];
 

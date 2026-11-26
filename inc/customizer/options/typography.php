@@ -138,7 +138,7 @@ class Typography extends Base_Customizer {
 				Config::MODS_FONT_GENERAL,
 				[
 					'transport'         => $this->selective_refresh,
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'neve_sanitize_font_family',
 					'default'           => Mods::get_alternative_mod_default( Config::MODS_FONT_GENERAL ),
 				],
 				array(
@@ -232,7 +232,7 @@ class Typography extends Base_Customizer {
 				'neve_fallback_font_family',
 				[
 					'transport'         => $this->selective_refresh,
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'neve_sanitize_font_family',
 					'default'           => 'Arial, Helvetica, sans-serif',
 				],
 				[
@@ -274,7 +274,7 @@ class Typography extends Base_Customizer {
 				'neve_headings_font_family',
 				array(
 					'transport'         => $this->selective_refresh,
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'neve_sanitize_font_family',
 				),
 				array(
 					'section'               => 'neve_typography_headings',
@@ -355,7 +355,7 @@ class Typography extends Base_Customizer {
 					$mod_key_font_family,
 					array(
 						'transport'         => $this->selective_refresh,
-						'sanitize_callback' => 'sanitize_text_field',
+						'sanitize_callback' => 'neve_sanitize_font_family',
 					),
 					array(
 						'section'               => 'neve_typography_headings',

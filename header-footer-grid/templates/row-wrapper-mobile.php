@@ -22,16 +22,10 @@ $inner_classes    = 'header-menu-sidebar-inner tcb ' . ( $is_contained ? ' conta
 $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 $close_classes    = 'close-sidebar-panel navbar-toggle-wrapper' . ( $close_contained ? ' container' : '' );
 $submenu_style    = row_setting( 'layout', 'slide_left' );
-$menu_icon_class  = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active ' );
-
-$menu_icon = component_setting( MenuIcon::MENU_ICON );
-$menu_svg  = component_setting( MenuIcon::MENU_SVG );
-if ( ! in_array( $menu_icon, [ 'donner', 'dots', 'svg', 'wave' ], true ) ) {
-	$menu_icon = 'default';
-}
-if ( $menu_icon === 'svg' && empty( $menu_svg ) ) {
-	$menu_icon = 'default';
-}
+$close_icon       = MenuIcon::get_close_button_icon();
+$menu_icon        = $close_icon['icon'];
+$menu_svg         = $close_icon['svg'];
+$menu_icon_class  = apply_filters( 'neve_menu_icon_classes', 'hamburger is-active ', $menu_icon );
 ?>
 <div
 		id="header-menu-sidebar" class="<?php echo esc_attr( join( ' ', $classes ) ); ?>"
@@ -45,7 +39,7 @@ if ( $menu_icon === 'svg' && empty( $menu_svg ) ) {
 					<?php // The screen-reader-text span inside is the single naming source. ?>
 					<?php echo MenuIcon::aria_expanded_behaviour(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 			<?php
-			if ( $menu_icon_class === 'hamburger is-active ' ) {
+			if ( $menu_icon === 'default' ) {
 				?>
 					<span class="bars">
 						<span class="icon-bar"></span>
