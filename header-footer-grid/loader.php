@@ -14,6 +14,7 @@ $header_components = array(
 	'HFG\Core\Components\Search',
 	'HFG\Core\Components\SearchResponsive',
 	'HFG\Core\Components\SecondNav',
+	'HFG\Core\Components\SocialIcons',
 );
 if ( class_exists( 'WooCommerce', false ) ) {
 	$header_components[] = 'HFG\Core\Components\CartIcon';
@@ -33,6 +34,7 @@ add_theme_support(
 				'HFG\Core\Components\FooterWidgetThree',
 				'HFG\Core\Components\FooterWidgetFour',
 				'HFG\Core\Components\NavFooter',
+				'HFG\Core\Components\SocialIconsFooter',
 			),
 		),
 	)
