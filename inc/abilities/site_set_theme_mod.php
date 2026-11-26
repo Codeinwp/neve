@@ -177,17 +177,16 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 				);
 			}
 
-			$value = $this->sanitize_value( $input['value'] );
 			if ( ! in_array( $key, self::TEXT_KEYS, true ) ) {
-				$value = $this->sanitize_style_mod( $key, $value );
-			}
-			if ( null === $value ) {
-				return $this->validation_issue(
-					'invalid_value',
-					/* translators: %s: input field name */
-					sprintf( __( 'Invalid value for "%s".', 'neve' ), 'value' ),
-					'value'
-				);
+				$value = $this->sanitize_setting( $key, $input['value'] );
+				if ( null === $value ) {
+					return $this->validation_issue(
+						'invalid_value',
+						/* translators: %s: input field name */
+						sprintf( __( 'Invalid value for "%s".', 'neve' ), 'value' ),
+						'value'
+					);
+				}
 			}
 
 			set_theme_mod( $key, $value );
@@ -198,6 +197,25 @@ class Site_Set_Theme_Mod extends Abstract_Ability {
 			'key'     => $key,
 			'value'   => get_theme_mod( $key ),
 		);
+	}
+
+	/**
+	 * Sanitize a value for its setting: colors and backgrounds as the Customizer does, the rest as text.
+	 *
+	 * @param string $key   The allowlisted theme_mod key.
+	 * @param mixed  $value The incoming value.
+	 * @return mixed Sanitized value, or null when a color or background is invalid.
+	 */
+	private function sanitize_setting( $key, $value ) {
+		if ( '_color' === substr( $key, -6 ) ) {
+			return $this->sanitize_color_input( $value );
+		}
+
+		if ( '_background' === substr( $key, -11 ) ) {
+			return $this->sanitize_background_input( $value );
+		}
+
+		return $this->sanitize_value( $value );
 	}
 
 	/**

@@ -1,0 +1,158 @@
+<?php
+/**
+ * Tests for color inputs sent to the theme_mod and builder abilities.
+ *
+ * @package neve
+ */
+
+use Neve\Abilities\Footer_Configure;
+use Neve\Abilities\Header_Configure;
+use Neve\Abilities\Site_Set_Theme_Mod;
+
+/**
+ * Class TestNeveAbilityColorInputs
+ */
+class TestNeveAbilityColorInputs extends WP_UnitTestCase {
+
+	const MALFORMED_COLOR = 'rgb(1.2.3,4,5)';
+
+	/**
+	 * Theme mods written by these tests.
+	 */
+	const MODS = array(
+		'neve_scroll_to_top_icon_color',
+		'hfg_header_layout_sidebar_background',
+		'hfg_header_layout_main_background',
+		'hfg_header_layout_main_new_text_color',
+		'hfg_footer_layout_bottom_new_text_color',
+	);
+
+	/**
+	 * Teardown.
+	 */
+	public function tearDown(): void {
+		foreach ( self::MODS as $mod ) {
+			remove_theme_mod( $mod );
+		}
+
+		parent::tearDown();
+	}
+
+	public function test_set_theme_mod_rejects_malformed_color(): void {
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => 'neve_scroll_to_top_icon_color',
+				'value'  => self::MALFORMED_COLOR,
+			)
+		);
+
+		$this->assertFalse( $result['success'] );
+		$this->assertSame( 'invalid_value', $result['error']['code'] );
+		$this->assertFalse( get_theme_mod( 'neve_scroll_to_top_icon_color' ) );
+	}
+
+	public function test_set_theme_mod_saves_valid_and_empty_colors(): void {
+		$ability = new Site_Set_Theme_Mod();
+
+		$result = $ability->execute(
+			array(
+				'action' => 'set',
+				'key'    => 'neve_scroll_to_top_icon_color',
+				'value'  => ' rgb(255, 0, 0) ',
+			)
+		);
+		$this->assertTrue( $result['success'] );
+		$this->assertSame( 'rgb(255, 0, 0)', get_theme_mod( 'neve_scroll_to_top_icon_color' ) );
+
+		$result = $ability->execute(
+			array(
+				'action' => 'set',
+				'key'    => 'neve_scroll_to_top_icon_color',
+				'value'  => '',
+			)
+		);
+		$this->assertTrue( $result['success'] );
+		$this->assertSame( '', get_theme_mod( 'neve_scroll_to_top_icon_color' ) );
+	}
+
+	public function test_set_theme_mod_rejects_background_with_malformed_color(): void {
+		$result = ( new Site_Set_Theme_Mod() )->execute(
+			array(
+				'action' => 'set',
+				'key'    => 'hfg_header_layout_sidebar_background',
+				'value'  => array(
+					'type'       => 'color',
+					'colorValue' => self::MALFORMED_COLOR,
+				),
+			)
+		);
+
+		$this->assertFalse( $result['success'] );
+		$this->assertSame( 'invalid_value', $result['error']['code'] );
+		$this->assertFalse( get_theme_mod( 'hfg_header_layout_sidebar_background' ) );
+	}
+
+	public function test_header_row_style_skips_malformed_colors(): void {
+		$result = ( new Header_Configure() )->execute(
+			array(
+				'row_style' => array(
+					array(
+						'row'        => 'main',
+						'text_color' => self::MALFORMED_COLOR,
+						'background' => array(
+							'type'              => 'color',
+							'colorValue'        => '#ffffff',
+							'overlayColorValue' => self::MALFORMED_COLOR,
+						),
+					),
+				),
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertContains( 'Invalid value for "row_style.main.text_color".', $result['warnings'] );
+		$this->assertContains( 'Invalid value for "row_style.main.background".', $result['warnings'] );
+		$this->assertFalse( get_theme_mod( 'hfg_header_layout_main_new_text_color' ) );
+		$this->assertFalse( get_theme_mod( 'hfg_header_layout_main_background' ) );
+	}
+
+	public function test_header_row_style_saves_valid_colors(): void {
+		$result = ( new Header_Configure() )->execute(
+			array(
+				'row_style' => array(
+					array(
+						'row'        => 'main',
+						'text_color' => 'var(--nv-text-color)',
+						'background' => array(
+							'type'       => 'color',
+							'colorValue' => '#ffffff',
+						),
+					),
+				),
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertSame( array(), $result['warnings'] );
+		$this->assertSame( 'var(--nv-text-color)', get_theme_mod( 'hfg_header_layout_main_new_text_color' ) );
+		$this->assertSame( '#ffffff', get_theme_mod( 'hfg_header_layout_main_background' )['colorValue'] );
+	}
+
+	public function test_footer_row_style_skips_malformed_text_color(): void {
+		$result = ( new Footer_Configure() )->execute(
+			array(
+				'row_style' => array(
+					array(
+						'row'        => 'bottom',
+						'text_color' => self::MALFORMED_COLOR,
+					),
+				),
+			)
+		);
+
+		$this->assertIsArray( $result );
+		$this->assertContains( 'Invalid value for "row_style.bottom.text_color".', $result['warnings'] );
+		$this->assertFalse( get_theme_mod( 'hfg_footer_layout_bottom_new_text_color' ) );
+	}
+}

@@ -284,6 +284,45 @@ abstract class Abstract_Ability {
 	}
 
 	/**
+	 * Sanitize a color sent to an ability the way the Customizer color controls do.
+	 *
+	 * @param mixed $value Incoming color.
+	 * @return string|null Sanitized color ('' clears it), or null when a non-empty value is not a valid color.
+	 */
+	protected function sanitize_color_input( $value ) {
+		if ( ! is_string( $value ) ) {
+			return null;
+		}
+
+		$color = neve_sanitize_colors( $value );
+
+		return ( '' === $color && '' !== trim( $value ) ) ? null : $color;
+	}
+
+	/**
+	 * Sanitize a builder background sent to an ability the way the Customizer background control does.
+	 *
+	 * @param mixed $value Incoming background.
+	 * @return array<string, mixed>|null Sanitized background, or null when it is invalid.
+	 */
+	protected function sanitize_background_input( $value ) {
+		if ( ! is_array( $value ) ) {
+			return null;
+		}
+
+		$value = map_deep( $value, 'sanitize_text_field' );
+		foreach ( array( 'colorValue', 'overlayColorValue' ) as $field ) {
+			if ( isset( $value[ $field ] ) && null === $this->sanitize_color_input( $value[ $field ] ) ) {
+				return null;
+			}
+		}
+
+		$background = neve_sanitize_background( $value );
+
+		return is_wp_error( $background ) ? null : $background;
+	}
+
+	/**
 	 * Build a structured non-validation error payload for clients that collapse
 	 * WP_Error details into a generic transport error.
 	 *
