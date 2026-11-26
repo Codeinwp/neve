@@ -295,7 +295,14 @@ class Frontend extends Generator {
 								return '';
 					}
 
-					return sprintf( $css_prop . ':%1$s%5$s %2$s%5$s %3$s%5$s %4$s%5$s;', $value['top'], $value['right'], $value['bottom'], $value['left'], $unit );
+					$sides = array_map(
+						function ( $side ) use ( $value ) {
+							return isset( $value[ $side ] ) && $value[ $side ] !== '' ? $value[ $side ] : '0';
+						},
+						[ 'top', 'right', 'bottom', 'left' ]
+					);
+
+					return sprintf( $css_prop . ':%1$s%5$s %2$s%5$s %3$s%5$s %4$s%5$s;', $sides[0], $sides[1], $sides[2], $sides[3], $unit );
 				},
 			],
 		];
