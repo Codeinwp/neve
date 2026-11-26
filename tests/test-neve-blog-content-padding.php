@@ -47,58 +47,66 @@ class TestNeveBlogContentPadding extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Blank sides must render as 0 so the shorthand stays valid.
+	 * Blank or missing sides must render as 0 so the shorthand stays valid.
 	 *
 	 * @dataProvider blank_sides_provider
 	 *
-	 * @param array  $sides    Desktop sides keyed top, right, bottom, left.
-	 * @param string $unit     Desktop unit.
-	 * @param string $expected Expected declaration.
+	 * @param string                $device   Device that holds the value.
+	 * @param array<string, string> $sides    Sides keyed top, right, bottom, left; absent keys are missing.
+	 * @param string                $unit     Unit of that device.
+	 * @param string                $expected Expected declaration.
 	 */
-	public function test_blank_sides_render_as_zero( array $sides, string $unit, string $expected ): void {
-		$this->set_desktop_padding( $sides, $unit );
+	public function test_blank_sides_render_as_zero( string $device, array $sides, string $unit, string $expected ): void {
+		$this->set_padding( $device, $sides, $unit );
 
 		$this->assertStringContainsString( $expected, $this->get_frontend_css() );
 	}
 
 	/**
-	 * Partly filled desktop padding values.
+	 * Partly filled padding values.
 	 *
-	 * @return array<string, array{0: array<string, string>, 1: string, 2: string}>
+	 * @return array<string, array{0: string, 1: array<string, string>, 2: string, 3: string}>
 	 */
 	public function blank_sides_provider(): array {
 		return [
-			'bottom only'      => [ [ 'top' => '', 'right' => '', 'bottom' => '50', 'left' => '' ], 'px', '.nv-index-posts{ --padding:0px 0px 50px 0px; }' ],
-			'top only'         => [ [ 'top' => '10', 'right' => '', 'bottom' => '', 'left' => '' ], 'px', '.nv-index-posts{ --padding:10px 0px 0px 0px; }' ],
-			'decimal in rem'   => [ [ 'top' => '', 'right' => '', 'bottom' => '', 'left' => '1.5' ], 'rem', '.nv-index-posts{ --padding:0rem 0rem 0rem 1.5rem; }' ],
+			'bottom only'     => [ 'desktop', [ 'top' => '', 'right' => '', 'bottom' => '50', 'left' => '' ], 'px', '.nv-index-posts{ --padding:0px 0px 50px 0px; }' ],
+			'top only'        => [ 'desktop', [ 'top' => '10', 'right' => '', 'bottom' => '', 'left' => '' ], 'px', '.nv-index-posts{ --padding:10px 0px 0px 0px; }' ],
+			'decimal in rem'  => [ 'desktop', [ 'top' => '', 'right' => '', 'bottom' => '', 'left' => '1.5' ], 'rem', '.nv-index-posts{ --padding:0rem 0rem 0rem 1.5rem; }' ],
+			'missing sides'   => [ 'desktop', [ 'bottom' => '50' ], 'px', '.nv-index-posts{ --padding:0px 0px 50px 0px; }' ],
+			'tablet in em'    => [ 'tablet', [ 'top' => '', 'right' => '', 'bottom' => '2', 'left' => '' ], 'em', '.nv-index-posts{ --padding:0em 0em 2em 0em; }' ],
 		];
 	}
 
 	/**
-	 * Store a desktop-only padding value in the blog content padding setting.
+	 * Store a padding value for one device, leaving the other devices blank.
 	 *
-	 * @param array<string, string> $sides Desktop sides keyed top, right, bottom, left.
-	 * @param string                $unit  Desktop unit.
+	 * @param string                $device Device that holds the value: desktop, tablet or mobile.
+	 * @param array<string, string> $sides  Sides keyed top, right, bottom, left.
+	 * @param string                $unit   Unit of that device.
 	 */
-	private function set_desktop_padding( array $sides, string $unit ): void {
-		$blank = [
-			'top'    => '',
-			'right'  => '',
-			'bottom' => '',
-			'left'   => '',
+	private function set_padding( string $device, array $sides, string $unit ): void {
+		$value = [
+			'desktop'      => [],
+			'tablet'       => [],
+			'mobile'       => [],
+			'desktop-unit' => 'px',
+			'tablet-unit'  => 'px',
+			'mobile-unit'  => 'px',
 		];
 
-		set_theme_mod(
-			'neve_blog_content_padding',
-			[
-				'desktop'      => $sides,
-				'tablet'       => $blank,
-				'mobile'       => $blank,
-				'desktop-unit' => $unit,
-				'tablet-unit'  => 'px',
-				'mobile-unit'  => 'px',
-			]
-		);
+		foreach ( [ 'desktop', 'tablet', 'mobile' ] as $name ) {
+			$value[ $name ] = [
+				'top'    => '',
+				'right'  => '',
+				'bottom' => '',
+				'left'   => '',
+			];
+		}
+
+		$value[ $device ]           = $sides;
+		$value[ $device . '-unit' ] = $unit;
+
+		set_theme_mod( 'neve_blog_content_padding', $value );
 	}
 
 	/**
