@@ -174,38 +174,38 @@ trait Builder_Configure {
 	/**
 	 * Apply per-row style settings (height / background / text color).
 	 *
-	 * @param string       $builder_id Builder id.
-	 * @param string       $row        Row key.
-	 * @param array<mixed> $style      Style block.
-	 * @param string[]     $warnings   Receives a warning for each skipped field.
-	 * @return string[] Affected theme_mod keys.
+	 * @param Abstract_Builder $builder The builder instance.
+	 * @param string           $row     Row key.
+	 * @param array<mixed>     $style   Style block.
+	 * @return list<string> Warnings for fields that were not saved.
 	 */
-	protected function apply_row_style( $builder_id, $row, array $style, array &$warnings ) {
-		$prefix   = 'hfg_' . $builder_id . '_layout_' . $row;
-		$affected = array();
+	protected function apply_row_style( Abstract_Builder $builder, $row, array $style ) {
+		$prefix   = 'hfg_' . $builder->get_id() . '_layout_' . $row;
+		$warnings = array();
 
 		if ( isset( $style['height'] ) ) {
 			set_theme_mod( $prefix . '_height', $builder->sanitize_responsive_int_json( $style['height'] ) );
 		}
-		if ( isset( $style['background'] ) ) {
-			$background = $this->sanitize_background_input( $style['background'] );
-			if ( null === $background ) {
-				/* translators: %s: input field name */
-				$warnings[] = sprintf( __( 'Invalid value for "%s".', 'neve' ), 'row_style.' . $row . '.background' );
-			} else {
-				set_theme_mod( $prefix . '_background', $background );
-				$affected[] = $prefix . '_background';
+		$style_mods = array(
+			'background' => $prefix . '_background',
+			'text_color' => $prefix . '_new_text_color',
+		);
+		foreach ( $style_mods as $field => $key ) {
+			if ( ! isset( $style[ $field ] ) ) {
+				continue;
 			}
-		}
-		if ( isset( $style['text_color'] ) ) {
-			$text_color = $this->sanitize_color_input( $style['text_color'] );
-			if ( null === $text_color ) {
-				/* translators: %s: input field name */
-				$warnings[] = sprintf( __( 'Invalid value for "%s".', 'neve' ), 'row_style.' . $row . '.text_color' );
-			} else {
-				set_theme_mod( $prefix . '_new_text_color', $text_color );
-				$affected[] = $prefix . '_new_text_color';
+
+			$value = $this->sanitize_style_mod( $key, map_deep( $style[ $field ], 'sanitize_text_field' ) );
+			if ( null === $value ) {
+				$warnings[] = sprintf(
+					/* translators: %s: input field name */
+					__( 'Invalid value for "%s".', 'neve' ),
+					'row_style.' . $row . '.' . $field
+				);
+				continue;
 			}
+
+			set_theme_mod( $key, $value );
 		}
 
 		return $warnings;

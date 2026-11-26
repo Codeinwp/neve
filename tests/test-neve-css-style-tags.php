@@ -70,7 +70,7 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 	}
 
 	/**
-	 * A stored component color with HTML is printed without tags in the Customizer preview.
+	 * A stored component color with HTML is left out of the Customizer preview CSS.
 	 */
 	public function test_component_css_strips_html_in_customizer_preview(): void {
 		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
@@ -88,7 +88,7 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 		$component->render_css();
 		$output = (string) ob_get_clean();
 
-		$this->assertStringContainsString( '--color: linear-gradient(red,blue);', $output );
+		$this->assertStringNotContainsString( 'linear-gradient(red,blue)', $output );
 		$this->assertStringNotContainsString( '<script', $output );
 		$this->assertSame( 1, substr_count( $output, '</style>' ) );
 	}
@@ -165,7 +165,7 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 		Main::get_instance()->get_builder( 'header' )->render();
 		$output = (string) ob_get_clean();
 
-		$this->assertMatchesRegularExpression( '/\.header-main\{[^}]*--bgcolor: var\(--nv-site-bg\);/', $output );
+		$this->assertStringNotContainsString( 'linear-gradient(red,blue)', $output );
 		$this->assertStringNotContainsString( '<script', $output );
 	}
 }

@@ -541,6 +541,51 @@ class TestSanitization extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Stored values of color custom properties are printed only as sanitized colors or color keywords.
+	 */
+	public function test_color_custom_properties_print_only_sanitized_colors(): void {
+		$mods = array(
+			'nv_test_malformed_color' => 'rgb(1.2.3,4,5)',
+			'nv_test_injected_color'  => 'rgba(1,2,3,.5);}body{display:none}',
+			'nv_test_keyword_color'   => 'transparent',
+			'nv_test_gradient_color'  => 'linear-gradient(red,blue)',
+			'nv_test_padding'         => '10px',
+		);
+		foreach ( $mods as $mod => $value ) {
+			set_theme_mod( $mod, $value );
+		}
+		$no_cache                           = \Neve\Core\Settings\Mods::$no_cache;
+		\Neve\Core\Settings\Mods::$no_cache = true;
+
+		try {
+			$css = (string) new \Neve\Core\Styles\Dynamic_Selector(
+				array(
+					'.nv-test' => array(
+						'--rowbcolor'    => array( \Neve\Core\Styles\Dynamic_Selector::META_KEY => 'nv_test_malformed_color' ),
+						'--primarybtnbg' => array( \Neve\Core\Styles\Dynamic_Selector::META_KEY => 'nv_test_injected_color' ),
+						'--bgcolor'      => array( \Neve\Core\Styles\Dynamic_Selector::META_KEY => 'nv_test_keyword_color' ),
+						'--hoverbgcolor' => array( \Neve\Core\Styles\Dynamic_Selector::META_KEY => 'nv_test_gradient_color' ),
+						'--padding'      => array( \Neve\Core\Styles\Dynamic_Selector::META_KEY => 'nv_test_padding' ),
+					),
+				)
+			);
+		} finally {
+			\Neve\Core\Settings\Mods::$no_cache = $no_cache;
+			foreach ( array_keys( $mods ) as $mod ) {
+				remove_theme_mod( $mod );
+				\Neve\Core\Settings\Mods::set( $mod, null );
+			}
+		}
+
+		$this->assertStringNotContainsString( '--rowbcolor', $css );
+		$this->assertStringContainsString( '--primarybtnbg: rgba(1,2,3,0.5);', $css );
+		$this->assertStringNotContainsString( 'display:none', $css );
+		$this->assertStringContainsString( '--bgcolor: transparent;', $css );
+		$this->assertStringContainsString( '--hoverbgcolor: linear-gradient(red,blue);', $css );
+		$this->assertStringContainsString( '--padding: 10px;', $css );
+	}
+
+	/**
 	 * Stored palette and custom colors that fail the color check are left out of the root CSS.
 	 */
 	public function test_root_css_omits_malformed_palette_colors(): void {

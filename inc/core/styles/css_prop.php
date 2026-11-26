@@ -248,10 +248,33 @@ class Css_Prop {
 					return self::transform_directional_prop( $meta, $device, $value, $css_prop, $meta['directional-prop'] );
 				}
 
+				// Color variables (--bgcolor, --primarybtnbg, ...) may hold values saved before the color check or imported.
+				if ( preg_match( '/^--[a-z0-9-]*(?:color|bg)$/', $css_prop ) ) {
+					$value = self::sanitize_color_var( $value );
+					if ( '' === $value ) {
+						return '';
+					}
+				}
+
 				$suffix = self::get_suffix( $meta, $device, $value, $css_prop );
 
 				return sprintf( ' %s: %s%s;', $css_prop, $value, $suffix );
 		}
+	}
+
+	/**
+	 * Sanitize the value of a color custom property.
+	 *
+	 * @param mixed $value Stored value.
+	 *
+	 * @return string The color or CSS-wide color keyword to print, or '' when the value is not a color.
+	 */
+	private static function sanitize_color_var( $value ) {
+		if ( is_string( $value ) && in_array( strtolower( trim( $value ) ), [ 'transparent', 'currentcolor', 'inherit', 'initial', 'unset' ], true ) ) {
+			return trim( $value );
+		}
+
+		return neve_sanitize_colors( $value );
 	}
 
 	/**

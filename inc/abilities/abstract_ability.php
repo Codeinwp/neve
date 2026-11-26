@@ -237,26 +237,26 @@ abstract class Abstract_Ability {
 	}
 
 	/**
-	 * Sanitize a theme mod printed as CSS: colors and backgrounds the way their Customizer settings do.
+	 * Sanitize a theme mod printed as CSS: colors, backgrounds and button appearances the way their Customizer settings do.
 	 *
 	 * @param string $key   Theme mod key.
 	 * @param mixed  $value Incoming value.
-	 * @return mixed The sanitized value. Null when a non-empty color or a background is invalid, or any other value could close its CSS declaration.
+	 * @return mixed The sanitized value. Null when a non-empty color, a background or a button appearance is invalid, or any other value could close its CSS declaration.
 	 */
 	protected function sanitize_style_mod( string $key, $value ) {
 		if ( '_background' === substr( $key, -11 ) ) {
-			$background = neve_sanitize_background( $value );
-
-			return is_wp_error( $background ) ? null : $background;
+			return $this->sanitize_background_input( $value );
 		}
 
 		if ( '_color' === substr( $key, -6 ) ) {
-			$color = neve_sanitize_colors( $value );
-
-			return '' === $color && '' !== $value ? null : $color;
+			return $this->sanitize_color_input( $value );
 		}
 
-		return $this->closes_css_declaration( $value ) ? null : $value;
+		if ( '_button_appearance' === substr( $key, -18 ) ) {
+			$value = $this->sanitize_button_appearance_input( $value );
+		}
+
+		return null === $value || $this->closes_css_declaration( $value ) ? null : $value;
 	}
 
 	/**

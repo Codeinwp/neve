@@ -194,7 +194,7 @@ class TestNeveRowTextColor extends WP_UnitTestCase {
 		);
 		$this->assertSame( '#111111', get_theme_mod( 'hfg_header_layout_main_new_text_color' ) );
 
-		( new Footer_Configure() )->execute(
+		$result = ( new Footer_Configure() )->execute(
 			array(
 				'row_style' => array(
 					array(
@@ -210,9 +210,10 @@ class TestNeveRowTextColor extends WP_UnitTestCase {
 		);
 		$this->assertSame( '#abcdef', get_theme_mod( 'hfg_footer_layout_main_new_text_color' ) );
 
-		$background = get_theme_mod( 'hfg_footer_layout_main_background' );
-		$this->assertIsArray( $background );
-		$this->assertSame( '', $background['colorValue'] );
+		// Invalid background color rejects the whole background.
+		$this->assertIsArray( $result );
+		$this->assertContains( 'Invalid value for "row_style.main.background".', $result['warnings'] );
+		$this->assertFalse( get_theme_mod( 'hfg_footer_layout_main_background' ) );
 	}
 
 	/**
