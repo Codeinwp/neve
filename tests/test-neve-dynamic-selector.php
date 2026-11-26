@@ -290,4 +290,145 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$this->assertStringContainsString( \Neve\Core\Settings\Config::$css_selectors_map[\Neve\Core\Settings\Config::CSS_SELECTOR_BTN_PRIMARY_HOVER], $css );
 		$this->assertStringContainsString( "color: #fff", $css );
 	}
+
+	/**
+	 * A blank or missing side of a directional value is 0, so the other sides keep their position.
+	 *
+	 * @dataProvider directional_blank_sides_provider
+	 *
+	 * @param array  $sides    Desktop sides; absent keys are missing.
+	 * @param string $expected Expected declaration.
+	 */
+	public function test_directional_prop_blank_sides_are_zero( array $sides, $expected ) {
+		$blank = [
+			'top'    => '',
+			'right'  => '',
+			'bottom' => '',
+			'left'   => '',
+		];
+		set_theme_mod(
+			'mod_directional_padding',
+			[
+				'desktop'      => $sides,
+				'tablet'       => $blank,
+				'mobile'       => $blank,
+				'desktop-unit' => 'px',
+				'tablet-unit'  => 'px',
+				'mobile-unit'  => 'px',
+			]
+		);
+
+		$subscriber = new \Neve\Core\Styles\Dynamic_Selector(
+			[
+				'.test-selector' => [
+					'--test-padding' => [
+						'key'              => 'mod_directional_padding',
+						'is_responsive'    => true,
+						'directional-prop' => \Neve\Core\Settings\Config::CSS_PROP_PADDING,
+						'suffix'           => 'responsive_unit',
+					],
+				],
+			]
+		);
+
+		\Neve\Core\Settings\Mods::$no_cache = true;
+		$css                                  = '' . $subscriber->for_desktop();
+		\Neve\Core\Settings\Mods::$no_cache = false;
+
+		$this->assertStringContainsString( $expected, $css );
+	}
+
+	/**
+	 * Partly filled directional values.
+	 *
+	 * @return array<string, array{0: array<string, string>, 1: string}>
+	 */
+	public function directional_blank_sides_provider() {
+		return [
+			'blank top and bottom'   => [
+				[
+					'top'    => '',
+					'right'  => '50',
+					'bottom' => '',
+					'left'   => '50',
+				],
+				'--test-padding:0 50px;',
+			],
+			'only one side is set'   => [ [ 'top' => '50' ], '--test-padding:50px 0 0 0;' ],
+		];
+	}
+
+	/**
+	 * Outline button padding keeps blank sides at 0 and gives every nonzero side its unit.
+	 *
+	 * @dataProvider outline_button_padding_provider
+	 *
+	 * @param array  $padding   Desktop button padding sides.
+	 * @param int    $top_width Top border width of the secondary (outline) button.
+	 * @param string $expected  Expected declaration.
+	 */
+	public function test_outline_button_padding_sides( array $padding, $top_width, $expected ) {
+		$blank      = [
+			'top'    => '',
+			'right'  => '',
+			'bottom' => '',
+			'left'   => '',
+		];
+		$appearance = neve_get_button_appearance_default( 'secondary' );
+
+		$appearance['borderWidth']['top'] = $top_width;
+		set_theme_mod( 'neve_secondary_button_appearance', $appearance );
+		set_theme_mod(
+			'neve_button_padding',
+			[
+				'desktop'      => $padding,
+				'tablet'       => $blank,
+				'mobile'       => $blank,
+				'desktop-unit' => 'px',
+				'tablet-unit'  => 'px',
+				'mobile-unit'  => 'px',
+			]
+		);
+
+		$previous_styles       = isset( $GLOBALS['wp_styles'] ) ? $GLOBALS['wp_styles'] : null;
+		$GLOBALS['wp_styles']  = new WP_Styles();
+		\Neve\Core\Settings\Mods::$no_cache = true;
+		wp_register_style( \Neve\Core\Dynamic_Css::FRONTEND_HANDLE, false );
+		( new \Neve\Core\Dynamic_Css() )->enqueue();
+		$css = implode( '', (array) wp_styles()->get_data( \Neve\Core\Dynamic_Css::FRONTEND_HANDLE, 'after' ) );
+		\Neve\Core\Settings\Mods::$no_cache = false;
+		$GLOBALS['wp_styles']  = $previous_styles;
+
+		$this->assertStringContainsString( $expected, $css );
+	}
+
+	/**
+	 * Outline button padding cases.
+	 *
+	 * @return array<string, array{0: array<string, string>, 1: int, 2: string}>
+	 */
+	public function outline_button_padding_provider() {
+		return [
+			'bottom only'           => [
+				[
+					'top'    => '',
+					'right'  => '',
+					'bottom' => '50',
+					'left'   => '',
+				],
+				3,
+				'--secondarybtnpadding:0 0 calc(50px - 3px) 0;',
+			],
+			'sides without border'  => [
+				[
+					'top'    => '10',
+					'right'  => '10',
+					'bottom' => '10',
+					'left'   => '10',
+				],
+				0,
+				'--secondarybtnpadding:10px calc(10px - 3px) calc(10px - 3px) calc(10px - 3px);',
+			],
+		];
+	}
 }
