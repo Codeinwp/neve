@@ -70,7 +70,7 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 	}
 
 	/**
-	 * A stored component color with HTML is printed without tags in the Customizer preview.
+	 * A stored component color with HTML is left out of the Customizer preview CSS.
 	 */
 	public function test_component_css_strips_html_in_customizer_preview(): void {
 		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
@@ -88,13 +88,13 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 		$component->render_css();
 		$output = (string) ob_get_clean();
 
-		$this->assertStringContainsString( '--color: linear-gradient(red,blue);', $output );
+		$this->assertStringNotContainsString( 'linear-gradient(red,blue)', $output );
 		$this->assertStringNotContainsString( '<script', $output );
 		$this->assertSame( 1, substr_count( $output, '</style>' ) );
 	}
 
 	/**
-	 * A stored custom color with HTML reaches the frontend inline style without tags.
+	 * A stored custom color with HTML is left out of the frontend inline style; a clean gradient is kept.
 	 */
 	public function test_frontend_inline_style_strips_html(): void {
 		$GLOBALS['wp_styles'] = new WP_Styles();
@@ -107,6 +107,10 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 					'label' => 'Custom',
 					'val'   => self::PAYLOAD,
 				],
+				'custom-2' => [
+					'label' => 'Gradient',
+					'val'   => 'linear-gradient(red,blue)',
+				],
 			]
 		);
 
@@ -114,26 +118,29 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 
 		$inline = implode( '', (array) wp_styles()->get_data( Dynamic_Css::FRONTEND_HANDLE, 'after' ) );
 
-		$this->assertStringContainsString( '--custom-1:linear-gradient(red,blue)', $inline );
+		$this->assertStringNotContainsString( '--custom-1:', $inline );
+		$this->assertStringContainsString( '--custom-2:linear-gradient(red,blue)', $inline );
 		$this->assertStringNotContainsString( '<', $inline );
 		$this->assertStringContainsString( '.alignfull > [class*="__inner-container"]', $inline );
 	}
 
 	/**
-	 * A stored palette color with HTML reaches the Customizer CSS vars tag without tags.
+	 * A stored palette color with HTML is left out of the Customizer CSS vars tag; a clean gradient is kept.
 	 */
 	public function test_customizer_css_vars_tag_strips_html(): void {
 		$GLOBALS['wp_styles'] = new WP_Styles();
 
 		$global = neve_get_global_colors_default();
-		$global['palettes'][ $global['activePalette'] ]['colors']['nv-primary-accent'] = self::PAYLOAD;
+		$global['palettes'][ $global['activePalette'] ]['colors']['nv-primary-accent']   = self::PAYLOAD;
+		$global['palettes'][ $global['activePalette'] ]['colors']['nv-secondary-accent'] = 'linear-gradient(red,blue)';
 		set_theme_mod( Config::MODS_GLOBAL_COLORS, $global );
 
 		( new Dynamic_Css() )->add_customize_vars_tag();
 
 		$inline = implode( '', (array) wp_styles()->get_data( 'nv-css-vars', 'after' ) );
 
-		$this->assertStringContainsString( '--nv-primary-accent:linear-gradient(red,blue)', $inline );
+		$this->assertStringNotContainsString( '--nv-primary-accent:', $inline );
+		$this->assertStringContainsString( '--nv-secondary-accent:linear-gradient(red,blue)', $inline );
 		$this->assertStringNotContainsString( '<', $inline );
 	}
 
@@ -158,7 +165,71 @@ class TestNeveCssStyleTags extends WP_UnitTestCase {
 		Main::get_instance()->get_builder( 'header' )->render();
 		$output = (string) ob_get_clean();
 
-		$this->assertMatchesRegularExpression( '/\.header-main\{[^}]*--bgcolor: var\(--nv-site-bg\);/', $output );
+		$this->assertStringNotContainsString( 'linear-gradient(red,blue)', $output );
 		$this->assertStringNotContainsString( '<script', $output );
+	}
+
+	/**
+	 * Stored button shadow colors are printed sanitized, or as `none` when they are not colors.
+	 */
+	public function test_button_shadow_prints_only_sanitized_colors(): void {
+		$shadow = [
+			'blur'   => 5,
+			'width'  => 0,
+			'height' => 0,
+		];
+		set_theme_mod(
+			Config::MODS_BUTTON_PRIMARY_STYLE,
+			[
+				'useShadow'        => true,
+				'shadowColor'      => 'rgba(0,0,0,.5);}body{display:none}',
+				'shadowProperties' => $shadow,
+			]
+		);
+		set_theme_mod(
+			Config::MODS_BUTTON_SECONDARY_STYLE,
+			[
+				'useShadow'        => true,
+				'shadowColor'      => 'rgb(1.2.3,4,5)',
+				'shadowProperties' => $shadow,
+			]
+		);
+
+		try {
+			$css = ( new \Neve\Core\Styles\Frontend() )->generate();
+		} finally {
+			remove_theme_mod( Config::MODS_BUTTON_PRIMARY_STYLE );
+			remove_theme_mod( Config::MODS_BUTTON_SECONDARY_STYLE );
+		}
+
+		$this->assertStringContainsString( '--primarybtnshadow:0px 0px 5px rgba(0,0,0,0.5);', $css );
+		$this->assertStringContainsString( '--secondarybtnshadow:none;', $css );
+		$this->assertStringNotContainsString( 'display:none', $css );
+		$this->assertStringNotContainsString( 'rgb(1.2.3', $css );
+	}
+
+	/**
+	 * Stored palette colors that are not colors are left out of the palette switch CSS.
+	 */
+	public function test_palette_switch_css_omits_malformed_palette_colors(): void {
+		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
+
+		$GLOBALS['wp_customize'] = new WP_Customize_Manager();
+		$GLOBALS['wp_customize']->start_previewing_theme();
+
+		$global = neve_get_global_colors_default();
+		$global['palettes']['base']['colors']['nv-primary-accent']     = self::PAYLOAD;
+		$global['palettes']['darkMode']['colors']['nv-primary-accent'] = 'rgb(1.2.3,4,5)';
+		set_theme_mod( Config::MODS_GLOBAL_COLORS, $global );
+
+		$component = Main::get_instance()->get_builder( 'header' )->get_component( 'header_palette_switch' );
+		$this->assertInstanceOf( Abstract_Component::class, $component );
+
+		$css = $component->toggle_css( '' );
+
+		$this->assertStringNotContainsString( '--nv-primary-accent:', $css );
+		$this->assertStringContainsString( '--nv-secondary-accent:', $css );
+		$this->assertStringNotContainsString( 'linear-gradient(red,blue)', $css );
+		$this->assertStringNotContainsString( 'rgb(1.2.3', $css );
 	}
 }

@@ -185,11 +185,15 @@ class TestElementorCompatibility extends WP_UnitTestCase {
 	}
 
 	/**
-	 * A stored custom color with HTML reaches the Elementor palette inline style without tags.
+	 * Stored palette and custom colors that are not colors are left out of the Elementor palette style.
 	 */
 	public function test_enqueue_strips_html_from_palette_style(): void {
 		$previous_styles      = $GLOBALS['wp_styles'] ?? null;
 		$GLOBALS['wp_styles'] = new WP_Styles();
+
+		$global = neve_get_global_colors_default();
+		$global['palettes'][ $global['activePalette'] ]['colors']['nv-primary-accent'] = 'rgb(1.2.3,4,5)';
+		set_theme_mod( 'neve_global_colors', $global );
 
 		try {
 			wp_register_style( 'neve-style', false );
@@ -200,15 +204,23 @@ class TestElementorCompatibility extends WP_UnitTestCase {
 						'label' => 'Custom',
 						'val'   => 'linear-gradient(red,blue)</style><script>alert(1)</script>',
 					],
+					'custom-2' => [
+						'label' => 'Gradient',
+						'val'   => 'linear-gradient(red,blue)',
+					],
 				]
 			)->enqueue();
 
 			$inline = implode( '', (array) wp_styles()->get_data( 'neve-style', 'after' ) );
 
-			$this->assertStringContainsString( '--e-global-color-custom1:linear-gradient(red,blue)', $inline );
+			$this->assertStringNotContainsString( '--e-global-color-custom1:', $inline );
+			$this->assertStringContainsString( '--e-global-color-custom2:linear-gradient(red,blue)', $inline );
+			$this->assertStringNotContainsString( '--e-global-color-nvprimaryaccent:', $inline );
+			$this->assertStringContainsString( '--e-global-color-nvsecondaryaccent:', $inline );
 			$this->assertStringNotContainsString( '<', $inline );
 		} finally {
 			$GLOBALS['wp_styles'] = $previous_styles;
+			remove_theme_mod( 'neve_global_colors' );
 		}
 	}
 }

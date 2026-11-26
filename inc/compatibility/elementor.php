@@ -113,7 +113,7 @@ class Elementor extends Page_Builder_Base {
 	 * Enqueue Global Colors
 	 */
 	public function enqueue() {
-		$colors = $this->get_current_palette_colors();
+		$colors = neve_sanitize_palette_colors( $this->get_current_palette_colors() );
 		$css    = ':root{';
 		foreach ( $colors as $slug => $color ) {
 			$css .= '--e-global-color-' . str_replace( '-', '', $slug ) . ':' . $color . ';';

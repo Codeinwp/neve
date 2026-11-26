@@ -180,10 +180,10 @@ class Dynamic_Css {
 		$colors = [];
 
 		foreach( Mods::get( Config::MODS_GLOBAL_CUSTOM_COLORS, [] ) as $slug=>$args ) {
-			$colors[$slug] = $args['val'];
+			$colors[$slug] = isset( $args['val'] ) ? $args['val'] : '';
 		}
 
-		return $colors;
+		return neve_sanitize_palette_colors( $colors );
 	}
 
 	/**
@@ -216,7 +216,8 @@ class Dynamic_Css {
 
 		$css = '';
 
-		foreach ( $palette[ 'colors' ] as $slug => $color ) {
+		// Stored palettes may predate the sanitizer or come from an import.
+		foreach ( neve_sanitize_palette_colors( $palette[ 'colors' ] ) as $slug => $color ) {
 			$css .= '--' . $slug . ':' . $color . ';';
 		}
 

@@ -10,6 +10,17 @@
  */
 
 /**
+ * Component grammar for rgb(), rgba(), hsl() and hsla() argument lists.
+ *
+ * @return string
+ */
+function neve_get_css_function_color_args(): string {
+	$number = '-?(?:\d+(?:\.\d*)?|\.\d+)%?';
+
+	return "{$number}\s*,\s*{$number}\s*,\s*{$number}(?:\s*,\s*{$number})?|{$number}\s+{$number}\s+{$number}(?:\s*\/\s*{$number})?";
+}
+
+/**
  * Check whether a value is a well formed CSS variable expression.
  *
  * @param mixed $value Value to check.
@@ -28,7 +39,7 @@ function neve_is_css_var( $value ) {
 	}
 
 	$hex      = '#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})';
-	$color_fn = '(?:rgb|rgba|hsl|hsla)\(\s*[0-9a-z.,%\/\s-]+\)';
+	$color_fn = '(?:rgb|rgba|hsl|hsla)\(\s*(?:' . neve_get_css_function_color_args() . ')\s*\)';
 	$keyword  = '[a-z]+(?:-[a-z]+)*';
 	$fallback = '(?:(?P>nv_var)|' . $hex . '|' . $color_fn . '|' . $keyword . ')';
 	$pattern  = '/^(?P<nv_var>var\(\s*--[a-z0-9_-]+\s*(?:,\s*' . $fallback . '\s*)?\))$/i';
@@ -45,7 +56,51 @@ function neve_is_css_var( $value ) {
  */
 function neve_is_css_gradient( string $value ): bool {
 	// Recursion keeps parentheses balanced, so nothing can follow the closing one.
-	return (bool) preg_match( '/^(?:repeating-)?(?:linear|radial|conic)-gradient(\((?:[a-z0-9#%.,\s\/_-]|(?1))*\))$/i', trim( $value ) );
+	if ( ! preg_match( '/^(?:repeating-)?(?:linear|radial|conic)-gradient(\((?:[a-z0-9#%.,\s\/_-]|(?1))*\))$/i', trim( $value ) ) ) {
+		return false;
+	}
+
+	// A function color stop may only be followed by its positions before the next stop.
+	if ( preg_match_all( '/((?:rgb|rgba|hsl|hsla)\([^)]*\))([^,)]*)/i', $value, $matches, PREG_SET_ORDER ) ) {
+		foreach ( $matches as $match ) {
+			if ( ! neve_is_css_function_color( $match[1] ) || ! preg_match( '/^(?:\s*-?[\d.]+[a-z%]*)*+\s*$/i', $match[2] ) ) {
+				return false;
+			}
+		}
+	}
+
+	if ( preg_match_all( '/#[0-9a-z]*/i', $value, $matches ) ) {
+		foreach ( $matches[0] as $hex ) {
+			if ( ! preg_match( '/^#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i', $hex ) ) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
+/**
+ * Keep the palette colors that are valid colors under a CSS-safe slug.
+ *
+ * @param mixed $colors Map of palette slug to color.
+ *
+ * @return array<string, string> Sanitized colors by slug; invalid entries are left out.
+ */
+function neve_sanitize_palette_colors( $colors ) {
+	if ( ! is_array( $colors ) ) {
+		return [];
+	}
+
+	$clean = [];
+	foreach ( $colors as $slug => $color ) {
+		$color = neve_sanitize_colors( $color );
+		if ( '' !== $color && sanitize_key( (string) $slug ) === $slug ) {
+			$clean[ $slug ] = $color;
+		}
+	}
+
+	return $clean;
 }
 
 /**
@@ -56,7 +111,7 @@ function neve_is_css_gradient( string $value ): bool {
  * @return bool
  */
 function neve_is_css_function_color( string $value ): bool {
-	return (bool) preg_match( '/^(?:rgb|rgba|hsl|hsla)\(\s*[-0-9.% ,]+\)$/', trim( $value ) );
+	return (bool) preg_match( '/^(?:rgb|rgba|hsl|hsla)\(\s*(?:' . neve_get_css_function_color_args() . ')\s*\)$/i', trim( $value ) );
 }
 
 /**
@@ -291,16 +346,20 @@ function neve_sanitize_font_family( $value ) {
  *
  * @param mixed $value the control value.
  *
- * @return mixed The sanitized array; any other value is returned unchanged.
+ * @return array<string, mixed>|string The value with every color field sanitized ('' when invalid), or '' when it is not an array or JSON object.
  */
 function neve_sanitize_button_appearance( $value ) {
-	if ( ! is_array( $value ) ) {
-		return $value;
+	if ( is_string( $value ) ) {
+		$value = json_decode( $value, true );
 	}
 
-	foreach ( [ 'background', 'backgroundHover', 'text', 'textHover', 'shadowColor', 'shadowColorHover' ] as $color ) {
-		if ( isset( $value[ $color ] ) ) {
-			$value[ $color ] = neve_sanitize_colors( $value[ $color ] );
+	if ( ! is_array( $value ) ) {
+		return '';
+	}
+
+	foreach ( array( 'background', 'text', 'backgroundHover', 'textHover', 'shadowColor', 'shadowColorHover' ) as $field ) {
+		if ( isset( $value[ $field ] ) ) {
+			$value[ $field ] = neve_sanitize_colors( $value[ $field ] );
 		}
 	}
 
