@@ -1,3 +1,14 @@
+##### [Version 4.2.20](https://github.com/Codeinwp/neve/compare/v4.2.19...v4.2.20) (2026-11-26)
+
+- Fixed incomplete border colors falling back to the default color
+- Fixed the mobile menu close button showing without an icon
+- Fixed pages crashing when the logo setting was stored as an array
+- Validated header and footer row text color
+- Enhanced RGBA color validation
+- Updated theme mod keys for WPML compatibility
+- Fixed the Black Friday warning about a missing default setting
+- Updated dependencies
+
 ##### [Version 4.2.19](https://github.com/Codeinwp/neve/compare/v4.2.18...v4.2.19) (2026-11-06)
 
 - Updated dependencies
