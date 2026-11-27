@@ -368,6 +368,21 @@ class Css_Prop {
 			return '';
 		}
 
+		// Once any side is set, a blank or missing side is 0. Dropped, it would shift the shorthand or widen the other sides to all four.
+		$set_sides = array_filter(
+			array_intersect_key( $value, array_flip( Config::$directional_keys ) ),
+			function ( $side ) {
+				return (string) $side !== '';
+			}
+		);
+		if ( ! empty( $set_sides ) ) {
+			foreach ( Config::$directional_keys as $direction ) {
+				if ( ! isset( $set_sides[ $direction ] ) ) {
+					$value[ $direction ] = '0';
+				}
+			}
+		}
+
 		// Directional array without any other keys than the actual directions.
 		$filtered = array_filter( $value, function ( $key ) {
 			return in_array( $key, Config::$directional_keys, true );
@@ -393,7 +408,7 @@ class Css_Prop {
 		if ( $number_of_directions === 2 && $value['top'] === $value['bottom'] && $value['right'] === $value['left'] ) {
 
 			if ( isset( $value['is_outline_button_padding'] ) ) {
-				return $css_prop . ':' . $value['top'] . ' ' . $value['right'] . ';';
+				return $css_prop . ':' . self::outline_side( $value['top'], $suffix ) . ' ' . self::outline_side( $value['right'], $suffix ) . ';';
 			}
 
 			if ( neve_value_is_zero( $value['top'] ) && neve_value_is_zero( $value['right'] ) ) {
@@ -410,7 +425,7 @@ class Css_Prop {
 
 		foreach ( Config::$directional_keys as $direction ) {
 			if ( isset( $value['is_outline_button_padding'] ) ) {
-				$template .= $value[$direction] . ' ';
+				$template .= self::outline_side( $value[ $direction ], $suffix ) . ' ';
 				continue;
 			}
 
@@ -429,6 +444,18 @@ class Css_Prop {
 		$template = trim( $template ) . ';';
 
 		return $css_prop . ':' . $template . ';';
+	}
+
+	/**
+	 * Outline button padding gives a plain nonzero number its unit and keeps every other side as it is: zero, `calc()`, `var()` or a value that already has a unit.
+	 *
+	 * @param string|int|float $side   Side value.
+	 * @param string           $suffix Unit.
+	 *
+	 * @return string
+	 */
+	private static function outline_side( $side, $suffix ) {
+		return is_numeric( $side ) && ! neve_value_is_zero( $side ) ? $side . $suffix : (string) $side;
 	}
 
 	/**
